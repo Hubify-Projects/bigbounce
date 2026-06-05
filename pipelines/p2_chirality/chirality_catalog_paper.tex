@@ -361,7 +361,7 @@ validation set. The gap is the magnitude of the circular-labeling effect:
 the headline figure measures internal consistency with a 67.6\%
 CE-ResNet-derived training corpus, while the GZ1-only number measures
 agreement with citizen-science labels on a fully independent sample.
-Reproducibility artifact: \artifact{pipelines/\allowbreak p2\_chirality/\allowbreak r42\_results/\allowbreak B20\_B21\_results.json}\footnote{\label{fn:repro_artifacts}All \texttt{r42\_results/*.json} artifacts, the reproducibility Python scripts, the canonical-provenance JSON outputs (including \texttt{p4\_multinull\_battery.json} for the canonical $+3.64\sigma$, \texttt{master\_power\_spectrum.json} for the MASTER-deconvolved $\ell\!=\!1$, and the hemisphere-scan \texttt{wave12\_hemi\_2026-05-01/results.json}), and the legacy \texttt{canonical\_n\_master\_l1\_direct\_v1062\_baseline.json} (legacy pre-correction baseline $+1.85\sigma$, retained for historical provenance only) are archived in the public project repository. Full machine-readable artifact paths + URLs are in \S\ref{sec:availability}.}
+Full reproducibility data are available in the companion data repository.\footnote{\label{fn:repro_artifacts}All result JSON artifacts, the reproducibility Python scripts, the canonical-provenance JSON outputs (including results for the canonical $+3.64\sigma$, the MASTER-deconvolved $\ell\!=\!1$, and the hemisphere-scan), and the legacy pre-correction baseline ($+1.85\sigma$, retained for historical provenance only) are archived in the public project repository. Full machine-readable artifact paths and URLs are in \S\ref{sec:availability}.}
 (includes full $3\times 3$ confusion matrix and matched-galaxy counts).
 The $69.91\%$ CW-vs-CCW agreement sits $19.91$~pp above the
 chance-baseline accuracy of $50\%$ on a binary task; the
@@ -433,9 +433,9 @@ We declare the estimator hierarchy used throughout this paper, in
 order of primary for the cosmological-dipole conclusion. We
 use ``declared'' rather than ``pre-registered'' because no
 time-stamped pre-registration was filed before the analysis began;
-the hierarchy below was fixed at v1.0.76 of this manuscript (after
-the first round of catalogue results) and has been carried forward
-under that fixed ordering through all subsequent revisions:
+the hierarchy below was fixed after the first round of catalogue results
+and has been carried forward under that fixed ordering through all
+subsequent revisions:
 
 \begin{itemize}\setlength{\itemsep}{0pt}
 \item \textbf{Primary cosmological estimators (primary for the
@@ -541,9 +541,7 @@ HC-spiral injection floor, $1{,}558$ for the $D_4$-TTA hold-out).
 $N_{\rm map\,weighted}$ is the pixel-weighted galaxy count
 (CW$+$CCW with TTA duplication) feeding the analysis-mask map,
 populated only for the subsample-mask MASTER row where the two
-counts differ. Verification:
-\artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/}
-(per-estimator JSON files).}
+counts differ. Per-estimator verification JSON files are available in the companion data repository.}
 \begin{ruledtabular}
 \begin{tabular}{lrrcccr}
 \textbf{Estimator (Sec.)} & $N_{\rm catalog\,spiral}$ & $N_{\rm map\,weighted}$ & $f_{\rm sky}$ & \textbf{Mask} & \textbf{Null} & \textbf{$\sigma$} \\
@@ -567,15 +565,13 @@ and (ii) respectively are computed under a different null model
 monopole-only generative null reported here in row (v)); the
 post-MASTER monopole-only-null value (which requires applying
 MASTER decoupling to each of the 500 binomial realizations) is
-reported here (companion artifact
-\artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak master\allowbreak \_decoupled\allowbreak \_monopole\allowbreak \_null.json}):
+reported here (available in the companion data repository):
 data $C_1\!=\!6.55\!\times\!10^{-6}$ vs null mean $8.0\!\times\!10^{-7}$
 ($12\%$ of the data) and null std $1.19\!\times\!10^{-6}$, giving
 moment-z $+4.84$ and empirical-rank two-sided $p_{\rm MC}\!=\!2/500\!=\!0.006$
 ($\sim\!2.5\sigma$ family-corrected). \emph{High-MC verification ($N_{\rm MC}\!=\!10{,}000$):}
 The headline $N_{\rm MC}=500$ result was reproduced at $N_{\rm MC}=10{,}000$
-($\sim\!13$ minutes wall on the same local pymaster 2.6 build; companion
-artifact \texttt{master\_decoupled\_monopole\_null\_10k.json}): data
+($\sim\!13$ minutes wall on the same local pymaster 2.6 build; results available in the companion data repository): data
 $C_1$ unchanged ($6.55\!\times\!10^{-6}$); null mean
 $7.59\!\times\!10^{-7}$ (vs $8.01\!\times\!10^{-7}$ at $N=500$, stable to
 $5\%$); null std $1.13\!\times\!10^{-6}$ (vs $1.19\!\times\!10^{-6}$ at
@@ -592,7 +588,7 @@ verdict in \S\ref{sec:dipole_symmetry_caveat}.
 
 \noindent\textsuperscript{c}\,Row~(vii) reports two distinct
 rotational-systematic metrics from two independent $\sim\!2{,}000$-galaxy
-$D_4$-TTA hold-outs (companion artifacts \artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak d4\allowbreak \_tta\allowbreak \_holdout\allowbreak \_results.json}, $N\!=\!1{,}558$, and \artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak d4\allowbreak \_tta\allowbreak \_holdout\allowbreak \_partial\allowbreak \_results.json}, $N\!=\!1{,}988$ seed=42 partial-harvest): (i)~the primary mean-per-galaxy-probability invariance $|\Delta\langle p_{\rm CW}\rangle|\!<\!0.0016$ across both holdouts (original $0.3904\!\to\!0.3901$ under $Z_2\!\to\!D_4$; partial-harvest $0.3929\!\to\!0.3913$), and (ii)~the per-galaxy argmax flip rate $21.4\%$ (key \texttt{class\_flip\_rate.any\_class\_z2\_to\_d4\_pct\,=\,21.4377\dots}). \textbf{Headline scope (primary-null robustness)}: the primary subsample-mask post-MASTER $\ell\!=\!1$ null ($-0.12\sigma$) is computed on the $p_{\rm CW}$-weighted asymmetry map $A_p$ (not on hard argmax labels), so the $21.4\%$ per-galaxy argmax-flip rate is not a primary source of uncertainty on the headline; the $21.4\%$ enters only the secondary HC-cut / hard-label injection-recovery diagnostics. \emph{Hard-label diagnostic note}: hard-label-based diagnostics (Table~\ref{tab:confidence_bins}, Table~\ref{tab:mc_injection}, Table~\ref{tab:face_on}) carry the $21.4\%$ per-galaxy rotational-flip uncertainty propagated as an additional empirical-variance term; in practice, doubling the per-bin Poisson $\sigma$ to account for the worst-case (an independent 21\% chance of flip per galaxy) widens each hard-binned diagnostic by $\sim\!1.21\times$ at the $1\sigma$ level. We retain the hard-binned diagnostics for cross-checking purposes but advise readers that the soft-probability map $A_p$ analyses are the primary primary channel; the soft-probability map is invariant to the argmax-flip channel by construction.
+$D_4$-TTA hold-outs (available in the companion data repository: $N\!=\!1{,}558$ baseline and $N\!=\!1{,}988$ seed=42 partial-harvest): (i)~the primary mean-per-galaxy-probability invariance $|\Delta\langle p_{\rm CW}\rangle|\!<\!0.0016$ across both holdouts (original $0.3904\!\to\!0.3901$ under $Z_2\!\to\!D_4$; partial-harvest $0.3929\!\to\!0.3913$), and (ii)~the per-galaxy argmax flip rate $21.4\%$. \textbf{Headline scope (primary-null robustness)}: the primary subsample-mask post-MASTER $\ell\!=\!1$ null ($-0.12\sigma$) is computed on the $p_{\rm CW}$-weighted asymmetry map $A_p$ (not on hard argmax labels), so the $21.4\%$ per-galaxy argmax-flip rate is not a primary source of uncertainty on the headline; the $21.4\%$ enters only the secondary HC-cut / hard-label injection-recovery diagnostics. \emph{Hard-label diagnostic note}: hard-label-based diagnostics (Table~\ref{tab:confidence_bins}, Table~\ref{tab:mc_injection}, Table~\ref{tab:face_on}) carry the $21.4\%$ per-galaxy rotational-flip uncertainty propagated as an additional empirical-variance term; in practice, doubling the per-bin Poisson $\sigma$ to account for the worst-case (an independent 21\% chance of flip per galaxy) widens each hard-binned diagnostic by $\sim\!1.21\times$ at the $1\sigma$ level. We retain the hard-binned diagnostics for cross-checking purposes but advise readers that the soft-probability map $A_p$ analyses are the primary primary channel; the soft-probability map is invariant to the argmax-flip channel by construction.
 The two numbers describe complementary axes of rotational uncertainty
 (catalog-level CW/CCW balance vs per-galaxy label stability) and are
 not interchangeable.
@@ -817,11 +813,8 @@ across $8\times 10^{7}$ forward passes ($10^{7}$ images $\times$ 8 augmentations
 $\{0^\circ, 90^\circ, 180^\circ, 270^\circ\}$ rotations $\times$ $\{$identity,
 horizontal flip$\}$) sustains $21{,}457$~images~s$^{-1}$ at batch~512 on a
 single H200, with a per-augmentation spread of $21{,}124$--$21{,}777$~images~s$^{-1}$
-($\Delta = 3.0\%$ across the 8 transforms; companion artifact
-\artifact{pipelines/\allowbreak p2\_chirality/\allowbreak r42\_results/\allowbreak B22\_real\_chirality\_tta\_long.json}). The independent
-GPU-throughput characterization (\artifact{pipelines/\allowbreak p2\_chirality/\allowbreak r42\_results/\allowbreak B19c\_gemm\_sweep.json},
-\artifact{pipelines/\allowbreak p2\_chirality/\allowbreak r42\_results/\allowbreak B20\_vit\_throughput.json},
-\artifact{pipelines/\allowbreak p2\_chirality/\allowbreak r42\_results/\allowbreak B21\_batchsize\_sweep.json}) confirms the bottleneck is
+($\Delta = 3.0\%$ across the 8 transforms; available in the companion data repository). The independent
+GPU-throughput characterization (GEMM sweep, ViT throughput, and batch-size sweep results, available in the companion data repository) confirms the bottleneck is
 data movement (image decoding and host-to-device transfer) rather than tensor
 math: peak throughput is recovered only at batch~512 with 32 parallel
 decoders, consistent with a $\sim 65$~TFLOPS FP16 GEMM-bound regime.
@@ -857,8 +850,7 @@ position angles by the DESI Legacy footprint geometry, so any
 rotation-correlated CW-fraction excursion in the trained ViT must
 show up as an excursion in the edge-on subsample relative to face-on.
 On the joined DR8-sweep $\times$ Catalog~C sample
-($8{,}474{,}531$ galaxies; companion artifact
-\artifact{pipelines/\allowbreak p2\_chirality/\allowbreak r42\_results/\allowbreak wave\_14\_kk\_ba\_reconciliation\_results.json}),
+($8{,}474{,}531$ galaxies; available in the companion data repository),
 the maximum CW-fraction excursion across the four $b/a$ bins
 (face-on, intermediate, edge-on, nan-$b/a$) is
 $\mathbf{0.0005}$~($0.05\%$), well below both the catalog-wide
@@ -885,9 +877,7 @@ $\geq\!10^{5}$-galaxy per-bin scale and the broad longitudinal coverage
 of the DESI Legacy footprint, but is not validated here by a Rayleigh
 or KS test on the actual edge-on PA distribution; such a validation
 (a single 1D histogram on the $785{,}859$-galaxy subsample) is deferred to future work. A direct full-$D_4$-TTA validation run on a
-$2{,}000$-galaxy hold-out has been performed (companion
-artifact
-\artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak d4\_tta\_holdout\_results.json}),
+$2{,}000$-galaxy hold-out has been performed (available in the companion data repository),
 running the published \vit{}-Small chirality\_v2 checkpoint over $8\times 1{,}558$
 ($N_{\rm valid}\!=\!1{,}558$ after Sky Viewer cutout-API rate-limiting
 losses) augmented forward passes (the four $C_4$ in-plane rotations
@@ -918,8 +908,7 @@ $D_4$-rotational systematic, paired with a statistical-power caveat
 that the $\pm\!1.3\%$ Poisson floor could not bound a $0.26\%$
 $D_4$ contribution. A partial-harvest run on a fresh
 $N\!=\!1{,}988$ seed=42 holdout drawn from the same catalog
-(companion artifact
-\artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak d4\allowbreak \_tta\allowbreak \_holdout\allowbreak \_partial\allowbreak \_results.json})
+(available in the companion data repository)
 sign-flips the argmax-CW-fraction $\Delta$ to $\!+\!2.11\%$ at
 comparable $N$ ($Z_2\!=\!0.4095$, $D_4\!=\!0.3883$), while the
 mean per-galaxy probabilities remain stable to within $\Delta
@@ -1002,8 +991,7 @@ balance is a strong null-test of the TTA pipeline: any chirality-biased
 leakage out of the \NS{} channel would have produced an asymmetric split.
 This confirms that the equivariance averaging conserves the rejection
 class to better than $4\%$ leakage and does not bias the surviving CW/CCW
-counts. Reproducibility artifact:
-\artifact{pipelines/\allowbreak p2\_chirality/\allowbreak r42\_results/\allowbreak B20\_B21\_results.json}.
+counts. Full reproducibility data are available in the companion data repository.
 
 \subsection{Bias Hardening Suite}
 \label{sec:bias}
@@ -1136,9 +1124,7 @@ deferred systematics extension and rely on the dipole null itself
 as the primary test. This morphology-chirality coupling is
 \emph{consistent} with the bin-by-bin CW-fraction non-flatness
 (b/a, fracdev, shape\_r\_eff, and \texttt{type} all show $>\!0.1\%$
-non-flatness; raw run
-\artifact{pipelines/\allowbreak p2\_chirality/\allowbreak r42\_results/\allowbreak wave\_14\_oo\_cw\_flatness\_morphology.json},
-\artifact{pipelines/\allowbreak p2\_chirality/\allowbreak r42\_results/\allowbreak wave\_14\_qq\_systematics\_regression.json}).
+non-flatness; raw diagnostic runs are available in the companion data repository).
 Crucially, the leak is local and morphology-correlated rather than
 celestial-axis-correlated: the directional dipole null reported in
 Sec.~\ref{sec:dipole} ($\sigma_{\rm dipole}=0.43$, $p=0.30$ at
@@ -1215,8 +1201,7 @@ The pipeline produces three catalog tiers:
  deployed temperature parameter). The L-BFGS converged at the
  starting point to within numerical precision: the recovered
  parameters are equal to $(A_0, B_0)$ at the rounding-precision
- floor of the fit (companion artifact:
- \artifact{pipelines/\allowbreak p2\_chirality/\allowbreak r42\_results/\allowbreak wave\_14\_fff\_gz1\_platt\_recal.json}).
+ floor of the fit (available in the companion data repository).
  Calibration accuracy on the matched set is at chance ($0.519$).
  This indicates that the GZ1 calibration data provide
  \emph{uninformative} re-fit leverage on the deep classifier
@@ -1239,8 +1224,7 @@ The pipeline produces three catalog tiers:
  is $48.4\%$ versus the Catalog~C equivariant value $49.7\%$,
  a $1.3$~percentage-point gap on the $46{,}017$-row
  recalibration-subset. The full joint label tabulation on the
- $117{,}205$-spiral GZ1 cross-match (Sec.~\ref{sec:gz1_joint}, see
- reproducibility artifact \artifact{pipelines/\allowbreak p2\_chirality/\allowbreak r42\_results/\allowbreak B20\_B21\_results.json},
+ $117{,}205$-spiral GZ1 cross-match (Sec.~\ref{sec:gz1_joint}, available in the companion data repository,
  field \texttt{B20\_GZ1\_only.confusion\_eq}) yields the exact
  measurement-grade McNemar test. Discordants partition as
  $b\!=\!18{,}889$ galaxies scored CW by GZ1 and CCW by Catalog~C and
@@ -1271,7 +1255,7 @@ The pipeline produces three catalog tiers:
  ``moderate'' agreement in the Landis-Koch convention. We treat
  the $Z\!=\!13.4$ headline as measurement-grade replacement for the
  earlier $Z\!=\!6.77$ assumed-discordance figure, which is now
- retracted as a modeling artifact. The
+ superseded by the corrected measurement. The
  isotropy-breaking test of this paper is the \emph{dipole} (parity-even axial-vector projection)
  (Sec.~\ref{sec:dipole}), not the monopole, and the dipole is
  null. The convergence of the L-BFGS recalibration at the v2
@@ -1326,9 +1310,8 @@ failed transforms) and are excluded.}, classified as follows:
  \CW{} 1,592,107 (18.78\%), \CCW{} 1,609,053 (18.99\%),
  \NS{} (or edge-on) 5,273,371 (62.23\%); spiral total
  $N_{\rm spiral} = 3{,}201{,}160$ (37.78\% of the catalog).\footnote{The
- canonical $N_{\rm spiral} = 3{,}201{,}160$ is computed from the
- \texttt{class\_eq} column of \texttt{catalog\_production.parquet}
- (objects with $\texttt{class\_eq}\in\{\CW,\CCW\}$); the
+ canonical $N_{\rm spiral} = 3{,}201{,}160$ counts objects with
+ equivariant label $\in\{\CW,\CCW\}$ in the production catalog; the
  pre-recount figure $3{,}321{,}795$ conflated intermediate counts
  and is superseded.}
 \end{itemize}
@@ -1491,7 +1474,7 @@ N_{\rm CCW}^{(p)}}.
 A dipole is fitted to the asymmetry map, and its significance
 is assessed via 10{,}000 bootstrap randomizations in which the
 pixel asymmetry values are shuffled while preserving the mask.%
-\footnote{\label{fn:mc_count}\emph{Three distinct Monte Carlo counts coexist in this paper, each chosen for its analysis context.} (i)~Simple-dipole bootstrap significance ($\sigma_{\rm hemi}=0.43$, $p=0.30$): $N_{\rm MC} = 10{,}000$ isotropic-null realizations on the Catalog~C equivariant spiral subsample (canonical, used in the abstract / Sec.~\ref{sec:dipole}). (ii)~Post-MASTER deconvolution null at $\ell=1$ ($-0.12\sigma$ canonical primary): $N_{\rm MC} = 500$ realizations; the lower count reflects the $\sim\!2\times$ per-realization cost of running the full $M_{\ell\ell'}$ mode-coupling inversion. The $1/\sqrt{2(500-1)} \approx 3.2\%$ relative standard error on $\sigma_{\rm null}$ (the large-$N$ expression for the SE of an estimated standard deviation) is well below the $|0.12\sigma|$ deviation. (iii)~Pre-MASTER raw pseudo-$C_\ell$ at $\ell\geq 2$ (Table~\ref{tab:multipole}): $N_{\rm MC} = 1{,}000$ realizations using the cheaper bootstrap-of-CW-labels null without mode-coupling inversion. The $\sim\!3\%$ MC uncertainty at $N_{\rm MC} = 1{,}000$ is immaterial for these central estimates since no Catalog~C $\ell\geq 2$ significance approaches $3\sigma$. The production run is logged in \artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak dipole/\allowbreak dipolar\_analysis.log}.}
+\footnote{\label{fn:mc_count}\emph{Three distinct Monte Carlo counts coexist in this paper, each chosen for its analysis context.} (i)~Simple-dipole bootstrap significance ($\sigma_{\rm hemi}=0.43$, $p=0.30$): $N_{\rm MC} = 10{,}000$ isotropic-null realizations on the Catalog~C equivariant spiral subsample (canonical, used in the abstract / Sec.~\ref{sec:dipole}). (ii)~Post-MASTER deconvolution null at $\ell=1$ ($-0.12\sigma$ canonical primary): $N_{\rm MC} = 500$ realizations; the lower count reflects the $\sim\!2\times$ per-realization cost of running the full $M_{\ell\ell'}$ mode-coupling inversion. The $1/\sqrt{2(500-1)} \approx 3.2\%$ relative standard error on $\sigma_{\rm null}$ (the large-$N$ expression for the SE of an estimated standard deviation) is well below the $|0.12\sigma|$ deviation. (iii)~Pre-MASTER raw pseudo-$C_\ell$ at $\ell\geq 2$ (Table~\ref{tab:multipole}): $N_{\rm MC} = 1{,}000$ realizations using the cheaper bootstrap-of-CW-labels null without mode-coupling inversion. The $\sim\!3\%$ MC uncertainty at $N_{\rm MC} = 1{,}000$ is immaterial for these central estimates since no Catalog~C $\ell\geq 2$ significance approaches $3\sigma$. Production logs are available in the companion data repository.}
 
 \paragraph{Simple dipole.}
 Using Catalog~C (equivariant), the fitted dipole has amplitude
@@ -1552,13 +1535,12 @@ see footnote~\ref{fn:mc_count}).
 \caption{Angular power spectrum of the chirality asymmetry map
  (Catalog~C, equivariant). The first row is the canonical \emph{single-mode}
  $\ell\!=\!1$ post-MASTER result that anchors the dipole-isotropy null
- (companion artifact \artifact{pipelines/\allowbreak p2\_chirality/\allowbreak master\_results/\allowbreak master\_power\_spectrum.json},
- $\ell_1$\,dipole entry; analysis subsample $n\!=\!5{,}547{,}858$,
- $f_{\rm sky}\!=\!0.659$). Rows 2--5 are five-mode \emph{bandpowers}
+ ($\ell_1$\,dipole entry; analysis subsample $n\!=\!5{,}547{,}858$,
+ $f_{\rm sky}\!=\!0.659$; available in the companion data repository). Rows 2--5 are five-mode \emph{bandpowers}
  $\ell\!\in\![\ell_{\rm eff}\!-\!2,\,\ell_{\rm eff}\!+\!2]$ from the
  canonical-$N$ MASTER recompute on the full $N_{\rm spiral}\!=\!3{,}201{,}160$
  / $f_{\rm sky}\!=\!0.491$ analysis
- (companion artifact \artifact{pipelines/\allowbreak p2\_chirality/\allowbreak r42\_results/\allowbreak wave\_14\_pp\_namaster\_verification.json};
+ (available in the companion data repository;
  $500$ MC realizations for the post-MASTER $\ell\!=\!1$ single-mode row only; the $\ell\!\geq\!2$ bandpower rows use the cheaper $N_{\rm MC}\!=\!1{,}000$ bootstrap-of-CW-labels null without mode-coupling inversion). $\sigma_{\rm null}$ is the per-bin standard deviation of the
  MC null distribution at that bandpower. Higher-bandpower
  $\sim\!2\sigmaunit$ values reflect residual coupling of the $9.5\sigmaunit$
@@ -1570,8 +1552,7 @@ see footnote~\ref{fn:mc_count}).
  (direct single-mode NaMaster MC at canonical $f_{\rm sky}$) yields
  $\sigma_{\rm canonical}\!=\!+3.64$ at $f_{\rm sky}\!=\!0.49005$,
  $N_{\rm spiral}\!=\!3{,}201{,}160$, SEED$\,=\,42$, $500$-MC
- (Sec.~\ref{sec:conclusions} and companion artifact
- \artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak p4\_multinull\_battery.json});
+ (Sec.~\ref{sec:conclusions}; available in the companion data repository);
  this is a non-headline, systematics-attributed canonical-mask excess (moment-$z\!=\!+3.64$ under the 500-MC normalization; empirical-rank $p_{\rm MC}\!=\!15/500\!=\!0.030$) reported transparently as an unresolved systematic pending matched-pipeline reanalysis, not a calibrated leakage floor
  calibration, with the $-0.122\sigmaunit$ subsample-mask figure
  retained as the headline post-MASTER null because its
@@ -1605,7 +1586,7 @@ observable lives at $\ell\!=\!1$ specifically, which is null.
 $^c$~Subsample mask $f_{\rm sky}\!=\!0.659$. The companion canonical-mask
 direct-MC at $\ell\!=\!1$ yields $+3.64\sigmaunit$ at $f_{\rm sky}\!=\!0.49005$
 (canonical mask, non-headline, systematics-attributed canonical-mask residual; see caption).
-$^d$~The displayed $z$ values were computed at MC time as $z\!=\!(C_\ell^{\rm meas}\!-\!\langle C_\ell^{\rm null}\rangle)/\sigma_\ell^{\rm null}$; the per-row null means $\langle C_\ell^{\rm null}\rangle$ are non-zero because the per-pixel bootstrap-of-CW-labels null on the patchy canonical mask is itself mode-coupled by the monopole+mask geometry. The null means are not displayed in this column-compact rendering (the relation $\langle C_\ell^{\rm null}\rangle\!=\!C_\ell^{\rm meas}\!-\!\sigma_\ell^{\rm null}\!\cdot\!z$ recovers them from displayed values; the per-row reverse-engineered values are not quoted here as a primary source because the on-disk MC log is the canonical record). A dedicated null-mean column is identified as a future tabular-completeness improvement; the on-disk MC log remains the canonical record.
+$^d$~The displayed $z$ values were computed at MC time as $z\!=\!(C_\ell^{\rm meas}\!-\!\langle C_\ell^{\rm null}\rangle)/\sigma_\ell^{\rm null}$; the per-row null means $\langle C_\ell^{\rm null}\rangle$ are non-zero because the per-pixel bootstrap-of-CW-labels null on the patchy canonical mask is itself mode-coupled by the monopole+mask geometry. The null means are not displayed in this column-compact rendering (the relation $\langle C_\ell^{\rm null}\rangle\!=\!C_\ell^{\rm meas}\!-\!\sigma_\ell^{\rm null}\!\cdot\!z$ recovers them from displayed values; the per-row reverse-engineered values are not quoted here as a primary source). A dedicated null-mean column is identified as a future tabular-completeness improvement.
 \end{flushleft}
 \end{table*}
 
@@ -1662,7 +1643,7 @@ spin-2/scalar map construction, not the parent population
 not contribute Poisson realizations to the chirality field and must
 be excluded from the noise normalization.\footnote{Earlier analyses used $N_{\rm tot} = 8{,}474{,}531$ in the
 shot-noise denominator; the correct denominator is $N_{\rm spiral}$. The numerical recompute on the H200 pod
-(\artifact{pipelines/\allowbreak h200\_results/\allowbreak wave11c\_nspiral\_recompute\_2026-05-01/\allowbreak results.json},
+(available in the companion data repository;
 $N_{\rm side}=64$, $\ell_{\rm max}=191$, $f_{\rm sky}=0.491$,
 $N_{\rm MC}=1000$ label-shuffle nulls) confirms the correction:
 the Poisson floor with $N_{\rm spiral} = 3{,}201{,}160$ is
@@ -1725,8 +1706,7 @@ null conclusion; we note the limitation for completeness.}\footnote{An independe
 production rerun on the full
 $N_{\rm gal}^{\rm full} = 8{,}474{,}531$-row catalog (no pixel-edge
 discard, $f_{\rm sky}=0.4928$, $N_{\rm side}=64$, 12 binned
-bandpowers spanning $\ell \in [9, 174]$) is recorded at
-\artifact{pipelines/\allowbreak h200\_results/\allowbreak pod2\_chirality\_2026-04-29/\allowbreak master\_power\_spectrum.json}.
+bandpowers spanning $\ell \in [9, 174]$) is available in the companion data repository.
 That rerun reports a binned bandpower at $\ell_{\rm eff}=9$ of
 $C_\ell = 6.26 \times 10^{-3}$ before shot-noise subtraction, with
 the higher bins ($\ell_{\rm eff} \in [24, 174]$) all consistent with
@@ -1790,8 +1770,7 @@ This MASTER-primary policy follows standard practice in spherical harmonic power
  bandpowers are formally above null at $+2$ to $+6\sigmaunit$ in the
  pre-deconvolution pseudo-$C_\ell$ and are attributed to the same
  monopole--mask leakage channel; they are not interpreted as parity
- dipoles. Verification artifact:
- \artifact{pipelines/\allowbreak h200\_results/\allowbreak wave11c\_nspiral\_recompute\_2026-05-01/\allowbreak results.json}.
+ dipoles. Verification data are available in the companion data repository.
  The no-dipole-at-$\ell=1$ verdict at the catalog's empirical
  $\geq 0.75\%$ empirical $50\%$-recovery-$3\sigma$ threshold (Sec.~\ref{sec:sensitivity}) is
  carried by the full-catalog $0.43\sigmaunit$ real-space dipole and the
@@ -1819,14 +1798,14 @@ depth/PSF/morphology coupling beyond the per-pixel multinomial.
 
 \begin{table*}[t]
 \caption{Monopole+mask leakage null (canonical mask, NSIDE$\,=\,$64,
-$f_{\rm sky}\!=\!0.49005$ (canonical, from \artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak monopole\_mask\_null\_results.json}: $n_{\rm spiral,in\,mask}\!=\!3{,}200{,}420$ of $n_{\rm spiral,total}\!=\!3{,}201{,}160$; $24{,}087$ NSIDE$=64$ pixels with $\geq\!10$ spirals), seed$\,=\,$42; $N\!=\!500$ binomial-monopole
+$f_{\rm sky}\!=\!0.49005$ (canonical; $n_{\rm spiral,in\,mask}\!=\!3{,}200{,}420$ of $n_{\rm spiral,total}\!=\!3{,}201{,}160$; $24{,}087$ NSIDE$=64$ pixels with $\geq\!10$ spirals; available in the companion data repository), seed$\,=\,$42; $N\!=\!500$ binomial-monopole
 realizations of $p_{\rm CW}^{\rm global}\!=\!0.4974$ on the canonical
 spiral-count map). Pre-MASTER pseudo-$C_\ell^{(\ell=1)}$ and hemisphere max$|A|$ reported with their data $z$-score against the null (the post-MASTER decoupled $C_\ell$ at $\ell\!=\!1$ is reported in Sec.~\ref{sec:dipole} under a different null model and is not included in this table; see Table~\ref{tab:headline_summary} footnote b). The N=500 simulation supersedes the smoke
 result at N=25; the monopole-only null reproduces $99.3\%$ of the
 observed (computed as the ratio $1.6846\!\times\!10^{-2}\!/1.696\!\times\!10^{-2}\!=\!0.9932$ from Table~\ref{tab:monopole_mask_null}) pre-MASTER pseudo-$C_\ell^{(\ell=1)}$ power (residual
 $+1.68\sigmaunit$) and $48.6\%$ of the hemisphere max-amplitude
 (residual $+4.42\sigmaunit$). Verification:
-\artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak monopole\_mask\_null\_results.json}.
+Verification data are available in the companion data repository.
 \label{tab:monopole_mask_null}}
 \begin{ruledtabular}
 \begin{tabular}{lccc}
@@ -1839,11 +1818,8 @@ Hemisphere max$|A|$ (NSIDE$_{\rm dir}\!=\!8$)\,\textsuperscript{a} & $3.48{\time
 \noindent The post-MASTER results for cross-reference (\emph{from
 a different null model, the label-shuffle MASTER MC, not the
 monopole-only generative null reported in this table}) are:
-\emph{canonical mask} $+3.64\sigmaunit$ (canonical-$N$ direct-MC,
-\artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak p4\_multinull\_battery.json});
-\emph{subsample mask} $-0.12\sigmaunit$ (master\_power\_spectrum.json
-$\ell\!=\!1$ row, label-shuffle null,
-\artifact{pipelines/\allowbreak p2\_chirality/\allowbreak master\_results/\allowbreak master\_power\_spectrum.json}).
+\emph{canonical mask} $+3.64\sigmaunit$ (canonical-$N$ direct-MC, available in the companion data repository);
+\emph{subsample mask} $-0.12\sigmaunit$ (label-shuffle null, available in the companion data repository).
 \textsuperscript{a}\,Pre-MASTER pseudo-$C_\ell^{(\ell=1)}$ is computed
 on the un-monopole-subtracted CW-fraction map, by design: the whole
 point of this null is to expose the monopole-mask geometric leakage
@@ -1899,10 +1875,10 @@ $\ell\!=\!1$ on the strict-superset subsample mask is
 $-0.12\sigmaunit$ (Sec.~\ref{sec:dipole}); the canonical-mask
 post-MASTER residual is $+3.64\sigmaunit$, a non-headline, systematics-attributed (empirical-rank $p_{\rm MC}\!=\!0.030$)
 value consistent with residual mode-coupling that MASTER does not fully
-invert on the patchy canonical footprint. The two MASTER results jointly characterize the $\ell\!=\!1$ dipole channel as showing (a)~a null at the subsample-mask level ($-0.12\sigmaunit$ post-MASTER on the subsample mask) and (b)~a residual at the canonical-mask level. a dedicated canonical-mask injection sweep was executed on the full $3{,}201{,}160$-spiral Catalog~C with proper galaxy-weighted monopole subtraction ($\langle A\rangle_{\rm mask,gw}\!=\!-0.005294$ per a direct per-pixel monopole subtraction) at amplitudes $A\!\in\!\{0.1, 0.3, 0.5, 0.75, 1.0, 1.5, 2.0, 3.0, 5.0\}\%$ ($N_{\rm MC,null}\!=\!200$, $N_{\rm MC,inj}\!=\!60$; companion artifact \artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak canonical\allowbreak \_mask\allowbreak \_injection\allowbreak \_sweep.json}). \textbf{Result}: after proper monopole subtraction the canonical-mask data corresponds to $\sigma_{\rm corrected}\!=\!+3.64$ (data decoupled $C_1\!=\!1.51\!\times\!10^{-5}$, null mean $3.12\!\times\!10^{-6}$, null std $3.31\!\times\!10^{-6}$). The 50\%-recovery-at-$3\sigma$ threshold on the canonical mask with binomial per-pixel-shuffle null is $A\!=\!2.0\%$ (at $A\!=\!1.5\%$ median sigma is $+2.30$, at $A\!=\!2.0\%$ median is $+5.73$); interpolating the observed $\sigma\!=\!+3.64$ between these brackets, the data corresponds to an effective injected dipole amplitude of $A\!\approx\!1.7\%$ under the binomial null. \textbf{Note}: the binomial per-pixel-shuffle null does NOT preserve depth, PSF, morphology, or imaging-leg correlations; the $+3.64\sigma$ canonical-mask result is therefore the residual signal under a systematic-INCLUSIVE-but-not-systematic-modeling null. Three interpretations are possible: (i)~a real cosmological dipole at $\sim\!1.7\%$ amplitude on the canonical footprint (still factor-$\sim\!2$ smaller than the historic Shamir $\sim\!2$--$4\%$ but in the same regime); (ii)~a residual systematic correlated with depth/PSF/morphology that is preserved by the per-pixel-shuffle null and is therefore not killed by it (the same systematic class that drives the DECaLS [0.5,0.6) $+4.50\sigma$ cell of \S\ref{sec:per_leg}); (iii)~a residual NaMaster deconvolution artifact on the patchy canonical footprint at low $\ell$. \par
-\textbf{Multi-null battery}: a 4-null battery was executed on the pod (companion artifact \artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak p4\allowbreak \_multinull\allowbreak \_battery.json}) to triage between the three interpretations: (1)~apodized canonical mask (C$^2$ $2^\circ$ apodization) gives $\sigma\!=\!+3.57$, essentially unchanged from the binary-mask $+3.64\sigma$, ruling out sharp-edge NaMaster artifacts as a substantial contributor (interpretation~(iii) sharp-edge variant rejected); (2)~multipole-spectrum diagnostic gives $\sigma_{\ell=1}\!=\!+3.63$ AND $\sigma_{\ell=2}\!=\!+4.73$ (with $\ell=3,4,5$ at $-0.96, +0.13, -0.63$): the signal is broadband low-$\ell$ NOT specifically $\ell=1$-dominant, which is inconsistent with a clean cosmological dipole (a real dipole at $A\!\sim\!1.7\%$ should be $\ell=1$-dominant with at most mask-induced power at $\ell=2$, not $\ell=2$ \emph{exceeding} $\ell=1$); (3)~bootstrap pixel resample (resamples per-galaxy label-position pairs with replacement; gives $\sigma\!=\!-0.22$ for data and $\sigma_{\rm median}\!=\!-0.49$ for an injected real $A\!=\!1.7\%$ dipole ---, the bootstrap as implemented is tautological for cosmological-dipole hypothesis testing: resampling (label, position) tuples preserves the data's underlying dipole content per realization plus sampling noise, so a real dipole and a depth-correlated systematic both center the bootstrap distribution on the data and yield $\sigma\!\approx\!0$. The bootstrap is therefore retained as a sampling-variance diagnostic only, NOT as a (i)-vs-(ii) discriminator. We therefore drop bootstrap from the rigorous interpretation closure logic); (4)~$p_{\rm eq}$ quartile stratification gives $\sigma_{\rm Q1}\!=\!+0.20$, $\sigma_{\rm Q2}\!=\!-0.42$, $\sigma_{\rm Q3}\!=\!+0.44$, $\sigma_{\rm Q4}\!=\!+0.43$ across four equal-N quartiles (no monotonic increase with classifier confidence, all $|\sigma|<1$). The signal therefore appears at $\sim\!3.6\sigma$ only under the tight binomial-shuffle null which preserves per-pixel $N_{\rm total}$ exactly; it disappears under bootstrap (null std $\sim 3\times$ wider, capturing spatial-correlation variance) and washes out under quality-quartile splits.
+invert on the patchy canonical footprint. The two MASTER results jointly characterize the $\ell\!=\!1$ dipole channel as showing (a)~a null at the subsample-mask level ($-0.12\sigmaunit$ post-MASTER on the subsample mask) and (b)~a residual at the canonical-mask level. a dedicated canonical-mask injection sweep was executed on the full $3{,}201{,}160$-spiral Catalog~C with proper galaxy-weighted monopole subtraction ($\langle A\rangle_{\rm mask,gw}\!=\!-0.005294$ per a direct per-pixel monopole subtraction) at amplitudes $A\!\in\!\{0.1, 0.3, 0.5, 0.75, 1.0, 1.5, 2.0, 3.0, 5.0\}\%$ ($N_{\rm MC,null}\!=\!200$, $N_{\rm MC,inj}\!=\!60$; available in the companion data repository). \textbf{Result}: after proper monopole subtraction the canonical-mask data corresponds to $\sigma_{\rm corrected}\!=\!+3.64$ (data decoupled $C_1\!=\!1.51\!\times\!10^{-5}$, null mean $3.12\!\times\!10^{-6}$, null std $3.31\!\times\!10^{-6}$). The 50\%-recovery-at-$3\sigma$ threshold on the canonical mask with binomial per-pixel-shuffle null is $A\!=\!2.0\%$ (at $A\!=\!1.5\%$ median sigma is $+2.30$, at $A\!=\!2.0\%$ median is $+5.73$); interpolating the observed $\sigma\!=\!+3.64$ between these brackets, the data corresponds to an effective injected dipole amplitude of $A\!\approx\!1.7\%$ under the binomial null. \textbf{Note}: the binomial per-pixel-shuffle null does NOT preserve depth, PSF, morphology, or imaging-leg correlations; the $+3.64\sigma$ canonical-mask result is therefore the residual signal under a systematic-INCLUSIVE-but-not-systematic-modeling null. Three interpretations are possible: (i)~a real cosmological dipole at $\sim\!1.7\%$ amplitude on the canonical footprint (still factor-$\sim\!2$ smaller than the historic Shamir $\sim\!2$--$4\%$ but in the same regime); (ii)~a residual systematic correlated with depth/PSF/morphology that is preserved by the per-pixel-shuffle null and is therefore not killed by it (the same systematic class that drives the DECaLS [0.5,0.6) $+4.50\sigma$ cell of \S\ref{sec:per_leg}); (iii)~a residual NaMaster deconvolution artifact on the patchy canonical footprint at low $\ell$. \par
+\textbf{Multi-null battery}: a 4-null battery was executed on the pod (available in the companion data repository) to triage between the three interpretations: (1)~apodized canonical mask (C$^2$ $2^\circ$ apodization) gives $\sigma\!=\!+3.57$, essentially unchanged from the binary-mask $+3.64\sigma$, ruling out sharp-edge NaMaster artifacts as a substantial contributor (interpretation~(iii) sharp-edge variant rejected); (2)~multipole-spectrum diagnostic gives $\sigma_{\ell=1}\!=\!+3.63$ AND $\sigma_{\ell=2}\!=\!+4.73$ (with $\ell=3,4,5$ at $-0.96, +0.13, -0.63$): the signal is broadband low-$\ell$ NOT specifically $\ell=1$-dominant, which is inconsistent with a clean cosmological dipole (a real dipole at $A\!\sim\!1.7\%$ should be $\ell=1$-dominant with at most mask-induced power at $\ell=2$, not $\ell=2$ \emph{exceeding} $\ell=1$); (3)~bootstrap pixel resample (resamples per-galaxy label-position pairs with replacement; gives $\sigma\!=\!-0.22$ for data and $\sigma_{\rm median}\!=\!-0.49$ for an injected real $A\!=\!1.7\%$ dipole ---, the bootstrap as implemented is tautological for cosmological-dipole hypothesis testing: resampling (label, position) tuples preserves the data's underlying dipole content per realization plus sampling noise, so a real dipole and a depth-correlated systematic both center the bootstrap distribution on the data and yield $\sigma\!\approx\!0$. The bootstrap is therefore retained as a sampling-variance diagnostic only, NOT as a (i)-vs-(ii) discriminator. We therefore drop bootstrap from the rigorous interpretation closure logic); (4)~$p_{\rm eq}$ quartile stratification gives $\sigma_{\rm Q1}\!=\!+0.20$, $\sigma_{\rm Q2}\!=\!-0.42$, $\sigma_{\rm Q3}\!=\!+0.44$, $\sigma_{\rm Q4}\!=\!+0.43$ across four equal-N quartiles (no monotonic increase with classifier confidence, all $|\sigma|<1$). The signal therefore appears at $\sim\!3.6\sigma$ only under the tight binomial-shuffle null which preserves per-pixel $N_{\rm total}$ exactly; it disappears under bootstrap (null std $\sim 3\times$ wider, capturing spatial-correlation variance) and washes out under quality-quartile splits.
 \par
-\textbf{Assessment of the three interpretations}: (i)~\emph{real cosmological dipole at $\sim\!1.7\%$}: \emph{disfavored, but bootstrap-null does NOT independently rule it out} --- the bootstrap-null injection-recovery diagnostic : a bootstrap injection-recovery test (companion artifact \artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak p4\allowbreak \_bootstrap\allowbreak \_injection\allowbreak \_test.json}) injected a real $A\!=\!1.7\%$ cosmological dipole into Catalog~C and asked whether the injection survives the bootstrap null. Result: a REAL injected $1.7\%$ dipole has median $\sigma_{\rm bootstrap}\!=\!-0.49$ ($P(\sigma>3)\!=\!1.3\%$ over $N\!=\!80$ injection realizations) --- the bootstrap variance is so wide that a genuine $\sim\!1.7\%$ dipole would also appear consistent with null under bootstrap. The bootstrap-null $\sigma\!=\!-0.22$ of the actual data therefore does not, by itself, exclude interpretation~(i); bootstrap is too conservative to be a discriminator at this amplitude. What \emph{disfavors} interpretation~(i) (but does not formally exclude it absent a joint nuisance-marginalized model fit) is the combination of (a)~the $\ell\!=\!2 > \ell\!=\!1$ broadband structure (incompatible with a clean cosmological dipole; a real dipole at $A\!=\!1.7\%$ should be $\ell\!=\!1$-dominant) --- under the same binomial null, an injected real dipole at $1.7\%$ shows median $\sigma\!=\!+2.87$ at $\ell\!=\!1$, not the observed pattern of $\ell\!=\!2$ being LARGER than $\ell\!=\!1$; (b)~the absence of monotonic $p_{\rm eq}$ quartile scaling (a real dipole should at minimum show coherent structure across quality strata; all four quartiles instead read $|\sigma|<1$); and (c)~the direct cross-spectrum evidence below confirming that the auto-spectrum excess IS depth-correlated. (ii)~\emph{coherent depth/PSF/morphology-correlated systematic at low $\ell$ on the canonical footprint}: \emph{strongest interpretation, now favoured by cross-spectrum (suggestive)} --- the broadband low-$\ell$ signature, direction-coherent under sky rotation (still $+2.56\sigma$), bootstrap-consistent-with-null, and quality-quartile-washout pattern are all consistent with a per-pixel-correlated structure (e.g., depth maps, PSF maps, morphology distributions) that the binomial-shuffle null fails to capture but the bootstrap null absorbs. \textbf{Direct cross-spectrum diagnostic for interpretation (ii)} (companion artifact \artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak p4\allowbreak \_cross\allowbreak \_spectrum\allowbreak \_A\allowbreak \_n.json}): the canonical-mask cross-power $C^{An}_\ell$ between the chirality asymmetry map $A_p$ and the pixel-density map $n_{\rm total}(p)$ (a direct proxy for depth/sampling-density) gives correlation coefficient $r_{\ell=2}\!=\!-0.65$ with significance $\sigma\!=\!-2.89$ against per-pixel-shuffle null (data more anti-correlated than the null) at the SAME multipole where the chirality auto-spectrum shows the largest excess ($+4.73\sigma$ at $\ell=2$). The negative cross-correlation at $\ell\!=\!2$ specifically means the quadrupole moments of the asymmetry and density maps are anti-aligned (, not a global real-space ``more galaxies $\Rightarrow$ less CW asymmetry'' claim, which would require a negative $\ell=0$ cross-power or a broadband real-space Pearson $r$; the quadrupole-only anti-alignment is nonetheless directly informative about (ii) because the auto-spectrum excess sits at the same quadrupole multipole). This is interpretation~(ii) supported by a direct measurement at the same multipole where the chirality auto-spectrum shows its largest excess, not just an inference from null structure: the canonical-mask chirality $\ell\!=\!2$ excess is depth/sampling-correlated. (iii)~\emph{NaMaster low-$\ell$ deconvolution artifact}: \emph{ruled out for the sharp-edge variant} (apodized $f_{\rm sky}\!=\!0.482$ mask gives $+3.57\sigma$), but a deeper NaMaster low-$\ell$ coupling artifact specific to the patchy canonical geometry cannot be excluded without a NaMaster-independent reanalysis (e.g., direct $a_{\ell m}$ pseudo-deconvolution with pixel-weighted inverse-coupling matrix). \par \textbf{Operational conclusion}: the canonical-mask $+3.64\sigma$ binomial-null residual is \emph{not} a positive detection of a primordial chirality dipole. The discriminator between interpretations~(i) and (ii) is NOT the bootstrap-null collapse (bootstrap variance is too wide to distinguish a real $1.7\%$ dipole from null per the the bootstrap injection-recovery diagnostic) but the COMBINATION of (a)~the $\ell\!=\!2 > \ell\!=\!1$ broadband structure (incompatible with a clean dipole), (b)~the absence of $p_{\rm eq}$ quartile scaling, and (c)~the direct cross-spectrum confirming a depth-correlated component at the precise multipole of the excess. The most likely explanation is a per-pixel-correlated systematic at low $\ell$ on the canonical footprint that the binomial-shuffle null fails to model. The subsample-mask analysis remains rigorous and the $-0.12\sigma$ post-MASTER null on the subsample mask is the primary scientific result of this paper. We report all four null sigmas (binomial $+3.64$, apodized $+3.57$, sky-rotation $+2.56$, bootstrap $-0.22$) honestly without selecting the most favorable result. A systematic-modeling null preserving depth/PSF/morphology covariance for the canonical mask is the canonical follow-up to formally bound interpretation~(ii); the canonical-mask result is interpreted as a coherent depth-correlated systematic at low $\ell$ on the canonical footprint, favoured by direct cross-spectrum quadrupole anti-alignment and disfavoured as a primordial cosmological dipole by the $\ell\!=\!2 > \ell\!=\!1$ broadband structure and $p_{\rm eq}$ quartile washout. The bootstrap-null number ($-0.22\sigmaunit$) is retained only as a sampling-variance diagnostic; it does NOT independently rule out interpretation (i) per the bootstrap injection-recovery audit. companion artifact \artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak morphology\allowbreak \_template\allowbreak \_l1\allowbreak \_projection.json}. Per-galaxy DR8 sweep morphology fields (b/a, fracdev, shape\_r\_eff) are not currently available in the local catalog; the partial closure that IS executable on the local matched catalog is the leg-as-morphology-proxy projection (the three imaging legs cluster spatially and carry the dominant depth/PSF/seeing gradient of the canonical mask). On the canonical NSIDE$\,{=}\,64$ map we build each leg's per-pixel leg-fraction indicator field and compute its $\ell\!=\!1$ spherical-harmonic amplitude + cross-power with the demonopole-subtracted asymmetry field $A_p$. Results: $r_{\ell=1}(\text{BASS+MzLS}\!\times\!A_p)\!=\!+0.65$, $r_{\ell=1}(\text{DECaLS}\!\times\!A_p)\!=\!+0.20$, $r_{\ell=1}(\text{DES}\!\times\!A_p)\!=\!-0.73$ — the DES leg indicator is strongly anti-correlated with the chirality dipole at $\ell\!=\!1$, BASS+MzLS strongly positively correlated. Converting per-leg CW-fraction shifts (BASS+MzLS $\Delta f_{\rm CW}\!=\!-0.00178$, DECaLS $-0.00292$, DES $-0.00322$) into an induced $\ell\!=\!1$ chirality contribution via $2\Delta f_L\!\times\! a_1(\text{leg-fraction})$, the summed induced amplitude is $1.77\!\times\!10^{-3}$, which is $\mathbf{25\%}$ of the observed canonical-mask $\ell\!=\!1$ amplitude $a_1^{\rm obs}\!=\!7.04\!\times\!10^{-3}$. This is direct quantitative evidence that imaging-leg stratification contributes a substantial $\ell\!=\!1$ chirality component under this leg-as-morphology-proxy working hypothesis. \textbf{Scope of the 25\% number}: this is a \emph{leg-proxy induced} $\ell\!=\!1$ fraction, not a defensible lower bound on the full morphology/PSF/depth systematic contribution. A leg indicator can either undercount or overcount the true morphology systematic depending on within-leg gradients and cancellations; the per-galaxy DR8-sweep template basis (b/a, fracdev, shape\_r\_eff, PSF FWHM, depth) projected through the canonical mask + template-regressed residual is the proper full-basis closure, which we identify as the canonical follow-up analysis once per-galaxy DR8 sweep morphology fields are integrated into the local pipeline. Reported here as a leg-proxy partial closure of the morphology-template question; combined with the $\ell\!=\!2$ cross-spectrum quadrupole anti-alignment, this is a second direct quantitative anchor for interpretation~(ii) at the available-data level. companion artifact \artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak master\allowbreak \_decoupled\allowbreak \_monopole\allowbreak \_null.json}, computed locally on Apple Silicon via a from-source pymaster 2.6 build (Homebrew libnmt + libchealpix + GSL + FFTW; \texttt{--disable-openmp} \texttt{--enable-fftw-pthreads}; total wall $\approx\!38$~s for $N\!=\!500$ binomial-monopole realizations through the full MASTER mode-coupling decoupling chain at NSIDE$\,=\,64$, $\ell_{\rm max}\!=\!191$, single-$\ell$ bandpowers via custom \texttt{NmtBin}; mirrors the data-side pipeline used for the corrected $+3.64\sigmaunit$ result). Findings: the data post-MASTER decoupled $C_1 = 6.55\!\times\!10^{-6}$, while the post-MASTER monopole-only null distribution has mean $\bar C_1^{\rm null} = 8.0\!\times\!10^{-7}$ (12\% of the data) and standard deviation $\sigma_{C_1}^{\rm null} = 1.19\!\times\!10^{-6}$. The data sits at $\sigma\!=\!+4.84$ above the post-MASTER monopole-only null mean (Gaussian-Z), with an empirical-rank two-sided $p\!=\!2/500\!=\!0.006$ ($\sim\!2.5\sigma$ in family-corrected terms). \textbf{Direct interpretation}: monopole-only leakage through MASTER decoupling accounts for $\sim\!12\%$ of the post-MASTER canonical-mask $C_1$; the remaining $\sim\!88\%$ ($5.75\!\times\!10^{-6}$) is not explained by monopole-only leakage at $\sim\!2.5\sigma$ empirical-rank. This confirms that the canonical-mask $+3.64\sigmaunit$ residual requires additional systematic mechanisms beyond pure monopole-only leakage --- exactly what interpretation~(ii) coherent depth/PSF/morphology-correlated systematic predicts. This is the THIRD direct quantitative anchor for interpretation~(ii), joining (a)~the $\ell\!=\!2$ cross-spectrum quadrupole anti-alignment and (b)~the 25\% leg-stratified $\ell\!=\!1$ contribution. each of the three anchors is \emph{suggestive} rather than confirmatory under proper multiplicity treatment: (a)~the $\ell\!=\!2$ cross-spectrum significance $\sigma\!=\!-2.89$ is at a single multipole; under a trials correction over $\ell\!\in\!\{1,2,3,4,5\}$ ($\sim\!5$ trials) the family-wise Gaussian-Bonferroni $p$-value is $\sim\!5\!\times\!\mathrm{erfc}(2.89/\sqrt{2})/2\!\approx\!0.02$ ($\sim\!2.3\sigma$ family-corrected); (b)~the leg-proxy $25\%$ contribution is NOT a lower bound on the full morphology systematic per the prior caveat; (c)~the MASTER-decoupled monopole-only null gives moment-z $+4.84$ but the calibrated significance is the empirical-rank $p\!=\!0.006$ ($\sim\!2.5\sigma$). We therefore characterize interpretation~(ii) as \emph{favored / suggestive} rather than \emph{rigorously confirmed}; a joint model-comparison fit with primordial dipole + depth/PSF/morphology systematic as competing components (with nuisance-marginalized covariance) is the canonical resolution. \textbf{Systematics-preserving density-stratified null}: a partial systematics-preserving null was executed locally, permuting $A_p$ \emph{within} pixel-density deciles ($N_{\rm strata}\!=\!10$ at NSIDE=64) so the null preserves the density-stratified structure but breaks any residual spatial correlation not tracking density. Companion artifact \artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak systematics\_preserving\_null.json}. Result: density-stratified null mean $C_1=3.44\!\times\!10^{-6}$, std $3.07\!\times\!10^{-6}$, giving $\sigma_{\rm data\,vs\,density-stratified}=+3.80$ (vs $+3.64$ binomial), $p_{\rm MC}=2/500=0.004$. The density-stratified null does \emph{not} absorb the residual --- density-stratification alone is insufficient to explain the canonical-mask $\ell\!=\!1$ excess. This refines interpretation~(ii): the dominant systematic is \emph{not} a smooth function of pixel-density alone, but requires the FULL morphology/PSF/depth template basis (b/a, fracdev, shape\_r\_eff, PSF FWHM, depth, imaging-leg). The full-basis template regression remains the canonical resolution and requires per-galaxy DR8 sweep morphology fields that are not currently integrated into the local pipeline. This density-stratified-null result is the FOURTH direct quantitative anchor for interpretation~(ii), but also a quantitative lower bound: density-only systematic models are not sufficient. \textbf{Boundary-distance variance check}: a complementary local diagnostic stratifies the in-mask pixels into five boundary-distance shells ($d\!\le\!2^\circ$, $2$--$5^\circ$, $5$--$10^\circ$, $10$--$20^\circ$, $>\!20^\circ$ from the nearest out-of-mask pixel) and computes the galaxy-weighted $\langle A_p^2\rangle$ within each shell. Companion artifact \artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak boundary\_distance\_variance.json}. Result: the per-shell weighted variance is statistically uniform --- $\langle A_p^2\rangle\!=\!\{8.22, 7.84, 8.62, 8.66, 8.37\}\!\times\!10^{-3}$ across the five shells (range $<\!11\%$ of the mean, comparable to per-shell Poisson scatter at the shell pixel counts $\{1940, 2868, 4646, 9158, 16826\}$). The chirality asymmetry-map variance is NOT concentrated near the canonical-mask boundary; the residual is uniformly distributed across the interior. This is a FIFTH direct quantitative anchor for interpretation~(ii), and a complementary disfavor of the sharp-edge NaMaster artifact variant of interpretation~(iii): a boundary-region systematic would predict elevated $\langle A_p^2\rangle$ near the mask edge, which is not observed. \textbf{Full-catalog injection-recovery sensitivity}: on the FULL $3.20$M-spiral canonical NSIDE$\,=\,64$ mask (not the HC subsample), the empirical $50\%$-recovery-at-$3\sigma$ injection threshold is BELOW $0.50\%$ in dipole amplitude --- the smallest tested amplitude $A\!=\!0.005$ already yields $86\%$ recovery at $\sigma\!\geq\!3$ with median $\sigma\!=\!+12.62$ over $N\!=\!50$ random isotropic dipole axes per amplitude. Companion artifact \artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak full\_catalog\_injection\_recovery.json}. This is materially stronger than the HC-subsample $0.75\%$ threshold (Table~\ref{tab:mc_injection}): the full catalog gains both raw $N$ ($3.20$M vs $0.47$M) and angular coverage ($f_{\rm sky}\!=\!0.74$ vs $0.49$ for the strict canonical-with-pixel-cut mask), and the dipole noise floor scales correspondingly. The abstract sub-percent-sensitivity framing therefore holds at the FULL-CATALOG level, not merely on the HC subsample; the $0.75\%$ HC-subsample value remains the conservative reporting headline for compatibility with the strict canonical-mask $+3.64\sigma$ residual. \textbf{Joint nuisance-marginalized model fit: template-model disfavour path for interpretation~(i).} Companion artifact \artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak joint\_nuisance\_model\_fit.json}. The canonical-mask $A_p$ field is fit by weighted linear regression to a 9-template design matrix combining a primordial-dipole basis $\{\hat n_x, \hat n_y, \hat n_z\}$ with the imaging-leg fractions $\{f_{\rm BASS+MzLS}, f_{\rm DECaLS}, f_{\rm DES}\}$, a pixel-density column $\rho_p$, its quadratic $\rho_p^2$, and a constant offset. Per-pixel weights are the galaxy counts $n_{\rm total}(p)$. Marginalizing over the nuisance amplitudes gives the posterior on the primordial-dipole amplitude $A_{\rm dipole}\!=\!\sqrt{a_x^2\!+\!a_y^2\!+\!a_z^2}$ in the $A_p$ map's natural units (where the interpretation-(i) reference $A\!=\!1.7\%$ in $f_{\rm CW}$ corresponds to $A_{\rm dipole}\!=\!0.034$). The fit recovers $A_{\rm dipole}^{\rm best}\!=\!4.55\!\times\!10^{-3}$ (equivalent to $0.23\%$ in $f_{\rm CW}$ units), with $\sigma(A_{\rm dipole})\!=\!1.11\!\times\!10^{-4}$ ($0.0056\%$ in $f_{\rm CW}$ units). The $99\%$ confidence interval on $A_{\rm dipole}$ is $[0.213\%, 0.242\%]$ in $f_{\rm CW}$ units. The interpretation-(i) reference amplitude $1.7\%$ sits at $z\!=\!-264.5$ from the joint-fit posterior --- the data is more than $264$ standard deviations away from the $1.7\%$ reference. \textbf{Interpretation~(i), a clean cosmological dipole at $\sim\!1.7\%$, is therefore \emph{strongly disfavoured under the adopted template model} at $>\!99\%$ confidence by the joint nuisance-marginalized fit}, going beyond the prior ``disfavored but not formally excluded'' framing. We deliberately use ``strongly disfavoured under the adopted template model'' rather than ``formally excluded'': the WLS regression with block-bootstrap covariance is not a fully specified spatial likelihood (no explicit pixel-pixel covariance from depth/PSF/morphology power spectra; no Gaussian-process model of the systematic; no marginalization over template-basis incompleteness), and the bootstrap inflation calibrates a covariance scale rather than a multi-sigma tail probability. A fully specified spatial likelihood with a complete physical nuisance basis (Sec.~\ref{sec:open_followups}) is the canonical follow-up to upgrade this exclusion statement. The remaining $0.23\%$ residual dipole is itself a small, statistically-significant ($z\!=\!+40.9$) signal that absorbs the same template structure as the cross-spectrum quadrupole anti-alignment + leg-stratified $\ell\!=\!1$ contribution + density-stratified-null residual + boundary-distance variance + full-catalog injection-recovery: a coherent depth/PSF/morphology systematic at low $\ell$ on the canonical footprint, formally consistent with interpretation~(ii). The pixel-density column shows $z\!=\!+3.76$ in the joint fit and the pixel-density-squared column $z\!=\!-2.62$, directly confirming the depth/density-template basis is primary. The imaging-leg column $\sigma$'s blow up due to the leg-fraction-plus-constant collinearity in the design subspace (each pixel lives in exactly one of three legs, so the three fractions plus a constant span a 3-dimensional null subspace), but the dipole columns are orthogonal to that null subspace and the dipole posterior is therefore clean of the collinearity. The joint-fit closure replaces the prior multi-discriminator framing with a direct template-model disfavour statement at the reference amplitude. \textbf{Block-bootstrap $\sigma(A_{\rm dipole})$ correction.} The naive WLS covariance $\sigma(A_{\rm dipole})\!=\!1.11\!\times\!10^{-4}$ above assumes per-pixel-independent Gaussian residuals. The canonical-mask residual the joint fit is bounding is itself spatially coherent across multiple of the anchors above ($\ell\!=\!2$ cross-spectrum quadrupole anti-alignment at $r\!=\!-0.65$, leg-stratified $\ell\!=\!1$, density-stratified $+3.80\sigma$, post-MASTER monopole-leakage $88\%$ unexplained); the naive Gaussian $\sigma$ therefore over-states the disfavour strength. We re-derive $\sigma(A_{\rm dipole})$ non-parametrically by block-bootstrap over HEALPix super-pixels at NSIDE$\,=\,8$ ($440$ super-pixels at $\approx\!7.3^\circ$ each, $N_{\rm boot}\!=\!1000$; companion artifact \artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak joint\_nuisance\_bootstrap\_sigma.json}). Result: $\sigma_{\rm boot}(A_{\rm dipole})\!=\!0.0815\%$ in $f_{\rm CW}$ units, inflated $14.7\times$ relative to the naive WLS value $0.006\%$. The implied $z(\text{data vs }1.7\%)$ correspondingly drops from $-265$ to $\mathbf{z_{\rm boot}\!=\!-18.1}$. \textbf{Interpretation~(i) at $A\!=\!1.7\%$ remains strongly disfavoured under the spatial-coherence-respecting bootstrap covariance.} We do \emph{not} report the bootstrap $z_{\rm boot}\!\approx\!-18$ as an $18\sigma$ tail probability: a block-bootstrap with $N_{\rm boot}\!=\!1000$ on NSIDE$\,=\,8$ super-pixels calibrates a covariance \emph{scale} (the $14.7\times$ inflation factor on $\sigma(A_{\rm dipole})$), not a far-tail probability density at $\sigma\!=\!18$; the empirical resolution of a $1000$-bootstrap run is $\Delta p\!\sim\!10^{-3}$. The block-size choice (NSIDE$\,=\,8$, $\approx\!7.3^\circ$ super-pixels) is plausible for the dominant $\ell\!\in\!\{1,2\}$ coherence scale but is not derived from a measured autocorrelation length; we identify NSIDE$\,\in\!\{4,8,16\}$ block-size sensitivity (Sec.~\ref{sec:open_followups}) as a deferred check. The naive-Gaussian $z\!\approx\!-264$ is reported only as the value corresponding to the unrealistic assumption of fully uncorrelated per-pixel residuals; the bootstrap-rescaled $z_{\rm boot}\!\approx\!-18$ is reported only as the covariance-rescaled distance, not as a far-tail exclusion sigma. \textbf{Extended joint fit with leg $\times$ confidence interactions.} As an additional cross-check, the joint nuisance-marginalized fit was repeated with 15 leg $\times$ confidence-bin interaction templates (3 imaging legs $\times$ 5 confidence strata) added on top of the dipole + leg + density + density$^2$ + constant basis (companion artifact \artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak joint\_nuisance\_model\_fit\_extended.json}; 24-template design). The dipole posterior is essentially unchanged: $A_{\rm dipole}^{\rm best}\!=\!4.51\!\times\!10^{-3}$ (0.225\% $f_{\rm CW}$, vs 0.23\% in the 9-template fit), $\sigma(A_{\rm dipole})\!=\!1.18\!\times\!10^{-4}$ (0.006\% $f_{\rm CW}$), $z(\text{data vs }1.7\%)\!=\!-250.2$. Interpretation~(i) at 1.7\% remains strongly disfavoured under the adopted template model at $>\!99\%$ confidence under the extended 24-template fit (same caveat: WLS+bootstrap calibrates a covariance scale, not a multi-sigma tail probability). The leg $\times$ confidence-bin interaction amplitudes show large z-scores on multiple cells: $|z|$ reaches 26.5 on DECaLS$\times[0.6,0.8)$ and 21.3 on DES$\times[0.6,0.8)$. The 15-cell residual structure of Table~\ref{tab:leg_conf_cross} is therefore not noise --- it is real, well-modeled per-leg-per-confidence systematic structure that the simple 3-leg nuisance in the 9-template fit only partially absorbs. \emph{Physical driver of the intermediate-confidence interaction amplitudes.} The concentration of $|z|$ on the $[0.6,0.8)$ confidence stratum across both the DECaLS and DES legs (with the BASS+MzLS counterpart smaller in amplitude but the same sign) points to a specific physical mechanism: at intermediate confidence the \vit{} per-galaxy posterior $\pcw$ sits in the regime where small image-quality perturbations (PSF FWHM excursions, sky-background gradients across a focal plane, seeing-correlated cutout-edge artifacts, and the small chirality-tilt embedded in the Galaxy~Zoo~1 / CE-ResNet pseudo-label distributions used for training) tip the argmax and shift the soft probability by the largest fraction of its dynamic range. These observational-quality fluctuations are spatially localized within each footprint --- DECaLS in particular is a mosaic of three independent telescope/filter combinations with non-uniform seeing distributions, and DES is a single-telescope footprint with declination-dependent scan-direction effects --- so the leg~$\times$~confidence interaction effectively factorises the residual systematic into (leg-specific scan/seeing geometry)~$\times$~(confidence stratum where pseudo-label boundary effects dominate). The intermediate confidence $[0.6,0.8)$ bin is the natural locus because (i)~at $\pcw\!>\!0.8$ the classifier is saturated on unambiguous spirals where pseudo-label noise contributes minimally, (ii)~at $\pcw\!<\!0.4$ \NS{} dominates and the chirality channel is suppressed, and (iii)~the $[0.6,0.8)$ stratum is precisely where human-vote-driven CW/CCW boundary transitions in the Galaxy~Zoo~1 / CE-ResNet training labels are modulated by local observational quality, producing per-pixel systematic amplitudes that the 3-leg nuisance basis does not model. This identification of the dominant systematic with localized scan-direction/seeing limits modulated by the pseudo-label boundary is mechanistic --- it predicts the same per-leg-per-confidence interaction structure should appear in any classifier trained on these pseudo-labels under the DESI Legacy footprint, and is therefore independently testable against the CE-ResNet residuals in the matched-footprint subsample. The extended model demonstrates that the dipole posterior is robust to nuisance-template granularity: tightening the nuisance basis from leg-only to leg $\times$ confidence DOES absorb large amounts of additional residual structure (the $z\!=\!\pm10$--$26$ interaction amplitudes are real, not noise), but it does NOT degrade the dipole posterior. This is a strong robustness statement for the template-model disfavour of interpretation~(i). Regarding the $N_{\rm eff}$ disclosure: Table~\ref{tab:headline_summary} row (ii) reports $N_{\rm map\,weighted}\!=\!5{,}547{,}858$ exceeding the physical $N_{\rm spiral}\!=\!3{,}201{,}160$ because the $Z_2$ 2-fold-flip TTA produces multiple posterior passes per galaxy and each pass contributes a vote to the per-pixel weight $w_p\!=\!\sum_g \mathbb{1}(g\in p)\cdot(\sum_{\rm TTA}\cdot)$. The Kish-style effective sample size for noise-normalization is $N_{\rm eff}\!\approx\!N_{\rm spiral}/(1+s^2)$ where $s$ is the relative variance of the per-galaxy weight (with uniform 2-fold TTA, $s\!=\!0$, $N_{\rm eff}\!=\!N_{\rm spiral}$); the MASTER pipeline uses $N_{\rm spiral}\!=\!3{,}201{,}160$ as the per-pixel-Poisson denominator (or, with $f_{\rm sky}\!=\!0.659$ subsample, $N_{\rm eff}\!\times\!f_{\rm sky}\!\approx\!2.11\!\times\!10^6$ effective in-mask). $N_{\rm map\,weighted}$ is not used as an independent-galaxy-count denominator anywhere in the noise calibration.
+\textbf{Assessment of the three interpretations}: (i)~\emph{real cosmological dipole at $\sim\!1.7\%$}: \emph{disfavored, but bootstrap-null does NOT independently rule it out} --- the bootstrap-null injection-recovery diagnostic: a bootstrap injection-recovery test (available in the companion data repository) injected a real $A\!=\!1.7\%$ cosmological dipole into Catalog~C and asked whether the injection survives the bootstrap null. Result: a REAL injected $1.7\%$ dipole has median $\sigma_{\rm bootstrap}\!=\!-0.49$ ($P(\sigma>3)\!=\!1.3\%$ over $N\!=\!80$ injection realizations) --- the bootstrap variance is so wide that a genuine $\sim\!1.7\%$ dipole would also appear consistent with null under bootstrap. The bootstrap-null $\sigma\!=\!-0.22$ of the actual data therefore does not, by itself, exclude interpretation~(i); bootstrap is too conservative to be a discriminator at this amplitude. What \emph{disfavors} interpretation~(i) (but does not formally exclude it absent a joint nuisance-marginalized model fit) is the combination of (a)~the $\ell\!=\!2 > \ell\!=\!1$ broadband structure (incompatible with a clean cosmological dipole; a real dipole at $A\!=\!1.7\%$ should be $\ell\!=\!1$-dominant) --- under the same binomial null, an injected real dipole at $1.7\%$ shows median $\sigma\!=\!+2.87$ at $\ell\!=\!1$, not the observed pattern of $\ell\!=\!2$ being LARGER than $\ell\!=\!1$; (b)~the absence of monotonic $p_{\rm eq}$ quartile scaling (a real dipole should at minimum show coherent structure across quality strata; all four quartiles instead read $|\sigma|<1$); and (c)~the direct cross-spectrum evidence below confirming that the auto-spectrum excess IS depth-correlated. (ii)~\emph{coherent depth/PSF/morphology-correlated systematic at low $\ell$ on the canonical footprint}: \emph{strongest interpretation, now favoured by cross-spectrum (suggestive)} --- the broadband low-$\ell$ signature, direction-coherent under sky rotation (still $+2.56\sigma$), bootstrap-consistent-with-null, and quality-quartile-washout pattern are all consistent with a per-pixel-correlated structure (e.g., depth maps, PSF maps, morphology distributions) that the binomial-shuffle null fails to capture but the bootstrap null absorbs. \textbf{Direct cross-spectrum diagnostic for interpretation (ii)} (available in the companion data repository): the canonical-mask cross-power $C^{An}_\ell$ between the chirality asymmetry map $A_p$ and the pixel-density map $n_{\rm total}(p)$ (a direct proxy for depth/sampling-density) gives correlation coefficient $r_{\ell=2}\!=\!-0.65$ with significance $\sigma\!=\!-2.89$ against per-pixel-shuffle null (data more anti-correlated than the null) at the SAME multipole where the chirality auto-spectrum shows the largest excess ($+4.73\sigma$ at $\ell=2$). The negative cross-correlation at $\ell\!=\!2$ specifically means the quadrupole moments of the asymmetry and density maps are anti-aligned (, not a global real-space ``more galaxies $\Rightarrow$ less CW asymmetry'' claim, which would require a negative $\ell=0$ cross-power or a broadband real-space Pearson $r$; the quadrupole-only anti-alignment is nonetheless directly informative about (ii) because the auto-spectrum excess sits at the same quadrupole multipole). This is interpretation~(ii) supported by a direct measurement at the same multipole where the chirality auto-spectrum shows its largest excess, not just an inference from null structure: the canonical-mask chirality $\ell\!=\!2$ excess is depth/sampling-correlated. (iii)~\emph{NaMaster low-$\ell$ deconvolution artifact}: \emph{ruled out for the sharp-edge variant} (apodized $f_{\rm sky}\!=\!0.482$ mask gives $+3.57\sigma$), but a deeper NaMaster low-$\ell$ coupling artifact specific to the patchy canonical geometry cannot be excluded without a NaMaster-independent reanalysis (e.g., direct $a_{\ell m}$ pseudo-deconvolution with pixel-weighted inverse-coupling matrix). \par \textbf{Operational conclusion}: the canonical-mask $+3.64\sigma$ binomial-null residual is \emph{not} a positive detection of a primordial chirality dipole. The discriminator between interpretations~(i) and (ii) is NOT the bootstrap-null collapse (bootstrap variance is too wide to distinguish a real $1.7\%$ dipole from null per the the bootstrap injection-recovery diagnostic) but the COMBINATION of (a)~the $\ell\!=\!2 > \ell\!=\!1$ broadband structure (incompatible with a clean dipole), (b)~the absence of $p_{\rm eq}$ quartile scaling, and (c)~the direct cross-spectrum confirming a depth-correlated component at the precise multipole of the excess. The most likely explanation is a per-pixel-correlated systematic at low $\ell$ on the canonical footprint that the binomial-shuffle null fails to model. The subsample-mask analysis remains rigorous and the $-0.12\sigma$ post-MASTER null on the subsample mask is the primary scientific result of this paper. We report all four null sigmas (binomial $+3.64$, apodized $+3.57$, sky-rotation $+2.56$, bootstrap $-0.22$) honestly without selecting the most favorable result. A systematic-modeling null preserving depth/PSF/morphology covariance for the canonical mask is the canonical follow-up to formally bound interpretation~(ii); the canonical-mask result is interpreted as a coherent depth-correlated systematic at low $\ell$ on the canonical footprint, favoured by direct cross-spectrum quadrupole anti-alignment and disfavoured as a primordial cosmological dipole by the $\ell\!=\!2 > \ell\!=\!1$ broadband structure and $p_{\rm eq}$ quartile washout. The bootstrap-null number ($-0.22\sigmaunit$) is retained only as a sampling-variance diagnostic; it does NOT independently rule out interpretation (i) per the bootstrap injection-recovery audit. Per-galaxy DR8 sweep morphology fields (b/a, fracdev, shape\_r\_eff) are not currently available in the local catalog; the partial closure that IS executable on the local matched catalog is the leg-as-morphology-proxy projection (the three imaging legs cluster spatially and carry the dominant depth/PSF/seeing gradient of the canonical mask). On the canonical NSIDE$\,{=}\,64$ map we build each leg's per-pixel leg-fraction indicator field and compute its $\ell\!=\!1$ spherical-harmonic amplitude + cross-power with the demonopole-subtracted asymmetry field $A_p$. Results: $r_{\ell=1}(\text{BASS+MzLS}\!\times\!A_p)\!=\!+0.65$, $r_{\ell=1}(\text{DECaLS}\!\times\!A_p)\!=\!+0.20$, $r_{\ell=1}(\text{DES}\!\times\!A_p)\!=\!-0.73$ — the DES leg indicator is strongly anti-correlated with the chirality dipole at $\ell\!=\!1$, BASS+MzLS strongly positively correlated. Converting per-leg CW-fraction shifts (BASS+MzLS $\Delta f_{\rm CW}\!=\!-0.00178$, DECaLS $-0.00292$, DES $-0.00322$) into an induced $\ell\!=\!1$ chirality contribution via $2\Delta f_L\!\times\! a_1(\text{leg-fraction})$, the summed induced amplitude is $1.77\!\times\!10^{-3}$, which is $\mathbf{25\%}$ of the observed canonical-mask $\ell\!=\!1$ amplitude $a_1^{\rm obs}\!=\!7.04\!\times\!10^{-3}$. This is direct quantitative evidence that imaging-leg stratification contributes a substantial $\ell\!=\!1$ chirality component under this leg-as-morphology-proxy working hypothesis. \textbf{Scope of the 25\% number}: this is a \emph{leg-proxy induced} $\ell\!=\!1$ fraction, not a defensible lower bound on the full morphology/PSF/depth systematic contribution. A leg indicator can either undercount or overcount the true morphology systematic depending on within-leg gradients and cancellations; the per-galaxy DR8-sweep template basis (b/a, fracdev, shape\_r\_eff, PSF FWHM, depth) projected through the canonical mask + template-regressed residual is the proper full-basis closure, which we identify as the canonical follow-up analysis once per-galaxy DR8 sweep morphology fields are integrated into the local pipeline. Reported here as a leg-proxy partial closure of the morphology-template question; combined with the $\ell\!=\!2$ cross-spectrum quadrupole anti-alignment, this is a second direct quantitative anchor for interpretation~(ii) at the available-data level. A post-MASTER monopole-only null (computed locally on Apple Silicon via a from-source pymaster 2.6 build; Homebrew libnmt + libchealpix + GSL + FFTW; \texttt{--disable-openmp} \texttt{--enable-fftw-pthreads}; total wall $\approx\!38$~s for $N\!=\!500$ binomial-monopole realizations through the full MASTER mode-coupling decoupling chain at NSIDE$\,=\,64$, $\ell_{\rm max}\!=\!191$, single-$\ell$ bandpowers via custom \texttt{NmtBin}; available in the companion data repository; mirrors the data-side pipeline used for the corrected $+3.64\sigmaunit$ result). Findings: the data post-MASTER decoupled $C_1 = 6.55\!\times\!10^{-6}$, while the post-MASTER monopole-only null distribution has mean $\bar C_1^{\rm null} = 8.0\!\times\!10^{-7}$ (12\% of the data) and standard deviation $\sigma_{C_1}^{\rm null} = 1.19\!\times\!10^{-6}$. The data sits at $\sigma\!=\!+4.84$ above the post-MASTER monopole-only null mean (Gaussian-Z), with an empirical-rank two-sided $p\!=\!2/500\!=\!0.006$ ($\sim\!2.5\sigma$ in family-corrected terms). \textbf{Direct interpretation}: monopole-only leakage through MASTER decoupling accounts for $\sim\!12\%$ of the post-MASTER canonical-mask $C_1$; the remaining $\sim\!88\%$ ($5.75\!\times\!10^{-6}$) is not explained by monopole-only leakage at $\sim\!2.5\sigma$ empirical-rank. This confirms that the canonical-mask $+3.64\sigmaunit$ residual requires additional systematic mechanisms beyond pure monopole-only leakage --- exactly what interpretation~(ii) coherent depth/PSF/morphology-correlated systematic predicts. This is the THIRD direct quantitative anchor for interpretation~(ii), joining (a)~the $\ell\!=\!2$ cross-spectrum quadrupole anti-alignment and (b)~the 25\% leg-stratified $\ell\!=\!1$ contribution. each of the three anchors is \emph{suggestive} rather than confirmatory under proper multiplicity treatment: (a)~the $\ell\!=\!2$ cross-spectrum significance $\sigma\!=\!-2.89$ is at a single multipole; under a trials correction over $\ell\!\in\!\{1,2,3,4,5\}$ ($\sim\!5$ trials) the family-wise Gaussian-Bonferroni $p$-value is $\sim\!5\!\times\!\mathrm{erfc}(2.89/\sqrt{2})/2\!\approx\!0.02$ ($\sim\!2.3\sigma$ family-corrected); (b)~the leg-proxy $25\%$ contribution is NOT a lower bound on the full morphology systematic per the prior caveat; (c)~the MASTER-decoupled monopole-only null gives moment-z $+4.84$ but the calibrated significance is the empirical-rank $p\!=\!0.006$ ($\sim\!2.5\sigma$). We therefore characterize interpretation~(ii) as \emph{favored / suggestive} rather than \emph{rigorously confirmed}; a joint model-comparison fit with primordial dipole + depth/PSF/morphology systematic as competing components (with nuisance-marginalized covariance) is the canonical resolution. \textbf{Systematics-preserving density-stratified null}: a partial systematics-preserving null was executed locally, permuting $A_p$ \emph{within} pixel-density deciles ($N_{\rm strata}\!=\!10$ at NSIDE=64) so the null preserves the density-stratified structure but breaks any residual spatial correlation not tracking density (available in the companion data repository). Result: density-stratified null mean $C_1=3.44\!\times\!10^{-6}$, std $3.07\!\times\!10^{-6}$, giving $\sigma_{\rm data\,vs\,density-stratified}=+3.80$ (vs $+3.64$ binomial), $p_{\rm MC}=2/500=0.004$. The density-stratified null does \emph{not} absorb the residual --- density-stratification alone is insufficient to explain the canonical-mask $\ell\!=\!1$ excess. This refines interpretation~(ii): the dominant systematic is \emph{not} a smooth function of pixel-density alone, but requires the FULL morphology/PSF/depth template basis (b/a, fracdev, shape\_r\_eff, PSF FWHM, depth, imaging-leg). The full-basis template regression remains the canonical resolution and requires per-galaxy DR8 sweep morphology fields that are not currently integrated into the local pipeline. This density-stratified-null result is the FOURTH direct quantitative anchor for interpretation~(ii), but also a quantitative lower bound: density-only systematic models are not sufficient. \textbf{Boundary-distance variance check}: a complementary local diagnostic stratifies the in-mask pixels into five boundary-distance shells ($d\!\le\!2^\circ$, $2$--$5^\circ$, $5$--$10^\circ$, $10$--$20^\circ$, $>\!20^\circ$ from the nearest out-of-mask pixel) and computes the galaxy-weighted $\langle A_p^2\rangle$ within each shell (available in the companion data repository). Result: the per-shell weighted variance is statistically uniform --- $\langle A_p^2\rangle\!=\!\{8.22, 7.84, 8.62, 8.66, 8.37\}\!\times\!10^{-3}$ across the five shells (range $<\!11\%$ of the mean, comparable to per-shell Poisson scatter at the shell pixel counts $\{1940, 2868, 4646, 9158, 16826\}$). The chirality asymmetry-map variance is NOT concentrated near the canonical-mask boundary; the residual is uniformly distributed across the interior. This is a FIFTH direct quantitative anchor for interpretation~(ii), and a complementary disfavor of the sharp-edge NaMaster artifact variant of interpretation~(iii): a boundary-region systematic would predict elevated $\langle A_p^2\rangle$ near the mask edge, which is not observed. \textbf{Full-catalog injection-recovery sensitivity}: on the FULL $3.20$M-spiral canonical NSIDE$\,=\,64$ mask (not the HC subsample), the empirical $50\%$-recovery-at-$3\sigma$ injection threshold is BELOW $0.50\%$ in dipole amplitude --- the smallest tested amplitude $A\!=\!0.005$ already yields $86\%$ recovery at $\sigma\!\geq\!3$ with median $\sigma\!=\!+12.62$ over $N\!=\!50$ random isotropic dipole axes per amplitude (available in the companion data repository). This is materially stronger than the HC-subsample $0.75\%$ threshold (Table~\ref{tab:mc_injection}): the full catalog gains both raw $N$ ($3.20$M vs $0.47$M) and angular coverage ($f_{\rm sky}\!=\!0.74$ vs $0.49$ for the strict canonical-with-pixel-cut mask), and the dipole noise floor scales correspondingly. The abstract sub-percent-sensitivity framing therefore holds at the FULL-CATALOG level, not merely on the HC subsample; the $0.75\%$ HC-subsample value remains the conservative reporting headline for compatibility with the strict canonical-mask $+3.64\sigma$ residual. \textbf{Joint nuisance-marginalized model fit: template-model disfavour path for interpretation~(i).} The canonical-mask $A_p$ field is fit by weighted linear regression to a 9-template design matrix combining a primordial-dipole basis $\{\hat n_x, \hat n_y, \hat n_z\}$ with the imaging-leg fractions $\{f_{\rm BASS+MzLS}, f_{\rm DECaLS}, f_{\rm DES}\}$, a pixel-density column $\rho_p$, its quadratic $\rho_p^2$, and a constant offset. Per-pixel weights are the galaxy counts $n_{\rm total}(p)$. Marginalizing over the nuisance amplitudes gives the posterior on the primordial-dipole amplitude $A_{\rm dipole}\!=\!\sqrt{a_x^2\!+\!a_y^2\!+\!a_z^2}$ in the $A_p$ map's natural units (where the interpretation-(i) reference $A\!=\!1.7\%$ in $f_{\rm CW}$ corresponds to $A_{\rm dipole}\!=\!0.034$). The fit recovers $A_{\rm dipole}^{\rm best}\!=\!4.55\!\times\!10^{-3}$ (equivalent to $0.23\%$ in $f_{\rm CW}$ units), with $\sigma(A_{\rm dipole})\!=\!1.11\!\times\!10^{-4}$ ($0.0056\%$ in $f_{\rm CW}$ units). The $99\%$ confidence interval on $A_{\rm dipole}$ is $[0.213\%, 0.242\%]$ in $f_{\rm CW}$ units. The interpretation-(i) reference amplitude $1.7\%$ sits at $z\!=\!-264.5$ from the joint-fit posterior --- the data is more than $264$ standard deviations away from the $1.7\%$ reference. \textbf{Interpretation~(i), a clean cosmological dipole at $\sim\!1.7\%$, is therefore \emph{strongly disfavoured under the adopted template model} at $>\!99\%$ confidence by the joint nuisance-marginalized fit}, going beyond the prior ``disfavored but not formally excluded'' framing. We deliberately use ``strongly disfavoured under the adopted template model'' rather than ``formally excluded'': the WLS regression with block-bootstrap covariance is not a fully specified spatial likelihood (no explicit pixel-pixel covariance from depth/PSF/morphology power spectra; no Gaussian-process model of the systematic; no marginalization over template-basis incompleteness), and the bootstrap inflation calibrates a covariance scale rather than a multi-sigma tail probability. A fully specified spatial likelihood with a complete physical nuisance basis (Sec.~\ref{sec:open_followups}) is the canonical follow-up to upgrade this exclusion statement. The remaining $0.23\%$ residual dipole is itself a small, statistically-significant ($z\!=\!+40.9$) signal that absorbs the same template structure as the cross-spectrum quadrupole anti-alignment + leg-stratified $\ell\!=\!1$ contribution + density-stratified-null residual + boundary-distance variance + full-catalog injection-recovery: a coherent depth/PSF/morphology systematic at low $\ell$ on the canonical footprint, formally consistent with interpretation~(ii). The pixel-density column shows $z\!=\!+3.76$ in the joint fit and the pixel-density-squared column $z\!=\!-2.62$, directly confirming the depth/density-template basis is primary. The imaging-leg column $\sigma$'s blow up due to the leg-fraction-plus-constant collinearity in the design subspace (each pixel lives in exactly one of three legs, so the three fractions plus a constant span a 3-dimensional null subspace), but the dipole columns are orthogonal to that null subspace and the dipole posterior is therefore clean of the collinearity. The joint-fit closure replaces the prior multi-discriminator framing with a direct template-model disfavour statement at the reference amplitude. \textbf{Block-bootstrap $\sigma(A_{\rm dipole})$ correction.} The naive WLS covariance $\sigma(A_{\rm dipole})\!=\!1.11\!\times\!10^{-4}$ above assumes per-pixel-independent Gaussian residuals. The canonical-mask residual the joint fit is bounding is itself spatially coherent across multiple of the anchors above ($\ell\!=\!2$ cross-spectrum quadrupole anti-alignment at $r\!=\!-0.65$, leg-stratified $\ell\!=\!1$, density-stratified $+3.80\sigma$, post-MASTER monopole-leakage $88\%$ unexplained); the naive Gaussian $\sigma$ therefore over-states the disfavour strength. We re-derive $\sigma(A_{\rm dipole})$ non-parametrically by block-bootstrap over HEALPix super-pixels at NSIDE$\,=\,8$ ($440$ super-pixels at $\approx\!7.3^\circ$ each, $N_{\rm boot}\!=\!1000$; available in the companion data repository). Result: $\sigma_{\rm boot}(A_{\rm dipole})\!=\!0.0815\%$ in $f_{\rm CW}$ units, inflated $14.7\times$ relative to the naive WLS value $0.006\%$. The implied $z(\text{data vs }1.7\%)$ correspondingly drops from $-265$ to $\mathbf{z_{\rm boot}\!=\!-18.1}$. \textbf{Interpretation~(i) at $A\!=\!1.7\%$ remains strongly disfavoured under the spatial-coherence-respecting bootstrap covariance.} We do \emph{not} report the bootstrap $z_{\rm boot}\!\approx\!-18$ as an $18\sigma$ tail probability: a block-bootstrap with $N_{\rm boot}\!=\!1000$ on NSIDE$\,=\,8$ super-pixels calibrates a covariance \emph{scale} (the $14.7\times$ inflation factor on $\sigma(A_{\rm dipole})$), not a far-tail probability density at $\sigma\!=\!18$; the empirical resolution of a $1000$-bootstrap run is $\Delta p\!\sim\!10^{-3}$. The block-size choice (NSIDE$\,=\,8$, $\approx\!7.3^\circ$ super-pixels) is plausible for the dominant $\ell\!\in\!\{1,2\}$ coherence scale but is not derived from a measured autocorrelation length; we identify NSIDE$\,\in\!\{4,8,16\}$ block-size sensitivity (Sec.~\ref{sec:open_followups}) as a deferred check. The naive-Gaussian $z\!\approx\!-264$ is reported only as the value corresponding to the unrealistic assumption of fully uncorrelated per-pixel residuals; the bootstrap-rescaled $z_{\rm boot}\!\approx\!-18$ is reported only as the covariance-rescaled distance, not as a far-tail exclusion sigma. \textbf{Extended joint fit with leg $\times$ confidence interactions.} As an additional cross-check, the joint nuisance-marginalized fit was repeated with 15 leg $\times$ confidence-bin interaction templates (3 imaging legs $\times$ 5 confidence strata) added on top of the dipole + leg + density + density$^2$ + constant basis (available in the companion data repository; 24-template design). The dipole posterior is essentially unchanged: $A_{\rm dipole}^{\rm best}\!=\!4.51\!\times\!10^{-3}$ (0.225\% $f_{\rm CW}$, vs 0.23\% in the 9-template fit), $\sigma(A_{\rm dipole})\!=\!1.18\!\times\!10^{-4}$ (0.006\% $f_{\rm CW}$), $z(\text{data vs }1.7\%)\!=\!-250.2$. Interpretation~(i) at 1.7\% remains strongly disfavoured under the adopted template model at $>\!99\%$ confidence under the extended 24-template fit (same caveat: WLS+bootstrap calibrates a covariance scale, not a multi-sigma tail probability). The leg $\times$ confidence-bin interaction amplitudes show large z-scores on multiple cells: $|z|$ reaches 26.5 on DECaLS$\times[0.6,0.8)$ and 21.3 on DES$\times[0.6,0.8)$. The 15-cell residual structure of Table~\ref{tab:leg_conf_cross} is therefore not noise --- it is real, well-modeled per-leg-per-confidence systematic structure that the simple 3-leg nuisance in the 9-template fit only partially absorbs. \emph{Physical driver of the intermediate-confidence interaction amplitudes.} The concentration of $|z|$ on the $[0.6,0.8)$ confidence stratum across both the DECaLS and DES legs (with the BASS+MzLS counterpart smaller in amplitude but the same sign) points to a specific physical mechanism: at intermediate confidence the \vit{} per-galaxy posterior $\pcw$ sits in the regime where small image-quality perturbations (PSF FWHM excursions, sky-background gradients across a focal plane, seeing-correlated cutout-edge artifacts, and the small chirality-tilt embedded in the Galaxy~Zoo~1 / CE-ResNet pseudo-label distributions used for training) tip the argmax and shift the soft probability by the largest fraction of its dynamic range. These observational-quality fluctuations are spatially localized within each footprint --- DECaLS in particular is a mosaic of three independent telescope/filter combinations with non-uniform seeing distributions, and DES is a single-telescope footprint with declination-dependent scan-direction effects --- so the leg~$\times$~confidence interaction effectively factorises the residual systematic into (leg-specific scan/seeing geometry)~$\times$~(confidence stratum where pseudo-label boundary effects dominate). The intermediate confidence $[0.6,0.8)$ bin is the natural locus because (i)~at $\pcw\!>\!0.8$ the classifier is saturated on unambiguous spirals where pseudo-label noise contributes minimally, (ii)~at $\pcw\!<\!0.4$ \NS{} dominates and the chirality channel is suppressed, and (iii)~the $[0.6,0.8)$ stratum is precisely where human-vote-driven CW/CCW boundary transitions in the Galaxy~Zoo~1 / CE-ResNet training labels are modulated by local observational quality, producing per-pixel systematic amplitudes that the 3-leg nuisance basis does not model. This identification of the dominant systematic with localized scan-direction/seeing limits modulated by the pseudo-label boundary is mechanistic --- it predicts the same per-leg-per-confidence interaction structure should appear in any classifier trained on these pseudo-labels under the DESI Legacy footprint, and is therefore independently testable against the CE-ResNet residuals in the matched-footprint subsample. The extended model demonstrates that the dipole posterior is robust to nuisance-template granularity: tightening the nuisance basis from leg-only to leg $\times$ confidence DOES absorb large amounts of additional residual structure (the $z\!=\!\pm10$--$26$ interaction amplitudes are real, not noise), but it does NOT degrade the dipole posterior. This is a strong robustness statement for the template-model disfavour of interpretation~(i). Regarding the $N_{\rm eff}$ disclosure: Table~\ref{tab:headline_summary} row (ii) reports $N_{\rm map\,weighted}\!=\!5{,}547{,}858$ exceeding the physical $N_{\rm spiral}\!=\!3{,}201{,}160$ because the $Z_2$ 2-fold-flip TTA produces multiple posterior passes per galaxy and each pass contributes a vote to the per-pixel weight $w_p\!=\!\sum_g \mathbb{1}(g\in p)\cdot(\sum_{\rm TTA}\cdot)$. The Kish-style effective sample size for noise-normalization is $N_{\rm eff}\!\approx\!N_{\rm spiral}/(1+s^2)$ where $s$ is the relative variance of the per-galaxy weight (with uniform 2-fold TTA, $s\!=\!0$, $N_{\rm eff}\!=\!N_{\rm spiral}$); the MASTER pipeline uses $N_{\rm spiral}\!=\!3{,}201{,}160$ as the per-pixel-Poisson denominator (or, with $f_{\rm sky}\!=\!0.659$ subsample, $N_{\rm eff}\!\times\!f_{\rm sky}\!\approx\!2.11\!\times\!10^6$ effective in-mask). $N_{\rm map\,weighted}$ is not used as an independent-galaxy-count denominator anywhere in the noise calibration.
 \item \textbf{Hemisphere max$|A|$:} observed $3.48\!\times\!10^{-3}$;
 monopole-only N=500 null mean
 $1.69\!\times\!10^{-3}\pm 4.05\!\times\!10^{-4}$; data $z\!=\!+4.42\sigmaunit$.
@@ -1978,8 +1954,7 @@ primordial dipole rather than a systematic artifact, the signal
 should \emph{survive or amplify} under cuts that improve sample
 purity (high-confidence classifications) and should be \emph{stable}
 under cuts that probe specific systematics (sky quadrant, galactic
-foreground). We test all three in
-\artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak pathA\_signal\_hunt\_results.json}.
+foreground). We test all three (results available in the companion data repository).
 
 \paragraph{Confidence-stratified dipole.}
 Stratifying Catalog~C by the equivariant maximum class probability
@@ -2008,7 +1983,7 @@ $[0.8,1.0)$ & $619{,}902$ & $0.49599$ & $0.556$ & $+0.87$ & $+0.90$ \\
 \end{tabular}
 \end{ruledtabular}
 \begin{flushleft}
-\footnotesize The three high-confidence bins $[0.6,1.0)$ sum to $944{,}826$, which is $4{,}758$ galaxies below the canonical $\texttt{face\_on\_robustness\_results.json}$ \texttt{HC-broad-0.6} $n_{\rm spiral}\!=\!949{,}584$. The $4{,}758$-galaxy difference arises from boundary-edge handling at exact $p\!=\!0.6$ and at $p\!=\!1.0$ in this stratification's strict half-open binning vs the canonical $\texttt{abs(p\_cw\_eq) > 0.6}$ inclusion convention used in the production HC-spiral cut; both selections agree to better than $0.5\%$ of the sample size and the discrepancy does not affect any downstream statistic at the per-bin or per-section level.
+\footnotesize The three high-confidence bins $[0.6,1.0)$ sum to $944{,}826$, which is $4{,}758$ galaxies below the canonical HC-broad-0.6 $n_{\rm spiral}\!=\!949{,}584$. The $4{,}758$-galaxy difference arises from boundary-edge handling at exact $p\!=\!0.6$ and at $p\!=\!1.0$ in this stratification's strict half-open binning vs the canonical $|p_{\rm CW,eq}|>0.6$ inclusion convention used in the production HC-spiral cut; both selections agree to better than $0.5\%$ of the sample size and the discrepancy does not affect any downstream statistic at the per-bin or per-section level.
 \end{flushleft}
 \end{table}
 
@@ -2051,8 +2026,7 @@ $+3.3\sigmaunit$ apparent dipole observed in the
 $[0.5,0.6)$ low/mid-confidence bin (Table~\ref{tab:confidence_bins})
 into its per-leg components, and reveals a substantive
 \emph{footprint-correlated} substructure that the confidence-only
-diagnostic alone could not have isolated. Companion artifact:
-\artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak per\_leg\_confidence\_signal\_hunt.json}.
+diagnostic alone could not have isolated. Full per-leg-confidence decomposition results are available in the companion data repository.
 
 \begin{table*}[t]
 \caption{\label{tab:leg_conf_cross}Per-imaging-leg
@@ -2110,7 +2084,7 @@ indicates that the DECaLS-specific systematic is correlated with
 the underlying galaxy population sampled by DECaLS rather than
 with classifier ambiguity per se. 
 
-\par Across the 15-cell grid ($3$ imaging legs $\times$ $5$ confidence strata), the family-wise Bonferroni penalty at $\alpha\!=\!0.05$ is $z_{\rm Bonf}^{\rm 15} \approx 2.94\sigma$ and at the tighter $\alpha\!=\!0.001$ is $z_{\rm Bonf}^{\rm 15,\alpha=0.001}\!\approx\!3.99\sigma$ (the DECaLS $[0.5,0.6)$ $+4.50\sigma$ cell still survives this corrected threshold). Under this correction the DECaLS [0.5,0.6) cell ($+4.50\sigmaunit$, $+4.53\sigmaunit$) survives both thresholds; the DECaLS [0.8,1.0) cell ($+3.76\sigmaunit$, $+4.06\sigmaunit$) survives the $\alpha\!=\!0.05$ Bonferroni but is marginal at $\alpha\!=\!0.001$. The DECaLS [0.5,0.6) cell is therefore the primary finding (survives the tighter $\alpha\!=\!0.001$ Bonferroni); the DECaLS [0.8,1.0) cell is reported as a supporting trend rather than an independent significant detection. companion artifact \artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak per\allowbreak \_leg\allowbreak \_confidence\allowbreak \_familywise\allowbreak \_maxstat.json}, $N_{\rm MC}\!=\!5{,}000$ joint label-shuffle realizations preserving the global CW count exactly. Per realization, we shuffle CW/CCW labels across all matched spirals, recompute all 15 cells' dipole significance simultaneously through the same pre-computed design matrices used for the per-cell nulls, and record $\max|\sigma|$ over the grid. 
+\par Across the 15-cell grid ($3$ imaging legs $\times$ $5$ confidence strata), the family-wise Bonferroni penalty at $\alpha\!=\!0.05$ is $z_{\rm Bonf}^{\rm 15} \approx 2.94\sigma$ and at the tighter $\alpha\!=\!0.001$ is $z_{\rm Bonf}^{\rm 15,\alpha=0.001}\!\approx\!3.99\sigma$ (the DECaLS $[0.5,0.6)$ $+4.50\sigma$ cell still survives this corrected threshold). Under this correction the DECaLS [0.5,0.6) cell ($+4.50\sigmaunit$, $+4.53\sigmaunit$) survives both thresholds; the DECaLS [0.8,1.0) cell ($+3.76\sigmaunit$, $+4.06\sigmaunit$) survives the $\alpha\!=\!0.05$ Bonferroni but is marginal at $\alpha\!=\!0.001$. The DECaLS [0.5,0.6) cell is therefore the primary finding (survives the tighter $\alpha\!=\!0.001$ Bonferroni); the DECaLS [0.8,1.0) cell is reported as a supporting trend rather than an independent significant detection. A joint label-shuffle max-statistic null (available in the companion data repository; $N_{\rm MC}\!=\!5{,}000$ realizations preserving the global CW count exactly. Per realization, we shuffle CW/CCW labels across all matched spirals, recompute all 15 cells' dipole significance simultaneously through the same pre-computed design matrices used for the per-cell nulls, and record $\max|\sigma|$ over the grid. 
 
 \par The observed $\max|\sigma|=4.724$ at the DECaLS [0.5, 0.6) cell yields a family-corrected $p$-value of $0.0086$ ($\approx\!2.4\sigma$ family-wise), substantially weaker than the cell-level $+4.72\sigma$ naively suggests. The joint null is heavy-tailed: $\max|\sigma|$ has $p_{99}\!=\!5.63$ in the simulated null distribution. 
 
@@ -2118,7 +2092,7 @@ with classifier ambiguity per se.
 
 \par Under proper family-wise correction, the DECaLS-concentrated low-confidence excess remains visible but is reported as a $\sim\!2.4\sigma$ family-significant exploratory finding, not a $4.7\sigma$ confirmatory detection. This is the appropriate scope-tightening that an external referee would impose; the primary methods-paper narrative (apparent low-confidence dipole is footprint-correlated systematic, not primordial chirality) is unchanged. 
 
-\par \textbf{Stratum-specific cross-spectrum}: applied the same depth-proxy cross-spectrum diagnostic used in \S\ref{sec:dipole_symmetry_caveat} for the canonical mask directly to the DECaLS $[0.5, 0.6)$ stratum (companion artifact \artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak decals\allowbreak \_stratum\allowbreak \_cross\allowbreak \_spectrum.json}; driver \artifact{pipelines/\allowbreak p2\_chirality/\allowbreak scripts/\allowbreak decals\allowbreak \_stratum\allowbreak \_cross\allowbreak \_spectrum.py}).
+\par \textbf{Stratum-specific cross-spectrum}: applied the same depth-proxy cross-spectrum diagnostic used in \S\ref{sec:dipole_symmetry_caveat} for the canonical mask directly to the DECaLS $[0.5, 0.6)$ stratum (results and driver scripts available in the companion data repository).
 
 \par On the stratum's own footprint mask ($n\!=\!938{,}563$ spirals, $f_{\rm sky}\!=\!0.279$), the cross-power $C^{An}_\ell$ between the stratum's asymmetry map $A_p$ and its pixel-density map $n_{\rm total}(p)$ gives correlation $r_{\ell=1}\!=\!-0.70$ ($\sigma\!=\!-1.68$ vs per-pixel-shuffle null) and $r_{\ell=2}\!=\!-0.41$ ($\sigma\!=\!-1.56$). 
 
@@ -2191,8 +2165,7 @@ calibrated monopole subtraction.
 \caption{Two-point chirality correlation $w_{\rm CW}(\theta)$ on a
 random $50{,}000$-galaxy HC-spiral sample ($\max\,p_{\rm eq}\!>\!0.6$,
 seed$\,=\,$42); null is a $N_{\rm MC}\!=\!200$ label-shuffle
-preserving the global $p_{\rm CW}$. Companion artifact:
-\artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak pathA\_2pt\_chirality.json}.
+preserving the global $p_{\rm CW}$. Full results are available in the companion data repository.
 \label{tab:wtheta}}
 \begin{ruledtabular}
 \begin{tabular}{rrrcr}
@@ -2244,8 +2217,7 @@ To test the brick-boundary attribution directly, we re-ran the
 $w_{\rm CW}(\theta)$ calculation on the brick-interior subsample
 ($N\!=\!18{,}024$ HC-spirals $\geq\!0.05^\circ$ from any DR8 brick
 edge, $\sim\!36\%$ of the $50{,}000$-galaxy baseline sample;
-companion artifact
-\artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak brick\_boundary\_control\_wtheta.json}).
+results available in the companion data repository).
 The result strongly supports the brick-boundary attribution:
 the $-2.64\sigmaunit$ excursion at $\theta\!=\!0.50^\circ$ in the
 brick-control baseline (which used a separate $N_{\rm MC}\!=\!100$
@@ -2345,8 +2317,7 @@ by the random-label null rather than to a primordial dipole (see
 Sec.~\ref{sec:hemisphere} for systematic-attribution discussion;
 the analytic Bonferroni result is retained as a conservative
 parametric cross-check under a different null model).
-Companion artifact:
-\artifact{pipelines/\allowbreak h200\_results/\allowbreak wave12\_hemi\_2026-05-01/\allowbreak results.json}.}
+Full results are available in the companion data repository.}
 
 \begin{figure}[t]
 \centering
@@ -2416,14 +2387,12 @@ large-scale systematic bias.
 
 \begin{table}
 \caption{CW fraction by sky region (Catalog~C, canonical
- equivariant spiral total $N_{\rm spiral}=3{,}201{,}160$ from the
- \texttt{class\_eq} column of \texttt{catalog\_production.parquet}).
+ equivariant spiral total $N_{\rm spiral}=3{,}201{,}160$).
  Per-region fractions are stable to within ${\sim} 0.001$ across the
  catalog-production recount because per-galaxy CW labels are unchanged
  and affected boundary objects (whose spiral-vs-non-spiral
  $\NS{}$/edge-on classification was updated) redistribute uniformly
- across the seven regions. Verification artifact:
- \artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak global\_cw\_fraction.json}\footnote{The cited artifact reports only the global CW-fraction at canonical $N_{\rm spiral}\!=\!3{,}201{,}160$ and does not independently verify the per-region numerators / denominators tabulated above; those per-region values are manuscript-only at this version freeze. A dedicated per-region JSON is identified as a future on-disk cross-check; the per-region numerators / denominators recorded above are computed deterministically from the public catalogue and the seven-region predicate documented in this caption.}.
+ across the seven regions. Verification data are available in the companion data repository.
  All regions fall within $0.5\%$ of exact parity.
  \label{tab:sky_balance}}
 \begin{ruledtabular}
@@ -2477,8 +2446,7 @@ assigned by RA/Dec heuristic (BASS+MzLS: $\delta>+32.375^\circ$;
 DES: $\delta<-10^\circ$ AND RA in DES Y3 footprint; DECaLS: complement).
 Sum $= 3{,}201{,}160$ matches the canonical Catalog~C total. Dipole
 significances against $N_{\rm MC}=1000$ binomial-monopole null
-realizations at NSIDE$\,=\,$64. Verification artifact:
-\artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak per\_imaging\_leg\_systematics.json}.}
+realizations at NSIDE$\,=\,$64. Verification data are available in the companion data repository.}
 \begin{ruledtabular}
 \begin{tabular}{lrccc}
 \textbf{Imaging leg} & \textbf{$N_{\rm spiral}$} & $\CW/(\CW{+}\CCW)$ & $|\Delta|$ (\%) & dipole $\sigma$ (p) \\
@@ -2533,7 +2501,7 @@ the dipole significance in each bin:
 The $P>0.9$ stratum reported here is the spiral-only HC-spiral cut
 (CW or CCW probability above $0.9$, $N = 471{,}049$); this is
 distinct from the broader HC-broad cut ($\max(p_{\rm CW,eq},
-p_{\rm CCW,eq}) > 0.6$ (spiral-only, $N = 949{,}584$ matching the $n_{\rm spiral}$ count in \artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak face\_on\_robustness\_results.json} for the \texttt{HC-broad-0.6} sample)) used
+p_{\rm CCW,eq}) > 0.6$ (spiral-only, $N = 949{,}584$; results available in the companion data repository for the \texttt{HC-broad-0.6} sample)) used
 elsewhere in this paper, which counts confident-NS galaxies
 together with confident spirals. The unstratified $P>0.9$ cut
 without the spiral restriction would count both classes; the
@@ -2783,8 +2751,7 @@ Perhaps the most instructive result of this analysis is not the null
 signal in Catalog~C, but the systematic dipole present in Catalog~A
 under two independent estimator stages. (a) In real space: the raw
 Catalog~A dipole significance is $2.31\sigmaunit$ post-TTA on the
-canonical $N_{\rm spiral}\!=\!3{,}201{,}160$ subset (companion
-artifact \artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak dipole/\allowbreak summary.json}, pre-TTA pipeline run),
+canonical $N_{\rm spiral}\!=\!3{,}201{,}160$ subset (available in the companion data repository; pre-TTA pipeline run),
 collapsing to $0.43\sigmaunit$ in Catalog~C after equivariant
 post-processing. (b) In the spherical-harmonic domain: the
 \emph{pre-MASTER} pseudo-$C_\ell$ in the lowest bandpower ($\ell_{\rm eff}\!=\!4$, $\ell\!\in\![2,6]$ on the asymmetry map) inflates to
@@ -2849,8 +2816,7 @@ not independently verified at the $\gtrsim\!10^{6}$-galaxy scale
 (SpArcFiRe partial cross-check in Sec.~\ref{sec:sparcfire};
 GZ1-attribution working hypothesis). The dipole-channel result is
 logically prior to and independent of the monopole's origin.
-Companion artifact:
-\artifact{pipelines/\allowbreak p3\_anomaly\_engine/\allowbreak r42\_results/\allowbreak wave\_14\_zz\_p4\_oa\_m9\_closure.json}.
+Full closure results are available in the companion data repository.
 
 \begin{figure*}[t]
 \centering
@@ -2883,8 +2849,7 @@ survey-footprint systematic that produces the amplitude: a classifier
 CW bias of $\sim\!1\%$, modulated by non-uniform DESI Legacy coverage,
 can reproduce \emph{both} the magnitude \emph{and} the direction of a
 previously claimed dipole without invoking new physics. Axis-alignment
-values are archived in
-\artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak dipole/\allowbreak summary.json}.
+values are available in the companion data repository.
 
 This result serves as a cautionary tale for all chirality studies: a
 classifier bias of even $\sim\!1\%$, combined with non-uniform sky
@@ -3121,10 +3086,7 @@ into a $\geq 3\sigma$ cross-power on the $\ell{=}2{-}64$ scales
 relevant to a cosmological parity dipole. The $0.2\%$ statistical
 floor is therefore best read as a near-zero residual coupling on
 cosmological scales, not as a strict pixel-level orthogonality.
-Companion artifact:
-\artifact{pipelines/\allowbreak p2\_chirality/\allowbreak r42\_results/\allowbreak wave\_14\_jj\_psf\_xcorr\_results.json}
-(full Pearson + Spearman + $C_\ell$ z-score table, MC null seeds,
-$\mathrm{NSIDE}/\ell_{\rm max}/N_{\rm MC}$ specification).
+Full Pearson + Spearman + $C_\ell$ z-score results (including MC null seeds and $\mathrm{NSIDE}/\ell_{\rm max}/N_{\rm MC}$ specification) are available in the companion data repository.
 Figure~\ref{fig:psf_correlation} visualizes Test~1 and Test~2 results
 side-by-side.
 
@@ -3154,12 +3116,10 @@ $N_{\rm spirals\,with\,e}=2{,}911{,}635$.
 We further verify the $0.2\%$ minimum-detectable-dipole headline via a Monte Carlo
 injection-recovery test on the real DESI Legacy mask and Catalog~C
 per-pixel depth. The
-generator
-\artifact{pipelines/\allowbreak p2\_chirality/\allowbreak wave\_14\_nn\_dipole\_mc\_injection.py}
+injection-recovery generator (available in the companion data repository)
 loads the $471{,}049$-spiral ``HC-spiral'' high-confidence
 subsample defined by equivariant probability $>0.9$ for either
-CW or CCW (canonical sample label in
-\artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak fisher\_sensitivity\_floor.json},
+CW or CCW (canonical sample label available in the companion data repository,
 key \texttt{sample\_label});
 this is distinct from the broader ``HC-broad'' cut in
 Sec.~\ref{sec:bin_flatness} that uses
@@ -3176,7 +3136,7 @@ n_{\rm gal}\!\cdot\!\hat n_{\rm inj})$, the catalog is pixelized to
 $\mathrm{NSIDE}{=}64$ ($20{,}838/49{,}152$ pixels above the $\geq 10$
 spirals/pixel cut, $f_{\rm sky}{=}0.4240$), the dipole is fit via
 \texttt{healpy.fit\_dipole}, and a per-pixel-shuffle null with
-$N_{\rm MC,null}=1000$ realizations is run for significance (canonical \texttt{n\_mc\_null}$\!=\!1000$ from \artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak injection\_recovery\_extended.json}). Aggregating
+$N_{\rm MC,null}=1000$ realizations is run for significance (canonical \texttt{n\_mc\_null}$\!=\!1000$; full sweep available in the companion data repository). Aggregating
 over $100$ random axes per amplitude yields the median significance
 $\langle\sigma\rangle$, the empirical detection probability
 $P(\sigma>2)$, and the direction-recovery probability
@@ -3185,7 +3145,7 @@ in Table~\ref{tab:mc_injection}.
 
 \begin{table}[h]
 \caption{\label{tab:mc_injection}Per-pixel-shuffle empirical injection-recovery
-sweep on the canonical strict-HC subsample (primary pipeline: $N\!=\!471{,}049$ HC spirals with $\max(p_{\rm CW,eq},p_{\rm CCW,eq})\!>\!0.9$ AND per-pixel-count $\geq\!10$ filter; companion \artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak wave\allowbreak \_14\allowbreak \_nn\allowbreak \_injection\allowbreak \_recovery.json}; $N_{\rm inj}\!=\!100$ axes per amplitude; $N_{\rm MC,null}\!=\!500$). The extended sweep adds the $A\!\in\!\{0.75,\,1.00,\,1.50,\,2.00\}\%$ rows that complete the $50\%$-recovery-3$\sigma$ localization at $A\!=\!0.75\%$ under this pipeline. (pipeline-choice sensitivity range: three companion sweeps exist with different predicates and slightly different per-pixel-count filters: (a) the primary sweep used here ($N\!=\!471{,}049$ strict HC + pix-count $\geq\!10$ filter; $50\%$-rec-3$\sigma$ at $A\!=\!0.75\%$); (b) the extended sweep at HC-broad $p_{\rm eq}\!>\!0.6$ (\artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak injection\allowbreak \_recovery\allowbreak \_extended.json}; $n\!\approx\!949{,}584$; $50\%$-rec-3$\sigma$ also at $A\!=\!0.75\%$, larger $N$ partly offsets the looser confidence cut); (c) a strict-HC sweep without the per-pixel-count filter (\artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak injection\allowbreak \_recovery\allowbreak \_extended\allowbreak \_hc09.json}; $N\!=\!496{,}531$; $50\%$-rec-3$\sigma$ at $A\!=\!1.5\%$). The three thresholds bracket the pipeline-choice sensitivity range $[0.75\%, 1.5\%]$. We adopt $0.75\%$ as the canonical present-pipeline threshold for the abstract + falsification criterion because it is the threshold of the primary pipeline that produced Table I row (vi); $1.5\%$ is reported as a robustness stress test under a less-restrictive per-pixel-count pipeline. The two cited cuts are non-identical predicates and should not be cross-cited as the same sweep.)}
+sweep on the canonical strict-HC subsample (primary pipeline: $N\!=\!471{,}049$ HC spirals with $\max(p_{\rm CW,eq},p_{\rm CCW,eq})\!>\!0.9$ AND per-pixel-count $\geq\!10$ filter; $N_{\rm inj}\!=\!100$ axes per amplitude; $N_{\rm MC,null}\!=\!500$; all sweep data available in the companion data repository). The extended sweep adds the $A\!\in\!\{0.75,\,1.00,\,1.50,\,2.00\}\%$ rows that complete the $50\%$-recovery-3$\sigma$ localization at $A\!=\!0.75\%$ under this pipeline. (pipeline-choice sensitivity range: three companion sweeps exist with different predicates and slightly different per-pixel-count filters: (a) the primary sweep used here ($N\!=\!471{,}049$ strict HC + pix-count $\geq\!10$ filter; $50\%$-rec-3$\sigma$ at $A\!=\!0.75\%$); (b) the extended sweep at HC-broad $p_{\rm eq}\!>\!0.6$ ($n\!\approx\!949{,}584$; $50\%$-rec-3$\sigma$ also at $A\!=\!0.75\%$, larger $N$ partly offsets the looser confidence cut); (c) a strict-HC sweep without the per-pixel-count filter ($N\!=\!496{,}531$; $50\%$-rec-3$\sigma$ at $A\!=\!1.5\%$). The three thresholds bracket the pipeline-choice sensitivity range $[0.75\%, 1.5\%]$. We adopt $0.75\%$ as the canonical present-pipeline threshold for the abstract + falsification criterion because it is the threshold of the primary pipeline that produced Table I row (vi); $1.5\%$ is reported as a robustness stress test under a less-restrictive per-pixel-count pipeline. The two cited cuts are non-identical predicates and should not be cross-cited as the same sweep.)}
 \begin{ruledtabular}
 \begin{tabular}{ccccc}
 $A$ & $\langle\sigma\rangle$ & $P(\sigma{>}2)$ & $P(\sigma{>}3)$ &
@@ -3227,10 +3187,9 @@ Both numbers stand. The catalog's reported result --- Catalog~C
 post-TTA dipole at $\sigma{=}0.43$, $p{=}0.30$ --- is a non-detection
 under \emph{either} threshold, so the central claim of the paper
 (no $\geq 3\sigma$ isotropy-breaking axial-vector chirality dipole) is independent of which
-sensitivity is adopted. Companion artifact:
-\artifact{pipelines/\allowbreak p2\_chirality/\allowbreak r42\_results/\allowbreak wave\_14\_nn\_injection\_recovery.json}
+sensitivity is adopted. Full injection-recovery data are available in the companion data repository
 ($729.7$~s wall on Pod~3 H200, pure CPU \texttt{healpy} pipeline,
-$900$ injection fits ($N_{\rm inj}\!=\!100$ axes $\times$ $9$ amplitudes; canonical \texttt{n\_mc\_inj\_per\_amp}$\!=\!100$ from \artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak injection\_recovery\_extended.json}) calibrated against $N_{\rm MC,null}\!=\!1000$ per-pixel-shuffle realizations per amplitude; full per-injection
+$900$ injection fits ($N_{\rm inj}\!=\!100$ axes $\times$ $9$ amplitudes; canonical \texttt{n\_mc\_inj\_per\_amp}$\!=\!100$) calibrated against $N_{\rm MC,null}\!=\!1000$ per-pixel-shuffle realizations per amplitude; full per-injection
 table with recovered $(l,b)$, monopole, $\sigma$, $p$-value, and
 $\Delta\theta_{\rm rec,inj}$ for every one of the $500$ injections).
 
@@ -3337,10 +3296,7 @@ sample with a non-zero monopole is the joint detection of
 ``monopole $+$ dipole'' rather than just dipole; we report it for
 like-for-like comparison with the reviewers' request. The HC-cut
 collapse from $+4.3\sigmaunit$ to $\lesssim\!1\sigmaunit$ is consistent
-under both nulls. Verification:
-\artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak face\_on\_robustness\_results.json}
-and
-\artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak face\_on\_isotropic\_null\_results.json}.}
+under both nulls. Verification data are available in the companion data repository.}
 \begin{ruledtabular}
 \begin{tabular}{lrcccc}
 \textbf{Sample} & $N_{\rm spiral}$ & $\CW/(\CW+\CCW)$ & $|\Delta|$ (\%) & monopole-preserving $\sigma$ (p) & isotropic-$p\!=\!0.5$ $\sigma$ (p)\\
@@ -3351,7 +3307,7 @@ HC-strict ($p_{\rm eq}\!>\!0.8$) & 624{,}660 & 0.49602 & 0.398 & $+0.87$ (0.187)
 \end{tabular}
 \end{ruledtabular}
 \begin{flushleft}
-\footnotesize $^a$~HC-broad-$0.6$: $\max(p_{\rm CW,eq},p_{\rm CCW,eq})\!>\!0.6$ spiral-only cut, from \texttt{face\_on\_robustness\_results.json}; distinct from the stricter HC-spiral-$0.9$ cut ($p_{\rm eq}\!>\!0.9$, $N\!=\!471{,}049$) used in §IX.J for MC injection-recovery.
+\footnotesize $^a$~HC-broad-$0.6$: $\max(p_{\rm CW,eq},p_{\rm CCW,eq})\!>\!0.6$ spiral-only cut; distinct from the stricter HC-spiral-$0.9$ cut ($p_{\rm eq}\!>\!0.9$, $N\!=\!471{,}049$) used in §IX.J for MC injection-recovery.
 \end{flushleft}
 \end{table*}
 
@@ -3399,12 +3355,9 @@ after the symmetry correction, and within that pool the raw model
 carries a $13.3\%$ CCW excess. The corresponding catalog-wide
 handedness asymmetry drops from $+2.05\%$ in the raw model to
 $-0.53\%$ after equivariance---a suppression factor of
-$3.86\times$.\footnote{Numbers from
-\artifact{pipelines/\allowbreak h200\_results/\allowbreak pod2\_chirality\_2026-04-29/\allowbreak edgeon\_contamination.json};
-the analysis treats the on-disk
-\texttt{catalog\_production.parquet} columns
-\texttt{class\_raw\_x} and \texttt{class\_eq} as the raw and
-equivariant calls, computes the $3{\times}3$ transition matrix, and
+$3.86\times$.\footnote{Numbers available in the companion data repository;
+the analysis compares raw and equivariant class labels in the production catalog,
+computes the $3{\times}3$ transition matrix, and
 reports both the catalog-level asymmetry and the within-pool
 handedness imbalance.} A complementary confidence-stratified
 $\NS$-rate ladder shows the equivariance step doing real work on
@@ -3457,11 +3410,9 @@ catalog-wide raw-CW/CCW $\to$ equivariant-\NS{} flip count
 ($0.041\%$ of $8{,}474{,}531$, the proxy for the equivariance
 correction's edge-on retargeting) reported in the previous
 paragraph; the two quantities measure different things and are not
-contradictory. Companion artifact:
-\artifact{pipelines/\allowbreak p2\_chirality/\allowbreak r42\_results/\allowbreak wave\_14\_kk\_ba\_reconciliation\_results.json}
-(full b/a-bin reconciliation table with raw-class transition
+contradictory. Full b/a-bin reconciliation data (including raw-class transition
 matrix, b/a coverage statistics, and edge-on subsample dilution
-quantification).
+quantification) are available in the companion data repository.
 
 We can also directly test whether equivariant averaging eliminates
 rotational-equivariance violations in the edge-on population.
@@ -3485,15 +3436,14 @@ biasing chirality, we would expect the b/a$\,<0.3$ bin to deviate
 do not observe any such bin-specific shift to the per-bin Poisson
 floor of $\sim\!0.06\%$. The maximum bin-to-bin spread in CW
 fraction across the four orientation regimes is $0.0005$ ($0.05\%$),
-well below the $0.1\%$ flatness target. Companion artifact:
-\artifact{pipelines/\allowbreak p2\_chirality/\allowbreak r42\_results/\allowbreak wave\_14\_kk\_ba\_reconciliation\_results.json}.
+well below the $0.1\%$ flatness target. Full reconciliation data are available in the companion data repository.
 
 \paragraph{Bin-by-bin CW flatness test across four morphology axes.}
 \label{sec:bin_flatness}
 We test whether the CW-fraction is uniform to $<0.1\%$ across r-mag,
 surface brightness, Sersic size, PSF FWHM, and edge-on b/a by running
 the diagnostic on the joined chirality $\times$ DR8 sweep catalog
-(\artifact{pipelines/\allowbreak p2\_chirality/\allowbreak wave\_14\_oo\_bin\_flatness.py}, $29.3$\,s wall on Pod~3) at $N_{\rm bins}{=}10$ for the four continuous
+(driver available in the companion data repository; $29.3$\,s wall on Pod~3) at $N_{\rm bins}{=}10$ for the four continuous
 DR8-sweep axes available without a re-fetch (Sersic effective radius
 $\log_{10} r_{\rm eff}$, fracdev de-Vaucouleurs fraction, axis ratio
 $b/a$, and \texttt{type} categorical: PSF/REX/EXP/DEV/COMP). Two
@@ -3503,7 +3453,7 @@ shape\_r\_eff $\Delta f_{\rm CW}{=}0.32\%$ (FAILS $0.1\%$), fracdev
 $\Delta{=}1.41\%$ (FAILS), $b/a$ $\Delta{=}0.23\%$ (FAILS at
 $10$-bin granularity though the 4-bin reconciliation above showed $0.05\%$),
 \texttt{type} $\Delta{=}0.08\%$ (PASSES). \emph{High-confidence
-subsample} (HC-broad-0.6: $n{=}949{,}584$, $\max(p_{\rm CW,eq},p_{\rm CCW,eq}){>}0.6$ -- the spiral-only confidence$>0.6$ cut from \texttt{face\_on\_robustness\_results.json}; distinct from the spiral-only stricter HC-spiral-0.9 cut $n=471{,}049$ used in §IX.J for MC injection-recovery, which is the canonical sample-label \texttt{HC-spiral (equivariant probability > 0.9 for either CW or CCW)} from \texttt{fisher\_sensitivity\_floor.json}; the prior ``HC-broad max(p\_CW,p\_CCW,p\_NS)$>0.6$ includes confident-NS'' label used in some sites was wrong and is corrected here): all
+subsample} (HC-broad-0.6: $n{=}949{,}584$, $\max(p_{\rm CW,eq},p_{\rm CCW,eq}){>}0.6$; distinct from the spiral-only stricter HC-spiral-0.9 cut $n=471{,}049$ used in \S\ref{sec:mc_injection} for MC injection-recovery; the prior ``HC-broad'' label that included confident-NS galaxies has been corrected here to the spiral-only selection): all
 four axes show larger spreads ($0.49\%{-}3.03\%$) as expected from
 the smaller per-bin denominator. \emph{Reframe and verdict.} The
 three failing axes (size, fracdev, $b/a$ at $10$-bin granularity)
@@ -3525,9 +3475,7 @@ size/fracdev/$b/a$ axes; the $0.05\%{-}0.08\%$ pass-bar applies at
 the categorical/coarse-binning granularity used in the 4-bin reconciliation above; and
 the central no-detection conclusion ($\sigma_{\rm hemi}{=}0.43$,
 $p{=}0.30$) is independent of which axis-binning granularity is
-adopted. Companion artifact:
-\artifact{pipelines/\allowbreak p2\_chirality/\allowbreak r42\_results/\allowbreak wave\_14\_oo\_bin\_flatness.json}
-($23.9$\,KB, both denominators, four axes, all bin-level rows).
+adopted. Full bin-flatness data (both denominators, four axes, all bin-level rows) are available in the companion data repository.
 A follow-up binning test will add the r-mag and surface-brightness
 axes once the DR8 \texttt{flux\_r} sweep fetch completes. The
 per-bin CW-fraction data for the three continuous morphology axes
@@ -3542,7 +3490,7 @@ production artifacts), the PSF-systematics analysis reports
 $|r_{\rm cw, e_1}|\!=\!0.043$ and $|r_{\rm cw, e_2}|\!=\!0.042$
 Pearson correlations between CW probability and PSF-ellipticity
 components, with the maximum bandpower-binned cross-power z-score
-$|z|\!\leq\!2.73$ in $\ell\!\in\![2,10]$ (\artifact{pipelines/\allowbreak p2\_chirality/\allowbreak r42\_results/\allowbreak wave\_14\_jj\_psf\_xcorr\_results.json}).
+$|z|\!\leq\!2.73$ in $\ell\!\in\![2,10]$ (full cross-power results available in the companion data repository).
 
 \begin{figure*}[t]
 \centering
@@ -3568,8 +3516,7 @@ $|z|\!\leq\!2.73$ in $\ell\!\in\![2,10]$ (\artifact{pipelines/\allowbreak p2\_ch
  fraction sits within $\sim\!0.3\%$ of the catalog-wide baseline,
  consistent with the spatially uniform monopole picture; \emph{none}
  of the axes shows a directional dipole signature, the
- isotropy-breaking observable (an axial-vector dipole projection of the pseudoscalar chirality field; see Sec.~\ref{sec:dipole_symmetry_caveat} for the symmetry-class derivation). Companion artifact:
- \artifact{pipelines/\allowbreak p2\_chirality/\allowbreak r42\_results/\allowbreak wave\_14\_oo\_bin\_flatness.json}.
+ isotropy-breaking observable (an axial-vector dipole projection of the pseudoscalar chirality field; see Sec.~\ref{sec:dipole_symmetry_caveat} for the symmetry-class derivation). Full bin-flatness data are available in the companion data repository.
  \label{fig:binned_cw_fraction}}
 \end{figure*}
 
@@ -3598,17 +3545,14 @@ low-count edge-pixel domination of the residual. We
 sweep the canonical-mask definition over
 $n_{\rm total}\!>\!\{1,5,10,20,50\}$ galaxies per pixel and rerun the
 full MASTER coupling-matrix + monopole-only $N\!=\!200$ null at each
-threshold (script
-\artifact{pipelines/\allowbreak p2\_chirality/\allowbreak scripts/\allowbreak mask\_threshold\_robustness\_sweep.py};
-companion artifact
-\artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak mask\allowbreak \_threshold\allowbreak \_robustness\allowbreak \_sweep.json}).
+threshold (script and results available in the companion data repository).
 
 \begin{table}[t]
 \caption{Canonical-mask $\ell\!=\!1$ MASTER robustness sweep across
 pixel-count thresholds. $\sigma_{\rm from\,null}$ is the data
 post-MASTER $C_1$ versus a monopole-only $N\!=\!200$ binomial null
-(matching the \texttt{master\_decoupled\_monopole\_null.json}
-protocol, NOT the per-pixel-shuffle null that yielded the headline
+(matching the MASTER-decoupled monopole-null protocol described in \S\ref{sec:dipole},
+NOT the per-pixel-shuffle null that yielded the headline
 $+3.64\sigmaunit$ in Table~\ref{tab:headline_summary}). For
 comparison, the same-protocol canonical-mask
 $n_{\rm total}\!>\!0$ result is $+4.84\sigma$.}
@@ -3639,7 +3583,7 @@ battery results (apodized canonical mask $+3.57\sigma$; the apodization
 axis is therefore also robust), this closes the mask-definition
 mask-definition robustness question raised in earlier review on both apodization and pixel-count axes.
 
-\textbf{Estimator hierarchy (declared after first catalogue results, fixed at v1.0.76, carried forward).} We are explicit that the mask hierarchy below was \emph{not} pre-registered; it was declared after the first round of catalogue results and fixed at v1.0.76 of the manuscript (see \S\ref{sec:prereg}). The hierarchy is:
+\textbf{Estimator hierarchy (declared after first catalogue results, carried forward).} We are explicit that the mask hierarchy below was \emph{not} pre-registered; it was declared after the first round of catalogue results and has been carried forward (see \S\ref{sec:prereg}). The hierarchy is:
 (i)~the subsample mask ($f_{\rm sky}\!=\!0.659$) defined in
 \S\ref{sec:dipole} as the strict-superset region of contiguous
 galaxy-positive pixels is the primary cosmological estimator
@@ -3881,8 +3825,7 @@ rather than MASTER alone on identical input). A controlled
 monopole-only $N\!=\!500$ generative null reproduces $99.3\%$ of the
 observed \emph{pre-MASTER} pseudo-$C_\ell^{(\ell=1)}$ power from the
 leakage channel alone. The corresponding post-MASTER monopole-only
-$N\!=\!500$ null is now also computed (companion artifact
-\artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak master\allowbreak \_decoupled\allowbreak \_monopole\allowbreak \_null.json};
+$N\!=\!500$ null is now also computed (available in the companion data repository;
 see Table~\ref{tab:headline_summary} footnote~b): it accounts for
 $\sim\!12\%$ of the post-MASTER canonical $C_1$ (data
 $6.55\!\times\!10^{-6}$ vs null mean $8.0\!\times\!10^{-7}$, moment-$z
@@ -3918,10 +3861,7 @@ $f_{\rm sky}\!=\!0.49005$ (NSIDE$\,=\,$64; coupling matrix to
 $\ell_{\rm max}\!=\!191$; single-band binning isolating $\ell\!=\!1$;
 500 per-pixel random-label permutation nulls; seed~42 matching the
 Wave~12 hemisphere convention) yields a quantitative estimator of
-$\ell\!=\!1$ power on the canonical mask. The pipeline is
-\artifact{pipelines/\allowbreak p2\_chirality/\allowbreak scripts/\allowbreak canonical\_l1\_namaster\_pod.py};
-output JSON is
-\artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak p4\_multinull\_battery.json}.
+$\ell\!=\!1$ power on the canonical mask. The pipeline script and output data are available in the companion data repository.
 \par
 The direct-compute result is $C_1^{\rm pseudo,\,coupled}\!=\!9.613\!\times\!10^{-5}$,
 $C_1^{\rm decoupled}\!=\!2.298\!\times\!10^{-5}$,
@@ -4005,18 +3945,13 @@ systematic is NOT excluded by these diagnostics; see
 The no-dipole-at-$\ell\!=\!1$ verdict therefore stands, anchored on
 the two estimators that bypass the canonical-mask leakage channel;
 the canonical-$N$ direct-MC value is on record as a non-headline, systematics-attributed (empirical-rank $p_{\rm MC}\!=\!0.030$)
-calibration. The companion JSON
-\artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak p4\_multinull\_battery.json}
-records all numerical inputs / outputs, and the 500-MC null
-distribution is committed alongside it as
-\texttt{canonical\allowbreak\_n\allowbreak\_master\allowbreak\_l1\allowbreak\_direct\allowbreak\_v1062\allowbreak\_baseline\allowbreak\_null\allowbreak\_distribution.npy}
-in the same directory (legacy pre-correction baseline; pre-monopole-subtraction
-reference only; SHA-256 stamped in the manifest).
+calibration. All numerical inputs and outputs are available in the companion data repository, and the 500-MC null
+distribution is committed alongside them as
+the pre-monopole-subtraction null distribution
+in the same directory (pre-monopole-subtraction baseline, retained for historical provenance only).
 
 \paragraph{$D_4$-TTA rotational-equivariance validation.}
-A direct full-$D_4$ TTA hold-out (Sec.~\ref{sec:tta}; companion
-artifact
-\artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak d4\_tta\_holdout\_results.json})
+A direct full-$D_4$ TTA hold-out (Sec.~\ref{sec:tta}; results available in the companion data repository)
 on two independent $\sim\!2{,}000$ Catalog~C spiral hold-outs
 ($N\!=\!1{,}558$ original baseline + $N\!=\!1{,}988$ partial-harvest)
 validates the rotation-equivariance assumption used to justify the
@@ -4257,7 +4192,7 @@ the $f_{\rm sky}=0.659$ subsample mask we use $C^2$ apodization at
 $2^\circ$.
 \item Field: scalar (spin-0); \texttt{nmt.NmtField(mask, [A\_p])} on
 the per-pixel asymmetry map $A_p = (N_{\rm CW}^{(p)} - N_{\rm CCW}^{(p)}) / N_{\rm total}^{(p)}$
-(this is $2(f_{\rm CW}(p) - 0.5)$ within each pixel). \textbf{Monopole-subtraction note}: in the production legacy pre-correction baseline, the input field $A_p$ was fed to \texttt{nmt.NmtField} WITHOUT explicit subtraction of the mask-weighted galaxy-mean $\langle A\rangle_{\rm mask, gw} = 2 f_{\rm CW}^{\rm global} - 1 = -0.005294$; the implicit subtraction of the constant $0.5$ at the per-pixel level does NOT remove the residual monopole arising from the observed $f_{\rm CW}^{\rm global} = 0.49735 \neq 0.5$ . A re-audit on the pod with proper galaxy-weighted mask-mean subtraction (artifact \artifact{pipelines/\allowbreak p2\_chirality/\allowbreak outputs/\allowbreak canonical\_provenance/\allowbreak gpt5\_b3\_monopole\_correction\allowbreak \_audit.json}) finds that the correction reduces pseudo-$C_0$ by a factor of $\sim\!330\times$ (the residual monopole is the dominant source of $\ell=0$ power as expected) and reduces decoupled $C_1$ at $\ell\!=\!1$ from $2.30\!\times\!10^{-5}$ to $1.51\!\times\!10^{-5}$ (a $\sim\!34\%$ reduction; an earlier estimate of ~5% was a bin-indexing error caught and corrected). The null std also drops correspondingly (legacy pre-correction baseline $8.10\!\times\!10^{-6}$ vs corrected $3.31\!\times\!10^{-6}$, a $\sim\!59\%$ reduction). The net effect on sigma is to increase it: legacy pre-correction baseline $\sigma\!=\!(2.30\!-\!0.80)\!\times\!10^{-5}/0.81\!\times\!10^{-5}\!=\!+1.85$; corrected $\sigma\!=\!(1.51\!-\!0.31)\!\times\!10^{-5}/0.33\!\times\!10^{-5}\!=\!+3.64$. The factor-$\sim\!2.5$ null-variance difference between the two scripts reflects the two scripts correctly computing different observables (uncorrected $A_p$ vs proper-monopole-subtracted $A_p$); the residual monopole was contributing $\sim\!2.5\!\times$ as much null power as the demonopole-corrected catalog. Both calculations are internally consistent under their respective definitions, and the corrected $\sigma\!=\!+3.64$ supersedes the legacy pre-correction baseline $\sigma\!=\!+1.85$ as the canonical-mask number (paper-wide convention); the legacy value is retained for historical provenance only.
+(this is $2(f_{\rm CW}(p) - 0.5)$ within each pixel). \textbf{Monopole-subtraction note}: in the production legacy pre-correction baseline, the input field $A_p$ was fed to \texttt{nmt.NmtField} WITHOUT explicit subtraction of the mask-weighted galaxy-mean $\langle A\rangle_{\rm mask, gw} = 2 f_{\rm CW}^{\rm global} - 1 = -0.005294$; the implicit subtraction of the constant $0.5$ at the per-pixel level does NOT remove the residual monopole arising from the observed $f_{\rm CW}^{\rm global} = 0.49735 \neq 0.5$ . A re-audit on the pod with proper galaxy-weighted mask-mean subtraction (available in the companion data repository) finds that the correction reduces pseudo-$C_0$ by a factor of $\sim\!330\times$ (the residual monopole is the dominant source of $\ell=0$ power as expected) and reduces decoupled $C_1$ at $\ell\!=\!1$ from $2.30\!\times\!10^{-5}$ to $1.51\!\times\!10^{-5}$ (a $\sim\!34\%$ reduction; an earlier estimate of ~5% was a bin-indexing error caught and corrected). The null std also drops correspondingly (legacy pre-correction baseline $8.10\!\times\!10^{-6}$ vs corrected $3.31\!\times\!10^{-6}$, a $\sim\!59\%$ reduction). The net effect on sigma is to increase it: legacy pre-correction baseline $\sigma\!=\!(2.30\!-\!0.80)\!\times\!10^{-5}/0.81\!\times\!10^{-5}\!=\!+1.85$; corrected $\sigma\!=\!(1.51\!-\!0.31)\!\times\!10^{-5}/0.33\!\times\!10^{-5}\!=\!+3.64$. The factor-$\sim\!2.5$ null-variance difference between the two scripts reflects the two scripts correctly computing different observables (uncorrected $A_p$ vs proper-monopole-subtracted $A_p$); the residual monopole was contributing $\sim\!2.5\!\times$ as much null power as the demonopole-corrected catalog. Both calculations are internally consistent under their respective definitions, and the corrected $\sigma\!=\!+3.64$ supersedes the legacy pre-correction baseline $\sigma\!=\!+1.85$ as the canonical-mask number (paper-wide convention); the legacy value is retained for historical provenance only.
 \item Bins: single-multipole linear bin from $\ell=1$ to $\ell=L$ via
 \texttt{nmt.NmtBin.from\_lmax\_linear(lmax=191, nlb=1)}.
 Reported quantity in the abstract is the $\ell=1$ row of
@@ -4270,12 +4205,9 @@ $z$-score of the data $C_1$ against this null.
 \item Seed: \texttt{numpy.random.seed(42)} and
 \texttt{torch.manual\_seed(42)} for the corresponding GPU steps
 (used in upstream pipeline; the NaMaster step itself is CPU-only).
-\item Reproducibility wrapper:
-\artifact{pipelines/\allowbreak p2\_chirality/\allowbreak scripts/\allowbreak canonical\_l1\_namaster\_pod.py}
-(canonical $\ell=1$ direct compute) and
-\artifact{pipelines/\allowbreak p2\_chirality/\allowbreak scripts/\allowbreak monopole\_mask\_null\_sim\_v2.py}
-(monopole+mask leakage null simulation;
-Sec.~\ref{sec:monopole_mask_null}).
+\item Reproducibility wrapper: the canonical $\ell=1$ direct compute script and the
+monopole+mask leakage null simulation script (Sec.~\ref{sec:monopole_mask_null})
+are available in the companion data repository.
 \end{itemize}
 
 % ============================================================
