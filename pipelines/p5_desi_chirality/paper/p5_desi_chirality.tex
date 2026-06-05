@@ -1962,22 +1962,18 @@ $\Delta f_{\rm CW}$ bounds in the main text.
 
 \section{Data and code availability}\label{sec:data_code}
 
-All scripts, configuration, and provenance sidecars are available in the companion data repository. The canonical chirality
+All scripts and configuration files are available in the companion data repository. The canonical chirality
 catalog is mirrored on HuggingFace at
 \href{https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog}%
-{bamfai/galaxy-chirality-catalog} (immutable revision
-\texttt{paper4-v1.0.122}). DESI Data Release~1 is available from
+{bamfai/galaxy-chirality-catalog}. DESI Data Release~1 is available from
 \url{https://data.desi.lbl.gov/public/dr1/}. The Phase~2 sweep CSV and consolidated summary are available in the companion data repository.
 
 \section*{Reproducibility checklist}
 \begin{itemize}
-\item Single config file
-(available in companion data repository).
-\item Provenance sidecar (\texttt{*.provenance.json}) for every output.
-\item Git SHA + config hash logged in every sidecar.
+\item Single config file (available in companion data repository).
+\item Per-output provenance metadata included in data release.
 \item Deterministic seed: \texttt{20260515}.
-\item All Phase~2 sweep cell configs persisted at
-the companion data repository.
+\item All Phase~2 sweep cell configs persisted in companion data repository.
 \end{itemize}
 
 \begin{thebibliography}{99}
