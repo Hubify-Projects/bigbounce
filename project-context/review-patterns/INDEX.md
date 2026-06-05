@@ -42,6 +42,8 @@ Sorted by severity then frequency descending.
 | 031 | [Self-review severity-under-classification (CCAI optimism bias) (meta)](pattern-031-self-review-severity-underclassification.md) | high (meta) | 2 strong + 12.5× amplification ratio |
 | 032 | [CCAI cross-paper bibkey / value / cite-anchor blindness (meta)](pattern-032-ccai-cross-paper-blindness.md) | high (meta) | 4 cross-paper drifts in one OOOOO |
 | 033 | [Prose-asserted prefactor / OOM accepted by CCAI without derivation](pattern-033-prose-asserted-prefactor-acceptance.md) | high (meta) | 2 BLOCKER-tier in OOOOO |
+| 038 | [σ values from different nulls juxtaposed without per-juxtaposition qualifier](pattern-038-sigma-mixing-without-per-juxtaposition-qualifier.md) | high | 6 (all papers, R10v3p1 cross-paper) |
+| 039 | [Abstract Roman-numeral table reference points to wrong table](pattern-039-abstract-cross-reference-bug.md) | high | 5 (P1A/P1B/P3/P4/P5, R10v3p1 + 4-vendor consensus on P4) |
 | 025 | [Mathematically-impossible attribution (claim contradicts own equation)](pattern-025-mathematically-impossible-attribution.md) | high | 1 (P4 R42 R3) |
 
 ### Medium severity
@@ -55,6 +57,7 @@ Sorted by severity then frequency descending.
 | 014 | [Review-log content left in `%`-comment block](pattern-014-text-comment-not-stripped-after-review.md) | medium | 4 |
 | 022 | [Closure replaced derivation with narrative](pattern-022-closure-narrative-instead-of-derivation.md) | medium | 4+ |
 | 024 | [Figure violates its own cited threshold](pattern-024-figure-violates-cited-threshold.md) | medium | 1 (predicts a class) |
+| 037 | [Future-dated `\date{...}` block in title page across all papers](pattern-037-future-date-across-papers.md) | medium | 6 (all papers, R10v3p1 cross-paper) |
 
 ### Informational
 
