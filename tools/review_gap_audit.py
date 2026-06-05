@@ -71,7 +71,8 @@ def audit_round(round_label: str, paper_tag: str) -> dict:
     files = find_review_files(round_label, paper_tag)
     out: dict = {"round": round_label, "paper": paper_tag, "reviewers": {}}
     for p in files:
-        if "external" in p.name.lower():
+        name = p.name.lower()
+        if "external" in name or "synthesis" in name or "meta_review" in name:
             continue
         text = p.read_text(errors="replace")
         out["reviewers"][reviewer_from_filename(p)] = {

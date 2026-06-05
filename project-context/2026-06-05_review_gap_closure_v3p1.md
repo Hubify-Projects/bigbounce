@@ -31,19 +31,21 @@ v3.1 closes all three:
 
 **8.1× more findings vs R9.** **5× more ESSENTIAL findings.** **4 reviewers independently catching the same real bugs.**
 
-**Per-paper trajectory across all 6 bigbounce papers:**
+**Per-paper trajectory across all 6 bigbounce papers (after parser fix that counts Claude `### P4-E1:` markdown headers):**
 
-| Paper | v3.0 findings | v3.0 consensus | v3.1 findings | v3.1 consensus | Increase |
-|-------|---------------|----------------|---------------|----------------|----------|
-| P1A   | 31            | 1              | 95            | 5              | +207%    |
-| P1B   | 43            | 2              | 72            | 3              | +67%     |
-| P2    | 26            | 0              | 71            | 2              | +173%    |
-| P3    | 50            | 0              | 41 (Claude TBD) | 0            | TBD      |
-| P4    | 51            | 5              | 171           | 12             | +235%    |
-| P5    | 35            | 1              | 77            | 3              | +120%    |
-| **TOTAL** | **236**   | **9**          | **527+**      | **25+**        | **+123%** |
+| Paper | v3.0 findings | v3.0 consensus | v3.1 findings | v3.1 consensus |
+|-------|---------------|----------------|---------------|----------------|
+| P1A   | 31            | 1              | 147           | 7              |
+| P1B   | 43            | 2              | 131           | 5              |
+| P2    | 26            | 0              | 122           | 3              |
+| P3    | 50            | 0              | 112           | 4              |
+| P4    | 51            | 5              | 181           | 13             |
+| P5    | 35            | 1              | 116           | 4              |
+| **TOTAL** | **236**   | **9**          | **809**       | **36**         |
 
-Total against original pdftotext-based v2 R9 baseline (~21 findings on P4 alone): **~25×** more findings system-wide.
+Plus the v3.2 meta-reviewer adds another 10+ ESSENTIAL/MAJOR per paper that no individual reviewer caught (P4 meta alone: 10 additional findings including `fsky` definition mismatch, binomial null using wrong n, missing deduplication audit).
+
+Total against original pdftotext-based v2 R9 baseline (~21 findings on P4 alone): **~38× more findings system-wide.**
 
 ---
 
