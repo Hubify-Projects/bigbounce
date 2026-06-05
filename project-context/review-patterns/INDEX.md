@@ -2,9 +2,9 @@
 
 Codified failure modes observed across 19 internal cross-vendor R-rounds, 9
 CCAI self-review rounds, 1 R42 internal-multi round (2026-04-30), 1 P4
-v1.0.66 external 4-vendor round (2026-05-15), and 1 P1A external 3-reviewer
-round (2026-06-02) on 6 papers (P1A/P1B/P2/P3/P4/P5). Catalog consolidated
-2026-06-02 by 3-month retro pattern-mine pass.
+v1.0.66 external 4-vendor round (2026-05-15), 1 P1A external 3-reviewer
+round (2026-06-02), and 1 P4 v1.0.149 external 3-reviewer round (2026-06-04)
+on 6 papers (P1A/P1B/P2/P3/P4/P5). Pattern mine last run: 2026-06-04.
 
 Every external/direct-vendor R-round must be pre-screened against these
 patterns BEFORE dispatch, per the [[feedback-review-learning-loop]] and
@@ -116,12 +116,18 @@ Per the 2026-06-02 retro, no paper can hit 99% without ALL THREE of:
 
 ## How to add a new pattern
 
-When a new R-round surfaces a finding that does NOT match any of the 34
-catalogued patterns, AND the same shape appears in ≥2 distinct findings
+When a new R-round surfaces a finding that does NOT match any of the 35
+catalogued patterns (+ 1 draft), AND the same shape appears in ≥2 distinct findings
 across rounds, create `pattern-NNN-<kebab>.md` following the schema in
 the existing files and append a row to the table above. Skill
 `/paper-pre-review-check` picks up new patterns automatically by globbing
 `pattern-*.md`.
+
+## Pattern 037 (DRAFT) — iterative-closure-scope-creep
+
+Each R-round closure adds content without restructuring. Paper grows from target (~20pp) to 50–60pp after 70–150 versions. External reviewers reject on scope. P4: 20→57pp / P3: 20→50pp. Draft at `pattern-037-iterative-closure-scope-creep-DRAFT.md`. Detection: `pdfinfo` page count gate in `/paper-pre-review-check` (WARN >40pp / ERROR >50pp).
+
+Candidate cluster (not yet promoted to full pattern): **σ-value incommensurability** — presenting σ from binomial/MASTER/max-stat/density-stratified/analytic Bonferroni as if on one scale. Single source (2026-06-04 external P4 B5). Add to `CANDIDATE-CLUSTERS.md`.
 
 ## Pattern 036 — closure-fabricates-math-justification
 

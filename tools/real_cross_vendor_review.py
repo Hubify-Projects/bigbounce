@@ -1,22 +1,29 @@
 #!/usr/bin/env python3
 """
-Real cross-vendor adversarial peer review via OpenRouter.
+Real cross-vendor adversarial peer review — PDF-native pipeline.
 
-Replaces the prior Claude-multi-persona simulation with actual API calls to
-GPT / Gemini / Grok / Perplexity / DeepSeek through OpenRouter's unified
-OpenAI-compatible chat-completions endpoint.
+v2.0 (2026-06-04): rewritten to fix the root cause of internal/external review
+gap. Previous version sent raw LaTeX source; this version:
+  1. Extracts clean text from the compiled PDF via pdftotext
+  2. Sends the PDF natively to Gemini (via Google Generative AI SDK)
+  3. Uses direct vendor SDKs (OpenAI, xAI, Perplexity, Gemini) instead of
+     routing everything through OpenRouter (eliminates the gpt-4o silent
+     fallback problem)
+  4. Uses a demanding PRD/MNRAS referee-grade prompt with no findings cap
+  5. Keeps OpenRouter as a fallback if a direct SDK call fails
 
 Usage:
-    python tools/real_cross_vendor_review.py <paper_tex_path> <round_label>
+    python tools/real_cross_vendor_review.py <pdf_path> <round_label> <paper_tag> [context]
 
-Reads OPENROUTER_API_KEY from .env.local. Saves per-reviewer findings to
-project-context/peer-reviews/<round_label>_<reviewer>.md.
+All API keys read from bigbounce/.env.local (fallback: youmd/.env.local).
 """
 from __future__ import annotations
 
+import base64
 import json
 import os
 import re
+import subprocess
 import sys
 import time
 import ssl
@@ -32,131 +39,292 @@ except Exception:
     _SSL_CTX = ssl.create_default_context()
 
 REPO = Path("/Users/houstongolden/Desktop/CODE_2025/bigbounce")
-ENV_LOCAL = REPO / ".env.local"
-
+ENV_PATHS = [
+    REPO / ".env.local",
+    Path("/Users/houstongolden/Desktop/CODE_2025/youmd/.env.local"),
+]
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 
-# 5 real frontier models from different vendors, mapped to the project's
-# 5 reviewer personas. Models chosen for tier + variety.
-#
-# "model" is the preferred (latest, highest-tier) model ID; "fallback" is
-# used if OpenRouter returns 404 / model_not_found for the preferred one.
-# "reasoning_effort" enables higher-budget thinking on supported models
-# (OpenAI o-series-style, Gemini thinking, Grok reasoning, DeepSeek R1).
-# Perplexity Sonar's web-search-augmented role doesn't benefit from
-# explicit reasoning effort.
+# ---------------------------------------------------------------------------
+# Reviewer definitions — using direct SDKs where possible
+# ---------------------------------------------------------------------------
 REVIEWERS = {
-    "GPT5_methodology": {
-        "model": "openai/gpt-5.5",
-        "fallback": "openai/gpt-5.5",
-        "reasoning_effort": "high",
-        "persona": "GPT-5 methodology reviewer",
+    "OpenAI_methodology": {
+        "sdk": "openai",
+        "model": "o3",
+        "fallback_model": "gpt-4.1",
+        "or_model": "openai/gpt-4.1",
+        "persona": "Physical Review D methodology referee",
         "focus": (
-            "Methodology rigor: derivations, dimensional analysis, statistical-method "
-            "scrutiny, internal arithmetic consistency. Flag overclaim of statistical "
-            "significance. Check that error bars propagate correctly through the "
-            "systematic budget. Audit any 'Bayes factor' / 'likelihood ratio' framing "
-            "for proper marginalization vs parameter-shift."
+            "Methodology rigor: statistical-method validity, derivation chains, "
+            "dimensional analysis, internal arithmetic consistency, error propagation "
+            "through the systematic budget. Audit every scalar reported in the abstract "
+            "and conclusions for a traceable source. Flag overclaims of statistical "
+            "significance. Check that null-model σ values are on comparable scales and "
+            "not mixing incommensurable procedures. Flag if the primary estimator is "
+            "not pre-declared before looking at data."
         ),
     },
-    "Gemini31Pro_cosmology": {
-        "model": "google/gemini-3.1-pro-preview",
-        "fallback": "google/gemini-2.5-pro",
-        "reasoning_effort": "high",
-        "persona": "Gemini-3.1-Pro cosmology-physics reviewer",
+    "Gemini_cosmology": {
+        "sdk": "gemini_native_pdf",
+        "model": "gemini-2.5-pro",
+        "fallback_model": "gemini-2.0-flash",
+        "or_model": "google/gemini-2.5-pro",
+        "persona": "Physical Review D cosmology-physics referee",
         "focus": (
             "Theoretical physics: gauge-frame vs physical-frame distinctions, GR "
-            "projection effects, model-class scope boundaries, EFT counting, "
-            "consistency-relation applicability. Flag any 'mechanism-independent' "
-            "claim that overstates UV-completion independence. Check parity-violation "
-            "/ ALP / Chern-Simons references against standard reviews."
+            "projection effects, model-class scope, EFT counting, consistency-relation "
+            "applicability. Is the paper appropriately scoped for its dataset? Are "
+            "parity-odd vs parity-even observables kept strictly separate? Does the "
+            "claimed null result scope match the analysis actually performed? Is the "
+            "paper too long for the claimed contribution — does it need restructuring "
+            "into a main text + appendix?"
         ),
     },
-    "Grok43_brutal": {
-        "model": "x-ai/grok-4.3",
-        "fallback": "x-ai/grok-4",
-        "reasoning_effort": "high",
-        "persona": "Grok-4.3 brutal-honesty reviewer",
+    "Grok_brutal": {
+        "sdk": "xai",
+        "model": "grok-4",
+        "fallback_model": "grok-3",
+        "or_model": "x-ai/grok-4",
+        "persona": "Brutal-honesty journal referee (treating this as a real PRD submission)",
         "focus": (
-            "Cut through narrative inflation. Flag overclaim, false confidence, "
-            "headline numbers that aren't load-bearing, anything written to dodge a "
-            "reviewer rather than to be true. Is the central claim actually new? "
-            "Are 'first', 'novel', 'unprecedented' framings honest given the actual "
-            "literature?"
+            "Cut through narrative inflation. Is the central claim actually new and "
+            "significant? Are 'first', 'novel', 'unprecedented' framings honest given "
+            "the literature? Is every headline σ value earned by the methodology or is "
+            "it cherry-picked? Does the abstract honestly represent what the body "
+            "proves? Flag overclaims, false confidence, weak hedges presented as "
+            "strong conclusions. Is the manuscript journal-clean — no internal audit "
+            "tags, no review-log prose, no version-history language, no 'queued' "
+            "placeholders, no duplicate phrases?"
         ),
     },
-    "PerplexitySonarPro_citations": {
-        "model": "perplexity/sonar-pro-search",
-        "fallback": "perplexity/sonar-pro-search",
-        # No reasoning_effort: Sonar's web-search augmentation does the work.
-        "persona": "Perplexity Sonar Pro citation-chain forensic auditor",
+    "Perplexity_citations": {
+        "sdk": "perplexity",
+        "model": "sonar-pro",
+        "fallback_model": "sonar",
+        "or_model": "perplexity/sonar-pro-search",
+        "persona": "Citation forensics auditor with real-time web search access",
         "focus": (
-            "Citation forensics — does each cited paper actually say what's claimed? "
-            "Are arXiv IDs correct? Are titles real (not LLM-confabulated)? Are "
-            "authors and journal venues correct? Use web search to verify against "
-            "arXiv.org / ADS / publisher sites. Flag any fused metadata "
-            "(title from one paper + arXiv ID from another)."
+            "Verify every cited paper actually says what is claimed. Are arXiv IDs "
+            "correct and resolving to the right paper? Are titles, authors, and venues "
+            "accurate? Use web search against arXiv.org and NASA ADS to check. Flag "
+            "fused metadata, DOI mismatches, 'in preparation' papers that may now be "
+            "public. Check that all quoted statistics from prior work can be "
+            "traced to the cited paper's abstract or tables."
         ),
     },
-    "DeepSeekV4Pro_confab": {
-        "model": "deepseek/deepseek-v4-pro",
-        "fallback": "deepseek/deepseek-r1",
-        "reasoning_effort": "high",
-        "persona": "DeepSeek-V4-Pro confabulation-hunter (reasoning mode)",
+    "DeepSeek_confab": {
+        "sdk": "openrouter",
+        "model": "deepseek/deepseek-r1-0528",
+        "fallback_model": "deepseek/deepseek-r1",
+        "or_model": "deepseek/deepseek-r1-0528",
+        "persona": "Confabulation-hunter referee (reasoning mode)",
         "focus": (
             "Paranoid about numbers without traceable sources. For every load-bearing "
-            "scalar in the abstract and conclusions, ask: is there a JSON/script/dataset "
-            "on disk that produces this number? Flag headline figures with no provenance "
-            "and arithmetic that can't be reproduced from displayed values."
+            "scalar in the abstract and conclusions: is there a JSON/script/dataset "
+            "that produces this number? Flag headline figures with no provenance and "
+            "arithmetic that cannot be reproduced from displayed values alone. Check "
+            "that the decomposition 99.3%/12%/88%/25% adds up consistently and the "
+            "narrative doesn't contradict itself between sections."
         ),
     },
 }
 
+# ---------------------------------------------------------------------------
+# The PRD-grade review prompt — no caps, no softening
+# ---------------------------------------------------------------------------
+REVIEW_PROMPT_TEMPLATE = """\
+You are a {persona} for a cosmology methods paper submitted to Physical Review D.
 
-def load_api_key() -> str:
-    text = ENV_LOCAL.read_text()
-    for line in text.splitlines():
-        if line.startswith("OPENROUTER_API_KEY="):
-            return line.split("=", 1)[1].strip().strip('"').strip("'")
-    raise RuntimeError("OPENROUTER_API_KEY not found in .env.local")
+PAPER: {paper_tag}
+ROUND: {round_label}
+CHANGES SINCE LAST ROUND: {round_context}
+PAPER LENGTH: {page_count} pages (PRD typical is 15-30pp for a methods/catalog paper)
 
+YOUR ROLE: {focus}
 
-def build_prompt(paper_text: str, persona: str, focus: str, round_context: str) -> str:
-    return f"""You are a {persona} doing an adversarial peer review of a cosmology paper.
+INSTRUCTIONS:
+1. Read the full paper carefully.
+2. Write a complete referee report. There is NO cap on the number of findings — list everything you genuinely find.
+3. Classify each finding as:
+   - ESSENTIAL: paper cannot be accepted without this fix
+   - MAJOR: significant revision required
+   - MINOR: should be addressed but paper can proceed with editor discretion
+   - NIT: very minor, fix if time permits
+4. For each finding provide:
+   - ID (e.g. {paper_tag}-B1, {paper_tag}-M3, etc.)
+   - Section and page number (if visible)
+   - Specific problem statement (be concrete, quote the problematic text)
+   - Required fix
+5. Do NOT soften findings. Do NOT praise things that are merely adequate.
+6. If the paper is too long for the claimed contribution, say so and state the recommended maximum page count.
+7. If any σ values from different null procedures are presented as if they're on the same scale without qualification, flag this as ESSENTIAL.
+8. If any version-history language, internal audit tags, or review-log artifacts appear in the body prose, flag each one.
+9. If any duplicate phrases appear (e.g. "canonical canonical-mask"), flag them.
+10. Check that the abstract accurately summarizes what the paper proves — not what the paper hopes to prove.
 
-ROUND CONTEXT: {round_context}
+End your report with:
+## Summary recommendation
+One of: REJECT | MAJOR REVISIONS | MINOR REVISIONS | ACCEPT WITH MINOR CORRECTIONS | ACCEPT
 
-YOUR FOCUS:
-{focus}
+Then one paragraph justifying your recommendation.
 
-YOUR TASK:
-1. Read the paper below in full.
-2. Return AT MOST 6 findings, each classified BLOCKER / MAJOR / minor / nit.
-3. For each finding give: ID (e.g. PAPER-{persona[:3].upper()}-B1), line number or section, concrete issue, 1-2 sentence fix.
-4. Be terse. No padding. No diplomatic softening. If you find nothing blocker-grade, say so.
-5. Output as a markdown file with H2 sections per finding.
-
-PAPER TEXT (LaTeX source follows):
-
-```latex
+PAPER TEXT:
 {paper_text}
-```
+"""
 
-Return your full review as markdown."""
+# ---------------------------------------------------------------------------
+# Key loading
+# ---------------------------------------------------------------------------
+def load_keys() -> dict[str, str]:
+    keys: dict[str, str] = {}
+    for env_path in ENV_PATHS:
+        if not env_path.exists():
+            continue
+        for line in env_path.read_text().splitlines():
+            line = line.strip()
+            if "=" in line and not line.startswith("#"):
+                k, _, v = line.partition("=")
+                k = k.strip()
+                v = v.strip().strip('"').strip("'")
+                if v and k not in keys:
+                    keys[k] = v
+    return keys
+
+# ---------------------------------------------------------------------------
+# PDF text extraction
+# ---------------------------------------------------------------------------
+def extract_pdf_text(pdf_path: Path) -> str:
+    """Extract clean text from PDF using pdftotext. Falls back to pypdf."""
+    try:
+        result = subprocess.run(
+            ["pdftotext", "-layout", str(pdf_path), "-"],
+            capture_output=True, text=True, timeout=60,
+        )
+        if result.returncode == 0 and len(result.stdout) > 1000:
+            return result.stdout
+    except Exception as e:
+        print(f"[warn] pdftotext failed: {e}", file=sys.stderr)
+
+    try:
+        from pypdf import PdfReader
+        reader = PdfReader(str(pdf_path))
+        pages = [page.extract_text() or "" for page in reader.pages]
+        return "\n\n".join(pages)
+    except Exception as e:
+        print(f"[warn] pypdf failed: {e}", file=sys.stderr)
+
+    raise RuntimeError(f"Cannot extract text from {pdf_path}")
 
 
-def call_openrouter(api_key: str, model: str, prompt: str, max_tokens: int = 16000, timeout: int = 360, reasoning_effort: str | None = None) -> dict:
+def get_page_count(pdf_path: Path) -> int:
+    try:
+        result = subprocess.run(
+            ["pdfinfo", str(pdf_path)], capture_output=True, text=True, timeout=10,
+        )
+        for line in result.stdout.splitlines():
+            if line.startswith("Pages:"):
+                return int(line.split(":")[1].strip())
+    except Exception:
+        pass
+    return 0
+
+# ---------------------------------------------------------------------------
+# SDK call implementations
+# ---------------------------------------------------------------------------
+def call_openai_sdk(keys: dict, model: str, prompt: str) -> tuple[str, str]:
+    """Direct OpenAI SDK call. Returns (text, model_used)."""
+    from openai import OpenAI
+    client = OpenAI(api_key=keys["OPENAI_API_KEY"])
+    resp = client.chat.completions.create(
+        model=model,
+        messages=[{"role": "user", "content": prompt}],
+        max_completion_tokens=32000,
+    )
+    model_used = resp.model
+    content = resp.choices[0].message.content or ""
+    # Detect silent fallback to inferior model
+    if any(x in model_used.lower() for x in ["gpt-4o", "gpt-3.5", "gpt-4-turbo", "gpt-4-0"]):
+        raise RuntimeError(f"FALLBACK DETECTED: requested {model!r} but got {model_used!r}")
+    return content, model_used
+
+
+def call_gemini_native_pdf(keys: dict, model: str, prompt: str, pdf_path: Path) -> tuple[str, str]:
+    """Gemini with native PDF document understanding — no text extraction needed."""
+    import google.generativeai as genai
+    genai.configure(api_key=keys["GOOGLE_GEMINI_API_KEY"])
+
+    pdf_bytes = pdf_path.read_bytes()
+    pdf_size_mb = len(pdf_bytes) / 1024 / 1024
+
+    if pdf_size_mb > 19:
+        # Use Files API for large PDFs
+        import tempfile
+        with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as tmp:
+            tmp.write(pdf_bytes)
+            tmp_path = tmp.name
+        uploaded = genai.upload_file(tmp_path, mime_type="application/pdf")
+        # Wait for processing
+        import time as _time
+        for _ in range(30):
+            if uploaded.state.name == "ACTIVE":
+                break
+            _time.sleep(2)
+            uploaded = genai.get_file(uploaded.name)
+        file_ref = uploaded
+    else:
+        # Inline for smaller PDFs
+        file_ref = {"mime_type": "application/pdf", "data": base64.b64encode(pdf_bytes).decode()}
+
+    gmodel = genai.GenerativeModel(model)
+    resp = gmodel.generate_content(
+        [file_ref, prompt],
+        generation_config={"max_output_tokens": 32000, "temperature": 0.3},
+    )
+    return resp.text, model
+
+
+def call_xai_sdk(keys: dict, model: str, prompt: str) -> tuple[str, str]:
+    """xAI Grok via OpenAI-compatible SDK."""
+    from openai import OpenAI
+    client = OpenAI(
+        api_key=keys["XAI_API_KEY"],
+        base_url="https://api.x.ai/v1",
+    )
+    resp = client.chat.completions.create(
+        model=model,
+        messages=[{"role": "user", "content": prompt}],
+        max_tokens=32000,
+        temperature=0.3,
+    )
+    return resp.choices[0].message.content or "", resp.model
+
+
+def call_perplexity_sdk(keys: dict, model: str, prompt: str) -> tuple[str, str]:
+    """Perplexity via OpenAI-compatible SDK."""
+    from openai import OpenAI
+    client = OpenAI(
+        api_key=keys["PERPLEXITY_API_KEY"],
+        base_url="https://api.perplexity.ai",
+    )
+    resp = client.chat.completions.create(
+        model=model,
+        messages=[{"role": "user", "content": prompt}],
+        max_tokens=16000,
+        temperature=0.2,
+    )
+    return resp.choices[0].message.content or "", resp.model
+
+
+def call_openrouter(api_key: str, model: str, prompt: str, timeout: int = 360) -> tuple[str, str]:
+    """OpenRouter fallback."""
     payload = {
         "model": model,
         "messages": [{"role": "user", "content": prompt}],
-        "max_tokens": max_tokens,
+        "max_tokens": 32000,
         "temperature": 0.3,
+        "reasoning": {"effort": "high"},
     }
-    if reasoning_effort:
-        # OpenRouter normalizes the reasoning-effort field across vendors:
-        # OpenAI o-series, Gemini thinking-mode, Grok reasoning, DeepSeek R1.
-        # See https://openrouter.ai/docs/use-cases/reasoning-tokens
-        payload["reasoning"] = {"effort": reasoning_effort}
     body = json.dumps(payload).encode("utf-8")
     req = urllib.request.Request(
         OPENROUTER_URL,
@@ -165,113 +333,169 @@ def call_openrouter(api_key: str, model: str, prompt: str, max_tokens: int = 160
             "Authorization": f"Bearer {api_key}",
             "Content-Type": "application/json",
             "HTTP-Referer": "https://bigbounce.hubify.app",
-            "X-Title": "BigBounce-cross-vendor-review",
+            "X-Title": "BigBounce-cross-vendor-review-v2",
         },
         method="POST",
     )
-    try:
-        with urllib.request.urlopen(req, timeout=timeout, context=_SSL_CTX) as resp:
-            return json.loads(resp.read().decode("utf-8"))
-    except urllib.error.HTTPError as e:
-        body = e.read().decode("utf-8", errors="replace")
-        return {"error": {"status": e.code, "body": body}}
-    except Exception as e:
-        return {"error": {"exception": repr(e)}}
+    with urllib.request.urlopen(req, timeout=timeout, context=_SSL_CTX) as resp:
+        result = json.loads(resp.read().decode("utf-8"))
+    model_used = result.get("model", model)
+    content = result["choices"][0]["message"]["content"]
+    return content, model_used
 
 
-def call_with_fallback(api_key: str, primary: str, fallback: str, prompt: str, reasoning_effort: str | None = None) -> tuple[dict, str]:
-    """Try primary model; on 404/model_not_found, fall back. Returns (result, model_used)."""
-    res = call_openrouter(api_key, primary, prompt, reasoning_effort=reasoning_effort)
-    if "error" in res:
-        err_body = (res["error"].get("body") or "").lower()
-        status = res["error"].get("status")
-        is_model_missing = status == 404 or "model" in err_body and ("not found" in err_body or "no allowed providers" in err_body or "no endpoints" in err_body)
-        if is_model_missing and fallback and fallback != primary:
-            res2 = call_openrouter(api_key, fallback, prompt, reasoning_effort=reasoning_effort)
-            return res2, fallback
-    return res, primary
+# ---------------------------------------------------------------------------
+# Per-reviewer dispatch with fallback chain
+# ---------------------------------------------------------------------------
+def run_reviewer(
+    name: str,
+    cfg: dict,
+    paper_text: str,
+    pdf_path: Path,
+    page_count: int,
+    round_label: str,
+    paper_tag: str,
+    round_context: str,
+    keys: dict,
+    out_dir: Path,
+) -> dict:
+    prompt = REVIEW_PROMPT_TEMPLATE.format(
+        persona=cfg["persona"],
+        paper_tag=paper_tag,
+        round_label=round_label,
+        round_context=round_context,
+        page_count=page_count,
+        focus=cfg["focus"],
+        paper_text=paper_text,
+    )
 
-
-def run_reviewer(name: str, cfg: dict, paper_text: str, round_label: str, paper_tag: str, round_context: str, api_key: str, out_dir: Path) -> dict:
-    persona = cfg["persona"]
-    prompt = build_prompt(paper_text, persona, cfg["focus"], round_context)
     t0 = time.time()
-    result, model_used = call_with_fallback(
-        api_key,
-        primary=cfg["model"],
-        fallback=cfg.get("fallback", cfg["model"]),
-        prompt=prompt,
-        reasoning_effort=cfg.get("reasoning_effort"),
-    )
+    content = ""
+    model_used = "unknown"
+    error_msg = ""
+    fallback_used = False
+
+    sdk = cfg["sdk"]
+    try:
+        if sdk == "openai":
+            try:
+                content, model_used = call_openai_sdk(keys, cfg["model"], prompt)
+            except Exception as e:
+                print(f"[{name}] primary model failed ({e}), trying fallback {cfg['fallback_model']}", file=sys.stderr)
+                content, model_used = call_openai_sdk(keys, cfg["fallback_model"], prompt)
+                fallback_used = True
+        elif sdk == "gemini_native_pdf":
+            try:
+                content, model_used = call_gemini_native_pdf(keys, cfg["model"], prompt, pdf_path)
+            except Exception as e:
+                print(f"[{name}] Gemini native PDF failed ({e}), trying OpenRouter text", file=sys.stderr)
+                content, model_used = call_openrouter(keys.get("OPENROUTER_API_KEY", ""), cfg["or_model"], prompt)
+                fallback_used = True
+        elif sdk == "xai":
+            try:
+                content, model_used = call_xai_sdk(keys, cfg["model"], prompt)
+            except Exception as e:
+                print(f"[{name}] xAI SDK failed ({e}), trying OpenRouter", file=sys.stderr)
+                content, model_used = call_openrouter(keys.get("OPENROUTER_API_KEY", ""), cfg["or_model"], prompt)
+                fallback_used = True
+        elif sdk == "perplexity":
+            try:
+                content, model_used = call_perplexity_sdk(keys, cfg["model"], prompt)
+            except Exception as e:
+                print(f"[{name}] Perplexity SDK failed ({e}), trying OpenRouter", file=sys.stderr)
+                content, model_used = call_openrouter(keys.get("OPENROUTER_API_KEY", ""), cfg["or_model"], prompt)
+                fallback_used = True
+        elif sdk == "openrouter":
+            content, model_used = call_openrouter(keys.get("OPENROUTER_API_KEY", ""), cfg["model"], prompt)
+    except Exception as e:
+        error_msg = repr(e)
+        content = f"## Reviewer call failed\n\n```\n{error_msg}\n```\n"
+
     dt = time.time() - t0
+    fallback_note = f" [FALLBACK from {cfg['model']}]" if fallback_used else ""
+    pdf_note = " [NATIVE PDF — Gemini sees rendered document]" if sdk == "gemini_native_pdf" and not fallback_used else " [PDF TEXT via pdftotext]"
 
-    out_path = out_dir / f"{round_label}_{paper_tag}_R-round_real_{name}.md"
-    fallback_note = ""
-    if model_used != cfg["model"]:
-        fallback_note = f" (FALLBACK from `{cfg['model']}` — primary unavailable)"
-    reasoning_note = ""
-    if cfg.get("reasoning_effort"):
-        reasoning_note = f"\n**Reasoning effort**: `{cfg['reasoning_effort']}`"
     header = (
-        f"# {paper_tag} R-round — REAL cross-vendor — {persona}\n\n"
-        f"**Model**: `{model_used}`{fallback_note} (via OpenRouter){reasoning_note}\n"
-        f"**Round**: {round_label}\n"
-        f"**Wall time**: {dt:.1f}s\n"
-        f"**Persona focus**: {cfg['focus']}\n\n"
-        f"---\n\n"
+        f"# {paper_tag} {round_label} — {cfg['persona']}\n\n"
+        f"**Model**: `{model_used}`{fallback_note}\n"
+        f"**Input format**: {pdf_note}\n"
+        f"**Wall time**: {dt:.1f}s\n\n---\n\n"
     )
 
-    if "error" in result:
-        body = f"## Reviewer call failed\n\n```json\n{json.dumps(result['error'], indent=2)[:4000]}\n```\n"
-    else:
-        try:
-            content = result["choices"][0]["message"]["content"]
-            usage = result.get("usage", {})
-            reasoning_tokens = usage.get("completion_tokens_details", {}).get("reasoning_tokens", 0) if isinstance(usage.get("completion_tokens_details"), dict) else 0
-            reasoning_line = f", reasoning={reasoning_tokens}" if reasoning_tokens else ""
-            body = (
-                f"**Tokens**: prompt={usage.get('prompt_tokens', '?')}, "
-                f"completion={usage.get('completion_tokens', '?')}{reasoning_line}, "
-                f"total={usage.get('total_tokens', '?')}\n\n---\n\n{content}\n"
-            )
-        except Exception as e:
-            body = f"## Parse failure\n\n```json\n{json.dumps(result, indent=2)[:4000]}\n```\n\n`{repr(e)}`\n"
+    out_path = out_dir / f"{round_label}_{paper_tag}_{name}.md"
+    out_path.write_text(header + content)
 
-    out_path.write_text(header + body)
-    return {"name": name, "model": model_used, "duration_s": dt, "out": str(out_path), "ok": "error" not in result}
+    ok = bool(content and "failed" not in content[:50].lower() and len(content) > 200)
+    return {
+        "name": name,
+        "model": model_used,
+        "duration_s": dt,
+        "out": str(out_path),
+        "ok": ok,
+        "fallback": fallback_used,
+        "error": error_msg,
+    }
 
 
+# ---------------------------------------------------------------------------
+# Main
+# ---------------------------------------------------------------------------
 def main() -> int:
     if len(sys.argv) < 4:
-        print(f"Usage: {sys.argv[0]} <paper_tex_path> <round_label> <paper_tag> [round_context]", file=sys.stderr)
+        print(
+            f"Usage: {sys.argv[0]} <pdf_path> <round_label> <paper_tag> [round_context]\n"
+            f"  pdf_path: compiled PDF (not .tex) — e.g. pipelines/p2_chirality/chirality_catalog_paper.pdf\n"
+            f"  round_label: e.g. 2026-06-04_1400pt\n"
+            f"  paper_tag: P1A | P1B | P2 | P3 | P4 | P5\n",
+            file=sys.stderr,
+        )
         return 1
-    tex_path = Path(sys.argv[1])
-    round_label = sys.argv[2]  # e.g. 2026-05-14_1100pt
-    paper_tag = sys.argv[3]    # e.g. P1A
-    round_context = sys.argv[4] if len(sys.argv) >= 5 else "Cross-vendor adversarial peer-review round."
 
-    api_key = load_api_key()
-    paper_text = tex_path.read_text()
+    pdf_path = Path(sys.argv[1])
+    round_label = sys.argv[2]
+    paper_tag = sys.argv[3]
+    round_context = sys.argv[4] if len(sys.argv) >= 5 else (
+        "Full adversarial peer review — treat this as a real PRD/MNRAS submission."
+    )
+
+    if not pdf_path.exists():
+        print(f"ERROR: PDF not found: {pdf_path}", file=sys.stderr)
+        return 1
+
+    keys = load_keys()
+    missing = [k for k in ["OPENAI_API_KEY", "GOOGLE_GEMINI_API_KEY", "XAI_API_KEY", "PERPLEXITY_API_KEY"] if k not in keys]
+    if missing:
+        print(f"[warn] Missing direct SDK keys: {missing} — will fall back to OpenRouter for those reviewers", file=sys.stderr)
+
+    print(f"[v2 cross-vendor review] Extracting PDF text from {pdf_path.name}...", flush=True)
+    paper_text = extract_pdf_text(pdf_path)
+    page_count = get_page_count(pdf_path)
+    print(f"[v2 cross-vendor review] Extracted {len(paper_text):,} chars from {page_count} pages", flush=True)
+    print(f"[v2 cross-vendor review] Dispatching {len(REVIEWERS)} reviewers in parallel on PDF-extracted text", flush=True)
+
     out_dir = REPO / "project-context" / "peer-reviews"
     out_dir.mkdir(parents=True, exist_ok=True)
-
-    print(f"[real-xreview] {paper_tag} — {len(paper_text)} chars — dispatching {len(REVIEWERS)} reviewers in parallel", flush=True)
 
     results = []
     with ThreadPoolExecutor(max_workers=len(REVIEWERS)) as pool:
         futures = {
-            pool.submit(run_reviewer, name, cfg, paper_text, round_label, paper_tag, round_context, api_key, out_dir): name
+            pool.submit(
+                run_reviewer,
+                name, cfg, paper_text, pdf_path, page_count,
+                round_label, paper_tag, round_context, keys, out_dir,
+            ): name
             for name, cfg in REVIEWERS.items()
         }
         for fut in as_completed(futures):
             res = fut.result()
-            status = "OK " if res["ok"] else "FAIL"
-            print(f"[{status}] {res['name']:30s} {res['model']:40s} {res['duration_s']:6.1f}s → {res['out']}", flush=True)
+            status = "OK  " if res["ok"] else "FAIL"
+            fb = " [fallback]" if res["fallback"] else ""
+            print(f"[{status}] {res['name']:28s} {res['model']:35s} {res['duration_s']:6.1f}s{fb} → {Path(res['out']).name}", flush=True)
             results.append(res)
 
     ok_count = sum(1 for r in results if r["ok"])
-    print(f"\n[real-xreview] done: {ok_count}/{len(results)} reviewers landed", flush=True)
-    return 0 if ok_count else 2
+    print(f"\n[v2 cross-vendor review] Complete: {ok_count}/{len(results)} reviewers OK", flush=True)
+    return 0 if ok_count >= 3 else 2
 
 
 if __name__ == "__main__":
