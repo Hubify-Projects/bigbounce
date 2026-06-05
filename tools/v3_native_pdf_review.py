@@ -384,14 +384,21 @@ def call_openai_responses(keys: dict, model: str, prompt: str, pdf_path: Path) -
         }
     ]
 
+    # gpt-5 with reasoning_effort=high can consume tens of thousands of tokens
+    # before producing visible output. Cap output at 64000 (max), use medium
+    # reasoning for gpt-5 family to balance depth and output room.
+    is_gpt5 = "gpt-5" in model.lower()
+    effort = "medium" if is_gpt5 else "high"
+    max_out = 64000 if is_gpt5 else 32000
+
     try:
         # Try with reasoning param first (works for o3, o3-pro, gpt-5)
         try:
             resp = client.responses.create(
                 model=model,
-                reasoning={"effort": "high"},
+                reasoning={"effort": effort},
                 input=common_input,
-                max_output_tokens=32000,
+                max_output_tokens=max_out,
             )
         except Exception as e:
             err_msg = str(e).lower()
@@ -400,7 +407,7 @@ def call_openai_responses(keys: dict, model: str, prompt: str, pdf_path: Path) -
                 resp = client.responses.create(
                     model=model,
                     input=common_input,
-                    max_output_tokens=32000,
+                    max_output_tokens=max_out,
                 )
             else:
                 raise

@@ -59,15 +59,27 @@ for pid in "${pids[@]}"; do
   wait "$pid" || true
 done
 
-echo "[autoloop $TS] all 6 reviews completed; running synthesis"
+echo "[autoloop $TS] all 6 reviews completed; running meta-reviewer + synthesis"
 
-total_essential=0
+# v3.2 meta-reviewer (parallel)
+meta_pids=()
+for paper in P1A P1B P2 P3 P4 P5; do
+  pdf=${PDFS[$paper]}
+  python3 tools/v3_meta_review.py "$pdf" "$ROUND_LABEL" "$paper" > /tmp/autoloop_meta_${paper}.log 2>&1 &
+  meta_pids+=($!)
+done
+for pid in "${meta_pids[@]}"; do
+  wait "$pid" || true
+done
+
 for paper in P1A P1B P2 P3 P4 P5; do
   python3 tools/v3_review_synthesis.py "$ROUND_LABEL" "$paper" > /dev/null 2>&1
   total=$(grep "Total findings" "project-context/peer-reviews/${ROUND_LABEL}_${paper}_SYNTHESIS.md" 2>/dev/null | grep -oE '[0-9]+' | head -1 || echo 0)
   consensus=$(grep -c "CONSENSUS" "project-context/peer-reviews/${ROUND_LABEL}_${paper}_SYNTHESIS.md" 2>/dev/null || echo 0)
-  echo "  - $paper: $total findings, $consensus consensus" >> "$LOG"
-  echo "  $paper: $total findings, $consensus consensus"
+  meta_exists="no"
+  [ -f "project-context/peer-reviews/${ROUND_LABEL}_${paper}_META_REVIEW.md" ] && meta_exists="yes"
+  echo "  - $paper: $total findings, $consensus consensus, meta=$meta_exists" >> "$LOG"
+  echo "  $paper: $total findings, $consensus consensus, meta=$meta_exists"
 done
 
 echo "[autoloop $TS] complete. log appended to $LOG"
