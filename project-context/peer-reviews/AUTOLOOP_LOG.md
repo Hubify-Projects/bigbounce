@@ -759,3 +759,10 @@ Anthropic still failing (confirmed at fire 11 launch). Fire 10 P5 meta still
 running in background — won't conflict with fire 11 (different round labels).
 
 Coverage: 4/5 reviewers (Gemini + OpenAI + Grok + Perplexity work; Claude fails).
+  - P1A: 107 findings, 5 consensus, meta=yes (   10049 chars)
+  - P1B: 83 findings, 1 consensus, meta=yes (   10931 chars)
+  - P2: 89 findings, 1 consensus, meta=yes (    8114 chars)
+  - P3: 21 findings, 0
+0 consensus, meta=yes (   10321 chars)
+  - P4: 89 findings, 8 consensus, meta=yes (   13101 chars)
+  - P5: 57 findings, 4 consensus, meta=yes (   11726 chars)

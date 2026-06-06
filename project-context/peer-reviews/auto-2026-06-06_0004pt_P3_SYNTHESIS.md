@@ -1,0 +1,59 @@
+# P3 auto-2026-06-06_0004pt — v3 native-PDF cross-vendor SYNTHESIS
+
+**Reviewers**: P3_Claude_brutal, P3_Gemini_cosmology, P3_Grok_brutal, P3_META_REVIEW, P3_OpenAI_methodology, P3_Perplexity_citations
+**Total findings (across all reviewers)**: 21
+**Distinct consensus groups**: 4
+
+## Per-reviewer finding counts
+
+| Reviewer | ESSENTIAL | MAJOR | MINOR | NIT |
+|----------|-----------|-------|-------|-----|
+| P3_Claude_brutal | 0 | 0 | 0 | 0 |
+| P3_Gemini_cosmology | 0 | 0 | 0 | 0 |
+| P3_Grok_brutal | 3 | 4 | 0 | 3 |
+| P3_META_REVIEW | 2 | 5 | 3 | 1 |
+| P3_OpenAI_methodology | 0 | 0 | 0 | 0 |
+| P3_Perplexity_citations | 0 | 0 | 0 | 0 |
+
+---
+
+## Consensus-grouped findings (most reviewers first)
+
+### `table_ii` — ESSENTIAL — _single-reviewer_ (1 reviewer)
+
+Reviewers: P3_META_REVIEW
+
+- **[P3_META_REVIEW/P3-META-E1/ESSENTIAL]**: P3-META-E1 - Severity: ESSENTIAL - Section + page: III.C (pp. 5–6) vs. Table II caption (p. 8) - Why others missed it: Each referee checked SDSS rates and thresholds but not the internal logic of the SDSS-by-class table against the SIMBAD match rate. - Specific problem (quote): SDSS text: “SIMBAD-unmatched: 90%.” Table II caption: “The 52.7% ‘Uncategorized’ fraction reflects objects that match a SIMBAD entry but lack a specific astrophysical type classification in the database.” - Required fix: Reconcile the SDSS SIMBAD-match accounting. If “Uncategorized” is a pipeline class unrelated to SIMB…
+
+### `table_iv` — MAJOR — _single-reviewer_ (1 reviewer)
+
+Reviewers: P3_META_REVIEW
+
+- **[P3_META_REVIEW/P3-META-M2/MAJOR]**: P3-META-M2 - Severity: MAJOR - Section + page: II.B (p. 3), VI.D(b) Table IV (p. 13) - Why others missed it: They noted domain-shift issues but not the implication of the “>50% anomalies” statement for the robustness of the DESI S>5 thresholding. - Specific problem (quote): “Applying [the S > 5 threshold] to a random uncurated SPARCL sweep flags > 50% of spectra (a catalog-curation effect, not a threshold artifact…).” This admits that the principal DESI anomaly rate (0.87%) depends critically on prior catalog curation; the S>5 threshold is not portable or survey-agnostic as implied elsewhere. …
+
+### `future_date` — NIT — _single-reviewer_ (1 reviewer)
+
+Reviewers: P3_Grok_brutal
+
+- **[P3_Grok_brutal/P3-N1/NIT]**: **P3-N1 (MINOR)** — Title page: “(Dated: June 2026)” is a future date. Replace with the actual submission or preprint date.
+
+## Other findings (18)
+
+- **[P3_Grok_brutal/P3-E1/ESSENTIAL]**: **P3-E1 (ESSENTIAL)** — Abstract (p. 1) and §I (p. 1): The claim “largest-scale application of autoencoder anomaly detection across seven astronomical archives” and the headline number 378,280 are not accompanied by any quantitative comparison to the prior single-survey record (Liang et al. 2023, 250 k spectra). The 73× “like-for-like increase” is stated only for the DESI-only subset; the multi-su…
+- **[P3_Grok_brutal/P3-E2/ESSENTIAL]**: **P3-E2 (ESSENTIAL)** — Abstract (p. 1) and §V B (p. 10): The Fisher forecast \(\sigma(f_{\rm NL})=8.14\) (7.9 % improvement) is presented immediately beside the single-tracer baseline 8.98 without the explicit qualifier “not directly comparable” required by PRD standards for juxtaposed null-procedure results. The improvement is <1\(\sigma\) and vanishes under the GS correction. Required fix: dele…
+- **[P3_Grok_brutal/P3-E3/ESSENTIAL]**: **P3-E3 (ESSENTIAL)** — §II D (p. 3) and Table I (p. 7): The Path-C “native retrain” protocol is declared the core methodology, yet the published headline numbers still contain the cross-transfer baseline for SDSS, LAMOST and Planck. The 378,280 figure therefore mixes two distinct pipelines. Required fix: publish only the native-retrain numbers as the primary catalog or clearly segregate the two s…
+- **[P3_Grok_brutal/P3-M1/MAJOR]**: **P3-M1 (MAJOR)** — §III D (p. 4) and §VI A (p. 12): 98 % of the LAMOST anomalies are identified as a training-bias artifact (blue-excess). The survey nevertheless contributes 44 k objects to the headline catalog. No quantitative “science-grade” subset is defined. Required fix: either excise LAMOST from the primary catalog or supply a vetted, bias-corrected sub-catalog with explicit selection func…
+- **[P3_Grok_brutal/P3-M2/MAJOR]**: **P3-M2 (MAJOR)** — Fig. 1 (p. 4) and §IV B (p. 9): The spatial distribution is stated to be “significantly non-uniform (\(\chi^2=143936\), dof=38329)”. No modeling of the seven distinct survey selection functions is performed, so the \(\chi^2\) cannot be interpreted as evidence of astrophysical clustering. Required fix: either remove the clustering claim or supply a forward-modelled selection-fun…
+- **[P3_Grok_brutal/P3-M3/MAJOR]**: **P3-M3 (MAJOR)** — §V A (p. 10) and Appendix E (p. 16): The NANOGRAV KDE analysis yields \(\gamma=2.567\pm0.382\), only +1.13\(\sigma\) from the matter-bounce prediction. The Savage-Dickey factor \(B_{\rm MB/SMBHB}=7.14\times10^3\) is quoted without the full prior-volume correction or the alternative \(\gamma\)-uniform prior result. Required fix: present both Bayes factors and state that the resu…
+- **[P3_Grok_brutal/P3-M4/MAJOR]**: **P3-M4 (MAJOR)** — Table I (p. 7) and §III F (p. 6): Planck contributes exactly 200 objects selected by a fixed top-1 % cut on a 20 k patch sample whose native-retrain gate failed both criteria (a) and (b). The 200 patches are retained only “as a sensitivity-check artifact”. Their inclusion in the 378,280 total violates the Path-C protocol. Required fix: move the Planck tier to an appendix or rem…
+- **[P3_Grok_brutal/P3-N2/NIT]**: **P3-N2 (MINOR)** — Multiple figure captions (Figs. 2, 3, 7) contain unresolved “Fig. ??” cross-references. Supply correct figure numbers.
+- **[P3_Grok_brutal/P3-N3/NIT]**: **P3-N3 (NIT)** — Abstract line “an empirical Landy–Szalay bias measurement … \(\alpha_{\rm jk}=0.19\pm0.65\)” is dimensionally consistent but the quoted uncertainty is larger than the central value; the sentence should read “consistent with null at <1\(\sigma\)”.  **Summary recommendation**
+- **[P3_META_REVIEW/P3-META-E2/ESSENTIAL]**: P3-META-E2 - Severity: ESSENTIAL - Section + page: II.C GPU Inference Pipeline (p. 3) vs. Table V (p. 15) - Why others missed it: They commented on plausibility of single-line training times but did not add up wall-clock claims against stated throughputs. - Specific problem (quote): “Total processing time … approximately 42 hours (wall-clock), dominated by the DESI DR1 scan (19,705 s) … The CMB an…
+- **[P3_META_REVIEW/P3-META-M1/MAJOR]**: P3-META-M1 - Severity: MAJOR - Section + page: II.D Step 6 (p. 3), IV.C (p. 10), III.E (p. 6) - Why others missed it: They scrutinized dedup counts but not whether a fixed 5″ radius is appropriate across very different astrometric regimes. - Specific problem (quote): “7-way positional dedup at 5″.” A single 5″ match radius is too tight for eROSITA X-ray positions (typical 1σ–2σ of several arcsecon…
+- **[P3_META_REVIEW/P3-META-M3/MAJOR]**: P3-META-M3 - Severity: MAJOR - Section + page: II.D Step 1 (p. 3), III.E–III.G (pp. 6–8) - Why others missed it: They asked for more injection/recovery detail but did not question the validity of the absolute loss threshold used as a gate. - Specific problem (quote): “Retained if (a) validation loss ≤ 0.30 after ≤ 100 epochs, or (b) injection–recovery ≥ 50% at 5σ.” The gating constant 0.30 is an a…
+- **[P3_META_REVIEW/P3-META-M4/MAJOR]**: P3-META-M4 - Severity: MAJOR - Section + page: II.D Step 1 (p. 3) vs. II.B (p. 2) - Why others missed it: Focus stayed on SDSS/LAMOST thresholds rather than training set sizes. - Specific problem (quote): Step 1: “trained on a 2–5×10^5-spectrum quality-selected subset of each survey’s own data.” Earlier: “47,000 spectra for DESI.” The DESI training set is an order of magnitude below the stated Pat…
+- **[P3_META_REVIEW/P3-META-M5/MAJOR]**: P3-META-M5 - Severity: MAJOR - Section + page: II.A–II.B (pp. 2–3), III.E–III.H (pp. 6–8) - Why others missed it: They focused on score-symbol confusion, not on per-feature units entering a global MSE. - Specific problem (quote): Inputs for photometric/catalog surveys are heterogeneous feature vectors (“47, 20, and 15 features… minimizing per-element MSE”), but no per-feature standardization/white…
+- **[P3_META_REVIEW/P3-META-m1/MINOR]**: P3-META-m1 - Severity: MINOR - Section + page: II.D Step 4 (p. 3) vs. Fig. 7 caption (p. 13) and III.H (p. 8) - Why others missed it: They flagged lack of quantitative color but not the sign inconsistency in the ecliptic mask text. - Specific problem (quote): Step 4: “NEOWISE ecliptic-pole mask (|becl| < 80°) retains 419/436…”. Fig. 7 caption: “NEOWISE … PASS, 1000/1000 = 100% at |becl| > {85°, 82…
+- **[P3_META_REVIEW/P3-META-m2/MINOR]**: P3-META-m2 - Severity: MINOR - Section + page: Abstract (p. 1) vs. Table I footnote ♠ (pp. 7–8) - Why others missed it: They focused on ACT/Planck gating but not on the composition of the “catalog-grade subset.” - Specific problem (quote): Abstract: “recommended catalog-grade subset is ∼265,000 unique objects (DESI + SDSS + eROSITA + Gaia + NEOWISE).” Footnote ♠: “catalog-grade tier (DESI + SDSS n…
+- **[P3_META_REVIEW/P3-META-m3/MINOR]**: P3-META-m3 - Severity: MINOR - Section + page: III.A (p. 4) - Why others missed it: They did not scan for text duplication. - Specific problem (quote): The paragraph beginning “Across the 6.5 million spectra in DESI DR1 that carry a validated TARGETTYPE classification…” appears twice with near-identical wording and numbers. - Required fix: Deduplicate and ensure a single, clearly sourced statement…
+- **[P3_META_REVIEW/P3-META-N1/NIT]**: P3-META-N1 - Severity: NIT - Section + page: II.B (p. 2–3) - Why others missed it: They focused on S-definition conflicts, not on the mapping of S to MSE. - Specific problem (quote): “For DESI DR1, µval ≈ 0.0287 … and σval is set such that the S > 5 catalog threshold corresponds to MSE ≈ 0.143 on the rescaled scale.” The phrase “σval is set such that” suggests post-hoc calibration rather than a tr…
