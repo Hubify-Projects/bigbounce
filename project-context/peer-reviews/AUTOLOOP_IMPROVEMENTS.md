@@ -83,3 +83,27 @@ persistence_tracker uses richer fingerprints — this is the right direction.
 - Auto-promote PERSISTENT_FINDINGS.md entries to TRIAGE_QUEUE_<date>.md
   when count ≥3 rounds.
 - Add fingerprint summary to AUTOLOOP_LOG.md per round.
+
+## 2026-06-05 17:17pt — autoloop fire 4 setup
+
+**Improvement applied**: `tools/v3_loop_terminate_check.py` — stricter NEW-ESS
+counter that uses BOTH consensus_keys AND meta-finding fingerprints. The autoloop_summary
+counter says "4 NEW ESS this round" but loop_terminate_check says 12. The
+discrepancy is because:
+- consensus_keys cluster on shallow keywords (e.g., "future_date", "sigma_mixing")
+- meta-fingerprints capture deeper findings (e.g., "binomial", "lee", "dedup")
+- many meta findings have NEW fingerprints (different aspects of the same
+  underlying issue) round-over-round, so they count as "NEW" even though
+  the underlying issue is persistent.
+
+**Observation**: The cron's self-terminate condition ("0 NEW ESS for 3 rounds")
+may never trigger under either counter because the autoloop is now mining
+deeper findings each round. The TRIAGE_QUEUE and PERSISTENT_FINDINGS markers
+are the actionable signal for Houston, not the autoloop counter.
+
+**Improvement queued**: Add Houston-decision-tracker — when Houston resolves
+a TRIAGE_QUEUE item (text edit, commit hash), record it in
+`project-context/peer-reviews/HOUSTON_DECISIONS.md`. The autoloop then
+filters out findings on that fingerprint from "NEW" counts.
+
+**Cron prompt compliance**: zero .tex modifications this fire (review-only).
