@@ -709,3 +709,27 @@ The accumulated signal from fires 1-5 remains the actionable queue:
 - AUTOLOOP_IMPROVEMENTS.md: tools getting better each iteration
 
 Loop count toward self-terminate: still 0 (can't measure during outage).
+
+## Fire 9 (cron 22:17) — SHORT-CIRCUITED (4th consecutive outage)
+
+Pre-flight: Anthropic + OpenAI both still failing. xAI working.
+
+4 fires of identical billing outage. The cron is now actively wasteful — each
+fire consumes a Claude Code tool call and produces nothing useful.
+
+**Strongly recommending Houston pause the cron**:
+```
+CronDelete 038603c4
+```
+
+Or top up billing:
+- https://console.anthropic.com/billing
+- https://platform.openai.com/billing
+
+When billing is resolved, re-create the cron with:
+```
+CronCreate cron="17 * * * *" prompt="..." (same prompt as before)
+```
+
+In the meantime, the 5 LOAD-BEARING fixes in HOUSTON_DECISION_PACKAGE.md
+remain the actionable queue — those don't need the autoloop to be productive.
