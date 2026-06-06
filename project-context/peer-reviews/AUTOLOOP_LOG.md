@@ -388,3 +388,12 @@ NEW ESS this round = 4 (NOT 0). Counter resets:
 ### Improvements this fire
 - `tools/v3_persistence_tracker.py` — cross-fire fingerprint tracking
 - Confirmed pattern-037/038/039 firing on 6/6/5 papers respectively across 3/3 rounds
+
+## 2026-06-05_1717pt — round=auto-2026-06-05_1717pt
+
+  - P1A: 86 findings, 3 consensus, meta=yes (   11726 chars)
+  - P1B: 43 findings, 1 consensus, meta=yes (   12419 chars)
+  - P2: 101 findings, 1 consensus, meta=yes (    9088 chars)
+  - P3: 49 findings, 2 consensus, meta=yes (   12437 chars)
+  - P4: 102 findings, 10 consensus, meta=yes (   10528 chars)
+  - P5: 99 findings, 4 consensus, meta=yes (   11967 chars)
