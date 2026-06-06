@@ -733,3 +733,19 @@ CronCreate cron="17 * * * *" prompt="..." (same prompt as before)
 
 In the meantime, the 5 LOAD-BEARING fixes in HOUSTON_DECISION_PACKAGE.md
 remain the actionable queue — those don't need the autoloop to be productive.
+
+## 2026-06-06_0004pt — round=auto-2026-06-06_0004pt
+
+
+## Fire 10 — RESUMING with partial recovery (post-outage)
+
+Pre-flight after Houston's "continue":
+- ❌ Anthropic still failing (credit balance)
+- ✅ OpenAI gpt-5 working (back online)
+- ✅ Gemini, Perplexity, xAI Grok working
+
+Decision: fire the autoloop. Claude will fail (Anthropic credit) but 4 of 5
+reviewers will succeed. Meta-reviewer (gpt-5-pro) will work. Expected ~75-80%
+of normal coverage.
+
+This is also the first cron fire of 2026-06-06 (after midnight).
