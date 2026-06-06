@@ -749,3 +749,13 @@ reviewers will succeed. Meta-reviewer (gpt-5-pro) will work. Expected ~75-80%
 of normal coverage.
 
 This is also the first cron fire of 2026-06-06 (after midnight).
+
+## 2026-06-06_0021pt — round=auto-2026-06-06_0021pt
+
+
+## Fire 11 (cron 00:21 UTC) — Launched concurrently with fire 10 wrap-up
+
+Anthropic still failing (confirmed at fire 11 launch). Fire 10 P5 meta still
+running in background — won't conflict with fire 11 (different round labels).
+
+Coverage: 4/5 reviewers (Gemini + OpenAI + Grok + Perplexity work; Claude fails).
