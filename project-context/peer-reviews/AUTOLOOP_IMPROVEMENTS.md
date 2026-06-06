@@ -129,3 +129,27 @@ or fall back to git commit dates.
   pattern will keep firing and add a note in TRIAGE_QUEUE that it's an LLM-cutoff
   artifact, not a real paper issue. The check_new_patterns.sh already filters
   pre-2027 dates so it doesn't pollute the local check.
+
+## 2026-06-05 19:19pt — autoloop fire 6 setup
+
+**Improvement applied**: `project-context/peer-reviews/HOUSTON_DECISION_PACKAGE.md` —
+one consolidated file with each of the 5 LOAD-BEARING findings, exact .tex
+file/section location, current text (quoted), recommended fix (with A/B
+options where decision is needed), effort estimate, and expected effect on
+headline numbers.
+
+This is the actionable bridge between the autoloop's signal generation
+(LOAD-BEARING tier) and Houston's intervention. ~2 days of work to clear
+the 5 LOAD-BEARING items; once cleared, the autoloop should converge within
+3 more fires.
+
+**Observation**: After 5 fires, total surface findings volatile (480-865 range,
+mean ~686). But META-ESS counts stable (14-20 per round). The volatility is
+in shallow findings being re-discovered with different consensus_keys; the
+deep meta layer is more deterministic.
+
+**Improvement queued**:
+- Once Houston applies fixes to the 5 LOAD-BEARING items, add a "verification
+  fire" mode that specifically re-tests against the persistence-tracker's
+  expected closures. Currently the autoloop is blind to whether a fix worked
+  until the next round naturally reveals it.
