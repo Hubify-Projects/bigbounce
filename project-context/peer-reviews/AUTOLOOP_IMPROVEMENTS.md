@@ -107,3 +107,25 @@ a TRIAGE_QUEUE item (text edit, commit hash), record it in
 filters out findings on that fingerprint from "NEW" counts.
 
 **Cron prompt compliance**: zero .tex modifications this fire (review-only).
+
+## 2026-06-05 18:17pt — autoloop fire 5 setup
+
+**Improvement applied**: `tools/v3_version_aware_track.py` — cross-fire timeline
+that ties findings to paper version bumps. Identifies which round each .tex
+commit landed in, and which findings were CLOSED across the bump.
+
+Verified P4 fire 1 → fire 2: 10 closures correspond to v1.0.158 → v1.0.159
+commit (3 mechanical fixes I shipped: stale GZ1 N, dilution factor, Table II→I).
+
+**Observation**: P2 and P3 don't have detectable `\paperVersion` macros — they
+use different naming conventions. Future improvement: detect alternative
+version macros (e.g., `\newcommand{\paperRev}{...}` or `\title{... v...}`)
+or fall back to git commit dates.
+
+**Improvement queued**:
+- When pattern-037 (future date) keeps firing on 6/6 papers across 4+ rounds
+  with NO closures: that's because the date is genuinely current (2026) and
+  the LLM reviewers have older knowledge cutoffs. **Decision**: accept this
+  pattern will keep firing and add a note in TRIAGE_QUEUE that it's an LLM-cutoff
+  artifact, not a real paper issue. The check_new_patterns.sh already filters
+  pre-2027 dates so it doesn't pollute the local check.
