@@ -613,3 +613,50 @@ NEW ESS = 6 (NOT 0). Counter: 0 consecutive. Loop continues. Next: 19:17.
 Surface findings volatility: 718 / 828 / 865 / 480 / 541 — fire 4 was a deep clean; fire 5 partial rebound. Mean ~686, fluctuation ~25%. The autoloop is operating at steady state — the LOAD-BEARING tier is now the dominant signal.
 
 **Houston decision**: 5 LOAD-BEARING items are the priority queue. The autoloop counter will not self-terminate until at least these 5 are fixed at .tex level.
+
+## 2026-06-05_1919pt — round=auto-2026-06-05_1919pt
+
+  - P1A: 0 findings, 0
+0 consensus, meta=no
+  - P1B: 46 findings, 2 consensus, meta=no
+  - P2: 47 findings, 1 consensus, meta=no
+  - P3: 11 findings, 0
+0 consensus, meta=no
+  - P4: 8 findings, 0
+0 consensus, meta=no
+  - P5: 6 findings, 0
+0 consensus, meta=no
+
+## Fire 6 (auto-2026-06-05_1919pt) — PARTIAL DUE TO API OUTAGE
+
+🔴 **CRITICAL: Three vendor APIs failed simultaneously on fire 6**:
+
+1. **Anthropic credit balance too low** — `claude-opus-4-7` AND fallback `claude-sonnet-4-6` both rejected with 400 "Your credit balance is too low to access the Anthropic API." Affected ALL 6 papers' Claude_brutal reviewer + ALL 6 meta-reviewers (Claude fallback).
+
+2. **OpenAI gpt-5 quota exceeded** — 429 "insufficient_quota". Fallback to `o3` worked partially but some still failed. Affected ALL 6 papers' OpenAI_methodology reviewer.
+
+3. **Grok pdftoppm 180s timeout** — `pdftoppm` rasterization timed out on all 6 papers, likely due to 6 concurrent rasterization processes exhausting disk/CPU resources. Affected ALL 6 papers' Grok_brutal reviewer.
+
+### Partial fire 6 results (only Gemini + Perplexity reliably ran):
+  P1A: 0 findings (all reviewers failed including Gemini)
+  P1B: 46 findings (Gemini + Perplexity only)
+  P2:  47 findings (Gemini + Perplexity only)
+  P3:  11 findings (degraded — P3 v3.1 phase killed manually)
+  P4:  8 findings
+  P5:  6 findings
+  TOTAL: 118 findings (vs typical 500-870)
+
+### Loop status
+- Cron is STILL ARMED (will fire at 20:17 next)
+- Recommend Houston: (a) top up Anthropic credit balance, (b) top up OpenAI quota,
+  (c) optionally increase Grok pdftoppm timeout or reduce concurrency
+- Until billing resolved, future fires will produce similar degraded data
+- The HOUSTON_DECISION_PACKAGE.md and PERSISTENT_FINDINGS.md from fires 1-5
+  remain the actionable signal
+
+### Improvements queued from this outage
+- Increase pdftoppm timeout from 180s to 600s
+- Add `concurrent_runs=2` flag to autoloop to reduce simultaneous rasterizations
+- Detect "credit balance too low" + "quota exceeded" errors and emit a clear
+  STATUS=outage marker in AUTOLOOP_LOG so future fires can short-circuit
+  immediately instead of wasting 60min retrying
