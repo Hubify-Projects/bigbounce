@@ -773,3 +773,81 @@ Coverage: 4/5 reviewers (Gemini + OpenAI + Grok + Perplexity work; Claude fails)
 0 consensus, meta=yes (   11722 chars)
   - P4: 62 findings, 4 consensus, meta=yes (   11934 chars)
   - P5: 67 findings, 4 consensus, meta=yes (   10348 chars)
+
+## Cross-round diff: `auto-2026-06-06_0004pt` → `auto-2026-06-06_0021pt`
+
+- **P1A**: 91 findings, 4 consensus | appeared=8, disappeared=4, new ESSENTIAL=0
+    - CLOSED [companion,audit_artifact] (was caught by 1 prev)
+    - CLOSED [table_ii,audit_artifact] (was caught by 1 prev)
+    - CLOSED [table_ii,length] (was caught by 1 prev)
+    - CLOSED [table_iv,companion] (was caught by 2 prev)
+- **P1B**: 87 findings, 3 consensus | appeared=6, disappeared=3, new ESSENTIAL=0
+    - CLOSED [companion,length] (was caught by 2 prev)
+    - CLOSED [n_mc_500] (was caught by 1 prev)
+    - CLOSED [sigma_mixing] (was caught by 1 prev)
+- **P2**: 84 findings, 1 consensus | appeared=2, disappeared=0, new ESSENTIAL=0
+- **P3**: 62 findings, 0 consensus | appeared=4, disappeared=0, new ESSENTIAL=0
+- **P4**: 62 findings, 4 consensus | appeared=1, disappeared=6, new ESSENTIAL=0
+    - CLOSED [dilution_factor] (was caught by 1 prev)
+    - CLOSED [label_noise] (was caught by 1 prev)
+    - CLOSED [shamir_citation] (was caught by 1 prev)
+    - CLOSED [sigma_mixing,table_ii] (was caught by 2 prev)
+    - CLOSED [sigma_mixing,table_iv] (was caught by 1 prev)
+    - CLOSED [table_ii,duplicate_phrase] (was caught by 1 prev)
+- **P5**: 67 findings, 4 consensus | appeared=4, disappeared=1, new ESSENTIAL=0
+    - CLOSED [table_iv] (was caught by 1 prev)
+
+### Cross-paper pattern candidates (consensus key appearing in 2+ papers)
+
+- `audit_artifact` → in 4 papers: ['P1A', 'P1B', 'P2', 'P4']
+- `companion` → in 5 papers: ['P1A', 'P1B', 'P2', 'P3', 'P5']
+- `future_date` → in 6 papers: ['P1A', 'P1B', 'P2', 'P3', 'P4', 'P5']
+- `sigma_mixing` → in 4 papers: ['P1A', 'P2', 'P4', 'P5']
+- `table_ii` → in 5 papers: ['P1A', 'P1B', 'P3', 'P4', 'P5']
+- `table_ii,companion` → in 2 papers: ['P1A', 'P1B']
+- `table_iv` → in 3 papers: ['P1A', 'P3', 'P4']
+
+**Total NEW ESSENTIAL across all 6 papers this round: 0**
+
+**Self-terminate condition**: 3 consecutive rounds with 0 new ESSENTIAL.
+
+---
+## Fire 11 (auto-2026-06-06_0021pt) complete — 🎯 **0 NEW ESSENTIAL**
+
+| Paper | Findings | Consensus | META-ESS |
+|---|---|---|---|
+| P1A | 91 | 4 | 2 |
+| P1B | 87 | 3 | 4 |
+| P2  | 84 | 1 | 3 |
+| P3  | 62 | 0 | 3 |
+| P4  | 62 | 4 | 4 |
+| P5  | 67 | 4 | 2 |
+| **TOTAL** | **453** | **16** | **18 META-ESS** |
+
+### Cross-round delta (fire 10 → fire 11): **0 NEW ESSENTIAL** ✅
+
+**This is the FIRST round in 11 fires to hit zero new ESS.**
+
+Self-terminate condition: 3 consecutive 0-new-ESS rounds.
+- Counter: **1 of 3** 🟢
+
+### Persistence-tracker after 8 effective fires
+🔴 LOAD-BEARING tier now at 11 items (up from 9 after fire 10):
+1. P1B `lee` — **6/8 rounds**
+2. P3 `dedup` — 4/8 rounds
+3. P4 `master` — 4/8 rounds
+4. P1B `master`, P3 `dedup|deduplication`, P4 `leakage|master|monopole`, P4 `binomial`, P4 `gz1`, P5 `tidal_tensor`, P1B `table_ii`, P5 `table_ii` — 3/8 each
+
+The 0-new-ESS result means the autoloop is **NOT finding new issues** — only re-surfacing the same persistent ones. This is the converged state. To actually self-terminate, Houston needs to fix at least 1-2 of the LOAD-BEARING items so they stop firing.
+
+### Improvements this fire
+- Confirmed: autoloop produces useful signal even at 4/5 reviewer coverage
+- Confirmed: meta-reviewer (gpt-5-pro) is the dominant catch layer (~18 ESS/round regardless of Claude)
+- Pre-flight billing check + short-circuit pattern is the right strategy during outages
+
+### Status
+- Anthropic still down
+- OpenAI back
+- Cron will fire again at 01:21pt with same 4/5 coverage
+- **If fire 12 also = 0 new ESS, counter → 2 of 3.**
+- **If fire 13 also = 0, autoloop self-terminates via CronDelete.**
