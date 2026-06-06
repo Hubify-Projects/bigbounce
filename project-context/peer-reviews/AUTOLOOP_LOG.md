@@ -502,3 +502,12 @@ NEW ESS this round = 5 (NOT 0). Counter: 0 consecutive. Loop continues. Next fir
 ### Improvements this fire
 - `tools/v3_loop_terminate_check.py` — stricter NEW-ESS counter (consensus + meta fingerprints)
 - AUTOLOOP_IMPROVEMENTS.md: noted the cron's self-terminate may never trigger because meta-reviewer continues to mine deeper findings. **Recommendation: shift the actionable signal from "loop self-terminates" to "PERSISTENT_FINDINGS.md LOAD-BEARING tier is Houston's queue."**
+
+## 2026-06-05_1817pt — round=auto-2026-06-05_1817pt
+
+  - P1A: 109 findings, 5 consensus, meta=yes (   13038 chars)
+  - P1B: 86 findings, 5 consensus, meta=yes (   11379 chars)
+  - P2: 99 findings, 2 consensus, meta=yes (   13151 chars)
+  - P3: 89 findings, 5 consensus, meta=yes (   11845 chars)
+  - P4: 60 findings, 3 consensus, meta=yes (   12595 chars)
+  - P5: 98 findings, 4 consensus, meta=yes (   11853 chars)
