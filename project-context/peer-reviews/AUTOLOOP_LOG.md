@@ -660,3 +660,28 @@ Surface findings volatility: 718 / 828 / 865 / 480 / 541 — fire 4 was a deep c
 - Detect "credit balance too low" + "quota exceeded" errors and emit a clear
   STATUS=outage marker in AUTOLOOP_LOG so future fires can short-circuit
   immediately instead of wasting 60min retrying
+
+## Fire 7 (cron 20:17) — SHORT-CIRCUITED (outage continues)
+
+Pre-flight billing check before launching autoloop:
+- ❌ Anthropic: credit balance too low (still failing as of fire 6)
+- ❌ OpenAI: gpt-5 quota exceeded (still failing as of fire 6)
+- ✅ xAI Grok: working
+
+Decision: SKIP this fire. Running the full autoloop would burn ~$5-10 in failed
+API attempts and produce another mostly-empty round (as fire 6 did).
+
+**Houston action needed before next fire**:
+1. Top up Anthropic API credit at https://console.anthropic.com/billing
+2. Top up OpenAI usage tier at https://platform.openai.com/billing
+
+The cron is still armed for 21:17. If Houston tops up before then, fire 8 will
+run normally. If not, fire 8 will also short-circuit.
+
+### Status of existing data (no change since fire 5)
+- PERSISTENT_FINDINGS.md: 5 LOAD-BEARING items (P1B/lee 5/5, etc.)
+- HOUSTON_DECISION_PACKAGE.md: actionable 5-item fix queue
+- PAPER_VERSION_TIMELINE.md: P4 v1.0.159 closures verified
+- AUTOLOOP_IMPROVEMENTS.md: improvements catalog grows
+
+Loop count: still 0 toward 3-consecutive-zero-new-ESS self-terminate.
