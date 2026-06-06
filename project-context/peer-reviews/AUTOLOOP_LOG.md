@@ -511,3 +511,105 @@ NEW ESS this round = 5 (NOT 0). Counter: 0 consecutive. Loop continues. Next fir
   - P3: 89 findings, 5 consensus, meta=yes (   11845 chars)
   - P4: 60 findings, 3 consensus, meta=yes (   12595 chars)
   - P5: 98 findings, 4 consensus, meta=yes (   11853 chars)
+
+## Cross-round diff: `auto-2026-06-05_1717pt` → `auto-2026-06-05_1817pt`
+
+- **P1A**: 109 findings, 5 consensus | appeared=7, disappeared=4, new ESSENTIAL=1
+    + NEW ESS [table_ii,table_iv,companion,length] caught by 1 reviewer(s)
+    - CLOSED [companion,audit_artifact] (was caught by 1 prev)
+    - CLOSED [sigma_mixing] (was caught by 1 prev)
+    - CLOSED [table_ii,companion] (was caught by 1 prev)
+    - CLOSED [table_iv,companion] (was caught by 1 prev)
+- **P1B**: 86 findings, 5 consensus | appeared=5, disappeared=0, new ESSENTIAL=2
+    + NEW ESS [companion,future_date] caught by 2 reviewer(s)
+    + NEW ESS [sigma_mixing] caught by 2 reviewer(s)
+- **P2**: 99 findings, 2 consensus | appeared=3, disappeared=0, new ESSENTIAL=0
+- **P3**: 89 findings, 5 consensus | appeared=5, disappeared=3, new ESSENTIAL=0
+    - CLOSED [companion,duplicate_phrase,dedup_audit] (was caught by 1 prev)
+    - CLOSED [table_iv,companion,audit_artifact,dedup_audit] (was caught by 1 prev)
+    - CLOSED [table_iv,dedup_audit] (was caught by 1 prev)
+- **P4**: 60 findings, 3 consensus | appeared=5, disappeared=14, new ESSENTIAL=1
+    + NEW ESS [companion,length] caught by 1 reviewer(s)
+    - CLOSED [audit_artifact] (was caught by 1 prev)
+    - CLOSED [companion,label_noise] (was caught by 1 prev)
+    - CLOSED [iye_citation] (was caught by 1 prev)
+    - CLOSED [length] (was caught by 2 prev)
+    - CLOSED [n_mc_500,sigma_mixing] (was caught by 1 prev)
+    - CLOSED [n_mc_500,table_ii] (was caught by 1 prev)
+    - CLOSED [shamir_citation,fisher_floor] (was caught by 1 prev)
+    - CLOSED [sigma_mixing] (was caught by 3 prev)
+    - CLOSED [sigma_mixing,duplicate_phrase] (was caught by 1 prev)
+    - CLOSED [table_ii,length] (was caught by 1 prev)
+    - CLOSED [table_ii,table_ii_sigma_arithmetic] (was caught by 1 prev)
+    - CLOSED [table_iv,shamir_citation] (was caught by 1 prev)
+    - CLOSED [table_iv,table_iv_z] (was caught by 1 prev)
+    - CLOSED [table_iv,weighting] (was caught by 1 prev)
+- **P5**: 98 findings, 4 consensus | appeared=3, disappeared=6, new ESSENTIAL=2
+    + NEW ESS [companion,length] caught by 1 reviewer(s)
+    + NEW ESS [future_date,tweb_vweb] caught by 1 reviewer(s)
+    - CLOSED [companion,audit_artifact] (was caught by 1 prev)
+    - CLOSED [companion,length,tweb_vweb] (was caught by 1 prev)
+    - CLOSED [companion,tweb_vweb] (was caught by 1 prev)
+    - CLOSED [sigma_mixing] (was caught by 1 prev)
+    - CLOSED [sigma_mixing,table_ii,tweb_vweb] (was caught by 1 prev)
+    - CLOSED [table_ii,shamir_citation,companion,tweb_vweb] (was caught by 1 prev)
+
+### Cross-paper pattern candidates (consensus key appearing in 2+ papers)
+
+- `audit_artifact` → in 3 papers: ['P1A', 'P1B', 'P3']
+- `companion` → in 5 papers: ['P1A', 'P1B', 'P2', 'P3', 'P5']
+- `companion,audit_artifact` → in 2 papers: ['P2', 'P3']
+- `companion,future_date` → in 2 papers: ['P1A', 'P1B']
+- `companion,length` → in 2 papers: ['P4', 'P5']
+- `future_date` → in 5 papers: ['P1A', 'P2', 'P3', 'P4', 'P5']
+- `length` → in 3 papers: ['P1A', 'P2', 'P3']
+- `shamir_citation` → in 3 papers: ['P1A', 'P4', 'P5']
+- `sigma_mixing` → in 3 papers: ['P1B', 'P2', 'P3']
+- `sigma_mixing,table_ii` → in 3 papers: ['P1B', 'P4', 'P5']
+- `table_ii` → in 5 papers: ['P1A', 'P1B', 'P3', 'P4', 'P5']
+- `table_iv` → in 4 papers: ['P1A', 'P3', 'P4', 'P5']
+
+**Total NEW ESSENTIAL across all 6 papers this round: 6**
+
+**Self-terminate condition**: 3 consecutive rounds with 0 new ESSENTIAL.
+
+---
+## Fire 5 (auto-2026-06-05_1817pt) complete
+
+| Paper | Findings | Consensus | META-ESS |
+|---|---|---|---|
+| P1A | 109 | 5 | 1 |
+| P1B | 86  | 5 | 2 |
+| P2  | 99  | 2 | 3 |
+| P3  | 89  | 5 | 2 |
+| P4  | 60  | 3 | 3 |
+| P5  | 98  | 4 | 3 |
+| **TOTAL** | **541** | **24** | **14 META-ESS** |
+
+### Cross-round delta (fire 4 → fire 5): 6 NEW ESS, ~30 CLOSED
+
+### Persistence-tracker after 5 fires
+
+🔴 **LOAD-BEARING tier (3+ rounds confirmed)**:
+1. **P1B `lee`** — **5/5 rounds** (every single fire — STRONGEST signal possible)
+2. P1B `master` — 3/5 rounds
+3. P3 `dedup` — 3/5 rounds
+4. P4 `leakage|master|monopole` — 3/5 rounds
+5. P4 `binomial` — 3/5 rounds
+
+🟡 RECURRING (2/5):
+- P4 `monopole`, `master`, `table_ii`, `fsky`
+- P5 `tidal_tensor`, `monopole`
+- P1B `table_ii`
+
+### Self-terminate
+NEW ESS = 6 (NOT 0). Counter: 0 consecutive. Loop continues. Next: 19:17.
+
+### Improvements this fire
+- `tools/v3_version_aware_track.py` — paper-version timeline (PAPER_VERSION_TIMELINE.md)
+- Verified P4 v1.0.158 → v1.0.159 closed 10 findings (the 3 mechanical fixes I shipped)
+
+### Stability observation across 5 fires
+Surface findings volatility: 718 / 828 / 865 / 480 / 541 — fire 4 was a deep clean; fire 5 partial rebound. Mean ~686, fluctuation ~25%. The autoloop is operating at steady state — the LOAD-BEARING tier is now the dominant signal.
+
+**Houston decision**: 5 LOAD-BEARING items are the priority queue. The autoloop counter will not self-terminate until at least these 5 are fixed at .tex level.
