@@ -685,3 +685,27 @@ run normally. If not, fire 8 will also short-circuit.
 - AUTOLOOP_IMPROVEMENTS.md: improvements catalog grows
 
 Loop count: still 0 toward 3-consecutive-zero-new-ESS self-terminate.
+
+## Fire 8 (cron 21:17) — SHORT-CIRCUITED (outage continues, ~3 hrs since fire 6)
+
+Pre-flight billing check:
+- ❌ Anthropic: credit balance too low
+- ❌ OpenAI gpt-5: quota exceeded
+- ❌ OpenAI o3 (fallback): also quota exceeded
+- ✅ xAI Grok working
+
+This is the 3rd consecutive fire with the same outage. Houston has not yet
+topped up the billing pages. Running the autoloop would burn tool calls
+without producing useful data.
+
+**Recommendation**: pause the cron until billing is resolved. Options:
+1. Houston tops up → cron resumes producing useful data
+2. Houston pauses cron via `CronDelete 038603c4` until ready
+3. Continue short-circuiting (current behavior — wastes ~30s per fire on pre-flight only)
+
+The accumulated signal from fires 1-5 remains the actionable queue:
+- HOUSTON_DECISION_PACKAGE.md: 5 LOAD-BEARING fix items
+- PERSISTENT_FINDINGS.md: P1B/lee 5/5 etc.
+- AUTOLOOP_IMPROVEMENTS.md: tools getting better each iteration
+
+Loop count toward self-terminate: still 0 (can't measure during outage).
