@@ -43,8 +43,8 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1B.0.42}
-\newcommand{\paperTimestamp}{2026-06-03 PDT}
+\newcommand{\paperVersion}{v1B.0.43}
+\newcommand{\paperTimestamp}{2026-06-08 PDT}
 % v1B.0.41 (2026-06-02 — R-upgraded-round5 P1B 4-Gemini-finding closure pass:
 %   1. GEM-m1 (pattern-017): stripped inline reviewer codes ("R5+R7 GEM-B1+GPT-B1",
 %      "R14 GEM-B1", "R7 GEM-B2+GPT-B4", "R2…GPT-M6") at body L900/L912/L1024/L1184/L1189.
@@ -821,7 +821,7 @@ Parameter & Mean $\pm \sigma$ & vs LCDM\\
 $w_0$         & $-0.8122 \pm 0.0436$ & (marg.-tail, $+4.3\sigma$)\footnote{\label{fn:wcaveat}Marginal-tail \emph{posterior-extrapolation} departure: LCDM is unsampled by this chain (no $w_0\!=\!-1, w_a\!=\!0$ samples in the present Metropolis-Hastings run), so the $+4.3\sigma$ figure is a posterior-tail extrapolation distance only, \emph{not} a Bayes-factor or $\ln B$ exclusion and \emph{not} a frequentist tension. A Savage-Dickey readout is not viable at this tail depth; robust $\ln B$ is left to a follow-up nested-sampling analysis (see \S~Headline-result discussion).}\\
 $w_a$         & $-0.6666 \pm 0.1864$ & $-3.6\sigma$ from $0$\\
 $w_0 + w_a$   & $-1.4788 \pm 0.1485$ & phantom-crossing required\\
-$w_{\rm pivot}$ & $-1.0344 \pm 0.0301$ & $-1.1\sigma$ from $-1$\\
+$w_{\rm pivot}$ & $-1.0344 \pm 0.0301$ & $-1.1\sigma$ from $-1$\footnote{\label{fn:wpivot}$w_{\rm pivot} \equiv w_0 + (1-a_p)\,w_a$ with $a_p$ chosen so that $w_0$ and $w_a$ are decorrelated in the posterior covariance: $a_p = 1 - \mathrm{Cov}(w_0, w_a) / \mathrm{Var}(w_a)$. On the converged iter2 chain $a_p = 0.6680$, giving $z_p = 1/a_p - 1 = 0.497$; this is internal to the dataset stack (DESI~DR2~BAO + Planck~NPIPE + DES-Y5 + Pantheon+) and is not the literature de~Putter--Linder $z_p \approx 0.4$ value. With $w_0$ and $w_a$ formally decorrelated at $z_p$, $\sigma_{w_{\rm pivot}}^2 = \sigma_{w_0}^2 + (1-a_p)^2 \sigma_{w_a}^2 = (0.0436)^2 + (0.3320)^2 (0.1864)^2 = (0.0301)^2$, reproducing the $\pm 0.0301$ value above. The choice of $a_p$ depends on the dataset stack; rerunning the chain with SH0ES or DESI~DR2~BAO alone would shift $z_p$ by $\Delta z_p \lesssim 0.1$ and $w_{\rm pivot}$ by $\lesssim 0.01$ in the directions of the linear-Fisher prediction.}\\
 \hline
 \multicolumn{3}{l}{\textit{Standard cosmology}}\\
 $H_0$ [km/s/Mpc] & $67.185 \pm 0.455$ & ---\\

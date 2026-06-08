@@ -868,3 +868,45 @@ Plus the persistence_tracker bug fix (lee substring FP removed).
 Expectation: P5/label LOAD-BEARING should DROP this fire (clarified by footnote).
 P3/dedup, P4/binomial, P4/master should still fire (not yet addressed at source).
 P1B/wpivot may appear as NEW ESS (the actual P1B issue surfaced after FP fix).
+  - P1A: 79 findings, 3 consensus, meta=yes (   13349 chars)
+  - P1B: 93 findings, 2 consensus, meta=yes (   11394 chars)
+  - P2: 60 findings, 1 consensus, meta=yes (   10115 chars)
+  - P3: 94 findings, 2 consensus, meta=yes (   12623 chars)
+  - P4: 72 findings, 4 consensus, meta=yes (   11193 chars)
+  - P5: 102 findings, 3 consensus, meta=yes (   10873 chars)
+
+### Fire 12 closure (post-bump full sync 2026-06-08 12:42pt)
+
+After fire 12 produced all 6 META outputs, Houston flagged stale site versions
+and pushed back on the agent for not running the post-bump-full-sync standing
+directive. Closures this fire (text-only, no compute reruns):
+
+- **P5 v0.1.46-2026-06-08** — LOAD-BEARING #1 (T-Web/V-Web) was already CLOSED
+  in v0.1.46 in the prior step; this fire's P5/v-web persistence count should
+  drop next round.
+- **P3 v3.1.76** — LOAD-BEARING #2 (dedup heterogeneity) CLOSED. New §III.B
+  paragraph + 3 dangling figure refs from the condensation cleaned.
+- **P4 v1.0.160** — P4-META-E3 (LOAD-BEARING #3, binomial trial-count) CLOSED.
+  §IV.D footnote fn:binomial_nspiral disambiguates $N_{\rm spiral}(p)$ vs
+  $N(p)_{\rm all}$ and documents the headline 99.3% reproduction figure is on
+  the spiral-trial draw.
+- **P1B v1B.0.43** — wpivot definition CLOSED via footnote fn:wpivot on the
+  Table tab:iter2_posterior $w_{\rm pivot}$ row. This is the *actual* P1B-META-E1
+  finding that the persistence_tracker had been mis-labelling as "lee" via
+  substring matching on "calEE" for 6 rounds (FP fix landed in the prior step).
+
+### Cross-round delta (fire 11 → fire 12): **0 NEW ESSENTIAL** ✅
+
+Second consecutive 0-NEW-ESS round.
+
+- Self-terminate counter: **2 of 3** 🟢🟢
+- If fire 13 also = 0 new ESS, autoloop self-terminates via CronDelete.
+
+### Houston external R-round queued
+
+Per Houston 2026-06-08 plan: "I do an additional external round after you do
+your round, we'll see what the gap is." Agent-side round delivered:
+- 4 of 5 LOAD-BEARING items closed (text-only this round)
+- 1 verified RESIDUAL (P4 cross-match, no new finding in fire 12)
+- 1 compute-bound deferred (P4 post-MASTER null rerun, 1d MC)
+
