@@ -1,0 +1,38 @@
+[
+  {
+    "closure_id": "P3-META-E4-fire-14",
+    "closure_commit": "b90f0c8d",
+    "closure_fire_round": "auto-2026-06-08_1424pt",
+    "paper": "P3",
+    "anchor_phrases": [
+      "Gaussian summary is inconsistent with the quoted 68% interval width",
+      "0.382",
+      "CI width is 0.578"
+    ],
+    "description": "\u03b3 \u00b1 0.382 vs CI [2.304, 2.882] arithmetic inconsistency"
+  },
+  {
+    "closure_id": "P5-META-E1-fire-14",
+    "closure_commit": "b90f0c8d",
+    "closure_fire_round": "auto-2026-06-08_1424pt",
+    "paper": "P5",
+    "anchor_phrases": [
+      "two incompatible",
+      "1.98 percentage points",
+      "range"
+    ],
+    "description": "P5 canonical-config range cross-section contradiction"
+  },
+  {
+    "closure_id": "P1B-META-E1-fire-14",
+    "closure_commit": "b90f0c8d",
+    "closure_fire_round": "auto-2026-06-08_1424pt",
+    "paper": "P1B",
+    "anchor_phrases": [
+      "0.336",
+      "Ca\u03b3 = 8",
+      "much less than 0.336"
+    ],
+    "description": "\u03b2ALP=0.336\u00b0 exceeds formula bound at fixed C_a\u03b3=8"
+  }
+]
