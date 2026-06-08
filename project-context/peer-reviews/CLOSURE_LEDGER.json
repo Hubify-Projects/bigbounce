@@ -9,7 +9,7 @@
       "0.382",
       "CI width is 0.578"
     ],
-    "description": "\u03b3 \u00b1 0.382 vs CI [2.304, 2.882] arithmetic inconsistency"
+    "description": "γ ± 0.382 vs CI [2.304, 2.882] arithmetic inconsistency"
   },
   {
     "closure_id": "P5-META-E1-fire-14",
@@ -29,10 +29,22 @@
     "closure_fire_round": "auto-2026-06-08_1424pt",
     "paper": "P1B",
     "anchor_phrases": [
-      "0.336",
-      "Ca\u03b3 = 8",
-      "much less than 0.336"
+      "0.336^\\circ\\pm 0.107",
+      "much less than 0.336",
+      "exceeds the formula maximum"
     ],
-    "description": "\u03b2ALP=0.336\u00b0 exceeds formula bound at fixed C_a\u03b3=8"
+    "description": "βALP=0.336° exceeds formula bound at fixed C_aγ=8"
+  },
+  {
+    "closure_id": "P1A-META-E1-fire-13-and-E2-fire-15",
+    "closure_commit": "a92b2e7d",
+    "closure_fire_round": "auto-2026-06-08_1520pt",
+    "paper": "P1A",
+    "anchor_phrases": [
+      "Holst dual contraction",
+      "reduces on the Levi-Civita connection to the Pontryagin density",
+      "Pontryagin density that contributes only a boundary term"
+    ],
+    "description": "P1A Holst→Pontryagin mathematical conflation — multi-fire confirmed (fire 13 + fire 15). Closed in v1A.0.45 by replacing 4 sites with the correct Bianchi-vanishing argument; the wrong Pontryagin-total-derivative claim removed."
   }
 ]
