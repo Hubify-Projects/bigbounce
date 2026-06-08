@@ -1,15 +1,50 @@
 [
   {
+    "closure_id": "P5-T-Web-fire-12",
+    "closure_commit": "73522984",
+    "closure_fire_round": "auto-2026-06-08_1144pt",
+    "paper": "P5",
+    "anchor_phrases": [
+      "V-Web tidal-tensor classifier",
+      "Hoffman 2012",
+      "V-Web velocity-shear"
+    ],
+    "description": "P5 T-Web/V-Web algorithm-label mismatch — paper retitled, Hahn 2007 T-Web footnote added (v0.1.46)"
+  },
+  {
+    "closure_id": "P3-dedup-fire-13",
+    "closure_commit": "73522984",
+    "closure_fire_round": "auto-2026-06-08_1354pt",
+    "paper": "P3",
+    "anchor_phrases": [
+      "5-arcsec cone search",
+      "naive uniform 5-arcsec",
+      "NEOWISE under-matching"
+    ],
+    "description": "P3 5\" uniform deduplication across heterogeneous astrometric surveys (v3.1.76)"
+  },
+  {
+    "closure_id": "P1B-wpivot-fire-13",
+    "closure_commit": "73522984",
+    "closure_fire_round": "auto-2026-06-08_1354pt",
+    "paper": "P1B",
+    "anchor_phrases": [
+      "wpivot is reported but never defined",
+      "never defines the pivot redshift"
+    ],
+    "description": "P1B wpivot definition added to Table tab:iter2_posterior footnote (v1B.0.43)"
+  },
+  {
     "closure_id": "P3-META-E4-fire-14",
     "closure_commit": "b90f0c8d",
     "closure_fire_round": "auto-2026-06-08_1424pt",
     "paper": "P3",
     "anchor_phrases": [
       "Gaussian summary is inconsistent with the quoted 68% interval width",
-      "0.382",
+      "ratio 1.685/1.696",
       "CI width is 0.578"
     ],
-    "description": "γ ± 0.382 vs CI [2.304, 2.882] arithmetic inconsistency"
+    "description": "γ ± 0.382 vs CI [2.304, 2.882] arithmetic inconsistency (v3.1.77)"
   },
   {
     "closure_id": "P5-META-E1-fire-14",
@@ -21,7 +56,7 @@
       "1.98 percentage points across the four V-Web classes",
       "max per-cell inter-class"
     ],
-    "description": "P5 canonical-config range cross-section contradiction (anchors tightened post-fire-15 false-positive)"
+    "description": "P5 canonical-config range cross-section contradiction (v0.1.47)"
   },
   {
     "closure_id": "P1B-META-E1-fire-14",
@@ -33,7 +68,7 @@
       "much less than 0.336",
       "exceeds the formula maximum"
     ],
-    "description": "βALP=0.336° exceeds formula bound at fixed C_aγ=8"
+    "description": "βALP=0.336° exceeds formula bound at fixed C_aγ=8 (v1B.0.44)"
   },
   {
     "closure_id": "P1A-META-E1-fire-13-and-E2-fire-15",
@@ -41,10 +76,34 @@
     "closure_fire_round": "auto-2026-06-08_1520pt",
     "paper": "P1A",
     "anchor_phrases": [
-      "Holst dual contraction",
       "reduces on the Levi-Civita connection to the Pontryagin density",
-      "Pontryagin density that contributes only a boundary term"
+      "Pontryagin density that contributes only a boundary term",
+      "Holst term becomes Pontryagin"
     ],
-    "description": "P1A Holst→Pontryagin mathematical conflation — multi-fire confirmed (fire 13 + fire 15). Closed in v1A.0.45 by replacing 4 sites with the correct Bianchi-vanishing argument; the wrong Pontryagin-total-derivative claim removed."
+    "description": "P1A Holst→Pontryagin mathematical conflation (v1A.0.45)"
+  },
+  {
+    "closure_id": "P1A-META-M2-fire-13-fine-tuning",
+    "closure_commit": "582ff3fa",
+    "closure_fire_round": "auto-2026-06-08_1520pt",
+    "paper": "P1A",
+    "anchor_phrases": [
+      "without fine-tuning. The same",
+      "consistent with the published WMAP+Planck cosmological-birefringence signal",
+      "Sec. XII then says"
+    ],
+    "description": "P1A §XII 'without fine-tuning' contradicting §IV.D 'CC tuning relabelled' admission (v1A.0.46)"
+  },
+  {
+    "closure_id": "P4-META-E3-fire-14-footnote-regression",
+    "closure_commit": "e51a1120",
+    "closure_fire_round": "auto-2026-06-08_1520pt",
+    "paper": "P4",
+    "anchor_phrases": [
+      "mode-coupling decoupling absorbs the trial-count normalization",
+      "decoupling absorbs the trial-count",
+      "sub-0.1\\sigmaunit effect on the headline pre-MASTER"
+    ],
+    "description": "P4 v1.0.160 fn:binomial_nspiral footnote regression — wrong 'decoupling absorbs for pre-MASTER' claim (v1.0.161)"
   }
 ]
