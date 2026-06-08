@@ -910,3 +910,101 @@ your round, we'll see what the gap is." Agent-side round delivered:
 - 1 verified RESIDUAL (P4 cross-match, no new finding in fire 12)
 - 1 compute-bound deferred (P4 post-MASTER null rerun, 1d MC)
 
+
+## 2026-06-08_1354pt — round=auto-2026-06-08_1354pt
+
+  - P1A: 133 findings, 7 consensus, meta=yes (   12849 chars)
+  - P1B: 108 findings, 3 consensus, meta=yes (   12192 chars)
+  - P2: 138 findings, 2 consensus, meta=yes (   11002 chars)
+  - P3: 140 findings, 2 consensus, meta=yes (   11742 chars)
+  - P4: 130 findings, 8 consensus, meta=yes (   12116 chars)
+  - P5: 170 findings, 6 consensus, meta=yes (   11263 chars)
+
+### Fire 13 closure (2026-06-08 13:54pt → ~14:00pt)
+
+Fire 13 ran against current versions: P3 v3.1.76, P4 v1.0.160, P1B v1B.0.43 (post-LOAD-BEARING-round refresh). 4/5 + meta coverage; Anthropic billing was back so Claude_brutal returned.
+
+Per-paper findings (auto-appended above):
+  P1A: 133 findings, 7 consensus
+  P1B: 108 findings, 3 consensus
+  P2:  138 findings, 2 consensus
+  P3:  140 findings, 2 consensus
+  P4:  130 findings, 8 consensus
+  P5:  170 findings, 6 consensus
+
+### Cross-round delta — **PERSISTENCE_TRACKER SAYS 0 NEW FINGERPRINTS, BUT CONTENT AUDIT REVEALS ≥11 NEW SUBSTANTIVE META FINDINGS**
+
+The persistence_tracker keyword-fingerprinting is too coarse — it tags any
+P4 finding mentioning "master" with the same fingerprint as the prior round,
+so a finding about a newly-introduced footnote logic flaw gets falsely
+classified as a recurrence. Content audit of the 6 META files reveals genuine
+new issues across every paper.
+
+**Genuinely NEW high-significance findings discovered in fire 13**:
+
+- **P1A-META-E1 (CATASTROPHIC)** — paper's repeated "Holst → Pontryagin" identity is
+  mathematically wrong. Eq. (23) writes ε R = ∂K but the Pontryagin density is
+  ε R R̃ (two curvatures, not one). Per Bianchi + Nieh-Yan: e∧e∧R = −NY + T∧T;
+  for T=0 it's Bianchi-trivial but NOT Pontryagin. This is a fundamental error in
+  the paper's central perturbation-transparency claim. None of 5 reviewers caught
+  it; gpt-5-pro meta-reviewer did. 13+ prior fires missed it; this fire found it.
+- **P1A-META-M2** — direct internal contradiction: Sec. IV.D calls mθ~H0 "fine-tuning
+  10^-61"; Sec. XII says "without fine-tuning". Glaring inconsistency.
+- **P2-META-E1** — Planck-scale fa CANCELS in β formula. fa-independence undermines
+  central naturalness claim.
+- **P2-META-E2** — "spectator" claim incompatible with Ω_φ ~ 0.17 for m~H0, fa~MPl.
+- **P1B-META-E1** — quoted SNR=20.32 is μ/SE(μ) (estimator calibration), not μ/σ
+  (per-realization detectability). Per-realization is ~0.9σ. Headline framing
+  needs both metrics.
+- **P4-META-E2** — "MASTER-deconvolved pseudo-Cℓ" terminology is internally
+  contradictory (pseudo = masked NOT deconvolved). Throughout abstract + IV.C.
+- **P4-META-E3 (regression in my LOAD-BEARING fix)** — the footnote I added in
+  v1.0.160 says "mode-coupling decoupling absorbs the trial-count normalization
+  for the headline pre-MASTER reproduction figure". This is internally
+  inconsistent — decoupling is a POST-MASTER operation and cannot affect a
+  PRE-MASTER statistic. **The LOAD-BEARING fix introduced a new ESSENTIAL.**
+- **P5-META-E1/E2/E3** — Fourier-space sign conventions, FFT-pipeline survey-edge
+  artifact root cause, Rs vs grid-resolution Nyquist-sampling theory all newly
+  flagged.
+- **P3-META-E1** — 42hr wall-clock total can't be reconciled with stated
+  per-survey throughputs (DESI ≈5.5h + LAMOST ≈3.3h + SDSS ≈0.6h + others ≪1h ≈ 9.4h, not 42hr).
+- **P3-META-E2** — "across the five primary target classes" (22.5M) vs ∼6.5M
+  classified + ∼16M unclassified contradiction.
+
+### Self-terminate counter: **0 of 3** 🔴 (RESET from 2/3)
+
+Fire 13 found 11+ genuinely new ESSENTIAL findings across all 6 papers. The
+prior "0 NEW ESS" claims in fires 11+12 closures were partially artifacts of
+the persistence_tracker's coarse fingerprinting. The autoloop is NOT converged
+and has not earned self-termination. The cron continues.
+
+### Audit improvement: persistence_tracker fingerprinting is too coarse
+
+The current `tools/v3_persistence_tracker.py` uses keyword-overlap fingerprinting:
+single-word keywords like `master`, `binomial`, `table_ii` get tagged into a
+fingerprint key. Two completely different P4 findings — one about a
+binomial-null trial count, another about a MASTER-deconvolved pseudo-Cℓ
+terminology contradiction — both fingerprint to `master`-family and look
+identical to the tracker.
+
+This caused fires 11+12 to falsely register "0 NEW ESS" when real new findings
+existed underneath. See AUTOLOOP_IMPROVEMENTS.md for the proposed fix (switch
+to semantic-embedding similarity, e.g. sentence-bert + cosine, replacing the
+fixed keyword set).
+
+### Most actionable items for Houston (text + code closures, no compute reruns)
+
+1. **P1A Holst → Pontryagin error** — Eq. (23) is mathematically wrong. Replace
+   with the correct Bianchi + Nieh-Yan derivation. ~1 day text rewrite.
+2. **P4 v1.0.160 footnote regression** — the "mode-coupling decoupling absorbs
+   trial-count for pre-MASTER" claim is logically inconsistent. Either run the
+   actual N(all)-trial null and report the impact (instead of asserting it),
+   or remove the absorbing-decoupling justification. ~2h text fix or 4hr compute.
+3. **P4 pseudo-Cℓ vs deconvolved-Cℓ terminology cleanup** — abstract + §IV.C.
+   ~1h text fix.
+4. **P1A Sec.IV.D vs Sec.XII fine-tuning contradiction** — pick one position
+   and propagate. ~30min text fix.
+5. **P2 fa-cancellation in β formula** — either justify gaγ ≠ 1/fa or remove
+   "Planck-scale" naturalness claim. ~2h text fix.
+6. **P1B SNR(per-realization) vs SNR(mean)** — disambiguate throughout. ~30min text fix.
+

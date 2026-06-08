@@ -153,3 +153,94 @@ deep meta layer is more deterministic.
   fire" mode that specifically re-tests against the persistence-tracker's
   expected closures. Currently the autoloop is blind to whether a fix worked
   until the next round naturally reveals it.
+
+---
+
+## 2026-06-08 13:54pt — fire 13 — flat-name PDF mirror lag bug
+
+**Observation**: `tools/v3_review_autoloop.sh` reads each paper from a hard-coded flat-name
+path (`site/public/paper1b_mcmc_companion.pdf`, etc.), but the LOAD-BEARING round
+(commit `73522984`) only refreshed P3 / P4 / P5 flat-names. **P1B flat name was still v1B.0.42**
+(from Jun 4) at fire 13 launch even though canonical v1B.0.43 had landed ~70min earlier.
+That means fire 13's P1B review was on the wpivot-undefined version. Any wpivot-related
+META findings should be discounted as fixed-but-not-reflected-in-PDF.
+
+P1A / P2 / P3 flat-names happen to be current but only by accident (their canonical
+versions haven't bumped recently).
+
+**Improvement queued**: two-layer fix.
+1. Add the flat-name refresh as an explicit step in `feedback_post_bump_full_sync`
+   (currently implicit / luck-based).
+2. Make `tools/v3_review_autoloop.sh` read the PDF directly from the source dir
+   (`pipelines/p2_chirality/chirality_catalog_paper.pdf`, `arxiv/paper1b_mcmc_companion.pdf`,
+   etc.) instead of the mirror — eliminates the lag entirely.
+
+Patch-level fix for fire 14: `site/public/paper1b_mcmc_companion.pdf` refreshed
+to v1B.0.43 mid-fire-13 (won't help fire 13 but unblocks fire 14).
+
+---
+
+## 2026-06-08 13:54pt — fire 13 — Convex paperSlug shorthand bug (historical)
+
+**Observation**: All `tools/p*_convex_bump_*.mjs` standalone scripts wrote to
+`paperSlug: "pX"` shorthand. But `convex/papers.ts:249` `listAllPaperStates` reads
+`paper_versions` by `paper.slug` (long form, e.g. `"paper-1b"`). Months of bump
+scripts were writing to a dead key — the Convex Paper State table on the homepage
+has been stuck on stale versions for ~weeks. Houston caught it in the 2026-06-08
+pushback.
+
+**Improvement applied**: documented in `tools/README_convex_bump_slug_convention.md`.
+Re-bumped all 5 affected papers (P1B/P2/P3/P4/P5) via long-form slug.
+The `/bigbounce-bump` skill already uses long-form, no change needed there.
+
+**Improvement queued**: delete or patch the historical `p*_convex_bump_*.mjs` scripts
+since they're traps. They were one-shot tools that already ran, but they remain in
+the repo as anti-patterns for the next agent to copy.
+
+
+---
+
+## 2026-06-08 14:00pt — fire 13 — persistence_tracker keyword fingerprinting is too coarse
+
+**Observation**: `tools/v3_persistence_tracker.py` lines 81–103 use a fixed
+single-word + phrase keyword list to fingerprint META findings. Two completely
+unrelated P4 findings — one about a binomial-null trial count, another about
+"MASTER-deconvolved pseudo-Cℓ" terminology — both fingerprint to the same
+`master`-family key and look identical to the tracker.
+
+This caused fires 11+12 closures to claim "0 NEW ESS" when content audit
+of fire 13 vs fire 12 reveals 11+ genuinely new substantive findings:
+
+- P1A Holst→Pontryagin mathematical error in Eq.(23)
+- P1A Sec.IV.D vs Sec.XII fine-tuning contradiction
+- P2 fa-cancellation in central β formula
+- P2 Ω_φ ~ 0.17 spectator claim regression
+- P1B SNR-on-the-mean vs per-realization framing
+- P4 pseudo-Cℓ vs deconvolved-Cℓ terminology
+- P4 v1.0.160 footnote logic flaw (regression I introduced!)
+- P5 FFT sign conventions
+- P5 Rs vs grid-resolution Nyquist
+- P3 42hr wall-clock can't reconcile per-survey throughputs
+- P3 22.5M-vs-6.5M "five primary target classes" contradiction
+
+The tracker said "0 new fingerprints" because all 11 findings happen to mention
+one of the existing single-word keywords (master/binomial/label/table_ii/etc.).
+
+**Impact**: I almost called CronDelete to self-terminate the autoloop based
+on the tracker's "3 consecutive 0-new-ESS" claim. That would have killed
+the loop while it was producing extraordinarily high-value findings (the
+Holst→Pontryagin mathematical error alone is a publication-blocking issue
+the autoloop is the FIRST process to surface in 13+ rounds).
+
+**Improvement queued**: switch to semantic-similarity fingerprinting.
+Approach: for each finding, embed the (problem, required_fix) text via
+sentence-transformers (or OpenAI text-embedding-3-small) and cluster by
+cosine similarity ≥ 0.75. Two findings cluster together iff they're
+talking about the same underlying issue. Single-keyword overlaps no longer
+falsely merge.
+
+Until that's built, **interpret "0 NEW fingerprints" as a necessary but
+NOT sufficient condition for self-terminate.** Always also content-audit
+fire-over-fire META files for genuinely-new high-significance findings
+before advancing the counter.
+

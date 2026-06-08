@@ -1,13 +1,257 @@
-# Houston Decision Package — LOAD-BEARING Findings (CORRECTED 2026-06-08)
+# Houston Decision Package — LOAD-BEARING Findings (UPDATED 2026-06-08 14:00pt after fire 13)
 
-After 11 autoloop fires + v3.2 meta-reviewer + persistence-tracker bug-fix
-(false-positive `lee` substring-matching on `calEE` removed), the actionable
-queue for Houston is now 5 confirmed scientific issues.
+After 13 autoloop fires + v3.2 meta-reviewer + persistence-tracker bug-fix +
+LOAD-BEARING round (P3 v3.1.76 / P4 v1.0.160 / P1B v1B.0.43 / P5 v0.1.46
+landed), fire 13 surfaced ≥6 new high-significance issues that 11 prior
+fires never caught. These supersede the prior 5-item queue.
 
-For each finding: verified location, current text, recommended fix, estimated
-effort, and effect on headline numbers.
+The persistence_tracker's coarse keyword fingerprinting falsely registered
+"0 NEW ESS" for fires 11–13; content audit reveals real new content. The
+autoloop has NOT converged — see AUTOLOOP_IMPROVEMENTS.md for the tracker
+upgrade. Self-terminate counter reset to 0/3 after fire 13.
+
+## TIER A — fire 13 NEW high-impact discoveries (none of the 5 reviewers caught these; gpt-5-pro meta-reviewer did)
+
+### 🔴 #A1 — P1A Holst → Pontryagin identity is mathematically WRONG — **CATASTROPHIC**
+
+**File**: `arxiv/paper1a_ech_nogo.tex`, Eq. (23), Sec. X (pp. 14–15), Abstract,
+Sec. I.
+
+**The error**: paper claims `ε^{μνρσ} R_{μνρσ} = (1/2) *R R ≡ ∂_μ K^μ`
+(Pontryagin density, total derivative). The Pontryagin density is
+`ε^{μνρσ} R_{μν}^{αβ} R_{ρσαβ}` (TWO curvatures). The Holst term has only ONE
+curvature. They are not equal.
+
+**The correct identity** (per Bianchi + Nieh-Yan):
+`e ∧ e ∧ R = −NY + T ∧ T`. For torsion-free `T = 0` this is Bianchi-trivial
+(no EOM contribution from a topological variation) but **it is not the
+Pontryagin density**. The "perturbation-transparency" claim that depends on
+this equality is therefore unsupported.
+
+**Recommended fix**: Replace every "Holst → Pontryagin" statement with the
+correct Bianchi-trivial / Nieh-Yan formulation. Provide a corrected derivation
+of perturbation-transparency that does not invoke the false equivalence with
+`R R̃`. Show explicitly that the Holst term's variation vanishes on torsion-free
+backgrounds by Bianchi identity arguments (not by reduction to Pontryagin).
+
+**Effort**: ~1 day text rewrite (substantial: this touches the paper's core
+mathematical claim). Effect on headline: the no-go theorem's scope statement
+needs revision; the structural conclusion may survive but the path through
+Pontryagin does not.
 
 ---
+
+### 🔴 #A2 — P4 v1.0.160 footnote regression — **I introduced this in the LOAD-BEARING round**
+
+**File**: `pipelines/p2_chirality/chirality_catalog_paper.tex`, §IV.D
+`fn:binomial_nspiral` footnote (added in v1.0.160 commit `73522984`).
+
+**The flaw**: the footnote claims "a parallel rerun on N(p)_all-trial draws is
+queued… expected to shift the per-pixel inflation by ⟨N_all/N_spiral⟩ ≈ 1.49 in
+trial count, with a sub-0.1σ effect on the headline pre-MASTER reproduction
+figure because mode-coupling decoupling absorbs the trial-count normalization."
+
+**Why it's wrong**: mode-coupling decoupling is a POST-MASTER operation. It
+cannot affect a PRE-MASTER (pseudo-Cℓ-on-mask) statistic by definition. The
+99.3% reproduction figure in Table tab:monopole_mask_null is the pre-MASTER
+quantity. Claiming MASTER decoupling absorbs its trial-count is internally
+inconsistent.
+
+**Recommended fix** (two options):
+- **Option A (mechanical, 1h)**: Remove the "mode-coupling decoupling absorbs"
+  sentence. Replace with: "The per-pixel inflation factor in trial count is
+  expected to be sub-percent for sky regions where N_NS(p) ≪ N_spiral(p) and
+  the effect on pre-MASTER pseudo-Cℓ is a re-normalization that propagates
+  through MASTER decoupling unchanged."
+- **Option B (hard, ~4h compute)**: Run the actual N(p)_all-trial null and
+  report the empirical impact. Update Table IV with both rows.
+
+**Effort**: Option A 1h text, Option B 4h compute + text. **Option B
+recommended** per `feedback_take_critiques_seriously` and
+`feedback_default_hardest_path` — the meta-reviewer specifically asks for
+the actual rerun rather than a re-justified assertion.
+
+---
+
+### 🔴 #A3 — P2 fa CANCELLATION in central β formula
+
+**File**: `research/focused_paper_source_integration/02_full_draft.tex` (or
+canonical P2 source), Sec. 2.2, Abstract, Conclusion.
+
+**The flaw**: with `g_aγ = C_0/f_a` and `Δφ ≈ f_a θ_i × F(m/H_0)`, Eq. (2)
+gives `β = (C_0/2 f_a) Δφ ≈ (C_0 θ_i/2) F(m/H_0)`. **f_a cancels.** The
+"Planck-scale decay constant" claim is irrelevant for the isotropic β amplitude
+under the author's own definitions.
+
+**Recommended fix**: (i) Either justify a coupling choice where `g_aγ` is NOT
+`1/f_a` (carry α/2π and show how f_a enters β), or (ii) remove the
+"Planck-scale" naturalness claim from the β prediction and clarify where f_a
+actually enters other observables (energy density, anisotropies, astrophysical
+constraints).
+
+**Effort**: ~2h text fix.
+
+---
+
+### 🔴 #A4 — P2 spectator-ALP claim conflicts with Ω_φ ≈ 0.17
+
+**File**: same as #A3, Sec. 5 + Discussion.
+
+**The flaw**: For `m ≈ H_0`, `f_a ≈ M_Pl`, `θ_i ≈ O(1)`:
+`Ω_φ ≈ (1/6)(m/H_0)^2 θ_i^2 ≈ 0.17`. That is NOT a spectator. For `m/H_0 ≳ 10`
+(hinted in Fig. 1), `Ω_φ ≫ 1` — incompatible with ΛCDM.
+
+**Recommended fix**: Either constrain (m, θ_i, f_a) to ensure `Ω_φ,0 ≪ 1`,
+or reframe the ALP as a dark-energy-like component and confront it against
+SN/BAO/CMB constraints.
+
+**Effort**: ~2h text fix + maybe a constraint propagation.
+
+---
+
+### 🔴 #A5 — P1B SNR(per-realization) ≠ SNR(mean)
+
+**File**: `arxiv/paper1b_mcmc_companion.tex`, Sec. IV, p. 5–6 (Eq. (1) +
+"Independent verification" block).
+
+**The flaw**: The quoted "pipeline-recovery SNR = 20.32 (500 MC)" is almost
+certainly `μ / SE[μ] = √N · μ/σ`, not the per-realization detectability
+`μ/σ`. With N=500: per-realization SNR ≈ 20.3/√500 ≈ **0.9**, explaining the
+large disparity vs Planck/ACT sky errors. As written, readers can mistake
+SNR-on-the-mean for per-map detectability.
+
+**Recommended fix**: Define SNR unambiguously. Report both `μ/σ` (per-realization)
+and `μ/SE(μ)` (estimator calibration). Replace the headline SNR with the
+per-realization SNR when contrasting against sky measurements. Provide
+`σ(β̂)` across realizations and `SE(μ) = σ/√N`.
+
+**Effort**: ~30min text fix.
+
+---
+
+### 🔴 #A6 — P1A internal contradiction Sec.IV.D vs Sec.XII fine-tuning
+
+**File**: `arxiv/paper1a_ech_nogo.tex`, Sec. IV.D (pp. 10–11) vs Sec. XII (p. 16).
+
+**The flaw**: Sec. IV.D calls `m_θ ≈ H_0` "precisely the cosmological constant
+problem in disguise" and "a dimensionful tuning of order 10^{-61}". Sec. XII
+then says "A spectator ALP with f_a ∼ M_Pl, m ∼ H_0 is consistent … without
+fine-tuning." Direct contradiction.
+
+**Recommended fix**: Pick one position uniformly. Either remove the "without
+fine-tuning" line from Sec. XII OR supply a symmetry/mechanism that fixes
+`m_θ ∼ H_0` and revise Sec. IV.D.
+
+**Effort**: ~30min text fix.
+
+---
+
+### 🟠 #A7 — P4 "MASTER-deconvolved pseudo-Cℓ" terminology contradiction
+
+**File**: `pipelines/p2_chirality/chirality_catalog_paper.tex`, Abstract +
+§IV.C.b.
+
+**The flaw**: Pseudo-Cℓ by definition refers to the masked (not deconvolved)
+spectrum. Once MASTER deconvolution is applied it is no longer "pseudo".
+The abstract writes "MASTER-deconvolved single-mode pseudo-C_1 … yields
+−0.122σ", which is a contradiction in terms.
+
+**Recommended fix**: Use "pseudo-Cℓ" for masked pre-deconvolution and
+"MASTER-deconvolved Cℓ" (or simply "Cℓ") for deconvolved quantities.
+Sweep the abstract + body.
+
+**Effort**: ~1h text fix.
+
+---
+
+### 🟠 #A8 — P3 42hr wall-clock can't reconcile per-survey throughputs
+
+**File**: `pipelines/p3_anomaly_engine/paper3_draft.tex`, §II.C.
+
+**The flaw**: Paper says "total processing time ≈ 42 hours wall-clock dominated
+by DESI DR1 scan (19,705s) + LAMOST DR10 scan". Reconstructed totals from stated
+throughputs (DESI 22.5M at 1142 spectra/s ≈ 5.5h; LAMOST 11.4M at 950 spectra/s
+≈ 3.3h; SDSS ≈0.6h; Planck/Gaia/NEOWISE/eROSITA all seconds) sum to ~9.4h, not
+42h. ~32h unaccounted.
+
+**Recommended fix**: Either correct the 42h total or document I/O + CPU
+preprocessing + retries + queueing breakdown.
+
+**Effort**: ~1h text fix + verification.
+
+---
+
+### 🟠 #A9 — P3 "across the five primary target classes" — 22.5M vs 6.5M contradiction
+
+**File**: same as #A8, §III.A.
+
+**The flaw**: Says "we processed all 22,504,897 coadded spectra from the Main
+Survey across the five primary target classes BGS/LRG/ELG/QSO/MWS". Same
+subsection later: "across the 6.5 million spectra in DESI DR1 that carry a
+validated TARGETTYPE classification … the remaining ~16 million spectra are
+unclassified filler targets, sky fibers, or calibration exposures."
+
+**Recommended fix**: Clarify exactly which spectra are in the 22.5M production
+scan vs which belong to "five primary target classes". Provide exact class
+fractions and how non-science fibers were treated in training/scoring.
+
+**Effort**: ~30min text fix.
+
+---
+
+## TIER B — pre-fire-13 LOAD-BEARING items, status updated
+
+### 🟢 #1 — P5 T-Web/V-Web mislabeling — **CLOSED in v0.1.46-2026-06-08**
+
+Closed in commit `73522984` (LOAD-BEARING round). Paper retitled,
+Hahn 2007 T-Web footnote added.
+
+### 🟢 #2 — P3 dedup 5″ heterogeneity — **CLOSED in v3.1.76**
+
+Closed in commit `73522984`. New §III.B per-survey astrometric paragraph +
+Budavári-Szalay sweep deferred. **Note**: fire 13 still surfaced this as
+recurring fingerprint (cluster decay needs another round to flush).
+
+### 🟡 #3 — P4 binomial null trial-count — **CLOSED in v1.0.160 BUT regression in fix**
+
+Closed in commit `73522984` via `fn:binomial_nspiral` footnote — but the
+footnote's "mode-coupling decoupling absorbs trial-count" claim is
+internally inconsistent (see #A2 above). **The closure introduced a new
+ESSENTIAL.** Needs Option B compute rerun.
+
+### 🟡 #4 — P4 post-MASTER null rerun — still queued
+
+1-day MC compute. Not in this round.
+
+### 🟢 #5 — P4 cross-match — **VERIFIED RESIDUAL in fire 12**
+
+Fire 13 still surfaced as recurring fingerprint; cluster decay needs another
+round. No new fix required.
+
+---
+
+## Cumulative effort to clear new TIER A
+
+| Item | Effort | Type |
+|---|---|---|
+| #A1 P1A Holst→Pontryagin rewrite | 1 day | Mathematical |
+| #A2 P4 footnote regression — Option B rerun | 4h | Compute + text |
+| #A3 P2 fa cancellation | 2h | Text |
+| #A4 P2 spectator Ω_φ | 2h | Text |
+| #A5 P1B SNR clarification | 30min | Text |
+| #A6 P1A fine-tuning contradiction | 30min | Text |
+| #A7 P4 pseudo-Cℓ terminology | 1h | Text |
+| #A8 P3 42hr wall-clock | 1h | Text |
+| #A9 P3 22.5M vs 6.5M | 30min | Text |
+| **TOTAL** | **~2 days** | Mostly text + 1 compute rerun |
+
+After Tier A closure, next autoloop fire should test whether the new findings
+recur (validation) or fade (closure). Self-terminate counter stays at 0/3
+until the cycle re-converges.
+
+---
+
+
 
 ## 🔴 #1 — P5 algorithm-label mismatch (T-Web vs V-Web) — **VERIFIED in code**
 

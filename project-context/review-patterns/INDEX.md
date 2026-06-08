@@ -137,3 +137,10 @@ Candidate cluster (not yet promoted to full pattern): **σ-value incommensurabil
 Variant of [[pattern-008-closure-introduced-regression]]. Closure round responds to a 'justification gap' finding by ADDING fabricated math (orbit count, partition count, symmetry argument) rather than verifying. Caught on P2 R9 Gemini-M1 after 6 rounds × 4 vendors missed it. The fabricated 'exactly six orbits / complete S3 set' justification at L225 was added by R3 closure; underlying basis was physics-correct, but the layer was a lie.
 
 Details: [pattern-036-closure-fabricates-math-justification.md](pattern-036-closure-fabricates-math-justification.md)
+
+---
+## Pattern 040 — cross-section internal claim contradiction (DRAFT)
+
+META-reviewer (gpt-5-pro) catches claims in section X that contradict claims in section Y of the SAME paper. The 5 per-vendor reviewers miss it because they read locally. 4 firings in fire 13 across P1A (Sec.IV.D fine-tuning vs Sec.XII), P2 (spectator vs Ω_φ formula), P4 (pseudo-Cℓ vs deconvolved), P4 (v1.0.160 footnote logic). Recommends mechanical pre-commit cross-section grep + dedicated `/cross-section-coherence-check` skill at 6+ firings.
+
+Details (draft): [pattern-040-cross-section-internal-contradiction-DRAFT.md](pattern-040-cross-section-internal-contradiction-DRAFT.md)
