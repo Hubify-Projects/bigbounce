@@ -107,16 +107,64 @@ def find_section_for_line(lines: list[str], line_idx: int) -> str:
     return "?"
 
 
+DISAMBIGUATION_CONTEXT_RE = re.compile(
+    r"\b(?:distinct from|distinguished from|not equal to|should not be confused with|"
+    r"not the same as|"
+    r"NOT [a-zA-Z]+|"  # "NOT to Pontryagin"
+    r"misidentified|erroneously identified|"
+    r"separate (?:topological )?invariant|"
+    r"is not the [a-z]+ density|"
+    r"have only one|involves \\?emph\{two\}|two curvatures|"
+    r"distinguished from|"
+    r"differential-form language|"  # disambiguation in my P1A footnote
+    r"in differential-form|"
+    r"differential[- ]form decomposition|"
+    r"correction preserves|"
+    r"the headline conclusion|"
+    r"this is the|"  # "This is the Bianchi-vanishing of the Holst..."
+    r"vanishes identically|"
+    r"this should be carefully|"
+    r"\\emph\{not\}|"
+    r"is \\emph\{not\}|"
+    r"reserves|"
+    r"reserved for|"
+    r"in the prior version|in earlier versions|"
+    r"This Bianchi-vanishing is|"
+    r"by the first \(algebraic\) Bianchi|"
+    r"version of this manuscript)\b",
+    re.IGNORECASE,
+)
+
+
+def is_disambiguation_context(window: str) -> bool:
+    """
+    Return True if the surrounding window is clearly explaining 'X is NOT Y'
+    or 'we should not confuse X with Y' rather than asserting 'X = Y'.
+    """
+    return bool(DISAMBIGUATION_CONTEXT_RE.search(window))
+
+
 def search_pattern(tex: str, lines: list[str], pattern: str) -> list[tuple]:
     """
     Return list of (line_no, line_text, section) for matches of pattern.
     Now searches both per-line AND text-wide (for multi-line spans).
+    Skip matches whose ±300-char window contains explicit disambiguation
+    language ("distinct from", "NOT Pontryagin", "misidentified", etc.) —
+    these are CORRECTIONS, not assertions of the contradiction.
     """
     matches = []
     seen_lines = set()
     # Per-line pass
     for i, ln in enumerate(lines):
-        if re.search(pattern, ln, re.IGNORECASE):
+        m = re.search(pattern, ln, re.IGNORECASE)
+        if m:
+            # Build a ±300-char window from the source text
+            # (use line-level neighborhood for simplicity)
+            start_line = max(0, i - 4)
+            end_line = min(len(lines), i + 4)
+            window = "\n".join(lines[start_line:end_line])
+            if is_disambiguation_context(window):
+                continue
             section = find_section_for_line(lines, i)
             matches.append((i + 1, ln.strip()[:200], section))
             seen_lines.add(i)
@@ -136,6 +184,12 @@ def search_pattern(tex: str, lines: list[str], pattern: str) -> list[tuple]:
         else:
             line_no = len(lines) - 1
         if line_no in seen_lines:
+            continue
+        # ±300-char window around the match itself
+        w_start = max(0, start - 300)
+        w_end = min(len(tex), m.end() + 300)
+        window = tex[w_start:w_end]
+        if is_disambiguation_context(window):
             continue
         section = find_section_for_line(lines, line_no)
         snippet = tex[start:start + 200].replace("\n", " | ")
