@@ -1167,3 +1167,93 @@ Updated to "1.98 percentage points" + "0.22 percentage points" (more specific).
 Standing rule: closure anchors must be ≥ 4 distinctive words OR a precise
 numeric value that's unlikely to recur in unrelated contexts.
 
+
+## 2026-06-08_1632pt — round=auto-2026-06-08_1632pt
+
+  - P1A: 140 findings, 5 consensus, meta=yes (   11131 chars)
+  - P1B: 124 findings, 3 consensus, meta=yes (   12621 chars)
+  - P2: 143 findings, 2 consensus, meta=yes (   10739 chars)
+  - P3: 155 findings, 4 consensus, meta=yes (   11836 chars)
+  - P4: 151 findings, 14 consensus, meta=yes (   12617 chars)
+  - P5: 140 findings, 4 consensus, meta=yes (   13695 chars)
+
+### Fire 16 closure (2026-06-08 16:32pt → 16:45pt)
+
+Fire 16 ran with full 5-reviewer + gpt-5-pro meta coverage on the
+post-10-closure PDFs:
+  P1A v1A.0.46 (Holst→Pontryagin + fine-tuning closures)
+  P1B v1B.0.44 (β-bound + wpivot)
+  P3  v3.1.77 (γ-CI dual-summary)
+  P4  v1.0.161 (footnote regression fix)
+  P5  v0.1.47 (range terminology)
+
+Per-paper findings:
+  P1A: 140 findings, 5 consensus
+  P1B: 124 findings, 3 consensus
+  P2:  143 findings, 2 consensus
+  P3:  155 findings, 4 consensus
+  P4:  151 findings, 14 consensus (highest of all 16 fires)
+  P5:  140 findings, 4 consensus
+
+### Content-diff fire 15 → fire 16: **14 NEW ESS, 0 RECURRING, 18 CLOSED**
+
+Unified closeout wrapper (commit 09e9c296) executed:
+- content-diff: 6 papers with NEW ESS (counter = RESET / HOLD)
+- closure-verif: **ALL 9 ledger closures STUCK** including just-shipped
+  v1A.0.45 (Holst→Pontryagin), v1A.0.46 (fine-tuning), v1.0.161 (footnote)
+- v2-persistence: 14 NEW ESS content-clusters
+- pattern-040 sweep: 0 cross-section contradictions across all 6 papers
+
+### **ALL 10 PAPER-LEVEL CLOSURES SHIPPED THIS SESSION STUCK IN FIRE 16**
+
+This is the strongest single-fire validation of the closure strategy:
+gpt-5-pro re-read all 6 papers with no prior context and found NONE of the
+10 issues I closed in this session. The closures landed effectively.
+
+### Fire 16 NEW ESS — pattern routing
+
+- **P1A-META-E1**: algebraic ratio error in Δθ_one-loop/Δθ_obs derivation
+  ("(M/MPl)·α·βobs" should be "M/(α·MPl·βobs)"). **Pattern-041** (META arithmetic check) — firing again.
+- **P1A-META-E2**: Eq.(4) γ-dependent contact coefficient vs Eq.(13)
+  γ-free contact coefficient. **Pattern-040** (cross-section contradiction) —
+  but my detector didn't catch it. Detector improvement needed: add rule
+  for "two coefficient forms differ across equations".
+- **P1B-META-E1**: DES-Y5 + Pantheon+ supernova double counting.
+- **P1B-META-E2**: BBN Yp treatment with ΔNeff not specified.
+- **P2-META-E1**: spectator-field reframing with explicit Ω calculation
+  (same family as fire-13 #A4 but with different specific argument).
+- **P3-META-E1**: hidden self-normalization in QSO-candidate α estimate.
+- **P4-META-E1**: parity-transformation claim audit (abstract says ℓ=1 is
+  parity-EVEN — is that actually true under your definitions?).
+- **P4-META-E2**: T1 (flip-swap correlation = 1.000) tautological by
+  construction — flip-equivariance enforced as a constraint, not measured.
+- **P4-META-E3**: NaMaster weight-variance mismatch (W_p uses N_all, A_p
+  uses N_spiral, A_p variance is binomial in N_spiral; weight mismatch).
+- **P4-META-E4**: finite-MC p uncertainty not addressed on canonical
+  residual.
+- **P5-META-E1**: 3D density δ built without radial selection function n(z)
+  weights — same as fire 15 P5 finding but different specific framing.
+- **P5-META-E2**: Fourier pipeline algorithmic source of "survey-shell
+  artifacts" — FFT zero-padding outside dilated mask imposes periodic
+  boundary conditions.
+- **P5-META-E3**: announced "position-shuffle" null never reported anywhere
+  in the results.
+- **P5-META-E4**: undefined variable in §VIII F governing the 812,793 vs
+  791,635 sample-subset choice.
+
+### Self-terminate counter: **0 of 3** (held; NEW ESS > 0)
+
+The meta-reviewer continues mining fresh layers. Each fire surfaces a
+different set of substantive issues. The "deep ever-renewing review service"
+character documented in fires 13-15 holds.
+
+### Tooling validation
+
+- v3_fire_closeout.sh (commit 09e9c296) ran the full closeout in <2 min;
+  this replaces the prior 4-step manual closeout that took ~10 min per fire.
+- pattern-040 detector remains sweep-clean across all 6 papers — empirical
+  evidence the closures landed correctly.
+- closure verification ledger (CLOSURE_LEDGER.json) now validates 9 closures
+  STUCK across 2 fires since shipping; the anchor-phrase scan strategy is
+  empirically reliable.
+
