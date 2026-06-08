@@ -18,8 +18,8 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.45-2026-06-04}
-\newcommand{\paperTimestamp}{June 4, 2026}
+\newcommand{\paperVersion}{v0.1.46-2026-06-08}
+\newcommand{\paperTimestamp}{June 2026}
 % --- Preamble changelog (full pre-v0.1.44 history archived to CHANGELOG_pre-v0.1.44.txt) ---
 % v0.1.44-2026-06-03 (R-upgraded-round9 closure bundle, 7 do-now fixes from
 %   direct-vendor Gemini-2.5-Pro + Grok-4 + GPT-4o + Perplexity triage on v0.1.43).
@@ -79,9 +79,17 @@ $2{,}232{,}212$ unique galaxies; of these, $791{,}635$ carry an
 unambiguous post-TTA equivariant CW or CCW label and form the
 chirality-relevant subsample. We classify each matched spiral into one
 of four cosmic-web classes \{void, wall, filament, cluster\} by running
-a V-Web tidal-tensor classifier (Hahn~\textit{et~al.}~2007
-\cite{Hahn2007}; Hoffman~\textit{et~al.}~2012 \cite{Hoffman2012};
-Cautun~\textit{et~al.}~2014 \cite{Cautun2014}) on the full
+a tidal-tensor cosmic-web classifier (Hahn~\textit{et~al.}~2007
+\cite{Hahn2007}; Cautun~\textit{et~al.}~2014 \cite{Cautun2014})
+\footnote{We use the tidal-tensor formulation
+$T_{ij} = \partial^2\Phi/\partial x_i\partial x_j$ with $\Phi$ from
+Poisson's equation on the smoothed overdensity field (the Hahn~2007
+recipe, sometimes called the T-Web variant), classifying by the count
+of eigenvalues exceeding $\lambda_{\rm th}$. The Hoffman~\textit{et~al.}~2012
+\cite{Hoffman2012} velocity-shear V-Web requires a separate velocity
+reconstruction not used here; for backward compatibility with prior
+analyses we retain the ``V-Web'' label which is sometimes used loosely
+for the family of tidal-field classifiers.} on the full
 $14{,}622{,}283$-galaxy DESI DR1 spectro sample on a $256^3$ comoving
 grid with a $25\,{\rm Mpc}/h$ Gaussian smoothing and eigenvalue
 threshold $\lambda_{\rm th}\!=\!0$. \textbf{Headline result:} the CW
