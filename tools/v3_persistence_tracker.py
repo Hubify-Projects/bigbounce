@@ -68,26 +68,44 @@ def parse_meta_findings(round_label: str, paper: str) -> dict:
 
 
 def fingerprint(summary: str) -> str:
-    """Crude signature for cross-round identity matching."""
+    """Crude signature for cross-round identity matching.
+    Uses word-boundary matching to avoid substring false positives
+    (e.g., 'lee' substring-matching on 'calEE' which is a Planck nuisance param).
+    """
     s = summary.lower()
-    # Strip punctuation
-    s = re.sub(r"[^a-z0-9]+", " ", s)
-    # Keep top-tier keywords
+    # Strip punctuation but preserve word boundaries
+    s_normalized = " " + re.sub(r"[^a-z0-9]+", " ", s) + " "
+    # Keep top-tier keywords. Multi-word keywords use space-padded substring.
+    # Single-word keywords use word-boundary matching.
     tokens = []
-    keywords = [
-        "binomial", "n_total", "n_spiral", "fsky", "non-binary", "weighted mask",
-        "monopole", "leakage", "post-master", "pre-master", "master",
-        "t-web", "v-web", "tidal tensor", "velocity shear",
-        "dedup", "deduplication", "cross-match", "astrometric",
-        "selection function", "random catalog", "n(z)", "radial",
-        "label noise", "ce-resnet", "gz1",
-        "double correction", "lee", "look-elsewhere", "bonferroni",
-        "ap definition", "asymmetry definition", "denominator",
+    single_word_keywords = [
+        "binomial", "fsky", "monopole", "leakage", "master",
+        "dedup", "deduplication", "astrometric",
+        "radial",
+        "label", "gz1",
+        "lee", "look-elsewhere", "bonferroni",
         "shamir", "iye", "tadaki",
-        "table ii", "table iv", "abstract",
-        "future date", "sigma values", "qualifier",
+        "abstract",
+        "qualifier",
     ]
-    for kw in keywords:
+    phrase_keywords = [
+        "n_total", "n_spiral", "non-binary", "weighted mask",
+        "post-master", "pre-master",
+        "t-web", "v-web", "tidal tensor", "velocity shear",
+        "cross-match",
+        "selection function", "random catalog",
+        "label noise", "ce-resnet",
+        "double correction",
+        "ap definition", "asymmetry definition", "denominator",
+        "table ii", "table iv",
+        "future date", "sigma values",
+    ]
+    for kw in single_word_keywords:
+        # Word boundary: must be surrounded by non-letter chars (or string ends)
+        pattern = r"(?:^|[^a-z])" + re.escape(kw) + r"(?:[^a-z]|$)"
+        if re.search(pattern, s):
+            tokens.append(kw)
+    for kw in phrase_keywords:
         if kw in s:
             tokens.append(kw.replace(" ", "_"))
     return "|".join(sorted(set(tokens))) if tokens else "other"
