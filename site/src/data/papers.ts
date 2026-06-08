@@ -290,10 +290,10 @@ export const papers: Paper[] = [
       "arXiv submission (administrative, recommended first in P4 -> P1A -> P1B -> P3 -> P2 order)",
     ],
     preprintId: "HUBIFY-2026-004",
-    pdfMeta: "PDF 26.28 MB · 57 pp · Jun 4, 2026, v1.0.151 (R-EXT 3-vendor closure: 18σ overclaim softened to template-model disfavour, mask hierarchy declared not pre-spec, decomposition + sensitivity tables added, Shamir 2.5× removed; 0 undef refs; md5 18b4adf5)",
+    pdfMeta: "PDF 423 KB · 10 pp · Jun 5, 2026, v1.0.159 (autoloop R10v3p1 closures: P4-E12 GZ1 N 240,919→234,282; P4-E13 dilution factor 0.63→g=0.398 with 1.88% true-threshold; P4-E1/E5 'Table II'→'Table I' cross-ref fix; 0 undef refs)",
     artifacts: [
-      { label: "Read PDF", href: "/papers/chirality_catalog_paper_v151.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/chirality_catalog_paper_v151.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/chirality_catalog_paper_v159.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/chirality_catalog_paper_v159.pdf", kind: "secondary", download: true },
       {
         label: "LaTeX source",
         href: "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/chirality_catalog_paper.tex",
@@ -351,10 +351,10 @@ export const papers: Paper[] = [
       "First R-round adversarial review (only after draft has headline numbers)",
     ],
     preprintId: "HUBIFY-2026-005",
-    pdfMeta: "PDF 966 KB · 21 pp · Jun 3, 2026, v0.1.44 (R9 7-fix bundle: title retitled DESIVAST-lead, 'strongest' softened x3, RSD anisotropic-eigenvalue reframing, abstract DESIVAST scope clarification, scale-locality caveat, §XI.B retitle, 383-line preamble changelog archived to CHANGELOG_pre-v0.1.44.txt; 0 overfull, 0 undef refs)",
+    pdfMeta: "PDF 950 KB · ~22 pp · Jun 8, 2026, v0.1.46-2026-06-08 (LOAD-BEARING #1 closed: 'V-Web' → 'tidal-tensor cosmic-web (Hahn 2007 T-Web variant)' globally; Hoffman 2012 citation removed; footnote added documenting that env_finder code implements the Hahn T-Web recipe φ_k = −δ_k/k² then T_ij = −k_i k_j φ_k, not V-Web velocity-shear; 0 overfull, 0 undef refs)",
     artifacts: [
-      { label: "Read PDF", href: "/papers/p5_desi_chirality_v0.1.44.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/p5_desi_chirality_v0.1.44.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/p5_desi_chirality_v0.1.46.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/p5_desi_chirality_v0.1.46.pdf", kind: "secondary", download: true },
       {
         label: "Pipeline + scripts",
         href: "https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p5_desi_chirality",
