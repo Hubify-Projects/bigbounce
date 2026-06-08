@@ -122,7 +122,6 @@ def grep_tex_for_value(tex_text: str, value: float, tolerance: float = 0.02) -> 
     """
     matches = []
     for ln in tex_text.splitlines():
-        # Find every numeric in the line
         for m in re.finditer(r"-?\d+\.?\d+", ln):
             try:
                 n = float(m.group(0))
@@ -136,14 +135,63 @@ def grep_tex_for_value(tex_text: str, value: float, tolerance: float = 0.02) -> 
 
 def grep_tex_for_param_name(tex_text: str, var: str) -> bool:
     """Return True if variable name (or close variant) appears in .tex."""
-    # Strip LaTeX commands from var
     base = re.sub(r"[_/\\^]", " ", var).lower()
-    # Search .tex case-insensitively for any of the words
     words = [w for w in base.split() if len(w) > 1]
     if not words:
         return False
     tex_lower = tex_text.lower()
     return all(w in tex_lower for w in words)
+
+
+def grep_tex_for_value_near_variable(tex_text: str, value: float, var: str,
+                                      tolerance: float = 0.02,
+                                      proximity_chars: int = 200) -> list[str]:
+    """
+    Stricter check: find every occurrence of `value` in the .tex AND verify
+    that the variable name `var` appears within `proximity_chars` characters
+    of the match.
+
+    This fixes the false-positive case where the value coincidentally matches
+    a different quantity in the .tex (e.g., meta cited "Δφ/f_a=0.24" and the
+    .tex has β=0.242° — same digits, different quantity).
+    """
+    # Translate variable to a regex that matches typical LaTeX forms
+    # e.g., "Δφ/f_a" -> r"(?:\\Delta)?\\?phi.{0,5}/.{0,5}f.?_?a"
+    var_base = re.sub(r"[_/\\^]", "", var).lower()
+    # Generate variant regexes for the variable
+    candidates = []
+    if "deltaphi" in var_base or "phi" in var_base.replace("delta", ""):
+        candidates.append(r"\\Delta\s*\\phi")
+        candidates.append(r"\\Delta\\phi")
+        candidates.append(r"\\phi")
+    if "fa" in var_base or "f_a" in var or "f/a" in var:
+        candidates.append(r"f_?a")
+        candidates.append(r"f_\{a\}")
+    if "agamma" in var_base or "c_a" in var.lower() or "caγ" in var.lower():
+        candidates.append(r"C_?\{?a\\?gamma\}?")
+        candidates.append(r"C_?\{?a\\?γ\}?")
+    if "thetai" in var_base or "theta_i" in var.lower():
+        candidates.append(r"\\theta_?i")
+    if "mh0" in var_base or "m/h" in var.lower():
+        candidates.append(r"m\s*/\s*H_0")
+    if not candidates:
+        candidates.append(re.escape(var))
+    # Look for value occurrences in the .tex, and require variable nearby
+    matches = []
+    tex_low = tex_text  # keep case for LaTeX
+    for m in re.finditer(r"-?\d+\.?\d+", tex_text):
+        try:
+            n = float(m.group(0))
+            if abs(n - value) <= tolerance * max(abs(value), 1.0):
+                # Check window for variable name
+                start = max(0, m.start() - proximity_chars)
+                end = min(len(tex_text), m.end() + proximity_chars)
+                window = tex_text[start:end]
+                if any(re.search(c, window, re.IGNORECASE) for c in candidates):
+                    matches.append(window[max(0, m.start()-start-20):m.end()-start+30].replace("\n"," "))
+        except ValueError:
+            continue
+    return matches
 
 
 def main():
@@ -173,18 +221,29 @@ def main():
             verdict = "UNCERTAIN (no extractable numeric inputs)"
         else:
             missing = []
+            stricter_missing = []
             for var, val in params:
+                # Loose check: value anywhere in .tex
                 tex_hits = grep_tex_for_value(tex_text, val)
+                # Strict check: value within proximity of variable name
+                strict_hits = grep_tex_for_value_near_variable(tex_text, val, var)
                 name_in_tex = grep_tex_for_param_name(tex_text, var)
                 if not tex_hits and not name_in_tex:
                     missing.append(f"{var}={val}")
-            if not missing:
-                verdict = "VERIFIED-likely (all inputs found in .tex)"
+                if not strict_hits:
+                    stricter_missing.append(f"{var}={val}")
+            if not missing and not stricter_missing:
+                verdict = "VERIFIED-likely (inputs match .tex with variable name in proximity)"
             elif len(missing) == len(params):
                 verdict = f"FALSIFIED-likely (none of {len(params)} cited inputs found in .tex)"
                 falsified_likely += 1
-            else:
+            elif len(stricter_missing) >= len(params) - 1:
+                verdict = f"SUSPICIOUS (loose value matches but no variable proximity for {len(stricter_missing)}/{len(params)} inputs — possible hallucination)"
+                falsified_likely += 1
+            elif missing:
                 verdict = f"PARTIAL (missing: {', '.join(missing[:3])})"
+            else:
+                verdict = "PROXIMITY-PARTIAL (some values lack variable proximity in .tex)"
 
         print(f"### {b['id'] or '?'} — {verdict}")
         if params:
