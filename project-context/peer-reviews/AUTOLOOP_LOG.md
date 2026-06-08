@@ -851,3 +851,20 @@ The 0-new-ESS result means the autoloop is **NOT finding new issues** — only r
 - Cron will fire again at 01:21pt with same 4/5 coverage
 - **If fire 12 also = 0 new ESS, counter → 2 of 3.**
 - **If fire 13 also = 0, autoloop self-terminates via CronDelete.**
+
+## 2026-06-08_1144pt — round=auto-2026-06-08_1144pt
+
+
+## Fire 12 (cron 11:44pt 2026-06-08) — launched with 4/5 coverage (Anthropic still down)
+
+Pre-flight: Anthropic credit balance still too low (3 days now); OpenAI working.
+First fire to evaluate three new paper versions:
+  - P5 v0.1.46-2026-06-08 (T-Web/V-Web methodology footnote)
+  - P4 v1.0.159 (3 mechanical fixes from R10v3p1)
+  - P3 v3.1.75 (49pp → 20pp condensation)
+
+Plus the persistence_tracker bug fix (lee substring FP removed).
+
+Expectation: P5/label LOAD-BEARING should DROP this fire (clarified by footnote).
+P3/dedup, P4/binomial, P4/master should still fire (not yet addressed at source).
+P1B/wpivot may appear as NEW ESS (the actual P1B issue surfaced after FP fix).
