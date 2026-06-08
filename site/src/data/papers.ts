@@ -38,9 +38,9 @@ export const papers: Paper[] = [
     slug: "paper-1a",
     number: "1A",
     title: "Structural Closure of Einstein–Cartan–Holst Dark Energy: Perturbation Transparency, Inflation–f_NL Tension, and Surviving Matter-Bounce Tests",
-    version: "v1A.0.44",
-    lastUpdated: "2026-06-02",
-    tldr: "v1A.0.35: external-review-ready (R15+R16+R24 3-consec 5/5 clean cascaded-loop exit; first fully-clean P1A compile in campaign; 20pp/833KB/0 overfull/0 undef refs/0 undef cites; arXiv tarball pre-built p1a_v1A.0.35_arxiv.tar.gz). Final 1% gates on Houston sign-off + clean R26 (R26 blocked on OpenRouter per-key weekly cap; see NEEDS_HOUSTON.md item 0).",
+    version: "v1A.0.45",
+    lastUpdated: "2026-06-08",
+    tldr: "v1A.0.45 (2026-06-08 TIER A #A1 closure): 🎯 **CATASTROPHIC Holst→Pontryagin mathematical error CORRECTED** at 4 sites (abstract L327, transparency §X.B step-4 L1480, explicit-verification L1510, executive summary L1831). The prior claim that the Holst dual contraction $\\epsilon^{\\mu\\nu\\rho\\sigma}R_{\\mu\\nu\\rho\\sigma}$ 'reduces on the Levi-Civita connection to the Pontryagin density $\\propto R\\widetilde R$ as a total derivative' conflated two distinct objects: Pontryagin has TWO curvatures (and is a separate true topological invariant), Holst has ONE (and vanishes identically by the first Bianchi identity on T=0). Replaced with the correct Bianchi-vanishing argument $R_{\\mu[\\nu\\rho\\sigma]}=0$ + cyclic-sum contraction with totally antisymmetric $\\epsilon^{\\mu\\nu\\rho\\sigma}$. Footnote added documenting the differential-form decomposition $e\\wedge e\\wedge R = -\\mathrm{NY} + T\\wedge T$ (Nieh-Yan + torsion-squared; both vanish at T=0). Headline perturbation-transparency conclusion (Holst sector decouples from scalar/tensor EOM) preserved by a more direct identity. Caught by fire-13 + fire-15 META-reviewer (multi-fire confirmed); mechanically reproducible by `tools/v3_pattern040_cross_section_check.py`. 21pp/847KB/md5 bcc627ab. Compile: 0 undef refs, 4 pre-existing carry-over overfulls (3-7pt + 1 table 152pt — none introduced by this commit).\n\n[Legacy v1A.0.35] external-review-ready (R15+R16+R24 3-consec 5/5 clean cascaded-loop exit; first fully-clean P1A compile in campaign; 20pp/833KB/0 overfull/0 undef refs/0 undef cites).",
     blockingItems: [
       "Houston personal sign-off (the final 1%)",
       "R26 5-vendor confirmation (BLOCKED on OpenRouter per-key cap)",
@@ -70,10 +70,10 @@ export const papers: Paper[] = [
       "arXiv submission (administrative, in P4 → P1A → P1B → P3 → P2 order)",
     ],
     preprintId: "HUBIFY-2026-001A",
-    pdfMeta: "PDF 833 KB · 21 pp · Jun 2, 2026, v1A.0.44 (external R1 closures landed; 0 overfull, 0 undef refs)",
+    pdfMeta: "PDF 847 KB · 21 pp · Jun 8, 2026, v1A.0.45 (TIER A #A1 Holst→Pontryagin closure: 4 sites corrected to Bianchi-vanishing argument; multi-fire-confirmed mathematical error; headline perturbation-transparency conclusion preserved via the correct identity; 0 undef refs; md5 bcc627ab)",
     artifacts: [
-      { label: "Read PDF", href: "/papers/paper1a_ech_nogo_v1A.0.44.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/paper1a_ech_nogo_v1A.0.44.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/paper1a_ech_nogo_v1A.0.45.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/paper1a_ech_nogo_v1A.0.45.pdf", kind: "secondary", download: true },
       {
         label: "LaTeX source",
         href: "https://github.com/Hubify-Projects/bigbounce/blob/main/arxiv/paper1a_ech_nogo.tex",

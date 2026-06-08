@@ -45,8 +45,8 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.44}
-\newcommand{\paperTimestamp}{June 2, 2026 PDT}
+\newcommand{\paperVersion}{v1A.0.45}
+\newcommand{\paperTimestamp}{June 8, 2026 PDT}
 % v1A.0.44 (R-upgraded-round7 4-vendor direct R-round on v1A.0.43 ran
 %   2026-06-02; reviewers Grok / GPT / Perplexity / Gemini). Truth-audit
 %   synthesis at project-context/peer-reviews/2026-06-02_R-upgraded-round7_P1A_synthesis.md.
@@ -325,11 +325,22 @@ enumerated channels of the minimal-ECH route from the quantum bounce to
 observable dark energy.
 The central result is a perturbation-transparency theorem: for canonical scalar
 matter, torsion vanishes at all perturbation orders, the Holst dual contraction
-$\epsilon^{\mu\nu\rho\sigma}R_{\mu\nu\rho\sigma}$ reduces on the Levi-Civita
-connection to the Pontryagin density $\propto R\widetilde R$ --- generically
-non-zero pointwise but a total derivative that contributes only a boundary term
-to the action --- and the Holst sector therefore decouples from all
-scalar/tensor perturbation equations of motion (Sec.~\ref{sec:transparency}).
+$\epsilon^{\mu\nu\rho\sigma}R_{\mu\nu\rho\sigma}$ vanishes identically on the
+Levi-Civita connection ($T=0$) by the first (algebraic) Bianchi identity
+$R_{\mu[\nu\rho\sigma]}=0$, and the Holst sector therefore decouples from all
+scalar/tensor perturbation equations of motion
+(Sec.~\ref{sec:transparency}).\footnote{This Bianchi-identity vanishing is
+distinct from --- and should not be confused with --- the Pontryagin density
+$\propto R\,\widetilde R = \epsilon^{\mu\nu\rho\sigma}R_{\mu\nu}{}^{\alpha\beta}
+R_{\rho\sigma\alpha\beta}$, which involves \emph{two} curvature tensors and is a
+separate topological invariant. The Holst dual contraction has only \emph{one}
+curvature. In differential-form language $e^I\wedge e^J\wedge R_{IJ} =
+-\mathrm{NY} + T^I\wedge T_I$ (Nieh--Yan density plus torsion-squared); both
+pieces vanish at $T=0$, recovering the Bianchi-vanishing result. Earlier
+versions of this manuscript erroneously identified the two; the correction
+preserves the headline conclusion (Holst sector decouples from scalar/tensor
+EOM) by a Bianchi-trivial argument rather than a Pontryagin total-derivative
+argument.}
 The proposed link from ECH to a late-time vacuum energy requires a phenomenological
 dimensional ansatz beyond the minimal framework (Appendix~\ref{app:dimensions}),
 and is constrained at the channel-amplitude level by 13 logically-independent
@@ -1474,12 +1485,18 @@ at all perturbation orders.
 \item \textbf{Connection reduces to Levi-Civita.} $\Gamma^\lambda{}_{\mu\nu}
 = \mathring{\Gamma}^\lambda{}_{\mu\nu}$.
 
-\item \textbf{Holst term becomes topological.} The Holst term evaluated with
+\item \textbf{Holst term vanishes by Bianchi.} The Holst term evaluated with
 the Levi-Civita connection gives $\frac{1}{2}\epsilon^{\mu\nu\rho\sigma}
 R_{\mu\nu\rho\sigma}(\mathring{\Gamma})$, which on a torsion-free connection
-is the Pontryagin density $\propto R\tilde R$. This is a total derivative
-(not zero in general spacetimes), so it integrates to a boundary term in the
-action.
+\emph{vanishes identically} by the first (algebraic) Bianchi identity
+$R_{\mu[\nu\rho\sigma]} = 0$: the cyclic-sum identity $R_{\mu\nu\rho\sigma} +
+R_{\mu\rho\sigma\nu} + R_{\mu\sigma\nu\rho} = 0$ contracted with the totally
+antisymmetric $\epsilon^{\mu\nu\rho\sigma}$ leaves no non-trivial component.
+The Holst dual contraction is therefore identically zero on the Levi-Civita
+connection (not merely a boundary term), so it contributes nothing to the
+action at any order. This Bianchi-vanishing is distinct from the Pontryagin
+density $\propto R\,\widetilde R$ (a two-curvature topological invariant) ---
+see the explicit verification below.
 
 \item \textbf{No equations of motion.} A total derivative contributes nothing
 to variational equations at all orders.
@@ -1502,20 +1519,36 @@ the ECH mechanism.
 
 \subsection{Explicit Verification: The Holst Term in Perturbation Theory}
 
-Expanding to second order, the Holst dual evaluates to:
+Expanding to second order, the Holst dual evaluates on the Levi-Civita
+connection ($T=0$) as:
 \begin{widetext}
 \begin{equation}
 \widetilde{R}(\mathring{\Gamma}) = \tfrac{1}{2}\epsilon^{\mu\nu\rho\sigma}
-R_{\mu\nu\rho\sigma}(\mathring{\Gamma}) \;=\; \tfrac{1}{2}\,{}^{*}\!R\,R
-\;\equiv\; \partial_\mu K^\mu \quad\text{(Pontryagin density; total derivative)}.
+R_{\mu\nu\rho\sigma}(\mathring{\Gamma}) \;=\; 0
+\quad\text{(identically, by the first (algebraic) Bianchi identity)}.
 \end{equation}
 \end{widetext}
-This is the Chern--Pontryagin topological density on a torsion-free connection:
-it is generically non-zero pointwise but reduces to a boundary term in the action
-and therefore contributes nothing to the variational equations of motion at any
-perturbation order. In particular, the cubic action for $\zeta$
-(which determines the bispectrum) receives zero contribution from the Holst term.
-The bispectrum is therefore identical to the standard GR result.
+This is the Bianchi-vanishing of the Holst dual contraction on a torsion-free
+connection: in differential-form language $e^I\wedge e^J\wedge R_{IJ} =
+-\mathrm{NY} + T^I\wedge T_I$ (Nieh--Yan density plus torsion-squared), and
+both pieces vanish identically at $T=0$. \emph{This must be carefully
+distinguished from the Pontryagin density}
+$\frac{1}{4}\,\epsilon^{\mu\nu\rho\sigma}R_{\mu\nu}{}^{\alpha\beta}
+R_{\rho\sigma\alpha\beta} \propto R\,\widetilde R$, which involves \emph{two}
+curvature tensors and is a separate true topological invariant ---
+non-zero pointwise and a total derivative even in the presence of torsion.
+The Holst dual contraction has only \emph{one} curvature and is therefore not
+the Pontryagin density; on $T=0$ it is identically zero by Bianchi, contributing
+nothing to the variational equations of motion at any perturbation order. In
+particular, the cubic action for $\zeta$ (which determines the bispectrum)
+receives zero contribution from the Holst term. The bispectrum is therefore
+identical to the standard GR result.\footnote{An earlier version of this
+manuscript misidentified the Holst dual contraction with the Pontryagin
+density. The correction (Bianchi-vanishing rather than Pontryagin-total-derivative)
+preserves the headline perturbation-transparency conclusion via a more direct
+identity, and explicitly reserves ``Pontryagin'' for the two-curvature topological
+invariant relevant in the Chern--Simons $R\wedge\widetilde R$ sector
+(Sec.~\ref{sec:fourroute}).}
 
 \subsection{What Would Break the Transparency}
 
@@ -1826,11 +1859,14 @@ level.
 
 \textit{Central result: perturbation transparency.}---For canonical scalar field
 matter, the Holst sector decouples completely from all scalar and tensor
-perturbation equations of motion (Sec.~\ref{sec:transparency}). Torsion vanishes at all
-perturbation orders; the Holst dual contraction reduces on the Levi-Civita
-connection to the Pontryagin density $\propto R\widetilde R$, which is
-generically non-zero pointwise but a total derivative and therefore
-integrates to a boundary term. This is a positive structural result: it identifies the
+perturbation equations of motion (Sec.~\ref{sec:transparency}). Torsion vanishes
+at all perturbation orders; the Holst dual contraction
+$\epsilon^{\mu\nu\rho\sigma}R_{\mu\nu\rho\sigma}$ vanishes identically on the
+Levi-Civita connection ($T=0$) by the first (algebraic) Bianchi identity
+$R_{\mu[\nu\rho\sigma]}=0$ (distinct from --- and not equal to --- the Pontryagin
+density $\propto R\widetilde R$, which involves two curvatures and is a
+separate topological invariant; see Sec.~\ref{sec:transparency} footnote for
+the $e\wedge e\wedge R = -\mathrm{NY} + T\wedge T$ decomposition). This is a positive structural result: it identifies the
 nonperturbative parity-violating channels (ALP birefringence, primordial GWs)
 as the relevant tests of $\gamma$.
 
