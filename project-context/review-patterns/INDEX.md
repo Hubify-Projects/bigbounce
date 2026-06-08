@@ -144,3 +144,10 @@ Details: [pattern-036-closure-fabricates-math-justification.md](pattern-036-clos
 META-reviewer (gpt-5-pro) catches claims in section X that contradict claims in section Y of the SAME paper. The 5 per-vendor reviewers miss it because they read locally. 4 firings in fire 13 across P1A (Sec.IV.D fine-tuning vs Sec.XII), P2 (spectator vs Ω_φ formula), P4 (pseudo-Cℓ vs deconvolved), P4 (v1.0.160 footnote logic). Recommends mechanical pre-commit cross-section grep + dedicated `/cross-section-coherence-check` skill at 6+ firings.
 
 Details (draft): [pattern-040-cross-section-internal-contradiction-DRAFT.md](pattern-040-cross-section-internal-contradiction-DRAFT.md)
+
+---
+## Pattern 041 — META arithmetic check (DRAFT)
+
+META-reviewer (gpt-5-pro) re-derives the paper's quoted result from the paper's own formula + parameters and finds inconsistencies. 4 firings in fire 14 across P1B (β=0.336° contradicts formula), P2 (β arithmetic gives 0.002° not 0.27°), P3 (γ ± 0.382 vs CI [2.304, 2.882] width 0.578), P5 (1.98pp vs 1.7pp range). Per-vendor reviewers don't re-derive; meta-reviewer does. Truth-audit verdict typically VERIFIED. Recommends pre-flight quote-formula recompute check at 6+ firings.
+
+Details (draft): [pattern-041-meta-arithmetic-check-DRAFT.md](pattern-041-meta-arithmetic-check-DRAFT.md)

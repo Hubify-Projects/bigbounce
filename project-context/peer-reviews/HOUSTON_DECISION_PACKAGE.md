@@ -1,14 +1,208 @@
-# Houston Decision Package — LOAD-BEARING Findings (UPDATED 2026-06-08 14:00pt after fire 13)
+# Houston Decision Package — LOAD-BEARING Findings (UPDATED 2026-06-08 14:32pt after fire 14)
 
-After 13 autoloop fires + v3.2 meta-reviewer + persistence-tracker bug-fix +
-LOAD-BEARING round (P3 v3.1.76 / P4 v1.0.160 / P1B v1B.0.43 / P5 v0.1.46
-landed), fire 13 surfaced ≥6 new high-significance issues that 11 prior
-fires never caught. These supersede the prior 5-item queue.
+After 14 autoloop fires + v3.2 meta-reviewer + v3 content-diff tool
+(replaces broken keyword fingerprinting; commit `b1a25f2d`), fire 14 added
+16 NEW substantive ESS findings on top of fire 13's 12. Total queue is now
+TIER A (fire 13: 9 items) + TIER A2 (fire 14: 16 items) = 25 confirmed
+scientific issues for Houston decision.
 
-The persistence_tracker's coarse keyword fingerprinting falsely registered
-"0 NEW ESS" for fires 11–13; content audit reveals real new content. The
-autoloop has NOT converged — see AUTOLOOP_IMPROVEMENTS.md for the tracker
-upgrade. Self-terminate counter reset to 0/3 after fire 13.
+Self-terminate counter remains 0/3 (NEW > 0 in both fire 13 and fire 14).
+The autoloop is NOT converging — it's mining deeper layers of issues per
+fire. See AUTOLOOP_IMPROVEMENTS.md for the tooling upgrades behind this
+clearer picture.
+
+## TIER A2 — fire 14 NEW high-impact discoveries
+
+**Standout**: 3 NEW P1A ESS findings (αem coupling-family mismatch,
+θ-as-propagating-field ontology, "cubic axial-current operator" algebra error)
+on top of fire 13's Holst→Pontryagin error. Combined, this means P1A has
+SIX major theoretical issues identified by gpt-5-pro across two fires that
+no prior fire (or per-vendor reviewer) ever caught.
+
+### 🔴 #A2-1 — P1A αem/(4π) coupling-family mismatch in gravity loop
+
+**File**: `arxiv/paper1a_ech_nogo.tex`, Sec. IV.B (Eq. 15 narrative), p. 9–10.
+
+**The flaw**: paper writes "The dimensionless coefficient is O(αem/4π)…"
+for the Holst/Nieh-Yan-induced operator θNY–J5. But αem is the
+electromagnetic loop factor, and there is NO EM field in the Route-2 operator
+θNY–J5. The correct loop normalization for the gravity-fermion sector is
+1/(16π²) (times appropriate gravitational/matter vertex factors).
+
+**Recommended fix**: Replace αem/(4π) → 1/(16π²) with the appropriate
+gravity-fermion dimensionless vertex factors. Re-derive the amplitude.
+Update the suppression estimate and conclusions. If an EM loop IS genuinely
+intended, show the explicit chain from θNY–J5 to photon-sector birefringence
+with the correct gauge couplings.
+
+**Effort**: ~2h text rewrite + verification. Effect: the suppression estimate
+may change by orders of magnitude, materially affecting the no-go scope.
+
+---
+
+### 🔴 #A2-2 — P1A θ-as-propagating-field ontology error
+
+**File**: same as #A2-1, Sec. IV.B (Eq. 14) + surrounding narrative.
+
+**The flaw**: paper writes "θ(x) is the Nieh–Yan pseudoscalar" as if it were
+a propagating field with ∂μθ ∼ H₀ today. But in minimal Einstein–Cartan
+with constant γ and non-propagating torsion, θ_NY is a DENSITY built from
+torsion/contorsion — NOT a free field with time evolution. Using ∂μθ as
+a slowly-varying background scalar is unjustified.
+
+**Recommended fix**: Either (i) promote γ to a bona fide dynamical
+pseudoscalar (with a kinetic term) and show how θ acquires dynamics, OR
+(ii) drop the ∂μθ J5 operator as a late-time source and remove the
+birefringence comparison based on it. State clearly what θ is and is NOT
+in the minimal EC–Holst theory.
+
+**Effort**: This is structural — could touch the entire late-time-ALP narrative.
+~1 day text + math.
+
+---
+
+### 🔴 #A2-3 — P1A "cubic axial-current operator" algebra error
+
+**File**: same as #A2-1, Sec. II.C.1, p. 6–7 (Order-of-magnitude matching).
+
+**The flaw**: text says "this holds at the cubic axial-current operator level
+because the cube of the fermion bilinear scales as the cube of the fermion
+number density." There IS no cubic axial-current operator in minimal EC:
+torsion ∝ J5, induced contact ∝ J5·J5 = (J5)², not (J5)³.
+
+**Recommended fix**: Remove "cubic axial-current operator" language. Correct
+the scaling discussion: torsion scales linearly with J5; the induced
+four-fermion energy density scales as (J5)² ∝ n_ψ², not as the cube of a
+bilinear. Re-derive D_inf with the corrected scaling chain.
+
+**Effort**: ~1h text fix + scaling re-derivation.
+
+---
+
+### 🔴 #A2-4 — P1B βALP arithmetic check fails
+
+**File**: `arxiv/paper1b_mcmc_companion.tex`, Sec. IV.
+
+**The flaw**: paper quotes "βALP = 0.336° ± 0.107° (C_aγ = 8 fixed),
+Δϕ/f_a ∈ [0.2, 1.1]". Using paper's own formula β = [α_EM/(4π)] C_aγ
+(Δϕ/f_a) with max Δϕ/f_a = 1.1: maximum attainable β is much less than
+0.336°. The arithmetic does NOT close.
+
+**Recommended fix**: Re-derive β from formula + parameters and reconcile.
+Either correct the quoted 0.336° OR identify which input parameter was
+actually used.
+
+**Effort**: ~30min math + text.
+
+---
+
+### 🔴 #A2-5 — P2 β arithmetic with standard convention gives 0.002° not 0.27°
+
+**File**: P2 source, Sec. 2.2 + Abstract.
+
+**The flaw**: with the standard normalization L ⊃ −(g_aγ/4)φ F F̃ and
+g_aγ = (α/2π)(C/f_a), the predicted rotation is β = (α/4π) C (Δφ/f_a).
+Using the paper's own Δφ/f_a ≈ 0.24 (from Eq. 1) and C ~ O(1) gives
+β ≈ 0.002° — NOT the quoted 0.27°. Two orders of magnitude off.
+
+**Recommended fix**: Reconcile. Either justify a different coupling
+convention OR correct the headline β prediction. This compounds with
+#A3 (fire 13: fa cancellation) and #A4 (fire 13: spectator/Ω_φ).
+
+**Effort**: ~2h text + careful derivation.
+
+---
+
+### 🔴 #A2-6 — P3 γ ± 0.382 vs CI [2.304, 2.882] arithmetic inconsistency
+
+**File**: `pipelines/p3_anomaly_engine/paper3_draft.tex`, §App E (PTA MCMC).
+
+**The flaw**: paper writes "γ = 2.567 ± 0.382 (median 2.591, 68% CI [2.304,
+2.882])". The ±0.382 Gaussian gives ~0.76 width at 1σ; the quoted CI width
+is 0.578. Either the ± is not 1σ or the CI is not 68%.
+
+**Recommended fix**: Pick a single interval convention. Use either ±σ
+(Gaussian-approximation) or [16%, 84%] CI consistently.
+
+**Effort**: ~15min text fix.
+
+---
+
+### 🔴 #A2-7 — P5 1.98pp vs 1.7pp canonical-config range cross-section contradiction
+
+**File**: `pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex`, Table II
+vs Discussion text.
+
+**The flaw**: Table II canonical V-Web f_CW values {0.4836, 0.5034, 0.4980,
+0.4963} → range 0.0198 = 1.98pp. Body text elsewhere quotes 1.7pp range
+for the SAME canonical config. Internal inconsistency.
+
+**Recommended fix**: Sweep all "1.7pp" mentions and reconcile against
+Table II. Pick the correct number.
+
+**Effort**: ~15min text fix.
+
+---
+
+### 🟠 #A2-8 — P4 per-pixel-shuffle null constancy by construction
+
+**File**: `pipelines/p2_chirality/chirality_catalog_paper.tex`, Sec. IV.D +
+App. A.
+
+**The flaw**: paper repeatedly describes the main null as "per-pixel
+random-label permutation" or "per-pixel-shuffle". If labels are permuted
+within each pixel p while holding N_CW(p) and N_CCW(p) FIXED, the per-pixel
+A_p is invariant by construction and the null distribution is constant.
+That cannot be the actual null used.
+
+**Recommended fix**: Specify the actual permutation domain. If labels are
+shuffled ACROSS pixels (not within), say so. If within, the null is broken.
+
+**Effort**: ~1h text clarification + verification.
+
+---
+
+### 🟠 #A2-9 — P4 MASTER mode-coupling matrix missing ℓ=0 completeness
+
+**File**: same as #A2-8, Sec. IV.D + footnote on MASTER.
+
+**The flaw**: text states "the MASTER mode-coupling matrix does NOT include
+ℓ=0 on either the input or output side." With incomplete mode coupling on
+a cut sky, low-ℓ leakage into adjacent ℓ-bins may not be properly accounted
+for. Should be documented with explicit NaMaster bin_options + code-level
+verification.
+
+**Recommended fix**: Document the binning + cl1 ranges explicitly; show
+that low-ℓ leakage into ℓ=1 (the headline statistic) is bounded.
+
+**Effort**: ~2h text + NaMaster code check.
+
+---
+
+### 🟠 #A2-10 to #A2-16 — Additional fire 14 ESS
+
+Brief list (see `project-context/peer-reviews/auto-2026-06-08_1424pt_*_META_REVIEW.md` for full):
+
+- P1B-META-E2: χ²±5.6 weighted-sample mean is not a recognized GOF statistic.
+- P2-META-E2: Flat prior β∈[0°,1°] is one-sided → biases Bayes factor.
+- P3-META-E1: Per-element MSE without inverse-variance whitening — score depends on instrument noise floor.
+- P3-META-E2: eROSITA selection threshold (S>0.259) inconsistency with definition (z-scored MSE).
+- P3-META-E3: 0.2% SIMBAD match rate at-or-below random-coincidence floor (~2.4×10⁻³).
+- P5-META-E2: Tidal field z∈[0.01, 2.0] vs matched catalog zmax=3.83 selection mismatch.
+- P5-META-E3: DESIVAST non-void definition issue.
+
+Each ~30min text or methodology clarification.
+
+---
+
+## TIER A — fire 13 NEW high-impact discoveries (none of the 5 reviewers caught these; gpt-5-pro meta-reviewer did)
+
+### 🔴 #A1 — P1A Holst → Pontryagin identity is mathematically WRONG — **CATASTROPHIC**
+
+**File**: `arxiv/paper1a_ech_nogo.tex`, Eq. (23), Sec. X (pp. 14–15), Abstract,
+Sec. I.
+
+**The error**: paper claims `ε^{μνρσ} R_{μνρσ} = (1/2) *R R ≡ ∂_μ K^μ`
 
 ## TIER A — fire 13 NEW high-impact discoveries (none of the 5 reviewers caught these; gpt-5-pro meta-reviewer did)
 

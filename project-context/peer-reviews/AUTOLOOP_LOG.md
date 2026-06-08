@@ -1008,3 +1008,91 @@ fixed keyword set).
    "Planck-scale" naturalness claim. ~2h text fix.
 6. **P1B SNR(per-realization) vs SNR(mean)** — disambiguate throughout. ~30min text fix.
 
+
+## 2026-06-08_1424pt — round=auto-2026-06-08_1424pt
+
+  - P1A: 165 findings, 7 consensus, meta=yes (   12406 chars)
+  - P1B: 121 findings, 4 consensus, meta=yes (   11707 chars)
+  - P2: 145 findings, 1 consensus, meta=yes (   10165 chars)
+  - P3: 136 findings, 3 consensus, meta=yes (   12438 chars)
+  - P4: 148 findings, 10 consensus, meta=yes (   10791 chars)
+  - P5: 120 findings, 3 consensus, meta=yes (   12701 chars)
+
+### Fire 14 closure (2026-06-08 14:24pt → ~14:32pt)
+
+Fire 14 ran with full 5-reviewer coverage + gpt-5-pro meta on the same
+LOAD-BEARING-round versions as fire 13 (P3 v3.1.76 / P4 v1.0.160 / P1B
+v1B.0.43 / P5 v0.1.46 / P1A v1A.0.44 / P2 v1.7.43). New content-diff tool
+(`tools/v3_meta_content_diff.py`, committed `b1a25f2d`) used for the
+gap audit — semantic 5-gram Jaccard match replaces the broken keyword
+fingerprinting that gave false "0 NEW" in fires 11+12.
+
+Per-paper findings:
+  P1A: 165 findings, 7 consensus
+  P1B: 121 findings, 4 consensus
+  P2:  145 findings, 1 consensus
+  P3:  136 findings, 3 consensus
+  P4:  148 findings, 10 consensus
+  P5:  120 findings, 3 consensus
+
+### Content-diff fire 13 → fire 14: **16 NEW ESSENTIAL across 6/6 papers, 0 RECURRING**
+
+The autoloop is NOT converging — every fire produces ~12-16 substantively
+NEW ESS findings as the meta-reviewer rotates through different layers of
+issues. Per-paper NEW ESS:
+- P1A: 3 NEW (αem/(4π) coupling-family mismatch in gravity loop; θ-as-propagating-field ontology without dynamical Immirzi; "cubic axial-current operator" algebra error)
+- P1B: 2 NEW (βALP arithmetic check fails using paper's own formula; χ²±5.6 weighted-sample mean is not a recognized GOF statistic)
+- P2:  2 NEW (β arithmetic using standard L ⊃ −(g_aγ/4)φF F̃ normalization gives ~0.002° vs 0.27° quoted; flat one-sided prior β∈[0°,1°] biases Bayes factor)
+- P3:  4 NEW (per-element MSE without inverse-variance whitening; eROSITA selection threshold inconsistency; 0.2% SIMBAD match rate at-or-below random-coincidence floor; γ=2.567±0.382 inconsistent with CI [2.304, 2.882])
+- P4:  2 NEW (per-pixel-shuffle null is constant by construction if N_CW + N_CCW held fixed per pixel; MASTER mode-coupling matrix missing ℓ=0 may have completeness issues)
+- P5:  3 NEW (two incompatible canonical-config ranges 1.98pp vs 1.7pp; tidal field z∈[0.01,2.0] vs matched catalog zmax=3.83 selection mismatch; DESIVAST non-void definition issue)
+
+NOTE: "CLOSED" in the content-diff means the META didn't re-flag the same issue;
+it does NOT mean the underlying paper issue is fixed. The 12 fire-13 ESS items
+(including the Holst→Pontryagin error, the SNR(mean)-vs-per-realization issue,
+the v1.0.160 footnote regression) remain UNFIXED in the .tex source — they're
+in HOUSTON_DECISION_PACKAGE.md TIER A waiting for closure commits.
+
+### Self-terminate counter: **0 of 3** (held, NEW > 0 in fire 14)
+
+The autoloop continues. The meta-reviewer is acting as a deep ever-renewing
+review service. Each fire mines a new layer of issues; convergence would mean
+the meta-reviewer can find nothing new to say about the PDFs — clearly not
+yet the case.
+
+### Standout fire 14 P1A findings (3 ESS that 13 prior fires never caught)
+
+- **P1A-META-E1**: "The dimensionless coefficient is O(αem/4π)" — αem is the
+  electromagnetic loop factor, but the Route-2 operator θNY–J5 has no EM
+  field. The correct loop normalization for the gravity–fermion sector is
+  1/(16π²) times appropriate vertex factors, NOT αem.
+- **P1A-META-E2**: "θ(x) is the Nieh–Yan pseudoscalar" treated as propagating
+  field with ∂μθ ∼ H₀, without a dynamical Immirzi or propagating torsion.
+  In minimal EC with constant γ + non-propagating torsion, θ_NY is a density
+  built from torsion/contorsion — not a free field with time evolution.
+- **P1A-META-E5**: "this holds at the cubic axial-current operator level
+  because the cube of the fermion bilinear scales as the cube of the fermion
+  number density." There is no cubic axial-current operator in minimal EC;
+  the induced contact is (J5)² not (J5)³. The "cube" language is wrong.
+
+### Pattern catalog: pattern-040 fires AGAIN in fire 14
+
+- P5-META-E1: "two incompatible ranges 1.98pp vs 1.7pp" for the same
+  canonical V-Web run (cross-section contradiction).
+- P1A-META-M1: "All materials necessary to reproduce … publicly available"
+  contradicts "deferred to companion works in preparation".
+
+Pattern-040 is now firing across both fire 13 (4 instances) and fire 14
+(2 + others). DRAFT status converging toward CONFIRMED.
+
+### New pattern candidate — pattern-041 (META arithmetic check)
+
+The meta-reviewer is the first reviewer to run actual arithmetic on quoted
+results and find inconsistencies the per-vendor reviewers missed:
+- P1B-E1: βALP arithmetic check using paper's own formula
+- P3-E4: γ ± 0.382 (Gaussian) vs quoted CI [2.304, 2.882] width
+- P2-E1: β formula yields ~0.002° vs quoted 0.27°
+- P5-E1: 1.98pp vs 1.7pp range
+
+3+ firings across 3+ papers — draft pattern-041 candidate.
+
