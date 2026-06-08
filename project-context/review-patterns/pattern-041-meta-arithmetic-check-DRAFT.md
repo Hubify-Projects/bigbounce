@@ -47,11 +47,31 @@ Until that's built, the META-reviewer is the canonical detector.
 
 ## Truth-audit pre-classification
 
-When this pattern fires, **the verdict is almost always VERIFIED** — the meta-reviewer doesn't make up arithmetic, and the recomputation is easy to confirm. Suggested workflow:
+When this pattern fires, **the verdict is usually VERIFIED but ~25% are
+FALSIFIED by meta-reviewer hallucinating the input parameters**. Suggested workflow:
 
 1. Truth-audit by independent re-derivation (10 minutes per finding).
-2. If verified, the fix is usually "fix the quoted result" or "fix the formula" — almost always a real bug.
-3. If the truth-audit shows the meta-reviewer used the wrong formula, that itself is rare and worth surfacing as a pattern variant.
+2. **Grep the .tex for the meta-reviewer's quoted input parameters**. If the
+   inputs aren't there or are misread (common: confusing a fit result with an
+   input), the finding is FALSIFIED.
+3. If verified, the fix is usually "fix the quoted result" or "fix the formula"
+   — a real bug.
+
+### First firing audit (fire 14, 4 findings)
+
+3/4 VERIFIED, 1/4 FALSIFIED:
+
+| Finding | Verdict | Failure mode |
+|---|---|---|
+| P3-META-E4 γ-CI | VERIFIED | Real ±-vs-CI mismatch (49% width gap) |
+| P5-META-E1 ranges | VERIFIED | Real cross-section contradiction (1.98pp/0.22pp/0.2pp) |
+| P1B-META-E1 β bound | VERIFIED (mild 15%) | "Much less" overstated; gap is real but smaller |
+| P2-META-E1 β arithmetic | **FALSIFIED** | Meta hallucinated Δφ/f_a=0.24 (confused with MCMC fit β=0.242°) |
+
+The P2 falsification was caught only by reading the actual `.tex` line 54 which
+explicitly computes the arithmetic the meta said was missing. Standing rule:
+**always grep the .tex for the meta-reviewer's quoted input parameters before
+accepting a pattern-041 finding**.
 
 ## Reviewer-time cost
 

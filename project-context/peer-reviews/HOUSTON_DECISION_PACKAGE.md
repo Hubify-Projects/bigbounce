@@ -79,68 +79,89 @@ bilinear. Re-derive D_inf with the corrected scaling chain.
 
 ---
 
-### 🔴 #A2-4 — P1B βALP arithmetic check fails
+### 🔴 #A2-4 — P1B βALP arithmetic check (mild bound-violation) — **VERIFIED by truth-audit**
 
-**File**: `arxiv/paper1b_mcmc_companion.tex`, Sec. IV.
+**File**: `arxiv/paper1b_mcmc_companion.tex` lines 1122 + 1171.
 
-**The flaw**: paper quotes "βALP = 0.336° ± 0.107° (C_aγ = 8 fixed),
-Δϕ/f_a ∈ [0.2, 1.1]". Using paper's own formula β = [α_EM/(4π)] C_aγ
-(Δϕ/f_a) with max Δϕ/f_a = 1.1: maximum attainable β is much less than
-0.336°. The arithmetic does NOT close.
+**The flaw** (truth-audit verified): paper states `\beta_{\rm ALP} = 0.336^\circ
+\pm 0.107^\circ` at `C_{a\gamma}=8` fixed with `\Delta\phi/f_a \in [0.2, 1.1]`.
+The formula β = (α_EM/(4π))·C_aγ·(Δϕ/f_a) at C_aγ=8, Δϕ/f_a=1.1 max gives
+β_max = 0.293° — but the quoted central 0.336° **exceeds the formula maximum
+by 15%**.
 
-**Recommended fix**: Re-derive β from formula + parameters and reconcile.
-Either correct the quoted 0.336° OR identify which input parameter was
-actually used.
+The meta-reviewer's "much less than 0.336°" phrasing overstates the gap (actual
+gap is 15% not order-of-magnitude), but the bound-violation is real.
 
-**Effort**: ~30min math + text.
+Three possible explanations (need MCMC posterior file to determine):
+(a) MCMC sampler explored Δϕ/f_a beyond [0.2, 1.1] prior;
+(b) C_aγ wasn't truly fixed at 8 (varied to ~9.2);
+(c) factor-of-2 convention swap (α/2π vs α/4π) somewhere.
 
----
-
-### 🔴 #A2-5 — P2 β arithmetic with standard convention gives 0.002° not 0.27°
-
-**File**: P2 source, Sec. 2.2 + Abstract.
-
-**The flaw**: with the standard normalization L ⊃ −(g_aγ/4)φ F F̃ and
-g_aγ = (α/2π)(C/f_a), the predicted rotation is β = (α/4π) C (Δφ/f_a).
-Using the paper's own Δφ/f_a ≈ 0.24 (from Eq. 1) and C ~ O(1) gives
-β ≈ 0.002° — NOT the quoted 0.27°. Two orders of magnitude off.
-
-**Recommended fix**: Reconcile. Either justify a different coupling
-convention OR correct the headline β prediction. This compounds with
-#A3 (fire 13: fa cancellation) and #A4 (fire 13: spectator/Ω_φ).
-
-**Effort**: ~2h text + careful derivation.
+**Recommended fix**: inspect actual MCMC posterior file and reconcile.
+~30 min — see `auto-2026-06-08_1424pt_TRUTH_AUDIT.md` for derivation.
 
 ---
 
-### 🔴 #A2-6 — P3 γ ± 0.382 vs CI [2.304, 2.882] arithmetic inconsistency
+### ~~#A2-5 — P2 β arithmetic gives 0.002° not 0.27°~~ — **FALSIFIED by truth-audit 2026-06-08 14:50pt**
 
-**File**: `pipelines/p3_anomaly_engine/paper3_draft.tex`, §App E (PTA MCMC).
+See `auto-2026-06-08_1424pt_TRUTH_AUDIT.md`. The meta-reviewer's claim used
+incorrect inputs (Δφ/f_a=0.24 hallucinated from MCMC fit β=0.242°). The paper
+at `research/focused_paper_source_integration/paper2_alp_birefringence.tex:54`
+explicitly computes β=(α_EM × 8 / 4π) × 1.07 ≈ 0.29° from C_aγ=8 (DFSZ-type)
+and Δφ/f_a=1.07 (numerical integration at m=2H_0, θ_i=1) — which my independent
+recomputation confirms as 0.285°. The paper's arithmetic is correct; this finding
+is removed from the queue.
 
-**The flaw**: paper writes "γ = 2.567 ± 0.382 (median 2.591, 68% CI [2.304,
-2.882])". The ±0.382 Gaussian gives ~0.76 width at 1σ; the quoted CI width
-is 0.578. Either the ± is not 1σ or the CI is not 68%.
-
-**Recommended fix**: Pick a single interval convention. Use either ±σ
-(Gaussian-approximation) or [16%, 84%] CI consistently.
-
-**Effort**: ~15min text fix.
+Note: #A3 + #A4 (fire 13 P2 fa-cancellation + Ω_φ spectator) remain VALID and
+in queue — those are different issues unaffected by this falsification.
 
 ---
 
-### 🔴 #A2-7 — P5 1.98pp vs 1.7pp canonical-config range cross-section contradiction
+### 🔴 #A2-6 — P3 γ ± 0.382 vs CI [2.304, 2.882] arithmetic inconsistency — **VERIFIED by truth-audit**
 
-**File**: `pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex`, Table II
-vs Discussion text.
+**File**: `pipelines/p3_anomaly_engine/paper3_draft.tex:712` (also abstract L80,
+body L457, L519, L537).
 
-**The flaw**: Table II canonical V-Web f_CW values {0.4836, 0.5034, 0.4980,
-0.4963} → range 0.0198 = 1.98pp. Body text elsewhere quotes 1.7pp range
-for the SAME canonical config. Internal inconsistency.
+**The flaw** (verified): paper writes `\gamma = 2.567 \pm 0.382 (median 2.591,
+68\% CI [2.304, 2.882])`. ±0.382 Gaussian half-width gives 1σ width 0.764;
+quoted CI half-widths around median 2.591 are left=0.287, right=0.291 (width
+0.578). **49% mismatch** between Gaussian ± and quantile CI — confirms the
+posterior is non-Gaussian / asymmetric, but presenting both summaries with
+inconsistent widths is a real error.
 
-**Recommended fix**: Sweep all "1.7pp" mentions and reconcile against
-Table II. Pick the correct number.
+**Recommended fix**: pick one convention. Either drop the ± and quote only
+the 68% CI, or replace ±0.382 with a Gaussian-equivalent half-width matching
+the CI (≈ 0.289). Sweep 5 sites in the .tex.
 
-**Effort**: ~15min text fix.
+**Effort**: ~15min text fix at 5 sites.
+
+---
+
+### 🔴 #A2-7 — P5 three incompatible "range" numbers for canonical config — **VERIFIED + REFINED by truth-audit**
+
+**File**: `pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex` lines
+549 / 558 / 977 / 1765 / 1880.
+
+**The flaw** (verified; refined from my fire-14 closeout mislabel):
+- L549 / L558 / L1880: Table II canonical V-Web range = **1.98pp** (correct
+  from {0.4836, 0.5034, 0.4980, 0.4963}).
+- L977: body says "per-cell range upper bound of **0.22 pp**".
+- L1765: body says "$\sim 0.497$ with range **$\sim 0.2$ percentage points**
+  across the four classes".
+
+Three numbers — 1.98pp, 0.22pp, 0.2pp — for what reads like the same
+"canonical V-Web range across classes" statistic. There is NO "1.7pp" in
+the paper (my fire-14 closeout mislabeled this — apologies; the truth-audit
+caught my own error).
+
+**Recommended fix**: distinguish the statistics by name:
+- Table II: "inter-class range" or "max f_CW − min f_CW across {void, wall,
+  filament, cluster}"
+- L977 + L1765 (if these are different statistics): rename appropriately
+  (e.g., "per-cell residual range"). If these are the same statistic, pick
+  one and reconcile.
+
+**Effort**: ~15-20 min text fix + sweep all "range" mentions in §VII.
 
 ---
 
