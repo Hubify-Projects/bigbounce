@@ -1096,3 +1096,74 @@ results and find inconsistencies the per-vendor reviewers missed:
 
 3+ firings across 3+ papers — draft pattern-041 candidate.
 
+
+## 2026-06-08_1520pt — round=auto-2026-06-08_1520pt
+
+  - P1A: 146 findings, 5 consensus, meta=yes (   12372 chars)
+  - P1B: 166 findings, 6 consensus, meta=yes (   11980 chars)
+  - P2: 139 findings, 2 consensus, meta=yes (    9811 chars)
+  - P3: 93 findings, 3 consensus, meta=yes (   10209 chars)
+  - P4: 146 findings, 11 consensus, meta=yes (   10979 chars)
+  - P5: 117 findings, 6 consensus, meta=yes (   13408 chars)
+
+### Fire 15 closure (2026-06-08 15:20pt → 15:31pt)
+
+Fire 15 ran with full 5-reviewer + gpt-5-pro meta coverage on post-TIER-A2
+versions (P3 v3.1.77 / P5 v0.1.47 / P1B v1B.0.44). v3 content-diff tool
+used for the gap audit.
+
+Per-paper findings:
+  P1A: 146 findings, 5 consensus
+  P1B: 166 findings, 6 consensus
+  P2:  139 findings, 2 consensus
+  P3:   93 findings, 3 consensus
+  P4:  146 findings, 11 consensus
+  P5:  117 findings, 6 consensus
+
+### Content-diff fire 14 → fire 15: **18 NEW ESS, 0 RECURRING, 16 CLOSED**, 6/6 papers with NEW
+
+**TIER A2 closures validation** (commit b90f0c8d, v3_closure_verification.py):
+- ✅ **P3-META-E4** (γ ± 0.382 vs CI) STUCK — γ-CI anchors absent from fire 15 P3 META.
+- ✅ **P1B-META-E1** (βALP=0.336° bound violation) STUCK — bound-violation anchors absent.
+- ⚠️ **P5-META-E1** (canonical-config range) — tool reported RE-FIRED, but on manual inspection
+  this is a false positive: the anchor "range" matched the NEW fire-15 P5-META-E1
+  which is about radial selection function n(z), NOT the canonical-config range
+  contradiction I closed. Tool improvement queued (more-specific anchor).
+
+**Substantively: all 3 TIER A2 fixes from commit b90f0c8d STUCK.** The
+v0.1.47/v3.1.77/v1B.0.44 closures landed correctly.
+
+### Pattern-040 re-firing — P1A Holst → Pontryagin
+
+P1A-META-E2 fire 15: "manuscript repeatedly asserts that 'on the Levi-Civita
+connection the Holst term becomes Pontryagin.' This is conceptually wrong.
+The Holst 4-form $e \wedge e \wedge R$ is tied to the Nieh-Yan invariant;
+with T=0, the NY density vanishes, and the Holst term reduces to a
+Bianchi-trivial expression — NOT to Pontryagin."
+
+**Same finding as fire 13 (4 fires ago), now multi-fire confirmed.** The
+pattern-040 detector (commit f8b46413) catches this mechanically at L327-329
+of paper1a_ech_nogo.tex. The fix is no longer optional — closing it next.
+
+### Pattern-041 re-firing — multiple papers
+
+- P3-META-E1 fire 15: "Nside = 64 implies Npix = 12 × 64² = 49152, not 38330" — arithmetic check.
+- P1B-META-E1 fire 15: "β̂/β ≈ 0.882" multiplicative bias (m), not additive — arithmetic re-derivation.
+- P3-META-E2 fire 15: ACT subtraction arithmetic inconsistency.
+
+Pattern-041 (META arithmetic check) firing across 4 papers in fire 15. Pattern
+is robust; promoting from DRAFT to CONFIRMED in the next catalog pass.
+
+### Self-terminate counter: **0 of 3** (held, 18 NEW ESS in fire 15)
+
+The autoloop is doing its highest-value work — surfacing genuinely-new
+content per fire. Pattern-040 / pattern-041 detectors built this round
+(commits abf48801 → a40921a4) reduce future-fire load.
+
+### Improvement queued: more-specific closure anchors
+
+The "range" anchor for the P5 closure produced a false-positive RE-FIRED.
+Updated to "1.98 percentage points" + "0.22 percentage points" (more specific).
+Standing rule: closure anchors must be ≥ 4 distinctive words OR a precise
+numeric value that's unlikely to recur in unrelated contexts.
+

@@ -17,11 +17,11 @@
     "closure_fire_round": "auto-2026-06-08_1424pt",
     "paper": "P5",
     "anchor_phrases": [
-      "two incompatible",
-      "1.98 percentage points",
-      "range"
+      "two incompatible ranges",
+      "1.98 percentage points across the four V-Web classes",
+      "max per-cell inter-class"
     ],
-    "description": "P5 canonical-config range cross-section contradiction"
+    "description": "P5 canonical-config range cross-section contradiction (anchors tightened post-fire-15 false-positive)"
   },
   {
     "closure_id": "P1B-META-E1-fire-14",
