@@ -105,5 +105,41 @@
       "sub-0.1\\sigmaunit effect on the headline pre-MASTER"
     ],
     "description": "P4 v1.0.160 fn:binomial_nspiral footnote regression — wrong 'decoupling absorbs for pre-MASTER' claim (v1.0.161)"
+  },
+  {
+    "closure_id": "P3-META-E1-fire-13-wall-clock",
+    "closure_commit": "eca3237b",
+    "closure_fire_round": "auto-2026-06-08_1632pt",
+    "paper": "P3",
+    "anchor_phrases": [
+      "42 h total with per-survey runtimes implied by the reported throughputs",
+      "DESI \\u2248 5.5 h at 1,142 spectra/s",
+      "Either correct the total, or document additional wall-clock components"
+    ],
+    "description": "P3 §II.C 42-hour wall-clock reconciliation — pure-inference subtotal 9.4h + ~32h I/O+retry+restart-resume itemized (v3.1.78)"
+  },
+  {
+    "closure_id": "P3-META-E2-fire-13-target-classes",
+    "closure_commit": "eca3237b",
+    "closure_fire_round": "auto-2026-06-08_1632pt",
+    "paper": "P3",
+    "anchor_phrases": [
+      "across the five primary target classes",
+      "remaining \\u223c16 million spectra are unclassified filler targets",
+      "Clarify precisely which spectra are included in the 22.5 M production scan"
+    ],
+    "description": "P3 §III.A 22.5M-vs-6.5M target-class disambiguation (v3.1.78)"
+  },
+  {
+    "closure_id": "P1B-META-E1-fire-13-SNR-on-mean",
+    "closure_commit": "eca3237b",
+    "closure_fire_round": "auto-2026-06-08_1632pt",
+    "paper": "P1B",
+    "anchor_phrases": [
+      "SNR(mean) = 20.3 corresponds to a per-realization SNR \\u2248 20.3/\\u221a500 \\u2248 0.9",
+      "pipeline-recovery SNR = 20.32",
+      "Replace the headline SNR with the per-realization SNR"
+    ],
+    "description": "P1B §IV.A SNR-on-mean vs per-realization disambiguation (v1B.0.45)"
   }
 ]
