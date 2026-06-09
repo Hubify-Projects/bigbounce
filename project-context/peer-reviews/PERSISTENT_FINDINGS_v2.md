@@ -1,58 +1,49 @@
 # Persistent Meta-Findings Tracker v2
 
-Tracking META findings across 13 autoloop fires using
+Tracking META findings across 14 autoloop fires using
 content-overlap fingerprinting (5-gram Jaccard >= 0.3).
 
-Total META findings: 861
-Distinct content-clusters: 855
-Latest round: auto-2026-06-08_1737pt
+Total META findings: 891
+Distinct content-clusters: 885
+Latest round: auto-2026-06-08_1819pt
 
 ## LOAD-BEARING (>=3 rounds)
 
 ## RECURRING (2 rounds)
 
-### REC ESSENTIAL P1B - 2/13 rounds
+### REC ESSENTIAL P1B - 2/14 rounds
 Rounds: ['auto-2026-06-05_1617pt', 'auto-2026-06-06_0004pt']
 Example: “The 500 Monte Carlo realizations are drawn at ACT-noise level ΔP = 10 μK·arcmin… The β injections rotate Q+iU via e^{2iβ}(Q+iU) before adding noise.”...
 
-### REC ESSENTIAL P3 - 2/13 rounds
+### REC ESSENTIAL P3 - 2/14 rounds
 Rounds: ['auto-2026-06-05_1418pt', 'auto-2026-06-06_0004pt']
 Example: “For DESI DR1, µval ≈ 0.0287 (validation MSE) and σval is set such that the S > 5 catalog threshold corresponds to MSE ≈ 0.143 on the rescaled scale.”...
 
-### REC ESSENTIAL P1B - 2/13 rounds
+### REC ESSENTIAL P1B - 2/14 rounds
 Rounds: ['auto-2026-06-05_1617pt', 'auto-2026-06-06_0004pt']
 Example: “…10 Planck likelihood nuisance: Aplanck, amp143, amp217, amp143×217, n143, n217, n143×217, calTE, calEE…”...
 
-### REC MAJOR P1B - 2/13 rounds
+### REC MAJOR P1B - 2/14 rounds
 Rounds: ['auto-2026-06-06_0021pt', 'auto-2026-06-08_1354pt']
 Example: The paper states “sn.pantheonplus enforces a soft constraint on the combination MB − 5 log10(H0) ≈ const.” The SN degeneracy is defined with h ≡ H0/(100 km s−1 Mpc−1) (i.e., MB − 5 log10 h), not H0; u...
 
-## NEW this round (auto-2026-06-08_1737pt) - 36 clusters
+## NEW this round (auto-2026-06-08_1819pt) - 30 clusters
 
-- NEW ESSENTIAL: **8**
-- NEW MAJOR: 14
+- NEW ESSENTIAL: **5**
+- NEW MAJOR: 11
 - NEW MINOR/NIT: 14
 
 ### NEW ESS P1B - P1B-META-E1
-> * The paper validates the pipeline at fₛₖᵧ = 0.32 (apodized) and claims this exercises the deconvolution behind the published Planck NPIPE β = 0.30°±0.11° and ACT DR6 β = 0.215°±0.074° measurements. But the published Planck birefringence analyses (Es...
+> ** The abstract footnote and §VI both anchor the comparison to "Eskilt & Komatsu joint **WMAP9 + Planck PR3**" giving 0.342° ± 0.094° (3.6σ). But Appendix C states the actual ALP-MCMC uses "Planck PR4 + **ACT DR6** EB-spectrum likelihoods." This is n...
 
 ### NEW ESS P1B - P1B-META-E2
-> * App. C states "Caγ: fixed at one of {4, 8, 12} across the three configurations." But Section VI derives that the observed β = 0.342° requires Caγ(Δφ/fa) ≈ 10.3, and with Δφ/fa ∈ [0.2, 1.1] the required Caγ spans 9–51. *Two of the three grid points ...
+> ** The paper invokes *three different* reference β values from the literature, in three different sections, none clearly the privileged comparator: - §IV intro: "β = 0.30° ± 0.11° (Planck NPIPE) and β = 0.215° ± 0.074° (ACT DR6)" - §VI Eq. (4): "β_co...
 
 ### NEW ESS P1B - P1B-META-E3
-> * The paper writes "This neglects shared calibration systematics; the published joint analysis at 3.6σ [2] is the headline," implying the 3.9σ figure is an *upper bound* on the true significance. But shared systematics produce *positively correlated*...
+> ** Section IV describes the mask (fsky = 0.32, C2 apodization at 2°), beam (5' FWHM), purification (purify_b=True), mode-coupling matrix (NmtWorkspace.compute_coupling_matrix), binning (Δℓ = 20, ℓ ∈ [30, 1024]), and noise level (∆_P = 10 µK·arcmin). ...
 
-### NEW ESS P1B - P1B-META-E4
-> * The text states Caγ Δφ/fa ≈ 10.3 with Δφ/fa ∈ [0.2, 1.1] giving Caγ ∈ [9, 51]. But footnote 5 requires θᵢ ~ 0.1 for spectator status, and Sec. VII states "Δφ/fa ∝ θᵢ along the underdamped trajectory." With θᵢ = 0.1 vs the natural-prior midpoint θᵢ ...
+### NEW ESS P5 - P5-META-E1
+> ** DESIVAST is constructed on the *volume-limited* BGS sample at z ≤ 0.24 (Rincón et al. 2025). The Paper IV chirality catalog is *flux-limited* at r ≤ 17.8 in DESI Legacy. When the author restricts to z ≤ 0.24 and assigns void/non-void labels by poi...
 
-### NEW ESS P1B - P1B-META-E5
-> * Eq. (2) gives Δφ/fa ≈ 0.65 for (m = H₀, θᵢ = 1). Eq. (3) then evaluates β at (Caγ = 8, θᵢ = 1, m ≈ 2H₀) using Δφ/fa = 1.07, citing "midpoint m ≈ 1.8 H₀, Δφ/fa ≈ 1.0." Going from m = H₀ to m = 1.8 H₀ at fixed θᵢ = 1 cannot simultaneously increase Δφ...
-
-### NEW ESS P4 - P4-META-E1
-> ** A null measured with only **50% recovery probability at A = 0.75%** does NOT exclude A = 0.75% signals — it is consistent with them by construction. A future 5σ detection at A = 0.75% would therefore be entirely **consistent** with the present non...
-
-### NEW ESS P4 - P4-META-E2
-> ** A +4.31σ Catalog-C dipole estimator is nowhere in Table I, Section IV C, or the headline results. The text presents it as "consistent with 0.43σ" but +4.31σ vs +0.43σ is a factor-10 discrepancy at the same nominal sample — these are NOT consistent...
-
-### NEW ESS P4 - P4-META-E3
-> ** §III A lists primary estimators (real-space +0.43σ, subsample-mask MASTER −0.122σ) and demotes the canonical-mask MASTER (+3.64σ) to "diagnostic." But the manuscript also describes the canonical-mask result as the natural matched-footprint estimat...
+### NEW ESS P5 - P5-META-E2
+> ** The primary analysis reports |∆fCW| < 0.002 (the spread across three DESIVAST algorithms) but does not compute a proper 2σ upper limit on the environment-dependent effect size. With nvoid = 56,981, the 1σ counting-statistics floor on fCW is 1/(2√5...
