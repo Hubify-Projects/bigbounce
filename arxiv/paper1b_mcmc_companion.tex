@@ -117,7 +117,7 @@
 %   App-C chain-attribution map, [9,51] division shown, m/H0 implied range, Mercuri
 %   cf., R-hat CSV pointer, Eq.4 null-significance clause, M_B-anchor wording).
 %   FALSIFIED list (14 items) not acted on.)
-\newcommand{\paperVersion}{v1B.0.50}
+\newcommand{\paperVersion}{v1B.0.51}
 \newcommand{\paperTimestamp}{June 9, 2026 PDT}
 % v1B.0.41 (2026-06-02 — R-upgraded-round5 P1B 4-Gemini-finding closure pass:
 %   1. GEM-m1 (pattern-017): stripped inline reviewer codes ("R5+R7 GEM-B1+GPT-B1",
@@ -1200,12 +1200,16 @@ $f_{\rm sky}=0.85$ and $0.65$ equal $20.32\sqrt{f_{\rm sky}/0.32}$. The
 $\hat\beta/\sigma_\beta$, with $\sigma_\beta$ the per-realization scatter
 of the recovered angle, is measured in the same artifact as $8.1$
 ($\sigma_\beta = 0.029^\circ$, $f_{\rm sky}=0.85$) and $7.2$
-($\sigma_\beta = 0.033^\circ$, $f_{\rm sky}=0.65$); $\sigma_\beta$ was not
-recorded for the canonical $f_{\rm sky}=0.32$ run, but the
-$\sqrt{f_{\rm sky}}$ scaling validated between the two measured points
-implies $\sigma_\beta(0.32) \approx 0.029^\circ\sqrt{0.85/0.32} \approx
-0.047^\circ$ and hence $\hat\beta/\sigma_\beta \approx 0.238/0.047 \approx
-5$ per realization at the canonical mask. The standard error of the 500-MC
+($\sigma_\beta = 0.033^\circ$, $f_{\rm sky}=0.65$); $\sigma_\beta$ was not recorded for the original canonical
+$f_{\rm sky}=0.32$ run; a dedicated 500-MC rerun at $f_{\rm sky}=0.32$
+measures it directly as $\sigma_\beta = 0.046^\circ$ with
+$|\hat\beta|/\sigma_\beta = 5.2$ per realization
+(\path{reproducibility/p1_namaster_500mc/results/c9f_negative_beta.json}),
+confirming the $\sqrt{f_{\rm sky}}$-scaling estimate
+($\approx\!0.047^\circ$, $\approx\!5$) quoted in an earlier draft of this
+footnote. The same rerun injects $\beta=-0.27^\circ$ and recovers
+$-0.238^\circ$ (bias $+0.032^\circ$): recovery is sign-symmetric, with
+bias magnitude identical to the $+0.27^\circ$ injection. The standard error of the 500-MC
 mean is smaller by $\sqrt{N}=22.4$.}
 For $\beta=0.342^\circ$ (the published joint
 WMAP+Planck value~\cite{Eskilt2022}), the pipeline recovers $0.302^\circ$ at

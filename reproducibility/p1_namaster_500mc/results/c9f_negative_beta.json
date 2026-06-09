@@ -1,0 +1,42 @@
+{
+  "job": "C1-P1B-namaster-fsky-sweep",
+  "date_utc": "2026-06-09T21:43:03Z",
+  "purpose": "P1B Sec. IV NaMaster beta-injection pipeline validation rerun at the published-analysis sky fractions: fsky~0.85 (Planck-like) and fsky~0.65 (ACT-DR6-like) galactic-cut masks, same apodization recipe (2-deg smoothing) and same synthetic-LCDM + 10 uK-arcmin noise MC method as the canonical fsky=0.32 run.",
+  "scope_note": "Pipeline-recovery validation on synthetic skies (mirrors reproducibility/p1_namaster_500mc/scripts/namaster_500mc.py); NOT a sky measurement. SNR^SE = beta_hat*sqrt(N)/sigma_beta is the estimator-calibration metric of P1B fn:snr_definition.",
+  "config": {
+    "nside": 512,
+    "n_real": 500,
+    "seed_base": 42,
+    "beta_injected_deg": -0.27,
+    "noise_ukarcmin": 10.0,
+    "fsky_targets": [
+      0.32
+    ],
+    "nside_fallback_note": null
+  },
+  "canonical_reference_fsky032": {
+    "fsky": 0.32,
+    "recovered_beta_deg": 0.238,
+    "bias_deg": 0.032,
+    "snr_se": 20.32
+  },
+  "results": [
+    {
+      "fsky_target": 0.32,
+      "fsky_actual_apodized": 0.31980133744561506,
+      "galactic_cut_deg": 42.84364304359634,
+      "nside": 512,
+      "lmax": 1024,
+      "n_real": 500,
+      "beta_injected_deg": -0.27,
+      "beta_recovered_deg": -0.238,
+      "bias_deg": 0.03200000000000003,
+      "sigma_beta_per_realization_deg": 0.04576194720095778,
+      "snr_se": -116.29404148995904,
+      "snr_per_realization": -5.200827642994587,
+      "snr_template_canonical_def": 20.332194270740935,
+      "wallclock_s": 1723.3999772071838
+    }
+  ],
+  "wallclock_s": 1756.5649406909943
+}

@@ -139,7 +139,7 @@ export const papers: Paper[] = [
     slug: "paper-1b",
     number: "1B",
     title: "Technical Verification Companion: ΛCDM+ΔN_eff MCMC Proxy, NaMaster Pipeline Recovery, and Spectator-ALP Consistency Check for the ECH Spin-Torsion Program",
-    version: "v1B.0.50",
+    version: "v1B.0.51",
     lastUpdated: "2026-06-09",
     tldr: "Technical companion to Paper 1A: a 424K-sample ΛCDM+ΔN_eff MCMC null test (ΔN_eff consistent with zero), a NaMaster birefringence pipeline-recovery exercise, and a spectator-ALP consistency check against the Planck+ACT β = 0.342° measurement.",
     path: publicationPath({}),
@@ -168,8 +168,8 @@ export const papers: Paper[] = [
     preprintId: "HUBIFY-2026-001B",
     pdfMeta: "PDF 920 KB · 12 pp · updated Jun 9, 2026",
     artifacts: [
-      { label: "Read PDF", href: "/papers/paper1b_mcmc_companion_v1B.0.50.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/paper1b_mcmc_companion_v1B.0.50.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/paper1b_mcmc_companion_v1B.0.51.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/paper1b_mcmc_companion_v1B.0.51.pdf", kind: "secondary", download: true },
       {
         label: "LaTeX source",
         href: "https://github.com/Hubify-Projects/bigbounce/blob/main/arxiv/paper1b_mcmc_companion.tex",
