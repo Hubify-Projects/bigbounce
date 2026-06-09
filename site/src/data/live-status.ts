@@ -121,9 +121,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-4",
       number: "4",
       shortTitle: "8.47M-galaxy chirality null at sub-percent sensitivity",
-      version: "v1.0.166",
+      version: "v1.0.167",
       readiness: 85,
-      pendingWork: "R-v166-c1 round NOT clean (~33 verified findings) → v1.0.167 revision wave → two clean rounds → Houston sign-off → arXiv",
+      pendingWork: "v1.0.167 wave landed (49 R-v166-c1 closures: clean abstract, 2.98× corrected suppression, Table II/III rebuilt) → two Claude-inclusive clean rounds → sign-off → arXiv (first in queue)",
     },
     {
       slug: "paper-5",

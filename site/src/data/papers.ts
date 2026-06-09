@@ -293,12 +293,12 @@ export const papers: Paper[] = [
       {
         label: "Cross-vendor rounds clean",
         state: "active",
-        note: "Re-opened by the v1.0.166 headline retraction — two clean rounds required",
+        note: "v1.0.167 closure wave landed (49 R-v166-c1 findings) — two clean rounds required",
       },
       {
         label: "External journal-style review",
         state: "active",
-        note: "3-vendor round closed in v1.0.151 · next Houston round queued on v1.0.166",
+        note: "3-vendor round closed in v1.0.151 · next Houston round queued on v1.0.167",
       },
       {
         label: "Houston sign-off",
@@ -316,15 +316,15 @@ export const papers: Paper[] = [
     readiness: 85,
     statusVariant: "amber",
     target: "MNRAS",
-    description: "The galaxy chirality catalog: 8.47M galaxies classified CW/CCW by a ViT-Small ensemble with rotational-equivariance correction (3.86× asymmetry suppression). The parity test is the dipole — the real-space fit at +0.43σ (p=0.30) plus a template-fit exclusion of a clean 1.7% dipole (z≈−18) and a ≥0.5% empirical detection threshold refute Shamir 2020's 3% claim. v1.0.166 withdraws the earlier −0.122σ subsample-mask MASTER null after a provenance audit showed it was computed on a synthetic-footprint catalog; the MASTER channel is now presented as a systematics diagnostic (+7.28σ on the real apodized footprint, unchanged under depth-stratified nulls — survey systematics, not cosmology). The 0.4974 CW monopole (9.5σ) traces to GZ1 training-label bias: spatially uniform, not parity violation.",
+    description: "The galaxy chirality catalog: 8.47M galaxies classified CW/CCW by a ViT-Small ensemble with rotational-equivariance correction (2.98× asymmetry suppression). The parity test is the dipole — the real-space fit at +0.43σ (empirical-rank p=0.30) plus a template-fit exclusion of a clean 1.7% dipole (z≈−18), with injection-recovery sensitivity A50 ≈ 0.75% and A95 bracketed in (1.0%, 1.5%]. The earlier −0.122σ subsample-mask MASTER null was withdrawn after a provenance audit traced it to a synthetic-footprint catalog; the MASTER channel is presented as a systematics diagnostic (+7.28σ on the real apodized footprint, unchanged under depth-stratified nulls — survey systematics, not cosmology). The 0.4974 CW monopole (−9.5σ) traces to GZ1 training-label bias: spatially uniform, not parity violation.",
     keyResults: [
       "8.47M galaxies classified (1,687,069 CW / 1,634,726 CCW / 5,152,736 NOT_SPIRAL)",
-      "Real-space ℓ=1 dipole at +0.43σ (p=0.30) + template-fit exclusion of a clean 1.7% dipole at z≈−18 (raw pseudo-C_ℓ 6.48σ was a mask-coupling artifact; earlier −0.12σ subsample-mask null withdrawn in v1.0.166 — synthetic-footprint provenance)",
+      "Real-space ℓ=1 dipole at +0.43σ (empirical-rank p=0.30, 10⁴ isotropic-null realizations) + template-fit exclusion of a clean 1.7% dipole at z≈−18; earlier −0.12σ subsample-mask null withdrawn (synthetic-footprint provenance)",
       "Bin-by-bin CW flatness audited across 4 morphology axes; residuals are classification correlations, orthogonal to dipole tests",
-      "Dipole MC injection-recovery (250K fits): ≥0.5% empirical detection threshold; catalog-wide σ=0.43, p=0.30 — no detection",
+      "Injection-recovery sensitivity: A50 ≈ 0.75% (50%-recovery at 3σ); A95 bracketed in (1.0%, 1.5%] — honest falsification window",
       "Edge-on TTA equivariance check: CW fraction 0.4975 ± 0.0006 on 785,859 edge-on galaxies, indistinguishable from catalog-wide",
       "Platt calibration: raw +0.79%/28.8σ → calibrated +0.4%/14.6σ → equivariant -0.26%/9.5σ",
-      "Equivariance suppression factor 3.86× (raw asym +2.05% → eq asym -0.53%)",
+      "Equivariance suppression factor 2.98× (raw +1.58% → equivariant −0.53% in asymmetry-A units; +0.79% → −0.26% in f_CW units)",
       "Hemisphere look-elsewhere null: p_LEE < 10⁻⁴ (0/10,000 MC nulls reach data)",
       "100,000-bootstrap CW/CCW asymmetry: A_obs=1.5757%, 95%CI=[1.471%, 1.685%], σ_stat = 28.80σ",
       "8/8 bias hardening tests pass (flip-equivariance, rotation stability, etc.)",
@@ -334,7 +334,7 @@ export const papers: Paper[] = [
     predictions: ["Parity test (indirect bounce test)"],
     figures: ["Chirality sky map", "Hemisphere null", "Bias audit results", "Class pie (canonical text counts)"],
     remainingWork: [
-      "TWO clean cross-vendor R-rounds on v1.0.166 (post-retraction rule, >5pp backward step)",
+      "TWO clean cross-vendor R-rounds on v1.0.167 (post-retraction rule; Claude leg blocked on API credits)",
       "Houston personal sign-off (final 1%, gated)",
       "GitHub release PDF asset upload (tag + commit already pushed)",
       "arXiv endorsement + submission (astro-ph.GA + astro-ph.CO, first in queue)",
