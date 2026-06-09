@@ -25,21 +25,34 @@ function sectionsFromConvex(
 ): FigureSection[] {
   const sections: FigureSection[] = [];
   for (const { slug, title } of SECTION_ORDER) {
-    const rows = (grouped[slug] || []).slice().sort((a, b) => a.ordinal - b.ordinal);
+    const allRows = (grouped[slug] || []).slice().sort((a, b) => a.ordinal - b.ordinal);
+    // Exclude retracted figures from the main gallery; in-paper + candidates
+    // are surfaced together so Houston can browse the full valid pool.
+    const rows = allRows.filter((r) => (r.status ?? "in-paper") !== "retracted");
     if (rows.length === 0) continue;
+    const inPaperCount = rows.filter((r) => (r.status ?? "in-paper") === "in-paper").length;
+    const candCount = rows.filter((r) => r.status === "candidate").length;
+    const countLabel = candCount > 0
+      ? `${inPaperCount} in paper · ${candCount} candidate${candCount === 1 ? "" : "s"}`
+      : `${inPaperCount} figure${inPaperCount === 1 ? "" : "s"}`;
     sections.push({
       title,
-      count: `${rows.length} figure${rows.length === 1 ? "" : "s"}`,
-      items: rows.map((r) => ({
-        src: r.src,
-        alt: r.alt,
-        number: r.citationLabel
-          ? `Figure ${r.ordinal} (${r.citationLabel})`
-          : `Figure ${r.ordinal}`,
-        title: r.title,
-        desc: r.desc,
-        source: `${title.split("—")[0].trim()} · ${r.paperVersion}`,
-      })),
+      count: countLabel,
+      items: rows.map((r) => {
+        const isCandidate = r.status === "candidate";
+        return {
+          src: r.src,
+          alt: r.alt,
+          number: isCandidate
+            ? `Candidate #${r.ordinal - 100}`
+            : r.citationLabel
+              ? `Figure ${r.ordinal} (${r.citationLabel})`
+              : `Figure ${r.ordinal}`,
+          title: isCandidate ? `[candidate] ${r.title}` : r.title,
+          desc: r.desc,
+          source: `${title.split("—")[0].trim()} · ${isCandidate ? "candidate pool" : r.paperVersion}`,
+        };
+      }),
     });
   }
   return sections;
@@ -70,8 +83,10 @@ export default async function FiguresPage() {
         </h1>
         <p className="subtitle">
           {totalFigures} research figures across all 6 papers (P1A · P1B · P2 ·
-          P3 · P4 · P5), seeded directly from each paper&apos;s current
-          .tex sources via Convex.
+          P3 · P4 · P5). In-paper figures are seeded from each paper&apos;s
+          current .tex; candidate figures exist on disk + are scientifically
+          valid but not yet \includegraphics&apos;d — pick the ones you want
+          re-added from the paper detail page or here.
         </p>
       </div>
 

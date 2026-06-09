@@ -343,17 +343,31 @@ export default defineSchema({
   // ──────────────────────────────────────────────────────────────────
   paper_figures: defineTable({
     paperSlug: v.string(),               // p1a | p1b | p2 | p3 | p4 | p5
-    ordinal: v.number(),                 // appearance order in the .tex
+    ordinal: v.number(),                 // appearance order; in-paper: 1..N, candidates: 100..N
     src: v.string(),                     // public path e.g. /images/foo.png
     alt: v.string(),                     // accessibility alt text
     title: v.string(),                   // short label "Figure 3"-style heading
     desc: v.string(),                    // caption (truncated)
     paperVersion: v.string(),            // version this figure was seeded from
     citationLabel: v.optional(v.string()),
+    // 2026-06-09: status distinguishes figures currently \includegraphics-ed
+    // in the .tex (in-paper) from valid candidate figures that exist on disk
+    // but are NOT yet in the paper (candidate). Houston uses this on the
+    // paper detail page to pick which candidates to re-add to the .tex.
+    // Retracted figures (bad science / corrected) are flagged "retracted"
+    // and excluded from default gallery views.
+    status: v.optional(
+      v.union(
+        v.literal("in-paper"),
+        v.literal("candidate"),
+        v.literal("retracted"),
+      ),
+    ),
     addedAt: v.number(),
   })
     .index("by_paper", ["paperSlug"])
-    .index("by_paper_ordinal", ["paperSlug", "ordinal"]),
+    .index("by_paper_ordinal", ["paperSlug", "ordinal"])
+    .index("by_paper_status", ["paperSlug", "status"]),
 
   papers_externalReviews: defineTable({
     paperSlug: v.string(),

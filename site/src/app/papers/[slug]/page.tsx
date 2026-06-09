@@ -3,7 +3,9 @@ import {
   getLivePapers,
   getNotablesForPaper,
   getExternalReviewsForPaper,
+  getFiguresForPaper,
 } from"@/lib/livePapers";
+import { PaperFigureGallery } from"./PaperFigureGallery";
 import { Badge } from"@/components/ui/badge";
 import { Button } from"@/components/ui/button";
 import { MathText } from"@/components/MathText";
@@ -76,11 +78,14 @@ export default async function PaperDetailPage({
   // The static papers.ts retains descriptive content (title, tldr, blockingItems,
   // figures, artifacts) but readiness + version + lastUpdated come from Convex so
   // they can never drift relative to the homepage dashboard.
-  const [liveStates, notables, externalReviews] = await Promise.all([
+  const [liveStates, notables, externalReviews, figures] = await Promise.all([
     getLivePapers(),
     getNotablesForPaper(slug),
     getExternalReviewsForPaper(slug),
+    getFiguresForPaper(slug),
   ]);
+  const inPaperFigures = figures.filter((f) => (f.status ?? "in-paper") === "in-paper");
+  const candidateFigures = figures.filter((f) => f.status === "candidate");
   const live = liveStates.find((p) => p.slug === slug);
   const readiness = live?.readinessComputed ?? paper.readiness;
   const version = live?.currentVersion ?? paper.version;
@@ -618,7 +623,13 @@ export default async function PaperDetailPage({
         </TabsContent>
 
         <TabsContent value="figures" className="pt-4">
-          {paper.figures.length > 0 ? (
+          {figures.length > 0 ? (
+            <PaperFigureGallery
+              inPaper={inPaperFigures}
+              candidates={candidateFigures}
+              paperNumber={paper.number}
+            />
+          ) : paper.figures.length > 0 ? (
             <div className="paper-chip-grid">
               {paper.figures.map((f) => (
                 <div key={f} className="paper-chip-card">

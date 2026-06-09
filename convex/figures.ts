@@ -50,6 +50,13 @@ export const upsertByOrdinal = mutation({
     desc: v.string(),
     paperVersion: v.string(),
     citationLabel: v.optional(v.string()),
+    status: v.optional(
+      v.union(
+        v.literal("in-paper"),
+        v.literal("candidate"),
+        v.literal("retracted"),
+      ),
+    ),
   },
   handler: async (ctx, args) => {
     const existing = await ctx.db
@@ -66,11 +73,13 @@ export const upsertByOrdinal = mutation({
         desc: args.desc,
         paperVersion: args.paperVersion,
         citationLabel: args.citationLabel,
+        status: args.status ?? "in-paper",
       });
       return existing._id;
     }
     return await ctx.db.insert("paper_figures", {
       ...args,
+      status: args.status ?? "in-paper",
       addedAt: Date.now(),
     });
   },

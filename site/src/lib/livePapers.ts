@@ -204,6 +204,7 @@ export type PaperFigure = {
   desc: string;
   paperVersion: string;
   citationLabel?: string;
+  status?: "in-paper" | "candidate" | "retracted";
 };
 
 export async function getFiguresForPaper(

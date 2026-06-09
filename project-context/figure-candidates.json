@@ -1,0 +1,229 @@
+{
+  "_doc": "Candidate figures — present on disk + valid science but NOT currently in the paper .tex. Houston picks which to re-add via the paper detail page gallery. Each candidate ordinal starts at 100 to avoid colliding with in-paper figures (1..N).",
+  "_updated": "2026-06-09",
+  "_status": "candidate",
+  "candidates": {
+    "paper-1a": [
+      {
+        "ordinal": 101,
+        "src": "/images/figure5_rotation_expansion.png",
+        "alt": "Effect of bounce-era cosmic rotation on the expansion history",
+        "title": "Rotation × Expansion",
+        "desc": "Distance-impact of a residual cosmic rotation component on the Hubble expansion. Visualizes the (ω/H)_0 < 5×10⁻¹¹ Saadeh+2016 isotropy bound and the consequent suppression of any direct rotation signature in the late-time Hubble flow."
+      },
+      {
+        "ordinal": 102,
+        "src": "/images/figure6_parameter_naturalness.png",
+        "alt": "Parameter naturalness window across the four ECH routes",
+        "title": "Naturalness window (4-route map)",
+        "desc": "Position of each of the four minimal Einstein–Cartan–Holst dark-energy routes in the (coupling × mass) plane against the natural-parameter window. Visualizes why the closure rests on cosmological-constant-class tuning at m_θ ~ H_0 rather than amplitude mismatch alone."
+      },
+      {
+        "ordinal": 103,
+        "src": "/images/figure7_observational_timeline.png",
+        "alt": "Observational decision timeline for the surviving ECH tests",
+        "title": "Observational timeline",
+        "desc": "Timeline of survey decisions (CMB-S4, LiteBIRD, SPHEREx, DESI DR2) that could falsify or confirm the surviving mechanism-independent ECH signatures (f_NL = -35/8 matter-bounce + spectator-ALP birefringence)."
+      },
+      {
+        "ordinal": 104,
+        "src": "/images/figure8_detection_forecast.png",
+        "alt": "Detection forecast for the 2 surviving ECH tests",
+        "title": "Surviving-test detection forecast",
+        "desc": "Detection-significance forecast for the matter-bounce f_NL = -35/8 SPHEREx window + the spectator-ALP birefringence LiteBIRD window. Connects the no-go theorem of §sec:barriers to the surviving falsification paths in §sec:surviving."
+      }
+    ],
+    "paper-1b": [
+      {
+        "ordinal": 101,
+        "src": "/images/fig_namaster_beta_vs_nside.png",
+        "alt": "NaMaster β recovery vs HEALPix NSIDE",
+        "title": "NaMaster β recovery vs NSIDE",
+        "desc": "Pipeline-recovery test of injected birefringence β across NSIDE = {256, 512, 1024} at f_sky = 0.32. Demonstrates the recovery floor + SNR-on-mean scaling that anchors the §IV.A SNR = 20.3 claim."
+      },
+      {
+        "ordinal": 102,
+        "src": "/images/dneff_viability.png",
+        "alt": "ΔN_eff posterior viability across three frozen dataset combinations",
+        "title": "ΔN_eff posterior — three frozen runs",
+        "desc": "Joint 1D + 2D ΔN_eff posterior across the full-tension (Planck+SH0ES), Planck+BAO+SN, and Planck-only frozen MCMC chains. The 309,789-sample evidence anchors the §IV ΔN_eff ≈ 0 null-consistency conclusion."
+      },
+      {
+        "ordinal": 103,
+        "src": "/images/fig_dneff_viability_two_frozen.png",
+        "alt": "ΔN_eff viability — two-chain comparison",
+        "title": "ΔN_eff two-chain overlay",
+        "desc": "Overlay of the two converged frozen chains (full-tension + Planck+BAO+SN) showing how the H_0 — ΔN_eff degeneracy direction differs by dataset. Useful for showing the inverse-variance combination assumption discussion."
+      }
+    ],
+    "paper-2": [
+      {
+        "ordinal": 101,
+        "src": "/images/fig_4vertex_sum.png",
+        "alt": "Four-vertex amplitude diagram for spectator-ALP × matter-bounce coupling",
+        "title": "4-vertex amplitude sum",
+        "desc": "Tree-level vertex sum for the spectator-ALP × matter-bounce coupling channels. Diagrammatic intuition for the f_a cancellation in the rotation amplitude β."
+      },
+      {
+        "ordinal": 102,
+        "src": "/images/alp_beta_comparison.png",
+        "alt": "Spectator-ALP β comparison vs Eskilt+ data",
+        "title": "ALP β vs Eskilt+2022",
+        "desc": "Spectator-ALP β = 0.342° ± 0.094° posterior overlay vs the published joint Planck+ACT Eskilt+2022 measurement. Visualizes the consistency check anchored at f_a = M_Pl, m = H_0."
+      },
+      {
+        "ordinal": 103,
+        "src": "/images/alp_triangle_plot.png",
+        "alt": "Spectator-ALP MCMC triangle posterior",
+        "title": "ALP MCMC triangle",
+        "desc": "Triangle plot for the (θ_i, m_θ, C_aγ, β) posterior on the spectator-ALP joint chain. Shows the parameter degeneracies + the natural-prior box boundary discussion."
+      }
+    ],
+    "paper-3": [
+      {
+        "ordinal": 101,
+        "src": "/images/anomaly_sky_distribution.png",
+        "alt": "All-sky distribution of P3 anomalies",
+        "title": "Anomaly sky distribution",
+        "desc": "Mollweide all-sky distribution of the 14,089 high-confidence DESI + cross-survey anomalies. Color-coded by anomaly score + class. Useful as a hero map alongside the §III architecture figure."
+      },
+      {
+        "ordinal": 102,
+        "src": "/images/photo_z_scatter.png",
+        "alt": "Photometric redshift scatter for P3 anomaly catalog",
+        "title": "Photo-z scatter",
+        "desc": "Photo-z vs spectro-z scatter for the P3 anomaly catalog (DESI + cross-matched DR8 + UNIONS). Anchors the photo-z residual quality cut in §III.B."
+      },
+      {
+        "ordinal": 103,
+        "src": "/images/photo_z_residuals.png",
+        "alt": "Photometric redshift residual distribution",
+        "title": "Photo-z residuals",
+        "desc": "Residual distribution (Δz / (1+z)) for the photo-z calibration sample. Used to justify the catastrophic-outlier cut at |Δz/(1+z)| > 0.15."
+      },
+      {
+        "ordinal": 104,
+        "src": "/images/fig_fnl_improvement.png",
+        "alt": "f_NL constraint improvement from P3 anomaly removal",
+        "title": "f_NL improvement from anomaly removal",
+        "desc": "σ(f_NL) improvement as a function of P3 anomaly-removal threshold. Quantifies the load-bearing claim that the catalog reduces f_NL contamination for SPHEREx-class surveys."
+      },
+      {
+        "ordinal": 105,
+        "src": "/images/fig_nanograv_fit.png",
+        "alt": "NanoGrav γ_GWB fit on the P3-cleaned sample",
+        "title": "NanoGrav γ_GWB fit",
+        "desc": "NanoGrav 15yr γ_GWB MAP fit after applying the P3 anomaly catalog to the host-galaxy environment. Anchors the §V γ = 3.0 cross-reference."
+      },
+      {
+        "ordinal": 106,
+        "src": "/images/fig_pathc_neowise_ecliptic.png",
+        "alt": "NEOWISE ecliptic distribution of Path-C anomalies",
+        "title": "Path-C NEOWISE ecliptic",
+        "desc": "Ecliptic-coordinate distribution of NEOWISE Path-C native-retrieval anomalies. Shows the residual ecliptic concentration after de-duplication — used to justify the §III.E ecliptic-systematic discussion."
+      },
+      {
+        "ordinal": 107,
+        "src": "/images/anomaly_rate_map.png",
+        "alt": "Per-pixel anomaly rate map across all 6 surveys",
+        "title": "Anomaly rate sky map",
+        "desc": "Per-pixel anomaly rate (anomalies / spectra) across all 6 surveys. Visualizes the survey-depth × anomaly-rate correlation discussed in §III.D."
+      },
+      {
+        "ordinal": 108,
+        "src": "/images/survey_depth_map.png",
+        "alt": "Survey depth (z_max) sky map",
+        "title": "Survey depth map",
+        "desc": "Per-pixel maximum-z reached by each survey in the P3 catalog. Companion to the anomaly-rate map for diagnosing systematic vs astrophysical anomalies."
+      },
+      {
+        "ordinal": 109,
+        "src": "/images/depth_vs_rate_scatter.png",
+        "alt": "Survey depth vs anomaly rate scatter",
+        "title": "Depth × rate scatter",
+        "desc": "Scatter of per-pixel anomaly rate against survey depth. Quantitative anchor for the depth-coupling systematic discussion in §III.D."
+      },
+      {
+        "ordinal": 110,
+        "src": "/images/umap_by_anomaly_score.png",
+        "alt": "UMAP embedding colored by anomaly score",
+        "title": "UMAP × anomaly score",
+        "desc": "2D UMAP embedding of the encoder latent space, colored by per-spectrum anomaly score. Hero figure for the §II.A representation-learning approach."
+      },
+      {
+        "ordinal": 111,
+        "src": "/images/umap_by_redshift.png",
+        "alt": "UMAP embedding colored by redshift",
+        "title": "UMAP × redshift",
+        "desc": "Same UMAP embedding colored by spectroscopic redshift. Visualizes how the encoder organizes spectra by z without explicit redshift supervision."
+      },
+      {
+        "ordinal": 112,
+        "src": "/images/umap_by_spectype.png",
+        "alt": "UMAP embedding colored by spectral type",
+        "title": "UMAP × spectral type",
+        "desc": "Same UMAP embedding colored by DESI primary spectroscopic class (GALAXY/STAR/QSO). Shows native class separation in the unsupervised latent."
+      }
+    ],
+    "paper-4": [
+      {
+        "ordinal": 101,
+        "src": "/images/fig_template_overlap_robustness.png",
+        "alt": "Template-overlap robustness sweep for P4 chirality dipole",
+        "title": "Template-overlap robustness",
+        "desc": "Sweep of the 9-template nuisance basis overlap parameter (correlation between primordial-dipole basis and depth/density templates). Anchors the §IV.D nuisance-marginalized fit robustness claim."
+      }
+    ],
+    "paper-5": [
+      {
+        "ordinal": 101,
+        "src": "/images/fig_cw_vs_z.png",
+        "alt": "P5 CW fraction vs redshift",
+        "title": "f_CW vs z",
+        "desc": "Equivariant CW fraction as a function of redshift across the DESI DR1 footprint. Visualizes the z-stratified null check that the chirality-environment signal is z-independent."
+      },
+      {
+        "ordinal": 102,
+        "src": "/images/fig_sky_footprint.png",
+        "alt": "P5 sky footprint Mollweide projection",
+        "title": "P5 sky footprint",
+        "desc": "Mollweide footprint of the P5 DESI×DESIVAST environmental analysis (56,981 void spirals + 791,635 cross-matched DR1 spirals). Useful as a context map."
+      },
+      {
+        "ordinal": 103,
+        "src": "/images/fig_z_histogram.png",
+        "alt": "P5 redshift histogram by environment class",
+        "title": "z histogram by environment",
+        "desc": "Redshift histogram of the P5 sample stratified by V-Web/T-Web environment class (void / wall / filament / knot). Anchors the sample-balance discussion."
+      },
+      {
+        "ordinal": 104,
+        "src": "/images/fig_confidence_sensitivity.png",
+        "alt": "P5 confidence-threshold sensitivity sweep",
+        "title": "Confidence sensitivity",
+        "desc": "Sensitivity of the P5 per-environment Δf_CW signal to the equivariant confidence threshold p_eq cut. Quantifies the robustness of the headline result across p_eq ∈ [0.6, 0.95]."
+      },
+      {
+        "ordinal": 105,
+        "src": "/images/fig_radius_sensitivity.png",
+        "alt": "P5 void-radius sensitivity sweep",
+        "title": "Radius sensitivity",
+        "desc": "Sensitivity of the per-environment Δf_CW signal to the DESIVAST void-radius cut. Anchors the §VI robustness check that the signal is not driven by a specific void size."
+      },
+      {
+        "ordinal": 106,
+        "src": "/images/fig_cw_vs_density.png",
+        "alt": "P5 CW vs cosmic-web local density",
+        "title": "f_CW vs local density",
+        "desc": "Equivariant CW fraction as a function of cosmic-web local density (V-Web density-quintile classification). Companion to the per-environment bar chart, showing the continuous trend."
+      },
+      {
+        "ordinal": 107,
+        "src": "/images/fig_healpix_cw_residual.png",
+        "alt": "P5 HEALPix CW-fraction residual map",
+        "title": "HEALPix CW residual",
+        "desc": "Per-pixel residual Δf_CW^eq after subtracting the V-Web environmental prediction. Visualizes spatial coherence of the residual + supports the §VII null-systematic discussion."
+      }
+    ]
+  }
+}
