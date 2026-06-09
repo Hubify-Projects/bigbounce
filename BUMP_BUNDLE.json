@@ -1,11 +1,11 @@
 [
   {
-    "paperSlug": "paper-2",
-    "version": "v1.7.45",
+    "paperSlug": "paper-1b",
+    "version": "v1B.0.50",
     "datestamp": "2026-06-09",
-    "texCommit": "29837536",
-    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/research/focused_paper_source_integration/02_full_draft.pdf",
-    "sitePdfPath": "/papers/paper2_fnl_forecast_v1.7.45.pdf",
-    "changelog": "R22prov2 closure mini-wave (correct-PDF re-run round: Claude/Gemini/OpenAI/META all ZERO findings; only Grok+Perplexity flagged). 8 VERIFIED items closed: provenance bracket neutralized to journal style (correction fact kept, version numbers + repo path moved to Data Availability); AI acknowledgment reworded to software-infrastructure framing with responsibility statement; SSFSR point-prior (fNL_inf≈0.015) defined in tab:bayes caption with order-of-magnitude qualifier; Fig 2 error bars defined (optimistic = ideal+overlap-correction, conservative = full §VII budget); 10k-coefficient ball-radius convention caveat; Data Availability now cites c8_fnl_running_fisher.py; Jolicoeur:2025 bib author list corrected (Addis et al.). TRUTH-AUDIT: all 5 Perplexity citation-fabrication claims FALSIFIED by direct web verification (2603.13924, 2511.09466, 2509.13654, 2305.02268, 1712.09998 all exist as cited); Grok 'no derivation supplied' falsified (script path was cited); future-date findings falsified. 22pp/md5 d421f116/0 errors/0 overfull/0 undef."
+    "texCommit": "153de700",
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1b_mcmc_companion.pdf",
+    "sitePdfPath": "/papers/paper1b_mcmc_companion_v1B.0.50.pdf",
+    "changelog": "R22prov closure wave (24 VERIFIED + mechanical sweep). Load-bearing: (1) NaMaster §IV provenance corrected — pipeline validation runs on SYNTHETIC ΛCDM skies (synfast; namaster_500mc.py), not the Commander/SMICA map as previously labeled; stale recovery figure (untraceable ≈0.15° point) replaced with artifact-only fig_namaster_recovery.png. (2) SNR relabeling — 20.32/25.71 are template-fit SNRs (artifact-proven √fsky scaling); per-realization σ_β/SNR now quoted from c1_fsky_sweep.json. (3) §V.A BAO attribution fixed to SDSS DR16+MGS+6dFGS per the frozen chain YAML (was mislabeled DESI DR1); per-chain dataset table added. (4) w_pivot SUBSTANTIVE correction: old footnote formula provably violated the Cauchy bound; direct iter2 DR2 chain readout gives a_p=0.791, w_p=−0.952±0.019 → +2.5σ from −1 (was '−1.1σ') — verified by two independent computations; consistent with the DESI DR2 evolving-DE preference. (5) ALP likelihood attribution unified to Eskilt WMAP+Planck Gaussian summary at all residual sites. (6) Spectator-fraction posterior readouts from c5 chain (Ω_a<0.1: 44%, <0.01: 13%). +12 verified minors. 13pp/md5 178f5f32/0 errors/0 undef/0 overfull. Round was Claude-leg DEGRADED (API credits) — Claude-inclusive confirmation round required post-top-up."
   }
 ]
