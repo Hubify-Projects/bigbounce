@@ -3,7 +3,7 @@
 
 Produces a single 2-panel figure (left: V-Web canonical run; right: Tempel
 FoF cross-validation) so reviewers can visually verify the
-filament-class concordance at 0.026pp.
+like-for-like filament-class concordance at 0.29pp (declared-parent overlap, v0.1.51).
 
 Both panels render CW fraction per environment class with 95% Jeffreys
 binomial credible intervals + parity-0.5 dashed reference + Paper IV
@@ -100,15 +100,15 @@ def main() -> int:
     _draw(ax2, tempel.rename(columns={"tempel_class": "env_class"}),
           TEMPEL_ORDER, TEMPEL_COLORS,
           "Tempel+2014 FoF cross-validation\n"
-          "$n=110{,}586$ Tempel-overlap matched spirals", ylim)
-    # concordance annotation: filament_like_vs_filament 0.026pp
+          "$n=96{,}753$ Tempel-overlap matched spirals (declared parent)", ylim)
+    # concordance annotation: like-for-like overlap filament concordance 0.29pp
     ax1.annotate(
-        "filament concordance: $|f_{\\rm CW}^{\\rm V-Web}-f_{\\rm CW}^{\\rm Tempel}|=0.026$\\,pp",
+        "like-for-like filament concordance (overlap): $0.29$\\,pp ($\\sim$$0.5\\sigma$)",
         xy=(2, 0.498), xytext=(2.1, 0.461),
         fontsize=8.5, ha="left",
         arrowprops=dict(arrowstyle="->", color="#0369a1", lw=0.8),
     )
-    ax2.annotate("$\\leftarrow$ filament_like 0.4982", xy=(2, 0.498),
+    ax2.annotate("$\\leftarrow$ filament_like 0.4980", xy=(2, 0.498),
                  xytext=(2.1, 0.461),
                  fontsize=8.5, ha="left", color="#0369a1",
                  arrowprops=dict(arrowstyle="->", color="#0369a1", lw=0.8))

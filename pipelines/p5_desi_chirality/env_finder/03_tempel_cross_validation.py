@@ -112,10 +112,11 @@ def _summarize_class(df: pd.DataFrame, class_col: str = "tempel_class") -> pd.Da
     return pd.DataFrame(rows)
 
 
-def _vweb_concordance(tempel_df: pd.DataFrame) -> dict:
-    if not V_WEB_CSV.exists():
-        return {"skipped": True, "reason": "V-Web canonical CSV not on disk"}
-    vweb = pd.read_csv(V_WEB_CSV)
+def _vweb_concordance(tempel_df: pd.DataFrame,
+                      overlap_df: pd.DataFrame | None = None) -> dict:
+    """Like-for-like concordance: V-Web side restricted to the SAME Tempel-
+    overlap galaxies (R22prov OAI-E3 closure). Falls back to the canonical
+    full-sample CSV only if the overlap frame is not supplied."""
     pairings = [
         ("isolated", "void"),
         ("small_group", "wall"),
@@ -123,6 +124,33 @@ def _vweb_concordance(tempel_df: pd.DataFrame) -> dict:
         ("cluster_like", "cluster"),
     ]
     out = {}
+    if overlap_df is not None:
+        env_path = P5 / "data/desi_env/desi_env_vweb.parquet"
+        env = pd.read_parquet(env_path, columns=["TARGETID", "env_class"])
+        env = env.drop_duplicates("TARGETID")
+        ov = overlap_df.merge(env, left_on="desi_targetid",
+                              right_on="TARGETID", how="left")
+        out["basis"] = "vweb_restricted_to_tempel_overlap"
+        for t_cls, v_cls in pairings:
+            t_sub = ov[ov["tempel_class"] == t_cls]
+            v_sub = ov[ov["env_class"] == v_cls]
+            if len(t_sub) == 0 or len(v_sub) == 0:
+                out[f"{t_cls}_vs_{v_cls}"] = {"concordance_pp": None, "ok": False}
+                continue
+            f_t = float((t_sub["match_class_eq"] == "CW").mean())
+            f_v = float((v_sub["match_class_eq"] == "CW").mean())
+            delta = abs(f_t - f_v)
+            out[f"{t_cls}_vs_{v_cls}"] = {
+                "concordance_pp": round(delta * 100, 4),
+                "ok": delta < 0.002,
+                "tempel_f_cw": f_t, "tempel_n": int(len(t_sub)),
+                "vweb_f_cw_on_overlap": f_v, "vweb_n_on_overlap": int(len(v_sub)),
+            }
+        return out
+    if not V_WEB_CSV.exists():
+        return {"skipped": True, "reason": "V-Web canonical CSV not on disk"}
+    vweb = pd.read_csv(V_WEB_CSV)
+    out["basis"] = "vweb_full_sample_csv (NOT like-for-like; legacy)"
     for t_cls, v_cls in pairings:
         t_row = tempel_df[tempel_df["tempel_class"] == t_cls]
         v_row = vweb[vweb["env_class"] == v_cls]
@@ -182,9 +210,13 @@ def main() -> int:
     print(f"[{_utc()}] Loading matched chirality catalog ...")
     matched = pd.read_parquet(MATCHED_PATH)
     print(f"  matched rows: {len(matched):,}")
-    # Pre-filter to chirality-relevant subsample BEFORE the spatial NN join,
-    # so we don't burn an hour matching 16M rows when only 791K carry CW/CCW.
-    matched = matched[matched["match_class_eq"].isin(["CW", "CCW"])].reset_index(drop=True)
+    # Pre-filter to the DECLARED chirality-relevant parent BEFORE the spatial
+    # NN join: matched_primary_deduped AND CW/CCW (n = 791,635). The pre-
+    # v0.1.51 run omitted the matched_primary_deduped filter, so the published
+    # 110,586-row "overlap" included non-primary / duplicate nearest-label
+    # rows (R22prov OAI-E3 closure; see scripts/17_v0151_closure_recomputes.py).
+    matched = matched[matched.get("matched_primary_deduped", matched["matched_primary"])
+                      & matched["match_class_eq"].isin(["CW", "CCW"])].reset_index(drop=True)
     print(f"  chirality-relevant rows for env join: {len(matched):,}")
 
     # Spatial nearest-neighbour join (Tempel does not carry DESI TARGETID
@@ -212,7 +244,7 @@ def main() -> int:
 
     per_class = _summarize_class(matched_with_tempel)
     per_class.to_csv(OUT_CSV, index=False)
-    concordance = _vweb_concordance(per_class)
+    concordance = _vweb_concordance(per_class, overlap_df=matched_with_tempel)
     summary = {
         "status": "OK",
         "tempel_source": str(TEMPEL_PATH.relative_to(REPO)),

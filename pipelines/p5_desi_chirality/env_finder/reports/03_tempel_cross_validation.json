@@ -1,66 +1,75 @@
 {
   "status": "OK",
   "tempel_source": "pipelines/p5_desi_chirality/data/desi_env/tempel/tempel_2014_fof.parquet",
-  "matched_rows": 110586,
+  "matched_rows": 96753,
   "per_class": [
     {
       "tempel_class": "cluster_like",
-      "n": 5892,
-      "n_cw": 2963,
-      "n_ccw": 2929,
-      "cw_fraction": 0.5028852681602173,
-      "sigma_from_half": 0.4429426993356732
+      "n": 5022,
+      "n_cw": 2520,
+      "n_ccw": 2502,
+      "cw_fraction": 0.5017921146953405,
+      "sigma_from_half": 0.254000254000381
     },
     {
       "tempel_class": "filament_like",
-      "n": 14317,
-      "n_cw": 7133,
-      "n_ccw": 7184,
-      "cw_fraction": 0.4982189006076692,
-      "sigma_from_half": -0.42623014677254023
+      "n": 12360,
+      "n_cw": 6155,
+      "n_ccw": 6205,
+      "cw_fraction": 0.49797734627831713,
+      "sigma_from_half": -0.44973922685072154
     },
     {
       "tempel_class": "isolated",
-      "n": 58539,
-      "n_cw": 28962,
-      "n_ccw": 29577,
-      "cw_fraction": 0.4947470916824681,
-      "sigma_from_half": -2.541864911942458
+      "n": 51631,
+      "n_cw": 25558,
+      "n_ccw": 26073,
+      "cw_fraction": 0.49501268617690924,
+      "sigma_from_half": -2.2664803634233195
     },
     {
       "tempel_class": "small_group",
-      "n": 31838,
-      "n_cw": 15829,
-      "n_ccw": 16009,
-      "cw_fraction": 0.4971731892706828,
-      "sigma_from_half": -1.008787322756477
+      "n": 27740,
+      "n_cw": 13746,
+      "n_ccw": 13994,
+      "cw_fraction": 0.4955299206921413,
+      "sigma_from_half": -1.4890128732478807
     }
   ],
   "vweb_concordance": {
+    "basis": "vweb_restricted_to_tempel_overlap",
     "isolated_vs_void": {
-      "concordance_pp": 1.1102,
+      "concordance_pp": 10.3708,
       "ok": false,
-      "tempel_f_cw": 0.4947470916824681,
-      "vweb_f_cw": 0.4836448598130841
+      "tempel_f_cw": 0.49501268617690924,
+      "tempel_n": 51631,
+      "vweb_f_cw_on_overlap": 0.391304347826087,
+      "vweb_n_on_overlap": 23
     },
     "small_group_vs_wall": {
-      "concordance_pp": 0.6199,
+      "concordance_pp": 2.8608,
       "ok": false,
-      "tempel_f_cw": 0.4971731892706828,
-      "vweb_f_cw": 0.5033717967930466
+      "tempel_f_cw": 0.4955299206921413,
+      "tempel_n": 27740,
+      "vweb_f_cw_on_overlap": 0.5241379310344828,
+      "vweb_n_on_overlap": 145
     },
     "filament_like_vs_filament": {
-      "concordance_pp": 0.0258,
-      "ok": true,
-      "tempel_f_cw": 0.4982189006076692,
-      "vweb_f_cw": 0.4979604935972973
+      "concordance_pp": 0.2891,
+      "ok": false,
+      "tempel_f_cw": 0.49797734627831713,
+      "tempel_n": 12360,
+      "vweb_f_cw_on_overlap": 0.5008682114843422,
+      "vweb_n_on_overlap": 16701
     },
     "cluster_like_vs_cluster": {
-      "concordance_pp": 0.658,
+      "concordance_pp": 0.6742,
       "ok": false,
-      "tempel_f_cw": 0.5028852681602173,
-      "vweb_f_cw": 0.4963057068464547
+      "tempel_f_cw": 0.5017921146953405,
+      "tempel_n": 5022,
+      "vweb_f_cw_on_overlap": 0.495049631274082,
+      "vweb_n_on_overlap": 78378
     }
   },
-  "generated_at_utc": "2026-05-21T19:58:38Z"
+  "generated_at_utc": "2026-06-09T21:16:04Z"
 }
