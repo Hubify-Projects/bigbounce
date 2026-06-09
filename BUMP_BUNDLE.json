@@ -1,11 +1,11 @@
 [
   {
-    "paperSlug": "paper-4",
-    "version": "v1.0.167",
+    "paperSlug": "paper-3",
+    "version": "v3.1.80",
     "datestamp": "2026-06-09",
-    "texCommit": "4a365b4a",
-    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p2_chirality/chirality_catalog_paper.pdf",
-    "sitePdfPath": "/papers/chirality_catalog_paper_v167.pdf",
-    "changelog": "Post-retraction mega-wave: 33 R-v166-c1 findings + 16 R22prov delta items + C9 compute batch integrated. Highlights: equivariance suppression corrected 3.86×→2.98× (count-derived; stale +2.05% pair retired); Table II 6-dp fractions with signed z (+28.72/−9.47); Table III REBUILT from 10k-permutation nulls under a single field convention, both footprints, null means + rank-p printed (apod ℓ=1 z=+7.31, rank-p=6.0e-4); harmonic-channel completeness: P(3σ)=0.92 at A_p=0.5%, ≈1.0 at ≥0.75%, and a Shamir-class A_p=1.7% dipole would register at z≈68-218 vs observed +7.3 — order-of-magnitude amplitude incompatibility independent of systematics attribution; W_p sweep (excess persists under all 3 weightings); pool verification ALL-PASS (spirals-only nulls); shot-noise floor validated (N_ℓ≈2.0e-6 ≈ null mean); LEE double-counting fixed (max-stat MC primary); GZ1 240,919/234,282 reconciled (training-overlap arithmetic); false '<0.5σ threshold-sweep' claim corrected to artifact truth (6.3-8.3σ range, old convention); abstract ≤250 words journal-neutral; eight-anchor battery; T7 criterion honesty fix; 25,790/66.5% training arithmetic; A95 bracketed (1.0%,1.5%]. 17pp/md5 b236c8d9/0 errors/0 undef/0 overfull. Round still requires two Claude-inclusive clean rounds (readiness stays 85)."
+    "texCommit": "24013df2",
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p3_anomaly_engine/paper3_draft.pdf",
+    "sitePdfPath": "/papers/paper3_anomaly_catalog_v3.1.80.pdf",
+    "changelog": "R22prov closure wave (36 VERIFIED + sweep). Load-bearing: release-status contradiction fixed (abstract + Data Availability both now 'public with the arXiv posting'); 77,905 relabeled fixed-size continuity slice = 4.05% of scored sample (was mislabeled top-1%; top-1% reserved for 19,253) + DESI-alone S>5 fix; eROSITA 95.3× independence-null REMOVED at 3 sites — IF is trained on the BigAE latent (dependent detectors), 284/298 reframed descriptive; Fig 12 regenerated without undefined burned-in raw anomaly_score values (traced to desi_taxonomy_clusters.csv, exact matches); dedup radius sweep RUN not deferred — 3/5/7 arcsec → 378,604/378,280/378,145 unique, max variation 0.086% (claim now measured); Heinrich venue → PRD 109,123511; 0.874 Jaccard defined (controls ceiling); Table V Planck 10.6s withdrawn per artifact; +20 minors. FLAG: combined chi2=143,936 artifact unrecoverable locally — no clarifier invented. 23pp/md5 03f05e26/0 errors/0 undef/0 overfull. Round was Claude-leg DEGRADED — Claude-inclusive confirmation round required post-top-up."
   }
 ]
