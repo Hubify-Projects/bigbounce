@@ -162,14 +162,18 @@ def synthesize(round_label: str, paper_tag: str) -> str:
 
     all_findings: list[dict] = []
     per_reviewer: dict[str, list[dict]] = {}
+    failed_reviewers: list[str] = []
 
     for p in files:
         reviewer = reviewer_from_filename(p)
         if "synthesis" in reviewer.lower():
             continue
-        findings = parse_findings(p.read_text(errors="replace"), reviewer)
+        _txt = p.read_text(errors="replace")
+        findings = parse_findings(_txt, reviewer)
         per_reviewer[reviewer] = findings
         all_findings.extend(findings)
+        if "Reviewer call FAILED" in _txt or "[FALLBACK" in _txt.split("---")[0]:
+            failed_reviewers.append(reviewer)
 
     # Group by consensus key
     grouped: dict[str, list[dict]] = defaultdict(list)
@@ -185,6 +189,16 @@ def synthesize(round_label: str, paper_tag: str) -> str:
         f"# {paper_tag} {round_label} — v3 native-PDF cross-vendor SYNTHESIS",
         "",
         f"**Reviewers**: {', '.join(sorted(per_reviewer.keys()))}",
+    ]
+    if failed_reviewers:
+        lines += [
+            "",
+            f"## ⛔ ROUND DEGRADED — reviewer leg(s) FAILED: {', '.join(failed_reviewers)}",
+            "Failed legs are API errors, NOT zero-finding clean reviews. This round",
+            "MUST NOT count toward any clean-round counter; re-run after the failure",
+            "(e.g. API credit top-up) is resolved.",
+        ]
+    lines += [
         f"**Total findings (across all reviewers)**: {len(all_findings)}",
         f"**Distinct consensus groups**: {sum(1 for k in grouped if k != 'other') + (1 if 'other' in grouped else 0)}",
         "",

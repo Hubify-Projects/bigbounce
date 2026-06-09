@@ -60,6 +60,12 @@ export const liveStatus: LiveStatus = {
   ],
   needsHouston: [
     {
+      title: "Anthropic API credits exhausted (reviewer leg down)",
+      blockedPaper: "all",
+      why: "The Claude reviewer leg of every cross-vendor round has been failing with a billing 400 since ~1 PM PT; rounds are running 4-vendor (degraded).",
+      ask: "Top up API credits at console.anthropic.com → Plans & Billing, then say 'credits topped up' so full 5-vendor rounds restart.",
+    },
+    {
       title: "External review round on current versions",
       blockedPaper: "all",
       why: "The agent-side review loop has run; the orthogonal external pass is Houston's per his 2026-06-08 plan.",

@@ -339,3 +339,20 @@ instead of the 22pp f_NL forecast. Round invalidated
 **Tool idea queued:** v3_native_pdf_review.py should print md5+pages of the
 input PDF in the round header of every reviewer .md, so a wrong-PDF round is
 detectable post-hoc from the artifacts alone.
+
+## 2026-06-09 (later) — Claude reviewer leg silent-failure class (MAJOR)
+
+**Incident:** Anthropic API credits exhausted ~13:00 PT → every Claude_brutal
+leg in R22prov/R22prov2 failed with billing 400 and was recorded as
+"0 findings", silently degrading rounds to 4-vendor and making them look
+CLEANER than they were (P2's "3/5 vendors zero findings" was really 2/4 +
+1 failed leg).
+
+**Fixes:**
+- v3_review_synthesis.py now detects "Reviewer call FAILED" / [FALLBACK]
+  headers and stamps "⛔ ROUND DEGRADED" at the top of the synthesis; degraded
+  rounds must not count toward clean-round counters.
+- needsHouston: credit top-up surfaced on the live site + push notification.
+- Standing rule: clean-round determinations made from degraded rounds (today's
+  R22prov P2/P3/P4/P5 Claude legs) require a Claude-inclusive confirmation
+  round after top-up.
