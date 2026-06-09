@@ -24,7 +24,22 @@
 > - **Title (paste):** `Technical Verification Companion to the ECH Spin-Torsion Program: LCDM+DeltaNeff MCMC Proxy, NaMaster Pipeline Recovery, and a Birefringence Consistency Check with a Spectator-ALP Model`
 > - **Primary:** `astro-ph.CO` · cross-list `gr-qc` · **Comment:** `12 pages, companion to Paper 1A. MCMC chains + code at https://github.com/Hubify-Projects/bigbounce`
 >
-> P2/P3/P5 tarballs rebuild after their current rounds close (P2 v1.7.44 + P3 v3.1.79 + P5 v0.1.50 in review now).
+> ## Paper 2 — f_NL Forecast v1.7.45
+> - **Tarball:** `research/focused_paper_source_integration/paper2_arxiv_v1.7.45.tar.gz` (344 KB, 22 pp verified)
+> - **Abstract webform:** `research/focused_paper_source_integration/abstract_for_webform.txt` (1,676 chars, CURRENT)
+> - **Primary:** `astro-ph.CO` · cross-list `astro-ph.IM`
+>
+> ## Paper 3 — Anomaly Catalog v3.1.80
+> - **Tarball:** `pipelines/p3_anomaly_engine/paper3_arxiv_v3.1.80.tar.gz` (3.8 MB, 23 pp verified)
+> - **Abstract webform:** `pipelines/p3_anomaly_engine/abstract_for_webform.txt` (1,598 chars, CURRENT)
+> - **Primary:** `astro-ph.IM` · cross-list `astro-ph.CO`, `astro-ph.GA` · NOTE: flip HF dataset to public at submission
+>
+> ## Paper 5 — DESI Chirality × Environment v0.1.52
+> - **Tarball:** `pipelines/p5_desi_chirality/paper/paper5_arxiv_v0.1.52.tar.gz` (644 KB, 24 pp verified)
+> - **Abstract webform:** `pipelines/p5_desi_chirality/paper/abstract_for_webform.txt` (1,543 chars, CURRENT)
+> - **Primary:** `astro-ph.GA` · cross-list `astro-ph.CO` · ⛔ submit ONLY after P4's arXiv ID exists (hard citation dependency)
+>
+> Also current: P1B tarball needs rebuild to v1B.0.51 (one command: `bash tools/build_arxiv_tarball.sh arxiv/paper1b_mcmc_companion.tex paper1b_arxiv_v1B.0.51`).
 
 **Generated:** fire #55 (2026-04-18) from `project-context/peer-reviews/autonomous-2026-04-18/06_arxiv_production_editor.md`
 
