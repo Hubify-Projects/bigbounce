@@ -18,6 +18,12 @@ if [[ -f "$TEXDIR/$BASE.bbl" ]]; then cp "$TEXDIR/$BASE.bbl" "$STAGE/"; else ech
 grep -o '\\includegraphics\(\[[^]]*\]\)\?{[^}]*}' "$TEXDIR/$BASE.tex" \
   | sed 's/.*{\([^}]*\)}.*/\1/' | sort -u | while read -r fig; do
     src="$TEXDIR/$fig"
+    if [[ ! -f "$src" ]]; then
+      # extension-less \includegraphics — resolve like LaTeX does
+      for ext in pdf png jpg jpeg eps; do
+        [[ -f "$TEXDIR/$fig.$ext" ]] && { src="$TEXDIR/$fig.$ext"; fig="$fig.$ext"; break; }
+      done
+    fi
     [[ -f "$src" ]] || { echo "MISSING FIGURE: $fig"; exit 1; }
     mkdir -p "$STAGE/$(dirname "$fig")"
     cp "$src" "$STAGE/$fig"
