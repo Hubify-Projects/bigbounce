@@ -319,10 +319,10 @@ export const papers: Paper[] = [
       "arXiv endorsement + submission (astro-ph.GA + astro-ph.CO, first in queue)",
     ],
     preprintId: "HUBIFY-2026-004",
-    pdfMeta: "PDF 24 MB · 14 pp · updated Jun 9, 2026",
+    pdfMeta: "PDF 25 MB · 15 pp · updated Jun 9, 2026",
     artifacts: [
-      { label: "Read PDF", href: "/papers/chirality_catalog_paper_v165.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/chirality_catalog_paper_v165.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/chirality_catalog_paper_v166.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/chirality_catalog_paper_v166.pdf", kind: "secondary", download: true },
       {
         label: "LaTeX source",
         href: "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/chirality_catalog_paper.tex",

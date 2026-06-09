@@ -18,16 +18,16 @@ day, P1A first). P2 and P3 are independent. Recommended arXiv order:
 **P4, P1A+P1B, P3, P2, P5** (P5 last, after P4 is on arXiv so the citation
 resolves).
 
-> **⛔ SEV-1 GATE (2026-06-09 12:30 PT):** P4 submission BLOCKED pending
-> Houston decisions D1/D2 in
-> `project-context/peer-reviews/P4_HEADLINE_PROVENANCE_SEV1.md` — compute
-> job C3 found the headline −0.122σ subsample-mask null was computed on a
-> synthetic-footprint catalog (April c58ed751 wave); the published
-> f_sky=0.659 mask cannot be reconstructed from the real catalog, and a
-> faithful real-catalog rerun gives +7.28σ/+9.78σ. The real-space +0.43σ
-> null, the 99.3% leakage demonstration (re-verified by C2), and all
-> interpretation-(ii) anchors survive. If P4 rewrite slips, promote
-> P1A+P1B/P3 in the order; P5 still waits for P4.
+> **✅ SEV-1 GATE RESOLVED (2026-06-09 ~14:00 PT):** D1/D2/D3 decided under
+> Houston's full-delegation directive and EXECUTED same-day. D1: −0.122σ
+> headline retracted — **P4 v1.0.166** landed (new title, abstract withdrawal
+> note, real-space +0.43σ + template-fit z≈−18 headline, App A provenance
+> note, C6 depth-stratified attribution complete). D2: P4 stays FIRST in
+> submission order. D3: C7 sibling-artifact audit complete — FW-1 P2 Fisher
+> SUSPECT (real Fisher script required before P2 submission → job C8),
+> FW-2 quarantine, FW-11 superseded (deprecated main.tex neutralization).
+> P4 readiness rolled back 95 → 85; TWO clean cross-vendor rounds on
+> v1.0.166+ required before cap restores.
 
 ## Fire-21 truth-audit verdicts (2026-06-09, gates the plan)
 

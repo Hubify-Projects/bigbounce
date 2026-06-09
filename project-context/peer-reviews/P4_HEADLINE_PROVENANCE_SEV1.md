@@ -101,17 +101,22 @@ intro (L99), estimator list (L147), Table I (L162), Table multipole caption+row
 App A (L457, L463), App D (L546), HC-robustness (L555). ~14 sites, one rewrite
 pass + recompile + /latex-audit + full sync → v1.0.166.
 
-## Decision asks (Houston)
+## Decisions (made 2026-06-09 under Houston full-delegation directive, executed same-day)
 
-- [ ] **D1.** Approve retraction/replacement of the −0.122σ headline estimator
-      (Table I row (ii), abstract, conclusions) with the corrected real-catalog
-      framing above. This is a MAJOR revision of P4's abstract.
-- [ ] **D2.** P4 was first in the submission order. Keep P4 first (rewrite
-      tomorrow after C6) or promote P1A+P1B / P3 ahead of it?
-- [ ] **D3.** The April `c58ed751` wave closed several "future-work" items in one
-      commit. C2/C3 re-verified its P4-M6 item; the FW-1/FW-2/FW-11 items from
-      the same wave (P2/P3 Fisher + NANOGrav numbers) should get the same
-      provenance audit before submission. Approve audit job C7?
+- [x] **D1. APPROVED + EXECUTED.** −0.122σ headline retracted in **P4
+      v1.0.166**: new title ("A Null Real-Space Chirality Dipole"), abstract
+      withdrawal note, headline = real-space +0.43σ + WLS template-fit
+      exclusion (z≈−18), MASTER channel reframed as systematics diagnostic
+      with C3/C6 numbers, App A provenance note, ~16 cascade sites,
+      grep-verified clean. 15pp/md5 4fb654bd, /latex-audit PASS. Readiness
+      95 → 85 (two clean cross-vendor rounds required).
+- [x] **D2. DECIDED: P4 stays FIRST** — the rewrite landed same-day, no slip.
+- [x] **D3. APPROVED + EXECUTED.** C7 audit complete
+      (`C7_C58ED751_PROVENANCE_AUDIT.md`): FW-1 P2 Fisher SUSPECT with live
+      exposure (remediation job C8: write + run a real, committed Fisher
+      script before P2 submission); FW-2 g_NL artifact broken but paper-clean
+      (quarantine the JSON); FW-11 NANOGrav B=34.0 superseded by the real-KDE
+      rerun (neutralize deprecated `arxiv/main.tex` L983).
 
 ## Immediate actions taken (no .tex edits)
 
