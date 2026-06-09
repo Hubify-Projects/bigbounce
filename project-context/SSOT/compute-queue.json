@@ -2,9 +2,13 @@
   "5i2td3deu3hojr": {
     "purpose": "Publish-plan compute queue C1-C3 (+C6 diagnostic): P1B NaMaster fsky sweep + P4 N_all binomial null + P4 Wp-invariance/fsky_eff + P4 real-footprint systematics-stratified null",
     "startedAt": 1781290000000,
-    "totalCostUsd": 0.25,
-    "artifactsBackedUp": false,
-    "backupLocations": [],
+    "totalCostUsd": 0.35,
+    "artifactsBackedUp": true,
+    "backupLocations": [
+      "local repo disk (committed)",
+      "GitHub origin/main (pushed 12b4fe8d/f77e5aa1)",
+      "reproducibility/pod_5i2td3deu3hojr_final_backup_2026-06-09.tgz + pod volume (retained on stop)"
+    ],
     "jobs": [
       {
         "name": "C1 P1B β-injection NaMaster fsky=0.85+0.65",
@@ -46,6 +50,7 @@
         "etaNote": "DONE 293s — depth-stratified null does NOT absorb excess: +7.13σ Wp=N_all / +9.06σ Wp=N_spiral (vs +7.28/+9.78 global); attribution complete",
         "outputPath": "pipelines/p2_chirality/outputs/canonical_provenance/c6_depth_stratified_null.json"
       }
-    ]
+    ],
+    "stoppedAt": "2026-06-09T20:02:00Z"
   }
 }
