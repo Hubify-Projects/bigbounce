@@ -1,0 +1,844 @@
+{
+  "written_utc": "2026-06-09T21:50:37Z",
+  "script": "scripts/20_v0151_covariate_regression.py",
+  "closes": [
+    "R22prov C5 (covariate regression)"
+  ],
+  "covariate_source": {
+    "catalog": "Galaxy Zoo DESI (Walmsley et al. 2023, MNRAS 526, 4768)",
+    "zenodo_record": "8360385",
+    "files": {
+      "gz_desi_deep_learning_catalog_friendly.parquet": {
+        "url": "https://zenodo.org/records/8360385/files/gz_desi_deep_learning_catalog_friendly.parquet",
+        "bytes": 658807517,
+        "sha256_first_64MiB": "5012b9f687f2f44ec1b580b531289b57f70d9aa376e457df4cf9154961760ef6"
+      },
+      "external_catalog.parquet": {
+        "url": "https://zenodo.org/records/8360385/files/external_catalog.parquet",
+        "bytes": 1616696610,
+        "sha256_first_64MiB": "1f1ed1e932f7e1fb9322ed811aa94f6501375673562d2fc5e1d251f8680d0c6f"
+      }
+    },
+    "join_key": "dr8_id ('{brickid}_{objid}') == matched-catalog match_dr8_id"
+  },
+  "parent": {
+    "definition": "matched_primary_deduped & match_class_eq in {CW,CCW}",
+    "n": 791635,
+    "n_unique_dr8_id": 791635
+  },
+  "join_coverage": {
+    "n_parent": 791635,
+    "matched_any_gz_row": 1.0,
+    "per_covariate_finite": {
+      "z_desi": 1.0,
+      "match_confidence": 1.0,
+      "log10_radius": 1.0,
+      "mag_r": 1.0,
+      "featured_frac": 1.0,
+      "edge_on_frac": 0.1951467532385506,
+      "merger_frac": 1.0
+    }
+  },
+  "regressions": {
+    "canonical": {
+      "env_label_file": "desi_env_vweb.parquet",
+      "n_env_conflicting_targetids_dropped": 2046,
+      "n_env_joined": 783741,
+      "per_class_n_env_joined": {
+        "filament": 393973,
+        "cluster": 382748,
+        "wall": 6607,
+        "void": 413
+      },
+      "M0_env_only_full_sample": {
+        "n": 783741,
+        "n_cw": 389607,
+        "coefficients": {
+          "intercept": {
+            "coef": -0.008868686182246672,
+            "se": 0.003186405446541508,
+            "z": -2.7832886715256695,
+            "p": 0.005381090510950595
+          },
+          "env_void_vs_filament": {
+            "coef": -0.06380250411511203,
+            "se": 0.09853007664700991,
+            "z": -0.6475434332979202,
+            "p": 0.5172802938583437
+          },
+          "env_wall_vs_filament": {
+            "coef": 0.02067448396452331,
+            "se": 0.02481114206928494,
+            "z": 0.83327417604518,
+            "p": 0.40469011703352054
+          },
+          "env_cluster_vs_filament": {
+            "coef": -0.0057835140383098605,
+            "se": 0.0045392159041266564,
+            "z": -1.274121822020406,
+            "p": 0.20262024581047478
+          }
+        },
+        "env_joint_wald": {
+          "chi2": 2.9151047510844066,
+          "dof": 3,
+          "p": 0.40490040960259965
+        }
+      },
+      "M1_full_parent_no_edgeon": {
+        "covariates": [
+          "z_desi",
+          "match_confidence",
+          "log10_radius",
+          "mag_r",
+          "featured_frac",
+          "merger_frac"
+        ],
+        "n_covariate_complete": 783741,
+        "covariate_complete_fraction": 1.0,
+        "per_class_n": {
+          "filament": 393973,
+          "cluster": 382748,
+          "wall": 6607,
+          "void": 413
+        },
+        "covariate_scaling_zscore": {
+          "z_desi": {
+            "mean": 0.1469083337771165,
+            "std": 0.09784135815567661
+          },
+          "match_confidence": {
+            "mean": 0.6117470006395264,
+            "std": 0.17990578500117377
+          },
+          "log10_radius": {
+            "mean": 0.3708795594559528,
+            "std": 0.17947646333409933
+          },
+          "mag_r": {
+            "mean": 17.98737070538951,
+            "std": 0.9477901183554682
+          },
+          "featured_frac": {
+            "mean": 0.2755299532084192,
+            "std": 0.24483023984897515
+          },
+          "merger_frac": {
+            "mean": 0.28492846482500434,
+            "std": 0.17376740134890936
+          }
+        },
+        "env_only": {
+          "n": 783741,
+          "n_cw": 389607,
+          "coefficients": {
+            "intercept": {
+              "coef": -0.008868686182246672,
+              "se": 0.003186405446541508,
+              "z": -2.7832886715256695,
+              "p": 0.005381090510950595
+            },
+            "env_void_vs_filament": {
+              "coef": -0.06380250411511203,
+              "se": 0.09853007664700991,
+              "z": -0.6475434332979202,
+              "p": 0.5172802938583437
+            },
+            "env_wall_vs_filament": {
+              "coef": 0.02067448396452331,
+              "se": 0.02481114206928494,
+              "z": 0.83327417604518,
+              "p": 0.40469011703352054
+            },
+            "env_cluster_vs_filament": {
+              "coef": -0.0057835140383098605,
+              "se": 0.0045392159041266564,
+              "z": -1.274121822020406,
+              "p": 0.20262024581047478
+            }
+          },
+          "env_joint_wald": {
+            "chi2": 2.9151047510844066,
+            "dof": 3,
+            "p": 0.40490040960259965
+          }
+        },
+        "env_plus_covariates": {
+          "n": 783741,
+          "n_cw": 389607,
+          "coefficients": {
+            "intercept": {
+              "coef": -0.00919719509536839,
+              "se": 0.0033041869836011248,
+              "z": -2.7834971631492444,
+              "p": 0.0053776332748355655
+            },
+            "env_void_vs_filament": {
+              "coef": -0.08063266117888843,
+              "se": 0.1067519531877748,
+              "z": -0.7553272682239077,
+              "p": 0.4500526412716669
+            },
+            "env_wall_vs_filament": {
+              "coef": 0.019778090510866982,
+              "se": 0.024924368799878863,
+              "z": 0.7935242280223003,
+              "p": 0.42747245924181254
+            },
+            "env_cluster_vs_filament": {
+              "coef": -0.005077458527999158,
+              "se": 0.004907858536154225,
+              "z": -1.0345568215945016,
+              "p": 0.30087592756843284
+            },
+            "z_desi": {
+              "coef": 0.0012661537684075749,
+              "se": 0.0028908575935146113,
+              "z": 0.43798552071471153,
+              "p": 0.6613967795822844
+            },
+            "match_confidence": {
+              "coef": -0.005493213895765866,
+              "se": 0.002429018048881478,
+              "z": -2.2614957094680292,
+              "p": 0.02372857808128565
+            },
+            "log10_radius": {
+              "coef": -0.002411722046045327,
+              "se": 0.0031862848046898514,
+              "z": -0.7569072427221649,
+              "p": 0.44910543589893137
+            },
+            "mag_r": {
+              "coef": -0.0018022836907746482,
+              "se": 0.0031528168426547777,
+              "z": -0.5716423695761105,
+              "p": 0.5675642849268113
+            },
+            "featured_frac": {
+              "coef": 0.004996077181030797,
+              "se": 0.0032662903985839595,
+              "z": 1.529587566126011,
+              "p": 0.12611884907527277
+            },
+            "merger_frac": {
+              "coef": 0.0015595285558506879,
+              "se": 0.0023454743401014875,
+              "z": 0.6649096641932173,
+              "p": 0.506108274080512
+            }
+          },
+          "env_joint_wald": {
+            "chi2": 2.607009919905319,
+            "dof": 3,
+            "p": 0.45626194250698326
+          }
+        },
+        "env_coef_shift_after_adjustment": {
+          "env_void_vs_filament": {
+            "coef_without": -0.06380250411511203,
+            "coef_with": -0.08063266117888843,
+            "abs_shift": 0.0168301570637764,
+            "shift_in_se_units": 0.1708123817265613
+          },
+          "env_wall_vs_filament": {
+            "coef_without": 0.02067448396452331,
+            "coef_with": 0.019778090510866982,
+            "abs_shift": 0.0008963934536563266,
+            "shift_in_se_units": 0.03612866554683997
+          },
+          "env_cluster_vs_filament": {
+            "coef_without": -0.0057835140383098605,
+            "coef_with": -0.005077458527999158,
+            "abs_shift": 0.0007060555103107023,
+            "shift_in_se_units": 0.15554569890998543
+          }
+        }
+      },
+      "M2_edgeon_subsample_all_covariates": {
+        "covariates": [
+          "z_desi",
+          "match_confidence",
+          "log10_radius",
+          "mag_r",
+          "featured_frac",
+          "edge_on_frac",
+          "merger_frac"
+        ],
+        "n_covariate_complete": 152455,
+        "covariate_complete_fraction": 0.19452216995155286,
+        "per_class_n": {
+          "cluster": 86974,
+          "filament": 64431,
+          "wall": 943,
+          "void": 107
+        },
+        "covariate_scaling_zscore": {
+          "z_desi": {
+            "mean": 0.10645986286767342,
+            "std": 0.08435885400486437
+          },
+          "match_confidence": {
+            "mean": 0.7168408717720042,
+            "std": 0.22212001455660257
+          },
+          "log10_radius": {
+            "mean": 0.5461861162589311,
+            "std": 0.1588126459763375
+          },
+          "mag_r": {
+            "mean": 17.0071871004758,
+            "std": 1.180258148578189
+          },
+          "featured_frac": {
+            "mean": 0.7018143126828591,
+            "std": 0.127451317848735
+          },
+          "edge_on_frac": {
+            "mean": 0.3071211920965987,
+            "std": 0.3845633659708695
+          },
+          "merger_frac": {
+            "mean": 0.32874660122911026,
+            "std": 0.1754710954875106
+          }
+        },
+        "env_only": {
+          "n": 152455,
+          "n_cw": 76043,
+          "coefficients": {
+            "intercept": {
+              "coef": -0.005059687036952784,
+              "se": 0.00787923311124156,
+              "z": -0.6421547586571544,
+              "p": 0.5207727044953387
+            },
+            "env_void_vs_filament": {
+              "coef": -0.1259685753694515,
+              "se": 0.19392251535998611,
+              "z": -0.6495819999839162,
+              "p": 0.5159622631904265
+            },
+            "env_wall_vs_filament": {
+              "coef": 0.0029387954678148968,
+              "se": 0.06560387665945233,
+              "z": 0.04479606415745966,
+              "p": 0.9642698622927877
+            },
+            "env_cluster_vs_filament": {
+              "coef": 0.0005065943413046033,
+              "se": 0.010395831310404452,
+              "z": 0.04873052728333412,
+              "p": 0.9611340475141679
+            }
+          },
+          "env_joint_wald": {
+            "chi2": 0.42844024469991937,
+            "dof": 3,
+            "p": 0.9343067272085661
+          }
+        },
+        "env_plus_covariates": {
+          "n": 152455,
+          "n_cw": 76043,
+          "coefficients": {
+            "intercept": {
+              "coef": -0.005165880864449742,
+              "se": 0.00801027237910725,
+              "z": -0.6449070168854212,
+              "p": 0.5189874442339557
+            },
+            "env_void_vs_filament": {
+              "coef": -0.2449571139903588,
+              "se": 0.2318124914405454,
+              "z": -1.056703685242021,
+              "p": 0.2906468425835709
+            },
+            "env_wall_vs_filament": {
+              "coef": -0.004522196035434822,
+              "se": 0.06651346651050556,
+              "z": -0.06798917982602151,
+              "p": 0.9457942476018683
+            },
+            "env_cluster_vs_filament": {
+              "coef": 0.0009199696515000805,
+              "se": 0.010749964932106754,
+              "z": 0.0855788514018703,
+              "p": 0.9318012109078806
+            },
+            "z_desi": {
+              "coef": 0.006643523910231529,
+              "se": 0.007257677273382981,
+              "z": 0.9153787995776809,
+              "p": 0.3599928041262209
+            },
+            "match_confidence": {
+              "coef": 0.004902364881128926,
+              "se": 0.005689876597623934,
+              "z": 0.8615942361871488,
+              "p": 0.38891084387051056
+            },
+            "log10_radius": {
+              "coef": 0.007242200997387266,
+              "se": 0.006522047716650859,
+              "z": 1.110418278433911,
+              "p": 0.26681882532174417
+            },
+            "mag_r": {
+              "coef": -0.0007138086085768545,
+              "se": 0.00724743492724999,
+              "z": -0.09849120630155231,
+              "p": 0.9215422543649932
+            },
+            "featured_frac": {
+              "coef": -0.0010630295334750702,
+              "se": 0.006003543570320029,
+              "z": -0.17706701400992808,
+              "p": 0.8594557514926846
+            },
+            "edge_on_frac": {
+              "coef": 0.0011894861064340567,
+              "se": 0.006957340216555847,
+              "z": 0.1709685123064024,
+              "p": 0.8642485245597619
+            },
+            "merger_frac": {
+              "coef": 0.0027047599170038896,
+              "se": 0.00637863009000515,
+              "z": 0.42403460913057994,
+              "p": 0.6715405732687182
+            }
+          },
+          "env_joint_wald": {
+            "chi2": 1.1174381868800578,
+            "dof": 3,
+            "p": 0.7728661910825358
+          }
+        },
+        "env_coef_shift_after_adjustment": {
+          "env_void_vs_filament": {
+            "coef_without": -0.1259685753694515,
+            "coef_with": -0.2449571139903588,
+            "abs_shift": 0.1189885386209073,
+            "shift_in_se_units": 0.6135880529397225
+          },
+          "env_wall_vs_filament": {
+            "coef_without": 0.0029387954678148968,
+            "coef_with": -0.004522196035434822,
+            "abs_shift": 0.007460991503249718,
+            "shift_in_se_units": 0.11372790577574388
+          },
+          "env_cluster_vs_filament": {
+            "coef_without": 0.0005065943413046033,
+            "coef_with": 0.0009199696515000805,
+            "abs_shift": 0.0004133753101954773,
+            "shift_in_se_units": 0.03976356463015701
+          }
+        }
+      }
+    },
+    "zshell_corrected": {
+      "env_label_file": "desi_env_vweb_zshell.parquet",
+      "n_env_conflicting_targetids_dropped": 4310,
+      "n_env_joined": 783694,
+      "per_class_n_env_joined": {
+        "filament": 458739,
+        "cluster": 169287,
+        "wall": 151334,
+        "void": 4334
+      },
+      "M0_env_only_full_sample": {
+        "n": 783694,
+        "n_cw": 389585,
+        "coefficients": {
+          "intercept": {
+            "coef": -0.011217825308268512,
+            "se": 0.00295293573375835,
+            "z": -3.798872146123892,
+            "p": 0.00014535604788713433
+          },
+          "env_void_vs_filament": {
+            "coef": 0.001988410462879748,
+            "se": 0.030523342167233063,
+            "z": 0.06514392991388455,
+            "p": 0.9480594036788607
+          },
+          "env_wall_vs_filament": {
+            "coef": -0.001628109728474727,
+            "se": 0.005928956190453444,
+            "z": -0.27460309642635594,
+            "p": 0.7836211871577746
+          },
+          "env_cluster_vs_filament": {
+            "coef": -0.00011216764783697803,
+            "se": 0.005687626945608248,
+            "z": -0.01972134405256471,
+            "p": 0.9842656639983722
+          }
+        },
+        "env_joint_wald": {
+          "chi2": 0.08406971007555089,
+          "dof": 3,
+          "p": 0.9936780483474809
+        }
+      },
+      "M1_full_parent_no_edgeon": {
+        "covariates": [
+          "z_desi",
+          "match_confidence",
+          "log10_radius",
+          "mag_r",
+          "featured_frac",
+          "merger_frac"
+        ],
+        "n_covariate_complete": 783694,
+        "covariate_complete_fraction": 1.0,
+        "per_class_n": {
+          "filament": 458739,
+          "cluster": 169287,
+          "wall": 151334,
+          "void": 4334
+        },
+        "covariate_scaling_zscore": {
+          "z_desi": {
+            "mean": 0.14690352536611775,
+            "std": 0.09788236703955884
+          },
+          "match_confidence": {
+            "mean": 0.6117471212357851,
+            "std": 0.17990533539181047
+          },
+          "log10_radius": {
+            "mean": 0.37088149371130474,
+            "std": 0.17947908819438207
+          },
+          "mag_r": {
+            "mean": 17.987336940536508,
+            "std": 0.9477978400774602
+          },
+          "featured_frac": {
+            "mean": 0.27554016690090705,
+            "std": 0.24483616480569872
+          },
+          "merger_frac": {
+            "mean": 0.2849269028903852,
+            "std": 0.17376729361738
+          }
+        },
+        "env_only": {
+          "n": 783694,
+          "n_cw": 389585,
+          "coefficients": {
+            "intercept": {
+              "coef": -0.011217825308268512,
+              "se": 0.00295293573375835,
+              "z": -3.798872146123892,
+              "p": 0.00014535604788713433
+            },
+            "env_void_vs_filament": {
+              "coef": 0.001988410462879748,
+              "se": 0.030523342167233063,
+              "z": 0.06514392991388455,
+              "p": 0.9480594036788607
+            },
+            "env_wall_vs_filament": {
+              "coef": -0.001628109728474727,
+              "se": 0.005928956190453444,
+              "z": -0.27460309642635594,
+              "p": 0.7836211871577746
+            },
+            "env_cluster_vs_filament": {
+              "coef": -0.00011216764783697803,
+              "se": 0.005687626945608248,
+              "z": -0.01972134405256471,
+              "p": 0.9842656639983722
+            }
+          },
+          "env_joint_wald": {
+            "chi2": 0.08406971007555089,
+            "dof": 3,
+            "p": 0.9936780483474809
+          }
+        },
+        "env_plus_covariates": {
+          "n": 783694,
+          "n_cw": 389585,
+          "coefficients": {
+            "intercept": {
+              "coef": -0.011144723543581191,
+              "se": 0.0029543016171381734,
+              "z": -3.772371608548576,
+              "p": 0.00016170318015902956
+            },
+            "env_void_vs_filament": {
+              "coef": -0.00031679085173495113,
+              "se": 0.03067809790265184,
+              "z": -0.010326287266576832,
+              "p": 0.9917609612443267
+            },
+            "env_wall_vs_filament": {
+              "coef": -0.00214326213332632,
+              "se": 0.00595936940147894,
+              "z": -0.35964579285761766,
+              "p": 0.7191120340615276
+            },
+            "env_cluster_vs_filament": {
+              "coef": 6.834991347190889e-05,
+              "se": 0.005692113715162785,
+              "z": 0.012007826423045063,
+              "p": 0.9904193709239287
+            },
+            "z_desi": {
+              "coef": 0.0017437486068993292,
+              "se": 0.0025383268039465565,
+              "z": 0.6869677317310648,
+              "p": 0.4921030629381551
+            },
+            "match_confidence": {
+              "coef": -0.005577967573936848,
+              "se": 0.002428600783249116,
+              "z": -2.2967824157885413,
+              "p": 0.021631185163528084
+            },
+            "log10_radius": {
+              "coef": -0.002633078691860858,
+              "se": 0.0031763776089761744,
+              "z": -0.8289564453609044,
+              "p": 0.40712905341969363
+            },
+            "mag_r": {
+              "coef": -0.001441618382001431,
+              "se": 0.003141338018452695,
+              "z": -0.4589185797686038,
+              "p": 0.6462926358917231
+            },
+            "featured_frac": {
+              "coef": 0.005187520135037312,
+              "se": 0.003269288790292028,
+              "z": 1.5867427039303978,
+              "p": 0.11257093026505417
+            },
+            "merger_frac": {
+              "coef": 0.0015950481151618574,
+              "se": 0.0023454743931793543,
+              "z": 0.6800535191517169,
+              "p": 0.49647057395606475
+            }
+          },
+          "env_joint_wald": {
+            "chi2": 0.14075021382086272,
+            "dof": 3,
+            "p": 0.9865343231935111
+          }
+        },
+        "env_coef_shift_after_adjustment": {
+          "env_void_vs_filament": {
+            "coef_without": 0.001988410462879748,
+            "coef_with": -0.00031679085173495113,
+            "abs_shift": 0.002305201314614699,
+            "shift_in_se_units": 0.07552257226567222
+          },
+          "env_wall_vs_filament": {
+            "coef_without": -0.001628109728474727,
+            "coef_with": -0.00214326213332632,
+            "abs_shift": 0.0005151524048515931,
+            "shift_in_se_units": 0.08688753775598305
+          },
+          "env_cluster_vs_filament": {
+            "coef_without": -0.00011216764783697803,
+            "coef_with": 6.834991347190889e-05,
+            "abs_shift": 0.00018051756130888692,
+            "shift_in_se_units": 0.031738643029018486
+          }
+        }
+      },
+      "M2_edgeon_subsample_all_covariates": {
+        "covariates": [
+          "z_desi",
+          "match_confidence",
+          "log10_radius",
+          "mag_r",
+          "featured_frac",
+          "edge_on_frac",
+          "merger_frac"
+        ],
+        "n_covariate_complete": 152458,
+        "covariate_complete_fraction": 0.19453766393515837,
+        "per_class_n": {
+          "filament": 89298,
+          "cluster": 34105,
+          "wall": 28281,
+          "void": 774
+        },
+        "covariate_scaling_zscore": {
+          "z_desi": {
+            "mean": 0.1064691593905182,
+            "std": 0.08444599700051346
+          },
+          "match_confidence": {
+            "mean": 0.7168355774494127,
+            "std": 0.2221188612393687
+          },
+          "log10_radius": {
+            "mean": 0.5461872525823515,
+            "std": 0.1588147448208016
+          },
+          "mag_r": {
+            "mean": 17.00723254247296,
+            "std": 1.1802549583113757
+          },
+          "featured_frac": {
+            "mean": 0.7018171207013338,
+            "std": 0.12744981989531495
+          },
+          "edge_on_frac": {
+            "mean": 0.30713148185109557,
+            "std": 0.38456701516625974
+          },
+          "merger_frac": {
+            "mean": 0.32874659691598,
+            "std": 0.17547104739095218
+          }
+        },
+        "env_only": {
+          "n": 152458,
+          "n_cw": 76045,
+          "coefficients": {
+            "intercept": {
+              "coef": -0.0026428378839783904,
+              "se": 0.006692825605433017,
+              "z": -0.3948762510460486,
+              "p": 0.6929342176267276
+            },
+            "env_void_vs_filament": {
+              "coef": 0.033653074626538805,
+              "se": 0.07220799881371723,
+              "z": 0.46605743379424314,
+              "p": 0.6411743906056913
+            },
+            "env_wall_vs_filament": {
+              "coef": -0.006197076829077357,
+              "se": 0.0136467722227511,
+              "z": -0.4541056835949788,
+              "p": 0.649752762699918
+            },
+            "env_cluster_vs_filament": {
+              "coef": -0.005391217937750149,
+              "se": 0.012731090399354864,
+              "z": -0.4234686714677121,
+              "p": 0.6719533512389019
+            }
+          },
+          "env_joint_wald": {
+            "chi2": 0.5565003019443192,
+            "dof": 3,
+            "p": 0.9063143107590826
+          }
+        },
+        "env_plus_covariates": {
+          "n": 152458,
+          "n_cw": 76045,
+          "coefficients": {
+            "intercept": {
+              "coef": -0.002770267951598172,
+              "se": 0.006696023374049874,
+              "z": -0.41371838132080246,
+              "p": 0.6790803638166423
+            },
+            "env_void_vs_filament": {
+              "coef": 0.03336035885461245,
+              "se": 0.07259971512929206,
+              "z": 0.4595108781790857,
+              "p": 0.6458673421310199
+            },
+            "env_wall_vs_filament": {
+              "coef": -0.005099774327027623,
+              "se": 0.013757128893227796,
+              "z": -0.3707004831173809,
+              "p": 0.710860630455789
+            },
+            "env_cluster_vs_filament": {
+              "coef": -0.005725088879914394,
+              "se": 0.012754816771980992,
+              "z": -0.4488570069066709,
+              "p": 0.6535348120407468
+            },
+            "z_desi": {
+              "coef": 0.0024682422089198387,
+              "se": 0.005954862786728926,
+              "z": 0.41449186947188627,
+              "p": 0.6785139202541598
+            },
+            "match_confidence": {
+              "coef": 0.004614602002167596,
+              "se": 0.005683064182271293,
+              "z": 0.8119918857441663,
+              "p": 0.4167962875199205
+            },
+            "log10_radius": {
+              "coef": 0.006380414721585124,
+              "se": 0.006471598097168528,
+              "z": 0.9859102227588424,
+              "p": 0.3241771699530711
+            },
+            "mag_r": {
+              "coef": 0.0005886884024646925,
+              "se": 0.00711026713743124,
+              "z": 0.0827941329188049,
+              "p": 0.9340152343642436
+            },
+            "featured_frac": {
+              "coef": -0.0007769752156814874,
+              "se": 0.005998039210782491,
+              "z": -0.12953820213191386,
+              "p": 0.8969317986530789
+            },
+            "edge_on_frac": {
+              "coef": 0.0007572682898874673,
+              "se": 0.0069452139431208735,
+              "z": 0.10903455186395371,
+              "p": 0.9131750852732364
+            },
+            "merger_frac": {
+              "coef": 0.0025202981345172864,
+              "se": 0.006374582881163747,
+              "z": 0.3953667528528831,
+              "p": 0.692572241920067
+            }
+          },
+          "env_joint_wald": {
+            "chi2": 0.5156053253780347,
+            "dof": 3,
+            "p": 0.9154498549957092
+          }
+        },
+        "env_coef_shift_after_adjustment": {
+          "env_void_vs_filament": {
+            "coef_without": 0.033653074626538805,
+            "coef_with": 0.03336035885461245,
+            "abs_shift": 0.0002927157719263551,
+            "shift_in_se_units": 0.004053785961878068
+          },
+          "env_wall_vs_filament": {
+            "coef_without": -0.006197076829077357,
+            "coef_with": -0.005099774327027623,
+            "abs_shift": 0.001097302502049734,
+            "shift_in_se_units": 0.0804074754190134
+          },
+          "env_cluster_vs_filament": {
+            "coef_without": -0.005391217937750149,
+            "coef_with": -0.005725088879914394,
+            "abs_shift": 0.00033387094216424506,
+            "shift_in_se_units": 0.026224850479513024
+          }
+        }
+      }
+    }
+  },
+  "verdict": {
+    "environment_null_robust_to_covariates": true,
+    "summary": "canonical/full parent (n=783,741): joint env Wald p = 0.405 (env-only) -> 0.456 (with covariates); canonical/edge-on subsample (n=152,455): joint env Wald p = 0.934 (env-only) -> 0.773 (with covariates); zshell_corrected/full parent (n=783,694): joint env Wald p = 0.994 (env-only) -> 0.987 (with covariates); zshell_corrected/edge-on subsample (n=152,458): joint env Wald p = 0.906 (env-only) -> 0.915 (with covariates)",
+    "sentence": "Environment-class coefficients remain statistically null after adjusting for galaxy size (est_petro_th50), apparent magnitude (mag_r), morphology (featured fraction), inclination (edge-on fraction), merger disturbance, redshift, and classifier confidence; the environmental-independence result is not an artifact of selection in galaxy properties."
+  },
+  "runtime_seconds": 35.7
+}

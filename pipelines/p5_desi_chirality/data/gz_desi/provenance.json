@@ -1,0 +1,18 @@
+{
+  "written_utc": "2026-06-09T21:51:40Z",
+  "source": "Zenodo record 8360385 \u2014 Galaxy Zoo DESI (Walmsley et al. 2023, MNRAS 526, 4768)",
+  "fetched_by": "scripts/20_v0151_covariate_regression.py work order (R22prov C5)",
+  "files": {
+    "gz_desi_deep_learning_catalog_friendly.parquet": {
+      "url": "https://zenodo.org/records/8360385/files/gz_desi_deep_learning_catalog_friendly.parquet",
+      "bytes": 658807517,
+      "sha256_first_64MiB": "5012b9f687f2f44ec1b580b531289b57f70d9aa376e457df4cf9154961760ef6"
+    },
+    "external_catalog.parquet": {
+      "url": "https://zenodo.org/records/8360385/files/external_catalog.parquet",
+      "bytes": 1616696610,
+      "sha256_first_64MiB": "1f1ed1e932f7e1fb9322ed811aa94f6501375673562d2fc5e1d251f8680d0c6f"
+    }
+  },
+  "rows": 8689370
+}
