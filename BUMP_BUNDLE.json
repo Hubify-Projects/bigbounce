@@ -1,11 +1,11 @@
 [
   {
-    "paperSlug": "paper-4",
-    "version": "v1.0.165-2026-06-09",
+    "paperSlug": "paper-1a",
+    "version": "v1A.0.50-2026-06-09",
     "datestamp": "2026-06-09",
-    "texCommit": "5171c249",
-    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p2_chirality/chirality_catalog_paper.pdf",
-    "sitePdfPath": "/papers/chirality_catalog_paper_v1.0.165.pdf",
-    "changelog": "Houston figures request: 4 high-impact figures added back to P4 after Houston's complaint that the v1.0.151→v1.0.159 condensation left it too lean. fig:spiral_density (§III.A) + fig:confidence_dist (§III.A) + fig:gallery 2-panel CW+CCW (§II.A) + fig:raw_vs_eq (§III.B, methodology cornerstone showing the 2.31σ→0.43σ collapse). P4 now has 8 in-paper figures. PDF 14pp/24MB/md5 2c097b4e. 0 undef refs."
+    "texCommit": "e30e3b75",
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1a_ech_nogo.pdf",
+    "sitePdfPath": "/papers/paper1a_ech_nogo_v1A.0.50.pdf",
+    "changelog": "Houston figures request: 2 high-impact figures added back to P1A. fig:rotation_expansion (§sec:rotation) — visualizes the Saadeh+2016 (ω/H)_0 isotropy bound + clarifies Λ_eff is sourced by parity-odd contorsion NOT rotation. fig:obs_timeline (§sec:falsification) — observational decision timeline for the 2 surviving falsification paths (LiteBIRD birefringence + SPHEREx f_NL=-35/8). P1A: 4 → 6 in-paper figures. PDF 23pp/1.5MB/md5 6208734b. 0 undef refs."
   }
 ]
