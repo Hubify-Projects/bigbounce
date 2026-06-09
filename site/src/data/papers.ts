@@ -279,17 +279,38 @@ export const papers: Paper[] = [
   {
     slug: "paper-4",
     number: "4",
-    title: "A Survey-Scale Chirality Catalog of 8.47M Galaxies (3.2M Spirals): A Null Detection of Large-Scale Parity Violation at Sub-Percent Sensitivity",
+    title: "Survey-Scale Galaxy Chirality with Equivariant TTA: A Null Real-Space Chirality Dipole, a Quantifiable Monopole-Mask Leakage Channel, and Diagnostic Evidence for a Depth/Morphology-Correlated Canonical-Mask Residual on 8.47 Million DESI Legacy Galaxies (3.2 Million Spirals)",
     version: "v1.0.166",
     lastUpdated: "2026-06-09",
-    tldr: "Classifies 8.47M galaxies for spiral handedness with a rotation-equivariant ViT ensemble and finds no large-scale parity violation at sub-percent sensitivity — refuting the claimed 3% cosmic chirality signal by a factor of ~9.",
-    path: publicationPath({
-      external: {
+    tldr: "Classifies 8.47M galaxies for spiral handedness with a rotation-equivariant ViT ensemble and finds a null real-space chirality dipole (+0.43σ, p=0.30) — the earlier −0.122σ subsample-mask null was withdrawn in v1.0.166 after a provenance audit.",
+    path: [
+      { label: "Draft complete", state: "done" },
+      {
+        label: "Internal multi-model review",
+        state: "done",
+        note: "Native-PDF autoloop: Claude · GPT · Gemini · Grok · Perplexity",
+      },
+      {
+        label: "Cross-vendor rounds clean",
+        state: "active",
+        note: "Re-opened by the v1.0.166 headline retraction — two clean rounds required",
+      },
+      {
         label: "External journal-style review",
         state: "active",
-        note: "v1.0.166 RETRACTION: −0.122σ subsample-mask null withdrawn (synthetic-footprint provenance, C3/C6 audit) · readiness rolled back 95→85 · two clean cross-vendor rounds required",
+        note: "3-vendor round closed in v1.0.151 · next Houston round queued on v1.0.166",
       },
-    }),
+      {
+        label: "Houston sign-off",
+        state: "blocked",
+        note: "The final 1% — Houston only",
+      },
+      {
+        label: "arXiv submission",
+        state: "pending",
+        note: "First in queue once clean rounds + sign-off land",
+      },
+    ],
     pages: "15",
     refs: "46",
     readiness: 85,
