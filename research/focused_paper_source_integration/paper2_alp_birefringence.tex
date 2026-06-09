@@ -14,7 +14,13 @@
 {\small\textit{Independent Researcher, Los Angeles, California, USA}}\\[2pt]
 {\small\texttt{houston@hubify.com}}}
 
-\date{March 20, 2026}
+% Version: v1.1 (June 9, 2026) — first tracked revision bump; original March 20, 2026
+%   draft carried no version macro. Changes this revision: (1) confirmed the two
+%   MCMC figures (alp_triangle_plot.png at fig:triangle, alp_beta_comparison.png at
+%   fig:beta_comparison) are embedded with captions matching Sec. 3.3 claims;
+%   (2) added in-text references to both figures (previously unreferenced);
+%   (3) date bumped. No scientific claim or number changed.
+\date{June 9, 2026}
 
 \begin{document}
 \maketitle
@@ -25,7 +31,7 @@ We present predictions and constraints for cosmic birefringence from a spectator
 
 \section{Introduction}
 
-Cosmic birefringence---the uniform rotation of the polarization plane of CMB photons as they propagate from the last scattering surface to the observer---has emerged as a compelling signal in recent CMB data. The Planck HFI analysis~\citep{Minami:2020} reported $\beta = 0.35 \pm 0.14^\circ$ ($2.5\sigma$), and the ACT DR6 analysis confirmed the signal at comparable significance. Combined, the evidence exceeds $3.5\sigma$.
+Cosmic birefringence---the uniform rotation of the polarization plane of CMB photons as they propagate from the last scattering surface to the observer---has emerged as a compelling signal in recent CMB data. The Planck HFI analysis~\citep{Minami2020} reported $\beta = 0.35 \pm 0.14^\circ$ ($2.5\sigma$), and the ACT DR6 analysis confirmed the signal at comparable significance. Combined, the evidence exceeds $3.5\sigma$.
 
 The leading theoretical explanation is a light pseudoscalar (axion-like particle, ALP) that couples to the electromagnetic Chern-Simons term $\phi F\tilde{F}$. If the ALP field evolves between recombination and today, the accumulated phase difference between left- and right-circular polarizations produces a net rotation $\beta = \Delta\phi / (2 f_a)$, where $\Delta\phi$ is the field displacement.
 
@@ -49,7 +55,7 @@ The rotation angle is:
 \begin{equation}\label{eq:rotation}
 \beta = \frac{g_{a\gamma}}{2} \Delta\phi = \frac{\alpha_{\rm EM}\, C_{a\gamma}}{4\pi\, f_a} \Delta\phi
 \end{equation}
-where $g_{a\gamma} = \alpha_{\rm EM}\, C_{a\gamma} / (2\pi f_a)$ is the standard ALP-photon coupling in the conventions of~\citet{Fujita:2021}, $\alpha_{\rm EM} \approx 1/137$, and $C_{a\gamma}$ is a model-dependent integer anomaly coefficient (typically $\mathcal{O}(1)$--$\mathcal{O}(10)$).
+where $g_{a\gamma} = \alpha_{\rm EM}\, C_{a\gamma} / (2\pi f_a)$ is the standard ALP-photon coupling in the conventions of~\citet{Fujita2021}, $\alpha_{\rm EM} \approx 1/137$, and $C_{a\gamma}$ is a model-dependent integer anomaly coefficient (typically $\mathcal{O}(1)$--$\mathcal{O}(10)$).
 
 For $C_{a\gamma} = 8$ (a natural DFSZ-type value), $\theta_i = 1$, $m \approx 2\,H_0$: the numerical integration gives $\Delta\phi/f_a \approx 1.07$, yielding $\beta = (\alpha_{\rm EM} \times 8 / 4\pi) \times 1.07 \approx 0.29^\circ$. This matches the observed signal without fine-tuning: $C_{a\gamma}$ is an integer of natural size, $\theta_i$ is generic, and $m \sim H_0$ is the mass scale that ensures rolling during the dark-energy era. The prediction spans $\beta \approx 0.17$--$0.43^\circ$ across the natural parameter range $m/H_0 \in [1, 3]$, $\theta_i \in [0.5, 2]$, $C_{a\gamma} \in [4, 12]$, comfortably bracketing the observed value.
 
@@ -59,10 +65,10 @@ For $C_{a\gamma} = 8$ (a natural DFSZ-type value), $\theta_i = 1$, $m \approx 2\
 
 We use two independent birefringence measurements for the summary-likelihood combination (Eq.~\ref{eq:likelihood}):
 \begin{itemize}
-\item Planck NPIPE~\citep{Eskilt:2022}: $\beta = 0.30 \pm 0.11^\circ$ ($2.7\sigma$)
-\item ACT DR6~\citep{DiegoPalazuelos:2025}: $\beta = 0.215 \pm 0.074^\circ$ ($2.9\sigma$)
+\item Planck NPIPE~\citep{Eskilt2022}: $\beta = 0.30 \pm 0.11^\circ$ ($2.7\sigma$)
+\item ACT DR6~\citep{DiegoPalazuelos2025}: $\beta = 0.215 \pm 0.074^\circ$ ($2.9\sigma$)
 \end{itemize}
-These produce the combined constraint in Eq.~\ref{eq:combined}. For the MCMC parameter estimation (Sec.~\ref{sec:mcmc}), we use the Eskilt et al.\ joint analysis value $\beta_{\rm obs} = 0.342 \pm 0.094^\circ$, which differs because it fits the full EB cross-spectrum rather than combining point estimates. An earlier Planck HFI analysis~\citep{Minami:2020} reported $\beta = 0.35 \pm 0.14^\circ$ ($2.5\sigma$); we adopt the updated Eskilt value which uses improved foreground cleaning.
+These produce the combined constraint in Eq.~\ref{eq:combined}. For the MCMC parameter estimation (Sec.~\ref{sec:mcmc}), we use the Eskilt et al.\ joint analysis value $\beta_{\rm obs} = 0.342 \pm 0.094^\circ$, which differs because it fits the full EB cross-spectrum rather than combining point estimates. An earlier Planck HFI analysis~\citep{Minami2020} reported $\beta = 0.35 \pm 0.14^\circ$ ($2.5\sigma$); we adopt the updated Eskilt value which uses improved foreground cleaning.
 
 \subsection{Summary-Likelihood Inference}
 
@@ -113,9 +119,9 @@ compared to the model-independent fit (Run 3):
 \begin{equation}\label{eq:beta_free}
 \beta_{\rm free} = 0.344 \pm 0.096^\circ
 \end{equation}
-and the observed value $\beta_{\rm obs} = 0.342 \pm 0.094^\circ$. The ALP model reproduces the observed birefringence with no tension.
+and the observed value $\beta_{\rm obs} = 0.342 \pm 0.094^\circ$. The ALP model reproduces the observed birefringence with no tension; the three posteriors are overlaid against the observed value in Fig.~\ref{fig:beta_comparison}.
 
-In the extended model (Run 2, $C$ free), the posterior on the coupling-misalignment product shows:
+In the extended model (Run 2, $C$ free; joint posterior in Fig.~\ref{fig:triangle}), the posterior on the coupling-misalignment product shows:
 \begin{equation}\label{eq:product}
 C_{a\gamma} \times \theta_i = 3.4 \pm 1.1
 \end{equation}
@@ -145,7 +151,7 @@ computed via the Savage-Dickey density ratio with a flat prior $\beta \in [0^\ci
 
 \section{LiteBIRD Forecast}
 
-LiteBIRD is projected to achieve $\sigma(\beta) \approx 0.03^\circ$ on the isotropic birefringence angle~\citep{LiteBIRD:2023}, depending on the self-calibration strategy and systematic error budget. For our prediction $\beta = 0.27^\circ$:
+LiteBIRD is projected to achieve $\sigma(\beta) \approx 0.03^\circ$ on the isotropic birefringence angle~\citep{LiteBIRD2023}, depending on the self-calibration strategy and systematic error budget. For our prediction $\beta = 0.27^\circ$:
 
 \begin{equation}\label{eq:litebird}
 \text{Significance} = \frac{0.27}{0.03} = 9\sigma
@@ -162,7 +168,7 @@ The ``spectator-field'' framing requires the ALP to contribute negligibly to tod
 \Omega_\phi(z\!=\!0) \approx \frac{1}{6}\left(\frac{m}{H_0}\right)^2
 \left(\frac{f_a}{M_{\rm Pl}}\right)^2 \theta_i^2.
 \end{equation}
-At $f_a\sim M_{\rm Pl}$, $m\sim H_0$, and natural $\theta_i\sim \mathcal{O}(1)$, this gives $\Omega_\phi\!\sim\!0.17$ today --- comparable to dark energy rather than negligible. The strict spectator regime ($\Omega_\phi \ll 1$) therefore requires either (a)~suppressing $\theta_i$ to $\sim\!\sqrt{0.05}\,\theta_{\rm nat}\!\approx\!0.22$ (a $\sim\!25\!\times$ fine-tuning of the initial misalignment relative to the natural prior midpoint, paralleling the cosmological-constant-class tuning admitted in companion Paper~I(a)~\citep{Golden:2026framework}), or (b)~suppressing $f_a$ below the Planck scale by the same factor (which breaks the ``Planck-scale natural'' framing), or (c)~reinterpreting the ALP as a dark-energy-like component contributing $\Omega_\phi\!\sim\!0.17$ to the present-day budget (allowed under $\Lambda$CDM at the $\sim\!10\%$ level by current constraints but not within the strict spectator framing).
+At $f_a\sim M_{\rm Pl}$, $m\sim H_0$, and natural $\theta_i\sim \mathcal{O}(1)$, this gives $\Omega_\phi\!\sim\!0.17$ today --- comparable to dark energy rather than negligible. The strict spectator regime ($\Omega_\phi \ll 1$) therefore requires either (a)~suppressing $\theta_i$ to $\sim\!\sqrt{0.05}\,\theta_{\rm nat}\!\approx\!0.22$ (a $\sim\!25\!\times$ fine-tuning of the initial misalignment relative to the natural prior midpoint, paralleling the cosmological-constant-class tuning admitted in companion Paper~I(a)~\citep{Golden2026P1a}), or (b)~suppressing $f_a$ below the Planck scale by the same factor (which breaks the ``Planck-scale natural'' framing), or (c)~reinterpreting the ALP as a dark-energy-like component contributing $\Omega_\phi\!\sim\!0.17$ to the present-day budget (allowed under $\Lambda$CDM at the $\sim\!10\%$ level by current constraints but not within the strict spectator framing).
 
 The cosmological-birefringence prediction $\beta\approx 0.27^\circ$ itself does not depend on which option (a, b, c) is taken: $f_a$ cancels in the $\beta$ amplitude (Sec.~\ref{sec:beta_prediction}) and the prediction depends only on $\theta_i$, $C_0$, and $F(m/H_0)$. We adopt option (a) ($\theta_i\sim 0.22$, with $f_a\sim M_{\rm Pl}$ retained for spectator-EFT consistency) as the headline parameter point, in which case the $\beta\sim 0.27^\circ$ prediction continues to hold by the cancellation above; the $\sim\!25\!\times$ misalignment tuning is the same one that Paper~I(a) flags as a cosmological-constant-class tuning rather than an ALP-naturalness tuning. Throughout the rest of this paper, ``spectator'' refers to the $\Omega_\phi\!\ll\!1$ regime obtained at $\theta_i\!\sim\!0.22$; the $\theta_i\!\sim\!1$ regime ($\Omega_\phi\!\sim\!0.17$) is the dark-energy-like regime and is constrained by the cosmological-parameter-fit channel separately.
 
@@ -170,7 +176,7 @@ The cosmological-birefringence prediction $\beta\approx 0.27^\circ$ itself does 
 
 This birefringence prediction is \emph{independent} of bounce cosmology. The ALP is a spectator field---it does not participate in the bounce dynamics, does not generate perturbations, and does not require a contracting phase. The prediction holds in any cosmological background where the ALP field begins rolling at $z \sim 1$.
 
-In the context of ECH gravity, the ALP can be heuristically motivated as associated with the Barbero-Immirzi pseudoscalar sector of the Holst action, providing a natural theoretical context for $f_a \sim M_{\rm Pl}$; see the companion paper~\citep{Golden:2026framework} for the full ECH framework and 14-barrier catalog. However, this motivation is qualitative---no derivation connects the Holst action to a specific ALP potential or coupling---and the birefringence prediction does not depend on this identification.
+In the context of ECH gravity, the ALP can be heuristically motivated as associated with the Barbero-Immirzi pseudoscalar sector of the Holst action, providing a natural theoretical context for $f_a \sim M_{\rm Pl}$; see the companion paper~\citep{Golden2026P1a} for the full ECH framework and 14-barrier catalog. However, this motivation is qualitative---no derivation connects the Holst action to a specific ALP potential or coupling---and the birefringence prediction does not depend on this identification.
 
 \section{Discussion}\label{sec:discussion}
 
@@ -184,9 +190,9 @@ The ALP birefringence prediction $\beta \approx 0.27^\circ$ has three notable fe
 \item \textbf{Sharp falsifiability:} LiteBIRD will test the prediction at $9\sigma$---either a decisive confirmation or a clean exclusion.
 \end{enumerate}
 
-The matter-bounce non-Gaussianity $f_{\rm NL} = -35/8$ provides a complementary and independent test~\citep{Golden:2026fnl}.
+The matter-bounce non-Gaussianity $f_{\rm NL} = -35/8$ provides a complementary and independent test~\citep{Golden2026P2}.
 
-We emphasize that the ALP birefringence model class is well-studied in the literature~\citep{Fujita:2021}. Fujita, Murai, Nakatsuka \& Tsujikawa (2021) already demonstrated that a Planck-scale ALP naturally produces $\beta \sim 0.3^\circ$, and Namikawa, Murai \& Naokawa~\citep{Namikawa:2025} provide superior ALP mass constraints using the full Planck EB spectrum. Our contribution is not the model itself, but rather the specific parameter identification ($f_a \sim M_{\rm Pl}$, $m \sim H_0$) that produces a natural prediction matching the observed signal, and the inference framework demonstrating internal consistency.
+We emphasize that the ALP birefringence model class is well-studied in the literature~\citep{Fujita2021}. Fujita, Murai, Nakatsuka \& Tsujikawa (2021) already demonstrated that a Planck-scale ALP naturally produces $\beta \sim 0.3^\circ$, and Namikawa, Murai \& Naokawa~\citep{Namikawa2025} provide superior ALP mass constraints using the full Planck EB spectrum. Our contribution is not the model itself, but rather the specific parameter identification ($f_a \sim M_{\rm Pl}$, $m \sim H_0$) that produces a natural prediction matching the observed signal, and the inference framework demonstrating internal consistency.
 
 \section{Conclusion}
 

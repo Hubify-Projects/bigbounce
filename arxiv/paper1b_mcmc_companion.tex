@@ -43,8 +43,27 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1B.0.47}
-\newcommand{\paperTimestamp}{2026-06-08 PDT}
+\newcommand{\sigmaunit}{\sigma} % v1B.0.48: was used 4x in §birefringence_check but never defined — silently dropped the sigma glyph in v1B.0.47 and earlier
+% v1B.0.48 (2026-06-09 — P1B-E1 + P1B-E2 closures + 1 new figure:
+%   1. P1B-E1: Planck likelihood naming unified against the on-disk Cobaya YAMLs
+%      (reproducibility/cosmology/cobaya_*.yaml + frozen chain .input.yaml):
+%      planck_NPIPE_highl_CamSpec.TTTEEE + planck_2018_lowl.TT + planck_2018_lowl.EE
+%      + planck_2018_lensing.clik (frozen DNeff runs) / .native (iter2). All prose
+%      sites (L689 §II, L717 §III, L815 iter2 caption, L1083 §sec:fullcomp) now read
+%      "Planck NPIPE (PR4) CamSpec high-ell TTTEEE + Planck 2018 low-ell TT/EE +
+%      Planck 2018 lensing". NOTE: lensing is the 2018 release in the YAML, not PR4.
+%   2. P1B-E2: fn:rhat_csv Mb re-bucketed — Mb is the SN absolute magnitude (enters
+%      via sn.pantheonplus use_abs_mag + H0.riess2020Mb), NOT a Planck nuisance.
+%      Verified against chain blocking lists: full-tension samples 17 (7 cos + 9
+%      Planck nuisance + Mb); Planck+BAO+SN samples 16 (no Mb — use_abs_mag: false,
+%      analytic marginalization). Footnote counts corrected accordingly.
+%   3. New Fig. (fig:alp_triangle): spectator-ALP extended (C_agamma-free) joint
+%      posterior triangle added to §sec:birefringence_check. dneff_viability.png
+%      NOT added: draft-watermarked + encodes stale preliminary posteriors
+%      (means 0.114/0.117/-0.011) contradicting the frozen Table values; existing
+%      fig:dneff_viability already covers that content.)
+\newcommand{\paperVersion}{v1B.0.48}
+\newcommand{\paperTimestamp}{June 9, 2026 PDT}
 % v1B.0.41 (2026-06-02 — R-upgraded-round5 P1B 4-Gemini-finding closure pass:
 %   1. GEM-m1 (pattern-017): stripped inline reviewer codes ("R5+R7 GEM-B1+GPT-B1",
 %      "R14 GEM-B1", "R7 GEM-B2+GPT-B4", "R2…GPT-M6") at body L900/L912/L1024/L1184/L1189.
@@ -686,7 +705,8 @@ $(\omega/H)_0$ parameter is discussed in Paper~I(a) as a phenomenological
 bounce-class indicator but is not separately sampled here).
 The full-tension dataset combination includes the SH0ES~\cite{Riess2022}
 $H_0$ prior in the Cobaya likelihood configuration, but the
-high-precision Planck NPIPE CamSpec TTTEEE+lowl+lensing likelihoods
+high-precision Planck NPIPE (PR4) CamSpec high-$\ell$ TTTEEE + Planck 2018
+low-$\ell$ TT/EE + Planck 2018 lensing likelihoods
 carry sufficient inverse-variance weight that the posterior $H_0$ in
 the proxy run is pulled to $67.68 \pm 1.06$ (Planck-dominated value)
 rather than to the simple Gaussian-combination value $\sim 70$ that
@@ -714,8 +734,12 @@ proxy for the spin-torsion sector's possible effective radiation contribution.
 It does \emph{not} verify the spin-torsion theory module itself; that would
 require a bespoke modified Boltzmann code.
 
-The proxy run (Cobaya~v3.6.1 with Planck NPIPE CamSpec TTTEEE + lowl TT/EE +
-lensing) has produced two frozen dataset combinations with publication-quality
+The proxy run (Cobaya~v3.6.1 with Planck NPIPE (PR4) CamSpec high-$\ell$
+TTTEEE + Planck 2018 low-$\ell$ TT/EE + Planck 2018 lensing likelihoods,
+i.e.\ \texttt{planck\_NPIPE\_highl\_CamSpec.TTTEEE} +
+\texttt{planck\_2018\_lowl.TT} + \texttt{planck\_2018\_lowl.EE} +
+\texttt{planck\_2018\_lensing.clik} in the Cobaya YAML)
+has produced two frozen dataset combinations with publication-quality
 convergence, plus a third Planck-only run currently at sub-convergence
 sample count and not aggregated into any frozen-posterior summary statistic
 in this paper. Frozen MCMC program: $\mathbf{309{,}189}$ raw samples
@@ -787,7 +811,7 @@ $n_s$ & $0.965 \pm 0.006$ & $0.967 \pm 0.006$ \\
 \hline
 Chains & 6 & 6 \\
 Total samples & 176{,}240 & 132{,}949 \\
-Worst $\hat{R}-1$\footnote{\label{fn:rhat_csv}Worst row is $n_s$ in the full-tension combination at $\hat{R}-1 = 9.74\times 10^{-4}$; all 17 sampled parameters (7 cosmological + 10 Planck likelihood nuisance: $A_{\rm planck}$, amp$_{143}$, amp$_{217}$, amp$_{143\times 217}$, $n_{143}$, $n_{217}$, $n_{143\times 217}$, calTE, calEE, $M_b$ for the SNIa absolute magnitude) across both frozen combinations satisfy $\hat{R}-1 < 3\times 10^{-3}$; references to ``$k=7$'' elsewhere in this paper refer to the cosmological-parameter count only, distinct from the 17-parameter total sampled in the chains.
+Worst $\hat{R}-1$\footnote{\label{fn:rhat_csv}Worst row is $n_s$ in the full-tension combination at $\hat{R}-1 = 9.74\times 10^{-4}$; all sampled parameters across both frozen combinations satisfy $\hat{R}-1 < 3\times 10^{-3}$. The full-tension chain samples 17 parameters: 7 cosmological + 9 Planck likelihood nuisance ($A_{\rm planck}$, amp$_{143}$, amp$_{217}$, amp$_{143\times 217}$, $n_{143}$, $n_{217}$, $n_{143\times 217}$, calTE, calEE) + 1 supernova absolute magnitude ($M_b$, entering via the Pantheon+~SN and SH0ES \texttt{H0.riess2020Mb} likelihoods rather than the Planck likelihood stack). The Planck+BAO+SN chain samples 16 parameters (7 cosmological + the same 9 Planck nuisance; $M_b$ is not explicitly sampled there because \texttt{sn.pantheonplus} runs with \texttt{use\_abs\_mag: false}, analytically marginalizing the absolute magnitude in the absence of the SH0ES $M_b$ likelihood; verified by direct chain-header / \texttt{.updated.yaml} blocking-list inspection). References to ``$k=7$'' elsewhere in this paper refer to the cosmological-parameter count only, distinct from the 16--17-parameter totals sampled in the chains.
 } & 0.001 & 0.003 \\
 Min ESS & 4{,}744 & 4{,}692 \\
 \end{tabular}
@@ -812,7 +836,7 @@ Min ESS & 4{,}744 & 4{,}692 \\
 % calibrator); the 9 CamSpec foreground/calibration nuisance params are
 % identical between chains. Verified against iter2 chain header at
 % reproducibility/cosmology/iter2_converged_2026-05-18/.
-\caption{\label{tab:iter2_posterior} DESI~DR2 $w_0 w_a$ posterior summary ($N=128{,}385$ accepted samples across 16 chains, $\hat R-1=0.00820$; 8 cosmological + 9 nuisance parameters). Likelihood stack: DESI~DR2~BAO + Planck~2018 NPIPE lowl.EE+TT + highl.CamSpec.TTTEEE + lensing.native + DES-Y5 + Pantheon+. Full parameter list and chain diagnostics are available in the companion data repository.}
+\caption{\label{tab:iter2_posterior} DESI~DR2 $w_0 w_a$ posterior summary ($N=128{,}385$ accepted samples across 16 chains, $\hat R-1=0.00820$; 8 cosmological + 9 nuisance parameters). Likelihood stack: DESI~DR2~BAO + Planck NPIPE (PR4) CamSpec high-$\ell$ TTTEEE + Planck~2018 low-$\ell$ TT/EE + Planck~2018 lensing (\texttt{native}) + DES-Y5 + Pantheon+. Full parameter list and chain diagnostics are available in the companion data repository.}
 \begin{ruledtabular}
 \begin{tabular}{lcc}
 Parameter & Mean $\pm \sigma$ & vs LCDM\\
@@ -1080,7 +1104,7 @@ sky measurement.
 
 \subsection{Datasets and Configuration}\label{sec:fullcomp}
 
-We analyze four dataset combinations: (1)~Planck 2018 NPIPE~\cite{Planck2018params};
+We analyze four dataset combinations: (1)~Planck CMB (NPIPE (PR4) CamSpec high-$\ell$ TTTEEE + 2018 low-$\ell$ TT/EE + 2018 lensing)~\cite{Planck2018params};
 (2)~+DESI 2024 DR1 BAO~\cite{DESI2024}; (3)~+Pantheon+~\cite{Brout2022PantheonPlus}; (4)~+SH0ES $H_0$
 prior~\cite{Riess2022} + DES Y3 $S_8$~\cite{DES2024}. Parameter estimation
 uses Cobaya~\cite{Cobaya2021} (v3.5 original; v3.6.1 verification) with
@@ -1260,7 +1284,33 @@ $5\times$ reduction in $\theta_i$ from the scan midpoint demands a
 correspondingly higher $C_{a\gamma}$ to hold the
 $C_{a\gamma}\,\Delta\phi/f_a\approx 10.3$ product, pushing the required
 enhancement well above standard KSVZ/DFSZ $\mathcal{O}(1)$ benchmarks.
-Convergence: $\hat{R}-1 < 0.01$ for all runs.
+Convergence: $\hat{R}-1 < 0.01$ for all runs. The joint posterior structure
+of the extended ($C_{a\gamma}$-free) cross-check configuration is shown in
+Fig.~\ref{fig:alp_triangle}.
+
+\begin{figure}
+\centering
+\includegraphics[width=\columnwidth]{figures/alp_triangle_plot.png}
+\caption{Spectator-ALP joint posterior triangle from the extended
+cross-check configuration in which the photon anomaly coefficient is
+sampled freely (flat priors $C_{a\gamma}\in[1,30]$,
+$\theta_i\in[0.01,\pi]$, $\log_{10}(m_a/\text{eV})\in[-35,-30]$),
+broadening the three fixed-$C_{a\gamma}$ benchmark configurations of
+Appendix~\ref{app:alp_priors}; the direct-sample priors are on the
+underlying ALP parameters $(\theta_i, m_a)$, with $\Delta\phi/f_a$
+derived along each trajectory. The rotation marginal,
+$\beta = 0.324^\circ\pm 0.099^\circ$, is consistent within $1\sigma$ with
+the fixed-$C_{a\gamma}=8$ result $\beta_{\rm ALP}=0.336^\circ\pm
+0.107^\circ$ and the observed $\beta_{\rm obs}=0.342^\circ\pm 0.094^\circ$.
+The $\theta_i$--$C_{a\gamma}$ anti-correlation band traces the
+constant-product degeneracy enforced by the $EB$-spectrum data through
+$C_{a\gamma}\,(\Delta\phi/f_a)\approx 10.3$, and the $m_a$ marginal piles
+toward the upper (heavier) edge of its prior range --- the data-driven
+pull toward the upper edge of the natural-prior box discussed in the text,
+consistent with the model \emph{accommodating} rather than naturally
+predicting the observed rotation
+(fn.~\ref{fn:theta_backreaction}).\label{fig:alp_triangle}}
+\end{figure}
 
 \textit{LiteBIRD forecast.}---LiteBIRD is projected to achieve $\sigma(\beta)
 \approx 0.03^\circ$~\cite{LiteBIRD2023}. For $\beta=0.27^\circ$: $\sim 9\sigma$

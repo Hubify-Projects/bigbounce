@@ -240,5 +240,90 @@
       "monopole-preserving qualifier is undefined"
     ],
     "description": "P4 'hidden +4.31σ monopole-preserving dipole' disambiguated at §sec:app_morphology (v1.0.164). New explicit footnote defines +4.31σ as single-mode pseudo-Cℓ^(ℓ=1) on canonical mask BEFORE monopole subtraction AND BEFORE MASTER deconvolution (same null as canonical +3.64σ). Paragraph re-written to acknowledge +4.31σ vs +0.43σ are different estimators, ~10× gap sourced by monopole-mask leakage channel (§sec:monopole_mask_null 99.3% pre-MASTER reproduction), substantive finding is HC-cut dependence within this estimator (~7× collapse), headline nulls (+0.43σ real-space + −0.122σ MASTER subsample) unaffected."
+  },
+  {
+    "closure_id": "P1B-META-E1-fire-21-likelihood-naming",
+    "closure_commit": "PENDING",
+    "closure_fire_round": "auto-2026-06-09_1042pt",
+    "paper": "P1B",
+    "anchor_phrases": [
+      "PR4/NPIPE at high-ℓ, but Table II footnote b explicitly says",
+      "planck 2018 lowl.EE + planck 2018",
+      "release-mixing at the Planck likelihood level"
+    ],
+    "description": "P1B likelihood naming unified at 4 sites (v1B.0.48) against Cobaya YAML ground truth: planck_NPIPE_highl_CamSpec.TTTEEE + planck_2018_lowl.TT/.EE + planck_2018_lensing. Lensing is Planck 2018 per YAML, not PR4."
+  },
+  {
+    "closure_id": "P1B-META-E2-fire-21-Mb-bucket",
+    "closure_commit": "PENDING",
+    "closure_fire_round": "auto-2026-06-09_1042pt",
+    "paper": "P1B",
+    "anchor_phrases": [
+      "Mb is not a P",
+      "10 Planck likelihood nuisance: Aplanck",
+      "Mb for the SNIa absolute magnitude"
+    ],
+    "description": "P1B Mb re-bucketed as SN absolute magnitude (v1B.0.48). REAL CATCH during closure: full-tension chain samples 17 params (7 cos + 9 Planck + Mb) but Planck+BAO+SN samples only 16 (use_abs_mag:false → analytic marginalization); the prior '17 across both combinations' claim was wrong and is corrected. Verified from chain .updated.yaml blocking lists."
+  },
+  {
+    "closure_id": "P3-META-E13-fire-21-simbad-uncategorized",
+    "closure_commit": "PENDING",
+    "closure_fire_round": "auto-2026-06-09_1042pt",
+    "paper": "P3",
+    "anchor_phrases": [
+      "Uncategorized 52.7%",
+      "match a SIMBAD entry but lack a specific astrophysical type",
+      "imply >40k SIMBAD matches"
+    ],
+    "description": "P3 Table II note reworded (v3.1.79): 52.7% 'Uncategorized' attributed to the internal band-residual emission-line taxonomy (classify_residual_pattern fallback), SIMBAD claim removed. Artifact-verified — no SIMBAD input to that pipeline. 3-reviewer consensus finding (Claude + OpenAI + META)."
+  },
+  {
+    "closure_id": "P3-M16-fire-21-caveat-xrefs",
+    "closure_commit": "PENDING",
+    "closure_fire_round": "auto-2026-06-09_1042pt",
+    "paper": "P3",
+    "anchor_phrases": [
+      "§VI D caveat (v)",
+      "caveats are not present in the main-text Section VI D",
+      "cross-references are broken"
+    ],
+    "description": "P3 12 broken caveat cross-refs repointed (v3.1.79): lettered (b)/(e)/(f)/(j) → Table IV tab:caveats; stale roman (iv)/(v) → surviving prose caveat (ii)."
+  },
+  {
+    "closure_id": "P3-META-E10-fire-21-fisher-baselines",
+    "closure_commit": "PENDING",
+    "closure_fire_round": "auto-2026-06-09_1042pt",
+    "paper": "P3",
+    "anchor_phrases": [
+      "single-tracer baseline (σ = 16.85)",
+      "incompatible with the σstd = 8.98 baseline",
+      "Incoherent Fisher baselines"
+    ],
+    "description": "P3 Fig 8 caption normalization note added (v3.1.79): B11 shot-noise Fisher (16.85/12.72/11.71, simplified power-law P(k), single effective volume, 5-tracer) is a distinct configuration from §V's 7-bin canonical σ_std=8.98; only relative quantities (+7.93%, 15-30% penalties) carry over. Reconciliation FOUND in r42_outputs/B11_shot_noise_fisher.json, not fabricated."
+  },
+  {
+    "closure_id": "P5-META-E3-fire-21-tractor-provenance",
+    "closure_commit": "PENDING",
+    "closure_fire_round": "auto-2026-06-09_1042pt",
+    "paper": "P5",
+    "anchor_phrases": [
+      "p50 separation 0.0066",
+      "6.6 milliarcsecond median offset is far below the astrometric scatter",
+      "unit bug"
+    ],
+    "description": "P5 6.6 mas median separation EXPLAINED (v0.1.49): DESI TARGET_RA/DEC and Paper IV catalog coordinates share Legacy DR8 Tractor parent astrometry — matched pairs differ only at coordinate-precision level. Code units verified correct (u.deg → arcsec). NOT a unit bug; clarifying paragraph added after the median/p99 sentence."
+  },
+  {
+    "closure_id": "P5-META-E1-E2-fire-21-zshell-selection",
+    "closure_commit": "PENDING",
+    "closure_fire_round": "auto-2026-06-09_1042pt",
+    "paper": "P5",
+    "anchor_phrases": [
+      "without any selection-function correction",
+      "single global mean",
+      "ρ̄cell = 4.64 galaxies/cell",
+      "ignores the strong redshift-dependent select"
+    ],
+    "description": "P5 selection-function findings closed via COMPUTE (v0.1.50, scripts/16_cosmic_web_zshell_corrected.py, 102s local): z-shell-corrected T-Web rebuild (21 shells, per-shell footprint-only means). Populations migrate massively (void ×10, wall ×23, cluster −54%) but environmental-independence null HOLDS and TIGHTENS ×40 (range 1.98pp → 0.05pp, all |σ_mono| ≤ 0.39). New §sec:zshell_robustness + artifact JSON + per-galaxy corrected parquet."
   }
 ]

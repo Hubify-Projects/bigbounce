@@ -40,7 +40,7 @@ resolves).
 | C1. NaMaster pipeline validation at fsky=0.85 + 0.65 | P1B (#A3-4) | ~4h CPU | published analyses use 0.85/0.65; ours validates only 0.32 | NEVER RUN |
 | C2. P4 binomial null on N_all(p)-trial draws | P4 (fn queue) | ~2-4h CPU | footnote promises empirical report | NEVER RUN |
 | C3. P4 Wp=N_spiral vs N_all invariance | P4 (fire-21 E2) | ~1h CPU | null-estimator matching | NEVER RUN |
-| C4. P5 selection-function-corrected V-Web rebuild (z-shell randoms) | P5 (fire-21 E1/E2) | ~2-6h CPU | environment labels currently n(z)-biased | NEVER RUN |
+| C4. P5 selection-function-corrected V-Web rebuild (z-shell randoms) | P5 (fire-21 E1/E2) | ~2-6h CPU | environment labels currently n(z)-biased | **DONE 2026-06-09 11:35 (local, 102s)** — NULL HOLDS, STRENGTHENED: cross-class range 1.98pp → 0.05pp, all classes \|σ_mono\|≤0.39. n̄_shell spans 294→0.46 gal/cell (×640) confirming E1 severity. Populations migrate massively (void ×10, wall ×23, cluster −54%) but chirality stays environment-independent. Artifacts: outputs/16_cosmic_web_zshell_corrected.{json,md} + per-galaxy parquet. Integration → P5 .tex after v0.1.49 bump lands. |
 | C5. P1B Caγ continuous grid MCMC [4,60] | P1B (#A3-5) | ~1d GPU | grid {4,8,12} doesn't cover data-required [9,51] | DECIDE: text reframe (30min) vs rerun (1d) — recommend RERUN (hardest path) |
 
 All five fit one CPU-heavy pod (RTX A5000-class is fine; H200 unnecessary).

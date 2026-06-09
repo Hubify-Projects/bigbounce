@@ -1,11 +1,11 @@
 [
   {
-    "paperSlug": "paper-1a",
-    "version": "v1A.0.50-2026-06-09",
+    "paperSlug": "paper-1b",
+    "version": "v1B.0.48-2026-06-09",
     "datestamp": "2026-06-09",
-    "texCommit": "e30e3b75",
-    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1a_ech_nogo.pdf",
-    "sitePdfPath": "/papers/paper1a_ech_nogo_v1A.0.50.pdf",
-    "changelog": "Houston figures request: 2 high-impact figures added back to P1A. fig:rotation_expansion (§sec:rotation) — visualizes the Saadeh+2016 (ω/H)_0 isotropy bound + clarifies Λ_eff is sourced by parity-odd contorsion NOT rotation. fig:obs_timeline (§sec:falsification) — observational decision timeline for the 2 surviving falsification paths (LiteBIRD birefringence + SPHEREx f_NL=-35/8). P1A: 4 → 6 in-paper figures. PDF 23pp/1.5MB/md5 6208734b. 0 undef refs."
+    "texCommit": "0bf04e66",
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1b_mcmc_companion.pdf",
+    "sitePdfPath": "/papers/paper1b_mcmc_companion_v1B.0.48.pdf",
+    "changelog": "Fire-21 closures: P1B-E1 likelihood naming unified at 4 sites against Cobaya YAML ground truth (Planck NPIPE PR4 CamSpec high-ℓ TTTEEE + Planck 2018 low-ℓ TT/EE + Planck 2018 lensing). P1B-E2 Mb re-bucketed as SN absolute magnitude; REAL CATCH — full-tension samples 17 params but Planck+BAO+SN samples only 16 (use_abs_mag:false, analytic marginalization); prior '17 across both' corrected. +1 figure (fig:alp_triangle). Bonus: \\sigmaunit macro defined (σ glyph silently dropped at 4 sites). dneff_viability.png REJECTED (draft watermark + stale preliminary numbers). 12pp/939KB/md5 6684a761. 0 undef, 0 overfull."
   }
 ]

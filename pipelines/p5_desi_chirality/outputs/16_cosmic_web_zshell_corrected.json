@@ -1,0 +1,380 @@
+{
+  "written_utc": "2026-06-09T18:35:15Z",
+  "script": "scripts/16_cosmic_web_zshell_corrected.py",
+  "closes_findings": [
+    "P5-META-E1 (radial selection in global mean)",
+    "P5-META-E2 (mask leakage / FFT boundary)"
+  ],
+  "method": {
+    "grid_n": 256,
+    "cell_size_mpc_h": 25.912670135498047,
+    "box_side_mpc_h": 6633.6435546875,
+    "R_s_mpc_h": 25.0,
+    "lambda_th": 0.0,
+    "dilate_radius_cells": 2,
+    "global_rho_mean_canonical_ref": 4.641862392425537,
+    "shell_scheme": "dz=0.05 for z<0.5; dz=0.10 for 0.5<=z<1.5; merged 1.5-1.7",
+    "n_shells": 21,
+    "buffer_threshold_mpc_h": 76.8253402709961,
+    "buffer_definition": "galaxy cell within (dilation + R_s) of mask exterior == within R_s of true occupancy-footprint boundary"
+  },
+  "shells": [
+    {
+      "shell": 0,
+      "z_lo": 0.01,
+      "z_hi": 0.05,
+      "n_mask_cells": 730,
+      "nbar_shell": 294.0503845214844,
+      "n_galaxies": 216239
+    },
+    {
+      "shell": 1,
+      "z_lo": 0.05,
+      "z_hi": 0.1,
+      "n_mask_cells": 3810,
+      "nbar_shell": 180.67918395996094,
+      "n_galaxies": 686306
+    },
+    {
+      "shell": 2,
+      "z_lo": 0.1,
+      "z_hi": 0.15000000000000002,
+      "n_mask_cells": 8124,
+      "nbar_shell": 121.7178955078125,
+      "n_galaxies": 989153
+    },
+    {
+      "shell": 3,
+      "z_lo": 0.15000000000000002,
+      "z_hi": 0.2,
+      "n_mask_cells": 13597,
+      "nbar_shell": 84.22356414794922,
+      "n_galaxies": 1148872
+    },
+    {
+      "shell": 4,
+      "z_lo": 0.2,
+      "z_hi": 0.25,
+      "n_mask_cells": 19617,
+      "nbar_shell": 60.61477279663086,
+      "n_galaxies": 1185228
+    },
+    {
+      "shell": 5,
+      "z_lo": 0.25,
+      "z_hi": 0.30000000000000004,
+      "n_mask_cells": 26364,
+      "nbar_shell": 40.52728271484375,
+      "n_galaxies": 1070408
+    },
+    {
+      "shell": 6,
+      "z_lo": 0.30000000000000004,
+      "z_hi": 0.35000000000000003,
+      "n_mask_cells": 33751,
+      "nbar_shell": 25.472496032714844,
+      "n_galaxies": 860925
+    },
+    {
+      "shell": 7,
+      "z_lo": 0.35000000000000003,
+      "z_hi": 0.4,
+      "n_mask_cells": 41207,
+      "nbar_shell": 16.634450912475586,
+      "n_galaxies": 684628
+    },
+    {
+      "shell": 8,
+      "z_lo": 0.4,
+      "z_hi": 0.45,
+      "n_mask_cells": 48380,
+      "nbar_shell": 10.172516822814941,
+      "n_galaxies": 491000
+    },
+    {
+      "shell": 9,
+      "z_lo": 0.45,
+      "z_hi": 0.5,
+      "n_mask_cells": 56261,
+      "nbar_shell": 6.25642204284668,
+      "n_galaxies": 351923
+    },
+    {
+      "shell": 10,
+      "z_lo": 0.5,
+      "z_hi": 0.6,
+      "n_mask_cells": 134023,
+      "nbar_shell": 4.080130577087402,
+      "n_galaxies": 545851
+    },
+    {
+      "shell": 11,
+      "z_lo": 0.6,
+      "z_hi": 0.7,
+      "n_mask_cells": 159275,
+      "nbar_shell": 3.4802820682525635,
+      "n_galaxies": 554418
+    },
+    {
+      "shell": 12,
+      "z_lo": 0.7,
+      "z_hi": 0.7999999999999999,
+      "n_mask_cells": 180768,
+      "nbar_shell": 4.553713321685791,
+      "n_galaxies": 822715
+    },
+    {
+      "shell": 13,
+      "z_lo": 0.7999999999999999,
+      "z_hi": 0.8999999999999999,
+      "n_mask_cells": 200363,
+      "nbar_shell": 5.486346244812012,
+      "n_galaxies": 1100862
+    },
+    {
+      "shell": 14,
+      "z_lo": 0.8999999999999999,
+      "z_hi": 0.9999999999999999,
+      "n_mask_cells": 218733,
+      "nbar_shell": 4.584015846252441,
+      "n_galaxies": 1003099
+    },
+    {
+      "shell": 15,
+      "z_lo": 0.9999999999999999,
+      "z_hi": 1.0999999999999999,
+      "n_mask_cells": 236986,
+      "nbar_shell": 3.074464797973633,
+      "n_galaxies": 728950
+    },
+    {
+      "shell": 16,
+      "z_lo": 1.0999999999999999,
+      "z_hi": 1.1999999999999997,
+      "n_mask_cells": 243978,
+      "nbar_shell": 2.3262338638305664,
+      "n_galaxies": 566664
+    },
+    {
+      "shell": 17,
+      "z_lo": 1.1999999999999997,
+      "z_hi": 1.2999999999999998,
+      "n_mask_cells": 257089,
+      "nbar_shell": 1.8896652460098267,
+      "n_galaxies": 485137
+    },
+    {
+      "shell": 18,
+      "z_lo": 1.2999999999999998,
+      "z_hi": 1.4,
+      "n_mask_cells": 270191,
+      "nbar_shell": 1.6020971536636353,
+      "n_galaxies": 433379
+    },
+    {
+      "shell": 19,
+      "z_lo": 1.4,
+      "z_hi": 1.4999999999999998,
+      "n_mask_cells": 282911,
+      "nbar_shell": 1.311623215675354,
+      "n_galaxies": 372972
+    },
+    {
+      "shell": 20,
+      "z_lo": 1.4999999999999998,
+      "z_hi": 1.7,
+      "n_mask_cells": 713931,
+      "nbar_shell": 0.45689210295677185,
+      "n_galaxies": 323554
+    }
+  ],
+  "volume_fractions_in_footprint_corrected": {
+    "void": 0.20560339723734788,
+    "wall": 0.4025540230768083,
+    "filament": 0.3361606608575186,
+    "cluster": 0.05568191882832517
+  },
+  "migration_matrix_all_galaxies": {
+    "rows_canonical_cols_corrected": [
+      "void",
+      "wall",
+      "filament",
+      "cluster"
+    ],
+    "counts": [
+      [
+        72365,
+        98487,
+        62326,
+        7426
+      ],
+      [
+        108083,
+        736040,
+        741749,
+        35586
+      ],
+      [
+        104342,
+        2161258,
+        5880450,
+        1863632
+      ],
+      [
+        0,
+        133037,
+        1284843,
+        1332659
+      ]
+    ]
+  },
+  "spiral_counts": {
+    "canonical": 812793,
+    "corrected": 812793,
+    "corrected_buffer": 810931
+  },
+  "cw_fraction_by_env": {
+    "canonical_recomputed": [
+      {
+        "env_class": "void",
+        "n": 428,
+        "n_cw": 207,
+        "n_ccw": 221,
+        "cw_fraction": 0.48364485981308414,
+        "sigma_from_half": -0.6767155423319645,
+        "sigma_from_sample_monopole": -0.5603779501167425
+      },
+      {
+        "env_class": "wall",
+        "n": 6673,
+        "n_cw": 3359,
+        "n_ccw": 3314,
+        "cw_fraction": 0.5033717967930466,
+        "sigma_from_half": 0.5508735892872288,
+        "sigma_from_sample_monopole": 1.0102904524265446
+      },
+      {
+        "env_class": "filament",
+        "n": 408187,
+        "n_cw": 203261,
+        "n_ccw": 204926,
+        "cw_fraction": 0.4979604935972973,
+        "sigma_from_half": -2.606061457640616,
+        "sigma_from_sample_monopole": 0.9869842148534895
+      },
+      {
+        "env_class": "cluster",
+        "n": 397505,
+        "n_cw": 197284,
+        "n_ccw": 200221,
+        "cw_fraction": 0.49630570684645475,
+        "sigma_from_half": -4.658355716765813,
+        "sigma_from_sample_monopole": -1.112668600496358
+      },
+      {
+        "env_class": "ALL",
+        "n": 812793,
+        "n_cw": 404111,
+        "n_ccw": 408682,
+        "cw_fraction": 0.49718809094074384,
+        "sigma_from_half": -5.07015508833013,
+        "sigma_from_sample_monopole": 0.0
+      }
+    ],
+    "zshell_corrected": [
+      {
+        "env_class": "void",
+        "n": 4353,
+        "n_cw": 2164,
+        "n_ccw": 2189,
+        "cw_fraction": 0.49712841718355155,
+        "sigma_from_half": -0.3789183827982239,
+        "sigma_from_sample_monopole": -0.007874347561964763
+      },
+      {
+        "env_class": "wall",
+        "n": 154541,
+        "n_cw": 76777,
+        "n_ccw": 77764,
+        "cw_fraction": 0.49680667266291795,
+        "sigma_from_half": -2.510702723023975,
+        "sigma_from_sample_monopole": -0.2998887842140455
+      },
+      {
+        "env_class": "filament",
+        "n": 472547,
+        "n_cw": 234990,
+        "n_ccw": 237557,
+        "cw_fraction": 0.49728386805968505,
+        "sigma_from_half": -3.7342497749316204,
+        "sigma_from_sample_monopole": 0.131680400175904
+      },
+      {
+        "env_class": "cluster",
+        "n": 181352,
+        "n_cw": 90180,
+        "n_ccw": 91172,
+        "cw_fraction": 0.4972649874277648,
+        "sigma_from_half": -2.329434468559839,
+        "sigma_from_sample_monopole": 0.06549445581759629
+      },
+      {
+        "env_class": "ALL",
+        "n": 812793,
+        "n_cw": 404111,
+        "n_ccw": 408682,
+        "cw_fraction": 0.49718809094074384,
+        "sigma_from_half": -5.07015508833013,
+        "sigma_from_sample_monopole": 0.0
+      }
+    ],
+    "zshell_corrected_buffer_cut": [
+      {
+        "env_class": "void",
+        "n": 3976,
+        "n_cw": 1989,
+        "n_ccw": 1987,
+        "cw_fraction": 0.5002515090543259,
+        "sigma_from_half": 0.03171807398477756,
+        "sigma_from_sample_monopole": 0.3857516027724652
+      },
+      {
+        "env_class": "wall",
+        "n": 153737,
+        "n_cw": 76373,
+        "n_ccw": 77364,
+        "cw_fraction": 0.49677696325542975,
+        "sigma_from_half": -2.5274609448492535,
+        "sigma_from_sample_monopole": -0.326045877069964
+      },
+      {
+        "env_class": "filament",
+        "n": 471866,
+        "n_cw": 234647,
+        "n_ccw": 237219,
+        "cw_fraction": 0.4972746500065697,
+        "sigma_from_half": -3.7442222645304675,
+        "sigma_from_sample_monopole": 0.11254373719892358
+      },
+      {
+        "env_class": "cluster",
+        "n": 181352,
+        "n_cw": 90180,
+        "n_ccw": 91172,
+        "cw_fraction": 0.4972649874277648,
+        "sigma_from_half": -2.329434468559839,
+        "sigma_from_sample_monopole": 0.06154087973161518
+      },
+      {
+        "env_class": "ALL",
+        "n": 810931,
+        "n_cw": 403189,
+        "n_ccw": 407742,
+        "cw_fraction": 0.4971927327972417,
+        "sigma_from_half": -5.055984092965204,
+        "sigma_from_sample_monopole": 0.0
+      }
+    ]
+  },
+  "runtime_seconds": 101.72490906715393
+}

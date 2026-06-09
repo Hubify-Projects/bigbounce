@@ -18,9 +18,24 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.48-2026-06-09}
+\newcommand{\paperVersion}{v0.1.50-2026-06-09}
+% v0.1.50-2026-06-09 (fire-21 P5-META-E1+E2 closure via COMPUTE, not text):
+%   new §sec:zshell_robustness — z-shell selection-corrected T-Web rebuild
+%   (21 shells, per-shell footprint-only means, canonical grid/R_s/λ_th
+%   held fixed). Populations migrate massively (void ×10, wall ×23,
+%   cluster −54%) but the environmental-independence null HOLDS and
+%   TIGHTENS: cross-class f_CW range 1.98pp → 0.05pp, all classes
+%   |σ_mono| ≤ 0.39. Artifact: outputs/16_cosmic_web_zshell_corrected.json.
 \newcommand{\paperTimestamp}{June 2026}
 % --- Preamble changelog (full pre-v0.1.44 history archived to CHANGELOG_pre-v0.1.44.txt) ---
+% v0.1.49-2026-06-09 (P5-E3 close + 2 new figures). P5-E3: added shared-provenance
+%   explanation for the 0.0066" median cross-match separation (DESI TARGET_RA/DEC
+%   and Paper IV coordinates both inherit Legacy Surveys Tractor astrometry, so
+%   matched pairs differ only at coordinate-precision level; 1.0" acceptance is
+%   therefore conservative; p99=0.30" tail = re-derived coordinates between
+%   releases). New figures: fig_z_histogram (matched-sample redshift distribution,
+%   §III.D) and fig_cw_vs_z (equivariant CW fraction vs z, §VI.B, consistent with
+%   label-shuffle p=0.372 no-z-dependence result).
 % v0.1.44-2026-06-03 (R-upgraded-round9 closure bundle, 7 do-now fixes from
 %   direct-vendor Gemini-2.5-Pro + Grok-4 + GPT-4o + Perplexity triage on v0.1.43).
 %   1. GRO-B1 — title retitled to lead with DESIVAST primary path
@@ -304,9 +319,34 @@ The matched-primary count is $2{,}349{,}908$ before dedup and
 $2{,}232{,}212$ after. The chirality-relevant subsample is $791{,}635$
 galaxies. Median separation is $0.0066''$ and the 99th-percentile
 separation is $0.30''$, both well inside the $1.0''$ acceptance.
+The 6.6-mas median is far below any independent-astrometry match
+precision and reflects shared coordinate provenance rather than
+astrometric match quality: the DESI \texttt{TARGET\_RA}/\texttt{TARGET\_DEC}
+coordinates are inherited directly from the DESI Legacy Imaging Surveys
+Tractor catalogs, and the Paper~IV chirality-catalog coordinates derive
+from the same Legacy (DR8) Tractor astrometry, so matched pairs differ
+only at the coordinate-precision/rounding level. The $1.0''$ acceptance
+radius is therefore conservative for this catalog pair. The
+$p_{99} = 0.30''$ tail reflects the small subset of objects whose
+coordinates were re-derived between data releases.
 Sensitivity to acceptance radius is mild: $\{0.5, 1.0, 2.0, 3.0,
 5.0\}''$ produces $\{2.34, 2.35, 2.37, 2.39, 2.44\}\!\times\!10^6$
 matched-primary rows, a $\le 4\%$ band.
+Figure~\ref{fig:z_histogram} shows the redshift distribution of the
+matched sample: it peaks at $z \approx 0.15$--$0.2$ (median $0.168$)
+and falls off steeply above $z \approx 0.5$, with a sparse tail
+extending to the maximum $z = 3.83$.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{fig_z_histogram.png}
+\caption{Redshift distribution of the matched chirality $\times$
+DESI~DR1 spiral sample ($1''$ acceptance, after dedup). The
+distribution peaks at $z \approx 0.15$--$0.2$ (median $0.168$) and
+falls off steeply above $z \approx 0.5$; a sparse tail extends to the
+maximum $z = 3.83$ (Table~\ref{tab:match_summary}).}
+\label{fig:z_histogram}
+\end{figure}
 
 \begin{table}[t]
 \caption{Matched chirality $\times$ DESI DR1 catalog ($1''$
@@ -602,6 +642,22 @@ A logistic regression of the CW indicator on $\{z, |\sin\delta|,
 \cos\alpha, \text{confidence}\}$ gives a $z$-coefficient of $0.0059$
 with no significant intercept ($0.000652$), consistent with no
 redshift dependence.
+Figure~\ref{fig:cw_vs_z} shows the binned equivariant CW fraction
+across the matched sample's redshift range.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{fig_cw_vs_z.png}
+\caption{Equivariant CW fraction versus redshift across the matched
+DR1 chirality-relevant sample, with 95\% binomial confidence
+intervals per bin. The low-$z$ bins that dominate the sample
+(median $z = 0.168$) sit on the $0.5$ line; bins above
+$z \approx 0.5$ contain few objects and have correspondingly wide
+intervals. The binned values are consistent with no redshift
+dependence, in agreement with the label-shuffle permutation test
+($p = 0.372$) and the logistic regression in the text.}
+\label{fig:cw_vs_z}
+\end{figure}
 
 \subsection{Projected density dependence}\label{sec:results_density}
 
@@ -1409,11 +1465,63 @@ indistinguishable from zero.}
 
 \section{Additional cosmic-web cross-checks}\label{sec:additional_cw}
 
-The following two sections report secondary diagnostic cross-checks
+The following sections report secondary diagnostic cross-checks
 that supplement, but do not anchor, the primary DESIVAST-anchored
 chirality null established in
 Section~\ref{sec:desivast_primary} (per the primary/secondary
 declaration of \S\ref{sec:primary_path}).
+
+\subsection{Redshift-shell selection-corrected classifier
+robustness}\label{sec:zshell_robustness}
+
+The T-Web classifier of \S\ref{sec:vweb_algo} computes the overdensity
+$\delta = \rho/\bar\rho - 1$ against a \emph{single global} mean cell
+density $\bar\rho_{\rm cell} = 4.64$ galaxies/cell over the full
+$0.01 \le z \le 2$ volume. Because the DESI~DR1 selection function is
+strongly redshift dependent, the measured per-shell mean density spans
+$\bar n_{\rm shell} \approx 294 \to 0.46$ galaxies/cell (a factor
+${\sim}640$) from the lowest to the highest redshift shell: under the
+global-mean convention, distant shells are systematically driven toward
+apparent underdensity and nearby shells toward apparent overdensity, so
+the four-class environment labels partially trace the radial selection
+function rather than true large-scale structure.
+
+To test whether the headline environmental-independence conclusion is
+robust to this, we rebuilt the classification with a first-order radial
+selection correction
+(\texttt{scripts/16\_cosmic\_web\_zshell\_corrected.py}): the
+overdensity is computed in 21 thin redshift shells ($\Delta z = 0.05$
+for $z<0.5$, $\Delta z = 0.1$ for $0.5 \le z < 1.5$, one merged
+$1.5$--$1.7$ shell; every shell $\ge 2.16\times10^5$ galaxies), with the
+per-shell mean taken over occupied-footprint cells only, while the
+grid, smoothing scale $R_s$, and eigenvalue threshold
+$\lambda_{\rm th}$ are held fixed at their canonical values. An
+interior-buffer variant additionally removes galaxies within $R_s$ of
+the footprint boundary.
+
+As expected, the per-galaxy class populations migrate substantially
+once the selection is corrected: among matched spirals, the void class
+grows from $428$ to $4{,}353$ ($\sim\!10\times$), wall from $6{,}673$
+to $154{,}541$ ($\sim\!23\times$), filament from $408{,}187$ to
+$472{,}547$, and cluster shrinks from $397{,}505$ to $181{,}352$
+($-54\%$). The chirality result, however, is \emph{strengthened}: the
+cross-class equivariant CW-fraction range collapses from
+$1.98$\,pp (canonical) to $0.05$\,pp (corrected), with every class
+within $|\sigma| \le 0.39$ of the sample monopole
+($f_{\rm CW}^{\rm eq}$: void $0.4971$, wall $0.4968$, filament
+$0.4973$, cluster $0.4973$; $n = 812{,}793$ joined spirals). The
+interior-buffer variant ($1{,}862$ spirals removed) is statistically
+indistinguishable. Residual per-class deviations from $0.5$
+($-2.3$ to $-3.7\sigma$) track the known Paper~IV global classifier
+monopole, identically across classes, exactly as in the canonical
+analysis. The environmental-independence null therefore holds --- and
+tightens by a factor ${\sim}40$ in cross-class range --- under the
+selection-corrected classifier, demonstrating that the canonical
+result was not an artifact of selection-function leakage into the
+environment labels. Full per-shell diagnostics and the per-galaxy
+corrected label catalog are released with the reproducibility
+artifacts
+(\texttt{outputs/16\_cosmic\_web\_zshell\_corrected.json}).
 
 \subsection{Tempel+2014 FoF cross-validation}\label{sec:tempel}
 
