@@ -368,7 +368,7 @@ export const papers: Paper[] = [
     path: publicationPath({}),
     pages: "21",
     refs: "—",
-    readiness: 95,
+    readiness: 90,
     statusVariant: "green",
     target: "MNRAS (or A&A)",
     description: "Separate from P4. P5 inherits P4's chirality labels and asks an environment-dependent question P4 is not designed to answer: is galaxy chirality statistically independent of DESI-derived large-scale-structure environment after controlling for sky position, redshift, imaging systematics, morphology confidence, and selection effects?",

@@ -124,8 +124,8 @@ export const liveStatus: LiveStatus = {
       number: "5",
       shortTitle: "DESI environmental chirality independence",
       version: "v0.1.50-2026-06-09",
-      readiness: 95,
-      pendingWork: "External round on v0.1.50 → Houston sign-off → arXiv (last in queue)",
+      readiness: 90,
+      pendingWork: "R22prov NOT clean (24 VERIFIED incl. stale P4-withdrawn citation + count-label fixes) → v0.1.51 wave in flight → clean round → arXiv (last, after P4)",
     },
   ],
   blockerTally: {
