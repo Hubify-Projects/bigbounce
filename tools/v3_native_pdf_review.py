@@ -612,10 +612,20 @@ def run_reviewer(
         input_note = "TEXT + web search"
 
     p2_note = f" + pass-2 self-critique ({pass2_added} chars)" if pass2_added > 0 else (" + pass-2 NO_NEW" if pass2_added == 0 and not error_msg else "")
+    # Wrong-PDF-round detectability (2026-06-09 incident): stamp the exact
+    # input PDF identity into every reviewer artifact.
+    try:
+        import hashlib, subprocess as _sp
+        _md5 = hashlib.md5(pdf_path.read_bytes()).hexdigest()[:8]
+        _pages = _sp.check_output(["pdfinfo", str(pdf_path)]).decode()
+        _pages = next((l.split()[1] for l in _pages.splitlines() if l.startswith("Pages")), "?")
+    except Exception:
+        _md5, _pages = "?", "?"
     header = (
         f"# {paper_tag} {round_label} — {cfg['persona']}\n\n"
         f"**Reviewer**: `{name}`\n"
         f"**Model**: `{model_used}`{fb}\n"
+        f"**Input PDF**: `{pdf_path}` md5={_md5} pages={_pages}\n"
         f"**Input format**: {input_note}{p2_note}\n"
         f"**Wall time**: {dt:.1f}s\n\n---\n\n"
     )
