@@ -234,7 +234,7 @@ export const papers: Paper[] = [
     path: publicationPath({}),
     pages: "22",
     refs: "71",
-    readiness: 95,
+    readiness: 90,
     statusVariant: "green",
     target: "ApJS",
     description: "The multi-survey anomaly catalog: 378,280 unique anomalies from 37.3 million sources across 7 surveys via one BigAE autoencoder architecture, with a 17.8% novelty rate at the top-1,000 stratum against 20 all-sky catalogs. A NANOGrav 15-yr free-spectrum re-fit gives γ = 2.567 ± 0.382 — matter-bounce γ=3.0 is consistent (+1.13σ) while SMBHB γ=4.33 is excluded (+4.61σ). Multi-tracer forecast: σ(f_NL) = 8.27 ± 2.37.",

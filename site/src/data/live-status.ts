@@ -108,8 +108,8 @@ export const liveStatus: LiveStatus = {
       number: "3",
       shortTitle: "378K-anomaly multi-survey catalog",
       version: "v3.1.79",
-      readiness: 95,
-      pendingWork: "External round on v3.1.79 → Houston sign-off → HF visibility flip → arXiv",
+      readiness: 90,
+      pendingWork: "R22prov NOT clean (36 VERIFIED incl. release-status contradiction + invalid eROSITA null) → v3.1.80 wave in flight → clean round → HF flip → arXiv",
     },
     {
       slug: "paper-4",
