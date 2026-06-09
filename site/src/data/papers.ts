@@ -145,7 +145,7 @@ export const papers: Paper[] = [
     path: publicationPath({}),
     pages: "12",
     refs: "32",
-    readiness: 95,
+    readiness: 90,
     statusVariant: "green",
     target: "Physical Review D (companion)",
     description: "Technical verification companion to Paper 1A, documenting three analyses: a 424,781-sample Cobaya ΛCDM+ΔN_eff MCMC that recovers ΛCDM (H0 = 67.68 ± 1.06 km/s/Mpc, ΔN_eff consistent with zero); a NaMaster pipeline-recovery test on the Planck Commander map (inject β=0.27°, recover 0.238°); and a spectator-ALP consistency check against the published Planck+ACT β = 0.342° ± 0.094° (3.6σ).",

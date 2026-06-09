@@ -92,8 +92,8 @@ export const liveStatus: LiveStatus = {
       number: "1B",
       shortTitle: "MCMC + NaMaster + ALP technical companion",
       version: "v1B.0.49",
-      readiness: 95,
-      pendingWork: "External round on v1B.0.49 → Houston sign-off → arXiv (with P1A)",
+      readiness: 90,
+      pendingWork: "R22prov NOT clean (24 VERIFIED incl. 2 artifact-proven mislabels) → v1B.0.50 wave in flight → clean round → Houston sign-off → arXiv (with P1A)",
     },
     {
       slug: "paper-2",
