@@ -217,7 +217,7 @@
   },
   {
     "closure_id": "P1A-META-E2-fire-17-alpha-M-basis",
-    "closure_commit": "PENDING",
+    "closure_commit": "4666741d",
     "closure_fire_round": "auto-2026-06-08_1737pt",
     "paper": "P1A",
     "anchor_phrases": [
@@ -227,5 +227,18 @@
       "c_γ ~ O(10)"
     ],
     "description": "P1A α/M vs canonical g_aγ 10× basis-conversion gap closed (v1A.0.49) via §sec:r4_birefringence footnote: paper's α/M is NOT the canonical ALP-photon Chern-Simons g_aγ; the paper's M = M_area-gap = M_Pl/√γ ≈ 1.9 M_Pl + paper's α = Mercuri one-loop ~ α_em/(4π) gives the −1/4 (not 1/(2π)) normalization. Reproducing α/M = 10⁻²¹ in canonical basis requires either sub-Planckian f_a ~ M_Pl/10 OR amplified c_γ ~ O(10) — both flagged as non-trivial UV-completion assumptions. R4 closure (m_θ~H_0 CC tuning) preserved."
+  },
+  {
+    "closure_id": "P4-META-E2-fire-17-hidden-4.31sigma",
+    "closure_commit": "PENDING",
+    "closure_fire_round": "auto-2026-06-08_1737pt",
+    "paper": "P4",
+    "anchor_phrases": [
+      "monopole-preserving dipole",
+      "Catalog C-full +4.31\\sigma",
+      "consistent with the headline 0.43\\sigma real-space dipole",
+      "monopole-preserving qualifier is undefined"
+    ],
+    "description": "P4 'hidden +4.31σ monopole-preserving dipole' disambiguated at §sec:app_morphology (v1.0.164). New explicit footnote defines +4.31σ as single-mode pseudo-Cℓ^(ℓ=1) on canonical mask BEFORE monopole subtraction AND BEFORE MASTER deconvolution (same null as canonical +3.64σ). Paragraph re-written to acknowledge +4.31σ vs +0.43σ are different estimators, ~10× gap sourced by monopole-mask leakage channel (§sec:monopole_mask_null 99.3% pre-MASTER reproduction), substantive finding is HC-cut dependence within this estimator (~7× collapse), headline nulls (+0.43σ real-space + −0.122σ MASTER subsample) unaffected."
   }
 ]
