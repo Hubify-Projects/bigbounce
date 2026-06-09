@@ -113,9 +113,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-3",
       number: "3",
       shortTitle: "378K-anomaly multi-survey catalog",
-      version: "v3.1.79",
+      version: "v3.1.80",
       readiness: 90,
-      pendingWork: "R22prov NOT clean (36 VERIFIED incl. release-status contradiction + invalid eROSITA null) → v3.1.80 wave in flight → clean round → HF flip → arXiv",
+      pendingWork: "v3.1.80 wave landed (36+ closures incl. measured dedup sweep 0.086%, eROSITA null reframe, Fig 12 regen) → Claude-inclusive clean round post-top-up → HF flip → arXiv",
     },
     {
       slug: "paper-4",

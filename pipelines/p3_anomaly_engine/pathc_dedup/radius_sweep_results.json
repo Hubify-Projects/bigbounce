@@ -1,0 +1,41 @@
+{
+  "task": "P3 v3.1.80 dedup-radius sensitivity sweep (canonical 7-way, no ACT)",
+  "total_survey_level_detections": 388493,
+  "results": {
+    "3arcsec": {
+      "radius_arcsec": 3.0,
+      "pairs_within_radius": 11133,
+      "n_unique_objects": 378604,
+      "n_point_source_tier": 378404,
+      "n_planck_patch_clusters": 200,
+      "n_multi_survey_clusters_ge2": 619,
+      "n_collapsed": 9889,
+      "compression_pct": 2.5455
+    },
+    "5arcsec": {
+      "radius_arcsec": 5.0,
+      "pairs_within_radius": 11466,
+      "n_unique_objects": 378280,
+      "n_point_source_tier": 378080,
+      "n_planck_patch_clusters": 200,
+      "n_multi_survey_clusters_ge2": 637,
+      "n_collapsed": 10213,
+      "compression_pct": 2.6289
+    },
+    "7arcsec": {
+      "radius_arcsec": 7.0,
+      "pairs_within_radius": 11609,
+      "n_unique_objects": 378145,
+      "n_point_source_tier": 377945,
+      "n_planck_patch_clusters": 200,
+      "n_multi_survey_clusters_ge2": 661,
+      "n_collapsed": 10348,
+      "compression_pct": 2.6636
+    }
+  },
+  "variation_vs_5arcsec_pct": {
+    "3arcsec": 0.0857,
+    "7arcsec": -0.0357
+  },
+  "max_abs_variation_pct": 0.0857
+}
