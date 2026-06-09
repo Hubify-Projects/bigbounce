@@ -92,7 +92,7 @@ export const liveStatus: LiveStatus = {
       slug: "paper-1a",
       number: "1A",
       shortTitle: "Channel-Level Closure of 4 ECH Dark-Energy Routes",
-      version: "v1A.0.46",
+      version: "v1A.0.47",
       readiness: 92,
       pendingWork:
         "v1A.0.40 (2026-06-02) — external R1 closures landed from Houston-shared Grok/Gemini/ChatGPT review. 18 VERIFIED closures: paper retitled to 'Channel-Level Closure of Four Minimal Einstein--Cartan--Holst Dark-Energy Routes and Perturbation Transparency for Scalar Matter' (dropped 'No-Go Theorem' overclaim); 9 body-prose R-round artifacts stripped; new §I Scope-and-Limitations paragraph; Benedetti+Speziale arXiv:1104.4028 added as the correct β-function source; Route 4 reframed as naturalness objection; reheating reset rewritten to source from ⟨J⁵_μ⟩ not n_ψ; Route 2 ambiguity resolved (10⁻⁵⁸ canonical); 12+ companion-paper hedges. 5 STALE + 3 deferred-as-note declared in §I scope. PDF 21pp/824KB. Houston-external-review-ready; cap 95% pending sign-off.",

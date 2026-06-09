@@ -1,20 +1,11 @@
 [
   {
-    "paperSlug": "paper-4",
-    "version": "v1.0.162",
+    "paperSlug": "paper-1a",
+    "version": "v1A.0.47",
     "datestamp": "2026-06-08",
-    "texCommit": "eca3237b",
-    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p2_chirality/chirality_catalog_paper.pdf",
-    "sitePdfPath": "/papers/chirality_catalog_paper_v162.pdf",
-    "changelog": "Houston request — add high-impact figures back to P4 after the v1.0.151→v1.0.159 condensation removed them all. Inserted 4 figures: (1) §II.D TTA-equivariance methodology (fig:equivariance_demo, fig_equivariance_demo.png — visual demo of D4 rotations+reflections + CW/CCW label swap); (2) §III.A Catalog-C composition pie (fig:class_pie, fig_class_pie.png — N_CW/N_CCW/N_NS breakdown); (3) §III.A sky distribution (fig:sky_map, fig_sky_map.png — Mollweide log10 N per HEALPix NSIDE=64 pixel); (4) §III.C pseudo-Cℓ multipoles (fig:multipoles, fig_multipoles.png — headline ℓ=1 dipole + ℓ=2 quadrupole on canonical mask + 500-MC monopole-only null band, showing the 99.3% pre-MASTER reproduction). PDF 12pp (was 11)/7.19MB (was 466KB)/md5 a72af8b7. 0 undef refs."
-  },
-  {
-    "paperSlug": "paper-1b",
-    "version": "v1B.0.46",
-    "datestamp": "2026-06-08",
-    "texCommit": "eca3237b",
-    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1b_mcmc_companion.pdf",
-    "sitePdfPath": "/papers/paper1b_mcmc_companion_v1B.0.46.pdf",
-    "changelog": "Houston request — add 2 high-impact figures to P1B. Was at 1 figure (corner plot). Added: (1) fig:dneff_viability (fig_dneff_viability_two_frozen.pdf — ΔNeff marginal posterior across the 4 dataset combinations of §IV.A, showing all are consistent with zero, illustrating the headline 'ECH-radiation-route ruled out at amplitude level' conclusion); (2) fig:namaster_beta_vs_nside (fig_namaster_beta_vs_nside.png — recovered β vs Nside for injected β∈{0, 0.27°, 0.342°} at ΔP=10μK·arcmin, showing bias ≤ 0.04° is the NaMaster systematic floor referenced in fn:snr_definition). PDF 11pp (no expansion!)/850KB (was 724KB)/md5 607428f6. 0 undef refs."
+    "texCommit": "94bf1abc",
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1a_ech_nogo.pdf",
+    "sitePdfPath": "/papers/paper1a_ech_nogo_v1A.0.47.pdf",
+    "changelog": "Houston request — 2 high-impact figures added to P1A. Was at 2 figures (theory map + LQG-Holst derivation). Added: (1) fig:naturalness (§sec:barriers, figure6_parameter_naturalness.png) — visualizes the 4-route closure as positions in the (mass x coupling) plane with the naturalness window; shows all 4 routes either sit outside or require the cosmological-constant-class m_theta~H_0 tuning admitted in §sec:r4_birefringence. (2) fig:detection_forecast (§sec:surviving, figure8_detection_forecast.png) — detection forecast for the 2 surviving mechanism-independent tests (matter-bounce fNL=-35/8 SPHEREx forecast + spectator-ALP birefringence LiteBIRD window). PDF 22pp (was 21)/1.17MB (was 848KB)/md5 95341820. 0 undef refs."
   }
 ]
