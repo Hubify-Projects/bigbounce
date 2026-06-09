@@ -244,3 +244,40 @@ NOT sufficient condition for self-terminate.** Always also content-audit
 fire-over-fire META files for genuinely-new high-significance findings
 before advancing the counter.
 
+
+---
+
+## 2026-06-08 18:30pt — fire 18 — OpenAI quota exhausted + Gemini RECITATION blocks
+
+**Observation 1 — OpenAI billing**: gpt-5-pro, gpt-5, and o3 all returning
+`RateLimitError 429: insufficient_quota` consistently in fire 18. The OpenAI
+account has hit a budget ceiling. Affects:
+- OpenAI_methodology reviewer (1 of 5 per-vendor) — FAILED on all 6 papers
+- v3.2 meta-reviewer (gpt-5-pro primary) — falling back to Claude opus 4.7
+
+**Observation 2 — Gemini RECITATION**: gemini-2.5-pro returning
+`finish_reason: 2` (RECITATION or SAFETY) at least once in fire 18. Auto-
+falls back to gemini-2.0-flash but logs the issue. Possibly the meta-prompt
+or paper text contains language that triggers Gemini's recitation filter
+(maybe verbatim Eskilt et al. abstract quotes?).
+
+**Impact**: degraded reviewer coverage for fire 18.
+- P1A: 3/5 reviewers (Grok, Perplexity, Claude_brutal)
+- Other papers: likely 3-4/5 each
+- Meta fell back to Claude opus 4.7 (which uses the new format the
+  v3_meta_content_diff.py extractor was fixed for in commit 42706887)
+
+The autoloop CONTINUES with degraded coverage rather than aborting — this
+is correct behavior, but logging the gaps matters for content-audit
+interpretation.
+
+**Improvement queued (Houston-only)**: top up OpenAI account budget OR
+rotate to a new API key. The OPENAI_API_KEY in `.env.local` should be
+re-checked.
+
+**Improvement queued (tool-level)**:
+- Autoloop pre-flight check should verify all 5 reviewer API keys + meta
+  reviewer key have a budget allowance, log a warning if quota is low.
+- Gemini RECITATION should auto-rewrite the prompt to remove the trigger
+  (likely a famous-quote-fragment block).
+
