@@ -51,7 +51,7 @@ const contributions: Contribution[] = [
     id: "perturbation-transparency",
     tier: "N3",
     title: "Perturbation-Transparency Theorem",
-    paper: "Paper 1, §12",
+    paper: "Paper 1A",
     oneLine:
       "All-orders proof that the Barbero-Immirzi parameter γ is invisible in every perturbative observable for minimally-coupled scalar matter in ECH.",
     why: "Tells you what the bounce CAN'T do: the bounce mechanism itself is invisible to telescopes. Every testable prediction must come from the contraction dynamics before the bounce, not from the bounce mechanism. This redirected the entire research program.",
@@ -73,7 +73,7 @@ const contributions: Contribution[] = [
     id: "14-barriers",
     tier: "N3",
     title: "14-Barrier Systematic Closure Map",
-    paper: "Paper 1, §11",
+    paper: "Paper 1A",
     oneLine:
       "Complete catalog of 14 independent structural barriers closing every standard route from a nonsingular ECH bounce to late-time dark energy.",
     why: "Proves dark energy cannot come from the bounce — period. Instead of testing one or two mechanisms and hoping, we exhaustively closed every standard route. Tells future researchers exactly where NOT to look.",
@@ -138,13 +138,13 @@ const contributions: Contribution[] = [
     id: "alp-birefringence",
     tier: "N2",
     title: "ALP Birefringence Consistency",
-    paper: "Paper 1, §11.5 / Paper 2",
+    paper: "Paper 1A / Paper 2",
     oneLine:
       "ECH parity structure motivates a Planck-scale ALP. Predicted β = 0.27° matches the 3.6σ Planck+ACT observation at 0.5σ.",
-    what: "Numerical ΛCDM ALP field evolution gives Δφ/f_a = 0.65-1.07 across the natural mass range m/H₀ ∈ [1, 3]. Fiducial β = 0.27° (at m ≈ 1.8H₀) matches observed 0.242 ± 0.061° within 0.5σ. NaMaster pod 1 production 500MC: β = 0.27° recovered at SNR = 20.32σ.",
-    why: "Our prediction matches an actual observation at 3.9σ inverse-variance combined. LiteBIRD tests at 9σ in early 2030s. Bounce-mechanism independent — falsification target separate from f_NL.",
+    what: "Numerical ΛCDM ALP field evolution gives Δφ/f_a = 0.65-1.07 across the natural mass range m/H₀ ∈ [1, 3]. Fiducial β = 0.27° (at m ≈ 1.8H₀) is consistent with the published joint WMAP+Planck β = 0.342° ± 0.094° (3.6σ). NaMaster validation (synthetic ΛCDM skies, 500 MC): β = 0.27° recovered as 0.238° — a pipeline-validation figure, not a sky measurement.",
+    why: "Our benchmark value sits within 1σ of an actual published observation. LiteBIRD tests at 9σ in early 2030s. Bounce-mechanism independent — falsification target separate from f_NL.",
     equation:
-      "β = 0.27°  ·  recovered as 0.238° at SNR = 20.32σ in pod 1 NaMaster production",
+      "β = 0.27°  ·  consistent with Eskilt+ β = 0.342° ± 0.094° (3.6σ published detection)",
     verify: [
       {
         label: "alp_field_evolution/",
@@ -156,7 +156,7 @@ const contributions: Contribution[] = [
     id: "topological-shift-duality",
     tier: "N2",
     title: "Topological-Shift Duality (Barrier 2)",
-    paper: "Paper 1, §11.2",
+    paper: "Paper 1A",
     oneLine:
       "Mass protection and geometric content are mutually exclusive for pseudoscalar fields coupled to the Nieh-Yan 4-form.",
     what: "If Nieh-Yan is topological (standard EC), pseudoscalar mass is shift-symmetry protected but the coupling is a total derivative — no dynamics. If Nieh-Yan is non-topological (metric-affine), dynamics arise but shift symmetry breaks — no mass protection. Cannot have both.",
@@ -171,16 +171,16 @@ const contributions: Contribution[] = [
   {
     id: "chirality-catalog",
     tier: "N3",
-    title: "8.47M-Galaxy Chirality Catalog",
+    title: "3.2M-Spiral Galaxy Chirality Catalog (8.47M classified)",
     paper: "Paper 4",
     oneLine:
-      "Largest survey-scale spiral-galaxy chirality catalog: CW/CCW/NOT_SPIRAL with equivariant DL ensemble, null result for large-scale parity violation.",
+      "Largest chirality-labeled galaxy catalog to date: 8.47M DESI Legacy DR8 galaxies classified CW/CCW/NOT_SPIRAL (3,201,160 spirals) by a flip-equivariant ViT pipeline, with a null real-space chirality dipole.",
     what:
-      "8,474,531 galaxies from DESI Legacy Survey DR8. Equivariance-aware CNN ensemble (rotation+flip augmented) producing P(CW)/P(CCW)/P(NS) per galaxy. Strongest individual signal: north-south hemisphere asymmetry at 3.05σ, marginal and look-elsewhere-corrected away. No evidence for large-scale parity violation.",
+      "8,474,531 galaxies from DESI Legacy Survey DR8 classified by a flip-equivariant Vision Transformer ensemble with test-time D4 averaging (equivariance suppresses the raw classifier asymmetry 2.98×: +1.576% → −0.529% in A-units). Headline: real-space ℓ=1 dipole at +0.43σ (p=0.30) plus a block-bootstrap WLS template fit disfavoring a clean 1.7% Shamir-class dipole at z≈−18; injection-recovery brackets A95 in (1.0%, 1.5%].",
     why:
-      "First null at this scale. Constrains any cosmological parity-violating mechanism — including the early-universe consequences of ECH parity-odd structure beyond the ALP birefringence channel.",
+      "First chirality null at this scale with an honest falsification window. Constrains any cosmological parity-violating mechanism — including the early-universe consequences of ECH parity-odd structure beyond the ALP birefringence channel — and refutes the claimed ~3% parity signal.",
     equation:
-      "CW fraction (N) = 49.81%  ·  CW fraction (S) = 49.64%  ·  Δ = 0.17 pp at 3.05σ (marginal)",
+      "Real-space dipole +0.43σ (p = 0.30)  ·  WLS exclusion of 1.7% dipole at z ≈ −18  ·  A50 ≈ 0.75%, A95 ∈ (1.0%, 1.5%]",
     verify: [
       {
         label: "bamfai/galaxy-chirality-catalog (HuggingFace)",
@@ -198,9 +198,9 @@ const contributions: Contribution[] = [
     title: "Multi-Survey Anomaly Catalog (378,280 anomalies)",
     paper: "Paper 3",
     oneLine:
-      "First unified anomaly sweep across 7 surveys (37.3M sources) after Path-C native retrains and 5″ positional dedup.",
+      "First unified anomaly sweep across 7 surveys (37.3M sources) — roughly 141× larger than the biggest prior spectroscopic anomaly catalog — after Path-C native retrains and 5″ positional dedup.",
     what:
-      "DESI DR1 (195,829), SDSS DR18 (77,905), LAMOST DR10 (44,075), eROSITA DR1 (298), Planck CMB (200), NEOWISE (436), Gaia DR3 (500). 388,493 raw → 378,280 unique after global friends-of-friends union-find at 5″ (637 multi-survey + 9,576 intra-survey collapses).",
+      "DESI DR1 (195,829), SDSS DR18 (77,905), LAMOST DR10 (44,075), eROSITA DR1 (298), Planck CMB (200), NEOWISE (436), Gaia DR3 (500). 388,493 raw → 378,280 unique after global friends-of-friends union-find at 5″ (637 multi-survey + 9,576 intra-survey collapses). Enrichment statistics (e.g. eROSITA) are reported descriptively, not as inferential significances.",
     why:
       "Cross-survey continuity is the load-bearing falsification surface for any new physics claim. Population-level rare-class discovery (z>6 QSOs, ultra-rare AE candidates) is the byproduct.",
     verify: [
@@ -233,14 +233,16 @@ const contributions: Contribution[] = [
   {
     id: "desi-environment",
     tier: "N3",
-    title: "DESI Environmental Chirality Study",
+    title: "DESI Chirality × Environment Null (z-shell corrected)",
     paper: "Paper 5",
     oneLine:
-      "Cross-match of 2.23M DESI LSS galaxies with the 8.47M chirality catalog to test environmental dependence of spiral spin direction.",
+      "Galaxy chirality is statistically independent of DESI large-scale-structure environment: 791,635 matched spirals + 56,981 void spirals, with a z-shell selection correction and full covariate robustness.",
     what:
-      "Matched 2,233,012 galaxies between DESI Y1 LSS and the Paper-4 chirality catalog. First-pass environmental fraction analysis on disk. Cosmic-web headline analysis blocked on missing DESI environmental VAC.",
+      "Matched 2,232,212 deduped DESI DR1 rows against the Paper-4 chirality catalog (duplicate-TARGETID join root-caused and rebuilt; 100% GZ–DESI join). DESIVAST three-algorithm void test, V-Web + T-Web + Tempel + ASTRA cross-checks, 21-shell z-shell selection-corrected rebuild, omnibus χ² environment nulls (p=0.31/0.99), and covariate-robust regression over size/magnitude/morphology/inclination (Wald p=0.46/0.99).",
     why:
-      "Cosmic-web environment is the most natural place to look for spin alignment / handedness correlations. If any signature exists it should be strongest in filaments/walls.",
+      "Cosmic-web environment is the most natural place to look for spin alignment / handedness correlations. The controlled non-detection constrains the whole class of environment-coupled parity models at the ≳25 Mpc/h smoothing scale.",
+    equation:
+      "Omnibus χ² nulls p = 0.31 / 0.99  ·  covariate-robust Wald p = 0.46 / 0.99  ·  no class clears Bonferroni significance under any classifier",
     verify: [
       {
         label: "pipelines/p5_desi_chirality/",
@@ -251,12 +253,12 @@ const contributions: Contribution[] = [
   {
     id: "mcmc-verification",
     tier: "N2",
-    title: "MCMC Verification Infrastructure (424,781 samples)",
-    paper: "Paper 1, §9",
+    title: "MCMC Verification Infrastructure (309,189 frozen samples)",
+    paper: "Paper 1B",
     oneLine:
-      "424,781 posterior samples across 3 frozen dataset combinations. Honest null: ΔN_eff ≈ 0, H₀ = 67.68 (standard ΛCDM).",
+      "309,189 frozen posterior samples across 2 converged dataset combinations (third accumulating). Honest null: ΔN_eff ≈ 0, H₀ = 67.68 (standard ΛCDM); DESI DR2 w0wa chain gives w_pivot = −0.952 ± 0.019 (+2.5σ from −1, twice-verified).",
     what:
-      "Cobaya 3.6.1 + CAMB 1.6.5. 4 dataset configs, 6-7 chains each, Gelman-Rubin convergence. Corrected our own earlier artifact (H₀ = 69.2 was a SH0ES prior artifact).",
+      "Cobaya 3.6.1 + CAMB. Frozen combinations: 176,240 full-tension + 132,949 Planck+BAO+SN, Gelman-Rubin converged. A separate DESI DR2 BAO + Planck NPIPE + DES-Y5 + Pantheon+ w0wa chain reports w_pivot at the decorrelated pivot. Corrected our own earlier artifact (H₀ = 69.2 was a SH0ES prior artifact).",
     why: "Demonstrates honest negative reporting — we found our own bug and disclosed it.",
     verify: [
       {
@@ -271,9 +273,57 @@ const contributions: Contribution[] = [
     title: "NANOGrav Bounce GW Spectrum",
     paper: "Paper 3, §6",
     oneLine:
-      "Combined PTA GPU MCMC γ = 3.20 ± 0.42 vs bounce γ = 3.0 (0.48σ); SMBHB excluded at ≳2σ.",
+      "NANOGrav 15-yr real-KDE free-spectrum re-fit: γ = 2.567 ± 0.382. Matter-bounce γ = 3.0 consistent at +1.13σ; SMBHB γ = 4.33 excluded at +4.61σ.",
+    what:
+      "Real free-spectrum KDE likelihood (Zenodo chains, emcee re-fit; ESS = 5,507) replacing the earlier synthetic-power-law summary statistic γ = 3.20 ± 0.42. Savage-Dickey Bayes factor decisively favors the bounce slope over the SMBHB slope.",
+    why:
+      "The PTA spectral slope is one of the few currently-measured observables that discriminates bounce-era tensor spectra from astrophysical SMBHB backgrounds.",
     equation:
-      "γ_bounce = 3.0  ·  γ_obs = 3.20 ± 0.42  ·  consistency 0.48σ",
+      "γ_bounce = 3.0 (+1.13σ consistent)  ·  γ_obs = 2.567 ± 0.382  ·  γ_SMBHB = 4.33 (+4.61σ excluded)",
+  },
+  {
+    id: "namaster-validation-suite",
+    tier: "N2",
+    title: "NaMaster Pipeline Validation Suite",
+    paper: "Paper 1B / Paper 4",
+    oneLine:
+      "End-to-end pseudo-C_ℓ validation harness: 500-MC birefringence recovery on synthetic ΛCDM skies (P1B) plus MASTER-deconvolved chirality-field nulls with harmonic completeness anchors (P4).",
+    what:
+      "P1B leg: synthetic ΛCDM polarization skies, ACT-like f_sky = 0.32 mask, 10 μK·arcmin noise, 500 MC — injected β = 0.27° recovered as 0.238° (bias −0.032°, sign-symmetric; σ_β(0.32) = 0.046° measured directly). Scope honestly declared: validates the E→B MASTER deconvolution, not the β–α foreground degeneracy. P4 leg: monopole-only generative nulls (99.3% of pre-MASTER ℓ=1 power), label-shuffle backgrounds, and injection completeness — a Shamir-class 1.7% dipole would recover at z ≈ 68–218 vs the observed +7.3.",
+    why:
+      "Mask-coupled pseudo-C_ℓ pipelines silently manufacture or destroy low-ℓ signals; a committed, rerunnable validation suite is what separates a believable null from an artifact.",
+    equation:
+      "β bias = −0.032° (500 MC, synthetic skies)  ·  monopole-only null reproduces 99.3% of pre-MASTER ℓ=1 power",
+  },
+  {
+    id: "provenance-audit",
+    tier: "N2",
+    title: "Provenance-Audit Methodology (retract-and-rebuild)",
+    paper: "Paper 4 / program-wide",
+    oneLine:
+      "A data-provenance audit traced P4's previously-headlined −0.122σ subsample-mask null to a synthetic-footprint catalog; the result was withdrawn, the paper re-anchored on real-space estimators, and the audit trail published.",
+    what:
+      "Artifact-level provenance tracing (file hashes, generation scripts, footprint geometry checks) applied to every load-bearing null. When the audit failed, the claim was withdrawn in-paper (P4 Appendix A), the headline was rebuilt on the real-space +0.43σ dipole + WLS template exclusion, and the corrected equivariance suppression factor (3.86× → 2.98×) was propagated through every surface. P2's irreproducible ~9.9σ SDB joint-Fisher claim was withdrawn the same way and replaced by a committed-code 1.4σ/0.6σ subordinate channel.",
+    why:
+      "Most published nulls and detections never face an artifact-level audit. Treating retraction-and-rebuild as a first-class, documented workflow is itself a transparency contribution — reviewers can replay the exact decision chain.",
+  },
+  {
+    id: "compute-reproducibility-chain",
+    tier: "N2",
+    title: "12-Job Compute Reproducibility Chain",
+    paper: "Program-wide",
+    oneLine:
+      "All 12 load-bearing compute closures (fsky sweeps, continuous-prior MCMC, permutation rebuilds, sign-symmetry reruns) executed on a dedicated pod with committed scripts + JSON artifacts, for ~$0.55 total.",
+    what:
+      "Each job ships its driver script, inputs, seeds, and output artifact in-repo; results are stamped into the papers via the \\artifact{} macro pointing at immutable release tags. The chain covers P1B (fsky sweep, Caγ continuous-prior MCMC, c9f sign-symmetry), P4 (10k-permutation Table III rebuild, harmonic completeness injections), and P5 (closure-recompute scripts 17–19).",
+    why:
+      "A reviewer can rerun any headline number from the committed chain — reproducibility as an artifact, not a promise.",
+    verify: [
+      {
+        label: "h200_scripts/experiments/",
+        href: "https://github.com/Hubify-Projects/bigbounce/tree/main/h200_scripts/experiments",
+      },
+    ],
   },
 ];
 
