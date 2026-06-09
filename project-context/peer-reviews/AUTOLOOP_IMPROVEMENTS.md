@@ -281,3 +281,33 @@ re-checked.
 - Gemini RECITATION should auto-rewrite the prompt to remove the trigger
   (likely a famous-quote-fragment block).
 
+
+## 2026-06-09 fire 21 — content-diff extractor: dash-bullet format support
+
+**Observation**: `tools/v3_meta_content_diff.py` reported `🔴 NEW [P3-META-E1] (best_sim=0.00):` followed by an EMPTY quote string for P3 E1-E5 and P4 E1-E2 in fire 21. The findings DO exist in `auto-2026-06-09_1042pt_P3_META_REVIEW.md` but use a different formatting from the gpt-5-pro `## ESSENTIAL findings` heading + `### <PAPER>-META-E<N>` block:
+
+```
+P3-META-E1
+- Severity: ESSENTIAL
+- Section/page: ...
+- Problem (quote): "..."
+- Specific problem: ...
+```
+
+vs. the gpt-5-pro format:
+```
+### P3-META-E1
+**Severity:** ESSENTIAL
+**Quote:** "..."
+```
+
+The current extractor in `_extract_problem_from_block()` handles 2 of the 3 known formats but not the dash-bullet variant. As a result the diff tool shows NEW count correctly (it counts the heading match) but the quote is empty so the 5-gram Jaccard cluster collapses to similarity 0.00 against all prior findings — false-negative on RECURRING detection if the same issue had been raised in a prior fire under the dash-bullet format.
+
+**Fix queued**:
+- Extend `_extract_problem_from_block()` in `tools/v3_meta_content_diff.py` to ALSO match `^- Problem \(quote\):` and `^- Specific problem:` (dash-bullet variant).
+- Same fix in `tools/v3_persistence_tracker_v2.py`.
+- Add a unit-test fixture with all 3 known format variants to prevent format-fallback regression.
+
+**Why this matters**: Fire 21 surfaced 12 NEW findings — 7 of them via the dash-bullet format. If the same finding RE-FIRES under the same format next round, the content-diff tool will not link them and will double-count as "NEW" instead of marking "RECURRING".
+
+**Impact**: false-positive "NEW" count in fire 22+ on dash-bullet findings. Houston-facing severity LOW (synthesis files still capture everything), tool-level severity MEDIUM.
