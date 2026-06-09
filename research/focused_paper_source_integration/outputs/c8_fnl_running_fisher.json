@@ -1,0 +1,299 @@
+{
+  "experiment": "C8: joint (f_NL, n_fNL) SPHEREx scale-dependent-bias Fisher forecast",
+  "replaces": "pipelines/p2_fnl_forecast/fw1_results/fw1_scale_dependent_fnl.json (FW-1, SUSPECT per C7 audit)",
+  "provenance": {
+    "script": "research/focused_paper_source_integration/scripts/c8_fnl_running_fisher.py",
+    "git_hash_at_run": "1877852b4ad8f021329fa13c23de5107d4464c43",
+    "date_utc": "2026-06-09T19:56:04.724022+00:00",
+    "camb_version": "1.6.6",
+    "python": "3.10.6",
+    "runtime_seconds": 1.32
+  },
+  "inputs": {
+    "cosmology": {
+      "H0": 67.36,
+      "ombh2": 0.02237,
+      "omch2": 0.12,
+      "ns": 0.9649,
+      "As": 2.1e-09,
+      "tau": 0.0544,
+      "mnu_eV": 0.06,
+      "Omega_m_derived": 0.3151933370614183,
+      "source": "Planck 2018 TT,TE,EE+lowE+lensing best fit"
+    },
+    "survey": {
+      "name": "SPHEREx (5 photo-z samples, multi-tracer)",
+      "f_sky": 0.75,
+      "n_z_bins_used": 6,
+      "z_bin_edges": [
+        [
+          0.0,
+          0.2
+        ],
+        [
+          0.2,
+          0.4
+        ],
+        [
+          0.4,
+          0.6
+        ],
+        [
+          0.6,
+          0.8
+        ],
+        [
+          0.8,
+          1.0
+        ],
+        [
+          1.0,
+          1.6
+        ]
+      ],
+      "z_bin_centers": [
+        0.1,
+        0.30000000000000004,
+        0.5,
+        0.7,
+        0.9,
+        1.3
+      ],
+      "sigma_z_over_1plusz_per_sample": [
+        0.003,
+        0.01,
+        0.03,
+        0.1,
+        0.2
+      ],
+      "number_density_hMpc3_per_sample_per_zbin": [
+        [
+          0.00997,
+          0.00411,
+          0.000501,
+          7.05e-05,
+          3.16e-05,
+          1.64e-05
+        ],
+        [
+          0.0123,
+          0.00856,
+          0.00282,
+          0.000937,
+          0.00043,
+          5e-05
+        ],
+        [
+          0.0134,
+          0.00857,
+          0.00362,
+          0.00294,
+          0.00204,
+          0.000212
+        ],
+        [
+          0.0229,
+          0.0129,
+          0.00535,
+          0.00495,
+          0.00415,
+          0.000796
+        ],
+        [
+          0.0149,
+          0.00752,
+          0.00327,
+          0.0025,
+          0.00183,
+          0.000734
+        ]
+      ],
+      "galaxy_bias_per_sample_per_zbin": [
+        [
+          1.3,
+          1.5,
+          1.8,
+          2.3,
+          2.1,
+          2.7
+        ],
+        [
+          1.2,
+          1.4,
+          1.6,
+          1.9,
+          2.3,
+          2.6
+        ],
+        [
+          1.0,
+          1.3,
+          1.5,
+          1.7,
+          1.9,
+          2.6
+        ],
+        [
+          0.98,
+          1.3,
+          1.4,
+          1.5,
+          1.7,
+          2.2
+        ],
+        [
+          0.83,
+          1.2,
+          1.3,
+          1.4,
+          1.6,
+          2.1
+        ]
+      ],
+      "source": "Official SPHEREx public forecast products v28_base_cbe (Dore et al. 2014, arXiv:1412.4872; github.com/SPHEREx/Public-products, file galaxy_density_v28_base_cbe.txt committed at scripts/data/)"
+    },
+    "fisher_setup": {
+      "k_max_hMpc": 0.2,
+      "k_min_mode_baseline": "max(1e-4, 2pi/V_bin^(1/3)) per z-bin",
+      "k_min_per_zbin_hMpc": [
+        0.007520881168092304,
+        0.004182702233020309,
+        0.003225789877367526,
+        0.002787773347882152,
+        0.002546865014849525,
+        0.0016071462701023607
+      ],
+      "k_piv_hMpc": 0.05,
+      "n_k_shells": 400,
+      "bphi_convention": "b_phi = 2 delta_c (b - p), p = 1, delta_c = 1.686 (paper L477 universality)",
+      "Delta_b": "Delta b = f_NL (k/k_piv)^n_fNL * b_phi / M(k,z), M = sqrt(P_m/P_phi) from CAMB",
+      "photo_z": "monopole-averaged radial damping W = sqrt(pi)/2 erf(k sig_chi)/(k sig_chi)",
+      "fiducial": {
+        "f_NL": -4.375,
+        "n_fNL": 0.0
+      },
+      "rsd": "not included (real-space monopole; standard for SDB forecasts)"
+    }
+  },
+  "results": {
+    "A_fnl_only_biases_fixed": {
+      "sigma_fnl_only": 1.5286830998967673,
+      "fnl_detection_sigma": 2.8619404507680146
+    },
+    "B_joint_fnl_nfnl_biases_fixed": {
+      "sigma_fnl_marginalized": 3.077547488865408,
+      "sigma_fnl_unmarginalized": 1.5286830998967673,
+      "sigma_nfnl_marginalized": 0.2945886317020602,
+      "sigma_nfnl_unmarginalized": 0.1463284203847251,
+      "correlation": -0.8679101587175053,
+      "fnl_detection_sigma_marg": 1.4215865119315902,
+      "degradation_factor": 2.0132017480099287,
+      "fisher_2x2_fNL_nfNL": [
+        [
+          0.42792244995877743,
+          3.8799722812724253
+        ],
+        [
+          3.8799722812724253,
+          46.70276906350654
+        ]
+      ]
+    },
+    "C_joint_fnl_nfnl_bias_marginalized_free": {
+      "sigma_fnl_marginalized": 7.059476032180931,
+      "sigma_fnl_unmarginalized": 1.5286830998967673,
+      "sigma_nfnl_marginalized": 0.5958864201907231,
+      "sigma_nfnl_unmarginalized": 0.1463284203847251,
+      "correlation": -0.9689485721862755,
+      "fnl_detection_sigma_marg": 0.6197343797268198,
+      "degradation_factor": 4.61801143262306,
+      "fisher_2x2_fNL_nfNL": [
+        [
+          0.42792244995877743,
+          3.8799722812724253
+        ],
+        [
+          3.8799722812724253,
+          46.70276906350654
+        ]
+      ],
+      "n_nuisance_params": 30,
+      "sigma_fnl_only_bias_marg_nfnl_fixed": 1.7455425582643778
+    },
+    "D_sensitivity_flat_kmin_1e-4": {
+      "biases_fixed": {
+        "sigma_fnl_marginalized": 2.628668610147838,
+        "sigma_fnl_unmarginalized": 0.8220327762730332,
+        "sigma_nfnl_marginalized": 0.16550066743645703,
+        "sigma_nfnl_unmarginalized": 0.051755087196091794,
+        "correlation": -0.9498459167153301,
+        "fnl_detection_sigma_marg": 1.6643406411559605,
+        "degradation_factor": 3.1977661791854652,
+        "fisher_2x2_fNL_nfNL": [
+          [
+            1.479863748655521,
+            22.32600313022581
+          ],
+          [
+            22.32600313022581,
+            373.3308772198473
+          ]
+        ]
+      },
+      "bias_marginalized": {
+        "sigma_fnl_marginalized": 4.234303667233755,
+        "sigma_fnl_unmarginalized": 0.8220327762730332,
+        "sigma_nfnl_marginalized": 0.257767497057596,
+        "sigma_nfnl_unmarginalized": 0.051755087196091794,
+        "correlation": -0.9795950914067315,
+        "fnl_detection_sigma_marg": 1.0332277379761383,
+        "degradation_factor": 5.151015615741527,
+        "fisher_2x2_fNL_nfNL": [
+          [
+            1.479863748655521,
+            22.32600313022581
+          ],
+          [
+            22.32600313022581,
+            373.3308772198473
+          ]
+        ]
+      },
+      "note": "artifact's flat k_min=1e-4 is below the fundamental mode of every z-bin volume; shown only to bound the artifact's possible k_min advantage"
+    },
+    "validation_vs_Dore2014": {
+      "config": "f_NL-only, all 11 SPHEREx z-bins (z=0-4.6), full Dore+2014 sample set",
+      "sigma_fnl_biases_fixed": 1.021433645140495,
+      "sigma_fnl_bias_marginalized": 1.1451457890478647,
+      "published_benchmark": "Dore+2014 sigma(f_NL) ~ 0.9 (multi-tracer SDB)"
+    }
+  },
+  "comparison": {
+    "suspect_artifact_FW1": {
+      "sigma_fnl_only": 0.114538,
+      "sigma_fnl_marginalized": 0.443094,
+      "sigma_nfnl": 0.085523,
+      "correlation": 0.966013,
+      "fnl_detection_sigma": 9.87,
+      "fisher_matrix": [
+        [
+          76.22605338627889,
+          -381.5023228871092
+        ],
+        [
+          -381.5023228871092,
+          2046.0931846590872
+        ]
+      ]
+    },
+    "published_benchmarks": {
+      "Dore+2014_arXiv:1412.4872": "sigma(f_NL) ~ 0.9 (SPHEREx multi-tracer SDB, all 5 samples)",
+      "literature_SDB_range": "sigma(f_NL) ~ 0.5-2 (Dore+2014, Munchmeyer+2019, Heinrich+2024)"
+    },
+    "artifact_vs_real": {
+      "sigma_nfnl: artifact / real(C)": 0.14352231751250008,
+      "sigma_fnl_marg: artifact / real(C)": 0.06276584805729725,
+      "detection_sigma: artifact 9.87 vs real(C)": 0.6197343797268198
+    }
+  }
+}
