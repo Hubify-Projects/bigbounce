@@ -89,10 +89,11 @@
     "paper": "P1A",
     "anchor_phrases": [
       "without fine-tuning. The same",
-      "consistent with the published WMAP+Planck cosmological-birefringence signal",
-      "Sec. XII then says"
+      "without any fine-tuning. The same",
+      "two statements are incompatible",
+      "without fine-tuning while elsewhere"
     ],
-    "description": "P1A §XII 'without fine-tuning' contradicting §IV.D 'CC tuning relabelled' admission (v1A.0.46)"
+    "description": "P1A §XII 'without fine-tuning' contradicting §IV.D 'CC tuning relabelled' admission (v1A.0.46) — anchors tightened post-fire-17 false positive (the 'consistent with WMAP+Planck' anchor matched a fire-17 Quote about a different issue, α/M coupling magnitude)"
   },
   {
     "closure_id": "P4-META-E3-fire-14-footnote-regression",

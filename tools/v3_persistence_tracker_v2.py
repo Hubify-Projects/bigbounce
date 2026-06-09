@@ -42,11 +42,17 @@ REVIEWS = REPO / "project-context" / "peer-reviews"
 PAPERS = ["P1A", "P1B", "P2", "P3", "P4", "P5"]
 OUT = REVIEWS / "PERSISTENT_FINDINGS_v2.md"
 
-# Match both META format variants: "- Severity: X" and "Severity: X"
+# Match THREE META format variants (see v3_meta_content_diff.py extractor):
+# 1. "Severity: ESSENTIAL" (gpt-5-pro) — line-based
+# 2. "## ESSENTIAL findings" + "### <PAPER>-META-E<N>" (Claude opus 4.7) — section-based
+# 3. "## ESSENTIAL — New findings" (variant header) — section-based
 SEV_RE = re.compile(
     r"^[\s-]*Severity:\s*(ESSENTIAL|MAJOR|MINOR|NIT|FATAL|BLOCKER)\s*$",
     re.MULTILINE,
 )
+ESS_SECTION_RE = re.compile(r"^##+\s*ESSENTIAL\b", re.MULTILINE | re.IGNORECASE)
+MAJ_SECTION_RE = re.compile(r"^##+\s*MAJOR\b", re.MULTILINE | re.IGNORECASE)
+MIN_SECTION_RE = re.compile(r"^##+\s*MINOR\b", re.MULTILINE | re.IGNORECASE)
 
 
 def find_rounds() -> list[str]:
@@ -59,12 +65,42 @@ def find_rounds() -> list[str]:
     return sorted(rounds)
 
 
+def _extract_problem(block: list[str]) -> str:
+    problem = []
+    in_prob = False
+    for ln in block:
+        ln_stripped = ln.strip()
+        ln_label = ln_stripped.lstrip("*").lstrip("_").rstrip("*").rstrip("_").lower().lstrip("-").strip()
+        if (ln_label.startswith("problem") or ln_label.startswith("specific problem")):
+            in_prob = True
+            after = ln.split(":", 1)[1].strip() if ":" in ln else ""
+            after = after.rstrip("*").rstrip("_").strip()
+            if after:
+                problem.append(after)
+            continue
+        if in_prob and (
+            ln_label.startswith("required fix") or
+            ln_label.startswith("fix") or
+            ln_label.startswith("section") or
+            ln_label.startswith("location") or
+            ln_label.startswith("quote") or
+            ln_label.startswith("why")
+        ):
+            break
+        if in_prob:
+            problem.append(ln_stripped)
+    return " ".join(problem).strip()
+
+
 def extract_findings(text: str, round_label: str, paper: str) -> list[dict]:
-    """Extract every Severity-tagged block. Returns list of dicts."""
+    """Extract every Severity-tagged finding. Supports both gpt-5-pro and
+    Claude opus 4.7 META formats."""
     lines = text.splitlines()
+    findings = []
+
+    # FORMAT 1: "Severity: ESSENTIAL" lines
     sev_indices = [(i, m) for i, ln in enumerate(lines)
                    if (m := SEV_RE.match(ln))]
-    findings = []
     for k, (idx, m) in enumerate(sev_indices):
         sev = m.group(1).upper()
         end = sev_indices[k + 1][0] if k + 1 < len(sev_indices) else len(lines)
@@ -76,27 +112,45 @@ def extract_findings(text: str, round_label: str, paper: str) -> list[dict]:
             if mm:
                 id_str = mm.group(0)
                 break
-        problem = []
-        in_prob = False
-        for ln in block:
-            l = ln.strip().lower().lstrip("-").strip()
-            if l.startswith("problem") or l.startswith("specific problem"):
-                in_prob = True
-                after = ln.split(":", 1)[1].strip() if ":" in ln else ""
-                if after:
-                    problem.append(after)
-                continue
-            if in_prob and (l.startswith("required fix") or l.startswith("section") or l.startswith("location")):
-                break
-            if in_prob:
-                problem.append(ln.strip())
         findings.append({
             "id": id_str,
             "severity": sev,
             "paper": paper,
             "round": round_label,
-            "problem": " ".join(problem).strip(),
+            "problem": _extract_problem(block),
         })
+
+    if findings:
+        return findings
+
+    # FORMAT 2: "## ESSENTIAL" + "### <PAPER>-META-E<N>" section-based
+    # Find spans for ESSENTIAL, MAJOR, MINOR sections
+    section_ranges = []
+    for i, ln in enumerate(lines):
+        if ESS_SECTION_RE.match(ln):
+            section_ranges.append(("ESSENTIAL", i))
+        elif MAJ_SECTION_RE.match(ln):
+            section_ranges.append(("MAJOR", i))
+        elif MIN_SECTION_RE.match(ln):
+            section_ranges.append(("MINOR", i))
+    for k, (sev, start) in enumerate(section_ranges):
+        end = section_ranges[k + 1][1] if k + 1 < len(section_ranges) else len(lines)
+        # Walk ### headers in this section
+        header_positions = []
+        for i in range(start, end):
+            m = re.match(r"^###\s+\**\s*([PR]\d?[A-Z]?-META-[EBMNmn]\d+)\b", lines[i])
+            if m:
+                header_positions.append((i, m.group(1)))
+        for j, (idx, fid) in enumerate(header_positions):
+            block_end = header_positions[j + 1][0] if j + 1 < len(header_positions) else end
+            block = lines[idx:block_end]
+            findings.append({
+                "id": fid,
+                "severity": sev,
+                "paper": paper,
+                "round": round_label,
+                "problem": _extract_problem(block),
+            })
     return findings
 
 
