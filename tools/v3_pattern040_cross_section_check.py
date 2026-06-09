@@ -91,6 +91,30 @@ CONTRADICTION_PAIRS = [
         "Quotes both ± and CI in same line — check arithmetic consistency (pattern-041)",
         "MINOR",  # informational only; the user should run pattern-041 audit
     ),
+    (
+        # fire 16 P1A-META-E2: Eq.(4) gamma-dependent vs Eq.(13) gamma-free contact coefficient
+        # Generalize: same physical coefficient written with two incompatible parametric dependencies
+        r"\\frac\{3\\pi\s*G",  # NJL-style coupling A: e.g., (3π G_N/2)
+        r"\\frac\{3\}\{16\}\s*\\kappa",  # NJL-style coupling B: e.g., (3/16) κ
+        "Two incompatible four-fermion / contact-coupling parametric forms across equations (e.g., Eq.4 vs Eq.13 — pattern-040 cross-eq variant)",
+        "ESSENTIAL",
+    ),
+    (
+        # fire 16 P4-META-E2: "T1 flip-swap correlation = 1.000" tautological
+        # Detection: claim of a "measured" metric that the methodology enforces by construction
+        r"flip[- ]?swap\s+correlation\s*=\s*1\.000",
+        r"enforces?\s+flip[- ]?equivariance|by\s+construction",
+        "Tautological 'measured' metric — flip-swap correlation = 1.000 is enforced by construction (fire-16 P4-META-E2 family)",
+        "ESSENTIAL",
+    ),
+    (
+        # fire 16 P4-META-E3: NaMaster weight uses N_all but A_p variance uses N_spiral
+        # Generalize: weight field W_p with one count basis vs variance with different count basis
+        r"W_p\s*=\s*N_?\\?{?\\?all\\?}?\\?\(?p\\?\)?|weight\s*\(mask\)\s*map\s*assigns\s*W_p\s*=\s*N",
+        r"variance\s+(?:proportional\s+to\s+|is\s+binomial\s+in\s+)N_?\\?{?\\?spiral\\?}?|binomial\s+variance\s+of\s+N_?\\?{?\\?spiral",
+        "Weight-variance count-basis mismatch (W_p uses N_all but A_p variance binomial in N_spiral)",
+        "MAJOR",
+    ),
 ]
 
 
