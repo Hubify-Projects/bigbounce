@@ -78,7 +78,7 @@ export function ExternalReviewPanel({
         padding: 18,
         marginTop: 24,
         marginBottom: 24,
-        background: "rgba(2, 132, 199, 0.04)",
+        background: "color-mix(in srgb, var(--surface) 80%, transparent)",
       }}
       aria-label="External peer review kit"
     >
@@ -95,10 +95,10 @@ export function ExternalReviewPanel({
         <h3
           style={{
             fontFamily: "var(--font-mono-stack)",
-            fontSize: "0.85rem",
+            fontSize: "0.78rem",
             letterSpacing: "0.08em",
             textTransform: "uppercase",
-            color: "#0369a1",
+            color: "var(--text-tertiary)",
             margin: 0,
           }}
         >
@@ -140,8 +140,8 @@ export function ExternalReviewPanel({
             padding: "8px 14px",
             fontFamily: "var(--font-mono-stack)",
             fontSize: "0.82rem",
-            background: copied ? "#16a34a" : "#0369a1",
-            color: "white",
+            background: copied ? "var(--success)" : "var(--accent)",
+            color: "#ffffff",
             border: "none",
             borderRadius: 6,
             cursor: "pointer",

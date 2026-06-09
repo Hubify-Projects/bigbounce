@@ -162,6 +162,9 @@ export default async function PaperDetailPage({
             <div className="paper-detail-kicker flex flex-wrap gap-2">
               <span>Paper {paper.number}</span>
               <span>{paper.preprintId}</span>
+              <span>{paper.pages} pages</span>
+              <span>{paper.refs} refs</span>
+              <span>Target: {paper.target}</span>
             </div>
             <h1 style={{ fontFamily:"var(--font-mono-stack)", fontWeight: 600 }}>
               Paper {paper.number}
@@ -176,7 +179,10 @@ export default async function PaperDetailPage({
                 <Badge
                   variant="outline"
                   title="readiness + version live from Convex (computed from open findings + caveats)"
-                  style={{ borderColor: "#16a34a", color: "#16a34a" }}
+                  style={{
+                    borderColor: "color-mix(in srgb, var(--success) 45%, transparent)",
+                    color: "var(--success)",
+                  }}
                 >
                   ● live
                 </Badge>
@@ -189,9 +195,6 @@ export default async function PaperDetailPage({
                   {openSummary}
                 </Badge>
               )}
-              <Badge variant="outline">{paper.pages} pages</Badge>
-              <Badge variant="outline">{paper.refs} refs</Badge>
-              <Badge variant="outline">Target: {paper.target}</Badge>
             </div>
             <p style={{ marginTop: 14, fontSize: "0.92rem", color: "var(--text-muted)", lineHeight: 1.55 }}>
               {paper.tldr}
@@ -284,7 +287,7 @@ export default async function PaperDetailPage({
                 style={{
                   marginLeft: 8,
                   fontSize: "0.7rem",
-                  color: "#16a34a",
+                  color: "var(--success)",
                   fontFamily: "var(--font-mono-stack)",
                 }}
                 title="computed from open findings + caveats; live from Convex"
@@ -417,13 +420,13 @@ export default async function PaperDetailPage({
                 const sevTotal = r.blockerCount + r.majorCount + r.minorCount;
                 const recColor =
                   r.recommendation === "accept"
-                    ? "var(--text-muted)"
+                    ? "var(--success)"
                     : r.recommendation === "minor-revisions"
-                      ? "#16a34a"
+                      ? "var(--text-secondary)"
                       : r.recommendation === "major-revisions"
-                        ? "#d97706"
+                        ? "var(--warn)"
                         : r.recommendation === "reject"
-                          ? "#dc2626"
+                          ? "var(--crit)"
                           : "var(--text-muted)";
                 return (
                   <div

@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import type { PaperFigure } from "@/lib/livePapers";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -25,7 +26,7 @@ export function PaperFigureGallery({
   paperNumber,
 }: PaperFigureGalleryProps) {
   const [mode, setMode] = useState<Mode>("all");
-  const [active, setActive] = useState<PaperFigure | null>(null);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   const visible =
     mode === "in-paper"
@@ -39,6 +40,34 @@ export function PaperFigureGallery({
     "in-paper": inPaper.length,
     candidate: candidates.length,
   };
+
+  const active = activeIndex === null ? null : (visible[activeIndex] ?? null);
+
+  const step = useCallback(
+    (delta: number) => {
+      setActiveIndex((prev) => {
+        if (prev === null || visible.length === 0) return prev;
+        return (prev + delta + visible.length) % visible.length;
+      });
+    },
+    [visible.length],
+  );
+
+  // Keyboard navigation while the zoom view is open.
+  useEffect(() => {
+    if (activeIndex === null) return;
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.key === "ArrowRight") {
+        e.preventDefault();
+        step(1);
+      } else if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        step(-1);
+      }
+    }
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [activeIndex, step]);
 
   return (
     <div className="paper-figure-gallery">
@@ -80,7 +109,10 @@ export function PaperFigureGallery({
                 type="button"
                 role="tab"
                 aria-selected={isActive}
-                onClick={() => setMode(key)}
+                onClick={() => {
+                  setMode(key);
+                  setActiveIndex(null);
+                }}
                 style={{
                   padding: "5px 12px",
                   fontFamily: "var(--font-mono-stack)",
@@ -91,7 +123,7 @@ export function PaperFigureGallery({
                   border: "none",
                   cursor: "pointer",
                   background: isActive ? "var(--text)" : "transparent",
-                  color: isActive ? "var(--background)" : "var(--text-muted)",
+                  color: isActive ? "var(--bg)" : "var(--text-muted)",
                   transition: "background-color 120ms, color 120ms",
                 }}
               >
@@ -146,7 +178,7 @@ export function PaperFigureGallery({
             gap: 14,
           }}
         >
-          {visible.map((fig) => {
+          {visible.map((fig, i) => {
             const isCandidate = fig.status === "candidate";
             return (
               <Card
@@ -162,7 +194,7 @@ export function PaperFigureGallery({
               >
                 <button
                   type="button"
-                  onClick={() => setActive(fig)}
+                  onClick={() => setActiveIndex(i)}
                   style={{
                     display: "block",
                     width: "100%",
@@ -192,6 +224,7 @@ export function PaperFigureGallery({
                       src={fig.src}
                       alt={fig.alt}
                       loading="lazy"
+                      decoding="async"
                       style={{
                         width: "100%",
                         height: "100%",
@@ -266,7 +299,7 @@ export function PaperFigureGallery({
 
       <Dialog
         open={active !== null}
-        onOpenChange={(open) => !open && setActive(null)}
+        onOpenChange={(open) => !open && setActiveIndex(null)}
       >
         <DialogContent className="max-w-6xl">
           {active && (
@@ -301,6 +334,43 @@ export function PaperFigureGallery({
                   }}
                 />
               </div>
+              {visible.length > 1 && (
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: 12,
+                  }}
+                >
+                  <button
+                    type="button"
+                    onClick={() => step(-1)}
+                    aria-label="Previous figure (left arrow)"
+                    className="figure-nav-btn"
+                  >
+                    <ChevronLeft size={15} />
+                  </button>
+                  <span
+                    style={{
+                      fontFamily: "var(--font-mono-stack)",
+                      fontSize: "0.7rem",
+                      color: "var(--text-muted)",
+                      fontVariantNumeric: "tabular-nums",
+                    }}
+                  >
+                    {(activeIndex ?? 0) + 1} / {visible.length}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => step(1)}
+                    aria-label="Next figure (right arrow)"
+                    className="figure-nav-btn"
+                  >
+                    <ChevronRight size={15} />
+                  </button>
+                </div>
+              )}
               <DialogDescription className="text-xs leading-relaxed">
                 {active.desc}
                 <span
@@ -318,7 +388,7 @@ export function PaperFigureGallery({
                   {active.status === "candidate" && (
                     <>
                       {" · "}
-                      <span style={{ color: "#d97706" }}>
+                      <span style={{ color: "var(--warn)" }}>
                         not yet in paper — tell Houston to add
                       </span>
                     </>

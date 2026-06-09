@@ -82,11 +82,7 @@ export default async function FiguresPage() {
           Figures
         </h1>
         <p className="subtitle">
-          {totalFigures} research figures across all 6 papers (P1A · P1B · P2 ·
-          P3 · P4 · P5). In-paper figures are seeded from each paper&apos;s
-          current .tex; candidate figures exist on disk + are scientifically
-          valid but not yet \includegraphics&apos;d — pick the ones you want
-          re-added from the paper detail page or here.
+          {`${totalFigures} research figures across all 6 papers (P1A · P1B · P2 · P3 · P4 · P5). In-paper figures are synced from each paper's current LaTeX source on every build; candidate figures are validated analysis outputs not yet included in a draft.`}
         </p>
       </div>
 

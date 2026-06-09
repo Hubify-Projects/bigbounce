@@ -2,9 +2,9 @@ import type { Paper, PublicationStage, StageState } from "@/data/papers";
 import { pathSummary } from "@/data/papers";
 
 const STATE_COLOR: Record<StageState, string> = {
-  done: "#16a34a",
-  active: "#0369a1",
-  blocked: "#d97706",
+  done: "var(--success)",
+  active: "var(--accent)",
+  blocked: "var(--warn)",
   pending: "var(--border)",
 };
 
@@ -43,7 +43,9 @@ export function PublicationPath({ stages }: { stages: PublicationStage[] }) {
                   background: stage.state === "pending" ? "transparent" : color,
                   border: `2px solid ${stage.state === "pending" ? "var(--border)" : color}`,
                   boxShadow:
-                    stage.state === "active" ? "0 0 0 3px rgba(3,105,161,0.18)" : undefined,
+                    stage.state === "active"
+                      ? "0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent)"
+                      : undefined,
                 }}
               />
               {!isLast && (
@@ -54,7 +56,9 @@ export function PublicationPath({ stages }: { stages: PublicationStage[] }) {
                     flex: 1,
                     minHeight: 14,
                     background:
-                      stage.state === "done" ? "rgba(22,163,74,0.35)" : "var(--border)",
+                      stage.state === "done"
+                        ? "color-mix(in srgb, var(--success) 35%, transparent)"
+                        : "var(--border)",
                   }}
                 />
               )}

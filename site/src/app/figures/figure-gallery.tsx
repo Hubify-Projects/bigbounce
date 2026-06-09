@@ -1,11 +1,12 @@
 "use client";
 
-import { useMemo, useState } from"react";
+import { useCallback, useEffect, useMemo, useState } from"react";
+import Link from"next/link";
 import type { Figure, FigureSection } from"@/data/figures";
 import { Card } from"@/components/ui/card";
 import { Badge } from"@/components/ui/badge";
 import { Button } from"@/components/ui/button";
-import { Search, SlidersHorizontal } from"lucide-react";
+import { ChevronLeft, ChevronRight, Search, SlidersHorizontal } from"lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -39,6 +40,12 @@ function paperKey(title: string): FigurePaper {
 function paperLabel(key: FigurePaper) {
   if (key === "X") return "Cross-cutting";
   return `Paper ${key.replace("P", "")}`;
+}
+
+/** Route slug for a paper key — null for cross-cutting figures. */
+function paperSlug(key: FigurePaper): string | null {
+  if (key === "X") return null;
+  return `paper-${key.replace("P", "").toLowerCase()}`;
 }
 
 function figureNumberValue(number: string) {
@@ -85,7 +92,7 @@ const FILTERS: Array<{
 ];
 
 export function FigureGallery({ sections }: FigureGalleryProps) {
-  const [active, setActive] = useState<Figure | null>(null);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [filter, setFilter] = useState<typeof FILTERS[number]["key"]>("all");
   const [sourceFilter, setSourceFilter] = useState("all");
   const [sort, setSort] = useState<FigureSort>("paper");
@@ -143,6 +150,35 @@ export function FigureGallery({ sections }: FigureGalleryProps) {
       );
     });
   }, [allFigures, filter, query, sort, sourceFilter]);
+
+  const active =
+    activeIndex === null ? (null as EnrichedFigure | null) : (visibleFigures[activeIndex] ?? null);
+
+  const step = useCallback(
+    (delta: number) => {
+      setActiveIndex((prev) => {
+        if (prev === null || visibleFigures.length === 0) return prev;
+        return (prev + delta + visibleFigures.length) % visibleFigures.length;
+      });
+    },
+    [visibleFigures.length],
+  );
+
+  // Keyboard navigation while the zoom view is open.
+  useEffect(() => {
+    if (activeIndex === null) return;
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.key === "ArrowRight") {
+        e.preventDefault();
+        step(1);
+      } else if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        step(-1);
+      }
+    }
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [activeIndex, step]);
 
   const groupedFigures = useMemo(
     () =>
@@ -286,7 +322,7 @@ export function FigureGallery({ sections }: FigureGalleryProps) {
               >
                 <button
                   type="button"
-                  onClick={() => setActive(fig)}
+                  onClick={() => setActiveIndex(visibleFigures.indexOf(fig))}
                   className="block h-full w-full text-left"
                   >
                   <div className="figure-stage flex aspect-[16/10] w-full items-center justify-center overflow-hidden border-b">
@@ -295,6 +331,7 @@ export function FigureGallery({ sections }: FigureGalleryProps) {
                       src={fig.src}
                       alt={fig.alt}
                       loading="lazy"
+                      decoding="async"
                       className="h-full w-full object-contain p-3 transition-transform duration-200 group-hover:scale-[1.015]"
                     />
                   </div>
@@ -307,7 +344,8 @@ export function FigureGallery({ sections }: FigureGalleryProps) {
                         <Badge variant="outline" className="font-mono text-[10px]">
                           {paperLabel(fig.paper)}
                         </Badge>
-                        {fig.source && (
+                        {fig.source &&
+                          fig.sourceGroup !== paperLabel(fig.paper) && (
                           <Badge variant="secondary" className="max-w-[180px] truncate font-mono text-[10px]">
                             {fig.sourceGroup}
                           </Badge>
@@ -339,7 +377,7 @@ export function FigureGallery({ sections }: FigureGalleryProps) {
 
       <Dialog
         open={active !== null}
-        onOpenChange={(open) => !open && setActive(null)}
+        onOpenChange={(open) => !open && setActiveIndex(null)}
       >
         <DialogContent className="max-w-6xl">
           {active && (
@@ -358,13 +396,49 @@ export function FigureGallery({ sections }: FigureGalleryProps) {
                   className="figure-dialog-image max-h-[70vh] w-auto object-contain"
                 />
               </div>
+              {visibleFigures.length > 1 && (
+                <div className="flex items-center justify-center gap-3">
+                  <button
+                    type="button"
+                    onClick={() => step(-1)}
+                    aria-label="Previous figure (left arrow)"
+                    className="figure-nav-btn"
+                  >
+                    <ChevronLeft size={15} />
+                  </button>
+                  <span
+                    className="font-mono text-[11px]"
+                    style={{ color:"var(--text-tertiary)", fontVariantNumeric:"tabular-nums" }}
+                  >
+                    {(activeIndex ?? 0) + 1} / {visibleFigures.length}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => step(1)}
+                    aria-label="Next figure (right arrow)"
+                    className="figure-nav-btn"
+                  >
+                    <ChevronRight size={15} />
+                  </button>
+                </div>
+              )}
               <DialogDescription className="text-xs leading-relaxed">
                 {active.desc}
-                {active.source && (
-                  <span className="mt-2 block font-mono text-[10px] uppercase tracking-wider">
-                    Source: {active.source}
-                  </span>
-                )}
+                <span className="mt-2 block font-mono text-[10px] uppercase tracking-wider">
+                  {active.source && <>Source: {active.source}</>}
+                  {paperSlug(active.paper) && (
+                    <>
+                      {active.source && " · "}
+                      <Link
+                        href={`/papers/${paperSlug(active.paper)}`}
+                        className="underline underline-offset-2"
+                        style={{ color:"var(--text-secondary)" }}
+                      >
+                        Open {paperLabel(active.paper)} →
+                      </Link>
+                    </>
+                  )}
+                </span>
               </DialogDescription>
             </>
           )}
