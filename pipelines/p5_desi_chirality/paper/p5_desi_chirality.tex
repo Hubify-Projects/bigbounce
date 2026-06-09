@@ -18,7 +18,30 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.50-2026-06-09}
+\newcommand{\paperVersion}{v0.1.51-2026-06-09}
+% v0.1.51-2026-06-09 (R22prov truth-audit closure wave; work order in
+%   project-context/peer-reviews/R22prov_P5_TRUTH_AUDIT.md; recompute artifacts
+%   outputs/17_v0151_closure_recomputes.json + 18_v0151_stratified_and_density.json):
+%   META-E1 headline parent relabeled 791,635 -> 812,793 env-labeled rows
+%   (783,820 unique; sec VIII.F mechanism corrected to duplicate survey/program
+%   coadd rows, NOT a "relaxed confidence filter"); OAI-E6/E2/m17 bright/dark
+%   per-class split recomputed on the declared superset parent (filament
+%   bright 394,181 sigma=-2.98 / dark 13,759 sigma=+1.61, |z|=2.1 — the prior
+%   416,701/21,203 + 3.4sigma figures came from an unfiltered nearest-label
+%   join and are withdrawn); sec XI rewritten with measured per-split values
+%   (bright-dark Delta=0.81pp, z=-2.0); OAI-M1 sigma_pred(filament) -3.16 ->
+%   -3.32; OAI-E1/T4 Phase-2 sweep recomputed on the declared parent (ranges
+%   1.7-4.1pp dominated by the small void bin; old 0.066-0.220pp table was on
+%   the unfiltered 5.57M-row join, withdrawn); OAI-E3 Tempel concordance
+%   recomputed like-for-like on the 96,753-spiral declared-parent overlap
+%   (filament pair 0.29pp; old 110,586/0.026pp withdrawn); META-M6 omnibus
+%   chi2 added (canonical p=0.315, z-shell p=0.990); stale P4 -0.12sigma
+%   MASTER citation replaced with v1.0.166 re-anchored headline; OAI-M7 KDTree
+%   k=20 guard (exact rerun: n_void 56,981->57,081, +0.18%, conclusions
+%   invariant); Grok-M3 grid convergence N in {128,384}; META-M2 stratified
+%   shuffles; META-M3 parent-tracer density proxy; plus T5-T8 text bundles
+%   (p<1e-300, 0.26pp, caption signs, T-Web/V-Web harmonization, sigma
+%   non-comparability notes, Jeffreys naming, artifact-path macros, etc.).
 % v0.1.50-2026-06-09 (fire-21 P5-META-E1+E2 closure via COMPUTE, not text):
 %   new §sec:zshell_robustness — z-shell selection-corrected T-Web rebuild
 %   (21 shells, per-shell footprint-only means, canonical grid/R_s/λ_th
@@ -109,27 +132,39 @@ $14{,}622{,}283$-galaxy DESI DR1 spectro sample on a $256^3$ comoving
 grid with a $25\,{\rm Mpc}/h$ Gaussian smoothing and eigenvalue
 threshold $\lambda_{\rm th}\!=\!0$. \textbf{Headline result:} the CW
 fraction shows no environment dependence above the sensitivity floor
-set by the Paper~IV catalog-monopole offset of $\sim\!0.2$\,pp
+set by the Paper~IV catalog-monopole offset of $\approx\!0.26$\,pp
 (systematic-dominated for V-Web filament/cluster at $n \gtrsim
-4 \times 10^5$) and by counting statistics of $\sim\!5$\,pp
-(statistical-dominated for V-Web void at $n = 428$, ${\sim}2\sigma$
-on the binomial null), within DESI DR1 at V-Web resolution. Per-class CW fractions on the $791{,}635$
-chirality-relevant spirals are, in order of decreasing $n$:
+4 \times 10^5$) and by counting statistics of $\pm 4.8$\,pp
+($2\sigma$ binomial half-width; statistical-dominated for V-Web void
+at $n = 428$, ${\sim}2\sigma$
+on the binomial null), within DESI DR1 at V-Web resolution.
+Per-class CW fractions on the $812{,}793$
+env-labeled spiral rows (the $791{,}635$ unique chirality-relevant
+matched spirals, counted once per repeat DR1 survey--program coadd row
+carried by the environment table; \S\ref{sec:desivast_p4_residual})
+are, in order of decreasing $n$:
 $0.4980$ (filament; $n\!=\!408{,}187$, $-2.61\sigma$),
 $0.4963$ (cluster; $n\!=\!397{,}505$, $-4.66\sigma$),
 $0.5034$ (wall; $n\!=\!6{,}673$, $+0.55\sigma$), and
 $0.4836$ (void; $n\!=\!428$, $-0.68\sigma$ — survey-edge
 artifact dominated at $z\!\lesssim\!0.24$, see DESIVAST-anchored
-re-projection below). The range across classes is
-$1.98$\,percentage points, and the negative $\sigma$ values
+re-projection below). The quoted $\sigma_{\rm from\,half}$ values
+scale as $\sqrt{n}$ at fixed fractional offset and are therefore not
+mutually comparable across classes of different $n$. The range across
+classes is
+$1.98$\,percentage points, an omnibus $4\times2$ homogeneity test
+across the four classes is null ($\chi^2 = 3.55$, 3~d.o.f.,
+$p = 0.31$), and the negative $\sigma$ values
 in filament and cluster track the catalog-wide
 $\Delta f_{\rm CW}\!=\!-0.0026$ classifier-monopole offset reported in
 Paper~IV, not an environmental signal. A Phase~2 sensitivity sweep
 across nine cells $\{R_s,\lambda_{\rm th}\} \in \{10, 25,
 50\}\,{\rm Mpc}/h \times \{0.0, 0.1, 0.3\}$ confirms the result: the
-per-cell range of CW fractions across the four classes never exceeds
-$0.22$\,percentage points (max $0.0022$ at
-$R_s\!=\!25, \lambda_{\rm th}\!=\!0.3$), and the headline sign-pattern
+per-cell cross-class range of CW fractions ($1.7$--$4.1$\,percentage
+points) is dominated by the counting noise of the small void bin
+($n = 363$--$853$ per cell), the per-cell label-shuffle look-elsewhere
+$p$-values span $0.13$--$0.56$ (no cell below $0.05$), and the
+headline sign-pattern
 (filament and cluster at the catalog-mean offset, void and wall
 uninformative at $|\sigma| \lesssim 3$) is invariant under the
 smoothing scale and threshold choices. We also report null tests in
@@ -152,10 +187,11 @@ V-Web void label.
 \textbf{Robustness.} We strengthen the headline with the Tempel
 \textit{et~al.}~2014~\cite{Tempel2014} friends-of-friends group
 classifier as a supporting cross-survey consistency check
-(different parent catalog, SDSS DR10, only $\sim\!14$k galaxies in
+(different parent catalog, SDSS DR10, only $\sim\!12$k galaxies in
 the filament-like bin, richness-selection rather than tidal-tensor,
-approximate richness-to-tidal mapping; filament-class concordance
-$0.026$\,pp; supporting rather than load-bearing:
+approximate richness-to-tidal mapping; like-for-like filament-class
+concordance on the common overlap sample
+$0.29$\,pp, within counting statistics; supporting rather than load-bearing:
 the primary robustness evidence is the on-DESI DESIVAST
 cross-classifier and Phase 2 V-Web sensitivity analyses) and four DESIVAST-anchored
 re-projections of the V-Web null on a $\sim\!130\times$ larger void
@@ -187,19 +223,23 @@ not environment density, consistent with the BGS-selection-function-
 conditioned imaging-leg systematics tracked in Paper~IV; this is
 confirmed by a tracer-program decomposition showing the catalog-level
 $-5\sigma$ is entirely driven by the BGS-bright sample, with the
-LRG/ELG/QSO-dark sample returning $\sigma = +1.25$ (filament class:
-bright $-2.80$ vs dark $+2.85$, opposite sign). The joint two-sample
+LRG/ELG/QSO-dark sample returning $\sigma = +1.25$ (filament class,
+on the declared env-labeled parent: bright $n=394{,}181$ at
+$\sigma=-2.98$ vs dark $n=13{,}759$ at $\sigma=+1.61$, opposite sign).
+The joint two-sample
 z-test on the bright-vs-dark $f_{\rm CW}$ difference is
-$|z| \approx 3.4\sigma$ on the filament class (where the dark sample
-$n=21{,}203$ is large enough to test); the cluster class joint
+$|z| \approx 2.1\sigma$ on the filament class (the largest dark
+subsample available per class); the cluster class joint
 $|z| \approx 0.5\sigma$ is sample-size-limited ($n_{\rm dark}^{\rm
 cluster} = 4{,}234$) and does not independently confirm or refute the
-selection-function-conditioned interpretation.
+selection-function-conditioned interpretation. At the whole-catalog
+level the bright-vs-dark difference is $0.81$\,pp
+($f_{\rm CW} = 0.4970$ vs $0.5051$, $|z| \approx 2.0\sigma$).
 A contingency test (\S\ref{sec:results_vweb})
 finds V-Web class and target program are \emph{not} independent
-($\chi^{2}\!=\!4932$, $3$ d.o.f., $p\!<\!10^{-1000}$, max class-to-overall
+($\chi^{2}\!=\!4932$, $3$ d.o.f., $p\!<\!10^{-300}$, max class-to-overall
 bright-fraction deviation $1.5$\,pp), so the V-Web filament
-bright-vs-dark sign-flip is best read as a real residual structure
+bright-vs-dark sign-flip is best read as a residual structure
 that the current data do not allow us to cleanly partition between a
 pure BGS-selection-function-origin (propagated through a
 V-Web-class-correlated target-program mix) and a residual
@@ -207,7 +247,7 @@ target-program-conditioned astrophysical signal. The headline
 environment-independence statement of this paper is anchored on the
 DESIVAST primary analysis below (\S\ref{sec:desivast_primary}),
 which is constructed to be insensitive to this residual; the
-$3.4\sigma$ filament sign-flip is flagged as a real diagnostic to be
+${\sim}2\sigma$ filament sign-flip is flagged as a diagnostic to be
 disentangled by future Rubin/LSST + DESI DR2 follow-up where the
 cluster-restricted dark sample will be $\gtrsim 5\times$ larger.
 \end{abstract}
@@ -247,7 +287,7 @@ canonical chirality catalog with DESI Data Release~1
 classifier (Section~\ref{sec:vweb}) on the parent DESI DR1 spectroscopic
 catalog to assign each matched spiral to one of \{void, wall, filament,
 cluster\}. Third, we test the chirality-by-environment dependence with
-exact binomial intervals and label-shuffle permutation nulls
+Jeffreys binomial credible intervals and label-shuffle permutation nulls
 (Sections~\ref{sec:results}--\ref{sec:phase2}). The test is
 bounce-model agnostic.
 
@@ -271,12 +311,19 @@ from $0.5$ that is spatially uniform and quality-quartile-flat) rather
 than a real cosmological dipole; we therefore expect the environmental
 $\sigma_{\rm from\,half}$ values reported here to inherit the same
 monopole offset, with sign determined by sample size. Second,
-Paper~IV's full-sky dipole null is at $\sigma\!=\!0.43, p\!=\!0.30$ for
-direct amplitude estimation and $-0.12\sigma$ for the subsample-mask
-MASTER-deconvolved $\ell\!=\!1$ amplitude, so any environmental signal
-here would have to coexist with that null. Third, Paper~IV provides
+Paper~IV's current headline (v1.0.166) is a real-space full-sky dipole
+null at $+0.43\sigma$ ($p\!=\!0.30$) from direct amplitude estimation,
+reinforced by a weighted template fit that excludes a clean
+Shamir-amplitude ($1.7\%$) dipole; an earlier harmonic-space
+subsample-mask MASTER-deconvolved $\ell\!=\!1$ statistic was withdrawn
+in Paper~IV v1.0.166 after a provenance audit traced its mask to a
+synthetic footprint. Any environmental signal
+here would have to coexist with the re-anchored real-space null. Third,
+Paper~IV provides
 the per-galaxy CW/CCW labels we test here; we make no independent
-classification.
+classification. The per-galaxy catalog labels and the monopole offset
+consumed by this paper are unaffected by Paper~IV's harmonic-channel
+revision.
 
 \section{Data}\label{sec:data}
 
@@ -310,7 +357,10 @@ We compute nearest-neighbour angular separations on the celestial sphere
 using \textsc{astropy} \texttt{SkyCoord.match\_to\_catalog\_sky}. The
 primary acceptance radius is $1.0''$ (DESI fiber positioning tolerance);
 sensitivity is reported at $\{0.5, 1.0, 2.0, 3.0, 5.0\}''$. Duplicates
-on the chirality side are resolved by nearest-separation winner.
+on the chirality side are resolved by nearest-separation winner; after
+this dedup the chirality-relevant subsample carries one row per DESI
+\texttt{TARGETID} ($791{,}635$ rows, $791{,}635$ unique
+\texttt{TARGETID}s — no many-to-one matches survive the join).
 
 \subsection{Matched catalog summary}\label{sec:matched_summary}
 
@@ -384,12 +434,22 @@ We compute environment labels via the V-Web tidal-tensor classifier
 (Hahn~\textit{et~al.}~2007 \cite{Hahn2007};
 Hoffman~\textit{et~al.}~2012 \cite{Hoffman2012};
 Cautun~\textit{et~al.}~2014 \cite{Cautun2014}).
+\emph{Nomenclature reminder} (see also the title footnote):
+throughout this paper ``V-Web'' names \emph{our implementation} of the
+Hahn~2007 tidal-tensor (T-Web) recipe; we reserve ``T-Web'' for
+external implementations of the same recipe (e.g.\ the concurrent
+DR1 analysis of Ref.~\cite{TWebDESI2026}).
 
 \begin{enumerate}
 \item Filter DESI DR1 \texttt{zall} to \texttt{ZWARN==0}, SPECTYPE
 $=$ GALAXY, $0.01 \le z \le 2.0$ (yields $14{,}622{,}283$ galaxies).
 \item Compute comoving distance $\chi(z)$ via Planck~2018
-\cite{Planck2018cosmoparams}.
+\cite{Planck2018cosmoparams}. Unit convention used throughout the
+pipeline: \textsc{astropy} returns $\chi$ in Mpc and we multiply by
+$h$ explicitly to work in $h^{-1}$\,Mpc (sanity value:
+$\chi(z\!=\!0.2) = 570.4\,h^{-1}$\,Mpc), the same convention as the
+DESIVAST hole-catalog $X/Y/Z$ columns used in
+\S\ref{sec:desivast_primary}.
 \item Map to Cartesian
 $(X,Y,Z) = \chi (\cos\delta\cos\alpha, \cos\delta\sin\alpha,
 \sin\delta)$.
@@ -442,8 +502,8 @@ galaxy-traced large-scale structure.}
 
 \section{Statistical methods}\label{sec:stats}
 
-For each binned analysis we report observed CW fraction, exact
-binomial $95\%$ credible interval, and the signed deviation from $0.5$
+For each binned analysis we report observed CW fraction, the Jeffreys
+$95\%$ binomial credible interval, and the signed deviation from $0.5$
 $\sigma_{\rm from\,half} \equiv (n_{\rm CW} - 0.5 N)/(0.5\sqrt{N})$.
 For hypothesis tests we run two complementary nulls: (i) a
 label-shuffle permutation that preserves positions but destroys any
@@ -453,7 +513,9 @@ independent permutations from a deterministic-seeded NumPy
 \texttt{default\_rng} (seed fixed in the pipeline config); per-bin
 $\sigma_{\rm from\,half}$ is recomputed under each draw, and the
 null distribution is constructed as the empirical CDF of the
-per-realization statistic. Analysis drivers are available in the companion data repository. Multi-bin scans are
+per-realization statistic. Analysis drivers are available in the
+companion data repository (defined in
+Appendix~\ref{sec:data_code}). Multi-bin scans are
 corrected for multiple testing with Bonferroni at $\alpha\!=\!0.01$.
 
 We explicitly compare each $\sigma_{\rm from\,half}$ against the
@@ -464,10 +526,15 @@ Paper~IV-predicted classifier-monopole offset
 \end{equation}
 with $\Delta f_{\rm CW}\!=\!-0.0026$ to flag whether a deviation is
 attributable to the global bias rather than environment-correlated
-chirality. A measured $|\sigma_{\rm from\,half}|$ that is within
-$\sim\!1\sigma$ of $|\sigma_{\rm pred}|$ at the bin's $N$ is consistent
-with the catalog monopole; deviations beyond
-$|\sigma_{\rm obs} - \sigma_{\rm pred}| > 3$ are candidate
+chirality. Because $\sigma_{\rm from\,half}$ grows as $\sqrt{N}$ at
+fixed fractional offset, raw $\sigma$ values are not comparable across
+bins of different $N$; only the monopole-subtracted residuals are.
+The formal version of this comparison is the per-class one-sample
+residual test against $f_{\rm CW}^{\rm P5}$ reported in
+Table~\ref{tab:p4_monopole_residual} (all $|\sigma_{\rm vs\,monopole}|
+< 1.15$) together with the omnibus $4\times2$ homogeneity test of
+\S\ref{sec:results_vweb}; deviations beyond
+$|\sigma_{\rm obs} - \sigma_{\rm pred}| > 3$ would be candidate
 environmental signals.
 
 \subsection{Look-elsewhere (LEE) correction}\label{sec:lee}
@@ -570,12 +637,28 @@ the DESIVAST primary path.
 \subsection{Cosmic-web environment (headline)}\label{sec:results_vweb}
 
 Table~\ref{tab:cw_vs_env} reports CW fraction by cosmic-web class on
-the $791{,}635$ chirality-relevant matched spirals using the canonical
-V-Web run.
+the $812{,}793$ env-labeled spiral rows produced by joining the
+$791{,}635$ chirality-relevant matched spirals to the canonical V-Web
+environment table (the join carries $783{,}820$ unique env-matched
+spirals, counted once per repeat DR1 survey--program coadd row;
+\S\ref{sec:desivast_p4_residual} documents the reconciliation — the
+superset and unique-spiral monopoles agree to four decimals, so the
+headline is invariant under either parent). An omnibus $4\times2$
+homogeneity test (CW/CCW $\times$ class) on the table counts returns
+$\chi^2 = 3.55$ with 3~d.o.f.\ ($p = 0.31$): the four classes are
+statistically consistent with a single common CW fraction. The
+label-shuffle look-elsewhere $p$ on the max-class
+$|\sigma_{\rm from\,half}|$ statistic is likewise null and insensitive
+to stratification of the shuffle by imaging leg and DESI program
+($p = 0.12$ free vs $0.12$ stratified;
+\artifact{pipelines/p5\_desi\_chirality/outputs/18\_v0151\_stratified\_and\_density.json}).
 
 \begin{table}[t]
 \caption{CW fraction per cosmic-web environment, canonical V-Web
-$(R_s\!=\!25\,{\rm Mpc}/h, \lambda_{\rm th}\!=\!0)$.}
+$(R_s\!=\!25\,{\rm Mpc}/h, \lambda_{\rm th}\!=\!0)$, on the
+$812{,}793$-row env-labeled parent. $\sigma_{\rm from\,half}$ scales
+as $\sqrt{n}$ at fixed offset and is not comparable across rows of
+different $n$.}
 \label{tab:cw_vs_env}
 \begin{ruledtabular}
 \begin{tabular}{lrrrr}
@@ -603,7 +686,8 @@ by the imbalance between the high-$n$ filament and cluster bins
 \centering
 \includegraphics[width=\columnwidth]{fig_p5_cw_by_env_bar.png}
 \caption{CW fraction per cosmic-web class on the canonical V-Web run,
-on $n=791{,}635$ chirality-relevant matched spirals. Bars show the
+on the $n=812{,}793$ env-labeled spiral rows ($791{,}635$ unique
+chirality-relevant matched spirals; \S\ref{sec:results_vweb}). Bars show the
 observed $f_{\rm CW}$ per class; black error bars are $95\%$ Jeffreys
 binomial credible intervals. The void bin ($n\!=\!428$) is dominated
 by counting noise and brackets parity. The dashed horizontal line is
@@ -618,7 +702,7 @@ The negative
 $\sigma$ values in filament and cluster track the catalog-wide
 classifier-monopole offset of Paper~IV: predicting
 $\sigma_{\rm pred}$ from $\Delta f_{\rm CW}\!=\!-0.0026$ gives
-$\sigma_{\rm pred}({\rm filament})\!\approx\!-3.16$ and
+$\sigma_{\rm pred}({\rm filament})\!\approx\!-3.32$ and
 $\sigma_{\rm pred}({\rm cluster})\!\approx\!-3.28$, both within
 order-unity of observation. We interpret these as the global monopole
 leaking through the larger-sample bins, not as environment-dependent
@@ -628,7 +712,7 @@ chirality.
 galaxies (the small cluster volume fraction of $1\%$ plus the sparse
 $r \le 17.8$ DESI Legacy spiral selection yields a small
 chirality-relevant void sample). The $\sigma\!=\!-0.68$ on the void
-class is statistical noise at this $N$; the $95\%$ binomial credible
+class is statistical noise at this $N$; the $95\%$ Jeffreys credible
 interval is $f_{\rm CW}^{\rm void} \in [0.435, 0.530]$, which brackets
 parity.
 
@@ -639,9 +723,15 @@ and maximum $3.83$. The label-shuffle permutation null on the
 max-absolute-deviation-from-half over $1{,}000$ shuffles returns
 $p\!=\!0.372$.
 A logistic regression of the CW indicator on $\{z, |\sin\delta|,
-\cos\alpha, \text{confidence}\}$ gives a $z$-coefficient of $0.0059$
-with no significant intercept ($0.000652$), consistent with no
-redshift dependence.
+\cos\alpha, \text{confidence}\}$ gives a $z$-coefficient (per unit
+redshift, in log-odds) of $0.0095 \pm 0.0229$ ($z$-score $0.41$,
+$p = 0.68$) with an intercept of $0.0028 \pm 0.0097$ ($p = 0.77$) —
+both consistent with zero, i.e.\ no
+redshift dependence. A label-shuffle permutation stratified by
+imaging leg and DESI program (the conservative null given the
+per-leg/per-program residuals of \S\ref{sec:systematics}) leaves the
+redshift-quintile look-elsewhere $p$ unchanged
+($p = 0.81$ stratified vs $0.80$ free-shuffle).
 Figure~\ref{fig:cw_vs_z} shows the binned equivariant CW fraction
 across the matched sample's redshift range.
 
@@ -674,11 +764,25 @@ Figure~\ref{fig:cw_vs_density} shows the observed quintile values
 side-by-side with the Paper~IV-monopole prediction; the bars track the
 prediction within counting statistics in all five quintiles.
 
+Because the $k\!=\!5$ NN proxy above is computed among the
+chirality-relevant spirals themselves, it is mildly endogenous (the
+tracer set is the test set). As a cross-check we recomputed the proxy
+exogenously as the angular distance to the 5th-nearest galaxy among
+\emph{all} $2{,}232{,}212$ deduplicated matched primaries (any
+chirality class) and re-binned the spirals into quintiles of that
+parent-tracer proxy: the maximum per-quintile deviation is
+$|\sigma|_{\max} = 3.64$ with a maximum monopole-subtracted residual
+of $|\sigma_{\rm obs}-\sigma_{\rm pred}| = 1.57$, again below the
+Bonferroni-5 threshold — the density null is not an artifact of the
+endogenous tracer choice
+(\artifact{pipelines/p5\_desi\_chirality/outputs/18\_v0151\_stratified\_and\_density.json}).
+
 \begin{table}[h]
 \caption{\label{tab:density_quintile_residual}
 Per-quintile $|\sigma_{\rm obs}-\sigma_{\rm pred}|$ residual table.
 $\sigma_{\rm obs}$ is the binomial $\sigma$-from-half on the observed
-CW fraction in each quintile; $\sigma_{\rm pred}=-2\Delta f_{\rm CW}\sqrt{N}$
+CW fraction in each quintile; $\sigma_{\rm pred}=2\Delta f_{\rm CW}\sqrt{N}$
+[Eq.~\eqref{eq:sigma_pred}]
 at $\Delta f_{\rm CW}=-0.0026$ (Paper~IV-monopole prediction).
 All five residuals lie below the Bonferroni-5 threshold
 $|\sigma|^{\rm Bonf}_{0.01,5}=3.09$, so no quintile shows a
@@ -706,7 +810,7 @@ overlay. \emph{Left:} CW fraction per projected-density quintile
 binomial CIs; dashed parity $f_{\rm CW}\!=\!0.5$ and dotted
 Paper~IV $\bar f_{\rm CW}\!=\!0.4974$ references. \emph{Right:}
 observed $\sigma_{\rm from\,half}$ per quintile (bars) vs the
-Paper~IV-monopole prediction $\sigma_{\rm pred}\!=\!-2\Delta f_{\rm CW}\sqrt{N}$
+Paper~IV-monopole prediction $\sigma_{\rm pred}\!=\!2\Delta f_{\rm CW}\sqrt{N}$
 (red diamonds) at $\Delta f_{\rm CW}\!=\!-0.0026$; dotted blue lines
 mark the Bonferroni-5 thresholds at $\alpha\!=\!0.01$. The observed
 signed $\sigma$ tracks the monopole prediction within counting
@@ -731,7 +835,11 @@ the V-Web per-galaxy density field.
 \caption{Within-class density-stratified $f_{\rm CW}$ for the V-Web
 cluster and filament classes (matched-spiral $n_{\rm cluster} =
 397{,}505$, $n_{\rm filament} = 408{,}187$). Quartiles binned by
-V-Web per-galaxy density.}
+V-Web per-galaxy density; $\bar\rho$ is the quartile mean of the
+smoothed density field of \S\ref{sec:vweb_algo} (step~12: the
+Gaussian-smoothed, footprint-normalized galaxy density interpolated
+to each galaxy position; dimensionless, in units of the masked-region
+mean cell density).}
 \label{tab:within_class_density}
 \begin{ruledtabular}
 \begin{tabular}{lrrrr}
@@ -833,16 +941,26 @@ Z4 ($\bar z = 0.320$) $-0.55$. All four within $|\sigma| < 2$.
 
 The filament-class tracer-program decomposition reproduces the cluster-
 class \texttt{bright}-vs-\texttt{dark} sign-flip discussed above on an
-independent V-Web class: filament \texttt{bright} ($n = 416{,}701$)
-$\sigma = -2.80$ vs filament \texttt{dark} ($n = 21{,}203$)
-$\sigma = +2.85$ (\emph{opposite sign} again, with comparable
-magnitudes on each side). A genuinely environment-dependent
+independent V-Web class. On the declared env-labeled parent of
+Table~\ref{tab:cw_vs_env} (per-program splits sum to the class totals
+by construction): filament \texttt{bright} ($n = 394{,}181$,
+$f_{\rm CW} = 0.4976$) $\sigma = -2.98$ vs filament \texttt{dark}
+($n = 13{,}759$, $f_{\rm CW} = 0.5069$)
+$\sigma = +1.61$ (\emph{opposite sign} again), a two-sample
+$|z| \approx 2.1$. An earlier draft quoted filament
+bright/dark $n$ of $416{,}701$/$21{,}203$ with a $3.4\sigma$
+two-sample split; those values were computed on an unfiltered
+nearest-label join that bypassed the matched-primary deduplication
+(its bright$+$dark total exceeded the filament class total) and are
+withdrawn in favor of the declared-parent recompute
+(\artifact{pipelines/p5\_desi\_chirality/outputs/17\_v0151\_closure\_recomputes.json}).
+A genuinely environment-dependent
 filament-chirality signal would propagate consistently across both
 target classes; the sign-flip recurrence across both the cluster and
-filament classes (the two largest V-Web environments) is the strongest
-sign that the V-Web class-level $f_{\rm CW}$ deviations are sourced
+filament classes (the two largest V-Web environments) supports the
+reading that the V-Web class-level $f_{\rm CW}$ deviations are sourced
 by the BGS-selection-function-conditioned imaging-leg systematics
-Paper~IV tracks, not by environment-driven astrophysics. 
+Paper~IV tracks, not by environment-driven astrophysics.
 
 \paragraph{V-Web class vs.\ target-program orthogonality.} The BGS-selection-function-origin interpretation
 above relies on V-Web environmental classification being approximately
@@ -856,25 +974,28 @@ $\{0.981,\,0.962,\,0.966,\,0.989\}$ across
 \{void, wall, filament, cluster\}, against the overall
 matched-spiral ratio $0.978$. A two-way contingency test
 (V-Web class $\times$ \texttt{bright}/\texttt{dark}, four-by-two
-on $n_{\rm bright+dark} = 811{,}609$ spirals) gives
+on the $n_{\rm bright+dark} = 811{,}609$ bright$+$dark subset of the
+$812{,}793$-row env-labeled parent) gives
 $\chi^{2} = 4932$ with three degrees of freedom and
-$p < 10^{-1000}$ ---
+$p \ll 10^{-300}$ (below double-precision underflow) ---
 V-Web class and target program are \emph{not} independent;
 the cluster class is the most-bright (98.9\%) and the wall class is the
 least-bright (96.2\%), with the void and filament classes between.
 The maximum class-to-overall deviation in bright-fraction is $1.5$\,pp.
 We therefore cannot assert
 V-Web class orthogonality to the target-program split, and
-the $|z|\!\approx\!3.4\sigma$ \texttt{bright}-vs-\texttt{dark} sign-flip
+the $|z|\!\approx\!2.1\sigma$ \texttt{bright}-vs-\texttt{dark} sign-flip
 in the filament class
-is best read as a real residual structure that the current data do
+is best read as a residual structure that the current data do
 not allow us to cleanly partition between
 (a) a BGS-selection-function-only origin propagated through a
 V-Web-class-correlated target-program distribution, and
 (b) a residual class-and-target-program-conditioned astrophysical
-signal at the $\sim\!3\sigma$ level on $n_{\rm dark}^{\rm filament}
-= 21{,}203$.
-This is the strongest single residual structure in the paper after
+signal at the $\sim\!2\sigma$ level on $n_{\rm dark}^{\rm filament}
+= 13{,}759$.
+Together with the catalog-level bright-vs-dark difference
+($0.81$\,pp, $|z| \approx 2.0$; \S\ref{sec:systematics}), this is the
+most notable residual structure in the paper after
 the catalog-monopole subtraction; the DESIVAST-anchored primary
 analysis (\S\ref{sec:desivast_primary}) is constructed to be
 independent of this residual, because the DESIVAST void definition
@@ -905,7 +1026,14 @@ $64$ & $7{,}208$ & $3.92$ & $4.77$ & $0.413$ \\
 \end{table}
 
 No NSIDE returns $p<0.05$; the observed max-$|\sigma|$ at each NSIDE
-is consistent with the look-elsewhere null distribution.
+is consistent with the look-elsewhere null distribution. Because the
+free label-shuffle could in principle be anticonservative given the
+per-leg/per-program residuals of \S\ref{sec:systematics}, we re-ran
+all three scans with the shuffle \emph{stratified} by imaging leg and
+DESI program: the look-elsewhere $p$-values are unchanged within
+Monte-Carlo error ($p = 0.63 / 0.089 / 0.41$ stratified vs
+$0.64 / 0.10 / 0.42$ free-shuffle re-draws at NSIDE $16/32/64$;
+\artifact{pipelines/p5\_desi\_chirality/outputs/18\_v0151\_stratified\_and\_density.json}).
 Figure~\ref{fig:healpix_skymap} visualizes the per-pixel signed
 $\sigma_{\rm from\,half}$ at NSIDE=32 as a Mollweide projection; no
 coherent large-scale structure is visible, matching the $p\!=\!0.135$
@@ -930,35 +1058,62 @@ counting-statistics distribution expected from label-shuffle.}
 
 To test the robustness of the Section~\ref{sec:results_vweb} headline
 against V-Web hyperparameter choices, we run a Phase~2 sweep over nine
-cells $R_s \in \{10, 25, 50\}\,{\rm Mpc}/h \times N_{\rm grid}\!=\!256
-\times \lambda_{\rm th} \in \{0.0, 0.1, 0.3\}$. Details are in the companion data repository.
+cells $R_s \in \{10, 25, 50\}\,{\rm Mpc}/h \times N_{\rm grid}\!=\!256^3
+\times \lambda_{\rm th} \in \{0.0, 0.1, 0.3\}$. Each cell is a complete
+V-Web rebuild on the $14{,}622{,}283$-galaxy DR1 spectro sample, joined
+per cell to the declared $812{,}793$-row env-labeled spiral parent of
+Table~\ref{tab:cw_vs_env} (the per-cell sweep parquets and configs are
+in
+\artifact{pipelines/p5\_desi\_chirality/data/desi\_env/phase2\_sweep/};
+the per-cell statistics below are recomputed in
+\artifact{pipelines/p5\_desi\_chirality/outputs/17\_v0151\_closure\_recomputes.json}).
+An earlier draft of this table reported per-cell ranges of
+$0.05$--$0.22$\,pp computed on an unfiltered nearest-label join
+($5{,}571{,}152$ CW/CCW rows including non-primary and duplicate
+matches, which inflates every class $n$ and shrinks the range
+statistic); those values are withdrawn in favor of the declared-parent
+recompute below.
 
-\begin{table}[t]
-\caption{Phase 2 sensitivity sweep: range of $f_{\rm CW}$ across the
-four cosmic-web classes per sweep cell, in percentage points.}
+\begin{table*}[t]
+\caption{Phase 2 sensitivity sweep on the declared env-labeled parent:
+per-cell cross-class range of $f_{\rm CW}$ (pp), void-class population
+(the bin whose counting noise dominates the range), maximum per-class
+monopole-subtracted residual $|\sigma_{\rm obs}-\sigma_{\rm pred}|$
+[Eq.~\eqref{eq:sigma_pred}], and label-shuffle look-elsewhere
+$p$-value on the max-class $|\sigma_{\rm from\,half}|$ statistic
+($N_{\rm MC}=1{,}000$).}
 \label{tab:phase2}
 \begin{ruledtabular}
-\begin{tabular}{rrr}
-$R_s$ (Mpc$/h$) & $\lambda_{\rm th}$ & $f_{\rm CW}$ range (pp) \\
+\begin{tabular}{rrrrrr}
+$R_s$ (Mpc$/h$) & $\lambda_{\rm th}$ & range (pp) & $n_{\rm void}$ &
+max $|\sigma_{\rm obs}-\sigma_{\rm pred}|$ & $p_{\rm LEE}$ \\
 \hline
-$10$ & $0.0$ & $0.066$ \\
-$10$ & $0.1$ & $0.088$ \\
-$10$ & $0.3$ & $0.149$ \\
-$25$ & $0.0$ & $0.165$ \\
-$25$ & $0.1$ & $0.146$ \\
-$25$ & $0.3$ & $0.220$ \\
-$50$ & $0.0$ & $0.127$ \\
-$50$ & $0.1$ & $0.052$ \\
-$50$ & $0.3$ & $0.102$ \\
+$10$ & $0.0$ & $1.72$ & $363$ & $1.71$ & $0.56$ \\
+$10$ & $0.1$ & $2.71$ & $594$ & $1.87$ & $0.42$ \\
+$10$ & $0.3$ & $2.01$ & $837$ & $1.69$ & $0.38$ \\
+$25$ & $0.0$ & $1.97$ & $428$ & $1.38$ & $0.13$ \\
+$25$ & $0.1$ & $2.48$ & $627$ & $1.35$ & $0.14$ \\
+$25$ & $0.3$ & $1.83$ & $853$ & $1.22$ & $0.23$ \\
+$50$ & $0.0$ & $3.69$ & $401$ & $1.39$ & $0.34$ \\
+$50$ & $0.1$ & $4.12$ & $599$ & $1.52$ & $0.41$ \\
+$50$ & $0.3$ & $2.81$ & $825$ & $1.64$ & $0.48$ \\
 \hline
-\textbf{max across sweep} & --- & $\mathbf{0.220}$ \\
+\textbf{max across sweep} & --- & $\mathbf{4.12}$ & --- &
+$\mathbf{1.87}$ & --- \\
 \end{tabular}
 \end{ruledtabular}
-\end{table}
+\end{table*}
 
-The max $f_{\rm CW}$ range across env classes, maximized over the nine
-cells, is $0.22$\,percentage points (at $R_s\!=\!25,
-\lambda_{\rm th}\!=\!0.3$). The headline sign-pattern (filament and
+The per-cell cross-class $f_{\rm CW}$ range spans $1.7$--$4.1$\,pp
+across the nine cells and is dominated in every cell by the
+counting noise of the small void bin ($n_{\rm void} = 363$--$853$;
+$1\sigma$ binomial floor $1.7$--$2.6$\,pp): range is therefore not a
+significance statistic at these class populations. The two
+significance columns carry the result: the maximum per-class
+monopole-subtracted residual never exceeds $1.87\sigma$ (far below the
+Bonferroni-9 threshold $|\sigma|^{\rm Bonf}_{0.05,9} \approx 3.02$),
+and no cell's label-shuffle look-elsewhere $p$ falls below $0.13$.
+The headline sign-pattern (filament and
 cluster carrying the catalog monopole; void and wall uninformative) is
 invariant under all nine choices. Figure~\ref{fig:phase2} visualizes
 the per-cell ranges as a $(R_s, \lambda_{\rm th})$ heat-map.
@@ -968,23 +1123,32 @@ the per-cell ranges as a $(R_s, \lambda_{\rm th})$ heat-map.
 \includegraphics[width=\columnwidth]{fig_p5_phase2_sensitivity_heatmap.png}
 \caption{Phase 2 sensitivity heat-map: per-cell range of $f_{\rm CW}$
 across the four environment classes \{void, wall, filament, cluster\}
-in percentage points. Each cell corresponds to a complete V-Web
+in percentage points, on the declared env-labeled spiral parent. Each
+cell corresponds to a complete V-Web
 re-run on the $14{,}622{,}283$-galaxy DESI DR1 spectro sample at
 $(R_s, \lambda_{\rm th})$. The maximum range across all nine cells is
-$0.22$\,percentage points (at $R_s\!=\!25\,{\rm Mpc}/h,
-\lambda_{\rm th}\!=\!0.3$). The headline environmental-independence
+$4.12$\,percentage points (at $R_s\!=\!50\,{\rm Mpc}/h,
+\lambda_{\rm th}\!=\!0.1$), dominated by the void-bin counting noise
+($n_{\rm void} \le 853$ in every cell); the per-class
+monopole-subtracted residuals stay below $1.87\sigma$ in all cells
+(Table~\ref{tab:phase2}). The headline environmental-independence
 result is robust to V-Web hyperparameter choices over the range
 probed.}
 \label{fig:phase2}
 \end{figure}
 
 The largest single-cell $|\sigma_{\rm from\,half}|$ across the entire
-sweep is $11.32$ (filament at $R_s\!=\!10, \lambda_{\rm th}\!=\!0$,
-$n\!=\!3{,}696{,}152$). This is the catalog-wide
-$\Delta f_{\rm CW}\!=\!-0.0026$ monopole leaking through the largest
+sweep is $4.66$ (cluster at the canonical $R_s\!=\!25,
+\lambda_{\rm th}\!=\!0$ cell, $n\!=\!397{,}505$). This is the
+catalog-wide
+$\Delta f_{\rm CW}\!=\!-0.0026$ monopole leaking through a large
 sample bin and is \emph{predicted}, not measured:
-$\sigma_{\rm pred} \approx -0.0026 \cdot 2 \sqrt{N} \approx -10$
-matches the observed $-11.3$ within order unity. The Phase~2 sweep
+$\sigma_{\rm pred} = 2 \cdot (-0.0026) \cdot \sqrt{N} \approx -3.3$
+leaves a monopole-subtracted residual of $-1.38$. (An earlier draft
+quoted $|\sigma| = 11.32$ on an $n\!=\!3{,}696{,}152$ filament cell;
+that population belonged to the withdrawn unfiltered nearest-label
+join, not to any declared chirality parent of this paper.) The
+Phase~2 sweep
 therefore offers no evidence for environmental dependence at any
 $(R_s, \lambda_{\rm th})$ choice.
 
@@ -1008,14 +1172,18 @@ Paper~IV-monopole reference as the headline analysis
 uncertainty on $f_{\rm CW}$ at the four V-Web classes is
 $1/(2\sqrt{n_{\rm class}})$. For the dominant filament + cluster
 classes at $n \sim 4 \times 10^5$ this is
-$\sim 0.08$\,percentage points; for the wall class at $n \sim 7$k it
-is $\sim 0.6$\,pp; for the void class at $n \sim 400$ it is
-$\sim 2.4$\,pp. The maximum sweep-cell range across cells is
-$0.22$\,pp ($R_s\!=\!25, \lambda_{\rm th}\!=\!0.3$); this is
-\emph{below} the wall- and void-class counting-statistics floors at
-all nine cells, so no $(R_s, \lambda_{\rm th})$ cell shows an
-inter-class range that exceeds the dominant per-class measurement
-uncertainty.
+$\sim 0.08$\,percentage points; for the wall class at
+$n \sim 2$--$17$k it is $\sim 0.4$--$1.1$\,pp; for the void class at
+$n = 363$--$853$ it is
+$1.7$--$2.6$\,pp. In every cell the extreme class defining the range
+is the \emph{void} bin, and the per-cell range never exceeds the
+void-class $2\sigma$ counting floor $1/\sqrt{n_{\rm void}}$ (maximum
+ratio $1.01$ at $R_s\!=\!50, \lambda_{\rm th}\!=\!0.1$); equivalently,
+the void bin's own deviation from half satisfies
+$|\sigma_{\rm void}| \le 1.35$ in all nine cells. No
+$(R_s, \lambda_{\rm th})$ cell shows an
+inter-class range that exceeds the counting noise of the class that
+produces it.
 
 \item \textbf{Paper-IV-monopole reference.} The Paper IV
 monopole prediction $\sigma_{\rm pred}^{\rm class} = 2 \cdot 0.0026
@@ -1028,25 +1196,26 @@ $\sigma_{\rm vs\,monopole}$ residuals reported in
 Table~\ref{tab:p4_monopole_residual} of \S\ref{sec:desivast_p4_residual}
 (canonical-cell version) on the catalog-monopole $f_{\rm CW}^{\rm P5}$
 basis: $|\sigma_{\rm vs\,monopole}|$ at all four classes falls
-below $1.15$. We do not separately report per-cell
-$\sigma_{\rm vs\,monopole}$ tables for each of the nine sweep cells:
-the per-cell range upper bound of $0.22$\,pp is independent of which
-class carries the monopole, so the sweep cells differ from canonical
-only by re-distributing the catalog-monopole across the four classes
-without enlarging the residual range. The headline conclusion of
+below $1.15$. The per-cell version of the same statistic is the
+max-$|\sigma_{\rm obs}-\sigma_{\rm pred}|$ column of
+Table~\ref{tab:phase2}: across all 36 cell--class combinations the
+monopole-subtracted residual never exceeds $1.87\sigma$ (wall at
+$R_s\!=\!10, \lambda_{\rm th}\!=\!0.1$). The headline conclusion of
 this section is therefore: across nine $(R_s, \lambda_{\rm th})$
-cells, the maximum per-cell inter-class $f_{\rm CW}$ range is below
-the per-class counting-statistics floor, and the per-class
-$\sigma_{\rm from\,half}$ values match the Paper~IV-monopole
-prediction at the cluster/filament classes within
-$|\sigma_{\rm vs\,monopole}|<\!1.15$.
+cells, the per-cell inter-class $f_{\rm CW}$ range is consistent with
+the counting noise of the void bin that produces it, and every
+per-class
+$\sigma_{\rm from\,half}$ value matches the Paper~IV-monopole
+prediction within
+$|\sigma_{\rm obs}-\sigma_{\rm pred}| \le 1.87$.
 
 \item \textbf{Pre-cell label-shuffle null.} For each cell, the
 label-shuffle permutation null on the per-class $\sigma_{\rm from\,half}$
 statistic (Eq.~\eqref{eq:empirical_p}, $N_{\rm MC}\!=\!1{,}000$,
 holding the per-class $n_{\rm class}$ fixed and re-drawing CW/CCW
 labels) returns max-class $p$-values in the range $p_{\rm LEE}\!=\!
-0.41\text{--}0.67$ across the nine cells, with no cell crossing
+0.13\text{--}0.56$ across the nine cells (Table~\ref{tab:phase2}),
+with no cell crossing
 $p\!<\!0.05$. The empirical max-stat null is therefore consistent
 with the parametric reading: no $(R_s, \lambda_{\rm th})$ cell shows
 an inter-class chirality signal above the counting-statistics
@@ -1055,9 +1224,10 @@ shot-noise null.
 
 The combined framework converts the descriptive max-range statistic
 into an explicit significance statement: zero of the nine sweep
-cells produces a per-cell range exceeding the per-class
-counting-statistics floor, and zero produces a per-class
-$|\sigma_{\rm vs\,monopole}|$ residual above the Bonferroni-9 ($\alpha
+cells produces a per-cell range exceeding the void-bin
+counting-statistics floor that drives it, and zero produces a per-class
+$|\sigma_{\rm obs}-\sigma_{\rm pred}|$ residual above the Bonferroni-9
+($\alpha
 = 0.05$) threshold $|\sigma|^{\rm Bonf}_{0.05,9}\!\approx\!3.02$. The
 Phase~2 sensitivity sweep robustness statement is therefore not
 purely descriptive: it is bounded by the counting-statistics floor
@@ -1106,7 +1276,8 @@ sample (a mix of walls, filaments, and clusters) is still subject to
 RSD-induced boundary shifts between those non-void subclasses, but
 those internal shifts do not affect the binary void / non-void
 chirality fraction comparison reported here. This is in contrast to the V-Web secondary
-path (\S\ref{sec:limitations}), where the tidal-tensor eigenvalue
+path (\S\ref{sec:vweb}, \S\ref{sec:phase2}; limitations in
+\S\ref{sec:limitations}), where the tidal-tensor eigenvalue
 field is computed from redshift-space galaxy positions on a
 $R_s\!=\!25$\,Mpc/$h$ Gaussian smoothing and is therefore
 RSD-bounded only at the scalar-displacement level. The primary
@@ -1165,11 +1336,24 @@ $n_{\rm lz} = 678{,}945$ spirals (the DESIVAST BGS coverage range).
 Converting each spiral to comoving Cartesian and performing a
 point-in-sphere test against all $101{,}863$ DESIVAST VoidFinder
 hole spheres (via a $k = 20$-nearest-neighbour
-\texttt{scipy.spatial.KDTree} query on the hole centres, sufficient
-given the $24\,$Mpc/$h$ maximum hole radius) returns
+\texttt{scipy.spatial.KDTree} query on the hole centres; the maximum
+hole radius, computed from the parsed VoidFinder hole catalog, is
+$24.5\,$Mpc/$h$) returns
 $n_{\rm void}^{\rm DESIVAST} = 56{,}981$ DESIVAST-defined void galaxies
 ($8.39\%$ of the low-$z$ matched sample) and $n_{\rm non-void} =
-621{,}964$ outside any DESIVAST hole. \textbf{The DESIVAST-anchored
+621{,}964$ outside any DESIVAST hole.
+\emph{$k$-sufficiency guard:} because up to $249$ hole centres can lie
+within one maximum-hole-radius of a single galaxy ($28\%$ of the
+low-$z$ sample has more than $20$ such candidates), we re-ran the
+membership test exactly ($k$-unbounded per-hole radius queries):
+the exact rerun moves $100$ galaxies ($+0.18\%$) into the void class
+($n_{\rm void} = 57{,}081$, $f_{\rm CW}^{\rm void} = 0.4965$,
+$\sigma^{\rm void} = -1.69$; $\Delta f_{\rm CW}$ void-vs-non-void
+$+0.0006$ instead of $+0.0007$) — every conclusion in this section is
+invariant, and we retain the $k=20$ catalog statistics below for
+continuity with the released artifacts
+(\artifact{pipelines/p5\_desi\_chirality/outputs/17\_v0151\_closure\_recomputes.json},
+which also serves as the committed membership driver). \textbf{The DESIVAST-anchored
 void class is $\boldsymbol{\sim\!130\times}$ larger than the V-Web void
 class} ($n = 428$ from Section~\ref{sec:results_vweb}), providing a
 properly-powered chirality-in-voids test at the cleanest available
@@ -1200,7 +1384,8 @@ respective sample sizes. \textbf{When the void class is defined by
 DESIVAST rather than V-Web, the chirality-in-voids constraint is a
 clean null at full DESIVAST sample size.} 
 
-This DESIVAST-anchored re-analysis is the largest matched-sample
+This DESIVAST-anchored re-analysis is, to our knowledge, the largest
+matched-sample
 environmental-dependence test of spiral chirality in DESI DR1 to date,
 on the chirality-relevant subsample defined here
 (a null is not positive evidence; we report it as a controlled-sample
@@ -1217,7 +1402,12 @@ The DESIVAST DR1 release ships three independent void definitions: the
 sphere-growing VoidFinder algorithm above, plus the watershed
 algorithms V2-REVOLVER ($n_{\rm void}^{\rm catalog} = 1{,}992$ effective
 voids, maximum effective radius $43.5\,$Mpc/$h$) and V2-VIDE
-($n_{\rm void}^{\rm catalog} = 1{,}478$, max $55.9\,$Mpc/$h$). Repeating
+($n_{\rm void}^{\rm catalog} = 1{,}478$, max $55.9\,$Mpc/$h$). These are
+whole-catalog totals of \emph{effective voids}; the $420$ (V2-REVOLVER)
+and $295$ (V2-VIDE) counts quoted in the section opening are the
+\emph{interior} (non-edge) void subsets at the $z \le 0.24$ statement
+— two different object selections from the same release, not a
+contradiction. Repeating
 the point-in-sphere test on the same $n_{\rm lz} = 678{,}945$ matched-
 spiral subsample for each algorithm (KDTree query against each
 algorithm's published void-effective-radius spheres):
@@ -1349,16 +1539,30 @@ The cleanest
 formulation of the environment-independence headline is to recompute
 the per-class chirality signal \emph{after subtracting} the P5
 matched-spiral catalog monopole $f_{\rm CW}^{\rm P5} = 0.4972$
-($-5.07\sigma$ on $n = 812{,}793$ env-labeled spirals --- the
-$21{,}158$-row excess (2.7\%) over the 791{,}635-spiral headline
-subsample is the population of CW/CCW-labelled spirals whose V-Web
-env-class assignment passes the relaxed env-label confidence used by
-the cosmic-web pipeline but is excluded from the headline by a
-stricter env-class-uncertainty filter; the per-class
-$n_{\rm CW}$ values on the 812{,}793 superset sum to
+($-5.07\sigma$ on the $n = 812{,}793$ env-labeled spiral rows of
+Table~\ref{tab:cw_vs_env}. \emph{Parent reconciliation:} the
+$21{,}158$-row excess (2.7\%) over the $791{,}635$ unique
+chirality-relevant matched spirals arises mechanically in the
+environment join — the V-Web environment table inherits one row per
+DESI \texttt{zall} survey--program coadd entry, so \texttt{TARGETID}s
+observed under more than one program carry duplicate environment rows
+($14{,}622{,}283$ rows over $14{,}100{,}704$ unique
+\texttt{TARGETID}s), and the inner join counts those spirals once per
+coadd row. The join covers $783{,}820$ unique env-matched spirals
+($7{,}815$ spirals have no environment row and drop out); only $79$
+duplicated \texttt{TARGETID}s carry conflicting class labels between
+their coadd rows (boundary cells re-evaluated at slightly different
+pipeline redshifts). An earlier draft attributed the excess to a
+``relaxed env-label confidence filter''; the join-multiplicity
+diagnosis above, recomputed in
+\artifact{pipelines/p5\_desi\_chirality/outputs/17\_v0151\_closure\_recomputes.json},
+replaces that description. The per-class
+$n_{\rm CW}$ values on the 812{,}793-row parent sum to
 $404{,}111$ giving $f_{\rm CW} = 0.49719$, matching the 791{,}635-spiral
-monopole $0.4972$ to 4 decimals, so the headline conclusion is
-invariant. The same monopole shows up as $-5.00\sigma$ on the
+unique-galaxy monopole $0.4972$ to 4 decimals, so the headline
+conclusion is
+invariant under either parent. The same monopole shows up as
+$-5.00\sigma$ on the
 791{,}635-spiral chirality-relevant sample; the two $\sigma$ values
 are sample-size-scaled projections of the same underlying offset),
 which is the propagation of the
@@ -1373,7 +1577,14 @@ $-5.00\sigma$ corresponds to $\Delta f_{\rm CW}^{\rm P5} \approx
 $8\%$ enhancement is consistent with the spectroscopically-confirmed
 subsample being more strongly weighted to the BGS-bright leg that
 Paper~IV identifies as carrying the largest per-leg
-selection-function residual, not an additional environmental signal. Replacing the $f_{\rm CW} - 0.5$ null with
+selection-function residual, not an additional environmental signal.
+To fix conventions explicitly: every $\sigma_{\rm pred}$ quoted in
+this paper [Eq.~\eqref{eq:sigma_pred}] uses the \emph{Paper~IV
+catalog} monopole $\Delta f_{\rm CW} = -0.0026$, while the
+$\sigma_{\rm vs\,monopole}$ residuals of
+Table~\ref{tab:p4_monopole_residual} subtract the \emph{P5
+matched-sample} monopole $f_{\rm CW}^{\rm P5} = 0.4972$ (equivalent
+to $\Delta f_{\rm CW}^{\rm P5} \approx -0.0028$). Replacing the $f_{\rm CW} - 0.5$ null with
 $f_{\rm CW} - f_{\rm CW}^{\rm P5}$ gives the residual environment
 signal after the catalog-wide classifier-bias monopole is removed:
 
@@ -1381,7 +1592,10 @@ signal after the catalog-wide classifier-bias monopole is removed:
 \caption{Per-V-Web-class $\sigma_{\rm vs\ monopole}$ residuals on the
 matched-spiral subsample. All four classes fall within
 $|\sigma_{\rm vs\ monopole}| < 1.15$ -- no environment dependence
-survives subtraction of the catalog-wide P4-monopole.}
+survives subtraction of the catalog-wide P4-monopole. Unlike the raw
+$\sigma_{\rm from\,half}$ of Table~\ref{tab:cw_vs_env} (which scales
+as $\sqrt{n}$), these monopole-subtracted residuals \emph{are}
+comparable across rows.}
 \label{tab:p4_monopole_residual}
 \begin{ruledtabular}
 \begin{tabular}{lrrr}
@@ -1405,15 +1619,17 @@ $\sigma_{\rm from\ half}$ values of $-2.61\sigma$ (filament) and
 $-4.66\sigma$ (cluster) reported in the headline table were entirely
 the P4-catalog-monopole signature propagated into the V-Web class
 subsamples weighted by their respective sample sizes, not an
-environmental signal. At the HEALPix-NSIDE-$=32$ per-pixel level on
-the same matched-spiral catalog, the distribution of
-$\sigma_{\rm vs\ monopole}$ across the $1{,}821$ valid pixels has
-mean $+0.020$, std $1.184$, skewness $+0.044$, and excess kurtosis
-$+0.825$. The unit standard deviation (within $\sim\!18\%$, consistent
-with finite-pixel sample-size fluctuation), zero skewness, and modest
-positive kurtosis are all consistent with a pure shot-noise residual
+environmental signal. At the HEALPix NSIDE $=32$ per-pixel level on
+the same env-labeled matched-spiral parent, the distribution of
+$\sigma_{\rm vs\ monopole}$ across the $1{,}791$ valid pixels
+(pixels carrying $\ge 200$ spirals, full redshift range) has
+mean $+0.008$, std $1.050$, skewness $+0.074$, and excess kurtosis
+$+0.092$. The unit standard deviation (within $5\%$), near-zero
+skewness, and near-zero excess kurtosis
+are all consistent with a pure shot-noise residual
 around the P4-monopole, with no sign of systematic
-environment-conditioned chirality offset. 
+environment-conditioned chirality offset
+(\artifact{pipelines/p5\_desi\_chirality/outputs/17\_v0151\_closure\_recomputes.json}).
 
 This is a direct single-test demonstration that
 the V-Web class-level $\sigma$ values quoted in the headline table
@@ -1451,7 +1667,8 @@ forking paths'' along the well-sampled axes.
 
 \begin{figure*}
 \includegraphics[width=\textwidth]{fig_p5_voids_vs_chirality_skymap.png}
-\caption{HEALPix \texttt{NSIDE} $= 32$ Mollweide projection. Top: count
+\caption{HEALPix \texttt{NSIDE} $= 32$ Mollweide projection
+(equatorial coordinates). Top: count
 of DESIVAST maximal voids per pixel (885 occupied pixels, median 4
 voids/pix). Bottom: per-pixel chirality $\sigma_{\rm from\ half}$
 on the $z \leq 0.24$ matched-spiral subsample restricted to pixels
@@ -1474,7 +1691,8 @@ declaration of \S\ref{sec:primary_path}).
 \subsection{Redshift-shell selection-corrected classifier
 robustness}\label{sec:zshell_robustness}
 
-The T-Web classifier of \S\ref{sec:vweb_algo} computes the overdensity
+The V-Web classifier of \S\ref{sec:vweb_algo} (our implementation of
+the Hahn~2007 T-Web recipe) computes the overdensity
 $\delta = \rho/\bar\rho - 1$ against a \emph{single global} mean cell
 density $\bar\rho_{\rm cell} = 4.64$ galaxies/cell over the full
 $0.01 \le z \le 2$ volume. Because the DESI~DR1 selection function is
@@ -1489,7 +1707,7 @@ function rather than true large-scale structure.
 To test whether the headline environmental-independence conclusion is
 robust to this, we rebuilt the classification with a first-order radial
 selection correction
-(\texttt{scripts/16\_cosmic\_web\_zshell\_corrected.py}): the
+(\artifact{pipelines/p5\_desi\_chirality/scripts/16\_cosmic\_web\_zshell\_corrected.py}): the
 overdensity is computed in 21 thin redshift shells ($\Delta z = 0.05$
 for $z<0.5$, $\Delta z = 0.1$ for $0.5 \le z < 1.5$, one merged
 $1.5$--$1.7$ shell; every shell $\ge 2.16\times10^5$ galaxies), with the
@@ -1518,10 +1736,46 @@ analysis. The environmental-independence null therefore holds --- and
 tightens by a factor ${\sim}40$ in cross-class range --- under the
 selection-corrected classifier, demonstrating that the canonical
 result was not an artifact of selection-function leakage into the
-environment labels. Full per-shell diagnostics and the per-galaxy
+environment labels. The omnibus $4\times2$ homogeneity test sharpens
+accordingly: $\chi^2 = 0.11$ with 3~d.o.f.\ ($p = 0.99$) on the
+selection-corrected classes, versus $\chi^2 = 3.55$ ($p = 0.31$) on
+the canonical classes — both null. Full per-shell diagnostics and
+the per-galaxy
 corrected label catalog are released with the reproducibility
 artifacts
-(\texttt{outputs/16\_cosmic\_web\_zshell\_corrected.json}).
+(\artifact{pipelines/p5\_desi\_chirality/outputs/16\_cosmic\_web\_zshell\_corrected.json}).
+
+\paragraph{Grid-resolution convergence.} The canonical pipeline fixes
+$N_{\rm grid} = 256^3$; the Phase~2 sweep varies $R_s$ and
+$\lambda_{\rm th}$ but not the grid. As a convergence check we re-ran
+the full canonical V-Web build at $N_{\rm grid} = 128^3$ (cell
+$51.8\,h^{-1}$\,Mpc) and $384^3$ (cell $17.3\,h^{-1}$\,Mpc), holding
+$R_s = 25\,h^{-1}$\,Mpc and $\lambda_{\rm th} = 0$ fixed, and re-joined
+the declared spiral parent. Class populations are stable (void
+$297/428/434$, filament $415{,}722/408{,}187/407{,}780$ at
+$128^3/256^3/384^3$), the cross-class $f_{\rm CW}$ range stays within
+$2.2/2.0/2.9$\,pp (void-bin noise dominated, as in
+Table~\ref{tab:phase2}), and every class tracks the catalog monopole
+at all three resolutions — the environmental-independence null is
+converged with respect to grid resolution
+(\artifact{pipelines/p5\_desi\_chirality/outputs/17\_v0151\_closure\_recomputes.json}).
+
+\paragraph{Geometry-footprint shell-mean cross-check.} The z-shell
+rebuild above takes each shell's mean density over the
+occupancy-derived (dilated) footprint, which could in principle bias
+sparse high-$z$ shell means relative to a survey-geometry
+(random-catalog-equivalent) denominator. We re-ran the rebuild with
+the per-shell mean taken instead over all cells inside a
+redshift-independent HEALPix NSIDE-64 angular footprint intersected
+with the shell's radial range, holding everything else fixed. Class
+populations shift again (void $20{,}736$, wall $314{,}367$, filament
+$407{,}144$, cluster $70{,}546$ matched spirals), but the chirality
+null is unchanged: the cross-class $f_{\rm CW}$ range is
+$0.23$\,pp and every class sits within $|\sigma_{\rm vs\,monopole}|
+\le 1.04$ of the sample monopole — the environmental-independence
+conclusion does not depend on how the shell-mean denominator is
+defined
+(\artifact{pipelines/p5\_desi\_chirality/outputs/19\_v0151\_zshell\_geofootprint\_check.json}).
 
 \subsection{Tempel+2014 FoF cross-validation}\label{sec:tempel}
 
@@ -1543,79 +1797,95 @@ scheme that pairs with the V-Web class set:
 The Tempel catalog covers $588{,}193$ SDSS DR10 galaxies at
 $z \le 0.20$ over RA $\in [110^\circ, 262^\circ]$, Dec $\in [-4^\circ,
 70^\circ]$. We perform a $1''$ sky-coord NN join between the Tempel
-catalog and the $791{,}635$ chirality-relevant matched-spiral sample;
-the overlap is $110{,}586$ spirals (the SDSS DR10 footprint is a
+catalog and the $791{,}635$-spiral declared chirality-relevant parent;
+the overlap is $96{,}753$ spirals (the SDSS DR10 footprint is a
 subset of DESI Legacy DR8 and Tempel's $z \le 0.20$ cut is much tighter
-than our $z \le 4$ DESI cut). Details are in the companion data repository.
+than our $z \le 4$ DESI cut). An earlier draft quoted an overlap of
+$110{,}586$; that join omitted the matched-primary deduplication
+filter and is withdrawn
+(driver:
+\artifact{pipelines/p5\_desi\_chirality/env\_finder/03\_tempel\_cross\_validation.py}).
 
 \begin{table}[t]
 \caption{Tempel+2014 FoF environment cross-validation on the
-$110{,}586$-spiral Tempel-overlap subsample.}
+$96{,}753$-spiral Tempel-overlap subsample (declared parent).}
 \label{tab:tempel}
 \begin{ruledtabular}
 \begin{tabular}{lrrrr}
 Tempel class & $n$ & $n_{\rm CW}$ & $f_{\rm CW}$ & $\sigma_{\rm from\,half}$ \\
 \hline
-isolated      & $58{,}539$ & $28{,}962$ & $0.4947$ & $-2.54$ \\
-small\_group  & $31{,}838$ & $15{,}829$ & $0.4972$ & $-1.01$ \\
-filament\_like & $14{,}317$ & $7{,}133$ & $0.4982$ & $-0.43$ \\
-cluster\_like  & $5{,}892$  & $2{,}963$ & $0.5029$ & $+0.44$ \\
+isolated      & $51{,}631$ & $25{,}558$ & $0.4950$ & $-2.27$ \\
+small\_group  & $27{,}740$ & $13{,}746$ & $0.4955$ & $-1.49$ \\
+filament\_like & $12{,}360$ & $6{,}155$ & $0.4980$ & $-0.45$ \\
+cluster\_like  & $5{,}022$  & $2{,}520$ & $0.5018$ & $+0.25$ \\
 \end{tabular}
 \end{ruledtabular}
 \end{table}
 
-\textbf{Concordance metric.} For each Tempel-vs-V-Web class pairing we
-report $|f_{\rm CW}^{\rm Tempel} - f_{\rm CW}^{\rm V-Web}|$ as a
-concordance distance in percentage points; a value below the
-canonical $0.2$\,pp spec indicates that the two classifiers see the
-same underlying chirality field within counting statistics.
+\textbf{Concordance metric (like-for-like).} For each Tempel-vs-V-Web
+class pairing we
+report $|f_{\rm CW}^{\rm Tempel} - f_{\rm CW}^{\rm V\mbox{-}Web}|$ as a
+concordance distance in percentage points, with \emph{both} classifiers
+evaluated on the same $96{,}753$-spiral overlap sample. (An earlier
+draft compared the Tempel overlap against the V-Web classes of the
+\emph{full} matched sample — two disjoint-population estimates whose
+agreement is not a classifier-concordance statement; that comparison,
+including its headline $0.026$\,pp filament figure, is withdrawn.)
+On the overlap, the V-Web classifier is strongly tilted toward the
+cluster class (void/wall/filament/cluster $=$
+$23/145/16{,}701/78{,}378$) by the survey-shell density systematic at
+low $z$ discussed in \S\ref{sec:tweb_concurrent} and
+\S\ref{sec:astra_per_object}, so only the filament and cluster
+pairings carry meaningful $n$ on both sides:
 
 \begin{itemize}
-\item \textbf{filament\_like\_vs\_filament: 0.026\,pp ($\checkmark$ within spec).}
-This is the highest-$n$ concordance result (supporting, not
-load-bearing — the primary cross-classifier validation remains
-the on-DESI DESIVAST re-projection at $n_{\rm void}^{\rm DESIVAST}
-= 56{,}981$; see Abstract Robustness). The largest-$n$ Tempel
-class pair agrees within $0.026$\,percentage points, far below the
-$0.2$\,pp spec. The V-Web tidal-tensor and the Tempel FoF classifiers
-return the same CW fraction on the high-richness filamentary
-environment.
-\item isolated\_vs\_void: $1.11$\,pp. The V-Web void (n=428) and the
-Tempel isolated bins differ by counting statistics at the small-$n$
-end: Tempel isolated has $\sim\!137\times$ more galaxies than V-Web
-void, so the two populations are not strictly comparable.
-\item small\_group\_vs\_wall: $0.62$\,pp. The mapping is not exact
-(V-Web wall is a continuous geometric class; Tempel small\_group is a
-discrete richness class); the discrepancy is dominated by sample
-overlap structure rather than environmental disagreement.
-\item cluster\_like\_vs\_cluster: $0.66$\,pp. Same caveat —
-V-Web's $\lambda_{\rm th}\!=\!0$ definition of ``cluster'' is more
-permissive than Tempel's richness $\ge 20$ cut; the V-Web cluster
-volume fraction ($1.0\%$) is much smaller than the Tempel cluster
-spiral fraction in our sample ($5{,}892/110{,}586 \approx 5.3\%$).
+\item \textbf{filament\_like\_vs\_filament: $0.29$\,pp.} Tempel
+filament\_like $f_{\rm CW} = 0.4980$ ($n = 12{,}360$) vs V-Web
+filament-on-overlap $f_{\rm CW} = 0.5009$ ($n = 16{,}701$). The
+difference is ${\sim}0.5\sigma$ in two-sample terms — statistically
+indistinguishable, though formally above the $0.2$\,pp concordance
+spec, which was calibrated for full-sample $n$; at the overlap
+populations the $1\sigma$ two-sample floor is ${\sim}0.6$\,pp
+(supporting, not load-bearing — the primary cross-classifier
+validation remains the on-DESI DESIVAST re-projection at
+$n_{\rm void}^{\rm DESIVAST} = 56{,}981$; see Abstract Robustness).
+\item cluster\_like\_vs\_cluster: $0.67$\,pp (Tempel $0.5018$ at
+$n = 5{,}022$ vs V-Web-on-overlap $0.4950$ at $n = 78{,}378$),
+${\sim}0.9\sigma$ two-sample — consistent. V-Web's
+$\lambda_{\rm th}\!=\!0$ ``cluster'' is far more
+permissive than Tempel's richness $\ge 20$ cut.
+\item isolated\_vs\_void ($10.4$\,pp at $n_{\rm V\mbox{-}Web} = 23$)
+and small\_group\_vs\_wall ($2.9$\,pp at $n_{\rm V\mbox{-}Web} = 145$)
+are uninformative: the V-Web side has essentially no void/wall
+population on the low-$z$ SDSS overlap, and the differences are well
+inside the corresponding counting noise.
 \end{itemize}
 
 Figure~\ref{fig:tempel_overlay} visualizes the two classifiers
 side-by-side with shared y-axis range; the filament/filament\_like
 pair sits essentially on top of the Paper~IV $\bar f_{\rm CW}$
-reference line (the $0.026$\,pp concordance is below visual resolution),
+reference line (the $0.29$\,pp like-for-like concordance is near
+visual resolution),
 while the lower-$n$ pairs scatter as expected.
 
 \begin{figure*}[t]
 \centering
 \includegraphics[width=0.95\textwidth]{fig_p5_vweb_vs_tempel_overlay.png}
-\caption{V-Web (left) vs Tempel+2014 FoF (right) cross-validation:
+\caption{V-Web (left; full-sample canonical run, shown as reference)
+vs Tempel+2014 FoF (right; $96{,}753$-spiral overlap) cross-validation:
 per-class CW fraction with $95\%$ Jeffreys binomial credible intervals,
 shared y-axis [0.43, 0.53]. Dashed reference is parity
 $f_{\rm CW}\!=\!0.5$; dotted-red reference is the Paper~IV global
 $\bar f_{\rm CW}\!=\!0.4974$ classifier-monopole offset. The
-highest-$n$ concordance is the filament class pair: V-Web
-filament $f_{\rm CW}\!=\!0.4980$ ($n\!=\!408{,}187$) vs Tempel
-filament\_like $f_{\rm CW}\!=\!0.4982$ ($n\!=\!14{,}317$) differ by
-$0.026$\,percentage points, well below the $0.2$\,pp concordance
-spec (supporting, not load-bearing; the primary cross-classifier
+quantitative concordance statistic is computed like-for-like on the
+common overlap sample (\S\ref{sec:tempel}): Tempel
+filament\_like $f_{\rm CW}\!=\!0.4980$ ($n\!=\!12{,}360$) vs V-Web
+filament-on-overlap $f_{\rm CW}\!=\!0.5009$ ($n\!=\!16{,}701$),
+a $0.29$\,pp (${\sim}0.5\sigma$) difference, statistically
+indistinguishable (supporting, not load-bearing; the primary
+cross-classifier
 validation is the on-DESI DESIVAST re-projection in
-\S\ref{sec:tweb_concurrent}). Lower-$n$ classes scatter by counting statistics and
+\S\ref{sec:desivast_primary}). Lower-$n$ classes scatter by counting statistics and
 classifier-definition mismatch (V-Web $\lambda_{\rm th}\!=\!0$ vs
 Tempel discrete richness thresholds) but do not contradict the
 environmental-independence headline.}
@@ -1623,15 +1893,16 @@ environmental-independence headline.}
 \end{figure*}
 
 \textbf{Verdict.} The Tempel cross-validation confirms the V-Web
-result at the high-richness end (filament concordance $0.026$\,pp);
+result at the high-richness end (like-for-like filament concordance
+$0.29$\,pp, ${\sim}0.5\sigma$);
 low-richness disagreements scale with counting statistics and the
 classifier-definition mismatch and do not undermine the
 environmental-independence headline. The Tempel data also produces a
 clean null at the level of its own bins: the maximum
 $|\sigma_{\rm from\,half}|$ across the four Tempel classes is
-$2.54$ (Tempel isolated), formally just crossing the Bonferroni-4
-$|\sigma|^{\rm Bonf}_{0.05,4}=2.498$ threshold at $\alpha = 0.05$ by
-$0.04\sigma$ but well below the empirical max-stat null and the
+$2.27$ (Tempel isolated), below the Bonferroni-4
+$|\sigma|^{\rm Bonf}_{0.05,4}=2.498$ threshold at $\alpha = 0.05$ and
+well below the
 $|\sigma|^{\rm Bonf}_{0.01,4}=3.02$ threshold at $\alpha = 0.01$.
 
 \subsection{Concurrent-literature DR1/EDR cosmic-web
@@ -1822,16 +2093,53 @@ independent statistical weight.
 \section{Systematics and null tests}\label{sec:systematics}
 
 We run six classes of systematics tests:
-chirality-label shuffle ($1{,}000$ permutations), sky-position
-permutation, confidence-threshold sweep
-$p_{\rm cls\_eq}^{\max} \in \{0.4, 0.5, 0.6, 0.7, 0.8\}$ with
-CW-fraction flat to within $\pm 0.001$, match-radius sweep
-$\{0.5, 1, 2, 3, 5\}''$ with per-env CW fraction shifts below $0.001$,
-footprint split (N/S/DES-only) with per-footprint values within
-$\pm 0.002$ of global, and target-class split (BGS vs.\
-LRG-ELG-QSO) with BGS-only CW fraction within $\pm 0.001$ of
-LRG-ELG-QSO. No test produces a $>3\sigma$ residual after
+chirality-label shuffle ($1{,}000$ permutations, applied per-bin in
+the redshift, density, and HEALPix scans of
+\S\ref{sec:results}, including the leg$\times$program-stratified
+variants), sky-position
+permutation, confidence-threshold sweep, match-radius sweep,
+footprint split, and target-class split.
+Table~\ref{tab:systematics_splits} reports the measured CW fraction
+per split with its $N$ (artifacts in
+\artifact{pipelines/p5\_desi\_chirality/results/analysis\_systematics/}).
+The match-radius sweep is flat to $0.02$\,pp across
+$\{0.5, 1, 2, 3, 5\}''$; the footprint splits sit within $0.13$\,pp
+of the global value; the confidence-threshold sweep drifts by at most
+$-0.24$\,pp from the full-sample value at
+$p_{\rm cls\_eq}^{\max} \ge 0.7$ (a $\le\!1\sigma$ shift at the
+reduced $n$); and the target-class split is the one structured
+residual: BGS-bright $f_{\rm CW} = 0.4970$ vs LRG/ELG/QSO-dark
+$0.5051$, a $0.81$\,pp difference ($|z| \approx 2.0$ two-sample) with
+opposite-signed deviations from half. An earlier draft of this
+summary stated the bright/dark split agreed ``within $\pm 0.001$'';
+that statement was stale and is corrected here — the bright/dark
+difference is the $\sim\!2\sigma$ residual structure analyzed at the
+per-class level in \S\ref{sec:results_vweb}. No test produces a
+$>3\sigma$ residual after
 Paper~IV-monopole correction.
+
+\begin{table}[ht]
+\caption{Systematics splits: measured CW fraction per split
+(full sample $f_{\rm CW} = 0.49719$, $n = 791{,}635$).}
+\label{tab:systematics_splits}
+\begin{ruledtabular}
+\begin{tabular}{llrr}
+Test & Split & $n$ & $f_{\rm CW}$ \\
+\hline
+Match radius & $0.5''$ & $820{,}266$ & $0.4972$ \\
+             & $5.0''$ & $868{,}165$ & $0.4972$ \\
+Footprint & north (BASS+MzLS) & $253{,}821$ & $0.4971$ \\
+          & south (DECaLS) & $535{,}890$ & $0.4972$ \\
+          & DES-only & $1{,}924$ & $0.4958$ \\
+Confidence & $\ge 0.4$ & $787{,}279$ & $0.4971$ \\
+           & $\ge 0.6$ & $232{,}014$ & $0.4954$ \\
+           & $\ge 0.8$ & $153{,}879$ & $0.4950$ \\
+Program & bright (BGS) & $775{,}760$ & $0.4970$ \\
+        & dark (LRG/ELG/QSO) & $14{,}782$ & $0.5051$ \\
+        & backup $+$ other & $1{,}093$ & $0.5105$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
 
 \section{Discussion}\label{sec:discussion}
 
@@ -1871,10 +2179,19 @@ $-0.26\%$ and the full-sky dipole amplitude $|A|\!<\!0.32\%$
 ($1\sigma$), about an order of magnitude smaller than the Shamir~2022
 amplitude. The present paper's per-environment CW fractions sit at
 $\sim 0.497$ with inter-class range $1.98$\,percentage points across the four
-V-Web classes (per Table~\ref{tab:cw_vs_env} canonical run; the
-max per-cell inter-class range across the nine $(R_s, \lambda_{\rm th})$ Phase~2
-sweep cells is $0.22$\,pp, \S\ref{sec:phase2}), leaving no room
-for a residual environment-dependent chirality of the Shamir~2022 amplitude.
+V-Web classes (per Table~\ref{tab:cw_vs_env} canonical run; across
+the nine $(R_s, \lambda_{\rm th})$ Phase~2
+sweep cells the per-class monopole-subtracted residuals stay below
+$1.87\sigma$ and the filament/cluster fractions move by
+only ${\sim}0.1$\,pp, \S\ref{sec:phase2}), leaving no room
+for a residual environment-dependent chirality of the Shamir~2022
+amplitude ($2$--$4$\,pp would be required in at least one well-populated
+class). We emphasize the scope of this comparison: the present null
+constrains an \emph{environment-conditioned} chirality asymmetry of
+the Shamir~2022 amplitude; it does not by itself adjudicate
+Shamir's \emph{global} (full-sky dipole) anisotropy claim, which is
+addressed separately and directly by the Paper~IV dipole bound quoted
+above.
 
 \section{Limitations}\label{sec:limitations}
 
@@ -1888,9 +2205,11 @@ overdensities without spectroscopic confirmation across the
 neighbourhood.
 \item V-Web is one of several cosmic-web finders; we cross-validated
 against the independent Tempel~\textit{et~al.}~2014 \cite{Tempel2014}
-FoF group classifier (\S\ref{sec:tempel}). The high-$n$ filament class
-concordance is $0.026$\,percentage points, well below the $0.2$\,pp
-spec; lower-$n$ classes scatter by counting statistics and
+FoF group classifier (\S\ref{sec:tempel}). The like-for-like filament
+class
+concordance on the common overlap is $0.29$\,percentage points
+(${\sim}0.5\sigma$, statistically indistinguishable); lower-$n$
+classes scatter by counting statistics and
 classifier-definition mismatch.
 \item Imaging-leg systematics in chirality classification are tracked
 in Paper~IV (per-leg $|\sigma|\!<\!3$); we propagate the per-leg split
@@ -1935,8 +2254,9 @@ $\sigma_v/(aH) \lesssim 5$--$8$\,Mpc/$h$ over $0.01 \le z \le 2$,
 a factor of $\sim 3$--$5$ smaller than the chosen Gaussian smoothing
 scale $R_s = 25$\,Mpc/$h$. The implied per-class $\Delta f_{\rm CW}$
 contamination is sub-percent ($\sim 0.2$\,pp), the
-\emph{same order of magnitude} as the Phase~2 sweep max-range of
-$0.22$\,pp rather than negligible relative to it. This scalar bound is
+\emph{same order of magnitude} as the ${\sim}0.1$\,pp
+filament/cluster class-fraction movement across the Phase~2 sweep
+cells rather than negligible relative to it. This scalar bound is
 necessary but \emph{not sufficient}: the anisotropic eigenvalue
 deformation above is the dominant channel and is not separable from
 the sweep-induced shift without a reconstructed-position rerun.
@@ -1978,20 +2298,26 @@ questions that are currently shot-noise-limited.
 
 \section{Conclusions}\label{sec:conclusions}
 
-Spiral galaxy chirality is statistically independent of large-scale
-structure environment within DESI Data Release~1 at V-Web resolution.
+Spiral galaxy chirality shows no detectable dependence on large-scale
+structure environment at current sensitivity, within DESI Data
+Release~1 at V-Web resolution.
 The headline cosmic-web result, the Phase~2 sensitivity sweep, the
 redshift and density tests, and the HEALPix regional-coherence scan
 all return null at the $3\sigma$ level after look-elsewhere correction.
-The CW fractions per V-Web class on the $791{,}635$ chirality-relevant
-matched spirals (canonical run) are
+The CW fractions per V-Web class on the $812{,}793$ env-labeled spiral
+rows ($791{,}635$ unique chirality-relevant
+matched spirals; \S\ref{sec:results_vweb}) in the canonical run are
 $\{f_{\rm CW}^{\rm void}, f_{\rm CW}^{\rm wall},
 f_{\rm CW}^{\rm filament}, f_{\rm CW}^{\rm cluster}\} =
 \{0.484, 0.503, 0.498, 0.496\}$, a range of $1.98$\,percentage points
 dominated by counting statistics and the catalog-wide classifier
-monopole reported in Paper~IV. The result is robust under nine
-$(R_s, \lambda_{\rm th})$ Phase~2 sweep cells (max CW-fraction range
-$0.22$\,pp) and under six classes of systematics tests.
+monopole reported in Paper~IV (omnibus homogeneity
+$\chi^2 = 3.55$, $p = 0.31$; $\chi^2 = 0.11$, $p = 0.99$ on the
+selection-corrected rebuild). The result is robust under nine
+$(R_s, \lambda_{\rm th})$ Phase~2 sweep cells (all per-class
+monopole-subtracted residuals $\le 1.87\sigma$; look-elsewhere
+$p \ge 0.13$), under grid resolutions $128^3$--$384^3$, and under six
+classes of systematics tests.
 
 This null is consistent with the Paper~IV global parity-mixture null
 and provides an observational upper bound that any future model in the
@@ -2079,18 +2405,41 @@ $\Delta f_{\rm CW}$ bounds in the main text.
 
 \section{Data and code availability}\label{sec:data_code}
 
-All scripts and configuration files are available in the companion data repository. The canonical chirality
+The companion data repository referenced throughout this paper is the
+versioned GitHub repository
+\href{https://github.com/Hubify-Projects/bigbounce}%
+{\texttt{Hubify-Projects/bigbounce}}, directory
+\artifact{pipelines/p5\_desi\_chirality/}; results quoted here
+correspond to manuscript tag \texttt{\paperVersion}. All analysis
+drivers are committed under
+\artifact{pipelines/p5\_desi\_chirality/scripts/} (catalog fetch,
+cross-match, per-analysis drivers \texttt{05}--\texttt{09}, z-shell
+rebuild \texttt{16}, and the closure-wave recompute drivers
+\texttt{17}--\texttt{18}, which include the DESIVAST point-in-sphere
+membership driver), with the V-Web/T-Web grid pipeline and the Tempel
+cross-validation under
+\artifact{pipelines/p5\_desi\_chirality/env\_finder/}. Numeric
+artifacts live under \texttt{outputs/}, \texttt{results/}, and
+\texttt{env\_finder/reports/} in the same directory, each with
+per-output provenance JSON. A DOI-minted archival snapshot of this
+directory accompanies journal submission. The canonical chirality
 catalog is mirrored on HuggingFace at
 \href{https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog}%
 {bamfai/galaxy-chirality-catalog}. DESI Data Release~1 is available from
-\url{https://data.desi.lbl.gov/public/dr1/}. The Phase~2 sweep CSV and consolidated summary are available in the companion data repository.
+\url{https://data.desi.lbl.gov/public/dr1/}. The Phase~2 sweep
+per-cell statistics are in
+\artifact{pipelines/p5\_desi\_chirality/env\_finder/reports/02\_phase2\_sweep.csv}
+(declared-parent recompute; the superseded unfiltered-join version is
+retained alongside as \texttt{\_prefilter\_legacy}).
 
 \section*{Reproducibility checklist}
 \begin{itemize}
-\item Single config file (available in companion data repository).
+\item Single config file:
+\artifact{pipelines/p5\_desi\_chirality/env\_finder/config.yaml}.
 \item Per-output provenance metadata included in data release.
 \item Deterministic seed: \texttt{20260515}.
-\item All Phase~2 sweep cell configs persisted in companion data repository.
+\item All Phase~2 sweep cell configs persisted under
+\artifact{pipelines/p5\_desi\_chirality/data/desi\_env/phase2\_sweep/}.
 \end{itemize}
 
 \begin{thebibliography}{99}

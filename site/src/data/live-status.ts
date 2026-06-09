@@ -129,9 +129,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-5",
       number: "5",
       shortTitle: "DESI environmental chirality independence",
-      version: "v0.1.50-2026-06-09",
+      version: "v0.1.51-2026-06-09",
       readiness: 90,
-      pendingWork: "R22prov NOT clean (24 VERIFIED incl. stale P4-withdrawn citation + count-label fixes) → v0.1.51 wave in flight → clean round → arXiv (last, after P4)",
+      pendingWork: "v0.1.51 landed (root-caused duplicate-TARGETID join; bright/dark + Phase-2 sweep + Tempel rebuilt on declared parent; omnibus χ² added) → Claude-inclusive clean round → arXiv (last, after P4)",
     },
   ],
   blockerTally: {
