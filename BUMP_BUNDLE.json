@@ -1,11 +1,11 @@
 [
   {
     "paperSlug": "paper-5",
-    "version": "v0.1.51-2026-06-09",
+    "version": "v0.1.52-2026-06-09",
     "datestamp": "2026-06-09",
-    "texCommit": "e9d9d253",
+    "texCommit": "25787d57",
     "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf",
-    "sitePdfPath": "/papers/p5_desi_chirality_v0.1.51.pdf",
-    "changelog": "R22prov closure wave (24 VERIFIED). ROOT CAUSE found and fixed: env-table join carried duplicate TARGETIDs (14,622,283 rows / 14,100,704 unique — repeat survey-program coadds), inflating joined samples; affected analyses rebuilt on the declared parent: headline counts relabeled 791,635-matched vs 812,793 env-labeled superset (sums now exact); bright/dark split recomputed (filament 394,181/13,759; old impossible 416,701/21,203 + 3.4σ explicitly withdrawn in-text — true two-sample z=2.13); Phase-2 sweep Table V fully recomputed on declared parent (ranges 1.7-4.1pp, max monopole 1.87σ, shuffle p 0.13-0.56); Tempel filament concordance recomputed like-for-like on declared-parent overlap 96,753 → 0.29pp (~0.5σ; 0.026pp withdrawn). Omnibus χ² added (canonical p=0.315, z-shell p=0.990 — both null, independently computed twice). σ_pred −3.16→−3.32. Stale P4 −0.12σ citation re-anchored on the v1.0.166 retraction headline with labels-unaffected clause. k=20 guard documented (assertion fails; exact rerun shifts n_void +0.18%, Δf negligible). Scripts 17/18/19 + outputs committed. FLAG remaining: C5 covariate regression needs Tractor photometry join (no mass/size/axis-ratio cols locally). 24pp/md5 716d7f36/0 errors/0 undef/0 overfull. Round was Claude-leg DEGRADED — Claude-inclusive confirmation round required post-top-up."
+    "sitePdfPath": "/papers/p5_desi_chirality_v0.1.52.pdf",
+    "changelog": "Covariate-robustness closure (R22prov C5, the last open P5 item): logistic regression extended with GZ-DESI physical covariates (Walmsley 2023, Zenodo 8360385; 100% dr8_id join on the declared parent) — Petrosian radius, r-mag, featured/merger fractions, edge-on fraction (152k featured subsample). Joint 3-dof environment Wald p=0.46 canonical / p=0.99 z-shell-corrected after adjustment; every env coefficient null (max void −0.081±0.107); max adjustment shift 0.17σ; no physical covariate predictive. New paragraph §systematics + Walmsley bibitem. Artifact outputs/20_v0151_covariate_regression.json (script 20 committed c4da6c92). 24pp/md5 cc7c3390/0-0-0. P5 review queue now EMPTY pending Claude-inclusive confirmation round."
   }
 ]
