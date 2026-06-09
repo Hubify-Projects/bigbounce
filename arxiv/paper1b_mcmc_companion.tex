@@ -43,7 +43,7 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1B.0.44}
+\newcommand{\paperVersion}{v1B.0.45}
 \newcommand{\paperTimestamp}{2026-06-08 PDT}
 % v1B.0.41 (2026-06-02 — R-upgraded-round5 P1B 4-Gemini-finding closure pass:
 %   1. GEM-m1 (pattern-017): stripped inline reviewer codes ("R5+R7 GEM-B1+GPT-B1",
@@ -1011,12 +1011,28 @@ performed a NaMaster pseudo-$C_\ell$ analysis on the Planck Commander map with
 500 MC noise realizations. Injecting the spectator-ALP fiducial $\beta=0.27^\circ$
 (consistent with, but not derived from, the ECH action) recovers:
 \begin{equation}
-  \hat\beta_{\rm NaMaster} = 0.238^\circ \quad (\text{pipeline-recovery SNR}=20.32).
+  \hat\beta_{\rm NaMaster} = 0.238^\circ \quad (\text{500-MC sample mean of }\hat\beta).
   \label{eq:beta_namaster}
 \end{equation}
 The bias is $0.032^\circ$ (consistent with the apodized-mask bias expected from
-a $2^\circ$ apodization scale). For $\beta=0.342^\circ$ (the published joint
-WMAP+Planck value~\cite{Eskilt2022}), the pipeline recovers $0.302^\circ$ at SNR$=25.71$; for
+a $2^\circ$ apodization scale).\footnote{\label{fn:snr_definition}The
+``pipeline-recovery SNR$=20.32$'' figure (and analogously $25.71$ for the
+$\beta=0.342^\circ$ injection below) is
+$\mathrm{SNR}^{\rm SE}\equiv \hat\beta/\mathrm{SE}(\hat\beta) =
+\hat\beta\sqrt{N}/\sigma_{\hat\beta}$ with $N=500$ realizations ---
+an \emph{estimator-calibration} metric measuring how well-determined the
+sample mean is, NOT a per-map detectability metric. The per-realization
+detectability ratio
+$\mathrm{SNR}^{\rm real}\equiv \hat\beta/\sigma_{\hat\beta} =
+\mathrm{SNR}^{\rm SE}/\sqrt{N} \approx 0.91$ (and $\approx 1.15$ for the
+$\beta=0.342^\circ$ injection) is the appropriate quantity for comparison
+to single-sky measurements such as Planck NPIPE
+$\beta=0.30^\circ\pm 0.11^\circ$ at $\sim\!2.7\sigma$; the
+$\mathrm{SNR}^{\rm SE}$ is the appropriate quantity for evaluating the
+deconvolution pipeline's calibration.}
+For $\beta=0.342^\circ$ (the published joint
+WMAP+Planck value~\cite{Eskilt2022}), the pipeline recovers $0.302^\circ$ at
+$\mathrm{SNR}^{\rm SE}=25.71$; for
 $\beta=0$, recovery is consistent with zero (null check). The
 pipeline-recovery bias is $\Delta\hat\beta = 0.032^\circ$ at injection
 $\beta=0.27^\circ$ ($\hat\beta=0.238^\circ$) and

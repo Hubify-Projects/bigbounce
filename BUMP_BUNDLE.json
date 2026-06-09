@@ -1,0 +1,20 @@
+[
+  {
+    "paperSlug": "paper-1b",
+    "version": "v1B.0.45",
+    "datestamp": "2026-06-08",
+    "texCommit": "7a871205",
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1b_mcmc_companion.pdf",
+    "sitePdfPath": "/papers/paper1b_mcmc_companion_v1B.0.45.pdf",
+    "changelog": "TIER A2 #A5 closure — fire-13 P1B-META-E1 SNR-on-mean vs per-realization confusion resolved. Eq. eq:beta_namaster now labels \\hat\\beta_NaMaster as the 500-MC sample mean (not as 'pipeline-recovery SNR=20.32'); new footnote fn:snr_definition explicitly defines the two SNR conventions used: SNR^SE = beta_hat / SE(beta_hat) = beta_hat * sqrt(N) / sigma_beta_hat (estimator-calibration metric, gives 20.32 and 25.71 for the two injections) vs SNR^real = beta_hat / sigma_beta_hat (per-realization detectability, gives ~0.91 and ~1.15 — the appropriate quantity for comparison to single-sky measurements like Planck NPIPE beta=0.30+/-0.11 at 2.7sigma). The per-realization scatter sigma_beta_hat~0.26 degrees is consistent with the Delta_P=10 uK*arcmin ACT-noise level. PDF 11pp/724KB/md5 8d7b8ec5. 0 undef refs."
+  },
+  {
+    "paperSlug": "paper-3",
+    "version": "v3.1.78",
+    "datestamp": "2026-06-08",
+    "texCommit": "7a871205",
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p3_anomaly_engine/paper3_draft.pdf",
+    "sitePdfPath": "/papers/paper3_draft.pdf",
+    "changelog": "TIER A2 #A8 + #A9 bundled closure. #A8 (fire-13 P3-META-E1): SII.C 42-hour wall-clock now itemized — pure-inference subtotal 9.4h (DESI 5.5h + LAMOST 3.3h + SDSS 0.6h + CMB/photometric <10s each); the remaining ~32h is FITS I/O staging from HuggingFace to local-pod NVMe, per-survey native-retraining overhead, an intermediate batch-size retry on LAMOST, and a single ~11h pod-restart-with-resume after a network blip during the SDSS pass. Reconciles the 42h total against the meta-reviewer's reconstruction of ~9.4h from quoted throughputs. #A9 (fire-13 P3-META-E2): SIII.A opening rewritten to distinguish 22.5M-spectra-processed (total) from 6.5M-validated-TARGETTYPE-subset (the 5 primary classes). Headline 195,829 DESI anomaly count is the top-1% score-cut of the full 22.5M scan; per-class anomaly rates and SIMBAD-novelty fractions refer to the 6.5M validated-TARGETTYPE subset; the 16M unclassified spectra (filler/sky/calibration) are scored but their per-class breakdown is not meaningful. PDF 20pp/3.59MB/md5 1eb34f33. 0 undef refs."
+  }
+]
