@@ -31,6 +31,14 @@
         "outputPath": "pipelines/p2_chirality/outputs/canonical_provenance/c3_wp_invariance_fsky.json"
       },
       {
+        "name": "C5 P1B Caγ continuous-grid MCMC [4,60]",
+        "paper": "paper-1b",
+        "tmuxSession": "c5",
+        "status": "running",
+        "etaNote": "4 MPI chains, cobaya 3.6.1, Gaussian-summary β likelihood (no Planck download needed) — launched 19:26 UTC, R̂−1<0.01 ETA ~1-4h (NOT 1 day)",
+        "outputPath": "/workspace/c5_results/c5.*"
+      },
+      {
         "name": "C6 P4 depth-stratified null on real footprint (diagnostic)",
         "paper": "paper-4",
         "tmuxSession": "c6",
