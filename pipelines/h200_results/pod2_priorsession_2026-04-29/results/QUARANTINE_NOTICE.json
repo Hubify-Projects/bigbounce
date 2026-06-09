@@ -1,0 +1,10 @@
+{
+  "QUARANTINED": "2026-06-09 \u2014 C7 provenance audit",
+  "reason": "No committed generating scripts; no recorded survey inputs; produced in the same 2026-04-29 pod session as P4's retracted synthetic MASTER null (c58ed751 wave).",
+  "superseded_by": {
+    "FW-1 fnl_scale_dependent": "research/focused_paper_source_integration/outputs/c8_fnl_running_fisher.json (committed script scripts/c8_fnl_running_fisher.py; P2 v1.7.44)",
+    "FW-2 gnl_trispectrum": "no replacement needed \u2014 P2 text uses analytic (36/25)f_NL^2 + Planck tau_NL bound; artifact internally broken (sigma=0 alongside 8.6e7-sigma claim)",
+    "FW-11 nanograv_bayes": "reproducibility/p3_pta_mcmc Ceffyl KDE rerun (gamma=2.567\u00b10.382, B=7.14e3) \u2014 P3 \u00a7nanograv; deprecated arxiv/main.tex carries superseded note"
+  },
+  "audit": "project-context/peer-reviews/C7_C58ED751_PROVENANCE_AUDIT.md"
+}

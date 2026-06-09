@@ -1,11 +1,11 @@
 [
   {
-    "paperSlug": "paper-1b",
-    "version": "v1B.0.49",
+    "paperSlug": "paper-2",
+    "version": "v1.7.44",
     "datestamp": "2026-06-09",
-    "texCommit": "12b4fe8d",
-    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1b_mcmc_companion.pdf",
-    "sitePdfPath": "/papers/paper1b_mcmc_companion_v1B.0.49.pdf",
-    "changelog": "Three compute closures from publish-plan jobs C1+C5 (pod 5i2td3deu3hojr): (1) #A3-4 NaMaster fsky sweep — β=0.27° injection-recovery repeated at fsky=0.85 (Planck-like) and 0.65 (ACT-DR6-like), NSIDE=512, 500 MC each; recovery bias −0.033°/−0.034° statistically identical to canonical fsky=0.32 (0.032°) → bias is a sky-fraction-independent apodization property, well below σ_β^obs=0.094° everywhere; new 'Sky-fraction sweep' paragraph in §IV. (2) #A3-5 continuous-prior Caγ MCMC — prior widened [1,30]→[4,60] (old prior truncated ~28% of mass above 30); 4 MPI chains, R̂−1=0.0095, 8,955 samples; median Caγ=20.7, 16-84% [7.3,45.6], 69% of mass in EOM-required band [9,51]; β posterior 0.326°±0.099° matches obs 0.342°±0.094°; fig:alp_triangle regenerated from the new chains. (3) Likelihood-wording accuracy fix — 'Planck PR4 + ACT DR6 EB-spectrum likelihoods' corrected at 2 sites to 'Gaussian summary likelihood on the published joint β measurement' (matches birefringence_lk.py implementation). 12pp/md5 ab2fe4e2/0 undef/0 overfull, /latex-audit PASS."
+    "texCommit": "c416c8da",
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/research/focused_paper_source_integration/02_full_draft.pdf",
+    "sitePdfPath": "/papers/paper2_fnl_forecast_v1.7.44.pdf",
+    "changelog": "C8 provenance closure (C7 audit FW-1, same April c58ed751 wave as P4's retracted null): SDB joint-Fisher numbers WITHDRAWN — σ(n_fNL)=0.086/σ_marg(fNL)=0.44/ρ=+0.966/9.9σ traced to an artifact with no committed script and no recorded survey inputs, irreproducible under any tested configuration. Replaced with committed in-repo computation scripts/c8_fnl_running_fisher.py (SPHEREx public-product v28 inputs per Doré+2014; validated: all-sample σ(fNL)=1.02 vs published ~0.9): σ(n_fNL)=0.295 fixed-bias / 0.596 bias-marginalized, σ_marg(fNL)=3.08/7.06, ρ=−0.87/−0.97, SDB-only detection 1.4σ/0.6σ — SDB joint channel explicitly subordinate to the unaffected bispectrum-only 3-5σ headline; n_fNL=0 testable to ±0.30/±0.60. In-text provenance note; April pod artifacts quarantined (QUARANTINE_NOTICE.json). RE-LANDED commit c416c8da after concurrent-session collision lost the first attempt. 22pp/md5 0d8fff61/0 undef/0 errors."
   }
 ]
