@@ -99,9 +99,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-2",
       number: "2",
       shortTitle: "f_NL = -35/8 SPHEREx forecast",
-      version: "v1.7.43",
-      readiness: 95,
-      pendingWork: "External round on v1.7.43 → Houston sign-off → arXiv",
+      version: "v1.7.44",
+      readiness: 92,
+      pendingWork: "v1.7.44 FW-1 withdrawal landed (9.9σ→1.4σ/0.6σ committed Fisher) → cross-vendor round → Houston sign-off → arXiv",
     },
     {
       slug: "paper-3",
