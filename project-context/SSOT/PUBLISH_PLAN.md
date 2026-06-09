@@ -96,6 +96,18 @@ P1B ships with the {4,8,12} grid + honest §App C caveat and the continuous-grid
 posterior follows in v2 (arXiv replacement). Everything else has no
 never-run-compute excuse.
 
+## Side manuscript discovered in loop tooling (2026-06-09)
+
+`research/focused_paper_source_integration/paper2_alp_birefringence.tex`
+(spectator-ALP birefringence, 7pp, v1.1) had been silently occupying the
+autoloop's "P2" slot — it is now tracked explicitly as **P2ALP** (7th loop
+entry). **Decision (full-delegation): P2ALP stays OUT of the 3-4 day publish
+scope** — the six core papers ship first; P2ALP keeps accumulating loop
+reviews and its publish decision comes after. Note: its content overlaps P1B's
+§birefringence_check — before any P2ALP submission, de-duplicate scope against
+P1B (likely: P2ALP becomes the long-form treatment, P1B keeps the
+consistency-check summary).
+
 ## Cross-dependency audit (Houston ask)
 
 | Paper | Depends on | Severity | Mitigation |
