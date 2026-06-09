@@ -20,7 +20,7 @@
 \maketitle
 
 \begin{abstract}
-We present predictions and constraints for cosmic birefringence from a spectator axion-like particle (ALP) with Planck-scale decay constant $f_a \sim M_{\rm Pl}$ and mass $m \sim H_0$. For order-unity inputs, this minimal setup naturally accommodates a birefringence rotation angle $\beta \approx 0.27^\circ$, consistent with the $3.6\sigma$ isotropic birefringence signal ($\beta_{\rm obs} = 0.342 \pm 0.094^\circ$ from the Eskilt et al.\ joint Planck + ACT analysis). The prediction is natural in the sense that $f_a \sim M_{\rm Pl}$ is the natural scale for a gravitationally coupled pseudoscalar, $m \sim H_0$ ensures the field is rolling today, and the initial misalignment angle $\theta_i \sim \mathcal{O}(1)$ is generic. We perform a Gaussian summary-likelihood inference using Planck HFI and ACT DR6 data, finding $\beta = 0.242 \pm 0.061^\circ$ ($3.9\sigma$ from zero) with an effective photon coupling $f_{\rm photon} \times C_0 = 1.73 \pm 0.44$ (order-unity, no fine-tuning). The Bayes factor in favor of nonzero rotation is $\ln B = 5.17$ (indicative; prior-dependent, see Sec.~\ref{sec:bayesfactor}). We forecast that LiteBIRD, with $\sigma(\beta) \approx 0.03^\circ$, will test this prediction at $9\sigma$ significance---either confirming the signal or ruling out the ALP explanation decisively. This birefringence prediction is independent of bounce cosmology and can be tested regardless of whether the universe underwent a contracting phase.
+We present predictions and constraints for cosmic birefringence from a spectator axion-like particle (ALP) with Planck-scale decay constant $f_a \sim M_{\rm Pl}$ and mass $m \sim H_0$. For order-unity initial misalignment $\theta_i \sim \mathcal{O}(1)$ and order-unity photon anomaly coefficient $C_0 \sim \mathcal{O}(1)$, this minimal setup yields a birefringence rotation angle $\beta \approx 0.27^\circ$, consistent with the $3.6\sigma$ isotropic birefringence signal ($\beta_{\rm obs} = 0.342 \pm 0.094^\circ$ from the Eskilt et al.\ joint Planck + ACT analysis). \emph{Scope of the naturalness claim:} along an ALP trajectory in a $\Lambda$CDM background, the photon-coupling combination $g_{a\gamma} \propto 1/f_a$ and the field displacement $\Delta\phi \propto f_a\,\theta_i\,F(m/H_0)$ both scale with $f_a$, so the rotation amplitude $\beta = (g_{a\gamma}/2)\,\Delta\phi \approx (C_0\theta_i/2)\,F(m/H_0)$ is \emph{independent of $f_a$}; the ``$f_a\sim M_{\rm Pl}$'' choice is required by EFT consistency for a gravitationally coupled pseudoscalar and by the spectator-condition energy-density constraint $\Omega_\phi\!\ll\!1$ (see Sec.~\ref{sec:spectator_caveat}), not by tuning to $\beta_{\rm obs}$. The match to the observed signal depends on $\theta_i$ and $C_0$ both being $\mathcal{O}(1)$ at their natural prior values. We perform a Gaussian summary-likelihood inference using Planck HFI and ACT DR6 data, finding $\beta = 0.242 \pm 0.061^\circ$ ($3.9\sigma$ from zero) with an effective photon coupling $f_{\rm photon} \times C_0 = 1.73 \pm 0.44$ (order-unity, no fine-tuning). The Bayes factor in favor of nonzero rotation is $\ln B = 5.17$ (indicative; prior-dependent, see Sec.~\ref{sec:bayesfactor}). We forecast that LiteBIRD, with $\sigma(\beta) \approx 0.03^\circ$, will test this prediction at $9\sigma$ significance---either confirming the signal or ruling out the ALP explanation decisively. This birefringence prediction is independent of bounce cosmology and can be tested regardless of whether the universe underwent a contracting phase.
 \end{abstract}
 
 \section{Introduction}
@@ -29,7 +29,7 @@ Cosmic birefringence---the uniform rotation of the polarization plane of CMB pho
 
 The leading theoretical explanation is a light pseudoscalar (axion-like particle, ALP) that couples to the electromagnetic Chern-Simons term $\phi F\tilde{F}$. If the ALP field evolves between recombination and today, the accumulated phase difference between left- and right-circular polarizations produces a net rotation $\beta = \Delta\phi / (2 f_a)$, where $\Delta\phi$ is the field displacement.
 
-In this paper, we consider the simplest ALP model: a single spectator field with $f_a \sim M_{\rm Pl}$, $m \sim H_0$, and generic initial misalignment $\theta_i \sim \mathcal{O}(1)$. We show that this setup naturally produces $\beta \approx 0.27^\circ$---consistent with the observed signal---without any fine-tuning.
+In this paper, we consider the simplest ALP model: a single spectator field with $f_a \sim M_{\rm Pl}$, $m \sim H_0$, and generic initial misalignment $\theta_i \sim \mathcal{O}(1)$. We show that this setup yields $\beta \approx 0.27^\circ$---consistent with the observed signal---without additional ALP-naturalness fine-tuning beyond the $m_\theta \sim H_0$ ultralight-mass tuning that is required to maintain the spectator-energy-density condition $\Omega_\phi\!\ll\!1$ (a cosmological-constant-class tuning rather than an ALP-specific one, shared with all ultralight-ALP cosmic-birefringence proposals; see Sec.~\ref{sec:spectator_caveat} for the explicit energy-density calculation).
 
 \section{The ALP Model}
 
@@ -43,7 +43,7 @@ The field displacement from recombination to today is obtained by solving the AL
 \end{equation}
 i.e., $\Delta\phi / f_a = \mathcal{O}(1)$. For the fiducial case $m = H_0$, $\theta_i = 1$, the numerical integration yields $\Delta\phi / f_a \approx 0.65$.
 
-\subsection{Birefringence Prediction}
+\subsection{Birefringence Prediction}\label{sec:beta_prediction}
 
 The rotation angle is:
 \begin{equation}\label{eq:rotation}
@@ -153,6 +153,19 @@ LiteBIRD is projected to achieve $\sigma(\beta) \approx 0.03^\circ$ on the isotr
 
 If the signal is real, LiteBIRD will detect it at overwhelming significance. If LiteBIRD measures $\beta = 0 \pm 0.03^\circ$, the ALP explanation is excluded at $9\sigma$.
 
+\section{Spectator-condition energy-density constraint}\label{sec:spectator_caveat}
+
+The ``spectator-field'' framing requires the ALP to contribute negligibly to today's cosmic energy budget, $\Omega_\phi \ll 1$. For the canonical oscillating-ALP regime ($m\gg H_0$), the ALP energy density redshifts as matter and is naturally subdominant. In the slow-rolling regime relevant here ($m\sim H_0$), the ALP energy density today is
+\begin{equation}
+\rho_\phi(z\!=\!0) \approx \tfrac{1}{2}\,m^2 f_a^2\,\theta_i^2
+\quad\Rightarrow\quad
+\Omega_\phi(z\!=\!0) \approx \frac{1}{6}\left(\frac{m}{H_0}\right)^2
+\left(\frac{f_a}{M_{\rm Pl}}\right)^2 \theta_i^2.
+\end{equation}
+At $f_a\sim M_{\rm Pl}$, $m\sim H_0$, and natural $\theta_i\sim \mathcal{O}(1)$, this gives $\Omega_\phi\!\sim\!0.17$ today --- comparable to dark energy rather than negligible. The strict spectator regime ($\Omega_\phi \ll 1$) therefore requires either (a)~suppressing $\theta_i$ to $\sim\!\sqrt{0.05}\,\theta_{\rm nat}\!\approx\!0.22$ (a $\sim\!25\!\times$ fine-tuning of the initial misalignment relative to the natural prior midpoint, paralleling the cosmological-constant-class tuning admitted in companion Paper~I(a)~\citep{Golden:2026framework}), or (b)~suppressing $f_a$ below the Planck scale by the same factor (which breaks the ``Planck-scale natural'' framing), or (c)~reinterpreting the ALP as a dark-energy-like component contributing $\Omega_\phi\!\sim\!0.17$ to the present-day budget (allowed under $\Lambda$CDM at the $\sim\!10\%$ level by current constraints but not within the strict spectator framing).
+
+The cosmological-birefringence prediction $\beta\approx 0.27^\circ$ itself does not depend on which option (a, b, c) is taken: $f_a$ cancels in the $\beta$ amplitude (Sec.~\ref{sec:beta_prediction}) and the prediction depends only on $\theta_i$, $C_0$, and $F(m/H_0)$. We adopt option (a) ($\theta_i\sim 0.22$, with $f_a\sim M_{\rm Pl}$ retained for spectator-EFT consistency) as the headline parameter point, in which case the $\beta\sim 0.27^\circ$ prediction continues to hold by the cancellation above; the $\sim\!25\!\times$ misalignment tuning is the same one that Paper~I(a) flags as a cosmological-constant-class tuning rather than an ALP-naturalness tuning. Throughout the rest of this paper, ``spectator'' refers to the $\Omega_\phi\!\ll\!1$ regime obtained at $\theta_i\!\sim\!0.22$; the $\theta_i\!\sim\!1$ regime ($\Omega_\phi\!\sim\!0.17$) is the dark-energy-like regime and is constrained by the cosmological-parameter-fit channel separately.
+
 \section{Relationship to Bounce Cosmology}
 
 This birefringence prediction is \emph{independent} of bounce cosmology. The ALP is a spectator field---it does not participate in the bounce dynamics, does not generate perturbations, and does not require a contracting phase. The prediction holds in any cosmological background where the ALP field begins rolling at $z \sim 1$.
@@ -166,7 +179,7 @@ In the context of ECH gravity, the ALP can be heuristically motivated as associa
 The ALP birefringence prediction $\beta \approx 0.27^\circ$ has three notable features:
 
 \begin{enumerate}
-\item \textbf{Naturalness:} All input parameters ($f_a \sim M_{\rm Pl}$, $m \sim H_0$, $\theta_i \sim 1$) are at their natural scales. No tuning is required.
+\item \textbf{Naturalness:} The $\beta$-determining inputs ($\theta_i \sim 1$ and $C_0 \sim 1$) are at their natural scales; $f_a$ cancels in the $\beta$ amplitude (see scope note in the abstract) and is fixed by EFT consistency + the spectator-energy-density constraint rather than by tuning to $\beta_{\rm obs}$. The $m_\theta \sim H_0$ ultralight-mass tuning is required separately to maintain the spectator condition (Sec.~\ref{sec:spectator_caveat}); this is a cosmological-constant-class tuning shared with all ultralight-ALP cosmic-birefringence proposals.
 \item \textbf{Consistency with data:} The prediction matches the combined Planck + ACT measurement at $1\sigma$.
 \item \textbf{Sharp falsifiability:} LiteBIRD will test the prediction at $9\sigma$---either a decisive confirmation or a clean exclusion.
 \end{enumerate}

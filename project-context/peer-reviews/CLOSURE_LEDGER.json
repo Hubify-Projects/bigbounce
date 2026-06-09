@@ -142,5 +142,29 @@
       "Replace the headline SNR with the per-realization SNR"
     ],
     "description": "P1B §IV.A SNR-on-mean vs per-realization disambiguation (v1B.0.45)"
+  },
+  {
+    "closure_id": "P2-META-E1-fire-13-fa-cancellation",
+    "closure_commit": "PENDING_NEXT_COMMIT",
+    "closure_fire_round": "auto-2026-06-08_1737pt",
+    "paper": "P2",
+    "anchor_phrases": [
+      "f_a cancels in the rotation amplitude",
+      "Planck-scale decay constant claim is irrelevant",
+      "g_aγ ∝ 1/f_a and Δφ ∝ f_a"
+    ],
+    "description": "P2 ALP birefringence: f_a cancellation in β amplitude — abstract + §I + §IV.A + Conclusion clarify f_a is fixed by EFT-consistency + spectator-condition, not by tuning to β_obs (v1.7.44 of paper2_alp_birefringence.tex). NOTE: this is the AUTOLOOP-reviewed 'P2' (ALP birefringence, 7pp); the site-published 'Paper 2' (papers.ts slug 'paper-2') is the f_NL forecast (23pp). Both are real bigbounce papers under the same numeric label; the autoloop targets the ALP paper, papers.ts targets the f_NL paper."
+  },
+  {
+    "closure_id": "P2-META-E2-fire-13-spectator-vs-omega",
+    "closure_commit": "PENDING_NEXT_COMMIT",
+    "closure_fire_round": "auto-2026-06-08_1737pt",
+    "paper": "P2",
+    "anchor_phrases": [
+      "Spectator-field' framing requires \\u03a9_\\u03c6 \\u226a 1",
+      "\\u03a9_\\u03c6 \\u2248 0.17",
+      "\\u03b8_i \\u223c 0.22"
+    ],
+    "description": "P2 ALP birefringence: new §sec:spectator_caveat — explicit Ω_φ(z=0) calculation showing Ω_φ ~ 0.17 at θ_i~1 (not negligible) + 3 options to restore strict spectator regime; adopts θ_i~0.22 (~25× misalignment tuning, parallel to companion Paper I(a) CC-class admission) (v1.7.44 of paper2_alp_birefringence.tex)"
   }
 ]
