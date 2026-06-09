@@ -1,11 +1,11 @@
 [
   {
-    "paperSlug": "paper-1a",
-    "version": "v1A.0.47",
+    "paperSlug": "paper-4",
+    "version": "v1.0.163",
     "datestamp": "2026-06-08",
-    "texCommit": "94bf1abc",
-    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1a_ech_nogo.pdf",
-    "sitePdfPath": "/papers/paper1a_ech_nogo_v1A.0.47.pdf",
-    "changelog": "Houston request — 2 high-impact figures added to P1A. Was at 2 figures (theory map + LQG-Holst derivation). Added: (1) fig:naturalness (§sec:barriers, figure6_parameter_naturalness.png) — visualizes the 4-route closure as positions in the (mass x coupling) plane with the naturalness window; shows all 4 routes either sit outside or require the cosmological-constant-class m_theta~H_0 tuning admitted in §sec:r4_birefringence. (2) fig:detection_forecast (§sec:surviving, figure8_detection_forecast.png) — detection forecast for the 2 surviving mechanism-independent tests (matter-bounce fNL=-35/8 SPHEREx forecast + spectator-ALP birefringence LiteBIRD window). PDF 22pp (was 21)/1.17MB (was 848KB)/md5 95341820. 0 undef refs."
+    "texCommit": "d6c31c2d",
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p2_chirality/chirality_catalog_paper.pdf",
+    "sitePdfPath": "/papers/chirality_catalog_paper_v163.pdf",
+    "changelog": "TIER A3 #A3-7 closure (fire-17 P4-META-E1): Falsification criterion logic error CORRECTED. Prior text said 'A future detection at A≳0.75% (the 50% recovery threshold) would falsify the present null' — but a future 5σ detection at A=0.75% is consistent with the present non-detection by construction (only 50% of injected A=0.75% signals are recovered at 3σ under the present null). Replaced with A_95 threshold (~1.5-2%) as the falsification boundary; A_50≈0.75% retained as the consistency boundary. Two sites updated: §I abstract block (L81) + §VII conclusion block (L377). PDF 13pp (was 12)/7.19MB/md5 b1782f86. 0 undef refs."
   }
 ]

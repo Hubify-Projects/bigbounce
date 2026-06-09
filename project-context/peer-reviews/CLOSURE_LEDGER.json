@@ -166,5 +166,17 @@
       "\\u03b8_i \\u223c 0.22"
     ],
     "description": "P2 ALP birefringence: new §sec:spectator_caveat — explicit Ω_φ(z=0) calculation showing Ω_φ ~ 0.17 at θ_i~1 (not negligible) + 3 options to restore strict spectator regime; adopts θ_i~0.22 (~25× misalignment tuning, parallel to companion Paper I(a) CC-class admission) (v1.7.44 of paper2_alp_birefringence.tex)"
+  },
+  {
+    "closure_id": "P4-META-E1-fire-17-falsification-logic",
+    "closure_commit": "PENDING",
+    "closure_fire_round": "auto-2026-06-08_1737pt",
+    "paper": "P4",
+    "anchor_phrases": [
+      "A future 5\\u03c3 detection at A = 0.75% would therefore be entirely consistent",
+      "50% recovery probability at A = 0.75%",
+      "unfalsifiable in either direction"
+    ],
+    "description": "P4 falsification criterion logic fix — replaced A_50 (50% recovery) threshold with A_95 (95% recovery) for falsification boundary; A_50 retained as consistency boundary (v1.0.163)"
   }
 ]
