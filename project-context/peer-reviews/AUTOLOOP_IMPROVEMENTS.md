@@ -311,3 +311,31 @@ The current extractor in `_extract_problem_from_block()` handles 2 of the 3 know
 **Why this matters**: Fire 21 surfaced 12 NEW findings — 7 of them via the dash-bullet format. If the same finding RE-FIRES under the same format next round, the content-diff tool will not link them and will double-count as "NEW" instead of marking "RECURRING".
 
 **Impact**: false-positive "NEW" count in fire 22+ on dash-bullet findings. Houston-facing severity LOW (synthesis files still capture everything), tool-level severity MEDIUM.
+
+## 2026-06-09 — wrong-PDF round root cause + fix (MAJOR)
+
+**Incident:** R22prov "P2" round reviewed a stale 7pp ALP-birefringence build
+instead of the 22pp f_NL forecast. Round invalidated
+(INVALID-wrongpdf_R22prov_P2_*), re-run as R22prov2 on the verified mirror.
+
+**Root causes (both fixed in tools/v3_review_autoloop.sh):**
+1. `get_pdf` mapped **P2 → site/public/paper2_alp_birefringence.pdf** — the
+   autoloop had been reviewing the ALP side-manuscript as "P2" for every fire,
+   while the actual P2 (f_NL forecast, 02_full_draft) received no autoloop
+   coverage. Its mirror-sync also collided with main-session P2 mirrors.
+2. No integrity check tied the reviewed PDF to the canonical paper-local
+   compile, so mirror staleness/collisions were silent.
+
+**Fixes:**
+- P2 now maps to the f_NL forecast mirror; the ALP manuscript is tracked as an
+  explicit 7th loop entry **P2ALP** with its own context string.
+- New pre-flight: every fire refreshes each loop mirror from its canonical
+  paper-local PDF (`get_src`) and FATALs on md5 mismatch or missing source —
+  the loop always reviews the current compile, by construction.
+- Found independently: P3's site "Read PDF" link 404'd
+  (paper3_anomaly_catalog_v3.1.79.pdf never mirrored) and the P3/P5 flat-name
+  mirrors were generations stale — refreshed + committed (5ccc9b55).
+
+**Tool idea queued:** v3_native_pdf_review.py should print md5+pages of the
+input PDF in the round header of every reviewer .md, so a wrong-PDF round is
+detectable post-hoc from the artifacts alone.

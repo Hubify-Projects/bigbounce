@@ -17,16 +17,31 @@ TS=$(date +%Y-%m-%d_%H%Mpt)
 ROUND_LABEL="auto-${TS}"
 LOG=project-context/peer-reviews/AUTOLOOP_LOG.md
 
-PAPERS="P1A P1B P2 P3 P4 P5"
+PAPERS="P1A P1B P2 P2ALP P3 P4 P5"
 
+# Canonical paper-local PDF (single source of truth — the compile target).
+get_src() {
+  case "$1" in
+    P1A)   echo "arxiv/paper1a_ech_nogo.pdf" ;;
+    P1B)   echo "arxiv/paper1b_mcmc_companion.pdf" ;;
+    P2)    echo "research/focused_paper_source_integration/02_full_draft.pdf" ;;
+    P2ALP) echo "research/focused_paper_source_integration/paper2_alp_birefringence.pdf" ;;
+    P3)    echo "pipelines/p3_anomaly_engine/paper3_draft.pdf" ;;
+    P4)    echo "pipelines/p2_chirality/chirality_catalog_paper.pdf" ;;
+    P5)    echo "pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf" ;;
+  esac
+}
+
+# Loop-local mirror the reviewers actually receive (refreshed every fire).
 get_pdf() {
   case "$1" in
-    P1A) echo "site/public/paper1a_ech_nogo.pdf" ;;
-    P1B) echo "site/public/paper1b_mcmc_companion.pdf" ;;
-    P2)  echo "site/public/paper2_alp_birefringence.pdf" ;;
-    P3)  echo "site/public/paper3_draft.pdf" ;;
-    P4)  echo "site/public/p4-chirality.pdf" ;;
-    P5)  echo "site/public/p5-chirality.pdf" ;;
+    P1A)   echo "site/public/paper1a_ech_nogo.pdf" ;;
+    P1B)   echo "site/public/paper1b_mcmc_companion.pdf" ;;
+    P2)    echo "site/public/papers/paper2_fnl_forecast.pdf" ;;
+    P2ALP) echo "site/public/paper2_alp_birefringence.pdf" ;;
+    P3)    echo "site/public/paper3_draft.pdf" ;;
+    P4)    echo "site/public/p4-chirality.pdf" ;;
+    P5)    echo "site/public/p5-chirality.pdf" ;;
   esac
 }
 
@@ -34,14 +49,29 @@ get_ctx() {
   case "$1" in
     P1A) echo "Closed-form no-go for ECH at tree level." ;;
     P1B) echo "MCMC companion paper to P1A." ;;
-    P2)  echo "ALP birefringence + f_NL forecast." ;;
-    P3)  echo "Multi-survey anomaly catalog v3.1.75." ;;
-    P4)  echo "Galaxy chirality catalog v1.0.159." ;;
-    P5)  echo "DESI chirality x environment." ;;
+    P2)    echo "f_NL = -35/8 SPHEREx/MegaMapper forecast (02_full_draft; current version per SSOT)." ;;
+    P2ALP) echo "Spectator-ALP birefringence side manuscript (paper2_alp_birefringence; tracked separately from P2)." ;;
+    P3)  echo "Multi-survey anomaly catalog (current version per SSOT)." ;;
+    P4)  echo "Galaxy chirality catalog (current version per SSOT)." ;;
+    P5)  echo "DESI chirality x environment (current version per SSOT)." ;;
   esac
 }
 
-echo "[autoloop $TS] starting v3 native-PDF reviews on all 6 papers (parallel)"
+# Pre-flight: refresh every loop mirror from its canonical paper-local PDF and
+# verify md5 equality. Root-cause fix for the 2026-06-09 wrong-PDF round
+# (mirror staleness/collision class eliminated — the loop always reviews the
+# current compile).
+echo "[autoloop $TS] pre-flight mirror refresh + md5 verify"
+for paper in $PAPERS; do
+  src=$(get_src "$paper"); dst=$(get_pdf "$paper")
+  if [ ! -f "$src" ]; then echo "  FATAL: missing canonical PDF $src for $paper"; exit 1; fi
+  cp "$src" "$dst"
+  m1=$(md5 -q "$src"); m2=$(md5 -q "$dst")
+  if [ "$m1" != "$m2" ]; then echo "  FATAL: mirror verify failed for $paper"; exit 1; fi
+  echo "  $paper: $(echo "$m1" | cut -c1-8) $(pdfinfo "$dst" | awk '/^Pages/{print $2}')pp OK"
+done
+
+echo "[autoloop $TS] starting v3 native-PDF reviews on all 7 papers (parallel)"
 
 mkdir -p "$(dirname "$LOG")"
 {
@@ -65,7 +95,7 @@ for pid in $pids; do
   wait "$pid" || true
 done
 
-echo "[autoloop $TS] all 6 v3.1 reviews completed; running meta-reviewer"
+echo "[autoloop $TS] all v3.1 reviews completed; running meta-reviewer"
 
 # v3.2 meta-reviewer (parallel)
 meta_pids=""
