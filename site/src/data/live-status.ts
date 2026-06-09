@@ -117,7 +117,7 @@ export const liveStatus: LiveStatus = {
       shortTitle: "8.47M-galaxy chirality null at sub-percent sensitivity",
       version: "v1.0.166",
       readiness: 85,
-      pendingWork: "v1.0.166 retraction landed (−0.122σ withdrawn, synthetic provenance) → TWO clean cross-vendor rounds → Houston sign-off → arXiv (first in queue)",
+      pendingWork: "R-v166-c1 round NOT clean (~33 verified findings) → v1.0.167 revision wave → two clean rounds → Houston sign-off → arXiv",
     },
     {
       slug: "paper-5",
