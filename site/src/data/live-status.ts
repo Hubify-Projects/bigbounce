@@ -107,7 +107,7 @@ export const liveStatus: LiveStatus = {
       shortTitle: "f_NL = -35/8 SPHEREx forecast",
       version: "v1.7.45",
       readiness: 92,
-      pendingWork: "v1.7.45 R22prov2 mini-wave closed (3/5 vendors zero findings; 5/5 Perplexity citation-fabrication claims falsified) → 1 more clean round → Houston sign-off → arXiv",
+      pendingWork: "v1.7.45 R22prov2 mini-wave closed (Gemini/OpenAI/META zero findings; Claude leg failed on API credits — round DEGRADED, Claude-inclusive confirmation round needed post-top-up) → Houston sign-off → arXiv",
     },
     {
       slug: "paper-3",

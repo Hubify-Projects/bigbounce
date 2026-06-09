@@ -42,3 +42,13 @@ compute-bound items; bispectrum headline untouched.
 
 Perplexity citation-confab rate this round: 5/5 ESSENTIAL citation claims
 false. Feed to findings-archive + pattern-001 stats.
+
+## POST-AUDIT CORRECTION (2026-06-09, ~14:30 PT)
+
+The "3 of 5 vendors returned ZERO findings" headline is overstated: the
+Claude_brutal leg FAILED (Anthropic API credit exhaustion, billing 400) and
+its 0 count is an error artifact, not a clean review. True round composition:
+Gemini + OpenAI + META genuinely zero; Grok + Perplexity findings audited
+above; Claude ABSENT. Round is DEGRADED — a Claude-inclusive confirmation
+round is required after credit top-up before P2 counts a clean round.
+Same applies to the Claude legs of R22prov P3/P4/P5.
