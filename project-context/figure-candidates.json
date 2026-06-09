@@ -39,14 +39,14 @@
         "src": "/images/fig_namaster_beta_vs_nside.png",
         "alt": "NaMaster β recovery vs HEALPix NSIDE",
         "title": "NaMaster β recovery vs NSIDE",
-        "desc": "Pipeline-recovery test of injected birefringence β across NSIDE = {256, 512, 1024} at f_sky = 0.32. Demonstrates the recovery floor + SNR-on-mean scaling that anchors the §IV.A SNR = 20.3 claim."
+        "desc": "Pipeline-recovery test of injected birefringence β across NSIDE = {256, 512, 1024} at f_sky = 0.32 on synthetic ΛCDM polarization skies. Demonstrates the recovery floor (bias −0.032°, sign-symmetric) — a pipeline-validation figure, not a sky-detection significance."
       },
       {
         "ordinal": 102,
         "src": "/images/dneff_viability.png",
         "alt": "ΔN_eff posterior viability across three frozen dataset combinations",
         "title": "ΔN_eff posterior — three frozen runs",
-        "desc": "Joint 1D + 2D ΔN_eff posterior across the full-tension (Planck+SH0ES), Planck+BAO+SN, and Planck-only frozen MCMC chains. The 309,789-sample evidence anchors the §IV ΔN_eff ≈ 0 null-consistency conclusion."
+        "desc": "Joint 1D + 2D ΔN_eff posterior across the full-tension (Planck+SH0ES), Planck+BAO+SN, and Planck-only frozen MCMC chains. The 309,189-sample evidence anchors the §IV ΔN_eff ≈ 0 null-consistency conclusion."
       },
       {
         "ordinal": 103,
