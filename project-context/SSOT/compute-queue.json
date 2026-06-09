@@ -11,7 +11,7 @@
         "paper": "paper-1b",
         "tmuxSession": "c1",
         "status": "running",
-        "etaNote": "NSIDE=512, ~1.3h for both legs; checkpoint JSON per fsky",
+        "etaNote": "fsky=0.85 leg DONE (β rec 0.237/0.27 inj, bias −0.033°, SNR^SE 181); fsky=0.65 leg running, MC 25/500, ETA ~30min",
         "outputPath": "/workspace/c1_results/c1_fsky_sweep.json"
       },
       {
@@ -34,8 +34,9 @@
         "name": "C6 P4 depth-stratified null on real footprint (diagnostic)",
         "paper": "paper-4",
         "tmuxSession": "c6",
-        "status": "queued",
-        "etaNote": "~30min — systematic-attribution test for the +7-9σ real-footprint excess"
+        "status": "done",
+        "etaNote": "DONE 293s — depth-stratified null does NOT absorb excess: +7.13σ Wp=N_all / +9.06σ Wp=N_spiral (vs +7.28/+9.78 global); attribution complete",
+        "outputPath": "pipelines/p2_chirality/outputs/canonical_provenance/c6_depth_stratified_null.json"
       }
     ]
   }

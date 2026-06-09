@@ -1,0 +1,107 @@
+{
+  "job": "C6-P4-depth-stratified-null",
+  "date_utc": "2026-06-09T19:05:11Z",
+  "purpose": "Depth-stratified per-galaxy label-shuffle null for the C3 real-footprint subsample-mask MASTER ell=1 excess (+7.28 sigma Wp=N_all / +9.78 sigma Wp=N_spiral vs global shuffle). If sigma vs this null is small, the excess is a depth/sampling systematic, consistent with the paper's interpretation-(ii) attribution.",
+  "config": {
+    "nside": 64,
+    "lmax": 191,
+    "n_mc": 500,
+    "seed": 42,
+    "apodization": "C2 2.0 deg",
+    "mask_definition": "N_all >= 1",
+    "mask_n_pix": 24297,
+    "f_sky": 0.49432373046875,
+    "field": "A_p=(N_CW-N_CCW)/N_spiral, weight-map-weighted mask-mean subtracted",
+    "null": "per-galaxy CW-label permutation WITHIN 10 pixel-density deciles (deciles of N_all(p) over in-mask pixels; each galaxy assigned its pixel's decile); 500 MC, seed 42",
+    "stratification": {
+      "scheme": "N_all(p) deciles over in-mask pixels",
+      "n_strata": 10,
+      "strata_edges": [
+        -1.0,
+        244.0,
+        279.0,
+        305.0,
+        325.0,
+        346.0,
+        367.0,
+        392.0,
+        421.0,
+        466.0,
+        2240.0
+      ],
+      "strata_pixel_sizes": [
+        2407,
+        2367,
+        2501,
+        2340,
+        2522,
+        2325,
+        2545,
+        2419,
+        2427,
+        2444
+      ],
+      "strata_galaxy_counts": [
+        162898,
+        231969,
+        271901,
+        276336,
+        319552,
+        311469,
+        360733,
+        369489,
+        404187,
+        492626
+      ],
+      "strata_cw_fractions": [
+        0.4988704588147184,
+        0.4976527035940147,
+        0.4960408383933858,
+        0.4979445312952348,
+        0.4975716002403365,
+        0.49722123228956977,
+        0.4962756387688401,
+        0.49651545783501,
+        0.4977349593133871,
+        0.4981486969831069
+      ],
+      "methodology_reference": "pipelines/p2_chirality/scripts/systematics_preserving_null.py"
+    },
+    "n_spirals": 3201160
+  },
+  "results": {
+    "Wp_Nall": {
+      "C1_data_decoupled": 2.348109981323473e-05,
+      "null_mean": 1.7113319696431786e-06,
+      "null_std": 3.052393324112356e-06,
+      "sigma": 7.13203232087472,
+      "n_exceed_null": 0,
+      "empirical_rank_p_one_sided": 0.001996007984031936,
+      "empirical_rank_p_two_sided": 0.0,
+      "n_mc": 500,
+      "c3_global_shuffle_sigma_reference": 7.28,
+      "wallclock_s": 144.79321789741516
+    },
+    "Wp_Nspiral": {
+      "C1_data_decoupled": 2.7863259899866366e-05,
+      "null_mean": 1.5476940334970187e-06,
+      "null_std": 2.9042341021648672e-06,
+      "sigma": 9.061103527003302,
+      "n_exceed_null": 0,
+      "empirical_rank_p_one_sided": 0.001996007984031936,
+      "empirical_rank_p_two_sided": 0.0,
+      "n_mc": 500,
+      "c3_global_shuffle_sigma_reference": 9.78,
+      "wallclock_s": 144.97293281555176
+    }
+  },
+  "c3_reference": {
+    "job": "C3-P4-Wp-invariance-and-fsky-eff",
+    "null": "global per-galaxy label shuffle",
+    "sigma": {
+      "Wp_Nall": 7.28,
+      "Wp_Nspiral": 9.78
+    }
+  },
+  "wallclock_s": 293.11654901504517
+}
