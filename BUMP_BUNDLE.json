@@ -1,20 +1,11 @@
 [
   {
-    "paperSlug": "paper-1a",
-    "version": "v1A.0.48",
-    "datestamp": "2026-06-08",
-    "texCommit": "84f7eac6",
-    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1a_ech_nogo.pdf",
-    "sitePdfPath": "/papers/paper1a_ech_nogo_v1A.0.48.pdf",
-    "changelog": "TIER A3 #A3-3 closure (fire-17 P1A-META-E3): §sec:loophole 'All 7 forms were rejected' language replaced with 'All 7 forms were assessed at the theoretical level only'. Now explicitly distinguishes the theoretical-structure conclusion (ECH adds nothing beyond ΛCDM+w0wa for the 7 disguised forms) from a quantitative posterior-preference rejection (which would require the converged Paper~I(b) Table IV DESI DR2 w0wa chain). The chain hosting the quantitative test has accumulated ~3.8e4 samples with R̂-1 ≈ 3e-2 (per Paper I(b) Table III ‡ footnote) — descending toward publication-quality target R̂-1 < 1e-2 but not yet there. Theoretical-structure conclusion stands; quantitative rejection gated on chain convergence. Closes fire-17 P1A-META-E3 logical inconsistency between 'all rejected' + 'never implemented computationally'. PDF 23pp/1.17MB/md5 d742d3f4."
-  },
-  {
-    "paperSlug": "paper-1b",
-    "version": "v1B.0.47",
-    "datestamp": "2026-06-08",
-    "texCommit": "84f7eac6",
-    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1b_mcmc_companion.pdf",
-    "sitePdfPath": "/papers/paper1b_mcmc_companion_v1B.0.47.pdf",
-    "changelog": "TIER A3 #A3-6 closure (fire-17 P1B-META-E3): 3.9σ inverse-variance combination direction-of-bias clarified. Original text said 'neglects shared calibration systematics; the published joint analysis at 3.6σ is the headline' — but didn't state which direction the neglect biases. Correct direction: shared systematics produce positively correlated errors → underestimate the combined σ → OVERESTIMATE the significance. So 3.9σ is an upper bound on the true significance, not a lower bound. New text makes this explicit + identifies the Tau-A self-calibration as the dominant systematic the published joint analysis accounts for. PDF 11pp/851KB/md5 ea7b3405."
+    "paperSlug": "paper-5",
+    "version": "v0.1.48-2026-06-09",
+    "datestamp": "2026-06-09",
+    "texCommit": "f839ab50",
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf",
+    "sitePdfPath": "/papers/p5_desi_chirality_v0.1.48.pdf",
+    "changelog": "Closure extension — fire-19 P5-META-N1 (Claude opus 4.7 fallback) flagged that the v0.1.46 footnote closure was insufficient: the paper title STILL says 'V-Web Cross-Check' even though footnote (a) acknowledges the classifier is T-Web. Extended closure: title renamed 'V-Web' → 'T-Web (Hahn 2007) Tidal-Tensor Cross-Check' + new title footnote explaining the v0.1.46 backward-compatibility decision (HF dataset slug + GitHub release tag still use 'V-Web') and the v0.1.48 correction. PDF 20pp/975KB/md5 27fcad45. 0 undef refs."
   }
 ]

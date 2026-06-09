@@ -351,10 +351,10 @@ export const papers: Paper[] = [
       "First R-round adversarial review (only after draft has headline numbers)",
     ],
     preprintId: "HUBIFY-2026-005",
-    pdfMeta: "PDF 951 KB · 20 pp · Jun 8, 2026, v0.1.47-2026-06-08 (TIER A2 fire-14 P5-META-E1 closure: §X.B `range $\\sim 0.2$ percentage points across the four V-Web classes' → `inter-class range $1.98$ percentage points` (matching Table II tab:cw_vs_env canonical run) + parenthetical clarifying that the max per-cell inter-class range across the nine $(R_s, \\lambda_{\\rm th})$ Phase 2 sweep cells is $0.22$pp (different statistic, §sec:phase2). Truth-audit refined the meta-reviewer's claim — actual contradiction is 1.98pp vs 0.22pp/0.2pp (per-cell vs inter-class), NOT 1.98pp vs 1.7pp as my fire-14 summary mislabeled. 0 undef refs.)",
+    pdfMeta: "PDF 975 KB · 20 pp · Jun 9, 2026, v0.1.48-2026-06-09 (fire-19 P5-META-N1 title-rename closure: 'V-Web Cross-Check' → 'T-Web (Hahn 2007) Tidal-Tensor Cross-Check' + new footnote explaining HF/GitHub backward-compatibility decision; extends the v0.1.46 footnote closure to the title; md5 27fcad45)\n\n[Legacy v0.1.47] (TIER A2 fire-14 P5-META-E1 closure: §X.B `range $\\sim 0.2$ percentage points across the four V-Web classes' → `inter-class range $1.98$ percentage points` (matching Table II tab:cw_vs_env canonical run) + parenthetical clarifying that the max per-cell inter-class range across the nine $(R_s, \\lambda_{\\rm th})$ Phase 2 sweep cells is $0.22$pp (different statistic, §sec:phase2). Truth-audit refined the meta-reviewer's claim — actual contradiction is 1.98pp vs 0.22pp/0.2pp (per-cell vs inter-class), NOT 1.98pp vs 1.7pp as my fire-14 summary mislabeled. 0 undef refs.)",
     artifacts: [
-      { label: "Read PDF", href: "/papers/p5_desi_chirality_v0.1.47.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/p5_desi_chirality_v0.1.47.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/p5_desi_chirality_v0.1.48.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/p5_desi_chirality_v0.1.48.pdf", kind: "secondary", download: true },
       {
         label: "Pipeline + scripts",
         href: "https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p5_desi_chirality",

@@ -6,10 +6,10 @@
     "paper": "P5",
     "anchor_phrases": [
       "V-Web tidal-tensor classifier",
-      "Hoffman 2012",
-      "V-Web velocity-shear"
+      "Hoffman 2012 V-Web",
+      "V-Web velocity-shear classifier"
     ],
-    "description": "P5 T-Web/V-Web algorithm-label mismatch — paper retitled, Hahn 2007 T-Web footnote added (v0.1.46)"
+    "description": "P5 T-Web/V-Web algorithm-label mismatch — paper footnoted (v0.1.46); title rename addressed separately in v0.1.48. Anchors tightened post-fire-19 false positive (the bare 'Hoffman 2012' anchor matched a fire-19 N1 finding that was about the TITLE still saying V-Web, which is a DIFFERENT closure — the v0.1.46 footnote closure stuck, the title rename is a separate extension)."
   },
   {
     "closure_id": "P3-dedup-fire-13",
@@ -202,5 +202,17 @@
       "presents the discrepancy as if it indicates conservatism"
     ],
     "description": "P1B 3.9σ inverse-variance combination — direction-of-bias clarified: shared systematics → positively correlated errors → underestimated combined σ → OVERESTIMATED significance. 3.9σ is upper bound, not lower bound (v1B.0.47)"
+  },
+  {
+    "closure_id": "P5-META-N1-fire-19-title-rename",
+    "closure_commit": "PENDING",
+    "closure_fire_round": "auto-2026-06-08_2353pt",
+    "paper": "P5",
+    "anchor_phrases": [
+      "title is *\"…with V-Web Cross-Check…\"*",
+      "Paper title uses \"V-Web\" for what footnote",
+      "Rename to \"T-Web\" in the title"
+    ],
+    "description": "P5 title 'V-Web Cross-Check' → 'T-Web (Hahn 2007) Tidal-Tensor Cross-Check' + new footnote explaining the HF/GitHub backward-compatibility decision (v0.1.48). Extension of the v0.1.46 footnote closure (which addressed the body but kept the title for legacy)."
   }
 ]
