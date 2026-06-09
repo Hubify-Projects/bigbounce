@@ -1,15 +1,131 @@
-# Houston Decision Package — LOAD-BEARING Findings (UPDATED 2026-06-08 14:32pt after fire 14)
+# Houston Decision Package — LOAD-BEARING Findings (UPDATED 2026-06-08 18:20pt after fire 17)
 
-After 14 autoloop fires + v3.2 meta-reviewer + v3 content-diff tool
-(replaces broken keyword fingerprinting; commit `b1a25f2d`), fire 14 added
-16 NEW substantive ESS findings on top of fire 13's 12. Total queue is now
-TIER A (fire 13: 9 items) + TIER A2 (fire 14: 16 items) = 25 confirmed
-scientific issues for Houston decision.
+After 17 autoloop fires + 14 paper-level closures shipped this session
+(see SESSION_RETROSPECTIVE_2026-06-08.md), the meta-reviewer (gpt-5-pro
+when available; Claude opus 4.7 as fire-17 fallback) continues to mine
+fresh issues each fire. Self-terminate counter remains 0/3.
 
-Self-terminate counter remains 0/3 (NEW > 0 in both fire 13 and fire 14).
-The autoloop is NOT converging — it's mining deeper layers of issues per
-fire. See AUTOLOOP_IMPROVEMENTS.md for the tooling upgrades behind this
-clearer picture.
+**Closure progress this session**: 14 META closures + 3 figure-addition
+rounds = 17 paper-version bumps. All 14 META closures STUCK in ledger
+through fire 17. See TIER_A2_STATUS.md for the scoreboard.
+
+**Active priority queue** (most recent fire findings at top):
+
+## TIER A3 — fire 17 NEW discoveries (Claude opus 4.7 fallback)
+
+8 new substantive ESS findings, of which several are genuinely novel
+(not surfaced by earlier fires):
+
+### 🔴 #A3-1 — P1A αem/M vs f_a~M_Pl order-of-magnitude inconsistency
+
+**Quote** (fire 17 P1A-META-E2): "The standard Chern-Simons ALP-photon
+coupling is g_aγ = α/M ~ (α_em · c_γ)/(2π f_a). With f_a = M_Pl ≈
+1.22 × 10¹⁹ GeV and c_γ ~ O(1), this gives g_aγ ~ 10⁻²² GeV⁻¹, which is
+~10× smaller than the value α/M = 10⁻²¹ GeV⁻¹ used to fit β_obs in §IV D."
+
+**Diagnosis**: Either (a) f_a is not M_Pl but ~M_Pl/10 (sub-Planckian,
+requiring an explanation), or (b) c_γ ~ O(10) (a model-building assumption
+not stated), or (c) the two pieces of the analysis are using mutually
+inconsistent ALP parameters.
+
+**Effort**: ~1h text — pick a consistent (f_a, c_γ) and propagate; or admit
+the order-of-magnitude discrepancy.
+
+### 🔴 #A3-2 — P1A Eq.(14) operator not derivable from Mercuri-Capozziello refs
+
+**Quote** (fire 17 P1A-META-E1): "Motivated by (but not literally derived
+in) the Holst+non-minimal-fermion construction of Mercuri and Mercuri &
+Capozziello … we adopt the phenomenological one-loop parity-odd operator
+[Eq. 14]"
+
+**Diagnosis**: The R2 amplitude closure (10⁻⁵⁸–10⁻⁶⁰ suppression vs
+observed β) is load-bearing for route 2, yet Eq. (14) is admitted to not
+exist in [19] or [22].
+
+**Effort**: ~2h text — either derive Eq. (14) from first principles in an
+appendix, or label R2 explicitly as "not analyzable within current
+first-principles results."
+
+### 🔴 #A3-3 — P1A Hybrid w₀w_a chain not converged but §XI claims rejection
+
+**Quote** (fire 17 P1A-META-E3): "the chain has accumulated ~3.8×10⁴
+accepted samples … R̂ − 1 ≈ 3×10⁻², descending monotonically toward
+the standard publication-quality convergence target R̂ − 1 < 10⁻²".
+§XI: "All 7 forms were rejected: adding w₀w_a to a bounce model produces
+the same fit improvement as adding w₀w_a to ΛCDM".
+
+**Diagnosis**: A non-converged chain cannot support a "rejection"
+conclusion. Furthermore, §XI admits "the w₀w_a extension was never
+implemented computationally in this program".
+
+**Effort**: ~30min text — retract §XI's rejection language to "we did
+not investigate computationally", or post the converged chain results.
+
+### 🔴 #A3-4 — P1B fsky=0.32 validation does NOT exercise published-analysis regime
+
+**Quote** (fire 17 P1B-META-E1): "validates the pipeline at f_sky = 0.32
+(apodized) … But the published Planck birefringence analyses use
+fsky ≈ 0.85; ACT DR6 uses fsky ≈ 0.65. The validation mask is less than
+half the sky fraction used in the published work."
+
+**Effort**: ~4h compute (rerun at fsky=0.85 + fsky=0.65) + 1h text. Or
+explicitly retract the "validates published measurements" claim.
+
+### 🔴 #A3-5 — P1B Caγ prior grid {4,8,12} doesn't cover data-required [9,51]
+
+**Quote** (fire 17 P1B-META-E2): "App. C states 'Caγ: fixed at one of
+{4, 8, 12}.' But Section VI derives that the observed β = 0.342° requires
+Caγ(Δφ/fa) ≈ 10.3, and with Δφ/fa ∈ [0.2, 1.1] the required Caγ spans
+9–51. Two of the three grid points (Caγ = 4, 8) are outside the
+data-supported range."
+
+**Effort**: ~1d MCMC rerun on continuous Caγ ∈ [4, 60] grid. Or ~30min
+text reframing.
+
+### 🔴 #A3-6 — P1B 3.9σ OVERSTATES not understates significance
+
+**Quote** (fire 17 P1B-META-E3): "Shared systematics produce positively
+correlated errors → the inverse-variance combination underestimates the
+true σ → overstates the significance. So 3.9σ > 3.6σ is the expected
+direction of the bias."
+
+**Effort**: ~30min text — state "this overestimates significance" or
+remove Eq. (4).
+
+### 🔴 #A3-7 — P4 Falsification criterion logically self-contradictory
+
+**Quote** (fire 17 P4-META-E1): "A null measured with only 50% recovery
+probability at A = 0.75% does NOT exclude A = 0.75% signals — it is
+consistent with them by construction. A future 5σ detection at A = 0.75%
+would therefore be entirely consistent with the present non-detection,
+not a falsification."
+
+**Effort**: ~1h text — re-derive falsification threshold at the
+A ≳ A₉₅ point (95% recovery probability), not the 50%-recovery point.
+
+### 🔴 #A3-8 — P4 Hidden +4.31σ "monopole-preserving dipole" estimator in App E
+
+**Quote** (fire 17 P4-META-E2): "the Catalog C-full +4.31σ
+monopole-preserving dipole collapses to +0.62σ (HC-broad-0.6) and +0.87σ
+(HC-strict), consistent with the headline 0.43σ real-space dipole."
+
+**Diagnosis**: +4.31σ vs +0.43σ at the same nominal sample is NOT
+"consistent" — it's a 10× discrepancy. The "monopole-preserving" qualifier
+is undefined.
+
+**Effort**: ~1h text — either add the estimator to Table I with full null
+definition + explain the 10× discrepancy, or acknowledge it's the same
+estimator BEFORE monopole subtraction (in which case remove "consistency
+with headline" claim).
+
+Plus 14 P5 NEW ESS findings (TTA-residual proves non-equivariance,
+Bonferroni-under-correction, V-Web z-domain mismatch, etc.) — see
+auto-2026-06-08_1737pt_P5_META_REVIEW.md.
+
+---
+
+Self-terminate counter remains 0/3 (NEW ESS = 38 in fire 17; 14
+RECURRING; 12 CLOSED). The autoloop is NOT converging.
 
 ## TIER A2 — fire 14 NEW high-impact discoveries
 
