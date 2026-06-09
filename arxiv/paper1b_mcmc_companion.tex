@@ -62,7 +62,62 @@
 %      NOT added: draft-watermarked + encodes stale preliminary posteriors
 %      (means 0.114/0.117/-0.011) contradicting the frozen Table values; existing
 %      fig:dneff_viability already covers that content.)
-\newcommand{\paperVersion}{v1B.0.49}
+% v1B.0.50 (2026-06-09 — R22prov closure wave per R22prov_P1B_TRUTH_AUDIT.md.
+%   Wave A (VERIFIED ESSENTIAL/MAJOR):
+%   1. §IV/Fig.3 provenance (OpenAI-E3/Grok-M4/Per-M14): the canonical 500-MC run
+%      (reproducibility/p1_namaster_500mc/scripts/namaster_500mc.py) generates
+%      SYNTHETIC ΛCDM Q/U skies (semi-analytic EE fit + 5% lensing BB) + 10 µK·arcmin
+%      noise on an ACT-like |b|>20°, dec∈[−65°,+25°] Gaussian-apodized (2° FWHM) mask;
+%      NO Commander/SMICA map, NO beam, NO B-purification, 20 linear bins 30≤ℓ≤1536.
+%      Abstract/§IV/Conclusions prose rewritten to the executed pipeline; stale
+%      fig_namaster_beta_vs_nside.png (old exploratory run: 512-pt at ~0.15°, SMICA
+%      title, Planck+ACT legend, contradicting every §IV number) REPLACED by
+%      fig_namaster_recovery.png regenerated from summary.json + c1_fsky_sweep.json
+%      (tools/p1b_v1B050_figures.py).
+%   2. SNR definition (G5(i)): 20.32/25.71 relabeled as the script's template-fit
+%      SNR sqrt(Σ_b (C_b^EB,th/σ_b^MC)²) — c1_fsky_sweep.json snr_template_canonical_def
+%      scales as 20.32×sqrt(fsky/0.32). β̂√N/σ and the derived 0.91/1.15 claims were
+%      wrong and removed; per-realization σ_β/SNR now quoted from the sweep artifact
+%      (0.0292°/8.1 at fsky 0.85, 0.0327°/7.2 at 0.65; ≈0.047°/≈5 at 0.32 by the
+%      artifact-validated sqrt(fsky) scaling).
+%   3. §V.A BAO attribution (OpenAI-E1): frozen chains use SDSS DR16 baoplus
+%      (lrg/qso/lyauto/lyxqso) + DR7 MGS + 6dFGS per spin_torsion.input.yaml —
+%      NOT DESI DR1. New per-chain dataset table tab:chain_datasets (also closes
+%      OpenAI-M3, META-M2 naming). DESI BAO enters only iter2 (desi_bao_all).
+%   4. w_pivot footnote (Claude-E9/Gem-M4/OAI-E11): printed formula+value were BOTH
+%      wrong. Direct iter2 chain readout (30% burn-in): Cov(w0,wa)=−0.00729 (ρ=−0.90)
+%      → 1−a_p=0.210, a_p=0.790, z_p=0.266, w_p=−0.952±0.019 (+2.5σ from −1). The old
+%      −1.0344±0.0301 was the readout of the NON-decorrelated combination w0+0.332·wa
+%      (a_p=0.668 does not decorrelate; implied |Cov|=0.0115 violates the Cauchy bound
+%      0.0081). Table row + interpretation sentence updated. FLAGGED for Houston: this
+%      changes a Table-1B row from "−1.1σ" to "+2.5σ from −1".
+%   5. ALP likelihood attribution (Gem-M1): App C stack + §VI "EB-spectrum data" +
+%      triangle caption unified to the Gaussian summary likelihood on the Eskilt
+%      WMAP+Planck joint β (c5.input.yaml literally encodes beta_obs=0.342,
+%      sigma_beta=0.094); ACT DR6 = independent cross-check, not in the likelihood.
+%   6. Planck-only false cross-ref ×2 → "not reported in Table I"; §VI→§IV ref;
+%      DiegoPalazuelos2022 bib note trimmed; "exactly 3.6σ" → 3.2σ-vs-3.6σ honest
+%      phrasing; review-response prose scrubbed ×5 (pattern-017); bias sign
+%      convention β̂−β_inj = −0.032/−0.040° throughout + SE arithmetic; Liu et al.
+%      numbers quoted from arXiv:2507.04265 abstract (H0=68.41±0.32, S8=0.812±0.006,
+%      α=−0.00066±0.00098) with explicit σ arithmetic; Fig.2 regenerated (Table-I
+%      values, 176,240 legend count, uncited overlays incl. non-published "ACT DR6
+%      central (0.40)" stripped) + caption "four"→"two".
+%   7. Spectator-subset readout from c5 chain (no new compute): 44%/13% of posterior
+%      mass at Ω_a<0.1/<0.01; β|Ω_a≤0.01 = 0.28±0.10 (0.5σ from β_obs); θi≤0.1 sliver
+%      = 0.4% of mass. META-M4: negative-β injection DISCLOSED as untested (run
+%      queued; no pod in this session).
+%   Wave B: 12 verified minors (k=7 orphan deleted, 2.4→2.7σ ×4, (ω/H)0 dedup,
+%   67.69/0.17 unified, App-C fn cross-ref, fn:theta_backreaction pointer, null-check
+%   numbers, [4,12]→+[4,60] scope, galaxy-spin labeled program-wide, abstract/concl
+%   Planck-only wording aligned, Fig.4 caption 0.324→0.326) + config sentence
+%   (nnu∈[2.046,5.046], Σmν=0.06 eV CAMB default, BBN-consistent YHe per YAML) +
+%   one-line PARTIAL closures (13 BAO points, fn:wcaveat at headline, 12%-vs-25%
+%   bias wording, rad→deg in Eq.3, S8-vs-DES-Y3 2.5σ sentence, 69% prior-dependence,
+%   App-C chain-attribution map, [9,51] division shown, m/H0 implied range, Mercuri
+%   cf., R-hat CSV pointer, Eq.4 null-significance clause, M_B-anchor wording).
+%   FALSIFIED list (14 items) not acted on.)
+\newcommand{\paperVersion}{v1B.0.50}
 \newcommand{\paperTimestamp}{June 9, 2026 PDT}
 % v1B.0.41 (2026-06-02 — R-upgraded-round5 P1B 4-Gemini-finding closure pass:
 %   1. GEM-m1 (pattern-017): stripped inline reviewer codes ("R5+R7 GEM-B1+GPT-B1",
@@ -586,7 +641,7 @@ We report the technical verification material for the Einstein-Cartan-Holst (ECH
 spin-torsion cosmology no-go program of Paper~I(a)~\cite{Golden2026P1a}.
 Three analyses are documented.
 \emph{(1)~Stock-CAMB $\Lambda$CDM$+\Delta\Neff$ MCMC proxy}
-(Cobaya~v3.6.1, $\mathbf{309{,}189}$ frozen samples across two converged dataset combinations, plus a third Planck-only combination ongoing): this
+(Cobaya~v3.6.1, $\mathbf{309{,}189}$ frozen samples across two converged dataset combinations, plus a third Planck-only combination still accumulating): this
 run uses stock CAMB with $\Delta\Neff$ as a free parameter and carries
 \emph{no torsion modifications to the Boltzmann equations}; it is reported as
 a null-consistency test of an extra radiation-like degree of freedom, not as
@@ -595,12 +650,14 @@ combinations find $\Delta\Neff$ consistent with zero ($-0.020\pm 0.169$
 full-tension; $+0.065\pm 0.17$ Planck+BAO+SN) and $H_0$ consistent with
 standard $\Lambda$CDM ($67.68\pm 1.06$ full-tension;
 $67.79\pm 1.09$ Planck+BAO+SN, both in $\text{km\,s}^{-1}\,\text{Mpc}^{-1}$).
-\emph{(2)~NaMaster pseudo-$C_\ell$ pipeline validation} on the Planck Commander
-CMB polarization map ($N_{\rm side}=512$, $\ell_{\rm max}=1024$, $f_{\rm sky}=0.32$,
+\emph{(2)~NaMaster pseudo-$C_\ell$ pipeline validation} on synthetic
+$\Lambda$CDM CMB polarization skies with an ACT-like footprint mask
+($N_{\rm side}=512$, $\ell_{\rm max}=1024$, $f_{\rm sky}=0.32$,
+$10\,\mu\text{K}\cdot\text{arcmin}$ white noise,
 500 Monte Carlo realizations): injecting the spectator-ALP fiducial value
 $\beta=0.27^\circ$ recovers $\hat\beta=0.238^\circ$ (pipeline-recovery bias
-$0.032^\circ$). \emph{Scope of the validation}: the test confirms the algebraic pseudo-$C_\ell$ $E\!\to\!B$ deconvolution under MASTER mode coupling, NOT the physical separation of the cosmic-rotation angle $\beta$ from the instrumental-miscalibration angle $\alpha$ which strictly requires unrotated galactic foregrounds (the foreground-cleaned Commander map removes the very component that breaks the $\beta$--$\alpha$ degeneracy in published Planck/ACT~DR6 measurements). The MC recovery is therefore a pipeline-validation figure, not a sky-detection significance claim. The primary sky detection significance is the
-published Planck/ACT DR6 $2.4$--$2.9\sigma$~\cite{Eskilt2022,DiegoPalazuelos2025};\footnote{\label{fn:eskilt_pr3_pr4}Eskilt
+$\hat\beta-\beta_{\rm inj}=-0.032^\circ$). \emph{Scope of the validation}: the test confirms the algebraic pseudo-$C_\ell$ $E\!\to\!B$ deconvolution under MASTER mode coupling, NOT the physical separation of the cosmic-rotation angle $\beta$ from the instrumental-miscalibration angle $\alpha$ which strictly requires unrotated galactic foregrounds (the synthetic CMB-only skies contain no galactic foregrounds, so the very component that breaks the $\beta$--$\alpha$ degeneracy in published Planck/ACT~DR6 measurements is absent by construction). The MC recovery is therefore a pipeline-validation figure, not a sky-detection significance claim. The primary sky detection significance is the
+published Planck/ACT DR6 $2.7$--$2.9\sigma$~\cite{Eskilt2022,DiegoPalazuelos2025};\footnote{\label{fn:eskilt_pr3_pr4}Eskilt
 \& Komatsu 2022 disambiguation: the published PRD
 paper~\cite{Eskilt2022} (PRD 106:063503, arXiv:2205.13962) analyzes
 \emph{Planck PR3 + WMAP9}; the public reproduction code released by the
@@ -661,10 +718,12 @@ an extra radiation-like degree of freedom in standard cosmology.
 
 \item \textit{NaMaster CMB E-B analysis} (Sec.~\ref{sec:data_cmb}): a
 bias-injection Monte Carlo validation of the pseudo-$C_\ell$ deconvolution
-pipeline. \textbf{Not a competitive sky detection.} The high pipeline-recovery
-SNR figures (e.g., $20.32\sigma$) refer to recovery of injected MC signals,
+pipeline on synthetic $\Lambda$CDM polarization skies.
+\textbf{Not a competitive sky detection.} The high pipeline
+template-fit SNR figures (e.g., $20.32$) refer to recovery of injected MC
+signals,
 not to the significance of the CMB sky measurement, which remains the published
-$2.4$--$2.9\sigma$ from Planck/ACT.
+$2.7$--$2.9\sigma$ from Planck/ACT.
 
 \item \textit{Spectator-ALP consistency check} (Sec.~\ref{sec:birefringence_check}):
 a standard GR+ALP computation showing that the observed signal is consistent
@@ -704,7 +763,9 @@ parameter-scope clarification in Sec.~\ref{sec:fullcomp}; the
 $(\omega/H)_0$ parameter is discussed in Paper~I(a) as a phenomenological
 bounce-class indicator but is not separately sampled here).
 The full-tension dataset combination includes the SH0ES~\cite{Riess2022}
-$H_0$ prior in the Cobaya likelihood configuration, but the
+$M_B$-anchor likelihood (\texttt{H0.riess2020Mb}, entering through the
+supernova absolute magnitude rather than as a direct $H_0$ prior) in the
+Cobaya likelihood configuration, but the
 high-precision Planck NPIPE (PR4) CamSpec high-$\ell$ TTTEEE + Planck 2018
 low-$\ell$ TT/EE + Planck 2018 lensing likelihoods
 carry sufficient inverse-variance weight that the posterior $H_0$ in
@@ -745,7 +806,13 @@ sample count and not aggregated into any frozen-posterior summary statistic
 in this paper. Frozen MCMC program: $\mathbf{309{,}189}$ raw samples
 across 2 frozen dataset combinations ($176{,}240 + 132{,}949$).
 We report this as a $\Lambda$CDM$+\Delta\Neff$ null-consistency test: the data
-are consistent with $\Delta\Neff=0$ in stock CAMB.\footnote{\label{fn:sample_stratification}Sample-count
+are consistent with $\Delta\Neff=0$ in stock CAMB.
+Sampling configuration (per the on-disk Cobaya YAMLs): $\Delta\Neff$ enters
+as \texttt{nnu} with a flat prior $\Neff\in[2.046, 5.046]$
+(i.e.\ $\Delta\Neff\in[-1,+2]$); the neutrino mass is held at the CAMB
+default $\Sigma m_\nu = 0.06$\,eV with one massive eigenstate
+(\texttt{num\_massive\_neutrinos}=1), and $Y_{\rm He}$ follows the CAMB
+BBN-consistent default (no explicit override in any of the four YAMLs).\footnote{\label{fn:sample_stratification}Sample-count
 stratification (reconciliation): \textbf{309{,}189} is
 the sum of the two frozen combinations ($176{,}240 + 132{,}949$ raw accepted
 samples). After removing the first $30\%$ of each chain as burn-in,
@@ -757,8 +824,9 @@ $176{,}240 \times 0.7 \approx \mathbf{123{,}368}$ post-burnin (the
 additional \texttt{getdist} effective-sample weight-based thinning of this
 subset only). The post-burnin count of the full-tension subset alone is $123{,}129$ (within $\pm\!1\%$ of the $123{,}368$ exact computation, with the small offset reflecting the chain-end-truncation of partial samples at the burn-in cut); the correct both-chains post-burnin total is $216{,}432$. The third (Planck-only)
 dataset combination ($114{,}992$ raw samples; $\hat R - 1 \sim 0.05$) is
-still accumulating samples, is reported separately in
-Table~\ref{tab:verification}, and is \emph{not} aggregated into the
+still accumulating samples, is \emph{not} reported in
+Table~\ref{tab:verification} (which contains only the two frozen
+combinations), and is \emph{not} aggregated into the
 $309{,}189$-sample headline anywhere in this paper.}
 
 \paragraph{Scope of the $\Delta\Neff$ proxy: bounce-class discrimination, not a direct test of the spin-torsion sector.}
@@ -770,7 +838,8 @@ dimension-6 four-fermion contact operator is interpreted here in the
 low-energy effective field theory (EFT) below the strong-coupling /
 torsion-resolution scale $\Lambda_{\rm strong}\!\sim\!\MPl/\sqrt{\gamma_{\rm BI}}$
 set by the inverse Barbero--Immirzi parameter $\gamma_{\rm BI}$
-(see~\cite{Mercuri2006}); above this scale the contact-operator description
+(\cf~\cite{Mercuri2006}, where the contact interaction is derived; the
+strong-coupling scale itself is a heuristic EFT-validity estimate); above this scale the contact-operator description
 breaks down and the full Holst-sector dynamics with propagating torsion
 must be retained. All recombination-era and late-time observables addressed
 in this paper sit at energies $E\!\ll\!\Lambda_{\rm strong}$, where the EFT
@@ -811,7 +880,7 @@ $n_s$ & $0.965 \pm 0.006$ & $0.967 \pm 0.006$ \\
 \hline
 Chains & 6 & 6 \\
 Total samples & 176{,}240 & 132{,}949 \\
-Worst $\hat{R}-1$\footnote{\label{fn:rhat_csv}Worst row is $n_s$ in the full-tension combination at $\hat{R}-1 = 9.74\times 10^{-4}$; all sampled parameters across both frozen combinations satisfy $\hat{R}-1 < 3\times 10^{-3}$. The full-tension chain samples 17 parameters: 7 cosmological + 9 Planck likelihood nuisance ($A_{\rm planck}$, amp$_{143}$, amp$_{217}$, amp$_{143\times 217}$, $n_{143}$, $n_{217}$, $n_{143\times 217}$, calTE, calEE) + 1 supernova absolute magnitude ($M_b$, entering via the Pantheon+~SN and SH0ES \texttt{H0.riess2020Mb} likelihoods rather than the Planck likelihood stack). The Planck+BAO+SN chain samples 16 parameters (7 cosmological + the same 9 Planck nuisance; $M_b$ is not explicitly sampled there because \texttt{sn.pantheonplus} runs with \texttt{use\_abs\_mag: false}, analytically marginalizing the absolute magnitude in the absence of the SH0ES $M_b$ likelihood; verified by direct chain-header / \texttt{.updated.yaml} blocking-list inspection). References to ``$k=7$'' elsewhere in this paper refer to the cosmological-parameter count only, distinct from the 16--17-parameter totals sampled in the chains.
+Worst $\hat{R}-1$\footnote{\label{fn:rhat_csv}Worst row is $n_s$ in the full-tension combination at $\hat{R}-1 = 9.74\times 10^{-4}$; all sampled parameters across both frozen combinations satisfy $\hat{R}-1 < 3\times 10^{-3}$. The full-tension chain samples 17 parameters: 7 cosmological + 9 Planck likelihood nuisance ($A_{\rm planck}$, amp$_{143}$, amp$_{217}$, amp$_{143\times 217}$, $n_{143}$, $n_{217}$, $n_{143\times 217}$, calTE, calEE) + 1 supernova absolute magnitude ($M_b$, entering via the Pantheon+~SN and SH0ES \texttt{H0.riess2020Mb} likelihoods rather than the Planck likelihood stack). The Planck+BAO+SN chain samples 16 parameters (7 cosmological + the same 9 Planck nuisance; $M_b$ is not explicitly sampled there because \texttt{sn.pantheonplus} runs with \texttt{use\_abs\_mag: false}, analytically marginalizing the absolute magnitude in the absence of the SH0ES $M_b$ likelihood; verified by direct chain-header / \texttt{.updated.yaml} blocking-list inspection). Full per-parameter convergence tables ($\hat R$, ESS, drift, per dataset) are archived at \path{reproducibility/cosmology/convergence_latest.csv} and mirrored in the HuggingFace chain-diagnostics dataset (Appendix~\ref{app:reproducibility}).
 } & 0.001 & 0.003 \\
 Min ESS & 4{,}744 & 4{,}692 \\
 \end{tabular}
@@ -845,7 +914,7 @@ Parameter & Mean $\pm \sigma$ & vs LCDM\\
 $w_0$         & $-0.8122 \pm 0.0436$ & (marg.-tail, $+4.3\sigma$)\footnote{\label{fn:wcaveat}Marginal-tail \emph{posterior-extrapolation} departure: LCDM is unsampled by this chain (no $w_0\!=\!-1, w_a\!=\!0$ samples in the present Metropolis-Hastings run), so the $+4.3\sigma$ figure is a posterior-tail extrapolation distance only, \emph{not} a Bayes-factor or $\ln B$ exclusion and \emph{not} a frequentist tension. A Savage-Dickey readout is not viable at this tail depth; robust $\ln B$ is left to a follow-up nested-sampling analysis (see \S~Headline-result discussion).}\\
 $w_a$         & $-0.6666 \pm 0.1864$ & $-3.6\sigma$ from $0$\\
 $w_0 + w_a$   & $-1.4788 \pm 0.1485$ & phantom-crossing required\\
-$w_{\rm pivot}$ & $-1.0344 \pm 0.0301$ & $-1.1\sigma$ from $-1$\footnote{\label{fn:wpivot}$w_{\rm pivot} \equiv w_0 + (1-a_p)\,w_a$ with $a_p$ chosen so that $w_0$ and $w_a$ are decorrelated in the posterior covariance: $a_p = 1 - \mathrm{Cov}(w_0, w_a) / \mathrm{Var}(w_a)$. On the converged iter2 chain $a_p = 0.6680$, giving $z_p = 1/a_p - 1 = 0.497$; this is internal to the dataset stack (DESI~DR2~BAO + Planck~NPIPE + DES-Y5 + Pantheon+) and is not the literature de~Putter--Linder $z_p \approx 0.4$ value. With $w_0$ and $w_a$ formally decorrelated at $z_p$, $\sigma_{w_{\rm pivot}}^2 = \sigma_{w_0}^2 + (1-a_p)^2 \sigma_{w_a}^2 = (0.0436)^2 + (0.3320)^2 (0.1864)^2 = (0.0301)^2$, reproducing the $\pm 0.0301$ value above. The choice of $a_p$ depends on the dataset stack; rerunning the chain with SH0ES or DESI~DR2~BAO alone would shift $z_p$ by $\Delta z_p \lesssim 0.1$ and $w_{\rm pivot}$ by $\lesssim 0.01$ in the directions of the linear-Fisher prediction.}\\
+$w_{\rm pivot}$ & $-0.952 \pm 0.019$ & $+2.5\sigma$ from $-1$\footnote{\label{fn:wpivot}$w_{\rm pivot} \equiv w_0 + (1-a_p)\,w_a$ with the pivot $a_p$ chosen so that $w_{\rm pivot}$ and $w_a$ are uncorrelated in the posterior covariance, i.e.\ $\mathrm{Cov}(w_0,w_a) + (1-a_p)\,\mathrm{Var}(w_a) = 0$, giving $1-a_p = -\mathrm{Cov}(w_0, w_a) / \mathrm{Var}(w_a)$. Direct readout of the converged iter2 chain ($30\%$ burn-in): $\mathrm{Cov}(w_0,w_a) = -0.00729$ (correlation coefficient $\rho = -0.90$), so $1-a_p = 0.210$, $a_p = 0.790$, and $z_p = 1/a_p - 1 = 0.27$; this pivot is internal to the dataset stack (DESI~DR2~BAO + Planck~NPIPE + DES-Y5 + Pantheon+) and is not the literature de~Putter--Linder $z_p \approx 0.4$ value. The decorrelated combination has $\sigma_{w_{\rm pivot}}^2 = \sigma_{w_0}^2 - \mathrm{Cov}^2(w_0,w_a)/\sigma_{w_a}^2 = (0.0436)^2 - (0.00729/0.1864)^2 = (0.0193)^2$, reproducing the $\pm 0.019$ value above, with mean $w_{\rm pivot} = -0.8122 + 0.210\times(-0.6666) = -0.952$. The choice of $a_p$ depends on the dataset stack; rerunning the chain with SH0ES or DESI~DR2~BAO alone would shift $z_p$ and $w_{\rm pivot}$ at the linear-Fisher level.}\\
 \hline
 \multicolumn{3}{l}{\textit{Standard cosmology}}\\
 $H_0$ [km/s/Mpc] & $67.185 \pm 0.455$ & ---\\
@@ -862,7 +931,7 @@ Age [Gyr]        & $13.763 \pm 0.019$ & ---\\
 \hline
 \multicolumn{3}{l}{\textit{Goodness-of-fit decomposition}}\\
 $\chi^2_{\rm total}$ & $14037.4 \pm 5.6$\footnote{The mean-of-total $\chi^2$ here is GetDist's weighted-sample average over the full posterior, which differs from the sum of the individual-channel means ($10.6 + 10983.9 + 3043.0 = 14037.5$) by a 0.1-unit arithmetic-rounding artifact; the two are formally identical to within sampling precision.} & ---\\
-$\chi^2_{\rm BAO}$   & $10.6 \pm 1.8$    & DESI~DR2\\
+$\chi^2_{\rm BAO}$   & $10.6 \pm 1.8$    & DESI~DR2\footnote{The DESI~DR2 BAO likelihood (\texttt{bao.desi\_dr2.desi\_bao\_all}) comprises 13 BAO data points, so $\chi^2_{\rm BAO}/N \approx 0.8$ --- an unremarkable goodness of fit.}\\
 $\chi^2_{\rm CMB}$   & $10983.9 \pm 5.3$ & Planck PR4 + lensing\\
 $\chi^2_{\rm SN}$    & $3043.0 \pm 1.6$  & DES-Y5 + Pantheon+\\
 \end{tabular}
@@ -878,13 +947,16 @@ phantom crossing in the redshift range probed by DESI~DR2~BAO + DES-Y5 +
 Pantheon+. This is the canonical quintom signature and is consistent with
 the bounce / pre-Big-Bang scenario discussed in Paper~I(a)'s \S~Structural
 Tension as a constraint that single-field quintessence cannot accommodate
-without a second degree of freedom (phantom / quintom-B). An earlier count erroneously quoted ``98.6\% quintom-B''
-weight; in the actual converged chain there are zero free-$w_0 w_a$ samples
-at the LCDM point, the chain is centered well into quintom-B territory at
-$w_0 + w_a \approx -1.48$. Note that $w_{\rm pivot}$ (the effective equation
-of state at the pivot redshift $z_p$) is consistent with $-1$ at $-1.1\sigma$,
-so the dark-energy departure from LCDM is dominated by the $w_a$ time-varying
-term rather than the present-day $w_0$ value.
+without a second degree of freedom (phantom / quintom-B). In the converged
+chain there are zero free-$w_0 w_a$ samples
+at the LCDM point; the chain is centered well into quintom-B territory at
+$w_0 + w_a \approx -1.48$. At the decorrelation pivot
+($z_p = 0.27$; fn.~\ref{fn:wpivot}), the effective equation of state is
+$w_{\rm pivot} = -0.952 \pm 0.019$, i.e.\ $+2.5\sigma$ above $-1$: the
+departure from LCDM persists, at reduced significance, even in the
+best-determined direction of the $(w_0, w_a)$ posterior, with the largest
+single-axis departures carried by $w_0$ ($+4.3\sigma$) and the time-varying
+$w_a$ term ($-3.6\sigma$).
 
 \textit{Caveats.}---(a)~The robust Bayesian evidence / Bayes factor
 $\ln B$ against LCDM is NOT reported here; standard posterior
@@ -895,9 +967,8 @@ tails (Table~\ref{tab:iter2_posterior}: $w_0$ departs by $+4.3\sigma$ and
 $w_a$ by $-3.6\sigma$) and is therefore unsampled by the
 Metropolis-Hastings chain; any KDE-based Savage-Dickey ratio at an
 unsampled point yields arbitrary kernel-dependent noise rather than a
-controlled posterior density (note: prior caveat
-promised a Savage-Dickey ratio on the converged 2D $(w, w_a)$ marginal,
-but with zero free-$w_0 w_a$ samples at the LCDM point the KDE estimator
+controlled posterior density (with zero free-$w_0 w_a$ samples at the LCDM
+point, a KDE estimator on the converged 2D $(w, w_a)$ marginal
 fails catastrophically). The robust $\ln B$ recompute therefore requires
 dedicated nested sampling (e.g., PolyChord or MultiNest) or
 thermodynamic integration on the same likelihood stack rather than a
@@ -916,39 +987,40 @@ Table~\ref{tab:verification}, which carries the
 \texttt{H0.riess2020Mb} likelihood active in its YAML (verified by direct \texttt{.input.yaml} inspection and by chain
 sample-mean readout: $M_B = -19.263 \pm 0.049$ mag, agreeing with the
 Riess+2020 SH0ES value $M_B = -19.253 \pm 0.027$ mag at $0.2\sigma$).
-The full-tension chain returns $H_0 = 67.69 \pm 1.06$ km/s/Mpc with
-$\Delta\Neff = -0.02 \pm 0.17$, exhibiting the canonical 3.6$\sigma$
+The full-tension chain returns $H_0 = 67.68 \pm 1.06$ km/s/Mpc with
+$\Delta\Neff = -0.020 \pm 0.169$, exhibiting the canonical 3.6$\sigma$
 Hubble tension with Riess $H_0 = 73.04 \pm 1.04$ km/s/Mpc that the
 $\Lambda$CDM+$\Delta\Neff$ extension is unable to resolve: the
 \texttt{H0.riess2020Mb} likelihood constrains the SN Ia absolute
 magnitude $M_B$ (which is correctly pulled toward the Riess value),
 but $H_0$ is determined predominantly by the BAO+CMB acoustic scale
 through Pantheon+, and the $\Delta\Neff$ extension lacks the degrees of
-freedom to shift $H_0$ enough to accommodate both data sets. This
-addresses earlier reviewer concerns that the reported
-67.68 was inconsistent with active SH0ES likelihood; inspection confirms
-the SH0ES likelihood is active in the YAML and the M$_B$
-posterior is correctly pulled, but the 3.6$\sigma$ tension persists
+freedom to shift $H_0$ enough to accommodate both data sets. Direct YAML
+inspection confirms the SH0ES likelihood is active and the M$_B$
+posterior is correctly pulled; the 3.6$\sigma$ tension persists
 because the model cannot shift $H_0$ enough to satisfy both data sets
-simultaneously --- this is the canonical Hubble-tension result, not a
-YAML omission.
+simultaneously --- the canonical Hubble-tension result, not a
+YAML omission. (d)~The iter2 chain's $S_8 = 0.8245 \pm 0.0089$
+(Table~\ref{tab:iter2_posterior}) sits $2.5\sigma$ above the DES-Y3
+weak-lensing value $S_8 = 0.776 \pm 0.017$~\cite{DES2024}
+($\Delta = 0.049$ against a combined uncertainty of $0.019$): the
+$S_8$ tension is not relieved in this chain either.
 \par
-\textit{M$_B$--H$_0$ joint-posterior offset check.} A concern was raised that the joint posterior mean
-($M_B = -19.263$, $H_0 = 67.69$) was inconsistent with an active
-\texttt{sn.pantheonplus} likelihood, claiming a Cobaya YAML alias
-failure. Direct arithmetic audit: \texttt{sn.pantheonplus} enforces a
+\textit{M$_B$--H$_0$ joint-posterior offset check.} The joint posterior mean
+($M_B = -19.263$, $H_0 = 67.68$) is fully consistent with an active
+\texttt{sn.pantheonplus} likelihood: \texttt{sn.pantheonplus} enforces a
 soft constraint on the combination $M_B - 5\log_{10}(H_0) \approx$ const
 along the SN distance-modulus degeneracy. At the Riess+2020 anchor
 ($M_B = -19.253$, $H_0 = 73.04$), the constant is
 $-19.253 - 5\log_{10}(73.04) = -28.571$. At the chain joint mean
-($M_B = -19.263$, $H_0 = 67.69$), the constant is
-$-19.263 - 5\log_{10}(67.69) = -28.416$, i.e.\ a $0.155$ mag offset from
+($M_B = -19.263$, $H_0 = 67.68$), the constant is
+$-19.263 - 5\log_{10}(67.68) = -28.415$, i.e.\ a $0.156$ mag offset from
 the Riess anchor along the Pantheon+ constraint axis. This offset is
 $\sim 3.2\sigma$ relative to the chain's $\sigma_{M_B} = 0.049$ marginal
-width and corresponds exactly to the canonical $3.6\sigma$ Hubble
-tension manifesting in the $M_B$ axis (the same $\sim 3.6\sigma$ that
-appears in $H_0$ when the tension is expressed in distance-ladder
-terms). The chain posterior is therefore the correct compromise of three
+width and is the same Hubble tension manifesting in the $M_B$ axis
+($3.2\sigma$ in chain-$\sigma$ units, versus the canonical $3.6\sigma$
+when the tension is expressed in distance-ladder
+terms in the $H_0$ axis). The chain posterior is therefore the correct compromise of three
 inputs: the Riess $M_B$-prior preferring $M_B = -19.253$ ($\sigma=0.027$);
 the Pantheon+ likelihood preferring $M_B - 5\log_{10} H_0 = -28.571$ along
 the SN degeneracy; and the Planck-CMB-likelihood preferring $H_0 \approx
@@ -969,8 +1041,14 @@ first precision test.
 
 \textit{Independent cross-validation.}---Liu~\etal~\cite{ECTorsionDESI2025}
 constrained an EC torsion model using DESI~DR2~\cite{DESI2025DR2} + Pantheon+~\cite{Brout2022PantheonPlus} +
-DES-SN5YR~\cite{DES2024SN5YR} + Planck~2018, finding torsion preferred by AIC ($\Delta\text{AIC}=-5.7$ to $-6.6$).
-Our MCMC agrees at $0.5\sigma$ in $H_0$ and $0.4\sigma$ in $\sigma_8$.
+DES-SN5YR~\cite{DES2024SN5YR} + Planck~2018, finding torsion preferred by AIC ($\Delta\text{AIC}=-5.7$ to $-6.6$)
+but with the torsion parameter itself consistent with zero
+($\alpha = -0.00066 \pm 0.00098$). Their headline values
+$H_0 = 68.41 \pm 0.32$ km/s/Mpc and $S_8 = 0.812 \pm 0.006$ agree with our
+Planck+BAO+SN chain at $0.5\sigma$ in $H_0$
+($|67.79 - 68.41|/\sqrt{1.09^2 + 0.32^2}$) and $1.0\sigma$ in $S_8$
+($|0.831 - 0.812|/\sqrt{0.018^2 + 0.006^2}$); their torsion-consistent-with-zero
+result parallels our $\Delta\Neff$-consistent-with-zero null finding.
 
 \begin{figure}
 \centering
@@ -986,8 +1064,13 @@ recombination.}
 \begin{figure}
 \centering
 \includegraphics[width=\columnwidth]{figures/fig_dneff_viability_two_frozen.pdf}
-\caption{$\Delta\Neff$ marginal posterior comparison across the four dataset
-combinations of Sec.~\ref{sec:fullcomp}. All combinations recover
+\caption{$\Delta\Neff$ marginal posterior comparison across the two frozen
+dataset combinations of Table~\ref{tab:verification} ($176{,}240$ and
+$132{,}949$ samples). Panel (a): Gaussian summaries of the $\Delta\Neff$
+marginal posteriors at the Table~\ref{tab:verification} means $\pm\,1\sigma$,
+with the Standard-Model value $\Delta\Neff=0$ marked. Panel (b): all seven
+Table~\ref{tab:verification} parameters, normalized to the full-tension
+mean and $\sigma$. Both combinations recover
 $\Delta\Neff$ consistent with zero at $<\!1\sigma$; the headline
 ``full-tension'' stack (Planck+BAO+SN+H$_0$+$S_8$) gives $\Delta\Neff =
 -0.020\pm 0.169$. The standard-ECH route to dark energy via additional
@@ -996,18 +1079,29 @@ amplitude-level explanation of either tension.
 \label{fig:dneff_viability}}
 \end{figure}
 
-\begin{figure}
+\begin{figure*}
 \centering
-\includegraphics[width=\columnwidth]{figures/fig_namaster_beta_vs_nside.png}
-\caption{NaMaster pipeline-recovery validation: recovered birefringence
-$\hat\beta$ vs.\ HEALPix $N_{\rm side}$, for injected $\beta\in\{0,\,0.27^\circ,
-\,0.342^\circ\}$ on the Planck Commander map at the apodized $f_{\rm sky}=0.32$
-mask ($\Delta_P=10\,\mu\text{K}\cdot\text{arcmin}$ ACT-level noise,
-$N\!=\!500$ MC realizations). Bias $\hat\beta - \beta_{\rm inj}$ is below
-$0.04^\circ$ across the natural resolution range; this is the NaMaster
-systematic floor adopted in
-Eq.~\ref{eq:beta_namaster}--\ref{fn:snr_definition}.\label{fig:namaster_beta_vs_nside}}
-\end{figure}
+\includegraphics[width=0.85\textwidth]{figures/fig_namaster_recovery.png}
+\caption{NaMaster pipeline-recovery validation on synthetic $\Lambda$CDM
+polarization skies ($N_{\rm side}=512$,
+$\Delta_P=10\,\mu\text{K}\cdot\text{arcmin}$ white noise,
+$N\!=\!500$ MC realizations per point; Sec.~\ref{sec:data_cmb}).
+Panel (a): 500-MC mean recovered $\hat\beta$ vs.\ injected
+$\beta_{\rm inj}\in\{0,\,0.27^\circ,\,0.342^\circ\}$ at the canonical
+apodized $f_{\rm sky}=0.32$ ACT-like mask, annotated with the
+pipeline-recovery bias $\hat\beta-\beta_{\rm inj}$ ($0.000^\circ$,
+$-0.032^\circ$, $-0.040^\circ$). Panel (b): the $\beta_{\rm inj}=0.27^\circ$
+sky-fraction sweep; outer (light) error bars are the per-realization scatter
+$\sigma_\beta$ ($0.029^\circ$ at $f_{\rm sky}=0.85$, $0.033^\circ$ at
+$0.65$), inner bars the standard error of the 500-MC mean
+$\sigma_\beta/\sqrt{N}$; per-realization $\sigma_\beta$ was not recorded in
+the canonical $f_{\rm sky}=0.32$ artifact, so that point carries the mean
+only. The worst-case $|{\rm bias}| = 0.040^\circ$ is the NaMaster systematic
+floor adopted in
+Eq.~\ref{eq:beta_namaster}--fn.~\ref{fn:snr_definition}. Underlying data
+artifacts are listed in the \emph{Reproducibility} paragraph of
+Sec.~\ref{sec:data_cmb}.\label{fig:namaster_recovery}}
+\end{figure*}
 
 
 %% ============================================================
@@ -1022,77 +1116,111 @@ The spectator ALP analysis (Sec.~\ref{sec:birefringence_check}) uses these
 published values.
 
 \noindent\textbf{Scope note.}---\emph{The NaMaster pseudo-$C_\ell$ analysis
-below is a bias-injection Monte Carlo validation of the deconvolution pipeline,
-not a cosmological measurement. The high pipeline-recovery SNR figures
-(e.g., $20.32$, $25.71$) refer to recovery of injected MC signals and
-\emph{must not} be conflated with the published Planck/ACT~DR6 $2.4$--$2.9\sigma$
+below is a bias-injection Monte Carlo validation of the deconvolution pipeline
+on synthetic skies,
+not a cosmological measurement. The high pipeline template-fit SNR figures
+(e.g., $20.32$, $25.71$; fn.~\ref{fn:snr_definition}) refer to recovery of
+injected MC signals and
+\emph{must not} be conflated with the published Planck/ACT~DR6 $2.7$--$2.9\sigma$
 sky detection.}
 
 \noindent\textbf{Pipeline configuration.}---The pseudo-$C_\ell$ analysis follows the NaMaster framework~\cite{Alonso2019}.
-\emph{Beam and pixel window.}---The
-Planck Commander $Q$/$U$ maps are provided at $N_{\rm side}=2048$ with the
-Planck-2018 effective Gaussian beam ($5\,\text{arcmin}$ FWHM at 143~GHz); we
-degrade to $N_{\rm side}=512$ and apply the corresponding pixel window function.
-NaMaster's \texttt{NmtField} is initialized with
-\texttt{beam=}$b_\ell^{\rm Planck}\,w_\ell^{\rm pix}$.
+\emph{Simulated skies.}---Each Monte Carlo realization is a synthetic
+$\Lambda$CDM CMB $Q$/$U$ sky generated directly at $N_{\rm side}=512$
+(\texttt{healpy.synfast}, harmonic content to
+$\ell_{\rm max}=2N_{\rm side}=1024$) from a semi-analytic fit to the
+Planck-2018 $EE$ spectrum plus a lensing-like $BB$ component
+($C_\ell^{BB} = 0.05\,C_\ell^{EE}$). No real Planck map enters the
+Monte Carlo, and no instrumental beam is applied (the synthetic skies and
+the recovery template share the same spectra, so a common beam would cancel
+in the $\beta$ estimate).
 
-\emph{$E$/$B$ leakage and purification.}---We use NaMaster's spin-2 $B$-mode
-purification (\texttt{purify\_b=True}, \texttt{purify\_e=False}) to suppress
-$E\!\to\!B$ leakage induced by the $f_{\rm sky}=0.32$ apodized mask. The mask
-uses $C_2$ apodization at $2^\circ$ scale.
+\emph{Mask.}---An ACT-like footprint (Galactic cut $|b|>20^\circ$ plus
+declination cut ${\rm dec}\in[-65^\circ, +25^\circ]$), apodized by Gaussian
+smoothing of the binary mask at $2^\circ$ FWHM, giving
+$f_{\rm sky}=0.32$. No $E$/$B$ purification is applied
+(\texttt{purify\_b=False}); residual $E\!\to\!B$ leakage from the apodized
+mask is absorbed into the measured pipeline-recovery bias, which is the
+quantity this validation is designed to characterize.
 
-\emph{Mode-coupling matrix.}---The $M_{\ell\ell'}$ matrix is computed via
-\texttt{NmtWorkspace.compute\_coupling\_matrix} on the apodized mask, retaining
+\emph{Mode-coupling matrix and binning.}---The $M_{\ell\ell'}$ matrix is
+computed via
+\texttt{NmtWorkspace.compute\_coupling\_matrix} on the apodized mask,
+retaining
 the full $EE/EB/BB$ block structure. Spectra are band-power-binned into
-$\Delta\ell=20$ linear bins from $\ell_{\min}=30$ to $\ell_{\max}=1024$.
+20 linear bins spanning $30 \le \ell \le 3N_{\rm side}=1536$ (bins above
+the map band limit $\ell=1024$ carry noise only). Only this single
+binning/$\ell$-range configuration is exercised; an $\ell$-range robustness
+sweep is not part of the present MC suite.
 
-\emph{Foreground and noise model.}---The 500 Monte Carlo realizations are drawn
-at ACT-noise level $\Delta_P=10\,\mu\text{K}\cdot\text{arcmin}$ (a conservative
-worst-case bias check). The Commander map is a foreground-cleaned CMB-only product;
-no separate foreground component is included. The $\beta=0.27^\circ$,
+\emph{Noise model and injections.}---Each realization adds white noise at
+the ACT-like level $\Delta_P=10\,\mu\text{K}\cdot\text{arcmin}$ (a
+conservative worst-case bias check; no $1/f$ or anisotropic component).
+The $\beta=0.27^\circ$,
 $\beta=0.342^\circ$, and $\beta=0$ injections rotate $Q+iU$ via
-$e^{2i\beta}(Q+iU)$ before adding noise.
+$e^{2i\beta}(Q+iU)$. The angle is recovered per configuration by an
+unweighted $\chi^2$ template fit of the decoupled $C_\ell^{EB}$ bandpowers
+to $\sin(2\beta)\cos(2\beta)\,C_\ell^{EE}$ on a $\beta$ grid. Only
+non-negative injections were run; a negative-$\beta$ injection
+(sign-symmetry/linearity check) is not part of the present MC suite and is
+an acknowledged validation gap.
 
-\emph{Reproducibility.}---Full driver script, mask, MC seeds, and binning
-specification are in \texttt{pipelines/h200\_results/\allowbreak pod1\_namaster\_umap\_2026-04-29/}.
+\emph{Reproducibility.}---The canonical driver script, deterministic seeds
+(\texttt{seed\_base}=42), and output summary are archived at
+\path{reproducibility/p1_namaster_500mc/} (mirroring the executed pod run
+\texttt{pipelines/h200\_results/\allowbreak pod1\_namaster\_umap\_2026-04-29/}).
 
-\textit{Independent verification (production 500-realization run, April 2026).}---We
-performed a NaMaster pseudo-$C_\ell$ analysis on the Planck Commander map with
-500 MC noise realizations. Injecting the spectator-ALP fiducial $\beta=0.27^\circ$
+\textit{Production 500-realization run (April 2026).}---We
+performed the NaMaster pseudo-$C_\ell$ Monte Carlo described above with
+500 realizations per injection. Injecting the spectator-ALP fiducial $\beta=0.27^\circ$
 (consistent with, but not derived from, the ECH action) recovers:
 \begin{equation}
   \hat\beta_{\rm NaMaster} = 0.238^\circ \quad (\text{500-MC sample mean of }\hat\beta).
   \label{eq:beta_namaster}
 \end{equation}
-The bias is $0.032^\circ$ (consistent with the apodized-mask bias expected from
+The pipeline-recovery bias, defined throughout as
+$\Delta\hat\beta \equiv \hat\beta - \beta_{\rm inj}$, is $-0.032^\circ$
+(consistent with the apodized-mask power suppression expected from
 a $2^\circ$ apodization scale).\footnote{\label{fn:snr_definition}The
 ``pipeline-recovery SNR$=20.32$'' figure (and analogously $25.71$ for the
-$\beta=0.342^\circ$ injection below) is
-$\mathrm{SNR}^{\rm SE}\equiv \hat\beta/\mathrm{SE}(\hat\beta) =
-\hat\beta\sqrt{N}/\sigma_{\hat\beta}$ with $N=500$ realizations ---
-an \emph{estimator-calibration} metric measuring how well-determined the
-sample mean is, NOT a per-map detectability metric. The per-realization
-detectability ratio
-$\mathrm{SNR}^{\rm real}\equiv \hat\beta/\sigma_{\hat\beta} =
-\mathrm{SNR}^{\rm SE}/\sqrt{N} \approx 0.91$ (and $\approx 1.15$ for the
-$\beta=0.342^\circ$ injection) is the appropriate quantity for comparison
-to single-sky measurements such as Planck NPIPE
-$\beta=0.30^\circ\pm 0.11^\circ$ at $\sim\!2.7\sigma$; the
-$\mathrm{SNR}^{\rm SE}$ is the appropriate quantity for evaluating the
-deconvolution pipeline's calibration.}
+$\beta=0.342^\circ$ injection below) is the \emph{template-fit} SNR of the
+driver script,
+$\mathrm{SNR}^{\rm tmpl}\equiv\bigl[\sum_b
+\bigl(C_b^{EB,\rm th}/\sigma_b^{\rm MC}\bigr)^2\bigr]^{1/2}$, where
+$C_b^{EB,\rm th} = \sin(2\beta)\cos(2\beta)\,C_b^{EE}$ is the injected
+$EB$ band-power template and $\sigma_b^{\rm MC}$ is the per-bin scatter
+across the 500 realizations --- the matched-template significance of the
+injected signal against single-realization noise, the appropriate quantity
+for evaluating the deconvolution pipeline. It is \emph{not} the
+significance of the recovered angle itself. The sky-fraction sweep
+artifact (\path{c1_fsky_sweep.json}) confirms the identification: its
+\texttt{snr\_template\_canonical\_def} values $32.98$ and $28.81$ at
+$f_{\rm sky}=0.85$ and $0.65$ equal $20.32\sqrt{f_{\rm sky}/0.32}$. The
+\emph{per-realization angle-recovery} ratio
+$\hat\beta/\sigma_\beta$, with $\sigma_\beta$ the per-realization scatter
+of the recovered angle, is measured in the same artifact as $8.1$
+($\sigma_\beta = 0.029^\circ$, $f_{\rm sky}=0.85$) and $7.2$
+($\sigma_\beta = 0.033^\circ$, $f_{\rm sky}=0.65$); $\sigma_\beta$ was not
+recorded for the canonical $f_{\rm sky}=0.32$ run, but the
+$\sqrt{f_{\rm sky}}$ scaling validated between the two measured points
+implies $\sigma_\beta(0.32) \approx 0.029^\circ\sqrt{0.85/0.32} \approx
+0.047^\circ$ and hence $\hat\beta/\sigma_\beta \approx 0.238/0.047 \approx
+5$ per realization at the canonical mask. The standard error of the 500-MC
+mean is smaller by $\sqrt{N}=22.4$.}
 For $\beta=0.342^\circ$ (the published joint
 WMAP+Planck value~\cite{Eskilt2022}), the pipeline recovers $0.302^\circ$ at
-$\mathrm{SNR}^{\rm SE}=25.71$; for
-$\beta=0$, recovery is consistent with zero (null check). The
-pipeline-recovery bias is $\Delta\hat\beta = 0.032^\circ$ at injection
+template-fit $\mathrm{SNR}=25.71$; for
+$\beta=0$, the recovered angle is $0.000^\circ$ with template-fit SNR $0.0$
+(null check; \path{summary.json}). The
+pipeline-recovery bias is $\Delta\hat\beta = -0.032^\circ$ at injection
 $\beta=0.27^\circ$ ($\hat\beta=0.238^\circ$) and
-$\Delta\hat\beta = 0.040^\circ$ at injection $\beta=0.342^\circ$
-($\hat\beta=0.302^\circ$); the absolute bias scales mildly with injected
-amplitude (the bias was initially characterized as
-strictly ``stable across all three injections'' at $0.032^\circ$, but the
-$0.342^\circ$ injection actually gives $0.040^\circ$, a relative $\sim 12\%$
-amplitude-dependent component). The deconvolution is therefore unbiased at the
-$0.04^\circ$ level in the worst-case injection, which we carry forward as the
+$\Delta\hat\beta = -0.040^\circ$ at injection $\beta=0.342^\circ$
+($\hat\beta=0.302^\circ$). The \emph{absolute} bias grows mildly
+($\sim\!25\%$) with injected
+amplitude, while the \emph{multiplicative} under-recovery is
+amplitude-independent at $\sim\!12\%$
+($0.238/0.27 = 0.302/0.342 = 0.88$). The deconvolution is therefore unbiased at the
+$|\Delta\hat\beta| \le 0.040^\circ$ level in the worst-case injection, which we carry forward as the
 NaMaster systematic floor; this is a methodology cross-check, not a competitive
 sky measurement.
 
@@ -1106,7 +1234,10 @@ $\hat\beta=0.237^\circ$ ($f_{\rm sky}=0.85$, per-realization
 $\sigma_\beta=0.029^\circ$) and $\hat\beta=0.236^\circ$ ($f_{\rm sky}=0.65$,
 $\sigma_\beta=0.033^\circ$), i.e.\ a recovery bias of $-0.033^\circ$ to
 $-0.034^\circ$ --- statistically indistinguishable from the canonical-mask
-bias of $0.032^\circ$. The $\sim\!12\%$ multiplicative under-recovery is
+bias of $-0.032^\circ$ (the $0.001^\circ$ difference is $0.8\times$ the
+standard error of the 500-realization mean,
+$\sigma_\beta/\sqrt{500} \approx 0.029^\circ/22.4 \approx 0.0013^\circ$).
+The $\sim\!12\%$ multiplicative under-recovery is
 therefore a sky-fraction-independent property of the apodized pipeline
 (consistent with apodization-induced power suppression), not an artifact of
 the small canonical mask, and remains well below the published observational
@@ -1121,18 +1252,52 @@ Artifact: \path{reproducibility/p1_namaster_500mc/results/c1_fsky_sweep.json}.
 
 \subsection{Datasets and Configuration}\label{sec:fullcomp}
 
-We analyze four dataset combinations: (1)~Planck CMB (NPIPE (PR4) CamSpec high-$\ell$ TTTEEE + 2018 low-$\ell$ TT/EE + 2018 lensing)~\cite{Planck2018params};
-(2)~+DESI 2024 DR1 BAO~\cite{DESI2024}; (3)~+Pantheon+~\cite{Brout2022PantheonPlus}; (4)~+SH0ES $H_0$
-prior~\cite{Riess2022} + DES Y3 $S_8$~\cite{DES2024}. Parameter estimation
+We analyze four dataset combinations: (1)~Planck CMB (NPIPE (PR4) CamSpec high-$\ell$ TTTEEE + 2018 low-$\ell$ TT/EE + 2018 lensing)~\cite{Planck2018params}
+(the NPIPE/PR4 release provides the high-$\ell$ CamSpec likelihood; the
+low-$\ell$ and lensing likelihoods are taken from the 2018 release, the
+standard pairing in the Cobaya likelihood stack);
+(2)~+SDSS BAO --- eBOSS DR16 LRG/QSO/Ly$\alpha$(auto and
+$\times$QSO)~\cite{eBOSS2021} + SDSS DR7 MGS~\cite{Ross2015MGS} +
+6dFGS~\cite{Beutler20116dF}; (3)~+Pantheon+~\cite{Brout2022PantheonPlus}; (4)~+SH0ES
+$M_B$-anchor~\cite{Riess2022} + DES Y3 $S_8$~\cite{DES2024}. No DESI BAO
+likelihood enters the frozen $\Lambda$CDM$+\Delta\Neff$ chains; DESI~DR2 BAO
+enters only the separate iter2 $w_0w_a$ chain of
+Table~\ref{tab:iter2_posterior}. The exact Cobaya likelihood blocks of all
+five chains are listed in Table~\ref{tab:chain_datasets}. Parameter estimation
 uses Cobaya~\cite{Cobaya2021} (v3.5 original; v3.6.1 verification) with
 stock CAMB and $\Delta\Neff$ as a free parameter---no custom CAMB modifications.
 The extended parameter space adds $\Delta\Neff$ to $\Lambda$CDM, with both
 $(\omega/H)_0$ and $\Omega_k$ fixed to zero in the actual sampled YAML
-configuration (the angular-momentum
-parameter $(\omega/H)_0$ is discussed in Paper~I(a) as a phenomenological
-bounce-class indicator but is not separately sampled in the present
-$\Lambda$CDM$+\Delta\Neff$ MCMC). Reproducibility materials at
+configuration (Sec.~\ref{sec:tensions}). Reproducibility materials at
 \url{https://github.com/Hubify-Projects/bigbounce/tree/main/reproducibility}.
+
+\begin{table*}[tb]
+\caption{\label{tab:chain_datasets} Per-chain Cobaya likelihood blocks,
+verbatim from the on-disk YAML configurations
+(\texttt{cobaya\_*.yaml}; frozen-chain \texttt{spin\_torsion.input.yaml};
+iter2 \texttt{spin\_torsion\_dr2.input.yaml}). All four
+$\Lambda$CDM$+\Delta\Neff$ chains share the Planck block
+\texttt{planck\_NPIPE\_highl\_CamSpec.TTTEEE} +
+\texttt{planck\_2018\_lowl.TT} + \texttt{planck\_2018\_lowl.EE} +
+\texttt{planck\_2018\_lensing.clik}; the SDSS BAO block is
+\texttt{bao.sixdf\_2011\_bao} + \texttt{bao.sdss\_dr7\_mgs} +
+\texttt{bao.sdss\_dr16\_baoplus\_\{lrg,\,qso,\,lyauto,\,lyxqso\}}.
+The first four rows are incremental: each adds to the stack of the row
+above. The iter2 chain uses \texttt{planck\_2018\_lensing.native} in place
+of \texttt{.clik}.}
+\begin{ruledtabular}
+\footnotesize
+\begin{tabular}{lll}
+Chain & Likelihood stack & Status \\
+\hline
+Planck-only & Planck block & accumulating (not frozen) \\
+Planck+BAO & $+$ SDSS BAO block & exploratory \\
+Planck+BAO+SN & $+$ \texttt{sn.pantheonplus} & frozen (Table~\ref{tab:verification}) \\
+Full-tension & $+$ \texttt{H0.riess2020Mb} $+$ DES-Y3 $S_8$ Gaussian & frozen (Table~\ref{tab:verification}) \\
+iter2 $w_0w_a$ & \texttt{bao.desi\_dr2.desi\_bao\_all} $+$ Planck block $+$ \texttt{sn.desy5} $+$ \texttt{sn.pantheonplus} & converged (Table~\ref{tab:iter2_posterior}) \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
 
 \subsection{Results}
 
@@ -1154,7 +1319,7 @@ $\Delta N_{\rm eff} = -0.020 \pm 0.169$ (full-tension) and
 $+0.065 \pm 0.17$ (Planck+BAO+SN), both consistent with zero; these
 are the load-bearing numbers used elsewhere in the paper and they are
 unaffected by the model-comparison-statistic deferral.
-The $\chi^2$ goodness-of-fit decomposition (BAO, CMB, SN, and total contributions) is reported in Table~\ref{tab:iter2_posterior}; the AIC, BIC, and $\ln B$ evidence metrics are \emph{not} reported there. The headline result is $w_0 = -0.812 \pm 0.044$ (departing from the $\Lambda$CDM point $w_0=-1$ at $+4.3\sigma$) and $w_a = -0.667 \pm 0.186$ (departing from $w_a=0$ at $-3.6\sigma$), with $w_0+w_a = -1.48 \pm 0.15$ requiring phantom crossing (the canonical quintom signature). Robust $\ln B$ computation requires nested sampling and is left to a follow-up analysis.
+The $\chi^2$ goodness-of-fit decomposition (BAO, CMB, SN, and total contributions) is reported in Table~\ref{tab:iter2_posterior}; the AIC, BIC, and $\ln B$ evidence metrics are \emph{not} reported there. The headline result is $w_0 = -0.812 \pm 0.044$ (departing from the $\Lambda$CDM point $w_0=-1$ at $+4.3\sigma$; fn.~\ref{fn:wcaveat}) and $w_a = -0.667 \pm 0.186$ (departing from $w_a=0$ at $-3.6\sigma$), with $w_0+w_a = -1.48 \pm 0.15$ requiring phantom crossing (the canonical quintom signature). Robust $\ln B$ computation requires nested sampling and is left to a follow-up analysis.
 
 The $\Lambda$CDM$+\Delta\Neff$ proxy thus offers neither posterior
 preference nor exclusion at the present data precision. The
@@ -1205,8 +1370,8 @@ Across the natural parameter range $m/H_0\in[1,3]$, $\theta_i\in[0.5,2]$:
 $\Delta\phi/f_a \in [0.2, 1.1]$.\footnote{\label{fn:theta_backreaction}Backreaction
 disclosure: the ALP backreaction fraction scales as $\Omega_a \sim
 \rho_a/\rho_{\rm crit} \sim (m^2 f_a^2/H_0^2 \MPl^2)\,\theta_i^2$, so the
-abstract spectator-status restriction $\theta_i\ll 1$ (Eq.~\eqref{eq:beta_namaster}-adjacent
-disclaimer) implies $\Omega_a \ll 1$ only in the sub-natural sliver $\theta_i\sim 0.1$.
+abstract's spectator-status restriction $\theta_i\ll 1$ (see the
+\emph{Spectator-status caveat} in the abstract) implies $\Omega_a \ll 1$ only in the sub-natural sliver $\theta_i\sim 0.1$.
 The numerical scan range $\theta_i\in[0.5,2]$ is RETAINED here for completeness
 of the parameter envelope, but the natural-prior-anchored spectator-consistent
 result sits at $\theta_i\sim 0.1$: at $\theta_i=0.1$ vs the scan-midpoint
@@ -1218,7 +1383,8 @@ spectator-consistency companion check.}
 
 \textit{Birefringence value.}---For $C_{a\gamma}=8$, $\theta_i=1$, $m\approx 2H_0$:
 \begin{equation}
-\beta \approx \frac{\alpha_{\rm EM}\times 8}{4\pi}\times 1.07 \approx 0.29^\circ.
+\beta \approx \frac{\alpha_{\rm EM}\times 8}{4\pi}\times 1.07
+= 4.97\times 10^{-3}\,\text{rad} \times \frac{180^\circ}{\pi} \approx 0.29^\circ.
 \end{equation}
 The fiducial value $\beta\approx 0.27^\circ$ corresponds to the midpoint
 $m\approx 1.8\,H_0$, $\Delta\phi/f_a\approx 1.0$. The prediction spans
@@ -1245,7 +1411,8 @@ inverse-variance weighting:
 \beta_{\rm combined} = 0.241^\circ\pm 0.061^\circ \quad (3.9\sigmaunit)
 \label{eq:beta_combined}
 \end{equation}
-(Auxiliary cross-check only.)
+(Auxiliary cross-check only; the $3.9\sigmaunit$ is the significance of
+$\beta_{\rm combined}$ relative to the null $\beta=0$, i.e.\ $0.241/0.061$.)
 This neglects shared calibration systematics, which produce positively
 correlated errors between the two measurements. Positively correlated errors
 \emph{underestimate} the inverse-variance-combined $\sigma$, and therefore
@@ -1266,7 +1433,9 @@ not on $\Delta\phi/f_a$ which is a derived quantity along each ALP trajectory.
 The natural-envelope range $\Delta\phi/f_a \in [0.2, 1.1]$ stated above
 corresponds to the corners of the $(\theta_i, m/H_0)$ natural-prior box at
 $\theta_i\in[0.5,2]$, $m/H_0\in[1,3]$. The MCMC posterior, anchored to the
-Planck PR4 + ACT DR6 EB-spectrum data, pulls $(\theta_i, m/H_0)$ toward the
+Gaussian summary likelihood on the published Eskilt--Komatsu joint
+WMAP+Planck measurement (fn.~\ref{fn:eskilt_pr3_pr4}; not to the $EB$
+spectra themselves), pulls $(\theta_i, m/H_0)$ toward the
 upper edge of the natural-prior box --- the data-preferred posterior implies
 the joint product $C_{a\gamma}\,(\Delta\phi/f_a)\approx 10.3$, which at the
 quoted $C_{a\gamma}=8$ fixed corresponds to $\Delta\phi/f_a\approx 1.29$,
@@ -1274,7 +1443,7 @@ $\sim 17\%$ above the natural envelope upper bound; this is the same
 $\sim 25\times$-fine-tuning regime flagged in fn.~\ref{fn:theta_backreaction}
 and is consistent with the model accommodating but not naturally explaining
 the observed $\beta_{\rm obs}=0.342^\circ$),
-consistent with the model-independent fit $\beta_{\rm free} = 0.344^\circ\pm 0.096^\circ$ (our internal model-independent MCMC fit, with $\beta$ as a free parameter, to a Gaussian summary likelihood on the published joint Planck PR4 + ACT DR6 birefringence measurement $\beta_{\rm obs}=0.342^\circ\pm0.094^\circ$~\cite{Eskilt2022} --- not a re-analysis of the $EB$ spectra themselves; 9{,}720 accepted samples across the 3 ALP-MCMC configurations described in Sec.~\ref{sec:birefringence_check} (configurations $C_{a\gamma}=4,8,12$; full priors and likelihood details in Appendix~\ref{app:alp_priors}); $\beta_{\rm free}$ denotes the unconstrained-amplitude fit distinct from $\beta_{\rm ALP}$ which has $C_{a\gamma}=8$ fixed)
+consistent with the model-independent fit $\beta_{\rm free} = 0.344^\circ\pm 0.096^\circ$ (our internal model-independent MCMC fit, with $\beta$ as a free parameter, to a Gaussian summary likelihood on the published Eskilt--Komatsu joint WMAP+Planck birefringence measurement $\beta_{\rm obs}=0.342^\circ\pm0.094^\circ$~\cite{Eskilt2022} --- not a re-analysis of the $EB$ spectra themselves; 9{,}720 accepted samples across the 3 ALP-MCMC configurations described in Sec.~\ref{sec:birefringence_check} (configurations $C_{a\gamma}=4,8,12$; full priors and likelihood details in Appendix~\ref{app:alp_priors}); $\beta_{\rm free}$ denotes the unconstrained-amplitude fit distinct from $\beta_{\rm ALP}$ which has $C_{a\gamma}=8$ fixed)
 and the observed $\beta_{\rm obs} = 0.342^\circ\pm 0.094^\circ$. All three
 within $1\sigma$. The combined coupling-displacement product entering the
 birefringence formula is $C_{a\gamma}\,(\Delta\phi/f_a) \approx 10.3$
@@ -1309,11 +1478,28 @@ $C_{a\gamma}\in[4,60]$ covering the full required band (4 MPI chains,
 $\hat{R}-1=0.0095$, 8{,}955 accepted samples). The resulting posterior is
 broad, as expected for a single-amplitude constraint on a three-parameter
 degeneracy: median $C_{a\gamma}=20.7$ with $16$--$84\%$ range $[7.3, 45.6]$,
-and $69\%$ of the posterior mass falls inside the EOM-required band $[9,51]$
-(22\% below, consistent with the low-$\Delta\phi/f_a$ tail). The recovered
+and $69\%$ of the posterior mass falls inside the EOM-required band
+$[9,51]$ ($\approx 10.3/1.1$ to $10.3/0.2$, the
+$C_{a\gamma}\,\Delta\phi/f_a \approx 10.3$ product divided across the
+$\Delta\phi/f_a\in[0.2,1.1]$ envelope; 22\% of the mass lies below
+$C_{a\gamma}=9$, consistent with the high-$\Delta\phi/f_a$ tail, where the
+fixed product is met at smaller coupling). These mass fractions are
+prior-dependent statements (flat $C_{a\gamma}\in[4,60]$,
+$\theta_i\in[0.01,\pi]$, $\log_{10}m_a$ priors), not prior-independent
+measurements. The recovered
 $\beta=0.326^\circ\pm0.099^\circ$ posterior matches the observed
 $0.342^\circ\pm0.094^\circ$, confirming the consistency-check verdict over
-the full required coupling range rather than at fixed benchmarks. Convergence:
+the full required coupling range rather than at fixed benchmarks.
+\emph{Spectator-subset readout} (same chain, no additional sampling): the
+chain's derived ALP energy fraction $\Omega_a$ satisfies $\Omega_a < 0.1$
+for $44\%$ and $\Omega_a < 0.01$ for $13\%$ of the posterior mass;
+restricted to the $\Omega_a \le 0.01$ spectator-safe subset, the rotation
+marginal is $\beta = 0.28^\circ \pm 0.10^\circ$, consistent with
+$\beta_{\rm obs}=0.342^\circ\pm0.094^\circ$ at $0.5\sigma$. The strict
+$\theta_i \le 0.1$ sliver of fn.~\ref{fn:theta_backreaction} carries only
+$0.4\%$ of the posterior mass (too few samples for a stable marginal),
+quantifying the misalignment tuning of the spectator-consistent corner.
+Convergence:
 $\hat{R}-1 < 0.01$ for all runs. The joint posterior structure of this
 continuous-prior configuration is shown in Fig.~\ref{fig:alp_triangle}.
 Artifact: \path{research/branch_R_alp_birefringence/phase2_mcmc/chains/c5_continuous/}.
@@ -1325,16 +1511,22 @@ Artifact: \path{research/branch_R_alp_birefringence/phase2_mcmc/chains/c5_contin
 cross-check configuration in which the photon anomaly coefficient is
 sampled freely (flat priors $C_{a\gamma}\in[4,60]$ --- widened from the
 earlier $[1,30]$ to cover the full EOM-required band $[9,51]$ ---
-$\theta_i\in[0.01,\pi]$, $\log_{10}(m_a/\text{eV})\in[-35,-30]$),
+$\theta_i\in[0.01,\pi]$, $\log_{10}(m_a/\text{eV})\in[-35,-30]$ ---
+the mass prior corresponds to $m/H_0 \approx 7\times 10^{-3}$ to
+$7\times 10^{2}$ for $H_0 = 67.7$ km/s/Mpc $= 1.44\times 10^{-33}$ eV,
+far broader than the benchmark $m/H_0\in[1,3]$),
 broadening the three fixed-$C_{a\gamma}$ benchmark configurations of
 Appendix~\ref{app:alp_priors}; the direct-sample priors are on the
 underlying ALP parameters $(\theta_i, m_a)$, with $\Delta\phi/f_a$
 derived along each trajectory. The rotation marginal,
-$\beta = 0.324^\circ\pm 0.099^\circ$, is consistent within $1\sigma$ with
+$\beta = 0.326^\circ\pm 0.099^\circ$, is consistent within $1\sigma$ with
 the fixed-$C_{a\gamma}=8$ result $\beta_{\rm ALP}=0.336^\circ\pm
-0.107^\circ$ and the observed $\beta_{\rm obs}=0.342^\circ\pm 0.094^\circ$.
+0.107^\circ$ and the observed $\beta_{\rm obs}=0.342^\circ\pm 0.094^\circ$
+(an internal-consistency statement: all three are constrained by the same
+single published $\beta_{\rm obs}$, not independent measurements).
 The $\theta_i$--$C_{a\gamma}$ anti-correlation band traces the
-constant-product degeneracy enforced by the $EB$-spectrum data through
+constant-product degeneracy enforced by the summary-likelihood constraint
+through
 $C_{a\gamma}\,(\Delta\phi/f_a)\approx 10.3$, and the $m_a$ marginal piles
 toward the upper (heavier) edge of its prior range --- the data-driven
 pull toward the upper edge of the natural-prior box discussed in the text,
@@ -1370,8 +1562,8 @@ ECH spin-torsion structural closure program~\cite{Golden2026P1a}.
 \textit{$\Lambda$CDM$+\Delta\Neff$ MCMC proxy.}---The stock-CAMB Cobaya~v3.6.1
 run (\textbf{309{,}189} frozen samples across two converged dataset
 combinations; an additional $114{,}992$-sample Planck-only run is still
-accumulating at $\hat R - 1 \sim 0.05$ and is reported separately in
-Table~\ref{tab:verification}, \emph{not} aggregated into the frozen headline)
+accumulating at $\hat R - 1 \sim 0.05$, is \emph{not} reported in
+Table~\ref{tab:verification}, and is \emph{not} aggregated into the frozen headline)
 finds $\Delta\Neff$ consistent with zero in both frozen
 dataset combinations and recovers $H_0 = 67.68\pm 1.06\,\text{km\,s}^{-1}\,
 \text{Mpc}^{-1}$, consistent with standard Planck $\Lambda$CDM. The
@@ -1381,11 +1573,11 @@ CMB-S4 will provide the first precision test ($\sigma(\Neff)\sim 0.03$).
 Bayes factors and information criteria ($\Delta$AIC, $\Delta$BIC, $\ln B$) are deferred to a dedicated nested-sampling run (Sec.~\ref{sec:cosmo_fits}, \emph{Model-comparison statistics} paragraph); we report only the parameter posteriors ($\Delta N_{\rm eff}$, $H_0$, etc.) as load-bearing here and explicitly omit Bayes-factor or information-criterion comparisons in this Metropolis-Hastings-only analysis.
 
 \textit{NaMaster pipeline validation.}---The 500-MC pseudo-$C_\ell$ analysis on
-the Planck Commander map confirms that the deconvolution pipeline recovers
-injected birefringence angles with amplitude-dependent bias $0.032$--$0.040^\circ$ (worst-case $0.040^\circ$ at injection $\beta=0.342^\circ$; see §VI body text) at SNR consistent
+synthetic $\Lambda$CDM polarization skies confirms that the deconvolution pipeline recovers
+injected birefringence angles with amplitude-dependent bias $\hat\beta-\beta_{\rm inj} = -0.032$ to $-0.040^\circ$ (worst-case $-0.040^\circ$ at injection $\beta=0.342^\circ$; Sec.~\ref{sec:data_cmb}) at template-fit SNR consistent
 with the ACT-noise floor. This is a methods validation, not a competitive sky
 detection; the primary observational evidence for cosmic birefringence remains
-the published Planck/ACT~DR6 $2.4$--$2.9\sigma$ measurements.
+the published Planck/ACT~DR6 $2.7$--$2.9\sigma$ measurements.
 
 \textit{Spectator-ALP consistency.}---An ALP with $f_a\sim\MPl$, $m\sim H_0$
 is consistent with the published $3.6\sigma$ joint signal, with the caveat
@@ -1393,13 +1585,12 @@ that the spectator-consistent regime $\theta_i\sim 0.1$ (fn.~\ref{fn:theta_backr
 requires $\sim 25\times$ misalignment tuning relative to the natural prior midpoint
 ($C_{a\gamma}\,\Delta\phi/f_a \approx 10.3$ for $\beta=0.342^\circ$, with
 $\Delta\phi/f_a$ in the natural range $[0.2,1.1]$ giving $C_{a\gamma}$
-between $\sim 9$ and $\sim 51$; \S\ref{sec:birefringence_check} for the
-explicit numerical derivation correcting the earlier $C_{a\gamma}\theta_i$
-product). The same result arises in standard GR; the ECH framework
+between $\sim 9$ and $\sim 51$; see \S\ref{sec:birefringence_check} for the
+explicit numerical derivation). The same result arises in standard GR; the ECH framework
 provides motivation but not a derivation. LiteBIRD will settle this at
 $\sim 9\sigma$ in the early 2030s.
 
-\textit{Forward.}---A DESI~DR2 + Planck~NPIPE + Pantheon+~\cite{Brout2022PantheonPlus} + DES-SN5YR~\cite{DES2024SN5YR} cobaya chain with the $w_0 w_a$ free-parameter extension has converged ($128{,}385$ accepted samples across 16 MPI chains; $\hat R - 1 = 0.00820$, below the standard $\hat R\!-\!1\!<\!10^{-2}$ publication target across two consecutive flushes). The 16-rank mpirun process \emph{terminated automatically} upon reaching the convergence threshold; GetDist posteriors on $w_0 w_a$ are available as an empirical test of the quintom-B scenario~\cite{DESI2025DR2}.
+\textit{Quintom-B empirical anchor.}---The converged DESI~DR2 + Planck~NPIPE + Pantheon+~\cite{Brout2022PantheonPlus} + DES-SN5YR~\cite{DES2024SN5YR} Cobaya chain with the $w_0 w_a$ free-parameter extension ($128{,}385$ accepted samples across 16 MPI chains; $\hat R - 1 = 0.00820$, below the standard $\hat R\!-\!1\!<\!10^{-2}$ publication target) supplies the GetDist $w_0 w_a$ posteriors of Table~\ref{tab:iter2_posterior}, an empirical test of the quintom-B scenario~\cite{DESI2025DR2}.
 
 \subsection*{Data and Code Availability}
 
@@ -1407,9 +1598,12 @@ All materials are at:
 \begin{center}
 \url{https://github.com/Hubify-Projects/bigbounce/tree/main/reproducibility}
 \end{center}
-The repository includes four Cobaya YAML configurations (one per dataset
-combination, stock CAMB, no custom modifications), galaxy-spin pipeline code,
-NaMaster driver scripts, and the implementation map (\texttt{IMPLEMENTATION\_MAP.md}).
+The repository is program-wide: it includes the four Cobaya YAML
+configurations (one per dataset
+combination, stock CAMB, no custom modifications),
+NaMaster driver scripts, and the implementation map
+(\texttt{IMPLEMENTATION\_MAP.md}), alongside galaxy-spin pipeline code used
+by Paper~IV~\cite{Golden2026P4} but not by any analysis of this paper.
 MCMC chains: regenerate via \texttt{reproduce\_cosmology.sh}
 ($\sim$4--12\,h per configuration on 4 CPU cores).
 
@@ -1444,10 +1638,11 @@ contains:
 \texttt{cobaya\_planck\_bao.yaml}, \texttt{cobaya\_planck\_bao\_sn.yaml},
 \texttt{cobaya\_full\_tension.yaml})---stock CAMB, no torsion modifications.
 \item \texttt{galaxy\_spins/spin\_fit\_stan.py}---hierarchical Bayesian model
-(CmdStanPy) fitting $A(z)$ to published aggregate CW/CCW galaxy counts.
+(CmdStanPy) fitting $A(z)$ to published aggregate CW/CCW galaxy counts
+(program-wide content used by Paper~IV, not by this paper's analyses).
 \item \texttt{data\_build/build\_galaxy\_spin\_dataset.py}---reproducible pipeline
 downloading Galaxy Zoo DECaLS~\cite{Walmsley2022} from Zenodo
-(DOI:~10.5281/zenodo.4573248, CC-BY-4.0).
+(DOI:~10.5281/zenodo.4573248, CC-BY-4.0; likewise Paper~IV content).
 \item \texttt{docs/IMPLEMENTATION\_MAP.md}---mapping from each result to its
 code artifact.
 \item \texttt{docs/KNOWN\_GAPS.md}---honest disclosure of what cannot currently
@@ -1512,18 +1707,12 @@ parameter within a single chain.
 $m\sim H_0$ required for cosmological-time field evolution).
 \item $\theta_i$: uniform prior on $[0.5, 2]$ (natural-misalignment range,
 $\theta_i = \phi_{\rm init}/f_a$).\footnote{Backreaction / spectator-status
-disclosure (see also footnote~\ref{fn:theta_backreaction} in Sec.~\ref{sec:birefringence_check}):
-the natural-misalignment prior $\theta_i\in[0.5,2]$ adopted in the ALP-MCMC is
-RETAINED for envelope-completeness purposes but is NOT the spectator-consistent
-sub-range. Spectator-status ($\Omega_a\ll 1$) under the $\rho_a \sim m^2 f_a^2
-\theta_i^2$ scaling requires the sub-natural sliver $\theta_i\sim 0.1$, a
-$\sim 25\times$ fine-tuning relative to the prior-midpoint $\theta_i=0.5$
-adopted in this prior. Posterior samples at $\theta_i\gtrsim 0.5$ correspond
-to the dark-energy-ALP regime (excluded from the spectator-consistency claim
-of this companion paper) and should be reinterpreted as samples of a
-DE-ALP rather than a spectator ALP. The MCMC-level prior is therefore an
-upper envelope, not an evidence-weighted natural prior on the spectator
-subset.}
+disclosure: see fn.~\ref{fn:theta_backreaction} in
+Sec.~\ref{sec:birefringence_check}. In brief, the $\theta_i\in[0.5,2]$
+prior is an envelope-completeness choice, not the spectator-consistent
+sub-range ($\theta_i\sim 0.1$, a $\sim 25\times$ tuning relative to the
+prior midpoint); posterior samples at $\theta_i\gtrsim 0.5$ belong to the
+dark-energy-ALP regime excluded from the spectator-consistency claim.}
 \item $f_a$: fixed at $\MPl$ (spectator-class theoretical input from the
 Holst-sector pseudoscalar structure; not sampled).
 \end{itemize}
@@ -1534,20 +1723,35 @@ Holst-sector pseudoscalar structure; not sampled).
 amplitude with no ALP-model parametric structure.
 \end{itemize}
 
-\textit{Likelihood stack.}---Both fits use a Gaussian summary likelihood on
-the published joint Planck PR4 + ACT~DR6 isotropic-birefringence measurement
-$\beta_{\rm obs}=0.342^\circ\pm0.094^\circ$~\cite{Eskilt2022,DiegoPalazuelos2025}
---- i.e.\ the constraint enters at the level of the published combined
-$\beta$ posterior, not as a direct re-analysis of the $EB$ spectra. The MCMC
+\textit{Likelihood stack.}---All fits use a Gaussian summary likelihood on
+the published Eskilt--Komatsu joint WMAP+Planck isotropic-birefringence
+measurement
+$\beta_{\rm obs}=0.342^\circ\pm0.094^\circ$~\cite{Eskilt2022}
+(fn.~\ref{fn:eskilt_pr3_pr4}; the chain configuration encodes exactly
+\texttt{beta\_obs: 0.342}, \texttt{sigma\_beta: 0.094})
+--- i.e.\ the constraint enters at the level of the published
+$\beta$ posterior, not as a direct re-analysis of the $EB$ spectra. The
+separate ACT~DR6 measurement
+$\beta=0.215^\circ\pm0.074^\circ$~\cite{DiegoPalazuelos2025} is an
+independent cross-check quoted in Sec.~\ref{sec:birefringence_check} and
+does \emph{not} enter any MCMC likelihood. The MCMC
 engine is Cobaya~v3.6.1 with the Metropolis-Hastings sampler; convergence
 threshold $\hat R - 1 < 0.01$ across all 3 benchmark configurations (achieved
 at $N_{\rm tot}=9{,}720$ accepted samples post burn-in) and for the
 continuous-prior $C_{a\gamma}\in[4,60]$ configuration ($\hat R-1=0.0095$,
 8{,}955 accepted samples).
+\textit{Chain-to-number map}: $\beta_{\rm ALP}=0.336^\circ\pm0.107^\circ$
+--- the three fixed-$C_{a\gamma}\in\{4,8,12\}$ benchmark chains (9{,}720
+samples); $\beta_{\rm free}=0.344^\circ\pm0.096^\circ$ --- the
+model-independent single-parameter chain; median $C_{a\gamma}=20.7$,
+$16$--$84\%$ range $[7.3,45.6]$, $\beta=0.326^\circ\pm0.099^\circ$, and the
+spectator-subset readouts --- the continuous-prior \texttt{c5} chain
+(8{,}955 samples).
 
 \textit{Scope statement.}---These fits constrain a specific ultra-light
-ALP class ($m\sim H_0$, $f_a\sim\MPl$, $C_{a\gamma}\in[4,12]$ benchmark
-sweep). The consistency with $\beta_{\rm obs}$ established here is
+ALP class ($m\sim H_0$, $f_a\sim\MPl$; the $C_{a\gamma}\in[4,12]$ benchmark
+sweep plus the continuous-prior $C_{a\gamma}\in[4,60]$ headline
+configuration). The consistency with $\beta_{\rm obs}$ established here is
 \emph{not} a universal mechanism-independent statement; alternative
 parity-violating mechanisms (Chern-Simons, axion dark matter at higher
 $m$, etc.) require independent fits with their own model parameters.
