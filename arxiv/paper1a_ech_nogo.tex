@@ -45,8 +45,25 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.48}
-\newcommand{\paperTimestamp}{June 8, 2026 PDT}
+\newcommand{\paperVersion}{v1A.0.49}
+\newcommand{\paperTimestamp}{June 9, 2026 PDT}
+% v1A.0.49 (TIER A3 fire-17 P1A-META-E2 closure): 10x order-of-magnitude
+%   discrepancy between paper's alpha/M ~ 10^-21 GeV^-1 and the canonical
+%   ALP-photon coupling g_a-gamma = (alpha_em * c_gamma)/(2*pi*f_a) under
+%   the natural identification f_a = M_Pl, c_gamma ~ O(1) (which gives
+%   ~10^-22 GeV^-1, 10x smaller). Resolution: the paper's alpha/M is NOT
+%   g_a-gamma — paper's M = M_area-gap = M_Pl/sqrt(gamma) ~ 2 M_Pl (with
+%   gamma_SU(2) ~ 0.274), and paper's alpha is the dimensionless Mercuri
+%   one-loop estimate ~ alpha_em/(4*pi), giving the 1/4 (not 1/(2*pi))
+%   normalization. New footnote at first quote of alpha/M = 10^-21 in
+%   §sec:r4_birefringence explicitly identifies the mapping to the
+%   canonical (f_a, c_gamma) basis: g_a-gamma = alpha/M = 10^-21 GeV^-1
+%   under c_gamma/(2*pi*f_a) = 10^-21 requires either sub-Planckian
+%   f_a ~ M_Pl/10 (a non-trivial UV-completion assumption) OR amplified
+%   c_gamma ~ O(10) (a model-building assumption not stated). Either
+%   case is consistent with the paper's spectator-ALP route; the absence
+%   of a first-principles fix is acknowledged as part of the R4 closure
+%   (which already concedes the m_theta ~ H_0 cosmological-constant tuning).
 % v1A.0.44 (R-upgraded-round7 4-vendor direct R-round on v1A.0.43 ran
 %   2026-06-02; reviewers Grok / GPT / Perplexity / Gemini). Truth-audit
 %   synthesis at project-context/peer-reviews/2026-06-02_R-upgraded-round7_P1A_synthesis.md.
@@ -1131,7 +1148,30 @@ measurement $\beta_{\rm obs} = 0.342^\circ \pm 0.094^\circ$
 independent ACT~DR6 follow-up of Diego-Palazuelos~\&~Komatsu~\cite{DiegoPalazuelos2025}
 reports $\beta = 0.215^\circ \pm 0.074^\circ$ at $\sim\!2.9\sigma$, consistent
 within $\sim\!1.4\sigma$) bounds $\alpha/M$ at
-$\sim 10^{-21}\,\text{GeV}^{-1}$, identical to the value already
+$\sim 10^{-21}\,\text{GeV}^{-1}$\footnote{The paper's $\alpha/M$ is
+\emph{not} the canonical ALP--photon Chern--Simons coupling
+$g_{a\gamma}\equiv(\alpha_{\rm em}\,c_\gamma)/(2\pi f_a)$; the two
+coincide numerically at $\alpha/M = 10^{-21}\,$GeV$^{-1}$ only after a
+non-trivial identification. Specifically: the paper's $M = M_{\rm area\text{-}gap}
+= M_{\rm Pl}/\sqrt{\gamma} \approx 1.9\,M_{\rm Pl}$ (using
+$\gamma_{\rm SU(2)} \approx 0.274$, Eq.~\eqref{eq:gamma}), and the paper's
+$\alpha$ is the dimensionless Mercuri one-loop coefficient
+$\sim \alpha_{\rm em}/(4\pi) \approx 5.8\times 10^{-4}$ (Eq.~\eqref{eq:oneloop}),
+giving the $-\tfrac{1}{4}$ (not $1/(2\pi)$) normalization convention.
+The naive identification $g_{a\gamma}=\alpha/M$ at $f_a=M_{\rm Pl}$,
+$c_\gamma\sim O(1)$ yields $g_{a\gamma}\sim 10^{-22}\,$GeV$^{-1}$,
+roughly $10\times$ smaller than the paper's value. To reproduce
+$\alpha/M = 10^{-21}\,$GeV$^{-1}$ in the canonical basis one therefore
+requires either a sub-Planckian decay constant $f_a \sim M_{\rm Pl}/10$
+or an amplified photon-coupling coefficient $c_\gamma\sim O(10)$; both
+are non-trivial UV-completion assumptions not derived in this paper.
+We adopt the Mercuri-style coupling without making either assumption
+and emphasize that the $10\times$ basis-conversion gap is not an
+internal inconsistency of R4: the R4 closure (cosmological-constant
+fine-tuning at $m_\theta\sim H_0$) is unaffected, and the resulting
+parameter $\alpha/M$ remains an effective phenomenological parameter
+constrained by data, exactly as stated at Eq.~\eqref{eq:oneloop}.},
+identical to the value already
 quoted in Sec.~\ref{sec:parityodd}; identifying the spectator
 field with the ECH parity-odd sector and demanding that it
 \emph{also} carry the observed dark-energy density imposes a tuning

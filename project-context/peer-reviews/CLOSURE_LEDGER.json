@@ -205,7 +205,7 @@
   },
   {
     "closure_id": "P5-META-N1-fire-19-title-rename",
-    "closure_commit": "PENDING",
+    "closure_commit": "c4562247",
     "closure_fire_round": "auto-2026-06-08_2353pt",
     "paper": "P5",
     "anchor_phrases": [
@@ -214,5 +214,18 @@
       "Rename to \"T-Web\" in the title"
     ],
     "description": "P5 title 'V-Web Cross-Check' → 'T-Web (Hahn 2007) Tidal-Tensor Cross-Check' + new footnote explaining the HF/GitHub backward-compatibility decision (v0.1.48). Extension of the v0.1.46 footnote closure (which addressed the body but kept the title for legacy)."
+  },
+  {
+    "closure_id": "P1A-META-E2-fire-17-alpha-M-basis",
+    "closure_commit": "PENDING",
+    "closure_fire_round": "auto-2026-06-08_1737pt",
+    "paper": "P1A",
+    "anchor_phrases": [
+      "g_aγ = α/M ~ (α_em · c_γ)/(2π f_a)",
+      "this gives g_aγ ~ 10⁻²² GeV⁻¹, which is ~10× smaller than the value α/M = 10⁻²¹",
+      "f_a is not M_Pl but ~M_Pl/10",
+      "c_γ ~ O(10)"
+    ],
+    "description": "P1A α/M vs canonical g_aγ 10× basis-conversion gap closed (v1A.0.49) via §sec:r4_birefringence footnote: paper's α/M is NOT the canonical ALP-photon Chern-Simons g_aγ; the paper's M = M_area-gap = M_Pl/√γ ≈ 1.9 M_Pl + paper's α = Mercuri one-loop ~ α_em/(4π) gives the −1/4 (not 1/(2π)) normalization. Reproducing α/M = 10⁻²¹ in canonical basis requires either sub-Planckian f_a ~ M_Pl/10 OR amplified c_γ ~ O(10) — both flagged as non-trivial UV-completion assumptions. R4 closure (m_θ~H_0 CC tuning) preserved."
   }
 ]

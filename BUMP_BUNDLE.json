@@ -1,11 +1,11 @@
 [
   {
-    "paperSlug": "paper-5",
-    "version": "v0.1.48-2026-06-09",
+    "paperSlug": "paper-1a",
+    "version": "v1A.0.49-2026-06-09",
     "datestamp": "2026-06-09",
-    "texCommit": "f839ab50",
-    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf",
-    "sitePdfPath": "/papers/p5_desi_chirality_v0.1.48.pdf",
-    "changelog": "Closure extension — fire-19 P5-META-N1 (Claude opus 4.7 fallback) flagged that the v0.1.46 footnote closure was insufficient: the paper title STILL says 'V-Web Cross-Check' even though footnote (a) acknowledges the classifier is T-Web. Extended closure: title renamed 'V-Web' → 'T-Web (Hahn 2007) Tidal-Tensor Cross-Check' + new title footnote explaining the v0.1.46 backward-compatibility decision (HF dataset slug + GitHub release tag still use 'V-Web') and the v0.1.48 correction. PDF 20pp/975KB/md5 27fcad45. 0 undef refs."
+    "texCommit": "c4562247",
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1a_ech_nogo.pdf",
+    "sitePdfPath": "/papers/paper1a_ech_nogo_v1A.0.49.pdf",
+    "changelog": "TIER A3 #A3-1 closure (fire-17 P1A-META-E2, Claude opus 4.7 fallback meta-reviewer). 10x order-of-magnitude basis-conversion gap between paper's α/M=10⁻²¹ GeV⁻¹ and the canonical ALP-photon Chern-Simons g_aγ=(α_em·c_γ)/(2π f_a) under f_a=M_Pl + c_γ~O(1) (which gives ~10⁻²², 10× smaller). Resolution via new footnote at §sec:r4_birefringence: paper's α/M is NOT g_aγ — paper's M=M_area-gap=M_Pl/√γ≈1.9 M_Pl (with γ_SU(2)≈0.274), paper's α is Mercuri one-loop ~α_em/(4π)≈5.8×10⁻⁴, giving the −1/4 (not 1/(2π)) normalization. Reproducing α/M=10⁻²¹ in canonical basis requires either sub-Planckian f_a~M_Pl/10 OR amplified c_γ~O(10) — both flagged as non-trivial UV-completion assumptions. R4 closure (m_θ~H_0 CC tuning + α/M as phenomenological parameter) preserved. PDF 23pp/1.1MB/md5 4b1ed20b. 0 undef refs."
   }
 ]
