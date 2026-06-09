@@ -362,7 +362,7 @@ export const papers: Paper[] = [
     slug: "paper-5",
     number: "5",
     title: "Environmental Dependence of Spiral Chirality Across DESI Large-Scale Structure: A Cross-Matched Test of Local Coherence and Cosmic-Web Alignment",
-    version: "v0.1.51-2026-06-09",
+    version: "v0.1.52-2026-06-09",
     lastUpdated: "2026-06-09",
     tldr: "Cross-matches P4's spiral handedness with DESI large-scale structure (791,635 matched spirals + 56,981 void spirals) and finds galaxy chirality is statistically independent of cosmic-web environment — constraining environment-coupled parity models.",
     path: publicationPath({}),
@@ -392,8 +392,8 @@ export const papers: Paper[] = [
     preprintId: "HUBIFY-2026-005",
     pdfMeta: "PDF 1.0 MB · 21 pp · updated Jun 9, 2026",
     artifacts: [
-      { label: "Read PDF", href: "/papers/p5_desi_chirality_v0.1.51.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/p5_desi_chirality_v0.1.51.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/p5_desi_chirality_v0.1.52.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/p5_desi_chirality_v0.1.52.pdf", kind: "secondary", download: true },
       {
         label: "Pipeline + scripts",
         href: "https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p5_desi_chirality",

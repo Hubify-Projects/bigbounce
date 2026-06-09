@@ -129,9 +129,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-5",
       number: "5",
       shortTitle: "DESI environmental chirality independence",
-      version: "v0.1.51-2026-06-09",
+      version: "v0.1.52-2026-06-09",
       readiness: 90,
-      pendingWork: "v0.1.51 landed (root-caused duplicate-TARGETID join; bright/dark + Phase-2 sweep + Tempel rebuilt on declared parent; omnibus χ² added) → Claude-inclusive clean round → arXiv (last, after P4)",
+      pendingWork: "v0.1.52 — review queue EMPTY (covariate regression closed: env null robust to size/mag/morphology/inclination, 100% GZ-DESI join) → Claude-inclusive clean round → arXiv (last, after P4)",
     },
   ],
   blockerTally: {

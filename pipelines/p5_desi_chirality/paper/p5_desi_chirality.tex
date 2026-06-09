@@ -18,8 +18,8 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.51-2026-06-09}
-% v0.1.51-2026-06-09 (R22prov truth-audit closure wave; work order in
+\newcommand{\paperVersion}{v0.1.52-2026-06-09}
+% v0.1.52-2026-06-09 (R22prov truth-audit closure wave; work order in
 %   project-context/peer-reviews/R22prov_P5_TRUTH_AUDIT.md; recompute artifacts
 %   outputs/17_v0151_closure_recomputes.json + 18_v0151_stratified_and_density.json):
 %   META-E1 headline parent relabeled 791,635 -> 812,793 env-labeled rows
@@ -732,6 +732,23 @@ imaging leg and DESI program (the conservative null given the
 per-leg/per-program residuals of \S\ref{sec:systematics}) leaves the
 redshift-quintile look-elsewhere $p$ unchanged
 ($p = 0.81$ stratified vs $0.80$ free-shuffle).
+
+\textit{Physical-covariate robustness.}---Extending the regression with
+galaxy physical covariates from the Galaxy Zoo DESI morphology catalog
+\cite{Walmsley:2023} (joined on \texttt{dr8\_id}, $100\%$ coverage of the
+declared parent: Petrosian half-light radius, $r$-band apparent magnitude,
+featured fraction, merger fraction, and --- on the $152{,}455$-galaxy
+featured subsample where the decision tree reaches the question ---
+edge-on fraction) leaves the environmental-independence verdict unchanged:
+the joint 3-dof environment Wald test gives $p=0.46$ ($0.41$ without
+covariates) on the canonical labels and $p=0.99$ on the z-shell-corrected
+labels, with every individual environment coefficient null after adjustment
+(largest: void $-0.081\pm0.107$) and a maximum adjustment-induced
+coefficient shift of $0.17\sigma$. No physical covariate is predictive of
+chirality; the only marginally predictive regressor is classifier
+confidence ($p\approx0.02$), a classifier property rather than an
+environmental one. Artifact:
+\path{pipelines/p5_desi_chirality/outputs/20_v0151_covariate_regression.json}.
 Figure~\ref{fig:cw_vs_z} shows the binned equivariant CW fraction
 across the matched sample's redshift range.
 
@@ -2525,6 +2542,12 @@ H.~Rinc\'on, S.~BenZvi, K.~A.~Douglass \textit{et al.},
 ``DESIVAST: Catalogs of Low-redshift Voids Using Data from the DESI
 Data Release 1 Bright Galaxy Survey,'' Astrophys.\ J.\ \textbf{982},
 38 (2025), doi:10.3847/1538-4357/adb559, arXiv:2411.00148.
+
+\bibitem{Walmsley:2023}
+M.~Walmsley \emph{et~al.}, Galaxy Zoo DESI: large-scale automated
+morphology classification of 8.7 million galaxies in the DESI Legacy
+Imaging Surveys, Mon.\ Not.\ R.\ Astron.\ Soc.\ \textbf{526}, 4768 (2023),
+arXiv:2309.11425.
 
 \end{thebibliography}
 
