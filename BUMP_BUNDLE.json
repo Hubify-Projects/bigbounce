@@ -1,11 +1,11 @@
 [
   {
-    "paperSlug": "paper-4",
-    "version": "v1.0.166",
+    "paperSlug": "paper-1b",
+    "version": "v1B.0.49",
     "datestamp": "2026-06-09",
-    "texCommit": "2a2939b2",
-    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p2_chirality/chirality_catalog_paper.pdf",
-    "sitePdfPath": "/papers/chirality_catalog_paper_v166.pdf",
-    "changelog": "SEV-1 HEADLINE RETRACTION (D1, Houston full-delegation 2026-06-09): −0.122σ subsample-mask MASTER null WITHDRAWN — provenance audit (C3) proved it was computed on a synthetic-footprint catalog (f_sky=0.659 mask unreconstructable; producer script never committed; pod log records catalog generation). Paper re-anchored: title drops the −0.122σ claim; headline = real-space dipole +0.43σ (p=0.30) + WLS template-fit exclusion of clean 1.7% dipole (z≈−18); MASTER channel reframed as systematics diagnostic (+7.28σ real apodized footprint, +7.13σ vs depth-stratified null — C6 proves depth conditioning does not absorb the excess). Table I renumbered (i)-(vii) with corrected N_map,weighted 5,547,858→8,474,531; App A provenance note + fsky_eff=⟨W⟩²/⟨W²⟩ definitions (closes P4-E1); fn:binomial_nspiral N_all-trial rerun reported (99.33% vs 99.32%, trial-pool robust; ⟨N_all/N_spiral⟩ 1.49→2.83 — closes in-queue promise). ~16 cascade sites; grep-verified clean. 15pp/25.3MB/md5 4fb654bd/0 undef/0 overfull, /latex-audit PASS. Readiness 95→85 per readiness-oscillation; two clean cross-vendor rounds required."
+    "texCommit": "12b4fe8d",
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1b_mcmc_companion.pdf",
+    "sitePdfPath": "/papers/paper1b_mcmc_companion_v1B.0.49.pdf",
+    "changelog": "Three compute closures from publish-plan jobs C1+C5 (pod 5i2td3deu3hojr): (1) #A3-4 NaMaster fsky sweep — β=0.27° injection-recovery repeated at fsky=0.85 (Planck-like) and 0.65 (ACT-DR6-like), NSIDE=512, 500 MC each; recovery bias −0.033°/−0.034° statistically identical to canonical fsky=0.32 (0.032°) → bias is a sky-fraction-independent apodization property, well below σ_β^obs=0.094° everywhere; new 'Sky-fraction sweep' paragraph in §IV. (2) #A3-5 continuous-prior Caγ MCMC — prior widened [1,30]→[4,60] (old prior truncated ~28% of mass above 30); 4 MPI chains, R̂−1=0.0095, 8,955 samples; median Caγ=20.7, 16-84% [7.3,45.6], 69% of mass in EOM-required band [9,51]; β posterior 0.326°±0.099° matches obs 0.342°±0.094°; fig:alp_triangle regenerated from the new chains. (3) Likelihood-wording accuracy fix — 'Planck PR4 + ACT DR6 EB-spectrum likelihoods' corrected at 2 sites to 'Gaussian summary likelihood on the published joint β measurement' (matches birefringence_lk.py implementation). 12pp/md5 ab2fe4e2/0 undef/0 overfull, /latex-audit PASS."
   }
 ]
