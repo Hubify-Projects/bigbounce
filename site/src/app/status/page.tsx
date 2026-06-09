@@ -280,7 +280,7 @@ export default async function StatusPage() {
       </section>
 
       <section className="section">
-        <h2>1. Bounce Cosmology Portfolio</h2>
+        <h2>Paper Portfolio</h2>
         <p className="text-sm text-muted-foreground">
           The live paper table above is the canonical source of truth.
           Per-paper detail and current PDF mirrors live at{" "}
@@ -292,7 +292,7 @@ export default async function StatusPage() {
       </section>
 
       <section className="section">
-        <h2>2. Bounce Cosmology Portfolio</h2>
+        <h2>Bounce Channels &amp; Predictions</h2>
         <Card>
           <CardContent className="p-0">
             <Table>
@@ -352,7 +352,7 @@ export default async function StatusPage() {
       </section>
 
       <section className="section">
-        <h2>3. Completed Surveys (8 total)</h2>
+        <h2>Completed Surveys (8 total)</h2>
         <Card>
           <CardContent className="p-0">
             <Table>
@@ -436,7 +436,7 @@ export default async function StatusPage() {
       </section>
 
       <section className="section">
-        <h2>4. Key Discoveries</h2>
+        <h2>Key Discoveries</h2>
         <div className="grid gap-3 md:grid-cols-2">
           <Card className="border-l-4 border-tone-success">
             <CardHeader className="pb-2">
