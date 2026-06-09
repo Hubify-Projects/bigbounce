@@ -309,6 +309,25 @@ export default defineSchema({
     artifactsBackedUp: v.boolean(),
     backupLocations: v.array(v.string()), // ["HF:bamfai/bigbounce-mcmc/iter2_converged_2026-05-18/", "local:reproducibility/cosmology/iter2_..."]
     lastSyncedAt: v.number(),           // when we last polled RunPod GraphQL for this pod
+    // 2026-06-09: per-job tracking so the site shows WHAT runs on the pod,
+    // not just that a pod exists. One row per tmux job (C1/C2/C3/C5 etc).
+    jobs: v.optional(
+      v.array(
+        v.object({
+          name: v.string(),          // "C1 P1B NaMaster fsky sweep"
+          paper: v.string(),         // "paper-1b"
+          tmuxSession: v.string(),   // "c1"
+          status: v.union(
+            v.literal("queued"),
+            v.literal("running"),
+            v.literal("done"),
+            v.literal("failed")
+          ),
+          etaNote: v.string(),       // "~4h, ETA 2026-06-09 16:00 PT"
+          outputPath: v.optional(v.string()),
+        })
+      )
+    ),
   })
     .index("by_pod_id", ["podId"])
     .index("by_status", ["status"]),

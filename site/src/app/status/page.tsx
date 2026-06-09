@@ -16,7 +16,7 @@ import {
   TableRow,
 } from"@/components/ui/table";
 import type { Metadata } from"next";
-import { getLivePapers, type LivePaperState } from "@/lib/livePapers";
+import { getLivePapers, getRunningPods, type LivePaperState } from "@/lib/livePapers";
 
 export const metadata: Metadata = {
   title:"Research Status",
@@ -68,7 +68,10 @@ const stats: Array<{ value: string; label: string }> = [
 export const dynamic = "force-static";
 
 export default async function StatusPage() {
-  const livePapers = await getLivePapers();
+  const [livePapers, runningPods] = await Promise.all([
+    getLivePapers(),
+    getRunningPods(),
+  ]);
   const isLive = livePapers.length > 0 && livePapers[0].source === "convex";
   const renderedAt = new Date().toISOString().slice(0, 16).replace("T", " ") + " UTC";
 
@@ -195,6 +198,86 @@ export default async function StatusPage() {
       </div>
 
       <Separator className="my-8" />
+
+      <section className="section">
+        <h2>Active Compute</h2>
+        {runningPods.length === 0 ? (
+          <p className="text-sm text-muted-foreground">
+            No pods running. All compute jobs idle — RunPod spend is $0/hr.
+            Job history + cost accounting live in the Convex pods table.
+          </p>
+        ) : (
+          runningPods.map((pod) => {
+            const hoursUp = Math.max(0, (Date.now() - pod.startedAt) / 3.6e6);
+            return (
+              <Card key={pod.podId} style={{ marginBottom: 12 }}>
+                <CardHeader>
+                  <CardTitle className="flex flex-wrap items-center gap-2 text-sm">
+                    <Badge>{pod.gpu}</Badge>
+                    <span className="font-mono">{pod.name}</span>
+                    <Badge variant="outline" className="font-mono text-[10px]">
+                      {pod.podId}
+                    </Badge>
+                    <span
+                      className="font-mono text-xs text-muted-foreground"
+                      style={{ marginLeft: "auto" }}
+                    >
+                      ${pod.hourlyCostUsd.toFixed(2)}/hr · up{" "}
+                      {hoursUp.toFixed(1)}h · ~$
+                      {(pod.totalCostUsd + hoursUp * pod.hourlyCostUsd).toFixed(2)}{" "}
+                      total
+                    </span>
+                  </CardTitle>
+                  <CardDescription>{pod.purpose}</CardDescription>
+                </CardHeader>
+                {pod.jobs && pod.jobs.length > 0 && (
+                  <CardContent className="p-0">
+                    <Table>
+                      <TableHeader>
+                        <TableRow>
+                          <TableHead>Job</TableHead>
+                          <TableHead>Paper</TableHead>
+                          <TableHead>Status</TableHead>
+                          <TableHead>ETA</TableHead>
+                        </TableRow>
+                      </TableHeader>
+                      <TableBody>
+                        {pod.jobs.map((job) => (
+                          <TableRow key={job.tmuxSession}>
+                            <TableCell className="font-mono text-xs">
+                              {job.name}
+                            </TableCell>
+                            <TableCell className="font-mono text-xs">
+                              {job.paper}
+                            </TableCell>
+                            <TableCell>
+                              <Badge
+                                variant={
+                                  job.status === "running"
+                                    ? "default"
+                                    : job.status === "done"
+                                      ? "secondary"
+                                      : "outline"
+                                }
+                                className="font-mono text-[10px]"
+                              >
+                                {job.status}
+                              </Badge>
+                            </TableCell>
+                            <TableCell className="text-xs text-muted-foreground">
+                              {job.etaNote}
+                            </TableCell>
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </CardContent>
+                )}
+              </Card>
+            );
+          })
+        )}
+      </section>
 
       <section className="section">
         <h2>1. Bounce Cosmology Portfolio</h2>

@@ -242,6 +242,48 @@ export async function getAllFiguresGroupedByPaper(): Promise<
   }
 }
 
+// ──────────────────────────────────────────────────────────────────────
+// Compute pods — drives the /status "Active Compute" panel. Synced from
+// RunPod GraphQL via tools/pod_status_sync.mjs.
+// ──────────────────────────────────────────────────────────────────────
+
+export type PodJob = {
+  name: string;
+  paper: string;
+  tmuxSession: string;
+  status: "queued" | "running" | "done" | "failed";
+  etaNote: string;
+  outputPath?: string;
+};
+
+export type ComputePod = {
+  podId: string;
+  name: string;
+  status: "running" | "exited" | "terminated";
+  gpu: string;
+  hourlyCostUsd: number;
+  startedAt: number;
+  totalCostUsd: number;
+  purpose: string;
+  lastSyncedAt: number;
+  jobs?: PodJob[];
+};
+
+export async function getRunningPods(): Promise<ComputePod[]> {
+  if (!CONVEX_URL) return [];
+  try {
+    const { ConvexHttpClient } = await import("convex/browser");
+    const client = new ConvexHttpClient(CONVEX_URL);
+    const rows = (await client.query(
+      "pods:listRunning" as unknown as Parameters<typeof client.query>[0]
+    )) as ComputePod[];
+    return rows;
+  } catch (err) {
+    console.warn("[livePapers] pods:listRunning fetch failed:", err);
+    return [];
+  }
+}
+
 export async function getExternalReviewsForPaper(
   paperSlug: string
 ): Promise<ExternalReview[]> {

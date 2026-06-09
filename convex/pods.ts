@@ -31,6 +31,23 @@ export const upsert = mutation({
     purpose: v.string(),
     artifactsBackedUp: v.boolean(),
     backupLocations: v.array(v.string()),
+    jobs: v.optional(
+      v.array(
+        v.object({
+          name: v.string(),
+          paper: v.string(),
+          tmuxSession: v.string(),
+          status: v.union(
+            v.literal("queued"),
+            v.literal("running"),
+            v.literal("done"),
+            v.literal("failed")
+          ),
+          etaNote: v.string(),
+          outputPath: v.optional(v.string()),
+        })
+      )
+    ),
   },
   handler: async (ctx, args) => {
     const existing = await ctx.db
