@@ -6,8 +6,8 @@
 > Submission order: **P4 first** (P5 hard-depends on its arXiv ID), P1A+P1B same day.
 > ⛔ P4 submission still gated on TWO clean cross-vendor rounds post-retraction + Houston sign-off.
 >
-> ## Paper 4 — Chirality Catalog v1.0.166 (RETRACTION VERSION)
-> - **Tarball:** `pipelines/p2_chirality/paper4_arxiv_v1.0.166.tar.gz` (19 MB, 15 pp verified)
+> ## Paper 4 — Chirality Catalog v1.0.167 (post-retraction wave)
+> - **Tarball:** `pipelines/p2_chirality/paper4_arxiv_v1.0.167.tar.gz` (19 MB, 17 pp verified)
 > - **Abstract webform:** `pipelines/p2_chirality/abstract_for_webform.txt` (1,778 chars — includes the mandatory withdrawal note)
 > - **Title (paste):** `Survey-Scale Galaxy Chirality with Equivariant TTA: A Null Real-Space Chirality Dipole, a Quantifiable Monopole-Mask Leakage Channel, and Diagnostic Evidence for a Depth/Morphology-Correlated Canonical-Mask Residual on 8.47 Million DESI Legacy Galaxies (3.2 Million Spirals)`
 > - **Primary:** `astro-ph.GA` · cross-list `astro-ph.CO` · **Comment:** `15 pages, 12 figures. Catalog (3.2M spirals), model weights, and reproducibility scripts at https://github.com/Hubify-Projects/bigbounce`
