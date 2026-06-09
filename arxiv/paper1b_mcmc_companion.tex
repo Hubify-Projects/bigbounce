@@ -62,7 +62,7 @@
 %      NOT added: draft-watermarked + encodes stale preliminary posteriors
 %      (means 0.114/0.117/-0.011) contradicting the frozen Table values; existing
 %      fig:dneff_viability already covers that content.)
-\newcommand{\paperVersion}{v1B.0.48}
+\newcommand{\paperVersion}{v1B.0.49}
 \newcommand{\paperTimestamp}{June 9, 2026 PDT}
 % v1B.0.41 (2026-06-02 — R-upgraded-round5 P1B 4-Gemini-finding closure pass:
 %   1. GEM-m1 (pattern-017): stripped inline reviewer codes ("R5+R7 GEM-B1+GPT-B1",
@@ -1096,6 +1096,23 @@ $0.04^\circ$ level in the worst-case injection, which we carry forward as the
 NaMaster systematic floor; this is a methodology cross-check, not a competitive
 sky measurement.
 
+\textit{Sky-fraction sweep.}---Because published birefringence analyses use
+larger sky fractions than our canonical $f_{\rm sky}=0.32$ validation mask, we
+repeat the $\beta=0.27^\circ$ injection-recovery exercise at
+$f_{\rm sky}=0.85$ (Planck-like) and $f_{\rm sky}=0.65$ (ACT-DR6-like)
+galactic-cut masks with the same apodization recipe, noise level, and
+$N\!=\!500$ MC realizations ($N_{\rm side}=512$). The recovered values are
+$\hat\beta=0.237^\circ$ ($f_{\rm sky}=0.85$, per-realization
+$\sigma_\beta=0.029^\circ$) and $\hat\beta=0.236^\circ$ ($f_{\rm sky}=0.65$,
+$\sigma_\beta=0.033^\circ$), i.e.\ a recovery bias of $-0.033^\circ$ to
+$-0.034^\circ$ --- statistically indistinguishable from the canonical-mask
+bias of $0.032^\circ$. The $\sim\!12\%$ multiplicative under-recovery is
+therefore a sky-fraction-independent property of the apodized pipeline
+(consistent with apodization-induced power suppression), not an artifact of
+the small canonical mask, and remains well below the published observational
+uncertainty $\sigma_\beta^{\rm obs}=0.094^\circ$ at every sky fraction tested.
+Artifact: \path{reproducibility/p1_namaster_500mc/results/c1_fsky_sweep.json}.
+
 
 %% ============================================================
 %%  5. COSMOLOGICAL FITS AND MODEL COMPARISON
@@ -1257,7 +1274,7 @@ $\sim 17\%$ above the natural envelope upper bound; this is the same
 $\sim 25\times$-fine-tuning regime flagged in fn.~\ref{fn:theta_backreaction}
 and is consistent with the model accommodating but not naturally explaining
 the observed $\beta_{\rm obs}=0.342^\circ$),
-consistent with the model-independent fit $\beta_{\rm free} = 0.344^\circ\pm 0.096^\circ$ (our internal model-independent MCMC fit to the Planck PR4 + ACT DR6 EB-spectrum likelihoods with $\beta$ as a free parameter, 9{,}720 accepted samples across the 3 ALP-MCMC configurations described in Sec.~\ref{sec:birefringence_check} (configurations $C_{a\gamma}=4,8,12$ on Planck PR4 + ACT DR6 EB-spectrum likelihoods with $\beta$ as a free parameter; full priors and dataset details in Appendix~\ref{app:alp_priors}); $\beta_{\rm free}$ denotes the unconstrained-amplitude fit distinct from $\beta_{\rm ALP}$ which has $C_{a\gamma}=8$ fixed)
+consistent with the model-independent fit $\beta_{\rm free} = 0.344^\circ\pm 0.096^\circ$ (our internal model-independent MCMC fit, with $\beta$ as a free parameter, to a Gaussian summary likelihood on the published joint Planck PR4 + ACT DR6 birefringence measurement $\beta_{\rm obs}=0.342^\circ\pm0.094^\circ$~\cite{Eskilt2022} --- not a re-analysis of the $EB$ spectra themselves; 9{,}720 accepted samples across the 3 ALP-MCMC configurations described in Sec.~\ref{sec:birefringence_check} (configurations $C_{a\gamma}=4,8,12$; full priors and likelihood details in Appendix~\ref{app:alp_priors}); $\beta_{\rm free}$ denotes the unconstrained-amplitude fit distinct from $\beta_{\rm ALP}$ which has $C_{a\gamma}=8$ fixed)
 and the observed $\beta_{\rm obs} = 0.342^\circ\pm 0.094^\circ$. All three
 within $1\sigma$. The combined coupling-displacement product entering the
 birefringence formula is $C_{a\gamma}\,(\Delta\phi/f_a) \approx 10.3$
@@ -1284,16 +1301,30 @@ $5\times$ reduction in $\theta_i$ from the scan midpoint demands a
 correspondingly higher $C_{a\gamma}$ to hold the
 $C_{a\gamma}\,\Delta\phi/f_a\approx 10.3$ product, pushing the required
 enhancement well above standard KSVZ/DFSZ $\mathcal{O}(1)$ benchmarks.
-Convergence: $\hat{R}-1 < 0.01$ for all runs. The joint posterior structure
-of the extended ($C_{a\gamma}$-free) cross-check configuration is shown in
-Fig.~\ref{fig:alp_triangle}.
+Because the EOM-required coupling range $[{\sim}9, {\sim}51]$ exceeds the
+$C_{a\gamma}\in[1,30]$ prior of the original extended configuration (which
+truncated ${\sim}28\%$ of the posterior mass above $C_{a\gamma}=30$), we reran
+the $C_{a\gamma}$-free fit with a continuous uniform prior
+$C_{a\gamma}\in[4,60]$ covering the full required band (4 MPI chains,
+$\hat{R}-1=0.0095$, 8{,}955 accepted samples). The resulting posterior is
+broad, as expected for a single-amplitude constraint on a three-parameter
+degeneracy: median $C_{a\gamma}=20.7$ with $16$--$84\%$ range $[7.3, 45.6]$,
+and $69\%$ of the posterior mass falls inside the EOM-required band $[9,51]$
+(22\% below, consistent with the low-$\Delta\phi/f_a$ tail). The recovered
+$\beta=0.326^\circ\pm0.099^\circ$ posterior matches the observed
+$0.342^\circ\pm0.094^\circ$, confirming the consistency-check verdict over
+the full required coupling range rather than at fixed benchmarks. Convergence:
+$\hat{R}-1 < 0.01$ for all runs. The joint posterior structure of this
+continuous-prior configuration is shown in Fig.~\ref{fig:alp_triangle}.
+Artifact: \path{research/branch_R_alp_birefringence/phase2_mcmc/chains/c5_continuous/}.
 
 \begin{figure}
 \centering
 \includegraphics[width=\columnwidth]{figures/alp_triangle_plot.png}
-\caption{Spectator-ALP joint posterior triangle from the extended
+\caption{Spectator-ALP joint posterior triangle from the continuous-prior
 cross-check configuration in which the photon anomaly coefficient is
-sampled freely (flat priors $C_{a\gamma}\in[1,30]$,
+sampled freely (flat priors $C_{a\gamma}\in[4,60]$ --- widened from the
+earlier $[1,30]$ to cover the full EOM-required band $[9,51]$ ---
 $\theta_i\in[0.01,\pi]$, $\log_{10}(m_a/\text{eV})\in[-35,-30]$),
 broadening the three fixed-$C_{a\gamma}$ benchmark configurations of
 Appendix~\ref{app:alp_priors}; the direct-sample priors are on the
@@ -1503,13 +1534,16 @@ Holst-sector pseudoscalar structure; not sampled).
 amplitude with no ALP-model parametric structure.
 \end{itemize}
 
-\textit{Likelihood stack.}---Both fits use the Planck PR4 + ACT~DR6
-$EB$-spectrum likelihoods (the same observables used by
-Refs.~\cite{Eskilt2022,DiegoPalazuelos2025}) combined with shared
-calibration covariance. The MCMC engine is Cobaya~v3.6.1 with the
-Metropolis-Hastings sampler; convergence threshold $\hat R - 1 < 0.01$
-across all 3 configurations (achieved at $N_{\rm tot}=9{,}720$ accepted samples
-post burn-in).
+\textit{Likelihood stack.}---Both fits use a Gaussian summary likelihood on
+the published joint Planck PR4 + ACT~DR6 isotropic-birefringence measurement
+$\beta_{\rm obs}=0.342^\circ\pm0.094^\circ$~\cite{Eskilt2022,DiegoPalazuelos2025}
+--- i.e.\ the constraint enters at the level of the published combined
+$\beta$ posterior, not as a direct re-analysis of the $EB$ spectra. The MCMC
+engine is Cobaya~v3.6.1 with the Metropolis-Hastings sampler; convergence
+threshold $\hat R - 1 < 0.01$ across all 3 benchmark configurations (achieved
+at $N_{\rm tot}=9{,}720$ accepted samples post burn-in) and for the
+continuous-prior $C_{a\gamma}\in[4,60]$ configuration ($\hat R-1=0.0095$,
+8{,}955 accepted samples).
 
 \textit{Scope statement.}---These fits constrain a specific ultra-light
 ALP class ($m\sim H_0$, $f_a\sim\MPl$, $C_{a\gamma}\in[4,12]$ benchmark

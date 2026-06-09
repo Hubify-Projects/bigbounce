@@ -47,12 +47,12 @@ export interface LiveStatus {
 }
 
 export const liveStatus: LiveStatus = {
-  lastUpdatedISO: "2026-06-09T20:00:00Z",
-  lastUpdatedDisplay: "June 9, 2026 · 1:00 PM PT",
+  lastUpdatedISO: "2026-06-09T21:30:00Z",
+  lastUpdatedDisplay: "June 9, 2026 · 2:30 PM PT",
   headline:
-    "All six papers are through internal + cross-vendor review and sit at 92–95% readiness. The remaining gates are the Houston external round, per-paper sign-off, and arXiv submission.",
+    "Provenance-audit day: P4 v1.0.166 retracts its synthetic −0.122σ headline (now 85%, two clean rounds required); P1B v1B.0.49 lands all three compute closures (fsky sweep, continuous Caγ MCMC, likelihood wording). Five papers at 85–95%.",
   summary:
-    "Latest round closed the load-bearing meta-review findings across P1A/P1B/P3/P4/P5 and re-added high-impact figures to P1A and P4. The hourly native-PDF review autoloop (5 vendors) keeps each paper under continuous adversarial review.",
+    "Compute jobs C1–C6 ran on a dedicated pod: C3/C6 proved P4's subsample-mask null was computed on a synthetic catalog (withdrawn, paper re-anchored on the real-space null); C1 showed the NaMaster recovery bias is fsky-independent; C5's continuous-prior Caγ MCMC converged in 25 min (69% of posterior mass in the EOM-required band). The C8 real Fisher rerun shows P2's 9.9σ running-f_NL claim does not survive — integration in progress.",
   currentlyRunning: [
     "Hourly native-PDF cross-vendor review autoloop on all 6 papers (Claude · GPT · Gemini · Grok · Perplexity + meta-reviewer)",
     "Persistence tracker fingerprinting findings across fires; load-bearing items escalate to Houston decision package",
@@ -91,9 +91,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-1b",
       number: "1B",
       shortTitle: "MCMC + NaMaster + ALP technical companion",
-      version: "v1B.0.48",
+      version: "v1B.0.49",
       readiness: 95,
-      pendingWork: "External round on v1B.0.48 → Houston sign-off → arXiv (with P1A)",
+      pendingWork: "External round on v1B.0.49 → Houston sign-off → arXiv (with P1A)",
     },
     {
       slug: "paper-2",

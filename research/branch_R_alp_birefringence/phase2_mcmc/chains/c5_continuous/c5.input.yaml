@@ -1,0 +1,58 @@
+theory:
+  alp_theory.ALPBirefringence:
+    python_path: /workspace/c5
+likelihood:
+  birefringence_lk.BirefringenceLikelihood:
+    python_path: /workspace/c5
+    beta_obs: 0.342
+    sigma_beta: 0.094
+params:
+  theta_i:
+    prior:
+      min: 0.01
+      max: 3.14159
+    ref:
+      dist: norm
+      loc: 1.3
+      scale: 0.3
+    proposal: 0.2
+    latex: \theta_i
+  log10_m_eV:
+    prior:
+      min: -35
+      max: -30
+    ref:
+      dist: norm
+      loc: -31.5
+      scale: 0.5
+    proposal: 0.3
+    latex: \log_{10}(m_a/\mathrm{eV})
+  C_agamma:
+    prior:
+      min: 4
+      max: 60
+    ref:
+      dist: norm
+      loc: 8
+      scale: 2
+    proposal: 1.0
+    latex: C_{a\gamma}
+  beta_deg:
+    latex: \beta\;[\mathrm{deg}]
+  eta:
+    latex: \eta
+  Omega_a:
+    latex: \Omega_a
+  w_a_0:
+    latex: w_a(z{=}0)
+sampler:
+  mcmc:
+    burn_in: 0.3
+    max_samples: 100000
+    Rminus1_stop: 0.01
+    Rminus1_cl_stop: 0.15
+    learn_proposal: true
+    learn_proposal_Rminus1_max: 30
+    proposal_scale: 2.4
+    drag: false
+output: c5

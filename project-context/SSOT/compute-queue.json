@@ -10,9 +10,9 @@
         "name": "C1 P1B β-injection NaMaster fsky=0.85+0.65",
         "paper": "paper-1b",
         "tmuxSession": "c1",
-        "status": "running",
-        "etaNote": "fsky=0.85 leg DONE (β rec 0.237/0.27 inj, bias −0.033°, SNR^SE 181); fsky=0.65 leg running, MC 25/500, ETA ~30min",
-        "outputPath": "/workspace/c1_results/c1_fsky_sweep.json"
+        "status": "done",
+        "etaNote": "DONE 71min — bias −0.033°/−0.034° at fsky 0.85/0.65, fsky-independent, matches canonical; → P1B v1B.0.49",
+        "outputPath": "reproducibility/p1_namaster_500mc/results/c1_fsky_sweep.json"
       },
       {
         "name": "C2 P4 N_all-trial binomial null",
@@ -34,9 +34,9 @@
         "name": "C5 P1B Caγ continuous-grid MCMC [4,60]",
         "paper": "paper-1b",
         "tmuxSession": "c5",
-        "status": "running",
-        "etaNote": "4 MPI chains, cobaya 3.6.1, Gaussian-summary β likelihood (no Planck download needed) — launched 19:26 UTC, R̂−1<0.01 ETA ~1-4h (NOT 1 day)",
-        "outputPath": "/workspace/c5_results/c5.*"
+        "status": "done",
+        "etaNote": "DONE 25min — R̂−1=0.0095, 8,955 samples; median Caγ=20.7, 69% mass in [9,51]; → P1B v1B.0.49",
+        "outputPath": "research/branch_R_alp_birefringence/phase2_mcmc/chains/c5_continuous/"
       },
       {
         "name": "C6 P4 depth-stratified null on real footprint (diagnostic)",
