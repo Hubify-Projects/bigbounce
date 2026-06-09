@@ -1,0 +1,95 @@
+{
+  "job": "C3-P4-Wp-invariance-and-fsky-eff",
+  "date_utc": "2026-06-09T18:50:13Z",
+  "purpose": "Headline subsample-mask MASTER ell=1 rerun under both weight-map choices Wp=N_all (published, -0.122 sigma) and Wp=N_spiral, plus raw and effective f_sky accounting for the apodized and unapodized weight maps.",
+  "config": {
+    "nside": 64,
+    "lmax": 191,
+    "n_mc": 500,
+    "seed": 42,
+    "apodization": "C2 2.0 deg",
+    "mask_definition_selected": "N_all >= 1",
+    "mask_n_pix": 24297,
+    "published_mask_n_pix": 32384,
+    "published_fsky": 0.6588541666666666,
+    "mask_candidates": [
+      {
+        "definition": "N_all >= 1",
+        "n_pix": 24297,
+        "f_sky": 0.49432373046875
+      },
+      {
+        "definition": "N_all >= 2",
+        "n_pix": 24265,
+        "f_sky": 0.4936726888020833
+      },
+      {
+        "definition": "N_all >= 3",
+        "n_pix": 24250,
+        "f_sky": 0.4933675130208333
+      },
+      {
+        "definition": "N_all >= 5",
+        "n_pix": 24224,
+        "f_sky": 0.4928385416666667
+      },
+      {
+        "definition": "N_all >= 10",
+        "n_pix": 24164,
+        "f_sky": 0.4916178385416667
+      },
+      {
+        "definition": "N_all >= 20",
+        "n_pix": 24094,
+        "f_sky": 0.4901936848958333
+      },
+      {
+        "definition": "N_all >= 50",
+        "n_pix": 23992,
+        "f_sky": 0.4881184895833333
+      },
+      {
+        "definition": "N_spiral >= 1",
+        "n_pix": 24270,
+        "f_sky": 0.4937744140625
+      }
+    ],
+    "null": "per-galaxy CW-label permutation shuffle (500 MC, seed 42)",
+    "field": "A_p=(N_CW-N_CCW)/N_spiral, weight-map-weighted mask-mean subtracted"
+  },
+  "fsky_numbers": {
+    "raw_pixel_fsky_binary_mask": 0.49432373046875,
+    "fsky_binary_mask_apodized_mean": 0.4822174986239898,
+    "fsky_eff_Wp_Nall_unapodized": 0.4563665618612429,
+    "fsky_eff_Wp_Nall_apodized": 0.45202934361418695,
+    "fsky_eff_Wp_Nspiral_unapodized": 0.4236535183854512,
+    "fsky_eff_Wp_Nspiral_apodized": 0.42022107365117767,
+    "fsky_eff_binary_unapodized": 0.49432373046875,
+    "fsky_eff_binary_apodized": 0.48825112397905956,
+    "sum_Wp_Nall_in_mask": 8474531.0,
+    "sum_Wp_Nspiral_in_mask": 3201160.0,
+    "published_n_weighted": 5547858
+  },
+  "results": {
+    "Wp_Nall": {
+      "C1_data_decoupled": 2.348109981323473e-05,
+      "null_mean": 1.7128990334857375e-06,
+      "null_std": 2.9892738442590954e-06,
+      "sigma": 7.282103251113928,
+      "n_mc": 500,
+      "wallclock_s": 225.79054808616638
+    },
+    "Wp_Nspiral": {
+      "C1_data_decoupled": 2.7863259899866366e-05,
+      "null_mean": 1.4896008245253405e-06,
+      "null_std": 2.6969993603000766e-06,
+      "sigma": 9.778889629549859,
+      "n_mc": 500,
+      "wallclock_s": 155.91266870498657
+    }
+  },
+  "published_reference": {
+    "sigma_Wp_Nall": -0.12189879362126763
+  },
+  "wallclock_s": 386.6349244117737
+}

@@ -1,0 +1,42 @@
+{
+  "5i2td3deu3hojr": {
+    "purpose": "Publish-plan compute queue C1-C3 (+C6 diagnostic): P1B NaMaster fsky sweep + P4 N_all binomial null + P4 Wp-invariance/fsky_eff + P4 real-footprint systematics-stratified null",
+    "startedAt": 1781290000000,
+    "totalCostUsd": 0.25,
+    "artifactsBackedUp": false,
+    "backupLocations": [],
+    "jobs": [
+      {
+        "name": "C1 P1B β-injection NaMaster fsky=0.85+0.65",
+        "paper": "paper-1b",
+        "tmuxSession": "c1",
+        "status": "running",
+        "etaNote": "NSIDE=512, ~1.3h for both legs; checkpoint JSON per fsky",
+        "outputPath": "/workspace/c1_results/c1_fsky_sweep.json"
+      },
+      {
+        "name": "C2 P4 N_all-trial binomial null",
+        "paper": "paper-4",
+        "tmuxSession": "c2",
+        "status": "done",
+        "etaNote": "DONE 358s — 99.327% reproduction (trial-pool robust); ⟨N_all/N_spiral⟩=2.827",
+        "outputPath": "pipelines/p2_chirality/outputs/canonical_provenance/c2_nall_binomial_null.json"
+      },
+      {
+        "name": "C3 P4 Wp invariance + fsky_eff",
+        "paper": "paper-4",
+        "tmuxSession": "c3",
+        "status": "done",
+        "etaNote": "DONE 387s — SEV-1: published 0.659 mask unreconstructable; real-catalog +7.28σ/+9.78σ",
+        "outputPath": "pipelines/p2_chirality/outputs/canonical_provenance/c3_wp_invariance_fsky.json"
+      },
+      {
+        "name": "C6 P4 depth-stratified null on real footprint (diagnostic)",
+        "paper": "paper-4",
+        "tmuxSession": "c6",
+        "status": "queued",
+        "etaNote": "~30min — systematic-attribution test for the +7-9σ real-footprint excess"
+      }
+    ]
+  }
+}

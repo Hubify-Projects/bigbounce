@@ -1,0 +1,48 @@
+{
+  "job": "C2-P4-Nall-trial-binomial-monopole-null",
+  "date_utc": "2026-06-09T18:47:59Z",
+  "purpose": "fn:binomial_nspiral in-queue closure: rerun the monopole-only generative null with Binomial(N_all(p), p_CW_global) trial draws instead of Binomial(N_spiral(p), p_CW_global).",
+  "config": {
+    "nside": 64,
+    "lmax": 191,
+    "n_mc": 500,
+    "seed": 42,
+    "min_spirals_per_pix": 10,
+    "f_sky": 0.49005126953125,
+    "n_catalog_total": 8474531,
+    "n_spiral_in_mask": 3200420,
+    "n_all_in_mask": 8472360,
+    "p_cw_global": 0.49735690940564053,
+    "trial_count_inflation_mean_nall_over_nspiral": 2.827137296993142,
+    "null_fraction_normalization": "n_cw_null(p) / N_all(p) (primary); n_cw_null(p)/N_spiral(p) recorded as diagnostic",
+    "monopole_subtraction_post_master": "galaxy-weighted mask-mean (v1.0.107+ convention; weights = trial pool N_all for null, N_spiral for data)"
+  },
+  "results": {
+    "pre_master_pseudo_C1": {
+      "observed": 0.01696139020537098,
+      "null_mean": 0.016847237359057167,
+      "null_std": 4.073973147949581e-05,
+      "residual_sigma": 2.802002913820536,
+      "reproduction_pct": 99.3269841390851
+    },
+    "pre_master_pseudo_C1_altnorm_nspiral_denominator": {
+      "observed": 0.01696139020537098,
+      "null_mean": 0.14095891770308352,
+      "null_std": 0.0003388043625185612,
+      "residual_sigma": -365.98562833121554,
+      "reproduction_pct": 831.0575725004403
+    },
+    "post_master_decoupled_C1": {
+      "observed": 7.014752540824976e-06,
+      "null_mean": 1.9560584046609106e-07,
+      "null_std": 3.0434546496479536e-07,
+      "residual_sigma": 22.4059415544361,
+      "reproduction_pct": 2.788492385550163
+    }
+  },
+  "reference_nspiral_trial_run": {
+    "pre_master_reproduction_pct": 99.322,
+    "pre_master_residual_sigma": 1.691017811745476
+  },
+  "wallclock_s": 358.1822278499603
+}

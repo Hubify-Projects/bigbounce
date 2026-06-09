@@ -18,6 +18,17 @@ day, P1A first). P2 and P3 are independent. Recommended arXiv order:
 **P4, P1A+P1B, P3, P2, P5** (P5 last, after P4 is on arXiv so the citation
 resolves).
 
+> **⛔ SEV-1 GATE (2026-06-09 12:30 PT):** P4 submission BLOCKED pending
+> Houston decisions D1/D2 in
+> `project-context/peer-reviews/P4_HEADLINE_PROVENANCE_SEV1.md` — compute
+> job C3 found the headline −0.122σ subsample-mask null was computed on a
+> synthetic-footprint catalog (April c58ed751 wave); the published
+> f_sky=0.659 mask cannot be reconstructed from the real catalog, and a
+> faithful real-catalog rerun gives +7.28σ/+9.78σ. The real-space +0.43σ
+> null, the 99.3% leakage demonstration (re-verified by C2), and all
+> interpretation-(ii) anchors survive. If P4 rewrite slips, promote
+> P1A+P1B/P3 in the order; P5 still waits for P4.
+
 ## Fire-21 truth-audit verdicts (2026-06-09, gates the plan)
 
 | Finding | Verdict | Action |
