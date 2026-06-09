@@ -184,7 +184,7 @@ export const papers: Paper[] = [
     slug: "paper-2",
     number: "2",
     title: "f_NL = -35/8 Forecast: SPHEREx Discrimination of Bounce vs. Inflation",
-    version: "v1.7.44",
+    version: "v1.7.45",
     lastUpdated: "2026-06-03",
     tldr: "Shows f_NL = −35/8 is a parameter-free, mechanism-independent prediction of all matter-bounce models, and forecasts SPHEREx will detect or kill it at 4.7–12σ by ~2028 — the decisive bounce-vs-inflation discriminator.",
     path: publicationPath({}),
@@ -207,15 +207,15 @@ export const papers: Paper[] = [
     predictions: ["f_NL = -35/8"],
     figures: ["Fisher forecast contours", "Template overlap matrix", "σ(f_NL) sensitivity curves"],
     remainingWork: [
-      "Cross-vendor round on v1.7.44 (post-FW-1 withdrawal)",
+      "R22prov2 near-clean (3/5 vendors zero findings) → mini-wave closed in v1.7.45 → next round",
       "Houston personal sign-off (final 1%, gated)",
       "arXiv submission (administrative)",
     ],
     preprintId: "HUBIFY-2026-002",
     pdfMeta: "PDF 808 KB · 23 pp · updated Jun 3, 2026",
     artifacts: [
-      { label: "Read PDF", href: "/papers/paper2_fnl_forecast_v1.7.44.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/paper2_fnl_forecast_v1.7.44.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/paper2_fnl_forecast_v1.7.45.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/paper2_fnl_forecast_v1.7.45.pdf", kind: "secondary", download: true },
       {
         label: "LaTeX source",
         href: "https://github.com/Hubify-Projects/bigbounce/blob/main/research/focused_paper_source_integration/02_full_draft.tex",
