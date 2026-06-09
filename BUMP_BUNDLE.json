@@ -1,11 +1,11 @@
 [
   {
-    "paperSlug": "paper-5",
-    "version": "v0.1.52-2026-06-09",
+    "paperSlug": "paper-1b",
+    "version": "v1B.0.51",
     "datestamp": "2026-06-09",
-    "texCommit": "25787d57",
-    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf",
-    "sitePdfPath": "/papers/p5_desi_chirality_v0.1.52.pdf",
-    "changelog": "Covariate-robustness closure (R22prov C5, the last open P5 item): logistic regression extended with GZ-DESI physical covariates (Walmsley 2023, Zenodo 8360385; 100% dr8_id join on the declared parent) — Petrosian radius, r-mag, featured/merger fractions, edge-on fraction (152k featured subsample). Joint 3-dof environment Wald p=0.46 canonical / p=0.99 z-shell-corrected after adjustment; every env coefficient null (max void −0.081±0.107); max adjustment shift 0.17σ; no physical covariate predictive. New paragraph §systematics + Walmsley bibitem. Artifact outputs/20_v0151_covariate_regression.json (script 20 committed c4da6c92). 24pp/md5 cc7c3390/0-0-0. P5 review queue now EMPTY pending Claude-inclusive confirmation round."
+    "texCommit": "99263332",
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1b_mcmc_companion.pdf",
+    "sitePdfPath": "/papers/paper1b_mcmc_companion_v1B.0.51.pdf",
+    "changelog": "c9f closure (META-M4, the last open P1B item): dedicated 500-MC rerun at fsky=0.32 with β=−0.27° injection — recovers −0.238° (bias +0.032°), proving sign-symmetric recovery with bias magnitude identical to the +0.27° case; σ_β(0.32)=0.046° and |SNR|/realization=5.2 now MEASURED directly, confirming and replacing the √fsky-scaling estimates (≈0.047°/≈5) disclosed in v1B.0.50. Footnote updated; artifact reproducibility/p1_namaster_500mc/results/c9f_negative_beta.json. 13pp/md5 856fbad2/0-0-0. P1B review queue now EMPTY pending Claude-inclusive confirmation round."
   }
 ]
