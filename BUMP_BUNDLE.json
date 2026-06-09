@@ -1,11 +1,11 @@
 [
   {
-    "paperSlug": "paper-1b",
-    "version": "v1B.0.48-2026-06-09",
+    "paperSlug": "paper-4",
+    "version": "v1.0.166",
     "datestamp": "2026-06-09",
-    "texCommit": "0bf04e66",
-    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1b_mcmc_companion.pdf",
-    "sitePdfPath": "/papers/paper1b_mcmc_companion_v1B.0.48.pdf",
-    "changelog": "Fire-21 closures: P1B-E1 likelihood naming unified at 4 sites against Cobaya YAML ground truth (Planck NPIPE PR4 CamSpec high-ℓ TTTEEE + Planck 2018 low-ℓ TT/EE + Planck 2018 lensing). P1B-E2 Mb re-bucketed as SN absolute magnitude; REAL CATCH — full-tension samples 17 params but Planck+BAO+SN samples only 16 (use_abs_mag:false, analytic marginalization); prior '17 across both' corrected. +1 figure (fig:alp_triangle). Bonus: \\sigmaunit macro defined (σ glyph silently dropped at 4 sites). dneff_viability.png REJECTED (draft watermark + stale preliminary numbers). 12pp/939KB/md5 6684a761. 0 undef, 0 overfull."
+    "texCommit": "2a2939b2",
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p2_chirality/chirality_catalog_paper.pdf",
+    "sitePdfPath": "/papers/chirality_catalog_paper_v166.pdf",
+    "changelog": "SEV-1 HEADLINE RETRACTION (D1, Houston full-delegation 2026-06-09): −0.122σ subsample-mask MASTER null WITHDRAWN — provenance audit (C3) proved it was computed on a synthetic-footprint catalog (f_sky=0.659 mask unreconstructable; producer script never committed; pod log records catalog generation). Paper re-anchored: title drops the −0.122σ claim; headline = real-space dipole +0.43σ (p=0.30) + WLS template-fit exclusion of clean 1.7% dipole (z≈−18); MASTER channel reframed as systematics diagnostic (+7.28σ real apodized footprint, +7.13σ vs depth-stratified null — C6 proves depth conditioning does not absorb the excess). Table I renumbered (i)-(vii) with corrected N_map,weighted 5,547,858→8,474,531; App A provenance note + fsky_eff=⟨W⟩²/⟨W²⟩ definitions (closes P4-E1); fn:binomial_nspiral N_all-trial rerun reported (99.33% vs 99.32%, trial-pool robust; ⟨N_all/N_spiral⟩ 1.49→2.83 — closes in-queue promise). ~16 cascade sites; grep-verified clean. 15pp/25.3MB/md5 4fb654bd/0 undef/0 overfull, /latex-audit PASS. Readiness 95→85 per readiness-oscillation; two clean cross-vendor rounds required."
   }
 ]
