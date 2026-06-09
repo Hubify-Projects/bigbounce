@@ -1,11 +1,11 @@
 [
   {
-    "paperSlug": "paper-1b",
-    "version": "v1B.0.50",
+    "paperSlug": "paper-4",
+    "version": "v1.0.167",
     "datestamp": "2026-06-09",
-    "texCommit": "153de700",
-    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1b_mcmc_companion.pdf",
-    "sitePdfPath": "/papers/paper1b_mcmc_companion_v1B.0.50.pdf",
-    "changelog": "R22prov closure wave (24 VERIFIED + mechanical sweep). Load-bearing: (1) NaMaster §IV provenance corrected — pipeline validation runs on SYNTHETIC ΛCDM skies (synfast; namaster_500mc.py), not the Commander/SMICA map as previously labeled; stale recovery figure (untraceable ≈0.15° point) replaced with artifact-only fig_namaster_recovery.png. (2) SNR relabeling — 20.32/25.71 are template-fit SNRs (artifact-proven √fsky scaling); per-realization σ_β/SNR now quoted from c1_fsky_sweep.json. (3) §V.A BAO attribution fixed to SDSS DR16+MGS+6dFGS per the frozen chain YAML (was mislabeled DESI DR1); per-chain dataset table added. (4) w_pivot SUBSTANTIVE correction: old footnote formula provably violated the Cauchy bound; direct iter2 DR2 chain readout gives a_p=0.791, w_p=−0.952±0.019 → +2.5σ from −1 (was '−1.1σ') — verified by two independent computations; consistent with the DESI DR2 evolving-DE preference. (5) ALP likelihood attribution unified to Eskilt WMAP+Planck Gaussian summary at all residual sites. (6) Spectator-fraction posterior readouts from c5 chain (Ω_a<0.1: 44%, <0.01: 13%). +12 verified minors. 13pp/md5 178f5f32/0 errors/0 undef/0 overfull. Round was Claude-leg DEGRADED (API credits) — Claude-inclusive confirmation round required post-top-up."
+    "texCommit": "4a365b4a",
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p2_chirality/chirality_catalog_paper.pdf",
+    "sitePdfPath": "/papers/chirality_catalog_paper_v167.pdf",
+    "changelog": "Post-retraction mega-wave: 33 R-v166-c1 findings + 16 R22prov delta items + C9 compute batch integrated. Highlights: equivariance suppression corrected 3.86×→2.98× (count-derived; stale +2.05% pair retired); Table II 6-dp fractions with signed z (+28.72/−9.47); Table III REBUILT from 10k-permutation nulls under a single field convention, both footprints, null means + rank-p printed (apod ℓ=1 z=+7.31, rank-p=6.0e-4); harmonic-channel completeness: P(3σ)=0.92 at A_p=0.5%, ≈1.0 at ≥0.75%, and a Shamir-class A_p=1.7% dipole would register at z≈68-218 vs observed +7.3 — order-of-magnitude amplitude incompatibility independent of systematics attribution; W_p sweep (excess persists under all 3 weightings); pool verification ALL-PASS (spirals-only nulls); shot-noise floor validated (N_ℓ≈2.0e-6 ≈ null mean); LEE double-counting fixed (max-stat MC primary); GZ1 240,919/234,282 reconciled (training-overlap arithmetic); false '<0.5σ threshold-sweep' claim corrected to artifact truth (6.3-8.3σ range, old convention); abstract ≤250 words journal-neutral; eight-anchor battery; T7 criterion honesty fix; 25,790/66.5% training arithmetic; A95 bracketed (1.0%,1.5%]. 17pp/md5 b236c8d9/0 errors/0 undef/0 overfull. Round still requires two Claude-inclusive clean rounds (readiness stays 85)."
   }
 ]
