@@ -28,12 +28,12 @@ const STATIC_PAGES: SearchItem[] = [
   { category: "Page", title: "Explainer", blurb: "Non-technical explanation of the research program", href: "/explained" },
   { category: "Page", title: "Surveys", blurb: "7 retained surveys with anomaly sweep results (DESI, SDSS, eROSITA, LAMOST, Planck, NEOWISE, Gaia)", href: "/surveys" },
   { category: "Page", title: "Predictions", blurb: "f_NL = -35/8, ALP birefringence beta = 0.27 deg, NANOGrav gamma = 3.0, SPHEREx forecast sigma(f_NL) = 0.7", href: "/predictions" },
-  { category: "Page", title: "Papers", blurb: "5-paper portfolio with version history and readiness", href: "/paper" },
+  { category: "Page", title: "Papers", blurb: "6-paper portfolio with version history and readiness", href: "/paper" },
   { category: "Page", title: "Data Explorer", blurb: "Interactive MCMC posterior data with 15 embedded datasets and equation calculators", href: "/data-explorer" },
   { category: "Page", title: "Galaxy Explorer", blurb: "8.47M-galaxy DESI Legacy DR8 chirality catalog explorer", href: "/galaxy-explorer" },
   { category: "Page", title: "Anomaly Explorer", blurb: "DESI DR1 spectral anomalies, sortable, sky-mapped, with cutout previews", href: "/anomaly-explorer" },
   { category: "Page", title: "Visualize", blurb: "Interactive cosmic simulation of the Big Bounce from parent universe through SPHEREx 2028", href: "/visualize" },
-  { category: "Page", title: "Figures", blurb: "Gallery of research figures spanning all 5 papers, sortable and filterable", href: "/figures" },
+  { category: "Page", title: "Figures", blurb: "Gallery of research figures spanning all 6 papers, sortable and filterable", href: "/figures" },
   { category: "Page", title: "Glossary", blurb: "Searchable glossary of terms, parameters, and equations", href: "/glossary" },
   { category: "Page", title: "Timeline", blurb: "Visual cosmological timeline parent universe through bounce to SPHEREx 2028", href: "/timeline" },
   { category: "Page", title: "Articles", blurb: "Deep-dive companion articles to the research program", href: "/articles" },
@@ -49,7 +49,7 @@ const CONTRIBUTIONS: SearchItem[] = [
     category: "Contribution",
     title: "Perturbation-Transparency Theorem",
     blurb:
-      "Formal all-orders proof that the Barbero-Immirzi parameter gamma is invisible in all perturbative observables when scalar matter is minimally coupled in ECH. Paper 1, §12.",
+      "Formal all-orders proof that the Barbero-Immirzi parameter gamma is invisible in all perturbative observables when scalar matter is minimally coupled in ECH. Paper 1A.",
     href: "/contributions#perturbation-transparency",
   },
   {
@@ -123,7 +123,7 @@ const GLOSSARY_ITEMS: SearchItem[] = [
   { category: "Glossary", title: "Cosmic birefringence", blurb: "Rotation of CMB polarization plane induced by axion-like particles or other parity-violating physics.", href: "/glossary" },
   { category: "Glossary", title: "Spin density", blurb: "Source of torsion in Einstein-Cartan theory; vanishes identically for scalar matter, which is the load-bearing step in the perturbation-transparency theorem.", href: "/glossary" },
   { category: "Glossary", title: "Holst term", blurb: "Parity-odd term in the gravitational action; reduces to the topological Nieh-Yan invariant in the absence of torsion.", href: "/glossary" },
-  { category: "Glossary", title: "NANOGrav gamma", blurb: "Spectral index of the stochastic gravitational-wave background; bounce predicts 3.0 vs observed 3.20 +/- 0.42.", href: "/glossary" },
+  { category: "Glossary", title: "NANOGrav gamma", blurb: "Spectral index of the stochastic gravitational-wave background; bounce predicts 3.0 vs real-KDE free-spectrum 2.567 +/- 0.382 (+1.13 sigma consistent).", href: "/glossary" },
 ];
 
 export function SearchClient() {

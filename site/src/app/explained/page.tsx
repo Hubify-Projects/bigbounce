@@ -18,7 +18,7 @@ export default function ExplainedPage() {
     <>
       <div className="hero">
         <p className="text-xs sans" style={{ marginBottom: 8 }}>
-          Non-Technical Explainer &middot; April 2026
+          Non-Technical Explainer &middot; June 2026
         </p>
         <h1 style={{ fontFamily:"var(--font-mono-stack)", fontWeight: 600 }}>
           The Big Bounce, Explained
@@ -142,7 +142,7 @@ export default function ExplainedPage() {
               <p className="text-sm leading-relaxed text-muted-foreground">
                 NANOGrav detected a cosmic gravitational wave background. The
                 bounce predicts a specific spectral shape (&gamma; = 3.0). The
-                measured value is 3.20 &plusmn; 0.42 — consistent at 0.48σ.
+                measured spectral slope (our real free-spectrum re-fit) is 2.567 &plusmn; 0.382 — consistent at +1.13σ, while the black-hole-binary value 4.33 is excluded at +4.61σ.
               </p>
             </CardContent>
           </Card>
@@ -152,13 +152,13 @@ export default function ExplainedPage() {
                 className="text-base"
                 style={{ fontFamily:"var(--font-mono-stack)" }}
               >
-                319,443 Anomalies
+                378,280 Anomalies
               </CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-sm leading-relaxed text-muted-foreground">
                 Our AI pipelines have scanned 37.3 million astronomical sources
-                across 8 surveys, finding 319,443 objects that don&apos;t match
+                across 7 surveys, finding 378,280 objects that don&apos;t match
                 known patterns. These anomalies help improve our f<sub>NL</sub>{""}
                 measurement by 6.1%.
               </p>

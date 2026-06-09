@@ -17,7 +17,7 @@ export default function ChatPage() {
           astro
         </h1>
         <p className="subtitle">
-          Ask anything about spin-torsion cosmology, the 5-paper portfolio,
+          Ask anything about spin-torsion cosmology, the 6-paper portfolio,
           MCMC verification, anomaly surveys, the chirality catalog, or the
           14 structural barriers. Astro grounds answers in the published research.
         </p>

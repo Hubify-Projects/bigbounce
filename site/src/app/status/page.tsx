@@ -16,6 +16,7 @@ import {
   TableRow,
 } from"@/components/ui/table";
 import type { Metadata } from"next";
+import Link from"next/link";
 import { getLivePapers, getRunningPods, type LivePaperState } from "@/lib/livePapers";
 
 export const metadata: Metadata = {
@@ -106,10 +107,11 @@ export default async function StatusPage() {
         </p>
       </div>
 
-      <Card className="mt-6 border-l-4 border-tone-success">
+      <Card className="mt-6">
         <CardHeader>
           <div className="flex items-baseline justify-between gap-2 flex-wrap">
-            <CardTitle className="text-sm font-bold uppercase tracking-wider tone-success">
+            <CardTitle className="font-mono text-xs font-semibold uppercase tracking-wider" style={{ color: "var(--text-tertiary)" }}>
+              <span className="tone-success" aria-hidden="true">● </span>
               Live portfolio status
             </CardTitle>
             <CardDescription className="font-mono text-xs">
@@ -136,6 +138,7 @@ export default async function StatusPage() {
               />
             </div>
           </div>
+          <div className="status-table-scroll">
           <Table>
             <TableHeader>
               <TableRow>
@@ -155,15 +158,35 @@ export default async function StatusPage() {
                 return (
                   <TableRow key={p.slug}>
                     <TableCell>
-                      <strong>{meta.number}</strong>{" "}
+                      <Link
+                        href={`/papers/${p.slug}`}
+                        className="font-semibold underline-offset-4 hover:underline"
+                      >
+                        {meta.number}
+                      </Link>{" "}
                       <span className="text-muted-foreground">{meta.tagline}</span>
                     </TableCell>
-                    <TableCell className="font-mono">{p.currentVersion ?? "—"}</TableCell>
-                    <TableCell className="font-mono">{p.readinessComputed}%</TableCell>
+                    <TableCell className="whitespace-nowrap font-mono">{p.currentVersion ?? "—"}</TableCell>
+                    <TableCell className="whitespace-nowrap font-mono">
+                      {p.readinessComputed}%
+                      <span className="live-papers-bar" aria-hidden="true">
+                        <span
+                          style={{
+                            width: `${p.readinessComputed}%`,
+                            background:
+                              p.readinessComputed >= 95
+                                ? "var(--success)"
+                                : p.readinessComputed >= 85
+                                  ? "var(--text-secondary)"
+                                  : "var(--warn)",
+                          }}
+                        />
+                      </span>
+                    </TableCell>
                     <TableCell>
                       <Badge variant={statusBadgeVariant(p)}>{statusLabel(p)}</Badge>
                     </TableCell>
-                    <TableCell className="font-mono text-xs text-muted-foreground">
+                    <TableCell className="whitespace-nowrap font-mono text-xs text-muted-foreground">
                       {p.lastUpdated ?? "—"}
                     </TableCell>
                   </TableRow>
@@ -171,6 +194,7 @@ export default async function StatusPage() {
               })}
             </TableBody>
           </Table>
+          </div>
           <p className="text-xs text-muted-foreground">
             Self-claim readiness ceiling is 95% pre-sign-off and 99% once a
             clean cross-vendor R-round + Houston sign-off close together. The
@@ -202,10 +226,16 @@ export default async function StatusPage() {
       <section className="section">
         <h2>Active Compute</h2>
         {runningPods.length === 0 ? (
-          <p className="text-sm text-muted-foreground">
-            No pods running. All compute jobs idle — RunPod spend is $0/hr.
-            Job history + cost accounting live in the Convex pods table.
-          </p>
+          <div className="compute-idle">
+            <span className="compute-idle-dot" aria-hidden="true" />
+            <div>
+              <p className="compute-idle-title">0 pods running · $0/hr</p>
+              <p className="compute-idle-note">
+                All compute jobs idle. Job history + cost accounting live in
+                the Convex pods table.
+              </p>
+            </div>
+          </div>
         ) : (
           runningPods.map((pod) => {
             const hoursUp = Math.max(0, (Date.now() - pod.startedAt) / 3.6e6);
@@ -324,17 +354,17 @@ export default async function StatusPage() {
                   <TableCell>Quintom bounce</TableCell>
                   <TableCell className="font-mono">w(z) crosses -1</TableCell>
                   <TableCell>
-                    <Badge variant="outline">Theoretical (no in-house MCMC yet)</Badge>
+                    <Badge variant="outline">DESI DR2 chain: w_pivot = -0.952 ± 0.019 (+2.5σ from -1)</Badge>
                   </TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell className="font-semibold">NANOGrav GW</TableCell>
                   <TableCell>Matter bounce</TableCell>
                   <TableCell className="font-mono">
-                    γ = 3.0 vs 3.20 ± 0.42
+                    γ = 3.0 vs 2.567 ± 0.382
                   </TableCell>
                   <TableCell>
-                    <Badge variant="default">0.48σ consistent</Badge>
+                    <Badge variant="default">+1.13σ consistent</Badge>
                   </TableCell>
                 </TableRow>
                 <TableRow>
@@ -492,13 +522,12 @@ export default async function StatusPage() {
                 NANOGrav Consistency
               </CardTitle>
               <CardDescription className="font-mono text-[11px]">
-                nanograv_model_comparison.py · v2b Fisher recompute
+                nanograv real-KDE free-spectrum re-fit (Zenodo chains, emcee)
               </CardDescription>
             </CardHeader>
             <CardContent>
               <p className="text-sm leading-relaxed text-muted-foreground">
-                Matter bounce γ = 3.0 vs NANOGrav 3.20 ± 0.42 (0.48σ). Bayesian:
-                bounce preferred 5.6:1 over SMBH.
+                Matter bounce γ = 3.0 vs NANOGrav real-KDE free-spectrum 2.567 ± 0.382 (+1.13σ consistent); SMBHB γ = 4.33 excluded at +4.61σ. Savage-Dickey decisively favors the bounce slope.
               </p>
             </CardContent>
           </Card>
@@ -509,7 +538,7 @@ export default async function StatusPage() {
                 className="text-base"
                 style={{ fontFamily:"var(--font-mono-stack)" }}
               >
-                319,443 Anomalies Across 8 Surveys
+                378,280 Anomalies Across 7 Surveys
               </CardTitle>
               <CardDescription className="font-mono text-[11px]">
                 Pipeline B · 37.3M sources · Paper 3 Table 1 canonical totals

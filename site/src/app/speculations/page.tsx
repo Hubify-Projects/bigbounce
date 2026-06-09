@@ -178,7 +178,7 @@ export default function SpeculationsPage() {
     <>
       <div className="hero">
         <p className="text-xs sans" style={{ marginBottom: 8 }}>
-          Living Document &middot; Updated April 2026
+          Living Document &middot; Updated June 2026
         </p>
         <h1 style={{ fontFamily:"var(--font-mono-stack)", fontWeight: 600 }}>
           Speculations

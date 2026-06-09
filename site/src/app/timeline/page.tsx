@@ -60,13 +60,13 @@ const events: Array<{
   {
     time:"9.8 Gyr",
     label:"Dark Energy Onset",
-    desc:"Dark energy begins dominating expansion. Whether w(z) crosses -1 (quintom-B behavior) is treated theoretically in our program; external DESI DR2 (Adame et al.) reports 2.8–4.2σ for w-crossing depending on dataset combination. We have not yet run a free-w0–wa MCMC ourselves.",
+    desc:"Dark energy begins dominating expansion. Whether w(z) crosses -1 (quintom-B behavior) is treated theoretically in our program; external DESI DR2 (Adame et al.) reports 2.8–4.2σ for w-crossing depending on dataset combination. Our own DESI DR2 w0wa chain (Paper 1B) gives w_pivot = −0.952 ± 0.019, +2.5σ from −1.",
     color:"#9c927e",
   },
   {
     time:"13.8 Gyr",
     label:"NOW (2026)",
-    desc:"BigBounce research program: 4 papers, 8 surveys, 37.3M sources, 319,443 anomalies, 424,781+ MCMC samples across 3 frozen datasets.",
+    desc:"BigBounce research program: 6 papers, 7 surveys, 37.3M sources, 378,280 anomalies, 309,189 frozen MCMC samples, 8.47M-galaxy chirality catalog.",
     color:"#554c43",
   },
   {

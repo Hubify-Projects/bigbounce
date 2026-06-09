@@ -49,7 +49,7 @@ const glossaryEntries = [
     term:"MCMC",
     pronunciation:"em-see-em-see",
     definition:
-"Markov Chain Monte Carlo. A statistical sampling method used to explore parameter spaces. We have 424,781+ frozen posterior samples across 3 dataset combinations (176,840 + 132,949 + 114,992).",
+"Markov Chain Monte Carlo. A statistical sampling method used to explore parameter spaces. We have 309,189 frozen posterior samples across 2 converged dataset combinations (176,240 full-tension + 132,949 Planck+BAO+SN), with a third Planck-only combination accumulating.",
   },
   {
     term:"SPHEREx",
@@ -73,13 +73,13 @@ const glossaryEntries = [
     term:"NANOGrav",
     pronunciation:"NAN-oh-grav",
     definition:
-"North American Nanohertz Observatory for Gravitational Waves. Detected a gravitational wave background with spectral index γ = 3.2 ± 0.6. Bounce predicts γ = 3.0 (0.48σ consistent against the v2b Fisher recompute).",
+"North American Nanohertz Observatory for Gravitational Waves. Detected a gravitational wave background; our real-KDE free-spectrum re-fit gives spectral index γ = 2.567 ± 0.382. Bounce predicts γ = 3.0 (+1.13σ consistent); SMBHB γ = 4.33 is excluded at +4.61σ.",
   },
   {
     term:"Autoencoder",
     pronunciation:"AW-toh-en-KOH-der",
     definition:
-"A neural network trained to reconstruct its input. Objects it can't reconstruct well are anomalous. Used to find 319,443 anomalies across 37,292,042 sources in 8 surveys (Paper 3 Table 1 canonical totals after eROSITA top-cut).",
+"A neural network trained to reconstruct its input. Objects it can't reconstruct well are anomalous. Used to find 378,280 unique anomalies across 37.3M sources in 7 surveys (Paper 3 canonical Path-C totals after native retrains and 5″ dedup).",
   },
   {
     term:"Barbero-Immirzi parameter",
