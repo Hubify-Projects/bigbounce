@@ -1,11 +1,11 @@
 [
   {
     "paperSlug": "paper-2",
-    "version": "v1.7.44",
+    "version": "v1.7.45",
     "datestamp": "2026-06-09",
-    "texCommit": "c416c8da",
+    "texCommit": "29837536",
     "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/research/focused_paper_source_integration/02_full_draft.pdf",
-    "sitePdfPath": "/papers/paper2_fnl_forecast_v1.7.44.pdf",
-    "changelog": "C8 provenance closure (C7 audit FW-1, same April c58ed751 wave as P4's retracted null): SDB joint-Fisher numbers WITHDRAWN — σ(n_fNL)=0.086/σ_marg(fNL)=0.44/ρ=+0.966/9.9σ traced to an artifact with no committed script and no recorded survey inputs, irreproducible under any tested configuration. Replaced with committed in-repo computation scripts/c8_fnl_running_fisher.py (SPHEREx public-product v28 inputs per Doré+2014; validated: all-sample σ(fNL)=1.02 vs published ~0.9): σ(n_fNL)=0.295 fixed-bias / 0.596 bias-marginalized, σ_marg(fNL)=3.08/7.06, ρ=−0.87/−0.97, SDB-only detection 1.4σ/0.6σ — SDB joint channel explicitly subordinate to the unaffected bispectrum-only 3-5σ headline; n_fNL=0 testable to ±0.30/±0.60. In-text provenance note; April pod artifacts quarantined (QUARANTINE_NOTICE.json). RE-LANDED commit c416c8da after concurrent-session collision lost the first attempt. 22pp/md5 0d8fff61/0 undef/0 errors."
+    "sitePdfPath": "/papers/paper2_fnl_forecast_v1.7.45.pdf",
+    "changelog": "R22prov2 closure mini-wave (correct-PDF re-run round: Claude/Gemini/OpenAI/META all ZERO findings; only Grok+Perplexity flagged). 8 VERIFIED items closed: provenance bracket neutralized to journal style (correction fact kept, version numbers + repo path moved to Data Availability); AI acknowledgment reworded to software-infrastructure framing with responsibility statement; SSFSR point-prior (fNL_inf≈0.015) defined in tab:bayes caption with order-of-magnitude qualifier; Fig 2 error bars defined (optimistic = ideal+overlap-correction, conservative = full §VII budget); 10k-coefficient ball-radius convention caveat; Data Availability now cites c8_fnl_running_fisher.py; Jolicoeur:2025 bib author list corrected (Addis et al.). TRUTH-AUDIT: all 5 Perplexity citation-fabrication claims FALSIFIED by direct web verification (2603.13924, 2511.09466, 2509.13654, 2305.02268, 1712.09998 all exist as cited); Grok 'no derivation supplied' falsified (script path was cited); future-date findings falsified. 22pp/md5 d421f116/0 errors/0 overfull/0 undef."
   }
 ]
