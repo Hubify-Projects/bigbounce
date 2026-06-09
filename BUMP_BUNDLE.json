@@ -1,11 +1,11 @@
 [
   {
-    "paperSlug": "paper-3",
-    "version": "v3.1.80",
+    "paperSlug": "paper-5",
+    "version": "v0.1.51-2026-06-09",
     "datestamp": "2026-06-09",
-    "texCommit": "24013df2",
-    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p3_anomaly_engine/paper3_draft.pdf",
-    "sitePdfPath": "/papers/paper3_anomaly_catalog_v3.1.80.pdf",
-    "changelog": "R22prov closure wave (36 VERIFIED + sweep). Load-bearing: release-status contradiction fixed (abstract + Data Availability both now 'public with the arXiv posting'); 77,905 relabeled fixed-size continuity slice = 4.05% of scored sample (was mislabeled top-1%; top-1% reserved for 19,253) + DESI-alone S>5 fix; eROSITA 95.3× independence-null REMOVED at 3 sites — IF is trained on the BigAE latent (dependent detectors), 284/298 reframed descriptive; Fig 12 regenerated without undefined burned-in raw anomaly_score values (traced to desi_taxonomy_clusters.csv, exact matches); dedup radius sweep RUN not deferred — 3/5/7 arcsec → 378,604/378,280/378,145 unique, max variation 0.086% (claim now measured); Heinrich venue → PRD 109,123511; 0.874 Jaccard defined (controls ceiling); Table V Planck 10.6s withdrawn per artifact; +20 minors. FLAG: combined chi2=143,936 artifact unrecoverable locally — no clarifier invented. 23pp/md5 03f05e26/0 errors/0 undef/0 overfull. Round was Claude-leg DEGRADED — Claude-inclusive confirmation round required post-top-up."
+    "texCommit": "e9d9d253",
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf",
+    "sitePdfPath": "/papers/p5_desi_chirality_v0.1.51.pdf",
+    "changelog": "R22prov closure wave (24 VERIFIED). ROOT CAUSE found and fixed: env-table join carried duplicate TARGETIDs (14,622,283 rows / 14,100,704 unique — repeat survey-program coadds), inflating joined samples; affected analyses rebuilt on the declared parent: headline counts relabeled 791,635-matched vs 812,793 env-labeled superset (sums now exact); bright/dark split recomputed (filament 394,181/13,759; old impossible 416,701/21,203 + 3.4σ explicitly withdrawn in-text — true two-sample z=2.13); Phase-2 sweep Table V fully recomputed on declared parent (ranges 1.7-4.1pp, max monopole 1.87σ, shuffle p 0.13-0.56); Tempel filament concordance recomputed like-for-like on declared-parent overlap 96,753 → 0.29pp (~0.5σ; 0.026pp withdrawn). Omnibus χ² added (canonical p=0.315, z-shell p=0.990 — both null, independently computed twice). σ_pred −3.16→−3.32. Stale P4 −0.12σ citation re-anchored on the v1.0.166 retraction headline with labels-unaffected clause. k=20 guard documented (assertion fails; exact rerun shifts n_void +0.18%, Δf negligible). Scripts 17/18/19 + outputs committed. FLAG remaining: C5 covariate regression needs Tractor photometry join (no mass/size/axis-ratio cols locally). 24pp/md5 716d7f36/0 errors/0 undef/0 overfull. Round was Claude-leg DEGRADED — Claude-inclusive confirmation round required post-top-up."
   }
 ]
