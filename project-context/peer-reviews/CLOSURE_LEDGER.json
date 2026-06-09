@@ -181,7 +181,7 @@
   },
   {
     "closure_id": "P1A-META-E3-fire-17-w0wa-rejection",
-    "closure_commit": "PENDING",
+    "closure_commit": "da0d9937",
     "closure_fire_round": "auto-2026-06-08_1819pt",
     "paper": "P1A",
     "anchor_phrases": [
@@ -193,7 +193,7 @@
   },
   {
     "closure_id": "P1B-META-E3-fire-17-3.9sigma-direction",
-    "closure_commit": "PENDING",
+    "closure_commit": "da0d9937",
     "closure_fire_round": "auto-2026-06-08_1819pt",
     "paper": "P1B",
     "anchor_phrases": [
