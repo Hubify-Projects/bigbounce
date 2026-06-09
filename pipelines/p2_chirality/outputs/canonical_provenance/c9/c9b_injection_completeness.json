@@ -1,0 +1,205 @@
+{
+  "job": "C9b-P4-injection-recovery-completeness",
+  "date_utc": "2026-06-09T21:08:53Z",
+  "purpose": "Injection-recovery completeness through the apodized-footprint MASTER ell=1 diagnostic channel: P(detect at >=3sigma and >=5sigma | A) for A_p dipole amplitudes A injected on label-shuffle backgrounds.",
+  "config": {
+    "nside": 64,
+    "lmax": 191,
+    "seed": 42,
+    "apodization": "C2 2.0 deg",
+    "mask_definition": "N_all >= 1",
+    "weights": "Wp = N_all (x apodized mask)",
+    "field": "A_p=(N_CW-N_CCW)/N_spiral, weight-map-weighted mask-mean subtracted (c3/c6 convention)",
+    "injection": "per-pixel additive A_p dipole on label-shuffle background (full_catalog_injection_recovery.py convention): A_p^inj = A_p^shuffle + A*(d_hat . n_hat), applied before mask-mean subtraction; A = A_p amplitude = 2 x f_CW modulation amplitude",
+    "amplitudes_Ap": [
+      0.005,
+      0.0075,
+      0.017,
+      0.03
+    ],
+    "axes_equatorial_cartesian": {
+      "z_fiducial": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "x": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "y": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    "fiducial_axis": "z_fiducial",
+    "n_inj_per_amp_axis": 1000,
+    "n_null": 500,
+    "rng": "np.random.default_rng([42, tag, axis_idx, k]) per realization",
+    "nproc": 4
+  },
+  "null": {
+    "C1_data_decoupled": 2.348109981323473e-05,
+    "null_mean": 1.8909130393147307e-06,
+    "null_std": 2.9955986067033825e-06,
+    "sigma_data": 7.2073029829853335,
+    "c3_reference_sigma": 7.28
+  },
+  "completeness": {
+    "A_0.005": {
+      "amplitude_Ap": 0.005,
+      "amplitude_fcw_modulation": 0.0025,
+      "per_axis": {
+        "z_fiducial": {
+          "n_inj": 1000,
+          "p_detect_3sigma": 0.93,
+          "p_detect_5sigma": 0.803,
+          "sigma_median": 8.394237916577124,
+          "sigma_p16": 4.545592253697391,
+          "sigma_p84": 13.638382767894477,
+          "C1_inj_mean": 2.8945124650358193e-05
+        },
+        "x": {
+          "n_inj": 1000,
+          "p_detect_3sigma": 0.998,
+          "p_detect_5sigma": 0.994,
+          "sigma_median": 17.93120898420937,
+          "sigma_p16": 11.959181006172157,
+          "sigma_p84": 26.032946860140193,
+          "C1_inj_mean": 5.869580061912989e-05
+        },
+        "y": {
+          "n_inj": 1000,
+          "p_detect_3sigma": 0.82,
+          "p_detect_5sigma": 0.54,
+          "sigma_median": 5.327385040133223,
+          "sigma_p16": 2.821134084869791,
+          "sigma_p84": 8.784526044498865,
+          "C1_inj_mean": 1.9086253955449717e-05
+        }
+      },
+      "axis_averaged": {
+        "p_detect_3sigma": 0.9159999999999999,
+        "p_detect_5sigma": 0.779,
+        "sigma_median": 10.550943980306572
+      }
+    },
+    "A_0.0075": {
+      "amplitude_Ap": 0.0075,
+      "amplitude_fcw_modulation": 0.00375,
+      "per_axis": {
+        "z_fiducial": {
+          "n_inj": 1000,
+          "p_detect_3sigma": 1.0,
+          "p_detect_5sigma": 0.999,
+          "sigma_median": 18.721655966642018,
+          "sigma_p16": 13.0125500947246,
+          "sigma_p84": 26.30793268454725,
+          "C1_inj_mean": 6.052189851611031e-05
+        },
+        "x": {
+          "n_inj": 1000,
+          "p_detect_3sigma": 1.0,
+          "p_detect_5sigma": 1.0,
+          "sigma_median": 42.49877507733572,
+          "sigma_p16": 31.826351235542443,
+          "sigma_p84": 52.28791887797684,
+          "C1_inj_mean": 0.0001294777043119147
+        },
+        "y": {
+          "n_inj": 1000,
+          "p_detect_3sigma": 0.999,
+          "p_detect_5sigma": 0.988,
+          "sigma_median": 12.405558240561216,
+          "sigma_p16": 8.815834753823056,
+          "sigma_p84": 17.227328368220082,
+          "C1_inj_mean": 4.057436649119125e-05
+        }
+      },
+      "axis_averaged": {
+        "p_detect_3sigma": 0.9996666666666667,
+        "p_detect_5sigma": 0.9956666666666667,
+        "sigma_median": 24.541996428179655
+      }
+    },
+    "A_0.017": {
+      "amplitude_Ap": 0.017,
+      "amplitude_fcw_modulation": 0.0085,
+      "per_axis": {
+        "z_fiducial": {
+          "n_inj": 1000,
+          "p_detect_3sigma": 1.0,
+          "p_detect_5sigma": 1.0,
+          "sigma_median": 101.87914578476159,
+          "sigma_p16": 88.1137018791733,
+          "sigma_p84": 116.44957548571304,
+          "C1_inj_mean": 0.00030816530191278666
+        },
+        "x": {
+          "n_inj": 1000,
+          "p_detect_3sigma": 1.0,
+          "p_detect_5sigma": 1.0,
+          "sigma_median": 218.300990309773,
+          "sigma_p16": 195.43075262930668,
+          "sigma_p84": 244.23766042692372,
+          "C1_inj_mean": 0.0006580240615465281
+        },
+        "y": {
+          "n_inj": 1000,
+          "p_detect_3sigma": 1.0,
+          "p_detect_5sigma": 1.0,
+          "sigma_median": 67.78999226264764,
+          "sigma_p16": 58.144050448183954,
+          "sigma_p84": 77.45150417713415,
+          "C1_inj_mean": 0.00020514113846004111
+        }
+      },
+      "axis_averaged": {
+        "p_detect_3sigma": 1.0,
+        "p_detect_5sigma": 1.0,
+        "sigma_median": 129.32337611906075
+      }
+    },
+    "A_0.03": {
+      "amplitude_Ap": 0.03,
+      "amplitude_fcw_modulation": 0.015,
+      "per_axis": {
+        "z_fiducial": {
+          "n_inj": 1000,
+          "p_detect_3sigma": 1.0,
+          "p_detect_5sigma": 1.0,
+          "sigma_median": 318.6174014822383,
+          "sigma_p16": 291.6919119059192,
+          "sigma_p84": 345.9537351952936,
+          "C1_inj_mean": 0.0009567881607928226
+        },
+        "x": {
+          "n_inj": 1000,
+          "p_detect_3sigma": 1.0,
+          "p_detect_5sigma": 1.0,
+          "sigma_median": 685.2530964724747,
+          "sigma_p16": 644.1755444289214,
+          "sigma_p84": 728.1069180205304,
+          "C1_inj_mean": 0.002055249255307157
+        },
+        "y": {
+          "n_inj": 1000,
+          "p_detect_3sigma": 1.0,
+          "p_detect_5sigma": 1.0,
+          "sigma_median": 208.8265899244072,
+          "sigma_p16": 192.39903634529082,
+          "sigma_p84": 226.3360509412834,
+          "C1_inj_mean": 0.0006287700215783791
+        }
+      },
+      "axis_averaged": {
+        "p_detect_3sigma": 1.0,
+        "p_detect_5sigma": 1.0,
+        "sigma_median": 404.23236262637334
+      }
+    }
+  },
+  "wallclock_s": 1534.3320333957672
+}

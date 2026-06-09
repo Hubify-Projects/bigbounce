@@ -1,0 +1,214 @@
+{
+  "job": "C9e-P4-Ap-shot-noise",
+  "date_utc": "2026-06-09T20:43:39Z",
+  "purpose": "Analytic per-pixel binomial shot noise N_ell for the spiral-denominator A_p field, propagated through the apodized-footprint Wp=N_all MASTER pipeline via 100 pure-noise Gaussian realizations.",
+  "config": {
+    "nside": 64,
+    "lmax": 191,
+    "n_realizations": 100,
+    "seed": 42,
+    "apodization": "C2 2.0 deg",
+    "mask_definition": "N_all >= 1",
+    "weights": "Wp = N_all (x apodized mask)",
+    "binning": "Table III bands (band 0 = ell=1; 5-wide from ell=2)",
+    "effective_ells_report_bands": [
+      1.0,
+      4.0,
+      9.0,
+      14.0,
+      19.0,
+      24.0
+    ],
+    "noise_model": "per-pixel independent Gaussian g(p)~N(0, sigma_A(p)); sigma_f^2 = f(1-f)/N_spiral(p) for the CW fraction, sigma_A^2 = 4 f(1-f)/N_spiral(p) for A_p = 2f-1; same gw mask-mean subtraction as the data vector",
+    "f_choices": {
+      "f_global": 0.49735314698421823,
+      "f_per_pixel": "f_hat(p) = N_CW(p)/N_spiral(p)"
+    },
+    "field_support_n_pix": 24270
+  },
+  "results": {
+    "f_global": {
+      "bands": {
+        "band_0": {
+          "label": "ell=1 (single mode)",
+          "ell_eff": 1.0,
+          "N_ell_Ap_field": 2.006410642087103e-06,
+          "N_ell_Ap_field_std": 3.1934255197707527e-06,
+          "N_ell_fcw_field": 5.016026605217758e-07
+        },
+        "band_1": {
+          "label": "ell in [2,6]",
+          "ell_eff": 4.0,
+          "N_ell_Ap_field": 1.8455188526871887e-06,
+          "N_ell_Ap_field_std": 6.982347356677371e-07,
+          "N_ell_fcw_field": 4.6137971317179717e-07
+        },
+        "band_2": {
+          "label": "ell in [7,11]",
+          "ell_eff": 9.0,
+          "N_ell_Ap_field": 1.9530720837430034e-06,
+          "N_ell_Ap_field_std": 5.427912681387736e-07,
+          "N_ell_fcw_field": 4.882680209357508e-07
+        },
+        "band_3": {
+          "label": "ell in [12,16]",
+          "ell_eff": 14.0,
+          "N_ell_Ap_field": 1.8078078660228413e-06,
+          "N_ell_Ap_field_std": 4.0135017878365433e-07,
+          "N_ell_fcw_field": 4.5195196650571033e-07
+        },
+        "band_4": {
+          "label": "ell in [17,21]",
+          "ell_eff": 19.0,
+          "N_ell_Ap_field": 1.8486594035385372e-06,
+          "N_ell_Ap_field_std": 3.296609313078155e-07,
+          "N_ell_fcw_field": 4.621648508846343e-07
+        },
+        "band_5": {
+          "label": "ell in [22,26]",
+          "ell_eff": 24.0,
+          "N_ell_Ap_field": 1.9330179535777258e-06,
+          "N_ell_Ap_field_std": 3.052568000727599e-07,
+          "N_ell_fcw_field": 4.832544883944314e-07
+        }
+      },
+      "N_ell_all_bands_Ap": [
+        2.0064106420871036e-06,
+        1.8455188526871887e-06,
+        1.9530720837430034e-06,
+        1.807807866022842e-06,
+        1.8486594035385374e-06,
+        1.9330179535777266e-06,
+        1.9749985222612322e-06,
+        1.9303033035618054e-06,
+        1.94288581719452e-06,
+        1.925721104920389e-06,
+        1.942759853196587e-06,
+        1.9133570402374485e-06,
+        1.905777991117417e-06,
+        1.9208144523198615e-06,
+        1.8816138795386092e-06,
+        1.912099731402282e-06,
+        1.9254232799540404e-06,
+        1.9272703633619862e-06,
+        1.9219317225879936e-06,
+        1.9269457115778175e-06,
+        1.9146177660779534e-06,
+        1.9497266832516294e-06,
+        1.947968348726479e-06,
+        1.9192044216668483e-06,
+        1.962286579035873e-06,
+        1.943236761451939e-06,
+        1.912113946455694e-06,
+        1.9662195283667187e-06,
+        1.9341751042812403e-06,
+        1.9411125420408667e-06,
+        1.9248391797024018e-06,
+        1.9120757135495247e-06,
+        1.9046469577961971e-06,
+        1.924070277802766e-06,
+        1.8956735224158182e-06,
+        1.9015064795587498e-06,
+        1.915097650202606e-06,
+        1.9096221920310073e-06,
+        2.281348090487244e-06
+      ],
+      "wallclock_s": 6.14200758934021
+    },
+    "f_per_pixel": {
+      "bands": {
+        "band_0": {
+          "label": "ell=1 (single mode)",
+          "ell_eff": 1.0,
+          "N_ell_Ap_field": 2.2065440403838233e-06,
+          "N_ell_Ap_field_std": 3.2685555486981115e-06,
+          "N_ell_fcw_field": 5.516360100959558e-07
+        },
+        "band_1": {
+          "label": "ell in [2,6]",
+          "ell_eff": 4.0,
+          "N_ell_Ap_field": 1.8731916853020294e-06,
+          "N_ell_Ap_field_std": 7.905878935242773e-07,
+          "N_ell_fcw_field": 4.6829792132550736e-07
+        },
+        "band_2": {
+          "label": "ell in [7,11]",
+          "ell_eff": 9.0,
+          "N_ell_Ap_field": 1.944261073039512e-06,
+          "N_ell_Ap_field_std": 4.474178889769269e-07,
+          "N_ell_fcw_field": 4.86065268259878e-07
+        },
+        "band_3": {
+          "label": "ell in [12,16]",
+          "ell_eff": 14.0,
+          "N_ell_Ap_field": 1.9652066555604567e-06,
+          "N_ell_Ap_field_std": 4.360206596988096e-07,
+          "N_ell_fcw_field": 4.913016638901142e-07
+        },
+        "band_4": {
+          "label": "ell in [17,21]",
+          "ell_eff": 19.0,
+          "N_ell_Ap_field": 1.8548960397301326e-06,
+          "N_ell_Ap_field_std": 3.969767058776306e-07,
+          "N_ell_fcw_field": 4.6372400993253315e-07
+        },
+        "band_5": {
+          "label": "ell in [22,26]",
+          "ell_eff": 24.0,
+          "N_ell_Ap_field": 1.9139181812210453e-06,
+          "N_ell_Ap_field_std": 2.8214656493538166e-07,
+          "N_ell_fcw_field": 4.784795453052613e-07
+        }
+      },
+      "N_ell_all_bands_Ap": [
+        2.2065440403838233e-06,
+        1.8731916853020299e-06,
+        1.944261073039512e-06,
+        1.9652066555604567e-06,
+        1.8548960397301324e-06,
+        1.913918181221045e-06,
+        1.9035508356844233e-06,
+        1.8725035758593456e-06,
+        1.8981315212229126e-06,
+        1.907875047662679e-06,
+        1.8500371862730007e-06,
+        1.8918179111668235e-06,
+        1.8808839611262607e-06,
+        1.914968315686578e-06,
+        1.8955700830368448e-06,
+        1.9145883570560633e-06,
+        1.8845325728471946e-06,
+        1.916886945822045e-06,
+        1.9272273798775806e-06,
+        1.913738689175127e-06,
+        1.939120489817219e-06,
+        1.914122415894985e-06,
+        1.9199963723857136e-06,
+        1.905890863473143e-06,
+        1.920909854076409e-06,
+        1.926514897944388e-06,
+        1.9209941452982455e-06,
+        1.9106677286675695e-06,
+        1.91252758008051e-06,
+        1.9122872071338653e-06,
+        1.9151109072811492e-06,
+        1.8915485494230007e-06,
+        1.9001456032673521e-06,
+        1.8843521217711587e-06,
+        1.8837703544452902e-06,
+        1.893056219514071e-06,
+        1.8765152375458844e-06,
+        1.8976929125128687e-06,
+        2.2509149909178825e-06
+      ],
+      "wallclock_s": 11.203013896942139
+    }
+  },
+  "reference": {
+    "c3_data_C1_decoupled_Wp_Nall": 2.348e-05,
+    "c3_null_mean_l1": 1.713e-06,
+    "c3_null_std_l1": 2.989e-06,
+    "note": "Compare N_l1(A_p) against the c3 label-shuffle null mean: the shuffle null IS the empirical shot-noise floor of this channel, so agreement validates the analytic model."
+  },
+  "wallclock_s": 19.828917980194092
+}

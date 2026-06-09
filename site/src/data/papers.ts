@@ -280,7 +280,7 @@ export const papers: Paper[] = [
     slug: "paper-4",
     number: "4",
     title: "Survey-Scale Galaxy Chirality with Equivariant TTA: A Null Real-Space Chirality Dipole, a Quantifiable Monopole-Mask Leakage Channel, and Diagnostic Evidence for a Depth/Morphology-Correlated Canonical-Mask Residual on 8.47 Million DESI Legacy Galaxies (3.2 Million Spirals)",
-    version: "v1.0.166",
+    version: "v1.0.167",
     lastUpdated: "2026-06-09",
     tldr: "Classifies 8.47M galaxies for spiral handedness with a rotation-equivariant ViT ensemble and finds a null real-space chirality dipole (+0.43σ, p=0.30) — the earlier −0.122σ subsample-mask null was withdrawn in v1.0.166 after a provenance audit.",
     path: [
@@ -311,7 +311,7 @@ export const papers: Paper[] = [
         note: "First in queue once clean rounds + sign-off land",
       },
     ],
-    pages: "15",
+    pages: "17",
     refs: "46",
     readiness: 85,
     statusVariant: "amber",
@@ -340,10 +340,10 @@ export const papers: Paper[] = [
       "arXiv endorsement + submission (astro-ph.GA + astro-ph.CO, first in queue)",
     ],
     preprintId: "HUBIFY-2026-004",
-    pdfMeta: "PDF 25 MB · 15 pp · updated Jun 9, 2026",
+    pdfMeta: "PDF 25 MB · 17 pp · updated Jun 9, 2026",
     artifacts: [
-      { label: "Read PDF", href: "/papers/chirality_catalog_paper_v166.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/chirality_catalog_paper_v166.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/chirality_catalog_paper_v167.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/chirality_catalog_paper_v167.pdf", kind: "secondary", download: true },
       {
         label: "LaTeX source",
         href: "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/chirality_catalog_paper.tex",

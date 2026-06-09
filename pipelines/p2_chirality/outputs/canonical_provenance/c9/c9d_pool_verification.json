@@ -1,0 +1,107 @@
+{
+  "job": "C9d-P4-shuffle-pool-verification",
+  "date_utc": "2026-06-09T20:44:58Z",
+  "purpose": "Programmatic verification that every per-galaxy label-shuffle null in the c3/c6/c9 scripts permutes CW/CCW labels among SPIRALS ONLY (NOT_SPIRAL never enters the pool), plus 50-MC smoke nulls per variant.",
+  "pool_sizes": {
+    "catalog_total": 8474531,
+    "spirals_in_pool": 3201160,
+    "cw_in_pool": 1592107,
+    "ccw_in_pool": 1609053,
+    "not_spiral_excluded": 5273371
+  },
+  "data_level_assertions": {
+    "pool_size_equals_cw_plus_ccw": true,
+    "pool_classes_subset_of_cw_ccw": true,
+    "not_spiral_never_in_pool": true,
+    "c6_strata_partition_spiral_pool": true,
+    "c6_strata_galaxy_counts": [
+      162898,
+      231969,
+      271901,
+      276336,
+      319552,
+      311469,
+      360733,
+      369489,
+      404187,
+      492626
+    ]
+  },
+  "source_audit": {
+    "c3_p4_wp_invariance_fsky.py": {
+      "present": true,
+      "pool_constructed_from_is_spiral_subset": true,
+      "uses_permutation": true,
+      "notspiral_referenced_in_label_pool": false,
+      "verdict_spirals_only": true
+    },
+    "c6_p4_depth_stratified_null.py": {
+      "present": true,
+      "pool_constructed_from_is_spiral_subset": true,
+      "uses_permutation": true,
+      "notspiral_referenced_in_label_pool": false,
+      "verdict_spirals_only": true
+    },
+    "c9a_p4_10k_nulls.py": {
+      "present": true,
+      "pool_constructed_from_is_spiral_subset": true,
+      "uses_permutation": true,
+      "notspiral_referenced_in_label_pool": false,
+      "verdict_spirals_only": true
+    },
+    "c9b_p4_injection_completeness.py": {
+      "present": true,
+      "pool_constructed_from_is_spiral_subset": true,
+      "uses_permutation": true,
+      "notspiral_referenced_in_label_pool": false,
+      "verdict_spirals_only": true
+    },
+    "c9c_p4_wp_sweep.py": {
+      "present": true,
+      "pool_constructed_from_is_spiral_subset": true,
+      "uses_permutation": true,
+      "notspiral_referenced_in_label_pool": false,
+      "verdict_spirals_only": true
+    }
+  },
+  "smoke_nulls_50mc": {
+    "apod_Wp_Nall_global_shuffle": {
+      "C1_data_decoupled": 2.348109981323473e-05,
+      "null_mean": 1.87556148304561e-06,
+      "null_std": 2.61668801927635e-06,
+      "sigma": 8.256826251745583,
+      "n_mc": 50,
+      "reference_sigma_500mc": 7.28,
+      "pool_size_permuted": 3201160,
+      "wallclock_s": 34.28387427330017
+    },
+    "apod_Wp_Nall_depth_stratified": {
+      "C1_data_decoupled": 2.348109981323473e-05,
+      "null_mean": 1.9569906654676414e-06,
+      "null_std": 3.0635220347607263e-06,
+      "sigma": 7.025935803150902,
+      "n_mc": 50,
+      "reference_sigma_500mc": 7.13,
+      "pool_size_permuted": 3201160,
+      "wallclock_s": 27.08906054496765
+    },
+    "canonical_unapodized_global_shuffle": {
+      "C1_data_decoupled": 7.014752540824976e-06,
+      "null_mean": 6.054423252593065e-07,
+      "null_std": 7.398894126024336e-07,
+      "sigma": 8.662524569748909,
+      "n_mc": 50,
+      "reference_sigma_500mc": null,
+      "pool_size_permuted": 3201160,
+      "wallclock_s": 30.391660690307617
+    }
+  },
+  "config": {
+    "nside": 64,
+    "lmax": 191,
+    "seed": 42,
+    "n_mc_smoke": 50,
+    "apodization": "C2 2.0 deg"
+  },
+  "wallclock_s": 98.69715881347656
+}

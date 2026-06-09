@@ -54,41 +54,49 @@
         "name": "C9a P4 10k-permutation MASTER nulls (apod footprint + canonical mask, Table III bands)",
         "paper": "paper-4",
         "tmuxSession": "c9a",
-        "status": "running",
-        "etaNote": "launched 2026-06-09T20:43Z — 2x10,000 label-shuffle MC, 5 workers; ETA ~1.5-2.5h",
-        "outputPath": "/workspace/c9_results/c9a_10k_nulls.json"
+        "status": "done",
+        "etaNote": "DONE 28min — 10k-perm nulls both footprints; apod l=1 z=+7.31 rank-p=6e-4; Table III rebuilt",
+        "outputPath": "pipelines/p2_chirality/outputs/canonical_provenance/c9/"
       },
       {
         "name": "C9b P4 injection-recovery completeness (A=0.005/0.0075/0.017/0.03, 3 axes x 1000 inj)",
         "paper": "paper-4",
         "tmuxSession": "c9b",
-        "status": "running",
-        "etaNote": "launched 2026-06-09T20:43Z — 500-MC null + 12,000 injections, 4 workers; ETA ~1.5-2.5h",
-        "outputPath": "/workspace/c9_results/c9b_injection_completeness.json"
+        "status": "done",
+        "etaNote": "DONE 26min — completeness P(3σ)=0.92@Ap=0.5%, ~1.0@≥0.75%; Ap=1.7% → z≈68-218",
+        "outputPath": "pipelines/p2_chirality/outputs/canonical_provenance/c9/"
       },
       {
         "name": "C9c P4 Wp sweep (N_all / N_spiral / uniform-binary, 500-MC null each)",
         "paper": "paper-4",
         "tmuxSession": "c9c",
-        "status": "running",
-        "etaNote": "launched 2026-06-09T20:43Z — 3x500 MC, 2 workers; ETA ~30-60 min",
-        "outputPath": "/workspace/c9_results/c9c_wp_sweep.json"
+        "status": "done",
+        "etaNote": "DONE — excess persists all 3 weightings (+6.7/+6.9/+8.5σ)",
+        "outputPath": "pipelines/p2_chirality/outputs/canonical_provenance/c9/"
       },
       {
         "name": "C9d P4 shuffle-pool verification (spirals-only asserts + source audit + 50-MC smokes)",
         "paper": "paper-4",
         "tmuxSession": "c9d",
-        "status": "running",
-        "etaNote": "launched 2026-06-09T20:43Z — quick; ETA ~10-20 min",
-        "outputPath": "/workspace/c9_results/c9d_pool_verification.json"
+        "status": "done",
+        "etaNote": "DONE — ALL POOL ASSERTS PASS (spirals-only, all 5 scripts)",
+        "outputPath": "pipelines/p2_chirality/outputs/canonical_provenance/c9/"
       },
       {
         "name": "C9e P4 A_p shot-noise N_ell (100 pure-noise realizations through MASTER)",
         "paper": "paper-4",
         "tmuxSession": "c9e",
+        "status": "done",
+        "etaNote": "DONE 20s — N_l=1≈2.0e-6 validates shuffle null as shot-noise floor",
+        "outputPath": "pipelines/p2_chirality/outputs/canonical_provenance/c9/"
+      },
+      {
+        "name": "C9f P1B −0.27° sign-symmetry injection (fsky=0.32)",
+        "paper": "paper-1b",
+        "tmuxSession": "c9f",
         "status": "running",
-        "etaNote": "launched 2026-06-09T20:43Z — quick; ETA ~10-20 min",
-        "outputPath": "/workspace/c9e_results/c9e_shot_noise.json"
+        "etaNote": "launched 21:13 UTC, ~30min",
+        "outputPath": "/workspace/c9f_results/c9f_negative_beta.json"
       }
     ],
     "stoppedAt": null

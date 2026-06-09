@@ -1,0 +1,196 @@
+{
+  "job": "C9a-P4-10k-permutation-nulls",
+  "date_utc": "2026-06-09T21:11:05Z",
+  "purpose": "10,000-permutation per-galaxy label-shuffle MASTER nulls for the Table III bandpowers on (i) the apodized N_all>=1 footprint with Wp=N_all (the +7.28 sigma diagnostic channel) and (ii) the canonical unapodized mask, with empirical rank-p per band.",
+  "config": {
+    "nside": 64,
+    "lmax": 191,
+    "n_mc": 10000,
+    "seed": 42,
+    "binning": "band 0 = single-mode ell=1; bands b>=1 = 5-wide linear bands from ell=2 (Table III rows = bands 0..5); 39 bands total to lmax=191",
+    "report_bands": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "effective_ells_report_bands": [
+      1.0,
+      4.0,
+      9.0,
+      14.0,
+      19.0,
+      24.0
+    ],
+    "footprint_i": {
+      "mask": "N_all >= 1",
+      "apodization": "C2 2.0 deg",
+      "weights": "Wp = N_all (x apodized mask)",
+      "field": "A_p=(N_CW-N_CCW)/N_spiral, weight-map-weighted mask-mean subtracted (c3/c6 convention)"
+    },
+    "footprint_ii": {
+      "mask": "canonical: N_spiral >= 10, unapodized binary",
+      "weights": "binary mask",
+      "field": "A_p = N_CW/N_spiral - 0.5, galaxy-weighted (N_spiral) monopole subtraction (c2 post-MASTER / v1.0.121 convention)"
+    },
+    "null": "per-galaxy CW/CCW label permutation, pool = spirals only; independent stream per realization: np.random.default_rng([42, variant_idx, k])",
+    "n_spirals": 3201160,
+    "nproc": 5
+  },
+  "results": {
+    "apod_footprint_Wp_Nall": {
+      "bands": {
+        "band_0": {
+          "label": "ell=1 (single mode)",
+          "ell_eff": 1.0,
+          "C_data_decoupled": 2.4742120474811128e-05,
+          "null_mean": 1.9267254746575974e-06,
+          "null_std": 3.1196261416780393e-06,
+          "sigma": 7.313502953235668,
+          "n_null_ge_data": 5,
+          "empirical_rank_p_one_sided": 0.0005999400059994001,
+          "empirical_rank_p_two_sided": 0.001
+        },
+        "band_1": {
+          "label": "ell in [2,6]",
+          "ell_eff": 4.0,
+          "C_data_decoupled": 5.277451658081037e-06,
+          "null_mean": 1.869932871282969e-06,
+          "null_std": 7.292769118326246e-07,
+          "sigma": 4.672462176589683,
+          "n_null_ge_data": 4,
+          "empirical_rank_p_one_sided": 0.0004999500049995,
+          "empirical_rank_p_two_sided": 0.0008
+        },
+        "band_2": {
+          "label": "ell in [7,11]",
+          "ell_eff": 9.0,
+          "C_data_decoupled": 3.1210926064752115e-06,
+          "null_mean": 1.9189644522183918e-06,
+          "null_std": 4.983242339133598e-07,
+          "sigma": 2.412341348154915,
+          "n_null_ge_data": 148,
+          "empirical_rank_p_one_sided": 0.014898510148985102,
+          "empirical_rank_p_two_sided": 0.0296
+        },
+        "band_3": {
+          "label": "ell in [12,16]",
+          "ell_eff": 14.0,
+          "C_data_decoupled": 2.3821904348477416e-06,
+          "null_mean": 1.9164857300956845e-06,
+          "null_std": 4.0272174151187965e-07,
+          "sigma": 1.1563932530777443,
+          "n_null_ge_data": 1258,
+          "empirical_rank_p_one_sided": 0.12588741125887412,
+          "empirical_rank_p_two_sided": 0.2516
+        },
+        "band_4": {
+          "label": "ell in [17,21]",
+          "ell_eff": 19.0,
+          "C_data_decoupled": 2.6382651499534198e-06,
+          "null_mean": 1.9177871569926443e-06,
+          "null_std": 3.5161936947897205e-07,
+          "sigma": 2.0490281693763808,
+          "n_null_ge_data": 268,
+          "empirical_rank_p_one_sided": 0.0268973102689731,
+          "empirical_rank_p_two_sided": 0.0536
+        },
+        "band_5": {
+          "label": "ell in [22,26]",
+          "ell_eff": 24.0,
+          "C_data_decoupled": 2.6676528045794203e-06,
+          "null_mean": 1.9226258844635505e-06,
+          "null_std": 3.084356114603374e-07,
+          "sigma": 2.4155022715711114,
+          "n_null_ge_data": 129,
+          "empirical_rank_p_one_sided": 0.012998700129987,
+          "empirical_rank_p_two_sided": 0.0258
+        }
+      },
+      "n_mc": 10000,
+      "null_array_npy": "/workspace/c9_results/c9a_nulls_apod_footprint_Wp_Nall.npy",
+      "wallclock_s": 1013.3975720405579
+    },
+    "canonical_unapodized": {
+      "bands": {
+        "band_0": {
+          "label": "ell=1 (single mode)",
+          "ell_eff": 1.0,
+          "C_data_decoupled": 7.269288324659957e-06,
+          "null_mean": 5.700162784322595e-07,
+          "null_std": 8.448171189197444e-07,
+          "sigma": 7.929848834969113,
+          "n_null_ge_data": 2,
+          "empirical_rank_p_one_sided": 0.00029997000299970003,
+          "empirical_rank_p_two_sided": 0.0004
+        },
+        "band_1": {
+          "label": "ell in [2,6]",
+          "ell_eff": 4.0,
+          "C_data_decoupled": 1.419875444713598e-06,
+          "null_mean": 5.649188404265286e-07,
+          "null_std": 2.0347229465913784e-07,
+          "sigma": 4.201833009842029,
+          "n_null_ge_data": 8,
+          "empirical_rank_p_one_sided": 0.0008999100089991,
+          "empirical_rank_p_two_sided": 0.0016
+        },
+        "band_2": {
+          "label": "ell in [7,11]",
+          "ell_eff": 9.0,
+          "C_data_decoupled": 9.133805572989143e-07,
+          "null_mean": 5.728848747175332e-07,
+          "null_std": 1.3784999162617946e-07,
+          "sigma": 2.470045000109501,
+          "n_null_ge_data": 149,
+          "empirical_rank_p_one_sided": 0.014998500149985002,
+          "empirical_rank_p_two_sided": 0.0298
+        },
+        "band_3": {
+          "label": "ell in [12,16]",
+          "ell_eff": 14.0,
+          "C_data_decoupled": 7.947493909429312e-07,
+          "null_mean": 5.739620426897303e-07,
+          "null_std": 1.114720549239806e-07,
+          "sigma": 1.980651997523225,
+          "n_null_ge_data": 303,
+          "empirical_rank_p_one_sided": 0.030396960303969604,
+          "empirical_rank_p_two_sided": 0.0606
+        },
+        "band_4": {
+          "label": "ell in [17,21]",
+          "ell_eff": 19.0,
+          "C_data_decoupled": 8.324138665763337e-07,
+          "null_mean": 5.716757382336904e-07,
+          "null_std": 9.475391110553515e-08,
+          "sigma": 2.751740010523027,
+          "n_null_ge_data": 64,
+          "empirical_rank_p_one_sided": 0.0064993500649935,
+          "empirical_rank_p_two_sided": 0.0128
+        },
+        "band_5": {
+          "label": "ell in [22,26]",
+          "ell_eff": 24.0,
+          "C_data_decoupled": 7.441828987349204e-07,
+          "null_mean": 5.736147347655225e-07,
+          "null_std": 8.531335926491225e-08,
+          "sigma": 1.999313653091015,
+          "n_null_ge_data": 289,
+          "empirical_rank_p_one_sided": 0.028997100289971003,
+          "empirical_rank_p_two_sided": 0.0578
+        }
+      },
+      "n_mc": 10000,
+      "null_array_npy": "/workspace/c9_results/c9a_nulls_canonical_unapodized.npy",
+      "wallclock_s": 649.3274173736572
+    }
+  },
+  "c3_c6_references": {
+    "apod_Wp_Nall_global_shuffle_sigma_500mc": 7.28,
+    "apod_Wp_Nall_depth_stratified_sigma_500mc": 7.13,
+    "canonical_direct_mc_l1_sigma_500mc": 3.64
+  },
+  "wallclock_s": 1665.579009771347
+}
