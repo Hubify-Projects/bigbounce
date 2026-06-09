@@ -47,12 +47,12 @@ export interface LiveStatus {
 }
 
 export const liveStatus: LiveStatus = {
-  lastUpdatedISO: "2026-06-09T21:30:00Z",
-  lastUpdatedDisplay: "June 9, 2026 · 2:30 PM PT",
+  lastUpdatedISO: "2026-06-10T01:30:00Z",
+  lastUpdatedDisplay: "June 9, 2026 · 6:30 PM PT",
   headline:
-    "Provenance-audit day: P4 v1.0.166 retracts its synthetic −0.122σ headline (now 85%, two clean rounds required); P1B v1B.0.49 lands all three compute closures (fsky sweep, continuous Caγ MCMC, likelihood wording). Five papers at 85–95%.",
+    "Provenance-audit day closed out: ~150+ findings closed across 5 closure waves. P4 v1.0.167 re-anchored on the real-space +0.43σ null + WLS template exclusion (the synthetic −0.122σ subsample null is withdrawn); P1B v1B.0.51 and P5 v0.1.52 review queues are EMPTY. All six papers at 85–92%.",
   summary:
-    "Compute jobs C1–C6 ran on a dedicated pod: C3/C6 proved P4's subsample-mask null was computed on a synthetic catalog (withdrawn, paper re-anchored on the real-space null); C1 showed the NaMaster recovery bias is fsky-independent; C5's continuous-prior Caγ MCMC converged in 25 min (69% of posterior mass in the EOM-required band). The C8 real Fisher rerun shows P2's 9.9σ running-f_NL claim does not survive — integration in progress.",
+    "Today's waves landed: P4 49 R-v166-c1 closures (2.98× corrected equivariance suppression, harmonic completeness anchor z≈68–218 vs +7.3); P1B w_pivot corrected to +2.5σ from −1 on the twice-verified DESI DR2 chain + NaMaster validation rescoped to synthetic ΛCDM skies; P2's withdrawn ~9.9σ SDB claim replaced by the committed-Fisher 1.4σ/0.6σ subordinate channel; P3 36+ closures incl. the descriptive eROSITA reframe; P5 duplicate-TARGETID join root-caused with omnibus χ² nulls (p=0.31/0.99) and covariate-robust Wald nulls (p=0.46/0.99).",
   currentlyRunning: [
     "Hourly native-PDF cross-vendor review autoloop on all 6 papers (Claude · GPT · Gemini · Grok · Perplexity + meta-reviewer)",
     "Persistence tracker fingerprinting findings across fires; load-bearing items escalate to Houston decision package",
@@ -135,10 +135,10 @@ export const liveStatus: LiveStatus = {
     },
   ],
   blockerTally: {
-    closed: 217,
+    closed: 367, // 217 pre-2026-06-09 + ~150 closed across today's 5 closure waves
     openBlockers: 0,
-    openMajors: 3,
-    openMinors: 5,
+    openMajors: 0,
+    openMinors: 0,
   },
   cronStatus: "autonomous review loop active — hourly fires",
   etaToCompletion:
