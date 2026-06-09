@@ -45,7 +45,7 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.47}
+\newcommand{\paperVersion}{v1A.0.48}
 \newcommand{\paperTimestamp}{June 8, 2026 PDT}
 % v1A.0.44 (R-upgraded-round7 4-vendor direct R-round on v1A.0.43 ran
 %   2026-06-02; reviewers Grok / GPT / Perplexity / Gemini). Truth-audit
@@ -1630,12 +1630,24 @@ to the bounce model, explored across 7 disguised forms:
 (5)~torsion-induced effective $w(z)$, (6)~Holst-term residual as effective DE,
 (7)~ALP rolling as late-time acceleration.
 
-All 7 forms were rejected: adding $w_0w_a$ to a bounce model produces the same
-fit improvement as adding $w_0w_a$ to $\Lambda$CDM, with no additional theoretical
-content from the bounce. The loophole was explored theoretically but the
-$w_0w_a$ extension was never implemented computationally in this program
-(the MCMC program uses stock CAMB with $\Delta\Neff$ only; see
-companion Paper~I(b)~\cite{Golden2026P1b} for the frozen sample inventory).
+All 7 forms were assessed at the theoretical level only: adding $w_0w_a$ to a
+bounce model produces (at the level of the theoretical fit-improvement
+calculation) the same fit-improvement structure as adding $w_0w_a$ to
+$\Lambda$CDM, with no additional theoretical content from the bounce. We
+emphasize that this is a theoretical-structure conclusion, \emph{not} a
+quantitative posterior-preference rejection: the dedicated DESI~DR2 +
+Planck~NPIPE + Pantheon$+$ + DES-SN5YR cobaya chain with the free $w_0w_a$
+extension required to quantitatively test these 7 forms is described in
+companion Paper~I(b) Table~IV row ``DESI DR2 w0wa (new)'' and has not yet
+converged to the standard publication-quality target $\hat R - 1 < 10^{-2}$
+(see Paper~I(b)~\cite{Golden2026P1b} Sec.~V for the chain status). The
+present program's MCMC analysis uses stock CAMB with $\Delta\Neff$ only and
+hosts zero free-$w_0w_a$ samples; the qualitative theoretical conclusion
+that ECH cannot generate $w_0w_a$ as an additional output beyond what
+$\Lambda$CDM~$+w_0w_a$ already accommodates therefore stands as a
+\emph{theoretical structural observation} rather than as a posterior-preference
+quantitative rejection. A quantitative rejection (or confirmation) is gated
+on convergence of the dedicated Paper~I(b) chain.
 
 
 %% ============================================================

@@ -178,5 +178,29 @@
       "unfalsifiable in either direction"
     ],
     "description": "P4 falsification criterion logic fix — replaced A_50 (50% recovery) threshold with A_95 (95% recovery) for falsification boundary; A_50 retained as consistency boundary (v1.0.163)"
+  },
+  {
+    "closure_id": "P1A-META-E3-fire-17-w0wa-rejection",
+    "closure_commit": "PENDING",
+    "closure_fire_round": "auto-2026-06-08_1819pt",
+    "paper": "P1A",
+    "anchor_phrases": [
+      "All 7 forms were rejected: adding",
+      "w0wa extension was never implemented computationally",
+      "two statements in §XI cannot both be true"
+    ],
+    "description": "P1A §sec:loophole 'All 7 forms were rejected' → 'assessed at the theoretical level only' + explicit gating on Paper I(b) chain convergence (v1A.0.48)"
+  },
+  {
+    "closure_id": "P1B-META-E3-fire-17-3.9sigma-direction",
+    "closure_commit": "PENDING",
+    "closure_fire_round": "auto-2026-06-08_1819pt",
+    "paper": "P1B",
+    "anchor_phrases": [
+      "3.9σ > 3.6σ is the expected direction of the bias",
+      "inverse-variance combination underestimates the true σ",
+      "presents the discrepancy as if it indicates conservatism"
+    ],
+    "description": "P1B 3.9σ inverse-variance combination — direction-of-bias clarified: shared systematics → positively correlated errors → underestimated combined σ → OVERESTIMATED significance. 3.9σ is upper bound, not lower bound (v1B.0.47)"
   }
 ]

@@ -1,11 +1,20 @@
 [
   {
-    "paperSlug": "paper-4",
-    "version": "v1.0.163",
+    "paperSlug": "paper-1a",
+    "version": "v1A.0.48",
     "datestamp": "2026-06-08",
-    "texCommit": "d6c31c2d",
-    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p2_chirality/chirality_catalog_paper.pdf",
-    "sitePdfPath": "/papers/chirality_catalog_paper_v163.pdf",
-    "changelog": "TIER A3 #A3-7 closure (fire-17 P4-META-E1): Falsification criterion logic error CORRECTED. Prior text said 'A future detection at A≳0.75% (the 50% recovery threshold) would falsify the present null' — but a future 5σ detection at A=0.75% is consistent with the present non-detection by construction (only 50% of injected A=0.75% signals are recovered at 3σ under the present null). Replaced with A_95 threshold (~1.5-2%) as the falsification boundary; A_50≈0.75% retained as the consistency boundary. Two sites updated: §I abstract block (L81) + §VII conclusion block (L377). PDF 13pp (was 12)/7.19MB/md5 b1782f86. 0 undef refs."
+    "texCommit": "84f7eac6",
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1a_ech_nogo.pdf",
+    "sitePdfPath": "/papers/paper1a_ech_nogo_v1A.0.48.pdf",
+    "changelog": "TIER A3 #A3-3 closure (fire-17 P1A-META-E3): §sec:loophole 'All 7 forms were rejected' language replaced with 'All 7 forms were assessed at the theoretical level only'. Now explicitly distinguishes the theoretical-structure conclusion (ECH adds nothing beyond ΛCDM+w0wa for the 7 disguised forms) from a quantitative posterior-preference rejection (which would require the converged Paper~I(b) Table IV DESI DR2 w0wa chain). The chain hosting the quantitative test has accumulated ~3.8e4 samples with R̂-1 ≈ 3e-2 (per Paper I(b) Table III ‡ footnote) — descending toward publication-quality target R̂-1 < 1e-2 but not yet there. Theoretical-structure conclusion stands; quantitative rejection gated on chain convergence. Closes fire-17 P1A-META-E3 logical inconsistency between 'all rejected' + 'never implemented computationally'. PDF 23pp/1.17MB/md5 d742d3f4."
+  },
+  {
+    "paperSlug": "paper-1b",
+    "version": "v1B.0.47",
+    "datestamp": "2026-06-08",
+    "texCommit": "84f7eac6",
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1b_mcmc_companion.pdf",
+    "sitePdfPath": "/papers/paper1b_mcmc_companion_v1B.0.47.pdf",
+    "changelog": "TIER A3 #A3-6 closure (fire-17 P1B-META-E3): 3.9σ inverse-variance combination direction-of-bias clarified. Original text said 'neglects shared calibration systematics; the published joint analysis at 3.6σ is the headline' — but didn't state which direction the neglect biases. Correct direction: shared systematics produce positively correlated errors → underestimate the combined σ → OVERESTIMATE the significance. So 3.9σ is an upper bound on the true significance, not a lower bound. New text makes this explicit + identifies the Tau-A self-calibration as the dominant systematic the published joint analysis accounts for. PDF 11pp/851KB/md5 ea7b3405."
   }
 ]

@@ -43,7 +43,7 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1B.0.46}
+\newcommand{\paperVersion}{v1B.0.47}
 \newcommand{\paperTimestamp}{2026-06-08 PDT}
 % v1B.0.41 (2026-06-02 — R-upgraded-round5 P1B 4-Gemini-finding closure pass:
 %   1. GEM-m1 (pattern-017): stripped inline reviewer codes ("R5+R7 GEM-B1+GPT-B1",
@@ -1201,12 +1201,21 @@ $\beta = 0.30^\circ\pm 0.11^\circ$ (Planck NPIPE~\cite{DiegoPalazuelos2022}) and
 $\beta = 0.215^\circ\pm 0.074^\circ$ (ACT~DR6~\cite{DiegoPalazuelos2025}) via
 inverse-variance weighting:
 \begin{equation}
-\beta_{\rm combined} = 0.241^\circ\pm 0.061^\circ \quad (3.9\sigma)
+\beta_{\rm combined} = 0.241^\circ\pm 0.061^\circ \quad (3.9\sigmaunit)
 \label{eq:beta_combined}
 \end{equation}
 (Auxiliary cross-check only.)
-This neglects shared calibration systematics; the published joint analysis at
-$3.6\sigma$~\cite{Eskilt2022} is the headline.
+This neglects shared calibration systematics, which produce positively
+correlated errors between the two measurements. Positively correlated errors
+\emph{underestimate} the inverse-variance-combined $\sigma$, and therefore
+\emph{overestimate} the significance: the naive $3.9\sigmaunit$ figure is an
+upper bound on the true significance, not a lower bound. The published joint
+analysis at $3.6\sigmaunit$~\cite{Eskilt2022}, which properly accounts for the
+shared polarization-angle calibration systematics via a joint covariance
+matrix with the Tau~A self-calibration nuisance parameters, is the headline;
+the $3.9\sigmaunit$ figure here is retained only as an internal cross-check
+demonstrating that the uncorrelated-errors approximation is qualitatively
+consistent with the published result.
 
 \textit{MCMC parameter estimation.}---Dedicated MCMC sampling of the ALP parameter
 space (3 configurations, 9{,}720 total accepted samples) yields:
