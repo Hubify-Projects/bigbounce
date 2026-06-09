@@ -145,7 +145,7 @@
   },
   {
     "closure_id": "P2-META-E1-fire-13-fa-cancellation",
-    "closure_commit": "PENDING_NEXT_COMMIT",
+    "closure_commit": "c1adedef",
     "closure_fire_round": "auto-2026-06-08_1737pt",
     "paper": "P2",
     "anchor_phrases": [
@@ -157,7 +157,7 @@
   },
   {
     "closure_id": "P2-META-E2-fire-13-spectator-vs-omega",
-    "closure_commit": "PENDING_NEXT_COMMIT",
+    "closure_commit": "c1adedef",
     "closure_fire_round": "auto-2026-06-08_1737pt",
     "paper": "P2",
     "anchor_phrases": [
