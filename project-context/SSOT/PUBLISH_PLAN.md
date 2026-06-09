@@ -60,6 +60,21 @@ C5 needs Cobaya env — same pod, sequential after C1-C4.
 
 ## Day-by-day
 
+> **📍 END-OF-DAY-1 STATUS (2026-06-09 ~15:00 PT).** Day 1 went far beyond plan:
+> P4 SEV-1 retraction + v1.0.166 + v1.0.167 mega-wave (49 findings + C9 compute);
+> P1B v1B.0.49 + v1B.0.50 (w_pivot corrected to +2.5σ from −1, twice-verified);
+> P2 v1.7.44 + v1.7.45 (FW-1 withdrawal + committed Fisher); P3 v3.1.80 (36
+> closures incl. measured dedup sweep); P5 v0.1.51 wave in flight. All five
+> compute jobs C1-C6 + six C9 jobs DONE (c9f finishing). Autoloop P2-mapping
+> bug fixed (+P2ALP 7th entry, md5 pre-flight). arXiv tarballs current for
+> P4/P1A/P1B.
+>
+> **NEW CRITICAL PATH:** (1) Houston tops up Anthropic API credits (Claude
+> reviewer leg down since ~13:00 — all R22prov rounds DEGRADED to 4-vendor);
+> (2) Claude-inclusive clean rounds: P4 ×2, P1B/P2/P3/P5 ×1 each, P1A ×1;
+> (3) Houston sign-offs; (4) submit. Compute is NO LONGER on the critical
+> path — everything that needed a pod has run.
+
 ### Day 1 (today, 2026-06-09)
 - [x] Truth-audit fire-21 critical findings (above)
 - [x] Figures: P4 +4 (v1.0.165), P1A +2 (v1A.0.50)
