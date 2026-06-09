@@ -52,7 +52,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.161}
+\newcommand{\paperVersion}{v1.0.162}
 \newcommand{\paperTimestamp}{June 2026}
 \newcommand{\paperRoundNote}{Catalog release manuscript; condensed for journal submission.}
 
@@ -157,6 +157,21 @@ The classifier consists of a \vit{} encoder~\cite{Dosovitskiy:2020} (\texttt{vit
 \end{equation}
 The three-class output $(\pcw,\,\pccw,\,\pns)$ is essential for full-survey deployment: applying a binary classifier to data where $\sim\!70\%$ of objects are elliptical or irregular produces a catalog dominated by noise. Full architecture and training details are in Appendix~B.
 
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.85\textwidth]{fig_equivariance_demo.png}
+\caption{\textbf{Test-time D$_4$ equivariant averaging (TTA).} For each input image
+$x$, the classifier is evaluated on the eight D$_4$ transforms (four rotations
+$\times$ two reflections). Flips swap the CW $\leftrightarrow$ CCW class labels
+by construction. Output probabilities are averaged after the swap, yielding a
+strictly flip-equivariant CW/CCW classifier with flip-swap correlation
+$=1.000$ by construction. This averaging is the key methodology
+distinction between Catalog~A (raw), Catalog~B (Platt-calibrated), and
+Catalog~C (equivariant); the global CW-fraction shift from $+2.05\%$ (A) to
+$-0.53\%$ (C) is dominated by this step
+(Table~\ref{tab:cw_frac}).\label{fig:equivariance_demo}}
+\end{figure*}
+
 \subsection{Test-Time Equivariant Averaging}
 \label{sec:tta}
 
@@ -184,6 +199,32 @@ The pipeline produces three tiers: \textbf{Catalog~A} (raw, single-pass softmax)
 \label{sec:stats}
 
 The final catalog contains 8,474,531 galaxies (157 of 8,474,688 failed quality checks). Catalog~C (equivariant): CW $1{,}592{,}107$ (18.78\%), CCW $1{,}609{,}053$ (18.99\%), NS/edge-on $5{,}273{,}371$ (62.23\%); spiral total $N_{\rm spiral}\!=\!3{,}201{,}160$ (37.78\%). The spiral fraction is consistent with magnitude-limited survey expectations. Mean classification confidence is 0.951, median 0.9997.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{fig_class_pie.png}
+\caption{\textbf{Catalog~C composition.} Of the $8{,}474{,}531$ galaxies retained
+after image-quality QA, the equivariant TTA classifier (\S\ref{sec:tta}) assigns
+$N_{\rm CW}=1{,}592{,}107$, $N_{\rm CCW}=1{,}609{,}053$, and
+$N_{\rm NS}=5{,}273{,}371$ (non-spiral / face-on / morphologically indeterminate).
+The spiral sub-catalog $N_{\rm spiral} \!=\! N_{\rm CW}\!+\!N_{\rm CCW}\!=\!
+3{,}201{,}160$ is the analysis target for all chirality statistics below
+(Table~\ref{tab:cw_frac} \emph{et seq.}).\label{fig:class_pie}}
+\end{figure}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.95\textwidth]{fig_sky_map.png}
+\caption{\textbf{Sky distribution of the 8.47\,M-galaxy chirality catalog}
+(Mollweide projection, $\log_{10} N$ per HEALPix NSIDE${=}64$ pixel).
+The DESI Legacy Imaging footprint covers $f_{\rm sky}\!\approx\!0.49$ of the
+sky in the canonical mask; the strict-superset subsample mask
+($f_{\rm sky}\!=\!0.659$) covers a larger region for MASTER deconvolution.
+Spatial uniformity of the per-pixel CW fraction is verified across
+7~equatorial coordinate slabs (\S\ref{sec:cw_frac}); the canonical-mask
+$\ell\!=\!1$ residual is analyzed in
+Sec.~\ref{sec:dipole}--\ref{sec:monopole_mask_null}.\label{fig:sky_map}}
+\end{figure*}
 
 \subsection{Global CW Fraction}
 \label{sec:cw_frac}
@@ -236,6 +277,23 @@ Joint $\chi^2/{\rm dof}$ ($38$ bandpowers) & --- & --- & $161.2/38 = 4.24$ & Dom
 \end{tabular}
 \end{ruledtabular}
 \end{table*}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{fig_multipoles.png}
+\caption{\textbf{Pseudo-$C_\ell$ of the chirality field $A_p$ on the canonical
+mask}. Top: $\ell\!=\!1$ dipole power. Bottom: $\ell\!=\!2$ quadrupole. Black:
+data; orange band: $500$-MC monopole-only generative null (\S\ref{sec:monopole_mask_null}).
+The pre-MASTER $\ell\!=\!1$ power is reproduced at $99.3\%$ of the data value
+by the monopole-only null, demonstrating that survey-mask geometry
+couples a uniform CW/CCW classifier monopole into the $\ell\!=\!1$
+pseudo-spectrum. The post-MASTER residual is $+3.64\sigmaunit$
+(Table~\ref{tab:monopole_mask_null}), a non-headline systematics-attributed value;
+the headline null-dipole conclusion rests on the
+primary estimators (strict-superset subsample MASTER at
+$-0.122\sigmaunit$ and the full-catalog real-space dipole at
+$+0.43\sigmaunit$).\label{fig:multipoles}}
+\end{figure}
 
 \subsection{Monopole+Mask Leakage Generative Null}
 \label{sec:monopole_mask_null}

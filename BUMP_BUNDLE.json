@@ -1,20 +1,20 @@
 [
   {
-    "paperSlug": "paper-1b",
-    "version": "v1B.0.45",
+    "paperSlug": "paper-4",
+    "version": "v1.0.162",
     "datestamp": "2026-06-08",
-    "texCommit": "7a871205",
-    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1b_mcmc_companion.pdf",
-    "sitePdfPath": "/papers/paper1b_mcmc_companion_v1B.0.45.pdf",
-    "changelog": "TIER A2 #A5 closure — fire-13 P1B-META-E1 SNR-on-mean vs per-realization confusion resolved. Eq. eq:beta_namaster now labels \\hat\\beta_NaMaster as the 500-MC sample mean (not as 'pipeline-recovery SNR=20.32'); new footnote fn:snr_definition explicitly defines the two SNR conventions used: SNR^SE = beta_hat / SE(beta_hat) = beta_hat * sqrt(N) / sigma_beta_hat (estimator-calibration metric, gives 20.32 and 25.71 for the two injections) vs SNR^real = beta_hat / sigma_beta_hat (per-realization detectability, gives ~0.91 and ~1.15 — the appropriate quantity for comparison to single-sky measurements like Planck NPIPE beta=0.30+/-0.11 at 2.7sigma). The per-realization scatter sigma_beta_hat~0.26 degrees is consistent with the Delta_P=10 uK*arcmin ACT-noise level. PDF 11pp/724KB/md5 8d7b8ec5. 0 undef refs."
+    "texCommit": "eca3237b",
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p2_chirality/chirality_catalog_paper.pdf",
+    "sitePdfPath": "/papers/chirality_catalog_paper_v162.pdf",
+    "changelog": "Houston request — add high-impact figures back to P4 after the v1.0.151→v1.0.159 condensation removed them all. Inserted 4 figures: (1) §II.D TTA-equivariance methodology (fig:equivariance_demo, fig_equivariance_demo.png — visual demo of D4 rotations+reflections + CW/CCW label swap); (2) §III.A Catalog-C composition pie (fig:class_pie, fig_class_pie.png — N_CW/N_CCW/N_NS breakdown); (3) §III.A sky distribution (fig:sky_map, fig_sky_map.png — Mollweide log10 N per HEALPix NSIDE=64 pixel); (4) §III.C pseudo-Cℓ multipoles (fig:multipoles, fig_multipoles.png — headline ℓ=1 dipole + ℓ=2 quadrupole on canonical mask + 500-MC monopole-only null band, showing the 99.3% pre-MASTER reproduction). PDF 12pp (was 11)/7.19MB (was 466KB)/md5 a72af8b7. 0 undef refs."
   },
   {
-    "paperSlug": "paper-3",
-    "version": "v3.1.78",
+    "paperSlug": "paper-1b",
+    "version": "v1B.0.46",
     "datestamp": "2026-06-08",
-    "texCommit": "7a871205",
-    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p3_anomaly_engine/paper3_draft.pdf",
-    "sitePdfPath": "/papers/paper3_draft.pdf",
-    "changelog": "TIER A2 #A8 + #A9 bundled closure. #A8 (fire-13 P3-META-E1): SII.C 42-hour wall-clock now itemized — pure-inference subtotal 9.4h (DESI 5.5h + LAMOST 3.3h + SDSS 0.6h + CMB/photometric <10s each); the remaining ~32h is FITS I/O staging from HuggingFace to local-pod NVMe, per-survey native-retraining overhead, an intermediate batch-size retry on LAMOST, and a single ~11h pod-restart-with-resume after a network blip during the SDSS pass. Reconciles the 42h total against the meta-reviewer's reconstruction of ~9.4h from quoted throughputs. #A9 (fire-13 P3-META-E2): SIII.A opening rewritten to distinguish 22.5M-spectra-processed (total) from 6.5M-validated-TARGETTYPE-subset (the 5 primary classes). Headline 195,829 DESI anomaly count is the top-1% score-cut of the full 22.5M scan; per-class anomaly rates and SIMBAD-novelty fractions refer to the 6.5M validated-TARGETTYPE subset; the 16M unclassified spectra (filler/sky/calibration) are scored but their per-class breakdown is not meaningful. PDF 20pp/3.59MB/md5 1eb34f33. 0 undef refs."
+    "texCommit": "eca3237b",
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1b_mcmc_companion.pdf",
+    "sitePdfPath": "/papers/paper1b_mcmc_companion_v1B.0.46.pdf",
+    "changelog": "Houston request — add 2 high-impact figures to P1B. Was at 1 figure (corner plot). Added: (1) fig:dneff_viability (fig_dneff_viability_two_frozen.pdf — ΔNeff marginal posterior across the 4 dataset combinations of §IV.A, showing all are consistent with zero, illustrating the headline 'ECH-radiation-route ruled out at amplitude level' conclusion); (2) fig:namaster_beta_vs_nside (fig_namaster_beta_vs_nside.png — recovered β vs Nside for injected β∈{0, 0.27°, 0.342°} at ΔP=10μK·arcmin, showing bias ≤ 0.04° is the NaMaster systematic floor referenced in fn:snr_definition). PDF 11pp (no expansion!)/850KB (was 724KB)/md5 607428f6. 0 undef refs."
   }
 ]

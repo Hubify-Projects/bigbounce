@@ -43,7 +43,7 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1B.0.45}
+\newcommand{\paperVersion}{v1B.0.46}
 \newcommand{\paperTimestamp}{2026-06-08 PDT}
 % v1B.0.41 (2026-06-02 — R-upgraded-round5 P1B 4-Gemini-finding closure pass:
 %   1. GEM-m1 (pattern-017): stripped inline reviewer codes ("R5+R7 GEM-B1+GPT-B1",
@@ -957,6 +957,32 @@ over Planck+BAO+SN+H0+$S_8$. The $\Delta\Neff$ posterior is consistent with
 zero ($-0.020\pm 0.169$), confirming no additional relativistic species at
 recombination.}
 \label{fig:corner_full_tension}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=\columnwidth]{figures/fig_dneff_viability_two_frozen.pdf}
+\caption{$\Delta\Neff$ marginal posterior comparison across the four dataset
+combinations of Sec.~\ref{sec:fullcomp}. All combinations recover
+$\Delta\Neff$ consistent with zero at $<\!1\sigma$; the headline
+``full-tension'' stack (Planck+BAO+SN+H$_0$+$S_8$) gives $\Delta\Neff =
+-0.020\pm 0.169$. The standard-ECH route to dark energy via additional
+relativistic species at recombination is therefore not viable as an
+amplitude-level explanation of either tension.
+\label{fig:dneff_viability}}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=\columnwidth]{figures/fig_namaster_beta_vs_nside.png}
+\caption{NaMaster pipeline-recovery validation: recovered birefringence
+$\hat\beta$ vs.\ HEALPix $N_{\rm side}$, for injected $\beta\in\{0,\,0.27^\circ,
+\,0.342^\circ\}$ on the Planck Commander map at the apodized $f_{\rm sky}=0.32$
+mask ($\Delta_P=10\,\mu\text{K}\cdot\text{arcmin}$ ACT-level noise,
+$N\!=\!500$ MC realizations). Bias $\hat\beta - \beta_{\rm inj}$ is below
+$0.04^\circ$ across the natural resolution range; this is the NaMaster
+systematic floor adopted in
+Eq.~\ref{eq:beta_namaster}--\ref{fn:snr_definition}.\label{fig:namaster_beta_vs_nside}}
 \end{figure}
 
 
