@@ -2,12 +2,12 @@
   "5i2td3deu3hojr": {
     "purpose": "Publish-plan compute queue C1-C3 (+C6 diagnostic) DONE; C9 batch (P4 review-finding closures): 10k nulls + injection completeness + Wp sweep + pool verification + shot noise",
     "startedAt": 1781290000000,
-    "totalCostUsd": 0.35,
+    "totalCostUsd": 0.55,
     "artifactsBackedUp": true,
     "backupLocations": [
-      "local repo disk (committed)",
-      "GitHub origin/main (pushed 12b4fe8d/f77e5aa1)",
-      "reproducibility/pod_5i2td3deu3hojr_final_backup_2026-06-09.tgz + pod volume (retained on stop)"
+      "local repo (committed)",
+      "GitHub origin/main",
+      "pod volume (retained) + reproducibility/pod_5i2td3deu3hojr_{final,c9_final}_2026-06-09.tgz"
     ],
     "jobs": [
       {
@@ -94,11 +94,11 @@
         "name": "C9f P1B −0.27° sign-symmetry injection (fsky=0.32)",
         "paper": "paper-1b",
         "tmuxSession": "c9f",
-        "status": "running",
-        "etaNote": "launched 21:13 UTC, ~30min",
-        "outputPath": "/workspace/c9f_results/c9f_negative_beta.json"
+        "status": "done",
+        "etaNote": "DONE 29min — β=−0.27° recovers −0.238° (bias +0.032°): SIGN-SYMMETRIC; σ_β(0.32)=0.046° measured directly; → P1B v1B.0.51",
+        "outputPath": "reproducibility/p1_namaster_500mc/results/c9f_negative_beta.json"
       }
     ],
-    "stoppedAt": null
+    "stoppedAt": "2026-06-09T23:00:00Z"
   }
 }
