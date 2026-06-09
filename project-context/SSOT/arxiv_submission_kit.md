@@ -1,5 +1,31 @@
 # arXiv Submission Kit — Houston's 15-min web-form cheat sheet
 
+> **⚡ 2026-06-09 REFRESH (CURRENT — supersedes the April sections below for P4/P1A/P1B).**
+> Fresh tarballs built + standalone-verified (0 errors / 0 undef each) by
+> `tools/build_arxiv_tarball.sh` from today's post-provenance-closure versions.
+> Submission order: **P4 first** (P5 hard-depends on its arXiv ID), P1A+P1B same day.
+> ⛔ P4 submission still gated on TWO clean cross-vendor rounds post-retraction + Houston sign-off.
+>
+> ## Paper 4 — Chirality Catalog v1.0.166 (RETRACTION VERSION)
+> - **Tarball:** `pipelines/p2_chirality/paper4_arxiv_v1.0.166.tar.gz` (19 MB, 15 pp verified)
+> - **Abstract webform:** `pipelines/p2_chirality/abstract_for_webform.txt` (1,778 chars — includes the mandatory withdrawal note)
+> - **Title (paste):** `Survey-Scale Galaxy Chirality with Equivariant TTA: A Null Real-Space Chirality Dipole, a Quantifiable Monopole-Mask Leakage Channel, and Diagnostic Evidence for a Depth/Morphology-Correlated Canonical-Mask Residual on 8.47 Million DESI Legacy Galaxies (3.2 Million Spirals)`
+> - **Primary:** `astro-ph.GA` · cross-list `astro-ph.CO` · **Comment:** `15 pages, 12 figures. Catalog (3.2M spirals), model weights, and reproducibility scripts at https://github.com/Hubify-Projects/bigbounce`
+>
+> ## Paper 1A — ECH Channel-Level Closure v1A.0.50
+> - **Tarball:** `arxiv/paper1a_arxiv_v1A.0.50.tar.gz` (1.2 MB, 23 pp verified)
+> - **Abstract webform:** `arxiv/abstract_for_webform_paper1a.txt` (1,728 chars)
+> - **Title (paste):** `Channel-Level Closure of Four Minimal Einstein-Cartan-Holst Dark-Energy Routes and Perturbation Transparency for Scalar Matter`
+> - **Primary:** `gr-qc` · cross-list `astro-ph.CO`, `hep-th` · **Comment:** `23 pages. Companion technical-verification paper submitted same day.`
+>
+> ## Paper 1B — Technical Verification Companion v1B.0.49
+> - **Tarball:** `arxiv/paper1b_arxiv_v1B.0.49.tar.gz` (480 KB, 12 pp verified)
+> - **Abstract webform:** `arxiv/abstract_for_webform_paper1b.txt` (1,665 chars)
+> - **Title (paste):** `Technical Verification Companion to the ECH Spin-Torsion Program: LCDM+DeltaNeff MCMC Proxy, NaMaster Pipeline Recovery, and a Birefringence Consistency Check with a Spectator-ALP Model`
+> - **Primary:** `astro-ph.CO` · cross-list `gr-qc` · **Comment:** `12 pages, companion to Paper 1A. MCMC chains + code at https://github.com/Hubify-Projects/bigbounce`
+>
+> P2/P3/P5 tarballs rebuild after their current rounds close (P2 v1.7.44 + P3 v3.1.79 + P5 v0.1.50 in review now).
+
 **Generated:** fire #55 (2026-04-18) from `project-context/peer-reviews/autonomous-2026-04-18/06_arxiv_production_editor.md`
 
 For each paper: trimmed plain-text abstract lives **alongside the tarball** as `abstract_for_webform.txt`. This file aggregates titles (with `\\` stripped), categories, comment strings, and the post-submission checklist so Houston can copy-paste through all four web forms without leaving this document.
