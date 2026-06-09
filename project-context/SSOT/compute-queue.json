@@ -1,6 +1,6 @@
 {
   "5i2td3deu3hojr": {
-    "purpose": "Publish-plan compute queue C1-C3 (+C6 diagnostic): P1B NaMaster fsky sweep + P4 N_all binomial null + P4 Wp-invariance/fsky_eff + P4 real-footprint systematics-stratified null",
+    "purpose": "Publish-plan compute queue C1-C3 (+C6 diagnostic) DONE; C9 batch (P4 review-finding closures): 10k nulls + injection completeness + Wp sweep + pool verification + shot noise",
     "startedAt": 1781290000000,
     "totalCostUsd": 0.35,
     "artifactsBackedUp": true,
@@ -49,8 +49,48 @@
         "status": "done",
         "etaNote": "DONE 293s — depth-stratified null does NOT absorb excess: +7.13σ Wp=N_all / +9.06σ Wp=N_spiral (vs +7.28/+9.78 global); attribution complete",
         "outputPath": "pipelines/p2_chirality/outputs/canonical_provenance/c6_depth_stratified_null.json"
+      },
+      {
+        "name": "C9a P4 10k-permutation MASTER nulls (apod footprint + canonical mask, Table III bands)",
+        "paper": "paper-4",
+        "tmuxSession": "c9a",
+        "status": "running",
+        "etaNote": "launched 2026-06-09T20:43Z — 2x10,000 label-shuffle MC, 5 workers; ETA ~1.5-2.5h",
+        "outputPath": "/workspace/c9_results/c9a_10k_nulls.json"
+      },
+      {
+        "name": "C9b P4 injection-recovery completeness (A=0.005/0.0075/0.017/0.03, 3 axes x 1000 inj)",
+        "paper": "paper-4",
+        "tmuxSession": "c9b",
+        "status": "running",
+        "etaNote": "launched 2026-06-09T20:43Z — 500-MC null + 12,000 injections, 4 workers; ETA ~1.5-2.5h",
+        "outputPath": "/workspace/c9_results/c9b_injection_completeness.json"
+      },
+      {
+        "name": "C9c P4 Wp sweep (N_all / N_spiral / uniform-binary, 500-MC null each)",
+        "paper": "paper-4",
+        "tmuxSession": "c9c",
+        "status": "running",
+        "etaNote": "launched 2026-06-09T20:43Z — 3x500 MC, 2 workers; ETA ~30-60 min",
+        "outputPath": "/workspace/c9_results/c9c_wp_sweep.json"
+      },
+      {
+        "name": "C9d P4 shuffle-pool verification (spirals-only asserts + source audit + 50-MC smokes)",
+        "paper": "paper-4",
+        "tmuxSession": "c9d",
+        "status": "running",
+        "etaNote": "launched 2026-06-09T20:43Z — quick; ETA ~10-20 min",
+        "outputPath": "/workspace/c9_results/c9d_pool_verification.json"
+      },
+      {
+        "name": "C9e P4 A_p shot-noise N_ell (100 pure-noise realizations through MASTER)",
+        "paper": "paper-4",
+        "tmuxSession": "c9e",
+        "status": "running",
+        "etaNote": "launched 2026-06-09T20:43Z — quick; ETA ~10-20 min",
+        "outputPath": "/workspace/c9e_results/c9e_shot_noise.json"
       }
     ],
-    "stoppedAt": "2026-06-09T20:02:00Z"
+    "stoppedAt": null
   }
 }
