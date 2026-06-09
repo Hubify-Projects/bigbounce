@@ -39,58 +39,120 @@ REPO = Path("/Users/houstongolden/Desktop/CODE_2025/bigbounce")
 REVIEWS = REPO / "project-context" / "peer-reviews"
 PAPERS = ["P1A", "P1B", "P2", "P3", "P4", "P5"]
 
-# Match BOTH formats: "- Severity: ESSENTIAL" and "Severity: ESSENTIAL"
+# Match THREE formats:
+#  1. gpt-5-pro: "Severity: ESSENTIAL" or "- Severity: ESSENTIAL"
+#  2. Claude opus 4.7 (P1A fire 17 fallback): "### P1A-META-E1: <title>"
+#  3. Claude opus 4.7 (P1B/P4 fire 17 fallback): "### P1B-META-E1 — <title>"
+#     with section header "## ESSENTIAL findings (new)" or "## ESSENTIAL — New findings"
+# Each ESS finding starts at a new "### <PAPER>-META-E<N>" header IF a preceding
+# "## ESSENTIAL" section is active, OR at a "Severity: ESSENTIAL" line.
 SEV_RE = re.compile(r"^[\s-]*Severity:\s*ESSENTIAL\s*$", re.MULTILINE)
+ESS_SECTION_RE = re.compile(r"^##+\s*ESSENTIAL", re.MULTILINE | re.IGNORECASE)
+MAJ_SECTION_RE = re.compile(r"^##+\s*MAJOR", re.MULTILINE | re.IGNORECASE)
+META_HEADER_RE = re.compile(r"^###\s+([PR]\d?[A-Z]?-META-[EBMNm]\d+)\b", re.MULTILINE)
 
 # A finding "block" starts at a Severity: ESSENTIAL line and ends at
 # the next blank-line-then-non-blank or at the next Severity/Required-fix
 # boundary. We collect lines until the next Severity: line OR until the
 # blank-line-followed-by-empty-line transition.
+def _extract_problem_from_block(block: list[str]) -> str:
+    """Extract the 'problem' text from a finding block, supporting both formats."""
+    problem = []
+    in_prob = False
+    for ln in block:
+        ln_stripped = ln.strip()
+        ln_lower = ln_stripped.lower().lstrip("-").lstrip("*").strip()
+        # Strip markdown bold/italic asterisks for header detection
+        ln_label = ln_stripped.lstrip("*").lstrip("_").rstrip("*").rstrip("_").lower()
+        if (ln_label.startswith("problem") or ln_label.startswith("specific problem") or
+            ln_label.startswith("**problem") or ln_label.startswith("*problem")):
+            in_prob = True
+            after = ln.split(":", 1)[1].strip() if ":" in ln else ""
+            after = after.rstrip("*").rstrip("_").strip()
+            if after:
+                problem.append(after)
+            continue
+        if in_prob and (
+            ln_label.startswith("required fix") or
+            ln_label.startswith("fix") or
+            ln_label.startswith("section") or
+            ln_label.startswith("location") or
+            ln_label.startswith("quote") or
+            ln_label.startswith("why")
+        ):
+            break
+        if in_prob:
+            problem.append(ln_stripped)
+    return " ".join(problem).strip()
+
+
 def extract_ess_findings(text: str) -> list[dict]:
     """
-    Return a list of {id, section, problem, fix} dicts for every
-    Severity: ESSENTIAL block in the META file.
+    Return a list of {id, problem, raw_block} dicts for every ESSENTIAL
+    finding in the META file. Supports BOTH formats:
+    1. "Severity: ESSENTIAL" line (gpt-5-pro style, fires 12-16)
+    2. "### <ID>" headers under a "## ESSENTIAL findings" section
+       (Claude opus 4.7 fallback style, fire 17+).
     """
     findings = []
     lines = text.splitlines()
-    cur = None
-    # Identify ESS block boundaries by Severity: lines
+
+    # ---------- FORMAT 1: Severity-line based ----------
     sev_indices = [i for i, ln in enumerate(lines)
-                   if SEV_RE.match(ln) or re.match(r"^[\s-]*Severity:\s*(ESSENTIAL|MAJOR|MINOR|NIT|FATAL|BLOCKER)\s*$", ln)]
+                   if re.match(r"^[\s-]*Severity:\s*(ESSENTIAL|MAJOR|MINOR|NIT|FATAL|BLOCKER)\s*$", ln)]
     for k, idx in enumerate(sev_indices):
         sev_line = lines[idx].strip().rstrip(":").lower()
         if "essential" not in sev_line:
             continue
-        # Block end: next Severity line OR EOF
         end = sev_indices[k + 1] if k + 1 < len(sev_indices) else len(lines)
-        # ID candidate: line above the Severity (usually a header line with the ID)
         id_line = ""
         for j in range(max(0, idx - 3), idx):
             l = lines[j].strip().lstrip("-").strip()
-            if re.search(r"\b[PR]\d?[A-Z]?-?META-?[EBMNm]\d+\b", l):
-                id_line = re.search(r"\b[PR]\d?[A-Z]?-?META-?[EBMNm]\d+\b", l).group(0)
+            m = re.search(r"\b[PR]\d?[A-Z]?-?META-?[EBMNm]\d+\b", l)
+            if m:
+                id_line = m.group(0)
                 break
-        # Problem text: everything from "Problem" line down to "Required fix"
         block = lines[idx:end]
-        problem = []
-        in_prob = False
-        for ln in block:
-            ln_lower = ln.strip().lower().lstrip("-").strip()
-            if ln_lower.startswith("problem") or ln_lower.startswith("specific problem"):
-                in_prob = True
-                # collect text after the colon
-                after = ln.split(":", 1)[1].strip() if ":" in ln else ""
-                if after:
-                    problem.append(after)
-                continue
-            if in_prob and (ln_lower.startswith("required fix") or ln_lower.startswith("section") or ln_lower.startswith("location")):
-                break
-            if in_prob:
-                problem.append(ln.strip())
         findings.append({
             "id": id_line,
-            "problem": " ".join(problem).strip(),
+            "problem": _extract_problem_from_block(block),
             "raw_block": "\n".join(block[:25]),
+        })
+
+    if findings:
+        return findings
+
+    # ---------- FORMAT 2: section-header + ### blocks ----------
+    # Find the position of "## ESSENTIAL findings" section
+    ess_start = None
+    next_section = None
+    for i, ln in enumerate(lines):
+        if re.match(r"^##+\s*ESSENTIAL\b", ln, re.IGNORECASE):
+            ess_start = i
+        elif ess_start is not None and re.match(r"^##+\s+(MAJOR|MINOR|NIT|---)", ln, re.IGNORECASE):
+            next_section = i
+            break
+    if ess_start is None:
+        # Try header-based discovery without a section: every ### <ID> in the file
+        next_section = len(lines)
+        ess_start = 0
+    if next_section is None:
+        next_section = len(lines)
+    # Find every "### <ID>" header in the ESS section
+    header_positions = []
+    for i in range(ess_start, next_section):
+        ln = lines[i]
+        m = re.match(r"^###\s+\**\s*([PR]\d?[A-Z]?-META-[EBMNm]\d+)\b", ln)
+        if m:
+            header_positions.append((i, m.group(1)))
+    # Each finding spans from its header to the next header or to next_section
+    for k, (idx, fid) in enumerate(header_positions):
+        end = header_positions[k + 1][0] if k + 1 < len(header_positions) else next_section
+        block = lines[idx:end]
+        findings.append({
+            "id": fid,
+            "problem": _extract_problem_from_block(block),
+            "raw_block": "\n".join(block[:30]),
         })
     return findings
 
