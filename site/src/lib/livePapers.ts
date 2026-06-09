@@ -104,7 +104,7 @@ function staticFallback(): LivePaperState[] {
       openBlockers: 0, // static papers.ts doesn't track these counts
       openMajors: 0,
       openMinors: 0,
-      openCaveats: p.blockingItems.length,
+      openCaveats: p.path.filter((s) => s.state !== "done").length,
       houstonSignOff: null,
       sitePdfPath: null,
       focusAreas: [],

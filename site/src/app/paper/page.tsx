@@ -1,4 +1,5 @@
 import { papers } from"@/data/papers";
+import { PublicationPathCompact } from"@/components/PublicationPath";
 import { Badge } from"@/components/ui/badge";
 import { Button } from"@/components/ui/button";
 import { MathText } from"@/components/MathText";
@@ -108,7 +109,10 @@ export default function PaperPage() {
                 </div>
               </CardHeader>
               <CardContent>
-                <div className="mb-4 flex items-center gap-3">
+                <p className="mb-3 text-sm text-muted-foreground leading-relaxed">
+                  <MathText>{paper.tldr}</MathText>
+                </p>
+                <div className="mb-3 flex items-center gap-3">
                   <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-border">
                     <div
                       className={`h-full rounded-full ${readinessColor(paper.readiness)}`}
@@ -119,10 +123,11 @@ export default function PaperPage() {
                     {paper.pages} pp &middot; {paper.refs} refs
                   </span>
                 </div>
+                <PublicationPathCompact paper={paper} />
                 {paper.remainingWork.length > 0 && (
-                  <div>
+                  <div className="mt-3">
                     <div className="text-xs font-mono uppercase tracking-wider text-muted-foreground mb-2">
-                      {paper.remainingWork.length} pending {paper.remainingWork.length === 1 ? "task" : "tasks"}
+                      What&apos;s left
                     </div>
                     <ul className="space-y-1.5 text-sm text-muted-foreground">
                       {paper.remainingWork.map((task, i) => (

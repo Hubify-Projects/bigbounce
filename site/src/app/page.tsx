@@ -7,6 +7,7 @@ import { Button } from"@/components/ui/button";
 import { LiveStatus } from"@/components/Shell/LiveStatus";
 import { LivePapersDashboard } from"@/components/Cards/LivePapersDashboard";
 import { PaperProgressWidget } from"@/components/Cards/PaperProgressWidget";
+import { PublicationPathCompact } from"@/components/PublicationPath";
 import { MathText } from"@/components/MathText";
 import {
   Card,
@@ -293,7 +294,13 @@ export default function HomePage() {
         <div className="hero-panel">
           <div className="hero-panel-header">
             <span>observational ledger</span>
-            <Badge variant="accent">R43 Wave 14-RRR — P1A/P1B/P2/P3/P4 all 99%</Badge>
+            <Badge variant="accent">
+              {papers.length} papers ·{" "}
+              {Math.round(
+                papers.reduce((s, p) => s + p.readiness, 0) / papers.length,
+              )}
+              % avg · awaiting Houston sign-off
+            </Badge>
           </div>
           <div className="hero-panel-body">
             <div className="signal-row">
@@ -470,12 +477,15 @@ export default function HomePage() {
                   style={{
                     fontSize: "0.82rem",
                     color: "var(--text-muted)",
-                    margin: "8px 0 4px 0",
+                    margin: "8px 0 8px 0",
                     lineHeight: 1.5,
                   }}
                 >
                   {paper.tldr}
                 </p>
+                <div style={{ marginBottom: 6 }}>
+                  <PublicationPathCompact paper={paper} />
+                </div>
                 <div className="paper-ledger-meta">
                   <span>{paper.target}</span>
                   <span>{paper.pages} pages</span>
@@ -510,7 +520,7 @@ export default function HomePage() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-base font-mono">
               <Database size={16} />
-              R43 Wave 14-RRR — Paper 1 split into P1A + P1B; cobaya DESI DR2 w0wa chain in burn-in
+              {liveStatus.headline}
             </CardTitle>
             <CardDescription>
               {liveStatus.summary}

@@ -24,6 +24,7 @@ import {
 } from"@/components/ui/tabs";
 import { Alert, AlertTitle, AlertDescription } from"@/components/ui/alert";
 import { ExternalReviewPanel } from"@/components/ExternalReviewPanel";
+import { PublicationPath } from"@/components/PublicationPath";
 import { Download, ExternalLink, FileText } from"lucide-react";
 import Link from"next/link";
 import { notFound } from"next/navigation";
@@ -75,7 +76,7 @@ export default async function PaperDetailPage({
   if (!paper) notFound();
 
   // Single source of truth for paper-level numeric state: Convex via getLivePapers.
-  // The static papers.ts retains descriptive content (title, tldr, blockingItems,
+  // The static papers.ts retains descriptive content (title, tldr, path,
   // figures, artifacts) but readiness + version + lastUpdated come from Convex so
   // they can never drift relative to the homepage dashboard.
   const [liveStates, notables, externalReviews, figures] = await Promise.all([
@@ -321,22 +322,16 @@ export default async function PaperDetailPage({
         </CardContent>
       </Card>
 
-      {paper.blockingItems && paper.blockingItems.length > 0 && (
-        <Card className="paper-summary-card" style={{ marginTop: 16 }}>
-          <CardHeader>
-            <CardTitle className="text-sm font-mono" style={{ textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--text-muted)" }}>
-              What&apos;s gating 100%
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <ul style={{ margin: 0, paddingLeft: 20, fontSize: "0.88rem", lineHeight: 1.6 }}>
-              {paper.blockingItems.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </CardContent>
-        </Card>
-      )}
+      <Card className="paper-summary-card" style={{ marginTop: 16 }}>
+        <CardHeader>
+          <CardTitle className="text-sm font-mono" style={{ textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--text-muted)" }}>
+            Path to publication
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <PublicationPath stages={paper.path} />
+        </CardContent>
+      </Card>
 
       {focusAreas.length > 0 && (
         <Card className="paper-summary-card" style={{ marginTop: 16 }}>
@@ -528,33 +523,6 @@ export default async function PaperDetailPage({
           />
         );
       })()}
-
-      <details
-        style={{
-          marginTop: 8,
-          marginBottom: 16,
-          padding: "12px 14px",
-          border: "1px solid var(--border)",
-          borderRadius: 8,
-          fontSize: "0.85rem",
-        }}
-      >
-        <summary
-          style={{
-            cursor: "pointer",
-            fontFamily: "var(--font-mono-stack)",
-            color: "var(--text-muted)",
-            fontSize: "0.78rem",
-            letterSpacing: "0.06em",
-            textTransform: "uppercase",
-          }}
-        >
-          full closure log (versions, R-rounds, audit trail)
-        </summary>
-        <p style={{ marginTop: 12, color: "var(--text-muted)", lineHeight: 1.6, whiteSpace: "pre-wrap" }}>
-          {paper.status}
-        </p>
-      </details>
 
       <Separator className="my-8" />
 
