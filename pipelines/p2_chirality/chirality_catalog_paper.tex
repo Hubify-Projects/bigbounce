@@ -52,7 +52,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.164}
+\newcommand{\paperVersion}{v1.0.165}
 \newcommand{\paperTimestamp}{June 2026}
 \newcommand{\paperRoundNote}{Catalog release manuscript; condensed for journal submission.}
 
@@ -106,6 +106,29 @@ In this paper we present a new chirality catalog advancing beyond CE-ResNet in t
 \subsection{Galaxy Images}
 
 Our parent sample is the Smith42/galaxies dataset on HuggingFace~(\url{https://huggingface.co/datasets/Smith42/galaxies}), containing 8,474,688 galaxy images from the DESI Legacy Imaging Surveys DR8~\cite{Dey:2019}. Each image is a $224\!\times\!224$~pixel cutout in $grz$ bands at $0.262''$/pixel. The dataset includes unique \texttt{dr8\_id} identifiers; sky coordinates are obtained by cross-matching against the Galaxy Zoo DESI predictions catalog~\cite{Walmsley:2023}. The parent-sample selection function inherits from Galaxy Zoo DESI: photometric types REX/DEV/EXP/SER, $r\!\leq\!19.0$, half-light radius $\geq\!3''$. DR8 comprises three distinct imaging campaigns: BASS+MzLS ($\delta\!>\!+32^{\circ}$), DECaLS ($\delta\!<\!+32^{\circ}$), and a DES overlap region.
+
+\begin{figure*}[t]
+\centering
+\begin{minipage}{0.49\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{fig_gallery_cw.png}\\
+  {\small (a) Clockwise (CW)}
+\end{minipage}\hfill
+\begin{minipage}{0.49\textwidth}
+  \centering
+  \includegraphics[width=\textwidth]{fig_gallery_ccw.png}\\
+  {\small (b) Counter-clockwise (CCW)}
+\end{minipage}
+\caption{\textbf{Representative high-confidence galaxies from the
+classified spiral sub-catalog} ($p_{\rm eq}\!>\!0.9$). Left:
+clockwise (CW); right: counter-clockwise (CCW). All cutouts are
+$224\!\times\!224$\,pixels in $grz$ bands from DESI Legacy DR8.
+The pairs illustrate the visual diversity within each chirality
+class --- different morphological types, redshifts, projection
+angles, and signal-to-noise levels --- that the
+$\vit$-Small classifier resolves via the test-time equivariant
+averaging procedure of \S\ref{sec:tta}.\label{fig:gallery}}
+\end{figure*}
 
 \subsection{Training Labels}
 
@@ -226,6 +249,32 @@ $\ell\!=\!1$ residual is analyzed in
 Sec.~\ref{sec:dipole}--\ref{sec:monopole_mask_null}.\label{fig:sky_map}}
 \end{figure*}
 
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{fig_spiral_density.png}
+\caption{\textbf{Sky density of the $3{,}201{,}160$ classified spirals}
+(CW + CCW combined, NSIDE${=}64$ Mollweide). Per-pixel spiral counts
+scale with the DESI Legacy Imaging Surveys depth and exposure pattern;
+the canonical mask used for the headline $\ell\!=\!1$ analysis
+(\S\ref{sec:dipole}) requires $N_{\rm spiral}(p)\!\ge\!5$ per pixel.
+Spatial inhomogeneity at this scale is the leakage channel quantified
+in \S\ref{sec:monopole_mask_null}.\label{fig:spiral_density}}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{fig_confidence_dist.png}
+\caption{\textbf{Distribution of maximum-class confidence
+$\max(\pcw,\pccw,\pns)$ for all $8{,}474{,}531$ galaxies.} Strongly
+bimodal: $73.6\%$ at $\max p\!\ge\!0.9$ (high-confidence labels) +
+a long tail of indeterminate cases ($\max p\!<\!0.5$, dominated by
+NS/edge-on systems). The high-confidence (HC) cuts at
+$p_{\rm eq}\!>\!0.6$ ($N\!=\!949{,}584$) and $p_{\rm eq}\!>\!0.8$
+($N\!=\!624{,}660$) used in the systematics cross-checks
+(\S\ref{sec:app_morphology}) are
+indicated.\label{fig:confidence_dist}}
+\end{figure}
+
 \subsection{Global CW Fraction}
 \label{sec:cw_frac}
 
@@ -254,6 +303,24 @@ A_p = \frac{N_{\rm CW}^{(p)} - N_{\rm CCW}^{(p)}}{N_{\rm CW}^{(p)} + N_{\rm CCW}
 
 \paragraph{Simple dipole.}
 Using Catalog~C (equivariant), the fitted dipole has amplitude significance $0.43\sigmaunit$ ($p = 0.30$ from the isotropic-null bootstrap at $N_{\rm MC} = 10{,}000$), fully consistent with the null hypothesis. In contrast, Catalog~A (raw) shows a $2.31\sigmaunit$ real-space dipole and a $+6.48\sigmaunit$ pre-MASTER pseudo-$C_\ell$ in the lowest bandpower---both entirely artifacts of the model's residual CW bias spatially modulated by non-uniform survey depth, and both collapsed to null by two complementary reductions (equivariant TTA averaging in real space and MASTER mode-coupling deconvolution in spherical-harmonic space).
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.95\textwidth]{fig_raw_vs_eq.png}
+\caption{\textbf{Raw (Catalog~A) vs equivariant (Catalog~C) chirality
+asymmetry sky maps} (Mollweide projection, $A_p$ per pixel,
+NSIDE${=}64$). Left: raw single-pass classifier output; the
+spatially-structured $\sim\!0.79\%$ classifier CW excess, modulated
+by non-uniform survey depth, produces the $2.31\sigmaunit$ real-space
+dipole + $+6.48\sigmaunit$ pre-MASTER $\ell\!=\!1$ artifact. Right:
+2-fold flip-equivariant TTA; the bias is removed by construction and
+the real-space dipole collapses to $0.43\sigmaunit$. This visual
+diagnostic is the methodology cornerstone — the difference between
+Catalog~A and Catalog~C is the difference between a $2\sigma$
+``detection'' and a clean null, demonstrating that future chirality
+studies must adopt equivariant post-processing to avoid spurious
+dipoles.\label{fig:raw_vs_eq}}
+\end{figure*}
 
 \paragraph{Angular power spectrum.}
 We perform MASTER mode-coupling deconvolution using \textsc{NaMaster}~\cite{Alonso:2019} at $N_{\rm side}=64$. The MASTER-deconvolved single-mode $\ell\!=\!1$ value is $C_1^{\rm meas}=1.494\!\times\!10^{-6}$, compared with null mean $\langle C_1^{\rm null}\rangle=1.546\!\times\!10^{-6}$ ($\sigma_{\rm null}=4.290\!\times\!10^{-7}$) from 500 Monte Carlo realizations, yielding $(C_1^{\rm meas}-\langle C_1^{\rm null}\rangle)/\sigma_{\rm null}=-0.122\sigmaunit$ on the subsample mask ($f_{\rm sky}=0.659$). This is the primary isotropy-breaking dipole observable. NaMaster configuration details are in Appendix~A.

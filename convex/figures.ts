@@ -88,17 +88,34 @@ export const upsertByOrdinal = mutation({
 // Delete every figure for a paper. Used by the seed script to prune
 // stale rows (figures removed from the current .tex in a revision round)
 // before upserting the fresh set.
+//
+// 2026-06-09: accepts optional status filter so the seed script can
+// wipe only "in-paper" rows without touching candidates (which are
+// seeded by tools/seed_paper_figure_candidates.mjs from a manual
+// manifest, not from the .tex).
 export const removeByPaper = mutation({
-  args: { paperSlug: v.string() },
+  args: {
+    paperSlug: v.string(),
+    status: v.optional(
+      v.union(
+        v.literal("in-paper"),
+        v.literal("candidate"),
+        v.literal("retracted"),
+      ),
+    ),
+  },
   handler: async (ctx, args) => {
     const rows = await ctx.db
       .query("paper_figures")
       .withIndex("by_paper", (q) => q.eq("paperSlug", args.paperSlug))
       .collect();
-    for (const row of rows) {
+    const targets = args.status
+      ? rows.filter((r) => (r.status ?? "in-paper") === args.status)
+      : rows;
+    for (const row of targets) {
       await ctx.db.delete(row._id);
     }
-    return rows.length;
+    return targets.length;
   },
 });
 

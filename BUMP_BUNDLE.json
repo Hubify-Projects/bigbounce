@@ -1,11 +1,11 @@
 [
   {
     "paperSlug": "paper-4",
-    "version": "v1.0.164-2026-06-09",
+    "version": "v1.0.165-2026-06-09",
     "datestamp": "2026-06-09",
-    "texCommit": "4666741d",
+    "texCommit": "5171c249",
     "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p2_chirality/chirality_catalog_paper.pdf",
-    "sitePdfPath": "/papers/chirality_catalog_paper_v1.0.164.pdf",
-    "changelog": "TIER A3 #A3-8 closure (fire-17 P4-META-E2, Claude opus 4.7 fallback). 'Hidden +4.31σ monopole-preserving dipole' in App E (§sec:app_morphology HC-cut robustness paragraph) disambiguated. The +4.31σ estimator is now explicitly defined in a new footnote as the single-mode pseudo-Cℓ^(ℓ=1) on the canonical mask BEFORE mean-pixel subtraction AND BEFORE MASTER deconvolution (same per-pixel random-label permutation null as canonical +3.64σ, N_MC=500, seed 42). Paragraph re-written to acknowledge: (a) +4.31σ vs +0.43σ are different estimators not directly comparable; (b) ~10× gap sourced by monopole-mask leakage already quantified in §sec:monopole_mask_null; (c) substantive HC-cut finding is the cut-dependence (~7× collapse) WITHIN this estimator, NOT consistency with the real-space dipole; (d) headline nulls (+0.43σ real-space + −0.122σ MASTER subsample) unaffected. PDF 13pp/6.9MB/md5 c3fa7de6. 0 undef refs."
+    "sitePdfPath": "/papers/chirality_catalog_paper_v1.0.165.pdf",
+    "changelog": "Houston figures request: 4 high-impact figures added back to P4 after Houston's complaint that the v1.0.151→v1.0.159 condensation left it too lean. fig:spiral_density (§III.A) + fig:confidence_dist (§III.A) + fig:gallery 2-panel CW+CCW (§II.A) + fig:raw_vs_eq (§III.B, methodology cornerstone showing the 2.31σ→0.43σ collapse). P4 now has 8 in-paper figures. PDF 14pp/24MB/md5 2c097b4e. 0 undef refs."
   }
 ]

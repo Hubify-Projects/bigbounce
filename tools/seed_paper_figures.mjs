@@ -358,11 +358,14 @@ async function main() {
       `in ${paper.tex}`
     );
 
-    // Prune stale rows before re-seeding (figures removed from .tex disappear).
+    // Prune stale in-paper rows before re-seeding (figures removed from .tex
+    // disappear). status="in-paper" filter preserves candidate rows seeded
+    // by tools/seed_paper_figure_candidates.mjs.
     const removed = await client.mutation(api.figures.removeByPaper, {
       paperSlug: paper.slug,
+      status: "in-paper",
     });
-    if (removed > 0) console.log(`  ↳ pruned ${removed} stale rows`);
+    if (removed > 0) console.log(`  ↳ pruned ${removed} stale in-paper rows`);
 
     const version = versions[paper.slug] || "unknown";
     let kept = 0;
@@ -385,6 +388,7 @@ async function main() {
         desc,
         paperVersion: version,
         citationLabel: fig.label || undefined,
+        status: "in-paper",
       });
       kept++;
       totalUpserted++;
