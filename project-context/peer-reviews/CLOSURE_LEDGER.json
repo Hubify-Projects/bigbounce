@@ -243,7 +243,7 @@
   },
   {
     "closure_id": "P1B-META-E1-fire-21-likelihood-naming",
-    "closure_commit": "PENDING",
+    "closure_commit": "3c751d2a",
     "closure_fire_round": "auto-2026-06-09_1042pt",
     "paper": "P1B",
     "anchor_phrases": [
@@ -255,7 +255,7 @@
   },
   {
     "closure_id": "P1B-META-E2-fire-21-Mb-bucket",
-    "closure_commit": "PENDING",
+    "closure_commit": "3c751d2a",
     "closure_fire_round": "auto-2026-06-09_1042pt",
     "paper": "P1B",
     "anchor_phrases": [
@@ -267,7 +267,7 @@
   },
   {
     "closure_id": "P3-META-E13-fire-21-simbad-uncategorized",
-    "closure_commit": "PENDING",
+    "closure_commit": "3c751d2a",
     "closure_fire_round": "auto-2026-06-09_1042pt",
     "paper": "P3",
     "anchor_phrases": [
@@ -279,7 +279,7 @@
   },
   {
     "closure_id": "P3-M16-fire-21-caveat-xrefs",
-    "closure_commit": "PENDING",
+    "closure_commit": "3c751d2a",
     "closure_fire_round": "auto-2026-06-09_1042pt",
     "paper": "P3",
     "anchor_phrases": [
@@ -291,7 +291,7 @@
   },
   {
     "closure_id": "P3-META-E10-fire-21-fisher-baselines",
-    "closure_commit": "PENDING",
+    "closure_commit": "3c751d2a",
     "closure_fire_round": "auto-2026-06-09_1042pt",
     "paper": "P3",
     "anchor_phrases": [
@@ -303,7 +303,7 @@
   },
   {
     "closure_id": "P5-META-E3-fire-21-tractor-provenance",
-    "closure_commit": "PENDING",
+    "closure_commit": "3c751d2a",
     "closure_fire_round": "auto-2026-06-09_1042pt",
     "paper": "P5",
     "anchor_phrases": [
@@ -315,7 +315,7 @@
   },
   {
     "closure_id": "P5-META-E1-E2-fire-21-zshell-selection",
-    "closure_commit": "PENDING",
+    "closure_commit": "3c751d2a",
     "closure_fire_round": "auto-2026-06-09_1042pt",
     "paper": "P5",
     "anchor_phrases": [
