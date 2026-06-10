@@ -42,6 +42,6 @@
     "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf",
     "sitePdfPath": "/papers/p5_desi_chirality_v0.1.55.pdf",
     "changelog": "Unique-TARGETID parent rebuild closes the P5 gating item: full T-Web rerun on the 14.1M-row deduplicated parent, machinery validated to 1e-6, shifts <=0.70pp volume / <=0.23pp f_CW, conclusions unchanged (23-series artifact, queue #15 closed). 27pp/md5 d07c14e8/0-0-0. Gate: R26conf + pod items #16-19.",
-    "texCommit": "64712bb8"
+    "texCommit": "9c181447"
   }
 ]
