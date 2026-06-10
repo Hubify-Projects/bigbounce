@@ -30,7 +30,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 1 (fig:theory_map)",
         "title": "Bounce-mechanism observable-prediction map",
         "desc": "Bounce-mechanism observable-prediction map. Left column: candidate non-singular bounce mechanisms (LQC, ECH/torsion, matter bounce, quintom-B, Cuscuton, ekpyrotic). Right column: distinctive observable channels. ECH appears bordered with a dashed box marked channel-level closure under stated assumptions (this paper)---the 14-constraint catalog narrows the f…",
-        "source": "Paper 1A · v1A.0.55"
+        "source": "Paper 1A · v1A.0.56"
       },
       {
         "src": "/images/figure1_lqg_holst_derivation_enhanced.png",
@@ -38,7 +38,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 2 (fig:derivation)",
         "title": "Energy density hierarchy from the Planck scale to the observed dark energy scale, illustrating the phenomenol…",
         "desc": "Energy density hierarchy from the Planck scale to the observed dark energy scale, illustrating the phenomenological scaling ansatz _ vac [(α/M)]M_ Pl^4 (Sec. , Appendix ). This ansatz is dimensionally correct on-shell at the bounce but is not derived from the ECH action.",
-        "source": "Paper 1A · v1A.0.55"
+        "source": "Paper 1A · v1A.0.56"
       },
       {
         "src": "/images/figure5_rotation_expansion.png",
@@ -46,7 +46,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 3 (fig:rotation_expansion)",
         "title": "Cosmic rotation vs Hubble expansion H",
         "desc": "Cosmic rotation vs Hubble expansion H. Distance-impact of a residual cosmic rotation component on the late-time Hubble flow. The CMB isotropy bound (/H)_0 < 5× 10^-11 from Saadeh pins the rotation contribution to _ eff = c_^2 (Eq. ) at the 10^-22_Λ^ obs level --- negligible at all redshifts. The dark-energy mechanism in this paper is therefore the ^2 term s…",
-        "source": "Paper 1A · v1A.0.55"
+        "source": "Paper 1A · v1A.0.56"
       },
       {
         "src": "/images/figure7_observational_timeline.png",
@@ -54,7 +54,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 4 (fig:obs_timeline)",
         "title": "Observational decision timeline for the two surviving mechanism-independent ECH falsification paths",
         "desc": "Observational decision timeline for the two surviving mechanism-independent ECH falsification paths. Top: LiteBIRD CMB birefringence (σ(β)≈0.03^, launch early 2030s) testing the spectator-ALP route 4. Bottom: SPHEREx galaxy bispectrum ( 2028 first cosmological data release) testing the matter-bounce f_NL=-35/8 prediction at 3--5σ realistic significance (foo…",
-        "source": "Paper 1A · v1A.0.55"
+        "source": "Paper 1A · v1A.0.56"
       },
       {
         "src": "/images/figure6_parameter_naturalness.png",
@@ -62,7 +62,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 5 (fig:naturalness)",
         "title": "Naturalness landscape for the four minimal-ECH dark-energy routes (R1 NJL, R2 one-loop effective action, R3 I…",
         "desc": "Naturalness landscape for the four minimal-ECH dark-energy routes (R1 NJL, R2 one-loop effective action, R3 Immirzi running, R4 parity-CMB spectator-ALP). Each route is shown as a point in the (mass×coupling) plane required to source _Λ at the observed value, with the naturalness window (gray band) defined by the scale of the underlying physics (M_ Pl for R…",
-        "source": "Paper 1A · v1A.0.55"
+        "source": "Paper 1A · v1A.0.56"
       },
       {
         "src": "/images/figure8_detection_forecast.png",
@@ -70,7 +70,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 6 (fig:detection_forecast)",
         "title": "Detection forecast for the two surviving mechanism-independent tests",
         "desc": "Detection forecast for the two surviving mechanism-independent tests. Top: matter-bounce f_ NL=-35/8 in the SPHEREx multi-tracer f_ NL Fisher landscape (companion Paper II, 3--5σ projection). Bottom: spectator-ALP cosmic birefringence in the LiteBIRD σ(β) ≈0.03^ window (Paper Ib companion); the WMAP+Planck β=0.342^± 0.094^ and ACT DR6 β=0.215^± 0.074^ point…",
-        "source": "Paper 1A · v1A.0.55"
+        "source": "Paper 1A · v1A.0.56"
       },
       {
         "src": "/images/figure5_rotation_expansion.png",
@@ -78,7 +78,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 101",
         "title": "Rotation × Expansion",
         "desc": "Distance-impact of a residual cosmic rotation component on the Hubble expansion. Visualizes the (ω/H)_0 < 5×10⁻¹¹ Saadeh+2016 isotropy bound and the consequent suppression of any direct rotation signature in the late-time Hubble flow.",
-        "source": "Paper 1A · v1A.0.55-2026-06-11"
+        "source": "Paper 1A · v1A.0.56-2026-06-11"
       },
       {
         "src": "/images/figure6_parameter_naturalness.png",
@@ -86,7 +86,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 102",
         "title": "Naturalness window (4-route map)",
         "desc": "Position of each of the four minimal Einstein–Cartan–Holst dark-energy routes in the (coupling × mass) plane against the natural-parameter window. Visualizes why the closure rests on cosmological-constant-class tuning at m_θ ~ H_0 rather than amplitude mismatch alone.",
-        "source": "Paper 1A · v1A.0.55-2026-06-11"
+        "source": "Paper 1A · v1A.0.56-2026-06-11"
       },
       {
         "src": "/images/figure7_observational_timeline.png",
@@ -94,7 +94,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 103",
         "title": "Observational timeline",
         "desc": "Timeline of survey decisions (CMB-S4, LiteBIRD, SPHEREx, DESI DR2) that could falsify or confirm the surviving mechanism-independent ECH signatures (f_NL = -35/8 matter-bounce + spectator-ALP birefringence).",
-        "source": "Paper 1A · v1A.0.55-2026-06-11"
+        "source": "Paper 1A · v1A.0.56-2026-06-11"
       },
       {
         "src": "/images/figure8_detection_forecast.png",
@@ -102,7 +102,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 104",
         "title": "Surviving-test detection forecast",
         "desc": "Detection-significance forecast for the matter-bounce f_NL = -35/8 SPHEREx window + the spectator-ALP birefringence LiteBIRD window. Connects the no-go theorem of §sec:barriers to the surviving falsification paths in §sec:surviving.",
-        "source": "Paper 1A · v1A.0.55-2026-06-11"
+        "source": "Paper 1A · v1A.0.56-2026-06-11"
       }
     ]
   },
@@ -256,7 +256,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 1 (fig:umap_score)",
         "title": "2D UMAP embedding of the encoder latent space (PCA 12830, then UMAP) for a 500,000-spectrum stratified DESI D…",
         "desc": "2D UMAP embedding of the encoder latent space (PCA 12830, then UMAP) for a 500,000-spectrum stratified DESI DR1 sample, colored by per-spectrum anomaly score. High-score anomalies concentrate in distinct islands of the embedding (bright lobe, lower right) rather than scattering through the bulk population; the 83 gold-tier anomalies (cyan stars) lie on or n…",
-        "source": "Paper 3 · v3.1.86"
+        "source": "Paper 3 · v3.1.87"
       },
       {
         "src": "/images/fig_skymap_all_surveys.png",
@@ -264,7 +264,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 2 (fig:skymap)",
         "title": "Cross-transfer baseline map",
         "desc": "Cross-transfer baseline map. Mollweide projection of the initial cross-transfer anomaly baseline (319,443 detections shown; canonical Path-C unique count is 378,280 after per-survey native retrains and 7-way deduplication --- see Table Path-C row and ). ACT DR6 is quarantined and excluded. Color-coded by survey (see legend). The DESI DR1 footprint (14,000 d…",
-        "source": "Paper 3 · v3.1.86"
+        "source": "Paper 3 · v3.1.87"
       },
       {
         "src": "/images/fig_score_distributions.png",
@@ -272,7 +272,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 3 (fig:score_dist)",
         "title": "Anomaly score distributions for the three main spectroscopic surveys",
         "desc": "Anomaly score distributions for the three main spectroscopic surveys. The score S is the per-spectrum reconstruction MSE rescaled to validation z-units: S = (MSE - _ val)/_ val, where _ val and _ val are the mean and standard deviation of MSE on the held-out 20\\% validation split of the per-survey training pool (; cross-transfer for SDSS, native for DESI/LA…",
-        "source": "Paper 3 · v3.1.86"
+        "source": "Paper 3 · v3.1.87"
       },
       {
         "src": "/images/fig_sdss_umap.png",
@@ -280,7 +280,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 4 (fig:sdss_umap)",
         "title": "Cross-transfer SDSS baseline",
         "desc": "Cross-transfer SDSS baseline. UMAP embedding of the 77,905 SDSS DR18 anomalies from the initial DESI-trained cross-transfer scan, colored by HDBSCAN cluster (left) and by inferred physical category (right). The dominant cluster (green, 84\\% of objects) contains ultra-cool dwarfs (M7--T2) that are completely out-of-distribution for the DESI-trained --- the d…",
-        "source": "Paper 3 · v3.1.86"
+        "source": "Paper 3 · v3.1.87"
       },
       {
         "src": "/images/fig_neowise_top_anomaly.png",
@@ -288,7 +288,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 5 (fig:neowise_top)",
         "title": "NEOWISE top infrared anomaly at (α, ) = (180",
         "desc": "NEOWISE top infrared anomaly at (α, ) = (180.59^, 0.56^), score = 11.5. DESI Legacy Survey DR9 grz composite, 256 × 256 pixels (108'' × 108''). Extreme W1-W2 infrared color excess; no prior SIMBAD entry within 5''. The optical counterpart is a bright, saturated source with diffraction spikes indicative of a luminous red stellar or quasi-stellar object. Phys…",
-        "source": "Paper 3 · v3.1.86"
+        "source": "Paper 3 · v3.1.87"
       },
       {
         "src": "/images/fig_novelty_fractions.png",
@@ -296,7 +296,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 6 (fig:novelty)",
         "title": "SIMBAD-unmatched fractions for the six surveys with coordinate-based cross-matching, ranked from lowest (Gaia…",
         "desc": "SIMBAD-unmatched fractions for the six surveys with coordinate-based cross-matching, ranked from lowest (Gaia DR3, well-characterized variable stars) to highest (DESI DR1, 99\\% of top-10K objects absent from SIMBAD). The dashed line marks the aggregate 58.8\\% SIMBAD-unmatched fraction. The SIMBAD-unmatched fractions plotted here are a database-coverage meas…",
-        "source": "Paper 3 · v3.1.86"
+        "source": "Paper 3 · v3.1.87"
       },
       {
         "src": "/images/anomaly_sky_distribution.png",
@@ -304,7 +304,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 7 (fig:anomaly_sky)",
         "title": "Spatial distribution of the 195,829 DESI DR1 anomalies",
         "desc": "Spatial distribution of the 195,829 DESI DR1 anomalies. Top left: equatorial sky map color-coded by anomaly score S. Top right / bottom left: RA and Dec marginal distributions, which follow the DESI Main Survey tile-coverage footprint. Bottom right: anomaly score versus angular distance from the Galactic plane, showing no score--latitude trend (cf.\\ the com…",
-        "source": "Paper 3 · v3.1.86"
+        "source": "Paper 3 · v3.1.87"
       },
       {
         "src": "/images/fig_cross_survey_matches.png",
@@ -312,7 +312,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 8 (fig:crossmatch)",
         "title": "Spectral pairs for the three DESI × SDSS cross-survey matches",
         "desc": "Spectral pairs for the three DESI × SDSS cross-survey matches. Left column: DESI DR1 spectrum; right column: same object in SDSS DR18. Black: observed flux (normalized); red dashed: reconstruction. (a, b) Known QSO at z ≈ 1.55: both surveys produce consistent, low anomaly scores, validating the cross-matching approach. (c, d) TIC 374313355 at two epochs: th…",
-        "source": "Paper 3 · v3.1.86"
+        "source": "Paper 3 · v3.1.87"
       },
       {
         "src": "/images/fig_fnl_improvement.png",
@@ -320,7 +320,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 9 (fig:fnl_improvement)",
         "title": "Per-redshift-bin decomposition of the fixed-α = 0",
         "desc": "Per-redshift-bin decomposition of the fixed-α = 0.15 reference Fisher forecast (Appendix ). Left: σ(f_NL) per redshift bin for the standard DESI QSO single-tracer baseline versus the multi-tracer configuration including AI-selected anomaly tracers; the inset shows the combined result (^ std = 8.98 8.43, a 6.1\\% central-value change). Right: AI-selected anom…",
-        "source": "Paper 3 · v3.1.86"
+        "source": "Paper 3 · v3.1.87"
       },
       {
         "src": "/images/fig_injection_recovery.png",
@@ -328,7 +328,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 10 (fig:injection_recovery)",
         "title": "Injection-recovery gate results across the six retained surveys, with three additional non-spectral retrains…",
         "desc": "Injection-recovery gate results across the six retained surveys, with three additional non-spectral retrains (Planck CMB native convolutional autoencoder, NEOWISE ecliptic-pole mask) brought into the same axis for comparison. Solid curves show recovery fraction versus injection amplitude (multiples of local noise σ). The horizontal dashed line marks the 50\\…",
-        "source": "Paper 3 · v3.1.86"
+        "source": "Paper 3 · v3.1.87"
       },
       {
         "src": "/images/B11_sigma_fnl_vs_ndensity.png",
@@ -336,7 +336,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 11 (fig:shotnoise_sensitivity)",
         "title": "Multi-tracer Fisher vs.\\ tracer number density n for the canonical 5-tracer configuration of . The dashed gra…",
         "desc": "Multi-tracer Fisher vs.\\ tracer number density n for the canonical 5-tracer configuration of . The dashed gray line marks the dense-tracer limit ( = 11.71); the dotted dark-red line marks the single-tracer baseline ( = 16.85). Vertical orange and goldenrod lines mark the gold ( n = 8.5× 10^-6) and silver ( n = 4.5× 10^-5) anomaly sub-samples. The Heinrich-\\…",
-        "source": "Paper 3 · v3.1.86"
+        "source": "Paper 3 · v3.1.87"
       },
       {
         "src": "/images/fig_gallery_top10.png",
@@ -344,7 +344,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 12 (fig:gallery_top10)",
         "title": "Representative DESI DR1 anomalies across all ten taxonomy families",
         "desc": "Representative DESI DR1 anomalies across all ten taxonomy families. One highest-scored member per family; 2-row × 5-column layout. Border color indicates taxonomy class. Images are DESI Legacy Survey DR9 grz composites. Panel sublabels give the object RA; the high-z QSO panel additionally gives the redshift and the per-arm Z-arm sub-score r_Z (). The taxono…",
-        "source": "Paper 3 · v3.1.86"
+        "source": "Paper 3 · v3.1.87"
       },
       {
         "src": "/images/anomaly_sky_distribution.png",
@@ -352,7 +352,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 101",
         "title": "Anomaly sky distribution",
         "desc": "Mollweide all-sky distribution of the 14,089 high-confidence DESI + cross-survey anomalies. Color-coded by anomaly score + class. Useful as a hero map alongside the §III architecture figure.",
-        "source": "Paper 3 · v3.1.86"
+        "source": "Paper 3 · v3.1.87"
       },
       {
         "src": "/images/photo_z_scatter.png",
@@ -360,7 +360,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 102",
         "title": "Photo-z scatter",
         "desc": "Photo-z vs spectro-z scatter for the P3 anomaly catalog (DESI + cross-matched DR8 + UNIONS). Anchors the photo-z residual quality cut in §III.B.",
-        "source": "Paper 3 · v3.1.86"
+        "source": "Paper 3 · v3.1.87"
       },
       {
         "src": "/images/photo_z_residuals.png",
@@ -368,7 +368,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 103",
         "title": "Photo-z residuals",
         "desc": "Residual distribution (Δz / (1+z)) for the photo-z calibration sample. Used to justify the catastrophic-outlier cut at |Δz/(1+z)| > 0.15.",
-        "source": "Paper 3 · v3.1.86"
+        "source": "Paper 3 · v3.1.87"
       },
       {
         "src": "/images/fig_fnl_improvement.png",
@@ -376,7 +376,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 104",
         "title": "f_NL improvement from anomaly removal",
         "desc": "σ(f_NL) improvement as a function of P3 anomaly-removal threshold. Quantifies the load-bearing claim that the catalog reduces f_NL contamination for SPHEREx-class surveys.",
-        "source": "Paper 3 · v3.1.86"
+        "source": "Paper 3 · v3.1.87"
       },
       {
         "src": "/images/fig_nanograv_fit.png",
@@ -384,7 +384,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 105",
         "title": "NanoGrav γ_GWB fit",
         "desc": "NanoGrav 15yr γ_GWB MAP fit after applying the P3 anomaly catalog to the host-galaxy environment. Anchors the §V γ = 3.0 cross-reference.",
-        "source": "Paper 3 · v3.1.86"
+        "source": "Paper 3 · v3.1.87"
       },
       {
         "src": "/images/fig_pathc_neowise_ecliptic.png",
@@ -392,7 +392,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 106",
         "title": "Path-C NEOWISE ecliptic",
         "desc": "Ecliptic-coordinate distribution of NEOWISE Path-C native-retrieval anomalies. Shows the residual ecliptic concentration after de-duplication — used to justify the §III.E ecliptic-systematic discussion.",
-        "source": "Paper 3 · v3.1.86"
+        "source": "Paper 3 · v3.1.87"
       },
       {
         "src": "/images/anomaly_rate_map.png",
@@ -400,7 +400,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 107",
         "title": "Anomaly rate sky map",
         "desc": "Per-pixel anomaly rate (anomalies / spectra) across all 6 surveys. Visualizes the survey-depth × anomaly-rate correlation discussed in §III.D.",
-        "source": "Paper 3 · v3.1.86"
+        "source": "Paper 3 · v3.1.87"
       },
       {
         "src": "/images/survey_depth_map.png",
@@ -408,7 +408,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 108",
         "title": "Survey depth map",
         "desc": "Per-pixel maximum-z reached by each survey in the P3 catalog. Companion to the anomaly-rate map for diagnosing systematic vs astrophysical anomalies.",
-        "source": "Paper 3 · v3.1.86"
+        "source": "Paper 3 · v3.1.87"
       },
       {
         "src": "/images/depth_vs_rate_scatter.png",
@@ -416,7 +416,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 109",
         "title": "Depth × rate scatter",
         "desc": "Scatter of per-pixel anomaly rate against survey depth. Quantitative anchor for the depth-coupling systematic discussion in §III.D.",
-        "source": "Paper 3 · v3.1.86"
+        "source": "Paper 3 · v3.1.87"
       },
       {
         "src": "/images/umap_by_anomaly_score.png",
@@ -424,7 +424,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 110",
         "title": "UMAP × anomaly score",
         "desc": "2D UMAP embedding of the encoder latent space, colored by per-spectrum anomaly score. Hero figure for the §II.A representation-learning approach.",
-        "source": "Paper 3 · v3.1.86"
+        "source": "Paper 3 · v3.1.87"
       },
       {
         "src": "/images/umap_by_redshift.png",
@@ -432,7 +432,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 111",
         "title": "UMAP × redshift",
         "desc": "Same UMAP embedding colored by spectroscopic redshift. Visualizes how the encoder organizes spectra by z without explicit redshift supervision.",
-        "source": "Paper 3 · v3.1.86"
+        "source": "Paper 3 · v3.1.87"
       },
       {
         "src": "/images/umap_by_spectype.png",
@@ -440,7 +440,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 112",
         "title": "UMAP × spectral type",
         "desc": "Same UMAP embedding colored by DESI primary spectroscopic class (GALAXY/STAR/QSO). Shows native class separation in the unsupervised latent.",
-        "source": "Paper 3 · v3.1.86"
+        "source": "Paper 3 · v3.1.87"
       }
     ]
   },

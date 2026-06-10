@@ -45,8 +45,22 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.55}
+\newcommand{\paperVersion}{v1A.0.56}
 \newcommand{\paperTimestamp}{June 10, 2026 PDT}
+% v1A.0.55->56 (2026-06-10 — R27conf closure wave, in-session M1-M4 + m1/m2 + META-M3:
+%   Cartan footnote: substitution line displayed (1/4 T·T = kappa^2/4 S·S on-shell,
+%   Hehl-Datta net +kappa/2 S·S -> -3kappa/16 (J5)^2, cross-ref Eq.(13)) (M1);
+%   signature pin mostly-plus + eps^0123=+1 (M2); Freidel sentence grounded with
+%   gamma-dependence forward pointer to Eq.(4) (M3); Barrier-14 -> Sec.X.B/X.D
+%   subsection pointers via new labels (M4); Table I "Mechanism-independence?" row
+%   promoted from footnote-c (m1); half-weight/full-weight dictionary parenthetical (m2);
+%   T^2 shorthand "not varied independently, no double counting" clause (META-M3).
+%   Fig.1 (theory-map) caption: burned-in PTA 3.20+-0.42 disclosed as superseded
+%   pre-real-KDE value, 2.567+-0.382 pointer (Gemini M5). META-E1 (fa in Eq.17)
+%   FALSIFIED-as-stale: App C convention block already declares alpha/M = C
+%   alpha_em/(2 pi f_a) + Dtheta = Dphi/f_a. Queue: Fig.1/Fig.3 annotation regen
+%   (m3, Gemini M5); Route-2 photon-bridge chain (META-E2, merges R26conf
+%   META-M6 queue); theta-symbol dual-use notation note.)
 % v1A.0.52 (R24conf closeout): 19 textual closures from R24conf truth-audit —
 %   ACT-vs-WMAP+Planck 1.4->1.06 sigma recompute; gamma^2/(gamma^2+1)
 %   contradiction fix (META-E1); Eq.(7)->10^-2 explicit arithmetic (META-M2);
@@ -500,6 +514,7 @@ Can bounce derive dark energy? & 14 constraints map minimal-ECH route space & Ph
 Is there a nonsingular bounce? & LQC: $\rho_c \simeq 0.27$--$0.41\,\rhoPl$ & \textbf{Yes} (LQC holonomy). \\
 ECH visible in scalar/tensor pert.? & Perturbation-transparency result & Decouples; tests $\to$ ALP/GW. \\
 Testable prediction? & $\fnl = -35/8$ (Paper~II forecast$^b$) & \textbf{Yes}, class-level$^c$. \\
+Mechanism-independence? & Class-level: scalar-only $w=0$ matter-bounce$^c$ & Not a distinctive ECH prediction. \\
 $H_0$/$\sigma_8$ tension resolution? & $H_0=67.68\pm 1.06$, $\Delta\Neff\approx 0$ & Recovers $\Lambda$CDM. \\
 \end{tabular}
 \end{ruledtabular}
@@ -524,7 +539,11 @@ MCMC details in companion work in preparation~\cite{Golden2026P1b}.}
   ECH appears bordered with a dashed box marked \emph{channel-level
   closure under stated assumptions (this paper)}---the 14-constraint catalog
   narrows the four enumerated minimal-ECH dark-energy channels to zero
-  phenomenologically free pathways within those channels.}
+  phenomenologically free pathways within those channels. The burned-in PTA
+  annotation $\gamma = 3.20 \pm 0.42$ is the superseded pre-real-KDE draft
+  value; the current real-KDE reanalysis gives $\gamma = 2.567 \pm 0.382$
+  (Sec.~\ref{sec:discrimination}), and the figure annotation is pending
+  regeneration.}
 \end{figure*}
 
 
@@ -612,12 +631,17 @@ S_{\rm ECH} &= \frac{1}{16\pi G} \int d^4x\, e \left[e^\mu_a\,e^\nu_b\,R^{ab}_{\
 where $e = \det(e^a_\mu)$ is the tetrad determinant, $R^{ab}_{\;\;\;\mu\nu}$ is
 the curvature of the Lorentz connection, $\gamma$ is the Barbero-Immirzi
 parameter, and $T^{abc}$ is the torsion tensor. The Holst term contributes
-non-trivially when fermions are present. This construction builds on
-Freidel, Minic \& Takeuchi~\cite{Freidel2005}, who established that the
+non-trivially when fermions are present, as established by
+Freidel, Minic \& Takeuchi~\cite{Freidel2005}, who showed that the
 Barbero-Immirzi parameter becomes physically observable through its coupling
-to fermionic matter. The $T^{abc}T_{abc}$ term in Eq.~\eqref{eq:ECH} is a
+to fermionic matter; the explicit $\gamma$-dependence it induces appears
+in the four-fermion contact term, Eq.~\eqref{eq:4fermi}. The $T^{abc}T_{abc}$ term in Eq.~\eqref{eq:ECH} is a
 shorthand for the four-fermion contact interaction obtained after integrating out
-the non-propagating torsion; it is not an independently specified kinetic term.
+the non-propagating torsion; it is not an independently specified kinetic term
+and is \emph{not} varied independently --- the connection variation is performed
+on the Einstein--Cartan--Holst$+$Dirac action alone, with
+Eq.~\eqref{eq:torsion} the resulting Cartan equation, so no double counting
+arises.
 
 The Barbero-Immirzi parameter is fixed by LQG black hole entropy in
 the SU(2) full-counting scheme used here:
@@ -675,7 +699,15 @@ $T^{abc} = \kappa\,S^{abc}$, Eq.~\eqref{eq:torsion}. Consistency proof by
 back-substitution: $S_{abc}S^{abc} = \tfrac{1}{16}\,
 \epsilon_{abcd}\epsilon^{abce} J^{5d}J^5_e = -\tfrac{3}{8}\,J^5_\mu
 J^{5\mu}$ (Lorentzian $\epsilon_{abcd}\epsilon^{abce} = -3!\,
-\delta_d^{\,e}$), and integrating out torsion yields
+\delta_d^{\,e}$, with mostly-plus signature
+$g=\mathrm{diag}(-,+,+,+)$ and $\epsilon^{0123}=+1$); explicitly,
+the on-shell substitution $T^{abc}=\kappa S^{abc}$ gives
+$\tfrac{1}{4}T^{abc}T_{abc} = \tfrac{\kappa^2}{4}S^{abc}S_{abc}$,
+and the standard Hehl--Datta bookkeeping (the gravitational contact
+piece plus the fermionic spin--torsion coupling; the same sign
+manipulation quoted at Eq.~\eqref{eq:NJL_torsion}) nets to
+$\mathcal{L}_{\rm int} = +\tfrac{\kappa}{2}\,S_{abc}S^{abc}$, so
+integrating out torsion yields
 $\mathcal{L}_{\rm int} = -\tfrac{3\kappa}{16}\,J^5_\mu J^{5\mu}$ ---
 precisely the $\gamma\!\to\!\infty$ (pure Einstein--Cartan) limit of
 Eq.~\eqref{eq:4fermi} and the Hehl--Datta coefficient of
@@ -684,7 +716,11 @@ The $T^{abc} = (\kappa/2)\,\bar\psi\gamma^{[a}\gamma^b\gamma^{c]}\psi$
 form quoted in the original Hehl--Datta-era literature
 (Sec.~\ref{sec:r1_njl}) uses the half-weight torsion definition
 $T^\lambda{}_{\mu\nu} = \Gamma^\lambda{}_{[\mu\nu]}$ and maps to
-Eq.~\eqref{eq:torsion} exactly; the physical contact term
+Eq.~\eqref{eq:torsion} exactly (the full-weight definition
+$T^\lambda{}_{\mu\nu} = 2\Gamma^\lambda{}_{[\mu\nu]}$ used here
+absorbs the factor of $2$, so the half-weight $(\kappa/2)$
+prefactor and the full-weight $\kappa$ prefactor describe the same
+torsion field); the physical contact term
 $-\tfrac{3\kappa}{16}(J^5)^2$ is identical in both conventions.}
 
 \textit{Step~2: Four-Fermion Contact Interaction.}---Substituting Eq.~\eqref{eq:torsion}
@@ -1721,7 +1757,9 @@ framework.
 
 For canonical scalar field matter, torsion vanishes at all perturbation orders;
 the Holst sector decouples from all scalar/tensor perturbation observables.
-This is elaborated in Sec.~\ref{sec:transparency}.
+This is elaborated in Sec.~\ref{sec:transparency}: the scalar-sector proof is
+in Sec.~\ref{sec:transp_proof} and the explicit Holst-term verification at all
+perturbation orders is in Sec.~\ref{sec:transp_holst}.
 
 
 %% ============================================================
@@ -1737,7 +1775,7 @@ Barbero-Immirzi parameter $\gamma$ is invisible in all perturbation observables.
 This generalizes Hehl~\etal~(1976)~\cite{Hehl1976} to the Holst sector and to
 all perturbation orders.
 
-\subsection{Proof (Scalar Sector)}
+\subsection{Proof (Scalar Sector)}\label{sec:transp_proof}
 
 \begin{enumerate}
 \item \textbf{Zero spin density.} A canonical scalar field has zero spin density.
@@ -1791,7 +1829,7 @@ v_R(k,\eta) = v_L(k,\eta) \quad\Rightarrow\quad \Delta v = 0 \quad\text{(identic
 No GW birefringence, no tensor chirality, no $TB/EB$ CMB parity violation from
 the ECH mechanism.
 
-\subsection{Explicit Verification: The Holst Term in Perturbation Theory}
+\subsection{Explicit Verification: The Holst Term in Perturbation Theory}\label{sec:transp_holst}
 
 Expanding to second order, the Holst dual evaluates on the Levi-Civita
 connection ($T=0$) as:

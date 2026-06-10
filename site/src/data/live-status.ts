@@ -52,7 +52,7 @@ export const liveStatus: LiveStatus = {
   headline:
     "R26conf: P1B CLEAN — three of six at sign-off (P4, P2, P1B); zero arithmetic errors across the wave; P1A/P3/P5 carry derivation/recompute residue only.",
   summary:
-    "R26conf wave bumped four papers — P1A v1A.0.55 · P1B v1B.0.54 · P3 v3.1.86 · P5 v0.1.58 (P2 v1.7.48 · P4 v1.0.171 unchanged, still SIGN-OFF-READY). P1B's lone substantive accusation (CPL crossing) was falsified by shown arithmetic (z*=+0.39 inside range) and every committed number chain-reproduced → SIGN-OFF-READY at 95. P1A discloses a Cartan factor-2 normalization inconsistency (analytic re-derivation queued); P3 closed 12 textual items (cluster accounting exact, NANOGrav Eq.E1 falsified); P5 closed 9 including code-verified tidal-tensor sign doc.",
+    "R26conf wave bumped four papers — P1A v1A.0.56 · P1B v1B.0.54 · P3 v3.1.87 · P5 v0.1.58 (P2 v1.7.48 · P4 v1.0.171 unchanged, still SIGN-OFF-READY). P1B's lone substantive accusation (CPL crossing) was falsified by shown arithmetic (z*=+0.39 inside range) and every committed number chain-reproduced → SIGN-OFF-READY at 95. P1A discloses a Cartan factor-2 normalization inconsistency (analytic re-derivation queued); P3 closed 12 textual items (cluster accounting exact, NANOGrav Eq.E1 falsified); P5 closed 9 including code-verified tidal-tensor sign doc.",
   currentlyRunning: [
     "Hourly native-PDF cross-vendor review autoloop on all 6 papers (Claude · GPT · Gemini · Grok · Perplexity + meta-reviewer)",
     "Persistence tracker fingerprinting findings across fires; load-bearing items escalate to Houston decision package",
@@ -89,9 +89,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-1a",
       number: "1A",
       shortTitle: "ECH dark-energy closure + perturbation transparency",
-      version: "v1A.0.55",
+      version: "v1A.0.56",
       readiness: 93,
-      pendingWork: "v1A.0.55 — R26conf NOT CLEAN: Cartan factor-2 normalization inconsistency disclosed (single-convention re-derivation queued, analytic) + dimensionally inconsistent thermal clause removed; App C verified step-by-step clean → re-derivation → R27conf → sign-off → arXiv",
+      pendingWork: "v1A.0.56 — R26conf NOT CLEAN: Cartan factor-2 normalization inconsistency disclosed (single-convention re-derivation queued, analytic) + dimensionally inconsistent thermal clause removed; App C verified step-by-step clean → re-derivation → R27conf → sign-off → arXiv",
     },
     {
       slug: "paper-1b",
@@ -113,9 +113,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-3",
       number: "3",
       shortTitle: "378K-anomaly multi-survey catalog",
-      version: "v3.1.86",
+      version: "v3.1.87",
       readiness: 92,
-      pendingWork: "v3.1.86 — R26conf: zero arithmetic errors, 12 textual closures (cluster accounting exact from dedup artifact; NANOGrav Eq.E1 falsified by rederivation) → 1 ESS (pod) + 2 MAJOR recomputes → R27conf clean → HF flip → arXiv",
+      pendingWork: "v3.1.87 — R26conf: zero arithmetic errors, 12 textual closures (cluster accounting exact from dedup artifact; NANOGrav Eq.E1 falsified by rederivation) → 1 ESS (pod) + 2 MAJOR recomputes → R27conf clean → HF flip → arXiv",
     },
     {
       slug: "paper-4",
