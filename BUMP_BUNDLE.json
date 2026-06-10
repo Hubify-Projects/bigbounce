@@ -1,29 +1,38 @@
 [
   {
-    "paperSlug": "paper-3",
-    "version": "v3.1.84",
-    "datestamp": "2026-06-10",
-    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p3_anomaly_engine/paper3_draft.pdf",
-    "sitePdfPath": "/papers/paper3_anomaly_catalog_v3.1.84.pdf",
-    "changelog": "Pod session: catalog-grade count CORRECTED 264,938->269,317 (269,117 point-source) \u2014 prior subtraction double-removed 4,379 LAMOST-overlap objects (independent 6-way dedup rerun); 38,330px unrecoverable confirmed -> reproducible 24,049px rerun chi2_nu=15.7; SMICA preprocessing documented (top-200 200/200). 25pp/md5 2539e13c/0-0-0. Gate: R26conf.",
-    "texCommit": "139349b8"
+    "paperSlug": "paper-1a",
+    "version": "v1A.0.54",
+    "datestamp": "2026-06-11",
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1a_ech_nogo.pdf",
+    "sitePdfPath": "/papers/paper1a_ech_nogo_v1A.0.54.pdf",
+    "changelog": "R26conf: App C derivation verified step-by-step by the round; sign-convention sentence added; Cartan factor-2 normalization inconsistency disclosed (single-convention re-derivation queued \u2014 last substantive gate); dimensionally inconsistent thermal clause removed; traceability closures. 25pp/md5 4996b35b/0-0-0. Gate: Cartan re-derivation + R27conf + sign-off.",
+    "texCommit": "7ab04964"
   },
   {
-    "paperSlug": "paper-4",
-    "version": "v1.0.171",
-    "datestamp": "2026-06-10",
-    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p2_chirality/chirality_catalog_paper.pdf",
-    "sitePdfPath": "/papers/chirality_catalog_paper_v171.pdf",
-    "changelog": "Pod session robustness additions (clean-round 2/2 status unchanged, still SIGN-OFF-READY): unthresholded-sample floors A50=0.36%/A95=0.63% (0.57% excess sits between, honest disclosure); area-uniform axis curve P3sigma=0.59@0.75%; threshold sweep reproduces canonical exactly; T7 by confidence; training-acc semantics corrected. 21pp/md5 2f0317c4/0-0-0. v171 supersedes v170 as the submission tarball.",
-    "texCommit": "96e78ad5"
+    "paperSlug": "paper-1b",
+    "version": "v1B.0.54",
+    "datestamp": "2026-06-11",
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1b_mcmc_companion.pdf",
+    "sitePdfPath": "/papers/paper1b_mcmc_companion_v1B.0.54.pdf",
+    "changelog": "R26conf ROUND CLEAN: lone substantive accusation (CPL crossing) falsified by shown arithmetic (z*=+0.392 inside range); chi2-correlation claim falsified from chains; dphi/fa RK4 re-derivation matches committed 1.0601; traceability closures. 16pp/md5 bd19ee37/0-0-0. SIGN-OFF-READY at 95% (submission paired with P1A; pod MCMC #29 lands as follow-up robustness).",
+    "texCommit": "7ab04964"
+  },
+  {
+    "paperSlug": "paper-3",
+    "version": "v3.1.85",
+    "datestamp": "2026-06-11",
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p3_anomaly_engine/paper3_draft.pdf",
+    "sitePdfPath": "/papers/paper3_anomaly_catalog_v3.1.85.pdf",
+    "changelog": "R26conf: zero arithmetic errors; 12 closures (cluster accounting exact from dedup artifact; bump-injection placement documented; NANOGrav Eq.E1 external claim falsified by rederivation; Fig.2 caption + Table I basis note + score-axis warning + ~100x multiplier). 26pp/md5 b096e82c/0-0-0. Gate: tabular feature-scaling spec recovery + 2 recomputes + R27conf.",
+    "texCommit": "cd50030e"
   },
   {
     "paperSlug": "paper-5",
-    "version": "v0.1.56",
-    "datestamp": "2026-06-10",
+    "version": "v0.1.57",
+    "datestamp": "2026-06-11",
     "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf",
-    "sitePdfPath": "/papers/p5_desi_chirality_v0.1.56.pdf",
-    "changelog": "Pod session: stratified Phase-2 LEE (global max-stat p=0.36/0.27); maximal-sphere vs any-hole membership both null; z-tail no-op (zero galaxies above z=1.6979); #16 randoms data-missing documented. 27pp/md5 4061bf5c/0-0-0. Gate: R26conf.",
-    "texCommit": "4607ab9a"
+    "sitePdfPath": "/papers/p5_desi_chirality_v0.1.57.pdf",
+    "changelog": "R26conf: zero arithmetic errors; 9 closures (code-verified tidal-tensor sign documentation; parity/monopole rewrite; MC-error accounting; Jeffreys/TTA/convention clarifiers); in-session duplicate-label claim falsified by source check. 27pp/md5 642b4807/0-0-0. Gate: mask-dilation/randoms rebuilds + footprint re-tabulation + R27conf.",
+    "texCommit": "cd50030e"
   }
 ]
