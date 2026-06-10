@@ -1,0 +1,29 @@
+{
+ "experiment": "c14 cos\u03b8_i-flat-prior rerun of the c5 continuous-prior ALP fit (R24conf QUEUE-31 / META-M3)",
+ "prior": "p(theta_i) \u221d sin(theta_i) on (0.01, \u03c0) \u2014 flat in cos\u03b8_i \u2014 via external log-prior 'lambda theta_i: np.log(np.sin(theta_i))'; all other priors/likelihood identical to c5.input.yaml",
+ "n_raw_samples": 10800,
+ "C_agamma": {
+  "median": 17.1,
+  "p16_p84": [
+   6.8,
+   43.4
+  ]
+ },
+ "beta_deg": {
+  "mean": 0.328,
+  "sigma": 0.1
+ },
+ "spectator_sliver_theta_le_0p1": {
+  "mass_fraction": 0.00068,
+  "mass_percent": 0.068,
+  "n_raw_samples_in_sliver": 8
+ },
+ "flat_theta_c5_anchor": {
+  "C_agamma_median": 20.7,
+  "C_agamma_p16_p84": [
+   7.3,
+   45.6
+  ],
+  "sliver_mass_percent": 0.33
+ }
+}

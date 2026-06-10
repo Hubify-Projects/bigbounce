@@ -113,6 +113,25 @@
     "unweighted": -0.032
    },
    "runtime_s": 13599.4
+  },
+  {
+   "name": "camb_bb_template",
+   "fsky": 0.3226,
+   "n_real": 500,
+   "purify_b": false,
+   "apod_fwhm_deg": 2.0,
+   "gal_cut_deg": 20.0,
+   "bb_model": "camb_lensed",
+   "template": "sin(2b)cos(2b)*(C_ell^EE - C_ell^BB) binned",
+   "noise_sigma_pix_uK": 1.4554,
+   "recovered_beta_deg": {
+    "unweighted": 0.251
+   },
+   "bias_deg": {
+    "unweighted": -0.019
+   },
+   "runtime_s": 527.4,
+   "note": "R24conf QUEUE-30 extension: CAMB lensed BB in injected skies AND -C_ell^BB-bearing template; paired seeds with battery (seed_base 42)."
   }
  ],
  "total_runtime_s": 16879.8

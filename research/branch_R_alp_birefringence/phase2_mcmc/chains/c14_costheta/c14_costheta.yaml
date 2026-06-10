@@ -1,0 +1,66 @@
+# c14 — R24conf QUEUE-31 (META-M3): c5 continuous-prior rerun with a
+# cosθ_i-flat (vacuum-manifold-uniform) prior instead of flat-θ_i.
+# Implemented as the flat-θ_i sampling prior of c5 plus an external
+# log-prior weight log sin(θ_i), i.e. p(θ_i) ∝ sin(θ_i) on (0.01, π),
+# the exact density of a flat cosθ_i ∈ (cos π, cos 0.01) prior.
+# Everything else identical to chains/c5_continuous/c5.input.yaml.
+theory:
+  alp_theory.ALPBirefringence:
+    python_path: /Users/houstongolden/Desktop/CODE_2025/bigbounce/research/branch_R_alp_birefringence/phase2_mcmc
+likelihood:
+  birefringence_lk.BirefringenceLikelihood:
+    python_path: /Users/houstongolden/Desktop/CODE_2025/bigbounce/research/branch_R_alp_birefringence/phase2_mcmc
+    beta_obs: 0.342
+    sigma_beta: 0.094
+prior:
+  costheta_flat: "lambda theta_i: np.log(np.sin(theta_i))"
+params:
+  theta_i:
+    prior:
+      min: 0.01
+      max: 3.14159
+    ref:
+      dist: norm
+      loc: 1.6
+      scale: 0.3
+    proposal: 0.2
+    latex: \theta_i
+  log10_m_eV:
+    prior:
+      min: -35
+      max: -30
+    ref:
+      dist: norm
+      loc: -31.5
+      scale: 0.5
+    proposal: 0.3
+    latex: \log_{10}(m_a/\mathrm{eV})
+  C_agamma:
+    prior:
+      min: 4
+      max: 60
+    ref:
+      dist: norm
+      loc: 8
+      scale: 2
+    proposal: 1.0
+    latex: C_{a\gamma}
+  beta_deg:
+    latex: \beta\;[\mathrm{deg}]
+  eta:
+    latex: \eta
+  Omega_a:
+    latex: \Omega_a
+  w_a_0:
+    latex: w_a(z{=}0)
+sampler:
+  mcmc:
+    burn_in: 0.3
+    max_samples: 100000
+    Rminus1_stop: 0.01
+    Rminus1_cl_stop: 0.15
+    learn_proposal: true
+    learn_proposal_Rminus1_max: 30
+    proposal_scale: 2.4
+    drag: false
+output: /Users/houstongolden/Desktop/CODE_2025/bigbounce/research/branch_R_alp_birefringence/phase2_mcmc/chains/c14_costheta/c14
