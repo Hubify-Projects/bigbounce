@@ -5,10 +5,19 @@
 > `tools/build_arxiv_tarball.sh` from today's post-provenance-closure versions.
 > Submission order: **P4 first** (P5 hard-depends on its arXiv ID), P1A+P1B same day.
 > ⛔ P4 submission still gated on TWO clean cross-vendor rounds post-retraction + Houston sign-off.
-> ⚠️ **2026-06-09 EVENING (R23conf):** all six papers bumped again (P4 v1.0.168 / P1A v1A.0.51 /
-> P1B v1B.0.52 / P2 v1.7.46 / P3 v3.1.81 / P5 v0.1.53) — the tarballs below are one version stale;
-> REBUILD via `tools/build_arxiv_tarball.sh` before any submission. P4 headline is now 0.41σ (p=0.31)
-> from the fixed null generator (was 0.43σ/p=0.30; verdict unchanged).
+> ⚠️ **2026-06-10 (R24conf):** all six papers bumped again (P1A v1A.0.52 / P1B v1B.0.53 /
+> P2 v1.7.47 / P3 v3.1.82 / P4 v1.0.169 / P5 v0.1.54) — the tarballs below are now TWO versions
+> stale; they are being REBUILT as `paper{1a,1b,2,3,4,5}_arxiv_<newversion>.tar.gz`
+> (i.e. `paper1a_arxiv_v1A.0.52.tar.gz` · `paper1b_arxiv_v1B.0.53.tar.gz` ·
+> `paper2_arxiv_v1.7.47.tar.gz` · `paper3_arxiv_v3.1.82.tar.gz` ·
+> `paper4_arxiv_v1.0.169.tar.gz` · `paper5_arxiv_v0.1.54.tar.gz`) via
+> `tools/build_arxiv_tarball.sh` — verify standalone-compile before any submission.
+> P4 headline: 0.41σ (rank-p=0.31) + formal A_dip < 6.8×10⁻³ 95% UL. P1B S8 marginal
+> corrected to 0.827±0.010. P5 GALZONE void counts corrected to 104,912/74,111
+> (ZONEVOID zone-offset fix; conclusion unchanged).
+> ⚠️ Prior (R23conf, 2026-06-09 evening): P4 v1.0.168 / P1A v1A.0.51 / P1B v1B.0.52 /
+> P2 v1.7.46 / P3 v3.1.81 / P5 v0.1.53; P4 headline moved 0.43σ/p=0.30 → 0.41σ/p=0.31
+> from the fixed null generator (verdict unchanged).
 >
 > ## Paper 4 — Chirality Catalog v1.0.167 (post-retraction wave)
 > - **Tarball:** `pipelines/p2_chirality/paper4_arxiv_v1.0.167.tar.gz` (19 MB, 17 pp verified)

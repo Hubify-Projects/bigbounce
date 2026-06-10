@@ -47,12 +47,12 @@ export interface LiveStatus {
 }
 
 export const liveStatus: LiveStatus = {
-  lastUpdatedISO: "2026-06-10T04:30:00Z",
-  lastUpdatedDisplay: "June 9, 2026 · 9:30 PM PT",
+  lastUpdatedISO: "2026-06-10T19:00:00Z",
+  lastUpdatedDisplay: "June 10, 2026 · 12:00 PM PT",
   headline:
-    "R23conf full 5-vendor confirmation round closed on all six papers: ~200 findings truth-audited, all VERIFIED findings closed same-day, all six papers bumped (P1A v1A.0.51 · P1B v1B.0.52 · P2 v1.7.46 · P3 v3.1.81 · P4 v1.0.168 · P5 v0.1.53) — next gate is a clean R24conf round (P4 needs two).",
+    "R24conf wave closed: ~110 verified findings closed across all six papers — including 2 substantive P2 physics fixes (QSFI endpoints, −35/16 attribution) and a P5 join-bug fix — all six bumped (P1A v1A.0.52 · P1B v1B.0.53 · P2 v1.7.47 · P3 v3.1.82 · P4 v1.0.169 · P5 v0.1.54); next gate is R25conf (P2+P4 priority; P4 needs 2 clean) + a pod session for queued recomputes.",
   summary:
-    "R23conf closures: P1A cleanest round (E:0/M:0, birefringence factor-of-2 fixed); P1B §VI ALP provenance rewritten to committed-chain truth (run1-3, 9,720 samples) + c10 robustness battery; P2 Table III rebuilt from committed c9g recompute + null-space scatter 4.4–6.2σ propagated; P3 abstract 7.9%→9.4% anchored + gold/silver tiers (1,122); P4 headline null regenerated from the fixed generator 0.43σ→0.41σ (p=0.31, verdict unchanged); P5 Bonferroni misstatement fixed + count ledger unified (783,820 unique).",
+    "R24conf closures: P1A 1.06σ recompute fix + Λ_eff curvature-units declared + 10⁻⁵⁸ band relabeled; P1B S8 marginal corrected 0.831±0.018→0.827±0.010 (chain-recomputed) + cosθ-prior robustness + S8/DES-Y3 overlay (2.6σ); P2 QSFI endpoints corrected per Chen–Wang + −35/16 re-attributed to Li–Quintin–Wang–Cai (17 sites) + c9k continuous-GR BF=6.0; P3 eROSITA 0.259 threshold-axis irreproducibility disclosed; P4 7 local recomputes closed (confidence-cut z +4.27→+0.41, A_dip 95% UL 6.8e-3, conditioning 3.17); P5 ZONEVOID zone-offset bug fixed (104,912/74,111 void counts, conclusion unchanged).",
   currentlyRunning: [
     "Hourly native-PDF cross-vendor review autoloop on all 6 papers (Claude · GPT · Gemini · Grok · Perplexity + meta-reviewer)",
     "Persistence tracker fingerprinting findings across fires; load-bearing items escalate to Houston decision package",
@@ -62,7 +62,7 @@ export const liveStatus: LiveStatus = {
     {
       title: "Anthropic API credits exhausted (reviewer leg down)",
       blockedPaper: "all",
-      why: "The Claude API reviewer leg is still down on billing 400s; R23conf ran its Claude leg in-session on subscription as a workaround, but the autoloop needs API credits for R24conf.",
+      why: "The Claude API reviewer leg is still down on billing 400s; R23conf/R24conf ran their Claude legs in-session on subscription as a workaround, but the autoloop needs API credits for R25conf.",
       ask: "Top up API credits at console.anthropic.com → Plans & Billing, then say 'credits topped up' so full 5-vendor rounds restart.",
     },
     {
@@ -89,53 +89,53 @@ export const liveStatus: LiveStatus = {
       slug: "paper-1a",
       number: "1A",
       shortTitle: "ECH dark-energy closure + perturbation transparency",
-      version: "v1A.0.51",
-      readiness: 92,
-      pendingWork: "v1A.0.51 — R23conf cleanest round (E:0/M:0) closed → R24conf on v1A.0.51 must come back clean → Houston external round + sign-off → arXiv",
+      version: "v1A.0.52",
+      readiness: 93,
+      pendingWork: "v1A.0.52 — R24conf clean-after-closures (1.06σ recompute fix, Λ_eff units, 10⁻⁵⁸ band relabel) → MCS derivation appendix (#32) → Houston external round + sign-off → arXiv",
     },
     {
       slug: "paper-1b",
       number: "1B",
       shortTitle: "MCMC + NaMaster + ALP technical companion",
-      version: "v1B.0.52",
-      readiness: 90,
-      pendingWork: "v1B.0.52 — R23conf closed (§VI ALP provenance rewrite to committed-chain truth + c10 battery) → R24conf must come back clean → sign-off → arXiv (with P1A)",
+      version: "v1B.0.53",
+      readiness: 92,
+      pendingWork: "v1B.0.53 — R24conf clean-after-closures (S8 0.827±0.010 corrected, c10 BB-template, cosθ-prior, DES-Y3 overlay) → release-pairing MCMC (#29, pod) → sign-off → arXiv (with P1A)",
     },
     {
       slug: "paper-2",
       number: "2",
       shortTitle: "f_NL = -35/8 SPHEREx forecast",
-      version: "v1.7.46",
+      version: "v1.7.47",
       readiness: 92,
-      pendingWork: "v1.7.46 — R23conf closed (methods paragraph repaired, Table III rebuilt from c9g, null-space scatter propagated) → R24conf must come back clean → Houston sign-off → arXiv",
+      pendingWork: "v1.7.47 — R24conf closed 2 substantive fixes (QSFI endpoints per Chen–Wang, −35/16 re-attributed to Li–Quintin–Wang–Cai, c9k BF=6.0) → R25conf must come back clean (priority) → Houston sign-off → arXiv",
     },
     {
       slug: "paper-3",
       number: "3",
       shortTitle: "378K-anomaly multi-survey catalog",
-      version: "v3.1.81",
+      version: "v3.1.82",
       readiness: 90,
-      pendingWork: "v3.1.81 — R23conf closed (abstract 7.9%→9.4%, 4 figure contradictions, gold/silver tiers 1,122) → R24conf must come back clean → HF flip → arXiv",
+      pendingWork: "v3.1.82 — R24conf closed (eROSITA 0.259 axis irreproducibility disclosed, abstract framing upgrades) → queue #33 production re-derivation → next round clean → HF flip → arXiv",
     },
     {
       slug: "paper-4",
       number: "4",
       shortTitle: "8.47M-galaxy chirality null at sub-percent sensitivity",
-      version: "v1.0.168",
+      version: "v1.0.169",
       readiness: 85,
-      pendingWork: "v1.0.168 — R23conf closed (headline null regenerated from fixed generator: 0.41σ, p=0.31) → TWO clean R24conf+ rounds (post-retraction rule) → sign-off → arXiv (first in queue)",
+      pendingWork: "v1.0.169 — R24conf closed 7 local recomputes (confidence-cut z +4.27→+0.41, A_dip 95% UL 6.8e-3, conditioning 3.17) → pod items (#4/5/9/11–13) → TWO clean rounds R25conf+ (priority) → sign-off → arXiv (first in queue)",
     },
     {
       slug: "paper-5",
       number: "5",
       shortTitle: "DESI environmental chirality independence",
-      version: "v0.1.53-2026-06-09",
+      version: "v0.1.54-2026-06-10",
       readiness: 90,
-      pendingWork: "v0.1.53 — R23conf closed (Bonferroni fix, count ledger unified 783,820 unique, χ²=3.00 p=0.39) → R24conf must come back clean → arXiv (last, after P4)",
+      pendingWork: "v0.1.54 — R24conf closed 6 local recomputes + ZONEVOID join-bug fix (104,912/74,111 void counts, σ −0.52/−1.50, conclusion unchanged) → pod field rebuilds (#15–19) → next round clean → arXiv (last, after P4)",
     },
   ],
   blockerTally: {
-    closed: 567, // 367 through the 2026-06-09 closure waves + ~200 R23conf findings truth-audited and closed
+    closed: 677, // 567 through R23conf + ~110 verified R24conf findings closed 2026-06-10
     openBlockers: 0,
     openMajors: 0,
     openMinors: 0,

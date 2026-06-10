@@ -1,56 +1,50 @@
 [
   {
     "paperSlug": "paper-1a",
-    "version": "v1A.0.51",
-    "datestamp": "2026-06-09",
+    "version": "v1A.0.52",
+    "datestamp": "2026-06-10",
     "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1a_ech_nogo.pdf",
-    "sitePdfPath": "/papers/paper1a_ech_nogo_v1A.0.51.pdf",
-    "changelog": "R23conf closure: cleanest round of the six (E:0/M:0). Birefringence-mapping factor-of-2 corrected (beta=(alpha/2M)dtheta; rho_theta~6 rho_Lambda, honest weakening to within-an-order-of-magnitude), epsilon-correction symbol defined at first use, N_tot=92 canonicalized, fig-6 annotation collision fixed, tab:params overfull fixed. 24pp/md5 2ab29d5b/0-0-0. Gate: R24conf clean round + Houston sign-off.",
-    "texCommit": "279ed4c7"
+    "sitePdfPath": "/papers/paper1a_ech_nogo_v1A.0.52.pdf",
+    "changelog": "R24conf closure (clean-after-closures round): 19 truth-audited edits incl. 1.4->1.06 sigma recompute, gamma^2/(gamma^2+1) contradiction fix, Lambda_eff curvature-units declaration (rho_Lambda = Xi MPl^4 consistency), 10^-58 band relabeled an explicit conservatism allowance (canonical contraction = 10^-60), Eq.(7) arithmetic, fig captions aligned to content, Shamir wording aligned to P4. 24pp/md5 344629dc/0-0-0. Remaining gate: MCS line-of-sight derivation appendix (queue #32) + Houston sign-off."
   },
   {
     "paperSlug": "paper-1b",
-    "version": "v1B.0.52",
-    "datestamp": "2026-06-09",
+    "version": "v1B.0.53",
+    "datestamp": "2026-06-10",
     "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1b_mcmc_companion.pdf",
-    "sitePdfPath": "/papers/paper1b_mcmc_companion_v1B.0.52.pdf",
-    "changelog": "R23conf closure: SVI ALP provenance rewrite \u2014 the '3 benchmark configs C=4/8/12, 3,240 each' narrative matched no committed chain and is replaced by the archived-chain truth (run1_full C=8 2,160 / run2_extended C[1,30] 6,840 / run3 beta_free 720 = 9,720); dphi/fa mass pairings corrected against the committed EOM (c10b grid artifact; envelope [0.17,0.43]deg -> [0.01,0.48]deg, required-C band extended honestly); c10 6-config x 500-MC robustness battery \u2014 bias attribution corrected to unweighted-fit weighting + BB template shape (invvar fit removes ~80%; CAMB BB ~40%; apod/footprint/purify insensitive), all chain-backed headline numbers unchanged. 15pp/md5 4047dfe1/0-0-0. Gate: R24conf clean round.",
-    "texCommit": "6950ea51"
+    "sitePdfPath": "/papers/paper1b_mcmc_companion_v1B.0.53.pdf",
+    "changelog": "R24conf closure (clean-after-closures round): S8 Planck+BAO+SN marginal corrected 0.831+-0.018 -> 0.827+-0.010 (chain-recomputed; untraceable width replaced, correction note; naive DES-Y3 combination now matches full-tension posterior at 0.01 sigma; c13 overlay artifact 2.6 sigma / overlap 0.05); envelope floor digit 0.064 (required-C ~160 follows exactly); union-over-box envelope clarifier; c10 battery extended with matched BB-template config (bias unchanged at -0.019 deg -- honest negative, residual not template-shape); cosTheta-prior c5 robustness rerun (C_agamma 17.1 [6.8,43.4], sliver mass 0.068%); model-preference disclaimer; two-independent-fine-tunings separation; 13 further truth-audited edits. 16pp/md5 86261d4b/0-0-0. Gate: pod recompute #29 + next round."
   },
   {
     "paperSlug": "paper-2",
-    "version": "v1.7.46",
-    "datestamp": "2026-06-09",
+    "version": "v1.7.47",
+    "datestamp": "2026-06-10",
     "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/research/focused_paper_source_integration/02_full_draft.pdf",
-    "sitePdfPath": "/papers/paper2_fnl_forecast_v1.7.46.pdf",
-    "changelog": "R23conf closure: corrupted radius-50 methods paragraph repaired; irreproducible Table III GR-Bayes values replaced by committed closed-form recompute (c9g; correction note in caption); App-A field-label fix with exact B_Phi(c=2) <-> B_zeta(6/5) mapping proof; '0.5000 empirical ratio' exposed as hardcoded literal and reframed as the -2Im operator identity (c9i); null-space scatter propagated to significance (c9h: 16-84% = 4.4-6.2 sigma); kappa_1 -> kappa_eps; template-mismatch BF bookkeeping paragraph (c9j); 73-finding truth audit (16 closed, 7 falsified). 23pp/md5 45ee3af4/0-0-0. Gate: R24conf clean round.",
-    "texCommit": "f8b3c0e2"
+    "sitePdfPath": "/papers/paper2_fnl_forecast_v1.7.47.pdf",
+    "changelog": "R24conf closure (2 substantive fixes): QSFI squeezed-limit scaling endpoints corrected per Chen-Wang (were reversed, both sites); -35/16 citation re-attributed to the true source Li-Quintin-Wang-Cai JCAP 03(2017)031 (17-site sweep; previous bibitem was Kallosh-Linde-Westphal); c9k continuous-sigma_GR marginalization artifact (BF=6.0 vs tuned, inside the 4.7-7.0 band); verification-row italic relabel + MC-SE caption note + 3-7 sigma crosswalk; 14 further truth-audited closures, 8 falsified. 24pp/md5 a6ea2ee9/0-0-0. Gate: one more cross-vendor round (R25conf) given the two substantive fixes."
   },
   {
     "paperSlug": "paper-3",
-    "version": "v3.1.81",
-    "datestamp": "2026-06-09",
+    "version": "v3.1.82",
+    "datestamp": "2026-06-10",
     "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p3_anomaly_engine/paper3_draft.pdf",
-    "sitePdfPath": "/papers/paper3_anomaly_catalog_v3.1.81.pdf",
-    "changelog": "R23conf closure: abstract improvement 7.9% -> 9.4% (anchored to the paper's own 6.1% definition, 4 sites); 4 figure-level contradictions closed with artifact evidence (ACT caption, 77,905 UMAP input, Fig-8 score-axis disclosure, gold/silver tiers defined 116+1,006=1,122); FoF dedup chain audit artifact (0 of 9,553 clusters exceed 5-arcsec link); 57-row truth audit (9 closed, 7 falsified). 24pp/md5 aa791276/0-0-0. Gate: R24conf clean round + HF dataset flip at submission.",
-    "texCommit": "ccb8e852"
+    "sitePdfPath": "/papers/paper3_anomaly_catalog_v3.1.82.pdf",
+    "changelog": "R24conf closure: eROSITA 0.259 threshold-axis irreproducibility found and disclosed in-text (raw rank-298 = 3.41, IF-axis 0.301; false caption equivalence removed; production re-derivation queued #33); NEOWISE mask gate relabeled geometry-QA (4 sites); abstract framing upgrades (Wilson 68% CI +-1.2%, DESI-top-1000 scoping, de-biased ordering leads, Savage-Dickey gamma-prior qualifier + SMBHB population-mean caveat, SDSS-slice disclosure); 15 further truth-audited closures. 24pp/md5 d238cac4/0-0-0. Gate: queue #33 + next round + HF dataset flip at submission."
   },
   {
     "paperSlug": "paper-4",
-    "version": "v1.0.168",
-    "datestamp": "2026-06-09",
+    "version": "v1.0.169",
+    "datestamp": "2026-06-10",
     "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p2_chirality/chirality_catalog_paper.pdf",
-    "sitePdfPath": "/papers/chirality_catalog_paper_v168.pdf",
-    "changelog": "R23conf closure: headline real-space null regenerated from the repaired generator \u2014 0.43sigma(p=0.30) -> 0.41sigma(rank-p=0.31) at 10^4 nulls with in-text correction note (committed run_dipole_catalog_c.py carried an all-CW selection defect; regenerated values agree within MC noise, verdict unchanged); per-galaxy label-shuffle null robustness (0.58sigma/p=0.26 same generator; 0.70/0.23 independent c11b); HC selection (N=949,584) now explicit in abstract+Table I; full-sample 4.2sigma disclosed as low-confidence-tail systematics diagnostic; injection axis protocol documented (axis-averaged, 10-axis spot check 0.45-0.62 vs published 0.55); META-M3/M4 recompute artifacts. 19pp/md5 90c4a8a3/0-0-0. Gate: TWO R24conf-class clean rounds (post-retraction rule) + Houston sign-off; first in submission queue.",
-    "texCommit": "94113e5e"
+    "sitePdfPath": "/papers/chirality_catalog_paper_v169.pdf",
+    "changelog": "R24conf closure + 7 local recomputes (c12 batch): confidence-cut dipole profile z=+4.27/+4.11/+4.02 (cuts 0/0.4/0.5) -> +0.41/+1.14/+0.51 (0.6/0.7/0.8) directly confirms the low-confidence-tail systematic attribution; formal real-space 95% UL A_dip < 6.8e-3; injection-scorer sigma convention documented from script; equal-area slab uniformity (HC max |z|=1.4); 2x3 estimator robustness panel all null; Y_lm l<=3 regression null at l=1; coupling-matrix conditioning 3.17 (apod-stable); Table I 'Reported statistic' relabel + f_sky=0.4801 derivation footnote + axis-convention clause; 19 further truth-audited edits. 20pp/md5 ad396d7d/0-0-0. Gate: pod items (#4/5/9/11-13) + clean round 2-of-2 (post-retraction rule)."
   },
   {
     "paperSlug": "paper-5",
-    "version": "v0.1.53",
-    "datestamp": "2026-06-09",
+    "version": "v0.1.54",
+    "datestamp": "2026-06-10",
     "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf",
-    "sitePdfPath": "/papers/p5_desi_chirality_v0.1.53.pdf",
-    "changelog": "R23conf closure: Bonferroni misstatement fixed (Z3=-3.14 crossing disclosed with monopole-subtracted residuals, all null); count ledger unified at every site (812,793 env rows / 783,820 unique spirals / 7,815 dropouts); unique-TARGETID omnibus chi2=3.00 (p=0.39) added beside the row-level statistic; Bonferroni-4 threshold corrected 3.02 -> 2.77 (1.87 still passes); R_s=10 under-resolution caveats; astra table promoted full-width; 63-row truth audit (24 closed, 6 falsified). 25pp/md5 b86b03f9/0-0-0. Gate: R24conf clean round; submits after P4's arXiv ID.",
-    "texCommit": "97d3e3d5"
+    "sitePdfPath": "/papers/p5_desi_chirality_v0.1.54.pdf",
+    "changelog": "R24conf closure + 6 local recomputes (22-series batch): ZONEVOID zone-offset join bug found, reproduced and fixed (V2 GALZONE counts 86,276/64,514 -> 104,912/74,111; sigma -0.52/-1.50; null conclusion unchanged; earlier-draft disclosure in SVIII.D + abstract); unique-TARGETID per-pixel sigma stats unchanged (mean +0.005, std 1.015); 21-shell N table + delta drift documented; entropy-weighted variance MC-validated (<=1.14%); edge-buffer quintile invariance (91% retention, max 0.12pp shift); 26.6% boundary-cell fraction printed; abstract sample ledger + <~0.002 framing with counting-floor parenthetical; 12 further truth-audited edits. 27pp/md5 1d42599a/0-0-0. Gate: pod field rebuilds (#15-19) + next round; submits after P4's arXiv ID."
   }
 ]
