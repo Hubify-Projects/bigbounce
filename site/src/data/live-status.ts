@@ -52,7 +52,7 @@ export const liveStatus: LiveStatus = {
   headline:
     "R26conf: P1B CLEAN — three of six at sign-off (P4, P2, P1B); zero arithmetic errors across the wave; P1A/P3/P5 carry derivation/recompute residue only.",
   summary:
-    "R26conf wave bumped four papers — P1A v1A.0.56 · P1B v1B.0.54 · P3 v3.1.87 · P5 v0.1.59 (P2 v1.7.48 · P4 v1.0.171 unchanged, still SIGN-OFF-READY). P1B's lone substantive accusation (CPL crossing) was falsified by shown arithmetic (z*=+0.39 inside range) and every committed number chain-reproduced → SIGN-OFF-READY at 95. P1A discloses a Cartan factor-2 normalization inconsistency (analytic re-derivation queued); P3 closed 12 textual items (cluster accounting exact, NANOGrav Eq.E1 falsified); P5 closed 9 including code-verified tidal-tensor sign doc.",
+    "R26conf wave bumped four papers — P1A v1A.0.56 · P1B v1B.0.54 · P3 v3.1.87 · P5 v0.1.60 (P2 v1.7.48 · P4 v1.0.171 unchanged, still SIGN-OFF-READY). P1B's lone substantive accusation (CPL crossing) was falsified by shown arithmetic (z*=+0.39 inside range) and every committed number chain-reproduced → SIGN-OFF-READY at 95. P1A discloses a Cartan factor-2 normalization inconsistency (analytic re-derivation queued); P3 closed 12 textual items (cluster accounting exact, NANOGrav Eq.E1 falsified); P5 closed 9 including code-verified tidal-tensor sign doc.",
   currentlyRunning: [
     "Hourly native-PDF cross-vendor review autoloop on all 6 papers (Claude · GPT · Gemini · Grok · Perplexity + meta-reviewer)",
     "Persistence tracker fingerprinting findings across fires; load-bearing items escalate to Houston decision package",
@@ -129,9 +129,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-5",
       number: "5",
       shortTitle: "DESI environmental chirality independence",
-      version: "v0.1.59-2026-06-11",
+      version: "v0.1.60-2026-06-11",
       readiness: 92,
-      pendingWork: "v0.1.59 — R26conf: zero arithmetic errors, 9 closures (incl. code-verified tidal-tensor sign doc) → compute-class queue (mask-dilation/randoms rebuilds, footprint re-tabulation) → R27conf clean → arXiv (last, after P4)",
+      pendingWork: "v0.1.60 — R26conf: zero arithmetic errors, 9 closures (incl. code-verified tidal-tensor sign doc) → compute-class queue (mask-dilation/randoms rebuilds, footprint re-tabulation) → R27conf clean → arXiv (last, after P4)",
     },
   ],
   blockerTally: {

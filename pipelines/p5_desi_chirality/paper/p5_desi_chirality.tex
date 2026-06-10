@@ -18,7 +18,7 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.59-2026-06-11}
+\newcommand{\paperVersion}{v0.1.60-2026-06-11}
 % v0.1.52-2026-06-09 (R22prov truth-audit closure wave; work order in
 %   project-context/peer-reviews/R22prov_P5_TRUTH_AUDIT.md; recompute artifacts
 %   outputs/17_v0151_closure_recomputes.json + 18_v0151_stratified_and_density.json):
@@ -219,7 +219,8 @@ $n_{\rm void}^{\rm DESIVAST} = 56{,}981$ matched spirals
 per-galaxy classifier-disagreement check showing $0/6$ V-Web ``void''
 spirals fall inside any of the $101{,}863$ DESIVAST VoidFinder holes
 at $z \leq 0.24$) returns $f_{\rm CW}^{\rm void} = 0.4964$ vs
-$f_{\rm CW}^{\rm non-void} = 0.4971$, $\Delta f_{\rm CW} = 0.0007$,
+$f_{\rm CW}^{\rm non-void} = 0.4971$, $\Delta f_{\rm CW} \equiv
+f_{\rm CW}^{\rm non\mbox{-}void} - f_{\rm CW}^{\rm void} = +0.0007$,
 statistically indistinguishable; (ii)
 three-algorithm DESIVAST robustness (VoidFinder + V2-REVOLVER + V2-VIDE)
 returns $|\Delta f_{\rm CW}| \lesssim 0.002$ at all three independent void
@@ -625,7 +626,11 @@ class. Residuals of order $1$--$2\sigma$
 (e.g.\ the Phase-2 maximum $1.87$) should be read with this band in
 mind; the label-shuffle permutation null, which fixes the total CW
 count at its observed value, incorporates the matched-sample monopole
-uncertainty by construction, and no conclusion in this paper depends
+uncertainty by construction --- i.e.\ every permutation test in this
+paper is conditional on the observed matched-sample monopole rather
+than on the unconditional $p = 0.5$ null, which is displayed only
+through the analytic $\sigma_{\rm from\,half}$ values --- and no
+conclusion in this paper depends
 on a residual threshold finer than this band. Because
 $\sigma_{\rm from\,half}$ grows as $\sqrt{N}$ at
 fixed fractional offset, raw $\sigma$ values are not comparable across
@@ -643,9 +648,9 @@ environmental signals.
 For multi-bin scans (HEALPix per-pixel deviations, redshift quintiles,
 density quintiles), we report two complementary LEE corrections.
 
-\emph{Parametric Bonferroni}: for $K$ independent bins tested at the
-nominal two-sided per-bin significance $\alpha$, the family-wise
-threshold on the maximum-absolute-$\sigma$ statistic is
+\emph{Parametric Bonferroni}: for $K$ independent bins controlled at
+the two-sided family-wise level $\alpha$ (per-bin level $\alpha/K$),
+the threshold on the maximum-absolute-$\sigma$ statistic is
 \begin{equation}\label{eq:bonferroni}
 |\sigma|^{\rm Bonf}_{\alpha,K} \;=\; \sqrt{2}\,
 \mathrm{erfc}^{-1}\!\left(\frac{\alpha}{K}\right),
@@ -729,7 +734,7 @@ V2-REVOLVER, V2-VIDE) plus two catalog-native zone definitions, giving
 five effective primary-class statistics; all five return
 $|\sigma_{\rm void}| < 2$ on the chirality null. Treating the five
 DESIVAST estimators as a Bonferroni-5 family at $\alpha = 0.05$,
-the per-test threshold is $|\sigma|^{\rm Bonf}_{0.05,5} \approx 2.81$;
+the per-test threshold is $|\sigma|^{\rm Bonf}_{0.05,5} \approx 2.58$;
 no DESIVAST estimator crosses it. The secondary V-Web / Tempel / ASTRA
 / T-Web / per-stratification estimators carry their own multiplicity
 budget but, per the primary/secondary separation above, do not enter
@@ -1030,7 +1035,14 @@ Bonferroni-4 correction. The strongest cluster sub-deviations are
 Q1+Q2 at $\bar\rho \approx 1.55$--$1.80$ (the low-density edge of
 the cluster class, where the V-Web $\lambda_{\rm th} = 0$ default
 class boundary against filament is most uncertain), while the densest
-quartile Q4 returns intermediate $\sigma = -2.46$. The catalog-level
+quartile Q4 returns intermediate $\sigma = -2.46$. Treating the four
+cluster quartiles as a simultaneous family, the monopole-subtracted
+residuals $\sigma_{\rm obs} - \sigma_{\rm pred}$ at
+$\sigma_{\rm pred} = 2\,(-0.0026)\sqrt{n} \approx -1.64$ are $-1.43$
+(Q1), $-1.78$ (Q2), $+1.27$ (Q3), and $-0.82$ (Q4) --- all four below
+the Bonferroni-4 $\alpha = 0.05$ threshold of $2.50$, so no quartile
+shows a significant departure from the monopole-only model after
+multiplicity correction. The catalog-level
 $-4.7\sigma$ cluster signal is therefore not a clean density-dependent
 chirality effect; it is concentrated at the cluster/filament class
 boundary and is consistent with a boundary-misclassification leakage
@@ -1437,7 +1449,12 @@ the void bin's own deviation from half satisfies
 $|\sigma_{\rm void}| \le 1.35$ in all nine cells. No
 $(R_s, \lambda_{\rm th})$ cell shows an
 inter-class range that exceeds the counting noise of the class that
-produces it by more than $1\%$.
+produces it by more than $1\%$. We use the void-class $2\sigma$ floor
+as a descriptive yardstick locating which class's counting noise
+dominates the spread, not as a calibrated bound on the four-class
+range statistic (whose null distribution depends on all four bin
+sizes); the calibrated per-cell control is the empirical
+label-shuffle $p_{\rm LEE}$ column of Table~\ref{tab:phase2}.
 
 \item \textbf{Paper-IV-monopole reference.} The Paper IV
 monopole prediction $\sigma_{\rm pred}^{\rm class} = 2 \cdot 0.0026
@@ -1533,7 +1550,10 @@ $36{,}181$ of $57{,}081$ void spirals --- a membership perturbation
 far larger than any plausible RSD-induced boundary-flip set at
 $\sigma_v/(aH) \lesssim 5$\,Mpc/$h$ --- and shifts
 $\Delta f_{\rm CW}$ by only $0.6$\,pp with the null verdict
-unchanged. A direct FoG-scale Monte Carlo sharpens this bound:
+unchanged. A direct FoG-scale Monte Carlo sharpens this bound
+(holding the published redshift-space void centers and radii fixed,
+i.e.\ a fixed-void-geometry membership sensitivity test rather than a
+re-derivation of the void catalog under RSD):
 perturbing each spiral's line-of-sight comoving distance by a
 $\sigma\!=\!5$\,Mpc/$h$ Gaussian (200 realizations at the
 $\sigma_v/(aH)$ displacement scale above; used in place of a
@@ -1543,9 +1563,9 @@ $\sim\!4.4\times10^{4}$ hole-union memberships per realization (the
 void count rises from $57{,}081$ to $76{,}490 \pm 161$ as boundary
 spirals scatter inward), yet $\Delta f_{\rm CW}$ stays within
 $[-0.34, +0.37]$\,pp (coherent $\pm 5$\,Mpc/$h$ shifts:
-$-0.16$/$+0.03$\,pp) and no realization's void/non-void two-sample
-$|z|$ exceeds $1.9$
-(\artifact{pipelines/p5\_desi\_chirality/outputs/26\_r27conf\_ess\_recomputes.json}).
+$-0.16$/$+0.03$\,pp) and every realization's void/non-void two-sample
+$|z|$ stays below $2\sigma$ (maximum $1.93$;
+\artifact{pipelines/p5\_desi\_chirality/outputs/26\_r27conf\_ess\_recomputes.json}).
 We note that
 this RSD-robustness argument applies to the per-galaxy void-membership
 test itself; the internal composition of the ``non-void'' control
@@ -1788,9 +1808,14 @@ comparison against the stricter interior-void definition (membership
 in a void's \emph{maximal} sphere only, the VoidFinder void-defining
 sphere; an exact subset of the hole-union membership) gives the same
 null verdict: any-hole $n_{\rm void} = 57{,}081$,
-$\Delta f_{\rm CW} = -0.06$\,pp ($z = -0.28$) vs.\ maximal-sphere
-$n_{\rm void} = 20{,}900$, $\Delta f_{\rm CW} = +0.54$\,pp
-($z = +1.55$), so the permissiveness of the hole-union criterion does
+$\Delta f_{\rm CW} = +0.06$\,pp ($z = +0.28$) vs.\ maximal-sphere
+$n_{\rm void} = 20{,}900$, $\Delta f_{\rm CW} = -0.54$\,pp
+($z = -1.55$), quoted in the
+Table~\ref{tab:desivast_three_algo} sign convention
+$\Delta f_{\rm CW} \equiv f_{\rm CW}^{\rm non\mbox{-}void} -
+f_{\rm CW}^{\rm void}$ (the committed artifact stores the
+opposite-signed $f^{\rm void} - f^{\rm non\mbox{-}void}$ values), so
+the permissiveness of the hole-union criterion does
 not drive the void-class result
 (\artifact{pipelines/p5\_desi\_chirality/outputs/24\_r24conf\_pod\_session.json}). Binning the maximal voids by
 HEALPix \texttt{NSIDE} $= 16$ pixel (equal-area pixels of
@@ -1946,10 +1971,13 @@ the same env-labeled matched-spiral parent, the distribution of
 $\sigma_{\rm vs\ monopole}$ across the $1{,}791$ valid pixels
 (pixels carrying $\ge 200$ spirals, full redshift range) has
 mean $+0.008$, std $1.050$, skewness $+0.074$, and excess kurtosis
-$+0.092$. The unit standard deviation (within $5\%$; the mild excess over
-unity is consistent with pixel-to-pixel $N$ variation ---
-heteroscedastic $\sigma$ --- and small residual selection-function
-structure, not evidence for non-shot-noise tails), near-zero
+$+0.092$. The unit standard deviation (within $5\%$; because each
+pixel's $\sigma$ is normalized by its own counting error,
+heterogeneous pixel populations alone would not inflate the variance
+--- the mild excess over unity instead traces the $2.7\%$ duplicate
+rows and small residual selection-function structure, as the
+unique-\texttt{TARGETID} recompute below returning std $1.015$
+confirms --- not evidence for non-shot-noise tails), near-zero
 skewness, and near-zero excess kurtosis
 are all consistent with a pure shot-noise residual
 around the P4-monopole, with no sign of systematic
@@ -2240,7 +2268,9 @@ filter and is withdrawn
 
 \begin{table}[t]
 \caption{Tempel+2014 FoF environment cross-validation on the
-$96{,}753$-spiral Tempel-overlap subsample (declared parent).}
+$96{,}753$-spiral Tempel-overlap subsample (declared parent). The
+$\sigma_{\rm from\,half}$ values scale as $\sqrt{n}$ at fixed offset
+and are not comparable across rows of different $n$ (\S\ref{sec:stats}).}
 \label{tab:tempel}
 \begin{ruledtabular}
 \begin{tabular}{lrrrr}
@@ -2283,8 +2313,7 @@ filament-on-overlap $f_{\rm CW} = 0.5009$ ($n = 16{,}701$). The
 difference is $|z| = 0.49$ on a pooled two-proportion $z$-test
 (pooled and unpooled variance models are numerically
 indistinguishable at $\hat p \approx 0.5$) — statistically
-indistinguishable, though formally above the $0.2$\,pp concordance
-spec, which was calibrated for full-sample $n$; at the overlap
+indistinguishable; at the overlap
 populations the $1\sigma$ two-sample floor is ${\sim}0.6$\,pp
 (supporting, not load-bearing — the primary cross-classifier
 validation remains the on-DESI DESIVAST re-projection at
@@ -2566,11 +2595,16 @@ Table~\ref{tab:systematics_splits} reports the measured CW fraction
 per split with its $N$ (artifacts in
 \artifact{pipelines/p5\_desi\_chirality/results/analysis\_systematics/}).
 The match-radius sweep is flat to $0.02$\,pp across
-$\{0.5, 1, 2, 3, 5\}''$; the footprint splits sit within $0.13$\,pp
+$\{0.5, 1, 2, 3, 5\}''$
+(Table~\ref{tab:systematics_splits} prints the two extreme radii;
+the intermediate-radius rows are carried in the committed artifact);
+the footprint splits sit within $0.13$\,pp
 of the global value; the confidence-threshold sweep drifts by at most
 $-0.24$\,pp from the full-sample value at
-$p_{\rm cls\_eq}^{\max} \ge 0.7$ (a $\le\!1\sigma$ shift at the
-reduced $n$); and the target-class split is the one structured
+$p_{\rm cls\_eq}^{\max} \ge 0.7$ (a ${\approx}2.1\sigma$ shift
+against the $0.5/\sqrt{n}$ counting floor at the reduced
+$n = 185{,}719$, below the $3\sigma$ bar applied throughout this
+section); and the target-class split is the one structured
 residual: BGS-bright $f_{\rm CW} = 0.4970$ vs LRG/ELG/QSO-dark
 $0.5051$, a $0.81$\,pp difference ($|z| \approx 2.0$ two-sample) with
 opposite-signed deviations from half. An earlier draft of this
