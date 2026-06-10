@@ -47,12 +47,12 @@ export interface LiveStatus {
 }
 
 export const liveStatus: LiveStatus = {
-  lastUpdatedISO: "2026-06-11T05:30:00Z",
-  lastUpdatedDisplay: "June 10, 2026 · 10:30 PM PT",
+  lastUpdatedISO: "2026-06-11T12:00:00Z",
+  lastUpdatedDisplay: "June 11, 2026 · 5:00 AM PT",
   headline:
-    "Pod session closed the queued recomputes — P4 v1.0.171 · P3 v3.1.84 · P5 v0.1.56 bumped (P1A v1A.0.53 · P1B v1B.0.53 · P2 v1.7.48 unchanged). P3 catalog-grade count corrected to 269,317 (LAMOST-overlap double-removal fixed); P4 + P2 remain SIGN-OFF-READY awaiting Houston.",
+    "R26conf: P1B CLEAN — three of six at sign-off (P4, P2, P1B); zero arithmetic errors across the wave; P1A/P3/P5 carry derivation/recompute residue only.",
   summary:
-    "Pod wave: P4 unthresholded injection floors A50=0.36%/A95=0.63% + area-uniform axis curve + threshold-sweep canonical reproduction + T7 confidence quantification (robustness additions; clean-round status unaffected); P3 6-way dedup verified 269,317/269,117 + HEALPix 38,330px unrecoverable confirmed (reproducible rerun 24,049px χ²_ν=15.7) + SMICA preprocessing documented (200/200); P5 stratified Phase-2 LEE p=0.36/0.27 + void-membership null + z-tail no-op. P1B release-pairing MCMC running on pod (ETA 1–2 days).",
+    "R26conf wave bumped four papers — P1A v1A.0.54 · P1B v1B.0.54 · P3 v3.1.85 · P5 v0.1.57 (P2 v1.7.48 · P4 v1.0.171 unchanged, still SIGN-OFF-READY). P1B's lone substantive accusation (CPL crossing) was falsified by shown arithmetic (z*=+0.39 inside range) and every committed number chain-reproduced → SIGN-OFF-READY at 95. P1A discloses a Cartan factor-2 normalization inconsistency (analytic re-derivation queued); P3 closed 12 textual items (cluster accounting exact, NANOGrav Eq.E1 falsified); P5 closed 9 including code-verified tidal-tensor sign doc.",
   currentlyRunning: [
     "Hourly native-PDF cross-vendor review autoloop on all 6 papers (Claude · GPT · Gemini · Grok · Perplexity + meta-reviewer)",
     "Persistence tracker fingerprinting findings across fires; load-bearing items escalate to Houston decision package",
@@ -62,7 +62,7 @@ export const liveStatus: LiveStatus = {
     {
       title: "Anthropic API credits exhausted (reviewer leg down)",
       blockedPaper: "all",
-      why: "The Claude API reviewer leg is still down on billing 400s; R23conf/R24conf/R25conf ran their Claude legs in-session on subscription as a workaround, but the autoloop needs API credits for R26conf.",
+      why: "The Claude API reviewer leg is still down on billing 400s; R23conf–R26conf ran their Claude legs in-session on subscription as a workaround, but the autoloop needs API credits for R27conf.",
       ask: "Top up API credits at console.anthropic.com → Plans & Billing, then say 'credits topped up' so full 5-vendor rounds restart.",
     },
     {
@@ -72,10 +72,10 @@ export const liveStatus: LiveStatus = {
       ask: "Run your external round on the current PDFs and send back findings for truth-audit.",
     },
     {
-      title: "Personal sign-off — P4 + P2 are SIGN-OFF-READY now",
-      blockedPaper: "P4, P2",
-      why: "P4 completed its 2-of-2 post-retraction clean rounds and P2 came back R25conf-clean — only Houston's read stands between them and arXiv.",
-      ask: "Read P4 + P2 end-to-end and reply 'sign off P4'/'sign off P2' or send blocking findings; remaining papers follow after R26conf.",
+      title: "Personal sign-off — P4 + P2 + P1B are SIGN-OFF-READY now",
+      blockedPaper: "P4, P2, P1B",
+      why: "P4 completed its 2-of-2 post-retraction clean rounds, P2 came back R25conf-clean, and P1B came back R26conf-clean (third paper at the gate) — only Houston's read stands between them and arXiv.",
+      ask: "Read P4 + P2 + P1B end-to-end and reply 'sign off P4'/'sign off P2'/'sign off P1B' or send blocking findings; P1A/P3/P5 follow after R27conf.",
     },
     {
       title: "arXiv endorsement + submission credentials",
@@ -89,17 +89,17 @@ export const liveStatus: LiveStatus = {
       slug: "paper-1a",
       number: "1A",
       shortTitle: "ECH dark-energy closure + perturbation transparency",
-      version: "v1A.0.53",
+      version: "v1A.0.54",
       readiness: 93,
-      pendingWork: "v1A.0.53 — MCS line-of-sight derivation appendix added (App C, closes the last analytic gate; queue #32 CLOSED) → R26conf (new appendix needs review coverage) → Houston sign-off → arXiv",
+      pendingWork: "v1A.0.54 — R26conf NOT CLEAN: Cartan factor-2 normalization inconsistency disclosed (single-convention re-derivation queued, analytic) + dimensionally inconsistent thermal clause removed; App C verified step-by-step clean → re-derivation → R27conf → sign-off → arXiv",
     },
     {
       slug: "paper-1b",
       number: "1B",
       shortTitle: "MCMC + NaMaster + ALP technical companion",
-      version: "v1B.0.53",
-      readiness: 92,
-      pendingWork: "v1B.0.53 — unchanged this cycle; release-pairing MCMC (#29) running on pod → R26conf → sign-off → arXiv (with P1A)",
+      version: "v1B.0.54",
+      readiness: 95,
+      pendingWork: "v1B.0.54 — R26conf ROUND CLEAN (CPL-crossing accusation falsified, z*=+0.39 inside range; every committed number chain-reproduced; M-tier traceability closures) → SIGN-OFF-READY, awaiting Houston → arXiv (same-day with P1A)",
     },
     {
       slug: "paper-2",
@@ -113,9 +113,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-3",
       number: "3",
       shortTitle: "378K-anomaly multi-survey catalog",
-      version: "v3.1.84",
-      readiness: 91,
-      pendingWork: "v3.1.84 — catalog-grade count corrected 264,938 → 269,317 (LAMOST-overlap double-removal; 6-way dedup verified); HEALPix + SMICA reproducibility documented → R26conf clean → HF flip → arXiv",
+      version: "v3.1.85",
+      readiness: 92,
+      pendingWork: "v3.1.85 — R26conf: zero arithmetic errors, 12 textual closures (cluster accounting exact from dedup artifact; NANOGrav Eq.E1 falsified by rederivation) → 1 ESS (pod) + 2 MAJOR recomputes → R27conf clean → HF flip → arXiv",
     },
     {
       slug: "paper-4",
@@ -129,13 +129,13 @@ export const liveStatus: LiveStatus = {
       slug: "paper-5",
       number: "5",
       shortTitle: "DESI environmental chirality independence",
-      version: "v0.1.56-2026-06-10",
+      version: "v0.1.57-2026-06-11",
       readiness: 92,
-      pendingWork: "v0.1.56 — stratified Phase-2 LEE (p=0.36/0.27) + void-membership null + z-tail no-op (#17–19 CLOSED; #16 randoms missing, documented) → R26conf clean → arXiv (last, after P4)",
+      pendingWork: "v0.1.57 — R26conf: zero arithmetic errors, 9 closures (incl. code-verified tidal-tensor sign doc) → compute-class queue (mask-dilation/randoms rebuilds, footprint re-tabulation) → R27conf clean → arXiv (last, after P4)",
     },
   ],
   blockerTally: {
-    closed: 678, // 677 through R24conf + 1 substantive R25conf catch (P4 App A field-convention); R25conf otherwise CLEAN×2 (P4+P2), 93 P4 findings audited
+    closed: 701, // 678 through the pod wave + 23 R26conf closures (P1A 2 catches + P3 12 textual + P5 9; P1B M-tier traceability closures + CPL falsification not separately tallied); P1B R26conf CLEAN
     openBlockers: 0,
     openMajors: 0,
     openMinors: 0,

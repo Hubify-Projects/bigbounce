@@ -1,6 +1,24 @@
 # arXiv Submission Kit — Houston's 15-min web-form cheat sheet
 
-> **⚡ 2026-06-09 REFRESH (CURRENT — supersedes the April sections below for P4/P1A/P1B).**
+> **⚡ 2026-06-11 REFRESH (CURRENT — R26conf wave).**
+> 🟢 **P1B v1B.0.54 came back R26conf ROUND CLEAN → READY-FOR-SUBMISSION pending Houston sign-off**
+> (third paper at the gate, after P4 + P2). Tarball: `paper1b_arxiv_v1B.0.54.tar.gz`.
+> ⚠️ **P1B is ready but its submission is PAIRED WITH P1A** — per the submission order
+> (P4 → P1A+P1B → P3 → P2 → P5) the companion submits same-day with P1A, and P1A still
+> gates on its Cartan factor-2 re-derivation + R27conf. Houston may sign off P1B now;
+> the actual upload waits for P1A unless Houston explicitly decouples them.
+> ⚠️ **Current versions (2026-06-11, R26conf wave):** P1A v1A.0.54 (md5 4996b35b, 25 pp) /
+> P1B v1B.0.54 (md5 bd19ee37, 16 pp) / P2 v1.7.48 (unchanged) / P3 v3.1.85 (md5 b096e82c, 26 pp) /
+> P4 v1.0.171 (unchanged) / P5 v0.1.57 (md5 642b4807, 27 pp) — tarballs REBUILD as
+> `paper1a_arxiv_v1A.0.54.tar.gz` · `paper1b_arxiv_v1B.0.54.tar.gz` ·
+> `paper2_arxiv_v1.7.48.tar.gz` (unchanged) · `paper3_arxiv_v3.1.85.tar.gz` ·
+> `paper4_arxiv_v1.0.171.tar.gz` (unchanged) · `paper5_arxiv_v0.1.57.tar.gz` via
+> `tools/build_arxiv_tarball.sh` — verify standalone-compile before any submission.
+> P4 + P2 + P1B now READY-FOR-SUBMISSION pending sign-off; P1A/P3/P5 gate on R27conf
+> (P1A also on the Cartan re-derivation; P3 on 1 ESS + 2 MAJOR recomputes; P5 on the
+> mask-dilation/randoms compute queue).
+>
+> **⚡ 2026-06-09 REFRESH (prior — supersedes the April sections below for P4/P1A/P1B).**
 > Fresh tarballs built + standalone-verified (0 errors / 0 undef each) by
 > `tools/build_arxiv_tarball.sh` from today's post-provenance-closure versions.
 > Submission order: **P4 first** (P5 hard-depends on its arXiv ID), P1A+P1B same day.
@@ -12,7 +30,7 @@
 > (GR-degradation calibration ~15%→~23% c9k-verified; c9l σ_theory continuous marginalization;
 > fig4 'BOUNCE EXCLUDED' regen). Both at readiness 95 / SIGN-OFF-READY — submit P4 first, P2 with
 > the first wave, the moment Houston signs off.
-> ⚠️ **Current versions (2026-06-10 late night, pod-session bump):** P1A v1A.0.53 / P1B v1B.0.53 /
+> ⚠️ **Prior versions (2026-06-10 late night, pod-session bump):** P1A v1A.0.53 / P1B v1B.0.53 /
 > P2 v1.7.48 (all three unchanged) / P3 v3.1.84 / P4 v1.0.171 / P5 v0.1.56 — tarballs being REBUILT as
 > `paper1a_arxiv_v1A.0.53.tar.gz` · `paper1b_arxiv_v1B.0.53.tar.gz` ·
 > `paper2_arxiv_v1.7.48.tar.gz` (unchanged) · `paper3_arxiv_v3.1.84.tar.gz` ·
