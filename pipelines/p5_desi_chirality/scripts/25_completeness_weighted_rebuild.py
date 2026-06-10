@@ -389,8 +389,15 @@ def main():
             "delta_w_definition": ("delta_w = n_g / (alpha * n_r_w) - 1 on cells with raw "
                                    "random CIC count >= NR_MIN; alpha = "
                                    "sum(n_g)/sum(n_r_w) over supported cells; delta_w = 0 "
-                                   "elsewhere (zero-padding); <delta_w>_support = 0 by "
-                                   "construction"),
+                                   "elsewhere (zero-padding). The n_r_w-weighted mean of "
+                                   "delta_w over the support is 0 by construction (alpha "
+                                   "normalization), addressing the integral-constraint "
+                                   "family; the UNWEIGHTED per-cell mean is positive "
+                                   "(measured, reported as mean_delta_on_support), "
+                                   "reflecting the radial-profile mismatch between the zall "
+                                   "GALAXY parent and the BGS_BRIGHT clustering selection. "
+                                   "The k=0 mode is zeroed in the Poisson inversion, so the "
+                                   "offset does not enter the tidal classification."),
             "spiral_join_note": ("env classes NN-interpolated at the unique-TARGETID "
                                  "matched-spiral positions; B-vs-A uses the identical "
                                  "in-window spiral set, C-vs-D the identical full set"),
