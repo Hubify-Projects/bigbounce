@@ -10,7 +10,7 @@
 \contentsline {section}{\numberline {II}Theoretical Framework}{5}{section*.8}%
 \contentsline {subsection}{\numberline {A}Loop Quantum Cosmology and the Holst Action}{5}{section*.9}%
 \contentsline {subsubsection}{\numberline {1}Einstein-Cartan-Holst Action}{5}{section*.10}%
-\contentsline {subsubsection}{\numberline {2}Derivation of the Parity-Odd Term}{5}{section*.11}%
+\contentsline {subsubsection}{\numberline {2}Derivation of the Parity-Odd Term}{6}{section*.11}%
 \contentsline {subsubsection}{\numberline {3}Parameter Naturalness}{6}{section*.12}%
 \contentsline {subsection}{\numberline {B}Black Hole Interior and Quantum Bounce}{6}{section*.13}%
 \contentsline {subsection}{\numberline {C}Cosmic Rotation and Dark Energy}{6}{section*.14}%
@@ -19,57 +19,57 @@
 \contentsline {section}{\numberline {III}Observational Signatures}{8}{section*.17}%
 \contentsline {subsection}{\numberline {A}CMB $E$-$B$ Cross-Correlations}{8}{section*.18}%
 \contentsline {subsection}{\numberline {B}Galaxy Spin Asymmetry: A Confirmed Null}{8}{section*.19}%
-\contentsline {section}{\numberline {IV}Four-Route No-Go: Why Each Standard ECH Channel Closes}{8}{section*.20}%
-\contentsline {paragraph}{\numberline {a}Scope: channel-level enumeration, not an operator-level basis.}{8}{section*.21}%
+\contentsline {section}{\numberline {IV}Four-Route No-Go: Why Each Standard ECH Channel Closes}{9}{section*.20}%
+\contentsline {paragraph}{\numberline {a}Scope: channel-level enumeration, not an operator-level basis.}{9}{section*.21}%
 \contentsline {subsection}{\numberline {A}Route 1 (NJL four-fermion contact): closed by Planck suppression}{9}{section*.22}%
-\contentsline {subsection}{\numberline {B}Route 2 (one-loop graviton corrections to the Holst sector): closed by parity-odd coefficient and Planck suppression}{9}{section*.23}%
+\contentsline {subsection}{\numberline {B}Route 2 (one-loop graviton corrections to the Holst sector): closed by parity-odd coefficient and Planck suppression}{10}{section*.23}%
 \contentsline {subsection}{\numberline {C}Route 3 (quantum running of the Immirzi parameter): closed by mass-dimension lock}{10}{section*.24}%
-\contentsline {subsection}{\numberline {D}Route 4 (parity-odd CMB coupling via spectator ALP or neutrino current): naturalness objection rather than amplitude no-go}{10}{section*.25}%
-\contentsline {subsection}{\numberline {E}Closure summary}{11}{section*.26}%
+\contentsline {subsection}{\numberline {D}Route 4 (parity-odd CMB coupling via spectator ALP or neutrino current): naturalness objection rather than amplitude no-go}{11}{section*.25}%
+\contentsline {subsection}{\numberline {E}Closure summary}{12}{section*.26}%
 \contentsline {section}{\numberline {V}Data Methods: Galaxy Spin Analysis}{12}{section*.27}%
-\contentsline {section}{\numberline {VI}Systematic Analysis}{12}{section*.28}%
-\contentsline {section}{\numberline {VII}Falsification Criteria}{12}{section*.29}%
+\contentsline {section}{\numberline {VI}Systematic Analysis}{13}{section*.28}%
+\contentsline {section}{\numberline {VII}Falsification Criteria}{13}{section*.29}%
 \contentsline {section}{\numberline {VIII}Related Work}{13}{section*.30}%
 \contentsline {section}{\numberline {IX}Structural Constraints on Dark-Energy Routes in Minimal ECH}{13}{section*.31}%
-\contentsline {subsection}{\numberline {A}Barrier 1: Mass-Coupling Lock (Foundation A)}{13}{section*.32}%
-\contentsline {subsection}{\numberline {B}Barrier 2: Topological-Shift Duality (Foundation B)}{13}{section*.33}%
-\contentsline {subsection}{\numberline {C}Barrier 3: Scalar-Tensor Universality (Foundation C)}{13}{section*.34}%
-\contentsline {subsection}{\numberline {D}Barrier 4: Planck Suppression (Foundation D)}{13}{section*.35}%
-\contentsline {subsection}{\numberline {E}Barrier 5: Scale Separation (Foundation E)}{13}{section*.36}%
-\contentsline {subsection}{\numberline {F}Barrier 6: Attractor-Sensitivity Dilemma (Foundation F)}{13}{section*.37}%
-\contentsline {subsection}{\numberline {G}Barrier 7: Parameter Immunity (Foundation G)}{13}{section*.38}%
-\contentsline {subsection}{\numberline {H}Barrier 8: Parity-Even Interaction (Branch H)}{14}{section*.39}%
-\contentsline {subsection}{\numberline {I}Barrier 9: Liouville Conservation (Branch J)}{15}{section*.40}%
-\contentsline {subsection}{\numberline {J}Barrier 10: UV$\to $IR Specificity Dilemma (Branch L)}{15}{section*.41}%
-\contentsline {subsection}{\numberline {K}Barrier 11: Decoupling Universality (Branches L/M)}{15}{section*.42}%
-\contentsline {subsection}{\numberline {L}Barrier 12: Vacuum Amplification Ceiling (Branch M)}{15}{section*.43}%
-\contentsline {subsection}{\numberline {M}Barrier 13: Gravitational Democracy (Branches N/O)}{15}{section*.44}%
+\contentsline {subsection}{\numberline {A}Barrier 1: Mass-Coupling Lock (Foundation A)}{14}{section*.32}%
+\contentsline {subsection}{\numberline {B}Barrier 2: Topological-Shift Duality (Foundation B)}{14}{section*.33}%
+\contentsline {subsection}{\numberline {C}Barrier 3: Scalar-Tensor Universality (Foundation C)}{14}{section*.34}%
+\contentsline {subsection}{\numberline {D}Barrier 4: Planck Suppression (Foundation D)}{14}{section*.35}%
+\contentsline {subsection}{\numberline {E}Barrier 5: Scale Separation (Foundation E)}{14}{section*.36}%
+\contentsline {subsection}{\numberline {F}Barrier 6: Attractor-Sensitivity Dilemma (Foundation F)}{14}{section*.37}%
+\contentsline {subsection}{\numberline {G}Barrier 7: Parameter Immunity (Foundation G)}{16}{section*.38}%
+\contentsline {subsection}{\numberline {H}Barrier 8: Parity-Even Interaction (Branch H)}{16}{section*.39}%
+\contentsline {subsection}{\numberline {I}Barrier 9: Liouville Conservation (Branch J)}{16}{section*.40}%
+\contentsline {subsection}{\numberline {J}Barrier 10: UV$\to $IR Specificity Dilemma (Branch L)}{16}{section*.41}%
+\contentsline {subsection}{\numberline {K}Barrier 11: Decoupling Universality (Branches L/M)}{16}{section*.42}%
+\contentsline {subsection}{\numberline {L}Barrier 12: Vacuum Amplification Ceiling (Branch M)}{16}{section*.43}%
+\contentsline {subsection}{\numberline {M}Barrier 13: Gravitational Democracy (Branches N/O)}{16}{section*.44}%
 \contentsline {subsection}{\numberline {N}Barrier 14: Perturbation Transparency}{16}{section*.45}%
 \contentsline {section}{\numberline {X}The Perturbation-Transparency Result}{16}{section*.46}%
 \contentsline {subsection}{\numberline {A}Statement}{16}{section*.47}%
-\contentsline {subsection}{\numberline {B}Proof (Scalar Sector)}{16}{section*.48}%
-\contentsline {subsection}{\numberline {C}Extension to Tensor Sector}{16}{section*.49}%
-\contentsline {subsection}{\numberline {D}Explicit Verification: The Holst Term in Perturbation Theory}{16}{section*.50}%
+\contentsline {subsection}{\numberline {B}Proof (Scalar Sector)}{17}{section*.48}%
+\contentsline {subsection}{\numberline {C}Extension to Tensor Sector}{17}{section*.49}%
+\contentsline {subsection}{\numberline {D}Explicit Verification: The Holst Term in Perturbation Theory}{17}{section*.50}%
 \contentsline {subsection}{\numberline {E}What Would Break the Transparency}{17}{section*.51}%
-\contentsline {subsection}{\numberline {F}Implications}{17}{section*.52}%
-\contentsline {subsection}{\numberline {G}Discrimination Among Bouncing Cosmologies}{17}{section*.53}%
-\contentsline {section}{\numberline {XI}The Hybrid Dark-Energy Loophole}{17}{section*.54}%
-\contentsline {section}{\numberline {XII}Discussion}{17}{section*.55}%
-\contentsline {subsection}{\numberline {A}The Inflationary Suppression Factor}{17}{section*.56}%
-\contentsline {subsection}{\numberline {B}Theoretical Implications}{18}{section*.57}%
+\contentsline {subsection}{\numberline {F}Implications}{18}{section*.52}%
+\contentsline {subsection}{\numberline {G}Discrimination Among Bouncing Cosmologies}{18}{section*.53}%
+\contentsline {section}{\numberline {XI}The Hybrid Dark-Energy Loophole}{18}{section*.54}%
+\contentsline {section}{\numberline {XII}Discussion}{18}{section*.55}%
+\contentsline {subsection}{\numberline {A}The Inflationary Suppression Factor}{18}{section*.56}%
+\contentsline {subsection}{\numberline {B}Theoretical Implications}{19}{section*.57}%
 \contentsline {section}{\numberline {XIII}Surviving Mechanism-Independent Tests}{19}{section*.58}%
-\contentsline {section}{\numberline {XIV}Limitations and Future Directions}{19}{section*.59}%
-\contentsline {subsection}{\numberline {A}Current Limitations}{19}{section*.60}%
-\contentsline {subsubsection}{\numberline {1}Theoretical}{19}{section*.61}%
+\contentsline {section}{\numberline {XIV}Limitations and Future Directions}{20}{section*.59}%
+\contentsline {subsection}{\numberline {A}Current Limitations}{20}{section*.60}%
+\contentsline {subsubsection}{\numberline {1}Theoretical}{20}{section*.61}%
 \contentsline {subsubsection}{\numberline {2}Observational}{20}{section*.62}%
-\contentsline {subsection}{\numberline {B}Robustness to Galaxy Spin Null Results}{20}{section*.63}%
-\contentsline {subsection}{\numberline {C}Discriminating Observational Channels}{20}{section*.64}%
-\contentsline {subsection}{\numberline {D}Structural Tension: Dark Energy vs.\ Bounce $f_{\rm NL}$}{20}{section*.65}%
-\contentsline {subsection}{\numberline {E}Channel-Level Closure}{20}{section*.66}%
-\contentsline {section}{\numberline {XV}Conclusions}{20}{section*.67}%
-\contentsline {subsection}{\numberline {}Data and Code Availability}{21}{section*.68}%
-\contentsline {section}{\numberline {}Acknowledgments}{21}{section*.69}%
+\contentsline {subsection}{\numberline {B}Robustness to Galaxy Spin Null Results}{21}{section*.63}%
+\contentsline {subsection}{\numberline {C}Discriminating Observational Channels}{21}{section*.64}%
+\contentsline {subsection}{\numberline {D}Structural Tension: Dark Energy vs.\ Bounce $f_{\rm NL}$}{21}{section*.65}%
+\contentsline {subsection}{\numberline {E}Channel-Level Closure}{21}{section*.66}%
+\contentsline {section}{\numberline {XV}Conclusions}{21}{section*.67}%
+\contentsline {subsection}{\numberline {}Data and Code Availability}{22}{section*.68}%
+\contentsline {section}{\numberline {}Acknowledgments}{22}{section*.69}%
 \appendix 
-\contentsline {section}{\numberline {A}Complete Parameter Summary}{21}{section*.70}%
-\contentsline {section}{\numberline {B}Dimensional Status of the Parity-Odd Operator}{21}{section*.71}%
-\contentsline {section}{\numberline {}References}{22}{section*.72}%
+\contentsline {section}{\numberline {A}Complete Parameter Summary}{22}{section*.70}%
+\contentsline {section}{\numberline {B}Dimensional Status of the Parity-Odd Operator}{22}{section*.71}%
+\contentsline {section}{\numberline {}References}{23}{section*.72}%

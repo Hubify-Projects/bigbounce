@@ -45,8 +45,25 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.51}
-\newcommand{\paperTimestamp}{June 9, 2026 PDT}
+\newcommand{\paperVersion}{v1A.0.52}
+\newcommand{\paperTimestamp}{June 10, 2026 PDT}
+% v1A.0.52 (R24conf closeout): 19 textual closures from R24conf truth-audit —
+%   ACT-vs-WMAP+Planck 1.4->1.06 sigma recompute; gamma^2/(gamma^2+1)
+%   contradiction fix (META-E1); Eq.(7)->10^-2 explicit arithmetic (META-M2);
+%   Planck-mass convention + c_omega bookkeeping sentences (E3/M2/META-M4/m4);
+%   rotation caption 10^-22 -> 10^-21 with arithmetic (E10/n3); 50-vs-92
+%   e-fold clarifier (m7); Barrier-9 assumptions (META-M7); t_3 definition
+%   (M13); GW ceiling ansatz label (M5); fig6 caption rewritten to match
+%   actual figure content incl. 115-orders relabel (M9/M11); fig1 caption
+%   N~55 illustrative note (Gemini M1); fig8/fig7 redundancy cross-ref
+%   (Gemini E1); beta(gamma) notation note (META-M3); ALP astro-bounds
+%   clause (META-M5); deg-rad conversion shown (m9); step-5 two-statement
+%   clarifier (m6); Fourier convention note (m13); rho_Lambda^bounce gloss
+%   (m12); Barrier-1 10^-120 -> (H_0/MPl)^2 ~ 10^-122 (m2); F^IJ[K,R]
+%   definition (M14); Shamir claim aligned to P4 committed wording —
+%   spiral-classified subsample, x6-12 amplitude tension, matched-footprint
+%   caveat (META-M8/E7); 14-vs-32 e-fold disambiguation (E9). Truth-audit
+%   table at project-context/peer-reviews/R24conf_P1A_TRUTH_AUDIT.md.
 % v1A.0.49 (TIER A3 fire-17 P1A-META-E2 closure): 10x order-of-magnitude
 %   discrepancy between paper's alpha/M ~ 10^-21 GeV^-1 and the canonical
 %   ALP-photon coupling g_a-gamma = (alpha_em * c_gamma)/(2*pi*f_a) under
@@ -628,7 +645,11 @@ prescriptions, retained as an effective range only and
 the observed dark energy scale, illustrating the phenomenological scaling ansatz
 $\rho_{\rm vac}\sim[(\alpha/M)\,\MPl]\,M_{\rm Pl}^4$ (Sec.~\ref{sec:parityodd},
 Appendix~\ref{app:dimensions}). This ansatz is dimensionally correct on-shell at
-the bounce but is \emph{not} derived from the ECH action.}
+the bounce but is \emph{not} derived from the ECH action. The panel's
+burned-in dilution waypoint is an \emph{illustrative} $N\approx 55$,
+$e^{-3N}\sim 10^{-72}$ schematic; the quantitative bookkeeping of
+Sec.~\ref{sec:gdp} and Appendix~\ref{app:dimensions} uses
+$N_{\rm tot}\approx 92$ with $\Dinf\sim 10^{-121}$.}
 \end{figure}
 
 \subsubsection{Derivation of the Parity-Odd Term}\label{sec:parityodd}
@@ -660,7 +681,14 @@ S_{\rm eff} = \frac{\alpha}{M}\int e_I\wedge e_J\wedge \mathcal{F}^{IJ}[K,\mathr
 where $M = M_{\rm area\text{-}gap}\sim\MPl/\sqrt{\gamma}$ is the LQG area-gap
 mass scale (from the LQG area-gap $\Delta \propto \gamma\,\ell_P^2$, the
 inverse-length / mass scale is $M_\Delta \sim M_{\rm Pl}/\sqrt{\gamma}$ up
-to numerical constants) and $\alpha$ is a dimensionless coupling.
+to numerical constants), $\alpha$ is a dimensionless coupling, and
+$\mathcal{F}^{IJ}[K,\mathring{R}]$ denotes the curvature two-form of the
+full (torsionful) connection, written as a functional of the contorsion
+$K$ and the Levi-Civita curvature $\mathring{R}$; the component form
+Eq.~(\ref{eq:Seff_comp}) displays its leading contribution. (The
+calligraphic $\mathcal{F}$ is reserved for this gravitational curvature;
+the electromagnetic field strength of Sec.~\ref{sec:r4_birefringence} is
+written $F_{\mu\nu}$.)
 
 In components, the leading contribution reduces to
 \begin{equation}\label{eq:Seff_comp}
@@ -676,12 +704,24 @@ and Shapiro \& Teixeira~\cite{ShapiroTeixeira2014}, the one-loop estimate is
 \begin{equation}\label{eq:oneloop}
 \frac{\alpha}{M}\sim \frac{g^2}{32\pi^2}\,\frac{\gamma}{M}\,\ln\!\left(\frac{\Lambda_{\rm UV}^2}{\mu^2}\right)+\delta_{\rm NY},
 \end{equation}
-motivating the order of magnitude $[(\alpha/M)\,\MPl]\sim 10^{-2}$. We treat
-$\alpha/M$ as a phenomenological parameter constrained by data.
+motivating the order of magnitude $[(\alpha/M)\,\MPl]\sim 10^{-2}$.
+Numerically, taking $g^2 = 4\pi\alpha_{\rm em} \approx 0.092$ for the
+electromagnetic estimate, $\gamma \approx 0.274$, $M = \MPl/\sqrt{\gamma}$,
+and the full Planck-to-TeV logarithm
+$\ln(\Lambda_{\rm UV}^2/\mu^2) \approx 74$, the first term evaluates to
+$[(\alpha/M)\,\MPl] \approx 3\times 10^{-3}$ --- within a factor of a few
+of the adopted $10^{-2}$; smaller logarithms or couplings widen the gap,
+which must then be carried by the unestimated $\delta_{\rm NY}$
+contribution. This is precisely why we treat
+$\alpha/M$ as a phenomenological parameter constrained by data rather
+than as a value derived from Eq.~\eqref{eq:oneloop}.
 
 \subsubsection{Parameter Naturalness}\label{sec:naturalness}
 Required dilution of inherited
 rotation is naturally achieved through $\sim 50$ $e$-folds of inflation.
+(This $\sim 50$ $e$-fold statement concerns rotational dilution only; it
+is unrelated to the separate $N_{\rm tot}\approx 92$ dark-energy dilution
+requirement of Sec.~\ref{sec:gdp}.)
 
 
 \subsection{Black Hole Interior and Quantum Bounce}\label{sec:bounce}
@@ -719,7 +759,10 @@ Distance-impact of a residual cosmic rotation component on the late-time
 Hubble flow. The CMB isotropy bound $(\omega/H)_0 < 5\times 10^{-11}$
 from Saadeh~\etal~\cite{Saadeh2016} pins the rotation contribution to
 $\Lambda_{\rm eff} = c_\omega\omega^2$ (Eq.~\ref{eq:Leff_full}) at the
-$\lesssim\!10^{-22}\,\rho_\Lambda^{\rm obs}$ level --- negligible at all
+$\lesssim\!10^{-21}\,\rho_\Lambda^{\rm obs}$ level
+($(\omega/H)_0^2 < 2.5\times 10^{-21}$; dividing by
+$3\Omega_\Lambda \approx 2.1$ gives $\sim\!1.2\times 10^{-21}$ of
+$\rho_\Lambda^{\rm obs}$) --- negligible at all
 redshifts. (The panel's burned-in annotation quotes the equivalent bound as
 a fractional contribution to the expansion rate,
 $|\omega^2/H^2| < 10^{-20}$; the two statements bound the same rotation
@@ -735,7 +778,24 @@ The effective cosmological constant is parameterized as:
 \Xi\equiv \left[\frac{\alpha}{M}\,\MPl\right]\Dinf,
 \end{align}
 where CMB isotropy bounds give $(\omega/H)_0 < 5\times 10^{-11}$~\cite{Saadeh2016},
-making rotation completely negligible. The dark energy scale is set by
+making rotation completely negligible. Units: $\Leff$ carries curvature
+units ($[\text{mass}]^2$, the standard Einstein-equation convention for
+$\Lambda$) and $\Xi$ is dimensionless; the corresponding vacuum energy
+density is $\rho_\Lambda = \Leff\,\MPl^2 = \Xi\,\MPl^4$, so $\Xi$ is the
+dimensionless ratio $\rho_\Lambda/\MPl^4$ --- consistent with the
+$\Xi \lesssim 10^{-123}$ identification below and the $\MPl^4$ ansatz of
+Appendix~B. Throughout this paper $\MPl = G^{-1/2} \approx
+1.22\times 10^{19}\,$GeV is the \emph{unreduced} Planck mass; the
+reduced-mass distinction ($\bar M_{\rm Pl} = \MPl/\sqrt{8\pi}$, a factor
+$8\pi \approx 25$ in $\MPl^2$) is below the order-of-magnitude resolution
+of every estimate in this paper. The $c_\omega\omega^2$ entry is a
+phenomenological bookkeeping bound with dimensionless
+$c_\omega = \mathcal{O}(1)$, \emph{not} a derived isotropic vacuum term:
+in rotating (Bianchi-type) cosmologies vorticity sources anisotropic
+stress rather than an isotropic $\Lambda$, and the entry is retained
+solely to demonstrate negligibility,
+$(\omega/H)_0^2 < (5\times 10^{-11})^2 = 2.5\times 10^{-21}$.
+The dark energy scale is set by
 $\Xi \sim 10^{-123}$ (Sec.~\ref{sec:gdp}).
 
 We emphasize that Eq.~\eqref{eq:Leff_full} is a \textit{phenomenological
@@ -868,8 +928,12 @@ inflationary initial conditions.
 
 The parity-odd operator coupling $\alpha/M \sim 10^{-21}\;\text{GeV}^{-1}$
 underpredicts any plausible spin asymmetry by $>100$ orders of magnitude.
-An independent ViT-Small chirality classifier applied to the full DESI~Legacy~DR8
-galaxy population confirms the null at the dipole level (catalog construction,
+An independent ViT-Small chirality classifier applied to the DESI~Legacy~DR8
+galaxy population --- with the dipole statistic computed on the
+spiral-classified high-confidence subsample ($N\approx 9.5\times 10^{5}$
+equivariant spirals at winning-class confidence $>0.6$), not on the
+unselected all-galaxy sample --- confirms the null at the dipole level
+(catalog construction,
 sample size, accuracy, bias-audit suite, and dipole/hemisphere/$\fcw^{\rm eq}$
 significances are reported in Paper~IV~\cite{Golden2026P4}). Galaxy spin
 asymmetry is not a prediction of the theory.
@@ -904,8 +968,12 @@ Paper~I(b)~\cite{Golden2026P1b}.
 
 An independent ViT-Small chirality classifier (full bias-audit, sample size,
 accuracy, and dipole/hemisphere significances reported in
-Paper~IV~\cite{Golden2026P4}) returns a null all-sky dipole and refutes
-Shamir's claimed $3\%$ asymmetry at high significance. The minimal ECH
+Paper~IV~\cite{Golden2026P4}) returns a null all-sky dipole on the
+spiral-classified high-confidence subsample and is in amplitude tension
+with Shamir's claimed $\sim\!3\%$ asymmetry by a factor of $\sim\!6$--$12$
+under that pipeline (a matched-footprint Ganalyzer-style reanalysis is
+required for a likelihood-level exclusion; see
+Paper~IV~\cite{Golden2026P4}). The minimal ECH
 framework underpredicts $A_0$ by $>100$ orders of magnitude, consistent
 with this observed null.
 
@@ -968,8 +1036,9 @@ amplitude-level no-go without claiming operator-level exhaustiveness.
 
 Three technical aspects of the derivation require careful dimensional and
 parity accounting, addressed as follows:
-(a)~the dimensional reconstruction of $\rho_\Lambda^{\rm bounce}$ in
-Appendix~\ref{app:dimensions} requires an internally consistent mass-dimension
+(a)~the dimensional reconstruction of $\rho_\Lambda^{\rm bounce}$ (the
+bounce-epoch vacuum-energy scale, defined by
+Eq.~(\ref{eq:onshell_rho})) in Appendix~\ref{app:dimensions} requires an internally consistent mass-dimension
 accounting between $(\alpha/M)\, M_{\rm Pl}^3$ (dimension $+2$) and the
 equivalent rewriting $[(\alpha/M)\, M_{\rm Pl}]\, M_{\rm Pl}^4$ (dimension
 $+4$); the choice of $M_{\rm Pl}^{5}$ vs.\ $M_{\rm Pl}^{3}$ controls the
@@ -1028,9 +1097,12 @@ NJL contact term cannot drive late-time acceleration in any
 Einstein--Cartan model with Standard Model matter content alone, and is
 moreover parity-even and therefore unable to source the parity-odd
 $E\!B$ correlation reported in Sec.~\ref{sec:EB}. Adding the Holst term
-(see R2 below) does not relax this bound because the
-torsion-elimination map is independent of $\gamma$ at the
-classical level. \emph{Closure: amplitude-suppressed and parity-even.}
+(see R2 below) does not relax this bound: with minimal fermion coupling
+the torsion-elimination map modifies the contact-term coefficient only
+through the bounded prefactor $\gamma^2/(\gamma^2+1)\in(0,1)$ of
+Eq.~\eqref{eq:4fermi}, which cannot enhance the amplitude above its
+pure-Einstein--Cartan ($\gamma\to\infty$) value.
+\emph{Closure: amplitude-suppressed and parity-even.}
 
 \subsection{Route 2 (one-loop graviton corrections to the Holst sector):
 closed by parity-odd coefficient and Planck suppression}
@@ -1061,7 +1133,9 @@ $\vartheta_{\rm NY}$ to distinguish it from the photon-sector spectator
 ALP $\theta$ of Sec.~\ref{sec:r4_birefringence}; no identification
 between the two fields is assumed anywhere in this paper), $J^{5\mu}$
 is the fermion axial current, and $\beta(\gamma)$ is a slowly varying
-function of $\gamma$. The form is the natural EFT operator built from the
+function of $\gamma$ (written with its explicit argument throughout to
+distinguish this renormalization-group function from the cosmic
+birefringence angle $\beta$ of Sec.~\ref{sec:r4_birefringence}). The form is the natural EFT operator built from the
 Nieh--Yan pseudoscalar and the chiral current at the
 $M_{\rm Pl}^{-1}\,\alpha_{\rm em}/(4\pi)$ scale; no published
 calculation currently derives this exact coefficient structure from
@@ -1081,21 +1155,19 @@ where $\alpha_{\rm em}/(4\pi) \approx 5 \times 10^{-4}$ (more precisely $\approx
 10^{-61}$, and the R4-fitted coupling $\alpha/M \sim 10^{-21}\,\text{GeV}^{-1}$
 gives $M_{\rm Pl}\cdot(\alpha/M) \sim 10^{19}\,\text{GeV} \cdot
 10^{-21}\,\text{GeV}^{-1} = 10^{-2}$. Plugging in $\beta_{\rm obs}
-\sim 6\times 10^{-3}\,\text{rad}$, the dimensionless ratio is
+= 0.342^\circ \approx 6\times 10^{-3}\,\text{rad}$
+($0.342\times\pi/180 = 5.97\times 10^{-3}$), the dimensionless ratio is
 $\Delta\theta_{\rm one\text{-}loop}/\Delta\theta_{\rm obs} \sim
-10^{-3} \cdot 10^{-61}/(10^{-2}\cdot 6\times 10^{-3})\sim 10^{-58}$
-to $10^{-60}$ (the factor-of-$\sim$100 ambiguity reflects the
-perturbative order at which the quasi-dust $\varepsilon$-correction
-enters the loop estimate --- here $\varepsilon = 3(1+w)/2$ is the
-matter-bounce contraction equation-of-state parameter and the
-``$\varepsilon$-correction'' is the $\mathcal{O}(\varepsilon - 3/2)$
-quasi-dust correction defined in the companion $f_{\rm NL}$ forecast
-paper; the
+10^{-3} \cdot 10^{-61}/(10^{-2}\cdot 6\times 10^{-3})\approx 10^{-60}$
+(canonical evaluation of the displayed contraction; we conservatively
+allow up to two orders of magnitude for unmodeled higher-order
+loop-ordering corrections, i.e.\ suppression by at least $10^{-58}$ ---
+an explicit conservatism allowance, \emph{not} a derived range; the
 $\mathrm{eV}$-vs-$\mathrm{GeV}$ unit conversion is exact
 $1\,\mathrm{GeV} = 10^9\,\mathrm{eV}$ and is not a source of
 ambiguity), i.e.\ the one-loop induced $\beta$ is suppressed by
-$\sim 58$--$60$ orders of magnitude relative to the observed
-signal. We adopt this contraction as the canonical Route-2 estimate;
+${\approx}60$ (conservatively $\geq 58$) orders of magnitude relative
+to the observed signal. We adopt this contraction as the canonical Route-2 estimate;
 an alternative ordering that contracts the $H_0$ factor with the
 dimensionful coupling differently yields a numerically distinct
 $\sim 10^{-33}$ ratio. The canonical-bound conclusion that the
@@ -1202,7 +1274,8 @@ measurement $\beta_{\rm obs} = 0.342^\circ \pm 0.094^\circ$
 ($\sim\!3.6\sigma$ from~$\beta=0$;~\cite{Minami2020,Eskilt2022}; the
 independent ACT~DR6 follow-up of Diego-Palazuelos~\&~Komatsu~\cite{DiegoPalazuelos2025}
 reports $\beta = 0.215^\circ \pm 0.074^\circ$ at $\sim\!2.9\sigma$, consistent
-within $\sim\!1.4\sigma$) bounds $\alpha/M$ at
+within $\sim\!1.1\sigma$:
+$|0.342-0.215|/\sqrt{0.094^2+0.074^2} = 0.127/0.120 \approx 1.06$) bounds $\alpha/M$ at
 $\sim 10^{-21}\,\text{GeV}^{-1}$\footnote{The paper's $\alpha/M$ is
 \emph{not} the canonical ALP--photon Chern--Simons coupling
 $g_{a\gamma}\equiv(\alpha_{\rm em}\,c_\gamma)/(2\pi f_a)$; the two
@@ -1250,7 +1323,7 @@ $m_\theta \sim H_0$ to also produce $\rho_\Lambda$, and this tuning
 is the original CC fine-tuning relabelled. For any $m_\theta$ in the
 natural ALP range ($m_a \in [10^{-22}, 10^{-15}]\,$eV) the produced
 $\rho_\theta \propto m_\theta^2$ \emph{overshoots} $\rho_\Lambda$
-across the entire natural range (because the $\rho_\theta=\rho_\Lambda$ matching point lies at $m_\theta\approx 0.4\,H_0\sim H_0$ with $H_0\approx 1.5\times 10^{-33}$\,eV, and the natural ALP range lies entirely \emph{above} that point, so the overshoot is monotonic in $m_\theta$ and is bounded below by its lower-endpoint value ($\sim\!22$ OOM at $m_\theta \sim 10^{-22}$\,eV) and grows to $\sim\!36$ OOM at the upper endpoint $m_\theta \sim 10^{-15}$\,eV); this overshoot conclusion is conditional on the one-loop estimate $\alpha/M \sim 10^{-21}\,\text{GeV}^{-1}$ being rigidly bounded by the photon-Chern-Simons matching ---  if $\alpha/M$ is instead treated as a free phenomenological parameter, both $\beta_{\rm obs}$ and $\rho_\Lambda$ can be matched for arbitrary $m_\theta$ by scaling $\alpha/M \propto m_\theta$ (e.g.,\ requiring $\alpha/M \sim 10^{-10}\,\text{GeV}^{-1}$ at $m_\theta \sim 10^{-22}\,\text{eV}$), so the rigidity of the no-go is tied to the one-loop matching assumption rather than to ALP-mass kinematics alone: at $m_\theta \sim 10^{-22}$\,eV the
+across the entire natural range (because the $\rho_\theta=\rho_\Lambda$ matching point lies at $m_\theta\approx 0.4\,H_0\sim H_0$ with $H_0\approx 1.5\times 10^{-33}$\,eV, and the natural ALP range lies entirely \emph{above} that point, so the overshoot is monotonic in $m_\theta$ and is bounded below by its lower-endpoint value ($\sim\!22$ OOM at $m_\theta \sim 10^{-22}$\,eV) and grows to $\sim\!36$ OOM at the upper endpoint $m_\theta \sim 10^{-15}$\,eV); this overshoot conclusion is conditional on the one-loop estimate $\alpha/M \sim 10^{-21}\,\text{GeV}^{-1}$ being rigidly bounded by the photon-Chern-Simons matching ---  if $\alpha/M$ is instead treated as a free phenomenological parameter, both $\beta_{\rm obs}$ and $\rho_\Lambda$ can be matched for arbitrary $m_\theta$ by scaling $\alpha/M \propto m_\theta$ (e.g.,\ requiring $\alpha/M \sim 10^{-10}\,\text{GeV}^{-1}$ at $m_\theta \sim 10^{-22}\,\text{eV}$; couplings of that size at ultralight masses are moreover in strong tension with established astrophysical ALP--photon limits from helioscope and stellar-cooling constraints, so this free-coupling direction illustrates the degeneracy structure of the matching formula rather than an open parameter direction), so the rigidity of the no-go is tied to the one-loop matching assumption rather than to ALP-mass kinematics alone: at $m_\theta \sim 10^{-22}$\,eV the
 overshoot is ${\sim}22$ orders of magnitude $(m_\theta/H_0)^2 \sim
 (10^{11})^2 \sim 10^{22}$, and at $m_\theta \sim 10^{-15}$\,eV
 the overshoot is ${\sim}36$ orders of magnitude $(m_\theta/H_0)^2 \sim (10^{18})^2 \sim 10^{36}$; the
@@ -1334,7 +1407,10 @@ population. The catalog construction, sample size, validation accuracy, bias-
 audit suite, equivariant CW-fraction monopole, and dipole significance are
 reported in Paper~IV~\cite{Golden2026P4} and are not duplicated here. The
 observational conclusion is the null result of Sec.~\ref{sec:spinobs}: the
-all-sky dipole is null and Shamir's $3\%$ claim is refuted.
+all-sky dipole is null on the spiral-classified subsample, and Shamir's
+$3\%$ claim is disfavored in amplitude by a factor of $\sim\!6$--$12$
+(matched-footprint reanalysis required for a likelihood-level exclusion;
+Paper~IV~\cite{Golden2026P4}).
 
 
 %% ============================================================
@@ -1425,16 +1501,24 @@ formation in matter bounce), and Dehghani~\etal~\cite{Dehghani:2025cusc}
 \begin{figure*}[t]
 \centering
 \includegraphics[width=0.95\textwidth]{figures/figure6_parameter_naturalness.png}
-\caption{\textbf{Naturalness landscape for the four minimal-ECH dark-energy routes}
-(R1 NJL, R2 one-loop effective action, R3 Immirzi running, R4 parity-CMB
-spectator-ALP). Each route is shown as a point in the (mass$\!\times\!$coupling)
-plane required to source $\rho_\Lambda$ at the observed value, with the
-naturalness window (gray band) defined by the scale of the underlying physics
-($M_{\rm Pl}$ for R3, $H_0$ for R4 spectator-ALP via the
-cosmological-constant-class tuning admitted in
-\S\ref{sec:r4_birefringence}). All four routes either sit outside the
-naturalness window or require a $m_\theta\!\sim\!H_0$ tuning that re-imports
-the cosmological-constant problem. The 13 logically-independent barriers
+\caption{\textbf{Parameter-naturalness diagnostics for the minimal-ECH
+dark-energy parameterization.} \emph{Top:} renormalization-group running of
+the parity-odd coupling $\alpha/M$ from the present epoch to the Planck
+scale, anchored at the primordial benchmark
+$\alpha/M\sim 10^{-21}\,$GeV$^{-1}$ (Sec.~\ref{sec:r4_birefringence}).
+\emph{Bottom:} fine-tuning-score comparison (orders of magnitude of
+residual tuning): $\Lambda$CDM ($10^{120}$), quintessence ($10^{60}$),
+$f(R)$ gravity ($10^{40}$), and the spin-torsion $N_{\rm tot}$
+parameterization of this work ($10^{5}$). The burned-in ``115 orders of
+magnitude improvement'' annotation refers to this \emph{score}
+difference under the $N_{\rm tot}$ reparameterization; per
+Sec.~\ref{sec:gdp} this is a reparameterization of the
+cosmological-constant problem as sensitivity to $N_{\rm tot}$,
+\emph{not} a resolution, and the residual $10^{5}$ inherits the
+order-of-magnitude status discussed there. All four enumerated routes
+either sit outside their naturalness windows or require a
+$m_\theta\!\sim\!H_0$ tuning that re-imports the cosmological-constant
+problem; the 13 logically-independent barriers
 (Table~\ref{tab:barriers}) constrain the routes at the amplitude
 level.\label{fig:naturalness}}
 \end{figure*}
@@ -1484,11 +1568,17 @@ gravitational democracy, included for completeness.
 In Poincar\'{e} gauge theory (PGT), ultralight torsion modes ($m_T\sim H_0$)
 require coupling:
 \begin{equation}
-g_{\rm eff} \sim \frac{1}{\MPl\sqrt{|t_3|}} \sim \frac{H_0}{\MPl} \sim 10^{-61}.
+g_{\rm eff} \sim \frac{1}{\MPl\sqrt{|t_3|}} \sim \frac{H_0}{\MPl} \sim 10^{-61},
 \end{equation}
+where $t_3$ is the quadratic-torsion coupling of the PGT Lagrangian
+controlling the tensor-torsion mode mass, with
+$\sqrt{|t_3|} \sim m_T^{-1}$ for an ultralight mode ($m_T \sim H_0$),
+which makes $g_{\rm eff}$ dimensionless and yields the displayed
+$H_0/\MPl$ equality; the chain is a scaling ansatz of the PGT mass
+spectrum, labeled as such, not a derived equality.
 To achieve $g_{\rm eff}\sim 1$, one needs $m_T\sim\MPl$. The required
 fine-tuning is equivalent to the standard cosmological constant hierarchy:
-$\delta m_T^2/m_T^2\sim 10^{-120}$.
+$\delta m_T^2/m_T^2\sim (H_0/\MPl)^2 \sim 10^{-122}$.
 
 \subsection{Barrier 2: Topological-Shift Duality (Foundation B)}
 
@@ -1550,7 +1640,14 @@ perturbation-transparency result (Barrier 14).
 Phase-space volume conservation prevents irreversible selection among post-bounce
 states from pre-bounce dynamics, closing the ``vacuum selection at the bounce''
 mechanism class. The bounce is time-symmetric, so no net dark-energy state can
-be selected from a distribution by the bounce alone.
+be selected from a distribution by the bounce alone. This barrier is a
+heuristic closure under explicit assumptions: closed Hamiltonian
+(non-dissipative) evolution through the bounce, no particle production,
+and no coarse-grained entropy injection. Scenarios that break these
+assumptions (dissipative or particle-producing bounces) evade Barrier~9
+as stated and are constrained instead by the amplitude-budget arguments
+of Barriers~10--11; Barrier~9 is not used as a stand-alone closure of
+any route.
 
 \subsection{Barrier 10: UV$\to$IR Specificity Dilemma (Branch L)}
 
@@ -1573,7 +1670,7 @@ Gravitational wave production from the ECH bounce is bounded above by:
 \begin{equation}
 \Omega_{\rm GW}^{\rm ECH}|_{\rm bounce} \lesssim \left(\frac{\rhocrit}{\rhoPl}\right)^2 \simeq 0.07\text{--}0.17,
 \end{equation}
-where we have used the LQG-bounce critical-density window $\rhocrit/\rhoPl \simeq 0.27\text{--}0.41$ from the Ashtekar--Singh effective-LQC status report~\cite{Ashtekar2011}. This total bounce-epoch GW energy-density fraction is not directly comparable to the present-day PTA spectral-density measurement $\Omega_{\rm GW}(f_{\rm nHz}) \sim 10^{-9}$, which differs by both (i)~redshift / cosmological-dilution factors from the bounce epoch to today, and (ii)~the integration over frequency to recover a spectral density at a given band. A quantitative comparison to NANOGrav requires propagating the bounce GW spectrum through the transfer function to the nHz band, which is deferred to a forthcoming bounce-GW dedicated paper (deferred); for the present analysis, Barrier~12 closes as a global energy-density-fraction ceiling rather than a direct NANOGrav exclusion.
+where we have used the LQG-bounce critical-density window $\rhocrit/\rhoPl \simeq 0.27\text{--}0.41$ from the Ashtekar--Singh effective-LQC status report~\cite{Ashtekar2011}. The quadratic scaling in $\rhocrit/\rhoPl$ is adopted here as an order-of-magnitude ceiling \emph{ansatz} (not derived in this paper); Barrier~12 is correspondingly used only as a global ceiling, not as a precise bound. This total bounce-epoch GW energy-density fraction is not directly comparable to the present-day PTA spectral-density measurement $\Omega_{\rm GW}(f_{\rm nHz}) \sim 10^{-9}$, which differs by both (i)~redshift / cosmological-dilution factors from the bounce epoch to today, and (ii)~the integration over frequency to recover a spectral density at a given band. A quantitative comparison to NANOGrav requires propagating the bounce GW spectrum through the transfer function to the nHz band, which is deferred to a forthcoming bounce-GW dedicated paper (deferred); for the present analysis, Barrier~12 closes as a global energy-density-fraction ceiling rather than a direct NANOGrav exclusion.
 
 \subsection{Barrier 13: Gravitational Democracy (Branches N/O)}
 
@@ -1628,7 +1725,11 @@ density $\propto R\,\widetilde R$ (a two-curvature topological invariant) ---
 see the explicit verification below.
 
 \item \textbf{No equations of motion.} A total derivative contributes nothing
-to variational equations at all orders.
+to variational equations at all orders. (This step is logically distinct
+from the pointwise Bianchi-vanishing of the previous step: at $T=0$ the
+stronger pointwise vanishing already applies; the total-derivative
+statement covers the residual Nieh--Yan boundary term
+$d(e_I\wedge T^I)$ at nonzero torsion.)
 \end{enumerate}
 
 \subsection{Extension to Tensor Sector}
@@ -1639,7 +1740,10 @@ perturbation equation:
 h''_{ij} + 2\mathcal{H}h'_{ij} + k^2 h_{ij} = 0
 \end{equation}
 (primes denote derivatives with respect to conformal time $\eta$, and
-$\mathcal{H}\equiv a'/a$ is the conformal Hubble rate; in cosmic time the
+$\mathcal{H}\equiv a'/a$ is the conformal Hubble rate; Fourier modes
+$h_{ij}(\mathbf{k},\eta)$ follow the standard
+$e^{i\mathbf{k}\cdot\mathbf{x}}$ convention for the transverse-traceless
+amplitude; in cosmic time, using $dt = a\,d\eta$, the
 equivalent form is $\ddot h_{ij} + 3H\dot h_{ij} + (k^2/a^2)h_{ij}=0$)
 has no parity-dependent modifications. Left and right circular polarization
 modes propagate identically:
@@ -1824,10 +1928,17 @@ therefore carries an order-of-magnitude uncertainty inherited from this
 prefactor. The sign and qualitative conclusion---that the matter-bounce
 mechanism cannot generate dark energy without re-importing
 cosmological-constant fine-tuning---survives the OOM uncertainty,
-because the surplus required to close the gap is $\sim 14$ $e$-folds,
+because the surplus required to close the gap is $\sim 14$ $e$-folds
+(the fine-tuning-gap surplus of the present order-of-magnitude
+argument; this is a different quantity from --- and smaller than ---
+the $N_{\rm tot}-N_{\rm exit}\approx 32$ $e$-fold signal-erasure
+differential of Sec.~\ref{sec:structural_tension}, so the conclusion
+holds a fortiori for the larger differential),
 whereas the quasi-dust $\varepsilon$-correction-driven prefactor
-adjustment (same $\varepsilon$-correction as in the Route-2 loop
-estimate above) is $\lesssim 1$ $e$-fold. A rigorous derivation of the prefactor from the
+adjustment (the $\mathcal{O}(\varepsilon-3/2)$ equation-of-state
+correction of the matter-bounce contraction, $\varepsilon = 3(1+w)/2$,
+defined in the companion $f_{\rm NL}$ forecast paper) is
+$\lesssim 1$ $e$-fold. A rigorous derivation of the prefactor from the
 bounce-junction matching is deferred to future work and would not change
 the structural-tension verdict.
 
@@ -1876,7 +1987,12 @@ Bottom: spectator-ALP cosmic birefringence in the LiteBIRD $\sigma(\beta)
 $\beta=0.342^\circ\pm 0.094^\circ$ and ACT~DR6 $\beta=0.215^\circ\pm 0.074^\circ$
 points are shown for reference. Both forecasts are decisive ($\gtrsim 5\sigma$
 on Stage~III/IV survey timescales); neither is uniquely an ECH prediction
-(\S\ref{sec:surviving}).\label{fig:detection_forecast}}
+(\S\ref{sec:surviving}). The significance tracks duplicate the $\rho=0$
+combination of Fig.~\ref{fig:obs_timeline}; this panel is the summary
+view retained for the surviving-tests discussion, while
+Fig.~\ref{fig:obs_timeline} additionally shows the correlated
+($\rho=0.3,0.5$) combinations and milestone
+annotations.\label{fig:detection_forecast}}
 \end{figure}
 
 Despite the channel-level closure of the four enumerated minimal-ECH
