@@ -45,7 +45,7 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.50}
+\newcommand{\paperVersion}{v1A.0.51}
 \newcommand{\paperTimestamp}{June 9, 2026 PDT}
 % v1A.0.49 (TIER A3 fire-17 P1A-META-E2 closure): 10x order-of-magnitude
 %   discrepancy between paper's alpha/M ~ 10^-21 GeV^-1 and the canonical
@@ -680,8 +680,7 @@ motivating the order of magnitude $[(\alpha/M)\,\MPl]\sim 10^{-2}$. We treat
 $\alpha/M$ as a phenomenological parameter constrained by data.
 
 \subsubsection{Parameter Naturalness}\label{sec:naturalness}
-The parent black hole mass must exceed $M_{\rm crit}\approx 10^{-3}M_\odot$,
-easily satisfied by any astrophysical black hole. Required dilution of inherited
+Required dilution of inherited
 rotation is naturally achieved through $\sim 50$ $e$-folds of inflation.
 
 
@@ -721,7 +720,10 @@ Hubble flow. The CMB isotropy bound $(\omega/H)_0 < 5\times 10^{-11}$
 from Saadeh~\etal~\cite{Saadeh2016} pins the rotation contribution to
 $\Lambda_{\rm eff} = c_\omega\omega^2$ (Eq.~\ref{eq:Leff_full}) at the
 $\lesssim\!10^{-22}\,\rho_\Lambda^{\rm obs}$ level --- negligible at all
-redshifts. The dark-energy mechanism in this paper is therefore the
+redshifts. (The panel's burned-in annotation quotes the equivalent bound as
+a fractional contribution to the expansion rate,
+$|\omega^2/H^2| < 10^{-20}$; the two statements bound the same rotation
+term in different units.) The dark-energy mechanism in this paper is therefore the
 $\Xi\,\MPl^2$ term sourced by the parity-odd contorsion sector
 (\S\ref{sec:parityodd}), \emph{not} the rotation
 component.\label{fig:rotation_expansion}}
@@ -816,7 +818,11 @@ entire fine-tuning sensitivity that motivates the $\Delta N_{\rm tot}
 M_{\rm GUT})^{3/2}$ prefactor is not a tunable handle.
 
 Matching $\rho_\Lambda \approx (2.3\;\text{meV})^4$ requires $N_{\rm tot} \approx 92$
-(a fitted parameter, not predicted). This reparameterizes the fine-tuning hierarchy
+(a fitted parameter, not predicted); $N_{\rm tot}\approx 92$ is the
+canonical value used throughout this paper, while the independent
+$\MPl^4$-to-$\rho_\Lambda^{\rm obs}$ order-of-magnitude estimate of
+Appendix~B gives $\approx 94$, a ${\sim}2\%$ reparameterization offset
+that does not affect any closure conclusion. This reparameterizes the fine-tuning hierarchy
 from $10^{122}$ (the genuine $\MPl^4/\rho_\Lambda^{\rm obs}$ cosmological-constant
 hierarchy; see Appendix~\ref{app:dimensions}) to $\sim 10^5$ as sensitivity to
 $\Delta N_{\rm tot}\approx 4$ $e$-folds.
@@ -881,6 +887,12 @@ cosmic birefringence. For a spatially uniform rotation:
 \begin{equation}\label{eq:ClEB}
 C_\ell^{EB}\approx 2\beta\left(C_\ell^{EE}-C_\ell^{BB}\right).
 \end{equation}
+Eq.~\eqref{eq:ClEB} is the small-angle, spatially uniform-rotation
+limit; the $C_\ell^{BB}$ term, dominated by gravitational lensing at
+current sensitivities, is \emph{not} neglected in the published
+$\beta$ estimators whose measured values we quote
+below~\cite{Minami2020,Eskilt2022}, and this paper performs no
+independent $E\!B$-based $\beta$ extraction.
 Connecting to a quantitative rotation angle $\beta$ from the gravitational/torsion
 operator requires an explicit photon-torsion coupling that has not been derived
 here. The parity-odd structure is qualitatively consistent with the observed
@@ -1004,7 +1016,13 @@ $\kappa = 1/M_{\rm Pl}^2$ and $n_\psi$ has mass-dim~$+3$, so the energy
 density carries the correct mass-dim~$+4$),
 which for the largest plausible cosmic fermion densities at recombination
 or post-recombination is many orders of magnitude below the present-day
-dark-energy density $\rho_\Lambda \sim (10^{-3}\,\text{eV})^4$.
+dark-energy density $\rho_\Lambda \sim (10^{-3}\,\text{eV})^4$:
+at recombination the baryon/electron number density is
+$n_\psi \sim n_b(z\!\simeq\!1100) \approx 330\,\text{cm}^{-3}
+\approx 2.5\times 10^{-12}\,\text{eV}^3$, giving
+$\rho_{\rm NJL} \sim n_\psi^2/M_{\rm Pl}^2 \approx
+4\times 10^{-80}\,\text{eV}^4 \sim 10^{-69}\,\rho_\Lambda$ ---
+nearly $70$ orders of magnitude below the dark-energy density.
 This is the familiar conclusion that the Hehl--Datta torsion-induced
 NJL contact term cannot drive late-time acceleration in any
 Einstein--Cartan model with Standard Model matter content alone, and is
@@ -1035,19 +1053,22 @@ the phenomenological one-loop parity-odd operator
 = -\,\frac{1}{16\pi^2}\,
 \frac{\beta(\gamma)}{M_{\rm Pl}}\,
 \int d^4x\sqrt{-g}\,
-\partial_\mu\theta(x)\,J^{5\mu},
+\partial_\mu\vartheta_{\rm NY}(x)\,J^{5\mu},
 \label{eq:oneloop_parity_odd}
 \end{equation}
-where $\theta(x)$ is the Nieh--Yan pseudoscalar, $J^{5\mu}$ is the
-fermion axial current, and $\beta(\gamma)$ is a slowly varying function
-of $\gamma$. The form is the natural EFT operator built from the
+where $\vartheta_{\rm NY}(x)$ is the Nieh--Yan pseudoscalar (written
+$\vartheta_{\rm NY}$ to distinguish it from the photon-sector spectator
+ALP $\theta$ of Sec.~\ref{sec:r4_birefringence}; no identification
+between the two fields is assumed anywhere in this paper), $J^{5\mu}$
+is the fermion axial current, and $\beta(\gamma)$ is a slowly varying
+function of $\gamma$. The form is the natural EFT operator built from the
 Nieh--Yan pseudoscalar and the chiral current at the
 $M_{\rm Pl}^{-1}\,\alpha_{\rm em}/(4\pi)$ scale; no published
 calculation currently derives this exact coefficient structure from
 the Mercuri construction, and the present analysis uses it strictly
 as an upper-bound EFT ansatz for the Route-2 amplitude budget. The dimensionless coefficient is $\mathcal{O}(\alpha_{\rm em}/4\pi)$
 multiplied by the Planck mass to a single negative power; once
-$\partial_\mu\theta \sim H \sim 10^{-33}\,$eV at the present epoch is
+$\partial_\mu\vartheta_{\rm NY} \sim H \sim 10^{-33}\,$eV at the present epoch is
 substituted, the induced birefringence accumulated between
 recombination and today is, in the dimensionless ratio
 $\Delta\theta_{\rm one\text{-}loop}/\Delta\theta_{\rm obs}$,
@@ -1063,8 +1084,13 @@ gives $M_{\rm Pl}\cdot(\alpha/M) \sim 10^{19}\,\text{GeV} \cdot
 \sim 6\times 10^{-3}\,\text{rad}$, the dimensionless ratio is
 $\Delta\theta_{\rm one\text{-}loop}/\Delta\theta_{\rm obs} \sim
 10^{-3} \cdot 10^{-61}/(10^{-2}\cdot 6\times 10^{-3})\sim 10^{-58}$
-to $10^{-60}$ (the factor-of-$\sim$100 ambiguity reflects
-$\varepsilon$-correction perturbative-order scaling alone; the
+to $10^{-60}$ (the factor-of-$\sim$100 ambiguity reflects the
+perturbative order at which the quasi-dust $\varepsilon$-correction
+enters the loop estimate --- here $\varepsilon = 3(1+w)/2$ is the
+matter-bounce contraction equation-of-state parameter and the
+``$\varepsilon$-correction'' is the $\mathcal{O}(\varepsilon - 3/2)$
+quasi-dust correction defined in the companion $f_{\rm NL}$ forecast
+paper; the
 $\mathrm{eV}$-vs-$\mathrm{GeV}$ unit conversion is exact
 $1\,\mathrm{GeV} = 10^9\,\mathrm{eV}$ and is not a source of
 ambiguity), i.e.\ the one-loop induced $\beta$ is suppressed by
@@ -1151,12 +1177,26 @@ as an early example of its cosmological birefringence
 implications rather than as the source of the specific prefactor.
 All indices are fully contracted; the integrated-by-parts equivalent $(\alpha/M)\,\partial_\mu\theta\, K^\mu$, where $K^\mu \equiv \epsilon^{\mu\nu\rho\sigma} A_\nu F_{\rho\sigma}$ is the standard Chern--Simons 4-current and $\partial_\mu K^\mu = \tfrac{1}{2}\tilde F_{\mu\nu}F^{\mu\nu}$ recovers the parity-odd contraction, is also valid. From this operator one obtains the rotation angle
 \begin{equation}
-\beta = \frac{\alpha}{M}\,\Delta\theta_{\rm rec\to today}
-\sim \frac{\alpha}{M}\,\sqrt{2\rho_\theta/m_\theta^2},
+\beta = \frac{\alpha}{2M}\,\Delta\theta_{\rm rec\to today}
+\sim \frac{\alpha}{2M}\,\sqrt{2\rho_\theta/m_\theta^2},
 \label{eq:beta_bound}
 \end{equation}
-where $\rho_\theta$ is the energy density of the spectator field and
-$m_\theta$ its mass. Setting the present-day rotation-rate amplitude
+where the factor $1/2$ is the standard small-rotation result for the
+$-\tfrac{1}{4}(\alpha/M)$ operator normalization (the rotation angle is
+half the coupling times the field excursion), $\rho_\theta$ is the
+energy density of the spectator field and $m_\theta$ its mass. The
+excursion estimate $\Delta\theta_{\rm rec\to today} \sim
+\sqrt{2\rho_\theta}/m_\theta$ assumes a coherently displaced field whose
+evolution between recombination and today is monotonic, valid for
+$m_\theta \lesssim H_0$ (frozen or slowly rolling field); since the
+rotation angle depends only on the endpoint values
+$\theta_{\rm today}-\theta_{\rm rec}$, a rapidly oscillating field
+($m_\theta \gg H_0$) has its present-day amplitude redshift-diluted
+($\rho_\theta \propto a^{-3}$ after onset of oscillation), which
+\emph{suppresses} $\beta$ at fixed $\rho_\theta$ and therefore requires
+an even larger $\rho_\theta$ to match $\beta_{\rm obs}$ --- the
+overshoot conclusion below is conservative with respect to the assumed
+$\theta(t)$ regime. Setting the present-day rotation-rate amplitude
 equal to the published WMAP$+$Planck cosmological-birefringence
 measurement $\beta_{\rm obs} = 0.342^\circ \pm 0.094^\circ$
 ($\sim\!3.6\sigma$ from~$\beta=0$;~\cite{Minami2020,Eskilt2022}; the
@@ -1192,12 +1232,13 @@ field with the ECH parity-odd sector and demanding that it
 \emph{also} carry the observed dark-energy density imposes a tuning
 constraint on the spectator-field mass $m_\theta$ that re-imports
 the cosmological-constant problem through the back door. From
-Eq.~\eqref{eq:beta_bound}, $\beta = (\alpha/M)\sqrt{2\rho_\theta/m_\theta^2}$
-inverts to $\rho_\theta = m_\theta^2 \beta^2 / [2(\alpha/M)^2]$;
+Eq.~\eqref{eq:beta_bound}, $\beta = (\alpha/2M)\sqrt{2\rho_\theta/m_\theta^2}$
+inverts to $\rho_\theta = 2\,m_\theta^2 \beta^2 / (\alpha/M)^2$;
 plugging in $\alpha/M = 10^{-21}\,\text{GeV}^{-1}$, $\beta = \beta_{\rm
 obs} \approx 6\times 10^{-3}\,$rad, and $m_\theta = H_0 \approx
-1.5\times 10^{-33}\,$eV gives $\rho_\theta \approx 2.8\times 10^{-11}\,
-\text{eV}^4 \approx \rho_\Lambda$ to within a factor of unity --- so
+1.5\times 10^{-33}\,$eV gives $\rho_\theta \approx 1.6\times 10^{-10}\,
+\text{eV}^4 \approx 6\,\rho_\Lambda$ --- matching the dark-energy
+density to within an order of magnitude --- so
 the spectator-ALP route does \emph{technically} reproduce the
 dark-energy density at the R4-fitted coupling, but only by tuning
 $m_\theta$ to $\sim H_0$, which is precisely the cosmological constant
@@ -1209,7 +1250,7 @@ $m_\theta \sim H_0$ to also produce $\rho_\Lambda$, and this tuning
 is the original CC fine-tuning relabelled. For any $m_\theta$ in the
 natural ALP range ($m_a \in [10^{-22}, 10^{-15}]\,$eV) the produced
 $\rho_\theta \propto m_\theta^2$ \emph{overshoots} $\rho_\Lambda$
-across the entire natural range (because $m_\theta=H_0\approx 1.5\times 10^{-33}$\,eV is the only point where $\rho_\theta=\rho_\Lambda$, and the natural ALP range lies entirely \emph{above} that point, so the overshoot is monotonic in $m_\theta$ and is bounded below by its lower-endpoint value ($\sim\!22$ OOM at $m_\theta \sim 10^{-22}$\,eV) and grows to $\sim\!36$ OOM at the upper endpoint $m_\theta \sim 10^{-15}$\,eV); this overshoot conclusion is conditional on the one-loop estimate $\alpha/M \sim 10^{-21}\,\text{GeV}^{-1}$ being rigidly bounded by the photon-Chern-Simons matching ---  if $\alpha/M$ is instead treated as a free phenomenological parameter, both $\beta_{\rm obs}$ and $\rho_\Lambda$ can be matched for arbitrary $m_\theta$ by scaling $\alpha/M \propto m_\theta$ (e.g.,\ requiring $\alpha/M \sim 10^{-10}\,\text{GeV}^{-1}$ at $m_\theta \sim 10^{-22}\,\text{eV}$), so the rigidity of the no-go is tied to the one-loop matching assumption rather than to ALP-mass kinematics alone: at $m_\theta \sim 10^{-22}$\,eV the
+across the entire natural range (because the $\rho_\theta=\rho_\Lambda$ matching point lies at $m_\theta\approx 0.4\,H_0\sim H_0$ with $H_0\approx 1.5\times 10^{-33}$\,eV, and the natural ALP range lies entirely \emph{above} that point, so the overshoot is monotonic in $m_\theta$ and is bounded below by its lower-endpoint value ($\sim\!22$ OOM at $m_\theta \sim 10^{-22}$\,eV) and grows to $\sim\!36$ OOM at the upper endpoint $m_\theta \sim 10^{-15}$\,eV); this overshoot conclusion is conditional on the one-loop estimate $\alpha/M \sim 10^{-21}\,\text{GeV}^{-1}$ being rigidly bounded by the photon-Chern-Simons matching ---  if $\alpha/M$ is instead treated as a free phenomenological parameter, both $\beta_{\rm obs}$ and $\rho_\Lambda$ can be matched for arbitrary $m_\theta$ by scaling $\alpha/M \propto m_\theta$ (e.g.,\ requiring $\alpha/M \sim 10^{-10}\,\text{GeV}^{-1}$ at $m_\theta \sim 10^{-22}\,\text{eV}$), so the rigidity of the no-go is tied to the one-loop matching assumption rather than to ALP-mass kinematics alone: at $m_\theta \sim 10^{-22}$\,eV the
 overshoot is ${\sim}22$ orders of magnitude $(m_\theta/H_0)^2 \sim
 (10^{11})^2 \sim 10^{22}$, and at $m_\theta \sim 10^{-15}$\,eV
 the overshoot is ${\sim}36$ orders of magnitude $(m_\theta/H_0)^2 \sim (10^{18})^2 \sim 10^{36}$; the
@@ -1261,7 +1302,7 @@ The condensate mechanism
 yields a vacuum energy that is parametrically too large by many orders
 of magnitude and is not a viable DE source; its role is therefore
 documented in
-Sec.~\ref{sec:transparency} as a quantitative closure rather than a
+Sec.~\ref{sec:r1_njl} as a quantitative closure rather than a
 viable channel. Companion MCMC fits and the
 $\Delta\Neff$/birefringence consistency analysis are reported in
 companion work in preparation~\cite{Golden2026P1b}; the present
@@ -1597,6 +1638,9 @@ perturbation equation:
 \begin{equation}
 h''_{ij} + 2\mathcal{H}h'_{ij} + k^2 h_{ij} = 0
 \end{equation}
+(primes denote derivatives with respect to conformal time $\eta$, and
+$\mathcal{H}\equiv a'/a$ is the conformal Hubble rate; in cosmic time the
+equivalent form is $\ddot h_{ij} + 3H\dot h_{ij} + (k^2/a^2)h_{ij}=0$)
 has no parity-dependent modifications. Left and right circular polarization
 modes propagate identically:
 \begin{equation}
@@ -1611,15 +1655,19 @@ Expanding to second order, the Holst dual evaluates on the Levi-Civita
 connection ($T=0$) as:
 \begin{widetext}
 \begin{equation}
-\widetilde{R}(\mathring{\Gamma}) = \tfrac{1}{2}\epsilon^{\mu\nu\rho\sigma}
+\mathcal{R}_{\rm H}(\mathring{\Gamma}) \equiv \tfrac{1}{2}\epsilon^{\mu\nu\rho\sigma}
 R_{\mu\nu\rho\sigma}(\mathring{\Gamma}) \;=\; 0
 \quad\text{(identically, by the first (algebraic) Bianchi identity)}.
 \end{equation}
 \end{widetext}
 This is the Bianchi-vanishing of the Holst dual contraction on a torsion-free
 connection: in differential-form language $e^I\wedge e^J\wedge R_{IJ} =
--\mathrm{NY} + T^I\wedge T_I$ (Nieh--Yan density plus torsion-squared), and
-both pieces vanish identically at $T=0$. \emph{This must be carefully
+-\mathrm{NY} + T^I\wedge T_I$, where $\mathrm{NY} \equiv d(e_I\wedge T^I)$
+is the exact Nieh--Yan density (a total derivative of the torsion boundary
+term), and both pieces vanish at $T=0$ \emph{pointwise} --- not merely up
+to a boundary term: $\mathrm{NY}|_{T=0} = d(0) = 0$ and $T^I\wedge T_I|_{T=0}
+= 0$, with the Bianchi cancellation above being the operative reason the
+Holst dual vanishes pointwise in the torsionless sector. \emph{This must be carefully
 distinguished from the Pontryagin density}
 $\frac{1}{4}\,\epsilon^{\mu\nu\rho\sigma}R_{\mu\nu}{}^{\alpha\beta}
 R_{\rho\sigma\alpha\beta} \propto R\,\widetilde R$, which involves \emph{two}
@@ -1777,8 +1825,9 @@ prefactor. The sign and qualitative conclusion---that the matter-bounce
 mechanism cannot generate dark energy without re-importing
 cosmological-constant fine-tuning---survives the OOM uncertainty,
 because the surplus required to close the gap is $\sim 14$ $e$-folds,
-whereas the $\varepsilon$-correction-driven prefactor adjustment is
-$\lesssim 1$ $e$-fold. A rigorous derivation of the prefactor from the
+whereas the quasi-dust $\varepsilon$-correction-driven prefactor
+adjustment (same $\varepsilon$-correction as in the Route-2 loop
+estimate above) is $\lesssim 1$ $e$-fold. A rigorous derivation of the prefactor from the
 bounce-junction matching is deferred to future work and would not change
 the structural-tension verdict.
 
@@ -2063,13 +2112,14 @@ and H100 instances).
 \begin{table*}[t]
 \caption{\label{tab:params} Complete parameter summary with priors, verified values,
 and physical interpretations. MCMC posterior values are from companion
-Paper~I(b)~\cite{Golden2026P1b}.}
+Paper~I(b)~\cite{Golden2026P1b}. The $\gamma$ scheme range denotes LQG
+area-spectrum scheme dependence, \emph{not} a statistical error.}
 \begin{ruledtabular}
 \begin{tabular}{llccc}
 Parameter & Description & Prior & Verified Value & Notes \\
 \hline
 \multicolumn{5}{l}{\textit{Fundamental theory parameters}} \\
-$\gamma$ & Barbero-Immirzi & Fixed: 0.274 & $0.274$ (scheme range $\sim\!0.020$) & LQG area spectrum (Eq.~\ref{eq:gamma}; scheme dependence, \emph{not} statistical error) \\
+$\gamma$ & Barbero-Immirzi & Fixed: 0.274 & $0.274$ (scheme range $\sim\!0.020$) & LQG area spectrum (Eq.~\ref{eq:gamma}) \\
 $\alpha/M$ & Parity-odd coefficient & Log-flat & $\sim 10^{-21}\,\text{GeV}^{-1}$ & One-loop motivated \\
 $N_{\rm tot}$ & Total e-folds & $[60, 120]$ flat & $\approx 92$ (fitted) & Controls $\Xi$ \\
 \hline

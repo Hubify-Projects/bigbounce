@@ -631,12 +631,13 @@ def figure_6():
     ax2.set_xlabel("Fine-Tuning Score (orders of magnitude)")
     ax2.set_title("Dark Energy Fine-Tuning Comparison")
     ax2.set_xlim(0, 145)
+    ax2.set_ylim(-0.5, 4.5)
 
     # Improvement arrow
-    ax2.annotate("", xy=(5, 3.35), xytext=(120, 3.35),
+    ax2.annotate("", xy=(5, 3.55), xytext=(120, 3.55),
                  arrowprops=dict(arrowstyle="-|>", color=GREEN, lw=2.2,
                                  mutation_scale=12))
-    ax2.text(60, 3.6, "115 orders of magnitude improvement",
+    ax2.text(60, 3.85, "115 orders of magnitude improvement",
              ha="center", fontsize=8, color=GREEN, fontweight="bold")
 
     fig.tight_layout()
