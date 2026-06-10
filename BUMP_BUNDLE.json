@@ -1,20 +1,11 @@
 [
   {
-    "paperSlug": "paper-1a",
-    "version": "v1A.0.56",
+    "paperSlug": "paper-5",
+    "version": "v0.1.59",
     "datestamp": "2026-06-11",
-    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1a_ech_nogo.pdf",
-    "sitePdfPath": "/papers/paper1a_ech_nogo_v1A.0.56.pdf",
-    "changelog": "R27conf ROUND CLEAN: Cartan derivation verified term-by-term; 8 presentation closures (Hehl-Datta substitution displayed, signature pin, weight-convention dictionary, stale PTA caption fixed). Zero substantive errors. 26pp/md5 96f18a36/0-0-0. SIGN-OFF-READY at 95% (submits with P1B).",
-    "texCommit": "b86187b3"
-  },
-  {
-    "paperSlug": "paper-3",
-    "version": "v3.1.87",
-    "datestamp": "2026-06-11",
-    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p3_anomaly_engine/paper3_draft.pdf",
-    "sitePdfPath": "/papers/paper3_anomaly_catalog_v3.1.87.pdf",
-    "changelog": "R27conf ROUND CLEAN: feature-scaling split script-backed; vendor recompute attacks falsified; blue-excess attribution calibrated; 2 validation-hardening recomputes queued on accurately-scoped disclosed claims (flag at sign-off). Zero arithmetic errors. 26pp/md5 acde55ca/0-0-0. SIGN-OFF-READY at 95% (HF dataset flip at submission).",
-    "texCommit": "b86187b3"
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf",
+    "sitePdfPath": "/papers/p5_desi_chirality_v0.1.59.pdf",
+    "changelog": "R27conf ESSENTIAL recomputes closed (26-series): Q1 per-Rs dilation \u2014 reviewer premise empirically falsified (production already scales per-cell; rebuilt mask matches published <1e-6; counterfactual <=0.82pp/<=0.27pp); Q2 FoG membership \u2014 ~44k reassignments per realization yet dF_CW within [-0.34,+0.37]pp, |z|<=1.9, null unchanged. 28pp/md5 3a80c50b/0-0-0. Gate: R28conf (final round of the campaign, with working Perplexity leg).",
+    "texCommit": "1fb2f381"
   }
 ]
