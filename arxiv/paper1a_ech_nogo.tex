@@ -45,7 +45,7 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.52}
+\newcommand{\paperVersion}{v1A.0.53}
 \newcommand{\paperTimestamp}{June 10, 2026 PDT}
 % v1A.0.52 (R24conf closeout): 19 textual closures from R24conf truth-audit —
 %   ACT-vs-WMAP+Planck 1.4->1.06 sigma recompute; gamma^2/(gamma^2+1)
@@ -1255,7 +1255,8 @@ All indices are fully contracted; the integrated-by-parts equivalent $(\alpha/M)
 \end{equation}
 where the factor $1/2$ is the standard small-rotation result for the
 $-\tfrac{1}{4}(\alpha/M)$ operator normalization (the rotation angle is
-half the coupling times the field excursion), $\rho_\theta$ is the
+half the coupling times the field excursion; derived from the helicity
+dispersion relation in Appendix~\ref{app:mcs_derivation}), $\rho_\theta$ is the
 energy density of the spectator field and $m_\theta$ its mass. The
 excursion estimate $\Delta\theta_{\rm rec\to today} \sim
 \sqrt{2\rho_\theta}/m_\theta$ assumes a coherently displaced field whose
@@ -2328,6 +2329,81 @@ local dimension-$+4$ parity-odd interaction with all required $\MPl$
 factors in the coupling coefficient) remains left to a
 separate companion treatment.
 
+%% --- C: Line-of-sight birefringence derivation ---
+\section{Line-of-Sight Birefringence from the Maxwell--Chern--Simons
+Operator}\label{app:mcs_derivation}
+
+This appendix derives the rotation-angle mapping
+$\beta = (\alpha/2M)\,\Delta\theta$ used in
+Eq.~\eqref{eq:beta_bound}, fixing the factor of $1/2$ from first
+principles in the operator normalization used throughout this paper.
+
+\textit{Setup.}---After the reduction of Appendix~\ref{app:dimensions},
+the parity-odd sector takes the Maxwell--Chern--Simons form
+\begin{equation}
+\mathcal{L} \supset -\tfrac{1}{4}F_{\mu\nu}F^{\mu\nu}
+- \tfrac{1}{4}\,\frac{\alpha}{M}\,\theta\,F_{\mu\nu}\tilde F^{\mu\nu},
+\label{eq:mcs_lagrangian}
+\end{equation}
+with $\tilde F^{\mu\nu} = \tfrac{1}{2}\epsilon^{\mu\nu\rho\sigma}
+F_{\rho\sigma}$ and $\theta$ a homogeneous pseudoscalar
+(spatial gradients negligible for the cosmological background field
+considered here)~\cite{CarrollFieldJackiw1990,HarariSikivie1992}.
+
+\textit{Field equation in FRW.}---Varying $\theta$'s canonical action
+with potential $V = m_\theta^2 f^2 (1-\cos\theta)$ in a flat FRW
+background gives
+\begin{equation}
+\ddot\theta + 3H\dot\theta + m_\theta^2 \sin\theta = 0,
+\label{eq:theta_eom_frw}
+\end{equation}
+the equation integrated numerically by the released pipeline
+(\path{research/branch_R_alp_birefringence/phase2_mcmc/alp_ode.py};
+frozen initial condition $\dot\theta(t_{\rm init})=0$ at
+$z_{\rm init}=3000$).
+
+\textit{Helicity dispersion.}---In conformal time
+($ds^2 = a^2(-d\eta^2 + d\vec x^{\,2})$) the Maxwell sector of
+Eq.~\eqref{eq:mcs_lagrangian} is conformally invariant, and the
+$\theta F\tilde F$ term, being topological up to the $\theta$ prefactor,
+carries no additional factors of $a$. In temporal gauge, decomposing
+the transverse field into circular-polarization modes
+$A_\pm(\eta,k)$, the modified wave equation reads
+\begin{equation}
+A_\pm'' + \Bigl[k^2 \mp \frac{\alpha}{M}\,\theta'\,k\Bigr] A_\pm = 0,
+\label{eq:helicity_dispersion}
+\end{equation}
+where $' \equiv d/d\eta$ and $k$ is comoving. For
+$k \gg (\alpha/M)\theta'$ (satisfied by ${\sim}60$ orders of magnitude
+for CMB photons against the cosmological field considered here) the WKB
+phase of each helicity is
+$\int\!\omega_\pm\,d\eta$ with
+$\omega_\pm \simeq k \mp \tfrac{1}{2}(\alpha/M)\,\theta'$.
+
+\textit{Rotation angle.}---A linear polarization is a fixed-phase
+superposition of the two helicities; its position angle rotates by half
+the accumulated helicity phase difference:
+\begin{align}
+\beta &= \tfrac{1}{2}\!\int_{\eta_{\rm em}}^{\eta_{\rm obs}}
+(\omega_- - \omega_+)\,d\eta
+= \tfrac{1}{2}\,\frac{\alpha}{M}\!\int_{\eta_{\rm em}}^{\eta_{\rm obs}}
+\theta'\,d\eta \nonumber\\
+&= \frac{\alpha}{2M}\,\bigl[\theta(\eta_{\rm obs})
+- \theta(\eta_{\rm em})\bigr]
+\;\equiv\; \frac{\alpha}{2M}\,\Delta\theta .
+\label{eq:beta_derived}
+\end{align}
+The result is achromatic (no $k$ dependence), independent of the
+expansion history except through the endpoint values of $\theta$
+(a total derivative along the line of sight --- the well-known
+``$2\beta = g\,\Delta\phi$'' property~\cite{HarariSikivie1992}), and
+exact at leading WKB order. This is Eq.~\eqref{eq:beta_bound}'s
+mapping; with the spectator-ALP identification
+$\alpha/M \equiv C_{a\gamma}\,\alpha_{\rm em}/(2\pi f_a)$ and
+$\Delta\theta = \Delta\phi/f_a$ it reproduces the companion pipeline's
+$\beta = (\alpha_{\rm em}\,C_{a\gamma}/4\pi)\,(\Delta\phi/f_a)$
+(the convention block of the companion's \S VI), closing the
+normalization chain from the Lagrangian to the numerical prediction.
 
 %% ============================================================
 %%  BIBLIOGRAPHY

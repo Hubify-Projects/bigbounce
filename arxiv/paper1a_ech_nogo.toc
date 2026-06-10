@@ -72,4 +72,5 @@
 \appendix 
 \contentsline {section}{\numberline {A}Complete Parameter Summary}{22}{section*.70}%
 \contentsline {section}{\numberline {B}Dimensional Status of the Parity-Odd Operator}{22}{section*.71}%
-\contentsline {section}{\numberline {}References}{23}{section*.72}%
+\contentsline {section}{\numberline {C}Line-of-Sight Birefringence from the Maxwell--Chern--Simons Operator}{23}{section*.72}%
+\contentsline {section}{\numberline {}References}{24}{section*.73}%

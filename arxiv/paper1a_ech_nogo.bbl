@@ -6,7 +6,7 @@
 %Control: page (0) single
 %Control: year (1) truncated
 %Control: production of eprint (0) enabled
-\begin{thebibliography}{47}%
+\begin{thebibliography}{49}%
 \makeatletter
 \providecommand \@ifxundefined [1]{%
  \@ifx{#1\undefined}
@@ -571,4 +571,27 @@
   first-principles routes to dark energy in {Einstein-Cartan-Holst} gravity}}
   (\bibinfo {year} {2026}{\natexlab{e}}),\ \bibinfo {note} {companion technical
   note, available upon request from the author}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Carroll}\ \emph {et~al.}(1990)\citenamefont
+  {Carroll}, \citenamefont {Field},\ and\ \citenamefont
+  {Jackiw}}]{CarrollFieldJackiw1990}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.~M.}\ \bibnamefont
+  {Carroll}}, \bibinfo {author} {\bibfnamefont {G.~B.}\ \bibnamefont {Field}},\
+  and\ \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Jackiw}},\
+  }\bibfield  {title} {\bibinfo {title} {Limits on a {Lorentz-} and
+  parity-violating modification of electrodynamics},\ }\href
+  {https://doi.org/10.1103/PhysRevD.41.1231} {\bibfield  {journal} {\bibinfo
+  {journal} {Physical Review D}\ }\textbf {\bibinfo {volume} {41}},\ \bibinfo
+  {pages} {1231} (\bibinfo {year} {1990})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Harari}\ and\ \citenamefont
+  {Sikivie}(1992)}]{HarariSikivie1992}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {Harari}}\ and\ \bibinfo {author} {\bibfnamefont {P.}~\bibnamefont
+  {Sikivie}},\ }\bibfield  {title} {\bibinfo {title} {Effects of a
+  nambu-goldstone boson on the polarization of radio galaxies and the cosmic
+  microwave background},\ }\href {https://doi.org/10.1016/0370-2693(92)91363-E}
+  {\bibfield  {journal} {\bibinfo  {journal} {Phys. Lett. B}\ }\textbf
+  {\bibinfo {volume} {289}},\ \bibinfo {pages} {67} (\bibinfo {year}
+  {1992})}\BibitemShut {NoStop}%
 \end{thebibliography}%
