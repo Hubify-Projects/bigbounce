@@ -39,13 +39,15 @@ print(f"[OK] |S_3| = {n_perms}, vertex count = {n_vertices}, "
 S_v = {'redef': 1, 'zdz2': 2, 'dzpzpchi': 1, 'zppchipchi': 1}
 print(f"[OK] Vertex symmetry factors S_v = {S_v}")
 
-# epsilon-decomposition ratio cross-check (Cai et al. Eqs. 34-36 vs Eq. 37):
-# The intermediate single time-ordered shape function evaluates to exactly
-# half the full polynomial at all three benchmark configurations.
-benchmark_ratios = [0.5000, 0.5000, 0.5000]  # equilateral, folded, squeezed
-print(f"[OK] epsilon-decomposition ratios at three benchmarks: {benchmark_ratios}")
-assert all(abs(r - 0.5) < 1e-6 for r in benchmark_ratios), \
-    "Benchmark ratio inconsistency"
+# epsilon-decomposition factor of two (Cai et al. Eqs. 34-36 vs Eq. 37):
+# The single time-ordering is exactly half the full in-in commutator result
+# BY THE OPERATOR-ALGEBRA IDENTITY verified symbolically above (-2 Im doubling).
+# NOTE (2026-06-09 provenance correction): an earlier version of this script
+# asserted hardcoded "benchmark_ratios = [0.5000, 0.5000, 0.5000]" as if they
+# were computed; they were literals. The factor of two is analytic, not
+# empirical -- see outputs/c9i_epsilon_ratio_check.json for why printed Cai
+# Eq.(37) coefficients are not transplantable into this paper's basis.
+print("[OK] single-ordering / full ratio = 1/2 exactly, by the -2 Im identity above.")
 
 print("\nAll symbolic checks pass. The factor-of-two between the single "
       "time-ordered correlator (Li & Brandenberger 2014) and the full "

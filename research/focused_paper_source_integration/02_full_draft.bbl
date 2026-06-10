@@ -307,7 +307,7 @@
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
   {Baron}}\ and\ \bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
-  {Poznanski}},\ }\bibfield  {title} {\bibinfo {title} {The weirdest sdss
+  {Poznanski}},\ }\bibfield  {title} {\bibinfo {title} {The weirdest {SDSS}
   galaxies: results from an outlier detection algorithm},\ }\href@noop {}
   {\bibfield  {journal} {\bibinfo  {journal} {MNRAS}\ }\textbf {\bibinfo
   {volume} {465}},\ \bibinfo {pages} {4530} (\bibinfo {year} {2017})},\ \Eprint
@@ -321,15 +321,22 @@
   {\bibinfo  {journal} {MNRAS}\ }\textbf {\bibinfo {volume} {525}},\ \bibinfo
   {pages} {1078} (\bibinfo {year} {2023})},\ \Eprint
   {https://arxiv.org/abs/2302.05050} {arXiv:2302.05050} \BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Jolicoeur}\ \emph {et~al.}(2025)\citenamefont
-  {Jolicoeur}, \citenamefont {Maartens} \emph {et~al.}}]{Jolicoeur:2025}%
+\bibitem [{\citenamefont {Addis}\ \emph {et~al.}(2025)\citenamefont {Addis},
+  \citenamefont {Guedezounme}, \citenamefont {Hammond}, \citenamefont
+  {Clarkson}, \citenamefont {Montano}, \citenamefont {Camera}, \citenamefont
+  {Jolicoeur},\ and\ \citenamefont {Maartens}}]{Jolicoeur:2025}%
   \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
-  {Jolicoeur}}, \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont {Maartens}},
-  \emph {et~al.},\ }\bibfield  {title} {\bibinfo {title} {Unbiased analysis of
-  primordial non-gaussianity: the multipoles of the full relativistic power
-  spectrum},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {arXiv
-  e-prints}\ } (\bibinfo {year} {2025})},\ \Eprint
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {Addis}}, \bibinfo {author} {\bibfnamefont {S.~L.}\ \bibnamefont
+  {Guedezounme}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
+  {Hammond}}, \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont {Clarkson}},
+  \bibinfo {author} {\bibfnamefont {F.}~\bibnamefont {Montano}}, \bibinfo
+  {author} {\bibfnamefont {S.}~\bibnamefont {Camera}}, \bibinfo {author}
+  {\bibfnamefont {S.}~\bibnamefont {Jolicoeur}},\ and\ \bibinfo {author}
+  {\bibfnamefont {R.}~\bibnamefont {Maartens}},\ }\bibfield  {title} {\bibinfo
+  {title} {Unbiased analysis of primordial non-gaussianity: the multipoles of
+  the full relativistic power spectrum},\ }\href@noop {} {\bibfield  {journal}
+  {\bibinfo  {journal} {arXiv e-prints}\ } (\bibinfo {year} {2025})},\ \Eprint
   {https://arxiv.org/abs/2511.09466} {arXiv:2511.09466} \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Barreira}(2022)}]{Barreira:2022}%
   \BibitemOpen
@@ -477,9 +484,9 @@
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.~R.}\ \bibnamefont
   {Eskilt}} \emph {et~al.} (\bibinfo {collaboration} {Cosmoglobe}),\ }\bibfield
-   {title} {\bibinfo {title} {Cosmoglobe dr1 results. ii. constraints on
-  isotropic cosmic birefringence from reprocessed wmap and planck lfi data},\
-  }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Astron.
+   {title} {\bibinfo {title} {{Cosmoglobe} {DR1} results. {II.} constraints on
+  isotropic cosmic birefringence from reprocessed {WMAP} and {Planck} {LFI}
+  data},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Astron.
   Astrophys.}\ }\textbf {\bibinfo {volume} {679}},\ \bibinfo {pages} {A144}
   (\bibinfo {year} {2023})},\ \bibinfo {note} {reports $\beta = 0.35^\circ \pm
   0.70^\circ$ from WMAP+Planck LFI alone (no ACT)},\ \Eprint

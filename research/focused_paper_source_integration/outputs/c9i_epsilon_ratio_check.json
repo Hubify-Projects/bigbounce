@@ -1,0 +1,34 @@
+{
+ "configs": [
+  {
+   "config": "equilateral",
+   "target_full": -3.984375,
+   "B_single_ordering": -4.570312,
+   "B_doubled": -9.140625,
+   "B_reference": -3.984375,
+   "ratio_single_over_full_target": 1.147059,
+   "doubled_matches_target": false,
+   "ref_matches_target": true
+  },
+  {
+   "config": "folded",
+   "target_full": -2.25,
+   "B_single_ordering": -3.703125,
+   "B_doubled": -7.40625,
+   "B_reference": -2.25,
+   "ratio_single_over_full_target": 1.645833,
+   "doubled_matches_target": false,
+   "ref_matches_target": true
+  },
+  {
+   "config": "squeezed",
+   "target_full": -4.375,
+   "B_single_ordering": -4.765625,
+   "B_doubled": -9.53125,
+   "B_reference": -4.374914,
+   "ratio_single_over_full_target": 1.089286,
+   "doubled_matches_target": false,
+   "ref_matches_target": true
+  }
+ ]
+}

@@ -1,0 +1,29 @@
+{
+ "paper_bookkeeping_r_to_1": {
+  "description": "detection and prediction at f0=-35/8, sigma=0.7 (the no-template-mismatch endpoint quoted in the tables)",
+  "grid": {
+   "delta_narrow_[-5,5]": 7.0,
+   "delta_broad_[-15,15]": 17.1,
+   "gauss_sth1.0_narrow_[-5,5]": 4.01,
+   "gauss_sth1.0_broad_[-15,15]": 9.8
+  }
+ },
+ "bounce_amplitude_bookkeeping": {
+  "description": "META-E2 requested rescaling: sigma_eff = 0.7/r = 0.8333 at r = 0.84, detection and prediction at -35/8",
+  "grid": {
+   "delta_narrow_[-5,5]": 6.19,
+   "delta_broad_[-15,15]": 14.36,
+   "gauss_sth1.0_narrow_[-5,5]": 3.96,
+   "gauss_sth1.0_broad_[-15,15]": 9.19
+  }
+ },
+ "measured_space_bookkeeping": {
+  "description": "fully measured-space alternative: prediction and detection at r*f0 = -3.6750, sigma = 0.7; competitor priors unrescaled (multifield is local-shaped, r=1)",
+  "grid": {
+   "delta_narrow_[-5,5]": 5.87,
+   "delta_broad_[-15,15]": 17.1,
+   "gauss_sth1.0_narrow_[-5,5]": 3.37,
+   "gauss_sth1.0_broad_[-15,15]": 9.8
+  }
+ }
+}
