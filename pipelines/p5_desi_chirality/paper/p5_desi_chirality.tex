@@ -18,7 +18,7 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.56-2026-06-10}
+\newcommand{\paperVersion}{v0.1.57-2026-06-10}
 % v0.1.52-2026-06-09 (R22prov truth-audit closure wave; work order in
 %   project-context/peer-reviews/R22prov_P5_TRUTH_AUDIT.md; recompute artifacts
 %   outputs/17_v0151_closure_recomputes.json + 18_v0151_stratified_and_density.json):
@@ -114,7 +114,7 @@ of this paper is the DESIVAST-anchored void cross-check; the V-Web
 classification is the supporting cross-check across the full matched
 sample. The $1''$ matched catalog contains
 $2{,}232{,}212$ unique galaxies; of these, $791{,}635$ carry an
-unambiguous post-TTA equivariant CW or CCW label and form the
+unambiguous post-TTA (test-time-augmentation) equivariant CW or CCW label and form the
 chirality-relevant subsample. We classify each matched spiral into one
 of four cosmic-web classes \{void, wall, filament, cluster\} by running
 a tidal-tensor cosmic-web classifier (Hahn~\textit{et~al.}~2007
@@ -136,10 +136,13 @@ drawn from $783{,}820$ unique chirality-relevant matched spirals
 ($791{,}635$ minus $7{,}815$ without an environment row), carried on
 $812{,}793$ environment-labeled survey--program coadd rows.
 \textbf{Headline result:} the CW
-fraction shows no environment dependence above the sensitivity floor
-set by the Paper~IV catalog-monopole offset of $\approx\!0.26$\,pp
-(percentage points; systematic-dominated for V-Web filament/cluster at $n \gtrsim
-4 \times 10^5$) and by counting statistics of $\pm 4.8$\,pp
+fraction shows no environment dependence beyond (i) the known
+Paper~IV catalog-monopole offset of $\approx\!0.26$\,pp
+(percentage points; a correctable classifier systematic --- not a
+statistical limit --- that dominates the V-Web filament/cluster
+residuals at $n \gtrsim 4 \times 10^5$ and is subtracted explicitly
+in the monopole-referenced tests) and (ii) the counting-statistics
+floor of $\pm 4.8$\,pp
 (the $2\sigma$ binomial half-width of the $n = 428$ V-Web void bin,
 whose observed offset is $-0.68\sigma_{\rm from\,half}$, well inside
 that floor), within DESI DR1 at V-Web resolution.
@@ -280,8 +283,13 @@ work by the same author, currently in preparation and not yet peer
 reviewed; the present manuscript treats its catalog and quoted monopole
 offset as inputs whose uncertainty is propagated explicitly below)
 establishes the global mixture in the post-test-time-augmentation
-equivariant classifier as a CW fraction of $0.4974 \pm 0.000279$,
-consistent with parity at $\sim 1\sigma$. That null is a \emph{global} statement; it
+equivariant classifier as a CW fraction of $0.4974 \pm 0.000279$ ---
+a $-0.26$\,pp monopole offset from exact parity that is statistically
+significant in pure counting terms ($\approx\!9\sigma$) and is treated
+throughout Paper~IV and this paper as a known classifier-monopole
+systematic reference, not a parity violation --- while the Paper~IV
+real-space \emph{dipole} is consistent with isotropy at $+0.41\sigma$
+($p = 0.31$). That dipole null is a \emph{global} statement; it
 does not constrain whether handedness is independent of
 \emph{environment}.
 
@@ -502,7 +510,14 @@ $\delta = \rho / \bar\rho - 1$.
 (default $25$\,Mpc$/h$; Phase 2 sweep over $\{10, 25, 50\}$).
 \item Solve Poisson in $k$-space: $\Phi(k) = -\delta_k / k^2$
 (with $k\!=\!0$ mode zeroed).
-\item Tidal tensor: $T_{ij}(k) = k_i k_j \Phi(k)$; inverse-FFT the six
+\item Tidal tensor: $T_{ij}(k) = -k_i k_j \Phi(k)$ (Fourier sign
+convention $\partial_i \partial_j \leftrightarrow (ik_i)(ik_j) =
+-k_i k_j$, so with $\Phi(k) = -\delta_k/k^2$ this gives
+$T_{ij}(k) = +k_i k_j \delta_k / k^2$; the committed implementation
+\texttt{env\_finder/01\_compute\_vweb.py} applies exactly this sign,
+matching the title-footnote convention --- the reported volume
+fractions, e.g.\ void $24.4\%$ / cluster $1.0\%$, are consistent with
+the standard sign); inverse-FFT the six
 unique components. Conventions: $k_i = 2\pi n_i / L$ with $L$ the box
 side (\texttt{scipy} \texttt{fftfreq} scaled by $2\pi/{\rm cell}$),
 so $k$ carries physical $h\,{\rm Mpc}^{-1}$ units; the CIC
@@ -551,7 +566,8 @@ galaxy-traced large-scale structure.}
 \section{Statistical methods}\label{sec:stats}
 
 For each binned analysis we report observed CW fraction, the Jeffreys
-$95\%$ binomial credible interval, and the signed deviation from $0.5$
+$95\%$ binomial credible interval (Jeffreys prior
+${\rm Beta}(1/2,1/2)$), and the signed deviation from $0.5$
 $\sigma_{\rm from\,half} \equiv (n_{\rm CW} - 0.5 N)/(0.5\sqrt{N})$
 (the standard one-sample binomial $z$-score against the null
 $p = 0.5$; we keep the explicit name to distinguish it from the
@@ -585,9 +601,17 @@ Paper~IV-predicted classifier-monopole offset
 \sigma_{\rm pred} \;=\; \frac{\Delta f_{\rm CW}}{0.5 / \sqrt{N}}
 \;=\; 2 \cdot \Delta f_{\rm CW} \cdot \sqrt{N},
 \end{equation}
-with $\Delta f_{\rm CW}\!=\!-0.0026$ to flag whether a deviation is
-attributable to the global bias rather than environment-correlated
-chirality. The monopole reference itself carries finite counting
+with $\Delta f_{\rm CW}\!=\!-0.0026$ (the monopole offset expressed as
+a fractional deviation from $0.5$, i.e.\
+$\Delta f_{\rm CW} \equiv \bar f_{\rm CW} - 0.5$) to flag whether a
+deviation is attributable to the global bias rather than
+environment-correlated chirality. Where a residual is computed against
+a non-half reference $p_0$ (e.g.\ $f_{\rm CW}^{\rm P5} = 0.4972$ in
+$\sigma_{\rm vs\,monopole}$), we retain the $0.5/\sqrt{N}$ denominator
+for cross-table comparability; the exact $\sqrt{p_0(1-p_0)/N}$
+denominator differs from it by a factor
+$\sqrt{4 p_0 (1-p_0)} = 0.99998$ at $p_0 = 0.4972$, i.e.\
+${<}0.01\%$ in $\sigma$, far below the quoted precision. The monopole reference itself carries finite counting
 uncertainty, which we propagate explicitly: where $\sigma_{\rm pred}$
 uses the Paper~IV catalog-wide $\Delta f_{\rm CW}$
 ($N\!=\!3.2\times10^6$, ${\rm se}\!\approx\!\sqrt{0.25/3.2\times10^6}
@@ -644,7 +668,12 @@ null as primary and report the parametric Bonferroni threshold as a
 cross-check; on every scan in this paper the two return the same
 verdict (no scan crosses either the empirical max-stat $p < 0.05$
 criterion or the parametric Bonferroni threshold at
-$\alpha\!=\!0.01$).
+$\alpha\!=\!0.01$). All $N_{\rm MC}\!=\!1{,}000$ permutation
+$p$-values in this paper carry a Monte-Carlo standard error
+${\rm se}_{\rm MC} = \sqrt{p(1-p)/N_{\rm MC}}$, i.e.\
+${\approx}0.010$ at $p \approx 0.13$ and ${\approx}0.015$ at
+$p \approx 0.5$; quoted second/third decimals should be read against
+this resolution.
 
 \subsection{Primary vs.\ secondary analysis paths (pre-registration
 caveat)}\label{sec:primary_path}
@@ -1194,13 +1223,19 @@ is consistent with the look-elsewhere null distribution. Because the
 free label-shuffle could in principle be anticonservative given the
 per-leg/per-program residuals of \S\ref{sec:systematics}, we re-ran
 all three scans with the shuffle \emph{stratified} by imaging leg and
-DESI program: the look-elsewhere $p$-values are unchanged within
-Monte-Carlo error ($p = 0.63 / 0.089 / 0.41$ stratified vs
-$0.64 / 0.10 / 0.42$ free-shuffle re-draws at NSIDE $16/32/64$;
-the re-draws use RNG streams distinct from the deterministic-seed
-headline runs, which is why they differ from the headline
-$0.607/0.135/0.413$ by the expected $N_{\rm MC}=1{,}000$ permutation
-standard error;
+DESI program: the stratified look-elsewhere $p$-values agree with
+their matched free-shuffle re-draws within one Monte-Carlo standard
+error ($p = 0.63 / 0.089 / 0.41$ stratified vs
+$0.64 / 0.10 / 0.42$ free-shuffle re-draws at NSIDE $16/32/64$,
+pairwise differences $\leq 0.011$ against
+${\rm se}_{\rm MC} = \sqrt{p(1-p)/N_{\rm MC}} \approx 0.009$--$0.015$).
+The re-draws use RNG streams distinct from the deterministic-seed
+headline runs; the NSIDE-16/64 re-draws sit within one
+${\rm se}_{\rm MC}$ of the headline $0.607/0.413$, while the NSIDE-32
+re-draw ($0.10$) sits ${\sim}2.4\times$ the pairwise
+${\rm se}_{\rm MC}$ below the headline $0.135$ --- a stream-to-stream
+fluctuation larger than typical but immaterial to the verdict, since
+every variant ($0.089$--$0.135$) is far from the $p<0.05$ criterion;
 \artifact{pipelines/p5\_desi\_chirality/outputs/18\_v0151\_stratified\_and\_density.json}).
 Figure~\ref{fig:healpix_skymap} visualizes the per-pixel signed
 $\sigma_{\rm from\,half}$ at NSIDE=32 as a Mollweide projection; no
@@ -1749,7 +1784,16 @@ The $\sigma = -4.75$ deviation is \emph{concentrated entirely in the
 ``0 maximal voids per pixel'' bin} -- the sky regions where DESIVAST
 finds no maximal voids at all, which from inspection of the catalog
 footprint corresponds to the survey-mask outside the BGS bright-side
-NGC+SGC coverage region. Pixels with $\geq 1$ maximal void return
+NGC+SGC coverage region. We caution that ``$0$ maximal voids per
+pixel'' is a catalog-derived \emph{proxy} for being outside DESIVAST
+coverage, not a formal intersection with a published DESIVAST angular
+mask: some in-coverage pixels can stochastically contain zero maximal
+voids at NSIDE\,16 because of sampling and the $z \leq 0.24$ depth
+limit, so a residual fraction of the $0$-void bin may lie inside
+coverage; an explicit footprint-mask re-tabulation is queued for the
+data release and would sharpen, not change, the geometric attribution
+below (the $[-2.04, -0.09]$ range of every $\geq\!1$-void bin bounds
+the in-coverage behavior independently of the proxy). Pixels with $\geq 1$ maximal void return
 $\sigma$ values in the range $[-2.04,\,-0.09]$, with the highest-void-
 density bin ($6+$ per pixel, $n = 258{,}060$) at $\sigma = -2.04$ --
 below the Bonferroni-4 $|\sigma| = 2.50$ threshold. The
@@ -2027,7 +2071,20 @@ smaller monopole prediction
 tightens by a factor ${\sim}40$ in cross-class range --- under the
 selection-corrected classifier, demonstrating that the canonical
 result was not an artifact of selection-function leakage into the
-environment labels. The omnibus $4\times2$ homogeneity test sharpens
+environment labels. We read this run as a \emph{stress test} of the
+canonical classification rather than an independent confirmation: the
+per-shell mean subtraction whitens the density field radially and,
+combined with the masked FFT solve, can itself suppress genuine
+radial eigenvalue contrast, so part of the $1.98 \to 0.05$\,pp range
+collapse may reflect over-correction of real structure rather than
+removal of selection leakage alone. The diagnostic that matters for
+this paper's null is directional: a selection artifact masquerading
+as an environmental signal would have \emph{appeared} in the
+canonical run and \emph{survived} or grown here; instead both runs
+are null ($p = 0.31$ and $p = 0.99$), and the corrected class volume
+fractions and spatial coherence remain cosmologically plausible (the
+per-shell table below), so the null verdict is robust to the choice
+of correction. The omnibus $4\times2$ homogeneity test sharpens
 accordingly: $\chi^2 = 0.11$ with 3~d.o.f.\ ($p = 0.99$) on the
 selection-corrected classes ($n_{\rm CW}$: void $2{,}164$, wall
 $76{,}777$, filament $234{,}990$, cluster $90{,}180$ of the per-class
