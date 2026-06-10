@@ -1,0 +1,646 @@
+{
+ "job": "C12-P4-R24conf-local-batch",
+ "date_utc": "2026-06-10T08:12:41Z",
+ "generator": "pipelines/p2_chirality/c12_r24conf_local_batch.py",
+ "items": {
+  "queue3_openai_e4_sigma_convention": {
+   "status": "CLOSED-LOCAL",
+   "source_script": "pipelines/p2_chirality/scripts/injection_sweep_extended.py",
+   "sigma_convention": "sigma_inj = (A_rec - mean(A_null)) / std(A_null, ddof=1), where the null is N_MC_NULL=1000 per-pixel binomial label-shuffle realizations n_CW(p) ~ Binomial(N_spiral(p), p_CW_global) on the HC-broad (p_eq>0.6) pixelized counts at NSIDE=64 (preserves per-pixel totals and the global monopole; destroys spatial label correlations), A_rec/A_null are full-amplitude (2|a|) N_total(p)-weighted LS dipole fits to f_CW(p), and the variance estimator is the unbiased sample standard deviation (ddof=1) of the 1000 null amplitudes (injection_sweep_extended.py lines 74-82, 104-108). P(sigma>3) is then the fraction of 100 injections per amplitude exceeding sigma=3 against that fixed null calibration.",
+   "seed": 42
+  },
+  "queue6_meta_m3_equal_area_bands": {
+   "status": "CLOSED-LOCAL",
+   "construction": "canonical mask = N_spiral(p)>=10 on the full Catalog C spiral sample (23,682 pixels expected); in-mask pixels sorted by Dec and split into 8 contiguous bands of equal in-mask pixel count (HEALPix pixels are equal-area, so bands are equal in-mask area); galaxies assigned to bands via their NSIDE=64 pixel.",
+   "n_pix_canonical": 24087,
+   "hc_sample": {
+    "sample": "HC (max p_eq > 0.6)",
+    "global_f_cw_in_mask": 0.49606438545323556,
+    "bands": [
+     {
+      "band": 1,
+      "dec_range_deg": [
+       -66.44353569089876,
+       -38.68218745348943
+      ],
+      "n_pix": 3011,
+      "n_gal": 142821,
+      "n_cw": 70607,
+      "f_cw": 0.49437407664139027,
+      "sigma_binomial": 0.0013229592771058785,
+      "dev_from_half_pct": -0.562592335860973,
+      "z_vs_global": -1.2776725943847846
+     },
+     {
+      "band": 2,
+      "dec_range_deg": [
+       -38.68218745348943,
+       -9.594068226860458
+      ],
+      "n_pix": 3011,
+      "n_gal": 135671,
+      "n_cw": 67251,
+      "f_cw": 0.4956917838005174,
+      "sigma_binomial": 0.0013574078894539711,
+      "dev_from_half_pct": -0.4308216199482573,
+      "z_vs_global": -0.27449498092132935
+     },
+     {
+      "band": 3,
+      "dec_range_deg": [
+       -9.594068226860458,
+       0.5968418305070173
+      ],
+      "n_pix": 3011,
+      "n_gal": 123962,
+      "n_cw": 61594,
+      "f_cw": 0.49687807553927815,
+      "sigma_binomial": 0.0014200945191978416,
+      "dev_from_half_pct": -0.31219244607218477,
+      "z_vs_global": 0.5729830479891005
+     },
+     {
+      "band": 4,
+      "dec_range_deg": [
+       0.5968418305070173,
+       11.4151577427305
+      ],
+      "n_pix": 3011,
+      "n_gal": 117204,
+      "n_cw": 58061,
+      "f_cw": 0.49538411658305176,
+      "sigma_binomial": 0.0014604284348923822,
+      "dev_from_half_pct": -0.4615883416948241,
+      "z_vs_global": -0.4658008937178262
+     },
+     {
+      "band": 5,
+      "dec_range_deg": [
+       11.4151577427305,
+       22.02431283704216
+      ],
+      "n_pix": 3011,
+      "n_gal": 110165,
+      "n_cw": 54696,
+      "f_cw": 0.49649162619706805,
+      "sigma_binomial": 0.0015063902410191472,
+      "dev_from_half_pct": -0.3508373802931952,
+      "z_vs_global": 0.2836189004672797
+     },
+     {
+      "band": 6,
+      "dec_range_deg": [
+       22.02431283704216,
+       33.51005606625301
+      ],
+      "n_pix": 3011,
+      "n_gal": 110730,
+      "n_cw": 55167,
+      "f_cw": 0.49821186670279055,
+      "sigma_binomial": 0.0015025695279429906,
+      "dev_from_half_pct": -0.17881332972094488,
+      "z_vs_global": 1.4292059100219372
+     },
+     {
+      "band": 7,
+      "dec_range_deg": [
+       33.51005606625301,
+       51.25580694880489
+      ],
+      "n_pix": 3011,
+      "n_gal": 104640,
+      "n_cw": 51779,
+      "f_cw": 0.4948298929663609,
+      "sigma_binomial": 0.0015456028867644946,
+      "dev_from_half_pct": -0.5170107033639126,
+      "z_vs_global": -0.7987125913428657
+     },
+     {
+      "band": 8,
+      "dec_range_deg": [
+       51.25580694880489,
+       84.88153790222776
+      ],
+      "n_pix": 3010,
+      "n_gal": 104214,
+      "n_cw": 51812,
+      "f_cw": 0.49716928627631607,
+      "sigma_binomial": 0.001548816659917532,
+      "dev_from_half_pct": -0.2830713723683931,
+      "z_vs_global": 0.7133838701989064
+     }
+    ],
+    "max_abs_dev_from_half_pct": 0.562592335860973,
+    "max_abs_z_vs_global": 1.4292059100219372
+   },
+   "full_spiral_sample": {
+    "sample": "all Catalog C spirals",
+    "global_f_cw_in_mask": 0.49735690940564053,
+    "bands": [
+     {
+      "band": 1,
+      "dec_range_deg": [
+       -66.44353569089876,
+       -38.68218745348943
+      ],
+      "n_pix": 3011,
+      "n_gal": 441416,
+      "n_cw": 219129,
+      "f_cw": 0.49642287547347624,
+      "sigma_binomial": 0.0007525491234956716,
+      "dev_from_half_pct": -0.3577124526523756,
+      "z_vs_global": -1.2411600824483098
+     },
+     {
+      "band": 2,
+      "dec_range_deg": [
+       -38.68218745348943,
+       -9.594068226860458
+      ],
+      "n_pix": 3011,
+      "n_gal": 418192,
+      "n_cw": 207055,
+      "f_cw": 0.495119466656464,
+      "sigma_binomial": 0.0007731458937389631,
+      "dev_from_half_pct": -0.48805333435359977,
+      "z_vs_global": -2.893946365486304
+     },
+     {
+      "band": 3,
+      "dec_range_deg": [
+       -9.594068226860458,
+       0.5968418305070173
+      ],
+      "n_pix": 3011,
+      "n_gal": 381257,
+      "n_cw": 189436,
+      "f_cw": 0.49687218857620974,
+      "sigma_binomial": 0.0008097530518449618,
+      "dev_from_half_pct": -0.3127811423790261,
+      "z_vs_global": -0.5986032758090825
+     },
+     {
+      "band": 4,
+      "dec_range_deg": [
+       0.5968418305070173,
+       11.4151577427305
+      ],
+      "n_pix": 3011,
+      "n_gal": 369444,
+      "n_cw": 183751,
+      "f_cw": 0.49737172616147507,
+      "sigma_binomial": 0.0008226018754532858,
+      "dev_from_half_pct": -0.26282738385249305,
+      "z_vs_global": 0.018012061820756327
+     },
+     {
+      "band": 5,
+      "dec_range_deg": [
+       11.4151577427305,
+       22.02431283704216
+      ],
+      "n_pix": 3011,
+      "n_gal": 341266,
+      "n_cw": 169880,
+      "f_cw": 0.4977935100478805,
+      "sigma_binomial": 0.0008558925860650624,
+      "dev_from_half_pct": -0.22064899521194725,
+      "z_vs_global": 0.5101114898625884
+     },
+     {
+      "band": 6,
+      "dec_range_deg": [
+       22.02431283704216,
+       33.51005606625301
+      ],
+      "n_pix": 3011,
+      "n_gal": 358862,
+      "n_cw": 179159,
+      "f_cw": 0.49924204847545856,
+      "sigma_binomial": 0.0008346526349049043,
+      "dev_from_half_pct": -0.07579515245414448,
+      "z_vs_global": 2.2585911683281306
+     },
+     {
+      "band": 7,
+      "dec_range_deg": [
+       33.51005606625301,
+       51.25580694880489
+      ],
+      "n_pix": 3011,
+      "n_gal": 426808,
+      "n_cw": 212625,
+      "f_cw": 0.4981748233397687,
+      "sigma_binomial": 0.0007653336967601028,
+      "dev_from_half_pct": -0.1825176660231298,
+      "z_vs_global": 1.0687023681181855
+     },
+     {
+      "band": 8,
+      "dec_range_deg": [
+       51.25580694880489,
+       84.88153790222776
+      ],
+      "n_pix": 3010,
+      "n_gal": 463175,
+      "n_cw": 230716,
+      "f_cw": 0.4981184217628326,
+      "sigma_binomial": 0.0007346734986334369,
+      "dev_from_half_pct": -0.18815782371673917,
+      "z_vs_global": 1.036531681908439
+     }
+    ],
+    "max_abs_dev_from_half_pct": 0.48805333435359977,
+    "max_abs_z_vs_global": 2.893946365486304
+   },
+   "paper_equal_count_comparison": {
+    "paper_value": "7 equal-spiral-count Dec slabs (full spiral sample): f_CW dev from 0.5 spans -0.110% to -0.463%",
+    "paper_max_abs_dev_pct": 0.463
+   }
+  },
+  "queue8_openai_m1_robustness_panel": {
+   "status": "CLOSED-LOCAL",
+   "sample": "HC (winning-class p_eq > 0.6), NSIDE=64",
+   "null": "2000 pixel-permutation realizations per cell (A_p permuted across in-mask pixels; weights stay attached to pixels), seed 20260610",
+   "note_mask_convention": "sweep uses N_spiral(p)>=thr; the headline generator mask is tot>10 (strict), which differs from >=10 by the N=10 pixels only",
+   "panel": [
+    {
+     "mask_threshold_nspiral_ge": 10,
+     "fit": "uniform",
+     "n_pix": 23682,
+     "amp": 0.004597074287780106,
+     "z_mom": 0.535620732327616,
+     "rank_p": 0.2698650674662669,
+     "k": 539,
+     "null_mean": 0.0037035509172525477,
+     "null_std": 0.0016682016146847517
+    },
+    {
+     "mask_threshold_nspiral_ge": 10,
+     "fit": "N_spiral_weighted",
+     "n_pix": 23682,
+     "amp": 0.005348641128772208,
+     "z_mom": 0.7834595272562719,
+     "rank_p": 0.19740129935032483,
+     "k": 394,
+     "null_mean": 0.0039784750916889424,
+     "null_std": 0.0017488663924755362
+    },
+    {
+     "mask_threshold_nspiral_ge": 20,
+     "fit": "uniform",
+     "n_pix": 22078,
+     "amp": 0.0042094855049251,
+     "z_mom": 0.2680704678769275,
+     "rank_p": 0.35932033983008493,
+     "k": 718,
+     "null_mean": 0.003763656690838269,
+     "null_std": 0.0016631030550202674
+    },
+    {
+     "mask_threshold_nspiral_ge": 20,
+     "fit": "N_spiral_weighted",
+     "n_pix": 22078,
+     "amp": 0.005342821587422169,
+     "z_mom": 0.7940214542131249,
+     "rank_p": 0.20339830084957522,
+     "k": 406,
+     "null_mean": 0.003928045425998064,
+     "null_std": 0.0017817858118533438
+    },
+    {
+     "mask_threshold_nspiral_ge": 50,
+     "fit": "uniform",
+     "n_pix": 5763,
+     "amp": 0.005052510986145589,
+     "z_mom": -0.38206284677866265,
+     "rank_p": 0.6061969015492253,
+     "k": 1212,
+     "null_mean": 0.006129335391493394,
+     "null_std": 0.002818448363736431
+    },
+    {
+     "mask_threshold_nspiral_ge": 50,
+     "fit": "N_spiral_weighted",
+     "n_pix": 5763,
+     "amp": 0.005947149359650042,
+     "z_mom": -0.14082230026961762,
+     "rank_p": 0.5052473763118441,
+     "k": 1010,
+     "null_mean": 0.0063521738222717975,
+     "null_std": 0.0028761386644465957
+    }
+   ]
+  },
+  "queue10_openai_m4_confidence_sweep": {
+   "status": "CLOSED-LOCAL",
+   "selection": "class_eq in {CW,CCW} and max(p_cw_eq,p_ccw_eq) > cut; mask tot>10; uniform-weight LS dipole",
+   "null": "2000 pixel-permutation realizations per cut, seed 20260611",
+   "sweep": [
+    {
+     "p_eq_cut": 0.0,
+     "n_gal": 3201160,
+     "n_pix": 24079,
+     "amp": 0.005649017652156519,
+     "z_mom": 4.272472262032439,
+     "rank_p": 0.0009995002498750624,
+     "k": 1,
+     "null_mean": 0.0019282635770611564,
+     "null_std": 0.000870866759782164
+    },
+    {
+     "p_eq_cut": 0.4,
+     "n_gal": 3183029,
+     "n_pix": 24078,
+     "amp": 0.005596422818822818,
+     "z_mom": 4.106450704830255,
+     "rank_p": 0.0009995002498750624,
+     "k": 1,
+     "null_mean": 0.0019759455800018406,
+     "null_std": 0.0008816560818719567
+    },
+    {
+     "p_eq_cut": 0.5,
+     "n_gal": 2822425,
+     "n_pix": 24054,
+     "amp": 0.006054627089977736,
+     "z_mom": 4.016656070941943,
+     "rank_p": 0.001999000499750125,
+     "k": 3,
+     "null_mean": 0.0021264729531544875,
+     "null_std": 0.0009779662653322618
+    },
+    {
+     "p_eq_cut": 0.6,
+     "n_gal": 949584,
+     "n_pix": 23600,
+     "amp": 0.00442297186793266,
+     "z_mom": 0.4074140325160989,
+     "rank_p": 0.3173413293353323,
+     "k": 634,
+     "null_mean": 0.003749187799155181,
+     "null_std": 0.0016538067297690701
+    },
+    {
+     "p_eq_cut": 0.7,
+     "n_gal": 756024,
+     "n_pix": 23215,
+     "amp": 0.00642437757589905,
+     "z_mom": 1.1365623648321328,
+     "rank_p": 0.14142928535732133,
+     "k": 282,
+     "null_mean": 0.004237068617080297,
+     "null_std": 0.0019244953259927916
+    },
+    {
+     "p_eq_cut": 0.8,
+     "n_gal": 624660,
+     "n_pix": 22632,
+     "amp": 0.005725818658423384,
+     "z_mom": 0.5097125664027776,
+     "rank_p": 0.2848575712143928,
+     "k": 569,
+     "null_mean": 0.004650626245373418,
+     "null_std": 0.0021094092708719737
+    }
+   ]
+  },
+  "queue14_meta_m1_ylm_regression": {
+   "status": "CLOSED-LOCAL",
+   "field": "headline HC A_p map (winning p_eq>0.6, tot>10 mask, NSIDE=64)",
+   "design": "real spherical harmonics ell<=3 (16 columns) evaluated on in-mask pixel centers; OLS via pseudo-inverse",
+   "design_condition_number": 7.032265832263088,
+   "null": "2000 pixel-permutation realizations, seed 20260612; per-coefficient z=(c_obs-mean)/std(ddof=1), two-sided rank p; the l0 coefficient is monopole-dominated and nearly permutation-invariant",
+   "coefficients": [
+    {
+     "coef": "l0m+0",
+     "value": -0.031382242545159825,
+     "z": -0.4503629078821581,
+     "rank_p_two_sided": 0.6461769115442278
+    },
+    {
+     "coef": "l1m-1",
+     "value": -0.010376361365071779,
+     "z": -1.2511800713441745,
+     "rank_p_two_sided": 0.21039480259870064
+    },
+    {
+     "coef": "l1m+0",
+     "value": 0.007642365317216599,
+     "z": 0.6054122114515984,
+     "rank_p_two_sided": 0.5537231384307846
+    },
+    {
+     "coef": "l1m+1",
+     "value": 0.005063452131462925,
+     "z": 0.6350870925920707,
+     "rank_p_two_sided": 0.527736131934033
+    },
+    {
+     "coef": "l2m-2",
+     "value": 0.0009737004221144287,
+     "z": 0.18858108984658997,
+     "rank_p_two_sided": 0.8425787106446777
+    },
+    {
+     "coef": "l2m-1",
+     "value": 0.004349152730174616,
+     "z": 0.6595164407235705,
+     "rank_p_two_sided": 0.5172413793103449
+    },
+    {
+     "coef": "l2m+0",
+     "value": -0.0036420191322853917,
+     "z": -0.5272290608381501,
+     "rank_p_two_sided": 0.5972013993003499
+    },
+    {
+     "coef": "l2m+1",
+     "value": -0.002317455983097237,
+     "z": -0.295029258799851,
+     "rank_p_two_sided": 0.769615192403798
+    },
+    {
+     "coef": "l2m+2",
+     "value": 0.004254372898266514,
+     "z": 0.7169091512347614,
+     "rank_p_two_sided": 0.4587706146926537
+    },
+    {
+     "coef": "l3m-3",
+     "value": -0.00800128382362092,
+     "z": -1.674562012446901,
+     "rank_p_two_sided": 0.09295352323838081
+    },
+    {
+     "coef": "l3m-2",
+     "value": -0.013952917215306542,
+     "z": -2.020680298183678,
+     "rank_p_two_sided": 0.04447776111944028
+    },
+    {
+     "coef": "l3m-1",
+     "value": -0.02645980773985876,
+     "z": -4.407829863300084,
+     "rank_p_two_sided": 0.0004997501249375312
+    },
+    {
+     "coef": "l3m+0",
+     "value": 0.0040753806451296936,
+     "z": 0.6461353305005942,
+     "rank_p_two_sided": 0.5057471264367817
+    },
+    {
+     "coef": "l3m+1",
+     "value": 0.010874343219325552,
+     "z": 1.266438288113149,
+     "rank_p_two_sided": 0.21139430284857572
+    },
+    {
+     "coef": "l3m+2",
+     "value": -0.0020470661698536183,
+     "z": -0.3008578065050091,
+     "rank_p_two_sided": 0.7706146926536732
+    },
+    {
+     "coef": "l3m+3",
+     "value": 0.003895437252129059,
+     "z": 0.8257671635911106,
+     "rank_p_two_sided": 0.4017991004497751
+    }
+   ],
+   "max_abs_z_l1": 1.2511800713441745,
+   "max_abs_z_l_le_3_excl_l0": 4.407829863300084
+  },
+  "queue1_meta_e2_coupling_conditioning": {
+   "status": "CLOSED-LOCAL",
+   "construction": "NmtField(weight, [0]) with weight = C2-apodized(N_all>=1 binary) x N_all at NSIDE=64; bins NmtBin.from_lmax_linear(191, nlb=1); M = NmtWorkspace.get_coupling_matrix() (unbinned spin-0 mode-coupling matrix). Reported: SVD of the full matrix, SVD of the leading ell in [0,5] block, and the ell=1 row diagonal-dominance ratio M_11/sum_{l' != 1}|M_1l'|. Apodization computed by a validated reimplementation of the NaMaster C2 kernel (nmt.mask_apodization raised RuntimeError('Not enough memory in listtot') on this patchy footprint on this host; the reimplementation matches nmt.mask_apodization to max|diff|=2.4e-13 on a control band mask).",
+   "apodization_sweep": {
+    "apod_1deg": {
+     "f_sky_eff": 0.456262611426413,
+     "full_matrix": {
+      "shape": [
+       192,
+       192
+      ],
+      "sv_max": 64145.01835151068,
+      "sv_min": 20605.612046904625,
+      "condition_number": 3.1129877727241078
+     },
+     "low_ell_block_l0_to_l5": {
+      "singular_values": [
+       52034.526132892664,
+       44034.72108784724,
+       34650.08653121679,
+       31965.77289075137,
+       25081.497026660985,
+       21259.803724083602
+      ],
+      "condition_number": 2.447554399288585
+     },
+     "l1_row": {
+      "M_11": 36637.32719414183,
+      "diag_dominance_ratio_M11_over_offdiag_rowsum": 1.303170206398441,
+      "largest_offdiag_couplings": {
+       "l'=3": 11643.512059111772,
+       "l'=5": 2362.2929665886054,
+       "l'=2": 1940.4218775024424,
+       "l'=4": 1518.9653909608076
+      }
+     }
+    },
+    "apod_2deg": {
+     "f_sky_eff": 0.4520293436141875,
+     "full_matrix": {
+      "shape": [
+       192,
+       192
+      ],
+      "sv_max": 63552.78600503697,
+      "sv_min": 20060.97312357069,
+      "condition_number": 3.1679812147480257
+     },
+     "low_ell_block_l0_to_l5": {
+      "singular_values": [
+       51495.26487270041,
+       43419.51900587363,
+       34104.13141035333,
+       31429.037747626222,
+       24525.316049260397,
+       20716.072899306142
+      ],
+      "condition_number": 2.485763837721636
+     },
+     "l1_row": {
+      "M_11": 36078.52266535991,
+      "diag_dominance_ratio_M11_over_offdiag_rowsum": 1.285503139461548,
+      "largest_offdiag_couplings": {
+       "l'=3": 11627.471460751123,
+       "l'=5": 2341.839981759011,
+       "l'=2": 1959.2291158450118,
+       "l'=4": 1544.9252672112307
+      }
+     }
+    },
+    "apod_3deg": {
+     "f_sky_eff": 0.44646836040385385,
+     "full_matrix": {
+      "shape": [
+       192,
+       192
+      ],
+      "sv_max": 62346.77215376294,
+      "sv_min": 19174.347730353747,
+      "condition_number": 3.251571997678208
+     },
+     "low_ell_block_l0_to_l5": {
+      "singular_values": [
+       50567.608112435475,
+       42344.88322047738,
+       33193.15132245991,
+       30522.800058253033,
+       23608.51299663843,
+       19827.052048510628
+      ],
+      "condition_number": 2.5504350313254975
+     },
+     "l1_row": {
+      "M_11": 35133.52446037839,
+      "diag_dominance_ratio_M11_over_offdiag_rowsum": 1.2657195225860214,
+      "largest_offdiag_couplings": {
+       "l'=3": 11576.637674919633,
+       "l'=5": 2300.031889106551,
+       "l'=2": 1999.2208566449876,
+       "l'=4": 1584.643348914177
+      }
+     }
+    }
+   }
+  },
+  "queue2_openai_e3_null_array_ul95": {
+   "status": "CLOSED-LOCAL",
+   "replicates": "run_dipole_catalog_c.py null (i) exactly: HC winning-conf>0.6, tot>10 mask, hp.fit_dipole, N_MC=10^4, rng seed 20260418, in-place shuffle",
+   "observed_amp": 0.00442297186793267,
+   "n_pix": 23600,
+   "n_hc": 949584,
+   "null_mean": 0.0037367565963817,
+   "null_std_ddof1": 0.0016820733937407567,
+   "z_mom": 0.40795798453532284,
+   "rank_k": 3084,
+   "rank_p_one_sided": 0.3084691530846915,
+   "null_quantiles": {
+    "q50": 0.0035485171648698835,
+    "q68": 0.0043646289666829825,
+    "q90": 0.006003800038426122,
+    "q95": 0.006793969873317402,
+    "q99": 0.008414083912973715
+   },
+   "ul95_construction": "PRIMARY: A_95UL is defined as the 95th percentile of the pixel-permutation null amplitude distribution, i.e. the smallest amplitude with P(A_null >= A_95UL) = 0.05. Because the observed amplitude (rank p = 0.308) is fully consistent with the null, any true coherent dipole large enough to push the estimator above this quantile with 95% null-exclusion probability is disfavored; this is an estimator-level (not signal-injected) limit and does not account for signal+noise amplitude addition. CONSERVATIVE companion: UL_cons = max(A_obs, A_95UL), which here equals A_95UL since A_obs < A_95UL. No obs+quantile sum construction is used.",
+   "A_95UL": 0.006793969873317402,
+   "UL_conservative_max_obs_null95": 0.006793969873317402,
+   "null_array_saved": "outputs/canonical_provenance/c12_queue2_null_amps_10k.npy"
+  }
+ },
+ "catalog_parquet": "/Users/houstongolden/.cache/huggingface/hub/datasets--bamfai--galaxy-chirality-catalog/snapshots/5df35642b355e630490cdbb983252620105b99fc/catalog_production.parquet",
+ "queue1_retry_date_utc": "2026-06-10T08:15:16Z"
+}
