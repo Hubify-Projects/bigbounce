@@ -540,7 +540,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 1 (fig:z_histogram)",
         "title": "Redshift distribution of the matched chirality × DESI DR1 spiral sample (1'' acceptance, after dedup)",
         "desc": "Redshift distribution of the matched chirality × DESI DR1 spiral sample (1'' acceptance, after dedup). The distribution peaks at z ≈ 0.15--0.2 (median 0.168) and falls off steeply above z ≈ 0.5; a sparse tail extends to the maximum z = 3.83 (Table ).",
-        "source": "Paper 5 · v0.1.57-2026-06-11"
+        "source": "Paper 5 · v0.1.58-2026-06-11"
       },
       {
         "src": "/images/fig_p5_volume_fractions_pie.png",
@@ -548,7 +548,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 2 (fig:volfrac)",
         "title": "In-footprint V-Web volume fractions for the canonical (R_s=25 Mpc/h, _ th=0, N_ grid=256^3) run on 14,622,283…",
         "desc": "In-footprint V-Web volume fractions for the canonical (R_s=25 Mpc/h, _ th=0, N_ grid=256^3) run on 14,622,283 DESI DR1 spectroscopic galaxies. The cluster volume fraction (1.0\\%) reflects the high-density tail; the wall+filament fraction (74.5\\%) dominates as expected for galaxy-traced large-scale structure.",
-        "source": "Paper 5 · v0.1.57-2026-06-11"
+        "source": "Paper 5 · v0.1.58-2026-06-11"
       },
       {
         "src": "/images/fig_p5_cw_by_env_bar.png",
@@ -556,7 +556,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 3 (fig:cw_by_env)",
         "title": "CW fraction per cosmic-web class on the canonical V-Web run, on the n=812,793 env-labeled spiral rows (791,63…",
         "desc": "CW fraction per cosmic-web class on the canonical V-Web run, on the n=812,793 env-labeled spiral rows (791,635 unique chirality-relevant matched spirals; ). Bars show the observed f_ CW per class; black error bars are 95\\% Jeffreys binomial credible intervals. The void bin (n=428) is dominated by counting noise and brackets parity. The dashed horizontal lin…",
-        "source": "Paper 5 · v0.1.57-2026-06-11"
+        "source": "Paper 5 · v0.1.58-2026-06-11"
       },
       {
         "src": "/images/fig_cw_vs_z.png",
@@ -564,7 +564,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 4 (fig:cw_vs_z)",
         "title": "Equivariant CW fraction versus redshift across the matched DR1 chirality-relevant sample, with 95\\% binomial…",
         "desc": "Equivariant CW fraction versus redshift across the matched DR1 chirality-relevant sample, with 95\\% binomial confidence intervals per bin. The low-z bins that dominate the sample (median z = 0.168) sit on the 0.5 line; bins above z ≈ 0.5 contain few objects and have correspondingly wide intervals. The binned values are consistent with no redshift dependence…",
-        "source": "Paper 5 · v0.1.57-2026-06-11"
+        "source": "Paper 5 · v0.1.58-2026-06-11"
       },
       {
         "src": "/images/fig_p5_cw_vs_density.png",
@@ -572,7 +572,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 5 (fig:cw_vs_density)",
         "title": "Density-quintile null with Paper IV monopole-prediction overlay",
         "desc": "Density-quintile null with Paper IV monopole-prediction overlay. Left: CW fraction per projected-density quintile (k=5 NN proxy, N=158,327 per bin) with 95\\% Jeffreys binomial CIs; dashed parity f_ CW=0.5 and dotted Paper IV f_ CW=0.4974 references. Right: observed _ fromhalf per quintile (bars) vs the Paper IV-monopole prediction _ pred=2Δ f_ CWN (red diam…",
-        "source": "Paper 5 · v0.1.57-2026-06-11"
+        "source": "Paper 5 · v0.1.58-2026-06-11"
       },
       {
         "src": "/images/fig_p5_healpix_skymap_nside32.png",
@@ -580,7 +580,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 6 (fig:healpix_skymap)",
         "title": "Per-pixel signed _ fromhalf for the chirality-relevant matched-spiral subsample at NSIDE=32 (Mollweide projec…",
         "desc": "Per-pixel signed _ fromhalf for the chirality-relevant matched-spiral subsample at NSIDE=32 (Mollweide projection, equatorial coordinates). The observed |σ|^ obs_=4.13 vs the label-shuffle null |σ|^ null,p99_=4.78 gives a look-elsewhere p=0.135; no NSIDE returns p<0.05. The map shows no coherent large-scale structure beyond random pixel-level scatter; the h…",
-        "source": "Paper 5 · v0.1.57-2026-06-11"
+        "source": "Paper 5 · v0.1.58-2026-06-11"
       },
       {
         "src": "/images/fig_p5_phase2_sensitivity_heatmap.png",
@@ -588,7 +588,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 7 (fig:phase2)",
         "title": "Phase 2 sensitivity heat-map",
         "desc": "Phase 2 sensitivity heat-map: per-cell range of f_ CW across the four environment classes \\void, wall, filament, cluster\\ in percentage points, on the declared env-labeled spiral parent. Each cell corresponds to a complete V-Web re-run on the 14,622,283-galaxy DESI DR1 spectro sample at (R_s, _ th). The maximum range across all nine cells is 4.12percentage…",
-        "source": "Paper 5 · v0.1.57-2026-06-11"
+        "source": "Paper 5 · v0.1.58-2026-06-11"
       },
       {
         "src": "/images/fig_p5_voids_vs_chirality_skymap.png",
@@ -596,7 +596,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 8 (fig:voids_vs_chirality)",
         "title": "HEALPix NSIDE = 32 Mollweide projection (equatorial coordinates)",
         "desc": "HEALPix NSIDE = 32 Mollweide projection (equatorial coordinates). Top: count of DESIVAST maximal voids per pixel (885 occupied pixels, median 4 voids/pix). Bottom: per-pixel chirality _ from\\ half on the z 0.24 matched-spiral subsample restricted to pixels with 200 spirals (1,496 valid pixels, σ range -3.45 to +3.48). The Pearson correlation across the n_ p…",
-        "source": "Paper 5 · v0.1.57-2026-06-11"
+        "source": "Paper 5 · v0.1.58-2026-06-11"
       },
       {
         "src": "/images/fig_p5_vweb_vs_tempel_overlay.png",
@@ -604,7 +604,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 9 (fig:tempel_overlay)",
         "title": "V-Web (left; full-sample canonical run, shown as reference) vs Tempel+2014 FoF (right; 96,753-spiral overlap)…",
         "desc": "V-Web (left; full-sample canonical run, shown as reference) vs Tempel+2014 FoF (right; 96,753-spiral overlap) cross-validation: per-class CW fraction with 95\\% Jeffreys binomial credible intervals, shared y-axis [0.43, 0.53]. Dashed reference is parity f_ CW=0.5; dotted-red reference is the Paper IV global f_ CW=0.4974 classifier-monopole offset. The quanti…",
-        "source": "Paper 5 · v0.1.57-2026-06-11"
+        "source": "Paper 5 · v0.1.58-2026-06-11"
       },
       {
         "src": "/images/fig_cw_vs_z.png",
@@ -612,7 +612,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 101",
         "title": "f_CW vs z",
         "desc": "Equivariant CW fraction as a function of redshift across the DESI DR1 footprint. Visualizes the z-stratified null check that the chirality-environment signal is z-independent.",
-        "source": "Paper 5 · v0.1.57-2026-06-11"
+        "source": "Paper 5 · v0.1.58-2026-06-11"
       },
       {
         "src": "/images/fig_sky_footprint.png",
@@ -620,7 +620,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 102",
         "title": "P5 sky footprint",
         "desc": "Mollweide footprint of the P5 DESI×DESIVAST environmental analysis (56,981 void spirals + 791,635 cross-matched DR1 spirals). Useful as a context map.",
-        "source": "Paper 5 · v0.1.57-2026-06-11"
+        "source": "Paper 5 · v0.1.58-2026-06-11"
       },
       {
         "src": "/images/fig_z_histogram.png",
@@ -628,7 +628,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 103",
         "title": "z histogram by environment",
         "desc": "Redshift histogram of the P5 sample stratified by V-Web/T-Web environment class (void / wall / filament / knot). Anchors the sample-balance discussion.",
-        "source": "Paper 5 · v0.1.57-2026-06-11"
+        "source": "Paper 5 · v0.1.58-2026-06-11"
       },
       {
         "src": "/images/fig_confidence_sensitivity.png",
@@ -636,7 +636,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 104",
         "title": "Confidence sensitivity",
         "desc": "Sensitivity of the P5 per-environment Δf_CW signal to the equivariant confidence threshold p_eq cut. Quantifies the robustness of the headline result across p_eq ∈ [0.6, 0.95].",
-        "source": "Paper 5 · v0.1.57-2026-06-11"
+        "source": "Paper 5 · v0.1.58-2026-06-11"
       },
       {
         "src": "/images/fig_radius_sensitivity.png",
@@ -644,7 +644,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 105",
         "title": "Radius sensitivity",
         "desc": "Sensitivity of the per-environment Δf_CW signal to the DESIVAST void-radius cut. Anchors the §VI robustness check that the signal is not driven by a specific void size.",
-        "source": "Paper 5 · v0.1.57-2026-06-11"
+        "source": "Paper 5 · v0.1.58-2026-06-11"
       },
       {
         "src": "/images/fig_cw_vs_density.png",
@@ -652,7 +652,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 106",
         "title": "f_CW vs local density",
         "desc": "Equivariant CW fraction as a function of cosmic-web local density (V-Web density-quintile classification). Companion to the per-environment bar chart, showing the continuous trend.",
-        "source": "Paper 5 · v0.1.57-2026-06-11"
+        "source": "Paper 5 · v0.1.58-2026-06-11"
       },
       {
         "src": "/images/fig_healpix_cw_residual.png",
@@ -660,7 +660,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 107",
         "title": "HEALPix CW residual",
         "desc": "Per-pixel residual Δf_CW^eq after subtracting the V-Web environmental prediction. Visualizes spatial coherence of the residual + supports the §VII null-systematic discussion.",
-        "source": "Paper 5 · v0.1.57-2026-06-11"
+        "source": "Paper 5 · v0.1.58-2026-06-11"
       }
     ]
   }

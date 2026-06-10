@@ -18,7 +18,7 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.57-2026-06-10}
+\newcommand{\paperVersion}{v0.1.58-2026-06-11}
 % v0.1.52-2026-06-09 (R22prov truth-audit closure wave; work order in
 %   project-context/peer-reviews/R22prov_P5_TRUTH_AUDIT.md; recompute artifacts
 %   outputs/17_v0151_closure_recomputes.json + 18_v0151_stratified_and_density.json):
@@ -2012,8 +2012,28 @@ function rather than true large-scale structure. We note the analogous
 tiling/completeness weighting (e.g.\ DESI random-catalog or FKP-like
 per-cell weights) is applied when building $\delta$; angular geometry
 is controlled here only through the footprint mask, the interior-buffer
-excision, and the NSIDE$\,=\,$64 geometry cross-check, and a
-randoms-weighted field rebuild is queued as follow-up compute.
+excision, and the NSIDE$\,=\,$64 geometry cross-check. The
+randoms-weighted rebuild has now been run
+(\artifact{pipelines/p5\_desi\_chirality/outputs/25\_completeness\_weighted\_rebuild.json}:
+$7.5\times 10^7$ DESI DR1 BGS\_BRIGHT clustering randoms,
+$\delta_w = n_g/(\alpha\,n_r) - 1$ on randoms-supported cells, restricted
+to the $0.01 < z < 0.50$ window where the BGS randoms trace the
+selection --- $99.3\%$ of matched spirals --- and compared against an
+identically windowed unweighted control). The completeness weighting
+\emph{substantially re-labels the environment field}, as expected when
+the radial selection gradient is removed: class volume fractions shift
+by up to $21$~pp and only $44\%$ of common-mask cells retain their
+class. The headline observable is nonetheless
+\emph{classification-robust}: per-class $f_{\rm CW}$ moves by only
+$+0.05$~pp (filament, $n\!\sim\!4\times 10^5$) and $-0.03$~pp (cluster)
+between the two builds, $-0.40$~pp (wall), and $+2.7$~pp in the
+$n\!\approx\!430$ void bin --- well inside that bin's $\pm 4.8$~pp
+counting width --- so the no-environment-dependence conclusion holds
+under both the survey-selection-shaped and completeness-corrected
+environment definitions. A cube-connected 3-iteration dilation variant
+shifts volumes by $\le 3.1$~pp with $99.6\%$ spiral-assignment
+agreement and per-class $f_{\rm CW}$ shifts $\le 0.77$~pp (same
+artifact), closing the mask-dilation sensitivity item as well.
 
 To test whether the headline environmental-independence conclusion is
 robust to this, we rebuilt the classification with a first-order radial

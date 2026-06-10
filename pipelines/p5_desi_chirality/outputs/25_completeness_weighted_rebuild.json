@@ -1,0 +1,296 @@
+{
+  "written_utc": "2026-06-10T17:33:11Z",
+  "script": "scripts/25_completeness_weighted_rebuild.py",
+  "closes": "QUEUE-16 / R24conf META-M1 (randoms-weighted rebuild) + R26conf META-M1 (cube-connected/3-iter dilation) + R26conf META-M4 (integral constraint via randoms-based alpha)",
+  "randoms": {
+    "files": [
+      "BGS_BRIGHT_NGC_0_clustering.ran.fits",
+      "BGS_BRIGHT_NGC_1_clustering.ran.fits",
+      "BGS_BRIGHT_NGC_2_clustering.ran.fits",
+      "BGS_BRIGHT_NGC_3_clustering.ran.fits",
+      "BGS_BRIGHT_SGC_0_clustering.ran.fits",
+      "BGS_BRIGHT_SGC_1_clustering.ran.fits",
+      "BGS_BRIGHT_SGC_2_clustering.ran.fits",
+      "BGS_BRIGHT_SGC_3_clustering.ran.fits"
+    ],
+    "source": "DESI DR1 LSS iron v1.5 BGS_BRIGHT clustering randoms (RA/DEC/Z/WEIGHT)",
+    "n_deposited": 74728906,
+    "z_range_used": [
+      0.01,
+      0.5
+    ],
+    "weighting": "catalog WEIGHT column (raw counts used for the support cut)"
+  },
+  "geometry_matching_disclosure": "Pattern-036: the published parent applies ZWARN==0 + SPECTYPE==GALAXY + 0.01<z<2.0 to the zall table; the BGS_BRIGHT clustering randoms trace the BGS_BRIGHT target selection over 0.01<z<0.50 only \u2014 the GALAXY-spectype cut has no randoms analog and dark-program (LRG/ELG) parent galaxies have no BGS randoms. The weighted build is therefore restricted to the 0.01<z<0.50 window (99.3% of matched CW/CCW spirals) and compared against an identically-windowed unweighted control build on the same grid, so the delta isolates the completeness weighting.",
+  "method": {
+    "grid_n": 256,
+    "cell_size_mpc_h": 25.912670135498047,
+    "box_side_mpc_h": 6633.6435546875,
+    "R_s_mpc_h": 25.0,
+    "lambda_th": 0.0,
+    "delta_w_definition": "delta_w = n_g / (alpha * n_r_w) - 1 on cells with raw random CIC count >= NR_MIN; alpha = sum(n_g)/sum(n_r_w) over supported cells; delta_w = 0 elsewhere (zero-padding). The n_r_w-weighted mean of delta_w over the support is 0 by construction (alpha normalization), addressing the integral-constraint family; the UNWEIGHTED per-cell mean is +1.15 (measured), reflecting the radial-profile mismatch between the zall GALAXY parent and the BGS_BRIGHT clustering selection (low-z cells hold more parent galaxies per random than high-z cells). The k=0 mode is zeroed in the Poisson inversion, so the offset does not enter the tidal classification.",
+    "spiral_join_note": "env classes NN-interpolated at the unique-TARGETID matched-spiral positions; B-vs-A uses the identical in-window spiral set, C-vs-D the identical full set"
+  },
+  "parent_counts": {
+    "n_rows_full": 14622283,
+    "n_rows_window": 7684682,
+    "n_spirals_full": 791635,
+    "n_spirals_window": 786256
+  },
+  "builds": {
+    "D_row_level": {
+      "n_mask_cells": 3150089,
+      "volume_fractions_in_footprint": {
+        "void": 0.2436124820600307,
+        "wall": 0.4131854687280264,
+        "filament": 0.3328007557881698,
+        "cluster": 0.010401293423773106
+      },
+      "spiral_f_cw_by_class": {
+        "void": {
+          "n": 432,
+          "n_cw": 207,
+          "cw_fraction": 0.4791666666666667,
+          "sigma_from_half": -0.8660254037844386
+        },
+        "wall": {
+          "n": 6711,
+          "n_cw": 3369,
+          "cw_fraction": 0.5020116227089853,
+          "sigma_from_half": 0.3295870541832664
+        },
+        "filament": {
+          "n": 399287,
+          "n_cw": 198805,
+          "cw_fraction": 0.49790000676205337,
+          "sigma_from_half": -2.653936193670268
+        },
+        "cluster": {
+          "n": 385205,
+          "n_cw": 191211,
+          "cw_fraction": 0.4963876377513272,
+          "sigma_from_half": -4.484016979909055
+        }
+      },
+      "n_deposited": 14622283,
+      "rho_mean_gal_per_cell": 4.641862392425537,
+      "dilation": "cross-structure, 2 iterations (production)"
+    },
+    "C_dilation_cube3": {
+      "n_mask_cells": 3931202,
+      "volume_fractions_in_footprint": {
+        "void": 0.2124731825024509,
+        "wall": 0.4225417569486381,
+        "filament": 0.3556812903534339,
+        "cluster": 0.009303770195477108
+      },
+      "spiral_f_cw_by_class": {
+        "void": {
+          "n": 304,
+          "n_cw": 148,
+          "cw_fraction": 0.4868421052631579,
+          "sigma_from_half": -0.4588314677411235
+        },
+        "wall": {
+          "n": 6494,
+          "n_cw": 3271,
+          "cw_fraction": 0.5036957191253465,
+          "sigma_from_half": 0.595641701052958
+        },
+        "filament": {
+          "n": 399552,
+          "n_cw": 198899,
+          "cw_fraction": 0.49780504164664424,
+          "sigma_from_half": -2.7748718715594785
+        },
+        "cluster": {
+          "n": 385285,
+          "n_cw": 191274,
+          "cw_fraction": 0.49644808388595457,
+          "sigma_from_half": -4.409443140384597
+        }
+      },
+      "n_deposited": 14622283,
+      "rho_mean_gal_per_cell": 3.719545602798462,
+      "dilation": "cube-connected np.ones((3,3,3)), 3 iterations"
+    },
+    "A_unweighted_window": {
+      "n_mask_cells": 287736,
+      "volume_fractions_in_footprint": {
+        "void": 0.1755741374037312,
+        "wall": 0.36099063029999723,
+        "filament": 0.44587747101509717,
+        "cluster": 0.017557761281174408
+      },
+      "spiral_f_cw_by_class": {
+        "void": {
+          "n": 478,
+          "n_cw": 227,
+          "cw_fraction": 0.47489539748953974,
+          "sigma_from_half": -1.0977344489912357
+        },
+        "wall": {
+          "n": 20957,
+          "n_cw": 10475,
+          "cw_fraction": 0.49983299136326764,
+          "sigma_from_half": -0.0483541199304981
+        },
+        "filament": {
+          "n": 439039,
+          "n_cw": 218479,
+          "cw_fraction": 0.49763005108885544,
+          "sigma_from_half": -3.140657155466622
+        },
+        "cluster": {
+          "n": 325782,
+          "n_cw": 161697,
+          "cw_fraction": 0.4963349724662504,
+          "sigma_from_half": -4.183798692717889
+        }
+      },
+      "n_deposited": 7684682,
+      "rho_mean_gal_per_cell": 26.707406997680664,
+      "z_window": [
+        0.01,
+        0.5
+      ],
+      "vs_sample_monopole": {
+        "sample_monopole_f_cw": 0.49713833662318635,
+        "n_total": 786256,
+        "n_cw_total": 390878,
+        "per_class_sigma_vs_monopole": {
+          "void": -0.973,
+          "wall": 0.78,
+          "filament": 0.652,
+          "cluster": -0.917
+        }
+      }
+    },
+    "B_randoms_weighted_window": {
+      "n_mask_cells": 174274,
+      "volume_fractions_in_footprint": {
+        "void": 0.0074652558614595405,
+        "wall": 0.19237522522005576,
+        "filament": 0.6526389478637089,
+        "cluster": 0.1475205710547758
+      },
+      "spiral_f_cw_by_class": {
+        "void": {
+          "n": 21392,
+          "n_cw": 10736,
+          "cw_fraction": 0.5018698578908003,
+          "sigma_from_half": 0.5469709887444194
+        },
+        "wall": {
+          "n": 355412,
+          "n_cw": 176212,
+          "cw_fraction": 0.49579642780772737,
+          "sigma_from_half": -5.0120402453513115
+        },
+        "filament": {
+          "n": 392188,
+          "n_cw": 195366,
+          "cw_fraction": 0.4981437473864575,
+          "sigma_from_half": -2.324953249129048
+        },
+        "cluster": {
+          "n": 17264,
+          "n_cw": 8564,
+          "cw_fraction": 0.49606116774791476,
+          "sigma_from_half": -1.0350663614315712
+        }
+      },
+      "n_deposited": 7684682,
+      "n_randoms_deposited": 74728906,
+      "z_window": [
+        0.01,
+        0.5
+      ],
+      "nr_min_raw_cic": 5.0,
+      "alpha_Ng_over_Nrw": 0.10141510516405106,
+      "mean_raw_randoms_per_support_cell": 428.5730285644531,
+      "mean_delta_on_support": 1.1496152877807617,
+      "frac_gal_mass_on_unsupported_cells": 0.017441077157855034,
+      "frac_spirals_on_unsupported_cells": 0.00455703994627704,
+      "vs_sample_monopole": {
+        "sample_monopole_f_cw": 0.49713833662318635,
+        "n_total": 786256,
+        "n_cw_total": 390878,
+        "per_class_sigma_vs_monopole": {
+          "void": 1.384,
+          "wall": -1.6,
+          "filament": 1.259,
+          "cluster": -0.283
+        }
+      }
+    }
+  },
+  "deltas_weighted_minus_unweighted_window": {
+    "volume_fractions_pp": {
+      "void": -16.810888154227165,
+      "wall": -16.861540507994146,
+      "filament": 20.676147684861174,
+      "cluster": 12.996280977360142
+    },
+    "max_abs_volume_fraction_shift_pp": 20.676147684861174,
+    "n_common_mask_cells": 174274,
+    "cell_class_agreement_on_common_mask": 0.4380228835052848,
+    "spiral_class_assignment_agreement": 0.2662249954213386,
+    "f_cw_by_class": {
+      "void": {
+        "delta_f_cw_pp": 2.6974460401260556,
+        "delta_n": 20914
+      },
+      "wall": {
+        "delta_f_cw_pp": -0.40365635555402735,
+        "delta_n": 334455
+      },
+      "filament": {
+        "delta_f_cw_pp": 0.051369629760206204,
+        "delta_n": -46851
+      },
+      "cluster": {
+        "delta_f_cw_pp": -0.027380471833565734,
+        "delta_n": -308518
+      }
+    },
+    "max_abs_f_cw_shift_pp": 2.6974460401260556
+  },
+  "deltas_cube3_minus_production_dilation": {
+    "volume_fractions_pp": {
+      "void": -3.1139299557579796,
+      "wall": 0.9356288220611686,
+      "filament": 2.2880534565264066,
+      "cluster": -0.10975232282959979
+    },
+    "max_abs_volume_fraction_shift_pp": 3.1139299557579796,
+    "n_common_mask_cells": 3150089,
+    "cell_class_agreement_on_common_mask": 0.7804785833035194,
+    "spiral_class_assignment_agreement": 0.9959893132567408,
+    "f_cw_by_class": {
+      "void": {
+        "delta_f_cw_pp": 0.7675438596491224,
+        "delta_n": -128
+      },
+      "wall": {
+        "delta_f_cw_pp": 0.1684096416361247,
+        "delta_n": -217
+      },
+      "filament": {
+        "delta_f_cw_pp": -0.00949651154091291,
+        "delta_n": 265
+      },
+      "cluster": {
+        "delta_f_cw_pp": 0.00604461346273566,
+        "delta_n": 80
+      }
+    },
+    "max_abs_f_cw_shift_pp": 0.7675438596491224
+  },
+  "context_window_minus_full_volume_fractions_pp": {
+    "void": -6.803834465629949,
+    "wall": -5.219483842802919,
+    "filament": 11.307671522692736,
+    "cluster": 0.7156467857401303
+  }
+}

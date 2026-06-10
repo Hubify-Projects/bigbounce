@@ -1,4 +1,14 @@
 
+## CLOSED 2026-06-11 — P5 QUEUE-16 + R26conf mask-dilation/randoms residue (25-series)
+
+Randoms-weighted rebuild run locally (7.5e7 BGS_BRIGHT randoms, 0.01<z<0.50
+window = 99.3% of spirals, vs identically-windowed unweighted control):
+environment labels shift wholesale (44% cell agreement, volumes up to 21pp) but
+per-class f_CW moves <=0.05pp (filament)/0.03pp (cluster)/0.40pp (wall)/2.7pp
+(void n~430, inside +-4.8pp) — the null is CLASSIFICATION-ROBUST. Cube-3
+dilation variant: <=3.1pp volumes, 99.6% spiral agreement. Artifact:
+outputs/25_completeness_weighted_rebuild.json. SIX.A updated (v0.1.58).
+
 ## CLOSED 2026-06-11 — P1A Cartan single-convention re-derivation (R26conf META-E1)
 
 Derivation written into the Eq.(3) footnote of paper1a_ech_nogo.tex (v1A.0.55
