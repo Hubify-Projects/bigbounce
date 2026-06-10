@@ -12,14 +12,21 @@
 > (GR-degradation calibration ~15%→~23% c9k-verified; c9l σ_theory continuous marginalization;
 > fig4 'BOUNCE EXCLUDED' regen). Both at readiness 95 / SIGN-OFF-READY — submit P4 first, P2 with
 > the first wave, the moment Houston signs off.
-> ⚠️ **Current versions (2026-06-10 evening):** P1A v1A.0.53 / P1B v1B.0.53 (unchanged) /
-> P2 v1.7.48 / P3 v3.1.83 / P4 v1.0.170 / P5 v0.1.55 — tarballs being REBUILT as
-> `paper1a_arxiv_v1A.0.53.tar.gz` · `paper1b_arxiv_v1B.0.53.tar.gz` (unchanged) ·
-> `paper2_arxiv_v1.7.48.tar.gz` · `paper3_arxiv_v3.1.83.tar.gz` ·
-> `paper4_arxiv_v1.0.170.tar.gz` · `paper5_arxiv_v0.1.55.tar.gz` via
+> ⚠️ **Current versions (2026-06-10 late night, pod-session bump):** P1A v1A.0.53 / P1B v1B.0.53 /
+> P2 v1.7.48 (all three unchanged) / P3 v3.1.84 / P4 v1.0.171 / P5 v0.1.56 — tarballs being REBUILT as
+> `paper1a_arxiv_v1A.0.53.tar.gz` · `paper1b_arxiv_v1B.0.53.tar.gz` ·
+> `paper2_arxiv_v1.7.48.tar.gz` (unchanged) · `paper3_arxiv_v3.1.84.tar.gz` ·
+> `paper4_arxiv_v1.0.171.tar.gz` · `paper5_arxiv_v0.1.56.tar.gz` via
 > `tools/build_arxiv_tarball.sh` — verify standalone-compile before any submission.
-> P1A adds the MCS App C derivation appendix (25 pp); P3 adopts membership-is-canonical
-> eROSITA framing (25 pp); P5 rebuilt on the unique-TARGETID parent (Δ ≤ 0.70pp).
+> 📌 **NOTE FOR HOUSTON:** if you have NOT yet signed off P4, **v1.0.171 supersedes v1.0.170
+> as the submission tarball** (pod robustness additions: unthresholded injection floors
+> A50=0.36%/A95=0.63%, area-uniform axis curve, threshold-sweep canonical reproduction,
+> T7 confidence quantification, training-acc semantics correction; 21 pp, md5 2f0317c4;
+> clean-round status unaffected — still SIGN-OFF-READY).
+> P3 v3.1.84 carries the catalog-grade COUNT CORRECTION 264,938 → 269,317 (point-source
+> subset 269,117; LAMOST-overlap double-removal fixed, 6-way dedup verified; 25 pp, md5 2539e13c).
+> P5 v0.1.56 adds stratified Phase-2 LEE (global max-stat p=0.36/0.27) + maximal-sphere vs
+> any-hole void-membership null + z-tail no-op (27 pp, md5 4061bf5c).
 > P1A/P1B/P3/P5 still gate on R26conf before sign-off.
 > ⚠️ Prior (R24conf, 2026-06-10): P1A v1A.0.52 / P1B v1B.0.53 / P2 v1.7.47 / P3 v3.1.82 /
 > P4 v1.0.169 / P5 v0.1.54. P4 headline: 0.41σ (rank-p=0.31) + formal A_dip < 6.8×10⁻³ 95% UL.

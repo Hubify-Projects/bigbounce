@@ -47,12 +47,12 @@ export interface LiveStatus {
 }
 
 export const liveStatus: LiveStatus = {
-  lastUpdatedISO: "2026-06-10T23:30:00Z",
-  lastUpdatedDisplay: "June 10, 2026 · 4:30 PM PT",
+  lastUpdatedISO: "2026-06-11T05:30:00Z",
+  lastUpdatedDisplay: "June 10, 2026 · 10:30 PM PT",
   headline:
-    "R25conf CLEAN×2 — P4 completes its 2-of-2 post-retraction requirement; P2 clean; P4+P2 await Houston sign-off. Five papers bumped (P1A v1A.0.53 · P2 v1.7.48 · P3 v3.1.83 · P4 v1.0.170 · P5 v0.1.55; P1B v1B.0.53 unchanged); P1A/P3/P5 gate on R26conf.",
+    "Pod session closed the queued recomputes — P4 v1.0.171 · P3 v3.1.84 · P5 v0.1.56 bumped (P1A v1A.0.53 · P1B v1B.0.53 · P2 v1.7.48 unchanged). P3 catalog-grade count corrected to 269,317 (LAMOST-overlap double-removal fixed); P4 + P2 remain SIGN-OFF-READY awaiting Houston.",
   summary:
-    "R25conf: P4 93 findings audited, one substantive catch (App A field-convention corrected from artifacts, no number changed) → 95, SIGN-OFF-READY; P2 clean (GR-degradation calibration ~15%→~23% c9k-verified, c9l σ_theory continuous marginalization, fig4 'BOUNCE EXCLUDED' regen) → 95, SIGN-OFF-READY. Also landed: P1A MCS App C derivation (last analytic gate closed), P3 eROSITA axis definitively resolved (monotone class ruled out, Spearman ρ=−0.10), P5 unique-TARGETID parent rebuild (Δ ≤ 0.70pp, conclusions unchanged).",
+    "Pod wave: P4 unthresholded injection floors A50=0.36%/A95=0.63% + area-uniform axis curve + threshold-sweep canonical reproduction + T7 confidence quantification (robustness additions; clean-round status unaffected); P3 6-way dedup verified 269,317/269,117 + HEALPix 38,330px unrecoverable confirmed (reproducible rerun 24,049px χ²_ν=15.7) + SMICA preprocessing documented (200/200); P5 stratified Phase-2 LEE p=0.36/0.27 + void-membership null + z-tail no-op. P1B release-pairing MCMC running on pod (ETA 1–2 days).",
   currentlyRunning: [
     "Hourly native-PDF cross-vendor review autoloop on all 6 papers (Claude · GPT · Gemini · Grok · Perplexity + meta-reviewer)",
     "Persistence tracker fingerprinting findings across fires; load-bearing items escalate to Houston decision package",
@@ -113,25 +113,25 @@ export const liveStatus: LiveStatus = {
       slug: "paper-3",
       number: "3",
       shortTitle: "378K-anomaly multi-survey catalog",
-      version: "v3.1.83",
+      version: "v3.1.84",
       readiness: 91,
-      pendingWork: "v3.1.83 — eROSITA axis definitively resolved (monotone class ruled out, Spearman ρ=−0.10; membership-is-canonical; queue #33 CLOSED) → R26conf clean → HF flip → arXiv",
+      pendingWork: "v3.1.84 — catalog-grade count corrected 264,938 → 269,317 (LAMOST-overlap double-removal; 6-way dedup verified); HEALPix + SMICA reproducibility documented → R26conf clean → HF flip → arXiv",
     },
     {
       slug: "paper-4",
       number: "4",
       shortTitle: "8.47M-galaxy chirality null at sub-percent sensitivity",
-      version: "v1.0.170",
+      version: "v1.0.171",
       readiness: 95,
-      pendingWork: "v1.0.170 — R25conf round 2-of-2 CLEAN (93 findings audited, one substantive App A field-convention catch closed) → post-retraction requirement MET → SIGN-OFF-READY, first in submission queue → arXiv",
+      pendingWork: "v1.0.171 — pod items closed (injection floors A50=0.36%/A95=0.63%, area-uniform axis curve, threshold sweep, T7 confidence); robustness additions, clean-round status unaffected → still SIGN-OFF-READY, first in submission queue → arXiv",
     },
     {
       slug: "paper-5",
       number: "5",
       shortTitle: "DESI environmental chirality independence",
-      version: "v0.1.55-2026-06-10",
-      readiness: 91,
-      pendingWork: "v0.1.55 — unique-TARGETID parent rebuild closed the gating item (Δ ≤ 0.70pp, conclusions unchanged; #15 CLOSED) → pod items (#16–19) → R26conf clean → arXiv (last, after P4)",
+      version: "v0.1.56-2026-06-10",
+      readiness: 92,
+      pendingWork: "v0.1.56 — stratified Phase-2 LEE (p=0.36/0.27) + void-membership null + z-tail no-op (#17–19 CLOSED; #16 randoms missing, documented) → R26conf clean → arXiv (last, after P4)",
     },
   ],
   blockerTally: {

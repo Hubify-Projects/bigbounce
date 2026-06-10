@@ -27,6 +27,126 @@ Control: page (0) single
 Control: year (1) truncated
 Control: production of eprint (0) enabled
 Warning--missing number in Cai:2009fn
+"J. High Energy Phys." is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P2
+while executing---line 3515 of file apsrev4-2.bst
+"J. High Energ. Phys." is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P2
+while executing---line 3515 of file apsrev4-2.bst
+"JHEP" is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P2
+while executing---line 3515 of file apsrev4-2.bst
+"Journal of Cosmology and Astroparticle Physics" is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P2
+while executing---line 3515 of file apsrev4-2.bst
+"J. Cosmol. Astropart. Phys." is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P2
+while executing---line 3515 of file apsrev4-2.bst
+"JCAP" is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P2
+while executing---line 3515 of file apsrev4-2.bst
+"Journal of Instrumentation" is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P2
+while executing---line 3515 of file apsrev4-2.bst
+"J. Instrum." is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P2
+while executing---line 3515 of file apsrev4-2.bst
+"JINST" is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P2
+while executing---line 3515 of file apsrev4-2.bst
+"Journal of Statistical Mechanics" is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P2
+while executing---line 3515 of file apsrev4-2.bst
+"J. of Stat. Mech." is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P2
+while executing---line 3515 of file apsrev4-2.bst
+"J. Stat. Mech.: Theory Exp." is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P2
+while executing---line 3515 of file apsrev4-2.bst
+"JSTAT" is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P2
+while executing---line 3515 of file apsrev4-2.bst
+Warning--missing journal in Golden2026P2
+"J. High Energy Phys." is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P1b
+while executing---line 3515 of file apsrev4-2.bst
+"J. High Energ. Phys." is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P1b
+while executing---line 3515 of file apsrev4-2.bst
+"JHEP" is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P1b
+while executing---line 3515 of file apsrev4-2.bst
+"Journal of Cosmology and Astroparticle Physics" is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P1b
+while executing---line 3515 of file apsrev4-2.bst
+"J. Cosmol. Astropart. Phys." is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P1b
+while executing---line 3515 of file apsrev4-2.bst
+"JCAP" is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P1b
+while executing---line 3515 of file apsrev4-2.bst
+"Journal of Instrumentation" is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P1b
+while executing---line 3515 of file apsrev4-2.bst
+"J. Instrum." is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P1b
+while executing---line 3515 of file apsrev4-2.bst
+"JINST" is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P1b
+while executing---line 3515 of file apsrev4-2.bst
+"Journal of Statistical Mechanics" is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P1b
+while executing---line 3515 of file apsrev4-2.bst
+"J. of Stat. Mech." is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P1b
+while executing---line 3515 of file apsrev4-2.bst
+"J. Stat. Mech.: Theory Exp." is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P1b
+while executing---line 3515 of file apsrev4-2.bst
+"JSTAT" is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P1b
+while executing---line 3515 of file apsrev4-2.bst
+Warning--missing journal in Golden2026P1b
+"J. High Energy Phys." is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P4
+while executing---line 3515 of file apsrev4-2.bst
+"J. High Energ. Phys." is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P4
+while executing---line 3515 of file apsrev4-2.bst
+"JHEP" is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P4
+while executing---line 3515 of file apsrev4-2.bst
+"Journal of Cosmology and Astroparticle Physics" is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P4
+while executing---line 3515 of file apsrev4-2.bst
+"J. Cosmol. Astropart. Phys." is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P4
+while executing---line 3515 of file apsrev4-2.bst
+"JCAP" is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P4
+while executing---line 3515 of file apsrev4-2.bst
+"Journal of Instrumentation" is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P4
+while executing---line 3515 of file apsrev4-2.bst
+"J. Instrum." is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P4
+while executing---line 3515 of file apsrev4-2.bst
+"JINST" is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P4
+while executing---line 3515 of file apsrev4-2.bst
+"Journal of Statistical Mechanics" is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P4
+while executing---line 3515 of file apsrev4-2.bst
+"J. of Stat. Mech." is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P4
+while executing---line 3515 of file apsrev4-2.bst
+"J. Stat. Mech.: Theory Exp." is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P4
+while executing---line 3515 of file apsrev4-2.bst
+"JSTAT" is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P4
+while executing---line 3515 of file apsrev4-2.bst
+Warning--missing journal in Golden2026P4
 Warning--missing number in Benedetti2011
 "J. High Energy Phys." is a string literal, `journal' is a missing field
 ---they aren't the same literal types for entry Dehghani:2025cusc
@@ -109,45 +229,85 @@ while executing---line 3515 of file apsrev4-2.bst
 while executing---line 3515 of file apsrev4-2.bst
 Warning--missing journal in Cai:2026echoes
 Warning--missing number in Papanikolaou:2024pbh
-You've used 49 entries,
+"J. High Energy Phys." is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P3
+while executing---line 3515 of file apsrev4-2.bst
+"J. High Energ. Phys." is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P3
+while executing---line 3515 of file apsrev4-2.bst
+"JHEP" is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P3
+while executing---line 3515 of file apsrev4-2.bst
+"Journal of Cosmology and Astroparticle Physics" is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P3
+while executing---line 3515 of file apsrev4-2.bst
+"J. Cosmol. Astropart. Phys." is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P3
+while executing---line 3515 of file apsrev4-2.bst
+"JCAP" is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P3
+while executing---line 3515 of file apsrev4-2.bst
+"Journal of Instrumentation" is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P3
+while executing---line 3515 of file apsrev4-2.bst
+"J. Instrum." is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P3
+while executing---line 3515 of file apsrev4-2.bst
+"JINST" is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P3
+while executing---line 3515 of file apsrev4-2.bst
+"Journal of Statistical Mechanics" is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P3
+while executing---line 3515 of file apsrev4-2.bst
+"J. of Stat. Mech." is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P3
+while executing---line 3515 of file apsrev4-2.bst
+"J. Stat. Mech.: Theory Exp." is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P3
+while executing---line 3515 of file apsrev4-2.bst
+"JSTAT" is a string literal, `journal' is a missing field
+---they aren't the same literal types for entry Golden2026P3
+while executing---line 3515 of file apsrev4-2.bst
+Warning--missing journal in Golden2026P3
+You've used 51 entries,
             6079 wiz_defined-function locations,
-            2000 strings with 23860 characters,
-and the built_in function-call counts, 48659 in all, are:
-= -- 3800
-> -- 981
-< -- 241
-+ -- 320
-- -- 230
-* -- 7331
-:= -- 4697
-add.period$ -- 47
-call.type$ -- 49
-change.case$ -- 241
-chr.to.int$ -- 55
-cite$ -- 54
-duplicate$ -- 4601
-empty$ -- 3520
-format.name$ -- 551
-if$ -- 9802
+            2012 strings with 24138 characters,
+and the built_in function-call counts, 50600 in all, are:
+= -- 3936
+> -- 1028
+< -- 251
++ -- 334
+- -- 240
+* -- 7610
+:= -- 4883
+add.period$ -- 49
+call.type$ -- 51
+change.case$ -- 251
+chr.to.int$ -- 57
+cite$ -- 60
+duplicate$ -- 4781
+empty$ -- 3662
+format.name$ -- 579
+if$ -- 10194
 int.to.chr$ -- 5
-int.to.str$ -- 56
-missing$ -- 701
-newline$ -- 193
-num.names$ -- 141
-pop$ -- 1806
+int.to.str$ -- 58
+missing$ -- 732
+newline$ -- 199
+num.names$ -- 147
+pop$ -- 1890
 preamble$ -- 1
-purify$ -- 235
+purify$ -- 245
 quote$ -- 0
-skip$ -- 2261
+skip$ -- 2349
 stack$ -- 0
-substring$ -- 1087
-swap$ -- 4269
-text.length$ -- 97
+substring$ -- 1133
+swap$ -- 4435
+text.length$ -- 102
 text.prefix$ -- 0
 top$ -- 10
-type$ -- 634
-warning$ -- 6
-while$ -- 139
+type$ -- 661
+warning$ -- 10
+while$ -- 145
 width$ -- 0
-write$ -- 498
-(There were 26 error messages)
+write$ -- 512
+(There were 78 error messages)
