@@ -1,0 +1,37 @@
+{
+  "written_utc": "2026-05-21T18:06:17Z",
+  "provenance_tag": "env_finder-vweb-v0.1-8e6f138179b6-6e2e19edb49027ba",
+  "grid_n": 256,
+  "cell_size_mpc_h": 25.912670135498047,
+  "smoothing_R_s_mpc_h": 10.0,
+  "lambda_th": 0.1,
+  "survey_mask_fill_fraction": 0.18775975704193115,
+  "n_occupied_cells": 2417697,
+  "n_mask_cells": 3150086,
+  "rho_mean_galaxies_per_cell_in_mask": 4.641866683959961,
+  "volume_fractions_in_footprint": {
+    "void": 0.4260340828790071,
+    "wall": 0.3283132587491262,
+    "filament": 0.2371693979148506,
+    "cluster": 0.008483260457016095
+  },
+  "volume_fractions_full_cube": {
+    "void": 0.48974764347076416,
+    "wall": 0.3436214327812195,
+    "filament": 0.1650381088256836,
+    "cluster": 0.0015928149223327637
+  },
+  "literature_baseline_at_lambda_th_0": {
+    "void": 0.7,
+    "wall": 0.15,
+    "filament": 0.12,
+    "cluster": 0.03,
+    "_note": "Approximate; Cautun+ 2014 N-body baseline. Compare to volume_fractions_in_footprint."
+  },
+  "galaxy_class_fractions": {
+    "void": 0.033821189208278896,
+    "wall": 0.14776522927370508,
+    "filament": 0.631519989046854,
+    "cluster": 0.186893592471162
+  }
+}

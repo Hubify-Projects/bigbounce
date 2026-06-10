@@ -4,16 +4,26 @@
 > Fresh tarballs built + standalone-verified (0 errors / 0 undef each) by
 > `tools/build_arxiv_tarball.sh` from today's post-provenance-closure versions.
 > Submission order: **P4 first** (P5 hard-depends on its arXiv ID), P1A+P1B same day.
-> ⛔ P4 submission still gated on TWO clean cross-vendor rounds post-retraction + Houston sign-off.
-> ⚠️ **2026-06-10 (R24conf):** all six papers bumped again (P1A v1A.0.52 / P1B v1B.0.53 /
-> P2 v1.7.47 / P3 v3.1.82 / P4 v1.0.169 / P5 v0.1.54) — the tarballs below are now TWO versions
-> stale; they are being REBUILT as `paper{1a,1b,2,3,4,5}_arxiv_<newversion>.tar.gz`
-> (i.e. `paper1a_arxiv_v1A.0.52.tar.gz` · `paper1b_arxiv_v1B.0.53.tar.gz` ·
-> `paper2_arxiv_v1.7.47.tar.gz` · `paper3_arxiv_v3.1.82.tar.gz` ·
-> `paper4_arxiv_v1.0.169.tar.gz` · `paper5_arxiv_v0.1.54.tar.gz`) via
+> ✅ P4's TWO-clean-rounds post-retraction requirement is MET as of R25conf (2026-06-10 evening);
+> P4 + P2 submissions now gate on Houston sign-off ONLY.
+> 🟢 **2026-06-10 evening (R25conf): P4 + P2 are READY-FOR-SUBMISSION pending Houston sign-off.**
+> P4 v1.0.170 completed its 2-of-2 post-retraction clean rounds (R25conf clean; one substantive
+> App A field-convention catch closed, no number changed) and P2 v1.7.48 came back R25conf-clean
+> (GR-degradation calibration ~15%→~23% c9k-verified; c9l σ_theory continuous marginalization;
+> fig4 'BOUNCE EXCLUDED' regen). Both at readiness 95 / SIGN-OFF-READY — submit P4 first, P2 with
+> the first wave, the moment Houston signs off.
+> ⚠️ **Current versions (2026-06-10 evening):** P1A v1A.0.53 / P1B v1B.0.53 (unchanged) /
+> P2 v1.7.48 / P3 v3.1.83 / P4 v1.0.170 / P5 v0.1.55 — tarballs being REBUILT as
+> `paper1a_arxiv_v1A.0.53.tar.gz` · `paper1b_arxiv_v1B.0.53.tar.gz` (unchanged) ·
+> `paper2_arxiv_v1.7.48.tar.gz` · `paper3_arxiv_v3.1.83.tar.gz` ·
+> `paper4_arxiv_v1.0.170.tar.gz` · `paper5_arxiv_v0.1.55.tar.gz` via
 > `tools/build_arxiv_tarball.sh` — verify standalone-compile before any submission.
-> P4 headline: 0.41σ (rank-p=0.31) + formal A_dip < 6.8×10⁻³ 95% UL. P1B S8 marginal
-> corrected to 0.827±0.010. P5 GALZONE void counts corrected to 104,912/74,111
+> P1A adds the MCS App C derivation appendix (25 pp); P3 adopts membership-is-canonical
+> eROSITA framing (25 pp); P5 rebuilt on the unique-TARGETID parent (Δ ≤ 0.70pp).
+> P1A/P1B/P3/P5 still gate on R26conf before sign-off.
+> ⚠️ Prior (R24conf, 2026-06-10): P1A v1A.0.52 / P1B v1B.0.53 / P2 v1.7.47 / P3 v3.1.82 /
+> P4 v1.0.169 / P5 v0.1.54. P4 headline: 0.41σ (rank-p=0.31) + formal A_dip < 6.8×10⁻³ 95% UL.
+> P1B S8 marginal corrected to 0.827±0.010. P5 GALZONE void counts corrected to 104,912/74,111
 > (ZONEVOID zone-offset fix; conclusion unchanged).
 > ⚠️ Prior (R23conf, 2026-06-09 evening): P4 v1.0.168 / P1A v1A.0.51 / P1B v1B.0.52 /
 > P2 v1.7.46 / P3 v3.1.81 / P5 v0.1.53; P4 headline moved 0.43σ/p=0.30 → 0.41σ/p=0.31

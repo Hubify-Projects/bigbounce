@@ -1,0 +1,205 @@
+{
+ "job": "C12b-P4-QUEUE9-OpenAI-M3-WLS-conditioning",
+ "date_utc": "2026-06-10T09:10:11Z",
+ "generator": "pipelines/p2_chirality/c12b_wls_conditioning.py",
+ "design": "exact rebuild of scripts/joint_nuisance_model_fit.py (9 templates, canonical |b|>15 mask, NSIDE=64, w=N_spiral(p))",
+ "published_reference": {
+  "A_dipole_best_A_p_units": 0.004552579919815517,
+  "sigma_naive_WLS": 0.0001113262260534009,
+  "artifact": "outputs/canonical_provenance/joint_nuisance_model_fit.json"
+ },
+ "conditioning": {
+  "cond_XtWX": 4.499373462184836e+16,
+  "singular_values_XtWX": [
+   333797936.9356125,
+   3306920.590616569,
+   2243529.6509299716,
+   1544905.3288787599,
+   924049.819165174,
+   880934.7067719226,
+   670812.4816084314,
+   52407.591126113,
+   7.418764851173848e-09
+  ],
+  "cond_XtWX_unit_column_norm": 238080611895474.72,
+  "cond_XtWX_drop_leg_DES": 11962.577567616165,
+  "cond_XtWX_gram_schmidt_basis": 3587.427816050544,
+  "null_vector_columns": {
+   "dipole_x": 7.148851155782333e-16,
+   "dipole_y": -8.421532512177797e-16,
+   "dipole_z": 1.0247240226263419e-14,
+   "leg_BASS": 0.5773502691896193,
+   "leg_DECaLS": 0.5773502691896215,
+   "leg_DES": 0.5773502691896362,
+   "pixel_density": 4.7421119650785024e-15,
+   "pixel_density_sq": -3.1971997646918387e-16,
+   "constant": 2.785537420701391e-16
+  },
+  "exact_degeneracy": {
+   "relation": "leg_BASS + leg_DECaLS + leg_DES = 0 identically on every weighted (w>0) pixel (centered leg fractions sum to zero where n_total >= 1)",
+   "max_abs_leg_sum_on_weighted_support": 1.1102230246251565e-16,
+   "consequence": "X^T W X is exactly rank-8; the production np.linalg.solve succeeds via float rounding only. The degeneracy lives entirely in the nuisance subspace."
+  }
+ },
+ "template_weighted_correlation": {
+  "columns": [
+   "dipole_x",
+   "dipole_y",
+   "dipole_z",
+   "leg_BASS",
+   "leg_DECaLS",
+   "leg_DES",
+   "pixel_density",
+   "pixel_density_sq",
+   "constant"
+  ],
+  "matrix": [
+   [
+    0.9999999999999999,
+    0.11740488283893254,
+    -0.4492129463431104,
+    -0.30414659785500037,
+    -0.0438438146275223,
+    0.3844107829939151,
+    0.0008503458050711978,
+    -0.007719257616885545,
+    -5.484550611033763e-16
+   ],
+   [
+    0.11740488283893258,
+    1.0,
+    -0.2562602237521446,
+    -0.13785140239379298,
+    -0.0942267838175306,
+    0.26325944127393597,
+    0.04346545187308606,
+    0.0046942435495728905,
+    1.2623678732673388e-15
+   ],
+   [
+    -0.4492129463431104,
+    -0.2562602237521446,
+    0.9999999999999998,
+    0.7436190158327934,
+    -0.013738204476333074,
+    -0.7950598569936145,
+    0.002090615076087593,
+    -0.020590147162312864,
+    1.1179494450145823e-15
+   ],
+   [
+    -0.30414659785500037,
+    -0.13785140239379298,
+    0.7436190158327934,
+    0.9999999999999999,
+    -0.6216507987655201,
+    -0.34696253300631263,
+    0.13618201087024012,
+    0.012030873593120649,
+    3.918357981947127e-15
+   ],
+   [
+    -0.04384381462752223,
+    -0.09422678381753061,
+    -0.013738204476333074,
+    -0.6216507987655201,
+    1.0000000000000002,
+    -0.5189459254684667,
+    -0.1982523023045018,
+    -0.03692417653069668,
+    -1.8456487806437035e-15
+   ],
+   [
+    0.38441078299391507,
+    0.26325944127393597,
+    -0.7950598569936145,
+    -0.34696253300631263,
+    -0.5189459254684667,
+    1.0,
+    0.08876268487939662,
+    0.031081966480303126,
+    5.3248574784904854e-15
+   ],
+   [
+    0.0008503458050712103,
+    0.04346545187308604,
+    0.0020906150760876315,
+    0.13618201087024012,
+    -0.1982523023045018,
+    0.08876268487939667,
+    1.0000000000000002,
+    0.7199975622025327,
+    -9.000364539123221e-16
+   ],
+   [
+    -0.007719257616885548,
+    0.004694243549572892,
+    -0.020590147162312864,
+    0.012030873593120639,
+    -0.036924176530696684,
+    0.031081966480303126,
+    0.7199975622025327,
+    1.0,
+    6.262210130717303e-17
+   ],
+   [
+    -5.05729353000226e-16,
+    1.2140616808064026e-15,
+    1.1133137412866495e-15,
+    3.916881905090549e-15,
+    -1.8473914535949436e-15,
+    5.3251750076289835e-15,
+    -9.465690798829185e-16,
+    6.482324155405046e-17,
+    1.0
+   ]
+  ],
+  "note": "weighted (w=N_spiral) Pearson correlations on w>0 in-mask pixels; constant column has zero variance -> null entries"
+ },
+ "dipole_posterior_cross_check": {
+  "a_solve_normal_eqs_production": {
+   "A_dipole_A_p_units": 0.004552579919815517,
+   "sigma_naive_WLS": 0.00011132622605340093,
+   "dipole_vec": [
+    4.3245626753712884e-05,
+    -0.004516219047843066,
+    -0.000572607416973982
+   ],
+   "delta_vs_published_4.55e-3": 0.0
+  },
+  "b_svd_pinv": {
+   "A_dipole_A_p_units": 0.004552579919815509,
+   "sigma_naive_WLS": 0.00011132622605340119,
+   "dipole_vec": [
+    4.3245626753731905e-05,
+    -0.004516219047843054,
+    -0.0005726074169739963
+   ],
+   "delta_vs_published_4.55e-3": -8.673617379884035e-18
+  },
+  "c_drop_leg_DES_full_rank": {
+   "A_dipole_A_p_units": 0.004552579919815498,
+   "sigma_naive_WLS": 0.00011132622605339995,
+   "dipole_vec": [
+    4.324562675371666e-05,
+    -0.004516219047843053,
+    -0.0005726074169739316
+   ],
+   "delta_vs_published_4.55e-3": -1.9081958235744878e-17
+  },
+  "d_gram_schmidt_orthogonalized_nuisances": {
+   "A_dipole_A_p_units": 0.004552579919815498,
+   "sigma_naive_WLS": 0.00011132622605339753,
+   "dipole_vec": [
+    4.324562675371647e-05,
+    -0.004516219047843067,
+    -0.0005726074169738177
+   ],
+   "dropped_degenerate_columns": [
+    "leg_DES"
+   ],
+   "delta_vs_published_4.55e-3": -1.9081958235744878e-17
+  }
+ },
+ "conclusion": "All four algebraically equivalent solvers (production normal-equation solve, SVD pseudo-inverse, explicit full-rank leg-drop basis, weighted Gram-Schmidt-orthogonalized nuisance basis) recover the published A_dipole to machine precision: the exact leg-sum rank deficiency is confined to the nuisance subspace and does not contaminate the dipole posterior."
+}

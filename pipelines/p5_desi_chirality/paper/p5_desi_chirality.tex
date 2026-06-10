@@ -18,7 +18,7 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.54-2026-06-10}
+\newcommand{\paperVersion}{v0.1.55-2026-06-10}
 % v0.1.52-2026-06-09 (R22prov truth-audit closure wave; work order in
 %   project-context/peer-reviews/R22prov_P5_TRUTH_AUDIT.md; recompute artifacts
 %   outputs/17_v0151_closure_recomputes.json + 18_v0151_stratified_and_density.json):
@@ -480,11 +480,16 @@ The deposit operates on the row-level parent ($14{,}622{,}283$
 survey--program coadd rows over $14{,}100{,}704$ unique
 \texttt{TARGETID}s, \S\ref{sec:desivast_p4_residual}), so repeat
 coadds ($521{,}579$ rows, $3.6\%$ of the parent) contribute one
-deposit per row, mildly over-weighting multiply-observed targets; a
-deduplicated (one-deposit-per-\texttt{TARGETID}) field rebuild is
-queued as follow-up compute and is expected to perturb the density
-field only at the level of this duplicate fraction, but we do not
-quantify that bound here.
+deposit per row, mildly over-weighting multiply-observed targets. A
+deduplicated (one-deposit-per-\texttt{TARGETID}) full field rebuild on
+the identical grid geometry quantifies this: in-footprint class volume
+fractions shift by at most $0.70$~pp (wall $-0.70$, filament $+0.68$,
+cluster $+0.20$, void $-0.18$), $97.8\%$ of common-mask cells and
+$97.9\%$ of matched-spiral assignments retain their class, and
+per-class $f_{\rm CW}$ moves by at most $0.23$~pp (the small wall
+class; filament $-0.005$~pp, cluster $+0.013$~pp), leaving every
+environment--chirality conclusion unchanged (artifact
+\texttt{outputs/23\_unique\_parent\_rebuild.json}).
 \item Build a survey-footprint mask by dilation of occupied cells
 (\textsc{scipy} \texttt{binary\_dilation} with the default
 face-connected $3\!\times\!3\!\times\!3$ cross structuring element,
@@ -1267,11 +1272,15 @@ $|\sigma_{\rm void}| = 0.47 / 1.07 / 0.93 / 0.68 / 1.08 / 0.86 /
 (\artifact{pipelines/p5\_desi\_chirality/outputs/17\_v0151\_closure\_recomputes.json}).
 The $p_{\rm LEE}$ values are corrected within each cell's own
 $K\!=\!4$ class family only; they are not globally corrected across
-the nine cells or across the other scan families in this paper, and
-the Phase-2 shuffles are free (not stratified by imaging leg $\times$
-program --- the headline-scan stratification test of
-\S\ref{sec:results_vweb} left $p$ unchanged, and a stratified Phase-2
-rerun is queued). The $R_s\!=\!10$ rows sit below the
+the other scan families in this paper. A rerun with imaging-leg
+$\times$ program \emph{stratified} shuffles leaves every cell's
+$p_{\rm LEE}$ essentially unchanged (stratified $0.14$--$0.54$ vs.\
+free $0.16$--$0.55$; $N_{\rm MC}=1{,}000$), and a global max-stat
+correction across cells (one parent permutation propagated through
+all nine cells per draw, preserving cross-cell correlations) gives
+$p_{\rm global} = 0.36$ over all nine cells and $0.27$ over the six
+resolved $R_s \in \{25,50\}$ cells
+(\artifact{pipelines/p5\_desi\_chirality/outputs/24\_r24conf\_pod\_session.json}). The $R_s\!=\!10$ rows sit below the
 $25.9\,{\rm Mpc}/h$ grid sampling scale and are retained only as a
 degenerate near-unsmoothed limit, excluded from the robustness claim
 (\S\ref{sec:phase2}).}
@@ -1703,10 +1712,16 @@ maximum radii and should not be conflated when reasoning about
 near-boundary membership. The inside-any-hole criterion is also
 permissive relative to the catalog's intended interior-void geometry
 (overlapping holes are aggregated into voids by VoidFinder), so
-hole-sphere membership can over-count edge/overlap regions; a
-comparison against a VoidFinder-native per-galaxy membership
-definition (the analogue of the V2 \texttt{GALZONE} membership used
-in \S\ref{sec:desivast_three_algo}) is queued as follow-up compute. Binning the maximal voids by
+hole-sphere membership can over-count edge/overlap regions. A direct
+comparison against the stricter interior-void definition (membership
+in a void's \emph{maximal} sphere only, the VoidFinder void-defining
+sphere; an exact subset of the hole-union membership) gives the same
+null verdict: any-hole $n_{\rm void} = 57{,}081$,
+$\Delta f_{\rm CW} = -0.06$\,pp ($z = -0.28$) vs.\ maximal-sphere
+$n_{\rm void} = 20{,}900$, $\Delta f_{\rm CW} = +0.54$\,pp
+($z = +1.55$), so the permissiveness of the hole-union criterion does
+not drive the void-class result
+(\artifact{pipelines/p5\_desi\_chirality/outputs/24\_r24conf\_pod\_session.json}). Binning the maximal voids by
 HEALPix \texttt{NSIDE} $= 16$ pixel (equal-area pixels of
 $\approx 13.4\,{\rm deg}^2$) returns 297 occupied pixels with
 median 14 maximal voids per occupied pixel. Stratifying the $z \leq
@@ -1962,11 +1977,15 @@ selection correction
 (\artifact{pipelines/p5\_desi\_chirality/scripts/16\_cosmic\_web\_zshell\_corrected.py}): the
 overdensity is computed in 21 thin redshift shells ($\Delta z = 0.05$
 for $z<0.5$, $\Delta z = 0.1$ for $0.5 \le z < 1.5$, one merged
-$1.5$--$1.7$ shell into which the sparse $1.7 < z \le 2.0$ tail of
-the parent window is also clamped, so the top shell effectively
-covers $1.5 \le z \le 2.0$ --- a sensitivity run dropping or
-separately shelving the sparse $1.7 < z \le 2.0$ tail is queued as
-follow-up compute; every shell $\ge 2.16\times10^5$
+$1.5$--$1.7$ shell into which the $1.7 < z \le 2.0$ tail of
+the parent window is also clamped, so the top shell nominally
+covers $1.5 \le z \le 2.0$ --- the realized tail is in fact
+\emph{empty}: the filtered parent's maximum redshift is
+$z = 1.6979$ and it contains zero galaxies with $1.7 < z \le 2.0$,
+so the drop-tail and separate-shell sensitivity variants coincide
+exactly with the published build
+(\artifact{pipelines/p5\_desi\_chirality/outputs/24\_r24conf\_pod\_session.json});
+every shell $\ge 2.16\times10^5$
 galaxies), with the
 per-shell mean taken over occupied-footprint cells only, while the
 grid, smoothing scale $R_s$, and eigenvalue threshold

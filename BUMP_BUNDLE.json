@@ -1,56 +1,47 @@
 [
   {
     "paperSlug": "paper-1a",
-    "version": "v1A.0.52",
+    "version": "v1A.0.53",
     "datestamp": "2026-06-10",
     "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1a_ech_nogo.pdf",
-    "sitePdfPath": "/papers/paper1a_ech_nogo_v1A.0.52.pdf",
-    "changelog": "R24conf closure (clean-after-closures round): 19 truth-audited edits incl. 1.4->1.06 sigma recompute, gamma^2/(gamma^2+1) contradiction fix, Lambda_eff curvature-units declaration (rho_Lambda = Xi MPl^4 consistency), 10^-58 band relabeled an explicit conservatism allowance (canonical contraction = 10^-60), Eq.(7) arithmetic, fig captions aligned to content, Shamir wording aligned to P4. 24pp/md5 344629dc/0-0-0. Remaining gate: MCS line-of-sight derivation appendix (queue #32) + Houston sign-off.",
-    "texCommit": "0428f65b"
-  },
-  {
-    "paperSlug": "paper-1b",
-    "version": "v1B.0.53",
-    "datestamp": "2026-06-10",
-    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1b_mcmc_companion.pdf",
-    "sitePdfPath": "/papers/paper1b_mcmc_companion_v1B.0.53.pdf",
-    "changelog": "R24conf closure (clean-after-closures round): S8 Planck+BAO+SN marginal corrected 0.831+-0.018 -> 0.827+-0.010 (chain-recomputed; untraceable width replaced, correction note; naive DES-Y3 combination now matches full-tension posterior at 0.01 sigma; c13 overlay artifact 2.6 sigma / overlap 0.05); envelope floor digit 0.064 (required-C ~160 follows exactly); union-over-box envelope clarifier; c10 battery extended with matched BB-template config (bias unchanged at -0.019 deg -- honest negative, residual not template-shape); cosTheta-prior c5 robustness rerun (C_agamma 17.1 [6.8,43.4], sliver mass 0.068%); model-preference disclaimer; two-independent-fine-tunings separation; 13 further truth-audited edits. 16pp/md5 86261d4b/0-0-0. Gate: pod recompute #29 + next round.",
-    "texCommit": "91d72b92"
+    "sitePdfPath": "/papers/paper1a_ech_nogo_v1A.0.53.pdf",
+    "changelog": "MCS line-of-sight derivation appendix added (App C: helicity dispersion -> beta=(alpha/2M)dTheta, factor-of-1/2 from first principles, normalization chain closed to the companion pipeline). Closes queue #32, the last P1A analytic gate. 25pp/md5 878edf0c/0-0-0. Gate: R26conf round covering the new appendix + Houston sign-off.",
+    "texCommit": "f4cf836f"
   },
   {
     "paperSlug": "paper-2",
-    "version": "v1.7.47",
+    "version": "v1.7.48",
     "datestamp": "2026-06-10",
     "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/research/focused_paper_source_integration/02_full_draft.pdf",
-    "sitePdfPath": "/papers/paper2_fnl_forecast_v1.7.47.pdf",
-    "changelog": "R24conf closure (2 substantive fixes): QSFI squeezed-limit scaling endpoints corrected per Chen-Wang (were reversed, both sites); -35/16 citation re-attributed to the true source Li-Quintin-Wang-Cai JCAP 03(2017)031 (17-site sweep; previous bibitem was Kallosh-Linde-Westphal); c9k continuous-sigma_GR marginalization artifact (BF=6.0 vs tuned, inside the 4.7-7.0 band); verification-row italic relabel + MC-SE caption note + 3-7 sigma crosswalk; 14 further truth-audited closures, 8 falsified. 24pp/md5 a6ea2ee9/0-0-0. Gate: one more cross-vendor round (R25conf) given the two substantive fixes.",
-    "texCommit": "e2436b70"
+    "sitePdfPath": "/papers/paper2_fnl_forecast_v1.7.48.pdf",
+    "changelog": "R25conf ROUND CLEAN. GR-degradation calibration ~15%->~23% (c9k-verified); c9l sigma_theory continuous marginalization (BF 8.8/3.6, ranking stable); fig4 regenerated 'BOUNCE EXCLUDED' (queue #42 closed); assumption-(d) weakest-link; envelope relabel; 19 closures, 8 falsified. 24pp/md5 4cb0963e/0-0-0. SIGN-OFF-READY at 95%.",
+    "texCommit": "25c277cd"
   },
   {
     "paperSlug": "paper-3",
-    "version": "v3.1.82",
+    "version": "v3.1.83",
     "datestamp": "2026-06-10",
     "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p3_anomaly_engine/paper3_draft.pdf",
-    "sitePdfPath": "/papers/paper3_anomaly_catalog_v3.1.82.pdf",
-    "changelog": "R24conf closure: eROSITA 0.259 threshold-axis irreproducibility found and disclosed in-text (raw rank-298 = 3.41, IF-axis 0.301; false caption equivalence removed; production re-derivation queued #33); NEOWISE mask gate relabeled geometry-QA (4 sites); abstract framing upgrades (Wilson 68% CI +-1.2%, DESI-top-1000 scoping, de-biased ordering leads, Savage-Dickey gamma-prior qualifier + SMBHB population-mean caveat, SDSS-slice disclosure); 15 further truth-audited closures. 24pp/md5 d238cac4/0-0-0. Gate: queue #33 + next round + HF dataset flip at submission.",
-    "texCommit": "59abfd15"
+    "sitePdfPath": "/papers/paper3_anomaly_catalog_v3.1.83.pdf",
+    "changelog": "eROSITA threshold-axis definitively resolved: monotone-rescaling class ruled out (Spearman rho=-0.10, 16 rescalings + 3 IF retrains); released n=298 = committed-raw top-298 exactly -> membership-is-canonical framing (axis-sweep artifact). Closes queue #33, the P3 gating item. 25pp/md5 2229523c/0-0-0. Gate: R26conf.",
+    "texCommit": "d48fcf4c"
   },
   {
     "paperSlug": "paper-4",
-    "version": "v1.0.169",
+    "version": "v1.0.170",
     "datestamp": "2026-06-10",
     "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p2_chirality/chirality_catalog_paper.pdf",
-    "sitePdfPath": "/papers/chirality_catalog_paper_v169.pdf",
-    "changelog": "R24conf closure + 7 local recomputes (c12 batch): confidence-cut dipole profile z=+4.27/+4.11/+4.02 (cuts 0/0.4/0.5) -> +0.41/+1.14/+0.51 (0.6/0.7/0.8) directly confirms the low-confidence-tail systematic attribution; formal real-space 95% UL A_dip < 6.8e-3; injection-scorer sigma convention documented from script; equal-area slab uniformity (HC max |z|=1.4); 2x3 estimator robustness panel all null; Y_lm l<=3 regression null at l=1; coupling-matrix conditioning 3.17 (apod-stable); Table I 'Reported statistic' relabel + f_sky=0.4801 derivation footnote + axis-convention clause; 19 further truth-audited edits. 20pp/md5 ad396d7d/0-0-0. Gate: pod items (#4/5/9/11-13) + clean round 2-of-2 (post-retraction rule).",
-    "texCommit": "5e995aa2"
+    "sitePdfPath": "/papers/chirality_catalog_paper_v170.pdf",
+    "changelog": "R25conf ROUND 2-OF-2 CLEAN \u2014 post-retraction requirement MET. 93 findings audited; one substantive catch (App A field-convention description corrected from c9a artifacts, no number changed) + 8 artifact-backed closures same-day; WLS rank-8 degeneracy resolution (c12b, dipole machine-precision invariant). 20pp/md5 40ba86c9/0-0-0. Readiness 95% \u2014 AWAITING HOUSTON SIGN-OFF; first in submission queue.",
+    "texCommit": "b5fb4d49"
   },
   {
     "paperSlug": "paper-5",
-    "version": "v0.1.54",
+    "version": "v0.1.55",
     "datestamp": "2026-06-10",
     "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf",
-    "sitePdfPath": "/papers/p5_desi_chirality_v0.1.54.pdf",
-    "changelog": "R24conf closure + 6 local recomputes (22-series batch): ZONEVOID zone-offset join bug found, reproduced and fixed (V2 GALZONE counts 86,276/64,514 -> 104,912/74,111; sigma -0.52/-1.50; null conclusion unchanged; earlier-draft disclosure in SVIII.D + abstract); unique-TARGETID per-pixel sigma stats unchanged (mean +0.005, std 1.015); 21-shell N table + delta drift documented; entropy-weighted variance MC-validated (<=1.14%); edge-buffer quintile invariance (91% retention, max 0.12pp shift); 26.6% boundary-cell fraction printed; abstract sample ledger + <~0.002 framing with counting-floor parenthetical; 12 further truth-audited edits. 27pp/md5 1d42599a/0-0-0. Gate: pod field rebuilds (#15-19) + next round; submits after P4's arXiv ID.",
-    "texCommit": "f26f502f"
+    "sitePdfPath": "/papers/p5_desi_chirality_v0.1.55.pdf",
+    "changelog": "Unique-TARGETID parent rebuild closes the P5 gating item: full T-Web rerun on the 14.1M-row deduplicated parent, machinery validated to 1e-6, shifts <=0.70pp volume / <=0.23pp f_CW, conclusions unchanged (23-series artifact, queue #15 closed). 27pp/md5 d07c14e8/0-0-0. Gate: R26conf + pod items #16-19.",
+    "texCommit": "64712bb8"
   }
 ]

@@ -69,10 +69,13 @@ def main() -> int:
     ax_f.set_ylim(0.485, 0.510)
     ax_f.set_xticks(xs)
     ax_f.set_xticklabels(
-        [f"{r['q_label']}\nDen $\\in [{int(r['density_low'])}, {int(r['density_high'])}]$"
+        [f"{r['q_label']}\n[{int(r['density_low'])}, {int(r['density_high'])}]"
          for _, r in df.iterrows()],
-        fontsize=7.5,
+        fontsize=7,
+        rotation=30,
+        ha="right",
     )
+    ax_f.set_xlabel("density quintile (k=5 NN density range)", fontsize=8.5)
     ax_f.set_ylabel("$f_{\\rm CW}$", fontsize=10)
     ax_f.set_title("CW fraction per projected-density quintile\n"
                    "($k\\!=\\!5$ NN density proxy; $n\\!=\\!158{,}327$/bin)",

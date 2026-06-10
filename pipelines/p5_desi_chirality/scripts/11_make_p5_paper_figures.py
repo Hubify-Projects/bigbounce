@@ -62,7 +62,7 @@ def fig_volume_fractions_pie() -> None:
     )
     ax.set_title(
         "V-Web volume fractions, in-footprint mask\n"
-        f"($R_s=25$\\,Mpc/$h$, $\\lambda_{{\\rm th}}=0$, $N_{{\\rm grid}}=256^3$)",
+        f"($R_s=25$ Mpc/$h$, $\\lambda_{{\\rm th}}=0$, $N_{{\\rm grid}}=256^3$)",
         fontsize=11,
     )
     fig.tight_layout()

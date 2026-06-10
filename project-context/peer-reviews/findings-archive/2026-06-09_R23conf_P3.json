@@ -1,0 +1,542 @@
+{
+ "round": "2026-06-09_R23conf",
+ "paper": "P3",
+ "date": "2026-06-09",
+ "round_type": "internal_cross_vendor_confirmation_full5",
+ "pre_version": "v3.1.80",
+ "post_version": "v3.1.81",
+ "vendors": [
+  "Claude (in-session, subscription)",
+  "OpenAI GPT-5 (methodology)",
+  "Gemini 2.5 Pro (cosmology)",
+  "Grok-4 (brutal)",
+  "Perplexity Sonar Pro (citations)",
+  "GPT-5-Pro (META review)"
+ ],
+ "truth_audit_source": "R23conf_P3_TRUTH_AUDIT.md",
+ "audit_note": "12 META + 45 synthesis rows audited (INSESSION E1,M1-M4,m1-m6,N1-N2 closed pre-audit). New artifact r23conf_dedup_audits (FoF chain audit, SDSS-threshold dedup variants, shifted-control coincidence).",
+ "verdict_counts": {
+  "VERIFIED": 16,
+  "PARTIAL": 3,
+  "STALE": 24,
+  "CLOSED-PRIOR": 1,
+  "HOUSTON-DECISION": 2,
+  "FALSIFIED": 7,
+  "OPINION": 7,
+  "QUEUED": 4
+ },
+ "findings": [
+  {
+   "id": "META-E1",
+   "reviewer": "META_REVIEW_gpt5pro",
+   "severity": "ESSENTIAL",
+   "verdict": "VERIFIED",
+   "summary": "α² squaring noise bias makes σ(fNL)=8.14 central forecast optimistic",
+   "disposition": "Closed: de-bias sentence added §V.b — E[α̂²]=α²+Var(α̂); max(0, 0.19²−0.65²)=0 ⇒ de-biased central = baseline 8.98 (no improvement); envelope [3.92, 8.98] decl…"
+  },
+  {
+   "id": "META-M1",
+   "reviewer": "META_REVIEW_gpt5pro",
+   "severity": "MAJOR",
+   "verdict": "VERIFIED",
+   "summary": "FoF union-find can chain-merge >5″ pairs; no audit shown",
+   "disposition": "Ran full 7-way dedup chain audit: 9,553 multi-member clusters (max 17 detections), max intra-cluster pairwise separation 4.999″, 0 clusters exceed the 5″ link …"
+  },
+  {
+   "id": "META-M2",
+   "reviewer": "META_REVIEW_gpt5pro",
+   "severity": "MAJOR",
+   "verdict": "PARTIAL",
+   "summary": "\"anomaly rate vs latitude\" denominator undefined; rate per pixel uninterpretable",
+   "disposition": "Existing §IV B caveat already disclaims selection functions, but the per-pixel denominator of the Spearman test is genuinely unspecified and the original scrip…"
+  },
+  {
+   "id": "META-M3",
+   "reviewer": "META_REVIEW_gpt5pro",
+   "severity": "MAJOR",
+   "verdict": "VERIFIED",
+   "summary": "SIMBAD P_false uses uniform sky density; underestimates crowded fields",
+   "disposition": "Honest qualifier added §IV A (\"global uniform-density estimate; locally higher in crowded fields … HEALPix-weighted map deferred to the data release\"). Full lo…"
+  },
+  {
+   "id": "META-M4",
+   "reviewer": "META_REVIEW_gpt5pro",
+   "severity": "MAJOR",
+   "verdict": "VERIFIED",
+   "summary": "Post-hoc 77,905 SDSS slice could distort dedup geometry; rerun with top-1% and S>5",
+   "disposition": "Re-ran identical 7-way dedup with SDSS = top-19,253 → 320,020 unique / 251 multi-survey / 2.98% compression; SDSS = S>5 (12) → 301,034 / 2 / 3.08%. Headline co…"
+  },
+  {
+   "id": "META-M5",
+   "reviewer": "META_REVIEW_gpt5pro",
+   "severity": "MAJOR",
+   "verdict": "VERIFIED",
+   "summary": "r_B/r_R/r_Z never defined mathematically",
+   "disposition": "Formula added §II B (L195): r_X = (1/N_X)Σ"
+  },
+  {
+   "id": "META-M6",
+   "reviewer": "META_REVIEW_gpt5pro",
+   "severity": "MAJOR",
+   "verdict": "VERIFIED",
+   "summary": "Unclear whether scored Planck patches respect the |b|≥20° training mask",
+   "disposition": "Clarifier added §III F: native bank positions all drawn at |b|≥20° by construction (extraction code `cmb_native_retrain.py` rejects in-cut positions); scored s…"
+  },
+  {
+   "id": "META-M7",
+   "reviewer": "META_REVIEW_gpt5pro",
+   "severity": "MAJOR",
+   "verdict": "VERIFIED",
+   "summary": "\"expected 2.3 coincidences vs 3 observed\" lacks denominators",
+   "disposition": "§IV A rewritten: denominators stated (195,829 DESI × 77,905 SDSS native slice); empirical RA-shifted-control expectation 2.75 vs 4 raw 3″ matches on released c…"
+  },
+  {
+   "id": "META-m1",
+   "reviewer": "META_REVIEW_gpt5pro",
+   "severity": "MINOR",
+   "verdict": "VERIFIED",
+   "summary": "OOD set \"100k\" (§II B) vs \"103,000\" (§VI D)",
+   "disposition": "Fixed to 103,000 at L200; artifact `jaccard_100k_results.json` (`n_spectra_total: 103000`)."
+  },
+  {
+   "id": "META-m2",
+   "reviewer": "META_REVIEW_gpt5pro",
+   "severity": "MINOR",
+   "verdict": "VERIFIED",
+   "summary": "Fig 3 \"Probability density\" normalization unstated",
+   "disposition": "Caption now states per-survey histograms independently normalized to unit area (`density=True`), shapes comparable, y-axis not counts. Source: `generate_figure…"
+  },
+  {
+   "id": "META-m3",
+   "reviewer": "META_REVIEW_gpt5pro",
+   "severity": "MINOR",
+   "verdict": "STALE",
+   "summary": "eROSITA LMC concentration may be exposure-depth-driven",
+   "disposition": "§III E already states \"LMC concentration is partly a depth artifact from the ecliptic-pole scan strategy\" — the reviewer's \"otherwise qualify\" branch is alread…"
+  },
+  {
+   "id": "META-m4",
+   "reviewer": "META_REVIEW_gpt5pro",
+   "severity": "MINOR",
+   "verdict": "VERIFIED",
+   "summary": "~265k catalog-grade subset includes Planck patches yet object-level guidance says point-source tier",
+   "disposition": "Abstract now gives both: 264,938 catalog-grade (incl. 200 patches) and 264,738 catalog-grade point-source subset for object-level work (arithmetic: 264,938−200…"
+  },
+  {
+   "id": "Claude m7 (fig layout: Fig 3 label smudge, p.20/21 whitespace)",
+   "reviewer": "Claude_brutal_INSESSION",
+   "severity": "MINOR",
+   "verdict": "VERIFIED",
+   "summary": "fig layout: Fig 3 label smudge, p.20/21 whitespace",
+   "disposition": "Figure regeneration task (annotation offsets, float placement), not a text edit. Queued."
+  },
+  {
+   "id": "Gemini E1 (7.9% arithmetic)",
+   "reviewer": "Gemini_cosmology",
+   "severity": "ESSENTIAL",
+   "verdict": "CLOSED-PRIOR",
+   "summary": "7.9% arithmetic",
+   "disposition": "Same as INSESSION E1 (now 9.4% throughout)."
+  },
+  {
+   "id": "Gemini E2 / Perp N3 (\"earlier draft listed 10.6 s\" withdrawal note in Table V footnote)",
+   "reviewer": "Gemini_cosmology",
+   "severity": "ESS/MIN",
+   "verdict": "HOUSTON-DECISION",
+   "summary": "\"earlier draft listed 10.6 s\" withdrawal note in Table V footnote",
+   "disposition": "Correction-note removal demand; deliberate disclosure policy — kept (per standing rule)."
+  },
+  {
+   "id": "Gemini E3 (notation 1/σ(fNL)² incl. Table IV \"1/6(fNL)²\")",
+   "reviewer": "Gemini_cosmology",
+   "severity": "ESSENTIAL",
+   "verdict": "VERIFIED",
+   "summary": "notation 1/σ(fNL)² incl. Table IV \"1/6(fNL)²\"",
+   "disposition": "All four occurrences now $1/\\sigma^2(f_{\\rm NL})$ (abstract, §V.b, Table IV(i), caveat (i)). The \"1/6\" was a PDF-extraction misread of the same expression."
+  },
+  {
+   "id": "Gemini M1 (LAMOST 44,075 vs 113,342 ambiguity)",
+   "reviewer": "Gemini_cosmology",
+   "severity": "MAJOR",
+   "verdict": "STALE",
+   "summary": "LAMOST 44,075 vs 113,342 ambiguity",
+   "disposition": "Table I footnote ♠ + §III D give the full three-number disclosure and tier labels."
+  },
+  {
+   "id": "Gemini M2 (SIMBAD-unmatched vs genuine novelty emphasis)",
+   "reviewer": "Gemini_cosmology",
+   "severity": "MAJOR",
+   "verdict": "STALE",
+   "summary": "SIMBAD-unmatched vs genuine novelty emphasis",
+   "disposition": "Abstract leads with 17.8% qualified point estimate; Table I caption + §IV A + Fig 6 caption all subordinate SIMBAD fractions."
+  },
+  {
+   "id": "Gemini M3 / Grok N1 (placeholder/future date \"June 2026\")",
+   "reviewer": "Gemini_cosmology",
+   "severity": "MAJ/NIT",
+   "verdict": "FALSIFIED",
+   "summary": "placeholder/future date \"June 2026\"",
+   "disposition": "It IS June 2026 (auto-falsify rule)."
+  },
+  {
+   "id": "Gemini m1 (abstract \"BMB/SMBHB\" missing subscript)",
+   "reviewer": "Gemini_cosmology",
+   "severity": "MINOR",
+   "verdict": "FALSIFIED",
+   "summary": "abstract \"BMB/SMBHB\" missing subscript",
+   "disposition": "Source is `$B_{\\rm MB/SMBHB}$` — properly subscripted; pdftotext flattening artifact."
+  },
+  {
+   "id": "Gemini m2 (~265k scope unclear)",
+   "reviewer": "Gemini_cosmology",
+   "severity": "MINOR",
+   "verdict": "STALE",
+   "summary": "~265k scope unclear",
+   "disposition": "Survey list parenthetical already present; further sharpened by META-m4 fix."
+  },
+  {
+   "id": "Gemini m3 (ACT quarantine wording)",
+   "reviewer": "Gemini_cosmology",
+   "severity": "MINOR",
+   "verdict": "OPINION",
+   "summary": "ACT quarantine wording",
+   "disposition": "Current phrasing already separates quarantine vs stratification; no error."
+  },
+  {
+   "id": "Gemini m4 (\"uval and oval\" in Fig 3 caption)",
+   "reviewer": "Gemini_cosmology",
+   "severity": "MINOR",
+   "verdict": "STALE",
+   "summary": "\"uval and oval\" in Fig 3 caption",
+   "disposition": "Caption uses $\\mu_{\\rm val}$, $\\sigma_{\\rm val}$."
+  },
+  {
+   "id": "Gemini m5 (§VI D scope-choice cross-ref)",
+   "reviewer": "Gemini_cosmology",
+   "severity": "MINOR",
+   "verdict": "STALE",
+   "summary": "§VI D scope-choice cross-ref",
+   "disposition": "L278 now points to §pathc_caveats."
+  },
+  {
+   "id": "Gemini m6 (false-match rate cited §IV A vs computed §IV B)",
+   "reviewer": "Gemini_cosmology",
+   "severity": "MINOR",
+   "verdict": "FALSIFIED",
+   "summary": "false-match rate cited §IV A vs computed §IV B",
+   "disposition": "P_false is computed inside §IV A (\"Expected false-match rates\" paragraph, sec:simbad); the L282 cross-ref is correct."
+  },
+  {
+   "id": "Gemini m7 (Fig 3 caption cites §II D for S definition)",
+   "reviewer": "Gemini_cosmology",
+   "severity": "MINOR",
+   "verdict": "VERIFIED",
+   "summary": "Fig 3 caption cites §II D for S definition",
+   "disposition": "Caption ref changed to §\\ref{sec:training} (II B)."
+  },
+  {
+   "id": "Gemini m8 (Fig 12 caption §IIIB roman typo)",
+   "reviewer": "Gemini_cosmology",
+   "severity": "MINOR",
+   "verdict": "STALE",
+   "summary": "Fig 12 caption §IIIB roman typo",
+   "disposition": "Caption cites \\S\\ref{sec:highz}."
+  },
+  {
+   "id": "Gemini N1 (Path-C naming consistency)",
+   "reviewer": "Gemini_cosmology",
+   "severity": "NIT",
+   "verdict": "OPINION",
+   "summary": "Path-C naming consistency",
+   "disposition": "Style preference; \"Path-C rebuild/protocol\" used contextually."
+  },
+  {
+   "id": "Gemini N2 (Fig 1 caption phrasing)",
+   "reviewer": "Gemini_cosmology",
+   "severity": "NIT",
+   "verdict": "OPINION",
+   "summary": "Fig 1 caption phrasing",
+   "disposition": "Stylistic."
+  },
+  {
+   "id": "Grok E1 (17.8% headline framing)",
+   "reviewer": "Grok_brutal",
+   "severity": "ESSENTIAL",
+   "verdict": "STALE",
+   "summary": "17.8% headline framing",
+   "disposition": "Abstract: \"single-sample point estimate at the top-1,000 stratum; full-catalog rate empirically untested\"."
+  },
+  {
+   "id": "Grok E2 / Perp N6 (SPHEREx 3–5σ overconfident)",
+   "reviewer": "Grok_brutal",
+   "severity": "ESS/NIT",
+   "verdict": "STALE",
+   "summary": "SPHEREx 3–5σ overconfident",
+   "disposition": "§I attributes the forecast to Heinrich et al. methodology; abstract/conclusions carry the <1σ qualifier; \"is projected\" wording. No unqualified detection claim…"
+  },
+  {
+   "id": "Grok E3 (LAMOST 44k contaminates headline)",
+   "reviewer": "Grok_brutal",
+   "severity": "ESSENTIAL",
+   "verdict": "STALE",
+   "summary": "LAMOST 44k contaminates headline",
+   "disposition": "LAMOST is the disclosed 113,342 exploratory tier; catalog-grade tier (264,938) published as the recommendation — exactly the reviewer's requested parallel tier."
+  },
+  {
+   "id": "Grok M1 / Perp E1, N1 (141× / 73× support)",
+   "reviewer": "Grok_brutal",
+   "severity": "MAJ/ESS",
+   "verdict": "FALSIFIED",
+   "summary": "141× / 73× support",
+   "disposition": "Both factors derivable in-paper from Liang et al. 2,685 anomalies (§I): 378,080/2,685=140.8; 195,829/2,685=72.9. The like-for-like 73× is already given alongsi…"
+  },
+  {
+   "id": "Grok M2 (ACT 200 patches inside headline)",
+   "reviewer": "Grok_brutal",
+   "severity": "MAJOR",
+   "verdict": "FALSIFIED",
+   "summary": "ACT 200 patches inside headline",
+   "disposition": "The +200 in 378,280 is the native Planck tier; ACT contributes zero (Table I footnote ‖ explicit: 388,693→388,493, 378,480→378,280 when ACT removed)."
+  },
+  {
+   "id": "Grok M3 (SDSS 12-dex tail presented as feature)",
+   "reviewer": "Grok_brutal",
+   "severity": "MAJOR",
+   "verdict": "STALE",
+   "summary": "SDSS 12-dex tail presented as feature",
+   "disposition": "Cross-transfer is framed as before/after diagnostic, \"not a science result\" (§II D, Fig 3/4 captions); native re-score supersedes."
+  },
+  {
+   "id": "Grok N2 (sky-map captions lack coordinate system)",
+   "reviewer": "Grok_brutal",
+   "severity": "NIT",
+   "verdict": "VERIFIED",
+   "summary": "sky-map captions lack coordinate system",
+   "disposition": "Fig 2 caption now \"Mollweide projection in equatorial coordinates (RA/Dec, ICRS)\" (source: `generate_figures.py` RA/Dec mollweide); Fig 7 caption already says …"
+  },
+  {
+   "id": "Perp E2/E13 (σ juxtaposition; two Fisher normalizations)",
+   "reviewer": "Perplexity_citations",
+   "severity": "ESSENTIAL",
+   "verdict": "STALE",
+   "summary": "σ juxtaposition; two Fisher normalizations",
+   "disposition": "v3.1.79/80 added the Fig 8/11 16.85-vs-8.98 reconciliation note; abstract gives the <1σ caveat at point of use."
+  },
+  {
+   "id": "Perp E3 (Fisher-positivity form derivation)",
+   "reviewer": "Perplexity_citations",
+   "severity": "ESSENTIAL",
+   "verdict": "STALE",
+   "summary": "Fisher-positivity form derivation",
+   "disposition": "Caveat (i) documents F₀, c=0.0747, 5-α refit positivity, and the stationary-point argument; further strengthened by META-E1 de-bias sentence."
+  },
+  {
+   "id": "Perp E4 (NANOGrav γ not in cited ref)",
+   "reviewer": "Perplexity_citations",
+   "severity": "ESSENTIAL",
+   "verdict": "FALSIFIED",
+   "summary": "NANOGrav γ not in cited ref",
+   "disposition": "γ=2.567±0.382 is this paper's own MCMC on NANOGrav's public KDE product (§V A + App E, full provenance); the citation is for the dataset, not the number."
+  },
+  {
+   "id": "Perp E5/E12 (σ_val \"is set such that\" contradicts Eq. 2)",
+   "reviewer": "Perplexity_citations",
+   "severity": "ESSENTIAL",
+   "verdict": "VERIFIED",
+   "summary": "σ_val \"is set such that\" contradicts Eq. 2",
+   "disposition": "Reworded L195: \"the measured (μ_val, σ_val) place the S>5 threshold at MSE ≈ 0.143\" — removes the tuned-parameter implication; Eq. (2) definition unchanged."
+  },
+  {
+   "id": "Perp E6 (galaxy/QSO 0.75%/0.037% counts unverifiable)",
+   "reviewer": "Perplexity_citations",
+   "severity": "ESSENTIAL",
+   "verdict": "QUEUED",
+   "summary": "galaxy/QSO 0.75%/0.037% counts unverifiable",
+   "disposition": "Per-class numerator/denominator artifact not in repo; queued (release parquet recount)."
+  },
+  {
+   "id": "Perp E7/E8 (Table I threshold confusion; LAMOST mixing)",
+   "reviewer": "Perplexity_citations",
+   "severity": "ESSENTIAL",
+   "verdict": "STALE",
+   "summary": "Table I threshold confusion; LAMOST mixing",
+   "disposition": "Three-threshold disclosure footnotes ♡/♠ added in v3.1.80."
+  },
+  {
+   "id": "Perp E9/E11 (17.8% breadth; 99% from top-10k only)",
+   "reviewer": "Perplexity_citations",
+   "severity": "ESSENTIAL",
+   "verdict": "STALE",
+   "summary": "17.8% breadth; 99% from top-10k only",
+   "disposition": "Abstract qualifier + §IV A \"(only 0.2% of top 10,000…)\" + 0.2%≈0.24% chance-consistency sentence (v3.1.80)."
+  },
+  {
+   "id": "Perp E10 (PTA likelihood form/approximations unstated)",
+   "reviewer": "Perplexity_citations",
+   "severity": "ESSENTIAL",
+   "verdict": "VERIFIED",
+   "summary": "PTA likelihood form/approximations unstated",
+   "disposition": "App E sentence added: ceffyl-style KDE likelihood factorizes over 30 bins; inter-bin covariance beyond the free-spectrum product not retained; not a full timin…"
+  },
+  {
+   "id": "Perp M1 (bib metadata tightening)",
+   "reviewer": "Perplexity_citations",
+   "severity": "MAJOR",
+   "verdict": "PARTIAL",
+   "summary": "bib metadata tightening",
+   "disposition": "Bib polish pass (DESI DR1 entry journal info, ADS cross-checks) queued; Perplexity's 15/15 false \"doesn't exist\" record noted — no entry removed."
+  },
+  {
+   "id": "Perp M2/M3/M4 (length, figure choice, GPU section)",
+   "reviewer": "Perplexity_citations",
+   "severity": "MAJOR",
+   "verdict": "OPINION",
+   "summary": "length, figure choice, GPU section",
+   "disposition": "Editorial; v3.1.75 already condensed 32pp→20pp."
+  },
+  {
+   "id": "Perp M5 (unweighted MSE limitation thin)",
+   "reviewer": "Perplexity_citations",
+   "severity": "MAJOR",
+   "verdict": "STALE",
+   "summary": "unweighted MSE limitation thin",
+   "disposition": "Limitation (7) added in v3.1.80."
+  },
+  {
+   "id": "Perp M6 (38,330 pixels vs 49,152; low-count χ²)",
+   "reviewer": "Perplexity_citations",
+   "severity": "MAJOR",
+   "verdict": "PARTIAL",
+   "summary": "38,330 pixels vs 49,152; low-count χ²",
+   "disposition": "χ² caveat paragraph already disclaims interpretive use; the exact pixel-occupancy criterion needs the original script — queued with META-M2."
+  },
+  {
+   "id": "Perp M7 (high-z QSO total S not shown)",
+   "reviewer": "Perplexity_citations",
+   "severity": "MAJOR",
+   "verdict": "STALE",
+   "summary": "high-z QSO total S not shown",
+   "disposition": "§III B: \"all objects have total score S>5 by construction\"."
+  },
+  {
+   "id": "Perp N2 (why SDSS DR12/DR16 in cross-match)",
+   "reviewer": "Perplexity_citations",
+   "severity": "NIT",
+   "verdict": "OPINION",
+   "summary": "why SDSS DR12/DR16 in cross-match",
+   "disposition": "CDS X-Match catalog availability choice; no error claimed."
+  },
+  {
+   "id": "Perp N4 (radius sweep table)",
+   "reviewer": "Perplexity_citations",
+   "severity": "NIT",
+   "verdict": "STALE",
+   "summary": "radius sweep table",
+   "disposition": "Measured 3/5/7″ numbers in prose (v3.1.80)."
+  },
+  {
+   "id": "Perp N5 (IF endorsement risk)",
+   "reviewer": "Perplexity_citations",
+   "severity": "NIT",
+   "verdict": "STALE",
+   "summary": "IF endorsement risk",
+   "disposition": "v3.1.80 reframed 284/298 as descriptive, non-independent."
+  },
+  {
+   "id": "Perp N7 (DOIs for repos)",
+   "reviewer": "Perplexity_citations",
+   "severity": "NIT",
+   "verdict": "HOUSTON-DECISION",
+   "summary": "DOIs for repos",
+   "disposition": "Zenodo DOI minting is a release-process action at arXiv posting."
+  },
+  {
+   "id": "Perp N8 (redshift provenance/uncertainty for z=6.0–6.23)",
+   "reviewer": "Perplexity_citations",
+   "severity": "NIT",
+   "verdict": "QUEUED",
+   "summary": "redshift provenance/uncertainty for z=6.0–6.23",
+   "disposition": "Provenance (Redrock vs custom fits) not verifiable from local artifacts; never invent."
+  },
+  {
+   "id": "Perp N9 (χ² low-count caveat)",
+   "reviewer": "Perplexity_citations",
+   "severity": "NIT",
+   "verdict": "STALE",
+   "summary": "χ² low-count caveat",
+   "disposition": "Caveat paragraph present."
+  },
+  {
+   "id": "Perp N10 (Gaia feature list)",
+   "reviewer": "Perplexity_citations",
+   "severity": "NIT",
+   "verdict": "QUEUED",
+   "summary": "Gaia feature list",
+   "disposition": "20-feature list not in local artifacts."
+  },
+  {
+   "id": "Perp N11 (NEOWISE 11.5 score axis)",
+   "reviewer": "Perplexity_citations",
+   "severity": "NIT",
+   "verdict": "STALE",
+   "summary": "NEOWISE 11.5 score axis",
+   "disposition": "§III H labels it canonical-S ranking (v3.1.80)."
+  },
+  {
+   "id": "Perp N12 (high-z taxonomy cross-table)",
+   "reviewer": "Perplexity_citations",
+   "severity": "NIT",
+   "verdict": "OPINION",
+   "summary": "high-z taxonomy cross-table",
+   "disposition": "Nice-to-have summary table."
+  },
+  {
+   "id": "Perp N13 (injection placement spec)",
+   "reviewer": "Perplexity_citations",
+   "severity": "NIT",
+   "verdict": "QUEUED",
+   "summary": "injection placement spec",
+   "disposition": "Plant-position policy lives in per-survey pod scripts not mirrored locally."
+  },
+  {
+   "id": "Perp N14 (\"foregound\" typo; hyphenation)",
+   "reviewer": "Perplexity_citations",
+   "severity": "NIT",
+   "verdict": "FALSIFIED",
+   "summary": "\"foregound\" typo; hyphenation",
+   "disposition": "grep: no \"foregound\" in source."
+  },
+  {
+   "id": "Perp N15 (Fig 4 \"score > 5.0\" burned-in label)",
+   "reviewer": "Perplexity_citations",
+   "severity": "NIT",
+   "verdict": "STALE",
+   "summary": "Fig 4 \"score > 5.0\" burned-in label",
+   "disposition": "Caption note present (\"refers to the DESI-trained cross-transfer score axis\")."
+  },
+  {
+   "id": "Perp N16 (Jeffreys \"decisive\" quantify)",
+   "reviewer": "Perplexity_citations",
+   "severity": "NIT",
+   "verdict": "STALE",
+   "summary": "Jeffreys \"decisive\" quantify",
+   "disposition": "§V A already gives log₁₀B = +3.85 alongside \"decisive\"."
+  },
+  {
+   "id": "Perp N17 (rhetoric softening)",
+   "reviewer": "Perplexity_citations",
+   "severity": "NIT",
+   "verdict": "OPINION",
+   "summary": "rhetoric softening",
+   "disposition": "\"Neither constitutes a detection\" already present."
+  },
+  {
+   "id": "Perp N7-dup (8-way unique count explicit)",
+   "reviewer": "Perplexity_citations",
+   "severity": "MINOR",
+   "verdict": "STALE",
+   "summary": "8-way unique count explicit",
+   "disposition": "Footnote ‖: 8-way = 378,480 explicit."
+  }
+ ]
+}

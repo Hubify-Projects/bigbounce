@@ -1,0 +1,219 @@
+{
+ "round": "2026-06-09_R23conf",
+ "paper": "P1A",
+ "date": "2026-06-09",
+ "round_type": "internal_cross_vendor_confirmation_full5",
+ "pre_version": "v1A.0.50",
+ "post_version": "v1A.0.51",
+ "vendors": [
+  "Claude (in-session, subscription)",
+  "OpenAI GPT-5 (methodology)",
+  "Gemini 2.5 Pro (cosmology)",
+  "Grok-4 (brutal)",
+  "Perplexity Sonar Pro (citations)",
+  "GPT-5-Pro (META review)"
+ ],
+ "truth_audit_source": "R23conf_P1A_TRUTH_AUDIT.md",
+ "audit_note": "23 audited rows (truth-audit scope = META + non-INSESSION synthesis remainder); INSESSION m1,m3,m4+m6,m5,m7 closed pre-audit. Cleanest round of the wave (E:0/M:0 surviving).",
+ "verdict_counts": {
+  "VERIFIED": 9,
+  "PARTIAL": 3,
+  "STALE": 5,
+  "HOUSTON-DECISION": 5,
+  "OPINION": 2
+ },
+ "findings": [
+  {
+   "id": "META-E1",
+   "reviewer": "META_REVIEW_gpt5pro",
+   "severity": "ESSENTIAL",
+   "verdict": "VERIFIED",
+   "summary": "Paper adopts `−¼(α/M)θFF̃` (L1158) but used β=(α/M)Δθ. Standard small-rotation result for that normalization is β=(α/2M)Δθ (Harari–Sikivie). Inversion becomes ρθ=2mθ²β²/(α/M)². Recompute: 2·(1.5e-33)…",
+   "disposition": "CLOSED — Eq. `eq:beta_bound` + inversion + ρθ value + matching-point parenthetical edited"
+  },
+  {
+   "id": "META-E2",
+   "reviewer": "META_REVIEW_gpt5pro",
+   "severity": "ESSENTIAL",
+   "verdict": "PARTIAL",
+   "summary": "Current .tex (L1610) already reads `h''+2𝓗h'+k²h=0` with conformal `\\mathcal{H}` — NOT cosmic H as reviewer read from PDF rendering. However primes/𝓗 were never defined → ambiguity real.",
+   "disposition": "CLOSED — added \"(primes = d/dη, 𝓗≡a′/a; cosmic-time form ḧ+3Hḣ+(k²/a²)h=0)\""
+  },
+  {
+   "id": "META-M1",
+   "reviewer": "META_REVIEW_gpt5pro",
+   "severity": "MAJOR",
+   "verdict": "VERIFIED",
+   "summary": "θ used for both NY pseudoscalar (Eq. oneloop_parity_odd) and spectator ALP (Eq. beta_bound). Real collision.",
+   "disposition": "CLOSED — NY field renamed ϑ_NY (3 occurrences) + explicit no-identification clause"
+  },
+  {
+   "id": "META-M2",
+   "reviewer": "META_REVIEW_gpt5pro",
+   "severity": "MAJOR",
+   "verdict": "VERIFIED",
+   "summary": "Closure summary pointed condensate \"quantitative closure\" at `\\ref{sec:transparency}` (Sec. X, perturbation transparency); actual NJL quantitative closure lives in `sec:r1_njl` (Sec. IV A).",
+   "disposition": "CLOSED — cross-ref corrected to `sec:r1_njl`"
+  },
+  {
+   "id": "META-M3",
+   "reviewer": "META_REVIEW_gpt5pro",
+   "severity": "MAJOR",
+   "verdict": "VERIFIED",
+   "summary": "No θ(t)-regime statement existed near Eq. beta_bound. Physics check: rotation depends only on endpoints θ(today)−θ(rec); mθ≲H₀ frozen/slow-roll → monotonic; mθ≫H₀ oscillation redshift-dilutes amplitu…",
+   "disposition": "CLOSED — regime sentence added at Eq. beta_bound"
+  },
+  {
+   "id": "META-M4",
+   "reviewer": "META_REVIEW_gpt5pro",
+   "severity": "MAJOR",
+   "verdict": "STALE",
+   "summary": "L696–708 already label 0.27 ρPl as \"internal extrapolation across counting schemes (not a value quoted in Ashtekar–Singh)\" and the 0.27–0.41 window as scheme-dependent (reviewer option ii). Barrier 1…",
+   "disposition": "No edit"
+  },
+  {
+   "id": "META-M5",
+   "reviewer": "META_REVIEW_gpt5pro",
+   "severity": "MAJOR",
+   "verdict": "VERIFIED",
+   "summary": "Eq. ClEB retains C_BB but regime unstated. Paper performs NO independent EB β-fit (values quoted from Minami2020/Eskilt2022 estimators, which retain lensing BB).",
+   "disposition": "CLOSED — small-angle/uniform-β regime + C_BB sentence added after Eq. ClEB"
+  },
+  {
+   "id": "META-m1",
+   "reviewer": "META_REVIEW_gpt5pro",
+   "severity": "MINOR",
+   "verdict": "VERIFIED",
+   "summary": "\"M_crit ≈ 10⁻³ M⊙\" (L683) had no derivation/citation anywhere in repo; deriving one now would be fabrication (pattern-036). Reviewer's delete option taken. Same as OpenAI-M4.",
+   "disposition": "CLOSED — sentence deleted; no other M_crit refs remain"
+  },
+  {
+   "id": "META-m2",
+   "reviewer": "META_REVIEW_gpt5pro",
+   "severity": "MINOR",
+   "verdict": "VERIFIED",
+   "summary": "Identity e∧e∧R = −NY + T∧T correct given NY≡d(e∧T) (=T∧T−e∧e∧R), but boundary-term definition was unstated. At T=0: NY=d(0)=0 pointwise ✓, Bianchi gives pointwise vanishing ✓.",
+   "disposition": "CLOSED — NY≡d(e_I∧T^I) definition + pointwise-vs-boundary clause added (Sec. X D body; not a \\caption/\\footnote edit)"
+  },
+  {
+   "id": "META-m3",
+   "reviewer": "META_REVIEW_gpt5pro",
+   "severity": "MINOR",
+   "verdict": "STALE",
+   "summary": "Footnote at eq:beta_bound already contains the unit-consistent worked example: g_naive = α_em/(2π·1.2e19 GeV) = 9.5e-23 ≈ 1e-22 GeV⁻¹ vs fitted 1e-21 → 10× gap demonstrated with explicit γ_SU(2), M_a…",
+   "disposition": "No edit"
+  },
+  {
+   "id": "META-n1",
+   "reviewer": "META_REVIEW_gpt5pro",
+   "severity": "NIT",
+   "verdict": "VERIFIED",
+   "summary": "`\\widetilde{R}(Γ̊)` for Holst dual collided with `R∧R̃` Pontryagin notation (rendered \"Re(Γ̊)\" in PDF). Single occurrence.",
+   "disposition": "CLOSED — renamed `\\mathcal{R}_{\\rm H}(Γ̊) ≡ ½ε^{μνρσ}R_{μνρσ}`"
+  },
+  {
+   "id": "META \"REJECT\" rec",
+   "reviewer": "META_REVIEW_gpt5pro",
+   "severity": "—",
+   "verdict": "HOUSTON-DECISION",
+   "summary": "Overall recommendation aggregates companion-reliance + scope opinions; technical items now closed/queued.",
+   "disposition": "Noted for Houston"
+  },
+  {
+   "id": "audit_artifact / Grok-M2 (enumeration circular)",
+   "reviewer": "Grok_brutal",
+   "severity": "MAJOR",
+   "verdict": "STALE",
+   "summary": "Scope paragraph (L943–962) explicitly discloses omitted dim-6 operators (Jackiw–Pi, parity-odd 4-fermion partner) as NOT closed; channel-level framing already adopted (R-multi GRO-M1 precedent).",
+   "disposition": "No edit"
+  },
+  {
+   "id": "audit_artifact / OpenAI-E4 (one-loop ratio)",
+   "reviewer": "OpenAI_methodology",
+   "severity": "ESSENTIAL",
+   "verdict": "PARTIAL",
+   "summary": "Displayed formula internally consistent: 10⁻³·10⁻⁶¹/(10⁻²·6e-3) = 1.7e-60 ✓ → 10⁻⁵⁸–10⁻⁶⁰ with the now-defined ε-correction (INSESSION m4). Reviewer's 10⁻⁶² estimate omits the R4-fitted M_Pl(α/M)~10⁻…",
+   "disposition": "Queued (COMPUTE_QUEUE #1)"
+  },
+  {
+   "id": "audit_artifact / OpenAI-M1 (NJL numeric bound)",
+   "reviewer": "OpenAI_methodology",
+   "severity": "MAJOR",
+   "verdict": "VERIFIED",
+   "summary": "No number existed. Recomputed: n_b(z=1100) = 2.47e-7·1101³ = 330 cm⁻³ = 2.5e-12 eV³; ρ_NJL = n²/M_Pl² = 4.3e-80 eV⁴ = 1.5e-69 ρΛ.",
+   "disposition": "CLOSED — numeric bound inserted in sec:r1_njl"
+  },
+  {
+   "id": "audit_artifact / OpenAI-M2 (Δγ/γ underived)",
+   "reviewer": "mixed/consensus-group",
+   "severity": "MAJOR",
+   "verdict": "STALE",
+   "summary": "L1120–1131 already reframe Eq. gamma_running as \"chiral-count EFT bound, not full perturbative result\" + cite Benedetti & Speziale — reviewer's \"weaken to dimensional upper bound\" option already on d…",
+   "disposition": "No edit"
+  },
+  {
+   "id": "companion / Grok-E4, Grok-M1, Grok-m1",
+   "reviewer": "Grok_brutal",
+   "severity": "E/M/m",
+   "verdict": "HOUSTON-DECISION",
+   "summary": "Companion refs are deliberate TODO-SUBMISSION placeholders (\"posted concurrently on arXiv\"); fNL=−35/8 + β central value imports are the declared program structure. Per standing rule, companion-relia…",
+   "disposition": "Noted"
+  },
+  {
+   "id": "table_ii / Claude-N2 (13 vs 14 wording)",
+   "reviewer": "Claude_brutal_INSESSION",
+   "severity": "NIT",
+   "verdict": "STALE",
+   "summary": "\"13 logically-independent (14 historical catalog entries, B8 subsumed by B14)\" now standard from abstract → conclusion → Table II caption (12+ sites).",
+   "disposition": "No edit"
+  },
+  {
+   "id": "table_ii / OpenAI-E6 (independence proofs)",
+   "reviewer": "OpenAI_methodology",
+   "severity": "ESSENTIAL",
+   "verdict": "PARTIAL",
+   "summary": "B8/B14 non-independence disclosed everywhere; remaining 13 have no dependency matrix. Constructing one is a real derivation artifact, not a text patch.",
+   "disposition": "Queued (COMPUTE_QUEUE #2)"
+  },
+  {
+   "id": "table_ii / OpenAI-M7 (PTA line + w₀wₐ chain-status footnote)",
+   "reviewer": "OpenAI_methodology",
+   "severity": "MAJOR",
+   "verdict": "HOUSTON-DECISION",
+   "summary": "Footnote (L~1689) is deliberate work-in-progress disclosure; removal = disclosure-removal demand → Houston per standing rule. PTA γ row sourced from companion real-KDE reanalysis.",
+   "disposition": "Noted"
+  },
+  {
+   "id": "OpenAI-E9 (version-history/correction notes in body)",
+   "reviewer": "mixed/consensus-group",
+   "severity": "ESSENTIAL",
+   "verdict": "HOUSTON-DECISION",
+   "summary": "Correction-note/disclosure-removal demand by definition (p.2 footnote, Sec. X footnote 3 are deliberate erratum-transparency).",
+   "disposition": "Noted"
+  },
+  {
+   "id": "OpenAI-E5 (companion arXiv IDs)",
+   "reviewer": "OpenAI_methodology",
+   "severity": "ESSENTIAL",
+   "verdict": "HOUSTON-DECISION",
+   "summary": "Same companion-placeholder policy as Grok-E4.",
+   "disposition": "Noted"
+  },
+  {
+   "id": "OpenAI-M9 (condense to 12–14 pp)",
+   "reviewer": "OpenAI_methodology",
+   "severity": "MAJOR",
+   "verdict": "OPINION",
+   "summary": "Length/scope judgment; PRD has no hard page cap for regular articles.",
+   "disposition": "No edit"
+  },
+  {
+   "id": "OpenAI-n3 (AI acknowledgment)",
+   "reviewer": "OpenAI_methodology",
+   "severity": "NIT",
+   "verdict": "OPINION",
+   "summary": "Permissible per reviewer himself. Bonus: n3's scalar audit independently CONFIRMS paper numbers (ρcrit 0.27/0.41 ✓, ω/H bound ✓, β significances 3.64σ/2.90σ ✓).",
+   "disposition": "No edit"
+  }
+ ]
+}

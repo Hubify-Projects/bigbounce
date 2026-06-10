@@ -47,12 +47,12 @@ export interface LiveStatus {
 }
 
 export const liveStatus: LiveStatus = {
-  lastUpdatedISO: "2026-06-10T19:00:00Z",
-  lastUpdatedDisplay: "June 10, 2026 · 12:00 PM PT",
+  lastUpdatedISO: "2026-06-10T23:30:00Z",
+  lastUpdatedDisplay: "June 10, 2026 · 4:30 PM PT",
   headline:
-    "R24conf wave closed: ~110 verified findings closed across all six papers — including 2 substantive P2 physics fixes (QSFI endpoints, −35/16 attribution) and a P5 join-bug fix — all six bumped (P1A v1A.0.52 · P1B v1B.0.53 · P2 v1.7.47 · P3 v3.1.82 · P4 v1.0.169 · P5 v0.1.54); next gate is R25conf (P2+P4 priority; P4 needs 2 clean) + a pod session for queued recomputes.",
+    "R25conf CLEAN×2 — P4 completes its 2-of-2 post-retraction requirement; P2 clean; P4+P2 await Houston sign-off. Five papers bumped (P1A v1A.0.53 · P2 v1.7.48 · P3 v3.1.83 · P4 v1.0.170 · P5 v0.1.55; P1B v1B.0.53 unchanged); P1A/P3/P5 gate on R26conf.",
   summary:
-    "R24conf closures: P1A 1.06σ recompute fix + Λ_eff curvature-units declared + 10⁻⁵⁸ band relabeled; P1B S8 marginal corrected 0.831±0.018→0.827±0.010 (chain-recomputed) + cosθ-prior robustness + S8/DES-Y3 overlay (2.6σ); P2 QSFI endpoints corrected per Chen–Wang + −35/16 re-attributed to Li–Quintin–Wang–Cai (17 sites) + c9k continuous-GR BF=6.0; P3 eROSITA 0.259 threshold-axis irreproducibility disclosed; P4 7 local recomputes closed (confidence-cut z +4.27→+0.41, A_dip 95% UL 6.8e-3, conditioning 3.17); P5 ZONEVOID zone-offset bug fixed (104,912/74,111 void counts, conclusion unchanged).",
+    "R25conf: P4 93 findings audited, one substantive catch (App A field-convention corrected from artifacts, no number changed) → 95, SIGN-OFF-READY; P2 clean (GR-degradation calibration ~15%→~23% c9k-verified, c9l σ_theory continuous marginalization, fig4 'BOUNCE EXCLUDED' regen) → 95, SIGN-OFF-READY. Also landed: P1A MCS App C derivation (last analytic gate closed), P3 eROSITA axis definitively resolved (monotone class ruled out, Spearman ρ=−0.10), P5 unique-TARGETID parent rebuild (Δ ≤ 0.70pp, conclusions unchanged).",
   currentlyRunning: [
     "Hourly native-PDF cross-vendor review autoloop on all 6 papers (Claude · GPT · Gemini · Grok · Perplexity + meta-reviewer)",
     "Persistence tracker fingerprinting findings across fires; load-bearing items escalate to Houston decision package",
@@ -62,7 +62,7 @@ export const liveStatus: LiveStatus = {
     {
       title: "Anthropic API credits exhausted (reviewer leg down)",
       blockedPaper: "all",
-      why: "The Claude API reviewer leg is still down on billing 400s; R23conf/R24conf ran their Claude legs in-session on subscription as a workaround, but the autoloop needs API credits for R25conf.",
+      why: "The Claude API reviewer leg is still down on billing 400s; R23conf/R24conf/R25conf ran their Claude legs in-session on subscription as a workaround, but the autoloop needs API credits for R26conf.",
       ask: "Top up API credits at console.anthropic.com → Plans & Billing, then say 'credits topped up' so full 5-vendor rounds restart.",
     },
     {
@@ -72,10 +72,10 @@ export const liveStatus: LiveStatus = {
       ask: "Run your external round on the current PDFs and send back findings for truth-audit.",
     },
     {
-      title: "Personal sign-off, paper by paper",
-      blockedPaper: "all",
-      why: "The final 1% of readiness is reserved for Houston's judgment — no agent can award it.",
-      ask: "Read each paper end-to-end and reply 'sign off PN' or send blocking findings.",
+      title: "Personal sign-off — P4 + P2 are SIGN-OFF-READY now",
+      blockedPaper: "P4, P2",
+      why: "P4 completed its 2-of-2 post-retraction clean rounds and P2 came back R25conf-clean — only Houston's read stands between them and arXiv.",
+      ask: "Read P4 + P2 end-to-end and reply 'sign off P4'/'sign off P2' or send blocking findings; remaining papers follow after R26conf.",
     },
     {
       title: "arXiv endorsement + submission credentials",
@@ -89,9 +89,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-1a",
       number: "1A",
       shortTitle: "ECH dark-energy closure + perturbation transparency",
-      version: "v1A.0.52",
+      version: "v1A.0.53",
       readiness: 93,
-      pendingWork: "v1A.0.52 — R24conf clean-after-closures (1.06σ recompute fix, Λ_eff units, 10⁻⁵⁸ band relabel) → MCS derivation appendix (#32) → Houston external round + sign-off → arXiv",
+      pendingWork: "v1A.0.53 — MCS line-of-sight derivation appendix added (App C, closes the last analytic gate; queue #32 CLOSED) → R26conf (new appendix needs review coverage) → Houston sign-off → arXiv",
     },
     {
       slug: "paper-1b",
@@ -99,43 +99,43 @@ export const liveStatus: LiveStatus = {
       shortTitle: "MCMC + NaMaster + ALP technical companion",
       version: "v1B.0.53",
       readiness: 92,
-      pendingWork: "v1B.0.53 — R24conf clean-after-closures (S8 0.827±0.010 corrected, c10 BB-template, cosθ-prior, DES-Y3 overlay) → release-pairing MCMC (#29, pod) → sign-off → arXiv (with P1A)",
+      pendingWork: "v1B.0.53 — unchanged this cycle; release-pairing MCMC (#29) running on pod → R26conf → sign-off → arXiv (with P1A)",
     },
     {
       slug: "paper-2",
       number: "2",
       shortTitle: "f_NL = -35/8 SPHEREx forecast",
-      version: "v1.7.47",
-      readiness: 92,
-      pendingWork: "v1.7.47 — R24conf closed 2 substantive fixes (QSFI endpoints per Chen–Wang, −35/16 re-attributed to Li–Quintin–Wang–Cai, c9k BF=6.0) → R25conf must come back clean (priority) → Houston sign-off → arXiv",
+      version: "v1.7.48",
+      readiness: 95,
+      pendingWork: "v1.7.48 — R25conf ROUND CLEAN (GR-degradation ~15%→~23% c9k-verified, c9l σ_theory marginalization, fig4 'BOUNCE EXCLUDED' regen, envelope relabel) → SIGN-OFF-READY, awaiting Houston → arXiv",
     },
     {
       slug: "paper-3",
       number: "3",
       shortTitle: "378K-anomaly multi-survey catalog",
-      version: "v3.1.82",
-      readiness: 90,
-      pendingWork: "v3.1.82 — R24conf closed (eROSITA 0.259 axis irreproducibility disclosed, abstract framing upgrades) → queue #33 production re-derivation → next round clean → HF flip → arXiv",
+      version: "v3.1.83",
+      readiness: 91,
+      pendingWork: "v3.1.83 — eROSITA axis definitively resolved (monotone class ruled out, Spearman ρ=−0.10; membership-is-canonical; queue #33 CLOSED) → R26conf clean → HF flip → arXiv",
     },
     {
       slug: "paper-4",
       number: "4",
       shortTitle: "8.47M-galaxy chirality null at sub-percent sensitivity",
-      version: "v1.0.169",
-      readiness: 85,
-      pendingWork: "v1.0.169 — R24conf closed 7 local recomputes (confidence-cut z +4.27→+0.41, A_dip 95% UL 6.8e-3, conditioning 3.17) → pod items (#4/5/9/11–13) → TWO clean rounds R25conf+ (priority) → sign-off → arXiv (first in queue)",
+      version: "v1.0.170",
+      readiness: 95,
+      pendingWork: "v1.0.170 — R25conf round 2-of-2 CLEAN (93 findings audited, one substantive App A field-convention catch closed) → post-retraction requirement MET → SIGN-OFF-READY, first in submission queue → arXiv",
     },
     {
       slug: "paper-5",
       number: "5",
       shortTitle: "DESI environmental chirality independence",
-      version: "v0.1.54-2026-06-10",
-      readiness: 90,
-      pendingWork: "v0.1.54 — R24conf closed 6 local recomputes + ZONEVOID join-bug fix (104,912/74,111 void counts, σ −0.52/−1.50, conclusion unchanged) → pod field rebuilds (#15–19) → next round clean → arXiv (last, after P4)",
+      version: "v0.1.55-2026-06-10",
+      readiness: 91,
+      pendingWork: "v0.1.55 — unique-TARGETID parent rebuild closed the gating item (Δ ≤ 0.70pp, conclusions unchanged; #15 CLOSED) → pod items (#16–19) → R26conf clean → arXiv (last, after P4)",
     },
   ],
   blockerTally: {
-    closed: 677, // 567 through R23conf + ~110 verified R24conf findings closed 2026-06-10
+    closed: 678, // 677 through R24conf + 1 substantive R25conf catch (P4 App A field-convention); R25conf otherwise CLEAN×2 (P4+P2), 93 P4 findings audited
     openBlockers: 0,
     openMajors: 0,
     openMinors: 0,

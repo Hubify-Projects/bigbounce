@@ -1,0 +1,142 @@
+{
+ "written_utc": "2026-06-10T09:55:17Z",
+ "script": "scripts/24_r24conf_pod_session.py",
+ "seed": 20260610,
+ "n_mc": 1000,
+ "item16_randoms_check": {
+  "status": "DATA-MISSING",
+  "searched": [
+   "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p5_desi_chirality/data",
+   "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p5_desi_chirality/data/desi_env",
+   "/Users/houstongolden/Desktop/CODE_2025/bigbounce/data",
+   "pod 5i2td3deu3hojr:/workspace (checked 2026-06-10; volume holds only c-series outputs)"
+  ],
+  "hits": [],
+  "note": "DESI DR1 random catalogs (per-tracer randoms-*.fits, ~tens of GB from NERSC/desidata) are not present locally or on the compute volume; the randoms/completeness-weighted delta rebuild remains OPEN. No invariance claim is made."
+ },
+ "item19_ztail_sensitivity": {
+  "filter": "ZWARN==0 & SPECTYPE==GALAXY & 0.01<z<2.0 (env_finder/config.yaml)",
+  "n_filtered_parent": 14622283,
+  "z_max_realized": 1.6978827736715651,
+  "n_in_1p7_to_2p0": 0,
+  "n_above_1p65": 20644,
+  "n_above_1p69": 3805,
+  "conclusion": "The realized 1.7<z<=2.0 tail of the filtered parent is EMPTY (n=0; max z = 1.6979), so both queued variants (drop tail / separate top shell) are exact no-ops: every shell assignment, the delta field, and all per-galaxy labels are unchanged from the published z-shell-corrected build."
+ },
+ "item17_phase2_stratified_lee": {
+  "stratification": "row-level label permutation within match_imaging_leg|desi_program strata (11 strata; scripts/18 convention)",
+  "statistic": "max over K=4 classes of |sigma_from_half| (scripts/17 T4b convention); joins are the superset per-cell joins of T4",
+  "per_cell": {
+   "R10_N256_L0.1": {
+    "obs_max_abs_sigma": 4.099816222366223,
+    "n_joined": 812793,
+    "p_lee_stratified": 0.45554445554445555,
+    "p_lee_free": 0.4675324675324675
+   },
+   "R10_N256_L0.3": {
+    "obs_max_abs_sigma": 4.215518109012571,
+    "n_joined": 812793,
+    "p_lee_stratified": 0.3706293706293706,
+    "p_lee_free": 0.38461538461538464
+   },
+   "R10_N256_L0": {
+    "obs_max_abs_sigma": 3.9978815420957203,
+    "n_joined": 812793,
+    "p_lee_stratified": 0.5394605394605395,
+    "p_lee_free": 0.5534465534465535
+   },
+   "R25_N256_L0.1": {
+    "obs_max_abs_sigma": 4.607436380059592,
+    "n_joined": 812793,
+    "p_lee_stratified": 0.15684315684315683,
+    "p_lee_free": 0.17782217782217782
+   },
+   "R25_N256_L0.3": {
+    "obs_max_abs_sigma": 4.422262237153467,
+    "n_joined": 812793,
+    "p_lee_stratified": 0.23076923076923078,
+    "p_lee_free": 0.2627372627372627
+   },
+   "R25_N256_L0": {
+    "obs_max_abs_sigma": 4.658355716765813,
+    "n_joined": 812793,
+    "p_lee_stratified": 0.13886113886113885,
+    "p_lee_free": 0.15684315684315683
+   },
+   "R50_N256_L0.1": {
+    "obs_max_abs_sigma": 4.1835791509639195,
+    "n_joined": 812793,
+    "p_lee_stratified": 0.38161838161838163,
+    "p_lee_free": 0.3936063936063936
+   },
+   "R50_N256_L0.3": {
+    "obs_max_abs_sigma": 4.0757199552102055,
+    "n_joined": 812793,
+    "p_lee_stratified": 0.4675324675324675,
+    "p_lee_free": 0.4915084915084915
+   },
+   "R50_N256_L0": {
+    "obs_max_abs_sigma": 4.264049743596749,
+    "n_joined": 812793,
+    "p_lee_stratified": 0.3176823176823177,
+    "p_lee_free": 0.34265734265734266
+   }
+  },
+  "global_max_stat": {
+   "all_9_cells": {
+    "obs": 4.658355716765813,
+    "p_stratified": 0.36063936063936064,
+    "p_free": 0.4005994005994006
+   },
+   "resolved_6_cells_Rs25_50": {
+    "obs": 4.658355716765813,
+    "p_stratified": 0.2677322677322677,
+    "p_free": 0.2917082917082917
+   },
+   "note": "global null propagates ONE parent permutation through all cells per draw (cross-cell correlations preserved)"
+  }
+ },
+ "item18_voidfinder_membership_definitions": {
+  "sample": "z<=0.24 matched primary deduped CW/CCW spirals (n=678,945); positions Mpc/h (scripts/17 C8 conventions)",
+  "n_holes": 101863,
+  "n_maximals": 3765,
+  "defA_any_hole_published": {
+   "void": {
+    "n": 57081,
+    "n_cw": 28339,
+    "cw_fraction": 0.49646992869781537,
+    "sigma_from_half": -1.686783172064744
+   },
+   "nonvoid": {
+    "n": 621864,
+    "n_cw": 309120,
+    "cw_fraction": 0.4970861796148354,
+    "sigma_from_half": -4.59558159014428
+   },
+   "delta_fcw_pp": -0.061625091702005586,
+   "two_sample_z_void_minus_nonvoid": -0.28181974060689474
+  },
+  "defB_maximal_sphere_interior": {
+   "void": {
+    "n": 20900,
+    "n_cw": 10498,
+    "cw_fraction": 0.5022966507177034,
+    "sigma_from_half": 0.6640458853114316
+   },
+   "nonvoid": {
+    "n": 658045,
+    "n_cw": 326961,
+    "cw_fraction": 0.49686723552340645,
+    "sigma_from_half": -5.0825953875938605
+   },
+   "delta_fcw_pp": 0.5429415194296905,
+   "two_sample_z_void_minus_nonvoid": 1.5455189401309122
+  },
+  "overlap": {
+   "n_in_both": 20900,
+   "n_A_only": 36181,
+   "n_B_only_outside_A": 0,
+   "note": "maximal spheres are holes themselves, so defB subset of defA up to numerical ties"
+  }
+ }
+}

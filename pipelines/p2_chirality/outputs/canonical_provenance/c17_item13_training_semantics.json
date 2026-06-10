@@ -1,0 +1,27 @@
+{
+ "item": "R24conf queue #13 (P4 OpenAI-M10) — 93.7%/94.9% accuracy semantics",
+ "written_utc": "2026-06-10",
+ "method": "provenance recovery from committed artifacts only (no numbers invented)",
+ "sources": {
+  "production_training_script": "pipelines/p2_chirality/train_v2_fast.py",
+  "production_results_artifact": "HF bamfai/galaxy-chirality-v2 v2_bias_audit.json",
+  "benchmark_report": "pipelines/p2_chirality/BENCHMARK_REPORT.md (sections 4.1, Limitations)"
+ },
+ "script_identification": "v2_bias_audit.json keys {val_accuracy, best_epoch, flip_swap_corr, flip_swap_err, rotation_avg, blank_ns_rate, blank_cw_rate, cw_frac_spirals, brightness_agreement, n_train, n_val, training_data} match the results dict written by train_v2_fast.py exactly; checkpoint filename chirality_model_v2_best.pt matches the released HF model file.",
+ "verified_semantics": {
+  "93.7_percent": {
+   "value_exact": 0.9368777275085449,
+   "definition": "best-epoch THREE-CLASS validation accuracy (CW/CCW/NOT_SPIRAL argmax) on the held-out random 80/20 split",
+   "best_epoch": 79,
+   "n_train": 21293,
+   "n_val": 5323,
+   "validation_augmentation": "NONE — validation forward passes use the plain transformed tensors (X_val); the flip-equivariance loss and flip augmentation apply to training batches only (train_v2_fast.py validation block)",
+   "early_stopping": "patience 15 on best validation ACCURACY (not loss), per train_v2_fast.py"
+  },
+  "94.9_percent": {
+   "definition": "CW per-class validation accuracy on the same un-augmented validation split (CCW 91.3%, NOT_SPIRAL 99.4%), per BENCHMARK_REPORT.md section 4.1",
+   "NOT": "a post-hoc no-augmentation re-evaluation of the 3-class accuracy; no artifact supporting an aug/no-aug 93.7/94.9 pair exists in the committed tree or the released HF artifacts"
+  }
+ },
+ "prior_tex_claim_disposition": "App B sentence 'Headline 93.7% three-class accuracy (with augmentation active); post-hoc evaluation without augmentation yields 94.9%' mis-attributed both numbers to augmentation state; corrected to the verified split/per-class semantics."
+}

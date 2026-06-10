@@ -95,7 +95,7 @@ def main() -> int:
                                     sharey=True)
     ylim = (0.43, 0.53)
     _draw(ax1, vweb, VWEB_ORDER, VWEB_COLORS,
-          "V-Web (canonical $R_s=25$\\,Mpc/$h$, $\\lambda_{\\rm th}=0$)\n"
+          "V-Web (canonical $R_s=25$ Mpc/$h$, $\\lambda_{\\rm th}=0$)\n"
           "$n=791{,}635$ chirality-relevant matched spirals", ylim)
     _draw(ax2, tempel.rename(columns={"tempel_class": "env_class"}),
           TEMPEL_ORDER, TEMPEL_COLORS,
@@ -103,7 +103,7 @@ def main() -> int:
           "$n=96{,}753$ Tempel-overlap matched spirals (declared parent)", ylim)
     # concordance annotation: like-for-like overlap filament concordance 0.29pp
     ax1.annotate(
-        "like-for-like filament concordance (overlap): $0.29$\\,pp ($\\sim$$0.5\\sigma$)",
+        "like-for-like filament concordance (overlap): $0.29$ pp ($\\sim$$0.5\\sigma$)",
         xy=(2, 0.498), xytext=(2.1, 0.461),
         fontsize=8.5, ha="left",
         arrowprops=dict(arrowstyle="->", color="#0369a1", lw=0.8),
@@ -114,7 +114,7 @@ def main() -> int:
                  arrowprops=dict(arrowstyle="->", color="#0369a1", lw=0.8))
     ax2.legend(loc="upper right", fontsize=8.5, frameon=True)
     fig.suptitle("V-Web vs Tempel FoF cross-validation: per-class CW fraction "
-                 "with 95\\% Jeffreys binomial CI",
+                 "with 95% Jeffreys binomial CI",
                  fontsize=11.5, y=0.99)
     fig.tight_layout()
     out = FIG_DIR / "fig_p5_vweb_vs_tempel_overlay.png"

@@ -15,35 +15,15 @@ Database file #1: chirality_catalog_paperNotes.bib
 Warning--I didn't find a database entry for "Shamir:2012"
 Warning--I didn't find a database entry for "Shamir:2020"
 Warning--I didn't find a database entry for "Shamir:2022"
-Warning--I didn't find a database entry for "Iye:2020"
+Warning--I didn't find a database entry for "Shamir:2022DESI"
+Warning--I didn't find a database entry for "Iye:2021"
 Warning--I didn't find a database entry for "Tadaki:2020"
 Warning--I didn't find a database entry for "Jia:2023"
-Warning--I didn't find a database entry for "Shamir:2022DESI"
 Warning--I didn't find a database entry for "Dey:2019"
 Warning--I didn't find a database entry for "Walmsley:2023"
 Warning--I didn't find a database entry for "Lintott:2008"
-Warning--I didn't find a database entry for "Bamford:2009"
-Warning--I didn't find a database entry for "Hart:2016"
 Warning--I didn't find a database entry for "Dosovitskiy:2020"
-Warning--I didn't find a database entry for "Walmsley:2023GZDESI"
-Warning--I didn't find a database entry for "Land:2008"
-Warning--I didn't find a database entry for "Hivon:2002"
 Warning--I didn't find a database entry for "Alonso:2019"
-Warning--I didn't find a database entry for "Gross:2010"
-Warning--I didn't find a database entry for "Iye:2026P6"
-Warning--I didn't find a database entry for "Davis:2014"
-Warning--I didn't find a database entry for "Hayes:2017"
-Warning--I didn't find a database entry for "Motloch:2021"
-Warning--I didn't find a database entry for "Yu:2020"
-Warning--I didn't find a database entry for "LueWangKamionkowski:1999"
-Warning--I didn't find a database entry for "Eskilt:2023"
-Warning--I didn't find a database entry for "Komatsu:2022"
-Warning--I didn't find a database entry for "Cahn:2021"
-Warning--I didn't find a database entry for "Philcox:2023"
-Warning--I didn't find a database entry for "Hou:2023"
-Warning--I didn't find a database entry for "Cabass:2023"
-Warning--I didn't find a database entry for "Ivezic:2019"
-Warning--I didn't find a database entry for "DESI:2016"
 Warning--I didn't find a database entry for "Astropy:2022"
 Warning--I didn't find a database entry for "Gorski:2005"
 Warning--I didn't find a database entry for "Zonca:2019"
@@ -66,7 +46,7 @@ Control: year (1) truncated
 Control: production of eprint (0) enabled
 You've used 2 entries,
             6079 wiz_defined-function locations,
-            1713 strings with 15955 characters,
+            1673 strings with 15505 characters,
 and the built_in function-call counts, 991 in all, are:
 = -- 12
 > -- 16
@@ -105,4 +85,4 @@ warning$ -- 1
 while$ -- 11
 width$ -- 0
 write$ -- 52
-(There were 40 warnings)
+(There were 20 warnings)

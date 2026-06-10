@@ -1,0 +1,557 @@
+{
+ "round": "2026-06-09_R23conf",
+ "paper": "P5",
+ "date": "2026-06-09",
+ "round_type": "internal_cross_vendor_confirmation_full5",
+ "pre_version": "v0.1.52",
+ "post_version": "v0.1.53-2026-06-09",
+ "vendors": [
+  "Claude (in-session, subscription)",
+  "OpenAI GPT-5 (methodology)",
+  "Gemini 2.5 Pro (cosmology)",
+  "Grok-4 (brutal)",
+  "Perplexity Sonar Pro (citations)",
+  "GPT-5-Pro (META review)"
+ ],
+ "truth_audit_source": "R23conf_P5_TRUTH_AUDIT.md",
+ "audit_note": "8 META + 55 synthesis rows audited (INSESSION M1-M3, m1-m8 closed pre-audit). New artifact 21_r23conf_meta_closures (unique-subset omnibus chi2, weighted HEALPix corr, Table IV density-definition proof, interior-buffer excision).",
+ "verdict_counts": {
+  "VERIFIED": 33,
+  "HOUSTON-DECISION": 5,
+  "OPINION": 6,
+  "STALE": 12,
+  "FALSIFIED": 7,
+  "CLOSED-PRIOR": 2,
+  "PARTIAL": 1
+ },
+ "findings": [
+  {
+   "id": "META-E1",
+   "reviewer": "META_REVIEW_gpt5pro",
+   "severity": "ESSENTIAL",
+   "verdict": "VERIFIED",
+   "summary": "R_s=10 Mpc/h cells under-resolved on 25.9 Mpc/h cells (256³); robustness claim invalid there",
+   "disposition": "Closed via reviewer option (a): §VII grid-resolution caveat added — R_s=10 cells below grid sampling, retained only as degenerate near-unsmoothed limit, exclud…"
+  },
+  {
+   "id": "META-M2",
+   "reviewer": "META_REVIEW_gpt5pro",
+   "severity": "MAJOR",
+   "verdict": "VERIFIED",
+   "summary": "Zero-padded FFT Poisson on masked volume; canonical run has no boundary control",
+   "disposition": "Interior-buffer excision applied to canonical labels (boundary flag from z-shell geometry): 782,015/783,820 retained; per-class f_CW shifts ≤0.11 pp (void), ≤0…"
+  },
+  {
+   "id": "META-M3",
+   "reviewer": "META_REVIEW_gpt5pro",
+   "severity": "MAJOR",
+   "verdict": "VERIFIED",
+   "summary": "\"smoothed log-density\" vs linear-density inconsistency in Table IV",
+   "disposition": "Exact recompute proves Table IV's ρ̄ column IS mean log₁₀(1+δ_smooth) (cluster 1.548/1.804/2.006/2.214 ≡ published 1.55/1.80/2.01/2.21; n and σ exact). Caption…"
+  },
+  {
+   "id": "META-M4",
+   "reviewer": "META_REVIEW_gpt5pro",
+   "severity": "MAJOR",
+   "verdict": "VERIFIED",
+   "summary": "Omnibus 4×2 χ² on duplicate-bearing parent violates independence",
+   "disposition": "Row-level χ²=3.5469/p=0.3147 reproduced exactly; unique-TARGETID subset (783,820): χ²=3.00, p=0.39; excluding 79 conflicted TARGETIDs: χ²=2.92, p=0.41. Both re…"
+  },
+  {
+   "id": "META-m5",
+   "reviewer": "META_REVIEW_gpt5pro",
+   "severity": "MINOR",
+   "verdict": "VERIFIED",
+   "summary": "Unweighted Pearson on heteroscedastic per-pixel σ misleading",
+   "disposition": "Reproduced r=+0.00568/p=0.879 (727 pixels) exactly, then N_pix-weighted r_w=+0.004 (p=0.91, n_eff≈683) and Spearman ρ=+0.020 (p=0.59) — conclusion unchanged; a…"
+  },
+  {
+   "id": "META-m6",
+   "reviewer": "META_REVIEW_gpt5pro",
+   "severity": "MINOR",
+   "verdict": "VERIFIED",
+   "summary": "Convergence test (R_s=25 only) doesn't validate R_s=10",
+   "disposition": "Sentence added to §IX.A \"Grid-resolution convergence\": R_s=10 cells below 256³ sampling, outside tested convergence regime, excluded from robustness claim."
+  },
+  {
+   "id": "META-m7",
+   "reviewer": "META_REVIEW_gpt5pro",
+   "severity": "MINOR",
+   "verdict": "VERIFIED",
+   "summary": "Holes (max 24.5 Mpc/h) vs maximal voids (10–32 Mpc/h) not cross-walked",
+   "disposition": "Catalog-layer clarifier added §VIII.E: membership tests use hole-level spheres, not maximal-void effective spheres; distinct max radii noted."
+  },
+  {
+   "id": "META-N8",
+   "reviewer": "META_REVIEW_gpt5pro",
+   "severity": "NIT",
+   "verdict": "VERIFIED",
+   "summary": "FFT k units/normalization + CIC deconvolution unstated",
+   "disposition": "§IV.A step 9: k_i = 2πn_i/L (scipy fftfreq×2π/cell, physical h/Mpc), CIC window NOT deconvolved, classification uses eigenvalue order/sign only so λ_th defined…"
+  },
+  {
+   "id": "Gemini E1 / Perp m3, n3 / OpenAI E2 (remove \"earlier draft / withdrawn / version tag\" language)",
+   "reviewer": "Gemini_cosmology",
+   "severity": "ESSENTIAL",
+   "verdict": "HOUSTON-DECISION",
+   "summary": "remove \"earlier draft / withdrawn / version tag\" language",
+   "disposition": "Deliberate disclosure policy — kept (standing rule). Consolidation option (Claude N2) also Houston's call."
+  },
+  {
+   "id": "Gemini M1 / Perp M2 (length/restructure, move §IX–X to appendix)",
+   "reviewer": "Gemini_cosmology",
+   "severity": "MAJOR",
+   "verdict": "OPINION",
+   "summary": "length/restructure, move §IX–X to appendix",
+   "disposition": "Structural editorial preference."
+  },
+  {
+   "id": "Gemini m1 (σ_from_half circular naming)",
+   "reviewer": "Gemini_cosmology",
+   "severity": "MINOR",
+   "verdict": "VERIFIED",
+   "summary": "σ_from_half circular naming",
+   "disposition": "§V now states it is the standard one-sample binomial z-score vs p=0.5, name kept to distinguish from σ_pred."
+  },
+  {
+   "id": "Gemini N1 (title length)",
+   "reviewer": "Gemini_cosmology",
+   "severity": "NIT",
+   "verdict": "HOUSTON-DECISION",
+   "summary": "title length",
+   "disposition": "Title change is author prerogative."
+  },
+  {
+   "id": "Gemini N2 (abstract footnote placement)",
+   "reviewer": "Gemini_cosmology",
+   "severity": "NIT",
+   "verdict": "STALE",
+   "summary": "abstract footnote placement",
+   "disposition": "Non-comparability now in abstract body text."
+  },
+  {
+   "id": "Grok E1 (Δf=0.0007 never recomputed in body)",
+   "reviewer": "Grok_brutal",
+   "severity": "ESSENTIAL",
+   "verdict": "FALSIFIED",
+   "summary": "Δf=0.0007 never recomputed in body",
+   "disposition": "Body §VIII.A/Table VII gives f 0.4964 vs 0.4971, Δ=+0.0007 with full method; committed driver artifact cited."
+  },
+  {
+   "id": "Grok E2 (four σ side-by-side without qualifier)",
+   "reviewer": "Grok_brutal",
+   "severity": "ESSENTIAL",
+   "verdict": "STALE",
+   "summary": "four σ side-by-side without qualifier",
+   "disposition": "Abstract states σ_from_half scales as √n and is \"not mutually comparable\" immediately after the four values."
+  },
+  {
+   "id": "Grok E3 / bib audit (DESIVAST \"ApJ 982, 38 (2025)\" = future volume; Ref [3] no arXiv; Ref [11] preprint)",
+   "reviewer": "Grok_brutal",
+   "severity": "ESSENTIAL",
+   "verdict": "FALSIFIED",
+   "summary": "DESIVAST \"ApJ 982, 38 (2025)\" = future volume; Ref [3] no arXiv; Ref [11] preprint",
+   "disposition": "2025 is the past (it is June 2026) — auto-falsify. Companion-paper citability = publication-order decision."
+  },
+  {
+   "id": "Grok M1 / Perp E1, E3, M1 (load-bearing unpublished companions; catalog black box)",
+   "reviewer": "Grok_brutal",
+   "severity": "MAJ/ESS",
+   "verdict": "HOUSTON-DECISION",
+   "summary": "load-bearing unpublished companions; catalog black box",
+   "disposition": "Publication-order/strategy; P5 already labels them \"not yet peer-reviewed\" at first use."
+  },
+  {
+   "id": "Grok M2 (void bin n=428 powerless; flag in caption)",
+   "reviewer": "Grok_brutal",
+   "severity": "MAJOR",
+   "verdict": "STALE",
+   "summary": "void bin n=428 powerless; flag in caption",
+   "disposition": "Abstract + §VI.A declare the ±4.8 pp 2σ floor and survey-edge caveat; DESIVAST n=56,981 is the controlling void constraint."
+  },
+  {
+   "id": "Grok M3 (σ_pred covariance across classes)",
+   "reviewer": "Grok_brutal",
+   "severity": "MAJOR",
+   "verdict": "OPINION",
+   "summary": "σ_pred covariance across classes",
+   "disposition": "Monopole is a global offset applied per class; classes are disjoint partitions (multinomial covariance is second-order at f≈0.5). No false statement identified."
+  },
+  {
+   "id": "Grok N2 (Fig 1 \"DESI z\" ambiguity)",
+   "reviewer": "Grok_brutal",
+   "severity": "NIT",
+   "verdict": "OPINION",
+   "summary": "Fig 1 \"DESI z\" ambiguity",
+   "disposition": "DR1 redshifts are spectroscopic by construction (§III.B ZWARN=0 spectro sample)."
+  },
+  {
+   "id": "Grok NIT1 (\"canonical canonical\", \"V-Web V-Web\")",
+   "reviewer": "Grok_brutal",
+   "severity": "NIT",
+   "verdict": "FALSIFIED",
+   "summary": "\"canonical canonical\", \"V-Web V-Web\"",
+   "disposition": "grep: neither doubled phrase exists in source — PDF text-extraction artifact."
+  },
+  {
+   "id": "Claude N1 / OpenAI M5 / Perp n1 (title \"T-Web\" vs body reserving \"T-Web\" for external)",
+   "reviewer": "Claude_brutal_INSESSION",
+   "severity": "MINOR",
+   "verdict": "VERIFIED",
+   "summary": "title \"T-Web\" vs body reserving \"T-Web\" for external",
+   "disposition": "§IV.A nomenclature reminder harmonized: \"T-Web\" = the recipe (as in the title) + external implementations; \"V-Web\" = our implementation."
+  },
+  {
+   "id": "Claude N2 (withdrawal-note density)",
+   "reviewer": "Claude_brutal_INSESSION",
+   "severity": "MINOR",
+   "verdict": "HOUSTON-DECISION",
+   "summary": "withdrawal-note density",
+   "disposition": "See Gemini E1 row."
+  },
+  {
+   "id": "Claude N3 (Table VIII Δf_CW sign convention undefined)",
+   "reviewer": "Claude_brutal_INSESSION",
+   "severity": "MINOR",
+   "verdict": "VERIFIED",
+   "summary": "Table VIII Δf_CW sign convention undefined",
+   "disposition": "Caption now defines Δf_CW ≡ f_non-void − f_void (verified against all three rows)."
+  },
+  {
+   "id": "Claude N4 (31.7% twice in §X — copy slip?)",
+   "reviewer": "Claude_brutal_INSESSION",
+   "severity": "MINOR",
+   "verdict": "VERIFIED",
+   "summary": "31.7% twice in §X — copy slip?",
+   "disposition": "Artifact `analysis_astra_per_object/summary.json`: ASTRA sheet 7,980/25,186 = 31.68%, V-Web filament 7,972/25,186 = 31.65% — genuine coincidence; clarifying pa…"
+  },
+  {
+   "id": "OpenAI E1 (Eq. (1) algebra \"∆fCW 0.5/√N\")",
+   "reviewer": "OpenAI_methodology",
+   "severity": "ESSENTIAL",
+   "verdict": "FALSIFIED",
+   "summary": "Eq. (1) algebra \"∆fCW 0.5/√N\"",
+   "disposition": "Source is `\\frac{\\Delta f_{\\rm CW}}{0.5/\\sqrt{N}} = 2\\Delta f_{\\rm CW}\\sqrt{N}` — correct identity; extraction flattening."
+  },
+  {
+   "id": "OpenAI E3 (mask dilation unspecified)",
+   "reviewer": "OpenAI_methodology",
+   "severity": "ESSENTIAL",
+   "verdict": "VERIFIED",
+   "summary": "mask dilation unspecified",
+   "disposition": "§IV.A step 5: scipy binary_dilation, face-connected cross element, ⌈R_s/cell⌉+1 = 2 iterations (code: `01_compute_vweb.py` L291–292)."
+  },
+  {
+   "id": "OpenAI E4 / Perp M3 (post-hoc primary path)",
+   "reviewer": "OpenAI_methodology",
+   "severity": "ESS/MAJ",
+   "verdict": "STALE",
+   "summary": "post-hoc primary path",
+   "disposition": "§V.B declares the post-hoc designation explicitly and bounds the forking-paths concern; all paths reported."
+  },
+  {
+   "id": "OpenAI E5 / m12 (SPECTYPE/z-window §III.B vs §IV.A)",
+   "reviewer": "OpenAI_methodology",
+   "severity": "MAJOR",
+   "verdict": "STALE",
+   "summary": "SPECTYPE/z-window §III.B vs §IV.A",
+   "disposition": "§III.B already carries the \"SPECTYPE==GALAXY and the V-Web finder's tighter window\" clarifier (v0.1.51 OAI-E3 closure)."
+  },
+  {
+   "id": "OpenAI E6 (match-radius sweep 0.5″ n>baseline)",
+   "reviewer": "OpenAI_methodology",
+   "severity": "MAJOR",
+   "verdict": "CLOSED-PRIOR",
+   "summary": "match-radius sweep 0.5″ n>baseline",
+   "disposition": "INSESSION m5 (counting-convention caption)."
+  },
+  {
+   "id": "OpenAI M1 (\"RSD-immune\" too strong)",
+   "reviewer": "OpenAI_methodology",
+   "severity": "MAJOR",
+   "verdict": "VERIFIED",
+   "summary": "\"RSD-immune\" too strong",
+   "disposition": "§VIII.A reworded to \"RSD-insensitive (rather than strictly immune)… membership flips for spirals near hole boundaries are not excluded, but the displacement sc…"
+  },
+  {
+   "id": "OpenAI M2 (multiple-testing narrative scattered)",
+   "reviewer": "OpenAI_methodology",
+   "severity": "MAJOR",
+   "verdict": "STALE",
+   "summary": "multiple-testing narrative scattered",
+   "disposition": "§VII \"Per-cell significance framework\" subsection ties range→floor→σ_vs_monopole→LEE explicitly."
+  },
+  {
+   "id": "OpenAI M3 (≥0.7 row vs table 0.4/0.6/0.8)",
+   "reviewer": "OpenAI_methodology",
+   "severity": "MAJOR",
+   "verdict": "CLOSED-PRIOR",
+   "summary": "≥0.7 row vs table 0.4/0.6/0.8",
+   "disposition": "INSESSION m5."
+  },
+  {
+   "id": "OpenAI M4 (show explicit two-sample z for 0.29 pp pair)",
+   "reviewer": "OpenAI_methodology",
+   "severity": "MAJOR",
+   "verdict": "VERIFIED",
+   "summary": "show explicit two-sample z for 0.29 pp pair",
+   "disposition": "§IX.B now gives |z| = 0.49 pooled two-proportion (pooled≈unpooled at p̂≈0.5); recomputed from C2 artifact counts (12,360/6,155 vs 16,701/8,365)."
+  },
+  {
+   "id": "OpenAI M6 (Bonferroni-9 ≈2.77 not 3.02)",
+   "reviewer": "OpenAI_methodology",
+   "severity": "MAJOR",
+   "verdict": "VERIFIED",
+   "summary": "Bonferroni-9 ≈2.77 not 3.02",
+   "disposition": "Both occurrences (§VII.A, §VII.B) corrected to 2.77 (= √2 erfc⁻¹(0.05/9), Eq. (3)); max residual 1.87 still below threshold so all claims survive. Line 1983's …"
+  },
+  {
+   "id": "OpenAI M7 (free-shuffle p re-draw discrepancy vs fixed seed)",
+   "reviewer": "OpenAI_methodology",
+   "severity": "MAJOR",
+   "verdict": "VERIFIED",
+   "summary": "free-shuffle p re-draw discrepancy vs fixed seed",
+   "disposition": "§VI.E clarifier: re-draws use RNG streams distinct from the deterministic-seed headline runs; differences within N_MC=1,000 permutation standard error."
+  },
+  {
+   "id": "OpenAI M8 (position-shuffle never reported)",
+   "reviewer": "OpenAI_methodology",
+   "severity": "MAJOR",
+   "verdict": "VERIFIED",
+   "summary": "position-shuffle never reported",
+   "disposition": "§V now states label- and position-shuffle induce the identical permutation null for per-bin count statistics; all quoted p-values are label-shuffle; position-s…"
+  },
+  {
+   "id": "OpenAI M9 (\"agree to within ~10%\" unsubstantiated)",
+   "reviewer": "OpenAI_methodology",
+   "severity": "MAJOR",
+   "verdict": "VERIFIED",
+   "summary": "\"agree to within ~10%\" unsubstantiated",
+   "disposition": "Replaced with the verifiable statement: both approaches return the same verdict on every scan (no scan crosses either threshold)."
+  },
+  {
+   "id": "OpenAI m1 (define NS in Table I)",
+   "reviewer": "OpenAI_methodology",
+   "severity": "MINOR",
+   "verdict": "VERIFIED",
+   "summary": "define NS in Table I",
+   "disposition": "Table I row now glosses NS as Paper IV's `not_spiral` class (verified against P4 source `\\newcommand{\\NS}{\\textsc{not\\_spiral}}`)."
+  },
+  {
+   "id": "OpenAI m2 (reiterate σ non-comparability at Table IV)",
+   "reviewer": "OpenAI_methodology",
+   "severity": "MINOR",
+   "verdict": "VERIFIED",
+   "summary": "reiterate σ non-comparability at Table IV",
+   "disposition": "Added to the rewritten Table IV caption."
+  },
+  {
+   "id": "OpenAI m3 (Table VI range dominated by void noise)",
+   "reviewer": "OpenAI_methodology",
+   "severity": "MINOR",
+   "verdict": "VERIFIED",
+   "summary": "Table VI range dominated by void noise",
+   "disposition": "Added to Table VI caption."
+  },
+  {
+   "id": "OpenAI m4 (no per-galaxy cross-match vs Ref. [11])",
+   "reviewer": "OpenAI_methodology",
+   "severity": "MINOR",
+   "verdict": "VERIFIED",
+   "summary": "no per-galaxy cross-match vs Ref. [11]",
+   "disposition": "Sentence added §IX.C: comparison purely on volume fractions."
+  },
+  {
+   "id": "OpenAI m5 (HEALPix pixel area note)",
+   "reviewer": "OpenAI_methodology",
+   "severity": "MINOR",
+   "verdict": "VERIFIED",
+   "summary": "HEALPix pixel area note",
+   "disposition": "§VIII.E: NSIDE=16 equal-area ≈13.4 deg²/pixel (corrected from reviewer's 3.66, which is the NSIDE=32 value)."
+  },
+  {
+   "id": "OpenAI m6 (\"2563\" notation)",
+   "reviewer": "OpenAI_methodology",
+   "severity": "MINOR",
+   "verdict": "FALSIFIED",
+   "summary": "\"2563\" notation",
+   "disposition": "Source uses $256^3$ throughout; extraction artifact."
+  },
+  {
+   "id": "OpenAI m7 (Table VII add n_CW)",
+   "reviewer": "OpenAI_methodology",
+   "severity": "MINOR",
+   "verdict": "VERIFIED",
+   "summary": "Table VII add n_CW",
+   "disposition": "n_CW column added: 28,286 / 309,173 (exact from artifact fractions × n)."
+  },
+  {
+   "id": "OpenAI m8 (RSD 5 vs 5–8 Mpc/h)",
+   "reviewer": "OpenAI_methodology",
+   "severity": "MINOR",
+   "verdict": "VERIFIED",
+   "summary": "RSD 5 vs 5–8 Mpc/h",
+   "disposition": "The two numbers cover different z-ranges; §XIII now cross-references: ≲5 at z≲0.24, upper end at high z."
+  },
+  {
+   "id": "OpenAI m9 (\"largest matched-sample\" claim)",
+   "reviewer": "OpenAI_methodology",
+   "severity": "MINOR",
+   "verdict": "STALE",
+   "summary": "\"largest matched-sample\" claim",
+   "disposition": "Already qualified \"to our knowledge … on the chirality-relevant subsample defined here\"."
+  },
+  {
+   "id": "OpenAI m10 (ASTRA Table XII per-class n)",
+   "reviewer": "OpenAI_methodology",
+   "severity": "MINOR",
+   "verdict": "VERIFIED",
+   "summary": "ASTRA Table XII per-class n",
+   "disposition": "Per-class n column added from `cw_fraction_by_env_astra.csv` (argmax counts; entropy-weighted n_eff)."
+  },
+  {
+   "id": "OpenAI m11 (+0.18% denominator)",
+   "reviewer": "OpenAI_methodology",
+   "severity": "MINOR",
+   "verdict": "VERIFIED",
+   "summary": "+0.18% denominator",
+   "disposition": "§VIII.B: \"+0.18% of the 56,981-galaxy void class\"."
+  },
+  {
+   "id": "OpenAI m13 (n_pix definition Table V)",
+   "reviewer": "OpenAI_methodology",
+   "severity": "MINOR",
+   "verdict": "VERIFIED",
+   "summary": "n_pix definition Table V",
+   "disposition": "Caption: occupied (data-containing) pixels, not full sky."
+  },
+  {
+   "id": "OpenAI m14 (|σ_void|≤1.35 not tabulated)",
+   "reviewer": "OpenAI_methodology",
+   "severity": "MINOR",
+   "verdict": "VERIFIED",
+   "summary": "|σ_void|≤1.35 not tabulated",
+   "disposition": "Nine per-cell |σ_void| values added to Table VI caption from `17_v0151_closure_recomputes.json` (max 1.35 confirmed)."
+  },
+  {
+   "id": "OpenAI m15 (z-shell per-class counts for χ²=0.11)",
+   "reviewer": "OpenAI_methodology",
+   "severity": "MINOR",
+   "verdict": "VERIFIED",
+   "summary": "z-shell per-class counts for χ²=0.11",
+   "disposition": "Per-class n already in §IX.A prose; per-class n_CW (2,164/76,777/234,990/90,180) added at the χ² sentence (artifact-exact)."
+  },
+  {
+   "id": "OpenAI n1 (define pp)",
+   "reviewer": "OpenAI_methodology",
+   "severity": "NIT",
+   "verdict": "VERIFIED",
+   "summary": "define pp",
+   "disposition": "Abstract first use: \"0.26 pp (percentage points…)\"."
+  },
+  {
+   "id": "OpenAI n2/n3/n4/n5 (primes, Mpc/h style, asides, \"χ 2\")",
+   "reviewer": "OpenAI_methodology",
+   "severity": "NIT",
+   "verdict": "FALSIFIED",
+   "summary": "primes, Mpc/h style, asides, \"χ 2\"",
+   "disposition": "Source uses $1''$, $\\chi^2$ correctly (extraction artifacts); Mpc/h vs h⁻¹Mpc mixed usage = style preference; long asides = opinion."
+  },
+  {
+   "id": "Perp E2 / M9 / E7, E6 (σ mixing; σ map at n=428 wrong)",
+   "reviewer": "Perplexity_citations",
+   "severity": "ESS/MAJ",
+   "verdict": "FALSIFIED",
+   "summary": "σ mixing; σ map at n=428 wrong",
+   "disposition": "E6's −0.85 is arithmetically wrong: 2·0.0164·√428 = 0.679 ≈ the published −0.68 (also OpenAI's spot-check −0.676 and Claude's all-clear). Comparability reminde…"
+  },
+  {
+   "id": "Perp M4 (bright/dark overinterpretation)",
+   "reviewer": "Perplexity_citations",
+   "severity": "MAJOR",
+   "verdict": "STALE",
+   "summary": "bright/dark overinterpretation",
+   "disposition": "Abstract + §VI.D explicitly state the data \"do not allow us to cleanly partition\" the two hypotheses; no claim of detection."
+  },
+  {
+   "id": "Perp M5 (RSD quantitative treatment)",
+   "reviewer": "Perplexity_citations",
+   "severity": "MAJOR",
+   "verdict": "PARTIAL",
+   "summary": "RSD quantitative treatment",
+   "disposition": "Qualitative scaling + displacement bound present; a reconstruction-based quantitative RSD rerun queued (pod)."
+  },
+  {
+   "id": "Perp M6 (0/6 V-Web purity small-sample)",
+   "reviewer": "Perplexity_citations",
+   "severity": "MAJOR",
+   "verdict": "STALE",
+   "summary": "0/6 V-Web purity small-sample",
+   "disposition": "Text already labels it an n=6 supplement to the n=56,981 re-projection."
+  },
+  {
+   "id": "Perp M7 (abstract \"~2σ\" void wording)",
+   "reviewer": "Perplexity_citations",
+   "severity": "MAJOR",
+   "verdict": "VERIFIED",
+   "summary": "abstract \"~2σ\" void wording",
+   "disposition": "Abstract rewritten: ±4.8 pp = 2σ binomial half-width at n=428; observed void offset −0.68σ stated inline — ambiguity removed."
+  },
+  {
+   "id": "Perp M8 (σ→p mapping for \"no 3σ\" claims)",
+   "reviewer": "Perplexity_citations",
+   "severity": "MAJOR",
+   "verdict": "STALE",
+   "summary": "σ→p mapping for \"no 3σ\" claims",
+   "disposition": "§V.A LEE framework + per-cell significance section give the mapping; headline claims cite both thresholds."
+  },
+  {
+   "id": "Perp E4 / m5 (toy EFT segregation)",
+   "reviewer": "Perplexity_citations",
+   "severity": "ESS/MIN",
+   "verdict": "STALE",
+   "summary": "toy EFT segregation",
+   "disposition": "App A opens with \"toy parametrization introduced in this work… not a quantitative ALP-coupling exclusion\" (v0.1.40/41 closures)."
+  },
+  {
+   "id": "Perp E5 (repo paths in data availability)",
+   "reviewer": "Perplexity_citations",
+   "severity": "ESSENTIAL",
+   "verdict": "HOUSTON-DECISION",
+   "summary": "repo paths in data availability",
+   "disposition": "Internal-path artifact convention is the project's deliberate reproducibility scheme; DOI minting at release."
+  },
+  {
+   "id": "Perp m1 (walk-through arithmetic)",
+   "reviewer": "Perplexity_citations",
+   "severity": "MINOR",
+   "verdict": "STALE",
+   "summary": "walk-through arithmetic",
+   "disposition": "σ_from_half and σ_pred formulas explicit in §V; abstract now defines pp."
+  },
+  {
+   "id": "Perp m2 (informal language)",
+   "reviewer": "Perplexity_citations",
+   "severity": "MINOR",
+   "verdict": "OPINION",
+   "summary": "informal language",
+   "disposition": "Style."
+  },
+  {
+   "id": "Perp m4 (abstract claims → table refs)",
+   "reviewer": "Perplexity_citations",
+   "severity": "MINOR",
+   "verdict": "OPINION",
+   "summary": "abstract claims → table refs",
+   "disposition": "All numbers present in body tables (V, VI, §VI.C)."
+  },
+  {
+   "id": "Perp n2 (redundant phrasing)",
+   "reviewer": "Perplexity_citations",
+   "severity": "NIT",
+   "verdict": "OPINION",
+   "summary": "redundant phrasing",
+   "disposition": "Style."
+  }
+ ]
+}

@@ -1,0 +1,588 @@
+{
+ "round": "2026-06-09_R23conf",
+ "paper": "P2",
+ "date": "2026-06-09",
+ "round_type": "internal_cross_vendor_confirmation_full5",
+ "pre_version": "v1.7.45",
+ "post_version": "v1.7.46",
+ "vendors": [
+  "Claude (in-session, subscription)",
+  "OpenAI GPT-5 (methodology)",
+  "Gemini 2.5 Pro (cosmology)",
+  "Grok-4 (brutal)",
+  "Perplexity Sonar Pro (citations)",
+  "GPT-5-Pro (META review)"
+ ],
+ "truth_audit_source": "R23conf_P2_TRUTH_AUDIT.md",
+ "audit_note": "73 audited rows: VERIFIED 16 / PARTIAL 12 / STALE 24 / FALSIFIED 7 / OPINION 12 / HOUSTON-DECISION 2 (lead pre-closed OpenAI E1/E2/E4/E5/E6/M2/M4/M6/M7/M8/M9 + Claude E1/M1/m1-m4/N2 before this table). New artifact c9j_bf_template_rescale.",
+ "verdict_counts": {
+  "HOUSTON-DECISION": 2,
+  "STALE": 24,
+  "VERIFIED": 16,
+  "PARTIAL": 12,
+  "FALSIFIED": 7,
+  "OPINION": 9
+ },
+ "findings": [
+  {
+   "id": "E3",
+   "reviewer": "OpenAI_methodology",
+   "severity": "ESSENTIAL",
+   "verdict": "HOUSTON-DECISION",
+   "summary": "Correction-note/version-history prose in body (§IX.D, tab:gr caption)",
+   "disposition": "Deliberate transparent disclosure of the withdrawn 9.9σ FW-1 artifact. NOT removed."
+  },
+  {
+   "id": "E7",
+   "reviewer": "OpenAI_methodology",
+   "severity": "ESSENTIAL",
+   "verdict": "STALE",
+   "summary": "\"0.500±0.001 reported in Sec II.C and Table I\" but Table I has no ratios",
+   "disposition": "Lead's M9 closure reframed the half-ratio as the in-in operator identity (App. A.1) + c9i artifact; abstract no longer claims per-configuration ratios in Table…"
+  },
+  {
+   "id": "E8",
+   "reviewer": "OpenAI_methodology",
+   "severity": "ESSENTIAL",
+   "verdict": "VERIFIED",
+   "summary": "\">4σ null\" conflicts with paper's own 3–5σ post-budget envelope",
+   "disposition": "Null-exclusion arithmetic is symmetric to detection. Abstract L226: \">4σ\" → \"same ~3–5σ post-systematic-budget level as a detection (5.1–5.5σ pre-budget)\". Bod…"
+  },
+  {
+   "id": "E9",
+   "reviewer": "OpenAI_methodology",
+   "severity": "ESSENTIAL",
+   "verdict": "PARTIAL",
+   "summary": "Table IV 5.25σ vs 2.63σ \"contradicts convention independence\"",
+   "disposition": "Lead's E5 closure proved the narrow invariance; residual mislabeling fixed at L714: the two rows differ by physical time-ordering content (−2 Im doubling), NOT…"
+  },
+  {
+   "id": "M1",
+   "reviewer": "OpenAI_methodology",
+   "severity": "MAJOR",
+   "verdict": "PARTIAL",
+   "summary": "2D KSW CMB estimator used for 3D LSS injection test",
+   "disposition": "Already scoped as CMB-weighted consistency check (lead E4). Strengthened L286: \"two-dimensional flat-sky CMB-style estimator --- not the three-dimensional gala…"
+  },
+  {
+   "id": "M3",
+   "reviewer": "OpenAI_methodology",
+   "severity": "MAJOR",
+   "verdict": "VERIFIED",
+   "summary": "10–20% anomaly-tracer improvement lacks forecast",
+   "disposition": "Text already had the shot-noise upper-bound caveat (§IV); added explicit cross-pointer at the claim site L372: \"the quoted gain is an upper bound pending the s…"
+  },
+  {
+   "id": "M5",
+   "reviewer": "OpenAI_methodology",
+   "severity": "MAJOR",
+   "verdict": "PARTIAL",
+   "summary": "MC ensembles: no convergence/uncertainty on BF",
+   "disposition": "Closed-form is primary (lead's Table III rebuild). Added at L414: closed-form values are deterministic; c9g JSON reports realization-marginalized mean/median/g…"
+  },
+  {
+   "id": "M10",
+   "reviewer": "OpenAI_methodology",
+   "severity": "MAJOR",
+   "verdict": "PARTIAL",
+   "summary": "Figure axes/units/definitions",
+   "disposition": "All 6 figures visually inspected. fig1/fig2/fig3/fig5/bphi: axes + units present (kmin in h/Mpc, σ in σ-units, fNL dimensionless). Caption-level gaps fixed: fi…"
+  },
+  {
+   "id": "M11",
+   "reviewer": "OpenAI_methodology",
+   "severity": "MAJOR",
+   "verdict": "VERIFIED",
+   "summary": "P used for degree-9 polynomial AND power spectrum",
+   "disposition": "L262: three-argument P = polynomial only; power spectra always carry field subscript + single argument (P_ζ(k)/P_Φ(k)). Abstract template → B_ζ^local with P_ζ(…"
+  },
+  {
+   "id": "M12",
+   "reviewer": "OpenAI_methodology",
+   "severity": "MAJOR",
+   "verdict": "STALE",
+   "summary": "\"radius 50 ≈ 7×‖c_ref‖\" false + garbled",
+   "disposition": "Current L272: \"approximately 0.7× ... (‖c_ref‖ ≈ 73)\" — 50/73 = 0.68 ✓; text reads cleanly."
+  },
+  {
+   "id": "M13",
+   "reviewer": "OpenAI_methodology",
+   "severity": "MAJOR",
+   "verdict": "PARTIAL",
+   "summary": "Photo-z 0.70→0.74 claim lacks derivation/citation",
+   "disposition": "Pullen & Hirata + Giannantonio citations present; no committed script found → provenance softened L538: \"A simplified Fisher degradation estimate indicates\"."
+  },
+  {
+   "id": "M14",
+   "reviewer": "OpenAI_methodology",
+   "severity": "MAJOR",
+   "verdict": "VERIFIED",
+   "summary": "Eq.(2) grouping/dimensions unclear",
+   "disposition": "Added after Eq.(2) (L266): Σᵢkᵢ³ defined; degree bookkeeping 9−6−3=0 shown; explicit \"no cancellation of P occurs between Eqs.(1) and (2)\" (also inoculates MET…"
+  },
+  {
+   "id": "M15",
+   "reviewer": "OpenAI_methodology",
+   "severity": "MAJOR",
+   "verdict": "FALSIFIED",
+   "summary": "\"four-vertex evaluation discussed in Sec II.C\" — wrong cross-ref",
+   "disposition": "§II.C (sec:assumptions) DOES contain it: \"Determining the precise coefficient requires evaluating all four cubic-action integrals simultaneously with numerical…"
+  },
+  {
+   "id": "m1",
+   "reviewer": "OpenAI_methodology",
+   "severity": "MINOR",
+   "verdict": "STALE",
+   "summary": "Garbled \"0.Theradius...\" text",
+   "disposition": "Same locus as M12/Claude E1 (lead-closed); L272 clean."
+  },
+  {
+   "id": "m2",
+   "reviewer": "OpenAI_methodology",
+   "severity": "MINOR",
+   "verdict": "VERIFIED",
+   "summary": "Internal file names in prose",
+   "disposition": "Prose mentions of c9h JSON (L282) and phase3 JSON (L356) replaced with pointers; all named artifacts now listed in Data and Code Availability (L628). Footnote/…"
+  },
+  {
+   "id": "m3",
+   "reviewer": "OpenAI_methodology",
+   "severity": "MINOR",
+   "verdict": "VERIFIED",
+   "summary": "Missing kmin, kmax, cosmology",
+   "disposition": "Verified in `null_space_analysis.py`: overlap computed in dimensionless ratio coordinates (23,098 = exact count of the masked grid) — scale-free, no physical k…"
+  },
+  {
+   "id": "m4",
+   "reviewer": "OpenAI_methodology",
+   "severity": "MINOR",
+   "verdict": "STALE",
+   "summary": "Frame nomenclature in conclusion",
+   "disposition": "Conclusion fully restructured (v1.7.42 GEM-m2): gauge-frame = observable, CFC = separate theoretical point."
+  },
+  {
+   "id": "m5",
+   "reviewer": "OpenAI_methodology",
+   "severity": "MINOR",
+   "verdict": "VERIFIED",
+   "summary": "Clarify what P(k) is in abstract template",
+   "disposition": "Abstract → P_ζ (curvature, matching App. A mapping). L226."
+  },
+  {
+   "id": "m6",
+   "reviewer": "OpenAI_methodology",
+   "severity": "MINOR",
+   "verdict": "OPINION",
+   "summary": "Tone (\"headline\", \"optimistic\")",
+   "disposition": "Terms are defined where used; PRD copyedit territory."
+  },
+  {
+   "id": "m7",
+   "reviewer": "OpenAI_methodology",
+   "severity": "MINOR",
+   "verdict": "OPINION",
+   "summary": "Mission timeline language",
+   "disposition": "Dates factual; deliberate context."
+  },
+  {
+   "id": "m8",
+   "reviewer": "OpenAI_methodology",
+   "severity": "MINOR",
+   "verdict": "OPINION",
+   "summary": "Birefringence ¶ off-scope",
+   "disposition": "Deliberately retained with explicit \"we do not perform EB cross-power analysis\" scoping (v1.7.42 deferral stands)."
+  },
+  {
+   "id": "m9",
+   "reviewer": "OpenAI_methodology",
+   "severity": "MINOR",
+   "verdict": "PARTIAL",
+   "summary": "Define weighting schemes",
+   "disposition": "L351: explicit kernels added for the three analytic schemes (w=1, w∝k², w∝1/k²) + w's role in r defined; SPHEREx/MegaMapper-like labeled as survey-noise varian…"
+  },
+  {
+   "id": "m10",
+   "reviewer": "OpenAI_methodology",
+   "severity": "MINOR",
+   "verdict": "PARTIAL",
+   "summary": "Define all ± error bars globally",
+   "disposition": "Key ± already defined contextually (r_cos sample SD, c9h percentiles, weighting-range spread at Eq. r_noise). A blanket definition would be false for the heter…"
+  },
+  {
+   "id": "m11",
+   "reviewer": "OpenAI_methodology",
+   "severity": "MINOR",
+   "verdict": "STALE",
+   "summary": "0.500±0.001 vs \"exact 0.5000\" precision clash",
+   "disposition": "Both phrasings removed by lead's M9 reframe (grep confirms)."
+  },
+  {
+   "id": "m12",
+   "reviewer": "OpenAI_methodology",
+   "severity": "MINOR",
+   "verdict": "STALE",
+   "summary": "Eq. (A2) typography/vacuum labels",
+   "disposition": "App. A.1 uses standard commutator form, Hermiticity stated, vacuum kets explicit."
+  },
+  {
+   "id": "m13",
+   "reviewer": "OpenAI_methodology",
+   "severity": "MINOR",
+   "verdict": "STALE",
+   "summary": "§IX.D mixed σ provenance",
+   "disposition": "\"Two distinct Fisher analyses... we distinguish them explicitly\" block with (i)/(ii) labels present (L604). Correction note retained = Houston decision."
+  },
+  {
+   "id": "n1–n3, n5",
+   "reviewer": "OpenAI_methodology",
+   "severity": "NIT",
+   "verdict": "OPINION",
+   "summary": "~ overuse; hyphenation; length; figure resolution",
+   "disposition": "Style/structural; length is Houston's call; no figure regeneration in scope."
+  },
+  {
+   "id": "n4",
+   "reviewer": "OpenAI_methodology",
+   "severity": "NIT",
+   "verdict": "OPINION",
+   "summary": "scipy.stats.norm mentions",
+   "disposition": "Retained as provenance audit-trail (repo standard)."
+  },
+  {
+   "id": "META-E1",
+   "reviewer": "META_REVIEW_gpt5pro",
+   "severity": "META",
+   "verdict": "FALSIFIED",
+   "summary": "Eqs.(1)–(2) make P cancel out of B_NL — self-cancelling",
+   "disposition": "Source Eq.(2) is B_NL = (10/3)·A_T/Σkᵢ³ — NOT (10/3)·P/(A_T Σkᵢ³) as the reviewer rendered it. B_NL ∝ P via A_T; matches `null_space_analysis.py` prefactor 10P…"
+  },
+  {
+   "id": "META-E2",
+   "reviewer": "META_REVIEW_gpt5pro",
+   "severity": "META",
+   "verdict": "VERIFIED",
+   "summary": "BFs use σ=0.7, ignoring Eq.(5) σ/r rescaling",
+   "disposition": "Real bookkeeping gap. New ¶ \"Template-mismatch bookkeeping\" (L479): σ_eff=0.7/0.84≈0.83 grid 17.1→14.4, 9.8→9.2, 7.0→6.2, 4.0→4.0 (envelope 10–17 → 9–14); meas…"
+  },
+  {
+   "id": "META-M1",
+   "reviewer": "META_REVIEW_gpt5pro",
+   "severity": "META",
+   "verdict": "PARTIAL",
+   "summary": "Null-space measure ad hoc, basis-dependent ±0.13",
+   "disposition": "Demotion strengthened L272: measure non-invariant under monomial reparametrization/null-space rotation; ±0.13 indicative-not-calibrated; basis-independent robu…"
+  },
+  {
+   "id": "META-M2",
+   "reviewer": "META_REVIEW_gpt5pro",
+   "severity": "META",
+   "verdict": "PARTIAL",
+   "summary": "B_NL symbol overloaded (squeezed param vs shape amplitude)",
+   "disposition": "Light-touch: Eq.(2) lead-in now \"configuration-dependent nonlinearity amplitude, whose squeezed limit is the local nonlinearity parameter\" (L262). Full symbol …"
+  },
+  {
+   "id": "META-M3",
+   "reviewer": "META_REVIEW_gpt5pro",
+   "severity": "META",
+   "verdict": "VERIFIED",
+   "summary": "\"Singular-value ratio bounded below by kinematic separation\" unfounded",
+   "disposition": "Claim removed L270; replaced with empirical statement (σ₃/σ₁≈0.3 property of the benchmark rows; explicit \"no theoretical lower bound\" disclaimer)."
+  },
+  {
+   "id": "META-M4",
+   "reviewer": "META_REVIEW_gpt5pro",
+   "severity": "META",
+   "verdict": "STALE",
+   "summary": "P(BF>3) probability space undefined",
+   "disposition": "tab:gr caption (lead's Table-III rebuild) defines it fully: fraction of 2×10⁵ draws f̂~N(−35/8,σ_eff) exceeding BF=3, script c9g cited."
+  },
+  {
+   "id": "META-m1",
+   "reviewer": "META_REVIEW_gpt5pro",
+   "severity": "META",
+   "verdict": "PARTIAL",
+   "summary": "Weighting kernels need explicit definitions",
+   "disposition": "Same closure as OpenAI m9 (L351)."
+  },
+  {
+   "id": "META-m2",
+   "reviewer": "META_REVIEW_gpt5pro",
+   "severity": "META",
+   "verdict": "VERIFIED",
+   "summary": "z≈0.5–2 vs z=0.1–1.5 inconsistent",
+   "disposition": "Verified in `scripts/c8_fnl_running_fisher.py` (first six bins of SPHEREx public-products 11-bin structure). Justification added L604: different tracer selecti…"
+  },
+  {
+   "id": "META-m3",
+   "reviewer": "META_REVIEW_gpt5pro",
+   "severity": "META",
+   "verdict": "STALE",
+   "summary": "Torsion caveat unquantified",
+   "disposition": "Text already does the reviewer's option (b): prediction explicitly restricted to scalar-only class; fermionic models explicitly excluded pending a bound (§I + …"
+  },
+  {
+   "id": "META-N1",
+   "reviewer": "META_REVIEW_gpt5pro",
+   "severity": "META",
+   "verdict": "VERIFIED",
+   "summary": "SVD monomial normalization undefined",
+   "disposition": "Defined from `null_space_analysis.py` L270: rows = B_NL prefactor × monomials at unit-scale triangles (1,1,1),(2,1,1),(10⁻⁴,1,1), no per-column rescaling."
+  },
+  {
+   "id": "E1 (abstract BF prior qualifier)",
+   "reviewer": "Grok_brutal",
+   "severity": "ESSENTIAL",
+   "verdict": "STALE",
+   "summary": "abstract BF prior qualifier",
+   "disposition": "Abstract states both priors inline + four-corner pointer."
+  },
+  {
+   "id": "E2 (convention-dependent abstract σ)",
+   "reviewer": "Grok_brutal",
+   "severity": "ESSENTIAL",
+   "verdict": "STALE",
+   "summary": "convention-dependent abstract σ",
+   "disposition": "Abstract carries the full convention-halving caveat sentence."
+  },
+  {
+   "id": "E3 (assumptions d/e propagation)",
+   "reviewer": "Grok_brutal",
+   "severity": "ESSENTIAL",
+   "verdict": "PARTIAL",
+   "summary": "assumptions d/e propagation",
+   "disposition": "δf_NL~10⁻³ scaling estimate labeled as such; cubic-transfer uncertainty explicitly folded into σ_theory=1.0 prior motivation (§VI). Full third-order bounce com…"
+  },
+  {
+   "id": "M1 (Fig 2 error-bar definition)",
+   "reviewer": "Grok_brutal",
+   "severity": "MAJOR",
+   "verdict": "STALE",
+   "summary": "Fig 2 error-bar definition",
+   "disposition": "Caption defines optimistic/conservative endpoints (R22prov2 V7)."
+  },
+  {
+   "id": "M2 (r scatter not folded into significance)",
+   "reviewer": "Grok_brutal",
+   "severity": "MAJOR",
+   "verdict": "STALE",
+   "summary": "r scatter not folded into significance",
+   "disposition": "Lead's M2/c9h closure: 16–84% propagation 4.4–6.2σ in §II.A."
+  },
+  {
+   "id": "M3 (length vs novelty)",
+   "reviewer": "Grok_brutal",
+   "severity": "MAJOR",
+   "verdict": "OPINION",
+   "summary": "length vs novelty",
+   "disposition": "Editorial judgment; Houston's call."
+  },
+  {
+   "id": "N1 (June 2026 date \"in the future\")",
+   "reviewer": "Grok_brutal",
+   "severity": "NIT",
+   "verdict": "FALSIFIED",
+   "summary": "June 2026 date \"in the future\"",
+   "disposition": "It IS June 2026. Auto-falsified per protocol."
+  },
+  {
+   "id": "N2 (red boxes around cross-refs)",
+   "reviewer": "Grok_brutal",
+   "severity": "NIT",
+   "verdict": "VERIFIED",
+   "summary": "red boxes around cross-refs",
+   "disposition": "Bare `\\usepackage{hyperref}` default link borders. L5 → `[colorlinks=true,allcolors=blue]`. Takes effect on next compile (recompile deliberately out of scope t…"
+  },
+  {
+   "id": "N3 (MegaMapper caveat repeated)",
+   "reviewer": "Grok_brutal",
+   "severity": "NIT",
+   "verdict": "OPINION",
+   "summary": "MegaMapper caveat repeated",
+   "disposition": "Deliberate repetition of a critical funding-status caveat; wordings differ."
+  },
+  {
+   "id": "E1 (no PDF provided)",
+   "reviewer": "Perplexity_citations",
+   "severity": "ESSENTIAL",
+   "verdict": "FALSIFIED",
+   "summary": "no PDF provided",
+   "disposition": "v3 harness sends native PDF to all 5 vendors; reviewer-side ingestion artifact."
+  },
+  {
+   "id": "E2 (−35/8 vs −35/16 refs)",
+   "reviewer": "Perplexity_citations",
+   "severity": "ESSENTIAL",
+   "verdict": "FALSIFIED",
+   "summary": "−35/8 vs −35/16 refs",
+   "disposition": "`Cai:2009fn` (bib L1) + `CaiBrandenberger:2014` (bib L162) both exist with real IDs; convention chain resolved in App. A (lead-closed)."
+  },
+  {
+   "id": "E3 (GitHub URL unverifiable)",
+   "reviewer": "Perplexity_citations",
+   "severity": "ESSENTIAL",
+   "verdict": "FALSIFIED",
+   "summary": "GitHub URL unverifiable",
+   "disposition": "`curl -I https://github.com/Hubify-Projects/bigbounce` → HTTP 200 (public, live)."
+  },
+  {
+   "id": "E4 (σ mixing ambiguity)",
+   "reviewer": "Perplexity_citations",
+   "severity": "ESSENTIAL",
+   "verdict": "STALE",
+   "summary": "σ mixing ambiguity",
+   "disposition": "Lead's E2 abstract-scoping closure spells out which r/ε enters each endpoint."
+  },
+  {
+   "id": "E5 (±0.13 phrasing inconsistent)",
+   "reviewer": "Perplexity_citations",
+   "severity": "ESSENTIAL",
+   "verdict": "STALE",
+   "summary": "±0.13 phrasing inconsistent",
+   "disposition": "Current abstract: ±0.13 absolute ≡ ~15% relative at r̄=0.85 — 0.13/0.85=15.3% ✓ exact."
+  },
+  {
+   "id": "E6 (3–5σ construction mixes nulls)",
+   "reviewer": "Perplexity_citations",
+   "severity": "ESSENTIAL",
+   "verdict": "STALE",
+   "summary": "3–5σ construction mixes nulls",
+   "disposition": "§VII defines optimistic=σ_GR=0 vs realistic=σ_GR 0.5–1.0; b_φ chain explicit."
+  },
+  {
+   "id": "M1 (Zhu & Cai 2026 citation)",
+   "reviewer": "Perplexity_citations",
+   "severity": "MAJOR",
+   "verdict": "FALSIFIED",
+   "summary": "Zhu & Cai 2026 citation",
+   "disposition": "arXiv:2603.13924 verified in bib (v1.7.39 web-falsification record, 15/15)."
+  },
+  {
+   "id": "M2 (ref formatting + embedded annotations)",
+   "reviewer": "Perplexity_citations",
+   "severity": "MAJOR",
+   "verdict": "PARTIAL",
+   "summary": "ref formatting + embedded annotations",
+   "disposition": "Braces closed by lead (N2). Remaining `note=` field annotations are legitimate BibTeX, deliberate transparency; PRD copyedit may strike — flagged, not removed."
+  },
+  {
+   "id": "M3 (Fisher vs withdrawn 9.9σ)",
+   "reviewer": "Perplexity_citations",
+   "severity": "MAJOR",
+   "verdict": "STALE",
+   "summary": "Fisher vs withdrawn 9.9σ",
+   "disposition": "Withdrawn + correction note (Houston decision) + committed c8 Fisher."
+  },
+  {
+   "id": "M4 (BF traceability)",
+   "reviewer": "Perplexity_citations",
+   "severity": "MAJOR",
+   "verdict": "STALE",
+   "summary": "BF traceability",
+   "disposition": "Closed-form Eq.(bf) + c9g + four-corner grid (lead-closed)."
+  },
+  {
+   "id": "M5 (mechanism-independent language)",
+   "reviewer": "Perplexity_citations",
+   "severity": "MAJOR",
+   "verdict": "STALE",
+   "summary": "mechanism-independent language",
+   "disposition": "UV-completion-independence conditional block in intro + §II.B."
+  },
+  {
+   "id": "M6 (σ 0.7 vs 0.5 bookkeeping)",
+   "reviewer": "Perplexity_citations",
+   "severity": "MAJOR",
+   "verdict": "STALE",
+   "summary": "σ 0.7 vs 0.5 bookkeeping",
+   "disposition": "§VIII.B disambiguation sentence (bispectrum-only 0.7 vs joint 0.5)."
+  },
+  {
+   "id": "M7 (halving language)",
+   "reviewer": "Perplexity_citations",
+   "severity": "MAJOR",
+   "verdict": "STALE",
+   "summary": "halving language",
+   "disposition": "Abstract states pre-/post-budget halvings separately with rationale."
+  },
+  {
+   "id": "M8 (r>1 vs Eq.(5))",
+   "reviewer": "Perplexity_citations",
+   "severity": "MAJOR",
+   "verdict": "STALE",
+   "summary": "r>1 vs Eq.(5)",
+   "disposition": "Dedicated r>1 footnote in §III.B (footnote untouched per hard rule)."
+  },
+  {
+   "id": "M9 (\"first time\" novelty)",
+   "reviewer": "Perplexity_citations",
+   "severity": "MAJOR",
+   "verdict": "VERIFIED",
+   "summary": "\"first time\" novelty",
+   "disposition": "L226: \"for the first time to our knowledge\" (body's 2009–2024 literature-search support stands)."
+  },
+  {
+   "id": "M10 (\"unprecedented precision\")",
+   "reviewer": "Perplexity_citations",
+   "severity": "MAJOR",
+   "verdict": "VERIFIED",
+   "summary": "\"unprecedented precision\"",
+   "disposition": "L243: → \"precision substantially beyond current Planck bounds\"."
+  },
+  {
+   "id": "m11 (abstract r_cos parenthetical)",
+   "reviewer": "Perplexity_citations",
+   "severity": "MINOR",
+   "verdict": "OPINION",
+   "summary": "abstract r_cos parenthetical",
+   "disposition": "Abstract>0.97 and body 0.985±0.007 are consistent; abstract edit beyond accuracy = Houston territory."
+  },
+  {
+   "id": "m12 (Fig 6 / null-threshold dependence)",
+   "reviewer": "Perplexity_citations",
+   "severity": "MINOR",
+   "verdict": "VERIFIED",
+   "summary": "Fig 6 / null-threshold dependence",
+   "disposition": "Same locus as OpenAI E8; L600 now carries the full pre/post-budget chain with symmetry rationale."
+  },
+  {
+   "id": "m13 (3–7σ MegaMapper opacity)",
+   "reviewer": "Perplexity_citations",
+   "severity": "MINOR",
+   "verdict": "STALE",
+   "summary": "3–7σ MegaMapper opacity",
+   "disposition": "§V explains the envelope construction + design-uncertainty disclaimer."
+  },
+  {
+   "id": "m14 (Planck 0.7σ vs 0.75σ)",
+   "reviewer": "Perplexity_citations",
+   "severity": "MINOR",
+   "verdict": "STALE",
+   "summary": "Planck 0.7σ vs 0.75σ",
+   "disposition": "Lead's M8 closure: 0.75σ in §VIII.A ✓."
+  },
+  {
+   "id": "N1 (duplicate phrases)",
+   "reviewer": "Perplexity_citations",
+   "severity": "NIT",
+   "verdict": "VERIFIED",
+   "summary": "duplicate phrases",
+   "disposition": "8-gram scan run on source: one true intra-paragraph duplicate found in §IX.D QSFI passage (\"comprehensive SDB+bispectrum joint analysis is required to map...\" …"
+  },
+  {
+   "id": "N2 (length vs contribution)",
+   "reviewer": "Perplexity_citations",
+   "severity": "NIT",
+   "verdict": "OPINION",
+   "summary": "length vs contribution",
+   "disposition": "Houston's call."
+  },
+  {
+   "id": "N1 (abstract length ~1.5 pages)",
+   "reviewer": "Claude_brutal_INSESSION",
+   "severity": "NIT",
+   "verdict": "HOUSTON-DECISION",
+   "summary": "abstract length ~1.5 pages",
+   "disposition": "Untouched per round instructions."
+  }
+ ]
+}
