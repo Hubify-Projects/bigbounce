@@ -1,0 +1,19 @@
+{
+ "job": "c11b HC-subsample real-space dipole nulls (META-E1 on the headline sample)",
+ "selection": "class_eq in {CW,CCW} and max(p_cw_eq,p_ccw_eq)>0.6 (run_dipole_catalog_c.py selection)",
+ "n_hc": 949584,
+ "n_pix": 23682,
+ "observed_amp": 0.004597,
+ "null_pixel_perm": {
+  "mean": 0.003682,
+  "std": 0.00168,
+  "z": 0.545,
+  "rank_p": 0.2741
+ },
+ "null_per_galaxy_shuffle": {
+  "mean": 0.003488,
+  "std": 0.001593,
+  "z": 0.696,
+  "rank_p": 0.2298
+ }
+}

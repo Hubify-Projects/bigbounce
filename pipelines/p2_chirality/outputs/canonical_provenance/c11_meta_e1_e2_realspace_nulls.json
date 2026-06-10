@@ -1,0 +1,161 @@
+{
+ "job": "C11-P4-R23conf-META-E1-E2-realspace-nulls",
+ "date_utc": "2026-06-10T01:24:16Z",
+ "closes": [
+  "P4-META-E1",
+  "P4-META-E2"
+ ],
+ "config": {
+  "nside": 64,
+  "min_spirals_per_pix": 10,
+  "n_mc": 10000,
+  "seed": 42,
+  "catalog_parquet": "/Users/houstongolden/.cache/huggingface/hub/datasets--bamfai--galaxy-chirality-catalog/snapshots/5df35642b355e630490cdbb983252620105b99fc/catalog_production.parquet",
+  "rank_p_convention": "(k+1)/(N+1), one-sided"
+ },
+ "catalog": {
+  "n_spiral_total": 3201160,
+  "n_pix_canonical": 24087,
+  "f_sky_canonical": 0.49005126953125,
+  "n_spiral_in_mask": 3200420,
+  "n_cw_in_mask": 1591751
+ },
+ "meta_e1": {
+  "observed_amp_uniform": 0.005660281175118038,
+  "observed_amp_nspiral_weighted": 0.005179280640518643,
+  "null_i_pixel_permutation": {
+   "z_mom": 4.1613994999000115,
+   "k": 8,
+   "rank_p": 0.0008999100089991,
+   "null_mean": 0.001968025423476231,
+   "null_std": 0.0008872629873028347
+  },
+  "null_ii_per_galaxy_label_shuffle_uniform_fit": {
+   "z_mom": 4.323481928704287,
+   "k": 2,
+   "rank_p": 0.00029997000299970003,
+   "null_mean": 0.0019165262280755363,
+   "null_std": 0.0008659120146165327
+  },
+  "null_iii_per_galaxy_label_shuffle_weighted_fit": {
+   "z_mom": 4.376663284631524,
+   "k": 1,
+   "rank_p": 0.00019998000199980003,
+   "null_mean": 0.0017327402820871856,
+   "null_std": 0.0007874812692431341
+  }
+ },
+ "meta_e2": {
+  "per_axis": [
+   {
+    "axis_xyz_equatorial": [
+     0.05690789972132768,
+     -0.09800099939747296,
+     0.9935578971888874
+    ],
+    "P_sigma_gt_3": 0.53,
+    "median_sigma": 3.104309725042059
+   },
+   {
+    "axis_xyz_equatorial": [
+     0.7677520401026657,
+     0.23794081680870807,
+     0.5949293845613943
+    ],
+    "P_sigma_gt_3": 0.57,
+    "median_sigma": 3.2738272580649634
+   },
+   {
+    "axis_xyz_equatorial": [
+     -0.19587498055572466,
+     -0.3393797323861209,
+     -0.9200295588935279
+    ],
+    "P_sigma_gt_3": 0.58,
+    "median_sigma": 3.3559168780742468
+   },
+   {
+    "axis_xyz_equatorial": [
+     -0.30292915160823286,
+     0.5681593564147929,
+     0.7651332399159279
+    ],
+    "P_sigma_gt_3": 0.45,
+    "median_sigma": 2.832215560008118
+   },
+   {
+    "axis_xyz_equatorial": [
+     -0.7112904022730155,
+     -0.07849190234535305,
+     0.6985019576926748
+    ],
+    "P_sigma_gt_3": 0.53,
+    "median_sigma": 3.0630096603378414
+   },
+   {
+    "axis_xyz_equatorial": [
+     0.7072334148035038,
+     -0.25915595752837983,
+     -0.6577682621280261
+    ],
+    "P_sigma_gt_3": 0.49,
+    "median_sigma": 2.9903184339450544
+   },
+   {
+    "axis_xyz_equatorial": [
+     0.7161105626713857,
+     0.6954401624309638,
+     0.05957048353392924
+    ],
+    "P_sigma_gt_3": 0.58,
+    "median_sigma": 3.28555619149115
+   },
+   {
+    "axis_xyz_equatorial": [
+     -0.0669264191019612,
+     -0.993330413302859,
+     0.09389113075131261
+    ],
+    "P_sigma_gt_3": 0.5,
+    "median_sigma": 3.0124734243216906
+   },
+   {
+    "axis_xyz_equatorial": [
+     0.9530195184634571,
+     0.0357992750603644,
+     -0.30078598593158024
+    ],
+    "P_sigma_gt_3": 0.62,
+    "median_sigma": 3.321158437432211
+   },
+   {
+    "axis_xyz_equatorial": [
+     0.9551272477848048,
+     -0.2885332581033636,
+     -0.06693653342743322
+    ],
+    "P_sigma_gt_3": 0.56,
+    "median_sigma": 3.1302964202610664
+   }
+  ],
+  "summary": {
+   "amplitude_full_pct": 0.75,
+   "n_axes": 10,
+   "n_inj_per_axis": 100,
+   "axis_sampling": "uniform on the sphere (cos(theta)~U(-1,1)), seed 20260609",
+   "P3_axis_mean": 0.541,
+   "P3_min": 0.45,
+   "P3_max": 0.62,
+   "P3_p16": 0.4944,
+   "P3_p84": 0.58,
+   "published_table_v_value_at_0p75": 0.55,
+   "published_axis_protocol": "injection_sweep_extended.py draws a NEW random axis per injection (theta~U(0,pi), phi~U(0,2pi)); Table V P values are therefore averages over that random-axis ensemble"
+  },
+  "hc_subsample": {
+   "n_hc": 949584,
+   "p_cw_global": 0.4960582739389038,
+   "null_mean_amp_pct": 0.3239272398564182,
+   "null_std_amp_pct": 0.14736815213721047
+  }
+ }
+}

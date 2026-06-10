@@ -1,0 +1,79 @@
+{
+ "job": "C11-P4-R23conf-META-M3-fsky-normalization",
+ "date_utc": "2026-06-10T01:06:09Z",
+ "closes": [
+  "P4-META-M3"
+ ],
+ "config": {
+  "nside": 64,
+  "apodization": "C2 2.0 deg",
+  "footprint": "N_all >= 1",
+  "catalog_parquet": "/Users/houstongolden/.cache/huggingface/hub/datasets--bamfai--galaxy-chirality-catalog/snapshots/5df35642b355e630490cdbb983252620105b99fc/catalog_production.parquet"
+ },
+ "definitions": {
+  "fsky_eff_fullsky_mean": "<W>^2/<W^2>, means over all Npix pixels == (Sum w)^2/(Npix*Sum w^2); scale-invariant under W->cW",
+  "mask_restricted_uniformity": "(Sum_in w)^2/(N_in*Sum_in w^2); in-mask weight-uniformity factor, NOT a sky fraction"
+ },
+ "results": {
+  "binary_unapodized": {
+   "fsky_eff_fullsky_mean": 0.49432373046875,
+   "mask_restricted_uniformity": 1.0,
+   "n_in_support": 24297,
+   "identity_check_fullsky_eq_restricted_x_pixfrac": true
+  },
+  "binary_apodized": {
+   "fsky_eff_fullsky_mean": 0.48825112397905984,
+   "mask_restricted_uniformity": 0.9877153247651458,
+   "n_in_support": 24297,
+   "identity_check_fullsky_eq_restricted_x_pixfrac": true
+  },
+  "Wp_Nall_unapodized": {
+   "fsky_eff_fullsky_mean": 0.4563665618612429,
+   "mask_restricted_uniformity": 0.92321394610873,
+   "n_in_support": 24297,
+   "identity_check_fullsky_eq_restricted_x_pixfrac": true
+  },
+  "Wp_Nall_apodized": {
+   "fsky_eff_fullsky_mean": 0.4520293436141871,
+   "mask_restricted_uniformity": 0.9144399019354046,
+   "n_in_support": 24297,
+   "identity_check_fullsky_eq_restricted_x_pixfrac": true
+  },
+  "Wp_Nspiral_unapodized": {
+   "fsky_eff_fullsky_mean": 0.4236535183854512,
+   "mask_restricted_uniformity": 0.857036578000646,
+   "n_in_support": 24297,
+   "identity_check_fullsky_eq_restricted_x_pixfrac": true
+  },
+  "Wp_Nspiral_apodized": {
+   "fsky_eff_fullsky_mean": 0.4202210736511776,
+   "mask_restricted_uniformity": 0.8500928596988387,
+   "n_in_support": 24297,
+   "identity_check_fullsky_eq_restricted_x_pixfrac": true
+  },
+  "Wp_Nall_apodized_rescaled_to_unit_max": {
+   "fsky_eff_fullsky_mean": 0.4520293436141871,
+   "mask_restricted_uniformity": 0.9144399019354045,
+   "n_in_support": 24297,
+   "identity_check_fullsky_eq_restricted_x_pixfrac": true
+  }
+ },
+ "cross_check_vs_c3": {
+  "fsky_eff_Wp_Nall_apodized": [
+   0.45202934361418695,
+   0.4520293436141871
+  ],
+  "fsky_eff_Wp_Nspiral_apodized": [
+   0.42022107365117767,
+   0.4202210736511776
+  ],
+  "fsky_eff_Wp_Nall_unapodized": [
+   0.4563665618612429,
+   0.4563665618612429
+  ],
+  "fsky_eff_binary_apodized": [
+   0.48825112397905956,
+   0.48825112397905984
+  ]
+ }
+}

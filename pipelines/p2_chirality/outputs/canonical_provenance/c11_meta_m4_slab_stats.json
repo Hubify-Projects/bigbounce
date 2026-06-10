@@ -1,0 +1,213 @@
+{
+ "job": "C11-P4-R23conf-META-M4-slab-stats",
+ "date_utc": "2026-06-10T01:07:23Z",
+ "closes": [
+  "P4-META-M4"
+ ],
+ "config": {
+  "n_slabs": 7,
+  "partition": "equal-spiral-count slabs",
+  "nside": 64,
+  "min_spirals_per_pix": 10,
+  "n_mc": 500,
+  "seed": 42,
+  "catalog_parquet": "/Users/houstongolden/.cache/huggingface/hub/datasets--bamfai--galaxy-chirality-catalog/snapshots/5df35642b355e630490cdbb983252620105b99fc/catalog_production.parquet"
+ },
+ "global_f_cw": 0.49735314698421823,
+ "dec_slabs_equal_count": [
+  {
+   "slab": 1,
+   "range": [
+    -65.89437455154015,
+    -38.13935573454623
+   ],
+   "n_spiral": 457308,
+   "n_cw": 226998,
+   "f_cw": 0.4963788081555538,
+   "sigma_binomial": 0.0007393570438923275,
+   "dev_from_half_pct": -0.3621191844446203,
+   "z_vs_global": -1.3178190925659548
+  },
+  {
+   "slab": 2,
+   "range": [
+    -38.139323990669965,
+    -8.058043842224269
+   ],
+   "n_spiral": 457309,
+   "n_cw": 226535,
+   "f_cw": 0.49536527818171083,
+   "sigma_binomial": 0.0007393438614632555,
+   "dev_from_half_pct": -0.4634721818289167,
+   "z_vs_global": -2.688693186108494
+  },
+  {
+   "slab": 3,
+   "range": [
+    -8.058041254228698,
+    4.1958903294609815
+   ],
+   "n_spiral": 457308,
+   "n_cw": 227093,
+   "f_cw": 0.4965865456103982,
+   "sigma_binomial": 0.0007393592049354073,
+   "dev_from_half_pct": -0.34134543896017777,
+   "z_vs_global": -1.0368456478295702
+  },
+  {
+   "slab": 4,
+   "range": [
+    4.195910270382097,
+    17.95154428038211
+   ],
+   "n_spiral": 457309,
+   "n_cw": 227707,
+   "f_cw": 0.49792809675733474,
+   "sigma_binomial": 0.0007393692786927335,
+   "dev_from_half_pct": -0.20719032426652628,
+   "z_vs_global": 0.7776219403287429
+  },
+  {
+   "slab": 5,
+   "range": [
+    17.95159247950259,
+    32.96241625419374
+   ],
+   "n_spiral": 457308,
+   "n_cw": 228152,
+   "f_cw": 0.498902271554401,
+   "sigma_binomial": 0.0007393746531671088,
+   "dev_from_half_pct": -0.10977284455990222,
+   "z_vs_global": 2.095182142837974
+  },
+  {
+   "slab": 6,
+   "range": [
+    32.96243088114687,
+    51.60803217756045
+   ],
+   "n_spiral": 457309,
+   "n_cw": 227791,
+   "f_cw": 0.49811177999995626,
+   "sigma_binomial": 0.0007393703543570897,
+   "dev_from_half_pct": -0.18882200000437388,
+   "z_vs_global": 1.0260527910909958
+  },
+  {
+   "slab": 7,
+   "range": [
+    51.60805915612858,
+    84.77514374258361
+   ],
+   "n_spiral": 457309,
+   "n_cw": 227831,
+   "f_cw": 0.4981992482107284,
+   "sigma_binomial": 0.0007393708315056956,
+   "dev_from_half_pct": -0.18007517892715819,
+   "z_vs_global": 1.1443529964350097
+  }
+ ],
+ "ra_slabs_equal_count": [
+  {
+   "slab": 1,
+   "range": [
+    6.32241759566e-05,
+    34.36445381929361
+   ],
+   "n_spiral": 457308,
+   "n_cw": 226892,
+   "f_cw": 0.49614701689014845,
+   "sigma_binomial": 0.0007393544819575505,
+   "dev_from_half_pct": -0.3852983109851549,
+   "z_vs_global": -1.6313285758089562
+  },
+  {
+   "slab": 2,
+   "range": [
+    34.36457170990742,
+    85.54590811462045
+   ],
+   "n_spiral": 457309,
+   "n_cw": 226363,
+   "f_cw": 0.4949891648753906,
+   "sigma_binomial": 0.0007393384965665114,
+   "dev_from_half_pct": -0.5010835124609425,
+   "z_vs_global": -3.197428674153978
+  },
+  {
+   "slab": 3,
+   "range": [
+    85.54602214702773,
+    141.55905763746068
+   ],
+   "n_spiral": 457308,
+   "n_cw": 227049,
+   "f_cw": 0.4964903303681545,
+   "sigma_binomial": 0.0007393582198996409,
+   "dev_from_half_pct": -0.35096696318455134,
+   "z_vs_global": -1.1669804877273984
+  },
+  {
+   "slab": 4,
+   "range": [
+    141.55910091816153,
+    184.83150397983755
+   ],
+   "n_spiral": 457309,
+   "n_cw": 227369,
+   "f_cw": 0.4971889903763101,
+   "sigma_binomial": 0.0007393639418261241,
+   "dev_from_half_pct": -0.28110096236899085,
+   "z_vs_global": -0.22202409209014926
+  },
+  {
+   "slab": 5,
+   "range": [
+    184.8316713899687,
+    229.11910097475155
+   ],
+   "n_spiral": 457308,
+   "n_cw": 227869,
+   "f_cw": 0.49828343260996966,
+   "sigma_binomial": 0.0007393720777665338,
+   "dev_from_half_pct": -0.17165673900303435,
+   "z_vs_global": 1.2582103838186534
+  },
+  {
+   "slab": 6,
+   "range": [
+    229.11910751118054,
+    295.2854515665055
+   ],
+   "n_spiral": 457309,
+   "n_cw": 228380,
+   "f_cw": 0.4993997494035761,
+   "sigma_binomial": 0.0007393750938828754,
+   "dev_from_half_pct": -0.06002505964238791,
+   "z_vs_global": 2.768016445631171
+  },
+  {
+   "slab": 7,
+   "range": [
+    295.2855648426045,
+    359.9996590546403
+   ],
+   "n_spiral": 457309,
+   "n_cw": 228185,
+   "f_cw": 0.4989733418760619,
+   "sigma_binomial": 0.0007393740680330479,
+   "dev_from_half_pct": -0.10266581239380956,
+   "z_vs_global": 2.1913060815804206
+  }
+ ],
+ "max_abs_dev_from_half_pct_dec": 0.4634721818289167,
+ "max_abs_dev_from_half_pct_ra": 0.5010835124609425,
+ "monopole_dipole_bias_test": {
+  "description": "binomial per-pixel draws on the canonical mask at p=f_CW_global (monopole present) vs p=0.5 (none); uniform-weight hp.fit_dipole amplitude distributions",
+  "amp_mean_monopole_present": 0.001956595601359331,
+  "amp_std_monopole_present": 0.0008878881818685859,
+  "amp_mean_no_monopole": 0.001934684367330111,
+  "amp_std_no_monopole": 0.0008680029189500229,
+  "mean_shift_significance_sigma": 0.39458576323681605
+ }
+}

@@ -54,16 +54,27 @@ import numpy as np
 import pandas as pd
 
 WORK = os.environ.get("WORK", "/workspace/chirality")
-CAT_C_PATH = os.environ.get(
-    "CAT_C_PATH", f"{WORK}/catalog_production.parquet"
-)
+def _default_cat_c() -> str:
+    pod = f"{WORK}/catalog_production.parquet"
+    if Path(pod).exists():
+        return pod
+    try:
+        from huggingface_hub import hf_hub_download
+        return hf_hub_download(
+            "bamfai/galaxy-chirality-catalog", "catalog_production.parquet",
+            repo_type="dataset", local_files_only=True)
+    except Exception:
+        return pod
+
+
+CAT_C_PATH = os.environ.get("CAT_C_PATH") or _default_cat_c()
 OUT_PATH = os.environ.get(
     "OUT_PATH",
     str(Path(__file__).parent / "outputs" / "dipole" / "catalog_c_summary.json"),
 )
 NSIDE = 64
 MIN_PIX_COUNT = 10
-N_MC = 1000  # Canonical per fire #49 / dipolar_analysis.log
+N_MC = 10000  # upgraded from 1,000 at the 2026-06-09 regeneration (R23conf)
 
 
 def main() -> int:
@@ -87,10 +98,14 @@ def main() -> int:
     print(f"  {n_total:,} galaxies loaded", flush=True)
 
     # High-confidence equivariant spirals
-    if "p_cw_eq" in df.columns:
-        conf = df["p_cw_eq"].abs() > 0.6
+    # SELECTION FIX (2026-06-09, R23conf META-E1 closure): the previous filter
+    # `df["p_cw_eq"].abs() > 0.6` selected only CW-confident galaxies (a
+    # degenerate all-CW sample, 471,049 rows on the released parquet) and could
+    # not have produced a meaningful dipole. The high-confidence cut is on the
+    # WINNING class probability:
+    if "p_cw_eq" in df.columns and "p_ccw_eq" in df.columns:
+        conf = np.maximum(df["p_cw_eq"].values, df["p_ccw_eq"].values) > 0.6
     else:
-        # Fallback: use p_cw confidence if p_cw_eq not present (older columns)
         conf = df.get("confidence", pd.Series(np.ones(n_total, dtype=bool))) > 0.6
 
     spirals = df[
@@ -148,7 +163,24 @@ def main() -> int:
     mc_mean = float(np.mean(boots))
     mc_std = float(np.std(boots))
     sigma = (amp - mc_mean) / mc_std if mc_std > 0 else 0.0
-    pval = float(np.mean(boots >= amp))
+    pval = float(((boots >= amp).sum() + 1) / (N_MC + 1))  # (k+1)/(N+1) rank-p
+
+    # Second null (R23conf META-E1): per-galaxy label shuffle — binomial draw
+    # of per-pixel CW counts at the global CW rate, preserving N_spiral(p).
+    print(f"  Running {N_MC:,} per-galaxy label-shuffle nulls...", flush=True)
+    p_glob = cw_map[mask].sum() / tot[mask].sum()
+    n_tot_pix = tot[mask].astype(int)
+    boots2 = np.empty(N_MC)
+    for i in range(N_MC):
+        cws = rng.binomial(n_tot_pix, p_glob)
+        asym_shuf = np.full(npix, hp.UNSEEN)
+        asym_shuf[mask] = (2.0 * cws - n_tot_pix) / n_tot_pix
+        _, d = hp.fit_dipole(asym_shuf, gal_cut=0)
+        boots2[i] = np.sqrt(np.sum(d ** 2))
+    mc2_mean = float(np.mean(boots2)); mc2_std = float(np.std(boots2))
+    sigma2 = (amp - mc2_mean) / mc2_std if mc2_std > 0 else 0.0
+    pval2 = float(((boots2 >= amp).sum() + 1) / (N_MC + 1))
+    print(f"  shuffle null: {sigma2:.2f}sigma (rank-p = {pval2:.4f})", flush=True)
     print(
         f"  MC null ({time.time()-t0:.0f}s): {sigma:.2f}sigma "
         f"(p = {pval:.4f}, mean = {mc_mean:.6f}, std = {mc_std:.6f})",
@@ -172,6 +204,12 @@ def main() -> int:
     out: dict = {
         "experiment": "Paper 4 Catalog C Dipolar Analysis (post-TTA)",
         "generator": "pipelines/p2_chirality/run_dipole_catalog_c.py",
+        "regeneration_note_2026_06_09": (
+            "Anchor regenerated during R23conf after the selection-filter "
+            "defect above was found; the values in dipole_fit/mc_null below "
+            "supersede the previously printed 0.43-sigma/p=0.30 pair, whose "
+            "generator could not be reproduced as committed."
+        ),
         "paper_claim": {
             "significance_sigma": 0.43,
             "p_value": 0.33,
@@ -205,6 +243,13 @@ def main() -> int:
             "mc_std": mc_std,
             "consistent_with_null": bool(sigma < 2.0),
             "post_tta": True,
+            "shuffle_null": {
+                "description": "per-galaxy label shuffle (binomial per pixel at the global CW rate)",
+                "significance_sigma": float(sigma2),
+                "rank_p": pval2,
+                "mc_mean": mc2_mean,
+                "mc_std": mc2_std,
+            },
         },
         "multipole_decomposition": {
             "shot_noise_cl": float(shot_noise),

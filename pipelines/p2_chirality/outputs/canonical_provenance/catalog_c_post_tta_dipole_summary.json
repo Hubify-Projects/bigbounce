@@ -16,13 +16,37 @@
   "n_mc_isotropic_null": 10000,
   "mc_seed": 42,
   "mc_seed_manifest": "pipelines/p2_chirality/outputs/canonical_provenance/mc_seed_manifest.json",
-  "sigma_dipole": 0.43,
-  "p_value_one_sided": 0.30,
-  "p_value_two_sided_equivalent": 0.60,
+  "sigma_dipole": 0.41,
+  "p_value_one_sided": 0.3085,
+  "p_value_two_sided_equivalent": 0.617,
   "amplitude_convention": "p_CW(n_hat) = 0.5 * (1 + A * cos(theta)); A is the full-amplitude",
-  "headline_status": "This file is the canonical reproducibility anchor for the abstract real-space dipole null. The companion artifacts (canonical_n_master_l1_direct.json, canonical_n_master_l1_direct_null_distribution.npy, master_power_spectrum.json) anchor the MASTER-deconvolved ell=1 results separately.",
+  "headline_status": "Superseded as numeric anchor by the 2026-06-09 regeneration block below / outputs/dipole/catalog_c_summary.json; retained for provenance history.",
   "supersedes_note": "Earlier outputs/dipole/summary.json is the PRE-TTA Catalog A diagnostic run (2.31 sigma) and is retained on-disk as a historical pipeline output, NOT as a headline anchor.",
   "addendum_v1_0_67": {
     "purpose": "Created in v1.0.67 to close ChatGPT-B-4 / Gemini-DR-G-2 external-review BLOCKER on cited-artifact-vs-headline mismatch. The 0.43-sigma headline is now anchored by THIS file, not by the pre-TTA outputs/dipole/summary.json."
+  },
+  "regeneration_2026_06_09": {
+    "reason": "R23conf META-E1: the committed generator run_dipole_catalog_c.py carried a selection-filter defect (p_cw_eq.abs()>0.6 selected an all-CW sample) and could not reproduce the previously printed 0.43-sigma/p=0.30 as committed. The generator was repaired (winning-class confidence > 0.6) and the anchor regenerated from the released catalog at N_MC=10^4.",
+    "regenerated_values": {
+      "n_hc": 949584,
+      "cw_fraction": 0.4961,
+      "f_sky": 0.4801,
+      "n_pix": 23600,
+      "amplitude": 0.004423,
+      "l_deg": 293.0,
+      "b_deg": 12.0,
+      "pixel_perm_null": {
+        "sigma": 0.41,
+        "rank_p": 0.3085,
+        "mc_mean": 0.003737,
+        "mc_std": 0.001682
+      },
+      "per_galaxy_shuffle_null": {
+        "sigma": 0.58,
+        "rank_p": 0.2572
+      }
+    },
+    "full_output": "pipelines/p2_chirality/outputs/dipole/catalog_c_summary.json",
+    "verdict": "prior and regenerated values agree within MC noise; null verdict unchanged"
   }
 }
