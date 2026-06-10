@@ -1,20 +1,11 @@
 [
   {
-    "paperSlug": "paper-1a",
-    "version": "v1A.0.55",
+    "paperSlug": "paper-5",
+    "version": "v0.1.58",
     "datestamp": "2026-06-11",
-    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1a_ech_nogo.pdf",
-    "sitePdfPath": "/papers/paper1a_ech_nogo_v1A.0.55.pdf",
-    "changelog": "Cartan factor-2 RESOLVED BY DERIVATION (was disclosure): single convention fixed (form-language torsion + Hermitian Dirac), spin current totally antisymmetric, T=kappa S exact, back-substitution closes to -(3kappa/16)(J5)^2 = Eq.(4) gamma->inf limit = Hehl-Datta with no residual factor; (kappa/2) literature form mapped exactly; SIV.A aligned. Last substantive P1A gate closed. 25pp/md5 5dc099dc/0-0-0. Gate: R27conf clean round + sign-off.",
-    "texCommit": "7ece735f"
-  },
-  {
-    "paperSlug": "paper-3",
-    "version": "v3.1.86",
-    "datestamp": "2026-06-11",
-    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p3_anomaly_engine/paper3_draft.pdf",
-    "sitePdfPath": "/papers/paper3_anomaly_catalog_v3.1.86.pdf",
-    "changelog": "Feature-scaling specs RECOVERED from pod backups (R26conf ESS closed): eROSITA 47f signed-log1p + per-column z-score (fit on full 930K, byte-identical in 2 backups); NEOWISE 15f median/IQR robust scaler; Gaia 20f lineage-inferred from successor script (disclosed); SII spec paragraph + recovered_pod_scripts/. 26pp/md5 31284b90/0-0-0. Gate: R27conf + 2 minor recomputes.",
-    "texCommit": "7ece735f"
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf",
+    "sitePdfPath": "/papers/p5_desi_chirality_v0.1.58.pdf",
+    "changelog": "Completeness-weighted rebuild closes P5's last compute item (queue #16 + R26conf residue): 7.5e7 DESI BGS_BRIGHT randoms, 0.01<z<0.50 window; environments re-label wholesale (44% cell agreement) yet per-class f_CW shifts <=0.05pp filament/0.03pp cluster/0.40pp wall/2.7pp void(n~430, inside counting width) \u2014 the null is CLASSIFICATION-ROBUST under both environment definitions; cube-3 dilation <=3.1pp/99.6%. 27pp/md5 6ffcd714/0-0-0. Gate: R27conf round.",
+    "texCommit": "c0d542ce"
   }
 ]
