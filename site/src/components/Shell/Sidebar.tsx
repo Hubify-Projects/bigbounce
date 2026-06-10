@@ -19,6 +19,7 @@ import {
   MessageSquare,
   Orbit,
   Search,
+  ShieldCheck,
   Sparkle,
   Telescope,
 } from "lucide-react";
@@ -50,6 +51,7 @@ const sections: SidebarSection[] = [
       { href: "/surveys", label: "surveys", icon: Database },
       { href: "/predictions", label: "predictions", icon: Orbit },
       { href: "/paper", label: "papers", icon: FileText },
+      { href: "/reviews", label: "reviews", icon: ShieldCheck },
       { href: "/contributions", label: "contributions", icon: Sparkle },
     ],
   },

@@ -1,0 +1,293 @@
+/* Review-activity timeline + round-report pages. Dark/light via existing vars. */
+
+.review-feed {
+  display: grid;
+  gap: 0;
+  max-width: 860px;
+}
+
+.review-entry {
+  position: relative;
+  padding: 22px 0 26px 26px;
+  border-left: 1px solid var(--border);
+}
+
+.review-entry::before {
+  content: "";
+  position: absolute;
+  left: -4.5px;
+  top: 29px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 1.5px solid var(--text-muted);
+}
+
+.review-entry-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.review-timestamp {
+  font-family: var(--font-mono-stack);
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+.review-kind-badge {
+  font-family: var(--font-mono-stack);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text-muted);
+}
+
+.review-kind-badge.is-external {
+  color: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 45%, transparent);
+}
+
+.review-entry-title {
+  margin: 0 0 6px 0;
+  font-size: 0.98rem;
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--text);
+}
+
+.review-paper-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.review-paper-chip {
+  font-family: var(--font-mono-stack);
+  font-size: 0.66rem;
+  padding: 1px 6px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text-secondary);
+}
+
+.review-summary {
+  margin: 0 0 10px 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  max-width: 72ch;
+}
+
+.review-takeaways summary {
+  cursor: pointer;
+  font-family: var(--font-mono-stack);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  list-style: none;
+}
+
+.review-takeaways summary::-webkit-details-marker {
+  display: none;
+}
+
+.review-takeaways summary::before {
+  content: "▸ ";
+  color: var(--text-muted);
+}
+
+.review-takeaways[open] summary::before {
+  content: "▾ ";
+}
+
+.review-takeaways ul {
+  margin: 8px 0 0 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 5px;
+}
+
+.review-takeaways li {
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.review-gap {
+  margin: 10px 0 0 0;
+  font-family: var(--font-mono-stack);
+  font-size: 0.74rem;
+  color: var(--warn);
+}
+
+.review-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  margin-top: 12px;
+}
+
+.review-links a {
+  font-family: var(--font-mono-stack);
+  font-size: 0.72rem;
+  color: var(--accent-link);
+  text-decoration: none;
+}
+
+.review-links a:hover {
+  color: var(--accent-link-hover);
+  text-decoration: underline;
+}
+
+.review-report-link {
+  display: inline-block;
+  margin-top: 12px;
+  font-family: var(--font-mono-stack);
+  font-size: 0.78rem;
+  color: var(--text);
+  text-decoration: none;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 5px 11px;
+}
+
+.review-report-link:hover {
+  border-color: var(--border-strong);
+}
+
+/* ── Round-report markdown body ───────────────────────────────────── */
+
+.review-report-body {
+  max-width: 920px;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+
+.review-report-body h1,
+.review-report-body h2,
+.review-report-body h3,
+.review-report-body h4 {
+  font-family: var(--font-mono-stack);
+  color: var(--text);
+  line-height: 1.35;
+  margin: 1.6em 0 0.6em 0;
+}
+
+.review-report-body h1 {
+  font-size: 1.25rem;
+  margin-top: 0;
+}
+
+.review-report-body h2 {
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.review-report-body h3 {
+  font-size: 0.92rem;
+}
+
+.review-report-body p {
+  margin: 0 0 1em 0;
+}
+
+.review-report-body a {
+  color: var(--accent-link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.review-report-body a:hover {
+  color: var(--accent-link-hover);
+}
+
+.review-report-body code {
+  font-family: var(--font-mono-stack);
+  font-size: 0.82em;
+  background: var(--bg-code);
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  padding: 1px 5px;
+}
+
+.review-report-body pre {
+  background: var(--bg-code);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 12px;
+  overflow-x: auto;
+  margin: 0 0 1em 0;
+}
+
+.review-report-body pre code {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.review-report-body ul,
+.review-report-body ol {
+  margin: 0 0 1em 0;
+  padding-left: 22px;
+}
+
+.review-report-body blockquote {
+  margin: 0 0 1em 0;
+  padding: 4px 14px;
+  border-left: 2px solid var(--border-strong);
+  color: var(--text-muted);
+}
+
+.review-report-body hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 1.5em 0;
+}
+
+.review-report-body .md-table-wrap {
+  overflow-x: auto;
+  margin: 0 0 1.2em 0;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.review-report-body table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.78rem;
+}
+
+.review-report-body th {
+  font-family: var(--font-mono-stack);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-tertiary);
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border);
+  background: color-mix(in srgb, var(--surface) 70%, transparent);
+  white-space: nowrap;
+}
+
+.review-report-body td {
+  padding: 7px 10px;
+  border-bottom: 1px solid var(--border-subtle);
+  vertical-align: top;
+}
+
+.review-report-body tr:last-child td {
+  border-bottom: none;
+}
