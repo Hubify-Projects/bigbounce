@@ -5,6 +5,10 @@
 > `tools/build_arxiv_tarball.sh` from today's post-provenance-closure versions.
 > Submission order: **P4 first** (P5 hard-depends on its arXiv ID), P1A+P1B same day.
 > ⛔ P4 submission still gated on TWO clean cross-vendor rounds post-retraction + Houston sign-off.
+> ⚠️ **2026-06-09 EVENING (R23conf):** all six papers bumped again (P4 v1.0.168 / P1A v1A.0.51 /
+> P1B v1B.0.52 / P2 v1.7.46 / P3 v3.1.81 / P5 v0.1.53) — the tarballs below are one version stale;
+> REBUILD via `tools/build_arxiv_tarball.sh` before any submission. P4 headline is now 0.41σ (p=0.31)
+> from the fixed null generator (was 0.43σ/p=0.30; verdict unchanged).
 >
 > ## Paper 4 — Chirality Catalog v1.0.167 (post-retraction wave)
 > - **Tarball:** `pipelines/p2_chirality/paper4_arxiv_v1.0.167.tar.gz` (19 MB, 17 pp verified)
@@ -124,7 +128,7 @@ For each paper: trimmed plain-text abstract lives **alongside the tarball** as `
 - **License:** arXiv.org perpetual, non-exclusive license
 - **Comment (paste):**
   ```
-  11 pages, 11 figures, 4 tables, 23 references. 8.47M-galaxy chirality catalog with D4 test-time equivariance; dipole null 0.43σ; Shamir 2020/2022 3% asymmetry claim refuted by factor of 9 (paper-canonical max regional asymmetry 0.32%). Catalog at https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog (CC-BY-4.0, v2026.04); model at https://huggingface.co/bamfai/galaxy-chirality-v2.
+  11 pages, 11 figures, 4 tables, 23 references. 8.47M-galaxy chirality catalog with D4 test-time equivariance; dipole null 0.41σ (p=0.31); Shamir 2020/2022 3% asymmetry claim refuted by factor of 9 (paper-canonical max regional asymmetry 0.32%). Catalog at https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog (CC-BY-4.0, v2026.04); model at https://huggingface.co/bamfai/galaxy-chirality-v2.
   ```
 - **Readiness:** A (R41 decoupled — self-contained; tarball + trimmed abstract closed earlier blockers). Remaining open: Houston-owned `P4-D4-VS-Z2-RENAME` (mechanical rename decision).
 

@@ -60,6 +60,16 @@ C5 needs Cobaya env — same pod, sequential after C1-C4.
 
 ## Day-by-day
 
+> **📍 R23CONF WAVE (2026-06-09 evening — supersedes the 15:00 PT block below).**
+> R23conf full 5-vendor confirmation round (Claude leg in-session on subscription)
+> closed on ALL SIX papers: ~200 findings truth-audited, all VERIFIED closed
+> same-day. New versions: P1A v1A.0.51 · P1B v1B.0.52 · P2 v1.7.46 · P3 v3.1.81
+> · P4 v1.0.168 (headline null regenerated from fixed generator: 0.41σ, p=0.31)
+> · P5 v0.1.53. R23conf found real findings → NOT clean; readiness held 85–92.
+> Critical path: R24conf clean on the new versions (P4 ×2 post-retraction) →
+> Houston external round + sign-offs → submit. arXiv tarballs need a rebuild
+> on the new versions before submission.
+>
 > **📍 END-OF-DAY-1 STATUS (2026-06-09 ~15:00 PT).** Day 1 went far beyond plan:
 > P4 SEV-1 retraction + v1.0.166 + v1.0.167 mega-wave (49 findings + C9 compute);
 > P1B v1B.0.49 + v1B.0.50 (w_pivot corrected to +2.5σ from −1, twice-verified);
