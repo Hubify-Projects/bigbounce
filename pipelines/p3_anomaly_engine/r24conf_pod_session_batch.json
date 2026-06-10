@@ -70,5 +70,33 @@
   "n_train": 269989,
   "n_val": 29998,
   "passes_gate_0p30": true
+ },
+ "item36_cmb_patch_preprocessing": {
+  "preprocessing_documented_from": "pipelines/p3_anomaly_engine/cmb_native_retrain.py",
+  "preprocessing": {
+   "map": "Planck SMICA_2048 R3.00 full-mission temperature (COM_CMB_IQU-smica_2048_R3.00_full.fits, K_CMB)",
+   "patching": "healpy gnomview 10x10 deg, 64x64 px (9.375 arcmin/px), centers at |b|>=20 deg",
+   "units_normalization": "per-patch standardization: subtract patch mean, divide by patch std (DC removed by construction), NaN->0, clip +/-10",
+   "apodization": "NONE (no taper/window applied to patches)",
+   "mean_removal": "per-patch (above); map-level monopole+dipole removed in released SMICA product"
+  },
+  "score_reproduction": {
+   "max_abs_score_diff_vs_stored": 5.704164505004883e-05,
+   "spearman_rho_vs_stored": 0.9999999329632626,
+   "top200_overlap_plain": 200
+  },
+  "robustness": [
+   {
+    "variant": "re-demeaned (DC)",
+    "top200_overlap_with_stored": 200,
+    "spearman_rho_vs_stored": 0.9999999308616975
+   },
+   {
+    "variant": "best-fit plane removed (gradient)",
+    "top200_overlap_with_stored": 187,
+    "spearman_rho_vs_stored": 0.9729681345412047
+   }
+  ],
+  "n_patches": 200000
  }
 }

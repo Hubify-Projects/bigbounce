@@ -16,6 +16,9 @@
 \usepackage{dcolumn}
 \usepackage{enumitem}
 \usepackage{mathtools}
+\newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
+\newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
+
 \usepackage[utf8]{inputenc}
 
 \hypersetup{
@@ -64,6 +67,11 @@ Native-Trained Novelty Fractions from 37.3 Million Sources and Map Patches}
 %   FALSIFIED (it IS June 2026). Recompute queue: 6-way catalog-grade dedup, eROSITA axis,
 %   UMAP control embedding, PTA log10A quantiles, CMB patch preprocessing doc, geomean
 %   estimator definition, SDSS best-epoch, Fig-8 on-plot labels.)
+% v3.1.83->84 (2026-06-10 — pod session: #34 COUNT CORRECTION: recommended catalog-grade subset
+%   269,317/269,117 (prior 264,938/264,738 double-removed 4,379 LAMOST-overlap objects in the
+%   subtraction; independent 6-way dedup rerun); #35 38,330px unrecoverable confirmed, reproducible
+%   rerun 24,049px chi2_nu=15.7, SV rewritten; #36 SMICA preprocessing documented (top-200 200/200
+%   reproduction); #40 fig display-score labels; #41 SDSS epochs 12/17.)
 % v3.1.82->83 (2026-06-10 — eROSITA axis definitively resolved: 16 monotone rescalings + 3 IF
 %   retrains, none reproduces 0.259 (Spearman rho=-0.10 rules out the monotone class); released
 %   n=298 membership = committed-raw top-298 exactly -> membership-is-canonical framing in SIII E
@@ -736,7 +744,7 @@ NEOWISE       & 15    & 16  & 70K   & 1.6           & 27K sources/s \\
 \end{ruledtabular}
 \begin{flushleft}
 {\footnotesize
-$^\dagger$ Path-C native convolutional autoencoder (Section~\ref{sec:planck}): 3 convolutional layers $\rightarrow$ \texttt{Linear}(4096, 128) bottleneck; symmetric \texttt{ConvT} decoder; $1.1\times10^6$ parameters. Training on $2\times10^5$ galactic-plane-masked ($|b|\geq20^\circ$) Planck SMICA patches on A100 GPU reached best validation (val\_loss $0.4437$) at epoch 99 of a 150-epoch schedule; the total training wall-clock for this run was not preserved in the run logs, so no figure is quoted (an earlier draft listed $10.6$~s, which is inconsistent with a ${\sim}100$-epoch convolutional run and has been withdrawn). The 200K-patch full re-score took $25.3$~s on A100, the source of the ${\sim}8{,}000$~patches/s throughput entry.\\
+$^\dagger$ Path-C native convolutional autoencoder (Section~\ref{sec:planck}): 3 convolutional layers $\rightarrow$ \texttt{Linear}(4096, 128) bottleneck; symmetric \texttt{ConvT} decoder; $1.1\times10^6$ parameters. Training on $2\times10^5$ galactic-plane-masked ($|b|\geq20^\circ$) Planck SMICA patches on A100 GPU reached best validation (val\_loss $0.4437$) at epoch 99 of a 150-epoch schedule; the total training wall-clock for this run was not preserved in the run logs, so no figure is quoted (an earlier draft listed $10.6$~s, which is inconsistent with a ${\sim}100$-epoch convolutional run and has been withdrawn). The 200K-patch full re-score took $25.3$~s on A100, the source of the ${\sim}8{,}000$~patches/s throughput entry. Patch preprocessing (documented from the committed \texttt{cmb\_native\_retrain.py}): SMICA R3.00 full-mission temperature (K$_{\rm CMB}$), \texttt{gnomview} $10^\circ\!\times\!10^\circ$ $64\times64$ patches ($9.375'$/px) at $|b|\geq20^\circ$, per-patch standardization (patch mean subtracted --- the DC mode is removed by construction --- divided by patch std, NaN$\to$0, clipped to $\pm10$), \emph{no} apodization. Robustness of the top-200 ranking, rescoring all $2\times10^5$ patches with the production checkpoint: the stored scores are reproduced to $6\times10^{-5}$ (Spearman $\rho>0.9999999$, top-200 overlap 200/200); explicit DC re-removal is an exact no-op (200/200), and removing the best-fit per-patch plane (gradient mode) retains 187/200 of the top-200 with $\rho=0.973$, so the ranking is not driven by residual DC or large-scale gradient modes (artifact \artifact{pipelines/p3\_anomaly\_engine/r24conf\_pod\_session\_batch.json}).\\
 $^\ddagger$ Cross-transfer fully connected baseline (Appendix~\ref{sec:act_appendix}); ACT DR6 was not native-retrained under Path-C and is dropped from the main per-survey block (formally quarantined). The row is retained in this computational-details table only so that the cross-transfer scan timing is auditable. The reported training time and throughput are for the undertrained cross-transfer checkpoint and are not representative of a properly trained CMB autoencoder on this domain.
 }
 \end{flushleft}
