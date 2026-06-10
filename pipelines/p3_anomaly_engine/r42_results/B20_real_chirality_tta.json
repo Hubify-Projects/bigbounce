@@ -1,0 +1,185 @@
+{
+  "per_aug": {
+    "rot0_flip0": {
+      "n_images": 1000000,
+      "wall_s": 46.19720458984375,
+      "img_per_sec": 21646.3313933901,
+      "frac_class_0": 0.0,
+      "frac_class_1": 0.0,
+      "frac_class_2": 1.0,
+      "logit_mean": [
+        -5.41236321875,
+        -5.05094706640625,
+        13.3113698984375
+      ],
+      "logit_std": [
+        0.15518136170737146,
+        0.1539292291341145,
+        0.40408378619899293
+      ],
+      "mean_max_conf": 0.9999999999389648
+    },
+    "rot0_flip1": {
+      "n_images": 1000000,
+      "wall_s": 46.20813584327698,
+      "img_per_sec": 21641.2106169285,
+      "frac_class_0": 0.0,
+      "frac_class_1": 0.0,
+      "frac_class_2": 1.0,
+      "logit_mean": [
+        -5.413060484375,
+        -5.051665388671875,
+        13.313163125
+      ],
+      "logit_std": [
+        0.1550181129721601,
+        0.15370219099513963,
+        0.40349115966681826
+      ],
+      "mean_max_conf": 0.9999999996643066
+    },
+    "rot1_flip0": {
+      "n_images": 1000000,
+      "wall_s": 46.791449308395386,
+      "img_per_sec": 21371.426078494616,
+      "frac_class_0": 0.0,
+      "frac_class_1": 0.0,
+      "frac_class_2": 1.0,
+      "logit_mean": [
+        -5.412520634765625,
+        -5.051148224609375,
+        13.3117598203125
+      ],
+      "logit_std": [
+        0.154717372238705,
+        0.1535026489050585,
+        0.40285492404754103
+      ],
+      "mean_max_conf": 1.0
+    },
+    "rot1_flip1": {
+      "n_images": 1000000,
+      "wall_s": 47.10138273239136,
+      "img_per_sec": 21230.799224760456,
+      "frac_class_0": 0.0,
+      "frac_class_1": 0.0,
+      "frac_class_2": 1.0,
+      "logit_mean": [
+        -5.412623953125,
+        -5.05125652734375,
+        13.3120021953125
+      ],
+      "logit_std": [
+        0.15483185275900016,
+        0.1535317130449312,
+        0.40305340721234306
+      ],
+      "mean_max_conf": 1.0
+    },
+    "rot2_flip0": {
+      "n_images": 1000000,
+      "wall_s": 45.8193039894104,
+      "img_per_sec": 21824.86229452801,
+      "frac_class_0": 0.0,
+      "frac_class_1": 0.0,
+      "frac_class_2": 1.0,
+      "logit_mean": [
+        -5.412799525390625,
+        -5.05135757421875,
+        13.3125109765625
+      ],
+      "logit_std": [
+        0.15502063191619395,
+        0.153752249761403,
+        0.4034476408444412
+      ],
+      "mean_max_conf": 0.999999999420166
+    },
+    "rot2_flip1": {
+      "n_images": 1000000,
+      "wall_s": 46.30212664604187,
+      "img_per_sec": 21597.28013455047,
+      "frac_class_0": 0.0,
+      "frac_class_1": 0.0,
+      "frac_class_2": 1.0,
+      "logit_mean": [
+        -5.41277265625,
+        -5.051306873046875,
+        13.312334421875
+      ],
+      "logit_std": [
+        0.15499329819300833,
+        0.15377120675275396,
+        0.40350588586491287
+      ],
+      "mean_max_conf": 1.0
+    },
+    "rot3_flip0": {
+      "n_images": 1000000,
+      "wall_s": 46.75612020492554,
+      "img_per_sec": 21387.574409877034,
+      "frac_class_0": 0.0,
+      "frac_class_1": 0.0,
+      "frac_class_2": 1.0,
+      "logit_mean": [
+        -5.412489029296875,
+        -5.0510918125,
+        13.311729359375
+      ],
+      "logit_std": [
+        0.15517490423723748,
+        0.15392642352288546,
+        0.403955892572788
+      ],
+      "mean_max_conf": 1.0
+    },
+    "rot3_flip1": {
+      "n_images": 1000000,
+      "wall_s": 47.07183122634888,
+      "img_per_sec": 21244.127834997867,
+      "frac_class_0": 0.0,
+      "frac_class_1": 0.0,
+      "frac_class_2": 1.0,
+      "logit_mean": [
+        -5.41273484765625,
+        -5.05132109375,
+        13.3122748671875
+      ],
+      "logit_std": [
+        0.15487758396093035,
+        0.15363978701709274,
+        0.4032463929370685
+      ],
+      "mean_max_conf": 0.9999999999694824
+    }
+  },
+  "stationarity": {
+    "class_0": {
+      "min": 0.0,
+      "max": 0.0,
+      "spread": 0.0
+    },
+    "class_1": {
+      "min": 0.0,
+      "max": 0.0,
+      "spread": 0.0
+    },
+    "class_2": {
+      "min": 1.0,
+      "max": 1.0,
+      "spread": 0.0
+    }
+  },
+  "total_forward_passes": 8000000,
+  "total_wall_s": 372.26248240470886,
+  "overall_img_per_sec": 21490.212895810222,
+  "model": {
+    "encoder": "vit_small_patch16_224",
+    "head": "LN+MLP[384\u2192512\u2192256\u21923]",
+    "ckpt": "/workspace/analysis3_outputs/chirality_model_v2_best.pt",
+    "val_acc": 0.9368777275085449,
+    "ckpt_epoch": 79
+  },
+  "computed_at": "2026-04-30T21:55:22Z",
+  "interpretation": "Real chirality_v2 ViT-Small TTA throughput on synthetic galaxies. Class fractions across the 8 (rot, flip) augmentations should be approximately stationary on uninformative inputs; non-zero stationarity spread is the model's intrinsic non-equivariance floor (architectural, not data-driven). This is the R42 B20-style scaling test that exercises the cached-logit infrastructure end-to-end on the actual production model."
+}

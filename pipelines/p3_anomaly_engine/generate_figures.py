@@ -916,7 +916,7 @@ def fig9_cross_survey_matches():
 
     titles = [
         (r'(a) Match 1: 2QZ QSO — DESI detection', r'(b) Match 1: same object in SDSS'),
-        (r'(c) Match 2: TIC 374313355 — DESI epoch', r'(d) Match 2: SDSS epoch (score 49.5)'),
+        (r'(c) Match 2: TIC 374313355 — DESI epoch', r'(d) Match 2: SDSS epoch (display score 49.5)'),
         (r'(e) Match 3: BAL QSO candidate — DESI', r'(f) Match 3: same object in SDSS'),
     ]
 
@@ -967,8 +967,8 @@ def fig9_cross_survey_matches():
             ax.plot(wv, obs, lw=0.4, color='#1a1a2e', alpha=0.7, zorder=2)
             ax.plot(wv, rec, lw=1.1, color='#e63946', linestyle='--', alpha=0.9, zorder=3)
             ax.set_title(titles[row][col], fontsize=7.5, fontweight='bold', loc='left', pad=3)
-            ax.text(0.99, 0.96, f'Score = {score:.1f}',
-                    transform=ax.transAxes, ha='right', va='top', fontsize=7,
+            ax.text(0.99, 0.96, f'display score (non-catalog) = {score:.1f}',
+                    transform=ax.transAxes, ha='right', va='top', fontsize=6,
                     bbox=dict(boxstyle='round,pad=0.2', fc='white', ec='0.75', alpha=0.9))
             ax.text(0.99, 0.78, survey, transform=ax.transAxes, ha='right', va='top',
                     fontsize=6.5, color=SURVEY_COLORS[survey], fontweight='bold')

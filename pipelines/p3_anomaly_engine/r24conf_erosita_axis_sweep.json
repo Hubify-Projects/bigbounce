@@ -1,0 +1,166 @@
+{
+ "job": "R24conf-P3-QUEUE33-erosita-axis-sweep",
+ "date_utc": "2026-06-10T09:10:23Z",
+ "generator": "pipelines/p3_anomaly_engine/r24conf_erosita_axis_sweep.py",
+ "committed_artifacts": [
+  "pipelines/p3_anomaly_engine/pod_runs/erosita_dr1_raw/erosita_anomalies.parquet",
+  "pipelines/p3_anomaly_engine/hf_staging_pod/erosita_dr1_anomalies.parquet"
+ ],
+ "published_threshold": 0.259,
+ "n_selected": 298,
+ "membership_check": {
+  "released_298_equals_committed_raw_top298": true,
+  "released_min_score": 3.411933422088623,
+  "rank_298_raw_threshold": 3.411933422088623
+ },
+ "axis_sweep_rank298_thresholds": [
+  {
+   "axis": "z_full_sample",
+   "rank_298_threshold": 0.2181809624349116,
+   "abs_delta_vs_0.259": 0.040819037565088395,
+   "matches_0.259_at_3dp": false
+  },
+  {
+   "axis": "IF_neg_decision_function_200tree_seed42",
+   "rank_298_threshold": 0.30125020236470124,
+   "abs_delta_vs_0.259": 0.04225020236470123,
+   "matches_0.259_at_3dp": false
+  },
+  {
+   "axis": "IF_neg_decision_function_100tree_seed0",
+   "rank_298_threshold": 0.305326397649352,
+   "abs_delta_vs_0.259": 0.04632639764935198,
+   "matches_0.259_at_3dp": false
+  },
+  {
+   "axis": "IF_neg_decision_function_100tree_seed42",
+   "rank_298_threshold": 0.307941997686932,
+   "abs_delta_vs_0.259": 0.04894199768693197,
+   "matches_0.259_at_3dp": false
+  },
+  {
+   "axis": "minmax_raw",
+   "rank_298_threshold": 0.0003248210643648987,
+   "abs_delta_vs_0.259": 0.25867517893563513,
+   "matches_0.259_at_3dp": false
+  },
+  {
+   "axis": "one_minus_ecdf",
+   "rank_298_threshold": 0.0003192851452854528,
+   "abs_delta_vs_0.259": 0.25868071485471456,
+   "matches_0.259_at_3dp": false
+  },
+  {
+   "axis": "log10",
+   "rank_298_threshold": 0.5330005480811733,
+   "abs_delta_vs_0.259": 0.27400054808117325,
+   "matches_0.259_at_3dp": false
+  },
+  {
+   "axis": "sigmoid_of_z",
+   "rank_298_threshold": 0.5543298895681206,
+   "abs_delta_vs_0.259": 0.29532988956812056,
+   "matches_0.259_at_3dp": false
+  },
+  {
+   "axis": "minmax_log10",
+   "rank_298_threshold": 0.5577403676664299,
+   "abs_delta_vs_0.259": 0.29874036766642986,
+   "matches_0.259_at_3dp": false
+  },
+  {
+   "axis": "ecdf_percentile",
+   "rank_298_threshold": 0.9996807148547145,
+   "abs_delta_vs_0.259": 0.7406807148547145,
+   "matches_0.259_at_3dp": false
+  },
+  {
+   "axis": "ln",
+   "rank_298_threshold": 1.2272791165693657,
+   "abs_delta_vs_0.259": 0.9682791165693657,
+   "matches_0.259_at_3dp": false
+  },
+  {
+   "axis": "sqrt_raw",
+   "rank_298_threshold": 1.8471419604590826,
+   "abs_delta_vs_0.259": 1.5881419604590827,
+   "matches_0.259_at_3dp": false
+  },
+  {
+   "axis": "raw_reconstruction_score",
+   "rank_298_threshold": 3.411933422088623,
+   "abs_delta_vs_0.259": 3.152933422088623,
+   "matches_0.259_at_3dp": false
+  },
+  {
+   "axis": "probit_of_ecdf",
+   "rank_298_threshold": 3.4146798119454114,
+   "abs_delta_vs_0.259": 3.1556798119454115,
+   "matches_0.259_at_3dp": false
+  },
+  {
+   "axis": "robust_z_of_log10",
+   "rank_298_threshold": 4.706400936809107,
+   "abs_delta_vs_0.259": 4.447400936809107,
+   "matches_0.259_at_3dp": false
+  },
+  {
+   "axis": "z_of_log10",
+   "rank_298_threshold": 4.79857575030056,
+   "abs_delta_vs_0.259": 4.53957575030056,
+   "matches_0.259_at_3dp": false
+  },
+  {
+   "axis": "raw_over_p99",
+   "rank_298_threshold": 17.49364572023373,
+   "abs_delta_vs_0.259": 17.23464572023373,
+   "matches_0.259_at_3dp": false
+  },
+  {
+   "axis": "raw_over_mean",
+   "rank_298_threshold": 52.852584716334626,
+   "abs_delta_vs_0.259": 52.593584716334625,
+   "matches_0.259_at_3dp": false
+  },
+  {
+   "axis": "robust_z_median_MAD",
+   "rank_298_threshold": 655.4203880065373,
+   "abs_delta_vs_0.259": 655.1613880065373,
+   "matches_0.259_at_3dp": false
+  }
+ ],
+ "any_axis_reproduces_0.259": false,
+ "table3_monotonicity_test": {
+  "rows": [
+   {
+    "iauname": "1eRASS J053856.1-640457",
+    "S_BigAE_production": 1.084,
+    "raw_committed": 7174.32275390625
+   },
+   {
+    "iauname": "1eRASS J053544.3-660159",
+    "S_BigAE_production": 0.815,
+    "raw_committed": 2853.305419921875
+   },
+   {
+    "iauname": "1eRASS J170249.4-484724",
+    "S_BigAE_production": 0.591,
+    "raw_committed": 1674.0423583984375
+   },
+   {
+    "iauname": "1eRASS J062619.8-694546",
+    "S_BigAE_production": 0.498,
+    "raw_committed": 10503.62109375
+   },
+   {
+    "iauname": "1eRASS J152039.9-570955",
+    "S_BigAE_production": 0.439,
+    "raw_committed": 3587.278076171875
+   }
+  ],
+  "spearman_rho": -0.09999999999999999,
+  "production_axis_monotone_in_committed_raw": false,
+  "implication": "The production S_BigAE ordering of the Table III top-5 disagrees with the committed raw-score ordering (e.g. the committed-raw rank-1 source J062619.8-694546 carries production S_BigAE = 0.498 while the committed-raw rank-2 source J053856.1-640457 carries 1.084). Therefore NO monotone per-object transform of the committed raw axis (normalization, log, z-scoring, calibration) can reproduce the production scores or the 0.259 threshold."
+ },
+ "conclusion": "No committed score axis reproduces the production threshold 0.259: the monotone sweep brackets it on no axis, and the Table III production scores are non-monotone in the committed raw artifact, ruling out the entire class of per-object monotone rescalings. The released 298-source membership list is, however, exactly the committed-raw top-298 (min released score = rank-298 raw threshold 3.4119): the n=298 membership itself is the committed, reproducible selection (membership-is-canonical)."
+}

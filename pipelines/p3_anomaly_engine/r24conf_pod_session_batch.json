@@ -1,0 +1,74 @@
+{
+ "written_utc": "2026-06-10T10:02:21Z",
+ "script": "pipelines/p3_anomaly_engine/r24conf_pod_session_batch.py",
+ "item34_sixway_dedup": {
+  "surveys": [
+   "desi_dr1",
+   "erosita_dr1",
+   "planck_cmb",
+   "gaia_dr3",
+   "neowise_pathc",
+   "sdss_dr18"
+  ],
+  "radius_arcsec": 5.0,
+  "per_survey_detections": {
+   "desi_dr1": 195829,
+   "erosita_dr1": 298,
+   "planck_cmb": 200,
+   "gaia_dr3": 500,
+   "neowise_pathc": 419,
+   "sdss_dr18": 77905
+  },
+  "n_input_detections": 275151,
+  "n_unique_6way": 269317,
+  "n_planck_patch_only_clusters": 200,
+  "n_unique_point_source": 269117,
+  "published_claims": {
+   "catalog_grade_with_patches": 264938,
+   "catalog_grade_point_source": 264738
+  },
+  "matches_published": {
+   "with_patches": false,
+   "point_source": false
+  }
+ },
+ "item35_healpix_uniformity": {
+  "8way_incl_act": {
+   "n_objects": 378480,
+   "n_occupied_pixels": 24154,
+   "n_total_pixels": 49152,
+   "expectation_model": "uniform mean over OCCUPIED pixels; Poisson variance (chi^2 = sum (n-nbar)^2/nbar)",
+   "nbar_per_occupied_pixel": 15.669454334685767,
+   "chi2": 379603.8328049038,
+   "dof": 24153,
+   "chi2_reduced": 15.7166328325634
+  },
+  "7way_headline": {
+   "n_objects": 378280,
+   "n_occupied_pixels": 24049,
+   "n_total_pixels": 49152,
+   "expectation_model": "uniform mean over OCCUPIED pixels; Poisson variance (chi^2 = sum (n-nbar)^2/nbar)",
+   "nbar_per_occupied_pixel": 15.729552164331157,
+   "chi2": 376713.1413133129,
+   "dof": 24048,
+   "chi2_reduced": 15.665050786481741
+  },
+  "published_claims": {
+   "n_pixels": 38330,
+   "chi2": 143936,
+   "dof": 38329,
+   "chi2_reduced": 3.76
+  }
+ },
+ "item41_sdss_convergence_epoch": {
+  "source": "data/runpod_backups/ktds4mkmzb7ven_20260427/outputs/sdss_native/training_log.json (+ logs/sdss_native_retrain.log)",
+  "best_epoch": 12,
+  "best_val_loss": 0.031080579902141983,
+  "early_stop_epoch": 17,
+  "max_epochs": 40,
+  "patience": 5,
+  "n_train": 269989,
+  "n_val": 29998,
+  "passes_gate_0p30": true
+ }
+}

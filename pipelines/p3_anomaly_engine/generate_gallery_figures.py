@@ -240,15 +240,21 @@ FAMILY_DISPLAY = {
 
 
 def _sublabel(obj, short=True):
-    """Build the per-thumbnail caption line."""
-    fam = obj.get("label", "")
+    """Build the per-thumbnail caption line.
+
+    v3.1.80 (R22prov OpenAI-E7): raw taxonomy-pipeline residual scores
+    (unnormalized, O(10^3-10^5)) are no longer burned into panels — they are
+    not on the canonical-S scale and were undefined in the paper. High-z QSO
+    panels show z and the per-arm Z-arm sub-score r_Z (defined in paper
+    §sec:highz); all other panels show RA only.
+    """
     if "targetid" in obj:
-        # high-z QSO: show z and score
-        return f"z={obj['z']:.2f} | AE={obj['score']:.2f}"
+        # high-z QSO: show z and the Z-arm sub-score r_Z
+        return f"z={obj['z']:.2f} | $r_Z$={obj['score']:.2f}"
     elif short:
-        return f"RA {obj['ra']:.1f}° | AE={obj['score']:.0f}"
+        return f"RA {obj['ra']:.1f}°"
     else:
-        return f"RA={obj['ra']:.3f} Dec={obj['dec']:.3f}\nScore={obj['score']:.0f}"
+        return f"RA={obj['ra']:.3f} Dec={obj['dec']:.3f}"
 
 
 def make_gallery_figure(
