@@ -1,0 +1,55 @@
+{
+ "script": "research/focused_paper_source_integration/c9l_sigma_theory_continuous_marginalization.py",
+ "purpose": "R25conf Grok P2-M1: continuous uniform-hyperprior marginalization over sigma_theory in [0.5, 2.0] vs the discrete grid of Sec. VI / tab:bayes.",
+ "conventions": "identical to committed c9g/c9k; fhat = -35/8, sigma = 0.7",
+ "discrete_grid": {
+  "sigma_theory=delta": {
+   "BF_broad_[-15,15]": 17.098,
+   "BF_narrow_[-5,5]": 7.001
+  },
+  "sigma_theory=0.5": {
+   "BF_broad_[-15,15]": 13.913,
+   "BF_narrow_[-5,5]": 5.697
+  },
+  "sigma_theory=1.0": {
+   "BF_broad_[-15,15]": 9.805,
+   "BF_narrow_[-5,5]": 4.015
+  },
+  "sigma_theory=2.0": {
+   "BF_broad_[-15,15]": 5.648,
+   "BF_narrow_[-5,5]": 2.313
+  }
+ },
+ "continuous_marginal": {
+  "hyperprior": "sigma_theory ~ U[0.5, 2.0]",
+  "BF_broad_[-15,15]": 8.84,
+  "BF_narrow_[-5,5]": 3.62,
+  "grid_convergence": {
+   "3": {
+    "BF_broad": 9.0672,
+    "BF_narrow": 3.7129
+   },
+   "11": {
+    "BF_broad": 8.8488,
+    "BF_narrow": 3.6234
+   },
+   "101": {
+    "BF_broad": 8.8402,
+    "BF_narrow": 3.6199
+   },
+   "1001": {
+    "BF_broad": 8.8401,
+    "BF_narrow": 3.6199
+   },
+   "10001": {
+    "BF_broad": 8.8401,
+    "BF_narrow": 3.6199
+   }
+  },
+  "note": "Marginal BF (broad 8.84, narrow 3.62) lies between the discrete sigma_theory = 0.5 and 2.0 endpoints (broad 13.91/5.65) and close to the recommended sigma_theory = 1.0 values (broad 9.80, narrow 4.01); BF > 1 (bounce over tuned multifield) holds across the entire hyperprior support, so the ranking is stable under continuous prior-width variation. 3-point grid converged to < 0.03 in log-evidence vs the 10001-point grid."
+ },
+ "three_point_vs_fine_log_gap": {
+  "delta_logBF_broad": 0.0254,
+  "delta_logBF_narrow": 0.0254
+ }
+}

@@ -96,6 +96,20 @@
   {109}},\ \bibinfo {pages} {123511} (\bibinfo {year} {2024})},\ \Eprint
   {https://arxiv.org/abs/2311.13082} {arXiv:2311.13082 [astro-ph.CO]}
   \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Li}\ \emph {et~al.}(2017)\citenamefont {Li},
+  \citenamefont {Quintin}, \citenamefont {Wang},\ and\ \citenamefont
+  {Cai}}]{CaiBrandenberger:2014}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Y.-B.}\ \bibnamefont
+  {Li}}, \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Quintin}},
+  \bibinfo {author} {\bibfnamefont {D.-G.}\ \bibnamefont {Wang}},\ and\
+  \bibinfo {author} {\bibfnamefont {Y.-F.}\ \bibnamefont {Cai}},\ }\bibfield
+  {title} {\bibinfo {title} {Matter bounce cosmology with a generalized single
+  field: non-{Gaussianity} and an extended no-go theorem},\ }\href
+  {https://doi.org/10.1088/1475-7516/2017/03/031} {\bibfield  {journal}
+  {\bibinfo  {journal} {JCAP}\ }\textbf {\bibinfo {volume} {03}},\ \bibinfo
+  {pages} {031}},\ \Eprint {https://arxiv.org/abs/1612.02036} {arXiv:1612.02036
+  [astro-ph.CO]} \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Wands}(1999)}]{Wands:1998yp}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
@@ -224,16 +238,6 @@
   {\bibfield  {journal} {\bibinfo  {journal} {arXiv e-prints}\ } (\bibinfo
   {year} {2026})},\ \Eprint {https://arxiv.org/abs/2603.13924}
   {arXiv:2603.13924} \BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Cai}\ and\ \citenamefont
-  {Brandenberger}(2014)}]{CaiBrandenberger:2014}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {Y.-F.}\ \bibnamefont
-  {Cai}}\ and\ \bibinfo {author} {\bibfnamefont {R.}~\bibnamefont
-  {Brandenberger}},\ }\bibfield  {title} {\bibinfo {title} {Non-{Gaussianity}
-  in a matter bounce},\ }\href {https://doi.org/10.1103/PhysRevD.90.023534}
-  {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. D}\ }\textbf {\bibinfo
-  {volume} {90}},\ \bibinfo {pages} {023534} (\bibinfo {year}
-  {2014})}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Slosar}\ \emph {et~al.}(2008)\citenamefont {Slosar},
   \citenamefont {Hirata}, \citenamefont {Seljak}, \citenamefont {Ho},\ and\
   \citenamefont {Padmanabhan}}]{Slosar:2008}%

@@ -1,0 +1,64 @@
+\begin{thebibliography}{8}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Minami and Komatsu(2020)]{Minami2020}
+Yuto Minami and Eiichiro Komatsu.
+\newblock New extraction of the cosmic birefringence from the planck 2018
+  polarization data.
+\newblock \emph{Phys. Rev. Lett.}, 125:\penalty0 221301, 2020.
+
+\bibitem[Fujita et~al.(2021)Fujita, Murai, Nakatsuka, and
+  Tsujikawa]{Fujita2021}
+Tomohiro Fujita, Kai Murai, Hiromasa Nakatsuka, and Shinji Tsujikawa.
+\newblock Detection of isotropic cosmic birefringence and its implications for
+  axionlike particles including dark energy.
+\newblock \emph{Physical Review D}, 103:\penalty0 043509, 2021.
+\newblock \doi{10.1103/PhysRevD.103.043509}.
+
+\bibitem[Eskilt and Komatsu(2022)]{Eskilt2022}
+Johannes~R. Eskilt and Eiichiro Komatsu.
+\newblock Improved constraints on cosmic birefringence from the wmap and planck
+  cosmic microwave background polarization data.
+\newblock \emph{Phys. Rev. D}, 106:\penalty0 063503, 2022.
+
+\bibitem[Diego-Palazuelos and Komatsu(2025)]{DiegoPalazuelos2025}
+P.~Diego-Palazuelos and E.~Komatsu.
+\newblock Cosmic birefringence from the {Atacama Cosmology Telescope} data
+  release 6.
+\newblock \emph{arXiv preprint}, 2025.
+
+\bibitem[{LiteBIRD Collaboration} et~al.(2023){LiteBIRD Collaboration}, Allys,
+  et~al.]{LiteBIRD2023}
+{LiteBIRD Collaboration}, E.~Allys, et~al.
+\newblock Probing cosmic inflation with the {LiteBIRD} cosmic microwave
+  background polarization survey.
+\newblock \emph{Progress of Theoretical and Experimental Physics},
+  2023:\penalty0 042F01, 2023.
+\newblock \doi{10.1093/ptep/ptac150}.
+
+\bibitem[Golden(2026{\natexlab{a}})]{Golden2026P1a}
+Houston Golden.
+\newblock {Structural Closure of Einstein--Cartan--Holst Dark Energy:
+  Perturbation Transparency, Inflation--$f_{\rm NL}$ Tension, and Surviving
+  Matter-Bounce Tests}.
+\newblock \emph{(in preparation)}, 2026{\natexlab{a}}.
+\newblock HUBIFY-2026-001A; companion paper, this volume.
+
+\bibitem[Golden(2026{\natexlab{b}})]{Golden2026P2}
+Houston Golden.
+\newblock {$f_{\rm NL} = -35/8$ Forecast: SPHEREx Discrimination of Bounce vs.\
+  Inflation}.
+\newblock \emph{(in preparation)}, 2026{\natexlab{b}}.
+\newblock HUBIFY-2026-002; companion paper, this volume.
+
+\bibitem[Namikawa et~al.(2025)Namikawa, Murai, and Naokawa]{Namikawa2025}
+Toshiya Namikawa, Kai Murai, and Fumihiro Naokawa.
+\newblock {Planck} constraints on axionlike particles through isotropic cosmic
+  birefringence.
+\newblock \emph{Physical Review D}, 2025.
+
+\end{thebibliography}
