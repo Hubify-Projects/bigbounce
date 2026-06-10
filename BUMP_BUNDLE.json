@@ -5,7 +5,8 @@
     "datestamp": "2026-06-09",
     "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1a_ech_nogo.pdf",
     "sitePdfPath": "/papers/paper1a_ech_nogo_v1A.0.51.pdf",
-    "changelog": "R23conf closure: cleanest round of the six (E:0/M:0). Birefringence-mapping factor-of-2 corrected (beta=(alpha/2M)dtheta; rho_theta~6 rho_Lambda, honest weakening to within-an-order-of-magnitude), epsilon-correction symbol defined at first use, N_tot=92 canonicalized, fig-6 annotation collision fixed, tab:params overfull fixed. 24pp/md5 2ab29d5b/0-0-0. Gate: R24conf clean round + Houston sign-off."
+    "changelog": "R23conf closure: cleanest round of the six (E:0/M:0). Birefringence-mapping factor-of-2 corrected (beta=(alpha/2M)dtheta; rho_theta~6 rho_Lambda, honest weakening to within-an-order-of-magnitude), epsilon-correction symbol defined at first use, N_tot=92 canonicalized, fig-6 annotation collision fixed, tab:params overfull fixed. 24pp/md5 2ab29d5b/0-0-0. Gate: R24conf clean round + Houston sign-off.",
+    "texCommit": "279ed4c7"
   },
   {
     "paperSlug": "paper-1b",
@@ -13,7 +14,8 @@
     "datestamp": "2026-06-09",
     "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1b_mcmc_companion.pdf",
     "sitePdfPath": "/papers/paper1b_mcmc_companion_v1B.0.52.pdf",
-    "changelog": "R23conf closure: SVI ALP provenance rewrite \u2014 the '3 benchmark configs C=4/8/12, 3,240 each' narrative matched no committed chain and is replaced by the archived-chain truth (run1_full C=8 2,160 / run2_extended C[1,30] 6,840 / run3 beta_free 720 = 9,720); dphi/fa mass pairings corrected against the committed EOM (c10b grid artifact; envelope [0.17,0.43]deg -> [0.01,0.48]deg, required-C band extended honestly); c10 6-config x 500-MC robustness battery \u2014 bias attribution corrected to unweighted-fit weighting + BB template shape (invvar fit removes ~80%; CAMB BB ~40%; apod/footprint/purify insensitive), all chain-backed headline numbers unchanged. 15pp/md5 4047dfe1/0-0-0. Gate: R24conf clean round."
+    "changelog": "R23conf closure: SVI ALP provenance rewrite \u2014 the '3 benchmark configs C=4/8/12, 3,240 each' narrative matched no committed chain and is replaced by the archived-chain truth (run1_full C=8 2,160 / run2_extended C[1,30] 6,840 / run3 beta_free 720 = 9,720); dphi/fa mass pairings corrected against the committed EOM (c10b grid artifact; envelope [0.17,0.43]deg -> [0.01,0.48]deg, required-C band extended honestly); c10 6-config x 500-MC robustness battery \u2014 bias attribution corrected to unweighted-fit weighting + BB template shape (invvar fit removes ~80%; CAMB BB ~40%; apod/footprint/purify insensitive), all chain-backed headline numbers unchanged. 15pp/md5 4047dfe1/0-0-0. Gate: R24conf clean round.",
+    "texCommit": "6950ea51"
   },
   {
     "paperSlug": "paper-2",
@@ -21,7 +23,8 @@
     "datestamp": "2026-06-09",
     "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/research/focused_paper_source_integration/02_full_draft.pdf",
     "sitePdfPath": "/papers/paper2_fnl_forecast_v1.7.46.pdf",
-    "changelog": "R23conf closure: corrupted radius-50 methods paragraph repaired; irreproducible Table III GR-Bayes values replaced by committed closed-form recompute (c9g; correction note in caption); App-A field-label fix with exact B_Phi(c=2) <-> B_zeta(6/5) mapping proof; '0.5000 empirical ratio' exposed as hardcoded literal and reframed as the -2Im operator identity (c9i); null-space scatter propagated to significance (c9h: 16-84% = 4.4-6.2 sigma); kappa_1 -> kappa_eps; template-mismatch BF bookkeeping paragraph (c9j); 73-finding truth audit (16 closed, 7 falsified). 23pp/md5 45ee3af4/0-0-0. Gate: R24conf clean round."
+    "changelog": "R23conf closure: corrupted radius-50 methods paragraph repaired; irreproducible Table III GR-Bayes values replaced by committed closed-form recompute (c9g; correction note in caption); App-A field-label fix with exact B_Phi(c=2) <-> B_zeta(6/5) mapping proof; '0.5000 empirical ratio' exposed as hardcoded literal and reframed as the -2Im operator identity (c9i); null-space scatter propagated to significance (c9h: 16-84% = 4.4-6.2 sigma); kappa_1 -> kappa_eps; template-mismatch BF bookkeeping paragraph (c9j); 73-finding truth audit (16 closed, 7 falsified). 23pp/md5 45ee3af4/0-0-0. Gate: R24conf clean round.",
+    "texCommit": "f8b3c0e2"
   },
   {
     "paperSlug": "paper-3",
@@ -29,7 +32,8 @@
     "datestamp": "2026-06-09",
     "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p3_anomaly_engine/paper3_draft.pdf",
     "sitePdfPath": "/papers/paper3_anomaly_catalog_v3.1.81.pdf",
-    "changelog": "R23conf closure: abstract improvement 7.9% -> 9.4% (anchored to the paper's own 6.1% definition, 4 sites); 4 figure-level contradictions closed with artifact evidence (ACT caption, 77,905 UMAP input, Fig-8 score-axis disclosure, gold/silver tiers defined 116+1,006=1,122); FoF dedup chain audit artifact (0 of 9,553 clusters exceed 5-arcsec link); 57-row truth audit (9 closed, 7 falsified). 24pp/md5 aa791276/0-0-0. Gate: R24conf clean round + HF dataset flip at submission."
+    "changelog": "R23conf closure: abstract improvement 7.9% -> 9.4% (anchored to the paper's own 6.1% definition, 4 sites); 4 figure-level contradictions closed with artifact evidence (ACT caption, 77,905 UMAP input, Fig-8 score-axis disclosure, gold/silver tiers defined 116+1,006=1,122); FoF dedup chain audit artifact (0 of 9,553 clusters exceed 5-arcsec link); 57-row truth audit (9 closed, 7 falsified). 24pp/md5 aa791276/0-0-0. Gate: R24conf clean round + HF dataset flip at submission.",
+    "texCommit": "ccb8e852"
   },
   {
     "paperSlug": "paper-4",
@@ -37,7 +41,8 @@
     "datestamp": "2026-06-09",
     "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p2_chirality/chirality_catalog_paper.pdf",
     "sitePdfPath": "/papers/chirality_catalog_paper_v168.pdf",
-    "changelog": "R23conf closure: headline real-space null regenerated from the repaired generator \u2014 0.43sigma(p=0.30) -> 0.41sigma(rank-p=0.31) at 10^4 nulls with in-text correction note (committed run_dipole_catalog_c.py carried an all-CW selection defect; regenerated values agree within MC noise, verdict unchanged); per-galaxy label-shuffle null robustness (0.58sigma/p=0.26 same generator; 0.70/0.23 independent c11b); HC selection (N=949,584) now explicit in abstract+Table I; full-sample 4.2sigma disclosed as low-confidence-tail systematics diagnostic; injection axis protocol documented (axis-averaged, 10-axis spot check 0.45-0.62 vs published 0.55); META-M3/M4 recompute artifacts. 19pp/md5 90c4a8a3/0-0-0. Gate: TWO R24conf-class clean rounds (post-retraction rule) + Houston sign-off; first in submission queue."
+    "changelog": "R23conf closure: headline real-space null regenerated from the repaired generator \u2014 0.43sigma(p=0.30) -> 0.41sigma(rank-p=0.31) at 10^4 nulls with in-text correction note (committed run_dipole_catalog_c.py carried an all-CW selection defect; regenerated values agree within MC noise, verdict unchanged); per-galaxy label-shuffle null robustness (0.58sigma/p=0.26 same generator; 0.70/0.23 independent c11b); HC selection (N=949,584) now explicit in abstract+Table I; full-sample 4.2sigma disclosed as low-confidence-tail systematics diagnostic; injection axis protocol documented (axis-averaged, 10-axis spot check 0.45-0.62 vs published 0.55); META-M3/M4 recompute artifacts. 19pp/md5 90c4a8a3/0-0-0. Gate: TWO R24conf-class clean rounds (post-retraction rule) + Houston sign-off; first in submission queue.",
+    "texCommit": "94113e5e"
   },
   {
     "paperSlug": "paper-5",
@@ -45,6 +50,7 @@
     "datestamp": "2026-06-09",
     "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf",
     "sitePdfPath": "/papers/p5_desi_chirality_v0.1.53.pdf",
-    "changelog": "R23conf closure: Bonferroni misstatement fixed (Z3=-3.14 crossing disclosed with monopole-subtracted residuals, all null); count ledger unified at every site (812,793 env rows / 783,820 unique spirals / 7,815 dropouts); unique-TARGETID omnibus chi2=3.00 (p=0.39) added beside the row-level statistic; Bonferroni-4 threshold corrected 3.02 -> 2.77 (1.87 still passes); R_s=10 under-resolution caveats; astra table promoted full-width; 63-row truth audit (24 closed, 6 falsified). 25pp/md5 b86b03f9/0-0-0. Gate: R24conf clean round; submits after P4's arXiv ID."
+    "changelog": "R23conf closure: Bonferroni misstatement fixed (Z3=-3.14 crossing disclosed with monopole-subtracted residuals, all null); count ledger unified at every site (812,793 env rows / 783,820 unique spirals / 7,815 dropouts); unique-TARGETID omnibus chi2=3.00 (p=0.39) added beside the row-level statistic; Bonferroni-4 threshold corrected 3.02 -> 2.77 (1.87 still passes); R_s=10 under-resolution caveats; astra table promoted full-width; 63-row truth audit (24 closed, 6 falsified). 25pp/md5 b86b03f9/0-0-0. Gate: R24conf clean round; submits after P4's arXiv ID.",
+    "texCommit": "97d3e3d5"
   }
 ]
