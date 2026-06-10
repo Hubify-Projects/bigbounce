@@ -18,7 +18,7 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.58-2026-06-11}
+\newcommand{\paperVersion}{v0.1.59-2026-06-11}
 % v0.1.52-2026-06-09 (R22prov truth-audit closure wave; work order in
 %   project-context/peer-reviews/R22prov_P5_TRUTH_AUDIT.md; recompute artifacts
 %   outputs/17_v0151_closure_recomputes.json + 18_v0151_stratified_and_density.json):
@@ -502,7 +502,8 @@ environment--chirality conclusion unchanged (artifact
 (\textsc{scipy} \texttt{binary\_dilation} with the default
 face-connected $3\!\times\!3\!\times\!3$ cross structuring element,
 $\lceil R_s/{\rm cell}\rceil + 1 = 2$ iterations at the canonical
-configuration): $2{,}417{,}697$ occupied $\to$ $3{,}150{,}086$ in-mask
+configuration; the count is recomputed per Phase~2 sweep cell,
+giving 3 at $R_s\!=\!50$): $2{,}417{,}697$ occupied $\to$ $3{,}150{,}086$ in-mask
 ($18.8\%$ of the cube); $\bar\rho_{\rm cell}\!=\!4.64$ galaxies/cell.
 \item Convert counts to overdensity
 $\delta = \rho / \bar\rho - 1$.
@@ -1293,6 +1294,19 @@ $1.64\sigma$ (instead of $1.87\sigma$, which occurs in an
 under-resolved $R_s = 10$ cell) and the label-shuffle look-elsewhere
 $p$-values span $0.13$--$0.48$.
 
+\emph{Mask-dilation scaling across the sweep.} The footprint-dilation
+iteration count is not frozen at the canonical value: each sweep cell
+recomputes $\lceil R_s/{\rm cell}\rceil + 1$ from its own $R_s$ (2
+iterations at $R_s \in \{10, 25\}$, 3 at $R_s = 50$), and a local
+rebuild reproduces the published $R_s\!=\!50$ mask to within 4 of
+$3{,}416{,}329$ in-mask cells (volume fractions agree to
+$<\!10^{-6}$). The counterfactual $R_s\!=\!50$ rebuild that retains
+the $R_s\!=\!25$-tuned 2-iteration mask shifts class volumes by
+$\le 0.82$\,pp, retains $99.75\%$ of matched-spiral class
+assignments, and moves per-class $f_{\rm CW}$ by at most $0.27$\,pp
+(the $n\!=\!406$ void bin), leaving every sweep conclusion unchanged
+(\artifact{pipelines/p5\_desi\_chirality/outputs/26\_r27conf\_ess\_recomputes.json}).
+
 \begin{table*}[t]
 \caption{Phase 2 sensitivity sweep on the declared env-labeled parent:
 per-cell cross-class range of $f_{\rm CW}$ (pp), void-class population
@@ -1519,7 +1533,20 @@ $36{,}181$ of $57{,}081$ void spirals --- a membership perturbation
 far larger than any plausible RSD-induced boundary-flip set at
 $\sigma_v/(aH) \lesssim 5$\,Mpc/$h$ --- and shifts
 $\Delta f_{\rm CW}$ by only $0.6$\,pp with the null verdict
-unchanged. We note that
+unchanged. A direct FoG-scale Monte Carlo sharpens this bound:
+perturbing each spiral's line-of-sight comoving distance by a
+$\sigma\!=\!5$\,Mpc/$h$ Gaussian (200 realizations at the
+$\sigma_v/(aH)$ displacement scale above; used in place of a
+deterministic per-galaxy compression, which would require a group
+catalog that is not part of the P5 data set) reassigns
+$\sim\!4.4\times10^{4}$ hole-union memberships per realization (the
+void count rises from $57{,}081$ to $76{,}490 \pm 161$ as boundary
+spirals scatter inward), yet $\Delta f_{\rm CW}$ stays within
+$[-0.34, +0.37]$\,pp (coherent $\pm 5$\,Mpc/$h$ shifts:
+$-0.16$/$+0.03$\,pp) and no realization's void/non-void two-sample
+$|z|$ exceeds $1.9$
+(\artifact{pipelines/p5\_desi\_chirality/outputs/26\_r27conf\_ess\_recomputes.json}).
+We note that
 this RSD-robustness argument applies to the per-galaxy void-membership
 test itself; the internal composition of the ``non-void'' control
 sample (a mix of walls, filaments, and clusters) is still subject to
