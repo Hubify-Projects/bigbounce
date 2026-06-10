@@ -614,12 +614,13 @@ $\sqrt{4 p_0 (1-p_0)} = 0.99998$ at $p_0 = 0.4972$, i.e.\
 ${<}0.01\%$ in $\sigma$, far below the quoted precision. The monopole reference itself carries finite counting
 uncertainty, which we propagate explicitly: where $\sigma_{\rm pred}$
 uses the Paper~IV catalog-wide $\Delta f_{\rm CW}$
-($N\!=\!3.2\times10^6$, ${\rm se}\!\approx\!\sqrt{0.25/3.2\times10^6}
+($N\!=\!3.2\times10^6$, ${\rm se}\!\approx\!\sqrt{0.25/(3.2\times10^6)}
 = 2.8\times10^{-4}$), the induced uncertainty on $\sigma_{\rm pred}$
 for an $N\!\approx\!4\times10^5$ class is $2\,{\rm se}\,\sqrt{N}
 \approx 0.36$; where the matched-sample monopole $f_{\rm CW}^{\rm P5}$
 is the reference ($N\!=\!812{,}793$, ${\rm se}\!\approx\!5.5\times
-10^{-4}$), it is $\approx 0.7$. Residuals of order $1$--$2\sigma$
+10^{-4}$), it is $\approx 0.7$ for the same $N\!\approx\!4\times10^5$
+class. Residuals of order $1$--$2\sigma$
 (e.g.\ the Phase-2 maximum $1.87$) should be read with this band in
 mind; the label-shuffle permutation null, which fixes the total CW
 count at its observed value, incorporates the matched-sample monopole
@@ -1495,7 +1496,7 @@ DESIVAST-anchored chirality null tests environmental dependence on
 the cleanest available DR1 void definition.
 
 \emph{RSD treatment for DESIVAST.} The DESIVAST primary
-path is RSD-insensitive (rather than strictly immune) at the level
+path is RSD-bounded (rather than strictly immune) at the level
 relevant to this work --- individual in/out membership flips for
 spirals near hole boundaries are not excluded, but the displacement
 scale argument below bounds their rate: DESIVAST defines voids via the geometry of large
@@ -1510,8 +1511,16 @@ the typical Kaiser-plus-finger-of-god displacement $\sigma_v/(aH)
 \lesssim 5$\,Mpc/$h$ at $z \lesssim 0.24$ is several times smaller
 than the void effective radii. The within-void/non-void chirality
 fractions therefore inherit no anisotropic RSD systematic at the
-present precision. We note that
-this RSD-immunity argument applies to the per-galaxy void-membership
+present precision. An empirical bound on membership-flip sensitivity
+comes from the membership-definition variant of
+\S\ref{sec:desivast_maximal_healpix}: swapping the permissive
+hole-union criterion for the strict maximal-sphere interior reassigns
+$36{,}181$ of $57{,}081$ void spirals --- a membership perturbation
+far larger than any plausible RSD-induced boundary-flip set at
+$\sigma_v/(aH) \lesssim 5$\,Mpc/$h$ --- and shifts
+$\Delta f_{\rm CW}$ by only $0.6$\,pp with the null verdict
+unchanged. We note that
+this RSD-robustness argument applies to the per-galaxy void-membership
 test itself; the internal composition of the ``non-void'' control
 sample (a mix of walls, filaments, and clusters) is still subject to
 RSD-induced boundary shifts between those non-void subclasses, but
@@ -2029,7 +2038,7 @@ retain their class label. The headline observable is nonetheless
 with parity in \emph{both} builds --- unweighted: void
 $f_{\rm CW} = 0.475 \pm 0.023$ ($n=478$, $-1.1\sigma$), wall $0.500$,
 filament $0.498$, cluster $0.496$; weighted: void $0.502 \pm 0.003$
-($n = 21{,}392$ after the class repopulates, $+0.6\sigma$), wall
+($n = 21{,}392$ after the class repopulates, $+0.5\sigma$), wall
 $0.496$, filament $0.498$, cluster $0.496$. The largest between-build
 shift ($+2.7$~pp, void) reflects that $478 \to 21{,}392$ repopulation,
 with both endpoints individually null; the populous classes move by
@@ -2116,7 +2125,7 @@ as an environmental signal would have \emph{appeared} in the
 canonical run and \emph{survived} or grown here; instead both runs
 are null ($p = 0.31$ and $p = 0.99$), and the corrected class volume
 fractions and spatial coherence remain cosmologically plausible (the
-per-shell table below), so the null verdict is robust to the choice
+per-shell statistics below), so the null verdict is robust to the choice
 of correction. The omnibus $4\times2$ homogeneity test sharpens
 accordingly: $\chi^2 = 0.11$ with 3~d.o.f.\ ($p = 0.99$) on the
 selection-corrected classes ($n_{\rm CW}$: void $2{,}164$, wall
@@ -2127,8 +2136,8 @@ the per-galaxy
 corrected label catalog are released with the reproducibility
 artifacts
 (\artifact{pipelines/p5\_desi\_chirality/outputs/16\_cosmic\_web\_zshell\_corrected.json}).
-The per-shell table (all 21 shells hold $2.16\times10^{5}$ to
-$1.19\times10^{6}$ galaxies) quantifies the correction at the cell
+The per-shell statistics (all 21 shells hold $2.16\times10^{5}$ to
+$1.19\times10^{6}$ galaxies) quantify the correction at the cell
 level: before correction the in-mask mean of the global-mean
 overdensity drifts from $+62.3$ in the lowest shell ($z<0.05$) to
 $-0.90$ in the highest ($z \geq 1.5$), while the shell-normalized
