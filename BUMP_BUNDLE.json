@@ -1,11 +1,11 @@
 [
   {
     "paperSlug": "paper-5",
-    "version": "v0.1.59",
+    "version": "v0.1.60",
     "datestamp": "2026-06-11",
     "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf",
-    "sitePdfPath": "/papers/p5_desi_chirality_v0.1.59.pdf",
-    "changelog": "R27conf ESSENTIAL recomputes closed (26-series): Q1 per-Rs dilation \u2014 reviewer premise empirically falsified (production already scales per-cell; rebuilt mask matches published <1e-6; counterfactual <=0.82pp/<=0.27pp); Q2 FoG membership \u2014 ~44k reassignments per realization yet dF_CW within [-0.34,+0.37]pp, |z|<=1.9, null unchanged. 28pp/md5 3a80c50b/0-0-0. Gate: R28conf (final round of the campaign, with working Perplexity leg).",
-    "texCommit": "1fb2f381"
+    "sitePdfPath": "/papers/p5_desi_chirality_v0.1.60.pdf",
+    "changelog": "R28conf ROUND CLEAN \u2014 the final clean round of the six-paper campaign. 61 findings audited: Gemini 4E falsified (convention misreads), Perplexity citation attack falsified by live arXiv check, 13 verified closed in-session (incl. 2.1 sigma correction + Bonferroni-5 2.81->2.58; neither moves a verdict). 28pp/md5 20ffc154/0-0-0. SIGN-OFF-READY at 95%; submits after P4's arXiv ID.",
+    "texCommit": "5b535a19"
   }
 ]
