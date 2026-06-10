@@ -1,11 +1,20 @@
 [
   {
-    "paperSlug": "paper-5",
-    "version": "v0.1.58",
+    "paperSlug": "paper-1a",
+    "version": "v1A.0.56",
     "datestamp": "2026-06-11",
-    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf",
-    "sitePdfPath": "/papers/p5_desi_chirality_v0.1.58.pdf",
-    "changelog": "Completeness-weighted rebuild closes P5's last compute item (queue #16 + R26conf residue): 7.5e7 DESI BGS_BRIGHT randoms, 0.01<z<0.50 window; environments re-label wholesale (44% cell agreement) yet per-class f_CW shifts <=0.05pp filament/0.03pp cluster/0.40pp wall/2.7pp void(n~430, inside counting width) \u2014 the null is CLASSIFICATION-ROBUST under both environment definitions; cube-3 dilation <=3.1pp/99.6%. 27pp/md5 6ffcd714/0-0-0. Gate: R27conf round.",
-    "texCommit": "c0d542ce"
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1a_ech_nogo.pdf",
+    "sitePdfPath": "/papers/paper1a_ech_nogo_v1A.0.56.pdf",
+    "changelog": "R27conf ROUND CLEAN: Cartan derivation verified term-by-term; 8 presentation closures (Hehl-Datta substitution displayed, signature pin, weight-convention dictionary, stale PTA caption fixed). Zero substantive errors. 26pp/md5 96f18a36/0-0-0. SIGN-OFF-READY at 95% (submits with P1B).",
+    "texCommit": "b86187b3"
+  },
+  {
+    "paperSlug": "paper-3",
+    "version": "v3.1.87",
+    "datestamp": "2026-06-11",
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p3_anomaly_engine/paper3_draft.pdf",
+    "sitePdfPath": "/papers/paper3_anomaly_catalog_v3.1.87.pdf",
+    "changelog": "R27conf ROUND CLEAN: feature-scaling split script-backed; vendor recompute attacks falsified; blue-excess attribution calibrated; 2 validation-hardening recomputes queued on accurately-scoped disclosed claims (flag at sign-off). Zero arithmetic errors. 26pp/md5 acde55ca/0-0-0. SIGN-OFF-READY at 95% (HF dataset flip at submission).",
+    "texCommit": "b86187b3"
   }
 ]
