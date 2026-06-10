@@ -18,7 +18,7 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.53-2026-06-09}
+\newcommand{\paperVersion}{v0.1.54-2026-06-10}
 % v0.1.52-2026-06-09 (R22prov truth-audit closure wave; work order in
 %   project-context/peer-reviews/R22prov_P5_TRUTH_AUDIT.md; recompute artifacts
 %   outputs/17_v0151_closure_recomputes.json + 18_v0151_stratified_and_density.json):
@@ -130,7 +130,12 @@ analyses we retain the ``V-Web'' label which is sometimes used loosely
 for the family of tidal-field classifiers.} on the full
 $14{,}622{,}283$-galaxy DESI DR1 spectro sample on a $256^3$ comoving
 grid with a $25\,{\rm Mpc}/h$ Gaussian smoothing and eigenvalue
-threshold $\lambda_{\rm th}\!=\!0$. \textbf{Headline result:} the CW
+threshold $\lambda_{\rm th}\!=\!0$. Sample ledger in one breath: the
+headline DESIVAST void test is anchored on $56{,}981$ void spirals
+drawn from $783{,}820$ unique chirality-relevant matched spirals
+($791{,}635$ minus $7{,}815$ without an environment row), carried on
+$812{,}793$ environment-labeled survey--program coadd rows.
+\textbf{Headline result:} the CW
 fraction shows no environment dependence above the sensitivity floor
 set by the Paper~IV catalog-monopole offset of $\approx\!0.26$\,pp
 (percentage points; systematic-dominated for V-Web filament/cluster at $n \gtrsim
@@ -214,9 +219,11 @@ at $z \leq 0.24$) returns $f_{\rm CW}^{\rm void} = 0.4964$ vs
 $f_{\rm CW}^{\rm non-void} = 0.4971$, $\Delta f_{\rm CW} = 0.0007$,
 statistically indistinguishable; (ii)
 three-algorithm DESIVAST robustness (VoidFinder + V2-REVOLVER + V2-VIDE)
-returns $|\Delta f_{\rm CW}| < 0.002$ at all three independent void
-definitions, with V2-REVOLVER catalog-native GALZONE membership
-returning $\sigma^{\rm void} = -0.24$ near-perfect null on $n = 86{,}276$;
+returns $|\Delta f_{\rm CW}| \lesssim 0.002$ at all three independent void
+definitions (largest $|\Delta| = 0.0019$, V2-REVOLVER, ${\sim}1.2\sigma$
+of the $n_{\rm void}$ counting floor $1/(2\sqrt{n}) \approx 0.0016$ ---
+all three within ${\sim}1\sigma$ of zero), with V2-REVOLVER catalog-native GALZONE membership
+returning $\sigma^{\rm void} = -0.52$ null on $n = 104{,}912$;
 (iii) HEALPix sky-position stratification by maximal-void density per
 pixel finds the $-5\sigma$ catalog-level signal concentrated entirely
 in the ``0 maximal voids per pixel'' bin (sky regions outside DESIVAST
@@ -469,6 +476,15 @@ $(X,Y,Z) = \chi (\cos\delta\cos\alpha, \cos\delta\sin\alpha,
 \sin\delta)$.
 \item Cloud-in-Cell deposit onto a $256^3$ comoving grid (full DR1
 bounding box $6{,}634$\,Mpc$/h$ at $256^3 \to$ cell $25.9$\,Mpc$/h$).
+The deposit operates on the row-level parent ($14{,}622{,}283$
+survey--program coadd rows over $14{,}100{,}704$ unique
+\texttt{TARGETID}s, \S\ref{sec:desivast_p4_residual}), so repeat
+coadds ($521{,}579$ rows, $3.6\%$ of the parent) contribute one
+deposit per row, mildly over-weighting multiply-observed targets; a
+deduplicated (one-deposit-per-\texttt{TARGETID}) field rebuild is
+queued as follow-up compute and is expected to perturb the density
+field only at the level of this duplicate fraction, but we do not
+quantify that bound here.
 \item Build a survey-footprint mask by dilation of occupied cells
 (\textsc{scipy} \texttt{binary\_dilation} with the default
 face-connected $3\!\times\!3\!\times\!3$ cross structuring element,
@@ -545,7 +561,12 @@ distribution of bin counts), so all quoted look-elsewhere $p$-values
 are from the label-shuffle implementation; the position-shuffle is
 retained as a pipeline cross-check rather than separately tabulated. Both nulls draw $N_{\rm MC}\!=\!1000$
 independent permutations from a deterministic-seeded NumPy
-\texttt{default\_rng} (seed fixed in the pipeline config); per-bin
+\texttt{default\_rng} (seed fixed in the pipeline config; the same
+config-level seed initializes each scan family's generator, so
+identical underlying random streams are shared across families ---
+the distinct-stream re-draws of \S\ref{sec:results_healpix} confirm
+the quoted $p$-values are stream-independent within the
+$N_{\rm MC}\!=\!1000$ permutation standard error); per-bin
 $\sigma_{\rm from\,half}$ is recomputed under each draw, and the
 null distribution is constructed as the empirical CDF of the
 per-realization statistic. Analysis drivers are available in the
@@ -561,7 +582,21 @@ Paper~IV-predicted classifier-monopole offset
 \end{equation}
 with $\Delta f_{\rm CW}\!=\!-0.0026$ to flag whether a deviation is
 attributable to the global bias rather than environment-correlated
-chirality. Because $\sigma_{\rm from\,half}$ grows as $\sqrt{N}$ at
+chirality. The monopole reference itself carries finite counting
+uncertainty, which we propagate explicitly: where $\sigma_{\rm pred}$
+uses the Paper~IV catalog-wide $\Delta f_{\rm CW}$
+($N\!=\!3.2\times10^6$, ${\rm se}\!\approx\!\sqrt{0.25/3.2\times10^6}
+= 2.8\times10^{-4}$), the induced uncertainty on $\sigma_{\rm pred}$
+for an $N\!\approx\!4\times10^5$ class is $2\,{\rm se}\,\sqrt{N}
+\approx 0.36$; where the matched-sample monopole $f_{\rm CW}^{\rm P5}$
+is the reference ($N\!=\!812{,}793$, ${\rm se}\!\approx\!5.5\times
+10^{-4}$), it is $\approx 0.7$. Residuals of order $1$--$2\sigma$
+(e.g.\ the Phase-2 maximum $1.87$) should be read with this band in
+mind; the label-shuffle permutation null, which fixes the total CW
+count at its observed value, incorporates the matched-sample monopole
+uncertainty by construction, and no conclusion in this paper depends
+on a residual threshold finer than this band. Because
+$\sigma_{\rm from\,half}$ grows as $\sqrt{N}$ at
 fixed fractional offset, raw $\sigma$ values are not comparable across
 bins of different $N$; only the monopole-subtracted residuals are.
 The formal version of this comparison is the per-class one-sample
@@ -636,7 +671,7 @@ DESI collaboration, ships three independent void-finding algorithms
 provides catalog-native per-galaxy zone memberships
 (\texttt{GALZONE}/\texttt{ZONEVOID}) that the V-Web tidal-tensor
 re-projection cannot match. The headline-result statement therefore
-rests on the DESIVAST-anchored $|\Delta f_{\rm CW}| < 0.002$ null
+rests on the DESIVAST-anchored $|\Delta f_{\rm CW}| \lesssim 0.002$ null
 across all three algorithms (Section~\ref{sec:desivast_primary},
 Table~\ref{tab:desivast_three_algo}).
 
@@ -723,9 +758,10 @@ Figure~\ref{fig:cw_by_env} visualizes the per-class CW fractions with
 $95\%$ Jeffreys binomial credible intervals; all four classes bracket
 the Paper~IV global $\bar f_{\rm CW}\!=\!0.4974$ horizontal reference,
 and the void $95\%$ CI brackets parity $f_{\rm CW}\!=\!0.5$. The
-range across the four classes is $1.98$\,percentage points, dominated
-by the imbalance between the high-$n$ filament and cluster bins
-($\sim 0.497$) and the low-$n$ void bin ($0.484$).
+range across the four classes is $1.98$\,percentage points, set by
+the counting noise of the low-$n$ void bin ($0.484$) against the
+catalog-monopole-dominated high-$n$ filament and cluster bins
+($\sim 0.497$).
 
 \begin{figure}[t]
 \centering
@@ -735,7 +771,12 @@ on the $n=812{,}793$ env-labeled spiral rows (covering $783{,}820$ of
 the $791{,}635$ unique chirality-relevant matched spirals; $7{,}815$
 lack an environment row, \S\ref{sec:results_vweb}). Bars show the
 observed $f_{\rm CW}$ per class; black error bars are $95\%$ Jeffreys
-binomial credible intervals. The void bin ($n\!=\!428$) is dominated
+binomial credible intervals, drawn on the row-level parent --- the
+$2.7\%$ duplicate rows violate strict i.i.d., but the worst-case
+design-effect inflation of the interval widths is
+$\sqrt{812{,}793/783{,}820} = 1.018$, i.e.\ $\le\!1.9\%$, and the
+homogeneity $\chi^2$ is recomputed on the unique-spiral subset in
+\S\ref{sec:results_vweb}. The void bin ($n\!=\!428$) is dominated
 by counting noise and brackets parity. The dashed horizontal line is
 parity ($f_{\rm CW}\!=\!0.5$); the dotted red line is the Paper~IV
 global $\bar f_{\rm CW}\!=\!0.4974$ classifier-monopole offset. All
@@ -849,6 +890,15 @@ of $|\sigma_{\rm obs}-\sigma_{\rm pred}| = 1.57$, again below the
 Bonferroni-5 threshold — the density null is not an artifact of the
 endogenous tracer choice
 (\artifact{pipelines/p5\_desi\_chirality/outputs/18\_v0151\_stratified\_and\_density.json}).
+A mask-edge buffer test gives the same answer: excluding the
+$74{,}070$ spirals in HEALPix NSIDE-$64$ footprint-edge pixels
+(${\sim}0.9^\circ$ angular buffer) and recomputing both the proxy and
+the quintile edges on the retained sample leaves $91.0\%$ of retained
+spirals in their original quintile and shifts no per-quintile
+$f_{\rm CW}$ of Figure~\ref{fig:cw_vs_density} by more than
+$0.12$\,pp — the quintile assignment is invariant to mask-edge
+effects
+(\artifact{pipelines/p5\_desi\_chirality/outputs/22\_r24conf\_local\_batch.json}).
 
 \begin{table}[h]
 \caption{\label{tab:density_quintile_residual}
@@ -1214,7 +1264,17 @@ by the void-bin binomial error at these $n_{\rm void}$. Per-cell
 void-bin deviations (top row to bottom):
 $|\sigma_{\rm void}| = 0.47 / 1.07 / 0.93 / 0.68 / 1.08 / 0.86 /
 0.95 / 1.35 / 0.87$, never exceeding $1.35$
-(\artifact{pipelines/p5\_desi\_chirality/outputs/17\_v0151\_closure\_recomputes.json}).}
+(\artifact{pipelines/p5\_desi\_chirality/outputs/17\_v0151\_closure\_recomputes.json}).
+The $p_{\rm LEE}$ values are corrected within each cell's own
+$K\!=\!4$ class family only; they are not globally corrected across
+the nine cells or across the other scan families in this paper, and
+the Phase-2 shuffles are free (not stratified by imaging leg $\times$
+program --- the headline-scan stratification test of
+\S\ref{sec:results_vweb} left $p$ unchanged, and a stratified Phase-2
+rerun is queued). The $R_s\!=\!10$ rows sit below the
+$25.9\,{\rm Mpc}/h$ grid sampling scale and are retained only as a
+degenerate near-unsmoothed limit, excluded from the robustness claim
+(\S\ref{sec:phase2}).}
 \label{tab:phase2}
 \begin{ruledtabular}
 \begin{tabular}{rrrrrr}
@@ -1452,10 +1512,13 @@ survey-edge density artifacts that the DESIVAST volume-limited BGS
 sample correctly suppresses. The $n = 6$ sample size is too small for
 a binomial significance constraint on the chirality null directly, but
 the per-galaxy disagreement quantifies the V-Web void-class purity at
-$z \leq 0.24$: $0\%$ concordance with DESIVAST-defined voids, meaning
-the V-Web ``void'' label at low $z$ should be read as ``not in a
-DESIVAST-defined cosmic-web density minimum'' rather than ``confirmed
-void galaxy.'' 
+$z \leq 0.24$: $0\%$ concordance with DESIVAST-defined voids on this
+draw. With $0$ of $6$, the one-sided $95\%$ binomial upper bound on
+the true in-hole fraction is $1 - 0.05^{1/6} = 39\%$, so this purity
+statement is indicative rather than statistically established;
+within that limit it suggests the V-Web ``void'' label at low $z$
+should be read as ``not in a DESIVAST-defined cosmic-web density
+minimum'' rather than ``confirmed void galaxy.''
 This is a direct empirical small-sample illustration of the
 $+8$--$18\,$pp V-Web-vs-T-Web void-fraction discrepancy
 reported in \S\ref{sec:tweb_concurrent} below,
@@ -1569,7 +1632,7 @@ V2-VIDE      & $81{,}354$  & $0.4971$ & $-1.67$ & $0.4970$ & $-4.59$ & $-0.0001$
 \end{ruledtabular}
 \end{table*}
 
-All three algorithms return $|\Delta f_{\rm CW}| < 0.002$ between
+All three algorithms return $|\Delta f_{\rm CW}| \lesssim 0.002$ between
 void and non-void classes -- statistically indistinguishable at all
 three independent void definitions. V2-REVOLVER returns
 $f_{\rm CW}^{\rm void} = 0.4986$ slightly above $f_{\rm CW}^{\rm
@@ -1597,23 +1660,34 @@ zone to a \texttt{VOID0} index, $\geq 0$ if the zone belongs to a
 non-edge void). Adopting the catalog-native definition of void
 membership ($\texttt{OUT} = 0 \wedge \texttt{VOID0} \geq 0 \wedge
 \texttt{ZONE} \geq 0$) and joining on \texttt{TARGET} =
-\texttt{desi\_targetid} returns: V2-REVOLVER $n_{\rm void} = 86{,}276$,
-$f_{\rm CW}^{\rm void} = 0.4996$, $\sigma^{\rm void} = -0.24$ (a
-\emph{near-perfect} null at this independent statistic); V2-VIDE
-$n_{\rm void} = 64{,}514$, $f_{\rm CW}^{\rm void} = 0.4979$,
-$\sigma^{\rm void} = -1.06$. 
+\texttt{desi\_targetid} returns: V2-REVOLVER $n_{\rm void} = 104{,}912$,
+$f_{\rm CW}^{\rm void} = 0.4992$, $\sigma^{\rm void} = -0.52$; V2-VIDE
+$n_{\rm void} = 74{,}111$, $f_{\rm CW}^{\rm void} = 0.4972$,
+$\sigma^{\rm void} = -1.50$. An earlier draft reported
+$n_{\rm void} = 86{,}276$ / $64{,}514$ with $\sigma = -0.24$ / $-1.06$;
+those values reproduce exactly only under a zone-indexing defect in
+the NGC$+$SGC join (the two galactic caps' \texttt{ZONEVOID} tables
+were concatenated without offsetting their cap-local zone indices, so
+SGC rows overwrote the NGC zone-to-void assignments). The corrected
+per-cap join values above supersede them
+(\artifact{pipelines/p5\_desi\_chirality/outputs/22\_r24conf\_local\_batch.json},
+which records both the corrected join and the exact reproduction of
+the earlier numbers under the defect).
 
-The catalog-native definition excludes the survey-mask edge galaxies
-that the sphere-approximation picks up (~$16{,}000$--$17{,}000$
-galaxies per algorithm). The resulting void $\sigma$ values are
+Both corrected void $\sigma$ values remain null and are
 \emph{smaller in magnitude} than the sphere-approximation analogues
-(V2-REVOLVER catalog-native $-0.24$ vs sphere $-0.88$; V2-VIDE
-catalog-native $-1.06$ vs sphere $-1.67$), confirming that the
-catalog-native void definition is the cleaner statistic and that the
-DESIVAST-anchored chirality null sharpens further when restricted to
-the catalog-internal high-confidence void members. The V2-REVOLVER
-catalog-native $\sigma = -0.24$ is the cleanest single chirality-in-voids
-measurement in this paper at $n \gtrsim 80{,}000$.
+(V2-REVOLVER catalog-native $-0.52$ vs sphere $-0.88$; V2-VIDE
+catalog-native $-1.50$ vs sphere $-1.67$), confirming that the
+catalog-native void definition is the cleaner statistic. The
+\texttt{GALZONE} \texttt{EDGE} and \texttt{DEPTH} quality flags do not
+alter this conclusion: every catalog-native void member already
+carries $\texttt{EDGE} = 0$ (adding the $\texttt{EDGE} = 0$
+requirement is a strict no-op), and tightening to
+$\texttt{DEPTH} \geq 1$ ($\geq 2$) shifts $f_{\rm CW}^{\rm void}$ by
+at most $0.04$ ($0.08$)\,pp for either algorithm, with all variants
+still null ($|\sigma| \leq 1.80$). The V2-REVOLVER
+catalog-native $\sigma = -0.52$ at $n_{\rm void} > 10^{5}$ is the
+cleanest single chirality-in-voids measurement in this paper.
 
 \subsection{Maximal-void HEALPix sky-position stratification}\label{sec:desivast_maximal_healpix}
 
@@ -1626,7 +1700,13 @@ $101{,}863$ hole-level spheres (maximum hole radius
 $24.5\,$Mpc/$h$), \emph{not} the maximal-void effective spheres used
 for the sky-density stratification here; the two layers have distinct
 maximum radii and should not be conflated when reasoning about
-near-boundary membership. Binning the maximal voids by
+near-boundary membership. The inside-any-hole criterion is also
+permissive relative to the catalog's intended interior-void geometry
+(overlapping holes are aggregated into voids by VoidFinder), so
+hole-sphere membership can over-count edge/overlap regions; a
+comparison against a VoidFinder-native per-galaxy membership
+definition (the analogue of the V2 \texttt{GALZONE} membership used
+in \S\ref{sec:desivast_three_algo}) is queued as follow-up compute. Binning the maximal voids by
 HEALPix \texttt{NSIDE} $= 16$ pixel (equal-area pixels of
 $\approx 13.4\,{\rm deg}^2$) returns 297 occupied pixels with
 median 14 maximal voids per occupied pixel. Stratifying the $z \leq
@@ -1771,12 +1851,23 @@ the same env-labeled matched-spiral parent, the distribution of
 $\sigma_{\rm vs\ monopole}$ across the $1{,}791$ valid pixels
 (pixels carrying $\ge 200$ spirals, full redshift range) has
 mean $+0.008$, std $1.050$, skewness $+0.074$, and excess kurtosis
-$+0.092$. The unit standard deviation (within $5\%$), near-zero
+$+0.092$. The unit standard deviation (within $5\%$; the mild excess over
+unity is consistent with pixel-to-pixel $N$ variation ---
+heteroscedastic $\sigma$ --- and small residual selection-function
+structure, not evidence for non-shot-noise tails), near-zero
 skewness, and near-zero excess kurtosis
 are all consistent with a pure shot-noise residual
 around the P4-monopole, with no sign of systematic
 environment-conditioned chirality offset
 (\artifact{pipelines/p5\_desi\_chirality/outputs/17\_v0151\_closure\_recomputes.json}).
+Recomputed on the unique-\texttt{TARGETID} parent ($783{,}820$
+spirals, deduplicated before the per-pixel pass), the distribution is
+statistically unchanged: $1{,}769$ valid pixels with mean $+0.005$,
+std $1.015$, skewness $+0.107$, and excess kurtosis $+0.068$, and the
+maximal-void correlations reported below are likewise stable on the
+deduplicated parent ($r = +0.007$, $r_w = +0.006$, $\rho = +0.021$;
+all $p > 0.5$)
+(\artifact{pipelines/p5\_desi\_chirality/outputs/22\_r24conf\_local\_batch.json}).
 
 This is a direct single-test demonstration that
 the V-Web class-level $\sigma$ values quoted in the headline table
@@ -1857,7 +1948,13 @@ ${\sim}640$) from the lowest to the highest redshift shell: under the
 global-mean convention, distant shells are systematically driven toward
 apparent underdensity and nearby shells toward apparent overdensity, so
 the four-class environment labels partially trace the radial selection
-function rather than true large-scale structure.
+function rather than true large-scale structure. We note the analogous
+\emph{angular} limitation explicitly: no spectroscopic
+tiling/completeness weighting (e.g.\ DESI random-catalog or FKP-like
+per-cell weights) is applied when building $\delta$; angular geometry
+is controlled here only through the footprint mask, the interior-buffer
+excision, and the NSIDE$\,=\,$64 geometry cross-check, and a
+randoms-weighted field rebuild is queued as follow-up compute.
 
 To test whether the headline environmental-independence conclusion is
 robust to this, we rebuilt the classification with a first-order radial
@@ -1867,13 +1964,18 @@ overdensity is computed in 21 thin redshift shells ($\Delta z = 0.05$
 for $z<0.5$, $\Delta z = 0.1$ for $0.5 \le z < 1.5$, one merged
 $1.5$--$1.7$ shell into which the sparse $1.7 < z \le 2.0$ tail of
 the parent window is also clamped, so the top shell effectively
-covers $1.5 \le z \le 2.0$; every shell $\ge 2.16\times10^5$
+covers $1.5 \le z \le 2.0$ --- a sensitivity run dropping or
+separately shelving the sparse $1.7 < z \le 2.0$ tail is queued as
+follow-up compute; every shell $\ge 2.16\times10^5$
 galaxies), with the
 per-shell mean taken over occupied-footprint cells only, while the
 grid, smoothing scale $R_s$, and eigenvalue threshold
 $\lambda_{\rm th}$ are held fixed at their canonical values. An
 interior-buffer variant additionally removes galaxies within $R_s$ of
-the footprint boundary. The same interior-buffer excision applied to
+the footprint boundary; under this flag, $837{,}169$ of the
+$3{,}150{,}089$ in-mask grid cells ($26.6\%$) lie within $R_s$ of the
+occupancy-footprint boundary
+(\artifact{pipelines/p5\_desi\_chirality/outputs/22\_r24conf\_local\_batch.json}). The same interior-buffer excision applied to
 the \emph{canonical} (non-shell-corrected) labels — addressing the
 zero-padded FFT boundary condition of the canonical Poisson solve
 directly — retains $782{,}015$ of the $783{,}820$ unique env-matched
@@ -1916,6 +2018,14 @@ the per-galaxy
 corrected label catalog are released with the reproducibility
 artifacts
 (\artifact{pipelines/p5\_desi\_chirality/outputs/16\_cosmic\_web\_zshell\_corrected.json}).
+The per-shell table (all 21 shells hold $2.16\times10^{5}$ to
+$1.19\times10^{6}$ galaxies) quantifies the correction at the cell
+level: before correction the in-mask mean of the global-mean
+overdensity drifts from $+62.3$ in the lowest shell ($z<0.05$) to
+$-0.90$ in the highest ($z \geq 1.5$), while the shell-normalized
+$\delta$ is zero-mean in every shell by construction, with cell-level
+variance ranging $1.6$--$4.9$ across shells
+(\artifact{pipelines/p5\_desi\_chirality/outputs/22\_r24conf\_local\_batch.json}).
 
 \paragraph{Grid-resolution convergence.} The canonical pipeline fixes
 $N_{\rm grid} = 256^3$; the Phase~2 sweep varies $R_s$ and
@@ -2201,7 +2311,20 @@ $25{,}186$-galaxy overlap under three classifiers run on the
 (ii)~the ASTRA entropy-weighted classifier (each galaxy contributes
 $P_{\rm class}$ fractional count and $P_{\rm class}\!\cdot\!\mathbb{1}_{\rm CW}$
 fractional CW count to each class, with sub-class variance
-$\textstyle\sum_i P_i^2 / 4$ under the Bernoulli-$0.5$ null); and
+$\textstyle\sum_i P_i^2 / 4$ under the Bernoulli-$0.5$ null; this
+variance model assumes independence across objects and neglects the
+within-object negative correlation among the four class weights,
+which sum to one --- an approximation adequate for the per-class
+$\sigma$ quoted here but one that slightly mis-states the joint
+variance structure if classes are combined or compared; a $10^4$-draw
+Monte Carlo using the actual per-object probabilities under the
+independent Bernoulli-$0.5$ null reproduces the analytic per-class
+standard deviations to within $1.2\%$ and the per-class $\sigma$
+values to $<\!0.02$, while directly measuring the neglected
+between-class coupling --- class-sum correlations up to $+0.42$ from
+shared objects --- so the approximation is validated at the per-class
+level used here,
+\artifact{pipelines/p5\_desi\_chirality/outputs/22\_r24conf\_local\_batch.json}); and
 (iii)~the V-Web deterministic classifier restricted to the same
 overlap, for like-for-like comparison.
 
@@ -2473,7 +2596,10 @@ class boundaries (eigenvalues within $|\lambda - \lambda_{\rm th}|
 boundary-crossing rate. At $\sigma_{\rm rsd} \sim 5$\,Mpc/$h$ (BGS
 pairwise velocity dispersion projected through Hubble flow at
 $z\!\sim\!0.2$) and $R_s\!=\!25$\,Mpc/$h$, the eigenvalue-shift
-magnitude is $\sim 0.04\,\sigma_\lambda$. Based on the per-cell eigenvalue histogram,
+magnitude is $\sim 0.04\,\sigma_\lambda$, where $\sigma_\lambda$
+denotes the rms width of the per-cell smoothed-eigenvalue
+distribution (the per-cell eigenvalue histogram of the canonical
+$R_s\!=\!25$\,Mpc/$h$ run). Based on that histogram,
 the fraction of cells within that band of any threshold is
 $\sim 3$--$5\%$. Galaxies in those cells are the maximum possible
 class-flip population under RSD; with $\sim 800$k chirality-relevant
