@@ -45,7 +45,7 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.53}
+\newcommand{\paperVersion}{v1A.0.54}
 \newcommand{\paperTimestamp}{June 10, 2026 PDT}
 % v1A.0.52 (R24conf closeout): 19 textual closures from R24conf truth-audit —
 %   ACT-vs-WMAP+Planck 1.4->1.06 sigma recompute; gamma^2/(gamma^2+1)
@@ -661,7 +661,19 @@ fermionic spin density:
 \begin{equation}\label{eq:torsion}
 T^{abc} = 8\pi G\, S^{abc},
 \end{equation}
-where $S^{abc} = \frac{1}{4}\bar{\psi}\gamma^{[a}\gamma^{bc]}\psi$.
+where $S^{abc} = \frac{1}{4}\bar{\psi}\gamma^{[a}\gamma^{bc]}\psi$.\footnote{Normalization-convention
+disclosure: with $\gamma^{bc}\equiv\gamma^{[b}\gamma^{c]}$ this
+coefficient ($2\pi G$ on the bilinear
+$\bar\psi\gamma^{[a}\gamma^b\gamma^{c]}\psi$) differs by a factor of~2
+from the $T^{abc} = (\kappa/2)\,\bar\psi\gamma^{[a}\gamma^b\gamma^{c]}\psi$
+($\kappa=8\pi G$) form quoted with the Hehl--Datta term in
+Sec.~\ref{sec:r1_njl}; the two reflect different
+spin-tensor/antisymmetrization weight conventions in the literature, and
+a single-convention re-derivation is left to the operator-level
+follow-up. Every amplitude estimate in this paper that descends from the
+Cartan equation is an order-of-magnitude statement carrying explicit
+$\ge 2$-order conservatism allowances, so an overall factor of~2 in this
+normalization does not affect any closure conclusion.}
 
 \textit{Step~2: Four-Fermion Contact Interaction.}---Substituting Eq.~\eqref{eq:torsion}
 and integrating out torsion:
@@ -763,10 +775,11 @@ $\lesssim\!10^{-21}\,\rho_\Lambda^{\rm obs}$ level
 ($(\omega/H)_0^2 < 2.5\times 10^{-21}$; dividing by
 $3\Omega_\Lambda \approx 2.1$ gives $\sim\!1.2\times 10^{-21}$ of
 $\rho_\Lambda^{\rm obs}$) --- negligible at all
-redshifts. (The panel's burned-in annotation quotes the equivalent bound as
-a fractional contribution to the expansion rate,
-$|\omega^2/H^2| < 10^{-20}$; the two statements bound the same rotation
-term in different units.) The dark-energy mechanism in this paper is therefore the
+redshifts. (The panel's burned-in annotation quotes the looser
+decade-rounded ceiling $|\omega^2/H^2| < 10^{-20}$ for the same
+dimensionless ratio; the body's
+$(\omega/H)_0^2 < 2.5\times 10^{-21}$ is the sharper statement, and
+the figure label simply rounds up to the nearest decade.) The dark-energy mechanism in this paper is therefore the
 $\Xi\,\MPl^2$ term sourced by the parity-odd contorsion sector
 (\S\ref{sec:parityodd}), \emph{not} the rotation
 component.\label{fig:rotation_expansion}}
@@ -907,8 +920,11 @@ $\langle J^5_\mu\rangle\simeq 0$. Because the Cartan equation is
 action), erasure of the coherent axial component is instantaneously
 inherited by the torsion configuration: the post-reheating mean
 torsion is set by the thermal expectation $\langle J^5_\mu\rangle_T$,
-whose r.m.s.\ residual scales as $\sim\!\sqrt{n_\psi}/T_{\rm reh}^{1/2}$
-under standard fluctuation-dissipation counting and vanishes in mean.
+which vanishes in the mean for an unpolarized $C/P$-symmetric thermal
+bath; we do not assign a quantitative scale to the incoherent
+fluctuation residual here --- the closure rests on the
+rate-versus-Hubble washout argument above, not on a residual-amplitude
+estimate.
 Any ``memory'' of bounce-era torsion stored in $\Dinf$ is therefore
 overwritten by the reheating thermal reset to a coherent-mean-zero,
 incoherent-fluctuation-only configuration, providing an independent
@@ -959,8 +975,13 @@ below~\cite{Minami2020,Eskilt2022}, and this paper performs no
 independent $E\!B$-based $\beta$ extraction.
 Connecting to a quantitative rotation angle $\beta$ from the gravitational/torsion
 operator requires an explicit photon-torsion coupling that has not been derived
-here. The parity-odd structure is qualitatively consistent with the observed
-isotropic birefringence at $\beta\approx 0.27^\circ$--$0.30^\circ$. Spectator-ALP
+here. Published measurements report $\beta_{\rm obs} =
+0.342^\circ\pm 0.094^\circ$ (WMAP+Planck~\cite{Minami2020,Eskilt2022})
+and $0.215^\circ\pm 0.074^\circ$ (ACT~DR6~\cite{DiegoPalazuelos2025});
+the spectator-ALP benchmark $\beta\approx 0.27^\circ$--$0.30^\circ$
+used in this paper lies within the $1\sigma$ bands of both, and the
+parity-odd structure is qualitatively consistent with this observed
+isotropic birefringence. Spectator-ALP
 parameter fitting and the NaMaster pipeline validation are in companion
 Paper~I(b)~\cite{Golden2026P1b}.
 
@@ -2248,7 +2269,7 @@ $\Omega_m$ & Matter density & Derived & $0.308\pm 0.005$ & \\
 \hline
 \multicolumn{5}{l}{\textit{Observational channel parameters}} \\
 $\beta$ & ALP birefringence & --- & $0.27^\circ$ (midpoint) & Spectator ALP, not ECH \\
-$\fnl$ & Non-Gaussianity & --- & $-35/8 = -4.375$ & Matter bounce class \\
+$\fnl$ & Non-Gaussianity & --- & $-35/8 = -4.375$ & Matter bounce class\footnote{Survives only in bounce scenarios \emph{not} invoking the $N_{\rm tot}\approx 92$ dark-energy dilution; under that dilution it is erased at SPHEREx-accessible scales (Sec.~\ref{sec:structural_tension}).} \\
 $\gamma_{\rm PTA}$ & PTA spectral index & --- & $2.567\pm 0.382$ (real-KDE GPU MCMC) & Bounce $\gamma=3.0$ at $+1.13\sigma$ \\
 \end{tabular}
 \end{ruledtabular}
@@ -2366,7 +2387,12 @@ $z_{\rm init}=3000$).
 ($ds^2 = a^2(-d\eta^2 + d\vec x^{\,2})$) the Maxwell sector of
 Eq.~\eqref{eq:mcs_lagrangian} is conformally invariant, and the
 $\theta F\tilde F$ term, being topological up to the $\theta$ prefactor,
-carries no additional factors of $a$. In temporal gauge, decomposing
+carries no additional factors of $a$. In Coulomb--temporal gauge
+($A_0=0$, $\partial_i A^i=0$; because $\partial_\mu\theta =
+\theta'\,\delta^0_\mu$ for the homogeneous background field, the
+parity-odd term contributes only through the spatial
+$\epsilon^{ijk}A_j\partial_k$ structure and the longitudinal mode stays
+non-dynamical), decomposing
 the transverse field into circular-polarization modes
 $A_\pm(\eta,k)$, the modified wave equation reads
 \begin{equation}
@@ -2375,7 +2401,12 @@ A_\pm'' + \Bigl[k^2 \mp \frac{\alpha}{M}\,\theta'\,k\Bigr] A_\pm = 0,
 \end{equation}
 where $' \equiv d/d\eta$ and $k$ is comoving. For
 $k \gg (\alpha/M)\theta'$ (satisfied by ${\sim}60$ orders of magnitude
-for CMB photons against the cosmological field considered here) the WKB
+for CMB photons against the cosmological field considered here:
+$(\alpha/M)\theta' \sim 10^{-30}\,\text{eV}^{-1}\times
+\mathcal{O}(1)\times H_0 \sim 10^{-63}\,$eV for an $\mathcal{O}(1)$
+total excursion accumulated over a Hubble time, versus a CMB photon
+$k \sim 6\times 10^{-4}\,$eV at 150~GHz, a ratio of
+${\sim}10^{59}$) the WKB
 phase of each helicity is
 $\int\!\omega_\pm\,d\eta$ with
 $\omega_\pm \simeq k \mp \tfrac{1}{2}(\alpha/M)\,\theta'$.
@@ -2399,11 +2430,19 @@ expansion history except through the endpoint values of $\theta$
 ``$2\beta = g\,\Delta\phi$'' property~\cite{HarariSikivie1992}), and
 exact at leading WKB order. This is Eq.~\eqref{eq:beta_bound}'s
 mapping; with the spectator-ALP identification
-$\alpha/M \equiv C_{a\gamma}\,\alpha_{\rm em}/(2\pi f_a)$ and
+$\alpha/M \equiv C_{a\gamma}\,\alpha_{\rm em}/(2\pi f_a)$ (cf.\ the
+basis-conversion footnote at the first quote of
+$\alpha/M = 10^{-21}\,$GeV$^{-1}$ in Sec.~\ref{sec:r4_birefringence}
+for the $1/(2\pi)$-vs-$1/(4\pi)$ normalization gap) and
 $\Delta\theta = \Delta\phi/f_a$ it reproduces the companion pipeline's
 $\beta = (\alpha_{\rm em}\,C_{a\gamma}/4\pi)\,(\Delta\phi/f_a)$
 (the convention block of the companion's \S VI), closing the
-normalization chain from the Lagrangian to the numerical prediction.
+normalization chain from the Lagrangian to the numerical prediction;
+this mapping is what Eq.~\eqref{eq:beta_bound} and the Route-2
+estimates of Sec.~IV use. The overall sign of $\beta$ matches the
+WMAP+Planck convention of Eskilt--Komatsu, in which a freely rolling
+field with $\theta(\eta_{\rm obs}) > \theta(\eta_{\rm em})$ produces
+$\beta > 0$.
 
 %% ============================================================
 %%  BIBLIOGRAPHY
