@@ -1,0 +1,26 @@
+{
+  "input_chains": [
+    "c5.1.txt",
+    "c5.2.txt",
+    "c5.3.txt",
+    "c5.4.txt"
+  ],
+  "n_samples_total": 8955,
+  "theta_i_cut": 0.1,
+  "n_raw_samples_in_slice": 42,
+  "posterior_mass_fraction_in_slice": 0.00327476617444474,
+  "C_agamma_slice_percentiles": {
+    "p16": 36.81975698,
+    "p50": 47.17803128205128,
+    "p84": 55.63576284
+  },
+  "C_agamma_slice_min_max": [
+    5.7229235,
+    59.764946
+  ],
+  "beta_deg_slice_percentiles": {
+    "p16": 0.074882957008,
+    "p50": 0.13068271777777776,
+    "p84": 0.163071490488
+  }
+}

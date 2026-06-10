@@ -1,0 +1,119 @@
+{
+ "experiment": "c10 NaMaster robustness battery (R23conf META-M1/M2/M3/M5/M6)",
+ "beta_injected_deg": 0.27,
+ "n_real": 500,
+ "seed_base": 42,
+ "canonical_anchor": {
+  "recovered_beta_deg": 0.238,
+  "bias_deg": -0.032
+ },
+ "configs": [
+  {
+   "name": "canonical_refit",
+   "fsky": 0.3226,
+   "n_real": 500,
+   "purify_b": false,
+   "apod_fwhm_deg": 2.0,
+   "gal_cut_deg": 20.0,
+   "bb_model": "0.05*EE",
+   "noise_sigma_pix_uK": 1.4554,
+   "recovered_beta_deg": {
+    "unweighted": 0.238,
+    "invvar_weighted": 0.264,
+    "lmax1024_only": 0.238
+   },
+   "bias_deg": {
+    "unweighted": -0.032,
+    "invvar_weighted": -0.006,
+    "lmax1024_only": -0.032
+   },
+   "runtime_s": 3269.4
+  },
+  {
+   "name": "lensing_bb_camb",
+   "fsky": 0.3226,
+   "n_real": 500,
+   "purify_b": false,
+   "apod_fwhm_deg": 2.0,
+   "gal_cut_deg": 20.0,
+   "bb_model": "camb_lensed",
+   "noise_sigma_pix_uK": 1.4554,
+   "recovered_beta_deg": {
+    "unweighted": 0.251
+   },
+   "bias_deg": {
+    "unweighted": -0.019
+   },
+   "runtime_s": 3272.6
+  },
+  {
+   "name": "apod_fwhm_0p5",
+   "fsky": 0.3226,
+   "n_real": 500,
+   "purify_b": false,
+   "apod_fwhm_deg": 0.5,
+   "gal_cut_deg": 20.0,
+   "bb_model": "0.05*EE",
+   "noise_sigma_pix_uK": 1.4554,
+   "recovered_beta_deg": {
+    "unweighted": 0.239
+   },
+   "bias_deg": {
+    "unweighted": -0.031
+   },
+   "runtime_s": 3265.8
+  },
+  {
+   "name": "apod_fwhm_3p0",
+   "fsky": 0.3226,
+   "n_real": 500,
+   "purify_b": false,
+   "apod_fwhm_deg": 3.0,
+   "gal_cut_deg": 20.0,
+   "bb_model": "0.05*EE",
+   "noise_sigma_pix_uK": 1.4554,
+   "recovered_beta_deg": {
+    "unweighted": 0.238
+   },
+   "bias_deg": {
+    "unweighted": -0.032
+   },
+   "runtime_s": 4591.2
+  },
+  {
+   "name": "mask_b30",
+   "fsky": 0.2035,
+   "n_real": 500,
+   "purify_b": false,
+   "apod_fwhm_deg": 2.0,
+   "gal_cut_deg": 30.0,
+   "bb_model": "0.05*EE",
+   "noise_sigma_pix_uK": 1.4554,
+   "recovered_beta_deg": {
+    "unweighted": 0.238
+   },
+   "bias_deg": {
+    "unweighted": -0.032
+   },
+   "runtime_s": 4542.0
+  },
+  {
+   "name": "purify_b",
+   "fsky": 0.3226,
+   "n_real": 500,
+   "purify_b": true,
+   "apod_fwhm_deg": 2.0,
+   "gal_cut_deg": 20.0,
+   "bb_model": "0.05*EE",
+   "noise_sigma_pix_uK": 1.4554,
+   "recovered_beta_deg": {
+    "unweighted": 0.238
+   },
+   "bias_deg": {
+    "unweighted": -0.032
+   },
+   "runtime_s": 13599.4
+  }
+ ],
+ "total_runtime_s": 16879.8
+}

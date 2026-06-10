@@ -67,9 +67,8 @@
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.}~\bibnamefont
   {Golden}},\ }\bibfield  {title} {\bibinfo {title} {{$f_{\rm NL} = -35/8$
   Forecast: SPHEREx Discrimination of Bounce vs.\ Inflation}},\ }\href@noop {}
-  {\bibfield  {journal} {\bibinfo  {journal} {(in preparation)}\ } (\bibinfo
-  {year} {2026}{\natexlab{a}})},\ \bibinfo {note} {hUBIFY-2026-002; companion
-  paper, this volume}\BibitemShut {NoStop}%
+  {\  (\bibinfo {year} {2026}{\natexlab{a}})},\ \bibinfo {note} {companion
+  paper, posted concurrently on arXiv}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Minami}\ and\ \citenamefont
   {Komatsu}(2020)}]{Minami2020}%
   \BibitemOpen
@@ -109,9 +108,9 @@
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.}~\bibnamefont
   {Golden}},\ }\bibfield  {title} {\bibinfo {title} {{Cobaya MCMC + NaMaster
   Birefringence + ALP Companion: Computational Verification for ECH Structural
-  Closure}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {(in
-  preparation)}\ } (\bibinfo {year} {2026}{\natexlab{b}})},\ \bibinfo {note}
-  {hUBIFY-2026-001B; companion paper, this volume}\BibitemShut {NoStop}%
+  Closure}},\ }\href@noop {} {\  (\bibinfo {year} {2026}{\natexlab{b}})},\
+  \bibinfo {note} {companion paper, posted concurrently on arXiv}\BibitemShut
+  {NoStop}%
 \bibitem [{\citenamefont {{Planck Collaboration}}\ \emph
   {et~al.}(2020)\citenamefont {{Planck Collaboration}}, \citenamefont {Aghanim}
   \emph {et~al.}}]{Planck2018params}%
@@ -302,9 +301,9 @@
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.}~\bibnamefont
   {Golden}},\ }\bibfield  {title} {\bibinfo {title} {{Galaxy Chirality at
   Scale: 8.47M Galaxies Classified, Hemisphere Null at $p_{\rm LEE} <
-  10^{-4}$}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {(in
-  preparation)}\ } (\bibinfo {year} {2026}{\natexlab{c}})},\ \bibinfo {note}
-  {hUBIFY-2026-004; companion paper, this volume}\BibitemShut {NoStop}%
+  10^{-4}$}},\ }\href@noop {} {\  (\bibinfo {year} {2026}{\natexlab{c}})},\
+  \bibinfo {note} {companion paper, posted concurrently on arXiv}\BibitemShut
+  {NoStop}%
 \bibitem [{\citenamefont {Hehl}\ and\ \citenamefont
   {Datta}(1971)}]{HehlDattaNJL1971}%
   \BibitemOpen
@@ -562,10 +561,9 @@
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.}~\bibnamefont
   {Golden}},\ }\bibfield  {title} {\bibinfo {title} {{Spectrally Unusual
   Sources at Scale: A Multi-Survey Catalog of 378{,}280 Anomalies and
-  Native-Trained Novelty Rates from 37.3 Million Sources}},\ }\href@noop {}
-  {\bibfield  {journal} {\bibinfo  {journal} {(in preparation)}\ } (\bibinfo
-  {year} {2026}{\natexlab{d}})},\ \bibinfo {note} {hUBIFY-2026-003; companion
-  paper, this volume}\BibitemShut {NoStop}%
+  Native-Trained Novelty Rates from 37.3 Million Sources}},\ }\href@noop {} {\
+  (\bibinfo {year} {2026}{\natexlab{d}})},\ \bibinfo {note} {companion paper,
+  posted concurrently on arXiv}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Golden}(2026{\natexlab{e}})}]{Golden2026supplement}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.}~\bibnamefont

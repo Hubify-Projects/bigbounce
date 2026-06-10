@@ -1,0 +1,42 @@
+{
+ "experiment": "c10b ALP envelope scan (R23conf P1B SVI provenance closure)",
+ "ode": "alp_ode.py compute_alp_birefringence (the same module wrapped by the MCMC theory class)",
+ "dphi_over_fa": {
+  "box": "theta_i in [0.5,2] x m/H0 in [1,3]",
+  "min": 0.0638,
+  "max": 1.1931,
+  "at_theta1": {
+   "m_1.0H0": 0.1136,
+   "m_1.8H0": 0.346,
+   "m_2.0H0": 0.4175,
+   "m_3.0H0": 0.7938,
+   "m_3.9H0": 1.0601,
+   "m_4.0H0": 1.0811
+  }
+ },
+ "beta_envelope_deg_over_C4to12_box": {
+  "min": 0.0085,
+  "max": 0.4764
+ },
+ "beta_examples_deg": {
+  "C8_theta1_m1.0": 0.0302,
+  "C8_theta1_m1.8": 0.0921,
+  "C8_theta1_m2.0": 0.1111,
+  "C8_theta1_m3.0": 0.2113,
+  "C8_theta1_m3.9": 0.2822
+ },
+ "required_C_for_beta_obs_0p342_theta1": {
+  "m_1.0H0": 90.5,
+  "m_1.5H0": 41.6,
+  "m_2.0H0": 24.6,
+  "m_2.5H0": 16.9,
+  "m_3.0H0": 12.9
+ },
+ "committed_chain_truth": {
+  "run1_full": "C_agamma=8 fixed (theory default); theta_i U[0.01,pi]; log10(m_a/eV) U[-35,-30]; 2160 rows",
+  "run2_extended": "C_agamma U[1,30] sampled; same theta/mass priors; 6840 rows",
+  "run3_baseline": "beta_free U[-1,2] deg; 720 rows",
+  "rows_total": 9720,
+  "note": "the prior text's 'three benchmark configurations C=4/8/12, 3240 samples each, theta_i in [0.5,2], m/H0 in [1,3]' matches NO committed chain; 9720 = 2160+6840+720"
+ }
+}
