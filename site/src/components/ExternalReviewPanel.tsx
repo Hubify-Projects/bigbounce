@@ -45,6 +45,13 @@ export function ExternalReviewPanel({
         ]
       : []),
     ``,
+    `CALIBRATION (do not burn findings on these known classes):`,
+    `- The current date is June 2026. arXiv identifiers of the form 25xx.xxxxx and 26xx.xxxxx are VALID, already-published preprints — do not flag them as "future-dated" or "nonexistent". Verify a citation against arXiv/ADS before claiming it does not exist.`,
+    `- Correction notes, retraction notices, and "an earlier version stated X" disclosures in the text are DELIBERATE transparency policy. Flag them only if their content is wrong, never for existing.`,
+    `- Companion-paper citations marked "posted concurrently on arXiv" are deliberate placeholders; real arXiv IDs are inserted during the coordinated submission sequence.`,
+    `- Explicitly labeled conservatism allowances, scaling estimates, ansatz/heuristic status labels, and disclosed queued follow-up computations are deliberate scoping, not oversights — flag only if the label itself is inaccurate.`,
+    `- PDF text extraction can mangle math (square roots, fractions, superscripts). Before flagging "garbled" or "wrong" math, consider extraction artifacts; flag only what is visibly wrong in the rendered PDF.`,
+    ``,
     `Be ruthless. We want it harder than the actual journal review. Truth-audit any claim that seems off by grepping the published .tex / on-disk artifacts before flagging — do not echo prompt context.`,
   ].join("\n");
 

@@ -120,7 +120,7 @@ export const papers: Paper[] = [
       "arXiv endorsement + submission (astro-ph.CO)",
     ],
     preprintId: "HUBIFY-2026-001A",
-    pdfMeta: "PDF 1.6 MB · 25 pp · updated Jun 11, 2026",
+    pdfMeta: "PDF 1.6 MB · 26 pp · updated Jun 11, 2026",
     artifacts: [
       { label: "Read PDF", href: "/papers/paper1a_ech_nogo_v1A.0.56.pdf", kind: "primary", external: true },
       { label: "Download PDF", href: "/papers/paper1a_ech_nogo_v1A.0.56.pdf", kind: "secondary", download: true },
@@ -439,7 +439,7 @@ export const papers: Paper[] = [
       "arXiv endorsement + submission (last in queue)",
     ],
     preprintId: "HUBIFY-2026-005",
-    pdfMeta: "PDF 1.1 MB · 27 pp · updated Jun 11, 2026",
+    pdfMeta: "PDF 1.1 MB · 28 pp · updated Jun 11, 2026",
     artifacts: [
       { label: "Read PDF", href: "/papers/p5_desi_chirality_v0.1.60.pdf", kind: "primary", external: true },
       { label: "Download PDF", href: "/papers/p5_desi_chirality_v0.1.60.pdf", kind: "secondary", download: true },
