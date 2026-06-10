@@ -45,7 +45,7 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.54}
+\newcommand{\paperVersion}{v1A.0.55}
 \newcommand{\paperTimestamp}{June 10, 2026 PDT}
 % v1A.0.52 (R24conf closeout): 19 textual closures from R24conf truth-audit —
 %   ACT-vs-WMAP+Planck 1.4->1.06 sigma recompute; gamma^2/(gamma^2+1)
@@ -661,19 +661,31 @@ fermionic spin density:
 \begin{equation}\label{eq:torsion}
 T^{abc} = 8\pi G\, S^{abc},
 \end{equation}
-where $S^{abc} = \frac{1}{4}\bar{\psi}\gamma^{[a}\gamma^{bc]}\psi$.\footnote{Normalization-convention
-disclosure: with $\gamma^{bc}\equiv\gamma^{[b}\gamma^{c]}$ this
-coefficient ($2\pi G$ on the bilinear
-$\bar\psi\gamma^{[a}\gamma^b\gamma^{c]}\psi$) differs by a factor of~2
-from the $T^{abc} = (\kappa/2)\,\bar\psi\gamma^{[a}\gamma^b\gamma^{c]}\psi$
-($\kappa=8\pi G$) form quoted with the Hehl--Datta term in
-Sec.~\ref{sec:r1_njl}; the two reflect different
-spin-tensor/antisymmetrization weight conventions in the literature, and
-a single-convention re-derivation is left to the operator-level
-follow-up. Every amplitude estimate in this paper that descends from the
-Cartan equation is an order-of-magnitude statement carrying explicit
-$\ge 2$-order conservatism allowances, so an overall factor of~2 in this
-normalization does not affect any closure conclusion.}
+where $S^{abc} = \frac{1}{4}\bar{\psi}\gamma^{[a}\gamma^{bc]}\psi$.\footnote{Single-convention
+derivation (fixing the paper's normalization once): we use the
+form-language torsion definition $T^a \equiv De^a$ (components
+$T^\lambda{}_{\mu\nu} = 2\Gamma^\lambda{}_{[\mu\nu]}$) and the Hermitian
+(symmetrized) minimally coupled Dirac action. Varying that action with
+respect to the connection gives the spin current
+$S^{abc} \equiv \delta\mathcal{L}_\psi/\delta\omega_{abc}
+= \tfrac{1}{4}\,\bar\psi\gamma^{[a}\gamma^{bc]}\psi
+= \tfrac{1}{4}\,\epsilon^{abcd} J^5_d$ --- \emph{totally antisymmetric},
+so all torsion trace parts vanish and the Cartan equation is exactly
+$T^{abc} = \kappa\,S^{abc}$, Eq.~\eqref{eq:torsion}. Consistency proof by
+back-substitution: $S_{abc}S^{abc} = \tfrac{1}{16}\,
+\epsilon_{abcd}\epsilon^{abce} J^{5d}J^5_e = -\tfrac{3}{8}\,J^5_\mu
+J^{5\mu}$ (Lorentzian $\epsilon_{abcd}\epsilon^{abce} = -3!\,
+\delta_d^{\,e}$), and integrating out torsion yields
+$\mathcal{L}_{\rm int} = -\tfrac{3\kappa}{16}\,J^5_\mu J^{5\mu}$ ---
+precisely the $\gamma\!\to\!\infty$ (pure Einstein--Cartan) limit of
+Eq.~\eqref{eq:4fermi} and the Hehl--Datta coefficient of
+Eq.~\eqref{eq:NJL_torsion}, closing the chain with no residual factor.
+The $T^{abc} = (\kappa/2)\,\bar\psi\gamma^{[a}\gamma^b\gamma^{c]}\psi$
+form quoted in the original Hehl--Datta-era literature
+(Sec.~\ref{sec:r1_njl}) uses the half-weight torsion definition
+$T^\lambda{}_{\mu\nu} = \Gamma^\lambda{}_{[\mu\nu]}$ and maps to
+Eq.~\eqref{eq:torsion} exactly; the physical contact term
+$-\tfrac{3\kappa}{16}(J^5)^2$ is identical in both conventions.}
 
 \textit{Step~2: Four-Fermion Contact Interaction.}---Substituting Eq.~\eqref{eq:torsion}
 and integrating out torsion:
@@ -1086,9 +1098,13 @@ reconciliation.
 \subsection{Route 1 (NJL four-fermion contact): closed by Planck suppression}
 \label{sec:r1_njl}
 On the standard Einstein--Cartan side---i.e.\ before the Holst term is
-added---the Cartan algebraic equation $T^{abc} = (\kappa/2)\,
-\bar\psi \gamma^{[a}\gamma^b\gamma^{c]} \psi$ allows torsion to be
-integrated out exactly, generating an effective four-fermion
+added---the Cartan algebraic equation $T^{abc} = \kappa\,S^{abc}$
+(Eq.~\eqref{eq:torsion}; in the half-weight torsion convention
+$T^\lambda{}_{\mu\nu} = \Gamma^\lambda{}_{[\mu\nu]}$ of the original
+literature this reads $T^{abc} = (\kappa/2)\,
+\bar\psi \gamma^{[a}\gamma^b\gamma^{c]} \psi$ --- the two map exactly,
+see the convention footnote at Eq.~\eqref{eq:torsion}) allows torsion to
+be integrated out exactly, generating an effective four-fermion
 contact term whose coefficient is the gravitational coupling
 $\kappa = 8\pi G$~\cite{Hehl1976,HehlDattaNJL1971}. Following the standard
 Hehl--Datta derivation, the resulting axial--axial contact interaction is

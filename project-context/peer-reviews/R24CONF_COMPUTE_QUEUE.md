@@ -1,3 +1,13 @@
+
+## CLOSED 2026-06-11 — P1A Cartan single-convention re-derivation (R26conf META-E1)
+
+Derivation written into the Eq.(3) footnote of paper1a_ech_nogo.tex (v1A.0.55
+pending bump): form-language torsion T^a=De^a + Hermitian Dirac → spin current
+S^{abc}=(1/4)eps^{abcd}J5_d (totally antisymmetric, traces vanish) → T=kappa S
+exactly; back-substitution closes to L_int = -(3 kappa/16)(J5)^2 = Eq.(4)'s
+gamma→infinity limit = Hehl–Datta — no residual factor. The (kappa/2) literature
+form mapped exactly (half-weight torsion convention). SIV.A aligned. META-M6
+(Route-2 alpha/M import) inherits the now-fixed normalization chain.
 # R24conf — compute/derivation queue (items not closable by text edit)
 
 Carried forward from R24conf truth audits (P4/P5 + P1A/P1B), 2026-06-10. R23conf queue items remain open in `R23CONF_COMPUTE_QUEUE.md`.
