@@ -1,0 +1,222 @@
+{
+  "written_utc": "2026-06-10T01:22:12Z",
+  "script": "scripts/21_r23conf_meta_closures.py",
+  "closes": [
+    "P5-META-M4",
+    "P5-META-m5"
+  ],
+  "META_M4_omnibus_chi2_unique_subset": {
+    "row_level_parent": {
+      "counts_cw_ccw": {
+        "void": [
+          207,
+          221
+        ],
+        "wall": [
+          3359,
+          3314
+        ],
+        "filament": [
+          203261,
+          204926
+        ],
+        "cluster": [
+          197284,
+          200221
+        ]
+      },
+      "n": 812793,
+      "chi2": 3.5468795001417806,
+      "dof": 3,
+      "p": 0.3147327118688587,
+      "n_unique_targetid": 783820
+    },
+    "unique_targetid_first_row": {
+      "counts_cw_ccw": {
+        "void": [
+          203,
+          219
+        ],
+        "wall": [
+          3326,
+          3286
+        ],
+        "filament": [
+          196137,
+          197878
+        ],
+        "cluster": [
+          189985,
+          192786
+        ]
+      },
+      "n": 783820,
+      "chi2": 2.9962716072571727,
+      "dof": 3,
+      "p": 0.39220037837561417
+    },
+    "n_targetids_conflicting_env": 79,
+    "unique_targetid_excl_conflicted": {
+      "counts_cw_ccw": {
+        "void": [
+          199,
+          214
+        ],
+        "wall": [
+          3323,
+          3284
+        ],
+        "filament": [
+          196113,
+          197860
+        ],
+        "cluster": [
+          189972,
+          192776
+        ]
+      },
+      "n": 783741,
+      "chi2": 2.9152668070423067,
+      "dof": 3,
+      "p": 0.4048747125308175
+    }
+  },
+  "META_m5_weighted_healpix_correlation": {
+    "nside": 32,
+    "sample": "matched_primary_deduped CW/CCW spirals, z<=0.24",
+    "n_spirals": 678945,
+    "min_spirals_per_pixel": 200,
+    "pixel_criterion": ">=200 spirals AND >=1 maximal void (n_pix_both convention of Sec. VIII.F)",
+    "n_valid_pixels": 727,
+    "maximal_voids_total_binned": 3765,
+    "pearson_unweighted": {
+      "r": 0.005678491865223675,
+      "p": 0.8785192553228591
+    },
+    "pearson_weighted_Npix": {
+      "r": 0.004499492774511031,
+      "p": 0.9065395547751434,
+      "n_eff": 683.3281658595693
+    },
+    "spearman": {
+      "rho": 0.020173485169244755,
+      "p": 0.5870914507186882
+    },
+    "note": "Weighted Pearson uses weights prop. to N_pix (inverse of the leading-order Var[sigma_pix] heteroscedasticity is flat in the z-score normalization, so N_pix weighting is the conservative choice that emphasizes the well-measured pixels)."
+  },
+  "META_M3_tableIV_density_definition": {
+    "cluster": {
+      "Q1": {
+        "n": 99398,
+        "mean_log10_1plus_delta": 1.5476070865603453,
+        "mean_linear_1plus_delta": 36.51414486963021,
+        "sigma_from_half": -3.070340450618773
+      },
+      "Q2": {
+        "n": 99369,
+        "mean_log10_1plus_delta": 1.8039320917334132,
+        "mean_linear_1plus_delta": 64.21643485933097,
+        "sigma_from_half": -3.4165693745476355
+      },
+      "Q3": {
+        "n": 99526,
+        "mean_log10_1plus_delta": 2.0055409485215847,
+        "mean_linear_1plus_delta": 102.23851090557436,
+        "sigma_from_half": -0.36769668483501894
+      },
+      "Q4": {
+        "n": 99212,
+        "mean_log10_1plus_delta": 2.2140073526464574,
+        "mean_linear_1plus_delta": 166.38918844823004,
+        "sigma_from_half": -2.4636534570120103
+      }
+    },
+    "filament": {
+      "Q1": {
+        "n": 102050,
+        "mean_log10_1plus_delta": 0.9018864077344269,
+        "mean_linear_1plus_delta": 9.258885748111616,
+        "sigma_from_half": -0.6949386558710141
+      },
+      "Q2": {
+        "n": 102065,
+        "mean_log10_1plus_delta": 1.3382521682231048,
+        "mean_linear_1plus_delta": 22.110976057689406,
+        "sigma_from_half": -1.9688481663004995
+      },
+      "Q3": {
+        "n": 102033,
+        "mean_log10_1plus_delta": 1.5765131477567362,
+        "mean_linear_1plus_delta": 38.151142799941034,
+        "sigma_from_half": -0.6292536297440007
+      },
+      "Q4": {
+        "n": 102039,
+        "mean_log10_1plus_delta": 1.8551255872794743,
+        "mean_linear_1plus_delta": 74.47461586184619,
+        "sigma_from_half": -1.9190106175608188
+      }
+    },
+    "verdict": "Table IV's bar-rho column equals the quartile mean of env_density = log10(1+delta_smooth), NOT linear density: the recomputed mean log-densities (cluster 1.548/1.804/2.006/2.214) match the published 1.55/1.80/2.01/2.21 and the n / sigma columns match exactly. Quartile membership is invariant under the monotone log transform."
+  },
+  "META_M2_canonical_interior_buffer": {
+    "definition": "canonical V-Web env_class (unique-TARGETID join) restricted to interior galaxies, i.e. excluding near_boundary_Rs == True (within R_s of the occupancy-footprint boundary, flag computed in the 16_* z-shell rebuild geometry)",
+    "n_all": 783820,
+    "n_interior": 782015,
+    "per_class_all_vs_interior": {
+      "void": {
+        "all": {
+          "n": 422,
+          "f_cw": 0.48104265402843605,
+          "sigma_from_half": -0.7788678136179767
+        },
+        "interior": {
+          "n": 280,
+          "f_cw": 0.48214285714285715,
+          "sigma_from_half": -0.5976143046671968
+        }
+      },
+      "wall": {
+        "all": {
+          "n": 6612,
+          "f_cw": 0.5030248033877798,
+          "sigma_from_half": 0.49191896794328177
+        },
+        "interior": {
+          "n": 6244,
+          "f_cw": 0.5035233824471492,
+          "sigma_from_half": 0.5568282099078091
+        }
+      },
+      "filament": {
+        "all": {
+          "n": 394015,
+          "f_cw": 0.497790693247719,
+          "sigma_from_half": -2.7735908334580386
+        },
+        "interior": {
+          "n": 392829,
+          "f_cw": 0.4977992968950867,
+          "sigma_from_half": -2.7586285246097035
+        }
+      },
+      "cluster": {
+        "all": {
+          "n": 382771,
+          "f_cw": 0.4963411543716739,
+          "sigma_from_half": -4.5273450508971225
+        },
+        "interior": {
+          "n": 382662,
+          "f_cw": 0.4963388055255029,
+          "sigma_from_half": -4.529606366460733
+        }
+      }
+    },
+    "interior_omnibus_chi2": {
+      "chi2": 2.9345334438241686,
+      "dof": 3,
+      "p": 0.40182935814219645
+    }
+  }
+}
