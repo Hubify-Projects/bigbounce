@@ -1,0 +1,63 @@
+{
+  "task": "R23conf P3 META-M1/M4/M7 dedup audits",
+  "radius_arcsec": 5.0,
+  "canonical_7way": {
+    "n_input": 388493,
+    "n_unique": 378280,
+    "n_clusters_ge2_members": 9553,
+    "cluster_size_histogram_ge2": {
+      "2": 9124,
+      "3": 313,
+      "4": 73,
+      "5": 22,
+      "6": 8,
+      "7": 3,
+      "8": 2,
+      "9": 2,
+      "10": 1,
+      "11": 1,
+      "12": 3,
+      "17": 1
+    },
+    "meta_m1_chain_audit": {
+      "max_intra_cluster_pairwise_separation_arcsec": 4.998781453312509,
+      "n_clusters_max_sep_gt_link_5as": 0,
+      "fraction_clusters_chained": 0.0
+    }
+  },
+  "meta_m4_sdss_threshold_variants": {
+    "sdss_top1pct_19253": {
+      "sdss_rows": 19253,
+      "n_input": 329841,
+      "n_unique": 320020,
+      "n_multi_survey_clusters": 251,
+      "compression_pct": 2.9774952173926224
+    },
+    "sdss_sgt5_12": {
+      "sdss_rows": 12,
+      "n_input": 310600,
+      "n_unique": 301034,
+      "n_multi_survey_clusters": 2,
+      "compression_pct": 3.0798454603992274
+    }
+  },
+  "meta_m7_desi_x_sdss_3as": {
+    "n_desi": 195829,
+    "n_sdss_continuity_slice": 77905,
+    "observed_matches_3as": 4,
+    "ra_shift_controls_deg": [
+      0.5,
+      -0.5,
+      1.0,
+      -1.0
+    ],
+    "control_match_counts": [
+      5,
+      0,
+      3,
+      3
+    ],
+    "expected_random_mean": 2.75,
+    "note": "Observed = DESI anomalies with an SDSS continuity-slice anomaly within 3\"; expectation measured empirically by RA-shifting the SDSS catalog (preserves footprint overlap and local density to first order)."
+  }
+}
