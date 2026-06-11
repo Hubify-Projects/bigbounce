@@ -21,7 +21,7 @@ export interface FigureSection {
 
 export const figureSections: FigureSection[] = [
   {
-    "title": "Paper 1A — ECH Structural Closure (No-Go Theorem)",
+    "title": "Paper 1A — ECH Channel-Level Closure (4 Dark-Energy Routes)",
     "count": "10 figures",
     "items": [
       {
@@ -445,7 +445,7 @@ export const figureSections: FigureSection[] = [
     ]
   },
   {
-    "title": "Paper 4 — Galaxy Chirality Catalog (3.2M Spirals)",
+    "title": "Paper 4 — Galaxy Chirality Catalog (3.3M Spirals)",
     "count": "10 figures",
     "items": [
       {

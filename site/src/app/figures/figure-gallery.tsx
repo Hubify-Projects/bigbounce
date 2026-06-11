@@ -82,7 +82,7 @@ const FILTERS: Array<{
   label: string;
 }> = [
   { key: "all", label: "All papers" },
-  { key: "P1A", label: "Paper 1A (no-go)" },
+  { key: "P1A", label: "Paper 1A (ECH routes)" },
   { key: "P1B", label: "Paper 1B (MCMC)" },
   { key: "P2", label: "Paper 2 (f_NL)" },
   { key: "P3", label: "Paper 3 (anomalies)" },

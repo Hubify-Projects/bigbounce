@@ -26,11 +26,11 @@ const CONVEX_URL =
 // Map paperSlug → section header rendered on /figures.
 // Order is the canonical display order (P1A → P1B → P2 → P3 → P4 → P5).
 const SECTION_ORDER = [
-  { slug: "paper-1a", title: "Paper 1A — ECH Structural Closure (No-Go Theorem)" },
+  { slug: "paper-1a", title: "Paper 1A — ECH Channel-Level Closure (4 Dark-Energy Routes)" },
   { slug: "paper-1b", title: "Paper 1B — Technical Verification Companion (MCMC + NaMaster)" },
   { slug: "paper-2",  title: "Paper 2 — Matter-Bounce f_NL SPHEREx Forecast" },
   { slug: "paper-3",  title: "Paper 3 — DESI Spectral Anomalies (Multi-Survey Catalog)" },
-  { slug: "paper-4",  title: "Paper 4 — Galaxy Chirality Catalog (3.2M Spirals)" },
+  { slug: "paper-4",  title: "Paper 4 — Galaxy Chirality Catalog (3.3M Spirals)" },
   { slug: "paper-5",  title: "Paper 5 — DESI Chirality × Cosmic-Web Environment" },
 ];
 

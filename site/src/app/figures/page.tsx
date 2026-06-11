@@ -12,11 +12,11 @@ export const metadata: Metadata = {
 // Canonical display order. Sections matching a paperSlug appear in this order;
 // any extras fall through to the "X" cross-cutting group below.
 const SECTION_ORDER: Array<{ slug: string; title: string }> = [
-  { slug: "paper-1a", title: "Paper 1A — ECH Structural Closure (No-Go Theorem)" },
+  { slug: "paper-1a", title: "Paper 1A — ECH Channel-Level Closure (4 Dark-Energy Routes)" },
   { slug: "paper-1b", title: "Paper 1B — Technical Verification Companion (MCMC + NaMaster)" },
   { slug: "paper-2",  title: "Paper 2 — Matter-Bounce f_NL SPHEREx Forecast" },
   { slug: "paper-3",  title: "Paper 3 — DESI Spectral Anomalies (Multi-Survey Catalog)" },
-  { slug: "paper-4",  title: "Paper 4 — Galaxy Chirality Catalog (3.2M Spirals)" },
+  { slug: "paper-4",  title: "Paper 4 — Galaxy Chirality Catalog (3.3M Spirals)" },
   { slug: "paper-5",  title: "Paper 5 — DESI Chirality × Cosmic-Web Environment" },
 ];
 
