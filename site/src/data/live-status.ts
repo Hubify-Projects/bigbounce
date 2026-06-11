@@ -129,7 +129,7 @@ export const liveStatus: LiveStatus = {
       slug: "paper-5",
       number: "5",
       shortTitle: "DESI environmental chirality independence",
-      version: "v0.1.63-2026-06-10",
+      version: "v0.1.63",
       readiness: 95,
       pendingWork: "v0.1.63 — EXT2: dual-parent sample ledger split (DESIVAST 678,945 vs V-Web 783,820), conditional-permutation framing corrected; EXT3 pending; 95-cap until clean external round + Houston sign-off",
     },
