@@ -128,7 +128,7 @@ Tracer tiers: GOLD 116 (W1−W2>1.0, score>10) · SILVER 1,006 (W1−W2>0.8, sco
 | §4 | SPHEREx detection significance | 5–5.5σ (template-corrected) | ✅ |
 | §4 | SPHEREx w/ σ_GR=1.0 (conservative) | 3.0σ | ✅ Table 3 |
 | §5 | MegaMapper σ(f_NL) ideal | ≈0.5 | ✅ Schlegel 2022 adopted |
-| §5 | MegaMapper significance realistic | 3–5σ | ✅ |
+| §5 | MegaMapper significance realistic | 2.6–5σ (same budget as SPHEREx; 3–7σ design envelope in abstract) | ✅ v1.7.51 |
 | §6.3 | Bayes factor vs tuned multifield | 8–17 | ✅ Tuned multifield [−15,+15] |
 | §6.3 | Bayes factor vs single-field | >10⁵ | ✅ |
 | §7.2 | MegaMapper SDB, b_φ 20 % | σ(f_NL) ≈ 1.0 | ✅ Fig 5 |

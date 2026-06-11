@@ -50,10 +50,10 @@ export const figureSections: FigureSection[] = [
       },
       {
         "src": "/images/figure7_observational_timeline.png",
-        "alt": "Observational decision timeline for the two surviving mechanism-independent ECH falsification paths",
+        "alt": "Observational decision timeline for the two surviving ECH-independent class-level falsification paths",
         "number": "Figure 4 (fig:obs_timeline)",
-        "title": "Observational decision timeline for the two surviving mechanism-independent ECH falsification paths",
-        "desc": "Observational decision timeline for the two surviving mechanism-independent ECH falsification paths. Top: LiteBIRD CMB birefringence (σ(β)≈0.03^, launch early 2030s) testing the spectator-ALP route 4. Bottom: SPHEREx galaxy bispectrum ( 2028 first cosmological data release) testing the matter-bounce f_NL=-35/8 prediction at 3--5σ realistic significance (foo…",
+        "title": "Observational decision timeline for the two surviving ECH-independent class-level falsification paths",
+        "desc": "Observational decision timeline for the two surviving ECH-independent class-level falsification paths. Top: LiteBIRD CMB birefringence (σ(β)≈0.03^, launch early 2030s) testing the spectator-ALP route 4. Bottom: SPHEREx galaxy bispectrum ( 2028 first cosmological data release) testing the matter-bounce f_NL=-35/8 prediction at 2.6--5σ realistic significance (foo…",
         "source": "Paper 1A · v1A.0.50"
       },
       {
@@ -66,10 +66,10 @@ export const figureSections: FigureSection[] = [
       },
       {
         "src": "/images/figure8_detection_forecast.png",
-        "alt": "Detection forecast for the two surviving mechanism-independent tests",
+        "alt": "Detection forecast for the two surviving ECH-independent class tests",
         "number": "Figure 6 (fig:detection_forecast)",
-        "title": "Detection forecast for the two surviving mechanism-independent tests",
-        "desc": "Detection forecast for the two surviving mechanism-independent tests. Top: matter-bounce f_ NL=-35/8 in the SPHEREx multi-tracer f_ NL Fisher landscape (companion Paper II, 3--5σ projection). Bottom: spectator-ALP cosmic birefringence in the LiteBIRD σ(β) ≈0.03^ window (Paper Ib companion); the WMAP+Planck β=0.342^± 0.094^ and ACT DR6 β=0.215^± 0.074^ point…",
+        "title": "Detection forecast for the two surviving ECH-independent class tests",
+        "desc": "Detection forecast for the two surviving ECH-independent class tests. Top: matter-bounce f_ NL=-35/8 in the SPHEREx multi-tracer f_ NL Fisher landscape (companion Paper II, 2.6--5σ projection). Bottom: spectator-ALP cosmic birefringence in the LiteBIRD σ(β) ≈0.03^ window (Paper Ib companion); the WMAP+Planck β=0.342^± 0.094^ and ACT DR6 β=0.215^± 0.074^ point…",
         "source": "Paper 1A · v1A.0.50"
       },
       {
