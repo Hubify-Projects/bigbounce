@@ -43,6 +43,30 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "EXT2-CLOSURES",
+    kind: "closure-wave",
+    dateISO: "2026-06-10",
+    title: "EXT2 closure wave — all six papers restamped same-day; pattern-051 closure-wave protocol active",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "Same-day EXT2 truth-audit closures restamped all six papers (v1A.0.59 / v1B.0.57 / v1.7.51 / v3.1.90 / v1.0.174 / v0.1.63): confabulated reference replaced, a closure-introduced sign-error chain deleted, sample counts chain-confirmed, and the P2 headline honestly rebooked.",
+    keyTakeaways: [
+      "P1A Ref [22]: confabulated Mercuri-Capozziello entry (arXiv:0808.0571 is a math.CO paper) replaced with externally-verified Shapiro & Teixeira 2014 (CQG 31, 185002) after surviving ~30 internal rounds + EXT1",
+      "P1A: the R29 pair-exchange 'proof' chain — a closure-introduced sign error — deleted at both sites; the Bianchi contraction stands alone",
+      "P1A App. C: WKB smallness estimate recomputed — 10^-63 eV corrected to 10^-35 eV, the margin is ~30 orders, not ~60",
+      "P1B: 176,240 full-tension sample count chain-confirmed; planck_bao_sn CORRECTED diagnostics added and ΔN_eff/H0 quotes rebooked to the regenerated artifact (+0.058±0.179 / 67.78±1.09)",
+      "P2 headline: realistic post-budget range honestly rebooked 3-5σ → 2.6-5σ at every site, with cross-paper sweeps through P1A and P3",
+      "pattern-051 closure-wave protocol active: every stamp now ends with a git-diff re-read + swept-term residual grep before commit",
+    ],
+    links: [
+      { label: "P1A audit", href: `${PR}/EXT2_P1A_TRUTH_AUDIT.md` },
+      { label: "P1B audit", href: `${PR}/EXT2_P1B_TRUTH_AUDIT.md` },
+      { label: "P2 audit", href: `${PR}/EXT2_P2_TRUTH_AUDIT.md` },
+      { label: "P3 audit", href: `${PR}/EXT2_P3_TRUTH_AUDIT.md` },
+      { label: "P4 audit", href: `${PR}/EXT2_P4_TRUTH_AUDIT.md` },
+      { label: "P5 audit", href: `${PR}/EXT2_P5_TRUTH_AUDIT.md` },
+    ],
+  },
+  {
     id: "EXT2",
     kind: "external-browser",
     dateISO: "2026-06-10",
@@ -429,7 +453,13 @@ export const readinessCheckpoints: ReadinessCheckpoint[] = [
     id: "R29",
     dateISO: "2026-06-10",
     values: { P1A: 94, P1B: 94, P2: 94, P3: 94, P4: 95, P5: 95 },
-    note: "Current: P1A 93→94, P2 95→94 (dimensional regressions found+fixed) — per R29 truth-audit",
+    note: "P1A 93→94, P2 95→94 (dimensional regressions found+fixed) — per R29 truth-audit",
+  },
+  {
+    id: "EXT2-CLOSURES",
+    dateISO: "2026-06-10",
+    values: { P1A: 95, P1B: 94, P2: 94, P3: 95, P4: 95, P5: 95 },
+    note: "Current: EXT2 cycle complete — P1A 94→95 (hardest blockers closed), P3 94→95; P1B/P2 held at 94 pending compute-queue closures; EXT3 pending",
   },
 ];
 
