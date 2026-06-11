@@ -6,7 +6,7 @@
 %Control: page (0) single
 %Control: year (1) truncated
 %Control: production of eprint (0) enabled
-\begin{thebibliography}{50}%
+\begin{thebibliography}{48}%
 \makeatletter
 \providecommand \@ifxundefined [1]{%
  \@ifx{#1\undefined}
@@ -285,17 +285,6 @@
   {117}},\ \bibinfo {pages} {131302} (\bibinfo {year} {2016})},\ \Eprint
   {https://arxiv.org/abs/1605.07178} {arXiv:1605.07178 [astro-ph.CO]}
   \BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Mercuri}\ and\ \citenamefont
-  {Capozziello}(2008)}]{MercuriCapozziello2008}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
-  {Mercuri}}\ and\ \bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
-  {Capozziello}},\ }\bibfield  {title} {\bibinfo {title} {{One-loop corrections
-  to the Holst term in Einstein--Cartan theory}},\ }\href@noop {} {\bibfield
-  {journal} {\bibinfo  {journal} {Annalen Phys.}\ }\textbf {\bibinfo {volume}
-  {520}},\ \bibinfo {pages} {693} (\bibinfo {year} {2008})},\ \Eprint
-  {https://arxiv.org/abs/0808.0571} {arXiv:0808.0571 [gr-qc]} \BibitemShut
-  {NoStop}%
 \bibitem [{\citenamefont {Kuzmin}\ \emph {et~al.}(1985)\citenamefont {Kuzmin},
   \citenamefont {Rubakov},\ and\ \citenamefont {Shaposhnikov}}]{Kuzmin1985}%
   \BibitemOpen
@@ -572,13 +561,6 @@
   Native-Trained Novelty Rates from 37.3 Million Sources}},\ }\href@noop {} {\
   (\bibinfo {year} {2026}{\natexlab{d}})},\ \bibinfo {note} {companion paper,
   posted concurrently on arXiv}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Golden}(2026{\natexlab{e}})}]{Golden2026supplement}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {H.}~\bibnamefont
-  {Golden}},\ }\href@noop {} {\bibinfo {title} {Systematic closure of minimal
-  first-principles routes to dark energy in {Einstein-Cartan-Holst} gravity}}
-  (\bibinfo {year} {2026}{\natexlab{e}}),\ \bibinfo {note} {companion technical
-  note, available upon request from the author}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Carroll}\ \emph {et~al.}(1990)\citenamefont
   {Carroll}, \citenamefont {Field},\ and\ \citenamefont
   {Jackiw}}]{CarrollFieldJackiw1990}%

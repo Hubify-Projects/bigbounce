@@ -2,10 +2,10 @@
 
 **Paper:** Channel-Level Closure of Four Minimal Einstein--Cartan--Holst Dark-Energy Routes and Perturbation Transparency for Scalar Matter (Paper I A)
 **Author:** Houston Golden
-**Paper version:** v1A.0.58 (2026-06-10)
-**Bundle version:** v1A.0.58-bundle
+**Paper version:** v1A.0.59 (2026-06-10)
+**Bundle version:** v1A.0.59-bundle
 
-> **Note (2026-06-10):** This bundle was previously labelled "v0.9.0 / Geometric Dark Energy" while the manuscript moved to title "Channel-Level Closure of Four Minimal ECH Dark-Energy Routes and Perturbation Transparency for Scalar Matter" at v1A.0.56, then to v1A.0.57 after the EXT1 external-round textual-closure wave, then to v1A.0.58 after the R29 post-EXT1 internal-round closure wave. Labels here now track the current manuscript title and version. The Cobaya YAMLs and Stan galaxy-spin code are unchanged from the v0.9.0 / v1A.0.56-bundle states (MCMC chains and convergence are documented in companion Paper I(b)); the v1A.0.56 → v1A.0.57 → v1A.0.58 bumps are README/BibTeX-metadata resyncs only, the bundles are byte-identical otherwise.
+> **Note (2026-06-10):** This bundle was previously labelled "v0.9.0 / Geometric Dark Energy" while the manuscript moved to title "Channel-Level Closure of Four Minimal ECH Dark-Energy Routes and Perturbation Transparency for Scalar Matter" at v1A.0.56, then to v1A.0.57 after the EXT1 external-round textual-closure wave, then to v1A.0.58 after the R29 post-EXT1 internal-round closure wave, then to v1A.0.59 after the EXT2 external-round closure wave. Labels here now track the current manuscript title and version. The Cobaya YAMLs and Stan galaxy-spin code are unchanged from the v0.9.0 / v1A.0.56-bundle states (MCMC chains and convergence are documented in companion Paper I(b)); the v1A.0.56 → v1A.0.57 → v1A.0.58 bumps were README/BibTeX-metadata resyncs only, and the v1A.0.59 bump additionally corrects the "What This Bundle Reproduces" table to the frozen-chain values (EXT2 F2) — the bundles are otherwise byte-identical.
 
 ## Quick Start
 
@@ -51,15 +51,20 @@ reproducibility/
 
 ## What This Bundle Reproduces
 
+Values quoted below track the frozen-chain results recorded in companion
+Paper I(b) Table IV (full-tension configuration: Planck NPIPE + BAO + Pantheon+
++ DES-SN5YR + DESI DR2). Source of truth:
+`reproducibility/cosmology/frozen/full_tension_20260311_1728/diagnostics/parameter_summary_CORRECTED.json`.
+
 | Paper Result | Reproducible? | How |
 |-------------|:---:|-----|
-| H₀ = 69.2 ± 0.8 | YES | `cobaya_full_tension.yaml` with stock CAMB |
-| σ₈ = 0.785 ± 0.016 | YES | `cobaya_full_tension.yaml` with stock CAMB |
-| ΔN_eff ≈ 0.3 | YES | `cobaya_full_tension.yaml` with stock CAMB |
+| H₀ = 67.68 ± 1.06 km s⁻¹ Mpc⁻¹ | YES | `cobaya_full_tension.yaml` with stock CAMB |
+| σ₈ = 0.8034 ± 0.0084 | YES | `cobaya_full_tension.yaml` with stock CAMB |
+| ΔN_eff = −0.020 ± 0.169 | YES | `cobaya_full_tension.yaml` with stock CAMB |
 | Galaxy spin A₀, p, q | YES | `spin_fit_stan.py` + Shamir (2024) aggregate counts |
 | χ²_eff, AIC, BIC | YES | From MCMC chain maximum likelihood |
 | ln B (Bayes factors) | PARTIAL | Requires PolyChord (not included) |
-| β ≈ 0.30° birefringence | N/A | Literature value (Planck) |
+| β ≈ 0.27° birefringence | N/A | Literature value (WMAP+Planck PR4) |
 | Corner plots | YES | From chains using GetDist |
 
 ## What This Bundle Does NOT Reproduce
@@ -67,7 +72,12 @@ reproducibility/
 See `docs/KNOWN_GAPS.md` for full details:
 
 1. **No custom CAMB modifications** — model uses standard ΛCDM + N_eff
-2. **No pre-computed chains** — must be generated (~4-12h per config)
+2. **Frozen chains are committed; fresh proxy chains are not** — the
+   `reproducibility/cosmology/frozen/full_tension_20260311_1728/` and
+   `frozen/planck_bao_sn_20260312_1954/` directories contain the committed
+   chains and diagnostics that back Paper I(b) Tables III–IV. Fresh ΛCDM+ΔN_eff
+   proxy chains for re-verification must be generated locally via
+   `reproduce_cosmology.sh` (~4–12 h per config).
 3. **No CNN classifier** — uses published catalogs
 4. **No CMB map analysis** — birefringence is literature-cited
 5. **No nested sampling** — Bayes factors require PolyChord
@@ -97,7 +107,7 @@ MIT License. See LICENSE file.
   title = {Channel-Level Closure of Four Minimal Einstein--Cartan--Holst
            Dark-Energy Routes and Perturbation Transparency for Scalar Matter},
   year = {2026},
-  note = {Paper I A, v1A.0.58},
+  note = {Paper I A, v1A.0.59},
   eprint = {XXXX.XXXXX},
   archivePrefix = {arXiv},
   primaryClass = {gr-qc}

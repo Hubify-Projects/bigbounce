@@ -45,8 +45,33 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.58}
+\newcommand{\paperVersion}{v1A.0.59}
 \newcommand{\paperTimestamp}{June 10, 2026 PDT}
+% v1A.0.58->59 (2026-06-10 — EXT2 external-round closure wave; truth audit at
+%   project-context/peer-reviews/EXT2_P1A_TRUTH_AUDIT.md. F1: confabulated
+%   Ref [22] MercuriCapozziello2008 (arXiv:0808.0571 = q-TSPP math.CO paper)
+%   replaced with Shapiro & Teixeira 2014 (CQG 31, 185002, arXiv:1402.4854);
+%   both citing sentences rewritten to what that paper actually computes.
+%   F10: R29 META-E1 pair-exchange "equivalently" chain DELETED (sign error —
+%   the (mu nu)<->(rho sigma) swap is two transpositions, eps is symmetric);
+%   Bianchi-contraction route retained as the sole proof. F4: App. C WKB
+%   estimate recomputed 10^-63 eV -> 10^-35 eV, ratio 10^59 -> 10^31, "60
+%   orders" -> "~30 orders", conformal-time phi' pinned. F5/F13: reheating
+%   washout paragraph reordered — top-Yukawa leads (only channel with
+%   Gamma/H >> 1 at T_reh ~ 10^15 GeV), sphalerons demoted to T <~ 10^12 GeV
+%   completion in the symmetric phase, nu-oscillations recast model-dependent.
+%   F3/F6/F7: amplitude-closure overclaim sweep — "standard published
+%   derivation where available (R1, R4) or explicitly-labeled ansatz-level
+%   scoping (R2--R3)"; "mechanism-independent" -> "ECH-independent class
+%   tests" at unqualified sites; Fig. 6 caption decisive-claim split (SPHEREx
+%   decisive vs f_NL=0; LiteBIRD 0.27 vs 0.342 separation ~0.7sigma).
+%   F8: live w0wa chain-status footnote replaced with static no-claim
+%   sentence. F21: Table III header gamma_PTA. F15: "Falsification" ->
+%   "Falsifiability Criteria". F22: acknowledgements verification sentence
+%   softened to standard responsibility statement. F2: repro README values
+%   table resynced to frozen-chain Table IV values (67.68±1.06 / 0.8034±0.0084
+%   / -0.020±0.169) + frozen-chains-committed clarification. Bundle labels
+%   resynced to v1A.0.59-bundle.)
 % v1A.0.57->58 (2026-06-10 — R29 post-EXT1 internal-round closure wave; truth audit at
 %   project-context/peer-reviews/R29_P1A_TRUTH_AUDIT.md. E1: abstract/body N_tot
 %   erasure criterion restated as the differential N_tot-N_exit > N_coh (the
@@ -407,9 +432,7 @@ around the torsion-free branch (excluding propagating-torsion, dynamical-Immirzi
 fermion-loop, and non-minimal-matter sectors), the Holst dual contraction
 $\epsilon^{\mu\nu\rho\sigma}R_{\mu\nu\rho\sigma}$ vanishes identically on the
 Levi-Civita connection ($T=0$, metric-compatible) by the first (algebraic) Bianchi identity
-$R_{\mu[\nu\rho\sigma]}=0$ (equivalently, by the pair-exchange symmetry
-$R_{\mu\nu\rho\sigma}=R_{\rho\sigma\mu\nu}$ combined with the antisymmetry of
-$\epsilon^{\mu\nu\rho\sigma}$), and the Holst sector therefore decouples from all
+$R_{\mu[\nu\rho\sigma]}=0$, and the Holst sector therefore decouples from all
 scalar/tensor perturbation equations of motion
 (Sec.~\ref{sec:transparency}).\footnote{This Bianchi-identity vanishing is
 distinct from --- and should not be confused with --- the Pontryagin density
@@ -490,8 +513,9 @@ dark-energy routes (Sec.~\ref{sec:fourroute}): under the stated assumptions,
 the 14 constraints (Sec.~\ref{sec:barriers}, 13 logically-independent with
 B8 subsumed by B14) close those routes at amplitude-budget granularity.
 The surviving phenomenological predictors---matter-bounce $\fnl$ and
-spectator-ALP birefringence---are mechanism-independent and shared by other
-UV completions.
+spectator-ALP birefringence---are ECH-independent class tests (shared with
+other UV completions within the broader bounce/ALP landscape; see
+\S\ref{sec:surviving} for the precise scoping).
 
 \paragraph{Scope and limitations.} The four routes assessed below are
 minimal channels rather than a complete diffeomorphism-invariant operator
@@ -604,17 +628,17 @@ mechanism ($N_{\rm tot}\approx 92$ $e$-folds required) and the matter-bounce
 $\fnl=-35/8$ prediction (\emph{definitively} erased once the bounce-vs-CMB-horizon-exit differential $N_{\rm tot}-N_{\rm exit}$ exceeds the matter-bounce contraction-mode coherence window $N_{\rm coh}\sim\mathcal{O}(\text{few})$, since the SPHEREx accessible band $k\sim 10^{-4}$--$10^{-1}\,h/$Mpc maps to bounce-era \emph{physical} scales $k_{\rm bounce}^{\rm phys} = k_{\rm SPHEREx}^{\rm phys}\,e^{N_{\rm tot}-N_{\rm exit}}$ at $N_{\rm tot}\sim 92$ and $N_{\rm exit}\sim 60$ (relative e-fold differential $\sim 32$, deeply inside the erasure regime; comoving $k$ are constant by definition, only physical scales scale with $a^{-1}\propto e^{-N}$) that lie deep inside the inflationary subhorizon regime where the observable bispectrum is dominated by vacuum-inflationary modes rather than the matter-bounce contraction modes; see Sec.~\ref{sec:structural_tension}), establishing that
 these are independent observational programs.
 
-\item \textit{Survival of mechanism-independent tests}: Despite ECH structural
-closure, two predictions of the broader bounce/ALP landscape survive and are
-testable by SPHEREx (2028) and LiteBIRD (early 2030s) independently of any
-specific UV completion.
+\item \textit{Survival of ECH-independent class tests}: Despite ECH structural
+closure, two class-level predictions of the broader bounce/ALP landscape
+survive and are testable by SPHEREx (2028) and LiteBIRD (early 2030s)
+independently of the specific ECH UV completion.
 \end{enumerate}
 
 \subsection{Paper Organization}\label{sec:paporg}
 
 Section~\ref{sec:theory} develops the ECH theoretical framework.
 Section~\ref{sec:obs} presents observational signatures (galaxy spin null,
-CMB EB). Section~\ref{sec:fourroute} closes each of the four standard ECH routes (NJL, one-loop EA, Immirzi running, parity-CMB) at the amplitude level.
+CMB EB). Section~\ref{sec:fourroute} closes each of the four standard ECH routes (NJL, one-loop EA, Immirzi running, parity-CMB) at the amplitude level under explicitly-labeled scaling assumptions for R2--R3 and a naturalness limit for R4 (see Sec.~\ref{sec:fourroute} for the per-route scoping).
 Section~\ref{sec:data_galaxy} covers the galaxy-spin data methods.
 Sections~\ref{sec:systematics}--\ref{sec:related} provide systematic analysis,
 falsifiability criteria, and related work. The core results occupy
@@ -622,7 +646,7 @@ Secs.~\ref{sec:barriers}--\ref{sec:loophole}: the 13 logically-independent struc
 perturbation-transparency result, and hybrid loophole rejection.
 Section~\ref{sec:discussion} discusses the inflationary suppression factor and
 theoretical implications. Section~\ref{sec:surviving} summarizes surviving
-mechanism-independent tests. Section~\ref{sec:limitations} addresses limitations.
+ECH-independent class tests. Section~\ref{sec:limitations} addresses limitations.
 Section~\ref{sec:conclusions} concludes.
 
 \textit{Companion paper.}---$\Lambda$CDM$+\Delta\Neff$ MCMC verification
@@ -975,10 +999,11 @@ combination carries an extra phase-space suppression at thermal
 equilibrium, justified here on dimensional / phase-space grounds for
 the axial-current variance). We emphasize that this thermal
 phase-space factor is \emph{not} identifiable with the
-Mercuri~\&~Capozziello~\cite{MercuriCapozziello2008} one-loop
+Shapiro~\&~Teixeira~\cite{ShapiroTeixeira2014} one-loop
 coefficient $\alpha_{\rm em}/(4\pi)$ appearing in
 Eq.~\ref{eq:oneloop_parity_odd}: the latter is a quantum
-chiral-anomaly loop suppression physically unrelated to thermal
+loop suppression characterizing the renormalization of the
+Holst-sector parity-odd operator, physically unrelated to thermal
 phase-space counting. The $\sqrt{T_{\rm reh}/M_{\rm GUT}}$
 parity-odd-density-of-states factor is therefore treated as a
 phenomenological phase-space ansatz, not as derivable from the
@@ -1027,17 +1052,23 @@ rapidly washed out toward $\langle J^5_\mu\rangle\simeq 0$ in any
 regime that satisfies this inequality. The expected ordering at the
 GUT-scale reheating considered here ($T_{\rm reh}\sim 10^{15}\,$GeV,
 $H_{\rm reh}\sim T_{\rm reh}^2/M_{\rm Pl}\sim 10^{11}\,$GeV) involves
-three SM channels: (i) electroweak-sphaleron $B\!+\!L$-violation, which
-becomes the dominant chirality-flipping process below the EW phase
-transition ($\Gamma_{\rm sph}\sim\alpha_W^5 T$ in the symmetric phase,
-Kuzmin--Rubakov--Shaposhnikov~\cite{Kuzmin1985}, giving
-$\Gamma_{\rm sph}/H\sim\alpha_W^5\,M_{\rm Pl}/T\gg 1$ for
-$T\!<\!10^{12}\,$GeV); (ii) SM Yukawa chirality-flipping rates
-$\Gamma_y\sim y_f^2 T$ with the top Yukawa $y_t\sim 1$ giving
-$\Gamma_t/H\sim y_t^2\,M_{\rm Pl}/T\gg 1$ at $T\!\sim\!T_{\rm reh}$;
+three SM channels: (i) SM Yukawa chirality-flipping rates
+$\Gamma_y\sim y_f^2 T$, with the top Yukawa $y_t\sim 1$ giving
+$\Gamma_t/H\sim y_t^2\,M_{\rm Pl}/T\gg 1$ at $T\!\sim\!T_{\rm reh}\sim
+10^{15}\,$GeV, which is the dominant rapidly-thermalizing channel at
+the GUT-scale reheating considered here;
+(ii) electroweak-sphaleron $B\!+\!L$-violation, which is
+unsuppressed in the electroweak symmetric phase
+($\Gamma_{\rm sph}\sim\alpha_W^5 T$, Kuzmin--Rubakov--Shaposhnikov~\cite{Kuzmin1985}),
+giving $\Gamma_{\rm sph}/H\sim\alpha_W^5\,M_{\rm Pl}/T\gg 1$ only
+for $T\!\lesssim\!10^{12}\,$GeV --- so the sphaleron channel does not
+itself exceed $H$ at $T_{\rm reh}$, but completes the erasure once the
+plasma cools through the $10^{12}\,$GeV regime while remaining in
+the symmetric phase, and is exponentially suppressed only below the
+electroweak phase transition;
 (iii) neutrino-oscillation chirality randomization, which is
-sub-dominant to (i)/(ii) above the EW scale but completes the erasure
-at lower temperatures. A full Boltzmann calculation of
+model-dependent (mass and mixing-spectrum dependent) and at most
+sub-dominant to (i)/(ii) above the EW scale. A full Boltzmann calculation of
 $\Gamma_{\rm wash}(T)$ vs $H(T)$ across the bounce-to-reheating
 window---tracking sphaleron, top-Yukawa, and right-handed-neutrino
 rates simultaneously---is left to a follow-up; the present
@@ -1159,7 +1190,7 @@ established by ruling out, in turn, the four routes by which a minimal
 Einstein--Cartan--Holst (ECH) sector could in principle source a parity-odd
 or dark-energy contribution at the level required by the observational
 budget of Sec.~\ref{sec:obs}. We collect those four routes here and close each
-with the standard published derivation, constituting the no-go audit for each route.
+with the standard published derivation where available (R1, R4) or with explicitly-labeled ansatz-level scoping (R2--R3), constituting the no-go audit for each route.
 
 The four routes are (R1) Nambu--Jona-Lasinio--type four-fermion contact
 interactions generated by integrating out torsion algebraically;
@@ -1279,13 +1310,15 @@ R_{ab}$ is topological in vacuum and reduces to the Nieh--Yan density on
 shell once torsion is integrated out~\cite{Holst1996,Freidel2005}. Quantum
 corrections from minimally coupled fermions, however, generate a
 parity-odd coupling between the gravitational field and the chiral
-fermion current at one loop, with coefficient running logarithmically
-in the Barbero--Immirzi parameter $\gamma$~\cite{Mercuri2009,
-MercuriCapozziello2008}. Motivated by (but \emph{not literally
+fermion current at one loop, with the Holst sector developing
+running couplings analyzed via renormalization-group methods in
+Einstein--Cartan + Holst gravity~\cite{Mercuri2009,
+ShapiroTeixeira2014}. Motivated by (but \emph{not literally
 derived in}) the Holst$+$non-minimal-fermion construction of
-Mercuri and Mercuri \& Capozziello---those works establish the
-classical structure of the Holst term coupled to fermions and the
-Nieh--Yan invariant, not this exact one-loop operator---we adopt
+Mercuri and the one-loop analysis of Shapiro \& Teixeira---those
+works establish the classical structure of the Holst term coupled
+to fermions, the Nieh--Yan invariant, and the one-loop running of
+the Holst sector, not this exact effective operator---we adopt
 the phenomenological one-loop parity-odd operator
 \begin{equation}
 \Gamma_{\rm one\text{-}loop}^{\rm parity\text{-}odd}
@@ -1665,19 +1698,19 @@ are in companion Paper~I(b)~\cite{Golden2026P1b}.
 %% ============================================================
 %%  7. FALSIFICATION CRITERIA
 %% ============================================================
-\section{Falsification Criteria}\label{sec:falsification}
+\section{Falsifiability Criteria}\label{sec:falsification}
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\columnwidth]{figures/figure7_observational_timeline.png}
 \caption{\textbf{Observational decision timeline for the two surviving
-mechanism-independent ECH falsification paths.} Top: LiteBIRD CMB
+ECH-independent class-level falsification paths.} Top: LiteBIRD CMB
 birefringence ($\sigma(\beta)\!\approx\!0.03^\circ$, launch early 2030s)
 testing the spectator-ALP route 4. Bottom: SPHEREx galaxy bispectrum
 ($\sim\!2028$ first cosmological data release) testing the matter-bounce
 $\fnl=-35/8$ prediction at $3$--$5\sigma$ realistic significance
 (footnote~\ref{fn:spherex_range}). Both surveys deliver
-parameter-independent, mechanism-independent discrimination tests; the
+parameter-independent, ECH-independent class-level discrimination tests; the
 joint outcome falsifies the surviving ECH framework or leaves it as the
 unique survivor.\label{fig:obs_timeline}}
 \end{figure}
@@ -1958,14 +1991,9 @@ metric-compatible connection \emph{vanishes identically} by the first (algebraic
 $R_{\mu[\nu\rho\sigma]} = 0$: the cyclic-sum identity $R_{\mu\nu\rho\sigma} +
 R_{\mu\rho\sigma\nu} + R_{\mu\sigma\nu\rho} = 0$ contracted with the totally
 antisymmetric $\epsilon^{\mu\nu\rho\sigma}$ leaves no non-trivial component.
-Equivalently, the pair-exchange symmetry
-$R_{\mu\nu\rho\sigma}=R_{\rho\sigma\mu\nu}$ (which requires metric compatibility
-and is the more transparent route) combined with
-the antisymmetry of $\epsilon^{\mu\nu\rho\sigma}$ under the same swap gives
-$\epsilon^{\mu\nu\rho\sigma}R_{\mu\nu\rho\sigma} =
-\epsilon^{\mu\nu\rho\sigma}R_{\rho\sigma\mu\nu} = -\epsilon^{\mu\nu\rho\sigma}R_{\mu\nu\rho\sigma}=0$;
-both routes require both $T=0$ \emph{and} metric compatibility, and the
-vanishing can fail in non-metric connections even when torsion is zero.
+The vanishing requires both $T=0$ \emph{and} metric compatibility (so that
+the first Bianchi identity above holds), and can fail in non-metric
+connections even when torsion is zero.
 The Holst dual contraction is therefore identically zero on the Levi-Civita
 connection (not merely a boundary term), so it contributes nothing to the
 action at any order. This Bianchi-vanishing is distinct from the Pontryagin
@@ -2064,7 +2092,7 @@ the prediction; ``$\times$'' denotes it does not; ``---'' denotes not applicable
 or not computed.}
 \begin{ruledtabular}
 \begin{tabular}{lcccc}
-Model & $\fnl=-35/8$ & ALP birefringence & PTA $\gamma$ (real-KDE) & $w_0w_a$ DESI \\
+Model & $\fnl=-35/8$ & ALP birefringence & $\gamma_{\rm PTA}$ (real-KDE) & $w_0w_a$ DESI \\
 \hline
 Matter bounce (any host; not ECH-specific) & $\checkmark$ & (spectator) & $\checkmark$ & not tested$^{\ddagger}$ \\
 Slow-roll inflation & $\times$ ($\fnl\approx 0.015$) & (spectator) & $\times$ & not tested$^{\ddagger}$ \\
@@ -2074,7 +2102,7 @@ Ekpyrotic & $\times$ ($\fnl\sim -5$) & (spectator) & --- & not tested$^{\ddagger
 \end{tabular}
 \end{ruledtabular}
 $^{\dagger}$Quintom-B can in principle accommodate the DESI $w_0 w_a$ evidence; the MCMC analysis hosted in companion Paper~I(b) was not extended to the $w_0 w_a$ parameter space, so this row is reported as ``consistent at the model level'' rather than a posterior-preference $\checkmark$.\\
-$^{\ddagger}$The frozen MCMC posteriors hosted in Paper~I(b) (the three completed dataset combinations enumerated in Paper~I(b) \S~VII Table~IV, subsection ``Free-$w_0 w_a$ chain status'') contain zero free-$w_0 w_a$ samples; the $w_0 w_a$ extension was never implemented computationally for any of those frozen runs. A new DESI~DR2 + Planck~NPIPE + Pantheon$+$ + DES-SN5YR cobaya chain with the $w_0 w_a$ free-parameter extension is running on a dedicated MPI pod (16 chains, OMP threads tuned to suppress BLAS oversubscription, GetDist-built posterior covmat from a preliminary 4-chain iter1 with $\sim\!9{,}500$ accepted samples). At the time of this writing the chain has accumulated $\sim\!3.8\!\times\!10^{4}$ accepted samples across the 16 chains and reports $\hat R - 1 \approx 3\!\times\!10^{-2}$, descending monotonically toward the standard publication-quality convergence target $\hat R - 1 < 10^{-2}$ at a slow-mode-dominated convergence rate; we deliberately do not commit to a specific calendar date for convergence in this footnote (Paper~I(b) Table~IV row ``DESI DR2 w0wa (new)''). Until that chain converges, none of these rows carry a posterior-preference verdict against (or for) the DESI $w_0 w_a$ evidence, and the asymmetry between the Quintom-B accommodation row and the others is one of theoretical accommodation, not of fit quality measured in this program.
+$^{\ddagger}$A free-$w_0 w_a$ posterior analysis was not completed for the present paper; no posterior-preference claim is made for or against the DESI $w_0 w_a$ evidence on the basis of the present table. The frozen MCMC posteriors hosted in Paper~I(b) cover three $\Lambda$CDM$+\Delta N_{\rm eff}$ dataset combinations only, and the asymmetry between the Quintom-B accommodation row and the others is one of theoretical accommodation, not of fit quality measured in this program.
 \end{table*}
 
 The matter bounce prediction $\fnl = -35/8$ is the strongest discriminator:
@@ -2195,13 +2223,21 @@ the structural-tension verdict.
 
 Four routes to deriving $\rho_\Lambda$ with $w=-1$ from first principles were
 tested: (i)~NJL condensate, (ii)~one-loop fermion effective action, (iii)~dynamical
-Immirzi field, (iv)~parity-sensitive CMB phenomenology. All four yield clean
-negative results. The condensate route fails because the scalar/pseudoscalar
+Immirzi field, (iv)~parity-sensitive CMB phenomenology. R1 closes via the
+standard published derivation; R2--R3 close at the amplitude level under
+explicitly-labeled scaling/ansatz assumptions; R4 closes at the naturalness
+level. The condensate route fails because the scalar/pseudoscalar
 channel is repulsive at $\gamma=0.274$ and subcritical. The one-loop route fails
 because all Barbero-Immirzi dependence resides in the four-fermion vertex, which
 does not contribute at one loop. The dynamical Immirzi field reduces to a standard
 axion-like particle with $w=+1$ (stiff matter). The parity assessment finds no
-photon coupling in the minimal framework~\cite{Golden2026supplement}.
+photon coupling in the minimal framework: the parity-odd one-loop operator
+of Sec.~\ref{sec:r2_oneloop} couples the Nieh--Yan pseudoscalar to the
+fermion axial current, $\partial_\mu\vartheta_{\rm NY}\,J^{5\mu}$, with no
+$F\widetilde F$ term, so a CMB-birefringence amplitude only arises through
+the model-dependent $\partial_\mu J^{5\mu}\!\supset\!(\alpha_{\rm em}/4\pi)
+F\widetilde F$ chiral-anomaly chain, treated as an amplitude-budget bound
+rather than a derived prediction (Sec.~\ref{sec:r2_oneloop} footnote).
 
 \textit{Spectator-ALP birefringence.}---A spectator ALP with $f_a\sim\MPl$,
 $m\sim H_0$ is consistent with the published WMAP$+$Planck
@@ -2228,14 +2264,20 @@ LiteBIRD forecast are in companion Paper~I(b)~\cite{Golden2026P1b}.
 \begin{figure}[t]
 \centering
 \includegraphics[width=\columnwidth]{figures/figure8_detection_forecast.png}
-\caption{\textbf{Detection forecast for the two surviving mechanism-independent
-tests.} Top: matter-bounce $f_{\rm NL}\!=\!-35/8$ in the SPHEREx multi-tracer
+\caption{\textbf{Detection forecast for the two surviving ECH-independent
+class tests.} Top: matter-bounce $f_{\rm NL}\!=\!-35/8$ in the SPHEREx multi-tracer
 $f_{\rm NL}$ Fisher landscape (companion Paper~II, $3$--$5\sigma$ projection).
 Bottom: spectator-ALP cosmic birefringence in the LiteBIRD $\sigma(\beta)
 \!\approx\!0.03^\circ$ window (Paper~Ib companion); the WMAP+Planck
 $\beta=0.342^\circ\pm 0.094^\circ$ and ACT~DR6 $\beta=0.215^\circ\pm 0.074^\circ$
-points are shown for reference. Both forecasts are decisive ($\gtrsim 5\sigma$
-on Stage~III/IV survey timescales); neither is uniquely an ECH prediction
+points are shown for reference. The SPHEREx $f_{\rm NL}$ forecast is
+decisive ($\gtrsim 5\sigma$ on Stage~III/IV survey timescales) against
+$f_{\rm NL}=0$; the LiteBIRD birefringence forecast targets a
+non-zero-$\beta$ detection at its $\sigma(\beta)\!\approx\!0.03^\circ$
+sensitivity but does not separate $\beta=0.27^\circ$ from the published
+$\beta=0.342^\circ\pm 0.094^\circ$ at high significance (the discrimination
+runs at $\sim\!0.7\sigma$ given current central values); neither is
+uniquely an ECH prediction
 (\S\ref{sec:surviving}). The significance tracks duplicate the $\rho=0$
 combination of Fig.~\ref{fig:obs_timeline}; this panel is the summary
 view retained for the surviving-tests discussion, while
@@ -2247,7 +2289,7 @@ annotations.\label{fig:detection_forecast}}
 Despite the channel-level closure of the four enumerated minimal-ECH
 dark-energy routes (13 logically-independent barriers under the stated
 assumptions), the broader bounce-cosmology program retains two fully
-testable mechanism-independent predictions:
+testable ECH-independent class-level predictions:
 
 \textbf{(1) Matter-bounce $\fnl=-35/8$.}---The matter-dominated contracting
 phase of a \emph{scalar-only $w=0$} matter-bounce (the bounce-class
@@ -2445,7 +2487,7 @@ ECH-specific: other bouncing cosmologies (notably quintom scenarios) can in
 principle unify bounce with late-time dark energy through mechanisms outside the
 ECH minimal-route catalog.
 
-\textit{Surviving tests.}---Two mechanism-independent predictions of the broader
+\textit{Surviving tests.}---Two ECH-independent class-level predictions of the broader
 bounce/ALP landscape survive the channel-level closure and are testable:
 \begin{enumerate}[leftmargin=*]
 \item $\fnl = -35/8$ (matter-bounce class): SPHEREx tests at $3$--$5\sigma$
@@ -2474,9 +2516,11 @@ pipeline code, and the implementation map are publicly available at:
 \begin{center}
 \url{https://github.com/Hubify-Projects/bigbounce/tree/main/reproducibility}
 \end{center}
-The bundle is labelled \texttt{v1A.0.58-bundle} (resynced 2026-06-10) to
+The bundle is labelled \texttt{v1A.0.59-bundle} (resynced 2026-06-10) to
 track the present manuscript title and version; the bump from
-\texttt{v1A.0.57-bundle} covers the R29 internal-round textual-closure edits only,
+\texttt{v1A.0.58-bundle} covers the EXT2 external-round textual-closure edits
+and a README results-table resync to the frozen-chain values of companion
+Paper~I(b) Table~IV only,
 no MCMC chain / Cobaya YAML / Stan galaxy-spin code or data input changed,
 and the two bundles are byte-identical except for the README and BibTeX
 citation metadata. MCMC chains, NaMaster
@@ -2499,8 +2543,8 @@ the $A(z)$ comparison.
 
 The author acknowledges the use of Claude (Anthropic) as an AI research assistant
 during systematic barrier-cataloging, perturbation-gate verification, and manuscript
-preparation. All scientific claims, derivations, numerical results, and bibliographic
-attributions were independently verified by the author. No external funding was
+preparation. The author takes sole responsibility for all scientific claims,
+derivations, numerical results, and bibliographic attributions in this paper. No external funding was
 received for this research. Computational resources were self-funded (RunPod H200
 and H100 instances).
 \end{acknowledgments}
@@ -2675,15 +2719,21 @@ A_\pm'' + \Bigl[k^2 \mp \frac{\alpha}{M}\,\phi'\,k\Bigr] A_\pm = 0,
 where $' \equiv d/d\eta$, $k$ is comoving, and $\phi'\equiv d\phi/d\eta = f_a\,\theta'$;
 with $[\alpha/M]=-1$, $[\phi']=+2$, each bracketed term carries dimension
 $+2$ as required for consistency with $k^2$. For
-$k \gg (\alpha/M)\phi'$ (satisfied by ${\sim}60$ orders of magnitude
+$k \gg (\alpha/M)\phi'$ (satisfied by ${\sim}30$ orders of magnitude
 for CMB photons against the cosmological field considered here:
+% Recompute (EXT2 F4 fix): (alpha/M) ~ 10^-30 eV^-1; f_a ~ M_Pl ~ 1.22e28 eV;
+% H_0 ~ 1.44e-33 eV; phi' = f_a * dtheta/d(conformal time) ~ f_a H_0;
+% (alpha/M) phi' ~ 10^-30 * 10^28 * 10^-33 ~ 10^-35 eV; vs k ~ 6e-4 eV
+% gives ratio ~ 10^31-10^32, i.e. ~30 orders. Previous 10^-63 / 10^59
+% was off by ~27 orders.
 $(\alpha/M)\phi' \sim 10^{-30}\,\text{eV}^{-1}\times
-[\mathcal{O}(1) f_a]\times H_0 \sim 10^{-63}\,$eV for an $\mathcal{O}(1)$
+[\mathcal{O}(1) f_a]\times H_0 \sim 10^{-35}\,$eV for an $\mathcal{O}(1)$
 dimensionless excursion $\Delta\theta$ accumulated over a Hubble time
 at $f_a\!\sim\!M_{\rm Pl}$ \emph{and} the cosmological-tuning condition
-$m_\theta\sim H_0$ that sets $\dot\theta\sim H_0$, versus a CMB photon
+$m_\theta\sim H_0$ that sets $\dot\theta\sim H_0$ (in conformal time,
+with $\phi'\equiv d\phi/d\eta$), versus a CMB photon
 $k \sim 6\times 10^{-4}\,$eV at 150~GHz, a ratio of
-${\sim}10^{59}$) the WKB
+${\sim}10^{31}$) the WKB
 phase of each helicity is
 $\int\!\omega_\pm\,d\eta$ with
 $\omega_\pm \simeq k \mp \tfrac{1}{2}(\alpha/M)\,\phi'$.
