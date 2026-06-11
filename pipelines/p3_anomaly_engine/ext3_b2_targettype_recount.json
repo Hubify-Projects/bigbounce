@@ -1,0 +1,19 @@
+{
+ "method": "local positional rejoin vs P5 desi_zall.parquet; cKDTree unit vectors",
+ "desi_clusters_total": 190015,
+ "science_class_definition": "SURVEY=main AND (DESI_TARGET bits LRG|ELG|QSO|BGS_ANY(60)|MWS_ANY(61))",
+ "science_class_denominator": 20299155,
+ "matched_science_class_1as": 2468,
+ "matched_2as": 2531,
+ "matched_5as": 3390,
+ "restricted_rate_percent_1as": 0.01216,
+ "spectype_of_matches_1as": {
+  "GALAXY": 2371,
+  "QSO": 95,
+  "STAR": 2
+ },
+ "interpretation": "~98.7% of DESI anomaly clusters positionally coincide with non-primary-class spectra (sky/secondary/SV) \u2014 consistent with the paper's disclosed full-scan-vs-science-target caveat; restricted multiple vs Liang2023 computed in tex",
+ "control_match_vs_all_zall_1as": 189675,
+ "provenance": "pathc_dedup/unique_objects_no_act.parquet x pipelines/p5_desi_chirality/data/desi_zall.parquet (28,425,963 rows)",
+ "date": "2026-06-11"
+}
