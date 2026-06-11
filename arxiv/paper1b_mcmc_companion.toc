@@ -7,17 +7,17 @@
 \contentsline {section}{\numberline {II}Cosmological Tensions: $H_0$ and $\sigma _8$}{2}{section*.5}%
 \contentsline {section}{\numberline {III}Stock-CAMB $\Lambda $CDM$+\Delta N_{\rm eff}$ MCMC: Generic Radiation-Proxy Test\\ (Not a Spin-Torsion Theory Module)}{2}{section*.6}%
 \contentsline {paragraph}{\numberline {a}Scope of the $\Delta N_{\rm eff}$ proxy: bounce-class discrimination, not a direct test of the spin-torsion sector.}{3}{section*.7}%
-\contentsline {section}{\numberline {IV}Data Methods: CMB $E$-$B$ Analysis}{6}{section*.8}%
-\contentsline {section}{\numberline {V}Cosmological Fits and Model Comparison}{9}{section*.9}%
-\contentsline {subsection}{\numberline {A}Datasets and Configuration}{9}{section*.10}%
-\contentsline {subsection}{\numberline {B}Results}{9}{section*.11}%
-\contentsline {paragraph}{\numberline {a}Model-comparison statistics: deferred to a dedicated nested-sampling run.}{9}{section*.12}%
-\contentsline {section}{\numberline {VI}Cosmic Birefringence: Spectator ALP Consistency Check}{10}{section*.13}%
-\contentsline {section}{\numberline {VII}Conclusions}{13}{section*.14}%
-\contentsline {subsection}{\numberline {}Data and Code Availability}{14}{section*.15}%
-\contentsline {section}{\numberline {}Acknowledgments}{14}{section*.16}%
+\contentsline {section}{\numberline {IV}Data Methods: CMB $E$-$B$ Analysis}{5}{section*.8}%
+\contentsline {section}{\numberline {V}Cosmological Fits and Model Comparison}{8}{section*.9}%
+\contentsline {subsection}{\numberline {A}Datasets and Configuration}{8}{section*.10}%
+\contentsline {subsection}{\numberline {B}Results}{8}{section*.11}%
+\contentsline {paragraph}{\numberline {a}Model-comparison statistics: deferred to a dedicated nested-sampling run.}{8}{section*.12}%
+\contentsline {section}{\numberline {VI}Cosmic Birefringence: Spectator ALP Consistency Check}{9}{section*.13}%
+\contentsline {section}{\numberline {VII}Conclusions}{12}{section*.14}%
+\contentsline {subsection}{\numberline {}Data and Code Availability}{12}{section*.15}%
+\contentsline {section}{\numberline {}Acknowledgments}{13}{section*.16}%
 \appendix 
-\contentsline {section}{\numberline {A}Reproducibility Materials}{14}{section*.17}%
-\contentsline {section}{\numberline {B}Claims Classification}{15}{section*.18}%
-\contentsline {section}{\numberline {C}ALP-MCMC Sampled Parameters, Priors, and Likelihood Stack}{15}{section*.19}%
-\contentsline {section}{\numberline {}References}{16}{section*.20}%
+\contentsline {section}{\numberline {A}Reproducibility Materials}{13}{section*.17}%
+\contentsline {section}{\numberline {B}Claims Classification}{13}{section*.18}%
+\contentsline {section}{\numberline {C}ALP-MCMC Sampled Parameters, Priors, and Likelihood Stack}{13}{section*.19}%
+\contentsline {section}{\numberline {}References}{14}{section*.20}%

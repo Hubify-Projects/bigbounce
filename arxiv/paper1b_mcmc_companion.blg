@@ -187,45 +187,45 @@ while executing---line 3515 of file apsrev4-2.bst
 while executing---line 3515 of file apsrev4-2.bst
 Warning--missing journal in Golden2026P4
 Warning--missing number in Cai:2009fn
-You've used 29 entries,
+You've used 30 entries,
             6079 wiz_defined-function locations,
-            1857 strings with 21242 characters,
-and the built_in function-call counts, 31458 in all, are:
-= -- 2261
-> -- 768
-< -- 166
-+ -- 251
-- -- 196
-* -- 4961
-:= -- 2930
-add.period$ -- 27
-call.type$ -- 29
-change.case$ -- 140
-chr.to.int$ -- 36
-cite$ -- 34
-duplicate$ -- 2964
-empty$ -- 2230
-format.name$ -- 431
-if$ -- 6324
+            1864 strings with 21393 characters,
+and the built_in function-call counts, 32466 in all, are:
+= -- 2336
+> -- 793
+< -- 168
++ -- 259
+- -- 202
+* -- 5118
+:= -- 3030
+add.period$ -- 28
+call.type$ -- 30
+change.case$ -- 145
+chr.to.int$ -- 37
+cite$ -- 35
+duplicate$ -- 3061
+empty$ -- 2305
+format.name$ -- 446
+if$ -- 6526
 int.to.chr$ -- 4
-int.to.str$ -- 36
-missing$ -- 452
-newline$ -- 133
-num.names$ -- 81
-pop$ -- 1112
+int.to.str$ -- 37
+missing$ -- 466
+newline$ -- 136
+num.names$ -- 84
+pop$ -- 1153
 preamble$ -- 1
-purify$ -- 135
+purify$ -- 140
 quote$ -- 0
-skip$ -- 1389
+skip$ -- 1435
 stack$ -- 0
-substring$ -- 656
-swap$ -- 2828
-text.length$ -- 73
+substring$ -- 669
+swap$ -- 2913
+text.length$ -- 74
 text.prefix$ -- 0
 top$ -- 10
-type$ -- 397
+type$ -- 411
 warning$ -- 6
-while$ -- 86
+while$ -- 88
 width$ -- 0
-write$ -- 311
+write$ -- 320
 (There were 52 error messages)
