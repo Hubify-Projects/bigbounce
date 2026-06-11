@@ -101,9 +101,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-3",
       number: "3",
       shortTitle: "378K-anomaly multi-survey catalog",
-      version: "v3.1.94",
+      version: "v3.1.95",
       readiness: 95,
-      pendingWork: "v3.1.94 — recount landed (≈0.9× Liang restricted, not 73×) + R32conf closure wave (recount table, S_BigAE strip, singular retitle); R33conf confirmation pending, then EXT4; awaiting Houston sign-off",
+      pendingWork: "v3.1.95 — R33conf confirmation CLEAN-after-audit (zero regressions, 2nd consecutive zero-arithmetic round); EXT4 delta-round next in the same chats; awaiting Houston sign-off",
     },
     {
       slug: "paper-4",

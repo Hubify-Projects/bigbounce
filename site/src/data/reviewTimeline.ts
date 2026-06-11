@@ -43,6 +43,28 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "R33CONF",
+    kind: "internal-cc",
+    dateISO: "2026-06-11",
+    title: "R33conf — confirmation CLEAN after audit: zero regressions across all 12 closures, P3 declared EXT4-eligible → v3.1.95",
+    papers: ["P3"],
+    summary: "Pattern-051 regression sweep on the R32conf closure wave passes everywhere: all 12 closures verified present and consistent, second consecutive zero-arithmetic round; the truth-audit falsified 6 more findings (including the 4th raise of the Fisher superscript extraction artifact and two Perplexity asks already satisfied by v3.1.94) and landed 2 polish closures same-day as v3.1.95.",
+    keyTakeaways: [
+      "Claude confirmation leg: 10/10 table-vs-intext consistency checks, no stale S_BigAE values, no Legacy/Superseded leaks — the closure wave held",
+      "Fisher F₀ misread falsified a 4th time — the fix is prophylactic: the §V mapping now prints explicit decimals (F₀ = 0.01239 → σ = 8.14) that pdftotext cannot mis-flatten",
+      "Perplexity REJECT reduced to STALE bulk after audit: both its ESSENTIALs demanded text v3.1.94 already contains verbatim",
+      "Abstract now states the envelope — not the convex central value — is the appropriate summary of the f_NL constraint (pattern-045 closure)",
+      "P3 EXT4-eligible: 2 consecutive zero-arithmetic rounds + verified closures; EXT4 delta-prompts go to the same 18 external chats",
+    ],
+    links: [
+      { label: "Truth audit", href: `${PR}/R33conf_P3_TRUTH_AUDIT.md` },
+      { label: "Claude leg", href: `${PR}/R33conf_P3_Claude_brutal.md` },
+      { label: "OpenAI leg", href: `${PR}/R33conf_P3_OpenAI_methodology.md` },
+      { label: "Gemini leg", href: `${PR}/R33conf_P3_Gemini_cosmology.md` },
+      { label: "Grok leg", href: `${PR}/R33conf_P3_Grok_brutal.md` },
+    ],
+  },
+  {
     id: "R32CONF",
     kind: "internal-cc",
     dateISO: "2026-06-11",
