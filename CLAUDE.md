@@ -1,5 +1,16 @@
 # CLAUDE.md — bigbounce
 
+## Review-round site sync (STANDING, Houston 2026-06-11)
+
+EVERY review round — internal (R-round, conf sweep, patch wave) AND external
+(EXT round, gap-mine, closure wave, skill upgrade) — MUST add a timeline entry
+to `site/src/data/reviewTimeline.ts` (+ extend `externalVerdictRounds`/
+`gapSeries`/`skillsSeries` when the round produces those data) IN THE SAME
+COMMIT BUNDLE as the round's artifacts. Houston tracks the program via
+/reviews; a round that isn't on the timeline didn't happen. Every skill-upgrade
+(new pattern, prompt rule, tool, protocol fix) gets its own kind:"skill-improvement"
+entry. No batching, no deferring.
+
 ## Paper status — ALWAYS check SSOT first
 
 Canonical status lives in `project-context/SSOT/`. Read in this order BEFORE any paper-related work:
@@ -56,6 +67,8 @@ Read `AGENT_RULES.md` for the methodology bible.
 | Find an API key | `/env-local-discovery` (never ask Houston before checking) |
 | Save Houston's message | `/prompt-history` (BEFORE the work, not after) |
 | Save a new preference | `/memory-write` |
+| Before closure commit (math claim diff) | `/never-fabricate-derivation` (pattern-036 prevention; hard gate inside `/paper-pre-review-check`) |
+| Scistack housekeeping (end of session) | `/scistack-self-update` (sync + index + git status against `~/.claude/scistack`) |
 
 Existing gstack skills that pair: `/latex-audit`, `/codex`, `/qa`, `/browse`, `/ship`, `/land-and-deploy`, `/canary`, `/investigate`, `/loop`, `/schedule`.
 
