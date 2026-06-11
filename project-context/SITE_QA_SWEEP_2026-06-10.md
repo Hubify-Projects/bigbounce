@@ -220,3 +220,6 @@ All 17 pages with bleed >24px at 375 are marked P0:
 6. **Badge/chip rows** (`/papers/paper-1a`, `/papers/paper-1b`, `/predictions`) — narrow viewport causes chip overflow; need `flex-wrap:wrap`.
 
 *Overflow scan generated 2026-06-10 via `getBoundingClientRect()` mechanical sweep; screenshots at `/tmp/qa_overflow/*.png` (session-local).*
+
+## Post-wave-1 finding (P1)
+- /reviews feed v2: timeline entries render client-side only (ReviewsClient) — static HTML contains no round content (curl/no-JS/SEO blind). Fix: server-render the full feed; client component only overlays filtering (filter via CSS/data-attrs or split: server list + client controller). Verified hydrated page works (29 EXT mentions in-browser).
