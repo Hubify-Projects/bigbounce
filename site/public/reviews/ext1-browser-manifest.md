@@ -17,7 +17,7 @@
 | P4 | v1.0.171 | `chirality_catalog_paper_v171.pdf` (2f0317c4) | [chat](https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a29e6c4-0764-83e8-b198-03092b27ba37) | [chat](https://grok.com/project/e6c9ce77-4f86-4d94-b440-1062a78171c1?chat=411d5219-2864-4196-8d60-da2c97771cc0) | [chat](https://gemini.google.com/app/8340abb820aada09) |
 | P5 | v0.1.60 | `p5_desi_chirality_v0.1.60.pdf` (20ffc154) | [chat](https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a29e6e9-b9a4-83e8-9624-ec9291ae8064) | [chat](https://grok.com/project/e6c9ce77-4f86-4d94-b440-1062a78171c1?chat=edd1963e-cc7e-4a86-b288-1a7834c9e45a) | [chat](https://gemini.google.com/app/3cbe98b65fe83d40) |
 
-All 18 submissions carried the paper page's calibration-armed referee prompt (scraped live from bigbounce.hubify.app per-paper pages) with model/effort verified in the UI before each send (screenshots in /tmp/ext1_*_presubmit.png for this session).
+All 18 submissions carried the paper page's calibration-armed referee prompt (scraped live from bigbounce.hubify.app per-paper pages) with model/effort verified in the UI before each send (pre-submit screenshots were captured in the session log for each send).
 
 ## Harvest status
 

@@ -72,11 +72,11 @@ const contributions: Contribution[] = [
   {
     id: "14-barriers",
     tier: "N3",
-    title: "14-Barrier Systematic Closure Map",
+    title: "14-Constraint Channel-Level Closure Map",
     paper: "Paper 1A",
     oneLine:
-      "Complete catalog of 14 independent structural barriers closing every standard route from a nonsingular ECH bounce to late-time dark energy.",
-    why: "Proves dark energy cannot come from the bounce — period. Instead of testing one or two mechanisms and hoping, we exhaustively closed every standard route. Tells future researchers exactly where NOT to look.",
+      "Catalog of 14 independent structural constraints establishing channel-level closure, under stated assumptions, of the four enumerated minimal-ECH dark-energy routes.",
+    why: "Closes every enumerated minimal route from a nonsingular ECH bounce to late-time dark energy under stated assumptions. Instead of testing one or two mechanisms and hoping, we systematically closed each channel. Tells future researchers exactly where NOT to look.",
     what: "7 foundation studies (A-G) + 17 research branches (H-W). Each barrier is named, quantified, and cross-referenced. Mass-coupling lock, Topological-Shift Duality, scalar-tensor universality, Planck suppression, attractor-sensitivity dilemma, parameter immunity, Liouville conservation, and 7 more.",
     equation:
       "g_eff ~ 10^{-61}  ·  Planck suppression 10^{-122}  ·  graviton-loop fine-tuning 10^{-57}  (across the barrier set)",

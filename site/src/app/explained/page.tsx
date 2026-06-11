@@ -159,8 +159,10 @@ export default function ExplainedPage() {
               <p className="text-sm leading-relaxed text-muted-foreground">
                 Our AI pipelines have scanned 37.3 million astronomical sources
                 across 7 surveys, finding 378,280 objects that don&apos;t match
-                known patterns. These anomalies help improve our f<sub>NL</sub>{""}
-                measurement by 6.1%.
+                known patterns. These anomalies supply candidate high-bias
+                tracers that could sharpen the f<sub>NL</sub> measurement
+                (central forecast 9.4%, still consistent with no improvement
+                at current signal-to-noise).
               </p>
             </CardContent>
           </Card>

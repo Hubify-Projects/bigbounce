@@ -31,13 +31,13 @@ const glossaryEntries = [
     term:"Quintom",
     pronunciation:"KWIN-tom",
     definition:
-"A dark energy model with both quintessence (w > -1) and phantom (w < -1) fields, allowing the equation of state to cross w = -1. Treated theoretically in our program — Paper 1 §VII.H is explicit that there are zero free-w0–wa samples in our 309,789-sample posterior. External DESI DR2 (Adame et al.) reports 2.8–4.2σ for w-crossing.",
+"A dark energy model with both quintessence (w > -1) and phantom (w < -1) fields, allowing the equation of state to cross w = -1. Treated theoretically in our program — Paper 1A's model-discrimination table is explicit that there are zero free-w0–wa samples in our 309,189-sample frozen posterior. External DESI DR2 (Adame et al.) reports 2.8–4.2σ for w-crossing.",
   },
   {
     term:"ECH",
     pronunciation:"ee-see-aitch",
     definition:
-"Einstein-Cartan-Holst theory. Extends general relativity with torsion (antisymmetric part of the spacetime connection). 14 structural barriers close ECH-specific routes to dark energy.",
+"Einstein-Cartan-Holst theory. Extends general relativity with torsion (antisymmetric part of the spacetime connection). A 14-constraint catalog closes the four enumerated minimal-ECH dark-energy routes at the channel level, under stated assumptions.",
   },
   {
     term:"Torsion",
@@ -61,7 +61,7 @@ const glossaryEntries = [
     term:"σ(f_NL)",
     pronunciation:"sigma of eff-en-ell",
     definition:
-"The uncertainty on the f_NL measurement. Current combined: σ ≈ 4.1. Our multi-tracer improvement: 6.1%. SPHEREx target: σ ≈ 0.7-1.0.",
+"The uncertainty on the f_NL measurement. Current combined: σ ≈ 4.1 (external). Our DESI multi-tracer central forecast: 9.4% improvement, consistent with none at <1σ. SPHEREx target: σ ≈ 0.7-1.0.",
   },
   {
     term:"PBH",

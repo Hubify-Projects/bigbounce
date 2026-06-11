@@ -24,7 +24,7 @@ interface SearchItem {
 }
 
 const STATIC_PAGES: SearchItem[] = [
-  { category: "Page", title: "Overview", blurb: "Research overview, key results, 14 barriers, MCMC table, claims table", href: "/" },
+  { category: "Page", title: "Overview", blurb: "Research overview, key results, 4-route ECH channel-level closure, MCMC table, claims table", href: "/" },
   { category: "Page", title: "Explainer", blurb: "Non-technical explanation of the research program", href: "/explained" },
   { category: "Page", title: "Surveys", blurb: "7 retained surveys with anomaly sweep results (DESI, SDSS, eROSITA, LAMOST, Planck, NEOWISE, Gaia)", href: "/surveys" },
   { category: "Page", title: "Predictions", blurb: "f_NL = -35/8, ALP birefringence beta = 0.27 deg, NANOGrav gamma = 3.0, SPHEREx forecast sigma(f_NL) = 0.7", href: "/predictions" },
@@ -54,9 +54,9 @@ const CONTRIBUTIONS: SearchItem[] = [
   },
   {
     category: "Contribution",
-    title: "14-Barrier Systematic Closure Map",
+    title: "14-Constraint Channel-Level Closure Map",
     blurb:
-      "Systematic test of every minimal route from Einstein-Cartan-Holst bounce to dark energy across 7 foundations and 17 branches. All 14 routes closed.",
+      "Systematic test of the four enumerated minimal Einstein-Cartan-Holst bounce-to-dark-energy routes across 7 foundations and 17 branches — channel-level closure via a 14-constraint catalog.",
     href: "/contributions#14-barriers",
   },
   {
@@ -218,7 +218,7 @@ export function SearchClient() {
           }}
         >
           Try: <em>perturbation transparency</em>, <em>f_NL</em>, <em>ALP</em>,{" "}
-          <em>chirality</em>, <em>NANOGrav</em>, <em>14 barriers</em>.
+          <em>chirality</em>, <em>NANOGrav</em>, <em>channel-level closure</em>.
         </p>
       ) : results.length === 0 ? (
         <Card style={{ marginTop: 16, padding: 16 }}>

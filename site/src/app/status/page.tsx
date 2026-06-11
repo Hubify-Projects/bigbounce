@@ -52,7 +52,7 @@ const stats: Array<{ value: string; label: string }> = [
   { value:"6", label:"Papers (P1A, P1B, P2–P5)" },
   {
     value:"424K+",
-    label:"MCMC Samples (3 frozen datasets)",
+    label:"MCMC Samples (309,189 frozen · 3rd chain accumulating)",
   },
   {
     value:"37.3M+",
@@ -431,7 +431,7 @@ export default async function StatusPage() {
                 Quintom w-Crossing — Theoretical Only
               </CardTitle>
               <CardDescription className="font-mono text-[11px]">
-                Paper 1 §VII.H · zero free-w0–wa samples in our chains
+                Paper 1A model-discrimination table · zero free-w0–wa samples in our chains
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -439,9 +439,9 @@ export default async function StatusPage() {
                 Whether w(z) crosses -1 is a quintom-bounce signature, but our
                 program has not yet run a free-w<sub>0</sub>–w<sub>a</sub>{""}
                 MCMC. External DESI DR2 (Adame et al.) reports 2.8–4.2σ for
-                w-crossing depending on dataset combination. (Earlier in-house
-                claim P(quintom-B) = 98.6% from 50.9K samples was a fire #21
-                bookkeeping confabulation, corrected fire #25.)
+                w-crossing depending on dataset combination. (An earlier
+                in-house claim of P(quintom-B) = 98.6% was traced to a
+                bookkeeping error in an automated run and retracted.)
               </p>
             </CardContent>
           </Card>
@@ -479,8 +479,9 @@ export default async function StatusPage() {
             </CardHeader>
             <CardContent>
               <p className="text-sm leading-relaxed text-muted-foreground">
-                First multi-survey AI anomaly sweep. 6.1% f_NL improvement via
-                latent-space multi-tracer. SPHEREx 4.38σ forecast.
+                First multi-survey AI anomaly sweep. Central 9.4% multi-tracer
+                f_NL forecast (consistent with no improvement at &lt;1σ).
+                SPHEREx 2.6–5σ conditional forecast for f_NL = −35/8.
               </p>
             </CardContent>
           </Card>

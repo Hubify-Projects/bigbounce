@@ -51,7 +51,7 @@ export const surveys: Survey[] = [
       "1,127 not in SIMBAD or NED (52.5% uncataloged)",
       "10 taxonomy families: 76 AGN, 27 post-starburst, 363 blue compact",
       "16 NEOWISE IR-variable anomalies incl. z=5.65 QSO",
-      "9.5% f_NL improvement via latent-space multi-tracer",
+      "Central 9.4% multi-tracer f_NL forecast (consistent with no improvement at <1σ)",
       "Injection/recovery: 0% false positive, 10–1,377x enrichment",
     ],
     followUpTasks: [

@@ -53,7 +53,7 @@ const stats: Array<{ value: string; label: string; tone?: string }> = [
     value:"378K",
     label:"Path-C Anomalies",
   },
-  { value:"424K+", label:"MCMC Samples" },
+  { value:"424K+", label:"MCMC Samples (309,189 frozen)" },
   {
     value: `${qcPassCount}/${surveys.length}`,
     label:"QC Pass",
@@ -154,7 +154,10 @@ export default function HomePage() {
               <span>Catalog anomalies retained</span>
               <span className="signal-value">378K</span>
             </div>
-            <div className="signal-row">
+            <div
+              className="signal-row"
+              title="424K+ total across all chains · 309,189 frozen across the 2 converged dataset combinations"
+            >
               <span>MCMC posterior samples</span>
               <span className="signal-value">424K+</span>
             </div>

@@ -59,7 +59,7 @@ const sections: Array<{
         title:"What Is Dark Energy?",
         tag:"ACTIONABLE · w0-wa MCMC · DESI DR2 · Quintom",
         children:
-"73% of the universe is dark energy. The quintom branch of bounce cosmology can unify bounce + dark energy through phantom fields, predicting w-crossing (quintom-B). External DESI DR2 (Adame et al.) reports 2.8–4.2σ for w-crossing. Our own program treats this theoretically — Paper 1 §VII.H is explicit that there are zero free-w0–wa samples in our 309,789-sample posterior. The actionable next step is standing up an in-house quintom MCMC.",
+"73% of the universe is dark energy. The quintom branch of bounce cosmology can unify bounce + dark energy through phantom fields, predicting w-crossing (quintom-B). External DESI DR2 (Adame et al.) reports 2.8–4.2σ for w-crossing. Our own program treats this theoretically — Paper 1A's model-discrimination table is explicit that there are zero free-w0–wa samples in our 309,189-sample frozen posterior (Paper 1B). The actionable next step is standing up an in-house quintom MCMC.",
       },
       {
         title:"f_NL = −35/8: The Decisive Test",
