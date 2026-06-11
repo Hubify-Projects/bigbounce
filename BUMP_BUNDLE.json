@@ -1,11 +1,56 @@
 [
   {
+    "paperSlug": "paper-1a",
+    "version": "v1A.0.57",
+    "datestamp": "2026-06-10",
+    "texCommit": "b5228982",
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1a_ech_nogo.pdf",
+    "sitePdfPath": "/papers/paper1a_ech_nogo_v1A.0.57.pdf",
+    "changelog": "EXT1 closure wave restamp: external EXT1 findings closed; 4 regenerated figures (theory map, LQG/Holst, rotation x expansion, naturalness); page-1 version restored in \\date; readiness rolled back to 93 (18 VERIFIED external findings); EXT2 confirmation round pending."
+  },
+  {
+    "paperSlug": "paper-1b",
+    "version": "v1B.0.55",
+    "datestamp": "2026-06-10",
+    "texCommit": "d48a423f",
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1b_mcmc_companion.pdf",
+    "sitePdfPath": "/papers/paper1b_mcmc_companion_v1B.0.55.pdf",
+    "changelog": "EXT1 closure wave restamp: 4 stale paper-local repro paths fixed repo-relative via new \\artifact macro; repo tag refs synced to \\paperVersion; page-1 version restored; readiness 94; EXT2 confirmation round pending."
+  },
+  {
+    "paperSlug": "paper-2",
+    "version": "v1.7.49",
+    "datestamp": "2026-06-10",
+    "texCommit": "e9c9639e",
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/research/focused_paper_source_integration/02_full_draft.pdf",
+    "sitePdfPath": "/papers/paper2_fnl_forecast_v1.7.49.pdf",
+    "changelog": "EXT1 closure wave restamp: per-finding closures from EXT1_P2_TRUTH_AUDIT.md; Zenodo release checklist committed; readiness 95 cap; EXT2 confirmation round pending."
+  },
+  {
+    "paperSlug": "paper-3",
+    "version": "v3.1.88",
+    "datestamp": "2026-06-10",
+    "texCommit": "f2a7c613",
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p3_anomaly_engine/paper3_draft.pdf",
+    "sitePdfPath": "/papers/paper3_anomaly_catalog_v3.1.88.pdf",
+    "changelog": "EXT1 closure wave restamp: 8 textual closures from EXT1_P3_TRUTH_AUDIT.md; f_NL math-mode fix; DATA_RELEASE_MANIFEST.md committed; readiness 94; EXT2 confirmation round pending."
+  },
+  {
+    "paperSlug": "paper-4",
+    "version": "v1.0.172",
+    "datestamp": "2026-06-10",
+    "texCommit": "0ce3d47c",
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p2_chirality/chirality_catalog_paper.pdf",
+    "sitePdfPath": "/papers/chirality_catalog_paper_v1.0.172.pdf",
+    "changelog": "EXT1 closure wave restamp: new Notation & Significance Conventions subsection; 3 artifact paths repo-relative; Data Availability hash pinned to stamp commit 7c03bb64 per pattern-047 provenance gate (pin commit 0ce3d47c); readiness 95 cap; EXT2 confirmation round pending."
+  },
+  {
     "paperSlug": "paper-5",
-    "version": "v0.1.60",
-    "datestamp": "2026-06-11",
+    "version": "v0.1.61-2026-06-10",
+    "datestamp": "2026-06-10",
+    "texCommit": "a39d98ba",
     "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf",
-    "sitePdfPath": "/papers/p5_desi_chirality_v0.1.60.pdf",
-    "changelog": "R28conf ROUND CLEAN \u2014 the final clean round of the six-paper campaign. 61 findings audited: Gemini 4E falsified (convention misreads), Perplexity citation attack falsified by live arXiv check, 13 verified closed in-session (incl. 2.1 sigma correction + Bonferroni-5 2.81->2.58; neither moves a verdict). 28pp/md5 20ffc154/0-0-0. SIGN-OFF-READY at 95%; submits after P4's arXiv ID.",
-    "texCommit": "5b535a19"
+    "sitePdfPath": "/papers/p5_desi_chirality_v0.1.61.pdf",
+    "changelog": "EXT1 closure wave restamp: analysis-tree + DESIVAST program-split tables added; analysis-tree promoted to table* (overflow fix); phase2_sweep dir links /blob/->/tree/ + 18 metadata files committed; readiness 95 cap; EXT2 confirmation round pending."
   }
 ]

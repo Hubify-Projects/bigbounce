@@ -47,7 +47,9 @@ if (!Array.isArray(bundle) || bundle.length === 0) {
   process.exit(2);
 }
 
-const client = new ConvexHttpClient("https://brilliant-panther-471.convex.cloud");
+const CONVEX_URL = process.env.CONVEX_URL || "https://brilliant-panther-471.convex.cloud";
+console.log(`# Convex deployment: ${CONVEX_URL}`);
+const client = new ConvexHttpClient(CONVEX_URL);
 
 function md5Of(filePath) {
   try {
