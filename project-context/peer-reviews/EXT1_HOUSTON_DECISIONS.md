@@ -1,5 +1,7 @@
 # EXT1 — Houston-decision ledger
 
+**RESOLVED 2026-06-10: Houston ruled "all default".** Verdicts applied as listed in the Default column. Action taken: HD-7 (P3 abstract leads with 269,317 catalog-grade) is the one default requiring an edit — applied in the post-R29 patch. HV-1 not vetoed — P1B correction-note removal stands. HD-11 Zenodo minting remains queued for submission day. LAMOST_DR10 + eROSITA_DR1 citation spot-checks remain open for Houston (or next round's Perplexity leg with live fetch).
+
 Items the EXT1 truth-audit classified HOUSTON-DECISION. Everything else VERIFIED/PARTIAL is already closed in the EXT1 closure wave. Reply with verdicts (or "all default") and the next bundle applies them.
 
 ## Needs a call
