@@ -42,6 +42,12 @@ def main(tex_path: str) -> int:
 
     for p in sorted(paths):
         clean = p.replace("\\_", "_").replace("\\", "")
+        if re.match(r"^10\.\d{4,9}/", clean):
+            # DOI (e.g. 10.5281/zenodo.XXXX) — external identifier, not a repo path
+            continue
+        if clean == "Hubify-Projects/bigbounce" or clean.startswith("github.com/"):
+            # GitHub org/repo display label, not a repo-local path
+            continue
         target = root / clean
         if not target.exists():
             print(f"MISSING  {clean}")
