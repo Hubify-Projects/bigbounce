@@ -1,98 +1,16 @@
 import Link from "next/link";
+import { Suspense } from "react";
 import type { Metadata } from "next";
-import {
-  sortedReviewRounds,
-  type ReviewRound,
-  type ReviewRoundKind,
-} from "@/data/reviewTimeline";
+import ReviewsClient from "./ReviewsClient";
 import "./reviews.css";
 
 export const metadata: Metadata = {
   title: "Review Activity",
   description:
-    "Live timeline of the internal/external paper-review loop — every round, truth-audit, closure wave, and skill upgrade, in the open.",
+    "Filterable timeline of the internal/external paper-review loop — verdict trajectories, gap-closure and skills-growth visualizations, every round, truth-audit, closure wave, and skill upgrade, in the open.",
 };
-
-const KIND_LABEL: Record<ReviewRoundKind, string> = {
-  "external-browser": "EXTERNAL",
-  "internal-api": "INTERNAL",
-  "internal-cc": "INTERNAL",
-  "skill-improvement": "SKILL-UPGRADE",
-  "closure-wave": "CLOSURES",
-};
-
-function KindBadge({ kind }: { kind: ReviewRoundKind }) {
-  const external = kind === "external-browser";
-  return (
-    <span className={external ? "review-kind-badge is-external" : "review-kind-badge"}>
-      {KIND_LABEL[kind]}
-    </span>
-  );
-}
-
-function GapLine({ round }: { round: ReviewRound }) {
-  const gap = round.gapMetric;
-  if (!gap) return null;
-  const line =
-    gap.externalOnlyFindings > 0
-      ? `internal missed ${gap.externalOnlyFindings} finding${gap.externalOnlyFindings === 1 ? "" : "s"} external caught — ${gap.note}`
-      : `internal/external gap: ${gap.note}`;
-  return <p className="review-gap">{line}</p>;
-}
-
-function Entry({ round }: { round: ReviewRound }) {
-  return (
-    <article className="review-entry" aria-label={round.id}>
-      <div className="review-entry-meta">
-        <span className="review-timestamp">{round.dateISO}</span>
-        <KindBadge kind={round.kind} />
-        <span className="review-timestamp">{round.id}</span>
-      </div>
-      <h2 className="review-entry-title">{round.title}</h2>
-      <div className="review-paper-chips">
-        {round.papers.map((p) => (
-          <span key={p} className="review-paper-chip">
-            {p}
-          </span>
-        ))}
-      </div>
-      <p className="review-summary">{round.summary}</p>
-      {round.keyTakeaways.length > 0 && (
-        <details className="review-takeaways">
-          <summary>key takeaways ({round.keyTakeaways.length})</summary>
-          <ul>
-            {round.keyTakeaways.map((t) => (
-              <li key={t}>{t}</li>
-            ))}
-          </ul>
-        </details>
-      )}
-      <GapLine round={round} />
-      {round.links.length > 0 && (
-        <div className="review-links">
-          {round.links.map((l) => (
-            <a
-              key={`${l.label}-${l.href}`}
-              href={l.href}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {l.label} ↗
-            </a>
-          ))}
-        </div>
-      )}
-      {round.reportSlug && (
-        <Link href={`/reviews/${round.reportSlug}`} className="review-report-link">
-          Full report →
-        </Link>
-      )}
-    </article>
-  );
-}
 
 export default function ReviewsPage() {
-  const rounds = sortedReviewRounds();
   return (
     <>
       <p
@@ -130,18 +48,30 @@ export default function ReviewsPage() {
           fontFamily: "var(--font-mono-stack)",
           fontSize: "0.72rem",
           color: "var(--text-muted)",
-          margin: "0 0 28px 0",
+          margin: "0 0 8px 0",
         }}
       >
         internal rounds → external browser rounds → truth-audit → fixes →
         internal-skill upgrades → repeat
       </div>
+      <p
+        style={{
+          fontFamily: "var(--font-mono-stack)",
+          fontSize: "0.72rem",
+          color: "var(--text-muted)",
+          margin: "0 0 24px 0",
+        }}
+      >
+        Raw machine events (version bumps, R-round dispatches, pod lifecycle) stream at{" "}
+        <Link href="/activity" style={{ color: "var(--accent-link)" }}>
+          /activity
+        </Link>
+        .
+      </p>
 
-      <div className="review-feed">
-        {rounds.map((r) => (
-          <Entry key={r.id} round={r} />
-        ))}
-      </div>
+      <Suspense fallback={<div className="review-feed" aria-busy="true" />}>
+        <ReviewsClient />
+      </Suspense>
     </>
   );
 }

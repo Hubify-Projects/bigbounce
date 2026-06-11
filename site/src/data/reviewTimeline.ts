@@ -43,6 +43,35 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "EXT2",
+    kind: "external-browser",
+    dateISO: "2026-06-10",
+    title: "EXT2 — in-thread delta round: revised PDFs + delta-prompts into the same 18 referee threads; 10 of 18 verdicts improved, first ACCEPTs of the program",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "All six R29 restamps (v1A.0.58 / v1B.0.56 / v1.7.50 / v3.1.89 / v1.0.173 / v0.1.62) posted into the SAME EXT1 chat threads with per-paper delta-prompts; verdict movement 10 improved / 7 held / 1 regressed, with five reviewer legs reaching ACCEPT.",
+    keyTakeaways: [
+      "First ACCEPT verdicts of the program: Grok P1A/P1B/P4/P5 + Gemini P4 — and ChatGPT moved P1A REJECT → MAJOR ('moved substantially toward publishability')",
+      "Gap metric vs the 60-finding EXT1 baseline: 32 genuinely-new substantive findings (P1A 6 · P1B 4 · P2 6 · P3 11 · P4 2 · P5 3) — a 47% one-cycle reduction",
+      "Truth-audit headline falsification: Gemini's P5 MAJOR rests entirely on a Table VII row-inversion that is a PDF-extraction artifact — FALSIFIED by the LaTeX source, calibrated verdict ACCEPT",
+      "Closure-introduced regressions are the dominant new-finding class (2 of 6 on P1A, 3 of 4 on P1B, 2 of 6 on P2) — promoted into the catalog as pattern-051",
+      "The lone regression (Gemini P1B MINOR → MAJOR) was truth-audited rather than auto-accepted, per the standing per-finding audit protocol",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 32,
+      note: "EXT1 60 → EXT2 32 genuinely-new substantive findings; counting P4/P5 net-new PARTIAL/OPINION items too the looser total is 47",
+    },
+    links: [
+      { label: "manifest · GitHub", href: `${PR}/EXT2_BROWSER_MANIFEST.md` },
+      { label: "P1A audit", href: `${PR}/EXT2_P1A_TRUTH_AUDIT.md` },
+      { label: "P1B audit", href: `${PR}/EXT2_P1B_TRUTH_AUDIT.md` },
+      { label: "P2 audit", href: `${PR}/EXT2_P2_TRUTH_AUDIT.md` },
+      { label: "P3 audit", href: `${PR}/EXT2_P3_TRUTH_AUDIT.md` },
+      { label: "P4 audit", href: `${PR}/EXT2_P4_TRUTH_AUDIT.md` },
+      { label: "P5 audit", href: `${PR}/EXT2_P5_TRUTH_AUDIT.md` },
+    ],
+    reportSlug: "ext2-browser-manifest",
+  },
+  {
     id: "R29",
     kind: "internal-api",
     dateISO: "2026-06-10",
@@ -285,6 +314,141 @@ export const reviewRounds: ReviewRound[] = [
       { label: "P1A truth-audit", href: `${PR}/R23conf_P1A_TRUTH_AUDIT.md` },
     ],
   },
+];
+
+/* ── Structured progress dataset (powers the /reviews Progress visualizations) ──
+ * Sources (do NOT invent numbers — pattern-036):
+ * EXT1/EXT2 verdicts: project-context/peer-reviews/EXT{1,2}_BROWSER_MANIFEST.md harvest tables.
+ * Gap series: GAP METRIC sections of EXT2_P*_TRUTH_AUDIT.md + the 60-finding EXT1 baseline.
+ * Readiness: SSOT/index.md R25conf/EXT1/R29 truth-audit checkpoints (95-cap rule in force).
+ * Skills: project-context/review-patterns/ catalog + EXT1/EXT2 gap-mine commits.
+ */
+
+export type Verdict = "REJECT" | "MAJOR" | "MINOR" | "ACCEPT";
+
+export type ReviewerId = "ChatGPT" | "Grok" | "Gemini";
+
+export const REVIEWERS: ReviewerId[] = ["ChatGPT", "Grok", "Gemini"];
+
+export const PAPER_IDS: PaperId[] = ["P1A", "P1B", "P2", "P3", "P4", "P5"];
+
+export interface ExternalRoundVerdicts {
+  roundId: string;
+  dateISO: string;
+  /** Verdicts in REVIEWERS order: [ChatGPT, Grok, Gemini]. */
+  verdicts: Record<PaperId, [Verdict, Verdict, Verdict]>;
+  note: string;
+}
+
+/** Per-paper external referee verdicts per browser-tier round (oldest → newest). */
+export const externalVerdictRounds: ExternalRoundVerdicts[] = [
+  {
+    roundId: "EXT1",
+    dateISO: "2026-06-10",
+    verdicts: {
+      P1A: ["REJECT", "MAJOR", "MAJOR"],
+      P1B: ["MAJOR", "MINOR", "MINOR"],
+      P2: ["MAJOR", "MINOR", "MINOR"],
+      P3: ["MAJOR", "MAJOR", "MAJOR"],
+      P4: ["MAJOR", "MINOR", "MINOR"],
+      P5: ["MAJOR", "MINOR", "MAJOR"],
+    },
+    note: "First automated browser-tier round: ChatGPT Pro Extended · Grok Heavy · Gemini Thinking, 18 submissions",
+  },
+  {
+    roundId: "EXT2",
+    dateISO: "2026-06-10",
+    verdicts: {
+      P1A: ["MAJOR", "ACCEPT", "MINOR"],
+      P1B: ["MAJOR", "ACCEPT", "MAJOR"],
+      P2: ["MAJOR", "MINOR", "MINOR"],
+      P3: ["MAJOR", "MINOR", "MINOR"],
+      P4: ["MAJOR", "ACCEPT", "ACCEPT"],
+      P5: ["MAJOR", "ACCEPT", "MAJOR"],
+    },
+    note: "Same 18 threads, delta-prompts: 10 improved / 7 held / 1 regressed; Gemini P5 MAJOR audits to ACCEPT (PDF-extraction artifact), Gemini P1B regression truth-audited",
+  },
+];
+
+export interface GapPoint {
+  roundId: string;
+  dateISO: string;
+  /** Externally-caught substantive findings that survived all internal rounds. */
+  total: number;
+  perPaper: Record<PaperId, number>;
+  note: string;
+}
+
+/** Internal/external gap series — must shrink every cycle; target is zero. */
+export const gapSeries: GapPoint[] = [
+  {
+    roundId: "EXT1",
+    dateISO: "2026-06-10",
+    total: 60,
+    perPaper: { P1A: 18, P1B: 11, P2: 4, P3: 10, P4: 5, P5: 12 },
+    note: "60 externally-VERIFIED findings survived six clean internal rounds (EXT1 truth-audit baseline)",
+  },
+  {
+    roundId: "EXT2",
+    dateISO: "2026-06-10",
+    total: 32,
+    perPaper: { P1A: 6, P1B: 4, P2: 6, P3: 11, P4: 2, P5: 3 },
+    note: "Genuinely-new substantive findings per EXT2 truth-audit GAP METRIC sections; P4/P5 net-new incl. PARTIAL/OPINION is 10 each (looser total 47)",
+  },
+];
+
+export interface ReadinessCheckpoint {
+  id: string;
+  dateISO: string;
+  /** Sparse — only papers whose readiness was explicitly stated at that checkpoint. */
+  values: Partial<Record<PaperId, number>>;
+  note: string;
+}
+
+/** Readiness percent checkpoints from SSOT (95-cap until clean external round + Houston sign-off). */
+export const readinessCheckpoints: ReadinessCheckpoint[] = [
+  {
+    id: "pre-R25conf",
+    dateISO: "2026-06-10",
+    values: { P2: 92, P4: 85 },
+    note: "Documented pre-R25conf positions (P4 post-retraction rebuild, P2 pre-clean-round)",
+  },
+  {
+    id: "R25conf",
+    dateISO: "2026-06-10",
+    values: { P2: 95, P4: 95 },
+    note: "Both clean — first papers to reach the sign-off gate under the 99%-cap rule",
+  },
+  {
+    id: "EXT1-AUDIT",
+    dateISO: "2026-06-10",
+    values: { P1A: 93, P1B: 94, P2: 95, P3: 94, P4: 95, P5: 95 },
+    note: "P1A rolled BACK to 93 after 18 externally-VERIFIED findings — readiness oscillates backward by design",
+  },
+  {
+    id: "R29",
+    dateISO: "2026-06-10",
+    values: { P1A: 94, P1B: 94, P2: 94, P3: 94, P4: 95, P5: 95 },
+    note: "Current: P1A 93→94, P2 95→94 (dimensional regressions found+fixed) — per R29 truth-audit",
+  },
+];
+
+export interface SkillsPoint {
+  id: string;
+  dateISO: string;
+  /** Review-pattern catalog size (project-context/review-patterns/). */
+  patterns: number;
+  /** v3 native-PDF reviewer-prompt instruction rules. */
+  promptRules: number;
+  note: string;
+}
+
+/** Skills-stack growth — the internal review machinery self-improving each round. */
+export const skillsSeries: SkillsPoint[] = [
+  { id: "retro", dateISO: "2026-06-02", patterns: 34, promptRules: 14, note: "2026-06-02 retro baseline: 34 codified patterns" },
+  { id: "R23conf-mine", dateISO: "2026-06-09", patterns: 44, promptRules: 14, note: "R23conf pattern-mine: catalog at 44 (incl. draft patterns 040-044)" },
+  { id: "EXT1-gapmine", dateISO: "2026-06-10", patterns: 48, promptRules: 19, note: "EXT1 gap-mine: patterns 045-048 + artifact_crosscheck.py + reviewer-prompt rules 15-19" },
+  { id: "EXT2-gapmine", dateISO: "2026-06-10", patterns: 49, promptRules: 19, note: "EXT2 gap-mine: pattern-051 closure-introduced regression (5-point closure-wave protocol)" },
 ];
 
 export function getReviewRoundByReportSlug(slug: string): ReviewRound | undefined {

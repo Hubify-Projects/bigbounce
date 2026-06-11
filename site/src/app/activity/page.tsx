@@ -74,6 +74,25 @@ export default async function ActivityPage() {
           pod lifecycle. Time-sorted descending. See{" "}
           <Link href="/docs">/docs</Link> for how the pipeline writes here.
         </p>
+        <p
+          style={{
+            fontFamily: "var(--font-mono-stack)",
+            fontSize: "0.78rem",
+            marginTop: 12,
+            padding: "10px 14px",
+            border: "1px solid var(--border)",
+            borderRadius: 8,
+            color: "var(--text-secondary)",
+            maxWidth: "72ch",
+          }}
+        >
+          Looking for the progress story? The curated review-loop timeline — paper/kind
+          filters, verdict trajectories, gap-closure and skills-growth charts — lives at{" "}
+          <Link href="/reviews" style={{ color: "var(--accent-link)", textDecoration: "underline" }}>
+            /reviews
+          </Link>
+          . This page is the raw machine-event stream.
+        </p>
       </div>
 
       {summary && (
