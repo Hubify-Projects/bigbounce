@@ -43,6 +43,22 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "SKILL-EXT4-LESSONS",
+    kind: "skill-improvement",
+    dateISO: "2026-06-11",
+    title: "Browser-loop skill hardened from EXT4 ops: Gemini account-index drift, keyboard focus-race guard, upload hydration wait",
+    papers: [],
+    summary: "Three operational lessons from the EXT4 submission run were encoded into /external-review-browser-loop in the same turn: the Gemini account index drifts between rounds (verify by avatar, trust whichever index loads the chat), native-dialog osascripts must abort unless Chrome for Testing is frontmost (Houston typing stole focus twice), and ChatGPT uploads fail silently within ~12s of navigation while the page hydrates.",
+    keyTakeaways: [
+      "Frontmost-app guard + Escape-first now mandatory in every native-dialog osascript; post-state check is chip rendered AND zero sheets",
+      "Gemini /u/2/ resolved to /u/0/ this round — index is no longer pinned in the recipe, avatar verification is the source of truth",
+      "Post-goto ≥12s wait before any ChatGPT upload; chip verified by filename in DOM text with one retry",
+    ],
+    links: [
+      { label: "EXT4 manifest (ops notes)", href: `${PR}/EXT4_BROWSER_MANIFEST.md` },
+    ],
+  },
+  {
     id: "EXT4",
     kind: "external-browser",
     dateISO: "2026-06-11",
