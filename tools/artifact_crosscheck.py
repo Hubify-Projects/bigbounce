@@ -61,7 +61,7 @@ def main(tex_path: str) -> int:
         print(f"OK       {clean}")
 
     head = subprocess.check_output(["git", "rev-parse", "HEAD"]).decode().strip()
-    for h in set(re.findall(r"commit[~ `]*([0-9a-f]{8,40})", tex, re.I)):
+    for h in set(re.findall(r"commit[~ `]*(?:\\[a-z]+\{)?([0-9a-f]{8,40})\b", tex, re.I)):
         try:
             subprocess.check_call(
                 ["git", "merge-base", "--is-ancestor", h, head],
