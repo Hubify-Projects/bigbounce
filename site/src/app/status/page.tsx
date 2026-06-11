@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 };
 
 const PAPER_DISPLAY_NAMES: Record<string, { number: string; tagline: string }> = {
-  "paper-1a": { number: "P1A", tagline: "Spin-torsion ECH no-go framework" },
+  "paper-1a": { number: "P1A", tagline: "ECH channel-level closure + perturbation transparency" },
   "paper-1b": { number: "P1B", tagline: "MCMC companion + tension survey" },
   "paper-2": { number: "P2", tagline: "f_NL = -35/8 forecast (SPHEREx)" },
   "paper-3": { number: "P3", tagline: "Multi-survey anomaly catalogue" },
