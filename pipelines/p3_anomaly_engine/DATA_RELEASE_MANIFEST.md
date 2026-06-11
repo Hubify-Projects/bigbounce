@@ -13,8 +13,8 @@
 |------|---------|-------------|
 | pathc_unique_objects_no_act.parquet | e0b57f255f716845b56f398015858b1ed837c85c3b483433fa424a84ac455664 | PRIMARY: 378,280 unique anomalies (7-way 5″ dedup, ACT excluded) |
 | pathc_unique_objects.parquet | b14deb02ddc374cc30a54e6013c0695d1c35cbf18cef9144245e338d6138c643 | Sensitivity check: 378,480 unique anomalies (8-way with ACT) |
-| pathc_multi_survey_matches_no_act.parquet | 3605b16a939b1dc44c4cb76e96dcbb7411a6eeb5917d12567c4fbc35fc85e784 | 637 multi-survey coincidence clusters (no ACT) |
-| pathc_multi_survey_matches.parquet | 3605b16a939b1dc44c4cb76e96dcbb7411a6eeb5917d12567c4fbc35fc85e784 | Multi-survey coincidence clusters (with ACT; sensitivity check) |
+| pathc_multi_survey_matches_no_act.parquet | 3605b16a939b1dc44c4cb76e96dcbb7411a6eeb5917d12567c4fbc35fc85e784 | 637 multi-survey coincidence clusters (no ACT) — CANONICAL |
+| pathc_multi_survey_matches.parquet | 3605b16a939b1dc44c4cb76e96dcbb7411a6eeb5917d12567c4fbc35fc85e784 | Multi-survey coincidence clusters (with ACT sensitivity check) — **BYTE-IDENTICAL to _no_act variant**: ACT contributes zero multi-survey overlaps (§planck_act_null confirms disjoint footprints); both files staged for naming consistency only. The _no_act file is canonical. |
 | cmb_native_anomalies.parquet | ec1464cdd39fd4cc51aefb3573601e9283a10336a4a74e695caa6a8327114273 | Planck CMB native retrain: 200 anomaly patches |
 | gaia_dr3_anomalies.parquet | 819c59789eb1b94de4d46a62777fd125fb084b8c70f3d627b734a45af7396ced | Gaia DR3 anomalies: 500 objects (exploratory tier) |
 | lamost_dr10_pathc_native.parquet | 48c0e2f5420de010923dc69c5c439aaf4cf82c9a301ef55320571bd6d9516a40 | LAMOST DR10 native retrain: 113,342 objects (exploratory tier) |
