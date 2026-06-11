@@ -61,7 +61,7 @@ export async function LivePapersDashboard() {
               <th>Readiness</th>
               <th>Status</th>
               <th>Updated</th>
-              <th style={{ textAlign: "right" }}>Open (B/M/m/C)</th>
+              <th style={{ textAlign: "right" }}>Findings</th>
               <th style={{ textAlign: "right" }}>PDF</th>
             </tr>
           </thead>
@@ -109,9 +109,13 @@ export async function LivePapersDashboard() {
                   </td>
                   <td
                     style={{ textAlign: "right", color: "var(--text-tertiary)" }}
+                    title="Open findings: BLOCKERs / MAJORs / minors / caveats — detail on /status"
                   >
-                    {p.openBlockers}B {p.openMajors}M {p.openMinors}m{" "}
-                    {p.openCaveats}C
+                    {p.openBlockers + p.openMajors + p.openMinors + p.openCaveats === 0 ? (
+                      <span style={{ color: "var(--success)" }}>● clean</span>
+                    ) : (
+                      `${p.openBlockers}B ${p.openMajors}M ${p.openMinors}m ${p.openCaveats}C`
+                    )}
                   </td>
                   <td style={{ textAlign: "right" }}>
                     {p.sitePdfPath ? (

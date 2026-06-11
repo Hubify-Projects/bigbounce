@@ -35,16 +35,6 @@ const predStatusVariant: Record<
   purple:"secondary",
 };
 
-const paperStatusVariant: Record<
-"green" |"blue" |"amber" |"red",
-"default" |"secondary" |"destructive" |"outline"
-> = {
-  green:"default",
-  blue:"secondary",
-  amber:"outline",
-  red:"destructive",
-};
-
 const stats: Array<{ value: string; label: string; tone?: string }> = [
   { value: `${papers.length}`, label:"Papers" },
   { value: `${surveys.length}`, label:"Surveys" },
@@ -142,7 +132,7 @@ export default function HomePage() {
           <div className="hero-panel-header">
             <span>observational ledger</span>
             <Badge variant="accent">
-              {papers.length} papers · awaiting Houston sign-off
+              {papers.length} papers · awaiting sign-off
             </Badge>
           </div>
           <div className="hero-panel-body">
@@ -303,20 +293,8 @@ export default function HomePage() {
               href={`/papers/${paper.slug}`}
               className="paper-ledger-item"
             >
-              <div className="paper-ledger-badge-row">
-                <Badge
-                  variant={paperStatusVariant[paper.statusVariant]}
-                  className="paper-ledger-badge"
-                >
-                  {paper.readiness}% · {paper.statusVariant === "green"
-                    ? "ready"
-                    : paper.statusVariant === "blue"
-                      ? "active"
-                      : paper.statusVariant === "amber"
-                        ? "draft"
-                        : "blocked"}
-                </Badge>
-              </div>
+              {/* Readiness % lives ONLY in the Convex table above (single
+                  source on this page) — the cards carry narrative + path. */}
               <div className="paper-ledger-main">
                 <div className="paper-ledger-kicker">
                   <FileText aria-hidden="true" />
@@ -344,23 +322,6 @@ export default function HomePage() {
                   <span>{paper.pages} pages</span>
                   <span>{paper.refs} refs</span>
                 </div>
-              </div>
-              <div className="paper-ledger-status">
-                <div className="paper-ledger-progress">
-                  <div
-                    className={`paper-ledger-fill ${
-                      paper.readiness === 100
-                        ?"is-complete"
-                        : paper.readiness >= 90
-                          ?"is-near"
-                          :"is-draft"
-                    }`}
-                    style={{ width: `${paper.readiness}%` }}
-                  />
-                </div>
-                <span className="paper-ledger-percent">
-                  {paper.readiness}%
-                </span>
               </div>
             </Link>
           ))}
