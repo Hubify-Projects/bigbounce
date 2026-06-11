@@ -4,7 +4,7 @@ Codified failure modes observed across 19 internal cross-vendor R-rounds, 9
 CCAI self-review rounds, 1 R42 internal-multi round (2026-04-30), 1 P4
 v1.0.66 external 4-vendor round (2026-05-15), 1 P1A external 3-reviewer
 round (2026-06-02), and 1 P4 v1.0.149 external 3-reviewer round (2026-06-04)
-on 6 papers (P1A/P1B/P2/P3/P4/P5). Pattern mine last run: 2026-06-04.
+on 6 papers (P1A/P1B/P2/P3/P4/P5). Pattern mine last run: 2026-06-09 (R23conf full-5-vendor confirmation round, 6 papers; draft patterns 042/043/044 proposed).
 
 Every external/direct-vendor R-round must be pre-screened against these
 patterns BEFORE dispatch, per the [[feedback-review-learning-loop]] and
@@ -151,3 +151,52 @@ Details (draft): [pattern-040-cross-section-internal-contradiction-DRAFT.md](pat
 META-reviewer (gpt-5-pro) re-derives the paper's quoted result from the paper's own formula + parameters and finds inconsistencies. 4 firings in fire 14 across P1B (β=0.336° contradicts formula), P2 (β arithmetic gives 0.002° not 0.27°), P3 (γ ± 0.382 vs CI [2.304, 2.882] width 0.578), P5 (1.98pp vs 1.7pp range). Per-vendor reviewers don't re-derive; meta-reviewer does. Truth-audit verdict typically VERIFIED. Recommends pre-flight quote-formula recompute check at 6+ firings.
 
 Details (draft): [pattern-041-meta-arithmetic-check-DRAFT.md](pattern-041-meta-arithmetic-check-DRAFT.md)
+
+---
+## Pattern 042 — Hardcoded-literal artifact scripts (DRAFT)
+
+Verification scripts/anchors that ASSERT literals instead of computing them — the artifact exists and "passes" but is circular. R23conf recurrences: P2 `appendix_A1_wick_doubling.py` `benchmark_ratios` assigned-literal list feeding assertions; P4 `catalog_c_post_tta_dipole_summary.json` assertion-only anchor with no observed/null raw values. Detection: grep artifact scripts for assigned literal lists flowing into asserts; flag anchors lacking raw computed values. Prevention: every "we checked/verified X" claim must point to an artifact containing COMPUTED values, not asserted ones (`/paper-pre-review-check` + `/artifact-link-verify`).
+
+Details (draft): [pattern-042-hardcoded-literal-artifact-scripts-DRAFT.md](pattern-042-hardcoded-literal-artifact-scripts-DRAFT.md)
+
+---
+## Pattern 043 — Invented-configuration narratives (DRAFT)
+
+Paper text describes an analysis configuration matching NO committed artifact, typically reverse-engineered from a true total. R23conf recurrences: P1B §VI "three benchmark configs C=4/8/12, 3,240 samples each" invented around the real 9,720 = 2,160+6,840+720; P4 headline-null generator's undescribed `p_cw_eq>0.6` all-CW selection. Detection: diff each config/sample-count claim against the committed chain/catalog inventory; red flag = prose counts that are exact divisors of a true total. Prevention: configuration paragraphs must be generated FROM the committed configs (read the yaml/script), never written from memory (`/paper-pre-review-check` + `/never-fabricate-derivation`).
+
+Details (draft): [pattern-043-invented-configuration-narratives-DRAFT.md](pattern-043-invented-configuration-narratives-DRAFT.md)
+
+---
+## Pattern 044 — Wrong-pairing analytic claims (DRAFT)
+
+Analytic values quoted at parameter points where the committed computation gives different values — both value and point are real, the PAIRING is false. R23conf recurrences (P1B, ×2): Δφ/f_a=1.07 quoted "at m≈2H₀" when the committed ODE (c10b) gives 0.42 there and 1.07 at m≈4H₀; the 0.65-at-m=H₀ claim, actual 0.11. Detection: evaluate the committed function at each quoted point; if the quoted value occurs elsewhere on the grid it's a pairing swap, not a wrong number (distinguishes from pattern-041). Prevention: parameter-point claims carry the generating script + a committed grid-scan artifact (`/paper-pre-review-check` quote-formula gate).
+
+Details (draft): [pattern-044-wrong-pairing-analytic-claims-DRAFT.md](pattern-044-wrong-pairing-analytic-claims-DRAFT.md)
+
+---
+## Pattern 045 — Abstract/body claim drift (EXT1)
+
+Abstract claims drift from the body's final calibrated statements after multi-round body fixes (P1A "each fails at amplitude" vs §IV.D R4-naturalness; P2 missing cubic-transfer caveat; P3 abstract ordering; P5 "headline" dual-use). Prevention: every round, diff each abstract claim against its body citation — abstract is re-read holistically LAST.
+
+Details: [pattern-045-abstract-body-drift.md](pattern-045-abstract-body-drift.md)
+
+---
+## Pattern 046 — Artifact/paper cross-check gap (EXT1)
+
+On-disk artifacts contradict paper numbers/units/versions (P1B parameter_summary.json Cobaya-normalised units, burn-in 20%-vs-30%, P4 stale commit hash + mask description, P1A bundle v0.9.0 label). Internal rounds audit .tex only; referees download artifacts. Prevention: tools/artifact_crosscheck.py mechanical sweep every round.
+
+Details: [pattern-046-artifact-paper-cross-check.md](pattern-046-artifact-paper-cross-check.md)
+
+---
+## Pattern 047 — Version-pin staleness on bump (EXT1)
+
+Data Availability commit hashes, bundle metadata, DOI/hash manifests go stale across bumps (P4 hash 5 versions old; P2/P3 no frozen release prepared). Prevention: /bigbounce-version-bump gate — provenance surfaces update in the same commit as the stamp.
+
+Details: [pattern-047-version-pin-staleness-on-bump.md](pattern-047-version-pin-staleness-on-bump.md)
+
+---
+## Pattern 048 — Uncomputed quantitative claim (EXT1)
+
+Inequality/rate/robustness claims stated qualitatively where a number is checkable (P1A Γ_washout>H, e^32 separation; P2 fiducial-shift bound; P5 missing effect sizes/regression). Prevention: reviewer prompt demands the number, computation pointer, or explicit labeled-assumption tag for every >, <, exceeds, dominates, negligible, robust-to claim.
+
+Details: [pattern-048-uncomputed-quantitative-claim.md](pattern-048-uncomputed-quantitative-claim.md)

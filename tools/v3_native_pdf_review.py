@@ -102,6 +102,27 @@ REVIEW INSTRUCTIONS:
     quoted statistics traceable to the cited paper's abstract/tables?
 14. Check for unsupported claims: every assertion of novelty, "first", "largest",
     "unprecedented" — is it true?
+15. ABSTRACT-LAST DRIFT SWEEP (pattern-045): after reading the full body, re-read
+    the abstract sentence by sentence. For each claim, locate the body statement
+    that backs it. Flag ESSENTIAL any abstract claim stronger than, ordered
+    differently from, or missing a caveat present in the body's final calibrated
+    statement.
+16. PROVENANCE SURFACES (patterns 046/047): audit the Data Availability /
+    reproducibility section as if you will download everything. Flag stale
+    version labels, commit hashes that predate the stated paper version,
+    artifacts described inconsistently with the body (units, sample, mask,
+    burn-in), and missing frozen-release hashes/DOI preparation.
+17. UNCOMPUTED QUANTITATIVE CLAIMS (pattern-048): for every inequality or
+    robustness assertion (">", "exceeds", "dominates", "negligible",
+    "robust to", "consistent with") demand the number, the artifact pointer,
+    or an explicit labeled-assumption tag. Qualitative confidence where a
+    number is checkable is a MAJOR.
+18. STANDALONE-READER TEST: assume you cannot open any companion paper.
+    Flag every place the argument is not self-contained (undefined symbols,
+    results imported by citation to a companion, placeholder arXiv IDs used
+    as load-bearing evidence).
+19. EFFECT SIZES: every χ²/σ/p headline must carry an effect-size or
+    practical-significance statement (Cramér's V, fractional amplitude, etc.).
 
 End your report with:
 ## Summary recommendation
