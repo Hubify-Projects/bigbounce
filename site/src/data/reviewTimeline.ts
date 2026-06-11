@@ -43,6 +43,32 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "R29",
+    kind: "internal-api",
+    dateISO: "2026-06-10",
+    title: "R29 — post-EXT1 internal round validates the upgraded reviewers: 30 API legs + same-day patch wave across all six papers",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "First internal round after the EXT1 gap-mine upgrades: the rebuilt sweeps caught closure-introduced regressions and a chain-level artifact bug, and every VERIFIED finding was truth-audited and patched same-day with all six papers restamped (v1A.0.58 / v1B.0.56 / v1.7.50 / v3.1.89 / v1.0.173 / v0.1.62).",
+    keyTakeaways: [
+      "Upgraded sweeps caught closure-introduced regressions: P2 dimensionally inconsistent OOM bounds, P3 half-applied eROSITA de-scope, P1A repro-bundle version desync — all introduced by prior closure waves",
+      "P1B export-script off-by-one root-caused from the chains themselves: the frozen parameter_summary.json bug is a uniform column-permutation in the export, not a unit-conversion issue",
+      "P4 NSIDE block-scale sensitivity computed (headline exclusion z stable 16.9–19.4 across NSIDE 4/8/16) and the missing non-spiral Fig.1 panel restored",
+      "P2 title recast + structured 5-paragraph abstract; headline BF rebooked to ~9–14 under the noise-weighted r≈0.84 bounce-amplitude bookkeeping",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 0,
+      note: "internal tier caught everything this round found pre-EXT2 — EXT2 measures the true residual gap",
+    },
+    links: [
+      { label: "P1A audit", href: `${PR}/R29_P1A_TRUTH_AUDIT.md` },
+      { label: "P1B audit", href: `${PR}/R29_P1B_TRUTH_AUDIT.md` },
+      { label: "P2 audit", href: `${PR}/R29_P2_TRUTH_AUDIT.md` },
+      { label: "P3 audit", href: `${PR}/R29_P3_TRUTH_AUDIT.md` },
+      { label: "P4 audit", href: `${PR}/R29_P4_TRUTH_AUDIT.md` },
+      { label: "P5 audit", href: `${PR}/R29_P5_TRUTH_AUDIT.md` },
+    ],
+  },
+  {
     id: "EXT1-CLOSURES",
     kind: "closure-wave",
     dateISO: "2026-06-10",

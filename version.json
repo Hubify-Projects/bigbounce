@@ -2,31 +2,31 @@
   "preprint_id": "HUBIFY-2026-001",
   "version": "v2.4.0",
   "date": "2026-06-10",
-  "timestamp": "2026-06-10T15:30:00-07:00",
+  "timestamp": "2026-06-10T18:51:00-07:00",
   "author": "Houston Golden",
   "papers": {
     "p1a": {
-      "version": "v1A.0.57",
+      "version": "v1A.0.58",
       "date": "2026-06-10 PT"
     },
     "p1b": {
-      "version": "v1B.0.55",
+      "version": "v1B.0.56",
       "date": "2026-06-10 PT"
     },
     "p2": {
-      "version": "v1.7.49",
+      "version": "v1.7.50",
       "date": "2026-06-10 PT"
     },
     "p3": {
-      "version": "v3.1.88",
+      "version": "v3.1.89",
       "date": "2026-06-10 PT"
     },
     "p4": {
-      "version": "v1.0.172",
+      "version": "v1.0.173",
       "date": "2026-06-10 PT"
     },
     "p5": {
-      "version": "v0.1.61-2026-06-10",
+      "version": "v0.1.62-2026-06-10",
       "date": "2026-06-10 PT"
     }
   }
