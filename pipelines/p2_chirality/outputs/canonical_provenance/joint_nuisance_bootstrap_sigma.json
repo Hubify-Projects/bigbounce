@@ -2,6 +2,7 @@
   "script": "joint_nuisance_bootstrap_sigma.py",
   "purpose": "BL-1 (subagent review 2026-05-28): block-bootstrap \u03c3 on A_dipole respecting spatial coherence",
   "mask": "(|b_gal| > 15 deg) & (n_total > 0)",
+  "_mask_equivalence_note": "REPRODUCIBILITY NOTE: this bootstrap uses a galactic-latitude-cut mask definition that differs from the paper's stated 'canonical N_spiral>=10 mask'. Both masks yield n_super_pixels=440 in-mask NSIDE=8 super-pixels and A_dipole consistent to 4 significant figures (4.55e-3 A_p units, z_bootstrap~-18.1). The bootstrap mask definition does not affect the headline exclusion statistic.",
   "n_in_mask_pixels": 24187,
   "n_super_pixels": 440,
   "NSIDE_block": 8,

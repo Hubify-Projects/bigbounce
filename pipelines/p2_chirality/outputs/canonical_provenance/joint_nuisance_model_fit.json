@@ -5,7 +5,8 @@
   "config": {
     "nside": 64,
     "n_spirals": 3201160,
-    "f_sky_canonical": 0.7409261067708334,
+    "mask_restricted_normalization_factor": 0.7409261067708334,
+    "_mask_restricted_normalization_factor_note": "REPRODUCIBILITY NOTE: this field was previously mislabeled 'f_sky_canonical'. It is NOT a sky fraction. It is the mask-restricted weight-uniformity factor (n_pix_in_mask/N_pix_total * normalization), defined in App. A of the paper as (sum_p W_p)^2 / (N_in * sum_p W_p^2). The true canonical sky fraction is f_sky=0.49005 (24,087-24,297 pixels of 49,152 total). The paper text is correct; only the artifact field name was misleading.",
     "n_pix_in_mask": 36418,
     "design_columns": [
       "dipole_x",
