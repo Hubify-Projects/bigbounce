@@ -2,8 +2,27 @@
 
 **Paper:** Channel-Level Closure of Four Minimal Einstein--Cartan--Holst Dark-Energy Routes and Perturbation Transparency for Scalar Matter (Paper I A)
 **Author:** Houston Golden
-**Paper version:** v1A.0.59 (2026-06-10)
+**Paper version:** v1A.0.61 (2026-06-11)
 **Bundle version:** v1A.0.59-bundle
+
+## Paper I(b) quick links
+
+This repository is program-wide; companion Paper I(b) (the MCMC companion,
+`arxiv/paper1b_mcmc_companion.tex`) is backed by the same bundle:
+
+- **Frozen MCMC chains + diagnostics** (Paper I(b) Tables I/III–IV):
+  `cosmology/frozen/full_tension_20260311_1728/` and
+  `cosmology/frozen/planck_bao_sn_20260312_1954/` — use
+  `diagnostics/parameter_summary_CORRECTED.json` in each (all seven
+  Table I parameters incl. S₈), not the column-permuted
+  `parameter_summary.json`.
+- **Cobaya YAML configurations** (stock CAMB): `cosmology/`
+- **NaMaster driver script** (Paper I(b) CMB EB pipeline): `cmb/`-level
+  driver referenced in `IMPLEMENTATION_MAP.md`
+- **HuggingFace datasets** (chain diagnostics, NaMaster artifacts, ALP
+  chains): URLs in the repository root `CHANGELOG.md` under the Paper I(b)
+  version entry
+- **Sample-count conventions**: `cosmology/COUNT_EXPLANATION.md`
 
 > **Note (2026-06-10):** This bundle was previously labelled "v0.9.0 / Geometric Dark Energy" while the manuscript moved to title "Channel-Level Closure of Four Minimal ECH Dark-Energy Routes and Perturbation Transparency for Scalar Matter" at v1A.0.56, then to v1A.0.57 after the EXT1 external-round textual-closure wave, then to v1A.0.58 after the R29 post-EXT1 internal-round closure wave, then to v1A.0.59 after the EXT2 external-round closure wave. Labels here now track the current manuscript title and version. The Cobaya YAMLs and Stan galaxy-spin code are unchanged from the v0.9.0 / v1A.0.56-bundle states (MCMC chains and convergence are documented in companion Paper I(b)); the v1A.0.56 → v1A.0.57 → v1A.0.58 bumps were README/BibTeX-metadata resyncs only, and the v1A.0.59 bump additionally corrects the "What This Bundle Reproduces" table to the frozen-chain values (EXT2 F2) — the bundles are otherwise byte-identical.
 
@@ -79,7 +98,10 @@ See `docs/KNOWN_GAPS.md` for full details:
    proxy chains for re-verification must be generated locally via
    `reproduce_cosmology.sh` (~4–12 h per config).
 3. **No CNN classifier** — uses published catalogs
-4. **No CMB map analysis** — birefringence is literature-cited
+4. **No CMB map analysis beyond the NaMaster driver** — Paper I(b)'s EB
+   pipeline artifacts (mask, MC seeds, output spectra) are provided /
+   linked via the HuggingFace datasets; published birefringence values
+   (e.g. β=0.342°±0.094°) are literature-cited, not re-derived from maps
 5. **No nested sampling** — Bayes factors require PolyChord
 
 ## Hardware Notes

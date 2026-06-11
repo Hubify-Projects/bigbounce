@@ -1,26 +1,41 @@
 {
-  "H0": {
-    "mean": 67.68482568196218,
-    "std": 1.0602058097891074
-  },
-  "delta_neff": {
-    "mean": -0.019347763641417885,
-    "std": 0.16916752863401843
-  },
-  "tau": {
-    "mean": 0.05358356845481318,
-    "std": 0.006954149968584562
-  },
-  "sigma8": {
-    "mean": 0.8034041094954966,
-    "std": 0.008399206719126952
-  },
-  "omegam": {
-    "mean": 0.30809345788571624,
-    "std": 0.005452091418327949
-  },
-  "ns": {
-    "mean": 0.9654831687216788,
-    "std": 0.006179418223910859
-  }
+ "_provenance": "Regenerated 2026-06-11 from raw chains under chains/chain_0[1-6]/spin_torsion.1.txt via the script documented in parameter_summary_units_README.md (numpy weighted means, 30% burn-in per chain matching frozen full_tension config). Supersedes the prior parameter_summary_CORRECTED.json (which omitted S8) and the column-permuted parameter_summary.json. Adds S8 and age so all seven Paper 1B Table I parameters are present (EXT3-P1B F3 closure).",
+ "dataset": "full_tension",
+ "freeze_timestamp": "20260311_1728",
+ "n_chains": 6,
+ "burn_fraction": 0.3,
+ "total_accepted_samples_raw": 176240,
+ "post_burnin_samples": 123369,
+ "H0": {
+  "mean": 67.68401856657634,
+  "std": 1.0606483818745538
+ },
+ "delta_neff": {
+  "mean": -0.01959391501693627,
+  "std": 0.1692069890392037
+ },
+ "tau": {
+  "mean": 0.05359154315254702,
+  "std": 0.006957339597216269
+ },
+ "sigma8": {
+  "mean": 0.8033947338061265,
+  "std": 0.008399593516921324
+ },
+ "omegam": {
+  "mean": 0.3080901230246068,
+  "std": 0.00545565338674918
+ },
+ "ns": {
+  "mean": 0.9654818077227909,
+  "std": 0.0061835460532965805
+ },
+ "S8": {
+  "mean": 0.814090894220986,
+  "std": 0.008456377124017814
+ },
+ "age": {
+  "mean": 13.822289537440112,
+  "std": 0.1668963254597779
+ }
 }

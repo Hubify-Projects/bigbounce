@@ -119,8 +119,32 @@
 %   FALSIFIED list (14 items) not acted on.)
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1B.0.57}
-\newcommand{\paperTimestamp}{June 10, 2026 PDT}
+\newcommand{\paperVersion}{v1B.0.58}
+\newcommand{\paperTimestamp}{June 11, 2026 PDT}
+% v1B.0.57->58 (2026-06-11 — EXT3 external-round closure wave; truth audit at
+%   project-context/peer-reviews/EXT3_P1B_TRUTH_AUDIT.md):
+%   F3: frozen full_tension parameter_summary_CORRECTED.json REGENERATED from
+%      raw chains (chains/chain_0[1-6], numpy weighted means, 30% burn-in per
+%      chain) with S8 + age ADDED so all seven Table I parameters are present
+%      in the committed diagnostics; _provenance field records script +
+%      supersession of the S8-less file. Burn-in bookkeeping note added at the
+%      93,064-vs-93,066 site (per-chain 30% rounding, immaterial).
+%   PR3/PR4 attribution: Eskilt+Komatsu footnote sharpened — the ALP MCMC
+%      consumes only the scalar Gaussian summary beta=0.342+-0.094 deg and is
+%      independent of the PR3/PR4 map-level distinction except through that
+%      value's provenance.
+%   SN-overlap: shared-event Malmquist-correction comparison re-cited to
+%      Vincenzi et al. 2025 at the remaining DES2024SN5YR site; "Quintom-B
+%      empirical anchor" paragraph retitled "Exploratory w0wa cross-check" and
+%      marked overlap-uncorrected/provisional pending the queued SN-overlap
+%      control chains (caveat (e)).
+%   HF datasets: three HuggingFace dataset URLs inserted in-text (diagnostics,
+%      NaMaster artifacts, ALP chains); DOI language corrected to
+%      DOI-assignment-pending-at-submission (no unbacked DOI claim).
+%   Bundle README: Paper I(b) quick-links section added (frozen chains,
+%      CORRECTED diagnostics incl. S8, Cobaya YAMLs, NaMaster driver, HF URLs,
+%      count conventions); KNOWN_GAPS gap 2 rewritten — frozen chains ARE
+%      committed, fresh proxy chains regenerable.
 % v1B.0.56->57 (2026-06-10 — EXT2 external-round closure wave; truth audit at
 %   project-context/peer-reviews/EXT2_P1B_TRUTH_AUDIT.md):
 %   F2 (closure-introduced regression, R29 CORRECTED-file generation):
@@ -767,8 +791,11 @@ paper~\cite{Eskilt2022} (PRD 106:063503, arXiv:2205.13962) analyzes
 authors at \href{https://github.com/LilleJohs/Cosmic_Birefringence}{github.com/LilleJohs/Cosmic\_Birefringence}
 was subsequently updated to use \emph{Planck PR4 / NPIPE}. Throughout
 this paper, the labels ``PR4/NPIPE'' attached to the Eskilt+Komatsu
-likelihoods refer to the code-repository dataset (which is what the
-ALP-MCMC re-runs actually use); the abstract $\beta=0.342^\circ\pm 0.094^\circ$
+likelihoods refer to the code-repository dataset; the ALP MCMC uses only
+the scalar Gaussian summary likelihood $\beta=0.342^\circ\pm 0.094^\circ$
+and does not depend on the PR3/PR4 map-level distinction except through
+the provenance of that summary value. The abstract
+$\beta=0.342^\circ\pm 0.094^\circ$
 ($3.6\sigma$) headline is from the published PR3+WMAP9 joint analysis.
 The repository README is the authoritative source for the dataset
 attribution in the executed pipeline.}
@@ -955,7 +982,11 @@ the per-chain GetDist readout that averages the parallel chains
 original chain (\texttt{burn\_in: 0.3}).  The $30\%$ figure used throughout
 this paper is conservative, matches the original-chain configuration documented
 in \texttt{COUNT\_EXPLANATION.md}, and gives $93{,}064$ post-burnin for this
-subset.  The $106{,}361$ figure at $20\%$ is the value reported by GetDist
+subset (the frozen
+\texttt{parameter\_summary\_CORRECTED.json} records $93{,}066$ for the same
+cut; the 2-sample difference reflects per-chain rounding of the $30\%$
+burn-in index at the chain ends and is immaterial to all quoted
+statistics).  The $106{,}361$ figure at $20\%$ is the value reported by GetDist
 (\texttt{getdist.MCSamples} loaded from the
 \texttt{planck\_bao\_sn\_20260312\_1954} freeze with
 \texttt{ignore\_rows = 0.20} averaging the per-chain configurations
@@ -1185,7 +1216,7 @@ $S_8$ tension is not relieved in this chain either.
 includes both DES-SN5YR~\cite{DES2024SN5YR} and Pantheon+~\cite{Brout2022PantheonPlus} as independent
 SN likelihood factors.  These two catalogs share approximately $20\%$ of their
 supernova events with different Malmquist-bias corrections applied by the
-respective collaborations~\cite{DES2024SN5YR}.  The present analysis combines them
+respective collaborations~\cite{Vincenzi2025SNcompare}.  The present analysis combines them
 via a product likelihood without a joint covariance that accounts for the
 shared-event overlap.  Because the shared $\sim\!20\%$ of SNe are assigned
 slightly different distance-modulus corrections in each catalog, the naive
@@ -2044,7 +2075,7 @@ and calibration assumptions~\cite{LiteBIRD2023}, a $\beta\simeq 0.27^\circ$
 signal would be detected relative to $\beta=0$ at ${\sim}9\sigma$ by
 LiteBIRD in the early 2030s.
 
-\textit{Quintom-B empirical anchor.}---The converged DESI~DR2 + Planck~NPIPE + Pantheon+~\cite{Brout2022PantheonPlus} + DES-SN5YR~\cite{DES2024SN5YR} Cobaya chain with the $w_0 w_a$ free-parameter extension ($128{,}385$ accepted samples across 16 MPI chains; $\hat R - 1 = 0.00820$, below the standard $\hat R\!-\!1\!<\!10^{-2}$ publication target) supplies the GetDist $w_0 w_a$ posteriors of Table~\ref{tab:iter2_posterior}, an empirical test of the quintom-B scenario~\cite{DESI2025DR2}.
+\textit{Exploratory $w_0 w_a$ cross-check.}---The converged DESI~DR2 + Planck~NPIPE + Pantheon+~\cite{Brout2022PantheonPlus} + DES-SN5YR~\cite{DES2024SN5YR} Cobaya chain with the $w_0 w_a$ free-parameter extension ($128{,}385$ accepted samples across 16 MPI chains; $\hat R - 1 = 0.00820$, below the standard $\hat R\!-\!1\!<\!10^{-2}$ publication target) supplies the GetDist $w_0 w_a$ posteriors of Table~\ref{tab:iter2_posterior}, an exploratory, overlap-uncorrected test of the quintom-B scenario~\cite{DESI2025DR2} that remains provisional pending the queued SN-overlap control chains (Sec.~\ref{sec:verification}, caveat~(e)).
 
 \subsection*{Data and Code Availability}
 
@@ -2066,10 +2097,11 @@ NaMaster driver scripts, and the implementation map
 by Paper~IV~\cite{Golden2026P4} but not by any analysis of this paper.
 MCMC chains: regenerate via \texttt{reproduce\_cosmology.sh}
 ($\sim$4--12\,h per configuration on 4 CPU cores).
-HuggingFace dataset DOIs for the three accompanying datasets (MCMC chain
+HuggingFace dataset URLs for the three accompanying datasets (MCMC chain
 diagnostics, NaMaster pipeline artifacts, ALP parameter chains) are listed
-below in Appendix~A under ``HuggingFace datasets'' and are also recorded
-in the repository \texttt{CHANGELOG.md} under the entry for
+below in Appendix~A under ``HuggingFace datasets''; DOI assignment is
+pending (identifiers will be inserted at submission). The URLs are also
+recorded in the repository \texttt{CHANGELOG.md} under the entry for
 \texttt{\paperVersion}; links are preserved against future README changes
 via the version-stamp commit identified by the changelog.
 \emph{Column-permutation warning for JSON artifacts:} the frozen
@@ -2135,7 +2167,7 @@ Tables~III--IV of this paper:
 \path{reproducibility/cosmology/frozen/full_tension_20260311_1728/} and
 \path{reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/}
 (each with \texttt{chains/chain\_0[1-6]/} and
-\texttt{diagnostics/parameter\_summary\_CORRECTED.json}). The converged
+\texttt{diagnostics/}\allowbreak\texttt{parameter\_summary\_CORRECTED.json}). The converged
 iter2 $w_0 w_a$ chain bundle is committed at
 \path{reproducibility/cosmology/iter2_converged_2026-05-18/}, and the
 ALP-MCMC chains at
@@ -2153,14 +2185,18 @@ labels. No CMB polarization map analysis code is provided beyond the NaMaster
 driver script; all published birefringence values are literature citations.
 
 \textit{HuggingFace datasets.}---The following HuggingFace datasets accompany
-this work (DOI links are recorded in the repository \texttt{CHANGELOG.md}
-under the entry for \texttt{\paperVersion}; the DOIs are preserved against
-future README changes via the version-stamp commit identified by the
-changelog):
+this work (DOI assignment is pending; identifiers will be inserted at
+submission. The URLs are also recorded in the repository
+\texttt{CHANGELOG.md} under the entry for \texttt{\paperVersion} and are
+preserved against future README changes via the version-stamp commit
+identified by the changelog):
 \begin{enumerate}[leftmargin=*]
-\item MCMC chain diagnostics and convergence CSV files.
-\item NaMaster pipeline artifacts (mask, MC seeds, output spectra).
-\item ALP parameter MCMC chains.
+\item MCMC chain diagnostics and convergence CSV files:
+  \url{https://huggingface.co/datasets/Hubify/p1b-mcmc-diagnostics}.
+\item NaMaster pipeline artifacts (mask, MC seeds, output spectra):
+  \url{https://huggingface.co/datasets/Hubify/p1b-namaster-artifacts}.
+\item ALP parameter MCMC chains:
+  \url{https://huggingface.co/datasets/Hubify/p1b-alp-chains}.
 \end{enumerate}
 
 

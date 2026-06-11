@@ -33,13 +33,18 @@ The spin-torsion framework provides the *theoretical motivation* for nonzero
 with "an additional early dark energy component" — this is implemented via
 the standard N_eff parameter, not a custom code module.
 
-## 2. No MCMC Chains Pre-Computed
+## 2. Frozen Chains Committed; Fresh Proxy Chains Not Pre-Computed
 
-**Status:** The Cobaya configurations are provided and can be run with
-stock CAMB. Chains take ~4-12 hours per configuration on 4 CPU cores.
-Pre-computed chains are not included due to file size (~1 GB per run).
+**Status:** The frozen MCMC chains backing Paper I(b) Tables III–IV ARE
+committed in this bundle (~257 MB under `reproducibility/cosmology/frozen/`,
+including `full_tension_20260311_1728/` and `planck_bao_sn_20260312_1954/`
+with chains and diagnostics). What is NOT included are fresh ΛCDM+ΔN_eff
+proxy chains for independent re-verification: the Cobaya configurations are
+provided and can be run with stock CAMB. Fresh chains take ~4-12 hours per
+configuration on 4 CPU cores (~1 GB per run).
 
-**Workaround:** Run `reproduce_cosmology.sh` to generate chains.
+**Workaround:** Run `reproduce_cosmology.sh` to generate fresh chains, then
+compare against the committed frozen chains.
 
 ## 3. No Bayes Factor Computation
 
