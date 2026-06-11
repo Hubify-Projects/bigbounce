@@ -44,6 +44,24 @@ Audit artifact: `r24conf_erosita_axis_sweep.json`.
 
 ---
 
+## Per-Survey Score-Schema Flags (score_axis / membership_only)
+
+Not every released block carries the same score schema. Downstream consumers MUST check
+this table before treating any score column as a continuous, cross-survey-comparable axis
+(added at v3.1.91 per EXT2 NB1; the paper's Data Availability statement points here):
+
+| Survey block | score_axis | membership_only | Notes |
+|---|---|---|---|
+| DESI DR1 | canonical-S (Eq. score, DESI-trained BigAE) | no | per-object scores released |
+| SDSS DR18 native | canonical-S (native rescale; continuity slice S ≥ 0.1060) | no | per-object scores released |
+| LAMOST DR10 native | canonical-S (native rescale; top-1% slice S ≥ 0.4613) | no | exploratory tier; per-object scores released |
+| Gaia DR3 | canonical-S (feature-space BigAE) | no | exploratory tier; per-object scores released |
+| NEOWISE | canonical-S (post ecliptic-pole mask) | no | per-object scores released |
+| Planck CMB native | raw per-patch reconstruction MSE (survey-specific axis, NOT canonical-S) | no | 200 patches ranked by raw MSE |
+| eROSITA DR1 | NONE — S_BigAE axis irreproducible (see warning above) | **yes** | n=298 membership list only; ranked by committed raw score |
+
+---
+
 ## Gaia DR3 Feature Columns (20 features — lineage-inferred)
 
 The Gaia DR3 anomaly table uses 20 astrometric/variability features from the published 50K-source
