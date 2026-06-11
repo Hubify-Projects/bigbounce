@@ -43,6 +43,28 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "R32CONF",
+    kind: "internal-cc",
+    dateISO: "2026-06-11",
+    title: "R32conf — 5-vendor confirmation on the recount: sweep PASSES, zero arithmetic errors, 12 textual closures → v3.1.94",
+    papers: ["P3"],
+    summary: "First internal round on the recount-bearing v3.1.93: both sweep legs confirm the recount disclosure is consistent at all 5 sites with zero arithmetic errors; the truth-audit falsified 6 findings (including a 3rd re-raise of the Fisher PDF-superscript misread) and produced 12 textual closures plus the two Houston-default decisions, landed same-day as v3.1.94.",
+    keyTakeaways: [
+      "Recount sweep PASS ×5 sites; every arithmetic spot-check passes (1.3%, 0.9×, 98.7%, 0.012%, SPECTYPE sum)",
+      "3-vendor convergent ask closed: a recount-at-a-glance table now anchors the three DESI denominators in one place",
+      "Houston-default decisions applied: title moved to the singular novelty fraction; the irreproducible S_BigAE column stripped from the eROSITA table (3-reviewer/2-round consensus)",
+      "Pattern-052 upheld an auto-falsify for the first time: OpenAI's Fisher F₀ dimensional claim re-raised a 3rd time, but both prior falsifications cited the tex source — primary evidence, so the re-raise does not vindicate",
+      "Not a clean round (12 real closures) → R33conf confirmation required on v3.1.94 before EXT4",
+    ],
+    links: [
+      { label: "Truth audit", href: `${PR}/R32conf_P3_TRUTH_AUDIT.md` },
+      { label: "Claude leg", href: `${PR}/R32conf_P3_Claude_brutal.md` },
+      { label: "OpenAI leg", href: `${PR}/R32conf_P3_OpenAI_methodology.md` },
+      { label: "Gemini leg", href: `${PR}/R32conf_P3_Gemini_cosmology.md` },
+      { label: "Grok leg", href: `${PR}/R32conf_P3_Grok_brutal.md` },
+    ],
+  },
+  {
     id: "EXT3-B2-RECOUNT",
     kind: "closure-wave",
     dateISO: "2026-06-11",

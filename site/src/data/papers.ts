@@ -258,8 +258,8 @@ export const papers: Paper[] = [
   {
     slug: "paper-3",
     number: "3",
-    title: "Spectrally Unusual Sources at Scale: A Multi-Survey Catalog of 378,280 Anomalies and Native-Trained Novelty Rates from 37.3 Million Sources",
-    version: "v3.1.93",
+    title: "Spectrally Unusual Sources at Scale: A Multi-Survey Catalog of 378,280 Path-C Unique Anomalies and a Native-Trained Novelty Fraction from 37.3 Million Sources and Map Patches",
+    version: "v3.1.94",
     lastUpdated: "2026-06-11",
     tldr: "A 378,280-object anomaly catalog mined from 37.3M sources across 7 surveys with one autoencoder architecture — 17.8% of top-ranked objects are new to existing catalogs, plus a NANOGrav free-spectrum fit consistent with matter-bounce γ = 3.0.",
     path: publicationPath({}),
@@ -285,6 +285,7 @@ export const papers: Paper[] = [
       "Catalog-grade count corrected 264,938 → 269,317 (prior count double-removed 4,379 LAMOST-overlap objects; independent 6-way dedup verified); HEALPix 38,330px unrecoverable confirmed → reproducible rerun 24,049px χ²_ν=15.7; SMICA preprocessing documented, 200/200 top-200 reproduction (v3.1.84 pod wave)",
       "R26conf: zero arithmetic errors across the round; 12 textual closures — cluster accounting made exact from the dedup artifact, NANOGrav Eq. E1 claim falsified by rederivation (v3.1.87)",
       "TARGETTYPE-restricted recount completed: 2,468 DESI anomaly clusters (1.3%) sit on main-survey science-class spectra — ≈0.9× the Liang 2023 benchmark restricted, not 73×; ~98.7% of DESI anomalies fall on sky/secondary/filler spectra (v3.1.93 EXT3-B2 closure)",
+      "R32conf closure wave: recount-at-a-glance table added (3-vendor convergent ask), irreproducible S_BigAE column stripped from the eROSITA table, title moved to singular novelty fraction, SMBHB abstract framing tightened to 'not a cosmological detection' (v3.1.94)",
     ],
     surveys: ["DESI DR1", "SDSS DR18", "LAMOST DR10 (exploratory)", "eROSITA DR1", "Planck CMB", "ACT DR6 (quarantined)", "NEOWISE", "Gaia DR3"],
     predictions: ["f_NL improvement", "Multi-survey validation", "NANOGrav γ (real free-spectrum)"],
@@ -296,10 +297,10 @@ export const papers: Paper[] = [
       "arXiv submission (administrative)",
     ],
     preprintId: "HUBIFY-2026-003",
-    pdfMeta: "PDF 4.4 MB · 28 pp · v3.1.93 · updated Jun 11, 2026",
+    pdfMeta: "PDF 4.4 MB · 28 pp · v3.1.94 · updated Jun 11, 2026",
     artifacts: [
-      { label: "Read PDF", href: "/papers/paper3_anomaly_catalog_v3.1.93.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/paper3_anomaly_catalog_v3.1.93.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/paper3_anomaly_catalog_v3.1.94.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/paper3_anomaly_catalog_v3.1.94.pdf", kind: "secondary", download: true },
       {
         label: "LaTeX source",
         href: "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p3_anomaly_engine/paper3_draft.tex",
