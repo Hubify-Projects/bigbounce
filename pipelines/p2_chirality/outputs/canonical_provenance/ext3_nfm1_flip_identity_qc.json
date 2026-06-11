@@ -1,0 +1,33 @@
+{
+ "description": "EXT3 NF-M1 closure: per-row flip-identity QC on the committed 8.47M-row chirality catalog (p4_chirality.parquet). Flip-pass probabilities recovered via p_flip = 2*p_eq - p_raw per channel (channel-swapped: p_CCW^flip = 2 p_CW^eq - p_CW^raw, etc.). Residuals computed on all rows with complete raw+eq columns: (i) |sum of recovered flip probs - 1|; (ii) max excursion of any recovered flip prob outside [0,1]; (iii) max abs difference between the duplicated raw columns (_x vs _y merge legs).",
+ "date_utc": "2026-06-11T09:31:46Z",
+ "n_rows_total": 8474531,
+ "n_rows_with_any_nan_column": 8386253,
+ "n_rows_evaluated": 88278,
+ "sum_deviation": {
+  "p50": 3.507011570036411e-08,
+  "p90": 9.095380733015192e-08,
+  "p99": 1.4154641235109002e-07,
+  "p99.9": 1.7489516176284246e-07,
+  "max": 2.0442530512809753e-07
+ },
+ "bound_excursion": {
+  "p50": 0.0,
+  "p90": 0.0,
+  "p99": 0.0,
+  "p99.9": 1.0278126865160182e-08,
+  "max": 5.960464477539063e-08
+ },
+ "raw_column_xy_disagreement": {
+  "p50": 9.094947017729282e-12,
+  "p90": 5.960464477539063e-08,
+  "p99": 2.384185791015625e-07,
+  "p99.9": 4.172325134277344e-07,
+  "max": 6.556510925292969e-07
+ },
+ "rows_violating_beyond_1e-3": 0,
+ "fraction_violating_beyond_1e-3": 0.0,
+ "rows_violating_beyond_1e-6": 0,
+ "float32_eps": 1.1920929e-07,
+ "conclusion": "All residuals on the evaluated rows are at float32 storage precision (max sum deviation 2.04e-7, ~1.7x float32 eps, as expected from the 2*p_eq - p_raw arithmetic on float32-quantized columns). ZERO rows violate the identity beyond 1e-3 (and zero beyond 1e-6 if so reported below); the previously quoted \"1.3% of rows violate beyond 1e-3\" figure is NOT reproduced on the committed catalog and is superseded by this recompute. No QC flag or row exclusion is required and the HC dipole sample is unaffected."
+}

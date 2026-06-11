@@ -1,0 +1,29 @@
+{
+ "description": "EXT3 NF-M1 closure part 2: HC real-space dipole (NSIDE=64, N_spiral(p)>=10 canonical mask, uniform-weight hp.fit_dipole, 10,000 per-pixel permutation null, seed 42 \u2014 c11b convention) recomputed on the baseline HC sample and on the HC sample excluding rows whose recovered flip-pass probabilities (p_flip = 2 p_eq - p_raw, any channel) fall outside [0,1] by more than 1e-3 (raw/eq pipeline-pass mismatch rows).",
+ "date_utc": "2026-06-11T09:34:25Z",
+ "hc_selection": "class_eq in {CW,CCW} and max(p_cw_eq,p_ccw_eq)>0.6",
+ "flag_definition": "any recovered flip-pass probability outside [0,1] beyond 1e-3 using the full-coverage raw columns",
+ "n_hc": 949584,
+ "n_flagged_in_hc": 59515,
+ "fraction_flagged_in_hc": 0.06267481339196954,
+ "baseline": {
+  "n": 949584,
+  "n_pix": 23682,
+  "amp": 0.004597074287780104,
+  "null_mean": 0.003727850771068887,
+  "null_std": 0.0016832199313818114,
+  "z": 0.5164051948919368,
+  "rank_p": 0.28157184281571845
+ },
+ "flagged_rows_excluded": {
+  "n": 890069,
+  "n_pix": 23633,
+  "amp": 0.004665198792857313,
+  "null_mean": 0.003844757671152136,
+  "null_std": 0.0017258222364601684,
+  "z": 0.475391442045609,
+  "rank_p": 0.2873712628737126
+ },
+ "delta_z": -0.0410137528463278,
+ "conclusion": "Excluding the flagged rows changes the HC real-space dipole z by the reported delta; the headline null-consistency of the HC dipole is robust to the flip-identity QC exclusion."
+}
