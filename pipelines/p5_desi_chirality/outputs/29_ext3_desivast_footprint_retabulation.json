@@ -1,0 +1,62 @@
+{
+ "description": "EXT3 B1 closure (thrice-flagged): explicit DESIVAST footprint-mask retabulation. Angular footprint = union of the 101,863 VoidFinder hole-sphere angular discs at NSIDE=64 (inclusive query_disc); radial footprint = comoving span of the hole spheres. Non-void control restricted to this usable angular+radial footprint. Exact (k-unbounded) hole membership; same cosmology and selection as scripts/17 (H0=67.66, Om=0.315, z<=0.24, matched_primary_deduped CW/CCW).",
+ "date_utc": "2026-06-11T09:46:23Z",
+ "nside": 64,
+ "n_lz": 678945,
+ "n_holes": 101863,
+ "footprint_pixels": 5075,
+ "footprint_fsky": 0.1033,
+ "radial_span_mpc_h": [
+  56.2,
+  684.55
+ ],
+ "n_void_exact": 57081,
+ "void_in_footprint": 57081,
+ "nonvoid_total": 621864,
+ "nonvoid_in_footprint": 253276,
+ "nonvoid_outside_footprint": 368588,
+ "void_class": {
+  "n": 57081,
+  "n_cw": 28339,
+  "f_cw": 0.49647,
+  "sigma_from_half": -1.687
+ },
+ "nonvoid_unrestricted": {
+  "n": 621864,
+  "n_cw": 309120,
+  "f_cw": 0.497086,
+  "sigma_from_half": -4.596
+ },
+ "nonvoid_footprint_restricted": {
+  "n": 253276,
+  "n_cw": 126202,
+  "f_cw": 0.498279,
+  "sigma_from_half": -1.733
+ },
+ "nonvoid_outside_footprint_class": {
+  "n": 368588,
+  "n_cw": 182918,
+  "f_cw": 0.496267,
+  "sigma_from_half": -4.533
+ },
+ "contrast_unrestricted": {
+  "delta_f_cw_nonvoid_minus_void": 0.000616,
+  "se": 0.002187,
+  "z": 0.282,
+  "p_two_sided": 0.7782,
+  "ci95": [
+   -0.00367,
+   0.004902
+  ]
+ },
+ "contrast_footprint_restricted": {
+  "delta_f_cw_nonvoid_minus_void": 0.001809,
+  "se": 0.002317,
+  "z": 0.781,
+  "p_two_sided": 0.4349,
+  "ci95": [
+   -0.002732,
+   0.00635
+  ]
+ }
+}
