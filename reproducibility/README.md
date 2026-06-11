@@ -1,8 +1,11 @@
 # Reproducibility Bundle
 
-**Paper:** Geometric Dark Energy from Spin-Torsion Cosmology: Phenomenological Constraints and Correlated Signatures
+**Paper:** Channel-Level Closure of Four Minimal Einstein--Cartan--Holst Dark-Energy Routes and Perturbation Transparency for Scalar Matter (Paper I A)
 **Author:** Houston Golden
-**Version:** v0.9.0 (2026-03-03)
+**Paper version:** v1A.0.56 (2026-06-10)
+**Bundle version:** v1A.0.56-bundle
+
+> **Note (2026-06-10):** This bundle was previously labelled "v0.9.0 / Geometric Dark Energy" while the manuscript moved to title "Channel-Level Closure of Four Minimal ECH Dark-Energy Routes and Perturbation Transparency for Scalar Matter" at v1A.0.56. Labels here now track the current manuscript title and version. The Cobaya YAMLs and Stan galaxy-spin code are unchanged from the v0.9.0 bundle (MCMC chains and convergence are documented in companion Paper I(b)); only the README/citation metadata has been resynced to the current paper.
 
 ## Quick Start
 
@@ -89,11 +92,12 @@ MIT License. See LICENSE file.
 ## Citation
 
 ```bibtex
-@article{Golden2026,
+@article{Golden2026P1A,
   author = {Golden, Houston},
-  title = {Geometric Dark Energy from Spin-Torsion Cosmology:
-           Phenomenological Constraints and Correlated Signatures},
+  title = {Channel-Level Closure of Four Minimal Einstein--Cartan--Holst
+           Dark-Energy Routes and Perturbation Transparency for Scalar Matter},
   year = {2026},
+  note = {Paper I A, v1A.0.56},
   eprint = {XXXX.XXXXX},
   archivePrefix = {arXiv},
   primaryClass = {gr-qc}

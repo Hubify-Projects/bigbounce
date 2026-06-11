@@ -2,8 +2,16 @@ planck_bao_sn Convergence Report (Frozen)
 Freeze timestamp: 20260312_1954
 Total samples: 132949
 Chains: 6
-Burn-in: 20%
-Post-burnin samples: 106361
+Burn-in: 20%  [NOTE: This figure reflects the post-hoc GetDist readout of the
+               parallel chains (burn_in=0.1 in cobaya_config.yaml) averaged
+               with the original chain (burn_in=0.3).  Paper 1B §III applies a
+               uniform 30% burn-in to BOTH frozen chains for the headline
+               post-burnin totals: 132,949 × 0.7 = 93,064 (planck_bao_sn) and
+               176,240 × 0.7 = 123,368 (full_tension), giving 216,432 combined.
+               The 30% figure is conservative and consistent with
+               COUNT_EXPLANATION.md (original chains used burn_in=0.3).
+               See EXT1-P1B closure wave A2 (2026-06-10) for full resolution.]
+Post-burnin samples: 106361  [at 20% burn-in; paper reports 93,064 at 30%]
 
 R-hat values:
   logA: R-hat = 1.00058

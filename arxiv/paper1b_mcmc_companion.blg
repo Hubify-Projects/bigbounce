@@ -189,37 +189,37 @@ Warning--missing journal in Golden2026P4
 Warning--missing number in Cai:2009fn
 You've used 29 entries,
             6079 wiz_defined-function locations,
-            1858 strings with 21448 characters,
-and the built_in function-call counts, 31506 in all, are:
-= -- 2268
+            1857 strings with 21242 characters,
+and the built_in function-call counts, 31458 in all, are:
+= -- 2261
 > -- 768
 < -- 166
 + -- 251
 - -- 196
-* -- 4970
-:= -- 2933
+* -- 4961
+:= -- 2930
 add.period$ -- 27
 call.type$ -- 29
-change.case$ -- 141
+change.case$ -- 140
 chr.to.int$ -- 36
 cite$ -- 34
-duplicate$ -- 2969
-empty$ -- 2232
+duplicate$ -- 2964
+empty$ -- 2230
 format.name$ -- 431
-if$ -- 6334
+if$ -- 6324
 int.to.chr$ -- 4
 int.to.str$ -- 36
-missing$ -- 453
+missing$ -- 452
 newline$ -- 133
 num.names$ -- 81
 pop$ -- 1112
 preamble$ -- 1
 purify$ -- 135
 quote$ -- 0
-skip$ -- 1391
+skip$ -- 1389
 stack$ -- 0
-substring$ -- 658
-swap$ -- 2833
+substring$ -- 656
+swap$ -- 2828
 text.length$ -- 73
 text.prefix$ -- 0
 top$ -- 10
@@ -227,5 +227,5 @@ type$ -- 397
 warning$ -- 6
 while$ -- 86
 width$ -- 0
-write$ -- 312
+write$ -- 311
 (There were 52 error messages)

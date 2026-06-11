@@ -198,6 +198,30 @@
   {105}},\ \bibinfo {pages} {023520} (\bibinfo {year} {2022})},\ \Eprint
   {https://arxiv.org/abs/2105.13549} {arXiv:2105.13549 [astro-ph.CO]}
   \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {{DES Collaboration}}\ \emph
+  {et~al.}(2024)\citenamefont {{DES Collaboration}}, \citenamefont {Abbott}
+  \emph {et~al.}}]{DES2024SN5YR}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibnamefont {{DES Collaboration}}},
+  \bibinfo {author} {\bibfnamefont {T.~M.~C.}\ \bibnamefont {Abbott}}, \emph
+  {et~al.},\ }\bibfield  {title} {\bibinfo {title} {The dark energy survey:
+  Cosmology results with $\sim 1500$ new high-redshift type ia supernovae using
+  the full 5-yr data set},\ }\href {https://doi.org/10.3847/2041-8213/ad6759}
+  {\bibfield  {journal} {\bibinfo  {journal} {Astrophys. J. Lett.}\ }\textbf
+  {\bibinfo {volume} {973}},\ \bibinfo {pages} {L14} (\bibinfo {year}
+  {2024})},\ \Eprint {https://arxiv.org/abs/2401.02929} {arXiv:2401.02929
+  [astro-ph.CO]} \BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Brout}\ \emph {et~al.}(2022)\citenamefont {Brout}
+  \emph {et~al.}}]{Brout2022PantheonPlus}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
+  {Brout}} \emph {et~al.},\ }\bibfield  {title} {\bibinfo {title} {The
+  {Pantheon+} analysis: Cosmological constraints},\ }\href
+  {https://doi.org/10.3847/1538-4357/ac8e04} {\bibfield  {journal} {\bibinfo
+  {journal} {Astrophys. J.}\ }\textbf {\bibinfo {volume} {938}},\ \bibinfo
+  {pages} {110} (\bibinfo {year} {2022})},\ \Eprint
+  {https://arxiv.org/abs/2202.04077} {arXiv:2202.04077 [astro-ph.CO]}
+  \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Liu}\ \emph {et~al.}(2025)\citenamefont {Liu},
   \citenamefont {Li}, \citenamefont {Xu}, \citenamefont {Biesiada},\ and\
   \citenamefont {Wang}}]{ECTorsionDESI2025}%
@@ -225,30 +249,6 @@
   {pages} {083515} (\bibinfo {year} {2025})},\ \Eprint
   {https://arxiv.org/abs/2503.14738} {arXiv:2503.14738 [astro-ph.CO]}
   \BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Brout}\ \emph {et~al.}(2022)\citenamefont {Brout}
-  \emph {et~al.}}]{Brout2022PantheonPlus}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {D.}~\bibnamefont
-  {Brout}} \emph {et~al.},\ }\bibfield  {title} {\bibinfo {title} {The
-  {Pantheon+} analysis: Cosmological constraints},\ }\href
-  {https://doi.org/10.3847/1538-4357/ac8e04} {\bibfield  {journal} {\bibinfo
-  {journal} {Astrophys. J.}\ }\textbf {\bibinfo {volume} {938}},\ \bibinfo
-  {pages} {110} (\bibinfo {year} {2022})},\ \Eprint
-  {https://arxiv.org/abs/2202.04077} {arXiv:2202.04077 [astro-ph.CO]}
-  \BibitemShut {NoStop}%
-\bibitem [{\citenamefont {{DES Collaboration}}\ \emph
-  {et~al.}(2024)\citenamefont {{DES Collaboration}}, \citenamefont {Abbott}
-  \emph {et~al.}}]{DES2024SN5YR}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibnamefont {{DES Collaboration}}},
-  \bibinfo {author} {\bibfnamefont {T.~M.~C.}\ \bibnamefont {Abbott}}, \emph
-  {et~al.},\ }\bibfield  {title} {\bibinfo {title} {The dark energy survey:
-  Cosmology results with $\sim 1500$ new high-redshift type ia supernovae using
-  the full 5-yr data set},\ }\href {https://doi.org/10.3847/2041-8213/ad6759}
-  {\bibfield  {journal} {\bibinfo  {journal} {Astrophys. J. Lett.}\ }\textbf
-  {\bibinfo {volume} {973}},\ \bibinfo {pages} {L14} (\bibinfo {year}
-  {2024})},\ \Eprint {https://arxiv.org/abs/2401.02929} {arXiv:2401.02929
-  [astro-ph.CO]} \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Alonso}\ \emph {et~al.}(2019)\citenamefont {Alonso},
   \citenamefont {Sanchez},\ and\ \citenamefont {Slosar}}]{Alonso2019}%
   \BibitemOpen
@@ -364,10 +364,7 @@
   {title} {\bibinfo {title} {{Quintom Cosmology: Theoretical implications and
   observations}},\ }\href {https://doi.org/10.1016/j.physrep.2010.04.001}
   {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rept.}\ }\textbf {\bibinfo
-  {volume} {493}},\ \bibinfo {pages} {1} (\bibinfo {year} {2010})},\ \bibinfo
-  {note} {canonical quintom-cosmology review (two-field DE with w crossing -1).
-  Used in P1A Sec. VI to point readers to the bounce-class alternative DE
-  mechanism that survives the 14 ECH-specific structural barriers.},\ \Eprint
+  {volume} {493}},\ \bibinfo {pages} {1} (\bibinfo {year} {2010})},\ \Eprint
   {https://arxiv.org/abs/0909.2776} {arXiv:0909.2776 [hep-th]} \BibitemShut
   {NoStop}%
 \bibitem [{\citenamefont {{LiteBIRD Collaboration}}\ \emph
