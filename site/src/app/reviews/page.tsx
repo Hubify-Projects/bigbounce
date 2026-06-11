@@ -1,7 +1,17 @@
 import Link from "next/link";
 import { Suspense } from "react";
 import type { Metadata } from "next";
+import { sortedReviewRounds } from "@/data/reviewTimeline";
 import ReviewsClient from "./ReviewsClient";
+import { ReviewEntry } from "./ReviewEntry";
+import {
+  VerdictTrajectory,
+  VerdictLegend,
+  GapClosureChart,
+  GapPerPaperDeltas,
+  SkillsGrowthChart,
+  ReadinessStrip,
+} from "./ProgressViz";
 import "./reviews.css";
 
 export const metadata: Metadata = {
@@ -11,6 +21,7 @@ export const metadata: Metadata = {
 };
 
 export default function ReviewsPage() {
+  const rounds = sortedReviewRounds();
   return (
     <>
       <p
@@ -69,9 +80,57 @@ export default function ReviewsPage() {
         .
       </p>
 
-      <Suspense fallback={<div className="review-feed" aria-busy="true" />}>
-        <ReviewsClient />
+      {/* ── Progress section (server-rendered) ───────────────────────── */}
+      <details className="progress-panel" open>
+        <summary className="progress-summary">Progress</summary>
+        <div className="progress-body">
+          <ReadinessStrip />
+          <div className="progress-block">
+            <h3 className="progress-block-title">External referee verdicts — convergence toward ACCEPT</h3>
+            <p className="progress-block-sub">
+              Six papers × two browser-tier rounds × three frontier referees (same chat threads,
+              delta-prompts between rounds). 10 of 18 verdicts improved EXT1 → EXT2.
+            </p>
+            <VerdictTrajectory />
+            <VerdictLegend />
+          </div>
+          <div className="progress-charts">
+            <div className="progress-block">
+              <h3 className="progress-block-title">Internal/external gap — findings only the external tier caught</h3>
+              <p className="progress-block-sub">
+                Substantive externally-caught findings that survived every internal round. The loop
+                exits at zero.
+              </p>
+              <GapClosureChart />
+              <GapPerPaperDeltas />
+            </div>
+            <div className="progress-block">
+              <h3 className="progress-block-title">Skills stack — the review machinery self-improving</h3>
+              <p className="progress-block-sub">
+                Every external miss is mined into the pattern catalog and the reviewer prompts, then
+                validated against the pre-closure snapshot before it counts.
+              </p>
+              <SkillsGrowthChart />
+            </div>
+          </div>
+        </div>
+      </details>
+
+      {/* ── Filters: client overlay over the server-rendered feed ──────── */}
+      <Suspense fallback={<div className="review-filters" aria-busy="true" />}>
+        <ReviewsClient totalRounds={rounds.length} />
       </Suspense>
+
+      {/* ── Feed: SERVER-rendered — full round content in the static HTML.
+            ReviewsClient only toggles visibility via data-papers/data-kind. ── */}
+      <div className="review-feed" id="review-feed">
+        {rounds.map((r) => (
+          <ReviewEntry key={r.id} round={r} />
+        ))}
+        <p className="review-feed-empty" data-feed-empty hidden>
+          No rounds match the current filters.
+        </p>
+      </div>
     </>
   );
 }
