@@ -1,11 +1,11 @@
 [
  {
   "paperSlug": "paper-3",
-  "version": "v3.1.94",
+  "version": "v3.1.95",
   "datestamp": "2026-06-11",
-  "texCommit": "5e7a9a85",
+  "texCommit": "0868159c",
   "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p3_anomaly_engine/paper3_draft.pdf",
-  "sitePdfPath": "/papers/paper3_anomaly_catalog_v3.1.94.pdf",
-  "changelog": "R32conf closure wave: recount-at-a-glance table (3-vendor convergent ask), S_BigAE column stripped, singular retitle, SMBHB abstract tightened; recount sweep PASS x5 sites, zero arithmetic errors."
+  "sitePdfPath": "/papers/paper3_anomaly_catalog_v3.1.95.pdf",
+  "changelog": "R33conf confirmation CLEAN-after-audit: zero closure-introduced regressions, 2nd consecutive zero-arithmetic round; abstract envelope clause + auditable numeric Fisher mapping; P3 EXT4-eligible."
  }
 ]
