@@ -23,6 +23,19 @@ PDFs downloaded from the live site and md5-cross-verified against local mirrors 
 - One focus-race during the Gemini P3 native dialog: Houston was typing on the machine, keystrokes landed in the terminal twice. Mitigation now encoded: frontmost-app guard in the osascript (`ABORT` if Chrome for Testing is not frontmost) + Escape-first to clear stray Go-To overlays + ask Houston for a quiet window before the Gemini phase.
 - First ChatGPT upload after a fresh `goto` fails silently while the page hydrates — retry after 10–12s succeeds (2 occurrences; now always wait ≥12s post-goto before uploading).
 
-## Harvest
+## Harvest — COMPLETE (15:50–16:05 PT; reports at `EXT4_<paper>_<Provider>.md`)
 
-Wait ≥30 min from 15:14 PT (Pro Extended + Heavy are slow). Harvest each chat → `EXT4_<paper>_<Provider>.md` → truth-audit → closures → gap metric vs EXT3 (27).
+## Verdicts (EXT3 → EXT4)
+
+| Paper | ChatGPT Pro Ext | Grok Heavy | Gemini Thinking |
+|---|---|---|---|
+| P1A | MAJOR → MAJOR ("moved toward publishability") | ACCEPT → **ACCEPT** | MAJOR → **MINOR** |
+| P1B | MAJOR → MAJOR ("moved toward") | ACCEPT → **ACCEPT** | ACCEPT → MINOR |
+| P2 | MAJOR → MAJOR ("moved toward; stale figures essentially fixed") | ACCEPT → **ACCEPT** | MAJOR → **MINOR** |
+| P3 | MAJOR → MAJOR ("moved toward; recount must propagate downstream") | ACCEPT → **ACCEPT** | MAJOR → MAJOR |
+| P4 | MAJOR → MAJOR ("scientifically close; QC-artifact consistency flagged") | ACCEPT → **ACCEPT** | MINOR → MINOR |
+| P5 | MAJOR → MAJOR ("moved toward") | ACCEPT → **ACCEPT** | MAJOR → MAJOR |
+
+**Grok: SECOND consecutive clean external round, 6/6 ACCEPT.** Gemini posts zero... 4 MINOR + 2 MAJOR (its EXT2/EXT3 MAJORs were dominantly falsified stale-reads/extraction artifacts — truth-audit decides). ChatGPT holds MAJOR ×6 with every report stating movement toward publishability; headline new claims for the audit: P1A re-added Fig. 3 vs text + Route 2 dimensional clause; P2 null-space propagation + App A summary prose; P3 recount downstream-propagation sweep; P4 flip-identity QC narrative vs committed artifact. Harvest hiccup logged: one cross-chat scrape contamination (P3 file briefly captured the P2 page after a silent goto failure) — caught by content check, re-harvested with URL verification; rule: verify `location` matches the target chat BEFORE scraping.
+
+Truth-audit next: `EXT4_P*_TRUTH_AUDIT.md` → closures → gap metric vs EXT3 (27).
