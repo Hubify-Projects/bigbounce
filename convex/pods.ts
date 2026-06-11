@@ -62,3 +62,28 @@ export const upsert = mutation({
     return await ctx.db.insert("pods", payload);
   },
 });
+
+/**
+ * One-time repair: rewrite the bigbounce-c123-namaster pod startedAt from
+ * 2026-06-12T18:46:40 UTC (1781290000000 ms — a 44h double-timezone skew)
+ * to the correct 2026-06-10T18:46 PT epoch (= 2026-06-11T01:46:40 UTC,
+ * 1781142400000 ms).
+ * Safe to run multiple times — row already at correct value is untouched.
+ * Call via: npx convex run pods:patchNamasterTimestamp
+ */
+export const patchNamasterTimestamp = mutation({
+  args: {},
+  handler: async (ctx) => {
+    const BAD_EPOCH_MS = 1781290000000;
+    const CORRECT_EPOCH_MS = 1781142400000; // 2026-06-10 18:46 PDT = 2026-06-11 01:46:40 UTC
+    const pod = await ctx.db
+      .query("pods")
+      .withIndex("by_pod_id", (q) => q.eq("podId", "5i2td3deu3hojr"))
+      .unique();
+    if (!pod) return { status: "not-found" };
+    if (pod.startedAt === CORRECT_EPOCH_MS) return { status: "already-correct" };
+    if (pod.startedAt !== BAD_EPOCH_MS) return { status: "unexpected-value", startedAt: pod.startedAt };
+    await ctx.db.patch(pod._id, { startedAt: CORRECT_EPOCH_MS });
+    return { status: "patched", from: BAD_EPOCH_MS, to: CORRECT_EPOCH_MS };
+  },
+});

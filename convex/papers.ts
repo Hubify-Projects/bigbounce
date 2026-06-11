@@ -46,6 +46,7 @@ export const upsert = mutation({
     focusAreas: v.array(v.string()),
     houstonSignOff: v.optional(v.string()),
     houstonSignOffNote: v.optional(v.string()),
+    readinessCap: v.optional(v.number()),
   },
   handler: async (ctx, args) => {
     const existing = await ctx.db
@@ -100,6 +101,28 @@ export const setNovelty = mutation({
       .unique();
     if (!paper) throw new Error(`paper not found: ${args.slug}`);
     await ctx.db.patch(paper._id, { novelty: args.novelty });
+  },
+});
+
+// Pin (or clear) a readiness cap overriding the penalty formula.
+// Pass null to remove an existing cap and let the formula take over.
+export const setReadinessCap = mutation({
+  args: {
+    slug: v.string(),
+    cap: v.union(v.number(), v.null()),
+  },
+  handler: async (ctx, args) => {
+    const paper = await ctx.db
+      .query("papers")
+      .withIndex("by_slug", (q) => q.eq("slug", args.slug))
+      .unique();
+    if (!paper) throw new Error(`paper not found: ${args.slug}`);
+    if (args.cap === null) {
+      // Remove the cap field entirely
+      await ctx.db.patch(paper._id, { readinessCap: undefined });
+    } else {
+      await ctx.db.patch(paper._id, { readinessCap: args.cap });
+    }
   },
 });
 
@@ -183,6 +206,8 @@ export const getPaperState = query({
     const lastRRound = rRounds[0] ?? null;
 
     // Computed readiness — the source of truth that the site reads.
+    // Formula: 95 - penalties, capped at an optional manual override (readinessCap).
+    // Houston sign-off overrides everything → 100.
     let readinessComputed: number;
     if (paper.houstonSignOff) {
       readinessComputed = 100;
@@ -192,7 +217,13 @@ export const getPaperState = query({
         1 * openMajors +
         0.2 * openMinors +
         1 * openCaveats;
-      readinessComputed = Math.max(0, Math.min(95, 95 - penalty));
+      const formulaValue = Math.max(0, Math.min(95, 95 - penalty));
+      // readinessCap lets agents/Houston pin a ceiling lower than the formula
+      // (e.g. 94 after a review round with known-but-unentered issues).
+      readinessComputed =
+        paper.readinessCap !== undefined && paper.readinessCap !== null
+          ? Math.min(formulaValue, paper.readinessCap)
+          : formulaValue;
     }
 
     // Last-updated date is max of (current version datestamp, latest closed finding date)
@@ -280,7 +311,11 @@ export const listAllPaperStates = query({
       } else {
         const penalty =
           2 * openBlockers + 1 * openMajors + 0.2 * openMinors + 1 * openCaveats;
-        readinessComputed = Math.max(0, Math.min(95, 95 - penalty));
+        const formulaValue = Math.max(0, Math.min(95, 95 - penalty));
+        readinessComputed =
+          paper.readinessCap !== undefined && paper.readinessCap !== null
+            ? Math.min(formulaValue, paper.readinessCap)
+            : formulaValue;
       }
 
       results.push({

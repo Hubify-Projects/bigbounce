@@ -174,6 +174,12 @@ export default defineSchema({
       v.literal("N2"),
       v.literal("N3")
     )),
+    // Optional hard cap that overrides the formula-computed readiness.
+    // Used to pin a paper at e.g. 94 after a review cycle finds issues
+    // that haven't been entered as individual findings yet. When null/absent
+    // the formula (95 - penalties) is the sole source. Houston sets this;
+    // agents should not auto-clear it.
+    readinessCap: v.optional(v.number()),
   })
     .index("by_slug", ["slug"])
     .index("by_status", ["status"]),
