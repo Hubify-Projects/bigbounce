@@ -1,56 +1,56 @@
 [
-  {
-    "paperSlug": "paper-1a",
-    "version": "v1A.0.58",
-    "datestamp": "2026-06-11",
-    "texCommit": "3cedf9a3",
-    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1a_ech_nogo.pdf",
-    "sitePdfPath": "/papers/paper1a_ech_nogo_v1A.0.58.pdf",
-    "changelog": "R29 post-EXT1 internal-round closure wave: N_tot erasure criterion restated as the N_tot-N_exit differential; Cartan footnote rewritten as honest on-shell substitution (Hehl/FMT cited); Eq.(1) Hehl-Datta shorthand + Holst convention footnote; repro-bundle desync resynced to v1A.0.58-bundle; readiness 93 -> 94; R30conf pending, then EXT2."
-  },
-  {
-    "paperSlug": "paper-1b",
-    "version": "v1B.0.56",
-    "datestamp": "2026-06-11",
-    "texCommit": "6eac1a51",
-    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1b_mcmc_companion.pdf",
-    "sitePdfPath": "/papers/paper1b_mcmc_companion_v1B.0.56.pdf",
-    "changelog": "R29 closure wave: frozen parameter_summary.json export bug ROOT-CAUSED from chains as a uniform off-by-one column permutation (not unit conversion); units-README rewritten with column map + verification command; DeltaNeff renormalised 95th-percentile definition; S8 overlap grid stated; CMB-S4 cited; beta-chain overfull fixed; readiness 94; R30conf pending, then EXT2."
-  },
-  {
-    "paperSlug": "paper-2",
-    "version": "v1.7.50",
-    "datestamp": "2026-06-11",
-    "texCommit": "9cde80c1",
-    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/research/focused_paper_source_integration/02_full_draft.pdf",
-    "sitePdfPath": "/papers/paper2_fnl_forecast_v1.7.50.pdf",
-    "changelog": "R29 closure wave: title recast 'A SPHEREx Sensitivity Recast with a MegaMapper Outlook'; structured 5-paragraph abstract; sec:spherex OOM bound rewritten dimensionless (closure-introduced regression found+fixed); headline BF rebooked ~9-14 under noise-weighted r~0.84 bounce-amplitude bookkeeping (r->1 endpoint 10-17 in Table); readiness 95 -> 94; R30conf pending, then EXT2."
-  },
-  {
-    "paperSlug": "paper-3",
-    "version": "v3.1.89",
-    "datestamp": "2026-06-11",
-    "texCommit": "cde57b65",
-    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p3_anomaly_engine/paper3_draft.pdf",
-    "sitePdfPath": "/papers/paper3_anomaly_catalog_v3.1.89.pdf",
-    "changelog": "R29 closure wave: half-applied EXT1 eROSITA de-scope completed (abstract membership-only n=298 + Table II rate-disclosure footnote); DATA_RELEASE_MANIFEST byte-identical _no_act/_with-ACT pair documented; FoF chain audit; SIMBAD false-match probability; bib venue refreshes; readiness 94; R30conf pending, then EXT2."
-  },
-  {
-    "paperSlug": "paper-4",
-    "version": "v1.0.173",
-    "datestamp": "2026-06-11",
-    "texCommit": "5565cf72",
-    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p2_chirality/chirality_catalog_paper.pdf",
-    "sitePdfPath": "/papers/chirality_catalog_paper_v1.0.173.pdf",
-    "changelog": "R29 closure wave: NSIDE block-scale sensitivity COMPUTED (block-bootstrap NSIDE {4,8,16}, z = -16.9/-18.4/-19.4, |z|>=17 stable; artifact committed); missing non-spiral Fig.1 gallery panel restored (3-panel design); null-run-size reconciliation; Data Availability hash pinned to stamp commit 297aa805 (pin commit 5565cf72); readiness 95; R30conf pending, then EXT2."
-  },
-  {
-    "paperSlug": "paper-5",
-    "version": "v0.1.62-2026-06-10",
-    "datestamp": "2026-06-11",
-    "texCommit": "fedad007",
-    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf",
-    "sitePdfPath": "/papers/p5_desi_chirality_v0.1.62.pdf",
-    "changelog": "R29 closure wave: M1-vs-M0 Wald-shift bound corrected <=0.01 -> <=0.12 SE with per-class values + artifact; V-Web vs DESIVAST void-volume denominators disambiguated; NSIDE 32/16 occupied-pixel reconciliation; causal language softened; readiness 95; R30conf pending, then EXT2."
-  }
+ {
+  "paperSlug": "paper-1a",
+  "version": "v1A.0.59",
+  "datestamp": "2026-06-10",
+  "texCommit": "ced5f4db",
+  "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1a_ech_nogo.pdf",
+  "sitePdfPath": "/papers/paper1a_ech_nogo_v1A.0.59.pdf",
+  "changelog": "EXT2 closure wave: confabulated Ref[22] replaced with verified Shapiro-Teixeira CQG 31 185002; R29 pair-exchange sign-error chain deleted (vanishing rests on first Bianchi); App C WKB ratio corrected 60->30 orders with explicit arithmetic; reproducibility README values resynced to frozen-chain results; overclaim sweep (amplitude-closure scoping, ECH-independent class tests); readiness 94 -> 95; EXT3 pending."
+ },
+ {
+  "paperSlug": "paper-1b",
+  "version": "v1B.0.57",
+  "datestamp": "2026-06-10",
+  "texCommit": "63931207",
+  "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1b_mcmc_companion.pdf",
+  "sitePdfPath": "/papers/paper1b_mcmc_companion_v1B.0.57.pdf",
+  "changelog": "EXT2 closure wave: post-burn total chain-confirmed 176,840 -> 176,240; planck_bao_sn CORRECTED diagnostics + units README created; root CHANGELOG.md created and referenced; Vincenzi 2025 mis-citation fixed; natural-parameters language scoped at all 3 sites; PR3/PR4 attribution corrected; EXT3 pending."
+ },
+ {
+  "paperSlug": "paper-2",
+  "version": "v1.7.51",
+  "datestamp": "2026-06-10",
+  "texCommit": "7162915b",
+  "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/research/focused_paper_source_integration/02_full_draft.pdf",
+  "sitePdfPath": "/papers/paper2_fnl_forecast_v1.7.51.pdf",
+  "changelog": "EXT2 closure wave: headline range honestly rebooked 3-5\u03c3 -> 2.6-5\u03c3 with explicit floor arithmetic; App A c-convention contradiction resolved (Li -35/16 = single-ordering intermediate); Hankel divergence claim corrected; SY non-sequitur replaced; Eq.(7) labeled heuristic; EXT3 pending."
+ },
+ {
+  "paperSlug": "paper-3",
+  "version": "v3.1.90",
+  "datestamp": "2026-06-10",
+  "texCommit": "8fb578d9",
+  "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p3_anomaly_engine/paper3_draft.pdf",
+  "sitePdfPath": "/papers/paper3_anomaly_catalog_v3.1.90.pdf",
+  "changelog": "EXT2 closure wave: 203-novel demoted to SIMBAD-unmatched membership-list sources at all sites; foreground claim scoped to surveyed footprints; Table IV caption honest; NANOGrav appendix cite fixed; fixed-alpha grid labeled reference-only; EXT3 pending."
+ },
+ {
+  "paperSlug": "paper-4",
+  "version": "v1.0.174",
+  "datestamp": "2026-06-10",
+  "texCommit": "81c67790",
+  "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p2_chirality/chirality_catalog_paper.pdf",
+  "sitePdfPath": "/papers/chirality_catalog_paper_v174.pdf",
+  "changelog": "EXT2 closure wave: full-catalog dipole mislabel fixed to HC sample (p_eq>0.6, N=949,584) at both sites; falsification boundary aligned to A>=A95 in (1.0%,1.5%]; EXT3 pending."
+ },
+ {
+  "paperSlug": "paper-5",
+  "version": "v0.1.63-2026-06-10",
+  "datestamp": "2026-06-10",
+  "texCommit": "303ee6f5",
+  "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf",
+  "sitePdfPath": "/papers/p5_desi_chirality_v0.1.63.pdf",
+  "changelog": "EXT2 closure wave: dual-parent sample ledger disambiguated (DESIVAST 678,945 vs V-Web 812,793); conditional-permutation framing corrected; ASTRA robustness claim scoped to diagnostic consistency; EXT3 pending."
+ }
 ]
