@@ -52,7 +52,7 @@ export const liveStatus: LiveStatus = {
   headline:
     "EXT2 external cycle complete — closure wave restamped all six; gap metric 60 → ~32 vs EXT1 baseline; EXT3 pending.",
   summary:
-    "EXT2 closure wave restamped all six — P1A v1A.0.59 · P1B v1B.0.57 · P2 v1.7.51 · P3 v3.1.90 · P4 v1.0.174 · P5 v0.1.63. P1A 95 (Ref[22]→Shapiro-Teixeira, sign-error chain deleted), P1B 94 (176,240 chain-confirmed), P2 94 (headline 2.6-5σ honest rebooking), P3 95, P4 95, P5 95. EXT3 pending.",
+    "EXT2 closure wave restamped all six papers same-day; readiness 95/94/94/95/95/95 (P1A/P1B/P2/P3/P4/P5); EXT3 pending. Per-paper versions live in the table below; changelog detail lives in SSOT/git.",
   currentlyRunning: [
     "Hourly native-PDF cross-vendor review autoloop on all 6 papers (Claude · GPT · Gemini · Grok · Perplexity + meta-reviewer)",
     "Persistence tracker fingerprinting findings across fires; load-bearing items escalate to Houston decision package",
@@ -60,22 +60,10 @@ export const liveStatus: LiveStatus = {
   ],
   needsHouston: [
     {
-      title: "Anthropic API credits exhausted (reviewer leg down)",
+      title: "Personal sign-off — all six papers at the post-EXT2 gate",
       blockedPaper: "all",
-      why: "The Claude API reviewer leg is still down on billing 400s; R23conf–R26conf ran their Claude legs in-session on subscription as a workaround, but the autoloop needs API credits for R27conf.",
-      ask: "Top up API credits at console.anthropic.com → Plans & Billing, then say 'credits topped up' so full 5-vendor rounds restart.",
-    },
-    {
-      title: "External review round on current versions",
-      blockedPaper: "all",
-      why: "The agent-side review loop has run; the orthogonal external pass is Houston's per his 2026-06-08 plan.",
-      ask: "Run your external round on the current PDFs and send back findings for truth-audit.",
-    },
-    {
-      title: "Personal sign-off — P4 + P2 + P1B are SIGN-OFF-READY now",
-      blockedPaper: "P4, P2, P1B",
-      why: "P4 completed its 2-of-2 post-retraction clean rounds, P2 came back R25conf-clean, and P1B came back R26conf-clean (third paper at the gate) — only Houston's read stands between them and arXiv.",
-      ask: "Read P4 + P2 + P1B end-to-end and reply 'sign off P4'/'sign off P2'/'sign off P1B' or send blocking findings; P1A/P3/P5 follow after R27conf.",
+      why: "EXT1 + EXT2 browser-tier external rounds ran 2026-06-10 and every VERIFIED finding is closed; readiness sits at 94-95% and the final 1% is Houston-only.",
+      ask: "Read the current PDFs end-to-end and reply 'sign off PX' per paper, or send blocking findings for truth-audit (recommended order P4 → P1A+P1B → P3 → P2 → P5).",
     },
     {
       title: "arXiv endorsement + submission credentials",
