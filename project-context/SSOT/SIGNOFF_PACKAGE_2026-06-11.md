@@ -13,7 +13,7 @@
 - **Zero substantive physics blockers remain** — every EXT3 truth-audit's exit-criterion assessment states no new physics/math/statistics blocker on any paper; no headline number, null, Fisher form, or NANOGrav statistic was challenged. ChatGPT's residual MAJORs are wording/figure/policy class (§4); Gemini's EXT3 MAJORs are falsified stale-reads/extraction artifacts on every paper it regressed.
 - **EXT3 closure waves already landed** (commits 5fdddaba/f5617bce/79eecc0d/73b532dc/53b41d12+7e473380/4f20efcc; final mirror bundle c38e2a87). All six compile clean, latex-audit PASS, artifact_crosscheck PASS.
 
-**Current versions (EXT3-closed, mirrored, tarballed):** P1A **v1A.0.61** · P1B **v1B.0.58** · P2 **v1.7.53** · P3 **v3.1.92** · P4 **v1.0.175** · P5 **v0.1.65-2026-06-11**.
+**Current versions (EXT3-closed, mirrored, tarballed):** P1A **v1A.0.61** · P1B **v1B.0.58** · P2 **v1.7.53** · P3 **v3.1.93** · P4 **v1.0.175** · P5 **v0.1.65-2026-06-11**.
 
 **Readiness per SSOT** (queue.md header, 2026-06-11): P1A 95 · P1B 94 · P2 94 · P3 95 · P4 95 · P5 95 — held at the 95-cap per `feedback_99_pct_readiness_cap`/`feedback_readiness_oscillation`. Index.md exit-criterion note: *"All six papers at exit-criterion modulo Houston sign-off + Zenodo batch + P3 TARGETTYPE recount."*
 
@@ -82,7 +82,7 @@ Queued compute: none.
 
 **[ ] Houston approves P2 v1.7.53 for arXiv**
 
-### P3 — Multi-survey anomaly catalog (pipelines/p3_anomaly_engine/paper3_draft.tex, v3.1.92)
+### P3 — Multi-survey anomaly catalog (pipelines/p3_anomaly_engine/paper3_draft.tex, v3.1.93)
 
 | Provider | EXT1 | EXT2 | EXT3 |
 |---|---|---|---|
@@ -98,9 +98,9 @@ OPEN HOUSTON-DECISIONS (EXT3 audit Houston queue):
 3. Ruled-and-standing (no action): Gaia in catalog-grade (HD-8 keep), NANOGrav placement (HD-9 keep), correction-note retention (HD-6 keep), DOI timing (HD-11 submission day).
 4. EXT1 ledger carry: LAMOST_DR10 + eROSITA_DR1 citation spot-checks still open for you (or a Perplexity live-fetch leg).
 
-Queued compute (COMPUTE_QUEUE.md §1–2): **DESI TARGETTYPE-restricted recount** (thrice-flagged EXT1/EXT2/EXT3, DO-NOW, ~1 hr — the single largest substantive residual; index.md names it in the exit-criterion line) + FM1 scaler-refit robustness check (pod-side tables; paper states the assumption explicitly with this test queued).
+~~Queued compute~~ **RECOUNT LANDED 2026-06-11 (v3.1.93)**: the thrice-flagged DESI TARGETTYPE-restricted recount is computed and disclosed at 5 tex sites — **2,468 science-class matches (1.3% of clusters) → restricted catalog ≈0.9× Liang 2023, NOT 73×; ~98.7% of DESI anomaly clusters on sky/secondary/filler spectra** (artifact `ext3_b2_targettype_recount.json`; control match 99.8%). Remaining queued compute: FM1 scaler-refit robustness check only (pod-side tables; paper states the assumption explicitly with this test queued).
 
-**[ ] Houston approves P3 v3.1.92 for arXiv** (recommend: after TARGETTYPE recount lands)
+**[ ] Houston approves P3 v3.1.93 for arXiv** (the recount gate you set is now closed)
 
 ### P4 — Galaxy chirality catalog (pipelines/p2_chirality/chirality_catalog_paper.tex, v1.0.175, 22 pp)
 
@@ -154,7 +154,7 @@ Queued compute (COMPUTE_QUEUE.md §5): Fig 3 baked-title regen — blocked solel
 | 1 | P4 | `pipelines/p2_chirality/paper4_arxiv_v1.0.175.tar.gz` | Mint Zenodo DOI; re-point `\artifact` blob/main → pinned commit/DOI (open decision §2-P4); HF model tag v2026.04 (COMPUTE_QUEUE §4); recompile+verify |
 | 2 | P1A | `arxiv/paper1a_arxiv_v1A.0.61.tar.gz` | Insert P4 arXiv ID at companion anchors; preprint marker `arxiv/paper1a_ech_nogo.tex` L410; mint bundle tag w/ Zenodo batch |
 | 3 | P1B | `arxiv/paper1b_arxiv_v1B.0.58.tar.gz` | Insert P1A arXiv ID; App A HF "pending DOI assignment" → minted DOIs; marker `arxiv/paper1b_mcmc_companion.tex` L750; if SN-overlap chains converged, fold (w₀,wₐ) shifts into §III/Table II first |
-| 4 | P3 | `pipelines/p3_anomaly_engine/paper3_arxiv_v3.1.92.tar.gz` | Land TARGETTYPE recount first (COMPUTE_QUEUE §1, DO-NOW); **flip HF dataset `bamfai/bigbounce-anomaly-catalog` STAGED → public on arXiv posting** + insert Zenodo DOI in DATA_RELEASE_MANIFEST.md header + tex; marker `paper3_draft.tex` L44 |
+| 4 | P3 | `pipelines/p3_anomaly_engine/paper3_arxiv_v3.1.93.tar.gz` | TARGETTYPE recount ✅ LANDED (v3.1.93); **flip HF dataset `bamfai/bigbounce-anomaly-catalog` STAGED → public on arXiv posting** + insert Zenodo DOI in DATA_RELEASE_MANIFEST.md header + tex; marker `paper3_draft.tex` L44 |
 | 5 | P2 | `research/focused_paper_source_integration/paper2_arxiv_v1.7.53.tar.gz` | ZENODO_RELEASE_CHECKLIST.md steps 1–6 (tag paper2-v1.7.53); replace "DOI inserted at submission"; marker `02_full_draft.tex` L17; optional in-thread ChatGPT figure delta-confirm |
 | 6 | P5 | `pipelines/p5_desi_chirality/paper/paper5_arxiv_v0.1.65.tar.gz` | NM1 title ruling → Fig 3 regen (COMPUTE_QUEUE §5) → restamp; insert P4 arXiv ID; mint DOI |
 

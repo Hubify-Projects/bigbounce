@@ -43,6 +43,25 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "EXT3-B2-RECOUNT",
+    kind: "closure-wave",
+    dateISO: "2026-06-11",
+    title: "P3 v3.1.93 — thrice-flagged TARGETTYPE recount computed: restricted catalog is ≈0.9× the benchmark, not 73×",
+    papers: ["P3"],
+    summary: "The recount external reviewers flagged in all three rounds is now computed and stated plainly at five tex sites: only 2,468 of 190,015 DESI anomaly clusters (1.3%) sit on main-survey science-class spectra, so restricted to validated science targets the catalog is ≈0.9× the Liang 2023 benchmark — and ~98.7% of DESI anomalies fall on sky-fiber/secondary/filler spectra, reported as a finding in its own right.",
+    keyTakeaways: [
+      "Positional rejoin of the 190,015 deduplicated DESI clusters vs the DR1 zall-pix catalog (28.4M rows): 2,468 science-class matches at 1″ (SPECTYPE 2,371 GALAXY / 95 QSO / 2 STAR; 3,390 at 5″)",
+      "Control match vs the full redshift catalog recovers 99.8% of clusters at 1″ — the join is sound; the 98.7% non-science-target fraction is real, not a matching artifact",
+      "Abstract, §IV.A, discussion, and conclusions now state the ≈0.9× restricted multiple alongside the 73× full-stream figure; the Liang rate-consistency claim is reframed as a cross-population coincidence",
+      "Honesty rule applied: the recount collapses the DESI-only headline multiple and the paper says so plainly — the full-scan figures remain as the disclosed superset statement",
+    ],
+    links: [
+      { label: "Recount artifact", href: `${GH}/pipelines/p3_anomaly_engine/ext3_b2_targettype_recount.json` },
+      { label: "P3 truth-audit (EXT3)", href: `${PR}/EXT3_P3_TRUTH_AUDIT.md` },
+      { label: "Compute queue", href: `${GH}/project-context/COMPUTE_QUEUE.md` },
+    ],
+  },
+  {
     id: "EXT3-CLOSURES",
     kind: "closure-wave",
     dateISO: "2026-06-11",
