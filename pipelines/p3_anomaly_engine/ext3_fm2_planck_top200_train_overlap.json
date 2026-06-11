@@ -1,0 +1,11 @@
+{
+ "description": "EXT3 FM2 closure: overlap of released Planck native top-200 patches with the deterministic train/val split of cmb_native_retrain.py (random_split, torch.Generator().manual_seed(42), N=200000, VAL_FRAC=0.15). Recomputed locally from hf_staging/cmb_native_anomalies.parquet.",
+ "n_bank": 200000,
+ "n_train": 170000,
+ "n_val": 30000,
+ "seed": 42,
+ "val_frac": 0.15,
+ "top200_in_train": 152,
+ "top200_in_val": 48,
+ "expected_in_train_if_random": 170.0
+}

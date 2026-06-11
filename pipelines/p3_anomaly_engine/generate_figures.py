@@ -441,7 +441,11 @@ def fig2_skymap():
                        marker=marker, alpha=alpha, zorder=3, linewidths=0.3)
         handles.append(mpatches.Patch(color=SURVEY_COLORS[survey], label=survey))
 
-    ax.set_title('Spatial distribution of all 319,443 anomalies across 8 archives',
+    # EXT3 Cm3 closure: title carries the cross-transfer-baseline qualifier
+    # (319,443 is the superseded baseline incl. quarantined ACT, not the
+    # canonical Path-C catalog; see fig:skymap caption).
+    ax.set_title('Cross-transfer baseline: 319,443 detections across 8 archives\n'
+                 '(superseded by the Path-C native catalog)',
                  fontsize=9, pad=8)
     ax.grid(True, linewidth=0.3, alpha=0.4, color='0.6')
     ax.set_xlabel('Right Ascension', fontsize=8)
