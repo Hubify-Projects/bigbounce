@@ -8,8 +8,8 @@ export const metadata: Metadata = {
     "Time-stamped activity feed for the BigBounce research program — version bumps, R-rounds, finding closures, and pod lifecycle events from the Convex live source-of-truth.",
 };
 
-function relativeTime(ms: number): string {
-  const diff = Date.now() - ms;
+function relativeTime(ms: number, now: number): string {
+  const diff = now - ms;
   const min = Math.floor(diff / 60000);
   if (min < 1) return "just now";
   if (min < 60) return `${min} min ago`;
@@ -21,8 +21,32 @@ function relativeTime(ms: number): string {
   return `${mo}mo ago`;
 }
 
-function isoLine(ms: number): string {
-  return new Date(ms).toISOString().replace("T", " ").slice(0, 16) + " UTC";
+/* Render in PT (matching the home-page header), not UTC. Some event writers
+   stored PDT-naive datetimes as UTC (+7h) and one pod writer ran ~36h fast,
+   so raw stamps used to render up to 2 days in the future. */
+const ptFormat = new Intl.DateTimeFormat("en-CA", {
+  timeZone: "America/Los_Angeles",
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit",
+  hour: "2-digit",
+  minute: "2-digit",
+  hour12: false,
+});
+
+function ptLine(ms: number): string {
+  return ptFormat.format(new Date(ms)).replace(",", "") + " PT";
+}
+
+/* Defensive clamp: a research log can never contain future events. If a
+   Convex row carries a timestamp ahead of render time (bad writer clock /
+   PDT-naive double conversion), display it clamped to render time and keep
+   the raw stored stamp in the tooltip for forensics. */
+function clampTimestamp(
+  ms: number,
+  now: number,
+): { ms: number; skewed: boolean } {
+  return ms > now + 60_000 ? { ms: now, skewed: true } : { ms, skewed: false };
 }
 
 function kindLabel(kind: string): string {
@@ -42,6 +66,7 @@ function kindLabel(kind: string): string {
 export default async function ActivityPage() {
   const { events, summary, source } = await getRecentActivity(300);
   const live = source === "convex";
+  const renderedAt = Date.now();
 
   return (
     <>
@@ -159,7 +184,12 @@ export default async function ActivityPage() {
             the bigbounce-mcp tools to populate this.
           </p>
         )}
-        {events.map((e: ActivityEvent) => (
+        {events.map((e: ActivityEvent) => {
+          const { ms: displayTs, skewed } = clampTimestamp(
+            e.timestamp,
+            renderedAt,
+          );
+          return (
           <article
             key={e.id}
             style={{
@@ -208,9 +238,21 @@ export default async function ActivityPage() {
                   color: "var(--text-muted)",
                   marginLeft: "auto",
                 }}
-                title={isoLine(e.timestamp)}
+                title={
+                  skewed
+                    ? `stored stamp ${ptLine(e.timestamp)} is in the future (writer clock skew) — clamped to feed-render time`
+                    : ptLine(e.timestamp)
+                }
               >
-                {isoLine(e.timestamp)} · {relativeTime(e.timestamp)}
+                {ptLine(displayTs)} · {relativeTime(displayTs, renderedAt)}
+                {skewed && (
+                  <span
+                    style={{ color: "var(--warn, #d97706)", marginLeft: 6 }}
+                    aria-label="timestamp clamped due to writer clock skew"
+                  >
+                    ⚠ clock-skew
+                  </span>
+                )}
               </span>
             </div>
             <div style={{ fontSize: "0.88rem", marginBottom: 4 }}>
@@ -228,7 +270,8 @@ export default async function ActivityPage() {
               </div>
             )}
           </article>
-        ))}
+          );
+        })}
       </section>
 
       <p
