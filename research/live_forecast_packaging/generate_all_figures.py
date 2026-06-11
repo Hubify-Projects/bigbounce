@@ -152,8 +152,8 @@ def fig4_decision_thresholds():
     # Colored regions
     ax.axvspan(-8, -3, alpha=0.3, color='green', label='STRONGLY FAVORS BOUNCE')
     ax.axvspan(-3, -1, alpha=0.3, color='lightgreen', label='SUPPORTS BOUNCE')
-    ax.axvspan(-1, 1, alpha=0.3, color='red', label='KILLS LIVE LANE')
-    ax.axvspan(1, 5, alpha=0.3, color='salmon', label='KILLS BOUNCE (supports exotic inflation)')
+    ax.axvspan(-1, 1, alpha=0.3, color='red', label='BOUNCE EXCLUDED')
+    ax.axvspan(1, 5, alpha=0.3, color='salmon', label='WRONG SIGN (supports exotic multifield inflation)')
 
     # The prediction
     ax.axvline(-4.375, color='blue', lw=3, label='Matter-bounce prediction: $-35/8$')
