@@ -6,6 +6,7 @@ import { Badge } from"@/components/ui/badge";
 import { Button } from"@/components/ui/button";
 import { LiveStatus } from"@/components/Shell/LiveStatus";
 import { LivePapersDashboard } from"@/components/Cards/LivePapersDashboard";
+import { SurveyQcTable } from"@/components/Cards/SurveyQcTable";
 import { PublicationPathCompact } from"@/components/PublicationPath";
 import { MathText } from"@/components/MathText";
 import {
@@ -17,14 +18,6 @@ import {
   CardTitle,
 } from"@/components/ui/card";
 import { Separator } from"@/components/ui/separator";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from"@/components/ui/table";
 import { AlertTriangle, ArrowRight, Database, FileText, Orbit } from"lucide-react";
 import Link from"next/link";
 
@@ -50,16 +43,6 @@ const paperStatusVariant: Record<
   blue:"secondary",
   amber:"outline",
   red:"destructive",
-};
-
-const surveyQcVariant: Record<
-"pass" |"caution" |"fail" |"needs-expansion",
-  { variant:"default" |"secondary" |"destructive" |"outline"; label: string }
-> = {
-  pass: { variant:"default", label:"PASS" },
-  caution: { variant:"outline", label:"CAUTION" },
-  fail: { variant:"destructive", label:"FAIL" },
-"needs-expansion": { variant:"outline", label:"EXPAND" },
 };
 
 const stats: Array<{ value: string; label: string; tone?: string }> = [
@@ -301,47 +284,8 @@ export default function HomePage() {
             Survey Results &rarr;
           </Link>
         </h2>
-        <Card>
-          <CardContent className="p-0">
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Survey</TableHead>
-                  <TableHead>Sources</TableHead>
-                  <TableHead>Anomalies</TableHead>
-                  <TableHead>QC</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {surveys.map((survey) => {
-                  const qc = surveyQcVariant[survey.qcStatus];
-                  return (
-                    <TableRow key={survey.slug}>
-                      <TableCell>
-                        <Link
-                          href={`/surveys/${survey.slug}`}
-                          className="font-semibold underline-offset-4 hover:underline"
-                        >
-                          {survey.name}
-                        </Link>
-                      </TableCell>
-                      <TableCell className="text-muted-foreground">
-                        {survey.sources}
-                      </TableCell>
-                      <TableCell className="font-mono text-muted-foreground">
-                        {survey.anomalies.toLocaleString()} ({survey.anomalyRate}
-                        )
-                      </TableCell>
-                      <TableCell>
-                        <Badge variant={qc.variant}>{qc.label}</Badge>
-                      </TableCell>
-                    </TableRow>
-                  );
-                })}
-              </TableBody>
-            </Table>
-          </CardContent>
-        </Card>
+        {/* Single-sourced from data/surveys.ts via SurveyQcTable (shared with /status). */}
+        <SurveyQcTable />
       </section>
 
       <section className="section">

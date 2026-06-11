@@ -18,6 +18,7 @@ import {
 import type { Metadata } from"next";
 import Link from"next/link";
 import { getLivePapers, getRunningPods, type LivePaperState } from "@/lib/livePapers";
+import { SurveyQcTable } from "@/components/Cards/SurveyQcTable";
 
 export const metadata: Metadata = {
   title:"Research Status",
@@ -383,86 +384,9 @@ export default async function StatusPage() {
 
       <section className="section">
         <h2>Completed Surveys (8 total)</h2>
-        <Card>
-          <CardContent className="p-0">
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Survey</TableHead>
-                  <TableHead>Sources</TableHead>
-                  <TableHead>Anomalies</TableHead>
-                  <TableHead>QC Status</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                <TableRow>
-                  <TableCell className="font-semibold">DESI DR1</TableCell>
-                  <TableCell>22.5M spectra</TableCell>
-                  <TableCell className="font-mono">195,829 (0.87%)</TableCell>
-                  <TableCell>
-                    <Badge variant="default">PASS</Badge>
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell className="font-semibold">SDSS DR18</TableCell>
-                  <TableCell>2.3M spectra</TableCell>
-                  <TableCell className="font-mono">77,905 (3.4%)</TableCell>
-                  <TableCell>
-                    <Badge variant="outline">Caution: domain shift</Badge>
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell className="font-semibold">LAMOST DR10</TableCell>
-                  <TableCell>11.4M spectra</TableCell>
-                  <TableCell className="font-mono">44,075 (0.39%)</TableCell>
-                  <TableCell>
-                    <Badge variant="outline">Caution: blue-excess bias</Badge>
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell className="font-semibold">eROSITA DR1</TableCell>
-                  <TableCell>930K X-ray</TableCell>
-                  <TableCell className="font-mono">298 (0.03%, BigAE top-cut)</TableCell>
-                  <TableCell>
-                    <Badge variant="default">PASS</Badge>
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell className="font-semibold">Planck CMB</TableCell>
-                  <TableCell>20K patches</TableCell>
-                  <TableCell className="font-mono">200</TableCell>
-                  <TableCell>
-                    <Badge variant="destructive">FAIL: galactic contamination</Badge>
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell className="font-semibold">ACT DR6</TableCell>
-                  <TableCell>20K patches</TableCell>
-                  <TableCell className="font-mono">200</TableCell>
-                  <TableCell>
-                    <Badge variant="destructive">FAIL: undertrained</Badge>
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell className="font-semibold">NEOWISE</TableCell>
-                  <TableCell>43.5K sources</TableCell>
-                  <TableCell className="font-mono">436</TableCell>
-                  <TableCell>
-                    <Badge variant="destructive">FAIL: ecliptic systematic</Badge>
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell className="font-semibold">Gaia DR3</TableCell>
-                  <TableCell>50K variables</TableCell>
-                  <TableCell className="font-mono">500</TableCell>
-                  <TableCell>
-                    <Badge variant="outline">Needs 10x expansion</Badge>
-                  </TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
-          </CardContent>
-        </Card>
+        {/* Single-sourced from data/surveys.ts via SurveyQcTable — never
+            hardcode QC verdicts here (previously contradicted /surveys). */}
+        <SurveyQcTable />
       </section>
 
       <section className="section">

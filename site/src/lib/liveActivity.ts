@@ -30,9 +30,12 @@ export async function getRecentActivity(limit = 200): Promise<{
   events: ActivityEvent[];
   summary: ActivitySummary | null;
   source: "convex" | "static-fallback";
+  /** Epoch ms when the feed was fetched — used to clamp future-skewed event rows. */
+  fetchedAt: number;
 }> {
+  const fetchedAt = Date.now();
   if (!CONVEX_URL) {
-    return { events: [], summary: null, source: "static-fallback" };
+    return { events: [], summary: null, source: "static-fallback", fetchedAt };
   }
   try {
     const { ConvexHttpClient } = await import("convex/browser");
@@ -45,9 +48,9 @@ export async function getRecentActivity(limit = 200): Promise<{
       "activityRollup:summary" as unknown as Parameters<typeof client.query>[0],
       {}
     )) as ActivitySummary;
-    return { events, summary, source: "convex" };
+    return { events, summary, source: "convex", fetchedAt };
   } catch (err) {
     console.warn("[liveActivity] Convex fetch failed:", err);
-    return { events: [], summary: null, source: "static-fallback" };
+    return { events: [], summary: null, source: "static-fallback", fetchedAt };
   }
 }

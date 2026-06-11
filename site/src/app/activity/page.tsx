@@ -64,9 +64,9 @@ function kindLabel(kind: string): string {
 }
 
 export default async function ActivityPage() {
-  const { events, summary, source } = await getRecentActivity(300);
+  const { events, summary, source, fetchedAt } = await getRecentActivity(300);
   const live = source === "convex";
-  const renderedAt = Date.now();
+  const renderedAt = fetchedAt;
 
   return (
     <>
