@@ -50,6 +50,14 @@
 \providecommand \BibitemShut  [1]{\csname bibitem#1\endcsname}%
 \let\auto@bib@innerbib\@empty
 %</preamble>
+\bibitem [{\citenamefont {Wilson-Ewing}(2013)}]{WilsonEwing:2012}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {E.}~\bibnamefont
+  {Wilson-Ewing}},\ }\bibfield  {title} {\bibinfo {title} {The matter bounce
+  scenario in loop quantum cosmology},\ }\href@noop {} {\bibfield  {journal}
+  {\bibinfo  {journal} {JCAP}\ }\textbf {\bibinfo {volume} {1303}},\ \bibinfo
+  {pages} {026}},\ \Eprint {https://arxiv.org/abs/1211.6269} {arXiv:1211.6269}
+  \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Maldacena}(2003)}]{Maldacena:2002vr}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {J.}~\bibnamefont
@@ -152,14 +160,6 @@
   {\bibfield  {journal} {\bibinfo  {journal} {Class. Quant. Grav.}\ }\textbf
   {\bibinfo {volume} {27}},\ \bibinfo {pages} {124002} (\bibinfo {year}
   {2010})},\ \Eprint {https://arxiv.org/abs/1004.0818} {arXiv:1004.0818}
-  \BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Wilson-Ewing}(2013)}]{WilsonEwing:2012}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {E.}~\bibnamefont
-  {Wilson-Ewing}},\ }\bibfield  {title} {\bibinfo {title} {The matter bounce
-  scenario in loop quantum cosmology},\ }\href@noop {} {\bibfield  {journal}
-  {\bibinfo  {journal} {JCAP}\ }\textbf {\bibinfo {volume} {1303}},\ \bibinfo
-  {pages} {026}},\ \Eprint {https://arxiv.org/abs/1211.6269} {arXiv:1211.6269}
   \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Mercuri}(2006)}]{Mercuri2006}%
   \BibitemOpen
