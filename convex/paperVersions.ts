@@ -1,5 +1,14 @@
-import { mutation, query } from "./_generated/server";
+import { mutation, query, internalMutation } from "./_generated/server";
 import { v } from "convex/values";
+
+/** Sort paper_versions newest-first. Ties break on createdAt desc — no future dates needed. */
+function sortVersions<T extends { datestamp: string; createdAt: number }>(vs: T[]): T[] {
+  return vs.sort((a, b) => {
+    const d = b.datestamp.localeCompare(a.datestamp);
+    if (d !== 0) return d;
+    return (b.createdAt ?? 0) - (a.createdAt ?? 0);
+  });
+}
 
 export const listForPaper = query({
   args: { paperSlug: v.string() },
@@ -8,8 +17,7 @@ export const listForPaper = query({
       .query("paper_versions")
       .withIndex("by_paper", (q) => q.eq("paperSlug", args.paperSlug))
       .collect();
-    versions.sort((a, b) => b.datestamp.localeCompare(a.datestamp));
-    return versions;
+    return sortVersions(versions);
   },
 });
 
@@ -20,8 +28,7 @@ export const current = query({
       .query("paper_versions")
       .withIndex("by_paper", (q) => q.eq("paperSlug", args.paperSlug))
       .collect();
-    versions.sort((a, b) => b.datestamp.localeCompare(a.datestamp));
-    return versions[0] ?? null;
+    return sortVersions(versions)[0] ?? null;
   },
 });
 
@@ -64,5 +71,31 @@ export const bump = mutation({
       }
     }
     return versionId;
+  },
+});
+
+/**
+ * One-time repair: rewrite 2026-06-11 / 2026-06-12 datestamps to "2026-06-10"
+ * (the correct America/Los_Angeles date at the time those rows were written).
+ * Safe to run multiple times — rows already at "2026-06-10" are untouched.
+ * Call via: npx convex run paperVersions:patchUtcLeakedDates
+ */
+export const patchUtcLeakedDates = mutation({
+  args: {},
+  handler: async (ctx) => {
+    const badDates = ["2026-06-11", "2026-06-12"];
+    const correctDate = "2026-06-10";
+    let patched = 0;
+    for (const date of badDates) {
+      // Scan all papers for rows with this bad datestamp
+      const allVersions = await ctx.db.query("paper_versions").collect();
+      for (const row of allVersions) {
+        if (row.datestamp === date) {
+          await ctx.db.patch(row._id, { datestamp: correctDate });
+          patched++;
+        }
+      }
+    }
+    return { patched, correctedTo: correctDate };
   },
 });

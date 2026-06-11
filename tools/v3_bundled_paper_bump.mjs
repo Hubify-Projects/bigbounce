@@ -36,6 +36,11 @@ import { resolve } from "node:path";
 const BUNDLE_PATH = process.argv[2] || "./BUMP_BUNDLE.json";
 const REPO = "/Users/houstongolden/Desktop/CODE_2025/bigbounce";
 
+/** Return today's date in America/Los_Angeles as a YYYY-MM-DD string. */
+function todayPT() {
+  return new Date().toLocaleDateString("en-CA", { timeZone: "America/Los_Angeles" });
+}
+
 if (!existsSync(BUNDLE_PATH)) {
   console.error(`bundle file not found: ${BUNDLE_PATH}`);
   process.exit(2);
@@ -89,7 +94,7 @@ for (const entry of bundle) {
   const result = await client.mutation(api.paperVersions.bump, {
     paperSlug: entry.paperSlug,
     version: entry.version,
-    datestamp: entry.datestamp,
+    datestamp: entry.datestamp ?? todayPT(),
     texCommit: entry.texCommit,
     pdfMd5: md5,
     pdfPages: pages,
