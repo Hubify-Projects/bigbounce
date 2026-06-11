@@ -128,6 +128,16 @@ export function isLive(states: LivePaperState[]): boolean {
   return states.length > 0 && states[0].source === "convex";
 }
 
+/**
+ * Display form of a version string. Some Convex rows carry a date-suffixed
+ * version (e.g. "v0.1.62-2026-06-10"); every display surface shows plain
+ * semver and keeps the date in the Updated column (P1-13, 2026-06-10 QA sweep).
+ */
+export function displayVersion(v: string | null | undefined): string {
+  if (!v) return "—";
+  return v.replace(/-\d{4}-\d{2}-\d{2}$/, "");
+}
+
 // ──────────────────────────────────────────────────────────────────────
 // Gap #1 (closed 2026-06-03) — papers_notables + papers_externalReviews
 // fetchers. Both are Convex-only with empty-array fallback; static

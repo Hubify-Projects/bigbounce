@@ -3,6 +3,7 @@ import {
   getLivePapers,
   getNotablesForPaper,
   getFiguresForPaper,
+  displayVersion,
 } from"@/lib/livePapers";
 import { sortedReviewRounds, type PaperId } from"@/data/reviewTimeline";
 import { PaperFigureGallery } from"./PaperFigureGallery";
@@ -104,7 +105,7 @@ export default async function PaperDetailPage({
   const candidateFigures = figures.filter((f) => f.status === "candidate");
   const live = liveStates.find((p) => p.slug === slug);
   const readiness = live?.readinessComputed ?? paper.readiness;
-  const version = live?.currentVersion ?? paper.version;
+  const version = displayVersion(live?.currentVersion ?? paper.version);
   const lastUpdated = live?.lastUpdated ?? paper.lastUpdated;
   const liveStatus = live?.status ?? null;
   const openSummary = live

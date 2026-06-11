@@ -1,4 +1,4 @@
-import { getLivePapers, isLive, type LivePaperState } from "@/lib/livePapers";
+import { getLivePapers, isLive, displayVersion, type LivePaperState } from "@/lib/livePapers";
 import Link from "next/link";
 
 function readinessColor(readiness: number) {
@@ -83,7 +83,7 @@ export async function LivePapersDashboard() {
                     </Link>
                   </td>
                   <td style={{ color: "var(--text-tertiary)" }}>
-                    {p.currentVersion ?? "—"}
+                    {displayVersion(p.currentVersion)}
                   </td>
                   <td>
                     <span

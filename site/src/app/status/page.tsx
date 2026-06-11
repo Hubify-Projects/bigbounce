@@ -17,7 +17,7 @@ import {
 } from"@/components/ui/table";
 import type { Metadata } from"next";
 import Link from"next/link";
-import { getLivePapers, getRunningPods, type LivePaperState } from "@/lib/livePapers";
+import { getLivePapers, getRunningPods, displayVersion, type LivePaperState } from "@/lib/livePapers";
 import { SurveyQcTable } from "@/components/Cards/SurveyQcTable";
 
 export const metadata: Metadata = {
@@ -176,7 +176,7 @@ export default async function StatusPage() {
                       </Link>{" "}
                       <span className="text-muted-foreground">{meta.tagline}</span>
                     </TableCell>
-                    <TableCell className="whitespace-nowrap font-mono">{p.currentVersion ?? "—"}</TableCell>
+                    <TableCell className="whitespace-nowrap font-mono">{displayVersion(p.currentVersion)}</TableCell>
                     <TableCell className="whitespace-nowrap font-mono">
                       {p.readinessComputed}%
                       <span className="live-papers-bar" aria-hidden="true">
