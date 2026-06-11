@@ -1,8 +1,8 @@
 {
   "timestamp": "2026-03-11T17:54:12.044006+00:00",
   "dataset": "full_tension",
-  "bug_fix": "OFF-BY-ONE column mapping corrected (header '#' token skipped)",
-  "total_accepted_samples": 176840,
+  "bug_fix": "OFF-BY-ONE column mapping corrected (header '#' token skipped); total_accepted_samples regenerated from raw chain line-counts 2026-06-10 (was 176840 — stale)",
+  "total_accepted_samples": 176240,
   "chains": 6,
   "burn_fraction": 0.3,
   "rhat": {

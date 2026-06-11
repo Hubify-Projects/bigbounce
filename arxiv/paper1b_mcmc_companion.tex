@@ -119,8 +119,48 @@
 %   FALSIFIED list (14 items) not acted on.)
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1B.0.56}
+\newcommand{\paperVersion}{v1B.0.57}
 \newcommand{\paperTimestamp}{June 10, 2026 PDT}
+% v1B.0.56->57 (2026-06-10 — EXT2 external-round closure wave; truth audit at
+%   project-context/peer-reviews/EXT2_P1B_TRUTH_AUDIT.md):
+%   F2 (closure-introduced regression, R29 CORRECTED-file generation):
+%      freeze_diagnostics_CORRECTED.json total_accepted_samples 176840 -> 176240,
+%      regenerated from raw chain line-counts (matches
+%      full_tension_physical_parameters.json total_samples=176240 + tex Table I);
+%      parameter_summary_CORRECTED.json + parameter_summary_units_README.md
+%      column-permutation companions ADDED to planck_bao_sn_20260312_1954/
+%      diagnostics/ (the R29 fix had only landed in full_tension).
+%   F1 (release claims false on-disk): "tagged \paperVersion / commit SHA in
+%      CHANGELOG.md under that tag" replaced — repo root CHANGELOG.md CREATED
+%      with per-version commit-SHA pins + HF dataset URLs; tex Data-Availability
+%      + Appendix A + Table IV caption repointed to the version-stamp-commit +
+%      CHANGELOG mechanism (no unbacked git-tag claim); Table IV "Verified" ->
+%      "Internally verified" pending public tagged release.
+%   F3 (EXT1-A3 mis-citation): SN-overlap caveat now cites Vincenzi et al. 2025
+%      (MNRAS 541, 2585, arXiv:2501.06664) for the ~20% shared-SN overlap and
+%      Malmquist-correction comparison; DES2024SN5YR retained for the likelihood.
+%   F4/C1: "unlikely to be reversed" softened to plausibly-robust +
+%      not-yet-demonstrated; two SN-overlap control chains disclosed as queued
+%      (deferred-to-compute, see truth-audit Deferred section).
+%   F5: "not pre-computed" contradiction rewritten — frozen chain dirs ARE
+%      committed (full_tension + planck_bao_sn incl. chains/ + CORRECTED
+%      diagnostics); fresh proxy chains regenerable via reproduce_cosmology.sh.
+%   F6: "natural parameters" deleted at all 3 sites (abstract, Sec. VI note,
+%      Discussion) -> scan-prior midpoint values + tuned-misalignment-subspace
+%      framing. F9: headline Eskilt-Komatsu label PR4 -> PR3-as-published with
+%      pointer to the disambiguation footnote. F10: CMB-S4 sites recast as
+%      phenomenological DeltaNeff proxy for the bounce class. F13: App. C
+%      C_agamma [9,51] relabeled posterior-supported band (69% mass; kinematic
+%      natural-box extends to ~160). F12: GetDist 106,361 readout provenance
+%      parenthetical. F8: Planck-only mention dropped from abstract (body site
+%      retained). Abstract sample-count cascade already at 176,240/309,189.
+%   STAMP-WAVE pattern-051 self-check: planck_bao_sn DeltaNeff/H0 quotes
+%      (+0.065+-0.17 / 67.79+-1.09) did NOT match the regenerated
+%      parameter_summary_CORRECTED.json; independently recomputed from raw
+%      chains (numpy weighted, 30% burn-in, 93,066 post-burnin): DeltaNeff
+%      = +0.058+-0.179, H0 = 67.78+-1.09 — all 10 sites rebooked (abstract,
+%      Table I, no-SH0ES note, comparison 0.5sigma calc, Table IV);
+%      sigma8/S8 already chain-consistent.)
 % v1B.0.56 (2026-06-10 — R29 post-EXT1 internal-round closure wave; truth audit at
 %   project-context/peer-reviews/R29_P1B_TRUTH_AUDIT.md):
 %   E1 ROOT-CAUSED FROM CHAINS: the frozen parameter_summary.json artifact bug is a
@@ -700,15 +740,15 @@ We report the technical verification material for the Einstein-Cartan-Holst (ECH
 spin-torsion cosmology no-go program of Paper~I(a)~\cite{Golden2026P1a}.
 Three analyses are documented.
 \emph{(1)~Stock-CAMB $\Lambda$CDM$+\Delta\Neff$ MCMC proxy}
-(Cobaya~v3.6.1, $\mathbf{309{,}189}$ frozen samples across two converged dataset combinations; a third Planck-only combination is excluded from all tables and the headline count): this
+(Cobaya~v3.6.1, $\mathbf{309{,}189}$ frozen samples across two converged dataset combinations): this
 run uses stock CAMB with $\Delta\Neff$ as a free parameter and carries
 \emph{no torsion modifications to the Boltzmann equations}; it is reported as
 a null-consistency test of an extra radiation-like degree of freedom, not as
 evidence for or against the ECH spin-torsion framework. Both frozen dataset
 combinations find $\Delta\Neff$ consistent with zero ($-0.020\pm 0.169$
-full-tension; $+0.065\pm 0.17$ Planck+BAO+SN) and $H_0$ consistent with
+full-tension; $+0.058\pm 0.179$ Planck+BAO+SN) and $H_0$ consistent with
 standard $\Lambda$CDM ($67.68\pm 1.06$ full-tension;
-$67.79\pm 1.09$ Planck+BAO+SN, both in $\text{km\,s}^{-1}\,\text{Mpc}^{-1}$).
+$67.78\pm 1.09$ Planck+BAO+SN, both in $\text{km\,s}^{-1}\,\text{Mpc}^{-1}$).
 \emph{(2)~NaMaster pseudo-$C_\ell$ pipeline validation} on synthetic
 $\Lambda$CDM CMB polarization skies with an ACT-like footprint mask
 ($N_{\rm side}=512$, $\ell_{\rm max}=1024$, $f_{\rm sky}=0.32$,
@@ -792,9 +832,10 @@ $2.7$--$2.9\sigma$ from Planck/ACT.
 
 \item \textit{Spectator-ALP consistency check} (Sec.~\ref{sec:birefringence_check}):
 a standard GR+ALP computation showing that the observed signal is consistent
-with an ALP having natural parameters (taken at scan-prior midpoint values; the
-$\sim 25\times$ misalignment tuning required to reconcile the headline result
-with the spectator-consistent corner is disclosed in
+with an ALP at scan-prior midpoint values, while a spectator-safe
+interpretation requires a tuned misalignment subspace (the $\sim 25\times$
+misalignment tuning required to reconcile the headline result with the
+spectator-consistent corner is disclosed in
 Sec.~\ref{sec:birefringence_check} and fn.~\ref{fn:theta_backreaction}).
 \textbf{Not a distinctive ECH prediction.}
 The same $\beta\approx 0.27^\circ$ arises in any GR+ALP setup with the same
@@ -914,7 +955,11 @@ the per-chain GetDist readout that averages the parallel chains
 original chain (\texttt{burn\_in: 0.3}).  The $30\%$ figure used throughout
 this paper is conservative, matches the original-chain configuration documented
 in \texttt{COUNT\_EXPLANATION.md}, and gives $93{,}064$ post-burnin for this
-subset.  The $106{,}361$ figure at $20\%$ is the GetDist-reported value; the
+subset.  The $106{,}361$ figure at $20\%$ is the value reported by GetDist
+(\texttt{getdist.MCSamples} loaded from the
+\texttt{planck\_bao\_sn\_20260312\_1954} freeze with
+\texttt{ignore\_rows = 0.20} averaging the per-chain configurations
+documented above); the
 paper's $216{,}432$ combined total uses the conservative $30\%$ cut uniformly
 for both frozen chains.
 The third (Planck-only)
@@ -948,7 +993,7 @@ ekpyrotic, cyclic, Cuscuton, string-gas, and quintom-bounce variants)
 predicts $\Delta\Neff\!\approx\!0$
 by construction (no light bounce-internal species are thermalized at
 recombination); the proxy run \emph{confirming} $\Delta\Neff = -0.020 \pm 0.169$
-(full-tension) and $+0.065\pm 0.17$ (Planck+BAO+SN) is therefore consistent
+(full-tension) and $+0.058\pm 0.179$ (Planck+BAO+SN) is therefore consistent
 with the minimal matter-bounce prediction, but the absence of a $\Delta\Neff$
 detection is not a discriminator between minimal-ECH and standard
 $\Lambda$CDM at the present data precision. We frame the proxy as a
@@ -988,8 +1033,8 @@ but a within-stack posterior shift; overlay artifact
 \begin{tabular}{lcc}
 Parameter & Full-tension & Planck+BAO+SN \\
 \hline
-$H_0$ [km\,s$^{-1}$\,Mpc$^{-1}$] & $67.68 \pm 1.06$ & $67.79 \pm 1.09$ \\
-$\Delta\Neff$ & $-0.020 \pm 0.169$ & $+0.065 \pm 0.17$ \\
+$H_0$ [km\,s$^{-1}$\,Mpc$^{-1}$] & $67.68 \pm 1.06$ & $67.78 \pm 1.09$ \\
+$\Delta\Neff$ & $-0.020 \pm 0.169$ & $+0.058 \pm 0.179$ \\
 $\sigma_8$ & $0.803 \pm 0.008$ & $0.812 \pm 0.009$ \\
 $S_8$ & $0.814 \pm 0.008$ & $0.827 \pm 0.010$ \\
 $\Omega_m$ & $0.308 \pm 0.005$ & $0.312 \pm 0.006$ \\
@@ -1112,7 +1157,7 @@ the joint posterior $H_0 = 67.185 \pm 0.455$ km/s/Mpc (the iter2 $w_0w_a$
 chain of Table~\ref{tab:iter2_posterior}, to which this caveat list
 refers --- not the $\Lambda$CDM$+\Delta\Neff$ chains of
 Table~\ref{tab:verification}, whose Planck+BAO+SN value is
-$67.79 \pm 1.09$) is therefore the no-SH0ES result. The interaction with the SH0ES prior is the subject of
+$67.78 \pm 1.09$) is therefore the no-SH0ES result. The interaction with the SH0ES prior is the subject of
 the separate \emph{full-tension} chain reported in
 Table~\ref{tab:verification}, which carries the
 \texttt{H0.riess2020Mb} likelihood active in its YAML (verified by direct \texttt{.input.yaml} inspection and by chain
@@ -1147,11 +1192,21 @@ slightly different distance-modulus corrections in each catalog, the naive
 product double-weights those events and introduces a small inward pull on
 the combined SN constraint.  The direction of this bias is toward the mean of
 the two catalogs' individual SN posteriors, which is itself close to the
-combined Planck+BAO constraint; the qualitative quintom-B finding ($w_0 + w_a < -1$)
-is therefore unlikely to be reversed by a rigorous joint-covariance treatment,
-but the precise tension significance should be interpreted with this caveat.
-Users requiring a rigorous SN combination should refer to the DES Collaboration
-comparison analysis~\cite{DES2024SN5YR} and construct a joint covariance.
+combined Planck+BAO constraint; the qualitative quintom-B direction ($w_0 + w_a < -1$)
+is plausibly robust against a rigorous joint-covariance treatment, but
+this has not been demonstrated quantitatively in the present manuscript;
+the precise tension significance should be interpreted with this caveat.
+Two SN-overlap control chains (DESI~DR2 + Planck~NPIPE + Pantheon$+$ only;
+DESI~DR2 + Planck~NPIPE + DES-SN5YR only; same priors and burn-in as
+the iter2 baseline) are queued on the dedicated MPI pod as the rigorous
+overlap-robustness demonstration; their $(w_0, w_a)$ shifts versus the
+combined chain will appear in a follow-up note when the chains converge
+to the standard $\hat R-1<10^{-2}$ publication target.
+Users requiring a rigorous SN combination should refer to the Vincenzi et al.
+comparison analysis~\cite{Vincenzi2025SNcompare}, which quantifies the
+$\sim\!20\%$ shared-SN overlap and the Malmquist-correction differences
+between the two catalogs (in addition to the underlying DES-SN5YR
+cosmology paper~\cite{DES2024SN5YR}), and construct a joint covariance.
 \par
 \textit{M$_B$--H$_0$ joint-posterior offset check.} The joint posterior mean
 ($M_B = -19.263$, $H_0 = 67.68$) is fully consistent with an active
@@ -1190,8 +1245,9 @@ nuisance parameter sampled jointly by both \texttt{sn.pantheonplus} and
 \textit{Key finding.}---Both frozen datasets find $\Delta\Neff$ consistent with
 zero and $H_0$ consistent with Planck $\Lambda$CDM at $0.3\sigma$, confirming
 that the $\Delta\Neff$ extension alone does not resolve the Hubble tension.
-Current data neither require nor exclude a small positive $\Delta\Neff$ from
-the spin-torsion sector; CMB-S4 ($\sigma(\Neff)\sim 0.03$~\cite{CMBS4_ScienceBook})
+Current data neither require nor exclude a small positive
+phenomenological $\Delta\Neff$ proxy for the bounce-class effective
+radiation contribution; CMB-S4 ($\sigma(\Neff)\sim 0.03$~\cite{CMBS4_ScienceBook})
 will sharpen this constraint substantially relative to the current
 Planck+BAO+SN level.
 
@@ -1202,7 +1258,7 @@ but with the torsion parameter itself consistent with zero
 ($\alpha = -0.00066 \pm 0.00098$). Their headline values
 $H_0 = 68.41 \pm 0.32$ km/s/Mpc and $S_8 = 0.812 \pm 0.006$ agree with our
 Planck+BAO+SN chain at $0.5\sigma$ in $H_0$
-($|67.79 - 68.41|/\sqrt{1.09^2 + 0.32^2}$) and $1.3\sigma$ in $S_8$
+($|67.78 - 68.41|/\sqrt{1.09^2 + 0.32^2}$) and $1.3\sigma$ in $S_8$
 ($|0.827 - 0.812|/\sqrt{0.010^2 + 0.006^2}$); their torsion-consistent-with-zero
 result parallels our $\Delta\Neff$-consistent-with-zero null finding. Their
 AIC preference for the torsion model is \emph{not} directly comparable to
@@ -1597,7 +1653,7 @@ omitted; we report only the parameter posteriors below, which are unaffected
 by the model-comparison-statistic deferral. The two posterior parameter
 measurements that remain are
 $\Delta N_{\rm eff} = -0.020 \pm 0.169$ (full-tension) and
-$+0.065 \pm 0.17$ (Planck+BAO+SN), both consistent with zero; these
+$+0.058 \pm 0.179$ (Planck+BAO+SN), both consistent with zero; these
 are the load-bearing numbers used elsewhere in the paper and they are
 unaffected by the model-comparison-statistic deferral.
 The $\chi^2$ goodness-of-fit decomposition (BAO, CMB, SN, and total contributions) is reported in Table~\ref{tab:iter2_posterior}; the AIC, BIC, and $\ln B$ evidence metrics are \emph{not} reported there. The headline result is $w_0 = -0.812 \pm 0.044$ (departing from the $\Lambda$CDM point $w_0=-1$ at $+4.3\sigma$; fn.~\ref{fn:wcaveat}) and $w_a = -0.667 \pm 0.186$ (departing from $w_a=0$ at $-3.6\sigma$), with $w_0+w_a = -1.48 \pm 0.15$ requiring phantom crossing (the canonical quintom signature). Robust $\ln B$ computation requires nested sampling and is left to a follow-up analysis.
@@ -1615,9 +1671,9 @@ $\Delta\Neff$ extension alone does not resolve the Hubble tension.
 \textit{Note.}---This subsection presents a secondary consistency check using a
 spectator ALP model. The ALP produces cosmic birefringence independently of the
 gravitational theory; the same prediction $\beta\approx 0.27^\circ$ arises in
-standard GR with an identical ALP Lagrangian and natural parameters (taken at
-scan-prior midpoint values; the $\sim 25\times$ misalignment tuning required
-for the headline result is disclosed below and in fn.~\ref{fn:theta_backreaction}).
+standard GR with an identical ALP Lagrangian at scan-prior midpoint
+values, with the $\sim 25\times$ misalignment tuning required to recover
+the headline result disclosed below and in fn.~\ref{fn:theta_backreaction}.
 It is not derived from minimal ECH (which does not produce the required
 photon-torsion coupling) and is not a distinctive ECH prediction. The model class was previously
 studied by Fujita~\etal~\cite{Fujita2021}.
@@ -1625,7 +1681,9 @@ studied by Fujita~\etal~\cite{Fujita2021}.
 \textit{Headline observational constraint.}---The primary observational reference
 adopted in this analysis is the published Eskilt~\&~Komatsu joint WMAP+Planck value
 $\beta = 0.342^\circ\pm 0.094^\circ$ ($3.6\sigma$)~\cite{Eskilt2022} (the
-joint WMAP9 + Planck PR4/NPIPE analysis; ACT~DR6 enters only via the separate
+joint WMAP9 + Planck PR3 analysis as published; the PR4/NPIPE label refers
+to the repository rerun discussed in the disambiguation footnote earlier in
+this paper; ACT~DR6 enters only via the separate
 $\beta=0.215^\circ\pm 0.074^\circ$ measurement~\cite{DiegoPalazuelos2025}, used
 below only in the auxiliary inverse-variance combination), which
 accounts for shared calibration systematics. The simplified inverse-variance
@@ -1932,12 +1990,13 @@ hypotheses).
 cosmology: the ALP is a spectator field that does not participate in the bounce
 dynamics. The ECH framework provides heuristic motivation ($f_a\sim\MPl$ from
 the Holst sector pseudoscalar structure) but no derived photon-torsion coupling
-connects the Holst action to a specific ALP potential. The model
-\textit{accommodates} the observed signal for natural parameter values
-(taken at scan-prior midpoint values; the $\sim 25\times$ misalignment tuning
-required for the headline result is disclosed in
-Sec.~\ref{sec:birefringence_check} and fn.~\ref{fn:theta_backreaction}); it does
-not uniquely predict it.
+connects the Holst action to a specific ALP potential. The model can
+\textit{accommodate} the observed $\beta$ at scan-prior midpoint values,
+but the spectator-safe interpretation requires a tuned misalignment
+subspace (the $\sim 25\times$ misalignment tuning required for the
+headline result is disclosed in Sec.~\ref{sec:birefringence_check} and
+fn.~\ref{fn:theta_backreaction}) and a non-minimal photon coupling; it
+does not uniquely predict the signal.
 
 
 %% ============================================================
@@ -1957,9 +2016,10 @@ finds $\Delta\Neff$ consistent with zero in both frozen
 dataset combinations and recovers $H_0 = 67.68\pm 1.06\,\text{km\,s}^{-1}\,
 \text{Mpc}^{-1}$, consistent with standard Planck $\Lambda$CDM. The
 $\Delta\Neff$ extension does not resolve the Hubble tension. Current data
-neither require nor exclude a spin-torsion $\Delta\Neff$ contribution;
-CMB-S4 ($\sigma(\Neff)\sim 0.03$~\cite{CMBS4_ScienceBook}) will sharpen
-this constraint substantially.
+neither require nor exclude a phenomenological $\Delta\Neff$ proxy
+contribution for the bounce class; CMB-S4
+($\sigma(\Neff)\sim 0.03$~\cite{CMBS4_ScienceBook}) will sharpen this
+constraint substantially.
 Bayes factors and information criteria ($\Delta$AIC, $\Delta$BIC, $\ln B$) are deferred to a dedicated nested-sampling run (Sec.~\ref{sec:cosmo_fits}, \emph{Model-comparison statistics} paragraph); we report only the parameter posteriors ($\Delta N_{\rm eff}$, $H_0$, etc.) as load-bearing here and explicitly omit Bayes-factor or information-criterion comparisons in this Metropolis-Hastings-only analysis.
 
 \textit{NaMaster pipeline validation.}---The 500-MC pseudo-$C_\ell$ analysis on
@@ -1992,9 +2052,12 @@ All materials are at:
 \begin{center}
 \url{https://github.com/Hubify-Projects/bigbounce/tree/main/reproducibility}
 \end{center}
-The version of the repository corresponding to this paper is tagged
-\texttt{\paperVersion}; the exact commit SHA is recorded in the repository's
-\texttt{CHANGELOG.md} under that tag.
+The version of the repository corresponding to this paper is identified
+by the in-tex \texttt{\paperVersion} stamp (defined in
+\texttt{paper1b\_mcmc\_companion.tex} \texttt{\textbackslash newcommand\{\textbackslash paperVersion\}})
+and by the matching version-stamp commit in the repository git log; the
+per-version changelog (with the corresponding commit SHAs) is in the
+repository root \texttt{CHANGELOG.md}.
 The repository is program-wide: it includes the four Cobaya YAML
 configurations (one per dataset
 combination, stock CAMB, no custom modifications),
@@ -2005,8 +2068,10 @@ MCMC chains: regenerate via \texttt{reproduce\_cosmology.sh}
 ($\sim$4--12\,h per configuration on 4 CPU cores).
 HuggingFace dataset DOIs for the three accompanying datasets (MCMC chain
 diagnostics, NaMaster pipeline artifacts, ALP parameter chains) are listed
-in the repository README at the \texttt{\paperVersion} tag; links are preserved
-against future README changes via the tagged commit.
+below in Appendix~A under ``HuggingFace datasets'' and are also recorded
+in the repository \texttt{CHANGELOG.md} under the entry for
+\texttt{\paperVersion}; links are preserved against future README changes
+via the version-stamp commit identified by the changelog.
 \emph{Column-permutation warning for JSON artifacts:} the frozen
 diagnostic file
 \path{reproducibility/cosmology/frozen/full\_tension\_20260311\_1728/diagnostics/parameter\_summary.json}
@@ -2063,21 +2128,35 @@ code artifact.
 be reproduced.
 \end{itemize}
 
-\textit{What is NOT included.}---The $\Lambda$CDM$+\Delta\Neff$ proxy
-chains are not pre-computed (regenerate
-via \texttt{reproduce\_cosmology.sh}, $\sim$4--12\,h per config on 4 CPU cores);
-the converged iter2 $w_0w_a$ chain bundle \emph{is} committed
-(\path{reproducibility/cosmology/iter2_converged_2026-05-18/}), as are the
-ALP-MCMC chains
-(\path{research/branch_R_alp_birefringence/phase2_mcmc/chains/}).
+\textit{What is included vs.\ regenerable.}---The two frozen
+$\Lambda$CDM$+\Delta\Neff$ chain directories are committed
+in-repo and contain the chains and diagnostics that back
+Tables~III--IV of this paper:
+\path{reproducibility/cosmology/frozen/full_tension_20260311_1728/} and
+\path{reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/}
+(each with \texttt{chains/chain\_0[1-6]/} and
+\texttt{diagnostics/parameter\_summary\_CORRECTED.json}). The converged
+iter2 $w_0 w_a$ chain bundle is committed at
+\path{reproducibility/cosmology/iter2_converged_2026-05-18/}, and the
+ALP-MCMC chains at
+\path{research/branch_R_alp_birefringence/phase2_mcmc/chains/}.
+Fresh $\Lambda$CDM$+\Delta\Neff$ proxy chains for independent
+re-verification are NOT bundled and must be regenerated locally via
+\texttt{reproduce\_cosmology.sh} ($\sim$4--12\,h per config on 4 CPU cores).
+All Table~I--II numerical entries quoted in this paper were recomputed
+directly from the committed raw chains (and from the
+\texttt{parameter\_summary\_CORRECTED.json} artifacts derived from
+them), not from the legacy column-permuted export.
 Bayes factors and information criteria ($\Delta$AIC, $\Delta$BIC, $\ln B$) are NOT reported in this manuscript: dedicated nested sampling via PolyChord or MultiNest on the identical likelihood stack is required for a controlled Bayesian evidence on the present quintom posterior (Sec.~\ref{sec:cosmo_fits}, \emph{Model-comparison statistics} paragraph). A Savage-Dickey readout from the present Metropolis-Hastings chain is not viable---the $\Lambda$CDM point $(w,w_a)=(-1,0)$ lies at $>4\sigma$ in the joint marginal tails and is unsampled, so a KDE-based estimator yields kernel-dependent noise rather than a controlled density. This is left to a dedicated future nested-sampling analysis.
 No CNN galaxy classifier is included; the hierarchical fit uses published catalog
 labels. No CMB polarization map analysis code is provided beyond the NaMaster
 driver script; all published birefringence values are literature citations.
 
 \textit{HuggingFace datasets.}---The following HuggingFace datasets accompany
-this work (DOI links are pinned to the \texttt{\paperVersion} commit in the
-repository README; the DOIs are preserved against future README changes):
+this work (DOI links are recorded in the repository \texttt{CHANGELOG.md}
+under the entry for \texttt{\paperVersion}; the DOIs are preserved against
+future README changes via the version-stamp commit identified by the
+changelog):
 \begin{enumerate}[leftmargin=*]
 \item MCMC chain diagnostics and convergence CSV files.
 \item NaMaster pipeline artifacts (mask, MC seeds, output spectra).
@@ -2094,18 +2173,24 @@ machine-checkable index used by the reproducibility audits of
 Appendix~\ref{app:reproducibility}.
 
 \begin{table*}[tb]
-\caption{\label{tab:claims} Claims classification for this companion paper.}
+\caption{\label{tab:claims} Claims classification for this companion paper.
+The ``Internally verified'' status indicates that the quoted value has been
+reproduced directly from the committed raw chains and frozen diagnostics
+at the present \texttt{\paperVersion} version-stamp commit; a public tagged
+release pinning all of these artifacts to a single immutable snapshot is
+pending (see Data and Code Availability and the entry for \texttt{\paperVersion}
+in the repository \texttt{CHANGELOG.md}).}
 \begin{ruledtabular}
 \begin{tabular}{llll}
 Claim & Type & Status & Notes \\
 \hline
-$\Delta\Neff = -0.020\pm 0.169$ (full-tension)         & MCMC      & Verified & Stock CAMB proxy \\
-$\Delta\Neff = +0.065\pm 0.17$ (Planck+BAO+SN)         & MCMC      & Verified & Stock CAMB proxy \\
-$H_0 = 67.68\pm 1.06$ (full-tension)                   & MCMC      & Verified & Recovers $\Lambda$CDM \\
-$H_0 = 67.79\pm 1.09$ (Planck+BAO+SN)                  & MCMC      & Verified & Recovers $\Lambda$CDM \\
+$\Delta\Neff = -0.020\pm 0.169$ (full-tension)         & MCMC      & Internally verified & Stock CAMB proxy \\
+$\Delta\Neff = +0.058\pm 0.179$ (Planck+BAO+SN)         & MCMC      & Internally verified & Stock CAMB proxy \\
+$H_0 = 67.68\pm 1.06$ (full-tension)                   & MCMC      & Internally verified & Recovers $\Lambda$CDM \\
+$H_0 = 67.78\pm 1.09$ (Planck+BAO+SN)                  & MCMC      & Internally verified & Recovers $\Lambda$CDM \\
 Model-comparison $\Delta$AIC/BIC/$\ln B$               & Numerical & Omitted & Follow-up nested-sampling analysis \\
-$\hat\beta_{\rm NaMaster} = 0.238^\circ$ (500-MC)       & Numerical & Verified & Pipeline; MC bias table \\
-$\beta_{\rm ALP} = 0.336^\circ\pm 0.10^\circ$         & MCMC      & Verified & ALP MCMC \\
+$\hat\beta_{\rm NaMaster} = 0.238^\circ$ (500-MC)       & Numerical & Internally verified & Pipeline; MC bias table \\
+$\beta_{\rm ALP} = 0.336^\circ\pm 0.10^\circ$         & MCMC      & Internally verified & ALP MCMC \\
 Published $3.6\sigma$ ($\beta=0.342\pm 0.094^\circ$)   & Lit.\     & Cited    & Eskilt~et~al. \\
 Stock CAMB proxy $\neq$ ECH theory module              & Scope     & Defn.\   & §\ref{sec:verification} \\
 ALP birefringence not distinctive ECH prediction        & Scope     & Defn.\   & §\ref{sec:birefringence_check} \\
@@ -2165,8 +2250,12 @@ configuration; Fig.~\ref{fig:alp_triangle}).}---Three sampled parameters
 (read directly from the archived chain configuration,
 \path{research/branch_R_alp_birefringence/phase2_mcmc/chains/c5_continuous/c5.input.yaml}):
 \begin{itemize}[leftmargin=*]
-\item $C_{a\gamma}$: uniform prior on $[4, 60]$ (covering the full
-EOM-required band $[9, 51]$).
+\item $C_{a\gamma}$: uniform prior on $[4, 60]$ (covering the
+posterior-supported band $[9, 51]$ that contains $69\%$ of the
+posterior mass, see Sec.~\ref{sec:birefringence_check}; the full
+kinematic natural-box requirement extends to $C_{a\gamma}\approx 160$
+at the smallest misalignment displacements, as discussed in the same
+section).
 \item $\theta_i$: uniform prior on $[0.01, \pi]$.
 \item $\log_{10}(m_a/\text{eV})$: uniform prior on $[-35, -30]$
 ($m/H_0 \approx 7\times 10^{-3}$ to $7\times 10^{2}$).

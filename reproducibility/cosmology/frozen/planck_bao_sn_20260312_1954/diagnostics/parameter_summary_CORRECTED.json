@@ -1,0 +1,41 @@
+{
+  "_provenance": "Regenerated 2026-06-10 from raw chains under chains/chain_0[1-6]/spin_torsion.1.txt via the script documented in parameter_summary_units_README.md (numpy weighted means, 30% burn-in per chain matching frozen full_tension config). Supersedes the column-permuted output in convergence_report.txt 'Parameter summary' block.",
+  "dataset": "planck_bao_sn",
+  "freeze_timestamp": "20260312_1954",
+  "n_chains": 6,
+  "burn_fraction": 0.3,
+  "total_accepted_samples_raw": 132949,
+  "post_burnin_samples": 93066,
+  "H0": {
+    "mean": 67.78448963859557,
+    "std": 1.092498186665672
+  },
+  "delta_neff": {
+    "mean": 0.05779910220264597,
+    "std": 0.17871334756174940
+  },
+  "tau": {
+    "mean": 0.05569495077695334,
+    "std": 0.006965459841840182
+  },
+  "sigma8": {
+    "mean": 0.8117628762681932,
+    "std": 0.009248156707887038
+  },
+  "omegam": {
+    "mean": 0.31163487265224640,
+    "std": 0.005726856382801535
+  },
+  "ns": {
+    "mean": 0.9663218771761598,
+    "std": 0.006232151150660081
+  },
+  "S8": {
+    "mean": 0.8272911481855495,
+    "std": 0.009986953137130364
+  },
+  "age": {
+    "mean": 13.757739625188156,
+    "std": 0.17309484267420974
+  }
+}
