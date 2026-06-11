@@ -140,9 +140,9 @@ submission_status: Wave 14-Z LANDED — R42 P1-OA-M4 MAJOR (NaMaster description
 | Compiled PDF | `arxiv/main.pdf` | ✅ present, 510 KB, 2026-04-14 |
 | Bibliography | `arxiv/references.bib` | ✅ present, 1282 lines |
 | Figures folder | `arxiv/figures/` | ✅ P1-FIGURES-VERIFY PASS (Wave 14-DDD): all 4 `\includegraphics` calls resolve: `fig_theory_map.png` (arxiv/), `figures/figure1_lqg_holst_derivation_enhanced.png`, `figures/consistency_window_birefringence.pdf`, `figures/paper1_corner_full_tension.pdf` — all present on disk |
-| MCMC chains (full-tension) | `reproducibility/cosmology/paper1_clean_restart_sync/chains/dneff/full_tension/` | ✅ 176,840 samples |
+| MCMC chains (full-tension) | `reproducibility/cosmology/paper1_clean_restart_sync/chains/dneff/full_tension/` | ✅ 176,240 samples |
 | MCMC chains (Planck+BAO+SN) | `reproducibility/cosmology/paper1_clean_restart_sync/chains/dneff/planck_bao_sn/` | ✅ 132,949 samples |
-| MCMC chains (third frozen combo) | `reproducibility/cosmology/paper1_clean_restart_sync/chains/dneff/<combo>/` | ✅ ~114,992 samples (total 424,781 across 3 combos: 176,840 + 132,949 + 114,992 = 424,781; Paper 1 abstract canonical, supersedes 424,181 arithmetic mismatch fire #25) |
+| MCMC chains (third frozen combo) | `reproducibility/cosmology/paper1_clean_restart_sync/chains/dneff/<combo>/` | ✅ ~114,992 samples (total 424,181 across 3 combos: 176,240 + 132,949 + 114,992 = 424,181; headline counts the 2 converged combos only = 309,189; 176,240 chain-confirmed EXT2 v1B.0.57, supersedes stale 176,840 export figure) |
 | Sensitivity scan | `research/sensitivity_scan/` | ✅ 100,000 sample Monte Carlo, Spearman \|ρ_s\|=0.996 on N_tot |
 | Chirality catalog hook | `pipelines/p2_chirality/` | ✅ cited as `Golden:2026chirality` via cross-ref |
 
@@ -155,8 +155,8 @@ submission_status: Wave 14-Z LANDED — R42 P1-OA-M4 MAJOR (NaMaster description
 | Abstract | **14 structural barriers** close all ECH-specific routes from bounce to dark energy | 14 | main.tex §II |
 | §III | β from spectator ALP | 0.27° (ALP prediction) vs 0.264° ± 0.065° (NaMaster measurement, Eq. 38 / L391) vs 0.342° ± 0.094° (Planck+ACT combined observation) | main.tex L391 (measurement) + L394 (prediction quoted) |
 | §III | Combined Gaussian-summary BF | 176 (3.9σ) for β = 0.242° ± 0.061° | main.tex L1005 |
-| §IV | ΔN_eff (full-tension combo) | −0.020 ± 0.169 (176,840 samples) | main.tex L1003 |
-| §IV | ΔN_eff (Planck+BAO+SN) | +0.065 ± 0.17 (132,949 samples) | main.tex L1003 |
+| §IV | ΔN_eff (full-tension combo) | −0.020 ± 0.169 (176,240 samples) | main.tex L1003 |
+| §IV | ΔN_eff (Planck+BAO+SN) | +0.058 ± 0.179 (132,949 samples; chain-confirmed EXT2 v1B.0.57) | main.tex L1003 |
 | §V | Matter-bounce f_NL (shared with Paper 2) | −35/8 = −4.375 | main.tex ~L730 |
 | §V | Bounce-discrimination table | matter / Cuscuton / ekpyrotic / quintom / inflation | main.tex §V, ~L736–850 |
 | §VI | Chirality null robustness | fcw_eq = 0.5012 ± 0.0006 (0.4σ from parity) | main.tex ~L885, cites P4 |
@@ -251,7 +251,7 @@ arxiv/
 
 reproducibility/cosmology/paper1_clean_restart_sync/
 └── chains/dneff/
-    ├── full_tension/     ← 176,840 samples
+    ├── full_tension/     ← 176,240 samples
     ├── planck_bao_sn/    ← 132,949 samples
     └── <third-combo>/    ← ~114,392 samples
 ```

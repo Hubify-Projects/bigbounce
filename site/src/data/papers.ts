@@ -164,7 +164,7 @@ export const papers: Paper[] = [
     description: "Technical verification companion to Paper 1A, documenting three analyses: a 309,189-sample Cobaya ΛCDM+ΔN_eff MCMC that recovers ΛCDM (H0 = 67.68 ± 1.06 km/s/Mpc, ΔN_eff consistent with zero); a NaMaster pipeline validation on synthetic ΛCDM polarization skies with an ACT-like mask (inject β=0.27°, recover 0.238°, bias −0.032° — a pipeline-validation figure, not a sky measurement); and a spectator-ALP consistency check against the published Planck+ACT β = 0.342° ± 0.094° (3.6σ).",
     keyResults: [
       "309,189 frozen MCMC samples across 2 converged dataset combinations (176,240 full-tension + 132,949 Planck+BAO+SN); third Planck-only ongoing",
-      "ΔN_eff consistent with zero (-0.020 ± 0.169 full-tension; +0.065 ± 0.17 Planck+BAO+SN); H0 = 67.68 ± 1.06",
+      "ΔN_eff consistent with zero (-0.020 ± 0.169 full-tension; +0.058 ± 0.179 Planck+BAO+SN); H0 = 67.68 ± 1.06",
       "NaMaster 500MC on synthetic ΛCDM skies (f_sky=0.32, ACT-level noise): β=0.27° recovered as 0.238°, bias −0.032°, sign-symmetric, σ_β(0.32)=0.046° measured directly — pipeline validation, not a sky detection",
       "Spectator-ALP f_a ~ M_Pl, m ~ H_0 consistent with Eskilt+ joint Planck+ACT 0.342°±0.094° (3.6σ)",
       "Pipeline-recovery bias 0.032° well below the published observational σ_β = 0.094°",
