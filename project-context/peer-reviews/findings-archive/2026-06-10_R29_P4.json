@@ -1,0 +1,40 @@
+{
+ "round": "2026-06-10_R29",
+ "paper": "P4",
+ "date": "2026-06-10",
+ "round_type": "cross_vendor_r_round",
+ "pre_version": "v1.0.172",
+ "post_version": "v1.0.173",
+ "vendors": [
+  "Claude (brutal)",
+  "OpenAI (methodology)",
+  "Gemini (cosmology)",
+  "Grok (brutal)",
+  "Perplexity (citations)"
+ ],
+ "truth_audit_source": "R29_P4_TRUTH_AUDIT.md",
+ "audit_note": "R29 99 raw findings, 14 consensus groups. KEY PATCHES APPLIED: E01 FALSIFIED by local compute run — NSIDE sensitivity {4,8,16} all give |z|≥17, headline stable; footnote updated with sensitivity table and new artifact. E02 NS gallery figure FIXED — fig_gallery_notspi.png was absent from Fig.1 (broken symlink); file copied and 3-panel figure inserted. E03 Data Availability hash convention note added. E04 +3.64σ/+7.93σ bridge in Conclusions patched; MASTER z definition corrected (added null-mean subtraction). Table I row vi +1.68→+1.69σ fixed. HOUSTON-DECISION: train/val augmentation order-of-operations (META-E1), no pre-registration for p_eq>0.6 threshold (META-M4), cross-map independence test vs CE-ResNet (META-M5).",
+ "verdict_counts": {
+  "VERIFIED": 12,
+  "PARTIAL": 8,
+  "OPINION": 10,
+  "FALSIFIED": 3,
+  "HOUSTON-DECISION": 4,
+  "STALE": 0
+ },
+ "findings": [
+  {"id": "E01", "reviewer": "Claude_brutal", "severity": "ESSENTIAL", "verdict": "FALSIFIED", "summary": "NSIDE=8 block-bootstrap brittleness — local compute confirms |z|≥17 across NSIDE={4,8,16}; sensitivity table added to footnote", "closure": "closed", "pattern_ids": []},
+  {"id": "E02", "reviewer": "Claude_brutal", "severity": "ESSENTIAL", "verdict": "VERIFIED", "summary": "NS gallery figure missing from Fig.1 (broken symlink fig_gallery_notspi.png → figs/); file restored and 3-panel figure inserted", "closure": "closed", "pattern_ids": []},
+  {"id": "E03", "reviewer": "Claude_brutal", "severity": "ESSENTIAL", "verdict": "VERIFIED", "summary": "Data Availability hash 'stale at HEAD' — pin policy explained; convention note added to tex", "closure": "closed", "pattern_ids": []},
+  {"id": "E04", "reviewer": "Claude_brutal", "severity": "ESSENTIAL", "verdict": "PARTIAL", "summary": "+3.64σ/+7.93σ twin meanings without explicit bridge — Conclusions paragraph patched; abstract parenthetical already correct", "closure": "closed", "pattern_ids": []},
+  {"id": "META-m9", "reviewer": "META_REVIEW", "severity": "MAJOR", "verdict": "VERIFIED", "summary": "Table I row vi +1.68σ vs Table IV +1.69σ — fixed to +1.69 matching artifact", "closure": "closed", "pattern_ids": []},
+  {"id": "OpenAI-E8", "reviewer": "OpenAI_methodology", "severity": "MAJOR", "verdict": "VERIFIED", "summary": "MASTER z definition missing null-mean subtraction: z=C_1^data/σ_null → z=(C_1^data−⟨C_1⟩_null)/σ_null", "closure": "closed", "pattern_ids": []},
+  {"id": "META-E1", "reviewer": "META_REVIEW", "severity": "MAJOR", "verdict": "HOUSTON-DECISION", "summary": "Train/val augmentation leakage: order-of-operations (split-then-augment vs augment-then-split) needs explicit clarification", "closure": "open", "pattern_ids": []},
+  {"id": "META-M4", "reviewer": "META_REVIEW", "severity": "MAJOR", "verdict": "OPINION", "summary": "No pre-registration for p_eq>0.6 threshold — cannot produce retroactive timestamp; generator script commitment documented", "closure": "na", "pattern_ids": []},
+  {"id": "META-M5", "reviewer": "META_REVIEW", "severity": "MAJOR", "verdict": "HOUSTON-DECISION", "summary": "Missing cross-map independence test vs CE-ResNet Ap field; direct cross-spectrum would bound imprinting", "closure": "open", "pattern_ids": []},
+  {"id": "META-M6", "reviewer": "META_REVIEW", "severity": "MAJOR", "verdict": "PARTIAL", "summary": "Camera-angle/orientation-phase systematics not tested; partially covered by WLS leg-fraction templates", "closure": "open", "pattern_ids": []},
+  {"id": "OpenAI-M1", "reviewer": "OpenAI_methodology", "severity": "MAJOR", "verdict": "PARTIAL", "summary": "Shamir factor 6-12 ambiguity — range depends on estimator choice; derivation footnote recommended", "closure": "open", "pattern_ids": []},
+  {"id": "Perplexity-citations", "reviewer": "Perplexity_citations", "severity": "MAJOR", "verdict": "HOUSTON-DECISION", "summary": "Shamir citation completeness, DESI Legacy DR8 vs DR9 distinction, CW fraction precision — ADS verification recommended", "closure": "open", "pattern_ids": []},
+  {"id": "minor-batch", "reviewer": "multiple", "severity": "MINOR", "verdict": "OPINION", "summary": "Batch MINOR: notation cleanup, cross-reference completeness, caption style — deferred to copyedit", "closure": "open", "pattern_ids": []}
+ ]
+}

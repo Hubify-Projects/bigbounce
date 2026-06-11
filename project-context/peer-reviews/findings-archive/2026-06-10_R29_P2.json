@@ -1,0 +1,36 @@
+{
+ "round": "2026-06-10_R29",
+ "paper": "P2",
+ "date": "2026-06-10",
+ "round_type": "cross_vendor_r_round",
+ "pre_version": "v1.7.49",
+ "post_version": "v1.7.49",
+ "vendors": [
+  "Claude (brutal)",
+  "OpenAI (methodology — API-failed; round DOES NOT count toward clean-round counter)",
+  "Gemini (cosmology)",
+  "Grok (brutal)",
+  "Perplexity (citations)"
+ ],
+ "truth_audit_source": "R29_P2_TRUTH_AUDIT.md",
+ "audit_note": "R29 5-vendor cross-review post-EXT1 closure wave. NOTE: OpenAI leg API-failed; round does not count toward clean-round counter. E1 (abstract disclaimer-list) VERIFIED. E2 (title 'and Forecasts') VERIFIED. E3 (covariance OOM dimensional error) VERIFIED with correct dimensionless form derived. E4 (9.4%/de-bias null) PARTIAL-STALE (addressed but abstract framing still Houston-decision). E5 (Zenodo DOI) HOUSTON-DECISION. OPINION: ALP sign-restriction, birefringence section, abstract length. Key new finding E3: §spherex covariance OOM has dimensional inconsistency — P_ζ(k)/V_survey δk is not dimensionless without using dimensionless Δ_ζ².",
+ "verdict_counts": {
+  "VERIFIED": 4,
+  "PARTIAL": 3,
+  "OPINION": 5,
+  "FALSIFIED": 0,
+  "HOUSTON-DECISION": 2,
+  "STALE": 1
+ },
+ "findings": [
+  {"id": "E1", "reviewer": "Claude_brutal", "severity": "ESSENTIAL", "verdict": "VERIFIED", "summary": "Abstract is a disclaimer-list not a paper-front; 700-word single paragraph with 3-deep nested parentheticals", "closure": "open", "pattern_ids": []},
+  {"id": "E2", "reviewer": "Claude_brutal", "severity": "ESSENTIAL", "verdict": "VERIFIED", "summary": "Title says 'and Forecasts' while body uses 'sensitivity recast'; title-vs-body mismatch real", "closure": "open", "pattern_ids": ["headline-vs-body-claim-drift"]},
+  {"id": "E3", "reviewer": "Claude_brutal", "severity": "ESSENTIAL", "verdict": "VERIFIED", "summary": "§spherex covariance OOM dimensionally inconsistent: P_ζ/(V_survey δk) has dimensions [k^{-1}] not dimensionless; correct form uses dimensionless Δ_ζ²/N_modes", "closure": "open", "pattern_ids": ["dimensional-analysis-mistaken-for-derivation"]},
+  {"id": "E4", "reviewer": "Grok_brutal", "severity": "ESSENTIAL", "verdict": "PARTIAL", "summary": "Abstract '9.4% improvement' contradicts de-biased null — abstract framing Houston-decision on ordering", "closure": "open", "pattern_ids": []},
+  {"id": "E5", "reviewer": "multiple", "severity": "ESSENTIAL", "verdict": "HOUSTON-DECISION", "summary": "Zenodo DOI not minted; code artifacts accessible via mutable GitHub branch only", "closure": "open", "pattern_ids": []},
+  {"id": "M7", "reviewer": "Claude_brutal", "severity": "MAJOR", "verdict": "VERIFIED", "summary": "§spherex: δσ/σ<1% claim inconsistent with δC/C≲10^{-3} — factor-of-2 off; cross-finding with E3", "closure": "open", "pattern_ids": []},
+  {"id": "novF2", "reviewer": "Gemini_cosmology", "severity": "MAJOR", "verdict": "PARTIAL", "summary": "Fisher fiducial-shift bound: applying σ(fNL)=0.7 at fNL=-4.375 relies on shift-invariance not quantified", "closure": "open", "pattern_ids": []},
+  {"id": "novF1", "reviewer": "Claude_brutal", "severity": "MAJOR", "verdict": "VERIFIED", "summary": "§VII.B bφ 20% prior optimistic — degradation to σ≈0.9-1.0 should be quantified in body", "closure": "open", "pattern_ids": []},
+  {"id": "minor-batch", "reviewer": "multiple", "severity": "MINOR", "verdict": "OPINION", "summary": "Batch MINOR: notation overload, abstract length, correction-note consolidation, GR projection calculation — deferred", "closure": "open", "pattern_ids": []}
+ ]
+}

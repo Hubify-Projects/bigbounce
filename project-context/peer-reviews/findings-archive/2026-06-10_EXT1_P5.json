@@ -1,0 +1,53 @@
+{
+ "round": "2026-06-10_EXT1",
+ "paper": "P5",
+ "date": "2026-06-10",
+ "round_type": "external_three_reviewer",
+ "pre_version": "v0.1.60",
+ "post_version": "v0.1.62",
+ "vendors": [
+  "ChatGPT Pro Extended (GPT-5.5)",
+  "Grok Heavy",
+  "Gemini 3.5 Thinking"
+ ],
+ "truth_audit_source": "EXT1_P5_TRUTH_AUDIT.md",
+ "audit_note": "28 audited findings. Reviewer verdicts: ChatGPT MAJOR, Grok MINOR, Gemini MAJOR. Post-audit: Grok's MINOR better calibrated. VERIFIED 12, PARTIAL 4, OPINION 5, STALE 1, FALSIFIED 4, HOUSTON-DECISION 2. ChatGPT BLOCKERs F3/F6 FALSIFIED. Key genuine gaps: DESIVAST program-split table (F9), Cramér's V + log10(p) (F8), logistic regression for program control (F25), analysis-tree table (F7), headline language dual-use (C1). Void-bin smallness typo (F16) was logic error missed by all internal rounds.",
+ "verdict_counts": {
+  "VERIFIED": 12,
+  "PARTIAL": 4,
+  "OPINION": 5,
+  "FALSIFIED": 4,
+  "HOUSTON-DECISION": 2,
+  "STALE": 1
+ },
+ "findings": [
+  {"id": "F1", "reviewer": "ChatGPT_Pro_Extended", "severity": "BLOCKER", "verdict": "PARTIAL", "summary": "Non-void control not restricted to formal DESIVAST footprint; '0 voids per pixel' is proxy not formal mask", "closure": "open", "pattern_ids": []},
+  {"id": "F2", "reviewer": "ChatGPT_Pro_Extended", "severity": "BLOCKER", "verdict": "HOUSTON-DECISION", "summary": "DESIVAST void counts 1,461/420/295 vs preprint; verify against final ApJ 982, 38", "closure": "open", "pattern_ids": []},
+  {"id": "F3", "reviewer": "ChatGPT_Pro_Extended", "severity": "BLOCKER", "verdict": "FALSIFIED", "summary": "k=20 approximation not exact — paper reports exact k-unbounded result (n_void=57,081) explicitly", "closure": "na", "pattern_ids": []},
+  {"id": "F4", "reviewer": "ChatGPT_Pro_Extended", "severity": "BLOCKER", "verdict": "OPINION", "summary": "Paper IV companion not independently reviewable — documented in-prep dependency", "closure": "na", "pattern_ids": []},
+  {"id": "F5", "reviewer": "ChatGPT_Pro_Extended", "severity": "BLOCKER", "verdict": "PARTIAL", "summary": "V-Web secondary but abstract still presents per-class V-Web σ values before DESIVAST result", "closure": "open", "pattern_ids": []},
+  {"id": "F6", "reviewer": "ChatGPT_Pro_Extended", "severity": "MAJOR", "verdict": "FALSIFIED", "summary": "'V-Web' in title — title already uses T-Web; V-Web retained backward-compat footnote only", "closure": "na", "pattern_ids": []},
+  {"id": "F7", "reviewer": "ChatGPT_Pro_Extended", "severity": "MAJOR", "verdict": "VERIFIED", "summary": "Primary/secondary declaration post-hoc; Bonferroni-5 too narrow for full analysis tree", "closure": "open", "pattern_ids": []},
+  {"id": "F8", "reviewer": "ChatGPT_Pro_Extended", "severity": "MAJOR", "verdict": "VERIFIED", "summary": "χ²=4932 contingency lacks Cramér's V and log10(p) effect sizes", "closure": "closed", "pattern_ids": []},
+  {"id": "F9", "reviewer": "ChatGPT_Pro_Extended", "severity": "MAJOR", "verdict": "VERIFIED", "summary": "DESIVAST primary independence from target-program asserted not quantitatively demonstrated; no split table", "closure": "closed", "pattern_ids": []},
+  {"id": "F10", "reviewer": "ChatGPT_Pro_Extended", "severity": "MAJOR", "verdict": "PARTIAL", "summary": "Phase 2 range heat map Rs=10 cells unresolved; paper already caveats and excludes from robustness claim", "closure": "open", "pattern_ids": []},
+  {"id": "F11", "reviewer": "ChatGPT_Pro_Extended", "severity": "MAJOR", "verdict": "PARTIAL", "summary": "RSD argument insufficient — abstract 'inherits no anisotropic RSD systematic' slightly overstates", "closure": "open", "pattern_ids": []},
+  {"id": "F12", "reviewer": "ChatGPT_Pro_Extended", "severity": "MAJOR", "verdict": "STALE", "summary": "ZCAT_PRIMARY not used — robustness check shown; unique-TARGETID density rebuild present", "closure": "na", "pattern_ids": []},
+  {"id": "F13", "reviewer": "ChatGPT_Pro_Extended", "severity": "MAJOR", "verdict": "FALSIFIED", "summary": "Tempel/ASTRA over-described — explicitly labeled 'supporting rather than load-bearing'", "closure": "na", "pattern_ids": []},
+  {"id": "F14", "reviewer": "ChatGPT_Pro_Extended", "severity": "MAJOR", "verdict": "OPINION", "summary": "Bounce/EFT framing disproportionate — Appendix A explicitly labels as toy/heuristic/non-covariant", "closure": "na", "pattern_ids": []},
+  {"id": "F15", "reviewer": "ChatGPT_Pro_Extended", "severity": "MINOR", "verdict": "FALSIFIED", "summary": "Fig 3 title/caption parent count mismatch 791,635 vs 812,793 — caption correctly shows both with context", "closure": "na", "pattern_ids": []},
+  {"id": "F16", "reviewer": "ChatGPT_Pro_Extended", "severity": "MINOR", "verdict": "VERIFIED", "summary": "Void-bin smallness paragraph cites 'small cluster volume fraction of 1%' instead of void volume fraction", "closure": "closed", "pattern_ids": []},
+  {"id": "F17", "reviewer": "ChatGPT_Pro_Extended", "severity": "MINOR", "verdict": "PARTIAL", "summary": "'0/6 V-Web void purity' n=6 check language — n=6 limitation should be explicit in reporting sentence", "closure": "open", "pattern_ids": []},
+  {"id": "F18", "reviewer": "ChatGPT_Pro_Extended", "severity": "MINOR", "verdict": "FALSIFIED", "summary": "Sign convention for ΔfCW — explicitly stated in Table IX header l.1719", "closure": "na", "pattern_ids": []},
+  {"id": "F19", "reviewer": "ChatGPT_Pro_Extended", "severity": "MINOR", "verdict": "VERIFIED", "summary": "'Headline' dual-use: catalog-wide -5σ monopole and environment-dependence null use same term", "closure": "closed", "pattern_ids": []},
+  {"id": "F20", "reviewer": "Grok_Heavy", "severity": "MAJOR", "verdict": "VERIFIED", "summary": "Bright/dark f_CW difference inside V-Web class restricted to DESIVAST BGS volume not shown as self-contained quantification", "closure": "closed", "pattern_ids": []},
+  {"id": "F21", "reviewer": "Grok_Heavy", "severity": "MAJOR", "verdict": "VERIFIED", "summary": "'Headline' language not globally updated to DESIVAST null — multiple §VI.A and §VIII.E uses remain", "closure": "closed", "pattern_ids": []},
+  {"id": "F22", "reviewer": "Grok_Heavy", "severity": "MAJOR", "verdict": "VERIFIED", "summary": "Bonferroni-9 threshold not equation-numbered; three-tier significance paragraph should be named subsection", "closure": "closed", "pattern_ids": []},
+  {"id": "F23", "reviewer": "Gemini_Thinking", "severity": "BLOCKER", "verdict": "PARTIAL", "summary": "Rs=10 cells below grid sampling scale; unresolved cells in Table VI — paper caveats but retains them", "closure": "open", "pattern_ids": []},
+  {"id": "F24", "reviewer": "Gemini_Thinking", "severity": "BLOCKER", "verdict": "FALSIFIED", "summary": "i.i.d. violations 2.7% duplicate rows blocker — design-effect bound ≤1.9% shown; unique-spiral χ²=3.00 in paper", "closure": "na", "pattern_ids": []},
+  {"id": "F25", "reviewer": "Gemini_Thinking", "severity": "MAJOR", "verdict": "VERIFIED", "summary": "V-Web × target-program non-orthogonality requires joint logistic regression controlling for program", "closure": "closed", "pattern_ids": []},
+  {"id": "F26", "reviewer": "Gemini_Thinking", "severity": "MAJOR", "verdict": "PARTIAL", "summary": "RSD 'sub-percent ~0.2pp' floor overstated when z-shell-corrected V-Web range collapses to 0.05pp", "closure": "open", "pattern_ids": []},
+  {"id": "F27", "reviewer": "Gemini_Thinking", "severity": "MINOR", "verdict": "HOUSTON-DECISION", "summary": "PDF rendering artifacts — recompile and visually inspect; likely PDF-reader artifacts", "closure": "open", "pattern_ids": []},
+  {"id": "F28", "reviewer": "Gemini_Thinking", "severity": "MINOR", "verdict": "FALSIFIED", "summary": "Table IV column P should be log(1+δ) — source uses correct ρ̄ notation throughout", "closure": "na", "pattern_ids": []}
+ ]
+}

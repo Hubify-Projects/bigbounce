@@ -1,0 +1,45 @@
+{
+ "round": "2026-06-10_R29",
+ "paper": "P1A",
+ "date": "2026-06-10",
+ "round_type": "cross_vendor_r_round",
+ "pre_version": "v1A.0.57",
+ "post_version": "v1A.0.57",
+ "vendors": [
+  "Claude (brutal)",
+  "OpenAI (methodology)",
+  "Gemini (cosmology)",
+  "Grok (brutal)",
+  "Perplexity (citations)"
+ ],
+ "truth_audit_source": "R29_P1A_TRUTH_AUDIT.md",
+ "audit_note": "R29 5-vendor native-PDF cross-review of v1A.0.57. ESSENTIAL: E1 N_tot threshold drift VERIFIED (L584/L2217/L2278 fix applied), E2 Cartan κ step VERIFIED (footnote patch applied), E3 Holst coefficient PARTIAL (convention note added), E4 repro bundle v1A.0.56 VERIFIED (patch applied), companion-imports HOUSTON-DECISION, META-E1 Bianchi/pair-symmetry PARTIAL (patch applied), META-E2 Route-2 β-comparison HOUSTON-DECISION, META-E3 Route-2 parity classification VERIFIED (patch applied). MAJOR: ~15 VERIFIED items, NO PATCH this round — mathematical scope calls deferred. MINOR/NIT: ~70 findings, OPINION/STALE. Note: round does NOT count toward clean-round counter due to API-failed OpenAI leg per SYNTHESIS.",
+ "verdict_counts": {
+  "VERIFIED": 18,
+  "PARTIAL": 6,
+  "OPINION": 20,
+  "FALSIFIED": 0,
+  "HOUSTON-DECISION": 4,
+  "STALE": 2
+ },
+ "findings": [
+  {"id": "E1", "reviewer": "Claude_brutal", "severity": "ESSENTIAL", "verdict": "VERIFIED", "summary": "N_tot threshold drift: L584/L2217/L2278 use N_tot≥60 where differential N_tot-N_exit is correct", "closure": "closed", "pattern_ids": ["headline-vs-body-claim-drift"]},
+  {"id": "E2", "reviewer": "Claude_brutal", "severity": "ESSENTIAL", "verdict": "VERIFIED", "summary": "Cartan footnote: κ²→κ step skipped; on-shell Hehl-Datta substitution not shown", "closure": "closed", "pattern_ids": []},
+  {"id": "E3", "reviewer": "Claude_brutal", "severity": "ESSENTIAL", "verdict": "PARTIAL", "summary": "Eq.(1) Holst coefficient convention differs from Mercuri 2008; convention note added", "closure": "closed", "pattern_ids": []},
+  {"id": "E4", "reviewer": "Claude_brutal", "severity": "ESSENTIAL", "verdict": "VERIFIED", "summary": "Repro bundle README labels v1A.0.56 while paper is v1A.0.57", "closure": "closed", "pattern_ids": ["reproducibility-bundle-version-not-synced-on-paper-bump"]},
+  {"id": "companion", "reviewer": "multiple", "severity": "ESSENTIAL", "verdict": "HOUSTON-DECISION", "summary": "Load-bearing numbers from 5 in-prep companions; whether to strip for PRD submission", "closure": "open", "pattern_ids": ["programme-bundling-blind-spot-for-standalone-submission"]},
+  {"id": "META-E1", "reviewer": "META", "severity": "ESSENTIAL", "verdict": "PARTIAL", "summary": "Bianchi identity vs pair-symmetry vanishing; both valid routes — both routes now mentioned", "closure": "closed", "pattern_ids": []},
+  {"id": "META-E2", "reviewer": "META", "severity": "ESSENTIAL", "verdict": "HOUSTON-DECISION", "summary": "Route-2 operator does not couple to photons; β comparison needs explicit photon-coupling chain", "closure": "open", "pattern_ids": []},
+  {"id": "META-E3", "reviewer": "META", "severity": "ESSENTIAL", "verdict": "VERIFIED", "summary": "Route-2 operator parity classification: contraction is parity-EVEN; P-violation from background only", "closure": "closed", "pattern_ids": []},
+  {"id": "Claude-M1", "reviewer": "Claude_brutal", "severity": "MAJOR", "verdict": "VERIFIED", "summary": "Route-2 '10^{-33}' ordering asserted without derivation", "closure": "open", "pattern_ids": ["dimensional-analysis-mistaken-for-derivation"]},
+  {"id": "Claude-M3", "reviewer": "Claude_brutal", "severity": "MAJOR", "verdict": "VERIFIED", "summary": "'Perturbation transparency' naming inconsistent: theorem/observation/result/gates across sections", "closure": "open", "pattern_ids": []},
+  {"id": "Claude-M4", "reviewer": "Claude_brutal", "severity": "MAJOR", "verdict": "VERIFIED", "summary": "Γ_wash > H expectation never computed at GUT scale; sphalerons fail at GUT scale", "closure": "open", "pattern_ids": []},
+  {"id": "OpenAI-E4", "reviewer": "OpenAI_methodology", "severity": "ESSENTIAL", "verdict": "VERIFIED", "summary": "Route-2 closure circularity via Route-4 fit — depends on Houston decision on Route-2 scope", "closure": "open", "pattern_ids": []},
+  {"id": "OpenAI-E10", "reviewer": "OpenAI_methodology", "severity": "ESSENTIAL", "verdict": "VERIFIED", "summary": "γ symbol collision: Barbero-Immirzi vs PTA spectral index", "closure": "open", "pattern_ids": []},
+  {"id": "Grok-E1", "reviewer": "Grok_brutal", "severity": "ESSENTIAL", "verdict": "OPINION", "summary": "'Channel-Level Closure' title vs 'assessment, not theorem' body — prior round decision", "closure": "na", "pattern_ids": []},
+  {"id": "Grok-E2", "reviewer": "Grok_brutal", "severity": "ESSENTIAL", "verdict": "VERIFIED", "summary": "Perturbation-transparency theorem with body restrictions — same naming issue as Claude-M3", "closure": "open", "pattern_ids": []},
+  {"id": "Perplexity-E3", "reviewer": "Perplexity_citations", "severity": "ESSENTIAL", "verdict": "VERIFIED", "summary": "DESI 2024-2025 3.1-4.2σ range needs verification against DESI 2025 DR2 II paper", "closure": "open", "pattern_ids": []},
+  {"id": "Gemini-E1", "reviewer": "Gemini_cosmology", "severity": "ESSENTIAL", "verdict": "HOUSTON-DECISION", "summary": "Self-containment failure via 5 companions — same as companion-imports", "closure": "open", "pattern_ids": []},
+  {"id": "minor-batch", "reviewer": "multiple", "severity": "MINOR", "verdict": "OPINION", "summary": "~70 MINOR/NIT findings: stylistic cleanup (footnote length, hyphenation, PACS removal, etc.) — held for copyedit", "closure": "open", "pattern_ids": []}
+ ]
+}

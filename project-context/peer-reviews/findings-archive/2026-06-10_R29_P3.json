@@ -1,0 +1,42 @@
+{
+ "round": "2026-06-10_R29",
+ "paper": "P3",
+ "date": "2026-06-10",
+ "round_type": "cross_vendor_r_round",
+ "pre_version": "v3.1.88",
+ "post_version": "v3.1.89",
+ "vendors": [
+  "Claude (brutal)",
+  "OpenAI (methodology)",
+  "Gemini (cosmology)",
+  "Grok (brutal)",
+  "Perplexity (citations)"
+ ],
+ "truth_audit_source": "R29_P3_TRUTH_AUDIT.md",
+ "audit_note": "R29 5-vendor cross-review of v3.1.88. PATCHED THIS WAVE: ESS-01 (eROSITA S=1.084 score quoted in prose body → membership-only framing applied), ESS-02 (abstract missing eROSITA non-reproducible score disclosure → parenthetical added), ESS-03 (dedup artifact path drift r23conf_dedup_audits.json → pathc_dedup/ prefix patched). NOT PATCHED/DEFERRED: E-06 (SHA-256 collision parquet files — byte-identical by design; manifest annotated only), E-07 (conclusions 'projected' verb — deferred), E-08 (Table I eROSITA rate '0.03' missing membership-only Note — deferred), E-09 (high-z body text uses confirmed-style z — deferred), E-10 (fnl_improvement caption lacks 'superseded' — deferred). FALSIFIED: OpenAI P3-E1 (Fisher F0 dimensionality — already correct in source). HOUSTON-DECISION: multiple citation metadata verification (Perplexity E2-E8/E12), Zenodo DOI, novelty fraction FWER, manuscript length.",
+ "verdict_counts": {
+  "VERIFIED": 6,
+  "PARTIAL": 5,
+  "OPINION": 8,
+  "FALSIFIED": 1,
+  "HOUSTON-DECISION": 6,
+  "STALE": 1
+ },
+ "findings": [
+  {"id": "ESS-01", "reviewer": "Claude_brutal", "severity": "ESSENTIAL", "verdict": "VERIFIED", "summary": "§III.E body quotes S=1.084 quantitatively after Table III declares membership-only; within-section contradiction", "closure": "closed", "pattern_ids": ["partial-fix-closure-regression"]},
+  {"id": "ESS-02", "reviewer": "Claude_brutal", "severity": "ESSENTIAL", "verdict": "VERIFIED", "summary": "Abstract folds eROSITA into 378,280 without non-reproducible score-axis disclosure", "closure": "closed", "pattern_ids": []},
+  {"id": "ESS-03", "reviewer": "Claude_brutal", "severity": "ESSENTIAL", "verdict": "VERIFIED", "summary": "r23conf_dedup_audits.json path drift: file is in pathc_dedup/ subdirectory; paper implied repo-root", "closure": "closed", "pattern_ids": []},
+  {"id": "E-06", "reviewer": "Claude_brutal", "severity": "MAJOR", "verdict": "VERIFIED", "summary": "SHA-256 collision: pathc_multi_survey_matches.parquet and _no_act variant byte-identical (ACT zero overlaps by design); manifest annotated", "closure": "closed", "pattern_ids": []},
+  {"id": "E-07", "reviewer": "Claude_brutal", "severity": "MAJOR", "verdict": "VERIFIED", "summary": "Conclusions item 5 'is projected' too confident — conditional framing needed; deferred to next wave", "closure": "open", "pattern_ids": []},
+  {"id": "E-08", "reviewer": "Claude_brutal", "severity": "MAJOR", "verdict": "VERIFIED", "summary": "Table I eROSITA rate '0.03' lacks membership-only Note (Note covers only Planck/Gaia/NEOWISE three surveys)", "closure": "open", "pattern_ids": []},
+  {"id": "E-09", "reviewer": "Claude_brutal", "severity": "MAJOR", "verdict": "VERIFIED", "summary": "High-z QSO body text uses confirmed-style z=6.20/6.22 without 'pipeline-inferred' qualifier after heading rename", "closure": "open", "pattern_ids": []},
+  {"id": "E-10", "reviewer": "Claude_brutal", "severity": "MAJOR", "verdict": "VERIFIED", "summary": "Fig fnl_improvement caption lacks 'legacy' and 'superseded' labels present in §A.3 and Table sensitivity caption", "closure": "open", "pattern_ids": []},
+  {"id": "E-11", "reviewer": "Claude_brutal", "severity": "MAJOR", "verdict": "PARTIAL", "summary": "Abstract NANOGrav Bayes factor lacks environmental-caveat (SMBHB flattening); §nanograv has caveat, abstract does not", "closure": "open", "pattern_ids": []},
+  {"id": "OpenAI-E1", "reviewer": "OpenAI_methodology", "severity": "MAJOR", "verdict": "FALSIFIED", "summary": "Fisher F0=1/8.98 dimensionality error — source already uses correct F0=1/8.98^2 at L633 and L711", "closure": "na", "pattern_ids": []},
+  {"id": "Grok-E2", "reviewer": "Grok_brutal", "severity": "MAJOR", "verdict": "PARTIAL", "summary": "Abstract '9.4% improvement' contradicts de-biased null — substantially addressed but HOUSTON-DECISION on ordering", "closure": "open", "pattern_ids": []},
+  {"id": "Grok-E3", "reviewer": "Grok_brutal", "severity": "MAJOR", "verdict": "OPINION", "summary": "17.8% novelty fraction without multiple-testing control across 20 heterogeneous catalogs", "closure": "na", "pattern_ids": []},
+  {"id": "Grok-E4", "reviewer": "Grok_brutal", "severity": "MAJOR", "verdict": "HOUSTON-DECISION", "summary": "Companion repo not DOI-stable; Zenodo minting required before arXiv flip", "closure": "open", "pattern_ids": []},
+  {"id": "Perplexity-citations", "reviewer": "Perplexity_citations", "severity": "MAJOR", "verdict": "HOUSTON-DECISION", "summary": "Multiple citation metadata issues (eROSITA A&A, LAMOST RAA 2024, Nicolaou arXiv:2506.17376 future-dated, etc.) — ADS verification required", "closure": "open", "pattern_ids": []},
+  {"id": "minor-batch", "reviewer": "multiple", "severity": "MINOR", "verdict": "OPINION", "summary": "Batch MINOR/NIT: version-control language cleanup, injection-recovery 3-PASS headline, α≡b-1 definition, 20 catalogs not all-sky, etc — deferred", "closure": "open", "pattern_ids": []}
+ ]
+}

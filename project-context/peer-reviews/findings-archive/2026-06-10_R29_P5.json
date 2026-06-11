@@ -1,0 +1,39 @@
+{
+ "round": "2026-06-10_R29",
+ "paper": "P5",
+ "date": "2026-06-10",
+ "round_type": "cross_vendor_r_round",
+ "pre_version": "v0.1.61",
+ "post_version": "v0.1.62",
+ "vendors": [
+  "Claude (brutal)",
+  "OpenAI (methodology)",
+  "Gemini (cosmology)",
+  "Grok (brutal)",
+  "Perplexity (citations)"
+ ],
+ "truth_audit_source": "R29_P5_TRUTH_AUDIT.md",
+ "audit_note": "R29 cross-review of v0.1.61. PATCHED THIS WAVE: E29-2 terminology sweep ('catalog-level' → 'catalog-wide monopole offset' at 4 remaining sites), E29-3 abstract 'confirmed' → 'consistent with', M29-1 Cramér's V abstract naked → '--- small effect ---' added, M29-3 '≤0.01 SE' wrong for wall/cluster → corrected to ≤0.12 with per-class values. NOT PATCHED/DEFERRED: Meta-E1 (HEALPix 297 vs 885 — HOUSTON-DECISION), Meta-E2 (void volume fraction 0.1% vs 24.4% wording — OPINION), Meta-M1 (Table VII resolved-cell heading — HOUSTON-DECISION), Meta-M3 (row-level permutation null clarification), Meta-M4 (BGS-randoms only), companion-dependency structural issue. VERIFIED outstanding: Gemini arithmetic errors (Table XII, Δf_CW sign, Table IV |σ| header), binomial formula rendering, σ_pred formula.",
+ "verdict_counts": {
+  "VERIFIED": 8,
+  "PARTIAL": 5,
+  "OPINION": 8,
+  "FALSIFIED": 0,
+  "HOUSTON-DECISION": 3,
+  "STALE": 0
+ },
+ "findings": [
+  {"id": "E29-2", "reviewer": "Claude_brutal", "severity": "ESSENTIAL", "verdict": "VERIFIED", "summary": "Terminology half-sweep: 5 remaining 'catalog-level headline' instances in abstract/body not updated from EXT1 closure", "closure": "closed", "pattern_ids": ["partial-fix-closure-regression"]},
+  {"id": "E29-3", "reviewer": "Claude_brutal", "severity": "ESSENTIAL", "verdict": "VERIFIED", "summary": "Abstract 'confirmed by tracer-program decomposition' but body says 'cannot cleanly partition' — overstated closure", "closure": "closed", "pattern_ids": ["headline-vs-body-claim-drift"]},
+  {"id": "M29-1", "reviewer": "Claude_brutal", "severity": "MAJOR", "verdict": "VERIFIED", "summary": "Abstract Cramér's V=0.078 without 'small effect' qualifier alongside log10(p)≈-1069", "closure": "closed", "pattern_ids": []},
+  {"id": "M29-3", "reviewer": "Claude_brutal", "severity": "MAJOR", "verdict": "VERIFIED", "summary": "'≤0.01 SE' claim wrong for wall (0.10σ̂) and cluster (0.11σ̂); corrected to ≤0.12 with per-class values", "closure": "closed", "pattern_ids": ["arithmetic-transcription-error"]},
+  {"id": "Meta-E1", "reviewer": "META_REVIEW", "severity": "ESSENTIAL", "verdict": "HOUSTON-DECISION", "summary": "HEALPix pixel count 297 (body §VIII.E) vs 885 (Fig.8 caption) — different samples; cannot safely patch without script verification", "closure": "open", "pattern_ids": []},
+  {"id": "Meta-E2", "reviewer": "META_REVIEW", "severity": "ESSENTIAL", "verdict": "OPINION", "summary": "Void volume fraction 0.1% (DESIVAST in-footprint cells) vs 24.4% (V-Web class) — writing clarity issue, not arithmetic error", "closure": "open", "pattern_ids": []},
+  {"id": "Meta-M1", "reviewer": "META_REVIEW", "severity": "MAJOR", "verdict": "HOUSTON-DECISION", "summary": "Table VII resolved-cell heading 'Rs≥25.9 Mpc/h' includes Rs=25 rows — relabel or move to unresolved block", "closure": "open", "pattern_ids": []},
+  {"id": "Meta-M3", "reviewer": "META_REVIEW", "severity": "MAJOR", "verdict": "OPINION", "summary": "Row-level permutations break strict equivalence for 3.57% duplicate coadd rows — one-sentence clarification needed", "closure": "open", "pattern_ids": []},
+  {"id": "Gemini-E1", "reviewer": "Gemini_cosmology", "severity": "ESSENTIAL", "verdict": "VERIFIED", "summary": "Δf_CW sign: abstract void=0.4964, non-void=0.4971 implies Δ=-0.0007 but paper states +0.0007", "closure": "open", "pattern_ids": []},
+  {"id": "Gemini-E2", "reviewer": "Gemini_cosmology", "severity": "ESSENTIAL", "verdict": "VERIFIED", "summary": "Table XII arithmetic errors in σ_vs_monopole column — requires artifact recompute check", "closure": "open", "pattern_ids": []},
+  {"id": "companion", "reviewer": "multiple", "severity": "ESSENTIAL", "verdict": "OPINION", "summary": "Paper IV unpublished dependency — 4-reviewer consensus; structural submission strategy is Houston decision", "closure": "open", "pattern_ids": ["programme-bundling-blind-spot-for-standalone-submission"]},
+  {"id": "minor-batch", "reviewer": "multiple", "severity": "MINOR", "verdict": "OPINION", "summary": "Batch MINOR: binomial formula rendering, σ_pred typeset, n=782,710 vs 783,820 parenthetical, Mollweide axis labels, length compression — deferred", "closure": "open", "pattern_ids": []}
+ ]
+}

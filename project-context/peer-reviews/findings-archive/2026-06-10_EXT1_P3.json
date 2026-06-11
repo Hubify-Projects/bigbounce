@@ -1,0 +1,50 @@
+{
+ "round": "2026-06-10_EXT1",
+ "paper": "P3",
+ "date": "2026-06-10",
+ "round_type": "external_three_reviewer",
+ "pre_version": "v3.1.87",
+ "post_version": "v3.1.89",
+ "vendors": [
+  "ChatGPT Pro Extended (GPT-5.5)",
+  "Grok Heavy",
+  "Gemini 3.5 Thinking"
+ ],
+ "truth_audit_source": "EXT1_P3_TRUTH_AUDIT.md",
+ "audit_note": "25 audited findings. All three reviewers: MAJOR REVISIONS. Post-audit: CONDITIONAL MAJOR — 3 hard pre-submission fixes (A1 eROSITA score strip, A2 DOI, A4 SMBHB env caveat). FALSIFIED 4 (F4 Planck denominator, F6 v3.1.71 round, F15 NEOWISE tautology, F20 dedup provenance). 7 consensus findings. Key gap: environmental-flattening SMBHB caveat genuinely absent from all internal rounds.",
+ "verdict_counts": {
+  "VERIFIED": 8,
+  "PARTIAL": 7,
+  "OPINION": 4,
+  "FALSIFIED": 4,
+  "HOUSTON-DECISION": 2,
+  "STALE": 1
+ },
+ "findings": [
+  {"id": "F1", "reviewer": "ChatGPT_Grok_Gemini", "severity": "BLOCKER", "verdict": "VERIFIED", "summary": "eROSITA score axis irreproducible; S_BigAE scores non-monotone; membership-only but scores still in Table III", "closure": "open", "pattern_ids": ["partial-fix-closure-regression"]},
+  {"id": "F2", "reviewer": "ChatGPT_Grok", "severity": "BLOCKER", "verdict": "PARTIAL", "summary": "378,280 headline mixes heterogeneous strata without immediate qualification; tiering in abstract but presentation weight concern", "closure": "open", "pattern_ids": []},
+  {"id": "F3", "reviewer": "ChatGPT", "severity": "BLOCKER", "verdict": "PARTIAL", "summary": "DESI 195,829 includes non-science TARGETTYPE spectra; disclosed but no split table", "closure": "open", "pattern_ids": []},
+  {"id": "F4", "reviewer": "ChatGPT", "severity": "BLOCKER", "verdict": "FALSIFIED", "summary": "Planck denominator inconsistency 20k vs 200k — both real, documented, distinct pipelines", "closure": "na", "pattern_ids": []},
+  {"id": "F5", "reviewer": "ChatGPT_Grok_Gemini", "severity": "BLOCKER", "verdict": "VERIFIED", "summary": "Data/code availability: no DOI, no SHA256 hashes; HF URL present but not frozen", "closure": "open", "pattern_ids": []},
+  {"id": "F6", "reviewer": "ChatGPT", "severity": "BLOCKER", "verdict": "OPINION", "summary": "v3.1.71 cross-vendor R-round closure absent from PDF — internal QA record, not manuscript requirement", "closure": "na", "pattern_ids": []},
+  {"id": "F7", "reviewer": "ChatGPT_Grok", "severity": "MAJOR", "verdict": "PARTIAL", "summary": "9.4% improvement framing: de-biased null is zero; qualifier present but buried in abstract", "closure": "open", "pattern_ids": []},
+  {"id": "F8", "reviewer": "ChatGPT_Grok", "severity": "MAJOR", "verdict": "PARTIAL", "summary": "NANOGrav 'decisive' phrasing; SMBHB environmental-flattening caveat absent", "closure": "open", "pattern_ids": []},
+  {"id": "F9", "reviewer": "ChatGPT", "severity": "MAJOR", "verdict": "VERIFIED", "summary": "Table I design confusing: cross-transfer vs native counts mixed in N_anom column", "closure": "open", "pattern_ids": []},
+  {"id": "F10", "reviewer": "ChatGPT", "severity": "MAJOR", "verdict": "OPINION", "summary": "Planck 5'' FoF dedup on map patches conceptually odd — patches contribute zero overlaps", "closure": "na", "pattern_ids": []},
+  {"id": "F11", "reviewer": "ChatGPT_Grok_Gemini", "severity": "MAJOR", "verdict": "VERIFIED", "summary": "Cosmological claims SPHEREx 3-5σ too prominent relative to null empirical result in conclusions", "closure": "open", "pattern_ids": []},
+  {"id": "F12", "reviewer": "Gemini", "severity": "BLOCKER", "verdict": "PARTIAL", "summary": "Unmodeled DESI fiber-assignment systematics in Fisher forecast — disclosed assumption", "closure": "open", "pattern_ids": []},
+  {"id": "F13", "reviewer": "ChatGPT", "severity": "MAJOR", "verdict": "VERIFIED", "summary": "Appendix C fixed-α=0.15 table sits beside positivity formula without 'legacy' label", "closure": "open", "pattern_ids": []},
+  {"id": "F14", "reviewer": "ChatGPT", "severity": "MAJOR", "verdict": "OPINION", "summary": "NANOGrav section should be appendix not main text — editorial placement", "closure": "na", "pattern_ids": []},
+  {"id": "F15", "reviewer": "ChatGPT", "severity": "MAJOR", "verdict": "FALSIFIED", "summary": "Injection-recovery 3 PASS/3 FAIL shorthand misquoted — all sites carry NEOWISE geometry decomposition", "closure": "na", "pattern_ids": []},
+  {"id": "F16", "reviewer": "ChatGPT", "severity": "MAJOR", "verdict": "VERIFIED", "summary": "Gaia in catalog-grade 269,317 subset despite exploratory/not-validated footnote", "closure": "open", "pattern_ids": []},
+  {"id": "F17", "reviewer": "ChatGPT", "severity": "MAJOR", "verdict": "PARTIAL", "summary": "Spatial analysis 'not driven by foreground' overstated; necessary-but-not-sufficient caveat present", "closure": "open", "pattern_ids": []},
+  {"id": "F18", "reviewer": "ChatGPT", "severity": "MAJOR", "verdict": "VERIFIED", "summary": "Section heading 'Confirmed High-z QSO Candidates' combines confirmed+candidates contradiction", "closure": "open", "pattern_ids": []},
+  {"id": "F19", "reviewer": "ChatGPT", "severity": "MAJOR", "verdict": "VERIFIED", "summary": "Liang2023 bib entry MNRAS 525 may be wrong venue — verify against ADS for arXiv:2307.07664", "closure": "open", "pattern_ids": ["citation-venue-unverified"]},
+  {"id": "F20", "reviewer": "Grok", "severity": "BLOCKER", "verdict": "FALSIFIED", "summary": "Dedup provenance buried — sweep {3'',5'',7''} results ARE in body §IV.C with artifact cited", "closure": "na", "pattern_ids": []},
+  {"id": "F21", "reviewer": "Grok", "severity": "MAJOR", "verdict": "VERIFIED", "summary": "17.8% genuine novelty buried; abstract leads with 58.8% SIMBAD first", "closure": "open", "pattern_ids": []},
+  {"id": "F22", "reviewer": "Gemini", "severity": "BLOCKER", "verdict": "FALSIFIED", "summary": "NEOWISE injection tautology — paper already discloses 'masking-geometry sanity check passes by construction'", "closure": "na", "pattern_ids": []},
+  {"id": "F23", "reviewer": "Gemini", "severity": "MAJOR", "verdict": "PARTIAL", "summary": "DESI 5'' NEOWISE PSF ~6'' slight under-matching; boundary disclosure present but catalog schema not explicit", "closure": "open", "pattern_ids": []},
+  {"id": "F24", "reviewer": "Gemini", "severity": "MAJOR", "verdict": "VERIFIED", "summary": "NANOGrav SMBHB environmental flattening: eccentric binaries/stellar scattering can mimic γ~2.5 — missing caveat", "closure": "open", "pattern_ids": []},
+  {"id": "F25", "reviewer": "Gemini", "severity": "MINOR", "verdict": "VERIFIED", "summary": "Missing Gaia DR3 20-feature production script disclosed; which columns need manifest entry", "closure": "open", "pattern_ids": []}
+ ]
+}

@@ -1,0 +1,36 @@
+{
+ "round": "2026-06-10_R29",
+ "paper": "P1B",
+ "date": "2026-06-10",
+ "round_type": "cross_vendor_r_round",
+ "pre_version": "v1B.0.55",
+ "post_version": "v1B.0.55",
+ "vendors": [
+  "Claude (brutal)",
+  "OpenAI (methodology)",
+  "Gemini (cosmology)",
+  "Grok (brutal)",
+  "Perplexity (citations)"
+ ],
+ "truth_audit_source": "R29_P1B_TRUTH_AUDIT.md",
+ "audit_note": "R29 5-vendor native-PDF cross-review of v1B.0.55. ESSENTIAL E1 VERIFIED+FIXED: parameter_summary.json column-permutation bug (H0=sigma8, sigma8=omegam, etc.) — README rewritten with verified diagnosis; CORRECTED JSON confirmed against fresh chain reload. E2 ALP sign restriction: OPINION/HOUSTON-DECISION. E3 BBN-consistency ΔNeff<0: STALE/PARTIAL. E4 Table ordering: OPINION. E5 'consistent with zero' without ln B: VERIFIED. Note: R29_P1B used 2026-05-26 MCMC companion data (R29 P1B was an earlier cycle run for P1B specifically at v1B.0.30 per file listing).",
+ "verdict_counts": {
+  "VERIFIED": 5,
+  "PARTIAL": 3,
+  "OPINION": 6,
+  "FALSIFIED": 0,
+  "HOUSTON-DECISION": 2,
+  "STALE": 1
+ },
+ "findings": [
+  {"id": "E1", "reviewer": "Grok_brutal", "severity": "ESSENTIAL", "verdict": "VERIFIED", "summary": "parameter_summary.json column-permutation bug: H0=sigma8 (col 21), sigma8=omegam (col 22), etc; units-README misdiagnosed as unit-conversion", "closure": "closed", "pattern_ids": ["artifact-column-mapping-error"]},
+  {"id": "E2", "reviewer": "META_REVIEW", "severity": "ESSENTIAL", "verdict": "OPINION", "summary": "ALP sign restriction: C_aγ sampled over positive intervals only; removes half physical parameter space", "closure": "na", "pattern_ids": []},
+  {"id": "E3", "reviewer": "META_REVIEW", "severity": "ESSENTIAL", "verdict": "PARTIAL", "summary": "Hidden BBN-consistency assumption for ΔNeff<0; CAMB PArthENoPE table covers sampled range", "closure": "open", "pattern_ids": []},
+  {"id": "E4", "reviewer": "Gemini_cosmology", "severity": "ESSENTIAL", "verdict": "OPINION", "summary": "Table II referenced before Table I in §III — intentional ordering, PRD allows forward references", "closure": "na", "pattern_ids": []},
+  {"id": "E5", "reviewer": "Grok_brutal", "severity": "ESSENTIAL", "verdict": "VERIFIED", "summary": "Abstract claims 'consistent with zero' for ALP without reporting ln Bayes factor", "closure": "open", "pattern_ids": []},
+  {"id": "F4", "reviewer": "ChatGPT_Pro_Extended", "severity": "BLOCKER", "verdict": "VERIFIED", "summary": "DES-Y5 + Pantheon+ SN catalogs ~20% overlap; product likelihood unjustified without correction", "closure": "open", "pattern_ids": []},
+  {"id": "F6", "reviewer": "ChatGPT_Pro_Extended", "severity": "MAJOR", "verdict": "VERIFIED", "summary": "ΔNeff prior allows negative; should be quoted as one-sided upper limit under ΔNeff≥0", "closure": "open", "pattern_ids": []},
+  {"id": "F7", "reviewer": "ChatGPT_Pro_Extended", "severity": "MAJOR", "verdict": "VERIFIED", "summary": "Fig. 2 caption 'standard-ECH route not viable' overstates stock-CAMB proxy run", "closure": "open", "pattern_ids": []},
+  {"id": "minor-batch", "reviewer": "multiple", "severity": "MINOR", "verdict": "OPINION", "summary": "Batch of MINOR/NIT findings: notation, style, citation format — deferred to copyedit pass", "closure": "open", "pattern_ids": []}
+ ]
+}
