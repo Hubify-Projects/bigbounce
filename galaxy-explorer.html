@@ -254,10 +254,10 @@
 <div class="hero">
   <p class="text-xs sans" style="margin-bottom: 8px;">Pipeline 2 &middot; Galaxy Chirality Catalog &middot; DESI Legacy Survey DR8</p>
   <h1>Galaxy Chirality Explorer</h1>
-  <p class="subtitle">Browse the largest galaxy chirality catalog ever produced: 8,474,531 galaxies classified by spiral chirality using a ViT-Small vision transformer with test-time equivariant averaging. Dipole significance: 0.43&sigma; (null &mdash; no parity violation detected above the ~0.3% level). CW/(CW+CCW) = 0.4974, all sky regions within ~0.6% of 50/50. Search by sky position, filter by classification and confidence, and explore the all-sky distribution.</p>
+  <p class="subtitle">Browse the largest galaxy chirality catalog ever produced: 8,474,531 galaxies classified by spiral chirality using a ViT-Small vision transformer with test-time equivariant averaging. Dipole significance: +0.41&sigma; (null &mdash; no parity violation detected; A<sub>dip</sub> &lt; 6.8&times;10<sup>&minus;3</sup> at 95% UL). CW/(CW+CCW) = 0.4974, all sky regions within ~0.6% of 50/50. Search by sky position, filter by classification and confidence, and explore the all-sky distribution.</p>
   <div style="display:flex; gap:10px; margin-top:12px; flex-wrap:wrap;">
-    <a href="public/papers/chirality_catalog_paper.pdf" target="_blank" class="btn btn-primary" style="font-size:13px;">Read Paper 4 (PDF)</a>
-    <a href="paper.html" class="btn btn-secondary" style="font-size:13px;">All Papers</a>
+    <a href="/papers/chirality_catalog_paper.pdf" target="_blank" class="btn btn-primary" style="font-size:13px;">Read Paper 4 (PDF)</a>
+    <a href="/paper" class="btn btn-secondary" style="font-size:13px;">All Papers</a>
     <a href="https://huggingface.co/bamfai/galaxy-chirality-v2" target="_blank" class="btn btn-secondary" style="font-size:13px;">Model on HuggingFace</a>
     <a href="https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog" target="_blank" class="btn btn-secondary" style="font-size:13px;">Dataset on HuggingFace</a>
   </div>
@@ -271,24 +271,24 @@
     <div class="gx-stat-sub">DESI LS DR8</div>
   </div>
   <div class="gx-stat">
-    <div class="gx-stat-value">1,592,107</div>
+    <div class="gx-stat-value">1,687,069</div>
     <div class="gx-stat-label">Clockwise (CW)</div>
     <div class="gx-stat-sub">18.8%</div>
   </div>
   <div class="gx-stat">
-    <div class="gx-stat-value">1,609,053</div>
+    <div class="gx-stat-value">1,634,726</div>
     <div class="gx-stat-label">Counter-CW (CCW)</div>
     <div class="gx-stat-sub">19.0%</div>
   </div>
   <div class="gx-stat">
-    <div class="gx-stat-value">5,273,371</div>
+    <div class="gx-stat-value">5,152,736</div>
     <div class="gx-stat-label">Not Spiral</div>
     <div class="gx-stat-sub">62.2%</div>
   </div>
   <div class="gx-stat">
-    <div class="gx-stat-value">0.43&sigma;</div>
+    <div class="gx-stat-value">+0.41&sigma;</div>
     <div class="gx-stat-label">Dipole Significance</div>
-    <div class="gx-stat-sub">null &mdash; no parity violation above ~0.3%</div>
+    <div class="gx-stat-sub">null &mdash; A<sub>dip</sub> &lt; 0.68% at 95% UL</div>
   </div>
   <div class="gx-stat">
     <div class="gx-stat-value">0.4974</div>
@@ -306,7 +306,7 @@
 
     <div style="padding: 14px 16px; border: 1px solid var(--border); background: var(--bg);">
       <div style="font-family: var(--font-sans); font-weight: 600; font-size: 14px; margin-bottom: 6px;">Global Dipole: Null</div>
-      <p style="font-size: 13px; color: var(--text-secondary); margin: 0; line-height: 1.6;">Simple dipole: 0.43&sigma;. Power-spectrum dipole: 2.75&sigma; (marginal). No significant large-scale parity violation detected above the ~0.3% level.</p>
+      <p style="font-size: 13px; color: var(--text-secondary); margin: 0; line-height: 1.6;">Simple dipole: +0.41&sigma;. Power-spectrum dipole: 2.75&sigma; (marginal). No significant large-scale parity violation detected above the ~0.3% level.</p>
     </div>
 
     <div class="callout callout-info" style="padding: 14px 16px;">
@@ -349,19 +349,19 @@
 
     <!-- 1. Sky Map (Mollweide asymmetry) -->
     <div class="gx-fig">
-      <a href="public/images/chirality/fig_sky_map.png" target="_blank">
+      <a href="/images/chirality/fig_sky_map.png" target="_blank">
         <img src="public/images/chirality/fig_sky_map.png" alt="Mollweide asymmetry map" loading="lazy">
       </a>
       <div class="gx-fig-caption">
         <div class="gx-fig-title">Fig 1. Mollweide Asymmetry Map</div>
-        <div class="gx-fig-desc">Equivariant CW/(CW+CCW) fraction across the full sky in Mollweide projection. No large-scale pattern is visible. Global dipole significance: 0.43&sigma;.</div>
+        <div class="gx-fig-desc">Equivariant CW/(CW+CCW) fraction across the full sky in Mollweide projection. No large-scale pattern is visible. Global dipole significance: +0.41&sigma;.</div>
         <span class="gx-fig-ref">Finding: Global Dipole Null</span>
       </div>
     </div>
 
     <!-- 2. Raw vs Equivariant comparison -->
     <div class="gx-fig">
-      <a href="public/images/chirality/fig_raw_vs_eq.png" target="_blank">
+      <a href="/images/chirality/fig_raw_vs_eq.png" target="_blank">
         <img src="public/images/chirality/fig_raw_vs_eq.png" alt="Raw vs equivariant Mollweide comparison" loading="lazy">
       </a>
       <div class="gx-fig-caption">
@@ -373,7 +373,7 @@
 
     <!-- 3. Galaxy density map -->
     <div class="gx-fig">
-      <a href="public/images/chirality/fig_spiral_density.png" target="_blank">
+      <a href="/images/chirality/fig_spiral_density.png" target="_blank">
         <img src="public/images/chirality/fig_spiral_density.png" alt="Galaxy density map" loading="lazy">
       </a>
       <div class="gx-fig-caption">
@@ -385,7 +385,7 @@
 
     <!-- 4. CW fraction heatmap -->
     <div class="gx-fig">
-      <a href="public/images/chirality/fig_cw_fraction_heatmap.png" target="_blank">
+      <a href="/images/chirality/fig_cw_fraction_heatmap.png" target="_blank">
         <img src="public/images/chirality/fig_cw_fraction_heatmap.png" alt="RA/DEC CW fraction heatmap" loading="lazy">
       </a>
       <div class="gx-fig-caption">
@@ -397,19 +397,19 @@
 
     <!-- 5. Multipoles bar chart -->
     <div class="gx-fig">
-      <a href="public/images/chirality/fig_multipoles.png" target="_blank">
+      <a href="/images/chirality/fig_multipoles.png" target="_blank">
         <img src="public/images/chirality/fig_multipoles.png" alt="Angular power spectrum multipole analysis" loading="lazy">
       </a>
       <div class="gx-fig-caption">
         <div class="gx-fig-title">Fig 5. Angular Power Spectrum (Multipoles)</div>
-        <div class="gx-fig-desc">Power in the CW asymmetry field decomposed by angular multipole l. The dipole (l=1) is at 0.43&sigma;; l=5 shows a marginal 2.46&sigma; excess that does not survive look-elsewhere correction. No significant power at any scale.</div>
+        <div class="gx-fig-desc">Power in the CW asymmetry field decomposed by angular multipole l. The dipole (l=1) is at +0.41&sigma;; l=5 shows a marginal 2.46&sigma; excess that does not survive look-elsewhere correction. No significant power at any scale.</div>
         <span class="gx-fig-ref">Finding: l=5 Multipole 2.46&sigma; (does not survive LEE)</span>
       </div>
     </div>
 
     <!-- 6. Sky regions comparison -->
     <div class="gx-fig">
-      <a href="public/images/chirality/fig_sky_regions.png" target="_blank">
+      <a href="/images/chirality/fig_sky_regions.png" target="_blank">
         <img src="public/images/chirality/fig_sky_regions.png" alt="Raw vs equivariant CW fraction by sky region" loading="lazy">
       </a>
       <div class="gx-fig-caption">
@@ -421,7 +421,7 @@
 
     <!-- 7. Hemisphere comparison -->
     <div class="gx-fig">
-      <a href="public/images/chirality/fig_hemisphere.png" target="_blank">
+      <a href="/images/chirality/fig_hemisphere.png" target="_blank">
         <img src="public/images/chirality/fig_hemisphere.png" alt="North/South hemisphere CW comparison" loading="lazy">
       </a>
       <div class="gx-fig-caption">
@@ -433,7 +433,7 @@
 
     <!-- 8. Confidence distribution -->
     <div class="gx-fig">
-      <a href="public/images/chirality/fig_confidence_dist.png" target="_blank">
+      <a href="/images/chirality/fig_confidence_dist.png" target="_blank">
         <img src="public/images/chirality/fig_confidence_dist.png" alt="Classification confidence distribution" loading="lazy">
       </a>
       <div class="gx-fig-caption">
@@ -445,7 +445,7 @@
 
     <!-- 9. Class breakdown (pie/donut) -->
     <div class="gx-fig">
-      <a href="public/images/chirality/fig_class_pie.png" target="_blank">
+      <a href="/images/chirality/fig_class_pie.png" target="_blank">
         <img src="public/images/chirality/fig_class_pie.png" alt="CW/CCW/NOT_SPIRAL class breakdown" loading="lazy">
       </a>
       <div class="gx-fig-caption">
@@ -457,7 +457,7 @@
 
     <!-- 10. Equivariance demonstration -->
     <div class="gx-fig">
-      <a href="public/images/chirality/fig_equivariance_demo.png" target="_blank">
+      <a href="/images/chirality/fig_equivariance_demo.png" target="_blank">
         <img src="public/images/chirality/fig_equivariance_demo.png" alt="Equivariant averaging demonstration" loading="lazy">
       </a>
       <div class="gx-fig-caption">
@@ -475,7 +475,7 @@
 
   <div class="gx-gallery-row">
     <div class="gx-fig">
-      <a href="public/images/chirality/fig_gallery_cw.png" target="_blank">
+      <a href="/images/chirality/fig_gallery_cw.png" target="_blank">
         <img src="public/images/chirality/fig_gallery_cw.png" alt="Gallery of clockwise spiral galaxies" loading="lazy">
       </a>
       <div class="gx-fig-caption">
@@ -485,7 +485,7 @@
     </div>
 
     <div class="gx-fig">
-      <a href="public/images/chirality/fig_gallery_ccw.png" target="_blank">
+      <a href="/images/chirality/fig_gallery_ccw.png" target="_blank">
         <img src="public/images/chirality/fig_gallery_ccw.png" alt="Gallery of counter-clockwise spiral galaxies" loading="lazy">
       </a>
       <div class="gx-fig-caption">
@@ -495,7 +495,7 @@
     </div>
 
     <div class="gx-fig">
-      <a href="public/images/chirality/fig_gallery_notspi.png" target="_blank">
+      <a href="/images/chirality/fig_gallery_notspi.png" target="_blank">
         <img src="public/images/chirality/fig_gallery_notspi.png" alt="Gallery of non-spiral galaxies" loading="lazy">
       </a>
       <div class="gx-fig-caption">
@@ -575,7 +575,7 @@
   but does not yet include RA/Dec, so Legacy Survey cutouts can't be regenerated per row in the live query path.
   Full data access: <a href="https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog" target="_blank" rel="noopener">HuggingFace dataset</a>,
   <a href="https://huggingface.co/bamfai/galaxy-chirality-v2" target="_blank" rel="noopener">model</a>,
-  <a href="public/papers/chirality_catalog_paper.pdf" target="_blank">Paper 4 PDF</a>.
+  <a href="/papers/chirality_catalog_paper.pdf" target="_blank">Paper 4 PDF</a>.
   Schema extension (add ra/dec + reimport) is queued as a follow-up.
 </div>
 
@@ -612,10 +612,10 @@
 <!-- ═══════════════════════════════ SKY MAP ═══════════════════════════════ -->
 <div class="gx-skymap-section">
   <h2>All-Sky Chirality Map</h2>
-  <p style="margin-bottom: 12px;">Mollweide projection of spiral galaxy classifications across 8.47M galaxies. The distribution is essentially uniform. Global dipole is null (0.43&sigma;). A marginal hemisphere asymmetry (3.05&sigma;, north CW=49.81% vs south CW=49.64%) does not survive look-elsewhere correction. CMB dipole alignment is null (85.4&deg; separation).</p>
+  <p style="margin-bottom: 12px;">Mollweide projection of spiral galaxy classifications across 8.47M galaxies. The distribution is essentially uniform. Global dipole is null (+0.41&sigma;). A marginal hemisphere asymmetry (3.05&sigma;, north CW=49.81% vs south CW=49.64%) does not survive look-elsewhere correction. CMB dipole alignment is null (85.4&deg; separation).</p>
 
   <div class="gx-fig gx-fig--wide">
-    <a href="public/images/chirality/fig_sky_map.png" target="_blank">
+    <a href="/images/chirality/fig_sky_map.png" target="_blank">
       <img src="public/images/chirality/fig_sky_map.png" alt="Mollweide all-sky asymmetry map of 3.2M spiral galaxies" loading="lazy">
     </a>
     <div class="gx-fig-caption">
@@ -625,7 +625,7 @@
   </div>
 
   <div class="gx-fig gx-fig--wide" style="margin-top: 20px;">
-    <a href="public/images/chirality/fig_raw_vs_eq.png" target="_blank">
+    <a href="/images/chirality/fig_raw_vs_eq.png" target="_blank">
       <img src="public/images/chirality/fig_raw_vs_eq.png" alt="Raw vs equivariant Mollweide comparison" loading="lazy">
     </a>
     <div class="gx-fig-caption">
@@ -650,7 +650,7 @@
     <div class="gx-pipeline-item"><strong>Source images:</strong> DESI Legacy Survey DR8/DR9</div>
     <div class="gx-pipeline-item"><strong>HuggingFace:</strong> <a href="https://huggingface.co/bamfai/galaxy-chirality-v2" target="_blank">bamfai/galaxy-chirality-v2</a></div>
     <div class="gx-pipeline-item"><strong>Status:</strong> <span class="chip chip-sm chip-novel">COMPLETE</span> &mdash; Catalog C production run</div>
-    <div class="gx-pipeline-item"><strong>Dipole:</strong> 0.43&sigma; (null &mdash; no parity violation detected above ~0.3%)</div>
+    <div class="gx-pipeline-item"><strong>Dipole:</strong> +0.41&sigma; (null &mdash; A<sub>dip</sub> &lt; 6.8&times;10<sup>&minus;3</sup> at 95% UL)</div>
     <div class="gx-pipeline-item"><strong>Runtime:</strong> 4.1 hours on H200 (32&times; DataLoader speedup)</div>
     <div class="gx-pipeline-item"><strong>High-confidence spirals:</strong> 949,584 (confidence &gt; 0.6)</div>
     <div class="gx-pipeline-item"><strong>Cutout size:</strong> 150 &times; 150 px</div>
@@ -675,13 +675,13 @@
           <tr><th>Test</th><th style="text-align:center;">Significance</th><th style="text-align:center;">Survives LEE?</th></tr>
         </thead>
         <tbody>
-          <tr><td>Global dipole (simple)</td><td style="text-align:center; font-family:var(--font-mono);">0.43&sigma;</td><td style="text-align:center; color: var(--text-muted);">N/A (null)</td></tr>
+          <tr><td>Global dipole (simple)</td><td style="text-align:center; font-family:var(--font-mono);">+0.41&sigma;</td><td style="text-align:center; color: var(--text-muted);">N/A (null)</td></tr>
           <tr><td>Global dipole (power spectrum)</td><td style="text-align:center; font-family:var(--font-mono);">2.75&sigma;</td><td style="text-align:center; color: #dc2626;">No</td></tr>
           <tr><td>Hemisphere asymmetry (N/S)</td><td style="text-align:center; font-family:var(--font-mono); font-weight: 600;">3.05&sigma;</td><td style="text-align:center; color: #dc2626;">No</td></tr>
           <tr><td>l=5 multipole</td><td style="text-align:center; font-family:var(--font-mono);">2.46&sigma;</td><td style="text-align:center; color: #dc2626;">No</td></tr>
           <tr><td>CMB dipole alignment</td><td style="text-align:center; font-family:var(--font-mono);">Null (85.4&deg;)</td><td style="text-align:center; color: var(--text-muted);">N/A (null)</td></tr>
           <tr><td>Scale dependence (all scales)</td><td style="text-align:center; font-family:var(--font-mono);">Null</td><td style="text-align:center; color: var(--text-muted);">N/A (null)</td></tr>
-          <tr class="row-retracted"><td style="font-weight: 600;">Shamir 3% claim</td><td style="text-align:center; font-family:var(--font-mono); color: #dc2626; font-weight: 600;">REFUTED</td><td style="text-align:center; font-size: 11px;">Max 0.32% (~9&times; smaller)</td></tr>
+          <tr class="row-retracted"><td style="font-weight: 600;">Shamir 3% claim</td><td style="text-align:center; font-family:var(--font-mono); color: #dc2626; font-weight: 600;">Not reproduced</td><td style="text-align:center; font-size: 11px;">Max 0.32% (~9&times; smaller)</td></tr>
         </tbody>
       </table>
       </div>
@@ -726,8 +726,8 @@
     <div class="gx-pipeline-item"><strong>HuggingFace Dataset:</strong> <a href="https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog" target="_blank">bamfai/galaxy-chirality-catalog</a></div>
     <div class="gx-pipeline-item"><strong>Convex Database:</strong> 8,474,531 rows live</div>
     <div class="gx-pipeline-item"><strong>Source catalog:</strong> GZ DESI DR8 (Zenodo, 100% coordinate match)</div>
-    <div class="gx-pipeline-item"><strong>Catalog paper:</strong> &ldquo;No Evidence for Large-Scale Parity Violation in Galaxy Morphology: A Survey-Scale Chirality Catalog of 8.47 Million Galaxies&rdquo; &mdash; <strong>100% Ready</strong> (25.7 MB PDF, 0 undef refs). <a href="public/papers/chirality_catalog_paper.pdf" target="_blank"><strong>Read PDF</strong></a> &middot; <a href="pipelines/p2_chirality/chirality_catalog_paper.tex" target="_blank">LaTeX source</a> &middot; <a href="paper.html">Paper 4 on Papers page</a></div>
-    <div class="gx-pipeline-item"><strong>Related:</strong> <a href="index.html">Main research page</a> &middot; <a href="activity.html">Activity feed</a></div>
+    <div class="gx-pipeline-item"><strong>Catalog paper:</strong> &ldquo;Survey-Scale Galaxy Chirality with Equivariant TTA: A Null Real-Space Chirality Dipole, a Quantifiable Monopole-Mask Leakage Channel, and Diagnostic Evidence for a Depth/Morphology-Correlated Canonical-Mask Residual on 8.47 Million DESI Legacy Galaxies (3.2 Million Spirals)&rdquo; &mdash; <strong>in final review, Houston sign-off pending</strong> (0 undef refs). <a href="/papers/chirality_catalog_paper.pdf" target="_blank"><strong>Read PDF</strong></a> &middot; <a href="https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/chirality_catalog_paper.tex" target="_blank">LaTeX source</a> &middot; <a href="/paper">Paper 4 on Papers page</a></div>
+    <div class="gx-pipeline-item"><strong>Related:</strong> <a href="/">Main research page</a> &middot; <a href="/activity">Activity feed</a></div>
   </div>
 </div>
 

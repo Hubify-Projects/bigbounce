@@ -166,9 +166,9 @@ main { max-width: none; padding: 0; }
 <body>
 
 <div style="padding: 12px 24px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px; font-family: var(--font-sans); background: var(--bg);">
-  <a href="index.html" style="font-family: var(--font-mono); font-size: 15px; font-weight: 600; color: var(--text); text-decoration: none; letter-spacing: -0.01em;">bigbounce</a>
+  <a href="/" style="font-family: var(--font-mono); font-size: 15px; font-weight: 600; color: var(--text); text-decoration: none; letter-spacing: -0.01em;">bigbounce</a>
   <span style="color: var(--border);">|</span>
-  <a href="index.html" style="font-size: 13px; color: var(--text-tertiary); text-decoration: none; display: flex; align-items: center; gap: 4px;">&larr; Back to site</a>
+  <a href="/" style="font-size: 13px; color: var(--text-tertiary); text-decoration: none; display: flex; align-items: center; gap: 4px;">&larr; Back to site</a>
   <span style="flex:1;"></span>
   <span style="font-size: 12px; color: var(--text-muted); font-family: var(--font-sans);">Data Explorer</span>
 </div>
@@ -179,7 +179,7 @@ main { max-width: none; padding: 0; }
 <!-- ═════════════ Left Sidebar ═════════════ -->
 <aside class="de-sidebar" id="sidebar" role="navigation" aria-label="Dataset navigation">
   <div class="de-sidebar-header"><h3>Data Sources</h3></div>
-  <div style="padding: 0 12px 12px; font-size: 11px; color: var(--text-tertiary); line-height: 1.5; border-bottom: 1px solid var(--border); margin-bottom: 8px;">Data supporting all four papers. MCMC chains, barriers &amp; birefringence back Paper 1; f<sub>NL</sub> &amp; Bayesian discrimination back Paper 2; 8-survey anomaly catalog (378,480 unique objects, 637 multi-survey clusters) backs Paper 3; 8.47 M-galaxy chirality catalog backs Paper 4.</div>
+  <div style="padding: 0 12px 12px; font-size: 11px; color: var(--text-tertiary); line-height: 1.5; border-bottom: 1px solid var(--border); margin-bottom: 8px;">Data supporting all six papers. MCMC chains &amp; birefringence checks back Papers 1A/1B; f<sub>NL</sub> &amp; Bayesian discrimination back Paper 2; the 8-survey anomaly catalog (378,280 unique objects, 637 multi-survey clusters) backs Paper 3; the 8.47 M-galaxy chirality catalog backs Paper 4 and the DESI void-spiral cross-match backs Paper 5.</div>
 
   <div class="de-sidebar-group"><span class="dot green"></span> Paper 2 &mdash; Predictions</div>
   <div class="de-sidebar-item" onclick="selectDataset('bayesianDiscrimination')" data-key="bayesianDiscrimination">Bayesian Discrimination <span class="de-sidebar-badge frozen">3 rows</span></div>
@@ -2377,7 +2377,7 @@ quintomFnlVerification: {
 
 p3AnomalyCatalog: {
   name: "Paper 3 \u2014 Multi-Survey Anomaly Catalog",
-  description: "Unified autoencoder-based anomaly detection across 8 surveys, 37.3 M sources scanned, 319,443 survey-level anomalies retained after QC. After per-survey native BigAE retrains and 8-way positional dedup at 5\u2033, the final catalog contains 378,480 unique physical objects + 637 multi-survey clusters. 58.8% of top-ranked anomalies are SIMBAD-unmatched (no cataloged counterpart within 2\u2033). PATH-C COMPLETE: native BigAEs per survey (SDSS val_loss 0.0311, LAMOST 0.0329, CMB val_loss 0.4437 with 100% injection-recovery @ 5\u03C3). Continuum-dip injection-recovery on SDSS-native PASSES strict Path-C 5\u03C3 gate at 64% (vs 7.2% emission-line).",
+  description: "Unified autoencoder-based anomaly detection across 8 surveys, 37.3 M sources scanned, 319,443 survey-level anomalies retained after QC. After per-survey native BigAE retrains and 8-way positional dedup at 5\u2033, the final catalog contains 378,280 unique physical objects + 637 multi-survey clusters. 58.8% of top-ranked anomalies are SIMBAD-unmatched (no cataloged counterpart within 2\u2033). PATH-C COMPLETE: native BigAEs per survey (SDSS val_loss 0.0311, LAMOST 0.0329, CMB val_loss 0.4437 with 100% injection-recovery @ 5\u03C3). Continuum-dip injection-recovery on SDSS-native PASSES strict Path-C 5\u03C3 gate at 64% (vs 7.2% emission-line).",
   source: "pipelines/p3_anomaly_engine/",
   rows: 8, totalSamples: 378480,
   status: "PATH-C COMPLETE", statusClass: "frozen",
@@ -2396,7 +2396,7 @@ p3AnomalyCatalog: {
 
 p3SimbadNovelty: {
   name: "Paper 3 \u2014 Top-Ranked Anomaly SIMBAD Crossmatch",
-  description: "Post-hoc SIMBAD crossmatch at 2\u2033 for the top-ranked anomalies in each QC-passing survey. SIMBAD-unmatched means no cataloged counterpart within match radius. Overall novelty fraction across combined top-rank lists is 58.8% \u2014 a strong indication that the anomaly engine surfaces genuinely uncataloged objects rather than known oddities. After per-survey native retrains and 8-way positional dedup at 5\u2033, the final catalog contains 378,480 unique physical objects + 637 multi-survey clusters.",
+  description: "Post-hoc SIMBAD crossmatch at 2\u2033 for the top-ranked anomalies in each QC-passing survey. SIMBAD-unmatched means no cataloged counterpart within match radius. Overall novelty fraction across combined top-rank lists is 58.8% \u2014 a strong indication that the anomaly engine surfaces genuinely uncataloged objects rather than known oddities. After per-survey native retrains and 8-way positional dedup at 5\u2033, the final catalog contains 378,280 unique physical objects + 637 multi-survey clusters.",
   source: "pipelines/p3_anomaly_engine/simbad_crossmatch/",
   rows: 6, totalSamples: 0,
   status: "FROZEN", statusClass: "frozen",
