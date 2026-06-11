@@ -207,3 +207,10 @@ Details: [pattern-048-uncomputed-quantitative-claim.md](pattern-048-uncomputed-q
 Fix waves create new defects: fresh math errors in patches, half-applied sweeps, wrong closure artifacts. ~40% of EXT2's genuinely-new findings were regressions from our own EXT1/R29 closures. Prevention: 5-point closure-wave protocol (sweep-completeness grep, self-diff regression check, new-math gate, closure-artifact verification, changed-regions-first review).
 
 Details: [pattern-051-closure-introduced-regression.md](pattern-051-closure-introduced-regression.md)
+
+---
+## Pattern 052 — Re-raise vindication test (EXT3)
+
+A reviewer re-raising a FALSIFIED finding is itself evidence. Auto-falsify on re-raise ONLY if the prior falsification cited primary evidence; assumption-based falsifications get mandatory primary-source verification on re-raise (P2 Addis citation was vindicated on the 3rd raise after two wrongful falsifications; P5 k=20 was correctly auto-falsified — discriminator is evidence quality of the prior verdict).
+
+Details: [pattern-052-reraise-vindication.md](pattern-052-reraise-vindication.md)
