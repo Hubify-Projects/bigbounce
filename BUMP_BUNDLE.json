@@ -1,11 +1,11 @@
 [
  {
   "paperSlug": "paper-3",
-  "version": "v3.1.95",
+  "version": "v3.1.96",
   "datestamp": "2026-06-11",
-  "texCommit": "0868159c",
+  "texCommit": "23e314d7",
   "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p3_anomaly_engine/paper3_draft.pdf",
-  "sitePdfPath": "/papers/paper3_anomaly_catalog_v3.1.95.pdf",
-  "changelog": "R33conf confirmation CLEAN-after-audit: zero closure-introduced regressions, 2nd consecutive zero-arithmetic round; abstract envelope clause + auditable numeric Fisher mapping; P3 EXT4-eligible."
+  "sitePdfPath": "/papers/paper3_anomaly_catalog_v3.1.96.pdf",
+  "changelog": "FM1 eROSITA scaler-refit computed (was queued): scaler effect <= model-retrain reproducibility floor; top-298 overlap 257/298, Spearman 0.94; rates/rankings robust, ~15% extreme-tail membership churn quantified."
  }
 ]
