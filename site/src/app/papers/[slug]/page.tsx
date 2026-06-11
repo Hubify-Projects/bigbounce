@@ -2,9 +2,9 @@ import { papers, getPaperBySlug } from"@/data/papers";
 import {
   getLivePapers,
   getNotablesForPaper,
-  getExternalReviewsForPaper,
   getFiguresForPaper,
 } from"@/lib/livePapers";
+import { sortedReviewRounds, type PaperId } from"@/data/reviewTimeline";
 import { PaperFigureGallery } from"./PaperFigureGallery";
 import { Badge } from"@/components/ui/badge";
 import { Button } from"@/components/ui/button";
@@ -79,12 +79,27 @@ export default async function PaperDetailPage({
   // The static papers.ts retains descriptive content (title, tldr, path,
   // figures, artifacts) but readiness + version + lastUpdated come from Convex so
   // they can never drift relative to the homepage dashboard.
-  const [liveStates, notables, externalReviews, figures] = await Promise.all([
+  const [liveStates, notables, figures] = await Promise.all([
     getLivePapers(),
     getNotablesForPaper(slug),
-    getExternalReviewsForPaper(slug),
     getFiguresForPaper(slug),
   ]);
+  // Review history — single-sourced from data/reviewTimeline.ts (same source
+  // as /reviews) so the per-paper list can never go stale relative to the
+  // timeline. Previously a separate Convex externalReviews table drifted.
+  const SLUG_TO_PAPER_ID: Record<string, PaperId> = {
+    "paper-1a": "P1A",
+    "paper-1b": "P1B",
+    "paper-2": "P2",
+    "paper-3": "P3",
+    "paper-4": "P4",
+    "paper-5": "P5",
+  };
+  const paperId = SLUG_TO_PAPER_ID[slug];
+  const paperRounds = paperId
+    ? sortedReviewRounds().filter((r) => r.papers.includes(paperId))
+    : [];
+  const recentRounds = paperRounds.slice(0, 6);
   const inPaperFigures = figures.filter((f) => (f.status ?? "in-paper") === "in-paper");
   const candidateFigures = figures.filter((f) => f.status === "candidate");
   const live = liveStates.find((p) => p.slug === slug);
@@ -400,7 +415,7 @@ export default async function PaperDetailPage({
         </Card>
       )}
 
-      {externalReviews.length > 0 && (
+      {recentRounds.length > 0 && (
         <Card className="paper-summary-card" style={{ marginTop: 16 }}>
           <CardHeader>
             <CardTitle
@@ -411,99 +426,67 @@ export default async function PaperDetailPage({
                 color: "var(--text-muted)",
               }}
             >
-              External reviews ({externalReviews.length})
+              Review history ({paperRounds.length} rounds)
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid gap-2" style={{ fontSize: "0.82rem" }}>
-              {externalReviews.map((r, i) => {
-                const sevTotal = r.blockerCount + r.majorCount + r.minorCount;
-                const recColor =
-                  r.recommendation === "accept"
-                    ? "var(--success)"
-                    : r.recommendation === "minor-revisions"
-                      ? "var(--text-secondary)"
-                      : r.recommendation === "major-revisions"
-                        ? "var(--warn)"
-                        : r.recommendation === "reject"
-                          ? "var(--crit)"
-                          : "var(--text-muted)";
-                return (
-                  <div
-                    key={`${r.receivedAt}-${r.reviewerLabel}-${i}`}
+            <div className="grid gap-0" style={{ fontSize: "0.82rem" }}>
+              {recentRounds.map((r, i) => (
+                <div
+                  key={r.id}
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "90px minmax(0,1fr)",
+                    gap: 10,
+                    padding: "8px 0",
+                    borderTop: i === 0 ? "none" : "1px solid var(--border)",
+                    alignItems: "baseline",
+                  }}
+                >
+                  <span
                     style={{
-                      display: "grid",
-                      gridTemplateColumns: "90px 1fr auto",
-                      gap: 10,
-                      padding: "8px 0",
-                      borderTop: i === 0 ? "none" : "1px solid var(--border)",
-                      alignItems: "baseline",
+                      fontFamily: "var(--font-mono-stack)",
+                      color: "var(--text-muted)",
+                      fontSize: "0.75rem",
                     }}
                   >
-                    <span
-                      style={{
-                        fontFamily: "var(--font-mono-stack)",
-                        color: "var(--text-muted)",
-                        fontSize: "0.75rem",
-                      }}
-                    >
-                      {r.receivedAt}
-                    </span>
-                    <span>
-                      <span style={{ fontWeight: 500 }}>{r.reviewerLabel}</span>
-                      <span
-                        style={{
-                          marginLeft: 8,
-                          color: "var(--text-muted)",
-                          fontFamily: "var(--font-mono-stack)",
-                          fontSize: "0.72rem",
-                        }}
-                      >
-                        [{r.source}]
-                      </span>
-                      {sevTotal > 0 && (
-                        <span
-                          style={{
-                            marginLeft: 8,
-                            color: "var(--text-muted)",
-                            fontFamily: "var(--font-mono-stack)",
-                            fontSize: "0.72rem",
-                          }}
-                          title="Post-truth-audit VERIFIED counts: BLOCKER / MAJOR / minor"
-                        >
-                          {r.blockerCount}B / {r.majorCount}M / {r.minorCount}m
-                        </span>
-                      )}
-                      {r.pdfUrl && (
-                        <a
-                          href={r.pdfUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          style={{
-                            marginLeft: 8,
-                            color: "var(--text-muted)",
-                            fontSize: "0.72rem",
-                          }}
-                        >
-                          source
-                        </a>
-                      )}
-                    </span>
+                    {r.dateISO}
+                  </span>
+                  <span style={{ minWidth: 0 }}>
                     <span
                       style={{
                         fontFamily: "var(--font-mono-stack)",
                         fontSize: "0.72rem",
-                        color: recColor,
-                        textTransform: "uppercase",
+                        color:
+                          r.kind === "external-browser"
+                            ? "var(--accent)"
+                            : "var(--text-tertiary)",
                         letterSpacing: "0.04em",
                       }}
                     >
-                      {r.recommendation}
+                      {r.id}
                     </span>
-                  </div>
-                );
-              })}
+                    <span
+                      style={{
+                        marginLeft: 8,
+                        color: "var(--text-secondary)",
+                        lineHeight: 1.5,
+                      }}
+                    >
+                      {r.title}
+                    </span>
+                  </span>
+                </div>
+              ))}
             </div>
+            <p style={{ margin: "10px 0 0 0", fontSize: "0.78rem" }}>
+              <Link
+                href={`/reviews?papers=${paperId}`}
+                style={{ color: "var(--accent-link)" }}
+              >
+                Full review timeline for Paper {paper.number} →
+              </Link>
+            </p>
           </CardContent>
         </Card>
       )}
