@@ -2,10 +2,10 @@
 
 **Paper:** Channel-Level Closure of Four Minimal Einstein--Cartan--Holst Dark-Energy Routes and Perturbation Transparency for Scalar Matter (Paper I A)
 **Author:** Houston Golden
-**Paper version:** v1A.0.56 (2026-06-10)
-**Bundle version:** v1A.0.56-bundle
+**Paper version:** v1A.0.58 (2026-06-10)
+**Bundle version:** v1A.0.58-bundle
 
-> **Note (2026-06-10):** This bundle was previously labelled "v0.9.0 / Geometric Dark Energy" while the manuscript moved to title "Channel-Level Closure of Four Minimal ECH Dark-Energy Routes and Perturbation Transparency for Scalar Matter" at v1A.0.56. Labels here now track the current manuscript title and version. The Cobaya YAMLs and Stan galaxy-spin code are unchanged from the v0.9.0 bundle (MCMC chains and convergence are documented in companion Paper I(b)); only the README/citation metadata has been resynced to the current paper.
+> **Note (2026-06-10):** This bundle was previously labelled "v0.9.0 / Geometric Dark Energy" while the manuscript moved to title "Channel-Level Closure of Four Minimal ECH Dark-Energy Routes and Perturbation Transparency for Scalar Matter" at v1A.0.56, then to v1A.0.57 after the EXT1 external-round textual-closure wave, then to v1A.0.58 after the R29 post-EXT1 internal-round closure wave. Labels here now track the current manuscript title and version. The Cobaya YAMLs and Stan galaxy-spin code are unchanged from the v0.9.0 / v1A.0.56-bundle states (MCMC chains and convergence are documented in companion Paper I(b)); the v1A.0.56 → v1A.0.57 → v1A.0.58 bumps are README/BibTeX-metadata resyncs only, the bundles are byte-identical otherwise.
 
 ## Quick Start
 
@@ -97,7 +97,7 @@ MIT License. See LICENSE file.
   title = {Channel-Level Closure of Four Minimal Einstein--Cartan--Holst
            Dark-Energy Routes and Perturbation Transparency for Scalar Matter},
   year = {2026},
-  note = {Paper I A, v1A.0.56},
+  note = {Paper I A, v1A.0.58},
   eprint = {XXXX.XXXXX},
   archivePrefix = {arXiv},
   primaryClass = {gr-qc}

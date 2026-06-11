@@ -201,6 +201,16 @@
   \bibinfo {pages} {96} (\bibinfo {year} {2016})},\ \Eprint
   {https://arxiv.org/abs/1410.3881} {arXiv:1410.3881 [gr-qc]} \BibitemShut
   {NoStop}%
+\bibitem [{\citenamefont {Mercuri}(2009)}]{Mercuri2009}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
+  {Mercuri}},\ }\bibfield  {title} {\bibinfo {title} {Peccei-quinn mechanism in
+  gravity and the nature of the {Barbero-Immirzi} parameter},\ }\href
+  {https://doi.org/10.1103/PhysRevLett.103.081302} {\bibfield  {journal}
+  {\bibinfo  {journal} {Physical Review Letters}\ }\textbf {\bibinfo {volume}
+  {103}},\ \bibinfo {pages} {081302} (\bibinfo {year} {2009})},\ \Eprint
+  {https://arxiv.org/abs/0902.2764} {arXiv:0902.2764 [gr-qc]} \BibitemShut
+  {NoStop}%
 \bibitem [{\citenamefont {Freidel}\ \emph {et~al.}(2005)\citenamefont
   {Freidel}, \citenamefont {Minic},\ and\ \citenamefont
   {Takeuchi}}]{Freidel2005}%
@@ -248,16 +258,6 @@
   }\textbf {\bibinfo {volume} {21}},\ \bibinfo {pages} {5245} (\bibinfo {year}
   {2004})},\ \Eprint {https://arxiv.org/abs/gr-qc/0407052}
   {arXiv:gr-qc/0407052} \BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Mercuri}(2009)}]{Mercuri2009}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {S.}~\bibnamefont
-  {Mercuri}},\ }\bibfield  {title} {\bibinfo {title} {Peccei-quinn mechanism in
-  gravity and the nature of the {Barbero-Immirzi} parameter},\ }\href
-  {https://doi.org/10.1103/PhysRevLett.103.081302} {\bibfield  {journal}
-  {\bibinfo  {journal} {Physical Review Letters}\ }\textbf {\bibinfo {volume}
-  {103}},\ \bibinfo {pages} {081302} (\bibinfo {year} {2009})},\ \Eprint
-  {https://arxiv.org/abs/0902.2764} {arXiv:0902.2764 [gr-qc]} \BibitemShut
-  {NoStop}%
 \bibitem [{\citenamefont {Shapiro}\ and\ \citenamefont
   {Teixeira}(2014)}]{ShapiroTeixeira2014}%
   \BibitemOpen

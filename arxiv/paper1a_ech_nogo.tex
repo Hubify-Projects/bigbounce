@@ -45,8 +45,26 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.57}
+\newcommand{\paperVersion}{v1A.0.58}
 \newcommand{\paperTimestamp}{June 10, 2026 PDT}
+% v1A.0.57->58 (2026-06-10 — R29 post-EXT1 internal-round closure wave; truth audit at
+%   project-context/peer-reviews/R29_P1A_TRUTH_AUDIT.md. E1: abstract/body N_tot
+%   erasure criterion restated as the differential N_tot-N_exit > N_coh (the
+%   "N_tot >~ 60" phrasing was dimensionally the wrong quantity) at L584/L2217/L2278
+%   sites. E2: Cartan footnote kappa-bookkeeping rewritten as the honest single
+%   on-shell substitution citing Hehl 1976 / Freidel-Minic-Takeuchi 2005 (the
+%   "+kappa/2 S.S" intermediate dropped; never-fabricate-derivation honored).
+%   E3(b): Eq.(1) footnote — 1/4 T.T flagged as on-shell Hehl-Datta shorthand +
+%   Holst 1/gamma vs 1/(2gamma) convention note (Mercuri/Holst wedge factor).
+%   E4: repro bundle labels resynced (v1A.0.58-bundle, README + BibTeX note).
+%   META-E1: Bianchi vanishing now states both routes (algebraic Bianchi +
+%   pair-exchange symmetry) with the metric-compatibility assumption explicit.
+%   META-E3: Route-2 operator relabeled parity-EVEN; P-violation from the
+%   background <d theta_NY> =/= 0; photon-coupling chain flagged as
+%   amplitude-budget translation. "theorem" -> "result" sweep for the
+%   perturbation-transparency claim; gamma_PTA notation disambiguated from the
+%   Barbero-Immirzi gamma. Bundle desync (E4) was the EXT1-wave miss the
+%   upgraded internal sweep caught. HOUSTON-DECISION items untouched.)
 % v1A.0.56->57 (2026-06-10 — EXT1 closure wave: external EXT1 review round closures
 %   applied to the manuscript; restamp + recompile + mirror bundle. Truth audit:
 %   18 VERIFIED findings logged externally; readiness rolled back to 93% pending
@@ -383,13 +401,15 @@ branches (Branches~H, J, L, M, N, O) we report 13 logically-independent
 mechanism-class constraints that collectively constrain the
 enumerated channels of the minimal-ECH route from the quantum bounce to
 observable dark energy.
-The central result is a perturbation-transparency theorem: for canonical scalar
+The central result is a perturbation-transparency result: for canonical scalar
 matter, torsion vanishes at all classical metric/scalar perturbation orders
 around the torsion-free branch (excluding propagating-torsion, dynamical-Immirzi-field,
 fermion-loop, and non-minimal-matter sectors), the Holst dual contraction
 $\epsilon^{\mu\nu\rho\sigma}R_{\mu\nu\rho\sigma}$ vanishes identically on the
-Levi-Civita connection ($T=0$) by the first (algebraic) Bianchi identity
-$R_{\mu[\nu\rho\sigma]}=0$, and the Holst sector therefore decouples from all
+Levi-Civita connection ($T=0$, metric-compatible) by the first (algebraic) Bianchi identity
+$R_{\mu[\nu\rho\sigma]}=0$ (equivalently, by the pair-exchange symmetry
+$R_{\mu\nu\rho\sigma}=R_{\rho\sigma\mu\nu}$ combined with the antisymmetry of
+$\epsilon^{\mu\nu\rho\sigma}$), and the Holst sector therefore decouples from all
 scalar/tensor perturbation equations of motion
 (Sec.~\ref{sec:transparency}).\footnote{This Bianchi-identity vanishing is
 distinct from --- and should not be confused with --- the Pontryagin density
@@ -555,7 +575,7 @@ MCMC details in companion work in preparation~\cite{Golden2026P1b}.}
   narrows the four enumerated minimal-ECH dark-energy channels to zero
   phenomenologically free pathways within those channels. The PTA
   annotation reflects the current real-KDE reanalysis
-  $\gamma = 2.567 \pm 0.382$ (Sec.~\ref{sec:discrimination}).}
+  $\gamma_{\rm PTA} = 2.567 \pm 0.382$ (Sec.~\ref{sec:discrimination}); $\gamma_{\rm PTA}$ denotes the GWB power-law spectral index, distinct from the Barbero-Immirzi parameter $\gamma$ throughout this paper.}
 \end{figure*}
 
 
@@ -568,10 +588,10 @@ Sec.~\ref{sec:fourroute} ``Scope'' for the explicit operators omitted). The orig
 contributions are:
 
 \begin{enumerate}[leftmargin=*]
-\item \textit{14-constraint catalog and perturbation-transparency observation}:
+\item \textit{14-constraint catalog and perturbation-transparency result}:
 Through 7 foundation studies (Foundations~A--G) and 6 observational research branches (Branches~H, J, L, M, N, O), we establish 14 mechanism-class
 structural constraints (one of which, B8, is the observational consequence of
-the perturbation-transparency theorem B14 and is retained in the catalog for
+the perturbation-transparency result B14 and is retained in the catalog for
 historical mechanism-class completeness) mapping the minimal ECH parameter space. The central result
 is that minimal ECH gravity is perturbation-transparent for canonical scalar
 matter: torsion vanishes at all orders, the Holst sector decouples cleanly
@@ -581,7 +601,7 @@ parity-violating channels (ALP birefringence, primordial GWs).
 \item \textit{Structural tension between dark-energy suppression and bounce $\fnl$}:
 We identify an incompatibility between the inflationary-suppression dark-energy
 mechanism ($N_{\rm tot}\approx 92$ $e$-folds required) and the matter-bounce
-$\fnl=-35/8$ prediction (\emph{definitively} erased by $N_{\rm tot}\!\gtrsim\!60$ inflationary $e$-folds at SPHEREx-relevant scales, since the SPHEREx accessible band $k\sim 10^{-4}$--$10^{-1}\,h/$Mpc maps to bounce-era \emph{physical} scales $k_{\rm bounce}^{\rm phys} = k_{\rm SPHEREx}^{\rm phys}\,e^{N_{\rm tot}-N_{\rm exit}}$ at $N_{\rm tot}\sim 92$ and $N_{\rm exit}\sim 60$ (relative e-fold differential $\sim 32$; comoving $k$ are constant by definition, only physical scales scale with $a^{-1}\propto e^{-N}$) that lie deep inside the inflationary subhorizon regime where the observable bispectrum is dominated by vacuum-inflationary modes rather than the matter-bounce contraction modes; see Sec.~\ref{sec:structural_tension}), establishing that
+$\fnl=-35/8$ prediction (\emph{definitively} erased once the bounce-vs-CMB-horizon-exit differential $N_{\rm tot}-N_{\rm exit}$ exceeds the matter-bounce contraction-mode coherence window $N_{\rm coh}\sim\mathcal{O}(\text{few})$, since the SPHEREx accessible band $k\sim 10^{-4}$--$10^{-1}\,h/$Mpc maps to bounce-era \emph{physical} scales $k_{\rm bounce}^{\rm phys} = k_{\rm SPHEREx}^{\rm phys}\,e^{N_{\rm tot}-N_{\rm exit}}$ at $N_{\rm tot}\sim 92$ and $N_{\rm exit}\sim 60$ (relative e-fold differential $\sim 32$, deeply inside the erasure regime; comoving $k$ are constant by definition, only physical scales scale with $a^{-1}\propto e^{-N}$) that lie deep inside the inflationary subhorizon regime where the observable bispectrum is dominated by vacuum-inflationary modes rather than the matter-bounce contraction modes; see Sec.~\ref{sec:structural_tension}), establishing that
 these are independent observational programs.
 
 \item \textit{Survival of mechanism-independent tests}: Despite ECH structural
@@ -599,7 +619,7 @@ Section~\ref{sec:data_galaxy} covers the galaxy-spin data methods.
 Sections~\ref{sec:systematics}--\ref{sec:related} provide systematic analysis,
 falsifiability criteria, and related work. The core results occupy
 Secs.~\ref{sec:barriers}--\ref{sec:loophole}: the 13 logically-independent structural barriers (14 historical catalog entries),
-perturbation-transparency observation, and hybrid loophole rejection.
+perturbation-transparency result, and hybrid loophole rejection.
 Section~\ref{sec:discussion} discusses the inflationary suppression factor and
 theoretical implications. Section~\ref{sec:surviving} summarizes surviving
 mechanism-independent tests. Section~\ref{sec:limitations} addresses limitations.
@@ -650,7 +670,21 @@ S_{\rm ECH} &= \frac{1}{16\pi G} \int d^4x\, e \left[e^\mu_a\,e^\nu_b\,R^{ab}_{\
 \end{align}
 where $e = \det(e^a_\mu)$ is the tetrad determinant, $R^{ab}_{\;\;\;\mu\nu}$ is
 the curvature of the Lorentz connection, $\gamma$ is the Barbero-Immirzi
-parameter, and $T^{abc}$ is the torsion tensor. The Holst term contributes
+parameter, and $T^{abc}$ is the torsion tensor.\footnote{Two convention
+notes for Eq.~\eqref{eq:ECH}. (i)~The displayed $\tfrac{1}{4}T^{abc}T_{abc}$
+is an on-shell Hehl--Datta \emph{shorthand} for the four-fermion contact
+term obtained after eliminating the non-propagating torsion via the Cartan
+equation Eq.~\eqref{eq:torsion}; it is not an independent kinetic term and
+is \emph{not} varied independently (see the elaboration immediately below
+and the single-convention footnote at Eq.~\eqref{eq:torsion}). (ii)~Placing
+the overall $1/(16\pi G)$ outside the bracket as displayed gives a Holst
+prefactor $1/\gamma$ on the $\varepsilon^{abcd}e_a^\mu e_b^\nu R_{cd\mu\nu}$
+contraction; the equivalent form-language expression
+$\frac{1}{2\kappa}\int e\wedge e\wedge(R+\frac{1}{\gamma}\star R)$ used
+by~\cite{Mercuri2009,Freidel2005} carries $\frac{1}{2\gamma}$ on the Holst
+$\star R$ term because the $e\wedge e$ wedge product supplies an additional
+antisymmetrization factor of $1/2$; the two component-form conventions are
+numerically identical.} The Holst term contributes
 non-trivially when fermions are present, as established by
 Freidel, Minic \& Takeuchi~\cite{Freidel2005}, who showed that the
 Barbero-Immirzi parameter becomes physically observable through its coupling
@@ -720,17 +754,26 @@ back-substitution: $S_{abc}S^{abc} = \tfrac{1}{16}\,
 J^{5\mu}$ (Lorentzian $\epsilon_{abcd}\epsilon^{abce} = -3!\,
 \delta_d^{\,e}$, with mostly-plus signature
 $g=\mathrm{diag}(-,+,+,+)$ and $\epsilon^{0123}=+1$); explicitly,
-the on-shell substitution $T^{abc}=\kappa S^{abc}$ gives
-$\tfrac{1}{4}T^{abc}T_{abc} = \tfrac{\kappa^2}{4}S^{abc}S_{abc}$,
-and the standard Hehl--Datta bookkeeping (the gravitational contact
-piece plus the fermionic spin--torsion coupling; the same sign
-manipulation quoted at Eq.~\eqref{eq:NJL_torsion}) nets to
-$\mathcal{L}_{\rm int} = +\tfrac{\kappa}{2}\,S_{abc}S^{abc}$, so
-integrating out torsion yields
-$\mathcal{L}_{\rm int} = -\tfrac{3\kappa}{16}\,J^5_\mu J^{5\mu}$ ---
-precisely the $\gamma\!\to\!\infty$ (pure Einstein--Cartan) limit of
-Eq.~\eqref{eq:4fermi} and the Hehl--Datta coefficient of
-Eq.~\eqref{eq:NJL_torsion}, closing the chain with no residual factor.
+the displayed $\tfrac{1}{4}T^{abc}T_{abc}$ in Eq.~\eqref{eq:ECH} is
+not an independent kinetic term but the on-shell Hehl--Datta
+\emph{shorthand} for the four-fermion contact interaction obtained
+after eliminating the algebraic torsion via Eq.~\eqref{eq:torsion}.
+Performing the connection variation on the full
+Einstein--Cartan--Holst$+$Dirac action and integrating out the
+non-propagating torsion (Hehl 1976~\cite{Hehl1976};
+Freidel--Minic--Takeuchi 2005~\cite{Freidel2005}) yields the
+single net contact term
+$\mathcal{L}_{\rm int} = -\tfrac{3\kappa}{16}\,J^5_\mu J^{5\mu}$,
+which is the $\gamma\!\to\!\infty$ (pure Einstein--Cartan) limit of
+the displayed Eq.~\eqref{eq:4fermi} and the Hehl--Datta coefficient
+of Eq.~\eqref{eq:NJL_torsion}. The intermediate algebraic
+cancellation between the gravitational $T\cdot T$ piece (mass
+dimension $[\kappa^2]\,S\cdot S$) and the fermionic
+spin--connection coupling (linear in $\kappa$) drops one power of
+$\kappa$; we do not reproduce that algebra here and refer the
+reader to Hehl 1976 Eq.~(3.20)--(3.21) and
+Freidel--Minic--Takeuchi 2005 Eqs.~(7)--(13) for the
+single-step derivation.
 The $T^{abc} = (\kappa/2)\,\bar\psi\gamma^{[a}\gamma^b\gamma^{c]}\psi$
 form quoted in the original Hehl--Datta-era literature
 (Sec.~\ref{sec:r1_njl}) uses the half-weight torsion definition
@@ -1022,7 +1065,7 @@ Appendix~\ref{app:dimensions} or the specific value of $N_{\rm tot}$;
 a quantitative $\Gamma_{\rm wash}(T)$ vs $H(T)$ computation is left
 to a follow-up and is not used as a primary closure here. The
 scenario-disambiguation is: a spin-density inflaton scenario closes
-via the perturbation-transparency theorem (B14, Sec.~\ref{sec:transparency});
+via the perturbation-transparency result (B14, Sec.~\ref{sec:transparency});
 a fermion-dominated reheating scenario \emph{additionally} closes via
 the conditional thermal-reset argument above. This conditional
 strengthening of Barrier~14 (perturbation transparency) supplies a
@@ -1111,7 +1154,7 @@ theory paper carries forward only the structural conclusion
 \label{sec:fourroute}
 \label{sec:oneloopfull}\label{sec:condensate}\label{sec:cosmo_derivation}
 
-The structural-incompatibility theorem (Sec.~\ref{sec:transparency}) is
+The structural-incompatibility result (Sec.~\ref{sec:transparency}) is
 established by ruling out, in turn, the four routes by which a minimal
 Einstein--Cartan--Holst (ECH) sector could in principle source a parity-odd
 or dark-energy contribution at the level required by the observational
@@ -1257,9 +1300,30 @@ $\vartheta_{\rm NY}$ to distinguish it from the photon-sector spectator
 ALP $\theta$ of Sec.~\ref{sec:r4_birefringence}; no identification
 between the two fields is assumed anywhere in this paper), $J^{5\mu}$
 is the fermion axial current, and $\beta(\gamma)$ is a slowly varying
-function of $\gamma$ (written with its explicit argument throughout to
+function of $\gamma$.\footnote{Parity classification of
+Eq.~\eqref{eq:oneloop_parity_odd}. For $\vartheta_{\rm NY}$ a pseudoscalar,
+$\partial_\mu\vartheta_{\rm NY}$ transforms as a pseudo-co-vector; $J^{5\mu}$
+is also a pseudo-vector; their Lorentz-scalar contraction
+$\partial_\mu\vartheta_{\rm NY}\,J^{5\mu}$ is therefore parity-EVEN as a
+Lagrangian term. The parity-violating phenomenology in Route 2 arises not
+from the operator's intrinsic P transformation but from a P-breaking
+\emph{background} expectation $\langle\partial_\mu\vartheta_{\rm NY}\rangle\neq 0$
+(the time-dependent cosmological Nieh--Yan pseudoscalar selects a preferred
+temporal orientation, spontaneously breaking P and T). The label
+``parity-odd'' used in the section heading and surrounding text refers to
+the resulting parity-violating phenomenology, not the operator's intrinsic
+parity. We retain the section's existing label for continuity with
+earlier draft conventions but flag the precise classification here. (A
+separate note on the photon-coupling chain: the operator above does not
+contain an electromagnetic field strength; the mapping to a CMB
+birefringence $\beta$ in the dimensionless ratio below uses the
+amplitude-budget translation through the standard chiral-anomaly
+$\partial_\mu J^{5\mu} \supset (\alpha_{\rm em}/4\pi)\,F\widetilde F$
+chain at the EFT level. We treat the resulting $\beta$ estimate strictly
+as an amplitude-budget bound and not a derived prediction.)} The function
+$\beta(\gamma)$ is written with its explicit argument throughout to
 distinguish this renormalization-group function from the cosmic
-birefringence angle $\beta$ of Sec.~\ref{sec:r4_birefringence}). The form is the natural EFT operator built from the
+birefringence angle $\beta$ of Sec.~\ref{sec:r4_birefringence}. The form is the natural EFT operator built from the
 Nieh--Yan pseudoscalar and the chiral current at the
 $M_{\rm Pl}^{-1}\,\alpha_{\rm em}/(4\pi)$ scale; no published
 calculation currently derives this exact coefficient structure from
@@ -1886,13 +1950,22 @@ at all perturbation orders.
 \item \textbf{Connection reduces to Levi-Civita.} $\Gamma^\lambda{}_{\mu\nu}
 = \mathring{\Gamma}^\lambda{}_{\mu\nu}$.
 
-\item \textbf{Holst term vanishes by Bianchi.} The Holst term evaluated with
+\item \textbf{Holst term vanishes by Bianchi (equivalently pair symmetry).}
+The Holst term evaluated with
 the Levi-Civita connection gives $\frac{1}{2}\epsilon^{\mu\nu\rho\sigma}
-R_{\mu\nu\rho\sigma}(\mathring{\Gamma})$, which on a torsion-free connection
-\emph{vanishes identically} by the first (algebraic) Bianchi identity
+R_{\mu\nu\rho\sigma}(\mathring{\Gamma})$, which on a torsion-free
+metric-compatible connection \emph{vanishes identically} by the first (algebraic) Bianchi identity
 $R_{\mu[\nu\rho\sigma]} = 0$: the cyclic-sum identity $R_{\mu\nu\rho\sigma} +
 R_{\mu\rho\sigma\nu} + R_{\mu\sigma\nu\rho} = 0$ contracted with the totally
 antisymmetric $\epsilon^{\mu\nu\rho\sigma}$ leaves no non-trivial component.
+Equivalently, the pair-exchange symmetry
+$R_{\mu\nu\rho\sigma}=R_{\rho\sigma\mu\nu}$ (which requires metric compatibility
+and is the more transparent route) combined with
+the antisymmetry of $\epsilon^{\mu\nu\rho\sigma}$ under the same swap gives
+$\epsilon^{\mu\nu\rho\sigma}R_{\mu\nu\rho\sigma} =
+\epsilon^{\mu\nu\rho\sigma}R_{\rho\sigma\mu\nu} = -\epsilon^{\mu\nu\rho\sigma}R_{\mu\nu\rho\sigma}=0$;
+both routes require both $T=0$ \emph{and} metric compatibility, and the
+vanishing can fail in non-metric connections even when torsion is zero.
 The Holst dual contraction is therefore identically zero on the Levi-Civita
 connection (not merely a boundary term), so it contributes nothing to the
 action at any order. This Bianchi-vanishing is distinct from the Pontryagin
@@ -2007,12 +2080,13 @@ $^{\ddagger}$The frozen MCMC posteriors hosted in Paper~I(b) (the three complete
 The matter bounce prediction $\fnl = -35/8$ is the strongest discriminator:
 it provides $\sigma(\fnl)\approx 0.7$ (Fisher-ideal) to $\sigma(\fnl)\approx 1.0$
 (with systematics) from SPHEREx, yielding $3$--$5\sigma$ model separation.
-NANOGrav model comparison: $\gamma = 2.567\pm 0.382$ from real-KDE reanalysis
-of the 15-yr free-spectrum data (GPU MCMC, companion Paper~III~\cite{Golden2026P3}).
-The matter-bounce prediction $\gamma=3.0$ sits at $+1.13\sigma$ above the
+NANOGrav model comparison: $\gamma_{\rm PTA} = 2.567\pm 0.382$ from real-KDE reanalysis
+of the 15-yr free-spectrum data (GPU MCMC, companion Paper~III~\cite{Golden2026P3};
+here $\gamma_{\rm PTA}$ is the GWB power-law spectral index, distinct from the Barbero-Immirzi parameter $\gamma$ defined in Eq.~\ref{eq:ECH}).
+The matter-bounce prediction $\gamma_{\rm PTA}=3.0$ sits at $+1.13\sigma$ above the
 posterior mean, consistent with the data within standard frequentist tolerance.
 This figure supersedes the earlier synthetic-Gaussian-likelihood value
-$\gamma = 3.20\pm 0.42$ used in pre-real-KDE drafts; the migration is
+$\gamma_{\rm PTA} = 3.20\pm 0.42$ used in pre-real-KDE drafts; the migration is
 documented in Paper~III \S~6.
 
 
@@ -2214,7 +2288,7 @@ explanation; either outcome is informative independent of ECH.
 
 \textbf{Structural incompatibility.}---An open constraint is the incompatibility
 between the dark-energy suppression mechanism ($N_{\rm tot}\approx 92$ $e$-folds
-required) and the $\fnl=-35/8$ prediction (\emph{definitively} erased by $N_{\rm tot}\gtrsim 60$ inflationary $e$-folds at SPHEREx-relevant scales; the SPHEREx accessible wavenumbers $k\sim 10^{-4}$--$10^{-1}\,h/$Mpc map to bounce-era \emph{physical} scales $k^{\rm phys}_{\rm bounce}\sim k_{\rm SPHEREx}\,e^{N_{\rm tot}-N_{\rm exit}}\sim e^{32}\,k_{\rm SPHEREx}$ at $N_{\rm tot}\sim 92$ and $N_{\rm exit}\sim 60$ (the relative e-fold differential between bounce and CMB horizon-exit; comoving wavenumbers $k$ are constant by definition and only physical scales scale with $a^{-1}\!\propto\!e^{-N}$), deep inside the inflationary subhorizon regime where the surviving bispectrum signal is purely vacuum-inflationary, not matter-bounce contraction-mode). This
+required) and the $\fnl=-35/8$ prediction (\emph{definitively} erased once $N_{\rm tot}-N_{\rm exit}\gtrsim N_{\rm coh}\sim\mathcal{O}(\text{few})$ at SPHEREx-relevant scales; the SPHEREx accessible wavenumbers $k\sim 10^{-4}$--$10^{-1}\,h/$Mpc map to bounce-era \emph{physical} scales $k^{\rm phys}_{\rm bounce}\sim k_{\rm SPHEREx}\,e^{N_{\rm tot}-N_{\rm exit}}\sim e^{32}\,k_{\rm SPHEREx}$ at $N_{\rm tot}\sim 92$ and $N_{\rm exit}\sim 60$ (the relative e-fold differential between bounce and CMB horizon-exit; comoving wavenumbers $k$ are constant by definition and only physical scales scale with $a^{-1}\!\propto\!e^{-N}$), deep inside the inflationary subhorizon regime where the surviving bispectrum signal is purely vacuum-inflationary, not matter-bounce contraction-mode). This
 is detailed in Sec.~\ref{sec:structural_tension}. The correct interpretation is
 that bounce cosmology (as a broad class) and the ECH-specific dark-energy
 ansatz are \textit{independent observational programs}; SPHEREx tests the former,
@@ -2276,12 +2350,12 @@ The dark-energy suppression mechanism, if minimal ECH \emph{were} to source
 dark energy through one of the four channels enumerated in
 Sec.~\ref{sec:fourroute}, would require $N_{\rm tot}\approx 92$ post-bounce
 $e$-folds; the matter-bounce $\fnl=-35/8$ would be \emph{definitively}
-erased by $N_{\rm tot}\gtrsim 60$, since the SPHEREx accessible
+erased once the bounce-vs-CMB-horizon-exit differential $N_{\rm tot}-N_{\rm exit}\gtrsim N_{\rm coh}\sim\mathcal{O}(\text{few})$ (where $N_{\rm coh}$ is the contraction-phase coherence window of the matter-bounce mode functions), since the SPHEREx accessible
 wavenumbers $k\sim 10^{-4}$--$10^{-1}\,h/$Mpc are pushed deep inside the
 inflationary subhorizon (bounce-era \emph{physical} scales $k_{\rm bounce}^{\rm phys}\sim k_{\rm SPHEREx}^{\rm phys}\,e^{N_{\rm tot}-N_{\rm exit}}\sim e^{32}\,k_{\rm SPHEREx}^{\rm phys}$ at $N_{\rm tot}\sim 92$, $N_{\rm exit}\sim 60$; comoving wavenumbers $k$ are constant by definition; the rigorous bounce-vs-SPHEREx scale ratio is the \emph{physical} scaling above with $k_{\rm bounce}^{\rm phys}/k_{\rm SPHEREx}^{\rm phys} \sim e^{32}$) and the surviving bispectrum signal
 becomes purely vacuum-inflationary rather than matter-bounce
 contraction-mode. The mode-history reasoning underlying this
-``erased by $N_{\rm tot}\!\gtrsim\!60$'' statement is the standard
+``erased by $N_{\rm tot}-N_{\rm exit}\!\gtrsim\!N_{\rm coh}$'' statement is the standard
 mode-transfer ledger across four epochs: (i) in the contracting
 matter-bounce phase the $\fnl=-35/8$ signal is generated in the
 contraction-era cubic action at comoving wavenumbers $k_{\rm gen}$
@@ -2365,7 +2439,7 @@ nonperturbative parity-violating channels (ALP birefringence, primordial GWs)
 as the relevant tests of $\gamma$.
 
 \textit{The 13 logically-independent barriers (14 historical catalog entries).}---Systematic analysis across 7 foundations (A--G) and
-6 observational branches (H, J, L, M, N, O) established 14 mechanism-class constraints (one of which, B8, is the observational consequence of the perturbation-transparency theorem B14 and is retained in the catalog for historical mechanism-class completeness) on the minimal ECH
+6 observational branches (H, J, L, M, N, O) established 14 mechanism-class constraints (one of which, B8, is the observational consequence of the perturbation-transparency result B14 and is retained in the catalog for historical mechanism-class completeness) on the minimal ECH
 dark-energy parameter space (Sec.~\ref{sec:barriers}). These constraints are
 ECH-specific: other bouncing cosmologies (notably quintom scenarios) can in
 principle unify bounce with late-time dark energy through mechanisms outside the
@@ -2400,8 +2474,12 @@ pipeline code, and the implementation map are publicly available at:
 \begin{center}
 \url{https://github.com/Hubify-Projects/bigbounce/tree/main/reproducibility}
 \end{center}
-The bundle is labelled \texttt{v1A.0.56-bundle} (resynced 2026-06-10) to
-track the present manuscript title and version; MCMC chains, NaMaster
+The bundle is labelled \texttt{v1A.0.58-bundle} (resynced 2026-06-10) to
+track the present manuscript title and version; the bump from
+\texttt{v1A.0.57-bundle} covers the R29 internal-round textual-closure edits only,
+no MCMC chain / Cobaya YAML / Stan galaxy-spin code or data input changed,
+and the two bundles are byte-identical except for the README and BibTeX
+citation metadata. MCMC chains, NaMaster
 pipeline, and ALP parameter fitting are documented in companion
 Paper~I(b)~\cite{Golden2026P1b} and are not duplicated in the
 present bundle.
