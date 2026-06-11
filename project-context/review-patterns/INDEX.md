@@ -200,3 +200,10 @@ Details: [pattern-047-version-pin-staleness-on-bump.md](pattern-047-version-pin-
 Inequality/rate/robustness claims stated qualitatively where a number is checkable (P1A Γ_washout>H, e^32 separation; P2 fiducial-shift bound; P5 missing effect sizes/regression). Prevention: reviewer prompt demands the number, computation pointer, or explicit labeled-assumption tag for every >, <, exceeds, dominates, negligible, robust-to claim.
 
 Details: [pattern-048-uncomputed-quantitative-claim.md](pattern-048-uncomputed-quantitative-claim.md)
+
+---
+## Pattern 051 — Closure-introduced regression (EXT2)
+
+Fix waves create new defects: fresh math errors in patches, half-applied sweeps, wrong closure artifacts. ~40% of EXT2's genuinely-new findings were regressions from our own EXT1/R29 closures. Prevention: 5-point closure-wave protocol (sweep-completeness grep, self-diff regression check, new-math gate, closure-artifact verification, changed-regions-first review).
+
+Details: [pattern-051-closure-introduced-regression.md](pattern-051-closure-introduced-regression.md)
