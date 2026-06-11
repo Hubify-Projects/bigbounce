@@ -42,6 +42,47 @@ function renderToken(token: string, key: number): ReactNode {
   }
 }
 
+/**
+ * Defensive LaTeX → unicode normalization (QA sweep P1-8). Convex-fed strings
+ * (notables / focusAreas) occasionally arrive with raw inline math like
+ * `$p_{\rm CW}^{\rm eq} > 0.9$` or `$\ell=1$`. Canonical fix is unicode at the
+ * source; this layer guarantees readers never see un-typeset TeX even if a
+ * raw string slips through a future sync.
+ */
+function normalizeLatexSegment(s: string): string {
+  return s
+    .replace(/\\mathrm\{([^}]*)\}/g, "$1")
+    .replace(/\\text\{([^}]*)\}/g, "$1")
+    .replace(/\{\\rm\s+([^}]*)\}/g, "$1")
+    .replace(/\\rm\s*/g, "")
+    .replace(/\\ell\b/g, "ℓ")
+    .replace(/\\sigma\b/g, "σ")
+    .replace(/\\beta\b/g, "β")
+    .replace(/\\gamma\b/g, "γ")
+    .replace(/\\alpha\b/g, "α")
+    .replace(/\\Delta\b/g, "Δ")
+    .replace(/\\Lambda\b/g, "Λ")
+    .replace(/\\chi\b/g, "χ")
+    .replace(/\\mu\b/g, "μ")
+    .replace(/\\tau\b/g, "τ")
+    .replace(/\\times\b/g, "×")
+    .replace(/\\gtrsim\b/g, "≳")
+    .replace(/\\lesssim\b/g, "≲")
+    .replace(/\\geq?\b/g, "≥")
+    .replace(/\\leq?\b/g, "≤")
+    .replace(/\\approx\b/g, "≈")
+    .replace(/\\sim\b/g, "~")
+    .replace(/\\pm\b/g, "±")
+    .replace(/\\circ\b/g, "°")
+    .replace(/\\,|\\;|\\!|\\ /g, " ")
+    .replace(/[{}]/g, "");
+}
+
+function normalizeLatex(s: string): string {
+  if (!s.includes("$")) return s;
+  return s.replace(/\$([^$]+)\$/g, (_m, inner: string) => normalizeLatexSegment(inner));
+}
+
 export function MathText({
   children,
   className,
@@ -49,7 +90,7 @@ export function MathText({
   children: string;
   className?: string;
 }) {
-  const parts = children.split(TOKEN_RE);
+  const parts = normalizeLatex(children).split(TOKEN_RE);
 
   return (
     <span className={cn("math-text", className)}>
