@@ -18,7 +18,22 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.62-2026-06-10}
+\newcommand{\paperVersion}{v0.1.63-2026-06-10}
+% v0.1.63-2026-06-10 (EXT2 external-round closure wave; truth audit at
+%   project-context/peer-reviews/EXT2_P5_TRUTH_AUDIT.md. EF1: abstract sample
+%   ledger rewritten to separate the two parent populations explicitly —
+%   DESIVAST primary 56,981 k=20 VoidFinder void spirals from the 678,945
+%   z<=0.24 matched-spiral parent (n_lz), vs V-Web secondary 783,820 unique
+%   env-labeled spirals (791,635 minus 7,815) — the prior one-breath ledger
+%   presented 56,981 against the V-Web parent, a false scope impression.
+%   EF4: "incorporates the matched-sample monopole uncertainty by
+%   construction" (statistically incorrect — conditioning on the observed CW
+%   count FIXES the monopole) -> conditional-on-observed-CW-count framing,
+%   with monopole uncertainty propagated separately in the analytic
+%   sigma_from_half comparisons. EDR-overlap V-Web concurrence demoted from
+%   "strong robustness result" to supporting diagnostic consistency check
+%   (25,186-spiral, ~175 deg^2 overlap; strong per-galaxy label
+%   disagreement disclosed).)
 % v0.1.52-2026-06-09 (R22prov truth-audit closure wave; work order in
 %   project-context/peer-reviews/R22prov_P5_TRUTH_AUDIT.md; recompute artifacts
 %   outputs/17_v0151_closure_recomputes.json + 18_v0151_stratified_and_density.json):
@@ -182,11 +197,15 @@ analyses we retain the ``V-Web'' label which is sometimes used loosely
 for the family of tidal-field classifiers.} on the full
 $14{,}622{,}283$-galaxy DESI DR1 spectro sample on a $256^3$ comoving
 grid with a $25\,{\rm Mpc}/h$ Gaussian smoothing and eigenvalue
-threshold $\lambda_{\rm th}\!=\!0$. Sample ledger in one breath: the
-headline DESIVAST void test is anchored on $56{,}981$ void spirals
-drawn from $783{,}820$ unique chirality-relevant matched spirals
-($791{,}635$ minus $7{,}815$ without an environment row), carried on
+threshold $\lambda_{\rm th}\!=\!0$. Sample ledger: \emph{two distinct parent populations are used.}
+(1)~\textbf{DESIVAST primary:} $56{,}981$ k\,=\,20 VoidFinder void spirals
+drawn from $678{,}945$ z\,$\leq$\,$0.24$ matched spirals (the DESIVAST BGS
+coverage range; $n_{\rm lz} = 678{,}945$).
+(2)~\textbf{V-Web secondary:} $783{,}820$ unique chirality-relevant matched spirals
+with an environment row ($791{,}635$ minus $7{,}815$ without), carried on
 $812{,}793$ environment-labeled survey--program coadd rows.
+The $56{,}981$ void spirals are drawn from the DESIVAST low-$z$ parent
+($678{,}945$), not from the full V-Web parent ($812{,}793$).
 \textbf{Headline result:} the CW
 fraction shows no environment dependence beyond (i) the known
 Paper~IV catalog-monopole offset of $\approx\!0.26$\,pp
@@ -683,11 +702,12 @@ is the reference ($N\!=\!812{,}793$, ${\rm se}\!\approx\!5.5\times
 class. Residuals of order $1$--$2\sigma$
 (e.g.\ the Phase-2 maximum $1.87$) should be read with this band in
 mind; the label-shuffle permutation null, which fixes the total CW
-count at its observed value, incorporates the matched-sample monopole
-uncertainty by construction --- i.e.\ every permutation test in this
-paper is conditional on the observed matched-sample monopole rather
-than on the unconditional $p = 0.5$ null, which is displayed only
-through the analytic $\sigma_{\rm from\,half}$ values --- and no
+count at its observed value, is conditional on the observed matched-sample
+CW count --- i.e.\ every permutation test in this
+paper treats the global CW fraction as fixed at its observed value rather
+than propagating its uncertainty; uncertainty in the Paper~IV classifier
+monopole is propagated separately in the analytic $\sigma_{\rm from\,half}$ comparisons, which are displayed only
+through those analytic values --- and no
 conclusion in this paper depends
 on a residual threshold finer than this band. Because
 $\sigma_{\rm from\,half}$ grows as $\sqrt{N}$ at
@@ -2748,12 +2768,16 @@ environment assignment}, the \emph{chirality-vs-environment headline}
 is recovered identically by both: $f_{\rm CW}$ does not vary by more
 than $\sim\!2$~pp across the four classes under any of the three
 classifiers, and no class clears the Bonferroni-corrected significance
-threshold. This is a strong robustness result: the P5 headline null
+threshold. This is a supporting diagnostic consistency check: the P5 headline null
 does not depend on which independent, published DESI environmental
-classifier is applied to the EDR-overlap subsample, and the
-deterministic single-class V-Web assignment reaches the same
+classifier is applied to the EDR-overlap subsample (restricted to the
+$\sim\!175$\,deg$^2$ EDR rosettes, $N_{\rm overlap}=25{,}186$ spirals),
+and the deterministic single-class V-Web assignment reaches the same
 conclusion as the probabilistic ASTRA classifier even though the two
-classifiers assign vastly different per-galaxy class labels.
+classifiers assign vastly different per-galaxy class labels. Given the
+small overlap size and the strong per-galaxy label disagreement, this
+result is best read as a descriptor of consistency on the EDR subsample,
+not as load-bearing robustness evidence.
 
 We note that the ASTRA EDR
 per-object overlap is restricted to the $\sim\!175$\,deg$^2$ EDR
