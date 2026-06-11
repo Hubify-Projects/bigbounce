@@ -1,11 +1,11 @@
 [
  {
   "paperSlug": "paper-3",
-  "version": "v3.1.93",
+  "version": "v3.1.94",
   "datestamp": "2026-06-11",
-  "texCommit": "904686e4",
+  "texCommit": "5e7a9a85",
   "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p3_anomaly_engine/paper3_draft.pdf",
-  "sitePdfPath": "/papers/paper3_anomaly_catalog_v3.1.93.pdf",
-  "changelog": "TARGETTYPE-restricted recount landed: 2,468 science-class matches (1.3%) -> restricted catalog ~0.9x Liang 2023, not 73x; ~98.7% of DESI anomalies on sky/secondary/filler spectra; disclosed at 5 sites."
+  "sitePdfPath": "/papers/paper3_anomaly_catalog_v3.1.94.pdf",
+  "changelog": "R32conf closure wave: recount-at-a-glance table (3-vendor convergent ask), S_BigAE column stripped, singular retitle, SMBHB abstract tightened; recount sweep PASS x5 sites, zero arithmetic errors."
  }
 ]
