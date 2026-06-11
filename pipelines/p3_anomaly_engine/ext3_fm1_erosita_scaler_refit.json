@@ -1,0 +1,18 @@
+{
+ "leg": "eROSITA (load-bearing; NEOWISE/Gaia remain queued \u2014 feature tables pod-side only)",
+ "method": "identical seeds (np 42 split, torch 42 init/order); ONLY difference is scaler fit population",
+ "n_sources": 930203,
+ "val_loss_A_fullscaler": 0.025491153821349144,
+ "val_loss_B_trainscaler": 0.025371916592121124,
+ "jaccard_top298_A_vs_B": 0.7581120943952803,
+ "overlap_top298_A_vs_B": 257,
+ "jaccard_top1pc_A_vs_B": 0.6427373068432671,
+ "overlap_top1pc_A_vs_B": 7279,
+ "spearman_full_catalog": 0.9413120941449049,
+ "spearman_top1pc_union": 0.7524998221639349,
+ "date": "2026-06-11",
+ "seed": 42,
+ "anchor_overlap_A_top298_vs_published": 247,
+ "anchor_overlap_B_top298_vs_published": 243,
+ "anchor_note": "anchor measures environment drift vs the original pod run (weights not bit-reproducible across hardware); the A-vs-B pair is the controlled FM1 comparison"
+}
