@@ -43,6 +43,29 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "EXT3",
+    kind: "external-browser",
+    dateISO: "2026-06-11",
+    title: "EXT3 — third in-thread external round: Grok clean 6/6 ACCEPT, gap 60 → 32 → 27",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "Round-3 delta reviews on v1A.0.60-class versions: Grok delivered a clean external round (6/6 ACCEPT), Gemini escalations were artifact-falsified, ChatGPT residuals shrank to wording/policy items — zero substantive physics blockers remain.",
+    keyTakeaways: [
+      "Grok Heavy: first clean external round of the campaign — ACCEPT on all six papers",
+      "Gap metric: 60 (EXT1) → 32 (EXT2) → 27 (EXT3), with EXT3 residues dominated by wording and stale figure assets",
+      "ChatGPT 3-round citation dispute VINDICATED on source fetch — promoted to pattern-052 (re-raise vindication test)",
+      "Silent Gemini submission failures caught and fixed: growth-based completion waits + version-presence gates now mandatory in the skill",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 27,
+      note: "EXT3: ~27 genuinely-new findings, none physics-blocking — exit criterion within one closure wave",
+    },
+    links: [
+      { label: "manifest · GitHub", href: `${PR}/EXT3_BROWSER_MANIFEST.md` },
+      { label: "P1A audit", href: `${PR}/EXT3_P1A_TRUTH_AUDIT.md` },
+      { label: "P5 audit", href: `${PR}/EXT3_P5_TRUTH_AUDIT.md` },
+    ],
+  },
+  {
     id: "EXT2-CLOSURES",
     kind: "closure-wave",
     dateISO: "2026-06-10",
@@ -405,6 +428,13 @@ export interface GapPoint {
 
 /** Internal/external gap series — must shrink every cycle; target is zero. */
 export const gapSeries: GapPoint[] = [
+  {
+    roundId: "EXT3",
+    dateISO: "2026-06-11",
+    total: 27,
+    perPaper: { P1A: 3, P1B: 3, P2: 5, P3: 5, P4: 6, P5: 6 },
+    note: "EXT3 truth-audits: ~27 genuinely-new, all wording/asset/policy class — zero substantive physics blockers",
+  },
   {
     roundId: "EXT1",
     dateISO: "2026-06-10",

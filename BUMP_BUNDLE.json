@@ -1,38 +1,56 @@
 [
  {
   "paperSlug": "paper-1a",
-  "version": "v1A.0.60",
+  "version": "v1A.0.61",
   "datestamp": "2026-06-11",
-  "texCommit": "4c0c6bef",
+  "texCommit": "5fdddaba",
   "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1a_ech_nogo.pdf",
-  "sitePdfPath": "/papers/paper1a_ech_nogo_v1A.0.60.pdf",
-  "changelog": "R31conf residual: Fig.7 unique-survivor caption scoped to stated ansatze; EXT3 unblocked."
+  "sitePdfPath": "/papers/paper1a_ech_nogo_v1A.0.61.pdf",
+  "changelog": "EXT3 closure wave: Bianchi-only Holst heading, EB conditional, ECH-independent retitle, ALP mapping normalization; exit-criterion modulo Houston sign-off."
+ },
+ {
+  "paperSlug": "paper-1b",
+  "version": "v1B.0.58",
+  "datestamp": "2026-06-11",
+  "texCommit": "f5617bce",
+  "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1b_mcmc_companion.pdf",
+  "sitePdfPath": "/papers/paper1b_mcmc_companion_v1B.0.58.pdf",
+  "changelog": "EXT3 closure wave: frozen parameter summary regenerated with S8=0.8141\u00b10.0085, PR3/PR4 scoping, exploratory w0wa reframe; SN-overlap control chains queued."
  },
  {
   "paperSlug": "paper-2",
-  "version": "v1.7.52",
+  "version": "v1.7.53",
   "datestamp": "2026-06-11",
-  "texCommit": "8a904e52",
+  "texCommit": "79eecc0d",
   "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/research/focused_paper_source_integration/02_full_draft.pdf",
-  "sitePdfPath": "/papers/paper2_fnl_forecast_v1.7.52.pdf",
-  "changelog": "R31conf residual: >3\u03c3 claim at L677 aligned with the 2.6-5\u03c3 rebooking (pattern-051 sweep completion); EXT3 unblocked."
+  "sitePdfPath": "/papers/paper2_fnl_forecast_v1.7.53.pdf",
+  "changelog": "EXT3 closure wave: both stale-significance figures regenerated to template-corrected values, Addis recalibration honest (pattern-052 vindication), Li row stress-test framing."
  },
  {
   "paperSlug": "paper-3",
-  "version": "v3.1.91",
+  "version": "v3.1.92",
   "datestamp": "2026-06-11",
-  "texCommit": "9a02dd55",
+  "texCommit": "73b532dc",
   "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p3_anomaly_engine/paper3_draft.pdf",
-  "sitePdfPath": "/papers/paper3_anomaly_catalog_v3.1.91.pdf",
-  "changelog": "R31conf: six unapplied EXT2 action items closed (schema sentence, 20-vs-18 count, z-provenance, LAMOST denominator, TARGETTYPE/SPECTYPE, like-for-like wording); EXT3 unblocked."
+  "sitePdfPath": "/papers/paper3_anomaly_catalog_v3.1.92.pdf",
+  "changelog": "EXT3 closure wave: FM-series wording closures, Fig 2 regenerated with baseline qualifier, planck-overlap artifact (152/200)."
+ },
+ {
+  "paperSlug": "paper-4",
+  "version": "v1.0.175",
+  "datestamp": "2026-06-11",
+  "texCommit": "53b41d12",
+  "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p2_chirality/chirality_catalog_paper.pdf",
+  "sitePdfPath": "/papers/chirality_catalog_paper_v175.pdf",
+  "changelog": "EXT3 closure wave: flip-identity QC run (1.3% traced to pipeline-pass mismatch; HC dipole rerun z=+0.48), two QC artifacts committed."
  },
  {
   "paperSlug": "paper-5",
-  "version": "v0.1.64-2026-06-11",
+  "version": "v0.1.65-2026-06-11",
   "datestamp": "2026-06-11",
-  "texCommit": "31e5e45f",
+  "texCommit": "HEAD",
   "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf",
-  "sitePdfPath": "/papers/p5_desi_chirality_v0.1.64.pdf",
-  "changelog": "R31conf residual: Table II void-class overlap relabel (EF5); EXT3 unblocked."
+  "sitePdfPath": "/papers/p5_desi_chirality_v0.1.65.pdf",
+  "changelog": "EXT3 closure wave: footprint retabulation computed (\u0394f_CW=+0.0018, z=+0.78), Table X two-sample stats columns, multiplicity rewrite."
  }
 ]
