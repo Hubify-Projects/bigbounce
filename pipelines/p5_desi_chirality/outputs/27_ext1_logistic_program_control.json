@@ -1,0 +1,66 @@
+{
+  "script": "scripts/27_ext1_logistic_program_control.py",
+  "written_utc": "2026-06-10",
+  "closes": [
+    "EXT1 F25 (logistic regression with program control)"
+  ],
+  "sample": {
+    "n_bright_dark": 782710,
+    "n_bright": 768228,
+    "n_dark": 14482,
+    "note": "bright+dark subset of env-matched spirals (filament=reference class)"
+  },
+  "M0_env_only": {
+    "joint_env_wald_chi2": 2.753309244557042,
+    "joint_env_wald_dof": 3,
+    "joint_env_wald_p": 0.4312438304428682,
+    "env_void": {
+      "coef": -0.004606539167685723,
+      "se": 0.0984674158668813,
+      "z": -0.04678237086990615,
+      "p": 0.9626866796560202
+    },
+    "env_wall": {
+      "coef": 0.022780723900550005,
+      "se": 0.02482619141068984,
+      "z": 0.9176084854779987,
+      "p": 0.358823873846817
+    },
+    "env_cluster": {
+      "coef": -0.005878056921756775,
+      "se": 0.004542265826103172,
+      "z": -1.2940803437740638,
+      "p": 0.19563767032424617
+    }
+  },
+  "M1_env_plus_program": {
+    "joint_env_wald_chi2": 2.250812604926182,
+    "joint_env_wald_dof": 3,
+    "joint_env_wald_p": 0.5220093373988546,
+    "env_void": {
+      "coef": -0.003975529391635391,
+      "se": 0.09846764712294528,
+      "z": -0.04037396553886986,
+      "p": 0.9677949858110492
+    },
+    "env_wall": {
+      "coef": 0.020275602006492466,
+      "se": 0.024826675831231867,
+      "z": 0.8166861381009307,
+      "p": 0.4141078150361046
+    },
+    "env_cluster": {
+      "coef": -0.005370257680833069,
+      "se": 0.0045501713405309546,
+      "z": -1.1802319690683165,
+      "p": 0.23790796735191344
+    },
+    "is_bright": {
+      "coef": -0.03313189048945536,
+      "se": 0.01680673255709213,
+      "z": -1.9713463266525484,
+      "p": 0.04868427581067248
+    }
+  },
+  "verdict": "Environment-class coefficients remain statistically null after controlling for target program; environment-independence result is not confounded by target-program mix."
+}

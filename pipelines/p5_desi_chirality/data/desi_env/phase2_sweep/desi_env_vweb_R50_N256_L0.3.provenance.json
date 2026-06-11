@@ -1,0 +1,20 @@
+{
+  "output": "desi_env_vweb_R50_N256_L0.3.parquet",
+  "written_utc": "2026-05-21T18:20:17Z",
+  "git_sha": "6728bb977c7f",
+  "config_version": "0.1.0",
+  "config_hash": "0d93b397ce6f960a",
+  "provenance_tag": "env_finder-vweb-v0.1-6728bb977c7f-0d93b397ce6f960a",
+  "n_galaxies": 14622283,
+  "grid_n": 256,
+  "cell_size_mpc_h": 25.912670135498047,
+  "box_side_mpc_h": 6633.6435546875,
+  "smoothing_R_s_mpc_h": 50.0,
+  "lambda_th": 0.3,
+  "volume_fractions": {
+    "void": 0.620806427015665,
+    "wall": 0.19795166097878747,
+    "filament": 0.17712726145520527,
+    "cluster": 0.004114650550342195
+  }
+}

@@ -1,0 +1,23 @@
+classify:
+  lambda_th: 0.3
+config_version: 0.1.0
+cosmology:
+  name: Planck18
+grid:
+  bounding_box_pad_mpc_h: 50.0
+  n: 256
+input:
+  filter:
+    spectype: GALAXY
+    z_max: 2.0
+    z_min: 0.01
+    zwarn_max: 0
+  zall_path: pipelines/p5_desi_chirality/data/desi_zall.parquet
+output:
+  env_parquet: pipelines/p5_desi_chirality/data/desi_env/phase2_sweep/desi_env_vweb_R50_N256_L0.3.parquet
+  include_eigenvalues: true
+  provenance: true
+  volume_fractions_json: pipelines/p5_desi_chirality/env_finder/reports/02_phase2_volfrac_R50_N256_L0.3.json
+seed: 42
+smoothing:
+  R_s_mpc_h: 50.0

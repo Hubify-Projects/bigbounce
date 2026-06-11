@@ -1,0 +1,63 @@
+{
+  "script": "EXT1_closure_wave_F9",
+  "written_utc": "2026-06-10",
+  "closes": [
+    "EXT1 F9 (DESIVAST program split)",
+    "EXT1 F20 (unique-TARGETID bright/dark within DESIVAST volume)"
+  ],
+  "DESIVAST_VoidFinder_program_split": {
+    "void": {
+      "bright": {
+        "n": 56477,
+        "n_cw": 28053,
+        "f_cw": 0.4967,
+        "sigma": -1.56
+      },
+      "dark": {
+        "n": 469,
+        "n_cw": 215,
+        "f_cw": 0.4584,
+        "sigma": -1.8
+      },
+      "backup": {
+        "n": 17,
+        "n_cw": 8,
+        "f_cw": 0.4706,
+        "sigma": -0.24
+      },
+      "other": {
+        "n": 18,
+        "n_cw": 10,
+        "f_cw": 0.5556,
+        "sigma": 0.47
+      }
+    },
+    "nonvoid": {
+      "bright": {
+        "n": 615078,
+        "n_cw": 305688,
+        "f_cw": 0.497,
+        "sigma": -4.72
+      },
+      "dark": {
+        "n": 5845,
+        "n_cw": 2955,
+        "f_cw": 0.5056,
+        "sigma": 0.85
+      },
+      "backup": {
+        "n": 858,
+        "n_cw": 442,
+        "f_cw": 0.5152,
+        "sigma": 0.89
+      },
+      "other": {
+        "n": 183,
+        "n_cw": 88,
+        "f_cw": 0.4809,
+        "sigma": -0.52
+      }
+    }
+  },
+  "key_finding": "DESIVAST void bright program (n=56477) sigma=-1.56, dark (n=469) sigma=-1.80; both null. Non-void: bright (n=615078) sigma=-4.72 (monopole), dark (n=5845) sigma=+0.85 (null). BGS bright dominates both void and non-void as expected for z<=0.24 BGS-only sample."
+}

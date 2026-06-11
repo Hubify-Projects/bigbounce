@@ -18,7 +18,7 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.60-2026-06-11}
+\newcommand{\paperVersion}{v0.1.61-2026-06-10}
 % v0.1.52-2026-06-09 (R22prov truth-audit closure wave; work order in
 %   project-context/peer-reviews/R22prov_P5_TRUTH_AUDIT.md; recompute artifacts
 %   outputs/17_v0151_closure_recomputes.json + 18_v0151_stratified_and_density.json):
@@ -50,6 +50,38 @@
 %   TIGHTENS: cross-class f_CW range 1.98pp → 0.05pp, all classes
 %   |σ_mono| ≤ 0.39. Artifact: outputs/16_cosmic_web_zshell_corrected.json.
 \newcommand{\paperTimestamp}{June 2026}
+% v0.1.61-2026-06-10 (EXT1 closure wave; work order in
+%   project-context/peer-reviews/EXT1_P5_TRUTH_AUDIT.md):
+%   F2: DESIVAST interior void counts updated to final ApJ 982,38 values
+%     (1,461/420/295 preprint -> 1,489/389/297 final; 420->389 interior
+%     V2-REVOLVER, 295->297 V2-VIDE, plus version ledger note);
+%   F8: Cramér's V=0.078 and log10(p)≈-1069 added next to chi2=4932
+%     in abstract and §VI.A.d;
+%   F9+F20: DESIVAST BGS bright/dark program split computed and tabled
+%     (tab:desivast_program_split; outputs/28_ext1_desivast_program_split.json);
+%     void bright n=56477 σ=-1.56, dark n=469 σ=-1.80 both null;
+%   F16: void-bin smallness typo fixed: "small cluster volume fraction of 1%"
+%     -> "small void volume fraction (~0.1% of in-footprint cells)";
+%   C1/F19/F21: "catalog-level -5sigma headline" -> "catalog-wide monopole
+%     offset" at all 2 problematic instances (§VI.A.d and §VIII.maximal HEALPix);
+%   F7/F22: analysis-tree table added (tab:analysis_tree) to §V.B enumerating
+%     Bonferroni-5 primary family, Bonferroni-9 Phase-2 sweep, and 8
+%     descriptive secondary paths;
+%   F10/C2: Rs=10 rows in Table VI visually separated and labelled
+%     "grid-unresolved, retained for completeness only"; max(resolved 6)=1.64σ
+%     now explicitly the primary robustness bound;
+%   F25: Logistic regression M0 (env only) and M1 (env + bright program)
+%     added to §VI.A.d (joint env Wald p=0.43->0.52 after program control;
+%     env coefficients shift ≤0.01SE; outputs/27_ext1_logistic_program_control.json);
+%   F11: RSD language softened: "inherit no anisotropic RSD systematic" ->
+%     "RSD-bounded at the level of this fixed-void-geometry membership
+%     sensitivity test; full immunity would require void-catalog reconstruction";
+%   F17: n=6 qualifier "in this six-object illustrative check" added at both
+%     occurrences (abstract and §sec:desivast_xmatch);
+%   F1: footprint-mask proxy section strengthened: explicit note that the
+%     primary DESIVAST void/non-void null is not affected by the HEALPix
+%     proxy limitation (both void and non-void are point-in-sphere inside
+%     BGS coverage volume).
 % --- Preamble changelog (full pre-v0.1.44 history archived to CHANGELOG_pre-v0.1.44.txt) ---
 % v0.1.49-2026-06-09 (P5-E3 close + 2 new figures). P5-E3: added shared-provenance
 %   explanation for the 0.0066" median cross-match separation (DESI TARGET_RA/DEC
@@ -96,7 +128,7 @@
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{\paperTimestamp}
+\date{\paperTimestamp\ --- \paperVersion}
 
 \begin{abstract}
 We cross-match the 8{,}474{,}531-galaxy chirality catalog of Paper~IV
@@ -215,10 +247,13 @@ VoidFinder sphere-growing vs.\ ZOBOV watershed algorithmic axes):
 (i) re-running the chirality analysis with DESIVAST-defined voids
 \emph{as the classifier} (rather than V-Web) on
 $n_{\rm void}^{\rm DESIVAST} = 56{,}981$ matched spirals
-($\sim\!130\times$ the V-Web void sample size, supplemented by an $n=6$
-per-galaxy classifier-disagreement check showing $0/6$ V-Web ``void''
+($\sim\!130\times$ the V-Web void sample size, supplemented by an
+$n=6$ per-galaxy classifier-disagreement check --- in this
+six-object illustrative check, $0/6$ V-Web ``void''
 spirals fall inside any of the $101{,}863$ DESIVAST VoidFinder holes
-at $z \leq 0.24$) returns $f_{\rm CW}^{\rm void} = 0.4964$ vs
+at $z \leq 0.24$; the $n=6$ sample is too small for a formal purity
+constraint, but it illustrates the survey-shell systematic driving the
+V-Web void class at low $z$) returns $f_{\rm CW}^{\rm void} = 0.4964$ vs
 $f_{\rm CW}^{\rm non-void} = 0.4971$, $\Delta f_{\rm CW} \equiv
 f_{\rm CW}^{\rm non\mbox{-}void} - f_{\rm CW}^{\rm void} = +0.0007$,
 statistically indistinguishable; (ii)
@@ -257,7 +292,8 @@ level the bright-vs-dark difference is $0.81$\,pp
 ($f_{\rm CW} = 0.4970$ vs $0.5051$, $|z| \approx 2.0\sigma$).
 A contingency test (\S\ref{sec:results_vweb})
 finds V-Web class and target program are \emph{not} independent
-($\chi^{2}\!=\!4932$, $3$ d.o.f., $p\!<\!10^{-300}$, max class-to-overall
+($\chi^{2}\!=\!4932$, $3$ d.o.f., $\log_{10}p\!\approx\!-1069$,
+Cram\'er's $V\!=\!0.078$, max class-to-overall
 bright-fraction deviation $1.5$\,pp), so the V-Web filament
 bright-vs-dark sign-flip is best read as a residual structure
 that the current data do not allow us to cleanly partition between a
@@ -498,7 +534,7 @@ $97.9\%$ of matched-spiral assignments retain their class, and
 per-class $f_{\rm CW}$ moves by at most $0.23$~pp (the small wall
 class; filament $-0.005$~pp, cluster $+0.013$~pp), leaving every
 environment--chirality conclusion unchanged (artifact
-\texttt{outputs/23\_unique\_parent\_rebuild.json}).
+\artifact{pipelines/p5\_desi\_chirality/outputs/23\_unique\_parent\_rebuild.json}).
 \item Build a survey-footprint mask by dilation of occupied cells
 (\textsc{scipy} \texttt{binary\_dilation} with the default
 face-connected $3\!\times\!3\!\times\!3$ cross structuring element,
@@ -516,7 +552,7 @@ $\delta = \rho / \bar\rho - 1$.
 convention $\partial_i \partial_j \leftrightarrow (ik_i)(ik_j) =
 -k_i k_j$, so with $\Phi(k) = -\delta_k/k^2$ this gives
 $T_{ij}(k) = +k_i k_j \delta_k / k^2$; the committed implementation
-\texttt{env\_finder/01\_compute\_vweb.py} applies exactly this sign,
+\artifact{pipelines/p5\_desi\_chirality/env\_finder/01\_compute\_vweb.py} applies exactly this sign,
 matching the title-footnote convention --- the reported volume
 fractions, e.g.\ void $24.4\%$ / cluster $1.0\%$, are consistent with
 the standard sign); inverse-FFT the six
@@ -745,6 +781,57 @@ isolation should be read as a per-stratification diagnostic, not as
 an independent test of the headline null; the headline is anchored on
 the DESIVAST primary path.
 
+\textbf{Analysis-tree declaration.}
+Table~\ref{tab:analysis_tree} enumerates the full analysis tree tested
+in this paper, distinguishing the Bonferroni-5 primary family from the
+nine secondary Bonferroni tests in the Phase~2 sensitivity sweep and
+from descriptive stratifications that carry no additional look-elsewhere
+correction. All tests outside the primary family are \emph{descriptive
+consistency checks}; a finding at $|\sigma| \sim 2$--$3$ in a
+secondary path should be interpreted against its own per-test threshold,
+not against the primary Bonferroni-5 gate.
+
+\begin{table*}[ht]
+\caption{Analysis-tree declaration. The Bonferroni-5 primary family
+covers the five DESIVAST estimators; the Phase~2 nine-cell secondary
+family covers the $(R_s, \lambda_{\rm th})$ sweep; all other paths are
+labelled descriptive. Thresholds from Eq.~\eqref{eq:bonferroni}.}
+\label{tab:analysis_tree}
+\begin{ruledtabular}
+\begin{tabular}{llcl}
+Path & Tests & $K$ & Status \\
+\hline
+\multicolumn{4}{l}{\textbf{Primary (Bonferroni-5; $\alpha=0.05$, threshold $|\sigma|=2.58$)}} \\
+DESIVAST VoidFinder & void vs non-void $f_{\rm CW}$ & 1 & primary \\
+DESIVAST V2-REVOLVER & void vs non-void $f_{\rm CW}$ & 1 & primary \\
+DESIVAST V2-VIDE & void vs non-void $f_{\rm CW}$ & 1 & primary \\
+V2-REVOLVER catalog-native & GALZONE void $f_{\rm CW}$ & 1 & primary \\
+V2-VIDE catalog-native & GALZONE void $f_{\rm CW}$ & 1 & primary \\
+\hline
+\multicolumn{4}{l}{\textbf{Secondary sweep (Bonferroni-9; $\alpha=0.05$, threshold $|\sigma|=2.77$)}} \\
+Phase 2 cell $(R_s=10,\lambda=0.0)$ & max-class residual & 1 & secondary \\
+Phase 2 cell $(R_s=10,\lambda=0.1)$ & max-class residual & 1 & secondary \\
+Phase 2 cell $(R_s=10,\lambda=0.3)$ & max-class residual & 1 & secondary \\
+Phase 2 cell $(R_s=25,\lambda=0.0)$ & max-class residual & 1 & secondary \\
+Phase 2 cell $(R_s=25,\lambda=0.1)$ & max-class residual & 1 & secondary \\
+Phase 2 cell $(R_s=25,\lambda=0.3)$ & max-class residual & 1 & secondary \\
+Phase 2 cell $(R_s=50,\lambda=0.0)$ & max-class residual & 1 & secondary \\
+Phase 2 cell $(R_s=50,\lambda=0.1)$ & max-class residual & 1 & secondary \\
+Phase 2 cell $(R_s=50,\lambda=0.3)$ & max-class residual & 1 & secondary \\
+\hline
+\multicolumn{4}{l}{\textbf{Descriptive (no additional look-elsewhere correction)}} \\
+V-Web 4-class omnibus & $4\!\times\!2$ homogeneity $\chi^2$ & --- & descriptive \\
+Redshift scan & label-shuffle $p$ vs $z$ & --- & descriptive \\
+Density quintiles & bright-fraction residuals & --- & descriptive \\
+HEALPix (NSIDE $=16,32,64$) & sky-position scan & --- & descriptive \\
+Tracer-program split & bright vs dark $f_{\rm CW}$ & --- & descriptive \\
+Tempel FoF overlap & filament concordance & --- & descriptive \\
+ASTRA EDR per-object & env-label concordance & --- & descriptive \\
+T-Web concurrent-lit & void-class overlap & --- & descriptive \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
 \section{Results}\label{sec:results}
 
 \subsection{Cosmic-web environment (headline)}\label{sec:results_vweb}
@@ -837,8 +924,9 @@ leaking through the larger-sample bins, not as environment-dependent
 chirality.
 
 \textbf{Void-bin smallness.} The void bin has only $n\!=\!428$
-galaxies (the small cluster volume fraction of $1\%$ plus the sparse
-$r \le 17.8$ DESI Legacy spiral selection yields a small
+galaxies (the small void volume fraction of ${\approx}0.1\%$ of
+in-footprint cells, combined with the sparse
+$r \le 17.8$ DESI Legacy spiral selection, yields a small
 chirality-relevant void sample). The $\sigma\!=\!-0.68$ on the void
 class is statistical noise at this $N$; the $95\%$ Jeffreys credible
 interval is $f_{\rm CW}^{\rm void} \in [0.435, 0.530]$, which brackets
@@ -1102,7 +1190,7 @@ $f_{\rm CW} = 0.4970$, $\sigma = -5.25$; \texttt{dark} (LRG, ELG, QSO;
 $n = 14{,}782$, $\bar z = 0.255$) $f_{\rm CW} = 0.5051$,
 $\sigma = +1.25$; \texttt{backup} ($n = 875$) $f_{\rm CW} = 0.5143$,
 $\sigma = +0.85$; \texttt{other} ($n = 218$) $f_{\rm CW} = 0.4954$,
-$\sigma = -0.14$. \textbf{The catalog-level $-5\sigma$ headline is
+$\sigma = -0.14$. \textbf{The catalog-wide $-5\sigma$ monopole offset is
 entirely driven by the \texttt{bright} program}; \texttt{dark} returns
 $\sigma = +1.25$ (null in the opposite sign), \texttt{backup} returns
 $\sigma = +0.85$ (null), \texttt{other} returns $\sigma = -0.14$
@@ -1182,7 +1270,9 @@ matched-spiral ratio $0.978$. A two-way contingency test
 on the $n_{\rm bright+dark} = 811{,}609$ bright$+$dark subset of the
 $812{,}793$-row env-labeled parent) gives
 $\chi^{2} = 4932$ with three degrees of freedom and
-$p \ll 10^{-300}$ (below double-precision underflow) ---
+$p \ll 10^{-300}$ ($\log_{10} p \approx -1069$; below double-precision
+underflow) and Cram\'er's $V = \sqrt{\chi^2/n} = 0.078$ (small
+effect despite the enormous sample) ---
 V-Web class and target program are \emph{not} independent;
 the cluster class is the most-bright (98.9\%) and the wall class is the
 least-bright (96.2\%), with the void and filament classes between.
@@ -1209,6 +1299,25 @@ target-program mixing is far more constrained. Contingency-test reproduction is 
 $\times$ tracer-program cross-tab derivable from the
 \texttt{desi\_env\_vweb.parquet} + matched-spiral catalog join
 documented in \S\ref{sec:vweb_algo}.
+
+\textbf{Logistic regression controlling for target program.}
+To formally assess whether V-Web environmental coefficients survive
+program control, we fit two logistic-regression models on the
+$n = 782{,}710$ bright$+$dark env-matched spirals
+(filament = reference class):
+$M_0$: $\Pr(\rm CW) \sim \beta_0 + \beta_{\rm env}$; and
+$M_1$: $\Pr(\rm CW) \sim \beta_0 + \beta_{\rm env} + \beta_{\rm bright}$.
+The joint Wald test on the three V-Web environment coefficients gives
+$\chi^2 = 2.75$ ($p = 0.43$) in $M_0$ and $\chi^2 = 2.25$ ($p = 0.52$)
+in $M_1$, both far from significance. The bright-program indicator
+itself is marginally significant ($z = -1.97$, $p = 0.049$), consistent
+with the known bright-program monopole. Crucially, the three V-Web
+environment coefficients (void, wall, cluster vs filament) shift by
+$\leq 0.01$ on their standard errors after program adjustment
+in $M_1$ relative to $M_0$, confirming that the environmental-independence
+null is not confounded by the V-Web$\times$program non-orthogonality.
+Artifact:
+\artifact{pipelines/p5\_desi\_chirality/outputs/27\_ext1\_logistic\_program\_control.json}.
 
 \subsection{Sky-position regional coherence}\label{sec:results_healpix}
 
@@ -1281,7 +1390,7 @@ V-Web rebuild on the $14{,}622{,}283$-galaxy DR1 spectro sample, joined
 per cell to the declared $812{,}793$-row env-labeled spiral parent of
 Table~\ref{tab:cw_vs_env} (the per-cell sweep parquets and configs are
 in
-\artifact{pipelines/p5\_desi\_chirality/data/desi\_env/phase2\_sweep/};
+\href{https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p5_desi_chirality/data/desi_env/phase2_sweep}{\nolinkurl{pipelines/p5\_desi\_chirality/data/desi\_env/phase2\_sweep/}};
 the per-cell statistics below are recomputed in
 \artifact{pipelines/p5\_desi\_chirality/outputs/17\_v0151\_closure\_recomputes.json}).
 An earlier draft of this table reported per-cell ranges of
@@ -1352,9 +1461,12 @@ degenerate near-unsmoothed limit, excluded from the robustness claim
 $R_s$ (Mpc$/h$) & $\lambda_{\rm th}$ & range (pp) & $n_{\rm void}$ &
 max $|\sigma_{\rm obs}-\sigma_{\rm pred}|$ & $p_{\rm LEE}$ \\
 \hline
-$10$ & $0.0$ & $1.72$ & $363$ & $1.71$ & $0.56$ \\
-$10$ & $0.1$ & $2.71$ & $594$ & $1.87$ & $0.42$ \\
-$10$ & $0.3$ & $2.01$ & $837$ & $1.69$ & $0.38$ \\
+\multicolumn{6}{l}{\textit{Grid-unresolved ($R_s < 25.9$\,Mpc$/h$ grid scale; retained for completeness only, excluded from robustness claim)}} \\
+$10^\dagger$ & $0.0$ & $1.72$ & $363$ & $1.71$ & $0.56$ \\
+$10^\dagger$ & $0.1$ & $2.71$ & $594$ & $1.87$ & $0.42$ \\
+$10^\dagger$ & $0.3$ & $2.01$ & $837$ & $1.69$ & $0.38$ \\
+\hline
+\multicolumn{6}{l}{\textit{Resolved cells ($R_s \geq 25.9$\,Mpc$/h$; robustness claim based on these six cells)}} \\
 $25$ & $0.0$ & $1.97$ & $428$ & $1.38$ & $0.13$ \\
 $25$ & $0.1$ & $2.48$ & $627$ & $1.35$ & $0.14$ \\
 $25$ & $0.3$ & $1.83$ & $853$ & $1.22$ & $0.23$ \\
@@ -1362,8 +1474,10 @@ $50$ & $0.0$ & $3.69$ & $401$ & $1.39$ & $0.34$ \\
 $50$ & $0.1$ & $4.12$ & $599$ & $1.52$ & $0.41$ \\
 $50$ & $0.3$ & $2.81$ & $825$ & $1.64$ & $0.48$ \\
 \hline
-\textbf{max across sweep} & --- & $\mathbf{4.12}$ & --- &
-$\mathbf{1.87}$ & --- \\
+\textbf{max (all 9)} & --- & $\mathbf{4.12}$ & --- &
+$\mathbf{1.87}^\dagger$ & --- \\
+\textbf{max (resolved 6)} & --- & $\mathbf{4.12}$ & --- &
+$\mathbf{1.64}$ & --- \\
 \end{tabular}
 \end{ruledtabular}
 \end{table*}
@@ -1520,8 +1634,10 @@ The DESIVAST DR1 release (Rinc\'on \textit{et al.}\ 2025, ApJ~982,
 DR1 BGS void catalog at low $z$, using the sphere-growing VoidFinder
 algorithm and the watershed ZOBOV/V2 algorithm (REVOLVER and VIDE
 prunings) on the volume-limited DR1 Bright Galaxy Survey sample
-restricted to $z \leq 0.24$: 1,461 interior voids with VoidFinder,
-420 with V2-REVOLVER, and 295 with V2-VIDE. DESIVAST is a void
+restricted to $z \leq 0.24$: 1,489 interior voids with VoidFinder,
+389 with V2-REVOLVER, and 297 with V2-VIDE (final published counts
+from ApJ~982, 38, Table~1; an earlier preprint version cited
+1,461/420/295, which were preliminary values). DESIVAST is a void
 catalog rather than a full four-class cosmic-web classifier, so the
 DESIVAST-anchored chirality null tests environmental dependence on
 the cleanest available DR1 void definition.
@@ -1541,8 +1657,11 @@ test using the void's published effective radius and center, and
 the typical Kaiser-plus-finger-of-god displacement $\sigma_v/(aH)
 \lesssim 5$\,Mpc/$h$ at $z \lesssim 0.24$ is several times smaller
 than the void effective radii. The within-void/non-void chirality
-fractions therefore inherit no anisotropic RSD systematic at the
-present precision. An empirical bound on membership-flip sensitivity
+fractions are therefore RSD-bounded at the level of this
+fixed-void-geometry membership sensitivity test; full immunity would
+require void-catalog reconstruction under RSD, which is not performed
+here, but the FoG Monte Carlo below bounds the fractional membership
+shift to well below the statistical uncertainty at the present precision. An empirical bound on membership-flip sensitivity
 comes from the membership-definition variant of
 \S\ref{sec:desivast_maximal_healpix}: swapping the permissive
 hole-union criterion for the strict maximal-sphere interior reassigns
@@ -1600,10 +1719,11 @@ distribution). Converting each of the 6 spirals to flat-$\Lambda$CDM
 comoving Cartesian coordinates ($H_0 = 67.66$ km/s/Mpc, $\Omega_m =
 0.315$, units $h^{-1}$~Mpc consistent with the DESIVAST hole catalog)
 and testing point-in-sphere membership against all $101{,}863$ holes
-returns \textbf{$0/6$ V-Web ``void'' spirals inside any DESIVAST hole};
+returns \textbf{$0/6$ V-Web ``void'' spirals inside any DESIVAST hole}
+in this six-object illustrative check;
 minimum spiral-to-nearest-hole separations span $28.7$--$158.1\,$Mpc/$h$.
 
-This $0/6$ disagreement is consistent with the survey-shell systematic
+This $0/6$ disagreement in this six-object draw is consistent with the survey-shell systematic
 that drives the V-Web vs T-Web void-fraction discrepancy
 (reported in \S\ref{sec:tweb_concurrent} below as a
 $+8$--$18\,$pp V-Web excess in the void class):
@@ -1697,6 +1817,49 @@ and the catalog-anchored re-analysis at $n_{\rm void} = 56{,}981$
 returns a clean null with both classes consistent with the catalog-
 level uniform classifier-bias monopole.
 
+\textbf{DESIVAST independence from target-program residuals.}
+A key concern is whether the DESIVAST null inherits the bright/dark
+target-program non-orthogonality documented in
+\S\ref{sec:results_within_class_density}. The DESIVAST void definition
+restricts to the volume-limited $z \leq 0.24$ BGS sample, where
+$98.8\%$ of the $z \leq 0.24$ spirals are in the bright program
+($n_{\rm bright}/n_{\rm lz} = 56{,}477/56{,}981 = 99.1\%$ for
+void-assigned spirals; $n_{\rm dark} = 469$).
+Table~\ref{tab:desivast_program_split} shows the bright/dark
+program split of the DESIVAST void and non-void classes explicitly.
+Both bright and dark sub-samples return null
+chirality fractions within their respective void classes
+($|\sigma| \leq 1.80$ for all cells), with no sign of a
+program-conditioned environment signal. The DESIVAST void result
+is therefore \emph{not driven by target-program mixing}: with
+$99.1\%$ of void-assigned spirals in the bright program, the bright
+sub-sample dominates and itself returns a null at $\sigma = -1.56$,
+while the dark sub-sample ($n = 469$, $\sigma = -1.80$) is consistent
+with the same null. The DESIVAST non-void bright sub-sample
+($n = 615{,}078$, $\sigma = -4.72$) carries the full catalog-level
+monopole signature scaled to $n$, as expected.
+Artifact:
+\artifact{pipelines/p5\_desi\_chirality/outputs/28\_ext1\_desivast\_program\_split.json}.
+
+\begin{table}[ht]
+\caption{DESIVAST VoidFinder bright/dark target-program split of
+the void and non-void classes on the $z \leq 0.24$ matched-spiral
+subsample ($n_{\rm lz} = 678{,}945$). Both programs return null
+chirality fractions within the void class, confirming DESIVAST
+independence from target-program residuals.}
+\label{tab:desivast_program_split}
+\begin{ruledtabular}
+\begin{tabular}{llrrrr}
+Class & Program & $n$ & $n_{\rm CW}$ & $f_{\rm CW}$ & $\sigma$ \\
+\hline
+Void     & bright & $56{,}477$ & $28{,}053$ & $0.4967$ & $-1.56$ \\
+Void     & dark   & $469$      & $215$      & $0.4584$ & $-1.80$ \\
+Non-void & bright & $615{,}078$ & $305{,}688$ & $0.4970$ & $-4.72$ \\
+Non-void & dark   & $5{,}845$  & $2{,}955$  & $0.5056$ & $+0.85$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
 \subsection{Three-algorithm DESIVAST robustness cross-check}\label{sec:desivast_three_algo}
 
 The DESIVAST DR1 release ships three independent void definitions: the
@@ -1704,8 +1867,8 @@ sphere-growing VoidFinder algorithm above, plus the watershed
 algorithms V2-REVOLVER ($n_{\rm void}^{\rm catalog} = 1{,}992$ effective
 voids, maximum effective radius $43.5\,$Mpc/$h$) and V2-VIDE
 ($n_{\rm void}^{\rm catalog} = 1{,}478$, max $55.9\,$Mpc/$h$). These are
-whole-catalog totals of \emph{effective voids}; the $420$ (V2-REVOLVER)
-and $295$ (V2-VIDE) counts quoted in the section opening are the
+whole-catalog totals of \emph{effective voids}; the $389$ (V2-REVOLVER)
+and $297$ (V2-VIDE) interior void counts quoted in the section opening are the
 \emph{interior} (non-edge) void subsets at the $z \le 0.24$ statement
 — two different object selections from the same release, not a
 contradiction. Repeating
@@ -1851,18 +2014,26 @@ coverage, not a formal intersection with a published DESIVAST angular
 mask: some in-coverage pixels can stochastically contain zero maximal
 voids at NSIDE\,16 because of sampling and the $z \leq 0.24$ depth
 limit, so a residual fraction of the $0$-void bin may lie inside
-coverage; an explicit footprint-mask re-tabulation is queued for the
-data release and would sharpen, not change, the geometric attribution
-below (the $[-2.04, -0.09]$ range of every $\geq\!1$-void bin bounds
-the in-coverage behavior independently of the proxy). Pixels with $\geq 1$ maximal void return
+coverage. Critically, \emph{the primary DESIVAST void/non-void null
+(Table~\ref{tab:desivast_canonical}) is not affected by this proxy
+limitation}: both the void and non-void classes in that test are
+defined by direct point-in-sphere membership against the $101{,}863$
+hole spheres, which are entirely internal to the DESIVAST BGS coverage
+volume; the non-void control sample thus contains galaxies at
+$z \leq 0.24$ that are not inside any DESIVAST hole but are not
+required to lie outside the survey mask. An explicit footprint-mask
+re-tabulation of the HEALPix sky scan is queued for the data
+release and would sharpen, not change, the geometric attribution
+below; the $[-2.04, -0.09]$ range of every $\geq\!1$-void bin bounds
+the in-coverage behavior independently of the proxy. Pixels with $\geq 1$ maximal void return
 $\sigma$ values in the range $[-2.04,\,-0.09]$, with the highest-void-
 density bin ($6+$ per pixel, $n = 258{,}060$) at $\sigma = -2.04$ --
 below the Bonferroni-4 $|\sigma| = 2.50$ threshold. The
 intermediate-bin pixels ($1$--$5$ voids per pixel, total
 $n = 42{,}374$) return $|\sigma| < 0.5$ -- statistically null.
 
-This is an additional catalog-anchored cross-check on the sky-position axis, complementary to the abstract's (i)--(iv) enumeration, showing that the catalog-level
-$-5\sigma$ headline tracks survey-mask geometry rather than environment
+This is an additional catalog-anchored cross-check on the sky-position axis, complementary to the abstract's (i)--(iv) enumeration, showing that the catalog-wide
+$-5\sigma$ monopole offset tracks survey-mask geometry rather than environment
 density: the cleanest chirality $\sigma$ values in this paper are the
 pixels with the \emph{most} maximal-void coverage, not the fewest. The
 $-4.75\sigma$ signal in the no-void-coverage sky region is consistent
@@ -2948,7 +3119,7 @@ retained alongside as \texttt{\_prefilter\_legacy}).
 \item Per-output provenance metadata included in data release.
 \item Deterministic seed: \texttt{20260515}.
 \item All Phase~2 sweep cell configs persisted under
-\artifact{pipelines/p5\_desi\_chirality/data/desi\_env/phase2\_sweep/}.
+\href{https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p5_desi_chirality/data/desi_env/phase2_sweep}{\nolinkurl{pipelines/p5\_desi\_chirality/data/desi\_env/phase2\_sweep/}}.
 \end{itemize}
 
 \begin{thebibliography}{99}
