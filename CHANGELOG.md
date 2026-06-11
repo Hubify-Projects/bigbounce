@@ -18,9 +18,9 @@ block at the top of the corresponding `.tex` source file.
 
 ### v1B.0.57 (2026-06-10) — EXT2 external-round closure wave
 
-- Commit: `PENDING-STAMP-COMMIT` (pinned in the follow-up CHANGELOG-pin
-  commit immediately after the version-stamp commit lands, per the
-  established two-step provenance pattern).
+- Commit: `63931207` (`feat(P1B v1B.0.57): EXT2 closure wave — 176,240
+  chain-confirmed, planck_bao_sn CORRECTED diagnostics added, root
+  CHANGELOG created`).
 - Wave: EXT2 truth-audit (`project-context/peer-reviews/EXT2_P1B_TRUTH_AUDIT.md`).
   Highlights: `freeze_diagnostics_CORRECTED.json` sample count
   regenerated from raw chains (176,840 → 176,240);
