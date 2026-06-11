@@ -137,7 +137,7 @@ All raw per-survey outputs are in `pipelines/h200_results/pod_backup_20260408_fu
 | 1 | **DESI DR1** | 22,504,897 | **195,829** | 0.87 % | ~99 % (top 10 K) | `desi-taxonomy/desi_taxonomy_clusters.csv` (195,680 rows, 10 families) |
 | 2 | **SDSS DR18** | 2,304,830 | **77,905** | 3.38 % | 90 % | `score_dist_sdss-dr18.json` + UMAP outputs |
 | 3 | **LAMOST DR10** | 11,418,594 | **44,075** | 0.39 % | ~50 % (biased — see §7) | `score_dist_lamost-dr10.json` |
-| 4 | **eROSITA DR1** | 930,203 | **298** | 0.03 % | 68 % (203 novel) | `erosita-neowise/erosita_neowise_xmatch_summary.json`, `desi-erosita-xmatch/…` |
+| 4 | **eROSITA DR1** | 930,203 | **298** | 0.03 % | 68 % (203 SIMBAD-unmatched) | `erosita-neowise/erosita_neowise_xmatch_summary.json`, `desi-erosita-xmatch/…` |
 | 5 | **Planck CMB** | 20,000 patches | **200** | 1.0 % | N/A | `planck-cmb-masked/planck_cmb_masked_summary.json` + `planck-act-xmatch/…` (null) |
 | 6 | **ACT DR6** | 20,000 patches | **200** | 1.0 % | N/A | `act-dr6-proper/act_dr6_anomalies.csv` |
 | 7 | **Gaia DR3** | 50,000 | **500** | 1.0 % | 27 % | `gaia-dr3-expanded/gaia_anomalies.csv` + `pipelines/h200_results/gaia_dr3/gaia_summary.json` |
@@ -189,7 +189,7 @@ All raw per-survey outputs are in `pipelines/h200_results/pod_backup_20260408_fu
 | LAMOST anomalies | **44,075** (0.39 %) | `score_dist_lamost-dr10.json` |
 | LAMOST blue-excess artifact fraction | **98 %** | paper abstract + §7.1 (lines 579–581) |
 | eROSITA anomalies | **298** (0.03 %) | `score_dist_erosita-dr1.json` |
-| eROSITA novelty | **68 %** (203 novel) | `erosita-neowise/erosita_neowise_xmatch_summary.json` |
+| eROSITA novelty | **68 %** (203 SIMBAD-unmatched) | `erosita-neowise/erosita_neowise_xmatch_summary.json` |
 | Planck CMB patches | 20,000 / 200 | `planck-cmb-masked/planck_cmb_masked_summary.json` |
 | Planck × ACT cross-corr | **null** | `planck-act-xmatch/planck_act_xmatch_summary.json` |
 | ACT DR6 patches | 20,000 / 200 | `act-dr6-proper/act_dr6_anomalies.csv` |

@@ -163,7 +163,7 @@ export const surveys: Survey[] = [
     keyFindings: [
       "298 anomalies from 930K sources (0.03% canonical top-cut)",
       "73% novel (not in SIMBAD)",
-      "203 novel X-ray sources near LMC",
+      "203 SIMBAD-unmatched X-ray sources near LMC (not independently confirmed discoveries)",
       "Cross-validation stability 81.5% — highest of all Path-C surveys",
       "Fast processing (8 seconds) due to tabular data",
     ],
