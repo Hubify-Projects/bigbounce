@@ -96,21 +96,39 @@ const MCP_TOOLS = [
 ];
 
 const SKILLS = [
+  // astrostack — the full bigbounce-specific namespace (18 skills)
   { cmd: "/bigbounce-status", desc: "Print live paper-state dashboard (calls list_papers).", origin: "astrostack" },
   { cmd: "/bigbounce-r-round", desc: "Fire direct-vendor R-round (4 vendors parallel), write findings to Convex.", origin: "astrostack" },
-  { cmd: "/bigbounce-truth-audit", desc: "Apply verdict per peer-review-truth-audit protocol. REQUIRED before close.", origin: "hubstack/learning-loop" },
+  { cmd: "/bigbounce-truth-audit", desc: "Apply verdict per peer-review-truth-audit protocol. REQUIRED before close.", origin: "astrostack" },
   { cmd: "/bigbounce-close", desc: "Atomic finding/caveat closure with closureStatus enum.", origin: "astrostack" },
   { cmd: "/bigbounce-bump", desc: "Atomic .tex version bump; site re-renders.", origin: "astrostack" },
+  { cmd: "/bigbounce-version-bump", desc: "Paper version bump driver (pairs with /bigbounce-paper-pdf-mirror).", origin: "astrostack" },
   { cmd: "/bigbounce-post-bump-sync", desc: "Mandatory full-surface sync after every bump (papers.ts, live-status.ts, SSOT, Convex, mirror PDFs, commit, push, curl-verify).", origin: "astrostack" },
+  { cmd: "/bigbounce-site-sync", desc: "Same-commit dual sync of public site surfaces with SSOT.", origin: "astrostack" },
+  { cmd: "/bigbounce-paper-pdf-mirror", desc: "Mirror versioned PDFs into site/public/papers/ with metadata refresh.", origin: "astrostack" },
+  { cmd: "/bigbounce-claims-table-sync", desc: "Replace a quantitative claim at every site simultaneously (claims table).", origin: "astrostack" },
+  { cmd: "/bigbounce-revision-tracker", desc: "Maintain REVISION_TRACKER.md across review rounds.", origin: "astrostack" },
+  { cmd: "/drive-to-100-fire", desc: "One atomic step of the drive-to-100 cron loop.", origin: "astrostack" },
+  { cmd: "/external-review-browser-loop", desc: "Automated browser-tier external review submission to logged-in frontier web apps.", origin: "astrostack" },
+  { cmd: "/houston-method-v2", desc: "Mandatory experiment completion protocol (QC → analyze → expand → backup).", origin: "astrostack" },
+  { cmd: "/gpu-dataloader-pattern", desc: "DataLoader num_workers=16 pin_memory=True GPU inference pattern.", origin: "astrostack" },
+  { cmd: "/runpod-lifecycle", desc: "RunPod provision / monitor / teardown lifecycle.", origin: "astrostack" },
+  { cmd: "/idle-gpu-rescue", desc: "Auto-assign work when a pod sits idle.", origin: "astrostack" },
+  { cmd: "/pod-backup-before-stop", desc: "3+ location backup gate before any pod stop.", origin: "astrostack" },
+  // hubstack — cross-paper learning-loop + publishing namespaces
   { cmd: "/cross-vendor-r-round", desc: "Cascaded multi-vendor reviews with GPT-5→GPT-4o fallback detection and LOW-RIGOR tagging.", origin: "hubstack/learning-loop" },
   { cmd: "/peer-review-truth-audit", desc: "Per-finding VERIFIED/STALE/FALSIFIED/OPINION/LOW-RIGOR verdict before closures.", origin: "hubstack/learning-loop" },
   { cmd: "/cascaded-r-rounds", desc: "Drive R-rounds until 3 consecutive convergent-silence rounds.", origin: "hubstack/learning-loop" },
   { cmd: "/paper-pre-review-check", desc: "8-gate pre-review including /never-fabricate-derivation + /never-claim-n4 hard gates.", origin: "hubstack/learning-loop" },
   { cmd: "/never-fabricate-derivation", desc: "Pattern-036 prevention: scan closure diffs for math claims lacking citation/derivation.", origin: "hubstack/learning-loop" },
+  { cmd: "/r-round-finding-archive", desc: "Archive every round's findings into the findings-archive JSON store.", origin: "hubstack/learning-loop" },
+  { cmd: "/r-round-pattern-mine", desc: "Mine closed rounds for new review patterns (catalog growth).", origin: "hubstack/learning-loop" },
   { cmd: "/never-claim-n4", desc: "Mechanical novelty-tier audit. Demotes any N4 self-claim to N3.", origin: "hubstack/infra" },
-  { cmd: "/paper-compile-revtex", desc: "4-pass revtex4-2 compile + log audit.", origin: "astrostack" },
-  { cmd: "/latex-audit", desc: "7-step overflow / URL / artifact / date audit on every compile.", origin: "hubstack/learning-loop" },
-  { cmd: "/drive-to-100-fire", desc: "One atomic step of the drive-to-100 cron loop.", origin: "astrostack" },
+  { cmd: "/paper-compile-revtex", desc: "4-pass revtex4-2 compile + log audit.", origin: "hubstack/publishing" },
+  { cmd: "/latex-audit", desc: "7-step overflow / URL / artifact / date audit on every compile.", origin: "hubstack/publishing" },
+  { cmd: "/artifact-link-verify", desc: "Verify every cited artifact path / URL resolves before a round closes.", origin: "hubstack/publishing" },
+  { cmd: "/pdf-restamp-bundle", desc: "Bundled version+date restamp, recompile, mirror, SSOT update in one commit.", origin: "hubstack/publishing" },
+  { cmd: "/ssot-update", desc: "Update project-context/SSOT/ canonical paper status.", origin: "hubstack/publishing" },
 ];
 
 const SECTIONS: DocSection[] = [
@@ -386,14 +404,19 @@ const SECTIONS: DocSection[] = [
     icon: Terminal,
     status: "stable",
     blurb:
-      "Slash commands the agents (Claude Code, Codex, Cursor) load. The bigbounce-specific ones live at ~/.claude/scistack/astrostack/; the cross-paper ones at hubstack/learning-loop/.",
+      "Slash commands the agents (Claude Code, Codex, Cursor) load. ONE stack (scistack) with two namespaces: astrostack/ (bigbounce-specific) and hubstack/ (cross-paper science IP).",
     body: (
       <>
         <p>
           Skills are markdown files with YAML frontmatter. Agents auto-load
-          them on session start. Bigbounce + Hubify share a single canonical
-          stack at <code>~/.claude/scistack/</code> with symlinks back to{" "}
-          <code>~/.claude/skills/</code>. No project-scoped duplicates.
+          them on session start. There is ONE canonical science skill stack —{" "}
+          <code>~/.claude/scistack/</code> — with two namespaces inside it:{" "}
+          <code>astrostack/</code> (bigbounce-specific) and{" "}
+          <code>hubstack/</code> (cross-paper learning-loop, publishing,
+          research, infra). Entries under <code>~/.claude/skills/</code> are
+          symlinks back into scistack. No project-scoped duplicates;
+          &ldquo;AstroStack&rdquo; and &ldquo;HubStack&rdquo; are namespaces,
+          not separate stacks.
         </p>
         <div className="table-scroll">
         <table className="docs-table">
