@@ -4,6 +4,60 @@
 
 **Totals: 4 P0 · 13 P1 · 13 P2.** Screenshots: `/tmp/qa_*.png` (session-local).
 
+---
+
+## AUDIT CLOSURE — 2026-06-11 (polish waves 1–3) — STATUS: CLOSED
+
+Every finding below is dispositioned. Waves 1–2 closed all P0s + the data-sync
+P1s; wave 3 closed the remaining P1/P2 items, the post-wave-1 SSR finding, and
+the consolidation/doc recs. Verification: `npm run build` PASS; page-level
+overflow (scrollWidth−clientWidth) re-scanned on 40 pages × {375, 768, 1280} —
+**all ≤1px**; screenshots of home, /reviews, /status, /papers/paper-4,
+/galaxy-explorer read at 375+1280 (+ dark home), no visual brokenness;
+`out/reviews.html` contains the full server-rendered feed (153× "EXT2").
+
+| Finding | Status | Commit / reason |
+|---|---|---|
+| P0-1 activity future timestamps | FIXED | `c00f178b` (PT render + future clamp) + `6282cd9b` (pod timestamp repair) |
+| P0-2 anomaly-explorer "100% Ready" + stale stats | FIXED | `cf2d921e` |
+| P0-3 galaxy-explorer broken links + retired title | FIXED | `cf2d921e` |
+| P0-4 P4 page withdrawn-null contradiction | FIXED | `6282cd9b` + `71d6b5b0` (Convex focusAreas/notables) |
+| P1-1 stale titles (papers.ts) | FIXED | `5f571e24` |
+| P1-2 Convex readiness rollback | FIXED / residual DEFERRED | `6282cd9b` (readinessCap); residual: Convex rows still carry R29 versions (v1A.0.58…) + 95×6 vs EXT2 live-status (v1A.0.59, P1B/P2 94) — owned by the restamp agent via `/bigbounce-bump` (Convex data, excluded surface) |
+| P1-3 page counts stale | FIXED | `5f571e24` |
+| P1-4 "What's left"/"Needs Houston" pre-EXT1 | FIXED | `4e36043e` (live-status refreshed to post-EXT2; stale credits blocker dropped) |
+| P1-5 anomaly-count fragmentation | FIXED | `640df531` + `2b69ffab` (data-explorer residue) |
+| P1-6 /status survey QC contradiction | FIXED | `71ed9167` (single-sourced SurveyQcTable) |
+| P1-7 /status future-reading banner | FIXED | `640df531` (PT render) |
+| P1-8 raw LaTeX on paper pages | FIXED | `6282cd9b` (source strings) + `2b69ffab` (defensive LaTeX→unicode layer in MathText) |
+| P1-9 galaxy-explorer stats disagree with P4 | FIXED | `cf2d921e` (canonical 1,687,069 / 1,634,726 / 5,152,736 / +0.41σ — verified in wave-3 screenshots) |
+| P1-10 data-explorer pre-split header | FIXED | `cf2d921e` + `2b69ffab` (§VII.H + 309,789 residue) |
+| P1-11 /figures "no-go" terminology | FIXED | `612b4c78` + `afc9e374` (/status tagline) |
+| P1-12 per-paper review feeds stop at 06-01 | FIXED | `46bf9fc7` (single-sourced from reviewTimeline.ts + deep link to /reviews?papers=PX) |
+| P1-13 P5 version-string format | FIXED | `e2e9d9df` (displayVersion strips date suffixes everywhere) |
+| P2-1 ledger chip truncation | FIXED | `047214b0` (shortened + wraps at all widths) |
+| P2-2 OPEN (B/M/m/C) mono-noise column | FIXED | `047214b0` (collapses to ● clean) |
+| P2-3 status-surface redundancy (home) | FIXED | `047214b0` (readiness renders once — Convex table; ledger cards carry narrative + path only) |
+| P2-4 activity-vs-reviews overlap | FIXED | cross-links shipped with feed v2 (`/reviews` header ↔ `/activity` callout); verified coherent |
+| P2-5 Current Focus text blob | FIXED | `4e36043e` (one-line summary; changelog stays in SSOT/git) |
+| P2-6 MCMC sample-count variants | FIXED | `96b268af` (309,189 canonical; 424K+ labeled) |
+| P2-7 f_NL-improvement label confusion | FIXED | `96b268af` (canonical P3 v3.1.90 claim set: central 9.4% consistent-with-zero; SPHEREx 2.6–5σ conditional) |
+| P2-8 "14 barriers" search hint | FIXED | `96b268af` (channel-level closure framing) |
+| P2-9 "Paper 1 §VII.H" references | FIXED | `96b268af` + `2b69ffab` (no such section post-split) |
+| P2-10 fire-#21 jargon + /tmp paths | FIXED | `96b268af` (public phrasing; manifest path removed) |
+| P2-11 /docs skill list incomplete | FIXED | `23ce55eb` (all 18 astrostack + hubstack publishing/learning-loop; origins corrected) |
+| P2-12 P4 32 MB web PDF | DEFERRED | `site/public/papers/` is owned by the restamp agent this cycle (hard exclusion); queue a web-optimized mirror with the next `/bigbounce-paper-pdf-mirror` run |
+| P2-13 mobile table clipping | FIXED | `6ee03a27` (.table-scroll wrappers) — verified: 0px page bleed on all 40 pages at 375 |
+| Overflow scan (17 P0 pages) | FIXED | `6ee03a27` — wave-3 re-scan: all 40 pages ≤1px at 375/768/1280 |
+| Post-wave-1 SSR finding (/reviews client-only) | FIXED | `1dcd70bb` (entries server-rendered with data-papers/data-kind; ReviewsClient overlays filter state; 153× EXT2 in static HTML) |
+| Docs rec: ONE stack, two namespaces | FIXED | scistack repo `d830656` (README + INDEX header + build-index template) + `23ce55eb` (site /docs) |
+
+**Deferred (owned elsewhere):** (1) Convex paperVersions refresh to EXT2 stamps
++ P1B/P2 94 rollback — restamp agent / `/bigbounce-bump`; (2) web-optimized P4
+PDF mirror — next `/bigbounce-paper-pdf-mirror` run; (3) `site/src/data/figures.ts`
+working-tree regeneration (carries a 2.6→3–5σ caption reversion) — left
+uncommitted for the restamp agent to reconcile against the committed claims sync.
+
 **Cross-cutting root causes:**
 1. Three legacy static HTML files (`galaxy-explorer.html`, `anomaly-explorer.html`, `data-explorer.html` at repo root) are embedded raw by the Next explorer pages and were never re-synced — they carry pre-rename titles, "100% Ready" claims, broken relative links, and Wave-11-era stats.
 2. `site/src/data/papers.ts` + `live-status.ts` narrative fields (titles, page counts, "What's left", "Needs Houston", "Path to publication") lag the R29/EXT1 restamp even though versions/PDF mirrors are current — the bump sync updates versions but not prose.
