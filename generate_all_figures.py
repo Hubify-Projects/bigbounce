@@ -126,7 +126,7 @@ def figure_1():
          "Parity-odd vacuum energy\n(one-loop, Holst term)",
          r"$\rho_{\rm vac} = \frac{\alpha}{M}\,M_{\rm Pl}^4$"),
         (5, r"$e^{-3N}\!\cdot\!\rho_{\rm vac}$",
-         "After inflationary dilution\n" + r"($N \approx 55$ $e$-folds)",
+         "After inflationary dilution\n" + r"($N_{\rm tot} \approx 92$ $e$-folds)",
          r"$\Xi = \frac{\alpha}{M}\,\mathcal{D}_{\rm inf}$"),
         (-47, r"$\Lambda_{\rm obs}$",
          "Observed dark energy",
@@ -221,7 +221,7 @@ def figure_1():
     # Label for the dilution
     y_dil_mid = (y_parity + y_postinf) / 2
     ax.text(bar_x + 2.7, y_dil_mid,
-            r"$\times\; e^{-3N}$" + "\n" + r"($\sim 10^{-72}$)",
+            r"$\times\; e^{-3N_{\rm tot}}$" + "\n" + r"($\sim 10^{-121}$)",
             ha="left", va="center", fontsize=10, color="#b03030",
             fontweight="bold", linespacing=1.4)
 
@@ -569,7 +569,7 @@ def figure_5():
     ax2.set_ylim(-4, 8)
 
     ax2.text(1.5, -2.8,
-             r"Rotation contribution to $H^2$: $|\omega^2/H^2|<10^{-20}$"
+             r"Rotation contribution to $H^2$: $(\omega/H)_0^2 < 2.5\times 10^{-21}$"
              "\n(completely invisible on this scale)",
              fontsize=7.5, color="0.5", ha="center",
              bbox=dict(boxstyle="round,pad=0.3", facecolor="white",
@@ -637,7 +637,7 @@ def figure_6():
     ax2.annotate("", xy=(5, 3.55), xytext=(120, 3.55),
                  arrowprops=dict(arrowstyle="-|>", color=GREEN, lw=2.2,
                                  mutation_scale=12))
-    ax2.text(60, 3.85, "115 orders of magnitude improvement",
+    ax2.text(60, 3.85, r"$10^{5}$ residual (CC problem reparameterized, not solved)",
              ha="center", fontsize=8, color=GREEN, fontweight="bold")
 
     fig.tight_layout()

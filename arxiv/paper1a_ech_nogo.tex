@@ -45,8 +45,12 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.56}
+\newcommand{\paperVersion}{v1A.0.57}
 \newcommand{\paperTimestamp}{June 10, 2026 PDT}
+% v1A.0.56->57 (2026-06-10 — EXT1 closure wave: external EXT1 review round closures
+%   applied to the manuscript; restamp + recompile + mirror bundle. Truth audit:
+%   18 VERIFIED findings logged externally; readiness rolled back to 93% pending
+%   EXT2 confirmation round.)
 % v1A.0.55->56 (2026-06-10 — R27conf closure wave, in-session M1-M4 + m1/m2 + META-M3:
 %   Cartan footnote: substitution line displayed (1/4 T·T = kappa^2/4 S·S on-shell,
 %   Hehl-Datta net +kappa/2 S·S -> -3kappa/16 (J5)^2, cross-ref Eq.(13)) (M1);
@@ -349,12 +353,20 @@ and Perturbation Transparency for Scalar Matter}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{\paperTimestamp}
+\date{\paperTimestamp\ --- \paperVersion}
 
 \begin{abstract}
 We assess four enumerated minimal-Einstein-Cartan-Holst (ECH) spin-torsion
 channels as candidate sources of late-time dark energy and find that each
-fails at the amplitude level under stated assumptions. This is a
+is constrained under stated assumptions: R1--R3 (NJL contact, one-loop EA,
+Immirzi running) are \emph{amplitude-suppressed} under explicitly-labeled
+scaling ans\"atze (Sec.~\ref{sec:fourroute}), while R4 (parity-CMB
+coupling via spectator ALP or neutrino current) is \emph{not} closed by
+amplitude mismatch but by an explanatory-deficit / cosmological-constant
+fine-tuning objection: the same coupling that reproduces $\beta_{\rm obs}$
+requires an ultralight-mass tuning $m_\theta\!\sim\!H_0$ to also produce
+$\rho_\Lambda$, relocating the CC problem rather than solving it
+(Sec.~\ref{sec:r4_birefringence}). This is a
 channel-level assessment, \emph{not} an operator-level theorem: the four
 enumerated routes (NJL, one-loop EA, Immirzi running, parity-CMB) are not
 proven to be a complete diffeomorphism-invariant operator basis for the
@@ -372,7 +384,9 @@ mechanism-class constraints that collectively constrain the
 enumerated channels of the minimal-ECH route from the quantum bounce to
 observable dark energy.
 The central result is a perturbation-transparency theorem: for canonical scalar
-matter, torsion vanishes at all perturbation orders, the Holst dual contraction
+matter, torsion vanishes at all classical metric/scalar perturbation orders
+around the torsion-free branch (excluding propagating-torsion, dynamical-Immirzi-field,
+fermion-loop, and non-minimal-matter sectors), the Holst dual contraction
 $\epsilon^{\mu\nu\rho\sigma}R_{\mu\nu\rho\sigma}$ vanishes identically on the
 Levi-Civita connection ($T=0$) by the first (algebraic) Bianchi identity
 $R_{\mu[\nu\rho\sigma]}=0$, and the Holst sector therefore decouples from all
@@ -539,11 +553,9 @@ MCMC details in companion work in preparation~\cite{Golden2026P1b}.}
   ECH appears bordered with a dashed box marked \emph{channel-level
   closure under stated assumptions (this paper)}---the 14-constraint catalog
   narrows the four enumerated minimal-ECH dark-energy channels to zero
-  phenomenologically free pathways within those channels. The burned-in PTA
-  annotation $\gamma = 3.20 \pm 0.42$ is the superseded pre-real-KDE draft
-  value; the current real-KDE reanalysis gives $\gamma = 2.567 \pm 0.382$
-  (Sec.~\ref{sec:discrimination}), and the figure annotation is pending
-  regeneration.}
+  phenomenologically free pathways within those channels. The PTA
+  annotation reflects the current real-KDE reanalysis
+  $\gamma = 2.567 \pm 0.382$ (Sec.~\ref{sec:discrimination}).}
 \end{figure*}
 
 
@@ -585,7 +597,7 @@ Section~\ref{sec:obs} presents observational signatures (galaxy spin null,
 CMB EB). Section~\ref{sec:fourroute} closes each of the four standard ECH routes (NJL, one-loop EA, Immirzi running, parity-CMB) at the amplitude level.
 Section~\ref{sec:data_galaxy} covers the galaxy-spin data methods.
 Sections~\ref{sec:systematics}--\ref{sec:related} provide systematic analysis,
-falsification criteria, and related work. The core results occupy
+falsifiability criteria, and related work. The core results occupy
 Secs.~\ref{sec:barriers}--\ref{sec:loophole}: the 13 logically-independent structural barriers (14 historical catalog entries),
 perturbation-transparency observation, and hybrid loophole rejection.
 Section~\ref{sec:discussion} discusses the inflationary suppression factor and
@@ -607,7 +619,15 @@ companion internal MCMC analysis (Paper~I(b)~\cite{Golden2026P1b},
 externally citable arXiv-posted numbers, and should be read as
 internal-analysis inputs to the present structural argument rather than
 as independently peer-reviewable values until Paper~I(b) is publicly
-posted.
+posted. We emphasize: \emph{none of these companion-imported numerical
+values is used in the channel-level closure proof of
+Sec.~\ref{sec:fourroute} or the 13 logically-independent structural
+barriers of Sec.~\ref{sec:barriers}}; the structural closure rests on
+the dimensional / operator-counting / perturbation-transparency
+arguments alone, which are evaluable without the companion's MCMC
+posteriors. The companion values are quoted only to anchor the
+discussion of $\Lambda$CDM-consistency in Sec.~\ref{sec:obs} and the
+parameter-summary table in Appendix~\ref{app:params}.
 
 Appendices provide the parameter summary (Appendix~\ref{app:params}) and
 dimensional analysis (Appendix~\ref{app:dimensions}).
@@ -669,10 +689,9 @@ prescriptions, retained as an effective range only and
 the observed dark energy scale, illustrating the phenomenological scaling ansatz
 $\rho_{\rm vac}\sim[(\alpha/M)\,\MPl]\,M_{\rm Pl}^4$ (Sec.~\ref{sec:parityodd},
 Appendix~\ref{app:dimensions}). This ansatz is dimensionally correct on-shell at
-the bounce but is \emph{not} derived from the ECH action. The panel's
-burned-in dilution waypoint is an \emph{illustrative} $N\approx 55$,
-$e^{-3N}\sim 10^{-72}$ schematic; the quantitative bookkeeping of
-Sec.~\ref{sec:gdp} and Appendix~\ref{app:dimensions} uses
+the bounce but is \emph{not} derived from the ECH action. The dilution waypoint
+quoted in the panel is the quantitative bookkeeping of
+Sec.~\ref{sec:gdp} and Appendix~\ref{app:dimensions}:
 $N_{\rm tot}\approx 92$ with $\Dinf\sim 10^{-121}$.}
 \end{figure}
 
@@ -823,11 +842,7 @@ $\lesssim\!10^{-21}\,\rho_\Lambda^{\rm obs}$ level
 ($(\omega/H)_0^2 < 2.5\times 10^{-21}$; dividing by
 $3\Omega_\Lambda \approx 2.1$ gives $\sim\!1.2\times 10^{-21}$ of
 $\rho_\Lambda^{\rm obs}$) --- negligible at all
-redshifts. (The panel's burned-in annotation quotes the looser
-decade-rounded ceiling $|\omega^2/H^2| < 10^{-20}$ for the same
-dimensionless ratio; the body's
-$(\omega/H)_0^2 < 2.5\times 10^{-21}$ is the sharper statement, and
-the figure label simply rounds up to the nearest decade.) The dark-energy mechanism in this paper is therefore the
+redshifts. The dark-energy mechanism in this paper is therefore the
 $\Xi\,\MPl^2$ term sourced by the parity-odd contorsion sector
 (\S\ref{sec:parityodd}), \emph{not} the rotation
 component.\label{fig:rotation_expansion}}
@@ -961,9 +976,34 @@ fermion bath in approximate $C/P$-equilibrium has $\langle J^5_\mu\rangle
 \text{cm}^{-3}$ is enormous. Reheating from the inflaton drives the
 post-bounce plasma into precisely such a thermal regime: the
 $C/P$-violating scattering rates that randomize axial polarization
-exceed the Hubble rate at $T\sim T_{\rm reh}$, so any \emph{coherent}
-bounce-era axial-current background is rapidly washed out toward
-$\langle J^5_\mu\rangle\simeq 0$. Because the Cartan equation is
+are \emph{expected} to exceed the Hubble rate at $T\sim T_{\rm reh}$
+(the operative requirement is $\Gamma_{\rm wash}(T_{\rm reh}) > H(T_{\rm reh})$,
+a condition rather than a result of the present analysis), so any
+\emph{coherent} bounce-era axial-current background would be
+rapidly washed out toward $\langle J^5_\mu\rangle\simeq 0$ in any
+regime that satisfies this inequality. The expected ordering at the
+GUT-scale reheating considered here ($T_{\rm reh}\sim 10^{15}\,$GeV,
+$H_{\rm reh}\sim T_{\rm reh}^2/M_{\rm Pl}\sim 10^{11}\,$GeV) involves
+three SM channels: (i) electroweak-sphaleron $B\!+\!L$-violation, which
+becomes the dominant chirality-flipping process below the EW phase
+transition ($\Gamma_{\rm sph}\sim\alpha_W^5 T$ in the symmetric phase,
+Kuzmin--Rubakov--Shaposhnikov~\cite{Kuzmin1985}, giving
+$\Gamma_{\rm sph}/H\sim\alpha_W^5\,M_{\rm Pl}/T\gg 1$ for
+$T\!<\!10^{12}\,$GeV); (ii) SM Yukawa chirality-flipping rates
+$\Gamma_y\sim y_f^2 T$ with the top Yukawa $y_t\sim 1$ giving
+$\Gamma_t/H\sim y_t^2\,M_{\rm Pl}/T\gg 1$ at $T\!\sim\!T_{\rm reh}$;
+(iii) neutrino-oscillation chirality randomization, which is
+sub-dominant to (i)/(ii) above the EW scale but completes the erasure
+at lower temperatures. A full Boltzmann calculation of
+$\Gamma_{\rm wash}(T)$ vs $H(T)$ across the bounce-to-reheating
+window---tracking sphaleron, top-Yukawa, and right-handed-neutrino
+rates simultaneously---is left to a follow-up; the present
+\emph{conditional} closure statement reads: \emph{if}
+$\Gamma_{\rm wash}(T_{\rm reh})>H(T_{\rm reh})$ for any one of the SM
+chirality-flipping channels above (the expectation, given the
+$\alpha_W^5 M_{\rm Pl}/T\gg 1$ and $y_t^2 M_{\rm Pl}/T\gg 1$ ratios at
+the GUT scale), \emph{then} the coherent axial component is
+thermally reset. Because the Cartan equation is
 \emph{algebraic} (no kinetic term for torsion in the minimal-ECH
 action), erasure of the coherent axial component is instantaneously
 inherited by the torsion configuration: the post-reheating mean
@@ -975,12 +1015,20 @@ rate-versus-Hubble washout argument above, not on a residual-amplitude
 estimate.
 Any ``memory'' of bounce-era torsion stored in $\Dinf$ is therefore
 overwritten by the reheating thermal reset to a coherent-mean-zero,
-incoherent-fluctuation-only configuration, providing an independent
-thermodynamic closure of the ECH dark-energy route that does not
-require the dimensional bookkeeping of Appendix~\ref{app:dimensions}
-or the specific value of $N_{\rm tot}$. This strengthens Barrier~14
-(perturbation transparency) by adding a parallel thermodynamic
-erasure channel for the coherent torsion-sourced dark-energy mechanism. We emphasize that this is bookkeeping, not progress: the residual
+incoherent-fluctuation-only configuration, providing a
+\emph{plausible} thermodynamic erasure channel for the ECH
+dark-energy route that does not require the dimensional bookkeeping of
+Appendix~\ref{app:dimensions} or the specific value of $N_{\rm tot}$;
+a quantitative $\Gamma_{\rm wash}(T)$ vs $H(T)$ computation is left
+to a follow-up and is not used as a primary closure here. The
+scenario-disambiguation is: a spin-density inflaton scenario closes
+via the perturbation-transparency theorem (B14, Sec.~\ref{sec:transparency});
+a fermion-dominated reheating scenario \emph{additionally} closes via
+the conditional thermal-reset argument above. This conditional
+strengthening of Barrier~14 (perturbation transparency) supplies a
+parallel thermodynamic erasure channel for the coherent torsion-sourced
+dark-energy mechanism, contingent on the inequality
+$\Gamma_{\rm wash}>H$ at $T_{\rm reh}$ being satisfied in detail. We emphasize that this is bookkeeping, not progress: the residual
 $10^5$ tracks the exponential $e^{-3 N_{\rm tot}}$ and inherits its sensitivity
 from the initial-condition choice for $N_{\rm tot}$, while the fixed
 $[(\alpha/M)\,\MPl] \sim 10^{-2}$ prefactor does no work on the cosmological
@@ -1156,8 +1204,11 @@ fermion densities $n_\psi$ is bounded above by
 $\rho_{\rm NJL} \sim \kappa\,n_\psi^2 \sim n_\psi^2/M_{\rm Pl}^2$ (where
 $\kappa = 1/M_{\rm Pl}^2$ and $n_\psi$ has mass-dim~$+3$, so the energy
 density carries the correct mass-dim~$+4$),
-which for the largest plausible cosmic fermion densities at recombination
-or post-recombination is many orders of magnitude below the present-day
+which for late-time / post-recombination Standard-Model number densities
+(the relevant regime for the late-time dark-energy claim assessed in
+this route; thermal-era fermion densities are addressed separately in
+the reheating-thermal-reset paragraph of Sec.~\ref{sec:dilution}) is
+many orders of magnitude below the present-day
 dark-energy density $\rho_\Lambda \sim (10^{-3}\,\text{eV})^4$:
 at recombination the baryon/electron number density is
 $n_\psi \sim n_b(z\!\simeq\!1100) \approx 330\,\text{cm}^{-3}
@@ -1300,6 +1351,16 @@ $(\Delta\gamma/\gamma)\cdot(H/M_{\rm Pl}) \sim 10^{-63}$ relative to
 the dark-energy density, closing this route by many orders of
 magnitude. \emph{Closure: mass-dimension-locked at the classical level
 and amplitude-suppressed by the chiral-asymmetry running coefficient.}
+\emph{Ansatz vs derivation (R2/R3):} The R2/R3 amplitude coefficients
+displayed in this paper (Eqs.~\ref{eq:gamma_running} and the chiral-count
+EFT scaling above) are \emph{conservative upper bounds derived from a
+chiral-count EFT scaling ansatz}, not literal extractions from
+Mercuri~\cite{Mercuri2009} or Date--Kaul--Sengupta~\cite{DateKaulSengupta2009};
+the closures of R2/R3 survive an $\mathcal{O}(1)$ inflation of the ansatz
+coefficient because the resulting amplitude suppression
+($\sim 10^{-63}$ vs $\rho_\Lambda$) leaves $\gtrsim 60$ orders of magnitude
+of margin against any $\mathcal{O}(1)$ rescaling of the chiral-asymmetry
+coefficient.
 
 \subsection{Route 4 (parity-odd CMB coupling via spectator ALP or
 neutrino current): naturalness objection rather than amplitude
@@ -1314,15 +1375,41 @@ they work with a generic pseudoscalar-photon Chern--Simons coupling
 $\partial_\mu\phi\,K^\mu$ (equivalently $\phi F\tilde F$ up to a
 total divergence), not with the specific
 $-\tfrac{1}{4}\,(\alpha/M)$ normalization adopted here. The operator
-\(\mathcal{L}_{\rm CS} \supset -\tfrac{1}{4}\,(\alpha/M)\,\theta\,
-\tilde F_{\mu\nu} F^{\mu\nu}\) is the conventional ALP--photon
+\(\mathcal{L}_{\rm CS} \supset -\tfrac{1}{4}\,(\alpha/M)\,\phi\,
+\tilde F_{\mu\nu} F^{\mu\nu}\) (with $\phi$ the dim-$+1$ canonical ALP
+field) is the conventional ALP--photon
 Chern--Simons coupling used throughout the axion-electrodynamics
 literature; we adopt this normalization and use~\cite{LueWangKamionkowski1999}
 as an early example of its cosmological birefringence
-implications rather than as the source of the specific prefactor.
+implications rather than as the source of the specific prefactor.\footnote{Single-convention
+statement (resolving an apparent dimensional ambiguity flagged in external
+review). Throughout this paper there is \emph{one} pseudoscalar field and
+\emph{two} normalizations of it: the dim-$+1$ canonical field $\phi$
+(used in the Lagrangian operator above) and the dimensionless angle
+$\theta\equiv\phi/f_a$ (used in Appendix~\ref{app:mcs_derivation} with
+potential $V=m_\theta^2 f^2(1-\cos\theta)$, Eq.~\eqref{eq:theta_eom_frw};
+$f\equiv f_a$ is the dim-$+1$ decay constant). Dimensional accounting:
+$[\alpha/M]=-1$, $[\phi]=+1$, $[F\tilde F]=+4$, so the operator displayed
+above has Lagrangian-density dimension $+4$ as required. The
+$\theta$-dimensionless writeup is obtained by $\phi\to f_a\theta$, which
+sends $-\tfrac14(\alpha/M)\phi\,\tilde F F\to
+-\tfrac14[(\alpha/M)f_a]\,\theta\,\tilde F F$; the bracketed quantity
+$(\alpha/M)f_a$ is dimensionless, exactly compensating the $\theta$
+dimensionlessness. Equivalently, $\Delta\theta=\Delta\phi/f_a$ is the
+dimensionless excursion used in Eq.~\eqref{eq:beta_bound}, and the
+basis-conversion to $g_{a\gamma}\equiv(\alpha_{\rm em}c_\gamma)/(2\pi f_a)$
+recorded at Eq.~\eqref{eq:beta_derived} reproduces the identification
+$\alpha/M=g_{a\gamma}$. The $\theta$-versus-$\phi$ alternation in the body
+of this paper is purely a choice of writing the same operator in either
+$\theta$-dimensionless or $\phi$-canonical form; no two operators are in
+play. Earlier drafts displayed the $\theta$-dimensionless form of this
+operator above Eq.~\eqref{eq:beta_bound} without the $\phi=f_a\theta$
+substitution made explicit, which (correctly) prompted a dimensional-mismatch
+flag in external review; the present footnote fixes that gap and is the
+single authoritative convention statement for the paper.}
 All indices are fully contracted; the integrated-by-parts equivalent $(\alpha/M)\,\partial_\mu\theta\, K^\mu$, where $K^\mu \equiv \epsilon^{\mu\nu\rho\sigma} A_\nu F_{\rho\sigma}$ is the standard Chern--Simons 4-current and $\partial_\mu K^\mu = \tfrac{1}{2}\tilde F_{\mu\nu}F^{\mu\nu}$ recovers the parity-odd contraction, is also valid. From this operator one obtains the rotation angle
 \begin{equation}
-\beta = \frac{\alpha}{2M}\,\Delta\theta_{\rm rec\to today}
+\beta = \frac{\alpha}{2M}\,\Delta\phi_{\rm rec\to today}
 \sim \frac{\alpha}{2M}\,\sqrt{2\rho_\theta/m_\theta^2},
 \label{eq:beta_bound}
 \end{equation}
@@ -1331,7 +1418,13 @@ $-\tfrac{1}{4}(\alpha/M)$ operator normalization (the rotation angle is
 half the coupling times the field excursion; derived from the helicity
 dispersion relation in Appendix~\ref{app:mcs_derivation}), $\rho_\theta$ is the
 energy density of the spectator field and $m_\theta$ its mass. The
-excursion estimate $\Delta\theta_{\rm rec\to today} \sim
+excursion is written in the dim-$+1$ canonical-field form
+$\Delta\phi=f_a\Delta\theta$ for dimensional consistency with the
+operator written in $\phi$-canonical form (see the
+single-convention footnote above the operator); the dimensionless
+angle $\Delta\theta$ used in Appendix~\ref{app:mcs_derivation}'s
+numerical pipeline corresponds via $\Delta\phi=f_a\Delta\theta$. The
+excursion estimate $\Delta\phi_{\rm rec\to today} \sim
 \sqrt{2\rho_\theta}/m_\theta$ assumes a coherently displaced field whose
 evolution between recombination and today is monotonic, valid for
 $m_\theta \lesssim H_0$ (frozen or slowly rolling field); since the
@@ -1583,13 +1676,11 @@ $\alpha/M\sim 10^{-21}\,$GeV$^{-1}$ (Sec.~\ref{sec:r4_birefringence}).
 \emph{Bottom:} fine-tuning-score comparison (orders of magnitude of
 residual tuning): $\Lambda$CDM ($10^{120}$), quintessence ($10^{60}$),
 $f(R)$ gravity ($10^{40}$), and the spin-torsion $N_{\rm tot}$
-parameterization of this work ($10^{5}$). The burned-in ``115 orders of
-magnitude improvement'' annotation refers to this \emph{score}
-difference under the $N_{\rm tot}$ reparameterization; per
+parameterization of this work ($10^{5}$). The $10^{5}$ residual
+annotation is the score under the $N_{\rm tot}$ reparameterization; per
 Sec.~\ref{sec:gdp} this is a reparameterization of the
 cosmological-constant problem as sensitivity to $N_{\rm tot}$,
-\emph{not} a resolution, and the residual $10^{5}$ inherits the
-order-of-magnitude status discussed there. All four enumerated routes
+\emph{not} a resolution. All four enumerated routes
 either sit outside their naturalness windows or require a
 $m_\theta\!\sim\!H_0$ tuning that re-imports the cosmological-constant
 problem; the 13 logically-independent barriers
@@ -1613,7 +1704,15 @@ ECH analysis. \textbf{Structural/philosophical observations} (Barrier 13):
 gravitational democracy, included for completeness.
 
 \begin{table*}[tb]
-\caption{\label{tab:barriers} The 14 mechanism-class constraints on minimal ECH dark-energy routes. Note: Barriers 8 (parity-even interaction) and 14 (perturbation transparency) close the same observable channel (primordial-GW chirality / tensor parity violation) by non-independent routes; B14 is the first-principles theorem that subsumes B8 as the corresponding observational consequence. They are listed separately to preserve the historical mechanism-class catalog, but should not be counted as logically independent constraints.}
+\caption{\label{tab:barriers} The 14 catalogue entries (13 logically
+independent; B8 subsumed by B14) of mechanism-class constraints on
+minimal ECH dark-energy routes. Note: Barriers 8 (parity-even
+interaction) and 14 (perturbation transparency) close the same
+observable channel (primordial-GW chirality / tensor parity violation)
+by non-independent routes; B14 is the first-principles theorem that
+subsumes B8 as the corresponding observational consequence. They are
+listed separately to preserve the historical mechanism-class catalog,
+but should not be counted as logically independent constraints.}
 \centering
 \begin{tabular}{clll}
 \toprule
@@ -2181,7 +2280,35 @@ erased by $N_{\rm tot}\gtrsim 60$, since the SPHEREx accessible
 wavenumbers $k\sim 10^{-4}$--$10^{-1}\,h/$Mpc are pushed deep inside the
 inflationary subhorizon (bounce-era \emph{physical} scales $k_{\rm bounce}^{\rm phys}\sim k_{\rm SPHEREx}^{\rm phys}\,e^{N_{\rm tot}-N_{\rm exit}}\sim e^{32}\,k_{\rm SPHEREx}^{\rm phys}$ at $N_{\rm tot}\sim 92$, $N_{\rm exit}\sim 60$; comoving wavenumbers $k$ are constant by definition; the rigorous bounce-vs-SPHEREx scale ratio is the \emph{physical} scaling above with $k_{\rm bounce}^{\rm phys}/k_{\rm SPHEREx}^{\rm phys} \sim e^{32}$) and the surviving bispectrum signal
 becomes purely vacuum-inflationary rather than matter-bounce
-contraction-mode. This tension is presented here as a \emph{robustness
+contraction-mode. The mode-history reasoning underlying this
+``erased by $N_{\rm tot}\!\gtrsim\!60$'' statement is the standard
+mode-transfer ledger across four epochs: (i) in the contracting
+matter-bounce phase the $\fnl=-35/8$ signal is generated in the
+contraction-era cubic action at comoving wavenumbers $k_{\rm gen}$
+that exited the contracting-phase horizon at horizon-crossing time
+$t_{\rm cross}^{\rm gen}$, (ii) at the bounce the modes are mapped onto
+the expanding branch with their comoving $k$ preserved (the bounce is
+mode-conserving for adiabatic perturbations in a non-singular bounce
+with a finite minimum scale factor; only physical $k_{\rm phys}=k/a$
+scale with $a$), (iii) inflation then redshifts the corresponding
+physical scale by $a_{\rm reh}/a_{\rm bounce}=e^{N_{\rm tot}}$, so a
+SPHEREx-observable comoving $k$ today corresponds to a bounce-era
+physical scale $k_{\rm bounce}^{\rm phys}=k_{\rm obs}\,e^{N_{\rm tot}-N_{\rm exit}}$
+with $N_{\rm exit}\!\sim\!60$ the standard CMB horizon-exit $e$-fold
+count, and (iv) reheating preserves comoving $k$. The differential
+$e^{N_{\rm tot}-N_{\rm exit}}\!\sim\!e^{32}$ pushes the SPHEREx-relevant
+modes to bounce-era \emph{physical} scales $e^{32}\times k_{\rm SPHEREx}^{\rm phys}$,
+which lie deep inside the inflationary subhorizon regime at the bounce
+time; the surviving observable bispectrum is dominated by the
+vacuum-inflationary mode functions amplified between $t_{\rm cross}^{\rm gen}$
+and today, not by the matter-bounce contraction-mode functions that
+sourced $\fnl=-35/8$. A fully quantitative transfer function tracking
+the suppression coefficient across the four epochs (vacuum-inflationary
+amplification vs matter-bounce contraction-mode survival probability) is
+beyond the scope of this no-go and is reserved for a companion forecast
+(Paper~II~\cite{Golden2026P2}); the present argument is the
+scale-history bookkeeping, not the transfer-function calculation.
+This tension is presented here as a \emph{robustness
 check} on the four-route amplitude-level no-go of Sec.~\ref{sec:fourroute}
 and the 14-barrier closure of Sec.~\ref{sec:barriers}, not as a co-equal
 closure mechanism: the no-go has already closed the four amplitude routes
@@ -2189,8 +2316,9 @@ by which minimal ECH could source dark energy, so the structural-tension
 argument has nothing remaining to bind against at the route-amplitude level
 and reads instead as an independent consistency check from the surviving
 matter-bounce science case (Sec.~\ref{sec:surviving}). DESI DR2 evidence for
-equation-of-state crossing at $3.1$--$4.2\sigma$~\cite{DESI2025DR2} lends
-empirical support to quintom scenarios that can unify bounce and dark energy
+equation-of-state crossing at $3.1$--$4.2\sigma$~\cite{DESI2025DR2}
+motivates dynamical-dark-energy parameterizations (including
+$w_0w_a$ and quintom-class scenarios) that can unify bounce and dark energy
 through mechanisms outside the ECH minimal-route catalog; these non-minimal-ECH
 mechanisms are not addressed by the present no-go.
 
@@ -2214,9 +2342,14 @@ produce late-time dark energy or distinctive cosmological signatures. The answer
 is a channel-level closure: under the stated assumptions, the 14
 mechanism-class constraints (Table~\ref{tab:barriers}; B8 is the
 observational consequence of the perturbation-transparency result B14
-and is retained for historical mechanism-class completeness) close each
-of the four enumerated minimal-ECH dark-energy routes at the amplitude
-level.
+and is retained for historical mechanism-class completeness) constrain
+each of the four enumerated minimal-ECH dark-energy routes. Routes
+R1--R3 close at the amplitude level under explicitly-labeled scaling
+ans\"atze; route R4 is closed instead by a naturalness / cosmological-constant
+fine-tuning objection (Sec.~\ref{sec:r4_birefringence}) rather than by an
+amplitude mismatch, because a free-coupling spectator-ALP fit can
+simultaneously reproduce $\beta_{\rm obs}$ and $\rho_\Lambda$ only at
+$m_\theta\!\sim\!H_0$, re-importing the CC problem rather than solving it.
 
 \textit{Central result: perturbation transparency.}---For canonical scalar field
 matter, the Holst sector decouples completely from all scalar and tensor
@@ -2262,14 +2395,16 @@ SPHEREx $\fnl$ forecast (Paper~II~\cite{Golden2026P2}), multi-survey anomaly cat
 
 \subsection*{Data and Code Availability}
 
-All materials necessary to reproduce the cosmological and galaxy spin results are
-publicly available at:
+Minimal-ECH structural calculations, Cobaya YAML configurations, galaxy-spin
+pipeline code, and the implementation map are publicly available at:
 \begin{center}
 \url{https://github.com/Hubify-Projects/bigbounce/tree/main/reproducibility}
 \end{center}
-The repository includes Cobaya YAML configurations,
-galaxy spin pipeline code, and an implementation map.
-MCMC chains and convergence diagnostics are in companion Paper~I(b)~\cite{Golden2026P1b}.
+The bundle is labelled \texttt{v1A.0.56-bundle} (resynced 2026-06-10) to
+track the present manuscript title and version; MCMC chains, NaMaster
+pipeline, and ALP parameter fitting are documented in companion
+Paper~I(b)~\cite{Golden2026P1b} and are not duplicated in the
+present bundle.
 
 
 %% ============================================================
@@ -2417,13 +2552,19 @@ principles in the operator normalization used throughout this paper.
 the parity-odd sector takes the Maxwell--Chern--Simons form
 \begin{equation}
 \mathcal{L} \supset -\tfrac{1}{4}F_{\mu\nu}F^{\mu\nu}
-- \tfrac{1}{4}\,\frac{\alpha}{M}\,\theta\,F_{\mu\nu}\tilde F^{\mu\nu},
+- \tfrac{1}{4}\,\frac{\alpha}{M}\,\phi\,F_{\mu\nu}\tilde F^{\mu\nu},
 \label{eq:mcs_lagrangian}
 \end{equation}
 with $\tilde F^{\mu\nu} = \tfrac{1}{2}\epsilon^{\mu\nu\rho\sigma}
-F_{\rho\sigma}$ and $\theta$ a homogeneous pseudoscalar
-(spatial gradients negligible for the cosmological background field
-considered here)~\cite{CarrollFieldJackiw1990,HarariSikivie1992}.
+F_{\rho\sigma}$ and $\phi$ the dim-$+1$ canonical pseudoscalar
+(homogeneous: spatial gradients negligible for the cosmological background
+field considered here)~\cite{CarrollFieldJackiw1990,HarariSikivie1992}.
+Throughout this appendix we use the dimensionless angle
+$\theta\equiv\phi/f_a$ for evolution equations and quote $\Delta\theta$
+or $\Delta\phi=f_a\Delta\theta$ interchangeably for the line-of-sight
+excursion; the single-convention bridge $\phi=f_a\theta$ is recorded in
+the footnote at the operator's first appearance in
+Sec.~\ref{sec:r4_birefringence}.
 
 \textit{Field equation in FRW.}---Varying $\theta$'s canonical action
 with potential $V = m_\theta^2 f^2 (1-\cos\theta)$ in a flat FRW
@@ -2450,20 +2591,24 @@ non-dynamical), decomposing
 the transverse field into circular-polarization modes
 $A_\pm(\eta,k)$, the modified wave equation reads
 \begin{equation}
-A_\pm'' + \Bigl[k^2 \mp \frac{\alpha}{M}\,\theta'\,k\Bigr] A_\pm = 0,
+A_\pm'' + \Bigl[k^2 \mp \frac{\alpha}{M}\,\phi'\,k\Bigr] A_\pm = 0,
 \label{eq:helicity_dispersion}
 \end{equation}
-where $' \equiv d/d\eta$ and $k$ is comoving. For
-$k \gg (\alpha/M)\theta'$ (satisfied by ${\sim}60$ orders of magnitude
+where $' \equiv d/d\eta$, $k$ is comoving, and $\phi'\equiv d\phi/d\eta = f_a\,\theta'$;
+with $[\alpha/M]=-1$, $[\phi']=+2$, each bracketed term carries dimension
+$+2$ as required for consistency with $k^2$. For
+$k \gg (\alpha/M)\phi'$ (satisfied by ${\sim}60$ orders of magnitude
 for CMB photons against the cosmological field considered here:
-$(\alpha/M)\theta' \sim 10^{-30}\,\text{eV}^{-1}\times
-\mathcal{O}(1)\times H_0 \sim 10^{-63}\,$eV for an $\mathcal{O}(1)$
-total excursion accumulated over a Hubble time, versus a CMB photon
+$(\alpha/M)\phi' \sim 10^{-30}\,\text{eV}^{-1}\times
+[\mathcal{O}(1) f_a]\times H_0 \sim 10^{-63}\,$eV for an $\mathcal{O}(1)$
+dimensionless excursion $\Delta\theta$ accumulated over a Hubble time
+at $f_a\!\sim\!M_{\rm Pl}$ \emph{and} the cosmological-tuning condition
+$m_\theta\sim H_0$ that sets $\dot\theta\sim H_0$, versus a CMB photon
 $k \sim 6\times 10^{-4}\,$eV at 150~GHz, a ratio of
 ${\sim}10^{59}$) the WKB
 phase of each helicity is
 $\int\!\omega_\pm\,d\eta$ with
-$\omega_\pm \simeq k \mp \tfrac{1}{2}(\alpha/M)\,\theta'$.
+$\omega_\pm \simeq k \mp \tfrac{1}{2}(\alpha/M)\,\phi'$.
 
 \textit{Rotation angle.}---A linear polarization is a fixed-phase
 superposition of the two helicities; its position angle rotates by half
@@ -2472,15 +2617,17 @@ the accumulated helicity phase difference:
 \beta &= \tfrac{1}{2}\!\int_{\eta_{\rm em}}^{\eta_{\rm obs}}
 (\omega_- - \omega_+)\,d\eta
 = \tfrac{1}{2}\,\frac{\alpha}{M}\!\int_{\eta_{\rm em}}^{\eta_{\rm obs}}
-\theta'\,d\eta \nonumber\\
-&= \frac{\alpha}{2M}\,\bigl[\theta(\eta_{\rm obs})
-- \theta(\eta_{\rm em})\bigr]
-\;\equiv\; \frac{\alpha}{2M}\,\Delta\theta .
+\phi'\,d\eta \nonumber\\
+&= \frac{\alpha}{2M}\,\bigl[\phi(\eta_{\rm obs})
+- \phi(\eta_{\rm em})\bigr]
+\;\equiv\; \frac{\alpha}{2M}\,\Delta\phi
+\;=\; \frac{\alpha\,f_a}{2M}\,\Delta\theta .
 \label{eq:beta_derived}
 \end{align}
 The result is achromatic (no $k$ dependence), independent of the
-expansion history except through the endpoint values of $\theta$
-(a total derivative along the line of sight --- the well-known
+expansion history except through the endpoint values of $\phi$ (equivalently
+the dimensionless angle $\theta=\phi/f_a$; a total derivative along the
+line of sight --- the well-known
 ``$2\beta = g\,\Delta\phi$'' property~\cite{HarariSikivie1992}), and
 exact at leading WKB order. This is Eq.~\eqref{eq:beta_bound}'s
 mapping; with the spectator-ALP identification

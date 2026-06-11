@@ -77,7 +77,7 @@ predictions = [
      "SPHEREx, mechanism-indep.",
      "#eaf6ec", "#3b8a4a"),
     (r"PTA $\gamma=3.0$",
-     r"v.s. data $3.20\pm0.42$ (P3 §6)",
+     r"v.s. data $2.567\pm0.382$ (P3 §6, real-KDE)",
      "#eef4fb", "#3b6ea3"),
     (r"$w_0w_a$ DE",
      "phenomenological only",
