@@ -123,6 +123,7 @@ export default function ApiDocsPage() {
           7 paper-orchestration tables in <code>convex/schema.ts</code> (alongside
           the existing 9 object-level tables for galaxies, MCMC, etc.):
         </p>
+        <div className="table-scroll">
         <table style={{ width: "100%", fontSize: "0.85rem", marginTop: 8 }}>
           <thead>
             <tr style={{ borderBottom: "1px solid var(--border)", textAlign: "left" }}>
@@ -143,6 +144,7 @@ export default function ApiDocsPage() {
             ))}
           </tbody>
         </table>
+        </div>
         <p style={{ color: "var(--text-muted)", fontSize: "0.82rem", marginTop: 10 }}>
           The load-bearing query is{" "}
           <code>papers.getPaperState(slug)</code> — it computes readiness from

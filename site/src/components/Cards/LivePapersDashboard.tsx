@@ -52,7 +52,7 @@ export async function LivePapersDashboard() {
         </span>
       </div>
 
-      <div className="live-papers-dashboard-scroll">
+      <div className="table-scroll">
         <table>
           <thead>
             <tr>

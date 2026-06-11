@@ -141,7 +141,7 @@
 
 /* Figure gallery */
 .gx-figures { margin: 36px 0; }
-.gx-figures-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 24px; margin-top: 20px; }
+.gx-figures-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr)); gap: 24px; margin-top: 20px; }
 .gx-fig {
   border: 1px solid var(--border); background: var(--bg);
   overflow: hidden; transition: border-color var(--transition);
@@ -302,7 +302,7 @@
   <h2 style="border: none; margin: 0 0 12px; padding: 0;">Key Science Findings</h2>
   <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 16px;">Comprehensive analysis of 8,474,531 galaxies &mdash; the largest galaxy chirality catalog ever produced. 100% coordinate match with GZ DESI Zenodo catalog. 949,584 high-confidence spirals (confidence &gt; 0.6).</p>
 
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px;">
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 14px;">
 
     <div style="padding: 14px 16px; border: 1px solid var(--border); background: var(--bg);">
       <div style="font-family: var(--font-sans); font-weight: 600; font-size: 14px; margin-bottom: 6px;">Global Dipole: Null</div>
@@ -664,11 +664,12 @@
   <h2>Deeper Analysis</h2>
   <p style="margin-bottom: 16px;">Full multipole decomposition, sky region balance, and confidence stratification of the equivariant Catalog C (3,201,160 spirals).</p>
 
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 20px;">
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr)); gap: 20px;">
 
     <!-- Multipole Table -->
     <div style="border: 1px solid var(--border); padding: 18px 20px;">
       <h3 style="font-family: var(--font-sans); font-size: 15px; margin: 0 0 12px; font-weight: 600;">Multipole Analysis</h3>
+      <div style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
       <table class="gx-table" style="width: 100%; font-size: 12px;">
         <thead>
           <tr><th>Test</th><th style="text-align:center;">Significance</th><th style="text-align:center;">Survives LEE?</th></tr>
@@ -683,11 +684,13 @@
           <tr class="row-retracted"><td style="font-weight: 600;">Shamir 3% claim</td><td style="text-align:center; font-family:var(--font-mono); color: #dc2626; font-weight: 600;">REFUTED</td><td style="text-align:center; font-size: 11px;">Max 0.32% (~9&times; smaller)</td></tr>
         </tbody>
       </table>
+      </div>
     </div>
 
     <!-- Sky Region Balance Table -->
     <div style="border: 1px solid var(--border); padding: 18px 20px;">
       <h3 style="font-family: var(--font-sans); font-size: 15px; margin: 0 0 12px; font-weight: 600;">Sky Region Balance (Equivariant)</h3>
+      <div style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
       <table class="gx-table" style="width: 100%; font-size: 12px;">
         <thead>
           <tr><th>Region</th><th style="text-align:center;">CW/(CW+CCW)</th><th style="text-align:center;">Deviation from 0.5</th></tr>
@@ -702,6 +705,7 @@
           <tr><td>DEC North (&gt; +30&deg;)</td><td style="text-align:center; font-family:var(--font-mono);">0.4960</td><td style="text-align:center; font-family:var(--font-mono);">&minus;0.40%</td></tr>
         </tbody>
       </table>
+      </div>
       <p style="font-size: 11px; color: var(--text-muted); margin-top: 8px;">All regions within 0.62% of 50/50. Global equivariant CW/(CW+CCW) = 0.4974.</p>
     </div>
 

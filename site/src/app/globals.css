@@ -474,6 +474,12 @@ body {
   margin-left: var(--sidebar-w);
   margin-top: var(--topbar-h);
   flex: 1;
+  /* Flex items default to min-width:auto (= content min-width), which lets a
+     wide table/code block blow the whole page out past the viewport. min-width:0
+     keeps the content column pinned to the viewport so the overflow-x:auto
+     wrappers inside (".table-scroll") can actually scroll. */
+  min-width: 0;
+  max-width: 100%;
   min-height: calc(100vh - var(--topbar-h));
   background:
     linear-gradient(180deg, color-mix(in srgb, var(--surface) 58%, transparent) 0, transparent 320px),
@@ -972,6 +978,40 @@ a:hover {
 /* ══════════════════════════════════
    Components
    ══════════════════════════════════ */
+
+/* Canonical horizontal-scroll wrapper for data tables (and any other
+   wide block). Wrap every <table> in <div class="table-scroll"> — gives
+   bounded momentum scrolling on narrow viewports instead of page bleed. */
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Long unbroken artifact paths / identifiers must wrap, never bleed. */
+.container code,
+.break-anywhere {
+  overflow-wrap: anywhere;
+}
+
+/* Contributions page: sticky tier nav + content. minmax(0, 1fr) (not bare
+   1fr = minmax(auto, 1fr)) so unbreakable words can't widen the column. */
+.contrib-layout {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 32px;
+  margin-top: 24px;
+}
+
+@media (max-width: 760px) {
+  .contrib-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .contrib-layout-aside {
+    position: static !important;
+  }
+}
 
 .hero {
   position: relative;
@@ -1526,6 +1566,7 @@ a:hover {
 
 .figures-view-toggle {
   display: flex;
+  flex-wrap: wrap;
   gap: 6px;
 }
 
@@ -2246,11 +2287,8 @@ a:hover {
 }
 
 /* ── Status page ── */
-.status-table-scroll {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
+/* Scrolling comes from the shared .table-scroll utility; this class only
+   pins a minimum table width so columns stay readable while scrolling. */
 .status-table-scroll table {
   min-width: 640px;
 }
@@ -2319,11 +2357,7 @@ a:hover {
   display: none;
 }
 
-.live-papers-dashboard-scroll {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
+/* Scrolling comes from the shared .table-scroll utility. */
 .live-papers-dashboard table {
   margin: 0;
   min-width: 620px;
@@ -2888,9 +2922,14 @@ code {
     flex-wrap: wrap;
   }
 
-  .hero-panel-header .badge {
+  /* Badges/chips must never push the page wider than the viewport. */
+  .badge {
+    max-width: 100%;
     white-space: normal;
     line-height: 1.4;
+  }
+
+  .hero-panel-header .badge {
     text-align: left;
   }
 

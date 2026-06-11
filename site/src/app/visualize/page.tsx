@@ -71,6 +71,9 @@ html, body { overflow: auto !important; height: auto !important; }
 .legacy-visualize-root canvas {
   border-radius: var(--radius) !important;
   border: 1px solid var(--border) !important;
+  /* fixed left:0/right:0 + 1px borders = 2px viewport bleed without border-box */
+  box-sizing: border-box !important;
+  max-width: 100vw !important;
 }
 .legacy-visualize-root button {
   background: var(--surface) !important;

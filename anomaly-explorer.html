@@ -27,11 +27,11 @@
 .btn-ls:hover { background: rgba(37,99,235,0.20); }
 .sky-map { width: 100%; height: 300px; background: #0a0a0a; margin: 20px 0; position: relative; overflow: hidden; }
 .sky-map canvas { width: 100%; height: 100%; }
-.anomaly-panel { position: fixed; top: 0; right: -65%; width: 60%; height: 100vh; background: var(--bg); border-left: 1px solid var(--border); box-shadow: -4px 0 20px rgba(0,0,0,0.3); z-index: 1000; overflow-y: auto; transition: right 0.3s ease; padding: 24px; }
-.anomaly-panel.open { right: 0; }
+.anomaly-panel { position: fixed; top: 0; right: 0; width: 60%; max-width: min(100vw - 24px, 820px); height: 100vh; background: var(--bg); border-left: 1px solid var(--border); box-shadow: -4px 0 20px rgba(0,0,0,0.3); z-index: 1000; overflow-y: auto; overflow-x: auto; -webkit-overflow-scrolling: touch; transform: translateX(calc(100% + 32px)); visibility: hidden; transition: transform 0.3s ease, visibility 0.3s ease; padding: 24px; }
+.anomaly-panel.open { transform: none; visibility: visible; }
 .anomaly-panel-backdrop { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.3); z-index: 999; }
 .anomaly-panel-backdrop.open { display: block; }
-@media (max-width: 768px) { .anomaly-panel { width: 100%; right: -105%; } }
+@media (max-width: 768px) { .anomaly-panel { width: 100%; } }
 .anomaly-thumb { width: 48px; height: 48px; cursor: pointer; object-fit: cover; border: 1px solid var(--border); background: var(--bg-subtle); min-width: 48px; }
 .anomaly-thumb:hover { border-color: var(--text-tertiary); }
 .anomaly-thumb-fail { width: 48px; height: 48px; background: var(--bg-subtle); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 10px; color: var(--text-muted); font-family: var(--font-sans); }

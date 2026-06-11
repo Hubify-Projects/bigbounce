@@ -427,7 +427,7 @@ function ContributionCard({ c }: { c: Contribution }) {
                   href={v.href}
                   target={v.href.startsWith("http") ? "_blank" : undefined}
                   rel="noopener noreferrer"
-                  style={{ color: "var(--accent)", fontFamily: "var(--font-mono-stack)", fontSize: 12 }}
+                  style={{ color: "var(--accent)", fontFamily: "var(--font-mono-stack)", fontSize: 12, overflowWrap: "anywhere" }}
                 >
                   {v.label}
                 </a>
@@ -556,8 +556,8 @@ export default function ContributionsPage() {
         </div>
       </section>
 
-      <div style={{ display: "grid", gridTemplateColumns: "220px 1fr", gap: 32, marginTop: 24 }}>
-        <aside style={{ position: "sticky", top: 80, alignSelf: "start" }}>
+      <div className="contrib-layout">
+        <aside className="contrib-layout-aside" style={{ position: "sticky", top: 80, alignSelf: "start" }}>
           <div
             style={{
               fontFamily: "var(--font-mono-stack)",

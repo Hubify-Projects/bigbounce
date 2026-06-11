@@ -202,6 +202,7 @@ const SECTIONS: DocSection[] = [
           lives in <code>~/.convex/config.json</code> on Houston&apos;s
           machine.
         </p>
+        <div className="table-scroll">
         <table className="docs-table">
           <thead>
             <tr>
@@ -224,6 +225,7 @@ const SECTIONS: DocSection[] = [
             ))}
           </tbody>
         </table>
+        </div>
       </>
     ),
   },
@@ -393,6 +395,7 @@ const SECTIONS: DocSection[] = [
           stack at <code>~/.claude/scistack/</code> with symlinks back to{" "}
           <code>~/.claude/skills/</code>. No project-scoped duplicates.
         </p>
+        <div className="table-scroll">
         <table className="docs-table">
           <thead>
             <tr>
@@ -415,6 +418,7 @@ const SECTIONS: DocSection[] = [
             ))}
           </tbody>
         </table>
+        </div>
       </>
     ),
   },
@@ -439,6 +443,7 @@ const SECTIONS: DocSection[] = [
   // N4 intentionally excluded — Houston standing directive 2026-06-03
 ))`}</pre>
         <p>The canonical tier definitions:</p>
+        <div className="table-scroll">
         <table className="docs-table">
           <thead>
             <tr>
@@ -487,6 +492,7 @@ const SECTIONS: DocSection[] = [
             </tr>
           </tbody>
         </table>
+        </div>
       </>
     ),
   },
@@ -817,6 +823,7 @@ export default function DocsClient() {
                       {e.input && e.input.length > 0 && (
                         <div className="docs-endpoint-params">
                           <div className="docs-endpoint-params-label">Input</div>
+                          <div className="table-scroll">
                           <table className="docs-table docs-table-compact">
                             <thead>
                               <tr>
@@ -840,6 +847,7 @@ export default function DocsClient() {
                               ))}
                             </tbody>
                           </table>
+                          </div>
                         </div>
                       )}
                       <div className="docs-endpoint-returns">

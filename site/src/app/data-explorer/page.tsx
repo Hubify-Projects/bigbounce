@@ -48,6 +48,16 @@ export default async function DataExplorerPage() {
 }
 
 const DATA_EXPLORER_OVERRIDES = `
+/* Bound the explorer + dataset tab rail to the viewport: the legacy mobile
+   breakpoint turns .de-sidebar into a horizontal nowrap rail, which must
+   scroll inside its own box rather than widening the page. */
+.data-explorer-root,
+.data-explorer-root .explorer,
+.data-explorer-root .de-sidebar,
+.data-explorer-root .main-panel {
+  max-width: 100%;
+  min-width: 0;
+}
 .data-explorer-root .de-sidebar { background: var(--surface-2) !important; }
 .data-explorer-root .de-sidebar-group .dot.green,
 .data-explorer-root .de-sidebar-group .dot.blue,
