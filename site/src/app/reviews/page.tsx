@@ -88,8 +88,9 @@ export default function ReviewsPage() {
           <div className="progress-block">
             <h3 className="progress-block-title">External referee verdicts — convergence toward ACCEPT</h3>
             <p className="progress-block-sub">
-              Six papers × two browser-tier rounds × three frontier referees (same chat threads,
-              delta-prompts between rounds). 10 of 18 verdicts improved EXT1 → EXT2.
+              Six papers × three browser-tier rounds × three frontier referees (same chat threads,
+              delta-prompts between rounds). 10 of 18 verdicts improved EXT1 → EXT2; Grok went
+              clean 6/6 ACCEPT at EXT3.
             </p>
             <VerdictTrajectory />
             <VerdictLegend />

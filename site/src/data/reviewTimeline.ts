@@ -43,6 +43,46 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "EXT3-CLOSURES",
+    kind: "closure-wave",
+    dateISO: "2026-06-11",
+    title: "EXT3 closure wave — final wave of the campaign: all six papers restamped, QC artifacts computed not deferred",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "Same-night EXT3 truth-audit closures restamped all six papers (v1A.0.61 / v1B.0.58 / v1.7.53 / v3.1.92 / v1.0.175 / v0.1.65): the vindicated Addis attribution honestly reworded, both stale P2 significance figures regenerated, and the P4 flip-identity QC + P5 footprint retabulation computed same-night rather than queued.",
+    keyTakeaways: [
+      "P2 v1.7.53: σ_GR grid relabeled an internal stress-test amplitude after the pattern-052 Addis vindication; Li −35/16 demoted to a single-time-ordering stress test at every site",
+      "P2 figures regenerated to the template-corrected 2.6–5σ values (naive 6.25σ bar hatched 'not used in any headline'); P3 Fig. 2 regenerated alongside the FM-series wording closures",
+      "P4 v1.0.175: NF-M1 per-row flip-identity QC computed and disclosed (2.9% out-of-range rows); HC dipole stays null-consistent on the QC-exclusion rerun (+0.48 vs +0.52σ)",
+      "P5 v0.1.65: declared-primary Δf_CW contrast statistics (Δ/SE/z/p/95% CI) computed from tabulated counts; thrice-flagged DESIVAST footprint retabulation committed as artifact 29",
+      "P1B v1B.0.58: frozen parameter_summary_CORRECTED.json regenerated from the raw chains with S8 + embedded provenance; P1A v1A.0.61 Holst step re-scoped to the Bianchi identity alone",
+    ],
+    links: [
+      { label: "P1A audit", href: `${PR}/EXT3_P1A_TRUTH_AUDIT.md` },
+      { label: "P1B audit", href: `${PR}/EXT3_P1B_TRUTH_AUDIT.md` },
+      { label: "P2 audit", href: `${PR}/EXT3_P2_TRUTH_AUDIT.md` },
+      { label: "P3 audit", href: `${PR}/EXT3_P3_TRUTH_AUDIT.md` },
+      { label: "P4 audit", href: `${PR}/EXT3_P4_TRUTH_AUDIT.md` },
+      { label: "P5 audit", href: `${PR}/EXT3_P5_TRUTH_AUDIT.md` },
+    ],
+  },
+  {
+    id: "EXT3-GAPMINE",
+    kind: "skill-improvement",
+    dateISO: "2026-06-11",
+    title: "EXT3 gap-mine — pattern-052 re-raise vindication test + hardened browser loop after 3 silent Gemini failures",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "Two upgrades mined from EXT3: a reviewer re-raising a FALSIFIED finding now triggers mandatory primary-source verification unless the prior falsification cited primary evidence, and the browser loop gained growth-based completion waits + version-presence gates.",
+    keyTakeaways: [
+      "Pattern-052: ChatGPT's Addis et al. attribution challenge VINDICATED on its 3rd raise after two wrongful assumption-based falsifications — evidence quality of the prior verdict is the discriminator (P5 k=20 was correctly auto-falsified)",
+      "3 silent Gemini submission failures (P1A/P1B/P2) caught via chip-verified resubmission — growth-based completion waits + version-presence gates now mandatory in /external-review-browser-loop",
+      "Catalog at 50 patterns; reviewer-prompt rules unchanged at 19",
+    ],
+    links: [
+      { label: "pattern-052", href: `${GH}/project-context/review-patterns/pattern-052-reraise-vindication.md` },
+      { label: "EXT3 manifest", href: `${PR}/EXT3_BROWSER_MANIFEST.md` },
+    ],
+  },
+  {
     id: "EXT3",
     kind: "external-browser",
     dateISO: "2026-06-11",
@@ -66,6 +106,21 @@ export const reviewRounds: ReviewRound[] = [
     ],
   },
   {
+    id: "R31conf",
+    kind: "internal-cc",
+    dateISO: "2026-06-11",
+    title: "R31conf — post-EXT2-closure confirmation: 3 CLEAN / 3 one-liner residues → same-night micro-restamp, EXT3 authorized",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "Pattern-051 changed-regions-first sweep of the EXT2 closure diffs: P1A/P1B/P4 CLEAN, P2/P3/P5 carried small unapplied residues — closed in the same-night micro-restamp wave (v1A.0.60 / v1.7.52 / v3.1.91 / v0.1.64) that unblocked EXT3.",
+    keyTakeaways: [
+      "P1A v1A.0.59 / P1B v1B.0.57 / P4 v1.0.174 verified CLEAN — every EXT2 fix holds, math self-checks reproduce (P1A WKB ~30 orders, P2 floor 2.98, P1B 176,240-sample count exact)",
+      "P2: one pattern-051 residual — L677 '>3σ' contradicting the new 2.6σ all-combined endpoint — fixed one-line in v1.7.52",
+      "P3 v3.1.90 had six unapplied EXT2 text items (NB1 schema, NM3 20-vs-18, NM4 z-provenance, Gm2 LAMOST denominator, NM6 TARGETTYPE, NM1 like-for-like) — all closed in v3.1.91",
+      "P5: EF5 Table II 'void-class overlap' one-word relabel closed in v0.1.64; pattern-051 residual greps 0-for-6 on the swept terms across all papers",
+    ],
+    links: [{ label: "verification report", href: `${PR}/R31conf_VERIFICATION.md` }],
+  },
+  {
     id: "EXT2-CLOSURES",
     kind: "closure-wave",
     dateISO: "2026-06-10",
@@ -87,6 +142,39 @@ export const reviewRounds: ReviewRound[] = [
       { label: "P3 audit", href: `${PR}/EXT2_P3_TRUTH_AUDIT.md` },
       { label: "P4 audit", href: `${PR}/EXT2_P4_TRUTH_AUDIT.md` },
       { label: "P5 audit", href: `${PR}/EXT2_P5_TRUTH_AUDIT.md` },
+    ],
+  },
+  {
+    id: "EXT2-GAPMINE",
+    kind: "skill-improvement",
+    dateISO: "2026-06-10",
+    title: "EXT2 gap-mine — pattern-051 closure-introduced regression: ~40% of EXT2's new findings were our own fixes",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "The dominant EXT2 new-finding class — defects introduced by the EXT1/R29 closure waves themselves — codified as pattern-051 with a mandatory 5-point closure-wave protocol that now runs before every stamp.",
+    keyTakeaways: [
+      "~40% of EXT2's genuinely-new findings were regressions from our own EXT1/R29 closures: fresh math errors in patches, half-applied sweeps, wrong closure artifacts",
+      "5-point closure-wave protocol: sweep-completeness grep, self-diff regression check, new-math gate, closure-artifact verification, changed-regions-first review",
+      "Catalog at 49 patterns; the protocol fired immediately — R31conf ran changed-regions-first and caught the half-applied P2 '>3σ' sweep",
+    ],
+    links: [
+      { label: "pattern-051", href: `${GH}/project-context/review-patterns/pattern-051-closure-introduced-regression.md` },
+      { label: "pattern catalog", href: `${GH}/project-context/review-patterns` },
+    ],
+  },
+  {
+    id: "TIMESTAMP-FIX",
+    kind: "skill-improvement",
+    dateISO: "2026-06-10",
+    title: "PT-everywhere timestamp rule — 50 future-dated Convex rows repaired + bump-tool timezone fix",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "UTC-leaked datestamps were rendering future-dated version rows on the live site: the bump tool now stamps America/Los_Angeles dates, a repair mutation corrected 36 dev + 14 prod Convex rows, and /activity renders PT with future-skew clamping.",
+    keyTakeaways: [
+      "Root cause: UTC date strings leaking into Convex version rows — 36 dev + 14 prod rows corrected back to 2026-06-10 via the patchUtcLeakedDates repair mutation",
+      "Bump tool now stamps America/Los_Angeles dates with a createdAt tie-break in the version sort; /activity renders PT and clamps future-skewed rows",
+      "Rule saved to agent memory: PT timestamps everywhere, on every surface",
+    ],
+    links: [
+      { label: "fix commit", href: "https://github.com/Hubify-Projects/bigbounce/commit/5b143f70" },
     ],
   },
   {
@@ -117,6 +205,21 @@ export const reviewRounds: ReviewRound[] = [
       { label: "P5 audit", href: `${PR}/EXT2_P5_TRUTH_AUDIT.md` },
     ],
     reportSlug: "ext2-browser-manifest",
+  },
+  {
+    id: "R30conf",
+    kind: "internal-cc",
+    dateISO: "2026-06-10",
+    title: "R30conf — confirmation sweep of the R29 patch wave: 6/6 CLEAN, mechanical battery 18 PASS — EXT2 authorized",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "Read-only confirmation that every VERIFIED/PARTIAL R29 fix is present and correct in the restamped tex (v1A.0.58 / v1B.0.56 / v1.7.50 / v3.1.89 / v1.0.173 / v0.1.62): all six papers CLEAN with zero pattern-008 closure-introduced regressions found.",
+    keyTakeaways: [
+      "6/6 CLEAN — every R29 committed fix re-checked in the current stamped .tex with ±2-paragraph pattern-008 scans at each edit site",
+      "Mechanical battery 18 PASS: artifact_crosscheck + pattern-045 abstract-vs-body spot-checks + pattern-048 changed-hunk greps across all six papers",
+      "P1A WKB/Cartan/Bianchi closures hold and P1B's column-permutation diagnosis holds; only non-blocking nits logged (P2 abstract rounding, P3 provenance duplication)",
+      "Gate result: EXT2 authorized on the restamped versions",
+    ],
+    links: [{ label: "verification report", href: `${PR}/R30conf_VERIFICATION.md` }],
   },
   {
     id: "R29",
@@ -365,8 +468,8 @@ export const reviewRounds: ReviewRound[] = [
 
 /* ── Structured progress dataset (powers the /reviews Progress visualizations) ──
  * Sources (do NOT invent numbers — pattern-036):
- * EXT1/EXT2 verdicts: project-context/peer-reviews/EXT{1,2}_BROWSER_MANIFEST.md harvest tables.
- * Gap series: GAP METRIC sections of EXT2_P*_TRUTH_AUDIT.md + the 60-finding EXT1 baseline.
+ * EXT1/EXT2/EXT3 verdicts: project-context/peer-reviews/EXT{1,2,3}_BROWSER_MANIFEST.md harvest tables.
+ * Gap series: GAP METRIC sections of EXT{2,3}_P*_TRUTH_AUDIT.md + the 60-finding EXT1 baseline.
  * Readiness: SSOT/index.md R25conf/EXT1/R29 truth-audit checkpoints (95-cap rule in force).
  * Skills: project-context/review-patterns/ catalog + EXT1/EXT2 gap-mine commits.
  */
@@ -415,6 +518,19 @@ export const externalVerdictRounds: ExternalRoundVerdicts[] = [
     },
     note: "Same 18 threads, delta-prompts: 10 improved / 7 held / 1 regressed; Gemini P5 MAJOR audits to ACCEPT (PDF-extraction artifact), Gemini P1B regression truth-audited",
   },
+  {
+    roundId: "EXT3",
+    dateISO: "2026-06-11",
+    verdicts: {
+      P1A: ["MAJOR", "ACCEPT", "MAJOR"],
+      P1B: ["MAJOR", "ACCEPT", "ACCEPT"],
+      P2: ["MAJOR", "ACCEPT", "MAJOR"],
+      P3: ["MAJOR", "ACCEPT", "MAJOR"],
+      P4: ["MAJOR", "ACCEPT", "MINOR"],
+      P5: ["MAJOR", "ACCEPT", "MAJOR"],
+    },
+    note: "Same 18 threads, round 3: Grok clean 6/6 ACCEPT; ChatGPT holds MAJOR with shrinking reports (avg 13k chars vs 17k EXT2 / 19k EXT1); Gemini oscillations are the PDF-extraction-artifact class its falsified EXT2 P5 MAJOR established — truth-audits decided",
+  },
 ];
 
 export interface GapPoint {
@@ -426,15 +542,10 @@ export interface GapPoint {
   note: string;
 }
 
-/** Internal/external gap series — must shrink every cycle; target is zero. */
+/** Internal/external gap series — must shrink every cycle; target is zero.
+ * Maintained OLDEST-FIRST (the chart renders left → right in array order;
+ * ProgressViz also re-sorts defensively by dateISO + roundId). */
 export const gapSeries: GapPoint[] = [
-  {
-    roundId: "EXT3",
-    dateISO: "2026-06-11",
-    total: 27,
-    perPaper: { P1A: 3, P1B: 3, P2: 5, P3: 5, P4: 6, P5: 6 },
-    note: "EXT3 truth-audits: ~27 genuinely-new, all wording/asset/policy class — zero substantive physics blockers",
-  },
   {
     roundId: "EXT1",
     dateISO: "2026-06-10",
@@ -448,6 +559,13 @@ export const gapSeries: GapPoint[] = [
     total: 32,
     perPaper: { P1A: 6, P1B: 4, P2: 6, P3: 11, P4: 2, P5: 3 },
     note: "Genuinely-new substantive findings per EXT2 truth-audit GAP METRIC sections; P4/P5 net-new incl. PARTIAL/OPINION is 10 each (looser total 47)",
+  },
+  {
+    roundId: "EXT3",
+    dateISO: "2026-06-11",
+    total: 27,
+    perPaper: { P1A: 3, P1B: 3, P2: 5, P3: 5, P4: 6, P5: 6 },
+    note: "EXT3 truth-audits: ~27 genuinely-new, all wording/asset/policy class — zero substantive physics blockers",
   },
 ];
 
@@ -509,6 +627,7 @@ export const skillsSeries: SkillsPoint[] = [
   { id: "R23conf-mine", dateISO: "2026-06-09", patterns: 44, promptRules: 14, note: "R23conf pattern-mine: catalog at 44 (incl. draft patterns 040-044)" },
   { id: "EXT1-gapmine", dateISO: "2026-06-10", patterns: 48, promptRules: 19, note: "EXT1 gap-mine: patterns 045-048 + artifact_crosscheck.py + reviewer-prompt rules 15-19" },
   { id: "EXT2-gapmine", dateISO: "2026-06-10", patterns: 49, promptRules: 19, note: "EXT2 gap-mine: pattern-051 closure-introduced regression (5-point closure-wave protocol)" },
+  { id: "EXT3-gapmine", dateISO: "2026-06-11", patterns: 50, promptRules: 19, note: "EXT3 gap-mine: pattern-052 re-raise vindication test + browser-loop completion/version gates; prompt rules unchanged" },
 ];
 
 export function getReviewRoundByReportSlug(slug: string): ReviewRound | undefined {

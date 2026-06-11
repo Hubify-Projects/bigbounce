@@ -137,8 +137,13 @@ export function VerdictLegend() {
 
 /* ── (b) Gap-closure chart: external-only findings per round → zero ──── */
 
+/** Chronological order regardless of authoring order: dateISO, then round sequence (EXT1 < EXT2 < EXT3). */
+function chronologicalGapSeries() {
+  return [...gapSeries].sort((a, b) => a.dateISO.localeCompare(b.dateISO) || a.roundId.localeCompare(b.roundId));
+}
+
 export function GapClosureChart() {
-  const pts = gapSeries;
+  const pts = chronologicalGapSeries();
   const width = 380;
   const height = 190;
   const padL = 34;
@@ -192,8 +197,10 @@ export function GapClosureChart() {
 }
 
 export function GapPerPaperDeltas() {
-  const [a, b] = gapSeries;
-  if (!a || !b) return null;
+  const pts = chronologicalGapSeries();
+  const a = pts[0];
+  const b = pts[pts.length - 1];
+  if (!a || !b || a === b) return null;
   return (
     <div className="gap-deltas">
       {PAPER_IDS.map((p) => {
