@@ -11,18 +11,18 @@
 \contentsline {subsection}{\numberline {A}Notation and Significance Conventions}{3}{section*.9}%
 \contentsline {paragraph}{\numberline {a}Confidence notation.}{3}{section*.10}%
 \contentsline {paragraph}{\numberline {b}Significance conventions.}{3}{section*.11}%
-\contentsline {subsection}{\numberline {B}Declared Analysis Hierarchy}{4}{section*.12}%
+\contentsline {subsection}{\numberline {B}Declared Analysis Hierarchy}{3}{section*.12}%
 \contentsline {subsection}{\numberline {C}Model Architecture}{4}{section*.13}%
 \contentsline {subsection}{\numberline {D}Test-Time Equivariant Averaging}{4}{section*.14}%
 \contentsline {subsection}{\numberline {E}Catalog Tiers}{4}{section*.15}%
 \contentsline {section}{\numberline {IV}Results}{4}{section*.16}%
-\contentsline {subsection}{\numberline {A}Catalog Statistics}{5}{section*.17}%
+\contentsline {subsection}{\numberline {A}Catalog Statistics}{4}{section*.17}%
 \contentsline {subsection}{\numberline {B}Global CW Fraction}{5}{section*.18}%
-\contentsline {subsection}{\numberline {C}Dipole Analysis}{7}{section*.19}%
+\contentsline {subsection}{\numberline {C}Dipole Analysis}{6}{section*.19}%
 \contentsline {paragraph}{\numberline {a}Simple dipole.}{7}{section*.20}%
 \contentsline {paragraph}{\numberline {b}Angular power spectrum.}{8}{section*.21}%
 \contentsline {subsection}{\numberline {D}Monopole+Mask Leakage Generative Null}{9}{section*.22}%
-\contentsline {subsection}{\numberline {E}Signal-Hunt Diagnostics}{12}{section*.23}%
+\contentsline {subsection}{\numberline {E}Signal-Hunt Diagnostics}{11}{section*.23}%
 \contentsline {section}{\numberline {V}Comparison with Previous Work}{12}{section*.24}%
 \contentsline {subsection}{\numberline {A}Shamir (2012, 2020, 2022)}{12}{section*.25}%
 \contentsline {subsection}{\numberline {B}CE-ResNet (Jia et al.\ 2023)}{12}{section*.26}%
@@ -32,8 +32,8 @@
 \contentsline {paragraph}{\numberline {b}Empirical injection-recovery floor.}{12}{section*.30}%
 \contentsline {subsection}{\numberline {B}Relation to Parity-Violating Sectors}{13}{section*.31}%
 \contentsline {subsection}{\numberline {C}Open Follow-up and Future Directions}{13}{section*.32}%
-\contentsline {section}{\numberline {VII}Conclusions}{14}{section*.33}%
-\contentsline {paragraph}{\numberline {a}Harmonic-channel completeness (end-to-end).}{14}{section*.34}%
+\contentsline {section}{\numberline {VII}Conclusions}{13}{section*.33}%
+\contentsline {paragraph}{\numberline {a}Harmonic-channel completeness (end-to-end).}{13}{section*.34}%
 \contentsline {paragraph}{\numberline {b}Headline finding: a quantifiable monopole-mask leakage channel.}{14}{section*.35}%
 \contentsline {paragraph}{\numberline {c}Canonical-$N$ MASTER $\ell \!=\!1$ direct compute.}{14}{section*.36}%
 \contentsline {paragraph}{\numberline {d}Bias hardening is essential.}{14}{section*.37}%
@@ -73,4 +73,4 @@
 \contentsline {paragraph}{\numberline {d}Mask robustness: pixel-count threshold sweep.}{20}{section*.70}%
 \contentsline {section}{\numberline {}Data Availability}{20}{section*.71}%
 \contentsline {section}{\numberline {}Acknowledgments}{20}{section*.72}%
-\contentsline {section}{\numberline {}References}{20}{section*.73}%
+\contentsline {section}{\numberline {}References}{21}{section*.73}%

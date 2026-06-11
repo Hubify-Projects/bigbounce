@@ -1,0 +1,35 @@
+{
+  "script": "R29_truth_audit_nside_sensitivity (inline, 2026-06-10)",
+  "purpose": "Block-scale sensitivity check for the headline z_boot ≈ -18.1 exclusion. Requested by R29 reviewers (Claude E01, OpenAI E5, OpenAI M10). Tests NSIDE_block ∈ {4, 8, 16} with N_boot=500 each. Catalog: bamfai/galaxy-chirality-catalog catalog_production.parquet (3,201,160 spirals). Design: same 9-template WLS as joint_nuisance_bootstrap_sigma.py.",
+  "date_utc": "2026-06-10T00:00:00Z",
+  "config": {
+    "NSIDE_DATA": 64,
+    "N_BOOT_per_scale": 500,
+    "seed": 42,
+    "A_REF_AP": 0.034,
+    "A_REF_label": "1.7% in f_CW units (3.4% full-amplitude)"
+  },
+  "A_dipole_best_Ap": 0.004544509429387653,
+  "naive_WLS_sigma_Ap": 1.11e-4,
+  "results": {
+    "NSIDE_4": {
+      "n_super_pixels": 127,
+      "sigma_boot": 1.7464e-3,
+      "z_boot_vs_1pct7": -16.87,
+      "inflation_over_naive": 15.7
+    },
+    "NSIDE_8": {
+      "n_super_pixels": 439,
+      "sigma_boot": 1.5984e-3,
+      "z_boot_vs_1pct7": -18.43,
+      "inflation_over_naive": 14.4
+    },
+    "NSIDE_16": {
+      "n_super_pixels": 1631,
+      "sigma_boot": 1.5201e-3,
+      "z_boot_vs_1pct7": -19.38,
+      "inflation_over_naive": 13.7
+    }
+  },
+  "interpretation": "The headline z_boot ≈ -18.1 exclusion is stable across all three block scales. Range: z ∈ [-19.4, -16.9] across NSIDE ∈ {4, 8, 16}. The NSIDE=8 value (-18.4) lies between the two extremes, confirming it is not a pessimistic outlier. The single-scale brittleness concern (R29 E01) is resolved: the exclusion survives under any plausible block-scale choice. The 14.7× inflation factor at NSIDE=8 remains representative (range 13.7×–15.7×)."
+}
