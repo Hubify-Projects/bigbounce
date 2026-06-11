@@ -43,6 +43,23 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "EXT4",
+    kind: "external-browser",
+    dateISO: "2026-06-11",
+    title: "EXT4 submitted — fourth in-thread external round: first external read of the P3 recount, all 18 legs verified in-flight",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "Delta-prompts posted to the same 18 external chats (ChatGPT Pro Extended, Grok Heavy, Gemini Thinking) on the EXT3-closed versions — headlined by P3 v3.1.95 with the thrice-flagged TARGETTYPE recount computed; every leg passed attachment, model/effort, version-presence, and response-growth verification before moving on.",
+    keyTakeaways: [
+      "P3 delta is the round's centerpiece: external reviewers see the ≈0.9×-not-73× recount, the recount table, and the S_BigAE strip for the first time",
+      "Delta-prompt calibration extended with an explicit superscript-extraction example after the Fisher F₀ misread was falsified 4 internal rounds running",
+      "Gemini account index drifted /u/2/ → /u/0/ (verified by avatar); a keyboard focus-race during one native upload was caught and recovered — frontmost-app guard now encoded in the skill",
+      "Harvest opens ~30 min after the 15:14 PT submission; truth-audit + gap metric vs EXT3 (27) follow",
+    ],
+    links: [
+      { label: "EXT4 manifest", href: `${PR}/EXT4_BROWSER_MANIFEST.md` },
+    ],
+  },
+  {
     id: "R33CONF",
     kind: "internal-cc",
     dateISO: "2026-06-11",
