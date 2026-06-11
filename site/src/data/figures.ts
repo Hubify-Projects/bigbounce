@@ -93,7 +93,7 @@ export const figureSections: FigureSection[] = [
         "alt": "Observational decision timeline for the surviving ECH tests",
         "number": "Figure 103",
         "title": "Observational timeline",
-        "desc": "Timeline of survey decisions (CMB-S4, LiteBIRD, SPHEREx, DESI DR2) that could falsify or confirm the surviving mechanism-independent ECH signatures (f_NL = -35/8 matter-bounce + spectator-ALP birefringence).",
+        "desc": "Timeline of survey decisions (CMB-S4, LiteBIRD, SPHEREx, DESI DR2) that could falsify or confirm the surviving ECH-independent class-level ECH signatures (f_NL = -35/8 matter-bounce + spectator-ALP birefringence).",
         "source": "Paper 1A · v1A.0.50-2026-06-09"
       },
       {
