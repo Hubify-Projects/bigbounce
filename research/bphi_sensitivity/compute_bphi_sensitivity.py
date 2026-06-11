@@ -122,8 +122,12 @@ ax1.grid(True, alpha=0.3)
 
 # Right: Detection significance
 ax2.semilogx(bphi_frac * 100, significance, 'b-', linewidth=2, label='MegaMapper SDB')
-bispec_sig = abs(f_NL_true) / sigma_fnl_bispec
-ax2.axhline(y=bispec_sig, color='r', linestyle='--', linewidth=1.5, label=f'SPHEREx bispectrum ({bispec_sig:.1f}σ)')
+# EXT3 C1 closure: show the template-corrected significance used in the paper
+# headline (|f_NL|·r/σ with noise-weighted template overlap r = 0.84,
+# Sec. "template"), not the naive uncorrected 6.25σ.
+r_template = 0.84
+bispec_sig = abs(f_NL_true) * r_template / sigma_fnl_bispec
+ax2.axhline(y=bispec_sig, color='r', linestyle='--', linewidth=1.5, label=f'SPHEREx bispectrum ({bispec_sig:.1f}σ template-corrected)')
 ax2.axhline(y=3, color='orange', linestyle=':', linewidth=1, label='3σ threshold')
 ax2.axhline(y=5, color='green', linestyle=':', linewidth=1, label='5σ threshold')
 ax2.axvline(x=20, color='gray', linestyle=':', alpha=0.5)

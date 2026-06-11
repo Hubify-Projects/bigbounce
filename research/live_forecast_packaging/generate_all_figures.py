@@ -65,28 +65,48 @@ def fig1_shape_function():
 # FIGURE 2: Survey significance comparison
 # ============================================================
 def fig2_survey_comparison():
-    fig, ax = plt.subplots(1, 1, figsize=(10, 5))
+    # EXT3 C1 closure: bars now show the template-corrected significances used
+    # in the paper text (|f_NL|·r/σ_eff), not the naive uncorrected values.
+    # The single naive bar retained is explicitly labeled "uncorrected" and is
+    # not used in any headline. All values are taken verbatim from the text:
+    #  - SPHEREx bispectrum template-corrected optimistic: 5.2–5.5σ (central 5.25)
+    #  - SPHEREx realistic post-systematic-budget envelope: 2.6–5σ
+    #  - SPHEREx all-combined conservative endpoint: 2.6–2.8σ
+    #  - MegaMapper ideal (template-corrected): 7.4–7.7σ
+    #  - MegaMapper illustrative envelope: 3–7σ
+    fig, ax = plt.subplots(1, 1, figsize=(13, 5))
 
-    surveys = ['SPHEREx\n(bispectrum)', 'SPHEREx\n(P+B combined)',
-               'MegaMapper\n(ideal)', 'MegaMapper\n(realistic)',
+    surveys = ['SPHEREx bispec.\n(naive, uncorrected;\nnot used in headline)',
+               'SPHEREx bispec.\n(template-corrected,\noptimistic)',
+               'SPHEREx\n(realistic\npost-budget)',
+               'SPHEREx\n(all-combined\nconservative)',
+               'MegaMapper\n(ideal, template-\ncorrected)',
+               'MegaMapper\n(realistic\nenvelope)',
                'MegaMapper\n(conservative)', 'MegaMapper\n(single-tracer)']
-    central = [6.3, 8.75, 8.75, 5.0, 3.0, 1.75]
-    low =     [4.4, 6.3,  4.4,  3.0, 1.5, 1.0]
-    high =    [8.0, 9.5,  14.6, 7.0, 5.0, 2.5]
+    central = [6.25, 5.25, 3.8, 2.7, 7.55, 5.0, 3.0, 1.75]
+    low =     [6.25, 5.2,  2.6, 2.6, 7.4,  3.0, 1.5, 1.0]
+    high =    [6.25, 5.5,  5.0, 2.8, 7.7,  7.0, 5.0, 2.5]
 
-    colors = ['#2196F3', '#1565C0', '#FF9800', '#F57C00', '#E65100', '#BF360C']
+    colors = ['#B0BEC5', '#2196F3', '#1565C0', '#0D47A1',
+              '#FF9800', '#F57C00', '#E65100', '#BF360C']
+    hatches = ['//', None, None, None, None, None, None, None]
 
     x = np.arange(len(surveys))
     bars = ax.bar(x, central, color=colors, alpha=0.8, edgecolor='black', lw=0.5)
+    for b, h in zip(bars, hatches):
+        if h:
+            b.set_hatch(h)
     for i in range(len(surveys)):
-        ax.errorbar(x[i], central[i], yerr=[[central[i]-low[i]], [high[i]-central[i]]],
-                    fmt='none', ecolor='black', capsize=5, lw=1.5)
+        if high[i] > low[i]:
+            ax.errorbar(x[i], central[i],
+                        yerr=[[central[i]-low[i]], [high[i]-central[i]]],
+                        fmt='none', ecolor='black', capsize=5, lw=1.5)
 
     ax.axhline(5, color='green', ls='--', lw=1.5, alpha=0.7, label='$5\\sigma$ discovery threshold')
     ax.axhline(3, color='goldenrod', ls='--', lw=1.5, alpha=0.7, label='$3\\sigma$ evidence threshold')
 
     ax.set_xticks(x)
-    ax.set_xticklabels(surveys, fontsize=9)
+    ax.set_xticklabels(surveys, fontsize=8)
     ax.set_ylabel('Detection Significance ($\\sigma$)', fontsize=13)
     ax.set_title('$f_{NL} = -35/8$: Survey Detection Significance', fontsize=13)
     ax.legend(fontsize=10)
