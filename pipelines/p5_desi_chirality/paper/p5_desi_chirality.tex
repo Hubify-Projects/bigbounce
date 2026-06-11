@@ -18,7 +18,7 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.61-2026-06-10}
+\newcommand{\paperVersion}{v0.1.62-2026-06-10}
 % v0.1.52-2026-06-09 (R22prov truth-audit closure wave; work order in
 %   project-context/peer-reviews/R22prov_P5_TRUTH_AUDIT.md; recompute artifacts
 %   outputs/17_v0151_closure_recomputes.json + 18_v0151_stratified_and_density.json):
@@ -50,6 +50,26 @@
 %   TIGHTENS: cross-class f_CW range 1.98pp → 0.05pp, all classes
 %   |σ_mono| ≤ 0.39. Artifact: outputs/16_cosmic_web_zshell_corrected.json.
 \newcommand{\paperTimestamp}{June 2026}
+% v0.1.62-2026-06-10 (R29 post-EXT1 internal-round closure wave; truth audit at
+%   project-context/peer-reviews/R29_P5_TRUTH_AUDIT.md):
+%   Wald-shift CORRECTION: M1-vs-M0 env-coefficient shifts were overstated as
+%     "<=0.01 SE"; recomputed from 27_ext1_logistic_program_control.json the
+%     true per-class shifts are void 0.006 / wall 0.10 / cluster 0.11 sigma-hat
+%     — bound restated as <=0.12 SE with the per-class values + artifact shown;
+%   Two void-volume-fraction denominators disambiguated: V-Web tidal void class
+%     ~24.4% of in-footprint cell volume vs ~0.1% of cells inside a DESIVAST
+%     VoidFinder sphere (the old prose implied a single ~0.1% fraction);
+%   885-vs-297 occupied-pixels reconciled: fig caption NSIDE=32 (median 4
+%     voids/pix) vs body NSIDE=16 stratification (median 14) now cross-noted
+%     at both sites;
+%   "concentrated entirely"/"confirmed by" causal language softened to
+%     "dominated by"/"consistent with" for the BGS-bright tracer-program
+%     decomposition of the catalog-wide monopole offset;
+%   Cramér's V=0.078 contextualized (small effect; chi2 driven by n=811,609);
+%   Rs resolved-cells header restated as Rs >~ cell size = 25.9 Mpc/h with the
+%     {25,50} retention rule explicit;
+%   residual "catalog-level" -> "catalog-wide monopole offset" sweep completed
+%     (cluster-class -4.7sigma site now "catalog-wide-monopole-projected").)
 % v0.1.61-2026-06-10 (EXT1 closure wave; work order in
 %   project-context/peer-reviews/EXT1_P5_TRUTH_AUDIT.md):
 %   F2: DESIVAST interior void counts updated to final ApJ 982,38 values
@@ -264,7 +284,7 @@ of the $n_{\rm void}$ counting floor $1/(2\sqrt{n}) \approx 0.0016$ ---
 all three within ${\sim}1\sigma$ of zero), with V2-REVOLVER catalog-native GALZONE membership
 returning $\sigma^{\rm void} = -0.52$ null on $n = 104{,}912$;
 (iii) HEALPix sky-position stratification by maximal-void density per
-pixel finds the $-5\sigma$ catalog-level signal concentrated entirely
+pixel finds the $-5\sigma$ catalog-wide monopole offset concentrated entirely
 in the ``0 maximal voids per pixel'' bin (sky regions outside DESIVAST
 coverage), with pixels carrying $\geq 1$ maximal void returning
 $\sigma \in [-2.04, -0.09]$; and (iv) the per-pixel Pearson correlation
@@ -273,8 +293,8 @@ across $n = 727$ valid pixels is $r = +0.006$ ($p = 0.88$), statistically
 indistinguishable from zero. The signal tracks survey-mask geometry,
 not environment density, consistent with the BGS-selection-function-
 conditioned imaging-leg systematics tracked in Paper~IV; this is
-confirmed by a tracer-program decomposition showing the catalog-level
-$-5\sigma$ is entirely driven by the BGS-bright sample, with the
+consistent with a tracer-program decomposition in which the catalog-wide
+monopole offset is dominated by the BGS-bright sample, with the
 LRG/ELG/QSO-dark sample returning $\sigma = +1.25$ (filament class,
 on the declared env-labeled parent: bright $n=394{,}181$ at
 $\sigma=-2.98$ vs dark $n=13{,}759$ at $\sigma=+1.61$, opposite sign).
@@ -293,7 +313,9 @@ level the bright-vs-dark difference is $0.81$\,pp
 A contingency test (\S\ref{sec:results_vweb})
 finds V-Web class and target program are \emph{not} independent
 ($\chi^{2}\!=\!4932$, $3$ d.o.f., $\log_{10}p\!\approx\!-1069$,
-Cram\'er's $V\!=\!0.078$, max class-to-overall
+Cram\'er's $V\!=\!0.078$ --- a small effect by conventional standards,
+with the $\chi^2$ driven by sample size $n\!=\!811{,}609$ rather than
+effect magnitude --- max class-to-overall
 bright-fraction deviation $1.5$\,pp), so the V-Web filament
 bright-vs-dark sign-flip is best read as a residual structure
 that the current data do not allow us to cleanly partition between a
@@ -924,10 +946,7 @@ leaking through the larger-sample bins, not as environment-dependent
 chirality.
 
 \textbf{Void-bin smallness.} The void bin has only $n\!=\!428$
-galaxies (the small void volume fraction of ${\approx}0.1\%$ of
-in-footprint cells, combined with the sparse
-$r \le 17.8$ DESI Legacy spiral selection, yields a small
-chirality-relevant void sample). The $\sigma\!=\!-0.68$ on the void
+galaxies. Two distinct void volume fractions appear in this paper and refer to different denominators: (i)~the V-Web tidal-classifier void class occupies ${\approx}24.4\%$ of in-footprint cell volume (\S\ref{sec:vweb_algo}, \artifact{pipelines/p5\_desi\_chirality/env\_finder/reports/01\_volume\_fractions.json}), while (ii)~only ${\approx}0.1\%$ of in-footprint grid cells fall inside a DESIVAST VoidFinder sphere (the point-in-sphere membership criterion on the $25.9\,{\rm Mpc}/h$ grid used for the sky-stratification analysis of \S\ref{sec:desivast_maximal_healpix}). The small V-Web void-bin count ($n\!=\!428$) arises because despite the V-Web void class covering $24.4\%$ of volume, the sparse $r \le 17.8$ DESI Legacy spiral selection combined with the $z \leq 0.24$ depth cut samples only a thin galaxy population within those cells. The $\sigma\!=\!-0.68$ on the void
 class is statistical noise at this $N$; the $95\%$ Jeffreys credible
 interval is $f_{\rm CW}^{\rm void} \in [0.435, 0.530]$, which brackets
 parity.
@@ -1074,7 +1093,7 @@ $\sim\!2\sigma$.}
 \subsection{Within-class density-stratified cluster + filament
 follow-up}\label{sec:results_within_class_density}
 
-The catalog-level cluster-class deviation of $-4.7\sigma$ at
+The catalog-wide-monopole-projected cluster-class deviation of $-4.7\sigma$ at
 $n_{\rm cluster} = 397{,}505$ (Section~\ref{sec:results_vweb}) is the
 strongest single-class signal in the headline table. To check whether
 this is a genuinely density-dependent effect within the cluster class
@@ -1130,7 +1149,7 @@ $\sigma_{\rm pred} = 2\,(-0.0026)\sqrt{n} \approx -1.64$ are $-1.43$
 (Q1), $-1.78$ (Q2), $+1.27$ (Q3), and $-0.82$ (Q4) --- all four below
 the Bonferroni-4 $\alpha = 0.05$ threshold of $2.50$, so no quartile
 shows a significant departure from the monopole-only model after
-multiplicity correction. The catalog-level
+multiplicity correction. The catalog-wide-monopole-projected
 $-4.7\sigma$ cluster signal is therefore not a clean density-dependent
 chirality effect; it is concentrated at the cluster/filament class
 boundary and is consistent with a boundary-misclassification leakage
@@ -1313,8 +1332,11 @@ in $M_1$, both far from significance. The bright-program indicator
 itself is marginally significant ($z = -1.97$, $p = 0.049$), consistent
 with the known bright-program monopole. Crucially, the three V-Web
 environment coefficients (void, wall, cluster vs filament) shift by
-$\leq 0.01$ on their standard errors after program adjustment
-in $M_1$ relative to $M_0$, confirming that the environmental-independence
+$\leq 0.12$ on their standard errors after program adjustment
+in $M_1$ relative to $M_0$ (void $0.006\,\hat\sigma$, wall $0.10\,\hat\sigma$,
+cluster $0.11\,\hat\sigma$; shifts computed as $|\beta_{M_1}-\beta_{M_0}|/\mathrm{SE}_{M_0}$
+from \artifact{pipelines/p5\_desi\_chirality/outputs/27\_ext1\_logistic\_program\_control.json}),
+confirming that the environmental-independence
 null is not confounded by the V-Web$\times$program non-orthogonality.
 Artifact:
 \artifact{pipelines/p5\_desi\_chirality/outputs/27\_ext1\_logistic\_program\_control.json}.
@@ -1466,7 +1488,7 @@ $10^\dagger$ & $0.0$ & $1.72$ & $363$ & $1.71$ & $0.56$ \\
 $10^\dagger$ & $0.1$ & $2.71$ & $594$ & $1.87$ & $0.42$ \\
 $10^\dagger$ & $0.3$ & $2.01$ & $837$ & $1.69$ & $0.38$ \\
 \hline
-\multicolumn{6}{l}{\textit{Resolved cells ($R_s \geq 25.9$\,Mpc$/h$; robustness claim based on these six cells)}} \\
+\multicolumn{6}{l}{\textit{Resolved cells ($R_s \gtrsim$ cell size $= 25.9$\,Mpc$/h$; $R_s \in \{25, 50\}$ retained; robustness claim based on these six cells)}} \\
 $25$ & $0.0$ & $1.97$ & $428$ & $1.38$ & $0.13$ \\
 $25$ & $0.1$ & $2.48$ & $627$ & $1.35$ & $0.14$ \\
 $25$ & $0.3$ & $1.83$ & $853$ & $1.22$ & $0.23$ \\
@@ -1983,7 +2005,7 @@ not drive the void-class result
 (\artifact{pipelines/p5\_desi\_chirality/outputs/24\_r24conf\_pod\_session.json}). Binning the maximal voids by
 HEALPix \texttt{NSIDE} $= 16$ pixel (equal-area pixels of
 $\approx 13.4\,{\rm deg}^2$) returns 297 occupied pixels with
-median 14 maximal voids per occupied pixel. Stratifying the $z \leq
+median 14 maximal voids per occupied pixel (note: the 885 occupied pixels cited in the Fig.~\ref{fig:voids_vs_chirality} caption refer to the finer \texttt{NSIDE} $= 32$ pixelization of the same void set, which yields more pixels at a smaller median count of 4 voids/pixel). Stratifying the $z \leq
 0.24$ matched-spiral subsample by the number of maximal voids in each
 spiral's HEALPix pixel produces :
 
@@ -2191,7 +2213,7 @@ A genuinely environment-dependent chirality signal would produce a
 detectable monotonic correlation between void density and the
 direction-of-chirality deviation; the observed near-zero Pearson is
 a direct single-statistic confirmation in this paper that the
-catalog-level $-5\sigma$ is not environment-driven.
+catalog-wide monopole offset is not environment-driven.
 The result is robust to the NSIDE choice and spiral-count threshold:
 across the $3 \times 3$ grid of NSIDE $\in \{16, 32, 64\}$ and
 spiral-count cuts $\in \{100, 200, 500\}$, 7 of 9 cells admit a
@@ -2209,8 +2231,7 @@ forking paths'' along the well-sampled axes.
 \includegraphics[width=\textwidth]{fig_p5_voids_vs_chirality_skymap.png}
 \caption{HEALPix \texttt{NSIDE} $= 32$ Mollweide projection
 (equatorial coordinates). Top: count
-of DESIVAST maximal voids per pixel (885 occupied pixels, median 4
-voids/pix). Bottom: per-pixel chirality $\sigma_{\rm from\ half}$
+of DESIVAST maximal voids per pixel (885 occupied pixels at NSIDE $= 32$, median 4 voids/pix; the body text uses NSIDE $= 16$ for the sky-stratification table, yielding 297 occupied pixels at a coarser resolution). Bottom: per-pixel chirality $\sigma_{\rm from\ half}$
 on the $z \leq 0.24$ matched-spiral subsample restricted to pixels
 with $\geq 200$ spirals (1{,}496 valid pixels, $\sigma$ range
 $-3.45$ to $+3.48$). The Pearson correlation across the
