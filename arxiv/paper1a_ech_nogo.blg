@@ -269,45 +269,45 @@ while executing---line 3515 of file apsrev4-2.bst
 ---they aren't the same literal types for entry Golden2026P3
 while executing---line 3515 of file apsrev4-2.bst
 Warning--missing journal in Golden2026P3
-You've used 51 entries,
+You've used 52 entries,
             6079 wiz_defined-function locations,
-            2012 strings with 24138 characters,
-and the built_in function-call counts, 50600 in all, are:
-= -- 3936
-> -- 1028
-< -- 251
-+ -- 334
-- -- 240
-* -- 7610
-:= -- 4883
-add.period$ -- 49
-call.type$ -- 51
-change.case$ -- 251
-chr.to.int$ -- 57
-cite$ -- 60
-duplicate$ -- 4781
-empty$ -- 3662
-format.name$ -- 579
-if$ -- 10194
+            2019 strings with 24126 characters,
+and the built_in function-call counts, 51624 in all, are:
+= -- 4010
+> -- 1055
+< -- 256
++ -- 342
+- -- 246
+* -- 7765
+:= -- 4981
+add.period$ -- 50
+call.type$ -- 52
+change.case$ -- 255
+chr.to.int$ -- 58
+cite$ -- 61
+duplicate$ -- 4876
+empty$ -- 3737
+format.name$ -- 594
+if$ -- 10404
 int.to.chr$ -- 5
-int.to.str$ -- 58
-missing$ -- 732
-newline$ -- 199
-num.names$ -- 147
-pop$ -- 1890
+int.to.str$ -- 59
+missing$ -- 747
+newline$ -- 202
+num.names$ -- 150
+pop$ -- 1929
 preamble$ -- 1
-purify$ -- 245
+purify$ -- 250
 quote$ -- 0
-skip$ -- 2349
+skip$ -- 2394
 stack$ -- 0
-substring$ -- 1133
-swap$ -- 4435
-text.length$ -- 102
+substring$ -- 1151
+swap$ -- 4526
+text.length$ -- 105
 text.prefix$ -- 0
 top$ -- 10
-type$ -- 661
+type$ -- 675
 warning$ -- 10
-while$ -- 145
+while$ -- 148
 width$ -- 0
-write$ -- 512
+write$ -- 520
 (There were 78 error messages)
