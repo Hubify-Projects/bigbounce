@@ -27,7 +27,7 @@
        {
         "finding_id": "GRO-B2",
         "raw_classification": "BLOCKER",
-        "summary": "N_tot≈92 ansatz; not independent",
+        "summary": "N_tot\u224892 ansatz; not independent",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          4
@@ -120,7 +120,7 @@
        {
         "finding_id": "GPT-B6",
         "raw_classification": "BLOCKER",
-        "summary": "Parameter naturalness §II.A.3 brief",
+        "summary": "Parameter naturalness \u00a7II.A.3 brief",
         "truth_audit_verdict": "OPINION",
         "pattern_ids": [
          9
@@ -142,7 +142,7 @@
        {
         "finding_id": "PER-M1",
         "raw_classification": "MAJOR",
-        "summary": "DKS γ beta function not in their form",
+        "summary": "DKS \u03b3 beta function not in their form",
         "truth_audit_verdict": "VERIFIED",
         "pattern_ids": [],
         "closure_action": "DKS attribution softened",
@@ -151,7 +151,7 @@
        {
         "finding_id": "PER-M2",
         "raw_classification": "MAJOR",
-        "summary": "LWK derivative-coupling form, not (α/M) normalization",
+        "summary": "LWK derivative-coupling form, not (\u03b1/M) normalization",
         "truth_audit_verdict": "VERIFIED",
         "pattern_ids": [],
         "closure_action": "LWK attribution softened",
@@ -160,7 +160,7 @@
        {
         "finding_id": "PER-M3",
         "raw_classification": "MAJOR",
-        "summary": "γ_SU(2)=0.274±0.020 ±0.020 is scheme range, not stat error",
+        "summary": "\u03b3_SU(2)=0.274\u00b10.020 \u00b10.020 is scheme range, not stat error",
         "truth_audit_verdict": "VERIFIED",
         "pattern_ids": [],
         "closure_action": "scheme-range reframing",
@@ -169,10 +169,10 @@
        {
         "finding_id": "PER-m1",
         "raw_classification": "minor",
-        "summary": "ρ_crit~0.27 ρ_Pl attribution flip Ashtekar-Singh",
+        "summary": "\u03c1_crit~0.27 \u03c1_Pl attribution flip Ashtekar-Singh",
         "truth_audit_verdict": "VERIFIED",
         "pattern_ids": [],
-        "closure_action": "ρ_crit attribution corrected",
+        "closure_action": "\u03c1_crit attribution corrected",
         "closed_in_version": "v1A.0.38"
        },
        {
@@ -237,7 +237,7 @@
        {
         "finding_id": "GPT2-B2",
         "raw_classification": "MAJOR",
-        "summary": "ALP β-range methodology",
+        "summary": "ALP \u03b2-range methodology",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          4,
@@ -272,7 +272,7 @@
        {
         "finding_id": "GPT2-B5",
         "raw_classification": "minor",
-        "summary": "SH0ES tension + ΔNeff interaction",
+        "summary": "SH0ES tension + \u0394Neff interaction",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          9
@@ -283,7 +283,7 @@
        {
         "finding_id": "GPT2-B6",
         "raw_classification": "minor",
-        "summary": "Abstract ΔNeff context",
+        "summary": "Abstract \u0394Neff context",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          9
@@ -328,7 +328,7 @@
        {
         "finding_id": "PER2-M3",
         "raw_classification": "MAJOR",
-        "summary": "β_combined 0.241°±0.061° (3.9σ) not tied to literature",
+        "summary": "\u03b2_combined 0.241\u00b0\u00b10.061\u00b0 (3.9\u03c3) not tied to literature",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [],
         "closure_action": "no action",
@@ -581,7 +581,7 @@
        {
         "finding_id": "GPT-B4",
         "raw_classification": "MAJOR",
-        "summary": "α=0.19±0.65 undermines (dup R1)",
+        "summary": "\u03b1=0.19\u00b10.65 undermines (dup R1)",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          4,
@@ -630,7 +630,7 @@
        {
         "finding_id": "PER-B2",
         "raw_classification": "MAJOR",
-        "summary": "Münchmeyer2019 mis-cited",
+        "summary": "M\u00fcnchmeyer2019 mis-cited",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          4
@@ -652,7 +652,7 @@
        {
         "finding_id": "PER-M1",
         "raw_classification": "MAJOR",
-        "summary": "Quintin2014/Cai2014/WilsonEwing2012 don't state γ_GW=3",
+        "summary": "Quintin2014/Cai2014/WilsonEwing2012 don't state \u03b3_GW=3",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          4
@@ -663,7 +663,7 @@
        {
         "finding_id": "PER-m1",
         "raw_classification": "minor",
-        "summary": "Doré2014 SPHEREx σ(fNL) attribution",
+        "summary": "Dor\u00e92014 SPHEREx \u03c3(fNL) attribution",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [],
         "closure_action": "no action",
@@ -701,7 +701,7 @@
        {
         "finding_id": "GRO-B2",
         "raw_classification": "MAJOR",
-        "summary": "Move +3.64σ canonical-mask to appendix",
+        "summary": "Move +3.64\u03c3 canonical-mask to appendix",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          4
@@ -745,7 +745,7 @@
        {
         "finding_id": "GPT-B1",
         "raw_classification": "BLOCKER",
-        "summary": "Justify λ=0.5 flip-equivariance loss weight",
+        "summary": "Justify \u03bb=0.5 flip-equivariance loss weight",
         "truth_audit_verdict": "OPINION",
         "pattern_ids": [
          9
@@ -895,7 +895,7 @@
         "summary": "'A positive detection would have been a discriminator' empty conditional",
         "truth_audit_verdict": "VERIFIED",
         "pattern_ids": [],
-        "closure_action": "§XI.B opening rewritten",
+        "closure_action": "\u00a7XI.B opening rewritten",
         "closed_in_version": "v0.1.35"
        },
        {
@@ -932,7 +932,7 @@
        {
         "finding_id": "GPT-R2-B1",
         "raw_classification": "BLOCKER",
-        "summary": "Permutation null N_MC missing in §V",
+        "summary": "Permutation null N_MC missing in \u00a7V",
         "truth_audit_verdict": "VERIFIED",
         "pattern_ids": [],
         "closure_action": "N_MC=1000 + driver pointers added",
@@ -952,7 +952,7 @@
        {
         "finding_id": "GPT-R2-M1",
         "raw_classification": "MAJOR",
-        "summary": "V-Web R_s/λ_th choice justification",
+        "summary": "V-Web R_s/\u03bb_th choice justification",
         "truth_audit_verdict": "OPINION",
         "pattern_ids": [
          9
@@ -1048,7 +1048,7 @@
         "summary": "DR1 parent-sample 'derived in this work' tag missing",
         "truth_audit_verdict": "VERIFIED",
         "pattern_ids": [],
-        "closure_action": "clarifier added §II.B",
+        "closure_action": "clarifier added \u00a7II.B",
         "closed_in_version": "v0.1.35"
        },
        {
@@ -1065,7 +1065,7 @@
       ]
      },
      "exit_round": false,
-     "trend": "8 VERIFIED; v0.1.34→v0.1.35"
+     "trend": "8 VERIFIED; v0.1.34\u2192v0.1.35"
     }
    },
    "summary": {
@@ -1229,7 +1229,7 @@
        {
         "finding_id": "PER-m1",
         "raw_classification": "minor",
-        "summary": "Planck/ACT DR6 3.6σ joint signal conflated",
+        "summary": "Planck/ACT DR6 3.6\u03c3 joint signal conflated",
         "truth_audit_verdict": "VERIFIED",
         "pattern_ids": [
          2
@@ -1240,7 +1240,7 @@
        {
         "finding_id": "PER-m2",
         "raw_classification": "minor",
-        "summary": "Ashtekar-Singh ρ_Pl range (reflag)",
+        "summary": "Ashtekar-Singh \u03c1_Pl range (reflag)",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          4
@@ -1332,7 +1332,7 @@
        {
         "finding_id": "GPT3-B5",
         "raw_classification": "minor",
-        "summary": "ΔNeff alternatives for SH0ES",
+        "summary": "\u0394Neff alternatives for SH0ES",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          9
@@ -1375,7 +1375,7 @@
          8,
          13
         ],
-        "closure_action": "PR4/NPIPE → PR3 (wrong fix, regression)",
+        "closure_action": "PR4/NPIPE \u2192 PR3 (wrong fix, regression)",
         "closed_in_version": "v1B.0.33"
        },
        {
@@ -1402,7 +1402,7 @@
        {
         "finding_id": "PER3-B5",
         "raw_classification": "nit",
-        "summary": "0.342°±0.094° conversion from radians",
+        "summary": "0.342\u00b0\u00b10.094\u00b0 conversion from radians",
         "truth_audit_verdict": "OPINION",
         "pattern_ids": [],
         "closure_action": "no action",
@@ -1411,7 +1411,7 @@
        {
         "finding_id": "PER3-B6",
         "raw_classification": "minor",
-        "summary": "LiteBIRD 0.03° units",
+        "summary": "LiteBIRD 0.03\u00b0 units",
         "truth_audit_verdict": "OPINION",
         "pattern_ids": [],
         "closure_action": "no action",
@@ -1429,7 +1429,7 @@
        {
         "finding_id": "GRO-B1",
         "raw_classification": "BLOCKER",
-        "summary": "3-5σ headline rests on Heinrich Fisher",
+        "summary": "3-5\u03c3 headline rests on Heinrich Fisher",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          4
@@ -1451,7 +1451,7 @@
        {
         "finding_id": "GRO-M1",
         "raw_classification": "MAJOR",
-        "summary": "QSFI μ/H→3/2 endpoint not in BF range",
+        "summary": "QSFI \u03bc/H\u21923/2 endpoint not in BF range",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          4
@@ -1511,7 +1511,7 @@
        {
         "finding_id": "GPT-B4",
         "raw_classification": "BLOCKER",
-        "summary": "GR + bφ degradation rigour",
+        "summary": "GR + b\u03c6 degradation rigour",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          4,
@@ -1535,7 +1535,7 @@
        {
         "finding_id": "GPT-B6",
         "raw_classification": "minor",
-        "summary": "5σ upper end not justified",
+        "summary": "5\u03c3 upper end not justified",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          4,
@@ -1639,7 +1639,7 @@
        {
         "finding_id": "GPT-R3-B1",
         "raw_classification": "BLOCKER",
-        "summary": "σ(fNL)=8.14 envelope (dup)",
+        "summary": "\u03c3(fNL)=8.14 envelope (dup)",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          4,
@@ -1651,7 +1651,7 @@
        {
         "finding_id": "GPT-R3-B2",
         "raw_classification": "BLOCKER",
-        "summary": "Three DESI×SDSS cross-matches chance alignment",
+        "summary": "Three DESI\u00d7SDSS cross-matches chance alignment",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          4,
@@ -1806,7 +1806,7 @@
        {
         "finding_id": "PAPER-GPT-B3",
         "raw_classification": "BLOCKER",
-        "summary": "Quantitative breakdown of +3.64σ",
+        "summary": "Quantitative breakdown of +3.64\u03c3",
         "truth_audit_verdict": "OPINION",
         "pattern_ids": [
          9
@@ -1932,7 +1932,7 @@
        {
         "finding_id": "GRO-B1",
         "raw_classification": "BLOCKER",
-        "summary": "Abstract/§VII V-Web void framing",
+        "summary": "Abstract/\u00a7VII V-Web void framing",
         "truth_audit_verdict": "FALSIFIED",
         "pattern_ids": [],
         "closure_action": "no action",
@@ -1941,7 +1941,7 @@
        {
         "finding_id": "GRO-B2",
         "raw_classification": "BLOCKER",
-        "summary": "§XI.B/App.A EFT operator",
+        "summary": "\u00a7XI.B/App.A EFT operator",
         "truth_audit_verdict": "OPINION",
         "pattern_ids": [],
         "closure_action": "no action",
@@ -1950,21 +1950,21 @@
        {
         "finding_id": "GRO-M1",
         "raw_classification": "MAJOR",
-        "summary": "§I novelty empty conditional",
+        "summary": "\u00a7I novelty empty conditional",
         "truth_audit_verdict": "VERIFIED",
         "pattern_ids": [
          5
         ],
-        "closure_action": "§I rewording",
+        "closure_action": "\u00a7I rewording",
         "closed_in_version": "v0.1.36"
        },
        {
         "finding_id": "GRO-M2",
         "raw_classification": "MAJOR",
-        "summary": "§XII RSD anisotropy",
+        "summary": "\u00a7XII RSD anisotropy",
         "truth_audit_verdict": "VERIFIED",
         "pattern_ids": [],
-        "closure_action": "§XII.A wording softened",
+        "closure_action": "\u00a7XII.A wording softened",
         "closed_in_version": "v0.1.36"
        },
        {
@@ -1983,7 +1983,7 @@
        {
         "finding_id": "GPT-B1",
         "raw_classification": "BLOCKER",
-        "summary": "§VI Bonferroni correlation",
+        "summary": "\u00a7VI Bonferroni correlation",
         "truth_audit_verdict": "FALSIFIED",
         "pattern_ids": [
          9
@@ -1994,7 +1994,7 @@
        {
         "finding_id": "GPT-M1",
         "raw_classification": "MAJOR",
-        "summary": "§V.B V-Web λ_th sensitivity",
+        "summary": "\u00a7V.B V-Web \u03bb_th sensitivity",
         "truth_audit_verdict": "FALSIFIED",
         "pattern_ids": [
          9
@@ -2005,7 +2005,7 @@
        {
         "finding_id": "GPT-M2",
         "raw_classification": "MAJOR",
-        "summary": "§VI.B max-stat MC null",
+        "summary": "\u00a7VI.B max-stat MC null",
         "truth_audit_verdict": "OPINION",
         "pattern_ids": [
          9
@@ -2016,7 +2016,7 @@
        {
         "finding_id": "GPT-M3",
         "raw_classification": "MAJOR",
-        "summary": "§VII.C k=5 NN density",
+        "summary": "\u00a7VII.C k=5 NN density",
         "truth_audit_verdict": "OPINION",
         "pattern_ids": [
          9
@@ -2027,7 +2027,7 @@
        {
         "finding_id": "GPT-M4",
         "raw_classification": "MAJOR",
-        "summary": "§IX Phase 2 error bars",
+        "summary": "\u00a7IX Phase 2 error bars",
         "truth_audit_verdict": "OPINION",
         "pattern_ids": [
          9
@@ -2038,7 +2038,7 @@
        {
         "finding_id": "GPT-M5",
         "raw_classification": "MAJOR",
-        "summary": "§XII DR1 cosmic-web VAC",
+        "summary": "\u00a7XII DR1 cosmic-web VAC",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          4,
@@ -2096,7 +2096,7 @@
        {
         "finding_id": "PER-B5",
         "raw_classification": "minor",
-        "summary": "§III iron DR1 path",
+        "summary": "\u00a7III iron DR1 path",
         "truth_audit_verdict": "OPINION",
         "pattern_ids": [],
         "closure_action": "no action",
@@ -2114,7 +2114,7 @@
       ]
      },
      "exit_round": false,
-     "trend": "5 VERIFIED; v0.1.35→v0.1.36; 2 bib confabulations caught"
+     "trend": "5 VERIFIED; v0.1.35\u2192v0.1.36; 2 bib confabulations caught"
     }
    },
    "summary": {
@@ -2331,7 +2331,7 @@
        {
         "finding_id": "PER-minor-1",
         "raw_classification": "minor",
-        "summary": "Heinrich+2024 σ(fNL)≈0.7 attribution blur",
+        "summary": "Heinrich+2024 \u03c3(fNL)\u22480.7 attribution blur",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          4
@@ -2371,7 +2371,7 @@
        {
         "finding_id": "GRO-B3",
         "raw_classification": "minor",
-        "summary": "Redundant scope disclaimers (×5)",
+        "summary": "Redundant scope disclaimers (\u00d75)",
         "truth_audit_verdict": "OPINION",
         "pattern_ids": [],
         "closure_action": "no action",
@@ -2403,7 +2403,7 @@
        {
         "finding_id": "GRO-B6",
         "raw_classification": "minor",
-        "summary": "LiteBIRD ~9σ forecast",
+        "summary": "LiteBIRD ~9\u03c3 forecast",
         "truth_audit_verdict": "OPINION",
         "pattern_ids": [],
         "closure_action": "no action",
@@ -2507,7 +2507,7 @@
          8,
          13
         ],
-        "closure_action": "PR3 → PR4/NPIPE corrected via repo cross-check",
+        "closure_action": "PR3 \u2192 PR4/NPIPE corrected via repo cross-check",
         "closed_in_version": "v1B.0.34"
        },
        {
@@ -2525,7 +2525,7 @@
        {
         "finding_id": "PER4-M2",
         "raw_classification": "MAJOR",
-        "summary": "ACT DR6 β=0.215°±0.074° label",
+        "summary": "ACT DR6 \u03b2=0.215\u00b0\u00b10.074\u00b0 label",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          4
@@ -2536,7 +2536,7 @@
        {
         "finding_id": "PER4-m1",
         "raw_classification": "minor",
-        "summary": "LiteBIRD 0.03° units (reflag)",
+        "summary": "LiteBIRD 0.03\u00b0 units (reflag)",
         "truth_audit_verdict": "OPINION",
         "pattern_ids": [],
         "closure_action": "no action",
@@ -2594,7 +2594,7 @@
        {
         "finding_id": "GRO-m1",
         "raw_classification": "minor",
-        "summary": "§XII RSD ordering",
+        "summary": "\u00a7XII RSD ordering",
         "truth_audit_verdict": "VERIFIED",
         "pattern_ids": [],
         "closure_action": "paragraph ordering inverted",
@@ -2603,7 +2603,7 @@
        {
         "finding_id": "GRO-m2",
         "raw_classification": "minor",
-        "summary": "In-text 'Douglass et al.' → 'Rincon et al.'",
+        "summary": "In-text 'Douglass et al.' \u2192 'Rincon et al.'",
         "truth_audit_verdict": "VERIFIED",
         "pattern_ids": [
          8,
@@ -2629,7 +2629,7 @@
        {
         "finding_id": "GPT-M1",
         "raw_classification": "MAJOR",
-        "summary": "§V Bonferroni vs FDR",
+        "summary": "\u00a7V Bonferroni vs FDR",
         "truth_audit_verdict": "OPINION",
         "pattern_ids": [
          9
@@ -2640,7 +2640,7 @@
        {
         "finding_id": "GPT-M2",
         "raw_classification": "MAJOR",
-        "summary": "§VI σ-leak quantitative basis",
+        "summary": "\u00a7VI \u03c3-leak quantitative basis",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          4,
@@ -2652,7 +2652,7 @@
        {
         "finding_id": "GPT-M3",
         "raw_classification": "MAJOR",
-        "summary": "§VII Phase 2 error bars",
+        "summary": "\u00a7VII Phase 2 error bars",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          4,
@@ -2664,7 +2664,7 @@
        {
         "finding_id": "GPT-M4",
         "raw_classification": "MAJOR",
-        "summary": "§XII RSD quantitative (dup)",
+        "summary": "\u00a7XII RSD quantitative (dup)",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          4,
@@ -2749,7 +2749,7 @@
       ]
      },
      "exit_round": false,
-     "trend": "3 VERIFIED; v0.1.36→v0.1.37"
+     "trend": "3 VERIFIED; v0.1.36\u2192v0.1.37"
     }
    },
    "summary": {
@@ -2809,7 +2809,7 @@
        {
         "finding_id": "GRO-M1",
         "raw_classification": "MAJOR",
-        "summary": "N_tot≈92 ansatz-independence (reflag)",
+        "summary": "N_tot\u224892 ansatz-independence (reflag)",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          4
@@ -2880,7 +2880,7 @@
        {
         "finding_id": "GPT-B3",
         "raw_classification": "MAJOR",
-        "summary": "LQC ρ_c scheme-dependent (reflag)",
+        "summary": "LQC \u03c1_c scheme-dependent (reflag)",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          4,
@@ -2941,7 +2941,7 @@
        {
         "finding_id": "PER-M1",
         "raw_classification": "MAJOR",
-        "summary": "DLM ±0.020 sequential refinement",
+        "summary": "DLM \u00b10.020 sequential refinement",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          4
@@ -2963,7 +2963,7 @@
        {
         "finding_id": "PER-M3",
         "raw_classification": "MAJOR",
-        "summary": "LWK don't introduce (α/M)θ F̃F form (reflag)",
+        "summary": "LWK don't introduce (\u03b1/M)\u03b8 F\u0303F form (reflag)",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          4
@@ -3038,7 +3038,7 @@
        {
         "finding_id": "GRO-B4",
         "raw_classification": "BLOCKER",
-        "summary": "+4.3σ/-3.6σ tail extrapolations",
+        "summary": "+4.3\u03c3/-3.6\u03c3 tail extrapolations",
         "truth_audit_verdict": "OPINION",
         "pattern_ids": [],
         "closure_action": "no action",
@@ -3072,7 +3072,7 @@
        {
         "finding_id": "GPT-B1",
         "raw_classification": "BLOCKER",
-        "summary": "CAMB ΛCDM+ΔNeff insufficient ECH proxy",
+        "summary": "CAMB \u039bCDM+\u0394Neff insufficient ECH proxy",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          4,
@@ -3108,7 +3108,7 @@
        {
         "finding_id": "GPT-B4",
         "raw_classification": "MAJOR",
-        "summary": "ΔNeff Hubble-tension stat",
+        "summary": "\u0394Neff Hubble-tension stat",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          4,
@@ -3194,7 +3194,7 @@
        {
         "finding_id": "PER5-m1",
         "raw_classification": "minor",
-        "summary": "LiteBIRD 0.03° (reflag)",
+        "summary": "LiteBIRD 0.03\u00b0 (reflag)",
         "truth_audit_verdict": "OPINION",
         "pattern_ids": [],
         "closure_action": "no action",
@@ -3203,7 +3203,7 @@
        {
         "finding_id": "PER5-nit1",
         "raw_classification": "nit",
-        "summary": "Hehl/Mercuri ΔNeff inference framing",
+        "summary": "Hehl/Mercuri \u0394Neff inference framing",
         "truth_audit_verdict": "OPINION",
         "pattern_ids": [],
         "closure_action": "no action",
@@ -3273,7 +3273,7 @@
         "pattern_ids": [
          5
         ],
-        "closure_action": "'cleanest'→'direct' at §IX.G L1520+L1539",
+        "closure_action": "'cleanest'\u2192'direct' at \u00a7IX.G L1520+L1539",
         "closed_in_version": "v0.1.38"
        }
       ],
@@ -3305,7 +3305,7 @@
        {
         "finding_id": "GPT-M2",
         "raw_classification": "MAJOR",
-        "summary": "Per-class σ vs monopole offset",
+        "summary": "Per-class \u03c3 vs monopole offset",
         "truth_audit_verdict": "OPINION",
         "pattern_ids": [
          9
@@ -3403,7 +3403,7 @@
       ]
      },
      "exit_round": false,
-     "trend": "3 VERIFIED; v0.1.37→v0.1.38; clean-count reset"
+     "trend": "3 VERIFIED; v0.1.37\u2192v0.1.38; clean-count reset"
     }
    },
    "summary": {
@@ -3451,7 +3451,7 @@
        {
         "finding_id": "GRO-B2",
         "raw_classification": "BLOCKER",
-        "summary": "N_tot≈92 generic matter-bounce",
+        "summary": "N_tot\u224892 generic matter-bounce",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          4
@@ -3625,7 +3625,7 @@
        {
         "finding_id": "PER-m2",
         "raw_classification": "nit",
-        "summary": "0.27-0.41 ρ_Pl range parenthetical",
+        "summary": "0.27-0.41 \u03c1_Pl range parenthetical",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          4
@@ -3677,7 +3677,7 @@
        {
         "finding_id": "GRO-B3",
         "raw_classification": "MAJOR",
-        "summary": "iter2 ±4.3σ to appendix",
+        "summary": "iter2 \u00b14.3\u03c3 to appendix",
         "truth_audit_verdict": "OPINION",
         "pattern_ids": [],
         "closure_action": "no action",
@@ -3695,7 +3695,7 @@
        {
         "finding_id": "GRO-B5",
         "raw_classification": "MAJOR",
-        "summary": "§VI ALP delete/appendix",
+        "summary": "\u00a7VI ALP delete/appendix",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          4
@@ -3717,7 +3717,7 @@
        {
         "finding_id": "GPT-B1",
         "raw_classification": "minor",
-        "summary": "ΔNeff proxy derivation (reflag)",
+        "summary": "\u0394Neff proxy derivation (reflag)",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          4,
@@ -3789,7 +3789,7 @@
        {
         "finding_id": "PER6-B1",
         "raw_classification": "BLOCKER",
-        "summary": "Eskilt PR4/NPIPE → PR3 reverse",
+        "summary": "Eskilt PR4/NPIPE \u2192 PR3 reverse",
         "truth_audit_verdict": "FALSIFIED",
         "pattern_ids": [
          2,
@@ -3844,7 +3844,7 @@
        {
         "finding_id": "PER6-nit1",
         "raw_classification": "nit",
-        "summary": "LiteBIRD σ(β)≈0.03° (reflag)",
+        "summary": "LiteBIRD \u03c3(\u03b2)\u22480.03\u00b0 (reflag)",
         "truth_audit_verdict": "OPINION",
         "pattern_ids": [],
         "closure_action": "no action",
@@ -3880,7 +3880,7 @@
        {
         "finding_id": "GRO-M1",
         "raw_classification": "MAJOR",
-        "summary": "'cleanest' superlatives (reflag — already closed)",
+        "summary": "'cleanest' superlatives (reflag \u2014 already closed)",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          5
@@ -3947,7 +3947,7 @@
        {
         "finding_id": "GPT-M2",
         "raw_classification": "MAJOR",
-        "summary": "Per-class σ (reflag)",
+        "summary": "Per-class \u03c3 (reflag)",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          4,
@@ -4090,7 +4090,7 @@
        {
         "finding_id": "GRO-B1",
         "raw_classification": "BLOCKER",
-        "summary": "Preamble audit log → PDF (reflag)",
+        "summary": "Preamble audit log \u2192 PDF (reflag)",
         "truth_audit_verdict": "OPINION",
         "pattern_ids": [
          3,
@@ -4120,7 +4120,7 @@
        {
         "finding_id": "GRO-B4",
         "raw_classification": "MAJOR",
-        "summary": "iter2 ±4.3σ to appendix",
+        "summary": "iter2 \u00b14.3\u03c3 to appendix",
         "truth_audit_verdict": "OPINION",
         "pattern_ids": [],
         "closure_action": "no action",
@@ -4161,7 +4161,7 @@
        {
         "finding_id": "GPT-B2",
         "raw_classification": "MAJOR",
-        "summary": "ΔNeff compatibility criteria",
+        "summary": "\u0394Neff compatibility criteria",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          4,
@@ -4185,7 +4185,7 @@
        {
         "finding_id": "GPT-B4",
         "raw_classification": "MAJOR",
-        "summary": "ΔAIC/ΔBIC/ln B (reflag)",
+        "summary": "\u0394AIC/\u0394BIC/ln B (reflag)",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          4,
@@ -4222,7 +4222,7 @@
        {
         "finding_id": "PER7-B1",
         "raw_classification": "BLOCKER",
-        "summary": "Eskilt PR4/NPIPE → PR3 (3rd consecutive reverse)",
+        "summary": "Eskilt PR4/NPIPE \u2192 PR3 (3rd consecutive reverse)",
         "truth_audit_verdict": "FALSIFIED",
         "pattern_ids": [
          2,
@@ -4259,7 +4259,7 @@
        {
         "finding_id": "PER7-M3",
         "raw_classification": "MAJOR",
-        "summary": "ACT DR6 β attribution",
+        "summary": "ACT DR6 \u03b2 attribution",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [],
         "closure_action": "no action",
@@ -4277,7 +4277,7 @@
       ]
      },
      "exit_round": true,
-     "trend": "3/3 clean — EXIT P1B cascaded R-rounds at v1B.0.34"
+     "trend": "3/3 clean \u2014 EXIT P1B cascaded R-rounds at v1B.0.34"
     },
     "P5": {
      "version_at_time_of_review": "v0.1.38",
@@ -4408,7 +4408,7 @@
        {
         "finding_id": "GPT-min1",
         "raw_classification": "minor",
-        "summary": "§XII RSD detail (reflag)",
+        "summary": "\u00a7XII RSD detail (reflag)",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          4,
@@ -4709,7 +4709,7 @@
       ]
      },
      "exit_round": true,
-     "trend": "3/3 clean — EXIT P5 cascaded R-rounds at v0.1.38; 17 surface findings vs R7's 7 (exit-boundary reflag-bloom)"
+     "trend": "3/3 clean \u2014 EXIT P5 cascaded R-rounds at v0.1.38; 17 surface findings vs R7's 7 (exit-boundary reflag-bloom)"
     }
    },
    "summary": {
@@ -4753,7 +4753,7 @@
        {
         "finding_id": "GRO-B2",
         "raw_classification": "BLOCKER",
-        "summary": "All 4-route closures rest on uncontrolled ρ_Λ scaling ansatz",
+        "summary": "All 4-route closures rest on uncontrolled \u03c1_\u039b scaling ansatz",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          4
@@ -4775,7 +4775,7 @@
        {
         "finding_id": "GRO-M2",
         "raw_classification": "MAJOR",
-        "summary": "Structural tension N_tot≈92 vs f_NL=-35/8 not independent",
+        "summary": "Structural tension N_tot\u224892 vs f_NL=-35/8 not independent",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          4
@@ -4800,7 +4800,7 @@
         "summary": "fourroute_summary opener contradicts omitted-operators list above",
         "truth_audit_verdict": "VERIFIED",
         "pattern_ids": [],
-        "closure_action": "text edit (§IV.E summary opener softened)",
+        "closure_action": "text edit (\u00a7IV.E summary opener softened)",
         "closed_in_version": "v1A.0.37"
        }
       ],
@@ -4912,7 +4912,7 @@
        {
         "finding_id": "PER-M3",
         "raw_classification": "MAJOR",
-        "summary": "H_0/ΔN_eff values 'from' companion paper that doesn't exist publicly",
+        "summary": "H_0/\u0394N_eff values 'from' companion paper that doesn't exist publicly",
         "truth_audit_verdict": "VERIFIED",
         "pattern_ids": [
          6
@@ -5068,7 +5068,7 @@
        {
         "finding_id": "GPT-B5",
         "raw_classification": "MAJOR",
-        "summary": "Model-comparison ΔAIC/BIC/ln B missing",
+        "summary": "Model-comparison \u0394AIC/BIC/ln B missing",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          4,
@@ -5162,7 +5162,7 @@
       ]
      },
      "exit_round": false,
-     "trend": "v1B.0.30→v1B.0.31; closure-only bump"
+     "trend": "v1B.0.30\u2192v1B.0.31; closure-only bump"
     },
     "P2": {
      "version_at_time_of_review": "v1.7.38",
@@ -5182,7 +5182,7 @@
        {
         "finding_id": "BLOCKER-2",
         "raw_classification": "BLOCKER",
-        "summary": "BF arithmetic 6→4 8→10 12→14 wrong",
+        "summary": "BF arithmetic 6\u21924 8\u219210 12\u219214 wrong",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          4
@@ -5204,7 +5204,7 @@
        {
         "finding_id": "MAJOR-2",
         "raw_classification": "MAJOR",
-        "summary": "c=1 vs c=2 convention halves σ",
+        "summary": "c=1 vs c=2 convention halves \u03c3",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          4
@@ -5215,7 +5215,7 @@
        {
         "finding_id": "MAJOR-3",
         "raw_classification": "MAJOR",
-        "summary": "9.9σ joint Fisher should be deleted",
+        "summary": "9.9\u03c3 joint Fisher should be deleted",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          4
@@ -5273,7 +5273,7 @@
        {
         "finding_id": "GPT-B4",
         "raw_classification": "BLOCKER",
-        "summary": "5.2-5.5σ doesn't account for GR/bφ",
+        "summary": "5.2-5.5\u03c3 doesn't account for GR/b\u03c6",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          4,
@@ -5285,7 +5285,7 @@
        {
         "finding_id": "GPT-B5",
         "raw_classification": "BLOCKER",
-        "summary": "3-5σ conclusion not justified",
+        "summary": "3-5\u03c3 conclusion not justified",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          4,
@@ -5380,7 +5380,7 @@
       ]
      },
      "exit_round": false,
-     "trend": "0 VERIFIED; closure-only bump v1.7.38→v1.7.39"
+     "trend": "0 VERIFIED; closure-only bump v1.7.38\u2192v1.7.39"
     },
     "P3": {
      "version_at_time_of_review": "v3.1.70",
@@ -5411,7 +5411,7 @@
        {
         "finding_id": "GRO-B3",
         "raw_classification": "BLOCKER",
-        "summary": "5-α-grid refit closed only by unreleased artifact",
+        "summary": "5-\u03b1-grid refit closed only by unreleased artifact",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          4
@@ -5457,7 +5457,7 @@
        {
         "finding_id": "GPT-B1",
         "raw_classification": "BLOCKER",
-        "summary": "5-fold val losses 0.76-4.91 vs ≤0.30 gate",
+        "summary": "5-fold val losses 0.76-4.91 vs \u22640.30 gate",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          4,
@@ -5469,7 +5469,7 @@
        {
         "finding_id": "GPT-B2",
         "raw_classification": "BLOCKER",
-        "summary": "SDSS ~6500× cross-transfer domain shift",
+        "summary": "SDSS ~6500\u00d7 cross-transfer domain shift",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          4,
@@ -5493,7 +5493,7 @@
        {
         "finding_id": "GPT-M1",
         "raw_classification": "MAJOR",
-        "summary": "σfNL=8.14 consistent with no improvement (dup)",
+        "summary": "\u03c3fNL=8.14 consistent with no improvement (dup)",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          4,
@@ -5543,7 +5543,7 @@
        {
         "finding_id": "PER-B2",
         "raw_classification": "MAJOR",
-        "summary": "Internal 38σ-66σ Fisher framed as headline",
+        "summary": "Internal 38\u03c3-66\u03c3 Fisher framed as headline",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          4
@@ -5596,7 +5596,7 @@
       ]
      },
      "exit_round": false,
-     "trend": "13/13 STALE; closure-only bump v3.1.70→v3.1.71"
+     "trend": "13/13 STALE; closure-only bump v3.1.70\u2192v3.1.71"
     },
     "P4": {
      "version_at_time_of_review": "v1.0.142",
@@ -5605,7 +5605,7 @@
        {
         "finding_id": "GRO-B1",
         "raw_classification": "BLOCKER",
-        "summary": "Subsample-mask null vs canonical +3.64σ framing",
+        "summary": "Subsample-mask null vs canonical +3.64\u03c3 framing",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          4
@@ -5671,7 +5671,7 @@
        {
         "finding_id": "GPT-B1",
         "raw_classification": "BLOCKER",
-        "summary": "Fisher floor vs empirical 0.75% — overclaim",
+        "summary": "Fisher floor vs empirical 0.75% \u2014 overclaim",
         "truth_audit_verdict": "STALE",
         "pattern_ids": [
          9
@@ -5741,7 +5741,7 @@
        {
         "finding_id": "PER-B1",
         "raw_classification": "BLOCKER",
-        "summary": "Shamir:2022DESI mixes metadata — claims arXiv:2208.13866 is PASP",
+        "summary": "Shamir:2022DESI mixes metadata \u2014 claims arXiv:2208.13866 is PASP",
         "truth_audit_verdict": "FALSIFIED",
         "pattern_ids": [
          1,
@@ -5805,7 +5805,7 @@
       ]
      },
      "exit_round": false,
-     "trend": "0 VERIFIED; v1.0.142→v1.0.143 bump-only"
+     "trend": "0 VERIFIED; v1.0.142\u2192v1.0.143 bump-only"
     },
     "P5": {
      "version_at_time_of_review": "v0.1.33",
@@ -5830,7 +5830,7 @@
         "pattern_ids": [
          5
         ],
-        "closure_action": "§XI.B rewrite as toy parametrization",
+        "closure_action": "\u00a7XI.B rewrite as toy parametrization",
         "closed_in_version": "v0.1.34"
        },
        {
@@ -5845,7 +5845,7 @@
        {
         "finding_id": "GRO-M2",
         "raw_classification": "MAJOR",
-        "summary": "Raw |σ|_max=3.94 cited alongside null tests",
+        "summary": "Raw |\u03c3|_max=3.94 cited alongside null tests",
         "truth_audit_verdict": "VERIFIED",
         "pattern_ids": [],
         "closure_action": "abstract clarifier on monopole-subtracted residual",
@@ -5857,7 +5857,7 @@
         "summary": "RSD anisotropy unquantified",
         "truth_audit_verdict": "VERIFIED",
         "pattern_ids": [],
-        "closure_action": "§XII order-of-magnitude estimate added",
+        "closure_action": "\u00a7XII order-of-magnitude estimate added",
         "closed_in_version": "v0.1.34"
        },
        {
@@ -5957,7 +5957,7 @@
         "summary": "DESIVAST framed as full DR1 cosmic-web catalog",
         "truth_audit_verdict": "VERIFIED",
         "pattern_ids": [],
-        "closure_action": "§X rewrite to 'complementary public DR1 product'",
+        "closure_action": "\u00a7X rewrite to 'complementary public DR1 product'",
         "closed_in_version": "v0.1.34"
        },
        {
@@ -5980,7 +5980,7 @@
         "pattern_ids": [
          5
         ],
-        "closure_action": "§X paragraph rewrite",
+        "closure_action": "\u00a7X paragraph rewrite",
         "closed_in_version": "v0.1.34"
        },
        {
@@ -6002,13 +6002,13 @@
         "pattern_ids": [
          5
         ],
-        "closure_action": "§XI.B reworded as toy parametrization",
+        "closure_action": "\u00a7XI.B reworded as toy parametrization",
         "closed_in_version": "v0.1.34"
        }
       ]
      },
      "exit_round": false,
-     "trend": "9 VERIFIED closures; v0.1.33→v0.1.34"
+     "trend": "9 VERIFIED closures; v0.1.33\u2192v0.1.34"
     }
    },
    "summary": {
@@ -6113,7 +6113,7 @@
     "cross_vendor_OOOOO": 50,
     "ratio_cross_vendor_to_ccai_at_convergence": "50/4 = 12.5x amplification"
    },
-   "note": "CCAI cluster — meta analysis of 9 self-review rounds; not per-finding archive. See file for cluster_summary + new_patterns_beyond_current_catalog."
+   "note": "CCAI cluster \u2014 meta analysis of 9 self-review rounds; not per-finding archive. See file for cluster_summary + new_patterns_beyond_current_catalog."
   },
   {
    "round_label": "2026-05-15_P4_v1066_external",
@@ -6175,5 +6175,323 @@
    "note": "Full 5-vendor + META confirmation round on all six papers (Claude leg in-session after API-credit failure; failed API legs moved to failed-legs/). Truth-audit row-level archive for P1A/P2/P3/P5; P1B/P4 verdicts reconstructed from the closure wave (no standalone TRUTH_AUDIT files). All six papers bumped same day (P1A v1A.0.51, P1B v1B.0.52, P2 v1.7.46, P3 v3.1.81, P4 v1.0.168, P5 v0.1.53). NOT a clean round -> readiness held 85-92. 3 new draft patterns proposed: 042 hardcoded-literal artifact scripts, 043 invented-configuration narratives, 044 wrong-pairing analytic claims."
   }
  ],
- "external_rounds_count": 5
+ "external_rounds_count": 17,
+ "catalogue_2026_06_10": {
+  "generated": "2026-06-10",
+  "description": "EXT1 (P2-P5) + R29 (all 6 papers) archive entries ingested 2026-06-10. EXT2 closure wave applied to P3/P4/P5 tex files same session.",
+  "total_new_findings": 266,
+  "entries": [
+   {
+    "source_file": "2026-06-10_EXT1_P1A.json",
+    "round": "2026-06-10_EXT1",
+    "paper": "P1A",
+    "date": "2026-06-10",
+    "round_type": "external_three_reviewer",
+    "pre_version": "v1A.0.56",
+    "post_version": "v1A.0.57",
+    "vendors": [
+     "ChatGPT Pro Extended (GPT-5.5)",
+     "Grok Heavy",
+     "Gemini 3.5 Thinking"
+    ],
+    "truth_audit_source": "EXT1_P1A_TRUTH_AUDIT.md",
+    "audit_note": "42 audited findings. Reviewer verdicts: ChatGPT REJECT (8 BLOCKERS, 8 MAJORS, 9 MINORS), Grok MAJOR REVISIONS (3 BLOCKERS, 3 MAJORS, 5 MINORS), Gemini MAJOR REVISIONS (2 BLOCKERS, 1 MAJOR, 2 MINORS). Post-audit consensus: MAJOR REVISIONS (ChatGPT REJECT over-called). 9 consensus clusters. 5 VERIFIED BLOCKERs; none are fatal logical errors. EXT1 closure wave implemented v1A.0.57.",
+    "verdict_counts": {
+     "VERIFIED": 16,
+     "PARTIAL": 7,
+     "OPINION": 11,
+     "FALSIFIED": 4,
+     "HOUSTON-DECISION": 4
+    },
+    "findings_count": 42
+   },
+   {
+    "source_file": "2026-06-10_EXT1_P1B.json",
+    "round": "2026-06-10_EXT1",
+    "paper": "P1B",
+    "date": "2026-06-10",
+    "round_type": "external_three_reviewer",
+    "pre_version": "v1B.0.54",
+    "post_version": "v1B.0.56",
+    "vendors": [
+     "ChatGPT Pro Extended (GPT-5.5)",
+     "Grok Heavy",
+     "Gemini 3.5 Thinking"
+    ],
+    "truth_audit_source": "EXT1_P1B_TRUTH_AUDIT.md",
+    "audit_note": "31 audited findings. Reviewer verdicts: ChatGPT MAJOR (3 BLOCKERs, 9 MAJORs, 8 MINORs), Grok MINOR, Gemini MINOR. Post-audit: CONDITIONAL ACCEPTANCE after A1-A3 blockers. 4 internal-review gaps (G1-G4). Counts: VERIFIED 11, PARTIAL 8, OPINION 4, STALE 0, FALSIFIED 1, HOUSTON-DECISION 1. Total 31 findings.",
+    "verdict_counts": {
+     "VERIFIED": 11,
+     "PARTIAL": 8,
+     "OPINION": 4,
+     "STALE": 0,
+     "FALSIFIED": 1,
+     "HOUSTON-DECISION": 1
+    },
+    "findings_count": 31
+   },
+   {
+    "source_file": "2026-06-10_EXT1_P2.json",
+    "round": "2026-06-10_EXT1",
+    "paper": "P2",
+    "date": "2026-06-10",
+    "round_type": "external_three_reviewer",
+    "pre_version": "v1.7.48",
+    "post_version": "v1.7.48",
+    "vendors": [
+     "ChatGPT Pro Extended (GPT-5.5)",
+     "Grok Heavy",
+     "Gemini 3.5 Thinking"
+    ],
+    "truth_audit_source": "EXT1_P2_TRUTH_AUDIT.md",
+    "audit_note": "32 audited findings. Reviewer verdicts: ChatGPT MAJOR (5 BLOCKERs, 8 MAJORs, 6 MINORs), Grok MINOR, Gemini MINOR. Post-audit: CONDITIONAL ACCEPT after P1-P5 closes. FALSIFIED 3 (F5 GR-degradation citation, F7 parameter-free language, F16 r_t notation, F21 BF framing, F26 Heinrich 2024 year). No fatal scientific errors. Core forecast architecture sound. Key gaps: title-vs-recast framing, cubic-transfer caveat absent from abstract, birefringence paragraph persistence, Zenodo code DOI missing.",
+    "verdict_counts": {
+     "VERIFIED": 6,
+     "PARTIAL": 10,
+     "OPINION": 6,
+     "FALSIFIED": 5,
+     "HOUSTON-DECISION": 2,
+     "STALE": 0
+    },
+    "findings_count": 32
+   },
+   {
+    "source_file": "2026-06-10_EXT1_P3.json",
+    "round": "2026-06-10_EXT1",
+    "paper": "P3",
+    "date": "2026-06-10",
+    "round_type": "external_three_reviewer",
+    "pre_version": "v3.1.87",
+    "post_version": "v3.1.89",
+    "vendors": [
+     "ChatGPT Pro Extended (GPT-5.5)",
+     "Grok Heavy",
+     "Gemini 3.5 Thinking"
+    ],
+    "truth_audit_source": "EXT1_P3_TRUTH_AUDIT.md",
+    "audit_note": "25 audited findings. All three reviewers: MAJOR REVISIONS. Post-audit: CONDITIONAL MAJOR \u2014 3 hard pre-submission fixes (A1 eROSITA score strip, A2 DOI, A4 SMBHB env caveat). FALSIFIED 4 (F4 Planck denominator, F6 v3.1.71 round, F15 NEOWISE tautology, F20 dedup provenance). 7 consensus findings. Key gap: environmental-flattening SMBHB caveat genuinely absent from all internal rounds.",
+    "verdict_counts": {
+     "VERIFIED": 8,
+     "PARTIAL": 7,
+     "OPINION": 4,
+     "FALSIFIED": 4,
+     "HOUSTON-DECISION": 2,
+     "STALE": 1
+    },
+    "findings_count": 25
+   },
+   {
+    "source_file": "2026-06-10_EXT1_P4.json",
+    "round": "2026-06-10_EXT1",
+    "paper": "P4",
+    "date": "2026-06-10",
+    "round_type": "external_three_reviewer",
+    "pre_version": "v1.0.171",
+    "post_version": "v1.0.173",
+    "vendors": [
+     "ChatGPT Pro Extended (GPT-5.5)",
+     "Grok Heavy",
+     "Gemini 3.5 Thinking"
+    ],
+    "truth_audit_source": "EXT1_P4_TRUTH_AUDIT.md",
+    "audit_note": "32 audited findings. Reviewer verdicts: ChatGPT MAJOR (5 BLOCKERs, 12 MAJORs, 9 MINORs), Grok MINOR, Gemini MINOR. Post-audit: CONDITIONAL ACCEPT after P0+P1 fixes. Core science solid: +0.41\u03c3 real-space null and z\u2248-18 exclusion verified against committed artifacts. VERIFIED 5, PARTIAL 10, OPINION 9, HOUSTON-DECISION 2. Key gaps: stale commit hash (B1), NS gallery caption 'face-on' error (F16), NSIDE=8 block-bootstrap not justified (F23/F30 consensus).",
+    "verdict_counts": {
+     "VERIFIED": 5,
+     "PARTIAL": 10,
+     "OPINION": 9,
+     "FALSIFIED": 0,
+     "HOUSTON-DECISION": 2,
+     "STALE": 0
+    },
+    "findings_count": 32
+   },
+   {
+    "source_file": "2026-06-10_EXT1_P5.json",
+    "round": "2026-06-10_EXT1",
+    "paper": "P5",
+    "date": "2026-06-10",
+    "round_type": "external_three_reviewer",
+    "pre_version": "v0.1.60",
+    "post_version": "v0.1.62",
+    "vendors": [
+     "ChatGPT Pro Extended (GPT-5.5)",
+     "Grok Heavy",
+     "Gemini 3.5 Thinking"
+    ],
+    "truth_audit_source": "EXT1_P5_TRUTH_AUDIT.md",
+    "audit_note": "28 audited findings. Reviewer verdicts: ChatGPT MAJOR, Grok MINOR, Gemini MAJOR. Post-audit: Grok's MINOR better calibrated. VERIFIED 12, PARTIAL 4, OPINION 5, STALE 1, FALSIFIED 4, HOUSTON-DECISION 2. ChatGPT BLOCKERs F3/F6 FALSIFIED. Key genuine gaps: DESIVAST program-split table (F9), Cram\u00e9r's V + log10(p) (F8), logistic regression for program control (F25), analysis-tree table (F7), headline language dual-use (C1). Void-bin smallness typo (F16) was logic error missed by all internal rounds.",
+    "verdict_counts": {
+     "VERIFIED": 12,
+     "PARTIAL": 4,
+     "OPINION": 5,
+     "FALSIFIED": 4,
+     "HOUSTON-DECISION": 2,
+     "STALE": 1
+    },
+    "findings_count": 28
+   },
+   {
+    "source_file": "2026-06-10_R29_P1A.json",
+    "round": "2026-06-10_R29",
+    "paper": "P1A",
+    "date": "2026-06-10",
+    "round_type": "cross_vendor_r_round",
+    "pre_version": "v1A.0.57",
+    "post_version": "v1A.0.57",
+    "vendors": [
+     "Claude (brutal)",
+     "OpenAI (methodology)",
+     "Gemini (cosmology)",
+     "Grok (brutal)",
+     "Perplexity (citations)"
+    ],
+    "truth_audit_source": "R29_P1A_TRUTH_AUDIT.md",
+    "audit_note": "R29 5-vendor native-PDF cross-review of v1A.0.57. ESSENTIAL: E1 N_tot threshold drift VERIFIED (L584/L2217/L2278 fix applied), E2 Cartan \u03ba step VERIFIED (footnote patch applied), E3 Holst coefficient PARTIAL (convention note added), E4 repro bundle v1A.0.56 VERIFIED (patch applied), companion-imports HOUSTON-DECISION, META-E1 Bianchi/pair-symmetry PARTIAL (patch applied), META-E2 Route-2 \u03b2-comparison HOUSTON-DECISION, META-E3 Route-2 parity classification VERIFIED (patch applied). MAJOR: ~15 VERIFIED items, NO PATCH this round \u2014 mathematical scope calls deferred. MINOR/NIT: ~70 findings, OPINION/STALE. Note: round does NOT count toward clean-round counter due to API-failed OpenAI leg per SYNTHESIS.",
+    "verdict_counts": {
+     "VERIFIED": 18,
+     "PARTIAL": 6,
+     "OPINION": 20,
+     "FALSIFIED": 0,
+     "HOUSTON-DECISION": 4,
+     "STALE": 2
+    },
+    "findings_count": 18
+   },
+   {
+    "source_file": "2026-06-10_R29_P1B.json",
+    "round": "2026-06-10_R29",
+    "paper": "P1B",
+    "date": "2026-06-10",
+    "round_type": "cross_vendor_r_round",
+    "pre_version": "v1B.0.55",
+    "post_version": "v1B.0.55",
+    "vendors": [
+     "Claude (brutal)",
+     "OpenAI (methodology)",
+     "Gemini (cosmology)",
+     "Grok (brutal)",
+     "Perplexity (citations)"
+    ],
+    "truth_audit_source": "R29_P1B_TRUTH_AUDIT.md",
+    "audit_note": "R29 5-vendor native-PDF cross-review of v1B.0.55. ESSENTIAL E1 VERIFIED+FIXED: parameter_summary.json column-permutation bug (H0=sigma8, sigma8=omegam, etc.) \u2014 README rewritten with verified diagnosis; CORRECTED JSON confirmed against fresh chain reload. E2 ALP sign restriction: OPINION/HOUSTON-DECISION. E3 BBN-consistency \u0394Neff<0: STALE/PARTIAL. E4 Table ordering: OPINION. E5 'consistent with zero' without ln B: VERIFIED. Note: R29_P1B used 2026-05-26 MCMC companion data (R29 P1B was an earlier cycle run for P1B specifically at v1B.0.30 per file listing).",
+    "verdict_counts": {
+     "VERIFIED": 5,
+     "PARTIAL": 3,
+     "OPINION": 6,
+     "FALSIFIED": 0,
+     "HOUSTON-DECISION": 2,
+     "STALE": 1
+    },
+    "findings_count": 9
+   },
+   {
+    "source_file": "2026-06-10_R29_P2.json",
+    "round": "2026-06-10_R29",
+    "paper": "P2",
+    "date": "2026-06-10",
+    "round_type": "cross_vendor_r_round",
+    "pre_version": "v1.7.49",
+    "post_version": "v1.7.49",
+    "vendors": [
+     "Claude (brutal)",
+     "OpenAI (methodology \u2014 API-failed; round DOES NOT count toward clean-round counter)",
+     "Gemini (cosmology)",
+     "Grok (brutal)",
+     "Perplexity (citations)"
+    ],
+    "truth_audit_source": "R29_P2_TRUTH_AUDIT.md",
+    "audit_note": "R29 5-vendor cross-review post-EXT1 closure wave. NOTE: OpenAI leg API-failed; round does not count toward clean-round counter. E1 (abstract disclaimer-list) VERIFIED. E2 (title 'and Forecasts') VERIFIED. E3 (covariance OOM dimensional error) VERIFIED with correct dimensionless form derived. E4 (9.4%/de-bias null) PARTIAL-STALE (addressed but abstract framing still Houston-decision). E5 (Zenodo DOI) HOUSTON-DECISION. OPINION: ALP sign-restriction, birefringence section, abstract length. Key new finding E3: \u00a7spherex covariance OOM has dimensional inconsistency \u2014 P_\u03b6(k)/V_survey \u03b4k is not dimensionless without using dimensionless \u0394_\u03b6\u00b2.",
+    "verdict_counts": {
+     "VERIFIED": 4,
+     "PARTIAL": 3,
+     "OPINION": 5,
+     "FALSIFIED": 0,
+     "HOUSTON-DECISION": 2,
+     "STALE": 1
+    },
+    "findings_count": 9
+   },
+   {
+    "source_file": "2026-06-10_R29_P3.json",
+    "round": "2026-06-10_R29",
+    "paper": "P3",
+    "date": "2026-06-10",
+    "round_type": "cross_vendor_r_round",
+    "pre_version": "v3.1.88",
+    "post_version": "v3.1.89",
+    "vendors": [
+     "Claude (brutal)",
+     "OpenAI (methodology)",
+     "Gemini (cosmology)",
+     "Grok (brutal)",
+     "Perplexity (citations)"
+    ],
+    "truth_audit_source": "R29_P3_TRUTH_AUDIT.md",
+    "audit_note": "R29 5-vendor cross-review of v3.1.88. PATCHED THIS WAVE: ESS-01 (eROSITA S=1.084 score quoted in prose body \u2192 membership-only framing applied), ESS-02 (abstract missing eROSITA non-reproducible score disclosure \u2192 parenthetical added), ESS-03 (dedup artifact path drift r23conf_dedup_audits.json \u2192 pathc_dedup/ prefix patched). NOT PATCHED/DEFERRED: E-06 (SHA-256 collision parquet files \u2014 byte-identical by design; manifest annotated only), E-07 (conclusions 'projected' verb \u2014 deferred), E-08 (Table I eROSITA rate '0.03' missing membership-only Note \u2014 deferred), E-09 (high-z body text uses confirmed-style z \u2014 deferred), E-10 (fnl_improvement caption lacks 'superseded' \u2014 deferred). FALSIFIED: OpenAI P3-E1 (Fisher F0 dimensionality \u2014 already correct in source). HOUSTON-DECISION: multiple citation metadata verification (Perplexity E2-E8/E12), Zenodo DOI, novelty fraction FWER, manuscript length.",
+    "verdict_counts": {
+     "VERIFIED": 6,
+     "PARTIAL": 5,
+     "OPINION": 8,
+     "FALSIFIED": 1,
+     "HOUSTON-DECISION": 6,
+     "STALE": 1
+    },
+    "findings_count": 15
+   },
+   {
+    "source_file": "2026-06-10_R29_P4.json",
+    "round": "2026-06-10_R29",
+    "paper": "P4",
+    "date": "2026-06-10",
+    "round_type": "cross_vendor_r_round",
+    "pre_version": "v1.0.172",
+    "post_version": "v1.0.173",
+    "vendors": [
+     "Claude (brutal)",
+     "OpenAI (methodology)",
+     "Gemini (cosmology)",
+     "Grok (brutal)",
+     "Perplexity (citations)"
+    ],
+    "truth_audit_source": "R29_P4_TRUTH_AUDIT.md",
+    "audit_note": "R29 99 raw findings, 14 consensus groups. KEY PATCHES APPLIED: E01 FALSIFIED by local compute run \u2014 NSIDE sensitivity {4,8,16} all give |z|\u226517, headline stable; footnote updated with sensitivity table and new artifact. E02 NS gallery figure FIXED \u2014 fig_gallery_notspi.png was absent from Fig.1 (broken symlink); file copied and 3-panel figure inserted. E03 Data Availability hash convention note added. E04 +3.64\u03c3/+7.93\u03c3 bridge in Conclusions patched; MASTER z definition corrected (added null-mean subtraction). Table I row vi +1.68\u2192+1.69\u03c3 fixed. HOUSTON-DECISION: train/val augmentation order-of-operations (META-E1), no pre-registration for p_eq>0.6 threshold (META-M4), cross-map independence test vs CE-ResNet (META-M5).",
+    "verdict_counts": {
+     "VERIFIED": 12,
+     "PARTIAL": 8,
+     "OPINION": 10,
+     "FALSIFIED": 3,
+     "HOUSTON-DECISION": 4,
+     "STALE": 0
+    },
+    "findings_count": 13
+   },
+   {
+    "source_file": "2026-06-10_R29_P5.json",
+    "round": "2026-06-10_R29",
+    "paper": "P5",
+    "date": "2026-06-10",
+    "round_type": "cross_vendor_r_round",
+    "pre_version": "v0.1.61",
+    "post_version": "v0.1.62",
+    "vendors": [
+     "Claude (brutal)",
+     "OpenAI (methodology)",
+     "Gemini (cosmology)",
+     "Grok (brutal)",
+     "Perplexity (citations)"
+    ],
+    "truth_audit_source": "R29_P5_TRUTH_AUDIT.md",
+    "audit_note": "R29 cross-review of v0.1.61. PATCHED THIS WAVE: E29-2 terminology sweep ('catalog-level' \u2192 'catalog-wide monopole offset' at 4 remaining sites), E29-3 abstract 'confirmed' \u2192 'consistent with', M29-1 Cram\u00e9r's V abstract naked \u2192 '--- small effect ---' added, M29-3 '\u22640.01 SE' wrong for wall/cluster \u2192 corrected to \u22640.12 with per-class values. NOT PATCHED/DEFERRED: Meta-E1 (HEALPix 297 vs 885 \u2014 HOUSTON-DECISION), Meta-E2 (void volume fraction 0.1% vs 24.4% wording \u2014 OPINION), Meta-M1 (Table VII resolved-cell heading \u2014 HOUSTON-DECISION), Meta-M3 (row-level permutation null clarification), Meta-M4 (BGS-randoms only), companion-dependency structural issue. VERIFIED outstanding: Gemini arithmetic errors (Table XII, \u0394f_CW sign, Table IV |\u03c3| header), binomial formula rendering, \u03c3_pred formula.",
+    "verdict_counts": {
+     "VERIFIED": 8,
+     "PARTIAL": 5,
+     "OPINION": 8,
+     "FALSIFIED": 0,
+     "HOUSTON-DECISION": 3,
+     "STALE": 0
+    },
+    "findings_count": 12
+   }
+  ]
+ }
 }

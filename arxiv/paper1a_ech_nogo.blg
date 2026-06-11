@@ -13,6 +13,10 @@ Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: paper1a_ech_nogoNotes.bib
 Database file #2: references.bib
+Repeated entry---line 992 of file references.bib
+ : @article{ShapiroTeixeira2014
+ :                             ,
+I'm skipping whatever remains of this entry
 control{REVTEX42Control}, control.key{N/A}, control.author{N/A}, control.editor{N/A}, control.title{N/A}, control.pages{N/A}, control.year{N/A}, control.eprint{N/A}, 
 control{apsrev42Control}, control.key{N/A}, control.author{08}, control.editor{1}, control.title{0}, control.pages{0}, control.year{1}, control.eprint{N/A}, 
 Warning--jnrlst (dependency: not reversed) set 1
@@ -269,45 +273,45 @@ while executing---line 3515 of file apsrev4-2.bst
 ---they aren't the same literal types for entry Golden2026P3
 while executing---line 3515 of file apsrev4-2.bst
 Warning--missing journal in Golden2026P3
-You've used 52 entries,
+You've used 50 entries,
             6079 wiz_defined-function locations,
-            2019 strings with 24126 characters,
-and the built_in function-call counts, 51624 in all, are:
-= -- 4010
-> -- 1055
-< -- 256
-+ -- 342
-- -- 246
-* -- 7765
-:= -- 4981
-add.period$ -- 50
-call.type$ -- 52
-change.case$ -- 255
-chr.to.int$ -- 58
-cite$ -- 61
-duplicate$ -- 4876
-empty$ -- 3737
-format.name$ -- 594
-if$ -- 10404
-int.to.chr$ -- 5
-int.to.str$ -- 59
-missing$ -- 747
-newline$ -- 202
-num.names$ -- 150
-pop$ -- 1929
+            2006 strings with 23740 characters,
+and the built_in function-call counts, 49953 in all, are:
+= -- 3870
+> -- 1026
+< -- 249
++ -- 331
+- -- 240
+* -- 7522
+:= -- 4808
+add.period$ -- 48
+call.type$ -- 50
+change.case$ -- 244
+chr.to.int$ -- 57
+cite$ -- 59
+duplicate$ -- 4717
+empty$ -- 3615
+format.name$ -- 576
+if$ -- 10072
+int.to.chr$ -- 4
+int.to.str$ -- 57
+missing$ -- 726
+newline$ -- 196
+num.names$ -- 144
+pop$ -- 1865
 preamble$ -- 1
-purify$ -- 250
+purify$ -- 240
 quote$ -- 0
-skip$ -- 2394
+skip$ -- 2322
 stack$ -- 0
-substring$ -- 1151
-swap$ -- 4526
-text.length$ -- 105
+substring$ -- 1113
+swap$ -- 4384
+text.length$ -- 102
 text.prefix$ -- 0
 top$ -- 10
-type$ -- 675
+type$ -- 650
 warning$ -- 10
-while$ -- 148
+while$ -- 143
 width$ -- 0
-write$ -- 520
-(There were 78 error messages)
+write$ -- 502
+(There were 79 error messages)

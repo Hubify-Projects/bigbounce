@@ -70,6 +70,20 @@ Net: zero of the three drivers is a new defect; one (F4) carries a real, hard fi
 - **(b) Re-raises of audited-FALSIFIED items: 1** — F9 (PR3/PR4, EXT1 F16 FALSIFIED) — though this re-raise surfaced one genuinely mislabeled residual site (L1628), so it pays for itself.
 - **(c) Closure-verification disputes: 7** — F4 (disclosed-vs-fixed escalation, 2 reviewers), F7, F8 (NOT-ADDRESSED on deliberately-parked items), F6 (natural-params residual), GPT B1-PARTIAL/REGRESSION + M9-REGRESSION (both audit as accurate), F17 (Grok CLOSED over-credit — falsified closure, the inverse failure mode).
 
+## Deferred to compute-queue (EXT2 closure wave 2026-06-10)
+
+The following actions are compute-bound and could not be closed in the
+same-day source-edit wave; they are queued on the dedicated MPI pod
+and will be closed in a follow-up wave when the chains converge.
+
+- **F4/C1 — SN-overlap control chains (Gemini-regression drivers).**
+  Two cobaya control chains queued: (i) DESI~DR2 + Planck~NPIPE +
+  Pantheon$+$ only; (ii) DESI~DR2 + Planck~NPIPE + DES-SN5YR only.
+  Same priors / burn-in as iter2. Manuscript prose at L1150 already
+  softened from "unlikely to be reversed" to "plausibly robust …
+  but this has not been demonstrated quantitatively in the present
+  manuscript" pending the control-chain $(w_0, w_a)$ shifts.
+
 ## Post-audit recommendation
 
 ChatGPT MAJOR REVISIONS is calibrated; Grok's ACCEPT is over-credited (F17); Gemini's MAJOR is severity-inflated on disclosed items but its core ask (control chains) is the right hard fix. Hold readiness at 94 until actions 1–3 land; actions 2–8 are same-day, action 1 is pod-compute.
