@@ -1,13 +1,13 @@
 {
   "preprint_id": "HUBIFY-2026-001",
-  "version": "v2.4.0",
-  "date": "2026-06-10",
-  "timestamp": "2026-06-10T23:35:00-07:00",
+  "version": "v2.5.0",
+  "date": "2026-06-11",
+  "timestamp": "2026-06-11T12:00:00-07:00",
   "author": "Houston Golden",
   "papers": {
     "p1a": {
-      "version": "v1A.0.59",
-      "date": "2026-06-10 PT"
+      "version": "v1A.0.61",
+      "date": "2026-06-11 PT"
     },
     "p1b": {
       "version": "v1B.0.57",

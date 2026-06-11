@@ -45,8 +45,23 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.60}
+\newcommand{\paperVersion}{v1A.0.61}
 \newcommand{\paperTimestamp}{June 11, 2026 PDT}
+% v1A.0.60->61 (2026-06-11 — EXT3 external-round closure wave; truth audit at
+%   project-context/peer-reviews/EXT3_P1A_TRUTH_AUDIT.md. Closures: (1) §X.B
+%   step-4 heading echo "(equivalently pair symmetry)" dropped — Holst-term
+%   vanishing now cited to the first Bianchi identity alone (G1 residue).
+%   (2) §XI.B EB cross-correlations: birefringence signature explicitly
+%   conditioned on a photon-sector coupling not derived here; spectator-ALP
+%   phenomenology named as the quantitative benchmark. (3) §XIII retitled
+%   "Surviving ECH-Independent Class Tests" + ALP consistency-check
+%   "quantitative prediction" recast from frequency-dependence to achromatic
+%   signature structure (frequency-dependence self-contradiction fix).
+%   (4) App. rotation-angle mapping expanded to
+%   beta=(alpha/2M) Dphi = (alpha f_a/2M) Dtheta, fixing the field-vs-angle
+%   normalization ambiguity. (5) Data Availability: frozen MCMC chains
+%   confirmed committed in the bundle; v1A.0.59-bundle byte-identity scoping
+%   clarified (text-only restamp).)
 % v1A.0.59->60 (2026-06-11 — R31conf micro-restamp. F3 residual closed: Fig. 7
 %   (observational-timeline) caption final clause "leaves it as the unique
 %   survivor" scoped to "the unique surviving minimal-ECH channel under the
@@ -1138,8 +1153,10 @@ asymmetry is not a prediction of the theory.
 
 \subsection{CMB $E$-$B$ Cross-Correlations}\label{sec:EB}
 
-The parity-odd effective action generates CMB polarization signatures through
-cosmic birefringence. For a spatially uniform rotation:
+The parity-odd effective action would generate CMB polarization signatures
+through cosmic birefringence if supplemented by a photon-sector coupling
+(not derived here); the quantitative benchmark is spectator-ALP
+phenomenology. For a spatially uniform rotation:
 \begin{equation}\label{eq:ClEB}
 C_\ell^{EB}\approx 2\beta\left(C_\ell^{EE}-C_\ell^{BB}\right).
 \end{equation}
@@ -1990,7 +2007,7 @@ at all perturbation orders.
 \item \textbf{Connection reduces to Levi-Civita.} $\Gamma^\lambda{}_{\mu\nu}
 = \mathring{\Gamma}^\lambda{}_{\mu\nu}$.
 
-\item \textbf{Holst term vanishes by Bianchi (equivalently pair symmetry).}
+\item \textbf{Holst term vanishes by the first Bianchi identity.}
 The Holst term evaluated with
 the Levi-Civita connection gives $\frac{1}{2}\epsilon^{\mu\nu\rho\sigma}
 R_{\mu\nu\rho\sigma}(\mathring{\Gamma})$, which on a torsion-free
@@ -2266,7 +2283,7 @@ LiteBIRD forecast are in companion Paper~I(b)~\cite{Golden2026P1b}.
 %% ============================================================
 %%  13. SURVIVING MECHANISM-INDEPENDENT TESTS
 %% ============================================================
-\section{Surviving Mechanism-Independent Tests}\label{sec:surviving}
+\section{Surviving ECH-Independent Class Tests}\label{sec:surviving}
 
 \begin{figure}[t]
 \centering
@@ -2327,8 +2344,9 @@ present this as a \textbf{consistency check}, not as a prediction: the
 parity-odd coefficient $\alpha/M$ is fitted, not derived from first
 principles, and an ALP with $f_a\sim\MPl$, $m\sim H_0$ chosen to land near
 the observed signal is by construction inside its $1\sigma$ band. The
-\emph{quantitative} prediction is the spectral signature (frequency
-dependence, $EB$ vs $TB$ structure, scale dependence) rather than the
+\emph{quantitative} prediction is the signature structure (achromatic
+uniform rotation, the $EB$/$TB$ pattern, and consistency across
+frequencies and experiments) rather than the
 central value of $\beta$. The same ALP setup arises identically in standard
 GR with the same parameters, so this is not a distinctive ECH prediction.
 LiteBIRD ($\sigma(\beta)\approx 0.03^\circ$, early 2030s) will either
@@ -2530,8 +2548,12 @@ and a README results-table resync to the frozen-chain values of companion
 Paper~I(b) Table~IV only,
 no MCMC chain / Cobaya YAML / Stan galaxy-spin code or data input changed,
 and the two bundles are byte-identical except for the README and BibTeX
-citation metadata. MCMC chains, NaMaster
-pipeline, and ALP parameter fitting are documented in companion
+citation metadata; the present manuscript version \texttt{v1A.0.61} uses
+the \texttt{v1A.0.59-bundle} unchanged (text-only restamp). The frozen
+MCMC chains backing the cosmology tables are committed in the bundle
+(under \texttt{reproducibility/cosmology/frozen/}); fresh re-verification
+chains must be regenerated from the supplied Cobaya configurations. The
+NaMaster pipeline and ALP parameter fitting are documented in companion
 Paper~I(b)~\cite{Golden2026P1b} and are not duplicated in the
 present bundle.
 
@@ -2673,7 +2695,7 @@ separate companion treatment.
 Operator}\label{app:mcs_derivation}
 
 This appendix derives the rotation-angle mapping
-$\beta = (\alpha/2M)\,\Delta\theta$ used in
+$\beta = (\alpha/2M)\,\Delta\phi = (\alpha f_a/2M)\,\Delta\theta$ used in
 Eq.~\eqref{eq:beta_bound}, fixing the factor of $1/2$ from first
 principles in the operator normalization used throughout this paper.
 
