@@ -50,8 +50,8 @@ const stats: Array<{ value: string; label: string; tone?: string }> = [
   { value: `${surveys.length}`, label:"Surveys" },
   { value:"37.3M+", label:"Sources Scored" },
   {
-    value: `${(totalAnomalies / 1000).toFixed(0)}K+`,
-    label:"Anomalies",
+    value:"378K",
+    label:"Path-C Anomalies",
   },
   { value:"424K+", label:"MCMC Samples" },
   {
@@ -142,11 +142,7 @@ export default function HomePage() {
           <div className="hero-panel-header">
             <span>observational ledger</span>
             <Badge variant="accent">
-              {papers.length} papers ·{" "}
-              {Math.round(
-                papers.reduce((s, p) => s + p.readiness, 0) / papers.length,
-              )}
-              % avg · awaiting Houston sign-off
+              {papers.length} papers · awaiting Houston sign-off
             </Badge>
           </div>
           <div className="hero-panel-body">

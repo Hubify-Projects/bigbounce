@@ -57,7 +57,7 @@ export default function SurveysIndexPage() {
       <div className="hero">
         <p className="text-xs sans" style={{ marginBottom: 8 }}>
           {surveys.length} Surveys &middot; {(totalSources / 1e6).toFixed(1)}M
-          Sources &middot; {totalAnomalies.toLocaleString()} Anomalies
+          Sources &middot; {totalAnomalies.toLocaleString()} pre-dedup rows (378,280 Path-C unique)
         </p>
         <h1 style={{ fontFamily:"var(--font-mono-stack)", fontWeight: 600 }}>
           Survey Hub
@@ -75,7 +75,7 @@ export default function SurveysIndexPage() {
           </div>
           <div className="insight">
             <Activity aria-hidden="true" className="insight-icon" />
-            <div className="insight-label">Retained anomalies</div>
+            <div className="insight-label">Pre-dedup per-survey rows</div>
             <div className="insight-value">{totalAnomalies.toLocaleString()}</div>
           </div>
           <div className="insight">

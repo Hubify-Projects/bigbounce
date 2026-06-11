@@ -75,7 +75,16 @@ export default async function StatusPage() {
     getRunningPods(),
   ]);
   const isLive = livePapers.length > 0 && livePapers[0].source === "convex";
-  const renderedAt = new Date().toISOString().slice(0, 16).replace("T", " ") + " UTC";
+  // Display in PT so the date doesn't read one day ahead for PT-anchored audience
+  const renderedAt = new Date().toLocaleString("en-US", {
+    timeZone: "America/Los_Angeles",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  }) + " PT";
 
   const totalOpenBlockers = livePapers.reduce((s, p) => s + p.openBlockers, 0);
   const totalOpenMajors = livePapers.reduce((s, p) => s + p.openMajors, 0);
