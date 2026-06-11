@@ -36,7 +36,9 @@ queued with exact specs.
 - **Lands in:** `pipelines/p3_anomaly_engine/paper3_draft.tex` l.256 + l.408 +
   new artifact JSON (suggested: `pipelines/p3_anomaly_engine/ext3_b2_targettype_recount.json`).
 
-### 2. P3 — FM1 scaler-refit robustness check (referenced as queued in the paper)
+### 2. ✅ eROSITA leg DONE (2026-06-11, v3.1.96) / NEOWISE+Gaia legs still queued — P3 FM1 scaler-refit robustness check
+- **eROSITA result** (artifact `pipelines/p3_anomaly_engine/ext3_fm1_erosita_scaler_refit.json`, run on the c15 pod A4000): controlled A-vs-B (identical seeds; only scaler-fit population differs) → top-298 overlap 257/298 (J=0.76), top-1% J=0.64, full-catalog Spearman 0.94. Anchor: production recipe re-run reproduces 247/298 of the published membership → **scaler effect ≤ model-retrain reproducibility floor (~15–17% tail churn either way); rates/rankings robust**. §II.B tex updated.
+- **NEOWISE/Gaia**: feature tables are derived products that existed only pod-side (H200 pods EXITED); remain queued with the spec below.
 - **What:** Refit the eROSITA / NEOWISE (and lineage-inferred Gaia) feature
   scalers on the training split ONLY, re-score, and report top-298 / top-1%
   Jaccard + Spearman rank correlation against the published selections.

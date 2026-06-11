@@ -13,7 +13,7 @@
 - **Zero substantive physics blockers remain** — every EXT3 truth-audit's exit-criterion assessment states no new physics/math/statistics blocker on any paper; no headline number, null, Fisher form, or NANOGrav statistic was challenged. ChatGPT's residual MAJORs are wording/figure/policy class (§4); Gemini's EXT3 MAJORs are falsified stale-reads/extraction artifacts on every paper it regressed.
 - **EXT3 closure waves already landed** (commits 5fdddaba/f5617bce/79eecc0d/73b532dc/53b41d12+7e473380/4f20efcc; final mirror bundle c38e2a87). All six compile clean, latex-audit PASS, artifact_crosscheck PASS.
 
-**Current versions (EXT3-closed, mirrored, tarballed):** P1A **v1A.0.61** · P1B **v1B.0.58** · P2 **v1.7.53** · P3 **v3.1.95** · P4 **v1.0.175** · P5 **v0.1.65-2026-06-11**.
+**Current versions (EXT3-closed, mirrored, tarballed):** P1A **v1A.0.61** · P1B **v1B.0.58** · P2 **v1.7.53** · P3 **v3.1.96** · P4 **v1.0.175** · P5 **v0.1.65-2026-06-11**.
 
 **Readiness per SSOT** (queue.md header, 2026-06-11): P1A 95 · P1B 94 · P2 94 · P3 95 · P4 95 · P5 95 — held at the 95-cap per `feedback_99_pct_readiness_cap`/`feedback_readiness_oscillation`. Index.md exit-criterion note: *"All six papers at exit-criterion modulo Houston sign-off + Zenodo batch + P3 TARGETTYPE recount."*
 
@@ -82,7 +82,7 @@ Queued compute: none.
 
 **[ ] Houston approves P2 v1.7.53 for arXiv**
 
-### P3 — Multi-survey anomaly catalog (pipelines/p3_anomaly_engine/paper3_draft.tex, v3.1.95)
+### P3 — Multi-survey anomaly catalog (pipelines/p3_anomaly_engine/paper3_draft.tex, v3.1.96)
 
 | Provider | EXT1 | EXT2 | EXT3 |
 |---|---|---|---|

@@ -43,6 +43,24 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "FM1-SCALER-REFIT",
+    kind: "closure-wave",
+    dateISO: "2026-06-11",
+    title: "P3 v3.1.96 — queued FM1 scaler-leak test computed on the idle pod GPU: scaler effect at or below the retrain reproducibility floor",
+    papers: ["P3"],
+    summary: "The paper's stated assumption that full-sample scaler fitting does not materially reorder anomaly rankings is now tested for the load-bearing eROSITA tier: a controlled retrain pair (identical seeds, only the scaler-fit population differs) gives top-298 overlap 257/298 and full-catalog Spearman 0.94, while re-running the production recipe itself on different hardware reproduces only 247/298 of the published membership — so the leak effect is bounded by the retrain floor, and individual extreme-tail memberships carry a quantified ~15% churn.",
+    keyTakeaways: [
+      "Per-survey rates and within-survey rankings are robust to the scaler choice (Spearman 0.94 over 930K sources)",
+      "Honest new disclosure: extreme-tail membership churn ~15-17% under either perturbation — consistent with and quantifying the membership-list-is-canonical framing",
+      "NEOWISE/Gaia legs remain queued honestly: their feature tables are derived products that existed only pod-side",
+      "Ran on the c15 pod's idle A4000 ($0.17/hr) — the idle-GPU rule converted a queued item into a computed artifact in 20 minutes",
+    ],
+    links: [
+      { label: "FM1 artifact", href: `${GH}/pipelines/p3_anomaly_engine/ext3_fm1_erosita_scaler_refit.json` },
+      { label: "Compute queue", href: `${GH}/project-context/COMPUTE_QUEUE.md` },
+    ],
+  },
+  {
     id: "SKILL-EXT4-LESSONS",
     kind: "skill-improvement",
     dateISO: "2026-06-11",

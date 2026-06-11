@@ -101,9 +101,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-3",
       number: "3",
       shortTitle: "378K-anomaly multi-survey catalog",
-      version: "v3.1.95",
+      version: "v3.1.96",
       readiness: 95,
-      pendingWork: "v3.1.95 — R33conf confirmation CLEAN-after-audit (zero regressions, 2nd consecutive zero-arithmetic round); EXT4 delta-round next in the same chats; awaiting Houston sign-off",
+      pendingWork: "v3.1.96 — FM1 eROSITA scaler-refit computed (scaler effect ≤ retrain floor; rates robust, ~15% tail churn quantified); EXT4 delta-round in flight on the same 18 chats; awaiting Houston sign-off",
     },
     {
       slug: "paper-4",
