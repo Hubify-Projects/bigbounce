@@ -45,9 +45,19 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.61}
+\newcommand{\paperVersion}{v1A.0.62}
 \newcommand{\paperTimestamp}{June 11, 2026 PDT}
-% v1A.0.60->61 (2026-06-11 — EXT3 external-round closure wave; truth audit at
+% v1A.0.61->62 (2026-06-11 --- EXT4 external-round closure wave; truth audit at
+%   project-context/peer-reviews/EXT4_P1A_TRUTH_AUDIT.md. Closures: (1) Fig. 3
+%   caption (sec:rotation): clarified that the orange curve plots the full ECH
+%   dark-energy model (Xi*M_Pl^2 term), not the rotation-only c_omega*omega^2
+%   contribution which is separately bounded at <~10^{-21} rho_Lambda^obs;
+%   resolves EXT4 F1 verified visual-caption mismatch (no physics change).
+%   (2) Sec. XIII LiteBIRD sentence: "exclude the ALP explanation" changed to
+%   "exclude this uniform spectator-ALP benchmark (f_a~M_Pl, m~H_0) as the
+%   explanation of the current WMAP+Planck central value"; resolves EXT4 F4
+%   verified overclaim (benchmark-scoping precision only, no physics change).)
+% v1A.0.60->61 (2026-06-11 --- EXT3 external-round closure wave; truth audit at
 %   project-context/peer-reviews/EXT3_P1A_TRUTH_AUDIT.md. Closures: (1) §X.B
 %   step-4 heading echo "(equivalently pair symmetry)" dropped — Holst-term
 %   vanishing now cited to the first Bianchi identity alone (G1 residue).
@@ -921,16 +931,19 @@ bounce with no free parameters.
 \begin{figure}[t]
 \centering
 \includegraphics[width=\columnwidth]{figures/figure5_rotation_expansion.png}
-\caption{\textbf{Cosmic rotation $\omega$ vs Hubble expansion $H$.}
-Distance-impact of a residual cosmic rotation component on the late-time
-Hubble flow. The CMB isotropy bound $(\omega/H)_0 < 5\times 10^{-11}$
-from Saadeh~\etal~\cite{Saadeh2016} pins the rotation contribution to
-$\Lambda_{\rm eff} = c_\omega\omega^2$ (Eq.~\ref{eq:Leff_full}) at the
-$\lesssim\!10^{-21}\,\rho_\Lambda^{\rm obs}$ level
+\caption{\textbf{ECH dark-energy model vs.\ $\Lambda$CDM Hubble evolution.}
+Upper panel: Hubble parameter $H(z)$ for the full ECH dark-energy model
+(orange; $\Xi\,\MPl^2$ term from Eq.~\ref{eq:Leff_full}) versus $\Lambda$CDM
+(blue). Lower panel: percent deviation $\Delta H/H_{\Lambda\rm CDM}$,
+reflecting the $\Xi\,\MPl^2$ dark-energy mechanism --- the central
+observable of this paper. The rotation contribution $c_\omega\omega^2$ is a
+\emph{distinct} and negligible term: the CMB isotropy bound
+$(\omega/H)_0 < 5\times 10^{-11}$ from Saadeh~\etal~\cite{Saadeh2016}
+confines it to $\lesssim\!10^{-21}\,\rho_\Lambda^{\rm obs}$
 ($(\omega/H)_0^2 < 2.5\times 10^{-21}$; dividing by
 $3\Omega_\Lambda \approx 2.1$ gives $\sim\!1.2\times 10^{-21}$ of
-$\rho_\Lambda^{\rm obs}$) --- negligible at all
-redshifts. The dark-energy mechanism in this paper is therefore the
+$\rho_\Lambda^{\rm obs}$) --- completely invisible on the scale plotted.
+The dark-energy mechanism in this paper is therefore the
 $\Xi\,\MPl^2$ term sourced by the parity-odd contorsion sector
 (\S\ref{sec:parityodd}), \emph{not} the rotation
 component.\label{fig:rotation_expansion}}
@@ -2350,8 +2363,10 @@ frequencies and experiments) rather than the
 central value of $\beta$. The same ALP setup arises identically in standard
 GR with the same parameters, so this is not a distinctive ECH prediction.
 LiteBIRD ($\sigma(\beta)\approx 0.03^\circ$, early 2030s) will either
-confirm a non-zero $\beta$ at high significance or exclude the ALP
-explanation; either outcome is informative independent of ECH.
+confirm a non-zero $\beta$ at high significance or exclude this uniform
+spectator-ALP benchmark ($f_a\sim\MPl$, $m\sim H_0$) as the explanation
+of the current WMAP+Planck central value; either outcome is informative
+independent of ECH.
 
 \textbf{Structural incompatibility.}---An open constraint is the incompatibility
 between the dark-energy suppression mechanism ($N_{\rm tot}\approx 92$ $e$-folds
