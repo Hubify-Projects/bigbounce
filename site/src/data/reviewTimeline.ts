@@ -143,6 +143,32 @@ export const reviewRounds: ReviewRound[] = [
     ],
   },
   {
+    id: "EXT5-P4-P5-TRUTH-AUDITS",
+    kind: "closure-wave",
+    dateISO: "2026-06-12",
+    timePT: "00:48–00:52 PT harvest · audit 2026-06-12",
+    title: "EXT5 P4+P5 truth-audits complete: 7 genuinely-new findings, 2√3 and h⁻¹Mpc rederived correct, contingency-table arithmetic MAJOR caught in P5",
+    papers: ["P4", "P5"],
+    summary: "EXT5 delta reports harvested for P4 (v1.0.177) and P5 (v0.1.67). P4: Grok and Gemini both ACCEPT; ChatGPT MAJOR reduces to 4 one-sentence text edits after truth-audit — the 2√3 Fisher factor is REDERIVED CORRECT (re-raise rule in effect for future rounds). The hierarchy bullet and l.565 'same estimator' sentence are the two open carryovers from EXT4. P5: ChatGPT and Gemini spot a NEW MAJOR — the new Appendix B contingency tables (added in R34conf) have arithmetic errors: Cluster CW cell miscalculated, and the program table uses full 812,793 env-labeled totals instead of the 811,609 bright+dark subset denominator. h⁻¹ Mpc conversion is REDERIVED CORRECT. All prior blockers verified closed.",
+    keyTakeaways: [
+      "P4: 2√3 factor confirmed correct by R34conf rederivation — future raises without new evidence are AUTO-FALSIFIED; only 4 bounded one-sentence edits remain",
+      "P4 carryovers (open since EXT4): l.226 hierarchy bullet pre-MASTER scope + l.565 'same physical estimator' sentence — both have concrete replacements in the closure plan",
+      "P5 NEW MAJOR: Appendix B contingency tables must be regenerated from committed artifact arrays (not from abstract-rounded fractions); 40-row and 1,184-row discrepancies verified by hand-arithmetic",
+      "P5: Grok ACCEPT; Gemini MINOR REVISIONS (legitimate items GM1+GM2, not extraction artifacts); k=20 B3 finding = 5th auto-FALSIFICATION",
+      "Gemini P4 EXT5: first round with zero extraction artifacts — all findings were text-logic based and calibrated (ACCEPT verdict accurate)",
+    ],
+    links: [
+      { label: "P4 audit", href: `${PR}/EXT5_P4_TRUTH_AUDIT.md` },
+      { label: "P5 audit", href: `${PR}/EXT5_P5_TRUTH_AUDIT.md` },
+      { label: "P4 ChatGPT", href: `${PR}/EXT5_P4_ChatGPT.md` },
+      { label: "P4 Grok", href: `${PR}/EXT5_P4_Grok.md` },
+      { label: "P4 Gemini", href: `${PR}/EXT5_P4_Gemini.md` },
+      { label: "P5 ChatGPT", href: `${PR}/EXT5_P5_ChatGPT.md` },
+      { label: "P5 Grok", href: `${PR}/EXT5_P5_Grok.md` },
+      { label: "P5 Gemini", href: `${PR}/EXT5_P5_Gemini.md` },
+    ],
+  },
+  {
     id: "EXT4",
     kind: "external-browser",
     dateISO: "2026-06-11",
@@ -734,6 +760,16 @@ export const externalVerdictRounds: ExternalRoundVerdicts[] = [
     },
     note: "Same 18 threads, round 4: Grok 6/6 ACCEPT twice running; Gemini majority-MINOR with both residual MAJORs falsified wholesale in audit (stale-PDF/OCR); every ChatGPT report states the paper moved toward publishability",
   },
+  {
+    roundId: "EXT5-P4P5",
+    dateISO: "2026-06-12",
+    windowPT: "Jun 12 · 00:48–00:52 PT harvest · audit complete 06:00 PT",
+    verdicts: {
+      P4: ["MAJOR", "ACCEPT", "ACCEPT"],
+      P5: ["MAJOR", "ACCEPT", "MINOR"],
+    },
+    note: "P4+P5 only (EXT5 partial — P4: ChatGPT MAJOR reduces to 4 one-sentence edits after audit; Grok ACCEPT; Gemini ACCEPT — first zero-extraction-artifact Gemini P4 round. P5: ChatGPT MAJOR for new Appendix B arithmetic errors; Grok ACCEPT; Gemini MINOR (calibrated). 2√3 and h⁻¹ Mpc both rederived correct.",
+  },
 ];
 
 export interface GapPoint {
@@ -776,6 +812,13 @@ export const gapSeries: GapPoint[] = [
     total: 13,
     perPaper: { P1A: 2, P1B: 5, P2: 1, P3: 2, P4: 2, P5: 1 },
     note: "EXT4 truth-audits: 13 genuinely-new (−52% vs EXT3), zero physics on any paper — captions, cross-refs, repo hygiene, one estimand-family item, one QC-provenance item; all closed same-day",
+  },
+  {
+    roundId: "EXT5-P4P5",
+    dateISO: "2026-06-12",
+    total: 7,
+    perPaper: { P1A: 0, P1B: 0, P2: 0, P3: 0, P4: 3, P5: 4 },
+    note: "EXT5 P4+P5 truth-audits: 7 genuinely-new (P4: WLS bypass precision, p_LEE logic, Parquet QC flag disclosure; P5: Appendix B contingency arithmetic MAJOR, GALZONE complement counts, §VI.A cross-ref, body |Δ|≤0.002 scope check). Both 2√3 and h⁻¹Mpc rederived correct; re-raise rules in force.",
   },
 ];
 
