@@ -1,56 +1,56 @@
 [
  {
   "paperSlug": "paper-1a",
-  "version": "v1A.0.63",
+  "version": "v1A.0.64",
   "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1a_ech_nogo.pdf",
-  "sitePdfPath": "/papers/paper1a_ech_nogo_v1A.0.63.pdf",
-  "changelog": "R34conf closures: flawed ~40-OOM NJL unit chain removed (qualitative closure intact), Fig 3 caption Xi value, Bianchi torsionless precision, Saadeh qualifier.",
-  "datestamp": "2026-06-11",
-  "texCommit": "d24f660d"
+  "sitePdfPath": "/papers/paper1a_ech_nogo_v1A.0.64.pdf",
+  "changelog": "EXT5 closures: two self-closure regressions fixed with correct physics (NJL rho ~ 4e-69 rho_Lambda, far BELOW; Xi = rho_Lambda/M_Pl^4); ChatGPT's catches verified real.",
+  "datestamp": "2026-06-12",
+  "texCommit": "eea70e53"
  },
  {
   "paperSlug": "paper-1b",
-  "version": "v1B.0.60",
+  "version": "v1B.0.61",
   "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1b_mcmc_companion.pdf",
-  "sitePdfPath": "/papers/paper1b_mcmc_companion_v1B.0.60.pdf",
-  "changelog": "R34conf closures: BBN/He treatment documented; ALP-chain ESS computed from committed chains (beta_free 265, marginal, caveated); draft-history meta-prose stripped.",
-  "datestamp": "2026-06-11",
-  "texCommit": "d24f660d"
+  "sitePdfPath": "/papers/paper1b_mcmc_companion_v1B.0.61.pdf",
+  "changelog": "EXT5 closures: README-Table III alignment, ALP restricted-subsets table, PArthENoPE flag, w0wa caveat front-loaded.",
+  "datestamp": "2026-06-12",
+  "texCommit": "eea70e53"
  },
  {
   "paperSlug": "paper-2",
-  "version": "v1.7.55",
+  "version": "v1.7.56",
   "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/research/focused_paper_source_integration/02_full_draft.pdf",
-  "sitePdfPath": "/papers/paper2_fnl_forecast_v1.7.55.pdf",
-  "changelog": "R34conf closures: ns=0.9649 now cites Planck 2018 VI; sigma_eff caption disambiguated; r_cos consistency; 3.5sigma ingredients shown inline.",
-  "datestamp": "2026-06-11",
-  "texCommit": "d24f660d"
+  "sitePdfPath": "/papers/paper2_fnl_forecast_v1.7.56.pdf",
+  "changelog": "EXT5 closure: stale DESI DR1 f_NL sentence replaced with Chaussidon et al. 2024 citation \u2014 all three external vendors now effectively ACCEPT/MINOR.",
+  "datestamp": "2026-06-12",
+  "texCommit": "eea70e53"
  },
  {
   "paperSlug": "paper-3",
-  "version": "v3.1.98",
+  "version": "v3.1.99",
   "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p3_anomaly_engine/paper3_draft.pdf",
-  "sitePdfPath": "/papers/paper3_anomaly_catalog_v3.1.98.pdf",
-  "changelog": "R34conf closures: cutout sizes corrected to DR9 pixel scale (33.5 arcsec); hardware provenance A100; 11 editorial fixes; Planck held-out re-scoring queued with spec.",
-  "datestamp": "2026-06-11",
-  "texCommit": "d24f660d"
+  "sitePdfPath": "/papers/paper3_anomaly_catalog_v3.1.99.pdf",
+  "changelog": "EXT5 closures: H200 caption residue, conclusion 17.8%-first reorder applied for real, 0/200 binomial form everywhere (persistence class closed with old-phrase-gone checks).",
+  "datestamp": "2026-06-12",
+  "texCommit": "eea70e53"
  },
  {
   "paperSlug": "paper-4",
-  "version": "v1.0.177",
+  "version": "v1.0.178",
   "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p2_chirality/chirality_catalog_paper.pdf",
-  "sitePdfPath": "/papers/chirality_catalog_paper_v177.pdf",
-  "changelog": "R34conf closures: flip-swap error metric defined inline (matches QC script); challenged Fisher 2sqrt3 factor REDERIVED AS CORRECT (audit rebutted with arithmetic).",
-  "datestamp": "2026-06-11",
-  "texCommit": "d24f660d"
+  "sitePdfPath": "/papers/chirality_catalog_paper_v178.pdf",
+  "changelog": "EXT5 closures: +3.64sigma scoped pre-MASTER, 3-round carryover applied, WLS precision, p_LEE inversion; Gemini ACCEPT with zero extraction artifacts.",
+  "datestamp": "2026-06-12",
+  "texCommit": "eea70e53"
  },
  {
   "paperSlug": "paper-5",
-  "version": "v0.1.67",
+  "version": "v0.1.68",
   "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf",
-  "sitePdfPath": "/papers/p5_desi_chirality_v0.1.67.pdf",
-  "changelog": "R34conf closures: pattern-051 abstract regression fixed (|Delta f_CW| <= 0.004 across all five void definitions, all null); 4x2 contingency tables added as Appendix B.",
-  "datestamp": "2026-06-11",
-  "texCommit": "d24f660d"
+  "sitePdfPath": "/papers/p5_desi_chirality_v0.1.68.pdf",
+  "changelog": "EXT5 closures: Appendix B contingency tables regenerated programmatically with exact marginal assertions (script + artifact committed); scope sweep clean.",
+  "datestamp": "2026-06-12",
+  "texCommit": "eea70e53"
  }
 ]
