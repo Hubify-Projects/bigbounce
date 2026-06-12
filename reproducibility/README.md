@@ -1,9 +1,13 @@
 # Reproducibility Bundle
 
-**Paper:** Channel-Level Closure of Four Minimal Einstein--Cartan--Holst Dark-Energy Routes and Perturbation Transparency for Scalar Matter (Paper I A)
+**Papers:**
+- Paper I(a) — Channel-Level Closure of Four Minimal Einstein--Cartan--Holst Dark-Energy Routes and Perturbation Transparency for Scalar Matter
+- Paper I(b) — MCMC technical companion to Paper I(a)
+
 **Author:** Houston Golden
-**Paper version:** v1A.0.61 (2026-06-11)
-**Bundle version:** v1A.0.59-bundle
+**Paper I(a) version:** v1A.0.64 (2026-06-12)
+**Paper I(b) version:** v1B.0.61 (2026-06-12)
+**Bundle version:** v1A.0.64-bundle (synced to current paper stamps; Zenodo DOI tag at submission pending)
 
 ## Paper I(b) quick links
 
@@ -71,9 +75,13 @@ reproducibility/
 ## What This Bundle Reproduces
 
 Values quoted below track the frozen-chain results recorded in companion
-Paper I(b) Table IV (full-tension configuration: Planck NPIPE + SDSS BAO +
-Pantheon+ + DES-SN5YR). DESI DR2 enters only the separate iter2 w₀wₐ chain
-and is not part of the frozen ΛCDM+ΔN_eff fit. Source of truth:
+Paper I(b) Table IV (full-tension configuration, verbatim from
+`tab:chain_datasets`: Planck NPIPE (PR4) CamSpec high-ℓ TTTEEE + Planck
+2018 low-ℓ TT/EE + Planck 2018 lensing.clik + SDSS BAO block + Pantheon+
+(`sn.pantheonplus`) + SH0ES `H0.riess2020Mb` anchor + DES-Y3 S₈ Gaussian
+prior 0.776 ± 0.017). DES-SN5YR enters only the separate iter2 w₀wₐ
+chain (alongside DESI DR2 BAO and Pantheon+); DESI DR2 likewise enters
+iter2 only, not the frozen ΛCDM+ΔN_eff fit. Source of truth:
 `reproducibility/cosmology/frozen/full_tension_20260311_1728/diagnostics/parameter_summary_CORRECTED.json`.
 
 | Paper Result | Reproducible? | How |
@@ -130,7 +138,7 @@ MIT License. See LICENSE file.
   title = {Channel-Level Closure of Four Minimal Einstein--Cartan--Holst
            Dark-Energy Routes and Perturbation Transparency for Scalar Matter},
   year = {2026},
-  note = {Paper I A, v1A.0.59},
+  note = {Paper I A, v1A.0.64},
   eprint = {XXXX.XXXXX},
   archivePrefix = {arXiv},
   primaryClass = {gr-qc}

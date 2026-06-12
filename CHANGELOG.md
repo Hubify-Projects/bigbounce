@@ -16,6 +16,38 @@ block at the top of the corresponding `.tex` source file.
 
 ## Paper I(b) — `arxiv/paper1b_mcmc_companion.tex`
 
+### v1B.0.61 (2026-06-12) — EXT5 external-round closure wave
+
+- Commit: `(this wave)` (`feat(P1B v1B.0.61): EXT5 closure wave — D1 README full-tension stack, D2 ALP abstract + restricted-posterior table, D3 App A Table I, D4 BBN flag, D6 §III w0wa ordering`).
+- Wave: EXT5 truth-audit (`project-context/peer-reviews/EXT5_P1B_TRUTH_AUDIT.md`).
+  Highlights: README full-tension Table IV row description corrected to the exact
+  `tab:chain_datasets` Full-tension likelihood stack (Planck NPIPE PR4 CamSpec
+  + Planck 2018 low-ℓ TT/EE + lensing.clik + SDSS BAO + Pantheon+ + SH0ES
+  H0.riess2020Mb + DES-Y3 S₈ Gaussian; DES-SN5YR moved to iter2 row only) (D1=C2);
+  ALP abstract rephrased + new in-body restricted-posterior table
+  `tab:alp_restricted_subsets` (4 subsets: full / Ω_a<0.1 / Ω_a<0.01 /
+  θ_i ≤ 0.1) added near §VI ALP results (D2=C4); Appendix A "What is included
+  vs regenerable" corrected to back Table I and Table III/IV (D3=C5); BBN
+  predictor flag `bbn_predictor: 'PArthENoPE'` declared explicitly in §III
+  for Cobaya reproducibility (D4=Ge2); §III w0wa physics-interpretation
+  paragraph reordered to front-load SN-overlap caveat and replace "canonical
+  quintom signature" with "provisional posterior in the phantom-crossing region
+  under an overlap-uncorrected product likelihood" (D6=C3 PARTIAL). FALSIFIED at
+  audit: C1(b) (both `parameter_summary_CORRECTED.json` files are machine-valid);
+  Grok ACCEPT not supported (missed C2/C4/C5).
+- HuggingFace datasets (DOI / URL): unchanged from v1B.0.56 (see below).
+
+### v1B.0.60 (2026-06-11) — R34conf confirmation-round closure wave
+
+- Commit: `(this wave)` (`feat(P1B v1B.0.60): R34conf closure wave — version-history body purge, BBN/He documentation, ALP ESS reporting`).
+- Wave: R34conf truth-audit (`project-context/peer-reviews/R34conf_P1B_TRUTH_AUDIT.md`).
+  Highlights: 4 body version-history instances rewritten (B1); BBN/He treatment
+  documented as CAMB PArthENoPE-derived BBN-consistency module with self-consistent
+  Y_He (B6); ALP chain ESS computed from weight-expanded chains (Sokal estimator)
+  reported in Appendix C table (B9); conclusion spectator-safe subset explicitly
+  named as Ω_a<0.01 with ~25× fine-tuning noted (B13=EXT4-C2).
+- HuggingFace datasets (DOI / URL): unchanged from v1B.0.56 (see below).
+
 ### v1B.0.59 (2026-06-11) — EXT4 external-round closure wave
 
 - Commit: `(this wave)` (`feat(P1B v1B.0.59): EXT4 closure wave — C1 CHANGELOG gap, C3 README DESI/AIC, C6 quintom citation, C7 Data Avail chain sentence, C8 README PR4 label`).

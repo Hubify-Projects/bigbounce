@@ -18,7 +18,42 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.67-2026-06-11}
+\newcommand{\paperVersion}{v0.1.68-2026-06-12}
+% v0.1.68-2026-06-12 (EXT5 external-round closure wave; truth audit at
+%   project-context/peer-reviews/EXT5_P5_TRUTH_AUDIT.md.
+%   (1) EXT5-P5-C2 (MAJOR — VERIFIED): Appendix B contingency tables
+%   REGENERATED from committed artifact arrays via
+%   scripts/31_ext5_appendixB_tables.py (outputs/31_ext5_appendixB_tables.json).
+%   tab:contingency_classCWCCW now uses exact integer (n,n_cw) per
+%   V-Web class from parent_env_superset.per_class: Filament CW 203,277
+%   -> 203,261, Cluster CW 197,272 -> 197,284, Wall/Void unchanged;
+%   row marginals CW 404,075 -> 404,111, CCW 408,718 -> 408,682; cells
+%   now sum exactly to row marginals (no "<1 row" rounding hand-wave).
+%   tab:contingency_classProgram now uses per-class n restricted to
+%   the bright+dark subset (n_bright+dark = 811,609 exactly) rather
+%   than the 812,793 env-labeled parent: Filament n 408,187 -> 407,940,
+%   Cluster n 397,505 -> 396,576, Wall n 6,673 -> 6,665, Void unchanged;
+%   bright/dark cells taken as exact integers from
+%   T2_contingency_class_x_program.table; bright fractions printed at
+%   four-decimal precision; marginals sum exactly to 811,609.
+%   Caption note replaced — no more "<1 row" claim; the regeneration
+%   script + JSON artifact are cited directly.
+%   (2) EXT5-P5-GM2 (NEW MINOR): added explicit Appendix B
+%   cross-references in Sec. VI.A at both chi^2=3.55 (4x2 CW/CCW x
+%   class) and chi^2=4932 (4x2 class x bright/dark) sentences.
+%   (3) EXT5-P5-G2 (NEW MINOR): GALZONE complement counts already
+%   present in Sec. VIII.D prose (l.2138-2144: n_void=104,912 /
+%   n_nonvoid=40,877; n_void=74,111 / n_nonvoid=71,678) and cited to
+%   outputs/30_ext4_galzone_complement_contrasts.json — no edit needed.
+%   (4) Body/conclusions <= 0.002 scope sweep: verified all three
+%   occurrences (l.400 abstract, l.902 results, l.2085 V.B body) are
+%   already properly scoped to the three sphere-PIS algorithms; the
+%   abstract carries the full five-row Bonferroni-5 |Delta| <= 0.004
+%   framing (R34conf C0); conclusions sec:conclusions does not
+%   reintroduce any unscoped <= 0.002 claim. No edits needed.
+%   Headline science unchanged; three-algorithm DESIVAST null stands;
+%   V-Web class-homogeneity chi^2=3.55 stands; class x program
+%   chi^2=4932 stands.)
 % v0.1.67-2026-06-11 (R34conf internal-confirmation closure wave; truth audit at
 %   project-context/peer-reviews/R34conf_P5_TRUTH_AUDIT.md.
 %   (1) R34-P5-28 PATTERN-051 REGRESSION (highest priority): abstract
@@ -1005,7 +1040,10 @@ superset and unique-spiral monopoles agree to four decimals, so the
 headline is invariant under either parent). An omnibus $4\times2$
 homogeneity test (CW/CCW $\times$ class) on the table counts returns
 $\chi^2 = 3.55$ with 3~d.o.f.\ ($p = 0.31$): the four classes are
-statistically consistent with a single common CW fraction. Because
+statistically consistent with a single common CW fraction (the
+$4{\times}2$ integer contingency table is tabulated in
+Appendix~\ref{app:contingency}, Table~\ref{tab:contingency_classCWCCW},
+for independent recomputation). Because
 the row-level parent repeats $2.7\%$ of \texttt{TARGETID}s across
 program coadds (technically violating the independence assumption of
 the contingency test), we recompute the same test on the
@@ -1428,7 +1466,10 @@ $812{,}793$-row env-labeled parent) gives
 $\chi^{2} = 4932$ with three degrees of freedom and
 $p \ll 10^{-300}$ ($\log_{10} p \approx -1069$; below double-precision
 underflow) and Cram\'er's $V = \sqrt{\chi^2/n} = 0.078$ (small
-effect despite the enormous sample) ---
+effect despite the enormous sample; the $4{\times}2$ integer
+contingency table is tabulated in Appendix~\ref{app:contingency},
+Table~\ref{tab:contingency_classProgram}, for independent
+recomputation) ---
 V-Web class and target program are \emph{not} independent;
 the cluster class is the most-bright (98.9\%) and the wall class is the
 least-bright (96.2\%), with the void and filament classes between.
@@ -3326,17 +3367,23 @@ $f_{\rm CW}$, and bright-fraction values.
 
 \begin{table}[h]
 \caption{$4{\times}2$ contingency table CW/CCW $\times$ V-Web class on
-the $812{,}793$-row env-labeled parent. Cells derived from the abstract
-per-class $(n,f_{\rm CW})$ pairs: $\mathrm{CW} = \mathrm{round}(n\,f_{\rm CW})$,
-$\mathrm{CCW} = n - \mathrm{CW}$. Sum: $n = 812{,}793$. Row marginal CW = $404{,}075$;
-CCW = $408{,}718$. Pearson $\chi^2 = 3.55$ ($3$ d.o.f., $p = 0.31$) on
-the row-level parent under the homogeneity null.\label{tab:contingency_classCWCCW}}
+the $812{,}793$-row env-labeled parent. Cells are exact integers
+$\mathrm{CW} = n_{\rm CW}$, $\mathrm{CCW} = n - n_{\rm CW}$ taken
+directly from the committed artifact arrays
+(\artifact{pipelines/p5\_desi\_chirality/outputs/17\_v0151\_closure\_recomputes.json};
+\texttt{parent\_env\_superset.per\_class}); $f_{\rm CW}$ is the
+exact ratio rounded to four decimals for display. Sum: $n = 812{,}793$.
+Row marginals CW $= 404{,}111$, CCW $= 408{,}682$ (cells sum exactly to
+these marginals; see
+\artifact{pipelines/p5\_desi\_chirality/outputs/31\_ext5\_appendixB\_tables.json}).
+Pearson $\chi^2 = 3.55$ ($3$ d.o.f., $p = 0.31$) on the row-level
+parent under the homogeneity null.\label{tab:contingency_classCWCCW}}
 \begin{ruledtabular}
 \begin{tabular}{lcccc}
 Class & $n$ & $f_{\rm CW}$ & CW & CCW \\
 \colrule
-Filament & $408{,}187$ & $0.4980$ & $203{,}277$ & $204{,}910$ \\
-Cluster  & $397{,}505$ & $0.4963$ & $197{,}272$ & $200{,}233$ \\
+Filament & $408{,}187$ & $0.4980$ & $203{,}261$ & $204{,}926$ \\
+Cluster  & $397{,}505$ & $0.4963$ & $197{,}284$ & $200{,}221$ \\
 Wall     & $6{,}673$   & $0.5034$ & $3{,}359$   & $3{,}314$   \\
 Void     & $428$       & $0.4836$ & $207$       & $221$       \\
 \end{tabular}
@@ -3347,33 +3394,38 @@ Void     & $428$       & $0.4836$ & $207$       & $221$       \\
 \caption{$4{\times}2$ contingency table V-Web class $\times$ target
 program (\texttt{bright}/\texttt{dark}) on the
 $n_{\rm bright+dark} = 811{,}609$ bright$+$dark subset of the env-labeled
-parent. Per-class bright fraction
-$\{0.981, 0.962, 0.966, 0.989\}$ for \{void, wall, filament, cluster\}
-(\S\ref{sec:results_vweb}). Cells: $\mathrm{bright} =
-\mathrm{round}(n\,f_{\rm bright})$, $\mathrm{dark} = n - \mathrm{bright}$.
+parent. Per-class $n$ values are the bright$+$dark subset totals
+(not the full $812{,}793$ env-labeled parent counts), and bright/dark
+cells are exact integers taken directly from the committed artifact
+arrays
+(\artifact{pipelines/p5\_desi\_chirality/outputs/17\_v0151\_closure\_recomputes.json};
+\texttt{T2\_contingency\_class\_x\_program.table}); $f_{\rm bright}$ is
+the exact ratio rounded to four decimals for display.
 Pearson $\chi^2 = 4932$ ($3$ d.o.f., $\log_{10} p \approx -1069$), Cram\'er's
 $V = \sqrt{\chi^2/n} = 0.078$.\label{tab:contingency_classProgram}}
 \begin{ruledtabular}
 \begin{tabular}{lcccc}
 Class & $n$ & $f_{\rm bright}$ & bright & dark \\
 \colrule
-Filament & $408{,}187$ & $0.966$ & $394{,}309$ & $13{,}878$ \\
-Cluster  & $397{,}505$ & $0.989$ & $393{,}132$ & $4{,}373$   \\
-Wall     & $6{,}673$   & $0.962$ & $6{,}420$   & $253$       \\
-Void     & $428$       & $0.981$ & $420$       & $8$         \\
+Filament & $407{,}940$ & $0.9663$ & $394{,}181$ & $13{,}759$ \\
+Cluster  & $396{,}576$ & $0.9893$ & $392{,}342$ & $4{,}234$  \\
+Wall     & $6{,}665$   & $0.9622$ & $6{,}413$   & $252$      \\
+Void     & $428$       & $0.9813$ & $420$       & $8$        \\
 \end{tabular}
 \end{ruledtabular}
 \end{table}
 
-The per-class counts above match the abstract sample ledger to the
-quoted precision; small ($<1$~row) discrepancies between table marginals
-and the body-text $811{,}609$ total reflect rounding in the published
-per-class bright fractions. Cell-level counts are computed against the
-unrounded committed-artifact arrays in
-\artifact{pipelines/p5\_desi\_chirality/outputs/} (drivers
-\texttt{05}--\texttt{09}); the tabulated rounded cells are intended as
-a referee-facing reproducibility anchor, not as the primary data
-source.
+The cell-level integers above are exact counts from the committed
+artifact arrays
+(\artifact{pipelines/p5\_desi\_chirality/outputs/17\_v0151\_closure\_recomputes.json};
+drivers \texttt{05}--\texttt{09}) and sum exactly to the stated row
+marginals; the regeneration script
+\artifact{pipelines/p5\_desi\_chirality/scripts/31\_ext5\_appendixB\_tables.py}
+prints these rows from the artifact and asserts the marginals
+($n = 812{,}793$ for the CW/CCW table; $n_{\rm bright+dark} = 811{,}609$
+for the class$\times$program table) against the source JSON. The
+tabulated rows are a referee-facing reproducibility anchor; the
+$\chi^2$ values are computed against the same artifact arrays.
 
 \section{Data and code availability}\label{sec:data_code}
 

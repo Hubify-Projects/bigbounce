@@ -45,8 +45,40 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.63}
-\newcommand{\paperTimestamp}{June 11, 2026 PDT}
+\newcommand{\paperVersion}{v1A.0.64}
+\newcommand{\paperTimestamp}{June 12, 2026 PDT}
+% v1A.0.63->64 (2026-06-12 --- EXT5 external-round closure wave; truth audit at
+%   project-context/peer-reviews/EXT5_P1A_TRUTH_AUDIT.md. Pattern-051 self-closure
+%   regression wave: TWO new errors introduced by the R34conf-A1 and R34conf-A12
+%   closure waves are corrected here.
+%   (C1=E1, BLOCKER regression fix) NJL "naive estimate" sentence at L1335 had the
+%   OOM inequality literally inverted. Recomputation: hbar*c = 1.973e-5 eV*cm
+%   => 1 cm^-3 = (1.973e-5)^3 eV^3 = 7.66e-15 eV^3, so n_psi=1e2 cm^-3 = 7.66e-13
+%   eV^3. n_psi^2 = 5.87e-25 eV^6. M_Pl(unreduced)=1.22e28 eV => M_Pl^2 = 1.49e56
+%   eV^2. n_psi^2 / M_Pl^2 = 5.87e-25 / 1.49e56 = 3.94e-81 eV^4 ~ 4e-81 eV^4.
+%   rho_Lambda ~ (1e-3 eV)^4 = 1e-12 eV^4. ratio = 4e-81 / 1e-12 = 4e-69.
+%   => rho_NJL ~ 4e-81 eV^4 ~ 4e-69 rho_Lambda --- ~69 orders BELOW rho_Lambda,
+%   not "far above". Sentence rewritten with the correct OOM AND split into two
+%   independent closure legs: (i) mean-field amplitude is negligible at any
+%   cosmologically relevant density (correct OOM stated), (ii) coherent w=-1
+%   vacuum component is absent on parity-even + mean-zero grounds. Explicit
+%   acknowledgement that <J^5>=0 does NOT imply <J^5 J^5>=0 (incoherent thermal
+%   variance is permitted but does not source coherent dark energy and is in any
+%   case amplitude-bounded by leg (i)).
+%   (C2=E2, MAJOR regression fix) Fig. 3 caption at L962 had
+%   Xi = rho_Lambda/M_Pl^2 (dimension mass^2 -- not dimensionless). Corrected
+%   to Xi = rho_Lambda/M_Pl^4 = L_eff/M_Pl^2 ~ 1e-123, matching the body's own
+%   derivation at L976-981.
+%   (C3=E3, PARTIAL) Paper III forward-paragraph description updated to identify
+%   the NANOGrav 15-yr free-spectrum real-KDE GPU MCMC reanalysis component
+%   explicitly, eliminating the "multi-survey anomaly catalog" omission flagged
+%   by ChatGPT.
+%   (C4=E4, MAJOR, submission-prep pin) reproducibility/README.md paper-version
+%   pin updated v1A.0.61 -> v1A.0.64 and bundle pin synced. DOI tag at submission
+%   remains HOUSTON-DECISION (HD-4 / HD-11 standing rulings).
+%   Gemini Ge1 (anisotropic stress) + Ge2 (chiral washout literalism) ruled
+%   OPINION at audit (already disclosed at the relevant body sites). Grok's
+%   ACCEPT verdict not supported (missed both E1 and E2).)
 % v1A.0.62->63 (2026-06-11 --- R34conf confirmation-round closure wave; truth
 %   audit at project-context/peer-reviews/R34conf_P1A_TRUTH_AUDIT.md.
 %   Closures: (A1) NJL cm^{-3}->eV^3 unit chain removed -- flawed 40-OOM
@@ -959,8 +991,9 @@ The dark-energy mechanism is therefore the
 $\Xi\,\MPl^2$ term sourced by the parity-odd contorsion sector
 (\S\ref{sec:parityodd}), \emph{not} the rotation component.
 The orange ECH curve uses $\Xi$ set to reproduce $\rho_\Lambda$
-(i.e.\ $\Xi = \rho_\Lambda/\MPl^2 \approx 10^{-123}$) with baseline
-cosmology $H_0=67.7\,\text{km/s/Mpc}$, $\Omega_m=0.308$; the
+(i.e.\ $\Xi = \rho_\Lambda/\MPl^4 = \Leff/\MPl^2 \approx 10^{-123}$,
+consistent with the dimensionless-ratio derivation in the body below)
+with baseline cosmology $H_0=67.7\,\text{km/s/Mpc}$, $\Omega_m=0.308$; the
 $\Delta H/H_{\Lambda\rm CDM}$ deviation is ${\sim}2$--$3\%$ across $z=0$--$3$.
 The $(\omega/H)_0 < 5\times 10^{-11}$ bound (Saadeh~\etal~\cite{Saadeh2016})
 applies under the Bianchi~IX isotropized cosmological model and is adopted
@@ -1332,16 +1365,34 @@ fermion densities $n_\psi$ is bounded above by
 $\rho_{\rm NJL} \sim \kappa\,n_\psi^2 \sim n_\psi^2/M_{\rm Pl}^2$ (where
 $\kappa = 1/M_{\rm Pl}^2$ and $n_\psi$ has mass-dim~$+3$, so the energy
 density carries the correct mass-dim~$+4$).
-The closure argument does not rest on this amplitude being numerically small
-in absolute units (a naive order-of-magnitude estimate using post-recombination
-baryon densities $n_\psi\sim\mathcal{O}(10^2)\,\text{cm}^{-3}$ gives
-$\rho_{\rm NJL}\sim\mathcal{O}(1)\,\text{eV}^4$ in natural units, far above
-$\rho_\Lambda\sim(10^{-3}\,\text{eV})^4$);
-instead, the physical suppression is that the operator
-$(\bar\psi\,\gamma^a\gamma^5\,\psi)^2$ is \emph{parity-even}
-and $\langle J^5\rangle\approx 0$ in an unpolarized thermal bath,
-so the effective contribution to the dark-energy density vanishes
-in the relevant cosmological regime
+The closure has two independent legs. \emph{(i)~Mean-field amplitude is
+negligible at any cosmologically relevant baryon/electron density.}
+A naive order-of-magnitude estimate using post-recombination baryon
+densities $n_\psi\sim\mathcal{O}(10^2)\,\text{cm}^{-3}$, converted to
+natural units via $\hbar c = 1.973\times 10^{-5}\,\text{eV}\,\text{cm}$
+($1\,\text{cm}^{-3} = (1.973\times 10^{-5}\,\text{eV})^3 \approx 7.66\times
+10^{-15}\,\text{eV}^3$, so $n_\psi\approx 7.66\times 10^{-13}\,\text{eV}^3$),
+and with $\MPl = 1.22\times 10^{19}\,\text{GeV} = 1.22\times 10^{28}\,\text{eV}$
+($\MPl^2 \approx 1.49\times 10^{56}\,\text{eV}^2$), gives
+$\rho_{\rm NJL} \sim n_\psi^2/\MPl^2 \approx 4\times 10^{-81}\,\text{eV}^4$,
+i.e.\ roughly $4\times 10^{-69}\,\rho_\Lambda$ for
+$\rho_\Lambda\sim (10^{-3}\,\text{eV})^4$ --- far \emph{below}
+$\rho_\Lambda$, not above it. The mean-field amplitude is therefore
+not where any late-time dark-energy contribution could hide.
+\emph{(ii)~Coherent vacuum-equation-of-state structure is absent.}
+Even setting amplitude aside, the operator $(\bar\psi\,\gamma^a\gamma^5\,\psi)^2$
+is \emph{parity-even} and the parity-odd axial current satisfies
+$\langle J^5\rangle\approx 0$ in an unpolarized thermal bath, so there is
+no coherent $w=-1$ vacuum component to source late-time acceleration.
+The vanishing of the mean does \emph{not} imply that the variance
+$\langle J^5 J^5\rangle$ of the four-fermion contact operator is zero
+--- an incoherent thermal contribution from the variance is permitted ---
+but such an incoherent contribution does not carry a coherent
+$w=-1$ equation of state and is in any case bounded above by the
+amplitude estimate of leg (i).
+The combined conclusion is therefore: amplitude-suppressed (by ${\sim}69$
+orders relative to $\rho_\Lambda$) \emph{and} parity-even / mean-zero in
+the coherent dark-energy sense
 (the late-time dark-energy claim assessed here;
 thermal-era densities are addressed separately in Sec.~\ref{sec:dilution}).
 This is the familiar conclusion that the Hehl--Datta torsion-induced
@@ -2562,7 +2613,9 @@ torsion-modified Boltzmann code). Full MCMC diagnostics, ALP parameter fitting,
 and NaMaster pipeline validation are in companion Paper~I(b)~\cite{Golden2026P1b}.
 
 \textit{Forward.}---The program continues with direct tests of the bounce framework:
-SPHEREx $\fnl$ forecast (Paper~II~\cite{Golden2026P2}), multi-survey anomaly catalog
+SPHEREx $\fnl$ forecast (Paper~II~\cite{Golden2026P2}), multi-survey anomaly
+catalog including the NANOGrav~15-yr free-spectrum real-KDE GPU MCMC
+reanalysis used here for $\gamma_{\rm PTA}$
 (Paper~III~\cite{Golden2026P3}), and galaxy chirality catalog
 (Paper~IV~\cite{Golden2026P4}).
 

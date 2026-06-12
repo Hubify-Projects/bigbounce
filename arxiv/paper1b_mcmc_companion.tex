@@ -119,8 +119,48 @@
 %   FALSIFIED list (14 items) not acted on.)
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1B.0.60}
-\newcommand{\paperTimestamp}{June 11, 2026}
+\newcommand{\paperVersion}{v1B.0.61}
+\newcommand{\paperTimestamp}{June 12, 2026}
+% v1B.0.60->61 (2026-06-12 --- EXT5 external-round closure wave; truth audit at
+%   project-context/peer-reviews/EXT5_P1B_TRUTH_AUDIT.md. Four VERIFIED items
+%   closed + three PARTIAL items addressed.
+%   (D1=C2, MAJOR) reproducibility/README.md "Paper I(b) Table IV (full-tension
+%   configuration: ...)" description corrected to the exact tab:chain_datasets
+%   Full-tension likelihood stack (Planck NPIPE PR4 CamSpec high-l TTTEEE +
+%   Planck 2018 low-l TT/EE + Planck 2018 lensing.clik + SDSS BAO block +
+%   sn.pantheonplus + H0.riess2020Mb anchor + DES-Y3 S_8 Gaussian prior
+%   0.776 +/- 0.017). DES-SN5YR moved to iter2 w0wa row only. Channel chi2 /
+%   AIC / BIC / lnB row clarified per Sec V model-comparison paragraph.
+%   (D2=C4, MAJOR) ALP abstract phrasing replaced: "m~H_0 is consistent" ->
+%   "the scan-prior m~H_0 region brackets the signal, but the posterior-
+%   supported fixed-coupling accommodation shifts to m ~= 36 H_0 (median at
+%   fixed C_agamma=8) and the spectator-safe (Omega_a < 0.01) subset is tuned"
+%   + new in-body restricted-posterior Table tab:alp_restricted_subsets
+%   (4 rows: full / Omega_a<0.1 / Omega_a<0.01 / theta_i<=0.1) x relevant
+%   columns (posterior mass, beta, m/H_0, theta_i, C_agamma, ESS) added near
+%   Sec VI ALP results.
+%   (D3=C5, MAJOR) Appendix A "What is included vs regenerable" sentence
+%   corrected: "back Tables III-IV" -> "back Table I and the Table III/Table IV
+%   reproducibility and claim-classification entries".
+%   (D4=Ge2, MINOR) BBN predictor flag declared explicitly in Sec III:
+%   bbn_predictor: 'PArthENoPE' under theory.camb.extra_args in each
+%   cobaya_*.yaml, for absolute Cobaya reproducibility.
+%   (D5=C1(a) PARTIAL) v1B.0.60 + v1B.0.61 entries added to root CHANGELOG.md
+%   (the v1B.0.60 gap was real; closes ChatGPT EXT5 FB1(a)).
+%   (D6=C3, PARTIAL) Sec III "Physics interpretation (Table iter2_posterior)"
+%   paragraph reordered: SN-overlap caveat now front-loaded before the
+%   +4.3sigma / -3.6sigma tail-distance numbers; "canonical quintom signature
+%   ... consistent with the bounce / pre-Big-Bang" replaced with "provisional
+%   posterior in the phantom-crossing region under an overlap-uncorrected
+%   product likelihood".
+%   (D7=C7, PARTIAL) reproducibility/README.md L5-6 co-pinned to v1A.0.64
+%   (Paper I(a)) + v1B.0.61 (Paper I(b)).
+%   FALSIFIED at audit: C1(b) (JSON _provenance newline -- both
+%   parameter_summary_CORRECTED.json files are machine-valid; ChatGPT viewed
+%   line-wrapped browser render not on-disk bytes); C8 (PACS).
+%   OPINION / HOUSTON-DECISION: Ge1 (ALP ESS=265 extension), C9 (systematic
+%   floor wording).
+%   Grok's ACCEPT verdict not supported -- missed C2 / C4 / C5.)
 % v1B.0.59->60 (2026-06-11 --- R34conf confirmation-round closure wave; truth
 %   audit at project-context/peer-reviews/R34conf_P1B_TRUTH_AUDIT.md.
 %   Closures: (B1) 4 body version-history instances rewritten (L1521 footnote,
@@ -834,11 +874,15 @@ The repository README is the authoritative source for the dataset
 attribution in the executed pipeline.}
 the pipeline SNR figures refer to recovery of injected MC signals and are
 \emph{not} competitive sky measurements.
-\emph{(3)~Spectator-ALP consistency check}: a field with $f_a\sim\MPl$
+\emph{(3)~Spectator-ALP consistency check}: for a field with $f_a\sim\MPl$
 (where $\MPl = (8\pi G)^{-1/2}\approx 2.44\times 10^{18}$\,GeV is the
-\emph{reduced} Planck mass),
-$m\sim H_0$ is consistent with the published joint WMAP+Planck value
-$\beta=0.342^\circ\pm 0.094^\circ$ ($3.6\sigma$)~\cite{Eskilt2022}.
+\emph{reduced} Planck mass), the scan-prior $m\sim H_0$ region brackets
+the published joint WMAP+Planck signal
+$\beta=0.342^\circ\pm 0.094^\circ$ ($3.6\sigma$)~\cite{Eskilt2022}, but the
+posterior-supported fixed-coupling ($C_{a\gamma}=8$) accommodation shifts
+to $m\gg H_0$ (median $m\simeq 36\,H_0$ at fixed $C_{a\gamma}=8$), and the
+spectator-safe ($\Omega_a<0.01$) subset is tuned (see
+Table~\ref{tab:alp_restricted_subsets} for the per-subset readout).
 \emph{Spectator-status caveat}: for $\theta_i\sim 1$ the ALP energy
 density $\rho_a\sim m^2 f_a^2 \theta_i^2 \sim H_0^2 \MPl^2$ is of order
 the critical density today, so the spectator label is only consistent
@@ -985,8 +1029,11 @@ default $\Sigma m_\nu = 0.06$\,eV with one massive eigenstate
 (\texttt{num\_massive\_neutrinos}=1), and $Y_{\rm He}$ follows the CAMB
 BBN-consistent default (no explicit override in any of the four YAMLs).
 Specifically, CAMB uses its PArthENoPE-derived BBN-consistency module
-by default: $Y_{\rm He}$ is set self-consistently with $\Neff$ at each
-MCMC sample. The prior range $\Neff\in[2.046, 5.046]$ remains within the
+by default (explicit Cobaya/CAMB flag: \texttt{bbn\_predictor:
+'PArthENoPE'}, declared at the \texttt{theory.camb.extra\_args}
+block of each \texttt{cobaya\_*.yaml}, pinning the BBN predictor for
+absolute reproducibility): $Y_{\rm He}$ is set self-consistently with
+$\Neff$ at each MCMC sample. The prior range $\Neff\in[2.046, 5.046]$ remains within the
 calibrated domain of the CAMB BBN module; no free-$Y_{\rm He}$ control run
 was performed, as the default BBN-consistent track is the standard choice
 for this type of proxy analysis.
@@ -1171,9 +1218,18 @@ $\chi^2_{\rm SN}$    & $3043.0 \pm 1.6$  & DES-Y5 + Pantheon+\\
 \end{ruledtabular}
 \end{table*}
 
-\textit{Physics interpretation (Table~\ref{tab:iter2_posterior}).}---The
-converged $w_0w_a$ posterior \emph{disfavors} (in the marginal-tail sense; see
-fn.~\ref{fn:wcaveat}) the $\Lambda$CDM point
+\textit{Physics interpretation (Table~\ref{tab:iter2_posterior}).}---We
+front-load the interpretive caveat before stating the numbers: the
+converged $w_0 w_a$ posterior below is a \emph{provisional} readout in
+the phantom-crossing region under an overlap-uncorrected
+DES-SN5YR~$\times$~Pantheon+ product likelihood (see caveat~(e) below for
+the $\sim 20\%$ shared-event Malmquist-correction issue, and
+Sec.~\ref{sec:verification}, caveat~(e), for the queued SN-overlap
+control chains); the quoted tail-distance significances refer to the
+marginalized posterior of the present product-likelihood chain and
+should not be read as a model-selection statement. With that caveat
+front-loaded: the converged $w_0w_a$ posterior \emph{disfavors} (in the
+marginal-tail sense; see fn.~\ref{fn:wcaveat}) the $\Lambda$CDM point
 $(w_0, w_a)=(-1,0)$ at the joint level: $w_0$ departs by $+4.3\sigma$ and
 $w_a$ departs by $-3.6\sigma$, with $w_0+w_a=-1.48 \pm 0.15$ requiring
 phantom crossing in the redshift range probed by DESI~DR2~BAO + DES-Y5 +
@@ -1181,13 +1237,15 @@ Pantheon+: at the posterior mean the CPL trajectory
 $w(a)=w_0+(1-a)\,w_a$ crosses $w=-1$ at
 $1-a_\times = (-1-w_0)/w_a = 0.282$, i.e.\ $z_\times \approx 0.39$,
 interior to both the BAO and SN redshift coverage (phantom at
-$z>z_\times$, quintessence-like today). This is the canonical quintom signature and is consistent with
-the bounce / pre-Big-Bang scenario discussed in Paper~I(a)'s \S~Structural
-Tension as a constraint that single-field quintessence cannot accommodate
-without a second degree of freedom (phantom / quintom-B). In the converged
-chain there are zero free-$w_0 w_a$ samples
-at the $\Lambda$CDM point; the chain is centered well into quintom-B territory at
-$w_0 + w_a \approx -1.48$. To be explicit about what is and is not
+$z>z_\times$, quintessence-like today). This provisional posterior sits
+in the phantom-crossing region under an overlap-uncorrected product
+likelihood and, if reproduced under a joint-covariance treatment of the
+overlapping SN events, would be a phenomenological match to a quintom-B
+type evolution; whether the present posterior survives the SN-overlap
+control chains is left for the queued verification analysis. In the
+converged chain there are zero free-$w_0 w_a$ samples at the
+$\Lambda$CDM point; the chain is centered at $w_0 + w_a \approx -1.48$,
+again provisional under the same overlap caveat. To be explicit about what is and is not
 claimed: this companion reports posterior distance from $\Lambda$CDM in
 the marginalized-tail sense only; rigorous $\Lambda$CDM-vs-quintom-B
 \emph{model preference} ($\ln B$, $\Delta$AIC/BIC) requires the deferred
@@ -2004,6 +2062,34 @@ $\hat{R}-1 < 0.01$ for all runs. The joint posterior structure of this
 continuous-prior configuration is shown in Fig.~\ref{fig:alp_triangle}.
 Artifact: \path{research/branch_R_alp_birefringence/phase2_mcmc/chains/c5_continuous/}.
 
+\begin{table*}[ht]
+\caption{\label{tab:alp_restricted_subsets} Restricted-posterior readout
+of the continuous-prior \texttt{c5\_continuous} chain on three
+spectator-status subsets, together with the full chain. Posterior-mass
+columns give the fraction of MC weight (and, for the strict $\theta_i\le
+0.1$ sliver, raw-count fraction in parentheses); $\beta$ medians are
+direct chain readouts; $m/H_0$, $\theta_i$, and $C_{a\gamma}$ entries
+report medians or representative weighted statistics; ESS is the
+weight-expanded Sokal effective-sample size for the marker parameter on
+the indicated subset. \emph{The fixed-coupling ($C_{a\gamma}=8$)
+posterior-supported median sits at $m\simeq 36\,H_0$ --- well above the
+scan-prior $m\sim H_0$ benchmark --- and only the $\Omega_a\le 0.01$
+spectator-safe subset enforces a true spectator while still consistent
+with the observed $\beta_{\rm obs}=0.342^\circ\pm 0.094^\circ$ at
+${\sim}0.5\sigma$.}}
+\begin{ruledtabular}
+\scriptsize
+\begin{tabular}{lcccccc}
+Subset & post.\ mass & $\beta$ (deg) & $m/H_0$ ($C_{a\gamma}=8$) & $\theta_i$ & $C_{a\gamma}$ & ESS \\
+\hline
+full chain                 & $100\%$                  & $0.326\pm 0.099$  & median $\simeq 36$         & broad                 & med.\ $20.7$, $[7.3,45.6]$    & $\beta$ 2860; $\theta_i$ 796 \\
+$\Omega_a<0.1$             & $44\%$                   & $0.328\pm 0.100$  & post.-supported            & broad                 & post.-supported               & marginal-restricted          \\
+$\Omega_a<0.01$ (safe)     & $13\%$                   & $0.28\pm 0.10$    & post.-supported            & smaller-weighted      & post.-supported               & marginal-restricted          \\
+$\theta_i\le 0.1$ (strict) & $0.33\%$ ($0.47\%$ raw)  & indicative only   & $\sim\mathcal{O}(1)$       & $\le 0.1$ (tuned)     & $16/50/84\!=\!36.8/47.2/55.6$ & sliver-only ($42$ samples)   \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
 \begin{figure}
 \centering
 \includegraphics[width=\columnwidth]{figures/alp_triangle_plot.png}
@@ -2204,7 +2290,8 @@ be reproduced.
 \textit{What is included vs.\ regenerable.}---The two frozen
 $\Lambda$CDM$+\Delta\Neff$ chain directories are committed
 in-repo and contain the chains and diagnostics that back
-Tables~III--IV of this paper:
+Table~I and the Table~III/Table~IV reproducibility and
+claim-classification entries of this paper:
 \path{reproducibility/cosmology/frozen/full_tension_20260311_1728/} and
 \path{reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/}
 (each with \texttt{chains/chain\_0[1-6]/} and

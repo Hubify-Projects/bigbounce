@@ -1,0 +1,74 @@
+{
+  "source_artifact": "p5_desi_chirality/outputs/17_v0151_closure_recomputes.json",
+  "tab_contingency_classCWCCW": {
+    "n_total": 812793,
+    "cw_total": 404111,
+    "ccw_total": 408682,
+    "rows": [
+      {
+        "class": "Filament",
+        "n": 408187,
+        "n_cw": 203261,
+        "n_ccw": 204926,
+        "f_cw_exact": 0.4979604935972973
+      },
+      {
+        "class": "Cluster",
+        "n": 397505,
+        "n_cw": 197284,
+        "n_ccw": 200221,
+        "f_cw_exact": 0.49630570684645475
+      },
+      {
+        "class": "Wall",
+        "n": 6673,
+        "n_cw": 3359,
+        "n_ccw": 3314,
+        "f_cw_exact": 0.5033717967930466
+      },
+      {
+        "class": "Void",
+        "n": 428,
+        "n_cw": 207,
+        "n_ccw": 221,
+        "f_cw_exact": 0.48364485981308414
+      }
+    ]
+  },
+  "tab_contingency_classProgram": {
+    "n_bright_plus_dark_total": 811609,
+    "bright_total": 793356,
+    "dark_total": 18253,
+    "rows": [
+      {
+        "class": "Filament",
+        "n_bright_plus_dark": 407940,
+        "n_bright": 394181,
+        "n_dark": 13759,
+        "f_bright_exact": 0.9662720007844291
+      },
+      {
+        "class": "Cluster",
+        "n_bright_plus_dark": 396576,
+        "n_bright": 392342,
+        "n_dark": 4234,
+        "f_bright_exact": 0.9893236101024772
+      },
+      {
+        "class": "Wall",
+        "n_bright_plus_dark": 6665,
+        "n_bright": 6413,
+        "n_dark": 252,
+        "f_bright_exact": 0.9621905476369093
+      },
+      {
+        "class": "Void",
+        "n_bright_plus_dark": 428,
+        "n_bright": 420,
+        "n_dark": 8,
+        "f_bright_exact": 0.9813084112149533
+      }
+    ]
+  },
+  "marginal_assertions": "all cell sums match stated row marginals exactly"
+}
