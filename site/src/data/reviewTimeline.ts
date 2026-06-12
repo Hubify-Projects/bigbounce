@@ -27,6 +27,8 @@ export interface ReviewRound {
   id: string;
   kind: ReviewRoundKind;
   dateISO: string;
+  /** Optional PT time window for cadence visibility on the timeline. */
+  timePT?: string;
   title: string;
   papers: PaperId[];
   summary: string;
@@ -42,6 +44,29 @@ const PR = `${GH}/project-context/peer-reviews`;
 
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
+  {
+    id: "EXT4-CLOSURES",
+    kind: "closure-wave",
+    dateISO: "2026-06-11",
+    timePT: "16:10–16:45 PT (same-day as harvest)",
+    title: "EXT4 closure wave — all six papers restamped same-day; gap 27 → 13 with zero physics findings; two queued items became computed artifacts",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "Every verified EXT4 finding closed same-day (v1A.0.62 / v1B.0.59 / v1.7.54 / v3.1.97 / v1.0.176 / v0.1.66): the two compute-backed fixes took the hardest path — the P4 flip-identity QC was recomputed catalog-wide (8.47M rows) and reproduces every tex number exactly, and the P5 GALZONE rows gained true two-sample contrasts computed from the committed artifact, making the Bonferroni-5 family estimand-coherent.",
+    keyTakeaways: [
+      "P4: the QC narrative was right all along — the recomputed catalog-wide artifact traces 2.94% / 0.0901 / 4.26e-7 exactly; the gap was artifact scope, not the numbers",
+      "P5: GALZONE void-vs-non-void contrasts are clean nulls (z = −1.25 / +0.72), tightening the headline environment-independence result",
+      "P3: recount cross-referenced at the three downstream sites ChatGPT named; P1A: re-added Fig 3 caption fixed (a genuine pattern-051 catch by an external reviewer); P2: App A c-scaling sentence made self-consistent",
+      "P1B: 5 hygiene closures (CHANGELOG, README ×2, citation, Data Availability) — the external tier is now finding repo-hygiene items, not science",
+    ],
+    links: [
+      { label: "P1A audit", href: `${PR}/EXT4_P1A_TRUTH_AUDIT.md` },
+      { label: "P1B audit", href: `${PR}/EXT4_P1B_TRUTH_AUDIT.md` },
+      { label: "P2 audit", href: `${PR}/EXT4_P2_TRUTH_AUDIT.md` },
+      { label: "P3 audit", href: `${PR}/EXT4_P3_TRUTH_AUDIT.md` },
+      { label: "P4 audit", href: `${PR}/EXT4_P4_TRUTH_AUDIT.md` },
+      { label: "P5 audit", href: `${PR}/EXT4_P5_TRUTH_AUDIT.md` },
+    ],
+  },
   {
     id: "FM1-SCALER-REFIT",
     kind: "closure-wave",
@@ -80,6 +105,7 @@ export const reviewRounds: ReviewRound[] = [
     id: "EXT4",
     kind: "external-browser",
     dateISO: "2026-06-11",
+    timePT: "14:45–15:14 PT submit · 16:05 PT harvest",
     title: "EXT4 — fourth in-thread external round: Grok 6/6 ACCEPT twice running, Gemini majority-MINOR, every ChatGPT report says the papers moved toward publishability",
     papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
     summary: "Delta-prompts posted to the same 18 external chats on the EXT3-closed versions — headlined by P3 v3.1.95 with the thrice-flagged TARGETTYPE recount computed — and harvested same-day: Grok delivers its second consecutive 6/6 ACCEPT round, Gemini moves to 4 MINOR + 2 MAJOR, and all six ChatGPT reports state the papers moved toward publishability.",
@@ -200,6 +226,7 @@ export const reviewRounds: ReviewRound[] = [
     id: "EXT3",
     kind: "external-browser",
     dateISO: "2026-06-11",
+    timePT: "01:00–02:50 PT",
     title: "EXT3 — third in-thread external round: Grok clean 6/6 ACCEPT, gap 60 → 32 → 27",
     papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
     summary: "Round-3 delta reviews on v1A.0.60-class versions: Grok delivered a clean external round (6/6 ACCEPT), Gemini escalations were artifact-falsified, ChatGPT residuals shrank to wording/policy items — zero substantive physics blockers remain.",
@@ -295,6 +322,7 @@ export const reviewRounds: ReviewRound[] = [
     id: "EXT2",
     kind: "external-browser",
     dateISO: "2026-06-10",
+    timePT: "evening · closures by 23:45 PT",
     title: "EXT2 — in-thread delta round: revised PDFs + delta-prompts into the same 18 referee threads; 10 of 18 verdicts improved, first ACCEPTs of the program",
     papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
     summary: "All six R29 restamps (v1A.0.58 / v1B.0.56 / v1.7.50 / v3.1.89 / v1.0.173 / v0.1.62) posted into the SAME EXT1 chat threads with per-paper delta-prompts; verdict movement 10 improved / 7 held / 1 regressed, with five reviewer legs reaching ACCEPT.",
@@ -431,6 +459,7 @@ export const reviewRounds: ReviewRound[] = [
     id: "EXT1",
     kind: "external-browser",
     dateISO: "2026-06-10",
+    timePT: "submit midday · harvest 16:40–17:25 PT",
     title: "EXT1 — first automated browser-tier external round: 6 papers × 3 frontier web apps, 18 submissions",
     papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
     summary: "All six current PDFs (md5-verified against site mirrors) submitted to ChatGPT Pro Extended, Grok Heavy, and Gemini Thinking via the logged-in browser loop; all 18 reports harvested same-day.",
@@ -599,6 +628,8 @@ export const PAPER_IDS: PaperId[] = ["P1A", "P1B", "P2", "P3", "P4", "P5"];
 export interface ExternalRoundVerdicts {
   roundId: string;
   dateISO: string;
+  /** Human-readable PT submission/harvest window, e.g. "Jun 11 · 01:00–02:50 PT" — shows round cadence. */
+  windowPT?: string;
   /** Verdicts in REVIEWERS order: [ChatGPT, Grok, Gemini]. */
   verdicts: Record<PaperId, [Verdict, Verdict, Verdict]>;
   note: string;
@@ -609,6 +640,7 @@ export const externalVerdictRounds: ExternalRoundVerdicts[] = [
   {
     roundId: "EXT1",
     dateISO: "2026-06-10",
+    windowPT: "Jun 10 · harvested 16:40–17:25 PT",
     verdicts: {
       P1A: ["REJECT", "MAJOR", "MAJOR"],
       P1B: ["MAJOR", "MINOR", "MINOR"],
@@ -622,6 +654,7 @@ export const externalVerdictRounds: ExternalRoundVerdicts[] = [
   {
     roundId: "EXT2",
     dateISO: "2026-06-10",
+    windowPT: "Jun 10 · evening, closures by 23:45 PT",
     verdicts: {
       P1A: ["MAJOR", "ACCEPT", "MINOR"],
       P1B: ["MAJOR", "ACCEPT", "MAJOR"],
@@ -635,6 +668,7 @@ export const externalVerdictRounds: ExternalRoundVerdicts[] = [
   {
     roundId: "EXT3",
     dateISO: "2026-06-11",
+    windowPT: "Jun 11 · 01:00–02:50 PT",
     verdicts: {
       P1A: ["MAJOR", "ACCEPT", "MAJOR"],
       P1B: ["MAJOR", "ACCEPT", "ACCEPT"],
@@ -644,6 +678,20 @@ export const externalVerdictRounds: ExternalRoundVerdicts[] = [
       P5: ["MAJOR", "ACCEPT", "MAJOR"],
     },
     note: "Same 18 threads, round 3: Grok clean 6/6 ACCEPT; ChatGPT holds MAJOR with shrinking reports (avg 13k chars vs 17k EXT2 / 19k EXT1); Gemini oscillations are the PDF-extraction-artifact class its falsified EXT2 P5 MAJOR established — truth-audits decided",
+  },
+  {
+    roundId: "EXT4",
+    dateISO: "2026-06-11",
+    windowPT: "Jun 11 · 14:45–15:14 PT · harvested 16:05 PT",
+    verdicts: {
+      P1A: ["MAJOR", "ACCEPT", "MINOR"],
+      P1B: ["MAJOR", "ACCEPT", "MINOR"],
+      P2: ["MAJOR", "ACCEPT", "MINOR"],
+      P3: ["MAJOR", "ACCEPT", "MAJOR"],
+      P4: ["MAJOR", "ACCEPT", "MINOR"],
+      P5: ["MAJOR", "ACCEPT", "MAJOR"],
+    },
+    note: "Same 18 threads, round 4: Grok 6/6 ACCEPT twice running; Gemini majority-MINOR with both residual MAJORs falsified wholesale in audit (stale-PDF/OCR); every ChatGPT report states the paper moved toward publishability",
   },
 ];
 
@@ -680,6 +728,13 @@ export const gapSeries: GapPoint[] = [
     total: 27,
     perPaper: { P1A: 3, P1B: 3, P2: 5, P3: 5, P4: 6, P5: 6 },
     note: "EXT3 truth-audits: ~27 genuinely-new, all wording/asset/policy class — zero substantive physics blockers",
+  },
+  {
+    roundId: "EXT4",
+    dateISO: "2026-06-11",
+    total: 13,
+    perPaper: { P1A: 2, P1B: 5, P2: 1, P3: 2, P4: 2, P5: 1 },
+    note: "EXT4 truth-audits: 13 genuinely-new (−52% vs EXT3), zero physics on any paper — captions, cross-refs, repo hygiene, one estimand-family item, one QC-provenance item; all closed same-day",
   },
 ];
 

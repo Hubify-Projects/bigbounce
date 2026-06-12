@@ -41,7 +41,7 @@ export function VerdictTrajectory() {
   const cellGap = 4;
   const groupGap = 34;
   const labelW = 42;
-  const headerH = 36;
+  const headerH = 46;
   const rowGap = 6;
   const groupW = REVIEWERS.length * cellW + (REVIEWERS.length - 1) * cellGap;
   const width = labelW + rounds.length * groupW + (rounds.length - 1) * groupGap + 8;
@@ -63,8 +63,13 @@ export function VerdictTrajectory() {
           <text x={groupX(gi) + groupW / 2} y={11} textAnchor="middle" fontFamily={MONO} fontSize={9.5} letterSpacing={1} fill="var(--text-tertiary)">
             {round.roundId}
           </text>
+          {round.windowPT ? (
+            <text x={groupX(gi) + groupW / 2} y={22} textAnchor="middle" fontFamily={MONO} fontSize={6.5} fill={AXIS}>
+              {round.windowPT}
+            </text>
+          ) : null}
           {REVIEWERS.map((rv, ri) => (
-            <text key={rv} x={groupX(gi) + ri * (cellW + cellGap) + cellW / 2} y={26} textAnchor="middle" fontFamily={MONO} fontSize={7.5} fill={AXIS}>
+            <text key={rv} x={groupX(gi) + ri * (cellW + cellGap) + cellW / 2} y={36} textAnchor="middle" fontFamily={MONO} fontSize={7.5} fill={AXIS}>
               {rv === "ChatGPT" ? "GPT" : rv === "Grok" ? "GRK" : "GEM"}
             </text>
           ))}

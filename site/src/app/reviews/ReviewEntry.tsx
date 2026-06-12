@@ -51,7 +51,10 @@ export function ReviewEntry({ round }: { round: ReviewRound }) {
       data-kind={kindGroupOf(round.kind)}
     >
       <div className="review-entry-meta">
-        <span className="review-timestamp">{round.dateISO}</span>
+        <span className="review-timestamp">
+          {round.dateISO}
+          {round.timePT ? ` · ${round.timePT}` : ""}
+        </span>
         <KindBadge kind={round.kind} />
         <span className="review-timestamp">{round.id}</span>
       </div>
