@@ -24,6 +24,18 @@ A SPHEREx Sensitivity Recast with a MegaMapper Outlook}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
 \date{June 11, 2026}
+% v1.7.54 (2026-06-11 — EXT4 closure wave; truth audit at
+%   project-context/peer-reviews/EXT4_P2_TRUTH_AUDIT.md. FM2 (the round's
+%   one genuinely new finding) CLOSED: App A summary parenthetical claimed
+%   σ(f_NL) ∝ 1/c while f_NL ∝ c — internally inconsistent with its own
+%   ratio-invariance conclusion (would give ratio ∝ c²); corrected to
+%   "both scale as 1/c", matching the appendix's own convention chain.
+%   FM1 (null-space not propagated into all-combined lower endpoint)
+%   FALSIFIED — propagation performed explicitly in-text; FM3 OPINION
+%   (scope disclaimer present verbatim); Gemini \boxed{} claim FALSIFIED
+%   extraction artifact. EXT4 externals: Grok ACCEPT (2nd consecutive),
+%   Gemini MAJOR→MINOR, ChatGPT MAJOR ("moved toward publishability;
+%   stale figures essentially fixed").)
 % v1.7.53 (2026-06-11 — EXT3 external-round closure wave; truth audit at
 %   project-context/peer-reviews/EXT3_P2_TRUTH_AUDIT.md. C1 (BLOCKER):
 %   BOTH stale-significance figures REGENERATED — fig2_survey_comparison.png
@@ -813,7 +825,7 @@ In terms of the curvature perturbation the identical $c=2$ convention reads $B_\
 
 The full factor-of-two chain between the two papers is as follows. Li \etal~\cite{CaiBrandenberger:2014} compute only the single time-ordered correlator (one time-ordering of the in-in integral), obtaining an intermediate value for the shape function $A_T$ that is half the full in-in commutator result; Cai \textit{et~al.}~\cite{Cai:2009fn} include both time orderings via the $i\langle[\zeta^3,L]\rangle = -2\,\text{Im}\,\langle\zeta^3 L\rangle$ identity. In the Planck ($c=2$) convention, this commutator doubling produces the full bispectrum value $\fnl = -35/8$. Li \etal's reported value $-35/16$ corresponds to their single-ordering result in the $c=2$ convention; applying the missing factor of two for the second time-ordering gives $-35/8$, in exact agreement with Cai \textit{et~al.} The Li branch $-35/16$ is therefore an \emph{incomplete single-ordering intermediate} within the $c=2$ convention, not an alternative physical normalization: the physical bispectrum is fixed by the Hermiticity of the cubic-interaction Hamiltonian (Appendix~A.1, $-2\,\mathrm{Im}$ identity) and is unique once the local-template constant $c$ is held fixed.
 
-In summary: both papers describe the \emph{same} physical bispectrum. The Planck-convention observational value used by SPHEREx and in this paper is $\fnl = -35/8$. The detection significance $|\fnl|/\sigma(\fnl)$ is convention-independent within this paper's usage in the narrow, provable sense established above: the Heinrich \etal\ $\sigma(\fnl) = 0.7$ is computed in the $\zeta$-field $6/5$ template normalization, which the explicit mapping above shows defines the same $\fnl$ as the $\Phi$-field $c=2$ form in which $-35/8$ is quoted, so numerator and denominator of $|\fnl|/\sigma(\fnl)$ refer to one convention and no rescaling enters. (More generally, $\sigma(\fnl)$ scales inversely with $c$ while $\fnl$ scales with $c$, so the ratio is invariant under a consistent change of $c$.)
+In summary: both papers describe the \emph{same} physical bispectrum. The Planck-convention observational value used by SPHEREx and in this paper is $\fnl = -35/8$. The detection significance $|\fnl|/\sigma(\fnl)$ is convention-independent within this paper's usage in the narrow, provable sense established above: the Heinrich \etal\ $\sigma(\fnl) = 0.7$ is computed in the $\zeta$-field $6/5$ template normalization, which the explicit mapping above shows defines the same $\fnl$ as the $\Phi$-field $c=2$ form in which $-35/8$ is quoted, so numerator and denominator of $|\fnl|/\sigma(\fnl)$ refer to one convention and no rescaling enters. (More generally, both $\fnl$ and $\sigma(\fnl)$ scale as $1/c$ under a change of the local-template constant --- consistent with the mapping above --- so the ratio $|\fnl|/\sigma(\fnl)$ is invariant under a consistent change of $c$.)
 
 \subsection*{A.1 Explicit in-in Wick contraction derivation of the commutator doubling}
 \label{app:wick}
