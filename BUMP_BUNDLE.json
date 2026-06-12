@@ -1,11 +1,56 @@
 [
  {
+  "paperSlug": "paper-1a",
+  "version": "v1A.0.62",
+  "texCommit": "8198a1ef",
+  "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1a_ech_nogo.pdf",
+  "sitePdfPath": "/papers/paper1a_ech_nogo_v1A.0.62.pdf",
+  "changelog": "EXT4 closures: Fig 3 caption mechanism/rotation split (external pattern-051 catch), ALP benchmark scoping; Grok ACCEPT 2nd consecutive round.",
+  "datestamp": "2026-06-11"
+ },
+ {
+  "paperSlug": "paper-1b",
+  "version": "v1B.0.59",
+  "texCommit": "f9d6e20b",
+  "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1b_mcmc_companion.pdf",
+  "sitePdfPath": "/papers/paper1b_mcmc_companion_v1B.0.59.pdf",
+  "changelog": "EXT4 hygiene closures: CHANGELOG entries, README config + birefringence fixes, quintom cite, Data Availability; zero physics findings.",
+  "datestamp": "2026-06-11"
+ },
+ {
+  "paperSlug": "paper-2",
+  "version": "v1.7.54",
+  "texCommit": "05093839",
+  "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/research/focused_paper_source_integration/02_full_draft.pdf",
+  "sitePdfPath": "/papers/paper2_fnl_forecast_v1.7.54.pdf",
+  "changelog": "EXT4 closure: App A c-scaling sentence made self-consistent (both f_NL and sigma scale as 1/c).",
+  "datestamp": "2026-06-11"
+ },
+ {
   "paperSlug": "paper-3",
-  "version": "v3.1.96",
-  "datestamp": "2026-06-11",
-  "texCommit": "23e314d7",
+  "version": "v3.1.97",
+  "texCommit": "84a1665d",
   "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p3_anomaly_engine/paper3_draft.pdf",
-  "sitePdfPath": "/papers/paper3_anomaly_catalog_v3.1.96.pdf",
-  "changelog": "FM1 eROSITA scaler-refit computed (was queued): scaler effect <= model-retrain reproducibility floor; top-298 overlap 257/298, Spearman 0.94; rates/rankings robust, ~15% extreme-tail membership churn quantified."
+  "sitePdfPath": "/papers/paper3_anomaly_catalog_v3.1.97.pdf",
+  "changelog": "EXT4 closures: recount cross-refs at 3 downstream sites, Liang lead-clause reorder, 17.8%-first conclusion, binomial artifact bound + SMBHB qualifiers.",
+  "datestamp": "2026-06-11"
+ },
+ {
+  "paperSlug": "paper-4",
+  "version": "v1.0.176",
+  "texCommit": "3c24468b",
+  "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p2_chirality/chirality_catalog_paper.pdf",
+  "sitePdfPath": "/papers/chirality_catalog_paper_v176.pdf",
+  "changelog": "EXT4 closure: flip-identity QC recomputed catalog-wide (8.47M rows) \u2014 tex anchors reproduce exactly (2.94%/0.0901/4.26e-7); every QC number now traces.",
+  "datestamp": "2026-06-11"
+ },
+ {
+  "paperSlug": "paper-5",
+  "version": "v0.1.66",
+  "texCommit": "3c24468b",
+  "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf",
+  "sitePdfPath": "/papers/p5_desi_chirality_v0.1.66.pdf",
+  "changelog": "EXT4 closure: GALZONE two-sample contrasts computed (z=-1.25/+0.72 clean nulls); Bonferroni-5 family estimand-coherent.",
+  "datestamp": "2026-06-11"
  }
 ]
