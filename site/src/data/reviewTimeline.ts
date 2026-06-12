@@ -45,6 +45,26 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "R35CONF",
+    kind: "internal-cc",
+    dateISO: "2026-06-12",
+    timePT: "confirmation round · audits completed 2026-06-12 PT",
+    title: "R35conf truth-audits — P2 Chaussidon bib ID wrong (2309.06199 → 2411.17623); P3 three persistence closures confirmed; birefringence paragraph flagged; Gaia provenance carries",
+    papers: ["P2", "P3"],
+    summary: "Confirmation round on v1.7.56 (P2) and v3.1.99 (P3): all 4 active vendor legs audited per-finding. P2: Chaussidon sentence content is correct but bib arXiv ID points to the wrong paper (sample-prep not constraints paper); birefringence β≈0.27° paragraph has no derivation or citation — cite or remove. P3: all three EXT5 persistence closures confirmed rendered (Table VI A100, 17.8%-first Conclusion, 0/200 binomial); Gaia preprocessing provenance still open; 6 one-sentence editorial fixes logged.",
+    keyTakeaways: [
+      "P2 bib: Chaussidon2024DESIDR1fNL has eprint=2309.06199 (sample-prep paper) — must change to 2411.17623 (constraints paper); one-line fix unblocks effective 3-vendor ACCEPT",
+      "P2 birefringence: β≈0.27° ALP prediction has no derivation or citation in any cited paper — cite or remove (removal is safer)",
+      "P3 persistence: all 3 EXT5 closures verified in tex — Table VI A100 caption clean, 17.8% leads Conclusion, 0/200 binomial at both §III.B and §VI.A sites",
+      "P3 Gaia provenance: exact production preprocessing script not recovered — either recover or explicitly demote Gaia tier to exploratory in Table V and §III.G",
+      "Fisher F₀ = 1/8.98² artifact not raised by any R35conf leg (6th-raise would have been auto-falsified) — prophylactic fix holding across both papers",
+    ],
+    links: [
+      { label: "P2 audit", href: `${PR}/R35conf_P2_TRUTH_AUDIT.md` },
+      { label: "P3 audit", href: `${PR}/R35conf_P3_TRUTH_AUDIT.md` },
+    ],
+  },
+  {
     id: "EXT5-CLOSURES",
     kind: "closure-wave",
     dateISO: "2026-06-12",
