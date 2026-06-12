@@ -22,6 +22,17 @@ Chat URLs identical to EXT1–EXT4 manifests (same 18 threads). PDFs downloaded 
 - Zero Gemini retries this round — the EXT4-hardened recipe (frontmost-guard + Escape-first + version-presence as the authoritative gate) ran 6/6 clean overnight.
 - One cosmetic learning: the chip text-check can race the chip render; the version-in-user-turn check is authoritative (encoded).
 
-## Harvest
+## Harvest — COMPLETE (00:48–01:05 PT 2026-06-12)
 
-Open from ~00:45 PT 2026-06-12 (Pro Extended/Heavy are slow). Reports → `EXT5_<paper>_<Provider>.md` → truth-audit → gap metric vs EXT4 (13).
+## Verdicts (EXT4 → EXT5)
+
+| Paper | ChatGPT Pro Ext | Grok Heavy | Gemini Thinking |
+|---|---|---|---|
+| P1A | MAJOR → MAJOR (claims a new NJL/Ξ regression — truth-audit priority) | ACCEPT → **ACCEPT** | MINOR → MINOR |
+| P1B | MAJOR → MAJOR (artifact-layer pinning class) | ACCEPT → **ACCEPT** | MINOR → MINOR |
+| P2 | MAJOR → MAJOR *"narrowly… would likely move to minor"* | ACCEPT → **ACCEPT** | MINOR → **ACCEPT** |
+| P3 | MAJOR → MAJOR | ACCEPT → **ACCEPT** | MAJOR → MAJOR |
+| P4 | MAJOR → MAJOR | ACCEPT → **ACCEPT** | MINOR → **ACCEPT** |
+| P5 | MAJOR → MAJOR | ACCEPT → **ACCEPT** | MAJOR → MINOR |
+
+**Grok: THIRD consecutive clean external round, 6/6 ACCEPT. Gemini posts its first ACCEPTs (P2, P4) — 2 ACCEPT / 3 MINOR / 1 MAJOR.** ChatGPT holds MAJOR ×6 but P2 is "narrowly" with a named path to minor. Truth-audit next: EXT5_P*_TRUTH_AUDIT.md → gap metric vs EXT4 (13).
