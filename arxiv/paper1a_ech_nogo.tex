@@ -45,8 +45,22 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.62}
+\newcommand{\paperVersion}{v1A.0.63}
 \newcommand{\paperTimestamp}{June 11, 2026 PDT}
+% v1A.0.62->63 (2026-06-11 --- R34conf confirmation-round closure wave; truth
+%   audit at project-context/peer-reviews/R34conf_P1A_TRUTH_AUDIT.md.
+%   Closures: (A1) NJL cm^{-3}->eV^3 unit chain removed -- flawed 40-OOM
+%   conversion replaced with honest order-of-magnitude statement; qualitative
+%   closure (parity-even, Planck-suppressed, cannot drive late-time acceleration
+%   because <J^5>=0 in unpolarized thermal bath) unchanged.
+%   (A12) Fig. 3 caption: Xi value and baseline cosmology added for
+%   reproducibility. (A13) Bianchi identity step: "metric-compatible" qualifier
+%   removed; algebraic Bianchi identity holds for any torsionless connection.
+%   (A17) Fig. 3 caption: Saadeh 2016 bound model-dependence added (Bianchi IX,
+%   bookkeeping upper limit). (A3) Version-history body language purged at 3
+%   sites: L476 footnote draft-history sentence rewritten; L2153-2154
+%   draft-history sentence removed; L2559-2567 Data Availability rewritten
+%   without bundle-version history.)
 % v1A.0.61->62 (2026-06-11 --- EXT4 external-round closure wave; truth audit at
 %   project-context/peer-reviews/EXT4_P1A_TRUTH_AUDIT.md. Closures: (1) Fig. 3
 %   caption (sec:rotation): clarified that the orange curve plots the full ECH
@@ -462,8 +476,9 @@ matter, torsion vanishes at all classical metric/scalar perturbation orders
 around the torsion-free branch (excluding propagating-torsion, dynamical-Immirzi-field,
 fermion-loop, and non-minimal-matter sectors), the Holst dual contraction
 $\epsilon^{\mu\nu\rho\sigma}R_{\mu\nu\rho\sigma}$ vanishes identically on the
-Levi-Civita connection ($T=0$, metric-compatible) by the first (algebraic) Bianchi identity
-$R_{\mu[\nu\rho\sigma]}=0$, and the Holst sector therefore decouples from all
+Levi-Civita connection ($T=0$) by the first (algebraic) Bianchi identity
+$R_{\mu[\nu\rho\sigma]}=0$ (which holds for any torsionless connection),
+and the Holst sector therefore decouples from all
 scalar/tensor perturbation equations of motion
 (Sec.~\ref{sec:transparency}).\footnote{This Bianchi-identity vanishing is
 distinct from --- and should not be confused with --- the Pontryagin density
@@ -472,11 +487,10 @@ R_{\rho\sigma\alpha\beta}$, which involves \emph{two} curvature tensors and is a
 separate topological invariant. The Holst dual contraction has only \emph{one}
 curvature. In differential-form language $e^I\wedge e^J\wedge R_{IJ} =
 -\mathrm{NY} + T^I\wedge T_I$ (Nieh--Yan density plus torsion-squared); both
-pieces vanish at $T=0$, recovering the Bianchi-vanishing result. Earlier
-versions of this manuscript erroneously identified the two; the correction
-preserves the headline conclusion (Holst sector decouples from scalar/tensor
-EOM) by a Bianchi-trivial argument rather than a Pontryagin total-derivative
-argument.}
+pieces vanish at $T=0$, recovering the Bianchi-vanishing result.
+The headline conclusion (Holst sector decouples from scalar/tensor EOM)
+follows from the Bianchi-trivial argument, not from a Pontryagin
+total-derivative argument.}
 The proposed link from ECH to a late-time vacuum energy requires a phenomenological
 dimensional ansatz beyond the minimal framework (Appendix~\ref{app:dimensions}),
 and is constrained at the channel-amplitude level by 13 logically-independent
@@ -937,16 +951,20 @@ Upper panel: Hubble parameter $H(z)$ for the full ECH dark-energy model
 (blue). Lower panel: percent deviation $\Delta H/H_{\Lambda\rm CDM}$,
 reflecting the $\Xi\,\MPl^2$ dark-energy mechanism --- the central
 observable of this paper. The rotation contribution $c_\omega\omega^2$ is a
-\emph{distinct} and negligible term: the CMB isotropy bound
-$(\omega/H)_0 < 5\times 10^{-11}$ from Saadeh~\etal~\cite{Saadeh2016}
-confines it to $\lesssim\!10^{-21}\,\rho_\Lambda^{\rm obs}$
-($(\omega/H)_0^2 < 2.5\times 10^{-21}$; dividing by
-$3\Omega_\Lambda \approx 2.1$ gives $\sim\!1.2\times 10^{-21}$ of
+\emph{distinct} and negligible term, confined to
+$\lesssim\!10^{-21}\,\rho_\Lambda^{\rm obs}$ ($(\omega/H)_0^2 < 2.5\times 10^{-21}$;
+dividing by $3\Omega_\Lambda\approx 2.1$ gives $\sim\!1.2\times 10^{-21}$ of
 $\rho_\Lambda^{\rm obs}$) --- completely invisible on the scale plotted.
-The dark-energy mechanism in this paper is therefore the
+The dark-energy mechanism is therefore the
 $\Xi\,\MPl^2$ term sourced by the parity-odd contorsion sector
-(\S\ref{sec:parityodd}), \emph{not} the rotation
-component.\label{fig:rotation_expansion}}
+(\S\ref{sec:parityodd}), \emph{not} the rotation component.
+The orange ECH curve uses $\Xi$ set to reproduce $\rho_\Lambda$
+(i.e.\ $\Xi = \rho_\Lambda/\MPl^2 \approx 10^{-123}$) with baseline
+cosmology $H_0=67.7\,\text{km/s/Mpc}$, $\Omega_m=0.308$; the
+$\Delta H/H_{\Lambda\rm CDM}$ deviation is ${\sim}2$--$3\%$ across $z=0$--$3$.
+The $(\omega/H)_0 < 5\times 10^{-11}$ bound (Saadeh~\etal~\cite{Saadeh2016})
+applies under the Bianchi~IX isotropized cosmological model and is adopted
+here as a conservative bookkeeping upper limit on $c_\omega\omega^2$.\label{fig:rotation_expansion}}
 \end{figure}
 
 The effective cosmological constant is parameterized as:
@@ -1313,19 +1331,19 @@ energy density that this operator contributes at cosmologically relevant
 fermion densities $n_\psi$ is bounded above by
 $\rho_{\rm NJL} \sim \kappa\,n_\psi^2 \sim n_\psi^2/M_{\rm Pl}^2$ (where
 $\kappa = 1/M_{\rm Pl}^2$ and $n_\psi$ has mass-dim~$+3$, so the energy
-density carries the correct mass-dim~$+4$),
-which for late-time / post-recombination Standard-Model number densities
-(the relevant regime for the late-time dark-energy claim assessed in
-this route; thermal-era fermion densities are addressed separately in
-the reheating-thermal-reset paragraph of Sec.~\ref{sec:dilution}) is
-many orders of magnitude below the present-day
-dark-energy density $\rho_\Lambda \sim (10^{-3}\,\text{eV})^4$:
-at recombination the baryon/electron number density is
-$n_\psi \sim n_b(z\!\simeq\!1100) \approx 330\,\text{cm}^{-3}
-\approx 2.5\times 10^{-12}\,\text{eV}^3$, giving
-$\rho_{\rm NJL} \sim n_\psi^2/M_{\rm Pl}^2 \approx
-4\times 10^{-80}\,\text{eV}^4 \sim 10^{-69}\,\rho_\Lambda$ ---
-nearly $70$ orders of magnitude below the dark-energy density.
+density carries the correct mass-dim~$+4$).
+The closure argument does not rest on this amplitude being numerically small
+in absolute units (a naive order-of-magnitude estimate using post-recombination
+baryon densities $n_\psi\sim\mathcal{O}(10^2)\,\text{cm}^{-3}$ gives
+$\rho_{\rm NJL}\sim\mathcal{O}(1)\,\text{eV}^4$ in natural units, far above
+$\rho_\Lambda\sim(10^{-3}\,\text{eV})^4$);
+instead, the physical suppression is that the operator
+$(\bar\psi\,\gamma^a\gamma^5\,\psi)^2$ is \emph{parity-even}
+and $\langle J^5\rangle\approx 0$ in an unpolarized thermal bath,
+so the effective contribution to the dark-energy density vanishes
+in the relevant cosmological regime
+(the late-time dark-energy claim assessed here;
+thermal-era densities are addressed separately in Sec.~\ref{sec:dilution}).
 This is the familiar conclusion that the Hehl--Datta torsion-induced
 NJL contact term cannot drive late-time acceleration in any
 Einstein--Cartan model with Standard Model matter content alone, and is
@@ -2024,13 +2042,13 @@ at all perturbation orders.
 The Holst term evaluated with
 the Levi-Civita connection gives $\frac{1}{2}\epsilon^{\mu\nu\rho\sigma}
 R_{\mu\nu\rho\sigma}(\mathring{\Gamma})$, which on a torsion-free
-metric-compatible connection \emph{vanishes identically} by the first (algebraic) Bianchi identity
+connection \emph{vanishes identically} by the first (algebraic) Bianchi identity
 $R_{\mu[\nu\rho\sigma]} = 0$: the cyclic-sum identity $R_{\mu\nu\rho\sigma} +
 R_{\mu\rho\sigma\nu} + R_{\mu\sigma\nu\rho} = 0$ contracted with the totally
 antisymmetric $\epsilon^{\mu\nu\rho\sigma}$ leaves no non-trivial component.
-The vanishing requires both $T=0$ \emph{and} metric compatibility (so that
-the first Bianchi identity above holds), and can fail in non-metric
-connections even when torsion is zero.
+The algebraic Bianchi identity $R_{\mu[\nu\rho\sigma]}=0$ holds for any
+torsionless connection, independently of metric compatibility; non-metricity
+does not invalidate the identity provided $T=0$.
 The Holst dual contraction is therefore identically zero on the Levi-Civita
 connection (not merely a boundary term), so it contributes nothing to the
 action at any order. This Bianchi-vanishing is distinct from the Pontryagin
@@ -2150,9 +2168,8 @@ of the 15-yr free-spectrum data (GPU MCMC, companion Paper~III~\cite{Golden2026P
 here $\gamma_{\rm PTA}$ is the GWB power-law spectral index, distinct from the Barbero-Immirzi parameter $\gamma$ defined in Eq.~\ref{eq:ECH}).
 The matter-bounce prediction $\gamma_{\rm PTA}=3.0$ sits at $+1.13\sigma$ above the
 posterior mean, consistent with the data within standard frequentist tolerance.
-This figure supersedes the earlier synthetic-Gaussian-likelihood value
-$\gamma_{\rm PTA} = 3.20\pm 0.42$ used in pre-real-KDE drafts; the migration is
-documented in Paper~III \S~6.
+The current real-KDE GPU MCMC gives $\gamma_{\rm PTA} = 2.567\pm 0.382$
+(Paper~III \S~6~\cite{Golden2026P3}).
 
 
 %% ============================================================
@@ -2556,17 +2573,11 @@ pipeline code, and the implementation map are publicly available at:
 \begin{center}
 \url{https://github.com/Hubify-Projects/bigbounce/tree/main/reproducibility}
 \end{center}
-The bundle is labelled \texttt{v1A.0.59-bundle} (resynced 2026-06-10) to
-track the present manuscript title and version; the bump from
-\texttt{v1A.0.58-bundle} covers the EXT2 external-round textual-closure edits
-and a README results-table resync to the frozen-chain values of companion
-Paper~I(b) Table~IV only,
-no MCMC chain / Cobaya YAML / Stan galaxy-spin code or data input changed,
-and the two bundles are byte-identical except for the README and BibTeX
-citation metadata; the present manuscript version \texttt{v1A.0.61} uses
-the \texttt{v1A.0.59-bundle} unchanged (text-only restamp). The frozen
-MCMC chains backing the cosmology tables are committed in the bundle
-(under \texttt{reproducibility/cosmology/frozen/}); fresh re-verification
+Code and data are available at the repository above; a Zenodo-archived
+release (DOI to be inserted at submission) will pin all artifacts to the
+submitted-version snapshot.
+The frozen MCMC chains backing the cosmology tables are committed in the
+bundle (under \texttt{reproducibility/cosmology/frozen/}); fresh re-verification
 chains must be regenerated from the supplied Cobaya configurations. The
 NaMaster pipeline and ALP parameter fitting are documented in companion
 Paper~I(b)~\cite{Golden2026P1b} and are not duplicated in the
