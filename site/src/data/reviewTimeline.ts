@@ -45,6 +45,30 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "R35CONF-CLOSURES",
+    kind: "closure-wave",
+    dateISO: "2026-06-12",
+    timePT: "02:40–03:30 PT (same-night)",
+    title: "R35conf closure wave — EXT5 fixes held clean everywhere; the final residue closed with numbers recomputed from chains and counts, twice correcting the audits themselves",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "All six papers restamped (v1A.0.65 / v1B.0.62 / v1.7.57 / v3.1.100 / v1.0.179 / v0.1.69): the P1B ΔNeff one-sided 95% limit was recomputed directly on the 93,066-sample committed chains — < 0.40, falsifying the audit's own ~0.27 Gaussian-tail estimate; the P5 duplicate-row rate was root-caused to a mixed-population denominator (2.7% → 3.56% of env-labeled rows, stated inline at all five sites); the P2 Chaussidon bib now points at the constraints paper and the unsupported β≈0.27° prediction was honestly removed.",
+    keyTakeaways: [
+      "Chains and counts are the only truth: two audit estimates were themselves corrected by recomputation before any number entered a paper",
+      "P1A: e^{+3ΔN} sign rederived (score ∝ 1/Δ_inf; e^{+12} ≈ 1.6×10⁵ matches the quoted residual) + 6 clarity closures",
+      "P3 crosses v3.1.100: Exemplar-Set rename de-conflates the 83-object display set from the 116-object GOLD tier; explicit Bayes-factor arithmetic shown inline",
+      "P4 effectively clean — Gemini's ACCEPT calibrated, internal REJECT labels audited to overcalls; 2 minor sentences closed",
+      "Fisher F₀ extraction artifact unraised for the first time in 7 rounds — the explicit-decimals prophylactic holds",
+    ],
+    links: [
+      { label: "P1A audit", href: `${PR}/R35conf_P1A_TRUTH_AUDIT.md` },
+      { label: "P1B audit", href: `${PR}/R35conf_P1B_TRUTH_AUDIT.md` },
+      { label: "P2 audit", href: `${PR}/R35conf_P2_TRUTH_AUDIT.md` },
+      { label: "P3 audit", href: `${PR}/R35conf_P3_TRUTH_AUDIT.md` },
+      { label: "P4 audit", href: `${PR}/R35conf_P4_TRUTH_AUDIT.md` },
+      { label: "P5 audit", href: `${PR}/R35conf_P5_TRUTH_AUDIT.md` },
+    ],
+  },
+  {
     id: "R35CONF-P1AB",
     kind: "internal-cc",
     dateISO: "2026-06-12",
