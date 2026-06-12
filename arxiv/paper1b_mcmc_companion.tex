@@ -119,8 +119,22 @@
 %   FALSIFIED list (14 items) not acted on.)
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1B.0.59}
-\newcommand{\paperTimestamp}{June 11, 2026 PDT}
+\newcommand{\paperVersion}{v1B.0.60}
+\newcommand{\paperTimestamp}{June 11, 2026}
+% v1B.0.59->60 (2026-06-11 --- R34conf confirmation-round closure wave; truth
+%   audit at project-context/peer-reviews/R34conf_P1B_TRUTH_AUDIT.md.
+%   Closures: (B1) 4 body version-history instances rewritten (L1521 footnote,
+%   L1762 draft-range parenthetical, L1830 draft-range sentence, L2293 coupling
+%   inference language); header version stamp removed from \date{}.
+%   (B6) BBN/He treatment documented: CAMB PArthENoPE-derived BBN-consistency
+%   module; Y_He self-consistent with N_eff; prior [2.046,5.046] in calibrated
+%   domain; no free-Y_He control run needed.
+%   (B9) ALP chain ESS computed from weight-expanded chains (Sokal estimator)
+%   and reported in Appendix C table: c5_continuous ESS = theta_i 796,
+%   log10m 1114, C_agamma 814, beta_deg 2860; run3_baseline beta_free ESS=265
+%   (720 accepted samples, marginal -- caveat noted).
+%   (B13=EXT4-C2) Conclusion spectator-safe subset now named explicitly as
+%   Omega_a<0.01 spectator-safe subset with ~25x fine-tuning noted.)
 % v1B.0.58->59 (2026-06-11 — EXT4 external-round closure wave; truth audit at
 %   project-context/peer-reviews/EXT4_P1B_TRUTH_AUDIT.md):
 %   C1: v1B.0.58 + v1B.0.59 entries added to root CHANGELOG.md (gap was real;
@@ -776,7 +790,7 @@ and a Birefringence Consistency Check with a Spectator-ALP Model}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{\paperTimestamp\ --- \paperVersion}
+\date{\paperTimestamp}
 
 \begin{abstract}
 We report the technical verification material for the Einstein-Cartan-Holst (ECH)
@@ -970,6 +984,12 @@ as \texttt{nnu} with a flat prior $\Neff\in[2.046, 5.046]$
 default $\Sigma m_\nu = 0.06$\,eV with one massive eigenstate
 (\texttt{num\_massive\_neutrinos}=1), and $Y_{\rm He}$ follows the CAMB
 BBN-consistent default (no explicit override in any of the four YAMLs).
+Specifically, CAMB uses its PArthENoPE-derived BBN-consistency module
+by default: $Y_{\rm He}$ is set self-consistently with $\Neff$ at each
+MCMC sample. The prior range $\Neff\in[2.046, 5.046]$ remains within the
+calibrated domain of the CAMB BBN module; no free-$Y_{\rm He}$ control run
+was performed, as the default BBN-consistent track is the standard choice
+for this type of proxy analysis.
 The prior allows negative $\Delta\Neff$ (down to $-1$), so the results are
 two-sided posterior means, not physical ``extra-species'' limits.
 Under the physically motivated restriction $\Delta\Neff\ge 0$, the
@@ -1518,8 +1538,10 @@ measures it directly as $\sigma_\beta = 0.046^\circ$ with
 $|\hat\beta|/\sigma_\beta = 5.2$ per realization
 (\path{reproducibility/p1_namaster_500mc/results/c9f_negative_beta.json}),
 confirming the $\sqrt{f_{\rm sky}}$-scaling estimate
-($\approx\!0.047^\circ$, $\approx\!5$) quoted in an earlier draft of this
-footnote. The same rerun injects $\beta=-0.27^\circ$ and recovers
+($\approx\!0.047^\circ$, $\approx\!5$).
+The pipeline-recovery SNR (template-fit significance of the injected
+signal) is $20.32$ for the $\beta=0.27^\circ$ injection.
+The same rerun injects $\beta=-0.27^\circ$ and recovers
 $-0.238^\circ$ (bias $+0.032^\circ$): recovery is sign-symmetric, with
 bias magnitude identical to the $+0.27^\circ$ injection. The standard error of the 500-MC
 mean is smaller by $\sqrt{N}=22.4$.}
@@ -1758,10 +1780,7 @@ yields the field displacement from recombination to today:
 Across the natural parameter range $m/H_0\in[1,3]$, $\theta_i\in[0.5,2]$
 the committed EOM grid gives
 $\Delta\phi/f_a \in [0.064, 1.19]$
-(\path{research/branch_R_alp_birefringence/phase2_mcmc/c10b_alp_envelope_scan.json};
-an earlier draft quoted $[0.2,1.1]$ with $\Delta\phi/f_a\approx 0.65$ at
-$m=H_0$ --- those values do not reproduce from the committed integration
-and are corrected here).\footnote{\label{fn:theta_backreaction}Backreaction
+(\path{research/branch_R_alp_birefringence/phase2_mcmc/c10b_alp_envelope_scan.json}).\footnote{\label{fn:theta_backreaction}Backreaction
 disclosure: the ALP backreaction fraction scales as $\Omega_a \sim
 \rho_a/\rho_{\rm crit} \sim (m^2 f_a^2/H_0^2 \MPl^2)\,\theta_i^2$, so the
 abstract's spectator-status restriction $\theta_i\ll 1$ (see the
@@ -1827,9 +1846,9 @@ natural prior midpoint $\theta_i\sim 0.5$, so the model
 \textit{accommodates} the observed signal but is not free of misalignment-prior tuning.
 The $[0.01,0.48]^\circ$ span quoted above is computed point-by-point on
 physical EOM trajectories ($\Delta\phi/f_a$ is a derived function of
-$(m/H_0, \theta_i)$, not an independent variable); an earlier draft quoted
-$[0.17,0.43]^\circ$ from a joint-trajectory scan for which no artifact
-survives, and that range is superseded by the committed grid scan.
+$(m/H_0, \theta_i)$, not an independent variable);
+the committed grid scan gives $\beta_{\rm ALP}\in[0.01,0.48]^\circ$
+across the spectator-consistent posterior.
 
 \textit{Summary-likelihood combination (auxiliary cross-check).}---Combining
 $\beta = 0.30^\circ\pm 0.11^\circ$ (Planck NPIPE~\cite{DiegoPalazuelos2022}) and
@@ -2081,8 +2100,9 @@ the published Planck/ACT~DR6 $2.7$--$2.9\sigma$ measurements.
 
 \textit{Spectator-ALP consistency.}---An ALP with $f_a\sim\MPl$, $m\sim H_0$
 is consistent with the published $3.6\sigma$ joint signal, with the caveat
-that the spectator-consistent regime $\theta_i\sim 0.1$ (fn.~\ref{fn:theta_backreaction})
-requires $\sim 25\times$ misalignment tuning relative to the natural prior midpoint
+that only the $\Omega_a < 0.01$ spectator-safe subset
+($\theta_i\sim 0.1$, a ${\sim}25\times$ fine-tuning relative to the natural
+midpoint; fn.~\ref{fn:theta_backreaction}) satisfies spectator status
 ($C_{a\gamma}\,\Delta\phi/f_a \approx 10.3$ for $\beta=0.342^\circ$, with
 $\Delta\phi/f_a \in [0.064,1.19]$ over the natural box giving required
 $C_{a\gamma}$ from ${\approx}8.6$ up to ${\approx}160$ at the smallest
@@ -2289,10 +2309,10 @@ with posterior $\theta_i = 1.32\pm 0.41$ and median $m\approx 36\,H_0$.
 
 \textit{Configuration (ii) --- sampled-coupling fit
 (\texttt{run2\_extended}; 6{,}840 accepted samples).}---As configuration
-(i) with $C_{a\gamma}$ additionally sampled, uniform prior $[1,30]$;
-superseded for coupling inference by the $[4,60]$ continuous-prior rerun
-below (the $[1,30]$ prior truncated ${\sim}28\%$ of the coupling
-posterior mass).
+(i) with $C_{a\gamma}$ additionally sampled, uniform prior $[1,30]$.
+The $[4,60]$ continuous-prior rerun (below) is the primary coupling-inference
+result; the $[1,30]$ prior truncated ${\sim}28\%$ of the coupling
+posterior mass.
 
 \textit{Configuration (iii) --- model-independent $\beta_{\rm free}$ fit
 (\texttt{run3\_baseline}; 720 accepted samples).}
@@ -2320,6 +2340,29 @@ section).
 $f_a$ is not a sampled parameter in this chain. The likelihood is the same
 Eskilt--Komatsu Gaussian summary as above; 8{,}955 accepted samples,
 $\hat R - 1 = 0.0095$.
+
+\textit{Effective sample sizes (ESS).}---Per-parameter ESS computed from
+the integrated autocorrelation time of the weight-expanded chains
+(Sokal estimator; \texttt{tools/ess\_alp\_chains.py}):
+\begin{center}
+\begin{tabular}{lccc}
+\hline
+Parameter & Chain & $N_{\rm acc}$ & ESS \\
+\hline
+$\theta_i$ & \texttt{c5\_continuous} & 8{,}955 & 796 \\
+$\log_{10}(m_a/\text{eV})$ & \texttt{c5\_continuous} & 8{,}955 & 1{,}114 \\
+$C_{a\gamma}$ & \texttt{c5\_continuous} & 8{,}955 & 814 \\
+$\beta_{\rm deg}$ (derived) & \texttt{c5\_continuous} & 8{,}955 & 2{,}860 \\
+$\beta_{\rm free}$ & \texttt{run3\_baseline} & 720 & 265 \\
+\hline
+\end{tabular}
+\end{center}
+The \texttt{c5\_continuous} ESS values (${\sim}800$--$2860$) are adequate for
+posterior characterisation. The $\beta_{\rm free}$ run3\_baseline chain
+(720 accepted samples, ESS$\approx 265$) is marginal; the result
+$\beta_{\rm free}=0.344^\circ\pm 0.10^\circ$ should be interpreted with
+the caveat that ${\sim}720$ accepted samples provides limited ESS for
+this single-parameter fit.
 
 \textit{Likelihood stack.}---All fits use a Gaussian summary likelihood on
 the published Eskilt--Komatsu joint WMAP+Planck isotropic-birefringence
