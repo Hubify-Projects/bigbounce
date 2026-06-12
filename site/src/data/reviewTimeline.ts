@@ -45,6 +45,29 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "R35CONF-P1AB",
+    kind: "internal-cc",
+    dateISO: "2026-06-12",
+    timePT: "confirmation round · P1A+P1B audits completed 2026-06-12 PT",
+    title: "R35conf P1A/P1B truth-audits — EXT5 closures CLEAN; OpenAI unit-inversion FALSIFIED; 7 new verified items in P1A (sign error, γ-spread, notation); 3 MAJOR + 14 MINOR in P1B (w0wa caveat, abstract footnote, ΔNeff one-sided limit)",
+    papers: ["P1A", "P1B"],
+    summary: "4-vendor round on v1A.0.64 (P1A) and v1B.0.61 (P1B); Claude leg ABSENT (API credits — round degraded). P1A EXT5 priority closures (NJL ρ~4×10⁻⁶⁹ ρ_Λ below; Ξ=ρ_Λ/M_Pl⁴ in caption) both CLEAN; OpenAI P1A-E1 challenging the NJL unit conversion FALSIFIED by independent rederivation (OpenAI confused hbarc with 1/hbarc). 7 new VERIFIED fixes: sign error e^{−3ΔN}→e^{+3ΔN}, γ-scheme spread 0.020→0.037, G_N notation, σ(f_NL) labeling, ρ-parameter undefined in forecast figures, 'cube of bilinear' phrasing, abstract null-test disclaimer. P1B EXT5 closures (restricted-subsets table, README stack, Appendix A, BBN flag) all CLEAN. 3 new MAJORs: one-sided ΔNeff 95% limit arithmetic (0.39→0.27), w0wa caveat front-loading, abstract footnote removal.",
+    keyTakeaways: [
+      "P1A EXT5-E1/E2 CLEAN: NJL ρ~4×10⁻⁶⁹ ρ_Λ arithmetically correct; Ξ=ρ_Λ/M_Pl⁴ in caption confirmed",
+      "OpenAI P1A-E1 FALSIFIED: unit conversion 1 cm⁻³=(1.973×10⁻⁵ eV)³ is CORRECT; OpenAI inverted hbarc — the paper's 4×10⁻⁶⁹ ratio stands",
+      "P1A new MAJOR: e^{±3ΔN_tot} sign error in §XII sensitivity statement (e^{−3ΔN} → e^{+3ΔN})",
+      "P1A: γ-scheme spread ~0.020 is wrong — SU(2)–DLM gap = 0.0365; update body + Table IV",
+      "P1B new MAJOR: one-sided ΔNeff 95% UL for Planck+BAO+SN quoted as 0.39 but truncated-renorm formula gives ~0.27",
+      "P1B: w0wa SN-overlap caveat must lead the §III physics-interpretation paragraph before the 4.3σ/3.6σ numbers",
+      "P1B EXT5-D2 CLEAN: restricted-subsets ALP table (4 rows × 6 cols) confirmed in v1B.0.61",
+      "Perplexity ACT DR6 'non-existent' claim AUTO-FALSIFIED (5th+ re-raise, Rule 3); arXiv:2509.13654 is September 2025 — past date",
+    ],
+    links: [
+      { label: "P1A audit", href: `${PR}/R35conf_P1A_TRUTH_AUDIT.md` },
+      { label: "P1B audit", href: `${PR}/R35conf_P1B_TRUTH_AUDIT.md` },
+    ],
+  },
+  {
     id: "R35CONF",
     kind: "internal-cc",
     dateISO: "2026-06-12",
