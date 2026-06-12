@@ -45,6 +45,30 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "EXT5-CLOSURES",
+    kind: "closure-wave",
+    dateISO: "2026-06-12",
+    timePT: "01:10–01:50 PT (same-night as harvest)",
+    title: "EXT5 closure wave — ChatGPT was right twice: two real P1A physics regressions from our own closures, caught externally and fixed with the correct derivations",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "Every verified EXT5 finding closed same-night (v1A.0.64 / v1B.0.61 / v1.7.56 / v3.1.99 / v1.0.178 / v0.1.68). The honest headline: ~5 of the ~19 verified items were regressions or persistence failures from our own closure waves — including a wrong-direction order-of-magnitude claim in the P1A NJL replacement and an M_Pl² caption typo — externally caught, rederived, and corrected; the P5 contingency tables were regenerated programmatically with exact marginal assertions after hand-arithmetic errors.",
+    keyTakeaways: [
+      "P1A: ρ_NJL ~ n_ψ²/M_Pl² ≈ 4×10⁻⁶⁹ ρ_Λ — far BELOW dark energy, not above; the closure now rests on the mean-field amplitude + parity-even arguments stated correctly",
+      "P2: the round's one substantive finding — a factually stale DESI sentence — fixed with the Chaussidon et al. 2024 citation; all three vendors now effectively ACCEPT/MINOR on P2",
+      "P5: artifact arrays are the only truth — the regenerated cells differ from both the typo AND the audit's hand estimate; tables now come from a script that asserts marginals exactly",
+      "New mandatory closure-agent rule: git-diff + inserted-phrase + old-phrase-gone verification after the changelog-vs-body persistence failures recurred on P3",
+      "Gemini's P3 thread confirmed reading stale v3.1.91 content 3 rounds running — fresh-thread reset planned for EXT6",
+    ],
+    links: [
+      { label: "P1A audit", href: `${PR}/EXT5_P1A_TRUTH_AUDIT.md` },
+      { label: "P1B audit", href: `${PR}/EXT5_P1B_TRUTH_AUDIT.md` },
+      { label: "P2 audit", href: `${PR}/EXT5_P2_TRUTH_AUDIT.md` },
+      { label: "P3 audit", href: `${PR}/EXT5_P3_TRUTH_AUDIT.md` },
+      { label: "P4 audit", href: `${PR}/EXT5_P4_TRUTH_AUDIT.md` },
+      { label: "P5 audit", href: `${PR}/EXT5_P5_TRUTH_AUDIT.md` },
+    ],
+  },
+  {
     id: "EXT5",
     kind: "external-browser",
     dateISO: "2026-06-12",
@@ -761,14 +785,18 @@ export const externalVerdictRounds: ExternalRoundVerdicts[] = [
     note: "Same 18 threads, round 4: Grok 6/6 ACCEPT twice running; Gemini majority-MINOR with both residual MAJORs falsified wholesale in audit (stale-PDF/OCR); every ChatGPT report states the paper moved toward publishability",
   },
   {
-    roundId: "EXT5-P4P5",
+    roundId: "EXT5",
     dateISO: "2026-06-12",
-    windowPT: "Jun 12 · 00:48–00:52 PT harvest · audit complete 06:00 PT",
+    windowPT: "Jun 11–12 · 23:35–00:10 PT · harvested 01:05 PT",
     verdicts: {
+      P1A: ["MAJOR", "ACCEPT", "MINOR"],
+      P1B: ["MAJOR", "ACCEPT", "MINOR"],
+      P2: ["MAJOR", "ACCEPT", "ACCEPT"],
+      P3: ["MAJOR", "ACCEPT", "MAJOR"],
       P4: ["MAJOR", "ACCEPT", "ACCEPT"],
       P5: ["MAJOR", "ACCEPT", "MINOR"],
     },
-    note: "P4+P5 only (EXT5 partial — P4: ChatGPT MAJOR reduces to 4 one-sentence edits after audit; Grok ACCEPT; Gemini ACCEPT — first zero-extraction-artifact Gemini P4 round. P5: ChatGPT MAJOR for new Appendix B arithmetic errors; Grok ACCEPT; Gemini MINOR (calibrated). 2√3 and h⁻¹ Mpc both rederived correct.",
+    note: "Round 5: Grok 6/6 ACCEPT third consecutive round; Gemini posts its FIRST ACCEPTs (P2, P4 — and its first zero-extraction-artifact P4 read); ChatGPT MAJOR ×6 but P2 'narrowly' with a named path to MINOR — and its two P1A regression catches were real (verified + fixed same-night)",
   },
 ];
 
@@ -814,11 +842,11 @@ export const gapSeries: GapPoint[] = [
     note: "EXT4 truth-audits: 13 genuinely-new (−52% vs EXT3), zero physics on any paper — captions, cross-refs, repo hygiene, one estimand-family item, one QC-provenance item; all closed same-day",
   },
   {
-    roundId: "EXT5-P4P5",
+    roundId: "EXT5",
     dateISO: "2026-06-12",
-    total: 7,
-    perPaper: { P1A: 0, P1B: 0, P2: 0, P3: 0, P4: 3, P5: 4 },
-    note: "EXT5 P4+P5 truth-audits: 7 genuinely-new (P4: WLS bypass precision, p_LEE logic, Parquet QC flag disclosure; P5: Appendix B contingency arithmetic MAJOR, GALZONE complement counts, §VI.A cross-ref, body |Δ|≤0.002 scope check). Both 2√3 and h⁻¹Mpc rederived correct; re-raise rules in force.",
+    total: 19,
+    perPaper: { P1A: 3, P1B: 4, P2: 1, P3: 3, P4: 4, P5: 4 },
+    note: "EXT5 truth-audits: ~19 verified — but ~5 are regressions/persistence failures from our own closure waves (P1A NJL + caption, P3 changelog-vs-body ×2, P5 table arithmetic); externally-sourced novel content keeps shrinking (P2: one stale sentence) — closure-agent quality became the bottleneck and got new mandatory verification rules",
   },
 ];
 
