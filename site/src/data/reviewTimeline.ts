@@ -45,6 +45,23 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "EXT6",
+    kind: "external-browser",
+    dateISO: "2026-06-12",
+    timePT: "02:35\u201303:03 PT submit \u00b7 harvest from ~03:35",
+    title: "EXT6 submitted \u2014 sixth in-thread external round on the R35conf-closed versions; Gemini P3 moved to a fresh thread after three stale-read rounds",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "Delta-prompts posted to the same 17 chats plus one fresh Gemini P3 thread (full referee prompt; first response held to completion per the persistence rule, and its MNRAS-format report rendered immediately). The externals now read versions where every number was recomputed from chains or counts before printing \u2014 including two corrections to our own audits.",
+    keyTakeaways: [
+      "Second consecutive zero-retry Gemini run under the hardened recipe",
+      "P3 crosses v3.1.100 for its first fresh-eyes external read since EXT1",
+      "Cadence: EXT5 closures + R35conf round + audits + closures + EXT6 submission ran 00:45\u201303:03 PT \u2014 a full loop iteration in ~2.5 hours",
+    ],
+    links: [
+      { label: "EXT6 manifest", href: `${PR}/EXT6_BROWSER_MANIFEST.md` },
+    ],
+  },
+  {
     id: "R35CONF-CLOSURES",
     kind: "closure-wave",
     dateISO: "2026-06-12",
