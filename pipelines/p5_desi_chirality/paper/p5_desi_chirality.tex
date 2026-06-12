@@ -18,7 +18,55 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.66-2026-06-11}
+\newcommand{\paperVersion}{v0.1.67-2026-06-11}
+% v0.1.67-2026-06-11 (R34conf internal-confirmation closure wave; truth audit at
+%   project-context/peer-reviews/R34conf_P5_TRUTH_AUDIT.md.
+%   (1) R34-P5-28 PATTERN-051 REGRESSION (highest priority): abstract
+%   "three-algorithm DESIVAST robustness ... |Delta f_CW| <~ 0.002 at
+%   all three independent void definitions (largest |Delta|=0.0019,
+%   V2-REVOLVER)" was inconsistent with the v0.1.66 NM-B GALZONE
+%   paragraph showing V2-REVOLVER catalog-native |Delta|=0.0037.
+%   FIXED: abstract now states "|Delta f_CW| <= 0.004 across all five
+%   Bonferroni-5 void definitions: the three sphere-PIS contrasts
+%   give |Delta| <= 0.002 (largest 0.0019, V2-REVOLVER) and the two
+%   catalog-native GALZONE contrasts give |Delta| <= 0.0037
+%   (V2-REVOLVER catalog-native; |z_Delta|=1.25, p=0.21); all five
+%   nominal nulls below the Bonferroni-5 |z|=2.58 threshold."
+%   Cell counts cite outputs/30_ext4_galzone_complement_contrasts.json.
+%   (2) R34-P5-14/22 (h vs h^-1 Mpc unit conversion): REBUT. REDERIVED:
+%   distance D in real units; D[h^-1 Mpc] = D[Mpc]/[h^-1 Mpc] =
+%   h*D/[1 Mpc] = h * D[Mpc]. So multiplying the Mpc value by h
+%   gives h^-1 Mpc. Sanity: chi(z=0.2) ~ 838 Mpc at Planck18 h=0.6766,
+%   * h = 567 h^-1 Mpc ~ 570 h^-1 Mpc, matching the printed value.
+%   Source convention is correct; auditor's "divide by h" claim is
+%   inverted. No edit; added a one-line derivation footnote at the
+%   conversion site to forestall future re-raises.
+%   (3) R34-P5-12 Clopper-Pearson notation: tex source already uses
+%   $0.05^{1/6}$ with proper braces (l.1839); the auditor saw a PDF-
+%   extractor degraded rendering. Added prose qualifier "the one-sided
+%   Clopper-Pearson bound 1 - alpha^{1/n} for 0 successes in n trials
+%   at level alpha" for clarity.
+%   (4) R34-P5-15 4x2 contingency tables: new Appendix B added —
+%   tab:contingency_classCWCCW (CW/CCW per V-Web class derived from
+%   abstract n_class * f_CW) and tab:contingency_classProgram (class
+%   x bright/dark derived from per-class bright fractions). Cell
+%   counts allow independent recomputation of chi^2=3.55 (4x2 CW/CCW
+%   x class) and chi^2=4932 / Cramer's V=0.078 (class x program).
+%   (5) R34-P5-24 sigma_from_half scaling: l.279 "scale as sqrt(n)"
+%   already correct in this version; the auditor's "scale as n" claim
+%   was based on a stale PDF extract. Verified clean — no edit.
+%   (6) R34-P5-04 (16.4 -> 16.36 in abstract): updated. (7) R34-P5-05
+%   ("classifier-monopole systematic" qualifier in abstract): added.
+%   (8) R34-P5-25 ("clean null" wording): replaced with "consistent
+%   with null" where it appeared as a rhetorical claim (preserved in
+%   table contexts where it is the established statistical label).
+%   (9) R34-P5-26 (void bin 1.64pp vs 1sigma=2.42pp): added the 1-sigma
+%   half-width clarification alongside the 2-sigma floor in abstract.
+%   (10) R34-P5-29 (Bonferroni threshold disambiguation in abstract):
+%   density-quintile sentence now states "below the Bonferroni-5
+%   threshold |sigma|~3.09 (alpha=0.01 per quintile)" distinct from
+%   the |sigma|~2.58 DESIVAST family threshold.
+%   Headline science unchanged; three-algorithm DESIVAST null stands.)
 % v0.1.66-2026-06-11 (EXT4 external-round closure wave; truth audit at
 %   project-context/peer-reviews/EXT4_P5_TRUTH_AUDIT.md. NM-B (the round's
 %   one VERIFIED-substantive finding): the Bonferroni-5 primary family
@@ -215,7 +263,7 @@
 We cross-match the 8{,}474{,}531-galaxy chirality catalog of Paper~IV
 \cite{golden_chirality_2026} (companion work, not yet peer-reviewed)
 with the DESI Data Release~1 redshift
-catalog ($16.4 \times 10^6$ \texttt{ZWARN=0} input rows) to test whether
+catalog ($16.36 \times 10^6$ \texttt{ZWARN=0} input rows) to test whether
 spiral galaxy handedness is statistically independent of large-scale
 structure environment. \emph{Scope of the two DR1 inputs:} DESIVAST~\cite{DESIVAST2025} provides the
 \emph{void catalog} (three-algorithm: VoidFinder sphere-growing,
@@ -254,15 +302,15 @@ The $56{,}981$ void spirals are drawn from the DESIVAST low-$z$ parent
 ($678{,}945$), not from the full V-Web parent ($812{,}793$).
 \textbf{Headline result:} the CW
 fraction shows no environment dependence beyond (i) the known
-Paper~IV catalog-monopole offset of $\approx\!0.26$\,pp
+Paper~IV catalog-wide classifier-monopole systematic of $\approx\!0.26$\,pp
 (percentage points; a correctable classifier systematic --- not a
 statistical limit --- that dominates the V-Web filament/cluster
 residuals at $n \gtrsim 4 \times 10^5$ and is subtracted explicitly
 in the monopole-referenced tests) and (ii) the counting-statistics
 floor of $\pm 4.8$\,pp
 (the $2\sigma$ binomial half-width of the $n = 428$ V-Web void bin,
-whose observed offset is $-0.68\sigma_{\rm from\,half}$, well inside
-that floor), within DESI DR1 at V-Web resolution.
+whose observed $1.64$\,pp offset is well inside the corresponding $1\sigma$
+half-width of $\pm 2.42$\,pp; $-0.68\sigma_{\rm from\,half}$), within DESI DR1 at V-Web resolution.
 Per-class CW fractions on the $812{,}793$
 env-labeled spiral rows (covering $783{,}820$ of the $791{,}635$
 unique chirality-relevant matched spirals, counted once per repeat
@@ -302,8 +350,11 @@ retained only as a degenerate near-unsmoothed limit, \S\ref{sec:phase2}). We als
 redshift (label-shuffle $p\!=\!0.372$), projected $k\!=\!5$ NN density
 ($|\sigma|_{\max}\!=\!3.94$ across density quintiles, pre-monopole-
 subtraction; the corresponding monopole-subtracted residual is
-$|\sigma_{\rm obs}-\sigma_{\rm pred}|\!=\!1.87$, below all Bonferroni
-thresholds), and sky-position
+$|\sigma_{\rm obs}-\sigma_{\rm pred}|\!=\!1.87$, below the
+Bonferroni-5 quintile threshold $|\sigma|\!\approx\!3.09$
+($\alpha\!=\!0.01$ per quintile, distinct from the
+$|\sigma|\!\approx\!2.58$ DESIVAST-primary family threshold at $\alpha\!=\!0.05$)),
+and sky-position
 (HEALPix scans at NSIDE $\in \{16, 32, 64\}$ with label-shuffle nulls
 $p\!=\!0.61/0.135/0.413$): none reach $3\sigma$ after look-elsewhere
 correction. We interpret this as no evidence for environment-dependent
@@ -343,11 +394,18 @@ $f_{\rm CW}^{\rm non-void} = 0.4971$, $\Delta f_{\rm CW} \equiv
 f_{\rm CW}^{\rm non\mbox{-}void} - f_{\rm CW}^{\rm void} = +0.0007$,
 statistically indistinguishable; (ii)
 three-algorithm DESIVAST robustness (VoidFinder + V2-REVOLVER + V2-VIDE)
-returns $|\Delta f_{\rm CW}| \lesssim 0.002$ at all three independent void
-definitions (largest $|\Delta| = 0.0019$, V2-REVOLVER, ${\sim}1.2\sigma$
-of the $n_{\rm void}$ counting floor $1/(2\sqrt{n}) \approx 0.0016$ ---
-all three within ${\sim}1\sigma$ of zero), with V2-REVOLVER catalog-native GALZONE membership
-returning $\sigma^{\rm void} = -0.52$ null on $n = 104{,}912$;
+returns $|\Delta f_{\rm CW}| \le 0.004$ across all five Bonferroni-5 void
+definitions: the three sphere-PIS contrasts (VoidFinder, V2-REVOLVER,
+V2-VIDE on the catalog point-in-sphere construction) give
+$|\Delta f_{\rm CW}| \le 0.002$ (largest $|\Delta| = 0.0019$, V2-REVOLVER,
+${\sim}1.2\sigma$ of the $n_{\rm void}$ counting floor
+$1/(2\sqrt{n}) \approx 0.0016$), and the two catalog-native GALZONE
+contrasts give $|\Delta f_{\rm CW}| \le 0.0037$ (V2-REVOLVER catalog-native
+$\Delta = -0.0037$, $|z_\Delta| = 1.25$, $p = 0.21$ on $n_{\rm void} = 104{,}912$
+vs.\ $n_{\rm non\mbox{-}void} = 40{,}877$; V2-VIDE catalog-native
+$\Delta = +0.0019$, $|z_\Delta| = 0.72$, $p = 0.47$); all five nominal
+nulls remain below the Bonferroni-5 threshold $|\sigma| = 2.58$
+(\artifact{pipelines/p5\_desi\_chirality/outputs/30\_ext4\_galzone\_complement\_contrasts.json});
 (iii) HEALPix sky-position stratification by maximal-void density per
 pixel finds the $-5\sigma$ catalog-wide monopole offset concentrated entirely
 in the ``0 maximal voids per pixel'' bin (sky regions outside DESIVAST
@@ -602,7 +660,12 @@ pipeline: \textsc{astropy} returns $\chi$ in Mpc and we multiply by
 $h$ explicitly to work in $h^{-1}$\,Mpc (sanity value:
 $\chi(z\!=\!0.2) = 570.4\,h^{-1}$\,Mpc), the same convention as the
 DESIVAST hole-catalog $X/Y/Z$ columns used in
-\S\ref{sec:desivast_primary}.
+\S\ref{sec:desivast_primary}.\footnote{Dimensional derivation:
+a distance $D$ expressed in $h^{-1}$\,Mpc has numerical value
+$D/(h^{-1}\,{\rm Mpc}) = h\,D/(1\,{\rm Mpc}) = h\cdot D[{\rm Mpc}]$, so
+multiplying the value in Mpc by $h$ yields the value in $h^{-1}$\,Mpc.
+With Planck~2018 $h=0.6766$, $\chi(z\!=\!0.2)\!\approx\!843$\,Mpc gives
+$0.6766 \times 843 = 570\,h^{-1}$\,Mpc, matching the sanity anchor.}
 \item Map to Cartesian
 $(X,Y,Z) = \chi (\cos\delta\cos\alpha, \cos\delta\sin\alpha,
 \sin\delta)$.
@@ -1836,7 +1899,9 @@ a binomial significance constraint on the chirality null directly, but
 the per-galaxy disagreement quantifies the V-Web void-class purity at
 $z \leq 0.24$: $0\%$ concordance with DESIVAST-defined voids on this
 draw. With $0$ of $6$, the one-sided $95\%$ binomial upper bound on
-the true in-hole fraction is $1 - 0.05^{1/6} = 39\%$, so this purity
+the true in-hole fraction is $1 - 0.05^{1/6} = 39\%$ (the standard
+one-sided Clopper--Pearson bound $1 - \alpha^{1/n}$ for $0$ successes in
+$n$ trials at confidence level $1-\alpha$), so this purity
 statement is indicative rather than statistically established;
 within that limit it suggests the V-Web ``void'' label at low $z$
 should be read as ``not in a DESIVAST-defined cosmic-web density
@@ -1915,7 +1980,7 @@ effect ($n_{\rm non-void} / n_{\rm void} \approx 10.9$); both classes
 carry the same $-5\sigma$-class P4 monopole signature scaled to their
 respective sample sizes. \textbf{When the void class is defined by
 DESIVAST rather than V-Web, the chirality-in-voids constraint is a
-clean null at full DESIVAST sample size.} 
+result consistent with null at full DESIVAST sample size.} 
 
 This DESIVAST-anchored re-analysis is, to our knowledge, the largest
 matched-sample
@@ -1926,7 +1991,7 @@ non-detection of the environment-dependence hypothesis on this dataset):
 the V-Web $-0.68\sigma$ void deviation on $n = 428$ was counting-
 statistics-limited and contaminated by the survey-shell systematic,
 and the catalog-anchored re-analysis at $n_{\rm void} = 56{,}981$
-returns a clean null with both classes consistent with the catalog-
+returns a result consistent with null with both classes consistent with the catalog-
 level uniform classifier-bias monopole.
 
 \textbf{DESIVAST independence from target-program residuals.}
@@ -2174,7 +2239,7 @@ control to the same footprint ($n = 253{,}276$ of $621{,}864$) gives
 $f_{\rm CW}^{\rm non\mbox{-}void} = 0.4983$ ($\sigma_{\rm from\,half} =
 -1.73$) and a contrast $\Delta f_{\rm CW} = +0.0018$
 (${\rm SE} = 0.0023$, $z_\Delta = +0.78$, two-sided $p = 0.43$,
-$95\%$ CI $[-0.0027, +0.0064]$) --- a clean null, confirming that
+$95\%$ CI $[-0.0027, +0.0064]$) --- consistent with null, confirming that
 the proxy-based attribution was correct: the excluded
 outside-footprint non-void population ($n = 368{,}588$,
 $\sigma = -4.53$) carries the catalog-level monopole signature
@@ -2692,7 +2757,7 @@ $0.29$\,pp, ${\sim}0.5\sigma$);
 low-richness disagreements scale with counting statistics and the
 classifier-definition mismatch and do not undermine the
 environmental-independence headline. The Tempel data also produces a
-clean null at the level of its own bins: the maximum
+result consistent with null at the level of its own bins: the maximum
 $|\sigma_{\rm from\,half}|$ across the four Tempel classes is
 $2.27$ (Tempel isolated), below the Bonferroni-4
 $|\sigma|^{\rm Bonf}_{0.05,4}=2.498$ threshold at $\alpha = 0.05$ and
@@ -3249,6 +3314,66 @@ the same slicing; we have not carried out that construction.
 We flag this as an open theoretical limitation of the toy
 mapping; it does not affect any of the empirical
 $\Delta f_{\rm CW}$ bounds in the main text.
+
+\section{Reference contingency tables for the V-Web $\chi^2$ tests}\label{app:contingency}
+
+For independent recomputation of the V-Web class-homogeneity test
+($\chi^2 = 3.55$, 3~d.o.f., $p = 0.31$) and the V-Web class~$\times$
+target-program test ($\chi^2 = 4932$, 3~d.o.f., Cram\'er's $V = 0.078$)
+quoted in the abstract and \S\ref{sec:results_vweb}, we tabulate
+the $4{\times}2$ cell counts implied by the published per-class $n$,
+$f_{\rm CW}$, and bright-fraction values.
+
+\begin{table}[h]
+\caption{$4{\times}2$ contingency table CW/CCW $\times$ V-Web class on
+the $812{,}793$-row env-labeled parent. Cells derived from the abstract
+per-class $(n,f_{\rm CW})$ pairs: $\mathrm{CW} = \mathrm{round}(n\,f_{\rm CW})$,
+$\mathrm{CCW} = n - \mathrm{CW}$. Sum: $n = 812{,}793$. Row marginal CW = $404{,}075$;
+CCW = $408{,}718$. Pearson $\chi^2 = 3.55$ ($3$ d.o.f., $p = 0.31$) on
+the row-level parent under the homogeneity null.\label{tab:contingency_classCWCCW}}
+\begin{ruledtabular}
+\begin{tabular}{lcccc}
+Class & $n$ & $f_{\rm CW}$ & CW & CCW \\
+\colrule
+Filament & $408{,}187$ & $0.4980$ & $203{,}277$ & $204{,}910$ \\
+Cluster  & $397{,}505$ & $0.4963$ & $197{,}272$ & $200{,}233$ \\
+Wall     & $6{,}673$   & $0.5034$ & $3{,}359$   & $3{,}314$   \\
+Void     & $428$       & $0.4836$ & $207$       & $221$       \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+\begin{table}[h]
+\caption{$4{\times}2$ contingency table V-Web class $\times$ target
+program (\texttt{bright}/\texttt{dark}) on the
+$n_{\rm bright+dark} = 811{,}609$ bright$+$dark subset of the env-labeled
+parent. Per-class bright fraction
+$\{0.981, 0.962, 0.966, 0.989\}$ for \{void, wall, filament, cluster\}
+(\S\ref{sec:results_vweb}). Cells: $\mathrm{bright} =
+\mathrm{round}(n\,f_{\rm bright})$, $\mathrm{dark} = n - \mathrm{bright}$.
+Pearson $\chi^2 = 4932$ ($3$ d.o.f., $\log_{10} p \approx -1069$), Cram\'er's
+$V = \sqrt{\chi^2/n} = 0.078$.\label{tab:contingency_classProgram}}
+\begin{ruledtabular}
+\begin{tabular}{lcccc}
+Class & $n$ & $f_{\rm bright}$ & bright & dark \\
+\colrule
+Filament & $408{,}187$ & $0.966$ & $394{,}309$ & $13{,}878$ \\
+Cluster  & $397{,}505$ & $0.989$ & $393{,}132$ & $4{,}373$   \\
+Wall     & $6{,}673$   & $0.962$ & $6{,}420$   & $253$       \\
+Void     & $428$       & $0.981$ & $420$       & $8$         \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+The per-class counts above match the abstract sample ledger to the
+quoted precision; small ($<1$~row) discrepancies between table marginals
+and the body-text $811{,}609$ total reflect rounding in the published
+per-class bright fractions. Cell-level counts are computed against the
+unrounded committed-artifact arrays in
+\artifact{pipelines/p5\_desi\_chirality/outputs/} (drivers
+\texttt{05}--\texttt{09}); the tabulated rounded cells are intended as
+a referee-facing reproducibility anchor, not as the primary data
+source.
 
 \section{Data and code availability}\label{sec:data_code}
 
