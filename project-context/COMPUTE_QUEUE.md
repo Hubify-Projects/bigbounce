@@ -68,6 +68,29 @@ queued with exact specs.
   EXT3). External release mutation — not done in the EXT3 source-edit wave.
 - **Needs:** HF write token (`.env.local`), 5 min.
 
+### 6. P3 — Planck top-200 held-out re-scoring (OAI-E7, R34conf-2026-06-11)
+- **What:** Re-score all 2e5 Planck SMICA patches using the production checkpoint
+  but restricted to the held-out 20% validation split only. Report: (a) Spearman
+  rank correlation between full-bank top-200 and held-out-only top-200; (b)
+  Jaccard overlap of the two top-200 lists; (c) any top-200 rank reversals.
+- **Why:** OAI-E7 (R34conf): §III.F scores training patches alongside validation
+  patches ("standard practice"). For PRD-level rigor, demonstrate ranking
+  invariance on the held-out set. Paper makes NO claim that held-out = full-bank;
+  this adds a quantitative invariance result, not a retraction.
+- **Needs:** (a) Planck native checkpoint (.pt file) — NOT available locally;
+  must re-run cmb_native_retrain.py on A100 pod with fixed seeds
+  (torch.manual_seed(42), np.random.seed(42)) to reproduce; ETA ~2h training
+  + 10 min re-score. (b) Patch parquet already local:
+  pipelines/p3_anomaly_engine/hf_staging/cmb_native_anomalies.parquet.
+  (c) Rescore script: pipelines/p3_anomaly_engine/cmb_native_rescore.py.
+- **Lands in:** New sentence in §III.F after "standard practice": "Held-out
+  re-scoring (validation-split-only patches; Spearman rho=X, Jaccard=Y, top-200
+  overlap Z/200) confirms ranking invariance to training-sample inclusion."
+  + artifact: pipelines/p3_anomaly_engine/r34conf_planck_heldout_rescore.json.
+- **Source claim dependency:** No paper claim depends on held-out = full-bank;
+  queue-only, no tex retraction needed before this runs.
+- **Date queued:** 2026-06-11 (R34conf OAI-E7)
+
 ### 5. P5 — Fig 3 baked-in title regen (Nm1, blocked on HOUSTON-DECISION NM1)
 - **What:** Regenerate Fig 3 so the rendered panel title count matches the
   final title/abstract convention (791,635 chirality-relevant matched vs
