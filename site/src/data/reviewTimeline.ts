@@ -45,6 +45,30 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "R34CONF",
+    kind: "internal-cc",
+    dateISO: "2026-06-11",
+    timePT: "17:00–19:30 PT (round + audits + closures)",
+    title: "R34conf — the upgraded internal tier now out-catches the externals: 42 verified items found and closed across all six papers, including one regression and one rebutted audit claim",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "First full internal round on the EXT4-closed versions (4 API vendors; Claude leg on credit fallback): truth-audits verified 42 items — more than EXT4's external 13, which is the learning loop working — including one genuine pattern-051 regression (P5 abstract |Δ|≤0.002 vs the new GALZONE 0.0037) and a P4 Fisher-factor challenge that was rederived as CORRECT and rebutted with shown arithmetic; all closures landed same-day as v1A.0.63 / v1B.0.60 / v1.7.55 / v3.1.98 / v1.0.177 / v0.1.67.",
+    keyTakeaways: [
+      "P1A: flawed ~40-orders NJL unit chain removed (qualitative closure intact); Fig 3 caption now carries Ξ ≈ 10⁻¹²³",
+      "P1B: ALP-chain ESS computed from committed chains and reported honestly (β_free 265, marginal, caveat noted); BBN/He treatment documented",
+      "P3: cutout sizes corrected to the DR9 pixel scale (33.5″ not 54″); hardware provenance fixed to A100 per the pod JSON; Planck held-out re-scoring queued with exact spec",
+      "P5: the regression fixed honestly (abstract now |Δf_CW| ≤ 0.004 across all five void definitions) + 4×2 contingency tables added as a new appendix",
+      "P4: the challenged 2√3 Fisher factor REDERIVED AS CORRECT — audits get rebutted too, with arithmetic, not authority",
+    ],
+    links: [
+      { label: "P1A audit", href: `${PR}/R34conf_P1A_TRUTH_AUDIT.md` },
+      { label: "P1B audit", href: `${PR}/R34conf_P1B_TRUTH_AUDIT.md` },
+      { label: "P2 audit", href: `${PR}/R34conf_P2_TRUTH_AUDIT.md` },
+      { label: "P3 audit", href: `${PR}/R34conf_P3_TRUTH_AUDIT.md` },
+      { label: "P4 audit", href: `${PR}/R34conf_P4_TRUTH_AUDIT.md` },
+      { label: "P5 audit", href: `${PR}/R34conf_P5_TRUTH_AUDIT.md` },
+    ],
+  },
+  {
     id: "EXT4-CLOSURES",
     kind: "closure-wave",
     dateISO: "2026-06-11",
