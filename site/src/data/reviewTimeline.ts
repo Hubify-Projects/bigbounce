@@ -45,6 +45,23 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "EXT5",
+    kind: "external-browser",
+    dateISO: "2026-06-12",
+    timePT: "23:35–00:10 PT submit · harvest from ~00:45",
+    title: "EXT5 submitted — fifth in-thread external round on the R34conf-closed versions; all 18 legs verified, zero Gemini retries",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "Delta-prompts posted overnight to the same 18 chats on versions carrying the R34conf wave (42 internal closures including the P5 abstract regression fix, the P4 Fisher rebuttal-by-rederivation, and two computed additions); the EXT4-hardened browser recipe ran 6/6 clean on Gemini with no focus-race aborts and no resubmissions.",
+    keyTakeaways: [
+      "Externals now read versions where the internal tier already out-screens them — the gap metric's next point (vs EXT4's 13) measures the residual external advantage directly",
+      "Delta-prompt calibration extended again: version-decimal collision artifacts (z=−18.1.34) called out explicitly after that class produced a falsified P4 finding",
+      "Round cadence: EXT4 closures + R34conf round + audits + closures + EXT5 submission all inside ~9 hours",
+    ],
+    links: [
+      { label: "EXT5 manifest", href: `${PR}/EXT5_BROWSER_MANIFEST.md` },
+    ],
+  },
+  {
     id: "R34CONF",
     kind: "internal-cc",
     dateISO: "2026-06-11",
