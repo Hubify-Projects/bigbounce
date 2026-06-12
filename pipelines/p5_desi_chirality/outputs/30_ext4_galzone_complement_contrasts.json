@@ -1,0 +1,72 @@
+{
+  "written_utc": "2026-06-11T23:20:47Z",
+  "script": "scripts/30_ext4_galzone_complement_contrasts.py",
+  "closes": [
+    "EXT4-NM-B (Bonferroni-5 GALZONE one-sample/two-sample mismatch)"
+  ],
+  "audit_reference": "project-context/peer-reviews/EXT4_P5_TRUTH_AUDIT.md",
+  "matched_spirals_z_leq_0p24": 678945,
+  "by_algorithm": {
+    "V2_REVOLVER": {
+      "n_joined_galzone_rows": 145789,
+      "void_catalog_native": {
+        "n": 104912,
+        "n_cw": 52371,
+        "cw_fraction": 0.4991897971633369,
+        "sigma_from_half": -0.524851373691121
+      },
+      "nonvoid_complement": {
+        "n": 40877,
+        "n_cw": 20256,
+        "cw_fraction": 0.4955353866477481,
+        "sigma_from_half": -1.8053165227028392
+      },
+      "contrast": {
+        "delta_f_cw_nonvoid_minus_void": -0.0036544105155887907,
+        "SE_delta": 0.002915195419916604,
+        "z_delta": -1.2535730848854496,
+        "p_two_sided": 0.20999721923071446,
+        "ci95_lo": -0.009368088546521453,
+        "ci95_hi": 0.0020592675153438727
+      },
+      "definitions": {
+        "void_cut": "OUT==0 AND ZONE>=0 AND VOID0>=0 (catalog-native)",
+        "nonvoid_complement": "GALZONE-joined rows that FAIL the void cut",
+        "sign_convention": "Delta f_CW = f_CW^{non-void} - f_CW^{void}",
+        "SE_formula": "sqrt(p_v(1-p_v)/n_v + p_nv(1-p_nv)/n_nv)",
+        "z_crit_95": 1.959963984540054
+      }
+    },
+    "V2_VIDE": {
+      "n_joined_galzone_rows": 145789,
+      "void_catalog_native": {
+        "n": 74111,
+        "n_cw": 36851,
+        "cw_fraction": 0.49724062554816423,
+        "sigma_from_half": -1.5023875337613966
+      },
+      "nonvoid_complement": {
+        "n": 71678,
+        "n_cw": 35776,
+        "cw_fraction": 0.49912106922626187,
+        "sigma_from_half": -0.4706278306496577
+      },
+      "contrast": {
+        "delta_f_cw_nonvoid_minus_void": 0.001880443678097643,
+        "SE_delta": 0.0026193559158838187,
+        "z_delta": 0.7179030794152871,
+        "p_two_sided": 0.47281704901682886,
+        "ci95_lo": -0.0032533995797265694,
+        "ci95_hi": 0.007014286935921855
+      },
+      "definitions": {
+        "void_cut": "OUT==0 AND ZONE>=0 AND VOID0>=0 (catalog-native)",
+        "nonvoid_complement": "GALZONE-joined rows that FAIL the void cut",
+        "sign_convention": "Delta f_CW = f_CW^{non-void} - f_CW^{void}",
+        "SE_formula": "sqrt(p_v(1-p_v)/n_v + p_nv(1-p_nv)/n_nv)",
+        "z_crit_95": 1.959963984540054
+      }
+    }
+  },
+  "runtime_seconds": 18.95
+}

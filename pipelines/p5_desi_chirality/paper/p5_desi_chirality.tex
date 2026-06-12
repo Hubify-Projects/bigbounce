@@ -18,7 +18,29 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.65-2026-06-11}
+\newcommand{\paperVersion}{v0.1.66-2026-06-11}
+% v0.1.66-2026-06-11 (EXT4 external-round closure wave; truth audit at
+%   project-context/peer-reviews/EXT4_P5_TRUTH_AUDIT.md. NM-B (the round's
+%   one VERIFIED-substantive finding): the Bonferroni-5 primary family
+%   mixed unlike estimands — the two catalog-native GALZONE rows (V2-
+%   REVOLVER, V2-VIDE) tabulated only one-sample void f_CW while the
+%   declared primary estimand is the two-sample Delta-f_CW contrast.
+%   Closed by computing the GALZONE non-void complement (rows that fail
+%   the catalog-native void cut OUT=0 ^ ZONE>=0 ^ VOID0>=0) from the
+%   committed DESIVAST GALZONE+ZONEVOID join used by artifact 22, and
+%   tabulating true two-sample Delta-f_CW / SE / z / p / 95% CI for
+%   rows 4-5 of tab:analysis_tree using the same sign convention and
+%   binomial-SE formulae as tab:desivast_three_algo. V2-REVOLVER:
+%   n_void=104,912 / n_nonvoid=40,877, Delta=-0.0037, SE=0.0029,
+%   z=-1.25, p=0.21, 95% CI [-0.0094,+0.0021]. V2-VIDE: n_void=74,111
+%   / n_nonvoid=71,678, Delta=+0.0019, SE=0.0026, z=+0.72, p=0.47,
+%   95% CI [-0.0033,+0.0070]. Both nominal nulls below the Bonferroni-5
+%   threshold |z|=2.58; family-level conclusion unchanged. Artifact:
+%   outputs/30_ext4_galzone_complement_contrasts.json. EXT3 items NM3
+%   ("BGS-randoms-weighted low-z stress test" rename) and Nm5
+%   (Conclusions DESIVAST-first ordering) verified IN-PLACE at v0.1.65
+%   under updated line numbers (the EXT3 audit grepped stale lines).
+%   No truth-audit edits required for those items.)
 % v0.1.65-2026-06-11 (EXT3 external-round closure wave; truth audit at
 %   project-context/peer-reviews/EXT3_P5_TRUTH_AUDIT.md. EF4: multiplicity
 %   paragraph rewritten to lead with the declared primary estimand
@@ -835,15 +857,17 @@ exposes three independent void-finding algorithms (VoidFinder,
 V2-REVOLVER, V2-VIDE) plus two catalog-native zone definitions, giving
 five effective primary-class statistics. The declared primary estimand
 is the void-vs-non-void contrast $\Delta f_{\rm CW}$, whose two-sample
-statistics are tabulated for the three algorithms in
-Table~\ref{tab:desivast_three_algo}: $|z_\Delta| \leq 1.12$, all
-two-sided $p_\Delta \geq 0.26$. Treating the five DESIVAST estimators
-as a Bonferroni-5 family at $\alpha = 0.05$, the per-test threshold is
-$|z|^{\rm Bonf}_{0.05,5} \approx 2.58$; no tabulated contrast
-approaches it, and on the supporting one-sample axis all five
-estimators likewise return $|\sigma_{\rm void}| < 2$, below the same
-threshold. The family-level conclusion is a clean primary null on the
-contrast itself, not merely on the one-sample void fractions. The secondary V-Web / Tempel / ASTRA
+statistics are tabulated for the three sphere-PIS algorithms in
+Table~\ref{tab:desivast_three_algo} ($|z_\Delta| \leq 1.12$, all
+two-sided $p_\Delta \geq 0.26$) and for the two GALZONE catalog-native
+estimators in \S\ref{sec:desivast_catalog_native}
+(V2-REVOLVER: $|z_\Delta| = 1.25$, $p_\Delta = 0.21$;
+V2-VIDE: $|z_\Delta| = 0.72$, $p_\Delta = 0.47$). Treating the five
+DESIVAST estimators as a Bonferroni-5 family at $\alpha = 0.05$, the
+per-test threshold is $|z|^{\rm Bonf}_{0.05,5} \approx 2.58$; no
+tabulated contrast across the five rows approaches it. The
+family-level conclusion is a clean primary null on the declared
+contrast estimand uniformly across all five rows. The secondary V-Web / Tempel / ASTRA
 / T-Web / per-stratification estimators carry their own multiplicity
 budget but, per the primary/secondary separation above, do not enter
 the headline-result family. We caution that any single secondary-path
@@ -877,8 +901,8 @@ Path & Tests & $K$ & Status \\
 DESIVAST VoidFinder & void vs non-void $f_{\rm CW}$ & 1 & primary \\
 DESIVAST V2-REVOLVER & void vs non-void $f_{\rm CW}$ & 1 & primary \\
 DESIVAST V2-VIDE & void vs non-void $f_{\rm CW}$ & 1 & primary \\
-V2-REVOLVER catalog-native & GALZONE void $f_{\rm CW}$ & 1 & primary \\
-V2-VIDE catalog-native & GALZONE void $f_{\rm CW}$ & 1 & primary \\
+V2-REVOLVER catalog-native & GALZONE void vs non-void $f_{\rm CW}$ & 1 & primary \\
+V2-VIDE catalog-native & GALZONE void vs non-void $f_{\rm CW}$ & 1 & primary \\
 \hline
 \multicolumn{4}{l}{\textbf{Secondary sweep (Bonferroni-9; $\alpha=0.05$, threshold $|\sigma|=2.77$)}} \\
 Phase 2 cell $(R_s=10,\lambda=0.0)$ & max-class residual & 1 & secondary \\
@@ -2039,7 +2063,28 @@ Both corrected void $\sigma$ values remain null and are
 \emph{smaller in magnitude} than the sphere-approximation analogues
 (V2-REVOLVER catalog-native $-0.52$ vs sphere $-0.88$; V2-VIDE
 catalog-native $-1.50$ vs sphere $-1.67$), confirming that the
-catalog-native void definition is the cleaner statistic. The
+catalog-native void definition is the cleaner statistic.
+The declared primary estimand $\Delta f_{\rm CW} \equiv
+f_{\rm CW}^{\rm non\mbox{-}void} - f_{\rm CW}^{\rm void}$
+(sign convention of Table~\ref{tab:desivast_three_algo}) is now also
+tabulated on the catalog-native axis, with the non-void complement
+defined as the GALZONE-joined rows that fail the catalog-native void
+cut (\texttt{OUT}$=0\,\wedge\,$\texttt{ZONE}$\geq 0\,\wedge\,$%
+\texttt{VOID0}$\geq 0$). V2-REVOLVER: $n_{\rm void} = 104{,}912$
+($f_{\rm CW}^{\rm void} = 0.4992$) vs $n_{\rm non\mbox{-}void} =
+40{,}877$ ($f_{\rm CW}^{\rm non\mbox{-}void} = 0.4955$),
+$\Delta f_{\rm CW} = -0.0037$, ${\rm SE}(\Delta) = 0.0029$,
+$z_\Delta = -1.25$, two-sided $p_\Delta = 0.21$, $95\%$ CI
+$[-0.0094, +0.0021]$. V2-VIDE: $n_{\rm void} = 74{,}111$
+($0.4972$) vs $n_{\rm non\mbox{-}void} = 71{,}678$ ($0.4991$),
+$\Delta f_{\rm CW} = +0.0019$, ${\rm SE}(\Delta) = 0.0026$,
+$z_\Delta = +0.72$, two-sided $p_\Delta = 0.47$, $95\%$ CI
+$[-0.0033, +0.0070]$. Both two-sample contrasts are nominal nulls
+sitting well below the Bonferroni-5 threshold
+$|z|^{\rm Bonf}_{0.05,5} \approx 2.58$, so the catalog-native rows
+(rows 4--5 of Table~\ref{tab:analysis_tree}) carry the same
+declared primary estimand as the three sphere-PIS rows
+(\artifact{pipelines/p5\_desi\_chirality/outputs/30\_ext4\_galzone\_complement\_contrasts.json}). The
 \texttt{GALZONE} \texttt{EDGE} and \texttt{DEPTH} quality flags do not
 alter this conclusion: every catalog-native void member already
 carries $\texttt{EDGE} = 0$ (adding the $\texttt{EDGE} = 0$
