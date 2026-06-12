@@ -52,6 +52,21 @@ a Native-Trained Novelty Fraction from 37.3 Million Sources and Map Patches}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
 \date{June 2026}
+% v3.1.97 (2026-06-11 — EXT4 closure wave; truth audit at
+%   project-context/peer-reviews/EXT4_P3_TRUTH_AUDIT.md. EXT4 externals:
+%   Grok ACCEPT (2nd consecutive), ChatGPT MAJOR→effective-MINOR after
+%   audit, Gemini MAJOR fully falsified (6/6 stale-PDF/OCR). 8 one-line
+%   closures: recount cross-refs at the three downstream sites ChatGPT
+%   named (per-class rates §III.A — 6.5M-vs-20.3M denominator reconciliation;
+%   12-candidate cut TARGETTYPE-agnostic pointer; 5,384 QSO-candidate
+%   parent-population-framing sentence §V.A); §VI.E Liang comparison
+%   lead-clause reorder (recount first); Table V row (d) circular-orbit
+%   qualifier inline; Conclusion item 2 reordered to lead with 17.8%
+%   genuine novelty (58.8% demoted to database-coverage); top-200
+%   artifact rate restated as 0/200 with binomial ≤1.5% 95% CL; Fig 1
+%   83-star display-aid-not-density-test clause; Conclusion item 5
+%   "not a cosmological detection" appended. ChatGPT FM1 STALE-at-EXT4
+%   (already closed by v3.1.96). Gap contribution: 2 genuinely new.)
 % v3.1.96 (2026-06-11 — FM1 eROSITA scaler-refit COMPUTED (was queued; EXT3
 %   FM1, COMPUTE_QUEUE §2 load-bearing leg; OpenAI R32conf-E6 ask). Controlled
 %   A-vs-B on the pod A4000, identical seeds (np42 split + torch42 init/order),
@@ -369,7 +384,7 @@ The \BigAE{} model is a symmetric fully connected autoencoder with a configurabl
 
 The encoder consists of four linear layers with batch normalization and ReLU activations, with dropout ($p = 0.15$, $0.10$) after the first two layers; the decoder mirrors the encoder. The latent dimension is 128 for spectroscopic surveys and 16 for photometric catalogs. The Path-C native CMB convolutional autoencoder (Planck; \S\ref{sec:planck}) uses three convolutional layers $+$ a 128-dim fully connected bottleneck ($1.1\!\times\!10^6$ parameters). Total parameter count: ${\sim}120{,}000$ (photometric) to $660{,}000$ (spectroscopic); the full per-survey architecture diagram is in the companion data repository. \BigAE{} is a deterministic autoencoder (not variational), prioritizing reconstruction fidelity and anomaly-score interpretability.
 
-Figure~\ref{fig:umap_score} visualizes the structure of the learned representation: a 2D UMAP embedding of the \BigAE{} latent space (PCA $128\!\to\!30$ pre-reduction, then UMAP) on a $500{,}000$-spectrum stratified DESI~DR1 sample, colored by per-spectrum anomaly score. The unsupervised representation organizes spectra such that high-score anomalies concentrate in distinct islands and lobes of the embedding rather than scattering uniformly through the bulk population; the 83 gold-tier anomalies (overplotted stars; a ranked visual-display set of top DESI anomalies from the companion high-$z$ tracer pipeline, force-included in the embedding sample --- distinct from the 116-object GOLD QSO-candidate confidence tier of \S\ref{sec:fnl}) cluster on and around the high-score lobe.
+Figure~\ref{fig:umap_score} visualizes the structure of the learned representation: a 2D UMAP embedding of the \BigAE{} latent space (PCA $128\!\to\!30$ pre-reduction, then UMAP) on a $500{,}000$-spectrum stratified DESI~DR1 sample, colored by per-spectrum anomaly score. The unsupervised representation organizes spectra such that high-score anomalies concentrate in distinct islands and lobes of the embedding rather than scattering uniformly through the bulk population; the 83 gold-tier anomalies (overplotted stars; a ranked visual-display set of top DESI anomalies from the companion high-$z$ tracer pipeline, force-included in the embedding sample, and therefore a display aid rather than an unbiased density test --- distinct from the 116-object GOLD QSO-candidate confidence tier of \S\ref{sec:fnl}) cluster on and around the high-score lobe.
 
 \begin{figure}[tb]
 \centering
