@@ -1,0 +1,41 @@
+{
+ "description": "EXT4 FB-175-1 closure: catalog-wide per-row flip-identity QC on the committed 8.47M-row chirality catalog using the full-coverage raw column set (coalesce(p_*_raw_y, p_*_raw_x)). This is the catalog-wide companion to ext3_nfm1_flip_identity_qc.json (which evaluates only the 88,278-row intersection where both raw legs AND the equivariant raw columns are present), and aligns with the 'full-coverage raw columns' flag definition used by ext3_nfm1_hc_dipole_qc_rerun.json. Float32 storage precision is applied to all probability columns before the identity arithmetic, matching how the inference outputs were originally stored.",
+ "date_utc": "2026-06-11T23:23:05Z",
+ "catalog_path": "pipelines/p5_desi_chirality/data/p4_chirality.parquet",
+ "n_rows_total": 8474531,
+ "n_rows_with_raw_columns_present": 8474531,
+ "n_rows_with_eq_columns_present": 8474531,
+ "n_rows_evaluated": 8474531,
+ "flag_definition": "any recovered flip-pass probability outside [0,1] beyond 1e-3 using the full-coverage raw columns (coalesce of _y over _x raw legs); matches ext3_nfm1_hc_dipole_qc_rerun.json flag definition.",
+ "sum_deviation": {
+  "p50": 4.6566128730773926e-08,
+  "p90": 1.2852251529693604e-07,
+  "p99": 2.115046754624924e-07,
+  "p99.9": 2.738088369369507e-07,
+  "max": 4.260800778865814e-07
+ },
+ "bound_excursion_any_channel": {
+  "p50": 0.0,
+  "p90": 0.0,
+  "p99": 0.00460228472948071,
+  "p99.9": 0.015386963486671568,
+  "max": 0.09009438753128052
+ },
+ "bound_excursion_cw_channel": {
+  "p50": 0.0,
+  "p90": 0.0,
+  "p99": 0.002185697853565205,
+  "p99.9": 0.010926599353552474,
+  "max": 0.08240815997123718
+ },
+ "rows_violating_beyond_1e-3_any_channel": 249066,
+ "fraction_violating_beyond_1e-3_any_channel": 0.029389945001086194,
+ "rows_violating_beyond_1e-3_cw_channel": 132996,
+ "fraction_violating_beyond_1e-3_cw_channel": 0.015693611835274426,
+ "float32_eps": 1.1920929e-07,
+ "companion_artifacts": {
+  "intersection_only_88k_rows": "pipelines/p2_chirality/outputs/canonical_provenance/ext3_nfm1_flip_identity_qc.json",
+  "hc_dipole_rerun_under_flag": "pipelines/p2_chirality/outputs/canonical_provenance/ext3_nfm1_hc_dipole_qc_rerun.json"
+ },
+ "conclusion": "On the catalog-wide raw column set (~union of the two raw legs), a nonzero fraction of rows show recovered flip-pass probabilities outside [0,1] beyond 1e-3. The any-channel violator rate, the single-CW-channel violator rate, the max any-channel bound excursion, and the max normalization deviation are the numerical anchors for the Appendix B.d narrative in the paper. The violations are a raw/eq pipeline-pass mismatch (raw probabilities carried via the standalone raw-inference pass were not exactly reproducible from 2*p_eq - p_flip at storage precision on the 8.39M rows where the equivariant raw companion column is absent), not float32 rounding. The HC dipole rerun excluding flagged rows (ext3_nfm1_hc_dipole_qc_rerun.json) leaves the headline real-space dipole null-consistent (z=+0.48 excluded vs +0.52 baseline)."
+}
