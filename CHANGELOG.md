@@ -16,6 +16,31 @@ block at the top of the corresponding `.tex` source file.
 
 ## Paper I(b) — `arxiv/paper1b_mcmc_companion.tex`
 
+### v1B.0.59 (2026-06-11) — EXT4 external-round closure wave
+
+- Commit: `(this wave)` (`feat(P1B v1B.0.59): EXT4 closure wave — C1 CHANGELOG gap, C3 README DESI/AIC, C6 quintom citation, C7 Data Avail chain sentence, C8 README PR4 label`).
+- Wave: EXT4 truth-audit (`project-context/peer-reviews/EXT4_P1B_TRUTH_AUDIT.md`).
+  Highlights: CHANGELOG gap closed (C1); reproducibility/README.md corrected —
+  "DESI DR2" removed from full-tension config description (SDSS BAO only, C3), AIC/BIC
+  row clarified to show only χ²_eff reported (C3), birefringence label corrected to
+  PR3+WMAP9 (C8); conclusion quintom-B citation changed to Cai2010quintomReview
+  alongside DESI2025DR2 (C6); Data Availability chain sentence clarified that frozen
+  chains ARE committed (C7). Five VERIFIED findings closed; zero physics changes.
+- HuggingFace datasets (DOI / URL): unchanged from v1B.0.56 (see below).
+
+### v1B.0.58 (2026-06-11) — EXT3 external-round closure wave
+
+- Commit: `f5617bce` (`feat(P1B v1B.0.58): EXT3 closure wave — regenerated frozen
+  parameter summary with S8, PR3/PR4 scoping, Vincenzi SN-overlap cite, exploratory
+  w0wa reframe, HF URLs`).
+- Wave: EXT3 truth-audit (`project-context/peer-reviews/EXT3_P1B_TRUTH_AUDIT.md`).
+  Highlights: frozen full_tension parameter_summary_CORRECTED.json regenerated from
+  raw chains with S8 + age (all seven Table I parameters present); PR3/PR4 Eskilt+Komatsu
+  footnote sharpened; Vincenzi et al. 2025 SN-overlap citation; "Quintom-B empirical
+  anchor" retitled "Exploratory w0wa cross-check" and marked overlap-uncorrected/provisional;
+  three HuggingFace dataset URLs inserted in-text; DOI language corrected to pending-at-submission.
+- HuggingFace datasets (DOI / URL): unchanged from v1B.0.56 (see below).
+
 ### v1B.0.57 (2026-06-10) — EXT2 external-round closure wave
 
 - Commit: `63931207` (`feat(P1B v1B.0.57): EXT2 closure wave — 176,240

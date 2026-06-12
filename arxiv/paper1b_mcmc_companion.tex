@@ -119,8 +119,27 @@
 %   FALSIFIED list (14 items) not acted on.)
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1B.0.58}
+\newcommand{\paperVersion}{v1B.0.59}
 \newcommand{\paperTimestamp}{June 11, 2026 PDT}
+% v1B.0.58->59 (2026-06-11 — EXT4 external-round closure wave; truth audit at
+%   project-context/peer-reviews/EXT4_P1B_TRUTH_AUDIT.md):
+%   C1: v1B.0.58 + v1B.0.59 entries added to root CHANGELOG.md (gap was real;
+%      JSON-invalidity portion of the finding FALSIFIED-AGAIN per pattern-052).
+%   C3: reproducibility/README.md "What This Bundle Reproduces" header corrected —
+%      "DESI DR2" removed from full-tension config description (frozen
+%      LCDM+DeltaN_eff chains use SDSS BAO only; DESI DR2 enters only iter2 w0wa);
+%      AIC/BIC row clarified — "chi2_eff | YES | ... AIC/BIC/ln B NOT reported".
+%   C6: conclusion L2078 quintom-B citation changed from bare \cite{DESI2025DR2}
+%      to \cite{Cai2010quintomReview} (tested against DESI DR2 \cite{DESI2025DR2});
+%      Cai2010quintomReview already live at L1729, bibkey verified in references.bib.
+%   C7: Data Availability chain sentence rewritten — "regenerate via reproduce_cosmology.sh"
+%      -> "Frozen MCMC chains are committed (HuggingFace datasets listed in Appendix A);
+%      fresh re-verification chains can be regenerated via reproduce_cosmology.sh".
+%   C8: reproducibility/README.md birefringence row "Literature value (WMAP+Planck PR4)"
+%      -> "Model fiducial value; headline beta=0.342+-0.094 deg from Eskilt & Komatsu
+%      (2022) PR3+WMAP9 analysis (see fn. 1 of manuscript)".
+%   5 VERIFIED findings closed; zero physics changes; Gemini Ge1-Ge4 FALSIFIED
+%      (extraction artifacts; downgrade to MINOR has no source-verified basis).
 % v1B.0.57->58 (2026-06-11 — EXT3 external-round closure wave; truth audit at
 %   project-context/peer-reviews/EXT3_P1B_TRUTH_AUDIT.md):
 %   F3: frozen full_tension parameter_summary_CORRECTED.json REGENERATED from
@@ -2075,7 +2094,7 @@ and calibration assumptions~\cite{LiteBIRD2023}, a $\beta\simeq 0.27^\circ$
 signal would be detected relative to $\beta=0$ at ${\sim}9\sigma$ by
 LiteBIRD in the early 2030s.
 
-\textit{Exploratory $w_0 w_a$ cross-check.}---The converged DESI~DR2 + Planck~NPIPE + Pantheon+~\cite{Brout2022PantheonPlus} + DES-SN5YR~\cite{DES2024SN5YR} Cobaya chain with the $w_0 w_a$ free-parameter extension ($128{,}385$ accepted samples across 16 MPI chains; $\hat R - 1 = 0.00820$, below the standard $\hat R\!-\!1\!<\!10^{-2}$ publication target) supplies the GetDist $w_0 w_a$ posteriors of Table~\ref{tab:iter2_posterior}, an exploratory, overlap-uncorrected test of the quintom-B scenario~\cite{DESI2025DR2} that remains provisional pending the queued SN-overlap control chains (Sec.~\ref{sec:verification}, caveat~(e)).
+\textit{Exploratory $w_0 w_a$ cross-check.}---The converged DESI~DR2 + Planck~NPIPE + Pantheon+~\cite{Brout2022PantheonPlus} + DES-SN5YR~\cite{DES2024SN5YR} Cobaya chain with the $w_0 w_a$ free-parameter extension ($128{,}385$ accepted samples across 16 MPI chains; $\hat R - 1 = 0.00820$, below the standard $\hat R\!-\!1\!<\!10^{-2}$ publication target) supplies the GetDist $w_0 w_a$ posteriors of Table~\ref{tab:iter2_posterior}, an exploratory, overlap-uncorrected test of the quintom-B scenario~\cite{Cai2010quintomReview} (tested against DESI~DR2~\cite{DESI2025DR2}) that remains provisional pending the queued SN-overlap control chains (Sec.~\ref{sec:verification}, caveat~(e)).
 
 \subsection*{Data and Code Availability}
 
@@ -2095,8 +2114,10 @@ combination, stock CAMB, no custom modifications),
 NaMaster driver scripts, and the implementation map
 (\texttt{IMPLEMENTATION\_MAP.md}), alongside galaxy-spin pipeline code used
 by Paper~IV~\cite{Golden2026P4} but not by any analysis of this paper.
-MCMC chains: regenerate via \texttt{reproduce\_cosmology.sh}
-($\sim$4--12\,h per configuration on 4 CPU cores).
+Frozen MCMC chains are committed (HuggingFace datasets listed in
+Appendix~A); fresh re-verification chains can be regenerated via
+\texttt{reproduce\_cosmology.sh} ($\sim$4--12\,h per configuration on
+4 CPU cores).
 HuggingFace dataset URLs for the three accompanying datasets (MCMC chain
 diagnostics, NaMaster pipeline artifacts, ALP parameter chains) are listed
 below in Appendix~A under ``HuggingFace datasets''; DOI assignment is

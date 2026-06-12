@@ -71,8 +71,9 @@ reproducibility/
 ## What This Bundle Reproduces
 
 Values quoted below track the frozen-chain results recorded in companion
-Paper I(b) Table IV (full-tension configuration: Planck NPIPE + BAO + Pantheon+
-+ DES-SN5YR + DESI DR2). Source of truth:
+Paper I(b) Table IV (full-tension configuration: Planck NPIPE + SDSS BAO +
+Pantheon+ + DES-SN5YR). DESI DR2 enters only the separate iter2 w₀wₐ chain
+and is not part of the frozen ΛCDM+ΔN_eff fit. Source of truth:
 `reproducibility/cosmology/frozen/full_tension_20260311_1728/diagnostics/parameter_summary_CORRECTED.json`.
 
 | Paper Result | Reproducible? | How |
@@ -81,9 +82,9 @@ Paper I(b) Table IV (full-tension configuration: Planck NPIPE + BAO + Pantheon+
 | σ₈ = 0.8034 ± 0.0084 | YES | `cobaya_full_tension.yaml` with stock CAMB |
 | ΔN_eff = −0.020 ± 0.169 | YES | `cobaya_full_tension.yaml` with stock CAMB |
 | Galaxy spin A₀, p, q | YES | `spin_fit_stan.py` + Shamir (2024) aggregate counts |
-| χ²_eff, AIC, BIC | YES | From MCMC chain maximum likelihood |
+| χ²_eff | YES | From MCMC chain maximum likelihood; AIC/BIC/ln B NOT reported in manuscript (deferred to nested sampling) |
 | ln B (Bayes factors) | PARTIAL | Requires PolyChord (not included) |
-| β ≈ 0.27° birefringence | N/A | Literature value (WMAP+Planck PR4) |
+| β ≈ 0.27° birefringence | N/A | Model fiducial value; headline β = 0.342° ± 0.094° from published Eskilt & Komatsu (2022) PR3+WMAP9 analysis (see fn. 1 of manuscript) |
 | Corner plots | YES | From chains using GetDist |
 
 ## What This Bundle Does NOT Reproduce
