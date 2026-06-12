@@ -1,56 +1,56 @@
 [
  {
   "paperSlug": "paper-1a",
-  "version": "v1A.0.64",
+  "version": "v1A.0.65",
   "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1a_ech_nogo.pdf",
-  "sitePdfPath": "/papers/paper1a_ech_nogo_v1A.0.64.pdf",
-  "changelog": "EXT5 closures: two self-closure regressions fixed with correct physics (NJL rho ~ 4e-69 rho_Lambda, far BELOW; Xi = rho_Lambda/M_Pl^4); ChatGPT's catches verified real.",
+  "sitePdfPath": "/papers/paper1a_ech_nogo_v1A.0.65.pdf",
+  "changelog": "R35conf closures: e^{+3DeltaN} sign rederived and fixed, gamma spread 0.037, sigma(f_NL) label split + 4 clarity items; EXT5 physics fixes confirmed clean; OpenAI's counter-challenge falsified (inverted hbar-c).",
   "datestamp": "2026-06-12",
-  "texCommit": "eea70e53"
+  "texCommit": "ea57f692"
  },
  {
   "paperSlug": "paper-1b",
-  "version": "v1B.0.61",
+  "version": "v1B.0.62",
   "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1b_mcmc_companion.pdf",
-  "sitePdfPath": "/papers/paper1b_mcmc_companion_v1B.0.61.pdf",
-  "changelog": "EXT5 closures: README-Table III alignment, ALP restricted-subsets table, PArthENoPE flag, w0wa caveat front-loaded.",
+  "sitePdfPath": "/papers/paper1b_mcmc_companion_v1B.0.62.pdf",
+  "changelog": "R35conf closures: DeltaNeff one-sided 95% UL recomputed from the 93,066-sample chains (< 0.40, falsifying the audit's ~0.27 shortcut); w0wa caveat front-loaded; 14 minors.",
   "datestamp": "2026-06-12",
-  "texCommit": "eea70e53"
+  "texCommit": "ea57f692"
  },
  {
   "paperSlug": "paper-2",
-  "version": "v1.7.56",
+  "version": "v1.7.57",
   "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/research/focused_paper_source_integration/02_full_draft.pdf",
-  "sitePdfPath": "/papers/paper2_fnl_forecast_v1.7.56.pdf",
-  "changelog": "EXT5 closure: stale DESI DR1 f_NL sentence replaced with Chaussidon et al. 2024 citation \u2014 all three external vendors now effectively ACCEPT/MINOR.",
+  "sitePdfPath": "/papers/paper2_fnl_forecast_v1.7.57.pdf",
+  "changelog": "R35conf closures: Chaussidon bib corrected to the constraints paper (2411.17623, verified in rendered refs); unsupported beta=0.27deg prediction honestly removed; 4 one-liners.",
   "datestamp": "2026-06-12",
-  "texCommit": "eea70e53"
+  "texCommit": "ea57f692"
  },
  {
   "paperSlug": "paper-3",
-  "version": "v3.1.99",
+  "version": "v3.1.100",
   "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p3_anomaly_engine/paper3_draft.pdf",
-  "sitePdfPath": "/papers/paper3_anomaly_catalog_v3.1.99.pdf",
-  "changelog": "EXT5 closures: H200 caption residue, conclusion 17.8%-first reorder applied for real, 0/200 binomial form everywhere (persistence class closed with old-phrase-gone checks).",
+  "sitePdfPath": "/papers/paper3_anomaly_catalog_v3.1.100.pdf",
+  "changelog": "R35conf closures (v3.1.100): Exemplar-Set rename de-conflates display set from GOLD tier; explicit BF factorization arithmetic; Jaccard disambiguation; Gaia lineage caveat; Fisher artifact unraised first time in 7 rounds.",
   "datestamp": "2026-06-12",
-  "texCommit": "eea70e53"
+  "texCommit": "ea57f692"
  },
  {
   "paperSlug": "paper-4",
-  "version": "v1.0.178",
+  "version": "v1.0.179",
   "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p2_chirality/chirality_catalog_paper.pdf",
-  "sitePdfPath": "/papers/chirality_catalog_paper_v178.pdf",
-  "changelog": "EXT5 closures: +3.64sigma scoped pre-MASTER, 3-round carryover applied, WLS precision, p_LEE inversion; Gemini ACCEPT with zero extraction artifacts.",
+  "sitePdfPath": "/papers/chirality_catalog_paper_v179.pdf",
+  "changelog": "R35conf: effectively clean \u2014 2 minor sentences closed (0.32% partition scoping; Parquet QC flag disclosure); headline science unchallenged.",
   "datestamp": "2026-06-12",
-  "texCommit": "eea70e53"
+  "texCommit": "ea57f692"
  },
  {
   "paperSlug": "paper-5",
-  "version": "v0.1.68",
+  "version": "v0.1.69",
   "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf",
-  "sitePdfPath": "/papers/p5_desi_chirality_v0.1.68.pdf",
-  "changelog": "EXT5 closures: Appendix B contingency tables regenerated programmatically with exact marginal assertions (script + artifact committed); scope sweep clean.",
+  "sitePdfPath": "/papers/p5_desi_chirality_v0.1.69.pdf",
+  "changelog": "R35conf closures: duplicate-row rate root-caused (2.7% mixed populations -> 3.56% of 812,793 env-labeled rows, denominator inline at 5 sites); Appendix B verified diff=0 cell-by-cell.",
   "datestamp": "2026-06-12",
-  "texCommit": "eea70e53"
+  "texCommit": "ea57f692"
  }
 ]
