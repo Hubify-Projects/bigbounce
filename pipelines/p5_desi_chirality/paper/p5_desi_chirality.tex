@@ -18,7 +18,23 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.68-2026-06-12}
+\newcommand{\paperVersion}{v0.1.69-2026-06-12}
+% v0.1.69-2026-06-12 (R35conf closure wave; truth audit at
+%   project-context/peer-reviews/R35conf_P5_TRUTH_AUDIT.md.
+%   ARITHMETIC: n_rows=812,793; n_unique=783,820; n_dups=28,973;
+%   28,973/812,793 = 3.56% (row-level); design-effect sqrt(812,793/783,820)=1.018.
+%   (C0) R35-P5-O13 (VERIFIED MAJOR): duplicate-row percentage corrected
+%   from 2.7% to 3.56% at all four occurrences (l.368, l.1047, l.1100,
+%   l.2324/2410 area); denominator stated inline as "of 812,793 env-labeled
+%   rows" for precision. The old 2.7% did not correspond to any derivable
+%   fraction from the committed counts.
+%   (C1) R35-P5-O8 (VERIFIED MINOR): abstract HEALPix p-value 0.61
+%   corrected to 0.607 to match Table VI (tab:healpix l.1537).
+%   (C2) R35-P5-G5 (VERIFIED MINOR): abstract chi^2=3.55 p=0.31
+%   labeled as asymptotic chi^2; p_shuffle parenthetical added to
+%   distinguish empirical permutation p from asymptotic p.
+%   Headline science unchanged; DESIVAST three-algorithm null stands;
+%   V-Web class chi^2=3.55 p=0.31 stands; all Bonferroni-5 <= 0.004.)
 % v0.1.68-2026-06-12 (EXT5 external-round closure wave; truth audit at
 %   project-context/peer-reviews/EXT5_P5_TRUTH_AUDIT.md.
 %   (1) EXT5-P5-C2 (MAJOR — VERIFIED): Appendix B contingency tables
@@ -364,9 +380,9 @@ mutually comparable across classes of different $n$. The range across
 classes is
 $1.98$\,percentage points, an omnibus $4\times2$ homogeneity test
 across the four classes is null ($\chi^2 = 3.55$, 3~d.o.f.,
-$p = 0.31$ on the row-level parent; $\chi^2 = 3.00$, $p = 0.39$ on
-the $783{,}820$ unique-spiral subset, so the $2.7\%$ duplicate rows
-do not drive the verdict), and the negative $\sigma$ values
+$p = 0.31$ (asymptotic $\chi^2$) on the row-level parent; $\chi^2 = 3.00$, $p = 0.39$ on
+the $783{,}820$ unique-spiral subset, so the $3.56\%$ duplicate rows
+(28{,}973 of 812{,}793 env-labeled rows) do not drive the verdict), and the negative $\sigma$ values
 in filament and cluster track the catalog-wide
 $\Delta f_{\rm CW}\!=\!-0.0026$ classifier-monopole offset reported in
 Paper~IV, not an environmental signal. A Phase~2 sensitivity sweep
@@ -391,7 +407,7 @@ Bonferroni-5 quintile threshold $|\sigma|\!\approx\!3.09$
 $|\sigma|\!\approx\!2.58$ DESIVAST-primary family threshold at $\alpha\!=\!0.05$)),
 and sky-position
 (HEALPix scans at NSIDE $\in \{16, 32, 64\}$ with label-shuffle nulls
-$p\!=\!0.61/0.135/0.413$): none reach $3\sigma$ after look-elsewhere
+$p\!=\!0.607/0.135/0.413$): none reach $3\sigma$ after look-elsewhere
 correction. We interpret this as no evidence for environment-dependent
 chirality beyond the catalog-monopole offset at current sensitivity;
 the V-Web void class at $z\!\lesssim\!0.24$ is sample-size limited at
@@ -1044,8 +1060,8 @@ statistically consistent with a single common CW fraction (the
 $4{\times}2$ integer contingency table is tabulated in
 Appendix~\ref{app:contingency}, Table~\ref{tab:contingency_classCWCCW},
 for independent recomputation). Because
-the row-level parent repeats $2.7\%$ of \texttt{TARGETID}s across
-program coadds (technically violating the independence assumption of
+the row-level parent repeats $3.56\%$ of \texttt{TARGETID}s across program coadds
+(28{,}973 duplicate rows in 812{,}793 env-labeled rows; technically violating the independence assumption of
 the contingency test), we recompute the same test on the
 $783{,}820$-row unique-spiral subset (one row per \texttt{TARGETID}):
 $\chi^2 = 3.00$, $p = 0.39$ ($\chi^2 = 2.92$, $p = 0.41$ further
@@ -1097,7 +1113,7 @@ the $791{,}635$ unique chirality-relevant matched spirals; $7{,}815$
 lack an environment row, \S\ref{sec:results_vweb}). Bars show the
 observed $f_{\rm CW}$ per class; black error bars are $95\%$ Jeffreys
 binomial credible intervals, drawn on the row-level parent --- the
-$2.7\%$ duplicate rows violate strict i.i.d., but the worst-case
+$3.56\%$ duplicate rows (28{,}973 of 812{,}793 env-labeled rows) violate strict i.i.d., but the worst-case
 design-effect inflation of the interval widths is
 $\sqrt{812{,}793/783{,}820} = 1.018$, i.e.\ $\le\!1.9\%$, and the
 homogeneity $\chi^2$ is recomputed on the unique-spiral subset in
@@ -2321,15 +2337,15 @@ the per-class chirality signal \emph{after subtracting} the P5
 matched-spiral catalog monopole $f_{\rm CW}^{\rm P5} = 0.4972$
 ($-5.07\sigma$ on the $n = 812{,}793$ env-labeled spiral rows of
 Table~\ref{tab:cw_vs_env}. \emph{Parent reconciliation:} the
-$21{,}158$-row excess (2.7\%) over the $791{,}635$ unique
-chirality-relevant matched spirals arises mechanically in the
+$28{,}973$-row excess ($3.56\%$ of the $812{,}793$ env-labeled rows) over the $783{,}820$ unique
+env-matched spirals arises mechanically in the
 environment join — the V-Web environment table inherits one row per
 DESI \texttt{zall} survey--program coadd entry, so \texttt{TARGETID}s
 observed under more than one program carry duplicate environment rows
 ($14{,}622{,}283$ rows over $14{,}100{,}704$ unique
 \texttt{TARGETID}s), and the inner join counts those spirals once per
 coadd row. The join covers $783{,}820$ unique env-matched spirals
-($7{,}815$ spirals have no environment row and drop out); only $79$
+($7{,}815$ of the $791{,}635$ unique chirality-relevant matched spirals have no environment row and drop out); only $79$
 duplicated \texttt{TARGETID}s carry conflicting class labels between
 their coadd rows (boundary cells re-evaluated at slightly different
 pipeline redshifts). An earlier draft attributed the excess to a
@@ -2407,8 +2423,8 @@ mean $+0.008$, std $1.050$, skewness $+0.074$, and excess kurtosis
 $+0.092$. The unit standard deviation (within $5\%$; because each
 pixel's $\sigma$ is normalized by its own counting error,
 heterogeneous pixel populations alone would not inflate the variance
---- the mild excess over unity instead traces the $2.7\%$ duplicate
-rows and small residual selection-function structure, as the
+--- the mild excess over unity instead traces the $3.56\%$ duplicate
+rows (28{,}973 of 812{,}793 env-labeled rows) and small residual selection-function structure, as the
 unique-\texttt{TARGETID} recompute below returning std $1.015$
 confirms --- not evidence for non-shot-noise tails), near-zero
 skewness, and near-zero excess kurtosis

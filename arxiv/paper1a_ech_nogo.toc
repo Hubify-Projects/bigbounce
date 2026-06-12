@@ -57,20 +57,20 @@
 \contentsline {section}{\numberline {XII}Discussion}{20}{section*.55}%
 \contentsline {subsection}{\numberline {A}The Inflationary Suppression Factor}{20}{section*.56}%
 \contentsline {subsection}{\numberline {B}Theoretical Implications}{21}{section*.57}%
-\contentsline {section}{\numberline {XIII}Surviving ECH-Independent Class Tests}{21}{section*.58}%
-\contentsline {section}{\numberline {XIV}Limitations and Future Directions}{22}{section*.59}%
-\contentsline {subsection}{\numberline {A}Current Limitations}{22}{section*.60}%
-\contentsline {subsubsection}{\numberline {1}Theoretical}{22}{section*.61}%
+\contentsline {section}{\numberline {XIII}Surviving ECH-Independent Class Tests}{22}{section*.58}%
+\contentsline {section}{\numberline {XIV}Limitations and Future Directions}{23}{section*.59}%
+\contentsline {subsection}{\numberline {A}Current Limitations}{23}{section*.60}%
+\contentsline {subsubsection}{\numberline {1}Theoretical}{23}{section*.61}%
 \contentsline {subsubsection}{\numberline {2}Observational}{23}{section*.62}%
 \contentsline {subsection}{\numberline {B}Robustness to Galaxy Spin Null Results}{23}{section*.63}%
 \contentsline {subsection}{\numberline {C}Discriminating Observational Channels}{23}{section*.64}%
 \contentsline {subsection}{\numberline {D}Structural Tension: Dark Energy vs.\ Bounce $f_{\rm NL}$}{23}{section*.65}%
-\contentsline {subsection}{\numberline {E}Channel-Level Closure}{23}{section*.66}%
+\contentsline {subsection}{\numberline {E}Channel-Level Closure}{24}{section*.66}%
 \contentsline {section}{\numberline {XV}Conclusions}{24}{section*.67}%
-\contentsline {subsection}{\numberline {}Data and Code Availability}{24}{section*.68}%
+\contentsline {subsection}{\numberline {}Data and Code Availability}{25}{section*.68}%
 \contentsline {section}{\numberline {}Acknowledgments}{25}{section*.69}%
 \appendix 
 \contentsline {section}{\numberline {A}Complete Parameter Summary}{25}{section*.70}%
 \contentsline {section}{\numberline {B}Dimensional Status of the Parity-Odd Operator}{25}{section*.71}%
-\contentsline {section}{\numberline {C}Line-of-Sight Birefringence from the Maxwell--Chern--Simons Operator}{25}{section*.72}%
+\contentsline {section}{\numberline {C}Line-of-Sight Birefringence from the Maxwell--Chern--Simons Operator}{26}{section*.72}%
 \contentsline {section}{\numberline {}References}{27}{section*.73}%

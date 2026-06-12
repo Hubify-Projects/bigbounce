@@ -45,8 +45,39 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.64}
+\newcommand{\paperVersion}{v1A.0.65}
 \newcommand{\paperTimestamp}{June 12, 2026 PDT}
+% v1A.0.64->65 (2026-06-12 --- R35conf confirmation-round closure wave; truth
+%   audit at project-context/peer-reviews/R35conf_P1A_TRUTH_AUDIT.md. Seven
+%   VERIFIED items closed:
+%   A1: SIGN FIX (MAJOR, OpenAI E10): the fine-tuning residual ~10^5 tracks
+%       e^{+3 Delta N_tot}, not e^{-3 Delta N_tot}. Rederived from surrounding
+%       physics: D_inf \propto exp(-3 N_tot) is the dilution ansatz (more
+%       e-folds => more dilution => smaller D_inf); the fine-tuning SCORE is
+%       1/D_inf \propto exp(+3 N_tot). For Delta N_tot ~ 4 e-folds, the score
+%       tracks exp(+12) ~ 1.6x10^5, matching the quoted "10^5 residual".
+%       Replaced "e^{-3 \Delta N_{\rm tot}}" with "e^{+3 \Delta N_{\rm tot}}"
+%       at L2293; the sentence now reads consistently with the e-fold scaling
+%       described earlier in the paragraph (D_inf \propto e^{-3 N_tot}).
+%   A2: gamma scheme spread (E9): "~0.020" replaced with "~0.037 (SU(2)-DLM
+%       pair)" in body L814-815 and in Appendix dimensions table (gamma row).
+%       Numerical check: gamma_SU(2) ~ 0.274, gamma_DLM ~ 0.2375 => spread
+%       = 0.0365 ~ 0.037.
+%   A3: G_N notation (E7): G_N in Eq. (4) Lagrangian disambiguated with an
+%       inline "G_N is Newton's gravitational constant" gloss.
+%   A4: sigma(f_NL) label split (M4): every quote of sigma(f_NL) ~ 0.7 vs
+%       sigma(f_NL) ~ 1.0 now carries explicit "ideal-survey" / "degraded
+%       with GR-projection + photo-z systematics" labels.
+%   A5: rho correlation (M7): rho cross-correlation coefficient between
+%       f_NL and beta joint-forecast estimators defined at first use in
+%       Figure 7 / 8 caption.
+%   A6: bilinear phrasing (M8): "the cube of the fermion bilinear scales as
+%       the cube of the fermion number density" replaced by the physically
+%       correct "<J^5_mu> propto n_psi and dilutes as a^{-3}".
+%   A7: abstract null-test disclaimer (Perplexity E5): added "these
+%       significances arise from different null procedures and are not
+%       directly comparable" to the abstract after the beta_obs 3.6sigma /
+%       ACT DR6 2.9sigma / SPHEREx 2.6-5sigma sentences.)
 % v1A.0.63->64 (2026-06-12 --- EXT5 external-round closure wave; truth audit at
 %   project-context/peer-reviews/EXT5_P1A_TRUTH_AUDIT.md. Pattern-051 self-closure
 %   regression wave: TWO new errors introduced by the R34conf-A1 and R34conf-A12
@@ -547,7 +578,10 @@ $\beta_{\rm obs} = 0.342^\circ \pm 0.094^\circ$
 and refined by Eskilt~\&~Komatsu~\cite{Eskilt2022}),
 and is comparable to the independent
 ACT~DR6 follow-up $\beta = 0.215^\circ\pm 0.074^\circ$ at $\sim\!2.9\sigma$
-(Diego-Palazuelos~\&~Komatsu~\cite{DiegoPalazuelos2025}); the same
+(Diego-Palazuelos~\&~Komatsu~\cite{DiegoPalazuelos2025}; these significances,
+and the SPHEREx forecast $2.6$--$5\sigma$ quoted above, arise from different
+null procedures and are not directly comparable in a single tension table);
+the same
 benchmark arises in any GR$+$ALP setup with the same parameters and is
 \emph{not} derived from the ECH action. The role of this paper is the
 \emph{channel-level closure} of the four enumerated minimal-ECH dark-energy
@@ -656,7 +690,10 @@ $H_0$/$\sigma_8$ tension resolution? & $H_0=67.68\pm 1.06$, $\Delta\Neff\approx 
 {\small $^a$Reparameterized as sensitivity to $N_{\rm tot}$; not solved.
 $^b$$2.6$--$5\sigma$ realistic after full systematic budget (GR-projection,
 $b_\phi$ uncertainty, photo-$z$ degradation) under
-Heinrich$+$2024 $\sigma(\fnl)\!\approx\!0.7$ --- detailed Fisher forecast in
+Heinrich$+$2024 $\sigma(\fnl)\!\approx\!0.7$ (\emph{ideal-survey} Fisher
+sensitivity; the \emph{degraded-with-systematics} sensitivity is
+$\sigma(\fnl)\!\approx\!1.0$, see footnote at the abstract-level
+$2.6$--$5\sigma$ quote and Sec.~\ref{sec:falsification}); detailed Fisher forecast in
 companion work in preparation~\cite{Golden2026P2}.
 $^c$Class-level: scalar-only $w=0$ matter-bounce under Assumption~(f) of
 the companion forecast~\cite{Golden2026P2}; not fully mechanism-independent
@@ -812,9 +849,11 @@ $\gamma_{\rm SU(2)}\approx 0.274$ (adopted in this paper), and the
 further Domaga\l{}a--Lewandowski--Meissner refinement gives
 $\gamma_{\rm DLM}\approx 0.2375$. Domaga\l{}a--Lewandowski and Meissner
 do \emph{not} quote a $\pm 0.020$ statistical uncertainty; the
-$\sim\!0.020$ figure that appears in the parameter-budget table
-(Appendix~\ref{app:dimensions}) is the spread between counting
-prescriptions, retained as an effective range only and
+$\sim\!0.037$ figure that appears in the parameter-budget table
+(Appendix~\ref{app:dimensions}) is the spread \emph{between} counting
+prescriptions (specifically the SU(2)--DLM pair: $\gamma_{\rm SU(2)}\approx 0.274$
+minus $\gamma_{\rm DLM}\approx 0.2375$ gives $0.0365 \approx 0.037$),
+retained as an effective range only and
 \emph{not} propagated as a statistical error in any quantitative claim.
 
 \begin{figure}[t]
@@ -891,7 +930,10 @@ and integrating out torsion:
 \begin{equation}\label{eq:4fermi}
 \mathcal{L}_{\rm int} = -\frac{3\pi G_N}{2}\times \frac{\gamma^2}{\gamma^2+1}\times J^5_{\mu}\,J^{5\mu},
 \end{equation}
-where $J^{5\mu}=\bar{\psi}\gamma^{\mu}\gamma^5\psi$ is the axial current.
+where $J^{5\mu}=\bar{\psi}\gamma^{\mu}\gamma^5\psi$ is the axial current, and
+$G_N$ denotes Newton's gravitational constant (identified with the gravitational
+$G$ used elsewhere in this paper; the subscript $N$ is retained here to
+disambiguate it from the Holst-sector coefficients also entering the Lagrangian).
 
 \textit{Step~3: Parity-Odd Effective Action.}---Motivated by the
 Holst$+$non-minimal-fermion construction of Mercuri~\cite{Mercuri2009} (which
@@ -1054,11 +1096,12 @@ epoch is set by the fermion axial current density via the Cartan
 equation $T^{abc} \propto \bar\psi\gamma^{[a}\gamma^b\gamma^{c]}\psi$
 (Sec.~\ref{sec:r1_njl}, Eq.~\ref{eq:NJL_torsion}). Fermion number
 density dilutes as $a^{-3}$ under cosmological expansion (this is the
-standard cold-relic scaling for a non-relativistic species, and
-holds at the cubic axial-current operator level because the cube
-of the fermion bilinear scales as the cube of the fermion number
-density at the bounce-density regime where the algebraic relation is
-saturated; see Hehl \etal~\cite{Hehl1976} for the original
+standard cold-relic scaling for a non-relativistic species; the
+axial-current expectation value tracks the same dilution at the
+operator level, $\langle J^5_\mu\rangle \propto n_\psi$, so
+$\langle J^5_\mu\rangle$ likewise dilutes as $a^{-3}$ at the bounce-density
+regime where the algebraic Cartan relation is saturated;
+see Hehl \etal~\cite{Hehl1976} for the original
 derivation in Einstein-Cartan, and Mercuri~\cite{Mercuri2009} for
 the Holst extension). Integrating the dilution from
 $t_{\rm bounce}$ to $t_{\rm reh}$ gives a multiplicative factor
@@ -1818,7 +1861,11 @@ $\fnl=-35/8$ prediction at $2.6$--$5\sigma$ realistic significance
 parameter-independent, ECH-independent class-level discrimination tests; the
 joint outcome falsifies the surviving ECH framework or leaves it as the
 unique surviving minimal-ECH channel under the stated
-ans\"atze.\label{fig:obs_timeline}}
+ans\"atze. Curve families labeled $\rho=0,\,0.3,\,0.5$ correspond to the
+assumed cross-correlation coefficient $\rho$ between the $\fnl$ and $\beta$
+joint-forecast estimators (with $\rho=0$ the uncorrelated baseline; $\rho>0$
+combinations track the gain in joint significance under a positive
+between-estimator correlation).\label{fig:obs_timeline}}
 \end{figure}
 
 The surviving testable predictions are: (1)~LiteBIRD ($\sigma(\beta)\approx 0.03^\circ$,
@@ -2212,8 +2259,9 @@ $^{\ddagger}$A free-$w_0 w_a$ posterior analysis was not completed for the prese
 \end{table*}
 
 The matter bounce prediction $\fnl = -35/8$ is the strongest discriminator:
-it provides $\sigma(\fnl)\approx 0.7$ (Fisher-ideal) to $\sigma(\fnl)\approx 1.0$
-(with systematics) from SPHEREx, yielding $2.6$--$5\sigma$ model separation.
+it provides $\sigma(\fnl)\approx 0.7$ (\emph{ideal-survey} Fisher) to
+$\sigma(\fnl)\approx 1.0$ (\emph{degraded with GR-projection + photo-$z$
+systematics}) from SPHEREx, yielding $2.6$--$5\sigma$ model separation.
 NANOGrav model comparison: $\gamma_{\rm PTA} = 2.567\pm 0.382$ from real-KDE reanalysis
 of the 15-yr free-spectrum data (GPU MCMC, companion Paper~III~\cite{Golden2026P3};
 here $\gamma_{\rm PTA}$ is the GWB power-law spectral index, distinct from the Barbero-Immirzi parameter $\gamma$ defined in Eq.~\ref{eq:ECH}).
@@ -2290,8 +2338,11 @@ as sensitivity to $N_{\rm tot}$ (the total number of inflationary $e$-folds),
 not a resolution of the cosmological constant problem. The exponential
 $\Dinf \propto e^{-3 N_{\rm tot}}$ structure of Eq.~\eqref{eq:Dinf} makes
 $N_{\rm tot}$ the single controlling parameter analytically: the residual
-$10^5$ tracks $e^{-3 \Delta N_{\rm tot}}$ for $\Delta N_{\rm tot} \approx 4$
-$e$-folds, while the order-unity prefactors enter at most logarithmically.
+$10^5$ tracks $e^{+3 \Delta N_{\rm tot}}$ for $\Delta N_{\rm tot} \approx 4$
+$e$-folds (the dilution ansatz $\Dinf \propto e^{-3 N_{\rm tot}}$ implies the
+fine-tuning score $\propto 1/\Dinf \propto e^{+3 N_{\rm tot}}$, so the
+\emph{score} rescales as $e^{+3\Delta N_{\rm tot}}$ when $N_{\rm tot}$ is
+shifted by $\Delta N_{\rm tot}$), while the order-unity prefactors enter at most logarithmically.
 We emphasize that the $(T_{\rm reh}/M_{\rm GUT})^{3/2}$ prefactor itself
 is matched at the order-of-magnitude level rather than calculated from a
 thermal partition function (Sec.~\ref{sec:dilution}); the $10^5$
@@ -2384,7 +2435,9 @@ $\beta=0.342^\circ\pm 0.094^\circ$ at high significance (the discrimination
 runs at $\sim\!0.7\sigma$ given current central values); neither is
 uniquely an ECH prediction
 (\S\ref{sec:surviving}). The significance tracks duplicate the $\rho=0$
-combination of Fig.~\ref{fig:obs_timeline}; this panel is the summary
+combination of Fig.~\ref{fig:obs_timeline} ($\rho$ here is the cross-correlation
+coefficient between the $\fnl$ and $\beta$ joint-forecast estimators; see
+the Fig.~\ref{fig:obs_timeline} caption for the precise definition); this panel is the summary
 view retained for the surviving-tests discussion, while
 Fig.~\ref{fig:obs_timeline} additionally shows the correlated
 ($\rho=0.3,0.5$) combinations and milestone
@@ -2676,7 +2729,7 @@ area-spectrum scheme dependence, \emph{not} a statistical error.}
 Parameter & Description & Prior & Verified Value & Notes \\
 \hline
 \multicolumn{5}{l}{\textit{Fundamental theory parameters}} \\
-$\gamma$ & Barbero-Immirzi & Fixed: 0.274 & $0.274$ (scheme range $\sim\!0.020$) & LQG area spectrum (Eq.~\ref{eq:gamma}) \\
+$\gamma$ & Barbero-Immirzi & Fixed: 0.274 & $0.274$ (scheme range $\sim\!0.037$) & LQG area spectrum (Eq.~\ref{eq:gamma}) \\
 $\alpha/M$ & Parity-odd coefficient & Log-flat & $\sim 10^{-21}\,\text{GeV}^{-1}$ & One-loop motivated \\
 $N_{\rm tot}$ & Total e-folds & $[60, 120]$ flat & $\approx 92$ (fitted) & Controls $\Xi$ \\
 \hline

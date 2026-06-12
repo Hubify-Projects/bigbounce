@@ -52,7 +52,23 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.178}
+\newcommand{\paperVersion}{v1.0.179}
+% v1.0.178->179 (2026-06-12 — R35conf closure wave; truth audit at
+%   project-context/peer-reviews/R35conf_P4_TRUTH_AUDIT.md. Two text edits:
+%   (C0) EXT5-GM2 (OPEN MINOR — carryover): Parquet QC flag disclosure
+%   added to Data Availability Catalog bullet. One sentence stating that
+%   the 59,515 HC rows flagged by qc_flip_identity_violator are RETAINED
+%   in the public HuggingFace Parquet release with the flag column set to
+%   True; downstream users should filter on this column to replicate the
+%   flagged-rows-excluded baseline.
+%   (C1) R35-P4-O17 (VERIFIED NEW MINOR — precision): "maximum regional
+%   asymmetry is 0.32%" sentence (Shamir comparison) scoped explicitly —
+%   the 0.32% is the maximum WLS template amplitude in the full-footprint
+%   regional fit (cleanest equal-area partition, Ap units); the equal-area
+%   slab maxima in the 10-slab per-axis decomposition reach 0.46-0.56%
+%   (artifact c12_r24conf_local_batch.json cited).
+%   Headline science unchanged; HC dipole +0.41sigma null stands;
+%   2sqrt(3) Fisher floor stands; z~-18 WLS exclusion stands.)
 % v1.0.177->178 (2026-06-12 — EXT5 external-round closure wave; truth audit
 %   at project-context/peer-reviews/EXT5_P4_TRUTH_AUDIT.md. Four bounded
 %   text edits, no science changes:
@@ -529,7 +545,7 @@ All signal-hunt diagnostics (confidence stratification, RA-quadrant scatter, hem
 
 \subsection{Shamir (2012, 2020, 2022)}
 
-Under the present ViT/TTA pipeline, our maximum regional asymmetry is $0.32\%$ and the $0.41\sigmaunit$ HC ($p_{\rm eq}\!>\!0.6$) simple dipole is well below the $2\text{--}4\sigmaunit$ dipoles reported by Shamir~\cite{Shamir:2012,Shamir:2020,Shamir:2022DESI}. We do \emph{not} claim a frequentist exclusion of Shamir's Ganalyzer estimator: a likelihood-level exclusion requires a matched-footprint Ganalyzer reanalysis under his pipeline + cuts (not performed here). The discrepancy most likely reflects two factors: (1)~Ganalyzer lacks a published bias audit comparable to our 8-test suite; (2)~the monopole-mask leakage channel demonstrated in Sec.~\ref{sec:monopole_mask_null} can reproduce the pre-MASTER dipole-class signal observed in SDSS-class samples. These conclusions corroborate and extend the methodological critique of Iye~\etal~(2021)~\cite{Iye:2021} with $3.2\!\times\!10^{6}$ spirals (a ${\sim}25\times$ sample extension over the $\sim\!1.27\!\times\!10^{5}$-galaxy SDSS sample underlying the critiqued analyses; $3.2\!\times\!10^{6}/1.27\!\times\!10^{5} \approx 25$).
+Under the present ViT/TTA pipeline, our maximum WLS template amplitude in the full-footprint regional fit is $0.32\%$ (in $A_p$ units, restricting to the cleanest equal-area partition; the equal-area slab maxima in the 10-slab per-axis decomposition reach $0.46$--$0.56\%$, \artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/c12\_r24conf\_local\_batch.json}) and the $0.41\sigmaunit$ HC ($p_{\rm eq}\!>\!0.6$) simple dipole is well below the $2\text{--}4\sigmaunit$ dipoles reported by Shamir~\cite{Shamir:2012,Shamir:2020,Shamir:2022DESI}. We do \emph{not} claim a frequentist exclusion of Shamir's Ganalyzer estimator: a likelihood-level exclusion requires a matched-footprint Ganalyzer reanalysis under his pipeline + cuts (not performed here). The discrepancy most likely reflects two factors: (1)~Ganalyzer lacks a published bias audit comparable to our 8-test suite; (2)~the monopole-mask leakage channel demonstrated in Sec.~\ref{sec:monopole_mask_null} can reproduce the pre-MASTER dipole-class signal observed in SDSS-class samples. These conclusions corroborate and extend the methodological critique of Iye~\etal~(2021)~\cite{Iye:2021} with $3.2\!\times\!10^{6}$ spirals (a ${\sim}25\times$ sample extension over the $\sim\!1.27\!\times\!10^{5}$-galaxy SDSS sample underlying the critiqued analyses; $3.2\!\times\!10^{6}/1.27\!\times\!10^{5} \approx 25$).
 
 \subsection{CE-ResNet (Jia et al.\ 2023)}
 
@@ -791,7 +807,7 @@ Repository state for this version: commit \texttt{53b41d12} (v1.0.175, June 2026
 % ============================================================
 
 \begin{itemize}
-\item \textbf{Catalog:} \url{https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog} (CC-BY-4.0, Parquet; three tiers A/B/C). Release tag: \texttt{v2026.04}. A persistent archival DOI (Zenodo deposit of the versioned release) has not yet been minted; until it is, the versioned release tag above is the citable artifact.
+\item \textbf{Catalog:} \url{https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog} (CC-BY-4.0, Parquet; three tiers A/B/C). Release tag: \texttt{v2026.04}. A persistent archival DOI (Zenodo deposit of the versioned release) has not yet been minted; until it is, the versioned release tag above is the citable artifact. In the public HuggingFace Parquet release, the $59{,}515$ HC rows flagged by the catalog-wide \texttt{qc\_flip\_identity\_violator} pass are retained with this flag column set to \texttt{True}; downstream users wishing to replicate the flagged-rows-excluded baseline should filter on this column.
 \item \textbf{Model:} \url{https://huggingface.co/bamfai/galaxy-chirality-v2} (\vit{} encoder + classification head, PyTorch checkpoint).
 \item \textbf{Code:} \url{https://github.com/Hubify-Projects/bigbounce}. Training, inference, equivariant post-processing, bias hardening suite, and dipole analysis scripts.
 \end{itemize}

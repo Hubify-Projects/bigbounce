@@ -447,13 +447,13 @@
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {E.}~\bibnamefont
   {Chaussidon}} \emph {et~al.},\ }\bibfield  {title} {\bibinfo {title}
-  {{Constraining Primordial Non-Gaussianity with DESI 2024 LRGs and QSOs:
-  Sample preparation and validation}},\ }\href@noop {} {\bibfield  {journal}
-  {\bibinfo  {journal} {J.\ Cosmol.\ Astropart.\ Phys.}\ } (\bibinfo {year}
-  {2024})},\ \bibinfo {note} {dESI DR1 LRG/QSO PNG constraints; $f_{\rm
-  NL}^{\rm loc} = -3.6^{+9.0}_{-9.1}$ (LRG); QSO assembly-bias $f_{\rm NL}^{\rm
-  loc} = -3.3 \pm 9.2$; $\sigma \approx 9$--$10$},\ \Eprint
-  {https://arxiv.org/abs/2309.06199} {arXiv:2309.06199} \BibitemShut {NoStop}%
+  {{Constraining Primordial Non-Gaussianity with DESI 2024 LRGs and QSOs}},\
+  }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {J.\ Cosmol.\
+  Astropart.\ Phys.}\ } (\bibinfo {year} {2024})},\ \bibinfo {note} {dESI DR1
+  LRG/QSO PNG constraints; $f_{\rm NL}^{\rm loc} = -3.6^{+9.0}_{-9.1}$ (LRG);
+  QSO assembly-bias $f_{\rm NL}^{\rm loc} = -3.3 \pm 9.2$; $\sigma \approx
+  9$--$10$},\ \Eprint {https://arxiv.org/abs/2411.17623} {arXiv:2411.17623}
+  \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {{DESI Collaboration}}\ \emph
   {et~al.}(2016)\citenamefont {{DESI Collaboration}}, \citenamefont {Aghamousa}
   \emph {et~al.}}]{DESI:2016fnl}%
