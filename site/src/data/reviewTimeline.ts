@@ -45,6 +45,23 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "EXT7",
+    kind: "external-browser",
+    dateISO: "2026-06-13",
+    timePT: "00:53–02:30 PT submit · harvest from ~03:00",
+    title: "EXT7 submitted — seventh external round on the R36conf-closed versions; ALL Gemini chats moved to fresh threads after thread-overload issue; P3 gets third consecutive fresh thread",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "Delta-prompts posted to ChatGPT (same 6 threads) + Grok (same 6 threads) + Gemini (6 FRESH threads, all new URLs). Gemini thread policy changed: all prior EXT1–EXT6 Gemini threads retired after P1A thread accumulated 30 user/12 model turns from retry attempts; fresh Gemini home approach (native macOS dialog upload) succeeded for all 6 papers with growth gate passed. Gemini P3 uses P3_fresh.txt (full MNRAS referee prompt) per standing mandate. New Gemini upload recipe documented: home page + osascript Cmd+Shift+G, NOT CSS input manipulation.",
+    keyTakeaways: [
+      "Gemini file upload solved: native dialog via osascript on fresh Gemini home; CSS hidden-input trick silently fails to transmit to Gemini backend",
+      "All 6 Gemini EXT7 threads are new URLs — EXT8 must use these for in-thread deltas",
+      "P3 Gemini fresh thread: gemini.google.com/app/8f88d28fa5d8d911 (prior 2b33106610ec2401 permanently dropped)",
+    ],
+    links: [
+      { label: "EXT7 manifest", href: `${PR}/EXT7_BROWSER_MANIFEST.md` },
+    ],
+  },
+  {
     id: "EXT6",
     kind: "external-browser",
     dateISO: "2026-06-12",
