@@ -45,6 +45,30 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "EXT7-CLOSURES",
+    kind: "closure-wave",
+    dateISO: "2026-06-13",
+    timePT: "03:30–04:30 PT (~1h end-to-end under the fan-out rule)",
+    title: "EXT7 closure wave — 18 verdicts held unchanged; 2 real findings caught (P1A Fig 3 caption/code mismatch + P1B NaMaster Eq 1 divisor); Gemini-P3 calibration vindicated",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "All 18 EXT7 verdicts held identical to EXT6 — the externals are running out of substantive items. ~14 polish closures + 2 real findings closed same-day (v1A.0.68 / v1B.0.65 / v1.7.60 / v3.1.103 / v1.0.182 / v0.1.72): a pattern-031 caption/code mismatch on P1A Fig 3 (caption claimed H0=67.7 while the figure-generation code uses H0=69.2 + enhanced radiation — caption rewritten to disclose actual values), and the P1B NaMaster Eq (1) σ_b² divisor dropped to match the released script `namaster_500mc.py`. Gemini-P3 fresh thread CALIBRATED — drop decision reversed.",
+    keyTakeaways: [
+      "Grok 5× consecutive 6/6 ACCEPT — audit confirmed calibration-stable, not rubber-stamp (complementary blind spot vs ChatGPT: doesn't cross-check released code)",
+      "P1A Fig 3 caption/code mismatch is the highest-value catch — referee-readable param disclosure now matches the generation script exactly",
+      "P1B NaMaster Eq (1) matches released code (`np.sum((cl_eb−cl_th)**2)`, no σ_b² divisor) — published numbers reproduce under this form",
+      "Gemini-P3 fresh-home recipe vindicated cross-round — all section refs resolve cleanly; the EXT6 hallucination was the thread-overload class, not the model",
+      "P5 CLEAN at acceptance stage with 3 optional polish; ChatGPT VoidFinder is the 6th k=20 re-raise (auto-falsified)",
+    ],
+    links: [
+      { label: "P1A audit", href: `${PR}/EXT7_P1A_TRUTH_AUDIT.md` },
+      { label: "P1B audit", href: `${PR}/EXT7_P1B_TRUTH_AUDIT.md` },
+      { label: "P2 audit", href: `${PR}/EXT7_P2_TRUTH_AUDIT.md` },
+      { label: "P3 audit", href: `${PR}/EXT7_P3_TRUTH_AUDIT.md` },
+      { label: "P4 audit", href: `${PR}/EXT7_P4_TRUTH_AUDIT.md` },
+      { label: "P5 audit", href: `${PR}/EXT7_P5_TRUTH_AUDIT.md` },
+    ],
+  },
+  {
     id: "EXT7",
     kind: "external-browser",
     dateISO: "2026-06-13",
@@ -1021,7 +1045,14 @@ export const gapSeries: GapPoint[] = [
     perPaper: { P1A: 4, P1B: 5, P2: 2, P3: 2, P4: 0, P5: 5 },
     note: "EXT6 truth-audits: ~18 verified — TWO real self-closure regressions caught externally (P1A §IV E synthesis paragraph still said \"too large\" while §IV A body said \"4×10⁻⁶⁹ ρ_Λ\" — three prior waves missed it; P2 §V L604 arithmetic 3.5σ→3.22σ pattern-051 from R34conf OAI-E10); P1B 2 BLOCKERs (CHANGELOG + bbn_predictor YAML) closed; P4 0 scientific findings; Gemini-for-P3 dropped after 6/6 hallucinated §-numbers — Milestone external state: Gemini's first FULL ACCEPT (P1B) + Grok 4× consecutive ACCEPT",
   },
-];
+
+  {
+    roundId: "EXT7",
+    dateISO: "2026-06-13",
+    total: 14,
+    perPaper: { P1A: 2, P1B: 2, P2: 4, P3: 5, P4: 6, P5: 0 },
+    note: "EXT7 truth-audits: ~14 verified — TWO real findings (P1A Fig 3 caption/code mismatch H0=67.7 claim vs H0=69.2 actual; P1B NaMaster Eq (1) sigma_b^2 divisor missing from script) + 12 polish closures. P5 CLEAN at acceptance stage (ChatGPT VoidFinder is 6th k=20 re-raise, auto-falsified; Gemini 3 MAJORs all falsified on disk). Externals running out of substantive content — closure-to-finding ratio now ~1:1.",
+  },];
 
 export interface ReadinessCheckpoint {
   id: string;
