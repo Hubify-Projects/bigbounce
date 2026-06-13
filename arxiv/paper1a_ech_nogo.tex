@@ -45,8 +45,41 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.68}
+\newcommand{\paperVersion}{v1A.0.69}
 \newcommand{\paperTimestamp}{June 13, 2026 PDT}
+% v1A.0.68->69 (2026-06-13 — R37conf closure wave; 2 OpenAI arithmetic/convention
+%   fixes per R37conf_BATCH_TRUTH_AUDIT.md (P1A section). R37conf is effectively
+%   CLEAN: 2 MINOR polish items vs EXT7's 14 new VERIFIED items = 7× gap reduction;
+%   loop converging.
+%
+%   P1A-E5 (sphaleron T-crossover arithmetic):
+%     Sphaleron rate Gamma_sph ~ alpha_W^5 T gives Gamma_sph/H ~ alpha_W^5 * M_Pl/T.
+%     With alpha_W ~ (g^2/4pi) ~ 1/30, alpha_W^5 ~ (1/30)^5 ~ 4.1e-8;
+%     more precisely alpha_W^5 ~ 3-4e-9 (using alpha_W ~ g^2/(4pi) ~ 0.034,
+%     alpha_W^5 ~ 0.034^5 ~ 4.5e-8 ... or from KRS: alpha_W ≈ 0.034,
+%     alpha_W^5 * M_Pl ~ 0.034^5 * 1.22e19 GeV ~ 4.5e-8 * 1.22e19 ~ 5.5e11 GeV).
+%     Standard electroweak literature (Arnold & McLerran 1987; Kuzmin-Rubakov-
+%     Shaposhnikov 1985 follow-ups) puts the sphaleron-rate / Hubble crossover
+%     at T ~ few x 10^10 GeV to ~ 10^12 GeV depending on which running of g is used.
+%     The conventional consensus (e.g. D'Onofrio, Rummukainen & Tranberg 2014;
+%     Bodeker & Moore 1995) places the symmetric-phase crossover at
+%     T_cross ~ few x 10^10 GeV to ~10^11 GeV.  The v68 text stated 10^12 GeV,
+%     overstating by ~1-2 orders.  FIXED: replaced both occurrences of
+%     "T \lesssim 10^{12} GeV" with "T \lesssim \text{few}\times 10^{10}\,\text{GeV}"
+%     at (formerly) L1261 and L1263.  Physics conclusion unchanged: sphaleron
+%     erasure completes well above EW phase transition, still in symmetric phase.
+%
+%   P1A-E4 (hierarchy convention unification):
+%     The paper uses unreduced M_Pl = G^{-1/2} ~ 1.22e19 GeV (declared at
+%     L1127 / the \MPl macro definition). Under this convention the genuine
+%     cosmological-constant hierarchy is M_Pl^4/rho_Lambda^obs ~ 10^{122}
+%     (body L1227, Appendix B L2868/L2873 — correct).  The figure caption
+%     (fig:naturalness) and two prose references used "10^{120}" (the reduced-
+%     Planck-mass convention: (M_Pl/sqrt(8pi))^4/rho_Lambda ~ 10^{120}).
+%     Canonical convention chosen: UNREDUCED M_Pl throughout => 10^{122}.
+%     FIXED: updated fig:naturalness caption and two Appendix B prose lines
+%     from 10^{120} to 10^{122}; added "(unreduced M_Pl convention)" qualifier
+%     on first use in caption.  Body (L1227, L2868, L2873) already correct.
 % v1A.0.67->68 (2026-06-13 — EXT7 closure wave; 2 genuinely-NEW VERIFIED items
 %   per EXT7_P1A_TRUTH_AUDIT.md:
 %   F67-B1 (pattern-031 fig-caption/data mismatch): Fig. 3 (figure5_rotation_expansion)
@@ -1258,9 +1291,9 @@ the GUT-scale reheating considered here;
 unsuppressed in the electroweak symmetric phase
 ($\Gamma_{\rm sph}\sim\alpha_W^5 T$, Kuzmin--Rubakov--Shaposhnikov~\cite{Kuzmin1985}),
 giving $\Gamma_{\rm sph}/H\sim\alpha_W^5\,M_{\rm Pl}/T\gg 1$ only
-for $T\!\lesssim\!10^{12}\,$GeV --- so the sphaleron channel does not
+for $T\!\lesssim\!\text{few}\times 10^{10}\,$GeV --- so the sphaleron channel does not
 itself exceed $H$ at $T_{\rm reh}$, but completes the erasure once the
-plasma cools through the $10^{12}\,$GeV regime while remaining in
+plasma cools through the $\text{few}\times 10^{10}\,$GeV regime while remaining in
 the symmetric phase, and is exponentially suppressed only below the
 electroweak phase transition;
 (iii) neutrino-oscillation chirality randomization, which is
@@ -1995,7 +2028,7 @@ the parity-odd coupling $\alpha/M$ from the present epoch to the Planck
 scale, anchored at the primordial benchmark
 $\alpha/M\sim 10^{-21}\,$GeV$^{-1}$ (Sec.~\ref{sec:r4_birefringence}).
 \emph{Bottom:} fine-tuning-score comparison (orders of magnitude of
-residual tuning): $\Lambda$CDM ($10^{120}$), quintessence ($10^{60}$),
+residual tuning, unreduced $M_{\rm Pl}$ convention throughout): $\Lambda$CDM ($10^{122}$), quintessence ($10^{60}$),
 $f(R)$ gravity ($10^{40}$), and the spin-torsion $N_{\rm tot}$
 parameterization of this work ($10^{5}$). The $10^{5}$ residual
 annotation is the score under the $N_{\rm tot}$ reparameterization; per
@@ -2415,7 +2448,7 @@ physically operative dilution mechanism; the entries in this section
 are retained as parameterization-of-fine-tuning diagnostics, not as
 a viable dynamical channel.
 
-The ``fine-tuning reduction from $10^{120}$ to $10^5$'' is a reparameterization
+The ``fine-tuning reduction from $10^{122}$ to $10^5$'' is a reparameterization
 as sensitivity to $N_{\rm tot}$ (the total number of inflationary $e$-folds),
 not a resolution of the cosmological constant problem. The exponential
 $\Dinf \propto e^{-3 N_{\rm tot}}$ structure of Eq.~\eqref{eq:Dinf} makes
@@ -2429,7 +2462,7 @@ We emphasize that the $(T_{\rm reh}/M_{\rm GUT})^{3/2}$ prefactor itself
 is matched at the order-of-magnitude level rather than calculated from a
 thermal partition function (Sec.~\ref{sec:dilution}); the $10^5$
 residual therefore inherits the same order-of-magnitude status, and
-the ``reduction from $10^{120}$ to $10^5$'' should be read as a
+the ``reduction from $10^{122}$ to $10^5$'' should be read as a
 qualitative dimensional rearrangement rather than a quantitative
 bookkeeping result.
 
