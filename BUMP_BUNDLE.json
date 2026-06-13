@@ -1,56 +1,56 @@
 [
  {
   "paperSlug": "paper-1a",
-  "version": "v1A.0.66",
+  "version": "v1A.0.67",
   "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1a_ech_nogo.pdf",
-  "sitePdfPath": "/papers/paper1a_ech_nogo_v1A.0.66.pdf",
-  "changelog": "EXT6 closure wave: \u00a7IV E synthesis regression fixed (rho_NJL ~ 4e-69 rho_Lambda, far BELOW \u2014 was 'too large' from three prior waves' partial fix); Sec IV opening R1-R3 amplitude / R4 naturalness split; Fig 4 caption calibrated.",
-  "datestamp": "2026-06-12",
-  "texCommit": "d56f5efa"
+  "sitePdfPath": "/papers/paper1a_ech_nogo_v1A.0.67.pdf",
+  "changelog": "R36conf closures: \u00a7X D footnote NY+T\u2227T decomposition; dim-ansatz framing in abstract+scope; LiteBIRD 0.73\u03c3 heuristic. \u00a7IV E NJL fix independently confirmed.",
+  "datestamp": "2026-06-13",
+  "texCommit": "1e5923bc"
  },
  {
   "paperSlug": "paper-1b",
-  "version": "v1B.0.63",
+  "version": "v1B.0.64",
   "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1b_mcmc_companion.pdf",
-  "sitePdfPath": "/papers/paper1b_mcmc_companion_v1B.0.63.pdf",
-  "changelog": "EXT6 closures: CHANGELOG v1B.0.62+v1B.0.63 entries added; bbn_predictor: PArthENoPE verified in all 4 cobaya YAMLs; FM2/FM3 closures with chain-percentile Table IV cells. Gemini first FULL ACCEPT.",
-  "datestamp": "2026-06-12",
-  "texCommit": "d56f5efa"
+  "sitePdfPath": "/papers/paper1b_mcmc_companion_v1B.0.64.pdf",
+  "changelog": "R36conf closures: explicit \u03c7\u00b2(\u03b2) equation inserted at \u00a7IV; one-sided \u0394Neff 95% UL in Table I; fsky mask defs; Paper 1A standalone summary; w0wa Exploratory label. Grok rubber-stamp pattern-009 logged.",
+  "datestamp": "2026-06-13",
+  "texCommit": "1e5923bc"
  },
  {
   "paperSlug": "paper-2",
-  "version": "v1.7.58",
+  "version": "v1.7.59",
   "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/research/focused_paper_source_integration/02_full_draft.pdf",
-  "sitePdfPath": "/papers/paper2_fnl_forecast_v1.7.58.pdf",
-  "changelog": "EXT6 closure: \u00a7V L604 arithmetic regression rederived (4.375*0.84/sqrt(0.7^2+0.9^2) = 3.22\u03c3, was 3.5\u03c3 from R34conf OAI-E10); OFM2a notation \u03c3(f_NL^bounce)\u2248\u03c3_loc/r\u224811.",
-  "datestamp": "2026-06-12",
-  "texCommit": "d56f5efa"
+  "sitePdfPath": "/papers/paper2_fnl_forecast_v1.7.59.pdf",
+  "changelog": "R36conf MAJOR: new consolidated systematics Tab. IV (12 rows from Heinrich \u03c3=0.7 through \u03c3_eff=1.41 \u2192 2.6\u03c3); plus 9 minors (r 0.83\u21920.84, BF worked example, x_3 first-use def, asymmetric uncertainty footnote, etc.).",
+  "datestamp": "2026-06-13",
+  "texCommit": "1e5923bc"
  },
  {
   "paperSlug": "paper-3",
-  "version": "v3.1.101",
+  "version": "v3.1.102",
   "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p3_anomaly_engine/paper3_draft.pdf",
-  "sitePdfPath": "/papers/paper3_anomaly_catalog_v3.1.101.pdf",
-  "changelog": "EXT6 closures: Table V row (h) three-threshold form; stale 264,938/264,738 clause deleted; footnote spadesuit replaced with dedup-provenance pointer. Gemini-for-P3 will be dropped at EXT7 (6/6 hallucinated revtex section numbers).",
-  "datestamp": "2026-06-12",
-  "texCommit": "d56f5efa"
+  "sitePdfPath": "/papers/paper3_anomaly_catalog_v3.1.102.pdf",
+  "changelog": "R36conf 15-item polish bundle: Planck 152/48 binomial p\u22484e-4; Wilson 95% CIs on DESI per-class rates; dust correlation specified (Planck \u03c4\u2083\u2085\u2083/I\u2088\u2085\u2087, HEALPix N=64); SIMBAD 5\u2033 vs pooled 3\u2033 disambiguated; Cram\u00e9r's V=0.020; Table IV/Fig 1 captions; 4 'earlier draft' parentheticals removed from body.",
+  "datestamp": "2026-06-13",
+  "texCommit": "1e5923bc"
  },
  {
   "paperSlug": "paper-4",
-  "version": "v1.0.180",
+  "version": "v1.0.181",
   "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p2_chirality/chirality_catalog_paper.pdf",
-  "sitePdfPath": "/papers/chirality_catalog_paper_v180.pdf",
-  "changelog": "EXT6 closure wave (effectively clean): Fig 2 caption Z_2/D_4 framing; Shamir comparable-pipeline acknowledgment; 'Primary methodological finding' (\u00a7VII.b).",
-  "datestamp": "2026-06-12",
-  "texCommit": "d56f5efa"
+  "sitePdfPath": "/papers/chirality_catalog_paper_v181.pdf",
+  "changelog": "R36conf closures: dropped erroneous 'sr' from Tab IV C_l caption; A_95^UL \u2192 A_95,nq at 3 sites; Fisher-scaling edge-on derivation added; augmentation delta clarified; 5\u03c3/3\u03c3 disambiguated. Commit pin advanced to v1.0.180.",
+  "datestamp": "2026-06-13",
+  "texCommit": "1e5923bc"
  },
  {
   "paperSlug": "paper-5",
-  "version": "v0.1.70",
+  "version": "v0.1.71",
   "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf",
-  "sitePdfPath": "/papers/p5_desi_chirality_v0.1.70.pdf",
-  "changelog": "EXT6 closures: Fig 3 PNG regenerated (n=812,793 env-labeled rows title fix); paper title \u2192 'DR1 Matched-Spiral Sample'; footprint-restricted control row added to Table X; obsolete RSD sentence struck. Grok upgraded MINOR\u2192ACCEPT.",
-  "datestamp": "2026-06-12",
-  "texCommit": "d56f5efa"
+  "sitePdfPath": "/papers/p5_desi_chirality_v0.1.71.pdf",
+  "changelog": "R36conf closures: Tab. X n_CW typo 126,088\u2192126,202 (arithmetic-verified vs artifact 29); Fig 3 monopole note; Tab. XV \u03c3_from_half column; R_s=10 dropped (1.64\u03c3 prose); \u00b14.8pp 1\u03c3 rewrite; bright/dark z=1.95.",
+  "datestamp": "2026-06-13",
+  "texCommit": "1e5923bc"
  }
 ]
