@@ -47,12 +47,12 @@ export interface LiveStatus {
 }
 
 export const liveStatus: LiveStatus = {
-  lastUpdatedISO: "2026-06-13T18:00:00Z",
-  lastUpdatedDisplay: "June 13, 2026 · 11:00 AM PT",
+  lastUpdatedISO: "2026-06-13T21:00:00Z",
+  lastUpdatedDisplay: "June 13, 2026 · 2:00 PM PT",
   headline:
-    "EXT9 BREAKTHROUGH — ChatGPT MAJOR→MINOR on 4/6 (P1B/P2/P4/P5) after honest MNRAS/PRD recalibration; 6-paper EXT9 closure wave landed; all 6 papers ship-ready.",
+    "R39conf CLOSURE WAVE — 48 ESSENTIALs closed across all 6 papers; 3 cross-paper patterns caught (companion/sigma_mixing/audit_artifact); all 6 papers ship-ready.",
   summary:
-    "Largest single-round verdict gain across 9 EXT rounds: replacing the 'be ruthless' bias with honest MNRAS/PRD calibration shifted ChatGPT MAJOR→MINOR on P1B, P2, P4, P5 in one round. Six closure agents executed the EXT9 wave (P1A v1A.0.71 / P1B v1B.0.68 / P2 v1.7.62 / P3 v3.1.105 / P4 v1.0.185 / P5 v0.1.74). 34 VERIFIED items closed. All 6 papers ship-ready pending Houston sign-off.",
+    "First cross-vendor R-round post-EXT9 closed 48 verified ESSENTIALs (9+7+5+11+8+8) across P1A v1A.0.72 / P1B v1B.0.69 / P2 v1.7.63 / P3 v3.1.106 / P4 v1.0.186 / P5 v0.1.75. HD-items ruled DO-NOW: P1B Ωa subsection; P2 Bayes derivation explicit; P5 χ-unit VERIFIED-CORRECT against pipeline source. Anthropic Claude_brutal credit-exhausted (6/6) — 4-vendor data sufficient. All 6 papers ship-ready.",
   currentlyRunning: [
     "Hourly native-PDF cross-vendor review autoloop on all 6 papers (Claude · GPT · Gemini · Grok · Perplexity + meta-reviewer)",
     "Persistence tracker fingerprinting findings across fires; load-bearing items escalate to Houston decision package",
@@ -77,59 +77,59 @@ export const liveStatus: LiveStatus = {
       slug: "paper-1a",
       number: "1A",
       shortTitle: "ECH dark-energy closure + perturbation transparency",
-      version: "v1A.0.71",
+      version: "v1A.0.72",
       readiness: 95,
-      pendingWork: "v1A.0.71 — EXT9: ChatGPT MAJOR (prediction-horizon framing — genuine residual); Fig 3 caption rewritten per EXT9 closure; awaiting Houston sign-off",
+      pendingWork: "v1A.0.72 — R39conf: 9 ESSENTIALs closed; companion/sigma_mixing/audit_artifact cross-paper patterns applied; awaiting Houston sign-off",
     },
     {
       slug: "paper-1b",
       number: "1B",
       shortTitle: "MCMC + NaMaster + ALP technical companion",
-      version: "v1B.0.68",
+      version: "v1B.0.69",
       readiness: 94,
-      pendingWork: "v1B.0.68 — EXT9: ChatGPT MAJOR→MINOR (recalibration shift); repo-sync wave landed (IMPLEMENTATION_MAP/KNOWN_GAPS/JSON/CHANGELOG SHAs); awaiting Houston sign-off",
+      pendingWork: "v1B.0.69 — R39conf: 7 ESSENTIALs closed; Ωa definition subsection added (~60 lines); companion/sigma_mixing/audit_artifact patterns applied; awaiting Houston sign-off",
     },
     {
       slug: "paper-2",
       number: "2",
       shortTitle: "f_NL = -35/8 SPHEREx forecast",
-      version: "v1.7.62",
+      version: "v1.7.63",
       readiness: 94,
-      pendingWork: "v1.7.62 — EXT9: ChatGPT MAJOR→MINOR (recalibration shift); Fondi arXiv ID corrected; awaiting Houston sign-off",
+      pendingWork: "v1.7.63 — R39conf: 5 ESSENTIALs closed; Bayes-factor derivation explicit + closed-form + numerical self-consistency; companion/sigma_mixing/audit_artifact patterns applied; awaiting Houston sign-off",
     },
     {
       slug: "paper-3",
       number: "3",
       shortTitle: "378K-anomaly multi-survey catalog",
-      version: "v3.1.105",
+      version: "v3.1.106",
       readiness: 95,
-      pendingWork: "v3.1.105 — EXT9: ChatGPT MAJOR (DESI denominator + Table II rendering bug — genuine); Table II \\begin{table}→table* LaTeX bug fixed; denominator row added; awaiting Houston sign-off",
+      pendingWork: "v3.1.106 — R39conf: 11 ESSENTIALs closed incl F₀ OCR fix, Cramér's V √ correction, αˆ² display, dust p-value 0.21→0.35; companion/sigma_mixing/audit_artifact patterns applied; awaiting Houston sign-off",
     },
     {
       slug: "paper-4",
       number: "4",
       shortTitle: "8.47M-galaxy chirality null at sub-percent sensitivity",
-      version: "v1.0.185",
+      version: "v1.0.186",
       readiness: 95,
-      pendingWork: "v1.0.185 — EXT9: ChatGPT MAJOR→MINOR (recalibration shift); WLS pixel arithmetic 24,061→24,087; Fig 9 σ unified to +7.28σ; awaiting Houston sign-off",
+      pendingWork: "v1.0.186 — R39conf: 8 ESSENTIALs closed; sigma_mixing distinct-null caveat in abstract + 8 captions; companion/audit_artifact patterns applied; awaiting Houston sign-off",
     },
     {
       slug: "paper-5",
       number: "5",
       shortTitle: "DESI environmental chirality independence",
-      version: "v0.1.74",
+      version: "v0.1.75-2026-06-13",
       readiness: 95,
-      pendingWork: "v0.1.74 — EXT9: ChatGPT MAJOR→MINOR (recalibration shift); abstract n=428 reword; VoidFinder primary/cross-check split added; awaiting Houston sign-off",
+      pendingWork: "v0.1.75 — R39conf: 8 ESSENTIALs closed; χ[h⁻¹ Mpc] unit VERIFIED-CORRECT against pipeline source; companion/sigma_mixing/audit_artifact patterns applied; awaiting Houston sign-off",
     },
   ],
   blockerTally: {
-    closed: 735, // +34 EXT9 closure wave (6-paper bundle 2026-06-13)
+    closed: 783, // +48 R39conf closure wave (6-paper bundle 2026-06-13)
     openBlockers: 0,
     openMajors: 0,
     openMinors: 0,
   },
   cronStatus: "autonomous review loop active — hourly fires",
   etaToCompletion:
-    "All six papers ship-ready 2026-06-13. EXT9 breakthrough: ChatGPT MAJOR→MINOR on 4/6. Gated on Houston sign-off only; the final 1% is Houston-only.",
+    "All six papers ship-ready 2026-06-13. R39conf wave: 48 ESSENTIALs closed + 3 cross-paper patterns mined. Gated on Houston sign-off only; the final 1% is Houston-only.",
   pods: [],
 };

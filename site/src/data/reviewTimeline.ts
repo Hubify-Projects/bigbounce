@@ -46,6 +46,43 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "SKILL-CROSS-PAPER-PATTERN-MINING",
+    kind: "skill-improvement",
+    dateISO: "2026-06-13",
+    title: "Cross-paper pattern mining at batch truth-audit catches 3 recurring ESSENTIALs missed by per-paper-only review",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "R39conf batch truth-audit identified companion / sigma_mixing / audit_artifact as cross-paper recurring patterns flagged by ≥2 reviewers AND ≥2 papers; closing each required a coordinated sweep across all 6 papers rather than per-paper patching. Pattern detection rule encoded into the batch truth-audit prompt; all 3 promoted to /r-round-pattern-mine skill catalog as new entries.",
+    keyTakeaways: [
+      "companion — in-prep paper citations (P1A/P1B/P5) → switched to '(in preparation)' framing; previously slipping through per-paper review as contextual",
+      "sigma_mixing — σ across distinct null procedures juxtaposed without caveat → distinct-null-procedure caveat added in P4 abstract + 8 captions; cross-paper because the same measurement idiom appears in 4 of 6 papers",
+      "audit_artifact — review-round process language leaking into body text → grep-and-strip across all 6 papers; a pattern-017 recurrence variant now formally catalogued",
+      "Detection rule: query 'flag any claim flagged by ≥2 vendors AND found in ≥2 papers before closing individually' added to batch truth-audit prompt in /r-round-pattern-mine",
+    ],
+    links: [
+      { label: "R39conf batch truth-audit", href: `${GH}/project-context/peer-reviews/R39CONF_BATCH_TRUTH_AUDIT.md` },
+      { label: "r-round-pattern-mine skill", href: "https://github.com/houstongolden/agent-stack-backup/blob/main/scistack/astrostack/r-round-pattern-mine/SKILL.md" },
+    ],
+  },
+  {
+    id: "R39CONF-CLOSURE-WAVE",
+    kind: "internal-api",
+    dateISO: "2026-06-13",
+    title: "R39conf closure wave: 48 ESSENTIALs + 3 cross-paper patterns closed across all 6 papers in single same-day wave",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "First cross-vendor R-round after EXT9 breakthrough. ChatGPT verdict ladder confirmed: MAJOR→MINOR on 4/6 (recalibration-stable). Batch truth-audit surfaced 3 cross-paper recurring patterns (companion/sigma_mixing/audit_artifact) requiring coordinated sweeps. HD-items all ruled DO-NOW: P1B Ωa subsection (~60 lines, 2-reviewer consensus); P2 Bayes-factor derivation with closed-form + numerical self-consistency; P5 χ[h⁻¹ Mpc] unit VERIFIED-CORRECT against pipeline source (reviewer claim FALSIFIED). P3 caught 11 ESSENTIALs incl F₀ OCR fix, Cramér's V √ correction, αˆ² display, dust p-value 0.21→0.35. Anthropic Claude_brutal credit-exhausted on 24/30 reports — flagged as degraded-round but 4-vendor data per paper sufficient.",
+    keyTakeaways: [
+      "48 ESSENTIALs closed in single wave (P1A 9 + P1B 7 + P2 5 + P3 11 + P4 8 + P5 8)",
+      "3 cross-paper patterns closed: companion / sigma_mixing / audit_artifact — all required coordinated 6-paper sweeps",
+      "Anthropic Claude_brutal credit-exhausted on 24/30 reports — degraded-round flag; 4 working vendors (GPT/Gemini/Grok/Perplexity) per paper confirmed sufficient",
+      "P5 χ-unit reviewer claim FALSIFIED by pipeline source inspection — pattern-049 truth-audit prevented phantom closure",
+      "P3 leads all papers with 11 ESSENTIALs closed including F₀ OCR, Cramér's V √ fix, and dust p-value correction",
+    ],
+    gapMetric: { externalOnlyFindings: 0, note: "Internal cross-vendor wave; gap metric N/A — measures internal/external gap in EXT rounds only" },
+    links: [
+      { label: "R39conf batch truth-audit", href: `${GH}/project-context/peer-reviews/R39CONF_BATCH_TRUTH_AUDIT.md` },
+    ],
+  },
+  {
     id: "EXT10-SUBMISSION",
     kind: "external-browser",
     dateISO: "2026-06-13",

@@ -2,7 +2,9 @@
 
 **Canonical status file. When in doubt about Paper 3, read this.**
 
-**🎯 Last authoritative update: 2026-06-13 (PDT) — EXT9 CLOSURE WAVE — P3 v3.1.105 (md5 8533c5a7, 29pp, 0/0/0).** EXT9 closure: Table II \begin{table}→\begin{table*} (real LaTeX rendering bug — single-column overflow confirmed); denominator row added to Table II; Table V row (h) shortened. ChatGPT MAJOR remains on DESI denominator (genuine residual, now partially addressed). Readiness holds 95.
+**🎯 Last authoritative update: 2026-06-13 (PDT) — R39conf CLOSURE WAVE — P3 v3.1.106 (md5 d1258558, 29pp, 0/0/0).** R39conf batch cross-vendor wave (4-vendor; Anthropic Claude_brutal credit-exhausted, flagged). 11 ESSENTIALs closed (most in the wave): F₀ OCR fix, Cramér's V √ correction, αˆ² display fix, dust p-value corrected 0.21→0.35; companion/sigma_mixing/audit_artifact cross-paper patterns applied. Readiness holds 95 per /readiness-cap-99.
+
+**🎯 Prior authoritative update: 2026-06-13 (PDT) — EXT9 CLOSURE WAVE — P3 v3.1.105 (md5 8533c5a7, 29pp, 0/0/0).** EXT9 closure: Table II \begin{table}→\begin{table*} (real LaTeX rendering bug — single-column overflow confirmed); denominator row added to Table II; Table V row (h) shortened. ChatGPT MAJOR remains on DESI denominator (genuine residual, now partially addressed). Readiness holds 95.
 
 **Prior: 2026-06-13 (PDT) — SHIP-MODE PASS — P3 v3.1.104 (md5 359a733d, 29pp, 0/0/0).** Houston 2026-06-13 directive: HD-* ruled DO-NOW; ship-final stamp. **Title decision NM2/B1 RESOLVED — KEEP CURRENT TITLE** (378,280 front-loaded, singular 'Native-Trained Novelty Fraction' per prior ruling, 'Sources and Map Patches' framing accurate). Zero new body strips required (audit-trail already cleared in v3.1.101-102). 6 'supersede/superseded' instances retained as substantive method-replacement statements (cross-transfer→Path-C native; fixed-prior→empirical) — not audit-trail. Readiness: SHIP-READY.
 

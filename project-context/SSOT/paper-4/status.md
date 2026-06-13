@@ -2,7 +2,9 @@
 
 **Canonical status file. When in doubt about Paper 4, read this.**
 
-**🎯 Last authoritative update: 2026-06-13 (PDT) — EXT9 CLOSURE WAVE — P4 v1.0.185 (md5 414048af, 23pp, 0/0/0).** EXT9 closure: WLS pixel arithmetic corrected 24,061→24,087 (verified from on-disk artifact); Fig 9 σ unified to +7.28σ canonical throughout. ChatGPT MAJOR→MINOR under honest MNRAS/PRD recalibration. Readiness holds 95.
+**🎯 Last authoritative update: 2026-06-13 (PDT) — R39conf CLOSURE WAVE — P4 v1.0.186 (md5 3d24de44, 23pp, 0/0/0).** R39conf batch cross-vendor wave (4-vendor; Anthropic Claude_brutal credit-exhausted, flagged). 8 ESSENTIALs closed: sigma_mixing distinct-null-procedure caveat added to abstract + 8 captions (σ across distinct null procedures juxtaposed — 2-reviewer + 2-paper recurring pattern); companion/audit_artifact patterns applied. Readiness holds 95 per /readiness-cap-99.
+
+**🎯 Prior authoritative update: 2026-06-13 (PDT) — EXT9 CLOSURE WAVE — P4 v1.0.185 (md5 414048af, 23pp, 0/0/0).** EXT9 closure: WLS pixel arithmetic corrected 24,061→24,087 (verified from on-disk artifact); Fig 9 σ unified to +7.28σ canonical throughout. ChatGPT MAJOR→MINOR under honest MNRAS/PRD recalibration. Readiness holds 95.
 
 **Prior: 2026-06-13 (PDT) — P4 v1.0.184 — R38conf 2 COSMETIC CLOSURES (md5 034680f0, 23pp, 0/0/0).** R38conf 4-vendor batch confirmation: 5/6 papers CLEAN; **Gemini called the new P4 harmonic-completeness figure 'a powerful visual demonstration'** (ACCEPT-WITH-MINOR — only Gemini ACCEPT in the round). 2 cosmetic items closed: Fig 9 σ convention disambiguation (body +7.28σ canonical / Fig 9 c9b 1000-MC retained with caption note); Table I L407 stale `Table~VI` → `\ref{tab:fsky_summary}`. Ship-final stamp final. **SHIP-READY confirmed.**
 

@@ -12,7 +12,9 @@ submission_status: submission-ready (R42 Wave 14-AAA LANDED -- P2-OA-B4 FULL HAR
 
 # Paper 2 — f_NL Forecast (SPHEREx / MegaMapper) — Single Source of Truth
 
-**🎯 Last authoritative update: 2026-06-13 (PDT) — EXT9 CLOSURE WAVE — P2 v1.7.62 (md5 406af9f8, 27pp, 0/0/0).** EXT9 closure: Fondi arXiv ID corrected 2503.14057→2602.12357; Table IV label fix. ChatGPT MAJOR→MINOR under honest MNRAS/PRD recalibration. Readiness holds 94.
+**🎯 Last authoritative update: 2026-06-13 (PDT) — R39conf CLOSURE WAVE — P2 v1.7.63 (md5 80aa0f0c, 29pp, 0/0/0).** R39conf batch cross-vendor wave (4-vendor; Anthropic Claude_brutal credit-exhausted, flagged). 5 ESSENTIALs closed: Bayes-factor derivation made explicit with closed-form expression + numerical self-consistency check (HD-item ruled DO-NOW); companion/sigma_mixing/audit_artifact cross-paper patterns applied. Readiness holds 94 per /readiness-cap-99.
+
+**🎯 Prior authoritative update: 2026-06-13 (PDT) — EXT9 CLOSURE WAVE — P2 v1.7.62 (md5 406af9f8, 27pp, 0/0/0).** EXT9 closure: Fondi arXiv ID corrected 2503.14057→2602.12357; Table IV label fix. ChatGPT MAJOR→MINOR under honest MNRAS/PRD recalibration. Readiness holds 94.
 
 **Prior: 2026-06-13 (PDT) — SHIP-MODE PASS — P2 v1.7.61 (md5 6b413c94, 27pp, 0 err/0 undef/2 pre-existing overfull).** Houston 2026-06-13 directive: HD-* ruled DO-NOW; ship-final stamp. P2 had zero body-text audit-trail residues (all 'earlier draft'/'withdrawn' already in `%` changelog) — stamp-only ship-final. Readiness: SHIP-READY.
 

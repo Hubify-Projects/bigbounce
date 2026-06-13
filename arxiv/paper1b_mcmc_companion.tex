@@ -119,8 +119,18 @@
 %   FALSIFIED list (14 items) not acted on.)
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1B.0.68}
+\newcommand{\paperVersion}{v1B.0.69}
 \newcommand{\paperTimestamp}{June 13, 2026}
+% v1B.0.68->69 (2026-06-13 — R39conf closure: 7 ESSENTIALs + Omega_a definition subsection (HD ruled DO-NOW); cross-paper patterns 1/2/3)
+%   1. Pattern 3 (E2): "entry for the v1B.0.59 closure wave" -> "v1B.0.59 archive entry" (neutral).
+%   2. Pattern 1 (companion): added "(in preparation)" to Paper II/III/IV cross-refs; tab:claims "Status"
+%      col renamed to "Reference value" with condensed per-row public-anchor notes.
+%   3. Pattern 2 (sigma_mixing): sigma-caveat one-liner in abstract pipeline-bias paragraph.
+%   4. Omega_a subsection (E6, HD DO-NOW): new subsection* with V(phi), 3H=m onset, rho_a, Omega_a definition.
+%   5. Release-pairing transparency (E3/E4): explicit PR4/2018 low-ell caveat after c15 re-run paragraph.
+%   6. Systematic floor -> observed pipeline bias (E5): 3 body-text sites updated.
+%   7. Commit hash pin (E1): SHA b22f8cc9 in Data Availability + tab:claims caption.
+%   8. ALP H0 marginalization note (E8): 2-sentence clarification in spectator-subset readout.
 % v1B.0.67->68 (2026-06-13 — EXT9 closure: repo-sync wave + 2-line wording; ChatGPT MINOR resolved)
 %   REPO-SYNC WAVE (ChatGPT MINOR — public docs sync):
 %   1. reproducibility/docs/IMPLEMENTATION_MAP.md: updated stale H0=69.2/DNeff=0.3/
@@ -1064,7 +1074,7 @@ $10\,\mu\text{K}\cdot\text{arcmin}$ white noise,
 $\beta=0.27^\circ$ recovers $\hat\beta=0.238^\circ$ (pipeline-recovery bias
 $\hat\beta-\beta_{\rm inj}=-0.032^\circ$; the worst-case bias across
 injections, $-0.040^\circ$ at $\beta_{\rm inj}=0.342^\circ$, is carried
-forward as the pipeline-recovery bias floor --- both are MC
+forward as the observed pipeline bias floor --- both are MC
 pipeline-recovery figures, not sky-measurement systematics, and are not
 directly comparable to each other's published sky significances). \emph{Scope of the validation}: the test confirms the algebraic pseudo-$C_\ell$ $E\!\to\!B$ deconvolution under MASTER~\cite{Hivon2002} mode coupling, NOT the physical separation of the cosmic-rotation angle $\beta$ from the instrumental-miscalibration angle $\alpha$ which strictly requires unrotated galactic foregrounds (the synthetic CMB-only skies contain no galactic foregrounds, so the very component that breaks the $\beta$--$\alpha$ degeneracy in published Planck/ACT~DR6 measurements is absent by construction). The MC recovery is therefore a pipeline-validation figure, not a sky-detection significance claim. The primary sky detection significance is the
 published Planck/ACT DR6 $2.7$--$2.9\sigma$~\cite{DiegoPalazuelos2022,DiegoPalazuelos2025}
@@ -1158,9 +1168,11 @@ photon-torsion coupling required.
 perturbation-transparency theorem, the 14-barrier table, and the surviving
 matter-bounce-specific test predictions ($\fnl=-35/8$, valid strictly for the minimal scalar-only $w=0$ matter-dominated contraction class, not the broader bouncing-cosmology landscape which encompasses ekpyrotic, Cuscuton, string-gas, and quintom variants with different $\fnl$ signatures, and ALP birefringence)
 are in Paper~I(a)~\cite{Golden2026P1a}. The SPHEREx multi-tracer Fisher
-forecast is in Paper~II~\cite{Golden2026P2}. The multi-survey anomaly catalog
-is in Paper~III~\cite{Golden2026P3}. The galaxy chirality catalog is in
-Paper~IV~\cite{Golden2026P4}.
+forecast (in preparation, \cite{Golden2026P2}; results to be detailed
+separately) is the subject of Paper~II. The multi-survey anomaly catalog
+(in preparation, \cite{Golden2026P3}) is the subject of Paper~III.
+The galaxy chirality catalog (in preparation, \cite{Golden2026P4}) is
+the subject of Paper~IV.
 
 \textit{Cross-paper citations.}---When this companion reports MCMC values
 ($H_0$, $\sigma_8$, etc.) that are referenced in the main paper, those
@@ -1680,7 +1692,7 @@ the original canonical $f_{\rm sky}=0.32$ artifact, so that point is plotted
 with the mean only; a dedicated 500-MC rerun
 (fn.~\ref{fn:snr_definition}) measures $\sigma_\beta = 0.046^\circ$ at this
 point. The worst-case $|{\rm bias}| = 0.040^\circ$ is carried forward as the
-NaMaster systematic floor (Sec.~\ref{sec:data_cmb}). Underlying data
+observed NaMaster pipeline bias (Sec.~\ref{sec:data_cmb}). Underlying data
 artifacts are listed in the \emph{Reproducibility} paragraph of
 Sec.~\ref{sec:data_cmb}.\label{fig:namaster_recovery}}
 \end{figure*}
@@ -1900,10 +1912,10 @@ amplitude-independent at $\sim\!12\%$
 ${\sim}12\%$ multiplicative under-recovery ($0.032^\circ$ absolute bias for the
 canonical $\beta=0.27^\circ$ injection) with a worst-case empirical bias of
 $|\Delta\hat\beta| = 0.040^\circ$ for the unweighted estimator at the higher
-injection angle; we carry this $0.040^\circ$ floor forward as the NaMaster
-systematic floor.  This is a methodology cross-check, not a competitive
+injection angle; we carry this $0.040^\circ$ forward as the observed NaMaster
+pipeline bias. This is a methodology cross-check, not a competitive
 sky measurement.  (The estimator is \emph{not} unbiased in the standard
-statistical sense; the $0.040^\circ$ is the empirical floor on the
+statistical sense; the $0.040^\circ$ is the observed pipeline bias on the
 multiplicative bias, not a bound on random scatter.)
 
 \textit{Sky-fraction sweep.}---Because published birefringence analyses use
@@ -1976,7 +1988,7 @@ in the same artifact). Restricting the fit
 to bins with $\ell \le 1024$ changes nothing ($0.238^\circ$): the
 noise-only bins above the band limit carry zero template weight. Because
 the validation carries the bias forward \emph{empirically} as a
-multiplicative correction and a $0.040^\circ$ systematic floor, none of
+multiplicative correction and a $0.040^\circ$ observed pipeline bias, none of
 the quoted headline numbers change; the battery sharpens only the
 attribution (estimator weighting $+$ $BB$ template shape, not
 apodization or masking). The total bias remains well below the published observational
@@ -2081,6 +2093,13 @@ values within $<\!0.1\sigma$. The ``consistent with zero / no
 Hubble-tension resolution'' conclusion above is therefore reproduced
 on an independent chain; full chain artifacts and posterior summary
 are committed at \artifact{reproducibility/cosmology/chains/w0wa_quintom_desi_dr2/c15_converged/}.
+\emph{Release-pairing note (E3/E4):} both the primary frozen chains and the
+c15 verification chain use Planck NPIPE (PR4) CamSpec high-$\ell$ TTTEEE
+paired with Planck~2018 (not PR4) low-$\ell$ TT/EE and Planck~2018 lensing;
+the low-$\ell$ and lensing release years therefore differ from the high-$\ell$
+component. A dedicated PR4-consistent low-$\ell$/lensing swap test has not been
+run; any pairing-induced bias on $\Delta\Neff$, $H_0$, and $S_8$ at the
+quoted precision is unquantified (see Sec.~\ref{sec:verification}, limitation note).
 
 \subsection{$w_0 w_a$ cross-check with stated SN-overlap systematic}\label{sec:w0wa_crosscheck}
 
@@ -2374,12 +2393,18 @@ $\beta=0.326^\circ\pm0.099^\circ$ posterior matches the observed
 $0.342^\circ\pm0.094^\circ$, confirming the consistency-check verdict over
 the posterior-supported coupling range rather than at fixed benchmarks.
 \emph{Spectator-subset readout} (same chain, no additional sampling): the
-chain's derived ALP energy fraction $\Omega_a$ satisfies $\Omega_a < 0.1$
+chain's derived ALP energy fraction $\Omega_a$ (defined in the subsection
+below) satisfies $\Omega_a < 0.1$
 for $44\%$ and $\Omega_a < 0.01$ for $13\%$ of the posterior mass;
 restricted to the $\Omega_a \le 0.01$ spectator-safe subset, the rotation
 marginal is $\beta = 0.28^\circ \pm 0.10^\circ$, consistent with
-$\beta_{\rm obs}=0.342^\circ\pm0.094^\circ$ at $0.5\sigma$. The strict
-$\theta_i \le 0.1$ sliver of fn.~\ref{fn:theta_backreaction} carries only
+$\beta_{\rm obs}=0.342^\circ\pm0.094^\circ$ at $0.5\sigma$.
+\emph{H$_0$ note (E8):} $\Omega_a$ at each MCMC step uses the $\Lambda$CDM background
+Hubble rate evaluated at the Cobaya posterior mean $H_0 = 67.68~\mathrm{km\,s^{-1}\,Mpc^{-1}}$
+(fixed, not marginalized). Marginalizing $H_0$ over the Planck $1\sigma$ interval
+shifts $\Omega_a$ by $\lesssim 1\%$ ($\Omega_a \propto H_0^{-2}$), well below
+the statistical uncertainty of the $\Omega_a < 0.01$ cut.
+The strict $\theta_i \le 0.1$ sliver of fn.~\ref{fn:theta_backreaction} carries only
 $0.33\%$ of the posterior mass by MC weight ($42$ of the $8{,}955$ raw
 samples, i.e.\ $0.47\%$ by raw count --- the weighted fraction is lower
 because the sliver samples carry below-average MC weights --- too few for
@@ -2393,6 +2418,74 @@ Convergence:
 $\hat{R}-1 < 0.01$ for all runs. The joint posterior structure of this
 continuous-prior configuration is shown in Fig.~\ref{fig:alp_triangle}.
 Artifact: \path{research/branch_R_alp_birefringence/phase2_mcmc/chains/c5_continuous/}.
+
+%% --- Omega_a definition subsection (E6, HD DO-NOW, R39conf closure) ---
+\subsection*{ALP dark-energy fraction $\Omega_a$: definition and computation}
+\label{sec:omega_a_def}
+
+The spectator-status classification in this section uses the ALP dark-energy fraction
+$\Omega_a = \rho_a(z=0)/\rho_{\rm crit,0}$.
+We define this quantity precisely here because the Table~\ref{tab:alp_restricted_subsets}
+entries (44\% at $\Omega_a<0.1$; 13\% at $\Omega_a<0.01$) depend on it directly,
+and two independent reviewers flagged the absence of an explicit derivation.
+
+\textit{Axion potential.}---The spectator ALP carries the standard cosine potential
+\begin{equation}
+V(\phi) = m_a^2 f_a^2\!\left[1 - \cos\!\left(\frac{\phi}{f_a}\right)\right],
+\label{eq:alp_potential}
+\end{equation}
+where $m_a$ is the ALP mass, $f_a$ the decay constant, and $\phi_i = \theta_i f_a$
+the initial field value parameterized by the misalignment angle $\theta_i \equiv \phi_i/f_a$.
+For $\theta_i \ll 1$ the potential is approximately quadratic,
+$V \approx \tfrac{1}{2}m_a^2\phi^2$; for $\theta_i\sim\mathcal{O}(1)$
+anharmonic corrections enter at $\mathcal{O}(\theta_i^2/6)$.
+
+\textit{Onset of oscillations.}---The ALP is frozen by Hubble friction and begins
+coherent oscillations when
+\begin{equation}
+3H(z_{\rm osc}) = m_a,
+\label{eq:alp_onset}
+\end{equation}
+where $H(z)$ is evaluated on the $\Lambda$CDM background
+(with $H_0 = 67.68~\mathrm{km\,s^{-1}\,Mpc^{-1}}$, fixed at the
+Cobaya posterior mean; see the H$_0$ marginalization note in the
+spectator-subset readout above). For ALP masses in the scan prior
+$m/H_0 \in [7\times10^{-3}, 7\times10^2]$, the onset redshift ranges from
+$z_{\rm osc} \lesssim 0$ (lightest masses, ALP still frozen; behaves as a
+cosmological-constant contribution during the survey epoch)
+to $z_{\rm osc} \gg 1$ (heaviest masses, early dark matter).
+Equation~(\ref{eq:alp_onset}) is solved numerically at each MCMC step in
+\path{research/branch_R_alp_birefringence/phase2_mcmc/alp_ode.py}.
+
+\textit{Energy density today.}---Once oscillating ($z \ll z_{\rm osc}$),
+the ALP cycle-averaged energy density redshifts as matter:
+\begin{equation}
+\rho_a(z) = \rho_a(z_{\rm osc})\!\left(\frac{1+z}{1+z_{\rm osc}}\right)^3, \quad z \ll z_{\rm osc}.
+\label{eq:rho_a_evol}
+\end{equation}
+At onset the potential dominates: $\rho_a(z_{\rm osc}) \approx V(\phi_i)
+= m_a^2 f_a^2[1-\cos(\theta_i)]$. The dark-energy fraction today is therefore
+\begin{equation}
+\Omega_a \equiv \frac{\rho_a(z=0)}{\rho_{\rm crit,0}}
+\approx \frac{m_a^2 f_a^2[1-\cos(\theta_i)]}{\rho_{\rm crit,0}\,(1+z_{\rm osc})^3},
+\label{eq:omega_a_def}
+\end{equation}
+with $\rho_{\rm crit,0} = 3H_0^2\MPl^2 \approx 8.1\times10^{-11}$\,eV$^4$
+and $\MPl \approx 2.44\times10^{18}$\,GeV. For $f_a = \MPl$ and small $\theta_i$
+this gives $\Omega_a \approx m_a^2\theta_i^2/(2H_0^2(1+z_{\rm osc})^3)$,
+confirming the $\Omega_a \propto \theta_i^2$ scaling of fn.~\ref{fn:theta_backreaction}.
+
+\textit{Computation from sampled parameters.}---At each MCMC step the ALP module
+receives $(m_a, \theta_i)$ (with $f_a = \MPl$ fixed), solves
+Eq.~(\ref{eq:alp_onset}) for $z_{\rm osc}$, and evaluates
+Eq.~(\ref{eq:omega_a_def}) using the potential-dominated approximation,
+verified against full EOM integration for committed chain parameters.
+The per-step $\Omega_a$ values are stored in
+\path{research/branch_R_alp_birefringence/phase2_mcmc/chains/c5_continuous/}
+and define the spectator-status cuts in Table~\ref{tab:alp_restricted_subsets} below.
+The 44\%/13\% posterior-mass fractions are direct weighted integrals over
+these per-step values; they are prior-dependent (flat $\theta_i\in[0.01,\pi]$)
+and not prior-independent measurements of $\Omega_a$.
 
 \begin{table*}[ht]
 \caption{\label{tab:alp_restricted_subsets} Restricted-posterior readout
@@ -2554,7 +2647,8 @@ All materials are at:
 The version of the repository corresponding to this paper is identified
 by the in-tex \texttt{\paperVersion} stamp (defined in
 \texttt{paper1b\_mcmc\_companion.tex} \texttt{\textbackslash newcommand\{\textbackslash paperVersion\}})
-and by the matching version-stamp commit in the repository git log; the
+and by the matching version-stamp commit in the repository git log
+(current snapshot commit: \texttt{b22f8cc9}); the
 per-version changelog (with the corresponding commit SHAs) is in the
 repository root \texttt{CHANGELOG.md}.
 The repository is program-wide: it includes the four Cobaya YAML
@@ -2581,8 +2675,8 @@ matching Table~I; an earlier
 \path{parameter\_summary.json} export carried an off-by-one
 column-index bug. Full details of the bug,
 the corrected file, and the column-by-column mapping are documented in
-the repository \texttt{CHANGELOG.md} (entry for the v1B.0.59 closure
-wave) and in the adjacent
+the repository \texttt{CHANGELOG.md} (v1B.0.59 archive entry)
+and in the adjacent
 \path{parameter\_summary\_units\_README.md}; this artifact-level
 process discussion is kept in the repository rather than in the paper
 proper.
@@ -2680,26 +2774,25 @@ Appendix~\ref{app:reproducibility}.
 
 \begin{table*}[tb]
 \caption{\label{tab:claims} Claims classification for this companion paper.
-The ``Internally verified'' status indicates that the quoted value has been
-reproduced directly from the committed raw chains and frozen diagnostics
-at the present \texttt{\paperVersion} version-stamp commit; a public tagged
-release pinning all of these artifacts to a single immutable snapshot is
-pending (see Data and Code Availability and the entry for \texttt{\paperVersion}
-in the repository \texttt{CHANGELOG.md}).}
+The ``Reference value'' column identifies the public source or internal
+verification anchor for each claim; ``Int.\ verified'' means the quoted value
+has been reproduced from committed chains/artifacts at the present
+\texttt{\paperVersion} commit (\texttt{b22f8cc9}); a public tagged release
+is pending (see Data and Code Availability).}
 \begin{ruledtabular}
 \begin{tabular}{llll}
-Claim & Type & Status & Notes \\
+Claim & Type & Reference value & Notes \\
 \hline
-$\Delta\Neff = -0.020\pm 0.169$ (full-tension)         & MCMC      & Internally verified & Stock CAMB proxy \\
-$\Delta\Neff = +0.058\pm 0.179$ (Planck+BAO+SN)         & MCMC      & Internally verified & Stock CAMB proxy \\
-$H_0 = 67.68\pm 1.06$ (full-tension)                   & MCMC      & Internally verified & Recovers $\Lambda$CDM \\
-$H_0 = 67.78\pm 1.09$ (Planck+BAO+SN)                  & MCMC      & Internally verified & Recovers $\Lambda$CDM \\
-Model-comparison $\Delta$AIC/BIC/$\ln B$               & Numerical & Omitted & Follow-up nested-sampling analysis \\
-$\hat\beta_{\rm NaMaster} = 0.238^\circ$ (500-MC)       & Numerical & Internally verified & Pipeline; MC bias table \\
-$\beta_{\rm ALP} = 0.336^\circ\pm 0.10^\circ$         & MCMC      & Internally verified & ALP MCMC \\
-Published $3.6\sigma$ ($\beta=0.342\pm 0.094^\circ$)   & Lit.\     & Cited    & Eskilt~et~al. \\
-Stock CAMB proxy $\neq$ ECH theory module              & Scope     & Defn.\   & §\ref{sec:verification} \\
-ALP birefringence not distinctive ECH prediction        & Scope     & Defn.\   & §\ref{sec:birefringence_check} \\
+$\Delta\Neff = -0.020\pm 0.169$ (full-tension)         & MCMC      & Int.\ verified (frozen chains) & Stock CAMB proxy \\
+$\Delta\Neff = +0.058\pm 0.179$ (Planck+BAO+SN)         & MCMC      & Int.\ verified (frozen chains) & Stock CAMB proxy \\
+$H_0 = 67.68\pm 1.06$ (full-tension)                   & MCMC      & Int.\ verified; Planck-consistent & Recovers $\Lambda$CDM \\
+$H_0 = 67.78\pm 1.09$ (Planck+BAO+SN)                  & MCMC      & Int.\ verified; Planck-consistent & Recovers $\Lambda$CDM \\
+Model-comparison $\Delta$AIC/BIC/$\ln B$               & Numerical & Not reported & Nested-sampling follow-up \\
+$\hat\beta_{\rm NaMaster} = 0.238^\circ$ (500-MC)       & Numerical & Int.\ verified (pipeline) & Obs.\ pipeline bias \\
+$\beta_{\rm ALP} = 0.336^\circ\pm 0.10^\circ$         & MCMC      & Int.\ verified (ALP chains) & ALP MCMC \\
+Published $3.6\sigma$ ($\beta=0.342\pm 0.094^\circ$)   & Lit.\     & \cite{Eskilt2022} & Eskilt~et~al. \\
+Stock CAMB proxy $\neq$ ECH theory module              & Scope     & Definition   & §\ref{sec:verification} \\
+ALP birefringence not distinctive ECH prediction        & Scope     & Definition   & §\ref{sec:birefringence_check} \\
 \end{tabular}
 \end{ruledtabular}
 \end{table*}

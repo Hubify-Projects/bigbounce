@@ -13,11 +13,12 @@
 \contentsline {subsection}{\numberline {B}Results: $\Lambda $CDM$+\Delta N_{\rm eff}$ proxy}{9}{section*.11}%
 \contentsline {subsection}{\numberline {C}$w_0 w_a$ cross-check with stated SN-overlap systematic}{10}{section*.12}%
 \contentsline {section}{\numberline {VI}Cosmic Birefringence: Spectator ALP Consistency Check}{10}{section*.13}%
-\contentsline {section}{\numberline {VII}Conclusions}{13}{section*.14}%
-\contentsline {subsection}{\numberline {}Data and Code Availability}{14}{section*.15}%
-\contentsline {section}{\numberline {}Acknowledgments}{14}{section*.16}%
+\contentsline {subsection}{\numberline {}ALP dark-energy fraction $\Omega _a$: definition and computation}{13}{section*.14}%
+\contentsline {section}{\numberline {VII}Conclusions}{14}{section*.15}%
+\contentsline {subsection}{\numberline {}Data and Code Availability}{15}{section*.16}%
+\contentsline {section}{\numberline {}Acknowledgments}{15}{section*.17}%
 \appendix 
-\contentsline {section}{\numberline {A}Reproducibility Materials}{14}{section*.17}%
-\contentsline {section}{\numberline {B}Claims Classification}{15}{section*.18}%
-\contentsline {section}{\numberline {C}ALP-MCMC Sampled Parameters, Priors, and Likelihood Stack}{15}{section*.19}%
-\contentsline {section}{\numberline {}References}{16}{section*.20}%
+\contentsline {section}{\numberline {A}Reproducibility Materials}{15}{section*.18}%
+\contentsline {section}{\numberline {B}Claims Classification}{16}{section*.19}%
+\contentsline {section}{\numberline {C}ALP-MCMC Sampled Parameters, Priors, and Likelihood Stack}{16}{section*.20}%
+\contentsline {section}{\numberline {}References}{17}{section*.21}%
