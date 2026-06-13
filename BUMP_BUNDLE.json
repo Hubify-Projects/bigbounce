@@ -1,56 +1,11 @@
 [
  {
-  "paperSlug": "paper-1a",
-  "version": "v1A.0.70",
-  "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1a_ech_nogo.pdf",
-  "sitePdfPath": "/papers/paper1a_ech_nogo_v1A.0.70.pdf",
-  "changelog": "SHIP-MODE: HD-6 body strip (4 sites) + ship-final stamp per Houston 2026-06-13 directive.",
-  "datestamp": "2026-06-13",
-  "texCommit": "95bc96d5"
- },
- {
   "paperSlug": "paper-1b",
-  "version": "v1B.0.66",
+  "version": "v1B.0.67",
   "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1b_mcmc_companion.pdf",
-  "sitePdfPath": "/papers/paper1b_mcmc_companion_v1B.0.66.pdf",
-  "changelog": "SHIP-MODE: w0wa finalized as published cross-check ('Exploratory pending' hedge removed); SN-overlap retained as honestly-disclosed systematic; control chains post-submission follow-up.",
+  "sitePdfPath": "/papers/paper1b_mcmc_companion_v1B.0.67.pdf",
   "datestamp": "2026-06-13",
-  "texCommit": "95bc96d5"
- },
- {
-  "paperSlug": "paper-2",
-  "version": "v1.7.61",
-  "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/research/focused_paper_source_integration/02_full_draft.pdf",
-  "sitePdfPath": "/papers/paper2_fnl_forecast_v1.7.61.pdf",
-  "changelog": "SHIP-MODE: stamp-only (zero body audit-trail residues, all in changelog already).",
-  "datestamp": "2026-06-13",
-  "texCommit": "95bc96d5"
- },
- {
-  "paperSlug": "paper-3",
-  "version": "v3.1.104",
-  "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p3_anomaly_engine/paper3_draft.pdf",
-  "sitePdfPath": "/papers/paper3_anomaly_catalog_v3.1.104.pdf",
-  "changelog": "SHIP-MODE: title decision NM2/B1 RESOLVED (keep current); stamp-only.",
-  "datestamp": "2026-06-13",
-  "texCommit": "95bc96d5"
- },
- {
-  "paperSlug": "paper-4",
-  "version": "v1.0.183",
-  "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p2_chirality/chirality_catalog_paper.pdf",
-  "sitePdfPath": "/papers/chirality_catalog_paper_v183.pdf",
-  "changelog": "SHIP-MODE: HARMONIC COMPLETENESS FIGURE generated from REAL DATA (c9b_injection_completeness.json) \u2014 closes ChatGPT P4-E4 MAJOR; 8 HD-6 body strips; ship-final.",
-  "datestamp": "2026-06-13",
-  "texCommit": "95bc96d5"
- },
- {
-  "paperSlug": "paper-5",
-  "version": "v0.1.73",
-  "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf",
-  "sitePdfPath": "/papers/p5_desi_chirality_v0.1.73.pdf",
-  "changelog": "SHIP-MODE: VoidFinder membership-approximation now in abstract (closes ChatGPT 4-round Class-D MAJOR); title NM1 KEPT; 8 HD-6 body strips.",
-  "datestamp": "2026-06-13",
-  "texCommit": "95bc96d5"
+  "texCommit": "main",
+  "changelog": "c15 chain converged 2026-06-13: independent Planck NPIPE + SDSS DR16 BAO + Pantheon+ LCDM+\u0394N_eff re-run reproduces frozen \u0394N_eff = +0.058 \u00b1 0.179 at 0.04\u03c3; H0 / \u03c38 / S8 / \u03a9_m all <0.1\u03c3 vs frozen Table I. Integrated as \u00a7III.A 'Independent re-run cross-check' paragraph. Actual w0wa SN-overlap MPI re-fit remains post-submission queued."
  }
 ]
