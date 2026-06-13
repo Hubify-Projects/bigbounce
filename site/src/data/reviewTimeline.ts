@@ -45,6 +45,25 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "C15-CONVERGED-P1B",
+    kind: "closure-wave",
+    dateISO: "2026-06-13",
+    timePT: "c15 pod converged during EXT9 submission (R−1 = 0.0147 < 0.015)",
+    title: "c15 pod chain converged — P1B v1B.0.67 independent ΛCDM+ΔN_eff replication landed; honest integration (NOT the w₀wₐ control re-fit per agent truth-audit)",
+    papers: ["P1B"],
+    summary: "After days running pod-side, the c15 MCMC hit R−1 = 0.0147 < 0.015 during EXT9 submission. The Opus integration agent caught an important truth: the c15 input.yaml has no w/wₐ parameters — it's a Planck NPIPE + SDSS DR16 BAO + Pantheon+ ΛCDM+ΔN_eff chain, NOT the SN-overlap-controlled w₀wₐ re-fit. The agent refused to fabricate w₀/wₐ numbers (Houston's 'never fabricate' rule applied correctly) and instead integrated it as what it is: an independent reproducibility verification of the frozen ΛCDM+ΔN_eff posterior. Result: ΔN_eff = +0.0514 ± 0.171 reproduces the frozen +0.058 ± 0.179 at 0.04σ; all other params <0.1σ vs frozen Table I. Landed as §III.A 'Independent re-run cross-check' paragraph.",
+    keyTakeaways: [
+      "ΔN_eff = +0.0514 ± 0.171 (reproduces frozen +0.058 ± 0.179 at 0.04σ)",
+      "H0 = 67.81 ± 1.07, σ8 = 0.813 ± 0.009, S8 = 0.828 ± 0.010, Ω_m = 0.311 ± 0.006 — all <0.1σ vs frozen Table I",
+      "Strengthens, doesn't weaken: this is an independent-pod reproducibility verification of the published posterior",
+      "Pod stays running — the actual w₀wₐ SN-overlap MPI re-fit (the true control chain) remains queued",
+      "Agent truth-audit example: caught its own scope-creep before fabricating numbers — Houston's 'never fabricate' rule applied",
+    ],
+    links: [
+      { label: "c15 summary", href: `${GH}/reproducibility/cosmology/chains/w0wa_quintom_desi_dr2/c15_converged/c15_summary.json` },
+    ],
+  },
+  {
     id: "SHIP-MODE-2026-06-13",
     kind: "closure-wave",
     dateISO: "2026-06-13",
