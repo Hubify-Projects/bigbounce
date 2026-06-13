@@ -1,56 +1,11 @@
 [
  {
   "paperSlug": "paper-1a",
-  "version": "v1A.0.68",
+  "version": "v1A.0.69",
   "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1a_ech_nogo.pdf",
-  "sitePdfPath": "/papers/paper1a_ech_nogo_v1A.0.68.pdf",
-  "changelog": "EXT7 closure: Fig 3 caption/code mismatch fixed (pattern-031) \u2014 H0=69.2/\u03a9_m=0.310/enhanced \u0394N_eff disclosed; README v1A.0.64\u2192v1A.0.67 sync.",
+  "sitePdfPath": "/papers/paper1a_ech_nogo_v1A.0.69.pdf",
   "datestamp": "2026-06-13",
-  "texCommit": "290636a8"
- },
- {
-  "paperSlug": "paper-1b",
-  "version": "v1B.0.65",
-  "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1b_mcmc_companion.pdf",
-  "sitePdfPath": "/papers/paper1b_mcmc_companion_v1B.0.65.pdf",
-  "changelog": "EXT7 closure: NaMaster Eq (1) \u03c3_b\u00b2 divisor dropped to match released script `namaster_500mc.py`; CHANGELOG v1B.0.64+65 entries; README Paper I(b) v1B.0.62\u2192v1B.0.65.",
-  "datestamp": "2026-06-13",
-  "texCommit": "290636a8"
- },
- {
-  "paperSlug": "paper-2",
-  "version": "v1.7.60",
-  "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/research/focused_paper_source_integration/02_full_draft.pdf",
-  "sitePdfPath": "/papers/paper2_fnl_forecast_v1.7.60.pdf",
-  "changelog": "EXT7 MAJOR closure: Table IV Row 1 split (Naive 6.25\u03c3 vs Template-corrected 5.2-5.5\u03c3); DESI Ref [34] split (Chaussidon LRG + new Fondi QSO); Ref [28] DOI; basis-dependent representation framing.",
-  "datestamp": "2026-06-13",
-  "texCommit": "290636a8"
- },
- {
-  "paperSlug": "paper-3",
-  "version": "v3.1.103",
-  "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p3_anomaly_engine/paper3_draft.pdf",
-  "sitePdfPath": "/papers/paper3_anomaly_catalog_v3.1.103.pdf",
-  "changelog": "EXT7 closures: Eq (1) spectro/tabular disambiguation; MSE unweighted gloss; Planck binomial caveat; Table VII fiber-spectral taxonomy note; tab:recount 4-row layout. Gemini-for-P3 CALIBRATED \u2014 drop reversed.",
-  "datestamp": "2026-06-13",
-  "texCommit": "290636a8"
- },
- {
-  "paperSlug": "paper-4",
-  "version": "v1.0.182",
-  "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p2_chirality/chirality_catalog_paper.pdf",
-  "sitePdfPath": "/papers/chirality_catalog_paper_v182.pdf",
-  "changelog": "EXT7 6-item polish wave: NEW tab:wls_mask_equiv subtable; \u00a7IV.D Ganalyzer-reanalysis caveat; sum-to-one truncation/rounding rewrite; A_95,nq phrasing; D4-TTA classifier-stability caveat; NEW tab:harmonic_completeness mini-table.",
-  "datestamp": "2026-06-13",
-  "texCommit": "290636a8"
- },
- {
-  "paperSlug": "paper-5",
-  "version": "v0.1.72",
-  "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf",
-  "sitePdfPath": "/papers/p5_desi_chirality_v0.1.72.pdf",
-  "changelog": "EXT7 CLEAN at acceptance stage + 3 optional polish (Table VIII row label, \u00a7VIII.A V-Web cross-ref, 'canonical V-Web' \u2192 'headline V-Web' \u00d73). ChatGPT VoidFinder 6th k=20 auto-falsified; Gemini 3 MAJORs all falsified on disk.",
-  "datestamp": "2026-06-13",
-  "texCommit": "290636a8"
+  "texCommit": "baff81b0",
+  "changelog": "R37conf closure: sphaleron T-crossover lowered to ~few\u00d710^10 GeV (Arnold-McLerran / D'Onofrio); hierarchy convention unified to 10^122 unreduced M_Pl. Gap 14\u21922 \u2014 loop convergence confirmed."
  }
 ]
