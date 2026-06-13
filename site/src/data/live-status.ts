@@ -52,7 +52,7 @@ export const liveStatus: LiveStatus = {
   headline:
     "EXT6 harvested — Grok 4th consecutive 6/6 ACCEPT; Gemini first full ACCEPT on P1B; R35conf closures landed; ChatGPT MAJOR×6 with P2 narrowly; truth-audits in progress.",
   summary:
-    "Six external rounds complete. EXT6 submitted Jun 12 ~02:35 PT on R35conf-closed versions (v1A.0.70/v1B.0.67/v1.7.61/v3.1.104/v1.0.183/v0.1.73). Grok has been 6/6 ACCEPT for four consecutive rounds. Gemini fully cleared P1B for the first time. ChatGPT holds MAJOR×6; per-finding truth-audits determine the genuine residuals.",
+    "Six external rounds complete. EXT6 submitted Jun 12 ~02:35 PT on R35conf-closed versions (v1A.0.70/v1B.0.67/v1.7.61/v3.1.104/v1.0.184/v0.1.73). Grok has been 6/6 ACCEPT for four consecutive rounds. Gemini fully cleared P1B for the first time. ChatGPT holds MAJOR×6; per-finding truth-audits determine the genuine residuals.",
   currentlyRunning: [
     "Hourly native-PDF cross-vendor review autoloop on all 6 papers (Claude · GPT · Gemini · Grok · Perplexity + meta-reviewer)",
     "Persistence tracker fingerprinting findings across fires; load-bearing items escalate to Houston decision package",
@@ -109,9 +109,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-4",
       number: "4",
       shortTitle: "8.47M-galaxy chirality null at sub-percent sensitivity",
-      version: "v1.0.183",
+      version: "v1.0.184",
       readiness: 95,
-      pendingWork: "v1.0.183 — EXT6: Grok ACCEPT ×4 (exemplary, immediate acceptance recommended), Gemini MINOR (misplaced imaging-leg paragraph in appendix); ChatGPT MAJOR (monopole interpretation, +3.64σ taxonomy residuals); awaiting Houston sign-off",
+      pendingWork: "v1.0.184 — EXT6: Grok ACCEPT ×4 (exemplary, immediate acceptance recommended), Gemini MINOR (misplaced imaging-leg paragraph in appendix); ChatGPT MAJOR (monopole interpretation, +3.64σ taxonomy residuals); awaiting Houston sign-off",
     },
     {
       slug: "paper-5",
