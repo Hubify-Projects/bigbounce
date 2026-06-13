@@ -161,6 +161,127 @@
   color: var(--text-secondary);
 }
 
+/* ── Campaign observations ────────────────────────────────────────── */
+
+.campaign-obs-panel,
+.eta-panel {
+  max-width: 860px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--surface) 55%, transparent);
+  margin: 0 0 22px 0;
+  padding: 16px 20px 18px 20px;
+}
+
+.campaign-obs-heading {
+  font-family: var(--font-mono-stack);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  margin: 0 0 10px 0;
+}
+
+.campaign-obs-lede {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.5;
+  margin: 0 0 12px 0;
+  max-width: 72ch;
+}
+
+.campaign-obs-list {
+  margin: 0 0 12px 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 6px;
+}
+
+.campaign-obs-list li {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.campaign-obs-list strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.campaign-obs-patterns {
+  font-family: var(--font-mono-stack);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.campaign-obs-pattern-link {
+  color: var(--accent-link);
+  text-decoration: none;
+}
+
+.campaign-obs-pattern-link:hover {
+  color: var(--accent-link-hover);
+  text-decoration: underline;
+}
+
+/* ── ETA table ────────────────────────────────────────────────────── */
+
+.eta-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  margin-top: 10px;
+}
+
+.eta-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.8rem;
+}
+
+.eta-th {
+  font-family: var(--font-mono-stack);
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-tertiary);
+  text-align: left;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  background: color-mix(in srgb, var(--surface) 70%, transparent);
+  white-space: nowrap;
+}
+
+.eta-td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border-subtle);
+  vertical-align: top;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.eta-td-label {
+  font-family: var(--font-mono-stack);
+  font-size: 0.72rem;
+  color: var(--text);
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.eta-table tr:last-child .eta-td {
+  border-bottom: none;
+}
+
+@media (max-width: 600px) {
+  .eta-td-label {
+    white-space: normal;
+  }
+}
+
 /* ── Feed filters ─────────────────────────────────────────────────── */
 
 .review-filters {

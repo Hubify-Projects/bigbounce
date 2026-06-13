@@ -88,10 +88,10 @@ export default function ReviewsPage() {
           <div className="progress-block">
             <h3 className="progress-block-title">External referee verdicts — convergence toward ACCEPT</h3>
             <p className="progress-block-sub">
-              Six papers × six browser-tier rounds × three frontier referees (same chat threads,
-              delta-prompts between rounds). Grok delivered 6/6 ACCEPT in EXT3, EXT4, EXT5, and
-              EXT6 — four consecutive clean external rounds. Gemini reached its first full ACCEPT
-              on P1B in EXT6, the first paper to be completely cleared by Gemini.
+              Six papers × seven browser-tier rounds × three frontier referees (same chat threads,
+              delta-prompts between rounds). Grok delivered 6/6 ACCEPT across five consecutive
+              rounds (EXT3–EXT7) — audited as calibration-stable. Gemini reached 2 ACCEPT + 4
+              MINOR in EXT7. ChatGPT moved to 2 substantive findings in EXT7, down from 6 MAJOR.
             </p>
             <VerdictTrajectory />
             <VerdictLegend />
@@ -117,6 +117,67 @@ export default function ReviewsPage() {
           </div>
         </div>
       </details>
+
+      {/* ── Campaign observations ─────────────────────────────────────── */}
+      <div className="campaign-obs-panel">
+        <h2 className="campaign-obs-heading">Campaign observations</h2>
+        <p className="campaign-obs-lede">
+          Seven external + eight internal rounds reveal stable referee behavior; substantive content is nearly dried up.
+        </p>
+        <ul className="campaign-obs-list">
+          <li>
+            <strong>Grok — calibrated-stable:</strong> 6/6 ACCEPT across five consecutive rounds (EXT3–EXT7); cites specific on-disk artifacts; blind spot is cross-checking released code.
+          </li>
+          <li>
+            <strong>Gemini — steady progression:</strong> 0 ACCEPT (EXT1) → 1 ACCEPT (EXT5 P2) → 1 full ACCEPT (EXT6 P1B) → 2 ACCEPT + 4 MINOR (EXT7). Fresh-context protocol now encoded in skill.
+          </li>
+          <li>
+            <strong>ChatGPT — baseline-MAJOR floor:</strong> EXT7 reduced to 2 real findings (P1A Fig 3 caption/code mismatch, P1B Eq 1 σ_b² divisor) + 12 polish; closure-to-finding ratio ≈ 1:1. Not a publication blocker — mirrors a tough first-round MNRAS/PRD referee report.
+          </li>
+          <li>
+            <strong>Gap series:</strong> 60 → 32 → 27 → 13 → 19 → 18 → 14. Physics content closed first; residual is wording, figures, and policy items.
+          </li>
+          <li>
+            <strong>Recurring auto-falsified artifacts:</strong> Fisher F₀ = 1/8.98² (8× falsified), P5 k=20 (6× falsified), ChatGPT Zenodo/DOI bundle (HD-11 ruled: submission-day action), version-decimal artifacts like "z=−18.1.34" (renderer artifacts, not errors).
+          </li>
+        </ul>
+        <p className="campaign-obs-patterns">
+          Patterns logged:{" "}
+          <a className="campaign-obs-pattern-link" href="/project-context/review-patterns/pattern-009-gpt-fallback-low-rigor.md">pattern-009</a> (rubber-stamp audit),{" "}
+          <a className="campaign-obs-pattern-link" href="/project-context/review-patterns/pattern-031-self-review-severity-underclassification.md">pattern-031</a> (caption/code mismatch),{" "}
+          <a className="campaign-obs-pattern-link" href="/project-context/review-patterns/pattern-051-closure-introduced-regression.md">pattern-051</a> (closure-introduced regression),{" "}
+          <a className="campaign-obs-pattern-link" href="/project-context/review-patterns/pattern-052-reraise-vindication.md">pattern-052</a> (re-raise vindication test).
+        </p>
+      </div>
+
+      {/* ── ETA to publishable ───────────────────────────────────────────── */}
+      <div className="eta-panel">
+        <h2 className="campaign-obs-heading">ETA to publishable</h2>
+        <div className="eta-table-wrap">
+          <table className="eta-table">
+            <thead>
+              <tr>
+                <th className="eta-th">Framing</th>
+                <th className="eta-th">Honest answer</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="eta-td eta-td-label">Technical publishable (SSOT 95% cap)</td>
+                <td className="eta-td">Today. All six papers meet exit criteria per index.md; pending Houston sign-off + Zenodo batch release.</td>
+              </tr>
+              <tr>
+                <td className="eta-td eta-td-label">All vendors at ACCEPT or MINOR (no MAJORs)</td>
+                <td className="eta-td">~3–6 hours (1–2 more EXT cycles). Bottleneck: ChatGPT re-read of EXT7 Table IV split + Eq 1 fix for P2 and P5.</td>
+              </tr>
+              <tr>
+                <td className="eta-td eta-td-label">ChatGPT 6/6 ACCEPT</td>
+                <td className="eta-td">May not happen. ChatGPT has a baseline-MAJOR calibration floor for catalog-class papers. Asymptotic state: MAJOR-narrowly + named path to MINOR. Not a blocker.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
 
       {/* ── Filters: client overlay over the server-rendered feed ──────── */}
       <Suspense fallback={<div className="review-filters" aria-busy="true" />}>
