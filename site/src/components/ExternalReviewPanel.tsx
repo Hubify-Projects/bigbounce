@@ -52,7 +52,12 @@ export function ExternalReviewPanel({
     `- Explicitly labeled conservatism allowances, scaling estimates, ansatz/heuristic status labels, and disclosed queued follow-up computations are deliberate scoping, not oversights — flag only if the label itself is inaccurate.`,
     `- PDF text extraction can mangle math (square roots, fractions, superscripts). Before flagging "garbled" or "wrong" math, consider extraction artifacts; flag only what is visibly wrong in the rendered PDF.`,
     ``,
-    `Be ruthless. We want it harder than the actual journal review. Truth-audit any claim that seems off by grepping the published .tex / on-disk artifacts before flagging — do not echo prompt context.`,
+    `HONEST VERDICT CALIBRATION:`,
+    `- Apply MNRAS / Physical Review D referee standards rigorously.`,
+    `- Base the verdict on whether the paper requires substantial scientific rework before publication — not on whether polish items can be found.`,
+    `- If the remaining items are style preferences (label choices, abstract emphasis, paragraph ordering), future-work pointers, or submission-day actions (Zenodo DOI minting, tagged release, removing audit-trail correction notes), MINOR REVISIONS or ACCEPT is the appropriate verdict.`,
+    `- Catalog-class and methodology papers are extensive by nature and should NOT default to MAJOR REVISIONS for that reason alone. Default to MAJOR only when a load-bearing claim is unsupported, a critical control is missing, or the paper cannot be reproduced from its committed artifacts.`,
+    `- Truth-audit any claim that seems off by grepping the published .tex / on-disk artifacts before flagging — do not echo prompt context.`,
   ].join("\n");
 
   async function handleCopy() {
