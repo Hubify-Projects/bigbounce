@@ -62,6 +62,31 @@ export const reviewRounds: ReviewRound[] = [
     ],
   },
   {
+    id: "EXT6-CLOSURES",
+    kind: "closure-wave",
+    dateISO: "2026-06-12",
+    timePT: "20:30–21:30 PT (same-evening as harvest)",
+    title: "EXT6 closure wave — milestone external snapshot: Gemini's first FULL ACCEPT (P1B) + Grok 4× consecutive ACCEPT; one real P1A regression caught and fixed",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "All six papers restamped (v1A.0.66 / v1B.0.63 / v1.7.58 / v3.1.101 / v1.0.180 / v0.1.70). Headline: Gemini Thinking cleared P1B as a full ACCEPT for the first time in the campaign (\"moved decisively past remaining roadblocks\"), Grok 6/6 ACCEPT for the FOURTH consecutive external round, and ChatGPT caught one real P1A regression that three prior closure waves missed — the §IV E synthesis paragraph still said \"vacuum energy parametrically too large\" while §IV A body had ρ_NJL ~4×10⁻⁶⁹ ρ_Λ (far below). Closure agents now ran in 5-way parallel under the updated global model-routing rule.",
+    keyTakeaways: [
+      "Gemini P1B → FULL ACCEPT (first in campaign) — and Gemini-for-P3 will be dropped at EXT7 (6/6 hallucinated revtex section numbers, failure upstream of fresh-thread reset)",
+      "P1A §IV E synthesis regression fixed: rewritten to match §IV A body (far below ρ_Λ, parity-even, no coherent w=−1)",
+      "P2 pattern-051 from R34conf OAI-E10 caught: §V L604 was 3.5σ; rederived 3.22σ from ingredients (4.375×0.84/√(0.7²+0.9²))",
+      "P1B 2 BLOCKERs closed: CHANGELOG v1B.0.62+v1B.0.63 entries; bbn_predictor: PArthENoPE verified in all 4 cobaya YAMLs",
+      "P5 Grok upgraded MINOR→ACCEPT; ChatGPT acknowledged its own closures held; Fig 3 PNG regenerated programmatically",
+      "Calibration warning: P1B audit flagged Grok ACCEPT as mis-calibrated rubber-stamp (pattern-009) — Grok 6/6 ACCEPT streak needs cross-check by 5th vendor in R36conf",
+    ],
+    links: [
+      { label: "P1A audit", href: `${PR}/EXT6_P1A_TRUTH_AUDIT.md` },
+      { label: "P1B audit", href: `${PR}/EXT6_P1B_TRUTH_AUDIT.md` },
+      { label: "P2 audit", href: `${PR}/EXT6_P2_TRUTH_AUDIT.md` },
+      { label: "P3 audit", href: `${PR}/EXT6_P3_TRUTH_AUDIT.md` },
+      { label: "P4 audit", href: `${PR}/EXT6_P4_TRUTH_AUDIT.md` },
+      { label: "P5 audit", href: `${PR}/EXT6_P5_TRUTH_AUDIT.md` },
+    ],
+  },
+  {
     id: "R35CONF-CLOSURES",
     kind: "closure-wave",
     dateISO: "2026-06-12",
@@ -945,6 +970,13 @@ export const gapSeries: GapPoint[] = [
     total: 19,
     perPaper: { P1A: 3, P1B: 4, P2: 1, P3: 3, P4: 4, P5: 4 },
     note: "EXT5 truth-audits: ~19 verified — but ~5 are regressions/persistence failures from our own closure waves (P1A NJL + caption, P3 changelog-vs-body ×2, P5 table arithmetic); externally-sourced novel content keeps shrinking (P2: one stale sentence) — closure-agent quality became the bottleneck and got new mandatory verification rules",
+  },
+  {
+    roundId: "EXT6",
+    dateISO: "2026-06-12",
+    total: 18,
+    perPaper: { P1A: 4, P1B: 5, P2: 2, P3: 2, P4: 0, P5: 5 },
+    note: "EXT6 truth-audits: ~18 verified — TWO real self-closure regressions caught externally (P1A §IV E synthesis paragraph still said \"too large\" while §IV A body said \"4×10⁻⁶⁹ ρ_Λ\" — three prior waves missed it; P2 §V L604 arithmetic 3.5σ→3.22σ pattern-051 from R34conf OAI-E10); P1B 2 BLOCKERs (CHANGELOG + bbn_predictor YAML) closed; P4 0 scientific findings; Gemini-for-P3 dropped after 6/6 hallucinated §-numbers — Milestone external state: Gemini's first FULL ACCEPT (P1B) + Grok 4× consecutive ACCEPT",
   },
 ];
 
