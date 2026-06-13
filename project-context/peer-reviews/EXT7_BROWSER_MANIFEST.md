@@ -52,17 +52,46 @@ Zero retries on ChatGPT and Grok. Both confirmed generating within 6s of submit.
 - Gemini phase: 01:15–02:30 PDT (90 min including recovery from thread-overload issue)
 - Total submit window: 00:53–02:30 PDT
 
-## Harvest — PENDING (harvest after 30+ min from last submit ~03:00 PDT)
+## Harvest — COMPLETE (2026-06-13 ~03:32 PT)
 
-Files will be: `EXT7_<paper>_<Provider>.md`
+All 18 reports saved to `project-context/peer-reviews/EXT7_<paper>_<Provider>.md`.
+Zero URL mismatches. Zero still-generating chats. Zero retries needed.
+Gemini fresh-thread recipe: all 6 threads loaded cleanly (1 model-response each, no rendering issues).
 
-## Verdicts — PENDING (populate after harvest)
+## Verdicts — EXT7
 
 | Paper | ChatGPT Pro Ext | Grok Heavy | Gemini Thinking |
 |---|---|---|---|
-| P1A | PENDING | PENDING | PENDING |
-| P1B | PENDING | PENDING | PENDING |
-| P2 | PENDING | PENDING | PENDING |
-| P3 | PENDING | PENDING | PENDING |
-| P4 | PENDING | PENDING | PENDING |
-| P5 | PENDING | PENDING | PENDING |
+| P1A | MAJOR REVISIONS | ACCEPT | ACCEPT WITH MINOR REVISIONS |
+| P1B | MAJOR REVISIONS | ACCEPT | ACCEPT |
+| P2 | MAJOR REVISIONS | ACCEPT | MINOR REVISION |
+| P3 | MAJOR REVISIONS | ACCEPT | MAJOR REVISIONS |
+| P4 | MAJOR REVISIONS | ACCEPT | ACCEPT WITH MINOR REVISIONS |
+| P5 | MAJOR REVISIONS | ACCEPT | MINOR REVISION |
+
+## EXT6 → EXT7 Verdict Transitions
+
+| Paper | Provider | EXT6 | EXT7 | Delta |
+|---|---|---|---|---|
+| P1A | ChatGPT | MAJOR REVISIONS | MAJOR REVISIONS | no change |
+| P1A | Grok | ACCEPT | ACCEPT | stable |
+| P1A | Gemini | ACCEPT WITH MINOR REVISIONS | ACCEPT WITH MINOR REVISIONS | stable (fresh thread, same verdict) |
+| P1B | ChatGPT | MAJOR REVISIONS | MAJOR REVISIONS | no change |
+| P1B | Grok | ACCEPT | ACCEPT | stable |
+| P1B | Gemini | ACCEPT | ACCEPT | stable (fresh thread, verdict held) |
+| P2 | ChatGPT | MAJOR REVISIONS (body: "minor revisions") | MAJOR REVISIONS | no change |
+| P2 | Grok | ACCEPT | ACCEPT | stable |
+| P2 | Gemini | MINOR REVISIONS | MINOR REVISION | stable (fresh thread, verdict held) |
+| P3 | ChatGPT | MAJOR REVISIONS | MAJOR REVISIONS | no change |
+| P3 | Grok | ACCEPT | ACCEPT | stable |
+| P3 | Gemini | MAJOR REVISIONS | MAJOR REVISIONS | stable (fresh thread, verdict held — new blocker on data leakage) |
+| P4 | ChatGPT | MAJOR REVISIONS | MAJOR REVISIONS | no change |
+| P4 | Grok | ACCEPT | ACCEPT | stable |
+| P4 | Gemini | ACCEPT (raw body) → EXT6 unclear | ACCEPT WITH MINOR REVISIONS | Gemini fresh gave cleaner signal |
+| P5 | ChatGPT | MAJOR REVISIONS | MAJOR REVISIONS | no change |
+| P5 | Grok | ACCEPT | ACCEPT | stable |
+| P5 | Gemini | MINOR REVISIONS | MINOR REVISION | stable (fresh thread, verdict held) |
+
+**New ACCEPTs EXT6 → EXT7**: none (Grok was already ACCEPT across all 6 in EXT6; no new upgrades)
+**Gemini fresh-thread stability**: 5/6 verdicts held or clarified cleanly. P4 Gemini produced cleaner ACCEPT WITH MINOR REVISIONS vs. unclear EXT6 signal. Gemini fresh-home recipe vindicated — zero rendering or upload issues, all 6 threads delivered responses with model-response count = 1.
+**Grok pattern-009 note**: Grok held ACCEPT on all 6 papers in EXT7 (consistent with EXT6 pattern). No swing observed. The pattern-009 calibration concern (ACCEPT-EXT6 → REJECT swing) did not materialize.
