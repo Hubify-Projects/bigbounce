@@ -46,6 +46,24 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "SKILL-GEMINI-INPUT-TYPE-FILE",
+    kind: "skill-improvement",
+    dateISO: "2026-06-13",
+    timePT: "EXT11 submission round (16:07-16:47 PDT) discovered hidden file input",
+    title: "Gemini upload skill upgrade — hidden input[type=file] is faster + more reliable than osascript native dialog",
+    papers: [],
+    summary: "During EXT11 submission, clicking the 'Upload files' menuitem in Gemini's chat composer was found to reveal a hidden `input[type=file]` DOM element. The `$B upload 'input[type=file]' <path>` gstack /browse upload command works reliably against this element — the same pattern used for ChatGPT and Grok — and is significantly faster than the osascript native file-dialog approach documented through EXT1–10. The osascript approach required a quiet-keyboard window, a frontmost guard, and was prone to focus-steal failures (Houston typing on the machine stole keyboard focus twice in EXT4) and stuck-picker bugs (blocks all future dialogs silently). Zero upload failures were observed across all 6 Gemini delta-prompt submissions at EXT11 using the hidden-input path. SKILL.md updated: preferred path documented; osascript retained as explicit fallback only.",
+    keyTakeaways: [
+      "Gemini chat composer exposes a hidden `input[type=file]` element when 'Upload files' menuitem is clicked — directly uploadable via `$B upload 'input[type=file]' <path>`",
+      "Eliminates the osascript flakiness class: focus-steal (EXT4 ×2), stuck-picker (silent future-dialog block), type-select misfire, quiet-keyboard dependency",
+      "Discovered empirically at EXT11: zero failures across 6 Gemini PDF uploads vs. repeated osascript issues in EXT1–10",
+      "SKILL.md updated: hidden-input path is now the preferred path; osascript documented as fallback only if hidden input not exposed after menuitem click",
+    ],
+    links: [
+      { label: "SKILL.md (external-review-browser-loop)", href: "https://github.com/Hubify-Projects/bigbounce/blob/main/.claude/scistack/astrostack/external-review-browser-loop/SKILL.md" },
+    ],
+  },
+  {
     id: "EXT11-SUBMISSION",
     kind: "external-browser",
     dateISO: "2026-06-13",
