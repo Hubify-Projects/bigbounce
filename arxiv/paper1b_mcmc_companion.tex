@@ -119,8 +119,45 @@
 %   FALSIFIED list (14 items) not acted on.)
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1B.0.66}
+\newcommand{\paperVersion}{v1B.0.67}
 \newcommand{\paperTimestamp}{June 13, 2026}
+% v1B.0.66->67 (2026-06-13 --- LCDM+DeltaNeff Planck+BAO+SN converged
+%   replication landed; c15 dedicated re-run with Planck NPIPE + SDSS DR16
+%   BAO + Pantheon+ converged on the cheap-pod (RTX A4000, pod 5i2td3deu3hojr)
+%   to R-1 = 0.0147 at step 32032 with 40,349 raw / 28,245 post-burn-in
+%   (30%) weighted rows, 107,853 effective samples. Re-computed posterior
+%   summaries (numpy, weighted, 30% burn-in) co-pinned to the frozen
+%   Planck+BAO+SN row of Table I:
+%       DeltaNeff = +0.0514 +/- 0.1711  (frozen quote: +0.058 +/- 0.179)
+%       Neff      =  3.0974 +/- 0.1711  (+0.30 sigma vs SM 3.046)
+%       H0        = 67.81 +/- 1.07 km/s/Mpc
+%       sigma8    =  0.8134 +/- 0.0086
+%       S8        =  0.8279 +/- 0.0095
+%       Omega_m   =  0.3108 +/- 0.0057
+%   Deltas vs frozen quote: |DeltaNeff_new - DeltaNeff_frozen| = 0.007
+%   (0.04 sigma in units of either reported std), well inside the chain
+%   reproducibility envelope; sigma uncertainty itself shrinks 0.179 -> 0.171
+%   (~4% tighter, consistent with R-1 tightening from 0.020 -> 0.015).
+%   Conclusion: frozen Planck+BAO+SN LCDM+DeltaNeff posterior REPRODUCES on
+%   independent re-run; the "consistent with zero / no Hubble-tension
+%   resolution" framing of Sec. III.A is reinforced, not weakened.
+%   SCOPE CORRECTION (HONEST): the c15 chain was earlier referenced as a
+%   queued SN-overlap-controlled w0wa control re-fit. Inspection of the
+%   pod input.yaml shows c15 actually carries the LCDM+DeltaNeff parameter
+%   block (no w/wa params; SDSS DR16 BAO, NOT DESI DR2; Pantheon+ only,
+%   no DES-SN5YR). It is therefore not a w0wa SN-overlap control; it is a
+%   verification re-run of the Planck+BAO+SN LCDM+DeltaNeff frozen chain.
+%   No w0/wa numbers can be quoted from c15. Sec. III.C w0wa framing is
+%   left unchanged (caveat (e) SN-overlap disclosure retained, no
+%   modification of the +4.3sigma / -3.6sigma central numbers). The
+%   dedicated w0wa SN-overlap-controlled MPI control re-fit remains a
+%   post-submission follow-up note as already disclosed in v1B.0.66.
+%   PROSE: Sec. III.A "Results: LCDM+DeltaNeff proxy" gains a single
+%   one-sentence "Independent re-run cross-check" insertion citing the
+%   c15 converged numbers and the artifact path
+%   reproducibility/cosmology/chains/w0wa_quintom_desi_dr2/c15_converged/
+%   c15_summary.json. No changes to Table I, Table II, or any other
+%   section. Caveat (e) and Sec III.C unchanged.
 % v1B.0.65->66 (2026-06-13 --- ship-mode pass per Houston directive;
 %   w0wa framing finalized; HD-6 body strip; ship-final).
 %   FRAMING (LOAD-BEARING): §III.C subsection title and §IV conclusion paragraph
@@ -2002,6 +2039,24 @@ $+0.058 \pm 0.179$ (Planck+BAO+SN), both consistent with zero.
 The $\Lambda$CDM$+\Delta\Neff$ proxy thus offers neither posterior
 preference nor exclusion at the present data precision. The
 $\Delta\Neff$ extension alone does not resolve the Hubble tension.
+
+\textit{Independent re-run cross-check (this version).}---A dedicated
+re-run of the Planck+BAO+SN $\Lambda$CDM$+\Delta\Neff$ configuration
+(same likelihood stack: Planck NPIPE high-$\ell$ CamSpec TTTEEE +
+\texttt{planck\_2018\_lowl.TT} + \texttt{planck\_2020\_lollipop.lowlE} +
+\texttt{planckpr4lensing} + full SDSS DR16 BAO block +
+\texttt{sn.pantheonplus}; identical prior block) converged on an
+independent compute pod to $R\!-\!1\!=\!0.0147$
+(40,349 raw rows, 28,245 post-burn-in at 30\%, 107,853 effective weight)
+and gives $\Delta N_{\rm eff} = +0.0514 \pm 0.171$, in $0.04\sigma$
+agreement with the frozen $+0.058 \pm 0.179$ quote above. The auxiliary
+posteriors $H_0 = 67.81 \pm 1.07~\mathrm{km/s/Mpc}$,
+$\sigma_8 = 0.813 \pm 0.009$, $S_8 = 0.828 \pm 0.010$,
+$\Omega_m = 0.311 \pm 0.006$ all reproduce the frozen-chain Table~I
+values within $<\!0.1\sigma$. The ``consistent with zero / no
+Hubble-tension resolution'' conclusion above is therefore reproduced
+on an independent chain; full chain artifacts and posterior summary
+are committed at \artifact{reproducibility/cosmology/chains/w0wa_quintom_desi_dr2/c15_converged/}.
 
 \subsection{$w_0 w_a$ cross-check with stated SN-overlap systematic}\label{sec:w0wa_crosscheck}
 
