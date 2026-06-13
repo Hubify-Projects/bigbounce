@@ -29,7 +29,7 @@
 \contentsline {section}{\numberline {VI}Discussion}{12}{section*.27}%
 \contentsline {subsection}{\numberline {A}Sensitivity Floor and Minimum Detectable Signal}{12}{section*.28}%
 \contentsline {paragraph}{\numberline {a}Fisher (statistical-only) floor.}{12}{section*.29}%
-\contentsline {paragraph}{\numberline {b}Empirical injection-recovery floor.}{12}{section*.30}%
+\contentsline {paragraph}{\numberline {b}Empirical injection-recovery floor.}{13}{section*.30}%
 \contentsline {subsection}{\numberline {B}Relation to Parity-Violating Sectors}{13}{section*.31}%
 \contentsline {subsection}{\numberline {C}Open Follow-up and Future Directions}{14}{section*.32}%
 \contentsline {section}{\numberline {VII}Conclusions}{14}{section*.33}%
@@ -48,7 +48,7 @@
 \contentsline {paragraph}{\numberline {a}Training.}{16}{section*.45}%
 \contentsline {paragraph}{\numberline {b}Flip-equivariance consistency loss.}{16}{section*.46}%
 \contentsline {paragraph}{\numberline {c}$D_4$-TTA rotational-equivariance validation.}{16}{section*.47}%
-\contentsline {paragraph}{\numberline {d}Bias hardening suite.}{16}{section*.48}%
+\contentsline {paragraph}{\numberline {d}Bias hardening suite.}{17}{section*.48}%
 \contentsline {paragraph}{\numberline {e}GZ1 confusion matrix and per-class metrics.}{17}{section*.49}%
 \contentsline {section}{\numberline {C}Auxiliary Dipole Diagnostics}{18}{section*.50}%
 \contentsline {paragraph}{\numberline {a}Confidence-stratified dipole.}{18}{section*.51}%
@@ -59,7 +59,7 @@
 \contentsline {section}{\numberline {D}Canonical-Mask Systematic Analysis}{18}{section*.56}%
 \contentsline {paragraph}{\numberline {a}Apodized-mask robustness.}{18}{section*.57}%
 \contentsline {paragraph}{\numberline {b}Multipole-spectrum diagnostic.}{18}{section*.58}%
-\contentsline {paragraph}{\numberline {c}Quality-quartile stratification.}{18}{section*.59}%
+\contentsline {paragraph}{\numberline {c}Quality-quartile stratification.}{19}{section*.59}%
 \contentsline {paragraph}{\numberline {d}Leg-proxy $\ell \!=\!1$ partial closure.}{19}{section*.60}%
 \contentsline {paragraph}{\numberline {e}Density-stratified null.}{19}{section*.61}%
 \contentsline {paragraph}{\numberline {f}Boundary-distance variance check.}{19}{section*.62}%

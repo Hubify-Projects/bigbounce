@@ -18,7 +18,24 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.70-2026-06-12}
+\newcommand{\paperVersion}{v0.1.71-2026-06-13}
+% v0.1.71-2026-06-13 (2026-06-13 — R36conf closure wave; n_CW typo fix + 5 minors;
+%   truth audit at project-context/peer-reviews/R36conf_P5_TRUTH_AUDIT.md.
+%   (B1) Table X (tab:desivast_canonical) l.2041: n_CW typo 126,088 -> 126,202
+%        (independent recompute: 126,088 gives f_CW=0.4978/sigma=-2.19, both
+%        inconsistent with stated 0.4983/-1.73; 126,202 matches artifact 29).
+%   (B2) Fig 3 caption: added "raw counts shown; monopole subtraction enters
+%        sigma_vs_monopole column only" (Grok P5-M3 / R36conf MINOR).
+%   (B3) Table XV (tab:systematics_splits): added sigma_from_half column
+%        (OpenAI P5-M7 / R36conf MINOR).
+%   (B4) Table~\ref{tab:phase2} max row: removed "max (all 9)" row to exclude
+%        R_s=10 cells from global maximum; updated prose from 1.87sigma->1.64sigma
+%        at all references (OpenAI P5-E5 / Grok P5-E5 / R36conf MINOR).
+%   (B5) Abstract floor wording: lead with 1sigma=pm2.4pp primary, 2sigma=pm4.8pp
+%        parenthetical for consistency (OpenAI P5-M2 / R36conf MINOR).
+%   (B6) Bright/dark filament unique-galaxy z: 2.0->1.95 (exact 1.957 from
+%        artifact 17; OpenAI P5-M9 / R36conf MINOR).
+%   OpenAI E9/E10/E11 claims FALSIFIED by independent recompute -- no action.)
 % v0.1.70-2026-06-12 (EXT6 closure wave; truth audit at
 %   project-context/peer-reviews/EXT6_P5_TRUTH_AUDIT.md.
 %   (A3) l.944 "largest controlled sample" reworded to clarify DESIVAST
@@ -370,10 +387,11 @@ Paper~IV catalog-wide classifier-monopole systematic of $\approx\!0.26$\,pp
 statistical limit --- that dominates the V-Web filament/cluster
 residuals at $n \gtrsim 4 \times 10^5$ and is subtracted explicitly
 in the monopole-referenced tests) and (ii) the counting-statistics
-floor of $\pm 4.8$\,pp
-(the $2\sigma$ binomial half-width of the $n = 428$ V-Web void bin,
-whose observed $1.64$\,pp offset is well inside the corresponding $1\sigma$
-half-width of $\pm 2.42$\,pp; $-0.68\sigma_{\rm from\,half}$), within DESI DR1 at V-Web resolution.
+floor of $\pm 2.4$\,pp
+(the $1\sigma$ binomial half-width of the $n = 428$ V-Web void bin;
+$2\sigma$ half-width $\pm 4.8$\,pp),
+whose observed $1.64$\,pp offset is well inside the $1\sigma$ floor
+($-0.68\sigma_{\rm from\,half}$), within DESI DR1 at V-Web resolution.
 Per-class CW fractions on the $812{,}793$
 env-labeled spiral rows (covering $783{,}820$ of the $791{,}635$
 unique chirality-relevant matched spirals, counted once per repeat
@@ -495,7 +513,7 @@ $|z| \approx 0.5\sigma$ is sample-size-limited ($n_{\rm dark}^{\rm
 cluster} = 4{,}234$) and does not independently confirm or refute the
 selection-function-conditioned interpretation. At the whole-catalog
 level the bright-vs-dark difference is $0.81$\,pp
-($f_{\rm CW} = 0.4970$ vs $0.5051$, $|z| \approx 2.0\sigma$).
+($f_{\rm CW} = 0.4970$ vs $0.5051$, $|z| = 1.95\sigma$ unique-galaxy).
 A contingency test (\S\ref{sec:results_vweb})
 finds V-Web class and target program are \emph{not} independent
 ($\chi^{2}\!=\!4932$, $3$ d.o.f., $\log_{10}p\!\approx\!-1069$,
@@ -872,7 +890,7 @@ for an $N\!\approx\!4\times10^5$ class is $2\,{\rm se}\,\sqrt{N}
 is the reference ($N\!=\!812{,}793$, ${\rm se}\!\approx\!5.5\times
 10^{-4}$), it is $\approx 0.7$ for the same $N\!\approx\!4\times10^5$
 class. Residuals of order $1$--$2\sigma$
-(e.g.\ the Phase-2 maximum $1.87$) should be read with this band in
+(e.g.\ the Phase-2 resolved-cell maximum $1.64$) should be read with this band in
 mind; the label-shuffle permutation null, which fixes the total CW
 count at its observed value, is conditional on the observed matched-sample
 CW count --- i.e.\ every permutation test in this
@@ -1125,7 +1143,8 @@ catalog-monopole-dominated high-$n$ filament and cluster bins
 on the $n=812{,}793$ env-labeled spiral rows (covering $783{,}820$ of
 the $791{,}635$ unique chirality-relevant matched spirals; $7{,}815$
 lack an environment row, \S\ref{sec:results_vweb}). Bars show the
-observed $f_{\rm CW}$ per class; black error bars are $95\%$ Jeffreys
+raw observed $f_{\rm CW}$ per class (counts shown; monopole subtraction
+enters the $\sigma_{\rm vs\,monopole}$ column only); black error bars are $95\%$ Jeffreys
 binomial credible intervals, drawn on the row-level parent --- the
 $3.56\%$ duplicate rows (28{,}973 of 812{,}793 env-labeled rows) violate strict i.i.d., but the worst-case
 design-effect inflation of the interval widths is
@@ -1459,8 +1478,9 @@ per-class unique-\texttt{TARGETID} program split, so the row-level
 two-sample $z$ — which assumes disjoint independent samples — should
 be read as approximate. The overlap-free version of the test exists
 only at the whole-catalog level, where the unique-galaxy
-bright-vs-dark split gives $|z| \approx 2.0$
-(\artifact{pipelines/p5\_desi\_chirality/outputs/17\_v0151\_closure\_recomputes.json});
+bright-vs-dark split gives $|z| = 1.95$
+(\artifact{pipelines/p5\_desi\_chirality/outputs/17\_v0151\_closure\_recomputes.json};
+exact value $1.957$, reported to $2$\,d.p.);
 the omnibus homogeneity tests
 ($p = 0.31$ canonical, $p = 0.99$ selection-corrected;
 \S\ref{sec:results_vweb}) remain the primary statistics of this
@@ -1516,7 +1536,7 @@ V-Web-class-correlated target-program distribution, and
 signal at the $\sim\!2\sigma$ level on $n_{\rm dark}^{\rm filament}
 = 13{,}759$.
 Together with the catalog-level bright-vs-dark difference
-($0.81$\,pp, $|z| \approx 2.0$; \S\ref{sec:systematics}), this is the
+($0.81$\,pp, $|z| = 1.95$ unique-galaxy; \S\ref{sec:systematics}), this is the
 most notable residual structure in the paper after
 the catalog-monopole subtraction; the DESIVAST-anchored primary
 analysis (\S\ref{sec:desivast_primary}) is constructed to be
@@ -1704,8 +1724,6 @@ $50$ & $0.0$ & $3.69$ & $401$ & $1.39$ & $0.34$ \\
 $50$ & $0.1$ & $4.12$ & $599$ & $1.52$ & $0.41$ \\
 $50$ & $0.3$ & $2.81$ & $825$ & $1.64$ & $0.48$ \\
 \hline
-\textbf{max (all 9)} & --- & $\mathbf{4.12}$ & --- &
-$\mathbf{1.87}^\dagger$ & --- \\
 \textbf{max (resolved 6)} & --- & $\mathbf{4.12}$ & --- &
 $\mathbf{1.64}$ & --- \\
 \end{tabular}
@@ -1718,7 +1736,8 @@ counting noise of the small void bin ($n_{\rm void} = 363$--$853$;
 $1\sigma$ binomial floor $1.7$--$2.6$\,pp): range is therefore not a
 significance statistic at these class populations. The two
 significance columns carry the result: the maximum per-class
-monopole-subtracted residual never exceeds $1.87\sigma$ (far below the
+monopole-subtracted residual among the six resolved cells ($R_s \in
+\{25, 50\}$) never exceeds $1.64\sigma$ (far below the
 Bonferroni-9 threshold $|\sigma|^{\rm Bonf}_{0.05,9} \approx 2.77$
 from Eq.~\eqref{eq:bonferroni}),
 and no cell's label-shuffle look-elsewhere $p$ falls below $0.13$.
@@ -1739,8 +1758,9 @@ $(R_s, \lambda_{\rm th})$. The maximum range across all nine cells is
 $4.12$\,percentage points (at $R_s\!=\!50\,{\rm Mpc}/h,
 \lambda_{\rm th}\!=\!0.1$), dominated by the void-bin counting noise
 ($n_{\rm void} \le 853$ in every cell); the per-class
-monopole-subtracted residuals stay below $1.87\sigma$ in all cells
-(Table~\ref{tab:phase2}). The headline environmental-independence
+monopole-subtracted residuals stay below $1.64\sigma$ across the six
+resolved cells ($R_s \in \{25, 50\}$; grid-unresolved $R_s\!=\!10$ cells excluded
+from robustness claim, Table~\ref{tab:phase2}). The headline environmental-independence
 result is robust to V-Web hyperparameter choices over the range
 probed.}
 \label{fig:phase2}
@@ -1814,16 +1834,19 @@ Table~\ref{tab:p4_monopole_residual} of \S\ref{sec:desivast_p4_residual}
 basis: $|\sigma_{\rm vs\,monopole}|$ at all four classes falls
 below $1.15$. The per-cell version of the same statistic is the
 max-$|\sigma_{\rm obs}-\sigma_{\rm pred}|$ column of
-Table~\ref{tab:phase2}: across all 36 cell--class combinations the
-monopole-subtracted residual never exceeds $1.87\sigma$ (wall at
-$R_s\!=\!10, \lambda_{\rm th}\!=\!0.1$). The headline conclusion of
+Table~\ref{tab:phase2}: across the six resolved cells ($R_s \in
+\{25, 50\}$) the
+monopole-subtracted residual never exceeds $1.64\sigma$; the
+grid-unresolved $R_s\!=\!10$ cells are retained in the table for
+completeness but excluded from the robustness claim
+(\S\ref{sec:phase2}). The headline conclusion of
 this section is therefore: across nine $(R_s, \lambda_{\rm th})$
 cells, the per-cell inter-class $f_{\rm CW}$ range is consistent with
 the counting noise of the void bin that produces it, and every
 per-class
-$\sigma_{\rm from\,half}$ value matches the Paper~IV-monopole
+$\sigma_{\rm from\,half}$ value in the resolved cells matches the Paper~IV-monopole
 prediction within
-$|\sigma_{\rm obs}-\sigma_{\rm pred}| \le 1.87$.
+$|\sigma_{\rm obs}-\sigma_{\rm pred}| \le 1.64$.
 
 \item \textbf{Per-cell label-shuffle null.} For each cell, the
 label-shuffle permutation null on the per-class $\sigma_{\rm from\,half}$
@@ -2038,7 +2061,7 @@ DESIVAST void & $56{,}981$ & $28{,}286$ & $0.4964$ & $-1.71$ \\
 Non-void      & $621{,}964$ & $309{,}173$ & $0.4971$ & $-4.59$ \\
 \hline
 \multicolumn{5}{l}{\textit{Footprint-restricted control}} \\
-VoidFinder exact, hole-support-footprint-restricted non-void & $253{,}276$ & $126{,}088$ & $0.4983$ & $-1.73$ \\
+VoidFinder exact, hole-support-footprint-restricted non-void & $253{,}276$ & $126{,}202$ & $0.4983$ & $-1.73$ \\
 \end{tabular}
 \end{ruledtabular}
 \end{table}
@@ -3081,7 +3104,7 @@ against the $0.5/\sqrt{n}$ counting floor at the reduced
 $n = 185{,}719$, below the $3\sigma$ bar applied throughout this
 section); and the target-class split is the one structured
 residual: BGS-bright $f_{\rm CW} = 0.4970$ vs LRG/ELG/QSO-dark
-$0.5051$, a $0.81$\,pp difference ($|z| \approx 2.0$ two-sample) with
+$0.5051$, a $0.81$\,pp difference ($|z| = 1.95$ unique-galaxy two-sample) with
 opposite-signed deviations from half. An earlier draft of this
 summary stated the bright/dark split agreed ``within $\pm 0.001$'';
 that statement was stale and is corrected here — the bright/dark
@@ -3099,21 +3122,21 @@ sample; all other splits use the deduped one-row-per-\texttt{TARGETID}
 convention.}
 \label{tab:systematics_splits}
 \begin{ruledtabular}
-\begin{tabular}{llrr}
-Test & Split & $n$ & $f_{\rm CW}$ \\
+\begin{tabular}{llrrr}
+Test & Split & $n$ & $f_{\rm CW}$ & $\sigma_{\rm from\,half}$ \\
 \hline
-Match radius & $0.5''$ & $820{,}266$ & $0.4972$ \\
-             & $5.0''$ & $868{,}165$ & $0.4972$ \\
-Footprint & north (BASS+MzLS) & $253{,}821$ & $0.4971$ \\
-          & south (DECaLS) & $535{,}890$ & $0.4972$ \\
-          & DES-only & $1{,}924$ & $0.4958$ \\
-Confidence & $\ge 0.4$ & $787{,}279$ & $0.4971$ \\
-           & $\ge 0.6$ & $232{,}014$ & $0.4954$ \\
-           & $\ge 0.7$ & $185{,}719$ & $0.4948$ \\
-           & $\ge 0.8$ & $153{,}879$ & $0.4950$ \\
-Program & bright (BGS) & $775{,}760$ & $0.4970$ \\
-        & dark (LRG/ELG/QSO) & $14{,}782$ & $0.5051$ \\
-        & backup $+$ other & $1{,}093$ & $0.5105$ \\
+Match radius & $0.5''$ & $820{,}266$ & $0.4972$ & $-5.07$ \\
+             & $5.0''$ & $868{,}165$ & $0.4972$ & $-5.22$ \\
+Footprint & north (BASS+MzLS) & $253{,}821$ & $0.4971$ & $-2.92$ \\
+          & south (DECaLS) & $535{,}890$ & $0.4972$ & $-4.10$ \\
+          & DES-only & $1{,}924$ & $0.4958$ & $-0.37$ \\
+Confidence & $\ge 0.4$ & $787{,}279$ & $0.4971$ & $-5.15$ \\
+           & $\ge 0.6$ & $232{,}014$ & $0.4954$ & $-4.43$ \\
+           & $\ge 0.7$ & $185{,}719$ & $0.4948$ & $-4.48$ \\
+           & $\ge 0.8$ & $153{,}879$ & $0.4950$ & $-3.92$ \\
+Program & bright (BGS) & $775{,}760$ & $0.4970$ & $-5.28$ \\
+        & dark (LRG/ELG/QSO) & $14{,}782$ & $0.5051$ & $+1.24$ \\
+        & backup $+$ other & $1{,}093$ & $0.5105$ & $+0.69$ \\
 \end{tabular}
 \end{ruledtabular}
 \end{table}
@@ -3159,7 +3182,7 @@ $\sim 0.497$ with inter-class range $1.98$\,percentage points across the four
 V-Web classes (per Table~\ref{tab:cw_vs_env} canonical run; across
 the nine $(R_s, \lambda_{\rm th})$ Phase~2
 sweep cells the per-class monopole-subtracted residuals stay below
-$1.87\sigma$ and the filament/cluster fractions move by
+$1.64\sigma$ (resolved cells; $R_s\!=\!10$ excluded) and the filament/cluster fractions move by
 only ${\sim}0.1$\,pp, \S\ref{sec:phase2}), leaving no room
 for a residual environment-dependent chirality of the Shamir~2022
 amplitude ($2$--$4$\,pp would be required in at least one well-populated
@@ -3306,7 +3329,7 @@ monopole reported in Paper~IV (omnibus homogeneity
 $\chi^2 = 3.55$, $p = 0.31$; $\chi^2 = 0.11$, $p = 0.99$ on the
 selection-corrected rebuild). The result is robust under nine
 $(R_s, \lambda_{\rm th})$ Phase~2 sweep cells (all per-class
-monopole-subtracted residuals $\le 1.87\sigma$; look-elsewhere
+monopole-subtracted residuals $\le 1.64\sigma$ in resolved cells; look-elsewhere
 $p \ge 0.13$), under grid resolutions $128^3$--$384^3$, and under six
 classes of systematics tests.
 

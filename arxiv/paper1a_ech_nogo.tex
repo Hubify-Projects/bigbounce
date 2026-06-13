@@ -45,8 +45,23 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.66}
-\newcommand{\paperTimestamp}{June 12, 2026 PDT}
+\newcommand{\paperVersion}{v1A.0.67}
+\newcommand{\paperTimestamp}{June 13, 2026 PDT}
+% v1A.0.66->67 (2026-06-13 — R36conf closure wave; 3 genuinely-NEW VERIFIED
+%   items closed per R36conf_P1A_TRUTH_AUDIT.md:
+%   #7  Sec. X D dangling footnote ref: inserted \fn:NY_decomp footnote with
+%       explicit e^I∧e^J∧R_{IJ} = -d(e_I∧T^I) + T^I∧T_I decomposition
+%       (body text 2230-2234 was already correct; footnote label added so the
+%       Conclusions "see Sec. X footnote" cross-reference resolves).
+%   #11 Dim-ansatz framing: added explicit conditional clause "all R4 and
+%       dark-energy mapping claims are conditional on this ansatz" to abstract
+%       (L~559) and §I Scope paragraph (L~672), tying the mass-dim +1 caveat
+%       directly to the R4 claims rather than only to Appendix B.
+%   #20 LiteBIRD/Planck "0.73σ" heuristic clarified: added explicit parenthetical
+%       noting that the heuristic combines current Planck and future LiteBIRD
+%       uncertainties in quadrature (dominated by the current ±0.094° Planck
+%       term), and that under the current Planck error alone the separation is
+%       ~0.77σ; framing-rigor gap closed.
 % v1A.0.65->66 (2026-06-12 --- EXT6 closure wave; truth audit at
 %   project-context/peer-reviews/EXT6_P1A_TRUTH_AUDIT.md. Six items closed:
 %   #1 BLOCKER (Sec. IV E NJL stale-sign REGRESSION): L1786-1791 "condensate
@@ -557,7 +572,8 @@ explicitly in Sec.~\ref{sec:fourroute} and Sec.~\ref{sec:loophole}. The
 dark-energy mapping rests on a phenomenological on-shell scaling ansatz
 whose off-shell mass dimension is $+1$ rather than $+4$
 (Appendix~\ref{app:dimensions}); we treat this scaling explicitly as an
-ansatz, not a derivation.
+ansatz, not a derivation; all R4 and dark-energy mapping claims are
+conditional on this ansatz.
 Through 7 foundation studies (Foundations~A--G) and 6 observational research
 branches (Branches~H, J, L, M, N, O) we report 13 logically-independent
 mechanism-class constraints that collectively constrain the
@@ -670,7 +686,9 @@ phenomenological on-shell scaling ansatz: the leading parity-odd operator
 written in Eq.~(\ref{eq:Seff_comp}) has off-shell mass dimension $+1$ and
 acquires its $\rho_\Lambda$ mapping only through on-shell evaluation at
 Planck-scale bounce densities; we treat this mapping explicitly as an
-ansatz, not a derivation. The perturbation-transparency result of
+ansatz, not a derivation (see Appendix~\ref{app:dimensions} for the
+full dimensional counting); all R4 and dark-energy mapping claims in this
+paper are conditional on this scaling ansatz. The perturbation-transparency result of
 Sec.~\ref{sec:transparency} is restricted to canonical scalar matter:
 fermion spin density, propagating torsion (Poincar\'{e} gauge theory),
 dynamical Immirzi fields, non-minimal matter couplings, and
@@ -2233,7 +2251,16 @@ is the exact Nieh--Yan density (a total derivative of the torsion boundary
 term), and both pieces vanish at $T=0$ \emph{pointwise} --- not merely up
 to a boundary term: $\mathrm{NY}|_{T=0} = d(0) = 0$ and $T^I\wedge T_I|_{T=0}
 = 0$, with the Bianchi cancellation above being the operative reason the
-Holst dual vanishes pointwise in the torsionless sector. \emph{This must be carefully
+Holst dual vanishes pointwise in the torsionless sector.\footnote{\label{fn:NY_decomp}%
+Explicit decomposition: the Holst integrand satisfies
+$e^I\wedge e^J\wedge R_{IJ}(\Gamma) = -d(e_I\wedge T^I) + T^I\wedge T_I$,
+i.e.\ $e\wedge e\wedge R = -\mathrm{NY} + T\wedge T$,
+where $\mathrm{NY}\equiv d(e_I\wedge T^I)$ is the Nieh--Yan boundary form
+and $T^I = de^I + \omega^I{}_J\wedge e^J$ is the torsion two-form.
+At $T=0$ (canonical scalar matter, torsion-free branch), both terms vanish
+\emph{pointwise}: $\mathrm{NY}|_{T=0} = d(0) = 0$ and $T^I\wedge T_I|_{T=0} = 0$.
+The Holst dual contraction is therefore identically zero on the Levi-Civita
+connection, not merely a total derivative.} \emph{This must be carefully
 distinguished from the Pontryagin density}
 $\frac{1}{4}\,\epsilon^{\mu\nu\rho\sigma}R_{\mu\nu}{}^{\alpha\beta}
 R_{\rho\sigma\alpha\beta} \propto R\,\widetilde R$, which involves \emph{two}
@@ -2691,7 +2718,7 @@ bounce/ALP landscape survive the channel-level closure and are testable:
 \item $\fnl = -35/8$ (matter-bounce class): SPHEREx tests at $2.6$--$5\sigma$
 realistic significance by $\sim$2028, discriminating from inflation
 ($\fnl\approx 0.015$) and the Cuscuton bounce ($\fnl\approx 0$).
-\item Spectator-ALP birefringence $\beta\approx 0.27^\circ$: LiteBIRD ($\sigma(\beta)\approx 0.03^\circ$, early 2030s) detects non-zero $\beta$ at $\sim 9\sigma$ (a $0.27^\circ/0.03^\circ$ overall sensitivity number). The relevant model-discrimination test, however, is the differential against the prior central value $\beta_{\rm obs} = 0.342^\circ \pm 0.094^\circ$: LiteBIRD will distinguish the spectator-ALP-derived $0.27^\circ$ from the observed $0.342^\circ$ at $|0.342-0.27|/\sqrt{0.03^2 + 0.094^2} \approx 0.072^\circ/0.0987^\circ \approx 0.73\sigma$, NOT at the naive $|0.342-0.27|/0.03 = 2.4\sigma$ which would ignore the prior measurement's $\pm 0.094^\circ$ uncertainty; in other words LiteBIRD's $\sigma(\beta)\!=\!0.03^\circ$ will not by itself separate the spectator-ALP value from the current WMAP$+$Planck birefringence central value in a model-discrimination test (a future tightening of the observational central value's uncertainty below $\sim 0.05^\circ$ would be needed for LiteBIRD-vs-current-central tension to cross $1\sigma$). The two numbers correspond to distinct null hypotheses (zero vs.\ WMAP$+$Planck-central); the $\sim 9\sigma$ test will not by itself separate the spectator-ALP class from generic-ALP fits to the observed signal.
+\item Spectator-ALP birefringence $\beta\approx 0.27^\circ$: LiteBIRD ($\sigma(\beta)\approx 0.03^\circ$, early 2030s) detects non-zero $\beta$ at $\sim 9\sigma$ (a $0.27^\circ/0.03^\circ$ overall sensitivity number). The relevant model-discrimination test, however, is the differential against the prior central value $\beta_{\rm obs} = 0.342^\circ \pm 0.094^\circ$: LiteBIRD will distinguish the spectator-ALP-derived $0.27^\circ$ from the observed $0.342^\circ$ at $|0.342-0.27|/\sqrt{0.03^2 + 0.094^2} \approx 0.072^\circ/0.0987^\circ \approx 0.73\sigma$ (this is a heuristic combining the current Planck uncertainty $\pm 0.094^\circ$ and the projected LiteBIRD uncertainty $\pm 0.03^\circ$ in quadrature; the test is dominated by the current Planck term, so under the current Planck error alone the separation is $|0.342-0.27|/0.094^\circ \approx 0.77\sigma$; the $0.73\sigma$ figure is therefore not a well-defined joint-posterior significance but a rough lower bound), NOT at the naive $|0.342-0.27|/0.03 = 2.4\sigma$ which would ignore the prior measurement's $\pm 0.094^\circ$ uncertainty; in other words LiteBIRD's $\sigma(\beta)\!=\!0.03^\circ$ will not by itself separate the spectator-ALP value from the current WMAP$+$Planck birefringence central value in a model-discrimination test (a future tightening of the observational central value's uncertainty below $\sim 0.05^\circ$ would be needed for LiteBIRD-vs-current-central tension to cross $1\sigma$). The two numbers correspond to distinct null hypotheses (zero vs.\ WMAP$+$Planck-central); the $\sim 9\sigma$ test will not by itself separate the spectator-ALP class from generic-ALP fits to the observed signal.
 \end{enumerate}
 Neither is a distinctive ECH prediction; both are shared with other UV completions.
 

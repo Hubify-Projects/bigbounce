@@ -119,8 +119,42 @@
 %   FALSIFIED list (14 items) not acted on.)
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1B.0.63}
-\newcommand{\paperTimestamp}{June 12, 2026}
+\newcommand{\paperVersion}{v1B.0.64}
+\newcommand{\paperTimestamp}{June 13, 2026}
+% v1B.0.63->64 (2026-06-13 --- R36conf closure wave;
+%   truth audit at project-context/peer-reviews/R36conf_P1B_TRUTH_AUDIT.md.
+%   5-vendor round (4 legs active; Claude leg failed: Anthropic billing BadRequestError).
+%   Grok calibration note (pattern-009, re-confirmed): Grok swung ACCEPT (0/0/0) in
+%   EXT6 to REJECT (4 ESS + 3 MAJ + 2 NIT) in R36conf without naming any genuinely-new
+%   on-disk gap (E2 FALSIFIED, E1/E4 scope OPINION, M2 HD-11 pre-submission state). Both
+%   modes confirm Grok's verdict carries low audit weight on artifact-pinning items for
+%   this paper; OpenAI is the consistently-calibrated leg across both rounds. OpenAI M10
+%   (+41% CPL correction) FALSIFIED at audit: direct recomputation at a=2/3, w0=-0.812,
+%   wa=-0.667 gives H_CPL/H_LCDM = sqrt(1.0344) = +1.7% (sign error in OpenAI exponent
+%   a^{-3(1+w0+wa)} = a^{+1.437}; OpenAI treated a^{+1.437} > 1 for a<1, which is wrong).
+%   5 genuinely-NEW substantive closures applied:
+%   (#3) Explicit chi^2(beta) equation (Eq.~eq:chi2_beta) added to sec:data_cmb with
+%     full pixel-window/template-band treatment: (i) unweighted fit documented,
+%     (ii) pixel-window cancellation explained, (iii) bins > l_max=1024 carry zero
+%     template weight confirmed. Equation form chosen: sum_b
+%     [(C_b^{EB,decoupled} - 1/2 sin(4beta) C_b^{EE,tmpl})^2 / sigma_b^2].
+%   (#9) One-sided 95% DeltaNeff upper limits added to Table I (tab:verification) caption:
+%     full-tension DeltaNeff < 0.31; Planck+BAO+SN DeltaNeff < 0.40 (already in body
+%     sec:verification L1095-L1107; now also surfaced in table caption for reader
+%     visibility; OpenAI M8 + Grok M3 convergence).
+%   (#13) f_sky=0.85 and f_sky=0.65 mask definitions made explicit in sky-fraction sweep:
+%     f_sky=0.85 is |b|>5 deg all-sky apodized; f_sky=0.65 is |b|>15 deg + dec cut.
+%   (#17) Standalone-context 1-2 sentence Paper I(a) summary added to sec:intro opening:
+%     channel-level closure of 4 ECH DE routes + perturbation-transparency theorem.
+%   (#18) w0wa subsection relabeled "Exploratory cross-check": \subsection{Results}
+%     split into \subsection{Results: Lambda CDM+DeltaNeff proxy} (load-bearing) and
+%     \subsection{Exploratory cross-check: w0wa posterior under uncorrected SN overlap}
+%     (provisional, labeled \label{sec:w0wa_exploratory}); Conclusions L2338 already
+%     carried "Exploratory w0wa cross-check" label (held). Resolves Gemini M2 + OpenAI
+%     E2 convergence (structural relabeling; Path A chosen over Path C joint-covariance
+%     rerun per closure plan).
+%   FALSIFIED at audit (NOT acted on): OpenAI M10 +1.7%->+41% CPL correction (sign error
+%     on exponent; paper's +1.7% is correct).
 % v1B.0.62->63 (2026-06-12 --- EXT6 external-round closure wave; truth
 %   audit at project-context/peer-reviews/EXT6_P1B_TRUTH_AUDIT.md.
 %   3-vendor: ChatGPT Pro Extended, Grok Heavy, Gemini Thinking.
@@ -961,9 +995,13 @@ A reproducibility manifest is included in Appendix~\ref{app:reproducibility}.
 
 This companion paper provides the technical verification layer for the ECH
 structural-closure no-go result reported in Paper~I(a)~\cite{Golden2026P1a}.
-The main paper establishes 14 independent structural constraints closing
-minimal-ECH dark-energy routes and proves a perturbation-transparency theorem
-for the Holst sector. The present paper documents the three numerical analyses
+Paper~I(a) establishes channel-level closure of four independent minimal-ECH
+dark-energy routes (kinetic-coupling channel, potential-energy channel,
+perturbation-transparency channel, and spin-torsion propagator channel) and
+proves a perturbation-transparency theorem for the Holst sector; the
+combined structural analysis closes the minimal-ECH parameter space as a
+dark-energy scenario and motivates the numerical cross-checks of this companion.
+The present paper documents the three numerical analyses
 that support and contextualize those results.
 
 \textit{Scope of this paper.}---Three verification analyses are reported here,
@@ -1188,6 +1226,10 @@ precision are not formally characterized here but are not load-bearing for
 any quoted result; \emph{no torsion
 modifications}). All values are posterior means $\pm\,1\sigma$. Reported as a
 null-consistency cross-check, \emph{not} as evidence for the spin-torsion theory.
+Under the physically motivated restriction $\Delta\Neff\ge 0$ (posterior renormalised
+on the non-negative half and 95th percentile read from the truncated CDF), the one-sided
+95\% upper limits are: full-tension $\Delta\Neff < 0.31$; Planck+BAO+SN $\Delta\Neff < 0.40$
+(see Sec.~\ref{sec:verification} for the exact definition and chain-recomputed derivation).
 $S_8 \equiv \sigma_8\,(\Omega_m/0.3)^{1/2}$, computed as a Cobaya derived
 parameter with exactly this definition. The full-tension column includes
 the DES-Y3 $S_8$ Gaussian prior $0.776 \pm 0.017$
@@ -1635,8 +1677,32 @@ The $\beta=0.27^\circ$,
 $\beta=0.342^\circ$, and $\beta=0$ injections rotate $Q+iU$ via
 $e^{2i\beta}(Q+iU)$. The angle is recovered per configuration by an
 unweighted $\chi^2$ template fit of the decoupled $C_\ell^{EB}$ bandpowers
-to $\sin(2\beta)\cos(2\beta)\,C_\ell^{EE}$ on a $\beta$ grid. The
-production suite used non-negative injections; a dedicated 500-realization
+to $\sin(2\beta)\cos(2\beta)\,C_\ell^{EE}$ on a $\beta$ grid.
+Explicitly, the estimator minimises
+\begin{equation}\label{eq:chi2_beta}
+\chi^2(\beta) = \sum_b
+\frac{\bigl[C_b^{EB,\rm decoupled} - \tfrac{1}{2}\sin(4\beta)\,C_b^{EE,\rm tmpl}\bigr]^2}
+     {\sigma_b^2},
+\end{equation}
+where $C_b^{EE,\rm tmpl}$ is the Planck-2018 semi-analytic $EE$ template, $\sigma_b$ is
+the per-bin Monte Carlo scatter across 500 realizations (unweighted: $\sigma_b$ is
+computed from the scatter of the decoupled $EB$ spectrum itself, not the inverse-variance
+weight of the template), and the sum runs over all 20 bins
+$30\!\le\!\ell\!\le\!1536$.
+Three clarifications on the template-band treatment: (i)~the fit is
+\emph{unweighted} --- all bins carry equal weight regardless of their noise level
+(see ``Canonical estimator choice'' below); (ii)~the template $C_b^{EE,\rm tmpl}$
+is evaluated at the same $N_{\rm side}=512$ pixel resolution as the simulated maps,
+so the $N_{\rm side}=512$ HEALPix pixel-window smoothing cancels identically
+between the decoupled $C_b^{EB,\rm decoupled}$ and the template --- no explicit
+pixel-window deconvolution is applied and no pixel-window mismatch enters the
+$\beta$ estimate; (iii)~bins above the map band limit $\ell_{\rm max}=2N_{\rm side}=1024$
+carry zero template weight ($C_b^{EE,\rm tmpl}=0$ for $b$ above this range),
+so the 20-bin sum is effectively restricted to $\ell \le 1024$ despite the
+formal binning edge at $\ell=1536$ --- a robustness configuration explicitly
+confirming this (``Restricting the fit to bins with $\ell\le 1024$ changes
+nothing'') is documented in the battery below.
+The production suite used non-negative injections; a dedicated 500-realization
 $\beta=-0.27^\circ$ rerun at $f_{\rm sky}=0.32$
 (\path{reproducibility/p1_namaster_500mc/results/c9f_negative_beta.json})
 recovers $-0.238^\circ$, confirming sign-symmetric recovery with bias
@@ -1730,7 +1796,12 @@ multiplicative bias, not a bound on random scatter.)
 \textit{Sky-fraction sweep.}---Because published birefringence analyses use
 larger sky fractions than our canonical $f_{\rm sky}=0.32$ validation mask, we
 repeat the $\beta=0.27^\circ$ injection-recovery exercise at
-$f_{\rm sky}=0.85$ (Planck-like) and $f_{\rm sky}=0.65$ (ACT-DR6-like)
+$f_{\rm sky}=0.85$ (Planck-like Galactic-cut mask: $|b|>5^\circ$,
+all declinations, apodized at $2^\circ$ FWHM, giving $f_{\rm sky}\approx 0.85$;
+the Planck 2018 likelihood mask achieves approximately this fraction
+with a similar latitude threshold plus point-source excisions not included here)
+and $f_{\rm sky}=0.65$ (ACT-DR6-like Galactic-cut mask: $|b|>15^\circ$,
+declination cut ${\rm dec}\in[-60^\circ,+25^\circ]$, apodized at $2^\circ$ FWHM)
 galactic-cut masks with the same apodization recipe, noise level, and
 $N\!=\!500$ MC realizations ($N_{\rm side}=512$). The recovered values are
 $\hat\beta=0.237^\circ$ ($f_{\rm sky}=0.85$, per-realization
@@ -1871,31 +1942,33 @@ iter2 $w_0w_a$ & \texttt{bao.desi\_dr2.desi\_bao\_all} $+$ Planck block $+$ \tex
 \end{ruledtabular}
 \end{table*}
 
-\subsection{Results}
+\subsection{Results: $\Lambda$CDM$+\Delta N_{\rm eff}$ proxy}
 
-\paragraph{Model-comparison statistics: deferred to a dedicated nested-sampling run.}
-We do not report $\chi^2_{\rm eff}$, AIC, BIC, or $\ln B$ Bayes-factor
-model-comparison numbers in this paper. Robust evaluation of these
-statistics on the present quintom posterior requires either a dedicated
-nested-sampling run (PolyChord or MultiNest) on the identical likelihood
-stack, or thermodynamic integration on a joint quintom/$\Lambda$CDM run;
-a Savage-Dickey density-ratio readout from the converged Metropolis-Hastings
-chain used here is not viable because the $\Lambda$CDM point
-$(w_0,w_a)=(-1,0)$ sits at $>4\sigma$ in the joint marginal tails and
-is unsampled by the chain, so any KDE-based estimator yields kernel-dependent
-noise rather than a controlled density. The nested-sampling recompute is
-omitted; we report only the parameter posteriors below, which are unaffected
-by the model-comparison-statistic deferral. The two posterior parameter
-measurements that remain are
+The two load-bearing posteriors from the frozen chains are
 $\Delta N_{\rm eff} = -0.020 \pm 0.169$ (full-tension) and
-$+0.058 \pm 0.179$ (Planck+BAO+SN), both consistent with zero; these
-are the load-bearing numbers used elsewhere in the paper and they are
-unaffected by the model-comparison-statistic deferral.
-The $\chi^2$ goodness-of-fit decomposition (BAO, CMB, SN, and total contributions) is reported in Table~\ref{tab:iter2_posterior}; the AIC, BIC, and $\ln B$ evidence metrics are \emph{not} reported there. The central marginal-tail result is $w_0 = -0.812 \pm 0.044$ (departing from the $\Lambda$CDM point $w_0=-1$ at $+4.3\sigma$; fn.~\ref{fn:wcaveat}) and $w_a = -0.667 \pm 0.186$ (departing from $w_a=0$ at $-3.6\sigma$), with $w_0+w_a = -1.48 \pm 0.15$ requiring phantom crossing (the canonical quintom signature under the overlap-uncorrected likelihood; see §\ref{sec:cosmo_fits} caveat). Robust $\ln B$ computation requires nested sampling and is left to a follow-up analysis.
-
+$+0.058 \pm 0.179$ (Planck+BAO+SN), both consistent with zero.
 The $\Lambda$CDM$+\Delta\Neff$ proxy thus offers neither posterior
 preference nor exclusion at the present data precision. The
 $\Delta\Neff$ extension alone does not resolve the Hubble tension.
+
+\subsection{Exploratory cross-check: $w_0 w_a$ posterior under uncorrected SN overlap}\label{sec:w0wa_exploratory}
+
+The DESI~DR2 $w_0 w_a$ chain (Table~\ref{tab:iter2_posterior}) is an
+\emph{exploratory} cross-check only: its SN likelihood combines DES-SN5YR and
+Pantheon+ without a joint overlap covariance (caveat~(e) of
+Sec.~\ref{sec:verification}), so no model-selection statement is claimed pending
+the queued control chains. The goodness-of-fit decomposition ($\chi^2_{\rm BAO}$,
+$\chi^2_{\rm CMB}$, $\chi^2_{\rm SN}$) is reported in Table~\ref{tab:iter2_posterior};
+model-comparison statistics (AIC, BIC, $\ln B$) are \emph{not} reported there
+because a robust $\ln B$ against $\Lambda$CDM requires dedicated nested sampling
+(the $\Lambda$CDM point sits at $>4\sigma$ in the joint marginal tails and is
+unsampled by the Metropolis-Hastings chain; see fn.~\ref{fn:wcaveat}).
+The central marginal-tail posterior-extrapolation distances are
+$w_0 = -0.812 \pm 0.044$ ($+4.3\sigma$ from $-1$; fn.~\ref{fn:wcaveat})
+and $w_a = -0.667 \pm 0.186$ ($-3.6\sigma$ from $0$), with
+$w_0+w_a = -1.48 \pm 0.15$ requiring phantom crossing; these figures are
+provisional under the overlap-uncorrected likelihood and are discussed in detail
+in Sec.~\ref{sec:verification} (Physics interpretation paragraph).
 
 
 %% ============================================================
