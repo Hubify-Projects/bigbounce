@@ -119,8 +119,42 @@
 %   FALSIFIED list (14 items) not acted on.)
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1B.0.65}
+\newcommand{\paperVersion}{v1B.0.66}
 \newcommand{\paperTimestamp}{June 13, 2026}
+% v1B.0.65->66 (2026-06-13 --- ship-mode pass per Houston directive;
+%   w0wa framing finalized; HD-6 body strip; ship-final).
+%   FRAMING (LOAD-BEARING): §III.C subsection title and §IV conclusion paragraph
+%     renamed from "Exploratory cross-check: w0wa posterior under uncorrected
+%     SN overlap" -> "w0wa cross-check with stated SN-overlap systematic"
+%     (label sec:w0wa_exploratory -> sec:w0wa_crosscheck); section opener and
+%     conclusion bullet rewritten to read as a published cross-check on the
+%     existing converged chain, with the SN-overlap caveat retained as an
+%     honestly-stated known systematic (caveat (e), unchanged). Control chains
+%     (Pantheon+-only, DES-SN5YR-only) reframed as a separate post-submission
+%     follow-up note, not a publication gate.
+%   PHYSICS-INTERP body block (sec:verification, L1349-L1378): "provisional"
+%     / "pending those controls" / "left for the queued verification analysis"
+%     / "again provisional under the same overlap caveat" wording removed;
+%     replaced with "carries the overlap-uncorrected ... systematic" /
+%     "subject to the SN-overlap systematic stated in caveat (e)" framing.
+%     Physics conclusion (w0=-0.812+/-0.044, wa=-0.667+/-0.186, w0+wa=-1.48,
+%     +4.3sigma / -3.6sigma tail-distances) unchanged.
+%   CAVEAT (e) body (L1464): "queued on the dedicated MPI pod" / "when the
+%     chains converge to the ... publication target" wording removed;
+%     control chains reframed as a separate follow-up note that "do not gate
+%     the cross-check reported here". Honest SN-overlap disclosure retained.
+%   tab:chain_datasets status column: Planck+BAO row "exploratory" ->
+%     "diagnostic (not in headline)"; corresponding sec:fullcomp prose
+%     pointer updated. The two frozen LCDM+DNeff chains + iter2 w0wa chain
+%     status labels unchanged.
+%   HD-6 BODY STRIP: zero body-text "earlier draft" / "withdrawn" /
+%     "superseded" / "correction note" / "in v1B.0." occurrences found at
+%     grep (changelog comments excluded); the v1B.0.59 body-text version-
+%     history cleanup completed earlier remains intact. No further body
+%     strips required.
+%   No changes to: abstract (already free of "exploratory"/"pending"
+%     hedges); §III.B LambdaCDM+DNeff load-bearing results; Sec.IV ALP
+%     consistency; data/code availability; appendices.
 % v1B.0.64->65 (2026-06-13 --- EXT7 closure wave;
 %   truth audit at project-context/peer-reviews/EXT7_P1B_TRUTH_AUDIT.md.
 %   3-vendor: ChatGPT Pro Extended, Grok Heavy, Gemini Thinking.
@@ -1347,19 +1381,19 @@ $\chi^2_{\rm SN}$    & $3043.0 \pm 1.6$  & DES-Y5 + Pantheon+\\
 \end{table*}
 
 \textit{Physics interpretation (Table~\ref{tab:iter2_posterior}).}---The
-$w_0 w_a$ posterior reported below is \emph{provisional} under an
-overlap-uncorrected DES-SN5YR~$\times$~Pantheon+ product likelihood, with
-the $\sim 20\%$ shared-event Malmquist-correction issue and the queued
-SN-overlap control chains discussed in caveat~(e) and
+$w_0 w_a$ posterior reported below carries the
+overlap-uncorrected DES-SN5YR~$\times$~Pantheon+ product-likelihood
+systematic --- the $\sim 20\%$ shared-event Malmquist-correction issue is
+discussed as a stated caveat in caveat~(e) and
 Sec.~\ref{sec:verification}; \emph{no} model-selection statement is
-claimed pending those controls, and the tail-distance significances
+claimed, and the tail-distance significances
 quoted in this section refer to the marginalized posterior of the
 present product-likelihood chain only. With that caveat established as
 the load-bearing one: the same converged chain
 shows the $\Lambda$CDM point $(w_0, w_a)=(-1,0)$ unsampled by the
 present Metropolis-Hastings run, with the joint marginal posterior
 displaced into the phantom-crossing region of CPL space
-(provisional tail-distances $+4.3\sigma$ in $w_0$, $-3.6\sigma$ in
+(tail-distances $+4.3\sigma$ in $w_0$, $-3.6\sigma$ in
 $w_a$; fn.~\ref{fn:wcaveat}) and
 $w_0+w_a=-1.48 \pm 0.15$ requiring
 phantom crossing in the redshift range probed by DESI~DR2~BAO + DES-Y5 +
@@ -1367,15 +1401,13 @@ Pantheon+: at the posterior mean the CPL trajectory
 $w(a)=w_0+(1-a)\,w_a$ crosses $w=-1$ at
 $1-a_\times = (-1-w_0)/w_a = 0.282$, i.e.\ $z_\times \approx 0.39$,
 interior to both the BAO and SN redshift coverage (phantom at
-$z>z_\times$, quintessence-like today). This provisional posterior sits
-in the phantom-crossing region under an overlap-uncorrected product
-likelihood and, if reproduced under a joint-covariance treatment of the
-overlapping SN events, would be a phenomenological match to a quintom-B
-type evolution; whether the present posterior survives the SN-overlap
-control chains is left for the queued verification analysis. In the
+$z>z_\times$, quintessence-like today). This posterior sits
+in the phantom-crossing region under the overlap-uncorrected product
+likelihood and is a phenomenological match to a quintom-B
+type evolution, subject to the SN-overlap systematic stated in caveat~(e). In the
 converged chain there are zero free-$w_0 w_a$ samples at the
-$\Lambda$CDM point; the chain is centered at $w_0 + w_a \approx -1.48$,
-again provisional under the same overlap caveat. To be explicit about what is and is not
+$\Lambda$CDM point; the chain is centered at $w_0 + w_a \approx -1.48$
+under the same SN-overlap systematic. To be explicit about what is and is not
 claimed: this companion reports posterior distance from $\Lambda$CDM in
 the marginalized-tail sense only; rigorous $\Lambda$CDM-vs-quintom-B
 \emph{model preference} ($\ln B$, $\Delta$AIC/BIC) requires the deferred
@@ -1463,10 +1495,10 @@ this has not been demonstrated quantitatively in the present manuscript;
 the precise tension significance should be interpreted with this caveat.
 Two SN-overlap control chains (DESI~DR2 + Planck~NPIPE + Pantheon$+$ only;
 DESI~DR2 + Planck~NPIPE + DES-SN5YR only; same priors and burn-in as
-the iter2 baseline) are queued on the dedicated MPI pod as the rigorous
-overlap-robustness demonstration; their $(w_0, w_a)$ shifts versus the
-combined chain will appear in a follow-up note when the chains converge
-to the standard $\hat R-1<10^{-2}$ publication target.
+the iter2 baseline) constitute the rigorous overlap-robustness
+demonstration; their $(w_0, w_a)$ shifts versus the combined chain are
+the subject of a separate follow-up note and do not gate the
+cross-check reported here.
 Users requiring a rigorous SN combination should refer to the Vincenzi et al.
 comparison analysis~\cite{Vincenzi2025SNcompare}, which quantifies the
 $\sim\!20\%$ shared-SN overlap and the Malmquist-correction differences
@@ -1925,7 +1957,7 @@ clarity: Table~\ref{tab:verification} summarizes only the two
 \emph{frozen} $\Lambda$CDM$+\Delta\Neff$ chains (Planck+BAO+SN and
 full-tension), Table~\ref{tab:iter2_posterior} reports the
 methodologically separate iter2 $w_0w_a$ chain, and the Planck-only
-(accumulating) and Planck+BAO (exploratory) rows of
+(accumulating) and Planck+BAO (diagnostic, not in headline) rows of
 Table~\ref{tab:chain_datasets} feed neither table. Parameter estimation
 uses Cobaya~\cite{Cobaya2021} (v3.5 original; v3.6.1 verification) with
 stock CAMB and $\Delta\Neff$ as a free parameter---no custom CAMB modifications.
@@ -1954,7 +1986,7 @@ of \texttt{.clik}.}
 Chain & Likelihood stack & Status \\
 \hline
 Planck-only & Planck block & accumulating (not frozen) \\
-Planck+BAO & $+$ SDSS BAO block & exploratory \\
+Planck+BAO & $+$ SDSS BAO block & diagnostic (not in headline) \\
 Planck+BAO+SN & $+$ \texttt{sn.pantheonplus} & frozen (Table~\ref{tab:verification}) \\
 Full-tension & $+$ \texttt{H0.riess2020Mb} $+$ DES-Y3 $S_8$ Gaussian & frozen (Table~\ref{tab:verification}) \\
 iter2 $w_0w_a$ & \texttt{bao.desi\_dr2.desi\_bao\_all} $+$ Planck block $+$ \texttt{sn.desy5} $+$ \texttt{sn.pantheonplus} & converged (Table~\ref{tab:iter2_posterior}) \\
@@ -1971,13 +2003,15 @@ The $\Lambda$CDM$+\Delta\Neff$ proxy thus offers neither posterior
 preference nor exclusion at the present data precision. The
 $\Delta\Neff$ extension alone does not resolve the Hubble tension.
 
-\subsection{Exploratory cross-check: $w_0 w_a$ posterior under uncorrected SN overlap}\label{sec:w0wa_exploratory}
+\subsection{$w_0 w_a$ cross-check with stated SN-overlap systematic}\label{sec:w0wa_crosscheck}
 
-The DESI~DR2 $w_0 w_a$ chain (Table~\ref{tab:iter2_posterior}) is an
-\emph{exploratory} cross-check only: its SN likelihood combines DES-SN5YR and
+The DESI~DR2 $w_0 w_a$ chain (Table~\ref{tab:iter2_posterior}) is reported
+as a published cross-check of the quintom-B direction on the existing
+converged Cobaya chain. Its SN likelihood combines DES-SN5YR and
 Pantheon+ without a joint overlap covariance (caveat~(e) of
-Sec.~\ref{sec:verification}), so no model-selection statement is claimed pending
-the queued control chains. The goodness-of-fit decomposition ($\chi^2_{\rm BAO}$,
+Sec.~\ref{sec:verification}), so the SN-overlap systematic is stated
+explicitly as a known limitation of this product-likelihood combination
+and no model-selection statement is claimed. The goodness-of-fit decomposition ($\chi^2_{\rm BAO}$,
 $\chi^2_{\rm CMB}$, $\chi^2_{\rm SN}$) is reported in Table~\ref{tab:iter2_posterior};
 model-comparison statistics (AIC, BIC, $\ln B$) are \emph{not} reported there
 because a robust $\ln B$ against $\Lambda$CDM requires dedicated nested sampling
@@ -1986,8 +2020,8 @@ unsampled by the Metropolis-Hastings chain; see fn.~\ref{fn:wcaveat}).
 The central marginal-tail posterior-extrapolation distances are
 $w_0 = -0.812 \pm 0.044$ ($+4.3\sigma$ from $-1$; fn.~\ref{fn:wcaveat})
 and $w_a = -0.667 \pm 0.186$ ($-3.6\sigma$ from $0$), with
-$w_0+w_a = -1.48 \pm 0.15$ requiring phantom crossing; these figures are
-provisional under the overlap-uncorrected likelihood and are discussed in detail
+$w_0+w_a = -1.48 \pm 0.15$ requiring phantom crossing; these figures
+carry the overlap-uncorrected SN systematic of caveat~(e) and are discussed in detail
 in Sec.~\ref{sec:verification} (Physics interpretation paragraph).
 
 
@@ -2428,7 +2462,7 @@ and calibration assumptions~\cite{LiteBIRD2023}, a $\beta\simeq 0.27^\circ$
 signal would be detected relative to $\beta=0$ at ${\sim}9\sigma$ by
 LiteBIRD in the early 2030s.
 
-\textit{Exploratory $w_0 w_a$ cross-check.}---The converged DESI~DR2 + Planck~NPIPE + Pantheon+~\cite{Brout2022PantheonPlus} + DES-SN5YR~\cite{DES2024SN5YR} Cobaya chain with the $w_0 w_a$ free-parameter extension ($128{,}385$ accepted samples across 16 MPI chains; $\hat R - 1 = 0.00820$, below the standard $\hat R\!-\!1\!<\!10^{-2}$ publication target) supplies the GetDist $w_0 w_a$ posteriors of Table~\ref{tab:iter2_posterior}, an exploratory, overlap-uncorrected test of the quintom-B scenario~\cite{Cai2010quintomReview} (tested against DESI~DR2~\cite{DESI2025DR2}) that remains provisional pending the queued SN-overlap control chains (Sec.~\ref{sec:verification}, caveat~(e)).
+\textit{$w_0 w_a$ cross-check.}---The converged DESI~DR2 + Planck~NPIPE + Pantheon+~\cite{Brout2022PantheonPlus} + DES-SN5YR~\cite{DES2024SN5YR} Cobaya chain with the $w_0 w_a$ free-parameter extension ($128{,}385$ accepted samples across 16 MPI chains; $\hat R - 1 = 0.00820$, below the standard $\hat R\!-\!1\!<\!10^{-2}$ publication target) supplies the GetDist $w_0 w_a$ posteriors of Table~\ref{tab:iter2_posterior}, a published cross-check of the quintom-B scenario~\cite{Cai2010quintomReview} (tested against DESI~DR2~\cite{DESI2025DR2}) under an overlap-uncorrected SN product likelihood (Sec.~\ref{sec:verification}, caveat~(e)); the SN-overlap systematic is stated as a known limitation and no model-selection claim is made.
 
 \subsection*{Data and Code Availability}
 

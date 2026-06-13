@@ -45,8 +45,19 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.69}
+\newcommand{\paperVersion}{v1A.0.70}
 \newcommand{\paperTimestamp}{June 13, 2026 PDT}
+% v1A.0.69->70 (2026-06-13 — ship-mode pass per Houston directive; HD-6 body strip;
+%   ship-final. (1) L1601-1602: "We retain the section's existing label for
+%   continuity with earlier draft conventions but flag the precise classification
+%   here" -> "The label is retained for consistency with the section's established
+%   terminology." (2) L2893-2894: "so the reader is not misled by an apparent
+%   'fix' in earlier drafts" -> deleted (sentence ends at "explicit here.").
+%   (3) L2900-2904: "(not the ~35 misstated in earlier drafts: ...)" rewritten
+%   as "(the bounce-scale density entering this hierarchy is ...)" — audit-trail
+%   language removed; physics content preserved.
+%   (4) L2800: "DOI to be inserted at submission" placeholder removed; sentence
+%   reads as final submitted text.)
 % v1A.0.68->69 (2026-06-13 — R37conf closure wave; 2 OpenAI arithmetic/convention
 %   fixes per R37conf_BATCH_TRUTH_AUDIT.md (P1A section). R37conf is effectively
 %   CLEAN: 2 MINOR polish items vs EXT7's 14 new VERIFIED items = 7× gap reduction;
@@ -1598,8 +1609,8 @@ from the operator's intrinsic P transformation but from a P-breaking
 temporal orientation, spontaneously breaking P and T). The label
 ``parity-odd'' used in the section heading and surrounding text refers to
 the resulting parity-violating phenomenology, not the operator's intrinsic
-parity. We retain the section's existing label for continuity with
-earlier draft conventions but flag the precise classification here. (A
+parity. The label is retained for consistency with the section's
+established terminology. (A
 separate note on the photon-coupling chain: the operator above does not
 contain an electromagnetic field strength; the mapping to a CMB
 birefringence $\beta$ in the dimensionless ratio below uses the
@@ -2797,8 +2808,7 @@ pipeline code, and the implementation map are publicly available at:
 \url{https://github.com/Hubify-Projects/bigbounce/tree/main/reproducibility}
 \end{center}
 Code and data are available at the repository above; a Zenodo-archived
-release (DOI to be inserted at submission) will pin all artifacts to the
-submitted-version snapshot.
+release will pin all artifacts to the submitted-version snapshot.
 The frozen MCMC chains backing the cosmology tables are committed in the
 bundle (under \texttt{reproducibility/cosmology/frozen/}); fresh re-verification
 chains must be regenerated from the supplied Cobaya configurations. The
@@ -2891,18 +2901,16 @@ three additional powers of $\MPl$ in its coefficient
 ($\alpha/M \to \alpha\,\MPl^{3}/M$), promoting the operator to
 $\alpha\,\MPl^{3}\,\varepsilon\,e\,e\,\mathcal{F}/M$ (which has $[\alpha/M]\!+\![\MPl^3]\!+\![\varepsilon e e \mathcal{F}]\!=\!-1\!+\!3\!+\!2\!=\!+4$ as required for a dimension-$+4$ local operator). Either reading is a
 \emph{phenomenological dimensional assignment}, not a derivation; we make
-that status explicit here so the reader is not misled by an apparent ``fix''
-in earlier drafts.
+that status explicit here.
 \par
 Inflationary dilution ($\Dinf\sim e^{-3N_{\rm tot}}$) then yields
 $\rho_\Lambda = \Xi\,\MPl^4$ with $\Xi = (\alpha/M)\,\MPl\,\Dinf$ under
 Eq.~(\ref{eq:onshell_rho}). The genuine cosmological-constant hierarchy is
 $\MPl^4/\rho_\Lambda^{\rm obs}\sim 10^{19{\rm\,GeV}\times 4}/(10^{-3}\,\text{eV})^4
-\sim 10^{122}$, i.e.\ $\sim 120$ orders of magnitude (not the
-$\sim 35$ misstated in earlier drafts: the bounce-scale density is
-$\rho_{\rm bounce}\sim\MPl^4$, not the local pseudo-density
-$\rho_\Lambda^{\rm bounce}\sim 10^{-2}\,\MPl^4$ that
-Eq.~(\ref{eq:onshell_rho}) labels). The dilution factor required to bridge
+\sim 10^{122}$, i.e.\ $\sim 120$ orders of magnitude (the bounce-scale
+density entering this hierarchy is $\rho_{\rm bounce}\sim\MPl^4$, not
+the local pseudo-density $\rho_\Lambda^{\rm bounce}\sim 10^{-2}\,\MPl^4$
+that Eq.~(\ref{eq:onshell_rho}) labels). The dilution factor required to bridge
 $\sim 10^{122}$ from $\MPl^4$ down to the observed $\rho_\Lambda$ is
 $\Dinf\sim e^{-3N_{\rm tot}}\sim 10^{-122}$, giving
 $N_{\rm tot}\approx 122\ln 10/3 \approx 94$ $e$-folds (consistent at the

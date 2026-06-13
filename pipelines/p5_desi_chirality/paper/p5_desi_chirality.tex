@@ -18,7 +18,36 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.72-2026-06-13}
+\newcommand{\paperVersion}{v0.1.73-2026-06-13}
+% v0.1.73-2026-06-13 (2026-06-13 — Houston ship-final wave; abstract VoidFinder
+%   membership-approximation framing + title decision NM1 + HD-6 body audit-trail strip.
+%   (S1) Abstract: added ChatGPT-persistent-Class-D clarifier (4-round MAJOR carrier) on
+%        DESIVAST-anchored void cross-check (l.487-): void membership uses VoidFinder
+%        hole-sphere union as permissive proxy for the catalog's interior-void geometry;
+%        the §VIII.B exact maximal-sphere rerun (n_void=20,900) confirms the same null,
+%        any-hole/maximal-sphere comparison continuity within ±0.6 pp. Resolves the
+%        4-round ChatGPT MAJOR ("abstract presents VoidFinder as exact when §VIII.B
+%        discloses approximation").
+%   (NM1) Title decision RESOLVED: "DR1 Matched-Spiral Sample" KEPT. The matched
+%        catalog (2,232,212 unique galaxies, 791,635 chirality-relevant) is the
+%        exact parent of the V-Web supporting cross-check; the title's DESIVAST
+%        three-algorithm primary on 56,981 void spirals + DR1 Matched-Spiral Sample
+%        accurately names both estimands. No refinement needed.
+%   (HD-6) Body audit-trail strip (6 occurrences rewritten to final text;
+%        % changelog audit-trail retained per protocol):
+%        l.1506 filament bright/dark earlier-draft 416,701/21,203 narrative ->
+%               final declared-parent recompute sentence;
+%        l.1661 Phase 2 table earlier-draft 0.05-0.22pp range narrative -> dropped;
+%        l.1786 Phase 2 sweep earlier-draft 11.32sigma filament narrative -> dropped;
+%        l.2229 catalog-native earlier-draft 86,276/64,514 zone-index-defect narrative ->
+%               final corrected-join sentence;
+%        l.2401 env-join multiplicity earlier-draft "relaxed confidence filter"
+%               narrative -> dropped;
+%        l.2757 Tempel overlap earlier-draft 110,586 join-defect narrative -> dropped;
+%        l.2790 Tempel concordance earlier-draft 0.026pp full-sample comparison
+%               narrative -> dropped;
+%        l.3107 systematics summary earlier-draft "within ±0.001" narrative -> dropped;
+%        l.3514 data-release earlier-draft "_prefilter_legacy" pointer -> dropped.)
 % v0.1.72-2026-06-13 (2026-06-13 — EXT7 closure wave; CLEAN-at-acceptance + 3 optional polish;
 %   ChatGPT VoidFinder 6th-falsify (pattern-052 + 5x-FALSIFIED binding, no action);
 %   Gemini 3 new MAJORs all falsified on disk: toy-EFT covariance caveat already verbatim
@@ -486,7 +515,13 @@ constraint, but it illustrates the survey-shell systematic driving the
 V-Web void class at low $z$) returns $f_{\rm CW}^{\rm void} = 0.4964$ vs
 $f_{\rm CW}^{\rm non-void} = 0.4971$, $\Delta f_{\rm CW} \equiv
 f_{\rm CW}^{\rm non\mbox{-}void} - f_{\rm CW}^{\rm void} = +0.0007$,
-statistically indistinguishable; (ii)
+statistically indistinguishable
+(void membership uses the VoidFinder hole-sphere union, a permissive proxy
+for the catalog's intended interior-void geometry; the
+\S\ref{sec:desivast_maximal_healpix} exact maximal-sphere rerun
+$n_{\rm void} = 20{,}900$ confirms the same null verdict,
+and the any-hole/maximal-sphere comparison at $n_{\rm void} = 57{,}081$
+gives $\Delta f_{\rm CW}$ continuity within $\pm 0.6$\,pp); (ii)
 three-algorithm DESIVAST robustness (VoidFinder + V2-REVOLVER + V2-VIDE)
 returns $|\Delta f_{\rm CW}| \le 0.004$ across all five Bonferroni-5 void
 definitions: the three sphere-PIS contrasts (VoidFinder, V2-REVOLVER,
@@ -1497,12 +1532,8 @@ exact value $1.957$, reported to $2$\,d.p.);
 the omnibus homogeneity tests
 ($p = 0.31$ canonical, $p = 0.99$ selection-corrected;
 \S\ref{sec:results_vweb}) remain the primary statistics of this
-paper. An earlier draft quoted filament
-bright/dark $n$ of $416{,}701$/$21{,}203$ with a $3.4\sigma$
-two-sample split; those values were computed on an unfiltered
-nearest-label join that bypassed the matched-primary deduplication
-(its bright$+$dark total exceeded the filament class total) and are
-withdrawn in favor of the declared-parent recompute
+paper. The filament bright/dark split on the declared-parent recompute
+gives the values quoted above
 (\artifact{pipelines/p5\_desi\_chirality/outputs/17\_v0151\_closure\_recomputes.json}).
 A genuinely environment-dependent
 filament-chirality signal would propagate consistently across both
@@ -1656,12 +1687,7 @@ in
 \href{https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p5_desi_chirality/data/desi_env/phase2_sweep}{\nolinkurl{pipelines/p5\_desi\_chirality/data/desi\_env/phase2\_sweep/}};
 the per-cell statistics below are recomputed in
 \artifact{pipelines/p5\_desi\_chirality/outputs/17\_v0151\_closure\_recomputes.json}).
-An earlier draft of this table reported per-cell ranges of
-$0.05$--$0.22$\,pp computed on an unfiltered nearest-label join
-($5{,}571{,}152$ CW/CCW rows including non-primary and duplicate
-matches, which inflates every class $n$ and shrinks the range
-statistic); those values are withdrawn in favor of the declared-parent
-recompute below.
+The declared-parent recompute is reported below.
 
 \emph{Grid-resolution caveat on the $R_s = 10$ cells.} At $256^3$ the
 grid cell is $25.9\,{\rm Mpc}/h$, so the $R_s = 10\,{\rm Mpc}/h$
@@ -1786,10 +1812,7 @@ catalog-wide
 $\Delta f_{\rm CW}\!=\!-0.0026$ monopole leaking through a large
 sample bin and is \emph{predicted}, not measured:
 $\sigma_{\rm pred} = 2 \cdot (-0.0026) \cdot \sqrt{N} \approx -3.3$
-leaves a monopole-subtracted residual of $-1.38$. (An earlier draft
-quoted $|\sigma| = 11.32$ on an $n\!=\!3{,}696{,}152$ filament cell;
-that population belonged to the withdrawn unfiltered nearest-label
-join, not to any declared chirality parent of this paper.) The
+leaves a monopole-subtracted residual of $-1.38$. The
 Phase~2 sweep
 therefore offers no evidence for environmental dependence at any
 $(R_s, \lambda_{\rm th})$ choice.
@@ -2232,16 +2255,10 @@ membership ($\texttt{OUT} = 0 \wedge \texttt{VOID0} \geq 0 \wedge
 \texttt{desi\_targetid} returns: V2-REVOLVER $n_{\rm void} = 104{,}912$,
 $f_{\rm CW}^{\rm void} = 0.4992$, $\sigma^{\rm void} = -0.52$; V2-VIDE
 $n_{\rm void} = 74{,}111$, $f_{\rm CW}^{\rm void} = 0.4972$,
-$\sigma^{\rm void} = -1.50$. An earlier draft reported
-$n_{\rm void} = 86{,}276$ / $64{,}514$ with $\sigma = -0.24$ / $-1.06$;
-those values reproduce exactly only under a zone-indexing defect in
-the NGC$+$SGC join (the two galactic caps' \texttt{ZONEVOID} tables
-were concatenated without offsetting their cap-local zone indices, so
-SGC rows overwrote the NGC zone-to-void assignments). The corrected
-per-cap join values above supersede them
-(\artifact{pipelines/p5\_desi\_chirality/outputs/22\_r24conf\_local\_batch.json},
-which records both the corrected join and the exact reproduction of
-the earlier numbers under the defect).
+$\sigma^{\rm void} = -1.50$. The per-cap join values above are computed
+with cap-local zone indices offset between NGC and SGC to preserve the
+zone-to-void assignments under concatenation
+(\artifact{pipelines/p5\_desi\_chirality/outputs/22\_r24conf\_local\_batch.json}).
 
 Both corrected void $\sigma$ values remain null and are
 \emph{smaller in magnitude} than the sphere-approximation analogues
@@ -2410,11 +2427,8 @@ coadd row. The join covers $783{,}820$ unique env-matched spirals
 ($7{,}815$ of the $791{,}635$ unique chirality-relevant matched spirals have no environment row and drop out); only $79$
 duplicated \texttt{TARGETID}s carry conflicting class labels between
 their coadd rows (boundary cells re-evaluated at slightly different
-pipeline redshifts). An earlier draft attributed the excess to a
-``relaxed env-label confidence filter''; the join-multiplicity
-diagnosis above, recomputed in
-\artifact{pipelines/p5\_desi\_chirality/outputs/17\_v0151\_closure\_recomputes.json},
-replaces that description. The per-class
+pipeline redshifts). The join-multiplicity diagnosis above is recomputed in
+\artifact{pipelines/p5\_desi\_chirality/outputs/17\_v0151\_closure\_recomputes.json}. The per-class
 $n_{\rm CW}$ values on the 812{,}793-row parent sum to
 $404{,}111$ giving $f_{\rm CW} = 0.49719$, matching the 791{,}635-spiral
 unique-galaxy monopole $0.4972$ to 4 decimals, so the headline
@@ -2769,9 +2783,8 @@ $z \le 0.20$ over RA $\in [110^\circ, 262^\circ]$, Dec $\in [-4^\circ,
 catalog and the $791{,}635$-spiral declared chirality-relevant parent;
 the overlap is $96{,}753$ spirals (the SDSS DR10 footprint is a
 subset of DESI Legacy DR8 and Tempel's $z \le 0.20$ cut is much tighter
-than our $z \le 4$ DESI cut). An earlier draft quoted an overlap of
-$110{,}586$; that join omitted the matched-primary deduplication
-filter and is withdrawn
+than our $z \le 4$ DESI cut). The $96{,}753$-spiral overlap is computed
+under the matched-primary deduplication filter
 (driver:
 \artifact{pipelines/p5\_desi\_chirality/env\_finder/03\_tempel\_cross\_validation.py}).
 
@@ -2803,11 +2816,9 @@ of the $96{,}753$ ($23 + 145 + 16{,}701 + 78{,}378$); the remaining
 $1{,}506$ overlap spirals have no V-Web environment row (the
 overlap's share of the $7{,}815$-spiral env-join dropout,
 \S\ref{sec:desivast_p4_residual}) and are excluded from the V-Web
-side by the left join in the driver. (An earlier
-draft compared the Tempel overlap against the V-Web classes of the
-\emph{full} matched sample — two disjoint-population estimates whose
-agreement is not a classifier-concordance statement; that comparison,
-including its headline $0.026$\,pp filament figure, is withdrawn.)
+side by the left join in the driver. The classifier-concordance
+statement below is computed on the common overlap sample, where both
+classifiers act on the same populations.
 On the overlap, the V-Web classifier is strongly tilted toward the
 cluster class (void/wall/filament/cluster $=$
 $23/145/16{,}701/78{,}378$) by the survey-shell density systematic at
@@ -3122,9 +3133,7 @@ $n = 185{,}719$, below the $3\sigma$ bar applied throughout this
 section); and the target-class split is the one structured
 residual: BGS-bright $f_{\rm CW} = 0.4970$ vs LRG/ELG/QSO-dark
 $0.5051$, a $0.81$\,pp difference ($|z| = 1.95$ unique-galaxy two-sample) with
-opposite-signed deviations from half. An earlier draft of this
-summary stated the bright/dark split agreed ``within $\pm 0.001$'';
-that statement was stale and is corrected here — the bright/dark
+opposite-signed deviations from half. The bright/dark
 difference is the $\sim\!2\sigma$ residual structure analyzed at the
 per-class level in \S\ref{sec:results_vweb}. No test produces a
 $>3\sigma$ residual after
@@ -3531,8 +3540,7 @@ catalog is mirrored on HuggingFace at
 \url{https://data.desi.lbl.gov/public/dr1/}. The Phase~2 sweep
 per-cell statistics are in
 \artifact{pipelines/p5\_desi\_chirality/env\_finder/reports/02\_phase2\_sweep.csv}
-(declared-parent recompute; the superseded unfiltered-join version is
-retained alongside as \texttt{\_prefilter\_legacy}).
+(declared-parent recompute).
 
 \section*{Reproducibility checklist}
 \begin{itemize}
