@@ -18,7 +18,20 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.71-2026-06-13}
+\newcommand{\paperVersion}{v0.1.72-2026-06-13}
+% v0.1.72-2026-06-13 (2026-06-13 — EXT7 closure wave; CLEAN-at-acceptance + 3 optional polish;
+%   ChatGPT VoidFinder 6th-falsify (pattern-052 + 5x-FALSIFIED binding, no action);
+%   Gemini 3 new MAJORs all falsified on disk: toy-EFT covariance caveat already verbatim
+%   at l.3391--3413; canonical V-Web mislabel -- DESIVAST is actual primary (Table II);
+%   Table III unique-galaxy already reported alongside row-level; Grok 5th consecutive
+%   ACCEPT; truth audit at project-context/peer-reviews/EXT7_P5_TRUTH_AUDIT.md.
+%   (P1) l.2064 Table VIII footprint-restricted control row label shortened:
+%        "VoidFinder exact, hole-support-footprint-restricted non-void"
+%        -> "Footprint-restricted non-void (exact)" (descriptor moved to caption).
+%   (P2) l.1991 §VIII.A n=6 per-galaxy disagreement check: added explicit cross-ref
+%        to §VI.A n=428 headline bin to dispatch reader confusion on denominators.
+%   (P3) l.1083, l.1110, l.1142 "canonical V-Web" -> "headline V-Web" within §VI
+%        subsection to dispatch labeling collision with DESIVAST primary hierarchy.)
 % v0.1.71-2026-06-13 (2026-06-13 — R36conf closure wave; n_CW typo fix + 5 minors;
 %   truth audit at project-context/peer-reviews/R36conf_P5_TRUTH_AUDIT.md.
 %   (B1) Table X (tab:desivast_canonical) l.2041: n_CW typo 126,088 -> 126,202
@@ -1080,7 +1093,7 @@ T-Web concurrent-lit & volume-fraction comparison & --- & descriptive \\
 
 Table~\ref{tab:cw_vs_env} reports CW fraction by cosmic-web class on
 the $812{,}793$ env-labeled spiral rows produced by joining the
-$791{,}635$ chirality-relevant matched spirals to the canonical V-Web
+$791{,}635$ chirality-relevant matched spirals to the headline V-Web
 environment table (the join carries $783{,}820$ unique env-matched
 spirals, counted once per repeat DR1 survey--program coadd row;
 \S\ref{sec:desivast_p4_residual} documents the reconciliation — the
@@ -1107,7 +1120,7 @@ to stratification of the shuffle by imaging leg and DESI program
 \artifact{pipelines/p5\_desi\_chirality/outputs/18\_v0151\_stratified\_and\_density.json}).
 
 \begin{table}[t]
-\caption{CW fraction per cosmic-web environment, canonical V-Web
+\caption{CW fraction per cosmic-web environment, headline V-Web
 $(R_s\!=\!25\,{\rm Mpc}/h, \lambda_{\rm th}\!=\!0)$, on the
 $812{,}793$-row env-labeled parent. $\sigma_{\rm from\,half}$ scales
 as $\sqrt{n}$ at fixed offset and is not comparable across rows of
@@ -1139,7 +1152,7 @@ catalog-monopole-dominated high-$n$ filament and cluster bins
 \begin{figure}[t]
 \centering
 \includegraphics[width=\columnwidth]{fig_p5_cw_by_env_bar.png}
-\caption{CW fraction per cosmic-web class on the canonical V-Web run,
+\caption{CW fraction per cosmic-web class on the headline V-Web run,
 on the $n=812{,}793$ env-labeled spiral rows (covering $783{,}820$ of
 the $791{,}635$ unique chirality-relevant matched spirals; $7{,}815$
 lack an environment row, \S\ref{sec:results_vweb}). Bars show the
@@ -1992,7 +2005,10 @@ sample correctly suppresses. The $n = 6$ sample size is too small for
 a binomial significance constraint on the chirality null directly, but
 the per-galaxy disagreement quantifies the V-Web void-class purity at
 $z \leq 0.24$: $0\%$ concordance with DESIVAST-defined voids on this
-draw. With $0$ of $6$, the one-sided $95\%$ binomial upper bound on
+draw. (Note: this $n=6$ is the $z \leq 0.24$ overlap of the full
+$n=428$ headline V-Web void bin from
+Section~\ref{sec:results_vweb}; the two denominators serve distinct
+roles and are not comparable.) With $0$ of $6$, the one-sided $95\%$ binomial upper bound on
 the true in-hole fraction is $1 - 0.05^{1/6} = 39\%$ (the standard
 one-sided Clopper--Pearson bound $1 - \alpha^{1/n}$ for $0$ successes in
 $n$ trials at confidence level $1-\alpha$), so this purity
@@ -2047,10 +2063,11 @@ on the $z \leq 0.24$ matched-spiral subsample (point-in-sphere test
 against $101{,}863$ DESIVAST VoidFinder hole spheres; the $k=20$
 KDTree query yields conclusions identical to the exact $k$-unbounded
 rerun at the $0.18\%$ membership level, \S\ref{sec:desivast_xmatch}).
-The hole-support-footprint-restricted control row restricts the
-non-void sample to the union of hole-sphere angular discs
-(NSIDE\,$=\!64$, inclusive) intersected with the holes' comoving
-radial span (\S\ref{sec:desivast_maximal_healpix};
+The footprint-restricted control row (``Footprint-restricted non-void
+(exact)'') restricts the non-void sample to the union of hole-sphere
+angular discs (NSIDE\,$=\!64$, inclusive) intersected with the
+holes' comoving radial span, using the exact $k$-unbounded membership
+(\S\ref{sec:desivast_maximal_healpix};
 \artifact{pipelines/p5\_desi\_chirality/outputs/29\_ext3\_desivast\_footprint\_retabulation.json}).}
 \label{tab:desivast_canonical}
 \begin{ruledtabular}
@@ -2061,7 +2078,7 @@ DESIVAST void & $56{,}981$ & $28{,}286$ & $0.4964$ & $-1.71$ \\
 Non-void      & $621{,}964$ & $309{,}173$ & $0.4971$ & $-4.59$ \\
 \hline
 \multicolumn{5}{l}{\textit{Footprint-restricted control}} \\
-VoidFinder exact, hole-support-footprint-restricted non-void & $253{,}276$ & $126{,}202$ & $0.4983$ & $-1.73$ \\
+Footprint-restricted non-void (exact) & $253{,}276$ & $126{,}202$ & $0.4983$ & $-1.73$ \\
 \end{tabular}
 \end{ruledtabular}
 \end{table}

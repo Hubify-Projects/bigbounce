@@ -119,8 +119,29 @@
 %   FALSIFIED list (14 items) not acted on.)
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1B.0.64}
+\newcommand{\paperVersion}{v1B.0.65}
 \newcommand{\paperTimestamp}{June 13, 2026}
+% v1B.0.64->65 (2026-06-13 --- EXT7 closure wave;
+%   truth audit at project-context/peer-reviews/EXT7_P1B_TRUTH_AUDIT.md.
+%   3-vendor: ChatGPT Pro Extended, Grok Heavy, Gemini Thinking.
+%   2 genuinely-new verified findings actioned:
+%   FB2 (REAL, was BLOCKER/mislabeled): Eq.(eq:chi2_beta) sigma_b^2 divisor
+%     dropped to match canonical script exactly. The script
+%     (reproducibility/p1_namaster_500mc/scripts/namaster_500mc.py L223)
+%     uses np.sum((cl_eb_measured - cl_theory)**2) with NO sigma_b^2 divisor;
+%     the published numbers were produced by this unweighted form. PATH A
+%     chosen: drop sigma_b^2 from Eq. (1) so tex matches script. Surrounding
+%     prose updated: sigma_b description removed from where-clause; 1-sentence
+%     code-citation added ("matches canonical script exactly: namaster_500mc.py
+%     L223 chi2[j] = np.sum(...)**2 -- no sigma_b^2 divisor"). Three-
+%     clarifications block retained; clarification (i) "unweighted" still
+%     accurate. v1B.0.63->64 tex changelog comment (#3) noted chosen form
+%     as sum / sigma_b^2 -- that was the R36conf intent; EXT7 audit shows
+%     the script never had sigma_b^2, so EXT7 corrects the Eq to match reality.
+%   FB1-version (REAL, MAJOR): v1B.0.64 entry added to root CHANGELOG.md
+%     (was missing; top entry was v1B.0.63) and reproducibility/README.md
+%     Paper I(b) version line bumped from v1B.0.62 to v1B.0.64.
+%   FB1-json AUTO-FALSIFIED: pattern-052 (9th-time re-raise; JSON parses clean).
 % v1B.0.63->64 (2026-06-13 --- R36conf closure wave;
 %   truth audit at project-context/peer-reviews/R36conf_P1B_TRUTH_AUDIT.md.
 %   5-vendor round (4 legs active; Claude leg failed: Anthropic billing BadRequestError).
@@ -1681,14 +1702,13 @@ to $\sin(2\beta)\cos(2\beta)\,C_\ell^{EE}$ on a $\beta$ grid.
 Explicitly, the estimator minimises
 \begin{equation}\label{eq:chi2_beta}
 \chi^2(\beta) = \sum_b
-\frac{\bigl[C_b^{EB,\rm decoupled} - \tfrac{1}{2}\sin(4\beta)\,C_b^{EE,\rm tmpl}\bigr]^2}
-     {\sigma_b^2},
+\bigl[C_b^{EB,\rm decoupled} - \tfrac{1}{2}\sin(4\beta)\,C_b^{EE,\rm tmpl}\bigr]^2,
 \end{equation}
-where $C_b^{EE,\rm tmpl}$ is the Planck-2018 semi-analytic $EE$ template, $\sigma_b$ is
-the per-bin Monte Carlo scatter across 500 realizations (unweighted: $\sigma_b$ is
-computed from the scatter of the decoupled $EB$ spectrum itself, not the inverse-variance
-weight of the template), and the sum runs over all 20 bins
-$30\!\le\!\ell\!\le\!1536$.
+where $C_b^{EE,\rm tmpl}$ is the Planck-2018 semi-analytic $EE$ template and the sum
+runs over all 20 bins $30\!\le\!\ell\!\le\!1536$.
+This form matches the canonical script exactly (\texttt{namaster\_500mc.py} L223:
+\texttt{chi2[j] = np.sum((cl\_eb\_measured - cl\_theory) ** 2)}) --- no
+$\sigma_b^2$ divisor.
 Three clarifications on the template-band treatment: (i)~the fit is
 \emph{unweighted} --- all bins carry equal weight regardless of their noise level
 (see ``Canonical estimator choice'' below); (ii)~the template $C_b^{EE,\rm tmpl}$

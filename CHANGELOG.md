@@ -16,6 +16,34 @@ block at the top of the corresponding `.tex` source file.
 
 ## Paper I(b) — `arxiv/paper1b_mcmc_companion.tex`
 
+### v1B.0.65 (2026-06-13) — EXT7 closure wave
+
+- Commit: `(this wave)` (`chore(EXT7-stamp): EXT7 P1B → v1B.0.65 — FB2 Eq(1) σ_b² drop (Path A, matches script), FB1 CHANGELOG v1B.0.64 + README v1B.0.64`).
+- Wave: EXT7 truth-audit (`project-context/peer-reviews/EXT7_P1B_TRUTH_AUDIT.md`).
+  3-vendor: ChatGPT Pro Extended, Grok Heavy, Gemini Thinking.
+  Highlights: **FB2 (NaMaster Eq (1) σ_b² gap)** — Path A chosen: dropped `σ_b²`
+  divisor from Eq. (1) so the equation exactly matches the canonical script
+  (`namaster_500mc.py` L223: `np.sum((cl_eb_measured - cl_theory)**2)`, no divisor).
+  The published numbers were produced by this unweighted form; the R36conf v1B.0.63→64
+  changelog entry mistakenly recorded the `/ sigma_b²` form as the chosen equation.
+  Surrounding prose updated: `σ_b` description removed from where-clause; one-sentence
+  code-citation added pointing to `namaster_500mc.py L223`. **FB1-version** — v1B.0.64
+  entry added to this CHANGELOG (was missing; top entry was v1B.0.63) and
+  `reproducibility/README.md` Paper I(b) line bumped from v1B.0.62 to v1B.0.64.
+  FB1-json AUTO-FALSIFIED: pattern-052 (9th-time re-raise; both JSONs parse cleanly).
+- HuggingFace datasets (DOI / URL): unchanged from v1B.0.56 (see below).
+
+### v1B.0.64 (2026-06-13) — R36conf closure wave
+
+- Commit: `(this wave)` (`chore(R36conf-stamp): R36conf P1B → v1B.0.64 — χ² Eq added with three-band clarifications, ΔNeff ULs to Table I caption, fsky mask definitions explicit, §I P1A summary, w0wa "Exploratory" relabel`).
+- Wave: R36conf truth-audit (`project-context/peer-reviews/R36conf_P1B_TRUTH_AUDIT.md`).
+  5-vendor round (4 legs active; Claude leg failed: Anthropic billing BadRequestError).
+  Highlights: explicit χ²(β) Eq added to §sec:data_cmb with pixel-window/template-band
+  treatment; one-sided 95% ΔN_eff ULs surfaced in Table I caption; fsky=0.85 (|b|>5°
+  apodized) and fsky=0.65 (|b|>15° + dec cut) defined explicitly; standalone P1A
+  summary sentence in §I; w0wa subsection relabeled "Exploratory cross-check."
+- HuggingFace datasets (DOI / URL): unchanged from v1B.0.56 (see below).
+
 ### v1B.0.63 (2026-06-12) — EXT6 closure wave (this wave)
 
 - Commit: `(this wave)` (`chore(R36conf-stamp): EXT6 P1B → v1B.0.63 closure wave — FB2 BBN flag all 4 YAMLs (Path C), FB1 CHANGELOG v1B.0.62 + README v1B.0.62 + χ²_eff row, FM2 scan-prior midpoint, FM3 Table IV weighted percentiles, FM1 §V.B caveated framing, App A table-ref drift`).

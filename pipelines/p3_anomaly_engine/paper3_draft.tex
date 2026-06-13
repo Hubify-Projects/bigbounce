@@ -51,7 +51,40 @@ a Native-Trained Novelty Fraction from 37.3 Million Sources and Map Patches}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{June 2026}  % v3.1.102
+\date{June 2026}  % v3.1.103
+% v3.1.103 (2026-06-13 — EXT7 closure wave; truth audit at
+%   project-context/peer-reviews/EXT7_P3_TRUTH_AUDIT.md. 5 genuine MINOR
+%   closures (0 MAJOR, 0 BLOCKER; ChatGPT MAJOR overcalled, Gemini fresh-thread
+%   CALIBRATED this round — drop-decision from EXT6 wave REVERSED):
+%   (1) CGT-FM102-2 CLOSED [TOP]: Eq.(1) prose / §II.B inconsistency — L520
+%       gloss "training pool" was misleading for eROSITA/NEOWISE/Gaia whose
+%       scalers are fit on the full sample. Prose now explicitly states spectro-
+%       scopic surveys use the training pool while tabular catalog surveys use
+%       the full sample; pointer to §II.B for the per-survey specification.
+%   (2) GLM-Min2 CLOSED: MSE unweighted-by-inverse-variance sentence added
+%       directly after Eq.(1) gloss (combined with item 1 in the same sentence).
+%   (3) CGT-FM102-3 CLOSED: Planck binomial p≈4×10^{-4} labeled "naive binomial"
+%       with explicit assumption of spatial independence + caveat that 10°×10°
+%       gnomonic patches may be mildly correlated; p-value is now "indicative
+%       rather than definitive".
+%   (4) CGT-FM102-5 CLOSED: Appendix B Table VII (tab:desi_bands) caption
+%       extended to note the taxonomy covers the full 195,829-anomaly fiber-
+%       spectral stream, NOT stratified by science-class subset; 2,468 science-
+%       class restriction not re-tabulated by arm dominance.
+%   (5) CGT-FM102-1/B2-partial CLOSED: tab:recount expanded from 3 to 4 rows
+%       (new 4-column layout), explicitly listing all four DESI denominators:
+%       full-stream 22.5M / per-class GALAXY+QSO on ~6.5M TARGETTYPE subset /
+%       science-bit bitmask 20.3M rows / like-for-like benchmark match. Footnote
+%       explains why per-class rates are inconsistent with 2,468 count (different
+%       denominator definitions, not arithmetic error).
+%   Gemini-for-P3 note: EXT7 fresh-thread CALIBRATED — every section number
+%       cited resolves to the actual revtex location (§II.A/§II.B/§II.D/§III.E/
+%       §III.G/§VI.C/§VI.D). EXT6 hallucination was thread-state-specific, not
+%       upstream. Gemini dropped from EXT6 onward — drop decision REVERSED;
+%       Gemini reinstated as binding external reviewer for P3 from EXT8 onward.
+%   12+ ChatGPT re-raises auto-falsified as pattern-052 (closure-verification
+%       re-raises of items closed in v3.1.71 R36conf wave); no action taken.
+%   Round verdict: ACCEPT-WITH-MINOR-EDITS; all 5 genuine MINOR items closed.)
 % v3.1.102 (2026-06-13 — R36conf closure wave; truth audit at
 %   project-context/peer-reviews/R36conf_P3_TRUTH_AUDIT.md. 15 MINOR
 %   caption/cross-ref/precision polish closures:
@@ -517,7 +550,7 @@ The raw per-element mean-squared reconstruction error between input and reconstr
 \begin{equation}\label{eq:score_raw}
 \mathrm{MSE}(\mathbf{x}) = \frac{1}{N}\sum_{i=1}^{N}(x_i - \hat{x}_i)^2,
 \end{equation}
-where $\hat{\mathbf{x}} = \BigAE(\mathbf{x})$, $N$ is the input dimensionality, and $x_i$ are survey-normalized inputs (standardized per-survey to zero mean and unit variance on the training pool prior to scoring; see \S\ref{sec:training}).
+where $\hat{\mathbf{x}} = \BigAE(\mathbf{x})$, $N$ is the input dimensionality, and $x_i$ are survey-normalized inputs (standardized per-survey to zero mean and unit variance prior to scoring; for spectroscopic surveys the scaler statistics are fit on the training pool, while for the tabular catalog surveys eROSITA, NEOWISE, and Gaia the statistics are fit on the full sample rather than the training split---see \S\ref{sec:training} for the per-survey specification and the bounded robustness check). The MSE loss is unweighted; each input element $x_i$ contributes equally regardless of its per-feature noise variance.
 
 \paragraph{Canonical anomaly score $S$ (one definition for the whole paper).}
 \emph{Throughout this paper, ``$S$'' refers to the per-survey standardized (``$z$-scored'' in the statistical sense) reconstruction residual, with two disclosed exceptions: the Planck CMB tier is ranked by raw per-patch reconstruction MSE (Eq.~\ref{eq:score_raw}; \S\ref{sec:planck}), and the published eROSITA threshold is on the production run's score-knee axis (\S\ref{sec:erosita}). (Note: `$z$-scored' here is the statistics term for a mean-subtracted, variance-normalized quantity; spectroscopic redshift is always written $z$ with astrophysical context; the anomaly score $S$ is never called `$z$' in this paper to avoid ambiguity.)}
@@ -612,27 +645,20 @@ $^{\spadesuit}$ \textbf{LAMOST~DR10 is a transparent FAIL --- limited sensitivit
 The DESI Data Release~1~\cite{DESI2025DR1} is the anchor survey of our campaign. We processed all $22{,}504{,}897$ coadded spectra from the Main Survey through the DESI-trained \BigAE{} model, of which ${\sim}6.5$~million carry a validated science \texttt{TARGETTYPE} in the five primary classes --- the Bright Galaxy Survey (BGS), Luminous Red Galaxies (LRG), Emission Line Galaxies (ELG), Quasars (QSO), and the Milky Way Survey (MWS) --- and the remaining ${\sim}16$~million are filler-tile, sky-fiber, or calibration-exposure spectra without a validated \texttt{TARGETTYPE}. The headline $195{,}829$ DESI anomaly count is the top-$1\%$ score-cut of the full $22.5$-M-spectrum scan and is not restricted to the validated-\texttt{TARGETTYPE} subset; per-class anomaly rates and SIMBAD-novelty fractions reported below refer to the ${\sim}6.5$-M validated-\texttt{TARGETTYPE} subset (see \S\ref{sec:pathc_caveats} for the implications of this scope choice). A positional recount against the DR1 redshift catalog (\texttt{zall-pix}; $28{,}425{,}963$ rows) quantifies the scope choice directly, summarized in Table~\ref{tab:recount}: of the $190{,}015$ deduplicated DESI anomaly clusters (the $5''$ FoF dedup of the $195{,}829$ raw detections), only $\mathbf{2{,}468}$ ($1.3\%$) match within $1''$ a main-survey spectrum whose targeting bitmasks set a primary science-class bit (BGS/LRG/ELG/QSO/MWS; $20{,}299{,}155$ such catalog rows under this bitmask selection, which is broader than the validated-\texttt{TARGETTYPE} accounting above because it applies no redshift-quality or primary-row cuts and counts per-program rows; matches rise to $2{,}531$ at $2''$ and $3{,}390$ at $5''$). By Redrock \texttt{SPECTYPE} the $1''$ matches are $2{,}371$ GALAXY, $95$ QSO, and $2$ STAR. A control match of the same clusters against the \emph{full} redshift catalog recovers $189{,}675/190{,}015$ ($99.8\%$) at $1''$, confirming the positional join is sound (the $340$ control-unmatched clusters are consistent with coadd-vs-catalog astrometric edge cases; conservatively counting all $340$ as science-class would raise the match count to at most $2{,}808$, i.e.\ $\leq\!1.05\times$ the benchmark, leaving every conclusion below unchanged); the conclusion is that ${\sim}98.7\%$ of DESI anomaly clusters coincide with spectra carrying \emph{no} primary science-class target bit ($86\%$ have \texttt{DESI\_TARGET} $=0$ outright --- sky fibers and secondary/ToO programs). Restricted to validated science targets, the DESI anomaly catalog is therefore $\approx\!0.9\times$ the size of the Liang \etal{} benchmark ($2{,}468$ vs.\ $2{,}685$; Liang \etal{} scanned the ${\sim}250$K-spectrum DESI EDR, so the comparison is matched on target-class selection, not on data release), \emph{not} $73\times$: the $73\times$ figure is a statement about the full spectra stream, and the headline DESI tier should be read as an anomaly scan of everything DESI pointed a fiber at, dominated by non-science-target spectra (recount artifact: \artifact{pipelines/p3\_anomaly\_engine/ext3\_b2\_targettype\_recount.json}).
 
 \begin{table}[!htb]
-\caption{\label{tab:recount} DESI science-class recount at a glance. The three DESI denominators used in this paper, and the recount of the $190{,}015$ deduplicated anomaly clusters against the science-class selection. Rates in the last block are stated on their own denominators; they are not mutually comparable.}
+\caption{\label{tab:recount} DESI science-class recount at a glance. Four distinct DESI rate denominators appear in this paper; they are \emph{not} mutually comparable and should not be converted across rows. Row~1: full-stream headline. Row~2: validated-\texttt{TARGETTYPE} per-class rates. Row~3: positional recount on the science-bit bitmask denominator. Row~4: like-for-like science-target benchmark match.}
 \small
 \begin{ruledtabular}
-\begin{tabular}{lr}
-\textbf{Denominators} & \\
-Coadded spectra scanned (Main Survey)            & $22{,}504{,}897$ \\
-Validated-\texttt{TARGETTYPE} subset (\S III)     & ${\sim}6.5$M \\
-Main-survey primary-bit rows & $20{,}299{,}155$ \\
+\begin{tabular}{lrr}
+\textbf{Rate context} & \textbf{Denominator} & \textbf{Anomaly rate / count} \\
 \hline
-\textbf{Anomaly clusters} & \\
-Raw detections (top-$1\%$, $S>5$)                 & $195{,}829$ \\
-After $5''$ FoF dedup                             & $190{,}015$ \\
-\hline
-\textbf{Science-class matches} & \\
-At $1''$ / $2''$ / $5''$                  & $2{,}468$/$2{,}531$/$3{,}390$ \\
-Fraction of anomaly clusters ($1''$)              & $1.3\%$ \\
-Rate on the $20.3$M-row denominator               & $0.012\%$ \\
-Like-for-like vs.\ Liang \etal{} ($2{,}685$)      & $\approx\!0.9\times$ \\
-Clusters on non-science-target spectra            & ${\sim}98.7\%$ \\
+Full-stream scan (top-$1\%$, $S>5$)   & $22.5$M spectra   & $195{,}829$ ($0.87\%$) \\
+Per-class GALAXY$^\dagger$ (\texttt{TARGETTYPE} subset) & ${\sim}4.9$M & $0.75\%$ \\
+Per-class QSO$^\dagger$ (\texttt{TARGETTYPE} subset)    & ${\sim}1.5$M & $0.037\%$ \\
+Science-bit bitmask (primary-class bit) & $20.3$M rows  & $2{,}468$ ($0.012\%$) \\
+Like-for-like vs.\ Liang \etal~benchmark & ${\sim}2{,}685$ targets & ${\approx}0.9\times$ \\
 \end{tabular}
 \end{ruledtabular}
+{\footnotesize $^\dagger$ Per-class rates are computed on the validated-\texttt{TARGETTYPE} subset (${\sim}6.5$M total), not on the full $22.5$M stream; the ${\sim}4.9$M GALAXY-SPECTYPE and ${\sim}1.5$M QSO-SPECTYPE populations together add to ${\sim}6.4$M (with ${\sim}0.1$M STAR-SPECTYPE). These rates are \emph{inconsistent} with the $2{,}468$ science-class match count because the two are on different denominators: the $2{,}468$ count uses a bitmask-join on the $20.3$M-row \texttt{zall-pix} catalog (no \texttt{TARGETTYPE} quality filter, counts per-program rows), while the per-class rates are on the quality-filtered \texttt{TARGETTYPE} subset. The discrepancy is definitional, not an arithmetic error.}
 \end{table} Each spectrum covers 3600--9824~\AA\ across three arms (B, R, Z) at resolution $R \sim 2000$--$5000$.
 
 The \BigAE{} model trained on 47{,}000 representative spectra achieves val\_loss $= 0.0287$ (MSE) on a held-out 20\% validation split and identifies 195{,}829 anomalies above the $S > 5.0$ threshold, an anomaly rate of 0.87\%. Scores range from 5.0 to 25.2, with 101 objects exceeding $S = 15$. Classification by spectral-arm dominance yields: 151{,}244 multi-band (77.2\%), 44{,}436 B-dominant (22.7\%), 34 R-dominant (0.02\%), 19 Z-dominant (0.01\%), and 96 artifact suspects (0.05\%). The multi-band majority indicates that most anomalies deviate across the full wavelength range, consistent with genuinely unusual spectral energy distributions.
@@ -757,7 +783,7 @@ The eROSITA DR1~\cite{eROSITA_DR1} provides 930{,}203 X-ray sources (western Gal
 
 \subsection{Planck CMB}\label{sec:planck}
 
-Input: 20{,}000 SMICA CMB map patches ($64\!\times\!64$ pixels). Anomaly count: 200 (top 1\%). SIMBAD-unmatched: N/A (sky regions). Headline finding: the cross-transfer checkpoint (val\_loss $\approx 2\!\times\!10^4$, gate FAIL) was replaced by a Path-C native convolutional autoencoder ($3$ conv layers + Linear(4096,128) bottleneck; $1.1\!\times\!10^6$ parameters) trained on $2\!\times\!10^5$ galactic-plane-masked ($|b|\geq 20^\circ$) SMICA patches. The native retrain converged at val\_loss $= 0.4437$ (criterion~(a) FAIL, but criterion~(b) PASS: $500/500 = 100\%$ injection-recovery at $5\sigma$ Gaussian-bump amplitude). Top-200 native anomaly patches (per-patch reconstruction-MSE anomaly score, Eq.~\ref{eq:score_raw}; range $[0.558, 0.621]$) form the catalog's Planck CMB tier ($\mathbf{200}$ sky-region patches, NOT point-source objects). \emph{Patch bookkeeping:} the $20{,}000$-patch input quoted above (and as $N_{\rm total}$ in Table~\ref{tab:survey_summary}) is the original cross-transfer patch budget, on which the $200$-patch tier is a top-$1\%$ selection; the Path-C native pipeline extracts an independent, $10\times$ larger $2\times10^{5}$-patch bank from the same $|b|\geq 20^\circ$ masked SMICA map for training and re-scoring, with the Planck tier held at the same canonical count of $200$ (the top-ranked patches of the native re-score). All patch positions in the native bank are drawn at $|b| \geq 20^\circ$ by construction (the extraction script rejects positions inside the Galactic cut), so the scored set and the training set share the same masked sky domain: no masked-to-unmasked domain transfer occurs in the published tier. \emph{Train/score disjointness:} the native bank is scored in full --- including the patches used for training --- so the released top-200 is not a held-out selection (standard practice for autoencoder anomaly scoring, but stated here explicitly). Replaying the deterministic 85\%/15\% train/validation split of the retrain script (fixed seed) against the released top-200 patch indices places $152$ of the $200$ in the training split and $48$ in the $15\%$ validation split, versus ${\approx}170/30$ expected under split-independent placement: the anomaly tail exhibits a \emph{statistically significant over-representation toward held-out patches} (binomial $p \approx 4\times10^{-4}$), the direction opposite to memorization-driven leakage, arguing against training-set memorization (artifact \artifact{pipelines/p3\_anomaly\_engine/ext3\_fm2\_planck\_top200\_train\_overlap.json}). The Table~\ref{tab:processing} ${\sim}8{,}000$~patches/s throughput entry derives from the $25.3$~s full re-score of the $2\times10^{5}$-patch native bank, not from the $20{,}000$-patch cross-transfer input. ACT~DR6 is formally quarantined (both gate criteria fail; see Appendix~\ref{sec:act_appendix}); it contributes zero objects to the headline.
+Input: 20{,}000 SMICA CMB map patches ($64\!\times\!64$ pixels). Anomaly count: 200 (top 1\%). SIMBAD-unmatched: N/A (sky regions). Headline finding: the cross-transfer checkpoint (val\_loss $\approx 2\!\times\!10^4$, gate FAIL) was replaced by a Path-C native convolutional autoencoder ($3$ conv layers + Linear(4096,128) bottleneck; $1.1\!\times\!10^6$ parameters) trained on $2\!\times\!10^5$ galactic-plane-masked ($|b|\geq 20^\circ$) SMICA patches. The native retrain converged at val\_loss $= 0.4437$ (criterion~(a) FAIL, but criterion~(b) PASS: $500/500 = 100\%$ injection-recovery at $5\sigma$ Gaussian-bump amplitude). Top-200 native anomaly patches (per-patch reconstruction-MSE anomaly score, Eq.~\ref{eq:score_raw}; range $[0.558, 0.621]$) form the catalog's Planck CMB tier ($\mathbf{200}$ sky-region patches, NOT point-source objects). \emph{Patch bookkeeping:} the $20{,}000$-patch input quoted above (and as $N_{\rm total}$ in Table~\ref{tab:survey_summary}) is the original cross-transfer patch budget, on which the $200$-patch tier is a top-$1\%$ selection; the Path-C native pipeline extracts an independent, $10\times$ larger $2\times10^{5}$-patch bank from the same $|b|\geq 20^\circ$ masked SMICA map for training and re-scoring, with the Planck tier held at the same canonical count of $200$ (the top-ranked patches of the native re-score). All patch positions in the native bank are drawn at $|b| \geq 20^\circ$ by construction (the extraction script rejects positions inside the Galactic cut), so the scored set and the training set share the same masked sky domain: no masked-to-unmasked domain transfer occurs in the published tier. \emph{Train/score disjointness:} the native bank is scored in full --- including the patches used for training --- so the released top-200 is not a held-out selection (standard practice for autoencoder anomaly scoring, but stated here explicitly). Replaying the deterministic 85\%/15\% train/validation split of the retrain script (fixed seed) against the released top-200 patch indices places $152$ of the $200$ in the training split and $48$ in the $15\%$ validation split, versus ${\approx}170/30$ expected under split-independent placement: the anomaly tail exhibits a \emph{statistically significant over-representation toward held-out patches} (naive binomial $p \approx 4\times10^{-4}$, assuming spatially independent patches; the $10^\circ\!\times\!10^\circ$ gnomonic tiles may be mildly correlated, so this $p$-value should be treated as indicative rather than definitive), the direction opposite to memorization-driven leakage, arguing against training-set memorization (artifact \artifact{pipelines/p3\_anomaly\_engine/ext3\_fm2\_planck\_top200\_train\_overlap.json}). The Table~\ref{tab:processing} ${\sim}8{,}000$~patches/s throughput entry derives from the $25.3$~s full re-score of the $2\times10^{5}$-patch native bank, not from the $20{,}000$-patch cross-transfer input. ACT~DR6 is formally quarantined (both gate criteria fail; see Appendix~\ref{sec:act_appendix}); it contributes zero objects to the headline.
 
 
 \subsection{Gaia DR3}\label{sec:gaia}
@@ -1091,7 +1117,7 @@ $^\ddagger$ Cross-transfer fully connected baseline (Appendix~\ref{sec:act_appen
 Table~\ref{tab:desi_bands} provides the full DESI anomaly classification by spectral-arm dominance.
 
 \begin{table}[tb]
-\caption{\label{tab:desi_bands} DESI DR1 anomaly classification by spectral-arm dominance. Multi-band anomalies (77.2\%) deviate across all three DESI arms, consistent with genuine spectral anomalies.}
+\caption{\label{tab:desi_bands} DESI DR1 anomaly classification by spectral-arm dominance for the full 195{,}829-anomaly catalog (fiber-spectral reconstruction taxonomy over all scored TARGETTYPE classes). The science-class-restricted recount of 2{,}468 DESI anomaly clusters (\S\ref{sec:desi}) has not been re-tabulated by arm dominance; band-dominance fractions here reflect the full-stream population and may differ in the science-class subset. Multi-band anomalies (77.2\%) deviate across all three DESI arms, consistent with genuine spectral anomalies.}
 \begin{ruledtabular}
 \begin{tabular}{lrrl}
 \textbf{Category} & \textbf{Count} & \textbf{Frac.} & \textbf{Score range} \\

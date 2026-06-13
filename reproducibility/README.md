@@ -5,9 +5,9 @@
 - Paper I(b) — MCMC technical companion to Paper I(a)
 
 **Author:** Houston Golden
-**Paper I(a) version:** v1A.0.64 (2026-06-12)
-**Paper I(b) version:** v1B.0.62 (2026-06-12)
-**Bundle version:** v1A.0.64-bundle (synced to current paper stamps; Zenodo DOI tag at submission pending)
+**Paper I(a) version:** v1A.0.67 (2026-06-13)
+**Paper I(b) version:** v1B.0.65 (2026-06-13)
+**Bundle version:** v1A.0.67-bundle (synced to current paper stamps; Zenodo DOI tag at submission pending)
 
 ## Paper I(b) quick links
 
@@ -139,7 +139,7 @@ MIT License. See LICENSE file.
   title = {Channel-Level Closure of Four Minimal Einstein--Cartan--Holst
            Dark-Energy Routes and Perturbation Transparency for Scalar Matter},
   year = {2026},
-  note = {Paper I A, v1A.0.64},
+  note = {Paper I A, v1A.0.67},
   eprint = {XXXX.XXXXX},
   archivePrefix = {arXiv},
   primaryClass = {gr-qc}

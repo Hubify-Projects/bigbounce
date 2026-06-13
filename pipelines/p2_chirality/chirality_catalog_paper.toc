@@ -16,7 +16,7 @@
 \contentsline {subsection}{\numberline {D}Test-Time Equivariant Averaging}{4}{section*.14}%
 \contentsline {subsection}{\numberline {E}Catalog Tiers}{4}{section*.15}%
 \contentsline {section}{\numberline {IV}Results}{4}{section*.16}%
-\contentsline {subsection}{\numberline {A}Catalog Statistics}{4}{section*.17}%
+\contentsline {subsection}{\numberline {A}Catalog Statistics}{5}{section*.17}%
 \contentsline {subsection}{\numberline {B}Global CW Fraction}{5}{section*.18}%
 \contentsline {subsection}{\numberline {C}Dipole Analysis}{7}{section*.19}%
 \contentsline {paragraph}{\numberline {a}Simple dipole.}{7}{section*.20}%
@@ -30,14 +30,14 @@
 \contentsline {subsection}{\numberline {A}Sensitivity Floor and Minimum Detectable Signal}{12}{section*.28}%
 \contentsline {paragraph}{\numberline {a}Fisher (statistical-only) floor.}{12}{section*.29}%
 \contentsline {paragraph}{\numberline {b}Empirical injection-recovery floor.}{13}{section*.30}%
-\contentsline {subsection}{\numberline {B}Relation to Parity-Violating Sectors}{13}{section*.31}%
+\contentsline {subsection}{\numberline {B}Relation to Parity-Violating Sectors}{14}{section*.31}%
 \contentsline {subsection}{\numberline {C}Open Follow-up and Future Directions}{14}{section*.32}%
 \contentsline {section}{\numberline {VII}Conclusions}{14}{section*.33}%
 \contentsline {paragraph}{\numberline {a}Harmonic-channel completeness (end-to-end).}{14}{section*.34}%
 \contentsline {paragraph}{\numberline {b}Primary methodological finding: a quantifiable monopole-mask leakage channel.}{14}{section*.35}%
 \contentsline {paragraph}{\numberline {c}Canonical-$N$ MASTER $\ell \!=\!1$ direct compute.}{14}{section*.36}%
-\contentsline {paragraph}{\numberline {d}Bias hardening is essential.}{14}{section*.37}%
-\contentsline {paragraph}{\numberline {e}Sensitivity convention and falsification criterion.}{14}{section*.38}%
+\contentsline {paragraph}{\numberline {d}Bias hardening is essential.}{15}{section*.37}%
+\contentsline {paragraph}{\numberline {e}Sensitivity convention and falsification criterion.}{15}{section*.38}%
 \appendix 
 \contentsline {section}{\numberline {A}NaMaster MASTER Configuration}{15}{section*.39}%
 \contentsline {paragraph}{\numberline {a}Declared data vector and $\ell \!=\!0$ treatment.}{15}{section*.40}%
@@ -46,31 +46,32 @@
 \contentsline {paragraph}{\numberline {d}Provenance note: withdrawn subsample-mask null.}{16}{section*.43}%
 \contentsline {section}{\numberline {B}Classifier Architecture Details}{16}{section*.44}%
 \contentsline {paragraph}{\numberline {a}Training.}{16}{section*.45}%
-\contentsline {paragraph}{\numberline {b}Flip-equivariance consistency loss.}{16}{section*.46}%
-\contentsline {paragraph}{\numberline {c}$D_4$-TTA rotational-equivariance validation.}{16}{section*.47}%
+\contentsline {paragraph}{\numberline {b}Flip-equivariance consistency loss.}{17}{section*.46}%
+\contentsline {paragraph}{\numberline {c}$D_4$-TTA rotational-equivariance validation.}{17}{section*.47}%
 \contentsline {paragraph}{\numberline {d}Bias hardening suite.}{17}{section*.48}%
-\contentsline {paragraph}{\numberline {e}GZ1 confusion matrix and per-class metrics.}{17}{section*.49}%
+\contentsline {paragraph}{\numberline {e}GZ1 confusion matrix and per-class metrics.}{18}{section*.49}%
 \contentsline {section}{\numberline {C}Auxiliary Dipole Diagnostics}{18}{section*.50}%
 \contentsline {paragraph}{\numberline {a}Confidence-stratified dipole.}{18}{section*.51}%
 \contentsline {paragraph}{\numberline {b}Sky-quadrant and hemisphere diagnostics.}{18}{section*.52}%
 \contentsline {paragraph}{\numberline {c}Hemisphere asymmetry and look-elsewhere.}{18}{section*.53}%
 \contentsline {paragraph}{\numberline {d}Two-point chirality correlation.}{18}{section*.54}%
 \contentsline {paragraph}{\numberline {e}Per-imaging-leg systematics.}{18}{section*.55}%
-\contentsline {section}{\numberline {D}Canonical-Mask Systematic Analysis}{18}{section*.56}%
-\contentsline {paragraph}{\numberline {a}Apodized-mask robustness.}{18}{section*.57}%
-\contentsline {paragraph}{\numberline {b}Multipole-spectrum diagnostic.}{18}{section*.58}%
+\contentsline {section}{\numberline {D}Canonical-Mask Systematic Analysis}{19}{section*.56}%
+\contentsline {paragraph}{\numberline {a}Apodized-mask robustness.}{19}{section*.57}%
+\contentsline {paragraph}{\numberline {b}Multipole-spectrum diagnostic.}{19}{section*.58}%
 \contentsline {paragraph}{\numberline {c}Quality-quartile stratification.}{19}{section*.59}%
 \contentsline {paragraph}{\numberline {d}Leg-proxy $\ell \!=\!1$ partial closure.}{19}{section*.60}%
 \contentsline {paragraph}{\numberline {e}Density-stratified null.}{19}{section*.61}%
 \contentsline {paragraph}{\numberline {f}Boundary-distance variance check.}{19}{section*.62}%
 \contentsline {paragraph}{\numberline {g}Joint nuisance-marginalized WLS fit.}{19}{section*.63}%
-\contentsline {paragraph}{\numberline {h}Direct cross-spectrum $A_p\times n_{\rm total}$.}{20}{section*.64}%
-\contentsline {paragraph}{\numberline {i}Operational conclusion.}{20}{section*.65}%
-\contentsline {section}{\numberline {E}Morphology Systematics}{20}{section*.66}%
-\contentsline {paragraph}{\numberline {a}Edge-on galaxy contamination.}{20}{section*.67}%
-\contentsline {paragraph}{\numberline {b}High-confidence subsample robustness.}{20}{section*.68}%
-\contentsline {paragraph}{\numberline {c}Spiral fraction variation across the sky.}{20}{section*.69}%
-\contentsline {paragraph}{\numberline {d}Mask robustness: pixel-count threshold sweep.}{20}{section*.70}%
-\contentsline {section}{\numberline {}Data Availability}{21}{section*.71}%
-\contentsline {section}{\numberline {}Acknowledgments}{21}{section*.72}%
-\contentsline {section}{\numberline {}References}{21}{section*.73}%
+\contentsline {paragraph}{\numberline {h}WLS mask-equivalence audit.}{20}{section*.64}%
+\contentsline {paragraph}{\numberline {i}Direct cross-spectrum $A_p\times n_{\rm total}$.}{20}{section*.65}%
+\contentsline {paragraph}{\numberline {j}Operational conclusion.}{20}{section*.66}%
+\contentsline {section}{\numberline {E}Morphology Systematics}{20}{section*.67}%
+\contentsline {paragraph}{\numberline {a}Edge-on galaxy contamination.}{20}{section*.68}%
+\contentsline {paragraph}{\numberline {b}High-confidence subsample robustness.}{20}{section*.69}%
+\contentsline {paragraph}{\numberline {c}Spiral fraction variation across the sky.}{21}{section*.70}%
+\contentsline {paragraph}{\numberline {d}Mask robustness: pixel-count threshold sweep.}{21}{section*.71}%
+\contentsline {section}{\numberline {}Data Availability}{21}{section*.72}%
+\contentsline {section}{\numberline {}Acknowledgments}{22}{section*.73}%
+\contentsline {section}{\numberline {}References}{22}{section*.74}%

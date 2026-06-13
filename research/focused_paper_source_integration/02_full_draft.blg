@@ -32,47 +32,46 @@ Warning--missing number in TanakaUrakawa:2011
 Warning--missing number in CaiBrandenberger:2014
 Warning--missing number in Cai:2009fn
 Warning--missing number in McDonaldSeljak2009
-Warning--missing number in Cai:2018non
 Warning--missing number in Chen:2009zp
-You've used 42 entries,
+You've used 43 entries,
             6079 wiz_defined-function locations,
-            1946 strings with 22990 characters,
-and the built_in function-call counts, 44613 in all, are:
-= -- 3342
-> -- 1012
-< -- 225
-+ -- 327
-- -- 246
-* -- 6962
-:= -- 4197
-add.period$ -- 40
-call.type$ -- 42
-change.case$ -- 206
-chr.to.int$ -- 51
+            1955 strings with 23240 characters,
+and the built_in function-call counts, 45728 in all, are:
+= -- 3439
+> -- 1031
+< -- 229
++ -- 333
+- -- 250
+* -- 7139
+:= -- 4305
+add.period$ -- 41
+call.type$ -- 43
+change.case$ -- 212
+chr.to.int$ -- 52
 cite$ -- 50
-duplicate$ -- 4219
-empty$ -- 3212
-format.name$ -- 582
-if$ -- 8975
+duplicate$ -- 4325
+empty$ -- 3293
+format.name$ -- 594
+if$ -- 9203
 int.to.chr$ -- 2
-int.to.str$ -- 49
-missing$ -- 611
-newline$ -- 172
-num.names$ -- 120
-pop$ -- 1627
+int.to.str$ -- 50
+missing$ -- 627
+newline$ -- 175
+num.names$ -- 123
+pop$ -- 1658
 preamble$ -- 1
-purify$ -- 200
+purify$ -- 205
 quote$ -- 0
-skip$ -- 1995
+skip$ -- 2047
 stack$ -- 0
-substring$ -- 951
-swap$ -- 3954
-text.length$ -- 99
+substring$ -- 976
+swap$ -- 4054
+text.length$ -- 100
 text.prefix$ -- 0
 top$ -- 10
-type$ -- 565
-warning$ -- 9
-while$ -- 120
+type$ -- 578
+warning$ -- 8
+while$ -- 123
 width$ -- 0
-write$ -- 440
-(There were 9 warnings)
+write$ -- 452
+(There were 8 warnings)

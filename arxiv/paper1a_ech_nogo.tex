@@ -45,8 +45,23 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.67}
+\newcommand{\paperVersion}{v1A.0.68}
 \newcommand{\paperTimestamp}{June 13, 2026 PDT}
+% v1A.0.67->68 (2026-06-13 — EXT7 closure wave; 2 genuinely-NEW VERIFIED items
+%   per EXT7_P1A_TRUTH_AUDIT.md:
+%   F67-B1 (pattern-031 fig-caption/data mismatch): Fig. 3 (figure5_rotation_expansion)
+%     caption UPDATED (Path A — caption disclosure, NOT figure regen) to disclose
+%     actual parameters used by generate_all_figures.py L545-551:
+%     Orange ECH curve: H0=69.2 km/s/Mpc, Omega_m=0.310, enhanced radiation
+%     Or_ext=Or_std*(1+0.3*(7/8)*(4/11)^{4/3}) as ΔN_eff proxy (spin-torsion
+%     benchmark with extra-radiation channel); ΛCDM reference: H0=67.36 km/s/Mpc,
+%     Omega_m=0.315 (standard Planck-VI best-fit). Caption now correctly
+%     describes the spin-torsion benchmark parameters rather than claiming
+%     H0=67.7, Omega_m=0.308. Scientific interpretation unchanged: the figure
+%     illustrates the H(z) deviation between ECH spin-torsion benchmark and
+%     its own ΛCDM reference — not a ΛCDM-Planck coincidence test.
+%   F67-M2 (README version-drift): reproducibility/README.md header + bibtex
+%     note updated v1A.0.64 -> v1A.0.67 (3 occurrences).
 % v1A.0.66->67 (2026-06-13 — R36conf closure wave; 3 genuinely-NEW VERIFIED
 %   items closed per R36conf_P1A_TRUTH_AUDIT.md:
 %   #7  Sec. X D dangling footnote ref: inserted \fn:NY_decomp footnote with
@@ -1084,8 +1099,13 @@ $\Xi\,\MPl^2$ term sourced by the parity-odd contorsion sector
 The orange ECH curve uses $\Xi$ set to reproduce $\rho_\Lambda$
 (i.e.\ $\Xi = \rho_\Lambda/\MPl^4 = \Leff/\MPl^2 \approx 10^{-123}$,
 consistent with the dimensionless-ratio derivation in the body below)
-with baseline cosmology $H_0=67.7\,\text{km/s/Mpc}$, $\Omega_m=0.308$; the
-$\Delta H/H_{\Lambda\rm CDM}$ deviation is ${\sim}2$--$3\%$ across $z=0$--$3$.
+with spin-torsion benchmark cosmology $H_0=69.2\,\text{km/s/Mpc}$,
+$\Omega_m=0.310$, and enhanced radiation density
+$\Omega_r^{\rm ext} = \Omega_r^{\rm std}(1 + 0.3\tfrac{7}{8}(\tfrac{4}{11})^{4/3})$
+as a $\Delta N_{\rm eff}$ proxy for the extra-radiation ECH channel (see
+\texttt{generate\_all\_figures.py}); the $\Lambda$CDM reference uses
+$H_0=67.36\,\text{km/s/Mpc}$, $\Omega_m=0.315$ (Planck-VI best-fit).
+The $\Delta H/H_{\Lambda\rm CDM}$ deviation is ${\sim}2$--$3\%$ across $z=0$--$3$.
 The $(\omega/H)_0 < 5\times 10^{-11}$ bound (Saadeh~\etal~\cite{Saadeh2016})
 applies under the Bianchi~IX isotropized cosmological model and is adopted
 here as a conservative bookkeeping upper limit on $c_\omega\omega^2$.\label{fig:rotation_expansion}}
