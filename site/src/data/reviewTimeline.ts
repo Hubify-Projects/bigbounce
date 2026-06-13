@@ -46,6 +46,23 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "EXT11-SUBMISSION",
+    kind: "external-browser",
+    dateISO: "2026-06-13",
+    timePT: "16:07–16:47",
+    title: "EXT11 delta-submission: 18/18 chats updated with EXT10-closure PDFs + per-paper closure summaries",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "Delta-prompts submitted to existing 18 EXT10 chats (ChatGPT Pro Extended × 6, Grok Heavy × 6, Gemini 2.5 Thinking /u/0/ × 6). All 6 EXT10-closure PDFs verified (md5 check) and uploaded. 1 Gemini persistence bug on P2 first attempt → resubmit from fresh home. Harvest ETA ≥17:17 PDT.",
+    keyTakeaways: [
+      "18/18 delta-prompts submitted with per-paper closure summaries: P1A Sec IV→App B · P1B 6 wording · P2 9 wording + CGT-M4 falsify · P3 top-1%→S>5 + NANOGrav table · P4 Shamir bibchimera fix · P5 V-Web→T-Web rename",
+      "Gemini: fresh-home per submission confirmed required (EXT7 lesson held); direct input[type=file] upload approach discovered as reliable alternative to osascript native dialog",
+      "P3 site/public stale (d1258558 = v3.1.106); correct v3.1.107 (17c9296b) pulled from pipelines/p3_anomaly_engine/paper3_draft.pdf",
+    ],
+    links: [
+      { label: "EXT11 manifest", href: `${GH}/project-context/peer-reviews/EXT11_BROWSER_MANIFEST.md` },
+    ],
+  },
+  {
     id: "SKILL-COMPANION-INLINE-FALLBACK",
     kind: "skill-improvement",
     dateISO: "2026-06-13",
