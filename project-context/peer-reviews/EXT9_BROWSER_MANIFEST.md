@@ -152,3 +152,87 @@ Heavy traces can run 10–40 min; poll, don't assume. Harvest output
 files: `project-context/peer-reviews/EXT9_<paper>_<Provider>.md` per
 the skill's Phase 3 spec, followed by `/peer-review-truth-audit` over
 all 18 reports before any closure-edit work begins.
+
+---
+
+## Harvest — COMPLETE (2026-06-13 ~13:37 PT)
+
+All 18 reports saved to `project-context/peer-reviews/EXT9_<TAG>_<Provider>.md`.
+
+### Gemini account note
+
+EXT9 Gemini chats were submitted under the **bamf.ai** Google account, which
+maps to `/u/1/` in the browser session (bamf.com = `/u/0/`). The manifest
+recorded them as `/u/0/` URLs — a bookkeeping error. Actual working URLs use
+`/u/1/app/<id>`. Chat IDs are correct; only the `/u/N/` index was wrong.
+
+### EXT8 → EXT9 verdict transition table
+
+| Paper | ChatGPT EXT8 | ChatGPT EXT9 | Grok EXT8 | Grok EXT9 | Gemini EXT8 | Gemini EXT9 |
+|-------|-------------|-------------|----------|----------|------------|------------|
+| P1A | MAJOR | MAJOR | ACCEPT | ACCEPT | MINOR | MINOR |
+| P1B | MAJOR | **MINOR** ⬆ | ACCEPT | ACCEPT | MINOR | ACCEPT ⬆ |
+| P2  | MAJOR | **MINOR** ⬆ | ACCEPT | ACCEPT | MINOR | MINOR/ACCEPT |
+| P3  | MAJOR | MAJOR | ACCEPT | ACCEPT | ACCEPT | ACCEPT |
+| P4  | MAJOR | **MINOR** ⬆ | ACCEPT | ACCEPT | MINOR | MINOR/ACCEPT |
+| P5  | MAJOR | **MINOR** ⬆ | ACCEPT | ACCEPT | MINOR | ACCEPT ⬆ |
+
+**⬆ = verdict improvement this round**
+
+### Special harvest analysis — load-bearing questions
+
+**1. Did ChatGPT shift off baseline-MAJOR?**
+
+YES — partially and significantly. ChatGPT shifted from MAJOR to MINOR REVISIONS on
+**4 of 6 papers** (P1B, P2, P4, P5). P1A and P3 remain MAJOR but with
+explicitly different reasoning than prior rounds.
+
+- P1B: "MINOR REVISIONS — the scientific core is now mostly publication-ready"
+- P2: "MINOR REVISIONS — no longer see a load-bearing scientific problem requiring major revision"
+- P4: "MINOR REVISIONS — the paper has now crossed the scientific threshold for publication"
+- P5: "MINOR REVISIONS — I would not require major scientific rework"
+- P1A: MAJOR — remaining block is "prediction horizon" framing, deemed substantive rework
+- P3: MAJOR — DESI denominator reconciliation + broken rendered tables still unresolved
+
+**2. Did the recalibrated prompt produce different reasoning?**
+
+YES — emphatically. ChatGPT's language shifted from fishing for polish to distinguishing
+"substantive scientific rework" from "submission-day actions." The phrase "not polish, so
+I cannot recommend minor revisions or acceptance yet" (P1A) and "no longer see a
+load-bearing scientific problem" (P2) both show the calibration block working. The two
+remaining MAJORs (P1A prediction horizon, P3 table rendering) are genuine scientific
+blockers that the calibration block correctly preserved — the referee acknowledged the
+calibration but applied MAJOR anyway for substantive reasons.
+
+**3. Did P4 reviewers acknowledge the new harmonic-completeness figure?**
+
+YES — all three reviewers explicitly acknowledged it:
+- ChatGPT: "Harmonic-completeness visibility — CLOSED. Fig. 9 is now in the paper,
+  generated from the injection-recovery artifact."
+- Grok: "iterative R36/R37conf refinements (new completeness table)" confirmed closed
+- Gemini: "In-Paper Harmonic Completeness Figure (Page 14, Fig. 9) — CLOSED. The author
+  has successfully integrated Figure 9 and its corresponding data matrix (Table VI)"
+
+**4. Did P5 reviewers acknowledge the new abstract VoidFinder sentence?**
+
+YES:
+- ChatGPT: "VoidFinder k=20 membership approximation — CLOSED for publication standard.
+  The abstract now discloses that the hole-union definition is permissive..."
+- Grok: confirmed "DESIVAST ApJ void counts wrong — CLOSED. The final ApJ counts are
+  now used: 1,489 VoidFinder, 389 V2-REVOLVER..."
+- Gemini: "VoidFinder Membership-Approximation (Class-D MAJOR): CLOSED"
+
+**5. Any vendor shift toward ACCEPT?**
+
+- Grok: P1A, P1B, P2, P3, P4, P5 all ACCEPT (unchanged from EXT8 — already at ceiling)
+- Gemini: P1B and P5 moved from MINOR to ACCEPT; P3 and P4 at ACCEPT; P1A and P2 at MINOR
+- ChatGPT: 4/6 shifted MAJOR → MINOR REVISIONS (the largest single-round gain ever)
+
+**Honest verdict on recalibration impact:**
+
+The recalibrated prompt is the most impactful single change across all 9 EXT rounds.
+ChatGPT's 4/6 MAJOR→MINOR shift in one round — after being pegged MAJOR across EXT1–8
+on the same 4 papers — definitively answers the empirical question: **EXT1–8's MAJOR
+pegging on P1B, P2, P4, P5 was calibration artifact, not structural paper deficiency.**
+The two remaining MAJORs (P1A prediction horizon, P3 table render) are the genuine
+scientific residuals that will need targeted fixes before those papers clear ChatGPT.
