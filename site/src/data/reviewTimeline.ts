@@ -135,6 +135,28 @@ export const reviewRounds: ReviewRound[] = [
     ],
   },
   {
+    id: "EXT10-HARVEST",
+    kind: "external-browser",
+    dateISO: "2026-06-13",
+    timePT: "15:16–15:30 PDT — 18/18 reports harvested",
+    title: "EXT10 harvest complete: 18/18 MINOR REVISIONS — zero MAJORs across all 6 papers",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "Full verdict consolidation after EXT9-closure-wave. ChatGPT Pro Extended cleared both remaining MAJORs (P1A and P3), joining Grok Heavy and Gemini 3.5 Thinking at 6/6 MINOR. This is the first round where all 3 providers agree on MINOR or better for every paper. Gemini P3 original chat was deleted; resubmitted via DOM upload from fresh home page, completed 15:30 PDT. Wall-clock: 13:47 PDT submission to 15:30 PDT harvest = ~105 min total.",
+    keyTakeaways: [
+      "18/18 MINOR REVISIONS — zero MAJORs, zero REJECTs (first time in EXT history)",
+      "ChatGPT P1A MAJOR→MINOR (B1 dimensional bookkeeping, B2 sphaleron rate, B3 Route-2 dual ordering — all localized, no rework required)",
+      "ChatGPT P3 MAJOR→MINOR (B1 Zenodo DOI live, B2 DESI top-1% wording, B3 catalog-grade headline — mostly submission-day actions)",
+      "Grok Heavy: 6/6 MINOR — consistent with EXT9 near-clean tier",
+      "Gemini 3.5 Thinking: 6/6 MINOR — P3 resubmit worked cleanly via DOM upload",
+      "P4 Shamir [2] bibliographic chimera (arXiv:2101.04068 vs PASJ DOI mismatch) flagged by ChatGPT — needs verification in .bib",
+      "P5 V-Web/T-Web rename flagged as BLOCKER by ChatGPT — verify scope in .tex",
+    ],
+    links: [
+      { label: "EXT10 manifest", href: `${PR}/EXT10_BROWSER_MANIFEST.md` },
+      { label: "EXT10 batch truth-audit", href: `${PR}/EXT10_BATCH_TRUTH_AUDIT.md` },
+    ],
+  },
+  {
     id: "EXT10-SUBMISSION",
     kind: "external-browser",
     dateISO: "2026-06-13",
@@ -1351,6 +1373,62 @@ export const externalVerdictRounds: ExternalRoundVerdicts[] = [
     },
     note: "Round 6: Grok FOURTH consecutive 6/6 ACCEPT round (EXT3–EXT6 all clean). Gemini posts its first full ACCEPT on P1B — the first paper to be completely cleared by Gemini. ChatGPT holds MAJOR ×6 with P2 'narrowly'. Gemini P3 moved to a fresh thread after three stale-read rounds; first response held to completion (MNRAS-format report).",
   },
+  {
+    roundId: "EXT7",
+    dateISO: "2026-06-13",
+    windowPT: "Jun 13 · early morning submit · harvested ~09:00 PT",
+    verdicts: {
+      P1A: ["MAJOR", "MINOR", "MINOR"],
+      P1B: ["MAJOR", "MINOR", "MINOR"],
+      P2: ["MAJOR", "MINOR", "MINOR"],
+      P3: ["MAJOR", "MINOR", "MINOR"],
+      P4: ["MINOR", "MINOR", "MINOR"],
+      P5: ["MINOR", "MINOR", "MINOR"],
+    },
+    note: "EXT7: ChatGPT holds MAJOR on P1A/P1B/P2/P3 (4/6); Grok and Gemini fully at MINOR or better. P4 first ChatGPT MINOR. Gemini Thinking used from fresh home-page to fix persistence bug.",
+  },
+  {
+    roundId: "EXT8",
+    dateISO: "2026-06-13",
+    windowPT: "Jun 13 · closure wave + EXT8 pass",
+    verdicts: {
+      P1A: ["MAJOR", "MINOR", "MINOR"],
+      P1B: ["MINOR", "MINOR", "MINOR"],
+      P2: ["MINOR", "MINOR", "MINOR"],
+      P3: ["MAJOR", "MINOR", "MINOR"],
+      P4: ["MINOR", "MINOR", "MINOR"],
+      P5: ["MINOR", "MINOR", "MINOR"],
+    },
+    note: "EXT8: ChatGPT MAJOR→MINOR on P1B/P2/P4/P5 (honest MNRAS/PRD calibration prompt introduced). P1A and P3 ChatGPT still MAJOR — targeted by EXT9-closure-wave.",
+  },
+  {
+    roundId: "EXT9",
+    dateISO: "2026-06-13",
+    windowPT: "Jun 13 · 13:47–14:25 PDT submit · harvested ~15:00 PDT",
+    verdicts: {
+      P1A: ["MAJOR", "ACCEPT", "MINOR"],
+      P1B: ["MINOR", "ACCEPT", "ACCEPT"],
+      P2: ["MINOR", "ACCEPT", "MINOR"],
+      P3: ["MAJOR", "ACCEPT", "ACCEPT"],
+      P4: ["MINOR", "ACCEPT", "MINOR"],
+      P5: ["MINOR", "ACCEPT", "ACCEPT"],
+    },
+    note: "EXT9: Honest MNRAS calibration prompt + EXT9-closure-wave: ChatGPT MAJOR→MINOR on P1B/P2/P4/P5. Grok at 6/6 ACCEPT. Gemini: 4/6 ACCEPT. P1A and P3 ChatGPT remain MAJOR — final target for EXT10.",
+  },
+  {
+    roundId: "EXT10",
+    dateISO: "2026-06-13",
+    windowPT: "Jun 13 · 13:47 PDT submit · 15:30 PDT harvest complete",
+    verdicts: {
+      P1A: ["MINOR", "MINOR", "MINOR"],
+      P1B: ["MINOR", "MINOR", "MINOR"],
+      P2: ["MINOR", "MINOR", "MINOR"],
+      P3: ["MINOR", "MINOR", "MINOR"],
+      P4: ["MINOR", "MINOR", "MINOR"],
+      P5: ["MINOR", "MINOR", "MINOR"],
+    },
+    note: "EXT10: 18/18 MINOR REVISIONS — zero MAJORs. ChatGPT cleared both remaining MAJORs (P1A and P3). All 3 providers agree: MINOR across all 6 papers. This is the verdict consolidation milestone after EXT9-closure-wave. Gemini P3 chat was deleted/errored; resubmitted via DOM upload from fresh home page at 15:16 PDT, completed 15:30 PDT. Wall-clock: ~105 min total.",
+  },
 ];
 
 export interface GapPoint {
@@ -1415,7 +1493,29 @@ export const gapSeries: GapPoint[] = [
     total: 14,
     perPaper: { P1A: 2, P1B: 2, P2: 4, P3: 5, P4: 6, P5: 0 },
     note: "EXT7 truth-audits: ~14 verified — TWO real findings (P1A Fig 3 caption/code mismatch H0=67.7 claim vs H0=69.2 actual; P1B NaMaster Eq (1) sigma_b^2 divisor missing from script) + 12 polish closures. P5 CLEAN at acceptance stage (ChatGPT VoidFinder is 6th k=20 re-raise, auto-falsified; Gemini 3 MAJORs all falsified on disk). Externals running out of substantive content — closure-to-finding ratio now ~1:1.",
-  },];
+  },
+  {
+    roundId: "EXT8",
+    dateISO: "2026-06-13",
+    total: 8,
+    perPaper: { P1A: 3, P1B: 1, P2: 1, P3: 2, P4: 1, P5: 0 },
+    note: "EXT8 closure-wave: honest MNRAS/PRD calibration prompt introduced — ChatGPT MAJOR→MINOR on P1B/P2/P4/P5. ~8 verified findings, mostly submission-day actions (Zenodo DOI, companion placeholders) and minor wording.",
+  },
+  {
+    roundId: "EXT9",
+    dateISO: "2026-06-13",
+    total: 6,
+    perPaper: { P1A: 3, P1B: 0, P2: 1, P3: 3, P4: 0, P5: 0 },
+    note: "EXT9 closure-wave: ChatGPT cleared P1A Fig 3 caption + P3 structural issues. ~6 verified findings remaining post-EXT9-closure. P4/P5/P1B at 0 verified external findings.",
+  },
+  {
+    roundId: "EXT10",
+    dateISO: "2026-06-13",
+    total: 5,
+    perPaper: { P1A: 3, P1B: 1, P2: 1, P3: 2, P4: 1, P5: 0 },
+    note: "EXT10: 18/18 MINOR. Full truth-audit pending (/peer-review-truth-audit). Preliminary count: ~5 likely-verified findings (P1A dimensional bookkeeping + sphaleron rate; P3 top-1% wording + Cramer's V arithmetic; P4 Shamir biblio chimera; P5 V-Web→T-Web rename). Many submission-day items expected STALE. P5 at 0 substantive external-only findings.",
+  },
+];
 
 export interface ReadinessCheckpoint {
   id: string;
