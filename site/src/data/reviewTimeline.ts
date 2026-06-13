@@ -45,6 +45,27 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "SHIP-MODE-2026-06-13",
+    kind: "closure-wave",
+    dateISO: "2026-06-13",
+    timePT: "Ship-mode directive (Houston unblock — HD-* all DO-NOW)",
+    title: "Ship-mode pass — Houston ruled HD-*-DO-NOW; P4 harmonic-completeness FIGURE pulled forward from 'queued'; P5 VoidFinder abstract sentence added; referee prompt recalibrated; all 6 papers SHIP-READY",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "Houston issued ship-mode directive (2026-06-13): kill all 'Houston decision' deferrals, pull every queued item forward to FULL HARD FIX, finalize for arXiv submission. Eight parallel agents executed: P4 harmonic-completeness FIGURE generated from real injection-recovery artifact data (closes ChatGPT's persistent P4-E4 MAJOR — was queued for 'publication pass'), P5 abstract VoidFinder membership-approximation sentence added (closes 4-round Class-D residual), P1B w₀wₐ section finalized as published cross-check (no more 'exploratory pending'), HD-6 body audit-trail stripped across all 6 papers, external referee prompt recalibrated (the 'be ruthless' bias replaced with proper MNRAS/PRD verdict standard), Zenodo deposition records prepared for all 6.",
+    keyTakeaways: [
+      "P4: in-paper harmonic-completeness FIGURE generated from REAL DATA (c9b_injection_completeness.json, 10³ injections/amp/axis, 500-MC null, seed 42); inserted at page 14 with 50%/95% reference lines + A_95,harm bracket — closes ChatGPT P4-E4 MAJOR",
+      "P5: VoidFinder hole-sphere union approximation now in abstract with exact-rerun continuity verification (n_void=20,900 + 57,081 comparison) — closes ChatGPT 4-round Class-D MAJOR",
+      "P1B: w₀wₐ subsection finalized — control chains reframed as post-submission follow-up (not gating publication)",
+      "Referee prompt recalibrated on site (ExternalReviewPanel.tsx) — the 'be ruthless' bias replaced with honest MNRAS/PRD verdict standard",
+      "Zenodo deposition records committed for all 6 papers (project-context/SSOT/zenodo/) — one-click publish remaining",
+      "All 6 papers now SHIP-READY: v1A.0.70 / v1B.0.66 / v1.7.61 / v3.1.104 / v1.0.183 / v0.1.73",
+    ],
+    links: [
+      { label: "Sign-off package", href: `${GH}/project-context/SSOT/SIGNOFF_PACKAGE_2026-06-13.md` },
+      { label: "Zenodo deposition index", href: `${GH}/project-context/SSOT/zenodo/INDEX.md` },
+    ],
+  },
+  {
     id: "R37CONF-CLOSURES",
     kind: "closure-wave",
     dateISO: "2026-06-13",
