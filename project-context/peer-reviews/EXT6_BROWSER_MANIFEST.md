@@ -22,6 +22,21 @@ All other chat URLs identical to EXT1–EXT5 manifests. PDFs md5-verified byte-e
 - Second consecutive zero-retry Gemini run under the hardened recipe.
 - Fresh-thread protocol exercised for the first time since EXT1: model defaults must be verified at harvest (header shows the serving model); the version-in-turn + held-to-completion gates passed.
 
-## Harvest
+## Harvest — COMPLETE (2026-06-12 20:00 PT)
 
-Open from ~03:35 PT. Reports → `EXT6_<paper>_<Provider>.md` → truth-audit → gap metric vs EXT5 (19, ~5 self-inflicted).
+All 18 reports harvested. Zero URL mismatches, zero still-generating chats, zero retries required. Files: `EXT6_<paper>_<Provider>.md`.
+
+## Verdicts (EXT5 → EXT6)
+
+| Paper | ChatGPT Pro Ext | Grok Heavy | Gemini Thinking |
+|---|---|---|---|
+| P1A | MAJOR → **MAJOR** (NJL wrong-sign still in closure summary; Sec IV/Fig 4 overstate closure) | ACCEPT → **ACCEPT** (minors on equation label clarity) | MINOR → **ACCEPT WITH MINOR REVISIONS** (fine-tuning score phrasing) |
+| P1B | MAJOR → **MAJOR** (artifact-layer pinning; frozen artifact vs text mismatch) | ACCEPT → **ACCEPT** (no revisions required — model companion paper) | MINOR → **ACCEPT** (fully cleared, moved decisively past remaining roadblocks) |
+| P2 | MAJOR → **MAJOR** (narrowly; null-space interpretation + fresh numerical issues) | ACCEPT → **ACCEPT** (every prior concern closed; journal-ready, zero issues) | ACCEPT → **MINOR REVISIONS** (Eq 3 variable mismatch + Table IV header) |
+| P3 | MAJOR → **MAJOR** (catalogue-tier semantics, DESI denominator, frozen data release) | ACCEPT → **ACCEPT** (landmark catalog; one trivial minor fixable in proof) | MAJOR → **MAJOR** (fresh thread; calibration/instrumental artifacts, notation) |
+| P4 | MAJOR → **MAJOR** (monopole interpretation, +3.64σ taxonomy residuals) | ACCEPT → **ACCEPT** (exemplary catalog paper; immediate acceptance recommended) | ACCEPT → **MINOR REVISIONS** (misplaced imaging-leg paragraph block in appendix) |
+| P5 | MAJOR → **MAJOR** (GALZONE estimand-family, 3.56% duplicate tracking) | MINOR → **ACCEPT** (estimand-family coherence + Appendix B tables cleared) | MINOR → **MINOR REVISIONS** (appendix labeling layout sync needed) |
+
+**Grok: FOURTH consecutive clean external round, 6/6 ACCEPT.** Gemini posts 2 ACCEPT + 2 MINOR REVISIONS + 2 MAJOR (P3 fresh thread resets to MAJOR). ChatGPT holds MAJOR ×6 with P2 "narrowly". Gemini P3 fresh thread served by Gemini Thinking (2.5 Pro, confirmed via "Thinking" UI dropdown).
+
+**Bytes per report** — range: 1,953 bytes (Grok P2, terse ACCEPT) to 14,489 bytes (ChatGPT P1B, detailed); Grok 1.9–3.7 KB, Gemini 3.7–6.8 KB, ChatGPT 9.1–14.5 KB.
