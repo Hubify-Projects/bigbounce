@@ -882,6 +882,20 @@ export const externalVerdictRounds: ExternalRoundVerdicts[] = [
     },
     note: "Round 5: Grok 6/6 ACCEPT third consecutive round; Gemini posts its FIRST ACCEPTs (P2, P4 — and its first zero-extraction-artifact P4 read); ChatGPT MAJOR ×6 but P2 'narrowly' with a named path to MINOR — and its two P1A regression catches were real (verified + fixed same-night)",
   },
+  {
+    roundId: "EXT6",
+    dateISO: "2026-06-12",
+    windowPT: "Jun 12 · 02:35–03:03 PT submit · harvested ~04:00 PT",
+    verdicts: {
+      P1A: ["MAJOR", "ACCEPT", "MINOR"],
+      P1B: ["MAJOR", "ACCEPT", "ACCEPT"],
+      P2: ["MAJOR", "ACCEPT", "MINOR"],
+      P3: ["MAJOR", "ACCEPT", "MAJOR"],
+      P4: ["MAJOR", "ACCEPT", "MINOR"],
+      P5: ["MAJOR", "ACCEPT", "MINOR"],
+    },
+    note: "Round 6: Grok FOURTH consecutive 6/6 ACCEPT round (EXT3–EXT6 all clean). Gemini posts its first full ACCEPT on P1B — the first paper to be completely cleared by Gemini. ChatGPT holds MAJOR ×6 with P2 'narrowly'. Gemini P3 moved to a fresh thread after three stale-read rounds; first response held to completion (MNRAS-format report).",
+  },
 ];
 
 export interface GapPoint {
