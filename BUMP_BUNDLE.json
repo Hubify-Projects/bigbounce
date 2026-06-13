@@ -1,11 +1,11 @@
 [
  {
-  "paperSlug": "paper-1b",
-  "version": "v1B.0.67",
-  "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1b_mcmc_companion.pdf",
-  "sitePdfPath": "/papers/paper1b_mcmc_companion_v1B.0.67.pdf",
+  "paperSlug": "paper-4",
+  "version": "v1.0.184",
+  "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p2_chirality/chirality_catalog_paper.pdf",
+  "sitePdfPath": "/papers/chirality_catalog_paper_v184.pdf",
   "datestamp": "2026-06-13",
   "texCommit": "main",
-  "changelog": "c15 chain converged 2026-06-13: independent Planck NPIPE + SDSS DR16 BAO + Pantheon+ LCDM+\u0394N_eff re-run reproduces frozen \u0394N_eff = +0.058 \u00b1 0.179 at 0.04\u03c3; H0 / \u03c38 / S8 / \u03a9_m all <0.1\u03c3 vs frozen Table I. Integrated as \u00a7III.A 'Independent re-run cross-check' paragraph. Actual w0wa SN-overlap MPI re-fit remains post-submission queued."
+  "changelog": "R38conf 2 cosmetic closures: Fig 9 \u03c3 convention (body +7.28\u03c3 canonical, Fig 9 c9b 1000-MC noted); Table I ref \u2192 tab:fsky_summary."
  }
 ]
