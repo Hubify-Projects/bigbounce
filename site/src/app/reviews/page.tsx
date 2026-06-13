@@ -88,9 +88,10 @@ export default function ReviewsPage() {
           <div className="progress-block">
             <h3 className="progress-block-title">External referee verdicts — convergence toward ACCEPT</h3>
             <p className="progress-block-sub">
-              Six papers × four browser-tier rounds × three frontier referees (same chat threads,
-              delta-prompts between rounds). Grok delivered 6/6 ACCEPT in both EXT3 and EXT4 —
-              the first provider to hold a clean verdict across consecutive external rounds.
+              Six papers × six browser-tier rounds × three frontier referees (same chat threads,
+              delta-prompts between rounds). Grok delivered 6/6 ACCEPT in EXT3, EXT4, EXT5, and
+              EXT6 — four consecutive clean external rounds. Gemini reached its first full ACCEPT
+              on P1B in EXT6, the first paper to be completely cleared by Gemini.
             </p>
             <VerdictTrajectory />
             <VerdictLegend />
