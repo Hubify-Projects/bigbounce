@@ -45,6 +45,42 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "SKILL-RECALIBRATION-WIN",
+    kind: "skill-improvement",
+    dateISO: "2026-06-13",
+    timePT: "EXT9 verdict shift confirmed recalibration as load-bearing skill upgrade",
+    title: "Recalibrated referee prompt = single most impactful change of the campaign — ChatGPT MAJOR→MINOR on 4/6 papers in one round",
+    papers: [],
+    summary: "Empirically validated skill upgrade: replacing the 'Be ruthless. We want it harder than the actual journal review.' bias in `site/src/components/ExternalReviewPanel.tsx` with an honest MNRAS/PRD verdict calibration block produced a 4/6 MAJOR→MINOR shift from ChatGPT in EXT9, after 8 prior rounds of MAJOR ×6. The lesson: prompt calibration affects verdict more than paper content for catalog-class submissions. The honest verdict standard is now standing in the panel + future delta prompts.",
+    keyTakeaways: [
+      "8 prior rounds: ChatGPT MAJOR ×6 every round under the 'ruthless' framing",
+      "1 round under honest MNRAS/PRD calibration: MAJOR→MINOR on P1B, P2, P4, P5",
+      "P1A + P3 remain MAJOR — but on GENUINE residuals (prediction-horizon framing; DESI denominator + broken-table rendering), not calibration artifacts",
+      "Confirms the broader observation that ChatGPT was operating at his calibration baseline, not finding paper deficiencies",
+    ],
+    links: [
+      { label: "ExternalReviewPanel.tsx", href: "https://github.com/Hubify-Projects/bigbounce/blob/main/site/src/components/ExternalReviewPanel.tsx" },
+      { label: "EXT9 manifest (verdict transition)", href: "https://github.com/Hubify-Projects/bigbounce/blob/main/project-context/peer-reviews/EXT9_BROWSER_MANIFEST.md" },
+    ],
+  },
+  {
+    id: "SKILL-GEMINI-ACCOUNT-DRIFT",
+    kind: "skill-improvement",
+    dateISO: "2026-06-13",
+    timePT: "EXT9 harvest discovered /u/1/ account-index for new Gemini chats",
+    title: "Gemini account-index drift — /u/0/ (bamf.com) vs /u/1/ (bamf.ai); fresh chats land where you submitted them, not the default",
+    papers: [],
+    summary: "EXT9 harvest agent discovered the 6 fresh Gemini chats created at submission lived under `/u/1/` (bamf.ai account index) while prior recipe assumed `/u/0/` (bamf.com). All 6 chats found by switching to `/u/1/app/<id>`. Encoded into `~/.claude/scistack/astrostack/external-review-browser-loop/SKILL.md`: account index drifts per submission session; verify by avatar AND try `/u/0/` `/u/1/` `/u/2/` if the first attempt fails.",
+    keyTakeaways: [
+      "Gemini account drift now a 3-way variable (was 2-way at EXT4)",
+      "Harvest agents need to retry across `/u/{0,1,2}/` on 404",
+      "Avatar verification remains the source of truth for which account holds the chat",
+    ],
+    links: [
+      { label: "SKILL.md", href: "https://github.com/houstongolden/agent-stack-backup/blob/main/scistack/astrostack/external-review-browser-loop/SKILL.md" },
+    ],
+  },
+  {
     id: "C15-CONVERGED-P1B",
     kind: "closure-wave",
     dateISO: "2026-06-13",
