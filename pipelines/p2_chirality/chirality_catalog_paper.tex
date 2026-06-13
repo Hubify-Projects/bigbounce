@@ -52,7 +52,18 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.183}
+\newcommand{\paperVersion}{v1.0.184}
+% v1.0.183->184 (2026-06-13 — R38conf 2 cosmetic closures; ship-final stamp final.
+%   Ref: project-context/peer-reviews/R38conf_BATCH_TRUTH_AUDIT.md P4 section.
+%   [P4-E6] Fig.~\ref{fig:harmonic_completeness} annotation convention: adopted
+%     BODY CANONICAL (+7.28sigma, 500-MC apodized null) as the stated convention;
+%     added one-line caption note distinguishing figure-title annotation (c9b
+%     1000-MC null → obs.sigma=7.21) from the body's 500-MC canonical (+7.28sigma).
+%     No figure regeneration: c9b/500-MC split is already disclosed at L588 and
+%     Table~\ref{tab:multipole} caption; caption note closes the presentation gap.
+%   [P4-E7] Table~I footnote (L407): hard-coded "Appendix~A Table~VI" (stale —
+%     harmonic-completeness table inserted ahead of fsky_summary in ship-mode wave)
+%     replaced with \ref{tab:fsky_summary} (= Table~VII in current numbering).)
 % v1.0.182->183 (2026-06-13 — Houston ship-mode pass: HD-* DO-NOW closure;
 %   per directive "pull the harmonic-completeness FIGURE from queued-for-
 %   publication-pass to FULL HARD FIX NOW; strip body audit-trail."
@@ -404,7 +415,7 @@ Table~\ref{tab:headline_summary} consolidates per-estimator $N_{\rm spiral}$, $f
 \begin{tabular}{lrrcccr}
 \textbf{Estimator} & $N_{\rm catalog\,spiral}$ & $N_{\rm map\,weighted}$ & $f_{\rm sky}$ & \textbf{Mask} & \textbf{Null} & \textbf{Reported statistic} \\
 \hline
-(i)~real-space dipole (HC) & $949{,}584$ & --- & $0.4801$\footnote{$f_{\rm sky}=0.4801$ is the canonical $N_{\rm spiral}(p)\!\ge\!10$ mask re-evaluated on the high-confidence subsample: fewer HC spirals populate fewer pixels at the $\ge\!10$ threshold (23{,}600 of 49{,}152 pixels), slightly shrinking the full-catalog canonical mask ($f_{\rm sky}=0.49005$, Appendix~A Table~VI). Artifact: \artifact{pipelines/p2\_chirality/outputs/dipole/catalog\_c\_summary.json}.} & canonical & iso.\ boot.\ ($10^4$) & $+0.41$ (moment $z$) \\
+(i)~real-space dipole (HC) & $949{,}584$ & --- & $0.4801$\footnote{$f_{\rm sky}=0.4801$ is the canonical $N_{\rm spiral}(p)\!\ge\!10$ mask re-evaluated on the high-confidence subsample: fewer HC spirals populate fewer pixels at the $\ge\!10$ threshold (23{,}600 of 49{,}152 pixels), slightly shrinking the full-catalog canonical mask ($f_{\rm sky}=0.49005$, Appendix~A Table~\ref{tab:fsky_summary}). Artifact: \artifact{pipelines/p2\_chirality/outputs/dipole/catalog\_c\_summary.json}.} & canonical & iso.\ boot.\ ($10^4$) & $+0.41$ (moment $z$) \\
 (ii)~WLS template excl. & $3{,}201{,}160$ & --- & $0.49005$ & canonical & block-boot.\ ($10^3$) & $z\!\approx\!-18$ \\
 (iii)~canonical MASTER (diag.) & $3{,}201{,}160$ & --- & $0.49005$ & canonical & pp-shuffle & $+3.64$ \\
 (iv)~apod.\ MASTER (diag.) & $3{,}201{,}160$ & $8{,}474{,}531$ & $0.494$\footnote{Geometric $N_{\rm all}\!\ge\!1$ footprint pixel fraction; the corresponding weighted/apodized \emph{effective} sky fraction for this row's $W_p\!=\!N_{\rm all}$, $C^2$ $2^\circ$ configuration is $f_{\rm sky}^{\rm eff}=0.452$ (Appendix~A, Table~\ref{tab:fsky_summary}).} & $N_{\rm all}\!\geq\!1$ apod. & pp-sh./d-str. & $+7.28/{+}7.13$ \\
@@ -745,7 +756,7 @@ $3.0\%$ & $\geq\!0.999$ & ${\approx}209$--$685$ & --- \\
 \begin{figure}[t]
 \centering
 \includegraphics[width=\columnwidth]{fig_harmonic_completeness.pdf}
-\caption{Harmonic-channel completeness curve: axis-averaged recovery probability $P(\sigma_{\rm inj}\!\geq\!3)$ vs.\ injected dipole amplitude $A_p$ for the apodized-footprint MASTER $\ell\!=\!1$ diagnostic channel ($C^2$ $2^\circ$ apodization; $N_{\rm all}\!\geq\!1$ footprint; $W_p\!=\!N_{\rm all}$ weight; $10^3$ injections per amplitude per axis on label-shuffle backgrounds; artifact c9b). Heavy black: axis-averaged probability over $\{\hat x,\hat y,\hat z\}$. Per-axis dashed curves show the geometry-induced spread. Horizontal references mark the $50\%$ and $95\%$ recovery thresholds; the headline $P(\!\geq\!3\sigma)\!=\!0.92$ at $A_p\!=\!0.5\%$ value (cited in the surrounding paragraph and Table~\ref{tab:harmonic_completeness}) is annotated. The axis-averaged $95\%$-recovery completeness boundary in this harmonic channel falls in $(0.5\%,0.75\%]$ (recovery saturates by $0.75\%$). The $3\sigma$ threshold uses the MASTER $\ell\!=\!1$ label-shuffle null convention and is not interchangeable with the real-space falsification boundary $A_{95}\!\in\!(1.0\%,1.5\%]$ (Sec.~\ref{sec:sensitivity}); this curve is a property of the harmonic diagnostic channel only.\label{fig:harmonic_completeness}}
+\caption{Harmonic-channel completeness curve: axis-averaged recovery probability $P(\sigma_{\rm inj}\!\geq\!3)$ vs.\ injected dipole amplitude $A_p$ for the apodized-footprint MASTER $\ell\!=\!1$ diagnostic channel ($C^2$ $2^\circ$ apodization; $N_{\rm all}\!\geq\!1$ footprint; $W_p\!=\!N_{\rm all}$ weight; $10^3$ injections per amplitude per axis on label-shuffle backgrounds; artifact c9b). Heavy black: axis-averaged probability over $\{\hat x,\hat y,\hat z\}$. Per-axis dashed curves show the geometry-induced spread. Horizontal references mark the $50\%$ and $95\%$ recovery thresholds; the headline $P(\!\geq\!3\sigma)\!=\!0.92$ at $A_p\!=\!0.5\%$ value (cited in the surrounding paragraph and Table~\ref{tab:harmonic_completeness}) is annotated. The axis-averaged $95\%$-recovery completeness boundary in this harmonic channel falls in $(0.5\%,0.75\%]$ (recovery saturates by $0.75\%$). The $3\sigma$ threshold uses the MASTER $\ell\!=\!1$ label-shuffle null convention and is not interchangeable with the real-space falsification boundary $A_{95}\!\in\!(1.0\%,1.5\%]$ (Sec.~\ref{sec:sensitivity}); this curve is a property of the harmonic diagnostic channel only. \emph{Note:} the figure title annotation ``obs.\,$\sigma\!=\!7.21$'' reflects the c9b $10^3$-injection null (artifact~c9b); the body canonical value $+7.28\sigmaunit$ is from the independent 500-MC apodized null (Sec.~\ref{sec:dipole}, Table~\ref{tab:multipole}); the two null runs differ only in sample size and are not numerically interchangeable.\label{fig:harmonic_completeness}}
 \end{figure}
 
 \paragraph{Primary methodological finding: a quantifiable monopole-mask leakage channel.}
