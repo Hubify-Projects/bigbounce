@@ -47,12 +47,12 @@ export interface LiveStatus {
 }
 
 export const liveStatus: LiveStatus = {
-  lastUpdatedISO: "2026-06-11T23:32:00Z",
-  lastUpdatedDisplay: "June 11, 2026 · 4:32 PM PT",
+  lastUpdatedISO: "2026-06-12T11:00:00Z",
+  lastUpdatedDisplay: "June 12, 2026 · 4:00 AM PT",
   headline:
-    "EXT4 cycle complete — gap 60 → 32 → 27 → 13; Grok 6/6 ACCEPT twice running; zero physics findings remain; closure waves landed on all six papers.",
+    "EXT6 harvested — Grok 4th consecutive 6/6 ACCEPT; Gemini first full ACCEPT on P1B; R35conf closures landed; ChatGPT MAJOR×6 with P2 narrowly; truth-audits in progress.",
   summary:
-    "EXT4 harvested, truth-audited (13 genuinely new findings, zero physics), and closed same-day across all six papers — including two compute-backed fixes (P4 catalog-wide QC artifact; P5 GALZONE two-sample contrasts). Readiness 95/94/94/95/95/95. Per-paper versions below; audit trail in SSOT/git.",
+    "Six external rounds complete. EXT6 submitted Jun 12 ~02:35 PT on R35conf-closed versions (v1A.0.65/v1B.0.62/v1.7.57/v3.1.100/v1.0.179/v0.1.69). Grok has been 6/6 ACCEPT for four consecutive rounds. Gemini fully cleared P1B for the first time. ChatGPT holds MAJOR×6; per-finding truth-audits determine the genuine residuals.",
   currentlyRunning: [
     "Hourly native-PDF cross-vendor review autoloop on all 6 papers (Claude · GPT · Gemini · Grok · Perplexity + meta-reviewer)",
     "Persistence tracker fingerprinting findings across fires; load-bearing items escalate to Houston decision package",
@@ -60,9 +60,9 @@ export const liveStatus: LiveStatus = {
   ],
   needsHouston: [
     {
-      title: "Personal sign-off — all six papers at the post-EXT2 gate",
+      title: "Personal sign-off — all six papers at the post-EXT6 gate",
       blockedPaper: "all",
-      why: "EXT1 + EXT2 browser-tier external rounds ran 2026-06-10 and every VERIFIED finding is closed; readiness sits at 94-95% and the final 1% is Houston-only.",
+      why: "Six external browser-tier rounds complete; Grok 4× consecutive 6/6 ACCEPT; P1B fully cleared by Gemini; EXT6 truth-audits in progress; the final 1% is Houston-only.",
       ask: "Read the current PDFs end-to-end and reply 'sign off PX' per paper, or send blocking findings for truth-audit (recommended order P4 → P1A+P1B → P3 → P2 → P5).",
     },
     {
@@ -79,7 +79,7 @@ export const liveStatus: LiveStatus = {
       shortTitle: "ECH dark-energy closure + perturbation transparency",
       version: "v1A.0.65",
       readiness: 95,
-      pendingWork: "v1A.0.65 — EXT4 closures landed (Fig 3 caption mechanism/rotation split; ALP benchmark scoping); Grok ACCEPT ×2 rounds, Gemini MINOR; awaiting Houston sign-off",
+      pendingWork: "v1A.0.65 — EXT6: Grok ACCEPT ×4 rounds, Gemini MINOR (fine-tuning score phrasing); ChatGPT MAJOR (NJL wrong-sign, Sec IV closure overclaim); truth-audit in progress; awaiting Houston sign-off",
     },
     {
       slug: "paper-1b",
@@ -87,7 +87,7 @@ export const liveStatus: LiveStatus = {
       shortTitle: "MCMC + NaMaster + ALP technical companion",
       version: "v1B.0.62",
       readiness: 94,
-      pendingWork: "v1B.0.62 — EXT4 hygiene closures (CHANGELOG/README/citation); Grok ACCEPT ×2; w0wa addendum pending c15 convergence; awaiting Houston sign-off",
+      pendingWork: "v1B.0.62 — EXT6: Grok ACCEPT ×4, Gemini FULL ACCEPT (first paper fully cleared by Gemini); ChatGPT MAJOR (artifact-layer pinning, frozen artifact mismatch); awaiting Houston sign-off",
     },
     {
       slug: "paper-2",
@@ -95,7 +95,7 @@ export const liveStatus: LiveStatus = {
       shortTitle: "f_NL = -35/8 SPHEREx forecast",
       version: "v1.7.57",
       readiness: 94,
-      pendingWork: "v1.7.57 — EXT4: App A c-scaling sentence corrected (both ∝ 1/c); Grok ACCEPT ×2, Gemini MAJOR→MINOR; awaiting Houston sign-off",
+      pendingWork: "v1.7.57 — EXT6: Grok ACCEPT ×4, Gemini MINOR (Eq 3 variable mismatch + Table IV header); ChatGPT MAJOR (narrowly — null-space interpretation + fresh numerical issues); awaiting Houston sign-off",
     },
     {
       slug: "paper-3",
@@ -103,7 +103,7 @@ export const liveStatus: LiveStatus = {
       shortTitle: "378K-anomaly multi-survey catalog",
       version: "v3.1.100",
       readiness: 95,
-      pendingWork: "v3.1.100 — EXT4 closure wave (recount cross-refs at 3 downstream sites + 5 polish); Grok ACCEPT ×2, Gemini MAJOR falsified-bulk; awaiting Houston sign-off",
+      pendingWork: "v3.1.100 — EXT6: Grok ACCEPT ×4, Gemini MAJOR (fresh thread — calibration/instrumental artifacts, notation); ChatGPT MAJOR (catalogue-tier semantics, DESI denominator); awaiting Houston sign-off",
     },
     {
       slug: "paper-4",
@@ -111,7 +111,7 @@ export const liveStatus: LiveStatus = {
       shortTitle: "8.47M-galaxy chirality null at sub-percent sensitivity",
       version: "v1.0.179",
       readiness: 95,
-      pendingWork: "v1.0.179 — EXT4: catalog-wide flip-identity QC artifact recomputed, every QC number now traces (2.94%/0.0901/4.26e-7); Grok ACCEPT ×2; awaiting Houston sign-off",
+      pendingWork: "v1.0.179 — EXT6: Grok ACCEPT ×4 (exemplary, immediate acceptance recommended), Gemini MINOR (misplaced imaging-leg paragraph in appendix); ChatGPT MAJOR (monopole interpretation, +3.64σ taxonomy residuals); awaiting Houston sign-off",
     },
     {
       slug: "paper-5",
@@ -119,7 +119,7 @@ export const liveStatus: LiveStatus = {
       shortTitle: "DESI environmental chirality independence",
       version: "v0.1.69",
       readiness: 95,
-      pendingWork: "v0.1.69 — EXT4: GALZONE two-sample contrasts computed (z=−1.25/+0.72, clean nulls; Bonferroni-5 estimand-coherent); Grok ACCEPT ×2; awaiting Houston sign-off",
+      pendingWork: "v0.1.69 — EXT6: Grok ACCEPT (EXT5 MINOR → EXT6 ACCEPT; estimand-family coherence cleared), Gemini MINOR (appendix labeling layout sync); ChatGPT MAJOR (GALZONE estimand-family, 3.56% duplicate tracking); awaiting Houston sign-off",
     },
   ],
   blockerTally: {
