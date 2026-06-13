@@ -46,6 +46,57 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "SKILL-COMPANION-INLINE-FALLBACK",
+    kind: "skill-improvement",
+    dateISO: "2026-06-13",
+    title: "Companion-resolution skill upgrade: inline load-bearing numbers when companion paper unpublished; arXiv-ID at proof for coordinated drops",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "R40conf flagged companion as STRUCTURAL not surface — reviewers want in-paper derivations OR live arXiv IDs, not '(in preparation)' tags. New skill rule: when companion is in same bundle, inline the absolute-minimum load-bearing fact; live arXiv IDs resolve at coordinated-drop v2 patch within 24h window.",
+    keyTakeaways: [
+      "R40conf 4-vendor consensus on companion pattern — treating it as surface-level wording fix was insufficient; the structural ask is inline load-bearing numbers",
+      "New protocol: when companion paper is in the same arXiv bundle, inline the minimum essential fact (e.g. σ(f_NL)=0.36 from Paper 2) so each paper stands alone on the arXiv",
+      "Live arXiv IDs back-patched in v2 resubmit within 24h coordinated-drop window — eliminates '(in preparation)' from all 6 papers simultaneously",
+    ],
+    links: [],
+  },
+  {
+    id: "EXT10-CLOSURE-WAVE",
+    kind: "ext-closure",
+    dateISO: "2026-06-13",
+    title: "EXT10-closure-wave: 6-paper bundle addresses every VERIFIED-OPEN item; tarballs rebuilt to current versions",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "P1A Sec IV→App B + Route 2 sharpener + WKB inline · P1B 6 wording · P2 9 wording · P3 top-1%→S>5 + catalog-grade + NANOGrav BF table · P4 Shamir bibchimera fix (arXiv:2208.00893) · P5 V-Web→T-Web 175-site rename (Hahn 2007 is T-Web not velocity-shear). Tarballs rebuilt: P1A v1A.0.73 / P1B v1B.0.70 / P2 v1.7.64 / P3 v3.1.107 / P4 v1.0.187 / P5 v0.1.76-2026-06-13. All 6 standalone-compiled clean (errors=0, undef=0).",
+    keyTakeaways: [
+      "P4 Shamir reference [2] was a bibliographic chimera (arXiv:2101.04068 mismatched with PASJ 74,1114 DOI); replaced with correct arXiv:2208.00893 (Shamir 2022)",
+      "P5 V-Web→T-Web rename: 235+ insertions / 181 deletions; 179 T-Web tokens; 7 protected V-Web (Hoffman 2012 historical reference)",
+      "Sample-count P5-NM1: 783,820 env-matched confirmed (per pipeline scripts/17_v0151_closure_recomputes.py:335)",
+      "All 6 tarballs standalone-compiled clean and staged at project-context/SSOT/arxiv_tarballs/ ready for coordinated 6-paper arXiv drop",
+    ],
+    links: [
+      { label: "EXT10 batch truth-audit", href: `${GH}/project-context/peer-reviews/EXT10_BATCH_TRUTH_AUDIT.md` },
+      { label: "arXiv tarballs", href: `${GH}/project-context/SSOT/arxiv_tarballs` },
+    ],
+  },
+  {
+    id: "EXT10-MILESTONE-18-18-MINOR",
+    kind: "external-browser",
+    dateISO: "2026-06-13",
+    title: "EXT10 = 18/18 MINOR REVISIONS · zero MAJORs · ChatGPT cleared both remaining MAJORs (P1A Fig 3 caption + P3 Table II table*)",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "ChatGPT MAJORs cleared at EXT10 vindicating R39conf P1A Fig 3 caption rewrite (prediction-horizon framing) and P3 Table II table* + denominator row + Cramér's V √ fix. Grok/Gemini shifted slightly stricter under recalibrated prompt (from over-rubber-stamping ACCEPT to MINOR) — calibration converged. First round in EXT history with zero MAJORs across all 18 verdicts.",
+    keyTakeaways: [
+      "ChatGPT P1A MAJOR→MINOR (Fig 3 caption rewrite validated — prediction-horizon framing resolved the dimensional bookkeeping + sphaleron rate + Route-2 dual ordering concerns)",
+      "ChatGPT P3 MAJOR→MINOR (Table II table* + denominator row + Cramér's V √ fix validated)",
+      "Path to 18/18 ACCEPT now ≤1 cycle out — HIGH confidence (all 18 verdicts at MINOR or better for the first time)",
+      "ZERO MAJORs across all 18 verdicts — historic milestone for the EXT series",
+    ],
+    gapMetric: { externalOnlyFindings: 2, note: "EXT10 gap-metric: 2 remaining calibration-stable MINORs (P4 Shamir bib + P5 T-Web label) caught only at external tier; both addressed in EXT10-closure-wave" },
+    links: [
+      { label: "EXT10 harvest", href: `${PR}/EXT10_BROWSER_MANIFEST.md` },
+      { label: "EXT10 batch truth-audit", href: `${PR}/EXT10_BATCH_TRUTH_AUDIT.md` },
+    ],
+  },
+  {
     id: "SKILL-PERSISTENCE-GATE-PROMOTED",
     kind: "skill-improvement",
     dateISO: "2026-06-13",

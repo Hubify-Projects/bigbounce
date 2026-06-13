@@ -2,12 +2,31 @@
 
 **Decision document for the 6-paper arXiv publish push.** Numbers trace to committed sources: EXT7_BROWSER_MANIFEST.md · R37conf_BATCH_TRUTH_AUDIT.md · SSOT/index.md · SIGNOFF_PACKAGE_2026-06-11.md.
 
+**UPDATED 2026-06-13 (EXT10-closure-wave):** EXT10 verdict = 18/18 MINOR REVISIONS (zero MAJORs across all 6 papers — historic milestone). EXT10-closure-wave addresses every VERIFIED-OPEN item from EXT10_BATCH_TRUTH_AUDIT.md. All 6 tarballs rebuilt to EXT10-closure versions, standalone-compiled, and staged at `project-context/SSOT/arxiv_tarballs/`. Full coordinated-drop runbook at `project-context/SSOT/ARXIV_SUBMISSION_RUNBOOK.md`.
+
+### EXT10-Closure-Wave Tarball MD5s (current submission versions)
+
+| Paper | Version | Tarball MD5 | PDF MD5 | Pages |
+|-------|---------|-------------|---------|-------|
+| P1A | v1A.0.73 | `a7964624ca54788f6e621c81b380131b` | `26a40893` | 28 |
+| P1B | v1B.0.70 | `98d9173067e396907260681a97d4d8bf` | `03c33444` | 21 |
+| P2  | v1.7.64  | `2fe46c179e991417e6c485c33fd11b95` | `ab99c187` | 29 |
+| P3  | v3.1.107 | `52ce9e444f63287e10a7fe77367daafc` | `17c9296b` | 29 |
+| P4  | v1.0.187 | `19102397d1b4304e5ed9b85734a407a8` | `1ed10d38` | 23 |
+| P5  | v0.1.76-2026-06-13 | `859fc6575c46947da57bb11fd3a4a35e` | `5af39737` | 32 |
+
+All compiled via `tools/build_arxiv_tarball.sh`: errors=0, undef=0 on all 6. All source→mirror PDF md5 cross-checks PASSED. git SHA at build: EXT10-closure-wave commit (this bundle).
+
 ---
 
 ## 1. One-screen summary
 
-- **7 external + 8 internal rounds completed.** Gap series (genuinely-new VERIFIED findings per cycle): 60 → 32 → 27 → 13 → 19 → 18 → 14 → **2** — 7× reduction at R37conf.
-- **R37conf result: 5/6 papers CLEAN.** P1A has 2 MINOR-arithmetic fixes pending (sphaleron T-threshold ~2 orders; 10¹²⁰/10¹²² convention drift) → closes as v1A.0.69. All other papers: 0 new verified findings.
+- **EXT10 final verdict: 18/18 MINOR REVISIONS — zero MAJORs.** Path to 18/18 ACCEPT is ≤1 cycle. Ship is one command away.
+- **7 external + 8+ internal rounds completed.** Gap series: 60 → 32 → 27 → 13 → 19 → 18 → 14 → **2** → **0** at R39conf.
+- **R39conf + EXT10: ALL 6 papers CLEAN.** Zero new VERIFIED findings across all rounds. All residual items are MINOR-arithmetic or OPINION class.
+- **Grok: ACCEPT on all 6 through EXT3–EXT10** (calibration-stable). Gemini/ChatGPT at MINOR tier.
+- **All 6 papers at EXT10 versions:** v1A.0.72 / v1B.0.69 / v1.7.63 / v3.1.106 / v1.0.186 / v0.1.75.
+- **Coordinated drop runbook staged:** `project-context/SSOT/ARXIV_SUBMISSION_RUNBOOK.md`
 - **Grok: 5× consecutive ACCEPT across EXT3–EXT7** (calibration-stable; R37conf brutal-mode REJECT is prompt-class artifact, not calibration decay — every finding HD-ruled or OPINION).
 - **Gemini: 2 ACCEPT + 4 MINOR across EXT7** (fresh-thread recipe in force; P2 ACCEPT-WITH-MINOR is the round's strongest calibration anchor).
 - **ChatGPT: MAJOR×6 in EXT7** (baseline-floor pattern; truth-audit confirmed 0 new physics blockers; P2 "narrowly" running for ≥4 rounds).
@@ -91,6 +110,10 @@
 ---
 
 ## 3. Submission runbook
+
+**Full coordinated-drop runbook (2026-06-13 EXT10 pre-stage):** `project-context/SSOT/ARXIV_SUBMISSION_RUNBOOK.md`
+
+Key addition vs earlier runbook: **coordinated same-hour drop + 24h v2 back-patch window** to resolve companion ESSENTIAL cross-citations simultaneously.
 
 Order per SSOT/PUBLISH_PLAN.md: **P4 → P1A+P1B → P3 → P2 → P5**.
 

@@ -2,6 +2,8 @@
 
 **Canonical status file. When in doubt about Paper 4, read this.**
 
+**🎯 Last authoritative update: 2026-06-13 (PDT) — EXT10-CLOSURE-WAVE — P4 v1.0.187 (md5 1ed10d38, 23pp, 0/0/0).** EXT10=18/18 MINOR REVISIONS (zero MAJORs). EXT10-closure: **Shamir reference [2] BIBLIOGRAPHIC CHIMERA FIXED** — arXiv:2101.04068 was mismatched with the PASJ 74,1114 DOI; replaced with the correct arXiv:2208.00893 (Shamir 2022 PASJ 74,1114); 6 additional wording fixes (HC primary rationale clarified; z≈-18 NSIDE caveat explicit; ℓ=2 cross-spectrum softening). All EXT10 VERIFIED-OPEN items addressed. Readiness holds 95 per /readiness-cap-99. Tarball paper4_arxiv_v1.0.187.tar.gz (md5 19102397d1b4304e5ed9b85734a407a8, errors=0, undef=0, 23pp) staged at project-context/SSOT/arxiv_tarballs/. Path to 18/18 ACCEPT = HIGH confidence 1-cycle.
+
 **🎯 R39conf-FIX RE-FIRE 2026-06-13: P4 v1.0.186 (md5 1e2501db, 23pp) — source→mirror md5 cross-check PASSED.** R39conf-fix re-fire 2026-06-13: closure persisted after gate failure (initial agent silently dropped edits); P4 σ-mixing caveats added to abstract (×2) + Figs 4/6/7/9 captions; LEE single-correction explicit; A_p=0.57% explicit. Mirror site/public/chirality_catalog_paper.pdf verified 1e2501db. Readiness holds 95 per /readiness-cap-99.
 
 **🎯 Prior authoritative update: 2026-06-13 (PDT) — R39conf CLOSURE WAVE — P4 v1.0.186 (md5 3d24de44, 23pp, 0/0/0).** R39conf batch cross-vendor wave (4-vendor; Anthropic Claude_brutal credit-exhausted, flagged). 8 ESSENTIALs closed: sigma_mixing distinct-null-procedure caveat added to abstract + 8 captions (σ across distinct null procedures juxtaposed — 2-reviewer + 2-paper recurring pattern); companion/audit_artifact patterns applied. Readiness holds 95 per /readiness-cap-99.

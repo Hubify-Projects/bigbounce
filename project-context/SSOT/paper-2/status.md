@@ -12,7 +12,9 @@ submission_status: submission-ready (R42 Wave 14-AAA LANDED -- P2-OA-B4 FULL HAR
 
 # Paper 2 — f_NL Forecast (SPHEREx / MegaMapper) — Single Source of Truth
 
-**🎯 Last authoritative update: 2026-06-13 (PDT) — R39conf CLOSURE WAVE — P2 v1.7.63 (md5 80aa0f0c, 29pp, 0/0/0).** R39conf batch cross-vendor wave (4-vendor; Anthropic Claude_brutal credit-exhausted, flagged). 5 ESSENTIALs closed: Bayes-factor derivation made explicit with closed-form expression + numerical self-consistency check (HD-item ruled DO-NOW); companion/sigma_mixing/audit_artifact cross-paper patterns applied. Readiness holds 94 per /readiness-cap-99.
+**🎯 Last authoritative update: 2026-06-13 (PDT) — EXT10-CLOSURE-WAVE — P2 v1.7.64 (md5 ab99c187, 29pp, 0/0/0).** EXT10=18/18 MINOR REVISIONS (zero MAJORs). EXT10-closure: 9 wording fixes — CGT stress-test branches labeled M1/M2/M3/M9; UV-completion-independence reaffirmed; denominator definition made explicit; contamination scale qualified; channel hierarchy clarified; UMF universality scope tightened. All EXT10 VERIFIED-OPEN items addressed. Readiness holds 94 per /readiness-cap-99. Tarball paper2_arxiv_v1.7.64.tar.gz (md5 2fe46c179e991417e6c485c33fd11b95, errors=0, undef=0, 29pp) staged at project-context/SSOT/arxiv_tarballs/. Path to 18/18 ACCEPT = HIGH confidence 1-cycle.
+
+**🎯 Prior authoritative update: 2026-06-13 (PDT) — R39conf CLOSURE WAVE — P2 v1.7.63 (md5 80aa0f0c, 29pp, 0/0/0).** R39conf batch cross-vendor wave (4-vendor; Anthropic Claude_brutal credit-exhausted, flagged). 5 ESSENTIALs closed: Bayes-factor derivation made explicit with closed-form expression + numerical self-consistency check (HD-item ruled DO-NOW); companion/sigma_mixing/audit_artifact cross-paper patterns applied. Readiness holds 94 per /readiness-cap-99.
 
 **🎯 Prior authoritative update: 2026-06-13 (PDT) — EXT9 CLOSURE WAVE — P2 v1.7.62 (md5 406af9f8, 27pp, 0/0/0).** EXT9 closure: Fondi arXiv ID corrected 2503.14057→2602.12357; Table IV label fix. ChatGPT MAJOR→MINOR under honest MNRAS/PRD recalibration. Readiness holds 94.
 

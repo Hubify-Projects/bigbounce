@@ -1,56 +1,56 @@
 [
- {
-  "paperSlug": "paper-1a",
-  "version": "v1A.0.72",
-  "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1a_ech_nogo.pdf",
-  "sitePdfPath": "/papers/paper1a_ech_nogo_v1A.0.72.pdf",
-  "datestamp": "2026-06-13",
-  "texCommit": "main",
-  "changelog": "R39conf closure wave: 9 ESSENTIALs closed; companion/sigma_mixing/audit_artifact cross-paper patterns applied."
- },
- {
-  "paperSlug": "paper-1b",
-  "version": "v1B.0.69",
-  "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1b_mcmc_companion.pdf",
-  "sitePdfPath": "/papers/paper1b_mcmc_companion_v1B.0.69.pdf",
-  "datestamp": "2026-06-13",
-  "texCommit": "main",
-  "changelog": "R39conf closure wave: 7 ESSENTIALs closed; Omega_a definition subsection added (~60 lines); cross-paper patterns applied."
- },
- {
-  "paperSlug": "paper-2",
-  "version": "v1.7.63",
-  "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/research/focused_paper_source_integration/02_full_draft.pdf",
-  "sitePdfPath": "/papers/paper2_fnl_forecast_v1.7.63.pdf",
-  "datestamp": "2026-06-13",
-  "texCommit": "main",
-  "changelog": "R39conf closure wave: 5 ESSENTIALs closed; Bayes-factor derivation explicit with closed-form + self-consistency check; cross-paper patterns applied."
- },
- {
-  "paperSlug": "paper-3",
-  "version": "v3.1.106",
-  "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p3_anomaly_engine/paper3_draft.pdf",
-  "sitePdfPath": "/papers/paper3_anomaly_catalog_v3.1.106.pdf",
-  "datestamp": "2026-06-13",
-  "texCommit": "main",
-  "changelog": "R39conf closure wave: 11 ESSENTIALs closed incl F0 OCR fix, Cramer's V sqrt correction, alpha-hat^2 display, dust p-value 0.21->0.35; cross-paper patterns applied."
- },
- {
-  "paperSlug": "paper-4",
-  "version": "v1.0.186",
-  "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p2_chirality/chirality_catalog_paper.pdf",
-  "sitePdfPath": "/papers/chirality_catalog_paper_v186.pdf",
-  "datestamp": "2026-06-13",
-  "texCommit": "main",
-  "changelog": "R39conf closure wave: 8 ESSENTIALs closed; sigma_mixing distinct-null caveat in abstract + 8 captions; cross-paper patterns applied."
- },
- {
-  "paperSlug": "paper-5",
-  "version": "v0.1.75-2026-06-13",
-  "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf",
-  "sitePdfPath": "/papers/p5_desi_chirality_v0.1.75.pdf",
-  "datestamp": "2026-06-13",
-  "texCommit": "main",
-  "changelog": "R39conf closure wave: 8 ESSENTIALs closed; chi[h^-1 Mpc] unit VERIFIED-CORRECT against pipeline source (reviewer claim FALSIFIED); cross-paper patterns applied."
- }
+  {
+    "paperSlug": "paper-1a",
+    "version": "v1A.0.73",
+    "datestamp": "2026-06-13",
+    "texCommit": "EXT10-closure-wave",
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1a_ech_nogo.pdf",
+    "sitePdfPath": "/papers/paper1a_ech_nogo_v1A.0.73.pdf",
+    "changelog": "EXT10-closure: Sec IV→App B explicit ref; Route 2 sharpener; WKB 10⁻³⁵ eV inlined (companion ESS resolution). EXT10=18/18 MINOR (zero MAJORs)."
+  },
+  {
+    "paperSlug": "paper-1b",
+    "version": "v1B.0.70",
+    "datestamp": "2026-06-13",
+    "texCommit": "EXT10-closure-wave",
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1b_mcmc_companion.pdf",
+    "sitePdfPath": "/papers/paper1b_mcmc_companion_v1B.0.70.pdf",
+    "changelog": "EXT10-closure: 6 wording fixes (pairing-swap test note; 40.5 H0 posterior; phantom-crossing caveats; UV-completion-independent; release-pairing). EXT10=18/18 MINOR (zero MAJORs)."
+  },
+  {
+    "paperSlug": "paper-2",
+    "version": "v1.7.64",
+    "datestamp": "2026-06-13",
+    "texCommit": "EXT10-closure-wave",
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/research/focused_paper_source_integration/02_full_draft.pdf",
+    "sitePdfPath": "/papers/paper2_fnl_forecast_v1.7.64.pdf",
+    "changelog": "EXT10-closure: 9 wording fixes (CGT M1/M2/M3/M9 stress-test branches; UV-independence; denominator definition; contamination scale; channel hierarchy; UMF universality). EXT10=18/18 MINOR (zero MAJORs)."
+  },
+  {
+    "paperSlug": "paper-3",
+    "version": "v3.1.107",
+    "datestamp": "2026-06-13",
+    "texCommit": "EXT10-closure-wave",
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p3_anomaly_engine/paper3_draft.pdf",
+    "sitePdfPath": "/papers/paper3_anomaly_catalog_v3.1.107.pdf",
+    "changelog": "EXT10-closure: top-1% to S>5 (0.87% of 22.5M-spectrum scan); catalog-grade reinforced in abstract; NANOGrav BF prior-sensitivity table (all decisive). EXT10=18/18 MINOR (zero MAJORs)."
+  },
+  {
+    "paperSlug": "paper-4",
+    "version": "v1.0.187",
+    "datestamp": "2026-06-13",
+    "texCommit": "EXT10-closure-wave",
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p2_chirality/chirality_catalog_paper.pdf",
+    "sitePdfPath": "/papers/chirality_catalog_paper_v187.pdf",
+    "changelog": "EXT10-closure: Shamir [2] bibchimera FIXED (arXiv:2208.00893); 6 wording fixes (HC primary rationale; z-18 NSIDE caveat; l=2 cross-spectrum softening). EXT10=18/18 MINOR (zero MAJORs)."
+  },
+  {
+    "paperSlug": "paper-5",
+    "version": "v0.1.76-2026-06-13",
+    "datestamp": "2026-06-13",
+    "texCommit": "EXT10-closure-wave",
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf",
+    "sitePdfPath": "/papers/p5_desi_chirality_v0.1.76.pdf",
+    "changelog": "EXT10-closure: V-Web to T-Web rename (235+ insertions / 181 deletions; Hahn 2007 is tidal-tensor T-Web); 7 protected V-Web (Hoffman 2012 historical); sample-count 783,820 confirmed; frozen-analysis-tree note. EXT10=18/18 MINOR (zero MAJORs)."
+  }
 ]

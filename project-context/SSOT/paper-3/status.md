@@ -2,7 +2,9 @@
 
 **Canonical status file. When in doubt about Paper 3, read this.**
 
-**🎯 Last authoritative update: 2026-06-13 (PDT) — R39conf CLOSURE WAVE — P3 v3.1.106 (md5 d1258558, 29pp, 0/0/0).** R39conf batch cross-vendor wave (4-vendor; Anthropic Claude_brutal credit-exhausted, flagged). 11 ESSENTIALs closed (most in the wave): F₀ OCR fix, Cramér's V √ correction, αˆ² display fix, dust p-value corrected 0.21→0.35; companion/sigma_mixing/audit_artifact cross-paper patterns applied. Readiness holds 95 per /readiness-cap-99.
+**🎯 Last authoritative update: 2026-06-13 (PDT) — EXT10-CLOSURE-WAVE — P3 v3.1.107 (md5 17c9296b, 29pp, 0/0/0).** EXT10=18/18 MINOR REVISIONS (zero MAJORs). ChatGPT P3 MAJOR→MINOR (Table II table* + denominator row + Cramér's V √ fix validated). EXT10-closure: top-1% wording replaced with S>5 (0.87% of 22.5M-spectrum scan) per catalog-grade standard; catalog-grade reinforced in abstract; NANOGrav BF prior-sensitivity table added (γ∈[0,5]/[0,7]/[1,6]/[2,5] — all decisive; addresses prior-dependence MINOR). All EXT10 VERIFIED-OPEN items addressed. Readiness holds 95 per /readiness-cap-99. Tarball paper3_arxiv_v3.1.107.tar.gz (md5 52ce9e444f63287e10a7fe77367daafc, errors=0, undef=0, 29pp) staged at project-context/SSOT/arxiv_tarballs/. Path to 18/18 ACCEPT = HIGH confidence 1-cycle.
+
+**🎯 Prior authoritative update: 2026-06-13 (PDT) — R39conf CLOSURE WAVE — P3 v3.1.106 (md5 d1258558, 29pp, 0/0/0).** R39conf batch cross-vendor wave (4-vendor; Anthropic Claude_brutal credit-exhausted, flagged). 11 ESSENTIALs closed (most in the wave): F₀ OCR fix, Cramér's V √ correction, αˆ² display fix, dust p-value corrected 0.21→0.35; companion/sigma_mixing/audit_artifact cross-paper patterns applied. Readiness holds 95 per /readiness-cap-99.
 
 **🎯 Prior authoritative update: 2026-06-13 (PDT) — EXT9 CLOSURE WAVE — P3 v3.1.105 (md5 8533c5a7, 29pp, 0/0/0).** EXT9 closure: Table II \begin{table}→\begin{table*} (real LaTeX rendering bug — single-column overflow confirmed); denominator row added to Table II; Table V row (h) shortened. ChatGPT MAJOR remains on DESI denominator (genuine residual, now partially addressed). Readiness holds 95.
 
