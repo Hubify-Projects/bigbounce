@@ -46,6 +46,25 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "EXT10-SUBMISSION",
+    kind: "external-browser",
+    dateISO: "2026-06-13",
+    timePT: "13:47–14:25 PDT — 18 chats submitted across 3 providers",
+    title: "EXT10 submitted: 18/18 chats (ChatGPT Pro Extended + Grok Heavy + Gemini 3.5 Thinking) verifying path to 18/18 ACCEPT post EXT9-closure-wave",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "EXT10 submission phase complete. All 6 papers submitted to ChatGPT Pro Extended (Big Bounce Book project), Grok Heavy (BigBounce-Papers project), and Gemini 3.5 Thinking (/u/0/). PDFs are the post-EXT9-closure-wave versions (P1A v1A.0.71, P1B v1B.0.68, P2 v1.7.62, P3 v3.1.105, P4 v1.0.185, P5 v0.1.74). All md5s verified. No refusals. P4 34MB accepted by all providers. Gemini growth-confirmed (>BASE+2500 chars) before navigation. Harvest ETA: 14:55 PDT.",
+    keyTakeaways: [
+      "18/18 chats submitted without refusal — P4 34MB accepted by all 3 providers",
+      "Gemini /u/0/ confirmed correct account at EXT10 (Houston Golden · Work · Pro)",
+      "Gemini model: '3.5 Thinking' (text extraction correct; screenshot label differs)",
+      "All 6 Gemini responses growth-confirmed before navigating away (EXT7 persistence lesson applied)",
+      "Harvest ETA: 14:55 PDT or later (≥30 min from last submission)",
+    ],
+    links: [
+      { label: "EXT10 manifest", href: `${PR}/EXT10_BROWSER_MANIFEST.md` },
+    ],
+  },
+  {
     id: "EXT9-CLOSURE-WAVE",
     kind: "ext-closure",
     dateISO: "2026-06-13",
