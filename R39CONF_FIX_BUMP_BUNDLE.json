@@ -1,0 +1,29 @@
+[
+  {
+    "paperSlug": "paper-2",
+    "version": "v1.7.63",
+    "datestamp": "2026-06-13",
+    "texCommit": "d98284a9",
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/research/focused_paper_source_integration/02_full_draft.pdf",
+    "sitePdfPath": "/papers/paper2_fnl_forecast_v1.7.63.pdf",
+    "changelog": "R39conf-FIX re-fire: Bayes-factor derivation explicit with closed-form CDF + Gaussian-peak approx; narrow-prior tail-error 18% flagged; companion/sigma_mixing/audit_artifact cross-paper patterns applied. Silent-persistence regression caught by source↔mirror md5 gate (cab7e43f)."
+  },
+  {
+    "paperSlug": "paper-4",
+    "version": "v1.0.186",
+    "datestamp": "2026-06-13",
+    "texCommit": "d98284a9",
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p2_chirality/chirality_catalog_paper.pdf",
+    "sitePdfPath": "/papers/chirality_catalog_paper_v186.pdf",
+    "changelog": "R39conf-FIX re-fire: σ-mixing caveats added to abstract (×2) + Figs 4/6/7/9 captions; LEE single-correction explicit; A_p=0.57% explicit; companion/audit_artifact patterns applied. Silent-persistence regression caught by source↔mirror md5 gate (1e2501db)."
+  },
+  {
+    "paperSlug": "paper-5",
+    "version": "v0.1.75-2026-06-13",
+    "datestamp": "2026-06-13",
+    "texCommit": "d98284a9",
+    "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf",
+    "sitePdfPath": "/papers/p5_desi_chirality_v0.1.75.pdf",
+    "changelog": "R39conf-FIX re-fire: χ[h⁻¹ Mpc] unit VERIFIED-CORRECT against env_finder/01_compute_vweb.py:106-108 (reviewer divide-by-h claim FALSIFIED); Bonferroni two-sided explicit; \\artifactDir{} macro applied; companion/sigma_mixing/audit_artifact patterns applied. Silent-persistence regression caught by source↔mirror md5 gate (e6ceb5ff)."
+  }
+]

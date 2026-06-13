@@ -2,7 +2,9 @@
 
 **Canonical status file. When in doubt about Paper 4, read this.**
 
-**🎯 Last authoritative update: 2026-06-13 (PDT) — R39conf CLOSURE WAVE — P4 v1.0.186 (md5 3d24de44, 23pp, 0/0/0).** R39conf batch cross-vendor wave (4-vendor; Anthropic Claude_brutal credit-exhausted, flagged). 8 ESSENTIALs closed: sigma_mixing distinct-null-procedure caveat added to abstract + 8 captions (σ across distinct null procedures juxtaposed — 2-reviewer + 2-paper recurring pattern); companion/audit_artifact patterns applied. Readiness holds 95 per /readiness-cap-99.
+**🎯 R39conf-FIX RE-FIRE 2026-06-13: P4 v1.0.186 (md5 1e2501db, 23pp) — source→mirror md5 cross-check PASSED.** R39conf-fix re-fire 2026-06-13: closure persisted after gate failure (initial agent silently dropped edits); P4 σ-mixing caveats added to abstract (×2) + Figs 4/6/7/9 captions; LEE single-correction explicit; A_p=0.57% explicit. Mirror site/public/chirality_catalog_paper.pdf verified 1e2501db. Readiness holds 95 per /readiness-cap-99.
+
+**🎯 Prior authoritative update: 2026-06-13 (PDT) — R39conf CLOSURE WAVE — P4 v1.0.186 (md5 3d24de44, 23pp, 0/0/0).** R39conf batch cross-vendor wave (4-vendor; Anthropic Claude_brutal credit-exhausted, flagged). 8 ESSENTIALs closed: sigma_mixing distinct-null-procedure caveat added to abstract + 8 captions (σ across distinct null procedures juxtaposed — 2-reviewer + 2-paper recurring pattern); companion/audit_artifact patterns applied. Readiness holds 95 per /readiness-cap-99.
 
 **🎯 Prior authoritative update: 2026-06-13 (PDT) — EXT9 CLOSURE WAVE — P4 v1.0.185 (md5 414048af, 23pp, 0/0/0).** EXT9 closure: WLS pixel arithmetic corrected 24,061→24,087 (verified from on-disk artifact); Fig 9 σ unified to +7.28σ canonical throughout. ChatGPT MAJOR→MINOR under honest MNRAS/PRD recalibration. Readiness holds 95.
 

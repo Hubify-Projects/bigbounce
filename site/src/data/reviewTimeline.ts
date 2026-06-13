@@ -46,6 +46,34 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "SKILL-PERSISTENCE-GATE-PROMOTED",
+    kind: "skill-improvement",
+    dateISO: "2026-06-13",
+    title: "Source↔mirror md5 cross-check now mandatory before any closure-bundle commit (catches silent-persistence failures)",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "Encoded the source-PDF↔site/public-mirror md5 cross-check as a hard gate in the closure-bundle workflow; pattern caught silent-persistence on 3 of 6 R39conf agents within 25 min of the bundle commit; promoted to the bundle-sync skill.",
+    keyTakeaways: [
+      "Silent-persistence pattern recurred (cf. P2 EXT5 ~2026-05) — confirms the mandatory verbatim git-diff + inserted-phrase + old-phrase-gone shell-output verification rule is load-bearing",
+      "Gate caught 3 of 6 R39conf agents silently failing to persist — without the md5 cross-check these stale PDFs would have reached EXT10 reviewers",
+      "Pattern promoted to the bundle-sync skill: every multi-paper bundle MUST include source↔mirror md5 cross-check before commit as standing rule",
+    ],
+    links: [],
+  },
+  {
+    id: "R39CONF-FIX-P2-P4-P5",
+    kind: "internal-api",
+    dateISO: "2026-06-13",
+    title: "R39conf-fix: P2/P4/P5 re-fire after silent-persistence regression caught by mandatory md5-sync gate",
+    papers: ["P2", "P4", "P5"],
+    summary: "Parallel R39conf closure agents for P2/P4/P5 returned success but the .tex edits never persisted; the post-bump full-sync source↔mirror md5 gate caught the mismatch immediately; agents re-fired with mandatory git-diff + grep verification at end-of-task; ALL persist-gates passed second time. P2 v1.7.63 (md5 cab7e43f): Bayes-factor derivation explicit with closed-form CDF + Gaussian-peak approx. P4 v1.0.186 (md5 1e2501db): σ-mixing caveats in abstract (×2) + Figs 4/6/7/9 captions; LEE single-correction explicit; A_p=0.57% explicit. P5 v0.1.75-2026-06-13 (md5 e6ceb5ff): χ-unit VERIFIED-CORRECT against env_finder/01_compute_vweb.py:106-108; Bonferroni two-sided explicit; \\artifactDir{} macro.",
+    keyTakeaways: [
+      "Silent-persistence pattern recurred (cf. P2 EXT5 ~2026-05) — confirms the mandatory verbatim git-diff + inserted-phrase + old-phrase-gone shell-output verification rule is load-bearing",
+      "Re-fire took ~10 min wall-clock; total verdict-lag from initial failure to confirmed-persistence was ~25 min — caught BEFORE any external review touched stale PDF",
+      "Promoted: every multi-paper bundle MUST include source↔mirror md5 cross-check before commit (now standing rule)",
+    ],
+    links: [],
+  },
+  {
     id: "SKILL-CROSS-PAPER-PATTERN-MINING",
     kind: "skill-improvement",
     dateISO: "2026-06-13",
