@@ -21,17 +21,24 @@ the provided materials and how the paper text handles each gap.
 
 ## 1. No Bespoke CAMB Modifications
 
-**What the paper describes:** A "modified CAMB v1.5" with a spin-torsion
-Λ_eff(z) component and modified perturbation initial conditions.
+**What the paper describes (current v1B.0.68):** A ΛCDM + ΔNeff proxy run
+using stock CAMB with ΔNeff (nnu − 3.046) as a free parameter. No custom
+dark energy class or modified perturbation initial conditions.
 
-**What actually exists:** The cosmological model is ΛCDM + ΔN_eff, which
-uses standard CAMB parameters. No custom dark energy class was implemented.
-The spin-torsion framework provides the *theoretical motivation* for nonzero
-ΔN_eff, but the MCMC implementation uses stock CAMB.
+**What exists:** Four Cobaya YAML configurations (`cobaya_planck.yaml`,
+`cobaya_planck_bao.yaml`, `cobaya_planck_bao_sn.yaml`,
+`cobaya_full_tension.yaml`) — all using stock CAMB with `bbn_predictor:
+PArthENoPE`. Frozen chain artifacts under
+`cosmology/frozen/full_tension_20260311_1728/` and
+`cosmology/frozen/planck_bao_sn_20260312_1954/`.
 
-**Paper handling:** The text describes the theory module as modifying CAMB
-with "an additional early dark energy component" — this is implemented via
-the standard N_eff parameter, not a custom code module.
+**Paper handling:** Paper explicitly states stock CAMB throughout (§III,
+Table I caption, §V). The spin-torsion framework provides theoretical
+motivation for nonzero ΔNeff; the MCMC proxy uses the standard nnu
+parameter with a flat prior Neff ∈ [2.046, 5.046].
+
+**Sync note:** Stale "modified CAMB v1.5" language present in earlier repo
+versions has been removed as of v1B.0.68.
 
 ## 2. Frozen Chains Committed; Fresh Proxy Chains Not Pre-Computed
 
@@ -48,13 +55,19 @@ compare against the committed frozen chains.
 
 ## 3. No Bayes Factor Computation
 
-**What the paper reports:** ln B values from nested sampling (PolyChord).
+**What the paper reports (v1B.0.68):** No ln B values are claimed. The paper
+explicitly states that model-comparison statistics (AIC, BIC, ln B) are not
+reported because robust ln B against ΛCDM requires dedicated nested sampling
+(the ΛCDM point is unsampled by the Metropolis-Hastings chain at >4σ in the
+joint marginal tails; see fn. fn:wcaveat in the tex).
 
-**What exists:** MCMC configs only. Nested sampling requires changing the
-sampler block to PolyChord and is computationally more expensive (~10x).
+**What exists:** MCMC configs only. Adapting to PolyChord nested sampling
+requires changing the Cobaya sampler block and is computationally ~10× more
+expensive. This remains a post-submission follow-up item.
 
-**Paper handling:** Bayes factors are reported with explicit caveats about
-dataset dependence.
+**Note:** Earlier repo versions quoted ln B = −1.2 ± 0.3 / +4.8 ± 0.5 —
+those were fire-#21 bookkeeping confabulation (see §8 of this file) and have
+been fully retracted from the paper.
 
 ## 4. Galaxy Chirality Classifier — PARTIALLY RESOLVED
 

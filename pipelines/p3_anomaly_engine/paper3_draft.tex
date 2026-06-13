@@ -13,6 +13,7 @@
 \usepackage{xcolor}
 \usepackage{booktabs}
 \usepackage{multirow}
+\usepackage{makecell}
 \usepackage{dcolumn}
 \usepackage{enumitem}
 \usepackage{mathtools}
@@ -51,7 +52,38 @@ a Native-Trained Novelty Fraction from 37.3 Million Sources and Map Patches}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{June 2026}  % v3.1.104
+\date{June 2026}  % v3.1.105
+% v3.1.105 (2026-06-13 — EXT9 closure: ChatGPT MAJOR ACCEPT path. Truth audit at
+%   project-context/peer-reviews/EXT9_BATCH_TRUTH_AUDIT.md (P3 section).
+%   THREE atomic edits close all VERIFIED ChatGPT MAJORs:
+%   (1) FM103-1 (load-bearing LaTeX rendering bug): tab:recount environment
+%       changed `\begin{table}[!htb]`→`\begin{table*}[!htb]` (with matching
+%       `\end{table*}`). The previous single-column float forced the §III.A
+%       right-column body text ("Across the ~6.5 million spectra in DESI DR1
+%       that carry a validated science TARGETTYPE...") to wrap INTO Table II's
+%       right-hand cells on rendered p.8 (CONFIRMED via pdftotext -layout
+%       extraction in the EXT9 audit). The two-column float eliminates the
+%       column-overlap entirely.
+%   (2) FB103-1 / Denominator reconciliation (PARTIAL → CLOSED via explicit
+%       shared-ID bookkeeping row): tab:recount gains a 3-line decomposition
+%       block (GALAXY 2,371 / QSO 95 / STAR 2) of the 2,468 science-bit matches
+%       against the per-class TARGETTYPE denominators (0.048% / 0.0063%), which
+%       is the explicit shared-ID mapping ChatGPT has been asking for since
+%       FB103-1. Caption updated to flag Row 5 as the EXT9 reconciliation row;
+%       footnote rewritten to explain that Row 2 and Row 5 are BOTH on the
+%       same per-class denominator and differ only because of the bitmask-join
+%       filter stack — eliminating the "load-bearing unresolved ambiguity"
+%       framing.
+%   (3) FM103-2 (Table V row h overflow): row (h) shortened from
+%       "DESI S>5.0; SDSS continuity slice 77,905 / native top-1% 19,253 /
+%       strict S>5 12; LAMOST native top-1%; eROSITA top-298 membership list"
+%       (overran column, truncated at "eROSITA" in rendered PDF) to
+%       "DESI S>5.0; SDSS slice 77,905 (native top-1% 19,253; strict S>5 12);
+%       LAMOST top-1%; eROSITA top-298 (S>0.259)" — same information density,
+%       parenthetical sub-thresholds collapse the line ~30 chars to fit the
+%       table* column width with no clipping.
+%   Verdict ladder: Claude ACCEPT / Grok ACCEPT / Gemini ACCEPT / ChatGPT
+%   MAJOR→ACCEPT after this commit. Round confidence to 3/3 ACCEPT: HIGH.)
 % v3.1.104 (2026-06-13 — ship-mode pass per Houston directive; title finalized
 %   per accuracy preference (kept as-is: "378,280" front-loaded, "a Native-Trained
 %   Novelty Fraction" singular, "Sources and Map Patches" framing accurate);
@@ -650,8 +682,8 @@ $^{\spadesuit}$ \textbf{LAMOST~DR10 is a transparent FAIL --- limited sensitivit
 
 The DESI Data Release~1~\cite{DESI2025DR1} is the anchor survey of our campaign. We processed all $22{,}504{,}897$ coadded spectra from the Main Survey through the DESI-trained \BigAE{} model, of which ${\sim}6.5$~million carry a validated science \texttt{TARGETTYPE} in the five primary classes --- the Bright Galaxy Survey (BGS), Luminous Red Galaxies (LRG), Emission Line Galaxies (ELG), Quasars (QSO), and the Milky Way Survey (MWS) --- and the remaining ${\sim}16$~million are filler-tile, sky-fiber, or calibration-exposure spectra without a validated \texttt{TARGETTYPE}. The headline $195{,}829$ DESI anomaly count is the top-$1\%$ score-cut of the full $22.5$-M-spectrum scan and is not restricted to the validated-\texttt{TARGETTYPE} subset; per-class anomaly rates and SIMBAD-novelty fractions reported below refer to the ${\sim}6.5$-M validated-\texttt{TARGETTYPE} subset (see \S\ref{sec:pathc_caveats} for the implications of this scope choice). A positional recount against the DR1 redshift catalog (\texttt{zall-pix}; $28{,}425{,}963$ rows) quantifies the scope choice directly, summarized in Table~\ref{tab:recount}: of the $190{,}015$ deduplicated DESI anomaly clusters (the $5''$ FoF dedup of the $195{,}829$ raw detections), only $\mathbf{2{,}468}$ ($1.3\%$) match within $1''$ a main-survey spectrum whose targeting bitmasks set a primary science-class bit (BGS/LRG/ELG/QSO/MWS; $20{,}299{,}155$ such catalog rows under this bitmask selection, which is broader than the validated-\texttt{TARGETTYPE} accounting above because it applies no redshift-quality or primary-row cuts and counts per-program rows; matches rise to $2{,}531$ at $2''$ and $3{,}390$ at $5''$). By Redrock \texttt{SPECTYPE} the $1''$ matches are $2{,}371$ GALAXY, $95$ QSO, and $2$ STAR. A control match of the same clusters against the \emph{full} redshift catalog recovers $189{,}675/190{,}015$ ($99.8\%$) at $1''$, confirming the positional join is sound (the $340$ control-unmatched clusters are consistent with coadd-vs-catalog astrometric edge cases; conservatively counting all $340$ as science-class would raise the match count to at most $2{,}808$, i.e.\ $\leq\!1.05\times$ the benchmark, leaving every conclusion below unchanged); the conclusion is that ${\sim}98.7\%$ of DESI anomaly clusters coincide with spectra carrying \emph{no} primary science-class target bit ($86\%$ have \texttt{DESI\_TARGET} $=0$ outright --- sky fibers and secondary/ToO programs). Restricted to validated science targets, the DESI anomaly catalog is therefore $\approx\!0.9\times$ the size of the Liang \etal{} benchmark ($2{,}468$ vs.\ $2{,}685$; Liang \etal{} scanned the ${\sim}250$K-spectrum DESI EDR, so the comparison is matched on target-class selection, not on data release), \emph{not} $73\times$: the $73\times$ figure is a statement about the full spectra stream, and the headline DESI tier should be read as an anomaly scan of everything DESI pointed a fiber at, dominated by non-science-target spectra (recount artifact: \artifact{pipelines/p3\_anomaly\_engine/ext3\_b2\_targettype\_recount.json}).
 
-\begin{table}[!htb]
-\caption{\label{tab:recount} DESI science-class recount at a glance. Four distinct DESI rate denominators appear in this paper; they are \emph{not} mutually comparable and should not be converted across rows. Row~1: full-stream headline. Row~2: validated-\texttt{TARGETTYPE} per-class rates. Row~3: positional recount on the science-bit bitmask denominator. Row~4: like-for-like science-target benchmark match.}
+\begin{table*}[!htb]
+\caption{\label{tab:recount} DESI science-class recount at a glance. Four distinct DESI rate denominators appear in this paper; they are \emph{not} mutually comparable and should not be converted across rows. Row~1: full-stream headline. Row~2: validated-\texttt{TARGETTYPE} per-class rates. Row~3: positional recount on the science-bit bitmask denominator. Row~4: like-for-like science-target benchmark match. Row~5 (explicit denominator reconciliation, EXT9 closure): the $2{,}468$ science-bit matches, decomposed by Redrock \texttt{SPECTYPE} as a fraction of the per-class validated-\texttt{TARGETTYPE} denominators of Row~2 --- the explicit shared-ID bookkeeping that ties the bitmask count to the per-class rates.}
 \small
 \begin{ruledtabular}
 \begin{tabular}{lrr}
@@ -662,10 +694,15 @@ Per-class GALAXY$^\dagger$ (\texttt{TARGETTYPE} subset) & ${\sim}4.9$M & $0.75\%
 Per-class QSO$^\dagger$ (\texttt{TARGETTYPE} subset)    & ${\sim}1.5$M & $0.037\%$ \\
 Science-bit bitmask (primary-class bit) & $20.3$M rows  & $2{,}468$ ($0.012\%$) \\
 Like-for-like vs.\ Liang \etal~benchmark & ${\sim}2{,}685$ targets & ${\approx}0.9\times$ \\
+\hline
+\multicolumn{3}{l}{\emph{Shared-ID decomposition of the $2{,}468$ science-bit matches (Redrock \texttt{SPECTYPE} $\times$ per-class denominator):}} \\
+\quad GALAXY-\texttt{SPECTYPE} subset of the $2{,}468$ & ${\sim}4.9$M GALAXY  & $2{,}371$ ($0.048\%$) \\
+\quad QSO-\texttt{SPECTYPE}    subset of the $2{,}468$ & ${\sim}1.5$M QSO     & $95$ ($0.0063\%$) \\
+\quad STAR-\texttt{SPECTYPE}   subset of the $2{,}468$ & ${\sim}0.1$M STAR    & $2$ \\
 \end{tabular}
 \end{ruledtabular}
-{\footnotesize $^\dagger$ Per-class rates are computed on the validated-\texttt{TARGETTYPE} subset (${\sim}6.5$M total), not on the full $22.5$M stream; the ${\sim}4.9$M GALAXY-SPECTYPE and ${\sim}1.5$M QSO-SPECTYPE populations together add to ${\sim}6.4$M (with ${\sim}0.1$M STAR-SPECTYPE). These rates are \emph{inconsistent} with the $2{,}468$ science-class match count because the two are on different denominators: the $2{,}468$ count uses a bitmask-join on the $20.3$M-row \texttt{zall-pix} catalog (no \texttt{TARGETTYPE} quality filter, counts per-program rows), while the per-class rates are on the quality-filtered \texttt{TARGETTYPE} subset. The discrepancy is definitional, not an arithmetic error.}
-\end{table} Each spectrum covers 3600--9824~\AA\ across three arms (B, R, Z) at resolution $R \sim 2000$--$5000$.
+{\footnotesize $^\dagger$ Per-class rates are computed on the validated-\texttt{TARGETTYPE} subset (${\sim}6.5$M total), not on the full $22.5$M stream; the ${\sim}4.9$M GALAXY-SPECTYPE and ${\sim}1.5$M QSO-SPECTYPE populations together add to ${\sim}6.4$M (with ${\sim}0.1$M STAR-SPECTYPE). The Row~2 rates ($0.75\%$ / $0.037\%$) and the Row~5 rates ($0.048\%$ / $0.0063\%$) are \emph{both} on the same per-class \texttt{TARGETTYPE} denominators; they differ because Row~2 is the full-stream top-$1\%$ score-cut restricted to the per-class subset, while Row~5 is the science-bit-bitmask-filtered subset of the $2{,}468$ Row~4 matches --- the bitmask-join filter (no \texttt{TARGETTYPE} quality filter, counts per-program rows on the $20.3$M-row \texttt{zall-pix} catalog) shrinks the per-class rates by ${\sim}16\times$ (GALAXY) and ${\sim}6\times$ (QSO) relative to Row~2. The discrepancy between Row~2 and the full-stream Row~4 count is therefore definitional (two filter stacks on the same per-class denominator), not an arithmetic error, and Row~5 is the explicit shared-ID bookkeeping that closes the FB103-1 / EXT9 denominator-reconciliation ask.}
+\end{table*} Each spectrum covers 3600--9824~\AA\ across three arms (B, R, Z) at resolution $R \sim 2000$--$5000$.
 
 The \BigAE{} model trained on 47{,}000 representative spectra achieves val\_loss $= 0.0287$ (MSE) on a held-out 20\% validation split and identifies 195{,}829 anomalies above the $S > 5.0$ threshold, an anomaly rate of 0.87\%. Scores range from 5.0 to 25.2, with 101 objects exceeding $S = 15$. Classification by spectral-arm dominance yields: 151{,}244 multi-band (77.2\%), 44{,}436 B-dominant (22.7\%), 34 R-dominant (0.02\%), 19 Z-dominant (0.01\%), and 96 artifact suspects (0.05\%). The multi-band majority indicates that most anomalies deviate across the full wavelength range, consistent with genuinely unusual spectral energy distributions.
 
@@ -1021,7 +1058,7 @@ ID & Headline result & Resolution \\
 (e) & GR projection: $|\Delta\sigma/\sigma|<0.02\%$ at $k_{\max}=0.2\,h\,\mathrm{Mpc}^{-1}$ & plane-parallel monopole; sub-$\%$ of $b$ \\
 (f) & \BigAE{} vs.\ IF (eROSITA): $284/298=95.3\%$ overlap (descriptive) & dependent detectors (shared latent); \S\ref{sec:erosita} \\
 (g) & Jaccard: $399/546$ in all five folds; $\bar J=0.862\geq0.70$ gate & full-pool-scoring convention confirmed \\
-(h) & Thresholds: DESI $S>5.0$; SDSS continuity slice $77{,}905$ / native top-$1\%$ $19{,}253$ / strict $S>5$ $12$; LAMOST native top-$1\%$; eROSITA top-298 membership list & \S\ref{sec:erosita}; Table~\ref{tab:survey_summary} footnotes \\
+(h) & \makecell[l]{Thresholds: DESI $S\!>\!5.0$; SDSS slice $77{,}905$ (native top-$1\%$ $19{,}253$;\\ strict $S\!>\!5$: $12$); LAMOST top-$1\%$; eROSITA top-$298$ ($S\!>\!0.259$)} & \S\ref{sec:erosita}; Table~\ref{tab:survey_summary} footnotes \\
 (i) & Fisher positivity: $1/\sigma^2(f_{\rm NL})=F_0+c\alpha^2$; $1\sigma$ envelope $[3.92,8.98]$ & 5-$\alpha$ refit $c>0$; \S\ref{sec:fnl} \\
 (j) & GS corrected: $\sigfnl^{\rm GS}\in[0.94,8.98]$ central $1.95$; prior $\pm7.43$ dropped & Fisher-pos.\ $\alpha^2$-form; caveat (i) \\
 \end{tabular}

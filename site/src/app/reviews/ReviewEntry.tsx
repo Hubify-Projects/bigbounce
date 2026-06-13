@@ -13,6 +13,7 @@ export const KIND_LABEL: Record<ReviewRoundKind, string> = {
   "internal-cc": "INTERNAL",
   "skill-improvement": "SKILL-UPGRADE",
   "closure-wave": "CLOSURES",
+  "ext-closure": "CLOSURES",
 };
 
 /** Filterable kind groups (internal-api + internal-cc collapse into INTERNAL). */

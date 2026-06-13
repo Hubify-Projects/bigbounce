@@ -12,7 +12,9 @@ submission_status: submission-ready (R42 Wave 14-AAA LANDED -- P2-OA-B4 FULL HAR
 
 # Paper 2 — f_NL Forecast (SPHEREx / MegaMapper) — Single Source of Truth
 
-**Last authoritative update: 2026-06-13 (PDT) — SHIP-MODE PASS — P2 v1.7.61 (md5 6b413c94, 27pp, 0 err/0 undef/2 pre-existing overfull).** Houston 2026-06-13 directive: HD-* ruled DO-NOW; ship-final stamp. P2 had zero body-text audit-trail residues (all 'earlier draft'/'withdrawn' already in `%` changelog) — stamp-only ship-final. Readiness: SHIP-READY.
+**🎯 Last authoritative update: 2026-06-13 (PDT) — EXT9 CLOSURE WAVE — P2 v1.7.62 (md5 406af9f8, 27pp, 0/0/0).** EXT9 closure: Fondi arXiv ID corrected 2503.14057→2602.12357; Table IV label fix. ChatGPT MAJOR→MINOR under honest MNRAS/PRD recalibration. Readiness holds 94.
+
+**Prior: 2026-06-13 (PDT) — SHIP-MODE PASS — P2 v1.7.61 (md5 6b413c94, 27pp, 0 err/0 undef/2 pre-existing overfull).** Houston 2026-06-13 directive: HD-* ruled DO-NOW; ship-final stamp. P2 had zero body-text audit-trail residues (all 'earlier draft'/'withdrawn' already in `%` changelog) — stamp-only ship-final. Readiness: SHIP-READY.
 
 **Prior authoritative update: 2026-06-13 (PDT) — P2 v1.7.60 — EXT7 CLOSURE WAVE (md5 a961bf1c, 27pp, 0 err/0 undef/2 pre-existing overfull).** **Table IV Row 1 mislabel fixed (corroborated by ChatGPT + Gemini)**: split into (a) Naive uncorrected reference 6.25σ tagged "not used in headline" + (b) Template-corrected baseline r=0.84 → 5.2-5.5σ headline; caption now distinguishes cumulative vs distributional rows. DESI Ref [34] split (Chaussidon 2411.17623 → LRG combined; new Fondi 2503.14057 → QSO assembly-bias). Ref [28] Cai:2018non completed (JCAP 2018 (05) 012 + DOI). "genuine theory-modeling ambiguity" → "basis-dependent representation uncertainty" in §II.A. Gemini σ→0 glyph FALSIFIED (PDF extraction). Tarball v1.7.60. Readiness holds 94.
 

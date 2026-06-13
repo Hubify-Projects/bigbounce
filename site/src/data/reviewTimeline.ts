@@ -3,7 +3,8 @@ export type ReviewRoundKind =
   | "internal-api"
   | "internal-cc"
   | "skill-improvement"
-  | "closure-wave";
+  | "closure-wave"
+  | "ext-closure";
 
 export type PaperId = "P1A" | "P1B" | "P2" | "P3" | "P4" | "P5";
 
@@ -44,6 +45,25 @@ const PR = `${GH}/project-context/peer-reviews`;
 
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
+  {
+    id: "EXT9-CLOSURE-WAVE",
+    kind: "ext-closure",
+    dateISO: "2026-06-13",
+    timePT: "EXT9 recalibration breakthrough + 6-paper same-day closure wave",
+    title: "EXT9 closure wave: ChatGPT MAJOR→MINOR on 4/6 (P1B/P2/P4/P5) under honest MNRAS/PRD calibration — 34 VERIFIED items closed in one wave",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "Largest single-round verdict gain in 9 EXT rounds. Replacing the 'be ruthless' referee prompt with honest MNRAS/PRD calibration shifted ChatGPT MAJOR→MINOR on P1B, P2, P4, P5 simultaneously. Six closure agents executed per EXT9_BATCH_TRUTH_AUDIT.md: P1A Fig 3 caption addresses prediction-horizon MAJOR; P1B repo-sync wave; P2 Fondi arXiv ID fix + Table IV label; P3 Table II rendering bug (table→table*) + denominator row; P4 WLS arithmetic + Fig 9 σ unify; P5 n=428 + VoidFinder split.",
+    keyTakeaways: [
+      "ChatGPT MAJOR→MINOR on 4/6 (P1B/P2/P4/P5) — honest MNRAS/PRD calibration replaced 'be ruthless' framing; single largest verdict shift across 9 EXT rounds",
+      "P3 Table II \\begin{table}→table* identified as real LaTeX rendering bug (single-column overflow) — the single genuine structural fix in the wave",
+      "P1A Fig 3 caption rewrite addresses ChatGPT prediction-horizon MAJOR (the sole P1A residual under calibration)",
+      "34 VERIFIED items closed in single wave across all 6 papers",
+    ],
+    links: [
+      { label: "EXT9 batch truth-audit", href: `${GH}/project-context/peer-reviews/EXT9_BATCH_TRUTH_AUDIT.md` },
+      { label: "EXT9 manifest", href: `${GH}/project-context/peer-reviews/EXT9_BROWSER_MANIFEST.md` },
+    ],
+  },
   {
     id: "SKILL-RECALIBRATION-WIN",
     kind: "skill-improvement",

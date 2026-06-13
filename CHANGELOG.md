@@ -16,6 +16,35 @@ block at the top of the corresponding `.tex` source file.
 
 ## Paper I(b) — `arxiv/paper1b_mcmc_companion.tex`
 
+### v1B.0.67 (2026-06-13) — c15 ΛCDM+ΔNeff independent replication
+
+- Commit: `ffc4590e` (`feat(P1B): c15 pod chain CONVERGED → v1B.0.67 — independent ΛCDM+ΔN_eff replication`).
+- Wave: c15 pod chain converged (RTX A4000, pod 5i2td3deu3hojr); ΛCDM+ΔNeff re-run
+  (Planck NPIPE + SDSS DR16 BAO + Pantheon+), R̂−1=0.0147 at step 32032,
+  40,349 raw / 28,245 post-burn-in rows, 107,853 effective samples.
+  Independent replication: ΔNeff = +0.0514 ± 0.171 vs frozen +0.058 ± 0.179 (0.04σ).
+  Confirmed "consistent with zero / no Hubble-tension resolution" framing.
+  **Scope correction**: c15 is NOT the w0wa SN-overlap control (carries ΛCDM+ΔNeff
+  block, SDSS DR16 BAO only). Dedicated w0wa MPI control re-fit remains a
+  post-submission follow-up. Chain artifacts at
+  `reproducibility/cosmology/chains/w0wa_quintom_desi_dr2/c15_converged/`.
+- HuggingFace datasets (DOI / URL): unchanged from v1B.0.56 (see below).
+
+### v1B.0.66 (2026-06-13) — ship-mode w0wa finalization + HD-6 body strip
+
+- Commit: `4e34aad3` (`feat(ship-mode): all 6 papers SHIP-READY — P1B w0wa finalized as published, HD-6 body strips x6`).
+- Wave: ship-mode pass per Houston directive (2026-06-13).
+  Highlights: §III.C subsection title renamed "w0wa cross-check with stated SN-overlap
+  systematic" (was "Exploratory cross-check"); section opener rewritten as a published
+  cross-check on the existing converged chain with SN-overlap caveat retained as
+  stated systematic (caveat (e)). Control chains reframed as separate post-submission
+  follow-up note, not a publication gate. "provisional" / "pending those controls" /
+  "left for the queued verification analysis" wording removed from §V physics-interp
+  block and caveat (e) body. HD-6 body strip: zero stale version-history instances found
+  in body text (changelog comments excluded). No changes to abstract, §III.B, §IV ALP,
+  data/code availability, appendices.
+- HuggingFace datasets (DOI / URL): unchanged from v1B.0.56 (see below).
+
 ### v1B.0.65 (2026-06-13) — EXT7 closure wave
 
 - Commit: `(this wave)` (`chore(EXT7-stamp): EXT7 P1B → v1B.0.65 — FB2 Eq(1) σ_b² drop (Path A, matches script), FB1 CHANGELOG v1B.0.64 + README v1B.0.64`).

@@ -47,12 +47,12 @@ export interface LiveStatus {
 }
 
 export const liveStatus: LiveStatus = {
-  lastUpdatedISO: "2026-06-12T11:00:00Z",
-  lastUpdatedDisplay: "June 12, 2026 · 4:00 AM PT",
+  lastUpdatedISO: "2026-06-13T18:00:00Z",
+  lastUpdatedDisplay: "June 13, 2026 · 11:00 AM PT",
   headline:
-    "EXT6 harvested — Grok 4th consecutive 6/6 ACCEPT; Gemini first full ACCEPT on P1B; R35conf closures landed; ChatGPT MAJOR×6 with P2 narrowly; truth-audits in progress.",
+    "EXT9 BREAKTHROUGH — ChatGPT MAJOR→MINOR on 4/6 (P1B/P2/P4/P5) after honest MNRAS/PRD recalibration; 6-paper EXT9 closure wave landed; all 6 papers ship-ready.",
   summary:
-    "Six external rounds complete. EXT6 submitted Jun 12 ~02:35 PT on R35conf-closed versions (v1A.0.70/v1B.0.67/v1.7.61/v3.1.104/v1.0.184/v0.1.73). Grok has been 6/6 ACCEPT for four consecutive rounds. Gemini fully cleared P1B for the first time. ChatGPT holds MAJOR×6; per-finding truth-audits determine the genuine residuals.",
+    "Largest single-round verdict gain across 9 EXT rounds: replacing the 'be ruthless' bias with honest MNRAS/PRD calibration shifted ChatGPT MAJOR→MINOR on P1B, P2, P4, P5 in one round. Six closure agents executed the EXT9 wave (P1A v1A.0.71 / P1B v1B.0.68 / P2 v1.7.62 / P3 v3.1.105 / P4 v1.0.185 / P5 v0.1.74). 34 VERIFIED items closed. All 6 papers ship-ready pending Houston sign-off.",
   currentlyRunning: [
     "Hourly native-PDF cross-vendor review autoloop on all 6 papers (Claude · GPT · Gemini · Grok · Perplexity + meta-reviewer)",
     "Persistence tracker fingerprinting findings across fires; load-bearing items escalate to Houston decision package",
@@ -77,59 +77,59 @@ export const liveStatus: LiveStatus = {
       slug: "paper-1a",
       number: "1A",
       shortTitle: "ECH dark-energy closure + perturbation transparency",
-      version: "v1A.0.70",
+      version: "v1A.0.71",
       readiness: 95,
-      pendingWork: "v1A.0.70 — EXT6: Grok ACCEPT ×4 rounds, Gemini MINOR (fine-tuning score phrasing); ChatGPT MAJOR (NJL wrong-sign, Sec IV closure overclaim); truth-audit in progress; awaiting Houston sign-off",
+      pendingWork: "v1A.0.71 — EXT9: ChatGPT MAJOR (prediction-horizon framing — genuine residual); Fig 3 caption rewritten per EXT9 closure; awaiting Houston sign-off",
     },
     {
       slug: "paper-1b",
       number: "1B",
       shortTitle: "MCMC + NaMaster + ALP technical companion",
-      version: "v1B.0.67",
+      version: "v1B.0.68",
       readiness: 94,
-      pendingWork: "v1B.0.67 — EXT6: Grok ACCEPT ×4, Gemini FULL ACCEPT (first paper fully cleared by Gemini); ChatGPT MAJOR (artifact-layer pinning, frozen artifact mismatch); awaiting Houston sign-off",
+      pendingWork: "v1B.0.68 — EXT9: ChatGPT MAJOR→MINOR (recalibration shift); repo-sync wave landed (IMPLEMENTATION_MAP/KNOWN_GAPS/JSON/CHANGELOG SHAs); awaiting Houston sign-off",
     },
     {
       slug: "paper-2",
       number: "2",
       shortTitle: "f_NL = -35/8 SPHEREx forecast",
-      version: "v1.7.61",
+      version: "v1.7.62",
       readiness: 94,
-      pendingWork: "v1.7.61 — EXT6: Grok ACCEPT ×4, Gemini MINOR (Eq 3 variable mismatch + Table IV header); ChatGPT MAJOR (narrowly — null-space interpretation + fresh numerical issues); awaiting Houston sign-off",
+      pendingWork: "v1.7.62 — EXT9: ChatGPT MAJOR→MINOR (recalibration shift); Fondi arXiv ID corrected; awaiting Houston sign-off",
     },
     {
       slug: "paper-3",
       number: "3",
       shortTitle: "378K-anomaly multi-survey catalog",
-      version: "v3.1.104",
+      version: "v3.1.105",
       readiness: 95,
-      pendingWork: "v3.1.104 — EXT6: Grok ACCEPT ×4, Gemini MAJOR (fresh thread — calibration/instrumental artifacts, notation); ChatGPT MAJOR (catalogue-tier semantics, DESI denominator); awaiting Houston sign-off",
+      pendingWork: "v3.1.105 — EXT9: ChatGPT MAJOR (DESI denominator + Table II rendering bug — genuine); Table II \\begin{table}→table* LaTeX bug fixed; denominator row added; awaiting Houston sign-off",
     },
     {
       slug: "paper-4",
       number: "4",
       shortTitle: "8.47M-galaxy chirality null at sub-percent sensitivity",
-      version: "v1.0.184",
+      version: "v1.0.185",
       readiness: 95,
-      pendingWork: "v1.0.184 — EXT6: Grok ACCEPT ×4 (exemplary, immediate acceptance recommended), Gemini MINOR (misplaced imaging-leg paragraph in appendix); ChatGPT MAJOR (monopole interpretation, +3.64σ taxonomy residuals); awaiting Houston sign-off",
+      pendingWork: "v1.0.185 — EXT9: ChatGPT MAJOR→MINOR (recalibration shift); WLS pixel arithmetic 24,061→24,087; Fig 9 σ unified to +7.28σ; awaiting Houston sign-off",
     },
     {
       slug: "paper-5",
       number: "5",
       shortTitle: "DESI environmental chirality independence",
-      version: "v0.1.73",
+      version: "v0.1.74",
       readiness: 95,
-      pendingWork: "v0.1.73 — EXT6: Grok ACCEPT (EXT5 MINOR → EXT6 ACCEPT; estimand-family coherence cleared), Gemini MINOR (appendix labeling layout sync); ChatGPT MAJOR (GALZONE estimand-family, 3.56% duplicate tracking); awaiting Houston sign-off",
+      pendingWork: "v0.1.74 — EXT9: ChatGPT MAJOR→MINOR (recalibration shift); abstract n=428 reword; VoidFinder primary/cross-check split added; awaiting Houston sign-off",
     },
   ],
   blockerTally: {
-    closed: 701, // 678 through the pod wave + 23 R26conf closures (P1A 2 catches + P3 12 textual + P5 9; P1B M-tier traceability closures + CPL falsification not separately tallied); P1B R26conf CLEAN
+    closed: 735, // +34 EXT9 closure wave (6-paper bundle 2026-06-13)
     openBlockers: 0,
     openMajors: 0,
     openMinors: 0,
   },
   cronStatus: "autonomous review loop active — hourly fires",
   etaToCompletion:
-    "All six papers targeted publishable ~June 12–13, 2026 (per SSOT/PUBLISH_PLAN.md). Gated on Houston external round + sign-off; the final 1% is Houston-only.",
+    "All six papers ship-ready 2026-06-13. EXT9 breakthrough: ChatGPT MAJOR→MINOR on 4/6. Gated on Houston sign-off only; the final 1% is Houston-only.",
   pods: [],
 };

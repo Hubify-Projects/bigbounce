@@ -35,7 +35,7 @@
 \contentsline {section}{\numberline {VII}Conclusions}{14}{section*.33}%
 \contentsline {paragraph}{\numberline {a}Harmonic-channel completeness (end-to-end).}{14}{section*.34}%
 \contentsline {paragraph}{\numberline {b}Primary methodological finding: a quantifiable monopole-mask leakage channel.}{14}{section*.35}%
-\contentsline {paragraph}{\numberline {c}Canonical-$N$ MASTER $\ell \!=\!1$ direct compute.}{15}{section*.36}%
+\contentsline {paragraph}{\numberline {c}Canonical-$N$ MASTER $\ell \!=\!1$ direct compute.}{14}{section*.36}%
 \contentsline {paragraph}{\numberline {d}Bias hardening is essential.}{15}{section*.37}%
 \contentsline {paragraph}{\numberline {e}Sensitivity convention and falsification criterion.}{15}{section*.38}%
 \appendix 

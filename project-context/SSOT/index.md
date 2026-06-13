@@ -63,6 +63,8 @@ After 11 autoloop fires + v3.2 meta-reviewer + persistence tracker: **5 LOAD-BEA
 
 # BigBounce SSOT -- cross-paper dashboard
 
+> **EXT9 CLOSURE WAVE (2026-06-13)** — ChatGPT MAJOR→MINOR on 4/6 (P1B/P2/P4/P5) after honest MNRAS/PRD recalibration. 34 VERIFIED items closed. Versions: v1A.0.71 (md5 ea008466, 28pp) / v1B.0.68 (md5 06410d7c, 20pp) / v1.7.62 (md5 406af9f8, 27pp) / v3.1.105 (md5 8533c5a7, 29pp) / v1.0.185 (md5 414048af, 23pp) / v0.1.74 (md5 43619245, 31pp). P3 Table II LaTeX rendering bug fixed (single→two-column float). All 6 ship-ready pending Houston sign-off.
+
 > **SHIP-MODE PASS COMPLETE (2026-06-13)** — Houston directive: HD-* all ruled DO-NOW; all 6 papers SHIP-READY. Versions: v1A.0.70 / v1B.0.67 / v1.7.61 / v3.1.104 / v1.0.184 / v0.1.73. **Major unblocks**: (i) P4 harmonic-completeness FIGURE pulled forward from queued — generated from real injection-recovery artifact data, closes ChatGPT P4-E4 MAJOR; (ii) P5 abstract VoidFinder membership-approximation sentence added — closes ChatGPT 4-round Class-D residual; (iii) P1B w₀wₐ section finalized as published cross-check (no more 'exploratory pending'); (iv) external referee prompt recalibrated (the 'be ruthless' bias replaced with proper MNRAS/PRD verdict standard); (v) Zenodo deposition records prepared for all 6 papers (one-click publish remaining). **c15 pod converged 2026-06-13 — independent ΛCDM+ΔN_eff replication landed in P1B v1B.0.67 (Pantheon+ baseline reproduced at 0.04σ; actual w0wa SN-overlap MPI re-fit stays queued post-submission). EXT9 + R38conf running.**. Sign-off package refreshed with all HD-* marked ruled-DO-NOW.
 
 

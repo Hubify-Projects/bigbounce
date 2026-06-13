@@ -3,18 +3,18 @@
 This document maps every "This work" numerical result in the paper to the
 code and configuration that produces it.
 
-## Cosmological Fits (Tables I, III, IV, V, XI)
+Last synced to paper version: v1B.0.68 (2026-06-13, EXT9 closure wave).
 
-| Paper Result | Value | Config | Notes |
-|-------------|-------|--------|-------|
-| H₀ (MCMC fit) | 69.2 ± 0.8 km/s/Mpc | `cosmology/cobaya_full_tension.yaml` | ΛCDM + ΔN_eff, stock CAMB |
-| σ₈ (MCMC fit) | 0.785 ± 0.016 | `cosmology/cobaya_full_tension.yaml` | Derived parameter |
-| ΔN_eff | 0.3 ± 0.2 | `cosmology/cobaya_full_tension.yaml` | Free parameter (nnu - 3.046) |
-| χ²_eff | 1148.3 | `cosmology/cobaya_full_tension.yaml` | From chain maximum likelihood |
-| ln B (Planck+BAO) | -1.2 ± 0.3 | Requires PolyChord nested sampling | Not provided; see KNOWN_GAPS |
-| ln B (full tension) | +4.8 ± 0.5 | Requires PolyChord nested sampling | Not provided; see KNOWN_GAPS |
-| Tension σ (H₀ vs SH0ES) | 2.93σ | Arithmetic: (69.2-73.04)/√(0.8²+1.04²) | No code needed |
-| Tension σ (σ₈ vs Planck) | 1.52σ | Arithmetic: (0.785-0.811)/√(0.016²+0.006²) | No code needed |
+## Cosmological Fits (Table I — ΛCDM+ΔNeff frozen chains)
+
+| Paper Result | Full-tension value | Planck+BAO+SN value | Config | Notes |
+|-------------|-------------------|---------------------|--------|-------|
+| H₀ (MCMC fit) | 67.68 ± 1.06 km/s/Mpc | 67.78 ± 1.09 km/s/Mpc | `cosmology/cobaya_full_tension.yaml` / `cobaya_planck_bao_sn.yaml` | ΛCDM + ΔNeff, stock CAMB |
+| σ₈ (MCMC fit) | 0.803 ± 0.008 | 0.812 ± 0.009 | `cosmology/cobaya_full_tension.yaml` | Derived parameter |
+| ΔNeff | −0.020 ± 0.169 | +0.058 ± 0.179 | `cosmology/cobaya_full_tension.yaml` | Free parameter (nnu − 3.046); consistent with zero in both combinations |
+| χ²_total (w0wa iter2 chain) | 14037.4 ± 5.6 | — | `cosmology/iter2_converged_2026-05-18/` | GetDist weighted-sample average; channels BAO 10.6, CMB 10983.9, SN 3043.0 |
+| ln B (any combination) | Not computed | Not computed | Requires PolyChord nested sampling | Not provided; see KNOWN_GAPS |
+| H₀ tension vs SH0ES | 3.6σ | 3.6σ | Arithmetic from Table I | (67.68 − 73.04)/√(1.06²+1.04²) ≈ 3.6σ; no code needed |
 
 ## Galaxy Spin Fit (Table II, Fig. 2)
 
@@ -34,16 +34,16 @@ code and configuration that produces it.
 
 ## KNOWN GAPS
 
-1. **Bayes factors (ln B)**: Require PolyChord nested sampling runs which are
-   computationally expensive and not included. The configs could be modified
-   to use PolyChord by changing the sampler block.
+1. **Bayes factors (ln B)**: Not computed. Require PolyChord nested sampling.
+   The Cobaya YAMLs can be adapted; see KNOWN_GAPS.md §3 for details.
 
-2. **Corner plots**: Not pre-generated. Can be produced from chains using
-   GetDist after running the MCMC.
+2. **Corner plots**: Not pre-generated. Produce from committed frozen chains
+   using GetDist after running `reproduce_cosmology.sh`.
 
-3. **CNN galaxy classifier**: The paper references a CNN for galaxy spin
-   classification. No CNN training code is provided. The hierarchical fit
-   uses published CW/CCW counts from the literature.
+3. **Galaxy spin classifier**: The ALP consistency check uses published
+   CW/CCW counts from the literature; no CNN training code is provided here.
+   Production chirality pipeline is in `pipelines/p2_chirality/`.
 
-4. **EB/TB power spectra**: Not computed from Planck maps. All birefringence
+4. **EB/TB power spectra**: Not recomputed from Planck maps. All birefringence
    values are literature citations (Minami & Komatsu 2020, Eskilt 2022).
+   NaMaster injection-recovery tests validate the pipeline approach.

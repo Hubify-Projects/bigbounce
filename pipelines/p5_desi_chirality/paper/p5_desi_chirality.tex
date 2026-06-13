@@ -18,7 +18,8 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.73-2026-06-13}
+\newcommand{\paperVersion}{v0.1.74-2026-06-13}
+% v0.1.74-2026-06-13 (2026-06-13 — EXT9 closure: abstract n=428 reword; VoidFinder split; ChatGPT MINOR resolved)
 % v0.1.73-2026-06-13 (2026-06-13 — Houston ship-final wave; abstract VoidFinder
 %   membership-approximation framing + title decision NM1 + HD-6 body audit-trail strip.
 %   (S1) Abstract: added ChatGPT-persistent-Class-D clarifier (4-round MAJOR carrier) on
@@ -482,12 +483,13 @@ and sky-position
 $p\!=\!0.607/0.135/0.413$): none reach $3\sigma$ after look-elsewhere
 correction. We interpret this as no evidence for environment-dependent
 chirality beyond the catalog-monopole offset at current sensitivity;
-the V-Web void class at $z\!\lesssim\!0.24$ is sample-size limited at
-$n\!=\!428$ chirality-relevant spirals and dominated by survey-edge
-artifacts (see \S\ref{sec:tweb_concurrent}), so the controlling void
-constraint comes from the DESIVAST-anchored re-projection
-($n\!=\!56{,}981$, $\Delta f_{\rm CW}\!=\!0.0007$) rather than the
-V-Web void label.
+the full V-Web secondary void bin is sample-size limited at
+$n\!=\!428$ chirality-relevant spirals; only $n\!=\!6$ lie in the
+DESIVAST $z\!\lesssim\!0.24$ overlap used for the per-galaxy
+classifier-disagreement check (see \S\ref{sec:tweb_concurrent}),
+so the controlling void constraint comes from the DESIVAST-anchored
+re-projection ($n\!=\!56{,}981$, $\Delta f_{\rm CW}\!=\!0.0007$)
+rather than the V-Web void label.
 
 \textbf{Robustness.} We strengthen the headline with the Tempel
 \textit{et~al.}~2014~\cite{Tempel2014} friends-of-friends group
@@ -515,13 +517,15 @@ constraint, but it illustrates the survey-shell systematic driving the
 V-Web void class at low $z$) returns $f_{\rm CW}^{\rm void} = 0.4964$ vs
 $f_{\rm CW}^{\rm non-void} = 0.4971$, $\Delta f_{\rm CW} \equiv
 f_{\rm CW}^{\rm non\mbox{-}void} - f_{\rm CW}^{\rm void} = +0.0007$,
-statistically indistinguishable
-(void membership uses the VoidFinder hole-sphere union, a permissive proxy
-for the catalog's intended interior-void geometry; the
-\S\ref{sec:desivast_maximal_healpix} exact maximal-sphere rerun
-$n_{\rm void} = 20{,}900$ confirms the same null verdict,
-and the any-hole/maximal-sphere comparison at $n_{\rm void} = 57{,}081$
-gives $\Delta f_{\rm CW}$ continuity within $\pm 0.6$\,pp); (ii)
+statistically indistinguishable.
+Here void membership uses the VoidFinder hole-sphere union as a permissive
+proxy for the catalog's intended interior-void geometry (primary DESIVAST
+VoidFinder result).
+As a supporting cross-check, the \S\ref{sec:desivast_maximal_healpix}
+exact maximal-sphere rerun ($n_{\rm void} = 20{,}900$; distinct from the
+hole-sphere union) confirms the same null verdict, and the
+any-hole/maximal-sphere comparison at $n_{\rm void} = 57{,}081$ gives
+$\Delta f_{\rm CW}$ continuity within $\pm 0.6$\,pp; (ii)
 three-algorithm DESIVAST robustness (VoidFinder + V2-REVOLVER + V2-VIDE)
 returns $|\Delta f_{\rm CW}| \le 0.004$ across all five Bonferroni-5 void
 definitions: the three sphere-PIS contrasts (VoidFinder, V2-REVOLVER,

@@ -460,13 +460,13 @@
   \emph {et~al.}}]{Fondi2025DESIQSOassembly}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont
-  {Fondi}} \emph {et~al.},\ }\bibfield  {title} {\bibinfo {title} {{Primordial
-  Non-Gaussianity with DESI QSOs and Assembly Bias}},\ }\href@noop {}
-  {\bibfield  {journal} {\bibinfo  {journal} {arXiv e-prints}\ } (\bibinfo
-  {year} {2025})},\ \bibinfo {note} {dESI QSO assembly-bias PNG analysis;
-  $f_{\rm NL}^{\rm loc} = -3.3 \pm 9.2$; distinct from Chaussidon et al.\ LRG
-  combined result},\ \Eprint {https://arxiv.org/abs/2503.14057}
-  {arXiv:2503.14057} \BibitemShut {NoStop}%
+  {Fondi}} \emph {et~al.},\ }\bibfield  {title} {\bibinfo {title} {{Assembly
+  bias and local Primordial non-Gaussianity from DESI DR1 Quasars}},\
+  }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {arXiv e-prints}\ }
+  (\bibinfo {year} {2025})},\ \bibinfo {note} {dESI QSO assembly-bias PNG
+  analysis; $f_{\rm NL}^{\rm loc} = -3.3 \pm 9.2$; distinct from Chaussidon et
+  al.\ LRG+QSO combined result},\ \Eprint {https://arxiv.org/abs/2602.12357}
+  {arXiv:2602.12357} \BibitemShut {NoStop}%
 \bibitem [{\citenamefont {{DESI Collaboration}}\ \emph
   {et~al.}(2016)\citenamefont {{DESI Collaboration}}, \citenamefont {Aghamousa}
   \emph {et~al.}}]{DESI:2016fnl}%

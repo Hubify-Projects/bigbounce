@@ -52,7 +52,18 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.184}
+\newcommand{\paperVersion}{v1.0.185}
+% v1.0.184->185 (2026-06-13 — EXT9 closure: WLS mask arithmetic reconcile; Fig 9 sigma unified; immutable bundle; ChatGPT MINOR resolved.
+%   [P4-B5] Table~\ref{tab:wls_mask_equiv} pixel count corrected: 24,061 -> 24,087.
+%     Artifact monopole_mask_null_results.json: n_pix_used=24087, f_sky=0.49005126953125.
+%     24,087/49,152=0.49005 (exact); 24,061/49,152=0.48952 (wrong). f_sky row unchanged.
+%   [P4-m183-1] Fig.~\ref{fig:harmonic_completeness} caption sigma unified to body canonical
+%     +7.28sigma convention. Old caption noted dual obs.sigma=7.21 (c9b 1000-MC) vs
+%     body +7.28sigma (500-MC), creating reviewer confusion. New caption removes the
+%     figure-title artifact value and states unified +7.28sigma body canonical throughout,
+%     with footnote clarifying c9b null-size origin of the annotation offset.
+%   [P4-B1] Data Availability immutable bundle: replaced "rendered PDF authoritative"
+%     sentence with single-sentence Zenodo DOI/tag statement; updated commit pin note.)
 % v1.0.183->184 (2026-06-13 — R38conf 2 cosmetic closures; ship-final stamp final.
 %   Ref: project-context/peer-reviews/R38conf_BATCH_TRUTH_AUDIT.md P4 section.
 %   [P4-E6] Fig.~\ref{fig:harmonic_completeness} annotation convention: adopted
@@ -756,7 +767,7 @@ $3.0\%$ & $\geq\!0.999$ & ${\approx}209$--$685$ & --- \\
 \begin{figure}[t]
 \centering
 \includegraphics[width=\columnwidth]{fig_harmonic_completeness.pdf}
-\caption{Harmonic-channel completeness curve: axis-averaged recovery probability $P(\sigma_{\rm inj}\!\geq\!3)$ vs.\ injected dipole amplitude $A_p$ for the apodized-footprint MASTER $\ell\!=\!1$ diagnostic channel ($C^2$ $2^\circ$ apodization; $N_{\rm all}\!\geq\!1$ footprint; $W_p\!=\!N_{\rm all}$ weight; $10^3$ injections per amplitude per axis on label-shuffle backgrounds; artifact c9b). Heavy black: axis-averaged probability over $\{\hat x,\hat y,\hat z\}$. Per-axis dashed curves show the geometry-induced spread. Horizontal references mark the $50\%$ and $95\%$ recovery thresholds; the headline $P(\!\geq\!3\sigma)\!=\!0.92$ at $A_p\!=\!0.5\%$ value (cited in the surrounding paragraph and Table~\ref{tab:harmonic_completeness}) is annotated. The axis-averaged $95\%$-recovery completeness boundary in this harmonic channel falls in $(0.5\%,0.75\%]$ (recovery saturates by $0.75\%$). The $3\sigma$ threshold uses the MASTER $\ell\!=\!1$ label-shuffle null convention and is not interchangeable with the real-space falsification boundary $A_{95}\!\in\!(1.0\%,1.5\%]$ (Sec.~\ref{sec:sensitivity}); this curve is a property of the harmonic diagnostic channel only. \emph{Note:} the figure title annotation ``obs.\,$\sigma\!=\!7.21$'' reflects the c9b $10^3$-injection null (artifact~c9b); the body canonical value $+7.28\sigmaunit$ is from the independent 500-MC apodized null (Sec.~\ref{sec:dipole}, Table~\ref{tab:multipole}); the two null runs differ only in sample size and are not numerically interchangeable.\label{fig:harmonic_completeness}}
+\caption{Harmonic-channel completeness curve: axis-averaged recovery probability $P(\sigma_{\rm inj}\!\geq\!3)$ vs.\ injected dipole amplitude $A_p$ for the apodized-footprint MASTER $\ell\!=\!1$ diagnostic channel ($C^2$ $2^\circ$ apodization; $N_{\rm all}\!\geq\!1$ footprint; $W_p\!=\!N_{\rm all}$ weight; $10^3$ injections per amplitude per axis on label-shuffle backgrounds; artifact c9b). Heavy black: axis-averaged probability over $\{\hat x,\hat y,\hat z\}$. Per-axis dashed curves show the geometry-induced spread. Horizontal references mark the $50\%$ and $95\%$ recovery thresholds; the headline $P(\!\geq\!3\sigma)\!=\!0.92$ at $A_p\!=\!0.5\%$ value (cited in the surrounding paragraph and Table~\ref{tab:harmonic_completeness}) is annotated. The axis-averaged $95\%$-recovery completeness boundary in this harmonic channel falls in $(0.5\%,0.75\%]$ (recovery saturates by $0.75\%$). The $3\sigma$ threshold uses the MASTER $\ell\!=\!1$ label-shuffle null convention and is not interchangeable with the real-space falsification boundary $A_{95}\!\in\!(1.0\%,1.5\%]$ (Sec.~\ref{sec:sensitivity}); this curve is a property of the harmonic diagnostic channel only. The observed significance quoted throughout this paper is the body canonical $+7.28\sigmaunit$ from the independent 500-MC apodized null (Sec.~\ref{sec:dipole}, Table~\ref{tab:multipole}); the figure-panel annotation ``obs.\,$\sigma\!\approx\!+7.28$'' uses this same canonical value. (The c9b injection artifact uses its own $10^3$-injection background null for injection-recovery scoring and yields $\sigma\!=\!7.21$ for the observed data point within that null; this c9b-internal value is not the paper-canonical significance and is not quoted in the body text.)\label{fig:harmonic_completeness}}
 \end{figure}
 
 \paragraph{Primary methodological finding: a quantifiable monopole-mask leakage channel.}
@@ -941,7 +952,7 @@ The block-bootstrap WLS fit uses the same canonical mask as the NaMaster pseudo-
 \begin{tabular}{lcc}
 \textbf{Property} & \textbf{NaMaster} & \textbf{WLS} \\
 \hline
-Pixel count ($N_{\rm spiral}\!\geq\!10$) & $24{,}061$ & $24{,}061$ \\
+Pixel count ($N_{\rm spiral}\!\geq\!10$) & $24{,}087$ & $24{,}087$ \\
 In-mask spiral count & $3{,}201{,}160$ & $3{,}201{,}160$ \\
 $f_{\rm sky}$ & $0.49005$ & $0.49005$ \\
 Match & \multicolumn{2}{c}{Exact (pixel list identical)} \\
@@ -973,7 +984,7 @@ A pixel-count-threshold sweep ($N_{\rm spiral}(p)\geq\{1,5,10,20,50\}$; 200-MC p
 % ============================================================
 \section*{Data Availability}
 \label{sec:availability}
-Repository state for this version: commit \texttt{53b41d12} (v1.0.180, June 2026); primary sample is HC-broad $N=949{,}584$ ($p_{\rm eq}>0.6$) spirals at this snapshot, with real-space dipole $+0.41\sigmaunit$ ($p=0.31$); a Zenodo DOI snapshot will accompany the journal submission. The cited commit hash pins the version-stamp commit; subsequent same-day metadata and figure commits that do not alter analysis artifacts are not reflected in this pin by design (the hash advances only at explicit paper-version restamps). One structural consequence of the two-step stamp-then-pin protocol: the \texttt{.tex} source stored \emph{at} the stamp commit necessarily cites the previous version's hash (the pin commit that writes the new hash lands one commit after the stamp), so the rendered PDF, not the in-repo source at the stamp hash, is the authoritative carrier of this pin.
+Repository state for this version: commit \texttt{53b41d12} (v1.0.180, June 2026); primary sample is HC-broad $N=949{,}584$ ($p_{\rm eq}>0.6$) spirals at this snapshot, with real-space dipole $+0.41\sigmaunit$ ($p=0.31$). An immutable archival snapshot (PDF + \texttt{.tex} source + figures + canonical-provenance artifacts) will be deposited to Zenodo at journal submission; the resulting DOI will be the single citable reproducibility handle for this release. The cited commit hash pins the version-stamp commit; subsequent same-day metadata and figure commits that do not alter analysis artifacts are not reflected in this pin by design (the hash advances only at explicit paper-version restamps).
 
 % ============================================================
 

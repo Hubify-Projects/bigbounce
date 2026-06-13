@@ -119,8 +119,32 @@
 %   FALSIFIED list (14 items) not acted on.)
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1B.0.67}
+\newcommand{\paperVersion}{v1B.0.68}
 \newcommand{\paperTimestamp}{June 13, 2026}
+% v1B.0.67->68 (2026-06-13 — EXT9 closure: repo-sync wave + 2-line wording; ChatGPT MINOR resolved)
+%   REPO-SYNC WAVE (ChatGPT MINOR — public docs sync):
+%   1. reproducibility/docs/IMPLEMENTATION_MAP.md: updated stale H0=69.2/DNeff=0.3/
+%      chi2=1148.3 to current Table I values (H0=67.68/67.78, DNeff=-0.020/+0.058,
+%      chi2_total=14037.4); "modified CAMB" language replaced with "stock CAMB";
+%      ln B caveat updated to "not computed" (stale +-1.2/+4.8 retracted).
+%   2. reproducibility/docs/KNOWN_GAPS.md: §1 "No Bespoke CAMB Modifications"
+%      rewritten to current stock-CAMB framing; §3 Bayes-factor section updated
+%      to match current paper (no ln B claimed; stale fire-#21 confabulation noted).
+%   3. CHANGELOG.md: v1B.0.66 + v1B.0.67 entries added (were missing; top entry
+%      was v1B.0.65 with "(this wave)" SHA placeholders).
+%   4. reproducibility/p1_namaster_500mc/results/summary.json: snr_namaster field
+%      renamed to template_fit_recovery_snr; scientific_conclusion updated to
+%      clarify "pipeline-recovery methods-validation figure, not sky-detection
+%      significance" per ChatGPT MINOR framing concern.
+%   2-LINE WORDING FIXES:
+%   5. §III.C section body (L~2063): "published cross-check of the quintom-B direction"
+%      → "caveated overlap-uncorrected diagnostic of the quintom-B direction".
+%   6. §conclusion Spectator-ALP paragraph (L~2504): leading scan envelope
+%      "f_a~MPl, m~H0" → front-loaded with spectator-safe subset numbers
+%      (Omega_a<0.01, 13% posterior mass, median m~40.5 H0) before the
+%      scan envelope, per ChatGPT MINOR suggestion (lead with Ω_a<0.01 numbers).
+%   Both Grok ACCEPT + Gemini ACCEPT confirmed v1B.0.66 at galley-proof level;
+%   ChatGPT MINOR now resolved → path to 3/3 ACCEPT on EXT10.
 % v1B.0.66->67 (2026-06-13 --- LCDM+DeltaNeff Planck+BAO+SN converged
 %   replication landed; c15 dedicated re-run with Planck NPIPE + SDSS DR16
 %   BAO + Pantheon+ converged on the cheap-pod (RTX A4000, pod 5i2td3deu3hojr)
@@ -2061,10 +2085,10 @@ are committed at \artifact{reproducibility/cosmology/chains/w0wa_quintom_desi_dr
 \subsection{$w_0 w_a$ cross-check with stated SN-overlap systematic}\label{sec:w0wa_crosscheck}
 
 The DESI~DR2 $w_0 w_a$ chain (Table~\ref{tab:iter2_posterior}) is reported
-as a published cross-check of the quintom-B direction on the existing
-converged Cobaya chain. Its SN likelihood combines DES-SN5YR and
-Pantheon+ without a joint overlap covariance (caveat~(e) of
-Sec.~\ref{sec:verification}), so the SN-overlap systematic is stated
+as a caveated overlap-uncorrected diagnostic of the quintom-B direction
+on the existing converged Cobaya chain. Its SN likelihood combines
+DES-SN5YR and Pantheon+ without a joint overlap covariance (caveat~(e)
+of Sec.~\ref{sec:verification}), so the SN-overlap systematic is stated
 explicitly as a known limitation of this product-likelihood combination
 and no model-selection statement is claimed. The goodness-of-fit decomposition ($\chi^2_{\rm BAO}$,
 $\chi^2_{\rm CMB}$, $\chi^2_{\rm SN}$) is reported in Table~\ref{tab:iter2_posterior};
@@ -2501,9 +2525,11 @@ with the ACT-noise floor. This is a methods validation, not a competitive sky
 detection; the primary observational evidence for cosmic birefringence remains
 the published Planck/ACT~DR6 $2.7$--$2.9\sigma$ measurements.
 
-\textit{Spectator-ALP consistency.}---An ALP with $f_a\sim\MPl$, $m\sim H_0$
+\textit{Spectator-ALP consistency.}---Within the $\Omega_a < 0.01$ spectator-safe
+subset ($13\%$ of the posterior mass; median $m\simeq 40.5\,H_0$,
+$\Omega_a < 0.01$), an ALP with $f_a\sim\MPl$, $m\sim H_0$
 is consistent with the published $3.6\sigma$ joint signal, with the caveat
-that only the $\Omega_a < 0.01$ spectator-safe subset
+that this spectator-safe subset
 ($\theta_i\sim 0.1$, a ${\sim}25\times$ fine-tuning relative to the natural
 midpoint; fn.~\ref{fn:theta_backreaction}) satisfies spectator status
 ($C_{a\gamma}\,\Delta\phi/f_a \approx 10.3$ for $\beta=0.342^\circ$, with
@@ -2517,7 +2543,7 @@ and calibration assumptions~\cite{LiteBIRD2023}, a $\beta\simeq 0.27^\circ$
 signal would be detected relative to $\beta=0$ at ${\sim}9\sigma$ by
 LiteBIRD in the early 2030s.
 
-\textit{$w_0 w_a$ cross-check.}---The converged DESI~DR2 + Planck~NPIPE + Pantheon+~\cite{Brout2022PantheonPlus} + DES-SN5YR~\cite{DES2024SN5YR} Cobaya chain with the $w_0 w_a$ free-parameter extension ($128{,}385$ accepted samples across 16 MPI chains; $\hat R - 1 = 0.00820$, below the standard $\hat R\!-\!1\!<\!10^{-2}$ publication target) supplies the GetDist $w_0 w_a$ posteriors of Table~\ref{tab:iter2_posterior}, a published cross-check of the quintom-B scenario~\cite{Cai2010quintomReview} (tested against DESI~DR2~\cite{DESI2025DR2}) under an overlap-uncorrected SN product likelihood (Sec.~\ref{sec:verification}, caveat~(e)); the SN-overlap systematic is stated as a known limitation and no model-selection claim is made.
+\textit{$w_0 w_a$ cross-check.}---The converged DESI~DR2 + Planck~NPIPE + Pantheon+~\cite{Brout2022PantheonPlus} + DES-SN5YR~\cite{DES2024SN5YR} Cobaya chain with the $w_0 w_a$ free-parameter extension ($128{,}385$ accepted samples across 16 MPI chains; $\hat R - 1 = 0.00820$, below the standard $\hat R\!-\!1\!<\!10^{-2}$ publication target) supplies the GetDist $w_0 w_a$ posteriors of Table~\ref{tab:iter2_posterior}, a caveated overlap-uncorrected diagnostic of the quintom-B scenario~\cite{Cai2010quintomReview} (tested against DESI~DR2~\cite{DESI2025DR2}) under an overlap-uncorrected SN product likelihood (Sec.~\ref{sec:verification}, caveat~(e)); the SN-overlap systematic is stated as a known limitation and no model-selection claim is made.
 
 \subsection*{Data and Code Availability}
 

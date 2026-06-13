@@ -35,7 +35,7 @@ Warning--missing number in McDonaldSeljak2009
 Warning--missing number in Chen:2009zp
 You've used 43 entries,
             6079 wiz_defined-function locations,
-            1955 strings with 23240 characters,
+            1955 strings with 23257 characters,
 and the built_in function-call counts, 45728 in all, are:
 = -- 3439
 > -- 1031
