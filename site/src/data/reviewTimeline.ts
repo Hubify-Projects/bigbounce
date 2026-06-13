@@ -45,6 +45,26 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "R37CONF-CLOSURES",
+    kind: "closure-wave",
+    dateISO: "2026-06-13",
+    timePT: "R37conf 4-vendor batch · P1A patch landed",
+    title: "R37conf batch audit: 5/6 papers CLEAN, gap collapsed 14 → 2 (7× reduction) — loop convergence confirmed",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "First batch audit pass under the routing rule (one Opus director-leg across all 6 papers since EXT7 closures were well-verified by their agents). Result: 5/6 CLEAN. P1A had 2 minor OpenAI items closed in v1A.0.69: sphaleron T-crossover lowered from 10¹² → ~few×10¹⁰ GeV (α_W⁵·M_Pl ≈ 6×10¹¹ GeV — literature consensus per Arnold-McLerran / D'Onofrio) and hierarchy convention unified to 10¹²² unreduced-M_Pl across all 5 body sites. The gap-metric collapse from EXT7's 14 to R37conf's 2 is the strongest convergence signal of the campaign.",
+    keyTakeaways: [
+      "Loop convergence confirmed: gap 60 → 32 → 27 → 13 → 19 → 18 → 14 → 2 (7× reduction at R37conf)",
+      "P1A v1A.0.69: sphaleron T-crossover & hierarchy convention closed — both 1-line literature-consensus fixes",
+      "All 6 papers at 95% readiness cap, exit-criterion met per SSOT",
+      "Strategic recommendation: pause EXT8 cycling — marginal information per round is near zero; bottleneck is Houston read-through + Zenodo + arXiv submission",
+      "Sign-off package refreshed (SSOT/SIGNOFF_PACKAGE_2026-06-13.md) with per-paper checkboxes + submission runbook",
+    ],
+    links: [
+      { label: "Batch audit", href: `${PR}/R37conf_BATCH_TRUTH_AUDIT.md` },
+      { label: "Sign-off package", href: `${GH}/project-context/SSOT/SIGNOFF_PACKAGE_2026-06-13.md` },
+    ],
+  },
+  {
     id: "EXT7-CLOSURES",
     kind: "closure-wave",
     dateISO: "2026-06-13",

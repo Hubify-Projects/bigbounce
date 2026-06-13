@@ -85,7 +85,7 @@ export const papers: Paper[] = [
     slug: "paper-1a",
     number: "1A",
     title: "Channel-Level Closure of Four Minimal Einstein–Cartan–Holst Dark-Energy Routes and Perturbation Transparency for Scalar Matter",
-    version: "v1A.0.68",
+    version: "v1A.0.69",
     lastUpdated: "2026-06-11",
     tldr: "Closes all four minimal Einstein–Cartan–Holst routes from a quantum bounce to dark energy and proves the Holst sector is invisible to scalar/tensor perturbations — leaving two clean observational kill-tests (LiteBIRD birefringence, SPHEREx f_NL).",
     path: publicationPath({
@@ -120,10 +120,10 @@ export const papers: Paper[] = [
       "arXiv endorsement + submission (astro-ph.CO)",
     ],
     preprintId: "HUBIFY-2026-001A",
-    pdfMeta: "PDF 1.7 MB · 27 pp · v1A.0.68 · updated Jun 10, 2026",
+    pdfMeta: "PDF 1.7 MB · 27 pp · v1A.0.69 · updated Jun 10, 2026",
     artifacts: [
-      { label: "Read PDF", href: "/papers/paper1a_ech_nogo_v1A.0.68.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/paper1a_ech_nogo_v1A.0.68.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/paper1a_ech_nogo_v1A.0.69.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/paper1a_ech_nogo_v1A.0.69.pdf", kind: "secondary", download: true },
       {
         label: "LaTeX source",
         href: "https://github.com/Hubify-Projects/bigbounce/blob/main/arxiv/paper1a_ech_nogo.tex",

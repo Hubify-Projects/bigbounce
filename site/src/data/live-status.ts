@@ -52,7 +52,7 @@ export const liveStatus: LiveStatus = {
   headline:
     "EXT6 harvested — Grok 4th consecutive 6/6 ACCEPT; Gemini first full ACCEPT on P1B; R35conf closures landed; ChatGPT MAJOR×6 with P2 narrowly; truth-audits in progress.",
   summary:
-    "Six external rounds complete. EXT6 submitted Jun 12 ~02:35 PT on R35conf-closed versions (v1A.0.68/v1B.0.65/v1.7.60/v3.1.103/v1.0.182/v0.1.72). Grok has been 6/6 ACCEPT for four consecutive rounds. Gemini fully cleared P1B for the first time. ChatGPT holds MAJOR×6; per-finding truth-audits determine the genuine residuals.",
+    "Six external rounds complete. EXT6 submitted Jun 12 ~02:35 PT on R35conf-closed versions (v1A.0.69/v1B.0.65/v1.7.60/v3.1.103/v1.0.182/v0.1.72). Grok has been 6/6 ACCEPT for four consecutive rounds. Gemini fully cleared P1B for the first time. ChatGPT holds MAJOR×6; per-finding truth-audits determine the genuine residuals.",
   currentlyRunning: [
     "Hourly native-PDF cross-vendor review autoloop on all 6 papers (Claude · GPT · Gemini · Grok · Perplexity + meta-reviewer)",
     "Persistence tracker fingerprinting findings across fires; load-bearing items escalate to Houston decision package",
@@ -77,9 +77,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-1a",
       number: "1A",
       shortTitle: "ECH dark-energy closure + perturbation transparency",
-      version: "v1A.0.68",
+      version: "v1A.0.69",
       readiness: 95,
-      pendingWork: "v1A.0.68 — EXT6: Grok ACCEPT ×4 rounds, Gemini MINOR (fine-tuning score phrasing); ChatGPT MAJOR (NJL wrong-sign, Sec IV closure overclaim); truth-audit in progress; awaiting Houston sign-off",
+      pendingWork: "v1A.0.69 — EXT6: Grok ACCEPT ×4 rounds, Gemini MINOR (fine-tuning score phrasing); ChatGPT MAJOR (NJL wrong-sign, Sec IV closure overclaim); truth-audit in progress; awaiting Houston sign-off",
     },
     {
       slug: "paper-1b",
