@@ -123,12 +123,13 @@ Items that genuinely require a ruling before submission. "Ruled all-default" app
 *Ruled and standing — no action required:*
 - P1A companion-import anchors → insert real IDs on submission day (K1/K6, standing).
 - P1A PACS retention → keep for PRD (HD-3, 3rd ruling).
-- P1B DOI/Zenodo → submission day, one sitting (HD-4 + HD-11).
+- **HD-4 (P1B DOI/Zenodo): ruled DO-NOW per Houston 2026-06-13 directive.** Action taken: Zenodo deposition record prepared at `project-context/SSOT/zenodo/P1B_zenodo_deposition.md`; one-click publish remaining on submission day.
 - P1B abstract f_a framing → keep current wording (EXT1-F3).
+- **HD-6 (P2 Zenodo DOI / ship-mode body strip): ruled DO-NOW per Houston 2026-06-13 directive.** Action taken: Zenodo deposition record prepared at `project-context/SSOT/zenodo/P2_zenodo_deposition.md` with full file manifest and 5-step click-publish steps; existing `ZENODO_RELEASE_CHECKLIST.md` updated with correct submission version tag `paper2-v1.7.60`; one-click publish remaining on submission day.
 - P2 anomaly-tracer section placement → keep (C8, 3rd ruling).
-- P2 Zenodo DOI → checklist at `ZENODO_RELEASE_CHECKLIST.md`; tag paper2-v1.7.60.
+- **HD-11 (Zenodo DOI at submission day — all 6 papers): ruled DO-NOW per Houston 2026-06-13 directive.** Action taken: Zenodo deposition records prepared for all 6 papers at `project-context/SSOT/zenodo/`; master submission-day runbook at `project-context/SSOT/zenodo/INDEX.md`; one-click publish remaining for each paper on submission day per the order P4 → P1A+P1B → P3 → P2 → P5.
 - P4 provenance-gate two-step stamp→pin → keep + disclosure clause.
-- P4 `\artifact` blob/main → re-point at Zenodo DOI on submission day.
+- P4 `\artifact` blob/main → re-point at Zenodo DOI on submission day (covered in P4 deposition record).
 - P4 D4 spatial stratification → out of scope for v1 (M6).
 - P3 Gaia in catalog-grade / NANOGrav placement / correction-note retention / DOI timing → all HD-ruled keep.
 
