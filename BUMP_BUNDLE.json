@@ -1,56 +1,56 @@
 [
  {
   "paperSlug": "paper-1a",
-  "version": "v1A.0.67",
+  "version": "v1A.0.68",
   "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1a_ech_nogo.pdf",
-  "sitePdfPath": "/papers/paper1a_ech_nogo_v1A.0.67.pdf",
-  "changelog": "R36conf closures: \u00a7X D footnote NY+T\u2227T decomposition; dim-ansatz framing in abstract+scope; LiteBIRD 0.73\u03c3 heuristic. \u00a7IV E NJL fix independently confirmed.",
+  "sitePdfPath": "/papers/paper1a_ech_nogo_v1A.0.68.pdf",
+  "changelog": "EXT7 closure: Fig 3 caption/code mismatch fixed (pattern-031) \u2014 H0=69.2/\u03a9_m=0.310/enhanced \u0394N_eff disclosed; README v1A.0.64\u2192v1A.0.67 sync.",
   "datestamp": "2026-06-13",
-  "texCommit": "1e5923bc"
+  "texCommit": "290636a8"
  },
  {
   "paperSlug": "paper-1b",
-  "version": "v1B.0.64",
+  "version": "v1B.0.65",
   "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1b_mcmc_companion.pdf",
-  "sitePdfPath": "/papers/paper1b_mcmc_companion_v1B.0.64.pdf",
-  "changelog": "R36conf closures: explicit \u03c7\u00b2(\u03b2) equation inserted at \u00a7IV; one-sided \u0394Neff 95% UL in Table I; fsky mask defs; Paper 1A standalone summary; w0wa Exploratory label. Grok rubber-stamp pattern-009 logged.",
+  "sitePdfPath": "/papers/paper1b_mcmc_companion_v1B.0.65.pdf",
+  "changelog": "EXT7 closure: NaMaster Eq (1) \u03c3_b\u00b2 divisor dropped to match released script `namaster_500mc.py`; CHANGELOG v1B.0.64+65 entries; README Paper I(b) v1B.0.62\u2192v1B.0.65.",
   "datestamp": "2026-06-13",
-  "texCommit": "1e5923bc"
+  "texCommit": "290636a8"
  },
  {
   "paperSlug": "paper-2",
-  "version": "v1.7.59",
+  "version": "v1.7.60",
   "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/research/focused_paper_source_integration/02_full_draft.pdf",
-  "sitePdfPath": "/papers/paper2_fnl_forecast_v1.7.59.pdf",
-  "changelog": "R36conf MAJOR: new consolidated systematics Tab. IV (12 rows from Heinrich \u03c3=0.7 through \u03c3_eff=1.41 \u2192 2.6\u03c3); plus 9 minors (r 0.83\u21920.84, BF worked example, x_3 first-use def, asymmetric uncertainty footnote, etc.).",
+  "sitePdfPath": "/papers/paper2_fnl_forecast_v1.7.60.pdf",
+  "changelog": "EXT7 MAJOR closure: Table IV Row 1 split (Naive 6.25\u03c3 vs Template-corrected 5.2-5.5\u03c3); DESI Ref [34] split (Chaussidon LRG + new Fondi QSO); Ref [28] DOI; basis-dependent representation framing.",
   "datestamp": "2026-06-13",
-  "texCommit": "1e5923bc"
+  "texCommit": "290636a8"
  },
  {
   "paperSlug": "paper-3",
-  "version": "v3.1.102",
+  "version": "v3.1.103",
   "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p3_anomaly_engine/paper3_draft.pdf",
-  "sitePdfPath": "/papers/paper3_anomaly_catalog_v3.1.102.pdf",
-  "changelog": "R36conf 15-item polish bundle: Planck 152/48 binomial p\u22484e-4; Wilson 95% CIs on DESI per-class rates; dust correlation specified (Planck \u03c4\u2083\u2085\u2083/I\u2088\u2085\u2087, HEALPix N=64); SIMBAD 5\u2033 vs pooled 3\u2033 disambiguated; Cram\u00e9r's V=0.020; Table IV/Fig 1 captions; 4 'earlier draft' parentheticals removed from body.",
+  "sitePdfPath": "/papers/paper3_anomaly_catalog_v3.1.103.pdf",
+  "changelog": "EXT7 closures: Eq (1) spectro/tabular disambiguation; MSE unweighted gloss; Planck binomial caveat; Table VII fiber-spectral taxonomy note; tab:recount 4-row layout. Gemini-for-P3 CALIBRATED \u2014 drop reversed.",
   "datestamp": "2026-06-13",
-  "texCommit": "1e5923bc"
+  "texCommit": "290636a8"
  },
  {
   "paperSlug": "paper-4",
-  "version": "v1.0.181",
+  "version": "v1.0.182",
   "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p2_chirality/chirality_catalog_paper.pdf",
-  "sitePdfPath": "/papers/chirality_catalog_paper_v181.pdf",
-  "changelog": "R36conf closures: dropped erroneous 'sr' from Tab IV C_l caption; A_95^UL \u2192 A_95,nq at 3 sites; Fisher-scaling edge-on derivation added; augmentation delta clarified; 5\u03c3/3\u03c3 disambiguated. Commit pin advanced to v1.0.180.",
+  "sitePdfPath": "/papers/chirality_catalog_paper_v182.pdf",
+  "changelog": "EXT7 6-item polish wave: NEW tab:wls_mask_equiv subtable; \u00a7IV.D Ganalyzer-reanalysis caveat; sum-to-one truncation/rounding rewrite; A_95,nq phrasing; D4-TTA classifier-stability caveat; NEW tab:harmonic_completeness mini-table.",
   "datestamp": "2026-06-13",
-  "texCommit": "1e5923bc"
+  "texCommit": "290636a8"
  },
  {
   "paperSlug": "paper-5",
-  "version": "v0.1.71",
+  "version": "v0.1.72",
   "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf",
-  "sitePdfPath": "/papers/p5_desi_chirality_v0.1.71.pdf",
-  "changelog": "R36conf closures: Tab. X n_CW typo 126,088\u2192126,202 (arithmetic-verified vs artifact 29); Fig 3 monopole note; Tab. XV \u03c3_from_half column; R_s=10 dropped (1.64\u03c3 prose); \u00b14.8pp 1\u03c3 rewrite; bright/dark z=1.95.",
+  "sitePdfPath": "/papers/p5_desi_chirality_v0.1.72.pdf",
+  "changelog": "EXT7 CLEAN at acceptance stage + 3 optional polish (Table VIII row label, \u00a7VIII.A V-Web cross-ref, 'canonical V-Web' \u2192 'headline V-Web' \u00d73). ChatGPT VoidFinder 6th k=20 auto-falsified; Gemini 3 MAJORs all falsified on disk.",
   "datestamp": "2026-06-13",
-  "texCommit": "1e5923bc"
+  "texCommit": "290636a8"
  }
 ]
