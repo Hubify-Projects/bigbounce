@@ -33,40 +33,41 @@ Staged at: `/private/tmp/bigbounce-ext-review/EXT10/` and `~/Downloads/bigbounce
 ### ChatGPT — Big Bounce Book Project (`/g/g-p-6881c7f354808191a36860ff4d29fa69`)
 Model/effort: **Pro Extended** (verified in bottom bar + screenshot)
 
-| Paper | PDF md5 | Chat URL | Submitted (PDT) | Harvest |
-|-------|---------|----------|-----------------|---------|
-| P1A | ea008466 | [link](https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a2dc597-d61c-83e8-ac93-8f3bf7f139fb) | ~13:47 | PENDING |
-| P1B | 06410d7c | [link](https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a2dc5cf-db00-83e8-b824-21b626a0d9ab) | ~13:52 | PENDING |
-| P2 | 406af9f8 | [link](https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a2dc5f2-5e8c-83e8-9318-b7aefa847ee0) | ~13:55 | PENDING |
-| P3 | 8533c5a7 | [link](https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a2dc617-2480-83e8-bf48-cc78a7bce891) | ~13:58 | PENDING |
-| P4 | 414048af | [link](https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a2dc65e-2488-83e8-90f8-fcacbf9d4378) | ~14:04 | PENDING |
-| P5 | 43619245 | [link](https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a2dc684-5918-83e8-b53e-28fde5fca69a) | ~14:07 | PENDING |
+| Paper | PDF md5 | Chat URL | Submitted (PDT) | Harvest | Verdict |
+|-------|---------|----------|-----------------|---------|---------|
+| P1A | ea008466 | [link](https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a2dc597-d61c-83e8-ac93-8f3bf7f139fb) | ~13:47 | ✅ 15:16 PDT | MINOR |
+| P1B | 06410d7c | [link](https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a2dc5cf-db00-83e8-b824-21b626a0d9ab) | ~13:52 | ✅ 15:16 PDT | MINOR |
+| P2 | 406af9f8 | [link](https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a2dc5f2-5e8c-83e8-9318-b7aefa847ee0) | ~13:55 | ✅ 15:16 PDT | MINOR |
+| P3 | 8533c5a7 | [link](https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a2dc617-2480-83e8-bf48-cc78a7bce891) | ~13:58 | ✅ 15:16 PDT | MINOR |
+| P4 | 414048af | [link](https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a2dc65e-2488-83e8-90f8-fcacbf9d4378) | ~14:04 | ✅ 15:16 PDT | MINOR |
+| P5 | 43619245 | [link](https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a2dc684-5918-83e8-b53e-28fde5fca69a) | ~14:07 | ✅ 15:16 PDT | MINOR |
 
 ### Grok — BigBounce-Papers Project (`/project/e6c9ce77-4f86-4d94-b440-1062a78171c1`)
 Model/effort: **Heavy** (Team of Experts, verified in bottom bar)
 
-| Paper | PDF md5 | Chat URL | Submitted (PDT) | Harvest |
-|-------|---------|----------|-----------------|---------|
-| P1A | ea008466 | [link](https://grok.com/project/e6c9ce77-4f86-4d94-b440-1062a78171c1?chat=7f12a3a9-339f-4a0d-a258-3d7224b02a7e) | ~14:09 | PENDING |
-| P1B | 06410d7c | [link](https://grok.com/project/e6c9ce77-4f86-4d94-b440-1062a78171c1?chat=6fede933-742f-423b-b1d8-bbbf7254d6c1) | ~14:11 | PENDING |
-| P2 | 406af9f8 | [link](https://grok.com/project/e6c9ce77-4f86-4d94-b440-1062a78171c1?chat=1d8e1fbc-6a0e-4917-b1a5-cf389b307141) | ~14:12 | PENDING |
-| P3 | 8533c5a7 | [link](https://grok.com/project/e6c9ce77-4f86-4d94-b440-1062a78171c1?chat=df8b502c-8c32-408f-9509-82be147fccbe) | ~14:13 | PENDING |
-| P4 | 414048af | [link](https://grok.com/project/e6c9ce77-4f86-4d94-b440-1062a78171c1?chat=9b06db9f-adeb-4928-8b88-8b17655b095d) | ~14:16 | PENDING |
-| P5 | 43619245 | [link](https://grok.com/project/e6c9ce77-4f86-4d94-b440-1062a78171c1?chat=52437983-41f2-4016-ac45-ad392572ce46) | ~14:18 | PENDING |
+| Paper | PDF md5 | Chat URL | Submitted (PDT) | Harvest | Verdict |
+|-------|---------|----------|-----------------|---------|---------|
+| P1A | ea008466 | [link](https://grok.com/project/e6c9ce77-4f86-4d94-b440-1062a78171c1?chat=7f12a3a9-339f-4a0d-a258-3d7224b02a7e) | ~14:09 | ✅ 15:16 PDT | MINOR |
+| P1B | 06410d7c | [link](https://grok.com/project/e6c9ce77-4f86-4d94-b440-1062a78171c1?chat=6fede933-742f-423b-b1d8-bbbf7254d6c1) | ~14:11 | ✅ 15:16 PDT | MINOR |
+| P2 | 406af9f8 | [link](https://grok.com/project/e6c9ce77-4f86-4d94-b440-1062a78171c1?chat=1d8e1fbc-6a0e-4917-b1a5-cf389b307141) | ~14:12 | ✅ 15:16 PDT | MINOR |
+| P3 | 8533c5a7 | [link](https://grok.com/project/e6c9ce77-4f86-4d94-b440-1062a78171c1?chat=df8b502c-8c32-408f-9509-82be147fccbe) | ~14:13 | ✅ 15:16 PDT | MINOR |
+| P4 | 414048af | [link](https://grok.com/project/e6c9ce77-4f86-4d94-b440-1062a78171c1?chat=9b06db9f-adeb-4928-8b88-8b17655b095d) | ~14:16 | ✅ 15:16 PDT | MINOR |
+| P5 | 43619245 | [link](https://grok.com/project/e6c9ce77-4f86-4d94-b440-1062a78171c1?chat=52437983-41f2-4016-ac45-ad392572ce46) | ~14:18 | ✅ 15:16 PDT | MINOR |
 
 ### Gemini — `gemini.google.com/u/0/` (Houston Golden · Work · Pro account)
 Model/effort: **3.5 Thinking** (Solves complex problems, verified in mode picker)  
-Account: `/u/0/` confirmed correct (showed "The mic is yours, Houston")  
-Note: Used fresh home-page per-submission per EXT7 lesson; growth-based wait (>BASE+2500) before navigation
+Account: `/u/0/` confirmed correct (showed "Your move, Houston!")  
+Note: Used fresh home-page per-submission per EXT7 lesson; growth-based wait (>BASE+2500) before navigation  
+Note P3: Original chat (169e5a1af77b02ed) was deleted/errored. Re-submitted from home page 15:16 PDT via DOM file upload. New URL: c3fcd0cf546e12eb. Completed at 15:30 PDT.
 
-| Paper | PDF md5 | Chat URL | Submitted (PDT) | Response confirmed | Harvest |
-|-------|---------|----------|-----------------|-------------------|---------|
-| P1A | ea008466 | [link](https://gemini.google.com/u/0/app/c522ddc10dbdff0b) | ~14:03 | ✅ length 3585→11166 | PENDING |
-| P1B | 06410d7c | [link](https://gemini.google.com/u/0/app/aacdf7af086eb273) | ~14:07 | ✅ length →11908 | PENDING |
-| P2 | 406af9f8 | [link](https://gemini.google.com/u/0/app/44f57cfa1ebd1ad7) | ~14:09 | ✅ length →10774 | PENDING |
-| P3 | 8533c5a7 | [link](https://gemini.google.com/u/0/app/169e5a1af77b02ed) | ~14:12 | ✅ length →7577 | PENDING |
-| P4 | 414048af | [link](https://gemini.google.com/u/0/app/3e0efda152a967cb) | ~14:18 | ✅ length →10607 | PENDING |
-| P5 | 43619245 | [link](https://gemini.google.com/u/0/app/a98f19d23eca55d7) | ~14:23 | ✅ length →12096 | PENDING |
+| Paper | PDF md5 | Chat URL | Submitted (PDT) | Response confirmed | Harvest | Verdict |
+|-------|---------|----------|-----------------|-------------------|---------|---------|
+| P1A | ea008466 | [link](https://gemini.google.com/u/0/app/c522ddc10dbdff0b) | ~14:03 | ✅ length 3585→11166 | ✅ 15:16 PDT | MINOR |
+| P1B | 06410d7c | [link](https://gemini.google.com/u/0/app/aacdf7af086eb273) | ~14:07 | ✅ length →11908 | ✅ 15:16 PDT | MINOR |
+| P2 | 406af9f8 | [link](https://gemini.google.com/u/0/app/44f57cfa1ebd1ad7) | ~14:09 | ✅ length →10774 | ✅ 15:16 PDT | MINOR |
+| P3 | 8533c5a7 | [link](https://gemini.google.com/u/0/app/c3fcd0cf546e12eb) | 15:16 PDT (RESUBMIT) | ✅ length 3627→12883 | ✅ 15:30 PDT | MINOR |
+| P4 | 414048af | [link](https://gemini.google.com/u/0/app/3e0efda152a967cb) | ~14:18 | ✅ length →10607 | ✅ 15:16 PDT | MINOR |
+| P5 | 43619245 | [link](https://gemini.google.com/u/0/app/a98f19d23eca55d7) | ~14:23 | ✅ length →12096 | ✅ 15:16 PDT | MINOR |
 
 ---
 
