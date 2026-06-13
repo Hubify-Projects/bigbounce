@@ -45,8 +45,37 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.65}
+\newcommand{\paperVersion}{v1A.0.66}
 \newcommand{\paperTimestamp}{June 12, 2026 PDT}
+% v1A.0.65->66 (2026-06-12 --- EXT6 closure wave; truth audit at
+%   project-context/peer-reviews/EXT6_P1A_TRUTH_AUDIT.md. Six items closed:
+%   #1 BLOCKER (Sec. IV E NJL stale-sign REGRESSION): L1786-1791 "condensate
+%       mechanism yields a vacuum energy that is parametrically too large by many
+%       orders of magnitude" was a live regression from R34conf that survived
+%       R35conf/EXT5 unpatched. Corrected OOM: rho_NJL ~ 4e-69 rho_Lambda ---
+%       ~69 orders BELOW rho_Lambda, not above it. Rewritten to: "The NJL
+%       contact term is parametrically far below rho_Lambda at any cosmologically
+%       relevant Standard-Model number density (~69 orders below), parity-even
+%       with <J^5>~0, and lacks any coherent w=-1 mean-field structure; incoherent
+%       thermal variance <J^5 J^5> is permitted but does not source coherent dark
+%       energy." (pattern-026 multi-site claim sync gap triggered; full manuscript
+%       grepped for "too large"/"condensate" residues -- no others found in live
+%       body text.)
+%   #2 MAJOR (Sec. IV opening uncalibrated): L1334-1335 "Each route is closed at
+%       the amplitude level rather than only at the structural level" inconsistent
+%       with Conclusions (already scoped R1--R3 amplitude / R4 naturalness).
+%       Rewritten to scope R1--R3 amplitude / R4 naturalness-deficit.
+%   #3 MAJOR (Fig. 4 caption overstates): L1860-1864 "parameter-independent" /
+%       "unique surviving minimal-ECH channel" dropped; replaced with calibrated
+%       class-level falsification language.
+%   #5 PARTIAL (tests of gamma framing): three occurrences of "tests of gamma"
+%       (L736, L2236, L2642) reframed with model-dependent caveat.
+%   #6 MINOR (Fig. 6 "decisive"): L2429-2431 "decisive (>=5sigma on Stage III/IV
+%       survey timescales)" replaced with "potentially decisive in optimistic
+%       configurations; 2.6-5sigma after the stated systematic budget (Table I
+%       footnote b)".
+%   #10 cosmetic (Pop\l{}awski diacritic): Pop\l{}awski -> Pop\l{}awski at L665,
+%       L669, L1898.
 % v1A.0.64->65 (2026-06-12 --- R35conf confirmation-round closure wave; truth
 %   audit at project-context/peer-reviews/R35conf_P1A_TRUTH_AUDIT.md. Seven
 %   VERIFIED items closed:
@@ -733,8 +762,10 @@ the perturbation-transparency result B14 and is retained in the catalog for
 historical mechanism-class completeness) mapping the minimal ECH parameter space. The central result
 is that minimal ECH gravity is perturbation-transparent for canonical scalar
 matter: torsion vanishes at all orders, the Holst sector decouples cleanly
-from scalar/tensor observables, and tests of $\gamma$ shift to nonperturbative
-parity-violating channels (ALP birefringence, primordial GWs).
+from scalar/tensor observables, and parity-sensitive channels (model-dependent
+tests of $\gamma_{\rm BI}$ only under a derived $\gamma_{\rm BI}$-dependent
+photon or tensor-parity coupling) shift to nonperturbative parity-violating
+channels (ALP birefringence, primordial GWs).
 
 \item \textit{Structural tension between dark-energy suppression and bounce $\fnl$}:
 We identify an incompatibility between the inflationary-suppression dark-energy
@@ -1331,8 +1362,11 @@ or scalar matter; and (R4) direct parity-odd couplings between the
 electromagnetic field and an axion-like or neutrino current that imprint
 on the CMB as cosmic birefringence. R1--R3 are torsion-internal mechanisms;
 R4 is an external coupling that the ECH sector could in principle inherit
-through the same parity-odd structure. Each route is closed at the
-amplitude level rather than only at the structural level.
+through the same parity-odd structure. R1--R3 are closed at the
+amplitude level under the explicitly-labeled scaling/ansatz assumptions
+stated below; R4 is closed at the level of a naturalness/explanatory-deficit
+objection rather than an amplitude exclusion
+(Sec.~\ref{sec:r4_birefringence}).
 
 \paragraph{Scope: channel-level enumeration, not an operator-level basis.}
 We emphasize that the four-route closure is a \emph{channel-level} enumeration
@@ -1783,12 +1817,12 @@ treated as a free parameter, a spectator-ALP fit reproduces both
 $\beta_{\rm obs}$ and $\rho_\Lambda$, but minimal ECH does not derive
 $m_\theta\sim H_0$ or the fitted $\alpha/M$, so the channel closes at
 the level of an explanatory deficit rather than an amplitude exclusion.
-The condensate mechanism
-yields a vacuum energy that is parametrically too large by many orders
-of magnitude and is not a viable DE source; its role is therefore
-documented in
-Sec.~\ref{sec:r1_njl} as a quantitative closure rather than a
-viable channel. Companion MCMC fits and the
+The NJL contact term is parametrically far below $\rho_\Lambda$ at
+any cosmologically relevant Standard-Model number density (${\sim}69$ orders
+below), parity-even with $\langle J^5\rangle\!\approx\!0$, and lacks any
+coherent $w\!=\!-1$ mean-field structure; incoherent thermal variance
+$\langle J^5 J^5\rangle$ is permitted but does not source coherent dark
+energy (Sec.~\ref{sec:r1_njl}). Companion MCMC fits and the
 $\Delta\Neff$/birefringence consistency analysis are reported in
 companion work in preparation~\cite{Golden2026P1b}; the present
 manuscript provides only the channel-level amplitude closure of the
@@ -1857,11 +1891,10 @@ birefringence ($\sigma(\beta)\!\approx\!0.03^\circ$, launch early 2030s)
 testing the spectator-ALP route 4. Bottom: SPHEREx galaxy bispectrum
 ($\sim\!2028$ first cosmological data release) testing the matter-bounce
 $\fnl=-35/8$ prediction at $2.6$--$5\sigma$ realistic significance
-(footnote~\ref{fn:spherex_range}). Both surveys deliver
-parameter-independent, ECH-independent class-level discrimination tests; the
-joint outcome falsifies the surviving ECH framework or leaves it as the
-unique surviving minimal-ECH channel under the stated
-ans\"atze. Curve families labeled $\rho=0,\,0.3,\,0.5$ correspond to the
+(footnote~\ref{fn:spherex_range}). Both surveys deliver ECH-independent class-level discrimination tests; under
+the stated ans\"atze they can falsify the relevant matter-bounce and uniform
+spectator-ALP benchmarks, but they do not identify a unique surviving
+minimal-ECH channel. Curve families labeled $\rho=0,\,0.3,\,0.5$ correspond to the
 assumed cross-correlation coefficient $\rho$ between the $\fnl$ and $\beta$
 joint-forecast estimators (with $\rho=0$ the uncorrelated baseline; $\rho>0$
 combinations track the gain in joint significance under a positive
@@ -2233,7 +2266,9 @@ The perturbation-transparency result establishes a clean dichotomy:
 \item \textit{Perturbation observables} ($C_\ell^{TT}$, $C_\ell^{EE}$, $P_k$,
 bispectrum): Identical to standard GR. No ECH modifications at any order.
 \item \textit{Nonperturbative parity channels} (ALP birefringence, primordial GW
-chirality): The relevant tests of $\gamma$.
+chirality): Parity-sensitive channels (model-dependent tests of
+$\gamma_{\rm BI}$ only under a derived $\gamma_{\rm BI}$-dependent photon
+or tensor-parity coupling).
 \end{itemize}
 
 \subsection{Discrimination Among Bouncing Cosmologies}\label{sec:discrimination}
@@ -2426,9 +2461,9 @@ $f_{\rm NL}$ Fisher landscape (companion Paper~II, $2.6$--$5\sigma$ projection).
 Bottom: spectator-ALP cosmic birefringence in the LiteBIRD $\sigma(\beta)
 \!\approx\!0.03^\circ$ window (Paper~Ib companion); the WMAP+Planck
 $\beta=0.342^\circ\pm 0.094^\circ$ and ACT~DR6 $\beta=0.215^\circ\pm 0.074^\circ$
-points are shown for reference. The SPHEREx $f_{\rm NL}$ forecast is
-decisive ($\gtrsim 5\sigma$ on Stage~III/IV survey timescales) against
-$f_{\rm NL}=0$; the LiteBIRD birefringence forecast targets a
+points are shown for reference. The SPHEREx $f_{\rm NL}$ forecast is potentially decisive in optimistic
+configurations; $2.6$--$5\sigma$ after the stated systematic budget
+(Table~I footnote~b) against $f_{\rm NL}=0$; the LiteBIRD birefringence forecast targets a
 non-zero-$\beta$ detection at its $\sigma(\beta)\!\approx\!0.03^\circ$
 sensitivity but does not separate $\beta=0.27^\circ$ from the published
 $\beta=0.342^\circ\pm 0.094^\circ$ at high significance (the discrimination
@@ -2639,7 +2674,9 @@ density $\propto R\widetilde R$, which involves two curvatures and is a
 separate topological invariant; see Sec.~\ref{sec:transparency} footnote for
 the $e\wedge e\wedge R = -\mathrm{NY} + T\wedge T$ decomposition). This is a positive structural result: it identifies the
 nonperturbative parity-violating channels (ALP birefringence, primordial GWs)
-as the relevant tests of $\gamma$.
+as parity-sensitive channels (model-dependent tests of $\gamma_{\rm BI}$
+only under a derived $\gamma_{\rm BI}$-dependent photon or tensor-parity
+coupling).
 
 \textit{The 13 logically-independent barriers (14 historical catalog entries).}---Systematic analysis across 7 foundations (A--G) and
 6 observational branches (H, J, L, M, N, O) established 14 mechanism-class constraints (one of which, B8, is the observational consequence of the perturbation-transparency result B14 and is retained in the catalog for historical mechanism-class completeness) on the minimal ECH

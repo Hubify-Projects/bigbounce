@@ -102,7 +102,7 @@ def fig_cw_by_env_bar() -> None:
                        fontsize=9)
     ax.set_ylabel("CW fraction $f_{\\rm CW}$", fontsize=10)
     ax.set_title("CW fraction per cosmic-web class (canonical V-Web,\n"
-                 "$n=791{,}635$ chirality-relevant matched spirals)",
+                 "$n=812{,}793$ env-labeled rows)",
                  fontsize=11)
     ax.legend(loc="upper right", fontsize=8.5, frameon=True)
     fig.tight_layout()

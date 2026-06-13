@@ -6,7 +6,7 @@
 
 **Author:** Houston Golden
 **Paper I(a) version:** v1A.0.64 (2026-06-12)
-**Paper I(b) version:** v1B.0.61 (2026-06-12)
+**Paper I(b) version:** v1B.0.62 (2026-06-12)
 **Bundle version:** v1A.0.64-bundle (synced to current paper stamps; Zenodo DOI tag at submission pending)
 
 ## Paper I(b) quick links
@@ -90,7 +90,8 @@ iter2 only, not the frozen ΛCDM+ΔN_eff fit. Source of truth:
 | σ₈ = 0.8034 ± 0.0084 | YES | `cobaya_full_tension.yaml` with stock CAMB |
 | ΔN_eff = −0.020 ± 0.169 | YES | `cobaya_full_tension.yaml` with stock CAMB |
 | Galaxy spin A₀, p, q | YES | `spin_fit_stan.py` + Shamir (2024) aggregate counts |
-| χ²_eff | YES | From MCMC chain maximum likelihood; AIC/BIC/ln B NOT reported in manuscript (deferred to nested sampling) |
+| Table II channel χ² decomposition | YES | Per-channel (BAO, CMB, SN, total) χ² decomposition reported in Table II of the manuscript |
+| χ²_eff / AIC / BIC / ln B | NO | Model-comparison statistics deferred to nested sampling (PolyChord); not reported in manuscript |
 | ln B (Bayes factors) | PARTIAL | Requires PolyChord (not included) |
 | β ≈ 0.27° birefringence | N/A | Model fiducial value; headline β = 0.342° ± 0.094° from published Eskilt & Komatsu (2022) PR3+WMAP9 analysis (see fn. 1 of manuscript) |
 | Corner plots | YES | From chains using GetDist |

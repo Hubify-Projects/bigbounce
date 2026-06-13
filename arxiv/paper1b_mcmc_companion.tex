@@ -119,8 +119,34 @@
 %   FALSIFIED list (14 items) not acted on.)
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1B.0.62}
+\newcommand{\paperVersion}{v1B.0.63}
 \newcommand{\paperTimestamp}{June 12, 2026}
+% v1B.0.62->63 (2026-06-12 --- EXT6 external-round closure wave; truth
+%   audit at project-context/peer-reviews/EXT6_P1B_TRUTH_AUDIT.md.
+%   3-vendor: ChatGPT Pro Extended, Grok Heavy, Gemini Thinking.
+%   FB2 (BLOCKER): bbn_predictor: PArthENoPE added to theory.camb.extra_args
+%     in all 4 cobaya_*.yaml files (Path C, artifact-pinning fix).
+%   FB1a (BLOCKER-sub): README.md Paper I(b) version bumped to v1B.0.62.
+%   FB1b (BLOCKER): v1B.0.62 CHANGELOG.md entry added.
+%   FM4 (MAJOR): README chi2_eff row relabelled to "Table II channel chi2
+%     decomposition | YES" + new "chi2_eff / AIC / BIC / ln B | NO" row.
+%   FM2 (MAJOR): "scan-prior midpoint values" rephrased at 3 sites to
+%     "within the scan-prior envelope but near upper-displacement/coupling
+%     edge; fixed-C_agamma=8 fit shifts to m>>H0 (median ~36 H0)".
+%   FM3 (MAJOR): Table IV Omega_a<0.1 and Omega_a<0.01 qualitative cells
+%     replaced with weighted 16/50/84 percentiles from c5 chain
+%     (Omega_a<0.1: ESS=1989; Omega_a<0.01: ESS=461).
+%   FM1 (PARTIAL): L1863 "headline result" -> "central marginal-tail result";
+%     "canonical quintom signature" -> with overlap-uncorrected caveat.
+%     L965/L1888/L2245 "headline result" -> "observed signal"/"birefringence
+%     signal" (also resolved by scan-prior midpoint FM2 rephrasing).
+%   Minor #10: Appendix A table-ref "Table III/Table IV reproducibility"
+%     rewritten to "Table I, Table III, Table V; ALP c5 backs Table IV".
+%   Minor #12: "pipeline systematic floor" -> "pipeline-recovery bias floor"
+%     at L891.
+%   Optional #16: ΔNeff one-sided truncation conservatism parenthetical
+%     added at §III (~L1074).
+%   HOUSTON-DECISION deferred: DOI (#4), PACS (#11), commit SHA (#13), units (#17).
 % v1B.0.61->62 (2026-06-12 --- R35conf confirmation-round closure wave; truth
 %   audit at project-context/peer-reviews/R35conf_P1B_TRUTH_AUDIT.md.
 %   Three VERIFIED MAJORs + fourteen VERIFIED minors closed.
@@ -888,7 +914,7 @@ $10\,\mu\text{K}\cdot\text{arcmin}$ white noise,
 $\beta=0.27^\circ$ recovers $\hat\beta=0.238^\circ$ (pipeline-recovery bias
 $\hat\beta-\beta_{\rm inj}=-0.032^\circ$; the worst-case bias across
 injections, $-0.040^\circ$ at $\beta_{\rm inj}=0.342^\circ$, is carried
-forward as the pipeline systematic floor --- both are MC
+forward as the pipeline-recovery bias floor --- both are MC
 pipeline-recovery figures, not sky-measurement systematics, and are not
 directly comparable to each other's published sky significances). \emph{Scope of the validation}: the test confirms the algebraic pseudo-$C_\ell$ $E\!\to\!B$ deconvolution under MASTER~\cite{Hivon2002} mode coupling, NOT the physical separation of the cosmic-rotation angle $\beta$ from the instrumental-miscalibration angle $\alpha$ which strictly requires unrotated galactic foregrounds (the synthetic CMB-only skies contain no galactic foregrounds, so the very component that breaks the $\beta$--$\alpha$ degeneracy in published Planck/ACT~DR6 measurements is absent by construction). The MC recovery is therefore a pipeline-validation figure, not a sky-detection significance claim. The primary sky detection significance is the
 published Planck/ACT DR6 $2.7$--$2.9\sigma$~\cite{DiegoPalazuelos2022,DiegoPalazuelos2025}
@@ -960,9 +986,12 @@ $2.7$--$2.9\sigma$ from Planck/ACT.
 
 \item \textit{Spectator-ALP consistency check} (Sec.~\ref{sec:birefringence_check}):
 a standard GR+ALP computation showing that the observed signal is consistent
-with an ALP at scan-prior midpoint values, while a spectator-safe
+with an ALP within the scan-prior envelope but near its upper-displacement/coupling
+edge; the posterior-supported fixed-$C_{a\gamma}\!=\!8$ fit shifts to
+$m\!\gg\!H_0$ (median ${\simeq}\,36\,H_0$), well above the prior midpoint.
+A spectator-safe
 interpretation requires a tuned misalignment subspace (the $\sim 25\times$
-misalignment tuning required to reconcile the headline result with the
+misalignment tuning required to reconcile the observed signal with the
 spectator-consistent corner is disclosed in
 Sec.~\ref{sec:birefringence_check} and fn.~\ref{fn:theta_backreaction}).
 \textbf{Not a distinctive ECH prediction.}
@@ -1069,7 +1098,9 @@ $\Delta\Neff < 0.31$, defined precisely as the 95th percentile of the
 posterior \emph{renormalised on $\Delta\Neff \ge 0$} (we discard the
 $\Delta\Neff < 0$ tail of weighted samples and rescale the surviving
 weights so $\int_0^\infty p(\Delta\Neff)\,d\Delta\Neff = 1$, then read
-the 95th percentile of the renormalised CDF); the planck+BAO+SN chain
+the 95th percentile of the renormalised CDF; this post-processing strategy
+is conservative when the unconstrained mode is mildly negative, as is the
+case here); the planck+BAO+SN chain
 gives $\Delta\Neff < 0.40$ under the same definition (direct
 weighted-sample computation on the committed chain with $30\%$ burn-in:
 $93{,}066$ post-burnin samples, of which $\sim 62\%$ satisfy
@@ -1860,7 +1891,7 @@ $\Delta N_{\rm eff} = -0.020 \pm 0.169$ (full-tension) and
 $+0.058 \pm 0.179$ (Planck+BAO+SN), both consistent with zero; these
 are the load-bearing numbers used elsewhere in the paper and they are
 unaffected by the model-comparison-statistic deferral.
-The $\chi^2$ goodness-of-fit decomposition (BAO, CMB, SN, and total contributions) is reported in Table~\ref{tab:iter2_posterior}; the AIC, BIC, and $\ln B$ evidence metrics are \emph{not} reported there. The headline result is $w_0 = -0.812 \pm 0.044$ (departing from the $\Lambda$CDM point $w_0=-1$ at $+4.3\sigma$; fn.~\ref{fn:wcaveat}) and $w_a = -0.667 \pm 0.186$ (departing from $w_a=0$ at $-3.6\sigma$), with $w_0+w_a = -1.48 \pm 0.15$ requiring phantom crossing (the canonical quintom signature). Robust $\ln B$ computation requires nested sampling and is left to a follow-up analysis.
+The $\chi^2$ goodness-of-fit decomposition (BAO, CMB, SN, and total contributions) is reported in Table~\ref{tab:iter2_posterior}; the AIC, BIC, and $\ln B$ evidence metrics are \emph{not} reported there. The central marginal-tail result is $w_0 = -0.812 \pm 0.044$ (departing from the $\Lambda$CDM point $w_0=-1$ at $+4.3\sigma$; fn.~\ref{fn:wcaveat}) and $w_a = -0.667 \pm 0.186$ (departing from $w_a=0$ at $-3.6\sigma$), with $w_0+w_a = -1.48 \pm 0.15$ requiring phantom crossing (the canonical quintom signature under the overlap-uncorrected likelihood; see §\ref{sec:cosmo_fits} caveat). Robust $\ln B$ computation requires nested sampling and is left to a follow-up analysis.
 
 The $\Lambda$CDM$+\Delta\Neff$ proxy thus offers neither posterior
 preference nor exclusion at the present data precision. The
@@ -1883,9 +1914,11 @@ text, rather than in a footnote only.
 This subsection presents a secondary consistency check using the
 spectator ALP model. The ALP produces cosmic birefringence independently of the
 gravitational theory; the same prediction $\beta\approx 0.27^\circ$ arises in
-standard GR with an identical ALP Lagrangian at scan-prior midpoint
-values, with the same $\sim 25\times$ misalignment tuning required to recover
-the headline result disclosed below and in fn.~\ref{fn:theta_backreaction}.
+standard GR with an identical ALP Lagrangian within the scan-prior envelope
+but near its upper-displacement/coupling edge; the posterior-supported
+fixed-$C_{a\gamma}\!=\!8$ fit shifts to $m\!\gg\!H_0$ (median ${\simeq}\,36\,H_0$),
+with the same $\sim 25\times$ misalignment tuning required to recover
+the birefringence signal disclosed below and in fn.~\ref{fn:theta_backreaction}.
 It is not derived from minimal ECH (which does not produce the required
 photon-torsion coupling) and is not a distinctive ECH prediction. The model class was previously
 studied by Fujita~\etal~\cite{Fujita2021}.
@@ -2176,8 +2209,8 @@ ${\sim}0.5\sigma$.}}
 Subset & post.\ mass & $\beta$ (deg) & $m/H_0$ ($C_{a\gamma}=8$) & $\theta_i$ & $C_{a\gamma}$ & ESS \\
 \hline
 full chain                 & $100\%$                  & $0.326\pm 0.099$  & median $\simeq 36$         & broad                 & med.\ $20.7$, $[7.3,45.6]$    & $\beta$ 2860; $\theta_i$ 796 \\
-$\Omega_a<0.1$             & $44\%$                   & $0.328\pm 0.100$  & post.-supported            & broad                 & post.-supported               & marginal-restricted          \\
-$\Omega_a<0.01$ (safe)     & $13\%$                   & $0.28\pm 0.10$    & post.-supported            & smaller-weighted      & post.-supported               & marginal-restricted          \\
+$\Omega_a<0.1$             & $44\%$                   & $0.328\pm 0.100$  & $4.7/37.7/264$  & $0.22/0.41/0.70$  & $14.2/26.2/46.4$  & 1989 \\
+$\Omega_a<0.01$ (safe)     & $13\%$                   & $0.28\pm 0.10$    & $6.0/40.5/238$  & $0.15/0.21/0.27$  & $29.9/43.3/54.1$  & 461  \\
 $\theta_i\le 0.1$ (strict) & $0.33\%$ ($0.47\%$ raw)  & indicative only   & $\sim\mathcal{O}(1)$       & $\le 0.1$ (tuned)     & $16/50/84\!=\!36.8/47.2/55.6$ & sliver-only ($42$ samples)   \\
 \end{tabular}
 \end{ruledtabular}
@@ -2239,10 +2272,12 @@ cosmology: the ALP is a spectator field that does not participate in the bounce
 dynamics. The ECH framework provides heuristic motivation ($f_a\sim\MPl$ from
 the Holst sector pseudoscalar structure) but no derived photon-torsion coupling
 connects the Holst action to a specific ALP potential. The model can
-\textit{accommodate} the observed $\beta$ at scan-prior midpoint values,
-but the spectator-safe interpretation requires a tuned misalignment
-subspace (the $\sim 25\times$ misalignment tuning required for the
-headline result is disclosed in Sec.~\ref{sec:birefringence_check} and
+\textit{accommodate} the observed $\beta$ within the scan-prior envelope
+but near its upper-displacement/coupling edge; the posterior-supported
+fixed-$C_{a\gamma}\!=\!8$ fit shifts to $m\!\gg\!H_0$ (median ${\simeq}\,36\,H_0$).
+The spectator-safe interpretation requires a tuned misalignment
+subspace (the $\sim 25\times$ misalignment tuning required for
+the birefringence signal is disclosed in Sec.~\ref{sec:birefringence_check} and
 fn.~\ref{fn:theta_backreaction}) and a non-minimal photon coupling; it
 does not uniquely predict the signal.
 
@@ -2389,8 +2424,8 @@ be reproduced.
 \textit{What is included vs.\ regenerable.}---The two frozen
 $\Lambda$CDM$+\Delta\Neff$ chain directories are committed
 in-repo and contain the chains and diagnostics that back
-Table~I and the Table~III/Table~IV reproducibility and
-claim-classification entries of this paper:
+Table~I, Table~III, and the relevant Table~V claim-classification entries
+of this paper; the ALP $c5$ continuous chain backs Table~IV separately:
 \path{reproducibility/cosmology/frozen/full_tension_20260311_1728/} and
 \path{reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/}
 (each with \texttt{chains/chain\_0[1-6]/} and

@@ -1,0 +1,138 @@
+# Cobaya configuration: w0-wa CPL dark energy with DESI DR2 + DES-SN5YR
+# Project: Golden (2026), BigBounce -- Paper 1 quintom-B test, DR2 update
+#
+# Background: An earlier chain (reproducibility/cosmology/chains/w0wa_quintom/,
+# 2026-04-06) used Planck 2018 + SDSS DR16 BAO + Pantheon+ and found
+# w0 = -0.871 +/- 0.061, wa = -0.542 +/- 0.247, p_quintom_B = 0.98
+# (50,880 samples, R-1 = 0.009).
+# That chain pre-dates DESI DR2 (Adame et al. 2025), which independently
+# reports w-crossing at 2.8-4.2 sigma depending on dataset combination.
+# This run replaces SDSS DR16 BAO with DESI DR2 BAO and adds DES-SN5YR
+# alongside Pantheon+ to test whether the quintom-B preference survives
+# (or strengthens) under the modern dataset stack.
+#
+# Model: wCDM (CPL parameterization) -- w(a) = w0 + wa*(1 - a)
+# CAMB dark_energy_model = ppf (parameterized post-Friedmann) handles
+# the w(z) = -1 crossing correctly.
+#
+# Run on Pod 3 H200 with MPI 4 chains, target R-1 < 0.01.
+# Expected wall time: ~6-12 hours.
+#
+# Launch: mpirun -n 4 cobaya-run cobaya_config.yaml --resume
+
+likelihood:
+  # --- CMB: Planck 2018 NPIPE (CamSpec high-l + low-l TT/EE + lensing) ---
+  planck_2018_lowl.TT:
+  planck_2018_lowl.EE:
+  planck_NPIPE_highl_CamSpec.TTTEEE:
+  planck_2018_lensing.native:
+  # --- BAO: DESI DR2 (replaces SDSS DR16) ---
+  # Cobaya 3.6+ provides these as bao.desi_dr2.*; if not available,
+  # the launcher script falls back to bao.desi_2024.* (DR1) automatically.
+  bao.desi_dr2.desi_bao_all:
+  # --- Supernovae: Pantheon+ AND DES-SN5YR (adds DES Y5) ---
+  sn.pantheonplus:
+  sn.desy5:
+
+theory:
+  camb:
+    path: null
+    extra_args:
+      lens_potential_accuracy: 1
+      num_massive_neutrinos: 1
+      theta_H0_range: [40, 100]
+      # CPL dark energy with PPF handles w-crossing correctly
+      dark_energy_model: ppf
+
+sampler:
+  mcmc:
+    burn_in: 0.3
+    max_tries: 40d
+    Rminus1_stop: 0.01
+    Rminus1_cl_stop: 0.2
+    learn_proposal: true
+    learn_proposal_Rminus1_max: 30
+    proposal_scale: 2.4
+    oversample_power: 0.4
+    drag: true
+
+params:
+  # --- Standard LCDM parameters ---
+  logA:
+    prior: {min: 1.61, max: 3.91}
+    ref: {dist: norm, loc: 3.044, scale: 0.014}
+    proposal: 0.001
+    latex: \log(10^{10} A_s)
+    drop: true
+  As:
+    value: "lambda logA: 1e-10*np.exp(logA)"
+    latex: A_s
+  ns:
+    prior: {min: 0.8, max: 1.2}
+    ref: {dist: norm, loc: 0.9649, scale: 0.0042}
+    proposal: 0.002
+    latex: n_s
+  theta_MC_100:
+    prior: {min: 0.5, max: 10}
+    ref: {dist: norm, loc: 1.04092, scale: 0.00031}
+    proposal: 0.0002
+    latex: 100\theta_{MC}
+    drop: true
+    renames: theta
+  cosmomc_theta:
+    value: "lambda theta_MC_100: 1.e-2*theta_MC_100"
+    derived: false
+  H0:
+    latex: H_0 \; [\mathrm{km/s/Mpc}]
+    min: 40
+    max: 100
+  ombh2:
+    prior: {min: 0.005, max: 0.1}
+    ref: {dist: norm, loc: 0.02237, scale: 0.00015}
+    proposal: 0.0001
+    latex: \Omega_b h^2
+  omch2:
+    prior: {min: 0.001, max: 0.99}
+    ref: {dist: norm, loc: 0.1200, scale: 0.0012}
+    proposal: 0.0005
+    latex: \Omega_c h^2
+  tau:
+    prior: {min: 0.01, max: 0.8}
+    ref: {dist: norm, loc: 0.054, scale: 0.007}
+    proposal: 0.003
+    latex: \tau_\mathrm{reio}
+
+  # --- CPL dark energy equation of state ---
+  # w(a) = w0 + wa*(1 - a), or equivalently w(z) = w0 + wa*z/(1+z)
+  # Quintom-B crossing: w0 > -1 at z=0, but w crosses -1 at higher z
+  w:
+    prior: {min: -2.5, max: -0.3}
+    ref: {dist: norm, loc: -0.85, scale: 0.1}
+    proposal: 0.03
+    latex: w_0
+  wa:
+    prior: {min: -3.0, max: 2.0}
+    ref: {dist: norm, loc: -0.6, scale: 0.3}
+    proposal: 0.08
+    latex: w_a
+
+  # --- Derived parameters ---
+  sigma8:
+    latex: \sigma_8
+  S8:
+    derived: "lambda sigma8, omegam: sigma8*np.sqrt(omegam/0.3)"
+    latex: S_8
+  omegam:
+    latex: \Omega_m
+  age:
+    latex: '{\rm{Age}}/\mathrm{Gyr}'
+  # Quintom diagnostic: w at the pivot redshift z=0.5
+  w_pivot:
+    derived: "lambda w, wa: w + wa*(1.0 - 1.0/1.5)"
+    latex: w(z{=}0.5)
+  # Sum of w0 + wa: quintom-B requires w0 + wa < -1
+  w0_plus_wa:
+    derived: "lambda w, wa: w + wa"
+    latex: w_0 + w_a
+
+output: chains_w0wa_dr2/spin_torsion_dr2

@@ -34,7 +34,7 @@
 \contentsline {subsection}{\numberline {C}Open Follow-up and Future Directions}{14}{section*.32}%
 \contentsline {section}{\numberline {VII}Conclusions}{14}{section*.33}%
 \contentsline {paragraph}{\numberline {a}Harmonic-channel completeness (end-to-end).}{14}{section*.34}%
-\contentsline {paragraph}{\numberline {b}Primary finding: a quantifiable monopole-mask leakage channel.}{14}{section*.35}%
+\contentsline {paragraph}{\numberline {b}Primary methodological finding: a quantifiable monopole-mask leakage channel.}{14}{section*.35}%
 \contentsline {paragraph}{\numberline {c}Canonical-$N$ MASTER $\ell \!=\!1$ direct compute.}{14}{section*.36}%
 \contentsline {paragraph}{\numberline {d}Bias hardening is essential.}{14}{section*.37}%
 \contentsline {paragraph}{\numberline {e}Sensitivity convention and falsification criterion.}{14}{section*.38}%
@@ -64,7 +64,7 @@
 \contentsline {paragraph}{\numberline {e}Density-stratified null.}{19}{section*.61}%
 \contentsline {paragraph}{\numberline {f}Boundary-distance variance check.}{19}{section*.62}%
 \contentsline {paragraph}{\numberline {g}Joint nuisance-marginalized WLS fit.}{19}{section*.63}%
-\contentsline {paragraph}{\numberline {h}Direct cross-spectrum $A_p\times n_{\rm total}$.}{19}{section*.64}%
+\contentsline {paragraph}{\numberline {h}Direct cross-spectrum $A_p\times n_{\rm total}$.}{20}{section*.64}%
 \contentsline {paragraph}{\numberline {i}Operational conclusion.}{20}{section*.65}%
 \contentsline {section}{\numberline {E}Morphology Systematics}{20}{section*.66}%
 \contentsline {paragraph}{\numberline {a}Edge-on galaxy contamination.}{20}{section*.67}%

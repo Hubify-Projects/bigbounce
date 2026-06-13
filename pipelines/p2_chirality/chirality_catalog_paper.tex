@@ -52,7 +52,25 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.179}
+\newcommand{\paperVersion}{v1.0.180}
+% v1.0.179->180 (2026-06-12 — EXT6 closure wave; mechanical text-edit restamp
+%   per project-context/peer-reviews/EXT6_P4_TRUTH_AUDIT.md. Four phrasing
+%   MINORs addressed:
+%   (1) Priority 3 / F179-m4: Conclusion VII.b "Primary finding" ->
+%   "Primary methodological finding" (leakage channel label; reserves
+%   "primary scientific result" for the HC real-space null, consistent
+%   with abstract l.184).
+%   (2) F179-M2 (MAJOR carryover Shamir): "can reproduce the pre-MASTER
+%   dipole-class signal observed in SDSS-class samples" -> "can generate a
+%   comparable pre-MASTER dipole-class artifact under this DESI/ViT-Small
+%   pipeline; a matched Ganalyzer reanalysis remains required."
+%   (3) F179-m1: Fig 2 caption "illustrates the eight D4 transforms" ->
+%   "representative Z2 production TTA examples (original + horizontal flip);
+%   D4 validation in Appendix B" (Z2 is the production path; D4 is holdout).
+%   (4) Grok MINOR (eq renumbering): verified all A_p definition refs use
+%   \ref{eq:ap_def} — no hard-coded (3)/(9) present; no source edit needed.
+%   Headline science unchanged: HC dipole +0.41sigma null stands; WLS z~-18
+%   exclusion stands; 2sqrt(3) Fisher floor stands.)
 % v1.0.178->179 (2026-06-12 — R35conf closure wave; truth audit at
 %   project-context/peer-reviews/R35conf_P4_TRUTH_AUDIT.md. Two text edits:
 %   (C0) EXT5-GM2 (OPEN MINOR — carryover): Parquet QC flag disclosure
@@ -308,9 +326,9 @@ The three-class output $(\pcw,\,\pccw,\,\pns)$ is essential for full-survey depl
 \begin{figure*}[t]
 \centering
 \includegraphics[width=0.85\textwidth]{fig_equivariance_demo.png}
-\caption{\textbf{Equivariant test-time averaging (TTA).} The figure illustrates
-the eight D$_4$ transforms (four rotations $\times$ two reflections), which are
-evaluated in the D$_4$ hold-out validation of Appendix~B; \emph{production}
+\caption{\textbf{Equivariant test-time averaging (TTA).} Representative $Z_2$
+production TTA examples (original + horizontal flip); D$_4$ validation
+(four rotations $\times$ two reflections) in Appendix~B. \emph{Production}
 inference (Catalog~C) uses 2-fold $Z_2$ TTA --- original + horizontal flip only
 (\S\ref{sec:tta}). Flips swap the CW $\leftrightarrow$ CCW class labels
 by construction. Output probabilities are averaged after the swap, yielding a
@@ -545,7 +563,7 @@ All signal-hunt diagnostics (confidence stratification, RA-quadrant scatter, hem
 
 \subsection{Shamir (2012, 2020, 2022)}
 
-Under the present ViT/TTA pipeline, our maximum WLS template amplitude in the full-footprint regional fit is $0.32\%$ (in $A_p$ units, restricting to the cleanest equal-area partition; the equal-area slab maxima in the 10-slab per-axis decomposition reach $0.46$--$0.56\%$, \artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/c12\_r24conf\_local\_batch.json}) and the $0.41\sigmaunit$ HC ($p_{\rm eq}\!>\!0.6$) simple dipole is well below the $2\text{--}4\sigmaunit$ dipoles reported by Shamir~\cite{Shamir:2012,Shamir:2020,Shamir:2022DESI}. We do \emph{not} claim a frequentist exclusion of Shamir's Ganalyzer estimator: a likelihood-level exclusion requires a matched-footprint Ganalyzer reanalysis under his pipeline + cuts (not performed here). The discrepancy most likely reflects two factors: (1)~Ganalyzer lacks a published bias audit comparable to our 8-test suite; (2)~the monopole-mask leakage channel demonstrated in Sec.~\ref{sec:monopole_mask_null} can reproduce the pre-MASTER dipole-class signal observed in SDSS-class samples. These conclusions corroborate and extend the methodological critique of Iye~\etal~(2021)~\cite{Iye:2021} with $3.2\!\times\!10^{6}$ spirals (a ${\sim}25\times$ sample extension over the $\sim\!1.27\!\times\!10^{5}$-galaxy SDSS sample underlying the critiqued analyses; $3.2\!\times\!10^{6}/1.27\!\times\!10^{5} \approx 25$).
+Under the present ViT/TTA pipeline, our maximum WLS template amplitude in the full-footprint regional fit is $0.32\%$ (in $A_p$ units, restricting to the cleanest equal-area partition; the equal-area slab maxima in the 10-slab per-axis decomposition reach $0.46$--$0.56\%$, \artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/c12\_r24conf\_local\_batch.json}) and the $0.41\sigmaunit$ HC ($p_{\rm eq}\!>\!0.6$) simple dipole is well below the $2\text{--}4\sigmaunit$ dipoles reported by Shamir~\cite{Shamir:2012,Shamir:2020,Shamir:2022DESI}. We do \emph{not} claim a frequentist exclusion of Shamir's Ganalyzer estimator: a likelihood-level exclusion requires a matched-footprint Ganalyzer reanalysis under his pipeline + cuts (not performed here). The discrepancy most likely reflects two factors: (1)~Ganalyzer lacks a published bias audit comparable to our 8-test suite; (2)~the monopole-mask leakage channel demonstrated in Sec.~\ref{sec:monopole_mask_null} can generate a comparable pre-MASTER dipole-class artifact under this DESI/ViT-Small pipeline; a matched Ganalyzer reanalysis remains required. These conclusions corroborate and extend the methodological critique of Iye~\etal~(2021)~\cite{Iye:2021} with $3.2\!\times\!10^{6}$ spirals (a ${\sim}25\times$ sample extension over the $\sim\!1.27\!\times\!10^{5}$-galaxy SDSS sample underlying the critiqued analyses; $3.2\!\times\!10^{6}/1.27\!\times\!10^{5} \approx 25$).
 
 \subsection{CE-ResNet (Jia et al.\ 2023)}
 
@@ -605,7 +623,7 @@ We have constructed and analyzed what is, to our knowledge, the largest chiralit
 \paragraph{Harmonic-channel completeness (end-to-end).}
 A direct injection-recovery test through the apodized-footprint MASTER $\ell\!=\!1$ channel itself ($10^3$ injections per amplitude per axis on label-shuffle backgrounds; artifact c9b) gives detection completeness $P(\geq\!3\sigmaunit)=0.92$ at $A_p\!=\!0.5\%$ and $\geq\!0.999$ at $A_p\!\geq\!0.75\%$. A dipole at the literature-claimed scale would be unmissable in this channel: injected $A_p\!=\!1.7\%$ yields median recovered significance $z\!\approx\!68$--$218$ (axis-dependent) and $A_p\!=\!3\%$ yields $z\!\approx\!209$--$685$, versus the observed $+7.28\sigmaunit$. The observed harmonic excess is therefore incompatible in amplitude with a real dipole of the previously claimed $\sim\!2$--$3\%$ scale by more than an order of magnitude in this channel's own units, independently of its systematics attribution (Appendix~D).
 
-\paragraph{Primary finding: a quantifiable monopole-mask leakage channel.}
+\paragraph{Primary methodological finding: a quantifiable monopole-mask leakage channel.}
 A small uniform classifier monopole couples to the patchy survey-mask geometry and inflates the raw pseudo-$C_\ell$ at $\ell\!=\!1$. A controlled monopole-only $N\!=\!500$ generative null reproduces $99.32\%$ ($\pm0.40$~pp per-realization null scatter; residual $+1.69\sigmaunit$) of the observed pre-MASTER pseudo-$C_\ell^{(\ell=1)}$ power from the leakage channel alone. The post-MASTER canonical-mask residual is $+3.64\sigmaunit$ — non-primary and systematics-attributed (empirical-rank $p_{\rm MC}\!=\!0.030$) under the multi-null + cross-spectrum verdict. The present null disfavors the Shamir $\sim\!2$--$4\%$ detection class at the amplitude level under our pipeline; a matched-footprint Ganalyzer reanalysis is required for a formal $\sigma$-level exclusion.
 
 \paragraph{Canonical-$N$ MASTER $\ell\!=\!1$ direct compute.}

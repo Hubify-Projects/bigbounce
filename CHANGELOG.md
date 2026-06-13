@@ -16,6 +16,50 @@ block at the top of the corresponding `.tex` source file.
 
 ## Paper I(b) — `arxiv/paper1b_mcmc_companion.tex`
 
+### v1B.0.63 (2026-06-12) — EXT6 closure wave (this wave)
+
+- Commit: `(this wave)` (`chore(R36conf-stamp): EXT6 P1B → v1B.0.63 closure wave — FB2 BBN flag all 4 YAMLs (Path C), FB1 CHANGELOG v1B.0.62 + README v1B.0.62 + χ²_eff row, FM2 scan-prior midpoint, FM3 Table IV weighted percentiles, FM1 §V.B caveated framing, App A table-ref drift`).
+- Wave: EXT6 truth-audit (`project-context/peer-reviews/EXT6_P1B_TRUTH_AUDIT.md`).
+  3-vendor: ChatGPT Pro Extended, Grok Heavy, Gemini Thinking.
+  Highlights: `bbn_predictor: PArthENoPE` added to `theory.camb.extra_args` in all 4
+  cobaya YAMLs (`cobaya_planck.yaml`, `cobaya_planck_bao.yaml`, `cobaya_planck_bao_sn.yaml`,
+  `cobaya_full_tension.yaml`) making them consistent with the tex §III explicit-flag claim
+  (#5 FB2, Path C); README.md `Paper I(b) version` bumped to `v1B.0.62` (#1 FB1a);
+  README.md χ²_eff row relabelled to "Table II channel χ² decomposition | YES" +
+  new "χ²_eff / AIC / BIC / ln B | NO" row (#9 FM4); §V.B "the headline result" →
+  "the central marginal-tail result" and "canonical quintom signature" → "canonical
+  quintom signature under the overlap-uncorrected likelihood (see §III caveat)" (#6 FM1);
+  "scan-prior midpoint values" → "within the scan-prior envelope but near its upper-
+  displacement/coupling edge; the posterior-supported fixed-C_agamma=8 fit shifts to
+  m >> H0 (median ~36 H0)" at 3 tex sites (L963, L1886, L2242) (#7 FM2); Table IV
+  qualitative cells replaced with weighted 16/50/84 percentiles from the committed ALP
+  c5 continuous chain (Ω_a<0.1: ESS≈1489, Ω_a<0.01: ESS≈340) (#8 FM3); Appendix A
+  table-ref "Table III/Table IV reproducibility and claim-classification" rewritten to
+  "Table I, Table III, and the relevant Table V claim-classification entries; the ALP
+  c5 continuous chain backs Table IV separately" (#10 minor); "pipeline systematic floor"
+  → "pipeline-recovery bias floor" at L891 (#12 minor); ΔNeff one-sided truncation
+  parenthetical added at §III L1074 (#16 optional); tex changelog comment bumped to
+  v1B.0.63.
+- HuggingFace datasets (DOI / URL): unchanged from v1B.0.56 (see below).
+
+### v1B.0.62 (2026-06-12) — R35conf confirmation-round closure wave
+
+- Commit: `(this wave)` (`feat(P1B v1B.0.62): R35conf closure wave — w0wa caveat front-load, DeltaNeff 0.40 recompute, abstract footnote relocated`).
+- Wave: R35conf truth-audit (`project-context/peer-reviews/R35conf_P1B_TRUTH_AUDIT.md`).
+  Highlights: §III physics-interpretation paragraph reordered so SN-overlap caveat is the
+  strict first sentence; +4.3σ/−3.6σ tail-distance numbers demoted to parenthetical (B1);
+  Eskilt & Komatsu PR3/PR4 disambiguation footnote moved from abstract to §IV (B2);
+  one-sided ΔN_eff 95% UL recomputed from committed Planck+BAO+SN chain (93,066
+  post-burnin samples, 30% burn-in; truncation-and-renormalisation CDF) → DeltaNeff < 0.40
+  (B3). BBN/He documented as CAMB PArthENoPE-derived BBN-consistency module (EXT5 D4=Ge2).
+  Fourteen MINORs from R35conf closed as in-line clarifications.
+- SHA-256 checksums of chain diagnostic artifacts:
+  - `full_tension_20260311_1728/diagnostics/parameter_summary_CORRECTED.json`:
+    `3df367202cff2cb9aeb0b874f42827ad696308ff3901a32e88ce945b0fd43e57`
+  - `planck_bao_sn_20260312_1954/diagnostics/parameter_summary_CORRECTED.json`:
+    `603decd312bb3f8e2d7e85b6c80278a7bd87c3c139d6fc138aac667898563be9`
+- HuggingFace datasets (DOI / URL): unchanged from v1B.0.56 (see below).
+
 ### v1B.0.61 (2026-06-12) — EXT5 external-round closure wave
 
 - Commit: `(this wave)` (`feat(P1B v1B.0.61): EXT5 closure wave — D1 README full-tension stack, D2 ALP abstract + restricted-posterior table, D3 App A Table I, D4 BBN flag, D6 §III w0wa ordering`).

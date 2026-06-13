@@ -18,7 +18,19 @@
   \href{\repoBase/#1}{\nolinkurl{#1}}%
 }
 
-\newcommand{\paperVersion}{v0.1.69-2026-06-12}
+\newcommand{\paperVersion}{v0.1.70-2026-06-12}
+% v0.1.70-2026-06-12 (EXT6 closure wave; truth audit at
+%   project-context/peer-reviews/EXT6_P5_TRUTH_AUDIT.md.
+%   (A3) l.944 "largest controlled sample" reworded to clarify DESIVAST
+%   VoidFinder is properly-powered vs V2-REVOLVER GALZONE n_void=104,912.
+%   (A4) footprint-restricted control row added to Table~X (tab:desivast_canonical).
+%   (A5) fig_p5_cw_by_env_bar.png REGENERATED via scripts/11_make_p5_paper_figures.py
+%   (title corrected from "n=791,635 chirality-relevant matched spirals" to
+%   "n=812,793 env-labeled rows" to match tex caption l.1110-1112).
+%   (A6) paper title parent "791,635 DR1 Matched Spirals" reworded to
+%   "the DR1 Matched-Spiral Sample" to remove ambiguous absolute count.
+%   (A7) obsolete RSD lead-in "bounds the fractional membership shift to
+%   well below the statistical uncertainty" sentence struck from §VIII opening.)
 % v0.1.69-2026-06-12 (R35conf closure wave; truth audit at
 %   project-context/peer-reviews/R35conf_P5_TRUTH_AUDIT.md.
 %   ARITHMETIC: n_rows=812,793; n_unique=783,820; n_dups=28,973;
@@ -302,7 +314,7 @@
 
 \begin{document}
 
-\title{Environmental Dependence of Spiral Chirality: A DESIVAST Three-Algorithm Test on 56{,}981 Void Spirals with T-Web (Hahn 2007) Tidal-Tensor Cross-Check Across 791{,}635 DR1 Matched Spirals\protect\footnote{See \S\ref{sec:env_finder} for the implementation note on the T-Web/V-Web nomenclature: the tidal-tensor classifier used here implements the Hahn 2007 T-Web recipe ($\phi_k = -\delta_k/k^2$ then $T_{ij} = -k_i k_j \phi_k$), not the Hoffman 2012 V-Web (velocity-shear). Earlier preprint versions used ``V-Web'' in the title for backward-compatibility with the HF dataset slug and the GitHub release tag; the title is updated to ``T-Web'' for accuracy.}}
+\title{Environmental Dependence of Spiral Chirality: A DESIVAST Three-Algorithm Test on 56{,}981 Void Spirals with T-Web (Hahn 2007) Tidal-Tensor Cross-Check Across the DR1 Matched-Spiral Sample\protect\footnote{See \S\ref{sec:env_finder} for the implementation note on the T-Web/V-Web nomenclature: the tidal-tensor classifier used here implements the Hahn 2007 T-Web recipe ($\phi_k = -\delta_k/k^2$ then $T_{ij} = -k_i k_j \phi_k$), not the Hoffman 2012 V-Web (velocity-shear). Earlier preprint versions used ``V-Web'' in the title for backward-compatibility with the HF dataset slug and the GitHub release tag; the title is updated to ``T-Web'' for accuracy.}}
 
 \author{Houston Golden}
 \email{houston@hubify.com}
@@ -941,8 +953,10 @@ explicitly here to bound the garden-of-forking-paths concern.
 DESIVAST-anchored void cross-check
 (Section~\ref{sec:desivast_primary}) as the
 \emph{primary} environment-dependent chirality analysis in this paper:
-it has the largest controlled sample ($n_{\rm void}^{\rm DESIVAST} =
-56{,}981$), is built on a publicly released peer-reviewed
+it has a properly powered VoidFinder DESIVAST sample ($n_{\rm void}^{\rm DESIVAST} =
+56{,}981$, ${\sim}130\times$ the V-Web void bin; the largest single DESIVAST row
+is V2-REVOLVER catalog-native GALZONE $n_{\rm void}=104{,}912$), is built on a
+publicly released peer-reviewed
 DR1 BGS void catalog (Rinc\'on \textit{et al.}\ 2025,
 ApJ~982, 38~\cite{DESIVAST2025}) standardized across the
 DESI collaboration, ships three independent void-finding algorithms
@@ -1878,8 +1892,8 @@ than the void effective radii. The within-void/non-void chirality
 fractions are therefore RSD-bounded at the level of this
 fixed-void-geometry membership sensitivity test; full immunity would
 require void-catalog reconstruction under RSD, which is not performed
-here, but the FoG Monte Carlo below bounds the fractional membership
-shift to well below the statistical uncertainty at the present precision. An empirical bound on membership-flip sensitivity
+here. Void membership is not insensitive; $\Delta f_{\rm CW}$ is stable
+under fixed-void-geometry perturbation. An empirical bound on membership-flip sensitivity
 comes from the membership-definition variant of
 \S\ref{sec:desivast_maximal_healpix}: swapping the permissive
 hole-union criterion for the strict maximal-sphere interior reassigns
@@ -2009,7 +2023,12 @@ public DR1 void catalog.
 on the $z \leq 0.24$ matched-spiral subsample (point-in-sphere test
 against $101{,}863$ DESIVAST VoidFinder hole spheres; the $k=20$
 KDTree query yields conclusions identical to the exact $k$-unbounded
-rerun at the $0.18\%$ membership level, \S\ref{sec:desivast_xmatch}).}
+rerun at the $0.18\%$ membership level, \S\ref{sec:desivast_xmatch}).
+The hole-support-footprint-restricted control row restricts the
+non-void sample to the union of hole-sphere angular discs
+(NSIDE\,$=\!64$, inclusive) intersected with the holes' comoving
+radial span (\S\ref{sec:desivast_maximal_healpix};
+\artifact{pipelines/p5\_desi\_chirality/outputs/29\_ext3\_desivast\_footprint\_retabulation.json}).}
 \label{tab:desivast_canonical}
 \begin{ruledtabular}
 \begin{tabular}{lrrrr}
@@ -2017,6 +2036,9 @@ Class & $n$ & $n_{\rm CW}$ & $f_{\rm CW}$ & $\sigma_{\rm from\ half}$ \\
 \hline
 DESIVAST void & $56{,}981$ & $28{,}286$ & $0.4964$ & $-1.71$ \\
 Non-void      & $621{,}964$ & $309{,}173$ & $0.4971$ & $-4.59$ \\
+\hline
+\multicolumn{5}{l}{\textit{Footprint-restricted control}} \\
+VoidFinder exact, hole-support-footprint-restricted non-void & $253{,}276$ & $126{,}088$ & $0.4983$ & $-1.73$ \\
 \end{tabular}
 \end{ruledtabular}
 \end{table}

@@ -26,6 +26,7 @@ theory:
       num_massive_neutrinos: 1
       # nnu sampled as free parameter (see params.nnu below)
       theta_H0_range: [40, 100]
+      bbn_predictor: PArthENoPE  # pin BBN predictor; matches tex §III claim (EXT6 closure)
 
 sampler:
   mcmc:
