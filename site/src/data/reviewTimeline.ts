@@ -46,6 +46,48 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "EXT16-VERDICT-LADDER",
+    kind: "external-browser",
+    dateISO: "2026-06-13",
+    timePT: "01:30",
+    title: "EXT16 = 14/18 ACCEPT · Grok 9th consecutive 6/6 · Gemini 6/6 ACCEPT (pattern-058) · EXT17 closure queued",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "EXT16 harvest: 14/18 ACCEPT. Grok 9th consecutive round 6/6 ACCEPT. Gemini 6/6 ACCEPT (pattern-058 100% success; +2 vs EXT14: P1A+P5 upgraded). P1B+P4 3/3 ACCEPT (frozen courtesy confirmed). ChatGPT 2/6 ACCEPT (P1B+P4); P1A/P2/P3/P5 MINOR — 4 residual items (all 1-line text fixes). EXT16-closure wave executed immediately: P1A v1A.0.77 (Sec XII.A C/P propagation miss), P2 v1.7.68 (CDF-tail direction), P3 v3.1.111 (Table IX prior density note), P5 v0.1.80 (math-mode V\mbox{-}Web + nomenclature + dup phrase). New pattern-060: \\mbox{-} math subscripts miss after systematic rename.",
+    keyTakeaways: [
+      "Grok: 6/6 ACCEPT (9th consecutive round — consistent calibration)",
+      "Gemini: 6/6 ACCEPT with pattern-058 — 100% formal verdict success; P1A+P5 upgraded from MINOR to ACCEPT",
+      "P1B v1B.0.72 + P4 v1.0.188: 3/3 ACCEPT (frozen versions confirmed clean)",
+      "ChatGPT P1A: Sec XII.A 'C/P-violating thermal scattering' propagation miss → fixed v1A.0.77",
+      "ChatGPT P2: CDF-tail direction 'reduces→raises' (narrow delta-prior 5.69→7.0 is upward) → fixed v1.7.68",
+      "ChatGPT P3: Table IX non-fiducial prior density needs row-specific 1/Δγ denominator clarification → fixed v3.1.111",
+      "ChatGPT P5: math-mode V\\mbox{-}Web at l.2864 + nomenclature note direction + dup T-Web → fixed v0.1.80",
+      "pattern-060: after systematic rename, grep for \\mbox{-} math subscript constructions (missed by raw V-Web grep)",
+    ],
+    links: [
+      { label: "EXT16 truth audit", href: "https://github.com/Hubify-Projects/bigbounce/blob/main/project-context/peer-reviews/EXT16_BATCH_TRUTH_AUDIT.md" },
+      { label: "EXT16 manifest", href: "https://github.com/Hubify-Projects/bigbounce/blob/main/project-context/peer-reviews/EXT16_BROWSER_MANIFEST.md" },
+    ],
+  },
+  {
+    id: "EXT16-CLOSURE-WAVE",
+    kind: "external-browser",
+    dateISO: "2026-06-13",
+    timePT: "02:00",
+    title: "EXT16-closure-wave: 4-paper bundle · all ChatGPT MINOR items closed · EXT17 ready",
+    papers: ["P1A", "P2", "P3", "P5"],
+    summary: "EXT16-closure addresses all ChatGPT MINOR items. P1A v1A.0.77: Sec XII.A 'C/P-violating thermal scattering' → 'chirality-flipping and depolarizing thermal interactions' (propagation miss from EXT15 Sec II.C.1 fix). P2 v1.7.68: CDF-tail direction corrected in Sec VI.C summary para (raises not reduces for narrow delta-prior). P3 v3.1.111: Table IX tablenote(a) clarified with row-specific prior density 1/Δγ denominator and reweighting note. P5 v0.1.80: 3 text fixes (V\\mbox{-}Web→T\\mbox{-}Web at l.2864, nomenclature note direction l.431, dup T-Web→external T-Web l.1117). P1B+P4 unchanged (frozen). EXT17: 18 chats ready to submit.",
+    keyTakeaways: [
+      "P1A v1A.0.77 (md5 f1eab008, 29pp): Sec XII.A C/P residual — one-line propagation miss fixed",
+      "P2 v1.7.68 (md5 5a8a1af4, 29pp): CDF-tail direction corrected (raises, not reduces, for narrow delta-prior)",
+      "P3 v3.1.111 (md5 4a8c1172, 30pp): Table IX prior density footnote clarified for non-fiducial rows",
+      "P5 v0.1.80 (md5 7bb73989, 32pp): pattern-060 math V-Web + nomenclature note + dup T-Web fixed",
+      "P1B v1B.0.72 + P4 v1.0.188: unchanged (3/3 ACCEPT frozen)",
+    ],
+    links: [
+      { label: "EXT16 truth audit", href: "https://github.com/Hubify-Projects/bigbounce/blob/main/project-context/peer-reviews/EXT16_BATCH_TRUTH_AUDIT.md" },
+    ],
+  },
+  {
     id: "EXT16-LAUNCHED",
     kind: "external-browser",
     dateISO: "2026-06-13",

@@ -45,8 +45,35 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.74}
+\newcommand{\paperVersion}{v1A.0.77}
 \newcommand{\paperTimestamp}{June 13, 2026}
+% v1A.0.77 (2026-06-13 — EXT16 closure: Sec XII.A "C/P-violating thermal scattering" → "chirality-flipping and depolarizing thermal interactions" propagation miss from EXT15 fix; closes final ChatGPT MINOR)
+% v1A.0.76 (2026-06-13 — EXT15 closure: 3 ChatGPT MINOR wording + 3 Gemini polish per EXT14 audit)
+%   ChatGPT item 1 (Sec. II.C.1): "C/P-violating scattering rates" →
+%     "chirality-flipping and depolarizing interactions that equilibrate
+%      the axial-current expectation value"
+%   ChatGPT item 2 (Sec. IV.C): "relative to the dark-energy density" →
+%     "relative to the dimensionless parity-odd amplitude budget associated
+%      with a dark-energy-scale source"
+%   ChatGPT item 3 (Sec. IV scope para): "equivalent rewriting" + clarify
+%     (α/M)MPl³ vs (α/M)MPl⁵ distinction matches App B wording exactly
+%   Gemini item 1: companion paper forward-references — added consolidation
+%     note at Companion block; scatter condensed
+%   Gemini item 2: Table IV Barbero-Immirzi description column — added
+%     explicit γ_SU(2)≈0.274 scheme-spread parenthetical
+%   Gemini item 3: Fig 5/6 captions — MNRAS-style upright-roman axis labels
+%     (H(z), ΔH/H_{ΛCDM}) made explicit in caption
+% v1A.0.75 (2026-06-13 — EXT13 closure: Sec IV/App B dim sentence + reheating residual per ChatGPT EXT12 MINOR)
+%   Item 1: Sec IV / App B dimensional consistency sentence (lines ~1549-1556):
+%     Added one sentence making explicit that the on-shell ansatz and the
+%     local-operator-promotion reading are two distinct physical interpretations
+%     of the same operator, with different dimensional completion strategies.
+%     This directly addresses ChatGPT EXT12 "dimensional/physical phrasing" MINOR.
+%   Item 2: Reheating residual sentence (lines ~1417-1423):
+%     Added transitional phrase "Returning to the N_tot bookkeeping:" before the
+%     residual-10^5 paragraph to make clear it refers to the fine-tuning
+%     reparameterization from Sec. IV (not any reheating-rate quantity), resolving
+%     the context confusion that ChatGPT EXT12 flagged as the reheating-rate residual.
 % v1A.0.74 (2026-06-13 — EXT11 closure: CRITICAL Eq. 15 algebra REGRESSION
 %   restored (EXT10 closure introduced inversion — pattern-053); alpha_W^5
 %   Route-2 wording fix; App C opening soften; 3 LaTeX typographic artifacts
@@ -960,6 +987,8 @@ arguments alone, which are evaluable without the companion's MCMC
 posteriors. The companion values are quoted only to anchor the
 discussion of $\Lambda$CDM-consistency in Sec.~\ref{sec:obs} and the
 parameter-summary table in Appendix~\ref{app:params}.
+All subsequent citations to Paper~I(b)~\cite{Golden2026P1b} in this paper
+refer to this companion work; details are not duplicated here.
 
 Appendices provide the parameter summary (Appendix~\ref{app:params}) and
 dimensional analysis (Appendix~\ref{app:dimensions}).
@@ -1194,9 +1223,9 @@ bounce with no free parameters.
 \centering
 \includegraphics[width=\columnwidth]{figures/figure5_rotation_expansion.png}
 \caption{\textbf{ECH dark-energy model vs.\ $\Lambda$CDM Hubble evolution.}
-Upper panel: Hubble parameter $H(z)$ for the full ECH dark-energy model
+Upper panel ($y$-axis: $H(z)$ [$\mathrm{km\,s^{-1}\,Mpc^{-1}}$]): Hubble parameter for the full ECH dark-energy model
 (orange; $\Xi\,\MPl^2$ term from Eq.~\ref{eq:Leff_full}) versus $\Lambda$CDM
-(blue). Lower panel: percent deviation $\Delta H/H_{\Lambda\rm CDM}$
+(blue). Lower panel ($y$-axis: $\Delta H/H_{\Lambda\mathrm{CDM}}$ [\%]): percent deviation
 between the spin-torsion benchmark cosmology and a Planck-VI
 $\Lambda$CDM reference; an illustrative parameter-set comparison
 under the $\Xi\,\MPl^2$ phenomenological on-shell scaling ansatz
@@ -1354,7 +1383,8 @@ fermion bath in approximate $C/P$-equilibrium has $\langle J^5_\mu\rangle
 \to 0$ in the mean even when $n_\psi\sim T_{\rm reh}^3\sim 10^{45}\,
 \text{cm}^{-3}$ is enormous. Reheating from the inflaton drives the
 post-bounce plasma into precisely such a thermal regime: the
-$C/P$-violating scattering rates that randomize axial polarization
+chirality-flipping and depolarizing interactions that equilibrate the
+axial-current expectation value
 are \emph{expected} to exceed the Hubble rate at $T\sim T_{\rm reh}$
 (the operative requirement is $\Gamma_{\rm wash}(T_{\rm reh}) > H(T_{\rm reh})$,
 a condition rather than a result of the present analysis), so any
@@ -1414,9 +1444,12 @@ the conditional thermal-reset argument above. This conditional
 strengthening of Barrier~14 (perturbation transparency) supplies a
 parallel thermodynamic erasure channel for the coherent torsion-sourced
 dark-energy mechanism, contingent on the inequality
-$\Gamma_{\rm wash}>H$ at $T_{\rm reh}$ being satisfied in detail. We emphasize that this is bookkeeping, not progress: the residual
+$\Gamma_{\rm wash}>H$ at $T_{\rm reh}$ being satisfied in detail.
+Returning to the $N_{\rm tot}$ bookkeeping from Sec.~\ref{sec:dilution}:
+we emphasize that this is bookkeeping, not progress: the residual
 $10^5$ tracks the exponential $e^{-3 N_{\rm tot}}$ and inherits its sensitivity
-from the initial-condition choice for $N_{\rm tot}$, while the fixed
+from the initial-condition choice for $N_{\rm tot}$ (not from any
+reheating-rate quantity), while the fixed
 $[(\alpha/M)\,\MPl] \sim 10^{-2}$ prefactor does no work on the cosmological
 constant problem itself. The framework has not solved the
 cosmological constant problem; it has only relocated the fine-tuning into
@@ -1547,13 +1580,26 @@ parity accounting, addressed as follows:
 (a)~the dimensional reconstruction of $\rho_\Lambda^{\rm bounce}$ (the
 bounce-epoch vacuum-energy scale, defined by
 Eq.~(\ref{eq:onshell_rho})) in Appendix~\ref{app:dimensions} requires an internally consistent mass-dimension
-accounting between $(\alpha/M)\, M_{\rm Pl}^3$ (dimension $+2$) and the
-equivalent rewriting $[(\alpha/M)\, M_{\rm Pl}]\, M_{\rm Pl}^4$ (dimension
-$+4$); the choice of $M_{\rm Pl}^{5}$ vs.\ $M_{\rm Pl}^{3}$ controls the
-subsequent $N_{\rm tot}\!\approx\!92$ bookkeeping.
+accounting: the on-shell ansatz inserts bounce-curvature factors to
+promote $(\alpha/M)\,M_{\rm Pl}^3$ (off-shell dimension $+2$) to
+$(\alpha/M)\,M_{\rm Pl}^5$ (on-shell dimension $+4$, equivalently the
+grouping $[(\alpha/M)\,M_{\rm Pl}]\,M_{\rm Pl}^4$), whereas the
+local-operator-promotion route absorbs the missing dimensions into the
+coupling ($\alpha/M\to\alpha\,M_{\rm Pl}^{3}/M$) off-shell
+(Appendix~\ref{app:dimensions}); the choice of $M_{\rm Pl}^{5}$ vs.\ $M_{\rm Pl}^{3}$ controls the
+subsequent $N_{\rm tot}\!\approx\!92$ bookkeeping, and both readings agree
+at the order-of-magnitude level.
 The dimensional reconstruction used in the $N_{\rm tot}$ bookkeeping
 rests on the on-shell density ansatz Eq.~(\ref{eq:onshell_rho}), distinct
 from the local-operator-promotion reading; see App.~\ref{app:dimensions}.
+These two readings differ in how the missing mass-dimension is supplied:
+the on-shell ansatz promotes $(\alpha/M)\,\MPl^3 \to (\alpha/M)\,\MPl^5$ by
+inserting Planck-scale bounce-curvature factors on-shell, whereas the
+local-operator-promotion route absorbs the missing powers into the
+coupling coefficient ($\alpha/M \to \alpha\,\MPl^{3}/M$) to restore a
+controlled dimension-$+4$ EFT operator off-shell; both are phenomenological
+dimensional assignments (App.~\ref{app:dimensions}), and the $N_{\rm tot}\!\approx\!92$
+result is common to both at the order-of-magnitude level.
 (b)~the Hehl--Datta
 torsion-induced four-fermion contact term $(\bar\psi\gamma^a\gamma^5\psi)^2$
 is correctly characterized as \emph{parity-even} in Sec.~\ref{sec:r1_njl}:
@@ -1786,7 +1832,8 @@ Plugging $\Delta\gamma/\gamma \sim 10^{-2}$ into the resulting
 parity-odd amplitude, the cosmologically integrated effect is
 suppressed by an additional factor of
 $(\Delta\gamma/\gamma)\cdot(H/M_{\rm Pl}) \sim 10^{-63}$ relative to
-the dark-energy density, closing this route by many orders of
+the dimensionless parity-odd amplitude budget associated with a
+dark-energy-scale source, closing this route by many orders of
 magnitude. \emph{Closure: mass-dimension-locked at the classical level
 and amplitude-suppressed by the chiral-asymmetry running coefficient.}
 \emph{Ansatz vs derivation (R2/R3):} The R2/R3 amplitude coefficients
@@ -2112,12 +2159,11 @@ formation in matter bounce), and Dehghani~\etal~\cite{Dehghani:2025cusc}
 \centering
 \includegraphics[width=0.95\textwidth]{figures/figure6_parameter_naturalness.png}
 \caption{\textbf{Parameter-naturalness diagnostics for the minimal-ECH
-dark-energy parameterization.} \emph{Top:} renormalization-group running of
-the parity-odd coupling $\alpha/M$ from the present epoch to the Planck
+dark-energy parameterization.} \emph{Top} ($y$-axis: $\alpha/M$ [$\mathrm{GeV^{-1}}$]): renormalization-group running of
+the parity-odd coupling from the present epoch to the Planck
 scale, anchored at the primordial benchmark
 $\alpha/M\sim 10^{-21}\,$GeV$^{-1}$ (Sec.~\ref{sec:r4_birefringence}).
-\emph{Bottom:} fine-tuning-score comparison (orders of magnitude of
-residual tuning, unreduced $M_{\rm Pl}$ convention throughout): $\Lambda$CDM ($10^{122}$), quintessence ($10^{60}$),
+\emph{Bottom} ($y$-axis: fine-tuning score [orders of magnitude]): comparison of residual tuning (unreduced $M_{\rm Pl}$ convention throughout): $\Lambda$CDM ($10^{122}$), quintessence ($10^{60}$),
 $f(R)$ gravity ($10^{40}$), and the spin-torsion $N_{\rm tot}$
 parameterization of this work ($10^{5}$). The $10^{5}$ residual
 annotation is the score under the $N_{\rm tot}$ reparameterization; per
@@ -2530,7 +2576,8 @@ thermal-reset barrier (supporting B14; see Sec.~\ref{sec:dilution},
 bounce-era-memory dilution channel: non-propagating torsion is sourced
 algebraically by the instantaneous axial-current expectation value,
 and the post-reheating coherent axial component is washed to zero by
-$C/P$-violating thermal scattering. The $\Dinf$ exponential is
+chirality-flipping and depolarizing thermal interactions that equilibrate
+the axial-current expectation value. The $\Dinf$ exponential is
 therefore mathematical scaffolding for an order-of-magnitude
 parameterization of a hypothetical un-reset channel rather than a
 physically operative dilution mechanism; the entries in this section
@@ -2929,7 +2976,10 @@ and H100 instances).
 and physical interpretations. Rows marked $\dagger$ cite the companion internal
 MCMC analysis (in preparation~\cite{Golden2026P1b}) and are not independently
 peer-reviewable until that work is publicly posted.
-The $\gamma$ scheme range denotes LQG area-spectrum scheme dependence, \emph{not} a statistical error.}
+The $\gamma$ row uses the SU(2) full-counting scheme value
+$\gamma_{\rm SU(2)}\!\approx\!0.274$~\cite{Domagala2004,Meissner2004}; the scheme range
+$\sim\!0.037$ (SU(2)--DLM spread) denotes LQG area-spectrum scheme dependence,
+\emph{not} a statistical error.}
 \begin{ruledtabular}
 \begin{tabular}{llccc}
 Parameter & Description & Prior & Reference value & Notes \\

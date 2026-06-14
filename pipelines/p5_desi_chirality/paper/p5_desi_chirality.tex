@@ -30,7 +30,10 @@
 % The divide-by-h claim (~1246 h⁻¹ Mpc) is INVERTED. No pipeline recompute required.
 % If any future reviewer re-raises this, cite env_finder/01_compute_vweb.py:106-108.
 
-\newcommand{\paperVersion}{v0.1.77-2026-06-13}
+\newcommand{\paperVersion}{v0.1.80-2026-06-13}
+% v0.1.80-2026-06-13 (2026-06-13 — EXT16 closure: (1) l.2864 |f_CW^Tempel - f_CW^{V-Web}| → T-Web (\mbox{-} pattern-060); (2) l.431 nomenclature note direction corrected V-Web not T-Web; (3) l.1117 dup T-Web → external T-Web [TWebDESI2026]. Closes ChatGPT EXT16 MINOR)
+% v0.1.79-2026-06-13 (2026-06-13 — EXT15 closure: pattern-059 math-mode V-Web subscripts in Sec IX B → T-Web (missed by pattern-057 body-text grep); grep confirms 0 residual _{V-Web} sites in math context)
+% v0.1.78-2026-06-13 (2026-06-13 — EXT13 closure: 4 V-Web body residuals (pattern-057) → T-Web; Verdict.→Result. journal-style sub-header; Fig 8 no V-Web title confirmed skip)
 % v0.1.77-2026-06-13 (2026-06-13 — EXT11 closure: 3-figure regen V-Web→T-Web plot titles (pattern-054); §IX C T-Web ambiguity resolution; unit-convention adversarial language softened; Table I MS→NS typo)
 % v0.1.76-2026-06-13 (2026-06-13 — EXT10 closure: V-Web→T-Web rename (~175 body sites; Hahn 2007 is tidal-tensor T-Web not velocity-shear V-Web) + sample-count decision + 10 wording; ChatGPT B1)
 % v0.1.75-2026-06-13 (2026-06-13 — R39conf closure: 8 ESSENTIALs + χ-unit HD VERIFIED-CORRECT against pipeline source (reviewer claim FALSIFIED) + Bonferroni two-sided; cross-paper patterns 1/2/3)
@@ -426,9 +429,9 @@ recipe, sometimes called the T-Web variant), classifying by the count
 of eigenvalues exceeding $\lambda_{\rm th}$. The Hoffman~\textit{et~al.}~2012
 \cite{Hoffman2012} velocity-shear V-Web requires a separate velocity
 reconstruction not used here; earlier preprint versions used the
-``V-Web'' label loosely for the family of tidal-field classifiers, and
-this version standardizes on ``T-Web'' for accuracy with the Hahn~2007
-recipe actually implemented.} on the full
+``V-Web'' label loosely for what is actually the Hahn~2007 tidal-tensor
+T-Web implementation, and this version standardizes on ``T-Web'' for
+accuracy with the recipe actually implemented.} on the full
 $14{,}622{,}283$-galaxy DESI DR1 spectro sample on a $256^3$ comoving
 grid with a $25\,{\rm Mpc}/h$ Gaussian smoothing and eigenvalue
 threshold $\lambda_{\rm th}\!=\!0$. Sample ledger: \emph{two distinct parent populations are used.}
@@ -804,7 +807,7 @@ Cautun~\textit{et~al.}~2014 \cite{Cautun2014}).
 \emph{Nomenclature reminder} (see also the title footnote): this
 version standardizes on ``T-Web'' for our implementation of the
 Hahn~2007 tidal-tensor recipe; earlier preprint versions used
-``V-Web'' for the same implementation (the artifact filename
+``T-Web'' for the same implementation (the artifact filename
 \artifact{pipelines/p5\_desi\_chirality/env\_finder/01\_compute\_vweb.py}
 and the \texttt{sec:vweb} cross-reference label are retained for
 backward compatibility with the HF dataset slug and the GitHub release
@@ -1113,7 +1116,7 @@ per-test threshold is $|z|^{\rm Bonf}_{0.05,5} \approx 2.58$; no
 tabulated contrast across the five rows approaches it. The
 family-level conclusion is a clean primary null on the declared
 contrast estimand uniformly across all five rows. The secondary T-Web / Tempel / ASTRA
-/ T-Web / per-stratification estimators carry their own multiplicity
+/ external T-Web~\cite{TWebDESI2026} / per-stratification estimators carry their own multiplicity
 budget but, per the primary/secondary separation above, do not enter
 the headline-result family. We caution that any single secondary-path
 finding (e.g.\ the bright/dark target-class sign-flip discussed in
@@ -2091,7 +2094,7 @@ within that limit it suggests the T-Web ``void'' label at low $z$
 should be read as ``not in a DESIVAST-defined cosmic-web density
 minimum'' rather than ``confirmed void galaxy.''
 This is a direct empirical small-sample illustration of the
-$+8$--$18\,$pp V-Web-vs-T-Web void-fraction discrepancy
+$+8$--$18\,$pp T-Web-vs-DESIVAST void-fraction discrepancy
 reported in \S\ref{sec:tweb_concurrent} below,
 not a separate effect.
 
@@ -2859,7 +2862,7 @@ cluster\_like  & $5{,}022$  & $2{,}520$ & $0.5018$ & $+0.25$ \\
 
 \textbf{Concordance metric (like-for-like).} For each Tempel-vs-T-Web
 class pairing we
-report $|f_{\rm CW}^{\rm Tempel} - f_{\rm CW}^{\rm V\mbox{-}Web}|$ as a
+report $|f_{\rm CW}^{\rm Tempel} - f_{\rm CW}^{\rm T\mbox{-}Web}|$ as a
 concordance distance in percentage points, with \emph{both} classifiers
 evaluated on the common labeled subset of the $96{,}753$-spiral
 overlap: the T-Web side carries an environment label for $95{,}247$
@@ -2932,7 +2935,7 @@ environmental-independence headline.}
 \label{fig:tempel_overlay}
 \end{figure*}
 
-\textbf{Verdict.} The Tempel cross-validation confirms the T-Web
+\textbf{Result.} The Tempel cross-validation confirms the T-Web
 result at the high-richness end (like-for-like filament concordance
 $0.29$\,pp, ${\sim}0.5\sigma$);
 low-richness disagreements scale with counting statistics and the
@@ -3586,7 +3589,7 @@ drivers are committed under
 cross-match, per-analysis drivers \texttt{05}--\texttt{09}, z-shell
 rebuild \texttt{16}, and the verification recompute drivers
 \texttt{17}--\texttt{18}, which include the DESIVAST point-in-sphere
-membership driver), with the V-Web/T-Web grid pipeline and the Tempel
+membership driver), with the T-Web grid pipeline and the Tempel
 cross-validation under
 \artifact{pipelines/p5\_desi\_chirality/env\_finder/}. Numeric
 artifacts live under \texttt{outputs/}, \texttt{results/}, and
