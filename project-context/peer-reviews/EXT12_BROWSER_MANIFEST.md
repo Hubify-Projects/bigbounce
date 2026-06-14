@@ -138,24 +138,24 @@ Model/effort: **Pro Extended**
 
 | Paper | PDF md5 (prefix) | Chat URL (SAME as EXT11) | Submitted (PDT) | Harvest | Verdict |
 |-------|---------|----------|-----------------|---------|---------|
-| P1A | 3871b587 | [link](https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a2dc597-d61c-83e8-ac93-8f3bf7f139fb) | TBD | TBD | TBD |
-| P1B | aa1a694e | [link](https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a2dc5cf-db00-83e8-b824-21b626a0d9ab) | TBD | TBD | TBD |
-| P2  | fc42f393 | [link](https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a2dc5f2-5e8c-83e8-9318-b7aefa847ee0) | TBD | TBD | TBD |
-| P3  | 72bd3e5b | [link](https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a2dc617-2480-83e8-bf48-cc78a7bce891) | TBD | TBD | TBD |
-| P4  | c47abc18 | [link](https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a2dc65e-2488-83e8-90f8-fcacbf9d4378) | TBD | TBD | TBD |
-| P5  | e5a3999a | [link](https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a2dc684-5918-83e8-b53e-28fde5fca69a) | TBD | TBD | TBD |
+| P1A | 3871b587 | [link](https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a2dc597-d61c-83e8-ac93-8f3bf7f139fb) | ~17:21 | TBD | TBD |
+| P1B | aa1a694e | [link](https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a2dc5cf-db00-83e8-b824-21b626a0d9ab) | ~17:23 | TBD | TBD |
+| P2  | fc42f393 | [link](https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a2dc5f2-5e8c-83e8-9318-b7aefa847ee0) | ~17:25 | TBD | TBD |
+| P3  | 72bd3e5b | [link](https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a2dc617-2480-83e8-bf48-cc78a7bce891) | ~17:27 | TBD | TBD |
+| P4  | c47abc18 | [link](https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a2dc65e-2488-83e8-90f8-fcacbf9d4378) | ~17:29 | TBD | TBD |
+| P5  | e5a3999a | [link](https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a2dc684-5918-83e8-b53e-28fde5fca69a) | ~17:31 | TBD | TBD |
 
 ### Grok — BigBounce-Papers Project (`/project/e6c9ce77-4f86-4d94-b440-1062a78171c1`)
 Model/effort: **Heavy**
 
 | Paper | PDF md5 (prefix) | Chat URL (SAME as EXT11) | Submitted (PDT) | Harvest | Verdict |
 |-------|---------|----------|-----------------|---------|---------|
-| P1A | 3871b587 | [link](https://grok.com/project/e6c9ce77-4f86-4d94-b440-1062a78171c1?chat=7f12a3a9-339f-4a0d-a258-3d7224b02a7e) | TBD | TBD | TBD |
-| P1B | aa1a694e | [link](https://grok.com/project/e6c9ce77-4f86-4d94-b440-1062a78171c1?chat=6fede933-742f-423b-b1d8-bbbf7254d6c1) | TBD | TBD | TBD |
-| P2  | fc42f393 | [link](https://grok.com/project/e6c9ce77-4f86-4d94-b440-1062a78171c1?chat=1d8e1fbc-6a0e-4917-b1a5-cf389b307141) | TBD | TBD | TBD |
-| P3  | 72bd3e5b | [link](https://grok.com/project/e6c9ce77-4f86-4d94-b440-1062a78171c1?chat=df8b502c-8c32-408f-9509-82be147fccbe) | TBD | TBD | TBD |
-| P4  | c47abc18 | [link](https://grok.com/project/e6c9ce77-4f86-4d94-b440-1062a78171c1?chat=9b06db9f-adeb-4928-8b88-8b17655b095d) | TBD | TBD | TBD |
-| P5  | e5a3999a | [link](https://grok.com/project/e6c9ce77-4f86-4d94-b440-1062a78171c1?chat=52437983-41f2-4016-ac45-ad392572ce46) | TBD | TBD | TBD |
+| P1A | 3871b587 | [link](https://grok.com/project/e6c9ce77-4f86-4d94-b440-1062a78171c1?chat=7f12a3a9-339f-4a0d-a258-3d7224b02a7e) | ~17:33 | TBD | TBD |
+| P1B | aa1a694e | [link](https://grok.com/project/e6c9ce77-4f86-4d94-b440-1062a78171c1?chat=6fede933-742f-423b-b1d8-bbbf7254d6c1) | ~17:35 | TBD | TBD |
+| P2  | fc42f393 | [link](https://grok.com/project/e6c9ce77-4f86-4d94-b440-1062a78171c1?chat=1d8e1fbc-6a0e-4917-b1a5-cf389b307141) | ~17:37 | TBD | TBD |
+| P3  | 72bd3e5b | [link](https://grok.com/project/e6c9ce77-4f86-4d94-b440-1062a78171c1?chat=df8b502c-8c32-408f-9509-82be147fccbe) | ~17:39 | TBD | TBD |
+| P4  | c47abc18 | [link](https://grok.com/project/e6c9ce77-4f86-4d94-b440-1062a78171c1?chat=9b06db9f-adeb-4928-8b88-8b17655b095d) | ~17:42 | TBD | TBD |
+| P5  | e5a3999a | [link](https://grok.com/project/e6c9ce77-4f86-4d94-b440-1062a78171c1?chat=52437983-41f2-4016-ac45-ad392572ce46) | ~17:44 | TBD | TBD |
 
 ### Gemini — `gemini.google.com/u/0/` (Houston Golden · Work · Ultra)
 Model/effort: **2.5 Thinking**
@@ -163,12 +163,12 @@ Note: Gemini requires FRESH chat URLs per submission (backend silently drops upl
 
 | Paper | PDF md5 (prefix) | NEW Chat URL (fresh submit) | Submitted (PDT) | Growth-confirmed | Harvest | Verdict |
 |-------|---------|----------|-----------------|-----------------|---------|---------|
-| P1A | 3871b587 | TBD (fresh URL) | TBD | TBD | TBD | TBD |
-| P1B | aa1a694e | TBD (fresh URL) | TBD | TBD | TBD | TBD |
-| P2  | fc42f393 | TBD (fresh URL) | TBD | TBD | TBD | TBD |
-| P3  | 72bd3e5b | TBD (fresh URL) | TBD | TBD | TBD | TBD |
-| P4  | c47abc18 | TBD (fresh URL) | TBD | TBD | TBD | TBD |
-| P5  | e5a3999a | TBD (fresh URL) | TBD | TBD | TBD | TBD |
+| P1A | 3871b587 | [link](https://gemini.google.com/u/0/app/2bd8d60c206dfd75) | ~17:46 | ✅ 5277→10447 (+5170) | TBD | TBD |
+| P1B | aa1a694e | [link](https://gemini.google.com/u/0/app/9180e4eab4a0e928) | ~17:48 | ✅ 5261→10663 (+5402) | TBD | TBD |
+| P2  | fc42f393 | [link](https://gemini.google.com/u/0/app/515d69b5f8df4213) | ~17:49 | ✅ 5261→9907 (+4646) | TBD | TBD |
+| P3  | 72bd3e5b | [link](https://gemini.google.com/u/0/app/19510130f79e7be2) | ~17:50 | ✅ 1337→6145 (+4808) | TBD | TBD |
+| P4  | c47abc18 | [link](https://gemini.google.com/u/0/app/fa392f142cf476f3) | ~17:51 | ✅ 1315→6283 (+4968) | TBD | TBD |
+| P5  | e5a3999a | [link](https://gemini.google.com/u/0/app/168b65e7574a1162) | ~17:53 | ✅ 1239→6066 (+4827) FRESH-RESUBMIT (1st attempt: Gemini file-removed bug; resubmitted from fresh home, growth confirmed) | TBD | TBD |
 
 ---
 
@@ -176,8 +176,10 @@ Note: Gemini requires FRESH chat URLs per submission (backend silently drops upl
 
 - **HIGH confidence: 18/18 ACCEPT**
 - Basis: All EXT11 residuals are closed. P4 already universal 3/3. Grok has been 6/6 for 3 consecutive rounds. All remaining ChatGPT/Gemini MINOR items were addressable-local fixes — all addressed.
-- **Harvest window:** ≥30 min from last Gemini submission
+- **Harvest window:** ≥30 min from last Gemini submission (~17:53 PDT last = harvest ETA ≥18:23 PDT)
+- **Grok P1A already returning ACCEPT** (agents visible in browser during submission window)
 - **If any MINOR remains:** truth-audit first — most likely a false-positive given the systematic pdftotext artifact class now documented.
+- **Fresh-chat fallback count:** 1 (Gemini P5 — file-removed bug on first attempt; resubmitted from fresh home, growth confirmed)
 
 ---
 
