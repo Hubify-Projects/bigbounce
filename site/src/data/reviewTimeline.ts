@@ -64,6 +64,41 @@ export const reviewRounds: ReviewRound[] = [
     ],
   },
   {
+    id: "EXT11-TRUTH-AUDIT",
+    kind: "external-browser",
+    dateISO: "2026-06-13",
+    timePT: "17:25",
+    title: "EXT11 batch truth-audit: 10/18 ACCEPT · P4 unanimous 3/3 · 15 VERIFIED findings · 3 new auto-rules",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "EXT11 harvest+Opus batch truth-audit: 10/18 ACCEPT (P4 3/3, Grok 6/6, Gemini 3/6, ChatGPT 1/6). 8/18 MINOR, 0 MAJOR. 15 VERIFIED + 4 PARTIAL across 22 findings. All remaining items are local LaTeX/text/figure fixes — no new science required. P5 requires figure regeneration (stale V-Web titles in plot art). Closure wave + EXT12 completes path to 18/18 ACCEPT.",
+    keyTakeaways: [
+      "P4 unanimous 3/3 ACCEPT — first paper to clear all three providers. Submit to arXiv after 3 trivial edits (Shamir title, App B (B1) label, submission-pass placeholder wording).",
+      "P1A new regression: Eq. 15 algebraic inversion in Route-2 sharpener (second expression multiplies vs divides by αβ_obs); new auto-rule pattern-053",
+      "P5 figure-art not updated during V-Web→T-Web rename — Figs 2/3/9 plot titles still say V-Web; new auto-rule pattern-054 (figure-art-rename-verify)",
+      "P3 abstract 'catalog-grade' logical contradiction caught cross-vendor by ChatGPT+Gemini independently: eROSITA/Gaia failed 5σ validation gate but abstract claims all 6 surveys pass",
+      "New auto-rule pattern-055: strip internal audit labels (B1), (E3/E4) from journal prose before submit",
+    ],
+    gapMetric: { externalOnlyFindings: 15, note: "EXT11: 15 VERIFIED external-only findings (P1A:5, P1B:2, P2:2, P3:2, P4:1, P5:4) — gap closing fast (P4 at 1 trivial finding)" },
+    links: [
+      { label: "EXT11 batch truth-audit", href: `${GH}/project-context/peer-reviews/EXT11_BATCH_TRUTH_AUDIT.md` },
+      { label: "EXT11 manifest", href: `${GH}/project-context/peer-reviews/EXT11_BROWSER_MANIFEST.md` },
+    ],
+  },
+  {
+    id: "EXT11-SKILL-GAPMINE",
+    kind: "skill-improvement",
+    dateISO: "2026-06-13",
+    title: "EXT11 gap-mine: 3 new auto-rules (closure-arithmetic regression, figure-art-rename, audit-label-strip) — patterns 053-055",
+    papers: ["P1A", "P5", "P1B"],
+    summary: "EXT11 closure wave introduced two systematic regressions: Eq.15 algebraic inversion (arithmetic introduced in EXT10-closure Route-2 sharpener) and stale V-Web labels in figure plot titles after text-only rename. Third new rule prevents internal audit labels (B1/E3/E4) from leaking into journal prose. Patterns 053-055 added; reviewerPromptRules bumped 19→21.",
+    keyTakeaways: [
+      "pattern-053: every new equation introduced in a closure must have its second expression verified algebraically against the first — not just confirming the conclusion unchanged",
+      "pattern-054: systematic renames (V-Web→T-Web, etc.) must verify figure IMAGE FILES (plot titles, axis labels), not just .tex source text",
+      "pattern-055: before any submission, grep .tex for (B1)/(E\\d+)/[A-Z]\\d+ patterns and strip internal audit labels from journal prose",
+    ],
+    links: [],
+  },
+  {
     id: "EXT11-SUBMISSION",
     kind: "external-browser",
     dateISO: "2026-06-13",
@@ -1515,6 +1550,20 @@ export const externalVerdictRounds: ExternalRoundVerdicts[] = [
     },
     note: "EXT10: 18/18 MINOR REVISIONS — zero MAJORs. ChatGPT cleared both remaining MAJORs (P1A and P3). All 3 providers agree: MINOR across all 6 papers. This is the verdict consolidation milestone after EXT9-closure-wave. Gemini P3 chat was deleted/errored; resubmitted via DOM upload from fresh home page at 15:16 PDT, completed 15:30 PDT. Wall-clock: ~105 min total.",
   },
+  {
+    roundId: "EXT11",
+    dateISO: "2026-06-13",
+    windowPT: "Jun 13 · 16:07–16:47 PDT submit · 16:54–17:19 PDT harvest complete",
+    verdicts: {
+      P1A: ["MINOR", "ACCEPT", "MINOR"],
+      P1B: ["MINOR", "ACCEPT", "ACCEPT"],
+      P2: ["MINOR", "ACCEPT", "ACCEPT"],
+      P3: ["MINOR", "ACCEPT", "MINOR"],
+      P4: ["ACCEPT", "ACCEPT", "ACCEPT"],
+      P5: ["MINOR", "ACCEPT", "MINOR"],
+    },
+    note: "EXT11: 10/18 ACCEPT (P4 unanimous 3/3; Grok 6/6 ACCEPT; Gemini 3/6; ChatGPT 1/6). 8/18 MINOR REVISIONS, 0 MAJOR. P4 first paper to reach unanimous ACCEPT. ChatGPT MINORs are all LOCAL text/LaTeX/figure fixes — no new science required. P5 figure regeneration for stale V-Web labels in plot titles (Figs 2/3/9) is the largest remaining action. Truth-audit: 15 VERIFIED, 4 PARTIAL, 3 OPINION, 1 STALE across 22 total EXT11 findings.",
+  },
 ];
 
 export interface GapPoint {
@@ -1601,6 +1650,13 @@ export const gapSeries: GapPoint[] = [
     perPaper: { P1A: 3, P1B: 1, P2: 1, P3: 2, P4: 1, P5: 0 },
     note: "EXT10: 18/18 MINOR. Full truth-audit pending (/peer-review-truth-audit). Preliminary count: ~5 likely-verified findings (P1A dimensional bookkeeping + sphaleron rate; P3 top-1% wording + Cramer's V arithmetic; P4 Shamir biblio chimera; P5 V-Web→T-Web rename). Many submission-day items expected STALE. P5 at 0 substantive external-only findings.",
   },
+  {
+    roundId: "EXT11",
+    dateISO: "2026-06-13",
+    total: 15,
+    perPaper: { P1A: 5, P1B: 2, P2: 2, P3: 2, P4: 1, P5: 4 },
+    note: "EXT11 truth-audit: 15 VERIFIED + 4 PARTIAL across 22 total findings. Key new: P1A Eq.15 algebraic inversion (new closure regression); P5 stale V-Web figure art (figure regeneration required, text rename was done but plot titles not); P3 abstract 'catalog-grade' logic contradiction; P2 abstract r=0.75 vs r=0.84 inconsistency. P4 down to 1 VERIFIED (Shamir title text only). Internal→External gap closing: P4 now 0 substantive externals-only.",
+  },
 ];
 
 export interface ReadinessCheckpoint {
@@ -1641,7 +1697,14 @@ export const readinessCheckpoints: ReadinessCheckpoint[] = [
     id: "EXT2-CLOSURES",
     dateISO: "2026-06-10",
     values: { P1A: 95, P1B: 94, P2: 94, P3: 95, P4: 95, P5: 95 },
-    note: "Current: EXT2 cycle complete — P1A 94→95 (hardest blockers closed), P3 94→95; P1B/P2 held at 94 pending compute-queue closures; EXT3 pending",
+    note: "EXT2 cycle complete — P1A 94→95 (hardest blockers closed), P3 94→95; P1B/P2 held at 94 pending compute-queue closures; EXT3 pending",
+  },
+  {
+    id: "EXT11-harvest",
+    dateISO: "2026-06-13",
+    timePT: "17:19",
+    values: { P1A: 96, P1B: 97, P2: 97, P3: 96, P4: 99, P5: 96 },
+    note: "EXT11 harvest+audit: P4 unanimous ACCEPT (3/3) → bumped to 99 (pending Houston sign-off for 100). P1B/P2 2/3 ACCEPT → 97. P1A/P3/P5 1/3 ACCEPT → 96. All remaining items are local text/LaTeX/figure fixes. EXT12 closure wave in progress.",
   },
 ];
 
@@ -1662,6 +1725,7 @@ export const skillsSeries: SkillsPoint[] = [
   { id: "EXT1-gapmine", dateISO: "2026-06-10", patterns: 48, promptRules: 19, note: "EXT1 gap-mine: patterns 045-048 + artifact_crosscheck.py + reviewer-prompt rules 15-19" },
   { id: "EXT2-gapmine", dateISO: "2026-06-10", patterns: 49, promptRules: 19, note: "EXT2 gap-mine: pattern-051 closure-introduced regression (5-point closure-wave protocol)" },
   { id: "EXT3-gapmine", dateISO: "2026-06-11", patterns: 50, promptRules: 19, note: "EXT3 gap-mine: pattern-052 re-raise vindication test + browser-loop completion/version gates; prompt rules unchanged" },
+  { id: "EXT11-gapmine", dateISO: "2026-06-13", patterns: 53, promptRules: 21, note: "EXT11 gap-mine: 3 new auto-rules added — pattern-053 closure-arithmetic-regression-audit (Eq.15 inversion), pattern-054 figure-art-rename-verify (V-Web→T-Web in plot titles not caught), pattern-055 internal-audit-label-leak-strip ((B1)/(E*) labels in journal prose). Prompt rules +2 (figure-art-rename gate + closure-label grep)." },
 ];
 
 export function getReviewRoundByReportSlug(slug: string): ReviewRound | undefined {
