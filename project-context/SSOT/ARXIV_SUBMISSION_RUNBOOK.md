@@ -156,10 +156,12 @@ Log assigned IDs here once known:
 | P2    | `arXiv:XXXX.XXXXX` | [ ] |
 | P5    | `arXiv:XXXX.XXXXX` | [ ] |
 
-### Step 3 — Back-patch cross-citations in each .tex
+### Step 3 — Back-patch cross-citations in each .tex AND .bbl
+
+> **Pre-flight 2026-06-13 fix**: prior runbook revision missed .bbl bibitems. Both .tex AND .bbl must be patched in v2 re-tarball.
 
 For each paper, find all `arXiv:XXXX.XXXXX` placeholders and replace with real IDs.
-Quick grep to locate them:
+Quick grep to locate them in .tex files:
 
 ```bash
 grep -n "XXXX\.XXXXX\|TODO-SUBMISSION" arxiv/paper1a_ech_nogo.tex
@@ -169,6 +171,24 @@ grep -n "XXXX\.XXXXX\|TODO-SUBMISSION" pipelines/p3_anomaly_engine/paper3_draft.
 grep -n "XXXX\.XXXXX\|TODO-SUBMISSION" pipelines/p2_chirality/chirality_catalog_paper.tex
 grep -n "XXXX\.XXXXX\|TODO-SUBMISSION" pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex
 ```
+
+**Also patch .bbl files** — the Golden202* bibitems use the phrase "companion paper, posted
+concurrently on arXiv" (no `XXXX.XXXXX` token) instead of a placeholder string. These
+bibitems will NOT be caught by the grep above and must be patched separately.
+
+For each Golden202* bibitem in `arxiv/*.bbl` and `pipelines/*/p*.bbl`:
+- Locate the phrase `companion paper, posted concurrently on arXiv`
+- Append `, arXiv:<ID>` with the assigned arXiv ID for that companion paper
+- DO NOT remove the "companion paper" phrase — it preserves the narrative context for readers
+
+Quick grep to locate them:
+
+```bash
+grep -rn "companion paper, posted concurrently on arXiv" arxiv/ pipelines/
+```
+
+Authoritative per-paper-per-cite-key target map (51 cite-instances total):
+`project-context/SSOT/arxiv_companion_citation_map.md`
 
 ### Step 4 — Rebuild tarballs with patched .tex
 

@@ -1,8 +1,8 @@
 # Zenodo Deposition Record — P1A
 ## Paper: Channel-Level Closure of Four Minimal Einstein-Cartan-Holst Dark-Energy Routes and Perturbation Transparency for Scalar Matter
 
-**Version:** v1A.0.69 (submission version — requires final 2-line patch from v1A.0.68)
-**Prepared:** 2026-06-13 (HD-11 DO-NOW directive)
+**Version:** v1A.0.74 (EXT11-closure submission version | PDF md5: 3871b587 | 28pp)
+**Prepared:** 2026-06-13 (HD-11 DO-NOW directive) | **Updated:** EXT11-closure-wave 2026-06-13
 
 ---
 
@@ -67,8 +67,8 @@ Files Houston should upload to Zenodo:
 
 | File | Path | Description |
 |------|------|-------------|
-| `paper1a_arxiv_v1A.0.69.tar.gz` | `arxiv/paper1a_arxiv_v1A.0.69.tar.gz` | **PRIMARY — arXiv submission tarball (must be compiled from v1A.0.68 + 2-line E4/E5 patch)** |
-| `paper1a_ech_nogo.pdf` | `arxiv/paper1a_ech_nogo.pdf` | Compiled PDF (current; restamp to v1A.0.69 before upload) |
+| `paper1a_arxiv_v1A.0.74.tar.gz` | `project-context/SSOT/arxiv_tarballs/paper1a_arxiv_v1A.0.74.tar.gz` | **PRIMARY — arXiv submission tarball (EXT11-closure; PDF md5 3871b587)** |
+| `paper1a_ech_nogo.pdf` | `arxiv/paper1a_ech_nogo.pdf` | Compiled PDF (28pp; v1A.0.74) |
 | `paper1a_ech_nogo.tex` | `arxiv/paper1a_ech_nogo.tex` | LaTeX source |
 
 **Manifest count: 3 files**
@@ -96,16 +96,14 @@ Files Houston should upload to Zenodo:
 
 ## 10. Version
 
-`v1A.0.69`
-
-(If the 2-line E4/E5 patch has not been applied yet, the current tarball is at `v1A.0.68`; apply the patch and rebuild `paper1a_arxiv_v1A.0.69.tar.gz` before uploading.)
+`v1A.0.74` (EXT11-closure | PDF md5: 3871b587 | 28pp)
 
 ---
 
 ## 11. Click-Publish Steps
 
 1. **Log into zenodo.org** → click "New upload" (or "New deposition").
-2. **Drop files:** drag in `paper1a_arxiv_v1A.0.69.tar.gz` + `paper1a_ech_nogo.pdf`. (Optional: also include the raw .tex source.)
+2. **Drop files:** drag in `paper1a_arxiv_v1A.0.74.tar.gz` + `paper1a_ech_nogo.pdf`. (Optional: also include the raw .tex source.)
 3. **Paste metadata:** copy Title, Description, Keywords, License (CC-BY-4.0), Authors, and Communities from sections 1-9 above into the Zenodo form fields. Set Upload type = "Publication" → "Preprint".
 4. **Reserve DOI:** click "Reserve DOI" before publishing — copy the DOI and insert it in the paper at `\preprint{arXiv:XXXX.XXXXX}` and in the P1B companion's App A "pending DOI" placeholder.
 5. **Publish:** click "Publish" — Zenodo mints the DOI immediately. Copy the DOI string (e.g. `10.5281/zenodo.XXXXXXX`) and insert into P1B + P2's companion-reference markers before those papers upload to arXiv.

@@ -19,13 +19,31 @@ All compiled via `tools/build_arxiv_tarball.sh`: errors=0, undef=0 on all 6. All
 
 ---
 
+## ⚠️ PENDING HOUSTON ACTION — ORCID GATE
+
+Preflight 2026-06-13 found ORCID `0009-0008-3617-8729` returns HTTP 404 on the
+ORCID Public API (`pub.orcid.org/v3.0/0009-0008-3617-8729/person`). Profile
+may exist but is private/unclaimed.
+
+REQUIRED BEFORE COORDINATED ARXIV DROP:
+1. Confirm Houston Golden's ORCID is registered at orcid.org/register
+2. Visibility settings → set affiliation + employment to PUBLIC
+3. Verify `curl -s pub.orcid.org/v3.0/0009-0008-3617-8729/person` returns 200
+   (not 404)
+
+This is the ONLY true blocker to the 1-command coordinated drop. All
+mechanical gaps (runbook .bbl patch, Zenodo version bumps) closed in commit
+SHA-WILL-INSERT-HERE.
+
+---
+
 ## 1. One-screen summary
 
 - **EXT10 final verdict: 18/18 MINOR REVISIONS — zero MAJORs.** Path to 18/18 ACCEPT is ≤1 cycle. Ship is one command away.
 - **7 external + 8+ internal rounds completed.** Gap series: 60 → 32 → 27 → 13 → 19 → 18 → 14 → **2** → **0** at R39conf.
 - **R39conf + EXT10: ALL 6 papers CLEAN.** Zero new VERIFIED findings across all rounds. All residual items are MINOR-arithmetic or OPINION class.
 - **Grok: ACCEPT on all 6 through EXT3–EXT10** (calibration-stable). Gemini/ChatGPT at MINOR tier.
-- **All 6 papers at EXT10 versions:** v1A.0.72 / v1B.0.69 / v1.7.63 / v3.1.106 / v1.0.186 / v0.1.75.
+- **All 6 papers at EXT11-closure versions:** v1A.0.74 / v1B.0.71 / v1.7.65 / v3.1.108 / v1.0.188 / v0.1.77-2026-06-13.
 - **Coordinated drop runbook staged:** `project-context/SSOT/ARXIV_SUBMISSION_RUNBOOK.md`
 - **Grok: 5× consecutive ACCEPT across EXT3–EXT7** (calibration-stable; R37conf brutal-mode REJECT is prompt-class artifact, not calibration decay — every finding HD-ruled or OPINION).
 - **Gemini: 2 ACCEPT + 4 MINOR across EXT7** (fresh-thread recipe in force; P2 ACCEPT-WITH-MINOR is the round's strongest calibration anchor).
@@ -37,7 +55,7 @@ All compiled via `tools/build_arxiv_tarball.sh`: errors=0, undef=0 on all 6. All
 
 ## 2. Per-paper state
 
-### P1A — ECH structural constraints (v1A.0.68 → v1A.0.69 after 2-line patch)
+### P1A — ECH structural constraints (v1A.0.74 — EXT11-closure)
 
 **EXT7 (3-vendor):** ChatGPT MAJOR REVISIONS · Grok ACCEPT · Gemini ACCEPT WITH MINOR REVISIONS. EXT7 finding count after truth-audit: 2 MINOR-arithmetic (OpenAI P1A-E4: 10¹²⁰/10¹²² convention mismatch between body and Fig 5/Table I; P1A-E5: sphaleron T-threshold "10¹² GeV" → "few × 10¹⁰ GeV" — conclusion unchanged). All EXT7 ESSENTIALs stale or HD-ruled. 12 STALE, 8 OPINION, 0 new physics blocker.
 
@@ -45,11 +63,11 @@ All compiled via `tools/build_arxiv_tarball.sh`: errors=0, undef=0 on all 6. All
 
 **What's left:** Apply 2-line patch, bump to v1A.0.69, recompile. Then this paper is submission-ready.
 
-**[ ] Houston approves P1A v1A.0.69 for arXiv submission**
+**[ ] Houston approves P1A v1A.0.74 for arXiv submission** (EXT11-closure | PDF md5: 3871b587 | 28pp)
 
 ---
 
-### P1B — MCMC companion (v1B.0.65)
+### P1B — MCMC companion (v1B.0.71 — EXT11-closure)
 
 **EXT7 (3-vendor):** ChatGPT MAJOR REVISIONS · Grok ACCEPT · Gemini ACCEPT. Grok ACCEPT stable through EXT3–EXT7. EXT7 findings: 0 new VERIFIED. ChatGPT MAJOR reduces to companion-posture re-raise (standalone-reader) — HOUSTON-DECISION. Gemini ACCEPT confirms EXT7 FB2 NaMaster Eq (1) closure persisted.
 
@@ -57,11 +75,11 @@ All compiled via `tools/build_arxiv_tarball.sh`: errors=0, undef=0 on all 6. All
 
 **What's left:** Optional — fold SN-overlap control chains (Exploratory w₀wₐ section) before submission; paper already carries the "Exploratory" caveat + full disclosure. Ruling: hold or ship is Houston's call.
 
-**[ ] Houston approves P1B v1B.0.65 for arXiv submission** (option: hold for SN-overlap chain fold-in)
+**[ ] Houston approves P1B v1B.0.71 for arXiv submission** (EXT11-closure | PDF md5: aa1a694e | 21pp | option: hold for SN-overlap chain fold-in)
 
 ---
 
-### P2 — f_NL forecast (v1.7.60)
+### P2 — f_NL forecast (v1.7.65 — EXT11-closure)
 
 **EXT7 (3-vendor):** ChatGPT MAJOR REVISIONS · Grok ACCEPT · Gemini MINOR REVISION. Grok ACCEPT stable EXT3–EXT7. Gemini MINOR (ACCEPT-tier). EXT7 findings: 0 new VERIFIED. ChatGPT MAJOR reduces to re-raises of EXT6 items already closed (2.6–5σ realistic leading in abstract; Fig 1 6.25σ ref-only bar tagged; Refs [28]/[34] updated). Truth-audit: "zero residual findings is a physics/derivation blocker."
 
@@ -69,11 +87,11 @@ All compiled via `tools/build_arxiv_tarball.sh`: errors=0, undef=0 on all 6. All
 
 **What's left:** None blocking. Optional: targeted in-thread ChatGPT delta-confirm on regenerated figures (recommended; cheap; submission-day).
 
-**[ ] Houston approves P2 v1.7.60 for arXiv submission**
+**[ ] Houston approves P2 v1.7.65 for arXiv submission** (EXT11-closure | PDF md5: fc42f393 | 28pp)
 
 ---
 
-### P3 — Multi-survey anomaly catalog (v3.1.103)
+### P3 — Multi-survey anomaly catalog (v3.1.108 — EXT11-closure)
 
 **EXT7 (3-vendor):** ChatGPT MAJOR REVISIONS · Grok ACCEPT · Gemini MAJOR REVISIONS. Grok ACCEPT stable EXT3–EXT7. Gemini MAJOR driven by data-leakage blocker on Planck 152/200 overlap — EXT7 closure added explicit binomial p-value caveat. EXT7 findings after truth-audit: 0 new VERIFIED on disk.
 
@@ -81,11 +99,11 @@ All compiled via `tools/build_arxiv_tarball.sh`: errors=0, undef=0 on all 6. All
 
 **What's left:** The two residual Houston-decisions from the 2026-06-11 package (title plural/count framing; S_BigAE column strip from Table III) are re-listed below in §4. No compute gate open.
 
-**[ ] Houston approves P3 v3.1.103 for arXiv submission**
+**[ ] Houston approves P3 v3.1.108 for arXiv submission** (EXT11-closure | PDF md5: 72bd3e5b | 29pp)
 
 ---
 
-### P4 — Galaxy chirality catalog (v1.0.182)
+### P4 — Galaxy chirality catalog (v1.0.188 — EXT11-closure)
 
 **EXT7 (3-vendor):** ChatGPT MAJOR REVISIONS · Grok ACCEPT · Gemini ACCEPT WITH MINOR REVISIONS. Grok ACCEPT stable EXT3–EXT7. Gemini "high-quality, impactful" — MAJOR driven entirely by HD-11 release-bundle gate (Zenodo DOI placeholder), not science. EXT7 findings: 0 new VERIFIED. No headline number challenged (HC null +0.41σ, WLS exclusion z≈−18) in any of 7 cycles.
 
@@ -93,11 +111,11 @@ All compiled via `tools/build_arxiv_tarball.sh`: errors=0, undef=0 on all 6. All
 
 **What's left:** HF model-repo version tag `bamfai/galaxy-chirality-v2` → tag v2026.04 (5 min, HF write token). Submission-day task only. First paper in submission queue.
 
-**[ ] Houston approves P4 v1.0.182 for arXiv submission** (first in queue)
+**[ ] Houston approves P4 v1.0.188 for arXiv submission** (EXT11-closure | PDF md5: c47abc18 | 23pp | first in queue)
 
 ---
 
-### P5 — DESI chirality environment (v0.1.72)
+### P5 — DESI chirality environment (v0.1.77-2026-06-13 — EXT11-closure)
 
 **EXT7 (3-vendor):** ChatGPT MAJOR REVISIONS · Grok ACCEPT · Gemini MINOR REVISION. Grok ACCEPT stable EXT3–EXT7. Gemini MINOR (ACCEPT-tier). EXT7 findings: 0 new VERIFIED. Grok ESSENTIAL k=20 re-raise now at SEVENTH consecutive flag — auto-falsify rule binding; exact k-unbounded rerun is in the paper, conclusions invariant.
 
@@ -105,7 +123,7 @@ All compiled via `tools/build_arxiv_tarball.sh`: errors=0, undef=0 on all 6. All
 
 **What's left:** NM1 title count ruling (title reads "791,635" but T-Web cross-check uses 783,820 env-matched; recommend "783,820 Environment-Matched DR1 Spirals"). Once ruled, Fig 3 title regen is minutes of local work. Insert P4's arXiv ID on submission day.
 
-**[ ] Houston approves P5 v0.1.72 for arXiv submission** (after NM1 title ruling + Fig 3 regen)
+**[ ] Houston approves P5 v0.1.77-2026-06-13 for arXiv submission** (EXT11-closure | PDF md5: e5a3999a | 32pp | after NM1 title ruling)
 
 ---
 
@@ -117,17 +135,17 @@ Key addition vs earlier runbook: **coordinated same-hour drop + 24h v2 back-patc
 
 Order per SSOT/PUBLISH_PLAN.md: **P4 → P1A+P1B → P3 → P2 → P5**.
 
-1. **P4 (first):** Tag GitHub release at v1.0.182 → Zenodo auto-import → edit metadata → publish → copy DOI. Replace all `\artifact{}` blob/main links with pinned commit or DOI. Add HF model-repo tag v2026.04 on `bamfai/galaxy-chirality-v2`. Recompile + `/latex-audit` + `/artifact-link-verify`. Rebuild tarball `paper4_arxiv_v1.0.182.tar.gz`. Upload to arXiv. Note the arXiv ID.
+1. **P4 (first):** Tag GitHub release at v1.0.188 → Zenodo auto-import → edit metadata → publish → copy DOI. Replace all `\artifact{}` blob/main links with pinned commit or DOI. Add HF model-repo tag v2026.04 on `bamfai/galaxy-chirality-v2`. Recompile + `/latex-audit` + `/artifact-link-verify`. Use canonical tarball `paper4_arxiv_v1.0.188.tar.gz` from `project-context/SSOT/arxiv_tarballs/`. Upload to arXiv. Note the arXiv ID.
 
-2. **P1A (same day):** Apply v1A.0.69 patch (E4+E5 closures, ~3 lines). Recompile. Insert P4 arXiv ID at companion anchors + `\preprint{arXiv:XXXX.XXXXX}` marker. Tag + Zenodo DOI. Tarball `paper1a_arxiv_v1A.0.69.tar.gz`. Upload.
+2. **P1A (same day):** Insert P4 arXiv ID at companion anchors + `\preprint{arXiv:XXXX.XXXXX}` marker. Tag + Zenodo DOI. Use canonical tarball `paper1a_arxiv_v1A.0.74.tar.gz`. Upload.
 
-3. **P1B (same day as P1A):** Insert P1A arXiv ID at companion refs. Replace App A "pending DOI assignment" with minted DOIs. If SN-overlap chains converged, fold (w₀,wₐ) shifts into §III/Table II. Recompile. Tarball `paper1b_arxiv_v1B.0.65.tar.gz`. Upload.
+3. **P1B (same day as P1A):** Insert P1A arXiv ID at companion refs. Replace App A "pending DOI assignment" with minted DOIs. If SN-overlap chains converged, fold (w₀,wₐ) shifts into §III/Table II. Recompile. Use canonical tarball `paper1b_arxiv_v1B.0.71.tar.gz`. Upload.
 
-4. **P3:** Insert P1A/P1B arXiv IDs. Flip HF dataset `bamfai/bigbounce-anomaly-catalog` STAGED → public at arXiv posting. Insert Zenodo DOI in DATA_RELEASE_MANIFEST.md header + tex L44 marker. Recompile. Tarball `paper3_arxiv_v3.1.103.tar.gz`. Upload.
+4. **P3:** Insert P1A/P1B arXiv IDs. Flip HF dataset `bamfai/bigbounce-anomaly-catalog` STAGED → public at arXiv posting. Insert Zenodo DOI in DATA_RELEASE_MANIFEST.md header + tex L44 marker. Recompile. Use canonical tarball `paper3_arxiv_v3.1.108.tar.gz`. Upload.
 
-5. **P2:** Run ZENODO_RELEASE_CHECKLIST.md steps 1–6 (tag paper2-v1.7.60). Replace "DOI inserted at submission" placeholders. Optional in-thread ChatGPT figure delta-confirm. Tarball `paper2_arxiv_v1.7.60.tar.gz`. Upload.
+5. **P2:** Run ZENODO_RELEASE_CHECKLIST.md steps 1–6 (tag paper2-v1.7.65). Replace "DOI inserted at submission" placeholders. Optional in-thread ChatGPT figure delta-confirm. Use canonical tarball `paper2_arxiv_v1.7.65.tar.gz`. Upload.
 
-6. **P5 (last):** NM1 title ruling → Fig 3 regen → restamp to v0.1.72 (or v0.1.73 if regen forces a bump). Insert P4 arXiv ID. Mint Zenodo DOI. Tarball. Upload.
+6. **P5 (last):** NM1 title ruling → Fig 3 regen if needed. Insert P4 arXiv ID. Mint Zenodo DOI. Use canonical tarball `paper5_arxiv_v0.1.77-2026-06-13.tar.gz`. Upload.
 
 All Zenodo DOIs minted in one sitting per HD-11. After each arXiv ID is assigned, insert it at the `TODO-SUBMISSION` companion-reference markers in all subsequent papers before they upload. Run `v3_bundled_paper_bump.mjs` final-version Convex sync after all 6 arXiv IDs are in hand.
 

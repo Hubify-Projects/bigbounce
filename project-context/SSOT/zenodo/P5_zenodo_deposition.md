@@ -1,8 +1,8 @@
 # Zenodo Deposition Record — P5
 ## Paper: Environmental Dependence of Spiral Chirality (DESI + DESIVAST)
 
-**Version:** v0.1.72-2026-06-13
-**Prepared:** 2026-06-13 (HD-11 DO-NOW directive)
+**Version:** v0.1.77-2026-06-13 (EXT11-closure submission version | PDF md5: e5a3999a | 32pp)
+**Prepared:** 2026-06-13 (HD-11 DO-NOW directive) | **Updated:** EXT11-closure-wave 2026-06-13
 **Submission order:** LAST (after P4 arXiv ID is minted; P5 inserts it into the manuscript)
 
 ---
@@ -73,8 +73,8 @@ Files Houston should upload to Zenodo:
 
 | File | Path | Description |
 |------|------|-------------|
-| `paper5_arxiv_v0.1.72.tar.gz` | `pipelines/p5_desi_chirality/paper/paper5_arxiv_v0.1.72.tar.gz` | **PRIMARY — arXiv submission tarball** |
-| `p5_desi_chirality.pdf` | `pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf` | Compiled PDF (30pp) |
+| `paper5_arxiv_v0.1.77-2026-06-13.tar.gz` | `project-context/SSOT/arxiv_tarballs/paper5_arxiv_v0.1.77-2026-06-13.tar.gz` | **PRIMARY — arXiv submission tarball (EXT11-closure; PDF md5 e5a3999a)** |
+| `p5_desi_chirality.pdf` | `pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf` | Compiled PDF (32pp; v0.1.77-2026-06-13) |
 | `p5_desi_chirality.tex` | `pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex` | LaTeX source |
 
 **Analysis output artifacts:**
@@ -95,7 +95,7 @@ Files Houston should upload to Zenodo:
 
 **Manifest count: 3 paper files + 4 output JSONs + 2 script directories = 9 local file entries**
 
-*Note: The NM1 title ruling (open Houston-decision) may trigger a Fig 3 regen before final submission. If so, rebuild `paper5_arxiv_v0.1.73.tar.gz` and upload that version instead of v0.1.72.*
+*Note: The NM1 title ruling (open Houston-decision) may trigger a Fig 3 regen before final submission. If so, rebuild a post-NM1-ruling tarball and upload that version instead of v0.1.77-2026-06-13.*
 
 ---
 
@@ -114,14 +114,16 @@ Files Houston should upload to Zenodo:
 
 ## 10. Version
 
-`v0.1.72-2026-06-13` (or `v0.1.73` if NM1 ruling forces a Fig 3 regen + bump)
+`v0.1.77-2026-06-13` (EXT11-closure | PDF md5: e5a3999a | 32pp)
+
+*NM1 ruling may still force a bump; use this version unless Houston rules otherwise.*
 
 ---
 
 ## 11. Click-Publish Steps
 
 1. **Log into zenodo.org** → click "New upload". **Wait until P4's arXiv ID is in hand** (~1 hour after P4 upload) before proceeding with P5.
-2. **Drop files:** drag in `paper5_arxiv_v0.1.72.tar.gz` + `p5_desi_chirality.pdf` + the output JSONs (zip as `p5_analysis.zip`) + zip the `env_finder/` and `scripts/` directories as `p5_code.zip`.
+2. **Drop files:** drag in `paper5_arxiv_v0.1.77-2026-06-13.tar.gz` + `p5_desi_chirality.pdf` + the output JSONs (zip as `p5_analysis.zip`) + zip the `env_finder/` and `scripts/` directories as `p5_code.zip`.
 3. **Paste metadata:** Title (with NM1-ruled count), Description, Keywords, License (CC-BY-4.0), Authors, Communities, and Related Identifiers (including P4's real arXiv ID) from sections 1-9 above.
 4. **Reserve DOI:** click "Reserve DOI" — copy and insert the DOI into P5's companion-reference markers. Also insert P4's real arXiv ID at the `TODO-SUBMISSION` companion-reference markers in the P5 source before the final compile (BLOCKING dependency).
 5. **Publish:** click "Publish". After arXiv assigns P5's ID, run `v3_bundled_paper_bump.mjs` for the final Convex sync of all 6 arXiv IDs.

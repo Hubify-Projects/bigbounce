@@ -1,22 +1,24 @@
 # Zenodo Deposition Index — BigBounce 6-Paper Portfolio
-## Prepared: 2026-06-13 | HD-11 DO-NOW
+## Prepared: 2026-06-13 | HD-11 DO-NOW | UPDATED: EXT11-closure versions staged
 
 All six deposition records are ready for one-click publish. Houston's action on submission day is: open each PX_zenodo_deposition.md → follow the 5-step "Click-Publish Steps" → done.
+
+**EXT11-closure version bump (2026-06-13):** All tarballs updated to EXT11-closure versions. Canonical tarballs staged at `project-context/SSOT/arxiv_tarballs/`.
 
 ---
 
 ## Deposition Summary
 
-| Paper | Short Title | Version | Tarball | File Count | Status |
-|-------|-------------|---------|---------|------------|--------|
-| **P4** (first) | Galaxy Chirality Catalog | v1.0.182 | `paper4_arxiv_v1.0.182.tar.gz` | 10 local + HF model | READY |
-| **P1A** | ECH No-Go | v1A.0.69* | `paper1a_arxiv_v1A.0.69.tar.gz`* | 3 | READY (needs 2-line patch) |
-| **P1B** | MCMC Companion | v1B.0.65 | `paper1b_arxiv_v1B.0.65.tar.gz` | 3 + chain dirs | READY |
-| **P3** | Multi-Survey Anomaly Catalog | v3.1.103 | `paper3_arxiv_v3.1.103.tar.gz` | 8 local + HF parquets | READY (HF flip needed) |
-| **P2** | fnl Forecast / SPHEREx | v1.7.60 | `paper2_arxiv_v1.7.60.tar.gz` | 21 | READY |
-| **P5** (last) | DESI Chirality Environment | v0.1.72 | `paper5_arxiv_v0.1.72.tar.gz` | 9 | READY (awaits P4 arXiv ID + NM1 ruling) |
+| Paper | Short Title | Version | PDF MD5 | Pages | Status |
+|-------|-------------|---------|---------|-------|--------|
+| **P4** (first) | Galaxy Chirality Catalog | v1.0.188 | `c47abc18` | 23 | READY — EXT11-closure |
+| **P1A** | ECH No-Go | v1A.0.74 | `3871b587` | 28 | READY — EXT11-closure |
+| **P1B** | MCMC Companion | v1B.0.71 | `aa1a694e` | 21 | READY — EXT11-closure |
+| **P3** | Multi-Survey Anomaly Catalog | v3.1.108 | `72bd3e5b` | 29 | READY — EXT11-closure (HF flip needed at posting) |
+| **P2** | fnl Forecast / SPHEREx | v1.7.65 | `fc42f393` | 28 | READY — EXT11-closure |
+| **P5** (last) | DESI Chirality Environment | v0.1.77-2026-06-13 | `e5a3999a` | 32 | READY (awaits P4 arXiv ID + NM1 ruling) |
 
-*P1A tarball at v1A.0.69 must be rebuilt from v1A.0.68 + the 2-line E4/E5 patch (sphaleron T-threshold + 10^120/10^122 convention). Current tarball on disk is `paper1a_arxiv_v1A.0.68.tar.gz`.
+All 6 tarballs standalone-compile verified (errors=0, undef=0) from EXT11-closure .tex sources. git SHA at build: EXT11-closure-wave commit.
 
 ---
 
@@ -57,15 +59,14 @@ At P4 submission:
 
 ### Morning prep (before any uploads)
 
-- [ ] Apply P1A 2-line E4/E5 patch → rebuild `paper1a_arxiv_v1A.0.69.tar.gz`
-- [ ] Resolve P5 NM1 title ruling (791,635 vs 783,820) → if changed, regen Fig 3 → bump to v0.1.73
-- [ ] Resolve P3 S_BigAE column strip ruling → apply if YES → already at v3.1.103 or bump to v3.1.104
+- [ ] Resolve P5 NM1 title ruling (791,635 vs 783,820) → if changed, regen Fig 3 → bump from v0.1.77 accordingly
+- [ ] Resolve P3 S_BigAE column strip ruling → apply if YES (already at v3.1.108)
 - [ ] Resolve P1B SN-overlap chain decision → ship with current framing (recommended)
 
 ### P4 upload (Step 1 — first in queue)
 
 - [ ] Open `P4_zenodo_deposition.md`
-- [ ] Create GitHub release tag `paper4-v1.0.182` on the submission commit
+- [ ] Create GitHub release tag `paper4-v1.0.188` on the submission commit
 - [ ] Mint Zenodo deposition → Reserve DOI → re-point `\artifact{}` blob/main links → recompile → upload tarball + PDF + provenance JSONs → Publish
 - [ ] Tag HuggingFace model `bamfai/galaxy-chirality-v2` → `v2026.04`
 - [ ] Upload P4 tarball to arXiv → wait ~60 min for arXiv ID assignment
@@ -74,10 +75,10 @@ At P4 submission:
 ### P1A + P1B upload (Step 2 — same day as P4)
 
 - [ ] Insert P4 arXiv ID at companion anchors in P1A source
-- [ ] Compile P1A → rebuild `paper1a_arxiv_v1A.0.69.tar.gz`
+- [ ] Compile P1A → rebuild `paper1a_arxiv_v1A.0.74.tar.gz`
 - [ ] Mint P1A Zenodo → Reserve DOI → insert DOI in P1B App A placeholder → Publish
 - [ ] Upload P1A to arXiv → note arXiv ID: `arXiv:XXXX.XXXXX`
-- [ ] Insert P1A arXiv ID into P1B source → compile → rebuild `paper1b_arxiv_v1B.0.65.tar.gz`
+- [ ] Insert P1A arXiv ID into P1B source → compile → rebuild `paper1b_arxiv_v1B.0.71.tar.gz`
 - [ ] Mint P1B Zenodo → Reserve DOI → Publish
 - [ ] Upload P1B to arXiv → note arXiv ID: `arXiv:XXXX.XXXXX`
 
@@ -85,7 +86,7 @@ At P4 submission:
 
 - [ ] Insert P1A/P1B arXiv IDs into P3 source
 - [ ] Insert Zenodo DOI into `DATA_RELEASE_MANIFEST.md` header + tex L44 marker
-- [ ] Compile P3 → rebuild `paper3_arxiv_v3.1.103.tar.gz`
+- [ ] Compile P3 → rebuild `paper3_arxiv_v3.1.108.tar.gz`
 - [ ] Mint P3 Zenodo → Reserve DOI → Publish
 - [ ] Flip HuggingFace dataset `bamfai/bigbounce-anomaly-catalog` to public
 - [ ] Upload P3 to arXiv → note arXiv ID
@@ -94,13 +95,13 @@ At P4 submission:
 
 - [ ] Insert P1A/P1B arXiv IDs at "DOI inserted at submission" placeholders in P2
 - [ ] Optional: targeted in-thread ChatGPT delta-confirm on regenerated figures
-- [ ] Create GitHub release tag `paper2-v1.7.60` → Zenodo auto-import → edit metadata → Publish
+- [ ] Create GitHub release tag `paper2-v1.7.65` → Zenodo auto-import → edit metadata → Publish
 - [ ] Upload P2 to arXiv → note arXiv ID
 
 ### P5 upload (Step 5 — last)
 
 - [ ] Insert P4 arXiv ID into P5 source at `TODO-SUBMISSION` companion-reference markers
-- [ ] If NM1 ruled + Fig 3 regenned → already bumped to v0.1.73; otherwise use v0.1.72
+- [ ] If NM1 ruled + Fig 3 regenned → bump from v0.1.77-2026-06-13 accordingly; otherwise use v0.1.77-2026-06-13
 - [ ] Compile P5 → rebuild tarball
 - [ ] Mint P5 Zenodo → Reserve DOI → Publish
 - [ ] Upload P5 to arXiv

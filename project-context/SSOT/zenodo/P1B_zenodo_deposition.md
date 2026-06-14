@@ -1,8 +1,8 @@
 # Zenodo Deposition Record — P1B
 ## Paper: Technical Verification Companion to the ECH Spin-Torsion Program
 
-**Version:** v1B.0.65
-**Prepared:** 2026-06-13 (HD-11 DO-NOW directive)
+**Version:** v1B.0.71 (EXT11-closure submission version | PDF md5: aa1a694e | 21pp)
+**Prepared:** 2026-06-13 (HD-11 DO-NOW directive) | **Updated:** EXT11-closure-wave 2026-06-13
 
 ---
 
@@ -65,8 +65,8 @@ Files Houston should upload to Zenodo:
 
 | File | Path | Description |
 |------|------|-------------|
-| `paper1b_arxiv_v1B.0.65.tar.gz` | `arxiv/paper1b_arxiv_v1B.0.65.tar.gz` | **PRIMARY — arXiv submission tarball** |
-| `paper1b_mcmc_companion.pdf` | `arxiv/paper1b_mcmc_companion.pdf` | Compiled PDF (22pp) |
+| `paper1b_arxiv_v1B.0.71.tar.gz` | `project-context/SSOT/arxiv_tarballs/paper1b_arxiv_v1B.0.71.tar.gz` | **PRIMARY — arXiv submission tarball (EXT11-closure; PDF md5 aa1a694e)** |
+| `paper1b_mcmc_companion.pdf` | `arxiv/paper1b_mcmc_companion.pdf` | Compiled PDF (21pp; v1B.0.71) |
 | `paper1b_mcmc_companion.tex` | `arxiv/paper1b_mcmc_companion.tex` | LaTeX source |
 
 **MCMC chain data** (in `reproducibility/`):
@@ -97,14 +97,14 @@ Files Houston should upload to Zenodo:
 
 ## 10. Version
 
-`v1B.0.65`
+`v1B.0.71` (EXT11-closure | PDF md5: aa1a694e | 21pp)
 
 ---
 
 ## 11. Click-Publish Steps
 
 1. **Log into zenodo.org** → click "New upload".
-2. **Drop files:** drag in `paper1b_arxiv_v1B.0.65.tar.gz` + `paper1b_mcmc_companion.pdf` + the `reproducibility/cosmology/` and `reproducibility/p1_namaster_500mc/` chain bundles (zip them first if needed: `zip -r p1b_chains.zip reproducibility/cosmology/ reproducibility/p1_namaster_500mc/`).
+2. **Drop files:** drag in `paper1b_arxiv_v1B.0.71.tar.gz` + `paper1b_mcmc_companion.pdf` + the `reproducibility/cosmology/` and `reproducibility/p1_namaster_500mc/` chain bundles (zip them first if needed: `zip -r p1b_chains.zip reproducibility/cosmology/ reproducibility/p1_namaster_500mc/`).
 3. **Paste metadata:** Title, Description, Keywords, License (CC-BY-4.0), Authors, Communities from sections 1-9 above. Set Upload type = "Publication" → "Preprint".
 4. **Reserve DOI:** click "Reserve DOI" — copy and insert the minted DOI into P1B's App A "pending DOI assignment" placeholder before final compile. Also insert P1A's arXiv ID (minted before P1B) into the companion reference `\cite{Golden2026P1a}`.
 5. **Publish:** click "Publish". Copy DOI → update DATA_RELEASE_MANIFEST.md (if referenced from P3) and insert into subsequent papers (P3, P2, P5) at their companion-reference markers.

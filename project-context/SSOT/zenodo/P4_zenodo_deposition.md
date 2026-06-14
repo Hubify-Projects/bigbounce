@@ -1,8 +1,8 @@
 # Zenodo Deposition Record — P4
 ## Paper: Survey-Scale Galaxy Chirality with Equivariant TTA
 
-**Version:** v1.0.182
-**Prepared:** 2026-06-13 (HD-11 DO-NOW directive)
+**Version:** v1.0.188 (EXT11-closure submission version | PDF md5: c47abc18 | 23pp)
+**Prepared:** 2026-06-13 (HD-11 DO-NOW directive) | **Updated:** EXT11-closure-wave 2026-06-13
 **Submission order:** FIRST (P4 → P1A+P1B → P3 → P2 → P5 per PUBLISH_PLAN.md)
 
 ---
@@ -71,8 +71,8 @@ Files Houston should upload to Zenodo:
 
 | File | Path | Description |
 |------|------|-------------|
-| `paper4_arxiv_v1.0.182.tar.gz` | `pipelines/p2_chirality/paper4_arxiv_v1.0.182.tar.gz` | **PRIMARY — arXiv submission tarball** |
-| `chirality_catalog_paper.pdf` | `pipelines/p2_chirality/chirality_catalog_paper.pdf` | Compiled PDF (22pp) |
+| `paper4_arxiv_v1.0.188.tar.gz` | `project-context/SSOT/arxiv_tarballs/paper4_arxiv_v1.0.188.tar.gz` | **PRIMARY — arXiv submission tarball (EXT11-closure; PDF md5 c47abc18)** |
+| `chirality_catalog_paper.pdf` | `pipelines/p2_chirality/chirality_catalog_paper.pdf` | Compiled PDF (23pp; v1.0.188) |
 | `chirality_catalog_paper.tex` | `pipelines/p2_chirality/chirality_catalog_paper.tex` | LaTeX source |
 
 **Canonical provenance JSON artifacts:**
@@ -114,14 +114,14 @@ Files Houston should upload to Zenodo:
 
 ## 10. Version
 
-`v1.0.182`
+`v1.0.188` (EXT11-closure | PDF md5: c47abc18 | 23pp)
 
 ---
 
 ## 11. Click-Publish Steps
 
 1. **Log into zenodo.org** → click "New upload". (P4 is submitted FIRST; all other papers wait for P4's arXiv ID.)
-2. **Drop files:** drag in `paper4_arxiv_v1.0.182.tar.gz` + `chirality_catalog_paper.pdf` + the canonical provenance JSONs (zip as `p4_provenance.zip`).
+2. **Drop files:** drag in `paper4_arxiv_v1.0.188.tar.gz` + `chirality_catalog_paper.pdf` + the canonical provenance JSONs (zip as `p4_provenance.zip`).
 3. **Paste metadata:** Title, Description, Keywords, License (CC-BY-4.0), Authors, Communities, and Related Identifiers from sections 1-9 above. Set Upload type = "Publication" → "Preprint".
 4. **Reserve DOI:** click "Reserve DOI" — copy the DOI and re-point all `\artifact{}` blob/main links in the paper to this Zenodo DOI before the final compile. Also tag the HuggingFace model repo `bamfai/galaxy-chirality-v2` with `v2026.04`.
 5. **Publish:** click "Publish". The Zenodo DOI and the P4 arXiv ID (assigned ~1 hour after upload) are what P5 depends on for its companion-reference insertion. Hold the P5 upload until P4's arXiv ID is in hand.

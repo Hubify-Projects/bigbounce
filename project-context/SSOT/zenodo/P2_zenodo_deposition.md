@@ -1,8 +1,8 @@
 # Zenodo Deposition Record — P2
 ## Paper: Testing the Matter Bounce with Primordial Non-Gaussianity
 
-**Version:** v1.7.60 (submission version; v1.7.61 is a ship-mode body-text pass — use whichever is current at submission)
-**Prepared:** 2026-06-13 (HD-11 DO-NOW directive)
+**Version:** v1.7.65 (EXT11-closure submission version | PDF md5: fc42f393 | 28pp)
+**Prepared:** 2026-06-13 (HD-11 DO-NOW directive) | **Updated:** EXT11-closure-wave 2026-06-13
 
 ---
 
@@ -70,8 +70,8 @@ Files Houston should upload to Zenodo:
 
 | File | Path | Description |
 |------|------|-------------|
-| `paper2_arxiv_v1.7.60.tar.gz` | `research/focused_paper_source_integration/paper2_arxiv_v1.7.60.tar.gz` | **PRIMARY — arXiv submission tarball** |
-| `02_full_draft.pdf` | `research/focused_paper_source_integration/02_full_draft.pdf` | Compiled PDF |
+| `paper2_arxiv_v1.7.65.tar.gz` | `project-context/SSOT/arxiv_tarballs/paper2_arxiv_v1.7.65.tar.gz` | **PRIMARY — arXiv submission tarball (EXT11-closure; PDF md5 fc42f393)** |
+| `02_full_draft.pdf` | `research/focused_paper_source_integration/02_full_draft.pdf` | Compiled PDF (28pp; v1.7.65) |
 | `02_full_draft.tex` | `research/focused_paper_source_integration/02_full_draft.tex` | LaTeX source |
 | `focused_paper_refs.bib` | `research/focused_paper_source_integration/focused_paper_refs.bib` | Bibliography |
 
@@ -123,16 +123,16 @@ Files Houston should upload to Zenodo:
 
 ## 10. Version
 
-`v1.7.60` (or `v1.7.61` if the ship-mode body-text pass was committed as a new version)
+`v1.7.65` (EXT11-closure | PDF md5: fc42f393 | 28pp)
 
-*See `ZENODO_RELEASE_CHECKLIST.md` — it references tag `paper2-v1.7.49`; update to `paper2-v1.7.60` (current submission version) before creating the GitHub release tag.*
+*See `ZENODO_RELEASE_CHECKLIST.md` — update to `paper2-v1.7.65` (current submission version) before creating the GitHub release tag.*
 
 ---
 
 ## 11. Click-Publish Steps
 
 1. **Log into zenodo.org** → click "New upload".
-2. **Drop files:** drag in `paper2_arxiv_v1.7.60.tar.gz` + `02_full_draft.pdf` + all analysis scripts and JSON artifacts listed in section 7 above (zip the scripts+JSONs into `p2_analysis_code.zip` for convenience).
+2. **Drop files:** drag in `paper2_arxiv_v1.7.65.tar.gz` + `02_full_draft.pdf` + all analysis scripts and JSON artifacts listed in section 7 above (zip the scripts+JSONs into `p2_analysis_code.zip` for convenience).
 3. **Paste metadata:** Title, Description, Keywords, License (CC-BY-4.0), Authors, Communities from sections 1-9. Set Upload type = "Publication" → "Preprint".
-4. **Reserve DOI:** click "Reserve DOI" — insert the minted DOI at the "DOI inserted at submission" placeholder in the paper source before the final compile. Also run step 1 of `ZENODO_RELEASE_CHECKLIST.md` (create GitHub release tag `paper2-v1.7.60` to trigger auto-import).
+4. **Reserve DOI:** click "Reserve DOI" — insert the minted DOI at the "DOI inserted at submission" placeholder in the paper source before the final compile. Also run step 1 of `ZENODO_RELEASE_CHECKLIST.md` (create GitHub release tag `paper2-v1.7.65` to trigger auto-import).
 5. **Publish:** click "Publish". Insert the minted arXiv ID into P3's `DATA_RELEASE_MANIFEST.md` header and P5's companion-reference markers.

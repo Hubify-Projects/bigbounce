@@ -1,8 +1,8 @@
 # Zenodo Deposition Record — P3
 ## Paper: Spectrally Unusual Sources at Scale — Multi-Survey Anomaly Catalog
 
-**Version:** v3.1.103
-**Prepared:** 2026-06-13 (HD-11 DO-NOW directive)
+**Version:** v3.1.108 (EXT11-closure submission version | PDF md5: 72bd3e5b | 29pp)
+**Prepared:** 2026-06-13 (HD-11 DO-NOW directive) | **Updated:** EXT11-closure-wave 2026-06-13
 
 ---
 
@@ -89,8 +89,8 @@ Files Houston should upload to Zenodo:
 
 | File | Path | Description |
 |------|------|-------------|
-| `paper3_arxiv_v3.1.103.tar.gz` | `pipelines/p3_anomaly_engine/paper3_arxiv_v3.1.103.tar.gz` | **PRIMARY — arXiv submission tarball** |
-| `paper3_draft.pdf` | `pipelines/p3_anomaly_engine/paper3_draft.pdf` | Compiled PDF (27pp) |
+| `paper3_arxiv_v3.1.108.tar.gz` | `project-context/SSOT/arxiv_tarballs/paper3_arxiv_v3.1.108.tar.gz` | **PRIMARY — arXiv submission tarball (EXT11-closure; PDF md5 72bd3e5b)** |
+| `paper3_draft.pdf` | `pipelines/p3_anomaly_engine/paper3_draft.pdf` | Compiled PDF (29pp; v3.1.108) |
 | `paper3_draft.tex` | `pipelines/p3_anomaly_engine/paper3_draft.tex` | LaTeX source |
 
 **Data artifacts (upload these to HuggingFace, link from Zenodo as related identifiers):**
@@ -128,14 +128,14 @@ All catalog parquet files live at: https://huggingface.co/datasets/bamfai/bigbou
 
 ## 10. Version
 
-`v3.1.103`
+`v3.1.108` (EXT11-closure | PDF md5: 72bd3e5b | 29pp)
 
 ---
 
 ## 11. Click-Publish Steps
 
 1. **Log into zenodo.org** → click "New upload".
-2. **Drop files:** drag in `paper3_arxiv_v3.1.103.tar.gz` + `paper3_draft.pdf` + the reproducibility scripts/JSONs (zip them as `p3_reproducibility.zip`). Do NOT upload the full catalog parquets to Zenodo — they live on HuggingFace; just add the HF dataset URL as a related identifier.
+2. **Drop files:** drag in `paper3_arxiv_v3.1.108.tar.gz` + `paper3_draft.pdf` + the reproducibility scripts/JSONs (zip them as `p3_reproducibility.zip`). Do NOT upload the full catalog parquets to Zenodo — they live on HuggingFace; just add the HF dataset URL as a related identifier.
 3. **Paste metadata:** Title, Description, Keywords, License (CC-BY-4.0), Authors, Communities, and Related Identifiers (including the HF dataset URL) from sections 1-9 above.
 4. **Reserve DOI:** click "Reserve DOI" — copy the DOI and insert it into `DATA_RELEASE_MANIFEST.md` header `## Zenodo DOI: [TO BE MINTED AT SUBMISSION — insert here before arxiv upload]` and into the paper's Data Availability statement (tex L44 marker per the submission runbook).
 5. **Publish:** click "Publish". Simultaneously flip the HuggingFace dataset `bamfai/bigbounce-anomaly-catalog` from STAGED to public at the moment of arXiv posting.
