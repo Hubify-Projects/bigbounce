@@ -3,8 +3,9 @@
 Codified failure modes observed across 19 internal cross-vendor R-rounds, 9
 CCAI self-review rounds, 1 R42 internal-multi round (2026-04-30), 1 P4
 v1.0.66 external 4-vendor round (2026-05-15), 1 P1A external 3-reviewer
-round (2026-06-02), and 1 P4 v1.0.149 external 3-reviewer round (2026-06-04)
-on 6 papers (P1A/P1B/P2/P3/P4/P5). Pattern mine last run: 2026-06-09 (R23conf full-5-vendor confirmation round, 6 papers; draft patterns 042/043/044 proposed).
+round (2026-06-02), 1 P4 v1.0.149 external 3-reviewer round (2026-06-04),
+and 1 R39conf batch truth-audit (2026-06-13, 6 papers)
+on 6 papers (P1A/P1B/P2/P3/P4/P5). Pattern mine last run: 2026-06-13 (EXT12 batch truth-audit, 6 papers; patterns 057/058 promoted).
 
 Every external/direct-vendor R-round must be pre-screened against these
 patterns BEFORE dispatch, per the [[feedback-review-learning-loop]] and
@@ -45,11 +46,15 @@ Sorted by severity then frequency descending.
 | 038 | [σ values from different nulls juxtaposed without per-juxtaposition qualifier](pattern-038-sigma-mixing-without-per-juxtaposition-qualifier.md) | high | 6 (all papers, R10v3p1 cross-paper) |
 | 039 | [Abstract Roman-numeral table reference points to wrong table](pattern-039-abstract-cross-reference-bug.md) | high | 5 (P1A/P1B/P3/P4/P5, R10v3p1 + 4-vendor consensus on P4) |
 | 025 | [Mathematically-impossible attribution (claim contradicts own equation)](pattern-025-mathematically-impossible-attribution.md) | high | 1 (P4 R42 R3) |
+| 054 | [σ values from different nulls juxtaposed without per-juxtaposition qualifier (cross-paper)](pattern-054-sigma-mixing-undeclared.md) | high | 8 (≥2 reviewers × P4/P3/P1A/P5, R39conf) |
+| 055 | [Audit-artifact body leak (version tags / gate verdicts / ticket IDs in compiled PDF)](pattern-055-audit-artifact-body-leak.md) | high | 9 (multiple reviewers × P3/P4/P5, R39conf) |
+| 057 | [Figure-regen text-residual (body text not swept after systematic rename)](pattern-057-figure-regen-text-residual.md) | medium | 3 (P5, EXT12 — 3 residual V-Web tokens in §VIII/§IX/App C post-figure-regen) |
 
 ### Medium severity
 
 | ID | Title | Severity | Freq |
 |----|-------|----------|------|
+| 053 | [Companion in-prep citation leak across multiple papers](pattern-053-companion-in-prep-citation.md) | medium | 6 (≥2 reviewers × P1A/P1B/P5, R39conf) |
 | 012 | [Perplexity web-search misses recent arXiv (within ~6mo)](pattern-012-perplexity-web-search-miss.md) | medium | 20+ |
 | 004 | [Buried §pathc_caveats closure not surfaced](pattern-004-buried-closure-restate.md) | medium | 14 |
 | 005 | [Overclaim language (first/novel/load-bearing/publication-grade)](pattern-005-overclaim-language.md) | medium | 9 |
@@ -63,6 +68,7 @@ Sorted by severity then frequency descending.
 
 | ID | Title | Severity | Freq |
 |----|-------|----------|------|
+| 058 | [Gemini fresh-chat no-verdict (synthesis-mode without explicit referee-format instruction)](pattern-058-gemini-fresh-chat-no-verdict.md) | informational | 6 (6/6 EXT12 Gemini chats — all 6 papers, fresh-chat protocol) |
 | 015 | [Gemini billing-failure skip (vendor-side outage)](pattern-015-gemini-billing-skip.md) | informational | 19 |
 | 010 | [Grok convergent-silence signal (shrinking output)](pattern-010-grok-convergent-silence.md) | informational | 8 |
 | 016 | [Wide-net reflagging at exit boundary](pattern-016-exit-boundary-wide-net-reflag.md) | informational | 3 |

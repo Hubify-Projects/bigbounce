@@ -46,6 +46,42 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "SKILL-GEMINI-VERDICT-FIRST-LINE",
+    kind: "skill-improvement",
+    dateISO: "2026-06-13",
+    timePT: "23:59",
+    title: "Pattern-058 promoted: Gemini fresh-chat no-verdict — add MNRAS referee-format first-line instruction to every Gemini submission",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "EXT12: all 6 Gemini chats (fresh-chat protocol, EXT7 lesson) returned synthesis-mode responses with no formal ACCEPT/MINOR/MAJOR verdict line — harvest pipeline regex missed all 6. Root cause: EXT12 prompt lacked an explicit referee-format instruction. Fix encoded in external-review-browser-loop SKILL.md Gemini section: first line of EVERY Gemini prompt (fresh and delta alike) must be 'Produce a referee report in MNRAS format with Recommendation: ACCEPT / MINOR REVISIONS / MAJOR REVISIONS as the first line of your reply.' Pattern-058 added to catalog.",
+    keyTakeaways: [
+      "Pattern-058 (gemini-fresh-chat-no-verdict): Gemini 2.5 Thinking in fresh chats defaults to synthesis prose, not referee format",
+      "Fix: prepend MNRAS referee-format first-line instruction to every Gemini submission — fresh chats AND delta-prompts",
+      "Harvest validation gate: head -30 of report must match ACCEPT/MINOR REVISIONS/MAJOR REVISIONS/REJECT; if not, reclassify NO VERDICT and resubmit",
+      "Encoded in external-review-browser-loop SKILL.md and pattern-058 catalog entry",
+    ],
+    links: [
+      { label: "pattern-058", href: `${GH}/project-context/review-patterns/pattern-058-gemini-fresh-chat-no-verdict.md` },
+    ],
+  },
+  {
+    id: "SKILL-FIGURE-REGEN-TEXT-RESIDUAL",
+    kind: "skill-improvement",
+    dateISO: "2026-06-13",
+    timePT: "23:58",
+    title: "Pattern-057 promoted: post-rename body-text sweep — figure-regen verification is not sufficient to confirm rename completeness",
+    papers: ["P5"],
+    summary: "EXT12 P5: ChatGPT caught 3 residual V-Web tokens in §VIII A, §IX B, and Appendix C body prose — after EXT11 figure-art regeneration (T-Web plot titles confirmed). Root cause: rename closure verified figure titles but did not grep the full .tex body. Pattern-057 encodes the fix: after any global rename, run a final body-text grep on the full .tex source (excluding %-comments and legitimate protected uses) as the LAST step of the rename closure agent. Detection rule added to paper-pre-review-check SKILL.md pattern table.",
+    keyTakeaways: [
+      "Pattern-057 (figure-regen-text-residual): figure-title verification after rename is necessary but not sufficient — body prose can retain old tokens",
+      "Post-rename body-text sweep must be the LAST step of any rename closure agent, after figure art is confirmed",
+      "Detection rule: grep -nE OLD_TERM tex | grep -v commented | grep -v protected; zero hits = rename complete",
+      "Encoded in paper-pre-review-check SKILL.md pattern table and pattern-057 catalog entry",
+    ],
+    links: [
+      { label: "pattern-057", href: `${GH}/project-context/review-patterns/pattern-057-figure-regen-text-residual.md` },
+    ],
+  },
+  {
     id: "EXT12-HARVEST-TRUTH-AUDIT",
     kind: "external-browser",
     dateISO: "2026-06-13",
