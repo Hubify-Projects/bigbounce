@@ -172,32 +172,79 @@ Log assigned IDs here once known:
 
 > **Pre-flight 2026-06-13 fix**: prior runbook revision missed .bbl bibitems. Both .tex AND .bbl must be patched in v2 re-tarball.
 
+> **2026-06-13 accuracy fix**: earlier drafts of the runbook stated P2 and P3 need P1A/P1B arXiv ID insertion. This is WRONG. `arxiv_companion_citation_map.md` confirms P2 and P3 have ZERO Golden202\* cite-keys. **Skip P2 and P3 for companion-ID patches.**
+
+#### PAPERS REQUIRING V2 BACK-PATCH (authoritative — from citation map)
+
+| Paper | Self-preprint uncomment | Companion bibitem patches | .bbl companion phrase patches | Skip reason |
+|-------|------------------------|--------------------------|-------------------------------|-------------|
+| P1A   | YES (L663 commented) | YES — 4 bibitems (P1B, P2, P3, P4 IDs in .tex) | YES — 2 instances in paper1a_ech_nogo.bbl | — |
+| P1B   | YES (L1064 commented) | YES — 4 bibitems (P1A, P2, P3, P4 IDs in .tex) | YES — 2 instances in paper1b_mcmc_companion.bbl | — |
+| P2    | YES (L17 commented)  | **SKIP — no Golden202\* cite-keys in .tex** | **SKIP — 0 instances in .bbl** | No cross-cites |
+| P3    | YES (L45 commented)  | **SKIP — no Golden202\* cite-keys in .tex** | **SKIP — 0 instances in .bbl** | No cross-cites |
+| P4    | NONE (no preprint marker in .tex) | **SKIP — fully independent** | **SKIP** | Zero placeholders |
+| P5    | NONE (no preprint marker in .tex) | YES — golden_chirality_2026 bibitem ("in preparation" → arXiv:P4_ID) + 2 free-text companion bibitems (L3634, L3639) | 0 instances in .bbl | No preprint marker |
+
+**Net: only 3 papers need companion arXiv ID insertion (P1A, P1B, P5). All 5 papers with `%\preprint` markers need self-preprint uncomment. P4 needs zero v2 patches.**
+
 For each paper, find all `arXiv:XXXX.XXXXX` placeholders and replace with real IDs.
-Quick grep to locate them in .tex files:
+Quick grep to locate them in .tex files (P2 and P3 will show ONLY the self-preprint line, confirming no cross-cites):
 
 ```bash
 grep -n "XXXX\.XXXXX\|TODO-SUBMISSION" arxiv/paper1a_ech_nogo.tex
 grep -n "XXXX\.XXXXX\|TODO-SUBMISSION" arxiv/paper1b_mcmc_companion.tex
-grep -n "XXXX\.XXXXX\|TODO-SUBMISSION" research/focused_paper_source_integration/02_full_draft.tex
-grep -n "XXXX\.XXXXX\|TODO-SUBMISSION" pipelines/p3_anomaly_engine/paper3_draft.tex
-grep -n "XXXX\.XXXXX\|TODO-SUBMISSION" pipelines/p2_chirality/chirality_catalog_paper.tex
+grep -n "XXXX\.XXXXX\|TODO-SUBMISSION" research/focused_paper_source_integration/02_full_draft.tex   # P2: expect 1 hit (self-preprint only)
+grep -n "XXXX\.XXXXX\|TODO-SUBMISSION" pipelines/p3_anomaly_engine/paper3_draft.tex                  # P3: expect 1 hit (self-preprint only)
+# P4: skip — confirmed zero XXXX.XXXXX markers
 grep -n "XXXX\.XXXXX\|TODO-SUBMISSION" pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex
 ```
 
 **Also patch .bbl files** — the Golden202* bibitems use the phrase "companion paper, posted
-concurrently on arXiv" (no `XXXX.XXXXX` token) instead of a placeholder string. These
-bibitems will NOT be caught by the grep above and must be patched separately.
+concurrently on arXiv" inside a `\bibinfo {note} {...}` block (no `XXXX.XXXXX` token).
+These will NOT be caught by the grep above and must be patched separately.
 
-For each Golden202* bibitem in `arxiv/*.bbl` and `pipelines/*/p*.bbl`:
-- Locate the phrase `companion paper, posted concurrently on arXiv`
-- Append `, arXiv:<ID>` with the assigned arXiv ID for that companion paper
-- DO NOT remove the "companion paper" phrase — it preserves the narrative context for readers
+**IMPORTANT: the phrase ends with `}` (closing the `\bibinfo` brace) immediately before `\BibitemShut`. The correct insertion point is INSIDE the closing brace, not after it.**
 
-Quick grep to locate them:
+Quick grep to locate them (expect hits in P1A and P1B only — P2/P3/P4 have zero):
 
 ```bash
 grep -rn "companion paper, posted concurrently on arXiv" arxiv/ pipelines/
+# Expected output:
+#   arxiv/paper1a_ech_nogo.bbl:112:  \bibinfo {note} {companion paper, posted concurrently on arXiv}\BibitemShut
+#   arxiv/paper1a_ech_nogo.bbl:305:  \bibinfo {note} {companion paper, posted concurrently on arXiv}\BibitemShut
+#   arxiv/paper1b_mcmc_companion.bbl:60:  {companion paper, posted concurrently on arXiv}\BibitemShut {NoStop}%
+#   arxiv/paper1b_mcmc_companion.bbl:137:  \bibinfo {note} {companion paper, posted concurrently on arXiv}\BibitemShut
+# P2/P3/P4/P5 .bbl files: ZERO hits — skip
 ```
+
+#### PRE-FLIGHT DRY-RUN VERIFIED (2026-06-13)
+
+The .bbl sed pattern was dry-run tested against `arxiv/paper1a_ech_nogo.bbl` and `arxiv/paper1b_mcmc_companion.bbl` with fake ID `2606.99999`.
+
+**Original runbook pattern (BROKEN — failed to match due to backslash escaping):**
+```bash
+sed -i.bak 's/\(companion paper, posted concurrently on arXiv\)\([^,]\)/\1, arXiv:2606.99999\2/' file.bbl
+```
+
+**Verified working pattern (INSERT INSIDE CLOSING BRACE):**
+```bash
+# Replace "arXiv}" with "arXiv, arXiv:<ID>}" — inserts ID inside the \bibinfo brace
+sed -i.bak 's/companion paper, posted concurrently on arXiv}/companion paper, posted concurrently on arXiv, arXiv:REAL_ID}/g' file.bbl
+```
+
+Verified diff output from dry-run (P1A .bbl, 2 matching lines):
+```diff
+112c112
+<   \bibinfo {note} {companion paper, posted concurrently on arXiv}\BibitemShut
+---
+>   \bibinfo {note} {companion paper, posted concurrently on arXiv, arXiv:2606.99999}\BibitemShut
+305c305
+<   \bibinfo {note} {companion paper, posted concurrently on arXiv}\BibitemShut
+---
+>   \bibinfo {note} {companion paper, posted concurrently on arXiv, arXiv:2606.99999}\BibitemShut
+```
+
+Both line variants (inline `{...}\BibitemShut {NoStop}%` and newline `\bibinfo {note} {...}\BibitemShut`) matched correctly in P1B dry-run. Pattern is confirmed correct.
 
 Authoritative per-paper-per-cite-key target map (51 cite-instances total):
 `project-context/SSOT/arxiv_companion_citation_map.md`

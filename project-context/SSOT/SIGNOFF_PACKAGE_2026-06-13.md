@@ -154,13 +154,15 @@ Order per SSOT/PUBLISH_PLAN.md: **P4 → P1A+P1B → P3 → P2 → P5**.
 
 3. **P1B (same day as P1A):** Insert P1A arXiv ID at companion refs. Replace App A "pending DOI assignment" with minted DOIs. If SN-overlap chains converged, fold (w₀,wₐ) shifts into §III/Table II. Recompile. Use canonical tarball `paper1b_arxiv_v1B.0.71.tar.gz`. Upload.
 
-4. **P3:** Insert P1A/P1B arXiv IDs. Flip HF dataset `bamfai/bigbounce-anomaly-catalog` STAGED → public at arXiv posting. Insert Zenodo DOI in DATA_RELEASE_MANIFEST.md header + tex L44 marker. Recompile. Use canonical tarball `paper3_arxiv_v3.1.108.tar.gz`. Upload.
+4. **P3:** ~~Insert P1A/P1B arXiv IDs~~ — **P3 has ZERO Golden202\* cross-cites in source .tex; Step 3 sed is a NO-OP for P3 (confirmed by arxiv_companion_citation_map.md).** Only action: self-preprint uncomment (`%\preprint{arXiv:XXXX.XXXXX}` → real P3 ID at L45). Flip HF dataset `bamfai/bigbounce-anomaly-catalog` STAGED → public at arXiv posting. Insert Zenodo DOI in DATA_RELEASE_MANIFEST.md header + tex L44 marker. Recompile. Use canonical tarball `paper3_arxiv_v3.1.110.tar.gz`. Upload.
 
-5. **P2:** Run ZENODO_RELEASE_CHECKLIST.md steps 1–6 (tag paper2-v1.7.65). Replace "DOI inserted at submission" placeholders. Optional in-thread ChatGPT figure delta-confirm. Use canonical tarball `paper2_arxiv_v1.7.65.tar.gz`. Upload.
+5. **P2:** ~~Insert P1A/P1B arXiv IDs~~ — **P2 has ZERO Golden202\* cross-cites in source .tex; Step 3 sed is a NO-OP for P2 (confirmed by arxiv_companion_citation_map.md).** Only action: self-preprint uncomment + Zenodo DOI insert at L1047 "DOI inserted at submission". Run ZENODO_RELEASE_CHECKLIST.md steps 1–6 (tag paper2-v1.7.67). Optional in-thread ChatGPT figure delta-confirm. Use canonical tarball `paper2_arxiv_v1.7.67.tar.gz`. Upload.
 
 6. **P5 (last):** NM1 title ruling → Fig 3 regen if needed. Insert P4 arXiv ID. Mint Zenodo DOI. Use canonical tarball `paper5_arxiv_v0.1.77-2026-06-13.tar.gz`. Upload.
 
 All Zenodo DOIs minted in one sitting per HD-11. After each arXiv ID is assigned, insert it at the `TODO-SUBMISSION` companion-reference markers in all subsequent papers before they upload. Run `v3_bundled_paper_bump.mjs` final-version Convex sync after all 6 arXiv IDs are in hand.
+
+> **Cross-cite reality (2026-06-13 preflight):** Per `arxiv_companion_citation_map.md`, only P1A, P1B, and P5 require companion arXiv ID insertion. P2 and P3 have ZERO Golden202\* cite-keys — the Step 3 sed is a NO-OP for both. P4 has zero placeholders (fully independent). Net v2 back-patch surface: **P1A** (self-preprint + 4 companion bibitems), **P1B** (self-preprint + 4 companion bibitems), **P2** (self-preprint only), **P3** (self-preprint only), **P5** (golden_chirality_2026 bibitem free-text patch). P4 needs no v2 at all. Only ~3 papers need companion ID insertions; all 6 need self-preprint uncomment.
 
 ---
 

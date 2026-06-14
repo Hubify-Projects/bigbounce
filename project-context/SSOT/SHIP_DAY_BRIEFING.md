@@ -74,34 +74,43 @@ project-context/SSOT/arxiv_ids_assigned.md   ← create this file, paste all 6
 
 > **CRITICAL**: .bbl files contain "companion paper, posted concurrently on arXiv" bibitems that are NOT caught by the `XXXX.XXXXX` grep. Both .tex and .bbl must be patched.
 
-**3a. Grep for .tex placeholders:**
+> **P2 and P3: SKIP companion-ID patches entirely.** Both papers have ZERO Golden202\* cite-keys in their .tex source AND zero companion-phrase hits in their .bbl files. Confirmed by `arxiv_companion_citation_map.md`. Only their self-preprint `%\preprint` uncomment is needed.
+> **P4: SKIP entirely** — zero placeholders, zero companion cites, no v2 needed.
+> **Net: only ~3 papers (P1A, P1B, P5) need companion arXiv ID patches.** All 5 papers with `%\preprint` markers need self-preprint uncomment.
+
+**3a. Grep for .tex placeholders (P2/P3 will show 1 hit each — self-preprint only; P4 will show 0):**
 ```bash
 grep -n "XXXX\.XXXXX\|TODO-SUBMISSION" \
   arxiv/paper1a_ech_nogo.tex \
   arxiv/paper1b_mcmc_companion.tex \
   research/focused_paper_source_integration/02_full_draft.tex \
   pipelines/p3_anomaly_engine/paper3_draft.tex \
-  pipelines/p2_chirality/chirality_catalog_paper.tex \
   pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex
+# P4 (pipelines/p2_chirality/chirality_catalog_paper.tex): SKIP — zero markers confirmed
 ```
 
-**3b. Grep for .bbl companion bibitems (separate grep — these have no XXXX.XXXXX token):**
+**3b. Grep for .bbl companion bibitems (expect hits in P1A and P1B only — P2/P3/P4/P5 have zero):**
 ```bash
 grep -rn "companion paper, posted concurrently on arXiv" arxiv/ pipelines/
+# Expected: 4 lines total — paper1a_ech_nogo.bbl:112, :305 and paper1b_mcmc_companion.bbl:60, :137
 ```
-For each match: append `, arXiv:<assigned-ID>` — preserve the "companion paper" phrase.
 
 **3c. Run sed patches** (fill in real IDs, then execute):
+
+> **PRE-FLIGHT DRY-RUN VERIFIED 2026-06-13**: The .bbl sed inserts the arXiv ID INSIDE the closing `}` brace of the `\bibinfo {note}` block. The pattern `s/companion paper, posted concurrently on arXiv}/companion paper, posted concurrently on arXiv, arXiv:ID}/g` was dry-run tested against both P1A and P1B .bbl files — both line variants matched correctly. See ARXIV_SUBMISSION_RUNBOOK.md §4 Step 3 for full diff evidence.
+
 ```bash
 P1A_ID="2506.NNNNN"   P1B_ID="2506.NNNNN"   P2_ID="2506.NNNNN"
 P3_ID="2506.NNNNN"    P4_ID="2506.NNNNN"     P5_ID="2506.NNNNN"
 
-# P1A: uncomment self-preprint + patch 4 companion bibitems
+# P1A: uncomment self-preprint + patch 4 companion bibitems in .tex
 sed -i.bak "s|%\\\\preprint{arXiv:XXXX\\.XXXXX}|\\\\preprint{arXiv:${P1A_ID}}|" arxiv/paper1a_ech_nogo.tex
 sed -i.bak "/\\\\bibitem{Golden2026P1b}/,/^$/ s|arXiv:XXXX\\.XXXXX|arXiv:${P1B_ID}|" arxiv/paper1a_ech_nogo.tex
 sed -i.bak "/\\\\bibitem{Golden2026P2}/,/^$/  s|arXiv:XXXX\\.XXXXX|arXiv:${P2_ID}|"  arxiv/paper1a_ech_nogo.tex
 sed -i.bak "/\\\\bibitem{Golden2026P3}/,/^$/  s|arXiv:XXXX\\.XXXXX|arXiv:${P3_ID}|"  arxiv/paper1a_ech_nogo.tex
 sed -i.bak "/\\\\bibitem{Golden2026P4}/,/^$/  s|arXiv:XXXX\\.XXXXX|arXiv:${P4_ID}|"  arxiv/paper1a_ech_nogo.tex
+# P1A .bbl: patch companion bibitems (2 instances at lines 112, 305)
+sed -i.bak "s/companion paper, posted concurrently on arXiv}/companion paper, posted concurrently on arXiv, arXiv:${P1B_ID}}/g" arxiv/paper1a_ech_nogo.bbl
 
 # P1B: same structure
 sed -i.bak "s|%\\\\preprint{arXiv:XXXX\\.XXXXX}|\\\\preprint{arXiv:${P1B_ID}}|" arxiv/paper1b_mcmc_companion.tex
@@ -109,14 +118,16 @@ sed -i.bak "/\\\\bibitem{Golden2026P1a}/,/^$/ s|arXiv:XXXX\\.XXXXX|arXiv:${P1A_I
 sed -i.bak "/\\\\bibitem{Golden2026P2}/,/^$/  s|arXiv:XXXX\\.XXXXX|arXiv:${P2_ID}|"  arxiv/paper1b_mcmc_companion.tex
 sed -i.bak "/\\\\bibitem{Golden2026P3}/,/^$/  s|arXiv:XXXX\\.XXXXX|arXiv:${P3_ID}|"  arxiv/paper1b_mcmc_companion.tex
 sed -i.bak "/\\\\bibitem{Golden2026P4}/,/^$/  s|arXiv:XXXX\\.XXXXX|arXiv:${P4_ID}|"  arxiv/paper1b_mcmc_companion.tex
+# P1B .bbl: patch companion bibitems (2 instances at lines 60, 137) — note P1A.bbl has P1B companion; P1B.bbl has P1A companion
+sed -i.bak "s/companion paper, posted concurrently on arXiv}/companion paper, posted concurrently on arXiv, arXiv:${P1A_ID}}/g" arxiv/paper1b_mcmc_companion.bbl
 
-# P2: self-preprint only (no companion cite-keys in source)
+# P2: self-preprint only — NO companion patches (zero Golden202* cite-keys confirmed)
 sed -i.bak "s|%\\\\preprint{arXiv:XXXX\\.XXXXX}|\\\\preprint{arXiv:${P2_ID}}|" research/focused_paper_source_integration/02_full_draft.tex
 
-# P3: self-preprint only
+# P3: self-preprint only — NO companion patches (zero Golden202* cite-keys confirmed)
 sed -i.bak "s|%\\\\preprint{arXiv:XXXX\\.XXXXX}|\\\\preprint{arXiv:${P3_ID}}|" pipelines/p3_anomaly_engine/paper3_draft.tex
 
-# P4: zero placeholders — no patch needed
+# P4: SKIP ENTIRELY — zero placeholders, no v2 needed
 
 # P5: golden_chirality_2026 bibitem (free-text "in preparation" → real ID)
 sed -i.bak "/\\\\bibitem{golden_chirality_2026}/,/^$/ s|in preparation|arXiv:${P4_ID}|" pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex
