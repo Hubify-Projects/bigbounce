@@ -46,6 +46,24 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "SKILL-PATTERN-059-MATH-MODE-SUBSCRIPT",
+    kind: "skill-improvement",
+    dateISO: "2026-06-13",
+    timePT: "21:00",
+    title: "Pattern-059 promoted: math-mode subscript miss after global rename — extends pattern-057 to math context",
+    papers: ["P5"],
+    summary: "EXT14 lesson encoded as pattern-059: after a global text rename (V-Web→T-Web), math-mode subscripts (_{V-Web}, _{V\\text{-}Web}, etc.) in equations and inline math survive body-text greps that return zero. Pattern-057 caught body prose at EXT12; pattern-059 closes the math-context gap caught at EXT14 (P5 §IX B display equation). New mandatory sweep: 4 regex commands (subscript, inline \\$..\\$, \\(..\\), display-math awk block) run AFTER pattern-057 and BEFORE recompile. Added to paper-pre-review-check SKILL.md detection table and external-review-browser-loop closure-wave protocol.",
+    keyTakeaways: [
+      "Body-text grep (pattern-057) necessary but not sufficient after systematic rename — math subscripts are invisible to plain-token grep",
+      "4-command math-mode sweep added to /paper-pre-review-check pre-flight and rename-closure checklist",
+      "Post-rename protocol order: pattern-057 body sweep → pattern-059 math-mode sweep → compile → visual audit",
+    ],
+    links: [
+      { label: "Pattern-059 file", href: "https://github.com/Hubify-Projects/bigbounce/blob/main/project-context/review-patterns/pattern-059-math-mode-subscript-miss-after-rename.md" },
+      { label: "EXT14 truth audit", href: "https://github.com/Hubify-Projects/bigbounce/blob/main/project-context/peer-reviews/EXT14_BATCH_TRUTH_AUDIT.md" },
+    ],
+  },
+  {
     id: "EXT14-HARVEST-VERDICT",
     kind: "external-browser",
     dateISO: "2026-06-13",

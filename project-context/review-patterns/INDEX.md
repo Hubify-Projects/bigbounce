@@ -4,8 +4,9 @@ Codified failure modes observed across 19 internal cross-vendor R-rounds, 9
 CCAI self-review rounds, 1 R42 internal-multi round (2026-04-30), 1 P4
 v1.0.66 external 4-vendor round (2026-05-15), 1 P1A external 3-reviewer
 round (2026-06-02), 1 P4 v1.0.149 external 3-reviewer round (2026-06-04),
-and 1 R39conf batch truth-audit (2026-06-13, 6 papers)
-on 6 papers (P1A/P1B/P2/P3/P4/P5). Pattern mine last run: 2026-06-13 (EXT12 batch truth-audit, 6 papers; patterns 057/058 promoted).
+1 R39conf batch truth-audit (2026-06-13, 6 papers), and 1 EXT14 batch
+external round (2026-06-13, 6 papers)
+on 6 papers (P1A/P1B/P2/P3/P4/P5). Pattern mine last run: 2026-06-13 (EXT14 external round; pattern 059 promoted).
 
 Every external/direct-vendor R-round must be pre-screened against these
 patterns BEFORE dispatch, per the [[feedback-review-learning-loop]] and
@@ -54,6 +55,7 @@ Sorted by severity then frequency descending.
 
 | ID | Title | Severity | Freq |
 |----|-------|----------|------|
+| 059 | [Math-mode subscript miss after global rename (extends pattern-057 to math context)](pattern-059-math-mode-subscript-miss-after-rename.md) | medium | 1 (P5, EXT14 — _{V-Web} subscript survived body-text sweep) |
 | 053 | [Companion in-prep citation leak across multiple papers](pattern-053-companion-in-prep-citation.md) | medium | 6 (≥2 reviewers × P1A/P1B/P5, R39conf) |
 | 012 | [Perplexity web-search misses recent arXiv (within ~6mo)](pattern-012-perplexity-web-search-miss.md) | medium | 20+ |
 | 004 | [Buried §pathc_caveats closure not surfaced](pattern-004-buried-closure-restate.md) | medium | 14 |
