@@ -1,6 +1,6 @@
 # arXiv Submission Runbook — BigBounce 6-Paper Coordinated Drop
-## Status: EXT10-CLOSURE-WAVE COMPLETE | 18/18 MINOR REVISIONS → ≤1 cycle to ACCEPT
-## Prepared: 2026-06-13 | git SHA eb4d6ce | Updated: EXT10-closure-wave (P1A v1A.0.73 / P1B v1B.0.70 / P2 v1.7.64 / P3 v3.1.107 / P4 v1.0.187 / P5 v0.1.76)
+## Status: EXT11-CLOSURE-WAVE COMPLETE | 10/18 ACCEPT (Grok 6/6 · P4 universal 3/3) → EXT12 expected 18/18 ACCEPT
+## Prepared: 2026-06-13 | Updated: EXT11-closure-wave (P1A v1A.0.74 / P1B v1B.0.71 / P2 v1.7.65 / P3 v3.1.108 / P4 v1.0.188 / P5 v0.1.77)
 
 ---
 
@@ -19,7 +19,7 @@ Estimated wall-clock from "go" to all 6 papers live: **~26 hours**
 
 ---
 
-## 1. EXT10 Tarballs — Canonical Location
+## 1. EXT11-Closure-Wave Tarballs — Canonical Location
 
 All 6 submission-ready tarballs live at:
 ```
@@ -28,15 +28,15 @@ project-context/SSOT/arxiv_tarballs/
 
 | Paper | Tarball | MD5 | Pages | Compile |
 |-------|---------|-----|-------|---------|
-| P1A | `paper1a_arxiv_v1A.0.73.tar.gz` | `a7964624ca54788f6e621c81b380131b` | 28 | CLEAN |
-| P1B | `paper1b_arxiv_v1B.0.70.tar.gz` | `98d9173067e396907260681a97d4d8bf` | 21 | CLEAN |
-| P2  | `paper2_arxiv_v1.7.64.tar.gz`   | `2fe46c179e991417e6c485c33fd11b95` | 29 | CLEAN |
-| P3  | `paper3_arxiv_v3.1.107.tar.gz`  | `52ce9e444f63287e10a7fe77367daafc` | 29 | CLEAN |
-| P4  | `paper4_arxiv_v1.0.187.tar.gz`  | `19102397d1b4304e5ed9b85734a407a8` | 23 | CLEAN |
-| P5  | `paper5_arxiv_v0.1.76-2026-06-13.tar.gz` | `859fc6575c46947da57bb11fd3a4a35e` | 32 | CLEAN |
+| P1A | `paper1a_arxiv_v1A.0.74.tar.gz` | `312fa42bd765a26a7eb8852bceecda1c` | 28 | CLEAN |
+| P1B | `paper1b_arxiv_v1B.0.71.tar.gz` | `1d9e622a8894a277086749dadec1ad75` | 21 | CLEAN |
+| P2  | `paper2_arxiv_v1.7.65.tar.gz`   | `629e54234f8cbb9ac7b30daa25e4b421` | 28 | CLEAN |
+| P3  | `paper3_arxiv_v3.1.108.tar.gz`  | `dfa3dc7f6e96bbe302ea9024f3e94864` | 29 | CLEAN |
+| P4  | `paper4_arxiv_v1.0.188.tar.gz`  | `1a9114093416c44396279a26c559c241` | 23 | CLEAN |
+| P5  | `paper5_arxiv_v0.1.77-2026-06-13.tar.gz` | `03fd5a96936a31240015872df0aa681e` | 32 | CLEAN |
 
 All compiled via `tools/build_arxiv_tarball.sh`: errors=0, undef=0 on each pass.
-EXT10-closure-wave versions (2026-06-13): P1A v1A.0.73 / P1B v1B.0.70 / P2 v1.7.64 / P3 v3.1.107 / P4 v1.0.187 / P5 v0.1.76.
+EXT11-closure-wave versions (2026-06-13): P1A v1A.0.74 / P1B v1B.0.71 / P2 v1.7.65 / P3 v3.1.108 / P4 v1.0.188 / P5 v0.1.77.
 These tarballs are the v2 post-patch upload files — cross-citations are still placeholder
 `arXiv:XXXX.XXXXX`; the patching step is in §4 below.
 

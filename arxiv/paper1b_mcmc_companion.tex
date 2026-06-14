@@ -119,8 +119,32 @@
 %   FALSIFIED list (14 items) not acted on.)
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1B.0.69}
+\newcommand{\paperVersion}{v1B.0.71}
 \newcommand{\paperTimestamp}{June 13, 2026}
+% v1B.0.71 (2026-06-13 — EXT11 closure: release-pairing description aligned to c15.input.yaml likelihood names; (E3/E4)/(E8) audit labels stripped per pattern-055)
+%   1. Release-pairing note (Sec V.B): replaced "(E3/E4)" label with substantive content.
+%      Description now accurately states that c15 uses planck_2020_lollipop.lowlE +
+%      planckpr4lensing (not the frozen-chain planck_2018_lowl.EE + planck_2018_lensing.clik),
+%      making c15 a release-pairing robustness rerun. The 0.04sigma DeltaNeff agreement
+%      provides an empirical bound on pairing-induced bias. Verified against c15.input.yaml.
+%   2. H0 note (Sec VI): removed "(E8)" internal label; note now reads "H0 marginalization note".
+% v1B.0.69->70 (2026-06-13 — EXT10 closure: 6 wording fixes per audit; cross-vendor MINOR residuals)
+%   1. M1 (ChatGPT): c15 "same likelihood stack" clarified — planck_2020_lollipop.lowlE /
+%      planckpr4lensing in c15 differ from frozen-chain planck_2018_lowl.EE /
+%      planck_2018_lensing.clik in Table III; pairing mismatch noted in-text.
+%   2. M2 (ChatGPT): Conclusion "m~H_0" inconsistency fixed — spectator-safe
+%      subset posterior median is 40.5 H_0, not H_0; now reads "posterior median
+%      m≃40.5 H_0 (not m~H_0; the scan-prior envelope spans m~H_0 but the
+%      posterior-supported fixed-C_agamma=8 fit shifts well above prior midpoint)".
+%   3. M3 (ChatGPT): Sec VI opening — explicit 1-sentence operational definition
+%      of Omega_a<0.01 as the spectator cut (13% posterior mass).
+%   4. M4 (ChatGPT): Table II w0+wa cell "phantom-crossing required" →
+%      "phantom-crossing indicated (caveated; fn:wcaveat)".
+%   5. Gemini M1: Sec V.C w0wa summary paragraph — 1-sentence upper-bound caveat
+%      that +4.3σ is a posterior-tail extrapolation bound, not detection significance.
+%   6. Gemini M2: Conclusions w0wa cross-check paragraph — 1-sentence release-pairing
+%      swap caveat for the iter2 planck_2018_lensing.native vs .clik substitution.
+%   Companion arXiv cross-cite left as-is per EXT10 audit recommendation.
 % v1B.0.68->69 (2026-06-13 — R39conf closure: 7 ESSENTIALs + Omega_a definition subsection (HD ruled DO-NOW); cross-paper patterns 1/2/3)
 %   1. Pattern 3 (E2): "entry for the v1B.0.59 closure wave" -> "v1B.0.59 archive entry" (neutral).
 %   2. Pattern 1 (companion): added "(in preparation)" to Paper II/III/IV cross-refs; tab:claims "Status"
@@ -1428,7 +1452,7 @@ Parameter & Mean $\pm \sigma$ & vs $\Lambda$CDM\\
 \multicolumn{3}{l}{\textit{Dark-energy extension}}\\
 $w_0$         & $-0.8122 \pm 0.0436$ & (marg.-tail, $+4.3\sigma$)\footnote{\label{fn:wcaveat}Marginal-tail \emph{posterior-extrapolation} departure: $\Lambda$CDM is unsampled by this chain (no $w_0\!=\!-1, w_a\!=\!0$ samples in the present Metropolis-Hastings run), so the $+4.3\sigma$ figure is a posterior-tail extrapolation distance only, \emph{not} a Bayes-factor or $\ln B$ exclusion and \emph{not} a frequentist tension. A Savage-Dickey readout is not viable at this tail depth; robust $\ln B$ is left to a follow-up nested-sampling analysis (see \S~Headline-result discussion).}\\
 $w_a$         & $-0.6666 \pm 0.1864$ & $-3.6\sigma$ from $0$ (marg.-tail; fn.~\ref{fn:wcaveat})\\
-$w_0 + w_a$   & $-1.4788 \pm 0.1485$ & phantom-crossing required\\
+$w_0 + w_a$   & $-1.4788 \pm 0.1485$ & phantom-crossing indicated (caveated; fn.~\ref{fn:wcaveat})\\
 $w_{\rm pivot}$ & $-0.952 \pm 0.019$ & $+2.5\sigma$ from $-1$\footnote{\label{fn:wpivot}$w_{\rm pivot} \equiv w_0 + (1-a_p)\,w_a$ with the pivot $a_p$ chosen so that $w_{\rm pivot}$ and $w_a$ are uncorrelated in the posterior covariance, i.e.\ $\mathrm{Cov}(w_0,w_a) + (1-a_p)\,\mathrm{Var}(w_a) = 0$, giving $1-a_p = -\mathrm{Cov}(w_0, w_a) / \mathrm{Var}(w_a)$. Direct readout of the converged iter2 chain ($30\%$ burn-in): $\mathrm{Cov}(w_0,w_a) = -0.00729$ (correlation coefficient $\rho = -0.90$), so $1-a_p = 0.210$, $a_p = 0.790$, and $z_p = 1/a_p - 1 = 0.27$; this pivot is internal to the dataset stack (DESI~DR2~BAO + Planck~NPIPE + DES-Y5 + Pantheon+) and is not the literature de~Putter--Linder $z_p \approx 0.4$ value. The decorrelated combination has $\sigma_{w_{\rm pivot}}^2 = \sigma_{w_0}^2 - \mathrm{Cov}^2(w_0,w_a)/\sigma_{w_a}^2 = (0.0436)^2 - (0.00729/0.1864)^2 = (0.0193)^2$, reproducing the $\pm 0.019$ value above, with mean $w_{\rm pivot} = -0.8122 + 0.210\times(-0.6666) = -0.952$. The choice of $a_p$ depends on the dataset stack; rerunning the chain with SH0ES or DESI~DR2~BAO alone would shift $z_p$ and $w_{\rm pivot}$ at the linear-Fisher level.}\\
 \hline
 \multicolumn{3}{l}{\textit{Standard cosmology}}\\
@@ -2078,10 +2102,7 @@ $\Delta\Neff$ extension alone does not resolve the Hubble tension.
 
 \textit{Independent re-run cross-check (this version).}---A dedicated
 re-run of the Planck+BAO+SN $\Lambda$CDM$+\Delta\Neff$ configuration
-(same likelihood stack: Planck NPIPE high-$\ell$ CamSpec TTTEEE +
-\texttt{planck\_2018\_lowl.TT} + \texttt{planck\_2020\_lollipop.lowlE} +
-\texttt{planckpr4lensing} + full SDSS DR16 BAO block +
-\texttt{sn.pantheonplus}; identical prior block) converged on an
+(matching likelihood stack for the SDSS BAO block and high-$\ell$ CamSpec component; the c15 low-$\ell$ EE and lensing likelihood names, \texttt{planck\_2020\_lollipop.lowlE} and \texttt{planckpr4lensing}, differ from the frozen-chain names in Table~\ref{tab:chain_datasets}, \texttt{planck\_2018\_lowl.EE} and \texttt{planck\_2018\_lensing.clik}; the pairing mismatch is noted as a known limitation in the \emph{Release-pairing note} below) converged on an
 independent compute pod to $R\!-\!1\!=\!0.0147$
 (40,349 raw rows, 28,245 post-burn-in at 30\%, 107,853 effective weight)
 and gives $\Delta N_{\rm eff} = +0.0514 \pm 0.171$, in $0.04\sigma$
@@ -2093,13 +2114,14 @@ values within $<\!0.1\sigma$. The ``consistent with zero / no
 Hubble-tension resolution'' conclusion above is therefore reproduced
 on an independent chain; full chain artifacts and posterior summary
 are committed at \artifact{reproducibility/cosmology/chains/w0wa_quintom_desi_dr2/c15_converged/}.
-\emph{Release-pairing note (E3/E4):} both the primary frozen chains and the
-c15 verification chain use Planck NPIPE (PR4) CamSpec high-$\ell$ TTTEEE
-paired with Planck~2018 (not PR4) low-$\ell$ TT/EE and Planck~2018 lensing;
-the low-$\ell$ and lensing release years therefore differ from the high-$\ell$
-component. A dedicated PR4-consistent low-$\ell$/lensing swap test has not been
-run; any pairing-induced bias on $\Delta\Neff$, $H_0$, and $S_8$ at the
-quoted precision is unquantified (see Sec.~\ref{sec:verification}, limitation note).
+\emph{Release-pairing note:} the primary frozen chains use Planck NPIPE (PR4) CamSpec high-$\ell$ TTTEEE
+paired with \texttt{planck\_2018\_lowl.EE} and \texttt{planck\_2018\_lensing.clik} (Planck~2018 releases).
+The c15 verification re-run instead uses \texttt{planck\_2020\_lollipop.lowlE} and
+\texttt{planckpr4lensing} for the low-$\ell$ EE and lensing components, making c15 a
+release-pairing robustness rerun (PR4-consistent low-$\ell$/lensing) rather than an
+identical-likelihood rerun of the frozen chains. The $0.04\sigma$ agreement in $\Delta\Neff$
+across this likelihood substitution provides an empirical bound on pairing-induced bias
+at the quoted precision (see Sec.~\ref{sec:verification}, limitation note).
 
 \subsection{$w_0 w_a$ cross-check with stated SN-overlap systematic}\label{sec:w0wa_crosscheck}
 
@@ -2118,9 +2140,15 @@ unsampled by the Metropolis-Hastings chain; see fn.~\ref{fn:wcaveat}).
 The central marginal-tail posterior-extrapolation distances are
 $w_0 = -0.812 \pm 0.044$ ($+4.3\sigma$ from $-1$; fn.~\ref{fn:wcaveat})
 and $w_a = -0.667 \pm 0.186$ ($-3.6\sigma$ from $0$), with
-$w_0+w_a = -1.48 \pm 0.15$ requiring phantom crossing; these figures
+$w_0+w_a = -1.48 \pm 0.15$ indicating phantom crossing; these figures
 carry the overlap-uncorrected SN systematic of caveat~(e) and are discussed in detail
 in Sec.~\ref{sec:verification} (Physics interpretation paragraph).
+The $+4.3\sigma$ departure of $w_0$ from $-1$ is a posterior-tail
+extrapolation upper bound, not a detection significance: $\Lambda$CDM is
+unsampled in the present Metropolis-Hastings run, so the figure measures
+the distance from the chain center to the $\Lambda$CDM point in units of
+the marginal posterior width (fn.~\ref{fn:wcaveat}); a robust exclusion
+bound requires the deferred nested-sampling analysis.
 
 
 %% ============================================================
@@ -2136,6 +2164,10 @@ quantitative derivation in fn.~\ref{fn:theta_backreaction}) to keep the
 ALP an actual spectator field; this caveat is load-bearing for the
 ``consistency-not-prediction'' framing and is stated here, in the main
 text, rather than in a footnote only.
+The operational criterion for spectator status throughout this section is
+$\Omega_a < 0.01$: samples satisfying this cut constitute $13\%$ of the full
+ALP posterior mass (Table~\ref{tab:alp_restricted_subsets}) and are the only
+subset for which the ALP dark-energy fraction is safely sub-dominant.
 This subsection presents a secondary consistency check using the
 spectator ALP model. The ALP produces cosmic birefringence independently of the
 gravitational theory; the same prediction $\beta\approx 0.27^\circ$ arises in
@@ -2399,7 +2431,7 @@ for $44\%$ and $\Omega_a < 0.01$ for $13\%$ of the posterior mass;
 restricted to the $\Omega_a \le 0.01$ spectator-safe subset, the rotation
 marginal is $\beta = 0.28^\circ \pm 0.10^\circ$, consistent with
 $\beta_{\rm obs}=0.342^\circ\pm0.094^\circ$ at $0.5\sigma$.
-\emph{H$_0$ note (E8):} $\Omega_a$ at each MCMC step uses the $\Lambda$CDM background
+\emph{H$_0$ marginalization note:} $\Omega_a$ at each MCMC step uses the $\Lambda$CDM background
 Hubble rate evaluated at the Cobaya posterior mean $H_0 = 67.68~\mathrm{km\,s^{-1}\,Mpc^{-1}}$
 (fixed, not marginalized). Marginalizing $H_0$ over the Planck $1\sigma$ interval
 shifts $\Omega_a$ by $\lesssim 1\%$ ($\Omega_a \propto H_0^{-2}$), well below
@@ -2620,7 +2652,7 @@ the published Planck/ACT~DR6 $2.7$--$2.9\sigma$ measurements.
 
 \textit{Spectator-ALP consistency.}---Within the $\Omega_a < 0.01$ spectator-safe
 subset ($13\%$ of the posterior mass; median $m\simeq 40.5\,H_0$,
-$\Omega_a < 0.01$), an ALP with $f_a\sim\MPl$, $m\sim H_0$
+$\Omega_a < 0.01$), an ALP with $f_a\sim\MPl$ and posterior median $m\simeq 40.5\,H_0$ (not $m\sim H_0$; the scan-prior envelope spans $m\sim H_0$ but the posterior-supported fixed-$C_{a\gamma}=8$ fit shifts well above the prior midpoint)
 is consistent with the published $3.6\sigma$ joint signal, with the caveat
 that this spectator-safe subset
 ($\theta_i\sim 0.1$, a ${\sim}25\times$ fine-tuning relative to the natural
@@ -2637,6 +2669,7 @@ signal would be detected relative to $\beta=0$ at ${\sim}9\sigma$ by
 LiteBIRD in the early 2030s.
 
 \textit{$w_0 w_a$ cross-check.}---The converged DESI~DR2 + Planck~NPIPE + Pantheon+~\cite{Brout2022PantheonPlus} + DES-SN5YR~\cite{DES2024SN5YR} Cobaya chain with the $w_0 w_a$ free-parameter extension ($128{,}385$ accepted samples across 16 MPI chains; $\hat R - 1 = 0.00820$, below the standard $\hat R\!-\!1\!<\!10^{-2}$ publication target) supplies the GetDist $w_0 w_a$ posteriors of Table~\ref{tab:iter2_posterior}, a caveated overlap-uncorrected diagnostic of the quintom-B scenario~\cite{Cai2010quintomReview} (tested against DESI~DR2~\cite{DESI2025DR2}) under an overlap-uncorrected SN product likelihood (Sec.~\ref{sec:verification}, caveat~(e)); the SN-overlap systematic is stated as a known limitation and no model-selection claim is made.
+The iter2 chain uses \texttt{planck\_2018\_lensing.native} in place of \texttt{planck\_2018\_lensing.clik} (Table~\ref{tab:chain_datasets}); a dedicated release-pairing swap test to assess the impact of this lensing likelihood substitution on the $w_0 w_a$ posteriors has not been performed and is left to a post-submission follow-up.
 
 \subsection*{Data and Code Availability}
 

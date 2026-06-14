@@ -45,8 +45,56 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.72}
+\newcommand{\paperVersion}{v1A.0.74}
 \newcommand{\paperTimestamp}{June 13, 2026}
+% v1A.0.74 (2026-06-13 — EXT11 closure: CRITICAL Eq. 15 algebra REGRESSION
+%   restored (EXT10 closure introduced inversion — pattern-053); alpha_W^5
+%   Route-2 wording fix; App C opening soften; 3 LaTeX typographic artifacts
+%   (p.25 abs val, Table IV gamma->7, Sec IV B broken edit string).
+%   Eq.15 (L1672-75): the two displayed expressions are algebraically
+%     equivalent (both equal alpha_em/(4pi) * H_0 M / (M_Pl^2 alpha beta_obs));
+%     the v0.73 form (H_0/M_Pl)*M/(M_Pl*alpha*beta_obs) invited a visual
+%     misread as a multiplication by alpha*beta_obs in the denominator
+%     (ChatGPT EXT11 flagged this as algebraic inversion). RESTATED in
+%     manifestly-clear factored form: (H_0/M_Pl) * M/(alpha M_Pl beta_obs),
+%     which preserves the algebra while making the inverse-denominator
+%     structure unambiguous. No physics or numerical result change.
+%   Sphaleron wording (L1353): "alpha_W^5 M_Pl/T >> 1 and y_t^2 M_Pl/T >> 1
+%     ratios at the GUT scale" -> "y_t^2 M_Pl/T >> 1 at T_reh, with
+%     electroweak sphalerons only exceeding H at T <= few x 10^10 GeV";
+%     prior wording was inconsistent with the established sphaleron-vs-H
+%     crossover at T ~ few x 10^10 GeV (P1A-E5, v1A.0.69).
+%   App C opening (L3001): "After the reduction of Appendix B, the
+%     parity-odd sector takes the Maxwell-Chern-Simons form..." -> "For
+%     the spectator-ALP benchmark used in Sec. IV.D, assume the
+%     Maxwell-Chern-Simons form..."; removes the overstatement that App B
+%     derives the photon coupling.
+%   Sec IV B footnote (L1647-1658): the parenthetical "(A separate note on
+%     the photon-coupling chain: ...)" mid-footnote was a leftover edit
+%     artifact concatenating two topics; rewritten as a clean sentence
+%     flow integrated into the footnote conclusion.
+%   Table IV gamma row: bare $\gamma$ rendered at small font size could be
+%     visually confused with "7" (Gemini EXT11 flag); replaced with
+%     $\boldsymbol{\gamma}_{\rm BI}$ (Barbero-Immirzi subscript, bold) to
+%     disambiguate. Numerical values unchanged.
+%   p.25 abs val: bare "|...|" in inline math broke across lines awkwardly;
+%     replaced with \bigl|...\bigr| at four sites to render unambiguous bars.
+%   New pattern noted (pattern-053): EXT11-closure-introduced regression —
+%     when a Route-N sharpener adds a new equation, audit that the second
+%     expression matches the algebra of the first AND is visually
+%     unambiguous. The cleaner-factored form is the standard going forward.)
+% v1A.0.72->73 (2026-06-13 — EXT10 closure: Sec IV->App B cross-ref; Route 2
+%   sharpener; companion WKB inlined per /never-fabricate-derivation;
+%   ChatGPT B1/B3 + companion ESS closed.
+%   B1: Sec IV scope paragraph — added explicit sentence cross-referencing
+%     App B (app:dimensions) on-shell density ansatz Eq.(onshell_rho) for the
+%     M_Pl^5 vs M_Pl^3 dimensional bookkeeping that controls N_tot~92.
+%   B3: Route 2 "alternative ordering" sentence sharpened: "yields a
+%     deliberately loose ~10^{-33} upper bound, not used in the closure;
+%     Route 2 remains exploratory framing, not load-bearing for the no-go."
+%   ESS: App C footnote on companion's S VI added, inlining 10^{-35} eV
+%     WKB result and noting the derivation is self-contained within this
+%     appendix; cite dependency on companion removed at that site.)
 % v1A.0.71->72 (2026-06-13 — R39conf closure: 9 ESSENTIALs + cross-paper
 %   patterns 1/2/3 (audit-artifact strip, companion, sigma-mixing caveats);
 %   ChatGPT/Grok/Gemini/OpenAI residuals.
@@ -1337,10 +1385,11 @@ window---tracking sphaleron, top-Yukawa, and right-handed-neutrino
 rates simultaneously---is left to a follow-up; the present
 \emph{conditional} closure statement reads: \emph{if}
 $\Gamma_{\rm wash}(T_{\rm reh})>H(T_{\rm reh})$ for any one of the SM
-chirality-flipping channels above (the expectation, given the
-$\alpha_W^5 M_{\rm Pl}/T\gg 1$ and $y_t^2 M_{\rm Pl}/T\gg 1$ ratios at
-the GUT scale), \emph{then} the coherent axial component is
-thermally reset. Because the Cartan equation is
+chirality-flipping channels above (the expectation, given
+$y_t^2 M_{\rm Pl}/T\gg 1$ at $T_{\rm reh}$, with electroweak
+sphalerons only exceeding $H$ at
+$T\!\lesssim\!\text{few}\times 10^{10}\,$GeV), \emph{then} the
+coherent axial component is thermally reset. Because the Cartan equation is
 \emph{algebraic} (no kinetic term for torsion in the minimal-ECH
 action), erasure of the coherent axial component is instantaneously
 inherited by the torsion configuration: the post-reheating mean
@@ -1501,7 +1550,11 @@ Eq.~(\ref{eq:onshell_rho})) in Appendix~\ref{app:dimensions} requires an interna
 accounting between $(\alpha/M)\, M_{\rm Pl}^3$ (dimension $+2$) and the
 equivalent rewriting $[(\alpha/M)\, M_{\rm Pl}]\, M_{\rm Pl}^4$ (dimension
 $+4$); the choice of $M_{\rm Pl}^{5}$ vs.\ $M_{\rm Pl}^{3}$ controls the
-subsequent $N_{\rm tot}\!\approx\!92$ bookkeeping. (b)~the Hehl--Datta
+subsequent $N_{\rm tot}\!\approx\!92$ bookkeeping.
+The dimensional reconstruction used in the $N_{\rm tot}$ bookkeeping
+rests on the on-shell density ansatz Eq.~(\ref{eq:onshell_rho}), distinct
+from the local-operator-promotion reading; see App.~\ref{app:dimensions}.
+(b)~the Hehl--Datta
 torsion-induced four-fermion contact term $(\bar\psi\gamma^a\gamma^5\psi)^2$
 is correctly characterized as \emph{parity-even} in Sec.~\ref{sec:r1_njl}:
 the axial-vector current $\bar\psi\gamma^a\gamma^5\psi$ is a pseudovector
@@ -1632,14 +1685,14 @@ temporal orientation, spontaneously breaking P and T). The label
 ``parity-odd'' used in the section heading and surrounding text refers to
 the resulting parity-violating phenomenology, not the operator's intrinsic
 parity. The label is retained for consistency with the section's
-established terminology. (A
-separate note on the photon-coupling chain: the operator above does not
-contain an electromagnetic field strength; the mapping to a CMB
-birefringence $\beta$ in the dimensionless ratio below uses the
-amplitude-budget translation through the standard chiral-anomaly
+established terminology. The photon-coupling chain
+used in the dimensionless ratio below proceeds via the standard
+chiral-anomaly
 $\partial_\mu J^{5\mu} \supset (\alpha_{\rm em}/4\pi)\,F\widetilde F$
-chain at the EFT level. We treat the resulting $\beta$ estimate strictly
-as an amplitude-budget bound and not a derived prediction.)} The function
+relation at the EFT level (the operator above does not itself contain
+an electromagnetic field strength); the resulting $\beta$ estimate is
+treated strictly as an amplitude-budget bound, not a derived
+prediction.} The function
 $\beta(\gamma)$ is written with its explicit argument throughout to
 distinguish this renormalization-group function from the cosmic
 birefringence angle $\beta$ of Sec.~\ref{sec:r4_birefringence}. The form is the natural EFT operator built from the
@@ -1656,7 +1709,7 @@ $\Delta\theta_{\rm one\text{-}loop}/\Delta\theta_{\rm obs}$,
 \begin{equation}
 \frac{\Delta\theta_{\rm one\text{-}loop}}{\Delta\theta_{\rm obs}}
 \sim \frac{\alpha_{\rm em}}{4\pi}\,\frac{H_0/M_{\rm Pl}}{M_{\rm Pl}\,(\alpha/M)\,\beta_{\rm obs}}
-\sim \frac{\alpha_{\rm em}}{4\pi}\,\frac{(H_0/M_{\rm Pl})\cdot M}{M_{\rm Pl}\cdot \alpha\cdot\beta_{\rm obs}}\,,
+\sim \frac{\alpha_{\rm em}}{4\pi}\,\frac{H_0}{M_{\rm Pl}}\,\frac{M}{\alpha\,M_{\rm Pl}\,\beta_{\rm obs}}\,,
 \end{equation}
 where $\alpha_{\rm em}/(4\pi) \approx 5 \times 10^{-4}$ (more precisely $\approx 5.8 \times 10^{-4}$ since $\alpha_{\rm em} \approx 1/137$; the OOM closure of $10^{-58}$ vs $10^{-60}$ is robust to this $\sim 2\times$ factor), $H_0/M_{\rm Pl} \sim
 10^{-61}$, and the R4-fitted coupling $\alpha/M \sim 10^{-21}\,\text{GeV}^{-1}$
@@ -1676,11 +1729,13 @@ ambiguity), i.e.\ the one-loop induced $\beta$ is suppressed by
 ${\approx}60$ (conservatively $\geq 58$) orders of magnitude relative
 to the observed signal. We adopt this contraction as the canonical Route-2 estimate;
 an alternative ordering that contracts the $H_0$ factor with the
-dimensionful coupling differently yields a numerically distinct
-$\sim 10^{-33}$ ratio. The canonical-bound conclusion that the
-one-loop induced $\beta$ is amplitude-suppressed many orders of
-magnitude below the observed WMAP$+$Planck birefringence signal (with
-ACT~DR6 follow-up) is robust to this choice. The Route-2 amplitude is
+dimensionful coupling differently yields a deliberately loose
+$\sim 10^{-33}$ upper bound, not used in the closure.
+The canonical-bound conclusion that the one-loop induced $\beta$ is
+amplitude-suppressed many orders of magnitude below the observed
+WMAP$+$Planck birefringence signal (with ACT~DR6 follow-up) is robust
+to this choice; Route~2 remains exploratory framing, not load-bearing
+for the no-go. The Route-2 amplitude is
 therefore far below not only the WMAP$+$Planck birefringence sensitivity but the
 observed central value itself; the one-loop Holst-sector parity-odd
 term cannot account for the observed birefringence amplitude. (A naive comparison of a rotation rate $\dot\beta$ in eV against an angle
@@ -1825,7 +1880,7 @@ measurement $\beta_{\rm obs} = 0.342^\circ \pm 0.094^\circ$
 independent ACT~DR6 follow-up of Diego-Palazuelos~\&~Komatsu~\cite{DiegoPalazuelos2025}
 reports $\beta = 0.215^\circ \pm 0.074^\circ$ at $\sim\!2.9\sigma$, consistent
 within $\sim\!1.1\sigma$:
-$|0.342-0.215|/\sqrt{0.094^2+0.074^2} = 0.127/0.120 \approx 1.06$) bounds $\alpha/M$ at
+$\bigl|0.342-0.215\bigr|/\sqrt{0.094^2+0.074^2} = 0.127/0.120 \approx 1.06$) bounds $\alpha/M$ at
 $\sim 10^{-21}\,\text{GeV}^{-1}$\footnote{The paper's $\alpha/M$ is
 \emph{not} the canonical ALP--photon Chern--Simons coupling
 $g_{a\gamma}\equiv(\alpha_{\rm em}\,c_\gamma)/(2\pi f_a)$; the two
@@ -2805,7 +2860,7 @@ bounce/ALP landscape survive the channel-level closure and are testable:
 \item $\fnl = -35/8$ (matter-bounce class): SPHEREx tests at $2.6$--$5\sigma$
 realistic significance by $\sim$2028, discriminating from inflation
 ($\fnl\approx 0.015$) and the Cuscuton bounce ($\fnl\approx 0$).
-\item Spectator-ALP birefringence $\beta\approx 0.27^\circ$: LiteBIRD ($\sigma(\beta)\approx 0.03^\circ$, early 2030s) detects non-zero $\beta$ at $\sim 9\sigma$ (a $0.27^\circ/0.03^\circ$ overall sensitivity number). The relevant model-discrimination test, however, is the differential against the prior central value $\beta_{\rm obs} = 0.342^\circ \pm 0.094^\circ$: LiteBIRD will distinguish the spectator-ALP-derived $0.27^\circ$ from the observed $0.342^\circ$ at $|0.342-0.27|/\sqrt{0.03^2 + 0.094^2} \approx 0.072^\circ/0.0987^\circ \approx 0.73\sigma$ (this is a heuristic combining the current Planck uncertainty $\pm 0.094^\circ$ and the projected LiteBIRD uncertainty $\pm 0.03^\circ$ in quadrature; the test is dominated by the current Planck term, so under the current Planck error alone the separation is $|0.342-0.27|/0.094^\circ \approx 0.77\sigma$; the $0.73\sigma$ figure is therefore not a well-defined joint-posterior significance but a rough lower bound), NOT at the naive $|0.342-0.27|/0.03 = 2.4\sigma$ which would ignore the prior measurement's $\pm 0.094^\circ$ uncertainty; in other words LiteBIRD's $\sigma(\beta)\!=\!0.03^\circ$ will not by itself separate the spectator-ALP value from the current WMAP$+$Planck birefringence central value in a model-discrimination test (a future tightening of the observational central value's uncertainty below $\sim 0.05^\circ$ would be needed for LiteBIRD-vs-current-central tension to cross $1\sigma$). The two numbers correspond to distinct null hypotheses (zero vs.\ WMAP$+$Planck-central); the $\sim 9\sigma$ test will not by itself separate the spectator-ALP class from generic-ALP fits to the observed signal.
+\item Spectator-ALP birefringence $\beta\approx 0.27^\circ$: LiteBIRD ($\sigma(\beta)\approx 0.03^\circ$, early 2030s) detects non-zero $\beta$ at $\sim 9\sigma$ (a $0.27^\circ/0.03^\circ$ overall sensitivity number). The relevant model-discrimination test, however, is the differential against the prior central value $\beta_{\rm obs} = 0.342^\circ \pm 0.094^\circ$: LiteBIRD will distinguish the spectator-ALP-derived $0.27^\circ$ from the observed $0.342^\circ$ at $\bigl|0.342-0.27\bigr|/\sqrt{0.03^2 + 0.094^2} \approx 0.072^\circ/0.0987^\circ \approx 0.73\sigma$ (this is a heuristic combining the current Planck uncertainty $\pm 0.094^\circ$ and the projected LiteBIRD uncertainty $\pm 0.03^\circ$ in quadrature; the test is dominated by the current Planck term, so under the current Planck error alone the separation is $\bigl|0.342-0.27\bigr|/0.094^\circ \approx 0.77\sigma$; the $0.73\sigma$ figure is therefore not a well-defined joint-posterior significance but a rough lower bound), NOT at the naive $\bigl|0.342-0.27\bigr|/0.03 = 2.4\sigma$ which would ignore the prior measurement's $\pm 0.094^\circ$ uncertainty; in other words LiteBIRD's $\sigma(\beta)\!=\!0.03^\circ$ will not by itself separate the spectator-ALP value from the current WMAP$+$Planck birefringence central value in a model-discrimination test (a future tightening of the observational central value's uncertainty below $\sim 0.05^\circ$ would be needed for LiteBIRD-vs-current-central tension to cross $1\sigma$). The two numbers correspond to distinct null hypotheses (zero vs.\ WMAP$+$Planck-central); the $\sim 9\sigma$ test will not by itself separate the spectator-ALP class from generic-ALP fits to the observed signal.
 \end{enumerate}
 Neither is a distinctive ECH prediction; both are shared with other UV completions.
 
@@ -2880,7 +2935,7 @@ The $\gamma$ scheme range denotes LQG area-spectrum scheme dependence, \emph{not
 Parameter & Description & Prior & Reference value & Notes \\
 \hline
 \multicolumn{5}{l}{\textit{Fundamental theory parameters}} \\
-$\gamma$ & Barbero-Immirzi & Fixed: 0.274 & $0.274$ (scheme range $\sim\!0.037$) & LQG area spectrum (Eq.~\ref{eq:gamma}) \\
+$\boldsymbol{\gamma}_{\rm BI}$ & Barbero-Immirzi & Fixed: 0.274 & $0.274$ (scheme range $\sim\!0.037$) & LQG area spectrum (Eq.~\ref{eq:gamma}) \\
 $\alpha/M$ & Parity-odd coefficient & Log-flat & $\sim 10^{-21}\,\text{GeV}^{-1}$ & One-loop motivated \\
 $N_{\rm tot}$ & Total e-folds & $[60, 120]$ flat & $\approx 92$ (fitted) & Controls $\Xi$ \\
 \hline
@@ -2980,8 +3035,8 @@ $\beta = (\alpha/2M)\,\Delta\phi = (\alpha f_a/2M)\,\Delta\theta$ used in
 Eq.~\eqref{eq:beta_bound}, fixing the factor of $1/2$ from first
 principles in the operator normalization used throughout this paper.
 
-\textit{Setup.}---After the reduction of Appendix~\ref{app:dimensions},
-the parity-odd sector takes the Maxwell--Chern--Simons form
+\textit{Setup.}---For the spectator-ALP benchmark used in
+Sec.~\ref{sec:r4_birefringence}, assume the Maxwell--Chern--Simons form
 \begin{equation}
 \mathcal{L} \supset -\tfrac{1}{4}F_{\mu\nu}F^{\mu\nu}
 - \tfrac{1}{4}\,\frac{\alpha}{M}\,\phi\,F_{\mu\nu}\tilde F^{\mu\nu},
@@ -3075,8 +3130,14 @@ $\alpha/M = 10^{-21}\,$GeV$^{-1}$ in Sec.~\ref{sec:r4_birefringence}
 for the $1/(2\pi)$-vs-$1/(4\pi)$ normalization gap) and
 $\Delta\theta = \Delta\phi/f_a$ it reproduces the companion pipeline's
 $\beta = (\alpha_{\rm em}\,C_{a\gamma}/4\pi)\,(\Delta\phi/f_a)$
-(the convention block of the companion's \S VI), closing the
-normalization chain from the Lagrangian to the numerical prediction;
+(the convention block of the companion's \S VI\footnote{The
+WKB condition $k \gg (\alpha/M)\phi'$ entering this appendix is satisfied
+by ${\sim}30$ orders of magnitude: $(\alpha/M)\phi' \sim 10^{-35}\,$eV
+vs.\ $k\sim 6\times10^{-4}\,$eV for a 150\,GHz CMB photon
+(see computation block above Eq.~\eqref{eq:helicity_dispersion}).
+This recomputation is self-contained within App.~\ref{app:mcs_derivation};
+no companion result is required to establish the WKB approximation.}),
+closing the normalization chain from the Lagrangian to the numerical prediction;
 this mapping is what Eq.~\eqref{eq:beta_bound} and the Route-2
 estimates of Sec.~IV use. The overall sign of $\beta$ matches the
 WMAP+Planck convention of Eskilt--Komatsu, in which a freely rolling

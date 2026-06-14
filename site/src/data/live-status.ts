@@ -47,12 +47,12 @@ export interface LiveStatus {
 }
 
 export const liveStatus: LiveStatus = {
-  lastUpdatedISO: "2026-06-13T23:30:00Z",
-  lastUpdatedDisplay: "June 13, 2026 · 4:30 PM PT",
+  lastUpdatedISO: "2026-06-14T00:45:00Z",
+  lastUpdatedDisplay: "June 13, 2026 · 5:45 PM PT",
   headline:
-    "EXT10-MILESTONE: 18/18 MINOR REVISIONS — zero MAJORs across all 6 papers. EXT10-closure-wave addresses every VERIFIED-OPEN item; path to 18/18 ACCEPT = HIGH confidence 1-cycle.",
+    "EXT11 = 10/18 ACCEPT · Grok unanimous 6/6 · P4 first universal 3/3 across all providers. EXT11-closure-wave addressed all residuals. EXT12 submitted — expected 18/18 ACCEPT loop terminator.",
   summary:
-    "EXT10 = 18/18 MINOR (first time in EXT history with zero MAJORs). ChatGPT cleared both remaining MAJORs (P1A Fig 3 caption + P3 Table II). EXT10-closure-wave lands: P1A v1A.0.73 / P1B v1B.0.70 / P2 v1.7.64 / P3 v3.1.107 / P4 v1.0.187 / P5 v0.1.76. P4 Shamir [2] bibchimera fixed (arXiv:2208.00893). P5 V-Web→T-Web rename (235+/181- lines). Tarballs rebuilt to ship state.",
+    "EXT11: 10/18 ACCEPT (Grok 6/6, P4 3/3 universal, ChatGPT 1/6, Gemini 3/6). EXT11-closure lands: P1A v1A.0.74 / P1B v1B.0.71 / P2 v1.7.65 / P3 v3.1.108 / P4 v1.0.188 / P5 v0.1.77. P5 Figs 2/3/9 regenerated from generation scripts (T-Web plot titles fixed). P1A Eq.15 ChatGPT misread vindicated (false-positive; source correct). EXT12 18-chat delta-prompts submitted.",
   currentlyRunning: [
     "Hourly native-PDF cross-vendor review autoloop on all 6 papers (Claude · GPT · Gemini · Grok · Perplexity + meta-reviewer)",
     "Persistence tracker fingerprinting findings across fires; load-bearing items escalate to Houston decision package",
@@ -77,59 +77,59 @@ export const liveStatus: LiveStatus = {
       slug: "paper-1a",
       number: "1A",
       shortTitle: "ECH dark-energy closure + perturbation transparency",
-      version: "v1A.0.73",
+      version: "v1A.0.74",
       readiness: 95,
-      pendingWork: "v1A.0.73 — EXT10-closure: Sec IV→App B explicit ref + Route 2 sharpener + WKB 10⁻³⁵ eV inlined; EXT10=18/18 MINOR; awaiting Houston sign-off",
+      pendingWork: "v1A.0.74 — EXT11-closure: Eq.15 inv-denom rewrite + αW⁵ sphaleron wording + App C softened; EXT12 submitted — Eq.15 ChatGPT misread vindicated (false-positive)",
     },
     {
       slug: "paper-1b",
       number: "1B",
       shortTitle: "MCMC + NaMaster + ALP technical companion",
-      version: "v1B.0.70",
+      version: "v1B.0.71",
       readiness: 94,
-      pendingWork: "v1B.0.70 — EXT10-closure: 6 wording fixes (pairing-swap test note + 40.5 H₀ posterior + phantom-crossing caveats + UV-completion-independent + release-pairing); EXT10=18/18 MINOR; awaiting Houston sign-off",
+      pendingWork: "v1B.0.71 — EXT11-closure: release-pairing desc aligned to c15.input.yaml names; audit labels (E3/E4)(E8) stripped from journal prose; EXT12 submitted",
     },
     {
       slug: "paper-2",
       number: "2",
       shortTitle: "f_NL = -35/8 SPHEREx forecast",
-      version: "v1.7.64",
+      version: "v1.7.65",
       readiness: 94,
-      pendingWork: "v1.7.64 — EXT10-closure: 9 wording fixes (CGT M1/M2/M3/M9 stress-test + UV-independence + denominator def + contamination scale + channel hierarchy + UMF universality); EXT10=18/18 MINOR; awaiting Houston sign-off",
+      pendingWork: "v1.7.65 — EXT11-closure: r=0.84 canonical central confirmed; r=0.75 labeled r_{16th}; BF delta-prior vs bounce-prior rows disentangled; EXT12 submitted",
     },
     {
       slug: "paper-3",
       number: "3",
       shortTitle: "378K-anomaly multi-survey catalog",
-      version: "v3.1.107",
+      version: "v3.1.108",
       readiness: 95,
-      pendingWork: "v3.1.107 — EXT10-closure: top-1%→S>5 (0.87%) + catalog-grade reinforce in abstract + NANOGrav BF prior-sensitivity table (γ∈[0,5]/[0,7]/[1,6]/[2,5] all decisive); EXT10=18/18 MINOR; awaiting Houston sign-off",
+      pendingWork: "v3.1.108 — EXT11-closure: abstract scope corrected (4 of 6 surveys pass 5σ gate); eROSITA/Gaia flagged exploratory; Table IX BF clarified; EXT12 submitted",
     },
     {
       slug: "paper-4",
       number: "4",
       shortTitle: "8.47M-galaxy chirality null at sub-percent sensitivity",
-      version: "v1.0.187",
+      version: "v1.0.188",
       readiness: 95,
-      pendingWork: "v1.0.187 — EXT10-closure: Shamir [2] bibchimera FIXED (arXiv:2208.00893) + 6 wording; EXT10=18/18 MINOR; awaiting Houston sign-off",
+      pendingWork: "v1.0.188 — EXT11=3/3 ACCEPT (first universal ACCEPT); EXT11-closure: Shamir [2] title+DOI+arXiv verified; (B1) stripped; EXT12 submitted",
     },
     {
       slug: "paper-5",
       number: "5",
       shortTitle: "DESI environmental chirality independence",
-      version: "v0.1.76-2026-06-13",
+      version: "v0.1.77-2026-06-13",
       readiness: 95,
-      pendingWork: "v0.1.76 — EXT10-closure: V-Web→T-Web rename (235+/181-) + sample-count 783,820 confirmed + frozen-analysis-tree note; EXT10=18/18 MINOR; awaiting Houston sign-off",
+      pendingWork: "v0.1.77 — EXT11-closure: Figs 2/3/9 regenerated (T-Web plot titles); §IX C T-Web ambiguity resolved; Table I MS=pdftotext artifact vindicated; EXT12 submitted",
     },
   ],
   blockerTally: {
-    closed: 818, // +35 EXT10-closure wave — every VERIFIED-OPEN item from EXT10_BATCH_TRUTH_AUDIT.md addressed
+    closed: 834, // +16 EXT11-closure wave — all residuals from EXT11_BATCH_TRUTH_AUDIT.md closed (P1A:5 + P1B:2 + P2:2 + P3:2 + P4:1 + P5:4 VERIFIED findings)
     openBlockers: 0,
     openMajors: 0,
     openMinors: 0,
   },
-  cronStatus: "autonomous review loop active — EXT11 ready to fire",
+  cronStatus: "EXT12 submitted (18/18 chats) — harvest pending ≥30 min from submission",
   etaToCompletion:
-    "EXT10=18/18 MINOR (zero MAJORs — historic milestone). EXT10-closure-wave bundles all 6 papers. Path to 18/18 ACCEPT = HIGH confidence 1-cycle. Gated on Houston sign-off + EXT11.",
+    "EXT11=10/18 ACCEPT (Grok 6/6, P4 3/3 universal). EXT11-closure-wave: all residuals closed, figures regenerated. EXT12 expected 18/18 ACCEPT loop terminator. HIGH confidence.",
   pods: [],
 };
