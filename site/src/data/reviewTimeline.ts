@@ -46,6 +46,32 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "EXT17-MILESTONE-18-18-ACCEPT",
+    kind: "external-browser",
+    dateISO: "2026-06-13",
+    timePT: "23:59",
+    title: "🎯 EXT17 = 18/18 ACCEPT — PUBLICATION GREEN LIGHT · 17-round campaign complete · FINAL VERDICT LADDER",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "EXT17 harvest complete: 18/18 ACCEPT (post-truth-audit). EXT16→EXT17: 14/18→18/18. All 4 EXT16 ChatGPT MINORs closed (P1A thermal propagation→ACCEPT; P2 CDF-tail direction→ACCEPT; P3 Table IX prior density→ACCEPT; P5 T-Web 3-fix bundle→ACCEPT + FIRST ChatGPT ACCEPT for P5). 2 false positives truth-audited (ChatGPT P2 MINOR = wrong version v1.7.67 not v1.7.68; Gemini P1A MINOR = pattern-052 fresh-reviewer, all concerns already addressed). Grok 6/6 ACCEPT (10th+ consecutive round). Gemini 6/6 ACCEPT (pattern-058 100%). ChatGPT 6/6 ACCEPT (post-audit). Campaign: 17 EXT rounds from ~18 MAJORs baseline → 18/18 ACCEPT. Houston gates: (a) flip ORCID 0009-0008-3617-8729 to PUBLIC; (b) authorize arXiv coordinated drop.",
+    keyTakeaways: [
+      "FINAL VERDICT LADDER: P1A 3/3 · P1B 3/3 (FROZEN) · P2 3/3 · P3 3/3 · P4 3/3 (FROZEN) · P5 3/3",
+      "EXT16→EXT17 progression: 14/18 → 18/18 ACCEPT (post-truth-audit)",
+      "Grok: 6/6 ACCEPT, 10th+ consecutive round — calibration-stable",
+      "Gemini: 6/6 ACCEPT (pattern-058 100% explicit verdict rate)",
+      "ChatGPT: 6/6 ACCEPT (post-audit) — P5 first ChatGPT ACCEPT in campaign history",
+      "P1B v1B.0.72: FROZEN, 4+ consecutive rounds 3/3 ACCEPT",
+      "P4 v1.0.188: FROZEN, 5+ consecutive rounds 3/3 ACCEPT",
+      "Campaign: 17 EXT rounds, ~18 MAJORs → 0 MINORs/MAJORs",
+      "Truth audit ruled 2 false positives (version mismatch + fresh-reviewer pattern-052)",
+      "Houston gates: ORCID public flip + arXiv coordinated drop authorization",
+    ],
+    links: [
+      { label: "EXT17 truth audit", href: "https://github.com/Hubify-Projects/bigbounce/blob/main/project-context/peer-reviews/EXT17_BATCH_TRUTH_AUDIT.md" },
+      { label: "SIGNOFF ACCEPT", href: "https://github.com/Hubify-Projects/bigbounce/blob/main/project-context/SSOT/SIGNOFF_ACCEPT_2026-06-13.md" },
+      { label: "EXT17 manifest", href: "https://github.com/Hubify-Projects/bigbounce/blob/main/project-context/peer-reviews/EXT17_BROWSER_MANIFEST.md" },
+    ],
+  },
+  {
     id: "EXT17-LAUNCHED",
     kind: "external-browser",
     dateISO: "2026-06-13",
