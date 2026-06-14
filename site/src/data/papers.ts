@@ -85,14 +85,14 @@ export const papers: Paper[] = [
     slug: "paper-1a",
     number: "1A",
     title: "Channel-Level Closure of Four Minimal Einstein–Cartan–Holst Dark-Energy Routes and Perturbation Transparency for Scalar Matter",
-    version: "v1A.0.75",
+    version: "v1A.0.76",
     lastUpdated: "2026-06-13",
     tldr: "Closes all four minimal Einstein–Cartan–Holst routes from a quantum bounce to dark energy and proves the Holst sector is invisible to scalar/tensor perturbations — leaving two clean observational kill-tests (LiteBIRD birefringence, SPHEREx f_NL).",
     path: publicationPath({
       external: {
         label: "External journal-style review",
         state: "active",
-        note: "EXT12=7/18 ACCEPT (Grok ACCEPT / ChatGPT MINOR / Gemini pattern-058 fix); EXT13-closure: Sec IV/App B dim bookkeeping + reheating residual clarified; EXT14 submitted",
+        note: "EXT14=12/18 ACCEPT (P1B+P4 frozen); EXT15-closure: 3 ChatGPT MINOR items (chirality-flipping + parity-odd amplitude + local-operator-promotion) + 3 Gemini polish; EXT16 submitted",
       },
     }),
     pages: "29",
@@ -120,10 +120,10 @@ export const papers: Paper[] = [
       "arXiv endorsement + submission (astro-ph.CO)",
     ],
     preprintId: "HUBIFY-2026-001A",
-    pdfMeta: "PDF · 29 pp · v1A.0.75 · updated Jun 13, 2026",
+    pdfMeta: "PDF · 29 pp · v1A.0.76 · updated Jun 13, 2026",
     artifacts: [
-      { label: "Read PDF", href: "/papers/paper1a_ech_nogo_v1A.0.75.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/paper1a_ech_nogo_v1A.0.75.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/paper1a_ech_nogo_v1A.0.76.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/paper1a_ech_nogo_v1A.0.76.pdf", kind: "secondary", download: true },
       {
         label: "LaTeX source",
         href: "https://github.com/Hubify-Projects/bigbounce/blob/main/arxiv/paper1a_ech_nogo.tex",
@@ -148,7 +148,7 @@ export const papers: Paper[] = [
       external: {
         label: "External journal-style review",
         state: "active",
-        note: "EXT12=7/18 ACCEPT (Grok ACCEPT / ChatGPT MINOR / Gemini pattern-058 fix); EXT13-closure: release-pairing harmonized across Sec III+V.B+Conclusion (c15 yaml names + 0.04σ ΔNeff bound); EXT14 submitted",
+        note: "FROZEN v1B.0.72 — universal 3/3 ACCEPT at EXT14 (ChatGPT+Grok+Gemini). EXT15 courtesy re-confirmation. EXT16 submitted. No changes since EXT13-closure.",
       },
       signoff: {
         label: "Houston sign-off",
@@ -200,14 +200,14 @@ export const papers: Paper[] = [
     slug: "paper-2",
     number: "2",
     title: "Testing the Matter Bounce with Primordial Non-Gaussianity: A SPHEREx Sensitivity Recast with a MegaMapper Outlook",
-    version: "v1.7.66",
+    version: "v1.7.67",
     lastUpdated: "2026-06-13",
     tldr: "Shows f_NL = −35/8 is a parameter-free, mechanism-independent prediction of all matter-bounce models, and forecasts SPHEREx will detect or kill it at 4.7–12σ by ~2028 — the decisive bounce-vs-inflation discriminator.",
     path: publicationPath({
       external: {
         label: "External journal-style review",
         state: "active",
-        note: "EXT12=7/18 ACCEPT (Grok ACCEPT / ChatGPT MINOR / Gemini pattern-058 fix); EXT13-closure: BF self-check paragraph rewritten (3 sentences disentangle delta-prior vs bounce-prior vs required equation); EXT14 submitted",
+        note: "EXT14=12/18 ACCEPT (P1B+P4 frozen); EXT15-closure: BF Eq.9 vs Eq.10 mapping corrected (exact CDF vs large-W approx) + 0.18% arithmetic typo; EXT16 submitted",
       },
       signoff: {
         label: "Houston sign-off",
@@ -243,10 +243,10 @@ export const papers: Paper[] = [
       "arXiv submission (administrative)",
     ],
     preprintId: "HUBIFY-2026-002",
-    pdfMeta: "PDF · 29 pp · v1.7.66 · updated Jun 13, 2026",
+    pdfMeta: "PDF · 29 pp · v1.7.67 · updated Jun 13, 2026",
     artifacts: [
-      { label: "Read PDF", href: "/papers/paper2_fnl_forecast_v1.7.66.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/paper2_fnl_forecast_v1.7.66.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/paper2_fnl_forecast_v1.7.67.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/paper2_fnl_forecast_v1.7.67.pdf", kind: "secondary", download: true },
       {
         label: "LaTeX source",
         href: "https://github.com/Hubify-Projects/bigbounce/blob/main/research/focused_paper_source_integration/02_full_draft.tex",
@@ -259,17 +259,17 @@ export const papers: Paper[] = [
     slug: "paper-3",
     number: "3",
     title: "Spectrally Unusual Sources at Scale: A Multi-Survey Catalog of 378,280 Path-C Unique Anomalies and a Native-Trained Novelty Fraction from 37.3 Million Sources and Map Patches",
-    version: "v3.1.109",
+    version: "v3.1.110",
     lastUpdated: "2026-06-13",
     tldr: "A 378,280-object anomaly catalog mined from 37.3M sources across 7 surveys with one autoencoder architecture — 17.8% of top-ranked objects are new to existing catalogs, plus a NANOGrav free-spectrum fit consistent with matter-bounce γ = 3.0.",
     path: publicationPath({
       external: {
         label: "External journal-style review",
         state: "active",
-        note: "EXT12=7/18 ACCEPT (Grok ACCEPT / ChatGPT MINOR / Gemini pattern-058 fix); EXT13-closure: abstract DESI gate type explicit + Table IX BF Savage-Dickey tablenote (8 sites); EXT14 submitted",
+        note: "EXT14=12/18 ACCEPT (P1B+P4 frozen); EXT15-closure: Table IX Savage-Dickey footnote enhanced with explicit KDE values at γ*=3.0 and γ*=4.33 (ratio B_MB/SMBHB=7.14e3); EXT16 submitted",
       },
     }),
-    pages: "29",
+    pages: "30",
     refs: "71",
     readiness: 95,
     statusVariant: "green",
@@ -305,10 +305,10 @@ export const papers: Paper[] = [
       "arXiv submission (administrative)",
     ],
     preprintId: "HUBIFY-2026-003",
-    pdfMeta: "PDF · 29 pp · v3.1.109 · updated Jun 13, 2026",
+    pdfMeta: "PDF · 30 pp · v3.1.110 · updated Jun 13, 2026",
     artifacts: [
-      { label: "Read PDF", href: "/papers/paper3_anomaly_catalog_v3.1.109.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/paper3_anomaly_catalog_v3.1.109.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/paper3_anomaly_catalog_v3.1.110.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/paper3_anomaly_catalog_v3.1.110.pdf", kind: "secondary", download: true },
       {
         label: "LaTeX source",
         href: "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p3_anomaly_engine/paper3_draft.tex",
@@ -345,7 +345,7 @@ export const papers: Paper[] = [
       {
         label: "External journal-style review",
         state: "active",
-        note: "FROZEN v1.0.188 — universal 3/3 ACCEPT at EXT12 (ChatGPT first-ever ACCEPT in campaign). EXT14 courtesy confirmation only. No changes since EXT12.",
+        note: "FROZEN v1.0.188 — universal 3/3 ACCEPT at EXT12+EXT14 (ChatGPT first-ever ACCEPT in campaign). EXT15+EXT16 courtesy confirmation only. No changes since EXT12.",
       },
       {
         label: "Houston sign-off",
@@ -414,14 +414,14 @@ export const papers: Paper[] = [
     slug: "paper-5",
     number: "5",
     title: "Environmental Dependence of Spiral Chirality: A DESIVAST Three-Algorithm Test on 56,981 Void Spirals with T-Web (Hahn 2007) Tidal-Tensor Cross-Check Across 791,635 DR1 Matched Spirals",
-    version: "v0.1.78-2026-06-13",
+    version: "v0.1.79-2026-06-13",
     lastUpdated: "2026-06-13",
     tldr: "Cross-matches P4's spiral handedness with DESI large-scale structure (791,635 matched spirals + 56,981 void spirals) and finds galaxy chirality is statistically independent of cosmic-web environment — constraining environment-coupled parity models.",
     path: publicationPath({
       external: {
         label: "External journal-style review",
         state: "active",
-        note: "EXT12=7/18 ACCEPT (Grok ACCEPT / ChatGPT MINOR / Gemini pattern-058 fix); EXT13-closure: pattern-057 V-Web body residuals closed (4 sites) + Verdict.→Result. + Fig 8 clean; EXT14 submitted",
+        note: "EXT14=12/18 ACCEPT (P1B+P4 frozen); EXT15-closure: pattern-059 math-mode subscript sweep — ZERO residuals found (EXT14 flag was false-positive per pattern-052 vindication); v0.1.79 audit-trail bump; EXT16 submitted",
       },
     }),
     pages: "32",
@@ -455,10 +455,10 @@ export const papers: Paper[] = [
       "arXiv endorsement + submission (last in queue)",
     ],
     preprintId: "HUBIFY-2026-005",
-    pdfMeta: "PDF · 32 pp · v0.1.78-2026-06-13 · updated Jun 13, 2026",
+    pdfMeta: "PDF · 32 pp · v0.1.79-2026-06-13 · updated Jun 13, 2026",
     artifacts: [
-      { label: "Read PDF", href: "/papers/p5_desi_chirality_v0.1.78-2026-06-13.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/p5_desi_chirality_v0.1.78-2026-06-13.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/p5_desi_chirality_v0.1.79-2026-06-13.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/p5_desi_chirality_v0.1.79-2026-06-13.pdf", kind: "secondary", download: true },
       {
         label: "Pipeline + scripts",
         href: "https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p5_desi_chirality",

@@ -46,6 +46,64 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "EXT16-LAUNCHED",
+    kind: "external-browser",
+    dateISO: "2026-06-13",
+    timePT: "23:59",
+    title: "EXT16 launched: 18 chats submitted · P1B+P4 courtesy re-confirmation · Gemini pattern-058 fresh chats · target 18/18 ACCEPT",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "EXT16: 18 chats submitted. ChatGPT 6 in-thread delta + Grok 6 in-thread delta + Gemini 6 fresh chats with pattern-058 MNRAS referee-format first-line. P1B+P4 courtesy re-confirmation prompts: 'No changes since EXT14 — please confirm ACCEPT verdict still holds.' EXT15-closure summaries attached per paper. All 6 PDFs md5-verified before submission.",
+    keyTakeaways: [
+      "P1A v1A.0.76: 3 ChatGPT MINOR + 3 Gemini polish closed; chirality-flipping + parity-odd amplitude + local-operator-promotion framing resolved",
+      "P1B v1B.0.72 + P4 v1.0.188: FROZEN at universal 3/3 ACCEPT — courtesy re-confirmation only, no content changes",
+      "P2 v1.7.67: BF Eq.9 vs Eq.10 mapping corrected (exact CDF vs large-W approx); 0.18% arithmetic typo fixed",
+      "P3 v3.1.110: Table IX Savage-Dickey footnote with explicit Gaussian KDE values at γ*=3.0 and γ*=4.33 (B_MB/SMBHB=7.14e3)",
+      "P5 v0.1.79: pattern-059 sweep found ZERO residuals — EXT14 flag vindicated as false-positive (pattern-052 vindication recorded)",
+    ],
+    links: [
+      { label: "EXT16 manifest", href: "https://github.com/Hubify-Projects/bigbounce/blob/main/project-context/peer-reviews/EXT16_BROWSER_MANIFEST.md" },
+    ],
+  },
+  {
+    id: "EXT15-CLOSURE-WAVE",
+    kind: "ext-closure",
+    dateISO: "2026-06-13",
+    timePT: "23:55",
+    title: "EXT15-closure-wave: 4-paper bundle (P1B+P4 frozen) · pattern-052 vindication on P5 · pattern-059 sweep confirmed zero residuals",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "EXT15-closure addresses all EXT14 MINOR findings on 4 active papers. P1A v1A.0.76: 3 ChatGPT MINOR items (chirality-flipping clarification + dimensionless parity-odd amplitude budget + local-operator-promotion route framing) + 3 Gemini polish (citations, γ_SU(2) scheme range in caption, H(z) y-axis units). P2 v1.7.67: BF Eq.9 vs Eq.10 mapping corrected (Eq.9 = exact CDF for narrow delta-prior; Eq.10 = large-W approx for broad prior only) + 0.18% arithmetic typo. P3 v3.1.110: Table IX Savage-Dickey footnote with explicit KDE values at γ*=3.0 (0.461 → B_MB/free=3.23) and γ*=4.33 (6.46e-5 → B_SMBHB/free=4.52e-4); ratio B_MB/SMBHB=7.14e3. P5 v0.1.79: pattern-059 math-mode subscript sweep — ZERO residuals found; EXT14 reviewer flag was false-positive (pattern-052 vindication). P1B v1B.0.72 + P4 v1.0.188 FROZEN at universal 3/3 ACCEPT.",
+    keyTakeaways: [
+      "P1B v1B.0.72: universal 3/3 ACCEPT (ChatGPT+Grok+Gemini at EXT14) — FROZEN alongside P4",
+      "P4 v1.0.188: universal 3/3 ACCEPT courtesy confirmed EXT14 — FROZEN",
+      "P5 pattern-052 vindication: EXT14 V-Web subscript flag was false-positive — pattern-057+pattern-059 sweeps clean",
+      "EXT14 = 12/18 ACCEPT; EXT15 closure addresses all 4-paper residuals; EXT16 path to 18/18 ACCEPT",
+    ],
+    links: [
+      { label: "EXT14 truth audit", href: "https://github.com/Hubify-Projects/bigbounce/blob/main/project-context/peer-reviews/EXT14_BATCH_TRUTH_AUDIT.md" },
+    ],
+  },
+  {
+    id: "EXT14-VERDICT-LADDER",
+    kind: "external-browser",
+    dateISO: "2026-06-13",
+    timePT: "20:15",
+    title: "EXT14 = 12/18 ACCEPT · P1B NEW 3/3 FROZEN · P4 3/3 courtesy confirmed · Grok 8th consecutive 6/6 · Gemini pattern-058 SUCCESS",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "EXT14 harvest: 12/18 ACCEPT — major step forward from EXT12 (7/18). P1B v1B.0.72 achieves 3/3 ACCEPT (ChatGPT NEW + Grok + Gemini) — FROZEN alongside P4. P4 v1.0.188 3/3 ACCEPT courtesy confirmed. Grok 6/6 ACCEPT (8th consecutive round, full-campaign calibration stability). Gemini pattern-058 SUCCESS: 6/6 formal ACCEPT/MINOR verdicts vs 0/6 synthesis-mode in EXT12. ChatGPT: P1B+P4 ACCEPT; P1A/P2/P3/P5 MINOR (1-2 local text fixes each). Gemini: P1B+P2+P3+P4 ACCEPT; P1A+P5 MINOR. Pattern-059 new: math-mode subscripts require separate grep after systematic rename. EXT15 closure wave queued: 4 papers. Wall-clock: 75 min total.",
+    keyTakeaways: [
+      "Gemini pattern-058 SUCCESS: 6/6 formal ACCEPT/MINOR verdicts — the fix worked completely",
+      "P1B v1B.0.72: 3/3 ACCEPT (ChatGPT NEW ACCEPT + Grok + Gemini) — FROZEN at universal ACCEPT alongside P4",
+      "P4 v1.0.188: 3/3 ACCEPT courtesy confirmed at EXT14 — universal ACCEPT holds",
+      "Grok 6/6 ACCEPT: 8th consecutive round of full-panel ACCEPT across all papers",
+      "12/18 ACCEPT at EXT14 — clear ladder from 7/18 → 12/18 → target 18/18 at EXT16",
+      "Pattern-059 encoded: math-mode subscripts (_{V-Web} etc.) require separate sweep after systematic rename",
+    ],
+    links: [
+      { label: "EXT14 truth audit", href: "https://github.com/Hubify-Projects/bigbounce/blob/main/project-context/peer-reviews/EXT14_BATCH_TRUTH_AUDIT.md" },
+      { label: "EXT14 manifest", href: "https://github.com/Hubify-Projects/bigbounce/blob/main/project-context/peer-reviews/EXT14_BROWSER_MANIFEST.md" },
+    ],
+  },
+  {
     id: "SKILL-PATTERN-059-MATH-MODE-SUBSCRIPT",
     kind: "skill-improvement",
     dateISO: "2026-06-13",

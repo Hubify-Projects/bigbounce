@@ -1,6 +1,17 @@
 # arXiv Submission Runbook — BigBounce 6-Paper Coordinated Drop
-## Status: EXT13-CLOSURE-WAVE COMPLETE | EXT14 LAUNCHED (18 chats · Gemini pattern-058 fix) → HIGH CONFIDENCE 18/18 ACCEPT → arXiv
-## Prepared: 2026-06-13 | Updated: EXT13-closure-wave (P1A v1A.0.75 / P1B v1B.0.72 / P2 v1.7.66 / P3 v3.1.109 / P4 v1.0.188 FROZEN / P5 v0.1.78)
+## Status: EXT15-CLOSURE-WAVE COMPLETE | EXT16 LAUNCHED (18 chats · Gemini pattern-058 · P1B+P4 courtesy re-confirm) → HIGH CONFIDENCE 18/18 ACCEPT → arXiv
+## Prepared: 2026-06-13 | Updated: EXT15-closure-wave (P1A v1A.0.76 / P1B v1B.0.72 FROZEN / P2 v1.7.67 / P3 v3.1.110 / P4 v1.0.188 FROZEN / P5 v0.1.79)
+
+### EXT15-Closure-Wave Tarballs (REBUILT 2026-06-13, pre-EXT16)
+
+| Paper | Tarball | Tarball MD5 | Source PDF MD5 (prefix 8) | Pages | Compile |
+|-------|---------|-------------|--------------------------|-------|---------|
+| P1A | `paper1a_arxiv_v1A.0.76.tar.gz` | `a548f0bc05acab27a89014b9c4cfc454` | `6bc1b067` | 29 | CLEAN (errors=0 undef=0) |
+| P1B | `paper1b_arxiv_v1B.0.72.tar.gz` | `f0c354fe998aa540550e8bab100e184c` | `5a3c98e9` | 21 | CLEAN (errors=0 undef=0) — FROZEN |
+| P2  | `paper2_arxiv_v1.7.67.tar.gz`   | `a5d0befc5f4b707943c1dbfd6a1d5084` | `e6a36fdd` | 29 | CLEAN (errors=0 undef=0) |
+| P3  | `paper3_arxiv_v3.1.110.tar.gz`  | `2beb013cecccf27cb342d1b8545e0942` | `9edff2b2` | 30 | CLEAN (errors=0 undef=0) |
+| P4  | `paper4_arxiv_v1.0.188.tar.gz`  | `9ec878204f68aa7fb3131fb1d52e284e` | `c47abc18` | 23 | CLEAN (errors=0 undef=0) — FROZEN |
+| P5  | `paper5_arxiv_v0.1.79-2026-06-13.tar.gz` | `df636e2ed710bdd49b55d6b720571da4` | `837ec047` | 32 | CLEAN (errors=0 undef=0) |
 
 ---
 

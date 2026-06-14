@@ -1,68 +1,68 @@
 [
   {
     "paperSlug": "paper-1a",
-    "version": "v1A.0.75",
+    "version": "v1A.0.76",
     "datestamp": "2026-06-13",
-    "texCommit": "EXT13-closure-wave",
+    "texCommit": "EXT15-closure-wave",
     "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1a_ech_nogo.pdf",
-    "pdfMd5": "dcadf3642a96eb827a478d6f37ac06ee",
+    "pdfMd5": "6bc1b067594fb76e4657153fda21e274",
     "pdfPages": 29,
-    "sitePdfPath": "/papers/paper1a_ech_nogo_v1A.0.75.pdf",
-    "changelog": "EXT13-closure: Sec IV/App B dimensional bookkeeping made consistent via N_tot sentence; reheating residual clarified (local-operator-promotion reading distinguished)."
+    "sitePdfPath": "/papers/paper1a_ech_nogo_v1A.0.76.pdf",
+    "changelog": "EXT15-closure: 3 ChatGPT MINOR items closed — chirality-flipping clarification + dimensionless parity-odd amplitude budget + local-operator-promotion route framing; plus 3 Gemini polish items (citations clarified, γ_SU(2)≈0.274 scheme range in caption, H(z) y-axis units explicit). No new analysis introduced."
   },
   {
     "paperSlug": "paper-1b",
     "version": "v1B.0.72",
     "datestamp": "2026-06-13",
-    "texCommit": "EXT13-closure-wave",
+    "texCommit": "EXT15-closure-wave",
     "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1b_mcmc_companion.pdf",
     "pdfMd5": "5a3c98e9e10d1882a9973a846aa111e4",
     "pdfPages": 21,
     "sitePdfPath": "/papers/paper1b_mcmc_companion_v1B.0.72.pdf",
-    "changelog": "EXT13-closure: Release-pairing description harmonized across Sec III + Sec V.B + Conclusion (consistent c15.input.yaml likelihood names; 0.04σ ΔNeff agreement as empirical pairing-bias bound)."
+    "changelog": "P1B FROZEN at v1B.0.72 — universal 3/3 ACCEPT confirmed EXT14 (ChatGPT+Grok+Gemini). No changes since EXT13-closure. Courtesy re-confirmation submitted EXT15."
   },
   {
     "paperSlug": "paper-2",
-    "version": "v1.7.66",
+    "version": "v1.7.67",
     "datestamp": "2026-06-13",
-    "texCommit": "EXT13-closure-wave",
+    "texCommit": "EXT15-closure-wave",
     "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/research/focused_paper_source_integration/02_full_draft.pdf",
-    "pdfMd5": "b8cb9a4cca8aae9d1cf24079c0e3e3a2",
+    "pdfMd5": "e6a36fdd12ae3d8b67bb59232cdc0a18",
     "pdfPages": 29,
-    "sitePdfPath": "/papers/paper2_fnl_forecast_v1.7.66.pdf",
-    "changelog": "EXT13-closure: BF self-check paragraph rewritten — 3 sentences explicitly disentangle Eq.(bf_approx) delta-prior vs Eq.(bf_exact) bounce-prior; delta vs Gaussian rows differ in both prior spec AND required equation."
+    "sitePdfPath": "/papers/paper2_fnl_forecast_v1.7.67.pdf",
+    "changelog": "EXT15-closure: BF self-check Eq.9 vs Eq.10 mapping corrected (Eq.9 exact CDF for narrow delta-prior B≈7.0; Eq.10 large-W approximation only valid for broad [-15,+15] delta as cross-check; Gaussian-bounce-prior uses Eq.9 exclusively). 0.18% sub-percent arithmetic typo corrected."
   },
   {
     "paperSlug": "paper-3",
-    "version": "v3.1.109",
+    "version": "v3.1.110",
     "datestamp": "2026-06-13",
-    "texCommit": "EXT13-closure-wave",
+    "texCommit": "EXT15-closure-wave",
     "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p3_anomaly_engine/paper3_draft.pdf",
-    "pdfMd5": "7b8ad3d397b454bedcaa79ded5dfebb2",
-    "pdfPages": 29,
-    "sitePdfPath": "/papers/paper3_anomaly_catalog_v3.1.109.pdf",
-    "changelog": "EXT13-closure: Abstract DESI gate type explicit (5-fold cross-validation Jaccard + native-retrain OOD Jaccard, NOT injection-recovery); Table IX BF columns carry explicit Savage-Dickey density-ratio tablenote (8 sites)."
+    "pdfMd5": "9edff2b2e6b6fa953d29fbff190a56db",
+    "pdfPages": 30,
+    "sitePdfPath": "/papers/paper3_anomaly_catalog_v3.1.110.pdf",
+    "changelog": "EXT15-closure: Table IX Savage-Dickey footnote enhanced with explicit Gaussian KDE values at γ*=3.0 (post density 0.461 → B_MB/free=3.23) and γ*=4.33 (post density 6.46e-5 → B_SMBHB/free=4.52e-4); ratio B_MB/SMBHB=7.14e3 derived. Genuine SD density ratios, not posterior-tail fractions."
   },
   {
     "paperSlug": "paper-4",
     "version": "v1.0.188",
     "datestamp": "2026-06-13",
-    "texCommit": "EXT13-closure-wave",
+    "texCommit": "EXT15-closure-wave",
     "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p2_chirality/chirality_catalog_paper.pdf",
     "pdfMd5": "c47abc1893375ba483c6b82df5811915",
     "pdfPages": 23,
     "sitePdfPath": "/papers/chirality_catalog_paper_v1.0.188.pdf",
-    "changelog": "P4 FROZEN at v1.0.188 — universal 3/3 ACCEPT confirmed EXT12 (first ChatGPT ACCEPT in campaign). No changes."
+    "changelog": "P4 FROZEN at v1.0.188 — universal 3/3 ACCEPT (first-ever ChatGPT ACCEPT in campaign confirmed EXT12+EXT14). No changes since prior review. Courtesy re-confirmation submitted EXT15."
   },
   {
     "paperSlug": "paper-5",
-    "version": "v0.1.78-2026-06-13",
+    "version": "v0.1.79-2026-06-13",
     "datestamp": "2026-06-13",
-    "texCommit": "EXT13-closure-wave",
+    "texCommit": "EXT15-closure-wave",
     "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf",
-    "pdfMd5": "5393bd48e10603ec1f02fcc4c96fdb81",
+    "pdfMd5": "837ec047d0725f88e7e025f6265d69f0",
     "pdfPages": 32,
-    "sitePdfPath": "/papers/p5_desi_chirality_v0.1.78-2026-06-13.pdf",
-    "changelog": "EXT13-closure: pattern-057 V-Web body residuals closed (4 sites: lines 429, 807, 2094, 3589); Verdict.→Result. journal-style sub-header; Fig 8 confirmed clean."
+    "sitePdfPath": "/papers/p5_desi_chirality_v0.1.79-2026-06-13.pdf",
+    "changelog": "EXT15-closure: pattern-059 math-mode subscript sweep performed — ZERO actual math-mode V-Web residuals found (pattern-057 at EXT13 had already cleared all body+math sites; EXT14 reviewer flag was a pattern-052 vindication false-positive). Version bumped to v0.1.79 for audit trail; substantive content unchanged."
   }
 ]

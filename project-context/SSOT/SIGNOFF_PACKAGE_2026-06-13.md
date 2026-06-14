@@ -2,33 +2,33 @@
 
 **Decision document for the 6-paper arXiv publish push.** Numbers trace to committed sources: EXT7_BROWSER_MANIFEST.md · R37conf_BATCH_TRUTH_AUDIT.md · SSOT/index.md · SIGNOFF_PACKAGE_2026-06-11.md.
 
-**UPDATED 2026-06-13 (EXT13-closure-wave + EXT14 launch):** EXT12 verdict = 7/18 ACCEPT (Grok 6/6, P4 universal 3/3 including ChatGPT FIRST-EVER ACCEPT, Gemini pattern-058 fix). EXT13-closure-wave addresses every VERIFIED-OPEN EXT12 item from 5 papers. P4 FROZEN at v1.0.188. EXT14 launched — 18 chats submitted with Gemini pattern-058 fix (MNRAS referee-format first-line). HIGH CONFIDENCE 18/18 ACCEPT → arXiv coordinated drop. Full runbook at `project-context/SSOT/ARXIV_SUBMISSION_RUNBOOK.md`.
+**UPDATED 2026-06-13 (EXT15-closure-wave + EXT16 launch):** EXT14 verdict = 12/18 ACCEPT (P1B v1B.0.72 NEW 3/3 ACCEPT FROZEN; P4 v1.0.188 courtesy confirmed FROZEN; Grok 6/6 8th consecutive; Gemini pattern-058 SUCCESS 6/6 formal verdicts). EXT15-closure-wave addresses every VERIFIED-OPEN EXT14 item from 4 active papers. P1B+P4 FROZEN at universal 3/3 ACCEPT. EXT16 launched — 18 chats submitted (ChatGPT+Grok in-thread delta; Gemini fresh chats pattern-058 MNRAS first-line; P1B+P4 courtesy re-confirmation prompts). HIGH CONFIDENCE 18/18 ACCEPT → arXiv coordinated drop. Full runbook at `project-context/SSOT/ARXIV_SUBMISSION_RUNBOOK.md`.
 
-### EXT13-Closure-Wave PDF MD5s (current live versions)
+### EXT15-Closure-Wave PDF MD5s (current live versions)
 
 | Paper | Version | PDF MD5 (prefix 8) | Pages | Status |
 |-------|---------|---------------------|-------|--------|
-| P1A | v1A.0.75 | `dcadf364` | 29 | EXT13-closure; EXT14 in-flight |
-| P1B | v1B.0.72 | `5a3c98e9` | 21 | EXT13-closure; EXT14 in-flight |
-| P2  | v1.7.66  | `b8cb9a4c` | 29 | EXT13-closure; EXT14 in-flight |
-| P3  | v3.1.109 | `7b8ad3d3` | 29 | EXT13-closure; EXT14 in-flight |
+| P1A | v1A.0.76 | `6bc1b067` | 29 | EXT15-closure; EXT16 in-flight |
+| P1B | v1B.0.72 | `5a3c98e9` | 21 | FROZEN — universal 3/3 ACCEPT (EXT14-confirmed) |
+| P2  | v1.7.67  | `e6a36fdd` | 29 | EXT15-closure; EXT16 in-flight |
+| P3  | v3.1.110 | `9edff2b2` | 30 | EXT15-closure; EXT16 in-flight |
 | P4  | v1.0.188 | `c47abc18` | 23 | FROZEN — universal 3/3 ACCEPT (ChatGPT first-ever ACCEPT in campaign) |
-| P5  | v0.1.78-2026-06-13 | `5393bd48` | 32 | EXT13-closure; EXT14 in-flight |
+| P5  | v0.1.79-2026-06-13 | `837ec047` | 32 | EXT15-closure; EXT16 in-flight |
 
-All source→mirror PDF md5 cross-checks PASSED. Convex bump: 6/6 OK. tsc: CLEAN. EXT14 manifest: project-context/peer-reviews/EXT14_BROWSER_MANIFEST.md. Harvest ETA ≥30 min from last submission.
+All source→mirror PDF md5 cross-checks PASSED. tsc: CLEAN. EXT16 manifest: project-context/peer-reviews/EXT16_BROWSER_MANIFEST.md. Harvest ETA ≥30 min from last submission.
 
-**EXT13-closure tarballs REBUILT 2026-06-13 (pre-EXT14, zero-latency drop readiness):**
+**EXT15-closure tarballs REBUILT 2026-06-13 (pre-EXT16, zero-latency drop readiness):**
 
 | Paper | Tarball | Tarball MD5 | Compile |
 |-------|---------|-------------|---------|
-| P1A | `paper1a_arxiv_v1A.0.75.tar.gz` | `611052d88d1566cf6be583449cc56a27` | CLEAN |
-| P1B | `paper1b_arxiv_v1B.0.72.tar.gz` | `f0c354fe998aa540550e8bab100e184c` | CLEAN |
-| P2  | `paper2_arxiv_v1.7.66.tar.gz`   | `f32de4f29933870e0ebf599c36b08908` | CLEAN |
-| P3  | `paper3_arxiv_v3.1.109.tar.gz`  | `7f60a8e7405092519ae89dea7e3ea4b3` | CLEAN |
+| P1A | `paper1a_arxiv_v1A.0.76.tar.gz` | `a548f0bc05acab27a89014b9c4cfc454` | CLEAN |
+| P1B | `paper1b_arxiv_v1B.0.72.tar.gz` | `f0c354fe998aa540550e8bab100e184c` | CLEAN (FROZEN) |
+| P2  | `paper2_arxiv_v1.7.67.tar.gz`   | `a5d0befc5f4b707943c1dbfd6a1d5084` | CLEAN |
+| P3  | `paper3_arxiv_v3.1.110.tar.gz`  | `2beb013cecccf27cb342d1b8545e0942` | CLEAN |
 | P4  | `paper4_arxiv_v1.0.188.tar.gz`  | `9ec878204f68aa7fb3131fb1d52e284e` | CLEAN (FROZEN) |
-| P5  | `paper5_arxiv_v0.1.78-2026-06-13.tar.gz` | `29fe43a538d81a72fbdaaf9cee6d6e2b` | CLEAN |
+| P5  | `paper5_arxiv_v0.1.79-2026-06-13.tar.gz` | `df636e2ed710bdd49b55d6b720571da4` | CLEAN |
 
-Source PDF md5s (8-char) verified against canonical source files: dcadf364 / 5a3c98e9 / b8cb9a4c / 7b8ad3d3 / c47abc18 / 5393bd48 — all PASS. EXT11 tarballs backed up with `.ext11-backup` suffix.
+Source PDF md5s (8-char) verified against canonical source files: 6bc1b067 / 5a3c98e9 / e6a36fdd / 9edff2b2 / c47abc18 / 837ec047 — all PASS. EXT13 tarballs preserved in same directory.
 
 ---
 
