@@ -46,18 +46,39 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "EXT14-HARVEST-VERDICT",
+    kind: "external-browser",
+    dateISO: "2026-06-13",
+    timePT: "20:15",
+    title: "EXT14 = 12/18 ACCEPT · P1B NEW 3/3 · Grok 6/6 · Gemini pattern-058 SUCCESS (6/6 formal verdicts) · EXT15 closure wave queued",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "EXT14 harvest complete: 12/18 ACCEPT. P1B achieves 3/3 ACCEPT (ChatGPT+Grok+Gemini) — FROZEN. P4 3/3 ACCEPT confirmed (courtesy). Grok 6/6 ACCEPT (8th consecutive round). Gemini pattern-058 SUCCESS: 6/6 formal verdicts vs 0/6 in EXT12. ChatGPT: P1B+P4 ACCEPT; P1A/P2/P3/P5 MINOR (1-2 local text fixes each). Gemini: P1B+P2+P3+P4 ACCEPT; P1A+P5 MINOR. Pattern-059 new: math-mode subscripts (_{V-Web}) not caught by body-text grep — fix needed in P5 Sec IX B. EXT15 closure wave: 4 papers (~65 min editing). Wall-clock: 75 min total.",
+    keyTakeaways: [
+      "Gemini pattern-058 SUCCESS: 6/6 formal ACCEPT/MINOR verdicts (vs 0/6 synthesis-mode in EXT12)",
+      "P1B v1B.0.72: 3/3 ACCEPT (ChatGPT NEW + Grok + Gemini) — FROZEN alongside P4",
+      "P4 v1.0.188: 3/3 ACCEPT courtesy confirmed — FROZEN",
+      "Grok 6/6 ACCEPT: 8th consecutive round of full-panel ACCEPT across all papers",
+      "Residual: P1A (3 wording), P2 (1 BF paragraph), P3 (1 Table IX footnote), P5 (2 subscripts in Sec IX B)",
+      "pattern-059 established: math-mode subscripts require separate grep after systematic rename",
+    ],
+    links: [
+      { label: "EXT14 truth audit", href: "https://github.com/Hubify-Projects/bigbounce/blob/main/project-context/peer-reviews/EXT14_BATCH_TRUTH_AUDIT.md" },
+      { label: "EXT14 manifest", href: "https://github.com/Hubify-Projects/bigbounce/blob/main/project-context/peer-reviews/EXT14_BROWSER_MANIFEST.md" },
+    ],
+  },
+  {
     id: "EXT14-LAUNCHED",
     kind: "external-browser",
     dateISO: "2026-06-13",
-    timePT: "23:59",
-    title: "EXT14 launched: 18 chats submitted · Gemini pattern-058 first-line applied · target 18/18 ACCEPT → arXiv",
+    timePT: "19:05",
+    title: "EXT14 launched: 18 chats submitted via browser automation · Gemini pattern-058 applied · 18 PDFs verified",
     papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
-    summary: "EXT14: 18 chats submitted across ChatGPT (in-thread delta, same EXT12 URLs) + Grok (in-thread delta) + Gemini (FRESH chats per pattern-058 — MNRAS referee-format first-line prepended to every submission). P4 courtesy re-prompt only (frozen v1.0.188 universal 3/3 ACCEPT). Per-paper delta-prompts carry EXT13 closure summaries. Harvest ETA ≥30 min from last submission.",
+    summary: "EXT14: 18 chats submitted via gstack /browse browser automation. ChatGPT 6/6 in-thread delta + Grok 6/6 in-thread delta + Gemini 6/6 FRESH chats with pattern-058 MNRAS referee-format first-line. All 6 PDFs md5-verified before submission. Gemini URLs recorded: P1A aa25212ca235372a / P1B adaf8c2b8c0edac7 / P2 3c22ddf5db09caba / P3 5f9dae881ca1473f / P4 eb88f5cfe0abb101 / P5 6cdcbf424f466ca2.",
     keyTakeaways: [
-      "Gemini pattern-058 fix applied: every Gemini chat opened fresh with 'Produce a referee report in MNRAS format with Recommendation: ACCEPT / MINOR REVISIONS / MAJOR REVISIONS as the first line of your reply.'",
+      "Gemini pattern-058 fix applied: every Gemini chat opened fresh with MNRAS referee-format first-line",
       "ChatGPT and Grok: in-thread delta-prompts on same EXT12 thread URLs — continuity of context maintained",
       "P4 v1.0.188 FROZEN: EXT14 re-prompt is courtesy confirmation; no changes since EXT12 universal 3/3 ACCEPT",
-      "18-chat manifest logged at project-context/peer-reviews/EXT14_BROWSER_MANIFEST.md",
+      "All 18 PDF uploads confirmed; Grok P2 required re-submission after page reload during heavy-model inference",
     ],
     links: [
       { label: "EXT14 manifest", href: "https://github.com/Hubify-Projects/bigbounce/blob/main/project-context/peer-reviews/EXT14_BROWSER_MANIFEST.md" },

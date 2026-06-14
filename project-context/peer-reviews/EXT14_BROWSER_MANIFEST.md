@@ -151,12 +151,12 @@ Model/effort: **Pro Extended**
 
 | Paper | PDF filename | PDF md5 (prefix) | Chat URL (SAME as EXT12/EXT13) | Submitted (PDT) | Harvest | Verdict |
 |-------|-------------|---------|----------|-----------------|---------|---------|
-| P1A | `paper1a_ech_nogo_v1A.0.75.pdf` | `dcadf364` | [link](https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a2dc597-d61c-83e8-ac93-8f3bf7f139fb) | 2026-06-13 ~23:05 PT | TBD | TBD |
-| P1B | `paper1b_mcmc_companion_v1B.0.72.pdf` | `5a3c98e9` | [link](https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a2dc5cf-db00-83e8-b824-21b626a0d9ab) | 2026-06-13 ~23:07 PT | TBD | TBD |
-| P2  | `paper2_fnl_forecast_v1.7.66.pdf` | `b8cb9a4c` | [link](https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a2dc5f2-5e8c-83e8-9318-b7aefa847ee0) | 2026-06-13 ~23:09 PT | TBD | TBD |
-| P3  | `paper3_anomaly_catalog_v3.1.109.pdf` | `7b8ad3d3` | [link](https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a2dc617-2480-83e8-bf48-cc78a7bce891) | 2026-06-13 ~23:11 PT | TBD | TBD |
-| P4  | `chirality_catalog_paper_v1.0.188.pdf` | `c47abc18` | [link](https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a2dc65e-2488-83e8-90f8-fcacbf9d4378) | 2026-06-13 ~23:13 PT | TBD | TBD |
-| P5  | `p5_desi_chirality_v0.1.78-2026-06-13.pdf` | `5393bd48` | [link](https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a2dc684-5918-83e8-b53e-28fde5fca69a) | 2026-06-13 ~23:15 PT | TBD | TBD |
+| P1A | `paper1a_ech_nogo_v1A.0.75.pdf` | `dcadf364` | [link](https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a2dc597-d61c-83e8-ac93-8f3bf7f139fb) | 2026-06-13 ~19:05 PT | TBD | TBD |
+| P1B | `paper1b_mcmc_companion_v1B.0.72.pdf` | `5a3c98e9` | [link](https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a2dc5cf-db00-83e8-b824-21b626a0d9ab) | 2026-06-13 ~19:07 PT | TBD | TBD |
+| P2  | `paper2_fnl_forecast_v1.7.66.pdf` | `b8cb9a4c` | [link](https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a2dc5f2-5e8c-83e8-9318-b7aefa847ee0) | 2026-06-13 ~19:09 PT | TBD | TBD |
+| P3  | `paper3_anomaly_catalog_v3.1.109.pdf` | `7b8ad3d3` | [link](https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a2dc617-2480-83e8-bf48-cc78a7bce891) | 2026-06-13 ~19:11 PT | TBD | TBD |
+| P4  | `chirality_catalog_paper_v1.0.188.pdf` | `c47abc18` | [link](https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a2dc65e-2488-83e8-90f8-fcacbf9d4378) | 2026-06-13 ~19:12 PT | TBD | TBD |
+| P5  | `p5_desi_chirality_v0.1.78-2026-06-13.pdf` | `5393bd48` | [link](https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a2dc684-5918-83e8-b53e-28fde5fca69a) | 2026-06-13 ~19:14 PT | TBD | TBD |
 
 ### Grok — BigBounce-Papers Project (`/project/e6c9ce77-4f86-4d94-b440-1062a78171c1`)
 Model/effort: **Heavy**
@@ -177,12 +177,12 @@ Verify: model selector = Gemini 2.5 Flash/Thinking; attachment chip shows correc
 
 | Paper | PDF filename | PDF md5 (prefix) | NEW Chat URL (fresh) | Submitted (PDT) | Pattern-058 applied | Harvest | Verdict |
 |-------|-------------|---------|----------|-----------------|---------------------|---------|---------|
-| P1A | `paper1a_ech_nogo_v1A.0.75.pdf` | `dcadf364` | TBD — fresh chat opened | 2026-06-13 ~23:30 PT | ✅ MNRAS first-line | TBD | TBD |
-| P1B | `paper1b_mcmc_companion_v1B.0.72.pdf` | `5a3c98e9` | TBD — fresh chat opened | 2026-06-13 ~23:32 PT | ✅ MNRAS first-line | TBD | TBD |
-| P2  | `paper2_fnl_forecast_v1.7.66.pdf` | `b8cb9a4c` | TBD — fresh chat opened | 2026-06-13 ~23:34 PT | ✅ MNRAS first-line | TBD | TBD |
-| P3  | `paper3_anomaly_catalog_v3.1.109.pdf` | `7b8ad3d3` | TBD — fresh chat opened | 2026-06-13 ~23:36 PT | ✅ MNRAS first-line | TBD | TBD |
-| P4  | `chirality_catalog_paper_v1.0.188.pdf` | `c47abc18` | TBD — fresh chat opened | 2026-06-13 ~23:38 PT | ✅ MNRAS first-line | TBD | TBD |
-| P5  | `p5_desi_chirality_v0.1.78-2026-06-13.pdf` | `5393bd48` | TBD — fresh chat opened | 2026-06-13 ~23:40 PT | ✅ MNRAS first-line | TBD | TBD |
+| P1A | `paper1a_ech_nogo_v1A.0.75.pdf` | `dcadf364` | [link](https://gemini.google.com/u/0/app/aa25212ca235372a) | 2026-06-13 ~19:18 PT | ✅ MNRAS first-line | TBD | TBD |
+| P1B | `paper1b_mcmc_companion_v1B.0.72.pdf` | `5a3c98e9` | [link](https://gemini.google.com/u/0/app/adaf8c2b8c0edac7) | 2026-06-13 ~19:20 PT | ✅ MNRAS first-line | TBD | TBD |
+| P2  | `paper2_fnl_forecast_v1.7.66.pdf` | `b8cb9a4c` | [link](https://gemini.google.com/u/0/app/3c22ddf5db09caba) | 2026-06-13 ~19:22 PT | ✅ MNRAS first-line | TBD | TBD |
+| P3  | `paper3_anomaly_catalog_v3.1.109.pdf` | `7b8ad3d3` | [link](https://gemini.google.com/u/0/app/5f9dae881ca1473f) | 2026-06-13 ~19:23 PT | ✅ MNRAS first-line | TBD | TBD |
+| P4  | `chirality_catalog_paper_v1.0.188.pdf` | `c47abc18` | [link](https://gemini.google.com/u/0/app/eb88f5cfe0abb101) | 2026-06-13 ~19:24 PT | ✅ MNRAS first-line | TBD | TBD |
+| P5  | `p5_desi_chirality_v0.1.78-2026-06-13.pdf` | `5393bd48` | [link](https://gemini.google.com/u/0/app/6cdcbf424f466ca2) | 2026-06-13 ~19:26 PT | ✅ MNRAS first-line | TBD | TBD |
 
 ---
 
