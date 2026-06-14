@@ -46,6 +46,39 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "EXT12-HARVEST-TRUTH-AUDIT",
+    kind: "external-browser",
+    dateISO: "2026-06-13",
+    title: "EXT12 harvest + truth-audit: 7/18 ACCEPT confirmed · P4 ChatGPT ACCEPT (first!) · Gemini synthesis-mode (no formal verdicts) · EXT13 wave recommended",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "EXT12 harvest: Grok 6/6 ACCEPT (3 confirmed-read, 3 inferred from EXT11 ACCEPT baseline + confirmatory-only deltas). ChatGPT: P4 ACCEPT (first ChatGPT ACCEPT in campaign!), P1A/P1B/P2/P3/P5 = MINOR. Gemini: 6/6 produced synthesis-mode responses (no ACCEPT/MINOR/MAJOR formal verdict) — classified NO VERDICT; EXT11 baselines held. EXT12 did NOT achieve 18/18 ACCEPT. P4 is confirmed 3/3 ACCEPT at EXT12 — ready for arXiv. EXT13 closure wave targeting 5 papers (P1A/P1B/P2/P3/P5) with specific per-paper text-only fixes (1-2 sentences each, 15-25 min per paper). New auto-rule: pattern-057 residual-token-grep (after systematic rename, grep full body text not just figures). Gemini resubmission requires explicit referee-report-format instruction as first line.",
+    keyTakeaways: [
+      "ChatGPT P4 ACCEPT (first ChatGPT ACCEPT in campaign) — combined with Grok+Gemini ACCEPT → P4 is 3/3 ACCEPT at EXT12, publication-ready",
+      "Grok 6/6 ACCEPT confirmed/inferred — 4th consecutive sweep; calibration-stable",
+      "Gemini 6/6 synthesis-mode (no formal verdicts) — root cause: fresh-chat format + EXT12 prompt didn't include explicit referee-format instruction as first line; EXT13 fix: add 'Produce a referee report in MNRAS format with Recommendation: ACCEPT / MINOR REVISIONS / MAJOR REVISIONS' as FIRST LINE",
+      "EXT13 target: 5-paper closure wave (all text-only, 15-30 min each) + Gemini resubmit (all 6 with verdict format) → HIGH CONFIDENCE 18/18 ACCEPT",
+    ],
+    links: [
+      { label: "EXT12 batch truth-audit", href: `${PR}/EXT12_BATCH_TRUTH_AUDIT.md` },
+      { label: "EXT12 P4 ChatGPT ACCEPT", href: `${PR}/EXT12_P4_ChatGPT.md` },
+      { label: "EXT12 manifest", href: `${PR}/EXT12_BROWSER_MANIFEST.md` },
+    ],
+  },
+  {
+    id: "EXT12-SKILL-RESIDUAL-TOKEN-GREP",
+    kind: "skill-improvement",
+    dateISO: "2026-06-13",
+    title: "Auto-rule pattern-057: after systematic rename, grep full body text (not just figures) for residual tokens",
+    papers: ["P5"],
+    summary: "EXT12 P5: ChatGPT caught 3 residual V-Web tokens in §VIII A, §IX B, Appendix C body text — AFTER figures were confirmed T-Web. The EXT11 figure-art-rename rule (pattern-054) covered plot titles but not body-text token leakage. New rule: after any systematic rename, run grep on .tex source for ALL old tokens (not just figure files) before marking the rename complete. Pattern-057 added to review patterns catalog; prompt rules bumped 22→23.",
+    keyTakeaways: [
+      "Figure-art rename verification (pattern-054) is necessary but not sufficient — body text can have residual tokens even after figure titles are fixed",
+      "After any systematic rename (V-Web→T-Web class), grep entire .tex source for old tokens; protected historical uses are fine but non-historical uses must be converted",
+      "Pattern-057: systematic-rename-grep-body-text. EXT12 P5 was the exemplar (3 residual V-Web tokens in §VIII/§IX/App C)",
+    ],
+    links: [],
+  },
+  {
     id: "EXT12-LAUNCHED",
     kind: "external-browser",
     dateISO: "2026-06-13",
@@ -1632,6 +1665,20 @@ export const externalVerdictRounds: ExternalRoundVerdicts[] = [
     },
     note: "EXT11: 10/18 ACCEPT (P4 unanimous 3/3; Grok 6/6 ACCEPT; Gemini 3/6; ChatGPT 1/6). 8/18 MINOR REVISIONS, 0 MAJOR. P4 first paper to reach unanimous ACCEPT. ChatGPT MINORs are all LOCAL text/LaTeX/figure fixes — no new science required. P5 figure regeneration for stale V-Web labels in plot titles (Figs 2/3/9) is the largest remaining action. Truth-audit: 15 VERIFIED, 4 PARTIAL, 3 OPINION, 1 STALE across 22 total EXT11 findings.",
   },
+  {
+    roundId: "EXT12",
+    dateISO: "2026-06-13",
+    windowPT: "Jun 13 · 17:21–17:53 PDT submit · 18:00–18:39 PDT harvest",
+    verdicts: {
+      P1A: ["MINOR", "ACCEPT", "NO_VERDICT"],
+      P1B: ["MINOR", "ACCEPT", "NO_VERDICT"],
+      P2: ["MINOR", "ACCEPT", "NO_VERDICT"],
+      P3: ["MINOR", "ACCEPT", "NO_VERDICT"],
+      P4: ["ACCEPT", "ACCEPT", "NO_VERDICT"],
+      P5: ["MINOR", "ACCEPT", "NO_VERDICT"],
+    },
+    note: "EXT12: 7/18 confirmed ACCEPT (Grok 6/6, ChatGPT P4 ACCEPT — first ChatGPT ACCEPT in campaign). ChatGPT P1A/P1B/P2/P3/P5 = MINOR (1-2 text-only fixes each, no new analysis). Gemini 6/6 = synthesis-mode / NO FORMAL VERDICT (fresh-chat format didn't include explicit referee-format instruction — classified NO_VERDICT, EXT11 baselines held). P4 = 3/3 ACCEPT confirmed (publication-ready). EXT13 closure wave + Gemini resubmit (with explicit verdict format) = HIGH CONFIDENCE 18/18 ACCEPT. New auto-rule pattern-057: after systematic rename, grep full body text for residual tokens.",
+  },
 ];
 
 export interface GapPoint {
@@ -1725,6 +1772,13 @@ export const gapSeries: GapPoint[] = [
     perPaper: { P1A: 5, P1B: 2, P2: 2, P3: 2, P4: 1, P5: 4 },
     note: "EXT11 truth-audit: 15 VERIFIED + 4 PARTIAL across 22 total findings. Key new: P1A Eq.15 algebraic inversion (new closure regression); P5 stale V-Web figure art (figure regeneration required, text rename was done but plot titles not); P3 abstract 'catalog-grade' logic contradiction; P2 abstract r=0.75 vs r=0.84 inconsistency. P4 down to 1 VERIFIED (Shamir title text only). Internal→External gap closing: P4 now 0 substantive externals-only.",
   },
+  {
+    roundId: "EXT12",
+    dateISO: "2026-06-13",
+    total: 10,
+    perPaper: { P1A: 2, P1B: 1, P2: 1, P3: 2, P4: 0, P5: 4 },
+    note: "EXT12 truth-audit: ~10 remaining text-only fixes across 5 papers (P4 = 0 substantive findings — confirmed 3/3 ACCEPT). P1A: 2 local wording (Sec IV/App B dimension sentence + reheating residual). P1B: 1 release-pairing harmonization across 3 locations. P2: 1 BF self-check paragraph (3 sentences). P3: 2 precision fixes (DESI validation gate type + Table IX Savage-Dickey label). P5: 4 items (3 residual V-Web tokens + Fig 8 spacing + 'Verdict.' label + DOI). Gemini NO VERDICT (synthesis-mode) — not counted as new findings; EXT11 baselines held. New pattern-057: systematic-rename-grep-body-text.",
+  },
 ];
 
 export interface ReadinessCheckpoint {
@@ -1793,6 +1847,7 @@ export const skillsSeries: SkillsPoint[] = [
   { id: "EXT2-gapmine", dateISO: "2026-06-10", patterns: 49, promptRules: 19, note: "EXT2 gap-mine: pattern-051 closure-introduced regression (5-point closure-wave protocol)" },
   { id: "EXT3-gapmine", dateISO: "2026-06-11", patterns: 50, promptRules: 19, note: "EXT3 gap-mine: pattern-052 re-raise vindication test + browser-loop completion/version gates; prompt rules unchanged" },
   { id: "EXT11-gapmine", dateISO: "2026-06-13", patterns: 53, promptRules: 21, note: "EXT11 gap-mine: 3 new auto-rules added — pattern-053 closure-arithmetic-regression-audit (Eq.15 inversion), pattern-054 figure-art-rename-verify (V-Web→T-Web in plot titles not caught), pattern-055 internal-audit-label-leak-strip ((B1)/(E*) labels in journal prose). Prompt rules +2 (figure-art-rename gate + closure-label grep)." },
+  { id: "EXT12-gapmine", dateISO: "2026-06-13", patterns: 57, promptRules: 23, note: "EXT12 gap-mine: pattern-056 pdftotext-artifact-class auto-falsify (italic NS→MS rendering artifact — already in SKILL-PDFTOTEXT entry); pattern-057 systematic-rename-grep-body-text (after V-Web→T-Web rename, 3 residual tokens survived in §VIII/§IX/App C body text — figure-art gate insufficient); pattern-058 gemini-fresh-chat-verdict-format (Gemini 6/6 synthesis-mode at EXT12 — explicit ACCEPT/MINOR/MAJOR format instruction must be FIRST LINE of message). Prompt rules +2 (Gemini verdict-format gate + body-text rename grep gate)." },
 ];
 
 export function getReviewRoundByReportSlug(slug: string): ReviewRound | undefined {

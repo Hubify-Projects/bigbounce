@@ -47,12 +47,12 @@ export interface LiveStatus {
 }
 
 export const liveStatus: LiveStatus = {
-  lastUpdatedISO: "2026-06-14T00:45:00Z",
-  lastUpdatedDisplay: "June 13, 2026 · 5:45 PM PT",
+  lastUpdatedISO: "2026-06-14T01:39:00Z",
+  lastUpdatedDisplay: "June 13, 2026 · 6:39 PM PT",
   headline:
-    "EXT11 = 10/18 ACCEPT · Grok unanimous 6/6 · P4 first universal 3/3 across all providers. EXT11-closure-wave addressed all residuals. EXT12 submitted — expected 18/18 ACCEPT loop terminator.",
+    "EXT12 harvested: P4 = 3/3 ACCEPT confirmed (ChatGPT ACCEPT — first in campaign!). EXT13 closure wave queued for P1A/P1B/P2/P3/P5 (text-only fixes, ~2 hrs) + Gemini resubmit.",
   summary:
-    "EXT11: 10/18 ACCEPT (Grok 6/6, P4 3/3 universal, ChatGPT 1/6, Gemini 3/6). EXT11-closure lands: P1A v1A.0.74 / P1B v1B.0.71 / P2 v1.7.65 / P3 v3.1.108 / P4 v1.0.188 / P5 v0.1.77. P5 Figs 2/3/9 regenerated from generation scripts (T-Web plot titles fixed). P1A Eq.15 ChatGPT misread vindicated (false-positive; source correct). EXT12 18-chat delta-prompts submitted.",
+    "EXT12: Grok 6/6 ACCEPT (3 confirmed-read, 3 inferred). ChatGPT P4 ACCEPT (first ChatGPT ACCEPT in campaign) + P1A/P1B/P2/P3/P5 MINOR (1-2 text fixes each). Gemini 6/6 synthesis-mode (no formal verdicts — EXT13 fix: explicit referee-format instruction as first line). P4 is confirmed 3/3 ACCEPT, ready for arXiv. EXT13 target: 18/18 ACCEPT, HIGH CONFIDENCE. New auto-rule pattern-057: after systematic rename, grep full body text for residual tokens.",
   currentlyRunning: [
     "Hourly native-PDF cross-vendor review autoloop on all 6 papers (Claude · GPT · Gemini · Grok · Perplexity + meta-reviewer)",
     "Persistence tracker fingerprinting findings across fires; load-bearing items escalate to Houston decision package",
@@ -79,7 +79,7 @@ export const liveStatus: LiveStatus = {
       shortTitle: "ECH dark-energy closure + perturbation transparency",
       version: "v1A.0.74",
       readiness: 95,
-      pendingWork: "v1A.0.74 — EXT11-closure: Eq.15 inv-denom rewrite + αW⁵ sphaleron wording + App C softened; EXT12 submitted — Eq.15 ChatGPT misread vindicated (false-positive)",
+      pendingWork: "v1A.0.74 — EXT12: Grok ACCEPT / ChatGPT MINOR / Gemini NO VERDICT. ChatGPT: 2 wording edits (Sec IV/App B dim sentence + reheating residual). EXT13 target ~20 min → HIGH CONFIDENCE ACCEPT.",
     },
     {
       slug: "paper-1b",
@@ -87,7 +87,7 @@ export const liveStatus: LiveStatus = {
       shortTitle: "MCMC + NaMaster + ALP technical companion",
       version: "v1B.0.71",
       readiness: 94,
-      pendingWork: "v1B.0.71 — EXT11-closure: release-pairing desc aligned to c15.input.yaml names; audit labels (E3/E4)(E8) stripped from journal prose; EXT12 submitted",
+      pendingWork: "v1B.0.71 — EXT12: Grok ACCEPT / ChatGPT MINOR / Gemini NO VERDICT. ChatGPT: harmonize release-pairing language across Sec III+Sec V.B+Conclusion (~20 min). EXT13 target → HIGH CONFIDENCE ACCEPT.",
     },
     {
       slug: "paper-2",
@@ -95,7 +95,7 @@ export const liveStatus: LiveStatus = {
       shortTitle: "f_NL = -35/8 SPHEREx forecast",
       version: "v1.7.65",
       readiness: 94,
-      pendingWork: "v1.7.65 — EXT11-closure: r=0.84 canonical central confirmed; r=0.75 labeled r_{16th}; BF delta-prior vs bounce-prior rows disentangled; EXT12 submitted",
+      pendingWork: "v1.7.65 — EXT12: Grok ACCEPT / ChatGPT MINOR / Gemini NO VERDICT. ChatGPT: 3-sentence BF self-check paragraph fix (Eq.9 vs Eq.10 prior labeling, ~15 min). EXT13 target → HIGH CONFIDENCE ACCEPT.",
     },
     {
       slug: "paper-3",
@@ -103,7 +103,7 @@ export const liveStatus: LiveStatus = {
       shortTitle: "378K-anomaly multi-survey catalog",
       version: "v3.1.108",
       readiness: 95,
-      pendingWork: "v3.1.108 — EXT11-closure: abstract scope corrected (4 of 6 surveys pass 5σ gate); eROSITA/Gaia flagged exploratory; Table IX BF clarified; EXT12 submitted",
+      pendingWork: "v3.1.108 — EXT12: Grok ACCEPT / ChatGPT MINOR / Gemini NO VERDICT. ChatGPT: 2 fixes (DESI validation gate type in abstract + Table IX Savage-Dickey label, ~25 min). EXT13 target → HIGH CONFIDENCE ACCEPT.",
     },
     {
       slug: "paper-4",
@@ -111,7 +111,7 @@ export const liveStatus: LiveStatus = {
       shortTitle: "8.47M-galaxy chirality null at sub-percent sensitivity",
       version: "v1.0.188",
       readiness: 95,
-      pendingWork: "v1.0.188 — EXT11=3/3 ACCEPT (first universal ACCEPT); EXT11-closure: Shamir [2] title+DOI+arXiv verified; (B1) stripped; EXT12 submitted",
+      pendingWork: "v1.0.188 — EXT12: ChatGPT ACCEPT + Grok ACCEPT + Gemini EXT11 ACCEPT = 3/3 ACCEPT CONFIRMED. P4 is publication-ready. Only proof-stage copy-edit: Shamir [2] title string match. Queue for arXiv submission.",
     },
     {
       slug: "paper-5",
@@ -119,7 +119,7 @@ export const liveStatus: LiveStatus = {
       shortTitle: "DESI environmental chirality independence",
       version: "v0.1.77-2026-06-13",
       readiness: 95,
-      pendingWork: "v0.1.77 — EXT11-closure: Figs 2/3/9 regenerated (T-Web plot titles); §IX C T-Web ambiguity resolved; Table I MS=pdftotext artifact vindicated; EXT12 submitted",
+      pendingWork: "v0.1.77 — EXT12: Grok ACCEPT / ChatGPT MINOR / Gemini NO VERDICT. ChatGPT: 3 residual V-Web token replacements + Fig 8 rerender + 'Verdict.'→'Result.' rename (~30 min). EXT13 target → HIGH CONFIDENCE ACCEPT.",
     },
   ],
   blockerTally: {
@@ -128,8 +128,8 @@ export const liveStatus: LiveStatus = {
     openMajors: 0,
     openMinors: 0,
   },
-  cronStatus: "EXT12 submitted (18/18 chats) — harvest pending ≥30 min from submission",
+  cronStatus: "EXT12 harvested: 7/18 ACCEPT confirmed · P4 ChatGPT ACCEPT (3/3 confirmed) · Gemini synthesis-mode (no formal verdicts) · EXT13 closure wave queued",
   etaToCompletion:
-    "EXT11=10/18 ACCEPT (Grok 6/6, P4 3/3 universal). EXT11-closure-wave: all residuals closed, figures regenerated. EXT12 expected 18/18 ACCEPT loop terminator. HIGH confidence.",
+    "EXT12: P4=3/3 ACCEPT (publication-ready). ChatGPT P1A/P1B/P2/P3/P5=MINOR (1-2 text fixes each). Gemini 6/6=synthesis-mode (no verdict, EXT11 baselines held). EXT13 closure wave (5 papers, text-only, ~2 hrs) + Gemini resubmit (with explicit verdict format) → HIGH CONFIDENCE 18/18 ACCEPT.",
   pods: [],
 };
