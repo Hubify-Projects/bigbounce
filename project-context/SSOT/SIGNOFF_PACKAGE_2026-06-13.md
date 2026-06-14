@@ -2,20 +2,20 @@
 
 **Decision document for the 6-paper arXiv publish push.** Numbers trace to committed sources: EXT7_BROWSER_MANIFEST.md · R37conf_BATCH_TRUTH_AUDIT.md · SSOT/index.md · SIGNOFF_PACKAGE_2026-06-11.md.
 
-**UPDATED 2026-06-13 (EXT11-closure-wave):** EXT11 verdict = 10/18 ACCEPT (Grok 6/6, P4 universal 3/3, ChatGPT 1/6, Gemini 3/6). EXT11-closure-wave addresses every VERIFIED-OPEN item from EXT11_BATCH_TRUTH_AUDIT.md. All 6 tarballs rebuilt to EXT11-closure versions, standalone-compiled, and staged at `project-context/SSOT/arxiv_tarballs/`. EXT12 submitted (18 chats). Full coordinated-drop runbook at `project-context/SSOT/ARXIV_SUBMISSION_RUNBOOK.md`.
+**UPDATED 2026-06-13 (EXT13-closure-wave + EXT14 launch):** EXT12 verdict = 7/18 ACCEPT (Grok 6/6, P4 universal 3/3 including ChatGPT FIRST-EVER ACCEPT, Gemini pattern-058 fix). EXT13-closure-wave addresses every VERIFIED-OPEN EXT12 item from 5 papers. P4 FROZEN at v1.0.188. EXT14 launched — 18 chats submitted with Gemini pattern-058 fix (MNRAS referee-format first-line). HIGH CONFIDENCE 18/18 ACCEPT → arXiv coordinated drop. Full runbook at `project-context/SSOT/ARXIV_SUBMISSION_RUNBOOK.md`.
 
-### EXT11-Closure-Wave Tarball MD5s (current submission versions)
+### EXT13-Closure-Wave PDF MD5s (current live versions)
 
-| Paper | Version | Tarball MD5 | PDF MD5 | Pages |
-|-------|---------|-------------|---------|-------|
-| P1A | v1A.0.74 | `312fa42bd765a26a7eb8852bceecda1c` | `3871b587` | 28 |
-| P1B | v1B.0.71 | `1d9e622a8894a277086749dadec1ad75` | `aa1a694e` | 21 |
-| P2  | v1.7.65  | `629e54234f8cbb9ac7b30daa25e4b421` | `fc42f393` | 28 |
-| P3  | v3.1.108 | `dfa3dc7f6e96bbe302ea9024f3e94864` | `72bd3e5b` | 29 |
-| P4  | v1.0.188 | `1a9114093416c44396279a26c559c241` | `c47abc18` | 23 |
-| P5  | v0.1.77-2026-06-13 | `03fd5a96936a31240015872df0aa681e` | `e5a3999a` | 32 |
+| Paper | Version | PDF MD5 (prefix 8) | Pages | Status |
+|-------|---------|---------------------|-------|--------|
+| P1A | v1A.0.75 | `dcadf364` | 29 | EXT13-closure; EXT14 in-flight |
+| P1B | v1B.0.72 | `5a3c98e9` | 21 | EXT13-closure; EXT14 in-flight |
+| P2  | v1.7.66  | `b8cb9a4c` | 29 | EXT13-closure; EXT14 in-flight |
+| P3  | v3.1.109 | `7b8ad3d3` | 29 | EXT13-closure; EXT14 in-flight |
+| P4  | v1.0.188 | `c47abc18` | 23 | FROZEN — universal 3/3 ACCEPT (ChatGPT first-ever ACCEPT in campaign) |
+| P5  | v0.1.78-2026-06-13 | `5393bd48` | 32 | EXT13-closure; EXT14 in-flight |
 
-All compiled via `tools/build_arxiv_tarball.sh`: errors=0, undef=0 on all 6. All source→mirror PDF md5 cross-checks PASSED. P4 = first paper to achieve universal 3/3 ACCEPT across all providers at EXT11. EXT12 submitted — expected 18/18 ACCEPT loop terminator. git SHA at build: EXT11-closure-wave commit (this bundle).
+All source→mirror PDF md5 cross-checks PASSED. Convex bump: 6/6 OK. tsc: CLEAN. EXT14 manifest: project-context/peer-reviews/EXT14_BROWSER_MANIFEST.md. Harvest ETA ≥30 min from last submission.
 
 ---
 

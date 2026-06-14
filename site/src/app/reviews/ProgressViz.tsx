@@ -19,6 +19,7 @@ const VERDICT_COLOR: Record<Verdict, string> = {
   MAJOR: "var(--warn)",
   MINOR: "color-mix(in srgb, var(--warn) 35%, var(--success))",
   ACCEPT: "var(--success)",
+  NO_VERDICT: "var(--text-muted)",
 };
 
 const VERDICT_SHORT: Record<Verdict, string> = {
@@ -26,6 +27,7 @@ const VERDICT_SHORT: Record<Verdict, string> = {
   MAJOR: "M",
   MINOR: "m",
   ACCEPT: "A",
+  NO_VERDICT: "—",
 };
 
 const MONO = "var(--font-mono-stack)";

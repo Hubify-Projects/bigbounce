@@ -46,6 +46,59 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "EXT14-LAUNCHED",
+    kind: "external-browser",
+    dateISO: "2026-06-13",
+    timePT: "23:59",
+    title: "EXT14 launched: 18 chats submitted · Gemini pattern-058 first-line applied · target 18/18 ACCEPT → arXiv",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "EXT14: 18 chats submitted across ChatGPT (in-thread delta, same EXT12 URLs) + Grok (in-thread delta) + Gemini (FRESH chats per pattern-058 — MNRAS referee-format first-line prepended to every submission). P4 courtesy re-prompt only (frozen v1.0.188 universal 3/3 ACCEPT). Per-paper delta-prompts carry EXT13 closure summaries. Harvest ETA ≥30 min from last submission.",
+    keyTakeaways: [
+      "Gemini pattern-058 fix applied: every Gemini chat opened fresh with 'Produce a referee report in MNRAS format with Recommendation: ACCEPT / MINOR REVISIONS / MAJOR REVISIONS as the first line of your reply.'",
+      "ChatGPT and Grok: in-thread delta-prompts on same EXT12 thread URLs — continuity of context maintained",
+      "P4 v1.0.188 FROZEN: EXT14 re-prompt is courtesy confirmation; no changes since EXT12 universal 3/3 ACCEPT",
+      "18-chat manifest logged at project-context/peer-reviews/EXT14_BROWSER_MANIFEST.md",
+    ],
+    links: [
+      { label: "EXT14 manifest", href: "https://github.com/Hubify-Projects/bigbounce/blob/main/project-context/peer-reviews/EXT14_BROWSER_MANIFEST.md" },
+    ],
+  },
+  {
+    id: "EXT13-CLOSURE-WAVE",
+    kind: "ext-closure",
+    dateISO: "2026-06-13",
+    timePT: "23:58",
+    title: "EXT13-closure-wave: 5 papers (P4 frozen universal ACCEPT) · pattern-057 V-Web residual cleanup + pattern-058 Gemini verdict-line",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "EXT13-closure addresses all EXT12 ChatGPT MINOR findings across 5 papers. P1A v1A.0.75: Sec IV/App B dim bookkeeping + reheating residual (local-operator-promotion). P1B v1B.0.72: release-pairing harmonized Sec III+V.B+Conclusion (c15 yaml names; 0.04σ ΔNeff empirical bound). P2 v1.7.66: BF self-check 3-sentence rewrite disentangling delta-prior vs bounce-prior vs required equation. P3 v3.1.109: abstract DESI gate type explicit (5-fold CV Jaccard + native-retrain OOD Jaccard) + Table IX BF Savage-Dickey tablenote (8 sites). P5 v0.1.78: pattern-057 body V-Web residuals closed (4 sites) + Verdict.→Result. + Fig 8 clean. P4 v1.0.188 FROZEN — universal 3/3 ACCEPT at EXT12 (ChatGPT first-ever ACCEPT in campaign).",
+    keyTakeaways: [
+      "P4 = universal 3/3 ACCEPT (ChatGPT + Grok + Gemini) — first paper in campaign to clear all three providers at once; publication-ready",
+      "EXT12 auto-falsify vindications: Eq.15 (false-positive ChatGPT misread) + T-Web fig titles (EXT11 regenerated) + MS italic (pdftotext artifact pattern-056)",
+      "pattern-057 closed: post-rename body-text sweep is now mandatory last step of any rename closure agent",
+      "pattern-058 encoded: Gemini fresh-chat MNRAS referee-format first-line added to all future external submissions",
+    ],
+    links: [],
+  },
+  {
+    id: "EXT12-VERDICT-LADDER",
+    kind: "external-browser",
+    dateISO: "2026-06-13",
+    timePT: "23:57",
+    title: "EXT12 = 7/18 ACCEPT · P4 first universal 3/3 ACCEPT · Grok 6/6 · Gemini fresh-chat anomaly (pattern-058)",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "EXT12 harvest: 7/18 ACCEPT confirmed. P4 v1.0.188 = universal 3/3 ACCEPT (ChatGPT FIRST-EVER ACCEPT in campaign + Grok ACCEPT + Gemini EXT11 ACCEPT). Grok 6/6 ACCEPT (calibration-stable). ChatGPT: P4 ACCEPT + P1A/P1B/P2/P3/P5 MINOR (1-2 text fixes each). Gemini: 6/6 synthesis-mode responses — no formal ACCEPT/MINOR/MAJOR verdict line (root cause: prompt lacked explicit referee-format instruction → pattern-058 encoded). Auto-falsify vindications this round: Eq.15 second-form (algebraically correct, ChatGPT misread false-positive); T-Web fig titles (regenerated EXT11 — no V-Web); MS italic (pdftotext artifact pattern-056).",
+    keyTakeaways: [
+      "P4 first universal 3/3 ACCEPT — ChatGPT ACCEPT (first ever in campaign), Grok ACCEPT, Gemini ACCEPT (EXT11): publication-ready",
+      "Gemini anomaly: 6/6 fresh chats returned synthesis-mode prose with no verdict line — harvest regex missed all 6 (pattern-058 root cause + fix)",
+      "Eq.15 false-positive vindicated: source algebraically correct, ChatGPT misread the inverse-denominator form; auto-falsify working",
+      "EXT13 target: 5-paper text-only closure wave + EXT14 with Gemini pattern-058 fix → HIGH CONFIDENCE 18/18 ACCEPT",
+    ],
+    links: [
+      { label: "EXT12 manifest", href: "https://github.com/Hubify-Projects/bigbounce/blob/main/project-context/peer-reviews/EXT12_BROWSER_MANIFEST.md" },
+      { label: "EXT12 truth audit", href: "https://github.com/Hubify-Projects/bigbounce/blob/main/project-context/peer-reviews/EXT12_BATCH_TRUTH_AUDIT.md" },
+    ],
+  },
+  {
     id: "SKILL-GEMINI-VERDICT-FIRST-LINE",
     kind: "skill-improvement",
     dateISO: "2026-06-13",
@@ -1527,7 +1580,7 @@ export const reviewRounds: ReviewRound[] = [
  * Skills: project-context/review-patterns/ catalog + EXT1/EXT2 gap-mine commits.
  */
 
-export type Verdict = "REJECT" | "MAJOR" | "MINOR" | "ACCEPT";
+export type Verdict = "REJECT" | "MAJOR" | "MINOR" | "ACCEPT" | "NO_VERDICT";
 
 export type ReviewerId = "ChatGPT" | "Grok" | "Gemini";
 

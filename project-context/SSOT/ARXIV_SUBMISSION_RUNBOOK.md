@@ -1,6 +1,6 @@
 # arXiv Submission Runbook — BigBounce 6-Paper Coordinated Drop
-## Status: EXT11-CLOSURE-WAVE COMPLETE | 10/18 ACCEPT (Grok 6/6 · P4 universal 3/3) → EXT12 expected 18/18 ACCEPT
-## Prepared: 2026-06-13 | Updated: EXT11-closure-wave (P1A v1A.0.74 / P1B v1B.0.71 / P2 v1.7.65 / P3 v3.1.108 / P4 v1.0.188 / P5 v0.1.77)
+## Status: EXT13-CLOSURE-WAVE COMPLETE | EXT14 LAUNCHED (18 chats · Gemini pattern-058 fix) → HIGH CONFIDENCE 18/18 ACCEPT → arXiv
+## Prepared: 2026-06-13 | Updated: EXT13-closure-wave (P1A v1A.0.75 / P1B v1B.0.72 / P2 v1.7.66 / P3 v3.1.109 / P4 v1.0.188 FROZEN / P5 v0.1.78)
 
 ---
 
@@ -36,7 +36,8 @@ project-context/SSOT/arxiv_tarballs/
 | P5  | `paper5_arxiv_v0.1.77-2026-06-13.tar.gz` | `03fd5a96936a31240015872df0aa681e` | 32 | CLEAN |
 
 All compiled via `tools/build_arxiv_tarball.sh`: errors=0, undef=0 on each pass.
-EXT11-closure-wave versions (2026-06-13): P1A v1A.0.74 / P1B v1B.0.71 / P2 v1.7.65 / P3 v3.1.108 / P4 v1.0.188 / P5 v0.1.77.
+EXT13-closure-wave versions (2026-06-13): P1A v1A.0.75 / P1B v1B.0.72 / P2 v1.7.66 / P3 v3.1.109 / P4 v1.0.188 (FROZEN) / P5 v0.1.78.
+NOTE: EXT13 PDFs are same compiled binaries as EXT11 tarballs for 5 papers; P4 is frozen. If EXT14 returns 18/18 ACCEPT, rebuild EXT13-version tarballs before arXiv upload.
 These tarballs are the v2 post-patch upload files — cross-citations are still placeholder
 `arXiv:XXXX.XXXXX`; the patching step is in §4 below.
 

@@ -1,68 +1,68 @@
 [
   {
     "paperSlug": "paper-1a",
-    "version": "v1A.0.74",
+    "version": "v1A.0.75",
     "datestamp": "2026-06-13",
-    "texCommit": "EXT11-closure-wave",
+    "texCommit": "EXT13-closure-wave",
     "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1a_ech_nogo.pdf",
-    "pdfMd5": "3871b58706d4b7ccdcb3067cb58538bb",
-    "pdfPages": 28,
-    "sitePdfPath": "/papers/paper1a_ech_nogo_v1A.0.74.pdf",
-    "changelog": "EXT11-closure: 12 ESS findings closed. EXT11=12/12 MINOR (zero MAJORs)."
+    "pdfMd5": "dcadf3642a96eb827a478d6f37ac06ee",
+    "pdfPages": 29,
+    "sitePdfPath": "/papers/paper1a_ech_nogo_v1A.0.75.pdf",
+    "changelog": "EXT13-closure: Sec IV/App B dimensional bookkeeping made consistent via N_tot sentence; reheating residual clarified (local-operator-promotion reading distinguished)."
   },
   {
     "paperSlug": "paper-1b",
-    "version": "v1B.0.71",
+    "version": "v1B.0.72",
     "datestamp": "2026-06-13",
-    "texCommit": "EXT11-closure-wave",
+    "texCommit": "EXT13-closure-wave",
     "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/arxiv/paper1b_mcmc_companion.pdf",
-    "pdfMd5": "aa1a694e8af7864631d1286bbd43bb64",
+    "pdfMd5": "5a3c98e9e10d1882a9973a846aa111e4",
     "pdfPages": 21,
-    "sitePdfPath": "/papers/paper1b_mcmc_companion_v1B.0.71.pdf",
-    "changelog": "EXT11-closure: 12 ESS findings closed. EXT11=12/12 MINOR (zero MAJORs)."
+    "sitePdfPath": "/papers/paper1b_mcmc_companion_v1B.0.72.pdf",
+    "changelog": "EXT13-closure: Release-pairing description harmonized across Sec III + Sec V.B + Conclusion (consistent c15.input.yaml likelihood names; 0.04σ ΔNeff agreement as empirical pairing-bias bound)."
   },
   {
     "paperSlug": "paper-2",
-    "version": "v1.7.65",
+    "version": "v1.7.66",
     "datestamp": "2026-06-13",
-    "texCommit": "EXT11-closure-wave",
+    "texCommit": "EXT13-closure-wave",
     "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/research/focused_paper_source_integration/02_full_draft.pdf",
-    "pdfMd5": "fc42f3939798acae30c01e2098745381",
-    "pdfPages": 28,
-    "sitePdfPath": "/papers/paper2_fnl_forecast_v1.7.65.pdf",
-    "changelog": "EXT11-closure: 12 ESS findings closed. EXT11=12/12 MINOR (zero MAJORs)."
+    "pdfMd5": "b8cb9a4cca8aae9d1cf24079c0e3e3a2",
+    "pdfPages": 29,
+    "sitePdfPath": "/papers/paper2_fnl_forecast_v1.7.66.pdf",
+    "changelog": "EXT13-closure: BF self-check paragraph rewritten — 3 sentences explicitly disentangle Eq.(bf_approx) delta-prior vs Eq.(bf_exact) bounce-prior; delta vs Gaussian rows differ in both prior spec AND required equation."
   },
   {
     "paperSlug": "paper-3",
-    "version": "v3.1.108",
+    "version": "v3.1.109",
     "datestamp": "2026-06-13",
-    "texCommit": "EXT11-closure-wave",
+    "texCommit": "EXT13-closure-wave",
     "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p3_anomaly_engine/paper3_draft.pdf",
-    "pdfMd5": "72bd3e5b6bc133ef0943a0d5c6db1954",
+    "pdfMd5": "7b8ad3d397b454bedcaa79ded5dfebb2",
     "pdfPages": 29,
-    "sitePdfPath": "/papers/paper3_anomaly_catalog_v3.1.108.pdf",
-    "changelog": "EXT11-closure: 12 ESS findings closed. EXT11=12/12 MINOR (zero MAJORs)."
+    "sitePdfPath": "/papers/paper3_anomaly_catalog_v3.1.109.pdf",
+    "changelog": "EXT13-closure: Abstract DESI gate type explicit (5-fold cross-validation Jaccard + native-retrain OOD Jaccard, NOT injection-recovery); Table IX BF columns carry explicit Savage-Dickey density-ratio tablenote (8 sites)."
   },
   {
     "paperSlug": "paper-4",
     "version": "v1.0.188",
     "datestamp": "2026-06-13",
-    "texCommit": "EXT11-closure-wave",
+    "texCommit": "EXT13-closure-wave",
     "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p2_chirality/chirality_catalog_paper.pdf",
     "pdfMd5": "c47abc1893375ba483c6b82df5811915",
     "pdfPages": 23,
     "sitePdfPath": "/papers/chirality_catalog_paper_v1.0.188.pdf",
-    "changelog": "EXT11-closure: 12 ESS findings closed. EXT11=12/12 MINOR (zero MAJORs)."
+    "changelog": "P4 FROZEN at v1.0.188 — universal 3/3 ACCEPT confirmed EXT12 (first ChatGPT ACCEPT in campaign). No changes."
   },
   {
     "paperSlug": "paper-5",
-    "version": "v0.1.77-2026-06-13",
+    "version": "v0.1.78-2026-06-13",
     "datestamp": "2026-06-13",
-    "texCommit": "EXT11-closure-wave",
+    "texCommit": "EXT13-closure-wave",
     "pdfPath": "/Users/houstongolden/Desktop/CODE_2025/bigbounce/pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf",
-    "pdfMd5": "e5a3999a4354d0d9f3edf63929534f82",
+    "pdfMd5": "5393bd48e10603ec1f02fcc4c96fdb81",
     "pdfPages": 32,
-    "sitePdfPath": "/papers/p5_desi_chirality_v0.1.77.pdf",
-    "changelog": "EXT11-closure: 12 ESS findings closed. EXT11=12/12 MINOR (zero MAJORs)."
+    "sitePdfPath": "/papers/p5_desi_chirality_v0.1.78-2026-06-13.pdf",
+    "changelog": "EXT13-closure: pattern-057 V-Web body residuals closed (4 sites: lines 429, 807, 2094, 3589); Verdict.→Result. journal-style sub-header; Fig 8 confirmed clean."
   }
 ]

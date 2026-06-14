@@ -47,15 +47,15 @@ export interface LiveStatus {
 }
 
 export const liveStatus: LiveStatus = {
-  lastUpdatedISO: "2026-06-14T01:39:00Z",
-  lastUpdatedDisplay: "June 13, 2026 · 6:39 PM PT",
+  lastUpdatedISO: "2026-06-14T08:00:00Z",
+  lastUpdatedDisplay: "June 13, 2026 · 11:00 PM PT",
   headline:
-    "EXT12 harvested: P4 = 3/3 ACCEPT confirmed (ChatGPT ACCEPT — first in campaign!). EXT13 closure wave queued for P1A/P1B/P2/P3/P5 (text-only fixes, ~2 hrs) + Gemini resubmit.",
+    "EXT13-closure-wave complete: 5 papers updated (P4 frozen at universal 3/3 ACCEPT). EXT14 launched — 18 chats submitted with Gemini pattern-058 fix (MNRAS referee-format first-line). Target: 18/18 ACCEPT → arXiv coordinated drop.",
   summary:
-    "EXT12: Grok 6/6 ACCEPT (3 confirmed-read, 3 inferred). ChatGPT P4 ACCEPT (first ChatGPT ACCEPT in campaign) + P1A/P1B/P2/P3/P5 MINOR (1-2 text fixes each). Gemini 6/6 synthesis-mode (no formal verdicts — EXT13 fix: explicit referee-format instruction as first line). P4 is confirmed 3/3 ACCEPT, ready for arXiv. EXT13 target: 18/18 ACCEPT, HIGH CONFIDENCE. New auto-rule pattern-057: after systematic rename, grep full body text for residual tokens.",
+    "EXT13-closure: P1A v1A.0.75 (dim bookkeeping) · P1B v1B.0.72 (release-pairing harmonized) · P2 v1.7.66 (BF self-check 3-sentence rewrite) · P3 v3.1.109 (DESI gate explicit + Savage-Dickey tablenote) · P5 v0.1.78 (pattern-057 V-Web body residuals closed). P4 FROZEN at v1.0.188 — universal 3/3 ACCEPT (ChatGPT first-ever ACCEPT in campaign). EXT14: 18 chats submitted — Gemini fresh chats with pattern-058 verdict-format first-line applied. HIGH CONFIDENCE 18/18 ACCEPT.",
   currentlyRunning: [
-    "Hourly native-PDF cross-vendor review autoloop on all 6 papers (Claude · GPT · Gemini · Grok · Perplexity + meta-reviewer)",
-    "Persistence tracker fingerprinting findings across fires; load-bearing items escalate to Houston decision package",
+    "EXT14 harvesting — 18 chats submitted across ChatGPT (in-thread delta) · Grok (in-thread delta) · Gemini (fresh chats, pattern-058 MNRAS first-line applied)",
+    "Native-PDF cross-vendor review autoloop on all 6 papers (Claude · GPT · Gemini · Grok · Perplexity + meta-reviewer)",
     "Site + SSOT + Convex sync on every paper version bump",
   ],
   needsHouston: [
@@ -77,33 +77,33 @@ export const liveStatus: LiveStatus = {
       slug: "paper-1a",
       number: "1A",
       shortTitle: "ECH dark-energy closure + perturbation transparency",
-      version: "v1A.0.74",
+      version: "v1A.0.75",
       readiness: 95,
-      pendingWork: "v1A.0.74 — EXT12: Grok ACCEPT / ChatGPT MINOR / Gemini NO VERDICT. ChatGPT: 2 wording edits (Sec IV/App B dim sentence + reheating residual). EXT13 target ~20 min → HIGH CONFIDENCE ACCEPT.",
+      pendingWork: "v1A.0.75 — EXT13-closure: Sec IV/App B dim bookkeeping + reheating residual clarified. EXT14 submitted with Gemini pattern-058 fix. Awaiting harvest (≥30 min).",
     },
     {
       slug: "paper-1b",
       number: "1B",
       shortTitle: "MCMC + NaMaster + ALP technical companion",
-      version: "v1B.0.71",
+      version: "v1B.0.72",
       readiness: 94,
-      pendingWork: "v1B.0.71 — EXT12: Grok ACCEPT / ChatGPT MINOR / Gemini NO VERDICT. ChatGPT: harmonize release-pairing language across Sec III+Sec V.B+Conclusion (~20 min). EXT13 target → HIGH CONFIDENCE ACCEPT.",
+      pendingWork: "v1B.0.72 — EXT13-closure: release-pairing harmonized Sec III+V.B+Conclusion (c15 yaml names; 0.04σ ΔNeff bound). EXT14 submitted. Awaiting harvest.",
     },
     {
       slug: "paper-2",
       number: "2",
       shortTitle: "f_NL = -35/8 SPHEREx forecast",
-      version: "v1.7.65",
+      version: "v1.7.66",
       readiness: 94,
-      pendingWork: "v1.7.65 — EXT12: Grok ACCEPT / ChatGPT MINOR / Gemini NO VERDICT. ChatGPT: 3-sentence BF self-check paragraph fix (Eq.9 vs Eq.10 prior labeling, ~15 min). EXT13 target → HIGH CONFIDENCE ACCEPT.",
+      pendingWork: "v1.7.66 — EXT13-closure: BF self-check 3-sentence rewrite (delta-prior vs bounce-prior vs required equation disentangled). EXT14 submitted. Awaiting harvest.",
     },
     {
       slug: "paper-3",
       number: "3",
       shortTitle: "378K-anomaly multi-survey catalog",
-      version: "v3.1.108",
+      version: "v3.1.109",
       readiness: 95,
-      pendingWork: "v3.1.108 — EXT12: Grok ACCEPT / ChatGPT MINOR / Gemini NO VERDICT. ChatGPT: 2 fixes (DESI validation gate type in abstract + Table IX Savage-Dickey label, ~25 min). EXT13 target → HIGH CONFIDENCE ACCEPT.",
+      pendingWork: "v3.1.109 — EXT13-closure: abstract DESI gate type explicit + Table IX BF Savage-Dickey tablenote (8 sites). EXT14 submitted. Awaiting harvest.",
     },
     {
       slug: "paper-4",
@@ -111,25 +111,25 @@ export const liveStatus: LiveStatus = {
       shortTitle: "8.47M-galaxy chirality null at sub-percent sensitivity",
       version: "v1.0.188",
       readiness: 95,
-      pendingWork: "v1.0.188 — EXT12: ChatGPT ACCEPT + Grok ACCEPT + Gemini EXT11 ACCEPT = 3/3 ACCEPT CONFIRMED. P4 is publication-ready. Only proof-stage copy-edit: Shamir [2] title string match. Queue for arXiv submission.",
+      pendingWork: "v1.0.188 FROZEN — universal 3/3 ACCEPT at EXT12 (ChatGPT first-ever ACCEPT in campaign). EXT14 courtesy re-prompt only. Queue for arXiv submission.",
     },
     {
       slug: "paper-5",
       number: "5",
       shortTitle: "DESI environmental chirality independence",
-      version: "v0.1.77-2026-06-13",
+      version: "v0.1.78-2026-06-13",
       readiness: 95,
-      pendingWork: "v0.1.77 — EXT12: Grok ACCEPT / ChatGPT MINOR / Gemini NO VERDICT. ChatGPT: 3 residual V-Web token replacements + Fig 8 rerender + 'Verdict.'→'Result.' rename (~30 min). EXT13 target → HIGH CONFIDENCE ACCEPT.",
+      pendingWork: "v0.1.78 — EXT13-closure: pattern-057 V-Web body residuals closed (4 sites) + Verdict.→Result. + Fig 8 clean. EXT14 submitted with Gemini pattern-058 fix. Awaiting harvest.",
     },
   ],
   blockerTally: {
-    closed: 834, // +16 EXT11-closure wave — all residuals from EXT11_BATCH_TRUTH_AUDIT.md closed (P1A:5 + P1B:2 + P2:2 + P3:2 + P4:1 + P5:4 VERIFIED findings)
+    closed: 844, // +10 EXT13-closure wave — P1A:2 + P1B:2 + P2:2 + P3:2 + P5:4 VERIFIED findings closed (P4 frozen universal ACCEPT)
     openBlockers: 0,
     openMajors: 0,
     openMinors: 0,
   },
-  cronStatus: "EXT12 harvested: 7/18 ACCEPT confirmed · P4 ChatGPT ACCEPT (3/3 confirmed) · Gemini synthesis-mode (no formal verdicts) · EXT13 closure wave queued",
+  cronStatus: "EXT13-closure-wave COMPLETE: 5 papers bumped (P4 frozen universal ACCEPT) · EXT14 LAUNCHED: 18 chats submitted · Gemini pattern-058 fix applied (MNRAS first-line)",
   etaToCompletion:
-    "EXT12: P4=3/3 ACCEPT (publication-ready). ChatGPT P1A/P1B/P2/P3/P5=MINOR (1-2 text fixes each). Gemini 6/6=synthesis-mode (no verdict, EXT11 baselines held). EXT13 closure wave (5 papers, text-only, ~2 hrs) + Gemini resubmit (with explicit verdict format) → HIGH CONFIDENCE 18/18 ACCEPT.",
+    "EXT14 in flight: 18 chats submitted (ChatGPT in-thread · Grok in-thread · Gemini fresh-chat with pattern-058 MNRAS verdict-format first-line). Harvest ETA ≥30 min from last submission. Target: 18/18 ACCEPT → arXiv coordinated drop. Confidence: HIGH.",
   pods: [],
 };
