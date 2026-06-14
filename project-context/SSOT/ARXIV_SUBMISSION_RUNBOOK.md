@@ -15,6 +15,15 @@
 
 ---
 
+## Executable 1-pager
+
+For the zero-ambiguity action checklist, see:
+**`project-context/SSOT/SHIP_DAY_BRIEFING.md`** — Houston-facing ship-day briefing with every click target and bash command.
+
+This runbook is the full reference; SHIP_DAY_BRIEFING is the distilled executable.
+
+---
+
 ## 0. TL;DR — When Houston says "go"
 
 ```

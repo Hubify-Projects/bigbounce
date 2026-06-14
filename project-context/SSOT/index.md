@@ -245,6 +245,19 @@ done
 
 ---
 
+## Ship-day documents
+
+| File | Purpose |
+|------|---------|
+| `project-context/SSOT/SHIP_DAY_BRIEFING.md` | **Executable 1-pager** — Houston action checklist for the coordinated arXiv drop |
+| `project-context/SSOT/ARXIV_SUBMISSION_RUNBOOK.md` | Full reference runbook (tarball table, metadata, back-patch commands, Zenodo, HF) |
+| `project-context/SSOT/SIGNOFF_PACKAGE_2026-06-13.md` | Per-paper sign-off checkboxes + ORCID gate |
+| `project-context/SSOT/zenodo/INDEX.md` | Zenodo one-click publish master index |
+| `project-context/SSOT/arxiv_companion_citation_map.md` | 51 cite-instance map for v2 back-patch |
+| `project-context/SSOT/arxiv_tarballs/` | 6 EXT15-closure tarballs (ready to upload) |
+
+---
+
 ## Where this SSOT does NOT live
 
 - ❌ `project-context/CURRENT_STATUS.md` — legacy; downstream mirror only.
