@@ -33,7 +33,7 @@ REQUIRED BEFORE COORDINATED ARXIV DROP:
 
 This is the ONLY true blocker to the 1-command coordinated drop. All
 mechanical gaps (runbook .bbl patch, Zenodo version bumps) closed in commit
-SHA-WILL-INSERT-HERE.
+6f74cd5e.
 
 ---
 
