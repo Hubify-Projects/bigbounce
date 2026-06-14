@@ -46,6 +46,45 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "EXT17-LAUNCHED",
+    kind: "external-browser",
+    dateISO: "2026-06-13",
+    timePT: "23:59",
+    title: "EXT17 launched: 18 chats submitted · EXT16-closure PDFs verified · P1B+P4 courtesy re-confirmation · Gemini pattern-058 fresh chats",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "EXT17: 18 chats submitted on EXT16-closure versions (P1A v1A.0.77 · P2 v1.7.68 · P3 v3.1.111 · P5 v0.1.80; P1B v1B.0.72 + P4 v1.0.188 FROZEN). ChatGPT 6 in-thread delta + Grok 6 in-thread delta + Gemini 6 fresh chats with pattern-058 MNRAS referee-format first-line. P1B+P4 courtesy re-confirmation included. All 6 PDFs md5-verified before submission.",
+    keyTakeaways: [
+      "P1A v1A.0.77: EXT16 closure Sec XII.A C/P-violating thermal-scattering propagation chain now explicit",
+      "P1B v1B.0.72 + P4 v1.0.188: FROZEN — universal 3/3 ACCEPT confirmed EXT14+EXT16 (3/4 consecutive rounds respectively)",
+      "P2 v1.7.68: EXT16 closure Sec VI.C CDF-tail direction 'reduces→raises' (narrow delta-prior is upward)",
+      "P3 v3.1.111: EXT16 closure Table IX prior density footnote per-row denominator clarified",
+      "P5 v0.1.80: EXT16 closure V\\mbox{-}Web→T\\mbox{-}Web l.2864 (pattern-060) + nomenclature + dup T-Web phrase",
+      "Pattern-060 encoded: \\mbox{-} math subscript escape extends pattern-057/059 union sweep",
+    ],
+    links: [
+      { label: "EXT17 manifest", href: "https://github.com/Hubify-Projects/bigbounce/blob/main/project-context/peer-reviews/EXT17_BROWSER_MANIFEST.md" },
+    ],
+  },
+  {
+    id: "SKILL-PATTERN-060-MBOX-MATH-ESCAPE",
+    kind: "skill-improvement",
+    dateISO: "2026-06-13",
+    timePT: "23:59",
+    title: "Pattern-060 encoded: \\mbox{-} math subscript escape — extends pattern-057/059 union sweep",
+    papers: ["P5"],
+    summary: "EXT16 catch: V\\mbox{-}Web at P5 l.2864 survived the pattern-057+059 double sweep. Root: pattern-059 covers \\text{-} and \\mathrm{-} forms but not \\mbox{-}. Pattern-060 adds the union regex covering all four hyphen-escape forms and replaces the pattern-059 four-command block. SKILL.md updated with new combined grep. INDEX.md row added. paper-pre-review-check rule updated.",
+    keyTakeaways: [
+      "\\mbox{} is a third math-mode hyphen escape form, distinct from \\text{} and \\mathrm{}",
+      "Union grep: `grep -nE 'V(\\\\(text|mbox|mathrm)\\{-\\}|-)Web' <tex>` covers all four forms",
+      "Replace pattern-059 four-command block with this union grep for all rename closures",
+      "SKILL.md row 060 added to paper-pre-review-check detection table",
+      "INDEX.md updated: pattern mine last run 2026-06-13 (EXT16), pattern 060 promoted",
+    ],
+    links: [
+      { label: "Pattern-060 file", href: "https://github.com/Hubify-Projects/bigbounce/blob/main/project-context/review-patterns/pattern-060-mbox-math-subscript-escape.md" },
+    ],
+  },
+  {
     id: "EXT16-VERDICT-LADDER",
     kind: "external-browser",
     dateISO: "2026-06-13",

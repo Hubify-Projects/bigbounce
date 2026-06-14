@@ -6,7 +6,7 @@ v1.0.66 external 4-vendor round (2026-05-15), 1 P1A external 3-reviewer
 round (2026-06-02), 1 P4 v1.0.149 external 3-reviewer round (2026-06-04),
 1 R39conf batch truth-audit (2026-06-13, 6 papers), and 1 EXT14 batch
 external round (2026-06-13, 6 papers)
-on 6 papers (P1A/P1B/P2/P3/P4/P5). Pattern mine last run: 2026-06-13 (EXT14 external round; pattern 059 promoted).
+on 6 papers (P1A/P1B/P2/P3/P4/P5). Pattern mine last run: 2026-06-13 (EXT16 external round; pattern 060 promoted — \\mbox{-} math subscript escape extends pattern-059).
 
 Every external/direct-vendor R-round must be pre-screened against these
 patterns BEFORE dispatch, per the [[feedback-review-learning-loop]] and
@@ -17,6 +17,8 @@ Catalog is consumed by `/paper-pre-review-check` skill.
 ## Patterns
 
 Sorted by severity then frequency descending.
+
+Pattern mine last run: 2026-06-13 (EXT16 external round; pattern 060 promoted — \\mbox{-} math subscript escape extends pattern-059).
 
 ### High severity
 
@@ -55,6 +57,7 @@ Sorted by severity then frequency descending.
 
 | ID | Title | Severity | Freq |
 |----|-------|----------|------|
+| 060 | [mbox-math-subscript-escape (\\mbox{-} form missed by pattern-059 union sweep)](pattern-060-mbox-math-subscript-escape.md) | medium | 1 (P5, EXT16 — V\\mbox{-}Web at l.2864 survived pattern-059 sweep) |
 | 059 | [Math-mode subscript miss after global rename (extends pattern-057 to math context)](pattern-059-math-mode-subscript-miss-after-rename.md) | medium | 1 (P5, EXT14 — _{V-Web} subscript survived body-text sweep) |
 | 053 | [Companion in-prep citation leak across multiple papers](pattern-053-companion-in-prep-citation.md) | medium | 6 (≥2 reviewers × P1A/P1B/P5, R39conf) |
 | 012 | [Perplexity web-search misses recent arXiv (within ~6mo)](pattern-012-perplexity-web-search-miss.md) | medium | 20+ |

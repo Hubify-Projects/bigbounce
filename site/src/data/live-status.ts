@@ -50,12 +50,12 @@ export const liveStatus: LiveStatus = {
   lastUpdatedISO: "2026-06-13T23:59:00Z",
   lastUpdatedDisplay: "June 13, 2026 · 11:59 PM PT",
   headline:
-    "EXT15-closure-wave complete: P1A v1A.0.76 · P2 v1.7.67 · P3 v3.1.110 · P5 v0.1.79 (P1B+P4 FROZEN at universal 3/3 ACCEPT). EXT16 launched — 18 chats submitted. Pattern-052 vindication on P5 (EXT14 flag was false-positive). Target: 18/18 ACCEPT → arXiv coordinated drop.",
+    "EXT16-closure sync complete: P1A v1A.0.77 · P2 v1.7.68 · P3 v3.1.111 · P5 v0.1.80 (P1B+P4 FROZEN universal 3/3 ACCEPT). Pattern-060 encoded (\\mbox{-} math subscript escape extends 057/059). EXT17 launched — 18 chats submitted. Target: 18/18 ACCEPT → arXiv coordinated drop.",
   summary:
-    "EXT15-closure: P1A v1A.0.76 (3 ChatGPT MINOR + 3 Gemini polish) · P2 v1.7.67 (BF Eq.9 vs Eq.10 mapping + 0.18% typo) · P3 v3.1.110 (Table IX Savage-Dickey KDE values explicit: B_MB/free=3.23; B_MB/SMBHB=7.14e3) · P5 v0.1.79 (pattern-059 sweep: zero residuals, EXT14 flag vindicated as false-positive). P1B v1B.0.72 + P4 v1.0.188 FROZEN — universal 3/3 ACCEPT. EXT16: 18 chats submitted — ChatGPT+Grok in-thread delta; Gemini fresh chats with pattern-058 MNRAS first-line. P1B+P4 courtesy re-confirmation prompts sent. HIGH CONFIDENCE 18/18 ACCEPT.",
+    "EXT16-closure: P1A v1A.0.77 (Sec XII.A C/P-violating thermal-scattering propagation miss) · P2 v1.7.68 (CDF-tail 'reduces→raises' Sec VI.C direction) · P3 v3.1.111 (Table IX prior density footnote per-row denominator) · P5 v0.1.80 (V\\mbox{-}Web→T\\mbox{-}Web l.2864 + nomenclature + dup T-Web; pattern-060 first catch). P1B v1B.0.72 + P4 v1.0.188 FROZEN — universal 3/3 ACCEPT confirmed 4 consecutive rounds. EXT17: 18 chats submitted — ChatGPT in-thread delta × 6 + Grok in-thread delta × 6 + Gemini fresh chats pattern-058 MNRAS first-line × 6. P1B+P4 courtesy re-confirmation. HIGH CONFIDENCE 18/18 ACCEPT.",
   currentlyRunning: [
-    "EXT16 harvesting — 18 chats submitted: ChatGPT 6 in-thread · Grok 6 in-thread · Gemini 6 fresh chats (pattern-058 MNRAS first-line). P1B+P4 courtesy re-confirmation prompts included.",
-    "Site + SSOT + Convex sync on EXT15-closure-wave bundle",
+    "EXT17 harvesting — 18 chats submitted: ChatGPT 6 in-thread · Grok 6 in-thread · Gemini 6 fresh chats (pattern-058 MNRAS first-line). P1B+P4 courtesy re-confirmation prompts included.",
+    "EXT16-closure post-bump full sync: mirrors + tarballs + Convex + SSOT + pattern-060 encoded",
   ],
   needsHouston: [
     {
@@ -76,9 +76,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-1a",
       number: "1A",
       shortTitle: "ECH dark-energy closure + perturbation transparency",
-      version: "v1A.0.76",
+      version: "v1A.0.77",
       readiness: 95,
-      pendingWork: "v1A.0.76 — EXT15-closure: 3 ChatGPT MINOR (chirality-flipping + parity-odd amplitude + local-operator-promotion) + 3 Gemini polish. EXT16 submitted. Awaiting harvest (≥30 min).",
+      pendingWork: "v1A.0.77 — EXT16-closure: Sec XII.A C/P-violating thermal-scattering propagation miss fixed. EXT17 submitted. Awaiting harvest.",
     },
     {
       slug: "paper-1b",
@@ -86,23 +86,23 @@ export const liveStatus: LiveStatus = {
       shortTitle: "MCMC + NaMaster + ALP technical companion",
       version: "v1B.0.72",
       readiness: 95,
-      pendingWork: "v1B.0.72 FROZEN — universal 3/3 ACCEPT at EXT14 (ChatGPT+Grok+Gemini). EXT15+EXT16 courtesy re-confirmation. Queue for arXiv submission.",
+      pendingWork: "v1B.0.72 FROZEN — universal 3/3 ACCEPT confirmed EXT14+EXT16 (3 consecutive rounds). EXT17 courtesy re-confirmation. Queue for arXiv submission.",
     },
     {
       slug: "paper-2",
       number: "2",
       shortTitle: "f_NL = -35/8 SPHEREx forecast",
-      version: "v1.7.67",
+      version: "v1.7.68",
       readiness: 95,
-      pendingWork: "v1.7.67 — EXT15-closure: BF Eq.9 vs Eq.10 mapping corrected (exact CDF vs large-W approx) + 0.18% arithmetic typo. EXT16 submitted. Awaiting harvest.",
+      pendingWork: "v1.7.68 — EXT16-closure: CDF-tail direction 'reduces→raises' in Sec VI.C corrected. EXT17 submitted. Awaiting harvest.",
     },
     {
       slug: "paper-3",
       number: "3",
       shortTitle: "378K-anomaly multi-survey catalog",
-      version: "v3.1.110",
+      version: "v3.1.111",
       readiness: 95,
-      pendingWork: "v3.1.110 — EXT15-closure: Table IX Savage-Dickey footnote with explicit KDE values (B_MB/free=3.23; B_MB/SMBHB=7.14e3). EXT16 submitted. Awaiting harvest.",
+      pendingWork: "v3.1.111 — EXT16-closure: Table IX prior density footnote per-row denominator clarified. EXT17 submitted. Awaiting harvest.",
     },
     {
       slug: "paper-4",
@@ -110,25 +110,25 @@ export const liveStatus: LiveStatus = {
       shortTitle: "8.47M-galaxy chirality null at sub-percent sensitivity",
       version: "v1.0.188",
       readiness: 95,
-      pendingWork: "v1.0.188 FROZEN — universal 3/3 ACCEPT at EXT12+EXT14. EXT15+EXT16 courtesy re-confirmation. Queue for arXiv submission (first in order).",
+      pendingWork: "v1.0.188 FROZEN — universal 3/3 ACCEPT confirmed EXT12+EXT14+EXT16 (4 consecutive rounds). EXT17 courtesy re-confirmation. Queue for arXiv submission (first in order).",
     },
     {
       slug: "paper-5",
       number: "5",
       shortTitle: "DESI environmental chirality independence",
-      version: "v0.1.79-2026-06-13",
+      version: "v0.1.80-2026-06-13",
       readiness: 95,
-      pendingWork: "v0.1.79 — EXT15-closure: pattern-059 math sweep — ZERO residuals (EXT14 flag was false-positive, pattern-052 vindication). EXT16 submitted. Awaiting harvest.",
+      pendingWork: "v0.1.80 — EXT16-closure: V\\mbox{-}Web→T\\mbox{-}Web l.2864 (pattern-060 first catch) + nomenclature + dup T-Web. EXT17 submitted. Awaiting harvest.",
     },
   ],
   blockerTally: {
-    closed: 856, // +12 EXT15-closure wave — P1A:6 + P2:2 + P3:2 + P5:2 VERIFIED findings closed (P1B+P4 frozen universal ACCEPT)
+    closed: 860, // +4 EXT16-closure wave — P1A:1 + P2:1 + P3:1 + P5:1 VERIFIED findings closed (P1B+P4 frozen universal ACCEPT 4 rounds)
     openBlockers: 0,
     openMajors: 0,
     openMinors: 0,
   },
-  cronStatus: "EXT15-closure-wave COMPLETE: 4 papers bumped (P1B+P4 frozen universal ACCEPT) · EXT16 LAUNCHED: 18 chats submitted · pattern-052 vindication on P5 (false-positive confirmed)",
+  cronStatus: "EXT16-closure-sync COMPLETE: 4 papers bumped (P1B+P4 frozen 4× universal ACCEPT) · pattern-060 encoded · EXT17 LAUNCHED: 18 chats submitted",
   etaToCompletion:
-    "EXT16 in flight: 18 chats submitted (ChatGPT in-thread · Grok in-thread · Gemini fresh-chat pattern-058 MNRAS first-line; P1B+P4 courtesy re-confirmation). Harvest ETA ≥30 min from last submission. Target: 18/18 ACCEPT → arXiv coordinated drop. Confidence: HIGH.",
+    "EXT17 in flight: 18 chats submitted (ChatGPT in-thread · Grok in-thread · Gemini fresh-chat pattern-058 MNRAS first-line; P1B+P4 courtesy re-confirmation). Harvest ETA ≥30 min from last submission. Target: 18/18 ACCEPT → arXiv coordinated drop. Confidence: HIGH.",
   pods: [],
 };

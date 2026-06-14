@@ -92,7 +92,7 @@ export const papers: Paper[] = [
       external: {
         label: "External journal-style review",
         state: "active",
-        note: "EXT14=12/18 ACCEPT (P1B+P4 frozen); EXT15-closure: 3 ChatGPT MINOR items (chirality-flipping + parity-odd amplitude + local-operator-promotion) + 3 Gemini polish; EXT16 submitted",
+        note: "EXT16=14/18 ACCEPT; EXT16-closure v1A.0.77: Sec XII.A C/P-violating thermal-scattering propagation miss; EXT17 submitted",
       },
     }),
     pages: "29",
@@ -148,7 +148,7 @@ export const papers: Paper[] = [
       external: {
         label: "External journal-style review",
         state: "active",
-        note: "FROZEN v1B.0.72 — universal 3/3 ACCEPT at EXT14 (ChatGPT+Grok+Gemini). EXT15 courtesy re-confirmation. EXT16 submitted. No changes since EXT13-closure.",
+        note: "FROZEN v1B.0.72 — universal 3/3 ACCEPT at EXT14+EXT16 (ChatGPT+Grok+Gemini, 3 consecutive rounds). EXT17 courtesy re-confirmation. No changes since EXT13-closure.",
       },
       signoff: {
         label: "Houston sign-off",
@@ -207,7 +207,7 @@ export const papers: Paper[] = [
       external: {
         label: "External journal-style review",
         state: "active",
-        note: "EXT14=12/18 ACCEPT (P1B+P4 frozen); EXT15-closure: BF Eq.9 vs Eq.10 mapping corrected (exact CDF vs large-W approx) + 0.18% arithmetic typo; EXT16 submitted",
+        note: "EXT16=14/18 ACCEPT; EXT16-closure v1.7.68: Sec VI.C CDF-tail 'reduces→raises' (narrow delta-prior direction); EXT17 submitted",
       },
       signoff: {
         label: "Houston sign-off",
@@ -266,7 +266,7 @@ export const papers: Paper[] = [
       external: {
         label: "External journal-style review",
         state: "active",
-        note: "EXT14=12/18 ACCEPT (P1B+P4 frozen); EXT15-closure: Table IX Savage-Dickey footnote enhanced with explicit KDE values at γ*=3.0 and γ*=4.33 (ratio B_MB/SMBHB=7.14e3); EXT16 submitted",
+        note: "EXT16=14/18 ACCEPT; EXT16-closure v3.1.111: Table IX prior density footnote per-row 1/Δγ denominator clarified; EXT17 submitted",
       },
     }),
     pages: "30",
@@ -345,7 +345,7 @@ export const papers: Paper[] = [
       {
         label: "External journal-style review",
         state: "active",
-        note: "FROZEN v1.0.188 — universal 3/3 ACCEPT at EXT12+EXT14 (ChatGPT first-ever ACCEPT in campaign). EXT15+EXT16 courtesy confirmation only. No changes since EXT12.",
+        note: "FROZEN v1.0.188 — universal 3/3 ACCEPT at EXT12+EXT14+EXT16 (4 consecutive rounds; ChatGPT first-ever ACCEPT in campaign). EXT17 courtesy re-confirmation only. No changes since EXT12.",
       },
       {
         label: "Houston sign-off",
@@ -421,7 +421,7 @@ export const papers: Paper[] = [
       external: {
         label: "External journal-style review",
         state: "active",
-        note: "EXT14=12/18 ACCEPT (P1B+P4 frozen); EXT15-closure: pattern-059 math-mode subscript sweep — ZERO residuals found (EXT14 flag was false-positive per pattern-052 vindication); v0.1.79 audit-trail bump; EXT16 submitted",
+        note: "EXT16=14/18 ACCEPT; EXT16-closure v0.1.80: V\\mbox{-}Web→T\\mbox{-}Web l.2864 (pattern-060) + nomenclature + dup T-Web; EXT17 submitted",
       },
     }),
     pages: "32",
