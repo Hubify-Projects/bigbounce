@@ -1,9 +1,9 @@
 # Zenodo Deposition Index — BigBounce 6-Paper Portfolio
-## Prepared: 2026-06-13 | HD-11 DO-NOW | UPDATED: EXT11-closure versions staged
+## Prepared: 2026-06-13 | HD-11 DO-NOW | UPDATED: EXT16-closure versions staged
 
 All six deposition records are ready for one-click publish. Houston's action on submission day is: open each PX_zenodo_deposition.md → follow the 5-step "Click-Publish Steps" → done.
 
-**EXT11-closure version bump (2026-06-13):** All tarballs updated to EXT11-closure versions. Canonical tarballs staged at `project-context/SSOT/arxiv_tarballs/`.
+**EXT16-closure version bump (2026-06-13):** All tarballs updated to EXT16-closure versions. Canonical tarballs staged at `project-context/SSOT/arxiv_tarballs/`. Note: deposition record files still reference EXT11-closure PDF md5s — see SIGNOFF_PACKAGE_2026-06-13.md §EXT15-Closure-Wave PDF MD5s table for the current authoritative EXT16 md5s (f1eab008 / 5a3c98e9 / 5a8a1af4 / 4a8c1172 / c47abc18 / 7bb73989).
 
 ---
 
@@ -11,14 +11,14 @@ All six deposition records are ready for one-click publish. Houston's action on 
 
 | Paper | Short Title | Version | PDF MD5 | Pages | Status |
 |-------|-------------|---------|---------|-------|--------|
-| **P4** (first) | Galaxy Chirality Catalog | v1.0.188 | `c47abc18` | 23 | READY — EXT11-closure |
-| **P1A** | ECH No-Go | v1A.0.74 | `3871b587` | 28 | READY — EXT11-closure |
-| **P1B** | MCMC Companion | v1B.0.71 | `aa1a694e` | 21 | READY — EXT11-closure |
-| **P3** | Multi-Survey Anomaly Catalog | v3.1.108 | `72bd3e5b` | 29 | READY — EXT11-closure (HF flip needed at posting) |
-| **P2** | fnl Forecast / SPHEREx | v1.7.65 | `fc42f393` | 28 | READY — EXT11-closure |
-| **P5** (last) | DESI Chirality Environment | v0.1.77-2026-06-13 | `e5a3999a` | 32 | READY (awaits P4 arXiv ID + NM1 ruling) |
+| **P4** (first) | Galaxy Chirality Catalog | v1.0.188 | `c47abc18` | 23 | READY — EXT16-confirmed FROZEN |
+| **P1A** | ECH No-Go | v1A.0.77 | `f1eab008` | 29 | READY — EXT16-closure |
+| **P1B** | MCMC Companion | v1B.0.72 | `5a3c98e9` | 21 | READY — EXT16-confirmed FROZEN |
+| **P3** | Multi-Survey Anomaly Catalog | v3.1.111 | `4a8c1172` | 30 | READY — EXT16-closure (HF flip needed at posting) |
+| **P2** | fnl Forecast / SPHEREx | v1.7.68 | `5a8a1af4` | 29 | READY — EXT16-closure |
+| **P5** (last) | DESI Chirality Environment | v0.1.80-2026-06-13 | `7bb73989` | 32 | READY — EXT16-closure (awaits P4 arXiv ID + NM1 ruling) |
 
-All 6 tarballs standalone-compile verified (errors=0, undef=0) from EXT11-closure .tex sources. git SHA at build: EXT11-closure-wave commit.
+All 6 tarballs standalone-compile verified (errors=0, undef=0) from EXT16-closure .tex sources. git SHA at build: 919fd7cd.
 
 ---
 
@@ -75,10 +75,10 @@ At P4 submission:
 ### P1A + P1B upload (Step 2 — same day as P4)
 
 - [ ] Insert P4 arXiv ID at companion anchors in P1A source
-- [ ] Compile P1A → rebuild `paper1a_arxiv_v1A.0.74.tar.gz`
+- [ ] Compile P1A → rebuild `paper1a_arxiv_v1A.0.77.tar.gz`
 - [ ] Mint P1A Zenodo → Reserve DOI → insert DOI in P1B App A placeholder → Publish
 - [ ] Upload P1A to arXiv → note arXiv ID: `arXiv:XXXX.XXXXX`
-- [ ] Insert P1A arXiv ID into P1B source → compile → rebuild `paper1b_arxiv_v1B.0.71.tar.gz`
+- [ ] Insert P1A arXiv ID into P1B source → compile → rebuild `paper1b_arxiv_v1B.0.72.tar.gz`
 - [ ] Mint P1B Zenodo → Reserve DOI → Publish
 - [ ] Upload P1B to arXiv → note arXiv ID: `arXiv:XXXX.XXXXX`
 
@@ -86,7 +86,7 @@ At P4 submission:
 
 - [ ] Insert P1A/P1B arXiv IDs into P3 source
 - [ ] Insert Zenodo DOI into `DATA_RELEASE_MANIFEST.md` header + tex L44 marker
-- [ ] Compile P3 → rebuild `paper3_arxiv_v3.1.108.tar.gz`
+- [ ] Compile P3 → rebuild `paper3_arxiv_v3.1.111.tar.gz`
 - [ ] Mint P3 Zenodo → Reserve DOI → Publish
 - [ ] Flip HuggingFace dataset `bamfai/bigbounce-anomaly-catalog` to public
 - [ ] Upload P3 to arXiv → note arXiv ID
@@ -95,13 +95,13 @@ At P4 submission:
 
 - [ ] Insert P1A/P1B arXiv IDs at "DOI inserted at submission" placeholders in P2
 - [ ] Optional: targeted in-thread ChatGPT delta-confirm on regenerated figures
-- [ ] Create GitHub release tag `paper2-v1.7.65` → Zenodo auto-import → edit metadata → Publish
+- [ ] Create GitHub release tag `paper2-v1.7.68` → Zenodo auto-import → edit metadata → Publish
 - [ ] Upload P2 to arXiv → note arXiv ID
 
 ### P5 upload (Step 5 — last)
 
 - [ ] Insert P4 arXiv ID into P5 source at `TODO-SUBMISSION` companion-reference markers
-- [ ] If NM1 ruled + Fig 3 regenned → bump from v0.1.77-2026-06-13 accordingly; otherwise use v0.1.77-2026-06-13
+- [ ] If NM1 ruled + Fig 3 regenned → bump from v0.1.80-2026-06-13 accordingly; otherwise use v0.1.80-2026-06-13
 - [ ] Compile P5 → rebuild tarball
 - [ ] Mint P5 Zenodo → Reserve DOI → Publish
 - [ ] Upload P5 to arXiv
@@ -123,4 +123,4 @@ At P4 submission:
 | P1B MCMC chains | P1B | Live in `reproducibility/cosmology/` — confirm these are the `planck_bao_sn parameter_summary_CORRECTED.json` files from v1B.0.57 and are complete (176,240 chain-confirmed samples). |
 | P2 phase3_fisher_overlap.json | P2 | Listed in ZENODO_RELEASE_CHECKLIST.md but not confirmed in initial directory listing. Check `research/focused_paper_source_integration/outputs/` before submission. |
 | P4 `\artifact{}` links | P4 | All blob/main artifact links must be re-pointed to the minted Zenodo DOI before final compile. Do NOT upload the old tarball with blob/main paths. |
-| P5 NM1 title ruling | P5 | Blocking open Houston-decision. "791,635 DR1 Matched Spirals" vs "783,820 Environment-Matched DR1 Spirals". If changed, triggers Fig 3 regen + v0.1.73 bump. |
+| P5 NM1 title ruling | P5 | Blocking open Houston-decision. "791,635 DR1 Matched Spirals" vs "783,820 Environment-Matched DR1 Spirals". If changed, triggers Fig 3 regen + v0.1.81 bump. |

@@ -2,7 +2,7 @@
 
 **Status**: Awaiting (a) EXT16 verdict ladder (HIGH confidence 18/18 ACCEPT), (b) Houston ORCID public flip, (c) Houston drop authorization.
 
-**Tarballs ready**: `project-context/SSOT/arxiv_tarballs/` — EXT15-closure versions (2026-06-13).
+**Tarballs ready**: `project-context/SSOT/arxiv_tarballs/` — EXT16-closure versions (2026-06-13). P1A v1A.0.77 / P1B v1B.0.72 / P2 v1.7.68 / P3 v3.1.111 / P4 v1.0.188 / P5 v0.1.80.
 
 **Full reference**: `project-context/SSOT/ARXIV_SUBMISSION_RUNBOOK.md`
 
@@ -43,11 +43,11 @@ Submit in this order at https://arxiv.org/submit:
 | Order | Paper | Tarball | Primary | Cross-list |
 |-------|-------|---------|---------|------------|
 | 1 | **P4** | `paper4_arxiv_v1.0.188.tar.gz` | `astro-ph.GA` | `astro-ph.CO` |
-| 2 | **P1A** | `paper1a_arxiv_v1A.0.76.tar.gz` | `astro-ph.CO` | `gr-qc`, `hep-th` |
+| 2 | **P1A** | `paper1a_arxiv_v1A.0.77.tar.gz` | `astro-ph.CO` | `gr-qc`, `hep-th` |
 | 3 | **P1B** | `paper1b_arxiv_v1B.0.72.tar.gz` | `astro-ph.CO` | `hep-ph` |
-| 4 | **P3** | `paper3_arxiv_v3.1.110.tar.gz` | `astro-ph.CO` | `astro-ph.GA` |
-| 5 | **P2** | `paper2_arxiv_v1.7.67.tar.gz` | `astro-ph.CO` | `astro-ph.IM` |
-| 6 | **P5** | `paper5_arxiv_v0.1.79-2026-06-13.tar.gz` | `astro-ph.CO` | `astro-ph.GA` |
+| 4 | **P3** | `paper3_arxiv_v3.1.111.tar.gz` | `astro-ph.CO` | `astro-ph.GA` |
+| 5 | **P2** | `paper2_arxiv_v1.7.68.tar.gz` | `astro-ph.CO` | `astro-ph.IM` |
+| 6 | **P5** | `paper5_arxiv_v0.1.80-2026-06-13.tar.gz` | `astro-ph.CO` | `astro-ph.GA` |
 
 For each: upload tarball → copy abstract from `abstract_for_webform.txt` → link ORCID `0009-0008-3617-8729` → submit. P4 must upload FIRST because P5 needs P4's arXiv ID. Wait ~60 min for P4's ID before submitting P5.
 
@@ -142,12 +142,12 @@ Authoritative 51-instance map: `project-context/SSOT/arxiv_companion_citation_ma
 
 ```bash
 REPO=/Users/houstongolden/Desktop/CODE_2025/bigbounce
-bash tools/build_arxiv_tarball.sh arxiv/paper1a_ech_nogo.tex          paper1a_arxiv_v1A.0.76b
+bash tools/build_arxiv_tarball.sh arxiv/paper1a_ech_nogo.tex          paper1a_arxiv_v1A.0.77b
 bash tools/build_arxiv_tarball.sh arxiv/paper1b_mcmc_companion.tex     paper1b_arxiv_v1B.0.72b
-bash tools/build_arxiv_tarball.sh research/focused_paper_source_integration/02_full_draft.tex paper2_arxiv_v1.7.67b
-bash tools/build_arxiv_tarball.sh pipelines/p3_anomaly_engine/paper3_draft.tex paper3_arxiv_v3.1.110b
+bash tools/build_arxiv_tarball.sh research/focused_paper_source_integration/02_full_draft.tex paper2_arxiv_v1.7.68b
+bash tools/build_arxiv_tarball.sh pipelines/p3_anomaly_engine/paper3_draft.tex paper3_arxiv_v3.1.111b
 # P4: no v2 needed (zero patches)
-bash tools/build_arxiv_tarball.sh pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex paper5_arxiv_v0.1.79b
+bash tools/build_arxiv_tarball.sh pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex paper5_arxiv_v0.1.80b
 ```
 
 Upload `*b` tarballs as v2 replacements on each paper's arXiv submission page.

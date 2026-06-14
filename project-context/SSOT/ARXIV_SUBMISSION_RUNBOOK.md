@@ -1,17 +1,17 @@
 # arXiv Submission Runbook — BigBounce 6-Paper Coordinated Drop
-## Status: EXT15-CLOSURE-WAVE COMPLETE | EXT16 LAUNCHED (18 chats · Gemini pattern-058 · P1B+P4 courtesy re-confirm) → HIGH CONFIDENCE 18/18 ACCEPT → arXiv
-## Prepared: 2026-06-13 | Updated: EXT15-closure-wave (P1A v1A.0.76 / P1B v1B.0.72 FROZEN / P2 v1.7.67 / P3 v3.1.110 / P4 v1.0.188 FROZEN / P5 v0.1.79)
+## Status: EXT16-CLOSURE-WAVE COMPLETE | EXT17 READY → HIGH CONFIDENCE 18/18 ACCEPT → arXiv
+## Prepared: 2026-06-13 | Updated: EXT16-closure-wave (P1A v1A.0.77 / P1B v1B.0.72 FROZEN / P2 v1.7.68 / P3 v3.1.111 / P4 v1.0.188 FROZEN / P5 v0.1.80)
 
-### EXT15-Closure-Wave Tarballs (REBUILT 2026-06-13, pre-EXT16)
+### EXT16-Closure-Wave Tarballs (REBUILT 2026-06-13, EXT16-closure — SHIP-READY)
 
 | Paper | Tarball | Tarball MD5 | Source PDF MD5 (prefix 8) | Pages | Compile |
 |-------|---------|-------------|--------------------------|-------|---------|
-| P1A | `paper1a_arxiv_v1A.0.76.tar.gz` | `a548f0bc05acab27a89014b9c4cfc454` | `6bc1b067` | 29 | CLEAN (errors=0 undef=0) |
+| P1A | `paper1a_arxiv_v1A.0.77.tar.gz` | `d051803c457a8a815fc3cff68f7b2290` | `f1eab008` | 29 | CLEAN (errors=0 undef=0) |
 | P1B | `paper1b_arxiv_v1B.0.72.tar.gz` | `f0c354fe998aa540550e8bab100e184c` | `5a3c98e9` | 21 | CLEAN (errors=0 undef=0) — FROZEN |
-| P2  | `paper2_arxiv_v1.7.67.tar.gz`   | `a5d0befc5f4b707943c1dbfd6a1d5084` | `e6a36fdd` | 29 | CLEAN (errors=0 undef=0) |
-| P3  | `paper3_arxiv_v3.1.110.tar.gz`  | `2beb013cecccf27cb342d1b8545e0942` | `9edff2b2` | 30 | CLEAN (errors=0 undef=0) |
+| P2  | `paper2_arxiv_v1.7.68.tar.gz`   | `8d8b4da2adb00c7e873a9010646d50cf` | `5a8a1af4` | 29 | CLEAN (errors=0 undef=0) |
+| P3  | `paper3_arxiv_v3.1.111.tar.gz`  | `2aa35ec526f33392e4263c85c63b9fe9` | `4a8c1172` | 30 | CLEAN (errors=0 undef=0) |
 | P4  | `paper4_arxiv_v1.0.188.tar.gz`  | `9ec878204f68aa7fb3131fb1d52e284e` | `c47abc18` | 23 | CLEAN (errors=0 undef=0) — FROZEN |
-| P5  | `paper5_arxiv_v0.1.79-2026-06-13.tar.gz` | `df636e2ed710bdd49b55d6b720571da4` | `837ec047` | 32 | CLEAN (errors=0 undef=0) |
+| P5  | `paper5_arxiv_v0.1.80-2026-06-13.tar.gz` | `4d27ac490d36cf5d72c79ef275ef86e9` | `7bb73989` | 32 | CLEAN (errors=0 undef=0) |
 
 ---
 
@@ -39,7 +39,7 @@ Estimated wall-clock from "go" to all 6 papers live: **~26 hours**
 
 ---
 
-## 1. EXT13-Closure-Wave Tarballs — Canonical Location (REBUILT 2026-06-13, pre-EXT14)
+## 1. EXT16-Closure-Wave Tarballs — Canonical Location (REBUILT 2026-06-13, EXT16-closure)
 
 All 6 submission-ready tarballs live at:
 ```
@@ -48,15 +48,15 @@ project-context/SSOT/arxiv_tarballs/
 
 | Paper | Tarball | Tarball MD5 | Source PDF MD5 (prefix 8) | Pages | Compile |
 |-------|---------|-------------|--------------------------|-------|---------|
-| P1A | `paper1a_arxiv_v1A.0.75.tar.gz` | `611052d88d1566cf6be583449cc56a27` | `dcadf364` | 28 | CLEAN (errors=0 undef=0) |
-| P1B | `paper1b_arxiv_v1B.0.72.tar.gz` | `f0c354fe998aa540550e8bab100e184c` | `5a3c98e9` | 21 | CLEAN (errors=0 undef=0) |
-| P2  | `paper2_arxiv_v1.7.66.tar.gz`   | `f32de4f29933870e0ebf599c36b08908` | `b8cb9a4c` | 29 | CLEAN (errors=0 undef=0) |
-| P3  | `paper3_arxiv_v3.1.109.tar.gz`  | `7f60a8e7405092519ae89dea7e3ea4b3` | `7b8ad3d3` | 29 | CLEAN (errors=0 undef=0) |
+| P1A | `paper1a_arxiv_v1A.0.77.tar.gz` | `d051803c457a8a815fc3cff68f7b2290` | `f1eab008` | 29 | CLEAN (errors=0 undef=0) |
+| P1B | `paper1b_arxiv_v1B.0.72.tar.gz` | `f0c354fe998aa540550e8bab100e184c` | `5a3c98e9` | 21 | CLEAN (errors=0 undef=0) — FROZEN |
+| P2  | `paper2_arxiv_v1.7.68.tar.gz`   | `8d8b4da2adb00c7e873a9010646d50cf` | `5a8a1af4` | 29 | CLEAN (errors=0 undef=0) |
+| P3  | `paper3_arxiv_v3.1.111.tar.gz`  | `2aa35ec526f33392e4263c85c63b9fe9` | `4a8c1172` | 30 | CLEAN (errors=0 undef=0) |
 | P4  | `paper4_arxiv_v1.0.188.tar.gz`  | `9ec878204f68aa7fb3131fb1d52e284e` | `c47abc18` | 23 | CLEAN (errors=0 undef=0) — FROZEN |
-| P5  | `paper5_arxiv_v0.1.78-2026-06-13.tar.gz` | `29fe43a538d81a72fbdaaf9cee6d6e2b` | `5393bd48` | 32 | CLEAN (errors=0 undef=0) |
+| P5  | `paper5_arxiv_v0.1.80-2026-06-13.tar.gz` | `4d27ac490d36cf5d72c79ef275ef86e9` | `7bb73989` | 32 | CLEAN (errors=0 undef=0) |
 
-All rebuilt via `tools/build_arxiv_tarball.sh` from EXT13-closure .tex sources.
-Source PDF md5s verified against canonical source PDFs at each paper's directory (match SIGNOFF_PACKAGE_2026-06-13.md table).
+All rebuilt via `tools/build_arxiv_tarball.sh` from EXT16-closure .tex sources.
+Source PDF md5s verified against canonical source PDFs at each paper's directory (match SSOT/index.md EXT16-closure header).
 EXT11 tarballs preserved as `*.ext11-backup` in same directory.
 These tarballs are the v1 upload files — cross-citations are still placeholder `arXiv:XXXX.XXXXX`; the patching step is in §4 below.
 
@@ -64,7 +64,7 @@ These tarballs are the v1 upload files — cross-citations are still placeholder
 
 ## 2. Per-Paper arXiv Metadata
 
-### P1A — ECH No-Go (v1A.0.72)
+### P1A — ECH No-Go (v1A.0.77)
 - **Primary:** `astro-ph.CO`
 - **Cross-list:** `gr-qc`, `hep-th`
 - **Title:** Channel-Level Closure of Four Minimal Einstein-Cartan-Holst Dark-Energy Routes and Perturbation Transparency for Scalar Matter
@@ -73,7 +73,7 @@ These tarballs are the v1 upload files — cross-citations are still placeholder
 - **License:** arXiv.org perpetual, non-exclusive license
 - **Supplementary data:** Zenodo deposition — see `zenodo/P1A_zenodo_deposition.md`
 
-### P1B — MCMC Companion (v1B.0.69)
+### P1B — MCMC Companion (v1B.0.72)
 - **Primary:** `astro-ph.CO`
 - **Cross-list:** `hep-ph`  ← CMB birefringence / ALP context
 - **Title:** Technical Verification Companion to the ECH Spin-Torsion Program: Lambda-CDM + Delta-N_eff MCMC Proxy, NaMaster Pipeline Recovery, and a Birefringence Consistency Check with a Spectator-ALP Model
@@ -82,7 +82,7 @@ These tarballs are the v1 upload files — cross-citations are still placeholder
 - **License:** arXiv.org perpetual, non-exclusive license
 - **Supplementary data:** Zenodo deposition — see `zenodo/P1B_zenodo_deposition.md`
 
-### P2 — f_NL Forecast / SPHEREx (v1.7.63)
+### P2 — f_NL Forecast / SPHEREx (v1.7.68)
 - **Primary:** `astro-ph.CO`
 - **Cross-list:** `astro-ph.IM`
 - **Title:** Testing the Matter Bounce with Primordial Non-Gaussianity: Forecasts for SPHEREx and MegaMapper
@@ -91,7 +91,7 @@ These tarballs are the v1 upload files — cross-citations are still placeholder
 - **License:** arXiv.org perpetual, non-exclusive license
 - **Supplementary data:** Zenodo deposition — see `zenodo/P2_zenodo_deposition.md`
 
-### P3 — Multi-Survey Anomaly Catalog (v3.1.106)
+### P3 — Multi-Survey Anomaly Catalog (v3.1.111)
 - **Primary:** `astro-ph.CO`
 - **Cross-list:** `astro-ph.GA`
 - **Title:** Multi-Survey Spectral Anomaly Detection: 378,280 Anomalous Sources from 37 Million Objects Across Eight Astronomical Archives
@@ -100,7 +100,7 @@ These tarballs are the v1 upload files — cross-citations are still placeholder
 - **License:** arXiv.org perpetual, non-exclusive license
 - **Supplementary data:** Zenodo deposition — see `zenodo/P3_zenodo_deposition.md`
 
-### P4 — Galaxy Chirality Catalog (v1.0.186)
+### P4 — Galaxy Chirality Catalog (v1.0.188)
 - **Primary:** `astro-ph.GA`
 - **Cross-list:** `astro-ph.CO`
 - **Title:** Survey-Scale Galaxy Chirality with Equivariant TTA: A Null Real-Space Chirality Dipole, a Quantifiable Monopole-Mask Leakage Channel, and Diagnostic Evidence for a Depth/Morphology-Correlated Canonical-Mask Residual on 8.47 Million DESI Legacy Galaxies (3.2 Million Spirals)
@@ -109,7 +109,7 @@ These tarballs are the v1 upload files — cross-citations are still placeholder
 - **License:** arXiv.org perpetual, non-exclusive license
 - **Supplementary data:** Zenodo deposition — see `zenodo/P4_zenodo_deposition.md`
 
-### P5 — DESI Environmental Chirality (v0.1.75-2026-06-13)
+### P5 — DESI Environmental Chirality (v0.1.80-2026-06-13)
 - **Primary:** `astro-ph.CO`
 - **Cross-list:** `astro-ph.GA`
 - **Title:** Environmental Dependence of Galaxy Chirality in DESI DR1: No Significant Handedness Preference Across Cosmic Web Environments
@@ -253,12 +253,12 @@ Authoritative per-paper-per-cite-key target map (51 cite-instances total):
 
 ```bash
 REPO=/path/to/bigbounce
-bash tools/build_arxiv_tarball.sh arxiv/paper1a_ech_nogo.tex paper1a_arxiv_v1A.0.72b
-bash tools/build_arxiv_tarball.sh arxiv/paper1b_mcmc_companion.tex paper1b_arxiv_v1B.0.69b
-bash tools/build_arxiv_tarball.sh research/focused_paper_source_integration/02_full_draft.tex paper2_arxiv_v1.7.63b
-bash tools/build_arxiv_tarball.sh pipelines/p3_anomaly_engine/paper3_draft.tex paper3_arxiv_v3.1.106b
-bash tools/build_arxiv_tarball.sh pipelines/p2_chirality/chirality_catalog_paper.tex paper4_arxiv_v1.0.186b
-bash tools/build_arxiv_tarball.sh pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex paper5_arxiv_v0.1.75b
+bash tools/build_arxiv_tarball.sh arxiv/paper1a_ech_nogo.tex paper1a_arxiv_v1A.0.77b
+bash tools/build_arxiv_tarball.sh arxiv/paper1b_mcmc_companion.tex paper1b_arxiv_v1B.0.72b
+bash tools/build_arxiv_tarball.sh research/focused_paper_source_integration/02_full_draft.tex paper2_arxiv_v1.7.68b
+bash tools/build_arxiv_tarball.sh pipelines/p3_anomaly_engine/paper3_draft.tex paper3_arxiv_v3.1.111b
+# P4: no v2 needed (zero patches, zero XXXX.XXXXX markers)
+bash tools/build_arxiv_tarball.sh pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex paper5_arxiv_v0.1.80b
 ```
 
 ### Step 5 — Resubmit as v2 within 24h window
@@ -314,9 +314,9 @@ Then update:
 
 | Item | Paper | Blocking | Default |
 |------|-------|----------|---------|
-| **P5-NM1 title count** — "791,635" vs "783,820 Environment-Matched DR1 Spirals" | P5 | YES (requires Fig 3 regen if changed; bump to v0.1.76) | 783,820 recommended |
+| **P5-NM1 title count** — "791,635" vs "783,820 Environment-Matched DR1 Spirals" | P5 | YES (requires Fig 3 regen if changed; bump to v0.1.81) | 783,820 recommended |
 | **P3 S_BigAE column strip** — strip irreproducible scores from Table III per 3-reviewer/2-round consensus | P3 | Soft (won't break submission but recommended before upload) | YES, strip |
-| **P3 title count framing** — "Novelty Fractions" + 378,280 lead number | P3 | No | Already at v3.1.106 |
+| **P3 title count framing** — "Novelty Fractions" + 378,280 lead number | P3 | No | Already at v3.1.111 |
 | **P1B SN-overlap chains** — ship with "Exploratory w₀wₐ" framing vs hold | P1B | No | Ship now |
 | **P4 companion arXiv ID** — P5 must wait ~1h after P4 upload for P4's ID | P4/P5 | Sequence dependency, not a decision | Hold P5 upload until P4 ID confirmed |
 
@@ -324,7 +324,7 @@ Then update:
 
 If Houston rules P5-NM1 = "783,820" before go day, rebuild P5 tarball:
 ```bash
-bash tools/build_arxiv_tarball.sh pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex paper5_arxiv_v0.1.76
+bash tools/build_arxiv_tarball.sh pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex paper5_arxiv_v0.1.81
 ```
 
 ---
@@ -349,15 +349,15 @@ Prior round: Grok ACCEPT on all 6 through EXT3–EXT7 (stable calibration anchor
 
 | Gate | Status |
 |------|--------|
-| All 6 tarballs built from EXT10 .tex sources | DONE |
+| All 6 tarballs built from EXT16-closure .tex sources | DONE (919fd7cd) |
 | Standalone pdflatex (errors=0, undef=0) on all 6 | DONE |
 | md5 checksums recorded | DONE |
 | Zenodo deposition records prepared (one-click publish ready) | DONE |
 | Coordinated-drop sequence documented | DONE |
-| ORCID confirmed (0009-0008-3617-8729) | READY for Houston to link |
+| ORCID confirmed (0009-0008-3617-8729) | PENDING Houston (currently 404) |
 | P5-NM1 title ruling | PENDING Houston |
 | Houston 6-paper sign-off | PENDING |
 
 ---
 
-*Runbook prepared 2026-06-13 from git SHA eb4d6ce. Tarballs built locally; standalone compile verified. All 6 cross-citation placeholders (`arXiv:XXXX.XXXXX`) will be back-patched on submission day per §4.*
+*Runbook updated 2026-06-13 (SHIP_READINESS_FINAL QA sweep) — all version refs advanced to EXT16-closure (919fd7cd). Tarballs staged at `project-context/SSOT/arxiv_tarballs/`. All 6 cross-citation placeholders (`arXiv:XXXX.XXXXX`) will be back-patched on submission day per §4.*

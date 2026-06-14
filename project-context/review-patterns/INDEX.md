@@ -6,7 +6,7 @@ v1.0.66 external 4-vendor round (2026-05-15), 1 P1A external 3-reviewer
 round (2026-06-02), 1 P4 v1.0.149 external 3-reviewer round (2026-06-04),
 1 R39conf batch truth-audit (2026-06-13, 6 papers), and 1 EXT14 batch
 external round (2026-06-13, 6 papers)
-on 6 papers (P1A/P1B/P2/P3/P4/P5). Pattern mine last run: 2026-06-13 (EXT16 external round; pattern 060 promoted — \\mbox{-} math subscript escape extends pattern-059).
+on 6 papers (P1A/P1B/P2/P3/P4/P5). Pattern mine last run: 2026-06-13 (EXT16 external round; pattern 060 promoted — \\mbox{-} math subscript escape extends pattern-059). Patterns 053-060 all catalogued (053: in-prep citation leak; 054: sigma-mixing undeclared; 055: audit-artifact body leak; 056: pdftotext italic rendering artifact [filed 2026-06-13 SHIP_READINESS_FINAL QA]; 057: figure-regen text residual; 058: Gemini fresh-chat no-verdict; 059: math-mode subscript miss; 060: mbox-math-subscript-escape).
 
 Every external/direct-vendor R-round must be pre-screened against these
 patterns BEFORE dispatch, per the [[feedback-review-learning-loop]] and
@@ -17,8 +17,6 @@ Catalog is consumed by `/paper-pre-review-check` skill.
 ## Patterns
 
 Sorted by severity then frequency descending.
-
-Pattern mine last run: 2026-06-13 (EXT16 external round; pattern 060 promoted — \\mbox{-} math subscript escape extends pattern-059).
 
 ### High severity
 
@@ -51,6 +49,7 @@ Pattern mine last run: 2026-06-13 (EXT16 external round; pattern 060 promoted �
 | 025 | [Mathematically-impossible attribution (claim contradicts own equation)](pattern-025-mathematically-impossible-attribution.md) | high | 1 (P4 R42 R3) |
 | 054 | [σ values from different nulls juxtaposed without per-juxtaposition qualifier (cross-paper)](pattern-054-sigma-mixing-undeclared.md) | high | 8 (≥2 reviewers × P4/P3/P1A/P5, R39conf) |
 | 055 | [Audit-artifact body leak (version tags / gate verdicts / ticket IDs in compiled PDF)](pattern-055-audit-artifact-body-leak.md) | high | 9 (multiple reviewers × P3/P4/P5, R39conf) |
+| 056 | [pdftotext italic rendering artifact (short-token glyph misread by text-layer extraction)](pattern-056-pdftotext-italic-rendering-artifact.md) | medium | 1 (P4, EXT11→EXT12 — Table I \\textit{NS} rendered as MS by pdftotext; auto-falsified) |
 | 057 | [Figure-regen text-residual (body text not swept after systematic rename)](pattern-057-figure-regen-text-residual.md) | medium | 3 (P5, EXT12 — 3 residual V-Web tokens in §VIII/§IX/App C post-figure-regen) |
 
 ### Medium severity

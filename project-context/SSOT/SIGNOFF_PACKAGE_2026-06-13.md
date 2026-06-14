@@ -76,7 +76,7 @@ mechanical gaps (runbook .bbl patch, Zenodo version bumps) closed in commit
 
 **What's left:** Apply 2-line patch, bump to v1A.0.69, recompile. Then this paper is submission-ready.
 
-**[ ] Houston approves P1A v1A.0.74 for arXiv submission** (EXT11-closure | PDF md5: 3871b587 | 28pp)
+**[ ] Houston approves P1A v1A.0.77 for arXiv submission** (EXT16-closure | PDF md5: f1eab008 | 29pp)
 
 ---
 
@@ -88,7 +88,7 @@ mechanical gaps (runbook .bbl patch, Zenodo version bumps) closed in commit
 
 **What's left:** Optional — fold SN-overlap control chains (Exploratory w₀wₐ section) before submission; paper already carries the "Exploratory" caveat + full disclosure. Ruling: hold or ship is Houston's call.
 
-**[ ] Houston approves P1B v1B.0.71 for arXiv submission** (EXT11-closure | PDF md5: aa1a694e | 21pp | option: hold for SN-overlap chain fold-in)
+**[ ] Houston approves P1B v1B.0.72 for arXiv submission** (EXT16-confirmed FROZEN | PDF md5: 5a3c98e9 | 21pp | option: hold for SN-overlap chain fold-in)
 
 ---
 
@@ -100,7 +100,7 @@ mechanical gaps (runbook .bbl patch, Zenodo version bumps) closed in commit
 
 **What's left:** None blocking. Optional: targeted in-thread ChatGPT delta-confirm on regenerated figures (recommended; cheap; submission-day).
 
-**[ ] Houston approves P2 v1.7.65 for arXiv submission** (EXT11-closure | PDF md5: fc42f393 | 28pp)
+**[ ] Houston approves P2 v1.7.68 for arXiv submission** (EXT16-closure | PDF md5: 5a8a1af4 | 29pp)
 
 ---
 
@@ -112,7 +112,7 @@ mechanical gaps (runbook .bbl patch, Zenodo version bumps) closed in commit
 
 **What's left:** The two residual Houston-decisions from the 2026-06-11 package (title plural/count framing; S_BigAE column strip from Table III) are re-listed below in §4. No compute gate open.
 
-**[ ] Houston approves P3 v3.1.108 for arXiv submission** (EXT11-closure | PDF md5: 72bd3e5b | 29pp)
+**[ ] Houston approves P3 v3.1.111 for arXiv submission** (EXT16-closure | PDF md5: 4a8c1172 | 30pp)
 
 ---
 
@@ -124,7 +124,7 @@ mechanical gaps (runbook .bbl patch, Zenodo version bumps) closed in commit
 
 **What's left:** HF model-repo version tag `bamfai/galaxy-chirality-v2` → tag v2026.04 (5 min, HF write token). Submission-day task only. First paper in submission queue.
 
-**[ ] Houston approves P4 v1.0.188 for arXiv submission** (EXT11-closure | PDF md5: c47abc18 | 23pp | first in queue)
+**[ ] Houston approves P4 v1.0.188 for arXiv submission** (EXT16-confirmed FROZEN | PDF md5: c47abc18 | 23pp | first in queue)
 
 ---
 
@@ -136,7 +136,7 @@ mechanical gaps (runbook .bbl patch, Zenodo version bumps) closed in commit
 
 **What's left:** NM1 title count ruling (title reads "791,635" but T-Web cross-check uses 783,820 env-matched; recommend "783,820 Environment-Matched DR1 Spirals"). Once ruled, Fig 3 title regen is minutes of local work. Insert P4's arXiv ID on submission day.
 
-**[ ] Houston approves P5 v0.1.77-2026-06-13 for arXiv submission** (EXT11-closure | PDF md5: e5a3999a | 32pp | after NM1 title ruling)
+**[ ] Houston approves P5 v0.1.80-2026-06-13 for arXiv submission** (EXT16-closure | PDF md5: 7bb73989 | 32pp | after NM1 title ruling)
 
 ---
 
