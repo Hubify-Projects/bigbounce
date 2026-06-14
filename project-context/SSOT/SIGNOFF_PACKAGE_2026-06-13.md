@@ -17,6 +17,19 @@
 
 All source→mirror PDF md5 cross-checks PASSED. Convex bump: 6/6 OK. tsc: CLEAN. EXT14 manifest: project-context/peer-reviews/EXT14_BROWSER_MANIFEST.md. Harvest ETA ≥30 min from last submission.
 
+**EXT13-closure tarballs REBUILT 2026-06-13 (pre-EXT14, zero-latency drop readiness):**
+
+| Paper | Tarball | Tarball MD5 | Compile |
+|-------|---------|-------------|---------|
+| P1A | `paper1a_arxiv_v1A.0.75.tar.gz` | `611052d88d1566cf6be583449cc56a27` | CLEAN |
+| P1B | `paper1b_arxiv_v1B.0.72.tar.gz` | `f0c354fe998aa540550e8bab100e184c` | CLEAN |
+| P2  | `paper2_arxiv_v1.7.66.tar.gz`   | `f32de4f29933870e0ebf599c36b08908` | CLEAN |
+| P3  | `paper3_arxiv_v3.1.109.tar.gz`  | `7f60a8e7405092519ae89dea7e3ea4b3` | CLEAN |
+| P4  | `paper4_arxiv_v1.0.188.tar.gz`  | `9ec878204f68aa7fb3131fb1d52e284e` | CLEAN (FROZEN) |
+| P5  | `paper5_arxiv_v0.1.78-2026-06-13.tar.gz` | `29fe43a538d81a72fbdaaf9cee6d6e2b` | CLEAN |
+
+Source PDF md5s (8-char) verified against canonical source files: dcadf364 / 5a3c98e9 / b8cb9a4c / 7b8ad3d3 / c47abc18 / 5393bd48 — all PASS. EXT11 tarballs backed up with `.ext11-backup` suffix.
+
 ---
 
 ## ⚠️ PENDING HOUSTON ACTION — ORCID GATE

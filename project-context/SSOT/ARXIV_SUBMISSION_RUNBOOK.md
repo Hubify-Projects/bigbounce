@@ -19,35 +19,26 @@ Estimated wall-clock from "go" to all 6 papers live: **~26 hours**
 
 ---
 
-## 1. EXT11-Closure-Wave Tarballs — Canonical Location
+## 1. EXT13-Closure-Wave Tarballs — Canonical Location (REBUILT 2026-06-13, pre-EXT14)
 
 All 6 submission-ready tarballs live at:
 ```
 project-context/SSOT/arxiv_tarballs/
 ```
 
-| Paper | Tarball | MD5 | Pages | Compile |
-|-------|---------|-----|-------|---------|
-| P1A | `paper1a_arxiv_v1A.0.74.tar.gz` | `312fa42bd765a26a7eb8852bceecda1c` | 28 | CLEAN |
-| P1B | `paper1b_arxiv_v1B.0.71.tar.gz` | `1d9e622a8894a277086749dadec1ad75` | 21 | CLEAN |
-| P2  | `paper2_arxiv_v1.7.65.tar.gz`   | `629e54234f8cbb9ac7b30daa25e4b421` | 28 | CLEAN |
-| P3  | `paper3_arxiv_v3.1.108.tar.gz`  | `dfa3dc7f6e96bbe302ea9024f3e94864` | 29 | CLEAN |
-| P4  | `paper4_arxiv_v1.0.188.tar.gz`  | `1a9114093416c44396279a26c559c241` | 23 | CLEAN |
-| P5  | `paper5_arxiv_v0.1.77-2026-06-13.tar.gz` | `03fd5a96936a31240015872df0aa681e` | 32 | CLEAN |
+| Paper | Tarball | Tarball MD5 | Source PDF MD5 (prefix 8) | Pages | Compile |
+|-------|---------|-------------|--------------------------|-------|---------|
+| P1A | `paper1a_arxiv_v1A.0.75.tar.gz` | `611052d88d1566cf6be583449cc56a27` | `dcadf364` | 28 | CLEAN (errors=0 undef=0) |
+| P1B | `paper1b_arxiv_v1B.0.72.tar.gz` | `f0c354fe998aa540550e8bab100e184c` | `5a3c98e9` | 21 | CLEAN (errors=0 undef=0) |
+| P2  | `paper2_arxiv_v1.7.66.tar.gz`   | `f32de4f29933870e0ebf599c36b08908` | `b8cb9a4c` | 29 | CLEAN (errors=0 undef=0) |
+| P3  | `paper3_arxiv_v3.1.109.tar.gz`  | `7f60a8e7405092519ae89dea7e3ea4b3` | `7b8ad3d3` | 29 | CLEAN (errors=0 undef=0) |
+| P4  | `paper4_arxiv_v1.0.188.tar.gz`  | `9ec878204f68aa7fb3131fb1d52e284e` | `c47abc18` | 23 | CLEAN (errors=0 undef=0) — FROZEN |
+| P5  | `paper5_arxiv_v0.1.78-2026-06-13.tar.gz` | `29fe43a538d81a72fbdaaf9cee6d6e2b` | `5393bd48` | 32 | CLEAN (errors=0 undef=0) |
 
-All compiled via `tools/build_arxiv_tarball.sh`: errors=0, undef=0 on each pass.
-EXT13-closure-wave versions (2026-06-13): P1A v1A.0.75 / P1B v1B.0.72 / P2 v1.7.66 / P3 v3.1.109 / P4 v1.0.188 (FROZEN) / P5 v0.1.78.
-NOTE: EXT13 PDFs are same compiled binaries as EXT11 tarballs for 5 papers; P4 is frozen. If EXT14 returns 18/18 ACCEPT, rebuild EXT13-version tarballs before arXiv upload.
-These tarballs are the v2 post-patch upload files — cross-citations are still placeholder
-`arXiv:XXXX.XXXXX`; the patching step is in §4 below.
-
-Source mirrors (original per-paper locations, same content):
-- P1A: `arxiv/paper1a_arxiv_v1A.0.73.tar.gz`
-- P1B: `arxiv/paper1b_arxiv_v1B.0.70.tar.gz`
-- P2:  `research/focused_paper_source_integration/paper2_arxiv_v1.7.64.tar.gz`
-- P3:  `pipelines/p3_anomaly_engine/paper3_arxiv_v3.1.107.tar.gz`
-- P4:  `pipelines/p2_chirality/paper4_arxiv_v1.0.187.tar.gz`
-- P5:  `pipelines/p5_desi_chirality/paper/paper5_arxiv_v0.1.76-2026-06-13.tar.gz`
+All rebuilt via `tools/build_arxiv_tarball.sh` from EXT13-closure .tex sources.
+Source PDF md5s verified against canonical source PDFs at each paper's directory (match SIGNOFF_PACKAGE_2026-06-13.md table).
+EXT11 tarballs preserved as `*.ext11-backup` in same directory.
+These tarballs are the v1 upload files — cross-citations are still placeholder `arXiv:XXXX.XXXXX`; the patching step is in §4 below.
 
 ---
 
