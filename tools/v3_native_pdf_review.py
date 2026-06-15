@@ -697,15 +697,29 @@ def main() -> int:
     page_count = get_page_count(pdf_path)
     paper_text = extract_pdf_text(pdf_path)  # only used by Perplexity
     print(f"[v3 native-PDF review] {pdf_path.name}: {page_count} pages, {len(paper_text):,} chars extracted (Perplexity only)", flush=True)
-    print(f"[v3 native-PDF review] Dispatching {len(REVIEWERS)} reviewers in parallel...", flush=True)
+
+    # The Anthropic/Claude reviewer leg is supplied by a Claude Code sub-agent
+    # (the Opus subscription), NOT the pay-as-you-go ANTHROPIC_API_KEY. Houston
+    # directive 2026-06-14: never burn the API key on reviews. This tool runs the
+    # 4 API vendors (OpenAI/Gemini/Grok/Perplexity); the orchestrator spawns an
+    # Opus Agent to produce EXT{N}_P{X}_Claude_brutal.md. Set V3_USE_ANTHROPIC_API=1
+    # to fall back to the API leg if ever needed.
+    use_anthropic_api = os.environ.get("V3_USE_ANTHROPIC_API", "0") == "1"
+    active = {
+        n: c for n, c in REVIEWERS.items()
+        if use_anthropic_api or c["vendor"] != "anthropic"
+    }
+    if not use_anthropic_api:
+        print("[v3 native-PDF review] Anthropic API leg DISABLED — Claude review comes from a Claude Code sub-agent (subscription, not the API key).", flush=True)
+    print(f"[v3 native-PDF review] Dispatching {len(active)} reviewers in parallel...", flush=True)
 
     out_dir = REPO / "project-context" / "peer-reviews"
     out_dir.mkdir(parents=True, exist_ok=True)
 
     results = []
-    with ThreadPoolExecutor(max_workers=len(REVIEWERS)) as pool:
+    with ThreadPoolExecutor(max_workers=len(active)) as pool:
         futures = {}
-        for name, cfg in REVIEWERS.items():
+        for name, cfg in active.items():
             prompt = REVIEW_PROMPT_TEMPLATE.format(
                 persona=cfg["persona"],
                 paper_tag=paper_tag,
