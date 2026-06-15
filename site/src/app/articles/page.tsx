@@ -5,9 +5,9 @@ import { Card, CardContent, CardHeader, CardTitle } from"@/components/ui/card";
 import { Badge } from"@/components/ui/badge";
 
 export const metadata: Metadata = {
-  title:"Articles",
+  title: "Articles",
   description:
-"Deep dives, explainers, and strategic assessments from the BigBounce research program.",
+    "Deep dives, explainers, and strategic assessments from the BigBounce research program.",
 };
 
 export default function ArticlesPage() {
@@ -15,7 +15,7 @@ export default function ArticlesPage() {
     <>
       <div className="hero">
         <p className="text-xs sans" style={{ marginBottom: 8 }}>
-          Research Articles · Spin-Torsion Cosmology Program
+          Research Articles · BigBounce Cosmology Program
         </p>
         <h1 style={{ fontFamily:"var(--font-mono-stack)", fontWeight: 600 }}>
           Articles

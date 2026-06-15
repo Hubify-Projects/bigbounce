@@ -215,7 +215,7 @@ export const surveys: Survey[] = [
     connections: [
       { label: "ACT DR6", href: "/surveys/act-dr6" },
       { label: "Birefringence", href: "/predictions/birefringence" },
-      { label: "Paper 1", href: "/papers/paper-1" },
+      { label: "Paper 1A", href: "/papers/paper-1a" },
     ],
   },
   {
@@ -267,7 +267,8 @@ export const surveys: Survey[] = [
     paperRefs: ["Paper 3 — IR variability"],
     figures: [],
     keyFindings: [
-      "v2: 444 anomalies from 44,341 sources (after ecliptic mask)",
+      "419 canonical anomalies (top-1% of 43.5K sources); 419/436 pre-mask candidates retained after |b_ecl|<80 deg cut (96.1%)",
+      "2.6x polar-cap excess vs uniform null eliminated by mask",
       "Top anomaly at Dec=80° (high galactic latitude — real, not systematic)",
       "Variability features: Stetson J, chi-squared, amplitude",
     ],
@@ -281,7 +282,7 @@ export const surveys: Survey[] = [
     ],
     connections: [
       { label: "eROSITA (X-ray×IR)", href: "/surveys/erosita-dr1" },
-      { label: "ZTF time-domain", href: "/surveys/desi-dr1" },
+      { label: "DESI optical (16 IR-variable cross-matches)", href: "/surveys/desi-dr1" },
     ],
   },
   {
@@ -314,8 +315,8 @@ export const surveys: Survey[] = [
     ],
     topAnomalies: [],
     connections: [
-      { label: "Dyson sphere search", href: "/predictions/fnl" },
-      { label: "AllWISE IR", href: "/surveys/neowise" },
+      { label: "NEOWISE IR (AllWISE overlap)", href: "/surveys/neowise" },
+      { label: "eROSITA X-ray", href: "/surveys/erosita-dr1" },
     ],
   },
 ];

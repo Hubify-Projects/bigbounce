@@ -95,7 +95,7 @@ export default async function ActivityPage() {
         </h1>
         <p className="subtitle">
           Every paper-orchestration event from the Convex source-of-truth:
-          version bumps, cross-vendor R-rounds, finding truth-audits, §pathc_caveats closures,
+          version bumps, cross-vendor R-rounds, finding truth-audits, caveat closures,
           pod lifecycle. Time-sorted descending. See{" "}
           <Link href="/docs">/docs</Link> for how the pipeline writes here.
         </p>

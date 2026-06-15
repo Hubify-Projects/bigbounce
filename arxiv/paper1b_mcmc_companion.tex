@@ -119,8 +119,18 @@
 %   FALSIFIED list (14 items) not acted on.)
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1B.0.71}
-\newcommand{\paperTimestamp}{June 13, 2026}
+\newcommand{\paperVersion}{v1B.0.73}
+\newcommand{\paperTimestamp}{June 14, 2026}
+% v1B.0.73 (2026-06-14): EXT18-closure — Omega_a subsection: rho_crit,0 8.1e-11->3.7e-11 eV^4, relic denominator 2H_0^2->6H_0^2, H_0-marginalization <=1%-><=3%, S8 2.5σ->2.6σ harmonized.
+% v1B.0.72 (2026-06-13 — EXT13 closure: release-pairing harmonized across Sec III + Sec V.B + Conclusion per ChatGPT EXT12 MINOR)
+%   1. Sec III limitation parenthetical updated: "not run a release-pairing swap test" replaced
+%      with c15 empirical result — planck_2020_lollipop.lowlE + planckpr4lensing vs frozen-chain
+%      planck_2018_lowl.EE + planck_2018_lensing.clik; 0.04sigma DeltaNeff agreement
+%      provides the empirical pairing-bias bound; parenthetical now consistent with V.B note.
+%   2. Conclusion release-pairing caveat updated: "dedicated run is planned" replaced with
+%      back-reference to c15 robustness result (planck_2020_lollipop.lowlE + planckpr4lensing;
+%      0.04sigma agreement; Sec. V.B Release-pairing note), resolving the forward-looking caveat.
+%   3. Sec V.B Release-pairing note unchanged (already harmonized at v1B.0.71).
 % v1B.0.71 (2026-06-13 — EXT11 closure: release-pairing description aligned to c15.input.yaml likelihood names; (E3/E4)/(E8) audit labels stripped per pattern-055)
 %   1. Release-pairing note (Sec V.B): replaced "(E3/E4)" label with substantive content.
 %      Description now accurately states that c15 uses planck_2020_lollipop.lowlE +
@@ -1255,11 +1265,14 @@ i.e.\ \texttt{planck\_NPIPE\_highl\_CamSpec.TTTEEE} +
 \texttt{planck\_2018\_lensing.clik} in the Cobaya YAML)
 has produced two frozen dataset combinations with publication-quality
 convergence (limitation: the PR4/NPIPE high-$\ell$ + 2018-release
-low-$\ell$/lensing mixture is the standard Cobaya pairing, but we have
-not run a release-pairing swap test with PR4-consistent low-$\ell$ and
-lensing counterparts; any pairing-induced bias on the headline
-$\Delta\Neff$/$H_0$/$S_8$ at the quoted precision is therefore
-unquantified here), plus a third Planck-only run currently at sub-convergence
+low-$\ell$/lensing mixture is the standard Cobaya pairing; the c15
+verification re-run uses \texttt{planck\_2020\_lollipop.lowlE} and
+\texttt{planckpr4lensing} in place of the frozen-chain
+\texttt{planck\_2018\_lowl.EE} and \texttt{planck\_2018\_lensing.clik},
+making c15 a release-pairing robustness rerun; the $0.04\sigma$ agreement
+in $\Delta\Neff$ across this likelihood substitution provides an empirical
+bound on pairing-induced bias at the quoted precision; see
+Sec.~\ref{sec:cosmo_fits} \emph{Release-pairing note}), plus a third Planck-only run currently at sub-convergence
 sample count and not aggregated into any frozen-posterior summary statistic
 in this paper. Frozen MCMC program: $\mathbf{309{,}189}$ raw samples
 across 2 frozen dataset combinations ($176{,}240 + 132{,}949$).
@@ -1571,7 +1584,7 @@ posterior is correctly pulled; the 3.6$\sigma$ tension persists
 because the model cannot shift $H_0$ enough to satisfy both data sets
 simultaneously --- the canonical Hubble-tension result, not a
 YAML omission. (d)~The iter2 chain's $S_8 = 0.8245 \pm 0.0089$
-(Table~\ref{tab:iter2_posterior}) sits $2.5\sigma$ above the DES-Y3
+(Table~\ref{tab:iter2_posterior}) sits $2.6\sigma$ above the DES-Y3
 weak-lensing value $S_8 = 0.776 \pm 0.017$~\cite{DES2024}
 ($\Delta = 0.049$ against a combined uncertainty of $0.019$): the
 $S_8$ tension is not relieved in this chain either.
@@ -2434,7 +2447,7 @@ $\beta_{\rm obs}=0.342^\circ\pm0.094^\circ$ at $0.5\sigma$.
 \emph{H$_0$ marginalization note:} $\Omega_a$ at each MCMC step uses the $\Lambda$CDM background
 Hubble rate evaluated at the Cobaya posterior mean $H_0 = 67.68~\mathrm{km\,s^{-1}\,Mpc^{-1}}$
 (fixed, not marginalized). Marginalizing $H_0$ over the Planck $1\sigma$ interval
-shifts $\Omega_a$ by $\lesssim 1\%$ ($\Omega_a \propto H_0^{-2}$), well below
+shifts $\Omega_a$ by $\lesssim 3\%$ ($\Omega_a \propto H_0^{-2}$), well below
 the statistical uncertainty of the $\Omega_a < 0.01$ cut.
 The strict $\theta_i \le 0.1$ sliver of fn.~\ref{fn:theta_backreaction} carries only
 $0.33\%$ of the posterior mass by MC weight ($42$ of the $8{,}955$ raw
@@ -2502,9 +2515,9 @@ At onset the potential dominates: $\rho_a(z_{\rm osc}) \approx V(\phi_i)
 \approx \frac{m_a^2 f_a^2[1-\cos(\theta_i)]}{\rho_{\rm crit,0}\,(1+z_{\rm osc})^3},
 \label{eq:omega_a_def}
 \end{equation}
-with $\rho_{\rm crit,0} = 3H_0^2\MPl^2 \approx 8.1\times10^{-11}$\,eV$^4$
+with $\rho_{\rm crit,0} = 3H_0^2\MPl^2 \approx 3.7\times10^{-11}$\,eV$^4$
 and $\MPl \approx 2.44\times10^{18}$\,GeV. For $f_a = \MPl$ and small $\theta_i$
-this gives $\Omega_a \approx m_a^2\theta_i^2/(2H_0^2(1+z_{\rm osc})^3)$,
+this gives $\Omega_a \approx m_a^2\theta_i^2/(6H_0^2(1+z_{\rm osc})^3)$,
 confirming the $\Omega_a \propto \theta_i^2$ scaling of fn.~\ref{fn:theta_backreaction}.
 
 \textit{Computation from sampled parameters.}---At each MCMC step the ALP module
@@ -2632,10 +2645,13 @@ dataset combinations and recovers $H_0 = 67.68\pm 1.06\,\text{km\,s}^{-1}\,
 $\Delta\Neff$ extension does not resolve the Hubble tension. We note
 that the $\Delta\Neff$ constraint reported here uses Planck PR4 / NPIPE
 CamSpec high-$\ell$ TTTEEE paired with Planck~2018 low-$\ell$ TT/EE +
-lensing without a release-consistency (pairing-swap) control run; a
-dedicated PR4-vs-2018-only consistency run is planned to verify that the
-quoted $\Delta\Neff$ and $H_0$ posteriors are stable under the
-release-pairing choice (caveat (e), Sec.~\ref{sec:verification}).
+lensing (\texttt{planck\_2018\_lowl.EE} + \texttt{planck\_2018\_lensing.clik});
+the c15 verification re-run uses the PR4-consistent counterparts
+\texttt{planck\_2020\_lollipop.lowlE} and \texttt{planckpr4lensing},
+making it a release-pairing robustness rerun; the resulting $0.04\sigma$
+agreement in $\Delta\Neff$ provides an empirical bound on pairing-induced
+bias at the quoted precision (see Sec.~\ref{sec:cosmo_fits},
+\emph{Release-pairing note}).
 Current data
 neither require nor exclude a phenomenological $\Delta\Neff$ proxy
 contribution for the bounce class; CMB-S4

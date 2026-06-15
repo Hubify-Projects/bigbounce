@@ -1,5 +1,5 @@
-// AUTO-GENERATED from /articles.html — do not edit by hand.
-// Regenerate with: cd site && node scripts/extract-articles.mjs
+// Sourced from /articles.html (regen: cd site && node scripts/extract-articles.mjs).
+// NOTE: carries manual EXT18 copy polish — keep articles.html in sync before regenerating.
 
 export interface Article {
   slug: string;
@@ -30,7 +30,7 @@ export const articles: Article[] = [
   {
     "slug": "matter-bounce-blueprint",
     "title": "The Matter-Bounce Blueprint: Predictive Precision in Branch V Cosmology",
-    "summary": "Why Branch V is the program's flagship — a strongly constrained (conditional on bounce-transition assumptions) prediction of f_NL = -35/8 testable by SPHEREx at 2.6–5σ realistic, and the only surviving route to a genuinely novel bouncing-cosmology observable.",
+    "summary": "Why Branch V is the program's flagship — a strongly constrained prediction of fₙₗ = −35/8 (conditional on bounce-transition assumptions) testable by SPHEREx at 2.6–5σ, and the clearest route to a genuinely novel bouncing-cosmology observable.",
     "type": "Research",
     "category": "Branch V",
     "isNew": false
@@ -38,7 +38,7 @@ export const articles: Article[] = [
   {
     "slug": "ech-bounce-phenomenology",
     "title": "The ECH Spin-Torsion Bounce and Matter-Bounce Phenomenology",
-    "summary": "A comprehensive technical overview of the Einstein-Cartan-Holst framework: the quantum bounce at ρ_crit ≈ 0.27 ρ_Pl, the 14 structural barriers, and the surviving ALP birefringence and matter-bounce predictions.",
+    "summary": "A comprehensive technical overview of the Einstein-Cartan-Holst framework: the quantum bounce at ρ_crit ≈ 0.27 ρ_Pl, the 14 structural barriers, and the surviving ALP birefringence and matter-bounce predictions (N3 novelty tier).",
     "type": "Technical",
     "category": "Framework",
     "isNew": false
@@ -54,7 +54,7 @@ export const articles: Article[] = [
   {
     "slug": "technical-evaluation",
     "title": "Technical Evaluation: Spin-Torsion Cosmology Research Program",
-    "summary": "A formal institutional assessment of Project BigBounce — the 14 barriers, the 24 research branches, the surviving empirical successes, and the recommended next steps for the field.",
+    "summary": "A formal technical assessment of Project BigBounce — the 14 structural barriers, the 24 research branches, the surviving empirical successes, and the recommended next steps for the field.",
     "type": "Evaluation",
     "category": "Institutional",
     "isNew": false
@@ -70,7 +70,7 @@ export const articles: Article[] = [
   {
     "slug": "evolution-of-rigor",
     "title": "The Evolution of Rigor in the Big Bounce Project",
-    "summary": "A pedagogical case study in scientific self-correction. How a 32,000-word speculative manuscript became a definitive closure map through eight rounds of adversarial peer review.",
+    "summary": "A pedagogical case study in scientific self-correction. How a speculative manuscript became a rigorous closure map through seventeen rounds of adversarial peer review spanning five AI models.",
     "type": "Case Study",
     "category": "Pedagogy",
     "isNew": false

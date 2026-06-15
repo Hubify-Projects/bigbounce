@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "API & MCP",
+  title: "Architecture — API & MCP",
   description:
-    "Bigbounce data model, Convex API, and MCP tool catalog. Phase 5 of the data-model rebuild — discoverable interface for any agent (Claude Code, Codex, Cursor) contributing to the project.",
+    "Bigbounce data model, Convex API, and MCP tool catalog. Discoverable interface for any agent (Claude Code, Codex, Cursor) contributing to the project.",
 };
 
 const MCP_TOOLS = [
@@ -150,7 +150,7 @@ export default function ApiDocsPage() {
           <code>papers.getPaperState(slug)</code> — it computes readiness from
           open findings + caveats. Readiness is never hand-set. Formula:{" "}
           <code>95 − 2·openBlockers − 1·openMajors − 0.2·openMinors − 1·openCaveats</code>,
-          capped at 95 pre-Houston-sign-off (100 with sign-off).
+          capped at 99 (final 1% requires Houston sign-off; the system never auto-awards 100%).
         </p>
       </section>
 

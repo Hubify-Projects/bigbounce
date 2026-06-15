@@ -54,8 +54,8 @@ export default function PaperPage() {
           Papers
         </h1>
         <p className="subtitle">
-          Published and in-progress research papers. Click any paper for full
-          details, connected surveys, predictions tested, and remaining work.
+          Pre-print research papers ready for arXiv submission. Click any paper
+          for full details, connected surveys, predictions tested, and remaining work.
         </p>
         <div className="insight-strip">
           <div className="insight">

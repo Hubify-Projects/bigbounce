@@ -307,7 +307,7 @@ export function ReadinessStrip() {
   const current = cps[cps.length - 1];
   return (
     <div className="readiness-strip" title={current.note}>
-      <span className="readiness-strip-label">readiness (95-cap)</span>
+      <span className="readiness-strip-label">readiness (99-cap · awaiting Houston sign-off)</span>
       {PAPER_IDS.map((p) => {
         const v = current.values[p as PaperId];
         const trail = cps

@@ -28,9 +28,9 @@ export const predictions: Prediction[] = [
     description: "The decisive bounce-vs-inflation discriminator. The matter bounce predicts f_NL = -35/8 = -4.375, parameter-free and mechanism-independent across all matter bounce variants. Inflation predicts |f_NL| < 1. One measurement settles the question.",
     currentConstraint: "σ(f_NL) ≈ 4.1 (Planck + DESI combined, external). Our DESI multi-tracer central forecast: 9.4% improvement (empirical α, consistent with no improvement at <1σ). SPHEREx forecast: 2.6–5σ conditional detection if f_NL = -4.375.",
     surveys: ["DESI DR1 (central 9.4% multi-tracer f_NL forecast)", "SDSS DR18 (2nd tracer)", "LAMOST DR10 (3rd tracer pending)"],
-    papers: ["Paper 2 — primary prediction paper", "Paper 3 — multi-tracer improvement"],
+    papers: ["Paper 2 (f_NL forecast) — primary prediction paper", "Paper 3 (anomaly catalog) — multi-tracer improvement"],
     keyResults: [
-      "f_NL = -35/8 verified across 3 bounce models (mechanism-independent)",
+      "f_NL = -35/8 derived across 3 bounce models (mechanism-independent, parameter-free)",
       "Current Planck alone: σ ≈ 5.1, f_NL = -0.9 ± 5.1",
       "Combined Planck + DESI: σ ≈ 4.1 (our -4.375 at ~1.1σ)",
       "Multi-tracer central forecast: 9.4% improvement from AI-purified DESI anomaly tracers (consistent with no improvement at <1σ)",

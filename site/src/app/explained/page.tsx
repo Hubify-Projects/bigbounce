@@ -8,9 +8,9 @@ import { Separator } from"@/components/ui/separator";
 import type { Metadata } from"next";
 
 export const metadata: Metadata = {
-  title:"Explainer",
+  title: "Explainer",
   description:
-"A non-technical explanation of the BigBounce research program.",
+    "A non-technical explanation of the BigBounce research program.",
 };
 
 export default function ExplainedPage() {
@@ -99,8 +99,8 @@ export default function ExplainedPage() {
             </CardHeader>
             <CardContent>
               <p className="text-sm leading-relaxed text-muted-foreground">
-                The bounce predicts a specific pattern in how galaxies cluster
-                — a &ldquo;non-Gaussianity&rdquo; signal of exactly
+                The matter-bounce scenario predicts a specific pattern in how
+                galaxies cluster — a &ldquo;non-Gaussianity&rdquo; signal of
                 &minus;4.375. Inflation predicts this number should be nearly
                 zero. NASA&apos;s SPHEREx mission (~2028) will measure this
                 directly.
@@ -158,11 +158,11 @@ export default function ExplainedPage() {
             <CardContent>
               <p className="text-sm leading-relaxed text-muted-foreground">
                 Our AI pipelines have scanned 37.3 million astronomical sources
-                across 7 surveys, finding 378,280 objects that don&apos;t match
+                across seven surveys, finding 378,280 objects that do not match
                 known patterns. These anomalies supply candidate high-bias
                 tracers that could sharpen the f<sub>NL</sub> measurement
-                (central forecast 9.4%, still consistent with no improvement
-                at current signal-to-noise).
+                (central forecast improvement 9.4%, consistent with zero
+                improvement at current signal-to-noise).
               </p>
             </CardContent>
           </Card>

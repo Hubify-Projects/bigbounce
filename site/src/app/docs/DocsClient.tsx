@@ -264,7 +264,7 @@ const SECTIONS: DocSection[] = [
         returns: "Array<PaperWithVersion>",
         example: `useQuery(api.papers.listPapersWithVersions)
 // → [{ slug: "p3", title: "Multi-Survey Anomaly Catalog",
-//      latestVersion: "3.1.73", readinessComputed: 95, ... }, ...]`,
+//      latestVersion: "3.1.111", readinessComputed: 99, ... }, ...]`,
       },
       {
         method: "QUERY",

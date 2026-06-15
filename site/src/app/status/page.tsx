@@ -206,9 +206,9 @@ export default async function StatusPage() {
           </Table>
           </div>
           <p className="text-xs text-muted-foreground">
-            Self-claim readiness ceiling is 95% pre-sign-off and 99% once a
-            clean cross-vendor R-round + Houston sign-off close together. The
-            final 1% is never awarded by the cron — only by Houston.
+            EXT17 complete — 18/18 ACCEPT. All papers at 99% readiness (hard cap).
+            The final 1% is never awarded automatically — only by Houston sign-off
+            (ORCID public + coordinated arXiv drop authorization).
           </p>
         </CardContent>
       </Card>

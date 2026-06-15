@@ -10,9 +10,9 @@ import { Separator } from"@/components/ui/separator";
 import type { Metadata } from"next";
 
 export const metadata: Metadata = {
-  title:"Speculations",
+  title: "Speculations",
   description:
-"Future research directions spanning dark energy, black holes, SETI, and particle physics.",
+    "Future research directions spanning dark energy, black holes, SETI, and particle physics.",
 };
 
 interface SpecCardProps {
@@ -62,16 +62,16 @@ const sections: Array<{
 "73% of the universe is dark energy. The quintom branch of bounce cosmology can unify bounce + dark energy through phantom fields, predicting w-crossing (quintom-B). External DESI DR2 (Adame et al.) reports 2.8–4.2σ for w-crossing. Our own program treats this theoretically — Paper 1A's model-discrimination table is explicit that there are zero free-w0–wa samples in our 309,189-sample frozen posterior (Paper 1B). The actionable next step is standing up an in-house quintom MCMC.",
       },
       {
-        title:"f_NL = −35/8: The Decisive Test",
+        title:"fNL = −35/8: The Decisive Test",
         tag:"ACTIONABLE (forecast) · SPHEREx ~2028 · Parameter-free",
         children:
-"SPHEREx will measure primordial non-Gaussianity to σ ≈ 1. Our prediction is −4.375, parameter-free. Inflation predicts |f_NL| < 1. One measurement, one answer.",
+"SPHEREx will measure primordial non-Gaussianity to σ ≈ 1. The matter-bounce prediction is −4.375, parameter-free. Inflation predicts |fNL| < 1. One measurement, one answer.",
       },
       {
         title:"What Is Dark Matter?",
         tag:"Future · LISA ~2035 · PBH dark matter",
         children:
-"The asymmetric matter bounce can produce asteroid-mass primordial black holes as dark matter candidates. Our f_NL naturally regulates PBH abundance.",
+"Certain bounce scenarios can produce asteroid-mass primordial black holes as dark matter candidates. The matter-bounce f_NL prediction constrains the primordial power spectrum in a way that naturally regulates PBH overproduction.",
       },
     ],
   },
@@ -98,10 +98,10 @@ const sections: Array<{
     badge:"Astrophysics",
     cards: [
       {
-        title:"195,829 Uncharacterized Objects",
-        tag:"ACTIONABLE · Enhanced 22.5M · Paper 3",
+        title:"378,280 Uncharacterized Objects",
+        tag:"ACTIONABLE · 37.3M sources · 7 surveys · Paper 3",
         children:
-"Our AI pipeline found objects absent from every major catalog. What ARE they? Full classification underway.",
+"Our AI pipeline found 378,280 objects absent from standard catalogs across seven sky surveys. What are they? Full classification and follow-up underway.",
       },
       {
         title:"Galaxy Morphology: What Shapes Don't Fit?",

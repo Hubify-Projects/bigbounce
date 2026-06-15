@@ -46,6 +46,25 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "EXT18-API-VERIFICATION",
+    kind: "internal-api",
+    dateISO: "2026-06-14",
+    timePT: "12:45",
+    title: "EXT18 verification round — native-PDF cross-vendor · 4/6 clean · P1B + P2 residual fixes closed (v1B.0.73 / v1.7.69)",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "Final pre-drop check: a native-PDF cross-vendor review (OpenAI · Gemini · Grok · Perplexity — the Anthropic Claude leg was out of API credits, so a 4-vendor round) on the post-EXT17 PDFs, followed by a per-finding truth-audit. P1A/P3/P4/P5 audited CLEAN — every 'ESSENTIAL' was an already-addressed over-call (companion self-containment, abstract-qualifier duplication) or an OCR/extraction artifact, all falsified against source. P1B carried real arithmetic in the Ωa relic-density subsection added at v1B.0.69 (after its freeze): ρ_crit,0 8.1e-11→3.7e-11 eV⁴, relic denominator 2H₀²→6H₀², H₀-marginalization ≤1%→≤3%, S8 2.5σ→2.6σ — closed in v1B.0.73. P2 took 3 internal-consistency fixes (16th-percentile band direction, r≲1.2→1.14 scan range, abstract 84–88%→83–88%) — closed in v1.7.69.",
+    keyTakeaways: [
+      "The round earned its keep: caught a factor-2 (ρ_crit) and factor-3 (Ωa denominator) slip in P1B that escaped 4 frozen rounds — the subsection was added post-freeze",
+      "P1A/P3/P4/P5 CLEAN on truth-audit — reviewers re-raised already-addressed items and OCR artifacts; no substantive new findings",
+      "4-vendor round (OpenAI · Gemini · Grok · Perplexity); Anthropic API credit-exhausted — documented degraded-round, 4-vendor data sufficient",
+      "P1B v1B.0.72→v1B.0.73 and P2 v1.7.68→v1.7.69 both recompiled clean (0 undefined refs/cites); arXiv tarballs rebuilt",
+      "P1B + P2 rolled 99→98 pending a clean confirmation round; P1A/P3/P4/P5 hold 99",
+    ],
+    links: [
+      { label: "EXT18 reports", href: "https://github.com/Hubify-Projects/bigbounce/tree/main/project-context/peer-reviews" },
+    ],
+  },
+  {
     id: "EXT17-MILESTONE-18-18-ACCEPT",
     kind: "external-browser",
     dateISO: "2026-06-13",
@@ -1972,6 +1991,48 @@ export const externalVerdictRounds: ExternalRoundVerdicts[] = [
     },
     note: "EXT12: 7/18 confirmed ACCEPT (Grok 6/6, ChatGPT P4 ACCEPT — first ChatGPT ACCEPT in campaign). ChatGPT P1A/P1B/P2/P3/P5 = MINOR (1-2 text-only fixes each, no new analysis). Gemini 6/6 = synthesis-mode / NO FORMAL VERDICT (fresh-chat format didn't include explicit referee-format instruction — classified NO_VERDICT, EXT11 baselines held). P4 = 3/3 ACCEPT confirmed (publication-ready). EXT13 closure wave + Gemini resubmit (with explicit verdict format) = HIGH CONFIDENCE 18/18 ACCEPT. New auto-rule pattern-057: after systematic rename, grep full body text for residual tokens.",
   },
+  {
+    roundId: "EXT14",
+    dateISO: "2026-06-13",
+    windowPT: "Jun 13 · 19:05 PDT submit · harvested 20:15 PDT",
+    verdicts: {
+      P1A: ["MINOR", "ACCEPT", "MINOR"],
+      P1B: ["ACCEPT", "ACCEPT", "ACCEPT"],
+      P2: ["MINOR", "ACCEPT", "ACCEPT"],
+      P3: ["MINOR", "ACCEPT", "ACCEPT"],
+      P4: ["ACCEPT", "ACCEPT", "ACCEPT"],
+      P5: ["MINOR", "ACCEPT", "MINOR"],
+    },
+    note: "EXT14: 12/18 ACCEPT — major step forward from EXT12 (7/18). P1B 3/3 ACCEPT (ChatGPT NEW + Grok + Gemini) — FROZEN alongside P4. Grok 8th consecutive 6/6 ACCEPT. Gemini pattern-058 SUCCESS: 6/6 formal verdicts. ChatGPT: P1B+P4 ACCEPT; P1A/P2/P3/P5 MINOR (1-2 local text fixes). Pattern-059: math-mode subscripts require separate sweep after systematic rename.",
+  },
+  {
+    roundId: "EXT16",
+    dateISO: "2026-06-13",
+    windowPT: "Jun 13 · 01:30 PDT harvest",
+    verdicts: {
+      P1A: ["MINOR", "ACCEPT", "ACCEPT"],
+      P1B: ["ACCEPT", "ACCEPT", "ACCEPT"],
+      P2: ["MINOR", "ACCEPT", "ACCEPT"],
+      P3: ["MINOR", "ACCEPT", "ACCEPT"],
+      P4: ["ACCEPT", "ACCEPT", "ACCEPT"],
+      P5: ["MINOR", "ACCEPT", "ACCEPT"],
+    },
+    note: "EXT16: 14/18 ACCEPT. Grok 9th consecutive 6/6 ACCEPT. Gemini 6/6 ACCEPT (pattern-058 100%; P1A+P5 upgraded from MINOR). P1B+P4 frozen 3/3 ACCEPT confirmed. ChatGPT: P1B+P4 ACCEPT; P1A/P2/P3/P5 MINOR (4 one-line fixes). EXT16-closure wave immediately closed all 4 ChatGPT MINOR items.",
+  },
+  {
+    roundId: "EXT17",
+    dateISO: "2026-06-13",
+    windowPT: "Jun 13 · 23:59 PDT harvest",
+    verdicts: {
+      P1A: ["ACCEPT", "ACCEPT", "ACCEPT"],
+      P1B: ["ACCEPT", "ACCEPT", "ACCEPT"],
+      P2: ["ACCEPT", "ACCEPT", "ACCEPT"],
+      P3: ["ACCEPT", "ACCEPT", "ACCEPT"],
+      P4: ["ACCEPT", "ACCEPT", "ACCEPT"],
+      P5: ["ACCEPT", "ACCEPT", "ACCEPT"],
+    },
+    note: "EXT17: 18/18 ACCEPT — PUBLICATION GREEN LIGHT. All 4 EXT16 ChatGPT MINORs closed (P1A thermal propagation, P2 CDF-tail direction, P3 Table IX prior density, P5 T-Web 3-fix bundle). 2 false positives truth-audited. Grok 10th+ consecutive 6/6. Gemini 6/6 (pattern-058 100%). ChatGPT 6/6 post-audit. Campaign complete: 17 EXT rounds, ~18 MAJORs → 0 MINORs/MAJORs.",
+  },
 ];
 
 export interface GapPoint {
@@ -2072,6 +2133,41 @@ export const gapSeries: GapPoint[] = [
     perPaper: { P1A: 2, P1B: 1, P2: 1, P3: 2, P4: 0, P5: 4 },
     note: "EXT12 truth-audit: ~10 remaining text-only fixes across 5 papers (P4 = 0 substantive findings — confirmed 3/3 ACCEPT). P1A: 2 local wording (Sec IV/App B dimension sentence + reheating residual). P1B: 1 release-pairing harmonization across 3 locations. P2: 1 BF self-check paragraph (3 sentences). P3: 2 precision fixes (DESI validation gate type + Table IX Savage-Dickey label). P5: 4 items (3 residual V-Web tokens + Fig 8 spacing + 'Verdict.' label + DOI). Gemini NO VERDICT (synthesis-mode) — not counted as new findings; EXT11 baselines held. New pattern-057: systematic-rename-grep-body-text.",
   },
+  {
+    roundId: "EXT13",
+    dateISO: "2026-06-13",
+    total: 6,
+    perPaper: { P1A: 1, P1B: 1, P2: 1, P3: 1, P4: 0, P5: 2 },
+    note: "EXT13-closure-wave: 5-paper text-only closure wave (P4 frozen). Remaining external-only findings closed: P1A dim-bookkeeping + reheating residual; P1B release-pairing harmonization; P2 BF self-check rewrite; P3 abstract DESI gate type + Table IX BF note; P5 pattern-057 body V-Web residuals (4 sites). P4 = 0, FROZEN at 3/3 ACCEPT.",
+  },
+  {
+    roundId: "EXT14",
+    dateISO: "2026-06-13",
+    total: 8,
+    perPaper: { P1A: 3, P1B: 0, P2: 1, P3: 1, P4: 0, P5: 3 },
+    note: "EXT14 truth-audit: 12/18 ACCEPT. ~8 verified findings. P1B+P4 at 0 (frozen ACCEPT). P1A: 3 wording items (chirality-flipping, parity-odd amplitude, local-operator-promotion framing). P2: 1 BF Eq.9 vs Eq.10 mapping. P3: 1 Table IX Savage-Dickey footnote. P5: 3 items (2 math-mode subscripts Sec IX B + Eq display). Pattern-059 encoded: math-mode subscripts require separate sweep.",
+  },
+  {
+    roundId: "EXT16",
+    dateISO: "2026-06-13",
+    total: 4,
+    perPaper: { P1A: 1, P1B: 0, P2: 1, P3: 1, P4: 0, P5: 1 },
+    note: "EXT16 truth-audit: 14/18 ACCEPT. 4 ChatGPT MINOR items remained. P1A: Sec XII.A C/P-violating thermal-scattering propagation miss. P2: CDF-tail direction corrected (raises not reduces for narrow delta-prior). P3: Table IX prior density footnote. P5: math-mode V\\mbox{-}Web + nomenclature note direction + dup T-Web. P1B+P4 frozen ACCEPT — 0 findings.",
+  },
+  {
+    roundId: "EXT17",
+    dateISO: "2026-06-13",
+    total: 0,
+    perPaper: { P1A: 0, P1B: 0, P2: 0, P3: 0, P4: 0, P5: 0 },
+    note: "EXT17: 18/18 ACCEPT — zero substantive external-only findings remaining. All 4 EXT16 ChatGPT MINORs closed. 2 false positives truth-audited (version mismatch + pattern-052 fresh-reviewer). Gap reaches zero: internal tier now matches external tier quality.",
+  },
+  {
+    roundId: "EXT18",
+    dateISO: "2026-06-14",
+    total: 7,
+    perPaper: { P1A: 0, P1B: 4, P2: 3, P3: 0, P4: 0, P5: 0 },
+    note: "EXT18 4-vendor API round (post-EXT17 verification): P1B real arithmetic — Ωa relic-density subsection added post-freeze: ρ_crit,0 8.1e-11→3.7e-11 eV⁴, relic denominator 2H₀²→6H₀², H₀-marginalization ≤1%→≤3%, S8 2.5σ→2.6σ — closed v1B.0.73. P2: 3 internal-consistency fixes (16th-percentile band direction, r scan range 1.2→1.14, abstract 84–88%→83–88%) — closed v1.7.69. P1A/P3/P4/P5 CLEAN on truth-audit (all over-calls or OCR artifacts).",
+  },
 ];
 
 export interface ReadinessCheckpoint {
@@ -2119,6 +2215,18 @@ export const readinessCheckpoints: ReadinessCheckpoint[] = [
     dateISO: "2026-06-13",
     values: { P1A: 96, P1B: 97, P2: 97, P3: 96, P4: 99, P5: 96 },
     note: "EXT11 harvest+audit (17:19 PT): P4 unanimous ACCEPT (3/3) → bumped to 99 (pending Houston sign-off for 100). P1B/P2 2/3 ACCEPT → 97. P1A/P3/P5 1/3 ACCEPT → 96. All remaining items are local text/LaTeX/figure fixes. EXT12 closure wave in progress.",
+  },
+  {
+    id: "EXT17-ACCEPT",
+    dateISO: "2026-06-13",
+    values: { P1A: 99, P1B: 99, P2: 99, P3: 99, P4: 99, P5: 99 },
+    note: "EXT17 18/18 ACCEPT; all papers at the 99 cap (final 1% = Houston sign-off)",
+  },
+  {
+    id: "EXT18-VERIFICATION",
+    dateISO: "2026-06-14",
+    values: { P1A: 99, P1B: 98, P2: 98, P3: 99, P4: 99, P5: 99 },
+    note: "EXT18: P1B+P2 rolled 99→98 after real residual fixes (v1B.0.73/v1.7.69); P1A/P3/P4/P5 clean, hold 99",
   },
 ];
 

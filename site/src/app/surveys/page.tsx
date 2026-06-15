@@ -86,7 +86,7 @@ export default function SurveysIndexPage() {
           <div className="insight">
             <Telescope aria-hidden="true" className="insight-icon" />
             <div className="insight-label">Coverage</div>
-            <div className="insight-value">8 surveys</div>
+            <div className="insight-value">{surveys.length} surveys</div>
           </div>
         </div>
       </div>

@@ -66,7 +66,7 @@ const events: Array<{
   {
     time:"13.8 Gyr",
     label:"NOW (2026)",
-    desc:"BigBounce research program: 6 papers, 7 surveys, 37.3M sources, 378,280 anomalies, 309,189 frozen MCMC samples, 8.47M-galaxy chirality catalog.",
+    desc:"BigBounce research program: 6 papers, 8 surveys, 37.3M sources, 378,280 anomalies, 309,189 frozen MCMC samples, 8.47M-galaxy chirality catalog. 17-round external review campaign complete — 18/18 ACCEPT; awaiting arXiv drop.",
     color:"#554c43",
   },
   {

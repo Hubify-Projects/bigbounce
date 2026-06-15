@@ -73,13 +73,13 @@ const glossaryEntries = [
     term:"NANOGrav",
     pronunciation:"NAN-oh-grav",
     definition:
-"North American Nanohertz Observatory for Gravitational Waves. Detected a gravitational wave background; our real-KDE free-spectrum re-fit gives spectral index γ = 2.567 ± 0.382. Bounce predicts γ = 3.0 (+1.13σ consistent); SMBHB γ = 4.33 is excluded at +4.61σ.",
+"North American Nanohertz Observatory for Gravitational Waves. Detected a gravitational wave background; our real-KDE free-spectrum re-fit gives spectral index γ = 2.567 ± 0.382. Bounce predicts γ = 3.0 (consistent at -1.13σ); SMBHB γ = 4.33 is excluded at -4.6σ.",
   },
   {
     term:"Autoencoder",
     pronunciation:"AW-toh-en-KOH-der",
     definition:
-"A neural network trained to reconstruct its input. Objects it can't reconstruct well are anomalous. Used to find 378,280 unique anomalies across 37.3M sources in 7 surveys (Paper 3 canonical Path-C totals after native retrains and 5″ dedup).",
+"A neural network trained to reconstruct its input. Objects it can't reconstruct well are anomalous. Used to find 378,280 unique anomalies across 37.3M sources in 8 surveys (Paper 3 canonical Path-C totals after native retrains and 5″ dedup).",
   },
   {
     term:"Barbero-Immirzi parameter",
@@ -92,6 +92,24 @@ const glossaryEntries = [
     pronunciation:"holst",
     definition:
 "The parity-odd topological term in the gravitational action, proportional to 1/γ_BI. It produces no classical equations of motion but generates quantum effects including birefringence.",
+  },
+  {
+    term:"Path-C",
+    pronunciation:"path see",
+    definition:
+"The native-retrain quality gate used in Paper 3. Each survey must pass two criteria: val_loss ≤ 0.30 on native training data AND ≥50% injection-recovery at 5σ. Surveys that fail are quarantined (e.g., ACT DR6) and contribute zero objects to the canonical anomaly catalog headline.",
+  },
+  {
+    term:"LQC",
+    pronunciation:"el-kyoo-see",
+    definition:
+"Loop Quantum Cosmology. A quantization of cosmological spacetimes using loop quantum gravity methods, where the discrete structure of space at the Planck scale replaces the Big Bang singularity with a quantum bounce. The bounce is sourced by quantum geometric repulsion, distinct from the ECH/torsion mechanism.",
+  },
+  {
+    term:"Matter Bounce",
+    pronunciation:"MAT-er bowns",
+    definition:
+"A bounce cosmology scenario where the contracting phase is dominated by matter-like sources (w ≈ 0). Generates a nearly scale-invariant spectrum of perturbations and the parameter-free prediction f_NL = -35/8 = -4.375, which is mechanism-independent across all matter bounce variants.",
   },
 ];
 
