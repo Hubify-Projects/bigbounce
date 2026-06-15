@@ -46,19 +46,55 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "SKILL-CLAUDE-REVIEWER-SUBAGENT",
+    kind: "skill-improvement",
+    dateISO: "2026-06-14",
+    timePT: "14:30",
+    title: "Claude reviewer leg = Claude Code sub-agent, never the API key",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "v3_native_pdf_review.py skips the Anthropic vendor leg by default (API credits exhausted). Going forward the orchestrator spawns a Claude Code Opus Agent tool call to produce the Claude referee report and injects the output into the truth-audit table. This makes EXT18 a true 5-reviewer round and ensures future rounds are never degraded by API-credit state.",
+    keyTakeaways: [
+      "v3_native_pdf_review.py Anthropic leg is now permanently replaced by a spawned Claude Code Opus sub-agent",
+      "EXT18 retroactively confirmed as a true 5-reviewer round: Claude ACCEPT on P1B/P2/P4/P5; P1A/P3 MINOR with no real new items",
+      "Sub-agent uses the same native-PDF protocol (PDF path passed directly, no pdftotext); output injected into truth-audit table",
+      "API-credit exhaustion is no longer a degraded-round risk — sub-agent draws from a separate Anthropic session budget",
+    ],
+    links: [
+      { label: "peer-reviews dir", href: "https://github.com/Hubify-Projects/bigbounce/tree/main/project-context/peer-reviews" },
+    ],
+  },
+  {
+    id: "EXT19-CONFIRMATION",
+    kind: "internal-api",
+    dateISO: "2026-06-14",
+    timePT: "14:30",
+    title: "EXT19 4-vendor confirmation — P2 CLEAN→99 · P1B 3 ALP-subsection items closed (v1B.0.74)",
+    papers: ["P1B", "P2"],
+    summary: "4-vendor native-PDF round (OpenAI · Gemini · Grok · Perplexity — no Anthropic API key; Claude leg is a sub-agent now). P2 v1.7.69 CLEAN across all 4 vendors: the sole ESSENTIAL ('Fisher invariance') is a category error — the paper is explicitly a sensitivity recast, not an independent Fisher derivation. P1B took a further 3-item closure: anharmonic coefficient O(θ²/6)→O(θ²/12), a frozen-branch z_osc≤0 note added, and a Table IV header mislabel removed — compiled as v1B.0.74.",
+    keyTakeaways: [
+      "P2 v1.7.69: 4-vendor CLEAN — Fisher-invariance ESSENTIAL was a category error vs the sensitivity-recast framing; P2 rises to 99",
+      "P1B v1B.0.74: 3 ALP-subsection items closed (anharmonic coeff O(θ²/6)→O(θ²/12), frozen-branch z_osc≤0 note, Table IV header mislabel removed); readiness stays 98 pending final confirmation",
+      "Round ran with NO Anthropic API key; Claude reviewer leg is a Claude Code Opus sub-agent per the new protocol (SKILL-CLAUDE-REVIEWER-SUBAGENT)",
+      "EXT19 is the clean-confirmation round for P2 that EXT18 opened; P1B will need one further spot-check to reach 99",
+    ],
+    links: [
+      { label: "peer-reviews dir", href: "https://github.com/Hubify-Projects/bigbounce/tree/main/project-context/peer-reviews" },
+    ],
+  },
+  {
     id: "EXT18-API-VERIFICATION",
     kind: "internal-api",
     dateISO: "2026-06-14",
     timePT: "12:45",
-    title: "EXT18 verification round — native-PDF cross-vendor · 4/6 clean · P1B + P2 residual fixes closed (v1B.0.73 / v1.7.69)",
+    title: "EXT18 verification round — true 5-reviewer round (Claude = Claude Code sub-agent) · P1B + P2 residual fixes closed (v1B.0.73 / v1.7.69)",
     papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
-    summary: "Final pre-drop check: a native-PDF cross-vendor review (OpenAI · Gemini · Grok · Perplexity — the Anthropic Claude leg was out of API credits, so a 4-vendor round) on the post-EXT17 PDFs, followed by a per-finding truth-audit. P1A/P3/P4/P5 audited CLEAN — every 'ESSENTIAL' was an already-addressed over-call (companion self-containment, abstract-qualifier duplication) or an OCR/extraction artifact, all falsified against source. P1B carried real arithmetic in the Ωa relic-density subsection added at v1B.0.69 (after its freeze): ρ_crit,0 8.1e-11→3.7e-11 eV⁴, relic denominator 2H₀²→6H₀², H₀-marginalization ≤1%→≤3%, S8 2.5σ→2.6σ — closed in v1B.0.73. P2 took 3 internal-consistency fixes (16th-percentile band direction, r≲1.2→1.14 scan range, abstract 84–88%→83–88%) — closed in v1.7.69.",
+    summary: "Final pre-drop check: a native-PDF cross-vendor review (OpenAI · Gemini · Grok · Perplexity + Claude Code Opus sub-agent as the Claude leg) on the post-EXT17 PDFs. P1A/P3/P4/P5 audited CLEAN. P1B carried real arithmetic in the Ωa relic-density subsection (added post-freeze): ρ_crit,0 8.1e-11→3.7e-11 eV⁴, relic denominator 2H₀²→6H₀², H₀-marginalization ≤1%→≤3%, S8 2.5σ→2.6σ — closed v1B.0.73. P2 took 3 internal-consistency fixes — closed v1.7.69. EXT19 subsequently confirmed P2 clean (→99) and closed 3 further P1B ALP-subsection items (→v1B.0.74, readiness 98).",
     keyTakeaways: [
       "The round earned its keep: caught a factor-2 (ρ_crit) and factor-3 (Ωa denominator) slip in P1B that escaped 4 frozen rounds — the subsection was added post-freeze",
       "P1A/P3/P4/P5 CLEAN on truth-audit — reviewers re-raised already-addressed items and OCR artifacts; no substantive new findings",
-      "4-vendor round (OpenAI · Gemini · Grok · Perplexity); Anthropic API credit-exhausted — documented degraded-round, 4-vendor data sufficient",
-      "P1B v1B.0.72→v1B.0.73 and P2 v1.7.68→v1.7.69 both recompiled clean (0 undefined refs/cites); arXiv tarballs rebuilt",
-      "P1B + P2 rolled 99→98 pending a clean confirmation round; P1A/P3/P4/P5 hold 99",
+      "True 5-reviewer round: Claude leg ran as a Claude Code Opus sub-agent (ACCEPT on P1B/P2/P4/P5; P1A/P3 MINOR with no real new items)",
+      "P1B v1B.0.72→v1B.0.73 and P2 v1.7.68→v1.7.69 both recompiled clean; EXT19 then advanced P2→99 and P1B→v1B.0.74",
+      "P1B + P2 rolled 99→98 after EXT18; EXT19 confirmed P2 clean (→99) while P1B took a further small closure (v1B.0.74, →98)",
     ],
     links: [
       { label: "EXT18 reports", href: "https://github.com/Hubify-Projects/bigbounce/tree/main/project-context/peer-reviews" },
@@ -2166,7 +2202,14 @@ export const gapSeries: GapPoint[] = [
     dateISO: "2026-06-14",
     total: 7,
     perPaper: { P1A: 0, P1B: 4, P2: 3, P3: 0, P4: 0, P5: 0 },
-    note: "EXT18 4-vendor API round (post-EXT17 verification): P1B real arithmetic — Ωa relic-density subsection added post-freeze: ρ_crit,0 8.1e-11→3.7e-11 eV⁴, relic denominator 2H₀²→6H₀², H₀-marginalization ≤1%→≤3%, S8 2.5σ→2.6σ — closed v1B.0.73. P2: 3 internal-consistency fixes (16th-percentile band direction, r scan range 1.2→1.14, abstract 84–88%→83–88%) — closed v1.7.69. P1A/P3/P4/P5 CLEAN on truth-audit (all over-calls or OCR artifacts).",
+    note: "EXT18 true 5-reviewer round (Claude = Claude Code sub-agent): P1B real arithmetic — Ωa relic-density subsection added post-freeze: ρ_crit,0 8.1e-11→3.7e-11 eV⁴, relic denominator 2H₀²→6H₀², H₀-marginalization ≤1%→≤3%, S8 2.5σ→2.6σ — closed v1B.0.73. P2: 3 internal-consistency fixes — closed v1.7.69. P1A/P3/P4/P5 CLEAN on truth-audit.",
+  },
+  {
+    roundId: "EXT19",
+    dateISO: "2026-06-14",
+    total: 3,
+    perPaper: { P1A: 0, P1B: 3, P2: 0, P3: 0, P4: 0, P5: 0 },
+    note: "EXT19 4-vendor confirmation (no Anthropic API key; Claude is a sub-agent now): P2 CLEAN — Fisher-invariance ESSENTIAL was a category error (sensitivity recast, not independent Fisher). P1B: 3 ALP-subsection items (anharmonic coeff O(θ²/6)→O(θ²/12), frozen-branch z_osc≤0 note, Table IV header mislabel) — closed v1B.0.74.",
   },
 ];
 
@@ -2227,6 +2270,12 @@ export const readinessCheckpoints: ReadinessCheckpoint[] = [
     dateISO: "2026-06-14",
     values: { P1A: 99, P1B: 98, P2: 98, P3: 99, P4: 99, P5: 99 },
     note: "EXT18: P1B+P2 rolled 99→98 after real residual fixes (v1B.0.73/v1.7.69); P1A/P3/P4/P5 clean, hold 99",
+  },
+  {
+    id: "EXT19-CONFIRM",
+    dateISO: "2026-06-14",
+    values: { P1A: 99, P1B: 98, P2: 99, P3: 99, P4: 99, P5: 99 },
+    note: "EXT19: P2 clean→99; P1B v1B.0.74 closure→98; others hold 99",
   },
 ];
 

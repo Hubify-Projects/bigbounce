@@ -50,11 +50,11 @@ export const liveStatus: LiveStatus = {
   lastUpdatedISO: "2026-06-14T19:45:00Z",
   lastUpdatedDisplay: "June 14, 2026 · 12:45 PM PT",
   headline:
-    "EXT17 complete — 18/18 ACCEPT across ChatGPT · Grok · Gemini. The 17-round external review campaign closed at universal ACCEPT: publication green light. EXT18 verification round complete — 4/6 papers clean; P1B + P2 had real residual fixes, now closed (v1B.0.73 / v1.7.69). Awaiting Houston's ORCID public flip + coordinated arXiv drop.",
+    "EXT18 confirmed as a true 5-reviewer round (Claude leg = Claude Code Opus sub-agent, not the API key). EXT19 4-vendor confirmation: P2 clean→99 (Fisher-invariance ask was a category error on a sensitivity recast); P1B took a further 3-item ALP-subsection closure (v1B.0.74, →98). Drop-ready pending Houston sign-off + ORCID flip.",
   summary:
-    "All six papers cleared EXT17 at universal ACCEPT (EXT16 14/18 → EXT17 18/18). Canonical, tarball-ready: P1A v1A.0.77 · P1B v1B.0.73 · P2 v1.7.69 · P3 v3.1.111 · P4 v1.0.188 (FROZEN) · P5 v0.1.80. EXT18 native-PDF cross-vendor round caught + closed an Ωa relic-arithmetic slip in P1B and 3 consistency fixes in P2; P1A/P3/P4/P5 clean. Tarballs staged for a one-hour coordinated drop (P4 first).",
+    "EXT18 is now a true 5-reviewer round: Claude reviewer leg ran as a Claude Code Opus sub-agent (API credits exhausted; sub-agent leg accepted P1B/P2/P4/P5; P1A/P3 MINOR with no real new items). EXT19 4-vendor confirmation: P2 v1.7.69 CLEAN→99 (Fisher-invariance ESSENTIAL was a category error); P1B v1B.0.74 closed 3 ALP-subsection items (anharmonic coeff O(θ²/6)→O(θ²/12), frozen-branch z_osc≤0 note, Table IV header). Tarballs staged for a one-hour drop (P4 first).",
   currentlyRunning: [
-    "EXT18 verification round closed: P1B + P2 residual fixes landed (v1B.0.73 / v1.7.69); P1A/P3/P4/P5 audited clean. 4-vendor round (Anthropic API leg out of credits).",
+    "EXT18 5-reviewer round complete (Claude = Claude Code sub-agent) + EXT19 confirmation: P2 clean→99, P1B v1B.0.74 closure→98.",
     "Drop-readiness hold: six tarballs staged, abstracts + Zenodo one-click prepared; release waits only on Houston's two gates.",
   ],
   needsHouston: [
@@ -90,17 +90,17 @@ export const liveStatus: LiveStatus = {
       slug: "paper-1b",
       number: "1B",
       shortTitle: "MCMC + NaMaster + ALP technical companion",
-      version: "v1B.0.73",
+      version: "v1B.0.74",
       readiness: 98,
-      pendingWork: "v1B.0.73 — EXT18 corrected Ωa relic-subsection arithmetic (post-freeze slip); EXT17 was 3/3 ACCEPT. Awaiting confirmation, then drop.",
+      pendingWork: "v1B.0.74 — EXT19 closed 3 ALP-subsection items; EXT18 Ωa arithmetic confirmed by the Claude sub-agent. Awaiting final confirmation, then drop.",
     },
     {
       slug: "paper-2",
       number: "2",
       shortTitle: "f_NL = -35/8 SPHEREx forecast",
       version: "v1.7.69",
-      readiness: 98,
-      pendingWork: "v1.7.69 — EXT18 closed 3 internal-consistency fixes; EXT17 was ACCEPT. Awaiting confirmation, then drop.",
+      readiness: 99,
+      pendingWork: "v1.7.69 — EXT19 4-vendor CLEAN confirmation; Claude sub-agent ACCEPT. Drop-ready.",
     },
     {
       slug: "paper-3",
@@ -133,7 +133,7 @@ export const liveStatus: LiveStatus = {
     openMajors: 0,
     openMinors: 0,
   },
-  cronStatus: "EXT17 CLOSED — 18/18 ACCEPT. Publication green light. EXT18 verification round complete: P1B v1B.0.73 + P2 v1.7.69 closures; P1A/P3/P4/P5 clean.",
+  cronStatus: "EXT18 5-reviewer round complete (Claude = Claude Code sub-agent) + EXT19 confirmation: P2 clean→99, P1B v1B.0.74 closure→98.",
   etaToCompletion:
     "Papers + tarballs are drop-ready. Release waits only on Houston's two gates: ORCID public flip (pub.orcid.org → 200) and arXiv drop authorization. Submit order P4 → P1A → P1B → P3 → P2 → P5 in one hour.",
   pods: [],

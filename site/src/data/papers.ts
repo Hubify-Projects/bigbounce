@@ -141,14 +141,14 @@ export const papers: Paper[] = [
     slug: "paper-1b",
     number: "1B",
     title: "Technical Verification Companion to the ECH Spin-Torsion Program: ΛCDM+ΔN_eff MCMC Proxy, NaMaster Pipeline Recovery, and a Birefringence Consistency Check with a Spectator-ALP Model",
-    version: "v1B.0.73",
+    version: "v1B.0.74",
     lastUpdated: "2026-06-14",
     tldr: "Technical companion to Paper 1A: a 309K-sample ΛCDM+ΔN_eff MCMC null test (ΔN_eff consistent with zero), a NaMaster pipeline validation on synthetic ΛCDM skies, a DESI DR2 w0wa chain (w_pivot +2.5σ from −1), and a spectator-ALP consistency check against the Planck+ACT β = 0.342° measurement.",
     path: publicationPath({
       external: {
         label: "External journal-style review",
         state: "active",
-        note: "EXT17 18/18 ACCEPT; EXT18 corrected Ωa relic-subsection arithmetic (post-freeze) in v1B.0.73 — awaiting confirmation.",
+        note: "EXT19 closed 3 ALP-subsection items (anharmonic coeff, frozen-branch note, table header) in v1B.0.74; Claude sub-agent + EXT17 ACCEPT; awaiting final confirmation.",
       },
       signoff: {
         label: "Houston sign-off",
@@ -182,10 +182,10 @@ export const papers: Paper[] = [
       "arXiv submission (administrative, same-day with P1A per the submission order)",
     ],
     preprintId: "HUBIFY-2026-001B",
-    pdfMeta: "PDF · 21 pp · v1B.0.73 · updated Jun 14, 2026",
+    pdfMeta: "PDF · 21 pp · v1B.0.74 · updated Jun 14, 2026",
     artifacts: [
-      { label: "Read PDF", href: "/papers/paper1b_mcmc_companion_v1B.0.73.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/paper1b_mcmc_companion_v1B.0.73.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/paper1b_mcmc_companion_v1B.0.74.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/paper1b_mcmc_companion_v1B.0.74.pdf", kind: "secondary", download: true },
       {
         label: "LaTeX source",
         href: "https://github.com/Hubify-Projects/bigbounce/blob/main/arxiv/paper1b_mcmc_companion.tex",
@@ -207,7 +207,7 @@ export const papers: Paper[] = [
       external: {
         label: "External journal-style review",
         state: "active",
-        note: "EXT17 = 18/18 ACCEPT (P2 ACCEPT). EXT18 verification: 3 internal-consistency fixes (16th-pctile band direction; r≤1.2→1.14 scan range; abstract 84–88%→83–88%). Corrected in v1.7.69.",
+        note: "EXT19 4-vendor CLEAN confirmation on v1.7.69 ('Fisher invariance' ask = category error; paper is a sensitivity recast).",
       },
       signoff: {
         label: "Houston sign-off",
@@ -217,7 +217,7 @@ export const papers: Paper[] = [
     }),
     pages: "28",
     refs: "39",
-    readiness: 98,
+    readiness: 99,
     statusVariant: "green",
     target: "Physical Review Letters",
     description: "The decisive SPHEREx discrimination paper. Proves f_NL = -35/8 is parameter-free and mechanism-independent across all matter-bounce variants, then delivers Fisher forecasts showing 4.7-12 sigma SPHEREx detection significance by 2027. Multi-tracer sigma(f_NL) marginalized floor of 0.067-0.116 across 6 configurations, with magnification-bias identified as the dominant systematic axis. All 65 R42 cross-model peer-review findings closed.",
