@@ -42,6 +42,7 @@ Follow-up repair on 2026-06-16:
 
 - Hubify commit `aa5dd910 fix(cli): lazy-load TUI dependencies` changed the CLI build so TUI-only Ink dependencies stay in a lazy chunk instead of loading during every command.
 - After the fix, `hubify status` no longer crashes on the Ink import path.
+- `hubify auth login` was attempted and the auth URL was opened locally, but the device flow timed out waiting for browser authorization.
 - Current remaining gate is authentication/token context:
 
 ```text
