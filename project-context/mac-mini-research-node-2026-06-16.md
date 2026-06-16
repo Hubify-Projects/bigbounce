@@ -18,7 +18,7 @@ Run from `/Users/houstongolden/Desktop/CODE_2025/bigbounce` on 2026-06-16:
 |---|---|
 | `git status --short --branch` | Worktree already noisy before this checkpoint; docs-only changes are scoped separately. |
 | SSOT read | `project-context/SSOT/README.md`, `index.md`, `queue.md`, and drive-to-100 log were read before edits. |
-| `hubify status` | Import crash fixed in Hubify commit `aa5dd910`; command now reaches the normal auth/token gate. |
+| `hubify status` | CLI import/spinner crashes fixed in Hubify commits `aa5dd910` and `94fd9344`; command now reaches the normal auth/token gate quickly. |
 | Claude Code | Present: `/opt/homebrew/bin/claude`, version `2.1.153 (Claude Code)`. |
 | Codex | Present: `/Users/houstongolden/.nvm/versions/node/v22.20.0/bin/codex`, version `codex-cli 0.130.0`. |
 | Hubify CLI | Present as npm/global symlink; `hubify status` now starts normally but needs auth/token context before it can return live lab status. |
@@ -41,8 +41,9 @@ Node.js v22.20.0
 Follow-up repair on 2026-06-16:
 
 - Hubify commit `aa5dd910 fix(cli): lazy-load TUI dependencies` changed the CLI build so TUI-only Ink dependencies stay in a lazy chunk instead of loading during every command.
-- After the fix, `hubify status` no longer crashes on the Ink import path.
-- `hubify auth login` was attempted and the auth URL was opened locally, but the device flow timed out waiting for browser authorization.
+- Hubify commit `94fd9344 fix(cli): avoid spinner import hang` removed the remaining `ora` startup/runtime hang from the CLI command path.
+- After these fixes, `hubify --help`, `hubify status`, and the Hubify health env-audit return promptly.
+- `hubify auth login` was attempted twice and the auth URLs were opened locally, but both device flows timed out waiting for browser authorization. The latest attempted code was `CMJX-6HGC`.
 - Current remaining gate is authentication/token context:
 
 ```text
@@ -60,7 +61,7 @@ Until auth is restored, the Mac mini node should not depend on `hubify status` f
 | OpenClaw | Possible agent/runtime pattern or runner. | Command not found. | Locate repo/package and document exact install/run path before assigning BigBounce work. |
 | Hermes Agent | Possible local research/agent runner. | Command not found. | Locate repo/package and document exact install/run path before assigning BigBounce work. |
 | Pi Agent | UI/orchestration inspiration or isolated subprocess runner. | Command not found globally; `.pi` config dirs exist in sibling repos. | If tested, use an isolated toy task first. Do not give Pi paper, pod, or queue authority until reviewed. |
-| Hubify CLI | Lab/agent/compute status source. | Import crash fixed; `hubify status` now reaches auth/token gate. | Restore auth/token context, then re-run `hubify status`. |
+| Hubify CLI | Lab/agent/compute status source. | Import/spinner crashes fixed; `hubify status` now reaches auth/token gate quickly. | Restore auth/token context, then re-run `hubify status`. |
 | Browser automation | QA/status inspection and local UI checks. | Available via existing local agent/browser stack, but no browser work was needed for this docs-only checkpoint. | Keep for site QA and h.computer owner-facing status surfaces, not for live compute. |
 | MCP/local stack configs | Connect BigBounce, You.md, h.computer, Hubify, and optional host adapters. | Not changed in this checkpoint. | Inventory local MCP configs separately before mutating them. |
 
@@ -73,7 +74,7 @@ Environment variables should be referenced by name only in docs. Relevant key na
 | `/Users/houstongolden/Desktop/CODE_2025/bigbounce` | BigBounce papers, SSOT, project context, queues, research scripts, and companion site. |
 | `/Users/houstongolden/Desktop/CODE_2025/youmd` | Identity, memory, source catalog, mobile capture, project routing, YouStacks, API/MCP layer. |
 | `/Users/houstongolden/Desktop/CODE_2025/h-computer` | Owner-facing status/feed/control surface for Houston's personal computer interface. |
-| `/Users/houstongolden/Desktop/CODE_2025/hubify` | Hubify CLI and labs/science platform code; import crash fixed, auth/token still required for live status. |
+| `/Users/houstongolden/Desktop/CODE_2025/hubify` | Hubify CLI and labs/science platform code; import/spinner crashes fixed, auth/token still required for live status. |
 | `/Users/houstongolden/Desktop/CODE_2025/badapp` | Fitness/workout transcript consumer for mobile capture sessions. |
 | `/Users/houstongolden/Desktop/CODE_2025/myo` | Health/body/productivity consumer for routed capture where appropriate. |
 | `/Users/houstongolden/.claude/scistack/` | Science-stack skills source of truth. |
