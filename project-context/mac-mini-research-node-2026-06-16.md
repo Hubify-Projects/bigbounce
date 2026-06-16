@@ -56,6 +56,7 @@ hubify status -> 0 experiments, 0 papers, 0 surveys, 0 anomalies, 0 agents, 0 po
 The active authenticated lab is currently empty (`Local-LLM`), and Houston clarified on 2026-06-16 that Hubify app research data is out of date because recent research work has been happening directly in the `bigbounce` repo and on `bigbounce.hubify.app`. The Mac mini node must not infer BigBounce science state from Hubify app/CLI lab data. Use BigBounce local context, SSOT files, and `bigbounce.hubify.app` as the current research surfaces.
 
 See `project-context/bigbounce-source-of-truth-contract-2026-06-16.md` for the active source-of-truth contract.
+See `project-context/agent-runtime-inventory-2026-06-16.md` for the OpenClaw/Hermes/Pi runtime inventory and authority boundary.
 
 ## Agent And Runtime Inventory
 
@@ -63,9 +64,9 @@ See `project-context/bigbounce-source-of-truth-contract-2026-06-16.md` for the a
 |---|---|---|---|
 | Claude Code | Primary high-judgment reasoning, paper/review synthesis, local coding sessions. | Installed and versioned. | Keep as primary reasoning runner for science judgment and final truth-audit decisions. |
 | Codex | Local coding and docs/context execution runner. | Installed and versioned. | Use for scoped implementation, validation, and repo-context updates. |
-| OpenClaw | Possible agent/runtime pattern or runner. | Command not found. | Locate repo/package and document exact install/run path before assigning BigBounce work. |
-| Hermes Agent | Possible local research/agent runner. | Command not found. | Locate repo/package and document exact install/run path before assigning BigBounce work. |
-| Pi Agent | UI/orchestration inspiration or isolated subprocess runner. | Command not found globally; `.pi` config dirs exist in sibling repos. | If tested, use an isolated toy task first. Do not give Pi paper, pod, or queue authority until reviewed. |
+| OpenClaw | Possible agent/runtime pattern or runner. | Command not found; gstack/OpenClaw methodology artifacts exist under shared skill roots and gbrain has an OpenClaw plugin manifest. | Locate actual CLI before any run; first test must be isolated toy work, not BigBounce. |
+| Hermes Agent | Possible local research/agent runner. | Command not found; gstack/Hermes host artifacts exist under shared skill roots. | Locate actual CLI before any run; first test must be isolated toy work, not BigBounce. |
+| Pi Agent | UI/orchestration inspiration or isolated subprocess runner. | Command not found globally; `.pi` config dirs exist in sibling repos including Hubify, agent-team, and BAMF projects. | Treat as design/config evidence only until runtime command is found; no BigBounce authority. |
 | Hubify CLI | Tooling/status integration candidate, not current BigBounce research source of truth. | Import/spinner crashes fixed; auth restored; active lab is `Local-LLM` and currently empty. | Do not wire BigBounce research status to Hubify app data until the intended BigBounce lab/sync path is explicitly refreshed. |
 | Browser automation | QA/status inspection and local UI checks. | Available via existing local agent/browser stack, but no browser work was needed for this docs-only checkpoint. | Keep for site QA and h.computer owner-facing status surfaces, not for live compute. |
 | MCP/local stack configs | Connect BigBounce, You.md, h.computer, Hubify, and optional host adapters. | Not changed in this checkpoint. | Inventory local MCP configs separately before mutating them. |
@@ -148,9 +149,8 @@ Research status: hypothesis and workflow pattern only. To become a paper or form
 ## First Live-Setup Tasks
 
 1. Capture the direct BigBounce repo plus `bigbounce.hubify.app` source-of-truth contract before any Hubify app sync work.
-2. Locate or install-dry-run OpenClaw, Hermes, and Pi without granting BigBounce authority.
-3. Inventory local MCP configs for BigBounce, You.md, h.computer, and Hubify.
-4. Define the SMS/iMessage -> You.md -> BigBounce task proposal schema.
-5. Define an h.computer research-node status hook that consumes approved BigBounce status events only.
-6. Add a no-live-runs smoke test that writes a fake capture event to local project context.
-7. Draft the multi-model/multi-UI review-method paper protocol as a candidate workflow paper.
+2. Inventory local MCP configs for BigBounce, You.md, h.computer, and Hubify.
+3. Define the SMS/iMessage -> You.md -> BigBounce task proposal schema.
+4. Define an h.computer research-node status hook that consumes approved BigBounce status events only.
+5. Add a no-live-runs smoke test that writes a fake capture event to local project context.
+6. Draft the multi-model/multi-UI review-method paper protocol as a candidate workflow paper.
