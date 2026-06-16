@@ -57,6 +57,7 @@ The active authenticated lab is currently empty (`Local-LLM`), and Houston clari
 
 See `project-context/bigbounce-source-of-truth-contract-2026-06-16.md` for the active source-of-truth contract.
 See `project-context/agent-runtime-inventory-2026-06-16.md` for the OpenClaw/Hermes/Pi runtime inventory and authority boundary.
+See `project-context/mcp-config-inventory-2026-06-16.md` for the MCP/API surface inventory across BigBounce, You.md, h.computer, Hubify, and global agent configs.
 
 ## Agent And Runtime Inventory
 
@@ -148,9 +149,15 @@ Research status: hypothesis and workflow pattern only. To become a paper or form
 
 ## First Live-Setup Tasks
 
+Completed context gates:
+
 1. Capture the direct BigBounce repo plus `bigbounce.hubify.app` source-of-truth contract before any Hubify app sync work.
-2. Inventory local MCP configs for BigBounce, You.md, h.computer, and Hubify.
-3. Define the SMS/iMessage -> You.md -> BigBounce task proposal schema.
-4. Define an h.computer research-node status hook that consumes approved BigBounce status events only.
-5. Add a no-live-runs smoke test that writes a fake capture event to local project context.
-6. Draft the multi-model/multi-UI review-method paper protocol as a candidate workflow paper.
+2. Inventory local agent runtimes for Claude Code, Codex, Hubify, OpenClaw, Hermes, and Pi.
+3. Inventory local MCP configs for BigBounce, You.md, h.computer, Hubify, and global agent configs.
+
+Next setup tasks:
+
+1. Define the SMS/iMessage -> You.md -> BigBounce task proposal schema.
+2. Define an h.computer research-node status hook that consumes approved BigBounce status events only.
+3. Add a no-live-runs smoke test that writes a fake capture event to local project context.
+4. Draft the multi-model/multi-UI review-method paper protocol as a candidate workflow paper.
