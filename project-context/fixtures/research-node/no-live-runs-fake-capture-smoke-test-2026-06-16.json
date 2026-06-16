@@ -1,0 +1,235 @@
+{
+  "schema": "bigbounce.research_node.no_live_runs_fixture.v1",
+  "fixture_id": "bb_fixture_2026-06-16_fake_capture_001",
+  "created_at": "2026-06-16T19:00:00Z",
+  "status": "spec_only",
+  "raw_events": [
+    {
+      "schema": "bigbounce.mobile_capture.raw_event.v1",
+      "event_id": "raw_2026-06-16T08-20-31Z_0001",
+      "received_at": "2026-06-16T08:20:31Z",
+      "transport": "sendblue",
+      "channel": "imessage",
+      "sender": {
+        "label": "Houston",
+        "phone_hash": "sha256:fixture-phone-hash",
+        "device_hint": "apple_watch_ultra"
+      },
+      "session_hint": "workout_transcript",
+      "text_raw": "Workout transcript: remember the Mac mini research node should route BigBounce notes through You.md first.",
+      "attachments": [],
+      "provider_metadata": {
+        "message_id": "fixture-message-0001",
+        "thread_id": "fixture-thread-001"
+      },
+      "privacy": {
+        "contains_secret": false,
+        "contains_health_data": true,
+        "contains_paper_claim": false
+      }
+    },
+    {
+      "schema": "bigbounce.mobile_capture.raw_event.v1",
+      "event_id": "raw_2026-06-16T08-20-42Z_0002",
+      "received_at": "2026-06-16T08:20:42Z",
+      "transport": "sendblue",
+      "channel": "imessage",
+      "sender": {
+        "label": "Houston",
+        "phone_hash": "sha256:fixture-phone-hash",
+        "device_hint": "apple_watch_ultra"
+      },
+      "session_hint": "workout_transcript",
+      "text_raw": "Workout transcript: remember the Mac mini research node should route BigBounce notes through You.md first.",
+      "attachments": [],
+      "provider_metadata": {
+        "message_id": "fixture-message-0002",
+        "thread_id": "fixture-thread-001"
+      },
+      "privacy": {
+        "contains_secret": false,
+        "contains_health_data": true,
+        "contains_paper_claim": false
+      }
+    },
+    {
+      "schema": "bigbounce.mobile_capture.raw_event.v1",
+      "event_id": "raw_2026-06-16T08-21-10Z_0003",
+      "received_at": "2026-06-16T08:21:10Z",
+      "transport": "sendblue",
+      "channel": "imessage",
+      "sender": {
+        "label": "Houston",
+        "phone_hash": "sha256:fixture-phone-hash",
+        "device_hint": "apple_watch_ultra"
+      },
+      "session_hint": "workout_transcript",
+      "text_raw": "Also h.computer can show status cards, but do not use stale Hubify app data for BigBounce.",
+      "attachments": [],
+      "provider_metadata": {
+        "message_id": "fixture-message-0003",
+        "thread_id": "fixture-thread-001"
+      },
+      "privacy": {
+        "contains_secret": false,
+        "contains_health_data": true,
+        "contains_paper_claim": false
+      }
+    }
+  ],
+  "normalized_session": {
+    "schema": "youmd.capture_session.v1",
+    "session_id": "cap_2026-06-16_run_001",
+    "title": "Run notes: BigBounce capture routing and h.computer status cards",
+    "started_at": "2026-06-16T08:20:00Z",
+    "ended_at": "2026-06-16T08:25:00Z",
+    "source": {
+      "transport": "sendblue",
+      "channel": "imessage",
+      "device_hint": "apple_watch_ultra"
+    },
+    "raw_event_ids": [
+      "raw_2026-06-16T08-20-31Z_0001",
+      "raw_2026-06-16T08-20-42Z_0002",
+      "raw_2026-06-16T08-21-10Z_0003"
+    ],
+    "dedupe": {
+      "strategy": "exact_and_near_duplicate",
+      "duplicates_found": 1,
+      "duplicate_event_ids": [
+        "raw_2026-06-16T08-20-42Z_0002"
+      ]
+    },
+    "transcript_normalized": "Remember the Mac mini research node should route BigBounce notes through You.md first. h.computer may show status cards, but stale Hubify app data must not be used as current BigBounce truth.",
+    "idea_segments": [
+      {
+        "segment_id": "seg_001",
+        "summary": "Route mobile capture through You.md before BigBounce and keep h.computer display-only.",
+        "project_hints": [
+          "youmd",
+          "bigbounce",
+          "h-computer"
+        ],
+        "confidence": 0.9,
+        "source_event_ids": [
+          "raw_2026-06-16T08-20-31Z_0001",
+          "raw_2026-06-16T08-21-10Z_0003"
+        ]
+      }
+    ]
+  },
+  "project_route": {
+    "schema": "youmd.project_route.v1",
+    "route_id": "route_cap_2026-06-16_run_001_bigbounce",
+    "session_id": "cap_2026-06-16_run_001",
+    "project": "bigbounce",
+    "decision": "proposal",
+    "confidence": 0.81,
+    "reason": "The transcript references BigBounce research-node routing, h.computer status cards, and the stale-Hubify boundary.",
+    "excluded_projects": [
+      {
+        "project": "hubify",
+        "reason": "Hubify app research data is stale for current BigBounce status unless explicitly refreshed from BigBounce-owned sources."
+      }
+    ],
+    "requires_human_review": true,
+    "allowed_next_artifacts": [
+      "project-context proposal markdown",
+      "task-list status note",
+      "read-only h.computer status event"
+    ],
+    "blocked_next_actions": [
+      "paper edit",
+      "pod launch",
+      "queue mutation",
+      "Hubify lab write",
+      "external publish"
+    ]
+  },
+  "bigbounce_proposal": {
+    "schema": "bigbounce.research_node.proposal.v1",
+    "proposal_id": "bb_prop_2026-06-16_001",
+    "created_at": "2026-06-16T09:05:00Z",
+    "source_session_id": "cap_2026-06-16_run_001",
+    "title": "Document BigBounce mobile-capture routing and h.computer status boundaries",
+    "kind": "workflow_spec",
+    "priority": "medium",
+    "status": "proposed",
+    "summary": "Capture mobile notes in You.md, route BigBounce-relevant segments into proposal artifacts, and expose only approved read-only status events to h.computer.",
+    "proposed_changes": [
+      {
+        "target": "project-context",
+        "action": "add_or_update_markdown",
+        "path": "project-context/no-live-runs-fake-capture-smoke-test-2026-06-16.md"
+      }
+    ],
+    "science_impact": "none",
+    "requires_truth_audit": false,
+    "requires_latex_audit": false,
+    "requires_queue_check": false,
+    "requires_houston_approval": true,
+    "blocked_actions": [
+      "edit paper .tex",
+      "change SSOT readiness",
+      "launch RunPod",
+      "write Hubify lab data",
+      "publish to h.computer without approval"
+    ]
+  },
+  "h_computer_status_event": {
+    "schema": "bigbounce.research_node.status_event.v1",
+    "event_id": "bb_status_2026-06-16T19-00-00Z_fixture_checkpoint",
+    "created_at": "2026-06-16T19:00:00Z",
+    "producer": {
+      "system": "bigbounce",
+      "surface": "project-context",
+      "actor": "local_agent",
+      "mode": "docs_only"
+    },
+    "kind": "proposal_ready",
+    "title": "BigBounce capture-routing proposal fixture ready",
+    "summary": "A no-live-runs fixture now models raw capture, dedupe, BigBounce proposal routing, and a read-only h.computer card.",
+    "priority": "normal",
+    "project": "bigbounce",
+    "source_of_truth": {
+      "contract_ref": "project-context/bigbounce-source-of-truth-contract-2026-06-16.md",
+      "source_tier": "project-context",
+      "source_refs": [
+        "project-context/sms-imessage-youmd-bigbounce-proposal-schema-2026-06-16.md",
+        "project-context/no-live-runs-fake-capture-smoke-test-2026-06-16.md"
+      ],
+      "public_mirror_refs": [
+        "https://bigbounce.hubify.app"
+      ]
+    },
+    "status_payload": {
+      "scope": "research_node_setup",
+      "state": "proposal_ready",
+      "details": [
+        "Duplicate detection modeled locally",
+        "Hubify current-research-status route blocked",
+        "No live actions authorized"
+      ]
+    },
+    "approval": {
+      "event_reviewed": true,
+      "review_basis": "fixture_review",
+      "allows_external_write": false,
+      "allows_repo_mutation": false
+    },
+    "ui_hints": {
+      "card_style": "checkpoint",
+      "badge": "No Live Runs",
+      "expand_refs_by_default": true
+    }
+  },
+  "expected_assertions": {
+    "duplicates_found": 1,
+    "bigbounce_route_decision": "proposal",
+    "blocked_research_truth_source": "hubify_current_research_status",
+    "proposal_kind": "workflow_spec",
+    "h_computer_allows_external_write": false,
+    "h_computer_allows_repo_mutation": false,
+    "live_actions": []
+  }
+}

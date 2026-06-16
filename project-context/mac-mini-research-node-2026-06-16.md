@@ -157,8 +157,10 @@ Completed context gates:
 3. Inventory local MCP configs for BigBounce, You.md, h.computer, Hubify, and global agent configs.
 4. Define the SMS/iMessage -> You.md -> BigBounce task proposal schema.
 
-Next setup tasks:
+Next setup tasks completed in this docs-only lane:
 
-1. Define an h.computer research-node status hook that consumes approved BigBounce status events only.
-2. Add a no-live-runs smoke test that writes a fake capture event to local project context.
-3. Draft the multi-model/multi-UI review-method paper protocol as a candidate workflow paper.
+1. h.computer approved-status event shape drafted in `project-context/h-computer-research-node-status-event-shape-2026-06-16.md`.
+2. No-live-runs fake-capture smoke test drafted in `project-context/no-live-runs-fake-capture-smoke-test-2026-06-16.md` with fixture `project-context/fixtures/research-node/no-live-runs-fake-capture-smoke-test-2026-06-16.json`.
+3. Multi-model/multi-UI review-method workflow-paper draft captured in `project-context/multi-model-multi-ui-review-method-protocol-draft-2026-06-16.md`.
+
+Remaining boundary after this lane: these are specs and fixtures only. No live You.md ingestion, h.computer publish, Sendblue hookup, BigBounce paper edit, SSOT readiness change, pod action, or Hubify sync is authorized by these docs.
