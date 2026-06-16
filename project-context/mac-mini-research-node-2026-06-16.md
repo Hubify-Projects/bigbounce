@@ -55,6 +55,8 @@ hubify status -> 0 experiments, 0 papers, 0 surveys, 0 anomalies, 0 agents, 0 po
 
 The active authenticated lab is currently empty (`Local-LLM`), and Houston clarified on 2026-06-16 that Hubify app research data is out of date because recent research work has been happening directly in the `bigbounce` repo and on `bigbounce.hubify.app`. The Mac mini node must not infer BigBounce science state from Hubify app/CLI lab data. Use BigBounce local context, SSOT files, and `bigbounce.hubify.app` as the current research surfaces.
 
+See `project-context/bigbounce-source-of-truth-contract-2026-06-16.md` for the active source-of-truth contract.
+
 ## Agent And Runtime Inventory
 
 | Runner/tool | Intended role | Current state | Safe next step |
