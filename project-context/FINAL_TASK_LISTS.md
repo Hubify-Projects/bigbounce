@@ -10,6 +10,16 @@ Houston standing rule: **eat the frog, do the hard thing, no deferrals** — ite
 
 ---
 
+## Research-node context tasks — 2026-06-16
+
+This is a docs/context track, not a paper-readiness track. It must not mutate papers, PDFs, tarballs, pods, GPU runs, or generated artifacts.
+
+| # | Task | Owner | Status |
+|---|------|-------|---|
+| RN-2026-06-16 | Implement the Mac mini research-node setup safely: repair `hubify status` (`ink/index.js` import blocker), inventory Hermes/OpenClaw/Claude Code/Codex/Pi runners, define You.md/h.computer/SMS routing contract, add approved h.computer status hooks, add local fake-SMS no-live-runs smoke test, and draft the multi-model/multi-UI review-method paper protocol as a candidate workflow paper. See `project-context/mac-mini-research-node-2026-06-16.md`. | agent | queued; context memo captured 2026-06-16; `hubify status` blocked by `ERR_MODULE_NOT_FOUND` for `/Users/houstongolden/Desktop/CODE_2025/hubify/cli/node_modules/ink/index.js`; no live runs started |
+
+---
+
 ## P1A — ECH Structural Closure (no-go theorem) — v1A.0.35
 
 **Status: 95% / 99% cap · external-review-ready · §4.4.1 SATISFIED (tick 102 + R-ext-strict + R-ext-strict-v2 today, all 5/5 PERFECTLY CLEAN).**
