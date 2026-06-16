@@ -16,7 +16,7 @@ This is a docs/context track, not a paper-readiness track. It must not mutate pa
 
 | # | Task | Owner | Status |
 |---|------|-------|---|
-| RN-2026-06-16 | Implement the Mac mini research-node setup safely: restore `hubify status` auth/token context, inventory Hermes/OpenClaw/Claude Code/Codex/Pi runners, define You.md/h.computer/SMS routing contract, add approved h.computer status hooks, add local fake-SMS no-live-runs smoke test, and draft the multi-model/multi-UI review-method paper protocol as a candidate workflow paper. See `project-context/mac-mini-research-node-2026-06-16.md`. | agent | queued; context memo captured 2026-06-16; Hubify CLI import/spinner crashes fixed in `aa5dd910` and `94fd9344`; `hubify status` now reaches auth/token gate quickly; `hubify auth login` timed out twice waiting for browser authorization, latest code `CMJX-6HGC`; no live runs started |
+| RN-2026-06-16 | Implement the Mac mini research-node setup safely: capture the direct BigBounce repo + `bigbounce.hubify.app` source-of-truth contract, inventory Hermes/OpenClaw/Claude Code/Codex/Pi runners, define You.md/h.computer/SMS routing contract, add approved h.computer status hooks, add local fake-SMS no-live-runs smoke test, and draft the multi-model/multi-UI review-method paper protocol as a candidate workflow paper. See `project-context/mac-mini-research-node-2026-06-16.md`. | agent | queued; context memo captured 2026-06-16; Hubify CLI import/spinner crashes fixed in `aa5dd910` and `94fd9344`; Hubify auth restored via `RTW6-E8D9` and active lab is empty `Local-LLM`; Houston clarified Hubify app research data is out of date, so current research truth is local `bigbounce` plus `bigbounce.hubify.app`; no live runs started |
 
 ---
 

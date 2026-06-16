@@ -18,10 +18,10 @@ Run from `/Users/houstongolden/Desktop/CODE_2025/bigbounce` on 2026-06-16:
 |---|---|
 | `git status --short --branch` | Worktree already noisy before this checkpoint; docs-only changes are scoped separately. |
 | SSOT read | `project-context/SSOT/README.md`, `index.md`, `queue.md`, and drive-to-100 log were read before edits. |
-| `hubify status` | CLI import/spinner crashes fixed in Hubify commits `aa5dd910` and `94fd9344`; command now reaches the normal auth/token gate quickly. |
+| `hubify status` | CLI import/spinner crashes fixed in Hubify commits `aa5dd910` and `94fd9344`; auth restored on 2026-06-16 and live status returns for active lab `Local-LLM` (`local-llm`). |
 | Claude Code | Present: `/opt/homebrew/bin/claude`, version `2.1.153 (Claude Code)`. |
 | Codex | Present: `/Users/houstongolden/.nvm/versions/node/v22.20.0/bin/codex`, version `codex-cli 0.130.0`. |
-| Hubify CLI | Present as npm/global symlink; `hubify status` now starts normally but needs auth/token context before it can return live lab status. |
+| Hubify CLI | Present as npm/global symlink; `hubify status`, `hubify lab info`, and `hubify labs` now return live authenticated output, but Hubify app research data is not current BigBounce research state. |
 | OpenClaw CLI | `openclaw` command not found. Verify package/repo path before using it as a runner. |
 | Hermes CLI | `hermes` command not found. Verify package/repo path before using it as a runner. |
 | Pi CLI | `pi` command not found globally. `.pi` directories exist in sibling repos, but `@mariozechner/pi-coding-agent` is not installed globally. |
@@ -43,14 +43,17 @@ Follow-up repair on 2026-06-16:
 - Hubify commit `aa5dd910 fix(cli): lazy-load TUI dependencies` changed the CLI build so TUI-only Ink dependencies stay in a lazy chunk instead of loading during every command.
 - Hubify commit `94fd9344 fix(cli): avoid spinner import hang` removed the remaining `ora` startup/runtime hang from the CLI command path.
 - After these fixes, `hubify --help`, `hubify status`, and the Hubify health env-audit return promptly.
-- `hubify auth login` was attempted twice and the auth URLs were opened locally, but both device flows timed out waiting for browser authorization. The latest attempted code was `CMJX-6HGC`.
-- Current remaining gate is authentication/token context:
+- `hubify auth login` was attempted twice and the auth URLs were opened locally, but both device flows timed out waiting for browser authorization. The latest failed code was `CMJX-6HGC`.
+- Third auth attempt succeeded on 2026-06-16 with code `RTW6-E8D9`; token saved to `~/.hubify-labs/config`.
+- Current live authenticated checks:
 
 ```text
-Error: Not authenticated. Set HUBIFY_TOKEN=hk_live_<your-lab-key> ... or run `hubify auth login`.
+hubify labs -> Local-LLM [local-llm] active
+hubify lab info -> Lab ID m97bz5fgqc4j1jxf0vz789sajs8534nn
+hubify status -> 0 experiments, 0 papers, 0 surveys, 0 anomalies, 0 agents, 0 pods
 ```
 
-Until auth is restored, the Mac mini node should not depend on `hubify status` for live lab, agent, or compute state. Use BigBounce local context and SSOT files as fallback, and record auth status in task tracking.
+The active authenticated lab is currently empty (`Local-LLM`), and Houston clarified on 2026-06-16 that Hubify app research data is out of date because recent research work has been happening directly in the `bigbounce` repo and on `bigbounce.hubify.app`. The Mac mini node must not infer BigBounce science state from Hubify app/CLI lab data. Use BigBounce local context, SSOT files, and `bigbounce.hubify.app` as the current research surfaces.
 
 ## Agent And Runtime Inventory
 
@@ -61,7 +64,7 @@ Until auth is restored, the Mac mini node should not depend on `hubify status` f
 | OpenClaw | Possible agent/runtime pattern or runner. | Command not found. | Locate repo/package and document exact install/run path before assigning BigBounce work. |
 | Hermes Agent | Possible local research/agent runner. | Command not found. | Locate repo/package and document exact install/run path before assigning BigBounce work. |
 | Pi Agent | UI/orchestration inspiration or isolated subprocess runner. | Command not found globally; `.pi` config dirs exist in sibling repos. | If tested, use an isolated toy task first. Do not give Pi paper, pod, or queue authority until reviewed. |
-| Hubify CLI | Lab/agent/compute status source. | Import/spinner crashes fixed; `hubify status` now reaches auth/token gate quickly. | Restore auth/token context, then re-run `hubify status`. |
+| Hubify CLI | Tooling/status integration candidate, not current BigBounce research source of truth. | Import/spinner crashes fixed; auth restored; active lab is `Local-LLM` and currently empty. | Do not wire BigBounce research status to Hubify app data until the intended BigBounce lab/sync path is explicitly refreshed. |
 | Browser automation | QA/status inspection and local UI checks. | Available via existing local agent/browser stack, but no browser work was needed for this docs-only checkpoint. | Keep for site QA and h.computer owner-facing status surfaces, not for live compute. |
 | MCP/local stack configs | Connect BigBounce, You.md, h.computer, Hubify, and optional host adapters. | Not changed in this checkpoint. | Inventory local MCP configs separately before mutating them. |
 
@@ -74,7 +77,7 @@ Environment variables should be referenced by name only in docs. Relevant key na
 | `/Users/houstongolden/Desktop/CODE_2025/bigbounce` | BigBounce papers, SSOT, project context, queues, research scripts, and companion site. |
 | `/Users/houstongolden/Desktop/CODE_2025/youmd` | Identity, memory, source catalog, mobile capture, project routing, YouStacks, API/MCP layer. |
 | `/Users/houstongolden/Desktop/CODE_2025/h-computer` | Owner-facing status/feed/control surface for Houston's personal computer interface. |
-| `/Users/houstongolden/Desktop/CODE_2025/hubify` | Hubify CLI and labs/science platform code; import/spinner crashes fixed, auth/token still required for live status. |
+| `/Users/houstongolden/Desktop/CODE_2025/hubify` | Hubify CLI and labs/science platform code; import/spinner crashes fixed and auth restored, but research data there may be stale relative to direct BigBounce work. |
 | `/Users/houstongolden/Desktop/CODE_2025/badapp` | Fitness/workout transcript consumer for mobile capture sessions. |
 | `/Users/houstongolden/Desktop/CODE_2025/myo` | Health/body/productivity consumer for routed capture where appropriate. |
 | `/Users/houstongolden/.claude/scistack/` | Science-stack skills source of truth. |
@@ -89,7 +92,7 @@ The Mac mini node should coordinate through a proposal-first contract:
 2. **You.md:** owns raw memory, dedupe, segmentation, project routing, identity/context, approval state, and audit logs.
 3. **BigBounce:** receives approved research-task proposals or context updates. Paper changes still follow SSOT, queue, compile, latex-audit, and truth-audit rules.
 4. **h.computer:** can display owner-facing feed/status/control cards for the research node, but should not become the canonical science tracker.
-5. **Hubify:** should provide lab/agent/compute status once auth/token context is restored. Until then, do not infer live compute state from unauthenticated CLI output.
+5. **Hubify:** is a tooling/app integration surface only until explicitly refreshed. Do not infer BigBounce research status from Hubify app/CLI lab data; current research state lives in the local `bigbounce` repo and `bigbounce.hubify.app`.
 6. **RunPod/GPU/pods:** only operate through existing BigBounce/Hubify protocols and queue authorization. Raw mobile capture never starts expensive compute.
 
 Example dry-run capture, local only:
@@ -142,10 +145,10 @@ Research status: hypothesis and workflow pattern only. To become a paper or form
 
 ## First Live-Setup Tasks
 
-1. Restore Hubify CLI auth/token context and re-run `hubify status`.
+1. Capture the direct BigBounce repo plus `bigbounce.hubify.app` source-of-truth contract before any Hubify app sync work.
 2. Locate or install-dry-run OpenClaw, Hermes, and Pi without granting BigBounce authority.
 3. Inventory local MCP configs for BigBounce, You.md, h.computer, and Hubify.
 4. Define the SMS/iMessage -> You.md -> BigBounce task proposal schema.
-5. Define an h.computer research-node status hook that consumes approved status events only.
+5. Define an h.computer research-node status hook that consumes approved BigBounce status events only.
 6. Add a no-live-runs smoke test that writes a fake capture event to local project context.
 7. Draft the multi-model/multi-UI review-method paper protocol as a candidate workflow paper.
