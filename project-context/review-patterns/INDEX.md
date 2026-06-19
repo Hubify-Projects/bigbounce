@@ -127,6 +127,34 @@ Per the 2026-06-02 retro, no paper can hit 99% without ALL THREE of:
   `/r-round-closure-propagation-audit` rule (in
   `/paper-pre-review-check` SKILL.md) enforces.
 
+## Design patterns (D-round catalog, seeded 2026-06-19)
+
+Ingested by `/r-round-finding-archive` under category `design`; mined into `dpattern-*` by `/r-round-pattern-mine`.
+
+| ID | Title | Severity | Status |
+|----|-------|----------|--------|
+| [dpattern-single-col-wide-table](dpattern-single-col-wide-table.md) | Wide table squished into a single column | high | seeded |
+| [dpattern-cramped-multipanel-figure](dpattern-cramped-multipanel-figure.md) | Multi-panel figure cramped in one column | high | seeded |
+| [dpattern-figure-dir-desync](dpattern-figure-dir-desync.md) | Regenerated figure written to wrong directory (silent persistence) | high | seeded |
+| [dpattern-inline-artifact-path-clutter](dpattern-inline-artifact-path-clutter.md) | Raw file paths in \\texttt{} overflow the column | medium | seeded |
+| [dpattern-abstract-mega-paragraph](dpattern-abstract-mega-paragraph.md) | Abstract is one unbroken wall of text | medium | seeded |
+| [dpattern-missing-structure-schematic](dpattern-missing-structure-schematic.md) | Section with no figures reads as wall of text/equations | medium | seeded |
+| [dpattern-colorbar-label-overlap](dpattern-colorbar-label-overlap.md) | Colorbar tick labels overlap colorbar or adjacent panel | medium | seeded |
+| [dpattern-pdftotext-artifact](dpattern-pdftotext-artifact.md) | Vendor "visual" finding is a pdftotext render artifact (auto-FALSIFY) | informational | seeded |
+
+## Packaging patterns (P-round catalog, seeded 2026-06-19)
+
+Ingested by `/r-round-finding-archive` under category `packaging`; mined into `ppattern-*` by `/r-round-pattern-mine`.
+
+| ID | Title | Severity | Status |
+|----|-------|----------|--------|
+| [ppattern-stale-bbl](ppattern-stale-bbl.md) | Tarball ships a stale .bbl (not regenerated from current .bib) | high | seeded |
+| [ppattern-figure-only-in-build-dir](ppattern-figure-only-in-build-dir.md) | Figure exists in local build dir but missing from tarball | high | seeded |
+| [ppattern-dead-artifact-link](ppattern-dead-artifact-link.md) | \\artifact{} or repo URL in paper does not resolve | high | seeded |
+| [ppattern-unminted-doi-placeholder](ppattern-unminted-doi-placeholder.md) | Paper ships with TODO/TBD/placeholder DOI or arXiv ID | high | seeded |
+| [ppattern-cross-cite-submission-order](ppattern-cross-cite-submission-order.md) | Paper cites companion arXiv ID that doesn't exist yet | high | seeded |
+| [ppattern-mirror-md5-mismatch](ppattern-mirror-md5-mismatch.md) | PDF mirror does not byte-match the canonical source PDF | medium | seeded |
+
 ## How to add a new pattern
 
 When a new R-round surfaces a finding that does NOT match any of the 35

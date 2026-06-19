@@ -54,6 +54,8 @@ Read `AGENT_RULES.md` for the methodology bible.
 |---------|---------------------|
 | Compile a paper | `/paper-compile-revtex` → `/latex-audit` → `/artifact-link-verify` |
 | Close an R-round | `/cross-vendor-r-round` → `/peer-review-truth-audit` → `/cascaded-r-rounds` |
+| Run the design/visual round (96→98) | `/paper-design-round` (D-round: visual PDF pass; runs after R-rounds converge) |
+| Run the final packaging round (98→99) | `/paper-packaging-round` (P-round: tarball + mirrors + artifact links + arXiv kit) |
 | Bundle the round commit | `/pdf-restamp-bundle` |
 | Run an experiment | `/houston-method-v2` (drives QC → analyze → expand → backup) |
 | Update the website | `/bigbounce-site-sync` (same-commit dual sync: HTML + Next.js) |
@@ -69,6 +71,9 @@ Read `AGENT_RULES.md` for the methodology bible.
 | Save a new preference | `/memory-write` |
 | Before closure commit (math claim diff) | `/never-fabricate-derivation` (pattern-036 prevention; hard gate inside `/paper-pre-review-check`) |
 | Scistack housekeeping (end of session) | `/scistack-self-update` (sync + index + git status against `~/.claude/scistack`) |
+
+**Readiness ladder** (hard gates, never skip a stage):
+R-rounds converge → **96%** → D-round clean → **98%** → P-round bundle verified → **99%** → Houston sign-off → **100%**
 
 Existing gstack skills that pair: `/latex-audit`, `/codex`, `/qa`, `/browse`, `/ship`, `/land-and-deploy`, `/canary`, `/investigate`, `/loop`, `/schedule`.
 
