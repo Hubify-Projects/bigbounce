@@ -127,3 +127,49 @@ Switched to Opus 4.7 + xhigh effort for this.
 ## 2026-06-18 PST — Final review + publishing plan directive
 
 > please do a final internal and external multi-model multi-agent adversarial paper review round on all the papers and update the site and create a final publishing plan doc with my own personal to-dos and any other notes or final considerations etc and ensure all papers have been accepted by internal and external reviewers and all perfectly packaged and ready for me to simply review and submit to ArXiv - continue or start a loop to check on the progress of everything every 30mins until everything is 100% done
+
+## 2026-06-19 - D-round visual fixes P1A
+
+### Houston messages, verbatim
+
+**15:01 PT - Camera-ready visual polish: Table II width, eq overflow, TikZ schematic, version bump**
+
+- `cwd`: /Users/houstongolden/Desktop/CODE_2025/bigbounce
+- `session`: D-round visual fixes P1A
+- `agent`: claude-sonnet-4-6
+
+> D-round (camera-ready visual) fixes for paper P1A. Working dir: /Users/houstongolden/Desktop/CODE_2025/bigbounce. Source: arxiv/paper1a_ech_nogo.tex. NO science changes — visual/presentation only.
+>
+> Read the full fix list: project-context/peer-reviews/D1_P1A_VISUAL_AUDIT.md. Execute:
+> 1. [HIGH] Table II (~tex L for tab with `{clll}` inside table*) floats at ~55% width — make it fill: `\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}clll}` (match Tables I/III/IV). 
+> 2. [MED] Eq.(15) overfull 13pt (~L1760): the long "(more precisely ≈5.8×10⁻⁴…)" parenthetical runs into the margin — move it into a following sentence or add a math breakpoint.
+> 3. [LOW] Eq.(1) L~1012 + Eq.(B1) L~3006 overfull 3-5pt — wrap in align/split or add breakpoints.
+> 4. [FIGURE-ADD, HIGH VALUE] Add a clean TikZ schematic of the 14-barrier structure (7 Foundations A–G + 6 Branches H–O → arrows to closed routes R1–R4) as a new `figure*` near the §II barrier discussion. Use ONLY the structure described in the paper text (read the relevant section first; do not invent content). Keep it simple, legible, on-brand (monochrome/minimal). If you cannot make it render cleanly, omit it and note why.
+> 5. Fig 4 ≈ Fig 6 near-duplicate "significance vs year" charts: if the generation script is local, merge to one + enlarge fonts and promote to figure*; else note for a figure pass.
+>
+> Bump \paperVersion v1A.0.78→v1A.0.79 + \paperTimestamp June 19, 2026 + changelog line "D-round visual polish". Recompile (latexmk -pdf; if undef refs: pdflatex→bibtex→pdflatex×2). Confirm 0 undefined refs. Run a visual check: pdftoppm the changed pages (Table II page, the new schematic page) to PNG and Read them to confirm they look clean (no overflow/overlap). Do NOT push.
+>
+> REPORT (≤160 words): each fix done/skipped (+why), whether the schematic was added + how it looks, new version, pages, md5, max overfull pt, undef count.
+
+## 2026-06-19 - D-round P5 visual audit
+
+### Houston messages, verbatim
+
+**15:01 PT - Camera-ready visual fixes for paper P5 per D1_P5_VISUAL_AUDIT.md**
+
+- `cwd`: /Users/houstongolden/Desktop/CODE_2025/bigbounce
+- `session`: D-round P5 visual audit
+- `agent`: claude-sonnet-4-6
+
+> D-round (camera-ready visual) fixes for paper P5 — the heaviest visual workload. Working dir: /Users/houstongolden/Desktop/CODE_2025/bigbounce. Source: pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex. NO science changes — visual only.
+>
+> Read the full fix list: project-context/peer-reviews/D1_P5_VISUAL_AUDIT.md. Execute in priority order:
+> 1. [ESSENTIAL] 60 inline `\artifact{pipelines/p5_desi_chirality/outputs/…json}` macros render full repo paths inline (body/captions/table-notes), cluttering the document. REDEFINE the `\artifact{}` macro to emit a short hyperlinked ID (e.g. [A1], [A2]…) instead of the full path, and add ONE "Appendix C: Data artifacts" table mapping each ID → full repo path (hyperlinked). Keep all links functional. Grep the current `\artifact` definition first and preserve the hyperlink target.
+> 2. [ESSENTIAL] p22 Fig 8: the top colorbar "voids/pixel" label physically OVERLAPS the "Chirality σ_from_half per pixel" label. Find the generation script (grep scripts/ for the healpix skymap fig, e.g. fig_p5_healpix_skymap_nside32.png) — if the script + data are LOCAL, give the count panel its own separate colorbar with integer ticks + add panel spacing, rerun, confirm no overlap via pdftoppm. If data isn't local, instead crop/relayout in LaTeX or note it needs a data pass.
+> 3. [MAJOR] p6 Fig 2 volume-fraction PIE chart with cramped labels → if script local, replace with a horizontal bar chart + rerun.
+> 4. [MAJOR] p11 Fig 5 + p26 Fig 9 captions say Left/Right but panels lack (a)/(b) labels → add (a)/(b) annotations (figure script or LaTeX subcaption).
+> 5. [MINOR] p15 Table VII `10†` dagger defined only in a header row → move definition to caption.
+>
+> Bump \paperVersion v0.1.82→v0.1.83 + date June 19 + changelog "D-round visual polish". Recompile (latexmk). 0 undefined refs. Visual check: pdftoppm Fig 8 page + a couple \artifact-heavy pages → Read PNGs to confirm overlap gone + paths now short IDs. Do NOT push. Do NOT fabricate data — only rerun scripts on existing local data.
+>
+> REPORT (≤180 words): each item done/skipped(+why), whether Fig 8 overlap is fixed, whether \artifact IDs applied (count), new version, pages, md5, overfull/undef counts.
