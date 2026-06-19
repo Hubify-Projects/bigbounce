@@ -47,8 +47,8 @@ export interface LiveStatus {
 }
 
 export const liveStatus: LiveStatus = {
-  lastUpdatedISO: "2026-06-18T12:00:00Z",
-  lastUpdatedDisplay: "June 18, 2026 · 12:00 PM PT",
+  lastUpdatedISO: "2026-06-19T12:00:00Z",
+  lastUpdatedDisplay: "June 19, 2026 · 12:00 PM PT",
   headline:
     "Science accepted: R40+EXT20 unanimous ACCEPT across all 6 papers. Camera-ready D-round (visual/design polish) now open and BLOCKING — readiness ceiling 96 until D-round + packaging rounds complete.",
   summary:
@@ -82,7 +82,7 @@ export const liveStatus: LiveStatus = {
       slug: "paper-1a",
       number: "1A",
       shortTitle: "ECH dark-energy closure + perturbation transparency",
-      version: "v1A.0.78",
+      version: "v1A.0.79",
       readiness: 96,
       pendingWork: "D-round (camera-ready visual polish) BLOCKING. Science: R40+EXT20 ACCEPT. Next: D-round → P-round → Houston sign-off.",
     },
@@ -90,7 +90,7 @@ export const liveStatus: LiveStatus = {
       slug: "paper-1b",
       number: "1B",
       shortTitle: "MCMC + NaMaster + ALP technical companion",
-      version: "v1B.0.74",
+      version: "v1B.0.75",
       readiness: 96,
       pendingWork: "D-round (camera-ready visual polish) BLOCKING. Science: R40+EXT20 ACCEPT. Next: D-round → P-round → Houston sign-off.",
     },
@@ -98,7 +98,7 @@ export const liveStatus: LiveStatus = {
       slug: "paper-2",
       number: "2",
       shortTitle: "f_NL = -35/8 SPHEREx forecast",
-      version: "v1.7.70",
+      version: "v1.7.71",
       readiness: 96,
       pendingWork: "D-round (camera-ready visual polish) BLOCKING. Science: R40+EXT20 ACCEPT. Next: D-round → P-round → Houston sign-off.",
     },
@@ -106,7 +106,7 @@ export const liveStatus: LiveStatus = {
       slug: "paper-3",
       number: "3",
       shortTitle: "378K-anomaly multi-survey catalog",
-      version: "v3.1.112",
+      version: "v3.1.113",
       readiness: 96,
       pendingWork: "D-round (camera-ready visual polish) BLOCKING. Science: R40+EXT20 ACCEPT. Next: D-round → P-round → Houston sign-off.",
     },
@@ -122,7 +122,7 @@ export const liveStatus: LiveStatus = {
       slug: "paper-5",
       number: "5",
       shortTitle: "DESI environmental chirality independence",
-      version: "v0.1.82-2026-06-18",
+      version: "v0.1.83-2026-06-19",
       readiness: 96,
       pendingWork: "D-round (camera-ready visual polish) BLOCKING. Science: R40+EXT20 ACCEPT. Next: D-round → P-round → Houston sign-off + title count decision.",
     },

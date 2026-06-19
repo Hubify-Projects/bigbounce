@@ -215,7 +215,7 @@ export const papers: Paper[] = [
         note: "SIGN-OFF-READY — in the first submission wave with P4",
       },
     }),
-    pages: "29",
+    pages: "28",
     refs: "39",
     readiness: 96,
     statusVariant: "green",
