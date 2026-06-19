@@ -2,7 +2,9 @@
 
 **Canonical status file. When in doubt about Paper 4, read this.**
 
-**🎯 Last authoritative update: 2026-06-13 (PDT) — EXT15+EXT16 COURTESY RE-CONFIRMATION — P4 v1.0.188 (md5 c47abc18, 23pp, FROZEN).** Universal 3/3 ACCEPT confirmed at EXT12+EXT14 (ChatGPT+Grok+Gemini). EXT15 courtesy re-confirmation prompt sent: "No changes since EXT14 — please confirm ACCEPT verdict still holds." EXT16 courtesy re-confirmation submitted. NO CHANGES to source. Tarball paper4_arxiv_v1.0.188.tar.gz unchanged. Status: FROZEN at universal ACCEPT. SHIP-READY pending Houston sign-off.
+**🎯 Last authoritative update: 2026-06-18 (PDT) — R40+EXT20 FINAL ROUND — P4 v1.0.188 (md5 c47abc18, 23pp, FROZEN — UNCHANGED).** R40 = internal 5-model adversarial ACCEPT; no changes. EXT20 = fresh-referee external round ACCEPT; no changes. FROZEN at v1.0.188. Readiness holds 99. Status: SHIP-READY pending Houston sign-off. Final 1% = Houston sign-off per readiness-cap-99.
+
+**🎯 Prior authoritative update: 2026-06-13 (PDT) — EXT15+EXT16 COURTESY RE-CONFIRMATION — P4 v1.0.188 (md5 c47abc18, 23pp, FROZEN).** Universal 3/3 ACCEPT confirmed at EXT12+EXT14 (ChatGPT+Grok+Gemini). EXT15 courtesy re-confirmation prompt sent: "No changes since EXT14 — please confirm ACCEPT verdict still holds." EXT16 courtesy re-confirmation submitted. NO CHANGES to source. Tarball paper4_arxiv_v1.0.188.tar.gz unchanged. Status: FROZEN at universal ACCEPT. SHIP-READY pending Houston sign-off.
 
 **🎯 Last authoritative update: 2026-06-13 (PDT) — FROZEN at v1.0.188 — universal 3/3 ACCEPT confirmed EXT12 (first ChatGPT ACCEPT in campaign). EXT12: ChatGPT ACCEPT (first-ever in campaign) + Grok ACCEPT + Gemini ACCEPT (EXT11 baseline held via fresh-chat protocol). P4 v1.0.188 (md5 c47abc18, 23pp) is PUBLICATION-READY. NO CHANGES since EXT12. EXT14 re-prompt is courtesy confirmation only. Status: FROZEN at v1.0.188 — universal 3/3 ACCEPT confirmed. Tarball paper4_arxiv_v1.0.188.tar.gz staged at project-context/SSOT/arxiv_tarballs/. SHIP-READY pending Houston sign-off.
 
