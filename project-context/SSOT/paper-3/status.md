@@ -2,7 +2,7 @@
 
 **Canonical status file. When in doubt about Paper 3, read this.**
 
-**🎯 Last authoritative update: 2026-06-18 (PDT) — R40+EXT20 FINAL ROUND — P3 v3.1.111 → v3.1.112 (md5 62d7b294, 30pp, 0/0/0).** R40 = internal 5-model adversarial; one real closure: repro-path fix (stale path reference corrected). EXT20 = fresh-referee external round on post-closure PDF; UNANIMOUS ACCEPT; 0 blockers surviving truth-audit. Readiness holds 99. Final 1% = Houston sign-off per readiness-cap-99.
+**🎯 Last authoritative update: 2026-06-19 (PDT) — D-ROUND OPENED AS BLOCKING — Readiness rolled 99→96.** Science R40+EXT20 ACCEPT confirmed. Camera-ready D-round (visual/design polish) opened 2026-06-19 per Houston; ceiling R-round 96 until D-round closes. Prior: 2026-06-18 — R40+EXT20 FINAL ROUND — P3 v3.1.111 → v3.1.112 (md5 62d7b294, 30pp, 0/0/0); UNANIMOUS ACCEPT; readiness 99. Final gate: D-round → P-round → Houston sign-off.
 
 **🎯 Prior authoritative update: 2026-06-13 (PDT) — EXT15-CLOSURE-WAVE — P3 v3.1.110 (md5 9edff2b2, 30pp, 0/0/0).** EXT14=12/18 ACCEPT (P1B+P4 frozen). EXT15-closure: Table IX Savage-Dickey footnote enhanced with explicit Gaussian KDE values at γ*=3.0 (post density 0.461 → B_MB/free=3.23) and γ*=4.33 (post density 6.46e-5 → B_SMBHB/free=4.52e-4); ratio B_MB/SMBHB=7.14e3. Genuine SD density ratios, not posterior-tail fractions. EXT16 submitted. Readiness 95 per /readiness-cap-99.
 
