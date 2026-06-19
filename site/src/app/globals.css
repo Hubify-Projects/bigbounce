@@ -988,6 +988,31 @@ a:hover {
   -webkit-overflow-scrolling: touch;
 }
 
+/* Narrow-viewport only: subtle right-edge fade hints that the table scrolls.
+   Uses a ::after pseudo-element so no extra markup is needed and desktop
+   (≥ 640 px) is completely unaffected. The gradient is accent-tinted at
+   very low opacity so it reads as a cue without adding visual noise. */
+@media (max-width: 639px) {
+  .table-scroll {
+    position: relative;
+  }
+  .table-scroll::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 40px;
+    pointer-events: none;
+    background: linear-gradient(
+      to right,
+      transparent,
+      color-mix(in srgb, var(--background, #0a0a0a) 85%, var(--accent, #7a9e7e) 15%)
+    );
+    border-radius: 0 var(--radius, 6px) var(--radius, 6px) 0;
+  }
+}
+
 /* Long unbroken artifact paths / identifiers must wrap, never bleed. */
 .container code,
 .break-anywhere {
