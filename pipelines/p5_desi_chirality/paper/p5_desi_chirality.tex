@@ -14,12 +14,15 @@
 }
 
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
-\newcommand{\artifact}[1]{%
-  \href{\repoBase/#1}{\nolinkurl{#1}}%
-}
-\newcommand{\artifactDir}[1]{%
-  \href{\repoBase/#1}{\nolinkurl{#1/}}%
-}
+% \artifact and \artifactDir emit short hyperlinked IDs [AN] (D-round visual fix).
+% Full path--to--ID mapping: see Appendix~C (Data artifacts).
+% Both macros now receive the literal ID string from the Python rewrite pass;
+% the argument is the ID, and the href target is repoBase/PATH which is
+% embedded inside each \href{} call by the rewrite.  These macro stubs are
+% retained only as no-ops so the argument is consumed harmlessly at any
+% residual call sites (there should be none after the rewrite pass).
+\newcommand{\artifact}[1]{\textup{#1}}
+\newcommand{\artifactDir}[1]{\textup{#1}}
 % AUTO-FALSIFY NOTE (R39conf, 2026-06-13): Reviewer claim that χ[h⁻¹ Mpc] = χ[Mpc] / h
 % (i.e., divide-by-h) is FALSIFIED by direct pipeline inspection.
 % Source: pipelines/p5_desi_chirality/env_finder/01_compute_vweb.py lines 106-108
@@ -30,7 +33,8 @@
 % The divide-by-h claim (~1246 h⁻¹ Mpc) is INVERTED. No pipeline recompute required.
 % If any future reviewer re-raises this, cite env_finder/01_compute_vweb.py:106-108.
 
-\newcommand{\paperVersion}{v0.1.82-2026-06-18}
+\newcommand{\paperVersion}{v0.1.83-2026-06-19}
+% v0.1.83-2026-06-19 (2026-06-19 — D-round visual polish: (1) \artifact macros → short [A1]-[A30] hyperlinked IDs (60 sites); Appendix C artifact table added; (2) Fig 8 healpix skymap → 2-panel (count + sigma) with separate colorbars (overlap fixed); (3) Fig 2 pie → horizontal bar chart; (4) Fig 5 + Fig 9 (a)/(b) panel labels added; (5) Table VII caption dagger defined; no science change)
 % v0.1.82-2026-06-18 (2026-06-18 — EXT20 micro-closure: class×program χ²=4932→4933 rounding harmonization at 4 prose sites (recompute 4932.51); referee-flagged; no science change)
 % v0.1.81-2026-06-18 (2026-06-18 — R40 closure: 2 residual T-Web/V-Web labeling fixes missed by v0.1.80 sweep — l.809 nomenclature note V-Web; l.2900-2901 math-mode _{\rm V\mbox{-}Web}→_{\rm T\mbox{-}Web} (pattern-059/060); no science change)
 % v0.1.80-2026-06-13 (2026-06-13 — EXT16 closure: (1) l.2864 |f_CW^Tempel - f_CW^{V-Web}| → T-Web (\mbox{-} pattern-060); (2) l.431 nomenclature note direction corrected V-Web not T-Web; (3) l.1117 dup T-Web → external T-Web [TWebDESI2026]. Closes ChatGPT EXT16 MINOR)
@@ -405,7 +409,7 @@
 \begin{abstract}
 We cross-match the 8{,}474{,}531-galaxy chirality catalog of Paper~IV
 \cite{golden_chirality_2026} (in preparation; catalog and methodology
-to be detailed separately; see \artifact{pipelines/p2\_chirality/})
+to be detailed separately; see \href{\repoBase/pipelines/p2\_chirality/}{[A1]})
 with the DESI Data Release~1 redshift
 catalog ($16.36 \times 10^6$ \texttt{ZWARN=0} input rows) to test whether
 spiral galaxy handedness is statistically independent of large-scale
@@ -560,7 +564,7 @@ $\Delta = -0.0037$, $|z_\Delta| = 1.25$, $p = 0.21$ on $n_{\rm void} = 104{,}912
 vs.\ $n_{\rm non\mbox{-}void} = 40{,}877$; V2-VIDE catalog-native
 $\Delta = +0.0019$, $|z_\Delta| = 0.72$, $p = 0.47$); all five nominal
 nulls remain below the Bonferroni-5 threshold $|\sigma| = 2.58$
-(\artifact{pipelines/p5\_desi\_chirality/outputs/30\_ext4\_galzone\_complement\_contrasts.json});
+(\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/30\_ext4\_galzone\_complement\_contrasts.json}{[A2]});
 (iii) HEALPix sky-position stratification by maximal-void density per
 pixel finds the $-5\sigma$ catalog-wide monopole offset concentrated entirely
 in the ``0 maximal voids per pixel'' bin (sky regions outside DESIVAST
@@ -623,7 +627,7 @@ Spiral galaxy chirality is, to leading order in a parity-conserving
 universe, an equal mixture of clockwise (CW) and counterclockwise (CCW)
 projections on the sky once mirror-augmentation biases in classifier
 training are removed. Paper~IV~\cite{golden_chirality_2026} (in preparation;
-see \artifact{pipelines/p2\_chirality/}; the present manuscript
+see \href{\repoBase/pipelines/p2\_chirality/}{[A1]}; the present manuscript
 treats its catalog and quoted monopole offset as inputs whose
 uncertainty is propagated explicitly below)
 establishes the global mixture in the post-test-time-augmentation
@@ -810,7 +814,7 @@ Cautun~\textit{et~al.}~2014 \cite{Cautun2014}).
 version standardizes on ``T-Web'' for our implementation of the
 Hahn~2007 tidal-tensor recipe; earlier preprint versions used
 ``V-Web'' for the same implementation (the artifact filename
-\artifact{pipelines/p5\_desi\_chirality/env\_finder/01\_compute\_vweb.py}
+\href{\repoBase/pipelines/p5\_desi\_chirality/env\_finder/01\_compute\_vweb.py}{[A3]}
 and the \texttt{sec:vweb} cross-reference label are retained for
 backward compatibility with the HF dataset slug and the GitHub release
 tag). The Hoffman~2012 velocity-shear V-Web (which requires a separate
@@ -837,7 +841,7 @@ $0.6766 \times 843 = 570\,h^{-1}$\,Mpc, matching the sanity anchor.
 The pipeline implements this as
 \texttt{chi = Planck18.comoving\_distance(z).value;
 chi = chi * cosmo.h} (multiply-by-$h$ convention;
-\artifact{pipelines/p5\_desi\_chirality/env\_finder/01\_compute\_vweb.py},
+\href{\repoBase/pipelines/p5\_desi\_chirality/env\_finder/01\_compute\_vweb.py}{[A3]},
 lines~106--108). The alternative convention
 $\chi[h^{-1}\,{\rm Mpc}] = \chi[{\rm Mpc}]/h$ (divide-by-$h$, giving
 ${\approx}1246\,h^{-1}$\,Mpc at $z=0.2$) is not used here; the
@@ -860,7 +864,7 @@ $97.9\%$ of matched-spiral assignments retain their class, and
 per-class $f_{\rm CW}$ moves by at most $0.23$~pp (the small wall
 class; filament $-0.005$~pp, cluster $+0.013$~pp), leaving every
 environment--chirality conclusion unchanged (artifact
-\artifact{pipelines/p5\_desi\_chirality/outputs/23\_unique\_parent\_rebuild.json}).
+\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/23\_unique\_parent\_rebuild.json}{[A4]}).
 \item Build a survey-footprint mask by dilation of occupied cells
 (\textsc{scipy} \texttt{binary\_dilation} with the default
 face-connected $3\!\times\!3\!\times\!3$ cross structuring element,
@@ -878,7 +882,7 @@ $\delta = \rho / \bar\rho - 1$.
 convention $\partial_i \partial_j \leftrightarrow (ik_i)(ik_j) =
 -k_i k_j$, so with $\Phi(k) = -\delta_k/k^2$ this gives
 $T_{ij}(k) = +k_i k_j \delta_k / k^2$; the committed implementation
-\artifact{pipelines/p5\_desi\_chirality/env\_finder/01\_compute\_vweb.py} applies exactly this sign,
+\href{\repoBase/pipelines/p5\_desi\_chirality/env\_finder/01\_compute\_vweb.py}{[A3]} applies exactly this sign,
 matching the title-footnote convention --- the reported volume
 fractions, e.g.\ void $24.4\%$ / cluster $1.0\%$, are consistent with
 the standard sign); inverse-FFT the six
@@ -920,7 +924,8 @@ structure.
 \includegraphics[width=\columnwidth]{fig_p5_volume_fractions_pie.png}
 \caption{In-footprint T-Web volume fractions for the canonical
 $(R_s\!=\!25\,{\rm Mpc}/h, \lambda_{\rm th}\!=\!0, N_{\rm grid}\!=\!256^3)$
-run on $14{,}622{,}283$ DESI DR1 spectroscopic galaxies. The cluster
+run on $14{,}622{,}283$ DESI DR1 spectroscopic galaxies (horizontal bar
+chart; value labels show percentage to one decimal place). The cluster
 volume fraction ($1.0\%$) reflects the high-density tail; the
 wall+filament fraction ($74.5\%$) dominates as expected for
 galaxy-traced large-scale structure.}
@@ -1203,12 +1208,12 @@ $783{,}820$-row unique-spiral subset (one row per \texttt{TARGETID}):
 $\chi^2 = 3.00$, $p = 0.39$ ($\chi^2 = 2.92$, $p = 0.41$ further
 excluding the $79$ \texttt{TARGETID}s with conflicting duplicate env
 labels), so the duplicates have negligible impact on the null verdict
-(\artifact{pipelines/p5\_desi\_chirality/outputs/21\_r23conf\_meta\_closures.json}). The
+(\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/21\_r23conf\_meta\_closures.json}{[A5]}). The
 label-shuffle look-elsewhere $p$ on the max-class
 $|\sigma_{\rm from\,half}|$ statistic is likewise null and insensitive
 to stratification of the shuffle by imaging leg and DESI program
 ($p = 0.12$ free vs $0.12$ stratified;
-\artifact{pipelines/p5\_desi\_chirality/outputs/18\_v0151\_stratified\_and\_density.json}).
+\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/18\_v0151\_stratified\_and\_density.json}{[A6]}).
 
 \begin{table}[t]
 \caption{CW fraction per cosmic-web environment, headline T-Web
@@ -1274,7 +1279,7 @@ leaking through the larger-sample bins, not as environment-dependent
 chirality.
 
 \textbf{Void-bin smallness.} The void bin has only $n\!=\!428$
-galaxies. Two distinct void volume fractions appear in this paper and refer to different denominators: (i)~the T-Web tidal-classifier void class occupies ${\approx}24.4\%$ of in-footprint cell volume (\S\ref{sec:vweb_algo}, \artifact{pipelines/p5\_desi\_chirality/env\_finder/reports/01\_volume\_fractions.json}), while (ii)~only ${\approx}0.1\%$ of in-footprint grid cells fall inside a DESIVAST VoidFinder sphere (the point-in-sphere membership criterion on the $25.9\,{\rm Mpc}/h$ grid used for the sky-stratification analysis of \S\ref{sec:desivast_maximal_healpix}). The small T-Web void-bin count ($n\!=\!428$) arises because despite the T-Web void class covering $24.4\%$ of volume, the sparse $r \le 17.8$ DESI Legacy spiral selection combined with the $z \leq 0.24$ depth cut samples only a thin galaxy population within those cells. The $\sigma\!=\!-0.68$ on the void
+galaxies. Two distinct void volume fractions appear in this paper and refer to different denominators: (i)~the T-Web tidal-classifier void class occupies ${\approx}24.4\%$ of in-footprint cell volume (\S\ref{sec:vweb_algo}, \href{\repoBase/pipelines/p5\_desi\_chirality/env\_finder/reports/01\_volume\_fractions.json}{[A7]}), while (ii)~only ${\approx}0.1\%$ of in-footprint grid cells fall inside a DESIVAST VoidFinder sphere (the point-in-sphere membership criterion on the $25.9\,{\rm Mpc}/h$ grid used for the sky-stratification analysis of \S\ref{sec:desivast_maximal_healpix}). The small T-Web void-bin count ($n\!=\!428$) arises because despite the T-Web void class covering $24.4\%$ of volume, the sparse $r \le 17.8$ DESI Legacy spiral selection combined with the $z \leq 0.24$ depth cut samples only a thin galaxy population within those cells. The $\sigma\!=\!-0.68$ on the void
 class is statistical noise at this $N$; the $95\%$ Jeffreys credible
 interval is $f_{\rm CW}^{\rm void} \in [0.435, 0.530]$, which brackets
 parity.
@@ -1321,7 +1326,7 @@ coefficient shift of $0.17\sigma$. No physical covariate is predictive of
 chirality; the only marginally predictive regressor is classifier
 confidence ($p\approx0.02$), a classifier property rather than an
 environmental one. Artifact:
-\artifact{pipelines/p5\_desi\_chirality/outputs/20\_v0151\_covariate\_regression.json}.
+\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/20\_v0151\_covariate\_regression.json}{[A8]}.
 Figure~\ref{fig:cw_vs_z} shows the binned equivariant CW fraction
 across the matched sample's redshift range.
 
@@ -1365,7 +1370,7 @@ $|\sigma|_{\max} = 3.64$ with a maximum monopole-subtracted residual
 of $|\sigma_{\rm obs}-\sigma_{\rm pred}| = 1.57$, again below the
 Bonferroni-5 threshold — the density null is not an artifact of the
 endogenous tracer choice
-(\artifact{pipelines/p5\_desi\_chirality/outputs/18\_v0151\_stratified\_and\_density.json}).
+(\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/18\_v0151\_stratified\_and\_density.json}{[A6]}).
 A mask-edge buffer test gives the same answer: excluding the
 $74{,}070$ spirals in HEALPix NSIDE-$64$ footprint-edge pixels
 (${\sim}0.9^\circ$ angular buffer) and recomputing both the proxy and
@@ -1374,7 +1379,7 @@ spirals in their original quintile and shifts no per-quintile
 $f_{\rm CW}$ of Figure~\ref{fig:cw_vs_density} by more than
 $0.12$\,pp — the quintile assignment is invariant to mask-edge
 effects
-(\artifact{pipelines/p5\_desi\_chirality/outputs/22\_r24conf\_local\_batch.json}).
+(\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/22\_r24conf\_local\_batch.json}{[A9]}).
 
 \begin{table}[h]
 \caption{\label{tab:density_quintile_residual}
@@ -1403,12 +1408,12 @@ Quintile & $f_{\rm CW}$ & $\sigma_{\rm obs}$ & $\sigma_{\rm pred}$ & $|\sigma_{\
 \begin{figure*}[t]
 \centering
 \includegraphics[width=0.95\textwidth]{fig_p5_cw_vs_density.png}
-\caption{Density-quintile null with Paper IV monopole-prediction
-overlay. \emph{Left:} CW fraction per projected-density quintile
+\caption{Density-quintile null with Paper~IV monopole-prediction
+overlay. \emph{(a)} CW fraction per projected-density quintile
 ($k\!=\!5$ NN proxy, $N\!=\!158{,}327$ per bin) with $95\%$ Jeffreys
 binomial CIs; dashed parity $f_{\rm CW}\!=\!0.5$ and dotted
-Paper~IV $\bar f_{\rm CW}\!=\!0.4974$ references. \emph{Right:}
-observed $\sigma_{\rm from\,half}$ per quintile (bars) vs the
+Paper~IV $\bar f_{\rm CW}\!=\!0.4974$ references. \emph{(b)}
+Observed $\sigma_{\rm from\,half}$ per quintile (bars) vs the
 Paper~IV-monopole prediction $\sigma_{\rm pred}\!=\!2\Delta f_{\rm CW}\sqrt{N}$
 (red diamonds) at $\Delta f_{\rm CW}\!=\!-0.0026$; dotted blue lines
 mark the Bonferroni-5 thresholds at $\alpha\!=\!0.01$. The observed
@@ -1441,7 +1446,7 @@ in units of the cube-mean cell density, NN-interpolated to each
 galaxy position; dimensionless). Quartile membership is identical
 under the linear density (monotone transform); definition verified by
 exact recompute in
-\artifact{pipelines/p5\_desi\_chirality/outputs/21\_r23conf\_meta\_closures.json}.
+\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/21\_r23conf\_meta\_closures.json}{[A5]}.
 The $\sigma_{\rm from\,half}$ values scale as $\sqrt{n}$ at fixed
 offset and are not comparable across rows of different $n$; the
 inferential comparison is the monopole-referenced residual of
@@ -1583,14 +1588,14 @@ two-sample $z$ — which assumes disjoint independent samples — should
 be read as approximate. The overlap-free version of the test exists
 only at the whole-catalog level, where the unique-galaxy
 bright-vs-dark split gives $|z| = 1.95$
-(\artifact{pipelines/p5\_desi\_chirality/outputs/17\_v0151\_closure\_recomputes.json};
+(\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/17\_v0151\_closure\_recomputes.json}{[A10]};
 exact value $1.957$, reported to $2$\,d.p.);
 the omnibus homogeneity tests
 ($p = 0.31$ canonical, $p = 0.99$ selection-corrected;
 \S\ref{sec:results_vweb}) remain the primary statistics of this
 paper. The filament bright/dark split on the declared-parent recompute
 gives the values quoted above
-(\artifact{pipelines/p5\_desi\_chirality/outputs/17\_v0151\_closure\_recomputes.json}).
+(\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/17\_v0151\_closure\_recomputes.json}{[A10]}).
 A genuinely environment-dependent
 filament-chirality signal would propagate consistently across both
 target classes; the sign-flip recurrence across both the cluster and
@@ -1663,11 +1668,11 @@ environment coefficients (void, wall, cluster vs filament) shift by
 $\leq 0.12$ on their standard errors after program adjustment
 in $M_1$ relative to $M_0$ (void $0.006\,\hat\sigma$, wall $0.10\,\hat\sigma$,
 cluster $0.11\,\hat\sigma$; shifts computed as $|\beta_{M_1}-\beta_{M_0}|/\mathrm{SE}_{M_0}$
-from \artifact{pipelines/p5\_desi\_chirality/outputs/27\_ext1\_logistic\_program\_control.json}),
+from \href{\repoBase/pipelines/p5\_desi\_chirality/outputs/27\_ext1\_logistic\_program\_control.json}{[A11]}),
 confirming that the environmental-independence
 null is not confounded by the T-Web$\times$program non-orthogonality.
 Artifact:
-\artifact{pipelines/p5\_desi\_chirality/outputs/27\_ext1\_logistic\_program\_control.json}.
+\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/27\_ext1\_logistic\_program\_control.json}{[A11]}.
 
 \subsection{Sky-position regional coherence}\label{sec:results_healpix}
 
@@ -1709,7 +1714,7 @@ re-draw ($0.10$) sits ${\sim}2.4\times$ the pairwise
 ${\rm se}_{\rm MC}$ below the headline $0.135$ --- a stream-to-stream
 fluctuation larger than typical but immaterial to the verdict, since
 every variant ($0.089$--$0.135$) is far from the $p<0.05$ criterion;
-\artifact{pipelines/p5\_desi\_chirality/outputs/18\_v0151\_stratified\_and\_density.json}).
+\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/18\_v0151\_stratified\_and\_density.json}{[A6]}).
 Figure~\ref{fig:healpix_skymap} visualizes the per-pixel signed
 $\sigma_{\rm from\,half}$ at NSIDE=32 as a Mollweide projection; no
 coherent large-scale structure is visible, matching the $p\!=\!0.135$
@@ -1740,9 +1745,9 @@ T-Web rebuild on the $14{,}622{,}283$-galaxy DR1 spectro sample, joined
 per cell to the declared $812{,}793$-row env-labeled spiral parent of
 Table~\ref{tab:cw_vs_env} (the per-cell sweep parquets and configs are
 in
-\artifactDir{pipelines/p5\_desi\_chirality/data/desi\_env/phase2\_sweep};
+\href{\repoBase/pipelines/p5\_desi\_chirality/data/desi\_env/phase2\_sweep}{[A12]};
 the per-cell statistics below are recomputed in
-\artifact{pipelines/p5\_desi\_chirality/outputs/17\_v0151\_closure\_recomputes.json}).
+\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/17\_v0151\_closure\_recomputes.json}{[A10]}).
 The declared-parent recompute is reported below.
 
 \emph{Grid-resolution caveat on the $R_s = 10$ cells.} At $256^3$ the
@@ -1771,7 +1776,7 @@ the $R_s\!=\!25$-tuned 2-iteration mask shifts class volumes by
 $\le 0.82$\,pp, retains $99.75\%$ of matched-spiral class
 assignments, and moves per-class $f_{\rm CW}$ by at most $0.27$\,pp
 (the $n\!=\!406$ void bin), leaving every sweep conclusion unchanged
-(\artifact{pipelines/p5\_desi\_chirality/outputs/26\_r27conf\_ess\_recomputes.json}).
+(\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/26\_r27conf\_ess\_recomputes.json}{[A13]}).
 
 \begin{table*}[t]
 \caption{Phase 2 sensitivity sweep on the declared env-labeled parent:
@@ -1785,7 +1790,7 @@ by the void-bin binomial error at these $n_{\rm void}$. Per-cell
 void-bin deviations (top row to bottom):
 $|\sigma_{\rm void}| = 0.47 / 1.07 / 0.93 / 0.68 / 1.08 / 0.86 /
 0.95 / 1.35 / 0.87$, never exceeding $1.35$
-(\artifact{pipelines/p5\_desi\_chirality/outputs/17\_v0151\_closure\_recomputes.json}).
+(\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/17\_v0151\_closure\_recomputes.json}{[A10]}).
 The $p_{\rm LEE}$ values are corrected within each cell's own
 $K\!=\!4$ class family only; they are not globally corrected across
 the other scan families in this paper. A rerun with imaging-leg
@@ -1796,10 +1801,12 @@ correction across cells (one parent permutation propagated through
 all nine cells per draw, preserving cross-cell correlations) gives
 $p_{\rm global} = 0.36$ over all nine cells and $0.27$ over the six
 resolved $R_s \in \{25,50\}$ cells
-(\artifact{pipelines/p5\_desi\_chirality/outputs/24\_r24conf\_pod\_session.json}). The $R_s\!=\!10$ rows sit below the
+(\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/24\_r24conf\_pod\_session.json}{[A14]}). The $R_s\!=\!10$ rows sit below the
 $25.9\,{\rm Mpc}/h$ grid sampling scale and are retained only as a
 degenerate near-unsmoothed limit, excluded from the robustness claim
-(\S\ref{sec:phase2}).}
+(\S\ref{sec:phase2}). $^\dagger$$R_s\!=\!10\,{\rm Mpc}/h$ is below the
+$25.9\,{\rm Mpc}/h$ grid cell scale ($N_{\rm grid}\!=\!256^3$, grid-unresolved);
+these rows are excluded from the robustness claim.}
 \label{tab:phase2}
 \begin{ruledtabular}
 \begin{tabular}{rrrrrr}
@@ -2031,7 +2038,7 @@ spirals scatter inward), yet $\Delta f_{\rm CW}$ stays within
 $[-0.34, +0.37]$\,pp (coherent $\pm 5$\,Mpc/$h$ shifts:
 $-0.16$/$+0.03$\,pp) and every realization's void/non-void two-sample
 $|z|$ stays below $2\sigma$ (maximum $1.93$;
-\artifact{pipelines/p5\_desi\_chirality/outputs/26\_r27conf\_ess\_recomputes.json}).
+\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/26\_r27conf\_ess\_recomputes.json}{[A13]}).
 The conclusion drawn from this Monte Carlo is deliberately narrow:
 void \emph{membership} is not insensitive to the perturbation (the
 hole-union count moves by ${\sim}34\%$); what is stable under this
@@ -2129,14 +2136,14 @@ $\sigma^{\rm void} = -1.69$; $\Delta f_{\rm CW}$ void-vs-non-void
 $+0.0006$ instead of $+0.0007$) — every conclusion in this section is
 invariant, and we retain the $k=20$ catalog statistics below for
 continuity with the released artifacts
-(\artifact{pipelines/p5\_desi\_chirality/outputs/17\_v0151\_closure\_recomputes.json},
+(\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/17\_v0151\_closure\_recomputes.json}{[A10]},
 which also serves as the committed membership driver). \textbf{The DESIVAST-anchored
 void class is $\boldsymbol{\sim\!130\times}$ larger than the T-Web void
 class} ($n = 428$ from Section~\ref{sec:results_vweb}), providing a
 properly-powered chirality-in-voids test at the cleanest available
 public DR1 void catalog.
 
-\begin{table}[ht]
+\begin{table*}[ht]
 \caption{Chirality fraction in DESIVAST-anchored vs non-void classes
 on the $z \leq 0.24$ matched-spiral subsample (point-in-sphere test
 against $101{,}863$ DESIVAST VoidFinder hole spheres; the $k=20$
@@ -2147,11 +2154,11 @@ The footprint-restricted control row (``Footprint-restricted non-void
 angular discs (NSIDE\,$=\!64$, inclusive) intersected with the
 holes' comoving radial span, using the exact $k$-unbounded membership
 (\S\ref{sec:desivast_maximal_healpix};
-\artifact{pipelines/p5\_desi\_chirality/outputs/29\_ext3\_desivast\_footprint\_retabulation.json}).}
+\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/29\_ext3\_desivast\_footprint\_retabulation.json}{[A15]}).}
 \label{tab:desivast_canonical}
 \begin{ruledtabular}
 \begin{tabular}{lrrrr}
-Class & $n$ & $n_{\rm CW}$ & $f_{\rm CW}$ & $\sigma_{\rm from\ half}$ \\
+Class & $n$ & $n_{\rm CW}$ & $f_{\rm CW}$ & $\sigma_{\rm from\,half}$ \\
 \hline
 DESIVAST void & $56{,}981$ & $28{,}286$ & $0.4964$ & $-1.71$ \\
 Non-void      & $621{,}964$ & $309{,}173$ & $0.4971$ & $-4.59$ \\
@@ -2160,7 +2167,7 @@ Non-void      & $621{,}964$ & $309{,}173$ & $0.4971$ & $-4.59$ \\
 Footprint-restricted non-void (exact) & $253{,}276$ & $126{,}202$ & $0.4983$ & $-1.73$ \\
 \end{tabular}
 \end{ruledtabular}
-\end{table}
+\end{table*}
 
 The two classes return $f_{\rm CW}$ values differing by only
 $0.0007$ (0.07 percentage points): the void-galaxy and non-void
@@ -2220,7 +2227,7 @@ with the same null. The DESIVAST non-void bright sub-sample
 ($n = 615{,}078$, $\sigma = -4.72$) carries the full catalog-level
 monopole signature scaled to $n$, as expected.
 Artifact:
-\artifact{pipelines/p5\_desi\_chirality/outputs/28\_ext1\_desivast\_program\_split.json}.
+\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/28\_ext1\_desivast\_program\_split.json}{[A16]}.
 
 \begin{table}[ht]
 \caption{DESIVAST VoidFinder bright/dark target-program split of
@@ -2314,7 +2321,7 @@ $n_{\rm void} = 74{,}111$, $f_{\rm CW}^{\rm void} = 0.4972$,
 $\sigma^{\rm void} = -1.50$. The per-cap join values above are computed
 with cap-local zone indices offset between NGC and SGC to preserve the
 zone-to-void assignments under concatenation
-(\artifact{pipelines/p5\_desi\_chirality/outputs/22\_r24conf\_local\_batch.json}).
+(\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/22\_r24conf\_local\_batch.json}{[A9]}).
 
 Both corrected void $\sigma$ values remain null and are
 \emph{smaller in magnitude} than the sphere-approximation analogues
@@ -2341,7 +2348,7 @@ sitting well below the Bonferroni-5 threshold
 $|z|^{\rm Bonf}_{0.05,5} \approx 2.58$, so the catalog-native rows
 (rows 4--5 of Table~\ref{tab:analysis_tree}) carry the same
 declared primary estimand as the three sphere-PIS rows
-(\artifact{pipelines/p5\_desi\_chirality/outputs/30\_ext4\_galzone\_complement\_contrasts.json}). The
+(\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/30\_ext4\_galzone\_complement\_contrasts.json}{[A2]}). The
 \texttt{GALZONE} \texttt{EDGE} and \texttt{DEPTH} quality flags do not
 alter this conclusion: every catalog-native void member already
 carries $\texttt{EDGE} = 0$ (adding the $\texttt{EDGE} = 0$
@@ -2380,7 +2387,7 @@ f_{\rm CW}^{\rm void}$ (the committed artifact stores the
 opposite-signed $f^{\rm void} - f^{\rm non\mbox{-}void}$ values), so
 the permissiveness of the hole-union criterion does
 not drive the void-class result
-(\artifact{pipelines/p5\_desi\_chirality/outputs/24\_r24conf\_pod\_session.json}). Binning the maximal voids by
+(\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/24\_r24conf\_pod\_session.json}{[A14]}). Binning the maximal voids by
 HEALPix \texttt{NSIDE} $= 16$ pixel (equal-area pixels of
 $\approx 13.4\,{\rm deg}^2$) returns 297 occupied pixels with
 median 14 maximal voids per occupied pixel (note: the 885 occupied pixels cited in the Fig.~\ref{fig:voids_vs_chirality} caption refer to the finer \texttt{NSIDE} $= 32$ pixelization of the same void set, which yields more pixels at a smaller median count of 4 voids/pixel). Stratifying the $z \leq
@@ -2436,7 +2443,7 @@ the proxy-based attribution was correct: the excluded
 outside-footprint non-void population ($n = 368{,}588$,
 $\sigma = -4.53$) carries the catalog-level monopole signature
 (artifact
-\artifact{pipelines/p5\_desi\_chirality/outputs/29\_ext3\_desivast\_footprint\_retabulation.json}).
+\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/29\_ext3\_desivast\_footprint\_retabulation.json}{[A15]}).
 The $[-2.04, -0.09]$ range of every $\geq\!1$-void bin independently bounds
 the in-coverage behavior of the sky-scan proxy. Pixels with $\geq 1$ maximal void return
 $\sigma$ values in the range $[-2.04,\,-0.09]$, with the highest-void-
@@ -2484,7 +2491,7 @@ coadd row. The join covers $783{,}820$ unique env-matched spirals
 duplicated \texttt{TARGETID}s carry conflicting class labels between
 their coadd rows (boundary cells re-evaluated at slightly different
 pipeline redshifts). The join-multiplicity diagnosis above is recomputed in
-\artifact{pipelines/p5\_desi\_chirality/outputs/17\_v0151\_closure\_recomputes.json}. The per-class
+\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/17\_v0151\_closure\_recomputes.json}{[A10]}. The per-class
 $n_{\rm CW}$ values on the 812{,}793-row parent sum to
 $404{,}111$ giving $f_{\rm CW} = 0.49719$, matching the 791{,}635-spiral
 unique-galaxy monopole $0.4972$ to 4 decimals, so the headline
@@ -2563,7 +2570,7 @@ skewness, and near-zero excess kurtosis
 are all consistent with a pure shot-noise residual
 around the P4-monopole, with no sign of systematic
 environment-conditioned chirality offset
-(\artifact{pipelines/p5\_desi\_chirality/outputs/17\_v0151\_closure\_recomputes.json}).
+(\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/17\_v0151\_closure\_recomputes.json}{[A10]}).
 Recomputed on the unique-\texttt{TARGETID} parent ($783{,}820$
 spirals, deduplicated before the per-pixel pass), the distribution is
 statistically unchanged: $1{,}769$ valid pixels with mean $+0.005$,
@@ -2571,7 +2578,7 @@ std $1.015$, skewness $+0.107$, and excess kurtosis $+0.068$, and the
 maximal-void correlations reported below are likewise stable on the
 deduplicated parent ($r = +0.007$, $r_w = +0.006$, $\rho = +0.021$;
 all $p > 0.5$)
-(\artifact{pipelines/p5\_desi\_chirality/outputs/22\_r24conf\_local\_batch.json}).
+(\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/22\_r24conf\_local\_batch.json}{[A9]}).
 
 This is a direct single-test demonstration that
 the T-Web class-level $\sigma$ values quoted in the headline table
@@ -2596,7 +2603,7 @@ emphasizing the well-measured pixels): $r_w = +0.004$ ($p = 0.91$,
 $n_{\rm eff} \approx 683$), and a rank (Spearman) correlation
 $\rho = +0.020$ ($p = 0.59$) — the no-correlation conclusion is
 unchanged under either treatment
-(\artifact{pipelines/p5\_desi\_chirality/outputs/21\_r23conf\_meta\_closures.json}).
+(\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/21\_r23conf\_meta\_closures.json}{[A5]}).
 A genuinely environment-dependent chirality signal would produce a
 detectable monotonic correlation between void density and the
 direction-of-chirality deviation; the observed near-zero Pearson is
@@ -2658,7 +2665,7 @@ per-cell weights) is applied when building $\delta$; angular geometry
 is controlled here only through the footprint mask, the interior-buffer
 excision, and the NSIDE$\,=\,$64 geometry cross-check. The
 randoms-weighted rebuild has now been run
-(\artifact{pipelines/p5\_desi\_chirality/outputs/25\_completeness\_weighted\_rebuild.json}:
+(\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/25\_completeness\_weighted\_rebuild.json}{[A17]}:
 $7.5\times 10^7$ DESI DR1 BGS\_BRIGHT clustering randoms,
 $\delta_w = n_g/(\alpha\,n_r) - 1$ on randoms-supported cells, restricted
 to the $0.01 < z < 0.50$ window where the BGS randoms trace the
@@ -2694,7 +2701,7 @@ item as well.
 To test whether the headline environmental-independence conclusion is
 robust to this, we rebuilt the classification with a first-order radial
 selection correction
-(\artifact{pipelines/p5\_desi\_chirality/scripts/16\_cosmic\_web\_zshell\_corrected.py}): the
+(\href{\repoBase/pipelines/p5\_desi\_chirality/scripts/16\_cosmic\_web\_zshell\_corrected.py}{[A18]}): the
 overdensity is computed in 21 thin redshift shells ($\Delta z = 0.05$
 for $z<0.5$, $\Delta z = 0.1$ for $0.5 \le z < 1.5$, one merged
 $1.5$--$1.7$ shell into which the $1.7 < z \le 2.0$ tail of
@@ -2704,7 +2711,7 @@ covers $1.5 \le z \le 2.0$ --- the realized tail is in fact
 $z = 1.6979$ and it contains zero galaxies with $1.7 < z \le 2.0$,
 so the drop-tail and separate-shell sensitivity variants coincide
 exactly with the published build
-(\artifact{pipelines/p5\_desi\_chirality/outputs/24\_r24conf\_pod\_session.json});
+(\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/24\_r24conf\_pod\_session.json}{[A14]});
 every shell $\ge 2.16\times10^5$
 galaxies), with the
 per-shell mean taken over occupied-footprint cells only, while the
@@ -2714,7 +2721,7 @@ interior-buffer variant additionally removes galaxies within $R_s$ of
 the footprint boundary; under this flag, $837{,}169$ of the
 $3{,}150{,}089$ in-mask grid cells ($26.6\%$) lie within $R_s$ of the
 occupancy-footprint boundary
-(\artifact{pipelines/p5\_desi\_chirality/outputs/22\_r24conf\_local\_batch.json}). The same interior-buffer excision applied to
+(\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/22\_r24conf\_local\_batch.json}{[A9]}). The same interior-buffer excision applied to
 the \emph{canonical} (non-shell-corrected) labels — addressing the
 zero-padded FFT boundary condition of the canonical Poisson solve
 directly — retains $782{,}015$ of the $783{,}820$ unique env-matched
@@ -2723,7 +2730,7 @@ spirals and shifts the per-class CW fractions by at most $0.11$\,pp
 $4\times2$ test still null ($\chi^2 = 2.93$, $p = 0.40$): the
 canonical environment fractions are stable against boundary
 excision
-(\artifact{pipelines/p5\_desi\_chirality/outputs/21\_r23conf\_meta\_closures.json}).
+(\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/21\_r23conf\_meta\_closures.json}{[A5]}).
 
 As expected, the per-galaxy class populations migrate substantially
 once the selection is corrected: among matched spirals, the void class
@@ -2769,7 +2776,7 @@ the canonical classes — both null. Full per-shell diagnostics and
 the per-galaxy
 corrected label catalog are released with the reproducibility
 artifacts
-(\artifact{pipelines/p5\_desi\_chirality/outputs/16\_cosmic\_web\_zshell\_corrected.json}).
+(\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/16\_cosmic\_web\_zshell\_corrected.json}{[A19]}).
 The per-shell statistics (all 21 shells hold $2.16\times10^{5}$ to
 $1.19\times10^{6}$ galaxies) quantify the correction at the cell
 level: before correction the in-mask mean of the global-mean
@@ -2777,7 +2784,7 @@ overdensity drifts from $+62.3$ in the lowest shell ($z<0.05$) to
 $-0.90$ in the highest ($z \geq 1.5$), while the shell-normalized
 $\delta$ is zero-mean in every shell by construction, with cell-level
 variance ranging $1.6$--$4.9$ across shells
-(\artifact{pipelines/p5\_desi\_chirality/outputs/22\_r24conf\_local\_batch.json}).
+(\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/22\_r24conf\_local\_batch.json}{[A9]}).
 
 \paragraph{Grid-resolution convergence.} The canonical pipeline fixes
 $N_{\rm grid} = 256^3$; the Phase~2 sweep varies $R_s$ and
@@ -2792,7 +2799,7 @@ $2.2/2.0/2.9$\,pp (void-bin noise dominated, as in
 Table~\ref{tab:phase2}), and every class tracks the catalog monopole
 at all three resolutions — the environmental-independence null is
 converged with respect to grid resolution
-(\artifact{pipelines/p5\_desi\_chirality/outputs/17\_v0151\_closure\_recomputes.json}).
+(\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/17\_v0151\_closure\_recomputes.json}{[A10]}).
 This convergence test holds $R_s = 25\,h^{-1}$\,Mpc; the
 $R_s = 10\,{\rm Mpc}/h$ Phase~2 cells are below the $256^3$ grid
 sampling scale, lie outside the tested convergence regime, and are
@@ -2814,7 +2821,7 @@ $0.23$\,pp and every class sits within $|\sigma_{\rm vs\,monopole}|
 \le 1.04$ of the sample monopole — the environmental-independence
 conclusion does not depend on how the shell-mean denominator is
 defined
-(\artifact{pipelines/p5\_desi\_chirality/outputs/19\_v0151\_zshell\_geofootprint\_check.json}).
+(\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/19\_v0151\_zshell\_geofootprint\_check.json}{[A20]}).
 
 \subsection{Tempel+2014 FoF cross-validation}\label{sec:tempel}
 
@@ -2842,7 +2849,7 @@ subset of DESI Legacy DR8 and Tempel's $z \le 0.20$ cut is much tighter
 than our $z \le 4$ DESI cut). The $96{,}753$-spiral overlap is computed
 under the matched-primary deduplication filter
 (driver:
-\artifact{pipelines/p5\_desi\_chirality/env\_finder/03\_tempel\_cross\_validation.py}).
+\href{\repoBase/pipelines/p5\_desi\_chirality/env\_finder/03\_tempel\_cross\_validation.py}{[A21]}).
 
 \begin{table}[t]
 \caption{Tempel+2014 FoF environment cross-validation on the
@@ -2916,24 +2923,23 @@ while the lower-$n$ pairs scatter as expected.
 \begin{figure*}[t]
 \centering
 \includegraphics[width=0.95\textwidth]{fig_p5_vweb_vs_tempel_overlay.png}
-\caption{T-Web (left; full-sample canonical run, shown as reference)
-vs Tempel+2014 FoF (right; $96{,}753$-spiral overlap) cross-validation:
+\caption{T-Web vs Tempel+2014 FoF cross-validation:
 per-class CW fraction with $95\%$ Jeffreys binomial credible intervals,
-shared y-axis [0.43, 0.53]. Dashed reference is parity
-$f_{\rm CW}\!=\!0.5$; dotted-red reference is the Paper~IV global
-$\bar f_{\rm CW}\!=\!0.4974$ classifier-monopole offset. The
-quantitative concordance statistic is computed like-for-like on the
-common overlap sample (\S\ref{sec:tempel}): Tempel
-filament\_like $f_{\rm CW}\!=\!0.4980$ ($n\!=\!12{,}360$) vs T-Web
-filament-on-overlap $f_{\rm CW}\!=\!0.5009$ ($n\!=\!16{,}701$),
+shared y-axis [0.43, 0.53]. \emph{(a)} T-Web full-sample canonical run
+(shown as reference). \emph{(b)} Tempel+2014 FoF ($96{,}753$-spiral
+overlap). Dashed reference is parity $f_{\rm CW}\!=\!0.5$; dotted-red
+reference is the Paper~IV global $\bar f_{\rm CW}\!=\!0.4974$
+classifier-monopole offset. The quantitative concordance statistic is
+computed like-for-like on the common overlap sample (\S\ref{sec:tempel}):
+Tempel filament\_like $f_{\rm CW}\!=\!0.4980$ ($n\!=\!12{,}360$) vs
+T-Web filament-on-overlap $f_{\rm CW}\!=\!0.5009$ ($n\!=\!16{,}701$),
 a $0.29$\,pp (${\sim}0.5\sigma$) difference, statistically
 indistinguishable (supporting, not load-bearing; the primary
-cross-classifier
-validation is the on-DESI DESIVAST re-projection in
-\S\ref{sec:desivast_primary}). Lower-$n$ classes scatter by counting statistics and
-classifier-definition mismatch (T-Web $\lambda_{\rm th}\!=\!0$ vs
-Tempel discrete richness thresholds) but do not contradict the
-environmental-independence headline.}
+cross-classifier validation is the on-DESI DESIVAST re-projection in
+\S\ref{sec:desivast_primary}). Lower-$n$ classes scatter by counting
+statistics and classifier-definition mismatch (T-Web
+$\lambda_{\rm th}\!=\!0$ vs Tempel discrete richness thresholds) but do
+not contradict the environmental-independence headline.}
 \label{fig:tempel_overlay}
 \end{figure*}
 
@@ -3076,7 +3082,7 @@ values to $<\!0.02$, while directly measuring the neglected
 between-class coupling --- class-sum correlations up to $+0.42$ from
 shared objects --- so the approximation is validated at the per-class
 level used here,
-\artifact{pipelines/p5\_desi\_chirality/outputs/22\_r24conf\_local\_batch.json}); and
+\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/22\_r24conf\_local\_batch.json}{[A9]}); and
 (iii)~the T-Web deterministic classifier restricted to the same
 overlap, for like-for-like comparison.
 
@@ -3096,7 +3102,7 @@ Range and max-$|\sigma|$ filtered to classes with $n \geq 100$. The
 entropy-weighted row lists effective (probability-weighted) $n_{\rm
 eff}$ per class; per-class $n_{\rm CW}$ values are in the released
 per-object artifact
-(\artifact{pipelines/p5\_desi\_chirality/results/analysis\_astra\_per\_object/cw\_fraction\_by\_env\_astra.csv}).}
+(\href{\repoBase/pipelines/p5\_desi\_chirality/results/analysis\_astra\_per\_object/cw\_fraction\_by\_env\_astra.csv}{[A22]}).}
 \label{tab:astra_headline}
 \centering
 \begin{ruledtabular}
@@ -3175,7 +3181,7 @@ permutation, confidence-threshold sweep, match-radius sweep,
 footprint split, and target-class split.
 Table~\ref{tab:systematics_splits} reports the measured CW fraction
 per split with its $N$ (artifacts in
-\artifact{pipelines/p5\_desi\_chirality/results/analysis\_systematics/}).
+\href{\repoBase/pipelines/p5\_desi\_chirality/results/analysis\_systematics/}{[A23]}).
 The match-radius sweep is flat to $0.02$\,pp across
 $\{0.5, 1, 2, 3, 5\}''$
 (Table~\ref{tab:systematics_splits} prints the two extreme radii;
@@ -3195,7 +3201,7 @@ per-class level in \S\ref{sec:results_vweb}. No test produces a
 $>3\sigma$ residual after
 Paper~IV-monopole correction.
 
-\begin{table}[ht]
+\begin{table*}[ht]
 \caption{Systematics splits: measured CW fraction per split
 (full sample $f_{\rm CW} = 0.49719$, $n = 791{,}635$). Match-radius
 rows count pre-dedup chirality-relevant matched rows ($828{,}457$ at
@@ -3221,7 +3227,7 @@ Program & bright (BGS) & $775{,}760$ & $0.4970$ & $-5.28$ \\
         & backup $+$ other & $1{,}093$ & $0.5105$ & $+0.69$ \\
 \end{tabular}
 \end{ruledtabular}
-\end{table}
+\end{table*}
 
 \section{Discussion}\label{sec:discussion}
 
@@ -3518,12 +3524,12 @@ $f_{\rm CW}$, and bright-fraction values.
 the $812{,}793$-row env-labeled parent. Cells are exact integers
 $\mathrm{CW} = n_{\rm CW}$, $\mathrm{CCW} = n - n_{\rm CW}$ taken
 directly from the committed artifact arrays
-(\artifact{pipelines/p5\_desi\_chirality/outputs/17\_v0151\_closure\_recomputes.json};
+(\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/17\_v0151\_closure\_recomputes.json}{[A10]};
 \texttt{parent\_env\_superset.per\_class}); $f_{\rm CW}$ is the
 exact ratio rounded to four decimals for display. Sum: $n = 812{,}793$.
 Row marginals CW $= 404{,}111$, CCW $= 408{,}682$ (cells sum exactly to
 these marginals; see
-\artifact{pipelines/p5\_desi\_chirality/outputs/31\_ext5\_appendixB\_tables.json}).
+\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/31\_ext5\_appendixB\_tables.json}{[A24]}).
 Pearson $\chi^2 = 3.55$ ($3$ d.o.f., $p = 0.31$) on the row-level
 parent under the homogeneity null.\label{tab:contingency_classCWCCW}}
 \begin{ruledtabular}
@@ -3546,7 +3552,7 @@ parent. Per-class $n$ values are the bright$+$dark subset totals
 (not the full $812{,}793$ env-labeled parent counts), and bright/dark
 cells are exact integers taken directly from the committed artifact
 arrays
-(\artifact{pipelines/p5\_desi\_chirality/outputs/17\_v0151\_closure\_recomputes.json};
+(\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/17\_v0151\_closure\_recomputes.json}{[A10]};
 \texttt{T2\_contingency\_class\_x\_program.table}); $f_{\rm bright}$ is
 the exact ratio rounded to four decimals for display.
 Pearson $\chi^2 = 4933$ ($3$ d.o.f., $\log_{10} p \approx -1069$), Cram\'er's
@@ -3565,10 +3571,10 @@ Void     & $428$       & $0.9813$ & $420$       & $8$        \\
 
 The cell-level integers above are exact counts from the committed
 artifact arrays
-(\artifact{pipelines/p5\_desi\_chirality/outputs/17\_v0151\_closure\_recomputes.json};
+(\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/17\_v0151\_closure\_recomputes.json}{[A10]};
 drivers \texttt{05}--\texttt{09}) and sum exactly to the stated row
 marginals; the regeneration script
-\artifact{pipelines/p5\_desi\_chirality/scripts/31\_ext5\_appendixB\_tables.py}
+\href{\repoBase/pipelines/p5\_desi\_chirality/scripts/31\_ext5\_appendixB\_tables.py}{[A25]}
 prints these rows from the artifact and asserts the marginals
 ($n = 812{,}793$ for the CW/CCW table; $n_{\rm bright+dark} = 811{,}609$
 for the class$\times$program table) against the source JSON. The
@@ -3581,19 +3587,19 @@ The companion data repository referenced throughout this paper is the
 versioned GitHub repository
 \href{https://github.com/Hubify-Projects/bigbounce}%
 {\texttt{Hubify-Projects/bigbounce}}, directory
-\artifact{pipelines/p5\_desi\_chirality/}; results quoted here
+\href{\repoBase/pipelines/p5\_desi\_chirality/}{[A26]}; results quoted here
 correspond to manuscript tag \texttt{\paperVersion}. The analysis
 tree is frozen at this manuscript tag; all numeric results, tables,
 figures, and per-class counts quoted above can be regenerated
 deterministically from the committed pipeline at this tag. All analysis
 drivers are committed under
-\artifact{pipelines/p5\_desi\_chirality/scripts/} (catalog fetch,
+\href{\repoBase/pipelines/p5\_desi\_chirality/scripts/}{[A27]} (catalog fetch,
 cross-match, per-analysis drivers \texttt{05}--\texttt{09}, z-shell
 rebuild \texttt{16}, and the verification recompute drivers
 \texttt{17}--\texttt{18}, which include the DESIVAST point-in-sphere
 membership driver), with the T-Web grid pipeline and the Tempel
 cross-validation under
-\artifact{pipelines/p5\_desi\_chirality/env\_finder/}. Numeric
+\href{\repoBase/pipelines/p5\_desi\_chirality/env\_finder/}{[A28]}. Numeric
 artifacts live under \texttt{outputs/}, \texttt{results/}, and
 \texttt{env\_finder/reports/} in the same directory, each with
 per-output provenance JSON. A DOI-minted archival snapshot of this
@@ -3603,18 +3609,76 @@ catalog is mirrored on HuggingFace at
 {bamfai/galaxy-chirality-catalog}. DESI Data Release~1 is available from
 \url{https://data.desi.lbl.gov/public/dr1/}. The Phase~2 sweep
 per-cell statistics are in
-\artifact{pipelines/p5\_desi\_chirality/env\_finder/reports/02\_phase2\_sweep.csv}
+\href{\repoBase/pipelines/p5\_desi\_chirality/env\_finder/reports/02\_phase2\_sweep.csv}{[A29]}
 (declared-parent recompute).
 
 \section*{Reproducibility checklist}
 \begin{itemize}
 \item Single config file:
-\artifact{pipelines/p5\_desi\_chirality/env\_finder/config.yaml}.
+\href{\repoBase/pipelines/p5\_desi\_chirality/env\_finder/config.yaml}{[A30]}.
 \item Per-output provenance metadata included in data release.
 \item Deterministic seed: \texttt{20260515}.
 \item All Phase~2 sweep cell configs persisted under
-\artifactDir{pipelines/p5\_desi\_chirality/data/desi\_env/phase2\_sweep}.
+\href{\repoBase/pipelines/p5\_desi\_chirality/data/desi\_env/phase2\_sweep}{[A12]}.
 \end{itemize}
+
+\section{Data artifacts}\label{app:artifacts}
+
+Artifact IDs [A1]--[A30] used throughout this paper hyperlink to the
+following paths in the companion repository
+\href{https://github.com/Hubify-Projects/bigbounce}{\texttt{Hubify-Projects/bigbounce}}
+(tag \texttt{\paperVersion}). Each ID in the text links directly to the
+file or directory at the URL shown below.
+
+\begin{table*}[h!]
+{\small
+\caption{Artifact ID map. Paths A2--A30 are within
+\texttt{pipelines/p5\_desi\_chirality/}; the prefix is omitted in the
+short-name column. A1 points to the companion catalog pipeline.
+Clicking any [AN] ID in the paper PDF opens the corresponding GitHub URL.%
+\label{tab:artifact_map}}
+\begin{ruledtabular}
+\begin{tabular}{lp{0.77\textwidth}}
+\textbf{ID} & \textbf{Repository path (short name)} \\
+\colrule
+\href{\repoBase/pipelines/p2\_chirality/}{[A1]} & \texttt{pipelines/p2\_chirality/} \\
+\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/30\_ext4\_galzone\_complement\_contrasts.json}{[A2]} & \texttt{outputs/30\_ext4\_galzone\_complement\_contrasts.json} \\
+\href{\repoBase/pipelines/p5\_desi\_chirality/env\_finder/01\_compute\_vweb.py}{[A3]} & \texttt{env\_finder/01\_compute\_vweb.py} \\
+\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/23\_unique\_parent\_rebuild.json}{[A4]} & \texttt{outputs/23\_unique\_parent\_rebuild.json} \\
+\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/21\_r23conf\_meta\_closures.json}{[A5]} & \texttt{outputs/21\_r23conf\_meta\_closures.json} \\
+\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/18\_v0151\_stratified\_and\_density.json}{[A6]} & \texttt{outputs/18\_v0151\_stratified\_and\_density.json} \\
+\href{\repoBase/pipelines/p5\_desi\_chirality/env\_finder/reports/01\_volume\_fractions.json}{[A7]} & \texttt{env\_finder/reports/01\_volume\_fractions.json} \\
+\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/20\_v0151\_covariate\_regression.json}{[A8]} & \texttt{outputs/20\_v0151\_covariate\_regression.json} \\
+\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/22\_r24conf\_local\_batch.json}{[A9]} & \texttt{outputs/22\_r24conf\_local\_batch.json} \\
+\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/17\_v0151\_closure\_recomputes.json}{[A10]} & \texttt{outputs/17\_v0151\_closure\_recomputes.json} \\
+\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/27\_ext1\_logistic\_program\_control.json}{[A11]} & \texttt{outputs/27\_ext1\_logistic\_program\_control.json} \\
+\href{\repoBase/pipelines/p5\_desi\_chirality/data/desi\_env/phase2\_sweep}{[A12]} & \texttt{data/desi\_env/phase2\_sweep/} \\
+\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/26\_r27conf\_ess\_recomputes.json}{[A13]} & \texttt{outputs/26\_r27conf\_ess\_recomputes.json} \\
+\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/24\_r24conf\_pod\_session.json}{[A14]} & \texttt{outputs/24\_r24conf\_pod\_session.json} \\
+\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/29\_ext3\_desivast\_footprint\_retabulation.json}{[A15]} & \texttt{outputs/29\_ext3\_desivast\_footprint\_retabulation.json} \\
+\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/28\_ext1\_desivast\_program\_split.json}{[A16]} & \texttt{outputs/28\_ext1\_desivast\_program\_split.json} \\
+\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/25\_completeness\_weighted\_rebuild.json}{[A17]} & \texttt{outputs/25\_completeness\_weighted\_rebuild.json} \\
+\href{\repoBase/pipelines/p5\_desi\_chirality/scripts/16\_cosmic\_web\_zshell\_corrected.py}{[A18]} & \texttt{scripts/16\_cosmic\_web\_zshell\_corrected.py} \\
+\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/16\_cosmic\_web\_zshell\_corrected.json}{[A19]} & \texttt{outputs/16\_cosmic\_web\_zshell\_corrected.json} \\
+\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/19\_v0151\_zshell\_geofootprint\_check.json}{[A20]} & \texttt{outputs/19\_v0151\_zshell\_geofootprint\_check.json} \\
+\href{\repoBase/pipelines/p5\_desi\_chirality/env\_finder/03\_tempel\_cross\_validation.py}{[A21]} & \texttt{env\_finder/03\_tempel\_cross\_validation.py} \\
+\href{\repoBase/pipelines/p5\_desi\_chirality/results/analysis\_astra\_per\_object/cw\_fraction\_by\_env\_astra.csv}{[A22]} & \texttt{results/analysis\_astra\_per\_object/} \texttt{cw\_fraction\_by\_env\_astra.csv} \\
+\href{\repoBase/pipelines/p5\_desi\_chirality/results/analysis\_systematics/}{[A23]} & \texttt{results/analysis\_systematics/} \\
+\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/31\_ext5\_appendixB\_tables.json}{[A24]} & \texttt{outputs/31\_ext5\_appendixB\_tables.json} \\
+\href{\repoBase/pipelines/p5\_desi\_chirality/scripts/31\_ext5\_appendixB\_tables.py}{[A25]} & \texttt{scripts/31\_ext5\_appendixB\_tables.py} \\
+\href{\repoBase/pipelines/p5\_desi\_chirality/}{[A26]} & \texttt{pipelines/p5\_desi\_chirality/} \\
+\href{\repoBase/pipelines/p5\_desi\_chirality/scripts/}{[A27]} & \texttt{scripts/} \\
+\href{\repoBase/pipelines/p5\_desi\_chirality/env\_finder/}{[A28]} & \texttt{env\_finder/} \\
+\href{\repoBase/pipelines/p5\_desi\_chirality/env\_finder/reports/02\_phase2\_sweep.csv}{[A29]} & \texttt{env\_finder/reports/02\_phase2\_sweep.csv} \\
+\href{\repoBase/pipelines/p5\_desi\_chirality/env\_finder/config.yaml}{[A30]} & \texttt{env\_finder/config.yaml} \\
+\end{tabular}
+\end{ruledtabular}
+}% end \small
+\end{table*}
+
+Paths A2--A30 are all within \texttt{pipelines/p5\_desi\_chirality/} (the
+short names in column 2 omit this prefix for readability; the hyperlinks
+resolve to the full path).
 
 \begin{thebibliography}{99}
 

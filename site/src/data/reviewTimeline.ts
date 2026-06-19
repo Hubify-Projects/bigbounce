@@ -46,6 +46,26 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "D1-P5-VISUAL-POLISH",
+    kind: "closure-wave",
+    dateISO: "2026-06-19",
+    timePT: "2026-06-19",
+    title: "D1 P5 camera-ready visual polish — v0.1.83 — 5 items closed",
+    papers: ["P5"],
+    summary: "D-round visual audit for P5 closed 5 items: (1) 60 inline artifact paths → [A1]-[A30] hyperlinked IDs with new Appendix C data-artifacts table; (2) Fig 8 healpix skymap upgraded to 2-panel count+sigma with fully-separate colorbars; (3) Fig 2 pie → horizontal bar chart; (4) Fig 5 + Fig 9 (a)/(b) panel labels added; (5) Table VII caption dagger defined. PDF v0.1.83 md5=f5ebd7be, 32pp, 0 hbox overflows, 0 undef refs.",
+    keyTakeaways: [
+      "All 5 ESSENTIAL/MAJOR/MINOR D-round items closed in one pass — no science changes",
+      "60 inline repo paths replaced with [A1]-[A30] IDs; Appendix C mapping table added",
+      "Fig 8 now two-panel (count map + sigma map) with separate non-overlapping colorbars",
+      "Fig 2 pie → horizontal bar (cleaner label readability); Fig 5+9 (a)/(b) panel annotations",
+      "Table VII caption now defines the Rs=10 dagger (grid-unresolved exclusion)",
+    ],
+    links: [
+      { label: "D1_P5_VISUAL_AUDIT.md", href: "https://github.com/Hubify-Projects/bigbounce/blob/main/project-context/peer-reviews/D1_P5_VISUAL_AUDIT.md" },
+      { label: "p5_desi_chirality.tex", href: "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex" },
+    ],
+  },
+  {
     id: "EXT20-ACCEPT",
     kind: "external-browser",
     dateISO: "2026-06-18",
