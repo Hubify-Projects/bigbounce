@@ -47,15 +47,15 @@ export interface LiveStatus {
 }
 
 export const liveStatus: LiveStatus = {
-  lastUpdatedISO: "2026-06-14T19:45:00Z",
-  lastUpdatedDisplay: "June 14, 2026 · 12:45 PM PT",
+  lastUpdatedISO: "2026-06-18T12:00:00Z",
+  lastUpdatedDisplay: "June 18, 2026 · 12:00 PM PT",
   headline:
-    "EXT18 confirmed as a true 5-reviewer round (Claude leg = Claude Code Opus sub-agent, not the API key). EXT19 4-vendor confirmation: P2 clean→99 (Fisher-invariance ask was a category error on a sensitivity recast); P1B took a further 3-item ALP-subsection closure (v1B.0.74, →98). Drop-ready pending Houston sign-off + ORCID flip.",
+    "R40 internal 5-model adversarial round + EXT20 external fresh-referee round complete: all 6 papers ACCEPT, 0 blockers. P1B earns 99 (R40 cosmetic closures confirmed). PDFs updated: P1A v1A.0.78 · P2 v1.7.70 · P3 v3.1.112 · P5 v0.1.82. Drop-ready pending Houston sign-off + ORCID flip.",
   summary:
-    "EXT18 is now a true 5-reviewer round: Claude reviewer leg ran as a Claude Code Opus sub-agent (API credits exhausted; sub-agent leg accepted P1B/P2/P4/P5; P1A/P3 MINOR with no real new items). EXT19 4-vendor confirmation: P2 v1.7.69 CLEAN→99 (Fisher-invariance ESSENTIAL was a category error); P1B v1B.0.74 closed 3 ALP-subsection items (anharmonic coeff O(θ²/6)→O(θ²/12), frozen-branch z_osc≤0 note, Table IV header). Tarballs staged for a one-hour drop (P4 first).",
+    "R40 internal 5-model adversarial round (all 6 papers, 3 cosmetic closures P1A/P3/P5, P1B→99) complete 2026-06-18. EXT20 external fresh-referee round (all 6 ACCEPT, 0 blockers, 2 trivial micro-fixes P2/P5) confirmed same day. P1B rises to 99 following R40 clean round. PDFs bumped and mirrored: P1A v1A.0.78 (md5 198cb994), P2 v1.7.70 (md5 99e6426c), P3 v3.1.112 (md5 62d7b294), P5 v0.1.82 (md5 401a73f9). Six tarballs staged for arXiv drop.",
   currentlyRunning: [
-    "EXT18 5-reviewer round complete (Claude = Claude Code sub-agent) + EXT19 confirmation: P2 clean→99, P1B v1B.0.74 closure→98.",
-    "Drop-readiness hold: six tarballs staged, abstracts + Zenodo one-click prepared; release waits only on Houston's two gates.",
+    "R40 internal adversarial round complete + EXT20 external ACCEPT × 6 — all papers drop-ready.",
+    "Release waits only on Houston's two gates: ORCID public flip + arXiv drop authorization.",
   ],
   needsHouston: [
     {
@@ -82,33 +82,33 @@ export const liveStatus: LiveStatus = {
       slug: "paper-1a",
       number: "1A",
       shortTitle: "ECH dark-energy closure + perturbation transparency",
-      version: "v1A.0.77",
+      version: "v1A.0.78",
       readiness: 99,
-      pendingWork: "v1A.0.77 — EXT17 ACCEPT (ChatGPT + Grok + Gemini). Drop-ready; EXT18 verification clean. Final 1% = Houston sign-off + arXiv drop.",
+      pendingWork: "v1A.0.78 — R40 + EXT20 ACCEPT (6/6). Drop-ready. Final 1% = Houston sign-off + arXiv drop.",
     },
     {
       slug: "paper-1b",
       number: "1B",
       shortTitle: "MCMC + NaMaster + ALP technical companion",
       version: "v1B.0.74",
-      readiness: 98,
-      pendingWork: "v1B.0.74 — EXT19 closed 3 ALP-subsection items; EXT18 Ωa arithmetic confirmed by the Claude sub-agent. Awaiting final confirmation, then drop.",
+      readiness: 99,
+      pendingWork: "v1B.0.74 — R40 clean round confirmed → 99. EXT20 ACCEPT. Drop-ready.",
     },
     {
       slug: "paper-2",
       number: "2",
       shortTitle: "f_NL = -35/8 SPHEREx forecast",
-      version: "v1.7.69",
+      version: "v1.7.70",
       readiness: 99,
-      pendingWork: "v1.7.69 — EXT19 4-vendor CLEAN confirmation; Claude sub-agent ACCEPT. Drop-ready.",
+      pendingWork: "v1.7.70 — EXT20 2 trivial micro-fixes closed; ACCEPT. Drop-ready.",
     },
     {
       slug: "paper-3",
       number: "3",
       shortTitle: "378K-anomaly multi-survey catalog",
-      version: "v3.1.111",
+      version: "v3.1.112",
       readiness: 99,
-      pendingWork: "v3.1.111 — EXT17 ACCEPT (ChatGPT + Grok + Gemini). Drop-ready; EXT18 verification clean. Final 1% = Houston sign-off + arXiv drop.",
+      pendingWork: "v3.1.112 — R40 + EXT20 ACCEPT (6/6). Drop-ready. Final 1% = Houston sign-off + arXiv drop.",
     },
     {
       slug: "paper-4",
@@ -122,9 +122,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-5",
       number: "5",
       shortTitle: "DESI environmental chirality independence",
-      version: "v0.1.80-2026-06-13",
+      version: "v0.1.82-2026-06-18",
       readiness: 99,
-      pendingWork: "v0.1.80 — EXT17 ACCEPT (first ChatGPT ACCEPT for P5; Grok + Gemini ACCEPT). One open Houston decision: title galaxy count (791,635 vs 783,820).",
+      pendingWork: "v0.1.82 — EXT20 2 trivial micro-fixes closed; ACCEPT. Drop-ready pending Houston title count decision + arXiv drop.",
     },
   ],
   blockerTally: {
@@ -133,7 +133,7 @@ export const liveStatus: LiveStatus = {
     openMajors: 0,
     openMinors: 0,
   },
-  cronStatus: "EXT18 5-reviewer round complete (Claude = Claude Code sub-agent) + EXT19 confirmation: P2 clean→99, P1B v1B.0.74 closure→98.",
+  cronStatus: "R40 internal adversarial + EXT20 external ACCEPT × 6 complete (2026-06-18). P1B→99. P1A/P2/P3/P5 PDFs bumped and mirrored.",
   etaToCompletion:
     "Papers + tarballs are drop-ready. Release waits only on Houston's two gates: ORCID public flip (pub.orcid.org → 200) and arXiv drop authorization. Submit order P4 → P1A → P1B → P3 → P2 → P5 in one hour.",
   pods: [],

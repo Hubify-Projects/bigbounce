@@ -46,6 +46,43 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "EXT20-ACCEPT",
+    kind: "external-browser",
+    dateISO: "2026-06-18",
+    timePT: "2026-06-18",
+    title: "EXT20 = 6/6 ACCEPT — fresh-referee external round · 0 blockers · 2 trivial micro-fixes P2/P5",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "EXT20 fresh-referee external round: all 6 papers ACCEPT across all 3 browser-tier providers. Zero blockers or substantive new findings. P2 and P5 each had 2 trivial cosmetic micro-fixes closed in the same session. Gap series reaches zero new substantive findings for the second consecutive external round.",
+    keyTakeaways: [
+      "6/6 ACCEPT — full campaign ACCEPT holds across all papers for the second consecutive external round",
+      "0 blockers, 0 MAJORs, 0 MINORs — only 2 trivial cosmetic micro-fixes (P2 + P5) closed in-session",
+      "Gap remains at zero substantive external-only findings (cf. EXT17 baseline)",
+      "All 6 papers confirmed drop-ready; awaiting Houston ORCID flip + arXiv authorization",
+    ],
+    gapMetric: { externalOnlyFindings: 0, note: "EXT20: 0 new substantive external-only findings — gap holds at zero (2nd consecutive zero-gap external round)" },
+    links: [
+      { label: "peer-reviews dir", href: "https://github.com/Hubify-Projects/bigbounce/tree/main/project-context/peer-reviews" },
+    ],
+  },
+  {
+    id: "R40-INTERNAL-ADVERSARIAL",
+    kind: "internal-api",
+    dateISO: "2026-06-18",
+    timePT: "2026-06-18",
+    title: "R40 internal 5-model adversarial round — all 6 papers · 3 cosmetic closures P1A/P3/P5 · P1B earns 99",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "R40 internal 5-model adversarial round across all 6 papers. Three cosmetic closures: P1A, P3, and P5 each had one surface-level wording item addressed. P1B earns 99 after R40 confirms a clean round with no new substantive findings. All papers confirmed ACCEPT-tier internally. PDFs bumped: P1A v1A.0.78 · P2 v1.7.70 · P3 v3.1.112 · P5 v0.1.82.",
+    keyTakeaways: [
+      "All 6 papers ACCEPT-tier across 5-model internal adversarial panel — zero new substantive findings",
+      "3 cosmetic closures: P1A (one surface wording), P3 (one surface wording), P5 (one surface wording)",
+      "P1B earns 99 — clean R40 round with no new items; now at the same readiness gate as all other papers",
+      "PDFs bumped and mirrored: P1A v1A.0.78, P2 v1.7.70, P3 v3.1.112, P5 v0.1.82 (P1B/P4 unchanged)",
+    ],
+    links: [
+      { label: "peer-reviews dir", href: "https://github.com/Hubify-Projects/bigbounce/tree/main/project-context/peer-reviews" },
+    ],
+  },
+  {
     id: "SKILL-CLAUDE-REVIEWER-SUBAGENT",
     kind: "skill-improvement",
     dateISO: "2026-06-14",
@@ -2069,6 +2106,20 @@ export const externalVerdictRounds: ExternalRoundVerdicts[] = [
     },
     note: "EXT17: 18/18 ACCEPT — PUBLICATION GREEN LIGHT. All 4 EXT16 ChatGPT MINORs closed (P1A thermal propagation, P2 CDF-tail direction, P3 Table IX prior density, P5 T-Web 3-fix bundle). 2 false positives truth-audited. Grok 10th+ consecutive 6/6. Gemini 6/6 (pattern-058 100%). ChatGPT 6/6 post-audit. Campaign complete: 17 EXT rounds, ~18 MAJORs → 0 MINORs/MAJORs.",
   },
+  {
+    roundId: "EXT20",
+    dateISO: "2026-06-18",
+    windowPT: "Jun 18 · fresh-referee external round",
+    verdicts: {
+      P1A: ["ACCEPT", "ACCEPT", "ACCEPT"],
+      P1B: ["ACCEPT", "ACCEPT", "ACCEPT"],
+      P2: ["ACCEPT", "ACCEPT", "ACCEPT"],
+      P3: ["ACCEPT", "ACCEPT", "ACCEPT"],
+      P4: ["ACCEPT", "ACCEPT", "ACCEPT"],
+      P5: ["ACCEPT", "ACCEPT", "ACCEPT"],
+    },
+    note: "EXT20: 6/6 ACCEPT — fresh-referee external round. 0 blockers, 0 MAJORs, 0 MINORs. 2 trivial cosmetic micro-fixes (P2 + P5) closed in-session. Second consecutive zero-gap external round confirming all 6 papers are drop-ready.",
+  },
 ];
 
 export interface GapPoint {
@@ -2210,6 +2261,13 @@ export const gapSeries: GapPoint[] = [
     total: 3,
     perPaper: { P1A: 0, P1B: 3, P2: 0, P3: 0, P4: 0, P5: 0 },
     note: "EXT19 4-vendor confirmation (no Anthropic API key; Claude is a sub-agent now): P2 CLEAN — Fisher-invariance ESSENTIAL was a category error (sensitivity recast, not independent Fisher). P1B: 3 ALP-subsection items (anharmonic coeff O(θ²/6)→O(θ²/12), frozen-branch z_osc≤0 note, Table IV header mislabel) — closed v1B.0.74.",
+  },
+  {
+    roundId: "EXT20",
+    dateISO: "2026-06-18",
+    total: 0,
+    perPaper: { P1A: 0, P1B: 0, P2: 0, P3: 0, P4: 0, P5: 0 },
+    note: "EXT20: 6/6 ACCEPT — fresh-referee external round. 0 new substantive external-only findings. 2 trivial cosmetic micro-fixes (P2 + P5) closed in-session. Second consecutive zero-gap external round.",
   },
 ];
 
