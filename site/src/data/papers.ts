@@ -158,7 +158,7 @@ export const papers: Paper[] = [
     }),
     pages: "21",
     refs: "32",
-    readiness: 98,
+    readiness: 99,
     statusVariant: "green",
     target: "Physical Review D (companion)",
     description: "Technical verification companion to Paper 1A, documenting three analyses: a 309,189-sample Cobaya ΛCDM+ΔN_eff MCMC that recovers ΛCDM (H0 = 67.68 ± 1.06 km/s/Mpc, ΔN_eff consistent with zero); a NaMaster pipeline validation on synthetic ΛCDM polarization skies with an ACT-like mask (inject β=0.27°, recover 0.238°, bias −0.032° — a pipeline-validation figure, not a sky measurement); and a spectator-ALP consistency check against the published Planck+ACT β = 0.342° ± 0.094° (3.6σ).",

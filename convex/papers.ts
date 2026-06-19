@@ -151,8 +151,10 @@ export const setHoustonSignOff = mutation({
 // "I forgot to bump readiness after 5 closures" drift.
 //
 // Formula (per DATA_MODEL_ARCHITECTURE.md):
-//   readiness = 95 − 2·openBlockers − 1·openMajors − 0.2·openMinors − 1·openCaveats
-//   capped at the 95-floor pre-Houston-sign-off (per feedback_99_pct_readiness_cap).
+//   readiness = 99 − 2·openBlockers − 1·openMajors − 0.2·openMinors − 1·openCaveats
+//   ceilinged at 99 post-clean-external-round, pre-Houston-sign-off (per
+//   feedback_99_pct_readiness_cap + readiness-oscillation: a clean external round
+//   lifts the ceiling from 95 to 99; the final 1% → 100 is Houston sign-off only).
 //   Once Houston signs off → readiness = 100.
 //   readiness is clamped to [0, 100].
 // ──────────────────────────────────────────────────────────────────────
@@ -206,7 +208,7 @@ export const getPaperState = query({
     const lastRRound = rRounds[0] ?? null;
 
     // Computed readiness — the source of truth that the site reads.
-    // Formula: 95 - penalties, capped at an optional manual override (readinessCap).
+    // Formula: 99 - penalties, capped at an optional manual override (readinessCap).
     // Houston sign-off overrides everything → 100.
     let readinessComputed: number;
     if (paper.houstonSignOff) {
@@ -217,7 +219,7 @@ export const getPaperState = query({
         1 * openMajors +
         0.2 * openMinors +
         1 * openCaveats;
-      const formulaValue = Math.max(0, Math.min(95, 95 - penalty));
+      const formulaValue = Math.max(0, Math.min(99, 99 - penalty));
       // readinessCap lets agents/Houston pin a ceiling lower than the formula
       // (e.g. 94 after a review round with known-but-unentered issues).
       readinessComputed =
@@ -311,7 +313,7 @@ export const listAllPaperStates = query({
       } else {
         const penalty =
           2 * openBlockers + 1 * openMajors + 0.2 * openMinors + 1 * openCaveats;
-        const formulaValue = Math.max(0, Math.min(95, 95 - penalty));
+        const formulaValue = Math.max(0, Math.min(99, 99 - penalty));
         readinessComputed =
           paper.readinessCap !== undefined && paper.readinessCap !== null
             ? Math.min(formulaValue, paper.readinessCap)
