@@ -30,7 +30,8 @@
 % The divide-by-h claim (~1246 h⁻¹ Mpc) is INVERTED. No pipeline recompute required.
 % If any future reviewer re-raises this, cite env_finder/01_compute_vweb.py:106-108.
 
-\newcommand{\paperVersion}{v0.1.81-2026-06-18}
+\newcommand{\paperVersion}{v0.1.82-2026-06-18}
+% v0.1.82-2026-06-18 (2026-06-18 — EXT20 micro-closure: class×program χ²=4932→4933 rounding harmonization at 4 prose sites (recompute 4932.51); referee-flagged; no science change)
 % v0.1.81-2026-06-18 (2026-06-18 — R40 closure: 2 residual T-Web/V-Web labeling fixes missed by v0.1.80 sweep — l.809 nomenclature note V-Web; l.2900-2901 math-mode _{\rm V\mbox{-}Web}→_{\rm T\mbox{-}Web} (pattern-059/060); no science change)
 % v0.1.80-2026-06-13 (2026-06-13 — EXT16 closure: (1) l.2864 |f_CW^Tempel - f_CW^{V-Web}| → T-Web (\mbox{-} pattern-060); (2) l.431 nomenclature note direction corrected V-Web not T-Web; (3) l.1117 dup T-Web → external T-Web [TWebDESI2026]. Closes ChatGPT EXT16 MINOR)
 % v0.1.79-2026-06-13 (2026-06-13 — EXT15 closure: pattern-059 math-mode V-Web subscripts in Sec IX B → T-Web (missed by pattern-057 body-text grep); grep confirms 0 residual _{V-Web} sites in math context)
@@ -147,7 +148,7 @@
 %   script + JSON artifact are cited directly.
 %   (2) EXT5-P5-GM2 (NEW MINOR): added explicit Appendix B
 %   cross-references in Sec. VI.A at both chi^2=3.55 (4x2 CW/CCW x
-%   class) and chi^2=4932 (4x2 class x bright/dark) sentences.
+%   class) and chi^2=4933 (4x2 class x bright/dark) sentences.
 %   (3) EXT5-P5-G2 (NEW MINOR): GALZONE complement counts already
 %   present in Sec. VIII.D prose (l.2138-2144: n_void=104,912 /
 %   n_nonvoid=40,877; n_void=74,111 / n_nonvoid=71,678) and cited to
@@ -160,7 +161,7 @@
 %   reintroduce any unscoped <= 0.002 claim. No edits needed.
 %   Headline science unchanged; three-algorithm DESIVAST null stands;
 %   V-Web class-homogeneity chi^2=3.55 stands; class x program
-%   chi^2=4932 stands.)
+%   chi^2=4933 stands.)
 % v0.1.67-2026-06-11 (R34conf internal-confirmation closure wave; truth audit at
 %   project-context/peer-reviews/R34conf_P5_TRUTH_AUDIT.md.
 %   (1) R34-P5-28 PATTERN-051 REGRESSION (highest priority): abstract
@@ -193,7 +194,7 @@
 %   abstract n_class * f_CW) and tab:contingency_classProgram (class
 %   x bright/dark derived from per-class bright fractions). Cell
 %   counts allow independent recomputation of chi^2=3.55 (4x2 CW/CCW
-%   x class) and chi^2=4932 / Cramer's V=0.078 (class x program).
+%   x class) and chi^2=4933 / Cramer's V=0.078 (class x program).
 %   (5) R34-P5-24 sigma_from_half scaling: l.279 "scale as sqrt(n)"
 %   already correct in this version; the auditor's "scale as n" claim
 %   was based on a stale PDF extract. Verified clean — no edit.
@@ -326,7 +327,7 @@
 %   F2: DESIVAST interior void counts updated to final ApJ 982,38 values
 %     (1,461/420/295 preprint -> 1,489/389/297 final; 420->389 interior
 %     V2-REVOLVER, 295->297 V2-VIDE, plus version ledger note);
-%   F8: Cramér's V=0.078 and log10(p)≈-1069 added next to chi2=4932
+%   F8: Cramér's V=0.078 and log10(p)≈-1069 added next to chi2=4933
 %     in abstract and §VI.A.d;
 %   F9+F20: DESIVAST BGS bright/dark program split computed and tabled
 %     (tab:desivast_program_split; outputs/28_ext1_desivast_program_split.json);
@@ -589,7 +590,7 @@ level the bright-vs-dark difference is $0.81$\,pp
 ($f_{\rm CW} = 0.4970$ vs $0.5051$, $|z| = 1.95\sigma$ unique-galaxy).
 A contingency test (\S\ref{sec:results_vweb})
 finds T-Web class and target program are \emph{not} independent
-($\chi^{2}\!=\!4932$, $3$ d.o.f., $\log_{10}p\!\approx\!-1069$,
+($\chi^{2}\!=\!4933$, $3$ d.o.f., $\log_{10}p\!\approx\!-1069$,
 Cram\'er's $V\!=\!0.078$ --- a small effect by conventional standards,
 with the $\chi^2$ driven by sample size $n\!=\!811{,}609$ rather than
 effect magnitude --- max class-to-overall
@@ -1612,7 +1613,7 @@ matched-spiral ratio $0.978$. A two-way contingency test
 (T-Web class $\times$ \texttt{bright}/\texttt{dark}, four-by-two
 on the $n_{\rm bright+dark} = 811{,}609$ bright$+$dark subset of the
 $812{,}793$-row env-labeled parent) gives
-$\chi^{2} = 4932$ with three degrees of freedom and
+$\chi^{2} = 4933$ with three degrees of freedom and
 $p \ll 10^{-300}$ ($\log_{10} p \approx -1069$; below double-precision
 underflow) and Cram\'er's $V = \sqrt{\chi^2/n} = 0.078$ (small
 effect despite the enormous sample; the $4{\times}2$ integer
@@ -3507,7 +3508,7 @@ $\Delta f_{\rm CW}$ bounds in the main text.
 
 For independent recomputation of the T-Web class-homogeneity test
 ($\chi^2 = 3.55$, 3~d.o.f., $p = 0.31$) and the T-Web class~$\times$
-target-program test ($\chi^2 = 4932$, 3~d.o.f., Cram\'er's $V = 0.078$)
+target-program test ($\chi^2 = 4933$, 3~d.o.f., Cram\'er's $V = 0.078$)
 quoted in the abstract and \S\ref{sec:results_vweb}, we tabulate
 the $4{\times}2$ cell counts implied by the published per-class $n$,
 $f_{\rm CW}$, and bright-fraction values.
@@ -3548,7 +3549,7 @@ arrays
 (\artifact{pipelines/p5\_desi\_chirality/outputs/17\_v0151\_closure\_recomputes.json};
 \texttt{T2\_contingency\_class\_x\_program.table}); $f_{\rm bright}$ is
 the exact ratio rounded to four decimals for display.
-Pearson $\chi^2 = 4932$ ($3$ d.o.f., $\log_{10} p \approx -1069$), Cram\'er's
+Pearson $\chi^2 = 4933$ ($3$ d.o.f., $\log_{10} p \approx -1069$), Cram\'er's
 $V = \sqrt{\chi^2/n} = 0.078$.\label{tab:contingency_classProgram}}
 \begin{ruledtabular}
 \begin{tabular}{lcccc}
