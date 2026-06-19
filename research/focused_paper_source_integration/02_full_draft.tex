@@ -4,6 +4,7 @@
 \usepackage{graphicx}
 \usepackage[colorlinks=true,allcolors=blue]{hyperref}
 \usepackage{booktabs}
+\usepackage{ragged2e}
 
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\BNL}{B_{\rm NL}}
@@ -23,7 +24,8 @@ A SPHEREx Sensitivity Recast with a MegaMapper Outlook}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{June 18, 2026}
+\date{June 19, 2026}
+% v1.7.71 (2026-06-19 — D-round visual polish: Fig4+Fig5 promoted to figure* full-width; Table IV row-1 parenthetical moved to caption + column widths rebalanced; table*[h]→[t] on Tables II/III/IV; stray italic run-in merged in abstract; no science change)
 % v1.7.70 (2026-06-18 — EXT20 micro-closure: Table IV e-correction cell 0.1σ→0.4σ to match body text L987 (0.43σ); no science change)
 % v1.7.69 (2026-06-14): EXT18-closure — 16th-pctile band direction fixed, r<=1.2->1.14 (scan range), abstract 84-88%%->83-88%% (matches r in [0.829,0.876]).
 % v1.7.68 (2026-06-13 — EXT16 closure: CDF-tail direction corrected ("reduces" → "raises") in Sec VI.C summary para; closes ChatGPT EXT16 MINOR)
@@ -577,7 +579,7 @@ The Heinrich \etal\ multi-tracer galaxy bispectrum forecast under the local-temp
 
 A closed-form Bayesian comparison validated across three independent $10^5$-realization Monte Carlo ensembles (\S\ref{sec:bayesian}, Table~\ref{tab:bayes}) finds that a SPHEREx detection near $\fnl = -4.375$ favors the bounce over tuned multifield competitors at Bayes factor $\mathrm{BF} \approx 9$ (recommended $\sigma_{\rm theory} = 1.0$ Gaussian bounce prior, broad multifield $[-15,+15]$ competitor) up to $\mathrm{BF} \approx 14$ at the delta-prior theoretical maximum, evaluated under the noise-weighted $r \approx 0.84$ template-mismatch bookkeeping consistent with the significance headline (the $r \to 1$ bookkeeping endpoint gives $\mathrm{BF} \approx 10$--$17$ and is reported in Table~\ref{tab:bayes}); Table~\ref{tab:bayes} reports the $r \to 1$ endpoint values while the abstract headline applies the noise-weighted $r \approx 0.84$ rebooking $\sigma_{\rm eff} = \sigma(\fnl^{\rm local})/r$ to those entries; a curvaton-natural $[-5,+5]$ competitor narrows this to $\mathrm{BF} \approx 4$--$7$. These Bayes factors should be read as illustrative of the discriminating power available given the current theoretical uncertainty in the bounce prediction --- not as definitive model-selection evidence --- and as $\gg 1$ against the parameter-free single-field slow-roll prediction. A SPHEREx null would disfavor the quasi-dust matter bounce benchmark at the same ${\sim}\,2.6$--$5\sigma$ post-systematic-budget level as a detection (the exclusion arithmetic is symmetric).
 
-\emph{Robustness to the single- vs full-ordering Li/Cai factor of two.} The Li \etal~\cite{CaiBrandenberger:2014} value $\fnl = -35/16$ is the single time-ordered intermediate of the in-in calculation; the full in-in result, fixed by the $-2\,\mathrm{Im}$ commutator identity of Appendix~A.1, is the Cai \etal\ value $-35/8$, which is the physical bispectrum quoted throughout this paper. As a single-time-ordering stress-test branch only: a hypothetical reader adopting the single-ordering intermediate $-35/16$ instead of the physical value would see every significance halve --- to ${\sim}\,2.6$--$2.75\sigma$ optimistic and ${\sim}\,1.5$--$2.5\sigma$ post-systematic-budget --- but this stress-test branch does not represent an alternative physical bispectrum and is not propagated into the headline forecasts (see Appendix~A.2 and Sec.~\ref{sec:assumptions} for the full operator-algebra derivation closing this ambiguity in favor of the Cai et al.\ value).
+The Li \etal~\cite{CaiBrandenberger:2014} value $\fnl = -35/16$ is the single time-ordered intermediate of the in-in calculation; the full in-in result, fixed by the $-2\,\mathrm{Im}$ commutator identity of Appendix~A.1, is the Cai \etal\ value $-35/8$, which is the physical bispectrum quoted throughout this paper. Robustness to this single- vs.\ full-ordering factor of two is assessed as a stress-test branch only: a hypothetical reader adopting $-35/16$ instead of the physical value would see every significance halve --- to ${\sim}\,2.6$--$2.75\sigma$ optimistic and ${\sim}\,1.5$--$2.5\sigma$ post-systematic-budget --- but this branch does not represent an alternative physical bispectrum and is not propagated into the headline forecasts (see Appendix~A.2 and Sec.~\ref{sec:assumptions}).
 \end{abstract}
 
 \maketitle
@@ -824,7 +826,7 @@ $\sigma_{\rm theory}=1.0$ Gaussian bounce priors. Together they bracket
 the abstract's $r \to 1$ endpoint envelope $\mathrm{BF}\!\sim\!10$--$17$ (the
 abstract headline reads $\mathrm{BF} \approx 9$--$14$ under the noise-weighted
 $r \approx 0.84$ bounce-amplitude bookkeeping).
-\begin{table*}[h]
+\begin{table*}[t]
 \centering
 \begin{tabular}{l|cc}
 \hline
@@ -847,7 +849,7 @@ Starting from the recommended $\sigma_{\rm theory} = 1.0$ Gaussian bounce prior 
 
 For a detection at $\fnl = -4.375$ by SPHEREx ($\sigma = 0.7$), the prior-sensitivity-resolved Bayes factors are (Table~\ref{tab:bayes}). The PRIMARY reported headline is the recommended $\sigma_{\rm theory} = 1.0$ Gaussian bounce prior (BF~$\sim 10$ vs.\ tuned multifield, broad $[-15,+15]$ column), which is the most physically motivated baseline; the delta-prior row is shown only as the theoretical-maximum upper bound and is not the recommended headline.
 
-\begin{table*}[h]
+\begin{table*}[t]
 \centering
 \begin{tabular}{lcc}
 \toprule
@@ -882,23 +884,23 @@ Varying the multifield competitor prior width gives Bayes factors from 7 (narrow
 
 Our template overlap scan (shape inner product under varied noise-weighting schemes, Eq.~\ref{eq:r_noise}; Sec.~\ref{sec:template}) identified three dominant threats to the forecast: (1)~ultra-large-scale mode access ($k_{\min}$), where the SDB signal is concentrated in the lowest $k$-modes (Fig.~\ref{fig:kmin}); (2)~relativistic projection effects, which create a GR-induced bias at large scales; and (3)~PNG bias ($b_\phi$) uncertainty, which degrades the SDB calibration~\cite{Barreira:2022}.
 
-\begin{figure}[h]
+\begin{figure*}[t]
 \centering
-\includegraphics[width=\columnwidth]{fig3_kmin_cliff.png}
+\includegraphics[width=0.95\textwidth]{fig3_kmin_cliff.png}
 \caption{Left: $\sigma(\fnl)$ vs.\ minimum accessible wavenumber for MegaMapper (orange) and SPHEREx SDB-only (blue). The SPHEREx bispectrum channel ($\sigma = 0.7$, dotted) is less sensitive to the ultra-large-scale fragility. Right: corresponding detection significance for $\fnl = -35/8$.}
 \label{fig:kmin}
-\end{figure}
+\end{figure*}
 
 \subsection{PNG Bias ($b_\phi$) Sensitivity}
 
 The scale-dependent bias signal is proportional to $\fnl \times b_\phi$, where $b_\phi$ is the linear PNG galaxy bias parameter. Our forecast assumes a 20\% Gaussian prior on $b_\phi$ (i.e., $\sigma(b_\phi)/b_\phi = 0.2$), which is optimistic and is used as the baseline for the headline $2.6$--$5\sigma$ significance range. This 20\% prior is motivated by the expected precision of the SPHEREx multi-tracer sample under the universal-mass-function (UMF) relation $b_\phi = 2\delta_c(b_1-1)$, which anchors $b_\phi$ to the linear bias $b_1$ with a theoretical scatter of $\mathcal{O}(15$--$20\%)$ relative to N-body calibrations of the UMF relation~\cite{Barreira:2022}; Heinrich \etal~\cite{Heinrich:2023} adopt UMF universality to fix $b_\phi$ per tracer population, corresponding approximately to this 20\% level. When the UMF universality assumption is relaxed (per-tracer-bin free marginalization), the effective $\sigma(\fnl)$ degrades by $\mathcal{O}(20$--$50\%)$, which is why the headline range extends to the $b_\phi$-30\% and 50\% scenarios in Table~\ref{tab:systematics}. Fig.~\ref{fig:bphi} shows how $\sigma(\fnl)$ degrades as the $b_\phi$ prior widens: at 20\% prior width, MegaMapper SDB gives $\sigma(\fnl) \approx 1.0$; at 50\%, $\sigma \approx 2.2$; if $b_\phi$ is completely unconstrained, $\sigma \to \infty$ and the SDB channel cannot measure $\fnl$ independently. The SPHEREx multi-tracer bispectrum channel ($\sigma(\fnl) = 0.7$) is \emph{less sensitive} to $b_\phi$ than SDB, but is \emph{not} independent: at tree level, $\fnl$ enters the galaxy bispectrum both through the matter-bispectrum primordial term and through the scale-dependent linear-bias correction $\Delta b(k) \propto \fnl \, b_\phi / k^2$, which propagates into the bispectrum estimator through cross-terms $\fnl \, b_\phi \, b_1^2 P(k_1) P(k_2)$ that contribute at all triangle configurations and not only the squeezed limit. (Here $P$ denotes the late-time \emph{matter} power spectrum, not the primordial $P_\zeta$; the primordial normalization enters $\Delta b$ through the transfer kernel $\mathcal{M}(k,z)$ of Eq.~(\ref{eq:Mkz}), and the spherical-collapse threshold $\delta_c$ is carried inside $b_\phi = 2\delta_c(b_1 - 1)$, so it is not double-counted between $\Delta b$ and the cross-terms.) Heinrich \etal~\cite{Heinrich:2023} marginalize over $b_\phi$ for the SPHEREx multi-tracer bispectrum forecast assuming the universal-mass-function relation $b_\phi = 2\delta_c (b_1 - 1)$, which fixes $b_\phi$ to a single value per tracer rather than treating it as a free parameter per redshift bin. If the universality assumption is relaxed and $b_\phi$ is marginalized independently per tracer bin (as recommended in Barreira~\cite{Barreira:2022} for upcoming Stage-IV surveys), the effective $\sigma(\fnl)$ for the SPHEREx multi-tracer bispectrum widens by $\mathcal{O}(20\text{--}50\%)$, which degrades the headline $5.2$--$5.5\sigma$ optimistic template-corrected significance to ${\sim}\,4.0$--$4.2\sigma$ at the central $30\%$ degradation point and to ${\sim}\,3.5$--$3.7\sigma$ at the conservative $50\%$ end. The bispectrum still avoids the steep ultra-large-scale-mode sensitivity of the SDB channel and remains the more robust observable, but the residual $b_\phi$ dependence through the cross-bispectrum cumulants is a real systematic we flag rather than dismiss; the headline range $2.6$--$5\sigma$ already incorporates the central $20$--$30\%$ degradation. Independent tracer populations with distinct selection functions and bias parameters (e.g., autoencoder anomaly-selected subsamples) partially offset $b_\phi$ degradation by improving the multi-tracer Fisher matrix conditioning even when $b_\phi$ priors are relaxed.
 
-\begin{figure}[t]
+\begin{figure*}[t]
 \centering
-\includegraphics[width=\columnwidth]{bphi_sensitivity.pdf}
+\includegraphics[width=0.95\textwidth]{bphi_sensitivity.pdf}
 \caption{Left: $\sigma(\fnl)$ as a function of $b_\phi$ prior uncertainty for MegaMapper SDB (blue). The SPHEREx bispectrum constraint (red dashed) is less sensitive to $b_\phi$ than SDB but not independent of it; the residual dependence enters at tree level through the $\Delta b(k) \propto \fnl \, b_\phi / k^2$ cross-terms $\fnl \, b_\phi \, b_1^2 P(k_1) P(k_2)$ in the multi-tracer Fisher matrix~\cite{Heinrich:2023}, which propagate to all triangle configurations and not only the squeezed limit. Right: corresponding detection significance for $\fnl = -35/8$. At the paper's assumed 20\% prior (gray line; the SPHEREx multi-tracer bispectrum per-bin baseline is $\sigma(\fnl) = 0.7$ at this point), MegaMapper gives $\sim 4\sigma$; relaxing the per-bin $b_\phi$ prior to 30\% widens the per-bin SPHEREx $\sigma(\fnl)$ to $\approx 0.9$--$1.0$, and relaxing to 50\% drops MegaMapper to $\sim 2\sigma$. The bispectrum channel remains at $\sim 5\sigma$ (optimistic) or $\sim 3$--$4\sigma$ (after GR degradation) at fixed Heinrich \etal~$b_\phi$ universality~\cite{Heinrich:2023}; relaxing $b_\phi$ universality per tracer bin~\cite{Barreira:2022} degrades the optimistic $5.2$--$5.5\sigma$ headline to ${\sim}\,4.0$--$4.2\sigma$ ($30\%$ central) and ${\sim}\,3.5$--$3.7\sigma$ ($50\%$ conservative).}
 \label{fig:bphi}
-\end{figure}
+\end{figure*}
 
 \subsection{Parameterized GR-Degradation Analysis}
 
@@ -906,7 +908,7 @@ We performed Bayesian comparison with parameterized GR-contamination degradation
 
 The parameterization $\sigma_{\rm GR} \in [0, 1.0]$ is an internal stress-test amplitude grid, motivated by --- but not a direct translation of --- published demonstrations that relativistic projection effects materially contaminate $\fnl$ inference. Addis et al.~\cite{Jolicoeur:2025}, analyzing the multipoles of the full relativistic power spectrum, show that neglecting relativistic effects (Doppler, gravitational redshift, lensing, and light-cone effects) produces best-fit $\fnl$ \emph{biases} of order ${\sim}3\sigma$ for a Euclid-like H$\alpha$ survey and ${\sim}20\sigma$ for a MegaMapper-like Lyman-break sample, with a $15$--$20\%$ improvement available from bright/faint multi-tracer splitting. They do not report a $\sigma(\fnl)$ degradation for an SPHEREx-class survey; our $\sigma_{\rm GR}$ values are therefore stress-test amplitudes chosen to span a plausible contamination scale, not figures calibrated to their Fisher results. Under the additive-quadrature model of Table~\ref{tab:gr} ($\sigma_{\rm eff} = \sqrt{\sigma_{\rm base}^2 + \sigma_{\rm GR}^2}$, calibrated to the conservative contamination scale of Addis et al.\ rather than to a direct Fisher translation), the $\sigma_{\rm GR} = 0.5$ scenario corresponds to a ${\sim}\,23\%$ inflation of the effective uncertainty ($\sigma_{\rm eff}/0.7 = 0.860/0.700 = 1.23$); the $\sigma_{\rm GR} = 1.0$ scenario is the conservative bound, appropriate in spirit for the high-redshift samples where Addis et al.\ find the largest relativistic biases. The ``optimistic'' case ($5.2$--$5.5\sigma$) in Sec.~\ref{sec:spherex} omits GR degradation ($\sigma_{\rm GR} = 0$); the ``realistic'' case ($2.6$--$5\sigma$) includes it at the $\sigma_{\rm GR} = 0.5$--$1.0$ level.
 
-\begin{table*}[h]
+\begin{table*}[t]
 \centering
 \begin{tabular}{lccc}
 \toprule
@@ -946,13 +948,14 @@ These effects are expected to degrade the forecast significance by an estimated 
 
 Table~\ref{tab:systematics} consolidates all systematic contributions to the SPHEREx bispectrum detection significance in one place. Each row identifies the source, its numerical value or range, whether it degrades the numerator (signal amplitude), the denominator (effective $\sigma(\fnl)$), or both, the combination rule, and the resulting cumulative $\sigma_{\rm eff}$ at $\fnl = -35/8$. The significance at each row is $|\fnl| \times r / \sigma_{\rm eff}$ with $|\fnl| = 4.375$.
 
-\begin{table*}[h]
+\begin{table*}[t]
 \centering
-\begin{tabular}{p{3.5cm}p{3.4cm}p{1.8cm}p{2.8cm}p{2.5cm}}
+{\small
+\begin{tabular}{p{3.2cm}p{3.0cm}p{1.6cm}p{2.6cm}p{2.2cm}}
 \toprule
 Systematic source & Value / range & Acts on & Combination rule & $\sigma$\,(detection) \\
 \midrule
-Naive uncorrected (ref.\ only) & $|\fnl|/\sigma = 4.375/0.7$ & --- & not used in headline & $6.25\sigma$ (\emph{no template correction}; not directly comparable to the template-corrected $5.2$--$5.5\sigma$ headline --- distinct null procedures) \\
+Naive uncorrected (ref.\ only) & $|\fnl|/\sigma = 4.375/0.7$ & --- & not used in headline & $6.25\sigma$ (\emph{no template correction}; see caption) \\
 Template-corrected baseline & $r = 0.84 \pm 0.02$ [$0.829$--$0.876$] & numer.\ ($\times r$) & multiplicative & $5.2$--$5.5\sigma$ headline \\
 $\epsilon$-correction & $0.6$--$8\%$ in $\fnl$ & numer.\ ($\pm\delta\fnl$) & add.\ quadrature & $\lesssim 0.4\sigma$ effect \\
 Null-space $r$ scatter & $r=0.85\pm0.13$; 16th pctile $r=0.75$ & numer.\ ($\times r$) & distributional & floor $\approx 4.7\sigma$ \\
@@ -965,8 +968,8 @@ GR ($\sigma_{\rm GR}=1.0$) & $\sigma_{\rm eff}=\sqrt{0.7^2+1.0^2}=1.22$ & denom.
 All combined ($b_\phi$ 30\%\,$+$\,GR 1.0) & $\sigma_{\rm eff}=\sqrt{0.9^2+1.0^2}=1.35$ & denom.\ ($\oplus$) & add.\ quadrature & ${\sim}\,2.7\sigma$ \\
 All combined ($b_\phi$ 50\%\,$+$\,GR 1.0) & $\sigma_{\rm eff}=\sqrt{1.0^2+1.0^2}=1.41$ & denom.\ ($\oplus$) & add.\ quadrature & ${\sim}\,2.6\sigma$ conserv. \\
 \bottomrule
-\end{tabular}
-\caption{Consolidated systematic budget for the SPHEREx bispectrum detection of $\fnl = -35/8 = -4.375$. \textbf{Row types:} the first row (naive uncorrected) is shown for reference only and is \emph{not} used in any headline; the template-corrected baseline row ($r=0.84$) is the starting point for all subsequent rows; the $\epsilon$-correction and null-space rows are \emph{distributional} contributions (not cumulative denominators); the $b_\phi$ and GR rows are \emph{cumulative} additions to the effective denominator $\sigma_{\rm eff}$; the all-combined rows stack both contributions simultaneously. ``Acts on'' refers to the signal numerator ($|\fnl| \times r$) or the effective denominator $\sigma_{\rm eff}$. Combination rule ``$\oplus$'' denotes addition in quadrature ($\sigma_{\rm eff} = \sqrt{\sigma_{\rm base}^2 + \sigma_{\rm syst}^2}$), a transparent scoping choice described in Sec.~\ref{sec:assumptions} (additive-quadrature rather than joint-marginalized Fisher). Significance $= |\fnl| \times r / \sigma_{\rm eff}$ with $r = 0.84$ (noise-weighted central value). The $b_\phi$-30\% row uses $\sigma(\fnl) \to 0.9$ (30\% widening over the baseline 0.7; the effective denominator increases to 0.9 as the $b_\phi$ marginalization replaces the baseline). The all-combined rows add GR degradation on top of the $b_\phi$-widened denominator using the additive-quadrature systematic budget defined in Sec.~\ref{sec:systematics}. The ${\sim}\,2.6$--$5\sigma$ post-systematic-budget envelope quoted in the abstract spans the all-combined conservative floor (bottom row) to the no-GR optimistic ceiling (template-corrected baseline row with $b_\phi$-20\% assumption). The effective denominator $\sigma_{\rm eff}$ is defined in Sec.~\ref{sec:spherex} (Eq.~\ref{eq:projection}) as the quadrature combination of $\sigma(\fnl^{\rm local})$ and any additional systematic nuisances; all $\sigma_{\rm eff}$ values in this table follow that convention.}
+\end{tabular}}
+\caption{Consolidated systematic budget for the SPHEREx bispectrum detection of $\fnl = -35/8 = -4.375$. \textbf{Row types:} the first row (naive uncorrected) is shown for reference only and is \emph{not} used in any headline; its $6.25\sigma$ figure is not directly comparable to the template-corrected $5.2$--$5.5\sigma$ headline because it uses a distinct null procedure (no template-mismatch correction applied). The template-corrected baseline row ($r=0.84$) is the starting point for all subsequent rows; the $\epsilon$-correction and null-space rows are \emph{distributional} contributions (not cumulative denominators); the $b_\phi$ and GR rows are \emph{cumulative} additions to the effective denominator $\sigma_{\rm eff}$; the all-combined rows stack both contributions simultaneously. ``Acts on'' refers to the signal numerator ($|\fnl| \times r$) or the effective denominator $\sigma_{\rm eff}$. Combination rule ``$\oplus$'' denotes addition in quadrature ($\sigma_{\rm eff} = \sqrt{\sigma_{\rm base}^2 + \sigma_{\rm syst}^2}$), a transparent scoping choice described in Sec.~\ref{sec:assumptions} (additive-quadrature rather than joint-marginalized Fisher). Significance $= |\fnl| \times r / \sigma_{\rm eff}$ with $r = 0.84$ (noise-weighted central value). The $b_\phi$-30\% row uses $\sigma(\fnl) \to 0.9$ (30\% widening over the baseline 0.7; the effective denominator increases to 0.9 as the $b_\phi$ marginalization replaces the baseline). The all-combined rows add GR degradation on top of the $b_\phi$-widened denominator using the additive-quadrature systematic budget defined in Sec.~\ref{sec:systematics}. The ${\sim}\,2.6$--$5\sigma$ post-systematic-budget envelope quoted in the abstract spans the all-combined conservative floor (bottom row) to the no-GR optimistic ceiling (template-corrected baseline row with $b_\phi$-20\% assumption). The effective denominator $\sigma_{\rm eff}$ is defined in Sec.~\ref{sec:spherex} (Eq.~\ref{eq:projection}) as the quadrature combination of $\sigma(\fnl^{\rm local})$ and any additional systematic nuisances; all $\sigma_{\rm eff}$ values in this table follow that convention.}
 \label{tab:systematics}
 \end{table*}
 
