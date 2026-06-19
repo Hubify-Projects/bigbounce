@@ -30,7 +30,8 @@
 % The divide-by-h claim (~1246 h⁻¹ Mpc) is INVERTED. No pipeline recompute required.
 % If any future reviewer re-raises this, cite env_finder/01_compute_vweb.py:106-108.
 
-\newcommand{\paperVersion}{v0.1.80-2026-06-13}
+\newcommand{\paperVersion}{v0.1.81-2026-06-18}
+% v0.1.81-2026-06-18 (2026-06-18 — R40 closure: 2 residual T-Web/V-Web labeling fixes missed by v0.1.80 sweep — l.809 nomenclature note V-Web; l.2900-2901 math-mode _{\rm V\mbox{-}Web}→_{\rm T\mbox{-}Web} (pattern-059/060); no science change)
 % v0.1.80-2026-06-13 (2026-06-13 — EXT16 closure: (1) l.2864 |f_CW^Tempel - f_CW^{V-Web}| → T-Web (\mbox{-} pattern-060); (2) l.431 nomenclature note direction corrected V-Web not T-Web; (3) l.1117 dup T-Web → external T-Web [TWebDESI2026]. Closes ChatGPT EXT16 MINOR)
 % v0.1.79-2026-06-13 (2026-06-13 — EXT15 closure: pattern-059 math-mode V-Web subscripts in Sec IX B → T-Web (missed by pattern-057 body-text grep); grep confirms 0 residual _{V-Web} sites in math context)
 % v0.1.78-2026-06-13 (2026-06-13 — EXT13 closure: 4 V-Web body residuals (pattern-057) → T-Web; Verdict.→Result. journal-style sub-header; Fig 8 no V-Web title confirmed skip)
@@ -398,7 +399,7 @@
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{June 13, 2026}
+\date{June 18, 2026}
 
 \begin{abstract}
 We cross-match the 8{,}474{,}531-galaxy chirality catalog of Paper~IV
@@ -807,7 +808,7 @@ Cautun~\textit{et~al.}~2014 \cite{Cautun2014}).
 \emph{Nomenclature reminder} (see also the title footnote): this
 version standardizes on ``T-Web'' for our implementation of the
 Hahn~2007 tidal-tensor recipe; earlier preprint versions used
-``T-Web'' for the same implementation (the artifact filename
+``V-Web'' for the same implementation (the artifact filename
 \artifact{pipelines/p5\_desi\_chirality/env\_finder/01\_compute\_vweb.py}
 and the \texttt{sec:vweb} cross-reference label are retained for
 backward compatibility with the HF dataset slug and the GitHub release
@@ -2897,8 +2898,8 @@ $n = 5{,}022$ vs T-Web-on-overlap $0.4950$ at $n = 78{,}378$),
 ${\sim}0.9\sigma$ two-sample — consistent. T-Web's
 $\lambda_{\rm th}\!=\!0$ ``cluster'' is far more
 permissive than Tempel's richness $\ge 20$ cut.
-\item isolated\_vs\_void ($10.4$\,pp at $n_{\rm V\mbox{-}Web} = 23$)
-and small\_group\_vs\_wall ($2.9$\,pp at $n_{\rm V\mbox{-}Web} = 145$)
+\item isolated\_vs\_void ($10.4$\,pp at $n_{\rm T\mbox{-}Web} = 23$)
+and small\_group\_vs\_wall ($2.9$\,pp at $n_{\rm T\mbox{-}Web} = 145$)
 are uninformative: the T-Web side has essentially no void/wall
 population on the low-$z$ SDSS overlap, and the differences are well
 inside the corresponding counting noise.
