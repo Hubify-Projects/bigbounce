@@ -49,6 +49,9 @@ export default async function VisualizePage() {
         dangerouslySetInnerHTML={{ __html: LEGACY_VISUALIZE_OVERRIDES }}
         suppressHydrationWarning
       />
+      {/* Screen-reader heading — the visual design is a full-canvas animation so
+          the heading is sr-only to preserve the existing aesthetic. */}
+      <h1 className="sr-only">Bounce Visualization</h1>
       <a href="/" className="visualize-escape-hatch" aria-label="Back to overview">
         ← back to BigBounce
       </a>
