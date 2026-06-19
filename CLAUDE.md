@@ -70,6 +70,7 @@ Read `AGENT_RULES.md` for the methodology bible.
 | Save Houston's message | `/prompt-history` (BEFORE the work, not after) |
 | Save a new preference | `/memory-write` |
 | Before closure commit (math claim diff) | `/never-fabricate-derivation` (pattern-036 prevention; hard gate inside `/paper-pre-review-check`) |
+| Sweep the live site for cohesion/staleness | `/site-cohesion-sweep` (final gate of P-round; checks version strings, HF/GitHub/DOI links, PDF mirrors, explorer data, broken images/links across all surfaces) |
 | Scistack housekeeping (end of session) | `/scistack-self-update` (sync + index + git status against `~/.claude/scistack`) |
 
 **Readiness ladder** (hard gates, never skip a stage):

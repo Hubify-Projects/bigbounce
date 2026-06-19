@@ -155,6 +155,21 @@ Ingested by `/r-round-finding-archive` under category `packaging`; mined into `p
 | [ppattern-cross-cite-submission-order](ppattern-cross-cite-submission-order.md) | Paper cites companion arXiv ID that doesn't exist yet | high | seeded |
 | [ppattern-mirror-md5-mismatch](ppattern-mirror-md5-mismatch.md) | PDF mirror does not byte-match the canonical source PDF | medium | seeded |
 
+## Site-cohesion patterns (spattern catalog, seeded 2026-06-19)
+
+Ingested by `/r-round-finding-archive` under category `site`; mined into `spattern-*` by `/r-round-pattern-mine`. Triggered by `/site-cohesion-sweep`, which runs as the final gate of every P-round.
+
+| ID | Title | Severity | Status |
+|----|-------|----------|--------|
+| [spattern-stale-version-on-surface](spattern-stale-version-on-surface.md) | Site surface shows an older paper version | high | seeded |
+| [spattern-dead-hf-link](spattern-dead-hf-link.md) | HuggingFace dataset or model link returns 404 / 403 | high | seeded |
+| [spattern-unpublished-hf-dataset](spattern-unpublished-hf-dataset.md) | Paper links a HuggingFace dataset/model that is still private | high | seeded |
+| [spattern-pdf-404-or-old-version](spattern-pdf-404-or-old-version.md) | Linked PDF is missing or is an older version | high | seeded |
+| [spattern-placeholder-doi-live](spattern-placeholder-doi-live.md) | Live site or paper shows a TODO/placeholder DOI or arXiv ID | high | seeded |
+| [spattern-number-drift-across-surfaces](spattern-number-drift-across-surfaces.md) | Headline numbers disagree across site surfaces | medium | seeded |
+| [spattern-stale-explorer-data](spattern-stale-explorer-data.md) | Explorer or data page shows counts/catalogs from an older run | medium | seeded |
+| [spattern-broken-image-or-link](spattern-broken-image-or-link.md) | Site page has a broken image or dead internal/external link | medium | seeded |
+
 ## How to add a new pattern
 
 When a new R-round surfaces a finding that does NOT match any of the 35
