@@ -648,8 +648,14 @@ def figure_6():
 # Figure 7 : Detection timeline (wide, with milestones & 3 rho)
 # ===================================================================
 def figure_7():
-    """Significance curves for 3 cross-correlation scenarios + milestones."""
+    """Significance curves for 3 cross-correlation scenarios + milestones.
+    D-round visual polish (v1A.0.79): enlarged base fonts (13pt), wider figsize
+    for figure* full-width placement in the paper.
+    """
     print("Figure 7: Observational detection timeline")
+
+    import matplotlib as mpl
+    mpl.rcParams.update({"font.size": 13})
 
     years = np.array([2024, 2026, 2028, 2030, 2032, 2034])
 
@@ -666,25 +672,26 @@ def figure_7():
     comb03 = combined(cmb, gal, 0.3) * (5.0 / combined(cmb[-1:], gal[-1:], 0.3))
     comb05 = combined(cmb, gal, 0.5) * (4.2 / combined(cmb[-1:], gal[-1:], 0.5))
 
-    fig, ax = plt.subplots(figsize=(12, 5.5))
+    # Wider figsize: full textwidth for figure* placement
+    fig, ax = plt.subplots(figsize=(14, 5.5))
 
-    ax.plot(years, cmb, "o-", color=BLUE, lw=2, ms=7,
+    ax.plot(years, cmb, "o-", color=BLUE, lw=2.5, ms=8,
             label="CMB $E$-$B$", zorder=5)
-    ax.plot(years, gal, "s-", color=ORANGE, lw=2, ms=7,
+    ax.plot(years, gal, "s-", color=ORANGE, lw=2.5, ms=8,
             label="Galaxy Spins", zorder=5)
-    ax.plot(years, comb0, "D-", color=GREEN, lw=2.5, ms=8,
+    ax.plot(years, comb0, "D-", color=GREEN, lw=3.0, ms=9,
             label=r"Combined ($\rho=0$)", zorder=6)
-    ax.plot(years, comb03.flatten(), "^--", color=GREEN, lw=1.5, ms=6,
+    ax.plot(years, comb03.flatten(), "^--", color=GREEN, lw=2.0, ms=7,
             alpha=0.65, label=r"Combined ($\rho=0.3$)", zorder=4)
-    ax.plot(years, comb05.flatten(), "v:", color=GREEN, lw=1.5, ms=6,
+    ax.plot(years, comb05.flatten(), "v:", color=GREEN, lw=2.0, ms=7,
             alpha=0.45, label=r"Combined ($\rho=0.5$)", zorder=3)
 
     # Thresholds
-    ax.axhline(3, color=GRAY, ls="--", lw=1, alpha=0.6)
-    ax.axhline(5, color=GRAY, ls="--", lw=1, alpha=0.6)
-    ax.text(2034.4, 3, r"$3\sigma$ evidence", fontsize=9, va="center",
+    ax.axhline(3, color=GRAY, ls="--", lw=1.2, alpha=0.6)
+    ax.axhline(5, color=GRAY, ls="--", lw=1.2, alpha=0.6)
+    ax.text(2034.5, 3, r"$3\sigma$ evidence", fontsize=11, va="center",
             color="0.5")
-    ax.text(2034.4, 5, r"$5\sigma$ discovery", fontsize=9, va="center",
+    ax.text(2034.5, 5, r"$5\sigma$ discovery", fontsize=11, va="center",
             color="0.5")
 
     # Milestones
@@ -694,24 +701,27 @@ def figure_7():
                        (2030, "LiteBIRD\nLaunch"),
                        (2032, "Full\nOperations"),
                        (2034, "LSST Y10")]:
-        ax.text(yr, 0.25, txt, fontsize=7, ha="center", va="bottom",
+        ax.text(yr, 0.3, txt, fontsize=9, ha="center", va="bottom",
                 color="0.55", style="italic")
 
     # Shade regions
     ax.axhspan(5, 7, alpha=0.04, color=GREEN)
     ax.axhspan(3, 5, alpha=0.03, color=ORANGE)
 
-    ax.set_xlabel("Year")
-    ax.set_ylabel(r"Detection Significance ($\sigma$)")
-    ax.set_xlim(2023, 2036)
+    ax.set_xlabel("Year", fontsize=13)
+    ax.set_ylabel(r"Detection Significance ($\sigma$)", fontsize=13)
+    ax.set_xlim(2023, 2037)
     ax.set_ylim(0, 7)
     ax.set_xticks(years)
-    ax.legend(loc="upper left", fontsize=9, frameon=True,
+    ax.tick_params(labelsize=12)
+    ax.legend(loc="upper left", fontsize=11, frameon=True,
               edgecolor="#ccc", ncol=2)
-    ax.set_title("Observational Detection Timeline (2024\u20132034)")
+    ax.set_title("Observational Detection Timeline (2024\u20132034)", fontsize=14)
 
     fig.tight_layout()
-    return savefig(fig, "figure7_observational_timeline")
+    result = savefig(fig, "figure7_observational_timeline")
+    mpl.rcParams.update({"font.size": mpl.rcParamsDefault["font.size"]})
+    return result
 
 
 # ===================================================================

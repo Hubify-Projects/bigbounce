@@ -22,6 +22,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage{float}
 \usepackage{slashed}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,fit,calc}
 
 \hypersetup{
   colorlinks=true,
@@ -45,8 +47,9 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.78}
-\newcommand{\paperTimestamp}{June 18, 2026}
+\newcommand{\paperVersion}{v1A.0.79}
+\newcommand{\paperTimestamp}{June 19, 2026}
+% v1A.0.79 (2026-06-19 — D-round visual polish: Table II tabular*→full-width; Eq.(15) parenthetical broken to following sentence; Eq.(1)/Eq.(B1) line breaks; TikZ barrier-structure schematic added after §IX intro; version+timestamp bump)
 % v1A.0.78 (2026-06-18 — R40 closure: strip 2 review-process prose artifacts (version-history sentence + Pontryagin "earlier version" footnote) per pattern-051; cosmetic, no science change)
 % v1A.0.77 (2026-06-13 — EXT16 closure: Sec XII.A "C/P-violating thermal scattering" → "chirality-flipping and depolarizing thermal interactions" propagation miss from EXT15 fix; closes final ChatGPT MINOR)
 % v1A.0.76 (2026-06-13 — EXT15 closure: 3 ChatGPT MINOR wording + 3 Gemini polish per EXT14 audit)
@@ -1007,8 +1010,9 @@ Supplementary materials are at \url{https://github.com/Hubify-Projects/bigbounce
 
 The fundamental action combining Einstein-Cartan theory with the Holst term is
 \begin{align}\label{eq:ECH}
-S_{\rm ECH} &= \frac{1}{16\pi G} \int d^4x\, e \left[e^\mu_a\,e^\nu_b\,R^{ab}_{\;\;\;\mu\nu} + \frac{1}{\gamma} \varepsilon^{abcd}\,e_{a}^{\;\mu}\,e_{b}^{\;\nu}\,R_{cd\mu\nu} \right.\nonumber\\
-&\qquad\left.+ \frac{1}{4} T^{abc} T_{abc}\right] + S_{\rm matter},
+S_{\rm ECH} &= \frac{1}{16\pi G} \int d^4x\, e \Bigl[e^\mu_a\,e^\nu_b\,R^{ab}_{\;\;\;\mu\nu}\nonumber\\
+&\qquad + \frac{1}{\gamma} \varepsilon^{abcd}\,e_{a}^{\;\mu}\,e_{b}^{\;\nu}\,R_{cd\mu\nu}
++ \frac{1}{4} T^{abc} T_{abc}\Bigr] + S_{\rm matter},
 \end{align}
 where $e = \det(e^a_\mu)$ is the tetrad determinant, $R^{ab}_{\;\;\;\mu\nu}$ is
 the curvature of the Lorentz connection, $\gamma$ is the Barbero-Immirzi
@@ -1753,12 +1757,12 @@ $\partial_\mu\vartheta_{\rm NY} \sim H \sim 10^{-33}\,$eV at the present epoch i
 substituted, the induced birefringence accumulated between
 recombination and today is, in the dimensionless ratio
 $\Delta\theta_{\rm one\text{-}loop}/\Delta\theta_{\rm obs}$,
-\begin{equation}
+\begin{align}
 \frac{\Delta\theta_{\rm one\text{-}loop}}{\Delta\theta_{\rm obs}}
-\sim \frac{\alpha_{\rm em}}{4\pi}\,\frac{H_0/M_{\rm Pl}}{M_{\rm Pl}\,(\alpha/M)\,\beta_{\rm obs}}
-\sim \frac{\alpha_{\rm em}}{4\pi}\,\frac{H_0}{M_{\rm Pl}}\,\frac{M}{\alpha\,M_{\rm Pl}\,\beta_{\rm obs}}\,,
-\end{equation}
-where $\alpha_{\rm em}/(4\pi) \approx 5 \times 10^{-4}$ (more precisely $\approx 5.8 \times 10^{-4}$ since $\alpha_{\rm em} \approx 1/137$; the OOM closure of $10^{-58}$ vs $10^{-60}$ is robust to this $\sim 2\times$ factor), $H_0/M_{\rm Pl} \sim
+&\sim \frac{\alpha_{\rm em}}{4\pi}\,\frac{H_0/M_{\rm Pl}}{M_{\rm Pl}\,(\alpha/M)\,\beta_{\rm obs}}\nonumber\\
+&\sim \frac{\alpha_{\rm em}}{4\pi}\,\frac{H_0}{M_{\rm Pl}}\,\frac{M}{\alpha\,M_{\rm Pl}\,\beta_{\rm obs}}\,,
+\end{align}
+where $\alpha_{\rm em}/(4\pi) \approx 5 \times 10^{-4}$ (more precisely $5.8\times 10^{-4}$; the order-of-magnitude closure is robust to this factor), $H_0/M_{\rm Pl} \sim
 10^{-61}$, and the R4-fitted coupling $\alpha/M \sim 10^{-21}\,\text{GeV}^{-1}$
 gives $M_{\rm Pl}\cdot(\alpha/M) \sim 10^{19}\,\text{GeV} \cdot
 10^{-21}\,\text{GeV}^{-1} = 10^{-2}$. Plugging in $\beta_{\rm obs}
@@ -2086,9 +2090,9 @@ are in Paper~I(b) (in preparation~\cite{Golden2026P1b}).
 %% ============================================================
 \section{Falsifiability Criteria}\label{sec:falsification}
 
-\begin{figure}[t]
+\begin{figure*}[t]
 \centering
-\includegraphics[width=\columnwidth]{figures/figure7_observational_timeline.png}
+\includegraphics[width=0.95\textwidth]{figures/figure7_observational_timeline.png}
 \caption{\textbf{Observational decision timeline for the two surviving
 ECH-independent class-level falsification paths.} Top: LiteBIRD CMB
 birefringence ($\sigma(\beta)\!\approx\!0.03^\circ$, launch early 2030s)
@@ -2103,7 +2107,7 @@ assumed cross-correlation coefficient $\rho$ between the $\fnl$ and $\beta$
 joint-forecast estimators (with $\rho=0$ the uncorrelated baseline; $\rho>0$
 combinations track the gain in joint significance under a positive
 between-estimator correlation).\label{fig:obs_timeline}}
-\end{figure}
+\end{figure*}
 
 The surviving testable predictions are: (1)~LiteBIRD ($\sigma(\beta)\approx 0.03^\circ$,
 early 2030s) will measure $\beta$ to $\sigma(\beta)\approx 0.03^\circ$ and either confirm a non-zero birefringence at high significance or rule out the spectator-ALP class as the source of the WMAP$+$Planck birefringence signal (with ACT~DR6 follow-up) (the relevant comparison is differential against the prior central value $\beta_{\rm obs} = 0.342^\circ \pm 0.094^\circ$, not a naive $0.27^\circ / 0.03^\circ$);
@@ -2189,6 +2193,73 @@ conservation---included to close mechanism classes that arise naturally in the
 ECH analysis. \textbf{Structural/philosophical observations} (Barrier 13):
 gravitational democracy, included for completeness.
 
+\begin{figure*}[t]
+\centering
+\begin{tikzpicture}[
+  font=\small,
+  every node/.style={align=center},
+  found/.style={draw, rounded corners=2pt, minimum width=1.5cm, minimum height=0.55cm,
+                text width=1.45cm, fill=white, draw=black, line width=0.5pt},
+  branch/.style={draw, rounded corners=2pt, minimum width=1.5cm, minimum height=0.55cm,
+                text width=1.45cm, fill=black!6, draw=black, line width=0.5pt},
+  route/.style={draw, rounded corners=2pt, minimum width=2.8cm, minimum height=0.6cm,
+                text width=2.75cm, fill=black!12, draw=black, line width=0.7pt},
+  arr/.style={-{Stealth[length=3pt]}, black, thin},
+]
+
+%% --- Row 1: Foundations A--G ---
+\node[found] (A) at ( 0.0, 3.0) {Found.\ A\\B1};
+\node[found] (B) at ( 1.7, 3.0) {Found.\ B\\B2};
+\node[found] (C) at ( 3.4, 3.0) {Found.\ C\\B3};
+\node[found] (D) at ( 5.1, 3.0) {Found.\ D\\B4};
+\node[found] (E) at ( 6.8, 3.0) {Found.\ E\\B5};
+\node[found] (F) at ( 8.5, 3.0) {Found.\ F\\B6};
+\node[found] (G) at (10.2, 3.0) {Found.\ G\\B7};
+
+%% --- Row 2: Branches H, J, L, M, N, O ---
+\node[branch] (H)  at ( 0.85, 1.5) {Branch H\\B8, B14};
+\node[branch] (J)  at ( 2.55, 1.5) {Branch J\\B9};
+\node[branch] (LM) at ( 4.25, 1.5) {Branch L/M\\B10--B12};
+\node[branch] (NO) at ( 5.95, 1.5) {Branch N/O\\B13};
+
+%% --- Row 3: Closed Routes R1--R4 ---
+\node[route] (R1) at ( 1.5, 0.0) {R1 — NJL\\(Planck-suppressed)};
+\node[route] (R2) at ( 4.5, 0.0) {R2 — One-loop\\(parity + Planck)};
+\node[route] (R3) at ( 7.5, 0.0) {R3 — Immirzi\\(mass-lock)};
+\node[route] (R4) at (10.2, 0.0) {R4 — CMB parity\\(naturalness)};
+
+%% --- Arrows: Foundations → Routes ---
+\draw[arr] (A.south) -- ++(0,-0.4) -| (R1.north);
+\draw[arr] (B.south) -- ++(0,-0.4) -| (R1.north);
+\draw[arr] (C.south) -- ++(0,-0.4) -| (R2.north);
+\draw[arr] (D.south) -- ++(0,-0.4) -| (R2.north);
+\draw[arr] (E.south) -- ++(0,-0.4) -| (R3.north);
+\draw[arr] (F.south) -- ++(0,-0.4) -| (R3.north);
+\draw[arr] (G.south) -- ++(0,-0.4) -| (R4.north);
+
+%% --- Arrows: Branches → Routes ---
+\draw[arr] (H.south)  -- ++(0,-0.35) -| (R1.north);
+\draw[arr] (J.south)  -- ++(0,-0.35) -| (R2.north);
+\draw[arr] (LM.south) -- ++(0,-0.35) -| (R3.north);
+\draw[arr] (NO.south) -- ++(0,-0.35) -| (R4.north);
+
+%% --- Labels ---
+\node[above=0.05cm of A, font=\footnotesize\itshape] at (5.1,3.75) {7 Foundations (A--G): mechanism-class barriers};
+\node[above=0.05cm of H, font=\footnotesize\itshape] at (3.4,2.2) {6 Branches (H, J, L, M, N, O): observational-channel barriers};
+\node[below=0.12cm of R1, font=\footnotesize] at (5.1,-0.52) {\textit{All four routes closed (13 independent barriers)}};
+
+\end{tikzpicture}
+\caption{\textbf{Structure of the 14-barrier closure.} The 7 foundation
+mechanism classes (Foundations A--G, top row; Barriers~1--7) and 6
+observational-channel branches (Branches H, J, L, M, N, O, middle row;
+Barriers~8--14) feed collectively into the four closed dark-energy routes
+R1--R4 (bottom row). Arrows indicate which barrier classes constrain each
+route. B8 (Branch H, parity-even interaction) is subsumed by B14
+(perturbation transparency) and they are grouped together. Thirteen
+logically-independent barriers are shown; B8 is not counted separately.
+\label{fig:barrier_map}}
+\end{figure*}
+
 \begin{table*}[tb]
 \caption{\label{tab:barriers} The 14 catalogue entries (13 logically
 independent; B8 subsumed by B14) of mechanism-class constraints on
@@ -2200,7 +2271,7 @@ subsumes B8 as the corresponding observational consequence. They are
 listed separately to preserve the historical mechanism-class catalog,
 but should not be counted as logically independent constraints.}
 \centering
-\begin{tabular}{clll}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}clll}
 \toprule
 \# & Barrier & Source & Mechanism Blocked \\
 \midrule
@@ -2219,7 +2290,7 @@ but should not be counted as logically independent constraints.}
 13 & Gravitational Democracy & Branch N/O & Relics, baryogenesis, vacuum transitions \\
 14 & Perturbation Transparency & ECH Gates & ECH-specific perturbation signatures \\
 \bottomrule
-\end{tabular}
+\end{tabular*}
 \end{table*}
 
 \subsection{Barrier 1: Mass-Coupling Lock (Foundation A)}
@@ -3000,10 +3071,11 @@ $\gamma_{\rm PTA}$ & PTA spectral index & --- & $2.567\pm 0.382$ (real-KDE GPU M
 
 The parity-odd operator (Eq.~\ref{eq:Seff_comp}) has off-shell mass dimension
 $+1$, not the $+4$ required for a local Lagrangian density:
-\begin{equation}
-[\alpha/M] = -1, \quad [\varepsilon^{\mu\nu\rho\sigma}e^I_\mu e^J_\nu
-\mathcal{F}_{IJ\rho\sigma}] = +2 \;\Longrightarrow\; [\mathcal{L}_{\rm odd}] = +1.
-\end{equation}
+\begin{align}
+[\alpha/M] &= -1, \quad
+[\varepsilon^{\mu\nu\rho\sigma}e^I_\mu e^J_\nu\mathcal{F}_{IJ\rho\sigma}] = +2 \nonumber\\
+&\;\Longrightarrow\; [\mathcal{L}_{\rm odd}] = +1.
+\end{align}
 We acknowledge openly that this operator, as written, is not a controlled
 dimension-$+4$ EFT operator. Inserting on-shell background curvature
 factors or a phenomenological ``volume-integration-density'' factor of
