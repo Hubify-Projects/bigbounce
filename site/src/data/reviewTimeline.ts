@@ -46,6 +46,47 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "SKILL-R-D-P-ROUND-PROTOCOL",
+    kind: "skill-improvement",
+    dateISO: "2026-06-19",
+    timePT: "2026-06-19",
+    title: "New R→D→P round protocol: production-editor D-round gates between cross-vendor R-rounds and P-round packaging",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "Camera-ready review pipeline formalised as R→D→P: after R-rounds clear (science ACCEPT), a production-editor D-round audits visual/design issues (full-width tables, figure colorbars, panel labels, path IDs) before P-round packaging. D1 applied to all 6 papers 2026-06-19 (fixes in P1A/P1B/P2/P3/P5; P4 clean). Readiness ceiling: R-round 96, D-round 98, P-round 99, Houston sign-off 100. Skill rule: every paper must pass D-round before tarballs are submitted to arXiv.",
+    keyTakeaways: [
+      "R→D→P pipeline formalised: R-round clears science, D-round clears visual/design, P-round packages for arXiv",
+      "D-round scope: full-width tables (tabular*), figure colorbars non-overlapping, panel (a)/(b) labels, caption daggers, path → [A-ID] artifact IDs",
+      "Readiness ceiling: R-round 96 / D-round 98 / P-round 99 / Houston sign-off 100",
+      "P4 was D-round CLEAN at D1; P1A/P1B/P2/P3/P5 each had 1-5 D-items closed",
+      "Encoded in paper-pre-review-check SKILL.md and drive-to-100 loop exit criteria",
+    ],
+    links: [
+      { label: "peer-reviews dir", href: "https://github.com/Hubify-Projects/bigbounce/tree/main/project-context/peer-reviews" },
+    ],
+  },
+  {
+    id: "D1-ALL-6-VISUAL-POLISH",
+    kind: "internal-api",
+    dateISO: "2026-06-19",
+    timePT: "2026-06-19",
+    title: "D1 production-editor visual/design review — all 6 papers · P4 clean · fixes applied to P1A/P1B/P2/P3/P5",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "D1 camera-ready visual audit (production-editor lens) on all 6 papers. P4 v1.0.188 clean — no changes. P1A v1A.0.79: Table II full-width, Eq line breaks, TikZ 14-barrier schematic. P1B v1B.0.75: table layout + panel labels. P2 v1.7.71: full-width Fisher figure + caption overflow fixes. P3 v3.1.113: fig_gallery full-width + caption dagger. P5 v0.1.83: [A1]-[A30] artifact IDs (60 sites), Fig 8 two-panel colorbars, Fig 2 pie→bar, Fig 5+9 panel labels, Table VII dagger. All 5 PDFs recompiled 0 errors / 0 undef refs. D2 confirmation pending.",
+    keyTakeaways: [
+      "P4 v1.0.188 D-round CLEAN — no changes; continues at 96",
+      "P1A v1A.0.79 (md5 fad68a, 29pp): Table II full-width + TikZ 14-barrier schematic + Eq line breaks",
+      "P1B v1B.0.75 (md5 b166f4, 21pp): table layout + figure caption panel labels",
+      "P2 v1.7.71 (md5 4667e9, 28pp): full-width Fisher figure + caption overflow fixes",
+      "P3 v3.1.113 (md5 7c935f, 29pp): fig_gallery full-width + caption dagger",
+      "P5 v0.1.83 (md5 b65b3a, 33pp): [A1]-[A30] IDs + Fig 8 two-panel + pie→bar + panel labels + dagger",
+      "All 5 tarballs at project-context/SSOT/arxiv_tarballs/ — standalone compile 0 errors / 0 undef refs",
+    ],
+    links: [
+      { label: "peer-reviews dir", href: "https://github.com/Hubify-Projects/bigbounce/tree/main/project-context/peer-reviews" },
+      { label: "arxiv_tarballs dir", href: "https://github.com/Hubify-Projects/bigbounce/tree/main/project-context/SSOT/arxiv_tarballs" },
+    ],
+  },
+  {
     id: "D1-P5-VISUAL-POLISH",
     kind: "closure-wave",
     dateISO: "2026-06-19",

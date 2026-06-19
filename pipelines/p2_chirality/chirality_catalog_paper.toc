@@ -15,8 +15,8 @@
 \contentsline {subsection}{\numberline {C}Model Architecture}{4}{section*.13}%
 \contentsline {subsection}{\numberline {D}Test-Time Equivariant Averaging}{4}{section*.14}%
 \contentsline {subsection}{\numberline {E}Catalog Tiers}{4}{section*.15}%
-\contentsline {section}{\numberline {IV}Results}{4}{section*.16}%
-\contentsline {subsection}{\numberline {A}Catalog Statistics}{4}{section*.17}%
+\contentsline {section}{\numberline {IV}Results}{5}{section*.16}%
+\contentsline {subsection}{\numberline {A}Catalog Statistics}{5}{section*.17}%
 \contentsline {subsection}{\numberline {B}Global CW Fraction}{5}{section*.18}%
 \contentsline {subsection}{\numberline {C}Dipole Analysis}{7}{section*.19}%
 \contentsline {paragraph}{\numberline {a}Simple dipole.}{7}{section*.20}%
@@ -43,7 +43,7 @@
 \contentsline {paragraph}{\numberline {a}Declared data vector and $\ell \!=\!0$ treatment.}{15}{section*.40}%
 \contentsline {paragraph}{\numberline {b}Bandpower vs single-$\ell $ estimator distinction.}{16}{section*.41}%
 \contentsline {paragraph}{\numberline {c}NaMaster configuration.}{16}{section*.42}%
-\contentsline {paragraph}{\numberline {d}Canonical mask declaration and depth-stratification audit.}{16}{section*.43}%
+\contentsline {paragraph}{\numberline {d}Canonical mask declaration and depth-stratification audit.}{17}{section*.43}%
 \contentsline {section}{\numberline {B}Classifier Architecture Details}{17}{section*.44}%
 \contentsline {paragraph}{\numberline {a}Training.}{17}{section*.45}%
 \contentsline {paragraph}{\numberline {b}Flip-equivariance consistency loss.}{17}{section*.46}%
