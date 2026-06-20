@@ -2,7 +2,7 @@
 
 **Canonical status file. When in doubt about Paper 4, read this.**
 
-**🎯 Last authoritative update: 2026-06-19 (PDT) — D-ROUND OPENED AS BLOCKING — Readiness rolled 99→96.** Science R40+EXT20 ACCEPT confirmed. Camera-ready D-round (visual/design polish) opened 2026-06-19 per Houston; ceiling R-round 96 until D-round closes. Prior: 2026-06-18 — R40+EXT20 FINAL ROUND — P4 v1.0.188 FROZEN (md5 c47abc18, 23pp); UNANIMOUS ACCEPT; readiness 99. Final gate: D-round → P-round → Houston sign-off.
+**🎯 Last authoritative update: 2026-06-20 (PDT) — D-round D2 CLEAN; P-round in progress. Readiness 96→98.** D-round D2 CLEAN (all visual fixes confirmed, 0 regressions); readiness climbed 96→98; P-round (packaging) opened. Science R40+EXT20 ACCEPT confirmed. Prior: 2026-06-19 — D-ROUND OPENED AS BLOCKING — Readiness rolled 99→96; ceiling R-round 96 until D-round closes. Prior: 2026-06-18 — R40+EXT20 FINAL ROUND — P4 v1.0.188 FROZEN (md5 c47abc18, 23pp); UNANIMOUS ACCEPT; readiness 99. Final gate: D-round → P-round → Houston sign-off.
 
 **🎯 Prior authoritative update: 2026-06-13 (PDT) — EXT15+EXT16 COURTESY RE-CONFIRMATION — P4 v1.0.188 (md5 c47abc18, 23pp, FROZEN).** Universal 3/3 ACCEPT confirmed at EXT12+EXT14 (ChatGPT+Grok+Gemini). EXT15 courtesy re-confirmation prompt sent: "No changes since EXT14 — please confirm ACCEPT verdict still holds." EXT16 courtesy re-confirmation submitted. NO CHANGES to source. Tarball paper4_arxiv_v1.0.188.tar.gz unchanged. Status: FROZEN at universal ACCEPT. SHIP-READY pending Houston sign-off.
 
