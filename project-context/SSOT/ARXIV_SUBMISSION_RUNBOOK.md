@@ -1,13 +1,13 @@
 # arXiv Submission Runbook — BigBounce 6-Paper Coordinated Drop
 ## Status: P-ROUND COMPLETE | ALL 6 TARBALLS STANDALONE-VERIFIED | READY FOR HOUSTON SIGN-OFF → arXiv
-## Prepared: 2026-06-13 | Updated: 2026-06-20 P-round (P1A v1A.0.79 / P1B v1B.0.75 / P2 v1.7.71 / P3 v3.1.113 / P4 v1.0.188 FROZEN / P5 v0.1.83-2026-06-13)
+## Prepared: 2026-06-13 | Updated: 2026-06-20 P-round (P1A v1A.0.79 / P1B v1B.0.76 / P2 v1.7.71 / P3 v3.1.113 / P4 v1.0.188 FROZEN / P5 v0.1.83-2026-06-13)
 
 ### D-Round / P-Round Final Tarballs (CURRENT — 2026-06-20 P-round standalone-verified)
 
 | Paper | Tarball | Source PDF MD5 (prefix 8) | Pages | Compile |
 |-------|---------|--------------------------|-------|---------|
 | P1A | `paper1a_arxiv_v1A.0.79.tar.gz` | `fad68a47` | 29 | CLEAN (errors=0 undef=0) |
-| P1B | `paper1b_arxiv_v1B.0.75.tar.gz` | `b166f4c0` | 21 | CLEAN (errors=0 undef=0) |
+| P1B | `paper1b_arxiv_v1B.0.76.tar.gz` | `9d2974c2` | 21 | CLEAN (errors=0 undef=0) |
 | P2  | `paper2_arxiv_v1.7.71.tar.gz`   | `4667e9e2` | 28 | CLEAN (errors=0 undef=0) |
 | P3  | `paper3_arxiv_v3.1.113.tar.gz`  | `7c935f19` | 29 | CLEAN (errors=0 undef=0) — spot-checked local compile 0 errors / 0 undef refs / 0 overfull |
 | P4  | `paper4_arxiv_v1.0.188.tar.gz`  | `c47abc18` | 23 | CLEAN (errors=0 undef=0) — FROZEN |
@@ -49,7 +49,7 @@ project-context/SSOT/arxiv_tarballs/
 | Paper | Tarball | Source PDF MD5 (prefix 8) | Pages | Compile |
 |-------|---------|--------------------------|-------|---------|
 | P1A | `paper1a_arxiv_v1A.0.79.tar.gz` | `fad68a47` | 29 | CLEAN (errors=0 undef=0) |
-| P1B | `paper1b_arxiv_v1B.0.75.tar.gz` | `b166f4c0` | 21 | CLEAN (errors=0 undef=0) |
+| P1B | `paper1b_arxiv_v1B.0.76.tar.gz` | `9d2974c2` | 21 | CLEAN (errors=0 undef=0) |
 | P2  | `paper2_arxiv_v1.7.71.tar.gz`   | `4667e9e2` | 28 | CLEAN (errors=0 undef=0) |
 | P3  | `paper3_arxiv_v3.1.113.tar.gz`  | `7c935f19` | 29 | CLEAN (errors=0 undef=0) — P-round spot-check: local pdflatex 0 errors / 0 undef refs / 0 overfull |
 | P4  | `paper4_arxiv_v1.0.188.tar.gz`  | `c47abc18` | 23 | CLEAN (errors=0 undef=0) — FROZEN |
@@ -72,7 +72,7 @@ These tarballs are the v1 upload files — cross-citations are still placeholder
 - **License:** arXiv.org perpetual, non-exclusive license
 - **Supplementary data:** Zenodo deposition — see `zenodo/P1A_zenodo_deposition.md`
 
-### P1B — MCMC Companion (v1B.0.75)
+### P1B — MCMC Companion (v1B.0.76)
 - **Primary:** `astro-ph.CO`
 - **Cross-list:** `hep-ph`  ← CMB birefringence / ALP context
 - **Title:** Technical Verification Companion to the ECH Spin-Torsion Program: Lambda-CDM + Delta-N_eff MCMC Proxy, NaMaster Pipeline Recovery, and a Birefringence Consistency Check with a Spectator-ALP Model
@@ -253,7 +253,7 @@ Authoritative per-paper-per-cite-key target map (51 cite-instances total):
 ```bash
 REPO=/path/to/bigbounce
 bash tools/build_arxiv_tarball.sh arxiv/paper1a_ech_nogo.tex paper1a_arxiv_v1A.0.79b
-bash tools/build_arxiv_tarball.sh arxiv/paper1b_mcmc_companion.tex paper1b_arxiv_v1B.0.75b
+bash tools/build_arxiv_tarball.sh arxiv/paper1b_mcmc_companion.tex paper1b_arxiv_v1B.0.76b
 bash tools/build_arxiv_tarball.sh research/focused_paper_source_integration/02_full_draft.tex paper2_arxiv_v1.7.71b
 bash tools/build_arxiv_tarball.sh pipelines/p3_anomaly_engine/paper3_draft.tex paper3_arxiv_v3.1.113b
 # P4: no v2 needed (zero patches, zero XXXX.XXXXX markers)
@@ -359,4 +359,4 @@ Prior round: Grok ACCEPT on all 6 through EXT3–EXT7 (stable calibration anchor
 
 ---
 
-*Runbook updated 2026-06-20 (P-round complete) — all version refs advanced to D-round final versions (P1A v1A.0.79 / P1B v1B.0.75 / P2 v1.7.71 / P3 v3.1.113 / P4 v1.0.188 / P5 v0.1.83-2026-06-13). Tarballs at `project-context/SSOT/arxiv_tarballs/` — all standalone-verified (0 errors / 0 undef refs). P3 spot-compiled locally 2026-06-20: 29 pages, 0 errors, 0 undef refs, 0 overfull boxes. All 6 cross-citation placeholders (`arXiv:XXXX.XXXXX`) will be back-patched on submission day per §4.*
+*Runbook updated 2026-06-20 (P-round complete) — all version refs advanced to D-round final versions (P1A v1A.0.79 / P1B v1B.0.76 / P2 v1.7.71 / P3 v3.1.113 / P4 v1.0.188 / P5 v0.1.83-2026-06-13). Tarballs at `project-context/SSOT/arxiv_tarballs/` — all standalone-verified (0 errors / 0 undef refs). P3 spot-compiled locally 2026-06-20: 29 pages, 0 errors, 0 undef refs, 0 overfull boxes. All 6 cross-citation placeholders (`arXiv:XXXX.XXXXX`) will be back-patched on submission day per §4.*
