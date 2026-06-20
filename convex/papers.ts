@@ -157,7 +157,7 @@ export const setHoustonSignOff = mutation({
 //     D-round passes (design/visual presentation clean)    → ceiling 98
 //     P-round passes (final packaging/addenda clean)       → ceiling 99
 //     Houston sign-off                                     → 100
-//   Currently in the D-round (camera-ready visual polish), so ceiling = 96.
+//   D-round passed D2 clean; now in the P-round (packaging), ceiling = 98.
 //   readiness is clamped to [0, 100].
 // ──────────────────────────────────────────────────────────────────────
 
@@ -221,7 +221,7 @@ export const getPaperState = query({
         1 * openMajors +
         0.2 * openMinors +
         1 * openCaveats;
-      const formulaValue = Math.max(0, Math.min(96, 96 - penalty));
+      const formulaValue = Math.max(0, Math.min(98, 98 - penalty));
       // readinessCap lets agents/Houston pin a ceiling lower than the formula
       // (e.g. 94 after a review round with known-but-unentered issues).
       readinessComputed =
@@ -315,7 +315,7 @@ export const listAllPaperStates = query({
       } else {
         const penalty =
           2 * openBlockers + 1 * openMajors + 0.2 * openMinors + 1 * openCaveats;
-        const formulaValue = Math.max(0, Math.min(96, 96 - penalty));
+        const formulaValue = Math.max(0, Math.min(98, 98 - penalty));
         readinessComputed =
           paper.readinessCap !== undefined && paper.readinessCap !== null
             ? Math.min(formulaValue, paper.readinessCap)

@@ -46,6 +46,29 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "D2-CLEAN-CLIMB",
+    kind: "closure-wave",
+    dateISO: "2026-06-20",
+    timePT: "2026-06-20",
+    title: "D2-CLEAN-CLIMB: D-round D2 confirmation CLEAN all 6 · readiness 96→98 · P-round opened · public HF datasets/models wired",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "D-round D2 confirmation CLEAN on all 6 papers — 0 visual regressions introduced by D1 fixes; readiness climbed 96→98. P-round (packaging/tarball prep) opened. Public HuggingFace artifacts wired into site papers.ts: P3 anomaly catalog, P4 chirality catalog + classifier model, P5 chirality catalog (reuse). P3 stale HF slug (galaxy-anomaly-catalog-*) corrected to bigbounce-anomaly-catalog throughout.",
+    keyTakeaways: [
+      "D2 confirmation CLEAN all 6 (0 regressions) — readiness 96→98 across the board",
+      "P-round (packaging) opened; ceiling now 98 → 99 (P-round) → 100 (Houston sign-off)",
+      "P3: bamfai/bigbounce-anomaly-catalog wired (curl 200); stale galaxy-anomaly-catalog-* slug corrected",
+      "P4: bamfai/galaxy-chirality-catalog (curl 200) + bamfai/galaxy-chirality-v2 model (curl 200) wired",
+      "P5: bamfai/galaxy-chirality-catalog reuse wired (curl 200)",
+      "P1A/P1B/P2: no HF links (P1B datasets private-Houston-gate; P1A/P2 none)",
+    ],
+    links: [
+      { label: "SSOT index", href: "https://github.com/Hubify-Projects/bigbounce/blob/main/project-context/SSOT/index.md" },
+      { label: "bamfai/bigbounce-anomaly-catalog", href: "https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog" },
+      { label: "bamfai/galaxy-chirality-catalog", href: "https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog" },
+      { label: "bamfai/galaxy-chirality-v2", href: "https://huggingface.co/bamfai/galaxy-chirality-v2" },
+    ],
+  },
+  {
     id: "SKILL-R-D-P-ROUND-PROTOCOL",
     kind: "skill-improvement",
     dateISO: "2026-06-19",
