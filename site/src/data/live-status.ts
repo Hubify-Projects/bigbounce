@@ -47,15 +47,15 @@ export interface LiveStatus {
 }
 
 export const liveStatus: LiveStatus = {
-  lastUpdatedISO: "2026-06-19T12:00:00Z",
-  lastUpdatedDisplay: "June 19, 2026 · 12:00 PM PT",
+  lastUpdatedISO: "2026-06-20T12:00:00Z",
+  lastUpdatedDisplay: "June 20, 2026 · 12:00 PM PT",
   headline:
-    "D-round passed (visual presentation clean); P-round (packaging) in progress; ceiling 98.",
+    "R→D→P all complete; readiness 99 (P1B 98 pending its HF datasets going public); final 1% = Houston sign-off.",
   summary:
-    "D-round D2 CLEAN confirmed on all 6 papers (0 visual regressions); readiness climbed 96→98. P-round (packaging/tarball prep) now open. Public HF datasets/models wired into site artifacts. Next gate: P-round clean → Houston sign-off → arXiv drop.",
+    "P-round (packaging) complete: all 6 tarballs standalone-verified (0 errors / 0 undef refs), site surfaces cohesive, public HF artifacts linked. Next gate: Houston sign-off (P1B also awaits HF datasets flip) → ORCID flip → arXiv drop (P4 → P1A → P1B → P3 → P2 → P5).",
   currentlyRunning: [
-    "P-round (packaging/tarball prep) IN PROGRESS — all 6 papers at 98 after D2-CLEAN.",
-    "arXiv drop waits on P-round close + Houston sign-off.",
+    "P-round COMPLETE — tarballs standalone-verified, site cohesive, HF artifacts linked.",
+    "arXiv drop waits on Houston sign-off + ORCID flip (P1B also awaits HF datasets flip).",
   ],
   needsHouston: [
     {
@@ -83,8 +83,8 @@ export const liveStatus: LiveStatus = {
       number: "1A",
       shortTitle: "ECH dark-energy closure + perturbation transparency",
       version: "v1A.0.79",
-      readiness: 98,
-      pendingWork: "D2-CLEAN. P-round (packaging) in progress. Next: P-round clean → Houston sign-off → arXiv drop.",
+      readiness: 99,
+      pendingWork: "P-round COMPLETE. Next: Houston sign-off → arXiv drop.",
     },
     {
       slug: "paper-1b",
@@ -92,39 +92,39 @@ export const liveStatus: LiveStatus = {
       shortTitle: "MCMC + NaMaster + ALP technical companion",
       version: "v1B.0.75",
       readiness: 98,
-      pendingWork: "D2-CLEAN. P-round (packaging) in progress. Next: P-round clean → Houston sign-off → arXiv drop.",
+      pendingWork: "P-round COMPLETE. Next: HF chains flip (Houston) + sign-off → arXiv drop same-day as P1A.",
     },
     {
       slug: "paper-2",
       number: "2",
       shortTitle: "f_NL = -35/8 SPHEREx forecast",
       version: "v1.7.71",
-      readiness: 98,
-      pendingWork: "D2-CLEAN. P-round (packaging) in progress. Next: P-round clean → Houston sign-off → arXiv drop.",
+      readiness: 99,
+      pendingWork: "P-round COMPLETE. Next: Houston sign-off → arXiv drop.",
     },
     {
       slug: "paper-3",
       number: "3",
       shortTitle: "378K-anomaly multi-survey catalog",
       version: "v3.1.113",
-      readiness: 98,
-      pendingWork: "D2-CLEAN. P-round (packaging) in progress. Next: P-round clean → Houston sign-off → arXiv drop.",
+      readiness: 99,
+      pendingWork: "P-round COMPLETE. Next: Houston sign-off + HF catalog flip → arXiv drop.",
     },
     {
       slug: "paper-4",
       number: "4",
       shortTitle: "8.47M-galaxy chirality null at sub-percent sensitivity",
       version: "v1.0.188",
-      readiness: 98,
-      pendingWork: "D2-CLEAN (FROZEN v1.0.188). P-round (packaging) in progress. Next: P-round clean → Houston sign-off → arXiv drop.",
+      readiness: 99,
+      pendingWork: "P-round COMPLETE (FROZEN v1.0.188). Next: Houston sign-off → arXiv drop (first in queue).",
     },
     {
       slug: "paper-5",
       number: "5",
       shortTitle: "DESI environmental chirality independence",
       version: "v0.1.83-2026-06-19",
-      readiness: 98,
-      pendingWork: "D2-CLEAN. P-round (packaging) in progress. Next: P-round clean → Houston sign-off + title count decision → arXiv drop.",
+      readiness: 99,
+      pendingWork: "P-round COMPLETE. Next: Houston sign-off → arXiv drop (last in queue; needs P4 arXiv ID).",
     },
   ],
   blockerTally: {
@@ -133,8 +133,8 @@ export const liveStatus: LiveStatus = {
     openMajors: 0,
     openMinors: 0,
   },
-  cronStatus: "D2-CLEAN confirmed all 6 (2026-06-20). Readiness climbed 96→98. P-round packaging open. Ceiling: P-round 99 / Houston sign-off 100.",
+  cronStatus: "P-ROUND COMPLETE (2026-06-20). Tarballs standalone-verified, site cohesive, HF artifacts linked. Readiness 99 (P1B 98). Final gate: Houston sign-off.",
   etaToCompletion:
-    "P-round packaging in progress (all 6 at 98). After P-round closes → Houston sign-off + ORCID flip + arXiv drop (order P4 → P1A → P1B → P3 → P2 → P5).",
+    "P-round DONE — readiness 99 (P1B 98). Remaining: Houston sign-off + ORCID flip + P1B HF chains flip → arXiv drop (order P4 → P1A → P1B → P3 → P2 → P5).",
   pods: [],
 };

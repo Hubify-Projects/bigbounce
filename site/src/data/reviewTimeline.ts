@@ -46,6 +46,29 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "P-ROUND-COMPLETE",
+    kind: "closure-wave",
+    dateISO: "2026-06-20",
+    timePT: "2026-06-20",
+    title: "P-ROUND COMPLETE: packaging verified, tarballs standalone-clean, site cohesive, HF artifacts linked — readiness 99 (P1B 98)",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "P-round packaging complete for all 6 papers. P3 v3.1.113 spot-compiled from tarball (0 errors / 0 undef refs / 0 overfull / 29pp). All 6 site PDFs curl 200. GitHub repo 200. Public HF artifacts (bigbounce-anomaly-catalog / galaxy-chirality-catalog / galaxy-chirality-v2) all 200. P1B HF chains confirmed 401 (Houston-gate). Readiness 99 (P1B 98). Final gate: Houston sign-off + ORCID flip + P1B HF chains flip → arXiv drop P4 → P1A → P1B → P3 → P2 → P5.",
+    keyTakeaways: [
+      "All 6 tarballs present in arxiv_tarballs/ at D-round final versions (P1A v1A.0.79 / P1B v1B.0.75 / P2 v1.7.71 / P3 v3.1.113 / P4 v1.0.188 / P5 v0.1.83)",
+      "P3 v3.1.113 standalone pdflatex compile: 0 errors / 0 undef refs / 0 overfull / 29 pages",
+      "All 6 site PDFs curl 200 (bigbounce.hubify.app/papers/...)",
+      "GitHub Hubify-Projects/bigbounce repo: 200",
+      "Public HF artifacts: bigbounce-anomaly-catalog 200 · galaxy-chirality-catalog 200 · galaxy-chirality-v2 200",
+      "P1B private HF chains confirmed 401 (Houston gate — flip when P1B submits to arXiv)",
+      "Readiness 99 (P1B 98 held by HF-chains gate); final 1% = Houston sign-off per readiness-cap-99",
+    ],
+    links: [
+      { label: "SSOT index", href: "https://github.com/Hubify-Projects/bigbounce/blob/main/project-context/SSOT/index.md" },
+      { label: "arxiv_tarballs dir", href: "https://github.com/Hubify-Projects/bigbounce/tree/main/project-context/SSOT/arxiv_tarballs" },
+      { label: "ARXIV_SUBMISSION_RUNBOOK", href: "https://github.com/Hubify-Projects/bigbounce/blob/main/project-context/SSOT/ARXIV_SUBMISSION_RUNBOOK.md" },
+    ],
+  },
+  {
     id: "D2-CLEAN-CLIMB",
     kind: "closure-wave",
     dateISO: "2026-06-20",
