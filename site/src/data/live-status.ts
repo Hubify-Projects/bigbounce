@@ -50,12 +50,12 @@ export const liveStatus: LiveStatus = {
   lastUpdatedISO: "2026-06-20T12:00:00Z",
   lastUpdatedDisplay: "June 20, 2026 · 12:00 PM PT",
   headline:
-    "R→D→P all complete; readiness 99 (P1B 98 pending its HF datasets going public); final 1% = Houston sign-off.",
+    "R→D→P all complete; all 6 papers at readiness 99; 3 P1B HF datasets public (bamfai/p1b-*); final 1% = Houston sign-off.",
   summary:
-    "P-round (packaging) complete: all 6 tarballs standalone-verified (0 errors / 0 undef refs), site surfaces cohesive, public HF artifacts linked. Next gate: Houston sign-off (P1B also awaits HF datasets flip) → ORCID flip → arXiv drop (P4 → P1A → P1B → P3 → P2 → P5).",
+    "P-round (packaging) complete: all 6 tarballs standalone-verified (0 errors / 0 undef refs), site surfaces cohesive, public HF artifacts linked. P1B fully reproducible (3 datasets public on bamfai). Next gate: Houston sign-off → ORCID flip → arXiv drop (P4 → P1A → P1B → P3 → P2 → P5).",
   currentlyRunning: [
-    "P-round COMPLETE — tarballs standalone-verified, site cohesive, HF artifacts linked.",
-    "arXiv drop waits on Houston sign-off + ORCID flip (P1B also awaits HF datasets flip).",
+    "P-round COMPLETE — tarballs standalone-verified, site cohesive, HF artifacts linked. All 6 papers at 99.",
+    "arXiv drop waits on Houston sign-off + ORCID flip.",
   ],
   needsHouston: [
     {
@@ -90,9 +90,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-1b",
       number: "1B",
       shortTitle: "MCMC + NaMaster + ALP technical companion",
-      version: "v1B.0.75",
-      readiness: 98,
-      pendingWork: "P-round COMPLETE. Next: HF chains flip (Houston) + sign-off → arXiv drop same-day as P1A.",
+      version: "v1B.0.76",
+      readiness: 99,
+      pendingWork: "P-round COMPLETE. 3 HF datasets public (bamfai/p1b-*). Next: Houston sign-off → arXiv drop same-day as P1A.",
     },
     {
       slug: "paper-2",
@@ -133,8 +133,8 @@ export const liveStatus: LiveStatus = {
     openMajors: 0,
     openMinors: 0,
   },
-  cronStatus: "P-ROUND COMPLETE (2026-06-20). Tarballs standalone-verified, site cohesive, HF artifacts linked. Readiness 99 (P1B 98). Final gate: Houston sign-off.",
+  cronStatus: "P-ROUND COMPLETE (2026-06-20). All 6 papers at readiness 99. P1B 3 HF datasets public (bamfai/p1b-*). Final gate: Houston sign-off.",
   etaToCompletion:
-    "P-round DONE — readiness 99 (P1B 98). Remaining: Houston sign-off + ORCID flip + P1B HF chains flip → arXiv drop (order P4 → P1A → P1B → P3 → P2 → P5).",
+    "P-round DONE — all 6 papers at readiness 99. Remaining: Houston sign-off + ORCID flip → arXiv drop (order P4 → P1A → P1B → P3 → P2 → P5).",
   pods: [],
 };

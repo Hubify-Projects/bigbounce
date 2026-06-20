@@ -141,8 +141,8 @@ export const papers: Paper[] = [
     slug: "paper-1b",
     number: "1B",
     title: "Technical Verification Companion to the ECH Spin-Torsion Program: ΛCDM+ΔN_eff MCMC Proxy, NaMaster Pipeline Recovery, and a Birefringence Consistency Check with a Spectator-ALP Model",
-    version: "v1B.0.75",
-    lastUpdated: "2026-06-19",
+    version: "v1B.0.76",
+    lastUpdated: "2026-06-20",
     tldr: "Technical companion to Paper 1A: a 309K-sample ΛCDM+ΔN_eff MCMC null test (ΔN_eff consistent with zero), a NaMaster pipeline validation on synthetic ΛCDM skies, a DESI DR2 w0wa chain (w_pivot +2.5σ from −1), and a spectator-ALP consistency check against the Planck+ACT β = 0.342° measurement.",
     path: publicationPath({
       external: {
@@ -158,7 +158,7 @@ export const papers: Paper[] = [
     }),
     pages: "21",
     refs: "32",
-    readiness: 98,
+    readiness: 99,
     statusVariant: "green",
     target: "Physical Review D (companion)",
     description: "Technical verification companion to Paper 1A, documenting three analyses: a 309,189-sample Cobaya ΛCDM+ΔN_eff MCMC that recovers ΛCDM (H0 = 67.68 ± 1.06 km/s/Mpc, ΔN_eff consistent with zero); a NaMaster pipeline validation on synthetic ΛCDM polarization skies with an ACT-like mask (inject β=0.27°, recover 0.238°, bias −0.032° — a pipeline-validation figure, not a sky measurement); and a spectator-ALP consistency check against the published Planck+ACT β = 0.342° ± 0.094° (3.6σ).",
@@ -182,10 +182,10 @@ export const papers: Paper[] = [
       "arXiv submission (administrative, same-day with P1A per the submission order)",
     ],
     preprintId: "HUBIFY-2026-001B",
-    pdfMeta: "PDF · 21 pp · v1B.0.75 · updated Jun 19, 2026",
+    pdfMeta: "PDF · 21 pp · v1B.0.76 · updated Jun 20, 2026",
     artifacts: [
-      { label: "Read PDF", href: "/papers/paper1b_mcmc_companion_v1B.0.75.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/paper1b_mcmc_companion_v1B.0.75.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/paper1b_mcmc_companion_v1B.0.76.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/paper1b_mcmc_companion_v1B.0.76.pdf", kind: "secondary", download: true },
       {
         label: "LaTeX source",
         href: "https://github.com/Hubify-Projects/bigbounce/blob/main/arxiv/paper1b_mcmc_companion.tex",
@@ -194,6 +194,24 @@ export const papers: Paper[] = [
       },
       { label: "Theory paper (1A)", href: "/papers/paper-1a", kind: "secondary" },
       { label: "Corner plot", href: "/images/paper1_corner_full_tension.png", kind: "secondary", external: true },
+      {
+        label: "ALP chains (HuggingFace)",
+        href: "https://huggingface.co/datasets/bamfai/p1b-alp-chains",
+        kind: "secondary",
+        external: true,
+      },
+      {
+        label: "MCMC diagnostics (HuggingFace)",
+        href: "https://huggingface.co/datasets/bamfai/p1b-mcmc-diagnostics",
+        kind: "secondary",
+        external: true,
+      },
+      {
+        label: "NaMaster artifacts (HuggingFace)",
+        href: "https://huggingface.co/datasets/bamfai/p1b-namaster-artifacts",
+        kind: "secondary",
+        external: true,
+      },
     ],
   },
   {

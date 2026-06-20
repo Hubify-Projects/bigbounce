@@ -2442,6 +2442,12 @@ export const readinessCheckpoints: ReadinessCheckpoint[] = [
     values: { P1A: 99, P1B: 98, P2: 99, P3: 99, P4: 99, P5: 99 },
     note: "EXT19: P2 clean→99; P1B v1B.0.74 closure→98; others hold 99",
   },
+  {
+    id: "P1B-REPRO-PUBLISHED",
+    dateISO: "2026-06-20",
+    values: { P1A: 99, P1B: 99, P2: 99, P3: 99, P4: 99, P5: 99 },
+    note: "P1B-REPRO-PUBLISHED 2026-06-20: 3 HF reproducibility datasets public (bamfai/p1b-alp-chains, bamfai/p1b-mcmc-diagnostics, bamfai/p1b-namaster-artifacts), Appendix A links fixed Hubify→bamfai, P1B v1B.0.75→v1B.0.76, P1B 98→99 — all six papers at 99.",
+  },
 ];
 
 export interface SkillsPoint {
