@@ -1,5 +1,8 @@
 # Geometric Dark Energy from Spin-Torsion Cosmology: A Comprehensive Framework with Observational Validation
 
+> ⚠️ Parts of this doc may be dated — the current operational truth is `project-context/AGENT_ONBOARDING.md` + the SSOT.
+> This is an **early November 2024 draft paper** (single-paper era), superseded by the 6-paper program. Current paper sources are listed in `AGENTS.md`. Do not treat this file as current.
+
 **Author:** Houston Golden
 **Email:** houston@bamf.com
 **Affiliation:** Independent Researcher

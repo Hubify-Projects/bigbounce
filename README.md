@@ -1,10 +1,11 @@
 # BigBounce — Bounce Cosmology Research Program
 
+> ⚠️ Parts of this doc may be dated — the current operational truth is `project-context/AGENT_ONBOARDING.md` + the SSOT (`project-context/SSOT/`).
+
 **Author:** Houston Golden
-**Version:** v2.2.0 (March 2026)
-**Papers:** Three papers (framework + forecast + anomaly catalog), 63+ references
-**Website:** [bigbounce.hubify.app](https://bigbounce.hubify.app)
-**Status:** [Live Research Status](https://bigbounce.hubify.app/status.html)
+**Version:** see `project-context/SSOT/index.md` for current per-paper versions
+**Papers:** Six papers (P1A, P1B, P2, P3, P4, P5) — see `AGENTS.md` for source paths
+**Website:** [bigbounce.hubify.app](https://bigbounce.hubify.app) (Next.js site in `site/`; old static HTML deprecated under `/old/`)
 **Models:** [HuggingFace](https://huggingface.co/bamfai)
 
 ---
@@ -65,7 +66,9 @@ bigbounce/
 
 ### Key Principle
 
-**`arxiv/main.tex` is the single source of truth.** All HTML pages, the PDF, and the website content must mirror the LaTeX source. When editing the paper, always start with `main.tex` and then sync the website pages.
+> ⚠️ **This section is outdated.** There is no single `main.tex`. The project has 6 papers at distinct paths — see `AGENTS.md` for the current source `.tex` table. Paper status lives in `project-context/SSOT/`, not HTML pages. The site is Next.js in `site/`, not the static HTML files at repo root (those are deprecated under `/old/`).
+
+The canonical source of truth for paper status is `project-context/SSOT/`. Each paper has its own `.tex` file; consult `AGENTS.md` for paths. The Next.js site (`site/`) is kept in sync with SSOT data after every review round.
 
 ---
 

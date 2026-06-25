@@ -1,6 +1,9 @@
 # FINAL COMPREHENSIVE EDITING CHECKLIST
 **"Geometric Dark Energy from Spin-Torsion Cosmology" - ArXiv Submission Preparation**
 
+> ⚠️ Parts of this doc may be dated — the current operational truth is `project-context/AGENT_ONBOARDING.md` + the SSOT.
+> This checklist is from **November 2025** for the single-paper era. Current submission readiness for all 6 papers lives in `project-context/SSOT/` + `project-context/peer-reviews/`.
+
 **Author:** Houston Golden
 **Assessment Date:** November 10, 2025
 **Current Status:** NOT READY for submission - Critical revisions required

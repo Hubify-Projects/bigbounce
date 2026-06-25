@@ -1,7 +1,10 @@
 # RESUME PROJECT HERE — BigBounce Research Program
 
+> ⚠️ Parts of this doc may be dated — the current operational truth is `project-context/AGENT_ONBOARDING.md` + the SSOT.
+> This file is a **frozen April 2026 machine-transfer snapshot** (4-paper era, stale pod IPs). It is kept for historical reference only. Do NOT use it for current paper paths, pod status, or readiness percentages.
+
 **Date snapshot:** 2026-04-02 (body below is frozen; see SSOT for current state)
-**Canonical status (live):** [`project-context/SSOT/index.md`](project-context/SSOT/index.md) — all 4 papers at 100 % readiness as of 2026-04-17 fire #9, PDFs mirrored to `public/papers/`.
+**Canonical status (live):** [`project-context/SSOT/index.md`](project-context/SSOT/index.md) — see SSOT for current readiness (there are now 6 papers, not 4).
 **Reason for this file:** MacBook dying, transferring to other machine.
 **Repo:** https://github.com/Hubify-Projects/bigbounce (main branch)
 **Site:** https://bigbounce.hubify.app (Netlify auto-deploy from main)
