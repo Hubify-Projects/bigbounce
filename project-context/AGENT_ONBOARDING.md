@@ -30,13 +30,17 @@ Canonical paper status lives in **`project-context/SSOT/`** and **Convex** — n
 
 ## 1. New-machine bootstrap (one-time)
 ```bash
-# 1. Repos
-git clone https://github.com/Hubify-Projects/bigbounce.git    # this project
-git clone https://github.com/Hubify-Projects/scistack.git ~/.claude/scistack   # the science SKILLS
+# 1. Repos  (bigbounce is PUBLIC; scistack + agent-shared are PRIVATE — run `gh auth login` first)
+git clone https://github.com/Hubify-Projects/bigbounce.git ~/Desktop/CODE_2025/bigbounce  # KEEP THIS PATH (memory restore is path-keyed)
+git clone https://github.com/Hubify-Projects/scistack.git ~/.claude/scistack               # the science SKILLS (hubstack + astrostack)
+git clone https://github.com/houstongolden/agent-shared.git ~/.agent-shared                # global CLAUDE.md (symlinked) + shared skills + your agent MEMORY
 # (gstack skills come with the Claude Code install; see ~/.claude/skills/)
 
-# 2. Skills: symlink scistack into ~/.claude/skills so /paper-design-round etc. resolve
-~/.claude/scistack/bin/sync-to-claude.sh && ~/.claude/scistack/bin/build-index.sh
+# 2. Skills + global config + memory
+~/.claude/scistack/bin/sync-to-claude.sh && ~/.claude/scistack/bin/build-index.sh   # expose /paper-design-round, /cross-vendor-r-round, etc.
+~/.agent-shared/bin/sync-agent-shared.sh                                            # shared skills + link global ~/.claude/CLAUDE.md → agent-shared/AGENTS.md
+~/.agent-shared/bin/restore-claude-memory.sh                                        # rehydrate Houston's 100+ durable preference memories (NOT in any other sync)
+cp ~/.agent-shared/agent-config/claude-settings.reference.json ~/.claude/settings.json   # optional: same plugins / youmd MCP / high-effort
 
 # 3. Toolchain
 brew install --cask mactex-no-gui      # or basictex; needs pdflatex, latexmk, bibtex
