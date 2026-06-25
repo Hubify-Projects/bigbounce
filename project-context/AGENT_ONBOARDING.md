@@ -19,6 +19,18 @@ perfectly in sync after every round.
 
 ---
 
+## ▶︎ When Houston says "START EVERYTHING UP"
+Run this, then begin the loop:
+```bash
+# refresh everything that travels across machines
+git -C ~/Desktop/CODE_2025/bigbounce pull --ff-only
+git -C ~/.claude/scistack pull --ff-only && ~/.claude/scistack/bin/sync-to-claude.sh
+git -C ~/.agent-shared pull --ff-only && ~/.agent-shared/bin/sync-agent-shared.sh
+~/.agent-shared/bin/restore-claude-memory.sh        # rehydrate durable preferences
+[ -f ~/Desktop/CODE_2025/bigbounce/.env.local ] || echo "⚠️ create .env.local from .env.example (You.md vault / password manager)"
+```
+Then: read `project-context/SSOT/index.md` (top banner = current state) → **intake Houston's latest external-review findings** (newest EXT round in `project-context/peer-reviews/` or he pastes them) → run the next R/D/P round (§4) → sync the site same-commit (§5) → `git push`. That's the loop. Keep going until it reconverges + Houston signs off. **At the end of a working session, run `~/.agent-shared/bin/backup-claude-memory.sh` + commit/push agent-shared** so any new memories travel.
+
 ## 0. The 3 files that define everything
 1. **`CLAUDE.md`** (repo root) — routing table + standing directives. Auto-loads for Claude Code.
 2. **`AGENT_RULES.md`** (repo root) — the methodology bible (the full spec).
