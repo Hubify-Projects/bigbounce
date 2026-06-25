@@ -157,7 +157,7 @@ export const setHoustonSignOff = mutation({
 //     D-round passes (design/visual presentation clean)    → ceiling 98
 //     P-round passes (final packaging/addenda clean)       → ceiling 99
 //     Houston sign-off                                     → 100
-//   P-round packaging verified; ceiling = 99 (P1B held at 98 via cap until its HF chains go public). signoff = 100.
+//   EXTERNAL ROUND 2026-06-21 (Houston) found open BLOCKER/MAJOR/MINOR — papers regressed to IN-REVISION. Ceiling rolled to 92 pending intake of those findings (next agent enters them; formula then refines per-paper). signoff=100.
 //   readiness is clamped to [0, 100].
 // ──────────────────────────────────────────────────────────────────────
 
@@ -221,7 +221,7 @@ export const getPaperState = query({
         1 * openMajors +
         0.2 * openMinors +
         1 * openCaveats;
-      const formulaValue = Math.max(0, Math.min(99, 99 - penalty));
+      const formulaValue = Math.max(0, Math.min(92, 92 - penalty));
       // readinessCap lets agents/Houston pin a ceiling lower than the formula
       // (e.g. 94 after a review round with known-but-unentered issues).
       readinessComputed =
@@ -315,7 +315,7 @@ export const listAllPaperStates = query({
       } else {
         const penalty =
           2 * openBlockers + 1 * openMajors + 0.2 * openMinors + 1 * openCaveats;
-        const formulaValue = Math.max(0, Math.min(99, 99 - penalty));
+        const formulaValue = Math.max(0, Math.min(92, 92 - penalty));
         readinessComputed =
           paper.readinessCap !== undefined && paper.readinessCap !== null
             ? Math.min(formulaValue, paper.readinessCap)
