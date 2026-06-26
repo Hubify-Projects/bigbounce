@@ -47,15 +47,15 @@ export interface LiveStatus {
 }
 
 export const liveStatus: LiveStatus = {
-  lastUpdatedISO: "2026-06-20T12:00:00Z",
-  lastUpdatedDisplay: "June 20, 2026 · 12:00 PM PT",
+  lastUpdatedISO: "2026-06-26T06:00:00Z",
+  lastUpdatedDisplay: "June 26, 2026 · 06:00 AM PT",
   headline:
-    "R→D→P all complete; all 6 papers at readiness 99; 3 P1B HF datasets public (bamfai/p1b-*); final 1% = Houston sign-off.",
+    "R52 complete (INT 5-vendor + EXT 3-provider): 0 genuine BLOCKERs/MAJORs across all 6 papers; real MINORs closed + recompiled; readiness 92→97. Awaiting EXT22 confirm + Houston sign-off.",
   summary:
-    "P-round (packaging) complete: all 6 tarballs standalone-verified (0 errors / 0 undef refs), site surfaces cohesive, public HF artifacts linked. P1B fully reproducible (3 datasets public on bamfai). Next gate: Houston sign-off → ORCID flip → arXiv drop (P4 → P1A → P1B → P3 → P2 → P5).",
+    "R52 closed 6 truth-audits across all papers — all Grok/o3 REJECT/MAJOR verdicts ruled false positives; real MINOR/presentation defects closed and recompiled clean. PDFs mirrored to all serving paths (md5-verified). Next gate: EXT22 confirmation round, then Houston sign-off → ORCID flip → arXiv drop (P4 → P1A → P1B → P3 → P2 → P5).",
   currentlyRunning: [
-    "P-round COMPLETE — tarballs standalone-verified, site cohesive, HF artifacts linked. All 6 papers at 99.",
-    "arXiv drop waits on Houston sign-off + ORCID flip.",
+    "R52 COMPLETE — INT 5-vendor + EXT 3-provider, 6 truth-audits, 0 genuine BLOCKERs/MAJORs; all papers at readiness 97.",
+    "EXT22 confirmation round queued; then Houston sign-off + ORCID flip → arXiv drop.",
   ],
   needsHouston: [
     {
@@ -83,58 +83,58 @@ export const liveStatus: LiveStatus = {
       number: "1A",
       shortTitle: "ECH dark-energy closure + perturbation transparency",
       version: "v1A.0.79",
-      readiness: 99,
-      pendingWork: "P-round COMPLETE. Next: Houston sign-off → arXiv drop.",
+      readiness: 97,
+      pendingWork: "R52 CLOSED (0 genuine BLOCKERs/MAJORs). Next: EXT22 confirm → Houston sign-off → arXiv drop.",
     },
     {
       slug: "paper-1b",
       number: "1B",
       shortTitle: "MCMC + NaMaster + ALP technical companion",
       version: "v1B.0.76",
-      readiness: 99,
-      pendingWork: "P-round COMPLETE. 3 HF datasets public (bamfai/p1b-*). Next: Houston sign-off → arXiv drop same-day as P1A.",
+      readiness: 97,
+      pendingWork: "R52 CLOSED (0 genuine BLOCKERs/MAJORs). 3 HF datasets public (bamfai/p1b-*). Next: EXT22 confirm → Houston sign-off → arXiv drop.",
     },
     {
       slug: "paper-2",
       number: "2",
       shortTitle: "f_NL = -35/8 SPHEREx forecast",
       version: "v1.7.71",
-      readiness: 99,
-      pendingWork: "P-round COMPLETE. Next: Houston sign-off → arXiv drop.",
+      readiness: 97,
+      pendingWork: "R52 CLOSED (0 genuine BLOCKERs/MAJORs). Next: EXT22 confirm → Houston sign-off → arXiv drop.",
     },
     {
       slug: "paper-3",
       number: "3",
       shortTitle: "378K-anomaly multi-survey catalog",
       version: "v3.1.113",
-      readiness: 99,
-      pendingWork: "P-round COMPLETE. Next: Houston sign-off + HF catalog flip → arXiv drop.",
+      readiness: 97,
+      pendingWork: "R52 CLOSED (0 genuine BLOCKERs/MAJORs). Next: EXT22 confirm → Houston sign-off + HF catalog flip → arXiv drop.",
     },
     {
       slug: "paper-4",
       number: "4",
       shortTitle: "8.47M-galaxy chirality null at sub-percent sensitivity",
       version: "v1.0.188",
-      readiness: 99,
-      pendingWork: "P-round COMPLETE (FROZEN v1.0.188). Next: Houston sign-off → arXiv drop (first in queue).",
+      readiness: 97,
+      pendingWork: "R52 CLOSED (0 genuine BLOCKERs/MAJORs). Next: EXT22 confirm → Houston sign-off → arXiv drop (first in queue).",
     },
     {
       slug: "paper-5",
       number: "5",
       shortTitle: "DESI environmental chirality independence",
       version: "v0.1.83-2026-06-19",
-      readiness: 99,
-      pendingWork: "P-round COMPLETE. Next: Houston sign-off → arXiv drop (last in queue; needs P4 arXiv ID).",
+      readiness: 97,
+      pendingWork: "R52 CLOSED (0 genuine BLOCKERs/MAJORs). Next: EXT22 confirm → Houston sign-off → arXiv drop (last in queue; needs P4 arXiv ID).",
     },
   ],
   blockerTally: {
-    closed: 864, // EXT17 closure wave — P1A + P2 + P3 + P5 EXT16-MINORs resolved to ACCEPT; P1B + P4 frozen universal ACCEPT
+    closed: 870, // R52 closure wave — 6 truth-audits, 0 genuine BLOCKERs/MAJORs, all Grok/o3 REJECT/MAJOR false positives; real MINORs closed
     openBlockers: 0,
     openMajors: 0,
     openMinors: 0,
   },
-  cronStatus: "P-ROUND COMPLETE (2026-06-20). All 6 papers at readiness 99. P1B 3 HF datasets public (bamfai/p1b-*). Final gate: Houston sign-off.",
+  cronStatus: "R52 COMPLETE (2026-06-26). All 6 papers at readiness 97. Next gate: EXT22 confirm + Houston sign-off.",
   etaToCompletion:
-    "P-round DONE — all 6 papers at readiness 99. Remaining: Houston sign-off + ORCID flip → arXiv drop (order P4 → P1A → P1B → P3 → P2 → P5).",
+    "R52 DONE — all 6 papers at readiness 97. Remaining: EXT22 confirm + Houston sign-off + ORCID flip → arXiv drop (order P4 → P1A → P1B → P3 → P2 → P5).",
   pods: [],
 };

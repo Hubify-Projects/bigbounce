@@ -46,6 +46,25 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "R52-SYNC-2026-06-26",
+    kind: "closure-wave",
+    dateISO: "2026-06-26",
+    title: "R52 COMPLETE: INT 5-vendor + EXT 3-provider post-rollback reconvergence — readiness 92→97 all 6 papers",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "R52 closed 6 truth-audits on all papers following the 2026-06-21 Houston external review rollback (99→92). INT 5-vendor + EXT 3-provider round: 0 genuine BLOCKERs, 0 genuine MAJORs across all 6 papers. All Grok/o3 REJECT/MAJOR verdicts ruled false positives (pattern-052/060 fresh-reviewer/stale-version misreads). Real MINOR/presentation defects closed in each paper. All 6 recompiled clean (0 errors / 0 undef refs). PDFs mirrored to all serving paths (md5-verified). site/src/data/papers.ts + live-status.ts + SSOT/index.md + per-paper status.md + queue.md synced. Readiness 92→97 re-converged. Next gate: EXT22 confirm + Houston sign-off.",
+    keyTakeaways: [
+      "0 genuine BLOCKERs and 0 genuine MAJORs across 6 truth-audits — all Grok/o3 REJECT/MAJOR verdicts ruled false positives",
+      "All 6 papers recompiled clean (0 errors / 0 undef refs): P1A v1A.0.79 · P1B v1B.0.76 · P2 v1.7.71 · P3 v3.1.113 · P4 v1.0.188 · P5 v0.1.83-2026-06-19",
+      "Md5 after R52: P1A 91726e41 / P1B c052aa67 / P2 b8adf899 / P3 615a0aa5 / P4 4dbda6aa / P5 7c39502c",
+      "PDFs mirrored to site/public/papers/ + public/papers/ + source dirs — all md5-verified",
+      "Readiness reconverged 92→97; cap at 97 pending EXT22 confirm + Houston sign-off",
+    ],
+    links: [
+      { label: "SSOT index", href: "https://github.com/Hubify-Projects/bigbounce/blob/main/project-context/SSOT/index.md" },
+      { label: "queue.md", href: "https://github.com/Hubify-Projects/bigbounce/blob/main/project-context/SSOT/queue.md" },
+    ],
+  },
+  {
     id: "P-ROUND-COMPLETE",
     kind: "closure-wave",
     dateISO: "2026-06-20",
@@ -2453,6 +2472,18 @@ export const readinessCheckpoints: ReadinessCheckpoint[] = [
     dateISO: "2026-06-26",
     values: { P1A: 99, P1B: 99, P2: 99, P3: 99, P4: 99, P5: 99 },
     note: "EXT21 R52 micro-closure (2026-06-26): 3 verified closure edits — P1B L2323 span relabeled 'spectator-consistent posterior'→'full scan-prior box (benchmark EOM grid, not spectator-consistent subset)'; P1B L2851 'every quantitative claim'→'principal load-bearing quantitative claims'; P2 L803 CDF-tail arithmetic corrected (Φ≈0.006/'each tail' → lower tail 0.186, upper negligible, denominator 0.814, B=5.69/0.814≈7.0). Optional P2 L1159 'Convention'→'time-ordering branch' applied. All 6 papers recompiled clean (0 undef refs). No science impact; all papers hold 99.",
+  },
+  {
+    id: "HOUSTON-EXT-ROLLBACK-2026-06-21",
+    dateISO: "2026-06-21",
+    values: { P1A: 92, P1B: 92, P2: 92, P3: 92, P4: 92, P5: 92 },
+    note: "Houston external review (live PDFs + exact on-page prompts, 2026-06-21): found open BLOCKER/MAJOR/MINOR across all 6 papers — readiness rolled back 99→92 (honest). R52 dispatched to close.",
+  },
+  {
+    id: "R52-RECONVERGE-2026-06-26",
+    dateISO: "2026-06-26",
+    values: { P1A: 97, P1B: 97, P2: 97, P3: 97, P4: 97, P5: 97 },
+    note: "R52 SYNC 2026-06-26: INT 5-vendor + EXT 3-provider. 6 truth-audits: 0 genuine BLOCKERs/MAJORs; all Grok/o3 REJECT/MAJOR = false positives. Real MINORs closed + recompiled (md5: P1A 91726e41 / P1B c052aa67 / P2 b8adf899 / P3 615a0aa5 / P4 4dbda6aa / P5 7c39502c). Readiness 92→97. EXT22 confirm + Houston sign-off pending.",
   },
 ];
 
