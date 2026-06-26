@@ -46,6 +46,27 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "EXT22-CLOSURE-2026-06-26",
+    kind: "ext-closure",
+    dateISO: "2026-06-26",
+    title: "EXT22 confirm round complete: 18/18 legs MINOR or ACCEPT · 0 MAJORs/BLOCKERs · 2 polish edits closed · polish-tier convergence reached · readiness 97→98",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "EXT22 (3-provider confirm round on R52-closed PDFs): 18/18 legs MINOR or ACCEPT, 0 MAJOR, 0 BLOCKER, 0 REJECT. 2 new-verified items applied: NV-P1A-1 (MINOR — P1A §XII.B Discussion asserted NJL/one-loop closure via 'repulsive at γ=0.274 and subcritical / does not contribute at one loop' — mechanisms not in the body; aligned to Planck/amplitude suppression per Sec. sec:r1_njl L1628, ρ_NJL~4×10⁻⁸¹ eV⁴ ~69 orders below ρ_Λ, one-loop amplitude-closed under EFT scaling ansatz; recompiled 29pp md5 06c3b525) + NV-P4-1 (POLISH — P4 +3.3σ→+3.29σ at L701 and L900 unified to L912 precise value; recompiled 23pp md5 f2902399). All other ~34 EXT22 findings resolved to already-covered (R52/EXT21), extraction-artifact (pattern-063), opinion, or stale-fixed (pattern-062). Three-pass campaign (INT R52 + EXT21 + EXT22) achieves polish-tier convergence: independent external vendors re-confirming existing closures rather than finding new substance. No EXT23 warranted.",
+    keyTakeaways: [
+      "18/18 EXT22 legs MINOR or ACCEPT — 0 MAJOR, 0 BLOCKER, 0 REJECT — polish-tier convergence confirmed",
+      "NV-P1A-1 (MINOR closed): P1A §XII.B Discussion body-alignment — 'repulsive/subcritical' replaced by amplitude-suppression (body L1628 ρ_NJL~4×10⁻⁸¹ eV⁴); P1A 29pp md5 06c3b525",
+      "NV-P4-1 (POLISH closed): P4 +3.3σ→+3.29σ at L701/L900 unified to L912; P4 23pp md5 f2902399",
+      "All ~34 other EXT22 findings: already-covered / extraction-artifact (pattern-063) / opinion / stale-fixed (pattern-062)",
+      "Readiness 97→98 all 6 papers; cascaded-r-rounds exit bar met; D-round convergence gate",
+      "No EXT23 warranted — 3 consecutive passes surface diminishing residual; next gate is Houston sign-off (final 1%)",
+    ],
+    gapMetric: { externalOnlyFindings: 2, note: "EXT22: 2 new-verified polish items (NV-P1A-1 MINOR + NV-P4-1 POLISH), both closed same session. All other ~34 findings already-covered/opinion/artifact." },
+    links: [
+      { label: "EXT22_CONSOLIDATION.md", href: `${PR}/EXT22_CONSOLIDATION.md` },
+      { label: "SSOT index", href: "https://github.com/Hubify-Projects/bigbounce/blob/main/project-context/SSOT/index.md" },
+    ],
+  },
+  {
     id: "R52-SYNC-2026-06-26",
     kind: "closure-wave",
     dateISO: "2026-06-26",
@@ -2268,6 +2289,20 @@ export const externalVerdictRounds: ExternalRoundVerdicts[] = [
     },
     note: "EXT20: 6/6 ACCEPT — fresh-referee external round. 0 blockers, 0 MAJORs, 0 MINORs. 2 trivial cosmetic micro-fixes (P2 + P5) closed in-session. Second consecutive zero-gap external round confirming all 6 papers are drop-ready.",
   },
+  {
+    roundId: "EXT22",
+    dateISO: "2026-06-26",
+    windowPT: "Jun 26 · 3-provider confirm round on R52-closed PDFs",
+    verdicts: {
+      P1A: ["MINOR", "MINOR", "MINOR"],
+      P1B: ["ACCEPT", "ACCEPT", "ACCEPT"],
+      P2: ["ACCEPT", "ACCEPT", "ACCEPT"],
+      P3: ["ACCEPT", "ACCEPT", "ACCEPT"],
+      P4: ["MINOR", "ACCEPT", "MINOR"],
+      P5: ["ACCEPT", "ACCEPT", "ACCEPT"],
+    },
+    note: "EXT22: 18/18 MINOR or ACCEPT — 0 MAJOR, 0 BLOCKER, 0 REJECT. P1A: 1 new MINOR (NV-P1A-1 §XII.B body-alignment, closed). P4: 1 new POLISH (NV-P4-1 +3.3σ→+3.29σ, closed). P1B/P2/P3/P5 clean. All other ~34 findings already-covered/extraction-artifact/opinion/stale. Polish-tier convergence: 3-pass campaign (R52+EXT21+EXT22) → 0 MAJOR/BLOCKER. Readiness 97→98.",
+  },
 ];
 
 export interface GapPoint {
@@ -2417,6 +2452,13 @@ export const gapSeries: GapPoint[] = [
     perPaper: { P1A: 0, P1B: 0, P2: 0, P3: 0, P4: 0, P5: 0 },
     note: "EXT20: 6/6 ACCEPT — fresh-referee external round. 0 new substantive external-only findings. 2 trivial cosmetic micro-fixes (P2 + P5) closed in-session. Second consecutive zero-gap external round.",
   },
+  {
+    roundId: "EXT22",
+    dateISO: "2026-06-26",
+    total: 2,
+    perPaper: { P1A: 1, P1B: 0, P2: 0, P3: 0, P4: 1, P5: 0 },
+    note: "EXT22 confirm round: 2 new-verified polish items — NV-P1A-1 (MINOR: §XII.B body-alignment; closed) + NV-P4-1 (POLISH: +3.3σ→+3.29σ; closed). All ~34 other findings already-covered/extraction-artifact/opinion/stale. Polish-tier convergence reached: 3-pass total (R52+EXT21+EXT22) → 0 MAJOR/BLOCKER.",
+  },
 ];
 
 export interface ReadinessCheckpoint {
@@ -2506,6 +2548,12 @@ export const readinessCheckpoints: ReadinessCheckpoint[] = [
     dateISO: "2026-06-26",
     values: { P1A: 97, P1B: 97, P2: 97, P3: 97, P4: 97, P5: 97 },
     note: "R52 SYNC 2026-06-26: INT 5-vendor + EXT 3-provider. 6 truth-audits: 0 genuine BLOCKERs/MAJORs; all Grok/o3 REJECT/MAJOR = false positives. Real MINORs closed + recompiled (md5: P1A 91726e41 / P1B c052aa67 / P2 b8adf899 / P3 615a0aa5 / P4 4dbda6aa / P5 7c39502c). Readiness 92→97. EXT22 confirm + Houston sign-off pending.",
+  },
+  {
+    id: "EXT22-CONVERGE-2026-06-26",
+    dateISO: "2026-06-26",
+    values: { P1A: 98, P1B: 98, P2: 98, P3: 98, P4: 98, P5: 98 },
+    note: "EXT22 confirm 2026-06-26: 18/18 MINOR or ACCEPT, 0 MAJOR/BLOCKER. 2 polish edits closed (NV-P1A-1 §XII.B + NV-P4-1 σ rounding). P1A md5 06c3b525 / P4 md5 f2902399. Polish-tier convergence reached. Readiness 97→98. Next: Houston sign-off (final 1%).",
   },
 ];
 
