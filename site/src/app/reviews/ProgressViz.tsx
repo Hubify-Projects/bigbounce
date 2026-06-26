@@ -54,10 +54,11 @@ export function VerdictTrajectory() {
   return (
     <svg
       viewBox={`0 0 ${width} ${height}`}
+      width={width}
       role="img"
       aria-label="External referee verdicts per paper per round"
       className="progress-svg"
-      style={{ maxWidth: width }}
+      style={{ maxWidth: "none" }}
     >
       {/* round + reviewer headers */}
       {rounds.map((round, gi) => (
@@ -151,17 +152,19 @@ function chronologicalGapSeries() {
 
 export function GapClosureChart() {
   const pts = chronologicalGapSeries();
-  const width = 380;
-  const height = 190;
-  const padL = 34;
-  const padR = 56;
-  const padT = 18;
-  const padB = 30;
+  const width = 640;
+  const height = 210;
+  const padL = 42;
+  const padR = 72;
+  const padT = 32;
+  const padB = 54;
   const plotW = width - padL - padR;
   const plotH = height - padT - padB;
-  const maxY = 60;
+  const maxY = 70;
   const x = (i: number) => padL + (pts.length === 1 ? plotW / 2 : (i / (pts.length - 1)) * plotW);
   const y = (v: number) => padT + (1 - v / maxY) * plotH;
+  // y-coordinate of the x-axis baseline
+  const xAxisY = padT + plotH;
 
   const linePath = pts.map((p, i) => `${i === 0 ? "M" : "L"}${x(i)},${y(p.total)}`).join(" ");
   const areaPath = `${linePath} L${x(pts.length - 1)},${y(0)} L${x(0)},${y(0)} Z`;
@@ -169,7 +172,7 @@ export function GapClosureChart() {
   return (
     <svg viewBox={`0 0 ${width} ${height}`} role="img" aria-label="Internal/external gap: externally-caught findings per round, target zero" className="progress-svg">
       {/* y grid + ticks */}
-      {[0, 30, 60].map((v) => (
+      {[0, 35, 70].map((v) => (
         <g key={v}>
           <line x1={padL} y1={y(v)} x2={width - padR} y2={y(v)} stroke={GRID} strokeWidth={v === 0 ? 0 : 1} strokeDasharray={v === 0 ? undefined : "2 4"} />
           <text x={padL - 7} y={y(v) + 3} textAnchor="end" fontFamily={MONO} fontSize={8.5} fill={AXIS}>
@@ -185,20 +188,37 @@ export function GapClosureChart() {
       {/* area + line */}
       <path d={areaPath} fill="var(--warn)" opacity={0.1} />
       <path d={linePath} fill="none" stroke="var(--warn)" strokeWidth={1.75} />
-      {/* points */}
-      {pts.map((p, i) => (
-        <g key={p.roundId}>
-          <circle cx={x(i)} cy={y(p.total)} r={3.5} fill="var(--warn)" stroke="var(--bg)" strokeWidth={1.5}>
-            <title>{`${p.roundId}: ${p.total} — ${p.note}`}</title>
-          </circle>
-          <text x={x(i)} y={y(p.total) - 9} textAnchor="middle" fontFamily={MONO} fontSize={10.5} fontWeight={600} fill="var(--text)">
-            {p.total}
-          </text>
-          <text x={x(i)} y={height - 10} textAnchor="middle" fontFamily={MONO} fontSize={9} fill={AXIS}>
-            {p.roundId}
-          </text>
-        </g>
-      ))}
+      {/* points + rotated x labels */}
+      {pts.map((p, i) => {
+        const cx = x(i);
+        const cy = y(p.total);
+        // Anchor point for rotated label — just below the x-axis tick
+        const labelY = xAxisY + 5;
+        return (
+          <g key={p.roundId}>
+            <circle cx={cx} cy={cy} r={3.5} fill="var(--warn)" stroke="var(--bg)" strokeWidth={1.5}>
+              <title>{`${p.roundId}: ${p.total} — ${p.note}`}</title>
+            </circle>
+            <text x={cx} y={cy - 9} textAnchor="middle" fontFamily={MONO} fontSize={10} fontWeight={600} fill="var(--text)">
+              {p.total}
+            </text>
+            {/* tick mark */}
+            <line x1={cx} y1={xAxisY} x2={cx} y2={xAxisY + 3} stroke={AXIS} strokeWidth={0.75} />
+            {/* rotated round label — reads left-to-right when tilted 45° */}
+            <text
+              x={cx}
+              y={labelY}
+              textAnchor="end"
+              fontFamily={MONO}
+              fontSize={8}
+              fill={AXIS}
+              transform={`rotate(-45, ${cx}, ${labelY})`}
+            >
+              {p.roundId}
+            </text>
+          </g>
+        );
+      })}
     </svg>
   );
 }
@@ -229,17 +249,20 @@ export function GapPerPaperDeltas() {
 
 export function SkillsGrowthChart() {
   const pts = skillsSeries;
-  const width = 380;
-  const height = 190;
-  const padL = 34;
+  const width = 640;
+  const height = 230;
+  const padL = 42;
   const padR = 14;
-  const padT = 18;
-  const padB = 42;
+  // padT large enough to hold a 2-row stacked legend above the plot
+  const padT = 50;
+  const padB = 52;
   const plotW = width - padL - padR;
   const plotH = height - padT - padB;
-  const maxY = 50;
+  // maxY raised to 75 so the highest data value (patterns=64) sits comfortably inside bounds
+  const maxY = 75;
   const x = (i: number) => padL + (i / (pts.length - 1)) * plotW;
   const y = (v: number) => padT + (1 - v / maxY) * plotH;
+  const xAxisY = padT + plotH;
 
   const step = (vals: number[]) =>
     vals
@@ -252,9 +275,14 @@ export function SkillsGrowthChart() {
   const patternPath = step(pts.map((p) => p.patterns));
   const rulesPath = step(pts.map((p) => p.promptRules));
 
+  // Shorten long id strings for the x-axis label
+  const shortId = (id: string) =>
+    id.replace("-gapmine", "").replace("-mine", "").replace("-learning-loop", "");
+
   return (
     <svg viewBox={`0 0 ${width} ${height}`} role="img" aria-label="Skills-stack growth: review patterns and reviewer-prompt rules per round" className="progress-svg">
-      {[0, 25, 50].map((v) => (
+      {/* y grid + ticks — updated to match new maxY */}
+      {[0, 25, 50, 75].map((v) => (
         <g key={v}>
           <line x1={padL} y1={y(v)} x2={width - padR} y2={y(v)} stroke={GRID} strokeWidth={1} strokeDasharray="2 4" />
           <text x={padL - 7} y={y(v) + 3} textAnchor="end" fontFamily={MONO} fontSize={8.5} fill={AXIS}>
@@ -277,22 +305,27 @@ export function SkillsGrowthChart() {
           <circle cx={x(i)} cy={y(p.promptRules)} r={2.25} fill="var(--text-muted)" stroke="var(--bg)" strokeWidth={1.25}>
             <title>{`${p.id}: ${p.promptRules} reviewer-prompt rules`}</title>
           </circle>
-          <text x={x(i)} y={height - 22} textAnchor="middle" fontFamily={MONO} fontSize={7.5} fill={AXIS}>
-            {p.id}
+          {/* x-axis tick */}
+          <line x1={x(i)} y1={xAxisY} x2={x(i)} y2={xAxisY + 3} stroke={AXIS} strokeWidth={0.75} />
+          {/* Two x-axis label rows: abbreviated id + month-day date */}
+          <text x={x(i)} y={xAxisY + 15} textAnchor="middle" fontFamily={MONO} fontSize={8} fill={AXIS}>
+            {shortId(p.id)}
           </text>
-          <text x={x(i)} y={height - 11} textAnchor="middle" fontFamily={MONO} fontSize={7.5} fill={AXIS}>
+          <text x={x(i)} y={xAxisY + 27} textAnchor="middle" fontFamily={MONO} fontSize={7.5} fill={AXIS}>
             {p.dateISO.slice(5)}
           </text>
         </g>
       ))}
-      {/* inline legend */}
+      {/* stacked legend — sits in padT zone, above the plot, well clear of data */}
       <g fontFamily={MONO} fontSize={8}>
-        <line x1={padL + 2} y1={padT - 6} x2={padL + 16} y2={padT - 6} stroke="var(--accent)" strokeWidth={1.75} />
-        <text x={padL + 20} y={padT - 3} fill="var(--text-secondary)">
+        {/* row 1: review patterns */}
+        <line x1={padL + 2} y1={padT - 30} x2={padL + 18} y2={padT - 30} stroke="var(--accent)" strokeWidth={1.75} />
+        <text x={padL + 22} y={padT - 27} fill="var(--text-secondary)">
           review patterns
         </text>
-        <line x1={padL + 104} y1={padT - 6} x2={padL + 118} y2={padT - 6} stroke="var(--text-muted)" strokeWidth={1.25} strokeDasharray="4 3" />
-        <text x={padL + 122} y={padT - 3} fill="var(--text-secondary)">
+        {/* row 2: reviewer-prompt rules */}
+        <line x1={padL + 2} y1={padT - 16} x2={padL + 18} y2={padT - 16} stroke="var(--text-muted)" strokeWidth={1.25} strokeDasharray="4 3" />
+        <text x={padL + 22} y={padT - 13} fill="var(--text-secondary)">
           reviewer-prompt rules
         </text>
       </g>

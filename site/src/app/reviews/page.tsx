@@ -94,7 +94,9 @@ export default function ReviewsPage() {
               Gemini all at ACCEPT across all 6 papers. Grok calibration-stable from EXT3;
               Gemini and ChatGPT converged by EXT17. Campaign complete.
             </p>
-            <VerdictTrajectory />
+            <div className="verdict-carousel">
+              <VerdictTrajectory />
+            </div>
             <VerdictLegend />
           </div>
           <div className="progress-charts">
