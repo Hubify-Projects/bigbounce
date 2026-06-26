@@ -118,6 +118,22 @@ All encoded as global skills under `~/.claude/scistack/hubstack/infra/` (symlink
 
 ---
 
+## Standing directives (2026-06-26 session — permanent)
+
+Five rules Houston kept having to re-state; encoded here as hard gates:
+
+**A — Convex is the live site.** After EVERY round, write true state to Convex via public HTTP API (`POST https://brilliant-panther-471.convex.cloud/api/mutation`): `paperVersions:bump`, `rRounds:create`, `externalReviews:upsertByLabelDate` (real verdicts; enum `accept|minor-revisions|major-revisions|reject|pending`; source `internal-stage3`), `activityFeed:add`, `papers:setReadinessCap` (96/98/99 per phase). Data writes need no `npx convex deploy`. Static `papers.ts`/SSOT do NOT reach the live site. Full protocol in `/bigbounce-site-sync`.
+
+**B — Per-paper convergence loop.** One owner-agent per paper: INT (multi-vendor+Opus) + EXT (browser) each round → truth-audit verdict-first (patterns 061-064; NEVER fake ACCEPT; never close without source-cited verdict; never fabricate math) → close real items → recompile (0 undef-refs) + `/latex-audit` → Convex+site update → commit. ~30-min heartbeat. Exit gate: 0 new VERIFIED items across ALL 6 papers AND 0 external MAJOR in a full round.
+
+**C — Browser visual QA.** After any site/Convex update: gstack headed browser QA of bigbounce.hubify.app (overview, papers, reviews, data-explorer). Confirm data current+accurate+legible+appealing; fix/flag stale or broken before calling done. Part of every `/bigbounce-site-sync` run.
+
+**D — EXT sweep hardening.** Fresh chats only (never reuse `/c/<id>`). Write manifest per-leg immediately. Per-leg poll cap ~8 polls/10 min then harvest-or-FAILED. Hard ~45-min overall budget; sweep self-terminates. See `/external-review-browser-loop`.
+
+**E — RunPod ALWAYS-backup.** Never single-source pod data. Before any stop AND end of every session AND every ~2hr compute milestone: mirror to local + HuggingFace + Backblaze B2 (+ Convex metadata). Not just before-stop — ALWAYS. See `/pod-backup-before-stop` + `/backup-3plus`.
+
+---
+
 ## Drive-to-100 loop (if active)
 
 Cron `*/20 * * * *` fires `/drive-to-100-fire`. Each fire does ONE atomic step. See `project-context/SSOT/drive-to-100.md` for the plan + loop log.

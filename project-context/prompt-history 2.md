@@ -23057,3 +23057,36 @@ Houston's framing: "take seriously but with grain of salt since they do not have
 **21:55 PT — B23 decision + Next.js migration go**
 
 > ok why you asking for my decision on B23? oh that is just making the HF models and datasets public not private? I mean.. i am fine with it if you wanna go ahead and do it... i just saw a bunch of activity on them and got spooked a few weeks back bc i didn't want someone to leak my research or something but i have zero HF followers and all thea ctivity was myself and mya gents so whatever just do that ... anything else need to be updated or can be done in parallel while the current pod run runs? any PDFs ready to be recompiled and pushed to the website? and how about actually legitimately improving the actual research site design to use a proper tailwindcss, shadcn, react, nextjs proper web app with proper more scalable consistent designs and utilizing everything better displaying from our github, convex, project and research etc just improving the whole website/web app to make it better and more organized and professional and scalable and not creating these dozens of different staic html pages.. etc that is something that needs real work too if we are just sitting waiting for the current pod run to finish
+
+
+## 2026-06-26 — Convex live-site writes + per-paper convergence loop + browser visual QA + EXT sweep hardening + RunPod ALWAYS-backup
+
+### Houston directive intent (encoded from session — permanent rules)
+
+**A — Convex is the live site; write to it every round**
+
+The live site (bigbounce.hubify.app) reads from Convex, NOT static files. Updating `site/src/data/papers.ts`, SSOT markdown, or any static file does NOT reach what visitors see. After EVERY review round agents MUST write to Convex via the public HTTP API:
+
+POST `https://brilliant-panther-471.convex.cloud/api/mutation`
+Body: `{"path":"<module>:<fn>","args":{...},"format":"json"}`
+
+Required mutations each round: `paperVersions:bump` (datestamp=today, new md5/pages, texCommit=HEAD), `rRounds:create` (source "subagent"), `externalReviews:upsertByLabelDate` (REAL verdicts; recommendation enum `accept|minor-revisions|major-revisions|reject|pending`; source "internal-stage3"), `activityFeed:add`, and `papers:setReadinessCap` per phase (96 R-converged / 98 D-round / 99 P-round). The `readinessCap` in `convex/papers.ts → getPaperState` is data-driven from this value. Function code changes need `npx convex deploy` (deploy key required); data writes via the HTTP API do NOT. NEVER let the live site go stale (>0 days behind reality on dates/versions/rounds/status).
+
+**B — Per-paper convergence loop**
+
+One owner-agent per paper, INT (multi-vendor + Opus re-read) + EXT (browser) each round, truth-audit verdict-first (patterns 061-064; NEVER fake an ACCEPT; never close without source-cited verdict; never fabricate math), close real items, recompile (0 undef-refs) + overflow-audit, update Convex+site, commit/push. Loop exit gate: a full round with 0 new VERIFIED items across ALL 6 papers AND 0 external MAJOR. A recurring ~30-min heartbeat keeps all 6 continually in-progress and catches hung browser workers.
+
+**C — Browser visual QA after every site/data update**
+
+After site/data updates, use the gstack headed browser to VISUALLY QA bigbounce.hubify.app pages (overview, papers, reviews, data-explorer, etc.) — confirm data is current + accurate + legible + visually appealing; fix/flag anything stale, cut-off, or broken before calling the work done.
+
+**D — EXT browser-sweep hardening**
+
+Fresh chats only (never reuse a `/c/<id>` URL). Write each leg to the manifest on disk immediately (per-leg, not batch at end). Per-leg poll cap ~8 polls/10 min then harvest-or-FAILED. Hard overall time budget ~45 min so the sweep self-terminates instead of hanging indefinitely.
+
+**E — RunPod ALWAYS-backup to 3+ sources**
+
+Never let RunPod pod/volume data be single-source. Before ANY pod stop AND at end of every session AND every ~2hr compute milestone: mirror outputs to local + HuggingFace + Backblaze B2 (and Convex/project DB where relevant). This is an ALWAYS rule, not just a before-stop gate. Terminate-instead-of-stop typos destroy /workspace without warning.
+
+**Encoded into:** `CLAUDE.md` (new section), memory files A–E, `/bigbounce-site-sync` skill (Convex step added), `/external-review-browser-loop` skill (D hardening), `/pod-backup-before-stop` + `/backup-3plus` skills (E always-rule).
+
