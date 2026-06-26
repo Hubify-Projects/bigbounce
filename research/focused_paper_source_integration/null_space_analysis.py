@@ -308,3 +308,115 @@ print(f"centered at r ~ {r_m:.2f}, consistent with the existing r = 0.85--0.90 r
 print(f"The polynomial underdetermination contributes a systematic uncertainty of")
 print(f"+/- {r_s:.2f} to the template overlap, which does not qualitatively change")
 print(f"the detection significance forecasts.")
+
+# ============================================================
+# 10. Write JSON artifact: phase3_bispectrum_shape_overlap.json
+# ============================================================
+
+import json
+import os
+
+json_output = {
+    "description": (
+        "Bispectrum shape overlap analysis for the matter-bounce polynomial. "
+        "Companion artifact to Golden 2026, "
+        "'Testing the Matter Bounce with Primordial Non-Gaussianity: "
+        "A SPHEREx Sensitivity Recast with a MegaMapper Outlook'. "
+        "Contains the bispectrum-shape coefficient map, per-configuration overlap "
+        "values, and null-space scan statistics enabling independent reproduction "
+        "of the r = 0.84 +/- 0.02 noise-weighted central value."
+    ),
+    "paper_version": "v1.7.70",
+    "generator": "null_space_analysis.py",
+    "reference_coefficients": {
+        "c": c_known.tolist(),
+        "labels": ["c1", "c2", "c3", "c4", "c5", "c6"],
+        "basis": "symmetric degree-9 monomials: sum(k^9), sum(k^7*k^2), "
+                 "sum(k^6*k^3), sum(k^5*k^4), sum(k^5*k^2*k^2), sum(k^4*k^3*k^2)",
+        "description": "Reference coefficient set satisfying all three Cai et al. (2009) benchmarks"
+    },
+    "benchmark_configurations": {
+        "equilateral": {
+            "k1": 1.0, "k2": 1.0, "k3": 1.0,
+            "BNL_computed": float(compute_BNL(1.0, 1.0, 1.0, c_known)),
+            "BNL_target": float(-255.0 / 64.0),
+            "description": "Equilateral triangle: k1=k2=k3=1"
+        },
+        "folded": {
+            "k1": 2.0, "k2": 1.0, "k3": 1.0,
+            "BNL_computed": float(compute_BNL(2.0, 1.0, 1.0, c_known)),
+            "BNL_target": float(-9.0 / 4.0),
+            "description": "Folded triangle: k1=2, k2=k3=1"
+        },
+        "squeezed": {
+            "k1": float(eps), "k2": 1.0, "k3": 1.0,
+            "BNL_computed": float(compute_BNL(eps, 1.0, 1.0, c_known)),
+            "BNL_target": float(-35.0 / 8.0),
+            "description": f"Squeezed triangle: k1={eps}, k2=k3=1 (target -35/8 = -4.375)"
+        }
+    },
+    "reference_coefficient_overlap": {
+        "r_amplitude": float(r_amp_known),
+        "r_cosine": float(r_cos_known),
+        "weight": "Fisher weight w ~ S_local^2",
+        "triangle_configurations": N_tri,
+        "description": (
+            "Amplitude recovery factor r and shape cosine for the reference "
+            "coefficient set (2, 7, 3, -12, -69, 19)"
+        )
+    },
+    "noise_weighted_r_values": {
+        "description": (
+            "Four noise-weighted overlap values spanning physically motivated "
+            "weighting schemes, as quoted in the paper body (Section III.B). "
+            "These values are the basis for r = 0.84 +/- 0.02 headline."
+        ),
+        "values": {
+            "scale_dependent_bias_1_over_k2": 0.829,
+            "spherex_like_noise_weighted": 0.830,
+            "flat_uniform": 0.835,
+            "cmb_fisher_signal_only_k2_weighted": 0.876
+        },
+        "noise_weighted_central_r": 0.84,
+        "noise_weighted_uncertainty": 0.02,
+        "headline": "r = 0.84 +/- 0.02 (noise-weighted central value, Eq. eq:r_noise)"
+    },
+    "null_space_scan": {
+        "n_samples": int(N_samples),
+        "null_space_dimension": int(null_space.shape[0]),
+        "sampling_radius": float(radius),
+        "random_seed": 42,
+        "r_amplitude": {
+            "mean": float(r_amp_all.mean()),
+            "std": float(r_amp_all.std()),
+            "min": float(r_amp_all.min()),
+            "max": float(r_amp_all.max()),
+            "median": float(np.median(r_amp_all)),
+            "p5": float(np.percentile(r_amp_all, 5)),
+            "p16": float(np.percentile(r_amp_all, 16)),
+            "p84": float(np.percentile(r_amp_all, 84)),
+            "p95": float(np.percentile(r_amp_all, 95))
+        },
+        "r_cosine": {
+            "mean": float(r_cos_all.mean()),
+            "std": float(r_cos_all.std()),
+            "min": float(r_cos_all.min()),
+            "max": float(r_cos_all.max())
+        },
+        "paper_headline": "r = 0.85 +/- 0.13 (range 0.55--1.14)"
+    },
+    "triangle_grid": {
+        "N_grid": N_grid,
+        "n_valid_configurations": int(N_tri),
+        "x2_range": [0.01, 1.0],
+        "x3_range": [0.01, 1.0],
+        "constraints": "triangle inequality (x3 <= x2) and (x2 + x3 >= 1), with k1=1"
+    }
+}
+
+output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                           "phase3_bispectrum_shape_overlap.json")
+with open(output_path, "w") as f:
+    json.dump(json_output, f, indent=2)
+print()
+print(f"Written artifact: {output_path}")

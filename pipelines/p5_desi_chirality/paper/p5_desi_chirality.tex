@@ -398,7 +398,7 @@
 
 \begin{document}
 
-\title{Environmental Dependence of Spiral Chirality: A DESIVAST Three-Algorithm Test on 56{,}981 Void Spirals with T-Web (Hahn 2007) Tidal-Tensor Cross-Check Across the DR1 Matched-Spiral Sample\protect\footnote{See \S\ref{sec:env_finder} for the implementation note on the T-Web/V-Web nomenclature: the tidal-tensor classifier used here implements the Hahn 2007 T-Web recipe ($\phi_k = -\delta_k/k^2$ then $T_{ij} = -k_i k_j \phi_k$), not the Hoffman 2012 V-Web (velocity-shear). Earlier preprint versions used ``V-Web'' in the title for backward-compatibility with the HF dataset slug and the GitHub release tag; the title is updated to ``T-Web'' for accuracy.}}
+\title{Environmental Dependence of Spiral Chirality: A DESIVAST Three-Algorithm Test on 56{,}981 Void Spirals with T-Web (Hahn 2007) Tidal-Tensor Cross-Check Across the DR1 Matched-Spiral Sample\protect\footnote{See \S\ref{sec:env_finder} for the implementation note on the T-Web/V-Web nomenclature: the tidal-tensor classifier used here implements the Hahn 2007 T-Web recipe ($\phi_k = -\delta_k/k^2$ then $T_{ij} = -k_i k_j \phi_k$), not the Hoffman 2012 V-Web (velocity-shear). Associated dataset and software artifacts retain ``V-Web'' in their names for backward compatibility with earlier releases.}}
 
 \author{Houston Golden}
 \email{houston@hubify.com}
@@ -450,12 +450,17 @@ $812{,}793$ environment-labeled survey--program coadd rows.
 The $56{,}981$ void spirals are drawn from the DESIVAST low-$z$ parent
 ($678{,}945$), not from the full T-Web parent ($812{,}793$).
 \textbf{Headline result:} the CW
-fraction shows no environment dependence beyond (i) the known
-Paper~IV catalog-wide classifier-monopole systematic of $\approx\!0.26$\,pp
-(percentage points; a correctable classifier systematic --- not a
-statistical limit --- that dominates the T-Web filament/cluster
-residuals at $n \gtrsim 4 \times 10^5$ and is subtracted explicitly
-in the monopole-referenced tests) and (ii) the counting-statistics
+fraction shows no environment dependence beyond (i) an internally
+verified $\approx\!0.26$\,pp (percentage points) catalog-wide
+classifier-monopole offset ($f_{\rm CW}^{\rm P5} = 0.49719$,
+$n = 812{,}793$ env-labeled rows,
+Table~\ref{tab:p4_monopole_residual}; consistent with the independent
+Paper~IV estimate~\cite{golden_chirality_2026}; a correctable
+classifier systematic, not a statistical limit, that dominates the
+T-Web filament/cluster residuals at $n \gtrsim 4 \times 10^5$ and is
+subtracted explicitly in the monopole-referenced tests; the
+$\Delta f_{\rm CW}$ void-vs-non-void contrast is invariant under any
+catalog-wide monopole shift, see \S\ref{sec:p4}) and (ii) the counting-statistics
 floor of $\pm 2.4$\,pp
 (the $1\sigma$ binomial half-width of the $n = 428$ T-Web void bin;
 $2\sigma$ half-width $\pm 4.8$\,pp),
@@ -677,18 +682,27 @@ photo-$z$; this paper supplies spectroscopic redshifts and environment
 context by joining to DESI Data Release~1.
 
 Paper~IV's headline results bear on the present paper in three ways.
-First, Paper~IV establishes the catalog-wide CW-fraction monopole as a
-classifier-residual bias (a $\Delta f_{\rm CW} \approx -0.0026$ offset
-from $0.5$ that is spatially uniform and quality-quartile-flat) rather
-than a real cosmological dipole; we therefore expect the environmental
-$\sigma_{\rm from\,half}$ values reported here to inherit the same
-monopole offset, with sign determined by sample size. Second,
-Paper~IV's current headline (v1.0.166) is a real-space full-sky dipole
+First, this paper independently measures the catalog-wide CW-fraction
+monopole within its own matched sample: $f_{\rm CW}^{\rm P5} =
+0.49719$ on $812{,}793$ env-labeled rows
+(Table~\ref{tab:p4_monopole_residual}), corresponding to
+$\Delta f_{\rm CW} = -0.0026$ --- a classifier-residual bias that is
+spatially uniform and quality-quartile-flat, consistent with the
+independent Paper~IV estimate~\cite{golden_chirality_2026}. We
+therefore expect the environmental $\sigma_{\rm from\,half}$ values
+reported here to inherit the same monopole offset, with sign determined
+by sample size. The environment-independence headline is the two-sample
+$\Delta f_{\rm CW}$ contrast, which is invariant under any catalog-wide
+monopole shift: if the Paper~IV (or internal) monopole value shifts,
+the $\sigma_{\rm pred}$ rows (Tables~\ref{tab:density_quintile_residual},
+\ref{tab:within_class_density}, \ref{tab:p4_monopole_residual}) move
+with it while the $\Delta f_{\rm CW}$ null does not. Second,
+Paper~IV's current headline is a real-space full-sky dipole
 null at $+0.43\sigma$ ($p\!=\!0.30$) from direct amplitude estimation,
 reinforced by a weighted template fit that excludes a clean
 Shamir-amplitude ($1.7\%$) dipole; an earlier harmonic-space
 subsample-mask MASTER-deconvolved $\ell\!=\!1$ statistic was withdrawn
-in Paper~IV v1.0.166 after a provenance audit traced its mask to a
+in Paper~IV after a provenance audit traced its mask to a
 synthetic footprint. Any environmental signal
 here would have to coexist with the re-anchored real-space null. Third,
 Paper~IV provides
@@ -811,9 +825,8 @@ We compute environment labels via the T-Web tidal-tensor classifier
 Hoffman~\textit{et~al.}~2012 \cite{Hoffman2012};
 Cautun~\textit{et~al.}~2014 \cite{Cautun2014}).
 \emph{Nomenclature reminder} (see also the title footnote): this
-version standardizes on ``T-Web'' for our implementation of the
-Hahn~2007 tidal-tensor recipe; earlier preprint versions used
-``V-Web'' for the same implementation (the artifact filename
+paper uses ``T-Web'' for our implementation of the Hahn~2007
+tidal-tensor recipe (the artifact filename
 \href{\repoBase/pipelines/p5\_desi\_chirality/env\_finder/01\_compute\_vweb.py}{[A3]}
 and the \texttt{sec:vweb} cross-reference label are retained for
 backward compatibility with the HF dataset slug and the GitHub release
@@ -965,7 +978,10 @@ Appendix~\ref{sec:data_code}). Multi-bin scans are
 corrected for multiple testing with Bonferroni at $\alpha\!=\!0.01$.
 
 We explicitly compare each $\sigma_{\rm from\,half}$ against the
-Paper~IV-predicted classifier-monopole offset
+classifier-monopole offset (independently verified as the P5 internal
+matched-sample monopole $f_{\rm CW}^{\rm P5} = 0.49719$,
+Table~\ref{tab:p4_monopole_residual}; Paper~IV provides a corroborating
+external estimate~\cite{golden_chirality_2026})
 \begin{equation}\label{eq:sigma_pred}
 \sigma_{\rm pred} \;=\; \frac{\Delta f_{\rm CW}}{0.5 / \sqrt{N}}
 \;=\; 2 \cdot \Delta f_{\rm CW} \cdot \sqrt{N},
@@ -1220,7 +1236,7 @@ to stratification of the shuffle by imaging leg and DESI program
 $(R_s\!=\!25\,{\rm Mpc}/h, \lambda_{\rm th}\!=\!0)$, on the
 $812{,}793$-row env-labeled parent. $\sigma_{\rm from\,half}$ scales
 as $\sqrt{n}$ at fixed offset and is not comparable across rows of
-different $n$.}
+different $n$ (\S\ref{sec:stats}).}
 \label{tab:cw_vs_env}
 \begin{ruledtabular}
 \begin{tabular}{lrrrr}
@@ -1443,9 +1459,12 @@ T-Web per-galaxy \emph{log}-density covariate of \S\ref{sec:vweb_algo}
 step~12; $\bar\rho$ is the quartile mean of
 $\log_{10}(1 + \delta_{\rm smooth})$ (Gaussian-smoothed overdensity
 in units of the cube-mean cell density, NN-interpolated to each
-galaxy position; dimensionless). Quartile membership is identical
-under the linear density (monotone transform); definition verified by
-exact recompute in
+galaxy position; dimensionless; $\log_{10}$ scale --- the displayed
+values 0.90--2.21 are $\log_{10}$ quantities, e.g.\ cluster
+Q4 $\bar\rho=2.21$ corresponds to $1\!+\!\delta\approx\!162\times$
+the cube-mean cell density). Quartile membership is identical under
+the linear density (monotone transform); definition verified by exact
+recompute in
 \href{\repoBase/pipelines/p5\_desi\_chirality/outputs/21\_r23conf\_meta\_closures.json}{[A5]}.
 The $\sigma_{\rm from\,half}$ values scale as $\sqrt{n}$ at fixed
 offset and are not comparable across rows of different $n$; the
@@ -2148,7 +2167,10 @@ public DR1 void catalog.
 on the $z \leq 0.24$ matched-spiral subsample (point-in-sphere test
 against $101{,}863$ DESIVAST VoidFinder hole spheres; the $k=20$
 KDTree query yields conclusions identical to the exact $k$-unbounded
-rerun at the $0.18\%$ membership level, \S\ref{sec:desivast_xmatch}).
+rerun at the $0.18\%$ membership level, \S\ref{sec:desivast_xmatch};
+the non-void $k\!=\!20$ count $n=621{,}964$ differs from the exact
+rerun $n=621{,}864$ by 100 counts, $0.016\%$, within the stated
+equivalence bound).
 The footprint-restricted control row (``Footprint-restricted non-void
 (exact)'') restricts the non-void sample to the union of hole-sphere
 angular discs (NSIDE\,$=\!64$, inclusive) intersected with the
@@ -2160,8 +2182,8 @@ holes' comoving radial span, using the exact $k$-unbounded membership
 \begin{tabular}{lrrrr}
 Class & $n$ & $n_{\rm CW}$ & $f_{\rm CW}$ & $\sigma_{\rm from\,half}$ \\
 \hline
-DESIVAST void & $56{,}981$ & $28{,}286$ & $0.4964$ & $-1.71$ \\
-Non-void      & $621{,}964$ & $309{,}173$ & $0.4971$ & $-4.59$ \\
+DESIVAST void (k=20) & $56{,}981$ & $28{,}286$ & $0.4964$ & $-1.71$ \\
+Non-void (k=20)      & $621{,}964$ & $309{,}173$ & $0.4971$ & $-4.59$ \\
 \hline
 \multicolumn{5}{l}{\textit{Footprint-restricted control}} \\
 Footprint-restricted non-void (exact) & $253{,}276$ & $126{,}202$ & $0.4983$ & $-1.73$ \\
@@ -2234,7 +2256,9 @@ Artifact:
 the void and non-void classes on the $z \leq 0.24$ matched-spiral
 subsample ($n_{\rm lz} = 678{,}945$). Both programs return null
 chirality fractions within the void class, confirming DESIVAST
-independence from target-program residuals.}
+independence from target-program residuals. The $\sigma$ column
+is $\sigma_{\rm from\,half}$ (\S\ref{sec:stats}); values are not
+comparable across rows of different $n$.}
 \label{tab:desivast_program_split}
 \begin{ruledtabular}
 \begin{tabular}{llrrrr}
@@ -2271,7 +2295,11 @@ Sign convention: $\Delta f_{\rm CW} \equiv f_{\rm CW}^{\rm non\mbox{-}void}
 - f_{\rm CW}^{\rm void}$. The last four columns give the two-sample
 binomial contrast statistics of the declared primary estimand
 $\Delta f_{\rm CW}$ (standard error, $z$-score, two-sided $p$, and
-$95\%$ confidence interval), computed from the tabulated class counts.}
+$95\%$ confidence interval), computed from the tabulated class counts.
+All $n_{\rm void}$ counts use sphere-PIS (point-in-sphere KDTree
+membership, \S\ref{sec:desivast_xmatch}); catalog-native GALZONE
+membership gives different counts for V2-REVOLVER and V2-VIDE (see
+\S\ref{sec:desivast_catalog_native}).}
 \label{tab:desivast_three_algo}
 \begin{ruledtabular}
 \begin{tabular}{lrrrrrrrrr}
@@ -3098,10 +3126,11 @@ Bonferroni-corrected significance threshold at $\alpha = 0.01,\,K = 4$
 \begin{table*}[!htb]
 \caption{ASTRA EDR per-object cross-validation, headline statistics on
 the $N_{\rm overlap} = 25{,}186$ EDR-overlap matched-spiral subsample.
-Range and max-$|\sigma|$ filtered to classes with $n \geq 100$. The
-entropy-weighted row lists effective (probability-weighted) $n_{\rm
-eff}$ per class; per-class $n_{\rm CW}$ values are in the released
-per-object artifact
+Range and max-$|\sigma|$ filtered to classes with $n \geq 100$
+($^*$T-Web void $n=1$ and wall $n=2$ are below threshold and excluded
+from range and max-$|\sigma|$). The entropy-weighted row lists
+effective (probability-weighted) $n_{\rm eff}$ per class; per-class
+$n_{\rm CW}$ values are in the released per-object artifact
 (\href{\repoBase/pipelines/p5\_desi\_chirality/results/analysis\_astra\_per\_object/cw\_fraction\_by\_env\_astra.csv}{[A22]}).}
 \label{tab:astra_headline}
 \centering
@@ -3110,7 +3139,7 @@ per-object artifact
 Classifier & $f_{\rm CW}$ range (pp) & max $|\sigma|_{\rm vs\,1/2}$ &
 per-class $n$ (void/wall/fil./cl.) \\
 \hline
-T-Web on same overlap         & $1.08$ & $2.68$ & $1$ / $2$ / $7{,}972$ / $17{,}211$ \\
+T-Web on same overlap         & $1.08$ & $2.68$ & $1^*$ / $2^*$ / $7{,}972$ / $17{,}211$ \\
 ASTRA argmax                  & $2.08$ & $2.25$ & $2{,}985$ / $7{,}980$ / $8{,}864$ / $5{,}357$ \\
 ASTRA entropy-weighted        & $1.17$ & $2.00$ & $3{,}338$ / $7{,}724$ / $8{,}433$ / $5{,}691$ \\
 \end{tabular}

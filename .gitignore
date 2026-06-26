@@ -56,3 +56,7 @@ reproducibility/cosmology/iter2_converged_2026-05-18/chains_w0wa_dr2_iter2_chain
 reproducibility/cosmology/iter2_converged_2026-05-18/chains_w0wa_dr2_iter2_unpacked/
 reproducibility/cosmology/iter2_converged_2026-05-18/mcmc_iter2_omp6.log
 pipelines/p5_desi_chirality/data/
+
+# encrypted/plain env backups — never commit
+.env.local.bak*
+*.env.local.bak*
