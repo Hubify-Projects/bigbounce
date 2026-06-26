@@ -1781,7 +1781,12 @@ not a cosmological measurement. The high pipeline template-fit SNR figures
 (e.g., $20.32$, $25.71$; fn.~\ref{fn:snr_definition}) refer to recovery of
 injected MC signals and
 \emph{must not} be conflated with the published Planck/ACT~DR6 $2.7$--$2.9\sigma$
-sky detection.}
+sky detection. Moreover, because the synthetic skies are CMB-only (no galactic
+foregrounds; see ``Simulated skies'' below), this validation cannot address the
+physical separation of the cosmic-rotation angle $\beta$ from the
+instrumental-miscalibration angle $\alpha$: the $\beta$--$\alpha$ degeneracy that
+dominates real-sky birefringence measurements is broken only by unrotated
+foregrounds, which are absent here by construction (cf.\ abstract).}
 
 \noindent\textbf{Pipeline configuration.}---The pseudo-$C_\ell$ analysis follows the NaMaster framework~\cite{Alonso2019}.
 \emph{Simulated skies.}---Each Monte Carlo realization is a synthetic
@@ -2239,9 +2244,10 @@ background (as in Sec.~\ref{sec:cosmo_fits}) shifts $H(z)$ at
 $z\!\lesssim\!1$ by $\sim$few percent, propagating to a $\lesssim$few-percent
 systematic on $\Delta\phi/f_a$ — well below the $\sim$30\% prior-width
 envelope on $\theta_i$ and $m/H_0$ dominating the $\beta$ prediction.}
-yields the field displacement from recombination to today:
+yields the field displacement from recombination to today, at the
+representative corner $m = 2H_0$, $\theta_i = 1$ of the natural-parameter box:
 \begin{equation}
-\Delta\phi/f_a \approx 0.42 \quad (m = 2H_0,\; \theta_i = 1;\text{ one corner of the natural-parameter box}).
+\Delta\phi/f_a \approx 0.42 \qquad (m = 2H_0,\; \theta_i = 1).
 \end{equation}
 Across the natural parameter range $m/H_0\in[1,3]$, $\theta_i\in[0.5,2]$
 the committed EOM grid gives
@@ -2463,8 +2469,11 @@ the posterior-supported coupling range rather than at fixed benchmarks.
 \emph{Spectator-subset readout} (same chain, no additional sampling): the
 chain's derived ALP energy fraction $\Omega_a$ (defined in the subsection
 below; computed under the small-angle quadratic approximation, valid for $\theta_i\ll 1$;
-anharmonic corrections at $\mathcal{O}(\theta_i^2/12)$ shift $\Omega_a$ by $\lesssim 5\%$
-for $\theta_i\sim 1$, sub-dominant to the prior width) satisfies $\Omega_a < 0.1$
+the leading anharmonic correction is $\mathcal{O}(\theta_i^2/12)$, i.e.\
+$\lesssim 8\%$ at $\theta_i\sim 1$ and $\lesssim 1\%$ over the posterior-supported
+$\Omega_a\le 0.01$ spectator-safe subset ($\theta_i\lesssim 0.3$;
+Table~\ref{tab:alp_restricted_subsets}), sub-dominant to the prior width)
+satisfies $\Omega_a < 0.1$
 for $44\%$ and $\Omega_a < 0.01$ for $13\%$ of the posterior mass;
 restricted to the $\Omega_a \le 0.01$ spectator-safe subset, the rotation
 marginal is $\beta = 0.28^\circ \pm 0.10^\circ$ (this is the subset posterior

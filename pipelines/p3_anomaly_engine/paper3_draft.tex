@@ -765,7 +765,7 @@ Cross-matching the top 10{,}000 anomalies against six databases (SIMBAD, NED, Al
   $z$-units: $S = (\mathrm{MSE} - \mu_{\rm val})/\sigma_{\rm val}$, where
   $\mu_{\rm val}$ and $\sigma_{\rm val}$ are the mean and standard deviation
   of MSE on the held-out 20\% validation split of the per-survey training pool
-  (\S\ref{sec:training}; cross-transfer for SDSS, native for DESI/LAMOST). $S = 5$
+  (\S\ref{sec:training}; native for DESI, cross-transfer for SDSS and LAMOST). $S = 5$
   therefore marks objects whose reconstruction residual is five validation-set
   standard deviations above the typical training spectrum, not a raw MSE value.
   \textit{Left:} DESI DR1 (blue) and LAMOST DR10 (green dashed) on a
@@ -773,11 +773,14 @@ Cross-matching the top 10{,}000 anomalies against six databases (SIMBAD, NED, Al
   Each curve is a histogram independently normalized to unit area
   (\texttt{density=True}), so the two surveys' distribution \emph{shapes}
   are directly comparable despite their unequal sample sizes; the $y$-axis
-  does not encode absolute counts.  \textbf{Important:} the $S$ axis of DESI
-  and LAMOST are on different native-retrain scales (\S\ref{sec:training}) ---
-  absolute $S$ values are not cross-survey comparable; this panel should be
-  read per-survey (shape and threshold behavior), not as a shared
-  anomaly-severity axis.  Both distributions follow a power-law tail; DESI
+  does not encode absolute counts.  \textbf{Important:} the LAMOST curve here is
+  the pre-Path-C cross-transfer scan ($44{,}075$ objects; DESI-trained model and
+  DESI validation normalization, \S\ref{sec:training}), superseded in the released
+  catalog by the native re-score (native top-$1\%$ slice $113{,}342$, on a separate
+  native scale not plotted here); because each released survey carries its own
+  $\mu_{\rm val}/\sigma_{\rm val}$, absolute $S$ values are not cross-survey
+  comparable and this panel should be read per-survey (shape and threshold
+  behavior), not as a shared anomaly-severity axis.  Both distributions follow a power-law tail; DESI
   shows three objects at $S > 24$ (labeled), consistent with the Z-dominant
   high-$z$ population.
   \textit{Right:} SDSS DR18 transfer-learning scores on a log--log scale,
@@ -937,8 +940,10 @@ For SIMBAD at $5''$ ($n_{\rm SIMBAD} \approx 3.0\!\times\!10^{-5}$~arcsec$^{-2}$
   top-1{,}000 anomalies are cross-matched against 18 curated all-sky
   catalogs via CDS X-Match (Section~\ref{sec:simbad}, ``Archival
   cross-match and genuine novelty fraction''). Extended archival cross-matching
-  reduces the headline novelty pool by a factor of $\sim 5.6\times$
-  relative to the SIMBAD-unmatched aggregate, and readers should quote
+  reduces the headline DESI novelty pool by a factor of $\sim 5.6\times$
+  relative to that same DESI top-stratum's ${\sim}99\%$ SIMBAD-unmatched
+  fraction (the stratum on which the $17.8\%$ is measured; the $58.8\%$
+  four-survey aggregate is a separate pooled population), and readers should quote
   17.8\% (not 58.8\%) when summarizing the catalog's discovery rate.
   The asterisk on LAMOST denotes that its 50\%
   rate should be interpreted cautiously given the training-bias artifact
