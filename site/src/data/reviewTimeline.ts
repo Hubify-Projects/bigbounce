@@ -2448,6 +2448,12 @@ export const readinessCheckpoints: ReadinessCheckpoint[] = [
     values: { P1A: 99, P1B: 99, P2: 99, P3: 99, P4: 99, P5: 99 },
     note: "P1B-REPRO-PUBLISHED 2026-06-20: 3 HF reproducibility datasets public (bamfai/p1b-alp-chains, bamfai/p1b-mcmc-diagnostics, bamfai/p1b-namaster-artifacts), Appendix A links fixed Hubify→bamfai, P1B v1B.0.75→v1B.0.76, P1B 98→99 — all six papers at 99.",
   },
+  {
+    id: "EXT21-R52-CLOSURE",
+    dateISO: "2026-06-26",
+    values: { P1A: 99, P1B: 99, P2: 99, P3: 99, P4: 99, P5: 99 },
+    note: "EXT21 R52 micro-closure (2026-06-26): 3 verified closure edits — P1B L2323 span relabeled 'spectator-consistent posterior'→'full scan-prior box (benchmark EOM grid, not spectator-consistent subset)'; P1B L2851 'every quantitative claim'→'principal load-bearing quantitative claims'; P2 L803 CDF-tail arithmetic corrected (Φ≈0.006/'each tail' → lower tail 0.186, upper negligible, denominator 0.814, B=5.69/0.814≈7.0). Optional P2 L1159 'Convention'→'time-ordering branch' applied. All 6 papers recompiled clean (0 undef refs). No science impact; all papers hold 99.",
+  },
 ];
 
 export interface SkillsPoint {
