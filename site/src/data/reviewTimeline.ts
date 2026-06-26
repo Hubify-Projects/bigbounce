@@ -65,6 +65,28 @@ export const reviewRounds: ReviewRound[] = [
     ],
   },
   {
+    id: "R52-LEARNING-LOOP",
+    kind: "skill-improvement",
+    dateISO: "2026-06-26",
+    timePT: "00:00",
+    title: "R52 learning-loop: 4 new patterns drafted (061-064) — dispatch mismatch, stale-PDF, extraction artifact, Grok harsh-outlier",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "R52 pattern-mine produced 4 new draft patterns from 126 archived findings across 6 papers. (061) dispatch-tag-vs-intext-mismatch: orchestrator brief label conflicts reviewer in-text Recommendation line in 6 instances across P1A/P1B/P4/P5 — fix: read the Recommendation: line, not the wrapper tag. (062) stale-pdf-false-positive: served PDF lags source by 1-2 versions in P1A/P1B/P5, producing 4 STALE findings — fix: pre-dispatch md5 gate. (063) extraction-artifact-false-positive: reviewer text-layer OCR mangles math glyphs (√, ½, division bars, subscripts) in 7 instances across P1A/P1B/P2/P3 — fix: auto-FALSIFY math findings lacking .tex-source + multi-vendor corroboration. (064) grok-harsh-outlier-false-positive: Grok REJECT/MAJOR in 4/4 R52 papers truth-audited to false positive — fix: mandate reason-by-reason individual audit, check primary/secondary inversion and disclosure-as-defect misread. NOT drafted: missing-released-artifact (print-only generator) — 1 finding (P2 only), below ≥3/≥2 threshold.",
+    keyTakeaways: [
+      "Pattern-061: read the in-text Recommendation: line from vendor reports, not the dispatch wrapper tag — mismatches in both directions seen R52",
+      "Pattern-062: pre-dispatch gate must confirm served PDF md5 matches freshly compiled source; stale-PDF = recurring STALE budget drain",
+      "Pattern-063: never accept a math 'wrong' finding without .tex-source verification AND cross-vendor full-PDF corroboration; OCR-garbled math is a high-false-positive class",
+      "Pattern-064: Grok REJECT/MAJOR requires reason-by-reason individual audit; check for primary/secondary inversion and disclosure-as-defect misread before accepting verdict",
+      "Not promoted: missing-released-artifact (print-only generator) — only 1 finding (P2 phase3_bispectrum_shape_overlap.json); revisit if recurs ≥2 more papers",
+    ],
+    links: [
+      { label: "pattern-061", href: "project-context/review-patterns/pattern-061-dispatch-tag-vs-intext-mismatch-DRAFT.md" },
+      { label: "pattern-062", href: "project-context/review-patterns/pattern-062-stale-pdf-false-positive-DRAFT.md" },
+      { label: "pattern-063", href: "project-context/review-patterns/pattern-063-extraction-artifact-false-positive-DRAFT.md" },
+      { label: "pattern-064", href: "project-context/review-patterns/pattern-064-grok-harsh-outlier-false-positive-DRAFT.md" },
+    ],
+  },
+  {
     id: "P-ROUND-COMPLETE",
     kind: "closure-wave",
     dateISO: "2026-06-20",
@@ -2506,6 +2528,7 @@ export const skillsSeries: SkillsPoint[] = [
   { id: "EXT3-gapmine", dateISO: "2026-06-11", patterns: 50, promptRules: 19, note: "EXT3 gap-mine: pattern-052 re-raise vindication test + browser-loop completion/version gates; prompt rules unchanged" },
   { id: "EXT11-gapmine", dateISO: "2026-06-13", patterns: 53, promptRules: 21, note: "EXT11 gap-mine: 3 new auto-rules added — pattern-053 closure-arithmetic-regression-audit (Eq.15 inversion), pattern-054 figure-art-rename-verify (V-Web→T-Web in plot titles not caught), pattern-055 internal-audit-label-leak-strip ((B1)/(E*) labels in journal prose). Prompt rules +2 (figure-art-rename gate + closure-label grep)." },
   { id: "EXT12-gapmine", dateISO: "2026-06-13", patterns: 57, promptRules: 23, note: "EXT12 gap-mine: pattern-056 pdftotext-artifact-class auto-falsify (italic NS→MS rendering artifact — already in SKILL-PDFTOTEXT entry); pattern-057 systematic-rename-grep-body-text (after V-Web→T-Web rename, 3 residual tokens survived in §VIII/§IX/App C body text — figure-art gate insufficient); pattern-058 gemini-fresh-chat-verdict-format (Gemini 6/6 synthesis-mode at EXT12 — explicit ACCEPT/MINOR/MAJOR format instruction must be FIRST LINE of message). Prompt rules +2 (Gemini verdict-format gate + body-text rename grep gate)." },
+  { id: "R52-learning-loop", dateISO: "2026-06-26", patterns: 64, promptRules: 23, note: "R52 learning-loop: 4 new patterns drafted (061-064). 061: dispatch-tag-vs-intext-mismatch — orchestrator brief conflicts reviewer in-text Recommendation; read the Recommendation line, not the wrapper tag. 062: stale-pdf-false-positive — served PDF lags source by 1-2 versions; pre-dispatch gate must confirm md5 match. 063: extraction-artifact-false-positive — reviewer text-layer OCR mangles math glyphs; always verify math findings against .tex source + cross-vendor full-PDF corroboration. 064: grok-harsh-outlier-false-positive — Grok REJECT/MAJOR truth-audits false-positive in 4/4 R52 papers; truth-audit each Grok reason individually, check primary/secondary inversion, disclosure-as-defect misread. Candidate not drafted: missing-released-artifact (print-only generator) — 1 finding (P2 only), below ≥3/≥2 threshold." },
 ];
 
 export function getReviewRoundByReportSlug(slug: string): ReviewRound | undefined {

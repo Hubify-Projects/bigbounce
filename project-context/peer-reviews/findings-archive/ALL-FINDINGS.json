@@ -6493,5 +6493,161 @@
     "findings_count": 12
    }
   ]
+ },
+ "catalogue_2026_06_26": {
+  "generated": "2026-06-26",
+  "description": "R52 INT 5-vendor + EXT21 3-provider batch truth-audit (2026-06-26). 6 papers post-Houston-external-rollback (99→92). New patterns mined: 061-064.",
+  "total_new_findings": 126,
+  "entries": [
+   {
+    "source_file": "R52_P1A_TRUTH_AUDIT.md",
+    "round": "2026-06-26_R52",
+    "paper": "P1A",
+    "date": "2026-06-26",
+    "round_type": "cross_vendor_r_round",
+    "pre_version": "v1A.0.78",
+    "post_version": "v1A.0.79",
+    "vendors": ["Claude/Opus", "Grok_brutal", "OpenAI/o3", "Gemini_cosmology"],
+    "truth_audit_source": "R52_P1A_TRUTH_AUDIT.md",
+    "audit_note": "Grok REJECT = false positive (all load-bearing findings FALSIFIED or OUT-OF-SCOPE). OpenAI+Gemini dispatch-labeled 'accept' but in-text said MAJOR REVISIONS (pattern-061). One VERIFIED finding: F11 cross-ref typo (app:dimensions→app:params). F5 ρ_NJL coefficient FALSIFIED (extraction: reviewers silently substituted different ρ_Λ baseline). F6 EB relation FALSIFIED (reviewer proposed less accurate truncation). F10 future date FALSIFIED (calendar/calibration). Companion-dependence theme (F1) OUT-OF-SCOPE. PDF/source drift: v0.78 PDF vs v0.79 source; some visual findings already STALE (pattern-062).",
+    "verdict_counts": {
+     "VERIFIED": 1,
+     "FALSIFIED": 8,
+     "OUT_OF_SCOPE": 2,
+     "OPINION": 1,
+     "STALE": 2
+    },
+    "findings_count": 12,
+    "pattern_ids_fired": [61, 62]
+   },
+   {
+    "source_file": "R52_P1B_TRUTH_AUDIT.md",
+    "round": "2026-06-26_R52",
+    "paper": "P1B",
+    "date": "2026-06-26",
+    "round_type": "cross_vendor_r_round",
+    "pre_version": "v1B.0.74",
+    "post_version": "v1B.0.76",
+    "vendors": ["Claude", "Grok_brutal", "OpenAI", "Gemini"],
+    "truth_audit_source": "R52_P1B_TRUTH_AUDIT.md",
+    "audit_note": "NET: MINOR REVISIONS. Zero blockers. Grok MAJOR outlier; verdict driven by falsified ESSENTIALs (ΔNeff two-sided mean conflated with one-sided UL) and editorial opinion. OpenAI dispatch 'accept→MAJOR' (pattern-061). Gemini M1 Eq.(1) missing ½ = FALSIFIED extraction artifact (pattern-063). Gemini M4 broken fn.a/fn.b cross-refs = FALSIFIED render artifact (pattern-063). Two VERIFIED MAJOR presentation items (w0wa Table II caption gap; NaMaster scope propagation). 17 VERIFIED MINOR/NIT (all editorial DO-NOW). PDF served from v1B.0.74 while source at v1B.0.76; Grok N2 date finding STALE (pattern-062).",
+    "verdict_counts": {
+     "VERIFIED_MAJOR": 2,
+     "VERIFIED_MINOR": 17,
+     "VERIFIED_DEFERRED": 2,
+     "FALSIFIED": 5,
+     "OPINION": 5,
+     "STALE": 1
+    },
+    "findings_count": 27,
+    "pattern_ids_fired": [61, 62, 63]
+   },
+   {
+    "source_file": "R52_P2_TRUTH_AUDIT.md",
+    "round": "2026-06-26_R52",
+    "paper": "P2",
+    "date": "2026-06-26",
+    "round_type": "cross_vendor_r_round",
+    "pre_version": "v1.7.70",
+    "post_version": "v1.7.70",
+    "vendors": ["Claude/Opus", "OpenAI/gpt-5", "Grok/grok-4.3", "Gemini/2.5-pro"],
+    "truth_audit_source": "R52_P2_TRUTH_AUDIT.md",
+    "audit_note": "NET: MINOR REVISIONS. No BLOCKER. OpenAI E6 (Eq.2 dimensional inversion) FALSIFIED — reviewer misread rasterized math (pattern-063). OpenAI m1 Eq.2 'i k^3_i' STALE — rasterization artifact (pattern-063). OpenAI M7 shot-noise contradiction FALSIFIED — same sentence reconciles the two numbers. MAJOR-grade real finding: missing phase3_bispectrum_shape_overlap.json — referenced in body prose, absent from repo and Data Availability, print-only generator (null_space_analysis.py prints but never dumps). 13 VERIFIED DO-NOW text/repo fixes. 4 figure-layer items deferred to D-round. 1 truly-blocked (Zenodo DOI).",
+    "verdict_counts": {
+     "VERIFIED_MAJOR": 1,
+     "VERIFIED_MINOR": 12,
+     "VERIFIED_NIT": 2,
+     "VERIFIED_FIGURE_LAYER": 4,
+     "VERIFIED_DEFERRED": 1,
+     "FALSIFIED": 3,
+     "STALE": 1,
+     "OPINION": 4
+    },
+    "findings_count": 22,
+    "pattern_ids_fired": [63]
+   },
+   {
+    "source_file": "R52_P3_TRUTH_AUDIT.md",
+    "round": "2026-06-26_R52",
+    "paper": "P3",
+    "date": "2026-06-26",
+    "round_type": "cross_vendor_r_round",
+    "pre_version": "v3.1.112",
+    "post_version": "v3.1.113",
+    "vendors": ["Claude/Opus", "Grok_brutal", "Gemini_cosmology", "OpenAI_methodology"],
+    "truth_audit_source": "R52_P3_TRUTH_AUDIT.md",
+    "audit_note": "NET: MINOR REVISIONS. 0 BLOCKER, 0 genuine MAJOR. Grok MAJOR+OpenAI MAJOR inflated: Grok M1 (pre-retrain LAMOST released) FALSIFIED — pre-retrain is the bias artifact excluded from catalog-grade. Grok M3 (fixed-α no sensitivity) FALSIFIED — measured α with ±0.65 propagation IS the primary forecast. OpenAI E6 Cramér V dimensional inversion FALSIFIED. D finding (Cramér V missing √) STALE/FALSIFIED — OCR-broken √ glyph (pattern-063); L950 shows correct √. GALAXY CI ±0.02% overstated 2.6× (arithmetic VERIFIED, MINOR). 13 VERIFIED MINOR actionable items. Grok MAJOR downgraded to MINOR.",
+    "verdict_counts": {
+     "VERIFIED_MINOR": 13,
+     "FALSIFIED": 5,
+     "STALE": 1,
+     "OPINION": 3
+    },
+    "findings_count": 21,
+    "pattern_ids_fired": [63]
+   },
+   {
+    "source_file": "R52_P4_TRUTH_AUDIT.md",
+    "round": "2026-06-26_R52",
+    "paper": "P4",
+    "date": "2026-06-26",
+    "round_type": "cross_vendor_r_round",
+    "pre_version": "v1.0.188",
+    "post_version": "v1.0.188",
+    "vendors": ["Claude", "Grok/grok-4.3", "OpenAI/gpt-5-2025-08-07", "Gemini"],
+    "truth_audit_source": "R52_P4_TRUTH_AUDIT.md",
+    "audit_note": "P4 HOLDS at ACCEPT. 0 BLOCKERs. OpenAI/o3 dispatch tagged REJECT; in-text recommendation is 'MAJOR REVISIONS' — dispatch harsher than in-text (pattern-061). o3 arithmetic check section recomputed every load-bearing scalar and confirmed all CORRECT; downgrade built on editorial/logistics nits. Grok MAJOR false positive: both ESSENTIALs FALSIFIED against abstract text (Grok-E2 comparability warning present verbatim at tex 348). 8 VERIFIED MINOR text defects (V1-V8), none load-bearing. 1 TRULY-BLOCKED logistics item (DOI). o3 and Grok both false positives = pattern-061 (dispatch mismatch) + pattern-064 (Grok harsh outlier).",
+    "verdict_counts": {
+     "VERIFIED_MINOR": 8,
+     "FALSIFIED": 5,
+     "OUT_OF_SCOPE": 1,
+     "OPINION": 4
+    },
+    "findings_count": 15,
+    "pattern_ids_fired": [61, 64]
+   },
+   {
+    "source_file": "R52_P5_TRUTH_AUDIT.md",
+    "round": "2026-06-26_R52",
+    "paper": "P5",
+    "date": "2026-06-26",
+    "round_type": "cross_vendor_r_round",
+    "pre_version": "v0.1.82",
+    "post_version": "v0.1.83",
+    "vendors": ["Claude_subagent", "Grok_brutal", "OpenAI_methodology", "Gemini_cosmology"],
+    "truth_audit_source": "R52_P5_TRUTH_AUDIT.md",
+    "audit_note": "P5 HOLDS. 0 BLOCKER. Dispatch brief mislabeled OpenAI and Gemini as 'accept'; in-text both say MAJOR REVISIONS (pattern-061). Grok REJECT false positive: every ESSENTIAL+MAJOR FALSIFIED — Grok inverted primary (n=56,981 DESIVAST) and secondary (n=428 T-Web) samples; Grok E3 comparability qualifier FALSIFIED (present in 5 table captions + §V) (pattern-064). OpenAI E4 Clopper-Pearson algebra FALSIFIED — extraction artifact, correct in source (pattern-063). Gemini m1 Table IV residual sign error FALSIFIED — abs-value column misread. Gemini m2 Table VIII sign convention FALSIFIED — stated convention uniform and correct. 2 VERIFIED MAJOR DO-NOW (V1 Paper IV reframing; V2 density metric ρ̄ definition). 7 VERIFIED MINOR. 2 STALE (fixed in v0.1.83 before audit — pattern-062). 8 FALSIFIED.",
+    "verdict_counts": {
+     "VERIFIED_MAJOR": 2,
+     "VERIFIED_MINOR": 7,
+     "DO_NOW_AT_SUBMISSION": 1,
+     "STALE": 2,
+     "FALSIFIED": 8,
+     "OPINION": 4
+    },
+    "findings_count": 24,
+    "pattern_ids_fired": [61, 62, 63, 64]
+   },
+   {
+    "source_file": "EXT21_CONSOLIDATION.md",
+    "round": "2026-06-26_EXT21",
+    "paper": "ALL",
+    "date": "2026-06-26",
+    "round_type": "external_three_reviewer",
+    "pre_version": "various",
+    "post_version": "various",
+    "vendors": ["ChatGPT_Pro", "Grok", "Gemini"],
+    "truth_audit_source": "EXT21_CONSOLIDATION.md",
+    "audit_note": "EXT21 external 3-provider batch: all papers ACCEPT or MINOR REVISIONS. 3 NEW VERIFIED closure edits across portfolio: P1B L2323 span relabel (spectator-consistent→full scan-prior box); P1B L2851 every→principal load-bearing quantitative claims; P2 L803 CDF-tail arithmetic corrected (Φ≈0.006/each-tail → lower tail 0.186, denominator 0.814, B=7.0). INT R52 already covered the substance of all EXT MAJOR signals; EXT21 found only 3 printed-text accuracy defects INT missed. No new BLOCKERs/MAJORs. P1A/P3/P4/P5 clean. Gemini typos on P1A FALSIFIED as extraction artifacts (pattern-063).",
+    "verdict_counts": {
+     "VERIFIED_NEW_CLOSURE": 3,
+     "ALREADY_COVERED_BY_INT": 38,
+     "FALSIFIED": 2,
+     "OPINION": 12
+    },
+    "findings_count": 5,
+    "pattern_ids_fired": [63]
+   }
+  ]
  }
 }
