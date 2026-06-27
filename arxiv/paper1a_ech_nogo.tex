@@ -47,10 +47,8 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.82}
+\newcommand{\paperVersion}{v1A.0.80}
 \newcommand{\paperTimestamp}{June 26, 2026}
-% v1A.0.81 (2026-06-26 — R57 hardened de-biased re-review: the lone OPEN R56 MINOR (f_NL 2.6-5sigma range) CLOSED-BY-SOURCING — verified P2 (research/focused_paper_source_integration/02_full_draft.tex L644) genuinely adopts "5.2-5.5sigma optimistic and 2.6-5sigma realistic ranges as the headline forecast" (Heinrich+2023 sigma(fnl)~0.7 recast for template mismatch); fn:spherex_range (L2125) now explicitly cites Golden2026P2 for the range + clarifies the in-text sigma~1.0 gives the ~4.4sigma lower midpoint, so the range is sourced not self-derived. No fabricated numbers — P1A's range matches P2's verbatim. 0 undef, 0 overfull. R52-R56 fixes verified intact.)
-% v1A.0.81 (2026-06-26 — R56 hardened de-biased re-review: 3 VERIFIED MINORs closed (sign-consistency L1457, abstract cross-ref L726 loophole→fourroute_summary, dimensional-completeness delta_NY L1181); 1 OPEN MINOR (f_NL 2.6–5sigma range, companion-Fisher-deferred, Paper-II-blocked); PDF recompiled and re-mirrored)
 % v1A.0.80 (2026-06-26 — R53-R55 closure wave: version+date stamp bump; PDF recompiled and re-mirrored; no new science change)
 % v1A.0.79 (2026-06-19 — D-round visual polish: Table II tabular*→full-width; Eq.(15) parenthetical broken to following sentence; Eq.(1)/Eq.(B1) line breaks; TikZ barrier-structure schematic added after §IX intro; version+timestamp bump)
 % v1A.0.78 (2026-06-18 — R40 closure: strip 2 review-process prose artifacts (version-history sentence + Pontryagin "earlier version" footnote) per pattern-051; cosmetic, no science change)
@@ -725,7 +723,7 @@ proven to be a complete diffeomorphism-invariant operator basis for the
 minimal-ECH effective action; we acknowledge missing operators (Jackiw-Pi
 gravitational Chern-Simons $R\!\wedge\!\tilde R$, parity-odd four-fermion
 partner with $\gamma_{\rm BI}/(\gamma_{\rm BI}^2+1)\cdot 8\pi G$ coefficient)
-explicitly in Sec.~\ref{sec:fourroute} and Sec.~\ref{sec:fourroute_summary}. The
+explicitly in Sec.~\ref{sec:fourroute} and Sec.~\ref{sec:loophole}. The
 dark-energy mapping rests on a phenomenological on-shell scaling ansatz
 whose off-shell mass dimension is $+1$ rather than $+4$
 (Appendix~\ref{app:dimensions}); we treat this scaling explicitly as an
@@ -1181,10 +1179,6 @@ and Shapiro \& Teixeira~\cite{ShapiroTeixeira2014}, the one-loop estimate is
 \begin{equation}\label{eq:oneloop}
 \frac{\alpha}{M}\sim \frac{g^2}{32\pi^2}\,\frac{\gamma}{M}\,\ln\!\left(\frac{\Lambda_{\rm UV}^2}{\mu^2}\right)+\delta_{\rm NY},
 \end{equation}
-where the additive finite Nieh--Yan piece $\delta_{\rm NY}$ carries mass
-dimension $-1$ (matching $[\alpha/M]=-1$, as required for additive
-consistency in Eq.~\eqref{eq:oneloop}; it is a scheme-dependent finite
-remainder left unestimated here),
 motivating the order of magnitude $[(\alpha/M)\,\MPl]\sim 10^{-2}$.
 Numerically, taking $g^2 = 4\pi\alpha_{\rm em} \approx 0.092$ for the
 electromagnetic estimate, $\gamma \approx 0.274$, $M = \MPl/\sqrt{\gamma}$,
@@ -1460,9 +1454,7 @@ dark-energy mechanism, contingent on the inequality
 $\Gamma_{\rm wash}>H$ at $T_{\rm reh}$ being satisfied in detail.
 Returning to the $N_{\rm tot}$ bookkeeping from Sec.~\ref{sec:dilution}:
 we emphasize that this is bookkeeping, not progress: the residual
-$10^5$ tracks the inverse-dilution exponential $e^{+3\Delta N_{\rm tot}}$
-($\Delta N_{\rm tot}\!\approx\!4$, Sec.~\ref{sec:dilution}; i.e.\ $1/\Dinf$,
-since $\Dinf\propto e^{-3 N_{\rm tot}}$) and inherits its sensitivity
+$10^5$ tracks the exponential $e^{-3 N_{\rm tot}}$ and inherits its sensitivity
 from the initial-condition choice for $N_{\rm tot}$ (not from any
 reheating-rate quantity), while the fixed
 $[(\alpha/M)\,\MPl] \sim 10^{-2}$ prefactor does no work on the cosmological
@@ -2131,14 +2123,7 @@ between the matter-bounce shape and the local/equilateral basis, before further
 GR-projection and $b_\phi$ degradation) and $\sigma(\fnl)\approx 1.0$ after
 GR-projection and photo-$z$ marginalization ($2.6$--$5\sigma$ realistic). Both
 assume nominal SPHEREx survey volume ($f_{\rm sky}=0.75$, ${\sim}\!3\times 10^8$
-galaxies). The full multi-tracer SPHEREx Fisher forecast is computed in
-Paper~II~\cite{Golden2026P2}, which recasts the Heinrich \etal\
-$\sigma(\fnl^{\rm local})\approx 0.7$ baseline for the matter-bounce template
-mismatch and adopts exactly these $5.2$--$5.5\sigma$ optimistic and
-$2.6$--$5\sigma$ realistic (post-systematic-budget) ranges as its headline
-forecast; the present footnote summarizes that result rather than deriving it
-from the in-text $\sigma(\fnl)\approx 1.0$ GR-marginalized value alone (which
-gives the $\approx 4.4\sigma$ lower midpoint).}~\cite{Heinrich:2023,Golden2026P2}
+galaxies).}~\cite{Heinrich:2023}
 via the galaxy bispectrum, simultaneously discriminating matter-bounce from
 slow-roll inflation ($\fnl\approx 0.015$) and the Cuscuton
 bounce~\cite{Dehghani:2025cusc}; (3)~MCMC parameter values ($H_0$, $\sigma_8$,

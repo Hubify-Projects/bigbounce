@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex paper1b_mcmc_companion"] 1781906637.79325 "paper1b_mcmc_companion.aux" "paper1b_mcmc_companion.bbl" "paper1b_mcmc_companion" 1781906660.57049 2
-  "./paper1b_mcmc_companionNotes.bib" 1781906654.26924 104 4d8bb863c86f3d7b03a471e9d4707f34 ""
+["bibtex paper1b_mcmc_companion"] 1781983196.73603 "paper1b_mcmc_companion.aux" "paper1b_mcmc_companion.bbl" "paper1b_mcmc_companion" 1781983208.26029 2
+  "./paper1b_mcmc_companionNotes.bib" 1781983205.43515 104 4d8bb863c86f3d7b03a471e9d4707f34 ""
   "./references.bib" 1781156570.71595 38338 7f03675ea731ea1380e250274e43ea2e ""
   "/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/bibtex/bst/revtex/apsrev4-2.bst" 1772380719 69609 e9dea59f0e753ccda3ddc8f5806d846d ""
-  "paper1b_mcmc_companion.aux" 1781906654.22787 31134 06c5313a960c2b82083543957347be1f "pdflatex"
+  "paper1b_mcmc_companion.aux" 1781983205.42037 31134 b637e97fbadcb9a4f6f8448c69840fab "pdflatex"
   (generated)
   "paper1b_mcmc_companion.bbl"
   "paper1b_mcmc_companion.blg"
   (rewritten before read)
-["pdflatex"] 1781906638.89506 "paper1b_mcmc_companion.tex" "paper1b_mcmc_companion.pdf" "paper1b_mcmc_companion" 1781906660.57824 0
+["pdflatex"] 1781983197.28671 "paper1b_mcmc_companion.tex" "paper1b_mcmc_companion.pdf" "paper1b_mcmc_companion" 1781983208.26097 0
   "/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1772380719 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/map/fontname/texfonts.map" 1772380719 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/opt/homebrew/Cellar/texlive/20260301/share/texmf-dist/fonts/map/pdftex/updmap/pdftex.map" 1772380719 5541360 f183aac233c4cd1e5ef882fcbe8e7096 ""
@@ -173,11 +173,11 @@
   "figures/fig_dneff_viability_two_frozen.pdf" 1781038593.33547 56404 b8768c657f937d3384a232e94a195ceb ""
   "figures/fig_namaster_recovery.png" 1781038593.09543 165604 2959b3604f40b8b1342a1d67a56c2956 ""
   "figures/paper1_corner_full_tension.pdf" 1776479783.30528 225731 b7b29d51831c79e0be3d5a9ab5e4bbfb ""
-  "paper1b_mcmc_companion.aux" 1781906654.22787 31134 06c5313a960c2b82083543957347be1f "pdflatex"
-  "paper1b_mcmc_companion.bbl" 1781906638.8854 25296 21344449425b9fd637ea08b7e8a4fb5b "bibtex paper1b_mcmc_companion"
-  "paper1b_mcmc_companion.out" 1781906654.26221 5164 2383062a947ca3258a07834ea198e321 "pdflatex"
-  "paper1b_mcmc_companion.tex" 1781906571.72285 207378 6af95c86dce86711b886e31a8d5b1a6f ""
-  "paper1b_mcmc_companion.toc" 1781906654.26939 2254 cd8ee5b7952df38299a8e6345186fb97 "pdflatex"
+  "paper1b_mcmc_companion.aux" 1781983205.42037 31134 b637e97fbadcb9a4f6f8448c69840fab "pdflatex"
+  "paper1b_mcmc_companion.bbl" 1781983197.28316 25296 21344449425b9fd637ea08b7e8a4fb5b "bibtex paper1b_mcmc_companion"
+  "paper1b_mcmc_companion.out" 1781983205.43423 5164 2383062a947ca3258a07834ea198e321 "pdflatex"
+  "paper1b_mcmc_companion.tex" 1781983164.19981 207570 6be1d7657f81f39cfbda14d5753fab47 ""
+  "paper1b_mcmc_companion.toc" 1781983205.4353 2254 cd8ee5b7952df38299a8e6345186fb97 "pdflatex"
   (generated)
   "paper1b_mcmc_companion.aux"
   "paper1b_mcmc_companion.log"
