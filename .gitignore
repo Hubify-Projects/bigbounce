@@ -70,3 +70,6 @@ pipelines/p5_desi_chirality/data/
 *.out
 *.log
 *.synctex.gz
+
+# arxiv build tarballs (regenerable)
+arxiv/*.tar.gz
