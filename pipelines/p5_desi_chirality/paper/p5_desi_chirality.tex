@@ -34,6 +34,30 @@
 % If any future reviewer re-raises this, cite env_finder/01_compute_vweb.py:106-108.
 
 \newcommand{\paperVersion}{v0.1.86-2026-06-26}
+% R57 hardened de-biased re-review (2026-06-26 — truth audit
+%   project-context/peer-reviews/R57_P5_TRUTH_AUDIT.md; NO version bump):
+%   2 VERIFIED MINOR internal-inconsistencies closed (both corroborated by
+%   the §X / Paper IV body, no fabrication):
+%   (R57-1) Paper IV real-space dipole quoted as +0.43sigma at l.703 but
+%     +0.41sigma at l.646 — same quantity; Paper IV's canonical value is
+%     +0.41sigma (it carries an explicit 0.43->0.41 dipole-regeneration
+%     correction note). The +0.43sigma was stale; R56 OAI-E1 closure flagged
+%     "two quotes also disagree" but only dropped p-values, leaving the sigma
+%     mismatch. FIXED l.703 +0.43sigma -> +0.41sigma.
+%   (R57-2) Internal classifier-monopole offset mislabeled: abstract l.456
+%     "internally verified ~=0.26pp (f_CW^P5=0.49719)" and Sec.II l.691
+%     "f_CW^P5=0.49719 ... corresponding to Delta f_CW=-0.0026" both attach the
+%     external Paper IV value (-0.0026 / 0.26pp) to the internal measurement,
+%     whose own Sec.X arithmetic reconciliation (l.2551-2567) gives
+%     Delta f_CW^P5 ~= -0.0028 (0.28pp), ~8% larger than the P4 catalog-mean.
+%     Mildly self-favoring (understated the internal residual). FIXED abstract
+%     0.26pp -> 0.28pp; Sec.II Delta f_CW -> Delta f_CW^P5 ~= -0.0028 with the
+%     P4 -0.0026 cross-reference retained. sigma_pred chain (uses P4 -0.0026)
+%     untouched. FALSE POSITIVES not actioned: 0.05^{1/6} (source correct l.2135,
+%     PDF superscript-render), filament 0.4980 (203261/408187=0.49796, correct),
+%     "largest...DESI DR1" superlative (already hedged l.2230), DOI/pre-reg
+%     (out-of-scope). 3-vendor net: 1 ACCEPT-minor (Gemini), 2 MAJOR-revisions
+%     (Grok/OpenAI) driven by DOI + abstract-ordering + venue-norm items only.)
 % v0.1.86-2026-06-26 (2026-06-26 — R56 hardened de-biased re-review: 4 VERIFIED MINORs closed (Paper IV dipole sigma->p inconsistency OAI-E1, redshift max-abs-dev vs quintile-LEE unlabeled OAI-E2, covariate-complete vs edge-on subset clarification OAI-E8, cluster residual "within order-unity" -> explicit +0.71/-1.38sigma Gem-M1); PDF recompiled and re-mirrored)
 % v0.1.84-2026-06-26 (2026-06-26 — R53-R55 closure wave: version+date stamp bump; PDF recompiled and re-mirrored; no new science change)
 % v0.1.83-2026-06-19 (2026-06-19 — D-round visual polish: (1) \artifact macros → short [A1]-[A30] hyperlinked IDs (60 sites); Appendix C artifact table added; (2) Fig 8 healpix skymap → 2-panel (count + sigma) with separate colorbars (overlap fixed); (3) Fig 2 pie → horizontal bar chart; (4) Fig 5 + Fig 9 (a)/(b) panel labels added; (5) Table VII caption dagger defined; no science change)
@@ -453,7 +477,7 @@ The $56{,}981$ void spirals are drawn from the DESIVAST low-$z$ parent
 ($678{,}945$), not from the full T-Web parent ($812{,}793$).
 \textbf{Headline result:} the CW
 fraction shows no environment dependence beyond (i) an internally
-verified $\approx\!0.26$\,pp (percentage points) catalog-wide
+verified $\approx\!0.28$\,pp (percentage points) catalog-wide
 classifier-monopole offset ($f_{\rm CW}^{\rm P5} = 0.49719$,
 $n = 812{,}793$ env-labeled rows,
 Table~\ref{tab:p4_monopole_residual}; consistent with the independent
@@ -688,9 +712,10 @@ First, this paper independently measures the catalog-wide CW-fraction
 monopole within its own matched sample: $f_{\rm CW}^{\rm P5} =
 0.49719$ on $812{,}793$ env-labeled rows
 (Table~\ref{tab:p4_monopole_residual}), corresponding to
-$\Delta f_{\rm CW} = -0.0026$ --- a classifier-residual bias that is
+$\Delta f_{\rm CW}^{\rm P5} \approx -0.0028$ --- a classifier-residual bias that is
 spatially uniform and quality-quartile-flat, consistent with the
-independent Paper~IV estimate~\cite{golden_chirality_2026}. We
+independent Paper~IV catalog estimate $\Delta f_{\rm CW}^{\rm P4} = -0.0026$~\cite{golden_chirality_2026}
+(the ${\sim}8\%$ enhancement is reconciled in \S\ref{sec:desivast_p4_residual}). We
 therefore expect the environmental $\sigma_{\rm from\,half}$ values
 reported here to inherit the same monopole offset, with sign determined
 by sample size. The environment-independence headline is the two-sample
@@ -700,7 +725,7 @@ the $\sigma_{\rm pred}$ rows (Tables~\ref{tab:density_quintile_residual},
 \ref{tab:within_class_density}, \ref{tab:p4_monopole_residual}) move
 with it while the $\Delta f_{\rm CW}$ null does not. Second,
 Paper~IV's current headline is a real-space full-sky dipole
-null at $+0.43\sigma$ from direct amplitude estimation,
+null at $+0.41\sigma$ from direct amplitude estimation,
 reinforced by a weighted template fit that excludes a clean
 Shamir-amplitude ($1.7\%$) dipole; an earlier harmonic-space
 subsample-mask MASTER-deconvolved $\ell\!=\!1$ statistic was withdrawn
