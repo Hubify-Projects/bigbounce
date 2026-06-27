@@ -38,7 +38,7 @@
 \contentsline {subsection}{\numberline {E}Barrier 5: Scale Separation (Foundation E)}{17}{section*.36}%
 \contentsline {subsection}{\numberline {F}Barrier 6: Attractor-Sensitivity Dilemma (Foundation F)}{17}{section*.37}%
 \contentsline {subsection}{\numberline {G}Barrier 7: Parameter Immunity (Foundation G)}{17}{section*.38}%
-\contentsline {subsection}{\numberline {H}Barrier 8: Parity-Even Interaction (Branch H)}{17}{section*.39}%
+\contentsline {subsection}{\numberline {H}Barrier 8: Parity-Even Interaction (Branch H)}{19}{section*.39}%
 \contentsline {subsection}{\numberline {I}Barrier 9: Liouville Conservation (Branch J)}{19}{section*.40}%
 \contentsline {subsection}{\numberline {J}Barrier 10: UV$\to $IR Specificity Dilemma (Branch L)}{19}{section*.41}%
 \contentsline {subsection}{\numberline {K}Barrier 11: Decoupling Universality (Branches L/M)}{19}{section*.42}%
@@ -54,8 +54,8 @@
 \contentsline {subsection}{\numberline {F}Implications}{21}{section*.52}%
 \contentsline {subsection}{\numberline {G}Discrimination Among Bouncing Cosmologies}{21}{section*.53}%
 \contentsline {section}{\numberline {XI}The Hybrid Dark-Energy Loophole}{21}{section*.54}%
-\contentsline {section}{\numberline {XII}Discussion}{21}{section*.55}%
-\contentsline {subsection}{\numberline {A}The Inflationary Suppression Factor}{21}{section*.56}%
+\contentsline {section}{\numberline {XII}Discussion}{22}{section*.55}%
+\contentsline {subsection}{\numberline {A}The Inflationary Suppression Factor}{22}{section*.56}%
 \contentsline {subsection}{\numberline {B}Theoretical Implications}{22}{section*.57}%
 \contentsline {section}{\numberline {XIII}Surviving ECH-Independent Class Tests}{23}{section*.58}%
 \contentsline {section}{\numberline {XIV}Limitations and Future Directions}{24}{section*.59}%
