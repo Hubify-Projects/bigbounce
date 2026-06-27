@@ -69,6 +69,26 @@ export const reviewRounds: ReviewRound[] = [
     ],
   },
   {
+    id: "SKILL-INTEGRITY-AUDIT-HARDENING-2026-06-26",
+    kind: "skill-improvement",
+    dateISO: "2026-06-26",
+    timePT: "17:00",
+    title: "Integrity-audit standing gate + PDF-hygiene pre-dispatch hardened into R-round skills — prompt-rule 24",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "The 2026-06-26 integrity audit produced two permanent skill upgrades: (1) a standing integrity-audit pre-check is now mandatory at the start of every R-round truth-audit — the orchestrator must independently re-derive every dismissal flagged by a vendor REJECT/MAJOR and confirm it is a genuine false positive before logging 'convergence'; (2) a PDF-hygiene pre-dispatch gate (md5 of the served PDF must match the freshly compiled source before any vendor submission) is now encoded in cross-vendor-r-round SKILL.md, pattern-062. EXT-prompt de-bias (removing language that primes external referees to over-rate internal work) is a third upgrade noted as a separate pending round (ExternalReviewPanel rule L58–59). Prompt-rules count rises from 23 to 24 (integrity-audit mandate).",
+    keyTakeaways: [
+      "Mandatory integrity-audit pre-check: every truth-audit starts by re-deriving dismissals flagged REJECT/MAJOR — convergence is not logged until each is independently confirmed false-positive",
+      "PDF-hygiene gate: md5 of the served PDF must match freshly compiled source before dispatch — stale-PDF false positives (pattern-062) eliminated at the gate",
+      "Prompt-rules +1 (integrity-audit mandate = rule 24); pattern count unchanged at 064",
+      "Pending (separate round): EXT-prompt de-bias — removing self-favoring language from the external referee prompt to prevent referees being primed toward leniency",
+      "Self-improving loop diagnostic: a mild OPINION-vs-MINOR bias (5/19 sampled dismissals) was found, isolated, and corrected without distorting any scientific conclusion — the audit found the loop is GENUINE on substance",
+    ],
+    links: [
+      { label: "INTEGRITY_AUDIT_2026-06-26.md", href: `${PR}/INTEGRITY_AUDIT_2026-06-26.md` },
+      { label: "pattern-062-stale-pdf-false-positive", href: "project-context/review-patterns/pattern-062-stale-pdf-false-positive-DRAFT.md" },
+    ],
+  },
+  {
     id: "EXT22-CLOSURE-2026-06-26",
     kind: "ext-closure",
     dateISO: "2026-06-26",
@@ -2335,6 +2355,11 @@ export interface GapPoint {
   total: number;
   perPaper: Record<PaperId, number>;
   note: string;
+  /**
+   * Optional milestone annotation — rendered as a callout on the gap chart.
+   * Short phrase only (fits in ~40 chars for the SVG label).
+   */
+  milestone?: string;
 }
 
 /** Internal/external gap series — must shrink every cycle; target is zero.
@@ -2481,6 +2506,7 @@ export const gapSeries: GapPoint[] = [
     total: 2,
     perPaper: { P1A: 1, P1B: 0, P2: 0, P3: 0, P4: 1, P5: 0 },
     note: "EXT22 confirm round: 2 new-verified polish items — NV-P1A-1 (MINOR: §XII.B body-alignment; closed) + NV-P4-1 (POLISH: +3.3σ→+3.29σ; closed). All ~34 other findings already-covered/extraction-artifact/opinion/stale. Polish-tier convergence reached: 3-pass total (R52+EXT21+EXT22) → 0 MAJOR/BLOCKER.",
+    milestone: "integrity gate — loop de-biased, skills hardened",
   },
 ];
 
@@ -2600,6 +2626,7 @@ export const skillsSeries: SkillsPoint[] = [
   { id: "EXT11-gapmine", dateISO: "2026-06-13", patterns: 53, promptRules: 21, note: "EXT11 gap-mine: 3 new auto-rules added — pattern-053 closure-arithmetic-regression-audit (Eq.15 inversion), pattern-054 figure-art-rename-verify (V-Web→T-Web in plot titles not caught), pattern-055 internal-audit-label-leak-strip ((B1)/(E*) labels in journal prose). Prompt rules +2 (figure-art-rename gate + closure-label grep)." },
   { id: "EXT12-gapmine", dateISO: "2026-06-13", patterns: 57, promptRules: 23, note: "EXT12 gap-mine: pattern-056 pdftotext-artifact-class auto-falsify (italic NS→MS rendering artifact — already in SKILL-PDFTOTEXT entry); pattern-057 systematic-rename-grep-body-text (after V-Web→T-Web rename, 3 residual tokens survived in §VIII/§IX/App C body text — figure-art gate insufficient); pattern-058 gemini-fresh-chat-verdict-format (Gemini 6/6 synthesis-mode at EXT12 — explicit ACCEPT/MINOR/MAJOR format instruction must be FIRST LINE of message). Prompt rules +2 (Gemini verdict-format gate + body-text rename grep gate)." },
   { id: "R52-learning-loop", dateISO: "2026-06-26", patterns: 64, promptRules: 23, note: "R52 learning-loop: 4 new patterns drafted (061-064). 061: dispatch-tag-vs-intext-mismatch — orchestrator brief conflicts reviewer in-text Recommendation; read the Recommendation line, not the wrapper tag. 062: stale-pdf-false-positive — served PDF lags source by 1-2 versions; pre-dispatch gate must confirm md5 match. 063: extraction-artifact-false-positive — reviewer text-layer OCR mangles math glyphs; always verify math findings against .tex source + cross-vendor full-PDF corroboration. 064: grok-harsh-outlier-false-positive — Grok REJECT/MAJOR truth-audits false-positive in 4/4 R52 papers; truth-audit each Grok reason individually, check primary/secondary inversion, disclosure-as-defect misread. Candidate not drafted: missing-released-artifact (print-only generator) — 1 finding (P2 only), below ≥3/≥2 threshold." },
+  { id: "integrity-audit-2026-06-26", dateISO: "2026-06-26", patterns: 64, promptRules: 24, note: "Integrity-audit hardening 2026-06-26: standing integrity-audit pre-check added as mandatory first step of every R-round truth-audit (re-derive every REJECT/MAJOR dismissal independently before logging convergence); PDF-hygiene md5 pre-dispatch gate hardened into cross-vendor-r-round SKILL.md (pattern-062). EXT-prompt de-bias deferred to a separate round. Prompt-rules: 23 → 24 (integrity-audit mandate = rule 24). Pattern count unchanged at 064." },
 ];
 
 export function getReviewRoundByReportSlug(slug: string): ReviewRound | undefined {

@@ -188,18 +188,52 @@ export function GapClosureChart() {
       {/* area + line */}
       <path d={areaPath} fill="var(--warn)" opacity={0.1} />
       <path d={linePath} fill="none" stroke="var(--warn)" strokeWidth={1.75} />
+      {/* milestone vertical guides — rendered before data points so lines sit behind dots */}
+      {pts.map((p, i) =>
+        p.milestone ? (
+          <g key={`ms-${p.roundId}`}>
+            <line
+              x1={x(i)} y1={padT}
+              x2={x(i)} y2={xAxisY}
+              stroke="var(--success)"
+              strokeWidth={0.8}
+              strokeDasharray="2 3"
+              opacity={0.45}
+            />
+            <text
+              x={x(i) - 4}
+              y={padT - 5}
+              textAnchor="end"
+              fontFamily={MONO}
+              fontSize={7}
+              fill="var(--success)"
+              opacity={0.9}
+            >
+              ⚑ {p.milestone}
+            </text>
+          </g>
+        ) : null
+      )}
       {/* points + rotated x labels */}
       {pts.map((p, i) => {
         const cx = x(i);
         const cy = y(p.total);
         // Anchor point for rotated label — just below the x-axis tick
         const labelY = xAxisY + 5;
+        const isMilestone = Boolean(p.milestone);
         return (
           <g key={p.roundId}>
-            <circle cx={cx} cy={cy} r={3.5} fill="var(--warn)" stroke="var(--bg)" strokeWidth={1.5}>
-              <title>{`${p.roundId}: ${p.total} — ${p.note}`}</title>
+            <circle
+              cx={cx}
+              cy={cy}
+              r={isMilestone ? 4.5 : 3.5}
+              fill={isMilestone ? "var(--success)" : "var(--warn)"}
+              stroke="var(--bg)"
+              strokeWidth={1.5}
+            >
+              <title>{`${p.roundId}: ${p.total} — ${p.note}${isMilestone ? ` ★ ${p.milestone}` : ""}`}</title>
             </circle>
-            <text x={cx} y={cy - 9} textAnchor="middle" fontFamily={MONO} fontSize={10} fontWeight={600} fill="var(--text)">
+            <text x={cx} y={cy - 9} textAnchor="middle" fontFamily={MONO} fontSize={10} fontWeight={600} fill={isMilestone ? "var(--success)" : "var(--text)"}>
               {p.total}
             </text>
             {/* tick mark */}
@@ -211,7 +245,7 @@ export function GapClosureChart() {
               textAnchor="end"
               fontFamily={MONO}
               fontSize={8}
-              fill={AXIS}
+              fill={isMilestone ? "var(--success)" : AXIS}
               transform={`rotate(-45, ${cx}, ${labelY})`}
             >
               {p.roundId}

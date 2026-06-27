@@ -271,6 +271,12 @@ done
 
 ---
 
+## Future papers (post-drop ideas)
+
+See `project-context/FUTURE_PAPERS.md` — two TBD notes: (1) **Paper 7**: the meta-paper on the self-improving INT/EXT review loop (gap-to-zero data, pattern catalog growth, integrity-audit, fabrication catches); (2) **Hubify efficiency case study**: quantify speedup/cost of the Hubify review stack across 6 papers vs. baseline — the marketing/methods paper for Hubify.com productization. Both require the 6-paper arXiv drop as a prerequisite.
+
+---
+
 ## Where this SSOT does NOT live
 
 - ❌ `project-context/CURRENT_STATUS.md` — legacy; downstream mirror only.
