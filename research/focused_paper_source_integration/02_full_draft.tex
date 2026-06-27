@@ -25,6 +25,30 @@ A SPHEREx Sensitivity Recast with a MegaMapper Outlook}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
 \date{June 19, 2026}
+% R54 convergence-test (2026-06-26 — native-PDF 3-vendor round [OpenAI/Gemini/Grok OK;
+%   Perplexity quota-failed; no Anthropic leg]. OpenAI arithmetic audit independently
+%   reproduced ALL headline numbers (5.18-5.47sigma, 3.01sigma, 2.73sigma, 2.63sigma,
+%   0.75sigma, tau_NL 27.6, sigma_marg 3.10/7.03). Verdict: CONVERGED. 0 BLOCKER/0 genuine
+%   MAJOR. 2 NIT-tier source-verified internal-consistency fixes; no science/headline change:
+%   R54-1 CLOSED (Gemini P2-m4): Table IV (tab:systematics) b_phi-30%/50% rows carried
+%     "denom. (oplus)" in the Acts-on column while the combination column + caption define
+%     oplus as quadrature and these rows use baseline-replacement (0.7->0.9/1.0), not
+%     quadrature. Changed the two Acts-on cells "denom.\ (oplus)" -> "denom.\ (repl.)" to
+%     match the "Fisher widening / baseline replacement" combination rule; GR/all-combined
+%     rows (true quadrature) keep oplus.
+%   R54-2 CLOSED (OpenAI P2-M9/B1): Fig 4 (fig:thresholds) caption error bar "MegaMapper
+%     conservative (sigma=1.5)" was unanchored in the body (body quotes sigma~0.5 ideal,
+%     ~2.2 at b_phi-50%, never 1.5). Added explicit "(illustrative: between the sigma~0.5
+%     ideal and the b_phi-50% degraded sigma~2.2 ... not an independently calibrated
+%     forecast)" qualifier. No figure regen needed (error-bar value unchanged; honesty label only).
+%   Triaged STALE/FALSIFIED/OPINION (no edit): Gemini P2-E1 (reviewer-metadata block —
+%     harness-injected, 0 occurrences in .tex source), P2-m1 (Eq.2 sign — source shows
+%     -35/8 negative; PDF misread); OpenAI P2-E2/M2/M3/M6/M8 (already-caveated additive-
+%     quadrature/null-space/MegaMapper-budget/shot-noise/SSFSR), P2-E3/E5 (submission DOI —
+%     deferred per scope), P2-E6 (anomaly-tracer 10-20% — explicitly upper-bound, headline
+%     does not rely on it), P2-M10 (r=0.84 vs 0.831 — deliberate R36conf OAI-M9
+%     standardization, floor robust to r=0.829 per L750); Grok all 6 (length/qualifier-
+%     repetition/Wick-recompute/envelope — all already-caveated or cosmetic).
 % R53 closures (2026-06-26 — 3 source-verified internal-consistency fixes; no headline change):
 %   R53-1 CLOSED (percentile mislabel, OpenAI E11 + artifact ground-truth): the null-space
 %     conservative-floor value 0.75/4.7sigma was the 25th-percentile (interquartile) endpoint
@@ -976,8 +1000,8 @@ Template-corrected baseline & $r = 0.84 \pm 0.02$ [$0.829$--$0.876$] & numer.\ (
 $\epsilon$-correction & $0.6$--$8\%$ in $\fnl$ & numer.\ ($\pm\delta\fnl$) & add.\ quadrature & $\lesssim 0.4\sigma$ effect \\
 Null-space $r$ scatter & $r=0.85\pm0.13$; 16th pctile $r=0.70$ & numer.\ ($\times r$) & distributional & floor $\approx 4.4\sigma$ \\
 $b_\phi$ (20\%, baseline) & no degradation & --- & --- & $5.2$--$5.5\sigma$ optimistic \\
-$b_\phi$ (30\%, central) & $\sigma(\fnl)\to 0.9$ & denom.\ ($\oplus$) & Fisher widening / baseline replacement & ${\sim}\,4.1\sigma$ \\
-$b_\phi$ (50\%, conserv.) & $\sigma(\fnl)\to 1.0$ & denom.\ ($\oplus$) & Fisher widening / baseline replacement & ${\sim}\,3.5$--$3.7\sigma$ \\
+$b_\phi$ (30\%, central) & $\sigma(\fnl)\to 0.9$ & denom.\ (repl.) & Fisher widening / baseline replacement & ${\sim}\,4.1\sigma$ \\
+$b_\phi$ (50\%, conserv.) & $\sigma(\fnl)\to 1.0$ & denom.\ (repl.) & Fisher widening / baseline replacement & ${\sim}\,3.5$--$3.7\sigma$ \\
 GR ($\sigma_{\rm GR}=0$) & no GR & --- & --- & $5.2$--$5.5\sigma$ \\
 GR ($\sigma_{\rm GR}=0.5$) & $\sigma_{\rm eff}=\sqrt{0.7^2+0.5^2}=0.86$ & denom.\ ($\oplus$) & add.\ quadrature & ${\sim}\,4.3\sigma$ \\
 GR ($\sigma_{\rm GR}=1.0$) & $\sigma_{\rm eff}=\sqrt{0.7^2+1.0^2}=1.22$ & denom.\ ($\oplus$) & add.\ quadrature & ${\sim}\,3.0\sigma$ \\
@@ -1038,7 +1062,7 @@ A detection of $\fnl \approx -4$ by SPHEREx, if confirmed by any of these indepe
 \begin{figure}[h]
 \centering
 \includegraphics[width=\columnwidth]{fig4_decision_thresholds.png}
-\caption{Observational decision thresholds on the measured local-template $\fnl$ (horizontal axis). Shaded regions, left to right: dark green --- measurement near the $-35/8$ prediction, strongly favors the bounce; light green --- negative $\fnl$ of bounce-compatible magnitude, supports the bounce; dark red (legend label ``bounce excluded'') --- measurement consistent with zero, disfavoring the quasi-dust matter bounce while remaining consistent with standard single-field inflation; light red --- positive $\fnl$, disfavoring the bounce and instead supporting exotic multifield inflation. Blue vertical line: bounce prediction $\fnl = -35/8$; black dotted line: standard inflation $\fnl \approx 0$. Error bars: SPHEREx ($\sigma = 0.7$) and MegaMapper conservative ($\sigma = 1.5$), both centered on the bounce prediction.}
+\caption{Observational decision thresholds on the measured local-template $\fnl$ (horizontal axis). Shaded regions, left to right: dark green --- measurement near the $-35/8$ prediction, strongly favors the bounce; light green --- negative $\fnl$ of bounce-compatible magnitude, supports the bounce; dark red (legend label ``bounce excluded'') --- measurement consistent with zero, disfavoring the quasi-dust matter bounce while remaining consistent with standard single-field inflation; light red --- positive $\fnl$, disfavoring the bounce and instead supporting exotic multifield inflation. Blue vertical line: bounce prediction $\fnl = -35/8$; black dotted line: standard inflation $\fnl \approx 0$. Error bars: SPHEREx ($\sigma = 0.7$) and MegaMapper conservative ($\sigma = 1.5$, illustrative: between the $\sigma \approx 0.5$ ideal and the $b_\phi$-50\% degraded $\sigma \approx 2.2$ of Sec.~\ref{sec:systematics}, not an independently calibrated forecast), both centered on the bounce prediction.}
 \label{fig:thresholds}
 \end{figure}
 

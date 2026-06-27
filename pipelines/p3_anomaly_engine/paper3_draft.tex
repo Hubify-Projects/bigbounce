@@ -54,6 +54,18 @@ a Native-Trained Novelty Fraction from 37.3 Million Sources and Map Patches}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
 \date{June 19, 2026}  % v3.1.113
+% R54 P3 truth-audit (2026-06-26 — convergence round; ONE genuine MAJOR found+closed):
+%   Table IX (tab:bf_robustness) NANOGrav BF prior-robustness: 3 non-fiducial rows
+%   ([0,5],[1,6],[2,5]) carried fabricated values (added EXT14-16 w/o a backing
+%   computation) asserting B_SMBHB/free varies ~40x and [2,5]->B_MB/SMBHB~200.
+%   Recomputed genuine prior-reweighted Savage-Dickey on the COMMITTED chain
+%   (chain_real_freespec.npy, 320k; fiducial row reproduces savage_dickey_2026-05-29.json
+%   EXACTLY: 3.228/4.522e-4/7137.6). TRUE values: B_MB/free 2.31/2.31/1.47;
+%   B_SMBHB/free 3.23e-4/3.20e-4/1.69e-4; B_MB/SMBHB 7.14e3/7.24e3/8.69e3 — the
+%   ratio is in fact the MOST prior-stable quantity (width factor cancels), NOT
+%   prior-varying. Table rows + para + footnote narrative rewritten; opening clause
+%   corrected (ratio is prior-INDEPENDENT). Headline (fiducial 7.14e3) unchanged.
+%   Artifact: pipelines/p3_pta_mcmc/free_spectrum_real_2026-05-01/bf_prior_robustness_R54.json
 % v3.1.113 (2026-06-19 — D-round visual polish: abstract split into 3 paragraphs (counts/validation/cosmology); Table I dense footnote block prefaced with compact expository header; inline bare \texttt{r24conf_erosita_axis_sweep.json} wrapped in \artifact{}; \needspace before §V.A NANOGrav heading; Fig 12 float changed [p]→[tbp]; no science change)
 % v3.1.112 (2026-06-18 — R40 closure: fixed broken reproducibility path nanograv_mcmc/ → pipelines/p3_pta_mcmc/free_spectrum_real_2026-05-01/ (dir holding the committed Wave-13 real-KDE chain + Savage-Dickey JSON); no science change)
 % v3.1.111 (2026-06-13 — EXT16 closure: Table IX tablenote(a) prior density clarified for non-fiducial rows (row-specific 1/delta_gamma denominator + reweighting note); closes ChatGPT EXT16 MINOR)
@@ -1356,7 +1368,7 @@ Full MCMC provenance for the NANOGrav spectral-index analysis in \S\ref{sec:nano
 at $f_i = (i+1)/T_{\rm obs}$ for $i = 0,\dots,29$; $T_{\rm obs} = 16.03$~yr; flat priors $\gamma \in [0,7]$, $\log_{10}A \in [-18,-11]$. \textbf{Sampler:} \texttt{emcee}~\cite{Foreman-Mackey2013} with 32 walkers, 10{,}000 production $+$ 2{,}500 burn-in. \textbf{Posterior:} $\gamma = 2.567 \pm 0.382$ (Gaussian-approximation mean $\pm$ sample std-dev; equivalent quantile form $\gamma = 2.591^{+0.291}_{-0.287}$ with asymmetric 68\% CI $[2.304, 2.882]$); $\log_{10}A = -14.025 \pm 0.380$. \textbf{Diagnostics:} acceptance fraction $0.632$; autocorrelation time $\tau \approx 58$~samples/walker (mean over the two parameters); ESS $\approx 5{,}500$, computed as the total post-burn-in sample count divided by the mean autocorrelation time, $\mathrm{ESS} = (32 \times 10{,}000)/\tau = 320{,}000/58 \approx 5{,}500$ (the \texttt{emcee} convention without the factor-of-2 some ESS definitions include; production length $> 50\tau$ per walker, convergence satisfied). Chain, posterior figure, and fitter script are deposited in the project data repository (GitHub: \texttt{Hubify-Projects/bigbounce}, path \artifact{pipelines/p3_pta_mcmc/free_spectrum_real_2026-05-01/}). Companion multi-PTA datasets (EPTA~DR2~\cite{EPTA2023}, PPTA~DR3~\cite{PPTA2023}) independently report HD-correlated signals consistent with NANOGrav; multi-PTA joint chains are deferred to a dedicated PTA paper.
 
 \paragraph{NANOGrav Bayes-factor robustness under $\gamma$-prior variation.}\label{app:nanograv_bf_robustness}
-The Savage-Dickey Bayes factor $B_{\rm MB/SMBHB} = 7.14\!\times\!10^3$ is prior-sensitive by construction (it computes the ratio of posterior to prior density at two fixed spectral-index values under a flat prior). Table~\ref{tab:bf_robustness} documents the robustness of this result to the choice of $\gamma$ prior width. In all cases the MCMC chain is re-weighted (no rerun required); the posterior shape changes only at the tails beyond the data-driven bulk $\gamma \in [2.0, 3.5]$, so $B_{\rm MB/free}$ is nearly prior-independent while $B_{\rm SMBHB/free}$ changes due to the $\gamma=4.33$ tail sensitivity.
+The individual Savage-Dickey factors $B_{\rm MB/free}$ and $B_{\rm SMBHB/free}$ carry a prior-normalization dependence by construction (each is a ratio of posterior to flat-prior density at a fixed spectral index, and the prior density is $1/\Delta\gamma$); the headline $B_{\rm MB/SMBHB} = 7.14\!\times\!10^3$ is their ratio, in which that normalization cancels. Table~\ref{tab:bf_robustness} documents the robustness of both the individual factors and the headline ratio to the choice of $\gamma$ prior width. In all cases the MCMC chain is re-weighted (no rerun required); because $\gamma = 3.0$ and $\gamma = 4.33$ both lie at or beyond the data-driven bulk $\gamma \in [2.0, 3.5]$, their posterior densities are nearly prior-independent under reweighting, so each individual $B_{\gamma_*/{\rm free}}$ simply tracks the prior-width factor through the flat-prior density $1/\Delta\gamma$ (entries shrink modestly as the prior narrows). The headline ratio $B_{\rm MB/SMBHB}$, in which that width factor cancels, is therefore essentially prior-independent and decisive across every prior choice.
 
 \begin{table}[tb]
 \caption{\label{tab:bf_robustness}
@@ -1370,25 +1382,26 @@ The Savage-Dickey Bayes factor $B_{\rm MB/SMBHB} = 7.14\!\times\!10^3$ is prior-
 $\gamma$ prior range & $B_{\rm MB/free}$\tablenotemark{a} & $B_{\rm SMBHB/free}$\tablenotemark{a} & $B_{\rm MB/SMBHB}$ \\
 \hline
 $[0, 7]$ (fiducial)  & $3.23$           & $4.52\!\times\!10^{-4}$ & $7.14\!\times\!10^3$ \\
-$[0, 5]$             & $3.23$           & $6.1\!\times\!10^{-3}$  & $5.3\!\times\!10^2$  \\
-$[1, 6]$             & $3.25$           & $4.5\!\times\!10^{-4}$  & $7.2\!\times\!10^3$  \\
-$[2, 5]$ (data-centered) & $3.24$      & $1.7\!\times\!10^{-2}$  & $1.9\!\times\!10^2$  \\
+$[0, 5]$             & $2.31$           & $3.23\!\times\!10^{-4}$ & $7.14\!\times\!10^3$  \\
+$[1, 6]$             & $2.31$           & $3.20\!\times\!10^{-4}$ & $7.24\!\times\!10^3$  \\
+$[2, 5]$ (data-centered) & $1.47$      & $1.69\!\times\!10^{-4}$ & $8.69\!\times\!10^3$  \\
 \end{tabular}
 \end{ruledtabular}
 \tablenotetext{a}{Savage-Dickey density ratio: $B = p(\gamma^*|\mathrm{data})\,/\,p(\gamma^*|\mathrm{prior})$, where the denominator is the row-specific flat-prior density $1/\Delta\gamma$ (e.g., $1/7 \approx 0.1429$ for $\gamma\in[0,7]$; $1/5 = 0.2$ for $\gamma\in[0,5]$; $1/5 = 0.2$ for $\gamma\in[1,6]$; $1/3 \approx 0.333$ for $\gamma\in[2,5]$). Numerator obtained from a Gaussian KDE of the fiducial $\gamma\in[0,7]$ \texttt{emcee} chain evaluated at the test value (prior re-weighting; no chain rerun). The explicit computation for the fiducial row: at $\gamma^*=3.0$: posterior KDE density $\approx 0.461$, giving $B_{\rm MB/free} = 0.461 / (1/7) = 3.23$. At $\gamma^*=4.33$: posterior KDE density $\approx 6.46\!\times\!10^{-5}$, giving $B_{\rm SMBHB/free} = 6.46\!\times\!10^{-5}/(1/7) = 4.52\!\times\!10^{-4}$. The ratio $B_{\rm MB/SMBHB} = 3.23/(4.52\!\times\!10^{-4}) = 7.14\!\times\!10^3$ follows directly. For non-fiducial prior rows, the prior density denominator changes accordingly; the prior re-weighting is exact for priors that are subsets of the fiducial $[0,7]$ range (tail posterior mass outside the subset is negligible for $B_{\rm MB/free}$ since $\gamma=3.0$ lies well within the data-driven bulk). These are genuine Savage-Dickey density ratios, not posterior-tail fractions or $p$-values. See \S\ref{app:nanograv_bf_robustness}.}
 {\footnotesize All rows: $\gamma=3.0$ ($+1.13\sigma$ from posterior mean) remains
-moderately favored ($B_{\rm MB/free} \approx 3.2$--$3.3$, ``substantial'' on Jeffreys' scale)
-regardless of prior. $B_{\rm SMBHB/free}$ varies by $\sim\!40\times$ across prior choices
-because $\gamma=4.33$ sits $>4\sigma$ from the posterior mean and is exponentially
-sensitive to tail normalization. The asymmetry between $B_{\rm MB/free}$ (prior-stable) and
-$B_{\rm MB/SMBHB}$ (prior-varying) is expected: $B_{\rm MB/free}$ depends only on the
-posterior density at $\gamma=3.0$, which lies well within the data-driven bulk $\gamma\in[2.0,3.5]$
-and is insensitive to the prior width; $B_{\rm MB/SMBHB} = B_{\rm MB/free}/B_{\rm SMBHB/free}$
-inherits the full prior-width sensitivity of $B_{\rm SMBHB/free}$ because the SMBHB anchor
-$\gamma=4.33$ lies in the exponentially suppressed prior tail. The $B_{\rm MB/SMBHB}$ headline quoted in the text
-($7.14\!\times\!10^3$) uses the widest physically motivated prior $[0,7]$; the narrowest
-data-centered prior $[2,5]$ gives $B_{\rm MB/SMBHB} \approx 200$, still strongly decisive
-on Jeffreys' scale. The SMBHB environmental caveat (\S\ref{sec:nanograv}) applies regardless
+favored against the free-spectrum alternative ($B_{\rm MB/free} \approx 1.5$--$3.2$, ``substantial''
+on Jeffreys' scale) and $\gamma=4.33$ strongly disfavored ($B_{\rm SMBHB/free} \approx 1.7$--$4.5\!\times\!10^{-4}$)
+regardless of prior. Each individual $B_{\gamma_*/{\rm free}}$ tracks the prior width through the
+flat-prior density $1/\Delta\gamma$ --- the posterior density at both test points is bulk-stable under
+prior reweighting (recomputed from the committed $\gamma\in[0,7]$ chain restricted to each sub-prior;
+\artifact{pipelines/p3\_pta\_mcmc/free\_spectrum\_real\_2026-05-01/bf\_prior\_robustness\_R54.json}),
+so the entries shrink modestly as the prior narrows rather than swinging by orders of magnitude.
+The headline ratio $B_{\rm MB/SMBHB} = B_{\rm MB/free}/B_{\rm SMBHB/free} = p(3.0\,|\,{\rm data})/p(4.33\,|\,{\rm data})$
+is prior-independent by construction --- the $1/\Delta\gamma$ width factor cancels --- and stays decisive
+across every prior choice: $B_{\rm MB/SMBHB} \approx 7.1\!\times\!10^3$ for $[0,7]$ and $[0,5]$,
+$7.2\!\times\!10^3$ for $[1,6]$, and $8.7\!\times\!10^3$ for the narrowest data-centered $[2,5]$.
+The $B_{\rm MB/SMBHB}$ headline quoted in the text ($7.14\!\times\!10^3$) uses the fiducial $[0,7]$ prior;
+no prior choice in the tested range weakens the ``decisive'' classification. The SMBHB environmental caveat (\S\ref{sec:nanograv}) applies regardless
 of prior choice.}
 \end{table}
 
