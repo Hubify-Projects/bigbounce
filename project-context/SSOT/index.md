@@ -1,3 +1,5 @@
+<!-- last_updated: 2026-06-26 PDT — ✅ EXT22 CONFIRM ROUND COMPLETE. Polish-tier convergence reached: 3-pass review (INT R52 + EXT21 + EXT22) across all 6 papers → 0 MAJOR / 0 BLOCKER. 18/18 legs MINOR or ACCEPT. 2 verified polish edits applied and recompiled: NV-P1A-1 (MINOR — P1A §XII.B Discussion aligned to Planck/amplitude suppression closure, matching body L1628/L1662; repulsive/subcritical unsupported claim removed) + NV-P4-1 (POLISH — P4 +3.3σ→+3.29σ at L701/L900, unified to L912 precise value). P1A recompiled 29pp md5 06c3b525 / P4 recompiled 23pp md5 f2902399. PDFs mirrored to all serving paths. Readiness 97→98 all six papers. NEXT GATE: Houston sign-off (final 1%: readiness-cap-99 rule — do NOT write 99 or 100 until Houston's explicit sign-off recorded here) → ORCID flip → arXiv drop (P4 → P1A → P1B → P3 → P2 → P5). Dashboard: P1A 98 / P1B 98 / P2 98 / P3 98 / P4 98 / P5 98. Versions unchanged: P1A v1A.0.79 (md5 06c3b525 EXT22, 29pp) / P1B v1B.0.76 (md5 c052aa67, 21pp) / P2 v1.7.71 (md5 b8adf899, 28pp) / P3 v3.1.113 (md5 615a0aa5, 29pp) / P4 v1.0.188 (md5 f2902399 EXT22, 23pp) / P5 v0.1.83-2026-06-19 (md5 7c39502c, 33pp). -->
+<!-- last_updated: 2026-06-26 PDT — R52 COMPLETE. INT 5-vendor + EXT 3-provider round run on all 6 papers post-92-rollback. 6 truth-audits: 0 genuine BLOCKERs, 0 genuine MAJORs. All Grok/o3 REJECT/MAJOR verdicts ruled false positives (pattern-052/060 fresh-reviewer / stale-version misread). Real MINOR/presentation defects closed in each paper + recompiled clean (0 errors / 0 undef refs). PDFs mirrored to all serving paths (md5-verified). Readiness 92→97 re-converged. NEXT GATE: EXT22 confirmation round (3-provider CLEAN on current versions), then Houston sign-off → arXiv drop. Do NOT write 99 or 100 until EXT22-confirm + Houston explicit sign-off recorded here. Dashboard: P1A 97 / P1B 97 / P2 97 / P3 97 / P4 97 / P5 97. Versions: P1A v1A.0.79 (md5 91726e41, 29pp) / P1B v1B.0.76 (md5 c052aa67, 21pp) / P2 v1.7.71 (md5 b8adf899, 28pp) / P3 v3.1.113 (md5 615a0aa5, 29pp) / P4 v1.0.188 (md5 4dbda6aa, 23pp) / P5 v0.1.83-2026-06-19 (md5 7c39502c, 33pp). -->
 <!-- last_updated: 2026-06-21 PDT — ⚠️ IN-REVISION. Houston external review (live PDFs + exact on-page prompts) found open BLOCKER/MAJOR/MINOR across papers; readiness rolled 99→92 (honest). NEXT-AGENT P0: intake those findings (newest EXT round in project-context/peer-reviews/ or Houston-provided), truth-audit → close → re-review → same-commit site sync. Handoff runbook: project-context/AGENT_ONBOARDING.md (+ root AGENTS.md). Do NOT claim done or submit until the loop reconverges AND Houston signs off. Dashboard: all six 92 (in-revision). -->
 
 <!-- last_updated: 2026-06-20 PDT — P1B v1B.0.76: 3 HF datasets public (bamfai/p1b-*), Appendix A URLs corrected Hubify→bamfai, P1B readiness 98→99. ALL SIX PAPERS NOW AT 99. Dashboard: P1A 99 / P1B 99 / P2 99 / P3 99 / P4 99 / P5 99. Final actions = Houston (ORCID flip, sign-off, arXiv drop). -->
@@ -266,6 +268,12 @@ done
 | `project-context/SSOT/zenodo/INDEX.md` | Zenodo one-click publish master index |
 | `project-context/SSOT/arxiv_companion_citation_map.md` | 51 cite-instance map for v2 back-patch |
 | `project-context/SSOT/arxiv_tarballs/` | 6 EXT15-closure tarballs (ready to upload) |
+
+---
+
+## Future papers (post-drop ideas)
+
+See `project-context/FUTURE_PAPERS.md` — two TBD notes: (1) **Paper 7**: the meta-paper on the self-improving INT/EXT review loop (gap-to-zero data, pattern catalog growth, integrity-audit, fabrication catches); (2) **Hubify efficiency case study**: quantify speedup/cost of the Hubify review stack across 6 papers vs. baseline — the marketing/methods paper for Hubify.com productization. Both require the 6-paper arXiv drop as a prerequisite.
 
 ---
 

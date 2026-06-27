@@ -70,6 +70,7 @@ Read `AGENT_RULES.md` for the methodology bible.
 | Save Houston's message | `/prompt-history` (BEFORE the work, not after) |
 | Save a new preference | `/memory-write` |
 | Before closure commit (math claim diff) | `/never-fabricate-derivation` (pattern-036 prevention; hard gate inside `/paper-pre-review-check`) |
+| Integrity gate before convergence | `/review-integrity-audit` (runs inside `/cascaded-r-rounds`; see Lesson F) |
 | Sweep the live site for cohesion/staleness | `/site-cohesion-sweep` (final gate of P-round; checks version strings, HF/GitHub/DOI links, PDF mirrors, explorer data, broken images/links across all surfaces) |
 | Scistack housekeeping (end of session) | `/scistack-self-update` (sync + index + git status against `~/.claude/scistack`) |
 
@@ -115,6 +116,26 @@ All encoded as global skills under `~/.claude/scistack/hubstack/infra/` (symlink
 - `/readiness-cap-99` — 100% only with Houston's quote in SSOT
 
 `AGENT_RULES.md` is the spec; the skills are the executables.
+
+---
+
+## Standing directives (2026-06-26 session — permanent)
+
+Five rules Houston kept having to re-state; encoded here as hard gates:
+
+**A — Convex is the live site.** After EVERY round, write true state to Convex via public HTTP API (`POST https://brilliant-panther-471.convex.cloud/api/mutation`): `paperVersions:bump`, `rRounds:create`, `externalReviews:upsertByLabelDate` (real verdicts; enum `accept|minor-revisions|major-revisions|reject|pending`; source `internal-stage3`), `activityFeed:add`, `papers:setReadinessCap` (96/98/99 per phase). Data writes need no `npx convex deploy`. Static `papers.ts`/SSOT do NOT reach the live site. Full protocol in `/bigbounce-site-sync`.
+
+**B — Per-paper convergence loop.** One owner-agent per paper: INT (multi-vendor+Opus) + EXT (browser) each round → truth-audit verdict-first (patterns 061-064; NEVER fake ACCEPT; never close without source-cited verdict; never fabricate math) → close real items → recompile (0 undef-refs) + `/latex-audit` → Convex+site update → commit. ~30-min heartbeat. Exit gate: 0 new VERIFIED items across ALL 6 papers AND 0 external MAJOR in a full round.
+
+**C — Browser visual QA.** After any site/Convex update: gstack headed browser QA of bigbounce.hubify.app (overview, papers, reviews, data-explorer). Confirm data current+accurate+legible+appealing; fix/flag stale or broken before calling done. Part of every `/bigbounce-site-sync` run.
+
+**D — EXT sweep hardening.** Fresh chats only (never reuse `/c/<id>`). Write manifest per-leg immediately. Per-leg poll cap ~8 polls/10 min then harvest-or-FAILED. Hard ~45-min overall budget; sweep self-terminates. See `/external-review-browser-loop`.
+
+**E — RunPod ALWAYS-backup.** Never single-source pod data. Before any stop AND end of every session AND every ~2hr compute milestone: mirror to local + HuggingFace + Backblaze B2 (+ Convex metadata). Not just before-stop — ALWAYS. See `/pod-backup-before-stop` + `/backup-3plus`.
+
+**F — Independent integrity audit.** After each closure wave, BEFORE declaring convergence, run `/review-integrity-audit`: a separate Opus agent (skeptical stance, NOT told the convergence conclusion) checks (1) INT+EXT prompts hold consistent high journal-referee bar with NO verdict-severity steering; (2) a sample of FALSIFIED/OPINION/OUT-OF-SCOPE dismissals verified against source; (3) papers don't headline the more-favorable of multiple values. Verdict: GENUINE vs ENGINEERED. If ENGINEERED: fix before convergence. Template: `project-context/peer-reviews/INTEGRITY_AUDIT_2026-06-26.md`. Triggered by 2026-06-26 audit catching mild self-favoring bias in EXT prompts + value headlining.
+
+**G — Mandatory per-round PDF hygiene.** Every round that changes a paper MUST, in the SAME bundle: (1) bump `.tex` `\paperVersion` (patch) + `\date`/`\paperTimestamp` to today; (2) recompile (0 undef-refs); (3) re-mirror new PDF to ALL served paths (site/public/papers/ versioned+aliases, public/papers/, source dir) byte-identical; (4) Convex `paperVersions:bump` with REAL new md5/pages; (5) verify served-file md5 == Convex md5 == fresh-compile md5, and page 1 shows new version+date. Committing .tex WITHOUT this = stale served PDFs + reviewers seeing old content (2026-06-26 failure). HARD GATE. Full protocol in `/bigbounce-site-sync`.
 
 ---
 

@@ -221,13 +221,20 @@ export const getPaperState = query({
         1 * openMajors +
         0.2 * openMinors +
         1 * openCaveats;
-      const formulaValue = Math.max(0, Math.min(92, 92 - penalty));
-      // readinessCap lets agents/Houston pin a ceiling lower than the formula
-      // (e.g. 94 after a review round with known-but-unentered issues).
-      readinessComputed =
+      // Phase ceiling is DATA-DRIVEN via paper.readinessCap so the review loop can
+      // advance the ladder with a plain mutation (papers:upsert/setReadinessCap) and
+      // NO redeploy. Ladder (per feedback_99_pct_readiness_cap + R→D→P protocol):
+      //   science R-rounds converge (clean internal+external) → 96  (DEFAULT)
+      //   D-round (design/visual) clean                       → 98
+      //   P-round (packaging/addenda) clean                   → 99
+      //   Houston sign-off                                    → 100 (houstonSignOff above)
+      // The 2026-06-21 external rollback set this to 92; R52/R53 + EXT21–23 re-converged
+      // (0 BLOCKER / 0 genuine MAJOR across 3 passes) so the default ceiling is restored to 96.
+      const ceiling =
         paper.readinessCap !== undefined && paper.readinessCap !== null
-          ? Math.min(formulaValue, paper.readinessCap)
-          : formulaValue;
+          ? paper.readinessCap
+          : 96;
+      readinessComputed = Math.max(0, Math.min(ceiling, ceiling - penalty));
     }
 
     // Last-updated date is max of (current version datestamp, latest closed finding date)

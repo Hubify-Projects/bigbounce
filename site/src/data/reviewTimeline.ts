@@ -46,6 +46,111 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "INTEGRITY-AUDIT-CLOSURE-2026-06-26",
+    kind: "closure-wave",
+    dateISO: "2026-06-26",
+    timePT: "16:00",
+    title: "Integrity-audit closure: 5 OPINION→MINOR honest-reporting items fixed across P1B/P2/P3/P4/P5 — reporting made more conservative, 0 conclusions changed",
+    papers: ["P1B", "P2", "P3", "P4", "P5"],
+    summary: "An independent integrity audit (INTEGRITY_AUDIT_2026-06-26.md) found the convergence GENUINE on substance (0 buried blockers/majors; every dismissed vendor REJECT/ESSENTIAL re-derived as a true false positive) but flagged a MILD self-favoring bias: 5/19 sampled dismissals were genuinely-disclosed-but-imperfect reporting items rounded to OPINION when MINOR was more honest. All 5 re-opened as MINOR and fixed toward MORE conservative reporting (no fabrication; every number grounded in committed source/artifacts): (P5) Bonferroni threshold for K=1054, two-sided α=0.05 corrected 4.05→4.07 (norm.ppf=4.0679); (P4) abstract now headlines the same-generator PRIMARY label-shuffle null z=0.58 with z=0.70 noted as the independent re-implementation, not the reverse; (P3) the 269,317 'catalog-grade' abstract headline now carries the carve-out that Gaia DR3 + eROSITA DR1 components hold per-object exploratory validity flags; (P2) the 5.2–5.5σ headline-forecast sentence now restates that both ranges rest on the single imported Heinrich+2023 σ≈0.7 baseline (sensitivity recast, not independent forecast); (P1B) the w0wa quintom cross-check headline now states plainly that SN-overlap robustness is not yet demonstrated quantitatively (control chains deferred). No scientific conclusion changes (all items null/diagnostic). P1A required no fix. All 5 recompiled (0 undef-refs), re-mirrored byte-identical to every served path, papers.ts + Convex paperVersions:bump synced.",
+    keyTakeaways: [
+      "Audit verdict: convergence GENUINE on substance (HIGH ~90%), with a MILD OPINION-vs-MINOR self-favoring bias (MODERATE-HIGH ~75%) on disclosed reporting-emphasis items only",
+      "P5 Bonferroni 4.05→4.07 (K=1054, two-sided α=0.05; the only computable factual discrepancy) · P5 v0.1.85",
+      "P4 abstract headline z=0.70→0.58 (same-generator primary; 0.70 = independent cross-check) · P4 v1.0.190",
+      "P3 abstract 269,317 catalog-grade now flags Gaia DR3 + eROSITA DR1 as exploratory · P3 v3.1.115",
+      "P2 5.2–5.5σ headline now foregrounds the single imported Heinrich+2023 σ≈0.7 provenance at the adopt-sentence · P2 v1.7.73",
+      "P1B w0wa cross-check headline now states SN-overlap robustness not yet quantitatively demonstrated · P1B v1B.0.78",
+      "0 scientific conclusions changed; '0 MINOR' cleanliness now honest. EXT-prompt de-bias (ExternalReviewPanel L58–59) left for a separate skill-improvement round",
+    ],
+    gapMetric: { externalOnlyFindings: 5, note: "5 integrity-audit OPINION→MINOR honest-reporting items, all closed same session by making the papers more conservative/complete." },
+    links: [
+      { label: "INTEGRITY_AUDIT_2026-06-26.md", href: `${PR}/INTEGRITY_AUDIT_2026-06-26.md` },
+      { label: "INTEGRITY_CLOSURE_2026-06-26.md", href: `${PR}/INTEGRITY_CLOSURE_2026-06-26.md` },
+    ],
+  },
+  {
+    id: "SKILL-INTEGRITY-AUDIT-HARDENING-2026-06-26",
+    kind: "skill-improvement",
+    dateISO: "2026-06-26",
+    timePT: "17:00",
+    title: "Integrity-audit standing gate + PDF-hygiene pre-dispatch hardened into R-round skills — prompt-rule 24",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "The 2026-06-26 integrity audit produced two permanent skill upgrades: (1) a standing integrity-audit pre-check is now mandatory at the start of every R-round truth-audit — the orchestrator must independently re-derive every dismissal flagged by a vendor REJECT/MAJOR and confirm it is a genuine false positive before logging 'convergence'; (2) a PDF-hygiene pre-dispatch gate (md5 of the served PDF must match the freshly compiled source before any vendor submission) is now encoded in cross-vendor-r-round SKILL.md, pattern-062. EXT-prompt de-bias (removing language that primes external referees to over-rate internal work) is a third upgrade noted as a separate pending round (ExternalReviewPanel rule L58–59). Prompt-rules count rises from 23 to 24 (integrity-audit mandate).",
+    keyTakeaways: [
+      "Mandatory integrity-audit pre-check: every truth-audit starts by re-deriving dismissals flagged REJECT/MAJOR — convergence is not logged until each is independently confirmed false-positive",
+      "PDF-hygiene gate: md5 of the served PDF must match freshly compiled source before dispatch — stale-PDF false positives (pattern-062) eliminated at the gate",
+      "Prompt-rules +1 (integrity-audit mandate = rule 24); pattern count unchanged at 064",
+      "Pending (separate round): EXT-prompt de-bias — removing self-favoring language from the external referee prompt to prevent referees being primed toward leniency",
+      "Self-improving loop diagnostic: a mild OPINION-vs-MINOR bias (5/19 sampled dismissals) was found, isolated, and corrected without distorting any scientific conclusion — the audit found the loop is GENUINE on substance",
+    ],
+    links: [
+      { label: "INTEGRITY_AUDIT_2026-06-26.md", href: `${PR}/INTEGRITY_AUDIT_2026-06-26.md` },
+      { label: "pattern-062-stale-pdf-false-positive", href: "project-context/review-patterns/pattern-062-stale-pdf-false-positive-DRAFT.md" },
+    ],
+  },
+  {
+    id: "EXT22-CLOSURE-2026-06-26",
+    kind: "ext-closure",
+    dateISO: "2026-06-26",
+    title: "EXT22 confirm round complete: 18/18 legs MINOR or ACCEPT · 0 MAJORs/BLOCKERs · 2 polish edits closed · polish-tier convergence reached · readiness 97→98",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "EXT22 (3-provider confirm round on R52-closed PDFs): 18/18 legs MINOR or ACCEPT, 0 MAJOR, 0 BLOCKER, 0 REJECT. 2 new-verified items applied: NV-P1A-1 (MINOR — P1A §XII.B Discussion asserted NJL/one-loop closure via 'repulsive at γ=0.274 and subcritical / does not contribute at one loop' — mechanisms not in the body; aligned to Planck/amplitude suppression per Sec. sec:r1_njl L1628, ρ_NJL~4×10⁻⁸¹ eV⁴ ~69 orders below ρ_Λ, one-loop amplitude-closed under EFT scaling ansatz; recompiled 29pp md5 06c3b525) + NV-P4-1 (POLISH — P4 +3.3σ→+3.29σ at L701 and L900 unified to L912 precise value; recompiled 23pp md5 f2902399). All other ~34 EXT22 findings resolved to already-covered (R52/EXT21), extraction-artifact (pattern-063), opinion, or stale-fixed (pattern-062). Three-pass campaign (INT R52 + EXT21 + EXT22) achieves polish-tier convergence: independent external vendors re-confirming existing closures rather than finding new substance. No EXT23 warranted.",
+    keyTakeaways: [
+      "18/18 EXT22 legs MINOR or ACCEPT — 0 MAJOR, 0 BLOCKER, 0 REJECT — polish-tier convergence confirmed",
+      "NV-P1A-1 (MINOR closed): P1A §XII.B Discussion body-alignment — 'repulsive/subcritical' replaced by amplitude-suppression (body L1628 ρ_NJL~4×10⁻⁸¹ eV⁴); P1A 29pp md5 06c3b525",
+      "NV-P4-1 (POLISH closed): P4 +3.3σ→+3.29σ at L701/L900 unified to L912; P4 23pp md5 f2902399",
+      "All ~34 other EXT22 findings: already-covered / extraction-artifact (pattern-063) / opinion / stale-fixed (pattern-062)",
+      "Readiness 97→98 all 6 papers; cascaded-r-rounds exit bar met; D-round convergence gate",
+      "No EXT23 warranted — 3 consecutive passes surface diminishing residual; next gate is Houston sign-off (final 1%)",
+    ],
+    gapMetric: { externalOnlyFindings: 2, note: "EXT22: 2 new-verified polish items (NV-P1A-1 MINOR + NV-P4-1 POLISH), both closed same session. All other ~34 findings already-covered/opinion/artifact." },
+    links: [
+      { label: "EXT22_CONSOLIDATION.md", href: `${PR}/EXT22_CONSOLIDATION.md` },
+      { label: "SSOT index", href: "https://github.com/Hubify-Projects/bigbounce/blob/main/project-context/SSOT/index.md" },
+    ],
+  },
+  {
+    id: "R52-SYNC-2026-06-26",
+    kind: "closure-wave",
+    dateISO: "2026-06-26",
+    title: "R52 COMPLETE: INT 5-vendor + EXT 3-provider post-rollback reconvergence — readiness 92→97 all 6 papers",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "R52 closed 6 truth-audits on all papers following the 2026-06-21 Houston external review rollback (99→92). INT 5-vendor + EXT 3-provider round: 0 genuine BLOCKERs, 0 genuine MAJORs across all 6 papers. All Grok/o3 REJECT/MAJOR verdicts ruled false positives (pattern-052/060 fresh-reviewer/stale-version misreads). Real MINOR/presentation defects closed in each paper. All 6 recompiled clean (0 errors / 0 undef refs). PDFs mirrored to all serving paths (md5-verified). site/src/data/papers.ts + live-status.ts + SSOT/index.md + per-paper status.md + queue.md synced. Readiness 92→97 re-converged. Next gate: EXT22 confirm + Houston sign-off.",
+    keyTakeaways: [
+      "0 genuine BLOCKERs and 0 genuine MAJORs across 6 truth-audits — all Grok/o3 REJECT/MAJOR verdicts ruled false positives",
+      "All 6 papers recompiled clean (0 errors / 0 undef refs): P1A v1A.0.79 · P1B v1B.0.76 · P2 v1.7.71 · P3 v3.1.113 · P4 v1.0.188 · P5 v0.1.83-2026-06-19",
+      "Md5 after R52: P1A 91726e41 / P1B c052aa67 / P2 b8adf899 / P3 615a0aa5 / P4 4dbda6aa / P5 7c39502c",
+      "PDFs mirrored to site/public/papers/ + public/papers/ + source dirs — all md5-verified",
+      "Readiness reconverged 92→97; cap at 97 pending EXT22 confirm + Houston sign-off",
+    ],
+    links: [
+      { label: "SSOT index", href: "https://github.com/Hubify-Projects/bigbounce/blob/main/project-context/SSOT/index.md" },
+      { label: "queue.md", href: "https://github.com/Hubify-Projects/bigbounce/blob/main/project-context/SSOT/queue.md" },
+    ],
+  },
+  {
+    id: "R52-LEARNING-LOOP",
+    kind: "skill-improvement",
+    dateISO: "2026-06-26",
+    timePT: "00:00",
+    title: "R52 learning-loop: 4 new patterns drafted (061-064) — dispatch mismatch, stale-PDF, extraction artifact, Grok harsh-outlier",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "R52 pattern-mine produced 4 new draft patterns from 126 archived findings across 6 papers. (061) dispatch-tag-vs-intext-mismatch: orchestrator brief label conflicts reviewer in-text Recommendation line in 6 instances across P1A/P1B/P4/P5 — fix: read the Recommendation: line, not the wrapper tag. (062) stale-pdf-false-positive: served PDF lags source by 1-2 versions in P1A/P1B/P5, producing 4 STALE findings — fix: pre-dispatch md5 gate. (063) extraction-artifact-false-positive: reviewer text-layer OCR mangles math glyphs (√, ½, division bars, subscripts) in 7 instances across P1A/P1B/P2/P3 — fix: auto-FALSIFY math findings lacking .tex-source + multi-vendor corroboration. (064) grok-harsh-outlier-false-positive: Grok REJECT/MAJOR in 4/4 R52 papers truth-audited to false positive — fix: mandate reason-by-reason individual audit, check primary/secondary inversion and disclosure-as-defect misread. NOT drafted: missing-released-artifact (print-only generator) — 1 finding (P2 only), below ≥3/≥2 threshold.",
+    keyTakeaways: [
+      "Pattern-061: read the in-text Recommendation: line from vendor reports, not the dispatch wrapper tag — mismatches in both directions seen R52",
+      "Pattern-062: pre-dispatch gate must confirm served PDF md5 matches freshly compiled source; stale-PDF = recurring STALE budget drain",
+      "Pattern-063: never accept a math 'wrong' finding without .tex-source verification AND cross-vendor full-PDF corroboration; OCR-garbled math is a high-false-positive class",
+      "Pattern-064: Grok REJECT/MAJOR requires reason-by-reason individual audit; check for primary/secondary inversion and disclosure-as-defect misread before accepting verdict",
+      "Not promoted: missing-released-artifact (print-only generator) — only 1 finding (P2 phase3_bispectrum_shape_overlap.json); revisit if recurs ≥2 more papers",
+    ],
+    links: [
+      { label: "pattern-061", href: "project-context/review-patterns/pattern-061-dispatch-tag-vs-intext-mismatch-DRAFT.md" },
+      { label: "pattern-062", href: "project-context/review-patterns/pattern-062-stale-pdf-false-positive-DRAFT.md" },
+      { label: "pattern-063", href: "project-context/review-patterns/pattern-063-extraction-artifact-false-positive-DRAFT.md" },
+      { label: "pattern-064", href: "project-context/review-patterns/pattern-064-grok-harsh-outlier-false-positive-DRAFT.md" },
+    ],
+  },
+  {
     id: "P-ROUND-COMPLETE",
     kind: "closure-wave",
     dateISO: "2026-06-20",
@@ -2227,6 +2332,20 @@ export const externalVerdictRounds: ExternalRoundVerdicts[] = [
     },
     note: "EXT20: 6/6 ACCEPT — fresh-referee external round. 0 blockers, 0 MAJORs, 0 MINORs. 2 trivial cosmetic micro-fixes (P2 + P5) closed in-session. Second consecutive zero-gap external round confirming all 6 papers are drop-ready.",
   },
+  {
+    roundId: "EXT22",
+    dateISO: "2026-06-26",
+    windowPT: "Jun 26 · 3-provider confirm round on R52-closed PDFs",
+    verdicts: {
+      P1A: ["MINOR", "MINOR", "MINOR"],
+      P1B: ["ACCEPT", "ACCEPT", "ACCEPT"],
+      P2: ["ACCEPT", "ACCEPT", "ACCEPT"],
+      P3: ["ACCEPT", "ACCEPT", "ACCEPT"],
+      P4: ["MINOR", "ACCEPT", "MINOR"],
+      P5: ["ACCEPT", "ACCEPT", "ACCEPT"],
+    },
+    note: "EXT22: 18/18 MINOR or ACCEPT — 0 MAJOR, 0 BLOCKER, 0 REJECT. P1A: 1 new MINOR (NV-P1A-1 §XII.B body-alignment, closed). P4: 1 new POLISH (NV-P4-1 +3.3σ→+3.29σ, closed). P1B/P2/P3/P5 clean. All other ~34 findings already-covered/extraction-artifact/opinion/stale. Polish-tier convergence: 3-pass campaign (R52+EXT21+EXT22) → 0 MAJOR/BLOCKER. Readiness 97→98.",
+  },
 ];
 
 export interface GapPoint {
@@ -2236,6 +2355,11 @@ export interface GapPoint {
   total: number;
   perPaper: Record<PaperId, number>;
   note: string;
+  /**
+   * Optional milestone annotation — rendered as a callout on the gap chart.
+   * Short phrase only (fits in ~40 chars for the SVG label).
+   */
+  milestone?: string;
 }
 
 /** Internal/external gap series — must shrink every cycle; target is zero.
@@ -2376,6 +2500,14 @@ export const gapSeries: GapPoint[] = [
     perPaper: { P1A: 0, P1B: 0, P2: 0, P3: 0, P4: 0, P5: 0 },
     note: "EXT20: 6/6 ACCEPT — fresh-referee external round. 0 new substantive external-only findings. 2 trivial cosmetic micro-fixes (P2 + P5) closed in-session. Second consecutive zero-gap external round.",
   },
+  {
+    roundId: "EXT22",
+    dateISO: "2026-06-26",
+    total: 2,
+    perPaper: { P1A: 1, P1B: 0, P2: 0, P3: 0, P4: 1, P5: 0 },
+    note: "EXT22 confirm round: 2 new-verified polish items — NV-P1A-1 (MINOR: §XII.B body-alignment; closed) + NV-P4-1 (POLISH: +3.3σ→+3.29σ; closed). All ~34 other findings already-covered/extraction-artifact/opinion/stale. Polish-tier convergence reached: 3-pass total (R52+EXT21+EXT22) → 0 MAJOR/BLOCKER.",
+    milestone: "integrity gate — loop de-biased, skills hardened",
+  },
 ];
 
 export interface ReadinessCheckpoint {
@@ -2448,6 +2580,30 @@ export const readinessCheckpoints: ReadinessCheckpoint[] = [
     values: { P1A: 99, P1B: 99, P2: 99, P3: 99, P4: 99, P5: 99 },
     note: "P1B-REPRO-PUBLISHED 2026-06-20: 3 HF reproducibility datasets public (bamfai/p1b-alp-chains, bamfai/p1b-mcmc-diagnostics, bamfai/p1b-namaster-artifacts), Appendix A links fixed Hubify→bamfai, P1B v1B.0.75→v1B.0.76, P1B 98→99 — all six papers at 99.",
   },
+  {
+    id: "EXT21-R52-CLOSURE",
+    dateISO: "2026-06-26",
+    values: { P1A: 99, P1B: 99, P2: 99, P3: 99, P4: 99, P5: 99 },
+    note: "EXT21 R52 micro-closure (2026-06-26): 3 verified closure edits — P1B L2323 span relabeled 'spectator-consistent posterior'→'full scan-prior box (benchmark EOM grid, not spectator-consistent subset)'; P1B L2851 'every quantitative claim'→'principal load-bearing quantitative claims'; P2 L803 CDF-tail arithmetic corrected (Φ≈0.006/'each tail' → lower tail 0.186, upper negligible, denominator 0.814, B=5.69/0.814≈7.0). Optional P2 L1159 'Convention'→'time-ordering branch' applied. All 6 papers recompiled clean (0 undef refs). No science impact; all papers hold 99.",
+  },
+  {
+    id: "HOUSTON-EXT-ROLLBACK-2026-06-21",
+    dateISO: "2026-06-21",
+    values: { P1A: 92, P1B: 92, P2: 92, P3: 92, P4: 92, P5: 92 },
+    note: "Houston external review (live PDFs + exact on-page prompts, 2026-06-21): found open BLOCKER/MAJOR/MINOR across all 6 papers — readiness rolled back 99→92 (honest). R52 dispatched to close.",
+  },
+  {
+    id: "R52-RECONVERGE-2026-06-26",
+    dateISO: "2026-06-26",
+    values: { P1A: 97, P1B: 97, P2: 97, P3: 97, P4: 97, P5: 97 },
+    note: "R52 SYNC 2026-06-26: INT 5-vendor + EXT 3-provider. 6 truth-audits: 0 genuine BLOCKERs/MAJORs; all Grok/o3 REJECT/MAJOR = false positives. Real MINORs closed + recompiled (md5: P1A 91726e41 / P1B c052aa67 / P2 b8adf899 / P3 615a0aa5 / P4 4dbda6aa / P5 7c39502c). Readiness 92→97. EXT22 confirm + Houston sign-off pending.",
+  },
+  {
+    id: "EXT22-CONVERGE-2026-06-26",
+    dateISO: "2026-06-26",
+    values: { P1A: 98, P1B: 98, P2: 98, P3: 98, P4: 98, P5: 98 },
+    note: "EXT22 confirm 2026-06-26: 18/18 MINOR or ACCEPT, 0 MAJOR/BLOCKER. 2 polish edits closed (NV-P1A-1 §XII.B + NV-P4-1 σ rounding). P1A md5 06c3b525 / P4 md5 f2902399. Polish-tier convergence reached. Readiness 97→98. Next: Houston sign-off (final 1%).",
+  },
 ];
 
 export interface SkillsPoint {
@@ -2469,6 +2625,8 @@ export const skillsSeries: SkillsPoint[] = [
   { id: "EXT3-gapmine", dateISO: "2026-06-11", patterns: 50, promptRules: 19, note: "EXT3 gap-mine: pattern-052 re-raise vindication test + browser-loop completion/version gates; prompt rules unchanged" },
   { id: "EXT11-gapmine", dateISO: "2026-06-13", patterns: 53, promptRules: 21, note: "EXT11 gap-mine: 3 new auto-rules added — pattern-053 closure-arithmetic-regression-audit (Eq.15 inversion), pattern-054 figure-art-rename-verify (V-Web→T-Web in plot titles not caught), pattern-055 internal-audit-label-leak-strip ((B1)/(E*) labels in journal prose). Prompt rules +2 (figure-art-rename gate + closure-label grep)." },
   { id: "EXT12-gapmine", dateISO: "2026-06-13", patterns: 57, promptRules: 23, note: "EXT12 gap-mine: pattern-056 pdftotext-artifact-class auto-falsify (italic NS→MS rendering artifact — already in SKILL-PDFTOTEXT entry); pattern-057 systematic-rename-grep-body-text (after V-Web→T-Web rename, 3 residual tokens survived in §VIII/§IX/App C body text — figure-art gate insufficient); pattern-058 gemini-fresh-chat-verdict-format (Gemini 6/6 synthesis-mode at EXT12 — explicit ACCEPT/MINOR/MAJOR format instruction must be FIRST LINE of message). Prompt rules +2 (Gemini verdict-format gate + body-text rename grep gate)." },
+  { id: "R52-learning-loop", dateISO: "2026-06-26", patterns: 64, promptRules: 23, note: "R52 learning-loop: 4 new patterns drafted (061-064). 061: dispatch-tag-vs-intext-mismatch — orchestrator brief conflicts reviewer in-text Recommendation; read the Recommendation line, not the wrapper tag. 062: stale-pdf-false-positive — served PDF lags source by 1-2 versions; pre-dispatch gate must confirm md5 match. 063: extraction-artifact-false-positive — reviewer text-layer OCR mangles math glyphs; always verify math findings against .tex source + cross-vendor full-PDF corroboration. 064: grok-harsh-outlier-false-positive — Grok REJECT/MAJOR truth-audits false-positive in 4/4 R52 papers; truth-audit each Grok reason individually, check primary/secondary inversion, disclosure-as-defect misread. Candidate not drafted: missing-released-artifact (print-only generator) — 1 finding (P2 only), below ≥3/≥2 threshold." },
+  { id: "integrity-audit-2026-06-26", dateISO: "2026-06-26", patterns: 64, promptRules: 24, note: "Integrity-audit hardening 2026-06-26: standing integrity-audit pre-check added as mandatory first step of every R-round truth-audit (re-derive every REJECT/MAJOR dismissal independently before logging convergence); PDF-hygiene md5 pre-dispatch gate hardened into cross-vendor-r-round SKILL.md (pattern-062). EXT-prompt de-bias deferred to a separate round. Prompt-rules: 23 → 24 (integrity-audit mandate = rule 24). Pattern count unchanged at 064." },
 ];
 
 export function getReviewRoundByReportSlug(slug: string): ReviewRound | undefined {

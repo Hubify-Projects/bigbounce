@@ -68,14 +68,41 @@
 
 .progress-charts {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 22px;
+  grid-template-columns: 1fr;
+  gap: 28px;
 }
 
-@media (max-width: 760px) {
-  .progress-charts {
-    grid-template-columns: 1fr;
-  }
+/* Horizontally-scrollable verdict carousel */
+.verdict-carousel {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 12px 14px 14px 14px;
+  background: color-mix(in srgb, var(--bg) 60%, transparent);
+  margin-bottom: 10px;
+}
+
+/* Scrollable hint on WebKit */
+.verdict-carousel::-webkit-scrollbar {
+  height: 6px;
+}
+
+.verdict-carousel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.verdict-carousel::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+/* Let the SVG expand to its natural pixel width inside the scroll container */
+.verdict-carousel .progress-svg {
+  width: auto;
+  min-width: max-content;
 }
 
 .progress-svg {

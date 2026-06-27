@@ -6,7 +6,7 @@ v1.0.66 external 4-vendor round (2026-05-15), 1 P1A external 3-reviewer
 round (2026-06-02), 1 P4 v1.0.149 external 3-reviewer round (2026-06-04),
 1 R39conf batch truth-audit (2026-06-13, 6 papers), and 1 EXT14 batch
 external round (2026-06-13, 6 papers)
-on 6 papers (P1A/P1B/P2/P3/P4/P5). Pattern mine last run: 2026-06-13 (EXT16 external round; pattern 060 promoted — \\mbox{-} math subscript escape extends pattern-059). Patterns 053-060 all catalogued (053: in-prep citation leak; 054: sigma-mixing undeclared; 055: audit-artifact body leak; 056: pdftotext italic rendering artifact [filed 2026-06-13 SHIP_READINESS_FINAL QA]; 057: figure-regen text residual; 058: Gemini fresh-chat no-verdict; 059: math-mode subscript miss; 060: mbox-math-subscript-escape).
+on 6 papers (P1A/P1B/P2/P3/P4/P5). Pattern mine last run: 2026-06-26 (R52; patterns 061-064 proposed). Patterns 053-060 all catalogued (053: in-prep citation leak; 054: sigma-mixing undeclared; 055: audit-artifact body leak; 056: pdftotext italic rendering artifact [filed 2026-06-13 SHIP_READINESS_FINAL QA]; 057: figure-regen text residual; 058: Gemini fresh-chat no-verdict; 059: math-mode subscript miss; 060: mbox-math-subscript-escape). Patterns 061-064 drafted 2026-06-26 R52: 061: dispatch-tag-vs-intext-mismatch; 062: stale-pdf-false-positive; 063: extraction-artifact-false-positive; 064: grok-harsh-outlier-false-positive.
 
 Every external/direct-vendor R-round must be pre-screened against these
 patterns BEFORE dispatch, per the [[feedback-review-learning-loop]] and
@@ -51,6 +51,9 @@ Sorted by severity then frequency descending.
 | 055 | [Audit-artifact body leak (version tags / gate verdicts / ticket IDs in compiled PDF)](pattern-055-audit-artifact-body-leak.md) | high | 9 (multiple reviewers × P3/P4/P5, R39conf) |
 | 056 | [pdftotext italic rendering artifact (short-token glyph misread by text-layer extraction)](pattern-056-pdftotext-italic-rendering-artifact.md) | medium | 1 (P4, EXT11→EXT12 — Table I \\textit{NS} rendered as MS by pdftotext; auto-falsified) |
 | 057 | [Figure-regen text-residual (body text not swept after systematic rename)](pattern-057-figure-regen-text-residual.md) | medium | 3 (P5, EXT12 — 3 residual V-Web tokens in §VIII/§IX/App C post-figure-regen) |
+| 061 | [Dispatch tag vs in-text verdict mismatch (orchestrator brief conflicts reviewer in-text Recommendation)](pattern-061-dispatch-tag-vs-intext-mismatch-DRAFT.md) | high | 6 (P1A/P1B/P4/P5, R52) *(draft)* |
+| 063 | [PDF extraction artifact false positive (reviewer text-layer OCR mangles math notation)](pattern-063-extraction-artifact-false-positive-DRAFT.md) | high | 7 (P1A/P1B/P2/P3, R52) *(draft)* |
+| 064 | [Grok harsh-outlier false positive (grok-4.x REJECT/MAJOR consistently truth-audits false)](pattern-064-grok-harsh-outlier-false-positive-DRAFT.md) | high | 4 (P1A/P1B/P4/P5, R52) *(draft)* |
 
 ### Medium severity
 
@@ -67,6 +70,7 @@ Sorted by severity then frequency descending.
 | 022 | [Closure replaced derivation with narrative](pattern-022-closure-narrative-instead-of-derivation.md) | medium | 4+ |
 | 024 | [Figure violates its own cited threshold](pattern-024-figure-violates-cited-threshold.md) | medium | 1 (predicts a class) |
 | 037 | [Future-dated `\date{...}` block in title page across all papers](pattern-037-future-date-across-papers.md) | medium | 6 (all papers, R10v3p1 cross-paper) |
+| 062 | [Stale-PDF false positive (served PDF lags source; reviewer flags already-fixed items)](pattern-062-stale-pdf-false-positive-DRAFT.md) | medium | 4 (P1A/P1B/P5, R52) *(draft)* |
 
 ### Informational
 

@@ -94,7 +94,9 @@ export default function ReviewsPage() {
               Gemini all at ACCEPT across all 6 papers. Grok calibration-stable from EXT3;
               Gemini and ChatGPT converged by EXT17. Campaign complete.
             </p>
-            <VerdictTrajectory />
+            <div className="verdict-carousel">
+              <VerdictTrajectory />
+            </div>
             <VerdictLegend />
           </div>
           <div className="progress-charts">
@@ -106,6 +108,26 @@ export default function ReviewsPage() {
               </p>
               <GapClosureChart />
               <GapPerPaperDeltas />
+              <p
+                style={{
+                  fontFamily: "var(--font-mono-stack)",
+                  fontSize: "0.69rem",
+                  color: "var(--text-muted)",
+                  marginTop: "10px",
+                  maxWidth: "62ch",
+                  lineHeight: 1.55,
+                  borderLeft: "2px solid var(--success)",
+                  paddingLeft: "10px",
+                  opacity: 0.88,
+                }}
+              >
+                <span style={{ color: "var(--success)", fontWeight: 700 }}>⚑ 2026-06-26 — integrity gate.</span>{" "}
+                An independent audit of the review loop verified convergence GENUINE on substance (HIGH ~90%); identified a mild self-favoring bias
+                (5/19 sampled dismissals rated OPINION when MINOR was more accurate); closed all 5 by making the papers
+                <em> more conservative</em> — zero scientific conclusions changed. External referee prompt de-biased.
+                R-round skills hardened: standing integrity-audit pre-check + PDF-hygiene md5 gate (pattern-062) now mandatory
+                every round. Prompt-rules 23 → 24.
+              </p>
             </div>
             <div className="progress-block">
               <h3 className="progress-block-title">Skills stack — the review machinery self-improving</h3>

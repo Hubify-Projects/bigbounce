@@ -47,15 +47,15 @@ export interface LiveStatus {
 }
 
 export const liveStatus: LiveStatus = {
-  lastUpdatedISO: "2026-06-20T12:00:00Z",
-  lastUpdatedDisplay: "June 20, 2026 · 12:00 PM PT",
+  lastUpdatedISO: "2026-06-26T12:00:00Z",
+  lastUpdatedDisplay: "June 26, 2026 · 12:00 PM PT",
   headline:
-    "R→D→P all complete; all 6 papers at readiness 99; 3 P1B HF datasets public (bamfai/p1b-*); final 1% = Houston sign-off.",
+    "EXT22 confirm round complete: 18/18 legs MINOR or ACCEPT, 0 MAJORs/BLOCKERs — polish-tier convergence reached. 2 edits closed (P1A §XII.B closure-mechanism alignment + P4 σ rounding). Readiness 97→98. Houston sign-off is the final gate.",
   summary:
-    "P-round (packaging) complete: all 6 tarballs standalone-verified (0 errors / 0 undef refs), site surfaces cohesive, public HF artifacts linked. P1B fully reproducible (3 datasets public on bamfai). Next gate: Houston sign-off → ORCID flip → arXiv drop (P4 → P1A → P1B → P3 → P2 → P5).",
+    "Three-pass review (INT R52 + EXT21 + EXT22) closed with 0 MAJORs/BLOCKERs across all 6 papers. EXT22 surfaces only 2 verified polish edits (P1A NV-P1A-1 MINOR: §XII.B attribution corrected to amplitude suppression; P4 NV-P4-1 POLISH: +3.3σ→+3.29σ consistency fix). Both edits applied, both papers recompiled clean (P1A 29pp md5 06c3b525 · P4 23pp md5 f2902399). Readiness advances 97→98 (D-round convergence). Final gate: Houston sign-off → ORCID flip → arXiv drop (P4 → P1A → P1B → P3 → P2 → P5).",
   currentlyRunning: [
-    "P-round COMPLETE — tarballs standalone-verified, site cohesive, HF artifacts linked. All 6 papers at 99.",
-    "arXiv drop waits on Houston sign-off + ORCID flip.",
+    "EXT22 COMPLETE — 18/18 legs MINOR or ACCEPT, 0 MAJORs/BLOCKERs. Polish-tier convergence reached. Readiness 97→98.",
+    "Awaiting Houston sign-off + ORCID flip → arXiv drop.",
   ],
   needsHouston: [
     {
@@ -83,58 +83,58 @@ export const liveStatus: LiveStatus = {
       number: "1A",
       shortTitle: "ECH dark-energy closure + perturbation transparency",
       version: "v1A.0.79",
-      readiness: 99,
-      pendingWork: "P-round COMPLETE. Next: Houston sign-off → arXiv drop.",
+      readiness: 98,
+      pendingWork: "EXT22 CLOSED (NV-P1A-1 §XII.B closure-mechanism edit applied, recompiled md5 06c3b525). Next: Houston sign-off → arXiv drop.",
     },
     {
       slug: "paper-1b",
       number: "1B",
       shortTitle: "MCMC + NaMaster + ALP technical companion",
       version: "v1B.0.76",
-      readiness: 99,
-      pendingWork: "P-round COMPLETE. 3 HF datasets public (bamfai/p1b-*). Next: Houston sign-off → arXiv drop same-day as P1A.",
+      readiness: 98,
+      pendingWork: "EXT22 CLEAN (0 new verified). 3 HF datasets public (bamfai/p1b-*). Next: Houston sign-off → arXiv drop.",
     },
     {
       slug: "paper-2",
       number: "2",
       shortTitle: "f_NL = -35/8 SPHEREx forecast",
       version: "v1.7.71",
-      readiness: 99,
-      pendingWork: "P-round COMPLETE. Next: Houston sign-off → arXiv drop.",
+      readiness: 98,
+      pendingWork: "EXT22 CLEAN (0 new verified). Next: Houston sign-off → arXiv drop.",
     },
     {
       slug: "paper-3",
       number: "3",
       shortTitle: "378K-anomaly multi-survey catalog",
       version: "v3.1.113",
-      readiness: 99,
-      pendingWork: "P-round COMPLETE. Next: Houston sign-off + HF catalog flip → arXiv drop.",
+      readiness: 98,
+      pendingWork: "EXT22 CLEAN (0 new verified). Next: Houston sign-off + HF catalog flip → arXiv drop.",
     },
     {
       slug: "paper-4",
       number: "4",
       shortTitle: "8.47M-galaxy chirality null at sub-percent sensitivity",
       version: "v1.0.188",
-      readiness: 99,
-      pendingWork: "P-round COMPLETE (FROZEN v1.0.188). Next: Houston sign-off → arXiv drop (first in queue).",
+      readiness: 98,
+      pendingWork: "EXT22 CLOSED (NV-P4-1 +3.3σ→+3.29σ applied, recompiled md5 f2902399). Next: Houston sign-off → arXiv drop (first in queue).",
     },
     {
       slug: "paper-5",
       number: "5",
       shortTitle: "DESI environmental chirality independence",
       version: "v0.1.83-2026-06-19",
-      readiness: 99,
-      pendingWork: "P-round COMPLETE. Next: Houston sign-off → arXiv drop (last in queue; needs P4 arXiv ID).",
+      readiness: 98,
+      pendingWork: "EXT22 CLEAN (0 new verified). Next: Houston sign-off → arXiv drop (last in queue; needs P4 arXiv ID).",
     },
   ],
   blockerTally: {
-    closed: 864, // EXT17 closure wave — P1A + P2 + P3 + P5 EXT16-MINORs resolved to ACCEPT; P1B + P4 frozen universal ACCEPT
+    closed: 872, // EXT22 closure: NV-P1A-1 (MINOR §XII.B) + NV-P4-1 (POLISH σ rounding); 0 open across 3-pass portfolio review
     openBlockers: 0,
     openMajors: 0,
     openMinors: 0,
   },
-  cronStatus: "P-ROUND COMPLETE (2026-06-20). All 6 papers at readiness 99. P1B 3 HF datasets public (bamfai/p1b-*). Final gate: Houston sign-off.",
+  cronStatus: "EXT22 COMPLETE (2026-06-26). Polish-tier convergence: 0 MAJORs/BLOCKERs across 3 passes. All 6 papers at readiness 98. Next gate: Houston sign-off.",
   etaToCompletion:
-    "P-round DONE — all 6 papers at readiness 99. Remaining: Houston sign-off + ORCID flip → arXiv drop (order P4 → P1A → P1B → P3 → P2 → P5).",
+    "EXT22 DONE — all 6 papers at readiness 98. Remaining: Houston sign-off + ORCID flip → arXiv drop (order P4 → P1A → P1B → P3 → P2 → P5).",
   pods: [],
 };
