@@ -273,7 +273,9 @@ export const getPaperState = query({
         open: openCaveats,
         total: caveats.length,
       },
-      readinessComputed: Math.round(readinessComputed),
+      // 1-decimal (not integer) so EVERY open finding visibly moves readiness —
+      // a lone open MINOR (−0.2) shows as 95.8, not rounded up to 96 (anti-masking, Houston 2026-06-26).
+      readinessComputed: Math.round(readinessComputed * 10) / 10,
       lastUpdated,
     };
   },
@@ -336,7 +338,9 @@ export const listAllPaperStates = query({
         status: paper.status,
         currentVersion: currentVersion?.version ?? null,
         lastUpdated: currentVersion?.datestamp ?? null,
-        readinessComputed: Math.round(readinessComputed),
+        // 1-decimal (not integer) so EVERY open finding visibly moves readiness —
+      // a lone open MINOR (−0.2) shows as 95.8, not rounded up to 96 (anti-masking, Houston 2026-06-26).
+      readinessComputed: Math.round(readinessComputed * 10) / 10,
         openBlockers,
         openMajors,
         openMinors,
