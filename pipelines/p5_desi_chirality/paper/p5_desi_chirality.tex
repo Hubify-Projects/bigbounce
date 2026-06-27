@@ -33,7 +33,32 @@
 % The divide-by-h claim (~1246 h⁻¹ Mpc) is INVERTED. No pipeline recompute required.
 % If any future reviewer re-raises this, cite env_finder/01_compute_vweb.py:106-108.
 
-\newcommand{\paperVersion}{v0.1.85-2026-06-26}
+\newcommand{\paperVersion}{v0.1.87-2026-06-26}
+% R57 hardened de-biased re-review (2026-06-26 — truth audit
+%   project-context/peer-reviews/R57_P5_TRUTH_AUDIT.md; NO version bump):
+%   2 VERIFIED MINOR internal-inconsistencies closed (both corroborated by
+%   the §X / Paper IV body, no fabrication):
+%   (R57-1) Paper IV real-space dipole quoted as +0.43sigma at l.703 but
+%     +0.41sigma at l.646 — same quantity; Paper IV's canonical value is
+%     +0.41sigma (it carries an explicit 0.43->0.41 dipole-regeneration
+%     correction note). The +0.43sigma was stale; R56 OAI-E1 closure flagged
+%     "two quotes also disagree" but only dropped p-values, leaving the sigma
+%     mismatch. FIXED l.703 +0.43sigma -> +0.41sigma.
+%   (R57-2) Internal classifier-monopole offset mislabeled: abstract l.456
+%     "internally verified ~=0.26pp (f_CW^P5=0.49719)" and Sec.II l.691
+%     "f_CW^P5=0.49719 ... corresponding to Delta f_CW=-0.0026" both attach the
+%     external Paper IV value (-0.0026 / 0.26pp) to the internal measurement,
+%     whose own Sec.X arithmetic reconciliation (l.2551-2567) gives
+%     Delta f_CW^P5 ~= -0.0028 (0.28pp), ~8% larger than the P4 catalog-mean.
+%     Mildly self-favoring (understated the internal residual). FIXED abstract
+%     0.26pp -> 0.28pp; Sec.II Delta f_CW -> Delta f_CW^P5 ~= -0.0028 with the
+%     P4 -0.0026 cross-reference retained. sigma_pred chain (uses P4 -0.0026)
+%     untouched. FALSE POSITIVES not actioned: 0.05^{1/6} (source correct l.2135,
+%     PDF superscript-render), filament 0.4980 (203261/408187=0.49796, correct),
+%     "largest...DESI DR1" superlative (already hedged l.2230), DOI/pre-reg
+%     (out-of-scope). 3-vendor net: 1 ACCEPT-minor (Gemini), 2 MAJOR-revisions
+%     (Grok/OpenAI) driven by DOI + abstract-ordering + venue-norm items only.)
+% v0.1.86-2026-06-26 (2026-06-26 — R56 hardened de-biased re-review: 4 VERIFIED MINORs closed (Paper IV dipole sigma->p inconsistency OAI-E1, redshift max-abs-dev vs quintile-LEE unlabeled OAI-E2, covariate-complete vs edge-on subset clarification OAI-E8, cluster residual "within order-unity" -> explicit +0.71/-1.38sigma Gem-M1); PDF recompiled and re-mirrored)
 % v0.1.84-2026-06-26 (2026-06-26 — R53-R55 closure wave: version+date stamp bump; PDF recompiled and re-mirrored; no new science change)
 % v0.1.83-2026-06-19 (2026-06-19 — D-round visual polish: (1) \artifact macros → short [A1]-[A30] hyperlinked IDs (60 sites); Appendix C artifact table added; (2) Fig 8 healpix skymap → 2-panel (count + sigma) with separate colorbars (overlap fixed); (3) Fig 2 pie → horizontal bar chart; (4) Fig 5 + Fig 9 (a)/(b) panel labels added; (5) Table VII caption dagger defined; no science change)
 % v0.1.82-2026-06-18 (2026-06-18 — EXT20 micro-closure: class×program χ²=4932→4933 rounding harmonization at 4 prose sites (recompute 4932.51); referee-flagged; no science change)
@@ -452,7 +477,7 @@ The $56{,}981$ void spirals are drawn from the DESIVAST low-$z$ parent
 ($678{,}945$), not from the full T-Web parent ($812{,}793$).
 \textbf{Headline result:} the CW
 fraction shows no environment dependence beyond (i) an internally
-verified $\approx\!0.26$\,pp (percentage points) catalog-wide
+verified $\approx\!0.28$\,pp (percentage points) catalog-wide
 classifier-monopole offset ($f_{\rm CW}^{\rm P5} = 0.49719$,
 $n = 812{,}793$ env-labeled rows,
 Table~\ref{tab:p4_monopole_residual}; consistent with the independent
@@ -642,8 +667,8 @@ a $-0.26$\,pp monopole offset from exact parity that is statistically
 significant in pure counting terms ($\approx\!9\sigma$) and is treated
 throughout Paper~IV and this paper as a known classifier-monopole
 systematic reference, not a parity violation --- while the Paper~IV
-real-space \emph{dipole} is consistent with isotropy at $+0.41\sigma$
-($p = 0.31$). That dipole null is a \emph{global} statement; it
+real-space \emph{dipole} is consistent with isotropy at $+0.41\sigma$.
+That dipole null is a \emph{global} statement; it
 does not constrain whether handedness is independent of
 \emph{environment}.
 
@@ -687,9 +712,10 @@ First, this paper independently measures the catalog-wide CW-fraction
 monopole within its own matched sample: $f_{\rm CW}^{\rm P5} =
 0.49719$ on $812{,}793$ env-labeled rows
 (Table~\ref{tab:p4_monopole_residual}), corresponding to
-$\Delta f_{\rm CW} = -0.0026$ --- a classifier-residual bias that is
+$\Delta f_{\rm CW}^{\rm P5} \approx -0.0028$ --- a classifier-residual bias that is
 spatially uniform and quality-quartile-flat, consistent with the
-independent Paper~IV estimate~\cite{golden_chirality_2026}. We
+independent Paper~IV catalog estimate $\Delta f_{\rm CW}^{\rm P4} = -0.0026$~\cite{golden_chirality_2026}
+(the ${\sim}8\%$ enhancement is reconciled in \S\ref{sec:desivast_p4_residual}). We
 therefore expect the environmental $\sigma_{\rm from\,half}$ values
 reported here to inherit the same monopole offset, with sign determined
 by sample size. The environment-independence headline is the two-sample
@@ -699,7 +725,7 @@ the $\sigma_{\rm pred}$ rows (Tables~\ref{tab:density_quintile_residual},
 \ref{tab:within_class_density}, \ref{tab:p4_monopole_residual}) move
 with it while the $\Delta f_{\rm CW}$ null does not. Second,
 Paper~IV's current headline is a real-space full-sky dipole
-null at $+0.43\sigma$ ($p\!=\!0.30$) from direct amplitude estimation,
+null at $+0.41\sigma$ from direct amplitude estimation,
 reinforced by a weighted template fit that excludes a clean
 Shamir-amplitude ($1.7\%$) dipole; an earlier harmonic-space
 subsample-mask MASTER-deconvolved $\ell\!=\!1$ statistic was withdrawn
@@ -1290,10 +1316,16 @@ $\sigma$ values in filament and cluster track the catalog-wide
 classifier-monopole offset of Paper~IV: predicting
 $\sigma_{\rm pred}$ from $\Delta f_{\rm CW}\!=\!-0.0026$ gives
 $\sigma_{\rm pred}({\rm filament})\!\approx\!-3.32$ and
-$\sigma_{\rm pred}({\rm cluster})\!\approx\!-3.28$, both within
-order-unity of observation. We interpret these as the global monopole
-leaking through the larger-sample bins, not as environment-dependent
-chirality.
+$\sigma_{\rm pred}({\rm cluster})\!\approx\!-3.28$, leaving
+monopole-subtracted residuals of $+0.71\sigma$ (filament) and
+$-1.38\sigma$ (cluster). Neither residual is negligible at face value,
+but both are bounded by the propagated monopole-reference uncertainty
+($\approx\!0.7\sigma$ for an $n\!\sim\!4\times10^5$ class,
+\S\ref{sec:stats}) and, on the calibrated $f_{\rm CW}^{\rm P5}$ basis,
+collapse to $|\sigma_{\rm vs\,monopole}|<1.15$
+(Table~\ref{tab:p4_monopole_residual}). We therefore interpret these
+as the global monopole leaking through the larger-sample bins, not as
+environment-dependent chirality.
 
 \textbf{Void-bin smallness.} The void bin has only $n\!=\!428$
 galaxies. Two distinct void volume fractions appear in this paper and refer to different denominators: (i)~the T-Web tidal-classifier void class occupies ${\approx}24.4\%$ of in-footprint cell volume (\S\ref{sec:vweb_algo}, \href{\repoBase/pipelines/p5\_desi\_chirality/env\_finder/reports/01\_volume\_fractions.json}{[A7]}), while (ii)~only ${\approx}0.1\%$ of in-footprint grid cells fall inside a DESIVAST VoidFinder sphere (the point-in-sphere membership criterion on the $25.9\,{\rm Mpc}/h$ grid used for the sky-stratification analysis of \S\ref{sec:desivast_maximal_healpix}). The small T-Web void-bin count ($n\!=\!428$) arises because despite the T-Web void class covering $24.4\%$ of volume, the sparse $r \le 17.8$ DESI Legacy spiral selection combined with the $z \leq 0.24$ depth cut samples only a thin galaxy population within those cells. The $\sigma\!=\!-0.68$ on the void
@@ -1305,8 +1337,11 @@ parity.
 
 The matched chirality-relevant subsample has redshift median $0.168$
 and maximum $3.83$. The label-shuffle permutation null on the
-max-absolute-deviation-from-half over $1{,}000$ shuffles returns
-$p\!=\!0.372$.
+max-absolute-deviation-from-half statistic (the single most-deviant
+redshift bin, finely binned) over $1{,}000$ shuffles returns
+$p\!=\!0.372$; the complementary five-quintile look-elsewhere test
+(distinct statistic, coarser binning) is reported separately below
+($p = 0.80$).
 A logistic regression of the CW indicator on $\{z, |\sin\delta|,
 \cos\alpha, \text{confidence}\}$ gives a $z$-coefficient (per unit
 redshift, in log-odds) of $0.0095 \pm 0.0229$ ($z$-score $0.41$,
@@ -1315,8 +1350,9 @@ both consistent with zero, i.e.\ no
 redshift dependence. A label-shuffle permutation stratified by
 imaging leg and DESI program (the conservative null given the
 per-leg/per-program residuals of \S\ref{sec:systematics}) leaves the
-redshift-quintile look-elsewhere $p$ unchanged
-($p = 0.81$ stratified vs $0.80$ free-shuffle).
+redshift-quintile look-elsewhere $p$ (the coarser five-bin statistic,
+distinct from the finely-binned max-deviation $p = 0.372$ above)
+unchanged ($p = 0.81$ stratified vs $0.80$ free-shuffle).
 
 \textit{Physical-covariate robustness.}---Extending the regression with
 galaxy physical covariates from the Galaxy Zoo DESI morphology catalog
@@ -1331,8 +1367,13 @@ labels. The regression parent is the $783{,}741$ unique env-matched
 spirals, one row per galaxy (the $783{,}820$ env-matched spirals of
 \S\ref{sec:desivast_p4_residual} minus the $79$ \texttt{TARGETID}s
 whose repeat coadd rows carry conflicting environment classes); the
-covariate-extended models retain all $783{,}741$ ($100\%$
-covariate-complete). The env-only Wald $p = 0.41$ is therefore not
+headline covariate-extended model uses the four covariates with full
+coverage (radius, magnitude, featured fraction, merger fraction) and
+retains all $783{,}741$ rows ($100\%$ covariate-complete for that
+model). The edge-on fraction, which is defined only on the
+$152{,}455$-galaxy featured subsample, enters a separate
+featured-subsample sub-model (also null) rather than the full-parent
+model, so it does not violate the full-model completeness statement. The env-only Wald $p = 0.41$ is therefore not
 expected to coincide with the Pearson omnibus $p = 0.31$ of
 \S\ref{sec:results_vweb}: the omnibus $\chi^2$ is computed on the
 $812{,}793$-row env-labeled superset, while the Wald test is a
