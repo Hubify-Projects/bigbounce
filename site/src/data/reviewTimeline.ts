@@ -46,6 +46,29 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "INTEGRITY-AUDIT-CLOSURE-2026-06-26",
+    kind: "closure-wave",
+    dateISO: "2026-06-26",
+    timePT: "16:00",
+    title: "Integrity-audit closure: 5 OPINION→MINOR honest-reporting items fixed across P1B/P2/P3/P4/P5 — reporting made more conservative, 0 conclusions changed",
+    papers: ["P1B", "P2", "P3", "P4", "P5"],
+    summary: "An independent integrity audit (INTEGRITY_AUDIT_2026-06-26.md) found the convergence GENUINE on substance (0 buried blockers/majors; every dismissed vendor REJECT/ESSENTIAL re-derived as a true false positive) but flagged a MILD self-favoring bias: 5/19 sampled dismissals were genuinely-disclosed-but-imperfect reporting items rounded to OPINION when MINOR was more honest. All 5 re-opened as MINOR and fixed toward MORE conservative reporting (no fabrication; every number grounded in committed source/artifacts): (P5) Bonferroni threshold for K=1054, two-sided α=0.05 corrected 4.05→4.07 (norm.ppf=4.0679); (P4) abstract now headlines the same-generator PRIMARY label-shuffle null z=0.58 with z=0.70 noted as the independent re-implementation, not the reverse; (P3) the 269,317 'catalog-grade' abstract headline now carries the carve-out that Gaia DR3 + eROSITA DR1 components hold per-object exploratory validity flags; (P2) the 5.2–5.5σ headline-forecast sentence now restates that both ranges rest on the single imported Heinrich+2023 σ≈0.7 baseline (sensitivity recast, not independent forecast); (P1B) the w0wa quintom cross-check headline now states plainly that SN-overlap robustness is not yet demonstrated quantitatively (control chains deferred). No scientific conclusion changes (all items null/diagnostic). P1A required no fix. All 5 recompiled (0 undef-refs), re-mirrored byte-identical to every served path, papers.ts + Convex paperVersions:bump synced.",
+    keyTakeaways: [
+      "Audit verdict: convergence GENUINE on substance (HIGH ~90%), with a MILD OPINION-vs-MINOR self-favoring bias (MODERATE-HIGH ~75%) on disclosed reporting-emphasis items only",
+      "P5 Bonferroni 4.05→4.07 (K=1054, two-sided α=0.05; the only computable factual discrepancy) · P5 v0.1.85",
+      "P4 abstract headline z=0.70→0.58 (same-generator primary; 0.70 = independent cross-check) · P4 v1.0.190",
+      "P3 abstract 269,317 catalog-grade now flags Gaia DR3 + eROSITA DR1 as exploratory · P3 v3.1.115",
+      "P2 5.2–5.5σ headline now foregrounds the single imported Heinrich+2023 σ≈0.7 provenance at the adopt-sentence · P2 v1.7.73",
+      "P1B w0wa cross-check headline now states SN-overlap robustness not yet quantitatively demonstrated · P1B v1B.0.78",
+      "0 scientific conclusions changed; '0 MINOR' cleanliness now honest. EXT-prompt de-bias (ExternalReviewPanel L58–59) left for a separate skill-improvement round",
+    ],
+    gapMetric: { externalOnlyFindings: 5, note: "5 integrity-audit OPINION→MINOR honest-reporting items, all closed same session by making the papers more conservative/complete." },
+    links: [
+      { label: "INTEGRITY_AUDIT_2026-06-26.md", href: `${PR}/INTEGRITY_AUDIT_2026-06-26.md` },
+      { label: "INTEGRITY_CLOSURE_2026-06-26.md", href: `${PR}/INTEGRITY_CLOSURE_2026-06-26.md` },
+    ],
+  },
+  {
     id: "EXT22-CLOSURE-2026-06-26",
     kind: "ext-closure",
     dateISO: "2026-06-26",
