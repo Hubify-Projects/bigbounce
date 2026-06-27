@@ -60,3 +60,12 @@ pipelines/p5_desi_chirality/data/
 # encrypted/plain env backups — never commit
 .env.local.bak*
 *.env.local.bak*
+
+# LaTeX build artifacts (regenerable; keep out of git)
+*.aux
+*.bbl
+*.blg
+*.toc
+*.out
+*.log
+*.synctex.gz
