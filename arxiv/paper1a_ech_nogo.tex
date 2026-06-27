@@ -47,8 +47,10 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.80}
+\newcommand{\paperVersion}{v1A.0.83}
 \newcommand{\paperTimestamp}{June 26, 2026}
+% v1A.0.81 (2026-06-26 — R57 hardened de-biased re-review: the lone OPEN R56 MINOR (f_NL 2.6-5sigma range) CLOSED-BY-SOURCING — verified P2 (research/focused_paper_source_integration/02_full_draft.tex L644) genuinely adopts "5.2-5.5sigma optimistic and 2.6-5sigma realistic ranges as the headline forecast" (Heinrich+2023 sigma(fnl)~0.7 recast for template mismatch); fn:spherex_range (L2125) now explicitly cites Golden2026P2 for the range + clarifies the in-text sigma~1.0 gives the ~4.4sigma lower midpoint, so the range is sourced not self-derived. No fabricated numbers — P1A's range matches P2's verbatim. 0 undef, 0 overfull. R52-R56 fixes verified intact.)
+% v1A.0.81 (2026-06-26 — R56 hardened de-biased re-review: 3 VERIFIED MINORs closed (sign-consistency L1457, abstract cross-ref L726 loophole→fourroute_summary, dimensional-completeness delta_NY L1181); 1 OPEN MINOR (f_NL 2.6–5sigma range, companion-Fisher-deferred, Paper-II-blocked); PDF recompiled and re-mirrored)
 % v1A.0.80 (2026-06-26 — R53-R55 closure wave: version+date stamp bump; PDF recompiled and re-mirrored; no new science change)
 % v1A.0.79 (2026-06-19 — D-round visual polish: Table II tabular*→full-width; Eq.(15) parenthetical broken to following sentence; Eq.(1)/Eq.(B1) line breaks; TikZ barrier-structure schematic added after §IX intro; version+timestamp bump)
 % v1A.0.78 (2026-06-18 — R40 closure: strip 2 review-process prose artifacts (version-history sentence + Pontryagin "earlier version" footnote) per pattern-051; cosmetic, no science change)
@@ -134,7 +136,7 @@
 %   E2/Pattern 1: companion-work honorific dropped at all body sites.
 %   M11/Pattern 2: sigma-mixing caveat added to Fig 4 and Fig 6 captions.
 %   m11/Pattern 3: internal generate_all_figures.py path stripped from caption.
-%   M8: abstract "13 logically-independent" softened; independence sketch.
+%   M8: "13 logically-independent" overclaim resolved → "13 mechanism-class constraints" throughout (EXTDB truth-audit fix).
 %   M9: NJL reworded with explicit ISM density n_psi~10^2 cm^-3.
 %   Table IV: "Verified Value" -> "Reference value"; dagger on companion rows.)
 % v1A.0.70->71 (2026-06-13 — EXT9 closure: Fig 3 caption rewritten to remove
@@ -598,7 +600,7 @@
 %       paper" at sec:fourroute_summary L919-921. Reviewer cited the
 %       new wording and still complained.
 %     - GRO-M2 (Barriers 8 and 14 counted separately): STALE. The
-%       paper says "13 logically-independent (14 historical catalog
+%       paper now says "13 mechanism-class constraints (14 historical catalog
 %       entries, of which B8 is subsumed by B14)" everywhere from
 %       abstract to conclusion to Table~\ref{tab:barriers} caption.
 %     - GPT-B1--B6 (all "phenomenological ansatz needs more
@@ -723,7 +725,7 @@ proven to be a complete diffeomorphism-invariant operator basis for the
 minimal-ECH effective action; we acknowledge missing operators (Jackiw-Pi
 gravitational Chern-Simons $R\!\wedge\!\tilde R$, parity-odd four-fermion
 partner with $\gamma_{\rm BI}/(\gamma_{\rm BI}^2+1)\cdot 8\pi G$ coefficient)
-explicitly in Sec.~\ref{sec:fourroute} and Sec.~\ref{sec:loophole}. The
+explicitly in Sec.~\ref{sec:fourroute} and Sec.~\ref{sec:fourroute_summary}. The
 dark-energy mapping rests on a phenomenological on-shell scaling ansatz
 whose off-shell mass dimension is $+1$ rather than $+4$
 (Appendix~\ref{app:dimensions}); we treat this scaling explicitly as an
@@ -759,8 +761,8 @@ follows from the Bianchi-trivial argument, not from a Pontryagin
 total-derivative argument.}
 The proposed link from ECH to a late-time vacuum energy requires a phenomenological
 dimensional ansatz beyond the minimal framework (Appendix~\ref{app:dimensions}),
-and is constrained at the channel-amplitude level by 13 logically-independent
-barriers (Sec.~\ref{sec:barriers}; 14 historical catalog entries, of which B8 is subsumed by B14 per the perturbation-transparency result).
+and is constrained at the channel-amplitude level by 13 mechanism-class constraints
+(Sec.~\ref{sec:barriers}; 14 historical catalog entries, of which B8 is subsumed by B14 per the perturbation-transparency result), each probing a distinct physical failure mode.
 A structural tension (Sec.~\ref{sec:structural_tension}) exists between
 the dark-energy mechanism, which requires $N_{\rm tot}\approx 92$ post-bounce
 $e$-folds, and the matter-bounce $\fnl=-35/8$ signature, which would be \emph{definitively} erased at SPHEREx-accessible comoving wavenumbers by that many $e$-folds (a contracting-phase quantity mode with $k_{\rm SPHEREx}\sim 10^{-1}\,h/$Mpc is pushed to $k_{\rm bounce}^{\rm phys}\sim k_{\rm SPHEREx}^{\rm phys}\,e^{N_{\rm tot}-N_{\rm exit}}\sim e^{32}\,k_{\rm SPHEREx}^{\rm phys}$ at $N_{\rm tot}\sim 92$, $N_{\rm exit}\sim 60$ (the relative e-fold differential between bounce and CMB horizon-exit; comoving wavenumbers $k$ are constant by definition and only physical scales scale with $a^{-1}\propto e^{-N}$), deep inside the inflationary subhorizon regime carrying purely vacuum-inflationary fluctuations rather than matter-bounce contraction modes); the minimal-ECH four-route channel set is therefore tightly constrained as
@@ -824,8 +826,8 @@ This work presents and closes a phenomenological framework that connects ECH
 spin-torsion cosmology to dark energy. The structural conclusion is a
 \emph{channel-level amplitude closure} of the four enumerated minimal-ECH
 dark-energy routes (Sec.~\ref{sec:fourroute}): under the stated assumptions,
-the 14 constraints (Sec.~\ref{sec:barriers}, 13 logically-independent with
-B8 subsumed by B14) close those routes at amplitude-budget granularity.
+the 14 constraints (Sec.~\ref{sec:barriers}; 13 distinct mechanism-class constraints,
+with B8 subsumed by B14) close those routes at amplitude-budget granularity.
 The surviving phenomenological predictors---matter-bounce $\fnl$ and
 spectator-ALP birefringence---are ECH-independent class tests (shared with
 other UV completions within the broader bounce/ALP landscape; see
@@ -963,7 +965,7 @@ CMB EB). Section~\ref{sec:fourroute} closes each of the four standard ECH routes
 Section~\ref{sec:data_galaxy} covers the galaxy-spin data methods.
 Sections~\ref{sec:systematics}--\ref{sec:related} provide systematic analysis,
 falsifiability criteria, and related work. The core results occupy
-Secs.~\ref{sec:barriers}--\ref{sec:loophole}: the 13 logically-independent structural barriers (14 historical catalog entries),
+Secs.~\ref{sec:barriers}--\ref{sec:loophole}: the 13 mechanism-class structural barriers (14 historical catalog entries),
 perturbation-transparency result, and hybrid loophole rejection.
 Section~\ref{sec:discussion} discusses the inflationary suppression factor and
 theoretical implications. Section~\ref{sec:surviving} summarizes surviving
@@ -986,7 +988,7 @@ internal-analysis inputs to the present structural argument rather than
 as independently peer-reviewable values until Paper~I(b) is publicly
 posted. We emphasize: \emph{none of these companion-imported numerical
 values is used in the channel-level closure proof of
-Sec.~\ref{sec:fourroute} or the 13 logically-independent structural
+Sec.~\ref{sec:fourroute} or the 13 mechanism-class structural
 barriers of Sec.~\ref{sec:barriers}}; the structural closure rests on
 the dimensional / operator-counting / perturbation-transparency
 arguments alone, which are evaluable without the companion's MCMC
@@ -1179,6 +1181,10 @@ and Shapiro \& Teixeira~\cite{ShapiroTeixeira2014}, the one-loop estimate is
 \begin{equation}\label{eq:oneloop}
 \frac{\alpha}{M}\sim \frac{g^2}{32\pi^2}\,\frac{\gamma}{M}\,\ln\!\left(\frac{\Lambda_{\rm UV}^2}{\mu^2}\right)+\delta_{\rm NY},
 \end{equation}
+where the additive finite Nieh--Yan piece $\delta_{\rm NY}$ carries mass
+dimension $-1$ (matching $[\alpha/M]=-1$, as required for additive
+consistency in Eq.~\eqref{eq:oneloop}; it is a scheme-dependent finite
+remainder left unestimated here),
 motivating the order of magnitude $[(\alpha/M)\,\MPl]\sim 10^{-2}$.
 Numerically, taking $g^2 = 4\pi\alpha_{\rm em} \approx 0.092$ for the
 electromagnetic estimate, $\gamma \approx 0.274$, $M = \MPl/\sqrt{\gamma}$,
@@ -1291,7 +1297,7 @@ We emphasize that Eq.~\eqref{eq:Leff_full} is a \textit{phenomenological
 parameterization}, not a first-principles derivation. The parity-odd operator
 (Eq.~\ref{eq:Seff_comp}) has naive mass dimension $+1$; the identification
 $\rho_\Lambda = \Xi\,\MPl^4$ relies on on-shell evaluation at Planck-scale bounce
-densities as a scaling ansatz. The 13 logically-independent barriers (Sec.~\ref{sec:barriers}) close
+densities as a scaling ansatz. The 13 mechanism-class constraints (Sec.~\ref{sec:barriers}) close
 all routes to deriving this from fundamental ECH dynamics.
 
 \subsubsection{Inflationary Suppression}\label{sec:dilution}
@@ -1454,7 +1460,9 @@ dark-energy mechanism, contingent on the inequality
 $\Gamma_{\rm wash}>H$ at $T_{\rm reh}$ being satisfied in detail.
 Returning to the $N_{\rm tot}$ bookkeeping from Sec.~\ref{sec:dilution}:
 we emphasize that this is bookkeeping, not progress: the residual
-$10^5$ tracks the exponential $e^{-3 N_{\rm tot}}$ and inherits its sensitivity
+$10^5$ tracks the inverse-dilution exponential $e^{+3\Delta N_{\rm tot}}$
+($\Delta N_{\rm tot}\!\approx\!4$, Sec.~\ref{sec:dilution}; i.e.\ $1/\Dinf$,
+since $\Dinf\propto e^{-3 N_{\rm tot}}$) and inherits its sensitivity
 from the initial-condition choice for $N_{\rm tot}$ (not from any
 reheating-rate quantity), while the fixed
 $[(\alpha/M)\,\MPl] \sim 10^{-2}$ prefactor does no work on the cosmological
@@ -2123,7 +2131,14 @@ between the matter-bounce shape and the local/equilateral basis, before further
 GR-projection and $b_\phi$ degradation) and $\sigma(\fnl)\approx 1.0$ after
 GR-projection and photo-$z$ marginalization ($2.6$--$5\sigma$ realistic). Both
 assume nominal SPHEREx survey volume ($f_{\rm sky}=0.75$, ${\sim}\!3\times 10^8$
-galaxies).}~\cite{Heinrich:2023}
+galaxies). The full multi-tracer SPHEREx Fisher forecast is computed in
+Paper~II~\cite{Golden2026P2}, which recasts the Heinrich \etal\
+$\sigma(\fnl^{\rm local})\approx 0.7$ baseline for the matter-bounce template
+mismatch and adopts exactly these $5.2$--$5.5\sigma$ optimistic and
+$2.6$--$5\sigma$ realistic (post-systematic-budget) ranges as its headline
+forecast; the present footnote summarizes that result rather than deriving it
+from the in-text $\sigma(\fnl)\approx 1.0$ GR-marginalized value alone (which
+gives the $\approx 4.4\sigma$ lower midpoint).}~\cite{Heinrich:2023,Golden2026P2}
 via the galaxy bispectrum, simultaneously discriminating matter-bounce from
 slow-roll inflation ($\fnl\approx 0.015$) and the Cuscuton
 bounce~\cite{Dehghani:2025cusc}; (3)~MCMC parameter values ($H_0$, $\sigma_8$,
@@ -2176,7 +2191,7 @@ cosmological-constant problem as sensitivity to $N_{\rm tot}$,
 \emph{not} a resolution. All four enumerated routes
 either sit outside their naturalness windows or require a
 $m_\theta\!\sim\!H_0$ tuning that re-imports the cosmological-constant
-problem; the 13 logically-independent barriers
+problem; the 13 mechanism-class constraints
 (Table~\ref{tab:barriers}) constrain the routes at the amplitude
 level. ($\sigma$ values across panels use different null procedures; see text.)\label{fig:naturalness}}
 \end{figure*}
@@ -2249,7 +2264,7 @@ gravitational democracy, included for completeness.
 %% --- Labels ---
 \node[above=0.05cm of A, font=\footnotesize\itshape] at (5.1,3.75) {7 Foundations (A--G): mechanism-class barriers};
 \node[above=0.05cm of H, font=\footnotesize\itshape] at (3.4,2.2) {6 Branches (H, J, L, M, N, O): observational-channel barriers};
-\node[below=0.12cm of R1, font=\footnotesize] at (5.1,-0.52) {\textit{All four routes closed (13 independent barriers)}};
+\node[below=0.12cm of R1, font=\footnotesize] at (5.1,-0.52) {\textit{All four routes closed (13 mechanism-class constraints)}};
 
 \end{tikzpicture}
 \caption{\textbf{Structure of the 14-barrier closure.} The 7 foundation
@@ -2259,20 +2274,19 @@ Barriers~8--14) feed collectively into the four closed dark-energy routes
 R1--R4 (bottom row). Arrows indicate which barrier classes constrain each
 route. B8 (Branch H, parity-even interaction) is subsumed by B14
 (perturbation transparency) and they are grouped together. Thirteen
-logically-independent barriers are shown; B8 is not counted separately.
+mechanism-class constraints are shown (several share the scaling ansatz but each probes a distinct physical failure mode); B8 is not counted separately.
 \label{fig:barrier_map}}
 \end{figure*}
 
 \begin{table*}[tb]
-\caption{\label{tab:barriers} The 14 catalogue entries (13 logically
-independent; B8 subsumed by B14) of mechanism-class constraints on
-minimal ECH dark-energy routes. Note: Barriers 8 (parity-even
+\caption{\label{tab:barriers} The 14 catalogue entries (13 distinct mechanism-class constraints;
+B8 subsumed by B14) on minimal ECH dark-energy routes. Note: Barriers 8 (parity-even
 interaction) and 14 (perturbation transparency) close the same
 observable channel (primordial-GW chirality / tensor parity violation)
-by non-independent routes; B14 is the first-principles theorem that
+via related routes sharing the perturbation-transparency result; B14 is the first-principles theorem that
 subsumes B8 as the corresponding observational consequence. They are
 listed separately to preserve the historical mechanism-class catalog,
-but should not be counted as logically independent constraints.}
+but should not be counted as a separate mechanism-class constraint.}
 \centering
 \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}clll}
 \toprule
@@ -2762,7 +2776,7 @@ annotations. ($\sigma$ values across panels use different null procedures; see t
 \end{figure}
 
 Despite the channel-level closure of the four enumerated minimal-ECH
-dark-energy routes (13 logically-independent barriers under the stated
+dark-energy routes (13 mechanism-class constraints under the stated
 assumptions), the broader bounce-cosmology program retains two fully
 testable ECH-independent class-level predictions:
 
@@ -2918,7 +2932,7 @@ mechanisms are not addressed by the present no-go.
 
 \subsection{Channel-Level Closure}\label{sec:ech_closure}
 
-The 13 logically-independent structural constraints (14 historical catalog
+The 13 mechanism-class structural constraints (14 historical catalog
 entries) catalog the four enumerated minimal-ECH dark-energy channels and
 close each under the stated assumptions (Scope and Limitations paragraph,
 Sec.~\ref{sec:intro}). The surviving science case rests on the
@@ -2962,7 +2976,7 @@ as parity-sensitive channels (model-dependent tests of $\gamma_{\rm BI}$
 only under a derived $\gamma_{\rm BI}$-dependent photon or tensor-parity
 coupling).
 
-\textit{The 13 logically-independent barriers (14 historical catalog entries).}---Systematic analysis across 7 foundations (A--G) and
+\textit{The 13 mechanism-class constraints (14 historical catalog entries).}---Systematic analysis across 7 foundations (A--G) and
 6 observational branches (H, J, L, M, N, O) established 14 mechanism-class constraints (one of which, B8, is the observational consequence of the perturbation-transparency result B14 and is retained in the catalog for historical mechanism-class completeness) on the minimal ECH
 dark-energy parameter space (Sec.~\ref{sec:barriers}). These constraints are
 ECH-specific: other bouncing cosmologies (notably quintom scenarios) can in
@@ -3127,7 +3141,7 @@ $\rho_\Lambda^{\rm obs}$ is ${\sim}120$ orders of magnitude under
 \emph{any} non-cancellation assumption (whether the bounce-scale density
 is $\MPl^4$, $10^{-2}\,\MPl^4$, or $10^{-4}\,\MPl^4$ shifts the required
 e-fold count by $\mathcal{O}(\text{a few})$, not by orders of magnitude),
-and this scale separation is what drives the 13 logically-independent
+and this scale separation is what drives the 13 mechanism-class
 structural barriers (Sec.~\ref{sec:barriers}). The barriers close the
 bounce-to-dark-energy route on amplitude-budget and operator-counting
 grounds whose qualitative conclusions are ansatz-independent; only the
