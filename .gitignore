@@ -73,3 +73,6 @@ pipelines/p5_desi_chirality/data/
 
 # arxiv build tarballs (regenerable)
 arxiv/*.tar.gz
+
+# REVTeX auto-generated bib control files (regenerable)
+*Notes.bib
