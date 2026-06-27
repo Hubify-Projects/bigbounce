@@ -25,6 +25,29 @@ A SPHEREx Sensitivity Recast with a MegaMapper Outlook}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
 \date{June 19, 2026}
+% R55 convergence-confirmation (2026-06-26 — native-PDF 3-vendor round [OpenAI/Gemini/Grok OK;
+%   Perplexity quota-failed; no Anthropic leg]. Own Opus arithmetic re-derivation independently
+%   reproduced ALL headline numbers (template-corrected 5.18-5.47sigma; GR-only floor 3.01sigma;
+%   all-combined 2.73/2.60sigma; Planck PR4 recast tension 0.75sigma; tau_NL 27.56). Verdict:
+%   CONVERGED. 0 BLOCKER / 0 genuine MAJOR. 1 NIT-tier source-verified internal-consistency fix:
+%   R55-1 CLOSED (OpenAI P2-E7 pass-2): Sec III.A (SDB) L735 explanatory prose said "the explicit
+%     k^2 in the denominator of M" but Eq (eq:Mkz) defines M = 2 k^2 T(k) D(z)/(3 Omega_m H0^2),
+%     i.e. k^2 is in the NUMERATOR of M. Delta_b ∝ 1/M ∝ 1/k^2 is correct; only the mechanism
+%     phrasing was backwards. Rewritten to "Since Delta_b ∝ 1/M and M ∝ k^2 ... the signal grows
+%     as Delta_b ∝ 1/k^2". No equation, number, or headline change.
+%   Triaged FALSIFIED/OPINION/STALE (no edit): Gemini P2-E1 (App A "18/25 != 6/5") FALSIFIED —
+%     paper chain (5/3)^3 (3/5)^4 * 2 = (3/5)*2 = 6/5 is algebraically CORRECT; reviewer used
+%     (5/3)^2 instead of (5/3)^3 and Gemini's own "required fix" B_zeta=(-5/3)^3 B_Phi matches the
+%     paper. Gemini P2-m2 (missing pages 4/22) FALSIFIED — PDF-render artifact, 28 pp present, 0
+%     undef. OpenAI P2-E8 (weighting-direction "reversed") STALE — R53-2 already grounded the
+%     r_LSS<r_CMB direction in the numerical Fisher integration; reviewer conflates per-k weight
+%     with squeezed-triangle-shape weight. OpenAI P2-E6/E9/M8 (x3 squeezed relabel, IR-safety,
+%     dimensionless-grid bridge) OPINION/NIT — squeezed limit is permutation-symmetric, recast
+%     adopts Heinrich sigma=0.7 by design. OpenAI P2-E1/E3/E4/E5, Grok P2-E1/E2/M1/M2/M3/N1/N2,
+%     Gemini P2-E2/M1/m1/m3 — all DOI-deferred, already-caveated (abstract optimistic-vs-realistic
+%     2.6-5sigma + BF prior qualifiers present), assumption-(d) weakest-link already flagged,
+%     MegaMapper already labeled proposed/unfunded, anomaly-tracer 10-20% explicit upper-bound,
+%     date intentional (it IS June 2026), or cosmetic. No science/headline change.
 % R54 convergence-test (2026-06-26 — native-PDF 3-vendor round [OpenAI/Gemini/Grok OK;
 %   Perplexity quota-failed; no Anthropic leg]. OpenAI arithmetic audit independently
 %   reproduced ALL headline numbers (5.18-5.47sigma, 3.01sigma, 2.73sigma, 2.63sigma,
@@ -732,7 +755,7 @@ with the Poisson--Newtonian transfer kernel
 \mathcal{M}(k,z) = \frac{2\,k^2\,T(k)\,D(z)}{3\,\Omega_m\,H_0^2}\,,
 \label{eq:Mkz}
 \end{equation}
-where $T(k)$ is the matter transfer function (normalized to $T(k)\to 1$ as $k\to 0$), $D(z)$ is the linear growth factor (normalized to $D(0)=1$), wavenumbers $k$ are comoving and quoted in $h\,\mathrm{Mpc}^{-1}$ throughout, $\delta_c \approx 1.686$ is the spherical-collapse threshold, and $b_1$ is the linear Eulerian galaxy bias. The explicit $k^2$ in the denominator of $\mathcal{M}$, combined with $T(k)\to 1$ on ultra-large scales, makes the signal grow as $\Delta b \propto 1/k^2$ as $k\to 0$~\cite{Dalal:2007cu,Slosar:2008}; this $1/k^2$ enhancement on the largest scales is what makes scale-dependent bias the most sensitive single channel for local-type $\fnl$. All downstream Fisher weightings, plots, and forecasts that invoke the SDB kernel in this paper use Eqs.~(\ref{eq:sdb})--(\ref{eq:Mkz}) as the canonical definition.
+where $T(k)$ is the matter transfer function (normalized to $T(k)\to 1$ as $k\to 0$), $D(z)$ is the linear growth factor (normalized to $D(0)=1$), wavenumbers $k$ are comoving and quoted in $h\,\mathrm{Mpc}^{-1}$ throughout, $\delta_c \approx 1.686$ is the spherical-collapse threshold, and $b_1$ is the linear Eulerian galaxy bias. Since $\Delta b \propto 1/\mathcal{M}$ and $\mathcal{M} \propto k^2$ on ultra-large scales (where $T(k)\to 1$), the signal grows as $\Delta b \propto 1/k^2$ as $k\to 0$~\cite{Dalal:2007cu,Slosar:2008}; this $1/k^2$ enhancement on the largest scales is what makes scale-dependent bias the most sensitive single channel for local-type $\fnl$. All downstream Fisher weightings, plots, and forecasts that invoke the SDB kernel in this paper use Eqs.~(\ref{eq:sdb})--(\ref{eq:Mkz}) as the canonical definition.
 
 \subsection{Template Projection and Amplitude Recovery}
 \label{sec:template}
