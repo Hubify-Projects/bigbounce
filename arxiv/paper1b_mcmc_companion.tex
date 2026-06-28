@@ -6,6 +6,20 @@
 % Main theory paper: paper1a_ech_nogo.tex (Golden 2026a)
 % Compile: pdflatex paper1b_mcmc_companion && bibtex paper1b_mcmc_companion && pdflatex paper1b_mcmc_companion && pdflatex paper1b_mcmc_companion
 %
+% v1B.0.82 (2026-06-28 — INT self-containment closure: load-bearing theory results
+%   imported from Paper I(a) by citation only now restated in-paper. Added an
+%   "Imported theory results (summarized for standalone readability)" paragraph to
+%   sec:intro restating, at first use, (i) the 13 mechanism-class structural barriers,
+%   (ii) the perturbation-transparency theorem (Holst-sector linear-perturbation
+%   transparency; closes the perturbation-transparency DE channel at background level),
+%   and (iii) the surviving matter-bounce signature fnl=-35/8 — each with a one-line
+%   statement of WHAT it is + that full derivations live in Paper I(a) (posted
+%   concurrently). Framing sentence added: imported for self-contained readability,
+%   derivations in Paper I(a); P1B's OWN contribution (MCMC posteriors / pipeline
+%   validation / spectator-ALP check) is self-contained + reproducible from this repo.
+%   "What is NOT in this paper" softened to "full derivations ... in Paper I(a)
+%   (summarized for standalone context above)". No new results, no fabricated
+%   derivation — surfaces cited results only. 0 undef-refs.)
 % v1B.0.81 (2026-06-28 — INT-X-P1B closure: completed the w0wa sigma-removal honestly.
 %   (1) Table II (tab:iter2_posterior, Gemini M2 / Grok M2 converge VERIFIED): removed
 %       the "vs LCDM" / significance column entirely (3-col lcc -> 2-col lc); all three
@@ -139,7 +153,7 @@
 %   FALSIFIED list (14 items) not acted on.)
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1B.0.81}
+\newcommand{\paperVersion}{v1B.0.82}
 \newcommand{\paperTimestamp}{June 28, 2026}
 % v1B.0.77 (2026-06-26 — R53-R55 closure wave: version+date stamp bump; PDF recompiled and re-mirrored; no new science change)
 % v1B.0.76 (2026-06-20 — P-round: 3 reproducibility datasets published public on HF (bamfai/p1b-*); Appendix A URLs corrected Hubify->bamfai; P1B now fully reproducible. No science change.)
@@ -1197,6 +1211,37 @@ below --- and their data products, chains, and pipeline code --- are
 self-contained and independently reproducible from this paper's own repository,
 so no quantitative claim here depends on unpublished companion numerics.
 
+\textit{Imported theory results (summarized for standalone
+readability).}---So that the present companion can be read without Paper~I(a)
+in hand, we restate the load-bearing structural results that Paper~I(a)
+establishes and that this paper takes as fixed theoretical inputs; the full
+derivations are in Paper~I(a), posted concurrently, and are not reproduced
+here. (i)~\emph{Thirteen mechanism-class structural barriers.} Paper~I(a)
+catalogs thirteen distinct mechanism classes (organized in its barrier table)
+by which the minimal Einstein--Cartan--Holst (ECH) spin-torsion sector fails to
+source a viable late-time dark-energy component; each barrier closes a separate
+route, and collectively they close the minimal-ECH parameter space as a
+dark-energy scenario. (ii)~\emph{Perturbation-transparency theorem.} For the
+Holst sector, Paper~I(a) proves that the torsion/Holst contributions are
+transparent to linear cosmological perturbations---they do not propagate as
+independent perturbative degrees of freedom---so the
+``perturbation-transparency'' channel (one of the four minimal-ECH dark-energy
+routes: kinetic-coupling, potential-energy, perturbation-transparency, and
+spin-torsion-propagator) closes already at the background level and leaves no
+distinctive linear-perturbation dark-energy signature.
+(iii)~\emph{Surviving matter-bounce signature $\fnl=-35/8$.} With the
+dark-energy channels closed, the distinctive observational target that survives
+in Paper~I(a) is the matter-bounce non-Gaussianity amplitude $\fnl=-35/8$,
+established structurally there and valid strictly for the minimal scalar-only
+$w=0$ matter-dominated contraction class (not the broader bouncing-cosmology
+landscape---ekpyrotic, Cuscuton, string-gas, and quintom variants carry
+different $\fnl$ signatures). This signature is quoted here only as program
+context: it is \emph{not} probed by the present companion, whose three analyses
+test $\Delta\Neff$, $w_0 w_a$, and birefringence consistency. The companion's
+own contribution---the MCMC posteriors, pipeline-validation figures, and
+spectator-ALP consistency check reported below---is self-contained and
+independently reproducible from this paper's repository.
+
 \textit{Scope of this paper.}---Three verification analyses are reported here,
 each with explicit scope limitations:
 \begin{enumerate}[leftmargin=*]
@@ -1231,10 +1276,12 @@ parameters; no ECH-specific derivation connects the Holst action to the
 photon-torsion coupling required.
 \end{enumerate}
 
-\textit{What is NOT in this paper.}---The 13 mechanism-class structural barriers, the
+\textit{What is NOT in this paper.}---The \emph{full derivations} of the 13
+mechanism-class structural barriers, the
 perturbation-transparency theorem, the 14-barrier table, and the surviving
 matter-bounce-specific test predictions ($\fnl=-35/8$, valid strictly for the minimal scalar-only $w=0$ matter-dominated contraction class, not the broader bouncing-cosmology landscape which encompasses ekpyrotic, Cuscuton, string-gas, and quintom variants with different $\fnl$ signatures, and ALP birefringence)
-are in Paper~I(a)~\cite{Golden2026P1a}. The SPHEREx multi-tracer Fisher
+are in Paper~I(a)~\cite{Golden2026P1a} (those results are summarized for
+standalone context above). The SPHEREx multi-tracer Fisher
 forecast (in preparation, \cite{Golden2026P2}; results to be detailed
 separately) is the subject of Paper~II. The multi-survey anomaly catalog
 (in preparation, \cite{Golden2026P3}) is the subject of Paper~III.

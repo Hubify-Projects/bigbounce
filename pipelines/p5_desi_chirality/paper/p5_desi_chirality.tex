@@ -33,7 +33,7 @@
 % The divide-by-h claim (~1246 h⁻¹ Mpc) is INVERTED. No pipeline recompute required.
 % If any future reviewer re-raises this, cite env_finder/01_compute_vweb.py:106-108.
 
-\newcommand{\paperVersion}{v0.1.90-2026-06-28}
+\newcommand{\paperVersion}{v0.1.91-2026-06-28}
 % v0.1.88-2026-06-27 (EXTDB de-biased external round — truth audit
 %   project-context/peer-reviews/EXTDB_P5_TRUTH_AUDIT.md; Grok MAJOR audited
 %   FALSE-POSITIVE [robust across 5 void-finders |Df_CW|<=0.004 p>=0.21; DESIVAST
@@ -792,6 +792,56 @@ filtered to the chirality-relevant equivariant class $\in$
 \{\texttt{CW}, \texttt{CCW}\}. Imaging-leg provenance is retained for
 the per-leg systematics split in Section~\ref{sec:systematics}:
 BASS+MzLS, DECaLS, DES.
+
+The present paper consumes two inputs from Paper~IV:
+(i)~the \emph{per-galaxy} CW/CCW handedness labels (catalog column
+\texttt{class\_eq}), and (ii)~a single scalar, the catalog-wide CW-fraction
+monopole $\Delta f_{\rm CW}^{\rm P4} = -0.0026$. Table~\ref{tab:p4_inputs}
+states both with their values and provenance so that a referee can assess
+this paper without the in-preparation Paper~IV manuscript in hand; the full
+classifier architecture, training, and validation are detailed in Paper~IV,
+posted concurrently. The labels are the only Paper~IV input the
+environmental-independence conclusion depends on: the headline
+void-vs-non-void $\Delta f_{\rm CW}$ two-sample contrast is invariant under
+any catalog-wide monopole shift (\S\ref{sec:p4}), so it depends on the
+\texttt{class\_eq} labels but \emph{not} on the $-0.0026$ amplitude. The
+monopole scalar enters only the monopole-referenced $\sigma_{\rm pred}$
+diagnostics (Tables~\ref{tab:density_quintile_residual},
+\ref{tab:within_class_density}, \ref{tab:p4_monopole_residual}), where its
+uncertainty is propagated explicitly, and is independently corroborated by
+the internal P5 matched-sample value $f_{\rm CW}^{\rm P5} = 0.49719$
+(\S\ref{sec:desivast_p4_residual}).
+
+\begin{table}[t]
+\caption{Paper~IV inputs consumed by this analysis, summarized for
+self-contained readability. Values are reproduced from
+Paper~IV~\cite{golden_chirality_2026} (in preparation; full classifier
+architecture, training, and validation therein, posted concurrently);
+labels are served as the \texttt{class\_eq} column of the public catalog
+\href{https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog}{bamfai/galaxy-chirality-catalog}.
+The per-galaxy \texttt{class\_eq} labels are the only input the
+environmental-independence headline rests on; the monopole amplitude enters
+only the $\sigma_{\rm pred}$ diagnostics.}
+\label{tab:p4_inputs}
+\begin{ruledtabular}
+\footnotesize
+\begin{tabular}{lr}
+Quantity & Value (as used here) \\
+\hline
+Catalog size & $8{,}474{,}531$ galaxies \\
+Class labels & \{\texttt{CW}, \texttt{CCW}, \texttt{NS}\} \\
+Classifier & equivariant ViT-Small, $Z_2$ TTA \\
+Imaging input & DESI Legacy DR8 Tractor \\
+\quad legs & BASS+MzLS, DECaLS, DES \\
+Label column consumed & \texttt{class\_eq} $\in$ \{CW, CCW\} \\
+Matched CW/CCW subsample & $791{,}635$ \\
+Global CW monopole & $f_{\rm CW} = 0.4974 \pm 0.000279$ \\
+\quad parity offset & $\Delta f_{\rm CW}^{\rm P4}=-0.0026$ \\
+\quad counting significance & ${\approx}9\sigma$ \\
+Real-space dipole (P4) & null, $+0.41\sigma$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
 
 \subsection{DESI Data Release 1}
 
