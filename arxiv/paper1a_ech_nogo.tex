@@ -47,8 +47,26 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.86}
+\newcommand{\paperVersion}{v1A.0.87}
 \newcommand{\paperTimestamp}{June 28, 2026}
+% v1A.0.87 (2026-06-28 — INT-X-P1A standalone-readability closure (OpenAI+Gemini+Grok
+%   3-reviewer-convergent MAJOR: "fails the standalone-reader test" — load-bearing
+%   numbers imported from companions by citation only). FIX (surface, do NOT fabricate):
+%   new compact "Companion-imported inputs" table tab:companion_inputs placed at the
+%   "Companion paper" paragraph (Sec I) where these inputs are first introduced. For each
+%   imported quantity it gives value+-error, the companion source, and a one-line "how
+%   obtained": H0=67.68+-1.06 (Paper Ib, joint LCDM+DeltaNeff MCMC, Cobaya v3.6.1+CAMB on
+%   Planck+BAO+SN, 309189 samples); DeltaNeff=-0.020+-0.169 (Paper Ib, same chain);
+%   sigma8=0.803+-0.008 + Omega_m=0.308+-0.005 (Paper Ib, derived); SPHEREx f_NL 2.6-5sigma
+%   realistic / 5.2-5.5sigma optimistic (Paper II, multi-tracer Fisher recasting Heinrich+2023);
+%   spectator-ALP beta~0.27deg (Paper Ib, ALP MCMC 9720 samples at f_a~MPl,m~H0);
+%   NaMaster EB pipeline validated (Paper Ib). Added explicit framing sentence: inputs
+%   summarized for self-contained readability, full derivations in concurrently-posted
+%   companions; no-go logic (transparency theorem + four-route closures + barrier catalog)
+%   is self-contained and uses NONE of these numbers — they enter only illustrative
+%   observational comparisons. Values reproduced verbatim from tab:params; external
+%   measurements (Eskilt+Komatsu 0.342+-0.094, ACT DR6 0.215+-0.074) cited inline not here.
+%   No fabricated derivations/numbers. 0 undef-refs.)
 % v1A.0.86 (2026-06-28 — INT-X-P1A neutral cross-check closure (OpenAI 3-ESSENTIAL,
 %   Gemini MAJOR, Grok REJECT): 4 VERIFIED items closed, companion/DOI/barrier-counting
 %   left appropriately untouched.
@@ -1053,6 +1071,67 @@ discussion of $\Lambda$CDM-consistency in Sec.~\ref{sec:obs} and the
 parameter-summary table in Appendix~\ref{app:params}.
 All subsequent citations to Paper~I(b)~\cite{Golden2026P1b} in this paper
 refer to this companion work; details are not duplicated here.
+Table~\ref{tab:companion_inputs} consolidates every companion-imported quantity
+referenced anywhere in this paper---its value, the companion it is drawn from,
+and a one-line statement of how it was obtained---so that a referee can audit
+the present paper's logic without the in-preparation companions in hand; these
+inputs are summarized here for self-contained readability, while their full
+derivations reside in the companion papers posted concurrently in the
+coordinated submission. The distinction is sharp: the no-go logic itself (the
+perturbation-transparency theorem, the four-route channel-level closures, and
+the mechanism-class constraint catalog) is self-contained and uses \emph{none}
+of these numbers; the imported values enter only the \emph{illustrative}
+observational comparisons (the $\Lambda$CDM-consistency check of
+Sec.~\ref{sec:obs} and the surviving-signature context of
+Sec.~\ref{sec:surviving}).
+
+\begin{table*}[tb]
+\caption{\label{tab:companion_inputs} Companion-imported inputs referenced in
+this paper, summarized here for self-contained readability. For each quantity we
+give the value, the companion it is drawn from, and a one-line statement of how
+it was obtained. These values provide \emph{illustrative} observational context
+only: \emph{none} is load-bearing for the perturbation-transparency theorem
+(Sec.~\ref{sec:transparency}), the four-route channel-level closures
+(Sec.~\ref{sec:fourroute}), or the mechanism-class constraint catalog
+(Sec.~\ref{sec:barriers}), all of which are established analytically within this
+manuscript. Full derivations are in the named companions, posted concurrently in
+the coordinated submission; numerical values are reproduced from
+Table~\ref{tab:params}. External (non-companion) measurements are cited inline at
+point of use, not here.}
+\begin{ruledtabular}
+\begin{tabular}{llll}
+Quantity & Value & Companion & How obtained \\
+\colrule
+$H_0$ & $67.68\pm 1.06$ km/s/Mpc & Paper~I(b)~\cite{Golden2026P1b} &
+\parbox[t]{0.36\textwidth}{\raggedright Joint $\Lambda$CDM$+\Delta\Neff$ MCMC
+posterior; Cobaya v3.6.1 $+$ CAMB on Planck$+$BAO$+$SN (309{,}189 frozen accepted
+samples).\strut} \\[3pt]
+$\Delta\Neff$ & $-0.020\pm 0.169$ (full-tension) & Paper~I(b)~\cite{Golden2026P1b} &
+\parbox[t]{0.36\textwidth}{\raggedright Same joint MCMC chain; consistent with
+$0$.\strut} \\[3pt]
+$\sigma_8$ & $0.803\pm 0.008$ & Paper~I(b)~\cite{Golden2026P1b} &
+\parbox[t]{0.36\textwidth}{\raggedright Derived parameter of the same MCMC
+chain.\strut} \\[3pt]
+$\Omega_m$ & $0.308\pm 0.005$ & Paper~I(b)~\cite{Golden2026P1b} &
+\parbox[t]{0.36\textwidth}{\raggedright Derived parameter of the same MCMC
+chain.\strut} \\[3pt]
+SPHEREx $\fnl$ forecast & \parbox[t]{0.16\textwidth}{\raggedright $2.6$--$5\sigma$
+realistic ($5.2$--$5.5\sigma$ optimistic)\strut} & Paper~II~\cite{Golden2026P2} &
+\parbox[t]{0.36\textwidth}{\raggedright Multi-tracer SPHEREx Fisher forecast
+recasting Heinrich$+$2023 $\sigma(\fnl)\!\approx\!0.7$ (ideal) /
+$\approx\!1.0$ (degraded-with-systematics) for the $\fnl=-35/8$ template.\strut} \\[3pt]
+Spectator-ALP $\beta$ benchmark & $\approx 0.27^\circ$ &
+Paper~I(b)~\cite{Golden2026P1b} &
+\parbox[t]{0.36\textwidth}{\raggedright Spectator-ALP MCMC fit (9{,}720 accepted
+samples, $\hat{R}-1<0.01$) at $f_a\sim\MPl$, $m\sim H_0$; sits inside the external
+WMAP$+$Planck band $0.342^\circ\pm 0.094^\circ$~\cite{Eskilt2022}.\strut} \\[3pt]
+NaMaster $EB$ pipeline & validated & Paper~I(b)~\cite{Golden2026P1b} &
+\parbox[t]{0.36\textwidth}{\raggedright Pseudo-$C_\ell$ ($EB$) estimator
+validation against simulations; methodology and reproducibility manifest
+documented in the companion.\strut} \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
 
 Appendices provide the parameter summary (Appendix~\ref{app:params}) and
 dimensional analysis (Appendix~\ref{app:dimensions}).
