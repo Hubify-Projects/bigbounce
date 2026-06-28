@@ -119,8 +119,8 @@
 %   FALSIFIED list (14 items) not acted on.)
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1B.0.79}
-\newcommand{\paperTimestamp}{June 27, 2026}
+\newcommand{\paperVersion}{v1B.0.80}
+\newcommand{\paperTimestamp}{June 28, 2026}
 % v1B.0.77 (2026-06-26 — R53-R55 closure wave: version+date stamp bump; PDF recompiled and re-mirrored; no new science change)
 % v1B.0.76 (2026-06-20 — P-round: 3 reproducibility datasets published public on HF (bamfai/p1b-*); Appendix A URLs corrected Hubify->bamfai; P1B now fully reproducible. No science change.)
 % v1B.0.75 (2026-06-19): D-round visual polish: ALP corner Fig 4 -> full-width (figure* / 0.85\textwidth, mirror Fig 3 treatment).
@@ -1475,16 +1475,16 @@ Min ESS & 4{,}744 & 4{,}692 \\
 % calibrator); the 9 CamSpec foreground/calibration nuisance params are
 % identical between chains. Verified against iter2 chain header at
 % reproducibility/cosmology/iter2_converged_2026-05-18/.
-\caption{\label{tab:iter2_posterior} DESI~DR2 $w_0 w_a$ posterior summary ($N=128{,}385$ accepted samples across 16 chains, $\hat R-1=0.00820$; 8 cosmological + 9 nuisance parameters). Likelihood stack: DESI~DR2~BAO + Planck NPIPE (PR4) CamSpec high-$\ell$ TTTEEE + Planck~2018 low-$\ell$ TT/EE + Planck~2018 lensing (\texttt{native}) + DES-Y5 + Pantheon+. Full parameter list and chain diagnostics are available in the companion data repository. Derived-parameter widths are GetDist readouts of the full chain covariance: the chain's $\sigma_8$--$\Omega_m$ correlation is $\rho=-0.27$ (the standard CMB acoustic-scale/lensing degeneracy), which is why $\sigma_{S_8}=0.0089$ is smaller than the uncorrelated propagation through $S_8=\sigma_8(\Omega_m/0.3)^{0.5}$ ($\approx 0.010$). \textbf{Overlap-uncorrected DES-Y5$\times$Pantheon$+$ product likelihood; the $\sigma$-distances are marginal-tail posterior-extrapolation distances, diagnostic only --- not detection significances and not suitable for model selection (caveat~(e), fn.~\ref{fn:wcaveat}).}}
+\caption{\label{tab:iter2_posterior} DESI~DR2 $w_0 w_a$ posterior summary ($N=128{,}385$ accepted samples across 16 chains, $\hat R-1=0.00820$; 8 cosmological + 9 nuisance parameters). Likelihood stack: DESI~DR2~BAO + Planck NPIPE (PR4) CamSpec high-$\ell$ TTTEEE + Planck~2018 low-$\ell$ TT/EE + Planck~2018 lensing (\texttt{native}) + DES-Y5 + Pantheon+. Full parameter list and chain diagnostics are available in the companion data repository. Derived-parameter widths are GetDist readouts of the full chain covariance: the chain's $\sigma_8$--$\Omega_m$ correlation is $\rho=-0.27$ (the standard CMB acoustic-scale/lensing degeneracy), which is why $\sigma_{S_8}=0.0089$ is smaller than the uncorrelated propagation through $S_8=\sigma_8(\Omega_m/0.3)^{0.5}$ ($\approx 0.010$). \textbf{Overlap-uncorrected DES-Y5$\times$Pantheon$+$ product likelihood: the SN likelihood double-counts the ${\sim}20\%$ shared DES-Y5/Pantheon$+$ events with no joint cross-covariance, so the posterior widths are artificially narrowed and \emph{no} $\sigma$-distance or significance from $\Lambda$CDM is quotable from this chain. The means/widths below are raw chain readouts only; the $\Lambda$CDM point $(w_0,w_a)=(-1,0)$ is unsampled by this chain. A valid significance and model selection await the deferred overlap-controlled / nested-sampling analysis (caveat~(e), fn.~\ref{fn:wcaveat}).}}
 \begin{ruledtabular}
 \begin{tabular}{lcc}
 Parameter & Mean $\pm \sigma$ & vs $\Lambda$CDM\\
 \hline
 \multicolumn{3}{l}{\textit{Dark-energy extension}}\\
-$w_0$         & $-0.8122 \pm 0.0436$ & (marg.-tail, $+4.3\sigma$)\footnote{\label{fn:wcaveat}Marginal-tail \emph{posterior-extrapolation} departure: $\Lambda$CDM is unsampled by this chain (no $w_0\!=\!-1, w_a\!=\!0$ samples in the present Metropolis-Hastings run), so the $+4.3\sigma$ figure is a posterior-tail extrapolation distance only, \emph{not} a Bayes-factor or $\ln B$ exclusion and \emph{not} a frequentist tension. A Savage-Dickey readout is not viable at this tail depth; robust $\ln B$ is left to a follow-up nested-sampling analysis (see \S~Headline-result discussion).}\\
-$w_a$         & $-0.6666 \pm 0.1864$ & $-3.6\sigma$ from $0$ (marg.-tail; fn.~\ref{fn:wcaveat})\\
-$w_0 + w_a$   & $-1.4788 \pm 0.1485$ & $<-1$ (phantom-crossing region; marg.-tail, fn.~\ref{fn:wcaveat})\\
-$w_{\rm pivot}$ & $-0.952 \pm 0.019$ & $+2.5\sigma$ from $-1$\footnote{\label{fn:wpivot}$w_{\rm pivot} \equiv w_0 + (1-a_p)\,w_a$ with the pivot $a_p$ chosen so that $w_{\rm pivot}$ and $w_a$ are uncorrelated in the posterior covariance, i.e.\ $\mathrm{Cov}(w_0,w_a) + (1-a_p)\,\mathrm{Var}(w_a) = 0$, giving $1-a_p = -\mathrm{Cov}(w_0, w_a) / \mathrm{Var}(w_a)$. Direct readout of the converged iter2 chain ($30\%$ burn-in): $\mathrm{Cov}(w_0,w_a) = -0.00729$ (correlation coefficient $\rho = -0.90$), so $1-a_p = 0.210$, $a_p = 0.790$, and $z_p = 1/a_p - 1 = 0.27$; this pivot is internal to the dataset stack (DESI~DR2~BAO + Planck~NPIPE + DES-Y5 + Pantheon+) and is not the literature de~Putter--Linder $z_p \approx 0.4$ value. The decorrelated combination has $\sigma_{w_{\rm pivot}}^2 = \sigma_{w_0}^2 - \mathrm{Cov}^2(w_0,w_a)/\sigma_{w_a}^2 = (0.0436)^2 - (0.00729/0.1864)^2 = (0.0193)^2$, reproducing the $\pm 0.019$ value above, with mean $w_{\rm pivot} = -0.8122 + 0.210\times(-0.6666) = -0.952$. The choice of $a_p$ depends on the dataset stack; rerunning the chain with SH0ES or DESI~DR2~BAO alone would shift $z_p$ and $w_{\rm pivot}$ at the linear-Fisher level.}\\
+$w_0$         & $-0.8122 \pm 0.0436$ & (overlap-inflated; not quotable)\footnote{\label{fn:wcaveat}No valid $\sigma$-distance from $\Lambda$CDM can be quoted from this chain. The SN likelihood combines DES-Y5 and Pantheon$+$ as a product without a joint cross-covariance despite ${\sim}20\%$ shared supernovae, which double-counts the common events and artificially narrows the posterior; any departure-from-$\Lambda$CDM significance computed from these widths is an overlap-inflated product-likelihood artifact. Separately, $\Lambda$CDM is unsampled by the present Metropolis-Hastings run (no $w_0\!=\!-1, w_a\!=\!0$ samples), so any nominal departure would in any case be a posterior-tail extrapolation, \emph{not} a Bayes-factor or $\ln B$ exclusion and \emph{not} a frequentist tension. A Savage-Dickey readout is not viable; robust $\ln B$ is left to a follow-up overlap-controlled nested-sampling analysis (see \S~Headline-result discussion).}\\
+$w_a$         & $-0.6666 \pm 0.1864$ & (overlap-inflated; not quotable; fn.~\ref{fn:wcaveat})\\
+$w_0 + w_a$   & $-1.4788 \pm 0.1485$ & $<-1$ (phantom-crossing region; fn.~\ref{fn:wcaveat})\\
+$w_{\rm pivot}$ & $-0.952 \pm 0.019$ & (overlap-inflated; not quotable)\footnote{\label{fn:wpivot}$w_{\rm pivot} \equiv w_0 + (1-a_p)\,w_a$ with the pivot $a_p$ chosen so that $w_{\rm pivot}$ and $w_a$ are uncorrelated in the posterior covariance, i.e.\ $\mathrm{Cov}(w_0,w_a) + (1-a_p)\,\mathrm{Var}(w_a) = 0$, giving $1-a_p = -\mathrm{Cov}(w_0, w_a) / \mathrm{Var}(w_a)$. Direct readout of the converged iter2 chain ($30\%$ burn-in): $\mathrm{Cov}(w_0,w_a) = -0.00729$ (correlation coefficient $\rho = -0.90$), so $1-a_p = 0.210$, $a_p = 0.790$, and $z_p = 1/a_p - 1 = 0.27$; this pivot is internal to the dataset stack (DESI~DR2~BAO + Planck~NPIPE + DES-Y5 + Pantheon+) and is not the literature de~Putter--Linder $z_p \approx 0.4$ value. The decorrelated combination has $\sigma_{w_{\rm pivot}}^2 = \sigma_{w_0}^2 - \mathrm{Cov}^2(w_0,w_a)/\sigma_{w_a}^2 = (0.0436)^2 - (0.00729/0.1864)^2 = (0.0193)^2$, reproducing the $\pm 0.019$ value above, with mean $w_{\rm pivot} = -0.8122 + 0.210\times(-0.6666) = -0.952$. The choice of $a_p$ depends on the dataset stack; rerunning the chain with SH0ES or DESI~DR2~BAO alone would shift $z_p$ and $w_{\rm pivot}$ at the linear-Fisher level.}\\
 \hline
 \multicolumn{3}{l}{\textit{Standard cosmology}}\\
 $H_0$ [km\,s$^{-1}$\,Mpc$^{-1}$] & $67.185 \pm 0.455$ & ---\\
@@ -1525,9 +1525,9 @@ the load-bearing one: the same converged chain
 shows the $\Lambda$CDM point $(w_0, w_a)=(-1,0)$ unsampled by the
 present Metropolis-Hastings run, with the joint marginal posterior
 displaced into the phantom-crossing region of CPL space
-(overlap-inflated marginal-tail upper bounds, \emph{not} detection
-significances: $+4.3\sigma$ in $w_0$, $-3.6\sigma$ in
-$w_a$; fn.~\ref{fn:wcaveat}) and
+(the product-likelihood SN overlap narrows the posterior, so
+\emph{no} $\sigma$-distance or significance from $\Lambda$CDM is
+quotable; fn.~\ref{fn:wcaveat}) and
 $w_0+w_a=-1.48 \pm 0.15$ requiring
 phantom crossing in the redshift range probed by DESI~DR2~BAO + DES-Y5 +
 Pantheon+: at the posterior mean the CPL trajectory
@@ -1548,11 +1548,12 @@ nested-sampling analysis and is \emph{not} claimed here. At the decorrelation pi
 ($z_p = 0.27$, a redshift --- numerically coincident with, and unrelated
 to, the \S\ref{sec:data_cmb} injection angle $\beta=0.27^\circ$;
 fn.~\ref{fn:wpivot}), the effective equation of state is
-$w_{\rm pivot} = -0.952 \pm 0.019$, i.e.\ $+2.5\sigma$ above $-1$: the
-departure from $\Lambda$CDM persists, at reduced significance, even in the
-best-determined direction of the $(w_0, w_a)$ posterior, with the largest
-single-axis departures carried by $w_0$ ($+4.3\sigma$) and the time-varying
-$w_a$ term ($-3.6\sigma$). The CPL trajectory's effect on the expansion
+$w_{\rm pivot} = -0.952 \pm 0.019$: the posterior center lies away from
+$\Lambda$CDM even in the best-determined direction of the $(w_0, w_a)$
+posterior, but because the product-likelihood SN overlap artificially
+narrows the widths, \emph{no} $\sigma$-distance or significance is quoted
+for the pivot or for the single $w_0$/$w_a$ axes (fn.~\ref{fn:wcaveat}).
+The CPL trajectory's effect on the expansion
 rate is small at the redshifts probed by current SN data: at the posterior
 mean $(w_0, w_a)=(-0.812, -0.667)$ the CPL Hubble rate $H(z=0.5)$ differs
 from the $\Lambda$CDM rate (at fixed $\Omega_m=0.314$ and the chain's
@@ -1565,10 +1566,11 @@ $z\!\gtrsim\!1$ before turning over as $w(a)\!\to\!w_0+w_a$.
 $\ln B$ against $\Lambda$CDM is NOT reported here; standard posterior
 MCMC samples do not give a robust $\ln B$, and a Savage-Dickey density
 ratio at the $\Lambda$CDM point is \emph{not} viable on this chain because the
-$\Lambda$CDM point $(w, w_a) = (-1, 0)$ lies at $>4\sigma$ in the joint marginal
-tails (Table~\ref{tab:iter2_posterior}: $w_0$ departs by $+4.3\sigma$ and
-$w_a$ by $-3.6\sigma$) and is therefore unsampled by the
-Metropolis-Hastings chain; any KDE-based Savage-Dickey ratio at an
+$\Lambda$CDM point $(w, w_a) = (-1, 0)$ is unsampled by the
+Metropolis-Hastings chain --- it lies deep in the joint marginal tails of
+the present overlap-uncorrected posterior, but no $\sigma$-distance is
+quoted because the product-likelihood SN overlap narrows the widths
+(Table~\ref{tab:iter2_posterior}); any KDE-based Savage-Dickey ratio at an
 unsampled point yields arbitrary kernel-dependent noise rather than a
 controlled posterior density (with zero free-$w_0 w_a$ samples at the $\Lambda$CDM
 point, a KDE estimator on the converged 2D $(w, w_a)$ marginal
@@ -2186,27 +2188,27 @@ and no model-selection statement is claimed. The goodness-of-fit decomposition (
 $\chi^2_{\rm CMB}$, $\chi^2_{\rm SN}$) is reported in Table~\ref{tab:iter2_posterior};
 model-comparison statistics (AIC, BIC, $\ln B$) are \emph{not} reported there
 because a robust $\ln B$ against $\Lambda$CDM requires dedicated nested sampling
-(the $\Lambda$CDM point sits at $>4\sigma$ in the joint marginal tails and is
-unsampled by the Metropolis-Hastings chain; see fn.~\ref{fn:wcaveat}).
-The central marginal-tail posterior-extrapolation distances are
-$w_0 = -0.812 \pm 0.044$ ($+4.3\sigma$ from $-1$; fn.~\ref{fn:wcaveat})
-and $w_a = -0.667 \pm 0.186$ ($-3.6\sigma$ from $0$), with
-$w_0+w_a = -1.48 \pm 0.15$ indicating phantom crossing
-\textbf{(warning: these $\sigma$-distances are inflated by the
-uncorrected DES-SN5YR\,$\times$\,Pantheon+ ${\sim}20\%$ shared-event
-sample overlap, which double-weights the shared supernovae and narrows
-the posterior; they are an \emph{upper bound} on the apparent departure
-from $\Lambda$CDM --- an uncorrected product-likelihood artifact, not a
-detection significance --- and must be read together with caveat~(e),
-fn.~\ref{fn:wcaveat})}; these figures
+(the $\Lambda$CDM point is unsampled by the Metropolis-Hastings chain, lying
+deep in the joint marginal tails of the overlap-uncorrected posterior; see
+fn.~\ref{fn:wcaveat}).
+The chain posterior readouts are
+$w_0 = -0.812 \pm 0.044$, $w_a = -0.667 \pm 0.186$, and
+$w_0+w_a = -1.48 \pm 0.15$ (phantom-crossing region)
+\textbf{(no $\sigma$-distance or significance from $\Lambda$CDM is quoted:
+the uncorrected DES-SN5YR\,$\times$\,Pantheon+ ${\sim}20\%$ shared-event
+overlap double-counts the common supernovae and artificially narrows
+the posterior, so any departure-from-$\Lambda$CDM significance computed
+from these widths would be an overlap-inflated product-likelihood
+artifact, not a valid detection significance; this must be read together
+with caveat~(e), fn.~\ref{fn:wcaveat})}; these readouts
 carry the overlap-uncorrected SN systematic of caveat~(e) and are discussed in detail
 in Sec.~\ref{sec:verification} (Physics interpretation paragraph).
-The $+4.3\sigma$ departure of $w_0$ from $-1$ is a posterior-tail
-extrapolation upper bound, not a detection significance: $\Lambda$CDM is
-unsampled in the present Metropolis-Hastings run, so the figure measures
-the distance from the chain center to the $\Lambda$CDM point in units of
-the marginal posterior width (fn.~\ref{fn:wcaveat}); a robust exclusion
-bound requires the deferred nested-sampling analysis.
+The displacement of $w_0$ from $-1$ cannot be expressed as a
+significance: $\Lambda$CDM is unsampled in the present Metropolis-Hastings
+run, and the marginal posterior width that any such distance would use is
+artificially narrowed by the uncorrected SN overlap (fn.~\ref{fn:wcaveat});
+a valid exclusion bound requires the deferred overlap-controlled
+nested-sampling analysis.
 \emph{Compatibility-only scope:} all results in this subsection are
 posterior compatibility diagnostics; all model-preference inference is
 deferred --- no analysis here constitutes evidence for or against a bounce
@@ -2871,7 +2873,7 @@ All Table~I--II numerical entries quoted in this paper were recomputed
 directly from the committed raw chains (and from the
 \texttt{parameter\_summary\_CORRECTED.json} artifacts derived from
 them), not from the legacy column-permuted export.
-Bayes factors and information criteria ($\Delta$AIC, $\Delta$BIC, $\ln B$) are NOT reported in this manuscript: dedicated nested sampling via PolyChord or MultiNest on the identical likelihood stack is required for a controlled Bayesian evidence on the present quintom posterior (Sec.~\ref{sec:cosmo_fits}, \emph{Model-comparison statistics} paragraph). A Savage-Dickey readout from the present Metropolis-Hastings chain is not viable---the $\Lambda$CDM point $(w,w_a)=(-1,0)$ lies at $>4\sigma$ in the joint marginal tails and is unsampled, so a KDE-based estimator yields kernel-dependent noise rather than a controlled density. This is left to a dedicated future nested-sampling analysis.
+Bayes factors and information criteria ($\Delta$AIC, $\Delta$BIC, $\ln B$) are NOT reported in this manuscript: dedicated nested sampling via PolyChord or MultiNest on the identical likelihood stack is required for a controlled Bayesian evidence on the present quintom posterior (Sec.~\ref{sec:cosmo_fits}, \emph{Model-comparison statistics} paragraph). A Savage-Dickey readout from the present Metropolis-Hastings chain is not viable---the $\Lambda$CDM point $(w,w_a)=(-1,0)$ is unsampled (it lies deep in the joint marginal tails of the overlap-uncorrected posterior, but no $\sigma$-distance is quoted because the product-likelihood SN overlap narrows the widths), so a KDE-based estimator yields kernel-dependent noise rather than a controlled density. This is left to a dedicated future nested-sampling analysis.
 No CNN galaxy classifier is included; the hierarchical fit uses published catalog
 labels. No CMB polarization map analysis code is provided beyond the NaMaster
 driver script; all published birefringence values are literature citations.

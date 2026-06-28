@@ -33,7 +33,7 @@
 % The divide-by-h claim (~1246 h⁻¹ Mpc) is INVERTED. No pipeline recompute required.
 % If any future reviewer re-raises this, cite env_finder/01_compute_vweb.py:106-108.
 
-\newcommand{\paperVersion}{v0.1.88-2026-06-27}
+\newcommand{\paperVersion}{v0.1.89-2026-06-28}
 % v0.1.88-2026-06-27 (EXTDB de-biased external round — truth audit
 %   project-context/peer-reviews/EXTDB_P5_TRUTH_AUDIT.md; Grok MAJOR audited
 %   FALSE-POSITIVE [robust across 5 void-finders |Df_CW|<=0.004 p>=0.21; DESIVAST
@@ -460,7 +460,7 @@
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{June 27, 2026}
+\date{June 28, 2026}
 
 \begin{abstract}
 We cross-match the 8{,}474{,}531-galaxy chirality catalog of Paper~IV
@@ -3567,7 +3567,12 @@ written below are a \emph{toy parametrization introduced in this
 work}, inspired by but not derived from the cited
 parity-violating-gravity literature: the specific operator
 \(\mathcal{L}_{\rm parity}\supset g_\phi\,(\nabla_i\phi)\,
-(\nabla^i\rho/\rho_{\rm bg})\,(\hat L\cdot\hat z)\) is not contained
+(\nabla^i\rho/\rho_{\rm bg})\,(\hat L\cdot\widehat{\nabla\rho})\),
+written here in manifestly rotationally-invariant form with the
+angular momentum contracted against the unit density-gradient
+direction $\widehat{\nabla\rho}\equiv\nabla\rho/|\nabla\rho|$
+(a parity-odd pseudoscalar, since $\hat L$ is a pseudovector and
+$\widehat{\nabla\rho}$ a polar vector), is not contained
 in either Alexander \& Yunes~\cite{AlexanderYunes2009} (Chern--Simons
 modified gravity review) or Lue--Wang--Kamionkowski~%
 \cite{LueWangKamionkowski1999} (cosmological parity-violating
@@ -3596,15 +3601,20 @@ calculation here; the parametrization is included as a guide for
 future model-building, not as a derived constraint.
 
 \emph{Rotational-invariance and gauge-invariance caveat.} Two distinct theoretical caveats apply to the toy
-operator. \emph{First (rotational invariance):} the explicit
-$(\hat L\cdot\hat z)$ factor breaks rotational invariance via the
-fixed coordinate-system unit vector $\hat z$, and should be read as
-shorthand for a rotationally-invariant pseudoscalar formed from
-$\hat L$ and a physical direction set by the local cosmic-web
-gradient (e.g.\ $\hat L\cdot\widehat{\nabla\rho}$ or $\hat L\cdot
-\widehat{\nabla\phi}$ in the limit $\nabla\phi\!\parallel\!\nabla\rho$
-adopted below); the literal $\hat z$ form is a coordinate-aligned
-schematic, not a covariant operator. \emph{Second (gauge invariance):}
+operator. \emph{First (rotational invariance):} the parity-odd
+factor is written as $(\hat L\cdot\widehat{\nabla\rho})$, the
+contraction of the local angular-momentum unit vector with the unit
+density-gradient direction. This is manifestly invariant under
+global spatial rotations (both $\hat L$ and $\widehat{\nabla\rho}$
+co-rotate, so their inner product is unchanged) and is parity-odd as
+required for a chirality-sourcing term. We stress that an earlier
+schematic form contracting $\hat L$ with a \emph{fixed} coordinate
+axis $\hat z$ would \emph{not} have been rotationally invariant; the
+physical axis is set by the local cosmic-web density gradient, not by
+the observer's coordinate frame, and the operator above reflects
+that. (In the aligned limit $\nabla\phi\!\parallel\!\nabla\rho$
+adopted below, $\widehat{\nabla\rho}$ and $\widehat{\nabla\phi}$
+coincide.) \emph{Second (gauge invariance):}
 even with the rotational-invariance issue resolved, the
 density-gradient factor $\nabla^i\rho/\rho_{\rm bg}$ and the
 late-time angular-momentum direction $\hat L$ are quantities

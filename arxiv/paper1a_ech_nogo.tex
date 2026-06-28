@@ -47,8 +47,9 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.84}
-\newcommand{\paperTimestamp}{June 27, 2026}
+\newcommand{\paperVersion}{v1A.0.85}
+\newcommand{\paperTimestamp}{June 28, 2026}
+% v1A.0.85 (2026-06-28 — EXTDB2 P1A closure (Gemini MAJOR-1 + Minor-1; ChatGPT MINOR no-blocker; Grok leg FAILED): Fig 3 (fig:rotation_expansion) H0-artifact disclosure. VERIFIED against source: the ECH curve uses H0=69.2 and the LCDM reference H0=67.36 km/s/Mpc, so at z=0 (where H(0)=H0 identically) the entire ~2.7% deviation = (69.2-67.36)/67.36 is the H0-baseline offset, NOT a spin-torsion signal; the ~2-3% across z=0-3 is dominated by it. Honest fix (DISCLOSE, no fabricated residual): caption now states the deviation is dominated by the differing H0 baselines, that an H0-matched comparison isolates a sub-percent dynamical residual from the Omega_m/DeltaNeff differences alone, that the 2-3% must NOT be read as a bounce signature, and that the figure's benchmark H0=69.2 is a deliberately high illustrative value differing from the paper's adopted H0=67.68+/-1.06 (Table tab:summary / tab:params) — closes Minor-1 H0-inconsistency too. Figure was already labeled illustrative/not-a-derived-prediction and the 2-3% is NOT headlined in abstract/exec-summary. Gemini M2 (R2/R4 alpha/M sharing) + M3 (un-converged w0wa chain) already disclosed in-text (mechanism-class + free-coupling discussion L2022; Sec XI MCMC caveat) — OPINION/already-addressed, no new action. 0 undef-refs.)
 % v1A.0.84 (2026-06-27 — EXTDB closure wave (ChatGPT MINOR / Gemini MAJOR / Grok MAJOR de-biased): all de-biased external findings pre-empted in-text. (1) Companion-reliance (Gemini M1, Grok m1): new "Self-containment and companion dependency" paragraph in Intro Scope states no theorem/closure depends on companion numerics; companions are illustrative anchors only. (2) Four-route representativeness (Grok M1, ChatGPT M3): explicit "illustrative, non-exhaustive" note added at the four-route enumeration. (3) Mechanism-class / "13 logically-independent" (Grok M3, ChatGPT M1): NEW status paragraph at head of sec:barriers defines "distinct mechanism-class" precisely (no barrier is a logical consequence of another; NOT disjoint assumptions; B5/6/7/10/13 general, B9 heuristic) — pre-empts independence + ECH-specificity + B9-heuristic (Gemini Minor 2) flags. (4) On-shell ansatz centrality/dimension (Gemini M2, Grok M2): note added that any dimension-4 local completion reproduces the same on-shell amplitude budget, so closures are insensitive to off-shell completion. "13 logically-independent"->"mechanism-class" verified clean (0 live instances). 0 undef-refs.)
 % v1A.0.81 (2026-06-26 — R57 hardened de-biased re-review: the lone OPEN R56 MINOR (f_NL 2.6-5sigma range) CLOSED-BY-SOURCING — verified P2 (research/focused_paper_source_integration/02_full_draft.tex L644) genuinely adopts "5.2-5.5sigma optimistic and 2.6-5sigma realistic ranges as the headline forecast" (Heinrich+2023 sigma(fnl)~0.7 recast for template mismatch); fn:spherex_range (L2125) now explicitly cites Golden2026P2 for the range + clarifies the in-text sigma~1.0 gives the ~4.4sigma lower midpoint, so the range is sourced not self-derived. No fabricated numbers — P1A's range matches P2's verbatim. 0 undef, 0 overfull. R52-R56 fixes verified intact.)
 % v1A.0.81 (2026-06-26 — R56 hardened de-biased re-review: 3 VERIFIED MINORs closed (sign-consistency L1457, abstract cross-ref L726 loophole→fourroute_summary, dimensional-completeness delta_NY L1181); 1 OPEN MINOR (f_NL 2.6–5sigma range, companion-Fisher-deferred, Paper-II-blocked); PDF recompiled and re-mirrored)
@@ -1277,7 +1278,19 @@ $\Omega_m=0.310$, and enhanced radiation density
 $\Omega_r^{\rm ext} = \Omega_r^{\rm std}(1 + 0.3\tfrac{7}{8}(\tfrac{4}{11})^{4/3})$
 as a $\Delta N_{\rm eff}$ proxy for the extra-radiation ECH channel; the $\Lambda$CDM reference uses
 $H_0=67.36\,\text{km/s/Mpc}$, $\Omega_m=0.315$ (Planck-VI best-fit).
-The $\Delta H/H_{\Lambda\rm CDM}$ deviation is ${\sim}2$--$3\%$ across $z=0$--$3$.
+The $\Delta H/H_{\Lambda\rm CDM}$ deviation is ${\sim}2$--$3\%$ across $z=0$--$3$,
+but \emph{this deviation is dominated by the differing $H_0$ baselines, not by
+spin-torsion dynamics}: because $H(0)\equiv H_0$ for both models, the $z=0$
+residual is exactly the $H_0$ offset, $(69.2-67.36)/67.36 \approx 2.7\%$,
+independent of the $\Xi\MPl^2$ sector. An $H_0$-matched comparison (identical
+$H_0,\Omega_m$ for both curves) isolates the genuine dynamical effect of the
+spin-torsion dark-energy term, a sub-percent residual sourced by the
+$\Omega_m$ and $\Delta N_{\rm eff}$ differences alone; the figure is thus an
+illustrative benchmark-parameter overlay, \emph{not} a measure of the
+spin-torsion signal, and the $2$--$3\%$ figure must not be read as a bounce
+signature. The benchmark $H_0=69.2$ used here is a deliberately high
+illustrative value and differs from the paper's adopted
+$H_0=67.68\pm 1.06$ (Table~\ref{tab:summary}, Table~\ref{tab:params}).
 The $(\omega/H)_0 < 5\times 10^{-11}$ bound (Saadeh~\etal~\cite{Saadeh2016})
 applies under the Bianchi~IX isotropized cosmological model and is adopted
 here as a conservative bookkeeping upper limit on $c_\omega\omega^2$.\label{fig:rotation_expansion}}
