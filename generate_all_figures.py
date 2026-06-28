@@ -678,7 +678,7 @@ def figure_7():
     ax.plot(years, cmb, "o-", color=BLUE, lw=2.5, ms=8,
             label="CMB $E$-$B$", zorder=5)
     ax.plot(years, gal, "s-", color=ORANGE, lw=2.5, ms=8,
-            label="Galaxy Spins", zorder=5)
+            label=r"Galaxy Bispectrum ($f_\mathrm{NL}$)", zorder=5)
     ax.plot(years, comb0, "D-", color=GREEN, lw=3.0, ms=9,
             label=r"Combined ($\rho=0$)", zorder=6)
     ax.plot(years, comb03.flatten(), "^--", color=GREEN, lw=2.0, ms=7,
@@ -747,7 +747,7 @@ def figure_8():
     ax.fill_between(yr_s, 0, comb_s, alpha=0.07, color=GREEN)
 
     ax.plot(yr_s, cmb_s, color=BLUE, lw=2, label="CMB $E$-$B$")
-    ax.plot(yr_s, gal_s, color=ORANGE, lw=2, label="Galaxy Spins")
+    ax.plot(yr_s, gal_s, color=ORANGE, lw=2, label=r"Galaxy Bispectrum ($f_\mathrm{NL}$)")
     ax.plot(yr_s, comb_s, color=GREEN, lw=2.5,
             label=r"Combined ($\rho=0$)")
 

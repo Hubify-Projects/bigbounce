@@ -47,8 +47,47 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.85}
+\newcommand{\paperVersion}{v1A.0.86}
 \newcommand{\paperTimestamp}{June 28, 2026}
+% v1A.0.86 (2026-06-28 — INT-X-P1A neutral cross-check closure (OpenAI 3-ESSENTIAL,
+%   Gemini MAJOR, Grok REJECT): 4 VERIFIED items closed, companion/DOI/barrier-counting
+%   left appropriately untouched.
+%   (1) Gemini E2 Fig-8 (fig:detection_forecast) legend/caption contradiction: the
+%       forecast curve was legended "Galaxy Spins" — but galaxy spin is the CONFIRMED
+%       NULL channel (Sec III.B) while the caption identifies the top channel as the
+%       SPHEREx multi-tracer matter-bounce f_NL=-35/8 Fisher forecast. Relabeled the
+%       ORANGE curve "Galaxy Spins" -> "Galaxy Bispectrum (f_NL)" in BOTH
+%       generate_all_figures.py figure_7 (L681, fig:obs_timeline) and figure_8 (L750,
+%       fig:detection_forecast) — same significance tracks — and regenerated both PNGs.
+%       The "CMB E-B" curve is the LiteBIRD birefringence (beta) channel and is
+%       correctly labeled; only the f_NL curve was wrong.
+%   (2) OpenAI E1/E6 sigma-comparability LOCAL caveat: at the WMAP+Planck 0.342+-0.094
+%       (~3.6sigma) vs ACT DR6 0.215+-0.074 (~2.9sigma) ~1.06sigma juxtaposition
+%       (Sec IV birefringence, ~L1986), added an explicit in-place note that the two
+%       sigma values use different null procedures/masks/foreground treatments, are
+%       NOT a joint analysis with known covariance, and the ~1.06sigma figure is a
+%       heuristic assuming independent Gaussian errors — not a joint-pipeline
+%       significance. (Abstract caveat already present; this adds the local one.)
+%   (3) OpenAI E4 baryon-density phrasing: "post-recombination baryon densities
+%       n_psi~O(10^2) cm^-3" (Sec IV NJL, L1710) was inaccurate — 10^2 cm^-3 is
+%       dense-ISM, not cosmic-mean baryon (~2e-7 cm^-3). Reworded to "dense ISM-like
+%       number densities ... adopted as a deliberately conservative high-density upper
+%       bound, not the cosmic-mean baryon density (~2e-7 cm^-3 today, which would make
+%       the bound stronger still)". Numerics unchanged.
+%   (4) OpenAI E5 Delta-gamma/gamma~10^-2 traceability: the bare assertion
+%       "numerically Delta_gamma/gamma~10^-2 over GUT->IR" (Sec IV Route 3, L1888) had
+%       no in-text derivation. NOT fabricated — softened to an honestly-labeled
+%       order-of-magnitude estimate: integrated Eq.(gamma_running) gives
+%       Delta_gamma/gamma ~ (N_F^L-N_F^R) ln(mu_GUT/mu_IR)/(12 pi^2); with net chiral
+%       count O(1) and lever arm ln~30-35 this is 10^-2--10^-1; we adopt ~10^-2 as a
+%       representative conservative estimate (NOT a precise value; full running is the
+%       Benedetti-Speziale beta-function [Benedetti2011]) and note the closure is
+%       insensitive to it (even 10^-1 leaves >60 orders of margin).
+%   LEFT UNTOUCHED (per directive): Zenodo DOI (camera-ready deferred, HOUSTON-DECISION);
+%   in-preparation companion deps for H0/beta/forecasts (coordinated-submission
+%   structure, already disclosed as illustrative/non-load-bearing); NANOGrav
+%   gamma_PTA=2.567 companion number (Gemini E1, derivation in companion [46]);
+%   13-vs-14 barrier counting (already explained B8-subsumed-by-B14). 0 undef-refs.)
 % v1A.0.85 (2026-06-28 — EXTDB2 P1A closure (Gemini MAJOR-1 + Minor-1; ChatGPT MINOR no-blocker; Grok leg FAILED): Fig 3 (fig:rotation_expansion) H0-artifact disclosure. VERIFIED against source: the ECH curve uses H0=69.2 and the LCDM reference H0=67.36 km/s/Mpc, so at z=0 (where H(0)=H0 identically) the entire ~2.7% deviation = (69.2-67.36)/67.36 is the H0-baseline offset, NOT a spin-torsion signal; the ~2-3% across z=0-3 is dominated by it. Honest fix (DISCLOSE, no fabricated residual): caption now states the deviation is dominated by the differing H0 baselines, that an H0-matched comparison isolates a sub-percent dynamical residual from the Omega_m/DeltaNeff differences alone, that the 2-3% must NOT be read as a bounce signature, and that the figure's benchmark H0=69.2 is a deliberately high illustrative value differing from the paper's adopted H0=67.68+/-1.06 (Table tab:summary / tab:params) — closes Minor-1 H0-inconsistency too. Figure was already labeled illustrative/not-a-derived-prediction and the 2-3% is NOT headlined in abstract/exec-summary. Gemini M2 (R2/R4 alpha/M sharing) + M3 (un-converged w0wa chain) already disclosed in-text (mechanism-class + free-coupling discussion L2022; Sec XI MCMC caveat) — OPINION/already-addressed, no new action. 0 undef-refs.)
 % v1A.0.84 (2026-06-27 — EXTDB closure wave (ChatGPT MINOR / Gemini MAJOR / Grok MAJOR de-biased): all de-biased external findings pre-empted in-text. (1) Companion-reliance (Gemini M1, Grok m1): new "Self-containment and companion dependency" paragraph in Intro Scope states no theorem/closure depends on companion numerics; companions are illustrative anchors only. (2) Four-route representativeness (Grok M1, ChatGPT M3): explicit "illustrative, non-exhaustive" note added at the four-route enumeration. (3) Mechanism-class / "13 logically-independent" (Grok M3, ChatGPT M1): NEW status paragraph at head of sec:barriers defines "distinct mechanism-class" precisely (no barrier is a logical consequence of another; NOT disjoint assumptions; B5/6/7/10/13 general, B9 heuristic) — pre-empts independence + ECH-specificity + B9-heuristic (Gemini Minor 2) flags. (4) On-shell ansatz centrality/dimension (Gemini M2, Grok M2): note added that any dimension-4 local completion reproduces the same on-shell amplitude budget, so closures are insensitive to off-shell completion. "13 logically-independent"->"mechanism-class" verified clean (0 live instances). 0 undef-refs.)
 % v1A.0.81 (2026-06-26 — R57 hardened de-biased re-review: the lone OPEN R56 MINOR (f_NL 2.6-5sigma range) CLOSED-BY-SOURCING — verified P2 (research/focused_paper_source_integration/02_full_draft.tex L644) genuinely adopts "5.2-5.5sigma optimistic and 2.6-5sigma realistic ranges as the headline forecast" (Heinrich+2023 sigma(fnl)~0.7 recast for template mismatch); fn:spherex_range (L2125) now explicitly cites Golden2026P2 for the range + clarifies the in-text sigma~1.0 gives the ~4.4sigma lower midpoint, so the range is sourced not self-derived. No fabricated numbers — P1A's range matches P2's verbatim. 0 undef, 0 overfull. R52-R56 fixes verified intact.)
@@ -1707,8 +1746,11 @@ $\kappa = 1/M_{\rm Pl}^2$ and $n_\psi$ has mass-dim~$+3$, so the energy
 density carries the correct mass-dim~$+4$).
 The closure has two independent legs. \emph{(i)~Mean-field amplitude is
 negligible at any cosmologically relevant baryon/electron density.}
-A naive order-of-magnitude estimate using post-recombination baryon
-densities $n_\psi\sim\mathcal{O}(10^2)\,\text{cm}^{-3}$, converted to
+A naive order-of-magnitude estimate using dense ISM-like number
+densities $n_\psi\sim\mathcal{O}(10^2)\,\text{cm}^{-3}$ --- adopted here
+as a deliberately conservative high-density upper bound, not the
+cosmic-mean baryon density (which is $\sim\!2\times 10^{-7}\,\text{cm}^{-3}$
+today and would make the bound stronger still) --- converted to
 natural units via $\hbar c = 1.973\times 10^{-5}\,\text{eV}\,\text{cm}$
 ($1\,\text{cm}^{-3} = (1.973\times 10^{-5}\,\text{eV})^3 \approx 7.66\times
 10^{-15}\,\text{eV}^3$, so $n_\psi\approx 7.66\times 10^{-13}\,\text{eV}^3$),
@@ -1882,9 +1924,21 @@ generated when fermions are coupled to the Holst sector; our
 Eq.~\eqref{eq:gamma_running} is a chiral-count EFT bound rather than
 the full perturbative result, and is used solely for the amplitude
 budget below. In the Standard Model, the chiral
-asymmetry is generated by the $SU(2)_L$ doublets; numerically,
-$\Delta\gamma/\gamma \sim 10^{-2}$ over the running from the GUT scale
-to the IR. The Holst sector amplitude that this running can source is
+asymmetry is generated by the $SU(2)_L$ doublets. Integrating
+Eq.~\eqref{eq:gamma_running} over the running gives
+$\Delta\gamma/\gamma \approx (N_F^L-N_F^R)\,
+\ln(\mu_{\rm GUT}/\mu_{\rm IR})/(12\pi^2)$; with a net chiral count
+$(N_F^L-N_F^R)=\mathcal{O}(1)$ and a GUT-to-IR lever arm
+$\ln(\mu_{\rm GUT}/\mu_{\rm IR})\approx 30$--$35$
+($\mu_{\rm GUT}\sim 10^{16}$, $\mu_{\rm IR}\sim 1\,\text{GeV}$),
+this is of order $10^{-2}$--$10^{-1}$. We therefore adopt
+$\Delta\gamma/\gamma \sim 10^{-2}$ as a representative conservative
+order-of-magnitude estimate --- \emph{not} a precisely derived value,
+the full perturbative running being the $|\gamma|$-dependent
+$\beta$-function of Benedetti~\&~Speziale~\cite{Benedetti2011} ---
+and note that the Route-3 closure below is insensitive to its precise
+value (taking the larger $10^{-1}$ end still leaves $\gtrsim 60$ orders
+of suppression margin). The Holst sector amplitude that this running can source is
 fixed by mass dimension: any operator built from
 $\gamma$, $R_{ab}$, $e^a$, and the chiral current $J^{5\mu}$ must carry
 dimension four, which forces a single power of $M_{\rm Pl}^{-1}$ in
@@ -1984,7 +2038,12 @@ measurement $\beta_{\rm obs} = 0.342^\circ \pm 0.094^\circ$
 independent ACT~DR6 follow-up of Diego-Palazuelos~\&~Komatsu~\cite{DiegoPalazuelos2025}
 reports $\beta = 0.215^\circ \pm 0.074^\circ$ at $\sim\!2.9\sigma$, consistent
 within $\sim\!1.1\sigma$:
-$\bigl|0.342-0.215\bigr|/\sqrt{0.094^2+0.074^2} = 0.127/0.120 \approx 1.06$) bounds $\alpha/M$ at
+$\bigl|0.342-0.215\bigr|/\sqrt{0.094^2+0.074^2} = 0.127/0.120 \approx 1.06$;
+these two $\sigma$ values are derived under different null procedures,
+masks, and foreground treatments and are \emph{not} the output of a joint
+analysis with a known covariance, so this $\sim\!1.06\sigma$ figure is a
+heuristic difference assuming independent Gaussian errors, not a
+joint-pipeline significance) bounds $\alpha/M$ at
 $\sim 10^{-21}\,\text{GeV}^{-1}$\footnote{The paper's $\alpha/M$ is
 \emph{not} the canonical ALP--photon Chern--Simons coupling
 $g_{a\gamma}\equiv(\alpha_{\rm em}\,c_\gamma)/(2\pi f_a)$; the two
