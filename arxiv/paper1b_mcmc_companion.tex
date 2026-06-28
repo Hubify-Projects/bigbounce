@@ -119,8 +119,8 @@
 %   FALSIFIED list (14 items) not acted on.)
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1B.0.78}
-\newcommand{\paperTimestamp}{June 26, 2026}
+\newcommand{\paperVersion}{v1B.0.79}
+\newcommand{\paperTimestamp}{June 27, 2026}
 % v1B.0.77 (2026-06-26 — R53-R55 closure wave: version+date stamp bump; PDF recompiled and re-mirrored; no new science change)
 % v1B.0.76 (2026-06-20 — P-round: 3 reproducibility datasets published public on HF (bamfai/p1b-*); Appendix A URLs corrected Hubify->bamfai; P1B now fully reproducible. No science change.)
 % v1B.0.75 (2026-06-19): D-round visual polish: ALP corner Fig 4 -> full-width (figure* / 0.85\textwidth, mirror Fig 3 treatment).
@@ -1303,7 +1303,12 @@ was performed, as the default BBN-consistent track is the standard choice
 for this type of proxy analysis.
 The prior allows negative $\Delta\Neff$ (down to $-1$), so the results are
 two-sided posterior means, not physical ``extra-species'' limits.
-Under the physically motivated restriction $\Delta\Neff\ge 0$, the
+A physical extra-radiation degree of freedom cannot contribute
+$\Delta\Neff < 0$; imposing that boundary therefore changes the reported
+statistic from a two-sided mean (which can sit at a mildly negative value)
+to a one-sided upper bound read off the posterior renormalised on the
+physical half-line $\Delta\Neff\ge 0$. Under that physically motivated
+restriction $\Delta\Neff\ge 0$, the
 one-sided 95\% upper limit from the full-tension chain is
 $\Delta\Neff < 0.31$, defined precisely as the 95th percentile of the
 posterior \emph{renormalised on $\Delta\Neff \ge 0$} (we discard the
@@ -1403,6 +1408,11 @@ Under the physically motivated restriction $\Delta\Neff\ge 0$ (posterior renorma
 on the non-negative half and 95th percentile read from the truncated CDF), the one-sided
 95\% upper limits are: full-tension $\Delta\Neff < 0.31$; Planck+BAO+SN $\Delta\Neff < 0.40$
 (see Sec.~\ref{sec:verification} for the exact definition and chain-recomputed derivation).
+\textbf{Extraction note:} the numerical values in this table are read from
+\texttt{parameter\_summary\_CORRECTED.json}; the legacy
+\texttt{parameter\_summary.json} export carried an off-by-one column-index
+bug and must not be used (see the Column-permutation warning in
+Appendix~\ref{app:reproducibility}).
 $S_8 \equiv \sigma_8\,(\Omega_m/0.3)^{1/2}$, computed as a Cobaya derived
 parameter with exactly this definition. The full-tension column includes
 the DES-Y3 $S_8$ Gaussian prior $0.776 \pm 0.017$
@@ -1515,7 +1525,8 @@ the load-bearing one: the same converged chain
 shows the $\Lambda$CDM point $(w_0, w_a)=(-1,0)$ unsampled by the
 present Metropolis-Hastings run, with the joint marginal posterior
 displaced into the phantom-crossing region of CPL space
-(tail-distances $+4.3\sigma$ in $w_0$, $-3.6\sigma$ in
+(overlap-inflated marginal-tail upper bounds, \emph{not} detection
+significances: $+4.3\sigma$ in $w_0$, $-3.6\sigma$ in
 $w_a$; fn.~\ref{fn:wcaveat}) and
 $w_0+w_a=-1.48 \pm 0.15$ requiring
 phantom crossing in the redshift range probed by DESI~DR2~BAO + DES-Y5 +
@@ -2180,7 +2191,14 @@ unsampled by the Metropolis-Hastings chain; see fn.~\ref{fn:wcaveat}).
 The central marginal-tail posterior-extrapolation distances are
 $w_0 = -0.812 \pm 0.044$ ($+4.3\sigma$ from $-1$; fn.~\ref{fn:wcaveat})
 and $w_a = -0.667 \pm 0.186$ ($-3.6\sigma$ from $0$), with
-$w_0+w_a = -1.48 \pm 0.15$ indicating phantom crossing; these figures
+$w_0+w_a = -1.48 \pm 0.15$ indicating phantom crossing
+\textbf{(warning: these $\sigma$-distances are inflated by the
+uncorrected DES-SN5YR\,$\times$\,Pantheon+ ${\sim}20\%$ shared-event
+sample overlap, which double-weights the shared supernovae and narrows
+the posterior; they are an \emph{upper bound} on the apparent departure
+from $\Lambda$CDM --- an uncorrected product-likelihood artifact, not a
+detection significance --- and must be read together with caveat~(e),
+fn.~\ref{fn:wcaveat})}; these figures
 carry the overlap-uncorrected SN systematic of caveat~(e) and are discussed in detail
 in Sec.~\ref{sec:verification} (Physics interpretation paragraph).
 The $+4.3\sigma$ departure of $w_0$ from $-1$ is a posterior-tail
@@ -2192,7 +2210,14 @@ bound requires the deferred nested-sampling analysis.
 \emph{Compatibility-only scope:} all results in this subsection are
 posterior compatibility diagnostics; all model-preference inference is
 deferred --- no analysis here constitutes evidence for or against a bounce
-cosmology.
+cosmology. \emph{Relation to the bounce-class taxonomy of
+Paper~I(a)~\cite{Golden2026P1a}:} the quintom-B direction probed here is
+only one branch of the broader bouncing-cosmology landscape (minimal
+matter-bounce, ekpyrotic, Cuscuton, string-gas, and quintom variants),
+which carry distinct $w_0 w_a$ and $\fnl$ signatures; this cross-check
+does not select among those branches and does not test the minimal
+matter-bounce prediction $\fnl=-35/8$, which is established structurally
+in Paper~I(a).
 
 
 %% ============================================================
@@ -2592,7 +2617,10 @@ posterior-supported median sits at $m\simeq 36\,H_0$ --- well above the
 scan-prior $m\sim H_0$ benchmark --- and only the $\Omega_a\le 0.01$
 spectator-safe subset enforces a true spectator while still consistent
 with the observed $\beta_{\rm obs}=0.342^\circ\pm 0.094^\circ$ at
-${\sim}0.5\sigma$.}}
+${\sim}0.5\sigma$. The spectator-consistent verdict rests on this
+$\Omega_a<0.01$ subset ($13\%$ mass, stable ESS\,$=461$), \emph{not} on
+the strict $\theta_i\le 0.1$ sliver ($0.33\%$ weighted mass, $42$
+samples), which is reported as ``indicative only.''}}
 \begin{ruledtabular}
 \scriptsize
 \begin{tabular}{lcccccc}
@@ -2712,9 +2740,14 @@ with the ACT-noise floor. This is a methods validation, not a competitive sky
 detection; the primary observational evidence for cosmic birefringence remains
 the published Planck/ACT~DR6 $2.7$--$2.9\sigma$ measurements.
 
-\textit{Spectator-ALP consistency.}---Within the $\Omega_a < 0.01$ spectator-safe
+\textit{Spectator-ALP consistency.}---To state the verdict first: the
+spectator ALP \emph{accommodates}, it does not \emph{predict}, the
+observed birefringence, and the spectator-safe verdict rests on the
+broader $\Omega_a < 0.01$ subset ($13\%$ of the posterior mass), not on
+the extreme $\theta_i\le 0.1$ sliver ($0.33\%$ mass, indicative only).
+Within that $\Omega_a < 0.01$ spectator-safe
 subset ($13\%$ of the posterior mass; median $m\simeq 40.5\,H_0$,
-$\Omega_a < 0.01$), an ALP with $f_a\sim\MPl$ and posterior median $m\simeq 40.5\,H_0$ (not $m\sim H_0$; the scan-prior envelope spans $m\sim H_0$ but the posterior-supported fixed-$C_{a\gamma}=8$ fit shifts well above the prior midpoint)
+$\Omega_a < 0.01$, ESS\,$=461$), an ALP with $f_a\sim\MPl$ and posterior median $m\simeq 40.5\,H_0$ (not $m\sim H_0$; the scan-prior envelope spans $m\sim H_0$ but the posterior-supported fixed-$C_{a\gamma}=8$ fit shifts well above the prior midpoint)
 is consistent with the published $3.6\sigma$ joint signal, with the caveat
 that this spectator-safe subset
 ($\theta_i\sim 0.1$, a ${\sim}25\times$ fine-tuning relative to the natural

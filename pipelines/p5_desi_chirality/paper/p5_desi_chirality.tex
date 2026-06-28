@@ -33,7 +33,37 @@
 % The divide-by-h claim (~1246 h⁻¹ Mpc) is INVERTED. No pipeline recompute required.
 % If any future reviewer re-raises this, cite env_finder/01_compute_vweb.py:106-108.
 
-\newcommand{\paperVersion}{v0.1.87-2026-06-26}
+\newcommand{\paperVersion}{v0.1.88-2026-06-27}
+% v0.1.88-2026-06-27 (EXTDB de-biased external round — truth audit
+%   project-context/peer-reviews/EXTDB_P5_TRUTH_AUDIT.md; Grok MAJOR audited
+%   FALSE-POSITIVE [robust across 5 void-finders |Df_CW|<=0.004 p>=0.21; DESIVAST
+%   principled 130x larger + disclosed post-hoc; headline monopole-shift-invariant
+%   so independent of Paper IV amplitude]. Closed by making the already-in-paper
+%   robustness + disclosure UNMISSABLE; no science change, honest+conservative:
+%   (1) Abstract FIRST DESIVAST-as-primary mention now states the primary
+%     designation is declared POST-HOC (fwd-ref sec:primary_path) AND that the
+%     headline void/non-void Df_CW is robust across all five DESIVAST void-finders
+%     |Df_CW|<=0.004, |z|<=1.25, p>=0.21 (fwd-ref tab:desivast_three_algo), so the
+%     post-hoc choice does not drive the null; T-Web relabeled explicitly SECONDARY.
+%     Pre-empts Grok-M1 (forking-paths) + ChatGPT-M2 (post-hoc-in-headline) +
+%     ChatGPT-M3 (T-Web billing).
+%   (2) Abstract headline monopole clause: Df_CW two-sample contrast is invariant
+%     under any catalog-wide monopole shift and therefore does NOT depend on the
+%     Paper IV monopole amplitude (only the per-galaxy labels). Pre-empts Grok-M2
+%     (Paper IV dependence).
+%   (3) "largest...DESI DR1 to date" superlative (l.2254) re-scoped to "within this
+%     custom chirality catalog and the DESI DR1/DESIVAST matched construction used
+%     here ... we do not claim a literature-audited superlative beyond this catalog."
+%     Pre-empts ChatGPT-M1.
+%   Already-clean (verified in-place, no edit needed): ChatGPT-M4/Grok-M3 RSD framed
+%   as fixed-void-geometry membership-sensitivity test w/ "full immunity would require
+%   void-catalog reconstruction, not performed here" + FoG MC bound (l.2060-2121);
+%   Gemini-m2/ChatGPT-m3 toy EFT labeled order-of-magnitude-only/non-inferential +
+%   rotational/gauge caveats (l.3546-3579); Gemini-m1 overlap-free test exists at
+%   whole-catalog level |z|=1.95, row-level flagged approximate (l.1638-1659);
+%   Grok-M4 bright/dark ~2sigma flagged as DR2/Rubin diagnostic in abstract+body.
+%   R57 fixes re-verified clean: dipole +0.41sigma (no body +0.43), abstract 0.28pp,
+%   Sec.II Df_CW^P5=-0.0028 w/ P4 -0.0026 cross-ref.)
 % R57 hardened de-biased re-review (2026-06-26 — truth audit
 %   project-context/peer-reviews/R57_P5_TRUTH_AUDIT.md; NO version bump):
 %   2 VERIFIED MINOR internal-inconsistencies closed (both corroborated by
@@ -430,7 +460,7 @@
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{June 26, 2026}
+\date{June 27, 2026}
 
 \begin{abstract}
 We cross-match the 8{,}474{,}531-galaxy chirality catalog of Paper~IV
@@ -445,8 +475,15 @@ V2-REVOLVER and V2-VIDE watershed); DESI DR1 redshifts provide the
 \emph{environmental anchor} through which we run a T-Web tidal
 classification on $14{,}622{,}283$ DR1 spectroscopic galaxies to
 assign every matched spiral to a cosmic-web class. The primary path
-of this paper is the DESIVAST-anchored void cross-check; the T-Web
-classification is the supporting cross-check across the full matched
+of this paper is the DESIVAST-anchored void cross-check (this primary
+designation is declared \emph{post-hoc} --- no single \emph{a priori}
+preregistered plan was filed, \S\ref{sec:primary_path} --- but the
+headline void/non-void $\Delta f_{\rm CW}$ contrast is robust across
+all five DESIVAST void-finders, $|\Delta f_{\rm CW}| \le 0.004$ with
+$|z_\Delta| \le 1.25$ ($p_\Delta \ge 0.21$),
+Table~\ref{tab:desivast_three_algo}, so the post-hoc choice does not
+drive the null); the T-Web classification is an explicitly
+\emph{secondary} supporting cross-check across the full matched
 sample. The $1''$ matched catalog contains
 $2{,}232{,}212$ unique galaxies; of these, $791{,}635$ carry an
 unambiguous post-TTA (test-time-augmentation) equivariant CW or CCW label and form the
@@ -485,8 +522,10 @@ Paper~IV estimate~\cite{golden_chirality_2026}; a correctable
 classifier systematic, not a statistical limit, that dominates the
 T-Web filament/cluster residuals at $n \gtrsim 4 \times 10^5$ and is
 subtracted explicitly in the monopole-referenced tests; the
-$\Delta f_{\rm CW}$ void-vs-non-void contrast is invariant under any
-catalog-wide monopole shift, see \S\ref{sec:p4}) and (ii) the counting-statistics
+headline $\Delta f_{\rm CW}$ void-vs-non-void two-sample contrast is
+invariant under any catalog-wide monopole shift and therefore does
+\emph{not} depend on the Paper~IV monopole amplitude --- only on the
+per-galaxy CW/CCW labels --- see \S\ref{sec:p4}) and (ii) the counting-statistics
 floor of $\pm 2.4$\,pp
 (the $1\sigma$ binomial half-width of the $n = 428$ T-Web void bin;
 $2\sigma$ half-width $\pm 4.8$\,pp),
@@ -2251,9 +2290,13 @@ respective sample sizes. \textbf{When the void class is defined by
 DESIVAST rather than T-Web, the chirality-in-voids constraint is a
 result consistent with null at full DESIVAST sample size.} 
 
-This DESIVAST-anchored re-analysis is, to our knowledge, the largest
+This DESIVAST-anchored re-analysis is, within this custom chirality
+catalog and the DESI~DR1/DESIVAST matched-sample construction used
+here, the largest
 matched-sample
-environmental-dependence test of spiral chirality in DESI DR1 to date,
+environmental-dependence test of spiral chirality we are aware of
+(we do not claim a literature-audited superlative beyond this catalog
+and construction),
 on the chirality-relevant subsample defined here
 (a null is not positive evidence; we report it as a controlled-sample
 non-detection of the environment-dependence hypothesis on this dataset):
