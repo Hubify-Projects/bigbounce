@@ -1,0 +1,23 @@
+{
+  "sparcl_constraints": {
+    "data_release": [
+      "DESI-DR1"
+    ],
+    "spectype": [
+      "GALAXY",
+      "QSO",
+      "STAR"
+    ],
+    "redshift": [
+      0.0,
+      5.0
+    ]
+  },
+  "find_candidates": 60000,
+  "find_limit": 60000,
+  "pick_seed": 20260628,
+  "n_requested": 20000,
+  "n_retrieved": 20000,
+  "n_nonfinite_dropped": 0,
+  "acquire_wall_s": 1951.4
+}
