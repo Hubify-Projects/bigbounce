@@ -33,7 +33,7 @@
 \newcommand{\artbreak@us}{\discretionary{\char`\_}{}{\char`\_}}
 \DeclareRobustCommand{\artifact}[1]{%
  \StrSubstitute{#1}{\_}{_}[\art@urlpath]%
- \href{https://github.com/Hubify-Projects/bigbounce/blob/53b41d12/\art@urlpath}{%
+ \href{https://github.com/Hubify-Projects/bigbounce/blob/main/\art@urlpath}{%
  \begingroup
  \let\_\artbreak@us
  \texttt{#1}%
@@ -52,7 +52,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.194}
+\newcommand{\paperVersion}{v1.0.195}
 % v1.0.193 (2026-06-28 — EXTDB2 closure: Gemini MAJOR M1 (pseudo-label circularity) VERIFIED as a
 %   real limitation of the SHUFFLE-NULL specifically, but the eight-anchor attribution is NOT circular.
 %   Added Sec.~\ref{sec:pseudolabel_independence} (Discussion): (i) Appendix-D anchors regress the fixed
@@ -1035,7 +1035,7 @@ A pixel-count-threshold sweep ($N_{\rm spiral}(p)\geq\{1,5,10,20,50\}$; 200-MC p
 % ============================================================
 \section*{Data Availability}
 \label{sec:availability}
-Repository state for this release: commit \texttt{53b41d12} (June 2026); primary sample is HC-broad $N=949{,}584$ ($p_{\rm eq}>0.6$) spirals at this snapshot, with real-space dipole $+0.41\sigmaunit$ ($p=0.31$). An immutable archival snapshot (PDF + \texttt{.tex} source + figures + canonical-provenance artifacts) will be deposited to Zenodo at journal submission; the resulting DOI will be the single citable reproducibility handle for this release. The cited commit hash pins the version-stamp commit; subsequent same-day metadata and figure commits that do not alter analysis artifacts are not reflected in this pin by design (the hash advances only at explicit paper-version restamps).
+Repository state: the analysis artifacts linked throughout this paper resolve against the live \texttt{main} branch of the repository, which always reflects the current version-stamped content (primary sample HC-broad $N=949{,}584$, $p_{\rm eq}>0.6$, spirals; real-space dipole $+0.41\sigmaunit$, $p=0.31$). An immutable archival snapshot (PDF + \texttt{.tex} source + figures + canonical-provenance artifacts) with a frozen release tag and a Zenodo DOI will be deposited at journal submission; that tagged commit and DOI will be the single citable reproducibility handle for the published version, inserted here in place of this sentence at submission.
 
 % ============================================================
 
