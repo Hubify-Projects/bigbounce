@@ -33,7 +33,38 @@
 % The divide-by-h claim (~1246 h⁻¹ Mpc) is INVERTED. No pipeline recompute required.
 % If any future reviewer re-raises this, cite env_finder/01_compute_vweb.py:106-108.
 
-\newcommand{\paperVersion}{v0.1.93-2026-06-29}
+\newcommand{\paperVersion}{v0.1.94-2026-06-29}
+% v0.1.94-2026-06-29 (Round C FINAL INT closure wave — neutral multi-vendor INT
+%   (Grok/Gemini/OpenAI; Perplexity quota-failed) + Opus end-to-end truth audit.
+%   3 VERIFIED items closed, all corroborated against source; no science change:
+%   (1) Internal-implementation prose removed (OAI P5-E3): §IV.A nomenclature
+%     reminder dropped the in-prose LaTeX cross-reference label
+%     "\texttt{sec:vweb}" and the "HF dataset slug / GitHub release tag"
+%     repo-implementation aside; rephrased to a neutral artifact-backward-
+%     compatibility note (keeps the [A3] artifact link). Removed the pointer
+%     to the (non-rendering) title footnote.
+%   (2) Program-split sigma internal inconsistency (Opus): §VI.D within-class
+%     prose quoted bright-program $\sigma=-5.25$ and dark-program $\sigma=+1.25$
+%     while the canonical systematics Table XV (tab:systematics_splits) prints
+%     $-5.28$ / $+1.24$ at identical $n$=775{,}760 / 14{,}782 and identical
+%     $f_{\rm CW}$=0.4970 / 0.5051. Direct recompute from the displayed
+%     fractions gives $-5.285$ and $+1.240$, so the table values are correct;
+%     harmonized the prose+abstract to $-5.28$ (l.1715) and $+1.24$
+%     (abstract l.672, body l.1717/1721). Null-diagnostic only; headline
+%     unaffected (the bright-program drives the $-5\sigma$ monopole, dark is
+%     opposite-sign null).
+%   (3) Broken cross-reference fixed: the title footnote referenced the
+%     undefined label \texttt{sec:env_finder} (only \texttt{sec:vweb} exists);
+%     retargeted to \S\ref{sec:vweb}. Invisible in the PDF (revtex drops the
+%     title \footnote), but corrects a dangling \ref in source.
+%   Vendor net: 3 MAJOR-revisions (Grok/Gemini/OpenAI) driven entirely by
+%   Paper IV in-prep dependence + post-hoc primary + void n=428 power — all
+%   already disclosed in-paper (Table I self-contained; post-hoc declared
+%   abstract+§V.B; void MDE $\pm4.8$pp stated). FALSE POSITIVES not actioned:
+%   Clopper-Pearson "0.05^{1/6}" (source correct l.2273, PDF superscript
+%   render), Table V "sign error" (column already labeled $|\cdot|$),
+%   "(canonical canonical-mask)" typo (absent from source), footprint-control
+%   $\sigma=-1.73$ (exact n_CW=126{,}202 gives $-1.733$, table correct).)
 % v0.1.92-2026-06-29 (Round A INT closure wave — 3 VERIFIED items, neutral
 %   multi-vendor INT (Grok/Gemini/OpenAI) + Opus truth audit:
 %   (1) l.2915 interior-buffer removed count $1{,}862$ -> $1{,}805$
@@ -469,7 +500,7 @@
 
 \begin{document}
 
-\title{Environmental Dependence of Spiral Chirality: A DESIVAST Three-Algorithm Test on 56{,}981 Void Spirals with T-Web (Hahn 2007) Tidal-Tensor Cross-Check Across the DR1 Matched-Spiral Sample\protect\footnote{See \S\ref{sec:env_finder} for the implementation note on the T-Web/V-Web nomenclature: the tidal-tensor classifier used here implements the Hahn 2007 T-Web recipe ($\phi_k = -\delta_k/k^2$ then $T_{ij} = -k_i k_j \phi_k$), not the Hoffman 2012 V-Web (velocity-shear). Associated dataset and software artifacts retain ``V-Web'' in their names for backward compatibility with earlier releases.}}
+\title{Environmental Dependence of Spiral Chirality: A DESIVAST Three-Algorithm Test on 56{,}981 Void Spirals with T-Web (Hahn 2007) Tidal-Tensor Cross-Check Across the DR1 Matched-Spiral Sample\protect\footnote{See \S\ref{sec:vweb} for the implementation note on the T-Web/V-Web nomenclature: the tidal-tensor classifier used here implements the Hahn 2007 T-Web recipe ($\phi_k = -\delta_k/k^2$ then $T_{ij} = -k_i k_j \phi_k$), not the Hoffman 2012 V-Web (velocity-shear). Associated dataset and software artifacts retain ``V-Web'' in their names for backward compatibility with earlier releases.}}
 
 \author{Houston Golden}
 \email{houston@hubify.com}
@@ -669,7 +700,7 @@ conditioned imaging-leg systematics tracked in Paper~IV; this is
 consistent with a tracer-program decomposition in which the catalog-wide
 monopole offset is dominated by the BGS-bright sample, with the
 program-wide LRG/ELG/QSO-dark sample ($n=14{,}782$, all classes)
-returning $\sigma = +1.25$; within the filament class specifically,
+returning $\sigma = +1.24$; within the filament class specifically,
 the declared env-labeled parent gives bright $n=394{,}181$ at
 $\sigma=-2.98$ vs dark $n=13{,}759$ at $\sigma=+1.61$ (opposite sign).
 The joint two-sample
@@ -962,13 +993,13 @@ We compute environment labels via the T-Web tidal-tensor classifier
 (Hahn~\textit{et~al.}~2007 \cite{Hahn2007};
 Hoffman~\textit{et~al.}~2012 \cite{Hoffman2012};
 Cautun~\textit{et~al.}~2014 \cite{Cautun2014}).
-\emph{Nomenclature reminder} (see also the title footnote): this
+\emph{Nomenclature reminder}: this
 paper uses ``T-Web'' for our implementation of the Hahn~2007
-tidal-tensor recipe (the artifact filename
-\href{\repoBase/pipelines/p5\_desi\_chirality/env\_finder/01\_compute\_vweb.py}{[A3]}
-and the \texttt{sec:vweb} cross-reference label are retained for
-backward compatibility with the HF dataset slug and the GitHub release
-tag). The Hoffman~2012 velocity-shear V-Web (which requires a separate
+tidal-tensor recipe; the associated dataset and software artifacts (e.g.\ the
+analysis driver
+\href{\repoBase/pipelines/p5\_desi\_chirality/env\_finder/01\_compute\_vweb.py}{[A3]})
+retain the ``V-Web'' name for backward compatibility with earlier
+releases. The Hoffman~2012 velocity-shear V-Web (which requires a separate
 velocity reconstruction not used here) is the conceptually distinct
 classifier; external T-Web implementations (e.g.\ the concurrent
 DR1 analysis of Ref.~\cite{TWebDESI2026}) are also covered by the
@@ -1712,13 +1743,13 @@ program (the broad selection-function bucket: \texttt{bright},
 \texttt{dark}, \texttt{backup}, \texttt{other}.
 Per-program $f_{\rm CW}$ and $\sigma_{\rm from\ half}$:
 \texttt{bright} (BGS-dominated; $n = 775{,}760$, $\bar z = 0.145$)
-$f_{\rm CW} = 0.4970$, $\sigma = -5.25$; \texttt{dark} (LRG, ELG, QSO;
+$f_{\rm CW} = 0.4970$, $\sigma = -5.28$; \texttt{dark} (LRG, ELG, QSO;
 $n = 14{,}782$, $\bar z = 0.255$) $f_{\rm CW} = 0.5051$,
-$\sigma = +1.25$; \texttt{backup} ($n = 875$) $f_{\rm CW} = 0.5143$,
+$\sigma = +1.24$; \texttt{backup} ($n = 875$) $f_{\rm CW} = 0.5143$,
 $\sigma = +0.85$; \texttt{other} ($n = 218$) $f_{\rm CW} = 0.4954$,
 $\sigma = -0.14$. \textbf{The catalog-wide $-5\sigma$ monopole offset is
 entirely driven by the \texttt{bright} program}; \texttt{dark} returns
-$\sigma = +1.25$ (null in the opposite sign), \texttt{backup} returns
+$\sigma = +1.24$ (null in the opposite sign), \texttt{backup} returns
 $\sigma = +0.85$ (null), \texttt{other} returns $\sigma = -0.14$
 (null). A genuinely environment-dependent or astrophysical chirality
 signal would propagate across BGS-bright and LRG/ELG/QSO-dark targets

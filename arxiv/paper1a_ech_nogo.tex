@@ -47,8 +47,43 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.88}
+\newcommand{\paperVersion}{v1A.0.89}
 \newcommand{\paperTimestamp}{June 29, 2026}
+% v1A.0.89 (2026-06-29 — Round C FINAL rigorous INT closure (RC-INT; OpenAI gpt-5
+%   MAJOR-REVISIONS [all arithmetic spot-checks PASSED], Gemini 2.5-pro MAJOR-REVISIONS,
+%   Grok REJECT, Perplexity quota-FAIL). Truth audit: reports in
+%   project-context/peer-reviews/RC-INT_P1A_*.md. 2 genuinely-VERIFIED NEW in-scope
+%   inconsistencies closed (NO fabricated derivation, NO math invented):
+%   (1) Gemini M3 — Sec IV opening sentence (L1740) attributed the four-route
+%       channel closure to "the structural-incompatibility result (Sec.~transparency)",
+%       conflating it with the perturbation-transparency result (which is established by
+%       the Bianchi proof, NOT by ruling out the four routes). Reworded to correctly
+%       state THIS section establishes the four-route channel-level closure, and added
+%       an explicit logical-distinction clause vs Sec.~transparency and Sec.~structural_tension.
+%   (2) OpenAI M12 — Heinrich SPHEREx f_NL reference cited as "Heinrich+2023" at L1161
+%       (tab:companion_inputs) but as "Heinrich+2024" / "Heinrich et al. 2024" everywhere
+%       else (L1014, L2319, L3056) and the bib entry is JCAP vol.2024 (year=2024).
+%       Harmonized the lone 2023 instance to 2024.
+%   FALSIFIED / OPINION / OUT-OF-SCOPE (NOT touched, per directive + calibration):
+%   Grok E2 (abstract "over-claims f_NL/beta as ECH predictions") FALSIFIED — abstract
+%   already states these are "NOT predictions of ECH itself, but bounce-class and
+%   GR+ALP-class observables" (L869-890). Grok M3 (14-vs-13 count) FALSIFIED — abstract
+%   already reads "13 distinct barriers ... 14 historical catalog entries with B8
+%   subsumed by B14". OpenAI M2 (Immirzi running ~0.25 vs 10^-2) KNOWN-HONEST — R3 is
+%   explicitly a non-load-bearing upper-bound ansatz, closure insensitive (>=60 OOM
+%   margin, survives O(1) inflation); range is order-of-magnitude. OpenAI E8 (8pi
+%   Lambda-rho convention) already disclosed "below order-of-magnitude resolution".
+%   OpenAI m8 ("companion's VI8") FALSIFIED extraction artifact — valid "Sec VI"+fn8.
+%   Ansatz-dependence (Gemini E1, OpenAI E5/E9, Grok E3/M1): already disclosed —
+%   abstract says "channel-level assessment, not an operator-level theorem" + "all R4
+%   and dark-energy mapping claims are conditional on this ansatz". Companion/in-prep
+%   reliance (all vendors E2/E1): coordinated submission, tab:companion_inputs isolates
+%   (standing-directive A). DOI deferred (OpenAI E3 — HOUSTON-DECISION). Length, figure
+%   redundancy, restructure (Gemini M1/N2, OpenAI page-length, Grok NIT1): editorial
+%   OPINION. Fig 3 H0 (Gemini N1, OpenAI M7) STALE — closed v1A.0.85. Fine-tuning scores
+%   10^60/10^40 (OpenAI M8) STALE — caption flagged illustrative v1A.0.88. Future-date
+%   June 29 2026 (Gemini T1, Grok) calibration: June 2026 current. Recompiled 0
+%   undef-refs; overflow-audited.)
 % v1A.0.88 (2026-06-29 — Round A rigorous INT closure (RA-INT; OpenAI gpt-5 MAJOR,
 %   Gemini 2.5-pro MAJOR, Grok REJECT, Perplexity quota-FAIL). Truth audit:
 %   project-context/peer-reviews/RA-INT_P1A_TRUTH_AUDIT.md. 2 genuinely-VERIFIED
@@ -1158,7 +1193,7 @@ chain.\strut} \\[3pt]
 SPHEREx $\fnl$ forecast & \parbox[t]{0.16\textwidth}{\raggedright $2.6$--$5\sigma$
 realistic ($5.2$--$5.5\sigma$ optimistic)\strut} & Paper~II~\cite{Golden2026P2} &
 \parbox[t]{0.36\textwidth}{\raggedright Multi-tracer SPHEREx Fisher forecast
-recasting Heinrich$+$2023 $\sigma(\fnl)\!\approx\!0.7$ (ideal) /
+recasting Heinrich$+$2024 $\sigma(\fnl)\!\approx\!0.7$ (ideal) /
 $\approx\!1.0$ (degraded-with-systematics) for the $\fnl=-35/8$ template.\strut} \\[3pt]
 Spectator-ALP $\beta$ benchmark & $\approx 0.27^\circ$ &
 Paper~I(b)~\cite{Golden2026P1b} &
@@ -1737,11 +1772,14 @@ theory paper carries forward only the structural conclusion
 \label{sec:fourroute}
 \label{sec:oneloopfull}\label{sec:condensate}\label{sec:cosmo_derivation}
 
-The structural-incompatibility result (Sec.~\ref{sec:transparency}) is
+The four-route channel-level closure presented in this section is
 established by ruling out, in turn, the four routes by which a minimal
 Einstein--Cartan--Holst (ECH) sector could in principle source a parity-odd
 or dark-energy contribution at the level required by the observational
-budget of Sec.~\ref{sec:obs}. We collect those four routes here and close each
+budget of Sec.~\ref{sec:obs}. (This channel-level closure is logically
+distinct from the perturbation-transparency result of
+Sec.~\ref{sec:transparency} and from the dark-energy-vs-bounce structural
+tension of Sec.~\ref{sec:structural_tension}.) We collect those four routes here and close each
 with standard torsion-elimination derivation for R1, standard spectator-ALP phenomenology plus the naturalness audit for R4, and ansatz-level amplitude budgets for R2--R3, constituting the no-go audit for each route.
 These four are the minimal-ECH dark-energy channels most commonly discussed
 in the prior literature; we present them as an illustrative, explicitly

@@ -153,7 +153,7 @@
 %   FALSIFIED list (14 items) not acted on.)
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1B.0.83}
+\newcommand{\paperVersion}{v1B.0.84}
 \newcommand{\paperTimestamp}{June 29, 2026}
 % v1B.0.77 (2026-06-26 — R53-R55 closure wave: version+date stamp bump; PDF recompiled and re-mirrored; no new science change)
 % v1B.0.76 (2026-06-20 — P-round: 3 reproducibility datasets published public on HF (bamfai/p1b-*); Appendix A URLs corrected Hubify->bamfai; P1B now fully reproducible. No science change.)
@@ -2008,7 +2008,12 @@ $|\Delta\hat\beta| = 0.040^\circ\pm 0.002^\circ$ (SE of 500-MC mean) forward as 
 floor (deconvolution-algebra bias on foreground-free skies; not a real-sky bias bound). At the canonical $\beta_{\rm inj}=0.27^\circ$ injection the bias
 is $-0.032^\circ$
 (attributed by the robustness battery below to the unweighted template
-fit plus the $-C_\ell^{BB}$ template mismatch, and explicitly
+fit as the dominant driver, with a secondary contribution from the
+injected-$BB$ realization shape --- the proxy
+$C_\ell^{BB}=0.05\,C_\ell^{EE}$ versus a lensed-$\Lambda$CDM $BB$ spectrum
+--- rather than a fit-template $-C_\ell^{BB}$ mismatch (carrying a
+$-C_\ell^{BB}$ term in the \emph{template} produces no further shift; see
+the battery below), and explicitly
 \emph{insensitive} to the apodization scale).\footnote{\label{fn:snr_definition}The
 ``pipeline-recovery SNR$=20.32$'' figure (and analogously $25.71$ for the
 $\beta=0.342^\circ$ injection below) is the \emph{template-fit} SNR of the
