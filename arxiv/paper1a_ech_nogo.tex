@@ -47,8 +47,48 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.87}
-\newcommand{\paperTimestamp}{June 28, 2026}
+\newcommand{\paperVersion}{v1A.0.88}
+\newcommand{\paperTimestamp}{June 29, 2026}
+% v1A.0.88 (2026-06-29 — Round A rigorous INT closure (RA-INT; OpenAI gpt-5 MAJOR,
+%   Gemini 2.5-pro MAJOR, Grok REJECT, Perplexity quota-FAIL). Truth audit:
+%   project-context/peer-reviews/RA-INT_P1A_TRUTH_AUDIT.md. 2 genuinely-VERIFIED
+%   unbacked-number overstatements closed (honest softening, NO fabricated
+%   derivation):
+%   (1) OpenAI E4 — galaxy-spin ">100 orders of magnitude" underprediction
+%       (L1623 + L1677) asserted twice with NO derivation, NO source, NO mapping
+%       from alpha/M to the spin-dipole amplitude A_0. Removed the unbacked
+%       false-precision OOM at both sites; reworded to the honest qualitative
+%       statement that the Planck-suppressed coupling is far below current
+%       observational sensitivity (we explicitly note no coupling->dipole mapping
+%       is attempted). Per /never-fabricate-derivation: softened, did NOT invent
+%       the missing OOM chain.
+%   (2) OpenAI E5 — fine-tuning scoreboard quintessence (10^60) / f(R) (10^40)
+%       in fig:naturalness caption carried NO citation/derivation while the
+%       LCDM (10^122) and spin-torsion (10^5) scores ARE derived in-paper.
+%       Added explicit caption sentence flagging the quintessence/f(R) entries
+%       as illustrative literature-level comparators, not derived here.
+%   FALSIFIED (pattern-063 rasterized-PDF extraction artifacts — Gemini misread
+%   exponents/subscripts; actual source equations are dimensionally CORRECT):
+%   Gemini E1 (claimed Eq onshell_rho = (a/M)MPl^4, dim+3) — actual L3315 is
+%   (a/M)MPl^5 ~ 1e-2 MPl^4, dim+4 CORRECT; Gemini E2 (claimed Leff=Xi MPl^4,
+%   units mismatch) — actual L1419 is Leff=Xi MPl^2 + c_w w^2, dim+2 CORRECT with
+%   explicit units note L1425; Gemini M4 (claimed Eq oneloop is for dimensionless
+%   alpha) — actual L1316 is an equation for alpha/M (dim-1) with delta_NY dim-1,
+%   CONSISTENT. Gemini N3 (fig 10^120 vs 10^122) STALE — caption already 10^122
+%   (closed v1A.0.69). OpenAI m7 (Appendix C "VI8" broken xref) FALSIFIED — it is
+%   "Sec VI" + footnote 8, a valid coordinated-submission companion ref, and the
+%   footnote makes the WKB self-contained. OPINION/STALE/structural (NOT touched,
+%   per directive): companion in-prep reliance (Grok E1, OpenAI E1/M1 — coordinated
+%   submission, tab:companion_inputs already isolates; standing-directive A);
+%   Zenodo DOI deferred (OpenAI E2 — HOUSTON-DECISION); abstract/title conditionality
+%   (Grok E2/E3, Gemini M1 — already carries scope exclusions + "channel-level, not
+%   operator-level theorem"); Fig 3 H0 (Gemini m1, OpenAI E8 — closed v1A.0.85);
+%   cosmic-mean baryon line (OpenAI M2 — already at L1831); R2 alt-ordering (OpenAI
+%   M3 — already "not used in closure"); R3 ad-hoc beta-fn (OpenAI E7 — already
+%   labeled EFT bound, Benedetti-Speziale cited); barrier naturalness/heuristic
+%   labeling (Grok M3, OpenAI M6/M8 — already disclosed in sec:barriers status
+%   para); paper length / future-date June 29 (Grok M2/N1 — calibration: June 2026
+%   current). Recompiled 0 undef-refs; overflow-audited.)
 % v1A.0.87 (2026-06-28 — INT-X-P1A standalone-readability closure (OpenAI+Gemini+Grok
 %   3-reviewer-convergent MAJOR: "fails the standalone-reader test" — load-bearing
 %   numbers imported from companions by citation only). FIX (surface, do NOT fabricate):
@@ -1620,7 +1660,10 @@ inflationary initial conditions.
 \subsubsection{Galaxy Spin Alignment Mechanism}\label{sec:spinmech}
 
 The parity-odd operator coupling $\alpha/M \sim 10^{-21}\;\text{GeV}^{-1}$
-underpredicts any plausible spin asymmetry by $>100$ orders of magnitude.
+is far too Planck-suppressed to source any observable galaxy spin
+asymmetry; we do not attempt an explicit mapping from this coupling to a
+spin-dipole amplitude, and treat the predicted effect simply as negligible
+relative to current sensitivity.
 An independent ViT-Small chirality classifier applied to the DESI~Legacy~DR8
 galaxy population --- with the dipole statistic computed on the
 spiral-classified high-confidence subsample ($N\approx 9.5\times 10^{5}$
@@ -1674,8 +1717,8 @@ with Shamir's claimed $\sim\!3\%$ asymmetry by a factor of $\sim\!6$--$12$
 under that pipeline (a matched-footprint Ganalyzer-style reanalysis is
 required for a likelihood-level exclusion; see
 Paper~IV~\cite{Golden2026P4}). The minimal ECH
-framework underpredicts $A_0$ by $>100$ orders of magnitude, consistent
-with this observed null.
+framework predicts a spin-dipole amplitude $A_0$ far below current
+observational sensitivity, consistent with this observed null.
 
 \textit{MCMC verification and cosmological fits.}---The $\Lambda$CDM$+\Delta\Neff$
 companion analysis finds $\Delta\Neff\approx 0$ and recovers a Hubble
@@ -2393,7 +2436,11 @@ scale, anchored at the primordial benchmark
 $\alpha/M\sim 10^{-21}\,$GeV$^{-1}$ (Sec.~\ref{sec:r4_birefringence}).
 \emph{Bottom} ($y$-axis: fine-tuning score [orders of magnitude]): comparison of residual tuning (unreduced $M_{\rm Pl}$ convention throughout): $\Lambda$CDM ($10^{122}$), quintessence ($10^{60}$),
 $f(R)$ gravity ($10^{40}$), and the spin-torsion $N_{\rm tot}$
-parameterization of this work ($10^{5}$). The $10^{5}$ residual
+parameterization of this work ($10^{5}$). The $\Lambda$CDM ($10^{122}$) and
+spin-torsion ($10^{5}$) scores are derived in this paper
+(Appendix~\ref{app:dimensions} and Sec.~\ref{sec:gdp}); the quintessence
+($10^{60}$) and $f(R)$ ($10^{40}$) entries are illustrative
+order-of-magnitude literature-level comparators, not derived here. The $10^{5}$ residual
 annotation is the score under the $N_{\rm tot}$ reparameterization; per
 Sec.~\ref{sec:gdp} this is a reparameterization of the
 cosmological-constant problem as sensitivity to $N_{\rm tot}$,

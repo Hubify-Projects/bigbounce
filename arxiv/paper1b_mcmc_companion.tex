@@ -153,8 +153,8 @@
 %   FALSIFIED list (14 items) not acted on.)
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1B.0.82}
-\newcommand{\paperTimestamp}{June 28, 2026}
+\newcommand{\paperVersion}{v1B.0.83}
+\newcommand{\paperTimestamp}{June 29, 2026}
 % v1B.0.77 (2026-06-26 — R53-R55 closure wave: version+date stamp bump; PDF recompiled and re-mirrored; no new science change)
 % v1B.0.76 (2026-06-20 — P-round: 3 reproducibility datasets published public on HF (bamfai/p1b-*); Appendix A URLs corrected Hubify->bamfai; P1B now fully reproducible. No science change.)
 % v1B.0.75 (2026-06-19): D-round visual polish: ALP corner Fig 4 -> full-width (figure* / 0.85\textwidth, mirror Fig 3 treatment).
@@ -1522,7 +1522,7 @@ $n_s$ & $0.965 \pm 0.006$ & $0.967 \pm 0.006$ \\
 \hline
 Chains & 6 & 6 \\
 Total samples & 176{,}240 & 132{,}949 \\
-Worst $\hat{R}-1$\footnote{\label{fn:rhat_csv}Worst row is $n_s$ in the full-tension combination at $\hat{R}-1 = 9.74\times 10^{-4}$; all sampled parameters across both frozen combinations satisfy $\hat{R}-1 < 3\times 10^{-3}$. The full-tension chain samples 17 parameters: 7 cosmological + 9 Planck likelihood nuisance ($A_{\rm planck}$, amp$_{143}$, amp$_{217}$, amp$_{143\times 217}$, $n_{143}$, $n_{217}$, $n_{143\times 217}$, calTE, calEE) + 1 supernova absolute magnitude ($M_b$, entering via the Pantheon+~SN and SH0ES \texttt{H0.riess2020Mb} likelihoods rather than the Planck likelihood stack). The Planck+BAO+SN chain samples 16 parameters (7 cosmological + the same 9 Planck nuisance; $M_b$ is not explicitly sampled there because \texttt{sn.pantheonplus} runs with \texttt{use\_abs\_mag: false}, analytically marginalizing the absolute magnitude in the absence of the SH0ES $M_b$ likelihood; verified by direct chain-header / \texttt{.updated.yaml} blocking-list inspection). Full per-parameter convergence tables ($\hat R$, ESS, drift, per dataset) are archived at \path{reproducibility/cosmology/convergence_latest.csv} and mirrored in the HuggingFace chain-diagnostics dataset (Appendix~\ref{app:reproducibility}).
+Worst $\hat{R}-1$\footnote{\label{fn:rhat_csv}Worst row is $n_s$ in the full-tension combination at $\hat{R}-1 = 9.74\times 10^{-4}$; all sampled parameters across both frozen combinations satisfy $\hat{R}-1 \le 3\times 10^{-3}$. The full-tension chain samples 17 parameters: 7 cosmological + 9 Planck likelihood nuisance ($A_{\rm planck}$, amp$_{143}$, amp$_{217}$, amp$_{143\times 217}$, $n_{143}$, $n_{217}$, $n_{143\times 217}$, calTE, calEE) + 1 supernova absolute magnitude ($M_b$, entering via the Pantheon+~SN and SH0ES \texttt{H0.riess2020Mb} likelihoods rather than the Planck likelihood stack). The Planck+BAO+SN chain samples 16 parameters (7 cosmological + the same 9 Planck nuisance; $M_b$ is not explicitly sampled there because \texttt{sn.pantheonplus} runs with \texttt{use\_abs\_mag: false}, analytically marginalizing the absolute magnitude in the absence of the SH0ES $M_b$ likelihood; verified by direct chain-header / \texttt{.updated.yaml} blocking-list inspection). Full per-parameter convergence tables ($\hat R$, ESS, drift, per dataset) are archived at \path{reproducibility/cosmology/convergence_latest.csv} and mirrored in the HuggingFace chain-diagnostics dataset (Appendix~\ref{app:reproducibility}).
 } & 0.001 & 0.003 \\
 Min ESS & 4{,}744 & 4{,}692 \\
 \end{tabular}
@@ -1666,7 +1666,7 @@ the separate \emph{full-tension} chain reported in
 Table~\ref{tab:verification}, which carries the
 \texttt{H0.riess2020Mb} likelihood active in its YAML (verified by direct \texttt{.input.yaml} inspection and by chain
 sample-mean readout: $M_B = -19.263 \pm 0.049$ mag, agreeing with the
-Riess+2020 SH0ES value $M_B = -19.253 \pm 0.027$ mag at $0.2\sigma$).
+SH0ES~\cite{Riess2022} value $M_B = -19.253 \pm 0.027$ mag at $0.2\sigma$).
 The full-tension chain returns $H_0 = 67.68 \pm 1.06$ km/s/Mpc with
 $\Delta\Neff = -0.020 \pm 0.169$, exhibiting the canonical 3.6$\sigma$
 Hubble tension with Riess $H_0 = 73.04 \pm 1.04$ km/s/Mpc that the
@@ -1719,7 +1719,7 @@ soft constraint on the dimensionally consistent combination
 $M_B - 5\log_{10}(h) \approx$ const, with
 $h = H_0/(100\,\text{km\,s}^{-1}\,\text{Mpc}^{-1})$ (equivalently
 $M_B - 5\log_{10}(H_0/[\text{km\,s}^{-1}\,\text{Mpc}^{-1}]) + 10 =$ const),
-along the SN distance-modulus degeneracy. At the Riess+2020 anchor
+along the SN distance-modulus degeneracy. At the SH0ES~\cite{Riess2022} anchor
 ($M_B = -19.253$, $h = 0.7304$), the constant is
 $-19.253 - 5\log_{10}(0.7304) = -18.571$. At the chain joint mean
 ($M_B = -19.263$, $h = 0.6768$), the constant is

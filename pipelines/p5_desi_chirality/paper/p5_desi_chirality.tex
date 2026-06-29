@@ -33,7 +33,22 @@
 % The divide-by-h claim (~1246 h⁻¹ Mpc) is INVERTED. No pipeline recompute required.
 % If any future reviewer re-raises this, cite env_finder/01_compute_vweb.py:106-108.
 
-\newcommand{\paperVersion}{v0.1.91-2026-06-28}
+\newcommand{\paperVersion}{v0.1.92-2026-06-29}
+% v0.1.92-2026-06-29 (Round A INT closure wave — 3 VERIFIED items, neutral
+%   multi-vendor INT (Grok/Gemini/OpenAI) + Opus truth audit:
+%   (1) l.2915 interior-buffer removed count $1{,}862$ -> $1{,}805$
+%     (= 783{,}820-782{,}015; artifact 21_r23conf_meta_closures.json
+%     META_M2_canonical_interior_buffer n_all/n_interior; OAI P5-m7);
+%   (2) abstract l.656 dark-program sigma scope disambiguated: $\sigma=+1.25$
+%     is the program-wide dark sample (n=14{,}782, all classes, body
+%     §VI.D l.1697-98), distinct from the filament-class dark $\sigma=+1.61$
+%     (n=13{,}759, body l.1729-31) — prior phrasing conflated the two;
+%   (3) h-unit footnote l.980 "alternative convention chi[h^-1 Mpc]=chi[Mpc]/h"
+%     relabeled as the incorrect divide-by-h operation (contradicts the
+%     dimensional relation derived two lines above; OAI P5-m6).
+%   Structural/disclosed vendor items left unclosed: post-hoc primary path,
+%   n=428 void under-power, Paper IV in-prep dependence (DOI deferred),
+%   dense abstract — all already disclosed in source. No science change.)
 % v0.1.88-2026-06-27 (EXTDB de-biased external round — truth audit
 %   project-context/peer-reviews/EXTDB_P5_TRUTH_AUDIT.md; Grok MAJOR audited
 %   FALSE-POSITIVE [robust across 5 void-finders |Df_CW|<=0.004 p>=0.21; DESIVAST
@@ -460,7 +475,7 @@
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{June 28, 2026}
+\date{June 29, 2026}
 
 \begin{abstract}
 We cross-match the 8{,}474{,}531-galaxy chirality catalog of Paper~IV
@@ -653,9 +668,10 @@ not environment density, consistent with the BGS-selection-function-
 conditioned imaging-leg systematics tracked in Paper~IV; this is
 consistent with a tracer-program decomposition in which the catalog-wide
 monopole offset is dominated by the BGS-bright sample, with the
-LRG/ELG/QSO-dark sample returning $\sigma = +1.25$ (filament class,
-on the declared env-labeled parent: bright $n=394{,}181$ at
-$\sigma=-2.98$ vs dark $n=13{,}759$ at $\sigma=+1.61$, opposite sign).
+program-wide LRG/ELG/QSO-dark sample ($n=14{,}782$, all classes)
+returning $\sigma = +1.25$; within the filament class specifically,
+the declared env-labeled parent gives bright $n=394{,}181$ at
+$\sigma=-2.98$ vs dark $n=13{,}759$ at $\sigma=+1.61$ (opposite sign).
 The joint two-sample
 z-test on the bright-vs-dark $f_{\rm CW}$ difference is
 $|z| \approx 2.1\sigma$ on the filament class (the largest dark
@@ -977,9 +993,11 @@ The pipeline implements this as
 \texttt{chi = Planck18.comoving\_distance(z).value;
 chi = chi * cosmo.h} (multiply-by-$h$ convention;
 \href{\repoBase/pipelines/p5\_desi\_chirality/env\_finder/01\_compute\_vweb.py}{[A3]},
-lines~106--108). The alternative convention
-$\chi[h^{-1}\,{\rm Mpc}] = \chi[{\rm Mpc}]/h$ (divide-by-$h$, giving
-${\approx}1246\,h^{-1}$\,Mpc at $z=0.2$) is not used here; the
+lines~106--108). The incorrect divide-by-$h$ operation
+$\chi[h^{-1}\,{\rm Mpc}] = \chi[{\rm Mpc}]/h$ (which contradicts the
+dimensional relation $D/(h^{-1}\,{\rm Mpc}) = h\cdot D[{\rm Mpc}]$ derived
+above and would give the wrong value ${\approx}1246\,h^{-1}$\,Mpc at
+$z=0.2$) is \emph{not} a valid alternative and is not used here; the
 multiply-by-$h$ convention above is what the pipeline implements.}
 \item Map to Cartesian
 $(X,Y,Z) = \chi (\cos\delta\cos\alpha, \cos\delta\sin\alpha,
@@ -2912,8 +2930,8 @@ $1.98$\,pp (canonical) to $0.05$\,pp (corrected), with every class
 within $|\sigma| \le 0.39$ of the sample monopole
 ($f_{\rm CW}^{\rm eq}$: void $0.4971$, wall $0.4968$, filament
 $0.4973$, cluster $0.4973$; $n = 812{,}793$ joined spirals). The
-interior-buffer variant ($1{,}862$ spirals removed) is statistically
-indistinguishable. Residual per-class deviations from $0.5$ track the
+interior-buffer variant ($1{,}805$ spirals removed, $783{,}820-782{,}015$)
+is statistically indistinguishable. Residual per-class deviations from $0.5$ track the
 known Paper~IV global classifier monopole, exactly as in the
 canonical analysis: the three large classes span $-2.3$ to
 $-3.7\sigma$ (wall $-2.51$, filament $-3.73$, cluster $-2.33$), while
