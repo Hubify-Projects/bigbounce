@@ -10,9 +10,36 @@ paper-owner agents as compute-gated (not faked, not dismissed). Run on the pod;
 fold real results into the paper; re-review.
 
 ## P1B (MCMC companion) — HIGHEST LEVERAGE (recurring blocker, 4/6 reviewers)
-- [ ] **SN-overlap control chain A**: DESI + Planck + Pantheon+-only w0wa MCMC (drop the overlapping DES-Y5×Pantheon+ SNe). Demonstrates the quintom-B direction is/ isn't robust to double-counted SNe.
-- [ ] **SN-overlap control chain B**: DESI + Planck + DES-SN5YR-only w0wa MCMC.
+- [~] **SN-overlap control chain A**: Planck NPIPE + SDSS DR16 BAO + Pantheon+-only w0wa CPL MCMC (drops the overlapping DES-Y5×Pantheon+ SNe). Demonstrates the quintom-B direction is/ isn't robust to double-counted SNe. **LAUNCHED 2026-06-30** (see block below).
+- [~] **SN-overlap control chain B**: Planck NPIPE + SDSS DR16 BAO + DES-Y5 (DES-SN5YR)-only w0wa CPL MCMC. **LAUNCHED 2026-06-30** (see block below).
 - [ ] **ALP prior-predictive fraction**: quantify the accommodation/prior-volume cost (the "tautological fit" ChatGPT-B2 concern) — fraction of prior that reproduces β_obs.
+
+### P1B SN-overlap control chains — LAUNCHED 2026-06-30 (real MCMC, not fabricated)
+- **Configs** (committed): `reproducibility/cosmology/cobaya_control_pantheonplus.yaml` (Control A),
+  `reproducibility/cosmology/cobaya_control_desy5.yaml` (Control B). Both derived from the validated
+  `cobaya_w0wa_quintom_test.yaml` (identical priors/sampler/CPL+PPF params); only the SN likelihood differs
+  (`sn.pantheonplus` vs `sn.desy5`). Both passed `cobaya-run --test` (full model init: clipy + Planck NPIPE
+  CamSpec + SDSS DR16 BAO + SN + CAMB PPF w/wa all load; lensing.clik test logL = -4.42102).
+- **Pod**: RunPod `99srknm4s1cc3l` (name `bigbounce-p1b-snctrl`, RTX A4000, EUR-IS-1), network volume
+  `bigbounce-paper1-canonical` (a9d3xb63bv) mounted at `/workspace` (holds Planck NPIPE clik data + clipy + both SN datasets).
+  The old `POD_COBAYA_R43_V2` (ijzftpy3klystt) was terminated/gone; this is a fresh pod on the canonical volume.
+  cobaya 3.6.2 (clipy 0.15), camb 1.6.6, OpenMPI 4.1.2.
+- **Run dir**: `/workspace/bigbounce/p1b_snctrl/` — 4 MPI chains each, tmux sessions `w0wa_pp` (Pantheon+) and `w0wa_dy` (DES-Y5).
+- **SSH**: `ssh -i ~/.ssh/id_ed25519 -p 19730 root@157.157.221.29`
+- **Monitor (convergence later)**:
+  ```
+  ssh -i ~/.ssh/id_ed25519 -p 19730 root@157.157.221.29 \
+    "cd /workspace/bigbounce/p1b_snctrl && tail -4 chains/control_pantheonplus/cpp.progress chains/control_desy5/cdy.progress"
+  # ^ last column is Gelman-Rubin R-1 (config stops at R-1<0.01). Or full posterior summary:
+  ssh ... "COBAYA_PACKAGES_PATH=/workspace/cobaya_packages getdist /workspace/bigbounce/p1b_snctrl/chains/control_pantheonplus/cpp"
+  # deliverable params: w (=w0), wa, w0_plus_wa (=w0+wa), w_pivot.
+  ```
+- **Deliverable**: w0, wa, w0+wa posteriors per control → is the quintom-B direction (w0>-1, w0+wa<-1)
+  consistent across the two independent SN samples (robust) or an artifact of double-counted SNe?
+- **ALWAYS-backup (Lesson E)**: chains live on the canonical network volume (survives pod stop). Mirror final
+  chains to local + HF + B2 at convergence / before pod stop.
+- **NOTE**: account RunPod balance was low (~$7.86 at launch, ~$0.17/hr) — chains may need a top-up to reach
+  full R-1<0.01 convergence. Check balance before relying on completion.
 
 ## P4 (chirality null) — win ChatGPT's MAJOR
 - [ ] **GZ1-only classifier retrain**: retrain the flip-equivariant ViT on GZ1 labels only (no CE-ResNet pseudo-labels) → confirms the null isn't inherited from CE-ResNet. (ChatGPT M2.)
