@@ -1,0 +1,36 @@
+# RREXT P3 Grok
+VERDICT: MAJOR REVISIONS
+
+Provider: Grok (Expert)
+PDF: RREXT_P3.pdf (md5: e83a4a6668e5c9ff324205267f8c46b8)
+Chat: https://grok.com/c/67c41a6e-b9df-4ea8-a4de-3c13f75c71d3
+Harvested: 2026-06-30
+RCEXT baseline: MAJOR REVISIONS (no change)
+
+Golden
+Journal target: MNRAS / PRD / JCAP (high bar)
+Date of report: 30 June 2026
+1. Recommendation
+MAJOR REVISIONS
+The work represents a substantial technical achievement in large-scale unsupervised anomaly detection across heterogeneous astronomical archives. The Path-C native-retrain protocol, multi-gate validation framework, and extreme transparency about failure modes are genuine strengths. However, the current manuscript risks overstating the immediate science-ready yield and catalog utility in its headline framing, abstract, and early sections. Several components labeled “validated catalog-grade” or “recommended-tier” carry important caveats that are only fully appreciated deep in the text. The cosmological applications section, while appropriately cautious in its conclusions, is framed in a way that could mislead readers into expecting stronger new constraints than are delivered. These issues are addressable with targeted revisions; they do not rise to the level of rejection.
+2. BLOCKERS (must be resolved for acceptance)
+These are issues that materially affect the interpretability or claimed readiness of the catalog.
+B1. Scope and framing of “validated catalog-grade” vs. exploratory tiers
+The headline numbers (≥268,519 unique validated; 269,317 recommended-tier) mix four components that pass their respective gates with two that fail injection-recovery (Gaia 5.2 %, eROSITA 1.2 %) plus a large LAMOST exploratory tier retained explicitly as a “methodological lesson.” The ≥ symbol is justified by the author as conservative because a validated-only 5″ re-dedup is not recomputable from committed artifacts, but this weakens the claim. The paper must either (a) recompute and report an exact validated-only unique count, or (b) drop the ≥ and present the validated subset as a precisely known lower bound with a clear statement that downstream science analyses should start from the four gate-passing components only. The current abstract and §I lead paragraphs emphasize the large multipliers (∼73×, ∼141×) without sufficiently foregrounding that the like-for-like science-target DESI subset is ≈0.9× the Liang et al. (2023) benchmark. This distinction is made later but must be elevated.
+B2. eROSITA score-axis irreproducibility
+The production-run threshold (0.259) and per-object S_BigAE values cannot be reproduced on any of 16 tested monotone rescalings of the committed raw reconstruction scores, nor on retrained IsolationForest axes. The paper correctly identifies that the n = 298 membership list itself is the reproducible selection. However, releasing per-object scores that are known to be on an unrecoverable axis creates a serious provenance and usability problem for a catalog paper. Either (i) remove the per-object S_BigAE column from the released table (or mark it explicitly as non-reproducible and not to be used for weighting/ranking), or (ii) provide a fully reproducible re-derivation of scores on a documented, committed axis. The current “membership-list only” framing is correct but insufficiently prominent.
+B3. Cosmological applications section framing
+The multi-tracer f_NL analysis returns a central value with 9.4 % improvement but an envelope [3.92, 8.98] that fully contains the single-tracer baseline (σ(f_NL) = 8.98). The NANOGrav result is a consistency statement against an idealized circular-orbit SMBHB reference only (Bayes factor decisive only against that specific reference; environmentally modified models can produce γ ∼ 2.5–3). The paper is internally cautious, but the section title “COSMOLOGICAL APPLICATIONS” and the prominent tie to the matter-bounce f_NL = −35/8 prediction in the introduction create an expectation of new constraints that is not met. Reframe this section explicitly as “Pathfinder / illustrative use cases for future multi-tracer analyses” and move the quantitative results to a subsection or appendix if they do not yet tighten published bounds.
+3. MAJORS (important revisions required)
+M1. DESI science-target vs. full-stream distinction
+The positional recount showing that only ∼1.3 % (2,468 clusters) of the DESI anomalies fall on primary science-target spectra is correctly performed and reported, but it appears too late and is not reflected in the abstract or early summary statistics. The large process-scale multipliers are valid statements about the full instrument stream but are easily misread as catalog-size increases on science targets. Add a short, prominent “Scope and yield” paragraph early in §I or §III A that states the like-for-like science-target number first, then the full-stream number, with explicit cross-reference to the Liang et al. benchmark.
+M2. Injection-recovery status of DESI
+DESI is validated via 5-fold Jaccard (¯J_CV = 0.862) and production-vs-control OOD Jaccard (¯J_prod×ctrl = 0.732) rather than injection-recovery. This is a defensible choice given the survey’s scale and the nature of its anomalies, but it must be stated more explicitly as a limitation in §VI (or a dedicated caveats subsection). The paper already notes that DESI injection-recovery was not executed; elevate this to a clear, enumerated limitation alongside the known limits of emission-line injection tests for continuum autoencoders.
+M3. LAMOST tier inclusion in headline totals
+Retaining the ∼113 k LAMOST objects (98 % blue-excess training-bias artifact, 5.8 % recovery) in the 378,280 Path-C unique total while simultaneously labeling the tier “exploratory” and a “methodological lesson” is internally consistent but risks headline inflation. Consider reporting the validated + recommended numbers both with and without the LAMOST tier in all summary tables and the abstract. The current 6-way vs. 7-way deduplication arithmetic is correct but should be summarized in a single clear sentence or small table.
+M4. Reproducibility artifacts and deferred DOI
+The paper states that “the catalog, model weights, and reproducibility scripts will be publicly released with the arXiv posting.” This is normal practice. However, given the complexity of the pipeline (pod provisioning JSONs, scaler refit checks, dedup audits, etc.), add a short “Data Availability” subsection that explicitly lists the minimal set of artifacts a reader needs to reproduce the headline numbers (e.g., the exact commit hash or Zenodo snapshot that will be posted). A placeholder Zenodo DOI is acceptable and standard at submission.
+4. MINORS (presentation, clarity, polish)
+Long, dense footnotes and table notes reduce readability. Consider moving some technical detail (e.g., the full three-threshold disclosure for SDSS, the 16-rescaling sweep for eROSITA) to a short appendix or supplementary material.
+Several sentences are extremely long and parenthetical-heavy; light copy-editing for flow would improve accessibility for a broad MNRAS/PRD/JCAP readership.
+Ensure all rendered mathematics in the final PDF is free of extraction artifacts (subscripts, Greek letters, equation numbering). The provided text extr
