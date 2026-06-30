@@ -113,8 +113,9 @@ export default function ReviewsPage() {
             <div className="progress-block">
               <h3 className="progress-block-title">Internal/external gap — findings only the external tier caught</h3>
               <p className="progress-block-sub">
-                Substantive externally-caught findings that survived every internal round. Gap
-                reached zero at EXT17 — the loop exit criterion met.
+                Substantive externally-caught findings that survived every internal round. The gap
+                closed to zero by EXT20; the 2026-06-28 de-biased referee prompt then surfaced 2 genuine
+                self-favoring items (since fixed), and the final 3-round grind (A/B/C) closed with 0 genuinely-new findings.
               </p>
               <GapClosureChart />
               <GapPerPaperDeltas />
@@ -155,23 +156,23 @@ export default function ReviewsPage() {
       <div className="campaign-obs-panel">
         <h2 className="campaign-obs-heading">Campaign observations</h2>
         <p className="campaign-obs-lede">
-          17 external + internal rounds across EXT1–EXT17 conclude with 18/18 ACCEPT from ChatGPT, Grok, and Gemini. Campaign complete; substantive content fully closed.
+          The program ran 20+ internal + external rounds, then a de-biased external validation (2026-06-28, severity-steering struck from the referee prompt) and a final 3-round INT+EXT grind (Round A/B/C, Jun 28–30 2026). 23 real items were closed across the 3 rounds; a neutral gate-discipline truth-audit found 0 genuinely-new real findings. External verdicts are MINOR-dominant with occasional ACCEPTs — not uniformly all-ACCEPT.
         </p>
         <ul className="campaign-obs-list">
           <li>
-            <strong>Grok — calibrated-stable:</strong> 6/6 ACCEPT across five consecutive rounds (EXT3–EXT7); 18/18 ACCEPT at EXT17. Cites specific on-disk artifacts; blind spot is cross-checking released code.
+            <strong>Run-to-run variance is the headline:</strong> the <em>same</em> papers swung MINOR-dominant (Round B EXT) → MAJOR-dominant (Round C EXT) while getting slightly <em>better</em>, not worse — frontier fast-tier referees carry large run-to-run noise, so any single sweep's verdict tally is not a stable quality signal.
           </li>
           <li>
-            <strong>Gemini — steady progression:</strong> 0 ACCEPT (EXT1) → 1 ACCEPT (EXT5 P2) → 1 full ACCEPT (EXT6 P1B) → 2 ACCEPT + 4 MINOR (EXT7) → 6/6 ACCEPT at EXT17. Fresh-context protocol encoded in skill.
+            <strong>Grok — harsh outlier (pattern-064):</strong> its REJECT/MAJOR verdicts truth-audit as false positives (future-date FPs, companion-reliance, disclosed-caveat-as-defect); it softened to MINOR on several papers after the round fixes landed.
           </li>
           <li>
-            <strong>ChatGPT — reached 6/6 ACCEPT at EXT17:</strong> EXT16 at 14/18 with two real findings (P1A Fig 3 caption/code mismatch, P1B Eq 1 σ_b² divisor); EXT17 closed all to 18/18 ACCEPT.
+            <strong>Gemini — most ACCEPTs:</strong> returned real ACCEPTs (P1A at Round A, P5 at Round C) but also swings to MAJOR run-to-run — high variance rather than a fixed bias.
           </li>
           <li>
-            <strong>Gap series:</strong> 60 → 32 → 27 → 13 → 19 → 18 → 14 → 0. Physics content closed first; all residual wording, figures, and policy items resolved.
+            <strong>ChatGPT — caught real items + re-flags:</strong> surfaced a genuine P4 self-favoring overstatement (the abstract's "robust across the full confidence-cut sweep") which was corrected, alongside re-flags of already-disclosed caveats.
           </li>
           <li>
-            <strong>Recurring auto-falsified artifacts:</strong> Fisher F₀ = 1/8.98² (8× falsified), P5 k=20 (6× falsified), ChatGPT Zenodo/DOI bundle (HD-11 ruled: submission-day action), version-decimal artifacts like "z=−18.1.34" (renderer artifacts, not errors).
+            <strong>Recurring auto-falsified noise:</strong> future-date false-positives (June 2026 is the current date), PDF-raster math-extraction artifacts, an OpenAI leg <em>hallucinating</em> P1B robustness numbers that do not exist in the source, and the Zenodo DOI deferred-to-submission (normal pre-submission, not a defect).
           </li>
         </ul>
         <p className="campaign-obs-patterns">
@@ -196,16 +197,20 @@ export default function ReviewsPage() {
             </thead>
             <tbody>
               <tr>
-                <td className="eta-td eta-td-label">All vendors 18/18 ACCEPT (EXT17)</td>
-                <td className="eta-td">✓ Complete — ChatGPT, Grok, and Gemini all at ACCEPT across all 6 papers.</td>
+                <td className="eta-td eta-td-label">Internal review (INT, multi-vendor API) — 3 rigorous rounds A/B/C</td>
+                <td className="eta-td">✓ Complete (Jun 28–30 2026). 23 real items closed program-wide; final neutral truth-audit found 0 genuinely-new real findings.</td>
               </tr>
               <tr>
-                <td className="eta-td eta-td-label">17-round external review campaign (EXT1–EXT17)</td>
-                <td className="eta-td">✓ Complete. Green light issued.</td>
+                <td className="eta-td eta-td-label">External review (de-biased browser, 3 sweeps + validation)</td>
+                <td className="eta-td">MINOR-dominant verdicts with occasional ACCEPTs (e.g. P5 Gemini). Residual MAJORs = disclosed caveats + submission-time DOI/arXiv blockers + frontier-LLM run-to-run variance — not unaddressed quality. Verified internally honest.</td>
               </tr>
               <tr>
-                <td className="eta-td eta-td-label">Awaiting: Houston ORCID public + coordinated arXiv drop authorization</td>
-                <td className="eta-td">Pending Houston action. All papers at 99% readiness (hard cap; final 1% = Houston sign-off only).</td>
+                <td className="eta-td eta-td-label">Readiness</td>
+                <td className="eta-td">96 (R-converged ceiling; final 1% = Houston sign-off, hard cap — never written here without it).</td>
+              </tr>
+              <tr>
+                <td className="eta-td eta-td-label">Awaiting: Houston external-review sign-off → coordinated arXiv submission</td>
+                <td className="eta-td">Pending Houston action. Submission mints the Zenodo DOIs / arXiv IDs that mechanically clear the last structural reviewer blocker.</td>
               </tr>
             </tbody>
           </table>
