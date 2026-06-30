@@ -76,3 +76,4 @@ arxiv/*.tar.gz
 
 # REVTeX auto-generated bib control files (regenerable)
 *Notes.bib
+project-context/cron-logs/
