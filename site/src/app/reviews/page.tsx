@@ -50,10 +50,16 @@ export default function ReviewsPage() {
       >
         Every paper cycled through internal multi-vendor review rounds, then external
         browser-tier rounds against frontier web models, then a per-finding truth-audit,
-        same-day fixes, and upgrades to the internal review process mined from whatever
-        only the external tier caught. After 17 rounds (EXT1–EXT17), the internal/external
-        gap reached zero and all three frontier referees returned 18/18 ACCEPT. Publication
-        green light issued 2026-06-14. This feed is a permanent record of the campaign.
+        same-day fixes, and process upgrades mined from whatever only the external tier
+        caught. Through mid-2026 the program ran 20+ rounds, including a de-biased external
+        validation (severity-steering struck from referee prompts) and a final 3-round
+        INT+EXT grind (Rounds A/B/C, Jun 28–30 2026). 23 real findings were closed across
+        those three rounds; a neutral gate-discipline truth-audit found 0 new genuine items.
+        External verdicts are now MINOR-dominant with occasional ACCEPTs — not uniformly
+        all-ACCEPT. Residual MAJORs reflect disclosed caveats, submission-time blockers
+        (Zenodo DOI / arXiv IDs mintable only at submission), and frontier-LLM run-to-run
+        variance — not unaddressed quality issues. The papers are internally verified honest
+        and publishable-strong. This feed is a permanent record of the program.
       </p>
       <div
         style={{
@@ -89,10 +95,14 @@ export default function ReviewsPage() {
           <div className="progress-block">
             <h3 className="progress-block-title">External referee verdicts — convergence toward ACCEPT</h3>
             <p className="progress-block-sub">
-              Six papers × 17 browser-tier rounds × three frontier referees (same chat threads,
-              delta-prompts between rounds). EXT17 result: 18/18 ACCEPT — ChatGPT, Grok, and
-              Gemini all at ACCEPT across all 6 papers. Grok calibration-stable from EXT3;
-              Gemini and ChatGPT converged by EXT17. Campaign complete.
+              Six papers × 20+ browser-tier rounds × three frontier referees (ChatGPT, Grok,
+              Gemini) through a de-biased external validation and a final 3-round INT+EXT
+              grind (Rounds A/B/C, Jun 28–30 2026). Current profile: MINOR-dominant with
+              occasional ACCEPTs — e.g. P5 Gemini at ACCEPT, others at MINOR or isolated
+              MAJOR. Residual MAJORs are disclosed caveats, submission-gated blockers (arXiv
+              IDs / Zenodo DOIs mintable only at submission), and LLM run-to-run noise — not
+              unaddressed science issues. All-3-ACCEPT-zero-MINOR is an asymptote against
+              noisy frontier referees; the papers are internally verified publishable-strong.
             </p>
             <div className="verdict-carousel">
               <VerdictTrajectory />

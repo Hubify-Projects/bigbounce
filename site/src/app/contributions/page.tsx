@@ -176,11 +176,11 @@ const contributions: Contribution[] = [
     oneLine:
       "Largest chirality-labeled galaxy catalog to date: 8.47M DESI Legacy DR8 galaxies classified CW/CCW/NOT_SPIRAL (3,201,160 spirals) by a flip-equivariant ViT pipeline, with a null real-space chirality dipole.",
     what:
-      "8,474,531 galaxies from DESI Legacy Survey DR8 classified by a flip-equivariant Vision Transformer ensemble with test-time D4 averaging (equivariance suppresses the raw classifier asymmetry 2.98×: +1.576% → −0.529% in A-units). Headline: real-space ℓ=1 dipole at +0.43σ (p=0.30) plus a block-bootstrap WLS template fit disfavoring a clean 1.7% Shamir-class dipole at z≈−18; injection-recovery brackets A95 in (1.0%, 1.5%].",
+      "8,474,531 galaxies from DESI Legacy Survey DR8 classified by a flip-equivariant Vision Transformer ensemble with test-time D4 averaging (equivariance suppresses the raw classifier asymmetry 2.98×: +1.576% → −0.529% in A-units). Headline: real-space ℓ=1 dipole at +0.41σ (empirical-rank p=0.31) on the high-confidence sample (N=949,584) plus a block-bootstrap WLS template fit disfavoring a clean 1.7% Shamir-class dipole at z≈−18; injection-recovery brackets A95 in (1.0%, 1.5%].",
     why:
       "First chirality null at this scale with an honest falsification window. Constrains any cosmological parity-violating mechanism — including the early-universe consequences of ECH parity-odd structure beyond the ALP birefringence channel — and refutes the claimed ~3% parity signal.",
     equation:
-      "Real-space dipole +0.43σ (p = 0.30)  ·  WLS exclusion of 1.7% dipole at z ≈ −18  ·  A50 ≈ 0.75%, A95 ∈ (1.0%, 1.5%]",
+      "Real-space dipole +0.41σ (rank-p = 0.31)  ·  WLS exclusion of 1.7% dipole at z ≈ −18  ·  A50 ≈ 0.75%, A95 ∈ (1.0%, 1.5%]",
     verify: [
       {
         label: "bamfai/galaxy-chirality-catalog (HuggingFace)",
@@ -198,9 +198,9 @@ const contributions: Contribution[] = [
     title: "Multi-Survey Anomaly Catalog (378,280 anomalies)",
     paper: "Paper 3",
     oneLine:
-      "First unified anomaly sweep across 7 surveys (37.3M sources) — roughly 141× larger than the biggest prior spectroscopic anomaly catalog — after Path-C native retrains and 5″ positional dedup.",
+      "First unified anomaly sweep across 7 surveys (37.3M sources): 378,280 unique anomalies (269,317 recommended-tier) after Path-C native retrains and 7-way 5″ positional dedup. The ~141× figure over prior catalogs is a full-instrument-stream vs science-target comparison, not a like-for-like size increase — the like-for-like DESI recount is ≈0.9× the largest single-survey benchmark (2,468 vs 2,685).",
     what:
-      "DESI DR1 (195,829), SDSS DR18 (77,905), LAMOST DR10 (44,075), eROSITA DR1 (298), Planck CMB (200), NEOWISE (436), Gaia DR3 (500). 388,493 raw → 378,280 unique after global friends-of-friends union-find at 5″ (637 multi-survey + 9,576 intra-survey collapses). Enrichment statistics (e.g. eROSITA) are reported descriptively, not as inferential significances.",
+      "Path-C native-retrained per-survey tallies: DESI DR1 (195,829), SDSS DR18 (77,905), LAMOST DR10 (113,342, exploratory tier), eROSITA DR1 (298), Planck CMB (200), Gaia DR3 (500), NEOWISE (419, after the |b_ecl|<80° ecliptic-pole mask; 436 pre-mask). These sum to 388,493 raw → 378,280 unique after 7-way friends-of-friends union-find at 5″ (10,213 duplicate detections collapsed). Enrichment statistics (e.g. eROSITA) are reported descriptively, not as inferential significances.",
     why:
       "Cross-survey continuity is the load-bearing falsification surface for any new physics claim. Population-level rare-class discovery (z>6 QSOs, ultra-rare AE candidates) is the byproduct.",
     verify: [
@@ -303,7 +303,7 @@ const contributions: Contribution[] = [
     oneLine:
       "A data-provenance audit traced P4's previously-headlined −0.122σ subsample-mask null to a synthetic-footprint catalog; the result was withdrawn, the paper re-anchored on real-space estimators, and the audit trail published.",
     what:
-      "Artifact-level provenance tracing (file hashes, generation scripts, footprint geometry checks) applied to every load-bearing null. When the audit failed, the claim was withdrawn in-paper (P4 Appendix A), the headline was rebuilt on the real-space +0.43σ dipole + WLS template exclusion, and the corrected equivariance suppression factor (3.86× → 2.98×) was propagated through every surface. P2's irreproducible ~9.9σ SDB joint-Fisher claim was withdrawn the same way and replaced by a committed-code 1.4σ/0.6σ subordinate channel.",
+      "Artifact-level provenance tracing (file hashes, generation scripts, footprint geometry checks) applied to every load-bearing null. When the audit failed, the claim was withdrawn in-paper (P4 Appendix A), the headline was rebuilt on the real-space +0.41σ dipole + WLS template exclusion, and the corrected equivariance suppression factor (3.86× → 2.98×) was propagated through every surface. P2's irreproducible ~9.9σ SDB joint-Fisher claim was withdrawn the same way and replaced by a committed-code 1.4σ/0.6σ subordinate channel.",
     why:
       "Most published nulls and detections never face an artifact-level audit. Treating retraction-and-rebuild as a first-class, documented workflow is itself a transparency contribution — reviewers can replay the exact decision chain.",
   },
@@ -466,6 +466,70 @@ export default function ContributionsPage() {
           self-claimed. Definitions, prior work, and verification links below.
         </p>
       </div>
+
+      <section id="program-arc" style={{ marginTop: 28 }}>
+        <p
+          className="eyebrow"
+          style={{ marginBottom: 8 }}
+        >
+          How the six papers fit together
+        </p>
+        <p style={{ marginTop: 0, fontSize: 14, lineHeight: 1.7, maxWidth: "64ch" }}>
+          One program, two halves. The <strong>theory arm</strong> (P1A, P1B, P2)
+          asks where a nonsingular Einstein–Cartan–Holst bounce could leave a
+          falsifiable fingerprint, proves the bounce mechanism itself is invisible
+          to telescopes, closes the enumerated dark-energy routes, and isolates the
+          one surviving handle — a parameter-free matter-bounce non-Gaussianity
+          SPHEREx can test. The <strong>data arm</strong> (P3, P4, P5) mines 45M+
+          archival sources for the parity- and anomaly-level signatures any bounce
+          would have to imprint, and reports honest nulls with quantified
+          falsification windows. Negative theory results narrowed the search space;
+          the surveys then went looking exactly where the theory said to look.
+        </p>
+        <div style={{ display: "grid", gap: 0, marginTop: 16 }}>
+          {[
+            { n: "P1A", role: "ECH theory + no-go: perturbation-transparency theorem and a 14-constraint channel-level closure of the four minimal bounce→dark-energy routes." },
+            { n: "P1B", role: "MCMC + pipeline companion: frozen ΛCDM+ΔN_eff chains (honest null), NaMaster recovery, and an ALP-birefringence consistency check." },
+            { n: "P2", role: "f_NL = −35/8 forecast: the surviving falsifiable handle — matter-bounce non-Gaussianity, ~300× inflation and opposite sign, testable by SPHEREx at 3–5σ." },
+            { n: "P3", role: "Multi-survey anomaly catalog: 378,280 unique anomalies across 7 surveys + a NANOGrav free-spectrum slope consistent with matter-bounce γ = 3.0." },
+            { n: "P4", role: "Galaxy chirality null: 8.47M classified galaxies, a null +0.41σ real-space dipole, refuting the claimed ~3% parity signal at scale." },
+            { n: "P5", role: "DESI chirality × environment null: spiral handedness is independent of cosmic-web environment, constraining environment-coupled parity models." },
+          ].map((p, i) => (
+            <div
+              key={p.n}
+              style={{
+                display: "grid",
+                gridTemplateColumns: "56px 1fr",
+                gap: 14,
+                alignItems: "baseline",
+                padding: "10px 0",
+                borderTop: i === 0 ? "none" : "1px solid var(--border)",
+              }}
+            >
+              <span
+                style={{
+                  fontFamily: "var(--font-mono-stack)",
+                  fontSize: 13,
+                  fontWeight: 700,
+                  color: "var(--accent)",
+                }}
+              >
+                {p.n}
+              </span>
+              <span style={{ fontSize: 13, lineHeight: 1.6 }}>{p.role}</span>
+            </div>
+          ))}
+        </div>
+        <p style={{ marginTop: 12, fontSize: 12.5, lineHeight: 1.6, color: "var(--text-muted)" }}>
+          Program arc: P1A (ECH theory / no-go) → P1B (MCMC + pipeline companion) →
+          P2 (f_NL forecast) → P3 (anomaly catalog) + P4 (chirality null) +
+          P5 (DESI chirality × environment). See the{" "}
+          <Link href="/papers" style={{ color: "var(--accent)" }}>
+            six papers
+          </Link>{" "}
+          for full status and PDFs.
+        </p>
+      </section>
 
       <section
         id="tier-scale"

@@ -286,10 +286,11 @@ export function SkillsGrowthChart() {
   const width = 640;
   const height = 230;
   const padL = 42;
-  const padR = 14;
+  const padR = 20;
   // padT large enough to hold a 2-row stacked legend above the plot
   const padT = 50;
-  const padB = 52;
+  // padB enlarged to accommodate -45° rotated x-axis labels
+  const padB = 72;
   const plotW = width - padL - padR;
   const plotH = height - padT - padB;
   // maxY raised to 75 so the highest data value (patterns=64) sits comfortably inside bounds
@@ -341,12 +342,17 @@ export function SkillsGrowthChart() {
           </circle>
           {/* x-axis tick */}
           <line x1={x(i)} y1={xAxisY} x2={x(i)} y2={xAxisY + 3} stroke={AXIS} strokeWidth={0.75} />
-          {/* Two x-axis label rows: abbreviated id + month-day date */}
-          <text x={x(i)} y={xAxisY + 15} textAnchor="middle" fontFamily={MONO} fontSize={8} fill={AXIS}>
-            {shortId(p.id)}
-          </text>
-          <text x={x(i)} y={xAxisY + 27} textAnchor="middle" fontFamily={MONO} fontSize={7.5} fill={AXIS}>
-            {p.dateISO.slice(5)}
+          {/* single rotated x-axis label — -45° prevents overlap on dense series */}
+          <text
+            x={x(i)}
+            y={xAxisY + 6}
+            textAnchor="end"
+            fontFamily={MONO}
+            fontSize={7.5}
+            fill={AXIS}
+            transform={`rotate(-45, ${x(i)}, ${xAxisY + 6})`}
+          >
+            {shortId(p.id)} ({p.dateISO.slice(5)})
           </text>
         </g>
       ))}
