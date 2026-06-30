@@ -153,8 +153,24 @@
 %   FALSIFIED list (14 items) not acted on.)
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1B.0.85}
+\newcommand{\paperVersion}{v1B.0.86}
 \newcommand{\paperTimestamp}{June 30, 2026}
+% v1B.0.86 (2026-06-30 — RCEXT-P1B substantive closure. (1) w0wa DEMOTED:
+%   Table II (tab:iter2_posterior) + physics-interpretation + caveats(a-e) +
+%   the cross-check subsection RELOCATED to new Appendix app:w0wa
+%   ("Exploratory w0wa Analysis with Overlap-Uncorrected SN Likelihoods");
+%   main body now carries only two short pointers, no directional/quintom-B
+%   result. Answers ChatGPT-B1, Gemini_cosmo-M1, OpenAI-M2, Grok. (2) Removed
+%   the "plausibly robust" directional claim (Gemini-RCEXT-A) -> replaced with
+%   explicit "direction could shift; no robustness claimed". (3) Replaced the
+%   failed "retained in main text deliberately" rebuttal with a prominent
+%   deferred-with-justification statement naming the two required SN-overlap
+%   control chains (need fresh MPI MCMC; outside this companion's compute).
+%   (4) ALP: added leading prior-volume/accommodation framing note —
+%   explicitly states agreement with beta_obs is by-construction (single
+%   summary datum), load-bearing outputs are the coupling burden + prior cost
+%   (ChatGPT-B2). NO fabricated numbers; control chains + prior-predictive
+%   fraction flagged as needing compute.)
 % v1B.0.85 (2026-06-30 — INT-M2 P1B harvest. Truth-audit of 4 INT-M2 reports
 %   (Gemini MAJOR, Grok REJECT, OpenAI MINOR). Most findings STALE/FALSIFIED/OPINION:
 %   Gemini-M2 (Eq.1 missing 1/2) FALSIFIED — eq:chi2_beta already carries \tfrac12;
@@ -1550,185 +1566,14 @@ Min ESS & 4{,}744 & 4{,}692 \\
 %% ============================================================
 %%  NEW v1B.0.13 — CONVERGED ITER2 POSTERIOR SUMMARY (Table 1B)
 %% ============================================================
-\begin{table*}[!htb]
-% R27-GRO-B3 close (v1B.0.29): caption trimmed to journal-clean form;
-% audit-cascade history (R25c-MIN-1 / R25d-MAJ-1 / R25g-MAJ-1 caption
-% corrections) moved to this comment block. Chain state at extraction:
-% N_total=128,385 across 16 chains; N_effective=89,871 after 30% burn-in;
-% Rhat-1=0.00820 sustained across two flushes 2026-05-18 01:34/07:53 UTC;
-% mean acceptance 0.2828; Rhat_cl=0.0705. Sampled space (17 total) = 8
-% cosmological + 9 nuisance. Distinct from frozen LCDM+DNeff chain
-% (Table~\ref{tab:verification}, 7+10=17): iter2 trades nu for (w,w_a)
-% in cosmological block, drops M_b in nuisance block (DES-Y5+Pantheon+
-% stack uses internal abs-mag marginalization vs frozen SH0ES external
-% calibrator); the 9 CamSpec foreground/calibration nuisance params are
-% identical between chains. Verified against iter2 chain header at
-% reproducibility/cosmology/iter2_converged_2026-05-18/.
-\caption{\label{tab:iter2_posterior} DESI~DR2 $w_0 w_a$ posterior summary ($N=128{,}385$ accepted samples across 16 chains, $\hat R-1=0.00820$; 8 cosmological + 9 nuisance parameters). Likelihood stack: DESI~DR2~BAO + Planck NPIPE (PR4) CamSpec high-$\ell$ TTTEEE + Planck~2018 low-$\ell$ TT/EE + Planck~2018 lensing (\texttt{native}) + DES-Y5 + Pantheon+. Full parameter list and chain diagnostics are available in the companion data repository. Derived-parameter widths are GetDist readouts of the full chain covariance: the chain's $\sigma_8$--$\Omega_m$ correlation is $\rho=-0.27$ (the standard CMB acoustic-scale/lensing degeneracy), which is why $\sigma_{S_8}=0.0089$ is smaller than the uncorrelated propagation through $S_8=\sigma_8(\Omega_m/0.3)^{0.5}$ ($\approx 0.010$). \textbf{Overlap-uncorrected DES-Y5$\times$Pantheon$+$ product likelihood: the SN likelihood double-counts the ${\sim}20\%$ shared DES-Y5/Pantheon$+$ events with no joint cross-covariance, so the posterior widths are artificially narrowed and \emph{no} $\sigma$-distance or significance from $\Lambda$CDM is quotable from this chain. The means/widths below are raw chain readouts only; the $\Lambda$CDM point $(w_0,w_a)=(-1,0)$ is unsampled by this chain. A valid significance and model selection await the deferred overlap-controlled / nested-sampling analysis (caveat~(e), fn.~\ref{fn:wcaveat}).}}
-\begin{ruledtabular}
-\begin{tabular}{lc}
-Parameter & Mean $\pm \sigma$\\
-\hline
-\multicolumn{2}{l}{\textit{Dark-energy extension} (widths overlap-narrowed; \emph{not} valid uncertainties for model comparison or a $\sigma$-distance --- fn.~\ref{fn:wcaveat})}\\
-$w_0$         & $-0.8122 \pm 0.0436$\footnote{\label{fn:wcaveat}The $\pm$ widths quoted for the four dark-energy parameters are raw GetDist readouts of the \emph{overlap-uncorrected} DES-Y5$\times$Pantheon$+$ product-likelihood chain: the SN likelihood combines DES-Y5 and Pantheon$+$ as a product without a joint cross-covariance despite ${\sim}20\%$ shared supernovae, which double-counts the common events and \emph{artificially narrows} the posterior. These widths are therefore \emph{not} valid uncertainties for model comparison and \emph{not} usable to compute a $\sigma$-distance or significance from $\Lambda$CDM --- no such significance is quotable from this chain. Separately, $\Lambda$CDM $(w_0\!=\!-1, w_a\!=\!0)$ is unsampled by the present Metropolis-Hastings run, so any nominal departure would in any case be a posterior-tail extrapolation, \emph{not} a Bayes-factor or $\ln B$ exclusion and \emph{not} a frequentist tension. A Savage-Dickey readout is not viable; a valid significance and model selection are deferred to a follow-up overlap-controlled / nested-sampling analysis (caveat~(e); see \S~Headline-result discussion). The means below are reported only to indicate the \emph{direction} of the posterior shift (the quintom-B / phantom-crossing direction), not its width.}\\
-$w_a$         & $-0.6666 \pm 0.1864$\\
-$w_0 + w_a$   & $-1.4788 \pm 0.1485$\\
-$w_{\rm pivot}$ & $-0.952 \pm 0.019$\footnote{\label{fn:wpivot}$w_{\rm pivot} \equiv w_0 + (1-a_p)\,w_a$ with the pivot $a_p$ chosen so that $w_{\rm pivot}$ and $w_a$ are uncorrelated in the posterior covariance, i.e.\ $\mathrm{Cov}(w_0,w_a) + (1-a_p)\,\mathrm{Var}(w_a) = 0$, giving $1-a_p = -\mathrm{Cov}(w_0, w_a) / \mathrm{Var}(w_a)$. Direct readout of the converged iter2 chain ($30\%$ burn-in): $\mathrm{Cov}(w_0,w_a) = -0.00729$ (correlation coefficient $\rho = -0.90$), so $1-a_p = 0.210$, $a_p = 0.790$, and $z_p = 1/a_p - 1 = 0.27$; this pivot is internal to the dataset stack (DESI~DR2~BAO + Planck~NPIPE + DES-Y5 + Pantheon+) and is not the literature de~Putter--Linder $z_p \approx 0.4$ value. The decorrelated combination has $\sigma_{w_{\rm pivot}}^2 = \sigma_{w_0}^2 - \mathrm{Cov}^2(w_0,w_a)/\sigma_{w_a}^2 = (0.0436)^2 - (0.00729/0.1864)^2 = (0.0193)^2$, reproducing the $\pm 0.019$ value above, with mean $w_{\rm pivot} = -0.8122 + 0.210\times(-0.6666) = -0.952$. The choice of $a_p$ depends on the dataset stack; rerunning the chain with SH0ES or DESI~DR2~BAO alone would shift $z_p$ and $w_{\rm pivot}$ at the linear-Fisher level. As with the other dark-energy entries, the $\pm$ width here is overlap-narrowed (fn.~\ref{fn:wcaveat}) and is not a valid uncertainty for a $\sigma$-distance from $\Lambda$CDM.}\\
-\hline
-\multicolumn{2}{l}{\textit{Standard cosmology}}\\
-$H_0$ [km\,s$^{-1}$\,Mpc$^{-1}$] & $67.185 \pm 0.455$\\
-$\Omega_m$       & $0.3142 \pm 0.0045$\\
-$\sigma_8$       & $0.8057 \pm 0.0083$\\
-$S_8$            & $0.8245 \pm 0.0089$\\
-$n_s$            & $0.9655 \pm 0.0036$\\
-$10^9 A_s$       & $2.087  \pm 0.030$\\
-$\tau$           & $0.0537 \pm 0.0072$\\
-$\omega_b h^2$   & $0.02224 \pm 0.000125$\\
-$\omega_c h^2$   & $0.11892 \pm 0.000819$\\
-$100\theta_{\rm MC}$ & $1.04087 \pm 0.000239$\\
-Age [Gyr]        & $13.763 \pm 0.019$\\
-\hline
-\multicolumn{2}{l}{\textit{Goodness-of-fit decomposition}}\\
-$\chi^2_{\rm total}$ & $14037.4 \pm 5.6$\footnote{The mean-of-total $\chi^2$ here is GetDist's weighted-sample average over the full posterior, which differs from the sum of the individual-channel means ($10.6 + 10983.9 + 3043.0 = 14037.5$) by a 0.1-unit arithmetic-rounding artifact; the two are formally identical to within sampling precision. The channel $\sigma$'s are not independent: a direct readout of the committed chain gives weak cross-channel correlations $\rho(\chi^2_{\rm BAO},\chi^2_{\rm CMB})=-0.09$, $\rho(\chi^2_{\rm CMB},\chi^2_{\rm SN})=-0.03$, $\rho(\chi^2_{\rm BAO},\chi^2_{\rm SN})=+0.04$ through the shared cosmological parameters, so the GetDist total-$\chi^2$ width $\pm 5.6$ sits slightly below the independence quadrature $\sqrt{1.8^2+5.3^2+1.6^2}=5.8$.}\\
-$\chi^2_{\rm BAO}$ (DESI~DR2)\footnote{The DESI~DR2 BAO likelihood (\texttt{bao.desi\_dr2.desi\_bao\_all}) comprises 13 BAO data points, so $\chi^2_{\rm BAO}/N \approx 0.8$ --- an unremarkable goodness of fit.}   & $10.6 \pm 1.8$\\
-$\chi^2_{\rm CMB}$ (Planck PR4 + lensing)   & $10983.9 \pm 5.3$\\
-$\chi^2_{\rm SN}$ (DES-Y5 + Pantheon+)    & $3043.0 \pm 1.6$\\
-\end{tabular}
-\end{ruledtabular}
-\end{table*}
+\emph{Exploratory $w_0w_a$ extension.}---A $w_0w_a$ (CPL dark-energy)
+extension chain was also run on the DESI~DR2 stack. Because its supernova
+likelihood combines DES-Y5 and Pantheon$+$ as an overlap-uncorrected
+product (Sec.~\ref{sec:verification}, caveat~(e)), it cannot support a
+$\sigma$-distance, significance, directional-robustness, or model-selection
+statement, and is reported only as a non-load-bearing exploratory diagnostic
+in Appendix~\ref{app:w0wa} (Table~\ref{tab:iter2_posterior}).
 
-\textit{Physics interpretation (Table~\ref{tab:iter2_posterior}); see also \S\ref{sec:w0wa_crosscheck} for the detailed scoping statement and compatibility-only scope.}---The
-$w_0 w_a$ posterior reported below carries the
-overlap-uncorrected DES-SN5YR~$\times$~Pantheon+ product-likelihood
-systematic --- the $\sim 20\%$ shared-event Malmquist-correction issue is
-discussed as a stated caveat in caveat~(e) and
-Sec.~\ref{sec:verification}; \emph{no} model-selection statement is
-claimed. The robustness of this cross-check against the SN-overlap
-systematic has \emph{not} been demonstrated quantitatively in the present
-manuscript (the dedicated overlap-controlled control chains are deferred
-to a follow-up note), so the result is reported as an exploratory
-compatibility check only. The tail-distance significances
-quoted in this section refer to the marginalized posterior of the
-present product-likelihood chain only. With that caveat established as
-the load-bearing one: the same converged chain
-shows the $\Lambda$CDM point $(w_0, w_a)=(-1,0)$ unsampled by the
-present Metropolis-Hastings run, with the joint marginal posterior
-displaced into the phantom-crossing region of CPL space
-(the product-likelihood SN overlap narrows the posterior, so
-\emph{no} $\sigma$-distance or significance from $\Lambda$CDM is
-quotable; fn.~\ref{fn:wcaveat}) and
-$w_0+w_a=-1.48 \pm 0.15$ requiring
-phantom crossing in the redshift range probed by DESI~DR2~BAO + DES-Y5 +
-Pantheon+: at the posterior mean the CPL trajectory
-$w(a)=w_0+(1-a)\,w_a$ crosses $w=-1$ at
-$1-a_\times = (-1-w_0)/w_a = 0.282$, i.e.\ $z_\times \approx 0.39$,
-interior to both the BAO and SN redshift coverage (phantom at
-$z>z_\times$, quintessence-like today). This posterior sits
-in the phantom-crossing region under the overlap-uncorrected product
-likelihood and is a phenomenological match to a quintom-B
-type evolution, subject to the SN-overlap systematic stated in caveat~(e). In the
-converged chain there are zero free-$w_0 w_a$ samples at the
-$\Lambda$CDM point; the chain is centered at $w_0 + w_a \approx -1.48$
-under the same SN-overlap systematic. To be explicit about what is and is not
-claimed: this companion reports posterior distance from $\Lambda$CDM in
-the marginalized-tail sense only; rigorous $\Lambda$CDM-vs-quintom-B
-\emph{model preference} ($\ln B$, $\Delta$AIC/BIC) requires the deferred
-nested-sampling analysis and is \emph{not} claimed here. At the decorrelation pivot
-($z_p = 0.27$, a redshift --- numerically coincident with, and unrelated
-to, the \S\ref{sec:data_cmb} injection angle $\beta=0.27^\circ$;
-fn.~\ref{fn:wpivot}), the effective equation of state is
-$w_{\rm pivot} = -0.952 \pm 0.019$: the posterior center lies away from
-$\Lambda$CDM even in the best-determined direction of the $(w_0, w_a)$
-posterior, but because the product-likelihood SN overlap artificially
-narrows the widths, \emph{no} $\sigma$-distance or significance is quoted
-for the pivot or for the single $w_0$/$w_a$ axes (fn.~\ref{fn:wcaveat}).
-The CPL trajectory's effect on the expansion
-rate is small at the redshifts probed by current SN data: at the posterior
-mean $(w_0, w_a)=(-0.812, -0.667)$ the CPL Hubble rate $H(z=0.5)$ differs
-from the $\Lambda$CDM rate (at fixed $\Omega_m=0.314$ and the chain's
-$H_0$) by $\approx +1.7\%$, computed from
-$\rho_{\rm DE}(a)/\rho_{\rm DE,0} = a^{-3(1+w_0+w_a)}\,\exp[3 w_a (a-1)]$
-in the CPL parameterisation; the deviation grows toward the BAO range
-$z\!\gtrsim\!1$ before turning over as $w(a)\!\to\!w_0+w_a$.
-
-\textit{Caveats.}---(a)~The robust Bayesian evidence / Bayes factor
-$\ln B$ against $\Lambda$CDM is NOT reported here; standard posterior
-MCMC samples do not give a robust $\ln B$, and a Savage-Dickey density
-ratio at the $\Lambda$CDM point is \emph{not} viable on this chain because the
-$\Lambda$CDM point $(w, w_a) = (-1, 0)$ is unsampled by the
-Metropolis-Hastings chain --- it lies deep in the joint marginal tails of
-the present overlap-uncorrected posterior, but no $\sigma$-distance is
-quoted because the product-likelihood SN overlap narrows the widths
-(Table~\ref{tab:iter2_posterior}); any KDE-based Savage-Dickey ratio at an
-unsampled point yields arbitrary kernel-dependent noise rather than a
-controlled posterior density (with zero free-$w_0 w_a$ samples at the $\Lambda$CDM
-point, a KDE estimator on the converged 2D $(w, w_a)$ marginal
-fails catastrophically). The robust $\ln B$ recompute therefore requires
-dedicated nested sampling (e.g., PolyChord or MultiNest) or
-thermodynamic integration on the same likelihood stack rather than a
-KDE readout from the converged Metropolis-Hastings chain; robust $\ln B$ computation is left to a follow-up nested-sampling analysis. (b)~$\tau$ is constrained
-empirically by the low-$\ell$ EE + TT likelihoods listed in the caption
-(\texttt{planck\_2018\_lowl.EE} + \texttt{planck\_2018\_lowl.TT}) and is
-sampled as a free parameter rather than fixed by a Gaussian prior at the
-Planck best-fit value (the chain has $\tau$ free with the
-standard low-$\ell$ data constraint, not a Gaussian prior at the
-Planck best-fit). (c)~The SH0ES $H_0$ prior is \emph{not} included in this
-chain (BAO + CMB + SN-only, no local-distance ladder);
-the joint posterior $H_0 = 67.185 \pm 0.455$ km/s/Mpc (the iter2 $w_0w_a$
-chain of Table~\ref{tab:iter2_posterior}, to which this caveat list
-refers --- not the $\Lambda$CDM$+\Delta\Neff$ chains of
-Table~\ref{tab:verification}, whose Planck+BAO+SN value is
-$67.78 \pm 1.09$) is therefore the no-SH0ES result. The interaction with the SH0ES prior is the subject of
-the separate \emph{full-tension} chain reported in
-Table~\ref{tab:verification}, which carries the
-\texttt{H0.riess2020Mb} likelihood active in its YAML (verified by direct \texttt{.input.yaml} inspection and by chain
-sample-mean readout: $M_B = -19.263 \pm 0.049$ mag, agreeing with the
-SH0ES~\cite{Riess2022} value $M_B = -19.253 \pm 0.027$ mag at $0.2\sigma$).
-The full-tension chain returns $H_0 = 67.68 \pm 1.06$ km/s/Mpc with
-$\Delta\Neff = -0.020 \pm 0.169$, exhibiting the canonical 3.6$\sigma$
-Hubble tension with Riess $H_0 = 73.04 \pm 1.04$ km/s/Mpc that the
-$\Lambda$CDM+$\Delta\Neff$ extension is unable to resolve: the
-\texttt{H0.riess2020Mb} likelihood constrains the SN Ia absolute
-magnitude $M_B$ (which is correctly pulled toward the Riess value),
-but $H_0$ is determined predominantly by the BAO+CMB acoustic scale
-through Pantheon+, and the $\Delta\Neff$ extension lacks the degrees of
-freedom to shift $H_0$ enough to accommodate both data sets. Direct YAML
-inspection confirms the SH0ES likelihood is active and the M$_B$
-posterior is correctly pulled; the 3.6$\sigma$ tension persists
-because the model cannot shift $H_0$ enough to satisfy both data sets
-simultaneously --- the canonical Hubble-tension result, not a
-YAML omission. (d)~The iter2 chain's $S_8 = 0.8245 \pm 0.0089$
-(Table~\ref{tab:iter2_posterior}) sits $2.6\sigma$ above the DES-Y3
-weak-lensing value $S_8 = 0.776 \pm 0.017$~\cite{DES2024}
-($\Delta = 0.049$ against a combined uncertainty of $0.019$): the
-$S_8$ tension is not relieved in this chain either.
-(e)~\textit{DES-SN5YR and Pantheon+ supernovae overlap.}---The iter2 likelihood stack
-includes both DES-SN5YR~\cite{DES2024SN5YR} and Pantheon+~\cite{Brout2022PantheonPlus} as independent
-SN likelihood factors.  These two catalogs share approximately $20\%$ of their
-supernova events with different Malmquist-bias corrections applied by the
-respective collaborations~\cite{Vincenzi2025SNcompare}.  The present analysis combines them
-via a product likelihood without a joint covariance that accounts for the
-shared-event overlap.  Because the shared $\sim\!20\%$ of SNe are assigned
-slightly different distance-modulus corrections in each catalog, the naive
-product double-weights those events and introduces a small inward pull on
-the combined SN constraint.  The direction of this bias is toward the mean of
-the two catalogs' individual SN posteriors, which is itself close to the
-combined Planck+BAO constraint; the qualitative quintom-B direction ($w_0 + w_a < -1$)
-is plausibly robust against a rigorous joint-covariance treatment, but
-this has not been demonstrated quantitatively in the present manuscript;
-the precise tension significance should be interpreted with this caveat.
-Two SN-overlap control chains (DESI~DR2 + Planck~NPIPE + Pantheon$+$ only;
-DESI~DR2 + Planck~NPIPE + DES-SN5YR only; same priors and burn-in as
-the iter2 baseline) constitute the rigorous overlap-robustness
-demonstration; their $(w_0, w_a)$ shifts versus the combined chain are
-the subject of a separate follow-up note and do not gate the
-cross-check reported here.
-Users requiring a rigorous SN combination should refer to the Vincenzi et al.
-comparison analysis~\cite{Vincenzi2025SNcompare}, which quantifies the
-$\sim\!20\%$ shared-SN overlap and the Malmquist-correction differences
-between the two catalogs (in addition to the underlying DES-SN5YR
-cosmology paper~\cite{DES2024SN5YR}), and construct a joint covariance.
-\par
 \textit{M$_B$--H$_0$ joint-posterior offset check.} The joint posterior mean
 ($M_B = -19.263$, $H_0 = 67.68$) is fully consistent with an active
 \texttt{sn.pantheonplus} likelihood: \texttt{sn.pantheonplus} enforces a
@@ -2276,66 +2121,35 @@ identical-likelihood rerun of the frozen chains. The $0.04\sigma$ agreement in $
 across this likelihood substitution provides an empirical bound on pairing-induced bias
 at the quoted precision (see Sec.~\ref{sec:verification}, limitation note).
 
-\subsection{$w_0 w_a$ cross-check with stated SN-overlap systematic}\label{sec:w0wa_crosscheck}
+\subsection{Exploratory $w_0w_a$ extension (deferred to Appendix~\ref{app:w0wa})}
 
-The DESI~DR2 $w_0 w_a$ chain (Table~\ref{tab:iter2_posterior}) is reported
-as a caveated overlap-uncorrected diagnostic of the quintom-B direction
-on the existing converged Cobaya chain. Its SN likelihood combines
-DES-SN5YR and Pantheon+ without a joint overlap covariance (caveat~(e)
-of Sec.~\ref{sec:verification}), so the SN-overlap systematic is stated
-explicitly as a known limitation of this product-likelihood combination
-and no model-selection statement is claimed. This cross-check is
-retained in the main text---rather than relegated to an appendix---
-deliberately: every significance, $\sigma$-distance, and model-selection
-statistic that an overlap-uncorrected likelihood could spuriously inflate
-has been removed from Table~\ref{tab:iter2_posterior} and from the
-surrounding prose (the table reports raw chain means/widths only, with the
-$\Lambda$CDM point flagged as unsampled), so the surviving content is a
-transparent, fully-caveated diagnostic whose only role is to motivate the
-deferred overlap-controlled nested-sampling analysis. Hiding a result whose
-caveats are this prominent would reduce, not improve, the reader's ability
-to judge its scope. The goodness-of-fit decomposition ($\chi^2_{\rm BAO}$,
-$\chi^2_{\rm CMB}$, $\chi^2_{\rm SN}$) is reported in Table~\ref{tab:iter2_posterior};
-model-comparison statistics (AIC, BIC, $\ln B$) are \emph{not} reported there
-because a robust $\ln B$ against $\Lambda$CDM requires dedicated nested sampling
-(the $\Lambda$CDM point is unsampled by the Metropolis-Hastings chain, lying
-deep in the joint marginal tails of the overlap-uncorrected posterior; see
-fn.~\ref{fn:wcaveat}).
-The chain posterior readouts are
-$w_0 = -0.812 \pm 0.044$, $w_a = -0.667 \pm 0.186$, and
-$w_0+w_a = -1.48 \pm 0.15$ (phantom-crossing region)
-\textbf{(no $\sigma$-distance or significance from $\Lambda$CDM is quoted:
-the uncorrected DES-SN5YR\,$\times$\,Pantheon+ ${\sim}20\%$ shared-event
-overlap double-counts the common supernovae and artificially narrows
-the posterior, so any departure-from-$\Lambda$CDM significance computed
-from these widths would be an overlap-inflated product-likelihood
-artifact, not a valid detection significance; this must be read together
-with caveat~(e), fn.~\ref{fn:wcaveat})}; these readouts
-carry the overlap-uncorrected SN systematic of caveat~(e) and are discussed in detail
-in Sec.~\ref{sec:verification} (Physics interpretation paragraph).
-The displacement of $w_0$ from $-1$ cannot be expressed as a
-significance: $\Lambda$CDM is unsampled in the present Metropolis-Hastings
-run, and the marginal posterior width that any such distance would use is
-artificially narrowed by the uncorrected SN overlap (fn.~\ref{fn:wcaveat});
-a valid exclusion bound requires the deferred overlap-controlled
-nested-sampling analysis.
-\emph{Compatibility-only scope:} all results in this subsection are
-posterior compatibility diagnostics; all model-preference inference is
-deferred --- no analysis here constitutes evidence for or against a bounce
-cosmology. \emph{Relation to the bounce-class taxonomy of
-Paper~I(a)~\cite{Golden2026P1a}:} the quintom-B direction probed here is
-only one branch of the broader bouncing-cosmology landscape (minimal
-matter-bounce, ekpyrotic, Cuscuton, string-gas, and quintom variants),
-which carry distinct $w_0 w_a$ and $\fnl$ signatures; this cross-check
-does not select among those branches and does not test the minimal
-matter-bounce prediction $\fnl=-35/8$, which is established structurally
-in Paper~I(a).
+A $w_0w_a$ extension chain on the DESI~DR2 + Planck~NPIPE + DES-Y5 + Pantheon$+$
+stack was run as an exploratory diagnostic only. Its supernova likelihood is
+overlap-uncorrected (caveat~(e)), so no significance, directional robustness, or
+model comparison is claimed; the full posterior, scope statement, and the
+deferred overlap-controlled control chains are given in Appendix~\ref{app:w0wa}.
 
-
-%% ============================================================
-%%  6. SPECTATOR-ALP CONSISTENCY CHECK
-%% ============================================================
 \section{Cosmic Birefringence: Spectator ALP Consistency Check}\label{sec:birefringence_check}
+
+\textit{Framing (prior-volume accommodation, not an independent test).}---This
+section is an \emph{accommodation / prior-volume} exercise, not an independent
+confirmation of the birefringence signal. The ALP likelihood is a Gaussian
+summary centred on the single published datum
+$\beta_{\rm obs}=0.342^\circ\pm 0.094^\circ$~\cite{Eskilt2022}, so the
+posterior $\beta$ values ($\beta_{\rm ALP}$, $\beta_{\rm free}$) agreeing with
+$\beta_{\rm obs}$ ``within $1\sigma$'' is expected \emph{by construction} and
+carries no independent confirmatory weight: all three numbers are constrained
+by the same measurement. The scientifically load-bearing outputs are therefore
+not the agreement itself but (i)~\emph{where} in parameter space the
+accommodation lives --- a non-minimal photon coupling $C_{a\gamma}\gtrsim 8$
+(above the standard KSVZ/DFSZ $\mathcal{O}(1)$ benchmark) and a posterior
+median $m\simeq 36\,H_0$ well above the scan-prior midpoint --- and
+(ii)~the \emph{prior cost} of spectator safety: only $13\%$ of the posterior
+mass satisfies $\Omega_a<0.01$, requiring a ${\gtrsim}100\times$ misalignment
+fine-tuning under a $\cos\theta_i$-flat prior. Read this way, the result is
+that the model \emph{can} accommodate the signal but only off the minimal,
+natural region of its own parameter space, and that the same birefringence
+arises identically in standard GR --- it is not a distinctive ECH prediction.
 
 \textit{Note (spectator-status caveat, main text).}---The headline
 $\beta\approx 0.27^\circ$ benchmark of this subsection requires a
@@ -2889,7 +2703,8 @@ and calibration assumptions~\cite{LiteBIRD2023}, a $\beta\simeq 0.27^\circ$
 signal would be detected relative to $\beta=0$ at ${\sim}9\sigma$ by
 LiteBIRD in the early 2030s.
 
-\textit{$w_0 w_a$ cross-check.}---The converged DESI~DR2 + Planck~NPIPE + Pantheon+~\cite{Brout2022PantheonPlus} + DES-SN5YR~\cite{DES2024SN5YR} Cobaya chain with the $w_0 w_a$ free-parameter extension ($128{,}385$ accepted samples across 16 MPI chains; $\hat R - 1 = 0.00820$, below the standard $\hat R\!-\!1\!<\!10^{-2}$ publication target) supplies the GetDist $w_0 w_a$ posteriors of Table~\ref{tab:iter2_posterior}, a caveated overlap-uncorrected diagnostic of the quintom-B scenario~\cite{Cai2010quintomReview} (tested against DESI~DR2~\cite{DESI2025DR2}) under an overlap-uncorrected SN product likelihood (Sec.~\ref{sec:verification}, caveat~(e)); the SN-overlap systematic is stated as a known limitation and no model-selection claim is made.
+\textit{$w_0 w_a$ cross-check (exploratory; Appendix~\ref{app:w0wa}).}---An
+exploratory DESI~DR2 + Planck~NPIPE + Pantheon+~\cite{Brout2022PantheonPlus} + DES-SN5YR~\cite{DES2024SN5YR} Cobaya chain with the $w_0 w_a$ free-parameter extension ($128{,}385$ accepted samples across 16 MPI chains; $\hat R - 1 = 0.00820$) was run; its overlap-uncorrected posteriors (Table~\ref{tab:iter2_posterior}) are reported only in Appendix~\ref{app:w0wa} as a non-load-bearing exploratory diagnostic. Because the SN likelihood combines DES-Y5 and Pantheon$+$ as a product without a joint cross-covariance despite their ${\sim}20\%$ shared events, no $\sigma$-distance, significance, directional robustness, or model-selection statement is claimed from this chain; the required overlap-controlled control chains are deferred to a dedicated follow-up.
 The iter2 chain uses \texttt{planck\_2018\_lensing.native} in place of \texttt{planck\_2018\_lensing.clik} (Table~\ref{tab:chain_datasets}); a dedicated release-pairing swap test to assess the impact of this lensing likelihood substitution on the $w_0 w_a$ posteriors has not been performed and is left to a post-submission follow-up.
 
 \subsection*{Data and Code Availability}
@@ -2955,6 +2770,265 @@ were self-funded (RunPod H200 instances).
 %% ============================================================
 \appendix
 
+%% --- Appendix: exploratory w0wa (relocated from main body per referee request) ---
+\section{Exploratory $w_0w_a$ Analysis with Overlap-Uncorrected Supernova Likelihoods}\label{app:w0wa}
+
+This appendix collects the exploratory $w_0w_a$ (CPL) extension chain. It is
+presented here, separate from the paper's load-bearing results, because its
+supernova likelihood is an overlap-uncorrected DES-Y5$\times$Pantheon$+$ product
+(caveat~(e)): the posterior widths are artificially narrowed and no
+$\sigma$-distance, significance, directional robustness, or model-selection
+statistic is quotable from it. Nothing in the main body depends on any number
+in this appendix.
+
+\subsection*{Scope, framing, and deferred control chains}\label{sec:w0wa_crosscheck}
+
+The DESI~DR2 $w_0 w_a$ chain (Table~\ref{tab:iter2_posterior}) is reported
+as a caveated overlap-uncorrected diagnostic of the quintom-B direction
+on the existing converged Cobaya chain. Its SN likelihood combines
+DES-SN5YR and Pantheon+ without a joint overlap covariance (caveat~(e)
+of Sec.~\ref{sec:verification}), so the SN-overlap systematic is stated
+explicitly as a known limitation of this product-likelihood combination
+and no model-selection statement is claimed. Because the overlap-uncorrected
+product likelihood makes this analysis unsuitable as a load-bearing
+main-body result, it is presented \emph{here, in this appendix, and is
+explicitly non-load-bearing}: every significance, $\sigma$-distance, and
+model-selection statistic that such a likelihood could spuriously inflate
+has been removed from Table~\ref{tab:iter2_posterior} and from the
+surrounding prose (the table reports raw chain means/widths only, with the
+$\Lambda$CDM point flagged as unsampled). The two SN-overlap control chains
+required to make any \emph{directional} statement rigorous --- DESI~DR2 $+$
+Planck~NPIPE $+$ Pantheon$+$ only, and DESI~DR2 $+$ Planck~NPIPE $+$
+DES-SN5YR only, each followed by a joint cross-covariance comparison of the
+shifts in $w_0$, $w_a$, $w_0+w_a$, $w_{\rm pivot}$, and $\chi^2$ --- are
+\emph{deferred to a dedicated follow-up}: they require fresh MPI MCMC runs
+beyond the compute scope of this verification companion, and until they are
+run no robustness of the quintom-B direction against the overlap systematic
+is claimed. The goodness-of-fit decomposition ($\chi^2_{\rm BAO}$,
+$\chi^2_{\rm CMB}$, $\chi^2_{\rm SN}$) is reported in Table~\ref{tab:iter2_posterior};
+model-comparison statistics (AIC, BIC, $\ln B$) are \emph{not} reported there
+because a robust $\ln B$ against $\Lambda$CDM requires dedicated nested sampling
+(the $\Lambda$CDM point is unsampled by the Metropolis-Hastings chain, lying
+deep in the joint marginal tails of the overlap-uncorrected posterior; see
+fn.~\ref{fn:wcaveat}).
+The chain posterior readouts are
+$w_0 = -0.812 \pm 0.044$, $w_a = -0.667 \pm 0.186$, and
+$w_0+w_a = -1.48 \pm 0.15$ (phantom-crossing region)
+\textbf{(no $\sigma$-distance or significance from $\Lambda$CDM is quoted:
+the uncorrected DES-SN5YR\,$\times$\,Pantheon+ ${\sim}20\%$ shared-event
+overlap double-counts the common supernovae and artificially narrows
+the posterior, so any departure-from-$\Lambda$CDM significance computed
+from these widths would be an overlap-inflated product-likelihood
+artifact, not a valid detection significance; this must be read together
+with caveat~(e), fn.~\ref{fn:wcaveat})}; these readouts
+carry the overlap-uncorrected SN systematic of caveat~(e) and are discussed in detail
+in Sec.~\ref{sec:verification} (Physics interpretation paragraph).
+The displacement of $w_0$ from $-1$ cannot be expressed as a
+significance: $\Lambda$CDM is unsampled in the present Metropolis-Hastings
+run, and the marginal posterior width that any such distance would use is
+artificially narrowed by the uncorrected SN overlap (fn.~\ref{fn:wcaveat});
+a valid exclusion bound requires the deferred overlap-controlled
+nested-sampling analysis.
+\emph{Compatibility-only scope:} all results in this subsection are
+posterior compatibility diagnostics; all model-preference inference is
+deferred --- no analysis here constitutes evidence for or against a bounce
+cosmology. \emph{Relation to the bounce-class taxonomy of
+Paper~I(a)~\cite{Golden2026P1a}:} the quintom-B direction probed here is
+only one branch of the broader bouncing-cosmology landscape (minimal
+matter-bounce, ekpyrotic, Cuscuton, string-gas, and quintom variants),
+which carry distinct $w_0 w_a$ and $\fnl$ signatures; this cross-check
+does not select among those branches and does not test the minimal
+matter-bounce prediction $\fnl=-35/8$, which is established structurally
+in Paper~I(a).
+
+
+%% ============================================================
+%%  6. SPECTATOR-ALP CONSISTENCY CHECK
+%% ============================================================
+
+\begin{table*}[!htb]
+% R27-GRO-B3 close (v1B.0.29): caption trimmed to journal-clean form;
+% audit-cascade history (R25c-MIN-1 / R25d-MAJ-1 / R25g-MAJ-1 caption
+% corrections) moved to this comment block. Chain state at extraction:
+% N_total=128,385 across 16 chains; N_effective=89,871 after 30% burn-in;
+% Rhat-1=0.00820 sustained across two flushes 2026-05-18 01:34/07:53 UTC;
+% mean acceptance 0.2828; Rhat_cl=0.0705. Sampled space (17 total) = 8
+% cosmological + 9 nuisance. Distinct from frozen LCDM+DNeff chain
+% (Table~\ref{tab:verification}, 7+10=17): iter2 trades nu for (w,w_a)
+% in cosmological block, drops M_b in nuisance block (DES-Y5+Pantheon+
+% stack uses internal abs-mag marginalization vs frozen SH0ES external
+% calibrator); the 9 CamSpec foreground/calibration nuisance params are
+% identical between chains. Verified against iter2 chain header at
+% reproducibility/cosmology/iter2_converged_2026-05-18/.
+\caption{\label{tab:iter2_posterior} DESI~DR2 $w_0 w_a$ posterior summary ($N=128{,}385$ accepted samples across 16 chains, $\hat R-1=0.00820$; 8 cosmological + 9 nuisance parameters). Likelihood stack: DESI~DR2~BAO + Planck NPIPE (PR4) CamSpec high-$\ell$ TTTEEE + Planck~2018 low-$\ell$ TT/EE + Planck~2018 lensing (\texttt{native}) + DES-Y5 + Pantheon+. Full parameter list and chain diagnostics are available in the companion data repository. Derived-parameter widths are GetDist readouts of the full chain covariance: the chain's $\sigma_8$--$\Omega_m$ correlation is $\rho=-0.27$ (the standard CMB acoustic-scale/lensing degeneracy), which is why $\sigma_{S_8}=0.0089$ is smaller than the uncorrelated propagation through $S_8=\sigma_8(\Omega_m/0.3)^{0.5}$ ($\approx 0.010$). \textbf{Overlap-uncorrected DES-Y5$\times$Pantheon$+$ product likelihood: the SN likelihood double-counts the ${\sim}20\%$ shared DES-Y5/Pantheon$+$ events with no joint cross-covariance, so the posterior widths are artificially narrowed and \emph{no} $\sigma$-distance or significance from $\Lambda$CDM is quotable from this chain. The means/widths below are raw chain readouts only; the $\Lambda$CDM point $(w_0,w_a)=(-1,0)$ is unsampled by this chain. A valid significance and model selection await the deferred overlap-controlled / nested-sampling analysis (caveat~(e), fn.~\ref{fn:wcaveat}).}}
+\begin{ruledtabular}
+\begin{tabular}{lc}
+Parameter & Mean $\pm \sigma$\\
+\hline
+\multicolumn{2}{l}{\textit{Dark-energy extension} (widths overlap-narrowed; \emph{not} valid uncertainties for model comparison or a $\sigma$-distance --- fn.~\ref{fn:wcaveat})}\\
+$w_0$         & $-0.8122 \pm 0.0436$\footnote{\label{fn:wcaveat}The $\pm$ widths quoted for the four dark-energy parameters are raw GetDist readouts of the \emph{overlap-uncorrected} DES-Y5$\times$Pantheon$+$ product-likelihood chain: the SN likelihood combines DES-Y5 and Pantheon$+$ as a product without a joint cross-covariance despite ${\sim}20\%$ shared supernovae, which double-counts the common events and \emph{artificially narrows} the posterior. These widths are therefore \emph{not} valid uncertainties for model comparison and \emph{not} usable to compute a $\sigma$-distance or significance from $\Lambda$CDM --- no such significance is quotable from this chain. Separately, $\Lambda$CDM $(w_0\!=\!-1, w_a\!=\!0)$ is unsampled by the present Metropolis-Hastings run, so any nominal departure would in any case be a posterior-tail extrapolation, \emph{not} a Bayes-factor or $\ln B$ exclusion and \emph{not} a frequentist tension. A Savage-Dickey readout is not viable; a valid significance and model selection are deferred to a follow-up overlap-controlled / nested-sampling analysis (caveat~(e); see \S~Headline-result discussion). The means below are reported only to indicate the \emph{direction} of the posterior shift (the quintom-B / phantom-crossing direction), not its width.}\\
+$w_a$         & $-0.6666 \pm 0.1864$\\
+$w_0 + w_a$   & $-1.4788 \pm 0.1485$\\
+$w_{\rm pivot}$ & $-0.952 \pm 0.019$\footnote{\label{fn:wpivot}$w_{\rm pivot} \equiv w_0 + (1-a_p)\,w_a$ with the pivot $a_p$ chosen so that $w_{\rm pivot}$ and $w_a$ are uncorrelated in the posterior covariance, i.e.\ $\mathrm{Cov}(w_0,w_a) + (1-a_p)\,\mathrm{Var}(w_a) = 0$, giving $1-a_p = -\mathrm{Cov}(w_0, w_a) / \mathrm{Var}(w_a)$. Direct readout of the converged iter2 chain ($30\%$ burn-in): $\mathrm{Cov}(w_0,w_a) = -0.00729$ (correlation coefficient $\rho = -0.90$), so $1-a_p = 0.210$, $a_p = 0.790$, and $z_p = 1/a_p - 1 = 0.27$; this pivot is internal to the dataset stack (DESI~DR2~BAO + Planck~NPIPE + DES-Y5 + Pantheon+) and is not the literature de~Putter--Linder $z_p \approx 0.4$ value. The decorrelated combination has $\sigma_{w_{\rm pivot}}^2 = \sigma_{w_0}^2 - \mathrm{Cov}^2(w_0,w_a)/\sigma_{w_a}^2 = (0.0436)^2 - (0.00729/0.1864)^2 = (0.0193)^2$, reproducing the $\pm 0.019$ value above, with mean $w_{\rm pivot} = -0.8122 + 0.210\times(-0.6666) = -0.952$. The choice of $a_p$ depends on the dataset stack; rerunning the chain with SH0ES or DESI~DR2~BAO alone would shift $z_p$ and $w_{\rm pivot}$ at the linear-Fisher level. As with the other dark-energy entries, the $\pm$ width here is overlap-narrowed (fn.~\ref{fn:wcaveat}) and is not a valid uncertainty for a $\sigma$-distance from $\Lambda$CDM.}\\
+\hline
+\multicolumn{2}{l}{\textit{Standard cosmology}}\\
+$H_0$ [km\,s$^{-1}$\,Mpc$^{-1}$] & $67.185 \pm 0.455$\\
+$\Omega_m$       & $0.3142 \pm 0.0045$\\
+$\sigma_8$       & $0.8057 \pm 0.0083$\\
+$S_8$            & $0.8245 \pm 0.0089$\\
+$n_s$            & $0.9655 \pm 0.0036$\\
+$10^9 A_s$       & $2.087  \pm 0.030$\\
+$\tau$           & $0.0537 \pm 0.0072$\\
+$\omega_b h^2$   & $0.02224 \pm 0.000125$\\
+$\omega_c h^2$   & $0.11892 \pm 0.000819$\\
+$100\theta_{\rm MC}$ & $1.04087 \pm 0.000239$\\
+Age [Gyr]        & $13.763 \pm 0.019$\\
+\hline
+\multicolumn{2}{l}{\textit{Goodness-of-fit decomposition}}\\
+$\chi^2_{\rm total}$ & $14037.4 \pm 5.6$\footnote{The mean-of-total $\chi^2$ here is GetDist's weighted-sample average over the full posterior, which differs from the sum of the individual-channel means ($10.6 + 10983.9 + 3043.0 = 14037.5$) by a 0.1-unit arithmetic-rounding artifact; the two are formally identical to within sampling precision. The channel $\sigma$'s are not independent: a direct readout of the committed chain gives weak cross-channel correlations $\rho(\chi^2_{\rm BAO},\chi^2_{\rm CMB})=-0.09$, $\rho(\chi^2_{\rm CMB},\chi^2_{\rm SN})=-0.03$, $\rho(\chi^2_{\rm BAO},\chi^2_{\rm SN})=+0.04$ through the shared cosmological parameters, so the GetDist total-$\chi^2$ width $\pm 5.6$ sits slightly below the independence quadrature $\sqrt{1.8^2+5.3^2+1.6^2}=5.8$.}\\
+$\chi^2_{\rm BAO}$ (DESI~DR2)\footnote{The DESI~DR2 BAO likelihood (\texttt{bao.desi\_dr2.desi\_bao\_all}) comprises 13 BAO data points, so $\chi^2_{\rm BAO}/N \approx 0.8$ --- an unremarkable goodness of fit.}   & $10.6 \pm 1.8$\\
+$\chi^2_{\rm CMB}$ (Planck PR4 + lensing)   & $10983.9 \pm 5.3$\\
+$\chi^2_{\rm SN}$ (DES-Y5 + Pantheon+)    & $3043.0 \pm 1.6$\\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+\textit{Physics interpretation (Table~\ref{tab:iter2_posterior}); see also \S\ref{sec:w0wa_crosscheck} for the detailed scoping statement and compatibility-only scope.}---The
+$w_0 w_a$ posterior reported below carries the
+overlap-uncorrected DES-SN5YR~$\times$~Pantheon+ product-likelihood
+systematic --- the $\sim 20\%$ shared-event Malmquist-correction issue is
+discussed as a stated caveat in caveat~(e) and
+Sec.~\ref{sec:verification}; \emph{no} model-selection statement is
+claimed. The robustness of this cross-check against the SN-overlap
+systematic has \emph{not} been demonstrated quantitatively in the present
+manuscript (the dedicated overlap-controlled control chains are deferred
+to a follow-up note), so the result is reported as an exploratory
+compatibility check only. The tail-distance significances
+quoted in this section refer to the marginalized posterior of the
+present product-likelihood chain only. With that caveat established as
+the load-bearing one: the same converged chain
+shows the $\Lambda$CDM point $(w_0, w_a)=(-1,0)$ unsampled by the
+present Metropolis-Hastings run, with the joint marginal posterior
+displaced into the phantom-crossing region of CPL space
+(the product-likelihood SN overlap narrows the posterior, so
+\emph{no} $\sigma$-distance or significance from $\Lambda$CDM is
+quotable; fn.~\ref{fn:wcaveat}) and
+$w_0+w_a=-1.48 \pm 0.15$ requiring
+phantom crossing in the redshift range probed by DESI~DR2~BAO + DES-Y5 +
+Pantheon+: at the posterior mean the CPL trajectory
+$w(a)=w_0+(1-a)\,w_a$ crosses $w=-1$ at
+$1-a_\times = (-1-w_0)/w_a = 0.282$, i.e.\ $z_\times \approx 0.39$,
+interior to both the BAO and SN redshift coverage (phantom at
+$z>z_\times$, quintessence-like today). This posterior sits
+in the phantom-crossing region under the overlap-uncorrected product
+likelihood and is a phenomenological match to a quintom-B
+type evolution, subject to the SN-overlap systematic stated in caveat~(e). In the
+converged chain there are zero free-$w_0 w_a$ samples at the
+$\Lambda$CDM point; the chain is centered at $w_0 + w_a \approx -1.48$
+under the same SN-overlap systematic. To be explicit about what is and is not
+claimed: this companion reports posterior distance from $\Lambda$CDM in
+the marginalized-tail sense only; rigorous $\Lambda$CDM-vs-quintom-B
+\emph{model preference} ($\ln B$, $\Delta$AIC/BIC) requires the deferred
+nested-sampling analysis and is \emph{not} claimed here. At the decorrelation pivot
+($z_p = 0.27$, a redshift --- numerically coincident with, and unrelated
+to, the \S\ref{sec:data_cmb} injection angle $\beta=0.27^\circ$;
+fn.~\ref{fn:wpivot}), the effective equation of state is
+$w_{\rm pivot} = -0.952 \pm 0.019$: the posterior center lies away from
+$\Lambda$CDM even in the best-determined direction of the $(w_0, w_a)$
+posterior, but because the product-likelihood SN overlap artificially
+narrows the widths, \emph{no} $\sigma$-distance or significance is quoted
+for the pivot or for the single $w_0$/$w_a$ axes (fn.~\ref{fn:wcaveat}).
+The CPL trajectory's effect on the expansion
+rate is small at the redshifts probed by current SN data: at the posterior
+mean $(w_0, w_a)=(-0.812, -0.667)$ the CPL Hubble rate $H(z=0.5)$ differs
+from the $\Lambda$CDM rate (at fixed $\Omega_m=0.314$ and the chain's
+$H_0$) by $\approx +1.7\%$, computed from
+$\rho_{\rm DE}(a)/\rho_{\rm DE,0} = a^{-3(1+w_0+w_a)}\,\exp[3 w_a (a-1)]$
+in the CPL parameterisation; the deviation grows toward the BAO range
+$z\!\gtrsim\!1$ before turning over as $w(a)\!\to\!w_0+w_a$.
+
+\textit{Caveats.}---(a)~The robust Bayesian evidence / Bayes factor
+$\ln B$ against $\Lambda$CDM is NOT reported here; standard posterior
+MCMC samples do not give a robust $\ln B$, and a Savage-Dickey density
+ratio at the $\Lambda$CDM point is \emph{not} viable on this chain because the
+$\Lambda$CDM point $(w, w_a) = (-1, 0)$ is unsampled by the
+Metropolis-Hastings chain --- it lies deep in the joint marginal tails of
+the present overlap-uncorrected posterior, but no $\sigma$-distance is
+quoted because the product-likelihood SN overlap narrows the widths
+(Table~\ref{tab:iter2_posterior}); any KDE-based Savage-Dickey ratio at an
+unsampled point yields arbitrary kernel-dependent noise rather than a
+controlled posterior density (with zero free-$w_0 w_a$ samples at the $\Lambda$CDM
+point, a KDE estimator on the converged 2D $(w, w_a)$ marginal
+fails catastrophically). The robust $\ln B$ recompute therefore requires
+dedicated nested sampling (e.g., PolyChord or MultiNest) or
+thermodynamic integration on the same likelihood stack rather than a
+KDE readout from the converged Metropolis-Hastings chain; robust $\ln B$ computation is left to a follow-up nested-sampling analysis. (b)~$\tau$ is constrained
+empirically by the low-$\ell$ EE + TT likelihoods listed in the caption
+(\texttt{planck\_2018\_lowl.EE} + \texttt{planck\_2018\_lowl.TT}) and is
+sampled as a free parameter rather than fixed by a Gaussian prior at the
+Planck best-fit value (the chain has $\tau$ free with the
+standard low-$\ell$ data constraint, not a Gaussian prior at the
+Planck best-fit). (c)~The SH0ES $H_0$ prior is \emph{not} included in this
+chain (BAO + CMB + SN-only, no local-distance ladder);
+the joint posterior $H_0 = 67.185 \pm 0.455$ km/s/Mpc (the iter2 $w_0w_a$
+chain of Table~\ref{tab:iter2_posterior}, to which this caveat list
+refers --- not the $\Lambda$CDM$+\Delta\Neff$ chains of
+Table~\ref{tab:verification}, whose Planck+BAO+SN value is
+$67.78 \pm 1.09$) is therefore the no-SH0ES result. The interaction with the SH0ES prior is the subject of
+the separate \emph{full-tension} chain reported in
+Table~\ref{tab:verification}, which carries the
+\texttt{H0.riess2020Mb} likelihood active in its YAML (verified by direct \texttt{.input.yaml} inspection and by chain
+sample-mean readout: $M_B = -19.263 \pm 0.049$ mag, agreeing with the
+SH0ES~\cite{Riess2022} value $M_B = -19.253 \pm 0.027$ mag at $0.2\sigma$).
+The full-tension chain returns $H_0 = 67.68 \pm 1.06$ km/s/Mpc with
+$\Delta\Neff = -0.020 \pm 0.169$, exhibiting the canonical 3.6$\sigma$
+Hubble tension with Riess $H_0 = 73.04 \pm 1.04$ km/s/Mpc that the
+$\Lambda$CDM+$\Delta\Neff$ extension is unable to resolve: the
+\texttt{H0.riess2020Mb} likelihood constrains the SN Ia absolute
+magnitude $M_B$ (which is correctly pulled toward the Riess value),
+but $H_0$ is determined predominantly by the BAO+CMB acoustic scale
+through Pantheon+, and the $\Delta\Neff$ extension lacks the degrees of
+freedom to shift $H_0$ enough to accommodate both data sets. Direct YAML
+inspection confirms the SH0ES likelihood is active and the M$_B$
+posterior is correctly pulled; the 3.6$\sigma$ tension persists
+because the model cannot shift $H_0$ enough to satisfy both data sets
+simultaneously --- the canonical Hubble-tension result, not a
+YAML omission. (d)~The iter2 chain's $S_8 = 0.8245 \pm 0.0089$
+(Table~\ref{tab:iter2_posterior}) sits $2.6\sigma$ above the DES-Y3
+weak-lensing value $S_8 = 0.776 \pm 0.017$~\cite{DES2024}
+($\Delta = 0.049$ against a combined uncertainty of $0.019$): the
+$S_8$ tension is not relieved in this chain either.
+(e)~\textit{DES-SN5YR and Pantheon+ supernovae overlap.}---The iter2 likelihood stack
+includes both DES-SN5YR~\cite{DES2024SN5YR} and Pantheon+~\cite{Brout2022PantheonPlus} as independent
+SN likelihood factors.  These two catalogs share approximately $20\%$ of their
+supernova events with different Malmquist-bias corrections applied by the
+respective collaborations~\cite{Vincenzi2025SNcompare}.  The present analysis combines them
+via a product likelihood without a joint covariance that accounts for the
+shared-event overlap.  Because the shared $\sim\!20\%$ of SNe are assigned
+slightly different distance-modulus corrections in each catalog, the naive
+product double-weights those events and introduces a small inward pull on
+the combined SN constraint.  The direction of this bias is toward the mean of
+the two catalogs' individual SN posteriors, which is itself close to the
+combined Planck+BAO constraint. Whether the qualitative direction
+($w_0 + w_a < -1$) survives a rigorous joint-covariance treatment is
+\emph{not} established here: the direction itself could shift once the
+shared-event cross-covariance and the differing Malmquist-bias corrections
+of the two catalogs are properly accounted for. No robustness of the
+quintom-B direction against the SN-overlap systematic is claimed in this
+manuscript.
+Two SN-overlap control chains (DESI~DR2 + Planck~NPIPE + Pantheon$+$ only;
+DESI~DR2 + Planck~NPIPE + DES-SN5YR only; same priors and burn-in as
+the iter2 baseline) constitute the rigorous overlap-robustness
+demonstration; their $(w_0, w_a)$ shifts versus the combined chain are
+the subject of a separate follow-up note and do not gate the
+cross-check reported here.
+Users requiring a rigorous SN combination should refer to the Vincenzi et al.
+comparison analysis~\cite{Vincenzi2025SNcompare}, which quantifies the
+$\sim\!20\%$ shared-SN overlap and the Malmquist-correction differences
+between the two catalogs (in addition to the underlying DES-SN5YR
+cosmology paper~\cite{DES2024SN5YR}), and construct a joint covariance.
+\par
+
 %% --- A: Reproducibility Materials ---
 \section{Reproducibility Materials}\label{app:reproducibility}
 
@@ -2980,8 +3054,9 @@ be reproduced.
 \textit{What is included vs.\ regenerable.}---The two frozen
 $\Lambda$CDM$+\Delta\Neff$ chain directories are committed
 in-repo and contain the chains and diagnostics that back
-Table~I, Table~III, and the relevant Table~V claim-classification entries
-of this paper; the ALP $c5$ continuous chain backs Table~IV separately:
+Table~\ref{tab:verification}, Table~\ref{tab:chain_datasets}, and the relevant
+Table~\ref{tab:claims} claim-classification entries
+of this paper; the ALP $c5$ continuous chain backs Table~\ref{tab:alp_restricted_subsets} separately:
 \path{reproducibility/cosmology/frozen/full_tension_20260311_1728/} and
 \path{reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/}
 (each with \texttt{chains/chain\_0[1-6]/} and
@@ -2993,7 +3068,7 @@ ALP-MCMC chains at
 Fresh $\Lambda$CDM$+\Delta\Neff$ proxy chains for independent
 re-verification are NOT bundled and must be regenerated locally via
 \texttt{reproduce\_cosmology.sh} ($\sim$4--12\,h per config on 4 CPU cores).
-All Table~I--II numerical entries quoted in this paper were recomputed
+All Table~\ref{tab:verification} and Table~\ref{tab:iter2_posterior} numerical entries quoted in this paper were recomputed
 directly from the committed raw chains (and from the
 \texttt{parameter\_summary\_CORRECTED.json} artifacts derived from
 them), not from the legacy column-permuted export.
