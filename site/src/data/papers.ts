@@ -85,7 +85,7 @@ export const papers: Paper[] = [
     slug: "paper-1a",
     number: "1A",
     title: "Channel-Level Closure of Four Minimal Einstein–Cartan–Holst Dark-Energy Routes and Perturbation Transparency for Scalar Matter",
-    version: "v1A.0.91",
+    version: "v1A.0.92",
     lastUpdated: "2026-06-30",
     tldr: "Closes all four minimal Einstein–Cartan–Holst routes from a quantum bounce to dark energy and proves the Holst sector is invisible to scalar/tensor perturbations — leaving two clean observational kill-tests (LiteBIRD birefringence, SPHEREx f_NL).",
     path: publicationPath({
@@ -119,10 +119,10 @@ export const papers: Paper[] = [
       "arXiv endorsement + coordinated submission (mints the DOIs/arXiv IDs that clear the last structural reviewer blocker)",
     ],
     preprintId: "HUBIFY-2026-001A",
-    pdfMeta: "PDF · 33 pp · v1A.0.91 · updated Jun 30, 2026 · md5 27593644",
+    pdfMeta: "PDF · 36 pp · v1A.0.92 · updated Jun 30, 2026 · md5 7488bd1c",
     artifacts: [
-      { label: "Read PDF", href: "/papers/paper1a_ech_nogo_v1A.0.91.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/paper1a_ech_nogo_v1A.0.91.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/paper1a_ech_nogo_v1A.0.92.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/paper1a_ech_nogo_v1A.0.92.pdf", kind: "secondary", download: true },
       {
         label: "LaTeX source",
         href: "https://github.com/Hubify-Projects/bigbounce/blob/main/arxiv/paper1a_ech_nogo.tex",
@@ -140,7 +140,7 @@ export const papers: Paper[] = [
     slug: "paper-1b",
     number: "1B",
     title: "Technical Verification Companion to the ECH Spin-Torsion Program: ΛCDM+ΔN_eff MCMC Proxy, NaMaster Pipeline Recovery, and a Birefringence Consistency Check with a Spectator-ALP Model",
-    version: "v1B.0.86",
+    version: "v1B.0.87",
     lastUpdated: "2026-06-30",
     tldr: "Technical companion to Paper 1A: a 309K-sample ΛCDM+ΔN_eff MCMC null test (ΔN_eff consistent with zero), a NaMaster pipeline validation on synthetic ΛCDM skies, a DESI DR2 w0wa chain (w_pivot +2.5σ from −1), and a spectator-ALP consistency check against the Planck+ACT β = 0.342° measurement.",
     path: publicationPath({
@@ -181,10 +181,10 @@ export const papers: Paper[] = [
       "arXiv endorsement + coordinated submission (mints the DOIs/arXiv IDs that clear the last structural reviewer blocker)",
     ],
     preprintId: "HUBIFY-2026-001B",
-    pdfMeta: "PDF · 23 pp · v1B.0.86 · updated Jun 30, 2026 · md5 d8a95294",
+    pdfMeta: "PDF · 24 pp · v1B.0.87 · updated Jun 30, 2026 · md5 ce73d67c",
     artifacts: [
-      { label: "Read PDF", href: "/papers/paper1b_mcmc_companion_v1B.0.86.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/paper1b_mcmc_companion_v1B.0.86.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/paper1b_mcmc_companion_v1B.0.87.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/paper1b_mcmc_companion_v1B.0.87.pdf", kind: "secondary", download: true },
       {
         label: "LaTeX source",
         href: "https://github.com/Hubify-Projects/bigbounce/blob/main/arxiv/paper1b_mcmc_companion.tex",
