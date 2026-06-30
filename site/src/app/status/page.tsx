@@ -102,7 +102,7 @@ export default async function StatusPage() {
         <p className="text-xs sans" style={{ marginBottom: 8 }}>
           Rendered at build · {renderedAt} ·{" "}
           {isLive ? (
-            <span className="tone-success">live Convex data</span>
+            <span className="tone-success">live data</span>
           ) : (
             <span className="text-muted-foreground">static fallback</span>
           )}
@@ -113,7 +113,7 @@ export default async function StatusPage() {
         <p className="subtitle">
           Comprehensive source of truth for the entire BigBounce spin-torsion
           cosmology research program. Paper versions, readiness, and open
-          findings counts come from Convex on every build.
+          findings counts are updated on every build.
         </p>
       </div>
 
@@ -207,7 +207,7 @@ export default async function StatusPage() {
           </div>
           <p className="text-xs text-muted-foreground">
             EXT17 complete — 18/18 ACCEPT. All papers at 99% readiness (hard cap).
-            The final 1% is never awarded automatically — only by Houston sign-off
+            The final 1% is never awarded automatically — only by author sign-off
             (ORCID public + coordinated arXiv drop authorization).
           </p>
         </CardContent>
@@ -242,7 +242,7 @@ export default async function StatusPage() {
               <p className="compute-idle-title">0 pods running · $0/hr</p>
               <p className="compute-idle-note">
                 All compute jobs idle. Job history + cost accounting live in
-                the Convex pods table.
+                the live research log.
               </p>
             </div>
           </div>

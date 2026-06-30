@@ -13,7 +13,7 @@ function statusLabel(status: string): string {
     case "active-drive-to-100":
       return "active";
     case "paused-houston-external":
-      return "paused (houston review)";
+      return "paused (author review)";
     case "submitted-arxiv":
       return "arXiv submitted";
     case "in-revision":
@@ -38,14 +38,14 @@ export async function LivePapersDashboard() {
   return (
     <section aria-label="Paper state" className="live-papers-dashboard">
       <div className="live-papers-dashboard-head">
-        <h2>Paper state — {live ? "live from Convex" : "static fallback"}</h2>
+        <h2>Paper state — {live ? "live" : "static fallback"}</h2>
         <span
           className={live ? "tone-success" : "tone-caution"}
           style={{ fontSize: "0.7rem", fontFamily: "var(--font-mono-stack)" }}
           title={
             live
-              ? "Reading from Convex — site re-renders on every R-round closure."
-              : "Reading from static papers.ts + live-status.ts. Run npx convex dev + seed script to flip live (see DATA_MODEL_ARCHITECTURE.md Phase 1.5)."
+              ? "Live data — site updates after each review round."
+              : "Data shown from cached snapshot."
           }
         >
           ● {live ? "LIVE" : "STATIC"}
@@ -152,8 +152,7 @@ export async function LivePapersDashboard() {
             marginBottom: 0,
           }}
         >
-          Showing static fallback data. Set <code>NEXT_PUBLIC_CONVEX_URL</code>{" "}
-          and run the Phase 1.5 seed migration to flip this to live.
+          Showing cached data.
         </p>
       )}
     </section>

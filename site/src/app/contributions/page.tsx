@@ -753,10 +753,8 @@ export default function ContributionsPage() {
                   color: "var(--text-muted)",
                 }}
               >
-                Standing rule (2026-06-03): no BigBounce / Hubify-published
-                paper self-annotates at N4. Site copy, paper abstracts, and
-                Convex novelty fields are all capped at N3 by the{" "}
-                <code>/never-claim-n4</code> audit.
+                No BigBounce paper self-annotates at N4. Site copy, paper abstracts,
+                and all contribution records are capped at N3 by internal review.
               </p>
             </Card>
           </section>
