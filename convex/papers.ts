@@ -320,13 +320,17 @@ export const listAllPaperStates = query({
       if (paper.houstonSignOff) {
         readinessComputed = 100;
       } else {
+        // SINGLE SOURCE OF TRUTH: this MUST match getPaperState's formula exactly
+        // (data-driven ceiling = readinessCap ?? 96, restored after the 2026-06-21
+        // rollback). Previously hardcoded 92 here, which drifted from getPaperState's
+        // 96 and showed conflicting readiness on home vs /paper. Keep them identical.
         const penalty =
           2 * openBlockers + 1 * openMajors + 0.2 * openMinors + 1 * openCaveats;
-        const formulaValue = Math.max(0, Math.min(92, 92 - penalty));
-        readinessComputed =
+        const ceiling =
           paper.readinessCap !== undefined && paper.readinessCap !== null
-            ? Math.min(formulaValue, paper.readinessCap)
-            : formulaValue;
+            ? paper.readinessCap
+            : 96;
+        readinessComputed = Math.max(0, Math.min(ceiling, ceiling - penalty));
       }
 
       results.push({
