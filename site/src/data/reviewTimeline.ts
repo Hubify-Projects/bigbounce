@@ -2640,6 +2640,36 @@ export const gapSeries: GapPoint[] = [
     note: "EXT22 confirm round: 2 new-verified polish items — NV-P1A-1 (MINOR: §XII.B body-alignment; closed) + NV-P4-1 (POLISH: +3.3σ→+3.29σ; closed). All ~34 other findings already-covered/extraction-artifact/opinion/stale. Polish-tier convergence reached: 3-pass total (R52+EXT21+EXT22) → 0 MAJOR/BLOCKER.",
     milestone: "integrity gate — loop de-biased, skills hardened",
   },
+  {
+    roundId: "EXTDB",
+    dateISO: "2026-06-28",
+    total: 2,
+    perPaper: { P1A: 1, P1B: 0, P2: 0, P3: 1, P4: 0, P5: 0 },
+    note: "De-biased external-review validation: with severity-steering struck from the referee prompt, 2 GENUINE self-favoring items surfaced that the biased prompt was burying — P1A '13 logically-independent barriers'→'mechanism-class' (several share the scaling ansatz) + P3 'catalog-grade' tier was summing Gaia+eROSITA which FAILED injection-recovery (relabeled, validated ≥268,519). Both fixed. A broader real-fix wave (P1B inflated w0wa σ-distances removed; P5 L_parity operator reformulated to be SO(3)-invariant; P1A H0-artifact disclosed) closed previously-latent items.",
+    milestone: "de-bias caught real self-favoring framing",
+  },
+  {
+    roundId: "RAEXT",
+    dateISO: "2026-06-29",
+    total: 0,
+    perPaper: { P1A: 0, P1B: 0, P2: 0, P3: 0, P4: 0, P5: 0 },
+    note: "Round A (1 of 3) EXT: 0 genuinely-new external findings — the Round-A INT pass (12 real items closed) caught everything first. Verdicts lifted to MINOR-tier dominant; P1A drew a real Gemini ACCEPT.",
+  },
+  {
+    roundId: "RBEXT",
+    dateISO: "2026-06-29",
+    total: 0,
+    perPaper: { P1A: 0, P1B: 0, P2: 0, P3: 0, P4: 0, P5: 0 },
+    note: "Round B (2 of 3) EXT: 0 genuinely-new external findings beyond the Round-B INT closes (4 items, incl a Lesson-F self-favoring fix on P4). P4 swept all-MINOR.",
+  },
+  {
+    roundId: "RCEXT",
+    dateISO: "2026-06-30",
+    total: 0,
+    perPaper: { P1A: 0, P1B: 0, P2: 0, P3: 0, P4: 0, P5: 0 },
+    note: "Round C (3 of 3, FINAL) EXT: 0 genuinely-new external findings — neutral gate-discipline truth-audit of the harsh P1A+P3 3/3-MAJORs confirmed every one is a disclosed caveat, a structural submission feature (companion derivations, Zenodo DOI deferred), framing taste, or reviewer noise. 3-round grind: 23 real items closed across INT, 0 new surviving external findings.",
+    milestone: "3-round grind: 0 new external findings",
+  },
 ];
 
 export interface ReadinessCheckpoint {
