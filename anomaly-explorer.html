@@ -61,7 +61,7 @@
 <div class="hero">
   <p class="text-xs sans" style="margin-bottom: 8px;">DESI DR1 Spectral Anomaly Catalog</p>
   <h1>Anomaly Explorer</h1>
-  <p class="subtitle">22,504,897 unique DESI DR1 spectra scored &rarr; 2,145 SNR-filtered anomalies (score&gt;3, SNR&gt;0.5) &rarr; 120 gold (&gt;5&sigma;) &rarr; 12 reionization-era QSOs at z&gt;6. First full-DR1-scale autoencoder search (~90x prior EDR work). <strong>21 objects NOT in SIMBAD.</strong> Photo-z from unsupervised latent vectors: &sigma;<sub>NMAD</sub> = 0.028. UMAP clustering reveals two populations. Browse the top 1,000 by anomaly score below.</p>
+  <p class="subtitle">The first full-DR1-scale autoencoder anomaly search &mdash; 22.5M DESI DR1 spectra scored down to 2,145 high-significance anomalies (~90&times; prior EDR work). Photo-z from unsupervised latent vectors (&sigma;<sub>NMAD</sub> = 0.028); UMAP reveals two populations. Key counts below; browse the top 1,000 by anomaly score in the table.</p>
   <div style="display:flex; gap:10px; margin-top:12px; flex-wrap:wrap;">
     <a href="/old/methodology-anomaly.html" class="btn btn-secondary" style="font-size:13px;">How It Works</a>
     <a href="/status" class="btn btn-secondary" style="font-size:13px;">Research Status</a>
@@ -585,7 +585,7 @@ function renderTable(data) {
       <td>${rB}</td>
       <td>${rR}</td>
       <td>${rZ}</td>
-      <td><img class="anomaly-thumb" loading="lazy" decoding="async" src="${thumbUrl}" alt="cutout ${ra.toFixed(2)}, ${dec.toFixed(2)}" data-retry="0" onerror="handleThumbError(this, '${thumbUrl}')"></td>
+      <td><img class="anomaly-thumb" loading="lazy" decoding="async" referrerpolicy="no-referrer" src="${thumbUrl}" alt="cutout ${ra.toFixed(2)}, ${dec.toFixed(2)}" data-retry="0" onerror="handleThumbError(this, '${thumbUrl}')"></td>
       <td><a href="${lsUrl}" target="_blank" class="btn-img btn-ls" onclick="event.stopPropagation()">Full</a></td>
     </tr>`;
   }).join('');
