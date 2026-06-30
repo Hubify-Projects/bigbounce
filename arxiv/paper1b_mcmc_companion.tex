@@ -153,7 +153,7 @@
 %   FALSIFIED list (14 items) not acted on.)
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1B.0.86}
+\newcommand{\paperVersion}{v1B.0.87}
 \newcommand{\paperTimestamp}{June 30, 2026}
 % v1B.0.86 (2026-06-30 — RCEXT-P1B substantive closure. (1) w0wa DEMOTED:
 %   Table II (tab:iter2_posterior) + physics-interpretation + caveats(a-e) +
@@ -1142,7 +1142,7 @@
 
 %\preprint{arXiv:XXXX.XXXXX}
 
-\title{Technical Verification Companion to the ECH Spin-Torsion Program:\\
+\title{Technical Reproducibility and Consistency-Check Companion to the ECH Spin-Torsion Program:\\
 $\Lambda$CDM$+\Delta N_{\rm eff}$ MCMC Proxy, NaMaster Pipeline Recovery,\\
 and a Birefringence Consistency Check with a Spectator-ALP Model}
 
@@ -1153,8 +1153,16 @@ and a Birefringence Consistency Check with a Spectator-ALP Model}
 \date{\paperTimestamp}
 
 \begin{abstract}
-We report the technical verification material for the Einstein-Cartan-Holst (ECH)
-spin-torsion cosmology no-go program of Paper~I(a)~\cite{Golden2026P1a}.
+We report the technical reproducibility and consistency-check material for the
+Einstein-Cartan-Holst (ECH) spin-torsion cosmology no-go program of
+Paper~I(a)~\cite{Golden2026P1a}. \emph{Scope, stated up front}: none of the
+three analyses below implements or tests a torsion-modified Boltzmann/theory
+module, and none \emph{verifies} the ECH spin-torsion sector. Each is an
+adjacent numerical cross-check --- a stock-CAMB generic-radiation null proxy, a
+foreground-free synthetic-pipeline recovery validation, and a literature-data
+ALP accommodation --- so the paper's contribution is precisely a reproducibility
+and null-consistency note for three limited numerical cross-checks, not
+independent evidence for (or verification of) the spin-torsion theory.
 Three analyses are documented.
 \emph{(1)~Stock-CAMB $\Lambda$CDM$+\Delta\Neff$ MCMC proxy}
 (Cobaya~v3.6.1, $\mathbf{309{,}189}$ frozen samples across two converged dataset combinations): this
@@ -1177,7 +1185,7 @@ $10\,\mu\text{K}\cdot\text{arcmin}$ white noise,
 $\beta=0.27^\circ$ recovers $\hat\beta=0.238^\circ$ (pipeline-recovery bias
 $\hat\beta-\beta_{\rm inj}=-0.032^\circ$; the worst-case bias across
 injections, $-0.040^\circ$ at $\beta_{\rm inj}=0.342^\circ$, is carried
-forward as the observed pipeline bias floor --- both are MC
+forward as the foreground-free synthetic-pipeline recovery bias --- both are MC
 pipeline-recovery figures, not sky-measurement systematics, and are not
 directly comparable to each other's published sky significances). \emph{Scope of the validation}: the test confirms the algebraic pseudo-$C_\ell$ $E\!\to\!B$ deconvolution under MASTER~\cite{Hivon2002} mode coupling, NOT the physical separation of the cosmic-rotation angle $\beta$ from the instrumental-miscalibration angle $\alpha$ which strictly requires unrotated galactic foregrounds (the synthetic CMB-only skies contain no galactic foregrounds, so the very component that breaks the $\beta$--$\alpha$ degeneracy in published Planck/ACT~DR6 measurements is absent by construction). The MC recovery is therefore a pipeline-validation figure, not a sky-detection significance claim. The primary sky detection significance is the
 published Planck/ACT DR6 $2.7$--$2.9\sigma$~\cite{DiegoPalazuelos2022,DiegoPalazuelos2025}
@@ -1228,8 +1236,13 @@ A reproducibility manifest is included in Appendix~\ref{app:reproducibility}.
 %% ============================================================
 \section{Introduction}\label{sec:intro}
 
-This companion paper provides the technical verification layer for the ECH
-structural-closure no-go result reported in Paper~I(a)~\cite{Golden2026P1a}.
+This companion paper provides the technical reproducibility and
+consistency-check layer for the ECH structural-closure no-go result reported in
+Paper~I(a)~\cite{Golden2026P1a}. We use ``companion'' in the strict sense: the
+paper documents three limited numerical cross-checks and their reproducibility
+artifacts, and it does \emph{not} implement, test, or verify any torsion-modified
+component of the ECH theory itself. Its standing relative to Paper~I(a) is that
+of a null-consistency and reproducibility note, not of independent confirmation.
 Paper~I(a) establishes channel-level closure of four independent minimal-ECH
 dark-energy routes (kinetic-coupling channel, potential-energy channel,
 perturbation-transparency channel, and spin-torsion propagator channel) and
@@ -1275,8 +1288,9 @@ own contribution---the MCMC posteriors, pipeline-validation figures, and
 spectator-ALP consistency check reported below---is self-contained and
 independently reproducible from this paper's repository.
 
-\textit{Scope of this paper.}---Three verification analyses are reported here,
-each with explicit scope limitations:
+\textit{Scope of this paper.}---Three numerical cross-check analyses are reported
+here, each a compatibility/consistency check rather than a verification of the
+ECH sector, and each with explicit scope limitations:
 \begin{enumerate}[leftmargin=*]
 \item \textit{$\Lambda$CDM$+\Delta\Neff$ MCMC proxy} (Secs.~\ref{sec:tensions}
 and~\ref{sec:verification}): stock CAMB Boltzmann solver with $\Delta\Neff$ as
@@ -2645,8 +2659,21 @@ does not uniquely predict the signal.
 %% ============================================================
 \section{Conclusions}\label{sec:conclusions}
 
-This companion paper documents three technical verification analyses for the
-ECH spin-torsion structural closure program~\cite{Golden2026P1a}.
+This companion paper documents three technical reproducibility and
+consistency-check analyses for the ECH spin-torsion structural closure
+program~\cite{Golden2026P1a}. To restate the scope plainly before the
+per-analysis summaries: none of the three \emph{verifies} the ECH spin-torsion
+sector itself. The $\Delta\Neff$ run is a stock-CAMB generic-radiation null
+proxy (no torsion-modified Boltzmann equations); the NaMaster exercise is a
+foreground-free synthetic-pipeline recovery validation (not a sky measurement);
+and the ALP section is a literature-data accommodation of an already-published
+birefringence value (not an ECH-specific prediction). The paper's load-bearing
+output is therefore the set of frozen MCMC posteriors, the synthetic-pipeline
+recovery characterization, and the reproducibility artifacts; the ALP result is
+compatibility-only; and the $w_0w_a$ chain is non-load-bearing and
+appendix-confined. All statements below should be read at that epistemic level
+--- ``consistent with''/``compatible with''/``does not exclude,'' never
+``establishes'' or ``confirms the theory.''
 
 \textit{$\Lambda$CDM$+\Delta\Neff$ MCMC proxy.}---The stock-CAMB Cobaya~v3.6.1
 run (\textbf{309{,}189} frozen samples across two converged dataset

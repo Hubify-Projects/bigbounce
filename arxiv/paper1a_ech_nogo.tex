@@ -47,8 +47,27 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.91}
+\newcommand{\paperVersion}{v1A.0.92}
 \newcommand{\paperTimestamp}{June 30, 2026}
+% v1A.0.92 (2026-06-30 — RREXT P1A closure-framing calibration (Grok MAJOR +
+%   Gemini MAJOR, both "physics-closure framing + companion citations"). NO
+%   fabrication; consolidates evidentiary status already established in-text.
+%   (1) NEW tab:evidentiary_status (sec:fourroute_summary) — explicit three-tier
+%       classification of every closure leg: (I) rigorous result within stated
+%       scope [only the perturbation-transparency result], (II) structural
+%       argument [R1 parity-even, R3 mass-dim lock, R4 naturalness/explanatory
+%       deficit], (III) ansatz-level dimensional estimate [R1/R2/R3 amplitude
+%       budgets]. States what each leg rules out at channel-amplitude granularity
+%       + records the highest level claimed, so a referee sees the closure is
+%       honestly characterized (channel-level, not operator-level) and not
+%       overclaimed. New paragraph "Evidentiary status of each leg" frames it.
+%   (2) Self-containment paragraph (sec:intro): added honest acknowledgment that
+%       the illustrative companion-imported numbers (tab:companion_inputs) cannot
+%       be independently refereed until the companions are publicly posted — a
+%       structural feature of the coordinated submission, bearing on NONE of the
+%       closure/no-go/transparency results (the companion-citations MAJOR is a
+%       coordinated-submission structural item, not a text-closable gap).
+%   Recompiled 0 undef-refs; overflow-audited.)
 % v1A.0.90 (2026-06-30 — INT-M2 P1A harvest (Gemini 2.5-pro MAJOR-REVISIONS,
 %   OpenAI gpt-5 MAJOR-REVISIONS, Grok-4 REJECT, Perplexity quota-FAIL). Truth audit:
 %   reports in project-context/peer-reviews/INT-M2_P1A_*.md. Verdict: ALL harsh
@@ -1039,7 +1058,14 @@ the broader observational programme; \emph{none of these companion-imported
 numbers is load-bearing for any closure, no-go, or theorem stated here.}
 A referee unable to access the in-preparation companions can therefore still
 audit every primary claim of this paper directly from its own equations and
-assumptions.
+assumptions. We note honestly that the \emph{illustrative} observational
+numbers imported from the companions (the MCMC posteriors, Fisher
+significances, and pipeline validations summarized in
+Table~\ref{tab:companion_inputs}) cannot be independently refereed until those
+companions are publicly posted; this is a structural feature of the coordinated
+submission, not a deficiency of the present argument, and it bears on none of
+the closure, no-go, or transparency results, all of which are self-contained
+here.
 
 Our approach builds on three theoretical pillars:
 
@@ -2380,6 +2406,91 @@ $\Delta\Neff$/birefringence consistency analysis are reported
 (in preparation~\cite{Golden2026P1b}); the present
 manuscript provides only the channel-level amplitude closure of the
 four parity-odd routes in the ECH sector.
+
+\paragraph{Evidentiary status of each leg.} So that the strength of
+the closure is not overread, we state explicitly the evidentiary level
+at which each route and each structural result is established. We use a
+three-tier scale: \textbf{(I)~rigorous result} --- a deductive
+consequence of stated equations/identities, holding exactly within an
+explicitly bounded scope; \textbf{(II)~structural argument} --- a
+qualitative or order-of-magnitude argument from established physics
+(symmetry, parity, naturalness) that does not turn on a fitted number;
+and \textbf{(III)~ansatz-level dimensional estimate} --- an
+amplitude budget evaluated under an explicitly-labeled scaling ansatz,
+honest to a factor but not a first-principles derivation.
+Table~\ref{tab:evidentiary_status} classifies every leg on this scale.
+No leg is claimed at a level higher than this table records: in
+particular, the only Tier-I (rigorous) leg is the
+perturbation-transparency result for canonical scalar matter; R2--R3 are
+Tier-III ansatz-level estimates; and the R4 closure is a Tier-II
+\emph{naturalness/explanatory-deficit} objection, \emph{not} an amplitude
+exclusion and conditional on the on-shell scaling ansatz of
+Appendix~\ref{app:dimensions}. The aggregate ``four-route channel-level
+closure'' is therefore exactly that: a channel-level (not operator-level)
+statement whose individual legs sit at the levels tabulated, reinforced
+but not promoted by the mechanism-class catalog of
+Sec.~\ref{sec:barriers}.
+
+\begin{table*}[tb]
+\caption{\label{tab:evidentiary_status} Evidentiary status of each closure
+leg, on the three-tier scale of the text: (I)~rigorous result within
+stated scope, (II)~structural argument, (III)~ansatz-level dimensional
+estimate. The table records the highest level at which each leg is
+claimed; no leg is asserted more strongly elsewhere in the paper. ``Rules
+out'' is to be read at channel-amplitude granularity (the level at which
+the observational budget of Sec.~\ref{sec:obs} discriminates), not as an
+operator-level theorem.}
+\begin{ruledtabular}
+\begin{tabular}{lll}
+\textbf{Leg} & \textbf{What it rules out (channel-amplitude level)} &
+\textbf{Evidentiary status} \\
+\colrule
+\parbox[t]{0.18\textwidth}{\raggedright Perturbation transparency
+(Sec.~\ref{sec:transparency})\strut} &
+\parbox[t]{0.40\textwidth}{\raggedright The Holst sector / Barbero--Immirzi
+parameter contributing to scalar or tensor perturbation observables, for
+canonical scalar matter\strut} &
+\parbox[t]{0.32\textwidth}{\raggedright \textbf{(I) Rigorous} within stated
+scope: $T=0$ follows from zero scalar spin density, and the Holst dual
+contraction vanishes by the algebraic Bianchi identity. Excludes
+propagating-torsion, fermion-loop, dynamical-Immirzi, non-minimal-matter
+sectors.\strut} \\[3pt]
+\parbox[t]{0.18\textwidth}{\raggedright R1 (NJL four-fermion contact)\strut} &
+\parbox[t]{0.40\textwidth}{\raggedright The torsion-induced contact term
+sourcing coherent $w\!=\!-1$ dark energy\strut} &
+\parbox[t]{0.32\textwidth}{\raggedright \textbf{(II)+(III)}: parity-even
+structure ($\langle J^5\rangle\!\approx\!0$, no coherent mean field) is a
+Tier-II algebraic fact; the $M_{\rm Pl}^{-2}$ amplitude suppression
+(${\sim}70$ orders below $\rho_\Lambda$) is a Tier-III order-of-magnitude
+estimate from a standard Cartan torsion-elimination derivation.\strut} \\[3pt]
+\parbox[t]{0.18\textwidth}{\raggedright R2 (one-loop graviton
+corrections)\strut} &
+\parbox[t]{0.40\textwidth}{\raggedright One-loop promotion of
+$\gamma_{\rm BI}$ reaching the observed birefringence amplitude\strut} &
+\parbox[t]{0.32\textwidth}{\raggedright \textbf{(III) Ansatz-level}: amplitude
+budget suppressed by $H_0/M_{\rm Pl}$ and $\alpha_{\rm em}/(4\pi)$ under an
+explicitly-labeled scaling ansatz; exploratory, not load-bearing.\strut}
+\\[3pt]
+\parbox[t]{0.18\textwidth}{\raggedright R3 (Immirzi running)\strut} &
+\parbox[t]{0.40\textwidth}{\raggedright Quantum running of $\gamma_{\rm BI}$
+generating a dark-energy-relevant shift\strut} &
+\parbox[t]{0.32\textwidth}{\raggedright \textbf{(II)+(III)}: mass-dimension
+lock is structural; the chiral-asymmetry beta-function bound
+(Benedetti--Speziale) is a Tier-III order-of-magnitude upper bound,
+deliberately loose and non-load-bearing ($\gtrsim 60$ orders of
+margin).\strut} \\[3pt]
+\parbox[t]{0.18\textwidth}{\raggedright R4 (parity-odd CMB / spectator-ALP
+coupling)\strut} &
+\parbox[t]{0.40\textwidth}{\raggedright Minimal ECH \emph{deriving} the single
+coupling that yields both $\beta_{\rm obs}$ and $\rho_\Lambda$\strut} &
+\parbox[t]{0.32\textwidth}{\raggedright \textbf{(II) Structural naturalness
+objection}, \emph{not} an amplitude exclusion: a free-$\alpha/M$ ALP fit
+reproduces $\beta_{\rm obs}$, but ECH supplies neither $m_\theta\!\sim\!H_0$
+nor the fitted $\alpha/M$, relocating the CC problem. Conditional on the
+on-shell scaling ansatz (App.~\ref{app:dimensions}).\strut} \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
 
 The phenomenological parameter $\alpha/M$ in Sec.~\ref{sec:parityodd}
 is therefore best understood as the R4-bounded coupling required to
