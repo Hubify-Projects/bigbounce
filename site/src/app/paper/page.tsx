@@ -1,4 +1,5 @@
 import { papers } from"@/data/papers";
+import { getLivePapers } from"@/lib/livePapers";
 import { PublicationPathCompact } from"@/components/PublicationPath";
 import { Badge } from"@/components/ui/badge";
 import { Button } from"@/components/ui/button";
@@ -38,11 +39,20 @@ function readinessColor(pct: number) {
   return"progress-fill-caution";
 }
 
-export default function PaperPage() {
+export default async function PaperPage() {
+  // SINGLE SOURCE OF TRUTH: readiness comes from Convex (listAllPaperStates via
+  // getLivePapers), the SAME source the home dashboard reads — never from static
+  // papers.ts — so home and /paper can never show conflicting readiness again.
+  const live = await getLivePapers();
+  const liveReadiness = new Map(live.map((p) => [p.slug, p.readinessComputed]));
+  const livePapers = papers.map((p) => ({
+    ...p,
+    readiness: liveReadiness.get(p.slug) ?? p.readiness,
+  }));
   const averageReadiness = Math.round(
-    papers.reduce((sum, paper) => sum + paper.readiness, 0) / papers.length,
+    livePapers.reduce((sum, paper) => sum + paper.readiness, 0) / livePapers.length,
   );
-  const submissionReady = papers.filter((paper) => paper.readiness >= 95).length;
+  const submissionReady = livePapers.filter((paper) => paper.readiness >= 95).length;
 
   return (
     <>
@@ -82,7 +92,7 @@ export default function PaperPage() {
       <section className="section">
         <h2>Paper Listing</h2>
         <div className="flex flex-col gap-4">
-          {papers.map((paper) => (
+          {livePapers.map((paper) => (
             <Card
               key={paper.slug}
               className={`index-card overflow-hidden ${paper.readiness === 100 ? "index-card-primary" : ""}`}
