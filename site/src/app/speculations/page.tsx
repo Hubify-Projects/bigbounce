@@ -1,11 +1,4 @@
 import { Badge } from"@/components/ui/badge";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-  CardFooter,
-} from"@/components/ui/card";
 import { Separator } from"@/components/ui/separator";
 import type { Metadata } from"next";
 
@@ -15,41 +8,35 @@ export const metadata: Metadata = {
     "Future research directions spanning dark energy, black holes, SETI, and particle physics.",
 };
 
-interface SpecCardProps {
+interface SpecItemProps {
   title: string;
   children: React.ReactNode;
   tag: string;
 }
 
-function SpecCard({ title, children, tag }: SpecCardProps) {
+function SpecItem({ title, children, tag }: SpecItemProps) {
   return (
-    <Card className="border-l-4 border-tone-muted">
-      <CardHeader className="pb-2">
-        <CardTitle
-          className="text-base"
-          style={{ fontFamily:"var(--font-mono-stack)" }}
-        >
-          {title}
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
-        <p className="text-sm leading-relaxed text-muted-foreground">
-          {children}
-        </p>
-      </CardContent>
-      <CardFooter className="pt-0">
-        <span className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
-          {tag}
-        </span>
-      </CardFooter>
-    </Card>
+    <div className="py-4">
+      <p
+        className="font-semibold text-sm mb-1"
+        style={{ fontFamily: "var(--font-mono-stack)" }}
+      >
+        {title}
+      </p>
+      <p className="text-sm leading-relaxed text-muted-foreground mb-2">
+        {children}
+      </p>
+      <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground opacity-70">
+        {tag}
+      </span>
+    </div>
   );
 }
 
 const sections: Array<{
   heading: string;
   badge: string;
-  cards: SpecCardProps[];
+  cards: SpecItemProps[];
 }> = [
   {
     heading:"Cosmology & Dark Energy",
@@ -196,11 +183,11 @@ export default function SpeculationsPage() {
             <h2 className="m-0">{section.heading}</h2>
             <Badge variant="outline">{section.badge}</Badge>
           </div>
-          <div className="grid gap-3 md:grid-cols-2">
+          <div className="flat-item-list">
             {section.cards.map((card) => (
-              <SpecCard key={card.title} title={card.title} tag={card.tag}>
+              <SpecItem key={card.title} title={card.title} tag={card.tag}>
                 {card.children}
-              </SpecCard>
+              </SpecItem>
             ))}
           </div>
         </section>

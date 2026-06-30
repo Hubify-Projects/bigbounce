@@ -15,7 +15,7 @@ export default function SearchPage() {
           BigBounce · research index
         </p>
         <h1 style={{ fontFamily: "var(--font-mono-stack)", fontWeight: 600 }}>
-          search
+          Search
         </h1>
         <p className="subtitle">
           Find anything across the research program — contributions, theorems,

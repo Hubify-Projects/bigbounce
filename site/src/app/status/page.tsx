@@ -400,91 +400,64 @@ export default async function StatusPage() {
 
       <section className="section">
         <h2>Key Discoveries</h2>
-        <div className="grid gap-3 md:grid-cols-2">
-          <Card className="border-l-4 border-tone-success">
-            <CardHeader className="pb-2">
-              <CardTitle
-                className="text-base"
-                style={{ fontFamily:"var(--font-mono-stack)" }}
-              >
+        <div className="grid md:grid-cols-2 gap-x-10">
+          <div className="flat-item-list">
+            <div className="py-4">
+              <p className="font-semibold font-mono text-sm mb-0.5">
                 f_NL = -35/8 Mechanism Independence
-              </CardTitle>
-              <CardDescription className="font-mono text-[11px]">
+              </p>
+              <p className="font-mono text-[11px] text-muted-foreground mb-2">
                 Paper 2 · quintom_fnl_verification.py
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
+              </p>
               <p className="text-sm leading-relaxed text-muted-foreground">
                 Verified across 3 bounce models: f_NL = -4.375 is parameter-free
                 and mechanism-independent. SPHEREx (~2028) will measure to σ ~
                 0.7-2.
               </p>
-            </CardContent>
-          </Card>
-
-          <Card className="border-l-4 border-tone-caution">
-            <CardHeader className="pb-2">
-              <CardTitle
-                className="text-base"
-                style={{ fontFamily:"var(--font-mono-stack)" }}
-              >
+            </div>
+            <div className="py-4">
+              <p className="font-semibold font-mono text-sm mb-0.5">
+                NANOGrav Consistency
+              </p>
+              <p className="font-mono text-[11px] text-muted-foreground mb-2">
+                nanograv real-KDE free-spectrum re-fit (Zenodo chains, emcee)
+              </p>
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                Matter bounce γ = 3.0 vs NANOGrav real-KDE free-spectrum 2.567 ± 0.382 (+1.13σ consistent); SMBHB γ = 4.33 excluded at +4.61σ. Savage-Dickey decisively favors the bounce slope.
+              </p>
+            </div>
+          </div>
+          <div className="flat-item-list">
+            <div className="py-4">
+              <p className="font-semibold font-mono text-sm mb-0.5">
                 Quintom w-Crossing — Theoretical Only
-              </CardTitle>
-              <CardDescription className="font-mono text-[11px]">
+              </p>
+              <p className="font-mono text-[11px] text-muted-foreground mb-2">
                 Paper 1A model-discrimination table · zero free-w0–wa samples in our chains
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
+              </p>
               <p className="text-sm leading-relaxed text-muted-foreground">
                 Whether w(z) crosses -1 is a quintom-bounce signature, but our
-                program has not yet run a free-w<sub>0</sub>–w<sub>a</sub>{""}
+                program has not yet run a free-w<sub>0</sub>–w<sub>a</sub>{" "}
                 MCMC. External DESI DR2 (Adame et al.) reports 2.8–4.2σ for
                 w-crossing depending on dataset combination. (An earlier
                 in-house claim of P(quintom-B) = 98.6% was traced to a
                 bookkeeping error in an automated run and retracted.)
               </p>
-            </CardContent>
-          </Card>
-
-          <Card className="border-l-4 border-tone-muted">
-            <CardHeader className="pb-2">
-              <CardTitle
-                className="text-base"
-                style={{ fontFamily:"var(--font-mono-stack)" }}
-              >
-                NANOGrav Consistency
-              </CardTitle>
-              <CardDescription className="font-mono text-[11px]">
-                nanograv real-KDE free-spectrum re-fit (Zenodo chains, emcee)
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm leading-relaxed text-muted-foreground">
-                Matter bounce γ = 3.0 vs NANOGrav real-KDE free-spectrum 2.567 ± 0.382 (+1.13σ consistent); SMBHB γ = 4.33 excluded at +4.61σ. Savage-Dickey decisively favors the bounce slope.
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card className="border-l-4 border-tone-success">
-            <CardHeader className="pb-2">
-              <CardTitle
-                className="text-base"
-                style={{ fontFamily:"var(--font-mono-stack)" }}
-              >
+            </div>
+            <div className="py-4">
+              <p className="font-semibold font-mono text-sm mb-0.5">
                 378,280 Anomalies Across 7 Surveys
-              </CardTitle>
-              <CardDescription className="font-mono text-[11px]">
+              </p>
+              <p className="font-mono text-[11px] text-muted-foreground mb-2">
                 Pipeline B · 37.3M sources · Paper 3 Table 1 canonical totals
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
+              </p>
               <p className="text-sm leading-relaxed text-muted-foreground">
                 First multi-survey AI anomaly sweep. Central 9.4% multi-tracer
                 f_NL forecast (consistent with no improvement at &lt;1σ).
                 SPHEREx 2.6–5σ conditional forecast for f_NL = −35/8.
               </p>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         </div>
       </section>
     </>

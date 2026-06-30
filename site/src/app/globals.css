@@ -2929,3 +2929,8 @@ code {
     max-width: none;
   }
 }
+
+/* ─── flat-item-list: items separated by a thin rule, no per-item card borders ─── */
+.flat-item-list > * + * {
+  border-top: 1px solid var(--border-subtle);
+}

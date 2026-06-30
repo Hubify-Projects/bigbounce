@@ -153,7 +153,7 @@ export default function HomePage() {
             </div>
             <div className="signal-row">
               <span>Public research artifacts</span>
-              <span className="signal-value">7 HF</span>
+              <span className="signal-value">7 on HuggingFace</span>
             </div>
           </div>
         </div>

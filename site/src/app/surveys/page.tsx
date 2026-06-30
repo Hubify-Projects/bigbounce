@@ -2,13 +2,6 @@ import { surveys } from"@/data/surveys";
 import { Badge } from"@/components/ui/badge";
 import { Button } from"@/components/ui/button";
 import { MathText } from"@/components/MathText";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-  CardFooter,
-} from"@/components/ui/card";
 import { Separator } from"@/components/ui/separator";
 import Link from"next/link";
 import type { Metadata } from"next";
@@ -127,69 +120,79 @@ export default function SurveysIndexPage() {
             <h2>{group.title}</h2>
             <Badge variant="outline">{group.items.length} survey{group.items.length === 1 ? "" : "s"}</Badge>
           </div>
-          <div className="survey-card-grid">
-          {group.items.map((survey) => {
-            const qc = qcVariantMap[survey.qcStatus];
-            const wavelength = survey.wavelength.split(" ")[0].replace(/[(),]/g, "");
-            return (
-              <Card
-                key={survey.slug}
-                className={`survey-card index-card flex flex-col ${survey.qcStatus === "pass" ? "index-card-primary" : ""}`}
-              >
-                <CardHeader className="pb-3">
-                  <div className="flex items-start justify-between gap-3">
+          <div className="flat-item-list">
+            {group.items.map((survey) => {
+              const qc = qcVariantMap[survey.qcStatus];
+              const wavelength = survey.wavelength.split(" ")[0].replace(/[(),]/g, "");
+              return (
+                <div
+                  key={survey.slug}
+                  className="py-5"
+                  style={
+                    survey.qcStatus === "pass"
+                      ? { paddingLeft: 12, borderLeft: "2px solid var(--accent)" }
+                      : undefined
+                  }
+                >
+                  <div className="flex items-start justify-between gap-3 mb-2">
                     <div>
                       <div className="card-kicker">{survey.shortName} · {wavelength}</div>
-                      <CardTitle
-                        className="mt-1 text-base"
-                        style={{ fontFamily:"var(--font-mono-stack)" }}
+                      <div
+                        className="mt-1 text-base font-semibold"
+                        style={{ fontFamily: "var(--font-mono-stack)" }}
                       >
                         {survey.name}
-                      </CardTitle>
+                      </div>
                     </div>
-                    <Badge variant={qc.variant}>{qc.label}</Badge>
-                  </div>
-                </CardHeader>
-                <CardContent className="flex-1">
-                  <div className="survey-metrics">
-                    <div>
-                      <span>Sources</span>
-                      <strong>{survey.sources}</strong>
-                    </div>
-                    <div>
-                      <span>Anomalies</span>
-                      <strong>{survey.anomalies.toLocaleString()}</strong>
-                    </div>
-                    <div>
-                      <span>Rate</span>
-                      <strong>{survey.anomalyRate}</strong>
-                    </div>
-                  </div>
-                  <p className="text-sm text-muted-foreground">
-                    <MathText>{survey.description.slice(0, 180)}</MathText>
-                    {survey.description.length > 180 ?"…" :""}
-                  </p>
-                  <div className="chip-row mt-3 text-xs">
-                    {survey.paperRefs.slice(0, 2).map((ref) => (
-                      <Badge key={ref} variant="secondary">
-                        {ref.split(" —")[0]}
-                      </Badge>
-                    ))}
-                    <Badge variant="outline">
-                      {survey.followUpTasks.length} tasks
+                    <Badge
+                      variant={qc.variant}
+                      style={
+                        survey.qcStatus === "fail"
+                          ? { background: "#dc2626", color: "#fff", borderColor: "#b91c1c" }
+                          : undefined
+                      }
+                    >
+                      {qc.label}
                     </Badge>
                   </div>
-                </CardContent>
-                <CardFooter className="pt-0">
-                  <Button asChild size="sm" variant="outline">
-                    <Link href={`/surveys/${survey.slug}`}>
-                      Open survey &rarr;
-                    </Link>
-                  </Button>
-                </CardFooter>
-              </Card>
-            );
-          })}
+                  <div className="flex flex-wrap gap-5 text-sm mb-3">
+                    <span className="text-muted-foreground">
+                      Sources{" "}
+                      <strong className="text-foreground ml-1">{survey.sources}</strong>
+                    </span>
+                    <span className="text-muted-foreground">
+                      Anomalies{" "}
+                      <strong className="text-foreground ml-1">{survey.anomalies.toLocaleString()}</strong>
+                    </span>
+                    <span className="text-muted-foreground">
+                      Rate{" "}
+                      <strong className="text-foreground ml-1">{survey.anomalyRate}</strong>
+                    </span>
+                  </div>
+                  <p className="text-sm text-muted-foreground mb-3">
+                    <MathText>{survey.description.slice(0, 180)}</MathText>
+                    {survey.description.length > 180 ? "…" : ""}
+                  </p>
+                  <div className="flex items-center justify-between flex-wrap gap-2">
+                    <div className="chip-row text-xs">
+                      {survey.paperRefs.slice(0, 2).map((ref) => (
+                        <Badge key={ref} variant="secondary">
+                          {ref.split(" —")[0]}
+                        </Badge>
+                      ))}
+                      <Badge variant="outline">
+                        {survey.followUpTasks.length} tasks
+                      </Badge>
+                    </div>
+                    <Button asChild size="sm" variant="outline">
+                      <Link href={`/surveys/${survey.slug}`}>
+                        Open survey &rarr;
+                      </Link>
+                    </Button>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </section>
       ))}
