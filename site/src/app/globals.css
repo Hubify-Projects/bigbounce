@@ -2908,9 +2908,9 @@ code {
   }
 
   .data-explorer-root .de-sidebar-item {
-    max-width: 220px;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    /* Let the scrollable de-sidebar handle overflow; clipping items truncates tab labels */
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 
   .data-explorer-root .main-panel {
@@ -2928,6 +2928,34 @@ code {
     width: 100%;
     max-width: none;
   }
+}
+
+/* ══════════════════════════════════
+   Pages with their own secondary nav: suppress the global sidebar so content
+   gets full width. Uses CSS :has() — supported in all modern browsers.
+   ══════════════════════════════════ */
+
+/* /docs has a built-in docs-sidebar; /data-explorer has .de-sidebar */
+.shell:has(.docs-shell) .sidebar,
+.shell:has(.data-explorer-root .de-sidebar) .sidebar {
+  display: none;
+}
+
+.shell:has(.docs-shell) .topbar,
+.shell:has(.data-explorer-root .de-sidebar) .topbar {
+  left: 0;
+}
+
+.shell:has(.docs-shell) .content,
+.shell:has(.data-explorer-root .de-sidebar) .content {
+  margin-left: 0;
+}
+
+/* Data explorer: unbox the max-width container so the full-bleed explorer fills the page */
+.shell:has(.data-explorer-root .de-sidebar) .content .container {
+  max-width: 100%;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 /* ─── flat-item-list: items separated by a thin rule, no per-item card borders ─── */

@@ -204,21 +204,20 @@
 
 .docs-banner {
   display: flex;
-  gap: 12px;
-  align-items: flex-start;
-  padding: 12px 14px;
-  border-radius: 10px;
-  border: 1px solid color-mix(in srgb, #d97706 35%, var(--border));
-  background: color-mix(in srgb, #d97706 5%, var(--surface));
+  gap: 10px;
+  align-items: center;
+  padding: 9px 14px;
+  border-radius: var(--radius);
+  border: none;
+  background: color-mix(in srgb, var(--surface-2) 72%, transparent);
   font-size: 13px;
-  line-height: 1.55;
+  line-height: 1.5;
 }
 
 .docs-banner-icon {
-  width: 16px;
-  height: 16px;
-  margin-top: 2px;
-  color: #d97706;
+  width: 14px;
+  height: 14px;
+  color: var(--text-tertiary);
   flex-shrink: 0;
 }
 

@@ -154,11 +154,11 @@ function chronologicalGapSeries() {
 export function GapClosureChart() {
   const pts = chronologicalGapSeries();
   const width = 640;
-  const height = 210;
+  const height = 272;
   const padL = 42;
   const padR = 72;
   const padT = 32;
-  const padB = 54;
+  const padB = 60;
   const plotW = width - padL - padR;
   const plotH = height - padT - padB;
   const maxY = 70;
@@ -176,14 +176,14 @@ export function GapClosureChart() {
       {[0, 35, 70].map((v) => (
         <g key={v}>
           <line x1={padL} y1={y(v)} x2={width - padR} y2={y(v)} stroke={GRID} strokeWidth={v === 0 ? 0 : 1} strokeDasharray={v === 0 ? undefined : "2 4"} />
-          <text x={padL - 7} y={y(v) + 3} textAnchor="end" fontFamily={MONO} fontSize={8.5} fill={AXIS}>
+          <text x={padL - 7} y={y(v) + 3} textAnchor="end" fontFamily={MONO} fontSize={10} fill={AXIS}>
             {v}
           </text>
         </g>
       ))}
       {/* target-zero baseline */}
       <line x1={padL} y1={y(0)} x2={width - padR} y2={y(0)} stroke="var(--success)" strokeWidth={1.25} strokeDasharray="5 4" opacity={0.7} />
-      <text x={width - padR + 6} y={y(0) + 3} fontFamily={MONO} fontSize={8.5} fill="var(--success)">
+      <text x={width - padR + 6} y={y(0) + 3} fontFamily={MONO} fontSize={10} fill="var(--success)">
         target 0
       </text>
       {/* area + line */}
@@ -288,13 +288,13 @@ export function GapPerPaperDeltas() {
 export function SkillsGrowthChart() {
   const pts = skillsSeries;
   const width = 640;
-  const height = 230;
+  const height = 278;
   const padL = 42;
   const padR = 20;
   // padT large enough to hold a 2-row stacked legend above the plot
   const padT = 50;
   // padB enlarged to accommodate -45° rotated x-axis labels
-  const padB = 72;
+  const padB = 80;
   const plotW = width - padL - padR;
   const plotH = height - padT - padB;
   // maxY raised to 75 so the highest data value (patterns=64) sits comfortably inside bounds
@@ -334,7 +334,7 @@ export function SkillsGrowthChart() {
       {[0, 25, 50, 75].map((v) => (
         <g key={v}>
           <line x1={padL} y1={y(v)} x2={width - padR} y2={y(v)} stroke={GRID} strokeWidth={1} strokeDasharray="2 4" />
-          <text x={padL - 7} y={y(v) + 3} textAnchor="end" fontFamily={MONO} fontSize={8.5} fill={AXIS}>
+          <text x={padL - 7} y={y(v) + 3} textAnchor="end" fontFamily={MONO} fontSize={10} fill={AXIS}>
             {v}
           </text>
         </g>

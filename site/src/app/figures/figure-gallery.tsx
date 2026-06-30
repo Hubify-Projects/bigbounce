@@ -356,6 +356,28 @@ export function FigureGallery({ sections }: FigureGalleryProps) {
                       className="mt-2 text-sm font-semibold leading-snug"
                       style={{ fontFamily:"var(--font-mono-stack)" }}
                     >
+                      {fig.number.startsWith("Candidate") && (
+                        <span
+                          title="Validated analysis output not yet included in the paper draft."
+                          style={{
+                            display: "inline-block",
+                            marginRight: "6px",
+                            padding: "1px 6px",
+                            borderRadius: "3px",
+                            background: "color-mix(in srgb, var(--warn) 12%, transparent)",
+                            color: "var(--warn)",
+                            border: "1px solid color-mix(in srgb, var(--warn) 30%, transparent)",
+                            fontFamily: "var(--font-mono-stack)",
+                            fontSize: "9px",
+                            fontWeight: 600,
+                            textTransform: "uppercase",
+                            letterSpacing: "0.06em",
+                            verticalAlign: "middle",
+                          }}
+                        >
+                          candidate
+                        </span>
+                      )}
                       {fig.title}
                     </div>
                     <p className="mt-2 text-xs leading-relaxed text-muted-foreground">

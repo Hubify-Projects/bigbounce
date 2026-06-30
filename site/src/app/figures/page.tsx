@@ -48,7 +48,7 @@ function sectionsFromConvex(
             : r.citationLabel
               ? `Figure ${r.ordinal} (${r.citationLabel})`
               : `Figure ${r.ordinal}`,
-          title: isCandidate ? `[candidate] ${r.title}` : r.title,
+          title: r.title,
           desc: r.desc,
           source: `${title.split("—")[0].trim()} · ${isCandidate ? "candidate pool" : r.paperVersion}`,
         };
