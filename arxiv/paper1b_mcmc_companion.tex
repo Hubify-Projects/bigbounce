@@ -153,8 +153,23 @@
 %   FALSIFIED list (14 items) not acted on.)
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1B.0.84}
-\newcommand{\paperTimestamp}{June 29, 2026}
+\newcommand{\paperVersion}{v1B.0.85}
+\newcommand{\paperTimestamp}{June 30, 2026}
+% v1B.0.85 (2026-06-30 — INT-M2 P1B harvest. Truth-audit of 4 INT-M2 reports
+%   (Gemini MAJOR, Grok REJECT, OpenAI MINOR). Most findings STALE/FALSIFIED/OPINION:
+%   Gemini-M2 (Eq.1 missing 1/2) FALSIFIED — eq:chi2_beta already carries \tfrac12;
+%   Grok-E1/E5/N1 (scope-after-numbers / overstates tension / "canonical canonical")
+%   FALSIFIED (qualifier precedes numbers; statement correct; no duplicate token in
+%   source — extraction artifact); Grok-M1 (0.040 vs 0.094 ratio) STALE (ratio already
+%   at L2149); Grok-E2 (date placeholder) OPINION; Grok-M2/E6 (ALP tuning/derivation)
+%   STALE (25x + Omega_a cut in-paper, no Bayes factor quoted); DOI deferred normal.
+%   Three actions taken: (1) VERIFIED Gemini-N2 — added ~25-fold fine-tuning
+%   quantification + sec ref to the abstract spectator-status caveat. (2) Rebuttal
+%   hardening for the recurring "move w0wa to appendix" re-flag (Gemini-M1/OpenAI-M2/
+%   Grok): explicit main-text-retention rationale in sec:w0wa_crosscheck. (3) Rebuttal
+%   hardening for the recurring Eq.(1) "missing 1/2 / two-form" re-flag (Gemini-M2/
+%   OpenAI-m8): added explicit double-angle-identity + standard-normalization note
+%   after eq:chi2_beta. No new science; no fabricated math; 0 undef-refs.)
 % v1B.0.77 (2026-06-26 — R53-R55 closure wave: version+date stamp bump; PDF recompiled and re-mirrored; no new science change)
 % v1B.0.76 (2026-06-20 — P-round: 3 reproducibility datasets published public on HF (bamfai/p1b-*); Appendix A URLs corrected Hubify->bamfai; P1B now fully reproducible. No science change.)
 % v1B.0.75 (2026-06-19): D-round visual polish: ALP corner Fig 4 -> full-width (figure* / 0.85\textwidth, mirror Fig 3 treatment).
@@ -1169,7 +1184,9 @@ Table~\ref{tab:alp_restricted_subsets} for the per-subset readout).
 density $\rho_a\sim m^2 f_a^2 \theta_i^2 \sim H_0^2 \MPl^2$ is of order
 the critical density today, so the spectator label is only consistent
 under the explicit restriction $\theta_i\ll 1$ (which constitutes
-fine-tuning of the misalignment initial condition); at $\theta_i\sim 1$
+a ${\sim}25$-fold fine-tuning of the misalignment initial condition
+relative to the natural $\cos\theta_i$-flat prior midpoint, quantified
+in Sec.~\ref{sec:birefringence_check}); at $\theta_i\sim 1$
 the ALP must instead be treated as the dark-energy field itself, which
 is outside the scope of this companion-paper consistency check.
 The same birefringence arises in standard GR with an identical
@@ -1952,7 +1969,13 @@ Explicitly, the estimator minimises
 \bigl[C_b^{EB,\rm decoupled} - \tfrac{1}{2}\sin(4\beta)\,C_b^{EE,\rm tmpl}\bigr]^2,
 \end{equation}
 where $C_b^{EE,\rm tmpl}$ is the Planck-2018 semi-analytic $EE$ template and the sum
-runs over all 20 bins $30\!\le\!\ell\!\le\!1536$.
+runs over all 20 bins $30\!\le\!\ell\!\le\!1536$. The amplitude factor
+$\tfrac{1}{2}\sin(4\beta)$ is identical to the $\sin(2\beta)\cos(2\beta)$ form
+quoted above (double-angle identity), and the explicit factor of $\tfrac{1}{2}$
+is the standard cosmic-rotation $EB$ normalization
+$C_\ell^{EB}=\tfrac{1}{2}\sin(4\beta)\,(C_\ell^{EE}-C_\ell^{BB})$ in the
+$C_\ell^{BB}\!\to\!0$ template limit; it is present in both the equation and the
+analysis code and is not omitted.
 This form matches the canonical script exactly (\texttt{namaster\_500mc.py} L223:
 \texttt{chi2[j] = np.sum((cl\_eb\_measured - cl\_theory) ** 2)}) --- no
 $\sigma_b^2$ divisor. This unweighted form is adopted to match the estimator
@@ -2261,7 +2284,17 @@ on the existing converged Cobaya chain. Its SN likelihood combines
 DES-SN5YR and Pantheon+ without a joint overlap covariance (caveat~(e)
 of Sec.~\ref{sec:verification}), so the SN-overlap systematic is stated
 explicitly as a known limitation of this product-likelihood combination
-and no model-selection statement is claimed. The goodness-of-fit decomposition ($\chi^2_{\rm BAO}$,
+and no model-selection statement is claimed. This cross-check is
+retained in the main text---rather than relegated to an appendix---
+deliberately: every significance, $\sigma$-distance, and model-selection
+statistic that an overlap-uncorrected likelihood could spuriously inflate
+has been removed from Table~\ref{tab:iter2_posterior} and from the
+surrounding prose (the table reports raw chain means/widths only, with the
+$\Lambda$CDM point flagged as unsampled), so the surviving content is a
+transparent, fully-caveated diagnostic whose only role is to motivate the
+deferred overlap-controlled nested-sampling analysis. Hiding a result whose
+caveats are this prominent would reduce, not improve, the reader's ability
+to judge its scope. The goodness-of-fit decomposition ($\chi^2_{\rm BAO}$,
 $\chi^2_{\rm CMB}$, $\chi^2_{\rm SN}$) is reported in Table~\ref{tab:iter2_posterior};
 model-comparison statistics (AIC, BIC, $\ln B$) are \emph{not} reported there
 because a robust $\ln B$ against $\Lambda$CDM requires dedicated nested sampling

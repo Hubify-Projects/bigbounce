@@ -33,7 +33,17 @@
 % The divide-by-h claim (~1246 h⁻¹ Mpc) is INVERTED. No pipeline recompute required.
 % If any future reviewer re-raises this, cite env_finder/01_compute_vweb.py:106-108.
 
-\newcommand{\paperVersion}{v0.1.94-2026-06-29}
+\newcommand{\paperVersion}{v0.1.95-2026-06-30}
+% v0.1.95-2026-06-30 (INT-M2 closure wave — OpenAI P5-m1 version-history prose
+%   removed from body (2 sites: T-Web/V-Web footnote l.546, DESIVAST counts l.2198);
+%   Gemini-M1 abstract hardened with monopole-subtracted |sigma_vs_monopole|<1.15
+%   summary; Table XIII caption note added (sigma from exact integer counts, preempts
+%   recurring filament/cluster re-flag Gemini-N1/OAI-E2). TRUTH-AUDIT: Gemini-N3
+%   chi^2=3.46 FALSIFIED (exact contingency table recomputes 3.5469=3.55, p=0.3147);
+%   OAI-E1 Clopper-Pearson "1-0.051/6" FALSIFIED char-map artifact (source has
+%   1-0.05^{1/6} correct l.2303); Grok-E3 void-bin MDE FALSIFIED (stated l.580);
+%   Grok-E5 spatial-monopole-map FALSIFIED (NSIDE per-pixel sigma exists l.2783);
+%   Paper IV self-containment STALE-disclosed; 34pp-length OPINION.)
 % v0.1.94-2026-06-29 (Round C FINAL INT closure wave — neutral multi-vendor INT
 %   (Grok/Gemini/OpenAI; Perplexity quota-failed) + Opus end-to-end truth audit.
 %   3 VERIFIED items closed, all corroborated against source; no science change:
@@ -506,7 +516,7 @@
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{June 29, 2026}
+\date{June 30, 2026}
 
 \begin{abstract}
 We cross-match the 8{,}474{,}531-galaxy chirality catalog of Paper~IV
@@ -543,10 +553,10 @@ Poisson's equation on the smoothed overdensity field (the Hahn~2007
 recipe, sometimes called the T-Web variant), classifying by the count
 of eigenvalues exceeding $\lambda_{\rm th}$. The Hoffman~\textit{et~al.}~2012
 \cite{Hoffman2012} velocity-shear V-Web requires a separate velocity
-reconstruction not used here; earlier preprint versions used the
-``V-Web'' label loosely for what is actually the Hahn~2007 tidal-tensor
-T-Web implementation, and this version standardizes on ``T-Web'' for
-accuracy with the recipe actually implemented.} on the full
+reconstruction not used here; we therefore use the Hahn~2007
+tidal-tensor (``T-Web'') classifier throughout and reserve ``V-Web''
+exclusively for the distinct velocity-shear construction, which is not
+employed in this work.} on the full
 $14{,}622{,}283$-galaxy DESI DR1 spectro sample on a $256^3$ comoving
 grid with a $25\,{\rm Mpc}/h$ Gaussian smoothing and eigenvalue
 threshold $\lambda_{\rm th}\!=\!0$. Sample ledger: \emph{two distinct parent populations are used.}
@@ -597,7 +607,12 @@ $0.4836$ (void; $n\!=\!428$, $-0.68\sigma$ — survey-edge
 artifact dominated at $z\!\lesssim\!0.24$, see DESIVAST-anchored
 re-projection below). The quoted $\sigma_{\rm from\,half}$ values
 scale as $\sqrt{n}$ at fixed fractional offset and are therefore not
-mutually comparable across classes of different $n$. The range across
+mutually comparable across classes of different $n$; once the
+catalog-wide classifier monopole is subtracted, the directly
+comparable per-class residuals collapse to
+$|\sigma_{\rm vs\,monopole}| < 1.15$ for all four classes
+(Table~\ref{tab:p4_monopole_residual}), with no environment-dependent
+excess. The range across
 classes is
 $1.98$\,percentage points, an omnibus $4\times2$ homogeneity test
 across the four classes is null ($\chi^2 = 3.55$, 3~d.o.f.,
@@ -2194,9 +2209,8 @@ DR1 BGS void catalog at low $z$, using the sphere-growing VoidFinder
 algorithm and the watershed ZOBOV/V2 algorithm (REVOLVER and VIDE
 prunings) on the volume-limited DR1 Bright Galaxy Survey sample
 restricted to $z \leq 0.24$: 1,489 interior voids with VoidFinder,
-389 with V2-REVOLVER, and 297 with V2-VIDE (final published counts
-from ApJ~982, 38, Table~1; an earlier preprint version cited
-1,461/420/295, which were preliminary values). DESIVAST is a void
+389 with V2-REVOLVER, and 297 with V2-VIDE (published counts
+from ApJ~982, 38, Table~1). DESIVAST is a void
 catalog rather than a full four-class cosmic-web classifier, so the
 DESIVAST-anchored chirality null tests environmental dependence on
 the cleanest available DR1 void definition.
@@ -2754,7 +2768,12 @@ $|\sigma_{\rm vs\ monopole}| < 1.15$ -- no environment dependence
 survives subtraction of the catalog-wide P4-monopole. Unlike the raw
 $\sigma_{\rm from\,half}$ of Table~\ref{tab:cw_vs_env} (which scales
 as $\sqrt{n}$), these monopole-subtracted residuals \emph{are}
-comparable across rows.}
+comparable across rows. The $\sigma_{\rm vs\ monopole}$ entries are
+computed from the exact integer CW/total counts
+(Table~\ref{tab:contingency_classCWCCW}) and the unrounded
+$f_{\rm CW}^{\rm P5} = 0.49719$; re-dividing the four-decimal
+$f_{\rm CW} - f_{\rm CW}^{\rm P5}$ column reproduces them only to
+$\pm 0.05\sigma$ because that column is rounded for display.}
 \label{tab:p4_monopole_residual}
 \begin{ruledtabular}
 \begin{tabular}{lrrr}
