@@ -405,7 +405,10 @@ function openPanel(dataIdx) {
   const cutoutUrl = `https://www.legacysurvey.org/viewer/cutout.jpg?ra=${ra}&dec=${dec}&layer=ls-dr10&pixscale=0.5&size=128`;
 
   document.getElementById('modalTitle').textContent = `Anomaly #${rank}`;
-  document.getElementById('modalImage').src = cutoutUrl;
+  const hfCutout = `https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog/resolve/main/cutouts/ra${ra.toFixed(5)}_dec${dec.toFixed(5)}_s128.jpg`;
+  const _mi = document.getElementById('modalImage');
+  _mi.onerror = function() { this.onerror = null; this.src = cutoutUrl; };
+  _mi.src = hfCutout;
   document.getElementById('modalDetails').innerHTML = `
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px 16px;">
       <div><strong>Score:</strong> ${score}</div>
@@ -546,16 +549,19 @@ function escapeHtml(str) {
 // Legacy Survey cutout API often rate-limits on the first burst when many
 // thumbnails request at once. Retry with backoff before giving up.
 // Without this every cell shows "No img" even though the cutout is fine.
-window.handleThumbError = function(img, url) {
-  const n = parseInt(img.dataset.retry || '0', 10);
-  if (n >= 3) {
-    img.style.display = 'none';
-    img.insertAdjacentHTML('afterend', '<div class="anomaly-thumb-fail">no cutout</div>');
+// Two-stage thumbnail fallback: HuggingFace-hosted cutout (stable, CDN) first;
+// if that 404s (object not yet in the HF cutout set) fall back ONCE to the live
+// Legacy Survey cutout; if that also fails, show a graceful placeholder.
+window.handleThumbError = function(img) {
+  const stage = parseInt(img.dataset.stage || '0', 10);
+  const fallback = img.dataset.fallback;
+  if (stage === 0 && fallback) {
+    img.dataset.stage = '1';
+    img.src = fallback;
     return;
   }
-  img.dataset.retry = String(n + 1);
-  const delay = 800 + n * 1200 + Math.random() * 600;
-  setTimeout(() => { img.src = url + '&_r=' + n; }, delay);
+  img.style.display = 'none';
+  img.insertAdjacentHTML('afterend', '<div class="anomaly-thumb-fail">no cutout</div>');
 };
 
 // Close modal on Escape key
@@ -575,6 +581,9 @@ function renderTable(data) {
     const color = score > 15 ? '#ef4444' : score > 10 ? '#f97316' : score > 7 ? '#eab308' : '#3b82f6';
     const lsUrl = `https://www.legacysurvey.org/viewer?ra=${ra}&dec=${dec}&layer=ls-dr10&zoom=15`;
     const thumbUrl = `https://www.legacysurvey.org/viewer/cutout.jpg?ra=${ra}&dec=${dec}&layer=ls-dr10&pixscale=0.5&size=64`;
+    // HuggingFace-hosted cutout (stable CDN) — keyed by ra/dec to 5dp, matching the
+    // generate_gallery_figures.py cache convention (ra{ra:.5f}_dec{dec:.5f}_s128.jpg).
+    const hfThumbUrl = `https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog/resolve/main/cutouts/ra${ra.toFixed(5)}_dec${dec.toFixed(5)}_s128.jpg`;
     const dataIdx = DATA.indexOf(d);
     return `<tr onclick="openPanel(${dataIdx})">
       <td>${i+1}</td>
@@ -585,7 +594,7 @@ function renderTable(data) {
       <td>${rB}</td>
       <td>${rR}</td>
       <td>${rZ}</td>
-      <td><img class="anomaly-thumb" loading="lazy" decoding="async" referrerpolicy="no-referrer" src="${thumbUrl}" alt="cutout ${ra.toFixed(2)}, ${dec.toFixed(2)}" data-retry="0" onerror="handleThumbError(this, '${thumbUrl}')"></td>
+      <td><img class="anomaly-thumb" loading="lazy" decoding="async" referrerpolicy="no-referrer" src="${hfThumbUrl}" data-fallback="${thumbUrl}" data-stage="0" alt="cutout ${ra.toFixed(2)}, ${dec.toFixed(2)}" onerror="handleThumbError(this)"></td>
       <td><a href="${lsUrl}" target="_blank" class="btn-img btn-ls" onclick="event.stopPropagation()">Full</a></td>
     </tr>`;
   }).join('');
