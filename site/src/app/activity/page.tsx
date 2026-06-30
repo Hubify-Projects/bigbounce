@@ -49,6 +49,22 @@ function clampTimestamp(
   return ms > now + 60_000 ? { ms: now, skewed: true } : { ms, skewed: false };
 }
 
+/** Strip internal "(subagent)" suffix before public display. */
+function publicHeadline(raw: string): string {
+  return raw.replace(/\s*\(subagent\)\s*$/i, "").trim();
+}
+
+/**
+ * Normalize a Convex paperSlug to a human-readable label.
+ * "paper-1a" → "Paper 1A", "paper-2" → "Paper 2", etc.
+ */
+function paperLabel(slug: string): string {
+  return slug.replace(
+    /^paper-(\d+)([a-zA-Z]?)$/,
+    (_, n, l) => `Paper ${n}${l.toUpperCase()}`,
+  );
+}
+
 function kindLabel(kind: string): string {
   switch (kind) {
     case "version_bump": return "VERSION";
@@ -228,7 +244,7 @@ export default async function ActivityPage() {
                     textDecoration: "none",
                   }}
                 >
-                  {e.paperSlug}
+                  {paperLabel(e.paperSlug)}
                 </Link>
               )}
               <span
@@ -255,7 +271,7 @@ export default async function ActivityPage() {
               </span>
             </div>
             <div style={{ fontSize: "0.88rem", marginBottom: 4 }}>
-              {e.headline}
+              {publicHeadline(e.headline)}
             </div>
             {e.detail && (
               <div

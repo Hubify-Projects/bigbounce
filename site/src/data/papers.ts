@@ -85,8 +85,8 @@ export const papers: Paper[] = [
     slug: "paper-1a",
     number: "1A",
     title: "Channel-Level Closure of Four Minimal Einstein–Cartan–Holst Dark-Energy Routes and Perturbation Transparency for Scalar Matter",
-    version: "v1A.0.89",
-    lastUpdated: "2026-06-29",
+    version: "v1A.0.90",
+    lastUpdated: "2026-06-30",
     tldr: "Closes all four minimal Einstein–Cartan–Holst routes from a quantum bounce to dark energy and proves the Holst sector is invisible to scalar/tensor perturbations — leaving two clean observational kill-tests (LiteBIRD birefringence, SPHEREx f_NL).",
     path: publicationPath({
       external: {
@@ -119,10 +119,10 @@ export const papers: Paper[] = [
       "arXiv endorsement + coordinated submission (mints the DOIs/arXiv IDs that clear the last structural reviewer blocker)",
     ],
     preprintId: "HUBIFY-2026-001A",
-    pdfMeta: "PDF · 32 pp · v1A.0.89 · updated Jun 29, 2026 · md5 953c22b7",
+    pdfMeta: "PDF · 32 pp · v1A.0.90 · updated Jun 30, 2026 · md5 46dcb247",
     artifacts: [
-      { label: "Read PDF", href: "/papers/paper1a_ech_nogo_v1A.0.89.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/paper1a_ech_nogo_v1A.0.89.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/paper1a_ech_nogo_v1A.0.90.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/paper1a_ech_nogo_v1A.0.90.pdf", kind: "secondary", download: true },
       {
         label: "LaTeX source",
         href: "https://github.com/Hubify-Projects/bigbounce/blob/main/arxiv/paper1a_ech_nogo.tex",
@@ -140,8 +140,8 @@ export const papers: Paper[] = [
     slug: "paper-1b",
     number: "1B",
     title: "Technical Verification Companion to the ECH Spin-Torsion Program: ΛCDM+ΔN_eff MCMC Proxy, NaMaster Pipeline Recovery, and a Birefringence Consistency Check with a Spectator-ALP Model",
-    version: "v1B.0.84",
-    lastUpdated: "2026-06-29",
+    version: "v1B.0.85",
+    lastUpdated: "2026-06-30",
     tldr: "Technical companion to Paper 1A: a 309K-sample ΛCDM+ΔN_eff MCMC null test (ΔN_eff consistent with zero), a NaMaster pipeline validation on synthetic ΛCDM skies, a DESI DR2 w0wa chain (w_pivot +2.5σ from −1), and a spectator-ALP consistency check against the Planck+ACT β = 0.342° measurement.",
     path: publicationPath({
       external: {
@@ -181,10 +181,10 @@ export const papers: Paper[] = [
       "arXiv endorsement + coordinated submission (mints the DOIs/arXiv IDs that clear the last structural reviewer blocker)",
     ],
     preprintId: "HUBIFY-2026-001B",
-    pdfMeta: "PDF · 23 pp · v1B.0.84 · updated Jun 29, 2026 · md5 de9e8581",
+    pdfMeta: "PDF · 23 pp · v1B.0.85 · updated Jun 30, 2026 · md5 204798b9",
     artifacts: [
-      { label: "Read PDF", href: "/papers/paper1b_mcmc_companion_v1B.0.84.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/paper1b_mcmc_companion_v1B.0.84.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/paper1b_mcmc_companion_v1B.0.85.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/paper1b_mcmc_companion_v1B.0.85.pdf", kind: "secondary", download: true },
       {
         label: "LaTeX source",
         href: "https://github.com/Hubify-Projects/bigbounce/blob/main/arxiv/paper1b_mcmc_companion.tex",
@@ -217,8 +217,8 @@ export const papers: Paper[] = [
     slug: "paper-2",
     number: "2",
     title: "Testing the Matter Bounce with Primordial Non-Gaussianity: A SPHEREx Sensitivity Recast with a MegaMapper Outlook",
-    version: "v1.7.80",
-    lastUpdated: "2026-06-29",
+    version: "v1.7.81",
+    lastUpdated: "2026-06-30",
     tldr: "Shows f_NL = −35/8 is a parameter-free, mechanism-independent prediction of all matter-bounce models, and forecasts SPHEREx will detect or kill it at 4.7–12σ by ~2028 — the decisive bounce-vs-inflation discriminator.",
     path: publicationPath({
       external: {
@@ -260,10 +260,10 @@ export const papers: Paper[] = [
       "arXiv endorsement + coordinated submission (mints the DOIs/arXiv IDs that clear the last structural reviewer blocker)",
     ],
     preprintId: "HUBIFY-2026-002",
-    pdfMeta: "PDF · 29 pp · v1.7.80 · updated Jun 29, 2026 · md5 291b9956",
+    pdfMeta: "PDF · 29 pp · v1.7.81 · updated Jun 30, 2026 · md5 cc3ea260",
     artifacts: [
-      { label: "Read PDF", href: "/papers/paper2_fnl_forecast_v1.7.80.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/paper2_fnl_forecast_v1.7.80.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/paper2_fnl_forecast_v1.7.81.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/paper2_fnl_forecast_v1.7.81.pdf", kind: "secondary", download: true },
       {
         label: "LaTeX source",
         href: "https://github.com/Hubify-Projects/bigbounce/blob/main/research/focused_paper_source_integration/02_full_draft.tex",
@@ -276,8 +276,8 @@ export const papers: Paper[] = [
     slug: "paper-3",
     number: "3",
     title: "Spectrally Unusual Sources at Scale: A Multi-Survey Catalog of 378,280 Path-C Unique Anomalies and a Native-Trained Novelty Fraction from 37.3 Million Sources and Map Patches",
-    version: "v3.1.120",
-    lastUpdated: "2026-06-28",
+    version: "v3.1.121",
+    lastUpdated: "2026-06-30",
     tldr: "A 378,280-object anomaly catalog mined from 37.3M sources across 7 surveys with one autoencoder architecture — 17.8% of top-ranked objects are new to existing catalogs, plus a NANOGrav free-spectrum fit consistent with matter-bounce γ = 3.0.",
     path: publicationPath({
       external: {
@@ -321,10 +321,10 @@ export const papers: Paper[] = [
       "arXiv endorsement + coordinated submission (mints the DOIs/arXiv IDs that clear the last structural reviewer blocker)",
     ],
     preprintId: "HUBIFY-2026-003",
-    pdfMeta: "PDF · 30 pp · v3.1.120 · updated Jun 28, 2026 · md5 f6b8d9a5",
+    pdfMeta: "PDF · 30 pp · v3.1.121 · updated Jun 30, 2026 · md5 e4465bbf",
     artifacts: [
-      { label: "Read PDF", href: "/papers/paper3_draft_v3.1.120.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/paper3_draft_v3.1.120.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/paper3_draft_v3.1.121.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/paper3_draft_v3.1.121.pdf", kind: "secondary", download: true },
       {
         label: "LaTeX source",
         href: "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p3_anomaly_engine/paper3_draft.tex",
@@ -344,8 +344,8 @@ export const papers: Paper[] = [
     slug: "paper-4",
     number: "4",
     title: "Survey-Scale Galaxy Chirality with Equivariant TTA: A Null Real-Space Chirality Dipole, a Quantifiable Monopole-Mask Leakage Channel, and Diagnostic Evidence for a Depth/Morphology-Correlated Canonical-Mask Residual on 8.47 Million DESI Legacy Galaxies (3.2 Million Spirals)",
-    version: "v1.0.198",
-    lastUpdated: "2026-06-29",
+    version: "v1.0.199",
+    lastUpdated: "2026-06-30",
     tldr: "Classifies 8.47M galaxies for spiral handedness with a rotation-equivariant ViT ensemble and finds a null real-space chirality dipole (+0.41σ, rank-p=0.31; A_dip < 6.8×10⁻³ at 95% UL) — the earlier −0.122σ subsample-mask null was withdrawn in v1.0.166 after a provenance audit.",
     path: [
       { label: "Draft complete", state: "done" },
@@ -409,10 +409,10 @@ export const papers: Paper[] = [
       "arXiv endorsement + coordinated submission (mints the DOIs/arXiv IDs that clear the last structural reviewer blocker)",
     ],
     preprintId: "HUBIFY-2026-004",
-    pdfMeta: "PDF · 24 pp · v1.0.198 · updated Jun 29, 2026 · md5 21577dac · 32 MB",
+    pdfMeta: "PDF · 24 pp · v1.0.199 · updated Jun 30, 2026 · md5 28423905 · 32 MB",
     artifacts: [
-      { label: "Read PDF", href: "/papers/chirality_catalog_paper_v1.0.198.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/chirality_catalog_paper_v1.0.198.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/chirality_catalog_paper_v1.0.199.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/chirality_catalog_paper_v1.0.199.pdf", kind: "secondary", download: true },
       {
         label: "LaTeX source",
         href: "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/chirality_catalog_paper.tex",
@@ -433,8 +433,8 @@ export const papers: Paper[] = [
     slug: "paper-5",
     number: "5",
     title: "Environmental Dependence of Spiral Chirality: A DESIVAST Three-Algorithm Test on 56,981 Void Spirals with T-Web (Hahn 2007) Tidal-Tensor Cross-Check Across 791,635 DR1 Matched Spirals",
-    version: "v0.1.94",
-    lastUpdated: "2026-06-29",
+    version: "v0.1.95",
+    lastUpdated: "2026-06-30",
     tldr: "Cross-matches P4's spiral handedness with DESI large-scale structure (791,635 matched spirals + 56,981 void spirals) and finds galaxy chirality is statistically independent of cosmic-web environment — constraining environment-coupled parity models.",
     path: publicationPath({
       external: {
@@ -473,10 +473,10 @@ export const papers: Paper[] = [
       "arXiv endorsement + coordinated submission (mints the DOIs/arXiv IDs that clear the last structural reviewer blocker)",
     ],
     preprintId: "HUBIFY-2026-005",
-    pdfMeta: "PDF · 34 pp · v0.1.94 · updated Jun 29, 2026 · md5 37750382",
+    pdfMeta: "PDF · 34 pp · v0.1.95 · updated Jun 30, 2026 · md5 2e5ebb42",
     artifacts: [
-      { label: "Read PDF", href: "/papers/p5_desi_chirality_v0.1.94.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/p5_desi_chirality_v0.1.94.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/p5_desi_chirality_v0.1.95.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/p5_desi_chirality_v0.1.95.pdf", kind: "secondary", download: true },
       {
         label: "Pipeline + scripts",
         href: "https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p5_desi_chirality",

@@ -50,7 +50,7 @@ export const liveStatus: LiveStatus = {
   lastUpdatedISO: "2026-06-30T12:00:00Z",
   lastUpdatedDisplay: "June 30, 2026 · 12:00 PM PT",
   headline:
-    "Rounds A/B/C complete (Jun 28–30): 3 rigorous INT+EXT passes, 23 real items closed program-wide, final neutral truth-audit returned 0 genuinely-new findings. All 6 papers verified internally honest and materially improved. Readiness 96. Houston sign-off is the final gate.",
+    "Rounds A/B/C + INT-M2 complete (Jun 28–30): 4 rigorous multi-vendor passes, 30 real items closed program-wide (latest INT-M2: 7 closed + rebuttal-hardening on all 6), every round's truth-audit returning 0 genuinely-new MAJORs. All 6 papers verified internally honest and materially improved each round. Readiness 96. Houston sign-off is the final gate.",
   summary:
     "Three back-to-back review rounds (A/B/C, Jun 28–30) on top of a de-biased external validation closed 23 real items across all 6 papers. The final independent neutral truth-audit (Opus, skeptical stance, no convergence hint) found 0 genuinely-new real findings. Remaining external MAJORs are disclosed caveats, submission-time DOI/arXiv blockers, and LLM-referee variance — not quality issues. Next gate: Houston external-review sign-off → arXiv endorsement + coordinated submission (P4 → P1A → P1B → P3 → P2 → P5).",
   currentlyRunning: [

@@ -389,21 +389,26 @@ export function SkillsGrowthChart() {
 
 /* ── Readiness strip: sparse per-paper checkpoints (95-cap rule) ──────── */
 
+// SSOT current readiness: 96 (R-converged post INT-M2, 2026-06-30).
+// reviewTimeline.ts checkpoints trail at EXT22 (98); subsequent Rounds A/B/C
+// confirmed integrity and set the readiness cap to 96 per SSOT + live-status.ts.
+const CURRENT_READINESS = 96;
+
 export function ReadinessStrip() {
   const cps = readinessCheckpoints;
-  const current = cps[cps.length - 1];
+  const last = cps[cps.length - 1];
   return (
-    <div className="readiness-strip" title={current.note}>
-      <span className="readiness-strip-label">readiness (99-cap · awaiting Houston sign-off)</span>
+    <div className="readiness-strip" title={`Current readiness: ${CURRENT_READINESS}% (INT-M2, 2026-06-30)`}>
+      <span className="readiness-strip-label">readiness (96 · awaiting Houston sign-off → arXiv)</span>
       {PAPER_IDS.map((p) => {
-        const v = current.values[p as PaperId];
         const trail = cps
           .filter((c) => typeof c.values[p as PaperId] === "number")
           .map((c) => `${c.id} ${c.values[p as PaperId]}%`)
           .join(" → ");
+        void last;
         return (
-          <span key={p} className="readiness-chip" title={`${p}: ${trail}`}>
-            <span className="gap-delta-paper">{p}</span> {v}%
+          <span key={p} className="readiness-chip" title={`${p}: ${trail} → INT-M2 ${CURRENT_READINESS}%`}>
+            <span className="gap-delta-paper">{p}</span> {CURRENT_READINESS}%
           </span>
         );
       })}

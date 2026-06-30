@@ -206,9 +206,9 @@ export default async function StatusPage() {
           </Table>
           </div>
           <p className="text-xs text-muted-foreground">
-            EXT17 complete — 18/18 ACCEPT. All papers at 99% readiness (hard cap).
-            The final 1% is never awarded automatically — only by author sign-off
-            (ORCID public + coordinated arXiv drop authorization).
+            20+ internal+external rounds complete (latest INT-M2, 2026-06-30); MINOR-dominant
+            external profile with occasional ACCEPTs and 0 genuinely-new findings on truth-audit;
+            all 6 papers at readiness 96; final gate = author sign-off → coordinated arXiv submission.
           </p>
         </CardContent>
       </Card>
