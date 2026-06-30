@@ -67,8 +67,9 @@ export function VerdictTrajectory() {
             {round.roundId}
           </text>
           {round.windowPT ? (
-            <text x={groupX(gi) + groupW / 2} y={22} textAnchor="middle" fontFamily={MONO} fontSize={6.5} fill={AXIS}>
-              {round.windowPT}
+            <text x={groupX(gi) + groupW / 2} y={23} textAnchor="middle" fontFamily={MONO} fontSize={8} fill={AXIS}>
+              {round.windowPT.split("·")[0].trim()}
+              <title>{round.windowPT}</title>
             </text>
           ) : null}
           {REVIEWERS.map((rv, ri) => (
@@ -201,15 +202,17 @@ export function GapClosureChart() {
               opacity={0.45}
             />
             <text
-              x={x(i) - 4}
-              y={padT - 5}
-              textAnchor="end"
+              x={x(i)}
+              y={padT - 4}
+              textAnchor="middle"
               fontFamily={MONO}
-              fontSize={7}
+              fontSize={11}
               fill="var(--success)"
-              opacity={0.9}
+              opacity={0.95}
+              style={{ cursor: "default" }}
             >
-              ⚑ {p.milestone}
+              ⚑
+              <title>{`${p.roundId} — ${p.milestone}`}</title>
             </text>
           </g>
         ) : null
@@ -238,7 +241,7 @@ export function GapClosureChart() {
             </text>
             {/* tick mark */}
             <line x1={cx} y1={xAxisY} x2={cx} y2={xAxisY + 3} stroke={AXIS} strokeWidth={0.75} />
-            {/* rotated round label — reads left-to-right when tilted 45° */}
+            {/* rotated round label + date stamp — reads left-to-right when tilted 45° */}
             <text
               x={cx}
               y={labelY}
@@ -249,6 +252,7 @@ export function GapClosureChart() {
               transform={`rotate(-45, ${cx}, ${labelY})`}
             >
               {p.roundId}
+              <tspan fill={AXIS} opacity={0.7}> · {p.dateISO.slice(5)}</tspan>
             </text>
           </g>
         );
@@ -310,9 +314,19 @@ export function SkillsGrowthChart() {
   const patternPath = step(pts.map((p) => p.patterns));
   const rulesPath = step(pts.map((p) => p.promptRules));
 
-  // Shorten long id strings for the x-axis label
-  const shortId = (id: string) =>
-    id.replace("-gapmine", "").replace("-mine", "").replace("-learning-loop", "");
+  // Shorten long id strings for the x-axis label: take the part before "·"/"(",
+  // strip date suffixes + verbose tags, cap length so rotated labels don't clip.
+  const shortId = (id: string) => {
+    const base = id
+      .split(/[·(]/)[0]
+      .trim()
+      .replace("-gapmine", "")
+      .replace("-mine", "")
+      .replace("-learning-loop", "")
+      .replace(/-?2026-\d\d-\d\d/g, "")
+      .replace(/-+$/, "");
+    return base.length > 15 ? base.slice(0, 14) + "…" : base;
+  };
 
   return (
     <svg viewBox={`0 0 ${width} ${height}`} role="img" aria-label="Skills-stack growth: review patterns and reviewer-prompt rules per round" className="progress-svg">
