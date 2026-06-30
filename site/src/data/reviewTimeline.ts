@@ -46,6 +46,23 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "DRIVE-TO-ACCEPT-2026-06-30",
+    kind: "closure-wave",
+    dateISO: "2026-06-30",
+    title: "Drive-to-ACCEPT round (2026-06-30): 6 papers substantively restructured around real external MAJORs — readiness gated honestly on external verdicts (86–89)",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary: "Drive-to-ACCEPT round (2026-06-30): 6 papers substantively restructured around the real external MAJORs — not dismissed. P1A removed companion numbers from abstract; P1B relocated w0wa to Appendix A; P2 scope-banner; P3 three-tier validation block; P4 estimator decision-tree; P5 Paper-IV self-containment appendix. Readiness gated honestly on external verdicts (86–89). New compute flagged per paper (MCMC control chains, GZ1 retrain, dedup artifacts) as the next research to run.",
+    keyTakeaways: [
+      "Readiness now reflects external acceptance, not internal opinion — gated at 86–89 based on real EXT verdict landscape",
+      "Reviewers' actual asks fixed substantively, not dismissed: each paper restructured around its dominant MAJOR concern",
+      "New compute requirements (MCMC control chains, GZ1 retrain, dedup artifacts) flagged per paper as the concrete next research step",
+      "6 papers updated in one bundle: P1A (abstract), P1B (Appendix A w0wa), P2 (scope-banner), P3 (validation block), P4 (decision-tree), P5 (self-containment appendix)",
+    ],
+    links: [
+      { label: "peer-reviews/", href: `${PR}` },
+    ],
+  },
+  {
     id: "INT-M2-2026-06-30",
     kind: "internal-api",
     dateISO: "2026-06-30",
