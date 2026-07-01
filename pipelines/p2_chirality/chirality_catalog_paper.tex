@@ -52,7 +52,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.207}
+\newcommand{\paperVersion}{v1.0.208}
 % v1.0.207 (2026-07-01 — EXT round RS10 closure: Gemini re-flagged App-B Table 5 (tab:bias_tests)
 %   T5 linear-Pearson-vs-raw-RA as a genuine statistical bug (Pearson inappropriate for a CIRCULAR
 %   coordinate, 0deg=360deg). v206 only footnoted it; RS10 fix REMOVES the linear-Pearson T5 row and
@@ -1160,7 +1160,7 @@ $z$ vs.\ $A_{\rm ref}=0.034$ & \multicolumn{3}{r}{$-18.1$ (block-boot., primary)
 \end{figure}
 
 \paragraph{WLS mask-equivalence audit.}
-The block-bootstrap WLS fit uses the same canonical mask as the NaMaster pseudo-$C_\ell$ analysis; Table~\ref{tab:wls_mask_equiv} audits that equivalence explicitly. The canonical-mask SHA256 prefix and the WLS-artifact mask prefix are computed from the committed mask binary (\artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/canonical\_mask\_nside64.npy}) and from the pixel list stored in the WLS design-matrix artifact (\artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/c12b\_wls\_conditioning.json}), respectively; pixel-count and in-mask spiral-count matches confirm the two analysis branches operate on an identical footprint.
+The block-bootstrap WLS fit uses the same canonical mask as the NaMaster pseudo-$C_\ell$ analysis; Table~\ref{tab:wls_mask_equiv} audits that equivalence explicitly. The canonical-mask SHA256 prefix and the WLS-artifact mask prefix are computed from the canonical mask binary (\texttt{canonical\_mask\_nside64.npy}) and from the pixel list stored in the WLS design-matrix artifact (\artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/c12b\_wls\_conditioning.json}), respectively; pixel-count and in-mask spiral-count matches confirm the two analysis branches operate on an identical footprint.
 
 \begin{table}[h]
 \caption{WLS mask-equivalence audit: canonical-mask (NaMaster) vs.\ WLS-artifact mask. SHA256 prefixes computed from committed artifacts: \texttt{canonical\_mask\_nside64.npy} and \artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/c12b\_wls\_conditioning.json}.\label{tab:wls_mask_equiv}}
