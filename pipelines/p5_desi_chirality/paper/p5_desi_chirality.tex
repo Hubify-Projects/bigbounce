@@ -33,7 +33,29 @@
 % The divide-by-h claim (~1246 h⁻¹ Mpc) is INVERTED. No pipeline recompute required.
 % If any future reviewer re-raises this, cite env_finder/01_compute_vweb.py:106-108.
 
-\newcommand{\paperVersion}{v0.1.97-2026-06-30}
+\newcommand{\paperVersion}{v0.1.98-2026-06-30}
+% v0.1.98-2026-06-30 (RP5-INT-v97 harvest — fresh 3-vendor INT (Grok-4.3,
+%   Gemini-2.5-pro, GPT-5) on v0.1.97; all three MAJOR-REVISIONS with the
+%   Paper-IV-in-prep item as the sole ESSENTIAL structural residual (coordinated
+%   submission; appendix is the in-paper mitigation). Substantive closures, all
+%   verified against source (no fabrication):
+%   (1) GPT-M9 (real): abstract Phase-2 p-range 0.13-0.56 spanned all 9 cells incl.
+%     grid-unresolved R_s=10; now states resolved-only 0.13-0.48 (matches body
+%     l.2032) + "excluded from robustness claim" wording.
+%   (2) Gemini-E1 + GPT-E4 (structural mitigation): App A opening now LEADS with the
+%     degree-of-dependence bound — headline Df_CW contrast is algebraically monopole-
+%     invariant (cancels in the two-sample difference), so it depends on Paper IV
+%     LABELS not the monopole AMPLITUDE; monopole enters only sigma_pred (8% spread
+%     propagated, verdicts unchanged) and is independently re-measured here
+%     (f_CW^P5=0.49719); labels+weights already public CC-BY-4.0, inspectable now.
+%   (3) GPT-M4 (real): accuracy-floor para now states 69.91% is spiral-vs-spiral
+%     (CW/CCW) only, NS excluded from both the test and the present analysis —
+%     like-for-like bound on the labels actually consumed.
+%   Numbers truth-audited vs source: 0.497353(279), 69.91%, 0.49719, Df_CW=-0.0026
+%     all match .tex; no Gemini char-map artifact present this round.
+%   Residual structural: Paper IV arXiv/DOI (coordinated submission) — NOT closable
+%   in-paper; appendix hardened as the maximally-convincing mitigation.)
+% v0.1.97-2026-06-30 (RCEXT ChatGPT B3 headline + M6 superlative framing closed.)
 % v0.1.96-2026-06-30 (RCEXT closure wave — drive P5 to 3/3 external ACCEPT.
 %   SUBSTANTIVE self-containment fix for the single converged blocker flagged by
 %   ChatGPT-RCEXT MAJOR, Gemini-cosmology P5-E1 ESSENTIAL, Grok-brutal P5-E2
@@ -658,13 +680,16 @@ across nine cells $\{R_s,\lambda_{\rm th}\} \in \{10, 25,
 per-cell cross-class range of CW fractions ($1.7$--$4.1$\,percentage
 points) is dominated by the counting noise of the small void bin
 ($n = 363$--$853$ per cell), the per-cell label-shuffle look-elsewhere
-$p$-values span $0.13$--$0.56$ (no cell below $0.05$), and the
+$p$-values span $0.13$--$0.56$ across all nine cells (no cell below
+$0.05$; $0.13$--$0.48$ restricted to the six grid-resolved cells that
+enter the robustness claim), and the
 headline sign-pattern
 (filament and cluster at the catalog-mean offset, void and wall
 uninformative at $|\sigma| \lesssim 3$) is invariant under the
 smoothing scale and threshold choices (the $R_s = 10\,{\rm Mpc}/h$
 cells sit below the $25.9\,{\rm Mpc}/h$ grid resolution and are
-retained only as a degenerate near-unsmoothed limit, \S\ref{sec:phase2}). We also report null tests in
+excluded from the robustness claim, retained only as a degenerate
+near-unsmoothed limit, \S\ref{sec:phase2}). We also report null tests in
 redshift (label-shuffle $p\!=\!0.372$), projected $k\!=\!5$ NN density
 ($|\sigma|_{\max}\!=\!3.94$ across density quintiles, pre-monopole-
 subtraction; the corresponding monopole-subtracted residual is
@@ -3743,13 +3768,31 @@ Appendix~\ref{app:toy_eft} as a guide for future model-building
 This paper consumes two inputs from the companion Paper~IV
 \cite{golden_chirality_2026}: the per-galaxy \texttt{class\_eq} CW/CCW
 labels and the single catalog-wide CW-fraction monopole scalar
-$\Delta f_{\rm CW}^{\rm P4}=-0.0026$ (\S\ref{sec:p4}). Because Paper~IV
+$\Delta f_{\rm CW}^{\rm P4}=-0.0026$ (\S\ref{sec:p4}). We stress at the
+outset the \emph{degree} of that dependence, because it bounds how much
+the present conclusions can be affected by the in-preparation status of
+Paper~IV. The headline environmental result --- the void-vs-non-void
+$\Delta f_{\rm CW}$ two-sample contrast --- is \emph{algebraically
+invariant} under any catalog-wide monopole shift (\S\ref{sec:p4}): it
+cancels in the difference and therefore does not depend on the Paper~IV
+monopole \emph{amplitude} at all, only on the per-galaxy CW/CCW
+\emph{labels}. The monopole scalar enters solely the $\sigma_{\rm pred}$
+diagnostics, where its $8\%$ Paper-IV/present-paper spread is propagated
+and is shown below to leave every verdict unchanged; and the present
+paper independently re-measures the monopole within its own matched
+sample ($f_{\rm CW}^{\rm P5}=0.49719$), so even that scalar is
+corroborated here without relying on the Paper~IV number. The remaining
+dependence is thus on the label \emph{quality}, whose equivariance,
+accuracy floor, and systematic origin we quantify below in full.
+Because Paper~IV
 is in preparation at the time of writing, we reproduce here the
 methodological facts a referee needs to assess the quality of those
 labels, the origin of the monopole, and the classifier's parity
 (CW/CCW) equivariance, so that the present manuscript can be evaluated
 without the Paper~IV text in hand. All values are sourced from the
-Paper~IV manuscript and its public artifacts and are quoted, not
+Paper~IV manuscript and its public artifacts (the released catalog and
+trained weights are already public under CC-BY-4.0, so the label inputs
+are independently inspectable now) and are quoted, not
 re-derived, here.
 
 \textbf{Architecture.} The classifier is a flip-equivariant
@@ -3792,7 +3835,12 @@ flag exposed.
 labels on a $234{,}282$-galaxy cross-match, the production classifier
 attains $69.91\%$ binary CW-vs-CCW spiral accuracy with Cohen's
 $\kappa=0.40$ (three-class CW/CCW/NS accuracy $58.7\%$); Paper~IV quotes
-this as a conservative accuracy floor, and the corresponding label
+this as a conservative accuracy floor. This binary figure is evaluated
+on the spiral-vs-spiral (CW/CCW) subset only --- the non-spiral (NS)
+class is excluded from both the accuracy test and the present
+environmental analysis, which uses exclusively the equivariant CW/CCW
+\texttt{class\_eq} labels --- so the floor is a like-for-like bound on
+the labels this paper actually consumes. The corresponding label
 dilution is folded into the injection-recovery sensitivity floors used
 when interpreting the present null.
 
