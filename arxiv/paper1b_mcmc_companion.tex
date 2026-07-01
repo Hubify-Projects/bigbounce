@@ -191,7 +191,7 @@
 %   FALSIFIED list (14 items) not acted on.)
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1B.0.91}
+\newcommand{\paperVersion}{v1B.0.92}
 \newcommand{\paperTimestamp}{July 1, 2026}
 % v1B.0.86 (2026-06-30 — RCEXT-P1B substantive closure. (1) w0wa DEMOTED:
 %   Table II (tab:iter2_posterior) + physics-interpretation + caveats(a-e) +
@@ -1250,11 +1250,11 @@ parameters from their stated priors, propagating each draw through the
 committed equation of motion with \emph{no} likelihood weighting, and counting
 the fraction that lands within the Eskilt et al.\ band
 ($\beta_{\rm obs}=0.342^\circ\pm0.094^\circ$; artifact
-\artifact{reproducibility/cosmology/alp_prior_predictive.py}, $N=3{,}000$ draws
+\artifact{reproducibility/cosmology/alp_prior_predictive.py}, $N=100{,}000$ draws
 per configuration). At the posterior-supported fixed coupling $C_{a\gamma}=8$,
-$11.9\%$ of prior draws fall within $1\sigma$ of $\beta_{\rm obs}$ ($24.6\%$
+$11.6\%$ of prior draws fall within $1\sigma$ of $\beta_{\rm obs}$ ($23.9\%$
 within $2\sigma$); under the broader continuous-coupling prior
-$C_{a\gamma}\sim\mathcal{U}[4,60]$ these drop to $5.4\%$ and $12.0\%$. This
+$C_{a\gamma}\sim\mathcal{U}[4,60]$ these drop to $6.1\%$ and $12.6\%$. This
 \emph{moderate} fraction cuts against the tautology framing in both directions:
 a genuinely tautological accommodation --- one that could reproduce \emph{any}
 target $\beta$ --- would give an order-unity fraction, whereas a knife-edge
@@ -2795,7 +2795,7 @@ signal would be detected relative to $\beta=0$ at ${\sim}9\sigma$ by
 LiteBIRD in the early 2030s.
 
 \textit{$w_0 w_a$ cross-check (exploratory; Appendix~\ref{app:w0wa}).}---An
-exploratory DESI~DR2 + Planck~NPIPE + Pantheon+~\cite{Brout2022PantheonPlus} + DES-SN5YR~\cite{DES2024SN5YR} Cobaya chain with the $w_0 w_a$ free-parameter extension ($128{,}385$ accepted samples across 16 MPI chains; $\hat R - 1 = 0.00820$) was run; its overlap-uncorrected posteriors (Table~\ref{tab:iter2_posterior}) are reported only in Appendix~\ref{app:w0wa} as a non-load-bearing exploratory diagnostic. Because the SN likelihood combines DES-Y5 and Pantheon$+$ as a product without a joint cross-covariance despite their ${\sim}20\%$ shared events, no $\sigma$-distance, significance, directional robustness, or model-selection statement is claimed from this chain; the required overlap-controlled control chains are deferred to a dedicated follow-up.
+exploratory DESI~DR2 + Planck~NPIPE + Pantheon+~\cite{Brout2022PantheonPlus} + DES-SN5YR~\cite{DES2024SN5YR} Cobaya chain with the $w_0 w_a$ free-parameter extension ($128{,}385$ accepted samples across 16 MPI chains; $\hat R - 1 = 0.00820$) was run; its overlap-uncorrected posteriors (Table~\ref{tab:iter2_posterior}) are reported only in Appendix~\ref{app:w0wa} as a non-load-bearing exploratory diagnostic. Because the SN likelihood combines DES-Y5 and Pantheon$+$ as a product without a joint cross-covariance despite their ${\sim}20\%$ shared events (disclosed as caveat~(e) of Sec.~\ref{sec:verification}), no $\sigma$-distance, significance, or model-selection statement is claimed from this headline chain. The one property of this chain that \emph{is} tested against the overlap systematic is the \emph{sign} of the quintom-B direction: two disjoint-sample overlap-controlled control chains (Pantheon$+$-only and DES-SN5YR-only, each dropping the other, overlapping supernova sample) have now been run (Appendix~\ref{app:w0wa}) and recover the same phantom-divide crossing ($w_0>-1$, $w_0+w_a<-1$) in \emph{both} independent samples ($w_0+w_a=-1.40$ and $-1.57$), demonstrating that the directional finding is robust to the double-counting rather than an artifact of the uncorrected joint covariance; a fully joint-covariance / nested-sampling significance remains a dedicated follow-up.
 The iter2 chain uses \texttt{planck\_2018\_lensing.native} in place of \texttt{planck\_2018\_lensing.clik} (Table~\ref{tab:chain_datasets}); a dedicated release-pairing swap test to assess the impact of this lensing likelihood substitution on the $w_0 w_a$ posteriors has not been performed and is left to a post-submission follow-up.
 
 \subsection*{Data and Code Availability}
@@ -2872,8 +2872,10 @@ $\sigma$-distance, significance, directional robustness, or model-selection
 statistic is quotable from it. Nothing in the main body depends on any number
 in this appendix. \textbf{The $w_0,w_a$ values reported below are diagnostic
 raw chain readouts only and must not be used for quantitative inference or
-cosmological constraint;} the overlap-controlled control chains needed to make
-any inferential statement (specified below) are in progress.
+cosmological constraint;} the overlap-controlled control chains needed to test
+the \emph{directional} robustness of this diagnostic (specified below) have now
+been run, and confirm the quintom-B direction survives in both disjoint
+supernova samples.
 
 \subsection*{Scope, framing, and deferred control chains}\label{sec:w0wa_crosscheck}
 
