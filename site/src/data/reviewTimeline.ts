@@ -46,6 +46,24 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "RS6-2026-07-01",
+    kind: "external-browser",
+    dateISO: "2026-07-01",
+    title: "EXT RS6 — re-sweep of the closure PDFs: signposting measurably moved the verdicts",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary:
+      "Re-sweep of the RS5 closure-wave PDFs (12/18 harvested; all 6 Gemini FAILED on a conversation-panel rendering bug — honest FAILED, no fabrication). Real RS5->RS6 movement: BOTH ChatGPT REJECTs lifted (P1A + P3 reject -> major-revisions) and MAJOR counts dropped across the board (P1B 9->6 & 4->2, P4 7->5, P5 6->4 & Grok 1->0, P1A 3->2). Zero papers regressed. P4 + P5 held near-accept (Grok MINOR, 0 MAJOR). No full ACCEPT yet — ChatGPT remains the harsh-outlier major-revisions floor. Two genuinely-NEW P4 findings surfaced (joint confidence/depth/morphology systematics marginalization; explicit peq>0.6 purity-completeness pre-registration) — real, being addressed. Empirical proof pattern-069 signposting reduces re-flags.",
+    keyTakeaways: [
+      "Both ChatGPT rejects lifted to major-revisions — the referee-orientation signposting worked.",
+      "MAJOR counts fell on every re-reviewed paper; nothing regressed.",
+      "P4/P5 held near-accept (Grok 0 MAJOR) — closest to flipping.",
+      "Gemini legs failed on a browser rendering bug — fix next round by harvesting on the submit page without navigating away.",
+    ],
+    links: [
+      { label: "pattern-069 (signpost)", href: `${GH}/project-context/review-patterns/pattern-069-signpost-resolved-concerns.md` },
+    ],
+  },
+  {
     id: "RS5-2026-07-01",
     kind: "external-browser",
     dateISO: "2026-07-01",
@@ -2580,6 +2598,20 @@ export const externalVerdictRounds: ExternalRoundVerdicts[] = [
       P5: ["MAJOR", "MINOR", "MAJOR"],
     },
     note: "RS5 de-biased sweep: ChatGPT the harsh outlier (REJECTed P1A+P3, 6-9 MAJOR/paper); Grok+Gemini moderate (P4/P5 near-accept, 0-1 MAJOR). 73 raw MAJORs across 18 legs. Source-cited truth-audit: only ~4 genuinely-new (P1B w0wa caveat, P4 WLS+argmax, P3 tier-1 wording); the rest ALREADY-ADDRESSED re-flags, now signposted (pattern-069). Pre-closure baseline — RS6 re-sweep measures whether the closures move verdicts. Cross-vendor agreement (pattern-070) = the real-signal filter.",
+  },
+  {
+    roundId: "RS6",
+    dateISO: "2026-07-01",
+    windowPT: "Jul 1 · RS6 re-sweep of the closure PDFs (Gemini failed on browser bug)",
+    verdicts: {
+      P1A: ["MAJOR", "MAJOR", "NO_VERDICT"],
+      P1B: ["MAJOR", "MAJOR", "NO_VERDICT"],
+      P2: ["MAJOR", "MAJOR", "NO_VERDICT"],
+      P3: ["MAJOR", "MAJOR", "NO_VERDICT"],
+      P4: ["MAJOR", "MINOR", "NO_VERDICT"],
+      P5: ["MAJOR", "MINOR", "NO_VERDICT"],
+    },
+    note: "RS6 re-sweep of the RS5 closure PDFs: signposting WORKED. Both ChatGPT REJECTs lifted (P1A+P3 reject->major-rev); MAJOR counts down across the board (P1B 9->6 & 4->2, P4 7->5, P5 6->4 & Grok 1->0, P1A 3->2); zero regressions. P4/P5 held near-accept (Grok 0 MAJOR). No full ACCEPT yet — ChatGPT harsh-outlier major-rev floor persists. All 6 Gemini legs FAILED (conversation-panel rendering bug, not a verdict). 2 genuinely-new P4 findings surfaced + being addressed.",
   },
 ];
 
