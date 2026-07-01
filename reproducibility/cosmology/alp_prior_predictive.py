@@ -110,21 +110,23 @@ LOG10M_LO, LOG10M_HI = -35.0, -30.0
 CAG_LO, CAG_HI = 4.0, 60.0
 
 
-def _eval_one(args):
-    """Worker: one (theta_i, log10m, C_agamma) -> beta_deg (NaN on failure)."""
-    ti, lm, cag = args
+def _eval_star(args):
+    """Picklable worker for ProcessPoolExecutor: (theta_i, log10m, C) -> beta."""
+    ti, lm, cg = args
     try:
-        return compute_alp_birefringence(ti, lm, C_agamma=cag)["beta_deg"]
+        return beta_deg_fast(ti, lm, cg)
     except Exception:
         return np.nan
 
 
-def prior_predictive(n_draws, sample_coupling, seed=1234, nproc=None):
+def prior_predictive(n_draws, sample_coupling, seed=1234):
     """Monte-Carlo the STATED priors through the committed beta() forward model.
 
     sample_coupling=True  -> c5_continuous headline config (C_agamma~U[4,60]).
     sample_coupling=False -> run1_full fixed-coupling config (C_agamma=8).
-    Returns dict of summary statistics + the raw beta array.
+    Uses beta_deg_fast (verified equivalent to the committed integrator). Runs
+    serially -- deterministic, no multiprocessing to be reaped mid-run.
+    Returns dict of summary statistics.
     """
     rng = np.random.default_rng(seed)
     theta_i = rng.uniform(THETA_I_LO, THETA_I_HI, n_draws)
@@ -134,15 +136,20 @@ def prior_predictive(n_draws, sample_coupling, seed=1234, nproc=None):
     else:
         c_ag = np.full(n_draws, 8.0)
 
-    tasks = list(zip(theta_i.tolist(), log10m.tolist(), c_ag.tolist()))
-    if nproc is None:
-        nproc = max(1, (os.cpu_count() or 2) - 1)
+    nproc = int(os.environ.get("ALP_NPROC", "1"))
     if nproc > 1:
-        from multiprocessing import Pool
-        with Pool(nproc) as pool:
-            beta = np.array(pool.map(_eval_one, tasks, chunksize=200))
+        from concurrent.futures import ProcessPoolExecutor
+        tasks = list(zip(theta_i.tolist(), log10m.tolist(), c_ag.tolist()))
+        with ProcessPoolExecutor(max_workers=nproc) as ex:
+            beta = np.array(list(ex.map(_eval_star, tasks, chunksize=100)))
     else:
-        beta = np.array([_eval_one(t) for t in tasks])
+        beta = np.empty(n_draws)
+        for i in range(n_draws):
+            try:
+                beta[i] = beta_deg_fast(float(theta_i[i]), float(log10m[i]),
+                                        float(c_ag[i]))
+            except Exception:
+                beta[i] = np.nan
     failed = int(np.sum(~np.isfinite(beta)))
 
     ok = np.isfinite(beta)
@@ -181,10 +188,18 @@ def prior_predictive(n_draws, sample_coupling, seed=1234, nproc=None):
 def main():
     n = int(sys.argv[1]) if len(sys.argv) > 1 else 100_000
     print(f"# Prior-predictive ALP birefringence check  (N={n:,} draws each)\n")
+    worst = verify_equivalence(40)
+    print(f"# integrator-equivalence check: max |beta_fast - beta_committed| "
+          f"= {worst:.2e} deg  (<< sigma_beta={SIGMA_BETA})\n")
+    out = os.path.join(_HERE, "alp_prior_predictive_result.json")
     results = []
     for sample_coupling in (True, False):
         res = prior_predictive(n, sample_coupling)
+        res["integrator_equiv_max_deg"] = float(worst)
         results.append(res)
+        # write incrementally so a partial run still leaves a usable artifact
+        with open(out, "w") as f:
+            json.dump(results, f, indent=2)
         print(f"## {res['config']}")
         print(f"  draws                : {res['n_draws']:,}  (failed: {res['n_failed']})")
         print(f"  beta_obs             : {res['beta_obs_deg']} +/- {res['sigma_beta_deg']} deg")
@@ -197,9 +212,6 @@ def main():
         print(f"  frac |beta| > obs    : {res['frac_absbeta_exceeds_obs']*100:.2f}%")
         print()
 
-    out = os.path.join(_HERE, "alp_prior_predictive_result.json")
-    with open(out, "w") as f:
-        json.dump(results, f, indent=2)
     print(f"# wrote {out}")
 
 

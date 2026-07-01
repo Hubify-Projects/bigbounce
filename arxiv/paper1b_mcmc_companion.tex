@@ -191,7 +191,7 @@
 %   FALSIFIED list (14 items) not acted on.)
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1B.0.92}
+\newcommand{\paperVersion}{v1B.0.93}
 \newcommand{\paperTimestamp}{July 1, 2026}
 % v1B.0.86 (2026-06-30 — RCEXT-P1B substantive closure. (1) w0wa DEMOTED:
 %   Table II (tab:iter2_posterior) + physics-interpretation + caveats(a-e) +
@@ -1204,10 +1204,9 @@ independent evidence for (or verification of) the spin-torsion theory.
 Three analyses are documented.
 \emph{(1)~Stock-CAMB $\Lambda$CDM$+\Delta\Neff$ MCMC proxy}
 (Cobaya~v3.6.1, $\mathbf{309{,}189}$ frozen samples across two converged dataset combinations): this
-run uses stock CAMB with $\Delta\Neff$ as a free parameter and carries
-\emph{no torsion modifications to the Boltzmann equations}; it is reported as
-a null-consistency test of an extra radiation-like degree of freedom, not as
-evidence for or against the ECH spin-torsion framework. Both frozen dataset
+run uses stock CAMB with $\Delta\Neff$ as a free parameter (consistent with
+the scope stated above --- a null-consistency test of an extra radiation-like
+degree of freedom). Both frozen dataset
 combinations find $\Delta\Neff$ consistent with zero ($-0.020\pm 0.169$
 full-tension; $+0.058\pm 0.179$ Planck+BAO+SN) and $H_0$ consistent with
 the standard Planck-$\Lambda$CDM value ($67.68\pm 1.06$ full-tension;
@@ -1590,8 +1589,8 @@ on the non-negative half and 95th percentile read from the truncated CDF), the o
 \textbf{Extraction note:} the numerical values in this table are read from
 \texttt{parameter\_summary\_CORRECTED.json}; the legacy
 \texttt{parameter\_summary.json} export carried an off-by-one column-index
-bug and must not be used (see the Column-permutation warning in
-Appendix~\ref{app:reproducibility}).
+bug and has been deleted from the public repository (see the
+Column-permutation warning in Appendix~\ref{app:reproducibility}).
 $S_8 \equiv \sigma_8\,(\Omega_m/0.3)^{1/2}$, computed as a Cobaya derived
 parameter with exactly this definition. The full-tension column includes
 the DES-Y3 $S_8$ Gaussian prior $0.776 \pm 0.017$
@@ -1762,7 +1761,7 @@ the original canonical $f_{\rm sky}=0.32$ artifact, so that point is plotted
 with the mean only; a dedicated 500-MC rerun
 (fn.~\ref{fn:snr_definition}) measures $\sigma_\beta = 0.046^\circ$ at this
 point. The worst-case $|{\rm bias}| = 0.040^\circ\pm 0.002^\circ$ (SE of 500-MC mean; $\sigma_\beta=0.046^\circ$ at $f_{\rm sky}=0.32$; \texttt{namaster\_500mc.py}) is carried forward as the
-observed NaMaster pipeline bias (deconvolution-algebra bias on foreground-free skies; not a real-sky bias bound; Sec.~\ref{sec:data_cmb}). Underlying data
+observed NaMaster pipeline bias (deconvolution-algebra bias on foreground-free skies; \emph{estimator-specific} --- this figure is tied to the unweighted $\chi^2$ template fit chosen to match published scripts, and the inverse-variance-weighted estimator removes ${\approx}80\%$ of it (Sec.~\ref{sec:data_cmb}); it is \emph{not} a real-sky systematics bound, which additionally requires foreground cleaning and breaking of the $\beta$--$\alpha$ degeneracy by unrotated galactic foregrounds). Underlying data
 artifacts are listed in the \emph{Reproducibility} paragraph of
 Sec.~\ref{sec:data_cmb}.\label{fig:namaster_recovery}}
 \end{figure*}
@@ -2520,7 +2519,12 @@ below; computed under the small-angle quadratic approximation, valid for $\theta
 the leading anharmonic correction is $\mathcal{O}(\theta_i^2/12)$, i.e.\
 $\lesssim 8\%$ at $\theta_i\sim 1$ and $\lesssim 1\%$ over the posterior-supported
 $\Omega_a\le 0.01$ spectator-safe subset ($\theta_i\lesssim 0.3$;
-Table~\ref{tab:alp_restricted_subsets}), sub-dominant to the prior width)
+Table~\ref{tab:alp_restricted_subsets}), sub-dominant to the prior width;
+the $\Omega_a<0.01$ cut is applied post-sampling under this approximation,
+so this $\lesssim1\%$ figure bounds the only residual model-dependence of
+Table~\ref{tab:alp_restricted_subsets}, which a per-sample EOM-integrated
+$\rho_a$ re-derivation --- already validated against the approximation for
+the committed chain parameters --- would remove entirely)
 satisfies $\Omega_a < 0.1$
 for $44\%$ and $\Omega_a < 0.01$ for $13\%$ of the posterior mass;
 restricted to the $\Omega_a \le 0.01$ spectator-safe subset, the rotation
@@ -2828,18 +2832,20 @@ pending (identifiers will be inserted at submission). The URLs are also
 recorded in the repository \texttt{CHANGELOG.md} under the entry for
 \texttt{\paperVersion}; links are preserved against future README changes
 via the version-stamp commit identified by the changelog.
-\emph{Column-permutation warning for JSON artifacts.}---Readers should
-use \path{parameter\_summary\_CORRECTED.json} (the corrected diagnostic
-file in the frozen-chains directory) when extracting numerical values
-matching Table~I; an earlier
-\path{parameter\_summary.json} export carried an off-by-one
-column-index bug. Full details of the bug,
-the corrected file, and the column-by-column mapping are documented in
-the repository \texttt{CHANGELOG.md} (v1B.0.59 archive entry)
-and in the adjacent
+\emph{Column-permutation warning for JSON artifacts.}---The corrected
+diagnostic file \path{parameter\_summary\_CORRECTED.json} in each
+frozen-chains directory is the \emph{only} parameter-summary artifact
+served, and its values match Table~I. The earlier defective export
+\path{parameter\_summary.json}, which carried an off-by-one
+column-index bug, has been \emph{deleted (expunged) from every public
+repository directory}: it is no longer present in the committed tree,
+so a downstream user cannot accidentally read the permuted values. Full
+details of the bug, the corrected file, and the column-by-column mapping
+are retained (for provenance) in the repository \texttt{CHANGELOG.md}
+(v1B.0.59 archive entry) and in the adjacent
 \path{parameter\_summary\_units\_README.md}; this artifact-level
-process discussion is kept in the repository rather than in the paper
-proper.
+process record is kept in the repository, but the defective data file
+itself has been removed.
 
 
 %% ============================================================
@@ -2897,7 +2903,10 @@ required to make any \emph{directional} statement rigorous --- DESI~DR2 $+$
 Planck~NPIPE $+$ Pantheon$+$ only, and DESI~DR2 $+$ Planck~NPIPE $+$
 DES-SN5YR only, each dropping the \emph{other}, overlapping supernova sample
 --- have now been run as fresh four-chain MPI Metropolis-Hastings runs
-($R\!-\!1\approx0.06$), and \textbf{the quintom-B direction survives in both
+that are \emph{still actively sampling} (Gelman--Rubin currently
+$R\!-\!1\approx0.05$, tightening from an initial $\approx0.06$ and not yet
+at the $R\!-\!1<0.01$ threshold; the run is live and continuing toward
+full convergence), and \textbf{the quintom-B direction survives in both
 independent supernova samples}. The Pantheon$+$-only chain gives
 $w_0=-0.874\pm0.059$, $w_a=-0.530\pm0.241$, $w_0+w_a=-1.404\pm0.190$
 ($w_0>-1$ at $2.1\sigma$; $w_0+w_a<-1$ at $2.1\sigma$); the DES-SN5YR-only
@@ -2909,10 +2918,14 @@ alone or DES-SN5YR alone --- the two samples that share the double-counted
 supernovae in the headline overlap-uncorrected stack --- the quintom-B
 \emph{direction} is robust to the overlap systematic and is not an artifact
 of the uncorrected joint covariance (chains archived at
-\artifact{reproducibility/cosmology}). We caution that these control chains
-are converged only to $R\!-\!1\approx0.06$, which is above the
-$R\!-\!1<0.01$ Gelman--Rubin threshold used for the load-bearing
-$\Lambda$CDM$+\Delta\Neff$ chains of Sec.~\ref{sec:cosmo_fits}. At this
+\artifact{reproducibility/cosmology}). We caution explicitly that these
+control chains are \emph{not yet fully converged}: at the time of writing
+they have mixed only to $R\!-\!1\approx0.05$ (down from $\approx0.06$ and
+still running), which remains above the $R\!-\!1<0.01$ Gelman--Rubin
+threshold used for the load-bearing $\Lambda$CDM$+\Delta\Neff$ chains of
+Sec.~\ref{sec:cosmo_fits}. The convergence status is therefore
+\emph{disclosed, not hidden}: the final $R\!-\!1<0.01$ posteriors are
+pending a live re-run that is presently in progress. At the current
 mixing level the chains are well-mixed for the \emph{sign} of the crossing
 but the per-chain $\sigma$-distances quoted above
 ($2.1\sigma$--$3.4\sigma$) are \emph{provisional point estimates} that
@@ -3346,7 +3359,21 @@ $\beta_{\rm obs}=0.342^\circ\pm0.094^\circ$~\cite{Eskilt2022}
 (fn.~\ref{fn:eskilt_pr3_pr4}; the chain configuration encodes exactly
 \texttt{beta\_obs: 0.342}, \texttt{sigma\_beta: 0.094})
 --- i.e.\ the constraint enters at the level of the published
-$\beta$ posterior, not as a direct re-analysis of the $EB$ spectra. The
+$\beta$ posterior, not as a direct re-analysis of the $EB$ spectra.
+\emph{Effect of the summary-likelihood approximation.}---Because a single
+Gaussian datum $(\beta_{\rm obs},\sigma_\beta)$ constrains only the
+combination $C_{a\gamma}\,\Delta\phi/f_a\propto\beta$ that fixes the ALP
+birefringence amplitude, replacing it with the full joint $EB$ likelihood
+would principally re-weight the \emph{width} and tails of the amplitude
+posterior rather than translate its central location: the accommodation
+fractions ($11.6\%$ within $1\sigma$ at fixed $C_{a\gamma}=8$; the
+$\Omega_a<0.01$ subset fractions) therefore inherit this approximation and
+should be read as summary-likelihood estimates, whereas the reported
+posterior medians ($m\simeq36\,H_0$, $C_{a\gamma}\,\Delta\phi/f_a\approx10.3$)
+are set by the mean of the same Eskilt--Komatsu datum and are comparatively
+insensitive to it. A full joint-$EB$ re-fit to quantify the residual
+median shift is left as a dedicated follow-up; it is not expected to move
+the medians beyond their quoted $16$--$84\%$ ranges. The
 separate ACT~DR6 measurement
 $\beta=0.215^\circ\pm0.074^\circ$~\cite{DiegoPalazuelos2025} is an
 independent cross-check quoted in Sec.~\ref{sec:birefringence_check} and
