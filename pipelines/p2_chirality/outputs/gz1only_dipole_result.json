@@ -1,0 +1,50 @@
+{
+  "job": "GZ1ONLY-decisive-dipole-test-ChatGPT-M2",
+  "date_utc": "2026-07-01T10:53:51Z",
+  "model_checkpoint": "/workspace/gz1only_outputs/chirality_model_gz1only_best.pt",
+  "model_arch": "vit_small_patch16_224 + 3-class head, Z2-flip-equivariant (GZ1 CW/CCW labels ONLY, no CE-ResNet pseudo-labels)",
+  "inference": {
+    "dataset": "mwalmsley/gz_desi (streamed)",
+    "galaxies_seen": 20000,
+    "galaxies_classified": 20000,
+    "tta": "Z2 flip-average softmax(x) with column-swapped softmax(flip(x))"
+  },
+  "estimator": {
+    "source": "run_dipole_catalog_c.py (identical recipe)",
+    "nside": 64,
+    "min_pix_count": 10,
+    "conf_cut": 0.6,
+    "n_mc": 10000,
+    "mc_seed": 20260418,
+    "null_type": "per-pixel label permutation"
+  },
+  "selection": {
+    "n_high_conf_spirals": 14964,
+    "cw_fraction": 0.49812884255546647,
+    "n_pix": 7,
+    "f_sky": 0.00014241536458333334
+  },
+  "dipole": {
+    "amplitude": 1.6951925747504821,
+    "l_deg": 119.52315846328793,
+    "b_deg": 66.59510918286804,
+    "monopole": 0.2056945859352961
+  },
+  "null": {
+    "mean": 1.7411075416852138,
+    "std": 1.0383091482080684,
+    "z_sigma": -0.0442209018517967,
+    "rank_p": 0.4527547245275472,
+    "k": 4527
+  },
+  "canonical_reference": {
+    "sigma_dipole": 0.41,
+    "p_one_sided": 0.3085,
+    "source": "catalog_c_post_tta_dipole_summary.json"
+  },
+  "caveats": [
+    "Reduced sample: 14,964 high-conf spirals vs canonical ~949,584; MC null recalibrated to THIS sample so z is self-consistent.",
+    "GZ1-only model: CW/CCW supervision from Galaxy Zoo 1 ONLY; NO CE-ResNet chirality pseudo-labels.",
+    "Same estimator/recipe/seed as paper headline (run_dipole_catalog_c.py)."
+  ]
+}
