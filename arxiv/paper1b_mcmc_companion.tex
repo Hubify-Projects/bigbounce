@@ -177,8 +177,8 @@
 %   FALSIFIED list (14 items) not acted on.)
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1B.0.89}
-\newcommand{\paperTimestamp}{June 30, 2026}
+\newcommand{\paperVersion}{v1B.0.90}
+\newcommand{\paperTimestamp}{July 1, 2026}
 % v1B.0.86 (2026-06-30 — RCEXT-P1B substantive closure. (1) w0wa DEMOTED:
 %   Table II (tab:iter2_posterior) + physics-interpretation + caveats(a-e) +
 %   the cross-check subsection RELOCATED to new Appendix app:w0wa
@@ -1228,6 +1228,27 @@ posterior-supported fixed-coupling ($C_{a\gamma}=8$) accommodation shifts
 to $m\gg H_0$ (median $m\simeq 36\,H_0$ at fixed $C_{a\gamma}=8$), and the
 spectator-safe ($\Omega_a<0.01$) subset is tuned (see
 Table~\ref{tab:alp_restricted_subsets} for the per-subset readout).
+\emph{Prior-predictive accommodation cost}: to test directly whether this
+consistency is tautological --- i.e.\ whether the model reproduces
+$\beta_{\rm obs}$ merely because the coupling and misalignment priors are tuned
+to it --- we run a prior-predictive Monte-Carlo, drawing the ALP nuisance
+parameters from their stated priors, propagating each draw through the
+committed equation of motion with \emph{no} likelihood weighting, and counting
+the fraction that lands within the Eskilt et al.\ band
+($\beta_{\rm obs}=0.342^\circ\pm0.094^\circ$; artifact
+\artifact{reproducibility/cosmology/alp_prior_predictive.py}, $N=3{,}000$ draws
+per configuration). At the posterior-supported fixed coupling $C_{a\gamma}=8$,
+$11.9\%$ of prior draws fall within $1\sigma$ of $\beta_{\rm obs}$ ($24.6\%$
+within $2\sigma$); under the broader continuous-coupling prior
+$C_{a\gamma}\sim\mathcal{U}[4,60]$ these drop to $5.4\%$ and $12.0\%$. This
+\emph{moderate} fraction cuts against the tautology framing in both directions:
+a genuinely tautological accommodation --- one that could reproduce \emph{any}
+target $\beta$ --- would give an order-unity fraction, whereas a knife-edge
+fine-tuning would give ${\ll}1\%$; the observed one-in-eight-to-one-in-twenty
+draws instead places the birefringence signal in a reachable but non-generic
+region of the ALP prior. We therefore report the check as a genuine (if not
+parameter-free) accommodation rather than a tuned fit, and disclose the
+fraction explicitly.
 \emph{Spectator-status caveat}: for $\theta_i\sim 1$ the ALP energy
 density $\rho_a\sim m^2 f_a^2 \theta_i^2 \sim H_0^2 \MPl^2$ is of order
 the critical density today, so the spectator label is only consistent
