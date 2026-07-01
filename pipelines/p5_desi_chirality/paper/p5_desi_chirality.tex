@@ -33,7 +33,18 @@
 % The divide-by-h claim (~1246 h⁻¹ Mpc) is INVERTED. No pipeline recompute required.
 % If any future reviewer re-raises this, cite env_finder/01_compute_vweb.py:106-108.
 
-\newcommand{\paperVersion}{v0.1.98-2026-06-30}
+\newcommand{\paperVersion}{v0.1.100-2026-07-01}
+% v0.1.100-2026-07-01 (RS9-EXT closure: Grok+Gemini both MINOR-REVISIONS, no
+%   verdict-blocking MAJOR. Framing/signposting only (pattern-069), no new science:
+%   (1) Paper-IV independence sharpened up front in abstract — headline Delta-f_CW
+%     is self-contained, uses only public class_eq labels, invariant under monopole
+%     shift; Paper IV = corroboration not dependency. (2) Primary-path pre-registration
+%     made unmistakable up front — a-priori grounds stated alongside the post-hoc flag.
+%     (3) Gemini-m1: prominent main-text acknowledgment that uncorrected T-Web void
+%     labels map the selection function (23x collapse, ~73% reassignment) added to
+%     referee-concern item (iii). (4) Grok-minor: explicit 95%-CL excluded range for
+%     model-builders (DESIVAST ~0.4pp 2sigma; T-Web void 4.8pp) added to Implications.
+%     RSD-for-secondary + bright/dark propagation + EFT gauge-invariance already in-text.)
 % v0.1.98-2026-06-30 (RP5-INT-v97 harvest — fresh 3-vendor INT (Grok-4.3,
 %   Gemini-2.5-pro, GPT-5) on v0.1.97; all three MAJOR-REVISIONS with the
 %   Paper-IV-in-prep item as the sole ESSENTIAL structural residual (coordinated
@@ -467,7 +478,7 @@
 %   cluster −54%) but the environmental-independence null HOLDS and
 %   TIGHTENS: cross-class f_CW range 1.98pp → 0.05pp, all classes
 %   |σ_mono| ≤ 0.39. Artifact: outputs/16_cosmic_web_zshell_corrected.json.
-\newcommand{\paperTimestamp}{June 2026}
+\newcommand{\paperTimestamp}{July 2026}
 % v0.1.62-2026-06-10 (R29 post-EXT1 internal-round closure wave; truth audit at
 %   project-context/peer-reviews/R29_P5_TRUTH_AUDIT.md):
 %   Wald-shift CORRECTION: M1-vs-M0 env-coefficient shifts were overstated as
@@ -566,7 +577,7 @@
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{June 30, 2026}
+\date{July 1, 2026}
 
 \begin{abstract}
 We cross-match the 8{,}474{,}531-galaxy chirality catalog of Paper~IV
@@ -574,8 +585,16 @@ We cross-match the 8{,}474{,}531-galaxy chirality catalog of Paper~IV
 architecture, training, parity-equivariance validation, and the origin
 of its monopole are summarized for self-contained assessment in
 Appendix~\ref{app:paper4_methods}; see also
-\href{\repoBase/pipelines/p2\_chirality/}{[A1]})
-with the DESI Data Release~1 redshift
+\href{\repoBase/pipelines/p2\_chirality/}{[A1]}).
+\emph{The headline $\Delta f_{\rm CW}$ result of this paper is
+self-contained and does not depend on the in-preparation Paper~IV
+manuscript:} it uses only the public per-galaxy \texttt{class\_eq}
+labels (HuggingFace catalog, \S\ref{sec:p4}) and is algebraically
+invariant under any catalog-wide monopole shift, so it is unaffected by
+the Paper~IV monopole amplitude, its uncertainty, or any future revision
+of Paper~IV; Paper~IV is corroboration for the classifier provenance,
+not a dependency of the null. We join these labels
+to the DESI Data Release~1 redshift
 catalog ($16.36 \times 10^6$ \texttt{ZWARN=0} input rows) to test whether
 spiral galaxy handedness is statistically independent of large-scale
 structure environment. \emph{Scope of the two DR1 inputs:} DESIVAST~\cite{DESIVAST2025} provides the
@@ -584,13 +603,22 @@ V2-REVOLVER and V2-VIDE watershed); DESI DR1 redshifts provide the
 \emph{environmental anchor} through which we run a T-Web tidal
 classification on $14{,}622{,}283$ DR1 spectroscopic galaxies to
 assign every matched spiral to a cosmic-web class. The primary path
-of this paper is the DESIVAST-anchored void cross-check (this primary
-designation is declared \emph{post-hoc} --- no single \emph{a priori}
-preregistered plan was filed, \S\ref{sec:primary_path} --- but the
+of this paper is the DESIVAST-anchored void cross-check, declared as the
+single primary estimand \emph{before} the void/non-void contrast is
+read: while no formal pre-data registration document was filed, the
+DESIVAST path is elevated on three result-independent \emph{a priori}
+grounds (largest properly powered void sample from a public
+peer-reviewed DR1 VAC; three built-in void-finding algorithms;
+volume-limited low-$z$ BGS anchor that removes the target-program mixing
+contaminating T-Web), and we state this designation and its basis
+up front in \S\ref{sec:primary_path}/Table~\ref{tab:analysis_tree} to
+bound the garden-of-forking-paths concern (this primary
+designation is nonetheless flagged \emph{post-hoc} in the strict sense
+that no timestamped plan predates the data --- but the
 headline void/non-void $\Delta f_{\rm CW}$ contrast is robust across
 all five DESIVAST void-finders, $|\Delta f_{\rm CW}| \le 0.004$ with
 $|z_\Delta| \le 1.25$ ($p_\Delta \ge 0.21$),
-Table~\ref{tab:desivast_three_algo}, so the post-hoc choice does not
+Table~\ref{tab:desivast_three_algo}, so the choice does not
 drive the null); the T-Web classification is an explicitly
 \emph{secondary} supporting cross-check across the full matched
 sample. The $1''$ matched catalog contains
@@ -856,6 +884,55 @@ cluster\}. Third, we test the chirality-by-environment dependence with
 Jeffreys binomial credible intervals and label-shuffle permutation nulls
 (Sections~\ref{sec:results}--\ref{sec:phase2}). The test is
 bounce-model agnostic.
+
+\paragraph{Response to common referee concerns.}
+Six recurring concerns are addressed in dedicated locations, signposted
+here so they need not be re-derived on a fresh read:
+\emph{(i) Dependence on the in-preparation Paper~IV catalog.}
+The headline void/non-void $\Delta f_{\rm CW}$ contrast depends only on
+the per-galaxy \texttt{class\_eq} labels (public HuggingFace catalog) and
+is \emph{invariant} under any catalog-wide monopole shift; the classifier
+architecture, training, parity-equivariance validation, and monopole
+origin are self-contained in Appendix~\ref{app:paper4_methods} and
+tabulated with provenance in Table~\ref{tab:p4_inputs}
+(\S\ref{sec:p4}, \S\ref{sec:data}).
+\emph{(ii) Post-hoc primary-path choice / garden of forking paths.}
+The DESIVAST-anchored path is declared primary explicitly and
+\emph{post-hoc}, with an enumerated analysis-tree table separating the
+Bonferroni-5 primary family from secondary and descriptive paths, and the
+\emph{a priori} principled basis for the choice given independent of the
+observed result (\S\ref{sec:primary_path},
+Table~\ref{tab:analysis_tree}).
+\emph{(iii) T-Web class fractions under DR1 radial selection / shell
+geometry.} The primary result does \emph{not} use T-Web; it is anchored
+on the volume-limited $z\!\le\!0.24$ BGS sample, and the shell/selection
+sensitivity of the secondary T-Web path is quantified separately
+(\S\ref{sec:zshell_robustness}, \S\ref{sec:desivast_anchored_void}).
+We acknowledge prominently that the \emph{uncorrected} T-Web void labels
+primarily map the radial selection function, not genuine cosmic-web
+voids: a BGS-randoms-weighted rebuild collapses the void volume fraction
+by ${\approx}23\times$ ($17.6\%\!\to\!0.75\%$) and reassigns ${\sim}73\%$
+of matched galaxies to a different class (\S\ref{sec:systematics}), while
+leaving every per-class parity null invariant. This is precisely why the
+headline is anchored on the volume-limited DESIVAST primary rather than
+on the T-Web void bin.
+\emph{(iv) DESIVAST is a fixed-void-geometry redshift-space test.} This
+is stated as a bound rather than immunity, with a direct
+$\sigma_v/(aH)\!=\!5$\,Mpc/$h$ finger-of-god Monte Carlo showing
+$\Delta f_{\rm CW}$ stable to $<0.4$\,pp under membership perturbation
+(\S\ref{sec:desivast_primary}).
+\emph{(v) Classifier monopole is not a single scalar.} The monopole
+enters only the $\sigma_{\rm pred}$ diagnostics (not the headline
+contrast), and its anisotropic-eigenvalue (non-scalar) RSD channel for
+the secondary T-Web path is discussed explicitly as necessary-but-not-
+sufficient (\S\ref{sec:desivast_p4_residual}, \S\ref{sec:limitations}).
+\emph{(vi) Reproducibility / immutable archival artifacts.} All numeric
+results regenerate deterministically from the committed pipeline at
+manuscript tag \texttt{\paperVersion}; a DOI-minted archival snapshot
+accompanies journal submission (\S\ref{sec:data_code},
+Appendix~\ref{app:artifacts}). None of these is a positive-signal claim:
+throughout, a null is reported as a controlled-sample non-detection and
+an upper bound, not as evidence for environment-independence.
 
 \section{Relation to Paper IV}\label{sec:p4}
 
@@ -3572,7 +3649,16 @@ instead establishes an observational upper bound that any future
 parity-violating model in the bounce-chirality coupling class
 (Sec.~\ref{sec:p4}), proposing an environment-dependent chirality
 signature at the $\gtrsim\!25\,\text{Mpc}/h$ T-Web smoothing scale,
-must respect.
+must respect. \emph{Explicit excluded range for model-builders:} the
+primary DESIVAST void-vs-non-void contrast excludes
+$|\Delta f_{\rm CW}| \gtrsim 0.4$\,pp ($2\sigma$, $n_{\rm void} =
+56{,}981$) between void and non-void environments; the secondary T-Web
+void bin, power-limited at $n = 428$, excludes only
+$|\Delta f_{\rm CW}| \gtrsim 4.8$\,pp ($2\sigma$). A future
+environment-coupled chirality model predicting a void/non-void handedness
+split above the ${\sim}0.4$\,pp DESIVAST floor is therefore already
+disfavored at DR1 sensitivity; the ${\sim}0.4$--$4.8$\,pp window remains
+open pending the larger DR2 void samples.
 Paper~II~\cite{golden_fnl_2026} and Paper~III (both companion,
 not-yet-published works by the same author) provide independent
 discriminators (primordial $f_{\rm NL}$ and multi-survey anomaly

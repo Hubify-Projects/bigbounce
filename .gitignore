@@ -77,3 +77,4 @@ arxiv/*.tar.gz
 # REVTeX auto-generated bib control files (regenerable)
 *Notes.bib
 project-context/cron-logs/
+reproducibility/cosmology/w0wa_chains_backup/

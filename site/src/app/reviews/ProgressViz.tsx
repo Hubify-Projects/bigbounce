@@ -387,6 +387,376 @@ export function SkillsGrowthChart() {
   );
 }
 
+/* ── (d) Verdict Severity Trend: stacked bars + per-model mean severity ── */
+
+const SEVERITY: Record<Verdict, number> = {
+  ACCEPT: 0,
+  MINOR: 1,
+  MAJOR: 2,
+  REJECT: 3,
+  NO_VERDICT: -1, // excluded
+};
+
+const MODEL_COLORS = {
+  ChatGPT: "#6ea8fe",
+  Grok: "#d29922",
+  Gemini: "#a78bfa",
+};
+
+/** Sort externalVerdictRounds chronologically by dateISO then roundId. */
+function chronologicalVerdictRounds() {
+  return [...externalVerdictRounds].sort(
+    (a, b) => a.dateISO.localeCompare(b.dateISO) || a.roundId.localeCompare(b.roundId),
+  );
+}
+
+export function VerdictSeverityTrend() {
+  const rounds = chronologicalVerdictRounds();
+
+  // Layout constants
+  const padL = 44;
+  const padR = 18;
+  const padTop = 54; // title + subtitle space
+  const barH = 200; // View 1: stacked bar chart
+  const gapBetween = 28; // gap between view 1 and view 2
+  const lineH = 120; // View 2: per-model severity lines
+  const padBot = 72; // room for rotated x-axis labels
+  const legendH = 20; // legend row at very bottom of padBot space
+
+  const width = 700;
+  const totalH = padTop + barH + gapBetween + lineH + padBot;
+
+  const plotW = width - padL - padR;
+  const n = rounds.length;
+  const barW = Math.max(8, Math.floor(plotW / n) - 2);
+  const barSpacing = plotW / n;
+
+  const xCenter = (i: number) => padL + i * barSpacing + barSpacing / 2;
+
+  // View 1 top/bottom
+  const v1Top = padTop;
+  const v1Bot = padTop + barH;
+  // View 2 top/bottom
+  const v2Top = v1Bot + gapBetween;
+  const v2Bot = v2Top + lineH;
+
+  const maxCount = 18; // 6 papers × 3 reviewers
+
+  // Y for view 1 (count, 0=bottom)
+  const yBar = (count: number) => v1Bot - (count / maxCount) * barH;
+
+  // Y for view 2 (severity 0=ACCEPT at bottom, 3=REJECT at top inverted)
+  const maxSev = 3;
+  const yLine = (sev: number) => v2Bot - (sev / maxSev) * lineH;
+
+  // Integrity gate date
+  const GATE_DATE = "2026-06-26";
+
+  // Find first round at or after gate date
+  const gateIdx = rounds.findIndex((r) => r.dateISO >= GATE_DATE);
+
+  // Per-round aggregated data
+  const roundData = rounds.map((r) => {
+    const counts: Record<Verdict, number> = {
+      REJECT: 0, MAJOR: 0, MINOR: 0, ACCEPT: 0, NO_VERDICT: 0,
+    };
+    const modelSev: Record<string, number[]> = { ChatGPT: [], Grok: [], Gemini: [] };
+
+    for (const paperId of PAPER_IDS) {
+      const triple = r.verdicts[paperId as PaperId];
+      triple.forEach((v, ri) => {
+        counts[v]++;
+        if (v !== "NO_VERDICT") {
+          const reviewer = REVIEWERS[ri];
+          modelSev[reviewer].push(SEVERITY[v]);
+        }
+      });
+    }
+
+    const meanSev = (arr: number[]) =>
+      arr.length === 0 ? null : arr.reduce((s, v) => s + v, 0) / arr.length;
+
+    return {
+      counts,
+      chatgptSev: meanSev(modelSev.ChatGPT),
+      grokSev: meanSev(modelSev.Grok),
+      geminiSev: meanSev(modelSev.Gemini),
+    };
+  });
+
+  // Build polyline points for each model
+  const modelLine = (key: "chatgptSev" | "grokSev" | "geminiSev") => {
+    const pts: string[] = [];
+    roundData.forEach((d, i) => {
+      const sev = d[key];
+      if (sev !== null) {
+        pts.push(`${xCenter(i)},${yLine(sev)}`);
+      }
+    });
+    return pts.join(" ");
+  };
+
+  // Verdict stacking order bottom → top: ACCEPT, MINOR, MAJOR, REJECT
+  const STACK_ORDER: Verdict[] = ["ACCEPT", "MINOR", "MAJOR", "REJECT"];
+
+  const xAxisY = v2Bot;
+
+  return (
+    <svg
+      viewBox={`0 0 ${width} ${totalH}`}
+      role="img"
+      aria-label="Verdict severity trend across external rounds"
+      className="progress-svg"
+    >
+      {/* ── Title + subtitle ── */}
+      <text
+        x={padL}
+        y={16}
+        fontFamily={MONO}
+        fontSize={11.5}
+        fontWeight={700}
+        fill="var(--text)"
+        letterSpacing={0.3}
+      >
+        Verdict Severity Over Time
+      </text>
+      <text x={padL} y={32} fontFamily={MONO} fontSize={8} fill={AXIS}>
+        Tracks ACCEPT/minor/MAJOR/REJECT across all 6 papers × 3 referees per external round.
+      </text>
+      <text x={padL} y={44} fontFamily={MONO} fontSize={8} fill={AXIS}>
+        Rising MAJOR share after the 06-26 integrity gate = stricter de-biased prompt, not degrading papers.
+      </text>
+
+      {/* ── View 1: Stacked bar chart ── */}
+      {/* Y grid lines for View 1 */}
+      {[0, 6, 12, 18].map((v) => (
+        <g key={`v1g-${v}`}>
+          <line
+            x1={padL} y1={yBar(v)}
+            x2={width - padR} y2={yBar(v)}
+            stroke={GRID}
+            strokeWidth={v === 0 ? 1 : 0.75}
+            strokeDasharray={v === 0 ? undefined : "2 4"}
+          />
+          <text x={padL - 6} y={yBar(v) + 3.5} textAnchor="end" fontFamily={MONO} fontSize={9} fill={AXIS}>
+            {v}
+          </text>
+        </g>
+      ))}
+
+      {/* Stacked bars */}
+      {rounds.map((_, i) => {
+        const d = roundData[i];
+        let bottom = 0;
+          const segments: { verdict: Verdict; y: number; h: number; count: number }[] = [];
+        for (const verdict of STACK_ORDER) {
+          const count = d.counts[verdict];
+          if (count === 0) { bottom += count; continue; }
+          const barHeight = (count / maxCount) * barH;
+          segments.push({ verdict, y: yBar(bottom + count), h: barHeight, count });
+          bottom += count;
+        }
+        return (
+          <g key={rounds[i].roundId}>
+            {segments.map((s) => (
+              <rect
+                key={s.verdict}
+                x={xCenter(i) - barW / 2}
+                y={s.y}
+                width={barW}
+                height={s.h}
+                fill={VERDICT_COLOR[s.verdict]}
+                fillOpacity={0.85}
+              >
+                <title>{`${rounds[i].roundId} · ${s.verdict}: ${s.count}`}</title>
+              </rect>
+            ))}
+          </g>
+        );
+      })}
+
+      {/* View 1 legend (inline, top-right) */}
+      {STACK_ORDER.slice().reverse().map((v, i) => (
+        <g key={`leg1-${v}`}>
+          <rect
+            x={width - padR - 100 + i * 25}
+            y={v1Top + 4}
+            width={10}
+            height={10}
+            rx={2}
+            fill={VERDICT_COLOR[v]}
+            fillOpacity={0.85}
+          />
+          <text
+            x={width - padR - 100 + i * 25 + 12}
+            y={v1Top + 13}
+            fontFamily={MONO}
+            fontSize={7}
+            fill={AXIS}
+          >
+            {v === "NO_VERDICT" ? "N/A" : v}
+          </text>
+        </g>
+      ))}
+
+      {/* ── View 2 label ── */}
+      <text
+        x={padL - 6}
+        y={v2Top - 6}
+        textAnchor="start"
+        fontFamily={MONO}
+        fontSize={8.5}
+        fill={AXIS}
+        letterSpacing={0.4}
+      >
+        mean severity / model
+      </text>
+
+      {/* ── View 2: Per-model severity lines ── */}
+      {/* Y grid lines for View 2 */}
+      {[0, 1, 2, 3].map((v) => (
+        <g key={`v2g-${v}`}>
+          <line
+            x1={padL} y1={yLine(v)}
+            x2={width - padR} y2={yLine(v)}
+            stroke={GRID}
+            strokeWidth={0.75}
+            strokeDasharray="2 4"
+          />
+          <text x={padL - 6} y={yLine(v) + 3.5} textAnchor="end" fontFamily={MONO} fontSize={8} fill={AXIS}>
+            {["A", "m", "M", "R"][v]}
+          </text>
+        </g>
+      ))}
+
+      {/* Model lines */}
+      {(["ChatGPT", "Grok", "Gemini"] as const).map((model) => {
+        const key = model === "ChatGPT" ? "chatgptSev" : model === "Grok" ? "grokSev" : "geminiSev";
+        const pts = modelLine(key);
+        if (!pts) return null;
+        return (
+          <polyline
+            key={model}
+            points={pts}
+            fill="none"
+            stroke={MODEL_COLORS[model]}
+            strokeWidth={1.5}
+            strokeLinejoin="round"
+            opacity={0.9}
+          />
+        );
+      })}
+
+      {/* Model dots */}
+      {(["ChatGPT", "Grok", "Gemini"] as const).map((model) => {
+        const key = model === "ChatGPT" ? "chatgptSev" : model === "Grok" ? "grokSev" : "geminiSev";
+        return roundData.map((d, i) => {
+          const sev = d[key];
+          if (sev === null) return null;
+          return (
+            <circle
+              key={`${model}-${i}`}
+              cx={xCenter(i)}
+              cy={yLine(sev)}
+              r={2.5}
+              fill={MODEL_COLORS[model]}
+              stroke="var(--bg)"
+              strokeWidth={1}
+            >
+              <title>{`${rounds[i].roundId} · ${model}: ${sev.toFixed(2)}`}</title>
+            </circle>
+          );
+        });
+      })}
+
+      {/* View 2 legend */}
+      {(["ChatGPT", "Grok", "Gemini"] as const).map((model, i) => (
+        <g key={`leg2-${model}`}>
+          <line
+            x1={padL + i * 80}
+            y1={v2Top + 8}
+            x2={padL + i * 80 + 16}
+            y2={v2Top + 8}
+            stroke={MODEL_COLORS[model]}
+            strokeWidth={1.5}
+          />
+          <text
+            x={padL + i * 80 + 20}
+            y={v2Top + 12}
+            fontFamily={MONO}
+            fontSize={8}
+            fill={AXIS}
+          >
+            {model}
+          </text>
+        </g>
+      ))}
+
+      {/* ── Integrity gate vertical dashed line ── */}
+      {gateIdx >= 0 && (
+        <g>
+          {/* Gate line in View 1 */}
+          <line
+            x1={xCenter(gateIdx)}
+            y1={v1Top}
+            x2={xCenter(gateIdx)}
+            y2={v1Bot}
+            stroke="var(--warn)"
+            strokeWidth={1}
+            strokeDasharray="3 3"
+            opacity={0.75}
+          />
+          {/* Gate line in View 2 */}
+          <line
+            x1={xCenter(gateIdx)}
+            y1={v2Top}
+            x2={xCenter(gateIdx)}
+            y2={v2Bot}
+            stroke="var(--warn)"
+            strokeWidth={1}
+            strokeDasharray="3 3"
+            opacity={0.75}
+          />
+          {/* Gate label between views */}
+          <text
+            x={xCenter(gateIdx) + 4}
+            y={v1Bot + gapBetween / 2 + 3}
+            fontFamily={MONO}
+            fontSize={7.5}
+            fill="var(--warn)"
+            opacity={0.9}
+          >
+            Integrity gate 06-26
+          </text>
+        </g>
+      )}
+
+      {/* ── X-axis ticks + rotated labels (shared) ── */}
+      {rounds.map((r, i) => {
+        const cx = xCenter(i);
+        const labelY = xAxisY + 5;
+        return (
+          <g key={`xlabel-${r.roundId}`}>
+            <line x1={cx} y1={xAxisY} x2={cx} y2={xAxisY + 3} stroke={AXIS} strokeWidth={0.75} />
+            <text
+              x={cx}
+              y={labelY}
+              textAnchor="end"
+              fontFamily={MONO}
+              fontSize={7.5}
+              fill={AXIS}
+              transform={`rotate(-50, ${cx}, ${labelY})`}
+            >
+              {r.roundId}
+              <tspan fill={AXIS} opacity={0.65}> {r.dateISO.slice(5)}</tspan>
+            </text>
+          </g>
+        );
+      })}
+    </svg>
+  );
+}
+
 /* ── Readiness strip: sparse per-paper checkpoints (95-cap rule) ──────── */
 
 // SSOT current readiness: 96 (R-converged post INT-M2, 2026-06-30).

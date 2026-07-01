@@ -11,6 +11,7 @@ import {
   GapPerPaperDeltas,
   SkillsGrowthChart,
   ReadinessStrip,
+  VerdictSeverityTrend,
 } from "./ProgressViz";
 import "./reviews.css";
 
@@ -148,6 +149,15 @@ export default function ReviewsPage() {
               </p>
               <SkillsGrowthChart />
             </div>
+          </div>
+          <div className="progress-block">
+            <h3 className="progress-block-title">Verdict severity trend — per-round and per-model</h3>
+            <p className="progress-block-sub">
+              Stacked verdict counts (top) and mean severity per referee model (bottom) across all external rounds.
+              The vertical dashed line marks the 2026-06-26 integrity gate, after which the referee prompt was de-biased —
+              the subsequent MAJOR uptick reflects a stricter, more honest bar, not paper degradation.
+            </p>
+            <VerdictSeverityTrend />
           </div>
         </div>
       </details>

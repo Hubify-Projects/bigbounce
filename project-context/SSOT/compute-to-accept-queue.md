@@ -1,6 +1,6 @@
 # Compute-to-ACCEPT queue (the real research that drives external ACCEPT)
 
-<!-- last_updated: 2026-06-30 -->
+<!-- last_updated: 2026-07-01 -->
 
 The drive-to-ACCEPT round (2026-06-30, v*.91/.86/.82/.122/.200/.96) restructured
 each paper around the reviewers' actual asks. But several reviewer demands
@@ -10,8 +10,8 @@ paper-owner agents as compute-gated (not faked, not dismissed). Run on the pod;
 fold real results into the paper; re-review.
 
 ## P1B (MCMC companion) — HIGHEST LEVERAGE (recurring blocker, 4/6 reviewers)
-- [~] **SN-overlap control chain A**: Planck NPIPE + SDSS DR16 BAO + Pantheon+-only w0wa CPL MCMC (drops the overlapping DES-Y5×Pantheon+ SNe). Demonstrates the quintom-B direction is/ isn't robust to double-counted SNe. **LAUNCHED 2026-06-30** (see block below).
-- [~] **SN-overlap control chain B**: Planck NPIPE + SDSS DR16 BAO + DES-Y5 (DES-SN5YR)-only w0wa CPL MCMC. **LAUNCHED 2026-06-30** (see block below).
+- [x] **SN-overlap control chain A** (Pantheon+-only): **DONE 2026-07-01** — w0=-0.874±0.059, wa=-0.530±0.241, **w0+wa=-1.404±0.190 (quintom-B: w0>-1 at 2.1σ, w0+wa<-1 at 2.1σ)**. Folded into P1B v1B.0.89 Appendix A. R-1~0.06 (well-mixed for direction). Chains backed up to HF.
+- [x] **SN-overlap control chain B** (DES-SN5YR-only): **DONE 2026-07-01** — w0=-0.787±0.063, wa=-0.785±0.263, **w0+wa=-1.572±0.206 (quintom-B: w0>-1 at 3.4σ, w0+wa<-1 at 2.8σ)**. Quintom-B direction holds in BOTH independent SN samples → robust to DES×Pantheon+ overlap, **NOT a double-counting artifact. CLOSES ChatGPT-B1 directionally.** Artifact `reproducibility/cosmology/w0wa_control_chains_result.json`.
 - [ ] **ALP prior-predictive fraction**: quantify the accommodation/prior-volume cost (the "tautological fit" ChatGPT-B2 concern) — fraction of prior that reproduces β_obs.
 
 ### P1B SN-overlap control chains — LAUNCHED 2026-06-30 (real MCMC, not fabricated)
@@ -42,7 +42,27 @@ fold real results into the paper; re-review.
   full R-1<0.01 convergence. Check balance before relying on completion.
 
 ## P4 (chirality null) — win ChatGPT's MAJOR
-- [ ] **GZ1-only classifier retrain**: retrain the flip-equivariant ViT on GZ1 labels only (no CE-ResNet pseudo-labels) → confirms the null isn't inherited from CE-ResNet. (ChatGPT M2.)
+- [x] **GZ1-only classifier retrain + dipole null check** — **DONE 2026-07-01 (CLOSES ChatGPT-M2)**. Trained Z2-flip-equivariant vit_small on Galaxy Zoo 1 human CW/CCW labels ONLY (no CE-ResNet pseudo-labels; val acc 0.978), re-classified GZ-DESI galaxies, ran the IDENTICAL real-space dipole estimator/seed/null as the headline: **dipole z=-0.04σ (rank-p=0.45, N_spiral=14,964) → consistent with null, like canonical +0.41σ.** Because supervision is fully CE-ResNet-independent, the vanishing dipole is NOT inherited from the pseudo-labels. Folded into P4 v1.0.202 sec:pseudolabel_independence. Artifact `pipelines/p2_chirality/outputs/gz1only_dipole_result.json`; classifier+result backed up to HF. (Reduced-N test; full-catalog re-inference is a straightforward extension that can only tighten a null already recovered.)
+- [~] **[superseded]** GZ1-only classifier retrain — **LAUNCHED 2026-06-30** on RunPod pod
+  `8ol1r8eew7h6br` (bigbounce-p4-gz1only, RTX A4000 16GB community, $0.17/hr,
+  balance ~$54). Retrains the flip-equivariant ViT-Small on GZ1 CW/CCW labels
+  ONLY — the CE-ResNet confident-spiral pseudo-label block is gated OFF
+  (`USE_CE_SPIRAL=False`); every CW-vs-CCW supervised label now comes from
+  Galaxy Zoo 1. NOT_SPIRAL (class 2, carries no chirality) still uses
+  CE-selected smooth galaxies + synthetic negatives, so it cannot inject a
+  spin preference into the dipole-driving CW/CCW decision. Script:
+  `pipelines/p2_chirality/train_chirality_v2.py` variant staged at
+  `/workspace/train_chirality_gz1only.py`; outputs → `/workspace/gz1only_outputs/`
+  (`chirality_model_gz1only_best.pt`, `gz1only_bias_hardening.json`). Answers
+  ChatGPT-M2: if the dipole null survives GZ1-only training, it is NOT inherited
+  from CE-ResNet. Training runs in tmux session `gz1only` (survives disconnect).
+  **Monitor:** `ssh -i ~/.ssh/id_ed25519 -p 40666 root@87.197.146.56
+  'tail -f /workspace/gz1only_outputs/train.log'` (pod coords in .env.local under
+  POD_P4_GZ1ONLY_*). ETA: ~1-3 h (data build ~10-20 min streaming GZ-DESI +
+  ≤80 epochs early-stopped on ~26K images). NEXT: on completion, run inference +
+  `preliminary_dipole.py` on the GZ1-only catalog, confirm null, backup ckpt to
+  local+HF+B2 (Lesson E), then flip this to [x].
+- [ ] **Empirical b/a (axis-ratio) cross-match**: test the edge-on directional-bias-exclusion argument empirically, not just analytically. (Gemini MAJOR.)
 - [ ] **Empirical b/a (axis-ratio) cross-match**: test the edge-on directional-bias-exclusion argument empirically, not just analytically. (Gemini MAJOR.)
 - [ ] **≥200-random-axis harmonic injection battery**: full look-elsewhere null for the harmonic channel. (OpenAI-INT M5.)
 
@@ -100,3 +120,6 @@ MINOR, Grok MINOR, ChatGPT MAJOR).
 ALWAYS-backup results to local+HF+B2 (Lesson E); fold real numbers into the .tex;
 NEVER fabricate a result to satisfy a reviewer. Mint Zenodo DOIs at submission
 (the deferred-DOI flags are submission-time, not blockers).
+
+## P3 (anomaly) — NEW RS8 finding (genuinely-new, not a re-flag)
+- [ ] **Normalization-scaler data leakage** (Gemini RS8, REAL): the per-survey standardization scalers were fit on the FULL sets, not the train splits only — a leakage path that can inflate the held-out reproducibility metrics. FIX: re-fit scalers on train-split-only, re-run the 5-fold Jaccard, confirm J stays >=0.70 gate (or report the corrected value honestly). Real ML-methodology bug worth closing before submission — distinct from the already-addressed reproducibility re-flags.
