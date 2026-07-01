@@ -120,3 +120,6 @@ MINOR, Grok MINOR, ChatGPT MAJOR).
 ALWAYS-backup results to local+HF+B2 (Lesson E); fold real numbers into the .tex;
 NEVER fabricate a result to satisfy a reviewer. Mint Zenodo DOIs at submission
 (the deferred-DOI flags are submission-time, not blockers).
+
+## P3 (anomaly) — NEW RS8 finding (genuinely-new, not a re-flag)
+- [ ] **Normalization-scaler data leakage** (Gemini RS8, REAL): the per-survey standardization scalers were fit on the FULL sets, not the train splits only — a leakage path that can inflate the held-out reproducibility metrics. FIX: re-fit scalers on train-split-only, re-run the 5-fold Jaccard, confirm J stays >=0.70 gate (or report the corrected value honestly). Real ML-methodology bug worth closing before submission — distinct from the already-addressed reproducibility re-flags.
