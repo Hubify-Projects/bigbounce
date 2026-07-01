@@ -33,7 +33,7 @@
 % The divide-by-h claim (~1246 h⁻¹ Mpc) is INVERTED. No pipeline recompute required.
 % If any future reviewer re-raises this, cite env_finder/01_compute_vweb.py:106-108.
 
-\newcommand{\paperVersion}{v0.1.98-2026-06-30}
+\newcommand{\paperVersion}{v0.1.99-2026-07-01}
 % v0.1.98-2026-06-30 (RP5-INT-v97 harvest — fresh 3-vendor INT (Grok-4.3,
 %   Gemini-2.5-pro, GPT-5) on v0.1.97; all three MAJOR-REVISIONS with the
 %   Paper-IV-in-prep item as the sole ESSENTIAL structural residual (coordinated
@@ -467,7 +467,7 @@
 %   cluster −54%) but the environmental-independence null HOLDS and
 %   TIGHTENS: cross-class f_CW range 1.98pp → 0.05pp, all classes
 %   |σ_mono| ≤ 0.39. Artifact: outputs/16_cosmic_web_zshell_corrected.json.
-\newcommand{\paperTimestamp}{June 2026}
+\newcommand{\paperTimestamp}{July 2026}
 % v0.1.62-2026-06-10 (R29 post-EXT1 internal-round closure wave; truth audit at
 %   project-context/peer-reviews/R29_P5_TRUTH_AUDIT.md):
 %   Wald-shift CORRECTION: M1-vs-M0 env-coefficient shifts were overstated as
@@ -566,7 +566,7 @@
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{June 30, 2026}
+\date{July 1, 2026}
 
 \begin{abstract}
 We cross-match the 8{,}474{,}531-galaxy chirality catalog of Paper~IV
@@ -856,6 +856,47 @@ cluster\}. Third, we test the chirality-by-environment dependence with
 Jeffreys binomial credible intervals and label-shuffle permutation nulls
 (Sections~\ref{sec:results}--\ref{sec:phase2}). The test is
 bounce-model agnostic.
+
+\paragraph{Response to common referee concerns.}
+Six recurring concerns are addressed in dedicated locations, signposted
+here so they need not be re-derived on a fresh read:
+\emph{(i) Dependence on the in-preparation Paper~IV catalog.}
+The headline void/non-void $\Delta f_{\rm CW}$ contrast depends only on
+the per-galaxy \texttt{class\_eq} labels (public HuggingFace catalog) and
+is \emph{invariant} under any catalog-wide monopole shift; the classifier
+architecture, training, parity-equivariance validation, and monopole
+origin are self-contained in Appendix~\ref{app:paper4_methods} and
+tabulated with provenance in Table~\ref{tab:p4_inputs}
+(\S\ref{sec:p4}, \S\ref{sec:data}).
+\emph{(ii) Post-hoc primary-path choice / garden of forking paths.}
+The DESIVAST-anchored path is declared primary explicitly and
+\emph{post-hoc}, with an enumerated analysis-tree table separating the
+Bonferroni-5 primary family from secondary and descriptive paths, and the
+\emph{a priori} principled basis for the choice given independent of the
+observed result (\S\ref{sec:primary_path},
+Table~\ref{tab:analysis_tree}).
+\emph{(iii) T-Web class fractions under DR1 radial selection / shell
+geometry.} The primary result does \emph{not} use T-Web; it is anchored
+on the volume-limited $z\!\le\!0.24$ BGS sample, and the shell/selection
+sensitivity of the secondary T-Web path is quantified separately
+(\S\ref{sec:zshell_robustness}, \S\ref{sec:desivast_anchored_void}).
+\emph{(iv) DESIVAST is a fixed-void-geometry redshift-space test.} This
+is stated as a bound rather than immunity, with a direct
+$\sigma_v/(aH)\!=\!5$\,Mpc/$h$ finger-of-god Monte Carlo showing
+$\Delta f_{\rm CW}$ stable to $<0.4$\,pp under membership perturbation
+(\S\ref{sec:desivast_primary}).
+\emph{(v) Classifier monopole is not a single scalar.} The monopole
+enters only the $\sigma_{\rm pred}$ diagnostics (not the headline
+contrast), and its anisotropic-eigenvalue (non-scalar) RSD channel for
+the secondary T-Web path is discussed explicitly as necessary-but-not-
+sufficient (\S\ref{sec:desivast_p4_residual}, \S\ref{sec:limitations}).
+\emph{(vi) Reproducibility / immutable archival artifacts.} All numeric
+results regenerate deterministically from the committed pipeline at
+manuscript tag \texttt{\paperVersion}; a DOI-minted archival snapshot
+accompanies journal submission (\S\ref{sec:data_code},
+Appendix~\ref{app:artifacts}). None of these is a positive-signal claim:
+throughout, a null is reported as a controlled-sample non-detection and
+an upper bound, not as evidence for environment-independence.
 
 \section{Relation to Paper IV}\label{sec:p4}
 

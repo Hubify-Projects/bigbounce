@@ -6,6 +6,20 @@
 % Main theory paper: paper1a_ech_nogo.tex (Golden 2026a)
 % Compile: pdflatex paper1b_mcmc_companion && bibtex paper1b_mcmc_companion && pdflatex paper1b_mcmc_companion && pdflatex paper1b_mcmc_companion
 %
+% v1B.0.91 (2026-07-01 — EXT RS5 closure. 3-vendor external sweep (ChatGPT/Grok/Gemini
+%   all major-rev). Truth-audit: nearly all flagged majors ALREADY-ADDRESSED in v86-v90
+%   (torsion framing already scoped to "Generic Radiation-Proxy Test" / stock-CAMB;
+%   NaMaster foreground/beta-alpha degeneracy scope note already present; 12% EB bias
+%   documented as pipeline-recovery bias w/ IVW cross-check; ALP tautology closed B2 via
+%   real prior-predictive MC; spectator fine-tuning quantified 25x/100x; Bayes factors
+%   honestly deferred to nested-sampling follow-up; DES-Y5xPantheon overlap disclosed
+%   caveat (e) + Vincenzi 2025). ONE genuinely-actionable convergent item (Gemini flags
+%   R-1~0.06 under-converged vs <0.01; ChatGPT/Grok flag overlap-uncorrected likelihood):
+%   the w0wa control chains (closed B1 in v89) quote 2.1-3.4sigma at R-1~0.06. STRENGTHENED
+%   the caveat: sigma-distances now explicitly labeled PROVISIONAL point estimates, must not
+%   be read as final significances, do not enter main-text conclusions or P1A; only the
+%   directional sign-consistency claim is load-bearing. No fabricated numbers; pattern-036
+%   clean.)
 % v1B.0.88 (2026-06-30 — RB-INT-v87 closure. Fresh multi-vendor INT round on the
 %   retitled consistency-check companion: Gemini ACCEPT-w/-minor, OpenAI MAJOR-REV,
 %   Grok REJECT. Truth-audit verdict-first:
@@ -177,7 +191,7 @@
 %   FALSIFIED list (14 items) not acted on.)
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1B.0.90}
+\newcommand{\paperVersion}{v1B.0.91}
 \newcommand{\paperTimestamp}{July 1, 2026}
 % v1B.0.86 (2026-06-30 — RCEXT-P1B substantive closure. (1) w0wa DEMOTED:
 %   Table II (tab:iter2_posterior) + physics-interpretation + caveats(a-e) +
@@ -2894,13 +2908,25 @@ supernovae in the headline overlap-uncorrected stack --- the quintom-B
 \emph{direction} is robust to the overlap systematic and is not an artifact
 of the uncorrected joint covariance (chains archived at
 \artifact{reproducibility/cosmology}). We caution that these control chains
-are converged only to $R\!-\!1\approx0.06$ (well-mixed for the directional
-verdict; the precise $\sigma$-distances will tighten as sampling continues
-toward $R\!-\!1<0.01$), and that a full joint DES$\times$Pantheon$+$
-overlap-covariance cross-comparison remains the definitive follow-up; the
-directional robustness claim above rests only on the consistency of the
-crossing across the two disjoint-sample fits, which that covariance cannot
-overturn. The goodness-of-fit decomposition ($\chi^2_{\rm BAO}$,
+are converged only to $R\!-\!1\approx0.06$, which is above the
+$R\!-\!1<0.01$ Gelman--Rubin threshold used for the load-bearing
+$\Lambda$CDM$+\Delta\Neff$ chains of Sec.~\ref{sec:cosmo_fits}. At this
+mixing level the chains are well-mixed for the \emph{sign} of the crossing
+but the per-chain $\sigma$-distances quoted above
+($2.1\sigma$--$3.4\sigma$) are \emph{provisional point estimates} that
+will shift as sampling continues toward $R\!-\!1<0.01$; they must not be
+read as final significances, and no significance, model-selection, or
+$\sigma$-distance statement from these control chains enters the main-text
+conclusions or the P1A companion. The claim these chains support is
+strictly \emph{directional} --- the phantom-divide crossing recovers with
+the same sign in both disjoint supernova samples --- and that
+sign-consistency is robust to residual $R\!-\!1$ mixing noise in a way the
+numerical $\sigma$-distances are not. A full joint
+DES$\times$Pantheon$+$ overlap-covariance cross-comparison, run to
+$R\!-\!1<0.01$, remains the definitive follow-up; the directional
+robustness claim rests only on the consistency of the crossing across the
+two disjoint-sample fits, which neither that covariance nor further
+mixing can overturn. The goodness-of-fit decomposition ($\chi^2_{\rm BAO}$,
 $\chi^2_{\rm CMB}$, $\chi^2_{\rm SN}$) is reported in Table~\ref{tab:iter2_posterior};
 model-comparison statistics (AIC, BIC, $\ln B$) are \emph{not} reported there
 because a robust $\ln B$ against $\Lambda$CDM requires dedicated nested sampling
