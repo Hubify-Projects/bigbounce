@@ -42,7 +42,26 @@ fold real results into the paper; re-review.
   full R-1<0.01 convergence. Check balance before relying on completion.
 
 ## P4 (chirality null) — win ChatGPT's MAJOR
-- [ ] **GZ1-only classifier retrain**: retrain the flip-equivariant ViT on GZ1 labels only (no CE-ResNet pseudo-labels) → confirms the null isn't inherited from CE-ResNet. (ChatGPT M2.)
+- [~] **GZ1-only classifier retrain** — **LAUNCHED 2026-06-30** on RunPod pod
+  `8ol1r8eew7h6br` (bigbounce-p4-gz1only, RTX A4000 16GB community, $0.17/hr,
+  balance ~$54). Retrains the flip-equivariant ViT-Small on GZ1 CW/CCW labels
+  ONLY — the CE-ResNet confident-spiral pseudo-label block is gated OFF
+  (`USE_CE_SPIRAL=False`); every CW-vs-CCW supervised label now comes from
+  Galaxy Zoo 1. NOT_SPIRAL (class 2, carries no chirality) still uses
+  CE-selected smooth galaxies + synthetic negatives, so it cannot inject a
+  spin preference into the dipole-driving CW/CCW decision. Script:
+  `pipelines/p2_chirality/train_chirality_v2.py` variant staged at
+  `/workspace/train_chirality_gz1only.py`; outputs → `/workspace/gz1only_outputs/`
+  (`chirality_model_gz1only_best.pt`, `gz1only_bias_hardening.json`). Answers
+  ChatGPT-M2: if the dipole null survives GZ1-only training, it is NOT inherited
+  from CE-ResNet. Training runs in tmux session `gz1only` (survives disconnect).
+  **Monitor:** `ssh -i ~/.ssh/id_ed25519 -p 40666 root@87.197.146.56
+  'tail -f /workspace/gz1only_outputs/train.log'` (pod coords in .env.local under
+  POD_P4_GZ1ONLY_*). ETA: ~1-3 h (data build ~10-20 min streaming GZ-DESI +
+  ≤80 epochs early-stopped on ~26K images). NEXT: on completion, run inference +
+  `preliminary_dipole.py` on the GZ1-only catalog, confirm null, backup ckpt to
+  local+HF+B2 (Lesson E), then flip this to [x].
+- [ ] **Empirical b/a (axis-ratio) cross-match**: test the edge-on directional-bias-exclusion argument empirically, not just analytically. (Gemini MAJOR.)
 - [ ] **Empirical b/a (axis-ratio) cross-match**: test the edge-on directional-bias-exclusion argument empirically, not just analytically. (Gemini MAJOR.)
 - [ ] **≥200-random-axis harmonic injection battery**: full look-elsewhere null for the harmonic channel. (OpenAI-INT M5.)
 
