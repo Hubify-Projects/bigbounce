@@ -191,8 +191,17 @@
 %   FALSIFIED list (14 items) not acted on.)
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1B.0.93}
+\newcommand{\paperVersion}{v1B.0.94}
 \newcommand{\paperTimestamp}{July 1, 2026}
+% v1B.0.94 (RS10, Grok+Gemini 2-vendor): fully SCOPED OUT the w0wa control-chain
+%   sigma-distance. Removed the provisional 2.1/2.8/3.4sigma figures entirely;
+%   the control chains now report central values (sign of crossing) ONLY, with
+%   an explicit statement that no sigma-distance/significance is computed from an
+%   overlap-uncorrected product likelihood regardless of convergence. Only
+%   load-bearing claim = qualitative SIGN-consistency of the phantom-divide
+%   crossing across the two disjoint-sample control chains. Chains checked on pod:
+%   R-1=0.045 (Pantheon+-only), 0.048 (DES-SN5YR-only) -- NOT converged (>0.01),
+%   so sign-only framing retained (not converged-sigma).
 % v1B.0.86 (2026-06-30 — RCEXT-P1B substantive closure. (1) w0wa DEMOTED:
 %   Table II (tab:iter2_posterior) + physics-interpretation + caveats(a-e) +
 %   the cross-check subsection RELOCATED to new Appendix app:w0wa
@@ -2202,8 +2211,10 @@ overlap-uncorrected (caveat~(e)), so no $\sigma$-distance or model comparison is
 claimed from the headline stack. The overlap-controlled control chains (Pantheon$+$-only
 and DES-SN5YR-only, each dropping the other overlapping sample) have now been run,
 and the quintom-B \emph{direction} ($w_0>-1$, $w_0+w_a<-1$) is recovered
-consistently in \emph{both} independent supernova samples ($2$--$3\sigma$),
-so the crossing is robust to the overlap systematic; the full posteriors,
+consistently in \emph{both} independent supernova samples (sign only; no
+$\sigma$-distance is claimed, as the control chains inherit the same
+overlap-uncorrected likelihood), so the crossing is robust to the overlap
+systematic in sign; the full posteriors,
 scope statement, and control-chain numbers are given in Appendix~\ref{app:w0wa}.
 
 \section{Cosmic Birefringence: Spectator ALP Consistency Check}\label{sec:birefringence_check}
@@ -2907,12 +2918,17 @@ that are \emph{still actively sampling} (Gelman--Rubin currently
 $R\!-\!1\approx0.05$, tightening from an initial $\approx0.06$ and not yet
 at the $R\!-\!1<0.01$ threshold; the run is live and continuing toward
 full convergence), and \textbf{the quintom-B direction survives in both
-independent supernova samples}. The Pantheon$+$-only chain gives
-$w_0=-0.874\pm0.059$, $w_a=-0.530\pm0.241$, $w_0+w_a=-1.404\pm0.190$
-($w_0>-1$ at $2.1\sigma$; $w_0+w_a<-1$ at $2.1\sigma$); the DES-SN5YR-only
-chain gives $w_0=-0.787\pm0.063$, $w_a=-0.785\pm0.263$,
-$w_0+w_a=-1.572\pm0.206$ ($w_0>-1$ at $3.4\sigma$; $w_0+w_a<-1$ at
-$2.8\sigma$). Because the phantom-divide crossing ($w_0>-1$ \emph{and}
+independent supernova samples}. The Pantheon$+$-only chain gives central
+values $w_0=-0.874$, $w_a=-0.530$, $w_0+w_a=-1.404$ ($w_0>-1$ \emph{and}
+$w_0+w_a<-1$); the DES-SN5YR-only chain gives $w_0=-0.787$, $w_a=-0.785$,
+$w_0+w_a=-1.572$ ($w_0>-1$ \emph{and} $w_0+w_a<-1$). We quote these as
+\emph{central values that fix the sign} of each dark-energy parameter, not
+as $\pm$ measurements: because these control chains inherit the same
+overlap-uncorrected product-likelihood construction as the headline stack
+(each simply drops the \emph{other} overlapping supernova sample rather
+than supplying a joint cross-covariance), their marginal widths are not
+valid uncertainties and \textbf{no $\sigma$-distance, significance, or
+model-selection statistic is computed from them}. Because the phantom-divide crossing ($w_0>-1$ \emph{and}
 $w_0+w_a<-1$) is recovered consistently whether the fit uses Pantheon$+$
 alone or DES-SN5YR alone --- the two samples that share the double-counted
 supernovae in the headline overlap-uncorrected stack --- the quintom-B
@@ -2920,23 +2936,26 @@ supernovae in the headline overlap-uncorrected stack --- the quintom-B
 of the uncorrected joint covariance (chains archived at
 \artifact{reproducibility/cosmology}). We caution explicitly that these
 control chains are \emph{not yet fully converged}: at the time of writing
-they have mixed only to $R\!-\!1\approx0.05$ (down from $\approx0.06$ and
-still running), which remains above the $R\!-\!1<0.01$ Gelman--Rubin
-threshold used for the load-bearing $\Lambda$CDM$+\Delta\Neff$ chains of
-Sec.~\ref{sec:cosmo_fits}. The convergence status is therefore
-\emph{disclosed, not hidden}: the final $R\!-\!1<0.01$ posteriors are
-pending a live re-run that is presently in progress. At the current
-mixing level the chains are well-mixed for the \emph{sign} of the crossing
-but the per-chain $\sigma$-distances quoted above
-($2.1\sigma$--$3.4\sigma$) are \emph{provisional point estimates} that
-will shift as sampling continues toward $R\!-\!1<0.01$; they must not be
-read as final significances, and no significance, model-selection, or
-$\sigma$-distance statement from these control chains enters the main-text
-conclusions or the P1A companion. The claim these chains support is
-strictly \emph{directional} --- the phantom-divide crossing recovers with
-the same sign in both disjoint supernova samples --- and that
-sign-consistency is robust to residual $R\!-\!1$ mixing noise in a way the
-numerical $\sigma$-distances are not. A full joint
+they have mixed only to $R\!-\!1\approx0.045$ (Pantheon$+$-only) and
+$R\!-\!1\approx0.048$ (DES-SN5YR-only), both still running and still above
+the $R\!-\!1<0.01$ Gelman--Rubin threshold used for the load-bearing
+$\Lambda$CDM$+\Delta\Neff$ chains of Sec.~\ref{sec:cosmo_fits}. The
+convergence status is therefore \emph{disclosed, not hidden}: the final
+$R\!-\!1<0.01$ posteriors are pending a live re-run that is presently in
+progress. \textbf{We deliberately claim no $\sigma$-distance from these
+control chains --- not even a provisional one.} A $\sigma$-distance read
+off an overlap-uncorrected product likelihood is not a valid significance
+regardless of convergence, because the double-counted ${\sim}20\%$ shared
+supernovae narrow the marginal widths by an unquantified amount; converging
+the chains to $R\!-\!1<0.01$ would only sharpen an \emph{invalid} width, not
+make it valid. The only property of these chains we report is the
+\emph{sign} of the crossing: at the current mixing level the chains are
+well-mixed for the sign of the phantom-divide crossing, and that sign is
+recovered identically in both disjoint supernova samples. The claim these
+chains support is therefore strictly \emph{directional} --- the
+phantom-divide crossing ($w_0>-1$ \emph{and} $w_0+w_a<-1$) recovers with the
+same sign whether the fit uses Pantheon$+$ alone or DES-SN5YR alone --- and
+establishes \emph{direction only, not significance}. A full joint
 DES$\times$Pantheon$+$ overlap-covariance cross-comparison, run to
 $R\!-\!1<0.01$, remains the definitive follow-up; the directional
 robustness claim rests only on the consistency of the crossing across the
