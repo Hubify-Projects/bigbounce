@@ -139,6 +139,12 @@ Five rules Houston kept having to re-state; encoded here as hard gates:
 
 ---
 
+## Standing directive (2026-07-01 — permanent)
+
+**H — Recalibrated convergence gate.** The paper-convergence gate is RECALIBRATED (Houston explicit decision 2026-07-01). A paper is CONVERGED when: (1) **Grok ACCEPTs AND Gemini ACCEPTs** (0 MAJOR, 0 minor) — real external ACCEPT from the two calibrated referees is still required; AND (2) **every ChatGPT MAJOR is truth-audited as non-real** with a source-cited verdict (already-addressed re-flag / scope misread / referee variance, per patterns 061-064 + `/review-integrity-audit`). ChatGPT's literal ACCEPT is NO LONGER required. Rationale: across RS5→RS6→RS7→RS8 the de-biased ChatGPT referee oscillated reject↔major-revisions on unchanged, honestly-scoped content (P1A reject→major→reject→major on the same paper) while Grok+Gemini gave accept/minor — a maximally-harsh LLM referee's structural floor (it flags *some* major on any real manuscript, even published PRD papers), so the old all-3-ACCEPT gate was an unreachable asymptote, not a quality signal. Loop now drives toward Grok+Gemini ACCEPT (close their minors/majors — moderate + addressable) while dispositioning each ChatGPT major to a non-real verdict. Readiness cap 96 = Grok+Gemini ACCEPT + all ChatGPT majors dispositioned non-real. STILL never fake an ACCEPT, never dismiss a ChatGPT major without a source-cited verdict, never fabricate. This SUPERSEDES the "all 3 reviewers ACCEPT" exit gate wherever it appears in loop prompts.
+
+---
+
 ## Drive-to-100 loop (if active)
 
 Cron `*/20 * * * *` fires `/drive-to-100-fire`. Each fire does ONE atomic step. See `project-context/SSOT/drive-to-100.md` for the plan + loop log.
