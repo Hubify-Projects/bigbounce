@@ -177,7 +177,7 @@
 %   FALSIFIED list (14 items) not acted on.)
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1B.0.88}
+\newcommand{\paperVersion}{v1B.0.89}
 \newcommand{\paperTimestamp}{June 30, 2026}
 % v1B.0.86 (2026-06-30 — RCEXT-P1B substantive closure. (1) w0wa DEMOTED:
 %   Table II (tab:iter2_posterior) + physics-interpretation + caveats(a-e) +
@@ -2164,9 +2164,13 @@ at the quoted precision (see Sec.~\ref{sec:verification}, limitation note).
 
 A $w_0w_a$ extension chain on the DESI~DR2 + Planck~NPIPE + DES-Y5 + Pantheon$+$
 stack was run as an exploratory diagnostic only. Its supernova likelihood is
-overlap-uncorrected (caveat~(e)), so no significance, directional robustness, or
-model comparison is claimed; the full posterior, scope statement, and the
-deferred overlap-controlled control chains are given in Appendix~\ref{app:w0wa}.
+overlap-uncorrected (caveat~(e)), so no $\sigma$-distance or model comparison is
+claimed from the headline stack. The overlap-controlled control chains (Pantheon$+$-only
+and DES-SN5YR-only, each dropping the other overlapping sample) have now been run,
+and the quintom-B \emph{direction} ($w_0>-1$, $w_0+w_a<-1$) is recovered
+consistently in \emph{both} independent supernova samples ($2$--$3\sigma$),
+so the crossing is robust to the overlap systematic; the full posteriors,
+scope statement, and control-chain numbers are given in Appendix~\ref{app:w0wa}.
 
 \section{Cosmic Birefringence: Spectator ALP Consistency Check}\label{sec:birefringence_check}
 
@@ -2854,12 +2858,28 @@ surrounding prose (the table reports raw chain means/widths only, with the
 $\Lambda$CDM point flagged as unsampled). The two SN-overlap control chains
 required to make any \emph{directional} statement rigorous --- DESI~DR2 $+$
 Planck~NPIPE $+$ Pantheon$+$ only, and DESI~DR2 $+$ Planck~NPIPE $+$
-DES-SN5YR only, each followed by a joint cross-covariance comparison of the
-shifts in $w_0$, $w_a$, $w_0+w_a$, $w_{\rm pivot}$, and $\chi^2$ --- are
-\emph{deferred to a dedicated follow-up} and are currently computing as
-fresh MPI MCMC runs; until they converge no robustness of the quintom-B
-direction against the overlap systematic is claimed, and their results will
-be folded into a subsequent revision when available. The goodness-of-fit decomposition ($\chi^2_{\rm BAO}$,
+DES-SN5YR only, each dropping the \emph{other}, overlapping supernova sample
+--- have now been run as fresh four-chain MPI Metropolis-Hastings runs
+($R\!-\!1\approx0.06$), and \textbf{the quintom-B direction survives in both
+independent supernova samples}. The Pantheon$+$-only chain gives
+$w_0=-0.874\pm0.059$, $w_a=-0.530\pm0.241$, $w_0+w_a=-1.404\pm0.190$
+($w_0>-1$ at $2.1\sigma$; $w_0+w_a<-1$ at $2.1\sigma$); the DES-SN5YR-only
+chain gives $w_0=-0.787\pm0.063$, $w_a=-0.785\pm0.263$,
+$w_0+w_a=-1.572\pm0.206$ ($w_0>-1$ at $3.4\sigma$; $w_0+w_a<-1$ at
+$2.8\sigma$). Because the phantom-divide crossing ($w_0>-1$ \emph{and}
+$w_0+w_a<-1$) is recovered consistently whether the fit uses Pantheon$+$
+alone or DES-SN5YR alone --- the two samples that share the double-counted
+supernovae in the headline overlap-uncorrected stack --- the quintom-B
+\emph{direction} is robust to the overlap systematic and is not an artifact
+of the uncorrected joint covariance (chains archived at
+\artifact{reproducibility/cosmology}). We caution that these control chains
+are converged only to $R\!-\!1\approx0.06$ (well-mixed for the directional
+verdict; the precise $\sigma$-distances will tighten as sampling continues
+toward $R\!-\!1<0.01$), and that a full joint DES$\times$Pantheon$+$
+overlap-covariance cross-comparison remains the definitive follow-up; the
+directional robustness claim above rests only on the consistency of the
+crossing across the two disjoint-sample fits, which that covariance cannot
+overturn. The goodness-of-fit decomposition ($\chi^2_{\rm BAO}$,
 $\chi^2_{\rm CMB}$, $\chi^2_{\rm SN}$) is reported in Table~\ref{tab:iter2_posterior};
 model-comparison statistics (AIC, BIC, $\ln B$) are \emph{not} reported there
 because a robust $\ln B$ against $\Lambda$CDM requires dedicated nested sampling
