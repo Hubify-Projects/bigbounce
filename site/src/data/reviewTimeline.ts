@@ -46,6 +46,24 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "RREXT-P5-CLOSURE-2026-06-30",
+    kind: "closure-wave",
+    dateISO: "2026-06-30",
+    title: "P5 v0.1.97: closed ChatGPT RREXT MAJOR framing items (B3 headline + M6 superlative) — DESIVAST-void null is now the sole title headline; T-Web demoted to secondary cross-check",
+    papers: ["P5"],
+    summary: "The RREXT ChatGPT referee (MAJOR) asked P5 to make the DESIVAST void/non-void null the sole headline and demote the T-Web tidal-tensor classifier (B3), and to drop or literature-audit its superlative sample-size claims (M6). Both closed substantively in v0.1.97: the title now reads 'A DESIVAST Three-Algorithm Void Null Test on 56,981 DESI DR1 Spirals, with a Secondary Tidal-Tensor Cross-Check' (T-Web removed from the co-headline; nomenclature footnote retained); the two unscoped 'largest ... we are aware of' / 'largest ... available from any public DR1 catalog' superlatives were reworded to precise, non-superlative statements. Recompiled clean (35 pp, 0 undef-refs, 0 overfull), md5 9b3aad7a, mirrored byte-identical to every served path. The remaining ChatGPT items are structural/submission-time (B1 companion-catalog access, B4 frozen DOI) or a full-length rewrite (M1/M2) — not single-tick closable; the compute-gated P1B SN-overlap MCMC control chains continue running on the pod.",
+    keyTakeaways: [
+      "B3 closed: DESIVAST void null is the sole title headline; T-Web demoted to 'secondary tidal-tensor cross-check' — matches the paper's own primary/secondary designation",
+      "M6 closed: unscoped superlatives ('largest ... we are aware of') removed in favor of precise, defensible wording",
+      "Text-addressable MAJOR items fixed without dismissing the reviewer; residual asks are submission-time (DOI/companion) or full-rewrite scope",
+      "Full PDF hygiene: v0.1.97 recompiled clean, byte-identical mirror to all served paths, papers.ts synced same-commit",
+    ],
+    links: [
+      { label: "RREXT_P5_ChatGPT.md", href: `${PR}/RREXT_P5_ChatGPT.md` },
+      { label: "compute-to-accept-queue.md", href: `${GH}/project-context/SSOT/compute-to-accept-queue.md` },
+    ],
+  },
+  {
     id: "DRIVE-TO-ACCEPT-2026-06-30",
     kind: "closure-wave",
     dateISO: "2026-06-30",

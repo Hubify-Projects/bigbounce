@@ -432,8 +432,8 @@ export const papers: Paper[] = [
   {
     slug: "paper-5",
     number: "5",
-    title: "Environmental Dependence of Spiral Chirality: A DESIVAST Three-Algorithm Test on 56,981 Void Spirals with T-Web (Hahn 2007) Tidal-Tensor Cross-Check Across 791,635 DR1 Matched Spirals",
-    version: "v0.1.96",
+    title: "Environmental Dependence of Spiral Chirality: A DESIVAST Three-Algorithm Void Null Test on 56,981 DESI DR1 Spirals, with a Secondary Tidal-Tensor Cross-Check",
+    version: "v0.1.97",
     lastUpdated: "2026-06-30",
     tldr: "Cross-matches P4's spiral handedness with DESI large-scale structure (791,635 matched spirals + 56,981 void spirals) and finds galaxy chirality is statistically independent of cosmic-web environment — constraining environment-coupled parity models.",
     path: publicationPath({
@@ -473,10 +473,10 @@ export const papers: Paper[] = [
       "arXiv endorsement + coordinated submission (mints the DOIs/arXiv IDs that clear the last structural reviewer blocker)",
     ],
     preprintId: "HUBIFY-2026-005",
-    pdfMeta: "PDF · 35 pp · v0.1.96 · updated Jun 30, 2026 · md5 f4c7a0f6",
+    pdfMeta: "PDF · 35 pp · v0.1.97 · updated Jun 30, 2026 · md5 9b3aad7a",
     artifacts: [
-      { label: "Read PDF", href: "/papers/p5_desi_chirality_v0.1.96.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/p5_desi_chirality_v0.1.96.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/p5_desi_chirality_v0.1.97-2026-06-30.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/p5_desi_chirality_v0.1.97-2026-06-30.pdf", kind: "secondary", download: true },
       {
         label: "Pipeline + scripts",
         href: "https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p5_desi_chirality",

@@ -83,8 +83,17 @@ fold real results into the paper; re-review.
 
 ## P5 (DESI chirality) — NO compute needed
 The Paper-IV self-containment appendix (v0.1.96) closed the one convergent
-blocker from source numbers. P5 is the closest to 3/3 ACCEPT — re-review should
-tell. If ChatGPT's MAJOR persists, read its NEW report for the residual.
+blocker from source numbers. P5 is the closest to 3/3 ACCEPT (RREXT: Gemini
+MINOR, Grok MINOR, ChatGPT MAJOR).
+- [x] **RREXT ChatGPT B3 (headline) + M6 (superlative)** — **DONE 2026-06-30 (v0.1.97)**.
+  Title retitled so the DESIVAST void null is the sole headline; T-Web demoted to
+  "secondary tidal-tensor cross-check" (was co-headlined). The two unscoped
+  "largest ... we are aware of" superlatives reworded to precise, non-superlative
+  statements. Recompiled clean (35 pp, md5 9b3aad7a); mirrored to all served paths.
+- [ ] **RREXT ChatGPT B1 (companion-catalog access) + B4 (frozen DOI)** — submission-time
+  structural (post concurrently / mint at submission); NOT single-tick closable.
+- [ ] **RREXT ChatGPT M1/M2 (radical shorten 35→~15 pp + slim abstract)** — full-length
+  rewrite; scope as a dedicated D-round pass, not an incremental tick.
 
 ---
 **Protocol:** run these on RunPod (see `/runpod-lifecycle` + `/houston-method-v2`);
