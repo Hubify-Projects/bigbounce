@@ -6,6 +6,30 @@
 % Main theory paper: paper1a_ech_nogo.tex (Golden 2026a)
 % Compile: pdflatex paper1b_mcmc_companion && bibtex paper1b_mcmc_companion && pdflatex paper1b_mcmc_companion && pdflatex paper1b_mcmc_companion
 %
+% v1B.0.88 (2026-06-30 — RB-INT-v87 closure. Fresh multi-vendor INT round on the
+%   retitled consistency-check companion: Gemini ACCEPT-w/-minor, OpenAI MAJOR-REV,
+%   Grok REJECT. Truth-audit verdict-first:
+%   (1) OpenAI-E1 VERIFIED (real abstract-vs-body inconsistency): abstract attributed
+%       the ~25x fine-tuning to the cos-theta_i-flat prior midpoint, but the body
+%       (L2170-2173) correctly gives >100x under the cos-flat prior (midpoint theta=pi/2)
+%       and ~25x only relative to the ad-hoc theta_i~0.5 midpoint. Abstract corrected to
+%       match body: ">=100-fold under cos-theta_i-flat prior; ~25-fold vs theta~0.5 midpoint".
+%   (2) Gemini-M1 (S8 Gaussian-combination notation) partially STALE — the \otimes operator
+%       IS present in source (L1544, renders as ⊗); PDF-extraction ran the numbers together.
+%       Kept fix: labeled \otimes as "inverse-variance-weighted combination" for clarity.
+%   (3) OpenAI-E4 (w0wa inference wall) largely already-satisfied by v86 appendix opening;
+%       added an explicit bold "must not be used for quantitative inference" banner + updated
+%       the deferred control-chain note to "currently computing as fresh MPI MCMC runs"
+%       (honest: SN-overlap-controlled chains RUNNING on pod, no results claimed).
+%   (4) Grok-E3 FALSIFIED: claimed abstract DNeff (-0.020+-0.169 / +0.058+-0.179) are
+%       "one-sided 95% upper limits after truncation". FALSE — those are two-sided posterior
+%       means±sigma ("consistent with zero"); the one-sided bounds (DNeff<0.31/<0.40) are a
+%       SEPARATE, clearly-labeled quantity in the body (L1049). Grok conflated the two.
+%   (5) Grok-E1 FALSIFIED: "retitle to remove spin-torsion verification" — paper was ALREADY
+%       retitled to consistency-check companion (v87); Gemini+OpenAI both confirm framing is
+%       appropriate. Grok also FALSE on Gemini's "us. regenerable"/URL-space typos — both are
+%       PDF-extraction artifacts; source (L3082 "vs.\ regenerable", L3120 \url{}) is clean.
+%   No fabricated math, no compute-gated item faked. 0 undef-refs.)
 % v1B.0.82 (2026-06-28 — INT self-containment closure: load-bearing theory results
 %   imported from Paper I(a) by citation only now restated in-paper. Added an
 %   "Imported theory results (summarized for standalone readability)" paragraph to
@@ -153,7 +177,7 @@
 %   FALSIFIED list (14 items) not acted on.)
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1B.0.87}
+\newcommand{\paperVersion}{v1B.0.88}
 \newcommand{\paperTimestamp}{June 30, 2026}
 % v1B.0.86 (2026-06-30 — RCEXT-P1B substantive closure. (1) w0wa DEMOTED:
 %   Table II (tab:iter2_posterior) + physics-interpretation + caveats(a-e) +
@@ -1208,8 +1232,9 @@ Table~\ref{tab:alp_restricted_subsets} for the per-subset readout).
 density $\rho_a\sim m^2 f_a^2 \theta_i^2 \sim H_0^2 \MPl^2$ is of order
 the critical density today, so the spectator label is only consistent
 under the explicit restriction $\theta_i\ll 1$ (which constitutes
-a ${\sim}25$-fold fine-tuning of the misalignment initial condition
-relative to the natural $\cos\theta_i$-flat prior midpoint, quantified
+a ${\gtrsim}100$-fold fine-tuning of the misalignment initial condition
+under the natural $\cos\theta_i$-flat prior --- equivalently ${\sim}25$-fold
+relative to the ad-hoc $\theta_i\!\approx\!0.5$ midpoint --- quantified
 in Sec.~\ref{sec:birefringence_check}); at $\theta_i\sim 1$
 the ALP must instead be treated as the dark-energy field itself, which
 is outside the scope of this companion-paper consistency check.
@@ -1539,8 +1564,8 @@ the DES-Y3 $S_8$ Gaussian prior $0.776 \pm 0.017$
 The Planck+BAO+SN $S_8$ marginal is $0.827\pm 0.010$ from a direct GetDist
 pass over the frozen chains ($132{,}949$ samples). With the
 chain-recomputed marginal, the full-tension posterior
-$S_8 = 0.814\pm 0.008$ is consistent with the naive two-Gaussian
-combination of the Planck+BAO+SN marginal and the DES-Y3 prior
+$S_8 = 0.814\pm 0.008$ is consistent with the naive inverse-variance-weighted
+combination (denoted $\otimes$) of the Planck+BAO+SN marginal and the DES-Y3 prior
 ($0.827\pm 0.010 \otimes 0.776\pm 0.017 = 0.814\pm 0.009$; agreement at
 the $0.01\sigma$ level). The Planck+BAO+SN marginal sits in $2.6\sigma$
 two-Gaussian tension with DES-Y3 (posterior-overlap integral
@@ -2806,7 +2831,10 @@ supernova likelihood is an overlap-uncorrected DES-Y5$\times$Pantheon$+$ product
 (caveat~(e)): the posterior widths are artificially narrowed and no
 $\sigma$-distance, significance, directional robustness, or model-selection
 statistic is quotable from it. Nothing in the main body depends on any number
-in this appendix.
+in this appendix. \textbf{The $w_0,w_a$ values reported below are diagnostic
+raw chain readouts only and must not be used for quantitative inference or
+cosmological constraint;} the overlap-controlled control chains needed to make
+any inferential statement (specified below) are in progress.
 
 \subsection*{Scope, framing, and deferred control chains}\label{sec:w0wa_crosscheck}
 
@@ -2828,10 +2856,10 @@ required to make any \emph{directional} statement rigorous --- DESI~DR2 $+$
 Planck~NPIPE $+$ Pantheon$+$ only, and DESI~DR2 $+$ Planck~NPIPE $+$
 DES-SN5YR only, each followed by a joint cross-covariance comparison of the
 shifts in $w_0$, $w_a$, $w_0+w_a$, $w_{\rm pivot}$, and $\chi^2$ --- are
-\emph{deferred to a dedicated follow-up}: they require fresh MPI MCMC runs
-beyond the compute scope of this verification companion, and until they are
-run no robustness of the quintom-B direction against the overlap systematic
-is claimed. The goodness-of-fit decomposition ($\chi^2_{\rm BAO}$,
+\emph{deferred to a dedicated follow-up} and are currently computing as
+fresh MPI MCMC runs; until they converge no robustness of the quintom-B
+direction against the overlap systematic is claimed, and their results will
+be folded into a subsequent revision when available. The goodness-of-fit decomposition ($\chi^2_{\rm BAO}$,
 $\chi^2_{\rm CMB}$, $\chi^2_{\rm SN}$) is reported in Table~\ref{tab:iter2_posterior};
 model-comparison statistics (AIC, BIC, $\ln B$) are \emph{not} reported there
 because a robust $\ln B$ against $\Lambda$CDM requires dedicated nested sampling
