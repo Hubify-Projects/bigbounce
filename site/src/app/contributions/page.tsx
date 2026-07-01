@@ -325,6 +325,85 @@ const contributions: Contribution[] = [
       },
     ],
   },
+  {
+    id: "bigae-anomaly-detector",
+    tier: "N2",
+    title: "BigAE Multi-Survey Autoencoder Anomaly Detector",
+    paper: "Paper 3",
+    oneLine:
+      "A deterministic symmetric autoencoder trained per-survey on native data, scoring 269,317 objects across 6 surveys by reconstruction residual — the largest-by-sources autoencoder anomaly search assembled for cosmological-anomaly discovery.",
+    why: "Turns 'anomaly' from a hand-tuned cut into a learned, survey-native reconstruction score, so one pipeline scales across heterogeneous surveys and every headline count is reproducible from committed scripts rather than a promise.",
+    what:
+      "Per-survey NATIVE retrains (the cross-transfer failure mode — a LAMOST-trained model drifts to an ~98% blue-excess artifact on other surveys — forced a native-retrain protocol); standardized reconstruction-residual score S. Validated not by injection-recovery but by a 5-fold cross-validation robustness gate (mean pairwise Jaccard 0.862) plus an out-of-distribution Jaccard gate — a validation methodology for UNSUPERVISED anomaly catalogs. UMAP of the latent space shows the high-score anomalies concentrate in distinct islands rather than scattering.",
+    prior:
+      "Autoencoder outlier detection (Baron & Poznanski 2017); single-survey spectral anomaly searches.",
+    ours:
+      "No prior work combined per-survey-native autoencoder retrains into a single 6-survey reconstruction-scored anomaly catalog at this scale, with a cross-validation/OOD validation gate replacing injection-recovery for an unsupervised search. Model + catalog released open-source.",
+    verify: [
+      {
+        label: "6-way dedup artifact (EXACT-MATCH)",
+        href: "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p3_anomaly_engine/outputs/sixway_dedup_artifact.json",
+      },
+      {
+        label: "bamfai/desi-spectral-anomaly-detector (model)",
+        href: "https://huggingface.co/bamfai/desi-spectral-anomaly-detector",
+      },
+      {
+        label: "bamfai/bigbounce-anomaly-catalog (dataset)",
+        href: "https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog",
+      },
+    ],
+  },
+  {
+    id: "chirality-equivariant-classifier",
+    tier: "N2",
+    title: "Z₂-Flip-Equivariant Chirality Classifier (released model)",
+    paper: "Papers 4 & 5",
+    oneLine:
+      "A flip-equivariant Vision Transformer that classifies galaxy spin handedness with parity symmetry built into the architecture — the correct inductive bias for a parity-violation measurement — with D4 test-time averaging giving 2.98× systematic-dipole suppression. Checkpoint released on HuggingFace.",
+    why: "For a chirality-DIPOLE measurement, an ordinary classifier can bake in an orientation bias that manufactures a signal; making the network exactly equivariant under the parity flip removes that entire class of systematic by construction rather than by post-hoc correction.",
+    what:
+      "ViT-Small backbone with Z₂-flip equivariance enforced so CW↔CCW predictions transform correctly under image reflection; D4 (dihedral) test-time averaging suppresses residual orientation systematics 2.98×; calibrated on Galaxy Zoo 1 labels. Released as bamfai/galaxy-chirality-v2 with weights.",
+    prior:
+      "CNN/ViT galaxy-morphology classifiers (Galaxy Zoo DECaLS, Zoobot); standard non-equivariant chirality classifiers (Shamir et al.).",
+    ours:
+      "First use of a built-in parity-equivariant classifier for a cosmological chirality-dipole measurement, with the equivariance itself as the systematic-control mechanism; model + weights released for reuse.",
+    verify: [
+      {
+        label: "bamfai/galaxy-chirality-v2 (model)",
+        href: "https://huggingface.co/bamfai/galaxy-chirality-v2",
+      },
+      {
+        label: "bamfai/galaxy-chirality-catalog (dataset)",
+        href: "https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog",
+      },
+    ],
+  },
+  {
+    id: "gz1-only-independence",
+    tier: "N2",
+    title: "Pseudo-Label-Independence Retrain (GZ1-only null)",
+    paper: "Paper 4",
+    oneLine:
+      "A control classifier trained on Galaxy Zoo 1 human labels ONLY (zero CE-ResNet pseudo-labels; val acc 0.978) reproduces the chirality-dipole null at z = −0.04σ — proving the vanishing dipole is not an artifact inherited from the pseudo-labels.",
+    why: "Directly answers the strongest circularity objection to a null from a partly-pseudo-labeled classifier: retrain on fully-independent human supervision and check the physical null survives. It does.",
+    what:
+      "Retrained the equivariant ViT on GZ1 CW/CCW human labels only (CE-ResNet pseudo-label block gated off), re-inferred the galaxy sample, and ran the IDENTICAL real-space dipole estimator + per-pixel permutation null: z = −0.04σ (rank-p = 0.45), consistent with the canonical +0.41σ null.",
+    prior:
+      "Self-training / pseudo-label validation typically checks classifier accuracy, not downstream-measurement independence.",
+    ours:
+      "A downstream-MEASUREMENT pseudo-label-independence test: retrain on fully-independent supervision and confirm the physical null (not merely accuracy) survives — a reusable template for validating ML-derived cosmological null results.",
+    verify: [
+      {
+        label: "gz1only_dipole_result.json",
+        href: "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/outputs/gz1only_dipole_result.json",
+      },
+      {
+        label: "bamfai/galaxy-chirality-v2 (gz1only ckpt)",
+        href: "https://huggingface.co/bamfai/galaxy-chirality-v2/tree/main/gz1only",
+      },
+    ],
+  },
 ];
 
 function ContributionCard({ c }: { c: Contribution }) {
