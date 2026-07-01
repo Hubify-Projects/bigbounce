@@ -186,6 +186,20 @@ Key values to grep when syncing: `2.9\sigma` (H0 tension), `1.5\sigma` (sigma8),
 
 All audits and revisions are tracked in `project-context/peer-reviews/`.
 
+> **Why this methodology matters.** BigBounce's review loop is **vendor-agnostic
+> adversarial peer review**: independent models from different labs (Anthropic +
+> OpenAI + Google + xAI + Perplexity) plus an independent external browser leg are
+> told to *refute* each claim, verdict-first, with a separate integrity audit
+> guarding against self-favoring bias (see standing directives A–G in `CLAUDE.md`).
+> The 2026 multi-agent wave (Sakana Fugu, Hermes Mixture-of-Agents, Claude Science)
+> blends models *cooperatively* to raise a score; this loop does the opposite —
+> it optimizes catching the false positive before it ships (the hallucinated
+> derivation, the fabricated ACCEPT, the headlined-favorable value), which is
+> exactly what caught real errors here (overlap-inflated σ-distances, a mislabeled
+> catalog tier that failed injection-recovery). BigBounce is the flagship proof of
+> the Hubify moat; see `project-context/claude-science/` for the Claude Science
+> integration + AI-for-Science credits plan.
+
 ### Revision History
 
 | Round | Date | Issues | Status |
