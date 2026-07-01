@@ -71,7 +71,7 @@ fold real results into the paper; re-review.
     `best_cmb_native.pt` + `cmb_native_patches.npy` + 200k native scores, which
     are on a now-EXITED pod and NOT in the HF release (released Planck parquet is
     the cross-transfer baseline, patch_idx<20k); the one RUNNING pod refused SSH.
-- [ ] **Native SDSS score histogram** (Grok M2) + **marginal-α posterior fold-in** (Grok M3).
+- [x] **Native SDSS score histogram** (Grok M2) — DONE 2026-06-30: sdss_native_score_histogram.py over 77,905 SDSS DR18 native rescores → outputs/sdss_native_score_histogram.{json,png} (99th pct 0.817, 780 above). Committed. + **marginal-α posterior fold-in** (Grok M3).
 
 ## P2 (f_NL recast) — deepest, lowest-priority (recast is honest as-is)
 - [ ] **Cubic in-in transfer through an explicit bounce** (the assumption-(d) uncertainty).
