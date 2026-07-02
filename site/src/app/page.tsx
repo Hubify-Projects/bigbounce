@@ -183,6 +183,15 @@ export default async function HomePage() {
   // Readiness comes from getLivePapers ONLY — the single Convex-first source
   // shared with the live paper-state surfaces. Never re-read papers.ts.readiness.
   const livePapers = await getLivePapers();
+
+  // Review-proof band data. Only kinds that ARE reviews count as review
+  // rounds; skill-improvement entries are program bookkeeping and closure
+  // waves are fixes, tallied separately so the trust number stays honest.
+  const timeline = sortedReviewRounds();
+  const REVIEW_KINDS = new Set(["external-browser", "internal-api", "internal-cc"]);
+  const reviewRoundCount = timeline.filter((r) => REVIEW_KINDS.has(r.kind)).length;
+  const closureWaveCount = timeline.filter((r) => r.kind === "closure-wave" || r.kind === "ext-closure").length;
+  const latestRound = timeline[0];
   const avgReadiness = Math.round(
     livePapers.reduce((acc, p) => acc + p.readinessComputed, 0) /
       Math.max(1, livePapers.length),
@@ -234,40 +243,30 @@ export default async function HomePage() {
       </section>
 
       {/* 1.5 — Adversarial review proof band (counts computed from the real
-          timeline at build time; the /reviews page is the full record) */}
+          timeline at build time; the /reviews page is the full record).
+          Count ONLY actual review rounds — skill-improvement and closure
+          entries are program bookkeeping, not reviews, and inflating this
+          number would undercut the exact trust claim the band makes. */}
       <section style={{ marginBottom: 40 }}>
-        {(() => {
-          const rounds = sortedReviewRounds();
-          const latest = rounds[0];
-          return (
-            <div
-              style={{
-                border: "1px solid var(--border)",
-                borderLeft: "3px solid var(--accent)",
-                borderRadius: "var(--radius-lg)",
-                background: "var(--surface)",
-                padding: "14px 18px",
-              }}
-            >
-              <p className="eyebrow" style={{ marginBottom: 6 }}>
-                How every claim here gets vetted
-              </p>
-              <p style={{ fontSize: 14, lineHeight: 1.7, color: "var(--text-secondary)", maxWidth: "72ch", margin: 0 }}>
-                Every result on this site has been through <strong style={{ color: "var(--text)" }}>{rounds.length} adversarial
-                review rounds</strong> — model families from five different labs told to refute each paper, plus
-                independent external referees, with a separate integrity audit on the review process itself. The loop
-                has caught real errors (an overlap-inflated significance, a mislabeled catalog tier) before any reader
-                could. The complete round-by-round record is public
-                {latest ? <> — most recent: {latest.dateISO}</> : null}.
-              </p>
-              <p style={{ margin: "8px 0 0" }}>
-                <Link href="/reviews" style={{ color: "var(--accent)", fontSize: 13.5 }}>
-                  Browse the full review timeline <ArrowRight size={13} style={{ display: "inline", verticalAlign: "-2px" }} />
-                </Link>
-              </p>
-            </div>
-          );
-        })()}
+        <div className="card" style={{ borderLeft: "3px solid var(--accent)" }}>
+          <p className="eyebrow" style={{ marginBottom: 6 }}>
+            How every claim here gets vetted
+          </p>
+          <p style={{ fontSize: 14, lineHeight: 1.7, color: "var(--text-secondary)", maxWidth: "72ch", margin: 0 }}>
+            Every result on this site has been through{" "}
+            <strong style={{ color: "var(--text)" }}>{reviewRoundCount} adversarial review rounds</strong> — model
+            families from five different labs told to refute each paper, plus independent external referees, with a
+            separate integrity audit on the review process itself — and {closureWaveCount} closure waves fixing what
+            those rounds found. The loop has caught real errors (an overlap-inflated significance, a mislabeled
+            catalog tier) before any reader could. The complete record is public
+            {latestRound ? <> — most recent: {latestRound.dateISO}</> : null}.
+          </p>
+          <p style={{ margin: "8px 0 0" }}>
+            <Link href="/reviews" style={{ color: "var(--accent)", fontSize: 13.5 }}>
+              Browse the full review timeline <ArrowRight size={13} style={{ display: "inline", verticalAlign: "-2px" }} />
+            </Link>
+          </p>
+        </div>
       </section>
 
       {/* 2 — Two halves / program arc */}
