@@ -1,0 +1,107 @@
+{
+  "script": "scripts/systematic_l1_forward_model_morphology.py",
+  "date_utc": "2026-07-02T09:07:15Z",
+  "purpose": "EXTENDED forward model: add the classifier confidence-vs-depth response to the imaging (depth/PSF/EBV/leg/density) systematic basis and re-measure the forward-modelled fraction of the +3.64 sigma canonical-mask l=1 residual. Per-galaxy DR8-sweep morphology (b/a, fracdev, shape_r) is pod-bound and NOT included (see honesty_note).",
+  "config": {
+    "nside": 64,
+    "n_spirals": 3201160,
+    "n_brick_sources": 341454,
+    "n_in_mask_pixels": 24187,
+    "f_sky_canonical": 0.7409261067708334,
+    "imaging_templates": [
+      "f_BASS_rel_DES",
+      "f_DECaLS_rel_DES",
+      "rho_p",
+      "rho_p_sq",
+      "psf_mean",
+      "depth_mean",
+      "ebv"
+    ],
+    "added_confidence_templates": [
+      "conf_indep_of_imaging"
+    ],
+    "classifier_depth_response_slope": 0.0029521625623415925,
+    "imaging_only_condition_number": 51.425202831787175,
+    "extended_condition_number": 51.57381273786663,
+    "fit": "WLS (galaxy-count weights); SYSTEMATIC-ONLY basis (no dipole vectors)"
+  },
+  "imaging_only_fit_coefficients": {
+    "f_BASS_rel_DES": 0.001246694073125295,
+    "f_DECaLS_rel_DES": 0.0029060088821837946,
+    "rho_p": 0.0002017615170365728,
+    "rho_p_sq": -2.6627068459158197e-05,
+    "psf_mean": 0.010158203204211921,
+    "depth_mean": -0.0011970712303809386,
+    "ebv": 0.02138822035524893,
+    "const": -3.729186936470468e-18
+  },
+  "extended_fit_coefficients": {
+    "f_BASS_rel_DES": 0.0012466940731252953,
+    "f_DECaLS_rel_DES": 0.002906008882183796,
+    "rho_p": 0.00020176151703658025,
+    "rho_p_sq": -2.662706845916037e-05,
+    "psf_mean": 0.01015820320421192,
+    "depth_mean": -0.0011970712303809394,
+    "ebv": 0.021388220355248816,
+    "conf_indep_of_imaging": 0.0001508203641384298,
+    "const": -1.43359066547372e-18
+  },
+  "observed_residual": {
+    "A1_amplitude_realspace": 0.007040031846243215,
+    "A1_amplitude_incode_recompute": 0.007228576360513163,
+    "C1_decoupled_incode": 9.761183282948279e-06,
+    "C1_depth_stratified_data": 2.348109981323473e-05,
+    "sigma_direct_500MC": 3.64,
+    "sigma_density_stratified": 3.8
+  },
+  "imaging_only_forward_model": {
+    "l1_amplitude": 0.0037850386522197584,
+    "l1_vector": {
+      "cx": -0.0010252289318160642,
+      "cy": -0.0019955604696703043,
+      "cz": 0.0030484687382445128
+    },
+    "l1_direction": {
+      "ra_deg": 242.80794642047326,
+      "dec_deg": 53.648867634310605
+    },
+    "C1_power": 3.93661320780861e-06,
+    "cos_alignment": 0.8348413702520049,
+    "fraction_of_observed_amplitude": 0.5236215906766813,
+    "fraction_of_observed_power": 0.40329262279968076,
+    "aligned_projection_amplitude": 0.003159906854875945,
+    "fraction_of_observed_amplitude_aligned": 0.4371409662540551,
+    "predicted_equivalent_sigma_vs_depthstrat_null": 0.729028340019892
+  },
+  "extended_forward_model": {
+    "l1_amplitude": 0.0037868704577286795,
+    "l1_vector": {
+      "cx": -0.0010320830073347281,
+      "cy": -0.0019808633834193304,
+      "cz": 0.00305800143652969
+    },
+    "l1_direction": {
+      "ra_deg": 242.47927634467817,
+      "dec_deg": 53.85504481424135
+    },
+    "C1_power": 3.948626774905978e-06,
+    "cos_alignment": 0.8326740437317591,
+    "fraction_of_observed_amplitude": 0.5238750023330799,
+    "fraction_of_observed_power": 0.4045233718542912,
+    "aligned_projection_amplitude": 0.003153228737125277,
+    "fraction_of_observed_amplitude_aligned": 0.4362171166026704,
+    "predicted_equivalent_sigma_vs_depthstrat_null": 0.7329641260807731
+  },
+  "improvement": {
+    "imaging_only_fraction": 0.5236215906766813,
+    "extended_fraction": 0.5238750023330799,
+    "delta_fraction_points": 0.0002534116563985833,
+    "un_modelled_remainder": 0.47612499766692007,
+    "imaging_only_cos_alignment": 0.8348413702520049,
+    "extended_cos_alignment": 0.8326740437317591,
+    "prior_committed_imaging_only_fraction": 0.5389442635381818
+  },
+  "verdict": "NO_MEANINGFUL_IMPROVEMENT",
+  "verdict_text": "The classifier confidence-vs-depth response changes the forward-modelled l=1 fraction by only +0.0 pts (52% -> 52%). Confidence adds little beyond the imaging templates it correlates with. The ~half remainder stays an honest open item; the paper's 54% imaging-only honest-partial framing is retained.",
+  "honesty_note": "ADDED locally-executable template: the classifier confidence-vs-depth response, built from the per-galaxy confidence_eq column (available in the chirality catalog) x brick-level depth. STILL MISSING (genuine open item): per-galaxy DR8-sweep morphology b/a (b_over_a), fracdev, shape_r_eff, shapedev_e1/e2 -- these require the ~150 GB DR8 sweep catalogs (H200 pod backup /workspace/dr8_sweep_fetch/catalog_production_with_ba.parquet). The RunPod API key returned HTTP 403 (expired) this session and the canonical volume was not mountable within the time budget, so per-galaxy morphology could NOT be added. The extended fraction here is therefore the imaging + classifier-response forward model, still a LOWER BOUND pending per-galaxy morphology."
+}
