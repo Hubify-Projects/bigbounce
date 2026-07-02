@@ -14,25 +14,25 @@ const SHARED_IMG_UTIL = `
     var ph = document.createElement('div');
     if (isFig) {
       ph.style.cssText =
-        'width:100%;min-height:160px;background:color-mix(in srgb,var(--bg-subtle,#1e293b) 80%,transparent);' +
-        'border:1px solid var(--border,#334155);display:flex;flex-direction:column;align-items:center;' +
+        'width:100%;min-height:160px;background:color-mix(in srgb,var(--surface-2) 80%,transparent);' +
+        'border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;' +
         'justify-content:center;gap:6px;padding:16px;box-sizing:border-box;';
       ph.innerHTML =
-        '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted,#64748b)" stroke-width="1.5">' +
+        '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="1.5">' +
           '<rect x="3" y="3" width="18" height="18" rx="2"/>' +
           '<circle cx="8.5" cy="8.5" r="1.5"/>' +
           '<path d="m21 15-5-5L5 21"/>' +
         '</svg>' +
         lines.map(function(l) {
-          return '<span style="font-size:11px;color:var(--text-muted,#64748b);font-family:monospace;text-align:center;">' + l + '</span>';
+          return '<span style="font-size:11px;color:var(--text-muted);font-family:monospace;text-align:center;">' + l + '</span>';
         }).join('');
     } else {
       ph.style.cssText =
-        'width:' + w + 'px;height:' + h + 'px;background:var(--bg-subtle,#1e293b);' +
-        'border:1px solid var(--border,#334155);display:inline-flex;flex-direction:column;' +
+        'width:' + w + 'px;height:' + h + 'px;background:var(--surface-2);' +
+        'border:1px solid var(--border);display:inline-flex;flex-direction:column;' +
         'align-items:center;justify-content:center;gap:1px;padding:2px;box-sizing:border-box;vertical-align:middle;';
       ph.innerHTML = lines.map(function(l) {
-        return '<span style="font-size:8px;color:var(--text-muted,#64748b);font-family:monospace;text-align:center;line-height:1.2;word-break:break-all;">' + l + '</span>';
+        return '<span style="font-size:8px;color:var(--text-muted);font-family:monospace;text-align:center;line-height:1.2;word-break:break-all;">' + l + '</span>';
       }).join('');
     }
     if (img.parentNode) img.parentNode.replaceChild(ph, img);

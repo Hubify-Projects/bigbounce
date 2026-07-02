@@ -40,10 +40,10 @@ const TIER_DEF: Record<Tier, string> = {
 };
 
 const TIER_COLOR: Record<Tier, string> = {
-  N4: "#b91c1c",
-  N3: "#16a34a",
-  N2: "#2563eb",
-  N1: "#9333ea",
+  N4: "var(--tier-n4)",
+  N3: "var(--tier-n3)",
+  N2: "var(--tier-n2)",
+  N1: "var(--tier-n1)",
 };
 
 const contributions: Contribution[] = [
@@ -603,7 +603,7 @@ export default function ContributionsPage() {
           Program arc: P1A (ECH theory / no-go) → P1B (MCMC + pipeline companion) →
           P2 (f_NL forecast) → P3 (anomaly catalog) + P4 (chirality null) +
           P5 (DESI chirality × environment). See the{" "}
-          <Link href="/papers" style={{ color: "var(--accent)" }}>
+          <Link href="/paper" style={{ color: "var(--accent)" }}>
             six papers
           </Link>{" "}
           for full status and PDFs.

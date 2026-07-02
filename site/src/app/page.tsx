@@ -47,8 +47,8 @@ const arcRoles: Array<{ n: string; role: string }> = [
 // Concise contributions — a short, scannable subset of /contributions.
 // Every line is copied from the canonical contributions data (no new claims).
 const TIER_COLOR: Record<"N3" | "N2", string> = {
-  N3: "#16a34a",
-  N2: "#2563eb",
+  N3: "var(--tier-n3)",
+  N2: "var(--tier-n2)",
 };
 const topContributions: Array<{
   id: string;
@@ -116,7 +116,7 @@ const artifactGroups: Array<{
   {
     label: "Paper PDFs",
     blurb: "Every paper compiles to a versioned PDF, served from the papers index.",
-    links: [{ label: "Browse all six papers", href: "/papers", internal: true }],
+    links: [{ label: "Browse all six papers", href: "/paper", internal: true }],
   },
   {
     label: "Datasets on HuggingFace",
@@ -227,7 +227,7 @@ export default async function HomePage() {
             </Link>
           </Button>
           <Button asChild variant="outline">
-            <Link href="/papers">Read the six papers</Link>
+            <Link href="/paper">Read the six papers</Link>
           </Button>
         </div>
       </section>
@@ -417,7 +417,7 @@ export default async function HomePage() {
 
       {/* 4 — Concise contributions */}
       <section className="section">
-        <p style={sectionLabel}>What's new here</p>
+        <p style={sectionLabel}>What&rsquo;s new here</p>
         <h2 style={{ marginTop: 0 }}>Top contributions</h2>
         <p style={{ marginTop: 4, fontSize: 13, lineHeight: 1.6, color: "var(--text-secondary)", maxWidth: "66ch" }}>
           A short list of the program&apos;s most novel results. Each is scored on a

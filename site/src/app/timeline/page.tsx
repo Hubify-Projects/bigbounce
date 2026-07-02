@@ -19,7 +19,7 @@ const events: Array<{
     time:"∞ — ?",
     label:"Parent Universe",
     desc:"A previous universe contracts under gravity. Density increases toward Planck scale (~10⁹³ g/cm³).",
-    color:"#7a6d5d",
+    color:"var(--text-tertiary)",
   },
   {
     time:"t → 0⁻",
@@ -31,7 +31,7 @@ const events: Array<{
     time:"t = 0",
     label:"THE BOUNCE",
     desc:"Torsion (or quantum gravity) prevents singularity. Density reaches maximum but stays finite. Expansion begins.",
-    color:"#8b4639",
+    color:"var(--crit)",
   },
   {
     time:"10⁻³⁶ s",
@@ -43,13 +43,13 @@ const events: Array<{
     time:"3 min",
     label:"Nucleosynthesis",
     desc:"Light elements form (H, He, Li). Identical to standard cosmology. ΔNeff ≈ 0 confirmed by our MCMC.",
-    color:"#2f6f4e",
+    color:"var(--accent)",
   },
   {
     time:"380,000 yr",
     label:"CMB Release",
     desc:"Universe becomes transparent. CMB carries bounce imprint: f_NL, birefringence β = 0.27°, spectral index.",
-    color:"#2f6f4e",
+    color:"var(--accent)",
   },
   {
     time:"~1 Gyr",
@@ -67,25 +67,25 @@ const events: Array<{
     time:"13.8 Gyr",
     label:"NOW (2026)",
     desc:"BigBounce research program: 6 papers, 8 surveys, 37.3M sources, 378,280 anomalies, 309,189 frozen MCMC samples, 8.47M-galaxy chirality catalog. 20+ review rounds complete (latest INT-M2, 2026-06-30) — MINOR-dominant with occasional ACCEPTs, 0 unaddressed genuine findings; readiness 96; awaiting author sign-off → coordinated arXiv drop.",
-    color:"#554c43",
+    color:"var(--text-secondary)",
   },
   {
     time:"2028",
     label:"SPHEREx Launch",
     desc:"NASA's SPHEREx will measure f_NL to σ ≈ 0.7–1.0. If f_NL ≈ -4.375: bounce confirmed at >4σ.",
-    color:"#554c43",
+    color:"var(--text-secondary)",
   },
   {
     time:"~2032",
     label:"LiteBIRD",
     desc:"JAXA's LiteBIRD will measure birefringence to ~0.03°. Tests β = 0.27° prediction at ~9σ.",
-    color:"#7a6d5d",
+    color:"var(--text-tertiary)",
   },
   {
     time:"~2035",
     label:"LISA",
     desc:"ESA's LISA will detect induced gravitational waves from PBH formation. Tests bounce GW spectrum directly.",
-    color:"#7a6d5d",
+    color:"var(--text-tertiary)",
   },
 ];
 
