@@ -46,6 +46,22 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "RS15-targeted-2026-07-02",
+    kind: "external-browser",
+    dateISO: "2026-07-02",
+    title: "RS15 targeted re-sweep — P4 morphology closure LIFTS residual-attribution flag (Grok+Gemini both MINOR, 0 MAJOR); P3 §IID/§III consistency fix CLEARS on both vendors",
+    papers: ["P4", "P3"],
+    summary:
+      "Targeted gate-test re-sweep on the 2 papers with real content changes since RS11. P4 v1.0.210: completed-measurement forward-model added for morphology systematics — the residual-attribution flag LIFTED; both Grok and Gemini returned MINOR with 0 MAJOR (Gemini: 'exceptionally well-supported'). P4 readiness 88→92, matching P5 near-clean status. P3 v3.1.132: §IID/§III internal consistency fix CLEARED on both vendors — Grok 'closes the previous gap' → MINOR; Gemini REJECT persists only on disclosed exploratory-tier limits (harsh-floor, none genuinely-new per truth-audit). 0 genuinely-new findings across both papers. Non-noise targeted round on real content changes only.",
+    keyTakeaways: [
+      "P4 v1.0.210: residual-attribution flag LIFTED — Grok+Gemini both MINOR (0 MAJOR); Gemini 'exceptionally well-supported'; readiness 88→92",
+      "P3 v3.1.132: §IID/§III consistency gap CLEARED — Grok MINOR ('closes the previous gap'); Gemini REJECT on disclosed exploratory-tier limits only (harsh-floor, truth-audited 0 genuinely-new)",
+      "0 genuinely-new findings across both swept papers — targeted gate-test confirms real closures lifted the specific flags",
+      "Non-noise round: only papers with substantive content changes re-swept; P1A/P1B/P2/P5 not re-swept (carry RS11 verdicts)",
+    ],
+    links: [],
+  },
+  {
     id: "RS-FLOOR-SKILLS-2026-07-01",
     kind: "skill-improvement",
     dateISO: "2026-07-01",
@@ -2828,6 +2844,20 @@ export const externalVerdictRounds: ExternalRoundVerdicts[] = [
       P5: ["NO_VERDICT", "MINOR", "MINOR"],
     },
     note: "RS11: 0 genuinely-new real findings across all 6 papers — CONVERGENCE FLOOR reached. 2 Gemini REJECTs (P1B, P3) confirmed misreads/re-flags of disclosed caveats. All 3 RS10 findings confirmed closed. P4+P5 GENUINE CONVERGENCE (submit-ready). Harsh verdict words are universal referee variance, not defects. Iterative LLM refereeing exhausted.",
+  },
+  {
+    roundId: "RS15-targeted",
+    dateISO: "2026-07-02",
+    windowPT: "Jul 2 · targeted re-sweep on P4 + P3 (real content changes only)",
+    verdicts: {
+      P1A: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P1B: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P2: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P3: ["NO_VERDICT", "MINOR", "REJECT"],
+      P4: ["NO_VERDICT", "MINOR", "MINOR"],
+      P5: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+    },
+    note: "RS15 targeted gate-test: only P4 + P3 re-swept (real content changes; P1A/P1B/P2/P5 carry RS11 NO_VERDICT for ChatGPT — not re-swept this round). P4 v1.0.210 morphology completed-measurement forward-model: residual-attribution flag LIFTED — Grok+Gemini both MINOR, 0 MAJOR (Gemini 'exceptionally well-supported'); readiness 88→92. P3 v3.1.132 §IID/§III consistency fix: Grok MINOR ('closes the previous gap'); Gemini REJECT persists on disclosed exploratory-tier limits only (harsh-floor, 0 genuinely-new per truth-audit). 0 genuinely-new findings across both swept papers.",
   },
 ];
 
