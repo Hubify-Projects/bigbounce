@@ -1,0 +1,69 @@
+{
+  "script": "scripts/systematic_l1_forward_model.py",
+  "date_utc": "2026-07-02T07:54:29Z",
+  "purpose": "Forward model: predict the canonical-mask l=1 chirality residual AMPLITUDE from the depth/morphology imaging systematic, to test whether the paper's attribution of the +3.64 sigma residual is quantitatively demonstrated (Grok external-review flag: attribution without a forward model).",
+  "config": {
+    "nside": 64,
+    "n_spirals": 3201160,
+    "n_brick_sources": 341454,
+    "n_in_mask_pixels": 24087,
+    "f_sky_canonical": 0.49005126953125,
+    "systematic_templates": [
+      "f_BASS_rel_DES",
+      "f_DECaLS_rel_DES",
+      "rho_p",
+      "rho_p_sq",
+      "psf_mean",
+      "depth_mean",
+      "ebv"
+    ],
+    "design_condition_number": 49.52726240661523,
+    "fit": "weighted_least_squares (galaxy-count weights); SYSTEMATIC-ONLY basis (no dipole vectors)"
+  },
+  "systematic_fit_coefficients": {
+    "f_BASS_rel_DES": 0.0012773233585958268,
+    "f_DECaLS_rel_DES": 0.0028591837557996333,
+    "rho_p": 0.00014460839378419547,
+    "rho_p_sq": -2.2159437807418556e-05,
+    "psf_mean": 0.009813616032644619,
+    "depth_mean": -0.001252682933465005,
+    "ebv": 0.02318384226608271,
+    "const": -2.2341424511595367e-18
+  },
+  "observed_residual": {
+    "A1_amplitude_realspace": 0.007040031846243215,
+    "A1_amplitude_incode_recompute": 0.006951177821425127,
+    "C1_decoupled_incode": 9.342854328840464e-06,
+    "C1_depth_stratified_data": 2.348109981323473e-05,
+    "sigma_direct_500MC": 3.64,
+    "sigma_density_stratified": 3.8,
+    "sigma_incode_vs_depthstrat_null": 2.500176598773211
+  },
+  "forward_model_prediction": {
+    "A_sys_l1_amplitude": 0.003746297411690908,
+    "A_sys_l1_vector": {
+      "cx": -0.001014013314506654,
+      "cy": -0.0019292040136652615,
+      "cz": 0.0030470794489975265
+    },
+    "A_sys_l1_direction": {
+      "ra_deg": 242.27303317917125,
+      "dec_deg": 54.425286717323466
+    },
+    "A_sys_C1_power": 3.8865729108908444e-06,
+    "predicted_equivalent_sigma_vs_depthstrat_null": 0.7126345494417012,
+    "cos_alignment_with_observed_dipole": 0.8249649891323108,
+    "aligned_projection_amplitude": 0.0030905642035219936,
+    "fraction_of_observed_amplitude": 0.5389442635381818,
+    "fraction_of_observed_power": 0.41599416774522313
+  },
+  "comparison": {
+    "predicted_over_observed_amplitude": 0.5389442635381818,
+    "predicted_sigma": 0.7126345494417012,
+    "observed_sigma": 3.64,
+    "observed_sigma_density_stratified": 3.8
+  },
+  "verdict": "ATTRIBUTION_PARTIAL",
+  "verdict_text": "The systematic forward model predicts an l=1 amplitude 3.746e-03 = 54% of the observed 6.951e-03 (predicted equivalent significance +0.71 sigma vs observed +3.64). The depth/PSF/EBV/leg/density systematic accounts for a SUBSTANTIAL but INCOMPLETE fraction of the residual. Attribution is supported in sign and partially in amplitude; the un-modelled remainder (per-galaxy morphology b/a, fracdev, shape_r; classifier depth-response) is the honest open gap.",
+  "honesty_note": "Systematic templates available locally: brick-level depth (psfdepth grz), PSF FWHM (psfsize grz), EBV, imaging-leg fractions, source density + density^2. NOT available locally and therefore NOT in this forward model: per-galaxy morphology (b/a, fracdev, shape_r_eff, shapedev_e1/e2; DR8-sweep/pod-bound) and the classifier confidence-vs-depth response as a per-pixel template. This model is therefore a LOWER BOUND on the systematic-predicted l=1 amplitude."
+}
