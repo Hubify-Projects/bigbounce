@@ -1,0 +1,40 @@
+{
+  "task": "P3 ML-hygiene audit: scaler/normalization data-leakage in the DESI 5-fold + OOD reproducibility metrics",
+  "trigger": "Gemini RS10 + re-sweep flag: 'normalization/standardization scalers fit on full data rather than train splits, leaking into held-out reproducibility metrics (5-fold J=0.862, OOD J=0.732)'.",
+  "date": "2026-07-02",
+  "method": "Static audit of the committed BigAE spectroscopic pipeline + the k-fold/OOD scripts, cross-checked against committed result JSONs. No fabrication; numbers reproduced from committed artifacts.",
+  "finding": {
+    "spectroscopic_path_DESI_SDSS_LAMOST_Planck": {
+      "normalization": "PER-SPECTRUM median normalization: each 496-bin resampled spectrum is divided by its own nonzero-bin median (resample_to_desi / resample_to_desi_grid). This is a row-wise transform computed from that spectrum's own values ONLY.",
+      "leakage_present": false,
+      "reason": "A row-wise (per-sample) normalization is mathematically independent of the train/held-out split boundary; no dataset-fit StandardScaler / feature-wise mean-std is used anywhere in train_desi_kfold.py, score_desi_kfold.py, aggregate_kfold.py, or the OOD ensemble scorer. There is nothing to re-fit train-split-only because nothing is fit across samples.",
+      "code_refs": [
+        "pipelines/p3_anomaly_engine/pathc_desi_kfold/fetch_desi_47k_training.py::resample_to_desi_grid (per-spectrum median divide)",
+        "pipelines/p3_anomaly_engine/sdss_native_retrain.py::resample_to_desi (per-spectrum median divide)",
+        "pipelines/p3_anomaly_engine/pathc_desi_kfold/train_desi_kfold.py (loads pre-normalized shards; no scaler)",
+        "pipelines/p3_anomaly_engine/pathc_desi_kfold/score_desi_kfold.py (loads pre-normalized shards; no scaler)"
+      ]
+    },
+    "tabular_path_eROSITA_NEOWISE_Gaia": {
+      "normalization": "Feature-wise standardization / robust median-IQR scaling FIT ON THE FULL SAMPLE, then an 80/20 split. This IS a genuine train/val leakage path and is already disclosed in the paper (Sec Training, L821).",
+      "leakage_present": true,
+      "already_disclosed": true,
+      "already_bounded": "erosita_scaler_refit.json: identical seeds, ONLY scaler-fit population differs (A=full-sample, B=train-split-only). top-298 Jaccard(A,B)=0.758, top-1% Jaccard(A,B)=0.643, full-catalog Spearman=0.941, val_loss A=0.02549 vs B=0.02537 (near-identical). The scaler-fit effect is at/below the model-retrain reproducibility floor (~15-17% extreme-tail churn under either perturbation); per-survey rates and within-survey rankings are robust; only individual extreme-tail memberships carry the quantified ~15% churn. eROSITA is a membership-only exploratory tier and produces no >=0.70 reproducibility-gate headline number."
+    }
+  },
+  "reproducibility_gate_numbers": {
+    "DESI_5fold_mean_pairwise_jaccard": 0.8625,
+    "DESI_5fold_min_pairwise_jaccard": 0.7769,
+    "DESI_5fold_gate": 0.70,
+    "DESI_5fold_pass": true,
+    "DESI_OOD_prod_vs_control_mean_jaccard": 0.7320,
+    "DESI_OOD_control_vs_control_ceiling": 0.8738,
+    "DESI_OOD_gate": 0.50,
+    "DESI_OOD_pass": true,
+    "leak_free": true,
+    "note": "These headline numbers sit on the per-spectrum-normalized spectroscopic path and are therefore ALREADY leak-free. The audit does not change them; re-fitting a scaler train-split-only is a no-op here because no cross-sample scaler exists on this path."
+  },
+  "verdict": "The flag conflates the two P3 pipelines. The J=0.862 / J=0.732 numbers it names are on the per-spectrum-normalized spectroscopic path, which is split-independent and carries NO scaler leakage; they stand unchanged and both PASS their gates. The genuine full-sample-scaler leakage exists ONLY on the tabular tiers (eROSITA/NEOWISE/Gaia), which was already disclosed and already bounded by the committed train-split-only refit control (erosita_scaler_refit.json). No headline reproducibility number is leaked or requires correction.",
+  "action_taken": "Added an explicit no-leakage clarification to the DESI 5-fold paragraph (Sec Path-C validation) stating the spectroscopic normalization is per-spectrum/row-wise and therefore split-independent, cross-referencing the separately-bounded tabular scalers.",
+  "no_fabrication": true
+}
