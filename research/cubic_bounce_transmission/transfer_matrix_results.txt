@@ -1,0 +1,54 @@
+========================================================================
+DERIVED BOUNCE TRANSFER: does f_NL=-35/8 survive cubic transmission?
+========================================================================
+
+### analytic-bounce eta_b=2  (eta_bounce ~ 2.000) ###
+  k= 0.005  k*eta_b= 0.0100  T(k)=1.466772e+02  |zeta'/k zeta|_out=1.557e-01
+  k= 0.010  k*eta_b= 0.0200  T(k)=1.287668e+02  |zeta'/k zeta|_out=3.492e-01
+  k= 0.020  k*eta_b= 0.0400  T(k)=6.984875e+01  |zeta'/k zeta|_out=9.441e-01
+  k= 0.050  k*eta_b= 0.1000  T(k)=2.876084e+01  |zeta'/k zeta|_out=4.716e-01
+  k= 0.100  k*eta_b= 0.2000  T(k)=7.272737e+00  |zeta'/k zeta|_out=1.540e+00
+  k= 0.200  k*eta_b= 0.4000  T(k)=5.410192e+00  |zeta'/k zeta|_out=3.884e-01
+  k= 0.500  k*eta_b= 1.0000  T(k)=5.912777e-01  |zeta'/k zeta|_out=2.771e+00
+
+### analytic-bounce eta_b=5  (eta_bounce ~ 5.000) ###
+  k= 0.005  k*eta_b= 0.0250  T(k)=5.806033e+01  |zeta'/k zeta|_out=1.353e-01
+  k= 0.010  k*eta_b= 0.0500  T(k)=5.084451e+01  |zeta'/k zeta|_out=3.372e-01
+  k= 0.020  k*eta_b= 0.1000  T(k)=2.737520e+01  |zeta'/k zeta|_out=9.299e-01
+  k= 0.050  k*eta_b= 0.2500  T(k)=1.037995e+01  |zeta'/k zeta|_out=4.692e-01
+  k= 0.100  k*eta_b= 0.5000  T(k)=2.526508e+00  |zeta'/k zeta|_out=1.293e+00
+  k= 0.200  k*eta_b= 1.0000  T(k)=1.635767e+00  |zeta'/k zeta|_out=3.607e-01
+  k= 0.500  k*eta_b= 2.5000  T(k)=9.659010e-01  |zeta'/k zeta|_out=1.030e+00
+
+### LQC (Wilson-Ewing)  (eta_bounce ~ 1.562) ###
+  k= 0.005  k*eta_b= 0.0078  T(k)=2.413991e+02  |zeta'/k zeta|_out=2.336e-02
+  k= 0.010  k*eta_b= 0.0156  T(k)=2.391246e+02  |zeta'/k zeta|_out=2.981e-02
+  k= 0.020  k*eta_b= 0.0312  T(k)=2.302200e+02  |zeta'/k zeta|_out=9.857e-02
+  k= 0.050  k*eta_b= 0.0781  T(k)=1.758470e+02  |zeta'/k zeta|_out=2.871e-01
+  k= 0.100  k*eta_b= 0.1562  T(k)=6.324090e+01  |zeta'/k zeta|_out=7.320e-01
+  k= 0.200  k*eta_b= 0.3123  T(k)=7.025532e+00  |zeta'/k zeta|_out=3.283e-01
+  k= 0.500  k*eta_b= 0.7809  T(k)=8.637502e-01  |zeta'/k zeta|_out=1.360e+00
+
+========================================================================
+DERIVED f_NL CORRECTION  (coefficient-free)
+========================================================================
+f_NL preservation requires T(k) ~ k-independent constant AND no
+decaying-mode injection. delta f_NL / f_NL = scale-dependence of T.
+
+analytic-bounce eta_b=2:  eta_bounce~2.00
+   T(k) over band: [146.67722891 128.76676399  69.84875205  28.76084087   7.27273747]
+   d ln T / d ln k = -1.1809   (0 => perfectly scale-invariant transfer)
+   max |T(k)/T0 - 1| over 0.005<k<0.1 = 9.5042e-01
+   => DERIVED |delta f_NL| <= 4.1581e+00   (f_NL = -4.3750 +/- 4.1581e+00)
+
+analytic-bounce eta_b=5:  eta_bounce~5.00
+   T(k) over band: [58.06032768 50.84450787 27.37520367 10.37994877  2.5265078 ]
+   d ln T / d ln k = -1.0059   (0 => perfectly scale-invariant transfer)
+   max |T(k)/T0 - 1| over 0.005<k<0.1 = 9.5648e-01
+   => DERIVED |delta f_NL| <= 4.1846e+00   (f_NL = -4.3750 +/- 4.1846e+00)
+
+LQC (Wilson-Ewing):  eta_bounce~1.56
+   T(k) over band: [241.39912816 239.12464433 230.21995574 175.84702814  63.24090011]
+   d ln T / d ln k = -1.1846   (0 => perfectly scale-invariant transfer)
+   max |T(k)/T0 - 1| over 0.005<k<0.1 = 7.3802e-01
+   => DERIVED |delta f_NL| <= 3.2289e+00   (f_NL = -4.3750 +/- 3.2289e+00)

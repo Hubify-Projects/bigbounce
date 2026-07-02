@@ -1,0 +1,42 @@
+========================================================================
+DERIVED CUBIC IN-IN TRANSFER THROUGH THE BOUNCE (coefficient-free)
+========================================================================
+eps=1.5, Cai contraction f_NL=-4.375
+squeezed config: k_long=0.02, k_short=1.0
+
+  [running] singular-contraction ...
+singular-contraction              |I_vertex|=2.677664e+04  |zeta_L|=5.4986e+02  |zeta_S|=7.7762e+01
+  [running] analytic-bounce (eta_b=2) ...
+analytic-bounce (eta_b=2)         |I_vertex|=2.654890e+00  |zeta_L|=7.5184e+00  |zeta_S|=1.5606e-02
+  [running] analytic-bounce (eta_b=5) ...
+analytic-bounce (eta_b=5)         |I_vertex|=1.455711e-01  |zeta_L|=7.2517e+00  |zeta_S|=4.0619e-02
+  [running] LQC bounce ...
+LQC bounce                        |I_vertex|=3.739884e+00  |zeta_L|=3.3168e+01  |zeta_S|=1.1554e-02
+
+------------------------------------------------------------------------
+TRANSFER RATIOS (bounce / singular)  and DERIVED delta f_NL
+------------------------------------------------------------------------
+analytic-bounce (eta_b=2)       
+    T_short (linear, k=1.0) = 0.0002
+    T_long  (linear, k=0.02)  = 0.0137
+    R_vertex (cubic integral)    = 0.0001
+    R_fNL   (= B/P^2 transfer)   = 180038.5505
+    => DERIVED delta f_NL        = -7.8766e+05   (f_NL -> -787668.6585)
+analytic-bounce (eta_b=5)       
+    T_short (linear, k=1.0) = 0.0005
+    T_long  (linear, k=0.02)  = 0.0132
+    R_vertex (cubic integral)    = 0.0000
+    R_fNL   (= B/P^2 transfer)   = 1510.7508
+    => DERIVED delta f_NL        = -6.6052e+03   (f_NL -> -6609.5348)
+LQC bounce                      
+    T_short (linear, k=1.0) = 0.0001
+    T_long  (linear, k=0.02)  = 0.0603
+    R_vertex (cubic integral)    = 0.0001
+    R_fNL   (= B/P^2 transfer)   = 104887.3433
+    => DERIVED delta f_NL        = -4.5888e+05   (f_NL -> -458882.1270)
+
+========================================================================
+WAVELENGTH SCALING of the DERIVED bounce correction
+(tests the (k*eta_bounce)^2 suppression claimed in the paper)
+========================================================================
+  [scaling] k=0.01 ...

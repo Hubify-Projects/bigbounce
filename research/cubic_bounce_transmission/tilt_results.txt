@@ -1,0 +1,35 @@
+========================================================================
+DEFINITIVE BOUNCE TRANSMISSION DIAGNOSTIC (coefficient-free)
+f_NL=-35/8 preserved iff Delta n ~ 0 AND decaying admixture ~ 0
+========================================================================
+
+### analytic eta_b=2  eta_bounce~2.000 ###
+  input  spectral slope d lnP/d lnk (contraction) = +2.0000
+  output spectral slope d lnP/d lnk (expansion)   = -0.7404
+  Delta n (bounce-induced tilt change)            = -2.7404e+00
+  decaying admixture |d ln|zeta|/d eta|_out (max) = 3.850e-01
+  => derived |delta f_NL| shape distortion <= 5.995e+01
+  => derived |delta f_NL| decaying inject   <= 1.684e+00
+
+### analytic eta_b=5  eta_bounce~5.000 ###
+  input  spectral slope d lnP/d lnk (contraction) = +2.0000
+  output spectral slope d lnP/d lnk (expansion)   = -0.7034
+  Delta n (bounce-induced tilt change)            = -2.7034e+00
+  decaying admixture |d ln|zeta|/d eta|_out (max) = 2.816e-01
+  => derived |delta f_NL| shape distortion <= 5.914e+01
+  => derived |delta f_NL| decaying inject   <= 1.232e+00
+
+### LQC Wilson-Ewing  eta_bounce~1.562 ###
+  input  spectral slope d lnP/d lnk (contraction) = +1.9992
+  output spectral slope d lnP/d lnk (expansion)   = -0.3958
+  Delta n (bounce-induced tilt change)            = -2.3950e+00
+  decaying admixture |d ln|zeta|/d eta|_out (max) = 4.127e-01
+  => derived |delta f_NL| shape distortion <= 5.239e+01
+  => derived |delta f_NL| decaying inject   <= 1.805e+00
+
+========================================================================
+VERDICT
+========================================================================
+  max |Delta n| across bounce models = 2.740e+00
+  => DERIVED bound  f_NL = -4.3750  +/-  6.163e+01
+     fractional: 1408.709%
