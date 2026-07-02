@@ -8,7 +8,7 @@ genuinely-new real findings across all 6 papers** on source-cited truth-audit.
 
 | Paper | Status | Bundle / handoff | Evidence |
 |-------|--------|------------------|----------|
-| **P4** (chirality NULL) | ✅ submit-ready | `P4/arxiv_p4_v1.0.208.tar.gz` | RS11 genuine convergence, 0 genuinely-new |
+| **P4** (chirality NULL) | ✅ submit-ready | `P4/arxiv_p4_v1.0.209.tar.gz` | RS11 genuine convergence, 0 genuinely-new; +forward-model paragraph |
 | **P5** (DESIVAST void null) | ✅ submit-ready | `P5/arxiv_p5_v0.1.100.tar.gz` | Grok+Gemini MINOR, 0 genuinely-new |
 | **P1B** (MCMC companion) | ✅ submit-ready | `P1B/arxiv_p1b_v1B.0.95.tar.gz` | **Gemini ACCEPT** after cutting the exploratory w0wa appendix (25→20pp) |
 | P1A (ECH no-go) | 📋 human referees | `P1A/REFEREE_HANDOFF.md` | 0 genuinely-new; channel- vs operator-basis venue call |
