@@ -58,3 +58,28 @@ If the deep runs do not converge to a clean k→0 limit, the correct reported
 outcome is the best rigorous numerical bound on |T3−1| with its uncertainty,
 plus a precise statement of what it establishes — NOT a manufactured value.
 Do NOT edit the paper from partial output.
+
+## RESULT (2026-07-02, after normalisation-bug fix)
+The first run reported delta_fNL=+4.375 with T3~1e-29 — a NUMERICAL ARTIFACT.
+Root cause: f_NL = (5/12)B/(PP) is only normalisation-free when the external
+legs, the vertex-integral endpoint, and P are ALL read at the SAME frozen
+super-horizon reference time. The old code read the full-bounce case at
+eta_max*0.85 but the contraction-only benchmark at eta_max*0.05, which was
+(a) POSITIVE (post-bounce, wrong branch) and (b) OUTSIDE the contraction grid
+[eta_min,-0.5] → cubic-spline extrapolation garbage. Because matter contraction
+has a GROWING mode ζ~η⁻² that never freezes, that mismatched read left ~2
+uncancelled powers of a runaway amplitude → f_NL_cont ~ 1e17…1e70 (growing with
+background depth). FIX: read ext/P/vertex-endpoint at a common frozen reference
+(deep expansion for full, deep contraction for benchmark, both inside-grid).
+
+After the fix: f_NL_cont is FINITE, O(1–100) — the 1e70 divergence is gone.
+T3(k→0) ≈ −0.88, |T_growing| and T3 are SCALE-INDEPENDENT across the k-tower.
+BUT the numerical contraction-only f_NL does NOT reproduce the analytic −35/8
+(benchmark ratio ~−2.5x), so the machinery is NOT amplitude-faithful.
+
+VERDICT: METHOD CANNOT DERIVE AN AMPLITUDE. Path Z establishes only the SHAPE
+result (scale-independent transfer ⇒ bounce preserves the bispectrum shape); it
+does NOT pin f_NL. P2's f_NL = −35/8 STAYS CONDITIONAL (assumption d). This is
+consistent with the paper's existing framing (assumption-d flagged as the #1
+follow-up compute / core uncertainty). NO paper edit made. See
+pathz_results.json["derived"].status == "conditional-shape-only".

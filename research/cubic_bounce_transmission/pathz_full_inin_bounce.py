@@ -304,16 +304,39 @@ def growing_mode_transfer(k, zppz_sp, z_sp, bg, frac=0.6):
 # 3. IN-IN BISPECTRUM with FULL vertex on the bounce background
 # ============================================================================
 def bispectrum_fnl(k_long, k_short, zppz_sp, a_sp, eps_sp, bg,
-                   eta_in_frac=0.85, eta_out_frac=0.85):
+                   eta_in_frac=0.85, eta_out_frac=0.85, eta_ref=None):
     """
     Compute f_NL in the squeezed limit (k_long << k_short = k) by direct
     in-in quadrature with the FULL set of cubic vertices, using numerically
     solved mode functions on the explicit bounce background.
 
-    Returns dict with f_NL_full and diagnostics.
+    NORMALISATION FIX (2026-07-02, root cause of the f_NL_cont -> 1e70 artifact):
+    -------------------------------------------------------------------------------
+    f_NL = (5/12) B/(P P) is only normalisation-independent when the EXTERNAL legs
+    that build B, the ENDPOINT of the vertex integral, AND the power spectra P are
+    ALL read at the SAME reference time eta_ref -- a point where the mode has frozen
+    (super-horizon, constant zeta). Then the internal zeta*(eta) factors in the
+    vertex track the external zeta*(eta_ref) factors over the integral support, and
+    the growing-mode amplitude cancels between numerator (zeta^3 * int zeta^3) and
+    denominator (P^2), leaving a finite O(1) f_NL.
+
+    ORIGINAL BUG: the full-bounce ext/P were read at eta_max*0.85 while the
+    contraction-only benchmark was read at eta_max*0.05 -- (a) POSITIVE (post-bounce,
+    wrong branch) and (b) OUTSIDE the contraction grid [eta_min,-0.5] -> cubic-spline
+    EXTRAPOLATION garbage. Worse, in matter contraction zeta has a GROWING mode
+    ~eta^{-2} that never freezes, so a mismatched near-bounce read left ~2 uncancelled
+    powers of a runaway amplitude -> f_NL_cont ~ 1e17...1e70, growing with background
+    depth. A NUMERICAL ARTIFACT, not physics.
+
+    FIX: ext, the vertex-integral endpoint, and P are all read at a single eta_ref in
+    the deep, frozen part of the requested branch (deep expansion for the full bounce,
+    deep contraction for the benchmark), inside the valid grid.
     """
     eta_in  = bg["eta_min"]*eta_in_frac    # deep contraction (in-state)
-    eta_out = bg["eta_max"]*eta_out_frac   # deep expansion (out-state / eta_f)
+    if eta_ref is not None:
+        eta_out = eta_ref                  # common reference time (see docstring)
+    else:
+        eta_out = bg["eta_max"]*eta_out_frac   # deep expansion (out-state / eta_f)
 
     # solve v_k for long & short
     sol_l = solve_mode_v(k_long,  zppz_sp, eta_in, eta_out)
@@ -446,24 +469,43 @@ def main():
         results["convergence"].append(row_gm)
 
         # scan squeezed configs: fix k_short, sweep k_long -> 0
+        # NORMALISATION FIX: read BOTH sides at a common deep frozen reference time.
+        #   full bounce  -> eta_ref_full = +|eta_ref| (deep EXPANSION, mode re-frozen)
+        #   contraction  -> eta_ref_cont = -|eta_ref| (deep CONTRACTION, INSIDE the
+        #                    contraction-only grid [eta_min,-0.5], NOT extrapolated,
+        #                    NOT post-bounce). Symmetric magnitude => comparable.
+        eta_ref_mag = min(abs(bg["eta_max"])*0.40, abs(etaC[-1]) + 0.40*(abs(etaC[0])-abs(etaC[-1])))
+        eta_ref_full = +eta_ref_mag
+        eta_ref_cont = -eta_ref_mag
+        log(f"    common frozen reference |eta_ref|={eta_ref_mag:.3f} "
+            f"(full read at +{eta_ref_mag:.2f}, cont at -{eta_ref_mag:.2f})")
         k_short = 0.05
-        row = {"tag": tag, "k_short": k_short, "points": []}
+        row = {"tag": tag, "k_short": k_short,
+               "eta_ref_full": eta_ref_full, "eta_ref_cont": eta_ref_cont, "points": []}
         for k_long in [0.03, 0.02, 0.012, 0.008, 0.005, 0.003, 0.002, 0.0012]:
-            r  = bispectrum_fnl(k_long, k_short, zppz_sp,  a_sp,  eps_sp,  bg)   # full bounce
+            r  = bispectrum_fnl(k_long, k_short, zppz_sp,  a_sp,  eps_sp,  bg,
+                                eta_ref=eta_ref_full)                            # full bounce
             rc = bispectrum_fnl(k_long, k_short, zppzC_sp, aC_sp, epsC_sp, bg,
-                                eta_out_frac=0.05)                              # contraction-only (read pre-bounce)
+                                eta_ref=eta_ref_cont)                            # contraction-only benchmark
             if r.get("ok") and rc.get("ok"):
                 fnl_full = r["fnl_full"]; fnl_cont = rc["fnl_full"]
                 # T3 = bispectrum transfer; delta_fnl anchored to the -35/8 benchmark via T3:
                 T3 = fnl_full/fnl_cont if fnl_cont != 0 else float('nan')
                 fnl_bounce_physical = T3*FNL_CONTRACTION_ANALYTIC   # rescale benchmark by transfer
                 dfnl = fnl_bounce_physical - FNL_CONTRACTION_ANALYTIC
-                log(f"    k_long={k_long:<7} f_NL_full(raw)={fnl_full:+.3e} "
-                    f"f_NL_cont(raw)={fnl_cont:+.3e}  T3={T3:+.4f}  "
-                    f"f_NL_bounce={fnl_bounce_physical:+.4f}  delta={dfnl:+.4f}")
+                # HONESTY: benchmark fidelity. This numerical in-in machinery MUST
+                # reproduce the analytic contraction-only f_NL = -35/8 for the ratio to
+                # be trustworthy. bench_ratio = fnl_cont / (-35/8): ~1 => the numerical
+                # calc is under control; far from 1 => the vertex normalisation / vertex
+                # set is NOT faithfully implemented, so neither f_NL nor T3 can be a
+                # DERIVED amplitude (they only carry shape/scale-independence info).
+                bench_ratio = fnl_cont / FNL_CONTRACTION_ANALYTIC
+                log(f"    k_long={k_long:<7} f_NL_full={fnl_full:+.3e} "
+                    f"f_NL_cont={fnl_cont:+.3e} (bench {bench_ratio:+.3f}x analytic)  "
+                    f"T3={T3:+.4f}  delta={dfnl:+.4f}")
                 r.update({"k_long": k_long, "fnl_cont_raw": fnl_cont,
                           "T3": T3, "fnl_bounce_physical": fnl_bounce_physical,
-                          "delta_fnl": dfnl})
+                          "delta_fnl": dfnl, "bench_ratio_cont_vs_analytic": float(bench_ratio)})
                 row["points"].append(r)
             else:
                 log(f"    k_long={k_long:<7} FAILED: full={r.get('reason')} cont={rc.get('reason')}")
@@ -488,21 +530,49 @@ def main():
             fnl_k0 = T3_k0*FNL_CONTRACTION_ANALYTIC
             delta = fnl_k0 - FNL_CONTRACTION_ANALYTIC
             spread = abs(spread_T3*FNL_CONTRACTION_ANALYTIC)
+            # benchmark fidelity of the numerical contraction-only f_NL vs analytic -35/8
+            bench = np.array([p.get("bench_ratio_cont_vs_analytic", np.nan) for p in pts])
+            bench_med = float(np.nanmedian(bench))
+            benchmark_ok = np.isfinite(bench_med) and (0.5 <= abs(bench_med) <= 2.0)
+            if benchmark_ok:
+                verdict = ("BENCHMARK-CONTROLLED: numerical contraction-only f_NL reproduces "
+                           "-35/8 within a factor ~2, so T3 and delta_fnl are trustworthy; "
+                           "if T3~1, assumption (d) is upgraded conditional->derived.")
+                fnl_derived = fnl_k0
+                status = "derived-candidate"
+            else:
+                verdict = ("METHOD CANNOT DERIVE AN AMPLITUDE (stays CONDITIONAL): the numerical "
+                           "in-in machinery does NOT reproduce the analytic contraction-only "
+                           f"f_NL=-35/8 (bench ratio ~{bench_med:.2g}x), so its absolute f_NL and "
+                           "the ratio T3 are not amplitude-faithful. What Path Z DOES establish: "
+                           "(1) f_NL_cont is finite and O(1) (the 1e70 divergence was a "
+                           "normalisation artifact, now fixed); (2) |T_growing| and T3 are "
+                           "SCALE-INDEPENDENT across the k-tower => the bounce preserves the "
+                           "bispectrum SHAPE (scale-independence). It does NOT pin the amplitude. "
+                           "P2 f_NL=-35/8 must remain a CONDITIONAL forecast.")
+                fnl_derived = None
+                status = "conditional-shape-only"
             results["derived"] = {
+                "status": status,
                 "bispectrum_transfer_T3_k0": T3_k0,
                 "fnl_full_k0": fnl_k0,
+                "fnl_derived_amplitude": fnl_derived,
                 "delta_fnl": delta,
                 "numerical_uncertainty_estimate": spread,
                 "T3_spread": spread_T3,
-                "interpretation": ("T3 = f_NL^bounce / f_NL^contraction-only computed on the "
-                                   "SAME in-in machinery, so shared normalisation cancels. "
-                                   "delta_fnl = (T3-1)*(-35/8) is the DERIVED correction from "
-                                   "full cubic transmission through the explicit LQC bounce. "
-                                   "T3 near 1 upgrades assumption (d) from conditional to derived.")
+                "benchmark_ratio_cont_vs_analytic_median": bench_med,
+                "benchmark_controlled": bool(benchmark_ok),
+                "normalisation_bug_fixed": True,
+                "interpretation": ("T3 = f_NL^bounce / f_NL^contraction-only on the SAME in-in "
+                                   "machinery, ext/P/vertex-endpoint all read at a common frozen "
+                                   "reference time so the growing-mode amplitude cancels (fixes the "
+                                   "f_NL_cont->1e70 artifact). VERDICT: " + verdict)
             }
             log("="*64)
             log(f"DERIVED: T3(k->0) = {T3_k0:+.4f}  => f_NL^bounce = {fnl_k0:+.4f}")
-            log(f"DERIVED: delta_f_NL = {delta:+.4f}   (contraction-only = {FNL_CONTRACTION_ANALYTIC:+.4f})  +/- {spread:.4f}")
+            log(f"BENCHMARK: numerical f_NL_cont / analytic(-35/8) = {bench_med:+.3f} "
+                f"({'CONTROLLED' if benchmark_ok else 'NOT controlled -> conditional'})")
+            log(f"VERDICT: {verdict}")
             log("="*64)
 
     results["meta"]["finished"] = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
