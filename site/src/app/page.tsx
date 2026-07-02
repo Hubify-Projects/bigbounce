@@ -1,5 +1,6 @@
 import { papers, getPaperBySlug } from "@/data/papers";
 import { liveStatus } from "@/data/live-status";
+import { sortedReviewRounds } from "@/data/reviewTimeline";
 import { Button } from "@/components/ui/button";
 import { LiveStatus } from "@/components/Shell/LiveStatus";
 import { getLivePapers, displayVersion } from "@/lib/livePapers";
@@ -230,6 +231,43 @@ export default async function HomePage() {
             <Link href="/paper">Read the six papers</Link>
           </Button>
         </div>
+      </section>
+
+      {/* 1.5 — Adversarial review proof band (counts computed from the real
+          timeline at build time; the /reviews page is the full record) */}
+      <section style={{ marginBottom: 40 }}>
+        {(() => {
+          const rounds = sortedReviewRounds();
+          const latest = rounds[0];
+          return (
+            <div
+              style={{
+                border: "1px solid var(--border)",
+                borderLeft: "3px solid var(--accent)",
+                borderRadius: "var(--radius-lg)",
+                background: "var(--surface)",
+                padding: "14px 18px",
+              }}
+            >
+              <p className="eyebrow" style={{ marginBottom: 6 }}>
+                How every claim here gets vetted
+              </p>
+              <p style={{ fontSize: 14, lineHeight: 1.7, color: "var(--text-secondary)", maxWidth: "72ch", margin: 0 }}>
+                Every result on this site has been through <strong style={{ color: "var(--text)" }}>{rounds.length} adversarial
+                review rounds</strong> — model families from five different labs told to refute each paper, plus
+                independent external referees, with a separate integrity audit on the review process itself. The loop
+                has caught real errors (an overlap-inflated significance, a mislabeled catalog tier) before any reader
+                could. The complete round-by-round record is public
+                {latest ? <> — most recent: {latest.dateISO}</> : null}.
+              </p>
+              <p style={{ margin: "8px 0 0" }}>
+                <Link href="/reviews" style={{ color: "var(--accent)", fontSize: 13.5 }}>
+                  Browse the full review timeline <ArrowRight size={13} style={{ display: "inline", verticalAlign: "-2px" }} />
+                </Link>
+              </p>
+            </div>
+          );
+        })()}
       </section>
 
       {/* 2 — Two halves / program arc */}
