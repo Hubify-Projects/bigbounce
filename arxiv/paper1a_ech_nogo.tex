@@ -47,8 +47,34 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.97}
+\newcommand{\paperVersion}{v1A.0.98}
 \newcommand{\paperTimestamp}{July 2, 2026}
+% v1A.0.98 (2026-07-02 — RS14 calibrated-reviewer (Grok+Gemini) evidentiary-status
+%   re-flags. TRUTH AUDIT: all cluster on already-disclosed content (pattern-066
+%   referee variance re-flagging tab:evidentiary_status tiering already in-text).
+%   Two honest SHARPENINGS, no fabrication, Tier-I not underclaimed:
+%   (1) Sec X "all orders" transparency (Grok): the all-orders claim was already
+%       rigorous (algebraic Cartan T=0 + pointwise algebraic-Bianchi identity),
+%       NOT a component expansion. Added an explicit sentence in the Statement
+%       (sec:transparency) clarifying WHY all-orders follows from two exact
+%       identities rather than an order-by-order expansion, so it is not re-read
+%       as a "sketch"; the 2nd-order expansion in sec:transp_holst is labeled an
+%       explicit check, not the origin of the claim. No new math; downgrade-vs-
+%       expand resolved as: neither — the claim was already identity-based and
+%       correctly all-orders; we made the reasoning explicit.
+%   (2) Gemini dim+1 vs +4: TRUTH AUDIT = Gemini is CORRECT and the paper ALREADY
+%       states it (Eq Seff_comp L1568 "naive mass dimension +1 — three units short
+%       of +4"; abstract L999; intro L1118; does-not-establish box L1152). Added a
+%       one-line dimensional-convention clarification at Eq Seff_comp making the
+%       per-factor bookkeeping ([alpha]=0,[M]=+1,[e]=0,[F]=+2 -> integrand +1)
+%       explicit and stating we do NOT claim dim-4; the scaling ansatz bridges the
+%       gap. Source-cited verdict: CLARIFICATION (paper agrees with Gemini), NOT a
+%       dimensional error fix. R2/R3 (Grok/Gemini upper-bound ansatze) + R4
+%       (naturalness-not-amplitude) + rho_Lambda ansatz-conditional already tiered
+%       in tab:evidentiary_status + intro Tier box; no change needed. Title/abstract
+%       already honest ("Channel-Level Amplitude Closure ... Under Stated
+%       Assumptions", "channel-level assessment not an operator-level theorem") —
+%       NOT weakened, so Tier-I transparency result stays correctly claimed. 0 undef-refs.)
 % v1A.0.97 (2026-07-02 — RS8 P1A Grok-MAJOR rho_Lambda-mapping "circularity" re-flag.
 %   Grok's dominant remaining MAJOR: the DE mapping (Route-4 / rho_Lambda) rests
 %   on an on-shell scaling ansatz (Eq. onshell_rho) that is "circular," + R2/R3
@@ -1567,8 +1593,15 @@ S_{\rm eff} = \int d^4x\,\sqrt{-g}\;\frac{\alpha}{M}\;\varepsilon^{\mu\nu\rho\si
 \end{equation}
 which has naive mass dimension $[\mathcal{L}_{\rm odd}] = +1$---three units
 short of the required $+4$ (see Appendix~\ref{app:dimensions} for the full
-dimensional counting). The identification $\rho_\Lambda = \Xi\,\MPl^4$
-is therefore explicitly a \textit{scaling ansatz}, not a controlled EFT calculation.
+dimensional counting). We state this off-shell mismatch deliberately and do
+\emph{not} claim the operator is dimension-$4$: with $[\alpha]=0$, $[M]=+1$,
+$[e^I_\mu]=0$, and $[\mathcal{F}_{IJ\rho\sigma}]=+2$, the integrand carries
+mass dimension $-1+2=+1$, so $\mathcal{L}_{\rm odd}$ is genuinely dimension-$+1$
+off-shell (in agreement with the referee bookkeeping that flags the mismatch).
+The identification $\rho_\Lambda = \Xi\,\MPl^4$
+is therefore explicitly a \textit{scaling ansatz}---the three-unit gap is
+bridged by an on-shell scaling assumption, not by a controlled EFT
+calculation---and is treated as such throughout.
 
 \textit{Step~4: Parity-Odd Coefficient.}---Following Freidel \etal~\cite{Freidel2005}
 and Shapiro \& Teixeira~\cite{ShapiroTeixeira2014}, the one-loop estimate is
@@ -3149,7 +3182,17 @@ all perturbation orders. The restriction to the torsion-free ($T=0$) branch is
 not an additional assumption but a \emph{consequence} of the matter content:
 canonical scalar matter carries zero spin density (Step~1 below), hence in
 Einstein--Cartan theory sources no torsion (Step~2), and the connection reduces
-to Levi-Civita identically at all perturbation orders. The propagating-torsion,
+to Levi-Civita identically at all perturbation orders. We emphasize that the
+``all orders'' statement does \emph{not} rest on an order-by-order component
+expansion of the linearized Holst/Cartan action: it follows because Step~2 is
+an \emph{algebraic} (non-derivative) Cartan constraint, so $T=0$ holds
+exactly and perturbatively unmodified, and Step~4 is a pointwise
+\emph{identity} (the algebraic Bianchi identity $R_{\mu[\nu\rho\sigma]}=0$,
+which holds for any torsion-free connection at every field configuration).
+Because both load-bearing steps are exact identities rather than truncated
+expansions, no separate order-by-order verification is required; we display
+the leading (second-order) expansion in Sec.~\ref{sec:transp_holst} only as an
+explicit check of the identity, not as the origin of the all-orders claim. The propagating-torsion,
 dynamical-Immirzi-field, fermion-loop, and non-minimal-matter sectors --- where
 $T\neq0$ and the result need not hold --- are explicitly outside the stated
 scope; the theorem is a statement about the scalar-matter sector of ECH, which
