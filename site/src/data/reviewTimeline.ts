@@ -46,6 +46,22 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "RS17-p4-v212-2026-07-02",
+    kind: "external-browser",
+    dateISO: "2026-07-02",
+    title: "RS17 P4 v1.0.212 — over-claiming signpost LIFTS both MAJORs: Grok MINOR (0 MAJOR), Gemini MINOR (0 MAJOR); P4 CONVERGED (readiness 92→96)",
+    papers: ["P4"],
+    summary:
+      "RS17 targeted re-sweep on P4 v1.0.212 after the over-claiming signpost was added. The over-claiming MAJOR that persisted at RS16 (Grok 1-major, Gemini MAJOR) was LIFTED on both calibrated reviewers: Grok returned MINOR (0 MAJOR, was 1-major over-claiming at RS16), Gemini returned MINOR (0 MAJOR, was MAJOR at RS16). Both call the central claim 'robustly supported'. All remaining items are same-disclosed-content polish (0 genuinely-new). Under gate H-refined/pattern-066, P4 is now CONVERGED: 0 genuinely-new real findings across both calibrated reviewers, both prior MAJORs closed by the signpost. Readiness 92→96.",
+    keyTakeaways: [
+      "P4 v1.0.212 over-claiming signpost LIFTS the over-claiming MAJOR on BOTH calibrated reviewers: Grok MINOR (0 MAJOR, was 1-major at RS16), Gemini MINOR (0 MAJOR, was MAJOR at RS16)",
+      "Both Grok and Gemini call the central claim 'robustly supported' — the signpost resolved the specific framing concern without changing any underlying result",
+      "0 genuinely-new real findings across both calibrated reviewers — remaining items are same-disclosed-content polish (carry-forward per truth-audit)",
+      "P4 CONVERGED under gate H-refined/pattern-066: 0 genuinely-new across all calibrated reviewers, both prior MAJORs closed; readiness 92→96",
+    ],
+    links: [],
+  },
+  {
     id: "RS15-targeted-2026-07-02",
     kind: "external-browser",
     dateISO: "2026-07-02",
@@ -2858,6 +2874,20 @@ export const externalVerdictRounds: ExternalRoundVerdicts[] = [
       P5: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
     },
     note: "RS15 targeted gate-test: only P4 + P3 re-swept (real content changes; P1A/P1B/P2/P5 carry RS11 NO_VERDICT for ChatGPT — not re-swept this round). P4 v1.0.210 morphology completed-measurement forward-model: residual-attribution flag LIFTED — Grok+Gemini both MINOR, 0 MAJOR (Gemini 'exceptionally well-supported'); readiness 88→92. P3 v3.1.132 §IID/§III consistency fix: Grok MINOR ('closes the previous gap'); Gemini REJECT persists on disclosed exploratory-tier limits only (harsh-floor, 0 genuinely-new per truth-audit). 0 genuinely-new findings across both swept papers.",
+  },
+  {
+    roundId: "RS17",
+    dateISO: "2026-07-02",
+    windowPT: "Jul 2 · RS17 P4 v1.0.212 over-claiming signpost re-sweep",
+    verdicts: {
+      P1A: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P1B: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P2: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P3: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P4: ["NO_VERDICT", "MINOR", "MINOR"],
+      P5: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+    },
+    note: "RS17: P4 only re-swept (over-claiming signpost v1.0.212). Over-claiming MAJOR LIFTED on both calibrated reviewers: Grok MINOR (0 MAJOR, was 1-major at RS16), Gemini MINOR (0 MAJOR, was MAJOR at RS16). Both call the central claim 'robustly supported'. 0 genuinely-new real findings. P4 CONVERGED under gate H-refined/pattern-066; readiness 92→96. Other 5 papers not swept this round (NO_VERDICT carry-forward).",
   },
 ];
 
