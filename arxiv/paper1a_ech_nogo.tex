@@ -47,8 +47,9 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.98}
-\newcommand{\paperTimestamp}{July 2, 2026}
+\newcommand{\paperVersion}{v1A.0.99}
+\newcommand{\paperTimestamp}{July 3, 2026}
+% v1A.0.98->99 (2026-07-03): R3 Immirzi-running arithmetic fix — Δγ/γ corrected 10^-2 → ~0.3 (formula gives 32/(12π²)≈0.27); R3 closure unaffected (≳60 orders margin); closes genuinely-new self-inconsistency (OpenAI-M2/E5 KNOWN-HONEST item).
 % v1A.0.98 (2026-07-02 — RS14 calibrated-reviewer (Grok+Gemini) evidentiary-status
 %   re-flags. TRUTH AUDIT: all cluster on already-disclosed content (pattern-066
 %   referee variance re-flagging tab:evidentiary_status tiering already in-text).
@@ -2440,22 +2441,25 @@ $\Delta\gamma/\gamma \approx (N_F^L-N_F^R)\,
 $(N_F^L-N_F^R)=\mathcal{O}(1)$ and a GUT-to-IR lever arm
 $\ln(\mu_{\rm GUT}/\mu_{\rm IR})\approx 30$--$35$
 ($\mu_{\rm GUT}\sim 10^{16}$, $\mu_{\rm IR}\sim 1\,\text{GeV}$),
-this is of order $10^{-2}$--$10^{-1}$. We therefore adopt
-$\Delta\gamma/\gamma \sim 10^{-2}$ as a representative conservative
-order-of-magnitude estimate --- \emph{not} a precisely derived value,
-the full perturbative running being the $|\gamma|$-dependent
-$\beta$-function of Benedetti~\&~Speziale~\cite{Benedetti2011} ---
-and note that the Route-3 closure below is insensitive to its precise
-value (taking the larger $10^{-1}$ end still leaves $\gtrsim 60$ orders
-of suppression margin). The Holst sector amplitude that this running can source is
+this is numerically $\Delta\gamma/\gamma \approx 0.25$--$0.30$
+(a few$\,\times 10^{-1}$; e.g.\ $32/(12\pi^2)\approx 0.27$), \emph{not}
+the $10^{-2}$ that an earlier draft mis-stated for this expression.
+We therefore adopt the larger $\Delta\gamma/\gamma \sim 0.3$ as the
+\emph{conservative} (least-suppressed) order-of-magnitude estimate ---
+\emph{not} a precisely derived value, the full perturbative running being
+the $|\gamma|$-dependent $\beta$-function of
+Benedetti~\&~Speziale~\cite{Benedetti2011} --- and note that the Route-3
+closure below is insensitive to its precise value: even this
+$\mathcal{O}(0.3)$ running is $\ll 1$, so $\gamma$ retains its order of
+magnitude, and it still leaves $\gtrsim 60$ orders of suppression margin. The Holst sector amplitude that this running can source is
 fixed by mass dimension: any operator built from
 $\gamma$, $R_{ab}$, $e^a$, and the chiral current $J^{5\mu}$ must carry
 dimension four, which forces a single power of $M_{\rm Pl}^{-1}$ in
 the prefactor in any cosmologically relevant scalar-curvature regime.
-Plugging $\Delta\gamma/\gamma \sim 10^{-2}$ into the resulting
+Plugging the conservative $\Delta\gamma/\gamma \sim 0.3$ into the resulting
 parity-odd amplitude, the cosmologically integrated effect is
 suppressed by an additional factor of
-$(\Delta\gamma/\gamma)\cdot(H/M_{\rm Pl}) \sim 10^{-63}$ relative to
+$(\Delta\gamma/\gamma)\cdot(H/M_{\rm Pl}) \sim 3\times 10^{-62}$ relative to
 the dimensionless parity-odd amplitude budget associated with a
 dark-energy-scale source, closing this route by many orders of
 magnitude. \emph{Closure: mass-dimension-locked at the classical level
@@ -2467,7 +2471,8 @@ chiral-count EFT scaling ansatz}, not literal extractions from
 Mercuri~\cite{Mercuri2009} or Date--Kaul--Sengupta~\cite{DateKaulSengupta2009};
 the closures of R2/R3 survive an $\mathcal{O}(1)$ inflation of the ansatz
 coefficient because the resulting amplitude suppression
-($\sim 10^{-63}$ vs $\rho_\Lambda$) leaves $\gtrsim 60$ orders of magnitude
+($\sim 3\times 10^{-62}$ vs $\rho_\Lambda$, using the corrected
+$\Delta\gamma/\gamma \sim 0.3$) leaves $\gtrsim 60$ orders of magnitude
 of margin against any $\mathcal{O}(1)$ rescaling of the chiral-asymmetry
 coefficient.
 
