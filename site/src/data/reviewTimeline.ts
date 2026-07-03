@@ -46,6 +46,24 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "R3-bs-beta-derivation-p1a-v0100-2026-07-03",
+    kind: "skill-improvement",
+    dateISO: "2026-07-03",
+    title: "P1A v1A.0.100 — R3 Immirzi-running upgraded from chiral-count ansatz to the real Benedetti–Speziale β-function (Eq. 7.24) + a rigorous |Δγ/γ| bound; honest negative on a single derived number",
+    papers: ["P1A"],
+    summary:
+      "Authorized theory attempt to answer the standing R3 rigor objection (reviewers want a derivation, not an ansatz). Verdict: RIGOROUS-BOUND-ONLY, folded in. Extracted the actual Benedetti–Speziale (JHEP 06(2011)107) physical on-shell β-function μ∂γ²/∂μ = −(γ²−1)²(μ²κ²/(8π)²)(23γ²+5) directly from the source PDF: |γ|-dependent, only real fixed point γ²=1 (UV, at a divergent four-fermion coupling), γ=0/∞ NOT fixed points with fermions, driven by radiatively-generated four-fermion interactions, and crucially non-autonomous with an explicit (μ/M_Pl)² power-suppression. Numerically integrating it over the GUT→IR arm gives |Δγ/γ|~1e-6–1e-4 (far smaller than the ansatz 0.3), reaching O(0.1–1) only as the cutoff → M_Pl. No single γ-independent derived number exists (correctly so), but the real β-function rigorously BOUNDS |Δγ/γ| ≲ O(0.1–1) over any sub-Planckian lever arm — upgrading R3's conservative 0.3 from an arbitrary ansatz coefficient to a real-β-function-bounded upper limit. Closure margin (≳60 orders) unchanged. NO coefficient fabricated (pattern-036 respected).",
+    keyTakeaways: [
+      "R3 now displays the real BS Eq. 7.24 β-function + its |γ|-dependence, γ²=1 UV fixed point, four-fermion origin, and (μ/M_Pl)² non-autonomous suppression — replacing the vague 'the full running is the |γ|-dependent β-function' hand-wave",
+      "Honest verdict = RIGOROUS-BOUND-ONLY: no clean derived Δγ/γ (β is |γ|-/scheme-dependent), but a rigorous |Δγ/γ| ≲ O(0.1–1) bound the paper can stand on; a rigorous bound is a success, not a failure",
+      "Real GUT→IR running is |Δγ/γ|~1e-6–1e-4 — orders of magnitude SMALLER than the ansatz, so the no-go closure is MORE robust than the ansatz suggested, not less",
+      "Directive-G hygiene complete: v1A.0.99→v1A.0.100, 0 undef-refs / 0 overfull hboxes, PDF mirrored byte-identical to all served paths, Convex paperVersions:bump with real md5 c62789ab…/36 pages, research note at research/p1a_r2r3_derivation_attempt/beta_function_derivation.md",
+    ],
+    links: [
+      { label: "Benedetti–Speziale JHEP 06(2011)107", href: "https://arxiv.org/abs/1104.4028" },
+    ],
+  },
+  {
     id: "RS20-p1a-v098-2026-07-02",
     kind: "external-browser",
     dateISO: "2026-07-02",
