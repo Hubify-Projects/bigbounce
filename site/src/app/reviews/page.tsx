@@ -216,7 +216,7 @@ export default function ReviewsPage() {
               </tr>
               <tr>
                 <td className="eta-td eta-td-label">Readiness</td>
-                <td className="eta-td">96 (R-converged ceiling; final 1% = Houston sign-off, hard cap — never written here without it).</td>
+                <td className="eta-td">Per-paper: P4 &amp; P5 converged at 96 (Grok+Gemini MINOR, 0 major); P1B 88 (Grok converged, Gemini scope-rejects the companion framing — venue call); P1A/P2/P3 84 at the LLM-referee rigor/venue floor (0 genuinely-new findings) → routed to human referees. Final sign-off is Houston's; the 100 cap is never written without it.</td>
               </tr>
               <tr>
                 <td className="eta-td eta-td-label">Awaiting: Houston external-review sign-off → coordinated arXiv submission</td>
