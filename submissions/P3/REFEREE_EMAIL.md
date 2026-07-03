@@ -4,15 +4,17 @@
 
 ---
 
-Dear [RECIPIENT NAME / astronomical anomaly detection or survey catalogs],
+Dear [RECIPIENT NAME / astrostatistics or multi-survey anomaly detection],
 
 I'm writing to ask for a short expert read on a submission-ready paper before I finalize the venue.
 
-The paper presents a validated catalog-grade subset of ≥268,519 unique anomalies — obtained by applying an autoencoder framework to 37.3 million sources and CMB map patches across seven surveys (DESI, SDSS, LAMOST, eROSITA, Planck, Gaia, NEOWISE), with per-survey native retraining and 7-way positional deduplication. The four injection-recovery-passing components form the headline; exploratory tiers are labeled and sequestered separately. The manuscript is complete, compiled, and ready to submit to ApJS.
+The paper (v3.1.132, 2026-07-02) presents a validated catalog-grade subset of ≥268,519 unique anomalies — obtained by applying an autoencoder framework to 37.3 million sources and CMB map patches across seven surveys (DESI, SDSS, LAMOST, eROSITA, Planck, Gaia, NEOWISE), with per-survey native retraining and 7-way positional deduplication. The four injection-recovery-passing components form the headline; exploratory tiers are labeled and sequestered separately.
 
-On status: the paper has been through an iterative, multi-model external-review process (ChatGPT/Grok/Gemini as referee-style readers) run until it reached zero genuinely-new findings — every remaining objection re-flags a limitation the paper already discloses, not a correctness defect. The validated ≥268,519 headline is a 6-way dedup of the gated components only; the exploratory tiers are truthfully separated out. The one open question is a matter of expert/editorial judgment, framed neutrally: **is a disclosed, sequestered, exploratory-tier score-axis non-reproducibility (the eROSITA production threshold isn't recoverable across 16 monotone rescalings — but that tier is excluded from the validated headline, which is unaffected) acceptable in a catalog paper, or does a catalog require every tier fully reproducible?**
+In this revision, two items were closed: (1) **DESI injection-recovery is now real and committed** — a full 5σ test on real DESI-DR1 spectra produced broad-class recovery 99–100% across 3 validation gates, at parity with SDSS and Planck injection-recovery; narrow-line injection floor ≥15σ is disclosed. (2) **Scaler-leakage audit is complete** — the spectroscopic path (DESI/SDSS/LAMOST/Planck) normalizes per-spectrum and is split-independent; the J=0.862/J=0.732 headline Jaccard gates are confirmed leak-free. The tabular tiers (eROSITA/NEOWISE/Gaia) do use a full-sample scaler, already disclosed and bounded by a committed train-split-only refit control, and those tiers are not headline-load-bearing.
 
-Three low-pressure options, whichever fits: (a) a brief opinion on that scope call; (b) if the reproducibility-standards angle interests you, I'd welcome you as a co-author on the follow-up; or (c) a pointer to the right referee or venue.
+On status: the paper has been through a multi-model LLM-referee process (ChatGPT/Grok/Gemini), with LLM verdicts at Gemini REJECT / Grok MAJOR REVISIONS at the refereeing floor — the Gemini REJECT re-flags the eROSITA score-axis irreproducibility and the lost Gaia preprocessing script, both of which are disclosed as exploratory-tier limitations excluded from the ≥268,519 validated headline. The paper carries zero genuinely-new correctness defects. The open questions are matters of human expert judgment: **(1) is a disclosed, sequestered, exploratory-tier score-axis non-reproducibility (eROSITA production threshold not recoverable across 16 monotone rescalings — tier excluded from the validated headline) acceptable in a catalog paper, or does a catalog require every tier fully reproducible?** And **(2) are the 3-gate broad-class DESI injection-recovery results and the disclosed ≥15σ narrow-line floor together a sufficient robustness demonstration for the dominant DESI component?**
+
+Three low-pressure options, whichever fits: (a) a brief opinion on either of those scope calls; (b) if the eROSITA reproducibility or Gaia provenance recovery interests you, I'd welcome you as a co-author; or (c) a pointer to the right referee or venue.
 
 Program site: https://bigbounce.hubify.app · Code: https://github.com/Hubify-Projects/bigbounce
 
@@ -23,4 +25,4 @@ Houston Golden — houston@hubify.com
 
 ---
 
-**[ATTACH]** paper3_draft.pdf + REFEREE_HANDOFF.md (1-page referee-concern summary)
+**[ATTACH]** paper3_draft.pdf + REFEREE_HANDOFF.md (one-page referee-concern summary)
