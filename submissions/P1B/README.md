@@ -1,7 +1,7 @@
 # P1B — arXiv submission bundle
 
-**Bundle:** `arxiv_p1b_v1B.0.96.tar.gz`
-**Paper version:** v1B.0.96
+**Bundle:** `arxiv_p1b_v1B.0.97.tar.gz`
+**Paper version:** v1B.0.97
 **Date:** July 3, 2026
 **Primary arXiv category:** astro-ph.CO
 **Cross-list (suggested):** gr-qc
@@ -76,6 +76,21 @@ genuinely-new findings** surviving truth-audit (Grok's MAJOR is a subjective
 companion-note venue opinion plus re-flags of already-disclosed, in-scope
 content). The core ECH/torsion ΔN_eff + NaMaster + ALP analyses were untouched
 by the cut.
+
+**v1B.0.97 real-physics upgrade (July 3, 2026):** to answer the residual
+"stock CAMB/Cobaya proxy, no bespoke torsion-modified physics" objection, added
+§III.A "Bespoke ECH-sector ΔN_eff from the torsion-induced four-fermion
+interaction." Integrates out the algebraic torsion of minimal Einstein–Cartan–Holst
+gravity to the NJL-type four-fermion axial-axial contact term
+$-(3\kappa^2/16)\,\frac{\gamma^2}{\gamma^2+1}(\bar\psi\gamma^5\gamma^\mu\psi)^2$
+(Poplawski 2011; Freidel–Minic–Takeuchi 2005), whose radiation-era energy
+density scales as $\rho_{\rm tor}/\rho_{\rm rad}\sim G_N T^2=(T/M_{\rm Pl})^2$
+(Unger & Popławski 2019), giving the honest first-principles bound
+$\Delta N_{\rm eff}^{\rm(ECH)}\sim(T/M_{\rm Pl})^2\sim 7\times10^{-45}$ at BBN.
+No coefficient fabricated: this is an upper bound, so the ΔN_eff MCMC is reframed
+from "generic proxy" to a $\sim$40-orders-of-magnitude-conservative observational
+envelope on the bespoke ECH prediction (the spin-torsion sector predicts
+negligible ΔN_eff in the radiation era). New refs: UngerPoplawski2019, Bruggen1999.
 
 ## Status
 
