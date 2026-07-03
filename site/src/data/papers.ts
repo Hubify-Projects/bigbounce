@@ -85,7 +85,7 @@ export const papers: Paper[] = [
     slug: "paper-1a",
     number: "1A",
     title: "Channel-Level Closure of Four Minimal Einstein–Cartan–Holst Dark-Energy Routes and Perturbation Transparency for Scalar Matter",
-    version: "v1A.0.95",
+    version: "v1A.0.96",
     lastUpdated: "2026-07-01",
     tldr: "Closes all four minimal Einstein–Cartan–Holst routes from a quantum bounce to dark energy and proves the Holst sector is invisible to scalar/tensor perturbations — leaving two clean observational kill-tests (LiteBIRD birefringence, SPHEREx f_NL).",
     path: publicationPath({
@@ -119,10 +119,10 @@ export const papers: Paper[] = [
       "arXiv endorsement + coordinated submission (mints the DOIs/arXiv IDs that clear the last structural reviewer blocker)",
     ],
     preprintId: "HUBIFY-2026-001A",
-    pdfMeta: "PDF · 34 pp · v1A.0.95 · updated Jul 1, 2026 · md5 0e78ce8d",
+    pdfMeta: "PDF · 34 pp · v1A.0.96 · updated Jul 1, 2026 · md5 0e78ce8d",
     artifacts: [
-      { label: "Read PDF", href: "/papers/paper1a_ech_nogo_v1A.0.95.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/paper1a_ech_nogo_v1A.0.95.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/paper1a_ech_nogo_v1A.0.96.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/paper1a_ech_nogo_v1A.0.96.pdf", kind: "secondary", download: true },
       {
         label: "LaTeX source",
         href: "https://github.com/Hubify-Projects/bigbounce/blob/main/arxiv/paper1a_ech_nogo.tex",
@@ -276,7 +276,7 @@ export const papers: Paper[] = [
     slug: "paper-3",
     number: "3",
     title: "Spectrally Unusual Sources at Scale: A Multi-Survey Catalog of 378,280 Path-C Unique Anomalies and a Native-Trained Novelty Fraction from 37.3 Million Sources and Map Patches",
-    version: "v3.1.129",
+    version: "v3.1.130",
     lastUpdated: "2026-07-01",
     tldr: "A 378,280-object anomaly catalog mined from 37.3M sources across 7 surveys with one autoencoder architecture — 17.8% of top-ranked objects are new to existing catalogs, plus a NANOGrav free-spectrum fit consistent with matter-bounce γ = 3.0.",
     path: publicationPath({
@@ -321,10 +321,10 @@ export const papers: Paper[] = [
       "arXiv endorsement + coordinated submission (mints the DOIs/arXiv IDs that clear the last structural reviewer blocker)",
     ],
     preprintId: "HUBIFY-2026-003",
-    pdfMeta: "PDF · 32 pp · v3.1.129 · updated Jul 1, 2026 · md5 68a38fa2",
+    pdfMeta: "PDF · 32 pp · v3.1.130 · updated Jul 1, 2026 · md5 68a38fa2",
     artifacts: [
-      { label: "Read PDF", href: "/papers/paper3_draft_v3.1.129.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/paper3_draft_v3.1.129.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/paper3_draft_v3.1.130.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/paper3_draft_v3.1.130.pdf", kind: "secondary", download: true },
       {
         label: "LaTeX source",
         href: "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p3_anomaly_engine/paper3_draft.tex",
@@ -344,7 +344,7 @@ export const papers: Paper[] = [
     slug: "paper-4",
     number: "4",
     title: "Survey-Scale Galaxy Chirality with Equivariant TTA: A Null Real-Space Chirality Dipole, a Quantifiable Monopole-Mask Leakage Channel, and Diagnostic Evidence for a Depth/Morphology-Correlated Canonical-Mask Residual on 8.47 Million DESI Legacy Galaxies (3.2 Million Spirals)",
-    version: "v1.0.208",
+    version: "v1.0.209",
     lastUpdated: "2026-07-01",
     tldr: "Classifies 8.47M galaxies for spiral handedness with a rotation-equivariant ViT ensemble and finds a null real-space chirality dipole (+0.41σ, rank-p=0.31; A_dip < 6.8×10⁻³ at 95% UL) — the earlier −0.122σ subsample-mask null was withdrawn in v1.0.166 after a provenance audit.",
     path: [
@@ -409,10 +409,10 @@ export const papers: Paper[] = [
       "arXiv endorsement + coordinated submission (mints the DOIs/arXiv IDs that clear the last structural reviewer blocker)",
     ],
     preprintId: "HUBIFY-2026-004",
-    pdfMeta: "PDF · 26 pp · v1.0.208 · updated Jul 1, 2026 · md5 35c8d42d · 33 MB",
+    pdfMeta: "PDF · 26 pp · v1.0.209 · updated Jul 1, 2026 · md5 35c8d42d · 33 MB",
     artifacts: [
-      { label: "Read PDF", href: "/papers/chirality_catalog_paper_v1.0.208.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/chirality_catalog_paper_v1.0.208.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/chirality_catalog_paper_v1.0.209.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/chirality_catalog_paper_v1.0.209.pdf", kind: "secondary", download: true },
       {
         label: "LaTeX source",
         href: "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/chirality_catalog_paper.tex",

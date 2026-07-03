@@ -1,8 +1,8 @@
 # P4 — arXiv submission bundle
 
-**Bundle:** `arxiv_p4_v1.0.208.tar.gz`
-**Paper version:** v1.0.208 (bumped from v1.0.207 for the artifact-link fix below)
-**Date:** July 1, 2026
+**Bundle:** `arxiv_p4_v1.0.209.tar.gz`
+**Paper version:** v1.0.209 (bumped from v1.0.208 for the forward-model addition below)
+**Date:** July 2, 2026
 **Primary arXiv category:** astro-ph.CO
 **Cross-list (suggested):** astro-ph.GA
 
@@ -50,24 +50,29 @@ model weights, and all reproducibility scripts are publicly released.
   `fig_harmonic_completeness.pdf`, `fig_multipoles.png`, `fig_raw_vs_eq.png`,
   `fig_sky_map.png`, `fig_spiral_density.png`.
 
-## Verification (2026-07-01)
+## Verification (2026-07-02)
 
 - **Fresh recompile from clean:** 3-pass pdflatex, 0 LaTeX errors, 0 undefined
   refs/citations, 29 pages, 32 MB.
-- **latex-audit:** 0 overfull hboxes >50pt (0 overfull hboxes total); tables use
-  `table*`/`ruledtabular`; title block clean; page 1 + table pages rendered and
-  visually confirmed — no column escape.
+- **latex-audit:** 0 overfull hboxes >50pt (max 17.3pt); tables use
+  `table*`/`ruledtabular`; title block clean; page 1, the new forward-model page
+  (p. 14), and table pages rendered and visually confirmed — no column escape.
 - **Tarball standalone-compile:** extracted into a pristine temp dir, compiled
   from zero → 0 errors, 0 undefined refs/citations, 29 pages (matches canonical).
 - **Artifact/external links:** all 24 GitHub `\artifact{}` paths resolve on
-  origin/main; HuggingFace dataset (`bamfai/galaxy-chirality-catalog`), model
+  origin/main — including the new
+  `pipelines/p2_chirality/outputs/systematic_l1_forward_model.json`; HuggingFace
+  dataset (`bamfai/galaxy-chirality-catalog`), model
   (`bamfai/galaxy-chirality-v2`), parent dataset (`Smith42/galaxies`), and
-  `rwightman/pytorch-image-models` all return HTTP 200.
-- **Link fix applied this bundle:** the `\artifact{...canonical_mask_nside64.npy}`
-  link pointed at a binary that was never committed (absent on disk AND on
-  origin/main → dead 404). Reverted to plain `\texttt{canonical_mask_nside64.npy}`
-  (consistent with how the same file is already cited in the Table caption).
-  This is the only change vs v1.0.207.
+  `rwightman/pytorch-image-models` all return HTTP 200. No broken links; no fixes
+  required.
+- **Change vs v1.0.208:** adds the quantitative forward-model paragraph — a
+  galaxy-count-weighted WLS fit of the canonical-mask A_p field onto the
+  imaging-systematic template basis, projected onto ell=1, showing the imaging
+  systematics forward-model ~54% of the observed |a_1| in the correct direction
+  (cos theta = +0.83). New artifact:
+  `pipelines/p2_chirality/outputs/systematic_l1_forward_model.json`. Figure/table
+  counts unchanged (10 figures, 13 tables, 29 pages).
 
 ## Convergence status
 

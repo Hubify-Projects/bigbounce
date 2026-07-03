@@ -1,8 +1,0 @@
-{
- "status": "RECONCILED \u2014 fresh-repull does NOT reproduce wave14; root cause identified",
- "date": "2026-06-28",
- "finding": "Worker2 (run_wave14protocol_freshpull.py) is wave14 EXACT code (identical inject(), A=snr*spec.std(), 5 types, rng 20260501) -> 0% broad@5sigma on fresh 20K SPARCL re-pull. Worker1 (desi_injection_recovery_run.py) is a DIFFERENT SDSS/LAMOST-style harness (plant_emission_lines, lenient clean-99th-pct threshold) -> 99.5%, NOT the wave14 protocol; its high recovery is a too-lenient-threshold artifact.",
- "root_cause": "The fresh SPARCL re-pull preprocessing/normalization does not match the BigAE training-data scale (baseline median MSE 0.23 vs production 0.38; injected MSE stays ~0.08). wave14 threshold T=0.1285 and amplitude A=snr*spec.std() do not transfer to differently-scaled data. The exact production resample+normalization that makes wave14 work is not reproducible on fresh data without the original B10_ood_spectra_100k.npy (lost to pod wipe, vol=0).",
- "decision": "P3 KEEPS its conservative honest framing (DESI injection-recovery not executed as a dedicated gate; robustness rests on 5-fold CV Jaccard 0.862 + OOD Jaccard 0.732 + 0/200 visual null). The committed wave14 (0.798 mean/0.99 broad @5sigma, on now-lost original data) is NOT claimed as an independently-reproduced gate. No paper edit.",
- "to_close_for_real": "Recover the exact production DESI spectra normalization/resample spec so a fresh SPARCL re-pull reproduces wave14 deterministically; OR re-pull + re-derive the normalization by matching the BigAE training MSE distribution, then re-run wave14 code. Real debugging task, not done."
-}

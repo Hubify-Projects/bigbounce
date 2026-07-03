@@ -1,0 +1,743 @@
+{
+  "task": "P3 DESI DR1 injection-recovery \u2014 CORRECTED (resolves 2026-06-28 impasse)",
+  "date_utc": "2026-07-02T07:44:50Z",
+  "git_hash": "3c2043c7d8181df94a80cde96ff66c0414a3156a",
+  "data": {
+    "source": "cached real NOIRLab SPARCL DESI-DR1 re-pull 2026-06-28",
+    "provenance": {
+      "sparcl_constraints": {
+        "data_release": [
+          "DESI-DR1"
+        ],
+        "spectype": [
+          "GALAXY",
+          "QSO",
+          "STAR"
+        ],
+        "redshift": [
+          0.0,
+          5.0
+        ]
+      },
+      "find_candidates": 60000,
+      "find_limit": 60000,
+      "pick_seed": 20260628,
+      "n_requested": 20000,
+      "n_retrieved": 20000,
+      "n_nonfinite_dropped": 0,
+      "acquire_wall_s": 1951.4
+    },
+    "n_finite": 20000
+  },
+  "models": {
+    "dir": "pipelines/p3_anomaly_engine/r42_phase2",
+    "seeds": [
+      101,
+      202,
+      303,
+      404,
+      505
+    ],
+    "arch": "BigAE n_in=496 n_lat=128 (128d bottleneck)"
+  },
+  "protocol": {
+    "inject": "wave14-EXACT (A = snr * spec.std(); 5 types; rng 20260501)",
+    "threshold": "p99 of a FRACTION-based clean holdout band (5%-30% of ranked ensemble-MSE) \u2014 reproduces wave14 clean-band INTENT, excludes the 20k-set dirty tail that broke the literal-index band",
+    "substrate": "cleanest 5% of ranked ensemble MSE",
+    "n_inj_per_type": 200,
+    "snr_levels": [
+      1,
+      2,
+      3,
+      5,
+      8,
+      10,
+      15,
+      20
+    ],
+    "gate": "broad_emission_spike recall @ 5sigma >= 0.5"
+  },
+  "prod_reference_median_mse": 0.3842974305152893,
+  "variants": {
+    "native_scale": {
+      "label": "native_scale",
+      "gain": 1.0,
+      "n_spectra": 20000,
+      "n_substrate": 1000,
+      "n_holdout": 5000,
+      "threshold_T_p99_cleanband": 0.11834193363785744,
+      "base_median_mse": 0.23271775245666504,
+      "base_p99_mse": 6.512003087997436,
+      "mean_recall_by_snr": {
+        "1": 0.011,
+        "2": 0.20600000000000002,
+        "3": 0.517,
+        "5": 0.798,
+        "8": 0.8,
+        "10": 0.8089999999999999,
+        "15": 0.976,
+        "20": 1.0
+      },
+      "broad_emission_spike_recall_by_snr": {
+        "1": 0.0,
+        "2": 0.005,
+        "3": 0.23,
+        "5": 0.99,
+        "8": 1.0,
+        "10": 1.0,
+        "15": 1.0,
+        "20": 1.0
+      },
+      "by_snr": {
+        "1": {
+          "broad_emission_spike": {
+            "recall": 0.0,
+            "tp": 0,
+            "fp": 50,
+            "precision": 0.0,
+            "inj_median_mse": 0.05883744731545448
+          },
+          "gaussian_noise_burst": {
+            "recall": 0.0,
+            "tp": 0,
+            "fp": 50,
+            "precision": 0.0,
+            "inj_median_mse": 0.06429756432771683
+          },
+          "narrow_line": {
+            "recall": 0.0,
+            "tp": 0,
+            "fp": 50,
+            "precision": 0.0,
+            "inj_median_mse": 0.05510209500789642
+          },
+          "polynomial_bump": {
+            "recall": 0.0,
+            "tp": 0,
+            "fp": 50,
+            "precision": 0.0,
+            "inj_median_mse": 0.060991398990154266
+          },
+          "spectral_break": {
+            "recall": 0.055,
+            "tp": 11,
+            "fp": 50,
+            "precision": 0.18032786885245902,
+            "inj_median_mse": 0.0808880627155304
+          }
+        },
+        "2": {
+          "broad_emission_spike": {
+            "recall": 0.005,
+            "tp": 1,
+            "fp": 50,
+            "precision": 0.0196078431372549,
+            "inj_median_mse": 0.07553879916667938
+          },
+          "gaussian_noise_burst": {
+            "recall": 0.085,
+            "tp": 17,
+            "fp": 50,
+            "precision": 0.2537313432835821,
+            "inj_median_mse": 0.0927608385682106
+          },
+          "narrow_line": {
+            "recall": 0.0,
+            "tp": 0,
+            "fp": 50,
+            "precision": 0.0,
+            "inj_median_mse": 0.05660240724682808
+          },
+          "polynomial_bump": {
+            "recall": 0.035,
+            "tp": 7,
+            "fp": 50,
+            "precision": 0.12280701754385964,
+            "inj_median_mse": 0.08785787224769592
+          },
+          "spectral_break": {
+            "recall": 0.905,
+            "tp": 181,
+            "fp": 50,
+            "precision": 0.7835497835497836,
+            "inj_median_mse": 0.17018376290798187
+          }
+        },
+        "3": {
+          "broad_emission_spike": {
+            "recall": 0.23,
+            "tp": 46,
+            "fp": 50,
+            "precision": 0.4791666666666667,
+            "inj_median_mse": 0.1043056845664978
+          },
+          "gaussian_noise_burst": {
+            "recall": 0.725,
+            "tp": 145,
+            "fp": 50,
+            "precision": 0.7435897435897436,
+            "inj_median_mse": 0.13493534922599792
+          },
+          "narrow_line": {
+            "recall": 0.0,
+            "tp": 0,
+            "fp": 50,
+            "precision": 0.0,
+            "inj_median_mse": 0.05866694450378418
+          },
+          "polynomial_bump": {
+            "recall": 0.63,
+            "tp": 126,
+            "fp": 50,
+            "precision": 0.7159090909090909,
+            "inj_median_mse": 0.12496663630008698
+          },
+          "spectral_break": {
+            "recall": 1.0,
+            "tp": 200,
+            "fp": 50,
+            "precision": 0.8,
+            "inj_median_mse": 0.3123481273651123
+          }
+        },
+        "5": {
+          "broad_emission_spike": {
+            "recall": 0.99,
+            "tp": 198,
+            "fp": 50,
+            "precision": 0.7983870967741935,
+            "inj_median_mse": 0.19748955965042114
+          },
+          "gaussian_noise_burst": {
+            "recall": 1.0,
+            "tp": 200,
+            "fp": 50,
+            "precision": 0.8,
+            "inj_median_mse": 0.27803170680999756
+          },
+          "narrow_line": {
+            "recall": 0.0,
+            "tp": 0,
+            "fp": 50,
+            "precision": 0.0,
+            "inj_median_mse": 0.0644918829202652
+          },
+          "polynomial_bump": {
+            "recall": 1.0,
+            "tp": 200,
+            "fp": 50,
+            "precision": 0.8,
+            "inj_median_mse": 0.2519063651561737
+          },
+          "spectral_break": {
+            "recall": 1.0,
+            "tp": 200,
+            "fp": 50,
+            "precision": 0.8,
+            "inj_median_mse": 0.7148895263671875
+          }
+        },
+        "8": {
+          "broad_emission_spike": {
+            "recall": 1.0,
+            "tp": 200,
+            "fp": 50,
+            "precision": 0.8,
+            "inj_median_mse": 0.4329213500022888
+          },
+          "gaussian_noise_burst": {
+            "recall": 1.0,
+            "tp": 200,
+            "fp": 50,
+            "precision": 0.8,
+            "inj_median_mse": 0.6758919358253479
+          },
+          "narrow_line": {
+            "recall": 0.0,
+            "tp": 0,
+            "fp": 50,
+            "precision": 0.0,
+            "inj_median_mse": 0.07984133064746857
+          },
+          "polynomial_bump": {
+            "recall": 1.0,
+            "tp": 200,
+            "fp": 50,
+            "precision": 0.8,
+            "inj_median_mse": 0.5937567353248596
+          },
+          "spectral_break": {
+            "recall": 1.0,
+            "tp": 200,
+            "fp": 50,
+            "precision": 0.8,
+            "inj_median_mse": 1.5201165676116943
+          }
+        },
+        "10": {
+          "broad_emission_spike": {
+            "recall": 1.0,
+            "tp": 200,
+            "fp": 50,
+            "precision": 0.8,
+            "inj_median_mse": 0.5796904563903809
+          },
+          "gaussian_noise_burst": {
+            "recall": 1.0,
+            "tp": 200,
+            "fp": 50,
+            "precision": 0.8,
+            "inj_median_mse": 0.9436323642730713
+          },
+          "narrow_line": {
+            "recall": 0.045,
+            "tp": 9,
+            "fp": 50,
+            "precision": 0.15254237288135594,
+            "inj_median_mse": 0.0957760438323021
+          },
+          "polynomial_bump": {
+            "recall": 1.0,
+            "tp": 200,
+            "fp": 50,
+            "precision": 0.8,
+            "inj_median_mse": 0.9125568866729736
+          },
+          "spectral_break": {
+            "recall": 1.0,
+            "tp": 200,
+            "fp": 50,
+            "precision": 0.8,
+            "inj_median_mse": 2.9898645877838135
+          }
+        },
+        "15": {
+          "broad_emission_spike": {
+            "recall": 1.0,
+            "tp": 200,
+            "fp": 50,
+            "precision": 0.8,
+            "inj_median_mse": 1.4242902994155884
+          },
+          "gaussian_noise_burst": {
+            "recall": 1.0,
+            "tp": 200,
+            "fp": 50,
+            "precision": 0.8,
+            "inj_median_mse": 2.182413101196289
+          },
+          "narrow_line": {
+            "recall": 0.88,
+            "tp": 176,
+            "fp": 50,
+            "precision": 0.7787610619469026,
+            "inj_median_mse": 0.14145168662071228
+          },
+          "polynomial_bump": {
+            "recall": 1.0,
+            "tp": 200,
+            "fp": 50,
+            "precision": 0.8,
+            "inj_median_mse": 2.057971954345703
+          },
+          "spectral_break": {
+            "recall": 1.0,
+            "tp": 200,
+            "fp": 50,
+            "precision": 0.8,
+            "inj_median_mse": 5.927005767822266
+          }
+        },
+        "20": {
+          "broad_emission_spike": {
+            "recall": 1.0,
+            "tp": 200,
+            "fp": 50,
+            "precision": 0.8,
+            "inj_median_mse": 2.443873405456543
+          },
+          "gaussian_noise_burst": {
+            "recall": 1.0,
+            "tp": 200,
+            "fp": 50,
+            "precision": 0.8,
+            "inj_median_mse": 4.060634136199951
+          },
+          "narrow_line": {
+            "recall": 1.0,
+            "tp": 200,
+            "fp": 50,
+            "precision": 0.8,
+            "inj_median_mse": 0.2115035355091095
+          },
+          "polynomial_bump": {
+            "recall": 1.0,
+            "tp": 200,
+            "fp": 50,
+            "precision": 0.8,
+            "inj_median_mse": 3.790935516357422
+          },
+          "spectral_break": {
+            "recall": 1.0,
+            "tp": 200,
+            "fp": 50,
+            "precision": 0.8,
+            "inj_median_mse": 11.612798690795898
+          }
+        }
+      },
+      "gate_5sigma_broad": 0.99,
+      "gate_5sigma_mean": 0.798,
+      "gate_PASS_broad": true
+    },
+    "prod_scale_matched": {
+      "label": "prod_scale_matched",
+      "gain": 1.285046915104815,
+      "n_spectra": 20000,
+      "n_substrate": 1000,
+      "n_holdout": 5000,
+      "threshold_T_p99_cleanband": 0.19194572687149047,
+      "base_median_mse": 0.3899356722831726,
+      "base_p99_mse": 10.946360464096042,
+      "mean_recall_by_snr": {
+        "1": 0.16999999999999998,
+        "2": 0.40499999999999997,
+        "3": 0.692,
+        "5": 0.8,
+        "8": 0.8,
+        "10": 0.8390000000000001,
+        "15": 0.986,
+        "20": 1.0
+      },
+      "broad_emission_spike_recall_by_snr": {
+        "1": 0.0,
+        "2": 0.25,
+        "3": 0.74,
+        "5": 1.0,
+        "8": 1.0,
+        "10": 1.0,
+        "15": 1.0,
+        "20": 1.0
+      },
+      "by_snr": {
+        "1": {
+          "broad_emission_spike": {
+            "recall": 0.0,
+            "tp": 0,
+            "fp": 50,
+            "precision": 0.0,
+            "inj_median_mse": 0.12249162048101425
+          },
+          "gaussian_noise_burst": {
+            "recall": 0.0,
+            "tp": 0,
+            "fp": 50,
+            "precision": 0.0,
+            "inj_median_mse": 0.11307254433631897
+          },
+          "narrow_line": {
+            "recall": 0.0,
+            "tp": 0,
+            "fp": 50,
+            "precision": 0.0,
+            "inj_median_mse": 0.09834741055965424
+          },
+          "polynomial_bump": {
+            "recall": 0.0,
+            "tp": 0,
+            "fp": 50,
+            "precision": 0.0,
+            "inj_median_mse": 0.13165098428726196
+          },
+          "spectral_break": {
+            "recall": 0.85,
+            "tp": 170,
+            "fp": 50,
+            "precision": 0.7727272727272727,
+            "inj_median_mse": 0.25338220596313477
+          }
+        },
+        "2": {
+          "broad_emission_spike": {
+            "recall": 0.25,
+            "tp": 50,
+            "fp": 50,
+            "precision": 0.5,
+            "inj_median_mse": 0.16336101293563843
+          },
+          "gaussian_noise_burst": {
+            "recall": 0.16,
+            "tp": 32,
+            "fp": 50,
+            "precision": 0.3902439024390244,
+            "inj_median_mse": 0.1584707498550415
+          },
+          "narrow_line": {
+            "recall": 0.0,
+            "tp": 0,
+            "fp": 50,
+            "precision": 0.0,
+            "inj_median_mse": 0.10159288346767426
+          },
+          "polynomial_bump": {
+            "recall": 0.615,
+            "tp": 123,
+            "fp": 50,
+            "precision": 0.7109826589595376,
+            "inj_median_mse": 0.2026466727256775
+          },
+          "spectral_break": {
+            "recall": 1.0,
+            "tp": 200,
+            "fp": 50,
+            "precision": 0.8,
+            "inj_median_mse": 0.5043522119522095
+          }
+        },
+        "3": {
+          "broad_emission_spike": {
+            "recall": 0.74,
+            "tp": 148,
+            "fp": 50,
+            "precision": 0.7474747474747475,
+            "inj_median_mse": 0.22745439410209656
+          },
+          "gaussian_noise_burst": {
+            "recall": 0.77,
+            "tp": 154,
+            "fp": 50,
+            "precision": 0.7549019607843137,
+            "inj_median_mse": 0.22860577702522278
+          },
+          "narrow_line": {
+            "recall": 0.0,
+            "tp": 0,
+            "fp": 50,
+            "precision": 0.0,
+            "inj_median_mse": 0.10548366606235504
+          },
+          "polynomial_bump": {
+            "recall": 0.95,
+            "tp": 190,
+            "fp": 50,
+            "precision": 0.7916666666666666,
+            "inj_median_mse": 0.293188214302063
+          },
+          "spectral_break": {
+            "recall": 1.0,
+            "tp": 200,
+            "fp": 50,
+            "precision": 0.8,
+            "inj_median_mse": 0.7809748649597168
+          }
+        },
+        "5": {
+          "broad_emission_spike": {
+            "recall": 1.0,
+            "tp": 200,
+            "fp": 50,
+            "precision": 0.8,
+            "inj_median_mse": 0.42119109630584717
+          },
+          "gaussian_noise_burst": {
+            "recall": 1.0,
+            "tp": 200,
+            "fp": 50,
+            "precision": 0.8,
+            "inj_median_mse": 0.48637476563453674
+          },
+          "narrow_line": {
+            "recall": 0.0,
+            "tp": 0,
+            "fp": 50,
+            "precision": 0.0,
+            "inj_median_mse": 0.11875702440738678
+          },
+          "polynomial_bump": {
+            "recall": 1.0,
+            "tp": 200,
+            "fp": 50,
+            "precision": 0.8,
+            "inj_median_mse": 0.5374078750610352
+          },
+          "spectral_break": {
+            "recall": 1.0,
+            "tp": 200,
+            "fp": 50,
+            "precision": 0.8,
+            "inj_median_mse": 1.581803321838379
+          }
+        },
+        "8": {
+          "broad_emission_spike": {
+            "recall": 1.0,
+            "tp": 200,
+            "fp": 50,
+            "precision": 0.8,
+            "inj_median_mse": 0.8600175380706787
+          },
+          "gaussian_noise_burst": {
+            "recall": 1.0,
+            "tp": 200,
+            "fp": 50,
+            "precision": 0.8,
+            "inj_median_mse": 1.0802947282791138
+          },
+          "narrow_line": {
+            "recall": 0.0,
+            "tp": 0,
+            "fp": 50,
+            "precision": 0.0,
+            "inj_median_mse": 0.14487752318382263
+          },
+          "polynomial_bump": {
+            "recall": 1.0,
+            "tp": 200,
+            "fp": 50,
+            "precision": 0.8,
+            "inj_median_mse": 1.1819672584533691
+          },
+          "spectral_break": {
+            "recall": 1.0,
+            "tp": 200,
+            "fp": 50,
+            "precision": 0.8,
+            "inj_median_mse": 3.1116127967834473
+          }
+        },
+        "10": {
+          "broad_emission_spike": {
+            "recall": 1.0,
+            "tp": 200,
+            "fp": 50,
+            "precision": 0.8,
+            "inj_median_mse": 1.1322227716445923
+          },
+          "gaussian_noise_burst": {
+            "recall": 1.0,
+            "tp": 200,
+            "fp": 50,
+            "precision": 0.8,
+            "inj_median_mse": 1.6434080600738525
+          },
+          "narrow_line": {
+            "recall": 0.195,
+            "tp": 39,
+            "fp": 50,
+            "precision": 0.43820224719101125,
+            "inj_median_mse": 0.17213556170463562
+          },
+          "polynomial_bump": {
+            "recall": 1.0,
+            "tp": 200,
+            "fp": 50,
+            "precision": 0.8,
+            "inj_median_mse": 1.7831372022628784
+          },
+          "spectral_break": {
+            "recall": 1.0,
+            "tp": 200,
+            "fp": 50,
+            "precision": 0.8,
+            "inj_median_mse": 5.814296722412109
+          }
+        },
+        "15": {
+          "broad_emission_spike": {
+            "recall": 1.0,
+            "tp": 200,
+            "fp": 50,
+            "precision": 0.8,
+            "inj_median_mse": 2.547971725463867
+          },
+          "gaussian_noise_burst": {
+            "recall": 1.0,
+            "tp": 200,
+            "fp": 50,
+            "precision": 0.8,
+            "inj_median_mse": 3.6178503036499023
+          },
+          "narrow_line": {
+            "recall": 0.93,
+            "tp": 186,
+            "fp": 50,
+            "precision": 0.788135593220339,
+            "inj_median_mse": 0.2563960552215576
+          },
+          "polynomial_bump": {
+            "recall": 1.0,
+            "tp": 200,
+            "fp": 50,
+            "precision": 0.8,
+            "inj_median_mse": 3.819934844970703
+          },
+          "spectral_break": {
+            "recall": 1.0,
+            "tp": 200,
+            "fp": 50,
+            "precision": 0.8,
+            "inj_median_mse": 10.187019348144531
+          }
+        },
+        "20": {
+          "broad_emission_spike": {
+            "recall": 1.0,
+            "tp": 200,
+            "fp": 50,
+            "precision": 0.8,
+            "inj_median_mse": 4.430161476135254
+          },
+          "gaussian_noise_burst": {
+            "recall": 1.0,
+            "tp": 200,
+            "fp": 50,
+            "precision": 0.8,
+            "inj_median_mse": 6.332394599914551
+          },
+          "narrow_line": {
+            "recall": 1.0,
+            "tp": 200,
+            "fp": 50,
+            "precision": 0.8,
+            "inj_median_mse": 0.3901325762271881
+          },
+          "polynomial_bump": {
+            "recall": 1.0,
+            "tp": 200,
+            "fp": 50,
+            "precision": 0.8,
+            "inj_median_mse": 6.298792839050293
+          },
+          "spectral_break": {
+            "recall": 1.0,
+            "tp": 200,
+            "fp": 50,
+            "precision": 0.8,
+            "inj_median_mse": 20.09628677368164
+          }
+        }
+      },
+      "gate_5sigma_broad": 1.0,
+      "gate_5sigma_mean": 0.8,
+      "gate_PASS_broad": true
+    }
+  },
+  "verdict": {
+    "native_scale_broad_recall": {
+      "5x": 0.99,
+      "8x": 1.0,
+      "10x": 1.0,
+      "15x": 1.0,
+      "20x": 1.0
+    },
+    "prod_scale_broad_recall": {
+      "5x": 1.0,
+      "8x": 1.0,
+      "10x": 1.0,
+      "15x": 1.0,
+      "20x": 1.0
+    },
+    "gate_PASS_native_5sigma": true,
+    "gate_PASS_scaled_5sigma": true
+  }
+}

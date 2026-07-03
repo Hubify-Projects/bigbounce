@@ -1,0 +1,54 @@
+========================================================================
+arXiv SUBMISSION METADATA — Paper IV (P4)
+Galaxy Chirality Catalog
+Source: pipelines/p2_chirality/chirality_catalog_paper.tex  (v1.0.209, 29pp)
+Bundle: submissions/P4/arxiv_p4_v1.0.209.tar.gz
+------------------------------------------------------------------------
+This is PREP metadata to paste field-by-field into arxiv.org/submit.
+DO NOT SUBMIT until Houston gives the go.
+========================================================================
+
+TITLE:
+Survey-Scale Galaxy Chirality with Equivariant TTA: A Null Real-Space Chirality Dipole, a Quantifiable Monopole-Mask Leakage Channel, and Diagnostic Evidence for a Depth/Morphology-Correlated Canonical-Mask Residual on 8.47 Million DESI Legacy Galaxies (3.2 Million Spirals)
+
+------------------------------------------------------------------------
+
+AUTHORS:
+Houston Golden
+(Independent Researcher, Los Angeles, California, USA)
+[Submitter account email houston@hubify.com is set on the arXiv account, NOT in the authors field.]
+
+------------------------------------------------------------------------
+
+ABSTRACT:
+We present, to our knowledge, the largest chirality-labeled galaxy catalog to date: 8,474,531 DESI Legacy DR8 galaxies classified by a flip-equivariant Vision Transformer pipeline into clockwise (CW), counter-clockwise (CCW), and non-spiral classes, with N_spiral = 3,201,160 spirals, publicly released with model weights and reproducibility scripts. The primary scientific result is a real-space chirality dipole consistent with null: the equivariant-catalog high-confidence dipole fit (confidence > 0.6, a pre-specified selection threshold --- not tuned post-hoc --- under which the null is robust across the high-confidence regime (p_eq in {0.6,0.7,0.8}) of a full confidence-cut sweep, while the low-confidence tail (p_eq <= 0.5) shows a systematics-attributed excess (z ~ 4.0-4.3); N ~ 9.5x10^5 spirals) gives +0.41 sigma (moment-z against the isotropic (pixel-)permutation null; empirical-rank p = 0.31, 10^4 isotropic-null realizations; robust under a per-galaxy label-shuffle null, z = 0.58 (same-generator primary; an independent re-implementation gives z = 0.70), and the unthresholded-sample sensitivity is attributed to a low-confidence-tail systematic), and a block-bootstrap WLS template fit disfavors a clean cosmological dipole at the 1.7% reference amplitude (the lower end of Shamir's reported 1.7%-4.0% asymmetry range; this 1.7% f_CW-asymmetry maps to A_ref = 0.034 in A_p units, since A_p = 2(f_CW - 0.5)) at z ~ -18 under the adopted NSIDE = 8 block-bootstrap error model. Note: the +0.41 sigma (isotropic (pixel-)permutation null) and z = 0.58 (per-galaxy label-shuffle null, same-generator primary) values arise from distinct null procedures and are diagnostic-only, not directly comparable as detection significances. This ell = 1 observable is parity-even (isotropy-breaking axial-vector channel), not a direct parity-violation test. The MASTER pseudo-C_ell channel on the patchy footprint is a systematics diagnostic, not an independent cosmological null: a monopole-only generative null reproduces 99.32% of the raw pre-MASTER ell = 1 power (monopole-mask leakage), and MASTER deconvolution substantially reduces, but does not remove, this leakage --- the post-MASTER harmonic diagnostics carry systematics-attributed residuals (+3.64 sigma moment-z, ~1.9 sigma Gaussian-equivalent, canonical mask; +7.28 sigma, apodized footprint) that are diagnostic quantities attributed to residual survey systematics, not claimed cosmological detections, characterized by an eight-anchor systematic battery. (The +3.64 sigma value is from a 500-MC direct run on the canonical unapodized mask; the 10^4-permutation canonical unapodized row gives +7.93 sigma; both are systematics-attributed diagnostics from different null-run sizes and mask/weight conventions, not two independent detection claims. Note: the sigma values quoted in this paragraph arise from distinct null procedures and are not directly comparable as detection significances; they are diagnostic indicators only.) Falsification criterion: a future >= 5 sigma real-space dipole detection (moment-z vs. the isotropic (pixel-)permutation null) at amplitude A >~ A_95, where injection-recovery brackets A_95 between 1.0% and 1.5% (A_50 ~ 0.75%), would be in tension with the present null. These thresholds are estimator-specific to the real-space dipole; the harmonic-channel completeness (P(>= 3 sigma) >= 0.999 at A_p = 0.75%, where the 3 sigma refers to the MASTER ell = 1 label-shuffle null, a different convention) is a separate diagnostic property of that channel and is not interchangeable with the real-space falsification boundary.
+
+------------------------------------------------------------------------
+
+PRIMARY CATEGORY:
+astro-ph.CO
+
+CROSS-LIST CATEGORIES:
+astro-ph.GA
+
+------------------------------------------------------------------------
+
+COMMENTS:
+29 pages, 10 figures, 13 tables. v1.0.209 adds a quantitative forward model of the residual ell=1 amplitude (imaging-systematic templates forward-model ~54% of the observed |a_1| in the correct direction). Data, model weights, and reproducibility scripts at https://github.com/Hubify-Projects/bigbounce
+
+------------------------------------------------------------------------
+
+LICENSE:
+Recommended: CC BY 4.0 (arXiv default perpetual non-exclusive also acceptable).
+(License is the submitter's choice at upload time.)
+
+------------------------------------------------------------------------
+
+REPORT-NO / JOURNAL-REF / DOI / MSC-CLASS:
+(Leave blank. Mint Zenodo/journal DOI at acceptance; no report number.)
+
+------------------------------------------------------------------------
+
+SUBMISSION NOTE:
+Submit P4 BEFORE P5 (P5 cites P4 as its companion/input catalog).
+Bundle: submissions/P4/arxiv_p4_v1.0.209.tar.gz

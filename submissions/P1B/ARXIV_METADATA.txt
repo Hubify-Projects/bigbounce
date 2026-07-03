@@ -1,0 +1,55 @@
+========================================================================
+arXiv SUBMISSION METADATA — Paper I(b) (P1B)
+Reproducibility & Consistency-Check Companion to the ECH Spin-Torsion Program
+Source: arxiv/paper1b_mcmc_companion.tex  (v1B.0.95, 20pp)
+Bundle: submissions/P1B/arxiv_p1b_v1B.0.95.tar.gz
+------------------------------------------------------------------------
+This is PREP metadata to paste field-by-field into arxiv.org/submit.
+DO NOT SUBMIT until Houston gives the go.
+========================================================================
+
+TITLE:
+Technical Reproducibility and Consistency-Check Companion to the ECH Spin-Torsion Program: $\Lambda$CDM$+\Delta N_{\rm eff}$ MCMC Proxy, NaMaster Pipeline Recovery, and a Birefringence Consistency Check with a Spectator-ALP Model
+
+------------------------------------------------------------------------
+
+AUTHORS:
+Houston Golden
+(Independent Researcher, Los Angeles, California, USA)
+[Submitter account email houston@hubify.com is set on the arXiv account, NOT in the authors field.]
+
+------------------------------------------------------------------------
+
+ABSTRACT:
+We report the technical reproducibility and consistency-check material for the Einstein-Cartan-Holst (ECH) spin-torsion cosmology no-go program of Paper I(a). Scope, stated up front: none of the three analyses below implements or tests a torsion-modified Boltzmann/theory module, and none verifies the ECH spin-torsion sector. Each is an adjacent numerical cross-check --- a stock-CAMB generic-radiation null proxy, a foreground-free synthetic-pipeline recovery validation, and a literature-data ALP accommodation --- so the paper's contribution is precisely a reproducibility and null-consistency note for three limited numerical cross-checks, not independent evidence for (or verification of) the spin-torsion theory. Three analyses are documented. (1) Stock-CAMB $\Lambda$CDM$+\Delta N_{\rm eff}$ MCMC proxy (Cobaya v3.6.1, 309,189 frozen samples across two converged dataset combinations): this run uses stock CAMB with $\Delta N_{\rm eff}$ as a free parameter (consistent with the scope stated above --- a null-consistency test of an extra radiation-like degree of freedom). Both frozen dataset combinations find $\Delta N_{\rm eff}$ consistent with zero (-0.020 +- 0.169 full-tension; +0.058 +- 0.179 Planck+BAO+SN) and $H_0$ consistent with the standard Planck-$\Lambda$CDM value (67.68 +- 1.06 full-tension; 67.78 +- 1.09 Planck+BAO+SN, both in km/s/Mpc; the $\Delta N_{\rm eff}$ extension does not reduce the residual ~3.6 sigma tension with the SH0ES local-distance-ladder $H_0 = 73.04 +- 1.04$ km/s/Mpc). (2) NaMaster pseudo-$C_\ell$ pipeline validation on synthetic $\Lambda$CDM CMB polarization skies with an ACT-like footprint mask (N_side = 512, ell_max = 1024, f_sky = 0.32, 10 uK.arcmin white noise, 500 Monte Carlo realizations): injecting the spectator-ALP fiducial value beta = 0.27 deg recovers beta_hat = 0.238 deg (pipeline-recovery bias beta_hat - beta_inj = -0.032 deg; the worst-case bias across injections, -0.040 deg at beta_inj = 0.342 deg, is carried forward as the foreground-free synthetic-pipeline recovery bias --- both are MC pipeline-recovery figures, not sky-measurement systematics, and are not directly comparable to each other's published sky significances). Scope of the validation: the test confirms the algebraic pseudo-$C_\ell$ E->B deconvolution under MASTER mode coupling, NOT the physical separation of the cosmic-rotation angle beta from the instrumental-miscalibration angle alpha which strictly requires unrotated galactic foregrounds (the synthetic CMB-only skies contain no galactic foregrounds, so the very component that breaks the beta-alpha degeneracy in published Planck/ACT DR6 measurements is absent by construction). The MC recovery is therefore a pipeline-validation figure, not a sky-detection significance claim. The primary sky detection significance is the published Planck/ACT DR6 2.7-2.9 sigma (the beta = 0.342 deg +- 0.094 deg, 3.6 sigma headline used throughout this paper is from the published PR3+WMAP9 joint analysis of Eskilt & Komatsu; the PR3-vs-PR4/NPIPE disambiguation is given in a footnote); the pipeline SNR figures refer to recovery of injected MC signals and are not competitive sky measurements. (3) Spectator-ALP consistency check: for a field with f_a ~ M_Pl (where M_Pl = (8 pi G)^{-1/2} ~ 2.44x10^18 GeV is the reduced Planck mass), the scan-prior m ~ H_0 region brackets the published joint WMAP+Planck signal beta = 0.342 deg +- 0.094 deg (3.6 sigma), but the posterior-supported fixed-coupling (C_agamma = 8) accommodation shifts to m >> H_0 (median m ~ 36 H_0 at fixed C_agamma = 8), and the spectator-safe (Omega_a < 0.01) subset is tuned (see the per-subset readout table). Prior-predictive accommodation cost: to test directly whether this consistency is tautological --- i.e. whether the model reproduces beta_obs merely because the coupling and misalignment priors are tuned to it --- we run a prior-predictive Monte-Carlo, drawing the ALP nuisance parameters from their stated priors, propagating each draw through the committed equation of motion with no likelihood weighting, and counting the fraction that lands within the Eskilt et al. band (beta_obs = 0.342 deg +- 0.094 deg; N = 100,000 draws per configuration). At the posterior-supported fixed coupling C_agamma = 8, 11.6% of prior draws fall within 1 sigma of beta_obs (23.9% within 2 sigma); under the broader continuous-coupling prior C_agamma ~ U[4,60] these drop to 6.1% and 12.6%. This moderate fraction cuts against the tautology framing in both directions: a genuinely tautological accommodation --- one that could reproduce any target beta --- would give an order-unity fraction, whereas a knife-edge fine-tuning would give <<1%; the observed one-in-eight-to-one-in-twenty draws instead places the birefringence signal in a reachable but non-generic region of the ALP prior. We therefore report the check as a genuine (if not parameter-free) accommodation rather than a tuned fit, and disclose the fraction explicitly. Spectator-status caveat: for theta_i ~ 1 the ALP energy density rho_a ~ m^2 f_a^2 theta_i^2 ~ H_0^2 M_Pl^2 is of order the critical density today, so the spectator label is only consistent under the explicit restriction theta_i << 1 (which constitutes a >~100-fold fine-tuning of the misalignment initial condition under the natural cos(theta_i)-flat prior --- equivalently ~25-fold relative to the ad-hoc theta_i ~ 0.5 midpoint); at theta_i ~ 1 the ALP must instead be treated as the dark-energy field itself, which is outside the scope of this companion-paper consistency check. The same birefringence arises in standard GR with an identical ALP; it is not a distinctive ECH prediction, and the spectator-status fine-tuning is required regardless of whether the underlying cosmology is a bounce or $\Lambda$CDM. All three analyses are compatibility checks only; no analysis here constitutes evidence for or against a bounce cosmology, and all model-preference inference (Bayes factor, $\Delta$AIC/BIC, nested-sampling evidence) is deferred to follow-up nested-sampling work. A reproducibility manifest is included in an appendix.
+
+------------------------------------------------------------------------
+
+PRIMARY CATEGORY:
+astro-ph.CO
+
+CROSS-LIST CATEGORIES:
+gr-qc, astro-ph.CO
+(gr-qc is the meaningful cross-list; astro-ph.CO is already the primary, so in practice enter gr-qc as the single cross-list.)
+
+------------------------------------------------------------------------
+
+COMMENTS:
+20 pages, 4 figures, 4 tables. Companion to Paper I(a). Data, model weights, and reproducibility scripts at https://github.com/Hubify-Projects/bigbounce
+
+------------------------------------------------------------------------
+
+LICENSE:
+Recommended: CC BY 4.0 (arXiv default perpetual non-exclusive also acceptable).
+(License is the submitter's choice at upload time.)
+
+------------------------------------------------------------------------
+
+REPORT-NO / JOURNAL-REF / DOI / MSC-CLASS:
+(Leave blank. Mint Zenodo/journal DOI at acceptance; no report number.)
+
+------------------------------------------------------------------------
+
+SUBMISSION NOTE:
+P1B is independent of the P4->P5 ordering; it is the companion to Paper I(a) and can be submitted on its own timeline.
+Bundle: submissions/P1B/arxiv_p1b_v1B.0.95.tar.gz
