@@ -6,6 +6,18 @@
 % Main theory paper: paper1a_ech_nogo.tex (Golden 2026a)
 % Compile: pdflatex paper1b_mcmc_companion && bibtex paper1b_mcmc_companion && pdflatex paper1b_mcmc_companion && pdflatex paper1b_mcmc_companion
 %
+% v1B.0.96 (2026-07-02 — P4/P5-style reframe hardening pass. The dominant
+%   reviewer theme (Grok+Gemini+ChatGPT: three cross-checks over-framed as ECH
+%   spin-torsion theory-tests) was already closed in the abstract, Sec.~I "Scope
+%   of this paper," and all three section intros across RS5-RS10 (bolded
+%   "Not a spin-torsion theory module" / "Not a competitive sky detection" /
+%   "Not a distinctive ECH prediction"; "Framing (prior-volume accommodation,
+%   not an independent test)"). This pass adds the one genuinely-open cheap fix:
+%   ChatGPT's requested consolidated notation table (Cag/beta/theta/Omega_a/etc,
+%   Table~\ref{tab:notation}) after the ToC. No physics invented; every symbol
+%   already defined at first use. Inverse-variance chi^2 estimator was ALREADY
+%   computed+documented (80% bias reduction; robustness battery). NO fabrication:
+%   no ECH->DeltaNeff mapping and no bespoke torsion-Boltzmann code claimed.)
 % v1B.0.91 (2026-07-01 — EXT RS5 closure. 3-vendor external sweep (ChatGPT/Grok/Gemini
 %   all major-rev). Truth-audit: nearly all flagged majors ALREADY-ADDRESSED in v86-v90
 %   (torsion framing already scoped to "Generic Radiation-Proxy Test" / stock-CAMB;
@@ -85,6 +97,7 @@
 \usepackage{bm}
 \usepackage{hyperref}
 \usepackage{xcolor}
+\usepackage{array}
 \usepackage{booktabs}
 \usepackage{multirow}
 \usepackage{dcolumn}
@@ -191,8 +204,8 @@
 %   FALSIFIED list (14 items) not acted on.)
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1B.0.95}
-\newcommand{\paperTimestamp}{July 1, 2026}
+\newcommand{\paperVersion}{v1B.0.96}
+\newcommand{\paperTimestamp}{July 2, 2026}
 % v1B.0.95 (2026-07-01, author decision): SURGICALLY REMOVED the entire exploratory
 %   w0wa (overlap-uncorrected supernova) analysis -- Appendix A (app:w0wa) with its
 %   physics interpretation, caveats (a)-(e), and Table II (tab:iter2_posterior);
@@ -1306,6 +1319,34 @@ A reproducibility manifest is included in Appendix~\ref{app:reproducibility}.
 
 \maketitle
 \tableofcontents
+
+%% ------------------------------------------------------------
+%%  Notation table (ChatGPT-B: consolidated symbol definitions)
+%% ------------------------------------------------------------
+\begin{table*}[t]
+\caption{Principal symbols used in the birefringence / spectator-ALP
+consistency check (Sec.~\ref{sec:birefringence_check}) and the
+$\Lambda$CDM$+\Delta\Neff$ proxy run (Secs.~\ref{sec:tensions},
+\ref{sec:verification}). All quantities are defined at their first use in the
+text; this table collects them for reference. No quantity here is an
+ECH-derived prediction --- see the up-front scope statements.}
+\label{tab:notation}
+\begin{ruledtabular}
+\begin{tabular}{ll}
+Symbol & Meaning \\
+\colrule
+$C_{a\gamma}$ & Dimensionless axion--photon coupling constant (KSVZ/DFSZ benchmark $\mathcal{O}(1)$; posterior-supported value $8$) \\
+$\beta$ & Cosmic-birefringence rotation angle (deg); $\beta_{\rm obs}$ published datum, $\beta_{\rm ALP}$ the ALP-model posterior value \\
+$\theta_i$ & ALP misalignment initial condition (dimensionless); natural $\cos\theta_i$-flat prior, midpoint $\theta_i\!\approx\!0.5$ \\
+$\Omega_a$ & Present-day ALP energy-density fraction of critical density, $\rho_a(z{=}0)/\rho_{\rm crit,0}$; spectator cut $\Omega_a<0.01$ \\
+$f_a$ & ALP decay constant (GeV); fiducial $f_a\sim\MPl$ \\
+$m$ & ALP mass, quoted in units of $H_0$; scan-prior region $m\sim H_0$ \\
+$\MPl$ & Reduced Planck mass, $(8\pi G)^{-1/2}\approx2.44\times10^{18}$~GeV \\
+$\Delta\Neff$ & Extra effective relativistic degrees of freedom (generic radiation-like proxy, \emph{not} a spin-torsion prediction) \\
+$\alpha$ & Instrumental polarization-miscalibration angle (deg), degenerate with $\beta$ absent unrotated galactic foregrounds \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
 
 
 %% ============================================================

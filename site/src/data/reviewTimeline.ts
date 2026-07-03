@@ -46,6 +46,42 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "RS20-p1a-v098-2026-07-02",
+    kind: "external-browser",
+    dateISO: "2026-07-02",
+    title: "RS20 P1A v1A.0.98 — honest signposting (Sec X two-exact-identities explicit, dim+1 per-factor bookkeeping) does NOT lift MAJORs; both reviewers re-litigate disclosed ansatz-tiers as substantive rigor defects; approach taxonomy mapped; readiness held 84",
+    papers: ["P1A"],
+    summary:
+      "RS20 P1A v1A.0.98 targeted re-sweep after honest signposting of P1A's already-tiered evidentiary framing: Sec X made two-exact-identities explicit, dim+1 per-factor bookkeeping added. Signposting did NOT lift the MAJORs — Grok held MAJOR, Gemini worsened MAJOR→REJECT. Both reviewers re-litigated the disclosed ansatz-tiers as SUBSTANTIVE rigor defects: dim+1 'dimensionally broken action', Sec X 'sketch not theorem'/'trivial', R2/R3 OOM ansätze. 0 genuinely-new findings; structural item = 4-companion-paper dependency. This maps the approach TAXONOMY: actionable-closure lifts fixable-framing (P4/P5/Grok-P1B) but NOT venue/scope (Gemini-P1B) nor substantive-rigor objections (P1A both reviewers) — P1A's routes genuinely ARE ansatz-level; reviewers want real derivations that honest framing cannot provide. Readiness held 84; human-referee/derivation-work territory.",
+    keyTakeaways: [
+      "Honest signposting (Sec X two-exact-identities explicit, dim+1 per-factor bookkeeping) did NOT lift MAJORs on either calibrated reviewer",
+      "Grok held MAJOR: dim+1 framed as 'dimensionally broken action'; Sec X framed as 'sketch not theorem'/'trivial'; R2/R3 OOM ansätze flagged — substantive-rigor re-flags, not framing concerns",
+      "Gemini worsened MAJOR→REJECT: same disclosed ansatz-tiers recasted as rejection reasons; 0 genuinely-new findings per truth-audit",
+      "Structural item: 4-companion-paper dependency (P2/P3/P4/P5) — disclosed for human referees, not genuinely-new",
+      "Approach taxonomy mapped: actionable-closure lifts fixable-framing (P4/P5/Grok-P1B) but NOT venue/scope (Gemini-P1B) nor substantive-rigor (P1A both reviewers)",
+      "P1A's routes genuinely ARE ansatz-level — reviewers want real derivations; honest framing cannot provide what is not there; human-referee/derivation-work territory",
+      "Readiness held 84; this is the LLM-refereeing floor for P1A specifically",
+    ],
+    links: [],
+  },
+  {
+    id: "RS19-p1b-v096-2026-07-02",
+    kind: "external-browser",
+    dateISO: "2026-07-02",
+    title: "RS19 P1B v1B.0.96 — honest cross-check reframe (non-ECH tests) LIFTS Grok fully (RS14 MINOR→MINOR 0-major, praises scope discipline); Gemini HARDENS (RS14 MAJOR→REJECT), recasting disclosed scope-limits as rejection reasons; approach limit, venue call",
+    papers: ["P1B"],
+    summary:
+      "RS19 P1B v1B.0.96 targeted re-sweep under the honest cross-check reframe: the sweep explicitly flagged that the tests are NOT ECH-sector tests to preempt scope mismatch. This LIFTED Grok fully — RS14 MINOR→MINOR 0-major; Grok praises the scope discipline as 'excellent'. But Gemini HARDENED: RS14 MAJOR→REJECT, recasting each honestly-disclosed scope-limit (methodological companion framing, no standalone ECH physics) AS the reason to reject — all 3 Gemini majors truth-audited as same-disclosed-content (0 genuinely-new). This is the LIMIT of the actionable-closure approach: the reframe lifts fixable-framing concerns but cannot satisfy a reviewer objecting to what the paper fundamentally IS (methodological companion vs. standalone ECH physics). Notably Gemini gave a real ACCEPT post-w0wa-cut earlier in the campaign, confirming referee variance. This is a venue/scope call for a human editor, not a technical gap. Readiness held at 88 (split floor — Grok clean, Gemini rejects on disclosed-scope — not cleanly converged like P4/P5).",
+    keyTakeaways: [
+      "Honest cross-check reframe (explicitly NOT ECH-sector tests) LIFTS Grok fully: RS14 MINOR→MINOR 0-major; Grok praises scope discipline as 'excellent'",
+      "Gemini HARDENS: RS14 MAJOR→REJECT — all 3 majors truth-audited as same-disclosed-content (methodological companion framing, no standalone ECH physics); 0 genuinely-new findings",
+      "This is the LIMIT of actionable-closure: reframe lifts fixable-framing concerns but cannot satisfy a reviewer objecting to what the paper fundamentally IS",
+      "Gemini gave real ACCEPT post-w0wa-cut earlier in campaign — referee variance confirmed; REJECT here is a scope/venue call, not a technical gap",
+      "Readiness held 88 (split floor — Grok clean, Gemini rejects on disclosed-scope); venue/scope decision for a human editor",
+    ],
+    links: [],
+  },
+  {
     id: "RS18-p5-v101-2026-07-02",
     kind: "external-browser",
     dateISO: "2026-07-02",
@@ -2919,6 +2955,34 @@ export const externalVerdictRounds: ExternalRoundVerdicts[] = [
       P5: ["NO_VERDICT", "MINOR", "MAJOR"],
     },
     note: "RS18: P5 only re-swept (honest-framing closures v0.1.101: DESIVAST null foregrounded in abstract, forking-paths global-trials + Bonferroni-5 disclosed, dfCW bound widened honestly to ~0.6pp, Paper-IV dependency disclosed). Every actionable major LIFTED: Grok MINOR (0 non-structural major), Gemini MAJOR-but-only-structural (Paper-IV dependency, disclosed for human referees, not genuinely-new). Both credit DESIVAST anchoring; central claim supported/exceptionally-well-supported. Per pattern-066 both dispositioned no-genuinely-new-real-finding → P5 CONVERGED; readiness 92→96. Other 5 papers not swept this round (NO_VERDICT carry-forward).",
+  },
+  {
+    roundId: "RS19",
+    dateISO: "2026-07-02",
+    windowPT: "Jul 2 · RS19 P1B v1B.0.96 honest cross-check reframe re-sweep",
+    verdicts: {
+      P1A: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P1B: ["NO_VERDICT", "MINOR", "REJECT"],
+      P2: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P3: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P4: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P5: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+    },
+    note: "RS19: P1B only re-swept under honest cross-check reframe (explicitly NOT ECH-sector tests). Grok LIFTED: RS14 MINOR→MINOR 0-major; praises scope discipline as 'excellent'. Gemini HARDENED: RS14 MAJOR→REJECT; all 3 majors truth-audited same-disclosed-content (0 genuinely-new) — Gemini recasting each disclosed scope-limit as a rejection reason (methodological companion vs. standalone ECH physics). Approach limit: reframe lifts fixable-framing concerns but cannot satisfy a reviewer objecting to what the paper fundamentally IS. Venue/scope call for a human editor. Readiness held 88 (split floor). ChatGPT not swept this round (NO_VERDICT). Other 5 papers not swept (NO_VERDICT carry-forward).",
+  },
+  {
+    roundId: "RS20",
+    dateISO: "2026-07-02",
+    windowPT: "Jul 2 · RS20 P1A v1A.0.98 honest-signposting re-sweep",
+    verdicts: {
+      P1A: ["NO_VERDICT", "MAJOR", "REJECT"],
+      P1B: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P2: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P3: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P4: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P5: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+    },
+    note: "RS20: P1A only re-swept after honest signposting (Sec X two-exact-identities explicit, dim+1 per-factor bookkeeping). Signposting did NOT lift MAJORs: Grok held MAJOR (dim+1 'dimensionally broken action', Sec X 'sketch not theorem'/'trivial', R2/R3 OOM ansätze); Gemini worsened MAJOR→REJECT (same disclosed ansatz-tiers as rejection reasons). 0 genuinely-new findings. Structural item = 4-companion-paper dependency (disclosed). Approach taxonomy mapped: honest framing lifts fixable-framing concerns but not substantive-rigor objections — P1A reviewers want real derivations. Readiness held 84. ChatGPT not swept (NO_VERDICT). Other 5 papers not swept (NO_VERDICT carry-forward).",
   },
 ];
 
