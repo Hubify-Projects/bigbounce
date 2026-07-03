@@ -1,0 +1,22 @@
+{
+ "job": "gaia-provenance-audit",
+ "committed_artifact": "pipelines/p3_anomaly_engine/hf_staging/gaia_dr3_anomalies.parquet",
+ "n_rows": 500,
+ "n_unique_source_id": 236,
+ "duplicate_source_ids_present": true,
+ "source_id_signature": {
+  "all_residuals_in_synthetic_range_[0,500000)": true,
+  "expected_pattern": "int(5e18 + i) from generate_synthetic_gaia()",
+  "residual_min": 86016,
+  "residual_max": 498688
+ },
+ "g_magnitude": {
+  "min": 1.9835074112906297,
+  "median": 12.432523560415316,
+  "max": 22.700399525813136,
+  "outside_real_gaia_range_8_to_22": true
+ },
+ "verdict": "SYNTHETIC-PLACEHOLDER",
+ "reproducible": false,
+ "honest_bound": "The committed Gaia tier is the synthetic fallback of gaia_expanded.py, not real Gaia DR3. It cannot be reproduced against real data (neither the lost 20-feature production script nor a real source list survives), and it is not a genuine detection product. The Gaia tier is flagged synthetic / non-reproducible and contributes zero science-count objects; a real Gaia tier would require a from-scratch re-run of the TAP query in gaia_expanded.py."
+}
