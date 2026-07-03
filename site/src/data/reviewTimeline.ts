@@ -46,6 +46,23 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "RS18-p5-v101-2026-07-02",
+    kind: "external-browser",
+    dateISO: "2026-07-02",
+    title: "RS18 P5 v0.1.101 — honest-framing closures lift every actionable major on both reviewers; P5 CONVERGED (readiness 92→96)",
+    papers: ["P5"],
+    summary:
+      "RS18 targeted re-sweep on P5 v0.1.101 after honest-framing closures: abstract foregrounds the primary DESIVAST null result; forking-paths global-trials + Bonferroni-5 disclosure added; dfCW bound widened honestly to ~0.6pp counting-only; Paper-IV dependency disclosed for human referees. These closures LIFTED every actionable major on both calibrated reviewers: Grok returned MAJOR→MINOR (clean, 0 non-structural major); Gemini returned MAJOR→MAJOR-but-only-structural (the sole remaining major is the Paper-IV dependency, disclosed and deferred to human referees — not genuinely-new). Both reviewers credit the DESIVAST anchoring; the central claim is supported/exceptionally-well-supported. Per pattern-066, both MAJORs dispositioned to no-genuinely-new-real-finding → P5 CONVERGED, readiness 92→96. Second paper converged this session via the same honest-framing approach that closed P4.",
+    keyTakeaways: [
+      "P5 v0.1.101 honest-framing closures LIFT every actionable major on both calibrated reviewers: Grok MINOR (0 non-structural major), Gemini MAJOR-but-only-structural (Paper-IV dependency, disclosed)",
+      "Both Grok and Gemini credit DESIVAST anchoring; central claim assessed supported / exceptionally-well-supported",
+      "Sole remaining Gemini MAJOR is the Paper-IV dependency — already disclosed for human referees, not genuinely-new per truth-audit (pattern-066 dispositioning)",
+      "P5 CONVERGED under gate H-refined/pattern-066: 0 genuinely-new real findings across both calibrated reviewers, all actionable majors closed; readiness 92→96",
+      "Second paper converged this session — same honest-framing approach (DESIVAST null foreground + trials disclosure + honest dfCW bound) that closed P4 at RS17",
+    ],
+    links: [],
+  },
+  {
     id: "RS17-p4-v212-2026-07-02",
     kind: "external-browser",
     dateISO: "2026-07-02",
@@ -2888,6 +2905,20 @@ export const externalVerdictRounds: ExternalRoundVerdicts[] = [
       P5: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
     },
     note: "RS17: P4 only re-swept (over-claiming signpost v1.0.212). Over-claiming MAJOR LIFTED on both calibrated reviewers: Grok MINOR (0 MAJOR, was 1-major at RS16), Gemini MINOR (0 MAJOR, was MAJOR at RS16). Both call the central claim 'robustly supported'. 0 genuinely-new real findings. P4 CONVERGED under gate H-refined/pattern-066; readiness 92→96. Other 5 papers not swept this round (NO_VERDICT carry-forward).",
+  },
+  {
+    roundId: "RS18",
+    dateISO: "2026-07-02",
+    windowPT: "Jul 2 · RS18 P5 v0.1.101 honest-framing re-sweep",
+    verdicts: {
+      P1A: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P1B: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P2: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P3: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P4: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P5: ["NO_VERDICT", "MINOR", "MAJOR"],
+    },
+    note: "RS18: P5 only re-swept (honest-framing closures v0.1.101: DESIVAST null foregrounded in abstract, forking-paths global-trials + Bonferroni-5 disclosed, dfCW bound widened honestly to ~0.6pp, Paper-IV dependency disclosed). Every actionable major LIFTED: Grok MINOR (0 non-structural major), Gemini MAJOR-but-only-structural (Paper-IV dependency, disclosed for human referees, not genuinely-new). Both credit DESIVAST anchoring; central claim supported/exceptionally-well-supported. Per pattern-066 both dispositioned no-genuinely-new-real-finding → P5 CONVERGED; readiness 92→96. Other 5 papers not swept this round (NO_VERDICT carry-forward).",
   },
 ];
 
