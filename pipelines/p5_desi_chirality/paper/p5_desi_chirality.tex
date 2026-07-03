@@ -33,7 +33,7 @@
 % The divide-by-h claim (~1246 h⁻¹ Mpc) is INVERTED. No pipeline recompute required.
 % If any future reviewer re-raises this, cite env_finder/01_compute_vweb.py:106-108.
 
-\newcommand{\paperVersion}{v0.1.100-2026-07-01}
+\newcommand{\paperVersion}{v0.1.101-2026-07-02}
 % v0.1.100-2026-07-01 (RS9-EXT closure: Grok+Gemini both MINOR-REVISIONS, no
 %   verdict-blocking MAJOR. Framing/signposting only (pattern-069), no new science:
 %   (1) Paper-IV independence sharpened up front in abstract — headline Delta-f_CW
@@ -577,7 +577,7 @@
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{July 1, 2026}
+\date{July 2, 2026}
 
 \begin{abstract}
 We cross-match the 8{,}474{,}531-galaxy chirality catalog of Paper~IV
@@ -735,7 +735,11 @@ $n\!=\!428$ chirality-relevant spirals; only $n\!=\!6$ lie in the
 DESIVAST $z\!\lesssim\!0.24$ overlap used for the per-galaxy
 classifier-disagreement check (see \S\ref{sec:tweb_concurrent}),
 so the controlling void constraint comes from the DESIVAST-anchored
-re-projection ($n\!=\!56{,}981$, $\Delta f_{\rm CW}\!=\!0.0007$)
+re-projection ($n\!=\!56{,}981$, $\Delta f_{\rm CW}\!=\!0.0007$,
+${\rm SE}(\Delta)\!=\!0.0022$ \emph{counting-statistics-only}; the
+effective $2\sigma$ bound widens to ${\sim}0.5$--$0.6$\,pp once the
+$\pm0.34$--$0.37$\,pp fixed-void-geometry membership systematic is folded
+in --- the tabulated CI is not a full systematic error budget)
 rather than the T-Web void label.
 
 \textbf{Robustness.} We strengthen the headline with the Tempel
@@ -1481,6 +1485,29 @@ Section~\ref{sec:results_vweb}) reaching $|\sigma| \sim 3$ in
 isolation should be read as a per-stratification diagnostic, not as
 an independent test of the headline null; the headline is anchored on
 the DESIVAST primary path.
+
+\textbf{Explicit look-elsewhere / trials disclosure.} For full
+transparency about the garden-of-forking-paths exposure, we state the
+total scan budget explicitly rather than only the per-family thresholds.
+The analysis tree (Table~\ref{tab:analysis_tree}) enumerates $\approx\!5$
+primary DESIVAST estimators, $9$ Phase~2 secondary cells, and on the order
+of $30$--$40$ descriptive stratification tests (redshift/density
+quintiles, three HEALPix NSIDE scans, tracer-program splits, Tempel/ASTRA
+overlays), i.e.\ an effective trials budget of order a few dozen. Two
+points bound the concern this raises: (a) the \emph{primary} conclusion
+does not depend on any of these choices --- the void/non-void
+$\Delta f_{\rm CW}$ null holds uniformly across all five Bonferroni-5
+estimators ($|z_\Delta|\!\le\!1.25$) with the most extreme of the few-dozen
+descriptive tests still below its own per-test threshold, so no
+data-dependent selection of the ``best'' path is at work; and (b) because
+every reported test is null, the multiplicity works \emph{against}
+finding a spurious signal, not for it --- a look-elsewhere correction can
+only weaken an already-null result. We nonetheless flag that the primary
+estimand was designated post-hoc (no timestamped plan predates the data),
+so the ${\sim}0.5$\,pp bound should be read with the look-elsewhere caveat
+that it is the tightest of several correlated void-definition estimators;
+the honestly-quotable family statement is the uniform Bonferroni-5 null,
+not any single most-favorable row.
 
 \textbf{Analysis-tree declaration.}
 Table~\ref{tab:analysis_tree} enumerates the full analysis tree tested
@@ -2549,7 +2576,22 @@ ${\rm SE}(\Delta) = 0.00219$ (binomial, two-sample), $z_\Delta = +0.31$,
 two-sided $p_\Delta = 0.76$, $95\%$ CI $[-0.0036, +0.0050]$ --- a clean
 null on the void-vs-non-void contrast itself, independent of the
 catalog-level monopole carried by the one-sample $\sigma_{\rm from\,half}$
-column. The
+column. \emph{Scope of this CI.} The quoted ${\rm SE}(\Delta)$ and $95\%$
+interval are \emph{counting-statistics-only} (two-sample binomial); they
+do \emph{not} constitute a full systematic error budget. Three systematic
+channels are not folded into the tabulated CI and must be carried
+separately when the interval is read as an exclusion bound: (i) the
+fixed-void-geometry membership systematic, empirically bounded at
+$\pm 0.34$--$0.37$\,pp by the $\sigma_v/(aH)\!=\!5$\,Mpc/$h$ finger-of-god
+Monte Carlo above; (ii) the residual catalog-wide classifier-monopole
+(${\approx}0.28$\,pp, \S\ref{sec:desivast_p4_residual}), which cancels to
+leading order in the void/non-void \emph{difference} but leaves a
+second-order residual; and (iii) cross-match / point-in-sphere purity of
+the void-membership assignment. Folding the dominant membership channel in
+quadrature with the counting CI widens the effective $2\sigma$ half-width
+from ${\approx}0.44$\,pp to ${\approx}0.55$--$0.60$\,pp; we therefore quote
+the primary environment-independence bound conservatively as
+${\sim}0.5$\,pp rather than as the bare counting floor. The
 stronger $\sigma$ on the non-void class is purely a sample-size
 effect ($n_{\rm non-void} / n_{\rm void} \approx 10.9$); both classes
 carry the same $-5\sigma$-class P4 monopole signature scaled to their
@@ -3649,16 +3691,31 @@ instead establishes an observational upper bound that any future
 parity-violating model in the bounce-chirality coupling class
 (Sec.~\ref{sec:p4}), proposing an environment-dependent chirality
 signature at the $\gtrsim\!25\,\text{Mpc}/h$ T-Web smoothing scale,
-must respect. \emph{Explicit excluded range for model-builders:} the
-primary DESIVAST void-vs-non-void contrast excludes
-$|\Delta f_{\rm CW}| \gtrsim 0.4$\,pp ($2\sigma$, $n_{\rm void} =
-56{,}981$) between void and non-void environments; the secondary T-Web
-void bin, power-limited at $n = 428$, excludes only
-$|\Delta f_{\rm CW}| \gtrsim 4.8$\,pp ($2\sigma$). A future
-environment-coupled chirality model predicting a void/non-void handedness
-split above the ${\sim}0.4$\,pp DESIVAST floor is therefore already
-disfavored at DR1 sensitivity; the ${\sim}0.4$--$4.8$\,pp window remains
-open pending the larger DR2 void samples.
+must respect. \emph{Approximate excluded range for model-builders (read
+as a counting-statistics bound, not a full error budget):} the
+primary DESIVAST void-vs-non-void contrast constrains
+$|\Delta f_{\rm CW}| \lesssim 0.4$--$0.5$\,pp between void and non-void
+environments, where the ${\approx}0.4$\,pp figure is the $2\sigma$
+half-width of the two-sample \emph{binomial counting-statistics} CI
+(${\rm SE}(\Delta) = 0.00219$, $95\%$ CI $[-0.36,+0.50]$\,pp,
+\S\ref{sec:desivast_anchored_void}) and is \emph{not} a full systematic
+error budget. The counting-only CI omits at least (i) the
+fixed-void-geometry membership systematic, empirically bounded at
+$\pm 0.34$--$0.37$\,pp by the $\sigma_v/(aH)\!=\!5$\,Mpc/$h$
+finger-of-god Monte Carlo (\S\ref{sec:desivast_primary}); (ii) the
+residual catalog-wide classifier-monopole systematic (${\approx}0.28$\,pp,
+\S\ref{sec:desivast_p4_residual}), which cancels in the void/non-void
+\emph{difference} to leading order but leaves a second-order residual; and
+(iii) cross-match / point-in-sphere void-membership purity. Folding the
+membership systematic in quadrature with the counting CI widens the
+effective $2\sigma$ bound to ${\approx}0.5$--$0.6$\,pp, so the honestly
+supportable statement is that the primary path disfavors any
+environment-coupled void/non-void handedness split $\gtrsim {\sim}0.5$\,pp
+at DR1 sensitivity; the secondary T-Web
+void bin, power-limited at $n = 428$, constrains only
+$|\Delta f_{\rm CW}| \lesssim 4.8$\,pp ($2\sigma$ counting). The
+${\sim}0.5$--$4.8$\,pp window remains
+open pending the larger DR2 void samples and a full systematic budget.
 Paper~II~\cite{golden_fnl_2026} and Paper~III (both companion,
 not-yet-published works by the same author) provide independent
 discriminators (primordial $f_{\rm NL}$ and multi-survey anomaly
@@ -3706,6 +3763,28 @@ concordance on the common overlap is $0.29$\,percentage points
 (${\sim}0.5\sigma$, statistically indistinguishable); lower-$n$
 classes scatter by counting statistics and
 classifier-definition mismatch.
+\item \emph{Structural dependence on the in-preparation Paper~IV
+(honest disclosure).} The per-galaxy \texttt{class\_eq} CW/CCW labels and
+the global classifier-monopole calibration ($f_{\rm CW}^{\rm P4} =
+0.4974 \pm 0.000279$) are \emph{inputs} taken from Paper~IV
+\cite{golden_chirality_2026}, which is in preparation and not yet
+peer-reviewed. We do not conceal this dependence; we bound it. The
+\emph{headline} void/non-void $\Delta f_{\rm CW}$ contrast depends only on
+the public per-galaxy labels and is algebraically invariant under any
+catalog-wide monopole shift (\S\ref{sec:p4}), so it is robust to the
+Paper~IV \emph{monopole amplitude, its uncertainty, and any future
+revision of that amplitude}; the classifier architecture, training,
+parity-equivariance validation, and monopole origin are reproduced for
+self-contained assessment in Appendix~\ref{app:paper4_methods}. What
+remains genuinely Paper~IV-dependent is the \emph{per-galaxy label
+provenance itself} (a systematic re-labeling by a revised Paper~IV
+classifier is not excluded by any test internal to P5) and the
+monopole-referenced $\sigma_{\rm pred}$ diagnostics (not the headline
+contrast). We flag this residual structural dependence explicitly for
+human-referee attention: the primary null should be re-verified against
+the final peer-reviewed Paper~IV catalog once it is published, and until
+then the P5 environment-independence result is best read as conditional on
+the Paper~IV label set characterized in Appendix~\ref{app:paper4_methods}.
 \item Imaging-leg systematics in chirality classification are tracked
 in Paper~IV (per-leg $|\sigma|\!<\!3$); we propagate the per-leg split
 here but do not re-derive the underlying bias.
