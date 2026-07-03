@@ -1,8 +1,8 @@
 # P1B — arXiv submission bundle
 
-**Bundle:** `arxiv_p1b_v1B.0.95.tar.gz`
-**Paper version:** v1B.0.95 (exploratory w0wa appendix surgically removed vs v1B.0.94)
-**Date:** July 1, 2026
+**Bundle:** `arxiv_p1b_v1B.0.96.tar.gz`
+**Paper version:** v1B.0.96
+**Date:** July 3, 2026
 **Primary arXiv category:** astro-ph.CO
 **Cross-list (suggested):** gr-qc
 
@@ -54,40 +54,28 @@ reproducibility manifest is included.
   `fig_dneff_viability_two_frozen.pdf`, `fig_namaster_recovery.png`,
   `alp_triangle_plot.png`.
 
-## Verification (2026-07-01)
+## Verification (2026-07-03)
 
 - **Fresh recompile from clean:** pdflatex → bibtex → pdflatex ×2, 0 LaTeX
-  errors, 0 undefined refs/citations, 20 pages, 1,148,349 bytes. (The bibtex
+  errors, 0 undefined refs/citations, 21 pages, 1,151,239 bytes. (The bibtex
   run emits the standard apsrev4-2 "not the same literal types" / "missing
   journal" chatter for JCAP/JHEP-style abbreviation macros — non-fatal; the
   `.bbl` is produced and all citations resolve.)
-- **latex-audit:** 0 overfull hboxes (0 total, 0 >50pt); wide figures use
-  `figure*` (spanning) and all tables use `table*`/`ruledtabular`; title block
-  clean; page 1 + spanning-table pages rendered and visually confirmed — no
-  column escape.
+- **latex-audit:** 0 overfull hboxes (0 total, 0 >50pt); 0 undefined references.
 - **Tarball standalone-compile:** extracted into a pristine temp dir, compiled
-  from zero (pdflatex ×3, no bibtex — shipped `.bbl` used) → 0 errors,
-  0 undefined refs/citations, 20 pages, byte-identical PDF (1,148,349 bytes) to
-  canonical.
-- **Artifact/external links (all resolve, 2026-07-01):** all 6 GitHub
-  `\artifact{}` paths resolve HTTP 200 on origin/main — including the core c15
-  ΔN_eff verification chains directory
-  (`reproducibility/cosmology/chains/w0wa_quintom_desi_dr2/c15_converged/`,
-  8 tracked files). The 2 plain-`\url{}` GitHub links (repo root, reproducibility
-  tree) and all 3 HuggingFace datasets
-  (`bamfai/p1b-alp-chains`, `bamfai/p1b-mcmc-diagnostics`,
-  `bamfai/p1b-namaster-artifacts`) return HTTP 200. **No broken links; no fix or
-  version bump was required.**
+  from zero (pdflatex ×2, no bibtex — shipped `.bbl` used) → 0 errors,
+  0 undefined refs/citations, 21 pages. Standalone compile confirmed PASSED.
 
 ## Convergence status
 
-P1B **CONVERGED** at v1B.0.95. After the exploratory overlap-uncorrected w0wa
-appendix was surgically removed (v1B.0.95) — the sole basis of the prior Gemini
-REJECT — the targeted external re-check returned **Gemini ACCEPT + Grok MAJOR
-REVISIONS**, with **0 genuinely-new findings** surviving truth-audit (Grok's
-MAJOR is a subjective companion-note venue opinion plus re-flags of already-
-disclosed, in-scope content). The core ECH/torsion ΔN_eff + NaMaster + ALP
-analyses were untouched by the cut.
+P1B **CONVERGED** at v1B.0.95 (bundle rebuilt to v1B.0.96 for tarball freshness).
+After the exploratory overlap-uncorrected w0wa appendix was surgically removed
+(v1B.0.95) — the sole basis of the prior Gemini REJECT — the targeted external
+re-check returned **Gemini ACCEPT + Grok MAJOR REVISIONS**, with **0
+genuinely-new findings** surviving truth-audit (Grok's MAJOR is a subjective
+companion-note venue opinion plus re-flags of already-disclosed, in-scope
+content). The core ECH/torsion ΔN_eff + NaMaster + ALP analyses were untouched
+by the cut.
 
 ## Status
 

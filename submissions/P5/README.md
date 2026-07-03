@@ -1,8 +1,8 @@
 # P5 — arXiv submission bundle
 
-**Bundle:** `arxiv_p5_v0.1.100.tar.gz`
-**Paper version:** v0.1.100-2026-07-01
-**Date:** July 1, 2026
+**Bundle:** `arxiv_p5_v0.1.101.tar.gz`
+**Paper version:** v0.1.101-2026-07-02
+**Date:** July 3, 2026
 **Primary arXiv category:** astro-ph.CO
 **Cross-list (suggested):** astro-ph.GA
 
@@ -51,24 +51,14 @@ paper.
   `fig_p5_volume_fractions_pie.png`, `fig_p5_vweb_vs_tempel_overlay.png`,
   `fig_z_histogram.png`.
 
-## Verification (2026-07-01)
+## Verification (2026-07-03)
 
-- **Fresh recompile from clean:** 3-pass pdflatex, 0 LaTeX errors, 0 undefined
-  refs/citations, 36 pages, 1.2 MB.
-- **latex-audit:** 0 overfull hboxes >50pt (0 overfull hboxes total); tables use
-  `table*`/`ruledtabular`; title block (long title + footnote) clean; page 1 +
-  wide-table pages rendered and visually confirmed — no column escape.
+- **Fresh recompile from clean:** 2-pass pdflatex (inline thebibliography, no bibtex needed),
+  0 LaTeX errors, 0 undefined refs/citations, 36 pages, 1,312,787 bytes.
+- **latex-audit:** 0 overfull hboxes >50pt (0 overfull hboxes total); 0 undefined references.
 - **Tarball standalone-compile:** extracted into a pristine temp dir, compiled
   from zero → 0 errors, 0 undefined refs/citations, 36 pages (matches canonical).
-- **Artifact/external links:** all GitHub `\artifact{}` file + directory paths
-  resolve on origin/main (directory links use `/blob/` but GitHub auto-resolves
-  them to the tree view — HTTP 200, not broken); DESI DR1 public data URLs
-  (dr1 root, iron zcatalog, desivast v1.0) all HTTP 200; HuggingFace dataset +
-  model HTTP 200; both DOIs (`10.1016/j.physrep.2009.07.002`,
-  `10.1103/PhysRevLett.83.1506`) confirmed real via Crossref (the APS DOI returns
-  403 to curl only because journals.aps.org bot-blocks non-browser agents; it
-  resolves in a browser).
-- **Broken links found:** none. No link fix was required for P5.
+  Standalone compile confirmed PASSED.
 
 ## Convergence status
 
