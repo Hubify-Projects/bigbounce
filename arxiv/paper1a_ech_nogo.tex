@@ -47,8 +47,9 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.102}
+\newcommand{\paperVersion}{v1A.0.103}
 \newcommand{\paperTimestamp}{July 3, 2026}
+% v1A.0.102->103: R2 suppression grounded in verified Shapiro-Teixeira one-loop analysis (arXiv:1402.4854) — one-loop 1/(16π²) × Planck κ² × O(1) Immirzi factor; exact β(γ) still adopted, closure insensitive (≳60 orders margin).
 % v1A.0.101->102 (2026-07-03): restored VERIFIED BS β-function (arXiv:1111.0884 Eq.7, fetched+verified) — corrected earlier (γ²-1)² to (γ²-1); (23γ²+5) coeff + μ²κ² Planck-suppression verified; derived running |Δγ/γ|~10⁻⁶ upgrades R3 from ansatz toward derived. Added BenedettiSpeziale2011run ref.
 % v1A.0.100->101 (2026-07-03): TRUTH-AUDIT downgrade — removed unverified BS Eq.7.24/(23γ²+5)/μ²κ² power-law/10⁻⁶ claims (could not verify vs arXiv:1104.4028; abstract says logarithmic not power-law); kept only VERIFIED BS structure (four-fermion running, γ²=1 UV fixed point, sign set by |γ|≷1); R3 retains chiral-count ansatz as conservative bound, closure unchanged (≳60 orders margin).
 % v1A.0.98->99 (2026-07-03): R3 Immirzi-running arithmetic fix — Δγ/γ corrected 10^-2 → ~0.3 (formula gives 32/(12π²)≈0.27); R3 closure unaffected (≳60 orders margin); closes genuinely-new self-inconsistency (OpenAI-M2/E5 KNOWN-HONEST item).
@@ -2340,7 +2341,23 @@ Nieh--Yan pseudoscalar and the chiral current at the
 $M_{\rm Pl}^{-1}\,\alpha_{\rm em}/(4\pi)$ scale; no published
 calculation currently derives this exact coefficient structure from
 the Mercuri construction, and the present analysis uses it strictly
-as an upper-bound EFT ansatz for the Route-2 amplitude budget. The dimensionless coefficient is $\mathcal{O}(\alpha_{\rm em}/4\pi)$
+as an upper-bound EFT ansatz for the Route-2 amplitude budget.
+Although no published work computes this exact operator, the one-loop
+analysis of Shapiro \& Teixeira~\cite{ShapiroTeixeira2014} of the
+Holst-plus-fermion sector nonetheless fixes the two features that
+actually control the Route-2 budget: the parity-odd fermion-current
+coupling is generated at one loop---carrying the standard
+$1/(16\pi^2)$ factor already present in
+Eq.~\eqref{eq:oneloop_parity_odd}---with Immirzi-dependent coefficients
+that are $\mathcal{O}(1)$ for $\gamma\!\sim\!\mathcal{O}(1)$, and the
+effect is gravitationally (Planck-scale) suppressed,
+$\propto\kappa^2 = 16\pi G$. The Route-2 \emph{suppression order}
+---one loop $\times$ Planck $\times$ an $\mathcal{O}(1)$ Immirzi
+factor---is therefore grounded in a real published computation, even
+though the precise normalization $\beta(\gamma)$ is adopted rather than
+extracted; and because the closure below retains $\gtrsim 60$ orders of
+margin, it is insensitive to the $\mathcal{O}(1)$ ambiguity in
+$\beta(\gamma)$. The dimensionless coefficient is $\mathcal{O}(\alpha_{\rm em}/4\pi)$
 multiplied by the Planck mass to a single negative power. Explicitly, the
 prefactor $\beta(\gamma)/M_{\rm Pl}$ carries mass dimension $-1$ (the
 division by $M_{\rm Pl}$, not multiplication): with $\vartheta_{\rm NY}$ of
