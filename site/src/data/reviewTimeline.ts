@@ -46,6 +46,42 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "RS24-VERIFIED-2026-07-03",
+    kind: "external-browser",
+    dateISO: "2026-07-03",
+    title: "RS24-VERIFIED — FIRST FULLY-VERIFIED EXT board: all 6 papers × ChatGPT+Grok+Gemini in Houston's visible browser, raw response text + screenshots + chat URLs saved; none converged",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary:
+      "FIRST FULLY-VERIFIED EXT board — all 6 papers × ChatGPT+Grok+Gemini in Houston's visible browser with raw response text + screenshots + chat URLs saved to project-context/peer-reviews/EXT_real/ and orchestrator-read. Replaces prior UNVERIFIED sub-agent label-only sweeps (which had skipped ChatGPT and overstated convergence). Verdicts: every paper drew a ChatGPT REJECT on substantive grounds; NONE converged. P1A REJECT/MAJOR/MAJOR; P1B REJECT/no-verdict/REJECT; P2 REJECT/MAJOR/MAJOR; P3 REJECT/MAJOR/REJECT; P4 REJECT/MAJOR/MINOR; P5 REJECT/MINOR/MAJOR. Caps honestly recut to 76-80. The verified reviews immediately found real issues: P1B four-fermion dimensional bug (fixed v1B.0.98), P1A Eq.1 T2 variational misread (clarified v1A.0.104), and P2 Cai/Li factor-of-2 FABRICATED resolution (retracted + honestly disclosed unresolved, v1.7.86). Process fixed: keys rotated, CLAUDE.md I1-I5 routing (Claude INT=subscription subagent not API; EXT saves verifiable raw text).",
+    keyTakeaways: [
+      "FIRST FULLY-VERIFIED sweep: raw response text + screenshots + chat URLs saved per leg — prior sweeps were unverified sub-agent label-only runs that skipped ChatGPT",
+      "Every paper drew a ChatGPT REJECT on substantive grounds; NONE of the 6 papers converged",
+      "Caps honestly recut to 76-80 from prior overstated convergence claims",
+      "3 real findings caught immediately: P1B four-fermion dimensional bug (v1B.0.98), P1A Eq.1 T2 variational misread (v1A.0.104), P2 Cai/Li factor-of-2 fabricated resolution (retracted, v1.7.86)",
+      "Process fixed: CLAUDE.md I1-I5 routing — Claude INT via subscription subagent (not API); EXT must save verifiable raw text; keys rotated",
+    ],
+    links: [
+      { label: "EXT_real/ evidence dir", href: `${GH}/project-context/peer-reviews/EXT_real` },
+    ],
+  },
+  {
+    id: "verifiable-review-process-2026-07-03",
+    kind: "skill-improvement",
+    dateISO: "2026-07-03",
+    title: "Skill upgrade: verifiable-review-process — EXT reviews must save raw text + screenshots; ChatGPT never skipped; INT via subscription subagent",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary:
+      "EXT reviews now MUST save full raw reviewer text + screenshots (verifiable); ChatGPT never skipped; INT via Claude Code subagent on subscription (never Anthropic API); INT failures never stop EXT. Documented CLAUDE.md I1-I5.",
+    keyTakeaways: [
+      "EXT reviews: save full raw response text + screenshots + chat URL per leg — verifiable audit trail required",
+      "ChatGPT NEVER skipped in any external sweep — prior omissions led to overstated convergence",
+      "INT reviews: use Claude Code subscription subagent, never Anthropic API (avoids API cost + separate key exposure)",
+      "INT failures are non-blocking — EXT sweep proceeds regardless of INT sub-agent issues",
+      "CLAUDE.md I1-I5 codified: routing rules for INT/EXT process hygiene",
+    ],
+    links: [],
+  },
+  {
     id: "R3-bs-beta-derivation-p1a-v0100-2026-07-03",
     kind: "skill-improvement",
     dateISO: "2026-07-03",
@@ -3001,6 +3037,20 @@ export const externalVerdictRounds: ExternalRoundVerdicts[] = [
       P5: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
     },
     note: "RS20: P1A only re-swept after honest signposting (Sec X two-exact-identities explicit, dim+1 per-factor bookkeeping). Signposting did NOT lift MAJORs: Grok held MAJOR (dim+1 'dimensionally broken action', Sec X 'sketch not theorem'/'trivial', R2/R3 OOM ansätze); Gemini worsened MAJOR→REJECT (same disclosed ansatz-tiers as rejection reasons). 0 genuinely-new findings. Structural item = 4-companion-paper dependency (disclosed). Approach taxonomy mapped: honest framing lifts fixable-framing concerns but not substantive-rigor objections — P1A reviewers want real derivations. Readiness held 84. ChatGPT not swept (NO_VERDICT). Other 5 papers not swept (NO_VERDICT carry-forward).",
+  },
+  {
+    roundId: "RS24-VERIFIED",
+    dateISO: "2026-07-03",
+    windowPT: "Jul 3 · FIRST FULLY-VERIFIED EXT board (Houston's visible browser, raw text + screenshots saved)",
+    verdicts: {
+      P1A: ["REJECT", "MAJOR", "MAJOR"],
+      P1B: ["REJECT", "NO_VERDICT", "REJECT"],
+      P2: ["REJECT", "MAJOR", "MAJOR"],
+      P3: ["REJECT", "MAJOR", "REJECT"],
+      P4: ["REJECT", "MAJOR", "MINOR"],
+      P5: ["REJECT", "MINOR", "MAJOR"],
+    },
+    note: "RS24-VERIFIED: first fully-verified EXT board — all 6 papers × ChatGPT+Grok+Gemini in Houston's visible browser; raw response text + screenshots + chat URLs saved to project-context/peer-reviews/EXT_real/. Every paper drew a ChatGPT REJECT on substantive grounds; NONE converged. Caps honestly recut to 76-80. 3 real findings caught: P1B four-fermion dimensional bug (fixed v1B.0.98), P1A Eq.1 T2 variational misread (clarified v1A.0.104), P2 Cai/Li factor-of-2 fabricated resolution (retracted + disclosed unresolved, v1.7.86). Replaces prior UNVERIFIED sub-agent label-only sweeps that had skipped ChatGPT and overstated convergence.",
   },
 ];
 
