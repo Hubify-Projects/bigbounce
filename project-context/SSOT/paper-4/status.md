@@ -2,6 +2,23 @@
 
 **Canonical status file. When in doubt about Paper 4, read this.**
 
+## ✅ CURRENT AUTHORITATIVE STATUS — 2026-07-04 (VERIFIED HONEST BOARD — SUPERSEDES all "ACCEPT / converged / 99 / green-light" entries below)
+
+**⚠️ RETRACTION.** The June "EXT22 / universal 3/3 ACCEPT / FROZEN — readiness 98/99" entries below are **RETRACTED as UNVERIFIED** (sub-agent EXT sweeps, no raw reviewer text, dropped ChatGPT leg, no INT; Houston caught 2026-07-03). Preserved below as audit trail only. **P4 is NOT converged.** (The June "first ChatGPT ACCEPT in campaign" claim for P4 is part of the retracted, unverified record.)
+
+**VERIFIED BOARD (RS24-VERIFIED / RS25, 2026-07-03→04; raw evidence in `project-context/peer-reviews/EXT_real/`):**
+- **P4 — v1.0.212:** ChatGPT **REJECT** / Grok **MAJOR** / Gemini **MINOR**. Readiness **76–80** (recut, NOT 98/99).
+
+**Content is ERROR-CLEAN:** the null result is **verified-robust** via git-tracked reanalysis + step-function control + GZ1 cross-check (GZ1 z = −0.04).
+
+**Close-the-gap = VENUE DECISION / HUMAN REFEREE + one honestly-disclosed limitation:**
+- Barrier is the *~47% ℓ=1 residual*, which is **disclosed** in the paper (not hideable, not an error). The path forward is a venue/scope decision — publish the null with the disclosed residual — not further editing.
+- Edit loop **EXHAUSTED** (pattern-066 referee variance). Do NOT resume noise EXT sweeps. Honest referee cover letter drafted: `submissions/P4/REFEREE_COVER_LETTER.md`. **Next gate: Houston venue / human-referee decision.**
+
+---
+
+<!-- HISTORICAL LOG BELOW — audit trail only. The "ACCEPT / 3-of-3 / 98 / 99 / green-light" claims below are RETRACTED per the 2026-07-04 verified board above. -->
+
 **🎯 Last authoritative update: 2026-06-26 (PDT) — EXT22 CLOSURE — NV-P4-1 (POLISH) applied: +3.3σ→+3.29σ at L701 and L900, unified to L912 precise value. P4 v1.0.188 recompiled md5 f2902399 23pp 0/0/0. PDFs mirrored all paths. Readiness 97→98. EXT22 confirm round complete (0 MAJORs/BLOCKERs). Next gate: Houston sign-off (first in submission queue).**
 
 **🎯 Prior: 2026-06-26 (PDT) — R52 COMPLETE — P4 v1.0.188 (md5 4dbda6aa, 23pp, 0/0/0). INT 5-vendor + EXT 3-provider: 0 genuine BLOCKERs/MAJORs; Grok/o3 REJECT/MAJOR ruled false positives; real MINORs closed + recompiled. PDFs mirrored. Readiness 92→97. Next gate: EXT22 confirm + Houston sign-off (first in submission queue).** Prior: **2026-06-20 (PDT) — P-ROUND COMPLETE — P4 v1.0.188 FROZEN (md5 c47abc18, 23pp). Tarball paper4_arxiv_v1.0.188.tar.gz standalone-verified (0 errors / 0 undef refs). Site surfaces cohesive. bamfai/galaxy-chirality-catalog + bamfai/galaxy-chirality-v2 (HF) both curl 200. Readiness 99. Final gate: Houston sign-off (first in submission queue).** Prior: D-round D2 CLEAN; P-round in progress. Readiness 96→98. D-round D2 CLEAN (all visual fixes confirmed, 0 regressions); readiness climbed 96→98; P-round (packaging) opened. Science R40+EXT20 ACCEPT confirmed. Prior: 2026-06-19 — D-ROUND OPENED AS BLOCKING — Readiness rolled 99→96; ceiling R-round 96 until D-round closes. Prior: 2026-06-18 — R40+EXT20 FINAL ROUND — P4 v1.0.188 FROZEN (md5 c47abc18, 23pp); UNANIMOUS ACCEPT; readiness 99. Final gate: D-round → P-round → Houston sign-off.

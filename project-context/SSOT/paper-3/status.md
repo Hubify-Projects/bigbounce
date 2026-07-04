@@ -2,6 +2,23 @@
 
 **Canonical status file. When in doubt about Paper 3, read this.**
 
+## ✅ CURRENT AUTHORITATIVE STATUS — 2026-07-04 (VERIFIED HONEST BOARD — SUPERSEDES all "ACCEPT / converged / 99 / green-light" entries below)
+
+**⚠️ RETRACTION.** The June "EXT22 CLEAN / R52 / UNANIMOUS ACCEPT — readiness 98/99" entries below are **RETRACTED as UNVERIFIED** (sub-agent EXT sweeps, no raw reviewer text, dropped ChatGPT leg, no INT; Houston caught 2026-07-03). Preserved below as audit trail only. **P3 is NOT converged.**
+
+**VERIFIED BOARD (RS24-VERIFIED / RS25, 2026-07-03→04; raw evidence in `project-context/peer-reviews/EXT_real/`):**
+- **P3 — v3.1.136:** ChatGPT **REJECT** / Grok **MAJOR** / Gemini **REJECT**. Readiness **76–80** (recut, NOT 98/99).
+
+**Content is ERROR-CLEAN:** §V cosmological claim reframed to a **methodological demonstration / no-detection** (no overclaimed cosmological signal).
+
+**Close-the-gap = VENUE DECISION / HUMAN REFEREE (no editable open item):**
+- Barrier is *process-volume-catalog scope* (positioning as a methods/catalog paper) **+ sequestered exploratory eROSITA** (exploratory eROSITA content kept sequestered rather than headlined). Houston-gated scope/venue call.
+- Edit loop **EXHAUSTED** (pattern-066 referee variance; editing scope items backfired elsewhere). Do NOT resume noise EXT sweeps. Honest referee cover letter drafted: `submissions/P3/REFEREE_COVER_LETTER.md`. **Next gate: Houston venue / human-referee decision.**
+
+---
+
+<!-- HISTORICAL LOG BELOW — audit trail only. The "ACCEPT / 98 / 99 / green-light" claims below are RETRACTED per the 2026-07-04 verified board above. -->
+
 **🎯 Last authoritative update: 2026-06-26 (PDT) — EXT22 CLEAN: 0 new verified findings. Readiness 97→98. Next gate: Houston sign-off + HF catalog flip. Prior: R52 COMPLETE — P3 v3.1.113 (md5 615a0aa5, 29pp, 0/0/0). INT 5-vendor + EXT 3-provider: 0 genuine BLOCKERs/MAJORs; real MINORs closed + recompiled. PDFs mirrored. Readiness 92→97.** Prior: **2026-06-20 (PDT) — P-ROUND COMPLETE — P3 v3.1.113 (md5 7c935f19319cbf9db3f4e5c3f401948a, 29pp, 0/0/0). Tarball paper3_arxiv_v3.1.113.tar.gz standalone-verified (0 errors / 0 undef refs). Site surfaces cohesive. bamfai/bigbounce-anomaly-catalog (HF) curl 200. Readiness 99. Final gate: Houston sign-off + HF catalog flip at time of arXiv submission.** Prior: 2026-06-19 (PDT) — D-ROUND VISUAL POLISH APPLIED — P3 v3.1.112 → v3.1.113 (md5 7c935f19319cbf9db3f4e5c3f401948a, 29pp, 0/0/0). D-round D2 CLEAN 2026-06-20 (all visual fixes confirmed, 0 regressions); readiness 96→98; P-round (packaging) in progress. Tarball paper3_arxiv_v3.1.113.tar.gz at project-context/SSOT/arxiv_tarballs/. Prior: 2026-06-19 — D-ROUND OPENED AS BLOCKING — Readiness rolled 99→96. Science R40+EXT20 ACCEPT confirmed. Camera-ready D-round (visual/design polish) opened 2026-06-19 per Houston; ceiling R-round 96 until D-round closes. Prior: 2026-06-18 — R40+EXT20 FINAL ROUND — P3 v3.1.111 → v3.1.112 (md5 62d7b294, 30pp, 0/0/0); UNANIMOUS ACCEPT; readiness 99. Final gate: D-round → P-round → Houston sign-off.
 
 **🎯 Prior authoritative update: 2026-06-13 (PDT) — EXT15-CLOSURE-WAVE — P3 v3.1.110 (md5 9edff2b2, 30pp, 0/0/0).** EXT14=12/18 ACCEPT (P1B+P4 frozen). EXT15-closure: Table IX Savage-Dickey footnote enhanced with explicit Gaussian KDE values at γ*=3.0 (post density 0.461 → B_MB/free=3.23) and γ*=4.33 (post density 6.46e-5 → B_SMBHB/free=4.52e-4); ratio B_MB/SMBHB=7.14e3. Genuine SD density ratios, not posterior-tail fractions. EXT16 submitted. Readiness 95 per /readiness-cap-99.
