@@ -47,9 +47,9 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.103}
+\newcommand{\paperVersion}{v1A.0.104}
 \newcommand{\paperTimestamp}{July 3, 2026}
-% v1A.0.102->103: R2 suppression grounded in verified Shapiro-Teixeira one-loop analysis (arXiv:1402.4854) — one-loop 1/(16π²) × Planck κ² × O(1) Immirzi factor; exact β(γ) still adopted, closure insensitive (≳60 orders margin).
+% v1A.0.103->104 (2026-07-03): INT truth-audit of EXT ChatGPT [MAJOR] Eq.(1) T·T variational concern (all 3 EXT reviewers REJECT/MAJOR). VERDICT: LEGITIMATE-BUT-UNCLEAR (misread of a correct presentation, not a real bug). Variational principle is SOUND — Eq.(1) is first-order Palatini-EC; independently varied fields are {e^a_mu, omega^ab_mu, psi}; (1/4)T·T is on-shell Hehl-Datta shorthand appearing only AFTER algebraic torsion elimination (Cartan Eq.2), already stated in the Eq.(1)+Eq.(2) footnotes and body (no double-counting). Rebuttal-by-clarification: added an explicit sentence at Eq.(1) naming the independently-varied first-order fields + that T·T appears only post-elimination, so no referee can read it as ill-defined. No math changed; no fabricated derivation. 0 undef-refs.
 % v1A.0.101->102 (2026-07-03): restored VERIFIED BS β-function (arXiv:1111.0884 Eq.7, fetched+verified) — corrected earlier (γ²-1)² to (γ²-1); (23γ²+5) coeff + μ²κ² Planck-suppression verified; derived running |Δγ/γ|~10⁻⁶ upgrades R3 from ansatz toward derived. Added BenedettiSpeziale2011run ref.
 % v1A.0.100->101 (2026-07-03): TRUTH-AUDIT downgrade — removed unverified BS Eq.7.24/(23γ²+5)/μ²κ² power-law/10⁻⁶ claims (could not verify vs arXiv:1104.4028; abstract says logarithmic not power-law); kept only VERIFIED BS structure (four-fermion running, γ²=1 UV fixed point, sign set by |γ|≷1); R3 retains chiral-count ansatz as conservative bound, closure unchanged (≳60 orders margin).
 % v1A.0.98->99 (2026-07-03): R3 Immirzi-running arithmetic fix — Δγ/γ corrected 10^-2 → ~0.3 (formula gives 32/(12π²)≈0.27); R3 closure unaffected (≳60 orders margin); closes genuinely-new self-inconsistency (OpenAI-M2/E5 KNOWN-HONEST item).
@@ -1463,12 +1463,24 @@ non-trivially when fermions are present, as established by
 Freidel, Minic \& Takeuchi~\cite{Freidel2005}, who showed that the
 Barbero-Immirzi parameter becomes physically observable through its coupling
 to fermionic matter; the explicit $\gamma$-dependence it induces appears
-in the four-fermion contact term, Eq.~\eqref{eq:4fermi}. The $T^{abc}T_{abc}$ term in Eq.~\eqref{eq:ECH} is a
+in the four-fermion contact term, Eq.~\eqref{eq:4fermi}. To state the
+variational principle unambiguously: Eq.~\eqref{eq:ECH} is a
+\emph{first-order} (Palatini--Einstein--Cartan) action whose two
+independently varied fields are the vielbein $e^a_\mu$ and the Lorentz
+spin connection $\omega^{ab}_\mu$ (equivalently its torsion part), together
+with the Dirac field $\psi$ in $S_{\rm matter}$; the metric-compatible
+Levi-Civita piece is not a separate field. The connection is algebraic
+(non-propagating): its equation of motion, Eq.~\eqref{eq:torsion}, is the
+purely algebraic Cartan constraint $T^{abc}=\kappa\,S^{abc}$, solved
+pointwise and back-substituted. The $T^{abc}T_{abc}$ term in Eq.~\eqref{eq:ECH} is a
 shorthand for the four-fermion contact interaction obtained after integrating out
-the non-propagating torsion; it is not an independently specified kinetic term
-and is \emph{not} varied independently --- the connection variation is performed
-on the Einstein--Cartan--Holst$+$Dirac action alone, with
-Eq.~\eqref{eq:torsion} the resulting Cartan equation, so no double counting
+the non-propagating torsion; it is \emph{not} one of the independently
+varied fields and is \emph{not} varied on its own --- the full variation is
+performed with respect to $\{e^a_\mu,\omega^{ab}_\mu,\psi\}$ on the
+Einstein--Cartan--Holst$+$Dirac action, with
+Eq.~\eqref{eq:torsion} the resulting Cartan equation and
+$\tfrac14 T^{abc}T_{abc}$ appearing only \emph{after} on-shell torsion
+elimination, so the principle is well-defined and no double counting
 arises.
 
 The Barbero-Immirzi parameter is fixed by LQG black hole entropy in
