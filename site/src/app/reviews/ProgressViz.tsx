@@ -398,9 +398,9 @@ const SEVERITY: Record<Verdict, number> = {
 };
 
 const MODEL_COLORS = {
-  ChatGPT: "#6ea8fe",
-  Grok: "#d29922",
-  Gemini: "#a78bfa",
+  ChatGPT: "var(--model-chatgpt)",
+  Grok: "var(--model-grok)",
+  Gemini: "var(--model-gemini)",
 };
 
 /** Sort externalVerdictRounds chronologically by dateISO then roundId. */

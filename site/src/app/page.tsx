@@ -1,5 +1,6 @@
 import { papers, getPaperBySlug } from "@/data/papers";
 import { liveStatus } from "@/data/live-status";
+import { sortedReviewRounds } from "@/data/reviewTimeline";
 import { Button } from "@/components/ui/button";
 import { LiveStatus } from "@/components/Shell/LiveStatus";
 import { getLivePapers, displayVersion } from "@/lib/livePapers";
@@ -47,8 +48,8 @@ const arcRoles: Array<{ n: string; role: string }> = [
 // Concise contributions — a short, scannable subset of /contributions.
 // Every line is copied from the canonical contributions data (no new claims).
 const TIER_COLOR: Record<"N3" | "N2", string> = {
-  N3: "#16a34a",
-  N2: "#2563eb",
+  N3: "var(--tier-n3)",
+  N2: "var(--tier-n2)",
 };
 const topContributions: Array<{
   id: string;
@@ -116,7 +117,7 @@ const artifactGroups: Array<{
   {
     label: "Paper PDFs",
     blurb: "Every paper compiles to a versioned PDF, served from the papers index.",
-    links: [{ label: "Browse all six papers", href: "/papers", internal: true }],
+    links: [{ label: "Browse all six papers", href: "/paper", internal: true }],
   },
   {
     label: "Datasets on HuggingFace",
@@ -182,6 +183,15 @@ export default async function HomePage() {
   // Readiness comes from getLivePapers ONLY — the single Convex-first source
   // shared with the live paper-state surfaces. Never re-read papers.ts.readiness.
   const livePapers = await getLivePapers();
+
+  // Review-proof band data. Only kinds that ARE reviews count as review
+  // rounds; skill-improvement entries are program bookkeeping and closure
+  // waves are fixes, tallied separately so the trust number stays honest.
+  const timeline = sortedReviewRounds();
+  const REVIEW_KINDS = new Set(["external-browser", "internal-api", "internal-cc"]);
+  const reviewRoundCount = timeline.filter((r) => REVIEW_KINDS.has(r.kind)).length;
+  const closureWaveCount = timeline.filter((r) => r.kind === "closure-wave" || r.kind === "ext-closure").length;
+  const latestRound = timeline[0];
   const avgReadiness = Math.round(
     livePapers.reduce((acc, p) => acc + p.readinessComputed, 0) /
       Math.max(1, livePapers.length),
@@ -227,8 +237,35 @@ export default async function HomePage() {
             </Link>
           </Button>
           <Button asChild variant="outline">
-            <Link href="/papers">Read the six papers</Link>
+            <Link href="/paper">Read the six papers</Link>
           </Button>
+        </div>
+      </section>
+
+      {/* 1.5 — Adversarial review proof band (counts computed from the real
+          timeline at build time; the /reviews page is the full record).
+          Count ONLY actual review rounds — skill-improvement and closure
+          entries are program bookkeeping, not reviews, and inflating this
+          number would undercut the exact trust claim the band makes. */}
+      <section style={{ marginBottom: 40 }}>
+        <div className="card" style={{ borderLeft: "3px solid var(--accent)" }}>
+          <p className="eyebrow" style={{ marginBottom: 6 }}>
+            How every claim here gets vetted
+          </p>
+          <p style={{ fontSize: 14, lineHeight: 1.7, color: "var(--text-secondary)", maxWidth: "72ch", margin: 0 }}>
+            Every result on this site has been through{" "}
+            <strong style={{ color: "var(--text)" }}>{reviewRoundCount} adversarial review rounds</strong> — model
+            families from five different labs told to refute each paper, plus independent external referees, with a
+            separate integrity audit on the review process itself — and {closureWaveCount} closure waves fixing what
+            those rounds found. The loop has caught real errors (an overlap-inflated significance, a mislabeled
+            catalog tier) before any reader could. The complete record is public
+            {latestRound ? <> — most recent: {latestRound.dateISO}</> : null}.
+          </p>
+          <p style={{ margin: "8px 0 0" }}>
+            <Link href="/reviews" style={{ color: "var(--accent)", fontSize: 13.5 }}>
+              Browse the full review timeline <ArrowRight size={13} style={{ display: "inline", verticalAlign: "-2px" }} />
+            </Link>
+          </p>
         </div>
       </section>
 
@@ -417,7 +454,7 @@ export default async function HomePage() {
 
       {/* 4 — Concise contributions */}
       <section className="section">
-        <p style={sectionLabel}>What's new here</p>
+        <p style={sectionLabel}>What&rsquo;s new here</p>
         <h2 style={{ marginTop: 0 }}>Top contributions</h2>
         <p style={{ marginTop: 4, fontSize: 13, lineHeight: 1.6, color: "var(--text-secondary)", maxWidth: "66ch" }}>
           A short list of the program&apos;s most novel results. Each is scored on a

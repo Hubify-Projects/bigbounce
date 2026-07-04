@@ -437,6 +437,11 @@
   font-weight: 600;
   line-height: 1.45;
   color: var(--text);
+  display: block; /* reset global h2 flex layout */
+}
+
+.review-entry-title::after {
+  display: none; /* feed items don't get the section-divider gradient rule */
 }
 
 .review-paper-chips {
