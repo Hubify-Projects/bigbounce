@@ -6,6 +6,21 @@
 % Main theory paper: paper1a_ech_nogo.tex (Golden 2026a)
 % Compile: pdflatex paper1b_mcmc_companion && bibtex paper1b_mcmc_companion && pdflatex paper1b_mcmc_companion && pdflatex paper1b_mcmc_companion
 %
+% v1B.0.99 (2026-07-04 — RS25 Grok MINOR closure wave, no physics changed):
+%   (1) Sec.~III.A: added one explicit intermediate step between Eq.(2) and
+%       Eq.(3) showing the thermal average of the dimension-6 contact operator,
+%       <(psibar g5 g^mu psi)^2>_T ~ n_f^2 ~ (g_* T^3)^2, citing the standard
+%       finite-temperature contact-operator average (Kapusta & Gale 2006).
+%       DeltaN_eff^(ECH) numbers (~7e-45 BBN, ~5e-58 recomb) UNCHANGED.
+%   (2) Table IV caption (tab:alp_restricted_subsets): added a one-sentence
+%       caveat that the posterior-mass fractions are conditional on the Gaussian
+%       summary-likelihood approximation and omit EB-specific band-power
+%       covariance + calibration systematics.
+%   (3) Sec.~IV Fig.3 bias: added explicit sentence right after the bias values
+%       that the number applies only to CMB-only unrotated synthetic validation
+%       and supplies no real-sky systematic floor (galactic foregrounds break
+%       the beta--alpha degeneracy; absent from these synthetic skies).
+%   New ref: KapustaGale2006 (Finite-Temperature Field Theory, CUP 2nd ed.).
 % v1B.0.98 (2026-07-03 — fix Sec.~III.A four-fermion coefficient convention
 %   kappa^2 = 8 pi G_N = M_Pl^-2 (was kappa = 8 pi G, dimensionally inconsistent
 %   — ChatGPT-caught). With kappa^2 = 8 pi G_N the coefficient -(3 kappa^2/16)
@@ -216,8 +231,8 @@
 %   FALSIFIED list (14 items) not acted on.)
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1B.0.98}
-\newcommand{\paperTimestamp}{July 3, 2026}
+\newcommand{\paperVersion}{v1B.0.99}
+\newcommand{\paperTimestamp}{July 4, 2026}
 % v1B.0.95 (2026-07-01, author decision): SURGICALLY REMOVED the entire exploratory
 %   w0wa (overlap-uncorrected supernova) analysis -- Appendix A (app:w0wa) with its
 %   physics interpretation, caveats (a)-(e), and Table II (tab:iter2_posterior);
@@ -1558,7 +1573,16 @@ $\propto\kappa^2=8\pi G_N\sim M_{\rm Pl}^{-2}$: the interaction is
 Planck-suppressed. In a thermal fermion gas the coherent spin-torsion energy
 density is $\rho_{\rm tor}\sim\alpha\,n_f^2$ with $\alpha=\kappa^2(\hbar
 c)^2/32$ and number density $n_f\propto T^3$ for relativistic
-species~\cite{UngerPoplawski2019}, so
+species~\cite{UngerPoplawski2019}. Explicitly, the energy density
+contributed by the dimension-6 contact operator of
+Eq.~(\ref{eq:fourfermion}) is the thermal expectation value
+$\rho_{\rm tor}\sim\kappa^2\langle(\bar\psi\gamma^5\gamma^\mu\psi)^2\rangle_T$;
+for a relativistic plasma in kinetic equilibrium the coherent axial-current
+bilinear factorizes at leading order into the square of the (spin-summed)
+fermion number density, $\langle(\bar\psi\gamma^5\gamma^\mu\psi)^2\rangle_T
+\sim n_f^2 \sim (g_\ast\,T^3)^2$, the standard finite-temperature average of a
+four-fermion (Fermi-type) contact operator in the early-universe
+plasma~\cite{KapustaGale2006}, so that
 \begin{equation}
 \rho_{\rm tor}\;\sim\;G_N\,T^6 ,\qquad
 \frac{\rho_{\rm tor}}{\rho_{\rm rad}}\;\sim\;G_N\,T^2\;=\;
@@ -2098,7 +2122,7 @@ value $\le 0.040^\circ$ across the three injection points
 ($0.000^\circ$ at $\beta_{\rm inj}=0$, $-0.032^\circ$ at $0.27^\circ$,
 $-0.040^\circ$ at $0.342^\circ$); we carry the worst case
 $|\Delta\hat\beta| = 0.040^\circ\pm 0.002^\circ$ (SE of 500-MC mean) forward as the NaMaster systematic
-floor (deconvolution-algebra bias on foreground-free skies; not a real-sky bias bound). At the canonical $\beta_{\rm inj}=0.27^\circ$ injection the bias
+floor (deconvolution-algebra bias on foreground-free skies; not a real-sky bias bound). This figure applies exclusively to the CMB-only, unrotated synthetic validation and supplies \emph{no} systematic floor for real-sky $\beta$ measurements, which additionally rely on galactic foregrounds to break the $\beta$--$\alpha$ (birefringence--miscalibration) degeneracy and require full foreground cleaning absent from these synthetic skies. At the canonical $\beta_{\rm inj}=0.27^\circ$ injection the bias
 is $-0.032^\circ$
 (attributed by the robustness battery below to the unweighted template
 fit as the dominant driver, with a secondary contribution from the
@@ -2778,7 +2802,12 @@ with the observed $\beta_{\rm obs}=0.342^\circ\pm 0.094^\circ$ at
 ${\sim}0.5\sigma$. The spectator-consistent verdict rests on this
 $\Omega_a<0.01$ subset ($13\%$ mass, stable ESS\,$=461$), \emph{not} on
 the strict $\theta_i\le 0.1$ sliver ($0.33\%$ weighted mass, $42$
-samples), which is reported as ``indicative only.''}}
+samples), which is reported as ``indicative only.'' All posterior-mass
+fractions in this table are conditional on the Gaussian summary-likelihood
+approximation for the Eskilt--Komatsu $\beta_{\rm obs}$ datum
+(Appendix~\ref{app:alp_priors}) and therefore omit EB-specific band-power
+covariance and calibration systematics; they would shift under a full
+re-analysis of the underlying $EB$ spectra.}}
 \begin{ruledtabular}
 \scriptsize
 \begin{tabular}{lcccccc}
