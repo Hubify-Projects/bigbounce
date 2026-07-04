@@ -147,6 +147,30 @@ Five rules Houston kept having to re-state; encoded here as hard gates:
 
 ---
 
+## Standing directive (2026-07-03 — permanent): INT/EXT review routing — NEVER fake, NEVER skip, NEVER fail on the wrong thing
+
+Houston caught (2026-07-03) that recent "reviews" were EXT sub-agent reports with **no raw reviewer text captured** (unverifiable), that ChatGPT was silently dropped, and that INT was skipped entirely. Hard rules going forward:
+
+**I1 — INT reviewer routing (the big one):**
+- **Claude/Anthropic INT leg = the running Claude Code agent itself, on Houston's subscription — NEVER the Anthropic API.** You ARE Claude Code running on it. NEVER ask Houston for an Anthropic API key, NEVER "fail" an INT leg because the Anthropic API is disabled. Run the Claude leg as a Claude Code sub-agent (or the main loop) reading the full paper + source + context. If a round is instead being run inside Codex/another agent, that agent is the "Claude-equivalent" leg via its own subscription — use it, not the OpenAI API.
+- **OpenAI INT leg = OpenAI API** (o3/gpt) when running inside Claude Code; or the Codex agent when the round runs there.
+- **Grok/XAI INT leg = XAI API.** **Gemini INT leg = Gemini API.**
+- **Perplexity is OPTIONAL** (not part of the core INT/EXT set; assess adding later). Do NOT make it a required key; do NOT fail the pipeline on its absence/quota.
+- `tools/v3_native_pdf_review.py` must NOT require ANTHROPIC_API_KEY or PERPLEXITY_API_KEY, and must route the Claude leg to a Claude Code sub-agent, not the API.
+
+**I2 — INT API failures NEVER stop EXT.** EXT (browser) reviews are independently valuable and must run regardless of any INT API billing/quota problem. Do EXT first if needed, then INT via Claude Code sub-agents. Never let an INT infra failure become an excuse to skip EXT.
+
+**I3 — Why INT still matters:** EXT reviewers (browser ChatGPT/Grok/Gemini) do NOT get the full history, source code, data, and context. INT (with the full repo + context as source-of-truth) is the complement that catches what EXT can't. Run BOTH.
+
+**I4 — EXT reviews are mandatory + VERIFIABLE.** You know how to run the browser EXT (done hundreds of times) — never ask how. Run ChatGPT + Grok + Gemini in Houston's visible gstack browser. **Every leg MUST save the COMPLETE raw reviewer response text + a screenshot** to `project-context/peer-reviews/EXT_real/`; the orchestrator READS + verifies each raw response before recording any verdict. Never record a verdict from a label alone. A leg that produced no output is FAILED, not a verdict.
+  - **Gemini EXT:** log in via **houston@bamf.com** Google account (Ultra plan, higher limits) — already in the gstack browser. It has **Deep Research + Deep Think** via the `+` icon.
+  - **ChatGPT EXT:** currently **Extended Thinking Pro**; **Deep Research** also available.
+  - **Deep Research / Deep Think** give richer EXT content but take much longer — run them **every other EXT round** (or when a paper is near-converged and worth the deep pass), not every round.
+
+**I5 — Self-improvement is standing:** document every review-process learning here + in the scistack review skills (`~/.claude/scistack/`) as it happens. "We gotta do better" — no repeat of the same mistake.
+
+---
+
 ## Drive-to-100 loop (if active)
 
 Cron `*/20 * * * *` fires `/drive-to-100-fire`. Each fire does ONE atomic step. See `project-context/SSOT/drive-to-100.md` for the plan + loop log.

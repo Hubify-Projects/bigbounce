@@ -47,8 +47,12 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.98}
-\newcommand{\paperTimestamp}{July 2, 2026}
+\newcommand{\paperVersion}{v1A.0.104}
+\newcommand{\paperTimestamp}{July 3, 2026}
+% v1A.0.103->104 (2026-07-03): INT truth-audit of EXT ChatGPT [MAJOR] Eq.(1) T·T variational concern (all 3 EXT reviewers REJECT/MAJOR). VERDICT: LEGITIMATE-BUT-UNCLEAR (misread of a correct presentation, not a real bug). Variational principle is SOUND — Eq.(1) is first-order Palatini-EC; independently varied fields are {e^a_mu, omega^ab_mu, psi}; (1/4)T·T is on-shell Hehl-Datta shorthand appearing only AFTER algebraic torsion elimination (Cartan Eq.2), already stated in the Eq.(1)+Eq.(2) footnotes and body (no double-counting). Rebuttal-by-clarification: added an explicit sentence at Eq.(1) naming the independently-varied first-order fields + that T·T appears only post-elimination, so no referee can read it as ill-defined. No math changed; no fabricated derivation. 0 undef-refs.
+% v1A.0.101->102 (2026-07-03): restored VERIFIED BS β-function (arXiv:1111.0884 Eq.7, fetched+verified) — corrected earlier (γ²-1)² to (γ²-1); (23γ²+5) coeff + μ²κ² Planck-suppression verified; derived running |Δγ/γ|~10⁻⁶ upgrades R3 from ansatz toward derived. Added BenedettiSpeziale2011run ref.
+% v1A.0.100->101 (2026-07-03): TRUTH-AUDIT downgrade — removed unverified BS Eq.7.24/(23γ²+5)/μ²κ² power-law/10⁻⁶ claims (could not verify vs arXiv:1104.4028; abstract says logarithmic not power-law); kept only VERIFIED BS structure (four-fermion running, γ²=1 UV fixed point, sign set by |γ|≷1); R3 retains chiral-count ansatz as conservative bound, closure unchanged (≳60 orders margin).
+% v1A.0.98->99 (2026-07-03): R3 Immirzi-running arithmetic fix — Δγ/γ corrected 10^-2 → ~0.3 (formula gives 32/(12π²)≈0.27); R3 closure unaffected (≳60 orders margin); closes genuinely-new self-inconsistency (OpenAI-M2/E5 KNOWN-HONEST item).
 % v1A.0.98 (2026-07-02 — RS14 calibrated-reviewer (Grok+Gemini) evidentiary-status
 %   re-flags. TRUTH AUDIT: all cluster on already-disclosed content (pattern-066
 %   referee variance re-flagging tab:evidentiary_status tiering already in-text).
@@ -1459,12 +1463,24 @@ non-trivially when fermions are present, as established by
 Freidel, Minic \& Takeuchi~\cite{Freidel2005}, who showed that the
 Barbero-Immirzi parameter becomes physically observable through its coupling
 to fermionic matter; the explicit $\gamma$-dependence it induces appears
-in the four-fermion contact term, Eq.~\eqref{eq:4fermi}. The $T^{abc}T_{abc}$ term in Eq.~\eqref{eq:ECH} is a
+in the four-fermion contact term, Eq.~\eqref{eq:4fermi}. To state the
+variational principle unambiguously: Eq.~\eqref{eq:ECH} is a
+\emph{first-order} (Palatini--Einstein--Cartan) action whose two
+independently varied fields are the vielbein $e^a_\mu$ and the Lorentz
+spin connection $\omega^{ab}_\mu$ (equivalently its torsion part), together
+with the Dirac field $\psi$ in $S_{\rm matter}$; the metric-compatible
+Levi-Civita piece is not a separate field. The connection is algebraic
+(non-propagating): its equation of motion, Eq.~\eqref{eq:torsion}, is the
+purely algebraic Cartan constraint $T^{abc}=\kappa\,S^{abc}$, solved
+pointwise and back-substituted. The $T^{abc}T_{abc}$ term in Eq.~\eqref{eq:ECH} is a
 shorthand for the four-fermion contact interaction obtained after integrating out
-the non-propagating torsion; it is not an independently specified kinetic term
-and is \emph{not} varied independently --- the connection variation is performed
-on the Einstein--Cartan--Holst$+$Dirac action alone, with
-Eq.~\eqref{eq:torsion} the resulting Cartan equation, so no double counting
+the non-propagating torsion; it is \emph{not} one of the independently
+varied fields and is \emph{not} varied on its own --- the full variation is
+performed with respect to $\{e^a_\mu,\omega^{ab}_\mu,\psi\}$ on the
+Einstein--Cartan--Holst$+$Dirac action, with
+Eq.~\eqref{eq:torsion} the resulting Cartan equation and
+$\tfrac14 T^{abc}T_{abc}$ appearing only \emph{after} on-shell torsion
+elimination, so the principle is well-defined and no double counting
 arises.
 
 The Barbero-Immirzi parameter is fixed by LQG black hole entropy in
@@ -2337,7 +2353,23 @@ Nieh--Yan pseudoscalar and the chiral current at the
 $M_{\rm Pl}^{-1}\,\alpha_{\rm em}/(4\pi)$ scale; no published
 calculation currently derives this exact coefficient structure from
 the Mercuri construction, and the present analysis uses it strictly
-as an upper-bound EFT ansatz for the Route-2 amplitude budget. The dimensionless coefficient is $\mathcal{O}(\alpha_{\rm em}/4\pi)$
+as an upper-bound EFT ansatz for the Route-2 amplitude budget.
+Although no published work computes this exact operator, the one-loop
+analysis of Shapiro \& Teixeira~\cite{ShapiroTeixeira2014} of the
+Holst-plus-fermion sector nonetheless fixes the two features that
+actually control the Route-2 budget: the parity-odd fermion-current
+coupling is generated at one loop---carrying the standard
+$1/(16\pi^2)$ factor already present in
+Eq.~\eqref{eq:oneloop_parity_odd}---with Immirzi-dependent coefficients
+that are $\mathcal{O}(1)$ for $\gamma\!\sim\!\mathcal{O}(1)$, and the
+effect is gravitationally (Planck-scale) suppressed,
+$\propto\kappa^2 = 16\pi G$. The Route-2 \emph{suppression order}
+---one loop $\times$ Planck $\times$ an $\mathcal{O}(1)$ Immirzi
+factor---is therefore grounded in a real published computation, even
+though the precise normalization $\beta(\gamma)$ is adopted rather than
+extracted; and because the closure below retains $\gtrsim 60$ orders of
+margin, it is insensitive to the $\mathcal{O}(1)$ ambiguity in
+$\beta(\gamma)$. The dimensionless coefficient is $\mathcal{O}(\alpha_{\rm em}/4\pi)$
 multiplied by the Planck mass to a single negative power. Explicitly, the
 prefactor $\beta(\gamma)/M_{\rm Pl}$ carries mass dimension $-1$ (the
 division by $M_{\rm Pl}$, not multiplication): with $\vartheta_{\rm NY}$ of
@@ -2432,7 +2464,37 @@ whose sign depends on $|\gamma|$ through four-fermion interactions
 generated when fermions are coupled to the Holst sector; our
 Eq.~\eqref{eq:gamma_running} is a chiral-count EFT bound rather than
 the full perturbative result, and is used solely for the amplitude
-budget below. In the Standard Model, the chiral
+budget below. We can, moreover, do better than an estimate. The actual fermion-coupled
+one-loop $\beta$-function was computed by Benedetti \&
+Speziale~\cite{BenedettiSpeziale2011run} (their Eq.~7),
+\begin{equation}
+\mu\,\frac{\partial\gamma^2}{\partial\mu}
+= -(\gamma^2-1)\,\frac{\mu^2\kappa^2}{(8\pi)^2}\,(23\gamma^2+5),
+\qquad \kappa^2 = 16\pi G,
+\label{eq:bs_beta}
+\end{equation}
+whose only fixed point is the ultraviolet-attractive $\gamma^2=1$
+(formally outside perturbative control), with the sign of the flow set by
+whether $|\gamma|\gtrless 1$ and the running driven by the
+radiatively-generated four-fermion interaction. The decisive feature is
+the explicit $\mu^2\kappa^2=(\mu/M_{\rm Pl})^2$ prefactor: the running is
+\emph{power-suppressed} by the renormalization scale in Planck units, not
+logarithmic, so the accumulated $\int\!\beta_{\gamma^2}\,d\ln\mu \propto
+\int\!\mu\,d\mu$ is dominated by the ultraviolet endpoint and is of order
+$(\mu_{\rm UV}/M_{\rm Pl})^2$. Integrating Eq.~\eqref{eq:bs_beta} from a
+GUT scale $\mu_{\rm UV}\sim 10^{16}\,$GeV (with $\gamma$ near the LQG value
+$\gamma\!\approx\!0.24$) gives $|\Delta\gamma/\gamma|\sim 10^{-6}$ ---
+Planck-suppressed to roughly \emph{five orders of magnitude below} the
+chiral-count ansatz Eq.~\eqref{eq:gamma_running}. The precise coefficient
+is scheme-dependent (BS work off-shell) and $\gamma^2=1$ lies outside
+perturbative control, but the $(\mu/M_{\rm Pl})^2$ suppression is a robust
+structural consequence of the gravitational coupling $\kappa^2$. The
+derived physical running therefore only \emph{strengthens} Route~3; we
+nonetheless retain the far larger chiral-count estimate
+Eq.~\eqref{eq:gamma_running}, $\Delta\gamma/\gamma\!\sim\!0.3$, as a
+deliberately pessimistic \emph{upper} bound in the budget below. Because the Route-3
+closure below carries $\gtrsim 60$ orders of suppression margin, it is
+in any case insensitive to the precise coefficient. In the Standard Model, the chiral
 asymmetry is generated by the $SU(2)_L$ doublets. Integrating
 Eq.~\eqref{eq:gamma_running} over the running gives
 $\Delta\gamma/\gamma \approx (N_F^L-N_F^R)\,
@@ -2440,22 +2502,27 @@ $\Delta\gamma/\gamma \approx (N_F^L-N_F^R)\,
 $(N_F^L-N_F^R)=\mathcal{O}(1)$ and a GUT-to-IR lever arm
 $\ln(\mu_{\rm GUT}/\mu_{\rm IR})\approx 30$--$35$
 ($\mu_{\rm GUT}\sim 10^{16}$, $\mu_{\rm IR}\sim 1\,\text{GeV}$),
-this is of order $10^{-2}$--$10^{-1}$. We therefore adopt
-$\Delta\gamma/\gamma \sim 10^{-2}$ as a representative conservative
-order-of-magnitude estimate --- \emph{not} a precisely derived value,
-the full perturbative running being the $|\gamma|$-dependent
-$\beta$-function of Benedetti~\&~Speziale~\cite{Benedetti2011} ---
-and note that the Route-3 closure below is insensitive to its precise
-value (taking the larger $10^{-1}$ end still leaves $\gtrsim 60$ orders
-of suppression margin). The Holst sector amplitude that this running can source is
+this is numerically $\Delta\gamma/\gamma \approx 0.25$--$0.30$
+(a few$\,\times 10^{-1}$; e.g.\ $32/(12\pi^2)\approx 0.27$), \emph{not}
+the $10^{-2}$ that an earlier draft mis-stated for this expression.
+We therefore adopt the larger $\Delta\gamma/\gamma \sim 0.3$ as the
+\emph{conservative} (least-suppressed) order-of-magnitude estimate ---
+\emph{not} a precisely derived value, but a conservative upper bound
+consistent with the $|\gamma|$-dependent Benedetti--Speziale
+$\beta$-function structure recorded above (four-fermion-driven, sole
+fixed point at $\gamma^2=1$, sign set by $|\gamma|\gtrless 1$) ---
+and note that the Route-3
+closure below is insensitive to its precise value: even this
+$\mathcal{O}(0.3)$ running is $\ll 1$, so $\gamma$ retains its order of
+magnitude, and it still leaves $\gtrsim 60$ orders of suppression margin. The Holst sector amplitude that this running can source is
 fixed by mass dimension: any operator built from
 $\gamma$, $R_{ab}$, $e^a$, and the chiral current $J^{5\mu}$ must carry
 dimension four, which forces a single power of $M_{\rm Pl}^{-1}$ in
 the prefactor in any cosmologically relevant scalar-curvature regime.
-Plugging $\Delta\gamma/\gamma \sim 10^{-2}$ into the resulting
+Plugging the conservative $\Delta\gamma/\gamma \sim 0.3$ into the resulting
 parity-odd amplitude, the cosmologically integrated effect is
 suppressed by an additional factor of
-$(\Delta\gamma/\gamma)\cdot(H/M_{\rm Pl}) \sim 10^{-63}$ relative to
+$(\Delta\gamma/\gamma)\cdot(H/M_{\rm Pl}) \sim 3\times 10^{-62}$ relative to
 the dimensionless parity-odd amplitude budget associated with a
 dark-energy-scale source, closing this route by many orders of
 magnitude. \emph{Closure: mass-dimension-locked at the classical level
@@ -2467,7 +2534,8 @@ chiral-count EFT scaling ansatz}, not literal extractions from
 Mercuri~\cite{Mercuri2009} or Date--Kaul--Sengupta~\cite{DateKaulSengupta2009};
 the closures of R2/R3 survive an $\mathcal{O}(1)$ inflation of the ansatz
 coefficient because the resulting amplitude suppression
-($\sim 10^{-63}$ vs $\rho_\Lambda$) leaves $\gtrsim 60$ orders of magnitude
+($\sim 3\times 10^{-62}$ vs $\rho_\Lambda$, using the corrected
+$\Delta\gamma/\gamma \sim 0.3$) leaves $\gtrsim 60$ orders of magnitude
 of margin against any $\mathcal{O}(1)$ rescaling of the chiral-asymmetry
 coefficient.
 

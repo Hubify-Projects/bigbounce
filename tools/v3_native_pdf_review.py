@@ -689,7 +689,7 @@ def main() -> int:
         return 1
 
     keys = load_keys()
-    required = ["ANTHROPIC_API_KEY", "OPENAI_API_KEY", "GOOGLE_GEMINI_API_KEY", "XAI_API_KEY", "PERPLEXITY_API_KEY"]
+    required = ["OPENAI_API_KEY", "GOOGLE_GEMINI_API_KEY", "XAI_API_KEY"]  # 2026-07-03: Claude leg=Claude Code subagent (NOT Anthropic API); Perplexity optional — never fail on these
     missing = [k for k in required if k not in keys]
     if missing:
         print(f"[warn] Missing keys: {missing}", file=sys.stderr)

@@ -1,6 +1,42 @@
 # Referee Handoff — P1A (Einstein–Cartan–Holst No-Go)
 
-`arxiv/paper1a_ech_nogo.tex` · slug `paper-1a` · **current version: v1A.0.97 (2026-07-02)**
+`arxiv/paper1a_ech_nogo.tex` · slug `paper-1a` · **current version: v1A.0.101 (2026-07-03)**
+
+> **v1A.0.100→101 note (R3 provenance):** an attempt to derive R3 from the real
+> Benedetti–Speziale β-function (arXiv:1104.4028) was folded in, then partially
+> reverted on truth-audit. **Retained (verified vs the source):** the BS fermion-coupled
+> β-function is four-fermion-driven, has its sole fixed point at γ²=1, and its sign
+> depends on |γ|≷1 — this grounds R3's "|γ|-dependent running" statement. **Removed
+> (could not verify against the paper; abstract says *logarithmic* divergences):** a
+> specific "Eq. 7.24 = −(γ²−1)²(μ²κ²/(8π)²)(23γ²+5)" power-law form and a derived
+> "|Δγ/γ|~10⁻⁶" claim. R3 therefore keeps the chiral-count ansatz as a conservative
+> upper bound (Δγ/γ~0.3, the v1A.0.99 arithmetic fix); closure unaffected (≳60 orders
+> margin). For a referee: R2/R3 remain honestly ansatz-level — the standing rigor
+> question is whether the full |γ|-dependent BS β-function (not the schematic ansatz)
+> should be integrated for a derived bound, a real open theory calculation.
+
+## 2026-07-03 closure (genuinely-new finding, from an authorized derivation attempt)
+
+3. **R3 Immirzi-running arithmetic self-inconsistency — CLOSED** (commit `096993f9`, v1A.0.99)
+   - An authorized attempt to *derive* R2/R3 from first principles did **not** produce a
+     derivation (they remain honestly ansatz-level), but it **found a real internal
+     inconsistency**: the R3 text stated Δγ/γ ~ 10⁻², while its own displayed formula
+     `(N_L−N_R)·ln(μ_GUT/μ_IR)/(12π²)` with O(1) chiral count + lever arm ~30–35 gives
+     **≈0.27** (verified: 32/118.4 = 0.27) — a 1–2 order self-contradiction.
+   - **Fixed honestly:** corrected to Δγ/γ ≈ 0.25–0.30, adopting ~0.3 as the *conservative*
+     (least-suppressed) value, fixed the backwards "conservative" framing, reconciled all
+     downstream numbers (10⁻⁶³ → 3×10⁻⁶²). **R3 closure is unaffected** — even at 0.3, γ
+     retains its order of magnitude and the route keeps ≳60 orders of suppression margin
+     (the margin absorbs the correction). **R2 arithmetic separately verified (~10⁻⁶⁰).**
+   - **For the referee:** R2/R3 are now internally consistent, but remain *chiral-count EFT
+     scaling ansätze*, NOT first-principles derivations — the honest limit. The LLM-referee
+     rigor objection (Grok/Gemini RS20: "arbitrary upper-bound ansätze, not derivations")
+     is the standing open item a human referee should weigh: is a tiered four-route argument
+     (rigorous Tier-I transparency + ansatz Tier-II/III amplitude bounds + Tier-II R4
+     naturalness) PRD-appropriate, or must the ansatz tiers be upgraded to full derivations
+     (a substantial open theory calculation — the true Immirzi β-function is the
+     |γ|-dependent Benedetti–Speziale result, not the schematic one-loop ansatz used for
+     the amplitude budget)?
 
 ## 2026-07-02 closures (new since 2026-07-01 handoff)
 

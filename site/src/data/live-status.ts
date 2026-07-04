@@ -47,27 +47,27 @@ export interface LiveStatus {
 }
 
 export const liveStatus: LiveStatus = {
-  lastUpdatedISO: "2026-06-30T12:00:00Z",
-  lastUpdatedDisplay: "June 30, 2026 · 12:00 PM PT",
+  lastUpdatedISO: "2026-07-03T18:00:00Z",
+  lastUpdatedDisplay: "July 3, 2026 · 11:00 AM PT",
   headline:
-    "Rounds A/B/C + INT-M2 complete (Jun 28–30): 4 rigorous multi-vendor passes, 30 real items closed program-wide (latest INT-M2: 7 closed + rebuttal-hardening on all 6), every round's truth-audit returning 0 genuinely-new MAJORs. All 6 papers verified internally honest and materially improved each round. Readiness 96. Houston sign-off is the final gate.",
+    "HONEST RESET (Jul 3): first FULLY-VERIFIED external board — all 6 papers × ChatGPT+Grok+Gemini run in the visible browser with the complete raw reviewer text + screenshots + chat URLs saved to git. NONE are converged; every paper draws a real ChatGPT REJECT on substantive grounds. The prior 'converged at 96' was built on unverified, ChatGPT-skipping sweeps and was overstated. Readiness honestly recut to 76–80.",
   summary:
-    "Three back-to-back review rounds (A/B/C, Jun 28–30) on top of a de-biased external validation closed 23 real items across all 6 papers. The final independent neutral truth-audit (Opus, skeptical stance, no convergence hint) found 0 genuinely-new real findings. Remaining external MAJORs are disclosed caveats, submission-time DOI/arXiv blockers, and LLM-referee variance — not quality issues. Next gate: Houston external-review sign-off → arXiv endorsement + coordinated submission (P4 → P1A → P1B → P3 → P2 → P5).",
+    "Replaced unverifiable label-only EXT sweeps with a fully-verified board (18 raw reviewer responses + screenshots + chat URLs committed under project-context/peer-reviews/EXT_real/). Full-source INT then caught and fixed real issues: a FABRICATED physics claim (P2 Cai/Li factor-of-2, retracted + honestly disclosed), a dimensional bug (P1B four-fermion coefficient, fixed), an overclaim (P3 §V cosmological, reframed to methodological-demonstration/no-detection), while defending one genuinely-robust null with git+data (P4). No fabrication survives. Remaining findings are largely STRUCTURAL — in-prep companion-paper dependencies + hard-conditional physics walls — that route to human editors, not further edits.",
   currentlyRunning: [
-    "Light-touch regression watch — no active review loop running.",
+    "Verified-finding closure — per-paper full-source INT truth-audits against source; honest fixes / disclosures / dispositions, every verdict evidence-backed.",
   ],
   needsHouston: [
     {
-      title: "External-review sign-off (final 1% gate)",
+      title: "Publish the in-prep companion papers",
       blockedPaper: "all",
-      why: "Houston's personal review verdict is the only remaining gate before tarballs are submitted; agents cannot self-authorize submission.",
-      ask: "Review the final neutral truth-audit summary (project-context/peer-reviews/) and give go/no-go on coordinated arXiv submission.",
+      why: "Multiple papers (P5's Paper-IV catalog, P1A's 4 companions) depend on unpublished same-author companions whose labels/numbers referees cannot vet — the structural driver of the external rejections.",
+      ask: "Prioritize completing + publishing the companion papers; that clears the largest class of standing external MAJORs.",
     },
     {
-      title: "arXiv endorsement + coordinated submission",
+      title: "Route floor papers to human referees",
       blockedPaper: "all",
-      why: "Only Houston holds the arXiv account + astro-ph endorser relationships; all six tarballs are staged and drop-ready.",
-      ask: "Submit in order P4 → P1A → P1B → P3 → P2 → P5 (P4 first; P5 needs P4's arXiv ID).",
+      why: "Every paper hits the LLM-referee floor (ChatGPT rejects any real manuscript with ansatz-level closures + companion deps); a human referee is needed on the venue/scope + conditional-result questions.",
+      ask: "Decide target journals + route P1A/P1B/P2/P3 to human referees on the ansatz-tier / methodological-companion / conditional-forecast questions.",
     },
   ],
   papers: [
@@ -75,59 +75,59 @@ export const liveStatus: LiveStatus = {
       slug: "paper-1a",
       number: "1A",
       shortTitle: "ECH dark-energy closure + perturbation transparency",
-      version: "v1A.0.89",
-      readiness: 96,
-      pendingWork: "Rounds A/B/C clean (0 new verified after 23-item program close). Next: Houston sign-off → arXiv drop.",
+      version: "v1A.0.104",
+      readiness: 78,
+      pendingWork: "VERIFIED EXT: ChatGPT REJECT / Grok MAJOR / Gemini MAJOR. Eq.(1) T² variational concern truth-audited as a misread — first-order variational principle verified SOUND, clarified (v1A.0.104). Remaining: R2/R3 ansatz-tier rigor + 4 in-prep companion deps — structural, human referee.",
     },
     {
       slug: "paper-1b",
       number: "1B",
       shortTitle: "MCMC + NaMaster + ALP technical companion",
-      version: "v1B.0.84",
-      readiness: 96,
-      pendingWork: "Rounds A/B/C clean. 3 HF datasets public (bamfai/p1b-*). Next: Houston sign-off → arXiv drop.",
+      version: "v1B.0.98",
+      readiness: 76,
+      pendingWork: "VERIFIED EXT: ChatGPT REJECT / Gemini REJECT / Grok gave a favorable free-form read but no format verdict. Four-fermion dimensional bug (κ vs κ²) caught by ChatGPT + FIXED (v1B.0.98); ΔN_eff bound unchanged. Remaining: ECH-scope + methodological-companion venue call.",
     },
     {
       slug: "paper-2",
       number: "2",
       shortTitle: "f_NL = -35/8 SPHEREx forecast",
-      version: "v1.7.80",
-      readiness: 96,
-      pendingWork: "Rounds A/B/C clean. Next: Houston sign-off → arXiv drop.",
+      version: "v1.7.86",
+      readiness: 78,
+      pendingWork: "VERIFIED EXT: ChatGPT REJECT / Grok MAJOR / Gemini MAJOR. INT caught the prior Cai/Li factor-of-2 'resolution' was FABRICATED — retracted; f_NL=−35/8 now carries an explicit unresolved-factor-of-2 disclosure + a real Li −35/16 downward branch (~1.3–2.75σ). Cubic transmission honest-conditional.",
     },
     {
       slug: "paper-3",
       number: "3",
-      shortTitle: "378K-anomaly multi-survey catalog",
-      version: "v3.1.120",
-      readiness: 96,
-      pendingWork: "Rounds A/B/C clean. Next: Houston sign-off + HF catalog flip → arXiv drop.",
+      shortTitle: "268K-anomaly multi-survey catalog",
+      version: "v3.1.136",
+      readiness: 80,
+      pendingWork: "VERIFIED EXT: ChatGPT REJECT / Grok MAJOR / Gemini REJECT. §V cosmological (f_NL/NANOGrav) reframed to explicit methodological-demonstration / no cosmological detection (v3.1.136). 268,519 = process-volume candidates (NOT confirmed detections); eROSITA/LAMOST reproducibility dispositioned as re-flags of disclosed content.",
     },
     {
       slug: "paper-4",
       number: "4",
       shortTitle: "8.47M-galaxy chirality null at sub-percent sensitivity",
-      version: "v1.0.198",
-      readiness: 96,
-      pendingWork: "Rounds A/B/C clean. Next: Houston sign-off → arXiv drop (first in queue).",
+      version: "v1.0.212",
+      readiness: 80,
+      pendingWork: "VERIFIED EXT: ChatGPT REJECT / Grok MAJOR / Gemini MINOR. Confidence-cut null truth-audited against git+data: VERIFIED ROBUST (0.6 cut git-pre-specified; low-conf excess is a step-function systematic; pseudo-label-free GZ1 sub-model z=−0.04). Remaining: ~half the ℓ=1 residual unexplained (hard) + pseudo-label under-powering — honestly disclosed.",
     },
     {
       slug: "paper-5",
       number: "5",
       shortTitle: "DESI environmental chirality independence",
-      version: "v0.1.94",
-      readiness: 96,
-      pendingWork: "Rounds A/B/C clean. Next: Houston sign-off → arXiv drop (last in queue; needs P4 arXiv ID).",
+      version: "v0.1.101",
+      readiness: 80,
+      pendingWork: "VERIFIED EXT: ChatGPT REJECT / Grok MINOR / Gemini MAJOR. Structural dependence on the in-prep same-author Paper-IV classifier catalog (labels referees cannot vet) + RSD/T-Web confounding. Clears when Paper IV publishes — human-editor matter.",
     },
   ],
   blockerTally: {
-    closed: 895, // 872 prior + 23 real items closed across Rounds A/B/C (Jun 28-30)
-    openBlockers: 0,
-    openMajors: 0,
-    openMinors: 0,
+    closed: 898, // prior + 3 verified findings resolved this reset (P1B bug, P2 fabrication, P3 §V overclaim)
+    openBlockers: 2, // structural: companion-paper deps + human-referee routing
+    openMajors: 11, // standing verified external MAJORs across the 6 papers (deduplicated)
+    openMinors: 6,
   },
-  cronStatus: "Rounds A/B/C COMPLETE (2026-06-28 to 2026-06-30). 23 items closed program-wide. Final neutral truth-audit: 0 new genuine findings. All 6 papers at readiness 96. Next gate: Houston sign-off.",
+  cronStatus: "HONEST RESET 2026-07-03: verified EXT board complete (6 papers, 18 raw legs in git). Real verdicts — every paper a ChatGPT REJECT; P1A/P2 REJECT-MAJOR-MAJOR, P1B/P3 REJECT with a 2nd REJECT, P4 REJECT-MAJOR-MINOR, P5 REJECT-MINOR-MAJOR. NONE converged. 3 real findings caught + fixed (fabrication retracted, dim bug fixed, overclaim reframed). Loop continues on the verified findings; no convergence claimed without external ACCEPT.",
   etaToCompletion:
-    "Rounds A/B/C done — all 6 papers at readiness 96. Remaining: Houston sign-off + arXiv endorsement → coordinated drop (P4 → P1A → P1B → P3 → P2 → P5).",
+    "Not converged — the strict gate (ACCEPT from all 3 reviewers, 0 major/minor, all 6 papers) is not met. Fixable findings are being closed against source; the remaining structural blockers (in-prep companion papers, hard-conditional physics, LLM-referee floor) require publishing the companions + human referees, which is Houston-gated.",
   pods: [],
 };

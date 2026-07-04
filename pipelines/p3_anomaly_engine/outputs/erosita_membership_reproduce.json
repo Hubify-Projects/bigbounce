@@ -1,0 +1,64 @@
+{
+ "job": "erosita-membership-reproduce",
+ "recipe": "eROSITA anomaly set := top-298 by committed raw reconstruction score (raw >= 3.4119333). A rank cut is invariant to every monotone score rescaling, so the selection is reproducible even though the production 0.259 score axis is not.",
+ "n_selected": 298,
+ "rank_threshold_raw_score": 3.411933422088623,
+ "full_rederivation": {
+  "raw_artifact": "pipelines/p3_anomaly_engine/pod_runs/erosita_dr1_raw/erosita_anomalies.parquet",
+  "status": "raw 930K artifact not present locally (pod-side / HuggingFace only); membership confirmed below from the committed released product."
+ },
+ "released_product_check": {
+  "released_artifact": "pipelines/p3_anomaly_engine/hf_staging/erosita_dr1_anomalies.parquet",
+  "n_released": 298,
+  "min_released_raw_score": 3.411933422088623,
+  "min_equals_rank_threshold": true,
+  "released_scores_are_committed_raw_axis": true
+ },
+ "scale_invariance_proof": {
+  "per_axis": [
+   {
+    "axis": "raw",
+    "same_selected_set": true,
+    "same_rank_order": true
+   },
+   {
+    "axis": "ln",
+    "same_selected_set": true,
+    "same_rank_order": true
+   },
+   {
+    "axis": "log10",
+    "same_selected_set": true,
+    "same_rank_order": true
+   },
+   {
+    "axis": "sqrt",
+    "same_selected_set": true,
+    "same_rank_order": true
+   },
+   {
+    "axis": "zscore",
+    "same_selected_set": true,
+    "same_rank_order": true
+   },
+   {
+    "axis": "minmax_over_max",
+    "same_selected_set": true,
+    "same_rank_order": true
+   },
+   {
+    "axis": "sigmoid_of_z",
+    "same_selected_set": true,
+    "same_rank_order": true
+   },
+   {
+    "axis": "affine_1000x_plus_7",
+    "same_selected_set": true,
+    "same_rank_order": true
+   }
+  ],
+  "selected_set_invariant_across_all_axes": true,
+  "rank_order_invariant_across_all_axes": true
+ },
+ "conclusion": "The eROSITA selection is reproducible on a scale-invariant (rank/percentile) criterion: top-298 by committed raw score == raw >= 3.4119. This membership is identical under every monotone rescaling of the score, so 'membership-is-canonical' is not a caveat but a committed, executable recipe. The production 0.259 *score axis* remains irreproducible by design (undocumented post-hoc rescaling, code never committed); this recipe intentionally does not depend on it. The tier stays exploratory (fails the 1.2% injection-recovery gate); this fixes the SELECTION reproducibility, not the tier's detector-sensitivity validation."
+}
