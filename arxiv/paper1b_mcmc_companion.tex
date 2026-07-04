@@ -6,6 +6,18 @@
 % Main theory paper: paper1a_ech_nogo.tex (Golden 2026a)
 % Compile: pdflatex paper1b_mcmc_companion && bibtex paper1b_mcmc_companion && pdflatex paper1b_mcmc_companion && pdflatex paper1b_mcmc_companion
 %
+% v1B.0.98 (2026-07-03 — fix Sec.~III.A four-fermion coefficient convention
+%   kappa^2 = 8 pi G_N = M_Pl^-2 (was kappa = 8 pi G, dimensionally inconsistent
+%   — ChatGPT-caught). With kappa^2 = 8 pi G_N the coefficient -(3 kappa^2/16)
+%   reduces to the canonical ECSK limit -(3/2) pi G_N already stated at the
+%   gamma->infinity bracket, and is dim -2 (dim-2 coeff x dim-6 four-fermion
+%   op = dim-4 Lagrangian density). Also corrected two downstream old-convention
+%   residues: coupling scaling "propto kappa^2 = 8 pi G_N ~ M_Pl^-2" (was
+%   propto G_N^2 ~ M_Pl^-4) and the ρ_tor prefactor alpha = kappa^2 (h c)^2/32
+%   (was bare kappa), so rho_tor ~ G_N T^6 is self-consistent. The DeltaN_eff
+%   scaling rho_tor/rho_rad ~ G_N T^2 = (T/M_Pl)^2 and the bound values
+%   (~7e-45 at BBN, ~5e-58 at recombination) use G_N directly and are UNCHANGED
+%   — the bug was notation, not the physical magnitude.)
 % v1B.0.96 (2026-07-02 — P4/P5-style reframe hardening pass. The dominant
 %   reviewer theme (Grok+Gemini+ChatGPT: three cross-checks over-framed as ECH
 %   spin-torsion theory-tests) was already closed in the abstract, Sec.~I "Scope
@@ -204,7 +216,7 @@
 %   FALSIFIED list (14 items) not acted on.)
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1B.0.97}
+\newcommand{\paperVersion}{v1B.0.98}
 \newcommand{\paperTimestamp}{July 3, 2026}
 % v1B.0.95 (2026-07-01, author decision): SURGICALLY REMOVED the entire exploratory
 %   w0wa (overlap-uncorrected supernova) analysis -- Appendix A (app:w0wa) with its
@@ -1530,7 +1542,7 @@ Nambu--Jona-Lasinio type~\cite{Poplawski2011,Freidel2005},
 \begin{equation}
 \mathcal{L}_{4f}=-\frac{3\kappa^2}{16}\,\frac{\gamma^2}{\gamma^2+1}\,
 \big(\bar\psi\gamma^5\gamma^\mu\psi\big)^2 ,
-\qquad \kappa=8\pi G_N ,
+\qquad \kappa^2=8\pi G_N=\MPl^{-2} ,
 \label{eq:fourfermion}
 \end{equation}
 where $\gamma$ is the Barbero--Immirzi parameter of the Holst
@@ -1542,9 +1554,9 @@ The coefficient is fixed by the geometry, not fitted, so this is genuine
 ECH-sector physics rather than a generic parametrization.
 
 The crucial feature of Eq.~(\ref{eq:fourfermion}) is that the coupling is
-$\propto\kappa^2\propto G_N^2\sim M_{\rm Pl}^{-4}$: the interaction is
+$\propto\kappa^2=8\pi G_N\sim M_{\rm Pl}^{-2}$: the interaction is
 Planck-suppressed. In a thermal fermion gas the coherent spin-torsion energy
-density is $\rho_{\rm tor}\sim\alpha\,n_f^2$ with $\alpha=\kappa(\hbar
+density is $\rho_{\rm tor}\sim\alpha\,n_f^2$ with $\alpha=\kappa^2(\hbar
 c)^2/32$ and number density $n_f\propto T^3$ for relativistic
 species~\cite{UngerPoplawski2019}, so
 \begin{equation}

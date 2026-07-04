@@ -1,8 +1,8 @@
 ========================================================================
 arXiv SUBMISSION METADATA — Paper I(b) (P1B)
 Reproducibility & Consistency-Check Companion to the ECH Spin-Torsion Program
-Source: arxiv/paper1b_mcmc_companion.tex  (v1B.0.97, 22pp)
-Bundle: submissions/P1B/arxiv_p1b_v1B.0.97.tar.gz
+Source: arxiv/paper1b_mcmc_companion.tex  (v1B.0.98, 22pp)
+Bundle: submissions/P1B/arxiv_p1b_v1B.0.98.tar.gz
 ------------------------------------------------------------------------
 This is PREP metadata to paste field-by-field into arxiv.org/submit.
 DO NOT SUBMIT until Houston gives the go.
@@ -52,4 +52,4 @@ REPORT-NO / JOURNAL-REF / DOI / MSC-CLASS:
 
 SUBMISSION NOTE:
 P1B is independent of the P4->P5 ordering; it is the companion to Paper I(a) and can be submitted on its own timeline.
-Bundle: submissions/P1B/arxiv_p1b_v1B.0.97.tar.gz
+Bundle: submissions/P1B/arxiv_p1b_v1B.0.98.tar.gz

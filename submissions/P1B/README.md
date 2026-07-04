@@ -1,7 +1,7 @@
 # P1B — arXiv submission bundle
 
-**Bundle:** `arxiv_p1b_v1B.0.97.tar.gz`
-**Paper version:** v1B.0.97
+**Bundle:** `arxiv_p1b_v1B.0.98.tar.gz`
+**Paper version:** v1B.0.98
 **Date:** July 3, 2026
 **Primary arXiv category:** astro-ph.CO
 **Cross-list (suggested):** gr-qc
