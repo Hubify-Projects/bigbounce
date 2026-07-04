@@ -52,15 +52,17 @@ export default function ReviewsPage() {
         Every paper cycled through internal multi-vendor review rounds, then external
         browser-tier rounds against frontier web models, then a per-finding truth-audit,
         same-day fixes, and process upgrades mined from whatever only the external tier
-        caught. Through mid-2026 the program ran 20+ rounds, including a de-biased external
-        validation (severity-steering struck from referee prompts) and a final 3-round
-        INT+EXT grind (Rounds A/B/C, Jun 28–30 2026). 23 real findings were closed across
-        those three rounds; a neutral gate-discipline truth-audit found 0 new genuine items.
-        External verdicts are now MINOR-dominant with occasional ACCEPTs — not uniformly
-        all-ACCEPT. Residual MAJORs reflect disclosed caveats, submission-time blockers
-        (Zenodo DOI / arXiv IDs mintable only at submission), and frontier-LLM run-to-run
-        variance — not unaddressed quality issues. The papers are internally verified honest
-        and publishable-strong. This feed is a permanent record of the program.
+        caught. <strong>Honest correction (2026-07-04):</strong> earlier summaries here
+        claimed the papers were "MINOR-dominant / converged / publishable-strong." That was
+        built on unverified sub-agent sweeps that had dropped ChatGPT and saved no raw
+        reviewer text. A fully-verified external board (raw responses + screenshots + chat
+        URLs, all committed to git) corrected the record: <strong>none of the six papers is
+        converged</strong> — every one draws a real ChatGPT REJECT, and the verdicts are
+        REJECT/MAJOR-dominant, not MINOR. The content is now error-clean (every concrete
+        error fixed and reviewer-confirmed lifted; a fabricated derivation in P2 was caught
+        and retracted), but the remaining barrier is uniformly a <strong>venue/scope
+        judgment</strong> — a call for human referees, not more edits. This feed is a
+        permanent, honest record of the program, corrections included.
       </p>
       <div
         style={{
@@ -96,14 +98,15 @@ export default function ReviewsPage() {
           <div className="progress-block">
             <h3 className="progress-block-title">External referee verdicts — convergence toward ACCEPT</h3>
             <p className="progress-block-sub">
-              Six papers × 20+ browser-tier rounds × three frontier referees (ChatGPT, Grok,
-              Gemini) through a de-biased external validation and a final 3-round INT+EXT
-              grind (Rounds A/B/C, Jun 28–30 2026). Current profile: MINOR-dominant with
-              occasional ACCEPTs — e.g. P5 Gemini at ACCEPT, others at MINOR or isolated
-              MAJOR. Residual MAJORs are disclosed caveats, submission-gated blockers (arXiv
-              IDs / Zenodo DOIs mintable only at submission), and LLM run-to-run noise — not
-              unaddressed science issues. All-3-ACCEPT-zero-MINOR is an asymptote against
-              noisy frontier referees; the papers are internally verified publishable-strong.
+              Six papers × frontier referees (ChatGPT, Grok, Gemini) in the visible browser,
+              now with every reviewer's raw response + screenshot + chat URL saved to git.
+              Verified profile (2026-07-04): <strong>REJECT/MAJOR-dominant — none converged.</strong>
+              Every paper draws a real ChatGPT REJECT; concrete errors were fixed and
+              reviewer-confirmed lifted, but the standing MAJORs are venue/scope questions
+              (companion-vs-standalone, conditional-forecast, ansatz-tier, process-volume
+              catalog) that human referees adjudicate, not the loop. Editing scope items is
+              proven counterproductive (disclosure backfires; run-to-run referee variance).
+              Readiness recut to 76–80 — honest, not 96.
             </p>
             <div className="verdict-carousel">
               <VerdictTrajectory />
@@ -114,9 +117,13 @@ export default function ReviewsPage() {
             <div className="progress-block">
               <h3 className="progress-block-title">Internal/external gap — findings only the external tier caught</h3>
               <p className="progress-block-sub">
-                Substantive externally-caught findings that survived every internal round. The gap
-                closed to zero by EXT20; the 2026-06-28 de-biased referee prompt then surfaced 2 genuine
-                self-favoring items (since fixed), and the final 3-round grind (A/B/C) closed with 0 genuinely-new findings.
+                Substantive externally-caught findings that survived the internal rounds. The
+                unverified mid-2026 sweeps reported the gap "closed to zero" — but the 2026-07
+                verified board (with ChatGPT restored and raw text captured) caught genuinely-new
+                real items those sweeps had missed: a fabricated P2 derivation, a P1B dimensional
+                bug, and confirmation that the papers were not converged. All now fixed or honestly
+                disclosed — the strongest evidence that verifiable, full-context review catches what
+                label-only sweeps cannot.
               </p>
               <GapClosureChart />
               <GapPerPaperDeltas />
@@ -166,7 +173,7 @@ export default function ReviewsPage() {
       <div className="campaign-obs-panel">
         <h2 className="campaign-obs-heading">Campaign observations</h2>
         <p className="campaign-obs-lede">
-          The program ran 20+ internal + external rounds, then a de-biased external validation (2026-06-28, severity-steering struck from the referee prompt) and a final 3-round INT+EXT grind (Round A/B/C, Jun 28–30 2026). 23 real items were closed across the 3 rounds; a neutral gate-discipline truth-audit found 0 genuinely-new real findings. External verdicts are MINOR-dominant with occasional ACCEPTs — not uniformly all-ACCEPT.
+          The program ran 20+ internal + external rounds through mid-2026. In 2026-07 a fully-verified external board (raw reviewer text + screenshots + chat URLs committed to git) replaced the prior unverified sub-agent sweeps — which had dropped ChatGPT and overstated convergence. The verified result: none of the six papers is converged; every one draws a real ChatGPT REJECT. The verified reviews immediately earned their keep — catching a fabricated derivation in P2 (retracted), a dimensional bug in P1B (fixed), and confirming P4's null is robust against an adversarial data audit.
         </p>
         <ul className="campaign-obs-list">
           <li>
@@ -207,20 +214,20 @@ export default function ReviewsPage() {
             </thead>
             <tbody>
               <tr>
-                <td className="eta-td eta-td-label">Internal review (INT, multi-vendor API) — 3 rigorous rounds A/B/C</td>
-                <td className="eta-td">✓ Complete (Jun 28–30 2026). 23 real items closed program-wide; final neutral truth-audit found 0 genuinely-new real findings.</td>
+                <td className="eta-td eta-td-label">Verified external board (raw text + screenshots + chat URLs in git)</td>
+                <td className="eta-td">✓ Complete (2026-07-03/04). All 6 papers × ChatGPT/Grok/Gemini, every leg verified from raw. Result: none converged — every paper a real ChatGPT REJECT. Replaces the prior unverified, ChatGPT-skipping sweeps.</td>
               </tr>
               <tr>
-                <td className="eta-td eta-td-label">External review (de-biased browser, 3 sweeps + validation)</td>
-                <td className="eta-td">MINOR-dominant verdicts with occasional ACCEPTs (e.g. P5 Gemini). Residual MAJORs = disclosed caveats + submission-time DOI/arXiv blockers + frontier-LLM run-to-run variance — not unaddressed quality. Verified internally honest.</td>
+                <td className="eta-td eta-td-label">Content integrity</td>
+                <td className="eta-td">✓ Error-clean. Every concrete error fixed + reviewer-confirmed lifted; a fabricated P2 derivation was caught and retracted; P4's null verified robust against an adversarial data audit. No fabrication survives.</td>
               </tr>
               <tr>
-                <td className="eta-td eta-td-label">Readiness</td>
-                <td className="eta-td">Per-paper: P4 &amp; P5 converged at 96 (Grok+Gemini MINOR, 0 major); P1B 88 (Grok converged, Gemini scope-rejects the companion framing — venue call); P1A/P2/P3 84 at the LLM-referee rigor/venue floor (0 genuinely-new findings) → routed to human referees. Final sign-off is Houston's; the 100 cap is never written without it.</td>
+                <td className="eta-td eta-td-label">Readiness (honest, recut 2026-07-04)</td>
+                <td className="eta-td">Per-paper 76–80 — not 96. Verified verdicts: P1A/P2/P3 REJECT+MAJOR; P1B REJECT (content error-clean, companion-scope venue call); P4 REJECT/MAJOR/MINOR (null verified-robust); P5 REJECT/MINOR/MAJOR (Paper-IV dependency). The 100 cap is never written without Houston's sign-off.</td>
               </tr>
               <tr>
-                <td className="eta-td eta-td-label">Awaiting: Houston external-review sign-off → coordinated arXiv submission</td>
-                <td className="eta-td">Pending Houston action. Submission mints the Zenodo DOIs / arXiv IDs that mechanically clear the last structural reviewer blocker.</td>
+                <td className="eta-td eta-td-label">Remaining barrier → human referees (Houston-gated)</td>
+                <td className="eta-td">Uniformly a venue/scope judgment LLM referees flag but cannot adjudicate (companion-vs-standalone, conditional-forecast, ansatz-tier). Drop-ready packets (cover letter + standalone-verified bundle) prepared per paper. Editing scope items is proven counterproductive.</td>
               </tr>
             </tbody>
           </table>
