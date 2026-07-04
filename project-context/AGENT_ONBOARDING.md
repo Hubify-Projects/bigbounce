@@ -9,13 +9,45 @@ publication-ready through an iterative internal + external peer-review loop,
 fixing every finding, and keeping the public lab site (https://bigbounce.hubify.app)
 perfectly in sync after every round.
 
-> ⚠️ **CURRENT STATE (2026-06-21): IN-REVISION, not done.** Houston ran an
-> external review using the live PDFs + the exact per-paper prompts on the site
-> and found **open BLOCKER / MAJOR / MINOR revisions** across the papers. The
-> readiness is rolled back to **92** to reflect this. **Your P0 is to intake those
-> findings** (Houston will paste them, or they'll be in `project-context/peer-reviews/`),
-> truth-audit them, and run the closure loop. Do NOT claim any paper is done or
-> submit anything until the loop re-converges AND Houston signs off.
+> ⚠️ **CURRENT STATE (2026-07-04): AUTONOMOUS EDIT-LOOP EXHAUSTED — papers honest, error-clean, NOT converged. Barrier is venue → human referees.**
+>
+> Read this before doing ANYTHING. In 2026-07 the review process was rebuilt after
+> Houston caught earlier "converged / 18-18 ACCEPT / readiness 96" claims being
+> **fabricated** — they came from unverified sub-agent sweeps that had dropped
+> ChatGPT and saved no raw reviewer text. The corrected, verified state:
+> - **A fully-verified external board** (all 6 papers × ChatGPT/Grok/Gemini, raw
+>   text + screenshots + chat URLs in `project-context/peer-reviews/EXT_real/`)
+>   found **NONE converged** — every paper draws a real **ChatGPT REJECT**;
+>   verdicts are REJECT/MAJOR-dominant. Readiness recut to **76–80** (see Convex,
+>   which is the live SSOT for numeric state).
+> - **Content is now error-clean**: every concrete error was fixed + reviewer-CONFIRMED
+>   lifted (P1B dimensional bug; P1A T² misread; P1B thermal-average step). A
+>   **fabricated derivation in P2 was caught and retracted** (the Cai/Li factor-of-2
+>   "resolution"); a from-scratch in-in re-derivation confirmed the factor-of-2 is a
+>   genuine unresolved literature discrepancy. P4's null is verified-robust.
+> - **The remaining barrier is uniformly a VENUE/SCOPE judgment** (companion-vs-standalone,
+>   conditional-forecast, ansatz-tier, process-volume catalog) that LLM referees flag
+>   but **cannot adjudicate** — it needs **human referees**. Proven 3×: correctable
+>   errors → our fixes lift them; scope/venue → referee variance + **disclosure
+>   backfire** (adding honest caveats made Grok escalate MINOR→MAJOR). **Editing
+>   scope items is counterproductive.**
+>
+> **DO:** run reviews the VERIFIABLE way only — see CLAUDE.md directive **I1–I5**
+> (Claude INT leg = the running agent on Houston's subscription, NEVER the Anthropic
+> API; EXT must save raw reviewer text + screenshots you READ before recording any
+> verdict; never skip ChatGPT; INT-fail never stops EXT). Fix genuine *errors* if any
+> new ones surface. Keep all surfaces honest (Convex/site/SSOT).
+>
+> **DO NOT:** re-spin reflexive EXT sweeps expecting a different verdict (they return
+> the same walls and can backfire); claim any paper converged/accepted without a
+> verified all-3-ACCEPT from raw text; fabricate anything to close a finding.
+>
+> **The forward path is HOUSTON-GATED** — venue decisions, human-referee routing
+> (drop-ready packets in `submissions/<P>/`: cover letter + standalone-verified
+> bundle; overview in `submissions/SUBMISSION_READINESS.md`), and companion-paper
+> publication (P5's Paper IV). If you're an autonomous tick and everything above is
+> already true, there is likely **no non-counterproductive edit to make** — say so
+> honestly rather than manufacturing work or spinning a sweep.
 
 ---
 
