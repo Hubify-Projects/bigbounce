@@ -1,0 +1,15 @@
+title: Testing the Matter Bounce with Primordial Non-Gaussianity: A SPHEREx Sensitivity Recast with a MegaMapper Outlook
+version: v1.7.88
+bundle: arxiv_p2_v1.7.88.tar.gz
+pages: 31
+main_file: 02_full_draft.tex
+figures:
+  - fig1_shape_function.png
+  - fig2_survey_comparison.png
+  - fig3_kmin_cliff.png
+  - fig4_decision_thresholds.png
+  - fig5_inflation_comparison.png
+  - bphi_sensitivity.pdf
+bbl: 02_full_draft.bbl (included; pre-built Jul 4 2026)
+bib: focused_paper_refs.bib
+standalone_compile: PASS (pdflatex x3 + bibtex; 0 undefined refs; 0 LaTeX warnings; 31 pages)

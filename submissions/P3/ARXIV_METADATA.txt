@@ -1,0 +1,47 @@
+ARXIV SUBMISSION METADATA — P3
+================================
+
+title: Spectrally Unusual Sources at Scale: A Multi-Survey Catalog of
+       268,519 Validated (377,780 Total) Path-C Unique Anomalies from a
+       Native-Trained Scan of 37.3 Million Sources and Map Patches
+
+author: Houston Golden (houston@hubify.com)
+affiliation: Independent Researcher, Los Angeles, California, USA
+
+version: v3.1.136
+date_in_tex: July 3, 2026
+bundle: arxiv_p3_v3.1.136.tar.gz
+main_file: paper3_draft.tex
+bibliography: embedded (\begin{thebibliography} in tex; no external .bib required)
+bbl_file: paper3_draft.bbl (pre-built, included for arXiv)
+supplemental_bib: paper3_draftNotes.bib (included for reference)
+
+standalone_compile_result: PASS
+  - 0 undefined references
+  - 0 undefined citations
+  - Compile: pdflatex → pdflatex → pdflatex (no bibtex needed; bibliography embedded)
+  - Page count from standalone compile: 34 pages
+  - Note: served site PDF (anomaly_catalog_paper.pdf) shows 33 pages; source dir
+    paper3_draft.pdf also shows 34 pages. The 34-page count is correct for v3.1.136.
+    The 33-page served PDF was compiled from an earlier version of the tex.
+  - Float placement warnings present (revtex "float is stuck") — cosmetic only,
+    do not affect content or page integrity.
+
+figures (12 total, all in figures/ subdir):
+  1. figures/umap_by_anomaly_score.png
+  2. figures/fig_skymap_all_surveys.pdf
+  3. figures/fig_score_distributions.pdf
+  4. figures/fig_sdss_umap.png
+  5. figures/fig_neowise_top_anomaly.pdf
+  6. figures/fig_novelty_fractions.pdf
+  7. figures/anomaly_sky_distribution.png
+  8. figures/fig_cross_survey_matches.pdf
+  9. figures/fig_fnl_improvement.png
+ 10. figures/fig_injection_recovery.pdf  (tex uses no extension; pdf chosen)
+ 11. figures/B11_sigma_fnl_vs_ndensity.pdf
+ 12. figures/fig_gallery_top10.pdf
+
+tarball_size: 3.9 MB
+tarball_path: submissions/P3/arxiv_p3_v3.1.136.tar.gz
+
+suggested_arxiv_categories: astro-ph.IM / astro-ph.GA / astro-ph.CO
