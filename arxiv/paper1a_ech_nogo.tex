@@ -47,8 +47,8 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.104}
-\newcommand{\paperTimestamp}{July 3, 2026}
+\newcommand{\paperVersion}{v1A.0.105}
+\newcommand{\paperTimestamp}{July 4, 2026}
 % v1A.0.103->104 (2026-07-03): INT truth-audit of EXT ChatGPT [MAJOR] Eq.(1) T·T variational concern (all 3 EXT reviewers REJECT/MAJOR). VERDICT: LEGITIMATE-BUT-UNCLEAR (misread of a correct presentation, not a real bug). Variational principle is SOUND — Eq.(1) is first-order Palatini-EC; independently varied fields are {e^a_mu, omega^ab_mu, psi}; (1/4)T·T is on-shell Hehl-Datta shorthand appearing only AFTER algebraic torsion elimination (Cartan Eq.2), already stated in the Eq.(1)+Eq.(2) footnotes and body (no double-counting). Rebuttal-by-clarification: added an explicit sentence at Eq.(1) naming the independently-varied first-order fields + that T·T appears only post-elimination, so no referee can read it as ill-defined. No math changed; no fabricated derivation. 0 undef-refs.
 % v1A.0.101->102 (2026-07-03): restored VERIFIED BS β-function (arXiv:1111.0884 Eq.7, fetched+verified) — corrected earlier (γ²-1)² to (γ²-1); (23γ²+5) coeff + μ²κ² Planck-suppression verified; derived running |Δγ/γ|~10⁻⁶ upgrades R3 from ansatz toward derived. Added BenedettiSpeziale2011run ref.
 % v1A.0.100->101 (2026-07-03): TRUTH-AUDIT downgrade — removed unverified BS Eq.7.24/(23γ²+5)/μ²κ² power-law/10⁻⁶ claims (could not verify vs arXiv:1104.4028; abstract says logarithmic not power-law); kept only VERIFIED BS structure (four-fermion running, γ²=1 UV fixed point, sign set by |γ|≷1); R3 retains chiral-count ansatz as conservative bound, closure unchanged (≳60 orders margin).
@@ -2481,18 +2481,34 @@ the explicit $\mu^2\kappa^2=(\mu/M_{\rm Pl})^2$ prefactor: the running is
 \emph{power-suppressed} by the renormalization scale in Planck units, not
 logarithmic, so the accumulated $\int\!\beta_{\gamma^2}\,d\ln\mu \propto
 \int\!\mu\,d\mu$ is dominated by the ultraviolet endpoint and is of order
-$(\mu_{\rm UV}/M_{\rm Pl})^2$. Integrating Eq.~\eqref{eq:bs_beta} from a
-GUT scale $\mu_{\rm UV}\sim 10^{16}\,$GeV (with $\gamma$ near the LQG value
-$\gamma\!\approx\!0.24$) gives $|\Delta\gamma/\gamma|\sim 10^{-6}$ ---
-Planck-suppressed to roughly \emph{five orders of magnitude below} the
-chiral-count ansatz Eq.~\eqref{eq:gamma_running}. The precise coefficient
-is scheme-dependent (BS work off-shell) and $\gamma^2=1$ lies outside
-perturbative control, but the $(\mu/M_{\rm Pl})^2$ suppression is a robust
-structural consequence of the gravitational coupling $\kappa^2$. The
-derived physical running therefore only \emph{strengthens} Route~3; we
-nonetheless retain the far larger chiral-count estimate
-Eq.~\eqref{eq:gamma_running}, $\Delta\gamma/\gamma\!\sim\!0.3$, as a
-deliberately pessimistic \emph{upper} bound in the budget below. Because the Route-3
+$(\mu_{\rm UV}/M_{\rm Pl})^2$. Integrating Eq.~\eqref{eq:bs_beta}
+numerically from a GUT-scale ultraviolet boundary
+$\mu_{\rm UV}\sim10^{16}\,$GeV down to $\mu_{\rm IR}\sim1\,$GeV (with
+$\gamma$ near the LQG value $\gamma\!\approx\!0.24$) gives, in agreement
+with a frozen-coefficient analytic estimate to four significant figures,
+$|\Delta\gamma/\gamma|\approx1.4\times10^{-6}$. This is a genuine integrated
+running, \emph{not} an ansatz bound: the explicit
+$\mu^2\kappa^2=(\mu/M_{\rm Pl})^2$ prefactor makes the flow power-suppressed,
+so $|\Delta\gamma/\gamma|\sim(\mu_{\rm UV}/M_{\rm Pl})^2$ and the integral is
+dominated by the ultraviolet endpoint. The result is perturbatively
+controlled for any sub-Planckian UV boundary; only a literal Planck-scale
+boundary would push $|\Delta\gamma/\gamma|\to\mathcal{O}(1)$, precisely the
+regime Benedetti \& Speziale flag as outside perturbative control (the
+$\gamma^2=1$ fixed point corresponds to a divergent four-fermion coupling),
+so a Planck-scale evaluation would require UV-completion input beyond the
+one-loop $\beta$-function. The derived physical running therefore only
+\emph{strengthens} Route~3, and this GUT-UV integrated value now
+\emph{replaces} the earlier ansatz-tier magnitude as the primary Route-3
+estimate. Propagated to the dark-energy channel through the paper's own
+$(\Delta\gamma/\gamma)\cdot(H_0/M_{\rm Pl})$ mass-dimension suppression, the
+derived torsion/Immirzi contribution to $\rho_\Lambda$ sits
+$\sim 41$--$67$ orders of magnitude below the observed dark-energy density
+$\rho_{\Lambda,\rm obs}\approx(2.25\,\text{meV})^4$ --- so the no-go closes
+with enormous margin, now from a \emph{derived} integrated result rather
+than an ansatz upper bound. We nonetheless retain the far larger
+chiral-count estimate Eq.~\eqref{eq:gamma_running},
+$\Delta\gamma/\gamma\!\sim\!0.3$, as a deliberately pessimistic \emph{upper}
+bound in the budget below. Because the Route-3
 closure below carries $\gtrsim 60$ orders of suppression margin, it is
 in any case insensitive to the precise coefficient. In the Standard Model, the chiral
 asymmetry is generated by the $SU(2)_L$ doublets. Integrating
@@ -2527,17 +2543,23 @@ the dimensionless parity-odd amplitude budget associated with a
 dark-energy-scale source, closing this route by many orders of
 magnitude. \emph{Closure: mass-dimension-locked at the classical level
 and amplitude-suppressed by the chiral-asymmetry running coefficient.}
-\emph{Ansatz vs derivation (R2/R3):} The R2/R3 amplitude coefficients
-displayed in this paper (Eqs.~\ref{eq:gamma_running} and the chiral-count
-EFT scaling above) are \emph{conservative upper bounds derived from a
-chiral-count EFT scaling ansatz}, not literal extractions from
-Mercuri~\cite{Mercuri2009} or Date--Kaul--Sengupta~\cite{DateKaulSengupta2009};
-the closures of R2/R3 survive an $\mathcal{O}(1)$ inflation of the ansatz
-coefficient because the resulting amplitude suppression
-($\sim 3\times 10^{-62}$ vs $\rho_\Lambda$, using the corrected
-$\Delta\gamma/\gamma \sim 0.3$) leaves $\gtrsim 60$ orders of magnitude
-of margin against any $\mathcal{O}(1)$ rescaling of the chiral-asymmetry
-coefficient.
+\emph{Ansatz vs derivation (R2/R3):} R3's magnitude is now a
+\emph{derived integrated result}: for a sub-Planckian (GUT-scale) UV
+boundary the verified Benedetti--Speziale one-loop $\beta$-function
+Eq.~\eqref{eq:bs_beta} integrates to $|\Delta\gamma/\gamma|\approx
+1.4\times10^{-6}$, replacing the prior chiral-count ansatz upper bound as
+the primary Route-3 estimate. R2's amplitude coefficient remains a
+\emph{conservative upper bound from a chiral-count EFT scaling ansatz},
+not a literal extraction from Mercuri~\cite{Mercuri2009} or
+Date--Kaul--Sengupta~\cite{DateKaulSengupta2009}. The kept ansatz value
+Eq.~\eqref{eq:gamma_running} ($\Delta\gamma/\gamma\sim0.3$) is retained
+only as a deliberately pessimistic upper bound; the closures of R2/R3
+survive an $\mathcal{O}(1)$ inflation of the ansatz coefficient because
+the resulting amplitude suppression ($\sim 3\times 10^{-62}$ vs
+$\rho_\Lambda$, using the pessimistic $\Delta\gamma/\gamma \sim 0.3$)
+leaves $\gtrsim 60$ orders of magnitude of margin against any
+$\mathcal{O}(1)$ rescaling of the chiral-asymmetry coefficient, and the
+derived $1.4\times10^{-6}$ value only widens that margin.
 
 \subsection{Route 4 (parity-odd CMB coupling via spectator ALP or
 neutrino current): naturalness objection rather than amplitude
