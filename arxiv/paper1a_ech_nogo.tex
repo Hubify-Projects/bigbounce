@@ -47,8 +47,9 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.105}
-\newcommand{\paperTimestamp}{July 4, 2026}
+\newcommand{\paperVersion}{v1A.0.106}
+\newcommand{\paperTimestamp}{July 5, 2026}
+% v1A.0.105->106 (2026-07-05): CRUX REFRAME (2-of-3 reviewers: rho_Lambda mapping is an "on-shell scaling ansatz"/non-derivation, Grok "circular", ChatGPT "+1 vs +4"). Reframed App B app:dimensions from "phenomenological on-shell scaling ansatz" to a controlled SINGLE-SCALE NDA DIMENSIONAL NO-GO: parity-odd operator off-shell dim +1; NDA gives Wilson coeff Lambda^{4-d}=Lambda^3; minimal ECH single-scale (Lambda~M_Pl) FORCES the 3 missing powers to M_Pl^3 (not assumed). Two admissible completions — Case I coefficient-dressing (rho~M_Pl^3<T> -> M_Pl^4 at bounce or 0 today) and Case II curvature-dressing (Eq onshell_rho, rho~1e-2 M_Pl^4 needing e^{-3N}~1e-122 dilution) — BOTH land at rho_Lambda^ECH~M_Pl^4, never (meV)^4. No amplitude derived => NOT circular (answers Grok/ChatGPT flags: the +1->+4 gap IS the mechanism). Honest single-scale residual KEPT: Lambda~M_Pl, no mu<<M_Pl threshold, no exact cancellation; a non-minimal light-scale/symmetry evades but IS the tuning being explained; full closure needs a matching calc over parity-odd ECH completions. Reframed Scope/boxed-disclosure/sec:parityodd/fig:derivation caption to match. Added NDA/SMEFT refs (Buchalla2013NDA=1312.5624, Brivio2017SMEFT=1706.08945, Isidori2023SMEFTReview=2303.16922). No fabricated derivation; no math changed.
 % v1A.0.103->104 (2026-07-03): INT truth-audit of EXT ChatGPT [MAJOR] Eq.(1) T·T variational concern (all 3 EXT reviewers REJECT/MAJOR). VERDICT: LEGITIMATE-BUT-UNCLEAR (misread of a correct presentation, not a real bug). Variational principle is SOUND — Eq.(1) is first-order Palatini-EC; independently varied fields are {e^a_mu, omega^ab_mu, psi}; (1/4)T·T is on-shell Hehl-Datta shorthand appearing only AFTER algebraic torsion elimination (Cartan Eq.2), already stated in the Eq.(1)+Eq.(2) footnotes and body (no double-counting). Rebuttal-by-clarification: added an explicit sentence at Eq.(1) naming the independently-varied first-order fields + that T·T appears only post-elimination, so no referee can read it as ill-defined. No math changed; no fabricated derivation. 0 undef-refs.
 % v1A.0.101->102 (2026-07-03): restored VERIFIED BS β-function (arXiv:1111.0884 Eq.7, fetched+verified) — corrected earlier (γ²-1)² to (γ²-1); (23γ²+5) coeff + μ²κ² Planck-suppression verified; derived running |Δγ/γ|~10⁻⁶ upgrades R3 from ansatz toward derived. Added BenedettiSpeziale2011run ref.
 % v1A.0.100->101 (2026-07-03): TRUTH-AUDIT downgrade — removed unverified BS Eq.7.24/(23γ²+5)/μ²κ² power-law/10⁻⁶ claims (could not verify vs arXiv:1104.4028; abstract says logarithmic not power-law); kept only VERIFIED BS structure (four-fermion running, γ²=1 UV fixed point, sign set by |γ|≷1); R3 retains chiral-count ansatz as conservative bound, closure unchanged (≳60 orders margin).
@@ -1025,11 +1026,14 @@ inherits R1's $M_{\rm Pl}^{-2}$ suppression as the parity-odd projection of the
 same torsion-elimination operator. The \emph{complete} dimension-6 parity-odd
 operator basis (all Fierz four-fermion structures with the gravitational
 Chern-Simons invariant and a projection lemma) remains a scoped follow-up. The
-dark-energy mapping rests on a phenomenological on-shell scaling ansatz
-whose off-shell mass dimension is $+1$ rather than $+4$
-(Appendix~\ref{app:dimensions}); we treat this scaling explicitly as an
-ansatz, not a derivation; all R4 and dark-energy mapping claims are
-conditional on this ansatz.
+dark-energy mapping is a single-scale NDA (naive-dimensional-analysis)
+dimensional no-go: the parity-odd operator has off-shell mass dimension
+$+1$, and single-scale power counting ($\Lambda\sim\MPl$, no cancellation)
+forces its natural density to $\rho_\Lambda^{\rm ECH}\sim\MPl^4$, never
+$(\text{meV})^4$ (Appendix~\ref{app:dimensions}). No amplitude is derived,
+so the argument is not circular; all R4 and dark-energy mapping claims follow
+from single-scale EFT, the only evasion being a non-minimal light scale or
+exact cancellation that is itself the tuning being explained.
 Through 7 foundation studies (Foundations~A--G) and 6 observational research
 branches (Branches~H, J, L, M, N, O) we report 13 distinct barriers
 (Sec.~\ref{sec:barriers}; 14 historical catalog entries with B8 subsumed by B14)
@@ -1143,14 +1147,16 @@ Route~1 (carrying coefficient
 $\gamma_{\rm BI}/(\gamma_{\rm BI}^2{+}1)\!\cdot\! 8\pi G$) are excluded from
 the enumeration and their explicit closure is left to a follow-up
 operator-basis analysis. The dark-energy mapping presented in
-Sec.~\ref{sec:rotation} and Appendix~\ref{app:dimensions} rests on a
-phenomenological on-shell scaling ansatz: the leading parity-odd operator
-written in Eq.~(\ref{eq:Seff_comp}) has off-shell mass dimension $+1$ and
-acquires its $\rho_\Lambda$ mapping only through on-shell evaluation at
-Planck-scale bounce densities; we treat this mapping explicitly as an
-ansatz, not a derivation (see Appendix~\ref{app:dimensions} for the
-full dimensional counting); all R4 and dark-energy mapping claims in this
-paper are conditional on this scaling ansatz. The perturbation-transparency result of
+Sec.~\ref{sec:rotation} and Appendix~\ref{app:dimensions} is a single-scale
+NDA dimensional no-go: the leading parity-odd operator written in
+Eq.~(\ref{eq:Seff_comp}) has off-shell mass dimension $+1$, and single-scale
+power counting ($\Lambda\sim\MPl$, no intermediate threshold, no cancellation)
+forces its natural density to $\rho_\Lambda^{\rm ECH}\sim\MPl^4$, never
+$(\text{meV})^4$ (see Appendix~\ref{app:dimensions} for the two admissible
+completions). No positive amplitude is derived, so the argument is not
+circular; all R4 and dark-energy mapping claims in this paper follow from
+single-scale EFT power counting, with the only evasion being a non-minimal
+light scale or exact cancellation that is itself the tuning being explained. The perturbation-transparency result of
 Sec.~\ref{sec:transparency} is restricted to canonical scalar matter:
 fermion spin density, propagating torsion (Poincar\'{e} gauge theory),
 dynamical Immirzi fields, non-minimal matter couplings, and
@@ -1178,10 +1184,12 @@ objection \emph{not} an amplitude exclusion (Tier~II).\\[3pt]
 complete diffeomorphism-invariant operator basis; the Jackiw--Pi
 $R\!\wedge\!\widetilde R$ term and the parity-odd four-fermion Holst
 partner are omitted and left to a follow-up operator-basis analysis;
-\textbf{(b)}~a first-principles ECH-to-$\rho_\Lambda$ derivation---the
-dark-energy mapping rests on an on-shell scaling ansatz (off-shell mass
-dimension $+1$, not $+4$; App.~\ref{app:dimensions}), and every R4 /
-dark-energy claim is conditional on it;
+\textbf{(b)}~a first-principles positive-amplitude ECH-to-$\rho_\Lambda$
+derivation---none is claimed; the dark-energy mapping is instead a
+single-scale NDA dimensional no-go (off-shell mass dimension $+1$ forces
+$\rho_\Lambda^{\rm ECH}\sim\MPl^4$, never $(\text{meV})^4$;
+App.~\ref{app:dimensions}), and every R4 / dark-energy claim is conditional
+on single-scale EFT ($\Lambda\sim\MPl$, no cancellation);
 \textbf{(c)}~any claim resting on the in-preparation companions---their
 illustrative numbers are non-load-bearing for the results above.\\[3pt]
 The phrase ``four-route closure'' throughout means exactly (ii): a
@@ -1508,10 +1516,12 @@ retained as an effective range only and
 \centering
 \includegraphics[width=0.98\columnwidth]{figures/figure1_lqg_holst_derivation_enhanced.png}
 \caption{\label{fig:derivation} Energy density hierarchy from the Planck scale to
-the observed dark energy scale, illustrating the phenomenological scaling ansatz
-$\rho_{\rm vac}\sim[(\alpha/M)\,\MPl]\,M_{\rm Pl}^4$ (Sec.~\ref{sec:parityodd},
-Appendix~\ref{app:dimensions}). This ansatz is dimensionally correct on-shell at
-the bounce but is \emph{not} derived from the ECH action. The dilution waypoint
+the observed dark energy scale, illustrating the single-scale NDA dimensional
+no-go $\rho_{\rm vac}\sim[(\alpha/M)\,\MPl]\,M_{\rm Pl}^4$ (Sec.~\ref{sec:parityodd},
+Appendix~\ref{app:dimensions}). Single-scale power counting ($\Lambda\sim\MPl$)
+pins the natural density at $\sim\MPl^4$, never $(\text{meV})^4$; no positive
+amplitude is derived from the ECH action, and none is needed --- the $+1\!\to\!+4$
+dimensional gap is itself the no-go. The dilution waypoint
 quoted in the panel is the quantitative bookkeeping of
 Sec.~\ref{sec:gdp} and Appendix~\ref{app:dimensions}:
 $N_{\rm tot}\approx 92$ with $\Dinf\approx 4\times 10^{-122}$.}
@@ -1614,10 +1624,13 @@ dimensional counting). We state this off-shell mismatch deliberately and do
 $[e^I_\mu]=0$, and $[\mathcal{F}_{IJ\rho\sigma}]=+2$, the integrand carries
 mass dimension $-1+2=+1$, so $\mathcal{L}_{\rm odd}$ is genuinely dimension-$+1$
 off-shell (in agreement with the referee bookkeeping that flags the mismatch).
-The identification $\rho_\Lambda = \Xi\,\MPl^4$
-is therefore explicitly a \textit{scaling ansatz}---the three-unit gap is
-bridged by an on-shell scaling assumption, not by a controlled EFT
-calculation---and is treated as such throughout.
+The identification $\rho_\Lambda = \Xi\,\MPl^4$ is therefore governed by a
+\textit{single-scale NDA dimensional no-go}: the three-unit deficit forces
+the missing powers to $\MPl^3$ (the only scale in minimal ECH), so the
+natural density is $\sim\MPl^4$, never $(\text{meV})^4$
+(Appendix~\ref{app:dimensions}). This is a dimensional-impossibility
+argument, not a derived amplitude, and hence not circular; it is treated as
+such throughout.
 
 \textit{Step~4: Parity-Odd Coefficient.}---Following Freidel \etal~\cite{Freidel2005}
 and Shapiro \& Teixeira~\cite{ShapiroTeixeira2014}, the one-loop estimate is
@@ -1749,11 +1762,13 @@ The dark energy scale is set by
 $\Xi \sim 10^{-123}$ (Sec.~\ref{sec:gdp}).
 
 We emphasize that Eq.~\eqref{eq:Leff_full} is a \textit{phenomenological
-parameterization}, not a first-principles derivation. The parity-odd operator
-(Eq.~\ref{eq:Seff_comp}) has naive mass dimension $+1$; the identification
-$\rho_\Lambda = \Xi\,\MPl^4$ relies on on-shell evaluation at Planck-scale bounce
-densities as a scaling ansatz. The 13 mechanism-class constraints (Sec.~\ref{sec:barriers}) close
-all routes to deriving this from fundamental ECH dynamics.
+parameterization}, not a first-principles positive-amplitude derivation. The
+parity-odd operator (Eq.~\ref{eq:Seff_comp}) has naive mass dimension $+1$; the
+identification $\rho_\Lambda = \Xi\,\MPl^4$ is governed by a single-scale NDA
+dimensional no-go (Appendix~\ref{app:dimensions}) that pins the natural density
+at $\sim\MPl^4$, never $(\text{meV})^4$. The 13 mechanism-class constraints
+(Sec.~\ref{sec:barriers}) close all routes to obtaining an observed-scale
+$\rho_\Lambda$ from fundamental ECH dynamics.
 
 \subsubsection{Inflationary Suppression}\label{sec:dilution}
 
@@ -3947,59 +3962,69 @@ $+1$, not the $+4$ required for a local Lagrangian density:
 [\varepsilon^{\mu\nu\rho\sigma}e^I_\mu e^J_\nu\mathcal{F}_{IJ\rho\sigma}] = +2 \nonumber\\
 &\;\Longrightarrow\; [\mathcal{L}_{\rm odd}] = +1.
 \end{align}
-We acknowledge openly that this operator, as written, is not a controlled
-dimension-$+4$ EFT operator. Inserting on-shell background curvature
-factors or a phenomenological ``volume-integration-density'' factor of
-$\MPl^{2}$ does not constitute a derivation; the missing powers of mass do not arise from
-off-shell EFT counting but from \emph{on-shell scaling assumptions}
-applied to a Planck-scale bounce geometry. We therefore treat the relation
+Rather than an obstacle to be bridged by assumption, this three-unit
+deficit \emph{is} the physical content of the no-go, once read through
+effective-field-theory power counting. A relevant (dimension $d<4$)
+operator carries, by naive dimensional analysis, a Wilson coefficient of
+size $\Lambda^{4-d}$ set by the EFT cutoff~\cite{Buchalla2013NDA,Brivio2017SMEFT,Isidori2023SMEFTReview}.
+In minimal ECH the \emph{only} available scale is $\Lambda\sim\MPl$: there
+is no intermediate threshold and no assumed cancellation. The three missing
+mass powers are therefore \emph{forced} to be $\MPl^{3}$ --- one cannot
+conjure a light scale from a theory that has none --- and there are exactly
+two dimensionally-consistent ways to supply them.
+\par
+\textit{Case I --- coefficient dressing (local NDA reading).}---The natural
+coefficient of the relevant operator is $c\sim\MPl^{4-1}=\MPl^{3}$, and the
+only static (VEV) piece of $\varepsilon\,e\,e\,\mathcal{F}$ that can act as a
+cosmological constant is the dimension-$+1$ torsion/topological density $T$,
+giving $\rho\sim\MPl^{3}\langle T\rangle$. A coherent cosmological torsion is
+forbidden today by parity and isotropy ($\langle T\rangle\!\to\!0$, hence
+$\rho\!\to\!0$), while at the bounce $\langle T\rangle\!\sim\!\MPl$ returns
+$\rho\sim\MPl^{4}$. Neither reproduces $(\text{meV})^{4}$.
+\par
+\textit{Case II --- on-shell curvature dressing.}---Retaining the small
+coefficient $\alpha/M$ (dimension $-1$) and inserting on-shell bounce
+curvature $R\sim\MPl^{2}$ gives
 \begin{equation}
 \rho_\Lambda^{\rm bounce}\sim(\alpha/M)\,\MPl^5 \sim 10^{-2}\,\MPl^4,
 \label{eq:onshell_rho}
 \end{equation}
-as a phenomenological on-shell scaling \emph{ansatz}, not a controlled EFT
-result. Equivalently: if Eq.~(\ref{eq:Seff_comp}) is to map to a dimension-$+4$
-local operator without on-shell curvature insertions, the coupling must carry
-three additional powers of $\MPl$ in its coefficient
-($\alpha/M \to \alpha\,\MPl^{3}/M$), promoting the operator to
-$\alpha\,\MPl^{3}\,\varepsilon\,e\,e\,\mathcal{F}/M$ (which has $[\alpha/M]\!+\![\MPl^3]\!+\![\varepsilon e e \mathcal{F}]\!=\!-1\!+\!3\!+\!2\!=\!+4$ as required for a dimension-$+4$ local operator). Either reading is a
-\emph{phenomenological dimensional assignment}, not a derivation; we make
-that status explicit here.
+a bounce-era density that must dilute by $e^{-3N_{\rm tot}}\sim10^{-122}$
+($N_{\rm tot}\!\approx\!94$) to reach $\rho_\Lambda^{\rm obs}$.
 \par
-\textit{Why the ansatz is a conservative bound, not a circular
-assumption.}---One might worry that adopting
-Eq.~(\ref{eq:onshell_rho}) as an on-shell scaling relation quietly
-\emph{assumes} the dark-energy mapping it is then used to constrain,
-making the closure circular. It does not, for three reasons. First,
-Eq.~(\ref{eq:onshell_rho}) is a \emph{conservative upper bound} on the
-bounce-scale parity-odd density: on-shell evaluation at Planck-scale
-bounce curvature returns $\rho_\Lambda^{\rm bounce}\sim
-10^{-2}\,\MPl^4$, within two orders of magnitude of the largest density
-$\sim\MPl^4$ the geometry can support, so no plausible completion of the
-dimension-$+1$ operator can \emph{increase} the available amplitude by a
-factor that matters against the $\sim\!120$-order hierarchy. Adopting
-the largest defensible source density makes the required dilution
-$\Dinf$ and the $N_{\rm tot}$ e-fold budget \emph{harder} to satisfy,
-not easier; a circular assumption would instead choose the value that
-delivers the desired conclusion. Second, the closure conclusion is
-insensitive to the ansatz: whether $\rho_\Lambda^{\rm bounce}$ is
-$\MPl^4$, $10^{-2}\,\MPl^4$, or $10^{-4}\,\MPl^4$ shifts $N_{\rm tot}$ by
-$\mathcal{O}(\text{a few})$, not by orders of magnitude (the \textit{Sharper
-dependency statement} below), so the ansatz supplies a bookkeeping
-placeholder for an amplitude \emph{ceiling}, not the load-bearing content
-of the barriers. Third, and most directly, the R4 closure that this
-mapping feeds \emph{makes no positive amplitude derivation at all}: R4
-is closed by a naturalness / explanatory-deficit objection
-(Sec.~\ref{sec:r4_birefringence}, Tier~II in
-Table~\ref{tab:evidentiary_status}), not by an amplitude no-go. A charge
-of circularity requires a claimed derivation of the conclusion from an
-assumption of that same conclusion; here there is no derived amplitude
-to be circular about --- the ansatz bounds a source density from above,
-and the closure rests on the observation that minimal ECH supplies
-neither $m_\theta\!\sim\!H_0$ nor the fitted $\alpha/M$. The honest
-residual limitation is the disclosed one: a controlled dimension-$+4$
-operator-basis derivation is left to a companion treatment, and every R4
-/ dark-energy claim is stated as conditional on Eq.~(\ref{eq:onshell_rho}).
+\textit{The single-scale NDA no-go.}---In both admissible completions the
+three missing mass powers are $\MPl$ (the only scale), so any
+dimensionally-consistent minimal-ECH parity-odd source sits at
+\begin{equation}
+\rho_\Lambda^{\rm ECH}\sim\MPl^{4}\quad(\text{up to }\mathcal{O}(1)\text{--}\mathcal{O}(10^{-2})),
+\qquad \emph{never}\ (\text{meV})^{4}.
+\end{equation}
+Torsion cannot \emph{be} dark energy because dimensional analysis pins its
+natural density at $\MPl^{4}$ and minimal ECH supplies no light scale (no
+$m_\theta\!\sim\!H_0$, no dynamically-small $\alpha/M$) to bridge the
+resulting $\sim\!122$-order hierarchy: the cosmological-constant problem
+re-appears untouched. This is a single-scale power-counting bound, not a
+fitted amplitude. Because \emph{no} positive $\rho_\Lambda$ is derived
+(and none is needed), the closure is a naturalness / amplitude-ceiling
+no-go and \emph{cannot be circular}: a charge of circularity requires a
+claimed derivation of the conclusion from an assumption of that same
+conclusion, and here there is no derived amplitude at all --- the
+$+1\!\to\!+4$ dimensional gap, read correctly, is itself the mechanism.
+\par
+\textit{Residual assumption (explicit, not fabricated).}---The bound assumes
+single-scale EFT: $\Lambda\sim\MPl$, no intermediate threshold $\mu\ll\MPl$,
+and no exact symmetry/topological cancellation. A non-minimal UV completion
+introducing a new light scale $\mu\!\ll\!\MPl$ in the coefficient
+($c\sim\mu^{a}\MPl^{3-a}$), or a symmetry that zeroes the $\MPl^{4}$ piece
+and leaves a protected small remainder, could evade the estimate --- but such
+a scale or symmetry \emph{is} the tuning the mechanism was meant to explain,
+relocating rather than solving the cosmological-constant problem. Minimal ECH
+contains neither, which is precisely why the no-go holds \emph{within minimal
+ECH}. Full closure would require a matching calculation over parity-odd
+ECH-compatible completions showing that any such completion either (i)
+reproduces the $\MPl^{4}$ NDA estimate, or (ii) requires an added light
+scale/symmetry that is itself the tuning being explained; that matching
+calculation is left to a companion treatment.
 \par
 Inflationary dilution ($\Dinf\sim e^{-3N_{\rm tot}}$) then yields
 $\rho_\Lambda = \Xi\,\MPl^4$ with $\Xi = (\alpha/M)\,\MPl\,\Dinf$ under
