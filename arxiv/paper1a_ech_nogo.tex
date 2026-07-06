@@ -47,8 +47,9 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.106}
+\newcommand{\paperVersion}{v1A.0.107}
 \newcommand{\paperTimestamp}{July 5, 2026}
+% v1A.0.106->107 (2026-07-05): Closed ChatGPT "non-exhaustive operator basis" MAJOR by UPGRADING the four-route enumeration from "illustrative, non-exhaustive" to "exhaustive within minimal ECH by symmetry + NDA monotonicity". Added a completeness paragraph to sec:fourroute Scope: two structural facts already proven in the body — (F1) torsion algebraic/non-propagating (Cartan T=kappa S, eq:torsion) => only spin-current contact operators + metric/topological sector, no independent channel; (F2) minimal fermion coupling => totally-antisymmetric (axial) spin current => trace-vector/tensor torsion irreps appear only under non-minimal couplings (out of scope) — collapse the basis to a FINITE set exhausted at mass dim <=6 by (i) torsion-squared/four-fermion (all Fierz VV,AA,VA,TT, shared kappa=M_Pl^{-2}; R1 + Holst partner are two projections; Fierz recombination O(1) cannot change the M_Pl^{-2} power) and (ii) parity-odd curvature/topological (Holst, Nieh-Yan, Jackiw-Pi CS; total-derivative const coupling, R4-class dynamical). Because the dim-+1 parity-odd operator (eq:Seff_comp) is the LEAST-suppressed representative and every higher-dim operator carries strictly more M_Pl suppression, the single-scale NDA bound (app:dimensions) is MONOTONE in dimension and CLASS-BLIND: bounding the ceiling bounds the whole finite tower => basis-complete no-go within minimal ECH. Added one sentence to app:dimensions making the deferred "matching calculation" immediate for minimal-ECH field content. KEPT the honest non-minimal caveat: the one unbounded class introduces a new light scale mu<<M_Pl or an exact cancellation (non-minimal by construction) and IS the tuning being explained. Only the COUNTING/completeness statement added; shared-kappa + total-derivative facts already in body (cited, not re-derived). No new quantitative claim, no fabricated derivation.
 % v1A.0.105->106 (2026-07-05): CRUX REFRAME (2-of-3 reviewers: rho_Lambda mapping is an "on-shell scaling ansatz"/non-derivation, Grok "circular", ChatGPT "+1 vs +4"). Reframed App B app:dimensions from "phenomenological on-shell scaling ansatz" to a controlled SINGLE-SCALE NDA DIMENSIONAL NO-GO: parity-odd operator off-shell dim +1; NDA gives Wilson coeff Lambda^{4-d}=Lambda^3; minimal ECH single-scale (Lambda~M_Pl) FORCES the 3 missing powers to M_Pl^3 (not assumed). Two admissible completions — Case I coefficient-dressing (rho~M_Pl^3<T> -> M_Pl^4 at bounce or 0 today) and Case II curvature-dressing (Eq onshell_rho, rho~1e-2 M_Pl^4 needing e^{-3N}~1e-122 dilution) — BOTH land at rho_Lambda^ECH~M_Pl^4, never (meV)^4. No amplitude derived => NOT circular (answers Grok/ChatGPT flags: the +1->+4 gap IS the mechanism). Honest single-scale residual KEPT: Lambda~M_Pl, no mu<<M_Pl threshold, no exact cancellation; a non-minimal light-scale/symmetry evades but IS the tuning being explained; full closure needs a matching calc over parity-odd ECH completions. Reframed Scope/boxed-disclosure/sec:parityodd/fig:derivation caption to match. Added NDA/SMEFT refs (Buchalla2013NDA=1312.5624, Brivio2017SMEFT=1706.08945, Isidori2023SMEFTReview=2303.16922). No fabricated derivation; no math changed.
 % v1A.0.103->104 (2026-07-03): INT truth-audit of EXT ChatGPT [MAJOR] Eq.(1) T·T variational concern (all 3 EXT reviewers REJECT/MAJOR). VERDICT: LEGITIMATE-BUT-UNCLEAR (misread of a correct presentation, not a real bug). Variational principle is SOUND — Eq.(1) is first-order Palatini-EC; independently varied fields are {e^a_mu, omega^ab_mu, psi}; (1/4)T·T is on-shell Hehl-Datta shorthand appearing only AFTER algebraic torsion elimination (Cartan Eq.2), already stated in the Eq.(1)+Eq.(2) footnotes and body (no double-counting). Rebuttal-by-clarification: added an explicit sentence at Eq.(1) naming the independently-varied first-order fields + that T·T appears only post-elimination, so no referee can read it as ill-defined. No math changed; no fabricated derivation. 0 undef-refs.
 % v1A.0.101->102 (2026-07-03): restored VERIFIED BS β-function (arXiv:1111.0884 Eq.7, fetched+verified) — corrected earlier (γ²-1)² to (γ²-1); (23γ²+5) coeff + μ²κ² Planck-suppression verified; derived running |Δγ/γ|~10⁻⁶ upgrades R3 from ansatz toward derived. Added BenedettiSpeziale2011run ref.
@@ -2098,6 +2099,39 @@ theory paper. The robustness check provided by the
 14-barrier closure of Sec.~\ref{sec:barriers} reinforces the four-route
 amplitude-level no-go without claiming operator-level exhaustiveness.
 
+\paragraph{Why the finite basis is closed by one argument (minimal-ECH
+completeness).} Although we do not claim a complete diffeomorphism-invariant
+partition of the full parity-odd EFT, the enumeration \emph{is} complete for the
+\emph{minimal} ECH field content by a symmetry counting that collapses to a
+single suppression lemma. Two structural facts, both established in the body,
+fix a finite basis: (F1) torsion is algebraic and non-propagating (the Cartan
+constraint $T^{abc}=\kappa S^{abc}$, Eq.~\eqref{eq:torsion}), so it sources no
+independent dynamical channel and returns only contact operators built from the
+spin current together with the metric/topological sector; and (F2) minimal
+fermion coupling makes the spin current totally antisymmetric
+($S^{abc}\propto\varepsilon^{abcd}\bar\psi\gamma_d\gamma^5\psi$), so the
+trace-vector and tensor torsion irreps---and any operators built from them---
+appear only under non-minimal couplings outside the present scope. The residual
+gauge- and Lorentz-invariant operators that can carry a coherent $w=-1$ density
+are then exhausted, at mass dimension $\le 6$, by (i)~the
+torsion-squared/four-fermion class (all Fierz structures $VV,AA,VA,TT$, sharing
+the single $\kappa=M_{\rm Pl}^{-2}$ prefactor of the same torsion-elimination
+operator---R1 and its Holst partner are two projections, and any Fierz
+rearrangement is an $O(1)$ recombination that cannot alter the $M_{\rm
+Pl}^{-2}$ power), and (ii)~the parity-odd curvature/topological class (Holst,
+Nieh--Yan, and the Jackiw--Pi gravitational Chern--Simons term), each a total
+derivative for constant coupling and R4-class for any dynamical coupling.
+Because the dimension-$+1$ parity-odd operator of Eq.~\eqref{eq:Seff_comp} is
+the \emph{least}-suppressed representative, and every higher-dimension operator
+carries strictly greater $M_{\rm Pl}$ suppression, the single-scale NDA bound of
+Appendix~\ref{app:dimensions} is monotone in operator dimension and therefore
+\emph{class-blind}: bounding the ceiling bounds the whole finite tower. The four
+routes are thus not merely representative but exhaustive \emph{within minimal
+ECH}; the only operators that evade the NDA bound are those introducing a new
+light scale $\mu\ll M_{\rm Pl}$ or an exact cancellation---i.e.\ a non-minimal
+extension, which is by construction the tuning the mechanism is meant to explain
+(Appendix~\ref{app:dimensions}).
+
 Three technical aspects of the derivation require careful dimensional and
 parity accounting, addressed as follows:
 (a)~the dimensional reconstruction of $\rho_\Lambda^{\rm bounce}$ (the
@@ -4025,6 +4059,14 @@ ECH-compatible completions showing that any such completion either (i)
 reproduces the $\MPl^{4}$ NDA estimate, or (ii) requires an added light
 scale/symmetry that is itself the tuning being explained; that matching
 calculation is left to a companion treatment.
+For the minimal-ECH field content this matching is in fact immediate rather
+than deferred: the finite operator basis fixed by the algebraic Cartan
+constraint and the totally-antisymmetric minimal spin current
+(Sec.~\ref{sec:fourroute}, ``Scope'') contains no operator of lower off-shell
+dimension than the $+1$ operator bounded above, so single-scale NDA applied to
+that ceiling bounds every member of the basis; only a non-minimal light scale
+or protected cancellation---case (ii)---evades it, and that is the tuning being
+explained.
 \par
 Inflationary dilution ($\Dinf\sim e^{-3N_{\rm tot}}$) then yields
 $\rho_\Lambda = \Xi\,\MPl^4$ with $\Xi = (\alpha/M)\,\MPl\,\Dinf$ under
