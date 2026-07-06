@@ -231,8 +231,8 @@
 %   FALSIFIED list (14 items) not acted on.)
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1B.0.99}
-\newcommand{\paperTimestamp}{July 4, 2026}
+\newcommand{\paperVersion}{v1B.0.100}
+\newcommand{\paperTimestamp}{July 5, 2026}
 % v1B.0.95 (2026-07-01, author decision): SURGICALLY REMOVED the entire exploratory
 %   w0wa (overlap-uncorrected supernova) analysis -- Appendix A (app:w0wa) with its
 %   physics interpretation, caveats (a)-(e), and Table II (tab:iter2_posterior);
@@ -1580,9 +1580,10 @@ $\rho_{\rm tor}\sim\kappa^2\langle(\bar\psi\gamma^5\gamma^\mu\psi)^2\rangle_T$;
 for a relativistic plasma in kinetic equilibrium the coherent axial-current
 bilinear factorizes at leading order into the square of the (spin-summed)
 fermion number density, $\langle(\bar\psi\gamma^5\gamma^\mu\psi)^2\rangle_T
-\sim n_f^2 \sim (g_\ast\,T^3)^2$, the standard finite-temperature average of a
-four-fermion (Fermi-type) contact operator in the early-universe
-plasma~\cite{KapustaGale2006}, so that
+\sim n_f^2 \sim (g_\ast\,T^3)^2$ (a parametric estimate: the standard
+finite-temperature scaling of a four-fermion (Fermi-type) contact operator in
+the early-universe plasma~\cite{KapustaGale2006}, with $\mathcal{O}(1)$
+coefficients dropped rather than a rigorous NJL finite-$T$ computation), so that
 \begin{equation}
 \rho_{\rm tor}\;\sim\;G_N\,T^6 ,\qquad
 \frac{\rho_{\rm tor}}{\rho_{\rm rad}}\;\sim\;G_N\,T^2\;=\;
@@ -1598,12 +1599,15 @@ budget at the epochs probed by the data is
 \Delta\Neff^{\rm(ECH)}\;\sim\;\left(\frac{T}{M_{\rm Pl}}\right)^{\!2}
 \;\sim\;
 \begin{cases}
-7\times 10^{-45}, & T\!\sim\!1\ \mathrm{MeV},\\[2pt]
-5\times 10^{-58}, & T\!\sim\!0.26\ \mathrm{eV},
+1.7\times 10^{-43}, & T\!\sim\!1\ \mathrm{MeV},\\[2pt]
+1.1\times 10^{-56}, & T\!\sim\!0.26\ \mathrm{eV},
 \end{cases}
 \label{eq:neff_bound}
 \end{equation}
-at BBN and recombination respectively.
+at BBN and recombination respectively, evaluated with the reduced Planck
+mass $M_{\rm Pl}=(8\pi G_N)^{-1/2}\simeq 2.44\times10^{18}\ \mathrm{GeV}$
+used throughout (and in Eq.~\ref{eq:torsion_ratio}), so the boxed numbers are
+reproducible directly from $(T/M_{\rm Pl})^2$.
 This is the bespoke ECH-sector result: \emph{the minimal spin-torsion sector
 predicts a strictly negligible $\Delta\Neff$ in the radiation era}, some forty
 orders of magnitude below any foreseeable CMB or BBN sensitivity
@@ -2802,7 +2806,14 @@ with the observed $\beta_{\rm obs}=0.342^\circ\pm 0.094^\circ$ at
 ${\sim}0.5\sigma$. The spectator-consistent verdict rests on this
 $\Omega_a<0.01$ subset ($13\%$ mass, stable ESS\,$=461$), \emph{not} on
 the strict $\theta_i\le 0.1$ sliver ($0.33\%$ weighted mass, $42$
-samples), which is reported as ``indicative only.'' All posterior-mass
+samples), which is reported as ``indicative only.'' The strict-sliver row
+($0.33\%$ weighted mass, $42$ raw samples, $C_{a\gamma}$ percentiles
+$36.8/47.2/55.6$) is machine-verified against the committed reduction
+\texttt{c10a\_spectator\_slice.json} (input chains \texttt{c5.[1-4].txt},
+$8{,}955$ total samples); the coarser $\Omega_a<0.1$ and $\Omega_a<0.01$
+mass-fraction and ESS entries are \emph{illustrative} weighted-integral
+readouts of the same continuous-prior chain and are not backed by a separate
+committed summary artifact. All posterior-mass
 fractions in this table are conditional on the Gaussian summary-likelihood
 approximation for the Eskilt--Komatsu $\beta_{\rm obs}$ datum
 (Appendix~\ref{app:alp_priors}) and therefore omit EB-specific band-power
