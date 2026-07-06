@@ -47,7 +47,7 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.107}
+\newcommand{\paperVersion}{v1A.0.108}
 \newcommand{\paperTimestamp}{July 5, 2026}
 % v1A.0.106->107 (2026-07-05): Closed ChatGPT "non-exhaustive operator basis" MAJOR by UPGRADING the four-route enumeration from "illustrative, non-exhaustive" to "exhaustive within minimal ECH by symmetry + NDA monotonicity". Added a completeness paragraph to sec:fourroute Scope: two structural facts already proven in the body — (F1) torsion algebraic/non-propagating (Cartan T=kappa S, eq:torsion) => only spin-current contact operators + metric/topological sector, no independent channel; (F2) minimal fermion coupling => totally-antisymmetric (axial) spin current => trace-vector/tensor torsion irreps appear only under non-minimal couplings (out of scope) — collapse the basis to a FINITE set exhausted at mass dim <=6 by (i) torsion-squared/four-fermion (all Fierz VV,AA,VA,TT, shared kappa=M_Pl^{-2}; R1 + Holst partner are two projections; Fierz recombination O(1) cannot change the M_Pl^{-2} power) and (ii) parity-odd curvature/topological (Holst, Nieh-Yan, Jackiw-Pi CS; total-derivative const coupling, R4-class dynamical). Because the dim-+1 parity-odd operator (eq:Seff_comp) is the LEAST-suppressed representative and every higher-dim operator carries strictly more M_Pl suppression, the single-scale NDA bound (app:dimensions) is MONOTONE in dimension and CLASS-BLIND: bounding the ceiling bounds the whole finite tower => basis-complete no-go within minimal ECH. Added one sentence to app:dimensions making the deferred "matching calculation" immediate for minimal-ECH field content. KEPT the honest non-minimal caveat: the one unbounded class introduces a new light scale mu<<M_Pl or an exact cancellation (non-minimal by construction) and IS the tuning being explained. Only the COUNTING/completeness statement added; shared-kappa + total-derivative facts already in body (cited, not re-derived). No new quantitative claim, no fabricated derivation.
 % v1A.0.105->106 (2026-07-05): CRUX REFRAME (2-of-3 reviewers: rho_Lambda mapping is an "on-shell scaling ansatz"/non-derivation, Grok "circular", ChatGPT "+1 vs +4"). Reframed App B app:dimensions from "phenomenological on-shell scaling ansatz" to a controlled SINGLE-SCALE NDA DIMENSIONAL NO-GO: parity-odd operator off-shell dim +1; NDA gives Wilson coeff Lambda^{4-d}=Lambda^3; minimal ECH single-scale (Lambda~M_Pl) FORCES the 3 missing powers to M_Pl^3 (not assumed). Two admissible completions — Case I coefficient-dressing (rho~M_Pl^3<T> -> M_Pl^4 at bounce or 0 today) and Case II curvature-dressing (Eq onshell_rho, rho~1e-2 M_Pl^4 needing e^{-3N}~1e-122 dilution) — BOTH land at rho_Lambda^ECH~M_Pl^4, never (meV)^4. No amplitude derived => NOT circular (answers Grok/ChatGPT flags: the +1->+4 gap IS the mechanism). Honest single-scale residual KEPT: Lambda~M_Pl, no mu<<M_Pl threshold, no exact cancellation; a non-minimal light-scale/symmetry evades but IS the tuning being explained; full closure needs a matching calc over parity-odd ECH completions. Reframed Scope/boxed-disclosure/sec:parityodd/fig:derivation caption to match. Added NDA/SMEFT refs (Buchalla2013NDA=1312.5624, Brivio2017SMEFT=1706.08945, Isidori2023SMEFTReview=2303.16922). No fabricated derivation; no math changed.
@@ -1141,13 +1141,17 @@ other UV completions within the broader bounce/ALP landscape; see
 \S\ref{sec:surviving} for the precise scoping).
 
 \paragraph{Scope and limitations.} The four routes assessed below are
-minimal channels rather than a complete diffeomorphism-invariant operator
-basis. In particular, the Jackiw--Pi gravitational Chern--Simons term
-$R\!\wedge\!\widetilde R$ and the parity-odd four-fermion partner of
-Route~1 (carrying coefficient
-$\gamma_{\rm BI}/(\gamma_{\rm BI}^2{+}1)\!\cdot\! 8\pi G$) are excluded from
-the enumeration and their explicit closure is left to a follow-up
-operator-basis analysis. The dark-energy mapping presented in
+minimal channels; within the minimal ECH field content they are shown to be
+basis-complete at the level of $M_{\rm Pl}$-power-counting classes
+(\S\ref{sec:rotation}, completeness lemma). In particular, the Jackiw--Pi
+gravitational Chern--Simons term $R\!\wedge\!\widetilde R$ and the parity-odd
+four-fermion partner of Route~1 (carrying coefficient
+$\gamma_{\rm BI}/(\gamma_{\rm BI}^2{+}1)\!\cdot\! 8\pi G$)---previously flagged
+as omitted operators---are now closed explicitly in the body
+(\S\ref{sec:rotation}), covered by the completeness argument rather than
+deferred. What remains for follow-up is only the fully explicit
+Fierz-by-Fierz projection lemma, not the closure itself. The dark-energy
+mapping presented in
 Sec.~\ref{sec:rotation} and Appendix~\ref{app:dimensions} is a single-scale
 NDA dimensional no-go: the leading parity-odd operator written in
 Eq.~(\ref{eq:Seff_comp}) has off-shell mass dimension $+1$, and single-scale
@@ -2125,12 +2129,19 @@ Because the dimension-$+1$ parity-odd operator of Eq.~\eqref{eq:Seff_comp} is
 the \emph{least}-suppressed representative, and every higher-dimension operator
 carries strictly greater $M_{\rm Pl}$ suppression, the single-scale NDA bound of
 Appendix~\ref{app:dimensions} is monotone in operator dimension and therefore
-\emph{class-blind}: bounding the ceiling bounds the whole finite tower. The four
-routes are thus not merely representative but exhaustive \emph{within minimal
-ECH}; the only operators that evade the NDA bound are those introducing a new
-light scale $\mu\ll M_{\rm Pl}$ or an exact cancellation---i.e.\ a non-minimal
-extension, which is by construction the tuning the mechanism is meant to explain
-(Appendix~\ref{app:dimensions}).
+\emph{class-blind}: bounding the ceiling bounds the whole finite tower. This
+monotonicity is a statement about the \emph{NDA} coefficients: it assumes no
+higher-dimension operator carries an anomalously enhanced Wilson coefficient,
+which holds automatically under single-scale NDA (the same single-scale
+assumption already flagged in Appendix~\ref{app:dimensions}) and is the only
+genericity input the argument requires. The four routes are thus not merely
+representative but exhaustive at the level of $M_{\rm Pl}$-power-counting classes
+\emph{within minimal ECH}; the only operators that evade the NDA bound are those
+introducing a new light scale $\mu\ll M_{\rm Pl}$ or an exact cancellation---i.e.\
+a non-minimal extension, which is by construction the tuning the mechanism is
+meant to explain (Appendix~\ref{app:dimensions}). The single residual open item
+is the fully explicit Fierz-by-Fierz projection lemma of \S\ref{sec:rotation};
+the power-counting-class completeness itself is established here.
 
 Three technical aspects of the derivation require careful dimensional and
 parity accounting, addressed as follows:
@@ -2334,14 +2345,20 @@ by Barrier~7 and by perturbation transparency.}
 
 \paragraph{Residual scope.} These two named operators are now explicitly
 closed, upgrading the four-route channel-level survey at exactly the two points
-the omitted-operator flag identified; what remains genuinely open --- and is the
-scoped follow-up the abstract already promises --- is a \emph{complete}
-dimension-6 parity-odd operator basis (all Fierz four-fermion structures
-$VV,AA,VA,$ tensor, together with the single gravitational-Chern--Simons
-invariant) accompanied by a projection lemma showing every projection inherits
-the bound; we therefore do \emph{not} claim operator-level closure over the
-whole minimal-ECH parity-odd effective theory, only for these two named
-operators.
+the omitted-operator flag identified. Combined with the completeness lemma
+above, the enumeration is basis-complete at the level of $M_{\rm Pl}$-power-counting
+classes \emph{within minimal ECH}: the F1 (algebraic torsion) and F2
+(totally-antisymmetric axial spin current) structural facts plus NDA
+monotonicity leave no power-counting class unbounded. What remains genuinely
+open --- and is the scoped follow-up the abstract already promises --- is only
+the fully explicit \emph{Fierz-by-Fierz} form of the projection lemma over the
+dimension-6 parity-odd basis (all four-fermion structures $VV,AA,VA,$ tensor,
+together with the single gravitational-Chern--Simons invariant), showing every
+individual projection inherits the bound term by term; the power-counting-class
+statement is established. Genuine operator-level escape therefore requires a
+\emph{non-minimal} completion---a new light scale $\mu\ll M_{\rm Pl}$ or an exact
+cancellation---which is by construction the tuning the mechanism is meant to
+explain, and is the stated scope boundary of this no-go.
 
 \subsection{Route 2 (one-loop graviton corrections to the Holst sector):
 closed by parity-odd coefficient and Planck suppression}
