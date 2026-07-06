@@ -1,5 +1,40 @@
 # Drive-to-100 — Automated Completion Plan
 
+> ## ▶ DRIVE-TO-ACCEPT (ACTIVE, 2026-07-05) — supersedes the exit criteria below
+>
+> **Goal:** all 6 papers (P1A/P1B/P2/P3/P4/P5) FULLY ACCEPTED by ALL reviewers —
+> INT (Claude-subagent full-source + OpenAI/Grok/Gemini API) **and** EXT (ChatGPT/Grok/
+> Gemini in the HEADED browser) — 0 MAJOR / 0 MINOR, science airtight, publish-ready for
+> Houston's final sign-off. Real science, not verdict-gaming: close each reviewer's ACTUAL
+> finding with real computation/derivation, verified before applying; never fake an ACCEPT.
+>
+> **Cadence:** durable cron (session job `98fd7458`, ~every 30 min at :17/:47) fires the
+> DRIVE-TO-ACCEPT tick. Steady loop runs continuously while R-rounds are active. One atomic
+> increment per tick; guard overlap (harvest in-flight work first).
+>
+> **Loop mechanics per tick:** (1) STATE CHECK — harvest/verify/close any in-flight work,
+> update Convex, stop if mid-flight. (2) Else take the SINGLE highest-value step toward
+> all-ACCEPT, prioritizing the paper closest to the Grok+Gemini gate (currently **P4** at
+> Grok+Gemini MINOR), then the concrete reviewer findings real computation can close.
+> (3) EXT = **HEADED browser** (`$B cleanup && $B connect`; headless can't pass Cloudflare/
+> OAuth — CLAUDE.md I4), raw text + screenshots saved + orchestrator-verified. INT =
+> Claude-subagent full-source (verifies vs code/data, catches what EXT can't) + API vendors;
+> INT-API failure never stops EXT; **verify every INT/real-science result before applying**.
+> (4) Directive-G hygiene + commit + Convex on every paper change. (5) **SELF-IMPROVEMENT
+> every tick:** document any process learning in CLAUDE.md + scistack review skills as it
+> happens — no repeat mistakes.
+>
+> **EXIT GATE (recalibrated, directive H):** a FULL fresh verified round returns **Grok+Gemini
+> ACCEPT (0 major/minor) on all 6** AND every ChatGPT major is truth-audited non-real/addressed
+> (ChatGPT's structural floor is not the operative gate) AND **INT clean on all 6**, papers
+> publish-ready → THEN request Houston sign-off (readiness 100 only with his quote). Until then
+> the loop CONTINUES; do NOT cancel the cron without Houston's explicit instruction.
+>
+> **Current state (2026-07-05 verified round RS27):** P4 REJECT/MINOR/MINOR (closest);
+> P5 REJECT/MINOR/MAJOR; P1A/P1B/P2/P3 REJECT/MAJOR/MAJOR. ChatGPT REJECTs all 6 (structural
+> floor). INT verified all content sound. Next: close P4 Grok+Gemini minors → first calibrated
+> ACCEPT; P2 full joint-covariance (∂B/∂A_GR); P1A no-go reframe + Route-2 derivation.
+
 **Created:** 2026-04-17
 **Owner:** agent (autonomous loop) + Houston (final review)
 **Cadence:** every 20 min via `CronCreate` until exit criteria met
