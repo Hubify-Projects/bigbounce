@@ -67,7 +67,7 @@ export const liveStatus: LiveStatus = {
       title: "arXiv submission — endorsement + two-wave order",
       blockedPaper: "all",
       why: "Submission needs a human: arXiv endorsement confirmation and the actual wave-1 submit clicks are Houston-only.",
-      ask: "Confirm arXiv endorsement, then run the two-wave submission per SUBMIT-TODAY-CHECKLIST (order P4 → P1A+P1B → P3 → P2 → P5).",
+      ask: "Confirm arXiv endorsement, then run the two-wave submission per SUBMIT-TODAY-CHECKLIST (wave 1: P4 → P1B → P3 → P2; wave 2 same-day with wave-1 IDs inserted: P5 → P1A).",
     },
     {
       title: "Send the Cai/Brandenberger courtesy email",
