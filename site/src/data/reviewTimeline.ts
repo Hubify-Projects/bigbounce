@@ -46,6 +46,27 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "P1A-P1B-final-polish-dround-2026-07-07",
+    kind: "closure-wave",
+    dateISO: "2026-07-07",
+    title:
+      "P1A v1A.0.111 + P1B v1B.0.102 — final-polish D-round (theory pair): presentation + disclosure only, NO scientific number/claim/derivation changed; disclaimer repetition consolidated, AI-methods disclosure upgraded",
+    papers: ["P1A", "P1B"],
+    summary:
+      "Editorial final-polish pass on the theory pair to top-journal presentation standard, presentation + disclosure ONLY (zero science changed; verified 0 undef-refs, 0 large overfull hboxes on both). P1A: the v110 companion-reframe had over-applied the verbose 'companion, posted concurrently in the coordinated submission' phrase to 17 body sites (exactly the Gemini EXT 'excessive and repetitive disclaimers' flag) — collapsed all 14 parenthetical forms to plain 'companion~cite{}' and simplified the 5 prose forms, leaving ONE canonical coordinated-submission statement in the self-containment paragraph; that paragraph de-densified 27→15 lines (non-load-bearing / reproducible-now / coordinated-submission facts each stated once, all preserved); abstract tail de-duplicated (basis-completeness stated once) and the ~130-word triple-nested structural-tension e-fold sentence split into readable prose with ALL numbers preserved (N_tot≈92, f_NL=−35/16, e^32, N_exit≈60, k_SPHEREx~1e-1 h/Mpc). P1A dropped 39→37pp from consolidation alone. Both papers: AI-methods disclosure upgraded to explicit agentic-pipeline-under-author-direction + results-verified-against-committed-artifacts + public-audit-trail wording. Figures audited: already publication-grade (serif, 300dpi, colorblind-tolerant palette + shape-redundant markers) — PASS as-is. Directive-G hygiene complete; readinessCap held (venue barrier, Houston-gated).",
+    keyTakeaways: [
+      "Gemini's 'excessive and repetitive disclaimers' flag directly closed: the verbose coordinated-submission phrase collapsed from 17 body sites to ONE canonical statement, zero honest scope lost",
+      "P1A abstract de-densified: duplicate basis-completeness restatement removed, structural-tension e-fold run-on split into readable sentences with every number preserved — 39pp→37pp",
+      "AI-methods disclosure (both papers) upgraded to agentic-pipeline-under-author-direction + results-verified-against-committed-artifacts + public-audit-trail",
+      "NO scientific number, claim, or derivation changed anywhere; figures pass the style audit as-is (colorblind-tolerant, serif, 300dpi)",
+      "Directive-G: P1A v1A.0.110→v1A.0.111 (md5 bdb385c57ce3a856b3311cd30fa247b8, 37pp); P1B v1B.0.101→v1B.0.102 (md5 ddaf880631a9c063a0f87b3dad17bd33, 22pp); both mirrored byte-identical to all served paths, date July 7 2026",
+    ],
+    links: [
+      { label: "P1A source", href: `${GH}/arxiv/paper1a_ech_nogo.tex` },
+      { label: "P1B source", href: `${GH}/arxiv/paper1b_mcmc_companion.tex` },
+    ],
+  },
+  {
     id: "FINAL-pre-submission-int-ext-round-2026-07-05",
     kind: "external-browser",
     dateISO: "2026-07-05",

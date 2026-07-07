@@ -47,8 +47,28 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.110}
-\newcommand{\paperTimestamp}{July 6, 2026}
+\newcommand{\paperVersion}{v1A.0.111}
+\newcommand{\paperTimestamp}{July 7, 2026}
+% v1A.0.110->111 (2026-07-07): FINAL-POLISH D-ROUND (presentation + disclosure ONLY;
+%   NO scientific number/claim/derivation changed; verified 0 undef-refs, 0 large
+%   overfull hbox, page count 39->37). (1) DISCLAIMER CONSOLIDATION (Gemini EXT
+%   "excessive and repetitive disclaimers"): the v110 companion-reframe had over-
+%   applied the verbose phrase "companion, posted concurrently in the coordinated
+%   submission" to 17 body sites; collapsed all 14 parenthetical forms to plain
+%   "companion~\cite{}" and simplified the 5 prose forms, leaving exactly ONE
+%   canonical coordinated-submission statement in the self-containment paragraph.
+%   No honest scope statement lost. (2) SELF-CONTAINMENT PARA de-densified 27->15
+%   lines: the non-load-bearing / reproducible-now / coordinated-submission facts
+%   were each stated 2-3x; now stated once each, all preserved. (3) ABSTRACT tail
+%   tightened: dropped the duplicate basis-completeness restatement (already given
+%   at the JP-CS/4f-partner sentence) and merged the companion pointer; structural-
+%   tension e-fold run-on (~130-word triple-nested sentence) split into readable
+%   sentences with ALL numbers preserved (N_tot~92, f_NL=-35/16, e^32, N_exit~60,
+%   k_SPHEREx~1e-1 h/Mpc). (4) AI-METHODS disclosure upgraded to explicit agentic-
+%   pipeline-under-author-direction + results-verified-against-committed-artifacts +
+%   public-audit-trail wording. (5) Figures audited: already publication-grade
+%   (serif, 300dpi, colorblind-tolerant palette + shape-redundant markers) -
+%   regeneration would only churn bytes; PASS as-is. No math changed.
 % v1A.0.109->110 (2026-07-06): PUBLICATION-READINESS + COMPANION REFRAME. (1) De-sync fix (INT MINOR-1): abstract body-text ("Jackiw-Pi CS + parity-odd 4-fermion partner ... left to a follow-up operator-level analysis") and the fbox "Does not establish (a)" ("omitted and left to a follow-up") were STALE vs the v107+ Scope/completeness upgrade that closes both operators in-body; both harmonized to "closed explicitly in sec:rotation; only the fully explicit Fierz-by-Fierz projection lemma remains follow-up; basis-complete within minimal ECH at the M_Pl-power-counting level." (2) COMPANION REFRAME (all 3 EXT reviewers' recurring MAJOR = companion-reliance): all live "in preparation~\cite{...}"/"in-preparation companions" recast to "companion, posted concurrently in the coordinated submission" (the companions are real repo papers: P1B=paper1b_mcmc_companion, P2/P3/P4 pipelines); TODO-SUBMISSION arXiv-ID markers retained in .bib for same-day ID insertion after wave 1. The companion-imported numbers are now made REFEREEABLE NOW: new \cite{BigBounceRepro} archive ref + explicit artifact paths added to tab:companion_inputs caption and the self-containment paragraph (frozen Cobaya chains reproducibility/cosmology/chains; NaMaster reproducibility/p1_namaster_500mc; catalogs pipelines/p2_chirality + p3_anomaly_engine) — converts "cannot be refereed until posted" into "reproducible from committed artifacts now, only the arXiv IDs pending." (3) Gemini "dimensional argument framed as trivial" addressed by framing: added significance-without-overclaim sentence to the completeness lemma (the per-operator +1-vs-+4 count is elementary; the CONTENT is basis-completeness — one monotone class-blind NDA ceiling bounds the whole finite minimal-ECH tower). (4) CROSS-PAPER f_NL FIX (EXT RETEST_2026-07-05b ChatGPT VERIFIED-REAL genuinely-new): P1A carried the SUPERSEDED matter-bounce f_NL=-35/8 in 20 sites; sibling P2 v1.7.95 resolved the Cai-Li factor-of-2 to -35/16 (Cai's -35/8 traced to a spurious +(99/128)Sum k^3 term). Swept all 20 sites -35/8->-35/16, -4.375->-2.1875, raw ratio 6.25sigma->3.13sigma, imported P2's exact corrected SPHEREx significances (optimistic 5.2-5.5->2.6-2.75sigma; realistic 2.6-5->1.3-2.75sigma; footnote 5-5.5->2.6-2.75, 4.4->2.2sigma) + provenance clause citing P2. Every value read from P2 v1.7.95; nothing fabricated. No math otherwise changed.
 % v1A.0.108->109 (2026-07-05): UPGRADED Route 2 (sec:r2_oneloop, eq:oneloop_parity_odd) from a FREE-NORMALIZATION ANSATZ to ONE-LOOP-GROUNDED using the explicit one-loop renormalization of on-shell Einstein-Cartan+Holst+fermion gravity by Shapiro & Teixeira 2014 (arXiv:1402.4854, CQG 31 185002; ShapiroTeixeira2014, already cited). The parity-odd Immirzi-dependent coupling lambda_4=gamma kappa^2 (W.J) (their Eq.37, kappa^2=16piG=M_Pl^-2) has classical coeff alpha_4=-6/(1+gamma^2) and one-loop divergence coeffs Omega_44=81gamma^4/[16(1+gamma^2)^2], Omega_24=81gamma^2/[40(1+gamma^2)^2] (Eqs.41-42); their master RG eq d lambda/dt = -sigma/(4pi)^2 (Eq.46) carries EXACTLY the 1/(16pi^2) loop factor already in eq:oneloop_parity_odd. NOW PINNED by the real one-loop computation: (1) loop factor 1/(16pi^2); (2) O(1) Immirzi-rational coefficient beta(gamma) [Omega_44/alpha_4=27gamma^4/(32(1+gamma^2)), O(1) for gamma~1, ~2.5e-3 at gamma=0.24]; (3) explicit kappa^2=M_Pl^-2 Planck suppression on every charge. HONESTLY NOT fixed: the single ABSOLUTE normalization — ST's coupled lambda_4-gamma RG flow (Eqs.51/58) is a Riccati system with NO real fixed point that they "were unable to solve satisfactorily," so R2 is one-loop-grounded but not fully normalization-fixed (unlike R3, whose BS beta-function integrates cleanly to |Delta gamma/gamma|~1.4e-6). Off-shell dim+1 parity-odd operator + ST's explicit kappa^2=M_Pl^-2 => the monotone single-scale NDA no-go (app:dimensions) bounds R2 REGARDLESS of the unfixed O(1) beta(gamma); ~58-60 OOM closure margin untouched. Reworded R2 section + "Ansatz vs derivation (R2/R3)" summary: "free-normalization ansatz" -> "one-loop-grounded (ST coefficients) + NDA-bounded, absolute normalization pending the ST Riccati flow." No fabricated derivation — every ST coefficient PDF-verified + sympy-checked; the "no fixed point" limit is ST's own stated conclusion.
 % v1A.0.106->107 (2026-07-05): Closed ChatGPT "non-exhaustive operator basis" MAJOR by UPGRADING the four-route enumeration from "illustrative, non-exhaustive" to "exhaustive within minimal ECH by symmetry + NDA monotonicity". Added a completeness paragraph to sec:fourroute Scope: two structural facts already proven in the body — (F1) torsion algebraic/non-propagating (Cartan T=kappa S, eq:torsion) => only spin-current contact operators + metric/topological sector, no independent channel; (F2) minimal fermion coupling => totally-antisymmetric (axial) spin current => trace-vector/tensor torsion irreps appear only under non-minimal couplings (out of scope) — collapse the basis to a FINITE set exhausted at mass dim <=6 by (i) torsion-squared/four-fermion (all Fierz VV,AA,VA,TT, shared kappa=M_Pl^{-2}; R1 + Holst partner are two projections; Fierz recombination O(1) cannot change the M_Pl^{-2} power) and (ii) parity-odd curvature/topological (Holst, Nieh-Yan, Jackiw-Pi CS; total-derivative const coupling, R4-class dynamical). Because the dim-+1 parity-odd operator (eq:Seff_comp) is the LEAST-suppressed representative and every higher-dim operator carries strictly more M_Pl suppression, the single-scale NDA bound (app:dimensions) is MONOTONE in dimension and CLASS-BLIND: bounding the ceiling bounds the whole finite tower => basis-complete no-go within minimal ECH. Added one sentence to app:dimensions making the deferred "matching calculation" immediate for minimal-ECH field content. KEPT the honest non-minimal caveat: the one unbounded class introduces a new light scale mu<<M_Pl or an exact cancellation (non-minimal by construction) and IS the tuning being explained. Only the COUNTING/completeness statement added; shared-kappa + total-derivative facts already in body (cited, not re-derived). No new quantitative claim, no fabricated derivation.
@@ -1073,7 +1093,15 @@ and is constrained at the channel-amplitude level by 13 mechanism-class constrai
 (Sec.~\ref{sec:barriers}; 14 historical catalog entries, of which B8 is subsumed by B14 per the perturbation-transparency result), each probing a distinct physical failure mode.
 A structural tension (Sec.~\ref{sec:structural_tension}) exists between
 the dark-energy mechanism, which requires $N_{\rm tot}\approx 92$ post-bounce
-$e$-folds, and the matter-bounce $\fnl=-35/16$ signature, which would be \emph{definitively} erased at SPHEREx-accessible comoving wavenumbers by that many $e$-folds (a contracting-phase quantity mode with $k_{\rm SPHEREx}\sim 10^{-1}\,h/$Mpc is pushed to $k_{\rm bounce}^{\rm phys}\sim k_{\rm SPHEREx}^{\rm phys}\,e^{N_{\rm tot}-N_{\rm exit}}\sim e^{32}\,k_{\rm SPHEREx}^{\rm phys}$ at $N_{\rm tot}\sim 92$, $N_{\rm exit}\sim 60$ (the relative e-fold differential between bounce and CMB horizon-exit; comoving wavenumbers $k$ are constant by definition and only physical scales scale with $a^{-1}\propto e^{-N}$), deep inside the inflationary subhorizon regime carrying purely vacuum-inflationary fluctuations rather than matter-bounce contraction modes); the minimal-ECH four-route channel set is therefore tightly constrained as
+$e$-folds, and the matter-bounce $\fnl=-35/16$ signature: that many $e$-folds
+would \emph{definitively} erase the signature at SPHEREx-accessible comoving
+wavenumbers. A mode observable today at $k_{\rm SPHEREx}\sim 10^{-1}\,h/$Mpc
+maps back to a physical bounce-scale wavenumber $e^{N_{\rm tot}-N_{\rm exit}}
+\sim e^{32}$ larger (for $N_{\rm tot}\sim 92$, $N_{\rm exit}\sim 60$), placing it
+deep inside the inflationary subhorizon regime, where it carries purely
+vacuum-inflationary fluctuations rather than matter-bounce contraction modes
+(the derivation is given in Sec.~\ref{sec:structural_tension}). The minimal-ECH
+four-route channel set is therefore tightly constrained as
 both a dark-energy generator and a matter-bounce host. The two predictions discussed
 below as ``surviving'' are accordingly \emph{not} predictions of ECH itself,
 but bounce-class and GR$+$ALP-class observables that the channel-level
@@ -1082,7 +1110,7 @@ we report them here because they remain testable signatures of any bounce
 model in the broader programme. Specifically: (i)~$\fnl = -35/16$ is a
 property of the \emph{matter-bounce class}~\cite{Cai:2009fn}, derived from
 the contraction-phase cubic action with no ECH input (its detection prospects
-are forecast in a companion~\cite{Golden2026P2}, posted concurrently in the coordinated submission; we quote no
+are forecast in a companion~\cite{Golden2026P2}; we quote no
 forecast significance here, as it is not a result of this paper); and
 (ii)~spectator-ALP birefringence
 $\beta\approx 0.27^\circ$ is a \emph{benchmark consistency point}, not an
@@ -1097,22 +1125,14 @@ significances arise from different null procedures and are not directly
 comparable in a single tension table);
 the same
 benchmark arises in any GR$+$ALP setup with the same parameters and is
-\emph{not} derived from the ECH action. The role of this paper is the
+\emph{not} derived from the ECH action. The role of this paper is thus the
 \emph{channel-level closure} of the four enumerated minimal-ECH dark-energy
-routes (Sec.~\ref{sec:fourroute}) at amplitude-budget granularity. Within the
-minimal ECH field content the enumeration is basis-complete at the level of
-$M_{\rm Pl}$-power-counting classes (Sec.~\ref{sec:rotation}, completeness
-lemma): the Jackiw--Pi gravitational Chern--Simons term and the parity-odd
-four-fermion partner of R1---previously flagged as omitted---are closed
-explicitly in the body, and only the fully explicit Fierz-by-Fierz projection
-lemma over the most general diffeomorphism-invariant parity-odd basis remains a
-scoped follow-up. The complementary observational programme is hosted in
-companion papers posted concurrently in the coordinated
-submission~\cite{Golden2026P2,Golden2026P1b}.
-$\Lambda$CDM$+\Delta\Neff$ MCMC verification, NaMaster pipeline validation,
-and ALP parameter fitting are documented in the computational
-companion~\cite{Golden2026P1b}, whose reproducibility artifacts are archived
-with this submission.
+routes (Sec.~\ref{sec:fourroute}) at amplitude-budget granularity, basis-complete
+within minimal ECH at the $M_{\rm Pl}$-power-counting level as stated above. The
+complementary observational programme---$\Lambda$CDM$+\Delta\Neff$ MCMC
+verification, NaMaster pipeline validation, and ALP parameter fitting---is
+documented in companion papers~\cite{Golden2026P2,Golden2026P1b} whose
+reproducibility artifacts are archived with this submission.
 \end{abstract}
 
 \pacs{98.80.-k, 04.50.Kd, 04.60.Pp, 95.36.+x}
@@ -1204,7 +1224,7 @@ single-scale NDA dimensional no-go (off-shell mass dimension $+1$ forces
 $\rho_\Lambda^{\rm ECH}\sim\MPl^4$, never $(\text{meV})^4$;
 App.~\ref{app:dimensions}), and every R4 / dark-energy claim is conditional
 on single-scale EFT ($\Lambda\sim\MPl$, no cancellation);
-\textbf{(c)}~any claim resting on the companions posted concurrently in the coordinated submission---their
+\textbf{(c)}~any claim resting on the companion papers---their
 illustrative numbers are non-load-bearing for the results above.\\[3pt]
 The phrase ``four-route closure'' throughout means exactly (ii): a
 channel-level, assumption-conditional amplitude statement, \emph{not} an
@@ -1217,27 +1237,20 @@ of this paper---the perturbation-transparency theorem
 (Sec.~\ref{sec:fourroute}), and the 14-entry constraint catalog
 (Sec.~\ref{sec:barriers})---is established analytically within this manuscript
 and does \emph{not} depend on any companion result. The companion works
-(Paper~I(b), II, III, IV; all posted concurrently in the coordinated submission) are
-cited only to anchor illustrative numerical values---MCMC posteriors,
-Fisher-forecast significances, and pipeline validations---that contextualize
-the broader observational programme; \emph{none of these companion-imported
-numbers is load-bearing for any closure, no-go, or theorem stated here.}
-A referee unable to access the companions posted concurrently in the coordinated submission can therefore still
-audit every primary claim of this paper directly from its own equations and
-assumptions. We note honestly that the \emph{illustrative} observational
-numbers imported from the companions (the MCMC posteriors, Fisher
+(Paper~I(b), II, III, IV; all posted concurrently in the coordinated submission,
+which fixes only the citable arXiv identifiers) are cited only to anchor
+\emph{illustrative} numerical values---MCMC posteriors, Fisher-forecast
 significances, and pipeline validations summarized in
-Table~\ref{tab:companion_inputs}) receive their full narrative treatment in the
-named companions; nonetheless the underlying computational artifacts---the
-frozen MCMC chains, the NaMaster pseudo-$C_\ell$ validation suite, the
-spectator-ALP fit, and the galaxy/anomaly catalogs---are archived with this
-submission in the public reproducibility
-tree~\cite{BigBounceRepro} and can therefore be inspected and re-derived by a
-referee \emph{now}, independently of the companion manuscripts' posting
-schedule. The coordinated submission fixes only the citable arXiv identifiers;
-the numbers themselves are already reproducible, and in any case bear on none of
-the closure, no-go, or transparency results, all of which are self-contained
-here.
+Table~\ref{tab:companion_inputs}---that contextualize the broader observational
+programme; \emph{none of these companion-imported numbers is load-bearing for
+any closure, no-go, or theorem stated here.} A referee unable to access the
+companion papers can therefore still audit every primary claim directly from
+this paper's own equations and assumptions. Moreover, the underlying
+computational artifacts behind those illustrative numbers---the frozen MCMC
+chains, the NaMaster pseudo-$C_\ell$ validation suite, the spectator-ALP fit,
+and the galaxy/anomaly catalogs---are archived with this submission in the
+public reproducibility tree~\cite{BigBounceRepro}, so they can be inspected and
+re-derived \emph{now}, independently of the companions' posting schedule.
 
 Our approach builds on three theoretical pillars:
 
@@ -1285,7 +1298,7 @@ $H_0$/$\sigma_8$ tension resolution? & $\Delta\Neff\approx 0$ (companion MCMC$^e
 $^b$$\fnl=-35/16$ is the analytic matter-bounce contraction-phase value~\cite{Cai:2009fn},
 derived with no ECH input; it is in principle accessible to a multi-tracer SPHEREx
 bispectrum analysis. The detailed Fisher significance is forecast in a companion
-(companion, posted concurrently in the coordinated submission~\cite{Golden2026P2}) and is \emph{not} quoted here, as it is not a
+(companion~\cite{Golden2026P2}) and is \emph{not} quoted here, as it is not a
 result of the present paper.
 $^c$Class-level: scalar-only $w=0$ matter-bounce under Assumption~(f) of
 \cite{Golden2026P2}; not fully mechanism-independent
@@ -1391,7 +1404,7 @@ refer to this companion work; details are not duplicated here.
 Table~\ref{tab:companion_inputs} consolidates every companion-imported quantity
 referenced anywhere in this paper---its value, the companion it is drawn from,
 and a one-line statement of how it was obtained---so that a referee can audit
-the present paper's logic without the companions posted concurrently in the coordinated submission in hand; these
+the present paper's logic without the companion papers in hand; these
 inputs are summarized here for self-contained readability, while their full
 derivations reside in the companion papers posted concurrently in the
 coordinated submission. The distinction is sharp: the no-go logic itself (the
@@ -2041,7 +2054,7 @@ companion analysis finds $\Delta\Neff\approx 0$ and recovers a Hubble
 constant consistent with standard $\Lambda$CDM at the Planck~2018
 prior level. Sample-size and dataset details, posterior values with
 uncertainties, MCMC diagnostics, and the AIC/BIC model comparison are
-hosted entirely in Paper~I(b) (companion, posted concurrently in the coordinated submission~\cite{Golden2026P1b}); this
+hosted entirely in Paper~I(b) (companion~\cite{Golden2026P1b}); this
 theory paper carries forward only the structural conclusion
 (no $\Delta\Neff$ tension closure attributable to ECH).
 
@@ -2878,7 +2891,7 @@ coherent $w\!=\!-1$ mean-field structure; incoherent thermal variance
 $\langle J^5 J^5\rangle$ is permitted but does not source coherent dark
 energy. MCMC fits and the
 $\Delta\Neff$/birefringence consistency analysis are reported
-(companion, posted concurrently in the coordinated submission~\cite{Golden2026P1b}); the present
+(companion~\cite{Golden2026P1b}); the present
 manuscript provides only the channel-level amplitude closure of the
 four parity-odd routes in the ECH sector.
 
@@ -3013,7 +3026,7 @@ uncertainties are GR-projection effects (${\sim}20\%$ amplitude degradation at
 $z>2$, Heinrich \etal~2024~\cite{Heinrich:2023} Sec.~3.4), $b_\phi$ bias-prior uncertainty ($\sigma(b_\phi)/b_\phi\approx 0.2$),
 and photo-$z$ marginalization, propagated through the multi-bin Fisher matrix
 (Sec.~\ref{sec:falsification}). MCMC systematics (dataset-dependent $\Delta\Neff$)
-are in Paper~I(b) (companion, posted concurrently in the coordinated submission~\cite{Golden2026P1b}).
+are in Paper~I(b) (companion~\cite{Golden2026P1b}).
 
 
 %% ============================================================
@@ -3063,7 +3076,7 @@ via the galaxy bispectrum, simultaneously discriminating matter-bounce from
 slow-roll inflation ($\fnl\approx 0.015$) and the Cuscuton
 bounce~\cite{Dehghani:2025cusc}; (3)~MCMC parameter values ($H_0$, $\sigma_8$,
 $\Delta\Neff$) are already consistent with standard $\Lambda$CDM, constraining the
-framework rather than falsifying it (details in Paper~I(b), companion, posted concurrently in the coordinated submission~\cite{Golden2026P1b}).
+framework rather than falsifying it (details in Paper~I(b), companion~\cite{Golden2026P1b}).
 
 \label{sec:conjunctive}
 
@@ -3552,7 +3565,7 @@ Cuscuton bounce & $\times$ ($\fnl\approx 0$) & (spectator) & --- & not tested$^{
 Ekpyrotic & $\times$ ($\fnl\sim -5$) & (spectator) & --- & not tested$^{\ddagger}$ \\
 \end{tabular}
 \end{ruledtabular}
-$^{\dagger}$Quintom-B can in principle accommodate the DESI $w_0 w_a$ evidence; the MCMC analysis in Paper~I(b) (companion, posted concurrently in the coordinated submission~\cite{Golden2026P1b}) was not extended to the $w_0 w_a$ parameter space, so this row is reported as ``consistent at the model level'' rather than a posterior-preference $\checkmark$.\\
+$^{\dagger}$Quintom-B can in principle accommodate the DESI $w_0 w_a$ evidence; the MCMC analysis in Paper~I(b) (companion~\cite{Golden2026P1b}) was not extended to the $w_0 w_a$ parameter space, so this row is reported as ``consistent at the model level'' rather than a posterior-preference $\checkmark$.\\
 $^{\ddagger}$A free-$w_0 w_a$ posterior analysis was not completed for the present paper; no posterior-preference claim is made for or against the DESI $w_0 w_a$ evidence on the basis of the present table. The frozen MCMC posteriors hosted in Paper~I(b) cover three $\Lambda$CDM$+\Delta N_{\rm eff}$ dataset combinations only, and the asymmetry between the Quintom-B accommodation row and the others is one of theoretical accommodation, not of fit quality measured in this program.
 \end{table*}
 
@@ -3561,7 +3574,7 @@ it provides $\sigma(\fnl)\approx 0.7$ (\emph{ideal-survey} Fisher) to
 $\sigma(\fnl)\approx 1.0$ (\emph{degraded with GR-projection + photo-$z$
 systematics}) from SPHEREx, yielding $1.3$--$2.75\sigma$ model separation.
 NANOGrav model comparison: $\gamma_{\rm PTA} = 2.567\pm 0.382$ from real-KDE reanalysis
-of the 15-yr free-spectrum data (GPU MCMC, companion, posted concurrently in the coordinated submission~\cite{Golden2026P3};
+of the 15-yr free-spectrum data (GPU MCMC, companion~\cite{Golden2026P3};
 here $\gamma_{\rm PTA}$ is the GWB power-law spectral index, distinct from the Barbero-Immirzi parameter $\gamma$ defined in Eq.~\ref{eq:ECH}).
 The matter-bounce prediction $\gamma_{\rm PTA}=3.0$ sits at $+1.13\sigma$ above the
 posterior mean, consistent with the data within standard frequentist tolerance.
@@ -3589,7 +3602,7 @@ emphasize that this is a theoretical-structure conclusion, \emph{not} a
 quantitative posterior-preference rejection: the dedicated DESI~DR2 +
 Planck~NPIPE + Pantheon$+$ + DES-SN5YR cobaya chain with the free $w_0w_a$
 extension required to quantitatively test these 7 forms is described in
-Paper~I(b) (companion, posted concurrently in the coordinated submission~\cite{Golden2026P1b}) Table~IV row ``DESI DR2 w0wa (new)'' and has not yet
+Paper~I(b) (companion~\cite{Golden2026P1b}) Table~IV row ``DESI DR2 w0wa (new)'' and has not yet
 converged to the standard publication-quality target $\hat R - 1 < 10^{-2}$
 (see Paper~I(b)~\cite{Golden2026P1b} Sec.~V for the chain status). The
 present program's MCMC analysis uses stock CAMB with $\Delta\Neff$ only and
@@ -3719,7 +3732,7 @@ discussion of \S\ref{sec:structural_tension} and \S\ref{sec:loophole}).
 The same $\beta\approx 0.27^\circ$ prediction arises in
 standard GR with an identical ALP; it is not a distinctive ECH prediction.
 Full ALP MCMC parameter fitting (9,720 accepted samples, $\hat{R}-1<0.01$) and
-LiteBIRD forecast are in Paper~I(b) (companion, posted concurrently in the coordinated submission~\cite{Golden2026P1b}).
+LiteBIRD forecast are in Paper~I(b) (companion~\cite{Golden2026P1b}).
 
 
 %% ============================================================
@@ -3732,9 +3745,9 @@ LiteBIRD forecast are in Paper~I(b) (companion, posted concurrently in the coord
 \includegraphics[width=\columnwidth]{figures/figure8_detection_forecast.png}
 \caption{\textbf{Detection forecast for the two surviving ECH-independent
 class tests.} Top: matter-bounce $f_{\rm NL}\!=\!-35/16$ in the SPHEREx multi-tracer
-$f_{\rm NL}$ Fisher landscape (companion, posted concurrently in the coordinated submission~\cite{Golden2026P2}, $1.3$--$2.75\sigma$ projection).
+$f_{\rm NL}$ Fisher landscape (companion~\cite{Golden2026P2}, $1.3$--$2.75\sigma$ projection).
 Bottom: spectator-ALP cosmic birefringence in the LiteBIRD $\sigma(\beta)
-\!\approx\!0.03^\circ$ window (companion, posted concurrently in the coordinated submission~\cite{Golden2026P1b}); the WMAP+Planck
+\!\approx\!0.03^\circ$ window (companion~\cite{Golden2026P1b}); the WMAP+Planck
 $\beta=0.342^\circ\pm 0.094^\circ$ and ACT~DR6 $\beta=0.215^\circ\pm 0.074^\circ$
 points are shown for reference. The SPHEREx $f_{\rm NL}$ forecast is potentially decisive in optimistic
 configurations; $1.3$--$2.75\sigma$ after the stated systematic budget
@@ -3840,7 +3853,7 @@ quantum bounce to slow-roll inflation is not fully modeled.
 consistent with the $>100$-orders-of-magnitude underprediction by the ECH coupling.
 \item \textit{MCMC proxy}: Stock CAMB with $\Delta\Neff$ is a phenomenological
 proxy, not a bespoke spin-torsion Boltzmann module. Full MCMC details and
-convergence diagnostics are in Paper~I(b) (companion, posted concurrently in the coordinated submission~\cite{Golden2026P1b}).
+convergence diagnostics are in Paper~I(b) (companion~\cite{Golden2026P1b}).
 \end{itemize}
 
 \subsection{Robustness to Galaxy Spin Null Results}\label{sec:spinnull}
@@ -3982,7 +3995,7 @@ term from first principles: $w=-1$ is assumed, not derived; the birefringence
 prediction lacks a derived photon-torsion coupling; $\alpha/M$ is a
 phenomenological parameter; and the MCMC uses stock CAMB (not a bespoke
 torsion-modified Boltzmann code). Full MCMC diagnostics, ALP parameter fitting,
-and NaMaster pipeline validation are in Paper~I(b) (companion, posted concurrently in the coordinated submission~\cite{Golden2026P1b}).
+and NaMaster pipeline validation are in Paper~I(b) (companion~\cite{Golden2026P1b}).
 
 \textit{Forward.}---The program continues with direct tests of the bounce framework:
 SPHEREx $\fnl$ forecast (Paper~II~\cite{Golden2026P2}), multi-survey anomaly
@@ -4020,10 +4033,17 @@ connecting the Barbero-Immirzi parameter to parity-violating interactions in LQG
 We acknowledge Lior Shamir for providing aggregate CW/CCW galaxy spin counts for
 the $A(z)$ comparison.
 
-The author acknowledges the use of Claude (Anthropic) as an AI research assistant
-during systematic barrier-cataloging, perturbation-gate verification, and manuscript
-preparation. The author takes sole responsibility for all scientific claims,
-derivations, numerical results, and bibliographic attributions in this paper. No external funding was
+\emph{AI-assisted methods.}---This work was carried out with an agentic
+AI research pipeline (Anthropic's Claude, operated under the author's
+direction) used for systematic barrier-cataloging, symbolic and dimensional
+cross-checking, perturbation-gate verification, literature triage, and
+manuscript preparation. All scientific claims, derivations, and numerical
+results were verified by the author against the committed computational
+artifacts---source code, frozen chains, and pipeline outputs---in the public
+reproducibility tree~\cite{BigBounceRepro}, which together with the repository
+git history constitutes a public audit trail. The author takes sole
+responsibility for all scientific claims, derivations, numerical results, and
+bibliographic attributions in this paper. No external funding was
 received for this research. Computational resources were self-funded (RunPod H200
 and H100 instances).
 \end{acknowledgments}
@@ -4040,7 +4060,7 @@ and H100 instances).
 \begin{table*}[t]
 \caption{\label{tab:params} Complete parameter summary with priors, reference values,
 and physical interpretations. Rows marked $\dagger$ cite the companion internal
-MCMC analysis (companion, posted concurrently in the coordinated submission~\cite{Golden2026P1b}) and are not independently
+MCMC analysis (companion~\cite{Golden2026P1b}) and are not independently
 peer-reviewable until that work is publicly posted.
 The $\gamma$ row uses the SU(2) full-counting scheme value
 $\gamma_{\rm SU(2)}\!\approx\!0.274$~\cite{Domagala2004,Meissner2004}; the scheme range

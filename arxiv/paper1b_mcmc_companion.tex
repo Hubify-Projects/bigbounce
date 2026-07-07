@@ -260,8 +260,17 @@
 %   FALSIFIED list (14 items) not acted on.)
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1B.0.101}
-\newcommand{\paperTimestamp}{July 6, 2026}
+\newcommand{\paperVersion}{v1B.0.102}
+\newcommand{\paperTimestamp}{July 7, 2026}
+% v1B.0.101->102 (2026-07-07): FINAL-POLISH D-ROUND (presentation + disclosure ONLY;
+%   NO scientific number/claim/derivation changed; verified 0 undef-refs, 0 large
+%   overfull hbox, 22pp). AI-METHODS disclosure upgraded to explicit agentic-pipeline-
+%   under-author-direction + results-verified-against-committed-artifacts (Cobaya
+%   configs, frozen chains, NaMaster recovery suite, ALP prior-predictive outputs) +
+%   public-audit-trail wording. Title checked (accurate technical-companion label,
+%   kept); abstract already leads scope-then-standalone-DeltaN_eff contribution
+%   (kept); P1A cross-ref [arXiv:XXXX.XXXXX] placeholder + SUBMISSION_NOTE coherent.
+%   Figures publication-grade, PASS as-is. No math changed.
 % v1B.0.95 (2026-07-01, author decision): SURGICALLY REMOVED the entire exploratory
 %   w0wa (overlap-uncorrected supernova) analysis -- Appendix A (app:w0wa) with its
 %   physics interpretation, caveats (a)-(e), and Table II (tab:iter2_posterior);
@@ -3077,10 +3086,18 @@ itself has been removed.
 \begin{acknowledgments}
 We thank the Planck, ACT, LiteBIRD, and Cobaya collaborations for providing
 the data, code, and observational infrastructure used in these analyses.
-The author acknowledges the use of Claude (Anthropic) as an AI research assistant
-during systematic analysis and manuscript preparation. All scientific claims,
-derivations, numerical results, and bibliographic attributions were independently
-verified by the author. No external funding was received. Computational resources
+\emph{AI-assisted methods.}---This work was carried out with an agentic
+AI research pipeline (Anthropic's Claude, operated under the author's
+direction) used for MCMC configuration and convergence checking, pipeline
+scripting, symbolic and dimensional cross-checking, and manuscript preparation.
+All scientific claims, derivations, and numerical results were verified by the
+author against the committed computational artifacts---Cobaya configurations,
+frozen chains, the NaMaster recovery suite, and the ALP prior-predictive
+outputs---documented in the public reproducibility manifest
+(Appendix~\ref{app:reproducibility}); together with the repository git history
+these constitute a public audit trail. The author takes sole responsibility for
+all scientific claims, derivations, numerical results, and bibliographic
+attributions. No external funding was received. Computational resources
 were self-funded (RunPod H200 instances).
 \end{acknowledgments}
 
