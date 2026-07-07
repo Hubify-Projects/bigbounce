@@ -52,7 +52,21 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.218}
+\newcommand{\paperVersion}{v1.0.219}
+% v1.0.219 (2026-07-06 — D-ROUND FINAL POLISH (presentation + disclosure only; NO science number
+%   changed). (1) TITLE condensed from the ~40-word descriptive title to "A Null Chirality Dipole in
+%   8.5 Million DESI Galaxies from Equivariant Deep Learning" (leads with the primary result; the
+%   monopole-mask/canonical-residual detail lives in the abstract). Propagated to ARXIV_METADATA,
+%   README, cover letter, checklist, Convex. (2) ABSTRACT rewritten for a first-time reader: leads
+%   with the null result, then method, then the two honest limitations (harmonic channel is a
+%   systematics diagnostic; the sigmas from distinct nulls are not inter-comparable) stated ONCE each
+%   instead of the prior caveat-dense repetition Gemini flagged. Every number preserved verbatim
+%   (+0.41sigma, p=0.31, z~-18, 1.7%, 99.32%, +3.64/+7.28sigma, A_95 in (1.0,1.5]%, A_50~0.75%).
+%   (3) AI-METHODS disclosure expanded to an honest reproducibility-framed statement (agentic AI
+%   pipeline under author direction; every quantitative result verified against committed artifacts;
+%   public audit trail). (4) Figure style pass — no regeneration needed (P4 figures already
+%   colorblind-safe + legible). Directive-G: recompile 0 undef-refs, /latex-audit, re-mirror all
+%   served paths byte-identical, Convex paperVersions:bump.)
 % v1.0.217 (2026-07-05 — P4 RETEST v216 Grok+Gemini EXT closure (both MINOR REVISIONS, central
 %   claim supported). Editable minors closed as WORDING/CLARITY tightenings, no fabrication:
 %   (1) Grok Sec.V.A/abstract Shamir "inconsistent" -> restated as "~7-18x amplitude-level tension,
@@ -509,7 +523,7 @@
 %   the established two-step provenance gate.)
 % v1.0.171->172 (2026-06-10 — EXT1 closure wave restamp: recompile + mirror bundle;
 %   Data Availability hash pinned to the v1.0.172 stamp commit per provenance gate.)
-\newcommand{\paperTimestamp}{July 5, 2026}
+\newcommand{\paperTimestamp}{July 6, 2026}
 % v1.0.217->218 (2026-07-05 — DATA-UNLOCK: edge-on-ISOLATED argmax tie-break coherence
 %   now COMPUTED (was pod/data-lab-deferred). Join catalog_production (class_eq/RA/Dec) to
 %   committed spiral_morphology_dr8 b/a on dr8_id; edge-on (b/a<0.30) borderline population
@@ -524,12 +538,8 @@
 
 \begin{document}
 
-\title{Survey-Scale Galaxy Chirality with Equivariant TTA:\\
-A Null Real-Space Chirality Dipole,\\
-a Quantifiable Monopole-Mask Leakage Channel,\\
-and Diagnostic Evidence for a Depth/Morphology-Correlated\\
-Canonical-Mask Residual on 8.47~Million DESI Legacy Galaxies\\
-(3.2 Million Spirals)}
+\title{A Null Chirality Dipole in 8.5 Million DESI Galaxies\\
+from Equivariant Deep Learning}
 
 \author{Houston Golden}
 \email{houston@hubify.com}
@@ -538,7 +548,13 @@ Canonical-Mask Residual on 8.47~Million DESI Legacy Galaxies\\
 \date{\paperTimestamp}
 
 \begin{abstract}
-We present, to our knowledge, the largest chirality-labeled galaxy catalog to date: $8{,}474{,}531$ DESI Legacy DR8 galaxies classified by a flip-equivariant Vision Transformer pipeline into clockwise (CW), counter-clockwise (CCW), and non-spiral classes, with $N_{\rm spiral}=3{,}201{,}160$ spirals, publicly released with model weights and reproducibility scripts. The primary scientific result is a real-space chirality dipole consistent with null: the equivariant-catalog high-confidence dipole fit (confidence $>0.6$, a pre-specified selection threshold --- not tuned post-hoc --- under which the null is robust across the high-confidence regime ($p_{\rm eq}\!\in\!\{0.6,0.7,0.8\}$) of a full confidence-cut sweep, while the low-confidence tail ($p_{\rm eq}\!\le\!0.5$) shows a systematics-attributed excess ($z\!\approx\!4.0$--$4.3$), Secs.~\ref{sec:prereg},~\ref{sec:dipole}; $N\approx 9.5\times 10^5$ spirals) gives $+0.41\sigmaunit$ (moment-$z$ against the isotropic (pixel-)permutation null; empirical-rank $p=0.31$, $10^4$ isotropic-null realizations; robust under a per-galaxy label-shuffle null, $z=0.58$ (same-generator primary; an independent re-implementation gives $z=0.70$), and the unthresholded-sample sensitivity is attributed to a low-confidence-tail systematic in Sec.~IV), and a block-bootstrap WLS template fit disfavors a clean cosmological dipole at the $1.7\%$ reference amplitude (the lower end of Shamir's reported $1.7\%$--$4.0\%$ asymmetry range~\cite{Shamir:2020,Shamir:2022DESI}; this $1.7\%$ $f_{\rm CW}$-asymmetry maps to $A_{\rm ref}\!=\!0.034$ in $A_p$ units, since $A_p\!=\!2(f_{\rm CW}\!-\!0.5)$) at $z\approx-18$ under the adopted NSIDE$\!=\!8$ block-bootstrap error model (Appendix~D). \emph{Note: the $+0.41\sigmaunit$ (isotropic (pixel-)permutation null) and $z=0.58$ (per-galaxy label-shuffle null, same-generator primary) values arise from distinct null procedures and are diagnostic-only, not directly comparable as detection significances.} This $\ell=1$ observable is parity-\emph{even} (isotropy-breaking axial-vector channel), not a direct parity-violation test. The MASTER pseudo-$C_\ell$ channel on the patchy footprint is a systematics diagnostic, not an independent cosmological null: a monopole-only generative null reproduces $99.32\%$ of the raw pre-MASTER $\ell=1$ power (monopole--mask leakage), and MASTER deconvolution substantially reduces, but does not remove, this leakage --- the post-MASTER harmonic diagnostics carry systematics-attributed residuals ($+3.64\sigmaunit$ moment-$z$, ${\approx}1.9\sigmaunit$ Gaussian-equivalent, canonical mask; $+7.28\sigmaunit$, apodized footprint) that are diagnostic quantities attributed to residual survey systematics, \emph{not} claimed cosmological detections, characterized by an eight-anchor systematic battery (Appendix~D). (The $+3.64\sigmaunit$ value is from a 500-MC direct run on the canonical unapodized mask; the $10^4$-permutation canonical unapodized row in Table~\ref{tab:multipole} gives $+7.93\sigmaunit$; both are systematics-attributed diagnostics from different null-run sizes and mask/weight conventions (Sec.~\ref{sec:notation}), not two independent detection claims. \emph{Note: the $\sigma$ values quoted in this paragraph arise from distinct null procedures — see Sec.~\ref{sec:notation} and Table~\ref{tab:multipole} — and are not directly comparable as detection significances; they are diagnostic indicators only.}) Falsification criterion: a future $\ge\!5\sigmaunit$ real-space dipole detection (moment-$z$ vs.\ the isotropic (pixel-)permutation null) at amplitude $A \gtrsim A_{95}$, where injection--recovery brackets $A_{95}$ between $1.0\%$ and $1.5\%$ ($A_{50}\approx0.75\%$), would be in tension with the present null. These thresholds are estimator-specific to the real-space dipole; the harmonic-channel completeness ($P(\geq\!3\sigmaunit)\!\geq\!0.999$ at $A_p\!=\!0.75\%$, where the $3\sigmaunit$ refers to the MASTER $\ell\!=\!1$ label-shuffle null, a different convention) is a separate diagnostic property of that channel and is not interchangeable with the real-space falsification boundary.
+We measure the large-scale chirality dipole of spiral galaxies and find it consistent with null. Our primary estimator --- a real-space dipole fit to the high-confidence equivariant sample ($N\approx 9.5\times 10^5$ spirals) --- gives $+0.41\sigmaunit$ (moment-$z$ against an isotropic pixel-permutation null; empirical-rank $p=0.31$, $10^4$ realizations), and a block-bootstrap WLS template fit disfavors a clean cosmological dipole at the $1.7\%$ reference amplitude (the lower end of Shamir's reported $1.7\%$--$4.0\%$ range~\cite{Shamir:2020,Shamir:2022DESI}) at $z\approx-18$. This $\ell=1$ observable is parity-\emph{even} (an isotropy-breaking axial-vector channel), not a direct parity-violation test.
+
+The measurement rests on the largest chirality-labeled galaxy catalog to date: $8{,}474{,}531$ DESI Legacy DR8 galaxies classified by a flip-equivariant Vision Transformer into clockwise (CW), counter-clockwise (CCW), and non-spiral classes, with $N_{\rm spiral}=3{,}201{,}160$ spirals, released publicly with model weights and reproducibility scripts. The $p_{\rm eq}>0.6$ confidence cut is pre-specified (not tuned post-hoc): the null is robust across the high-confidence regime ($p_{\rm eq}\!\in\!\{0.6,0.7,0.8\}$) of a full confidence-cut sweep, while the low-confidence tail ($p_{\rm eq}\!\le\!0.5$) carries a systematics-attributed excess ($z\!\approx\!4.0$--$4.3$; Secs.~\ref{sec:prereg},~\ref{sec:dipole}). The real-space null holds under a per-galaxy label-shuffle test ($z=0.58$ same-generator, $z=0.70$ independent re-implementation).
+
+We are explicit about two limitations. First, the MASTER pseudo-$C_\ell$ harmonic channel on this patchy footprint is a systematics diagnostic, not an independent cosmological null: a monopole-only generative null reproduces $99.32\%$ of the raw pre-MASTER $\ell=1$ power (monopole--mask leakage), and MASTER deconvolution reduces but does not remove it, leaving systematics-attributed residuals ($+3.64\sigmaunit$ canonical mask, ${\approx}1.9\sigmaunit$ Gaussian-equivalent; $+7.28\sigmaunit$ apodized footprint) that we attribute to residual survey systematics via an eight-anchor battery (Appendix~D) rather than claim as detections. Second, the various $\sigma$ values quoted above come from distinct null procedures --- the isotropic pixel-permutation, per-galaxy label-shuffle, and harmonic label-shuffle nulls each define significance differently --- so they are diagnostic indicators and are \emph{not} directly comparable to one another as detection significances (Sec.~\ref{sec:notation}, Table~\ref{tab:multipole}).
+
+Falsification criterion: a future real-space dipole detection at $\ge\!5\sigmaunit$ (moment-$z$ vs.\ the isotropic pixel-permutation null) with amplitude $A \gtrsim A_{95}$, where injection--recovery brackets $A_{95}$ in $(1.0\%,1.5\%]$ ($A_{50}\approx0.75\%$), would be in tension with this null. These thresholds are specific to the real-space estimator; the harmonic-channel completeness ($P(\geq\!3\sigmaunit)\!\geq\!0.999$ at $A_p\!=\!0.75\%$, against the MASTER $\ell=1$ label-shuffle null) is a separate property of that channel.
 \end{abstract}
 
 \keywords{galaxies: spiral, galaxies: statistics, methods: data analysis, cosmology: observations, large-scale structure of universe}
@@ -1287,7 +1303,7 @@ This research used the DESI Legacy Imaging Surveys Data Release~8; the Galaxy Zo
 
 \textit{Software:} Astropy~\cite{Astropy:2022}, HEALPix/healpy~\cite{Gorski:2005,Zonca:2019}, NumPy~\cite{Harris:2020}, pandas~\cite{McKinney:2010}, PyTorch~\cite{Paszke:2019}, timm~\cite{Wightman:2019}, NaMaster/pymaster.
 
-\textit{AI tool usage:} Large language models were used as assistive tools for code review and manuscript preparation. All scientific analyses, results, and conclusions were produced and verified by the author, who takes full responsibility for the content.
+\textit{AI-assisted methodology:} This work was conducted using an agentic AI pipeline --- a multi-model system for literature review, code development, analysis, and adversarial internal peer review --- operated under the author's direction. Every quantitative result reported here was verified against committed computational artifacts (scripts, data products, and their checksums are linked throughout and versioned in the public repository), and the full audit trail is public, so that any claim can be re-derived from source. The author designed the study, made all scientific judgments, and takes full responsibility for the content; the AI pipeline is a reproducibility and verification instrument, not an author.
 
 \textit{Conflicts of interest:} The author declares no conflicts of interest. This work received no external funding.
 \end{acknowledgments}

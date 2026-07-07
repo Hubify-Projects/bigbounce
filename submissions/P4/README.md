@@ -1,43 +1,50 @@
 # P4 — arXiv submission bundle
 
-**Bundle:** `arxiv_p4_v1.0.217.tar.gz`
-**Paper version:** v1.0.217 (RETEST v215→v217 EXT closure; Grok + Gemini both MINOR REVISIONS, central claim robustly supported; INT ACCEPT)
-**Date:** July 5, 2026
+**Bundle:** `arxiv_p4_v1.0.219.tar.gz` (md5 `aa5dca1b611196c0e1dca6d3cc827c0e`, 25MB)
+**Paper version:** v1.0.219 (D-round final polish: condensed title + reader-first abstract + expanded AI-methods disclosure; presentation-only, no science number changed)
+**Date:** July 6, 2026
 **Primary arXiv category:** astro-ph.CO
 **Cross-list (suggested):** astro-ph.GA
 
 ## Title
 
-Survey-Scale Galaxy Chirality with Equivariant TTA: A Null Real-Space
-Chirality Dipole, a Quantifiable Monopole-Mask Leakage Channel, and Diagnostic
-Evidence for a Depth/Morphology-Correlated Canonical-Mask Residual on 8.47
-Million DESI Legacy Galaxies (3.2 Million Spirals)
+A Null Chirality Dipole in 8.5 Million DESI Galaxies from Equivariant Deep Learning
 
 **Author:** Houston Golden — houston@hubify.com — Independent Researcher, Los Angeles, California, USA
 
 ## Abstract
 
-We present, to our knowledge, the largest chirality-labeled galaxy catalog to
-date: 8,474,531 DESI Legacy DR8 galaxies classified by a flip-equivariant Vision
-Transformer pipeline (3,201,160 spirals), publicly released with model weights
-and reproducibility scripts. The headline result is a null real-space chirality
-dipole: the high-confidence (p_eq > 0.6, N ≈ 9.5×10^5) post-TTA Catalog C dipole
-fit gives +0.41 sigma (rank-p = 0.31, isotropic pixel-permutation null,
-N_MC = 10,000), and a block-bootstrap WLS template fit disfavors a clean
-cosmological dipole at the 1.7% reference amplitude at z ≈ -18. This l=1
-observable is the isotropy-breaking axial-vector channel and is parity-EVEN, not
-a direct parity-violation test. The MASTER-deconvolved pseudo-Cl channel on the
-patchy footprint is a systematics diagnostic, not an independent null: a
-controlled monopole-only generative null reproduces 99.32% of the observed
-pre-MASTER pseudo-Cl(l=1) power. Post-MASTER residuals (+3.64 sigma canonical;
-+7.28 sigma apodized weighted footprint, unchanged under depth-stratified nulls)
-are attributed to a coherent depth/morphology-correlated systematic by an
-eight-anchor battery. A future-survey detection at >5 sigma with amplitude
-A ≳ A95 (bracketed in (1.0%, 1.5%]) would be in tension with the present null
-(empirical 50%-recovery-at-3-sigma threshold A50 ≈ 0.75%). A fully
-model-independent GZ1 human-vote cross-check (N = 46,017, no learned model in the
-label chain) recovers the same null (z = -0.54 sigma). The catalog, model
-weights, and all reproducibility scripts are publicly released.
+We measure the large-scale chirality dipole of spiral galaxies and find it
+consistent with null. Our primary estimator --- a real-space dipole fit to the
+high-confidence equivariant sample (N ~ 9.5x10^5 spirals) --- gives +0.41 sigma
+(moment-z against an isotropic pixel-permutation null; empirical-rank p = 0.31,
+10^4 realizations), and a block-bootstrap WLS template fit disfavors a clean
+cosmological dipole at the 1.7% reference amplitude (the lower end of Shamir's
+reported 1.7%-4.0% range) at z ~ -18. This ell=1 observable is parity-even (an
+isotropy-breaking axial-vector channel), not a direct parity-violation test. The
+measurement rests on the largest chirality-labeled galaxy catalog to date:
+8,474,531 DESI Legacy DR8 galaxies classified by a flip-equivariant Vision
+Transformer into clockwise (CW), counter-clockwise (CCW), and non-spiral classes,
+with N_spiral = 3,201,160 spirals, released publicly with model weights and
+reproducibility scripts. The p_eq > 0.6 confidence cut is pre-specified (not
+tuned post-hoc): the null is robust across the high-confidence regime (p_eq in
+{0.6,0.7,0.8}) of a full confidence-cut sweep, while the low-confidence tail
+(p_eq <= 0.5) carries a systematics-attributed excess (z ~ 4.0-4.3). The
+real-space null holds under a per-galaxy label-shuffle test (z = 0.58
+same-generator, z = 0.70 independent re-implementation). We are explicit about
+two limitations. First, the MASTER pseudo-C_ell harmonic channel on this patchy
+footprint is a systematics diagnostic, not an independent cosmological null: a
+monopole-only generative null reproduces 99.32% of the raw pre-MASTER ell=1 power
+(monopole-mask leakage), and MASTER deconvolution reduces but does not remove it,
+leaving systematics-attributed residuals (+3.64 sigma canonical mask, ~1.9 sigma
+Gaussian-equivalent; +7.28 sigma apodized footprint) that we attribute to
+residual survey systematics via an eight-anchor battery rather than claim as
+detections. Second, the various sigma values quoted above come from distinct null
+procedures, so they are diagnostic indicators and are not directly comparable to
+one another as detection significances. Falsification criterion: a future
+real-space dipole detection at >= 5 sigma with amplitude A >~ A_95, where
+injection-recovery brackets A_95 in (1.0%, 1.5%] (A_50 ~ 0.75%), would be in
+tension with this null.
 
 ## Bundle contents
 
@@ -55,15 +62,14 @@ weights, and all reproducibility scripts are publicly released.
 - **Fresh recompile from clean:** 4-pass pdflatex, 0 LaTeX errors, **0 undefined
   refs/citations**, **31 pages**, ~34 MB.
 - **latex-audit:** **0 overfull hboxes**; tables use `table*`/`ruledtabular`;
-  title block clean (dated July 5, 2026); page 1 (the dense single-column
+  title block clean (dated July 6, 2026); page 1 (the dense single-column
   abstract) rendered and visually confirmed — no column escape or overflow.
 - **Served-PDF integrity:** the versioned served file
-  (`chirality_catalog_paper_v1.0.217.pdf`) and its aliases are byte-identical
-  (md5 `b62c22be…`, 33,998,415 bytes) across all served paths (`public/papers/`
-  versioned + `chirality_catalog_paper.pdf` + `p4-chirality.pdf`, and the mirror
-  under `site/public/papers/`); content matches a fresh compile of the committed
-  source.
-- **Convex:** `paperVersions` current = v1.0.217 (31pp, md5 `b62c22be…`,
+  (`chirality_catalog_paper_v1.0.219.pdf`, md5 `e8b4f10a9bcc9545aeb58869395e7d06`)
+  and its aliases are byte-identical across all served paths (`site/public/papers/`
+  versioned + `chirality_catalog_paper.pdf` + `p4-chirality.pdf`, and the mirrors
+  under `site/public/`); content matches a fresh compile of the committed source.
+- **Convex:** `paperVersions` current = v1.0.219 (31pp, md5 `e8b4f10a…`,
   tarball path recorded); live site reflects the true state.
 - **Headline-number spot-check vs committed outputs:** real-space dipole
   +0.41σ / p=0.31 / amplitude 4.4×10⁻³ / (l,b)=(293°,12°); label-shuffle z=0.58;
