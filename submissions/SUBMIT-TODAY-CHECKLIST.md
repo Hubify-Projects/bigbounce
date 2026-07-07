@@ -57,3 +57,45 @@ each remaining item truth-audited as re-flag/disclosed. The operative calibrated
 ChatGPT's blanket REJECTs are dispositioned in FINAL_SIGNOFF_AUDIT_2026-07-05.md (0 genuinely-new
 real findings); read them as a preview of the toughest human referee's *scope* questions, answered
 in referee exchanges with the verified artifact record.
+
+---
+
+## Wave-2 arXiv-ID insertion — one command (`tools/insert_arxiv_ids.sh`)
+
+Once wave-1 IDs (P4, P1B, P3, P2) are assigned, run **one** command to do every
+wave-2 ID insertion, recompile, mirror, bundle-rebuild, and Convex-command
+emission with all gates enforced:
+
+```
+tools/insert_arxiv_ids.sh --p4 2507.NNNNN --p1b 2507.NNNNN --p3 2507.NNNNN --p2 2507.NNNNN [--dry-run]
+```
+
+The four IDs are the **wave-1** IDs (already assigned when this runs). What it does:
+
+1. **P5** (`pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex`): sets the
+   single `\paperIVarxiv` macro to the real **P4** ID (per `submissions/P5/SUBMISSION_NOTE.txt`).
+   Every Paper-IV reference resolves through that one macro.
+2. **P1A** (`arxiv/paper1a_ech_nogo.tex` via shared `arxiv/references.bib`): fills the
+   four `TODO-SUBMISSION` companion bib notes — `Golden2026P1b→P1B`, `Golden2026P2→P2`,
+   `Golden2026P3→P3`, `Golden2026P4→P4` — then **regenerates the `.bbl`** (bibtex) so the
+   IDs render in the PDF bibliography. P1A's own forward-ref (`Golden2026P1a`,
+   `[arXiv:XXXX.XXXXX]`) is **left intact** — P1A's ID doesn't exist yet.
+3. **P1B reciprocal**: writes `submissions/P1B/P1B_V2_NOTE.md` staging (NOT applying)
+   the P1A-ID insertion for the P1B **v2** replacement — P1B submits before P1A's ID exists.
+   P1B source is never edited by this script.
+4. For each touched paper (**P5, P1A**): recompile (**0-undef gate**), bump patch
+   version + timestamp/date, mirror the PDF byte-identical to all served paths
+   (`public/papers/` versioned+alias, `site/public/papers/`, source dir),
+   rebuild + **standalone-verify** the arXiv bundle, print the **Convex `paperVersions:bump`**
+   command (real md5/pages), and stamp the checklist. **Fails loudly on any gate.**
+5. **`--dry-run`**: does all of the above in a `/tmp` copy, verifies every gate, and
+   **touches nothing in the repo**. Verified green with placeholder IDs 2507.00001–00004
+   (P5 + P1A both recompile clean 37pp, both bundles standalone-verify, IDs render in PDF).
+
+TeX PATH the script sets itself: `$HOME/Library/TinyTeX/bin/universal-darwin:/opt/homebrew/bin`.
+
+**Submission-day sequence:**
+1. Submit wave-1 (P4 first, then P1B, P3, P2) → collect the four assigned IDs.
+2. `tools/insert_arxiv_ids.sh --p4 … --p1b … --p3 … --p2 …` (drop `--dry-run`).
+3. Run the two printed Convex bump commands; submit P5 + P1A (new bundles); commit.
+4. When P1A's ID is assigned, apply `submissions/P1B/P1B_V2_NOTE.md` for the P1B v2 replacement.

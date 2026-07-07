@@ -162,24 +162,23 @@ fi
 # ===========================================================================
 echo ""
 echo ">>> STEP 2 — P1A companion bib IDs (P1B/P2/P3/P4)"
-p1a_bib_fill() {  # <bibkey> <arxiv-id>
-  local key="$1" id="$2"
-  # Operate only within the @article{key,...} entry; append " (arXiv:ID)" to its
-  # note value. Idempotent: skip if the note already carries an arXiv:NNNN.NNNNN.
-  BIBKEY="$key" BIBID="$id" perl -0pi -e '
-    my ($key,$id) = ($ENV{BIBKEY}, $ENV{BIBID});
-    my $qkey = quotemeta($key);
-    s/(\@article\{$qkey,.*?note\s*=\s*")([^"]*?)(")/
-        my ($pre,$body,$post)=($1,$2,$3);
-        if ($body =~ m{arXiv:\d{4}\.\d{4,5}}) { $pre.$body.$post; }   # already has an ID
-        else { $body =~ s{\s*$}{}; $pre.$body." (arXiv:".$id.")".$post; }
-      /gxese;
-  ' "$P1A_BIB"
-}
-p1a_bib_fill Golden2026P1b "$P1B_ID"
-p1a_bib_fill Golden2026P2  "$P2_ID"
-p1a_bib_fill Golden2026P3  "$P3_ID"
-p1a_bib_fill Golden2026P4  "$P4_ID"
+# Fill each companion entry's note with " (arXiv:ID)". Operates within the
+# specific @article{key,...} block (captures the mid-block so the entry body is
+# preserved). Idempotent: skips a note that already carries an arXiv:NNNN.NNNNN.
+# Golden2026P1a (P1A's own forward-ref) is deliberately NOT in the map.
+BB_P1B="$P1B_ID" BB_P2="$P2_ID" BB_P3="$P3_ID" BB_P4="$P4_ID" \
+perl -0777 -pi -e '
+  my %ids = ("Golden2026P1b",$ENV{BB_P1B},"Golden2026P2",$ENV{BB_P2},
+             "Golden2026P3",$ENV{BB_P3},"Golden2026P4",$ENV{BB_P4});
+  for my $k (keys %ids) {
+    my $id = $ids{$k};
+    s/(\@article\{\Q$k\E,)(.*?)(note\s*=\s*")([^"]*?)(")/
+      my ($h,$mid,$np,$body,$nq)=($1,$2,$3,$4,$5);
+      if ($body =~ m{arXiv:\d{4}\.\d{4,5}}) { "$h$mid$np$body$nq" }
+      else { $body =~ s{\s+$}{}; "$h$mid$np$body (arXiv:$id)$nq" }
+    /gxse;
+  }
+' "$P1A_BIB"
 
 for kv in "Golden2026P1b:$P1B_ID" "Golden2026P2:$P2_ID" "Golden2026P3:$P3_ID" "Golden2026P4:$P4_ID"; do
   k="${kv%%:*}"; v="${kv#*:}"
@@ -269,8 +268,12 @@ recompile_paper() {
   )
   local log="$dir/$base.log"
   local errs undef
-  errs=$(grep -c '^!' "$log" 2>/dev/null || echo 99)
-  undef=$(grep -c 'Reference.*undefined\|Citation.*undefined' "$log" 2>/dev/null || echo 99)
+  if [[ -f "$log" ]]; then
+    errs=$({ grep -c '^!' "$log" 2>/dev/null || true; }); errs=${errs:-0}
+    undef=$({ grep -c 'Reference.*undefined\|Citation.*undefined' "$log" 2>/dev/null || true; }); undef=${undef:-0}
+  else
+    errs=99; undef=99
+  fi
   PAGES=$(pdfinfo "$dir/$base.pdf" 2>/dev/null | awk '/^Pages/{print $2}')
   PDF="$dir/$base.pdf"
   echo "    [$label] errors=$errs undef=$undef pages=$PAGES"
