@@ -119,7 +119,7 @@ Papers climb a phase ladder; the **readiness number is computed in `convex/paper
 
 | Phase | What it attacks | Skill | Ceiling |
 |---|---|---|---|
-| **R-round** | science correctness (INT multi-model + EXT referee) | `/cross-vendor-r-round` | 96 |
+| **R-round** | science correctness (INT all-vendor matrix + EXT headed-browser referee) | **`/bigbounce-r-round`** (canonical; wraps `/cross-vendor-r-round` INT + `/external-review-browser-loop` EXT) | 96 |
 | **D-round** | visual/camera-ready presentation (read RENDERED pages) | `/paper-design-round` | 98 |
 | **P-round** | packaging: tarball, mirrors, HF/GitHub/Zenodo artifacts, site cohesion | `/paper-packaging-round` + `/site-cohesion-sweep` | 99 |
 | sign-off | Houston only — records the final 1% | — | 100 |
@@ -129,13 +129,24 @@ Papers climb a phase ladder; the **readiness number is computed in `convex/paper
 ---
 
 ## 4. Run ONE round end-to-end (the core cycle)
-1. **Pick the paper(s) + the canonical PDF** (resolve via `SSOT/paper-N/status.md`; PDFs live in `arxiv/`, `pipelines/p2_chirality/`, `pipelines/p3_anomaly_engine/`, `pipelines/p5_desi_chirality/paper/`, `research/focused_paper_source_integration/`).
-2. **Dispatch** INT (the tool, 4 vendors, background) + spawn Opus sub-agent reviewers (the Claude leg; for D-rounds they must READ THE RENDERED PDF PAGES AS IMAGES, not the .tex).
-3. **Truth-audit** every finding → VERIFIED / FALSIFIED / STALE / OUT-OF-SCOPE / OPINION (one Opus agent per paper).
-4. **Close** the VERIFIED-OPEN ones (Sonnet agents): edit `.tex` (NO fabricated derivations — `/never-fabricate-derivation`), bump version, recompile (`latexmk -pdf`), `/latex-audit`, verify 0 undef refs.
-5. **Re-review** (cascade) until convergent-clean per `/cascaded-r-rounds`.
-6. **Archive + pattern-mine** the findings (self-improving loop).
-7. **Sync the site SAME COMMIT** (§5).
+
+> **THE canonical, always-current spec for HOW to run an INT/EXT round is the
+> `/bigbounce-r-round` skill** (`~/.claude/scistack/astrostack/bigbounce-r-round/SKILL.md`).
+> It is the single source of truth for: INT vendor legs (Claude = a Claude Code
+> subagent on Houston's subscription, NEVER the Anthropic API; OpenAI native-PDF
+> API; Grok API; Gemini API-when-billed-else-browser) + the ALL-VENDOR INT verdict
+> matrix; EXT (headed browser ChatGPT+Grok+Gemini, raw text + screenshot
+> saved-then-verified per leg); per-finding source-cited truth-audit; directive-G
+> PDF hygiene; Convex/site/SSOT/timeline sync; and the directive-H convergence
+> gate. Read it before running a round; the summary below is orientation only.
+
+1. **Pick the paper(s) + the canonical PDF** (resolve via `SSOT/paper-N/status.md`; PDFs live in `arxiv/`, `pipelines/p2_chirality/`, `pipelines/p3_anomaly_engine/`, `pipelines/p5_desi_chirality/paper/`, `research/focused_paper_source_integration/`). Recompile+mirror FIRST if the served PDF lags the source.
+2. **INT** (§1 of `/bigbounce-r-round`): Claude subagent (full-source, recompute numbers) + OpenAI native-PDF API + Grok API + Gemini (API when billed, else the browser EXT leg covers it). Report the verdict matrix with ALL vendor columns — never as the Claude column alone.
+3. **EXT** (§2): headed browser (`$B cleanup && $B connect`, confirm `Mode: headed`) → ChatGPT + Grok + Gemini (houston@bamf.com Ultra); NEVER skip ChatGPT; save raw verbatim + screenshot per leg to `project-context/peer-reviews/EXT_real/` the instant each completes.
+4. **Truth-audit** every INT and EXT non-minor finding → source-cited disposition (patterns 061-066: disclosed-re-flag / scope / referee-variance / GENUINELY-NEW-REAL → close). One Opus agent per paper. NO fabricated derivations (`/never-fabricate-derivation`); verify every real computation before applying.
+5. **Close** VERIFIED-NEW-REAL items (Sonnet): edit `.tex`, directive-G hygiene (bump version+date, recompile `latexmk -pdf` 0 undef-refs, `/latex-audit`, mirror byte-identical to ALL served paths, three-way md5 check), Convex sync.
+6. **Re-review** (cascade) until the directive-H gate holds per `/cascaded-r-rounds`; run `/review-integrity-audit` (GENUINE not ENGINEERED) before declaring converged.
+7. **Archive + pattern-mine** (self-improving loop). **Sync the site SAME COMMIT** (§5).
 
 Model routing: **Opus** for truth-audits/judgment/closure-decisions; **Sonnet** for well-specified edits/recompiles/packaging; fan out one agent per paper in parallel.
 

@@ -12,6 +12,13 @@
 > DRIVE-TO-ACCEPT tick. Steady loop runs continuously while R-rounds are active. One atomic
 > increment per tick; guard overlap (harvest in-flight work first).
 >
+> **Canonical round spec:** every review round this loop runs is exactly the
+> **`/bigbounce-r-round`** skill (`~/.claude/scistack/astrostack/bigbounce-r-round/SKILL.md`)
+> — INT all-vendor matrix (Claude subagent + OpenAI native-PDF + Grok + Gemini),
+> headed-browser EXT (raw text + screenshot saved-then-verified), per-finding
+> source-cited truth-audit, directive-G hygiene, directive-H gate. If this block
+> and that skill ever disagree on the flow, the skill wins.
+>
 > **Loop mechanics per tick:** (1) STATE CHECK — harvest/verify/close any in-flight work,
 > update Convex, stop if mid-flight. (2) Else take the SINGLE highest-value step toward
 > all-ACCEPT, prioritizing the paper closest to the Grok+Gemini gate (currently **P4** at

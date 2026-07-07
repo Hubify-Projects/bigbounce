@@ -503,6 +503,21 @@ per-paper SSOT status).
 
 ### 4.4 Cross-vendor peer review (real, via OpenRouter — NOT simulated)
 
+> **⚠️ ROUTING SUPERSEDED — read `/bigbounce-r-round` for the current spec.**
+> The vendor-routing + dispatch mechanics in this section are HISTORICAL. The
+> canonical, always-current INT/EXT round spec is the **`/bigbounce-r-round`**
+> skill (`~/.claude/scistack/astrostack/bigbounce-r-round/SKILL.md`) plus CLAUDE.md
+> directives **I1–I5** (INT routing) and **H / H-refined** (convergence gate).
+> Current routing in one line: **Claude INT leg = a Claude Code subagent on
+> Houston's subscription (NEVER the Anthropic API); OpenAI = API native-PDF; Grok
+> = XAI API; Gemini = Gemini API when a billed key exists, else the headed-browser
+> EXT leg covers it; Perplexity/DeepSeek = OPTIONAL, never a required key or a
+> failure point.** The INT verdict matrix reports ALL vendor columns (never the
+> Claude column alone). EXT is headed-browser ChatGPT+Grok+Gemini with raw text +
+> screenshot saved-then-verified per leg. The "simulation is a lying failure mode"
+> rule below still holds. The OpenRouter model list and `real_cross_vendor_review.py`
+> path below are legacy — use the routing above.
+
 Cross-model peer review is **mandatory and load-bearing.** Houston has
 done it manually through the whole project. It is the single most
 important quality control on his work.
