@@ -46,6 +46,31 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p1a-fierz-lemma-proof-completeness-closure-2026-07-07",
+    kind: "closure-wave",
+    dateISO: "2026-07-07",
+    title:
+      "P1A v1A.0.114 — Fierz-by-Fierz projection lemma PROVEN (machine-verified), closing the 'completeness asserted, not proven' major at the class level the paper claims",
+    papers: ["P1A"],
+    summary:
+      "The P1A operator-basis completeness argument previously named ONE open item — the fully explicit Fierz-by-Fierz projection lemma — as 'left to follow-up.' That lemma is now proven and machine-verified (sympy, arxiv/scripts/fierz_lemma_check.py → LEMMA PROVEN) and applied to the paper. A new appendix states the 5×5 Fierz class-mixing matrix F derived from explicit Dirac gammas (matches Itzykson–Zuber / Nieves–Pal hep-ph/0306087 exactly, F²=𝟙 involution verified), the closure table (AA → ¼SS + ½VV − ½AA − ¼PP; VV symmetric; VA rotates within {V,A}), zero escape classes, and all coefficients dimensionless rationals ⇒ the κ=M_Pl⁻² prefactor is preserved term-by-term ⇒ the single-scale NDA ceiling bounds the entire finite minimal-ECH tower. Eight body/abstract/conclusion sites upgraded from 'left to follow-up / deferred' to 'proven in App. Fierz.' HONEST residual scope UNCHANGED and kept: the proof is single-species minimal (totally-antisymmetric axial) ECH; multi-flavor bookkeeping + non-minimal completions (new light scale μ≪M_Pl, trace/tensor torsion, dynamical Chern–Simons) remain the STATED no-go boundary — not overclaimed beyond the machine-verified class-level closure. No quantitative number changed. Directive-G hygiene: recompiled 0 undef-refs, /latex-audit 0 overfull>50pt, 38 pages (new appendix), re-mirrored byte-identical to all served paths, Convex paperVersions:bump with real md5/pages, arXiv bundle rebuilt + standalone-verified.",
+    keyTakeaways: [
+      "The Fierz-by-Fierz projection lemma is proven + machine-verified (arxiv/scripts/fierz_lemma_check.py), not merely asserted — closes the completeness major at the M_Pl-power-counting-class level the paper claims",
+      "Honest residual scope kept intact: single-species minimal ECH is proven; multi-flavor + non-minimal completions remain the STATED no-go boundary — no overclaim past the class-level closure",
+      "Directive-G clean: 0 undef-refs, 0 overfull>50pt, 38 pages, all served PDFs byte-identical (md5 37de050a…), bundle standalone-verified",
+    ],
+    links: [
+      {
+        label: "Fierz-lemma proof writeup",
+        href: `${PR}/INT_v3/P1A_fierz_lemma_2026-07-07.md`,
+      },
+      {
+        label: "Machine-verified proof script",
+        href: `${GH}/arxiv/scripts/fierz_lemma_check.py`,
+      },
+    ],
+  },
+  {
     id: "readiness-honesty-fix-verdict-derived-2026-07-07",
     kind: "skill-improvement",
     dateISO: "2026-07-07",
