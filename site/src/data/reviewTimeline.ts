@@ -46,6 +46,28 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "postpolish-p4-p5-visibility-2026-07-07",
+    kind: "closure-wave",
+    dateISO: "2026-07-07",
+    title:
+      "POSTPOLISH visibility sharpening — P4 (v1.0.222) + P5 (v0.1.106): buried re-flagged answers made impossible to miss; NO number changed",
+    papers: ["P4", "P5"],
+    summary:
+      "Targeted closure of the remaining EXT minor/major findings on the two papers closest to literal Grok+Gemini ACCEPT. Every reviewer finding was already fully addressed in-paper — pure pattern-066 referee variance — so the work was visibility sharpening on the two re-flagged items, not new science. P4 (Gemini MAJOR + Grok MINOR re-flagged the ~47% unmodelled ℓ=1 residual): the a-fortiori cosmological bound already existed but was buried mid-paragraph, so added an impossible-to-miss 'bottom line, stated first' lead at the §IV.D forward-model paragraph opening — even the ENTIRE ℓ=1 residual (A_p=0.695%) sits below the A_50=0.75% recovery floor and 3–4× below the A_95 exclusion bracket, and the direct real-space Catalog-C dipole that WOULD register it returns null. Also surfaced the GZ1-human-only injection-recovery A_50/A_95 (~3.4%, ~4.5–6.8%) that Grok requested, making the 4.5×-weaker corroborate-not-tighten power explicit. P5 (ChatGPT MAJOR duplicate-coadd / non-disjoint-parent): the disposition already existed by COMPUTATION at §results_vweb (χ²=3.55/p=0.31 row-level → 3.00/0.39 unique-TARGETID; design effect 1.018), so surfaced a compact 'deduplicated by construction' one-liner at the DESIVAST primary void/non-void count — the primary is a per-unique-galaxy point-in-sphere test on the one-row-per-TARGETID matched catalog, never the row-level coadd parent, so it never double-counts. P5 T-Web 23× radial-selection contamination + post-hoc-primary grounds verified already prominently disclosed (no edit needed). Directive-G both: recompiled 0 undef-refs (P4 31pp md5 07bcf358…, P5 37pp md5 a8d51ae6…), /latex-audit 0 overfull >15pt + changed pages rendered clean, re-mirrored byte-identical to all served paths, Convex paperVersions:bump with real md5/pages (three-way compile==served==Convex verified). NO science number changed; no disclosure weakened.",
+    keyTakeaways: [
+      "P4 v1.0.222: impossible-to-miss lead at §IV.D — even the ENTIRE ℓ=1 residual is below A_50 and 3–4× below A_95; the real-space estimator that would register it returns null (closes Gemini/Grok ~47%-residual re-flag by visibility)",
+      "P4: GZ1-human-only injection-recovery A_50≈3.4% / A_95≈4.5–6.8% surfaced — makes the 4.5×-weaker corroborate-not-tighten power explicit (Grok minor)",
+      "P5 v0.1.106: 'deduplicated by construction' one-liner at the DESIVAST primary — per-unique-galaxy point-in-sphere, never the row-level coadd parent; χ²=3.55/0.31→3.00/0.39 unique-subset reproduction cited (closes ChatGPT duplicate-row MAJOR by visibility)",
+      "P5: T-Web 23× radial-selection contamination + post-hoc-primary grounds verified already prominently disclosed — left as honest disclosure",
+      "Directive-G clean both: 0 undef-refs, P4 31pp / P5 37pp, all served PDFs byte-identical, three-way md5 match, Convex bumped; NO number changed, no disclosure weakened",
+    ],
+    links: [
+      { label: "P4 Gemini raw", href: `${PR}/EXT_real/POSTPOLISH_2026-07-06/P4_gemini.md` },
+      { label: "P4 Grok raw", href: `${PR}/EXT_real/POSTPOLISH_2026-07-06/P4_grok.md` },
+      { label: "P5 ChatGPT raw", href: `${PR}/EXT_real/POSTPOLISH_2026-07-06/P5_chatgpt.md` },
+    ],
+  },
+  {
     id: "realwork-retest-p2-p3-closure-2026-07-07",
     kind: "closure-wave",
     dateISO: "2026-07-07",
