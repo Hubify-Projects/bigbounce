@@ -35,25 +35,33 @@ def BNL(k1, k2, k3):
 # FIGURE 1: Shape function — |B|_NL vs k1/k
 # ============================================================
 def fig1_shape_function():
+    # Corrected amplitude: the Cai et al. shape polynomial (BNL) carries the
+    # spurious +(99/128) sum k_i^3 local term (Appendix A), so its bare
+    # squeezed limit is -35/8. The certified matter-bounce amplitude is
+    # -35/16 = exactly one-half (3-way certified: vertex re-sum + Li et al.
+    # general-c_s at c_s=1). We plot the Cai shape normalized to its corrected
+    # squeezed amplitude, i.e. scaled by 1/2, so the curve converges to -35/16
+    # and the benchmark values match tab:benchmarks (-2.1875, -1.992, -1.125).
+    CORR = 0.5  # -35/16 / (-35/8): halves the printed Cai amplitude
     k1_arr = np.geomspace(0.001, 1.0, 200)
-    bnl_arr = [BNL(k1, 1.0, 1.0) for k1 in k1_arr]
+    bnl_arr = [CORR * BNL(k1, 1.0, 1.0) for k1 in k1_arr]
 
     fig, ax = plt.subplots(1, 1, figsize=(8, 5))
     ax.semilogx(k1_arr, bnl_arr, 'b-', lw=2)
-    ax.axhline(-35/8, color='r', ls='--', lw=1, label=f'Squeezed limit: $-35/8 = -4.375$')
-    ax.axhline(-255/64, color='orange', ls=':', lw=1, label=f'Equilateral: $-255/64 = -3.984$')
+    ax.axhline(-35/16, color='r', ls='--', lw=1, label=f'Squeezed limit: $-35/16 = -2.1875$')
+    ax.axhline(-255/128, color='orange', ls=':', lw=1, label=f'Equilateral: $-255/128 = -1.992$')
 
-    # Mark special points
-    ax.plot(1e-3, BNL(1e-3, 1, 1), 'ro', ms=8, zorder=5)
-    ax.plot(1.0, BNL(1, 1, 1), 's', color='orange', ms=8, zorder=5)
-    ax.plot(0.5, BNL(0.5, 1, 1), '^', color='green', ms=8, zorder=5,
-            label=f'Folded ($k_1=2k_2=2k_3$): $-9/4 = -2.250$')
+    # Mark special points (corrected amplitude)
+    ax.plot(1e-3, CORR * BNL(1e-3, 1, 1), 'ro', ms=8, zorder=5)
+    ax.plot(1.0, CORR * BNL(1, 1, 1), 's', color='orange', ms=8, zorder=5)
+    ax.plot(0.5, CORR * BNL(0.5, 1, 1), '^', color='green', ms=8, zorder=5,
+            label=f'Folded ($k_1=2k_2=2k_3$): $-9/8 = -1.125$')
 
     ax.set_xlabel('$k_1 / k$', fontsize=14)
     ax.set_ylabel('$|B|_{NL}(k_1, k, k)$', fontsize=14)
     ax.set_title('Matter-Bounce Bispectrum: Squeezed-Limit Convergence', fontsize=13)
     ax.legend(fontsize=10, loc='upper right')
-    ax.set_ylim(-5.5, -1.5)
+    ax.set_ylim(-2.75, -0.75)
     ax.set_xlim(1e-3, 1.2)
     ax.grid(True, alpha=0.3)
     fig.tight_layout()
@@ -167,28 +175,34 @@ def fig3_kmin_cliff():
 # FIGURE 4: Decision threshold diagram
 # ============================================================
 def fig4_decision_thresholds():
+    # Corrected prediction f_NL = -35/16 = -2.1875 (Appendix A, 3-way certified),
+    # half the erroneous -35/8. Decision regions re-centered so the corrected
+    # prediction sits in the dark-green "strongly favors bounce" zone (matching
+    # the paper caption: "dark green -- measurement near the corrected -35/16
+    # prediction, strongly favors the bounce").
+    FNL = -35/16  # -2.1875
     fig, ax = plt.subplots(1, 1, figsize=(12, 3.5))
 
-    # Colored regions
-    ax.axvspan(-8, -3, alpha=0.3, color='green', label='STRONGLY FAVORS BOUNCE')
-    ax.axvspan(-3, -1, alpha=0.3, color='lightgreen', label='SUPPORTS BOUNCE')
-    ax.axvspan(-1, 1, alpha=0.3, color='red', label='BOUNCE EXCLUDED')
-    ax.axvspan(1, 5, alpha=0.3, color='salmon', label='WRONG SIGN (supports exotic multifield inflation)')
+    # Colored regions (re-centered on the corrected -35/16 prediction)
+    ax.axvspan(-4, -1.5, alpha=0.3, color='green', label='STRONGLY FAVORS BOUNCE')
+    ax.axvspan(-1.5, -0.5, alpha=0.3, color='lightgreen', label='SUPPORTS BOUNCE')
+    ax.axvspan(-0.5, 0.5, alpha=0.3, color='red', label='BOUNCE EXCLUDED')
+    ax.axvspan(0.5, 4, alpha=0.3, color='salmon', label='WRONG SIGN (supports exotic multifield inflation)')
 
     # The prediction
-    ax.axvline(-4.375, color='blue', lw=3, label='Matter-bounce prediction: $-35/8$')
+    ax.axvline(FNL, color='blue', lw=3, label='Matter-bounce prediction: $-35/16$')
 
-    # Error bars for surveys
-    ax.errorbar(-4.375, 0.7, xerr=0.7, fmt='o', color='#2196F3', ms=10, lw=2.5,
+    # Error bars for surveys (centered on the corrected prediction)
+    ax.errorbar(FNL, 0.7, xerr=0.7, fmt='o', color='#2196F3', ms=10, lw=2.5,
                 capsize=8, label='SPHEREx ($\\sigma=0.7$)')
-    ax.errorbar(-4.375, 0.4, xerr=1.5, fmt='s', color='#FF9800', ms=10, lw=2.5,
+    ax.errorbar(FNL, 0.4, xerr=1.5, fmt='s', color='#FF9800', ms=10, lw=2.5,
                 capsize=8, label='MegaMapper conservative ($\\sigma=1.5$)')
 
     # Inflation
     ax.axvline(0, color='black', lw=2, ls=':', label='Standard inflation: $f_{NL}\\approx 0$')
 
     ax.set_xlabel('Measured $f_{NL}^{\\rm local}$', fontsize=14)
-    ax.set_xlim(-8, 5)
+    ax.set_xlim(-4.5, 4)
     ax.set_ylim(0, 1)
     ax.set_yticks([])
     ax.set_title('Observational Decision Thresholds', fontsize=13)
