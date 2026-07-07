@@ -46,6 +46,24 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "P3-postpolish-kit-title-sync-2026-07-07",
+    kind: "skill-improvement",
+    dateISO: "2026-07-07",
+    title:
+      "P3 packaging-kit — POST-POLISH INT catch: new 20-word title lived only in the .tex; ARXIV_METADATA / DATA_RELEASE_MANIFEST / cover / tarball still carried the old title+version (presentation-only, NO number changed)",
+    papers: ["P3"],
+    summary:
+      "POST-POLISH INT catch on the P3 packaging kit. The condensed 20-word title was already in paper3_draft.tex, but the submission kit still carried the old title/version: submissions/P3/ARXIV_METADATA.txt (title + version + pages + bundle name), DATA_RELEASE_MANIFEST.md (title), and the referee cover letter. Refreshed all three to the new title + v3.1.140 + 33pp, rebuilt arxiv_p3_v3.1.140.tar.gz (standalone-verified, 0 undef-refs, md5 301443d7…), removed the stale v3.1.139 tarball, and updated the P3 SUBMIT-TODAY checklist row. Zero science numbers changed.",
+    keyTakeaways: [
+      "P3 title/version kit staleness closed: ARXIV_METADATA.txt + DATA_RELEASE_MANIFEST.md + cover letter synced to the new 20-word title + v3.1.140 + 33pp",
+      "arxiv_p3_v3.1.140.tar.gz rebuilt + standalone-verified (0 undef-refs); stale v3.1.139 tarball removed; checklist P3 row updated",
+      "Skill upgrade: a .tex title/version change is not done until the packaging kit (metadata, manifest, cover, tarball name, checklist) is synced in the same bundle — grep the kit for the OLD title/version before closing a P-round",
+    ],
+    links: [
+      { label: "P3 source", href: `${GH}/pipelines/p3_anomaly_engine/paper3_draft.tex` },
+    ],
+  },
+  {
     id: "P5-postpolish-figure-path-fix-2026-07-07",
     kind: "skill-improvement",
     dateISO: "2026-07-07",

@@ -1,5 +1,5 @@
 # Data Release Manifest — BigBounce Multi-Survey Anomaly Catalog
-## Paper: Golden (2026), "Spectrally Unusual Sources at Scale" (Paper 3)
+## Paper: Golden (2026), "A Multi-Survey Autoencoder Anomaly Catalog: 268,519 Validated Sources from a Native-Trained Scan of 37.3 Million Spectra and Map Patches" (Paper 3)
 ## Frozen: 2026-06-10 (EXT1 closure wave, pre-submission staging)
 ## Status: STAGED (not yet public; will flip to public on arXiv posting)
 ## HuggingFace: https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog

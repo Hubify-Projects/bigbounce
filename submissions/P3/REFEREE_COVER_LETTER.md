@@ -1,6 +1,6 @@
 # Cover Letter — Paper 3
 
-**Title area:** A multi-survey autoencoder anomaly catalog across 37.3M sources and CMB map patches
+**Title area:** A Multi-Survey Autoencoder Anomaly Catalog: 268,519 Validated Sources from a Native-Trained Scan of 37.3 Million Spectra and Map Patches
 **Source:** `pipelines/p3_anomaly_engine/paper3_draft.tex`
 **Suggested venue:** ApJS (catalog venue)
 
