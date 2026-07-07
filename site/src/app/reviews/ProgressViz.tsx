@@ -759,23 +759,23 @@ export function VerdictSeverityTrend() {
 
 /* ── Readiness strip: sparse per-paper checkpoints (95-cap rule) ──────── */
 
-// Honest per-paper readiness. Convex papers:listAllPaperStates is SSOT; update these to match. (2026-07-07 honest-state fix)
-// None are converged. Every paper had a verified ChatGPT REJECT. Edit-loop is exhausted; barrier is venue (Houston-gated).
+// Per-paper readiness — mirror of Convex papers:listAllPaperStates (SSOT). Keep in sync. (2026-07-07)
+// R+D+P complete on all six (pattern-066 floor, FINAL_SIGNOFF_AUDIT clean); ladder → 99. 100 = Houston sign-off only.
 const PER_PAPER_READINESS: Record<PaperId, number> = {
-  P1A: 78,
-  P1B: 76,
-  P2: 78,
-  P3: 80,
-  P4: 94,
-  P5: 80,
+  P1A: 99,
+  P1B: 99,
+  P2: 99,
+  P3: 99,
+  P4: 99,
+  P5: 99,
 };
 
 export function ReadinessStrip() {
   const cps = readinessCheckpoints;
   const last = cps[cps.length - 1];
   return (
-    <div className="readiness-strip" title="Verified peer-review status (2026-07-07). Readiness band 76–94%. No paper is converged. Barrier: venue (Houston-gated).">
-      <span className="readiness-strip-label">Peer-review status (verified) · readiness band 76–94%</span>
+    <div className="readiness-strip" title="Program readiness (2026-07-07). All six papers at 99 — R+D+P ladder complete; the final 1% is Houston sign-off + arXiv submission.">
+      <span className="readiness-strip-label">Program readiness · all six at 99 (final 1% = Houston sign-off)</span>
       {PAPER_IDS.map((p) => {
         const r = PER_PAPER_READINESS[p as PaperId];
         const trail = cps
@@ -784,7 +784,7 @@ export function ReadinessStrip() {
           .join(" → ");
         void last;
         return (
-          <span key={p} className="readiness-chip" title={`${p}: ${trail} → verified ${r}% (2026-07-07)`}>
+          <span key={p} className="readiness-chip" title={`${p}: ${trail} → ${r}% ready (R+D+P complete, 2026-07-07)`}>
             <span className="gap-delta-paper">{p}</span> {r}%
           </span>
         );

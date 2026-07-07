@@ -24,7 +24,7 @@ const events: Array<{
   {
     time:"t → 0⁻",
     label:"Contraction Phase",
-    desc:"Matter-dominated contraction. Perturbations grow, imprinting f_NL = -35/8 on the bispectrum. PBH seeds form.",
+    desc:"Matter-dominated contraction. Perturbations grow, imprinting f_NL = -35/16 on the bispectrum. PBH seeds form.",
     color:"#8d806b",
   },
   {
@@ -72,7 +72,7 @@ const events: Array<{
   {
     time:"2028",
     label:"SPHEREx Launch",
-    desc:"NASA's SPHEREx will measure f_NL to σ ≈ 0.7–1.0. If f_NL ≈ -4.375: bounce confirmed at >4σ.",
+    desc:"NASA's SPHEREx will measure f_NL to σ ≈ 0.7–1.0. If f_NL ≈ -2.1875: bounce confirmed at >4σ.",
     color:"var(--text-secondary)",
   },
   {

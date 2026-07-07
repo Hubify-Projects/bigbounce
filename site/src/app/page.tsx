@@ -39,7 +39,7 @@ const shortTitleBySlug = new Map(
 const arcRoles: Array<{ n: string; role: string }> = [
   { n: "P1A", role: "ECH theory + no-go: a perturbation-transparency theorem and a 14-constraint channel-level closure of the four minimal bounce→dark-energy routes." },
   { n: "P1B", role: "MCMC + pipeline companion: frozen ΛCDM+ΔN_eff chains (honest null), NaMaster recovery, and an ALP-birefringence consistency check." },
-  { n: "P2", role: "f_NL = −35/8 forecast: the surviving falsifiable handle — matter-bounce non-Gaussianity, ~300× inflation and opposite sign, testable by SPHEREx at 3–5σ." },
+  { n: "P2", role: "f_NL = −35/16 forecast: the surviving falsifiable handle — matter-bounce non-Gaussianity, ~300× inflation and opposite sign, testable by SPHEREx at 3–5σ." },
   { n: "P3", role: "Multi-survey anomaly catalog: 378,280 unique anomalies across 7 surveys + a NANOGrav free-spectrum slope consistent with matter-bounce γ = 3.0." },
   { n: "P4", role: "Galaxy chirality null: 8.47M classified galaxies, a null +0.41σ real-space dipole, refuting the claimed ~3% parity signal at scale." },
   { n: "P5", role: "DESI chirality × environment null: spiral handedness is independent of cosmic-web environment, constraining environment-coupled parity models." },
@@ -76,7 +76,7 @@ const topContributions: Array<{
     id: "matter-bounce-fnl",
     tier: "N3",
     paper: "P2",
-    title: "f_NL = −35/8 Forecast Package",
+    title: "f_NL = −35/16 Forecast Package",
     line: "The surviving falsifiable handle: SPHEREx (~2028) will confirm or kill the matter-bounce non-Gaussianity at multi-σ.",
   },
   {

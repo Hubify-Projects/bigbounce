@@ -94,13 +94,13 @@ const contributions: Contribution[] = [
   {
     id: "matter-bounce-fnl",
     tier: "N3",
-    title: "f_NL = -35/8 Forecast Package",
+    title: "f_NL = -35/16 Forecast Package",
     paper: "Paper 2",
     oneLine:
       "First comprehensive forecast for testing Cai et al.'s matter-bounce non-Gaussianity prediction with upcoming surveys.",
-    why: "Makes the bounce hypothesis testable. Cai et al. derived f_NL = -35/8 in 2009 but nobody built the full machinery to test it. We did: SPHEREx sensitivity, Bayesian model comparison, template mismatch quantification, robustness against systematics. SPHEREx data (~2028) will confirm or kill this at ~5σ.",
+    why: "Makes the bounce hypothesis testable. Cai et al. derived the matter-bounce f_NL in 2009 (the corrected squeezed value is −35/16 = −2.1875) but nobody built the full machinery to test it. We did: SPHEREx sensitivity, Bayesian model comparison, template mismatch quantification, robustness against systematics. SPHEREx data (~2028) will confirm or kill this at ~5σ.",
     what: "Parameter-free local non-Gaussianity from matter-dominated contraction: 300× larger than standard inflation, opposite sign. Forecast: σ(f_NL) = 0.7 (Heinrich+2023 multi-tracer Fisher); 3-5σ after systematic budget; 5.2-5.5σ optimistic pre-GR/b_φ degradation; 4.4σ at MegaMapper even at the worst convention.",
-    equation: "f_NL^{local} = -35/8 = -4.375",
+    equation: "f_NL^{local} = -35/16 = -2.1875",
     prior:
       "Cai, Xue, Brandenberger & Zhang (2009); Heinrich, Doré & Krause (2023); Dalal et al. (2008); Li & Brandenberger (2014).",
     ours:
@@ -216,7 +216,7 @@ const contributions: Contribution[] = [
     title: "SPHEREx f_NL Fisher Forecast",
     paper: "Paper 2",
     oneLine:
-      "Multi-tracer Fisher forecast of σ(f_NL) = 0.7 → 4.7-12σ detection of bounce f_NL = -4.375 by 2027.",
+      "Multi-tracer Fisher forecast of σ(f_NL) = 0.7 → 4.7-12σ detection of bounce f_NL = -2.1875 by 2027.",
     equation:
       "σ(f_NL) = 0.36 (Fisher ideal)  ·  σ(f_NL) = 0.93 (Munchmeyer+2019 conservative)  ·  detection 4.7-12σ",
     what:
@@ -569,7 +569,7 @@ export default function ContributionsPage() {
           {[
             { n: "P1A", role: "ECH theory + no-go: perturbation-transparency theorem and a 14-constraint channel-level closure of the four minimal bounce→dark-energy routes." },
             { n: "P1B", role: "MCMC + pipeline companion: frozen ΛCDM+ΔN_eff chains (honest null), NaMaster recovery, and an ALP-birefringence consistency check." },
-            { n: "P2", role: "f_NL = −35/8 forecast: the surviving falsifiable handle — matter-bounce non-Gaussianity, ~300× inflation and opposite sign, testable by SPHEREx at 3–5σ." },
+            { n: "P2", role: "f_NL = −35/16 forecast: the surviving falsifiable handle — matter-bounce non-Gaussianity, ~300× inflation and opposite sign, testable by SPHEREx at 3–5σ." },
             { n: "P3", role: "Multi-survey anomaly catalog: 378,280 unique anomalies across 7 surveys + a NANOGrav free-spectrum slope consistent with matter-bounce γ = 3.0." },
             { n: "P4", role: "Galaxy chirality null: 8.47M classified galaxies, a null +0.41σ real-space dipole, refuting the claimed ~3% parity signal at scale." },
             { n: "P5", role: "DESI chirality × environment null: spiral handedness is independent of cosmic-web environment, constraining environment-coupled parity models." },

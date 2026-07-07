@@ -27,7 +27,7 @@ const STATIC_PAGES: SearchItem[] = [
   { category: "Page", title: "Overview", blurb: "Research overview, key results, 4-route ECH channel-level closure, MCMC table, claims table", href: "/" },
   { category: "Page", title: "Explainer", blurb: "Non-technical explanation of the research program", href: "/explained" },
   { category: "Page", title: "Surveys", blurb: "7 retained surveys with anomaly sweep results (DESI, SDSS, eROSITA, LAMOST, Planck, NEOWISE, Gaia)", href: "/surveys" },
-  { category: "Page", title: "Predictions", blurb: "f_NL = -35/8, ALP birefringence beta = 0.27 deg, NANOGrav gamma = 3.0, SPHEREx forecast sigma(f_NL) = 0.7", href: "/predictions" },
+  { category: "Page", title: "Predictions", blurb: "f_NL = -35/16, ALP birefringence beta = 0.27 deg, NANOGrav gamma = 3.0, SPHEREx forecast sigma(f_NL) = 0.7", href: "/predictions" },
   { category: "Page", title: "Papers", blurb: "6-paper portfolio with version history and readiness", href: "/paper" },
   { category: "Page", title: "Data Explorer", blurb: "Interactive MCMC posterior data with 15 embedded datasets and equation calculators", href: "/data-explorer" },
   { category: "Page", title: "Galaxy Explorer", blurb: "8.47M-galaxy DESI Legacy DR8 chirality catalog explorer", href: "/galaxy-explorer" },
@@ -61,9 +61,9 @@ const CONTRIBUTIONS: SearchItem[] = [
   },
   {
     category: "Contribution",
-    title: "Matter-bounce f_NL = -35/8 prediction",
+    title: "Matter-bounce f_NL = -35/16 prediction",
     blurb:
-      "Parameter-free non-Gaussianity from matter-dominated contraction: f_NL = -4.375, ~300x larger than inflation, opposite sign. Testable by SPHEREx ~2028 at 4-12 sigma.",
+      "Parameter-free non-Gaussianity from matter-dominated contraction: f_NL = -2.1875, ~300x larger than inflation, opposite sign. Testable by SPHEREx ~2028 at 4-12 sigma.",
     href: "/contributions#matter-bounce-fnl",
   },
   {
@@ -91,7 +91,7 @@ const CONTRIBUTIONS: SearchItem[] = [
     category: "Contribution",
     title: "SPHEREx f_NL Fisher forecast (Paper 2)",
     blurb:
-      "Multi-tracer Fisher forecast of sigma(f_NL) = 0.7 from SPHEREx galaxy bispectrum, giving 4.7-12 sigma detection of bounce f_NL = -4.375 by 2027.",
+      "Multi-tracer Fisher forecast of sigma(f_NL) = 0.7 from SPHEREx galaxy bispectrum, giving 4.7-12 sigma detection of bounce f_NL = -2.1875 by 2027.",
     href: "/contributions#spherex-fisher",
   },
   {
@@ -103,7 +103,7 @@ const CONTRIBUTIONS: SearchItem[] = [
   },
   {
     category: "Equation",
-    title: "f_NL_local = -35/8 = -4.375 (matter bounce)",
+    title: "f_NL_local = -35/16 = -2.1875 (matter bounce)",
     blurb: "Closed-form, parameter-free local non-Gaussianity from matter-dominated contraction.",
     href: "/contributions#matter-bounce-fnl",
   },
@@ -119,7 +119,7 @@ const GLOSSARY_ITEMS: SearchItem[] = [
   { category: "Glossary", title: "Big Bounce", blurb: "Cosmological model where the universe transitions from contraction to expansion at finite density, avoiding the Big Bang singularity.", href: "/glossary" },
   { category: "Glossary", title: "Einstein-Cartan-Holst (ECH)", blurb: "Spin-torsion extension of general relativity with the Holst term; foundation for the specific bounce model in this program.", href: "/glossary" },
   { category: "Glossary", title: "Barbero-Immirzi parameter gamma", blurb: "Dimensionless parameter controlling the Holst term; invisible perturbatively when scalar matter is minimally coupled.", href: "/glossary" },
-  { category: "Glossary", title: "f_NL", blurb: "Local non-Gaussianity amplitude; matter bounce predicts -35/8 = -4.375.", href: "/glossary" },
+  { category: "Glossary", title: "f_NL", blurb: "Local non-Gaussianity amplitude; matter bounce predicts -35/16 = -2.1875.", href: "/glossary" },
   { category: "Glossary", title: "Cosmic birefringence", blurb: "Rotation of CMB polarization plane induced by axion-like particles or other parity-violating physics.", href: "/glossary" },
   { category: "Glossary", title: "Spin density", blurb: "Source of torsion in Einstein-Cartan theory; vanishes identically for scalar matter, which is the load-bearing step in the perturbation-transparency theorem.", href: "/glossary" },
   { category: "Glossary", title: "Holst term", blurb: "Parity-odd term in the gravitational action; reduces to the topological Nieh-Yan invariant in the absence of torsion.", href: "/glossary" },

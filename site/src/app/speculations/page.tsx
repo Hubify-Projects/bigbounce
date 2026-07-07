@@ -49,10 +49,10 @@ const sections: Array<{
 "73% of the universe is dark energy. The quintom branch of bounce cosmology can unify bounce + dark energy through phantom fields, predicting w-crossing (quintom-B). External DESI DR2 (Adame et al.) reports 2.8–4.2σ for w-crossing. Our own program treats this theoretically — Paper 1A's model-discrimination table is explicit that there are zero free-w0–wa samples in our 309,189-sample frozen posterior (Paper 1B). The actionable next step is standing up an in-house quintom MCMC.",
       },
       {
-        title:"fNL = −35/8: The Decisive Test",
+        title:"fNL = −35/16: The Decisive Test",
         tag:"ACTIONABLE (forecast) · SPHEREx ~2028 · Parameter-free",
         children:
-"SPHEREx will measure primordial non-Gaussianity to σ ≈ 1. The matter-bounce prediction is −4.375, parameter-free. Inflation predicts |fNL| < 1. One measurement, one answer.",
+"SPHEREx will measure primordial non-Gaussianity to σ ≈ 1. The matter-bounce prediction is −2.1875, parameter-free. Inflation predicts |fNL| < 1. One measurement, one answer.",
       },
       {
         title:"What Is Dark Matter?",

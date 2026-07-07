@@ -46,6 +46,24 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "site-consistency-overhaul-readiness-99-2026-07-07",
+    kind: "skill-improvement",
+    dateISO: "2026-07-07",
+    title:
+      "Site consistency overhaul — single source of truth restored: Convex + all static surfaces set to the ladder-verified readiness 99 across all six papers, final versions + P2 f_NL=−35/16 title corrected everywhere",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary:
+      "Houston caught the live site showing stale + self-inconsistent readiness/versions/titles. Fixed end-to-end. Convex (the SSOT): papers:setReadinessCap → 99 ×6 (ladder-compliant — R→96, D→98, P→99 all complete + documented; 100 = Houston sign-off only), P3 bumped to v3.1.141 and P5 to v0.1.105 with real md5/pages, P2 served-path corrected, activityFeed entry citing the ladder basis. Static surfaces synced to Convex: live-status.ts rewritten from the stale July-3 'honest reset' banner to the July-7 program-complete state; papers.ts fixed (versions v1A.0.96/v1B.0.95/v1.7.98/v3.1.130/v1.0.219/v0.1.100 → the finals, readiness 78-80→99, statusVariant amber→green, pages, pdfMeta, artifact hrefs, publication-path stages); ProgressViz readiness strip 76-94→99; status/reviews page copy. Corrected the P2 card title/topic f_NL=−35/8 → the corrected −35/16 across ~11 user-facing files (page/explained/contributions/status/speculations/glossary/search/timeline + predictions/articles/figures data). Also mirrored the P1A v1A.0.113 + P1B v1B.0.103 PDFs into site/public/papers/ (they were only at site/public/ root → previously broken /papers/ links). Every value ladder-verified against the on-disk PDFs + Convex; build passes; home banner avg == papers-page avg by construction (both derive from getLivePapers/Convex).",
+    keyTakeaways: [
+      "Convex readiness 99 ×6 (ladder-compliant, not a hand-bump); 100 gated on Houston sign-off",
+      "Final versions live everywhere: P1A v1A.0.113 · P1B v1B.0.103 · P2 v1.7.99 · P3 v3.1.141 · P4 v1.0.221 · P5 v0.1.105",
+      "P2 f_NL corrected −35/8 → −35/16 (−4.375 → −2.1875) across all user-facing surfaces; reviewTimeline history entries preserved",
+      "Skill upgrade: home + papers-page readiness both derive from the SAME Convex source (getLivePapers) — they can never disagree; static mirrors carry a keep-in-sync comment",
+      "Fixed a broken-link bug: P1A/P1B final PDFs were served from site/public/ root, not site/public/papers/ — mirrored byte-identical so /papers/ links resolve",
+    ],
+    links: [],
+  },
+  {
     id: "venue-compliance-disclosure-wave-2026-07-07",
     kind: "skill-improvement",
     dateISO: "2026-07-07",

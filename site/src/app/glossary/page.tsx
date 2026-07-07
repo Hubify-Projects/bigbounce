@@ -19,7 +19,7 @@ const glossaryEntries = [
     term:"f_NL",
     pronunciation:"eff-en-ell",
     definition:
-"The amplitude of local primordial non-Gaussianity. The matter bounce predicts f_NL = -35/8 = -4.375, parameter-free. Inflation predicts |f_NL| < 1. SPHEREx will measure this.",
+"The amplitude of local primordial non-Gaussianity. The matter bounce predicts f_NL = -35/16 = -2.1875, parameter-free. Inflation predicts |f_NL| < 1. SPHEREx will measure this.",
   },
   {
     term:"Birefringence",
@@ -67,7 +67,7 @@ const glossaryEntries = [
     term:"PBH",
     pronunciation:"pee-bee-aitch",
     definition:
-"Primordial Black Holes. Formed from density fluctuations in the early universe. The matter bounce f_NL = -35/8 naturally regulates PBH abundance, preventing overproduction.",
+"Primordial Black Holes. Formed from density fluctuations in the early universe. The matter bounce f_NL = -35/16 naturally regulates PBH abundance, preventing overproduction.",
   },
   {
     term:"NANOGrav",
@@ -109,7 +109,7 @@ const glossaryEntries = [
     term:"Matter Bounce",
     pronunciation:"MAT-er bowns",
     definition:
-"A bounce cosmology scenario where the contracting phase is dominated by matter-like sources (w ≈ 0). Generates a nearly scale-invariant spectrum of perturbations and the parameter-free prediction f_NL = -35/8 = -4.375, which is mechanism-independent across all matter bounce variants.",
+"A bounce cosmology scenario where the contracting phase is dominated by matter-like sources (w ≈ 0). Generates a nearly scale-invariant spectrum of perturbations and the parameter-free prediction f_NL = -35/16 = -2.1875, which is mechanism-independent across all matter bounce variants.",
   },
 ];
 

@@ -91,12 +91,12 @@ export default function ExplainedPage() {
                 className="font-semibold text-sm mb-1"
                 style={{ fontFamily: "var(--font-mono-stack)" }}
               >
-                f<sub>NL</sub> = &minus;35/8
+                f<sub>NL</sub> = &minus;35/16
               </p>
               <p className="text-sm leading-relaxed text-muted-foreground">
                 The matter-bounce scenario predicts a specific pattern in how
                 galaxies cluster — a &ldquo;non-Gaussianity&rdquo; signal of
-                &minus;4.375. Inflation predicts this number should be nearly
+                &minus;2.1875. Inflation predicts this number should be nearly
                 zero. NASA&apos;s SPHEREx mission (~2028) will measure this
                 directly.
               </p>
@@ -157,7 +157,7 @@ export default function ExplainedPage() {
         <p>
           SPHEREx launches around 2028 and will measure f<sub>NL</sub> to a
           precision of about &plusmn;1. If it finds f<sub>NL</sub> near
-          &minus;4.375, that&apos;s strong evidence for the bounce. If it
+          &minus;2.1875, that&apos;s strong evidence for the bounce. If it
           finds f<sub>NL</sub> near zero, the bounce (in its simplest form) is
           ruled out.
         </p>

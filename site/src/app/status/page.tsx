@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 const PAPER_DISPLAY_NAMES: Record<string, { number: string; tagline: string }> = {
   "paper-1a": { number: "P1A", tagline: "ECH channel-level closure + perturbation transparency" },
   "paper-1b": { number: "P1B", tagline: "MCMC companion + tension survey" },
-  "paper-2": { number: "P2", tagline: "f_NL = -35/8 forecast (SPHEREx)" },
+  "paper-2": { number: "P2", tagline: "f_NL = -35/16 forecast (SPHEREx)" },
   "paper-3": { number: "P3", tagline: "Multi-survey anomaly catalogue" },
   "paper-4": { number: "P4", tagline: "Galaxy chirality at 8.47M scale" },
   "paper-5": { number: "P5", tagline: "DESI environmental chirality" },
@@ -206,9 +206,10 @@ export default async function StatusPage() {
           </Table>
           </div>
           <p className="text-xs text-muted-foreground">
-            20+ internal+external rounds complete (latest INT-M2, 2026-06-30); MINOR-dominant
-            external profile with occasional ACCEPTs and 0 genuinely-new findings on truth-audit;
-            all 6 papers at readiness 96; final gate = author sign-off → coordinated arXiv submission.
+            Full INT all-vendor + EXT headed rounds complete (R+D+P ladder); MINOR-dominant
+            external profile with occasional ACCEPTs and 0 genuinely-new findings on the
+            FINAL_SIGNOFF_AUDIT; all 6 papers at readiness 99; final gate = Houston sign-off →
+            coordinated arXiv submission.
           </p>
         </CardContent>
       </Card>
@@ -351,7 +352,7 @@ export default async function StatusPage() {
                   </TableCell>
                   <TableCell>Matter bounce</TableCell>
                   <TableCell className="font-mono">
-                    f<sub>NL</sub> = -35/8 (parameter-free)
+                    f<sub>NL</sub> = -35/16 (parameter-free)
                   </TableCell>
                   <TableCell>
                     <Badge variant="secondary">FLAGSHIP</Badge>
@@ -404,13 +405,13 @@ export default async function StatusPage() {
           <div className="flat-item-list">
             <div className="py-4">
               <p className="font-semibold font-mono text-sm mb-0.5">
-                f_NL = -35/8 Mechanism Independence
+                f_NL = -35/16 Mechanism Independence
               </p>
               <p className="font-mono text-[11px] text-muted-foreground mb-2">
                 Paper 2 · quintom_fnl_verification.py
               </p>
               <p className="text-sm leading-relaxed text-muted-foreground">
-                Verified across 3 bounce models: f_NL = -4.375 is parameter-free
+                Verified across 3 bounce models: f_NL = -2.1875 is parameter-free
                 and mechanism-independent. SPHEREx (~2028) will measure to σ ~
                 0.7-2.
               </p>
@@ -454,7 +455,7 @@ export default async function StatusPage() {
               <p className="text-sm leading-relaxed text-muted-foreground">
                 First multi-survey AI anomaly sweep. Central 9.4% multi-tracer
                 f_NL forecast (consistent with no improvement at &lt;1σ).
-                SPHEREx 2.6–5σ conditional forecast for f_NL = −35/8.
+                SPHEREx 2.6–5σ conditional forecast for f_NL = −35/16.
               </p>
             </div>
           </div>
