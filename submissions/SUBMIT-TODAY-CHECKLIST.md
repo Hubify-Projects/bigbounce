@@ -42,3 +42,18 @@ arXiv assigns each ID immediately on submission (announcement later; the ID is u
 ChatGPT's blanket REJECTs are its structural harsh-referee floor (directive H) — record-only,
 each remaining item truth-audited as re-flag/disclosed. The operative calibrated gate
 (Grok+Gemini + INT + verified science) is satisfied to the honest convergence floor on all six.
+
+## Journal targets after arXiv (orchestrator judgment, 2026-07-05 — see FINAL_SIGNOFF_AUDIT)
+
+| Paper | Primary target | Positioning | Expected referee friction |
+|---|---|---|---|
+| P4 | PRD (or MNRAS) | Null-result + catalog, pre-specified, model-free confirmation | Low — strongest paper |
+| P3 | ApJS / AJ | Catalog + methods data-release (right venue for tiered validation) | Low at the right venue |
+| P2 | PRD / JCAP | LEAD with the −35/16 Cai–Li resolution; forecast as secondary | Moderate — forecast scope |
+| P5 | MNRAS / PRD | Environmental null on public data (post P4 ID) | Low-moderate |
+| P1A | JCAP / PRD | Channel-level no-go + NDA argument, scope explicit | Expect a real scope exchange — normal refereeing |
+| P1B | arXiv companion (or pair with P1A; alt: methods venue) | Reproducibility + derived ΔN_eff bound | Venue-dependent |
+
+ChatGPT's blanket REJECTs are dispositioned in FINAL_SIGNOFF_AUDIT_2026-07-05.md (0 genuinely-new
+real findings); read them as a preview of the toughest human referee's *scope* questions, answered
+in referee exchanges with the verified artifact record.
