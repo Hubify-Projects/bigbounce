@@ -14,3 +14,5 @@
 {"paper":"P2","reviewer":"gemini","verdict":"MINOR REVISIONS","raw_file":"P2_gemini.md","status":"HARVESTED","harvested_at":"2026-07-07T00:27Z"}
 {"paper":"P2","reviewer":"chatgpt","verdict":"REJECT","raw_file":"P2_chatgpt.md","status":"HARVESTED","harvested_at":"2026-07-07T00:28Z"}
 {"paper":"P5","reviewer":"chatgpt","model":"Pro Extended","pdf":"P5_v0.1.103.pdf","pdf_md5":"a3a00abdfa24af461df14be60a1ff19a","chat_url":"https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a4caa16-770c-83e8-80a4-2bafa41df957","submitted_at":"2026-07-07T00:30Z","status":"SUBMITTED"}
+{"paper":"P5","reviewer":"grok","model":"Expert","pdf":"P5_v0.1.103.pdf","pdf_md5":"a3a00abdfa24af461df14be60a1ff19a","chat_url":"https://grok.com/project/e6c9ce77-4f86-4d94-b440-1062a78171c1?chat=0b123a73-f99f-4855-89c4-8915fc10fcb6","submitted_at":"2026-07-07T00:31Z","status":"SUBMITTED"}
+{"paper":"P5","reviewer":"gemini","model":"3.5 Thinking","pdf":"P5_v0.1.103.pdf","pdf_md5":"a3a00abdfa24af461df14be60a1ff19a","chat_url":"https://gemini.google.com/u/1/app/c01601957ed8e05a","submitted_at":"2026-07-07T00:33Z","status":"SUBMITTED"}
