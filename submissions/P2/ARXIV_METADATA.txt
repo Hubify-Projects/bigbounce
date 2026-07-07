@@ -1,8 +1,8 @@
 title: Testing the Matter Bounce with Primordial Non-Gaussianity: A SPHEREx Sensitivity Recast with a MegaMapper Outlook
 authors: Houston Golden
-version: v1.7.98
+version: v1.7.101
 datestamp: 2026-07-06
-bundle: arxiv_p2_v1.7.98.tar.gz
+bundle: arxiv_p2_v1.7.101.tar.gz
 bundle_md5: 894fd8bb6e23b0319f928b469286d889
 bundle_size_bytes: 710968
 pdf_md5: 7af1d09f5d61e2603e91b34eaeaf1234
@@ -19,7 +19,7 @@ bbl: 02_full_draft.bbl (included; rebuilt with paper)
 bib: focused_paper_refs.bib
 primary_class: astro-ph.CO
 cross_lists: gr-qc, hep-th
-standalone_compile: PASS (pdflatex x4; 0 undefined refs; 0 overfull; 34 pages; clean-dir standalone verified 2026-07-06, v1.7.98)
+standalone_compile: PASS (pdflatex x2; 0 undefined refs; 35 pages; clean-dir standalone re-extract verified 2026-07-07, v1.7.101)
 figure_hygiene_note: v1.7.97 regenerated fig1_shape_function.png and fig4_decision_thresholds.png, which still rendered the stale -35/8-era labeling (last regenerated 2026-06-26) while every text/table headline already carried the corrected -35/16. fig1 curve scaled by 1/2 to converge to -35/16 = -2.1875 (legend + benchmarks now match tab:benchmarks: squeezed -35/16, equilateral -255/128 = -1.992, folded -9/8 = -1.125); fig4 prediction line + SPHEREx/MegaMapper error bars moved to -35/16 = -2.1875 and decision regions re-centered so the prediction sits in the dark-green "strongly favors bounce" zone. Cosmetic label-sync of already-corrected headline numbers; no f_NL/sigma value invented.
 data_unlock_note: v1.7.96 adds one sentence to sec:systematics — a systematic availability search (arXiv ancillary, Zenodo, authors' public repos) confirms the Heinrich et al. 2023 per-triangle bispectrum Cov_B is NOT publicly released, so the rho=-0.868-proxy computed-degeneracy bracket is the best currently-constructible marginalized-floor estimate. No headline/f_NL/sigma number changed. Record: project-context/peer-reviews/INT_v3/DATA_UNLOCK_2026-07-05.md
 dround_polish_note: v1.7.98 D-round final polish — abstract restructured to lead with the -35/16 Cai-Li resolution then the forecast then the load-bearing caveat (was caveat-dense); colorblind-safe palette + consistent fonts across all figures and finished the -35/8 -> -35/16 label-sync in fig2/fig3/fig5 (which still showed the retracted value, contradicting their own corrected captions); AI-methods disclosure expanded; a raw file-path column-overflow fixed. Presentation + disclosure only; no science number changed.
