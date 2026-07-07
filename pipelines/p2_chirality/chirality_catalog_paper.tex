@@ -52,8 +52,8 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.219}
-% v1.0.219 (2026-07-06 — D-ROUND FINAL POLISH (presentation + disclosure only; NO science number
+\newcommand{\paperVersion}{v1.0.220}
+% v1.0.220 (2026-07-06 — D-ROUND FINAL POLISH (presentation + disclosure only; NO science number
 %   changed). (1) TITLE condensed from the ~40-word descriptive title to "A Null Chirality Dipole in
 %   8.5 Million DESI Galaxies from Equivariant Deep Learning" (leads with the primary result; the
 %   monopole-mask/canonical-residual detail lives in the abstract). Propagated to ARXIV_METADATA,
@@ -548,7 +548,7 @@ from Equivariant Deep Learning}
 \date{\paperTimestamp}
 
 \begin{abstract}
-We measure the large-scale chirality dipole of spiral galaxies and find it consistent with null. Our primary estimator --- a real-space dipole fit to the high-confidence equivariant sample ($N\approx 9.5\times 10^5$ spirals) --- gives $+0.41\sigmaunit$ (moment-$z$ against an isotropic pixel-permutation null; empirical-rank $p=0.31$, $10^4$ realizations), and a block-bootstrap WLS template fit disfavors a clean cosmological dipole at the $1.7\%$ reference amplitude (the lower end of Shamir's reported $1.7\%$--$4.0\%$ range~\cite{Shamir:2020,Shamir:2022DESI}) at $z\approx-18$. This $\ell=1$ observable is parity-\emph{even} (an isotropy-breaking axial-vector channel), not a direct parity-violation test.
+We measure the large-scale chirality dipole of spiral galaxies and find it consistent with null. Our primary estimator --- a real-space dipole fit to the high-confidence equivariant sample ($N\approx 9.5\times 10^5$ spirals) --- gives $+0.41\sigmaunit$ (moment-$z$ against an isotropic pixel-permutation null; empirical-rank $p=0.31$, $10^4$ realizations), and a block-bootstrap WLS template fit disfavors a clean cosmological dipole at the $1.7\%$ reference amplitude (the lower end of Shamir's reported $1.7\%$--$4.0\%$ range~\cite{Shamir:2020,Shamir:2022DESI}; this $f_{\rm CW}$ asymmetry maps to $A_p=0.034$ under the $A_p=2(f_{\rm CW}-\tfrac12)$ convention used throughout) at $z\approx-18$. This $\ell=1$ observable is parity-\emph{even} (an isotropy-breaking axial-vector channel), not a direct parity-violation test.
 
 The measurement rests on the largest chirality-labeled galaxy catalog to date: $8{,}474{,}531$ DESI Legacy DR8 galaxies classified by a flip-equivariant Vision Transformer into clockwise (CW), counter-clockwise (CCW), and non-spiral classes, with $N_{\rm spiral}=3{,}201{,}160$ spirals, released publicly with model weights and reproducibility scripts. The $p_{\rm eq}>0.6$ confidence cut is pre-specified (not tuned post-hoc): the null is robust across the high-confidence regime ($p_{\rm eq}\!\in\!\{0.6,0.7,0.8\}$) of a full confidence-cut sweep, while the low-confidence tail ($p_{\rm eq}\!\le\!0.5$) carries a systematics-attributed excess ($z\!\approx\!4.0$--$4.3$; Secs.~\ref{sec:prereg},~\ref{sec:dipole}). The real-space null holds under a per-galaxy label-shuffle test ($z=0.58$ same-generator, $z=0.70$ independent re-implementation).
 
