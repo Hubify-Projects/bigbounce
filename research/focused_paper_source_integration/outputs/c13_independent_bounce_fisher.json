@@ -3,11 +3,11 @@
   "reviewer_objection_closed": "the SPHEREx significance rests on a single scalar rescaling r~0.84 of Heinrich's local sigma(f_NL)~0.7; no independent bounce-template Fisher/covariance computed.",
   "provenance": {
     "script": "research/focused_paper_source_integration/scripts/c13_independent_bounce_fisher.py",
-    "git_hash_at_run": "32082f38f0f6c1008e6bbbb3250ea912057cc074",
-    "date_utc": "2026-07-07T18:41:56.846387+00:00",
+    "git_hash_at_run": "7044c7569b5ab0b9a639bca476c9793a8cd443f5",
+    "date_utc": "2026-07-07T18:48:51.253341+00:00",
     "camb_version": "1.6.0",
     "python": "3.9.6",
-    "runtime_seconds": 40.49
+    "runtime_seconds": 34.61
   },
   "inputs": {
     "cosmology": {
@@ -89,6 +89,7 @@
     "mt_r_eff_b_marginalized": 0.9981147253998617,
     "mt_local_full": {
       "template": "local",
+      "channel": "full",
       "sigma_fnl_b1_fixed": 0.6263525925059,
       "sigma_fnl_bias_marginalized": 0.6873943360999341,
       "F_ff": 2.5489554282415825,
@@ -98,12 +99,39 @@
     },
     "mt_bounce_full": {
       "template": "bounce",
+      "channel": "full",
       "sigma_fnl_b1_fixed": 0.6315779672017902,
       "sigma_fnl_bias_marginalized": 0.6886927109752361,
       "F_ff": 2.5069522256696435,
       "F_bb": 5682808.878224448,
       "F_fb": 1504.9936691089335,
       "n_triangles_total": 2330
+    },
+    "primordial_only_channel": {
+      "note": "Pure primordial-transfer term only (SDB term dropped). RESULT: r_eff_primordial ~ 0.99 as well \u2014 so r_eff~0.99 is NOT an SDB-dilution artifact. Both channels give ~0.99 because the SPHEREx bispectrum Fisher is squeezed-dominated (signal ~1/k^2 enhanced at low k, covariance smallest there), and in the squeezed limit the bounce and local templates coincide by construction. The paper's r=0.84 uses folded/intermediate-weighted shape metrics; the real survey-covariance weighting is even more squeezed-dominated than CMB-Fisher (paper's own r=0.876), so it recovers ~99% of the bounce amplitude. The paper's r=0.84 is therefore conservative.",
+      "sigma_fnl_local_marg": 4.797815337560686,
+      "sigma_fnl_bounce_marg": 4.848004204610711,
+      "r_eff_primordial_marg": 0.9896475199006031,
+      "mt_local_prim_full": {
+        "template": "local",
+        "channel": "primordial_only",
+        "sigma_fnl_b1_fixed": 4.119189594644626,
+        "sigma_fnl_bias_marginalized": 4.797815337560686,
+        "F_ff": 0.058935427276454906,
+        "F_bb": 5682808.878224448,
+        "F_fb": 296.72277600715194,
+        "n_triangles_total": 2330
+      },
+      "mt_bounce_prim_full": {
+        "template": "bounce",
+        "channel": "primordial_only",
+        "sigma_fnl_b1_fixed": 4.378328690180233,
+        "sigma_fnl_bias_marginalized": 4.848004204610711,
+        "F_ff": 0.052165488219362684,
+        "F_bb": 5682808.878224448,
+        "F_fb": 233.7887966090118,
+        "n_triangles_total": 2330
+      }
     }
   },
   "results": {

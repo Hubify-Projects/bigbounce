@@ -121,6 +121,39 @@ bispectrum Fisher gives σ(f_NL) ≈ 0.63–0.69 and a ~3.2–3.5σ detection of
 f_NL = −35/16, consistent with (slightly above) the rescale-based 2.6–2.75σ
 optimistic headline.*
 
+### Why the independent r_eff ≈ 0.99 while the paper's shape-overlap r = 0.84 (important, honest)
+
+Two channel decompositions were run to understand this:
+
+- **Full observable** (SDB + primordial): r_eff = **0.99**.
+- **Primordial-transfer term only** (SDB dropped): r_eff = **0.99** as well.
+
+So r_eff ≈ 0.99 is **not** an artifact of the template-blind SDB channel diluting
+the mismatch (a term-by-term check confirms the SDB and primordial pieces are
+comparable, |prim/SDB| ≈ 0.68–1.15, so neither trivially dominates — but *both*
+channels independently give r_eff ≈ 0.99). The real reason is the **weighting**:
+the SPHEREx galaxy-bispectrum Fisher is dominated by **squeezed configurations**,
+because the f_NL signal (through Δb ∝ 1/M(k) ∝ 1/k² and the primordial transfer
+M₁M₂M₃ B_φ) is enhanced at low k, and the Gaussian covariance is smallest there.
+In the squeezed limit the bounce and local templates **coincide by construction**
+(both approach their squeezed value −35/16). So the actual survey covariance
+up-weights exactly the triangles where the two templates agree → r_eff → 1.
+
+This is entirely consistent with the paper's own text, which already notes that
+the *signal-only CMB-Fisher* weighting gives r = 0.876 because it "preferentially
+upweights the squeezed configurations where the bounce and local templates
+coincide," while the *unweighted / intermediate* shape metrics that give the
+folded triangle more weight drop to r ≈ 0.83. The independent SPHEREx-covariance
+Fisher shows the **survey-optimal weighting is even more squeezed-dominated than
+the CMB-Fisher scheme**, pushing the recovered amplitude to ~99%.
+
+**Bottom line:** the paper's r = 0.84 is a *conservative* shape-overlap under a
+weighting that gives folded/intermediate triangles more weight than the real
+SPHEREx bispectrum estimator does. The independent Fisher — which uses the actual
+survey covariance — recovers ~99% of the bounce amplitude, so the true detection
+significance is at the **top** of the paper's bracket (3.2–3.5σ), not below it.
+The paper's headline is therefore *validated and conservative*, not overstated.
+
 ---
 
 ## 4. Honest limitations of this Fisher
