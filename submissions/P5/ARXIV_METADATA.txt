@@ -1,8 +1,9 @@
 ========================================================================
 arXiv SUBMISSION METADATA — Paper V (P5)
 DESI Chirality — Environmental Dependence Null Test
-Source: pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex  (v0.1.104-2026-07-07, 37pp)
-Bundle: submissions/P5/arxiv_p5_v0.1.104.tar.gz
+Source: pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex  (v0.1.106-2026-07-07, 37pp)
+Bundle: submissions/P5/arxiv_p5_v0.1.106.tar.gz  (md5 2924f1cd56448888be6780de5f19c50a)
+PDF md5: a8d51ae6e1ba3f60be4daa9c4413fb6e (37 pages)
 ------------------------------------------------------------------------
 This is PREP metadata to paste field-by-field into arxiv.org/submit.
 DO NOT SUBMIT until Houston gives the go.
@@ -59,4 +60,4 @@ manuscript. Procedure: (1) post P4 to arXiv, note its ID; (2) replace the single
 macro \newcommand{\paperIVarxiv}{arXiv:XXXX.XXXXX} in p5_desi_chirality.tex with
 P4's real ID; (3) recompile + rebuild tarball + standalone-verify; (4) submit P5.
 Full detail in submissions/P5/SUBMISSION_NOTE.txt.
-Bundle: submissions/P5/arxiv_p5_v0.1.104.tar.gz
+Bundle: submissions/P5/arxiv_p5_v0.1.106.tar.gz

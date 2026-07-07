@@ -41,7 +41,17 @@
 % The divide-by-h claim (~1246 h⁻¹ Mpc) is INVERTED. No pipeline recompute required.
 % If any future reviewer re-raises this, cite env_finder/01_compute_vweb.py:106-108.
 
-\newcommand{\paperVersion}{v0.1.105-2026-07-07}
+\newcommand{\paperVersion}{v0.1.106-2026-07-07}
+% v0.1.106-2026-07-07 (POSTPOLISH R-round visibility sharpening, presentation ONLY, ZERO numbers
+%   changed: ChatGPT POSTPOLISH re-flagged the duplicate-coadd / non-disjoint-parent concern
+%   (Section V/Table XI). The disposition already existed by COMPUTATION at sec:results_vweb
+%   (chi2 3.55/p0.31 row-level -> 3.00/0.39 unique-TARGETID; design effect 1.018) but was not
+%   surfaced at the DESIVAST primary. Added a compact "deduplicated by construction" one-liner at
+%   the DESIVAST primary void/non-void count (sec:desivast_primary): the primary is a per-unique-
+%   galaxy point-in-sphere test on the one-row-per-TARGETID matched catalog, not the row-level
+%   coadd parent, so it never double-counts -- plus the computed unique-subset reproduction + [A5]
+%   cite. T-Web 23x radial-selection contamination + post-hoc-primary grounds already prominently
+%   disclosed (sec iii l.962, sec:primary_path) -- verified in place, no edit. ZERO numbers changed.)
 % v0.1.104-2026-07-07 (POST-POLISH INT fix, presentation ONLY, ZERO numbers changed:
 %   embedded figures fig_p5_cw_by_env_bar / fig_p5_phase2_sensitivity_heatmap / fig_p5_volume_fractions_pie
 %   swapped for their D-round-regenerated 300-dpi serif copies — the paper had no \graphicspath so
@@ -2568,6 +2578,7 @@ $24.5\,$Mpc/$h$) returns
 $n_{\rm void}^{\rm DESIVAST} = 56{,}981$ DESIVAST-defined void galaxies
 ($8.39\%$ of the low-$z$ matched sample) and $n_{\rm non-void} =
 621{,}964$ outside any DESIVAST hole.
+\emph{Deduplicated by construction (so the row-level $3.56\%$ duplicate-coadd concern does not touch the primary):} this DESIVAST void/non-void assignment is a per-unique-galaxy point-in-sphere test on the deduplicated matched-spiral catalog (one deposit per \texttt{TARGETID}), \emph{not} the row-level survey--program-coadd parent, so the primary $\Delta f_{\rm CW}$ never double-counts multiply-observed targets. We nonetheless verified the disposition directly on the row-level parent used for the T-Web contingency test: recomputing the homogeneity statistic on the $783{,}820$-row unique-\texttt{TARGETID} subset shifts it only from ($\chi^2\!=\!3.55$, $p\!=\!0.31$) to ($\chi^2\!=\!3.00$, $p\!=\!0.39$) --- a $\lesssim\!1.9\%$ design-effect on interval widths ($\sqrt{812{,}793/783{,}820}\!=\!1.018$) --- so deduplication changes no verdict (\S\ref{sec:results_vweb}; artifact \href{\repoBase/pipelines/p5\_desi\_chirality/outputs/21\_r23conf\_meta\_closures.json}{[A5]}).
 \emph{$k$-sufficiency guard:} because up to $249$ hole centres can lie
 within one maximum-hole-radius of a single galaxy ($28\%$ of the
 low-$z$ sample has more than $20$ such candidates), we re-ran the
