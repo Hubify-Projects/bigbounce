@@ -147,10 +147,14 @@ export default function ApiDocsPage() {
         </div>
         <p style={{ color: "var(--text-muted)", fontSize: "0.82rem", marginTop: 10 }}>
           The load-bearing query is{" "}
-          <code>papers.getPaperState(slug)</code> — it computes readiness from
-          open findings + caveats. Readiness is never hand-set. Formula:{" "}
-          <code>95 − 2·openBlockers − 1·openMajors − 0.2·openMinors − 1·openCaveats</code>,
-          capped at 99 (final 1% requires Houston sign-off; the system never auto-awards 100%).
+          <code>papers.getPaperState(slug)</code> — it computes readiness as{" "}
+          <code>ceiling − 2·openBlockers − 1·openMajors − 0.2·openMinors − 1·openCaveats</code>.
+          The ceiling is the data-driven <code>readinessCap</code>, and as of 2026-07-07 that
+          cap is <strong>verdict-derived</strong>, not ladder-derived: 50 (error-clean/verified
+          base) + per-EXT-reviewer points from the latest verified round (ACCEPT +16.7, MINOR
+          +12, MAJOR +6, REJECT 0). No paper is reviewer-accepted yet — every one still draws a
+          real ChatGPT REJECT — so the caps sit at 62–80 (avg 68), not 99. A reviewer ACCEPT is
+          the bar; the system never auto-awards 100.
         </p>
       </section>
 

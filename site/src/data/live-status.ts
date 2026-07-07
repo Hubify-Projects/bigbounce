@@ -50,24 +50,24 @@ export const liveStatus: LiveStatus = {
   lastUpdatedISO: "2026-07-07T18:00:00Z",
   lastUpdatedDisplay: "July 7, 2026 · 11:00 AM PT",
   headline:
-    "VERIFICATION PROGRAM COMPLETE (Jul 7): all six papers have verifiably walked the full readiness ladder — R-rounds converged to the pattern-066 floor (full INT all-vendor + EXT headed rounds, FINAL_SIGNOFF_AUDIT: zero unfixed genuinely-new findings), D-round visual polish clean, and P-round packets standalone-compile-verified + venue-policy-proofed. All six sit at readiness 99. The final 1% is Houston sign-off + arXiv submission.",
+    "VERIFICATION COMPLETE; REVIEW CLOSURE IN PROGRESS (Jul 7). All six papers are error-clean, fully verified, D-round polished, and P-round packets are arXiv-ready — but NOT yet past external review. The verified EXT board is the truth: every paper still draws a real ChatGPT REJECT, with Grok/Gemini MINOR-to-MAJOR. Readiness is verdict-derived, not ladder-derived. The bar is a reviewer ACCEPT, which no paper has yet.",
   summary:
-    "Closed out the campaign: every finding on the verified EXT board is dispositioned to a source-cited verdict (genuinely-new items fixed in-paper; re-flags and disclosed limitations verdict'd non-real per pattern-066). D-round polished the flagship pair to top-journal presentation with zero science changed; P-round rebuilt every arXiv tarball and standalone-compile-verified it, mirrored each PDF byte-identical to all served paths (Convex md5 == served == fresh compile), and confirmed venue-policy compliance. Per the CLAUDE.md ladder (R→96, D→98, P→99, Houston sign-off→100), all six are set to readiness 99 in Convex — ladder-compliant, not a hand-bump.",
+    "Correcting the record: an earlier build read readiness 99 / 'program complete,' which conflated 'verification rounds complete' with 'reviews passed.' They are not the same. Per the POSTPOLISH-2026-07-06 verified round (ChatGPT/Grok/Gemini): P4 REJ/MIN/MAJ · P2 REJ/MIN/MIN · P5 MAJ/MIN/MIN · P3 REJ/MAJ/MAJ · P1B REJ/MAJ/MAJ · P1A REJ/MAJ/MAJ. Readiness = 50 (error-clean/verified base) + per-reviewer points (ACCEPT +16.7, MINOR +12, MAJOR +6, REJECT 0) summed over the 3 EXT reviewers. The loop is now closing the remaining reviewer findings with real science — not declaring victory.",
   currentlyRunning: [
-    "Awaiting Houston sign-off — the final 1%; on sign-off the two-wave arXiv submission (runbook: SUBMIT-TODAY-CHECKLIST) fires.",
+    "Closing remaining reviewer findings with real science: P2 independent Fisher · P1A Fierz-lemma proof attempt · P3 eROSITA reproducibility fix · P1B→P1A merge prep (unanimous reviewer recommendation). ACCEPT is the bar.",
   ],
   needsHouston: [
     {
-      title: "Sign off the six papers (the final 1%)",
+      title: "Route the review-floor papers to human referees",
       blockedPaper: "all",
-      why: "The readiness ladder is complete through the P-round (99); only Houston's sign-off promotes any paper to 100 — the loop can never self-award it.",
-      ask: "Read the HUMAN_READ_BRIEFING and give the sign-off quote per paper in SSOT.",
+      why: "No paper is reviewer-accepted — every one still draws a real ChatGPT REJECT; the remaining barrier is a venue/scope judgment, not an editable defect (pattern-066). Only a human can decide arXiv/journal routing.",
+      ask: "Decide the referee route for the review-floor papers while the loop closes the remaining reviewer findings with real science.",
     },
     {
-      title: "arXiv submission — endorsement + two-wave order",
+      title: "arXiv submission — endorsement (when a paper clears review)",
       blockedPaper: "all",
-      why: "Submission needs a human: arXiv endorsement confirmation and the actual wave-1 submit clicks are Houston-only.",
-      ask: "Confirm arXiv endorsement, then run the two-wave submission per SUBMIT-TODAY-CHECKLIST (wave 1: P4 → P1B → P3 → P2; wave 2 same-day with wave-1 IDs inserted: P5 → P1A).",
+      why: "Submission needs a human: arXiv endorsement is Houston-only. Gated behind a paper actually clearing external review — the packets are ready, the reviews are not passed yet.",
+      ask: "Confirm arXiv endorsement so a paper can be submitted the moment it earns a reviewer ACCEPT.",
     },
     {
       title: "Send the Cai/Brandenberger courtesy email",
@@ -82,58 +82,58 @@ export const liveStatus: LiveStatus = {
       number: "1A",
       shortTitle: "ECH dark-energy closure + perturbation transparency",
       version: "v1A.0.113",
-      readiness: 99,
-      pendingWork: "Awaiting Houston sign-off + arXiv submission. R+D+P complete; ChatGPT REJECT is the structural harsh-referee floor (directive H), all Grok/Gemini majors truth-audited to source-cited re-flags of disclosed scope; companions recast to concurrent coordinated-submission with refereeable-now artifacts.",
+      readiness: 62,
+      pendingWork: "Error-clean + verified, NOT reviewer-accepted. Verified EXT board (Jul 6): ChatGPT REJECT · Grok MAJOR · Gemini MAJOR → 50+0+6+6=62. Closing findings with real science: Fierz-lemma proof attempt + P1B→P1A merge prep (unanimous reviewer rec).",
     },
     {
       slug: "paper-1b",
       number: "1B",
       shortTitle: "MCMC + NaMaster + ALP technical companion",
       version: "v1B.0.103",
-      readiness: 99,
-      pendingWork: "Awaiting Houston sign-off + arXiv submission. R+D+P complete; four-fermion dimensional bug fixed; ΔN_eff bound unchanged; presented as Paper-1A's concurrently-posted technical companion.",
+      readiness: 62,
+      pendingWork: "Error-clean + verified, NOT reviewer-accepted. Verified EXT board (Jul 6): ChatGPT REJECT · Grok MAJOR · Gemini MAJOR → 50+0+6+6=62. Four-fermion dimensional bug fixed; being prepped for merge into P1A per unanimous reviewer recommendation.",
     },
     {
       slug: "paper-2",
       number: "2",
       shortTitle: "f_NL = −35/16 SPHEREx forecast",
       version: "v1.7.99",
-      readiness: 99,
-      pendingWork: "Awaiting Houston sign-off + arXiv submission + Cai/Brandenberger courtesy email. R+D+P complete; the Cai–Li factor-of-2 is resolved to f_NL = −35/16 = −2.1875 (3-way independently certified); SPHEREx recast ~1.3–2.75σ; all figures label-synced to −35/16.",
+      readiness: 74,
+      pendingWork: "Error-clean + verified, NOT reviewer-accepted. Verified EXT board (Jul 6): ChatGPT REJECT · Grok MINOR · Gemini MINOR → 50+0+12+12=74 (highest board). Closing the remaining findings with real science: independent Fisher forecast; f_NL=−35/16 3-way certified.",
     },
     {
       slug: "paper-3",
       number: "3",
       shortTitle: "378,280-anomaly multi-survey catalog",
       version: "v3.1.141",
-      readiness: 99,
-      pendingWork: "Awaiting Houston sign-off + arXiv submission + HuggingFace catalog visibility flip. R+D+P complete; §V framed as methodological demonstration / no cosmological detection; NANOGrav γ = 2.567 ± 0.382 real-KDE fit; catalog counts reconciled.",
+      readiness: 62,
+      pendingWork: "Error-clean + verified, NOT reviewer-accepted. Verified EXT board (Jul 6): ChatGPT REJECT · Grok MAJOR · Gemini MAJOR → 50+0+6+6=62. Closing findings with real science: eROSITA reproducibility fix; §V framed as methodological demonstration, no cosmological detection.",
     },
     {
       slug: "paper-4",
       number: "4",
       shortTitle: "8.47M-galaxy chirality null at sub-percent sensitivity",
       version: "v1.0.221",
-      readiness: 99,
-      pendingWork: "Awaiting Houston sign-off + arXiv submission (first in queue). R+D+P complete; real-space ℓ=1 dipole +0.41σ null truth-audited robust against git+data; both prior over-claiming majors lifted; abstract rewritten reader-first with every number preserved.",
+      readiness: 68,
+      pendingWork: "Error-clean + verified, NOT reviewer-accepted. Verified EXT board (Jul 6): ChatGPT REJECT · Grok MINOR · Gemini MAJOR → 50+0+12+6=68. Real-space ℓ=1 dipole +0.41σ null truth-audited robust; abstract rewritten reader-first with every number preserved.",
     },
     {
       slug: "paper-5",
       number: "5",
       shortTitle: "DESI environmental chirality independence",
       version: "v0.1.105",
-      readiness: 99,
-      pendingWork: "Awaiting Houston sign-off + arXiv submission. R+D+P complete; DESIVAST three-algorithm void null foregrounded; Paper-IV dependency disclosed for referees; both calibrated reviewers credit the anchoring, remaining major dispositioned structural per pattern-066.",
+      readiness: 80,
+      pendingWork: "Error-clean + verified, NOT reviewer-accepted. Verified EXT board (Jul 6): ChatGPT MAJOR · Grok MINOR · Gemini MINOR → 50+6+12+12=80 (closest to review-clean; no ChatGPT REJECT). DESIVAST three-algorithm void null foregrounded; Paper-IV dependency disclosed for referees.",
     },
   ],
   blockerTally: {
-    closed: 912, // every finding on the verified EXT board dispositioned to a source-cited verdict
+    closed: 912, // every fixable content error closed; verified board is now reviewer-verdict-limited, not error-limited
     openBlockers: 0,
-    openMajors: 0, // all external majors truth-audited to source-cited re-flags of disclosed scope (pattern-066)
-    openMinors: 1, // P3 single disclosed polish minor
+    openMajors: 5, // POSTPOLISH-2026-07-06 verified EXT board: 1 ChatGPT REJECT/paper (×6) + Grok/Gemini MAJORs on P1A/P1B/P3(×2) and P4/P5(×1) — these are the open reviewer findings the loop is now closing with real science
+    openMinors: 6, // Grok/Gemini MINORs on P2/P4/P5
   },
-  cronStatus: "PROGRAM COMPLETE 2026-07-07: all six papers R+D+P verified (INT all-vendor + EXT headed, FINAL_SIGNOFF_AUDIT clean), readiness 99 across the board in Convex. No new sweeps — the edit loop is complete; the only remaining barrier is venue (Houston sign-off + arXiv submission).",
+  cronStatus: "VERIFICATION COMPLETE; REVIEW CLOSURE IN PROGRESS (2026-07-07). Papers are error-clean + verified + polished + packet-ready, but the verified EXT board shows NO paper past review (ChatGPT REJECT ×5, Grok/Gemini MINOR-to-MAJOR). Readiness is verdict-derived (avg 68). Driving the remaining reviewer findings to closure with real science — ACCEPT is the bar.",
   etaToCompletion:
-    "Awaiting Houston sign-off → two-wave arXiv submission (runbook: SUBMIT-TODAY-CHECKLIST).",
+    "Driving the remaining reviewer findings to closure with real science; a reviewer ACCEPT is the bar before any paper is submission-eligible.",
   pods: [],
 };

@@ -206,10 +206,12 @@ export default async function StatusPage() {
           </Table>
           </div>
           <p className="text-xs text-muted-foreground">
-            Full INT all-vendor + EXT headed rounds complete (R+D+P ladder); MINOR-dominant
-            external profile with occasional ACCEPTs and 0 genuinely-new findings on the
-            FINAL_SIGNOFF_AUDIT; all 6 papers at readiness 99; final gate = Houston sign-off →
-            coordinated arXiv submission.
+            Verification complete; review closure in progress. Papers are error-clean, fully
+            verified, and packet-ready — but NOT past external review. The verified EXT board
+            (POSTPOLISH-2026-07-06) shows no paper reviewer-accepted: every one draws a real
+            ChatGPT REJECT, with Grok/Gemini MINOR-to-MAJOR. Readiness is verdict-derived
+            (50 base + per-reviewer points; avg 68), NOT ladder-derived. The bar is a reviewer
+            ACCEPT — the loop is now closing the remaining findings with real science.
           </p>
         </CardContent>
       </Card>

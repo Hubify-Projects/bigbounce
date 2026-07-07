@@ -96,18 +96,21 @@ export default function ReviewsPage() {
         <div className="progress-body">
           <ReadinessStrip />
           <div className="progress-block">
-            <h3 className="progress-block-title">External referee verdicts — convergence toward ACCEPT</h3>
+            <h3 className="progress-block-title">External referee verdicts — driving toward a reviewer ACCEPT</h3>
             <p className="progress-block-sub">
               Six papers × frontier referees (ChatGPT, Grok, Gemini) in the visible browser,
-              now with every reviewer's raw response + screenshot + chat URL saved to git.
-              Verified profile (2026-07-07): <strong>every finding dispositioned to a
-              source-cited verdict.</strong> Concrete errors were fixed and reviewer-confirmed
-              lifted; the standing ChatGPT REJECTs are the structural harsh-referee floor
-              (directive H) and the remaining Grok/Gemini MAJORs are venue/scope re-flags of
-              disclosed content (companion-vs-standalone, conditional-forecast, ansatz-tier,
-              process-volume catalog) — human-referee questions, not editable defects
-              (pattern-066). The R+D+P ladder is complete with a clean FINAL_SIGNOFF_AUDIT;
-              all six papers sit at readiness 99, the final 1% being Houston sign-off.
+              now with every reviewer's raw response + screenshot + chat URL saved to git. The
+              verified board is the readiness truth. <strong>Verified profile
+              (POSTPOLISH-2026-07-06): NO paper is reviewer-accepted</strong> — every one still
+              draws a real ChatGPT REJECT, with Grok/Gemini MINOR-to-MAJOR (P4 REJ/MIN/MAJ ·
+              P2 REJ/MIN/MIN · P5 MAJ/MIN/MIN · P3 REJ/MAJ/MAJ · P1B REJ/MAJ/MAJ · P1A
+              REJ/MAJ/MAJ). Readiness is <strong>verdict-derived</strong>, not ladder-derived:
+              50 (error-clean/verified base) + per-reviewer points (ACCEPT +16.7, MINOR +12,
+              MAJOR +6, REJECT 0), avg 68. The papers are error-clean, fully verified, and
+              packet-ready, but the bar is a reviewer ACCEPT — which no paper has yet. The loop
+              is now closing the remaining reviewer findings with real science (P2 independent
+              Fisher · P1A Fierz-lemma proof attempt · P3 eROSITA reproducibility fix · P1B→P1A
+              merge prep).
             </p>
             <div className="verdict-carousel">
               <VerdictTrajectory />
@@ -122,9 +125,9 @@ export default function ReviewsPage() {
                 unverified mid-2026 sweeps reported the gap "closed to zero" — but the 2026-07
                 verified board (with ChatGPT restored and raw text captured) caught genuinely-new
                 real items those sweeps had missed: a fabricated P2 derivation and a P1B dimensional
-                bug. All were fixed or honestly disclosed, and the subsequent R+D+P rounds converged
-                to the pattern-066 floor with a clean FINAL_SIGNOFF_AUDIT — the strongest evidence
-                that verifiable, full-context review catches what label-only sweeps cannot.
+                bug. All were fixed or honestly disclosed. The content is now error-clean, but the
+                verified board still shows a real ChatGPT REJECT on every paper — the strongest
+                evidence that verifiable, full-context review catches what label-only sweeps cannot.
               </p>
               <GapClosureChart />
               <GapPerPaperDeltas />
@@ -216,15 +219,15 @@ export default function ReviewsPage() {
             <tbody>
               <tr>
                 <td className="eta-td eta-td-label">Verified external board (raw text + screenshots + chat URLs in git)</td>
-                <td className="eta-td">✓ Complete (2026-07-03 → 07). All 6 papers × ChatGPT/Grok/Gemini, every leg verified from raw. Every finding dispositioned to a source-cited verdict; the R+D+P ladder converged to the pattern-066 floor with a clean FINAL_SIGNOFF_AUDIT. Replaces the prior unverified, ChatGPT-skipping sweeps.</td>
+                <td className="eta-td">✓ Complete (2026-07-03 → 07). All 6 papers × ChatGPT/Grok/Gemini, every leg verified from raw. The board is the readiness truth: NO paper is reviewer-accepted — every one draws a real ChatGPT REJECT, with Grok/Gemini MINOR-to-MAJOR. Replaces the prior unverified, ChatGPT-skipping sweeps.</td>
               </tr>
               <tr>
                 <td className="eta-td eta-td-label">Content integrity</td>
                 <td className="eta-td">✓ Error-clean. Every concrete error fixed + reviewer-confirmed lifted; a fabricated P2 derivation was caught and retracted; P4's null verified robust against an adversarial data audit. No fabrication survives.</td>
               </tr>
               <tr>
-                <td className="eta-td eta-td-label">Readiness (ladder-verified, 2026-07-07)</td>
-                <td className="eta-td">All six at 99 — the R+D+P ladder (R→96, D→98, P→99) is complete and documented. Standing ChatGPT REJECTs are the structural harsh-referee floor; Grok/Gemini MAJORs are disclosed-scope re-flags (pattern-066), not editable defects. The 100 cap is never written without Houston's sign-off.</td>
+                <td className="eta-td eta-td-label">Readiness (verdict-derived, 2026-07-07)</td>
+                <td className="eta-td">Verdict-derived, avg 68 — NOT the ladder. readiness = 50 (error-clean/verified base) + per-EXT-reviewer points (ACCEPT +16.7, MINOR +12, MAJOR +6, REJECT 0): P5 80 · P2 74 · P4 68 · P1A/P1B/P3 62. This corrects the earlier "99 / program complete" build (Houston caught it), which had conflated "verification rounds complete" with "reviews passed." No paper is reviewer-accepted; a reviewer ACCEPT is the bar.</td>
               </tr>
               <tr>
                 <td className="eta-td eta-td-label">Remaining barrier → human referees (Houston-gated)</td>

@@ -46,6 +46,23 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "readiness-honesty-fix-verdict-derived-2026-07-07",
+    kind: "skill-improvement",
+    dateISO: "2026-07-07",
+    title:
+      "Readiness honesty fix — retracted the '99 / VERIFICATION PROGRAM COMPLETE' overstatement (Houston caught it): readiness is now VERDICT-DERIVED from the verified EXT board, not ladder-derived",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary:
+      "Houston caught the site claiming readiness 99 / 'VERIFICATION PROGRAM COMPLETE' while the verified EXT verdict board shows NO paper past review — a conflation of 'verification rounds complete' with 'reviews passed.' The verdict board is the readiness truth. Fixed end-to-end: readiness is now a documented, verdict-derived formula — 50 (error-clean/verified base, earned) + per-EXT-reviewer points from the latest verified round (POSTPOLISH-2026-07-06 ChatGPT/Grok/Gemini): ACCEPT +16.7, MINOR +12, MAJOR +6, REJECT 0, summed over the 3 reviewers. Verified board: P4 REJ/MIN/MAJ=68 · P2 REJ/MIN/MIN=74 · P5 MAJ/MIN/MIN=80 · P3 REJ/MAJ/MAJ=62 · P1B REJ/MAJ/MAJ=62 · P1A REJ/MAJ/MAJ=62 (avg 68). Set via Convex papers:setReadinessCap ×6 + an activityFeed entry stating the formula. Synced every static mirror: live-status.ts (headline/summary/per-paper/tally/cron/eta), papers.ts (readiness + statusVariant green→amber + publication-path 'External review' back to active + remainingWork), ProgressViz readiness strip, reviews + status + architecture page copy. Papers stay error-clean, fully verified, polished, packet-ready — but NOT reviewer-accepted; a reviewer ACCEPT is the bar. Home avg == papers avg == Convex by construction.",
+    keyTakeaways: [
+      "NEVER conflate 'verification rounds complete' with 'reviews passed' — the verdict board is the readiness truth; no paper is reviewer-accepted (every one draws a real ChatGPT REJECT)",
+      "Readiness is verdict-derived: 50 base + per-reviewer points (ACCEPT +16.7, MINOR +12, MAJOR +6, REJECT 0); avg 68, documented in code + on-site",
+      "This retracts the 2026-07-07 'readiness 99 / program complete' entry below — that round recorded ladder progress as review acceptance; the correction supersedes it",
+      "statusVariant green→amber and the publication path's 'External review' stage back to active everywhere the 99/'complete' language landed",
+    ],
+    links: [],
+  },
+  {
     id: "site-consistency-overhaul-readiness-99-2026-07-07",
     kind: "skill-improvement",
     dateISO: "2026-07-07",
@@ -3633,6 +3650,12 @@ export const readinessCheckpoints: ReadinessCheckpoint[] = [
     dateISO: "2026-06-26",
     values: { P1A: 98, P1B: 98, P2: 98, P3: 98, P4: 98, P5: 98 },
     note: "EXT22 confirm 2026-06-26: 18/18 MINOR or ACCEPT, 0 MAJOR/BLOCKER. 2 polish edits closed (NV-P1A-1 §XII.B + NV-P4-1 σ rounding). P1A md5 06c3b525 / P4 md5 f2902399. Polish-tier convergence reached. Readiness 97→98. Next: Houston sign-off (final 1%).",
+  },
+  {
+    id: "VERDICT-DERIVED-2026-07-07",
+    dateISO: "2026-07-07",
+    values: { P1A: 62, P1B: 62, P2: 74, P3: 62, P4: 68, P5: 80 },
+    note: "HONESTY CORRECTION 2026-07-07 (Houston caught the 99/'program complete' overstatement): readiness is now VERDICT-DERIVED, not ladder-derived. The 06-26 EXT22 '18/18 MINOR/ACCEPT' checkpoints were the unverified sweep era; the POSTPOLISH-2026-07-06 verified board (ChatGPT/Grok/Gemini, raw text + screenshots) shows NO paper reviewer-accepted — every one draws a real ChatGPT REJECT: P4 REJ/MIN/MAJ · P2 REJ/MIN/MIN · P5 MAJ/MIN/MIN · P3 REJ/MAJ/MAJ · P1B REJ/MAJ/MAJ · P1A REJ/MAJ/MAJ. readiness = 50 (error-clean/verified base) + per-reviewer points (ACCEPT +16.7, MINOR +12, MAJOR +6, REJECT 0). Papers are error-clean + verified + packet-ready but NOT past review; a reviewer ACCEPT is the bar.",
   },
 ];
 

@@ -760,22 +760,30 @@ export function VerdictSeverityTrend() {
 /* ── Readiness strip: sparse per-paper checkpoints (95-cap rule) ──────── */
 
 // Per-paper readiness — mirror of Convex papers:listAllPaperStates (SSOT). Keep in sync. (2026-07-07)
-// R+D+P complete on all six (pattern-066 floor, FINAL_SIGNOFF_AUDIT clean); ladder → 99. 100 = Houston sign-off only.
+// VERDICT-DERIVED, not ladder-derived (corrects the 2026-07-07 "99/complete" overstatement Houston caught).
+// readiness = 50 (error-clean/verified base, earned) + per-EXT-reviewer points from the latest verified
+// round (POSTPOLISH-2026-07-06 ChatGPT/Grok/Gemini): ACCEPT +16.7, MINOR +12, MAJOR +6, REJECT +0, summed
+// over the 3 reviewers. NO paper is reviewer-accepted — every one still draws a real ChatGPT REJECT.
+//   P4 REJ/MIN/MAJ=68 · P2 REJ/MIN/MIN=74 · P5 MAJ/MIN/MIN=80 · P3 REJ/MAJ/MAJ=62 · P1B REJ/MAJ/MAJ=62 · P1A REJ/MAJ/MAJ=62
 const PER_PAPER_READINESS: Record<PaperId, number> = {
-  P1A: 99,
-  P1B: 99,
-  P2: 99,
-  P3: 99,
-  P4: 99,
-  P5: 99,
+  P1A: 62,
+  P1B: 62,
+  P2: 74,
+  P3: 62,
+  P4: 68,
+  P5: 80,
 };
 
 export function ReadinessStrip() {
   const cps = readinessCheckpoints;
   const last = cps[cps.length - 1];
+  const avg = Math.round(
+    (Object.values(PER_PAPER_READINESS) as number[]).reduce((a, b) => a + b, 0) /
+      Object.keys(PER_PAPER_READINESS).length,
+  );
   return (
-    <div className="readiness-strip" title="Program readiness (2026-07-07). All six papers at 99 — R+D+P ladder complete; the final 1% is Houston sign-off + arXiv submission.">
-      <span className="readiness-strip-label">Program readiness · all six at 99 (final 1% = Houston sign-off)</span>
+    <div className="readiness-strip" title="Program readiness (2026-07-07). VERDICT-DERIVED: readiness = 50 (error-clean/verified base) + per-EXT-reviewer points (ACCEPT +16.7, MINOR +12, MAJOR +6, REJECT 0). NO paper is reviewer-accepted — every one still draws a real ChatGPT REJECT. The bar is a reviewer ACCEPT.">
+      <span className="readiness-strip-label">Program readiness · verdict-derived, avg {avg} (error-clean + verified, NOT reviewer-accepted)</span>
       {PAPER_IDS.map((p) => {
         const r = PER_PAPER_READINESS[p as PaperId];
         const trail = cps
@@ -784,7 +792,7 @@ export function ReadinessStrip() {
           .join(" → ");
         void last;
         return (
-          <span key={p} className="readiness-chip" title={`${p}: ${trail} → ${r}% ready (R+D+P complete, 2026-07-07)`}>
+          <span key={p} className="readiness-chip" title={`${p}: ${trail} → ${r}% (verdict-derived; NOT reviewer-accepted, 2026-07-07)`}>
             <span className="gap-delta-paper">{p}</span> {r}%
           </span>
         );
