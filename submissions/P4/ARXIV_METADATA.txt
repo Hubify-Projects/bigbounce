@@ -2,7 +2,7 @@
 arXiv SUBMISSION METADATA — Paper IV (P4)
 Galaxy Chirality Catalog
 Source: pipelines/p2_chirality/chirality_catalog_paper.tex  (v1.0.220, 31pp)
-Bundle: submissions/P4/arxiv_p4_v1.0.220.tar.gz  (md5 aa5dca1b611196c0e1dca6d3cc827c0e, 25MB)
+Bundle: submissions/P4/arxiv_p4_v1.0.220.tar.gz  (md5 c8748642606eb09a5ff0f0913f9b8302, 25MB)
 PDF md5: e8b4f10a9bcc9545aeb58869395e7d06 (31 pages)
 ------------------------------------------------------------------------
 This is PREP metadata to paste field-by-field into arxiv.org/submit.
