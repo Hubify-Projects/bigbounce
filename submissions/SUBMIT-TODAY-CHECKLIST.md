@@ -20,7 +20,7 @@ arXiv assigns each ID immediately on submission (announcement later; the ID is u
 
 | # | Paper | Bundle | Ver | pp | Pre-submit step (~2 min each) |
 |---|-------|--------|-----|----|------------------------------|
-| 5 | **P5** DESI environmental chirality | `submissions/P5/arxiv_p5_v0.1.102.tar.gz` | v0.1.102 | 37 | Set `\paperIVarxiv` to P4's real ID (see `SUBMISSION_NOTE.txt`) → recompile → submit. |
+| 5 | **P5** DESI environmental chirality | `submissions/P5/arxiv_p5_v0.1.104.tar.gz` (md5 fc8c5eaf) | v0.1.104 | 37 | v0.1.104 POST-POLISH INT fix: 3 D-round-regenerated 300-dpi serif figures now embedded (were served stale at 150 dpi; no `\graphicspath`); presentation-only, zero numbers changed. Set `\paperIVarxiv` to P4's real ID (see `SUBMISSION_NOTE.txt`) → recompile → submit. |
 | 6 | **P1A** ECH no-go | `submissions/P1A/` bundle v1A.0.110 | v1A.0.110 | 39 | Fill `TODO-SUBMISSION` markers with wave-1 IDs (see `SUBMISSION_NOTE`) → recompile → submit. Then insert P1A's ID back into P1B v2 (reciprocal note). |
 
 ## Post-submit (agent-executable — say the word)

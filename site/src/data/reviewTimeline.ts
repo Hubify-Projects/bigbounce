@@ -46,6 +46,24 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "P5-postpolish-figure-path-fix-2026-07-07",
+    kind: "skill-improvement",
+    dateISO: "2026-07-07",
+    title:
+      "P5 v0.1.104 — POST-POLISH INT catch: stale-figure-path regression (no \\graphicspath served the 150-dpi copies; the D-round 300-dpi restyled figures were never embedded); presentation-only, NO number changed",
+    papers: ["P5"],
+    summary:
+      "POST-POLISH INT catch on P5. The D-round regenerated three figures (fig_p5_cw_by_env_bar, fig_p5_phase2_sensitivity_heatmap, fig_p5_volume_fractions_pie) at 300-dpi/serif into the pipeline figures/ dir, but the paper has no \\graphicspath so \\includegraphics kept pulling the STALE 150-dpi copies co-located in paper/ — reviewers/readers saw the un-restyled figures. Fixed by copying the 300-dpi PNGs into paper/ (byte-identical to figures/), recompiled 0-undef, and verified at the pixel level that the embedded raster on pages 7/11/18 is now 1590×1050 / 1710×1230 / 1512×1170 (the 300-dpi versions) with zero 150-dpi copies remaining. Directive-G hygiene complete; zero science numbers changed.",
+    keyTakeaways: [
+      "P5 stale-figure-path regression (no \\graphicspath) found + fixed: 300-dpi serif figures now embedded (verified by extracted-raster pixel dimensions), not the stale 150-dpi copies",
+      "P5 v0.1.103→v0.1.104 (md5 fc8c5eaf…, 37pp), mirrored byte-identical to all served paths, Convex bumped, bundle arxiv_p5_v0.1.104.tar.gz rebuilt + standalone-verified, date July 7 2026",
+      "Skill upgrade: figure-regeneration hygiene — a paper WITHOUT \\graphicspath silently serves stale co-located figures after any D-round figure regen; verify embedded-raster dimensions, not just filenames, in the P-round",
+    ],
+    links: [
+      { label: "P5 source", href: `${GH}/pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex` },
+    ],
+  },
+  {
     id: "P4-P2-final-polish-dround-2026-07-06",
     kind: "closure-wave",
     dateISO: "2026-07-06",
