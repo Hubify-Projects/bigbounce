@@ -217,7 +217,7 @@ export const papers: Paper[] = [
     slug: "paper-2",
     number: "2",
     title: "Testing the Matter Bounce with Primordial Non-Gaussianity: A SPHEREx Sensitivity Recast with a MegaMapper Outlook",
-    version: "v1.7.85",
+    version: "v1.7.95",
     lastUpdated: "2026-07-01",
     tldr: "Shows f_NL = −35/8 is a parameter-free, mechanism-independent prediction of all matter-bounce models, and forecasts SPHEREx will detect or kill it at 4.7–12σ by ~2028 — the decisive bounce-vs-inflation discriminator.",
     path: publicationPath({
@@ -262,8 +262,8 @@ export const papers: Paper[] = [
     preprintId: "HUBIFY-2026-002",
     pdfMeta: "PDF · 30 pp · v1.7.85 · updated Jul 1, 2026 · md5 64adb931",
     artifacts: [
-      { label: "Read PDF", href: "/papers/paper2_fnl_forecast_v1.7.85.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/paper2_fnl_forecast_v1.7.85.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/paper2_fnl_forecast_v1.7.95.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/paper2_fnl_forecast_v1.7.95.pdf", kind: "secondary", download: true },
       {
         label: "LaTeX source",
         href: "https://github.com/Hubify-Projects/bigbounce/blob/main/research/focused_paper_source_integration/02_full_draft.tex",

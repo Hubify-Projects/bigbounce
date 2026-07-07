@@ -46,6 +46,27 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "P2-pubready-finalization-v1795-2026-07-06",
+    kind: "ext-closure",
+    dateISO: "2026-07-06",
+    title: "P2 v1.7.95 — publication-readiness finalization: swept the last stale −35/8-era significances (incl. a figure) to the corrected −35/16, reconciled the Appendix-A −35/8-origin wording; content error-clean",
+    papers: ["P2"],
+    summary:
+      "Closure on the 2026-07-05 verified EXT+INT round (INT Claude full-source MINOR REVISIONS — the five session upgrades reproduce from committed scripts/JSON, −35/16 vertex sum independently re-derived 3 ways; EXT RETEST_2026-07-05b: Grok MINOR REVISIONS 'ready for submission after modest tightening', Gemini MAJOR on disclosed-limitation/exposition grounds, ChatGPT REJECT = structural harsh-referee floor per directive H). ChatGPT's truth-audit surfaced exactly TWO genuinely-new REAL items, both closed here with no headline/f_NL number changed: (1) five downstream spots (§VII/§IX/conclusion + the bphi_sensitivity figure title+legend) still carried the OLD −35/8-era doubled significances while the abstract/§IV/tab:systematics already showed the corrected −35/16 numbers — swept to the exact halved values (significance ∝ |f_NL|, −35/16 = ½·−35/8): fig3 caption −35/8→−35/16; bphi para 2.6–5.5σ→2.6–2.75σ, 5.2–5.5σ→2.6–2.75σ, 4.0–4.2σ→2.0–2.1σ, 3.5–3.7σ→1.75–1.85σ; photo-z 2.6–5.5σ→1.3–2.75σ; staged-strategy 2.6–5.5σ→1.3–2.75σ; SDB-motivation 5.2–5.5σ→2.6–2.75σ; and the bphi_sensitivity figure regenerated (f_NL_true −4.375→−2.1875) so its title reads −35/16 and legend '2.6 template-corrected'. (2) the Sec-II summary + certification lines still asserted the spurious +(99/128)Σk³ term 'exactly/solely pushes −35/16→−35/8', contradicting the App-A body (that term added alone gives +2.58, wrong sign); reconciled all summary statements to the body's honest framing (−35/8 = Cai's own full printed-polynomial squeezed reduction; the spurious term is the traceable single term of excess, not a naive additive shift; −35/16 is 3-way certified and unaffected). Remaining EXT objections = the disclosed-limitation set (single-source recast/no joint Fisher, additive-quadrature budget, transmission assumption (d), prior-driven Bayes) — referee variance + honest scope, not editable defects. Submission packet rebuilt: standalone-verified tarball, ARXIV_METADATA + cover letter re-positioned as methodological forecast + literature resolution (single-value −35/16, 1.3–2.75σ). readinessCap held (venue barrier, Houston-gated — not hand-bumped). Directive-G hygiene complete.",
+    keyTakeaways: [
+      "Content error-clean: the two genuinely-new REAL findings from the verified EXT board (stale −35/8-era significances + Appendix-A −35/8-origin wording) are closed; no headline/f_NL number changed — −35/16 stands, 3-way independently certified",
+      "The standout contributions are now cleanly foregrounded: the vertex-certified resolution of the 8-year Cai–Li factor-of-two (in favour of −35/16) and a rigorously-budgeted, explicitly-conditional SPHEREx forecast (~2.6–2.75σ optimistic, ~1.3–2.75σ realistic) — no detectability overclaim",
+      "A stale figure (bphi_sensitivity: −35/8 title + '5.2σ template-corrected' legend) was regenerated to the corrected −35/16 / 2.6σ — figure-internal staleness that PDF-text audit caught but the .tex sweep alone would have missed",
+      "Remaining EXT objections (single-source recast, additive-quadrature budget, cubic-transmission assumption d, prior-driven Bayes) are honestly-disclosed limitations + referee variance, not editable defects → human-referee / venue call, Houston-gated",
+      "Directive-G: v1.7.94→v1.7.95, 0 undef-refs / 0 major overfull hboxes, 34pp, PDF mirrored byte-identical (md5 754a46d405ea9920eae77f3e478de389) to all served paths, standalone-verified tarball + packet rebuilt, Convex bumped with three-way md5 match",
+    ],
+    links: [
+      { label: "P2 EXT_real RETEST_2026-07-05b", href: `${PR}/EXT_real/RETEST_2026-07-05b` },
+      { label: "P2 INT_v3 2026-07-05", href: `${PR}/INT_v3/ROUND_2026-07-05/P2_INT_claude.md` },
+      { label: "P2 submission packet", href: `${GH}/submissions/P2` },
+    ],
+  },
+  {
     id: "P1B-pubready-finalization-v1B0101-2026-07-06",
     kind: "ext-closure",
     dateISO: "2026-07-06",

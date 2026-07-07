@@ -33,7 +33,7 @@ import matplotlib.pyplot as plt
 # where F is the Fisher matrix in the (f_NL, b_φ) parameter space.
 
 # Baseline values
-f_NL_true = -4.375
+f_NL_true = -2.1875  # corrected central matter-bounce value -35/16 (Cai-Li factor-of-2 resolved, Appendix A); was -4.375 (erroneous -35/8)
 b_phi_fid = 1.0  # Fiducial b_φ (universality relation: b_φ = 2δ_c(b₁-1))
 b1 = 2.0  # Linear bias
 delta_c = 1.686
@@ -124,7 +124,7 @@ ax1.grid(True, alpha=0.3)
 ax2.semilogx(bphi_frac * 100, significance, 'b-', linewidth=2, label='MegaMapper SDB')
 # EXT3 C1 closure: show the template-corrected significance used in the paper
 # headline (|f_NL|·r/σ with noise-weighted template overlap r = 0.84,
-# Sec. "template"), not the naive uncorrected 6.25σ.
+# Sec. "template"), not the naive uncorrected 3.13σ.
 r_template = 0.84
 bispec_sig = abs(f_NL_true) * r_template / sigma_fnl_bispec
 ax2.axhline(y=bispec_sig, color='r', linestyle='--', linewidth=1.5, label=f'SPHEREx bispectrum ({bispec_sig:.1f}σ template-corrected)')
@@ -133,9 +133,9 @@ ax2.axhline(y=5, color='green', linestyle=':', linewidth=1, label='5σ threshold
 ax2.axvline(x=20, color='gray', linestyle=':', alpha=0.5)
 ax2.set_xlabel(r'$b_\phi$ prior uncertainty [%]', fontsize=12)
 ax2.set_ylabel(r'Detection significance ($\sigma$)', fontsize=12)
-ax2.set_title(r'Detection of $f_{\rm NL} = -35/8$ vs. $b_\phi$ uncertainty', fontsize=13)
+ax2.set_title(r'Detection of $f_{\rm NL} = -35/16$ vs. $b_\phi$ uncertainty', fontsize=13)
 ax2.set_xlim(1, 500)
-ax2.set_ylim(0, 12)
+ax2.set_ylim(0, 8)
 ax2.legend(fontsize=10)
 ax2.grid(True, alpha=0.3)
 
