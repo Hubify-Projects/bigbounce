@@ -1,7 +1,8 @@
 # Cover Letter — Paper 1B
 
 **Title area:** Reproducibility and null-consistency material for the ECH spin-torsion cosmology program (companion to Paper 1A)
-**Source:** `arxiv/paper1b_mcmc_companion.tex`
+**Source:** `arxiv/paper1b_mcmc_companion.tex` (v1B.0.101, 22 pp)
+**Bundle:** `submissions/P1B/arxiv_p1b_v1B.0.101.tar.gz`
 **Suggested venue:** Physical Review D (companion / supplementary to Paper 1A), or an ApJS reproducibility note
 
 Dear Editor,
@@ -19,8 +20,14 @@ a foreground-free synthetic-sky NaMaster pipeline recovery validation; and (3) a
 GR+ALP literature-data accommodation with the tuning honestly quantified
 (25×/100×). It additionally derives from first principles the bespoke ECH-sector
 ΔN_eff contribution, which scales as (T/M_Pl)² and is astrophysically negligible
-(~10⁻⁴⁴). All three reviewers confirmed the material error-clean: the §III.A
-ΔN_eff derivation was accepted and a prior dimensional bug was fixed.
+(~10⁻⁴⁴) — a genuine, self-contained result of *this* companion (derived here,
+not imported from Paper 1A). The internal full-source review (with access to the
+source, chains, and scripts) verifies that the three data-backed results
+reproduce from committed artifacts and rates the manuscript error-clean up to
+minor items; the §III.A four-fermion ΔN_eff derivation was accepted, and the one
+concrete quantitative issue the external referees raised — a
+reduced-vs-non-reduced Planck-mass inconsistency in the boxed ΔN_eff numbers —
+has been fixed (v1B.0.100), so the values now reproduce directly from (T/M_Pl)².
 
 ## Scope statement
 This is a **technical reproducibility / consistency-check companion, not
@@ -42,8 +49,26 @@ a ΛCDM proxy, a synthetic-pipeline validation, and a literature accommodation.
 Note: the exploratory overlap-uncorrected w0wa supernova appendix — the sole
 basis of an earlier external reject — was **surgically cut** (v1B.0.95), as it
 was orthogonal to the paper's core ECH/NaMaster/ALP results and zero-cost to
-remove. A post-cut external re-check returned a genuine **Gemini ACCEPT**, with 0
-genuinely-new findings surviving truth-audit.
+remove.
+
+## Coordinated submission
+This is Paper 1B of a coordinated two-paper posting: **1B posts to arXiv in the
+first wave so that Paper 1A can cite its assigned arXiv identifier same-day** (and
+reciprocally). Cross-references to Paper 1A carry a clearly-marked
+`[arXiv:XXXX.XXXXX]` placeholder that is replaced with the real identifier at
+submission; the procedure is documented in `submissions/P1B/SUBMISSION_NOTE.md`.
+
+## Current external-review status (stated honestly)
+The most recent external LLM-referee sweep (2026-07-05, raw responses archived
+under `project-context/peer-reviews/EXT_real/ROUND_2026-07-05/`) returned
+scope/venue objections: ChatGPT (reject) and Gemini / Grok (major revisions) all
+argue the work reads as a technical companion to Paper 1A rather than a
+standalone advance, and re-flag the paper's own honestly disclosed limitations
+(generic-radiation proxy, foreground-free synthetic skies, GR+ALP accommodation).
+No genuinely-new correctness defect survived truth-audit against the source; the
+single concrete quantitative item (the ΔN_eff Planck-mass convention) was real
+and is fixed. The residual objection is therefore the venue/format judgment
+below, not a content error.
 
 ## The judgment for the referee
 The one residual question — flagged by an LLM referee as a subjective

@@ -6,6 +6,35 @@
 % Main theory paper: paper1a_ech_nogo.tex (Golden 2026a)
 % Compile: pdflatex paper1b_mcmc_companion && bibtex paper1b_mcmc_companion && pdflatex paper1b_mcmc_companion && pdflatex paper1b_mcmc_companion
 %
+% v1B.0.101 (2026-07-06 — publication-readiness finalization pass for the
+%   COORDINATED SUBMISSION (P1B posts first so P1A can cite its real arXiv ID
+%   same-day). Content already error-clean per INT v3 (2026-07-05). Two
+%   presentation edits, no physics changed:
+%   (1) STANDALONE-VALUE FRAMING: abstract + intro now positively state what
+%       this companion establishes on its own (the first-principles bespoke
+%       ECH-sector DeltaN_eff ~ 1e-44 at BBN derived HERE in Sec III.A — a
+%       genuine result of this paper, not imported from Paper I(a) — plus the
+%       validated NaMaster E->B recovery pipeline, the quantified ALP
+%       prior-predictive accommodation cost, and the public reproducibility
+%       manifest), so it reads as a legitimate short companion rather than an
+%       appendix. NO honest scope hedge removed; the positive contribution is
+%       surfaced alongside them, not in place of them.
+%   (2) COORDINATED-SUBMISSION CROSS-REF: explicit clearly-marked
+%       [arXiv:XXXX.XXXXX] placeholder added to the coordinated-submission
+%       paragraph + the Golden2026P1a bib note; P1A's real arXiv ID is inserted
+%       there at coordinated submission (and reciprocally P1B's into P1A). See
+%       submissions/P1B/SUBMISSION_NOTE.md.)
+% v1B.0.100 (2026-07-05 — INT v3 closure: (1) MINOR-1 reduced-vs-non-reduced
+%   Planck-mass fix in Eq.(eq:neff_bound): boxed DeltaN_eff^(ECH) numbers
+%   switched to the REDUCED-M_Pl values 1.7e-43 (BBN) / 1.1e-56 (recomb),
+%   self-consistent with Eq.(eq:torsion_ratio)'s (T/M_Pl)^2 and the reduced
+%   M_Pl=2.44e18 GeV defined throughout; one-line reproducibility note added.
+%   (2) MINOR-3 thermal-average factorization labeled a parametric estimate
+%   (O(1) coefficients dropped, not a rigorous NJL finite-T computation).
+%   (3) MINOR-2 Table IV posterior-mass fractions scoped as conditional/
+%   illustrative. Load-bearing "~40 orders below sensitivity" conclusion is
+%   convention-independent and UNCHANGED. Committed 0f741e09; PDF recompiled +
+%   mirrored to all served paths byte-identical.)
 % v1B.0.99 (2026-07-04 — RS25 Grok MINOR closure wave, no physics changed):
 %   (1) Sec.~III.A: added one explicit intermediate step between Eq.(2) and
 %       Eq.(3) showing the thermal average of the dimension-6 contact operator,
@@ -231,8 +260,8 @@
 %   FALSIFIED list (14 items) not acted on.)
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1B.0.100}
-\newcommand{\paperTimestamp}{July 5, 2026}
+\newcommand{\paperVersion}{v1B.0.101}
+\newcommand{\paperTimestamp}{July 6, 2026}
 % v1B.0.95 (2026-07-01, author decision): SURGICALLY REMOVED the entire exploratory
 %   w0wa (overlap-uncorrected supernova) analysis -- Appendix A (app:w0wa) with its
 %   physics interpretation, caveats (a)-(e), and Table II (tab:iter2_posterior);
@@ -1259,6 +1288,17 @@ foreground-free synthetic-pipeline recovery validation, and a literature-data
 ALP accommodation --- so the paper's contribution is precisely a reproducibility
 and null-consistency note for three limited numerical cross-checks, not
 independent evidence for (or verification of) the spin-torsion theory.
+What this companion nonetheless establishes on its own is concrete and
+self-contained: (i)~a \emph{first-principles} derivation
+(Sec.~\ref{sec:torsion_neff}) that the minimal ECH spin-torsion sector's
+radiation-era contribution is Planck-suppressed to
+$\Delta\Neff^{\rm(ECH)}\!\sim\!10^{-44}$ at BBN --- some forty orders of
+magnitude below any foreseeable sensitivity, and a genuine result of \emph{this}
+paper rather than one imported from Paper~I(a); (ii)~a validated NaMaster
+$E\!\to\!B$ pseudo-$C_\ell$ recovery pipeline with a quantified synthetic-sky
+bias budget; (iii)~a quantified prior-predictive accommodation cost for the
+spectator-ALP birefringence fit; and (iv)~a complete public reproducibility
+manifest backing all three analyses.
 Three analyses are documented.
 \emph{(1)~Stock-CAMB $\Lambda$CDM$+\Delta\Neff$ MCMC proxy}
 (Cobaya~v3.6.1, $\mathbf{309{,}189}$ frozen samples across two converged dataset combinations): this
@@ -1395,6 +1435,13 @@ paper documents three limited numerical cross-checks and their reproducibility
 artifacts, and it does \emph{not} implement, test, or verify any torsion-modified
 component of the ECH theory itself. Its standing relative to Paper~I(a) is that
 of a null-consistency and reproducibility note, not of independent confirmation.
+That said, the present paper does contribute one genuinely new first-principles
+result of its own --- the derivation (Sec.~\ref{sec:torsion_neff}) that the
+minimal ECH spin-torsion sector's radiation-era $\Delta\Neff$ is
+Planck-suppressed to $\sim\!10^{-44}$ at BBN, some forty orders of magnitude
+below any foreseeable sensitivity --- alongside a validated $E\!\to\!B$ recovery
+pipeline, a quantified spectator-ALP accommodation cost, and a complete public
+reproducibility manifest, all self-contained within this manuscript.
 Paper~I(a) establishes channel-level closure of four independent minimal-ECH
 dark-energy routes (kinetic-coupling channel, potential-energy channel,
 perturbation-transparency channel, and spin-torsion propagator channel) and
@@ -1408,6 +1455,11 @@ motivation and the structural no-go result, while the three numerical analyses
 below --- and their data products, chains, and pipeline code --- are
 self-contained and independently reproducible from this paper's own repository,
 so no quantitative claim here depends on unpublished companion numerics.
+Because the two papers are posted together, the companion Paper~I(a) arXiv
+identifier is inserted in place of the marker \mbox{\texttt{[arXiv:XXXX.XXXXX]}}
+wherever Paper~I(a) is cited at coordinated submission (and, reciprocally, this
+paper's identifier is inserted into Paper~I(a)); until then the marker stands as
+a deliberate placeholder.
 
 \textit{Imported theory results (summarized for standalone
 readability).}---So that the present companion can be read without Paper~I(a)
