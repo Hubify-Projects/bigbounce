@@ -358,3 +358,166 @@ round AND both API rounds (APIv1 `API_*.md` legs summarized in the round matrix
 above; APIv2 native-PDF legs dispositioned in full here). Program disposition
 unchanged: CLEARED FOR SUBMISSION, residual barrier = venue/referee-variance +
 the one known-open P2 factor-of-2 → human referees (Houston-gated).**
+
+---
+
+## POSTPOLISH round addendum (2026-07-06/07)
+
+**Purpose:** Final truth-audit of the POSTPOLISH round — a fresh, fully-verifiable
+EXT sweep (headed browser, raw verbatim text + screenshot per leg) plus a native-PDF
+INT/API round. Every non-minor verdict receives a source-cited disposition (patterns
+061–066). Raw legs read in full before any verdict:
+`EXT_real/POSTPOLISH_2026-07-06/{P1A,P1B,P2,P3,P4,P5}_{chatgpt,gemini,grok}.md` (18 EXT legs,
+each with `.png`) and `INT_v3/POSTPOLISH_2026-07-06/API_{...}_{openai,grok}.md`
+(12 API legs; gpt-5.5 + grok-4.3 native-PDF; Gemini API SKIPPED — documented 403,
+`GEMINI_SKIP_NOTE.md`, covered by the EXT Gemini leg). Categories (a)/(b)/(c)/(d)
+as defined at the top of this file.
+
+**POSTPOLISH verdict matrix (verbatim PARSED VERDICT):**
+
+| Paper | Ver (EXT PDF) | ChatGPT (EXT) | Gemini (EXT) | Grok (EXT) | openai gpt-5.5 (API) | grok-4.3 (API) |
+|-------|---------------|---------------|--------------|------------|----------------------|----------------|
+| P4  | v1.0.219 | REJECT | MAJOR-REV | MINOR-REV | REJECT | **ACCEPT** |
+| P2  | v1.7.98 | REJECT | MINOR-REV | MINOR-REV | REJECT | MAJOR-REV |
+| P3  | v3.1.140 | REJECT | MAJOR-REV | MAJOR-REV | REJECT | MINOR-REV |
+| P5  | v0.1.103 | MAJOR-REV | MINOR-REV | MINOR-REV | MAJOR-REV | MINOR-REV |
+| P1B | v1B.0.102 | REJECT | MAJOR-REV | MAJOR-REV | MAJOR-REV | MINOR-REV |
+| P1A | v1A.0.111 | REJECT | MAJOR-REV | MAJOR-REV | REJECT | REJECT |
+
+Note the sharp per-paper cross-reviewer spread (P4: grok-4.3 ACCEPT vs ChatGPT/openai
+REJECT; P3: grok-4.3 MINOR vs ChatGPT/openai REJECT) — the same maximally-harsh-referee
+structural floor (directive H) confirmed at both EXT and API tiers on identical PDFs.
+
+### P1A — v1A.0.111 EXT (ChatGPT REJECT / Gemini MAJOR / Grok MAJOR) + API (openai REJECT / grok REJECT)
+
+| Finding (reviewer) | Cat | Citation |
+|---|---|---|
+| **Gemini [MINOR] + openai #15: "Fig 1 charts f_NL=−35/8 while §XIII/text state corrected −35/16"** | **(d) GENUINELY-NEW REAL — NOW FIXED** | Baked into `fig_theory_map.png` "Observable prediction" box; invisible to text grep. **CLOSED v1A.0.112 (2026-07-07):** `arxiv/scripts/fig_theory_map.py` regenerated with −35/16, PNG re-mirrored byte-identical to all served paths (changelog `paper1a_ech_nogo.tex` L51–57). Verified: body carries 26 −35/16 instances; the sole surviving −35/8 (L3786) is the *cited historical Cai value being corrected*. No scientific claim changed. This is the same class-d item flagged in the FINAL round on P2/P1A figures; here it surfaced in P1A's theory-map and is now closed. |
+| ChatGPT M1 / Gemini M1 / openai #1,2 / grok #1: "four-route closure not an operator-level theorem; off-shell dim-+1 Eq.(6); Fierz lemma deferred" | (a)/(c) | Paper scopes closure as channel-level at M_Pl power-counting, names the Fierz-by-Fierz lemma as the single open item (v110 changelog L78, EXT-FINAL P1A #6). grok's *own* EXT/API leg says the scoped claim "is supported by the channel-by-channel power-counting and Bianchi-identity arguments." Cross-reviewer contradiction on severity + disclosed scope. |
+| ChatGPT M11 / Gemini M2 / openai #11 / grok(minor): "heavy companion dependence, placeholder arXiv IDs, non-refereeable standalone" | (b) | Coordinated-submission reframe v110 (real repo companions P1B/P2/P3/P4); imports made referee-able-now via committed artifacts + `\cite{BigBounceRepro}` (L78). Same as EXT-FINAL P1A #10. |
+| ChatGPT M7 / openai #7 / grok(minor): perturbation-transparency theorem "narrow/standard, over-extended to fermion channels" | (a)/(c) | Theorem explicitly scoped to canonical scalar matter; R1/R4 axial-current applicability disclosed. grok EXT MINOR: "correctly scoped." OPINION on novelty; scope disclosed. |
+| ChatGPT M7,M8 (N_tot≈92, T_reh/M_GUT prefactor) / openai #3: dark-energy dilution "phenomenological bookkeeping, not derived" | (a) | Labeled NDA/structural-tension illustration, not load-bearing (EXT-FINAL P1A #3); Fig 3 H0=69.2 artifact separately disclosed L347/L1743 (closed v1A.0.85). |
+
+**Counts:** (a) 5+ · (b) 1 · (c) 3 (overlap) · **(d) 1 — FIXED v1A.0.112.**
+**BOTTOM LINE: CLEARED (Fig-map d-item closed).** All three reviewers converge REJECT/MAJOR
+on the structural-floor / companion-dependence / operator-theorem-scope axis already
+dispositioned; the one concrete new numeric flag (Fig-1 −35/8) was real and is now fixed.
+
+### P2 — v1.7.98 EXT (ChatGPT REJECT / Gemini MINOR / Grok MINOR) + API (openai REJECT / grok MAJOR)
+
+| Finding (reviewer) | Cat | Citation |
+|---|---|---|
+| **ChatGPT M1 / openai #1,2 / grok(minor): Cai–Li factor-of-2 "internally inconsistent — the +(99/128)Σk³ term alone has wrong sign/magnitude to explain −35/16→−35/8, yet treated as settled"** | **(d)-KNOWN-OPEN (pre-logged; NOT genuinely-new)** | This is the *same* OPEN factor-of-2 logged in the 2026-07-04 verifiable-review reset + EXT-FINAL P2 #4. `02_full_draft.tex` L691 + Appendix A present a from-scratch four-vertex re-summation at ε=3/2 → −35/16, matching Li's independent general-c_s formula at c_s=1, tracing Cai's spurious term to Eq.(37). No fabrication was used to close it. ChatGPT/openai independently RE-CORROBORATE the residual dispute here; Gemini + Grok (EXT) rate P2 MINOR and call the resolution "fully supported"/"settles the arithmetic error." **Status: pre-existing known-open, referee-handoff item (Houston-gated), NOT a new (d).** |
+| **ChatGPT M5: "Bayes factors numerically inconsistent — a −35/16 detection at σ=0.7 gives BF≈1.3×10², not the ∼10⁸/>10⁵ quoted; table retains −35/8 scaling"** | (a) — reviewer MISREAD | **Verified against source: the paper does NOT quote 10⁸/10⁵ Bayes factors.** The headline BF is 9–14 (vs tuned multifield), 10–17 (r→1 endpoint), 4–7 (curvaton-natural), and "≫1" vs single-field slow-roll (L699, L1232). The only "10⁵" in P2 is the *Monte-Carlo realization count*. ChatGPT invented the 10⁸/>10⁵ values; the actual BF≈9–14 is consistent with a ~2.19σ discriminator. FALSIFIED misread, not a real inconsistency. |
+| Gemini M1 / ChatGPT M3,M7 / openai #7–9 / grok #2: "1.3–2.75σ is a rescale of external σ=0.7 + additive-quadrature systematics, not a joint Fisher" | (a) | Abstract *Scope* + signpost (i),(v) (L1213) label it a heuristic recast, σ_eff=√(σ_base²+Σσ_i²), envelope "not a joint-covariance forecast." Gemini + Grok rate MINOR/publish on the identical recast. |
+| ChatGPT M8 / openai #10 / grok #4: "BF prior-dominated, promoted as headline" | (a) | Signpost (vi) (L1213), abstract, Conclusion (L1232): BFs "illustrative … not definitive model-selection evidence," prior-width sensitivity mapped in §VI. Explicitly disclosed. Gemini rates MINOR. |
+| ChatGPT M2 / openai #5,6 / grok #3: "cubic-order bounce transmission not derived, only linear" | (a) | Closed to a bounded systematic (1±O((kη)²)≈1±10⁻⁴) via single-clock d.o.f.-counting + nonlinear superhorizon ζ-conservation, signpost (ii) L1213; Grok EXT: "one of the strongest technical sections." Disclosed as the flagged weakest link. |
+| ChatGPT M10 / openai #10 / grok(fig): "Fig legend −35/8 vs corrected −35/16" | (a) cosmetic — FIXED | fig1/fig2/fig3/fig4/fig5 PNGs regenerated to −35/16 at v1.7.97 (changelog L45–59); captions reconcile. The FINAL-round optional cosmetic is now closed in P2. |
+
+**Counts:** (a) 8+ · (b) 0 · (c) 1 · **(d) 0 genuinely-new** (1 pre-logged known-open factor-of-2, re-corroborated; 1 ChatGPT-invented BF inconsistency FALSIFIED).
+**BOTTOM LINE: CLEARED — no genuinely-new real item.** The factor-of-2 remains the sole
+substantive technical residue (pre-logged, Houston-gated → human referee); ChatGPT's
+BF-magnitude dispute is verified FALSE against source; the P2 figure legends flagged in
+the FINAL round are now regenerated to −35/16.
+
+### P3 — v3.1.140 EXT (ChatGPT REJECT / Gemini MAJOR / Grok MAJOR) + API (openai REJECT / grok MINOR)
+
+| Finding (reviewer) | Cat | Citation |
+|---|---|---|
+| ChatGPT / Gemini M1 / openai #1,2 / grok(minor): "268,519 not catalog-grade sources; DESI 98.7% non-primary; NEOWISE mask-QA passes by construction; Planck CMB patches" | (a)/(c) | §III D + footnotes disclose the strata; NEOWISE gate "not a detector-sensitivity test … passes by construction" (L1190); science-target like-for-like 2,468 ≈ 0.92× Liang in-text; 268,519 recomputable via `reproduce_headline_dedup.py`. grok-4.3 API rates the *identical PDF* **MINOR, "central claim supported."** Venue-fit + disclosed-strata; maximal referee-variance. |
+| Gemini M1 / ChatGPT / openai #4 / grok M1: "eROSITA score axis irreproducible across 16 rescalings" | (a) | §III E scopes eROSITA as a reproducible top-298 *membership list* (L1029), no score-dependent statistics; disclosed self-audit. Grok EXT: "correctly pivots to a reproducible raw-rank recipe." |
+| Gemini M2 / openai #4 / grok(minor): "full-sample scalers on eROSITA/NEOWISE → preprocessing leakage" | (a) | §II B discloses; eROSITA bounded-refit robustness check shows ~15–17% tail churn, absolute S affected, downgraded to membership-only. Disclosed limitation. |
+| Gemini M4 / ChatGPT M9 / openai #8 / grok(—): "multi-tracer f_NL α=0.19±0.65 (0.29σ) noise-biased; de-biased returns baseline; 9.4% misleading" | (a) | Paper *states* the estimate is noise-biased and the de-biased forecast returns the single-tracer baseline exactly; presented as a null-result methodological demonstration. Disclosed. |
+| **ChatGPT M-minor: "Table I NEOWISE 436 vs masked 419 elsewhere"** | (a) | **Verified NOT an inconsistency:** 436 = raw top-1% selection, 419 = after |b_ecl|<80° ecliptic-pole mask; both stated with footnote "436 to 419 (96.1% retained)" (paper3_draft.tex L1025–1029, L1062). Documented two-stage count. |
+| ChatGPT / Gemini / openai #9 / grok: "NANOGrav BF vs idealized circular-orbit SMBHB only" | (a) | Paper concedes environmentally-modified SMBHB give γ~2.5–3 (matches recovered γ=2.567±0.382); "consistent with, not exclusive to." Disclosed. |
+
+**Counts:** (a) 16+ · (b) 0 · (c) 1 venue · **(d) 0.**
+**BOTTOM LINE: CLEARED — no new real item.** grok-4.3 API returns MINOR/"central claim
+supported" on the identical PDF that ChatGPT+openai REJECT — the sharpest cross-vendor
+contradiction of the round. Every flag maps to disclosed strata/failure-modes/scope; the
+one concrete numeric flag (436 vs 419) is a documented two-stage count.
+
+### P4 — v1.0.219 EXT (ChatGPT REJECT / Gemini MAJOR / Grok MINOR) + API (openai REJECT / grok ACCEPT)
+
+| Finding (reviewer) | Cat | Citation |
+|---|---|---|
+| **Gemini [MAJOR] / Grok [MINOR] / ChatGPT M4 / openai #7: "imaging forward model accounts for only ~52–54% of the ℓ=1 residual; ~47% unmodelled → incomplete systematic closure"** | (a) — re-flag; disclosed with a quantitative bound | This is the P4-Gemini ~47%-residual re-flag named in the audit prompt. `chirality_catalog_paper.tex` L950 discloses the forward model captures only ~52–54%, states the ~47% is an explicit **open item**, AND bounds its *cosmological* content: the full residual maps to A_p=0.695% < A_50=0.75% (and ≪ A_95∈(1.0%,1.5%]) — undetectable in real space, excluded a fortiori; the primary real-space HC null (+0.41σ) independently confirms zero cosmological dipole. **Gemini itself calls the central null "supported"** (verdict line 3); Grok EXT rates it a MINOR "open item"; grok-4.3 API returns **ACCEPT**. Disclosed limitation + referee-variance (Gemini MAJOR vs grok-4.3 ACCEPT on the identical PDF), consistent with the FINAL-round P4 disposition. Not genuinely-new. |
+| ChatGPT M1,M2 / openai #9 / Gemini(—): "null only after peq>0.6 cut drops ~70%; unthresholded z≈4.2 excess; pre-registration inadequate" | (a) | Abstract discloses the low-confidence-tail systematics-attributed excess (z≈4.0–4.3) AND the pre-specified peq>0.6 cut with the full {0.6,0.7,0.8} robustness sweep (L553; commit 94113e5). The sweep IS the robustness demonstration. |
+| ChatGPT M5,M6 / openai #2,3 / Gemini/Grok(minor): "69.91% GZ1 accuracy, κ=0.40, overconfident; 66.5% pseudo-labels; GZ1-only N≈46k overstates" | (a) | GZ1-human-only model-free null (z=−0.54σ, N=46,017) disclosed as the decisive-but-~4.5×-weaker independence test, explicitly "corroborates but does not tighten" (L998, L1010); equivariance excludes directional bias (L1273). Gemini + Grok rate these MINOR. Disclosed. |
+| ChatGPT M8 / openai #8: "block-bootstrap WLS z≈−18 over-weighted; rank-deficient design" | (a) | Labeled "not a calibrated detection significance," model-dependent, Appendix D; rank-deficiency handled by dropping one collinear leg (L950). Disclosed. |
+| ChatGPT M9 / openai #10: "Shamir comparison not matched-footprint" | (a) | Framed against the 1.7% reference amplitude with the caveat stated; "amplitude-level tension," not a frequentist exclusion. Disclosed reference comparison. |
+
+**Counts:** (a) 14+ · (b) 0 · (c) full-severity-variance · **(d) 0.**
+**BOTTOM LINE: CLEARED — no new real item.** grok-4.3 API = ACCEPT, Grok EXT + Gemini
+"central claim supported"/MINOR on the identical PDF ChatGPT+openai REJECT. The ~47%
+residual re-flag is disclosed with a hard A_p=0.695%<A_50 bound; textbook referee-variance.
+
+### P5 — v0.1.103 EXT (ChatGPT MAJOR / Gemini MINOR / Grok MINOR) + API (openai MAJOR / grok MINOR)
+
+| Finding (reviewer) | Cat | Citation |
+|---|---|---|
+| ChatGPT M1 / Gemini M(dep) / openai #1: "central labels from unpublished companion Paper IV, placeholder IDs, not self-contained" | (b) | Coordinated-submission dependency — Paper IV (P4) is the real, concurrently-posted companion (v1.0.220); `SUBMISSION_NOTE`, p5 tex L17–23. Headline refereeable from public GZ1/DESI/DESIVAST + monopole-invariance. grok API/EXT rate MINOR ("insert actual arXiv ID before submission"). |
+| ChatGPT M3 / Gemini M1 / openai #2 / grok M1: "DESIVAST primary path designated post-hoc; garden-of-forking-paths" | (a) | Paper explicitly acknowledges no timestamped plan predates data + Bonferroni-5 family treatment; both reviewers write "the author acknowledges." grok rates MINOR. Disclosed forking-paths caveat. |
+| ChatGPT M5 / openai #3 / Gemini M(TWeb): "T-Web void labels dominated by survey-shell; ×23 collapse, ~73% reassigned → demote" | (a) | The author's OWN §IX A robustness finding ("as the author notes"); T-Web already relegated to secondary, DESIVAST primary deliberately insensitive. Disclosed self-audit. |
+| ChatGPT M2 / openai #7: "69.9% classifier accuracy → dilution; monopole treated as removable scalar" | (a)/(c) | Δf_CW is a null; label dilution biases toward null, monopole-invariance handles the offset. Grok EXT verifies Δf_CW=+0.0007±0.0022 "very well supported." Disclosed. |
+| ChatGPT M6 / openai #4,5: "DESIVAST hole-union membership permissive; ~34% void-count change; RSD not reconstructed" | (a) | FoG Monte Carlo bounds the membership systematic ≲0.6pp; RSD scope limited to fixed-void robustness; grok MINOR ("add one sentence"). Disclosed. |
+| ChatGPT M-min / Gemini M2 / openai #8: "toy EFT not derived/gauge-invariant; no model predicts the signal" | (a) | Paper labels the EFT operator a toy/pedagogical and states plainly no published model makes the >25 Mpc/h environment-conditional prediction; it is a null-result empirical ceiling. Disclosed motivation scope. |
+
+**Counts:** (a) 9+ · (b) 1 · (c) severity-variance · **(d) 0.**
+**BOTTOM LINE: CLEARED (as a coordinated companion) — no new real item.** Every finding is
+the author's own disclosed robustness self-audit, the post-hoc-primary caveat already in
+text, or the documented Paper-IV coordinated dependency. Gemini + Grok (EXT + API) rate
+MINOR, "robustly supported."
+
+### P1B — v1B.0.102 EXT (ChatGPT REJECT / Gemini MAJOR / Grok MAJOR) + API (openai MAJOR / grok MINOR)
+
+| Finding (reviewer) | Cat | Citation |
+|---|---|---|
+| ChatGPT M1 / Gemini M1 / grok(EXT) M1 / openai #1: "companion/reproducibility note, lacks standalone PRD novelty; ΔN_eff~1e-44 untestable; consolidate into Paper I(a)" | (c)/(a) | Venue/scope objection, not a factual error — the paper IS a coordinated reproducibility companion. Gemini's own verdict-line-3: the ΔN_eff bound is "structurally supported by the analytic first-principles derivation." grok-4.3 API rates MINOR. Referee-variance on venue-fit. |
+| ChatGPT M2 / Gemini(minor) / grok(minor) / openai #2: "ΔN_eff derivation only dimensional power-counting, drops sign/spin/flavor; overstated as first-principles" | (a) | Paper labels it a first-principles *order-of-magnitude* estimate; grok EXT+API concede "parametric estimate, standard and sufficient for the order-of-magnitude claim." Disclosed as OOM; both Gemini + grok rate this MINOR. |
+| ChatGPT M6 / Gemini M2 / openai #5: "NaMaster validation on foreground-free synthetic skies only; can't break β–α degeneracy" | (a) | Paper explicitly concedes ("the author admits … foregrounds absent by construction"); disclosed limitation. Grok EXT: "explicit statement … correct and important." |
+| ChatGPT M8,M9 / openai #6: "ALP consistency-check uses Gaussian summary of single published β; tautological/circular" | (a) | Paper acknowledges the summary approximation in-text (both reviewers write "the author admits"). Disclosed; Grok: "balanced and appropriately modest." |
+| ChatGPT M6/M11 / openai #7,8: "spectator-status 13% posterior mass, ~25× tuning; Ω_a fixed-H0 approximation" | (a) | Table IV explicitly reports the 13%-mass/tuning caveat + the fixed-H0 quadratic approximation; disclosed parameter-space cost. Gemini + grok rate MINOR. |
+| ChatGPT/Gemini/openai: "placeholder companion arXiv IDs" | (b) | Coordinated-submission dependency; `submissions/P1B/SUBMISSION_NOTE.md`. |
+
+**Counts:** (a) 5+ · (b) 1 · (c) 2 · **(d) 0.**
+**BOTTOM LINE: CLEARED (as a coordinated companion) — no new real item.** grok-4.3 API =
+MINOR, Gemini "structurally supported," ChatGPT REJECT on standalone-novelty/venue — the
+exact objection a *companion* framing answers. No factual error surfaced.
+
+### POSTPOLISH program-level bottom line
+
+| Paper | (a) | (b) | (c) | **(d) genuinely-new REAL** | Status |
+|-------|-----|-----|-----|-----|--------|
+| P1A | 5+ | 1 | 3 | **1 — Fig-map −35/8** | **FIXED v1A.0.112** |
+| P1B | 5+ | 1 | 2 | **0** | CLEARED (companion) |
+| P2  | 8+ | 0 | 1 | **0-NEW** (1 pre-logged known-open factor-of-2; 1 ChatGPT BF-inconsistency FALSIFIED) | CLEARED |
+| P3  | 16+ | 0 | 1 | **0** | CLEARED |
+| P4  | 14+ | 0 | severity | **0** | CLEARED |
+| P5  | 9+ | 1 | severity | **0** | CLEARED (companion) |
+
+**ONE genuinely-new REAL (category-d) item across the whole POSTPOLISH round — P1A's
+`fig_theory_map.png` baked-in f_NL=−35/8 — surfaced by Gemini + openai gpt-5.5, verified
+real, and CLOSED at v1A.0.112 (figure regenerated to −35/16, re-mirrored; no scientific
+number changed).** Same failure class as the FINAL-round P2 figure legends, which are
+themselves now regenerated to −35/16 (v1.7.97). No genuinely-new *scientific* error.
+
+Two items required direct source falsification: (i) ChatGPT's P2 claim of "BF≈10⁸/>10⁵
+inconsistent with −35/16" — the paper quotes BF≈9–14, never 10⁸; the "10⁵" is a Monte-Carlo
+count; reviewer MISREAD, FALSIFIED. (ii) ChatGPT's P3 "NEOWISE 436 vs 419" — a documented
+two-stage raw→masked count (footnote, 96.1% retained), not a contradiction.
+
+The sole substantive *technical* residue remains P2's Cai–Li factor-of-2 — pre-logged OPEN
+in the 2026-07-04 reset, re-corroborated by ChatGPT + openai here, never fabricated to close;
+a Houston-gated referee-handoff item.
+
+Cross-reviewer variance is now confirmed at both tiers and is universal (pattern-066): on
+P4 grok-4.3 API = ACCEPT and on P3 grok-4.3 API = MINOR, both on the identical PDFs
+ChatGPT + openai REJECT — the maximally-harsh-referee structural floor (directive H).
+
+Integrity maintained: no ACCEPT fabricated, no MAJOR dispositioned non-real without a
+source citation, two reviewer claims explicitly FALSIFIED against source rather than
+rubber-stamped, the one real figure item found and fixed, no math fabricated. **Program
+disposition unchanged: CLEARED FOR SUBMISSION; the one real POSTPOLISH item (P1A Fig-map)
+is fixed; residual barrier = venue/referee-variance + the pre-existing known-open P2
+factor-of-2 → human referees (Houston-gated).**
