@@ -235,8 +235,8 @@ export const papers: Paper[] = [
     preprintId: "HUBIFY-2026-002",
     pdfMeta: "PDF · 35 pp · v1.7.100 · updated Jul 7, 2026 · md5 55d85fe5",
     artifacts: [
-      { label: "Read PDF", href: "/papers/02_full_draft_v1.7.100.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/02_full_draft_v1.7.100.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/02_full_draft_v1.7.101.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/02_full_draft_v1.7.101.pdf", kind: "secondary", download: true },
       {
         label: "LaTeX source",
         href: "https://github.com/Hubify-Projects/bigbounce/blob/main/research/focused_paper_source_integration/02_full_draft.tex",
@@ -290,8 +290,8 @@ export const papers: Paper[] = [
     preprintId: "HUBIFY-2026-003",
     pdfMeta: "PDF · 33 pp · v3.1.141 · updated Jul 7, 2026 · md5 0b4a6ab6",
     artifacts: [
-      { label: "Read PDF", href: "/papers/paper3_draft_v3.1.141.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/paper3_draft_v3.1.141.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/paper3_draft_v3.1.143.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/paper3_draft_v3.1.143.pdf", kind: "secondary", download: true },
       {
         label: "LaTeX source",
         href: "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p3_anomaly_engine/paper3_draft.tex",

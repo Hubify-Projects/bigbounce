@@ -46,6 +46,26 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "realwork-retest-p2-p3-closure-2026-07-07",
+    kind: "closure-wave",
+    dateISO: "2026-07-07",
+    title:
+      "REALWORK re-test — 2 genuinely-new framing items closed on P2 (v1.7.101) + P3 (v3.1.143): no number changed",
+    papers: ["P2", "P3"],
+    summary:
+      "Two genuinely-new items from the REALWORK external re-test, both pure framing/presentation — NO number changed on either paper. P2 (ChatGPT): flagged r=0.84 (the conservative template-mismatch recast factor) and r_eff≈0.99 (the c13 independent-Fisher survey-weighted recovery) as an apparent internal inconsistency. They measure DIFFERENT things; added ONE crisp reconciliation at the head of §spherex (\\label{para:reconcile}) — r=0.84 is the flat-weight shape-overlap cosine adopted as the conservative recast factor; r_eff≈0.99 is the survey-optimal (squeezed-dominated) amplitude recovery of an actual multi-tracer estimator, so the Fisher CONFIRMS 0.84 is conservative rather than contradicting it — and pointed the abstract + recurring-referee signpost at it so no reader can read them as contradictory. Also hardened the Fisher presentation per ChatGPT's 'not publication standard' specific: explicit survey spec (per-sample n̄_i, b_i from the committed Doré+2014 table) and a closed-form covariance definition (diagonal-triangle Gaussian multi-tracer Wick contraction, P^tot_ij = P_ij + n̄_i⁻¹δ_ij). P3 (Grok): the 268,519 headline is process-volume; only ~1.3% (2,468) are science-targets. The paper already distinguished these; sharpened so the VERY FIRST prose use of 268,519 (abstract) now carries 2,468 in the SAME sentence, and audited every headline-count use for the same pairing. Directive-G both: recompiled 0 undef-refs (P2 35pp md5 9800e47a…, P3 34pp md5 3d35aae0…), re-mirrored byte-identical to all served paths, site data (papers.ts hrefs + live-status.ts versions) updated same-commit. Nothing fabricated; −35/16 and every P3 count UNCHANGED.",
+    keyTakeaways: [
+      "P2 v1.7.101: r=0.84 (flat-weight shape cosine, conservative recast factor) vs r_eff≈0.99 (survey-optimal amplitude recovery) reconciled ONCE at §spherex — different quantities, not a contradiction; the Fisher confirms 0.84 is conservative",
+      "P2: Fisher presentation hardened — explicit SPHEREx survey spec + closed-form Gaussian multi-tracer covariance definition (addresses ChatGPT 'not publication standard')",
+      "P3 v3.1.143: first prose use of 268,519 now carries the science-target benchmark 2,468 in the same sentence (process-volume vs like-for-like ≈0.92× Liang2023); every headline-count use audited",
+      "Directive-G clean both: 0 undef-refs, P2 35pp / P3 34pp, all served PDFs byte-identical, site data same-commit; NO number changed, nothing fabricated",
+    ],
+    links: [
+      { label: "P2 ChatGPT raw", href: `${PR}/EXT_real/REALWORK_2026-07-07/P2_chatgpt.md` },
+      { label: "P3 Grok raw", href: `${PR}/EXT_real/REALWORK_2026-07-07/P3_grok.md` },
+    ],
+  },
+  {
     id: "p2-independent-fisher-closure-2026-07-07",
     kind: "closure-wave",
     dateISO: "2026-07-07",
