@@ -9,10 +9,10 @@ clicks are the only remaining step.
 
 | # | Paper | Bundle | Ver | pp | Notes |
 |---|-------|--------|-----|----|-------|
-| 1 | **P4** chirality catalog | `submissions/P4/arxiv_p4_v1.0.218.tar.gz` (26.7MB, md5 d3039085) | v1.0.218 | 31 | astro-ph.CO, x-list GA. Metadata in `ARXIV_METADATA.txt`. v1.0.218 DATA-UNLOCK: edge-on-isolated tie-break now measured — spatially isotropic (joint p=0.49, N=295,170), closes Gemini App E. **Submit FIRST — P5 needs its ID.** |
+| 1 | **P4** chirality catalog | `submissions/P4/arxiv_p4_v1.0.219.tar.gz` (25MB, md5 aa5dca1b) | v1.0.219 | 31 | astro-ph.CO, x-list GA. Metadata in `ARXIV_METADATA.txt`. v1.0.219 D-round final polish: condensed title + reader-first abstract + expanded AI-methods disclosure; presentation-only, no science number changed. **Submit FIRST — P5 needs its ID.** |
 | 2 | **P1B** MCMC/NaMaster/ALP companion | `submissions/P1B/arxiv_p1b_v1B.0.101.tar.gz` | v1B.0.101 | 22 | P1A cross-ref placeholder inside; reciprocal ID insert per `SUBMISSION_NOTE.md`. |
 | 3 | **P3** anomaly catalog | `submissions/P3/arxiv_p3_v3.1.139.tar.gz` (4.07MB) | v3.1.139 | 34 | Flip HF dataset visibility public (manual); Zenodo DOI mints at submit. DESI score-vs-z DATA-UNLOCK closed (honest MIXED result: DESI composition transfers, score-vs-z scoped to SDSS). |
-| 4 | **P2** f_NL forecast + Cai/Li resolution | `submissions/P2/arxiv_p2_v1.7.97.tar.gz` (md5 f244b52e) | v1.7.97 | 34 | Positioned as honest forecast + the −35/16 literature resolution. v1.7.97 FIGURE HYGIENE: regenerated fig1 (shape function) + fig4 (decision thresholds), which still rendered the stale −35/8-era labeling while every text/table headline already carried −35/16 — fig1 curve now converges to −35/16 = −2.1875 (benchmarks match tab:benchmarks), fig4 prediction line + error bars at −35/16 in the "strongly favors bounce" zone. Cosmetic label-sync, no number invented. pdf md5 ca8e376d. Zenodo DOI at submit. |
+| 4 | **P2** f_NL forecast + Cai/Li resolution | `submissions/P2/arxiv_p2_v1.7.98.tar.gz` (md5 894fd8bb) | v1.7.98 | 34 | Positioned as honest forecast + the −35/16 literature resolution. v1.7.98 D-round final polish: abstract restructured to lead with the −35/16 Cai-Li resolution then the forecast then the load-bearing caveat (was caveat-dense); colorblind-safe palette + consistent fonts across all figures; finished −35/8 → −35/16 label-sync in fig2/fig3/fig5 (which still showed the retracted value, contradicting their own corrected captions); AI-methods disclosure expanded; raw file-path column-overflow fixed. Presentation + disclosure only, no science number changed. pdf md5 7af1d09f. Zenodo DOI at submit. |
 
 arXiv assigns each ID immediately on submission (announcement later; the ID is usable at once).
 
@@ -31,10 +31,10 @@ arXiv assigns each ID immediately on submission (announcement later; the ID is u
   replacements if they land — none are blocking
 
 ## Verified state per paper (today's audit round)
-- **P4**: Grok+Gemini MINOR, null "robustly supported"; INT ACCEPT; every number reproduces.
+- **P4**: v1.0.219 D-round polish (condensed title + reader-first abstract); Grok+Gemini MINOR, null "robustly supported"; INT ACCEPT; every number reproduces.
 - **P1B**: INT MINOR/error-clean; standalone ΔN_eff contribution surfaced; false cover claims fixed.
 - **P3**: INT ACCEPT (byte-identical reproduction); anomalies proven real high-z QSOs (p~1e-103).
-- **P2**: −35/16 3-way certified; stale −35/8-era σ swept (incl. a regenerated figure); Grok MINOR.
+- **P2**: v1.7.98 D-round polish — abstract leads with −35/16 Cai-Li resolution; colorblind figures + fig2/3/5 label-sync (−35/8→−35/16); AI-methods expanded; path-overflow fixed. −35/16 3-way certified; Grok MINOR.
 - **P5**: all numbers exact; Δf_CW monopole-invariant on public data; Paper-IV = citation timing.
 - **P1A**: all tiers derived/grounded/NDA-bounded; f_NL −35/16 propagated (20 sites);
   companion numbers artifact-cited; 0 genuinely-new Grok/Gemini findings.

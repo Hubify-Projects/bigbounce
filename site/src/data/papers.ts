@@ -217,9 +217,9 @@ export const papers: Paper[] = [
     slug: "paper-2",
     number: "2",
     title: "Testing the Matter Bounce with Primordial Non-Gaussianity: A SPHEREx Sensitivity Recast with a MegaMapper Outlook",
-    version: "v1.7.95",
-    lastUpdated: "2026-07-01",
-    tldr: "Shows f_NL = −35/8 is a parameter-free, mechanism-independent prediction of all matter-bounce models, and forecasts SPHEREx will detect or kill it at 4.7–12σ by ~2028 — the decisive bounce-vs-inflation discriminator.",
+    version: "v1.7.98",
+    lastUpdated: "2026-07-06",
+    tldr: "Resolves the long-standing Cai–Li factor-of-two: the matter-bounce squeezed local non-Gaussianity is f_NL = −35/16 = −2.1875 (not −35/8), and recasts published SPHEREx forecasting power onto it — ~2.6–2.75σ optimistic, ~1.3–2.75σ realistic — as a bounce-vs-inflation discriminator.",
     path: publicationPath({
       external: {
         label: "External journal-style review",
@@ -232,7 +232,7 @@ export const papers: Paper[] = [
         note: "EXT22 confirm pending before final sign-off gate",
       },
     }),
-    pages: "30",
+    pages: "34",
     refs: "39",
     readiness: 78,
     statusVariant: "amber",
@@ -260,10 +260,10 @@ export const papers: Paper[] = [
       "arXiv endorsement + coordinated submission (mints the DOIs/arXiv IDs that clear the last structural reviewer blocker)",
     ],
     preprintId: "HUBIFY-2026-002",
-    pdfMeta: "PDF · 30 pp · v1.7.85 · updated Jul 1, 2026 · md5 64adb931",
+    pdfMeta: "PDF · 34 pp · v1.7.98 · updated Jul 6, 2026 · md5 7af1d09f",
     artifacts: [
-      { label: "Read PDF", href: "/papers/paper2_fnl_forecast_v1.7.95.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/paper2_fnl_forecast_v1.7.95.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/paper2_fnl_forecast_v1.7.98.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/paper2_fnl_forecast_v1.7.98.pdf", kind: "secondary", download: true },
       {
         label: "LaTeX source",
         href: "https://github.com/Hubify-Projects/bigbounce/blob/main/research/focused_paper_source_integration/02_full_draft.tex",
@@ -343,9 +343,9 @@ export const papers: Paper[] = [
   {
     slug: "paper-4",
     number: "4",
-    title: "Survey-Scale Galaxy Chirality with Equivariant TTA: A Null Real-Space Chirality Dipole, a Quantifiable Monopole-Mask Leakage Channel, and Diagnostic Evidence for a Depth/Morphology-Correlated Canonical-Mask Residual on 8.47 Million DESI Legacy Galaxies (3.2 Million Spirals)",
-    version: "v1.0.209",
-    lastUpdated: "2026-07-01",
+    title: "A Null Chirality Dipole in 8.5 Million DESI Galaxies from Equivariant Deep Learning",
+    version: "v1.0.219",
+    lastUpdated: "2026-07-06",
     tldr: "Classifies 8.47M galaxies for spiral handedness with a rotation-equivariant ViT ensemble and finds a null real-space chirality dipole (+0.41σ, rank-p=0.31; A_dip < 6.8×10⁻³ at 95% UL) — the earlier −0.122σ subsample-mask null was withdrawn in v1.0.166 after a provenance audit.",
     path: [
       { label: "Draft complete", state: "done" },
@@ -375,7 +375,7 @@ export const papers: Paper[] = [
         note: "First in queue — awaiting EXT22 confirm + Houston sign-off",
       },
     ],
-    pages: "26",
+    pages: "31",
     refs: "46",
     readiness: 80,
     statusVariant: "amber",
@@ -409,10 +409,10 @@ export const papers: Paper[] = [
       "arXiv endorsement + coordinated submission (mints the DOIs/arXiv IDs that clear the last structural reviewer blocker)",
     ],
     preprintId: "HUBIFY-2026-004",
-    pdfMeta: "PDF · 26 pp · v1.0.209 · updated Jul 1, 2026 · md5 35c8d42d · 33 MB",
+    pdfMeta: "PDF · 31 pp · v1.0.219 · updated Jul 6, 2026 · md5 e8b4f10a · 34 MB",
     artifacts: [
-      { label: "Read PDF", href: "/papers/chirality_catalog_paper_v1.0.209.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/chirality_catalog_paper_v1.0.209.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/chirality_catalog_paper_v1.0.219.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/chirality_catalog_paper_v1.0.219.pdf", kind: "secondary", download: true },
       {
         label: "LaTeX source",
         href: "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/chirality_catalog_paper.tex",

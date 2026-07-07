@@ -46,6 +46,28 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "P4-P2-final-polish-dround-2026-07-06",
+    kind: "closure-wave",
+    dateISO: "2026-07-06",
+    title:
+      "P4 v1.0.219 + P2 v1.7.98 — final-polish D-round (flagship pair): top-journal presentation + disclosure only, NO scientific number/claim changed",
+    papers: ["P4", "P2"],
+    summary:
+      "Editorial final-polish pass on the two flagship papers to top-journal presentation standard, presentation + disclosure ONLY (zero science changed; both recompile 0 undef-refs, and the one genuinely-visible P2 column overflow — a raw repo path — was fixed). P4: the ~40-word descriptive title condensed to 'A Null Chirality Dipole in 8.5 Million DESI Galaxies from Equivariant Deep Learning' (result-first; the monopole-mask/canonical-residual detail lives in the abstract); the caveat-dense abstract Gemini flagged rewritten reader-first (null result → method → the two honest limitations stated ONCE each), every number preserved verbatim (+0.41σ, p=0.31, z≈−18, 1.7%, 99.32%, +3.64/+7.28σ, A_95∈(1.0,1.5]%). P2: abstract restructured to LEAD with the −35/16 Cai–Li resolution then the forecast then the load-bearing caveat (was caveat-first), the triple-stated resolution consolidated; the committed figure generator got a colorblind-safe (Wong) palette + consistent fonts, and the −35/8→−35/16 label-sync begun in v1.7.97 was finished — fig2/fig3/fig5 STILL rendered the retracted −35/8-era values, directly contradicting their own already-corrected captions. Both: AI-methods disclosure upgraded to agentic-pipeline-under-author-direction + results-verified-against-committed-artifacts + public-audit-trail. Cai/Brandenberger courtesy email drafted (do-not-send). Directive-G hygiene complete.",
+    keyTakeaways: [
+      "P4 title condensed from ~40 words to a crisp 12-word result-first title; propagated to metadata/README/cover/checklist/Convex",
+      "P4 abstract rewritten reader-first (result → method → two caveats once each), closing Gemini's caveat-density flag with zero disclosure lost",
+      "P2 abstract now LEADS with the −35/16 Cai–Li resolution (the contribution) then the forecast — was opening with a caveat wall; triple-repetition of the resolution consolidated",
+      "P2 figures: colorblind-safe palette + fonts, and fig2/fig3/fig5 finally synced from the retracted −35/8 to the corrected −35/16 (they contradicted their own captions); a raw file-path column overflow fixed",
+      "AI-methods disclosure (both) upgraded to agentic-pipeline-under-author-direction + artifact-verified + public-audit-trail; NO scientific number/claim changed anywhere",
+      "Directive-G: P4 v1.0.218→v1.0.219 (md5 e8b4f10a…, 31pp); P2 v1.7.97→v1.7.98 (md5 7af1d09f…, 34pp); both mirrored byte-identical to all served paths, Convex bumped, bundles rebuilt + standalone-verified, date July 6 2026",
+    ],
+    links: [
+      { label: "P4 source", href: `${GH}/pipelines/p2_chirality/chirality_catalog_paper.tex` },
+      { label: "P2 source", href: `${GH}/research/focused_paper_source_integration/02_full_draft.tex` },
+    ],
+  },
+  {
     id: "P1A-P1B-final-polish-dround-2026-07-07",
     kind: "closure-wave",
     dateISO: "2026-07-07",
