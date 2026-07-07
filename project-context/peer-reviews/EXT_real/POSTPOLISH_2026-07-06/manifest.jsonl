@@ -32,3 +32,5 @@
 {"paper":"P1B","reviewer":"grok","verdict":"MAJOR REVISIONS","raw_file":"P1B_grok.md","status":"HARVESTED","harvested_at":"2026-07-07T00:56Z"}
 {"paper":"P1B","reviewer":"gemini","verdict":"MAJOR REVISIONS","raw_file":"P1B_gemini.md","status":"HARVESTED","harvested_at":"2026-07-07T00:57Z"}
 {"paper":"P1A","reviewer":"grok","verdict":"MAJOR REVISIONS","raw_file":"P1A_grok.md","status":"HARVESTED","harvested_at":"2026-07-07T00:59Z"}
+{"paper":"P1A","reviewer":"gemini","verdict":"MAJOR REVISIONS","raw_file":"P1A_gemini.md","status":"HARVESTED","harvested_at":"2026-07-07T01:00Z"}
+{"paper":"P1A","reviewer":"chatgpt","verdict":"REJECT","raw_file":"P1A_chatgpt.md","status":"HARVESTED","harvested_at":"2026-07-07T01:02Z"}
