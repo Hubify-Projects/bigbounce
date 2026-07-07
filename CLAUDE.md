@@ -171,6 +171,8 @@ Houston caught (2026-07-03) that recent "reviews" were EXT sub-agent reports wit
 
 **I5 — Self-improvement is standing:** document every review-process learning here + in the scistack review skills (`~/.claude/scistack/`) as it happens. "We gotta do better" — no repeat of the same mistake.
 
+**I6 — Figure-image propagation after ANY numeric correction (HARD GATE).** After ANY numeric-value correction, the propagation sweep MUST include regenerating every FIGURE IMAGE that renders the value — a text grep CANNOT see values baked into PNGs/PDF figures. Inventory every `\includegraphics` in the paper and check each figure for the corrected value; regenerate each stale figure (prefer the committed generator script; else recreate via matplotlib; else patch the label), re-mirror byte-identical to all served figure paths, and VERIFY by rendering the figure page of the recompiled PDF (not a filename check). Trap (2026-07-06): P1A Fig-1 `fig_theory_map.png` carried the superseded matter-bounce `f_NL=-35/8` through TWO review rounds after the v110 text sweep moved the body uniformly to `-35/16` — the stale value lived only inside the PNG. Fixed in v1A.0.112. Also encoded in canonical spec §4 (directive-G hygiene).
+
 ---
 
 ## Drive-to-100 loop (if active)
