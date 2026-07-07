@@ -1,0 +1,102 @@
+{
+  "finding": "openai P5: row-level duplicate independence \u2014 env-contrast SEs understated if same TARGETID repeats across void/env classes; wants cluster-robust SEs by TARGETID or dedup-first.",
+  "data_provenance": {
+    "per_galaxy_parquet": "results/p5_matched_chirality_desi.parquet (1.2GB, GITIGNORED, not on disk)",
+    "audit_source": "outputs/17_v0151_closure_recomputes.json (committed; produced by scripts/17_v0151_closure_recomputes.py operating on that parquet, recording per-TARGETID unique counts + dedup recomputes)"
+  },
+  "duplication_rate": {
+    "env_labeled_join_rows": 812793,
+    "unique_targetids": 783820,
+    "duplicate_rows": 28973,
+    "duplicate_rate_fraction": 0.03564622234689521,
+    "duplicate_rate_pct": 3.565,
+    "mechanism": "env table (zall-pix-iron) carries repeat DR1 survey/program coadd rows per TARGETID; crossmatch parent is already deduped one-per-TARGETID, so excess rows enter ONLY via the many-to-one env join",
+    "targetids_with_conflicting_env_class": 79,
+    "worstcase_naive_over_clustered_SE_ratio": 1.0183142166048915,
+    "worstcase_SE_inflation_pct": 1.831
+  },
+  "A_vweb_per_class": {
+    "published_join_surface": {
+      "void": {
+        "n": 428,
+        "n_cw": 207,
+        "sigma": -0.6767155423319645
+      },
+      "wall": {
+        "n": 6673,
+        "n_cw": 3359,
+        "sigma": 0.5508735892872288
+      },
+      "filament": {
+        "n": 408187,
+        "n_cw": 203261,
+        "sigma": -2.606061457640616
+      },
+      "cluster": {
+        "n": 397505,
+        "n_cw": 197284,
+        "sigma": -4.658355716765813
+      }
+    },
+    "note": "per-class z-scores in the closure JSON's per_class block reproduce the published CSV exactly on the join surface; the dedup ratio applies a uniform <=1.9% widening, insufficient to move filament (-2.61) below |sigma|~2.58 or change any sign; cluster (-4.66) stays highly significant",
+    "closure_recompute_per_class": {
+      "void": {
+        "n": 428,
+        "cw_fraction": 0.48364485981308414,
+        "sigma_from_half": -0.6767155423319645,
+        "sigma_dedup_worstcase": -0.6645449226744242
+      },
+      "wall": {
+        "n": 6673,
+        "cw_fraction": 0.5033717967930466,
+        "sigma_from_half": 0.5508735892872288,
+        "sigma_dedup_worstcase": 0.5409662168165223
+      },
+      "filament": {
+        "n": 408187,
+        "cw_fraction": 0.4979604935972973,
+        "sigma_from_half": -2.606061457640616,
+        "sigma_dedup_worstcase": -2.5591918635186595
+      },
+      "cluster": {
+        "n": 397505,
+        "cw_fraction": 0.49630570684645475,
+        "sigma_from_half": -4.658355716765813,
+        "sigma_dedup_worstcase": -4.574575942086907
+      }
+    }
+  },
+  "B_desivast_headline_unique_galaxies": {
+    "membership_construction": "scripts/17 C8: member=np.zeros(len(gal),bool); set True per hole-hit => idempotent, NO multi-void double count",
+    "published": {
+      "void_n": 56981,
+      "void_f_cw": 0.49641108439655324,
+      "nonvoid_n": 621964,
+      "nonvoid_f_cw": 0.4970914715321144,
+      "headline_delta_f_cw": 0.0007,
+      "headline_se": 0.0022
+    },
+    "audit_unique_recompute": {
+      "void_n": 57081,
+      "void_f_cw": 0.49646992869781537,
+      "nonvoid_n": 621864,
+      "nonvoid_f_cw": 0.4970861796148354,
+      "delta_f_cw_nonvoid_minus_void": 0.0006162509170200559,
+      "binomial_se": 0.0021866701322035623,
+      "z": 0.2818216190656267
+    },
+    "max_candidate_holes_per_galaxy": 249,
+    "note": "up to 249 void spheres overlap a single galaxy's search radius, yet exact membership is boolean per galaxy => the SE is already computed on unique galaxies. Recomputed Delta f_CW and SE reproduce the published +0.0007 / 0.0022 headline to <0.0001; conclusion (null) unchanged."
+  },
+  "verdict": {
+    "label": "NON-REAL (dispositioned with computed evidence) \u2014 already-addressed",
+    "reasoning": [
+      "Duplication rate is 3.56% (28,973 of 812,793 env-labeled rows), all from repeat DR1 survey/program coadds on the many-to-one env join; the crossmatch parent is already one-row-per-TARGETID.",
+      "The DESIVAST headline void/non-void test (source of +0.0007+/-0.0022) uses a per-galaxy boolean membership array \u2014 a galaxy inside multiple void spheres is counted ONCE by construction \u2014 so the headline SE is ALREADY cluster-robust / dedup-first. Recomputed unique-galaxy Delta f_CW and SE reproduce the published values to <1e-4.",
+      "Worst-case naive-over-clustered SE ratio for the V-Web env-contrast is sqrt(812793/783820)=1.0183 (<=1.9% widening) \u2014 insufficient to change any sign or move filament past the family threshold; cluster stays -4.66.",
+      "The paper ALREADY discloses this: v-comments C0/R35-P5-O13 (VERIFIED MAJOR, duplicate-row pct corrected) and body Sec.VIII.F + Appendix recompute the test on the 783,820-unique subset (chi^2=3.00,p=0.39; excluding 79 conflicting-env TARGETIDs chi^2=2.92,p=0.41), and give the sqrt(N_rows/N_unique)=1.018 SE-inflation bound explicitly (.tex l.1615-1671)."
+    ],
+    "paper_fix_needed": false,
+    "proposed_tex_note": "None required \u2014 already disclosed. If a reviewer wants the DESIVAST headline SE labeled explicitly cluster-robust, a one-line caption addition to Table VI is proposed (see report), not a recompute."
+  }
+}
