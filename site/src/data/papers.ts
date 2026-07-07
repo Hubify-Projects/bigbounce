@@ -321,10 +321,10 @@ export const papers: Paper[] = [
       "arXiv endorsement + coordinated submission (mints the DOIs/arXiv IDs that clear the last structural reviewer blocker)",
     ],
     preprintId: "HUBIFY-2026-003",
-    pdfMeta: "PDF · 32 pp · v3.1.130 · updated Jul 1, 2026 · md5 68a38fa2",
+    pdfMeta: "PDF · 34 pp · v3.1.138 · updated Jul 5, 2026 · md5 28d9e63d",
     artifacts: [
-      { label: "Read PDF", href: "/papers/paper3_draft_v3.1.130.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/paper3_draft_v3.1.130.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/paper3_draft_v3.1.138.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/paper3_draft_v3.1.138.pdf", kind: "secondary", download: true },
       {
         label: "LaTeX source",
         href: "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p3_anomaly_engine/paper3_draft.tex",
