@@ -1,0 +1,29 @@
+# INT API POST-POLISH (native-PDF) — P1B v1B.0.102 — openai (gpt-5.5)
+PAPER: P1B  |  VERSION: v1B.0.102  |  MODEL: gpt-5.5
+MODALITY: native-pdf (Files API purpose=user_data + Responses input_file)
+UTC: 2026-07-07T07:04:44.785918+00:00  |  latency: 80.4s
+USAGE: {"input_tokens": 38331, "input_tokens_details": {"cached_tokens": 0}, "output_tokens": 3272, "output_tokens_details": {"reasoning_tokens": 2053}, "total_tokens": 41603}
+PARSED VERDICT: MAJOR REVISIONS
+
+======================================================================
+RAW RESPONSE (verbatim):
+======================================================================
+
+(1) VERDICT: MAJOR REVISIONS
+
+(2) ISSUES:
+1. [MAJOR] Secs. I, III, V — Scope/novelty: the manuscript repeatedly states that none of the analyses tests an ECH torsion-modified theory module, yet the framing still presents the work as a companion to an ECH spin-torsion program; as written, the paper establishes only generic null compatibility and reproducibility of auxiliary pipelines, not a standalone PRD-level physics result unless the claims are substantially narrowed.
+2. [MAJOR] Sec. III A — ECH-sector \(\Delta N_{\rm eff}\) derivation: the estimate \(\rho_{\rm tor}\sim G_N T^6\) relies on an uncontrolled factorization \(\langle(A_\mu A^\mu)\rangle_T\sim n_f^2\) for an unpolarized relativistic plasma, does not treat spin/statistical contractions, signs, species factors, or the stiff-fluid interpretation carefully, and maps \(\rho_{\rm tor}/\rho_{\rm rad}\) directly to \(\Delta N_{\rm eff}\) without a controlled finite-temperature calculation; the conclusion of negligible size is plausible, but the claimed “first-principles derivation” is overstated.
+3. [MAJOR] Secs. III and V — MCMC likelihood consistency: the main chains mix PR4/NPIPE high-\(\ell\) CamSpec with 2018 low-\(\ell\)/lensing likelihoods, while the verification rerun uses different low-\(\ell\)/lensing likelihoods; this is a robustness check, not an identical reproduction, and the manuscript should not treat the \(0.04\sigma\) agreement as a general bound on release-pairing systematics without a controlled likelihood-by-likelihood comparison.
+4. [MAJOR] Secs. III and V — Model-comparison section is misleading: the section title promises cosmological fits and model comparison, but no Bayes factor, \(\Delta\)AIC, \(\Delta\)BIC, or evidence calculation is performed; either remove “model comparison” from the analysis framing or provide an actual evidence/information-criterion analysis.
+5. [MAJOR] Sec. IV — NaMaster validation overclaim: the synthetic-sky test omits foregrounds, beam mismatch, anisotropic/ correlated noise, realistic mapmaking systematics, and the \(\beta\)–\(\alpha\) calibration degeneracy; moreover the canonical estimator is intentionally unweighted and biased. It is acceptable as a code-algebra check, but not as a “systematic floor” or broadly validated birefringence pipeline without much stronger qualifications.
+6. [MAJOR] Sec. VI — ALP posterior is not an independent consistency test: the ALP MCMC uses a Gaussian likelihood built directly from the same published \(\beta_{\rm obs}\) datum, so agreement of \(\beta_{\rm ALP}\), \(\beta_{\rm free}\), and \(\beta_{\rm obs}\) is largely imposed by construction; the scientifically relevant result is prior volume/fine tuning, which needs to be elevated and quantified more transparently.
+7. [MAJOR] Sec. VI — Spectator consistency is not imposed self-consistently: much of the ALP posterior lies in a regime where the field is not a spectator, yet the cosmological background is kept fixed to \(\Lambda\)CDM and \(\Omega_a\) cuts are applied only post hoc. A physically consistent spectator analysis should impose \(\Omega_a\) in the sampling prior/likelihood or solve the coupled background where \(\Omega_a\) is non-negligible.
+8. [MAJOR] Abstract and Sec. VI — Prior-predictive accommodation fractions: the abstract quotes important numbers, e.g. 11.6%, 23.9%, 6.1%, 12.6%, but the body and appendices do not present a sufficiently explicit derivation, table, prior definition, sensitivity test, or reproducible reduction of these fractions; these are central to the “not tautological but not generic” claim and must be documented in the main text.
+9. [MINOR] Sec. III — Negative \(\Delta N_{\rm eff}\) prior: allowing \(N_{\rm eff}<3.046\) is acceptable as a phenomenological parameterization, but the physical interpretation as “extra radiation” then requires clearer separation between two-sided proxy constraints and one-sided physical extra-species bounds.
+10. [MINOR] Sec. III — \(M_B\)–\(H_0\) discussion: the manuscript itself notes that the quoted \(3.2\sigma\) offset is not a conditioned tension statistic; this discussion is lengthy and may confuse readers unless either shortened or replaced by a properly conditioned covariance calculation.
+11. [MINOR] Appendix A/Data availability — Archival reproducibility: GitHub commits and HuggingFace URLs are useful but insufficient for a final archival record; a tagged release with a Zenodo/Dataverse DOI should be provided before publication.
+12. [MINOR] References and cross-paper dependence: placeholder arXiv identifiers, in-preparation companion papers, and program-wide claims make the manuscript difficult to referee as a standalone submission; all claims needed here should be self-contained or tied to available references.
+13. [MINOR] Presentation — The manuscript is overlong and repetitive, with many caveats repeated in the abstract, introduction, section openings, footnotes, and conclusions; substantial compression would make the actual quantitative claims clearer.
+
+(3) The narrow claim that the reported exercises are limited null-consistency/reproducibility checks is partly supported, but any stronger central claim that they meaningfully verify or support the ECH spin-torsion scenario is not supported in the present form.
