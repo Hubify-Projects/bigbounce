@@ -47,8 +47,25 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.113}
+\newcommand{\paperVersion}{v1A.0.114}
 \newcommand{\paperTimestamp}{July 7, 2026}
+% v1A.0.113->114 (2026-07-07): FIERZ-LEMMA PROOF APPLIED (completeness MAJOR closure).
+%   The operator-basis completeness argument previously named ONE open item -- the
+%   fully explicit Fierz-by-Fierz projection lemma -- as "left to follow-up". That
+%   lemma is now PROVEN and machine-verified (sympy, arxiv/scripts/fierz_lemma_check.py:
+%   LEMMA PROVEN) and applied here. New Appendix (app:fierz) states the 5x5 Fierz
+%   class-mixing matrix F derived from explicit Dirac gammas (matches Itzykson-Zuber /
+%   Nieves-Pal hep-ph/0306087 exactly, F^2=1 involution verified), the closure table
+%   (AA -> 1/4 SS + 1/2 VV - 1/2 AA - 1/4 PP; VV symmetric; VA rotates within {V,A}),
+%   zero escape classes, all coefficients dimensionless rationals => kappa=M_Pl^-2
+%   preserved term-by-term => single-scale NDA ceiling bounds the entire finite tower.
+%   Upgraded 8 body/abstract/conclusion sites from "left to follow-up / deferred /
+%   single residual open item" to "proven in App.~fierz". Added ItzyksonZuber +
+%   NievesPal2004 to references.bib. Honest residual scope UNCHANGED and kept: the
+%   proof is single-species minimal (totally-antisymmetric axial) ECH; multi-flavor
+%   bookkeeping + non-minimal completions (new light scale mu<<M_Pl, trace/tensor
+%   torsion, dynamical Chern-Simons) remain the STATED no-go boundary -- NOT overclaimed
+%   beyond the machine-verified class-level closure. No quantitative number changed.
 % v1A.0.111->112 (2026-07-07): FIGURE-IMAGE CORRECTION (POSTPOLISH EXT round). fig_theory_map.png
 %   still rendered the SUPERSEDED matter-bounce f_NL=-35/8 in its "Observable prediction"
 %   box while the paper body was uniformly -35/16 after the v110 text sweep (value baked
@@ -1052,9 +1069,11 @@ coefficient) are now closed explicitly at the operator level
 (Sec.~\ref{sec:jackiwpi_cs}, Sec.~\ref{sec:r1_parityodd_partner}): the former is
 a total derivative for constant coupling and R4-class otherwise, the latter
 inherits R1's $M_{\rm Pl}^{-2}$ suppression as the parity-odd projection of the
-same torsion-elimination operator. The \emph{complete} dimension-6 parity-odd
-operator basis (all Fierz four-fermion structures with the gravitational
-Chern-Simons invariant and a projection lemma) remains a scoped follow-up. The
+same torsion-elimination operator. The Fierz-by-Fierz projection lemma
+establishing that these four-fermion structures close onto a finite, uniformly
+$M_{\rm Pl}^{-2}$-suppressed dimension-6 basis is proven in
+Appendix~\ref{app:fierz}; the only residual scope is the non-minimal completion
+(a new light scale or non-minimal torsion coupling). The
 dark-energy mapping is a single-scale NDA (naive-dimensional-analysis)
 dimensional no-go: the parity-odd operator has off-shell mass dimension
 $+1$, and single-scale power counting ($\Lambda\sim\MPl$, no cancellation)
@@ -1180,9 +1199,8 @@ gravitational Chern--Simons term $R\!\wedge\!\widetilde R$ and the parity-odd
 four-fermion partner of Route~1 (carrying coefficient
 $\gamma_{\rm BI}/(\gamma_{\rm BI}^2{+}1)\!\cdot\! 8\pi G$)---previously flagged
 as omitted operators---are now closed explicitly in the body
-(\S\ref{sec:rotation}), covered by the completeness argument rather than
-deferred. What remains for follow-up is only the fully explicit
-Fierz-by-Fierz projection lemma, not the closure itself. The dark-energy
+(\S\ref{sec:rotation}), covered by the completeness argument, now made explicit
+by the Fierz-by-Fierz projection lemma of Appendix~\ref{app:fierz}. The dark-energy
 mapping presented in
 Sec.~\ref{sec:rotation} and Appendix~\ref{app:dimensions} is a single-scale
 NDA dimensional no-go: the leading parity-odd operator written in
@@ -1222,8 +1240,8 @@ proven a complete diffeomorphism-invariant operator basis; within
 \emph{minimal} ECH they are basis-complete at the $M_{\rm Pl}$-power-counting
 level (the Jackiw--Pi $R\!\wedge\!\widetilde R$ term and the parity-odd
 four-fermion Holst partner, previously flagged as omitted, are closed
-explicitly in \S\ref{sec:rotation}), with only the fully explicit
-Fierz-by-Fierz projection lemma left to follow-up;
+explicitly in \S\ref{sec:rotation}), with the fully explicit
+Fierz-by-Fierz projection lemma proven in Appendix~\ref{app:fierz};
 \textbf{(b)}~a first-principles positive-amplitude ECH-to-$\rho_\Lambda$
 derivation---none is claimed; the dark-energy mapping is instead a
 single-scale NDA dimensional no-go (off-shell mass dimension $+1$ forces
@@ -2137,11 +2155,12 @@ Chern--Simons term is a total derivative for constant coupling (zero
 equation-of-motion contribution) and R4-class under any non-minimal dynamical
 coupling. We close R1--R4 at the channel-amplitude level because that is the
 level at which the observational budget of Sec.~\ref{sec:obs} discriminates; a
-full operator-level no-go would require enumerating the \emph{complete}
+full operator-level no-go requires enumerating the \emph{complete}
 dimension-6 parity-odd four-fermion basis (all Fierz structures) together with
-the gravitational Chern-Simons invariant and a projection lemma, which
---- beyond the two named operators closed above --- is deferred to a follow-up
-theory paper. The robustness check provided by the
+the gravitational Chern-Simons invariant and a projection lemma; for the
+four-fermion sector this projection lemma is now provided in
+Appendix~\ref{app:fierz}, leaving only a non-minimal completion outside the
+established no-go. The robustness check provided by the
 14-barrier closure of Sec.~\ref{sec:barriers} reinforces the four-route
 amplitude-level no-go without claiming operator-level exhaustiveness.
 
@@ -2181,9 +2200,13 @@ representative but exhaustive at the level of $M_{\rm Pl}$-power-counting classe
 \emph{within minimal ECH}; the only operators that evade the NDA bound are those
 introducing a new light scale $\mu\ll M_{\rm Pl}$ or an exact cancellation---i.e.\
 a non-minimal extension, which is by construction the tuning the mechanism is
-meant to explain (Appendix~\ref{app:dimensions}). The single residual open item
-is the fully explicit Fierz-by-Fierz projection lemma of \S\ref{sec:rotation};
-the power-counting-class completeness itself is established here. We stress that
+meant to explain (Appendix~\ref{app:dimensions}). The fully explicit
+Fierz-by-Fierz projection lemma is proven in Appendix~\ref{app:fierz} (the
+generated $AA$ and $VA$ operators Fierz-close onto $\{SS,PP,VV,AA\}$ with all
+coefficients dimensionless rationals, so the $M_{\rm Pl}^{-2}$ power is preserved
+term by term); both the power-counting-class completeness and its per-operator
+projection are thus established, and the single residual item is the non-minimal
+completion. We stress that
 the individual dimensional mismatch ($+1$ vs.\ $+4$) is, taken operator by
 operator, an elementary power-counting statement; its significance here is not
 novelty of the per-operator estimate but its \emph{basis-completeness}---the same
@@ -2399,13 +2422,12 @@ the omitted-operator flag identified. Combined with the completeness lemma
 above, the enumeration is basis-complete at the level of $M_{\rm Pl}$-power-counting
 classes \emph{within minimal ECH}: the F1 (algebraic torsion) and F2
 (totally-antisymmetric axial spin current) structural facts plus NDA
-monotonicity leave no power-counting class unbounded. What remains genuinely
-open --- and is the scoped follow-up the abstract already promises --- is only
-the fully explicit \emph{Fierz-by-Fierz} form of the projection lemma over the
-dimension-6 parity-odd basis (all four-fermion structures $VV,AA,VA,$ tensor,
-together with the single gravitational-Chern--Simons invariant), showing every
-individual projection inherits the bound term by term; the power-counting-class
-statement is established. Genuine operator-level escape therefore requires a
+monotonicity leave no power-counting class unbounded. The fully explicit
+\emph{Fierz-by-Fierz} form of the projection lemma is now proven
+(Appendix~\ref{app:fierz}), completing the enumeration term by term. What
+remains genuinely open is only a \emph{non-minimal} completion---a new light
+scale $\mu\ll M_{\rm Pl}$ or an exact cancellation---which is by construction the
+tuning the mechanism is meant to explain. Genuine operator-level escape therefore requires a
 \emph{non-minimal} completion---a new light scale $\mu\ll M_{\rm Pl}$ or an exact
 cancellation---which is by construction the tuning the mechanism is meant to
 explain, and is the stated scope boundary of this no-go.
@@ -2874,10 +2896,10 @@ $\gamma_{\rm BI}/(\gamma_{\rm BI}^2{+}1)\cdot 8\pi G$ coefficient) are
 now \emph{also} closed, in Sec.~\ref{sec:r1_parityodd_partner}
 (Planck suppression $+$ vanishing mean field, inheriting R1) and
 Sec.~\ref{sec:jackiwpi_cs} (total derivative for constant coupling;
-R4-class otherwise); only the \emph{complete} dimension-6 parity-odd
-operator basis (all Fierz structures $+$ the gravitational Chern--Simons
-invariant, with a projection lemma) is left to a follow-up
-operator-basis analysis (Sec.~\ref{sec:fourroute} Scope paragraph;
+R4-class otherwise); the dimension-6 parity-odd four-fermion basis is
+Fierz-closed and uniformly Planck-suppressed by the projection lemma of
+Appendix~\ref{app:fierz}; only a non-minimal completion lies outside the
+established no-go (Sec.~\ref{sec:fourroute} Scope paragraph;
 abstract). Within the four enumerated channels:
 R1 (NJL contact) is amplitude-suppressed by $M_{\rm Pl}^{-2}$ and
 parity-even. R2 (one-loop graviton corrections) is amplitude-suppressed
@@ -4223,6 +4245,59 @@ a controlled EFT-level construction (an operator-basis closure for a
 local dimension-$+4$ parity-odd interaction with all required $\MPl$
 factors in the coupling coefficient) remains left to a
 separate companion treatment.
+
+%% --- B2: Fierz-by-Fierz projection lemma ---
+\section{Fierz-by-Fierz Projection Lemma for the Minimal-ECH
+Four-Fermion Basis}\label{app:fierz}
+The torsion-elimination step (Sec.~\ref{sec:parityodd},
+Eqs.~\eqref{eq:torsion}--\eqref{eq:4fermi_partner}) generates, at the single
+prefactor $\kappa=8\pi G=M_{\rm Pl}^{-2}$, the axial--axial contact term
+$c_{AA}\,(J^5\!\cdot\!J^5)$ and---at finite Barbero--Immirzi parameter---the
+vector--axial Holst partner $c_{VA}\,(J\!\cdot\!J^5)$. We prove that the
+complete Fierz rearrangement of these operators closes onto the enumerated
+dimension-$\le 6$ parity-relevant basis with \emph{no} escape operator and
+\emph{no} change of $M_{\rm Pl}$ power.
+
+On the $16$-dimensional Clifford basis, grouped into the five Lorentz classes
+$(S,V,T,A,P)=(\mathbf 1,\gamma^\mu,\sigma^{\mu\nu},\gamma^\mu\gamma^5,\gamma^5)$,
+Fierz rearrangement of a current--current product is the linear map
+$F_{AB}=\tfrac14\,\mathrm{Tr}_{\rm class}(\Gamma^A\Gamma_B\Gamma_A\Gamma^B)/d_B$,
+$d_B=\mathrm{Tr}(\Gamma^B\Gamma_B)$. Computed from the explicit Dirac matrices
+in the paper's mostly-plus signature (script
+\texttt{arxiv/scripts/fierz\_lemma\_check.py}), it equals the standard
+matrix~\cite{ItzyksonZuber,NievesPal2004}
+\begin{equation}\label{eq:fierzmatrix}
+F=\frac14\!\begin{pmatrix}
+1&1&1&1&1\\ 4&-2&0&2&-4\\ 6&0&-2&0&6\\
+4&2&0&-2&-4\\ 1&-1&1&-1&1\end{pmatrix},\qquad F^2=\mathbb 1,
+\end{equation}
+in the order $(S,V,T,A,P)$; the involution $F^2=\mathbb 1$ is verified
+symbolically. Applying $F$ to the generated operators gives the exact
+decompositions
+\begin{align}
+(J^5\!\cdot\!J^5)&\;\xrightarrow{\ \rm Fierz\ }\;
+\tfrac14 SS+\tfrac12 VV-\tfrac12 AA-\tfrac14 PP,\label{eq:AAdecomp}\\
+(J\!\cdot\!J)&\;\xrightarrow{\ \rm Fierz\ }\;
+\tfrac14 SS-\tfrac12 VV+\tfrac12 AA-\tfrac14 PP,
+\end{align}
+while the parity-odd $(J\!\cdot\!J^5)$ Holst partner rotates only within the
+$\{V,A\}$ block ($F_{VA}=F_{AV}=\tfrac12$), remaining a dimension-$6$
+parity-odd cross term. Every produced structure lies in the closed set
+$\{SS,PP,VV,AA\}$ (with $\{V,A\}$ for the cross term); the tensor channel does
+not appear, and no operator escapes the enumerated basis. Because every
+coefficient in $F$ is a dimensionless rational, the Fierz map is an $O(1)$
+recombination of the \emph{same} four $\psi$ fields and therefore preserves the
+$\kappa=M_{\rm Pl}^{-2}$ prefactor exactly. This is the explicit Fierz-by-Fierz
+projection lemma: within single-species minimal ECH the generated four-fermion
+tower is Fierz-closed and uniformly $M_{\rm Pl}^{-2}$-suppressed, so the
+single-scale NDA ceiling of App.~\ref{app:dimensions} that bounds one
+representative bounds the entire finite basis. (For multiple fermion species the
+Lorentz-class closure and the $M_{\rm Pl}$-power argument are unchanged---Fierz
+acts on Dirac structure, not flavor---and only the flavor-off-diagonal
+coefficient bookkeeping is added.) The only operators evading this bound require
+a \emph{non-minimal} completion (a new light scale $\mu\ll M_{\rm Pl}$,
+trace/tensor torsion irreps, or a dynamical Chern--Simons field), which is the
+stated scope boundary of the no-go.
 
 %% --- C: Line-of-sight birefringence derivation ---
 \section{Line-of-Sight Birefringence from the Maxwell--Chern--Simons
