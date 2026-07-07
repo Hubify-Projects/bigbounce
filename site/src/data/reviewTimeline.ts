@@ -46,6 +46,27 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "P1A-pubready-finalization-v1A0110-2026-07-06",
+    kind: "ext-closure",
+    dateISO: "2026-07-06",
+    title: "P1A v1A.0.110 — publication-readiness finalization + companion reframe: recast in-prep companions to coordinated-submission with refereeable-now artifacts, fixed the abstract/fbox scope de-sync, corrected the cross-paper f_NL −35/8→−35/16",
+    papers: ["P1A"],
+    summary:
+      "Closure on the 2026-07-05/06 verified EXT+INT round (INT Claude full-source MINOR REVISIONS — the three session upgrades verified: R3 Immirzi running Δγ/γ≈1.4e-6 numerically reproduced, ρ_Λ single-scale NDA no-go dimensionally correct + non-circular, operator-basis completeness sound; EXT RETEST_2026-07-05b: Grok + Gemini MAJOR REVISIONS with 0 genuinely-new real findings on their own truth-audit — every major a source-cited re-flag of disclosed scope or a presentation-structuring request (pattern-066); ChatGPT REJECT = structural harsh-referee floor per directive H). ChatGPT's truth-audit surfaced exactly TWO genuinely-new REAL items, both closed here: (1) the abstract body-text + the 'Does not establish (a)' fbox still said the Jackiw–Pi CS term and the parity-odd four-fermion partner were 'omitted / left to a follow-up operator-basis analysis' while the v107+ Scope/completeness upgrade already closes both in-body — harmonized (both now 'closed explicitly in §IV; only the fully-explicit Fierz-by-Fierz projection lemma remains follow-up; basis-complete within minimal ECH at the M_Pl-power-counting level'), resolving ChatGPT's 'internally contradictory scope' MAJOR; (2) P1A carried the SUPERSEDED matter-bounce f_NL=−35/8 in 20 sites while sibling P2 v1.7.95 resolved the Cai–Li factor-of-2 to −35/16 — swept all 20 sites −35/8→−35/16, −4.375→−2.1875, raw ratio 6.25σ→3.13σ, imported P2's exact corrected SPHEREx significances (optimistic 5.2–5.5σ→2.6–2.75σ; realistic 2.6–5σ→1.3–2.75σ) + added a provenance clause citing P2's resolution. COMPANION REFRAME (the recurring cross-reviewer MAJOR): the companions are real repo papers (P1B/P2/P3/P4), so all 'in preparation' language recast to 'companion, posted concurrently in the coordinated submission' + the companion-imported numbers made refereeable NOW via \\cite{BigBounceRepro} (frozen Cobaya chains, NaMaster validation, catalogs archived with this submission) + explicit artifact paths in tab:companion_inputs; TODO-SUBMISSION arXiv-ID markers retained for same-day insertion after wave 1. Gemini's 'dimensional argument framed as trivial' addressed by a significance-without-overclaim framing sentence (the per-operator +1-vs-+4 count is elementary; the content is basis-completeness — one monotone class-blind NDA ceiling bounds the whole finite tower). readinessCap held (venue barrier, Houston-gated — not hand-bumped). Directive-G hygiene complete.",
+    keyTakeaways: [
+      "The companions are NOT unwritten dependencies — they are real repo papers (P1B/P2/P3/P4) posting in the same coordinated wave; the companion-reliance MAJOR becomes citation timing, and every imported number is refereeable NOW from committed reproducibility artifacts (\\cite{BigBounceRepro})",
+      "ChatGPT's two genuinely-new REAL items are closed: the abstract/fbox scope de-sync (operators now uniformly 'closed in-body, only the Fierz lemma deferred') and the cross-paper f_NL −35/8→−35/16 correction (20 sites + significances imported exactly from P2 v1.7.95)",
+      "Grok + Gemini: 0 genuinely-new real findings on their own truth-audit — all majors are re-flags of disclosed scope / presentation requests (pattern-066 convergence signal); central no-go 'adequately supported' (Gemini) / 'supported, conditional on ansätze' (Grok)",
+      "Gemini's 'dimensional triviality' objection reframed: the significance is basis-completeness across the whole minimal-ECH tower, not novelty of a per-operator count — stated without overclaim",
+      "Directive-G: v1A.0.109→v1A.0.110, 0 undef-refs / no major overfull hboxes, 39pp, PDF mirrored byte-identical (md5 94f42aab560d4a4c96f9d6c1995d27fa) to all served paths, standalone-verified tarball + packet (metadata + cover letter + SUBMISSION_NOTE) rebuilt; submit same-day after wave 1 posts the companion arXiv IDs",
+    ],
+    links: [
+      { label: "P1A EXT_real RETEST_2026-07-05b", href: `${PR}/EXT_real/RETEST_2026-07-05b` },
+      { label: "P1A INT_v3 2026-07-05", href: `${PR}/INT_v3/ROUND_2026-07-05/P1A_INT_claude.md` },
+      { label: "P1A submission packet", href: `${GH}/submissions/P1A` },
+    ],
+  },
+  {
     id: "P2-pubready-finalization-v1795-2026-07-06",
     kind: "ext-closure",
     dateISO: "2026-07-06",

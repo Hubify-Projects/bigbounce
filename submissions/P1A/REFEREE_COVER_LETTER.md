@@ -26,40 +26,52 @@ gravitational Chern–Simons; parity-odd four-fermion partner) are now closed
 explicitly at the operator level.
 
 ## Scope statement
-This is a **channel-level assessment, not an operator-level no-go theorem.** The
-four enumerated routes are not proven to constitute a complete
-diffeomorphism-invariant operator basis for the minimal-ECH effective action;
-the abstract says so directly. The dark-energy mapping rests on a
-phenomenological on-shell scaling ansatz, treated explicitly as an ansatz, not a
-derivation.
+This is a **channel-level assessment** whose central no-go is a **single-scale
+NDA power-counting bound**, not a fitted amplitude. Within the *minimal* ECH
+field content the four-route enumeration is basis-complete at the level of
+$M_\mathrm{Pl}$-power-counting classes (completeness lemma, `sec:rotation`): two
+structural facts — the algebraic Cartan constraint (torsion non-propagating) and
+the totally-antisymmetric minimal spin current — collapse the operator content to
+a finite basis, and the same monotone, class-blind NDA ceiling bounds the entire
+tower at once. The only genuine follow-up is the fully explicit Fierz-by-Fierz
+projection lemma over the most general diffeomorphism-invariant parity-odd basis;
+a general operator-level no-go beyond minimal ECH is not claimed.
 
 ## Disclosed limitations (stated up front)
-1. **Ansatz-tier route closures (R2/R3/R4).** These rest on explicitly-labeled
-   chiral-count EFT scaling ansätze used as *conservative* (worst-case) upper
-   bounds — not first-principles derivations. The full |γ|-dependent
-   Benedetti–Speziale Immirzi β-function is the real open theory calculation that
-   would upgrade them; it is not performed here.
-2. **Companion-paper dependency.** Several imported observational inputs cite four
-   in-preparation same-author companions; `tab:companion_inputs` isolates every
-   such number as non-load-bearing for the central transparency result.
+1. **Route closures R2/R3.** R3 (Immirzi running) is now a *derived* result: the
+   Benedetti–Speziale β-function is integrated numerically to
+   $|\Delta\gamma/\gamma|\approx1.4\times10^{-6}$. R2 (one-loop parity-odd
+   channel) is *one-loop-grounded* on the Shapiro–Teixeira (2014) renormalization
+   — loop factor, $O(1)$ Immirzi-rational coefficient, and explicit
+   $\kappa^2=M_\mathrm{Pl}^{-2}$ suppression all fixed by that published
+   computation; only the single absolute normalization is pending (the ST coupled
+   RG flow has no closed-form fixed point, as ST themselves state). Both routes
+   are additionally bounded, independently of any residual $O(1)$, by the
+   monotone single-scale NDA no-go.
+2. **Companion papers (coordinated submission).** The imported observational
+   inputs cite four same-author companion papers posted concurrently in the SAME
+   coordinated-submission wave (P1B/P2/P3/P4, all in this repository).
+   `tab:companion_inputs` isolates every such number as non-load-bearing for the
+   transparency theorem, four-route closures, and barrier catalog, and the
+   underlying computational artifacts (MCMC chains, NaMaster validation, ALP fit,
+   galaxy/anomaly catalogs) are archived with this submission and cited
+   (`\cite{BigBounceRepro}`), so a referee can re-derive every quoted number NOW,
+   independently of the companions' posting schedule.
 3. **Barrier-catalog heterogeneity.** The 13 mechanism-class barriers mix
    first-principles results with naturalness/heuristic entries; the tiering is
    labeled in `sec:barriers`.
 
 ## The judgment for the referee
-The question LLM referees repeatedly flag but cannot adjudicate is a
-**venue/format scope call**: is a tiered four-route argument — a rigorous Tier-I
-transparency result plus ansatz-level Tier-II/III amplitude bounds plus the two
+The remaining call is a **venue/format scope judgment**: is a tiered four-route
+argument — a rigorous Tier-I transparency result, a basis-complete single-scale
+NDA no-go within minimal ECH, a derived R3 and one-loop-grounded R2, and the two
 now-explicit parity-odd operator closures — a sufficient PRD contribution as a
-channel-level assessment? Or must the ansatz tiers be upgraded to full
-derivations and the complete dim-6 operator basis completed before publication?
-We believe the transparency result and operator closures stand on their own and
-that the ansatz tiers are honestly bounded, but this is the editorial judgment we
-ask the referee to make.
+channel-level assessment? We believe the transparency result, the minimal-ECH
+completeness lemma, and the operator closures stand on their own, but we flag the
+one open Fierz-by-Fierz projection lemma and the coordinated-submission companion
+timing to you up front rather than leaving them to be discovered.
 
-No genuinely-new correctness defect is outstanding. We flag the ansatz-tier and
-companion-dependency scope to you up front rather than leaving it to be
-discovered.
+No genuinely-new correctness defect is outstanding.
 
 Sincerely,
 Houston Golden (houston@hubify.com)

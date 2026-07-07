@@ -47,8 +47,9 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.109}
-\newcommand{\paperTimestamp}{July 5, 2026}
+\newcommand{\paperVersion}{v1A.0.110}
+\newcommand{\paperTimestamp}{July 6, 2026}
+% v1A.0.109->110 (2026-07-06): PUBLICATION-READINESS + COMPANION REFRAME. (1) De-sync fix (INT MINOR-1): abstract body-text ("Jackiw-Pi CS + parity-odd 4-fermion partner ... left to a follow-up operator-level analysis") and the fbox "Does not establish (a)" ("omitted and left to a follow-up") were STALE vs the v107+ Scope/completeness upgrade that closes both operators in-body; both harmonized to "closed explicitly in sec:rotation; only the fully explicit Fierz-by-Fierz projection lemma remains follow-up; basis-complete within minimal ECH at the M_Pl-power-counting level." (2) COMPANION REFRAME (all 3 EXT reviewers' recurring MAJOR = companion-reliance): all live "in preparation~\cite{...}"/"in-preparation companions" recast to "companion, posted concurrently in the coordinated submission" (the companions are real repo papers: P1B=paper1b_mcmc_companion, P2/P3/P4 pipelines); TODO-SUBMISSION arXiv-ID markers retained in .bib for same-day ID insertion after wave 1. The companion-imported numbers are now made REFEREEABLE NOW: new \cite{BigBounceRepro} archive ref + explicit artifact paths added to tab:companion_inputs caption and the self-containment paragraph (frozen Cobaya chains reproducibility/cosmology/chains; NaMaster reproducibility/p1_namaster_500mc; catalogs pipelines/p2_chirality + p3_anomaly_engine) — converts "cannot be refereed until posted" into "reproducible from committed artifacts now, only the arXiv IDs pending." (3) Gemini "dimensional argument framed as trivial" addressed by framing: added significance-without-overclaim sentence to the completeness lemma (the per-operator +1-vs-+4 count is elementary; the CONTENT is basis-completeness — one monotone class-blind NDA ceiling bounds the whole finite minimal-ECH tower). (4) CROSS-PAPER f_NL FIX (EXT RETEST_2026-07-05b ChatGPT VERIFIED-REAL genuinely-new): P1A carried the SUPERSEDED matter-bounce f_NL=-35/8 in 20 sites; sibling P2 v1.7.95 resolved the Cai-Li factor-of-2 to -35/16 (Cai's -35/8 traced to a spurious +(99/128)Sum k^3 term). Swept all 20 sites -35/8->-35/16, -4.375->-2.1875, raw ratio 6.25sigma->3.13sigma, imported P2's exact corrected SPHEREx significances (optimistic 5.2-5.5->2.6-2.75sigma; realistic 2.6-5->1.3-2.75sigma; footnote 5-5.5->2.6-2.75, 4.4->2.2sigma) + provenance clause citing P2. Every value read from P2 v1.7.95; nothing fabricated. No math otherwise changed.
 % v1A.0.108->109 (2026-07-05): UPGRADED Route 2 (sec:r2_oneloop, eq:oneloop_parity_odd) from a FREE-NORMALIZATION ANSATZ to ONE-LOOP-GROUNDED using the explicit one-loop renormalization of on-shell Einstein-Cartan+Holst+fermion gravity by Shapiro & Teixeira 2014 (arXiv:1402.4854, CQG 31 185002; ShapiroTeixeira2014, already cited). The parity-odd Immirzi-dependent coupling lambda_4=gamma kappa^2 (W.J) (their Eq.37, kappa^2=16piG=M_Pl^-2) has classical coeff alpha_4=-6/(1+gamma^2) and one-loop divergence coeffs Omega_44=81gamma^4/[16(1+gamma^2)^2], Omega_24=81gamma^2/[40(1+gamma^2)^2] (Eqs.41-42); their master RG eq d lambda/dt = -sigma/(4pi)^2 (Eq.46) carries EXACTLY the 1/(16pi^2) loop factor already in eq:oneloop_parity_odd. NOW PINNED by the real one-loop computation: (1) loop factor 1/(16pi^2); (2) O(1) Immirzi-rational coefficient beta(gamma) [Omega_44/alpha_4=27gamma^4/(32(1+gamma^2)), O(1) for gamma~1, ~2.5e-3 at gamma=0.24]; (3) explicit kappa^2=M_Pl^-2 Planck suppression on every charge. HONESTLY NOT fixed: the single ABSOLUTE normalization — ST's coupled lambda_4-gamma RG flow (Eqs.51/58) is a Riccati system with NO real fixed point that they "were unable to solve satisfactorily," so R2 is one-loop-grounded but not fully normalization-fixed (unlike R3, whose BS beta-function integrates cleanly to |Delta gamma/gamma|~1.4e-6). Off-shell dim+1 parity-odd operator + ST's explicit kappa^2=M_Pl^-2 => the monotone single-scale NDA no-go (app:dimensions) bounds R2 REGARDLESS of the unfixed O(1) beta(gamma); ~58-60 OOM closure margin untouched. Reworded R2 section + "Ansatz vs derivation (R2/R3)" summary: "free-normalization ansatz" -> "one-loop-grounded (ST coefficients) + NDA-bounded, absolute normalization pending the ST Riccati flow." No fabricated derivation — every ST coefficient PDF-verified + sympy-checked; the "no fixed point" limit is ST's own stated conclusion.
 % v1A.0.106->107 (2026-07-05): Closed ChatGPT "non-exhaustive operator basis" MAJOR by UPGRADING the four-route enumeration from "illustrative, non-exhaustive" to "exhaustive within minimal ECH by symmetry + NDA monotonicity". Added a completeness paragraph to sec:fourroute Scope: two structural facts already proven in the body — (F1) torsion algebraic/non-propagating (Cartan T=kappa S, eq:torsion) => only spin-current contact operators + metric/topological sector, no independent channel; (F2) minimal fermion coupling => totally-antisymmetric (axial) spin current => trace-vector/tensor torsion irreps appear only under non-minimal couplings (out of scope) — collapse the basis to a FINITE set exhausted at mass dim <=6 by (i) torsion-squared/four-fermion (all Fierz VV,AA,VA,TT, shared kappa=M_Pl^{-2}; R1 + Holst partner are two projections; Fierz recombination O(1) cannot change the M_Pl^{-2} power) and (ii) parity-odd curvature/topological (Holst, Nieh-Yan, Jackiw-Pi CS; total-derivative const coupling, R4-class dynamical). Because the dim-+1 parity-odd operator (eq:Seff_comp) is the LEAST-suppressed representative and every higher-dim operator carries strictly more M_Pl suppression, the single-scale NDA bound (app:dimensions) is MONOTONE in dimension and CLASS-BLIND: bounding the ceiling bounds the whole finite tower => basis-complete no-go within minimal ECH. Added one sentence to app:dimensions making the deferred "matching calculation" immediate for minimal-ECH field content. KEPT the honest non-minimal caveat: the one unbounded class introduces a new light scale mu<<M_Pl or an exact cancellation (non-minimal by construction) and IS the tuning being explained. Only the COUNTING/completeness statement added; shared-kappa + total-derivative facts already in body (cited, not re-derived). No new quantitative claim, no fabricated derivation.
 % v1A.0.105->106 (2026-07-05): CRUX REFRAME (2-of-3 reviewers: rho_Lambda mapping is an "on-shell scaling ansatz"/non-derivation, Grok "circular", ChatGPT "+1 vs +4"). Reframed App B app:dimensions from "phenomenological on-shell scaling ansatz" to a controlled SINGLE-SCALE NDA DIMENSIONAL NO-GO: parity-odd operator off-shell dim +1; NDA gives Wilson coeff Lambda^{4-d}=Lambda^3; minimal ECH single-scale (Lambda~M_Pl) FORCES the 3 missing powers to M_Pl^3 (not assumed). Two admissible completions — Case I coefficient-dressing (rho~M_Pl^3<T> -> M_Pl^4 at bounce or 0 today) and Case II curvature-dressing (Eq onshell_rho, rho~1e-2 M_Pl^4 needing e^{-3N}~1e-122 dilution) — BOTH land at rho_Lambda^ECH~M_Pl^4, never (meV)^4. No amplitude derived => NOT circular (answers Grok/ChatGPT flags: the +1->+4 gap IS the mechanism). Honest single-scale residual KEPT: Lambda~M_Pl, no mu<<M_Pl threshold, no exact cancellation; a non-minimal light-scale/symmetry evades but IS the tuning being explained; full closure needs a matching calc over parity-odd ECH completions. Reframed Scope/boxed-disclosure/sec:parityodd/fig:derivation caption to match. Added NDA/SMEFT refs (Buchalla2013NDA=1312.5624, Brivio2017SMEFT=1706.08945, Isidori2023SMEFTReview=2303.16922). No fabricated derivation; no math changed.
@@ -943,7 +944,7 @@
 %   - PAPER-PER-M3 (cosmo values "from" external paper): VERIFIED-MINOR — REAL
 %     CLOSURE LANDED. Line 294 softened from "are from that companion" to "are
 %     drawn from the companion internal MCMC analysis (Paper~I(b),
-%     \emph{in preparation})" to avoid implying externally-citable provenance
+%     \emph{companion; coordinated submission})" to avoid implying externally-citable provenance
 %     until Paper~I(b) is on arXiv.
 %   - PAPER-PER-m2 (Mercuri / Lue--Wang--Kamionkowski attribution blurring):
 %     VERIFIED-MINOR — REAL CLOSURE LANDED. Mercuri (2009) reference clarified
@@ -1072,16 +1073,16 @@ and is constrained at the channel-amplitude level by 13 mechanism-class constrai
 (Sec.~\ref{sec:barriers}; 14 historical catalog entries, of which B8 is subsumed by B14 per the perturbation-transparency result), each probing a distinct physical failure mode.
 A structural tension (Sec.~\ref{sec:structural_tension}) exists between
 the dark-energy mechanism, which requires $N_{\rm tot}\approx 92$ post-bounce
-$e$-folds, and the matter-bounce $\fnl=-35/8$ signature, which would be \emph{definitively} erased at SPHEREx-accessible comoving wavenumbers by that many $e$-folds (a contracting-phase quantity mode with $k_{\rm SPHEREx}\sim 10^{-1}\,h/$Mpc is pushed to $k_{\rm bounce}^{\rm phys}\sim k_{\rm SPHEREx}^{\rm phys}\,e^{N_{\rm tot}-N_{\rm exit}}\sim e^{32}\,k_{\rm SPHEREx}^{\rm phys}$ at $N_{\rm tot}\sim 92$, $N_{\rm exit}\sim 60$ (the relative e-fold differential between bounce and CMB horizon-exit; comoving wavenumbers $k$ are constant by definition and only physical scales scale with $a^{-1}\propto e^{-N}$), deep inside the inflationary subhorizon regime carrying purely vacuum-inflationary fluctuations rather than matter-bounce contraction modes); the minimal-ECH four-route channel set is therefore tightly constrained as
+$e$-folds, and the matter-bounce $\fnl=-35/16$ signature, which would be \emph{definitively} erased at SPHEREx-accessible comoving wavenumbers by that many $e$-folds (a contracting-phase quantity mode with $k_{\rm SPHEREx}\sim 10^{-1}\,h/$Mpc is pushed to $k_{\rm bounce}^{\rm phys}\sim k_{\rm SPHEREx}^{\rm phys}\,e^{N_{\rm tot}-N_{\rm exit}}\sim e^{32}\,k_{\rm SPHEREx}^{\rm phys}$ at $N_{\rm tot}\sim 92$, $N_{\rm exit}\sim 60$ (the relative e-fold differential between bounce and CMB horizon-exit; comoving wavenumbers $k$ are constant by definition and only physical scales scale with $a^{-1}\propto e^{-N}$), deep inside the inflationary subhorizon regime carrying purely vacuum-inflationary fluctuations rather than matter-bounce contraction modes); the minimal-ECH four-route channel set is therefore tightly constrained as
 both a dark-energy generator and a matter-bounce host. The two predictions discussed
 below as ``surviving'' are accordingly \emph{not} predictions of ECH itself,
 but bounce-class and GR$+$ALP-class observables that the channel-level
 assessment does not forbid in the parameter regimes complementary to its dark-energy mechanism;
 we report them here because they remain testable signatures of any bounce
-model in the broader programme. Specifically: (i)~$\fnl = -35/8$ is a
+model in the broader programme. Specifically: (i)~$\fnl = -35/16$ is a
 property of the \emph{matter-bounce class}~\cite{Cai:2009fn}, derived from
 the contraction-phase cubic action with no ECH input (its detection prospects
-are forecast in a companion~\cite{Golden2026P2}, in preparation; we quote no
+are forecast in a companion~\cite{Golden2026P2}, posted concurrently in the coordinated submission; we quote no
 forecast significance here, as it is not a result of this paper); and
 (ii)~spectator-ALP birefringence
 $\beta\approx 0.27^\circ$ is a \emph{benchmark consistency point}, not an
@@ -1098,16 +1099,20 @@ the same
 benchmark arises in any GR$+$ALP setup with the same parameters and is
 \emph{not} derived from the ECH action. The role of this paper is the
 \emph{channel-level closure} of the four enumerated minimal-ECH dark-energy
-routes (Sec.~\ref{sec:fourroute}) at amplitude-budget granularity; we do not
-claim a full operator-basis closure of the most general ECH parity-odd /
-torsion-sourced sector (Jackiw--Pi gravitational Chern--Simons and the
-parity-odd four-fermion partner of R1 are listed but not separately
-enumerated in the four routes; their explicit closure is left to a follow-up
-operator-level analysis). The complementary observational programme is
-hosted in related works (in preparation~\cite{Golden2026P2,Golden2026P1b}).
+routes (Sec.~\ref{sec:fourroute}) at amplitude-budget granularity. Within the
+minimal ECH field content the enumeration is basis-complete at the level of
+$M_{\rm Pl}$-power-counting classes (Sec.~\ref{sec:rotation}, completeness
+lemma): the Jackiw--Pi gravitational Chern--Simons term and the parity-odd
+four-fermion partner of R1---previously flagged as omitted---are closed
+explicitly in the body, and only the fully explicit Fierz-by-Fierz projection
+lemma over the most general diffeomorphism-invariant parity-odd basis remains a
+scoped follow-up. The complementary observational programme is hosted in
+companion papers posted concurrently in the coordinated
+submission~\cite{Golden2026P2,Golden2026P1b}.
 $\Lambda$CDM$+\Delta\Neff$ MCMC verification, NaMaster pipeline validation,
-and ALP parameter fitting are documented separately
-(in preparation~\cite{Golden2026P1b}).
+and ALP parameter fitting are documented in the computational
+companion~\cite{Golden2026P1b}, whose reproducibility artifacts are archived
+with this submission.
 \end{abstract}
 
 \pacs{98.80.-k, 04.50.Kd, 04.60.Pp, 95.36.+x}
@@ -1186,17 +1191,20 @@ R2--R3 amplitude-suppressed \emph{under explicitly-labeled scaling
 ans\"atze} (Tier~III), R4 closed by a naturalness / explanatory-deficit
 objection \emph{not} an amplitude exclusion (Tier~II).\\[3pt]
 \emph{Does \underline{not} establish:}
-\textbf{(a)}~an operator-level no-go---the four routes are not proven a
-complete diffeomorphism-invariant operator basis; the Jackiw--Pi
-$R\!\wedge\!\widetilde R$ term and the parity-odd four-fermion Holst
-partner are omitted and left to a follow-up operator-basis analysis;
+\textbf{(a)}~a fully general operator-level no-go---the four routes are not
+proven a complete diffeomorphism-invariant operator basis; within
+\emph{minimal} ECH they are basis-complete at the $M_{\rm Pl}$-power-counting
+level (the Jackiw--Pi $R\!\wedge\!\widetilde R$ term and the parity-odd
+four-fermion Holst partner, previously flagged as omitted, are closed
+explicitly in \S\ref{sec:rotation}), with only the fully explicit
+Fierz-by-Fierz projection lemma left to follow-up;
 \textbf{(b)}~a first-principles positive-amplitude ECH-to-$\rho_\Lambda$
 derivation---none is claimed; the dark-energy mapping is instead a
 single-scale NDA dimensional no-go (off-shell mass dimension $+1$ forces
 $\rho_\Lambda^{\rm ECH}\sim\MPl^4$, never $(\text{meV})^4$;
 App.~\ref{app:dimensions}), and every R4 / dark-energy claim is conditional
 on single-scale EFT ($\Lambda\sim\MPl$, no cancellation);
-\textbf{(c)}~any claim resting on the in-preparation companions---their
+\textbf{(c)}~any claim resting on the companions posted concurrently in the coordinated submission---their
 illustrative numbers are non-load-bearing for the results above.\\[3pt]
 The phrase ``four-route closure'' throughout means exactly (ii): a
 channel-level, assumption-conditional amplitude statement, \emph{not} an
@@ -1209,19 +1217,25 @@ of this paper---the perturbation-transparency theorem
 (Sec.~\ref{sec:fourroute}), and the 14-entry constraint catalog
 (Sec.~\ref{sec:barriers})---is established analytically within this manuscript
 and does \emph{not} depend on any companion result. The companion works
-(Paper~I(b), II, III, IV; all in preparation and posted concurrently) are
+(Paper~I(b), II, III, IV; all posted concurrently in the coordinated submission) are
 cited only to anchor illustrative numerical values---MCMC posteriors,
 Fisher-forecast significances, and pipeline validations---that contextualize
 the broader observational programme; \emph{none of these companion-imported
 numbers is load-bearing for any closure, no-go, or theorem stated here.}
-A referee unable to access the in-preparation companions can therefore still
+A referee unable to access the companions posted concurrently in the coordinated submission can therefore still
 audit every primary claim of this paper directly from its own equations and
 assumptions. We note honestly that the \emph{illustrative} observational
 numbers imported from the companions (the MCMC posteriors, Fisher
 significances, and pipeline validations summarized in
-Table~\ref{tab:companion_inputs}) cannot be independently refereed until those
-companions are publicly posted; this is a structural feature of the coordinated
-submission, not a deficiency of the present argument, and it bears on none of
+Table~\ref{tab:companion_inputs}) receive their full narrative treatment in the
+named companions; nonetheless the underlying computational artifacts---the
+frozen MCMC chains, the NaMaster pseudo-$C_\ell$ validation suite, the
+spectator-ALP fit, and the galaxy/anomaly catalogs---are archived with this
+submission in the public reproducibility
+tree~\cite{BigBounceRepro} and can therefore be inspected and re-derived by a
+referee \emph{now}, independently of the companion manuscripts' posting
+schedule. The coordinated submission fixes only the citable arXiv identifiers;
+the numbers themselves are already reproducible, and in any case bear on none of
 the closure, no-go, or transparency results, all of which are self-contained
 here.
 
@@ -1247,7 +1261,7 @@ establishing a preferred cosmic axis.
 \begin{table*}[tb]
 \caption{\label{tab:summary} Executive summary: systematic investigation of
 bounce-cosmology dark-energy routes within ECH. Structural constraints narrow
-phenomenological pathways. The $\fnl = -35/8$ matter-bounce signature~\cite{Cai:2009fn}
+phenomenological pathways. The $\fnl = -35/16$ matter-bounce signature~\cite{Cai:2009fn}
 is a testable prediction of the broader matter-bounce \emph{class}, \emph{not} of the
 ECH dark-energy mechanism: as Sec.~\ref{sec:structural_tension} proves, the
 $N_{\rm tot}\!\approx\!92$ $e$-folds required to source $\rho_\Lambda$ would erase
@@ -1262,16 +1276,16 @@ not results of this paper.}
 Can bounce derive dark energy? & 14 constraints map minimal-ECH route space & Phen.\ assumption$^a$ required. \\
 Is there a nonsingular bounce? & LQC: $\rho_c \simeq 0.27$--$0.41\,\rhoPl$ & \textbf{Yes} (LQC holonomy). \\
 ECH visible in scalar/tensor pert.? & Perturbation-transparency result & Decouples; tests $\to$ ALP/GW. \\
-Testable prediction? & $\fnl = -35/8$ (matter-bounce class$^b$) & Class-level$^c$; \emph{erased if ECH-DE}$^d$. \\
+Testable prediction? & $\fnl = -35/16$ (matter-bounce class$^b$) & Class-level$^c$; \emph{erased if ECH-DE}$^d$. \\
 Mechanism-independence? & Class-level: scalar-only $w=0$ matter-bounce$^c$ & Not a distinctive ECH prediction. \\
 $H_0$/$\sigma_8$ tension resolution? & $\Delta\Neff\approx 0$ (companion MCMC$^e$) & Recovers $\Lambda$CDM. \\
 \end{tabular}
 \end{ruledtabular}
 {\small $^a$Reparameterized as sensitivity to $N_{\rm tot}$; not solved.
-$^b$$\fnl=-35/8$ is the analytic matter-bounce contraction-phase value~\cite{Cai:2009fn},
+$^b$$\fnl=-35/16$ is the analytic matter-bounce contraction-phase value~\cite{Cai:2009fn},
 derived with no ECH input; it is in principle accessible to a multi-tracer SPHEREx
 bispectrum analysis. The detailed Fisher significance is forecast in a companion
-(in preparation~\cite{Golden2026P2}) and is \emph{not} quoted here, as it is not a
+(companion, posted concurrently in the coordinated submission~\cite{Golden2026P2}) and is \emph{not} quoted here, as it is not a
 result of the present paper.
 $^c$Class-level: scalar-only $w=0$ matter-bounce under Assumption~(f) of
 \cite{Golden2026P2}; not fully mechanism-independent
@@ -1281,7 +1295,7 @@ which pushes the matter-bounce signature deep into the inflationary subhorizon
 regime and \emph{definitively erases} it at SPHEREx-accessible scales
 (Sec.~\ref{sec:structural_tension}). The two channels cannot both be realized.
 $^e$Companion-MCMC input ($H_0=67.68\pm 1.06$, $\Delta\Neff=-0.020\pm 0.169$;
-Paper~I(b)~\cite{Golden2026P1b}, in preparation), consolidated in
+Paper~I(b)~\cite{Golden2026P1b}, coordinated submission), consolidated in
 Table~\ref{tab:companion_inputs}; not load-bearing for any closure or theorem here.}
 \end{table*}
 
@@ -1325,7 +1339,7 @@ channels (ALP birefringence, primordial GWs).
 \item \textit{Structural tension between dark-energy suppression and bounce $\fnl$}:
 We identify an incompatibility between the inflationary-suppression dark-energy
 mechanism ($N_{\rm tot}\approx 92$ $e$-folds required) and the matter-bounce
-$\fnl=-35/8$ prediction (\emph{definitively} erased once the bounce-vs-CMB-horizon-exit differential $N_{\rm tot}-N_{\rm exit}$ exceeds the matter-bounce contraction-mode coherence window $N_{\rm coh}\sim\mathcal{O}(\text{few})$, since the SPHEREx accessible band $k\sim 10^{-4}$--$10^{-1}\,h/$Mpc maps to bounce-era \emph{physical} scales $k_{\rm bounce}^{\rm phys} = k_{\rm SPHEREx}^{\rm phys}\,e^{N_{\rm tot}-N_{\rm exit}}$ at $N_{\rm tot}\sim 92$ and $N_{\rm exit}\sim 60$ (relative e-fold differential $\sim 32$, deeply inside the erasure regime; comoving $k$ are constant by definition, only physical scales scale with $a^{-1}\propto e^{-N}$) that lie deep inside the inflationary subhorizon regime where the observable bispectrum is dominated by vacuum-inflationary modes rather than the matter-bounce contraction modes; see Sec.~\ref{sec:structural_tension}), establishing that
+$\fnl=-35/16$ prediction (\emph{definitively} erased once the bounce-vs-CMB-horizon-exit differential $N_{\rm tot}-N_{\rm exit}$ exceeds the matter-bounce contraction-mode coherence window $N_{\rm coh}\sim\mathcal{O}(\text{few})$, since the SPHEREx accessible band $k\sim 10^{-4}$--$10^{-1}\,h/$Mpc maps to bounce-era \emph{physical} scales $k_{\rm bounce}^{\rm phys} = k_{\rm SPHEREx}^{\rm phys}\,e^{N_{\rm tot}-N_{\rm exit}}$ at $N_{\rm tot}\sim 92$ and $N_{\rm exit}\sim 60$ (relative e-fold differential $\sim 32$, deeply inside the erasure regime; comoving $k$ are constant by definition, only physical scales scale with $a^{-1}\propto e^{-N}$) that lie deep inside the inflationary subhorizon regime where the observable bispectrum is dominated by vacuum-inflationary modes rather than the matter-bounce contraction modes; see Sec.~\ref{sec:structural_tension}), establishing that
 these are independent observational programs.
 
 \item \textit{Survival of ECH-independent class tests}: Despite ECH structural
@@ -1359,7 +1373,7 @@ reproducibility manifest are reported in Paper~I(b)~\cite{Golden2026P1b}.
 Cosmological parameter values referenced in this paper
 ($H_0 = 67.68\pm 1.06$, $\Delta\Neff\approx 0$, etc.) are drawn from the
 companion internal MCMC analysis (Paper~I(b)~\cite{Golden2026P1b},
-\emph{in preparation}); they are documented internally rather than as
+\emph{companion; coordinated submission}); they are documented internally rather than as
 externally citable arXiv-posted numbers, and should be read as
 internal-analysis inputs to the present structural argument rather than
 as independently peer-reviewable values until Paper~I(b) is publicly
@@ -1377,7 +1391,7 @@ refer to this companion work; details are not duplicated here.
 Table~\ref{tab:companion_inputs} consolidates every companion-imported quantity
 referenced anywhere in this paper---its value, the companion it is drawn from,
 and a one-line statement of how it was obtained---so that a referee can audit
-the present paper's logic without the in-preparation companions in hand; these
+the present paper's logic without the companions posted concurrently in the coordinated submission in hand; these
 inputs are summarized here for self-contained readability, while their full
 derivations reside in the companion papers posted concurrently in the
 coordinated submission. The distinction is sharp: the no-go logic itself (the
@@ -1399,8 +1413,16 @@ only: \emph{none} is load-bearing for the perturbation-transparency theorem
 (Sec.~\ref{sec:barriers}), all of which are established analytically within this
 manuscript. Full derivations are in the named companions, posted concurrently in
 the coordinated submission; numerical values are reproduced from
-Table~\ref{tab:params}. External (non-companion) measurements are cited inline at
-point of use, not here.}
+Table~\ref{tab:params}. The underlying computational artifacts are archived with
+this submission and are refereeable now, independently of the companions'
+posting schedule~\cite{BigBounceRepro}: the
+$H_0$/$\Delta\Neff$/$\sigma_8$/$\Omega_m$ posteriors and the spectator-ALP fit
+from the frozen Cobaya chains (\texttt{reproducibility/cosmology/chains}), the
+NaMaster $EB$ validation (\texttt{reproducibility/p1\_namaster\_500mc}), and the
+galaxy-chirality and multi-survey anomaly catalogs
+(\texttt{pipelines/p2\_chirality}, \texttt{pipelines/p3\_anomaly\_engine}).
+External (non-companion) measurements are cited inline at point of use, not
+here.}
 \begin{ruledtabular}
 \begin{tabular}{llll}
 Quantity & Value & Companion & How obtained \\
@@ -1418,11 +1440,11 @@ chain.\strut} \\[3pt]
 $\Omega_m$ & $0.308\pm 0.005$ & Paper~I(b)~\cite{Golden2026P1b} &
 \parbox[t]{0.36\textwidth}{\raggedright Derived parameter of the same MCMC
 chain.\strut} \\[3pt]
-SPHEREx $\fnl$ forecast & \parbox[t]{0.16\textwidth}{\raggedright $2.6$--$5\sigma$
-realistic ($5.2$--$5.5\sigma$ optimistic)\strut} & Paper~II~\cite{Golden2026P2} &
+SPHEREx $\fnl$ forecast & \parbox[t]{0.16\textwidth}{\raggedright $1.3$--$2.75\sigma$
+realistic ($2.6$--$2.75\sigma$ optimistic)\strut} & Paper~II~\cite{Golden2026P2} &
 \parbox[t]{0.36\textwidth}{\raggedright Multi-tracer SPHEREx Fisher forecast
 recasting Heinrich$+$2024 $\sigma(\fnl)\!\approx\!0.7$ (ideal) /
-$\approx\!1.0$ (degraded-with-systematics) for the $\fnl=-35/8$ template.\strut} \\[3pt]
+$\approx\!1.0$ (degraded-with-systematics) for the $\fnl=-35/16$ template.\strut} \\[3pt]
 Spectator-ALP $\beta$ benchmark & $\approx 0.27^\circ$ &
 Paper~I(b)~\cite{Golden2026P1b} &
 \parbox[t]{0.36\textwidth}{\raggedright Spectator-ALP MCMC fit (9{,}720 accepted
@@ -2019,7 +2041,7 @@ companion analysis finds $\Delta\Neff\approx 0$ and recovers a Hubble
 constant consistent with standard $\Lambda$CDM at the Planck~2018
 prior level. Sample-size and dataset details, posterior values with
 uncertainties, MCMC diagnostics, and the AIC/BIC model comparison are
-hosted entirely in Paper~I(b) (in preparation~\cite{Golden2026P1b}); this
+hosted entirely in Paper~I(b) (companion, posted concurrently in the coordinated submission~\cite{Golden2026P1b}); this
 theory paper carries forward only the structural conclusion
 (no $\Delta\Neff$ tension closure attributable to ECH).
 
@@ -2142,7 +2164,15 @@ introducing a new light scale $\mu\ll M_{\rm Pl}$ or an exact cancellation---i.e
 a non-minimal extension, which is by construction the tuning the mechanism is
 meant to explain (Appendix~\ref{app:dimensions}). The single residual open item
 is the fully explicit Fierz-by-Fierz projection lemma of \S\ref{sec:rotation};
-the power-counting-class completeness itself is established here.
+the power-counting-class completeness itself is established here. We stress that
+the individual dimensional mismatch ($+1$ vs.\ $+4$) is, taken operator by
+operator, an elementary power-counting statement; its significance here is not
+novelty of the per-operator estimate but its \emph{basis-completeness}---the same
+single-scale NDA ceiling, shown monotone and class-blind, bounds the entire
+finite minimal-ECH operator tower at once, so no unenumerated channel can smuggle
+in a $(\text{meV})^4$ density without introducing a new light scale. The content
+is the structural impossibility across the whole basis, not the triviality of any
+one dimensional count.
 
 Three technical aspects of the derivation require careful dimensional and
 parity accounting, addressed as follows:
@@ -2848,7 +2878,7 @@ coherent $w\!=\!-1$ mean-field structure; incoherent thermal variance
 $\langle J^5 J^5\rangle$ is permitted but does not source coherent dark
 energy. MCMC fits and the
 $\Delta\Neff$/birefringence consistency analysis are reported
-(in preparation~\cite{Golden2026P1b}); the present
+(companion, posted concurrently in the coordinated submission~\cite{Golden2026P1b}); the present
 manuscript provides only the channel-level amplitude closure of the
 four parity-odd routes in the ECH sector.
 
@@ -2983,7 +3013,7 @@ uncertainties are GR-projection effects (${\sim}20\%$ amplitude degradation at
 $z>2$, Heinrich \etal~2024~\cite{Heinrich:2023} Sec.~3.4), $b_\phi$ bias-prior uncertainty ($\sigma(b_\phi)/b_\phi\approx 0.2$),
 and photo-$z$ marginalization, propagated through the multi-bin Fisher matrix
 (Sec.~\ref{sec:falsification}). MCMC systematics (dataset-dependent $\Delta\Neff$)
-are in Paper~I(b) (in preparation~\cite{Golden2026P1b}).
+are in Paper~I(b) (companion, posted concurrently in the coordinated submission~\cite{Golden2026P1b}).
 
 
 %% ============================================================
@@ -2999,7 +3029,7 @@ ECH-independent class-level falsification paths.} Top: LiteBIRD CMB
 birefringence ($\sigma(\beta)\!\approx\!0.03^\circ$, launch early 2030s)
 testing the spectator-ALP route 4. Bottom: SPHEREx galaxy bispectrum
 ($\sim\!2028$ first cosmological data release) testing the matter-bounce
-$\fnl=-35/8$ prediction at $2.6$--$5\sigma$ realistic significance
+$\fnl=-35/16$ prediction at $1.3$--$2.75\sigma$ realistic significance
 (footnote~\ref{fn:spherex_range}). Both surveys deliver ECH-independent class-level discrimination tests; under
 the stated ans\"atze they can falsify the relevant matter-bounce and uniform
 spectator-ALP benchmarks, but they do not identify a unique surviving
@@ -3012,28 +3042,28 @@ between-estimator correlation).\label{fig:obs_timeline}}
 
 The surviving testable predictions are: (1)~LiteBIRD ($\sigma(\beta)\approx 0.03^\circ$,
 early 2030s) will measure $\beta$ to $\sigma(\beta)\approx 0.03^\circ$ and either confirm a non-zero birefringence at high significance or rule out the spectator-ALP class as the source of the WMAP$+$Planck birefringence signal (with ACT~DR6 follow-up) (the relevant comparison is differential against the prior central value $\beta_{\rm obs} = 0.342^\circ \pm 0.094^\circ$, not a naive $0.27^\circ / 0.03^\circ$);
-(2)~SPHEREx (${\sim}$2028) will test the matter-bounce prediction $\fnl = -35/8$
-at $2.6$--$5\sigma$ realistic significance\footnote{\label{fn:spherex_range}The
-$2.6$--$5\sigma$ realistic range reflects two forecast regimes: $\sigma(\fnl)\approx 0.7$
-Fisher-ideal (raw ratio $|\fnl|/\sigma = 4.375/0.7 \approx 6.25\sigma$, degraded
-to $\sim$$5$--$5.5\sigma$ optimistic after template-overlap correction $r\approx 0.84$
+(2)~SPHEREx (${\sim}$2028) will test the matter-bounce prediction $\fnl = -35/16$
+at $1.3$--$2.75\sigma$ realistic significance\footnote{\label{fn:spherex_range}The
+$1.3$--$2.75\sigma$ realistic range reflects two forecast regimes: $\sigma(\fnl)\approx 0.7$
+Fisher-ideal (raw ratio $|\fnl|/\sigma = 2.1875/0.7 \approx 3.13\sigma$, reduced
+to $\sim$$2.6$--$2.75\sigma$ optimistic after template-overlap correction $r\approx 0.84$
 between the matter-bounce shape and the local/equilateral basis, before further
 GR-projection and $b_\phi$ degradation) and $\sigma(\fnl)\approx 1.0$ after
-GR-projection and photo-$z$ marginalization ($2.6$--$5\sigma$ realistic). Both
+GR-projection and photo-$z$ marginalization ($1.3$--$2.75\sigma$ realistic). Both
 assume nominal SPHEREx survey volume ($f_{\rm sky}=0.75$, ${\sim}\!3\times 10^8$
 galaxies). The full multi-tracer SPHEREx Fisher forecast is computed in
 Paper~II~\cite{Golden2026P2}, which recasts the Heinrich \etal\
 $\sigma(\fnl^{\rm local})\approx 0.7$ baseline for the matter-bounce template
-mismatch and adopts exactly these $5.2$--$5.5\sigma$ optimistic and
-$2.6$--$5\sigma$ realistic (post-systematic-budget) ranges as its headline
+mismatch and adopts exactly these $2.6$--$2.75\sigma$ optimistic and
+$1.3$--$2.75\sigma$ realistic (post-systematic-budget) ranges as its headline
 forecast; the present footnote summarizes that result rather than deriving it
 from the in-text $\sigma(\fnl)\approx 1.0$ GR-marginalized value alone (which
-gives the $\approx 4.4\sigma$ lower midpoint).}~\cite{Heinrich:2023,Golden2026P2}
+gives the $\approx 2.2\sigma$ lower midpoint).}~\cite{Heinrich:2023,Golden2026P2}
 via the galaxy bispectrum, simultaneously discriminating matter-bounce from
 slow-roll inflation ($\fnl\approx 0.015$) and the Cuscuton
 bounce~\cite{Dehghani:2025cusc}; (3)~MCMC parameter values ($H_0$, $\sigma_8$,
 $\Delta\Neff$) are already consistent with standard $\Lambda$CDM, constraining the
-framework rather than falsifying it (details in Paper~I(b), in preparation~\cite{Golden2026P1b}).
+framework rather than falsifying it (details in Paper~I(b), companion, posted concurrently in the coordinated submission~\cite{Golden2026P1b}).
 
 \label{sec:conjunctive}
 
@@ -3513,7 +3543,7 @@ mechanism produces the prediction; $\times$ denotes it does not; ``---'' denotes
 not applicable or not computed.}
 \begin{ruledtabular}
 \begin{tabular}{lcccc}
-Model & $\fnl=-35/8$ & ALP birefringence & $\gamma_{\rm PTA}$ (real-KDE) & $w_0w_a$ DESI \\
+Model & $\fnl=-35/16$ & ALP birefringence & $\gamma_{\rm PTA}$ (real-KDE) & $w_0w_a$ DESI \\
 \hline
 Matter bounce (any host; not ECH-specific) & $\checkmark$ & (spectator) & $\checkmark$ & not tested$^{\ddagger}$ \\
 Slow-roll inflation & $\times$ ($\fnl\approx 0.015$) & (spectator) & $\times$ & not tested$^{\ddagger}$ \\
@@ -3522,16 +3552,16 @@ Cuscuton bounce & $\times$ ($\fnl\approx 0$) & (spectator) & --- & not tested$^{
 Ekpyrotic & $\times$ ($\fnl\sim -5$) & (spectator) & --- & not tested$^{\ddagger}$ \\
 \end{tabular}
 \end{ruledtabular}
-$^{\dagger}$Quintom-B can in principle accommodate the DESI $w_0 w_a$ evidence; the MCMC analysis in Paper~I(b) (in preparation~\cite{Golden2026P1b}) was not extended to the $w_0 w_a$ parameter space, so this row is reported as ``consistent at the model level'' rather than a posterior-preference $\checkmark$.\\
+$^{\dagger}$Quintom-B can in principle accommodate the DESI $w_0 w_a$ evidence; the MCMC analysis in Paper~I(b) (companion, posted concurrently in the coordinated submission~\cite{Golden2026P1b}) was not extended to the $w_0 w_a$ parameter space, so this row is reported as ``consistent at the model level'' rather than a posterior-preference $\checkmark$.\\
 $^{\ddagger}$A free-$w_0 w_a$ posterior analysis was not completed for the present paper; no posterior-preference claim is made for or against the DESI $w_0 w_a$ evidence on the basis of the present table. The frozen MCMC posteriors hosted in Paper~I(b) cover three $\Lambda$CDM$+\Delta N_{\rm eff}$ dataset combinations only, and the asymmetry between the Quintom-B accommodation row and the others is one of theoretical accommodation, not of fit quality measured in this program.
 \end{table*}
 
-The matter bounce prediction $\fnl = -35/8$ is the strongest discriminator:
+The matter bounce prediction $\fnl = -35/16$ is the strongest discriminator:
 it provides $\sigma(\fnl)\approx 0.7$ (\emph{ideal-survey} Fisher) to
 $\sigma(\fnl)\approx 1.0$ (\emph{degraded with GR-projection + photo-$z$
-systematics}) from SPHEREx, yielding $2.6$--$5\sigma$ model separation.
+systematics}) from SPHEREx, yielding $1.3$--$2.75\sigma$ model separation.
 NANOGrav model comparison: $\gamma_{\rm PTA} = 2.567\pm 0.382$ from real-KDE reanalysis
-of the 15-yr free-spectrum data (GPU MCMC, in preparation~\cite{Golden2026P3};
+of the 15-yr free-spectrum data (GPU MCMC, companion, posted concurrently in the coordinated submission~\cite{Golden2026P3};
 here $\gamma_{\rm PTA}$ is the GWB power-law spectral index, distinct from the Barbero-Immirzi parameter $\gamma$ defined in Eq.~\ref{eq:ECH}).
 The matter-bounce prediction $\gamma_{\rm PTA}=3.0$ sits at $+1.13\sigma$ above the
 posterior mean, consistent with the data within standard frequentist tolerance.
@@ -3559,7 +3589,7 @@ emphasize that this is a theoretical-structure conclusion, \emph{not} a
 quantitative posterior-preference rejection: the dedicated DESI~DR2 +
 Planck~NPIPE + Pantheon$+$ + DES-SN5YR cobaya chain with the free $w_0w_a$
 extension required to quantitatively test these 7 forms is described in
-Paper~I(b) (in preparation~\cite{Golden2026P1b}) Table~IV row ``DESI DR2 w0wa (new)'' and has not yet
+Paper~I(b) (companion, posted concurrently in the coordinated submission~\cite{Golden2026P1b}) Table~IV row ``DESI DR2 w0wa (new)'' and has not yet
 converged to the standard publication-quality target $\hat R - 1 < 10^{-2}$
 (see Paper~I(b)~\cite{Golden2026P1b} Sec.~V for the chain status). The
 present program's MCMC analysis uses stock CAMB with $\Delta\Neff$ only and
@@ -3689,7 +3719,7 @@ discussion of \S\ref{sec:structural_tension} and \S\ref{sec:loophole}).
 The same $\beta\approx 0.27^\circ$ prediction arises in
 standard GR with an identical ALP; it is not a distinctive ECH prediction.
 Full ALP MCMC parameter fitting (9,720 accepted samples, $\hat{R}-1<0.01$) and
-LiteBIRD forecast are in Paper~I(b) (in preparation~\cite{Golden2026P1b}).
+LiteBIRD forecast are in Paper~I(b) (companion, posted concurrently in the coordinated submission~\cite{Golden2026P1b}).
 
 
 %% ============================================================
@@ -3701,13 +3731,13 @@ LiteBIRD forecast are in Paper~I(b) (in preparation~\cite{Golden2026P1b}).
 \centering
 \includegraphics[width=\columnwidth]{figures/figure8_detection_forecast.png}
 \caption{\textbf{Detection forecast for the two surviving ECH-independent
-class tests.} Top: matter-bounce $f_{\rm NL}\!=\!-35/8$ in the SPHEREx multi-tracer
-$f_{\rm NL}$ Fisher landscape (in preparation~\cite{Golden2026P2}, $2.6$--$5\sigma$ projection).
+class tests.} Top: matter-bounce $f_{\rm NL}\!=\!-35/16$ in the SPHEREx multi-tracer
+$f_{\rm NL}$ Fisher landscape (companion, posted concurrently in the coordinated submission~\cite{Golden2026P2}, $1.3$--$2.75\sigma$ projection).
 Bottom: spectator-ALP cosmic birefringence in the LiteBIRD $\sigma(\beta)
-\!\approx\!0.03^\circ$ window (in preparation~\cite{Golden2026P1b}); the WMAP+Planck
+\!\approx\!0.03^\circ$ window (companion, posted concurrently in the coordinated submission~\cite{Golden2026P1b}); the WMAP+Planck
 $\beta=0.342^\circ\pm 0.094^\circ$ and ACT~DR6 $\beta=0.215^\circ\pm 0.074^\circ$
 points are shown for reference. The SPHEREx $f_{\rm NL}$ forecast is potentially decisive in optimistic
-configurations; $2.6$--$5\sigma$ after the stated systematic budget
+configurations; $1.3$--$2.75\sigma$ after the stated systematic budget
 (Table~I footnote~b) against $f_{\rm NL}=0$; the LiteBIRD birefringence forecast targets a
 non-zero-$\beta$ detection at its $\sigma(\beta)\!\approx\!0.03^\circ$
 sensitivity but does not separate $\beta=0.27^\circ$ from the published
@@ -3729,10 +3759,15 @@ dark-energy routes (13 mechanism-class constraints under the stated
 assumptions), the broader bounce-cosmology program retains two fully
 testable ECH-independent class-level predictions:
 
-\textbf{(1) Matter-bounce $\fnl=-35/8$.}---The matter-dominated contracting
+\textbf{(1) Matter-bounce $\fnl=-35/16$.}---The matter-dominated contracting
 phase of a \emph{scalar-only $w=0$} matter-bounce (the bounce-class
 observable, not specific to ECH) produces a minimally-parameterized
-local-type non-Gaussianity $\fnl = -35/8$~\cite{Cai:2009fn}. This value
+local-type non-Gaussianity $\fnl = -35/16$~\cite{Cai:2009fn}. We adopt
+$-35/16$ as the corrected central value: the historical Cai \etal\
+$-35/8$~\cite{Cai:2009fn} is traced in Paper~II~\cite{Golden2026P2} to a
+spurious $+(99/128)\sum_i k_i^3$ term in their final combined polynomial and is
+superseded by the $-35/16$ resolution (in agreement with the independent
+general-$c_s$ derivation of Li \etal). This value
 holds within the scalar-only $w=0$ matter-bounce class under
 Assumption (f) of Paper~II~\cite{Golden2026P2} (negligible fermion
 energy density during the contracting phase, so the Hehl-Datta--Mercuri
@@ -3746,10 +3781,10 @@ distinct predictions). Within the scalar-only $w=0$ class the value is
 class-level (not specific to ECH); it is \emph{not} a distinctive ECH
 prediction in any case. The full multi-bin Fisher forecast, SPHEREx
 parameter sensitivity (bispectrum-only $\sigma(\fnl)\approx 0.7$ from
-Heinrich \etal~2024, leading to $2.6$--$5\sigma$ post-systematic-budget
+Heinrich \etal~2024, leading to $1.3$--$2.75\sigma$ post-systematic-budget
 significance), and anomaly-optimized multi-tracer strategy are in
 Paper~II~\cite{Golden2026P2}; the present paper does not perform an
-independent SPHEREx Fisher computation and the $2.6$--$5\sigma$ figure is
+independent SPHEREx Fisher computation and the $1.3$--$2.75\sigma$ figure is
 reported here only as a cross-reference. SPHEREx first science data
 $\sim$2028.
 
@@ -3771,7 +3806,7 @@ independent of ECH.
 
 \textbf{Structural incompatibility.}---An open constraint is the incompatibility
 between the dark-energy suppression mechanism ($N_{\rm tot}\approx 92$ $e$-folds
-required) and the $\fnl=-35/8$ prediction (\emph{definitively} erased once $N_{\rm tot}-N_{\rm exit}\gtrsim N_{\rm coh}\sim\mathcal{O}(\text{few})$ at SPHEREx-relevant scales; the SPHEREx accessible wavenumbers $k\sim 10^{-4}$--$10^{-1}\,h/$Mpc map to bounce-era \emph{physical} scales $k^{\rm phys}_{\rm bounce}\sim k_{\rm SPHEREx}\,e^{N_{\rm tot}-N_{\rm exit}}\sim e^{32}\,k_{\rm SPHEREx}$ at $N_{\rm tot}\sim 92$ and $N_{\rm exit}\sim 60$ (the relative e-fold differential between bounce and CMB horizon-exit; comoving wavenumbers $k$ are constant by definition and only physical scales scale with $a^{-1}\!\propto\!e^{-N}$), deep inside the inflationary subhorizon regime where the surviving bispectrum signal is purely vacuum-inflationary, not matter-bounce contraction-mode). This
+required) and the $\fnl=-35/16$ prediction (\emph{definitively} erased once $N_{\rm tot}-N_{\rm exit}\gtrsim N_{\rm coh}\sim\mathcal{O}(\text{few})$ at SPHEREx-relevant scales; the SPHEREx accessible wavenumbers $k\sim 10^{-4}$--$10^{-1}\,h/$Mpc map to bounce-era \emph{physical} scales $k^{\rm phys}_{\rm bounce}\sim k_{\rm SPHEREx}\,e^{N_{\rm tot}-N_{\rm exit}}\sim e^{32}\,k_{\rm SPHEREx}$ at $N_{\rm tot}\sim 92$ and $N_{\rm exit}\sim 60$ (the relative e-fold differential between bounce and CMB horizon-exit; comoving wavenumbers $k$ are constant by definition and only physical scales scale with $a^{-1}\!\propto\!e^{-N}$), deep inside the inflationary subhorizon regime where the surviving bispectrum signal is purely vacuum-inflationary, not matter-bounce contraction-mode). This
 is detailed in Sec.~\ref{sec:structural_tension}. The correct interpretation is
 that bounce cosmology (as a broad class) and the ECH-specific dark-energy
 ansatz are \textit{independent observational programs}; SPHEREx tests the former,
@@ -3805,7 +3840,7 @@ quantum bounce to slow-roll inflation is not fully modeled.
 consistent with the $>100$-orders-of-magnitude underprediction by the ECH coupling.
 \item \textit{MCMC proxy}: Stock CAMB with $\Delta\Neff$ is a phenomenological
 proxy, not a bespoke spin-torsion Boltzmann module. Full MCMC details and
-convergence diagnostics are in Paper~I(b) (in preparation~\cite{Golden2026P1b}).
+convergence diagnostics are in Paper~I(b) (companion, posted concurrently in the coordinated submission~\cite{Golden2026P1b}).
 \end{itemize}
 
 \subsection{Robustness to Galaxy Spin Null Results}\label{sec:spinnull}
@@ -3832,7 +3867,7 @@ candidates with induced GWs detectable by LISA and Einstein Telescope.
 The dark-energy suppression mechanism, if minimal ECH \emph{were} to source
 dark energy through one of the four channels enumerated in
 Sec.~\ref{sec:fourroute}, would require $N_{\rm tot}\approx 92$ post-bounce
-$e$-folds; the matter-bounce $\fnl=-35/8$ would be \emph{definitively}
+$e$-folds; the matter-bounce $\fnl=-35/16$ would be \emph{definitively}
 erased once the bounce-vs-CMB-horizon-exit differential $N_{\rm tot}-N_{\rm exit}\gtrsim N_{\rm coh}\sim\mathcal{O}(\text{few})$ (where $N_{\rm coh}$ is the contraction-phase coherence window of the matter-bounce mode functions), since the SPHEREx accessible
 wavenumbers $k\sim 10^{-4}$--$10^{-1}\,h/$Mpc are pushed deep inside the
 inflationary subhorizon (bounce-era \emph{physical} scales $k_{\rm bounce}^{\rm phys}\sim k_{\rm SPHEREx}^{\rm phys}\,e^{N_{\rm tot}-N_{\rm exit}}\sim e^{32}\,k_{\rm SPHEREx}^{\rm phys}$ at $N_{\rm tot}\sim 92$, $N_{\rm exit}\sim 60$; comoving wavenumbers $k$ are constant by definition; the rigorous bounce-vs-SPHEREx scale ratio is the \emph{physical} scaling above with $k_{\rm bounce}^{\rm phys}/k_{\rm SPHEREx}^{\rm phys} \sim e^{32}$) and the surviving bispectrum signal
@@ -3840,7 +3875,7 @@ becomes purely vacuum-inflationary rather than matter-bounce
 contraction-mode. The mode-history reasoning underlying this
 ``erased by $N_{\rm tot}-N_{\rm exit}\!\gtrsim\!N_{\rm coh}$'' statement is the standard
 mode-transfer ledger across four epochs: (i) in the contracting
-matter-bounce phase the $\fnl=-35/8$ signal is generated in the
+matter-bounce phase the $\fnl=-35/16$ signal is generated in the
 contraction-era cubic action at comoving wavenumbers $k_{\rm gen}$
 that exited the contracting-phase horizon at horizon-crossing time
 $t_{\rm cross}^{\rm gen}$, (ii) at the bounce the modes are mapped onto
@@ -3859,7 +3894,7 @@ which lie deep inside the inflationary subhorizon regime at the bounce
 time; the surviving observable bispectrum is dominated by the
 vacuum-inflationary mode functions amplified between $t_{\rm cross}^{\rm gen}$
 and today, not by the matter-bounce contraction-mode functions that
-sourced $\fnl=-35/8$. A fully quantitative transfer function tracking
+sourced $\fnl=-35/16$. A fully quantitative transfer function tracking
 the suppression coefficient across the four epochs (vacuum-inflationary
 amplification vs matter-bounce contraction-mode survival probability) is
 beyond the scope of this no-go and is reserved for a companion forecast
@@ -3935,7 +3970,7 @@ ECH minimal-route catalog.
 \textit{Surviving tests.}---Two ECH-independent class-level predictions of the broader
 bounce/ALP landscape survive the channel-level closure and are testable:
 \begin{enumerate}[leftmargin=*]
-\item $\fnl = -35/8$ (matter-bounce class): SPHEREx tests at $2.6$--$5\sigma$
+\item $\fnl = -35/16$ (matter-bounce class): SPHEREx tests at $1.3$--$2.75\sigma$
 realistic significance by $\sim$2028, discriminating from inflation
 ($\fnl\approx 0.015$) and the Cuscuton bounce ($\fnl\approx 0$).
 \item Spectator-ALP birefringence $\beta\approx 0.27^\circ$: LiteBIRD ($\sigma(\beta)\approx 0.03^\circ$, early 2030s) detects non-zero $\beta$ at $\sim 9\sigma$ (a $0.27^\circ/0.03^\circ$ overall sensitivity number). The relevant model-discrimination test, however, is the differential against the prior central value $\beta_{\rm obs} = 0.342^\circ \pm 0.094^\circ$: LiteBIRD will distinguish the spectator-ALP-derived $0.27^\circ$ from the observed $0.342^\circ$ at $\bigl|0.342-0.27\bigr|/\sqrt{0.03^2 + 0.094^2} \approx 0.072^\circ/0.0987^\circ \approx 0.73\sigma$ (this is a heuristic combining the current Planck uncertainty $\pm 0.094^\circ$ and the projected LiteBIRD uncertainty $\pm 0.03^\circ$ in quadrature; the test is dominated by the current Planck term, so under the current Planck error alone the separation is $\bigl|0.342-0.27\bigr|/0.094^\circ \approx 0.77\sigma$; the $0.73\sigma$ figure is therefore not a well-defined joint-posterior significance but a rough lower bound), NOT at the naive $\bigl|0.342-0.27\bigr|/0.03 = 2.4\sigma$ which would ignore the prior measurement's $\pm 0.094^\circ$ uncertainty; in other words LiteBIRD's $\sigma(\beta)\!=\!0.03^\circ$ will not by itself separate the spectator-ALP value from the current WMAP$+$Planck birefringence central value in a model-discrimination test (a future tightening of the observational central value's uncertainty below $\sim 0.05^\circ$ would be needed for LiteBIRD-vs-current-central tension to cross $1\sigma$). The two numbers correspond to distinct null hypotheses (zero vs.\ WMAP$+$Planck-central); the $\sim 9\sigma$ test will not by itself separate the spectator-ALP class from generic-ALP fits to the observed signal.
@@ -3947,7 +3982,7 @@ term from first principles: $w=-1$ is assumed, not derived; the birefringence
 prediction lacks a derived photon-torsion coupling; $\alpha/M$ is a
 phenomenological parameter; and the MCMC uses stock CAMB (not a bespoke
 torsion-modified Boltzmann code). Full MCMC diagnostics, ALP parameter fitting,
-and NaMaster pipeline validation are in Paper~I(b) (in preparation~\cite{Golden2026P1b}).
+and NaMaster pipeline validation are in Paper~I(b) (companion, posted concurrently in the coordinated submission~\cite{Golden2026P1b}).
 
 \textit{Forward.}---The program continues with direct tests of the bounce framework:
 SPHEREx $\fnl$ forecast (Paper~II~\cite{Golden2026P2}), multi-survey anomaly
@@ -4005,7 +4040,7 @@ and H100 instances).
 \begin{table*}[t]
 \caption{\label{tab:params} Complete parameter summary with priors, reference values,
 and physical interpretations. Rows marked $\dagger$ cite the companion internal
-MCMC analysis (in preparation~\cite{Golden2026P1b}) and are not independently
+MCMC analysis (companion, posted concurrently in the coordinated submission~\cite{Golden2026P1b}) and are not independently
 peer-reviewable until that work is publicly posted.
 The $\gamma$ row uses the SU(2) full-counting scheme value
 $\gamma_{\rm SU(2)}\!\approx\!0.274$~\cite{Domagala2004,Meissner2004}; the scheme range
@@ -4028,7 +4063,7 @@ $\Omega_m$ & Matter density & Derived & $0.308\pm 0.005$ & \\
 \hline
 \multicolumn{5}{l}{\textit{Observational channel parameters}} \\
 $\beta$ & ALP birefringence & --- & $0.27^\circ$ (midpoint) & Spectator ALP, not ECH \\
-$\fnl$ & Non-Gaussianity & --- & $-35/8 = -4.375$ & Matter bounce class\footnote{Survives only in bounce scenarios \emph{not} invoking the $N_{\rm tot}\approx 92$ dark-energy dilution; under that dilution it is erased at SPHEREx-accessible scales (Sec.~\ref{sec:structural_tension}).} \\
+$\fnl$ & Non-Gaussianity & --- & $-35/16 = -2.1875$ & Matter bounce class\footnote{Survives only in bounce scenarios \emph{not} invoking the $N_{\rm tot}\approx 92$ dark-energy dilution; under that dilution it is erased at SPHEREx-accessible scales (Sec.~\ref{sec:structural_tension}).} \\
 $\gamma_{\rm PTA}$ & PTA spectral index & --- & $2.567\pm 0.382$ (real-KDE GPU MCMC) & Bounce $\gamma=3.0$ at $+1.13\sigma$ \\
 \end{tabular}
 \end{ruledtabular}
