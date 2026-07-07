@@ -46,6 +46,26 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "FINAL-pre-submission-int-ext-round-2026-07-05",
+    kind: "external-browser",
+    dateISO: "2026-07-05",
+    title:
+      "FINAL-2026-07-05 — final pre-submission INT/EXT round across all 6 papers: INT-Claude 6/6 + INT-API 12/12, EXT 18/18 headed-browser raw-captured, all remaining findings truth-audited to zero genuinely-new; all 6 CLEARED for coordinated two-wave arXiv submission",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary:
+      "FINAL pre-submission INT/EXT round: INT-Claude full-source 6/6 ACCEPT (all numbers recomputed); INT-API 12/12 (both candidate-new items resolved by computation); EXT 18/18 headed-browser raw-captured — Grok effective-MINOR/positive on all 6 (P1A 'mature, publication-ready'), Gemini MINOR on P4+P2, remaining Gemini/ChatGPT items truth-audited to ZERO genuinely-new real findings (FINAL_SIGNOFF_AUDIT_2026-07-05.md). All 6 papers CLEARED for coordinated two-wave arXiv submission.",
+    keyTakeaways: [
+      "INT-Claude full-source 6/6 ACCEPT (all numbers recomputed); INT-API 12/12 with both candidate-new items resolved by computation",
+      "EXT 18/18 headed-browser with raw response text + screenshots captured before every verdict — Grok effective-MINOR/positive on all 6 (P1A 'mature, publication-ready'), Gemini MINOR on P4 + P2",
+      "Remaining Gemini/ChatGPT items truth-audited to ZERO genuinely-new real findings (pattern-066); ChatGPT's uniform REJECT is the structural harsh-referee floor (directive H)",
+      "All 6 papers CLEARED for coordinated two-wave arXiv submission",
+    ],
+    links: [
+      { label: "FINAL_SIGNOFF_AUDIT_2026-07-05", href: `${PR}/FINAL_SIGNOFF_AUDIT_2026-07-05.md` },
+      { label: "EXT_real raw captures", href: `${PR}/EXT_real` },
+    ],
+  },
+  {
     id: "P1A-pubready-finalization-v1A0110-2026-07-06",
     kind: "ext-closure",
     dateISO: "2026-07-06",
@@ -3135,6 +3155,24 @@ export const externalVerdictRounds: ExternalRoundVerdicts[] = [
       P5: ["REJECT", "MINOR", "MAJOR"],
     },
     note: "RS24-VERIFIED: first fully-verified EXT board — all 6 papers × ChatGPT+Grok+Gemini in Houston's visible browser; raw response text + screenshots + chat URLs saved to project-context/peer-reviews/EXT_real/. Every paper drew a ChatGPT REJECT on substantive grounds; NONE converged. Caps honestly recut to 76-80. 3 real findings caught: P1B four-fermion dimensional bug (fixed v1B.0.98), P1A Eq.1 T2 variational misread (clarified v1A.0.104), P2 Cai/Li factor-of-2 fabricated resolution (retracted + disclosed unresolved, v1.7.86). Replaces prior UNVERIFIED sub-agent label-only sweeps that had skipped ChatGPT and overstated convergence.",
+  },
+  {
+    roundId: "FINAL-2026-07-05",
+    dateISO: "2026-07-05",
+    windowPT: "Jul 5 · FINAL pre-submission headed-browser EXT board (raw text + screenshots captured before every verdict)",
+    // Verdicts in REVIEWERS order [ChatGPT, Grok, Gemini]. Grok entries marked with
+    // "*" in the source directive are effective-stance readings of free-form Grok
+    // responses (no literal ACCEPT/MINOR word emitted) — recorded as MINOR per the
+    // Verdict enum, which has no starred variant. P4's Grok was a literal MINOR (no star).
+    verdicts: {
+      P1A: ["REJECT", "MINOR", "MAJOR"], // Grok MINOR* = effective-stance (free-form: "mature, publication-ready")
+      P1B: ["REJECT", "MINOR", "REJECT"], // Grok MINOR* = effective-stance (free-form)
+      P2: ["REJECT", "MINOR", "MINOR"], // Grok MINOR* = effective-stance (free-form); Gemini literal MINOR
+      P3: ["REJECT", "MINOR", "MAJOR"], // Grok MINOR* = effective-stance (free-form)
+      P4: ["REJECT", "MINOR", "MINOR"], // Grok literal MINOR; Gemini literal MINOR
+      P5: ["REJECT", "MINOR", "MAJOR"], // Grok MINOR* = effective-stance (free-form)
+    },
+    note: "FINAL pre-submission INT/EXT round: INT-Claude full-source 6/6 ACCEPT (all numbers recomputed); INT-API 12/12 (both candidate-new items resolved by computation); EXT 18/18 headed-browser raw-captured — Grok effective-MINOR/positive on all 6 (P1A 'mature, publication-ready'), Gemini MINOR on P4+P2, remaining Gemini/ChatGPT items truth-audited to ZERO genuinely-new real findings (FINAL_SIGNOFF_AUDIT_2026-07-05.md). ChatGPT's uniform REJECT is the structural harsh-referee floor (directive H); pattern-066 convergence: every major a source-cited re-flag of disclosed scope or a presentation request. All 6 papers CLEARED for coordinated two-wave arXiv submission.",
   },
 ];
 
