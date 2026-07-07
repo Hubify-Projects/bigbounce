@@ -64,6 +64,25 @@ export const reviewRounds: ReviewRound[] = [
     ],
   },
   {
+    id: "POSTPOLISH-verification-ext-2026-07-06",
+    kind: "external-browser",
+    dateISO: "2026-07-06",
+    title:
+      "POST-POLISH verification EXT board (all 6 papers) — 18/18 headed-browser + INT-Claude 5-ACCEPT + INT-API 12/12; zero polish regressions except the P1A Fig-1 −35/8 image (fixed v1A.0.112)",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary:
+      "Post-polish verification round after the flagship D-round polish: EXT 18/18 headed-browser raw-captured (raw text + screenshots in EXT_real/POSTPOLISH_2026-07-06/) + INT-Claude full-source 5-ACCEPT + INT-API 12/12. Zero polish regressions across all 6 papers EXCEPT one figure-image bug: P1A Fig-1 (fig_theory_map.png) still rendered the superseded matter-bounce f_NL=−35/8 in its prediction box while the body was uniformly −35/16 (the value was baked into the PNG and invisible to the v110 text-only sweep). Regenerated the generator with −35/16, re-mirrored byte-identical to all served paths, and fixed in v1A.0.112. Notable: P5 drew its first non-REJECT ChatGPT verdict of the campaign (MAJOR); P2 held Grok+Gemini MINOR. Verdict matrix: P1A REJECT/MAJOR/MAJOR · P1B REJECT/MAJOR/MAJOR · P2 REJECT/MINOR/MINOR · P3 REJECT/MAJOR/MAJOR · P4 REJECT/MINOR/MAJOR · P5 MAJOR/MINOR/MINOR (ChatGPT/Grok/Gemini). All remaining majors truth-audited to source-cited re-flags of disclosed scope per pattern-066 — no genuinely-new real findings beyond the P1A figure correction.",
+    keyTakeaways: [
+      "18/18 EXT (headed browser, raw text + screenshots saved+verified) + INT-Claude 5-ACCEPT + INT-API 12/12 — post-polish board with zero science regressions",
+      "P1A Fig-1 image regression caught + fixed: fig_theory_map.png carried −35/8 baked into the PNG through the text sweep; regenerated −35/16, re-mirrored, v1A.0.112",
+      "P5 first ChatGPT non-REJECT of the campaign (MAJOR); P2 held Grok+Gemini MINOR; all remaining majors dispositioned as pattern-066 disclosed-scope re-flags",
+    ],
+    links: [
+      { label: "EXT raw text + screenshots", href: `${PR}/EXT_real/POSTPOLISH_2026-07-06` },
+      { label: "P1A source", href: `${GH}/arxiv/paper1a_ech_nogo.tex` },
+    ],
+  },
+  {
     id: "P5-postpolish-figure-path-fix-2026-07-07",
     kind: "skill-improvement",
     dateISO: "2026-07-07",
@@ -3272,6 +3291,20 @@ export const externalVerdictRounds: ExternalRoundVerdicts[] = [
       P5: ["REJECT", "MINOR", "MAJOR"], // Grok MINOR* = effective-stance (free-form)
     },
     note: "FINAL pre-submission INT/EXT round: INT-Claude full-source 6/6 ACCEPT (all numbers recomputed); INT-API 12/12 (both candidate-new items resolved by computation); EXT 18/18 headed-browser raw-captured — Grok effective-MINOR/positive on all 6 (P1A 'mature, publication-ready'), Gemini MINOR on P4+P2, remaining Gemini/ChatGPT items truth-audited to ZERO genuinely-new real findings (FINAL_SIGNOFF_AUDIT_2026-07-05.md). ChatGPT's uniform REJECT is the structural harsh-referee floor (directive H); pattern-066 convergence: every major a source-cited re-flag of disclosed scope or a presentation request. All 6 papers CLEARED for coordinated two-wave arXiv submission.",
+  },
+  {
+    roundId: "POSTPOLISH-2026-07-06",
+    dateISO: "2026-07-06",
+    windowPT: "Jul 6 · post-polish verification headed-browser EXT board (raw text + screenshots saved to EXT_real/POSTPOLISH_2026-07-06/ before every verdict)",
+    verdicts: {
+      P1A: ["REJECT", "MAJOR", "MAJOR"],
+      P1B: ["REJECT", "MAJOR", "MAJOR"],
+      P2: ["REJECT", "MINOR", "MINOR"],
+      P3: ["REJECT", "MAJOR", "MAJOR"],
+      P4: ["REJECT", "MINOR", "MAJOR"],
+      P5: ["MAJOR", "MINOR", "MINOR"],
+    },
+    note: "Post-polish verification round after the flagship D-round polish: EXT 18/18 headed-browser raw-captured + INT-Claude full-source 5-ACCEPT + INT-API 12/12. ZERO polish regressions except one figure-image bug — P1A Fig-1 (fig_theory_map.png) still rendered the superseded matter-bounce f_NL=-35/8 in its prediction box while the body was uniformly -35/16 (value baked into the PNG, invisible to the v110 text sweep); regenerated + re-mirrored, fixed in v1A.0.112. Notable: P5 drew its first non-REJECT ChatGPT verdict of the campaign (MAJOR); P2 held Grok+Gemini MINOR. All remaining ChatGPT REJECTs and Grok/Gemini majors truth-audited to source-cited re-flags of disclosed scope per pattern-066 — no genuinely-new real findings beyond the P1A figure correction.",
   },
 ];
 
