@@ -1,0 +1,89 @@
+{
+  "task": "P3-INT-DESI-QSO-HIZ-ENRICHMENT (DESI-stream analog of SDSS test)",
+  "date_utc": "2026-07-07T01:59:28Z",
+  "inputs": {
+    "anomalies": "pipelines/p3_anomaly_engine/hf_staging/desi_dr1_anomalies.parquet",
+    "zcatalog": "DESI DR1 zall-pix-iron.fits (public, iron/v1); ZCAT_PRIMARY dedup",
+    "zcatalog_url": "https://data.desi.lbl.gov/public/dr1/spectro/redux/iron/zcatalog/v1/zall-pix-iron.fits",
+    "join": "direct hash join on TARGETID (anomaly tid == DESI TARGETID), primary coadd only"
+  },
+  "n_anomalies": 195790,
+  "n_zall_primary": 27547223,
+  "n_joined_primary": 195790,
+  "match_fraction": 1.0,
+  "zwarn0_fraction_of_matched": 0.0010266101435211195,
+  "n_secure_zwarn0": 201,
+  "spectype_composition_all_matched": {
+    "GALAXY": 193452,
+    "QSO": 2102,
+    "STAR": 236
+  },
+  "spectype_fractions_all_matched": {
+    "GALAXY": 0.9881,
+    "QSO": 0.0107,
+    "STAR": 0.0012
+  },
+  "spectype_composition_secure": {
+    "GALAXY": 165,
+    "QSO": 34,
+    "STAR": 2
+  },
+  "qso_stats_all_matched_primaries": {
+    "label": "all_matched_primaries",
+    "n_qso": 2102,
+    "qso_z_median": 3.813163648878648,
+    "qso_z_cuts": {
+      "z>2": 1504,
+      "z>3": 1206,
+      "z>4": 769,
+      "z>5": 585,
+      "z>6": 327
+    },
+    "internal_control_mannwhitney": {
+      "median_score_hiz_zgt4": 5.392792224884033,
+      "median_score_loz_zle4": 5.511066913604736,
+      "n_hiz": 769,
+      "n_loz": 1333,
+      "mannwhitney_U": 469247.0,
+      "mannwhitney_p_hiz_gt_loz": 0.9993810146059099
+    },
+    "internal_control_spearman": {
+      "spearman_rho": -0.059477096183694525,
+      "spearman_p": 0.006378272621478788,
+      "n": 2102
+    }
+  },
+  "qso_stats_secure_zwarn0": {
+    "label": "secure_zwarn0",
+    "n_qso": 34,
+    "qso_z_median": 3.8165537181253733,
+    "qso_z_cuts": {
+      "z>2": 33,
+      "z>3": 22,
+      "z>4": 15,
+      "z>5": 13,
+      "z>6": 8
+    },
+    "internal_control_mannwhitney": {
+      "median_score_hiz_zgt4": 5.300685405731201,
+      "median_score_loz_zle4": 5.19519567489624,
+      "n_hiz": 15,
+      "n_loz": 19,
+      "mannwhitney_U": 171.0,
+      "mannwhitney_p_hiz_gt_loz": 0.16573351650784285
+    },
+    "internal_control_spearman": {
+      "spearman_rho": 0.2647822765469824,
+      "spearman_p": 0.13019319361857917,
+      "n": 34
+    }
+  },
+  "external_baseline_enrichment_all_primaries": {
+    "anomaly_zgt4_fraction": 0.3658420551855376,
+    "parent_zgt4_baseline_approx": 0.009,
+    "enrichment_factor_approx": 40.65,
+    "binomial_p_greater": 0.0,
+    "note": "baseline is a literature approximation; enrichment DIRECTION robust, exact factor prior-dependent. internal_control (score-vs-z) is the decisive self-contained stat."
+  },
+  "integrity_note": "Every number computed from the committed DESI anomaly catalog joined to the public DESI DR1 zcatalog (ZCAT_PRIMARY) on TARGETID. No fabrication. NOTE: DESI anomaly-selected spectra are predominantly ZWARN!=0 outliers by construction, so the QSO count is far smaller than the SDSS Path-C native slice; both the all-primaries and secure-only statistics are reported transparently."
+}
