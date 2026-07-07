@@ -46,6 +46,69 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "P4-P2-final-polish-dround-2026-07-06",
+    kind: "closure-wave",
+    dateISO: "2026-07-06",
+    title:
+      "P4 v1.0.219 + P2 v1.7.98 — final-polish D-round (flagship pair): top-journal presentation + disclosure only, NO scientific number/claim changed",
+    papers: ["P4", "P2"],
+    summary:
+      "Editorial final-polish pass on the two flagship papers to top-journal presentation standard, presentation + disclosure ONLY (zero science changed; both recompile 0 undef-refs, and the one genuinely-visible P2 column overflow — a raw repo path — was fixed). P4: the ~40-word descriptive title condensed to 'A Null Chirality Dipole in 8.5 Million DESI Galaxies from Equivariant Deep Learning' (result-first; the monopole-mask/canonical-residual detail lives in the abstract); the caveat-dense abstract Gemini flagged rewritten reader-first (null result → method → the two honest limitations stated ONCE each), every number preserved verbatim (+0.41σ, p=0.31, z≈−18, 1.7%, 99.32%, +3.64/+7.28σ, A_95∈(1.0,1.5]%). P2: abstract restructured to LEAD with the −35/16 Cai–Li resolution then the forecast then the load-bearing caveat (was caveat-first), the triple-stated resolution consolidated; the committed figure generator got a colorblind-safe (Wong) palette + consistent fonts, and the −35/8→−35/16 label-sync begun in v1.7.97 was finished — fig2/fig3/fig5 STILL rendered the retracted −35/8-era values, directly contradicting their own already-corrected captions. Both: AI-methods disclosure upgraded to agentic-pipeline-under-author-direction + results-verified-against-committed-artifacts + public-audit-trail. Cai/Brandenberger courtesy email drafted (do-not-send). Directive-G hygiene complete.",
+    keyTakeaways: [
+      "P4 title condensed from ~40 words to a crisp 12-word result-first title; propagated to metadata/README/cover/checklist/Convex",
+      "P4 abstract rewritten reader-first (result → method → two caveats once each), closing Gemini's caveat-density flag with zero disclosure lost",
+      "P2 abstract now LEADS with the −35/16 Cai–Li resolution (the contribution) then the forecast — was opening with a caveat wall; triple-repetition of the resolution consolidated",
+      "P2 figures: colorblind-safe palette + fonts, and fig2/fig3/fig5 finally synced from the retracted −35/8 to the corrected −35/16 (they contradicted their own captions); a raw file-path column overflow fixed",
+      "AI-methods disclosure (both) upgraded to agentic-pipeline-under-author-direction + artifact-verified + public-audit-trail; NO scientific number/claim changed anywhere",
+      "Directive-G: P4 v1.0.218→v1.0.219 (md5 e8b4f10a…, 31pp); P2 v1.7.97→v1.7.98 (md5 7af1d09f…, 34pp); both mirrored byte-identical to all served paths, Convex bumped, bundles rebuilt + standalone-verified, date July 6 2026",
+    ],
+    links: [
+      { label: "P4 source", href: `${GH}/pipelines/p2_chirality/chirality_catalog_paper.tex` },
+      { label: "P2 source", href: `${GH}/research/focused_paper_source_integration/02_full_draft.tex` },
+    ],
+  },
+  {
+    id: "P1A-P1B-final-polish-dround-2026-07-07",
+    kind: "closure-wave",
+    dateISO: "2026-07-07",
+    title:
+      "P1A v1A.0.111 + P1B v1B.0.102 — final-polish D-round (theory pair): presentation + disclosure only, NO scientific number/claim/derivation changed; disclaimer repetition consolidated, AI-methods disclosure upgraded",
+    papers: ["P1A", "P1B"],
+    summary:
+      "Editorial final-polish pass on the theory pair to top-journal presentation standard, presentation + disclosure ONLY (zero science changed; verified 0 undef-refs, 0 large overfull hboxes on both). P1A: the v110 companion-reframe had over-applied the verbose 'companion, posted concurrently in the coordinated submission' phrase to 17 body sites (exactly the Gemini EXT 'excessive and repetitive disclaimers' flag) — collapsed all 14 parenthetical forms to plain 'companion~cite{}' and simplified the 5 prose forms, leaving ONE canonical coordinated-submission statement in the self-containment paragraph; that paragraph de-densified 27→15 lines (non-load-bearing / reproducible-now / coordinated-submission facts each stated once, all preserved); abstract tail de-duplicated (basis-completeness stated once) and the ~130-word triple-nested structural-tension e-fold sentence split into readable prose with ALL numbers preserved (N_tot≈92, f_NL=−35/16, e^32, N_exit≈60, k_SPHEREx~1e-1 h/Mpc). P1A dropped 39→37pp from consolidation alone. Both papers: AI-methods disclosure upgraded to explicit agentic-pipeline-under-author-direction + results-verified-against-committed-artifacts + public-audit-trail wording. Figures audited: already publication-grade (serif, 300dpi, colorblind-tolerant palette + shape-redundant markers) — PASS as-is. Directive-G hygiene complete; readinessCap held (venue barrier, Houston-gated).",
+    keyTakeaways: [
+      "Gemini's 'excessive and repetitive disclaimers' flag directly closed: the verbose coordinated-submission phrase collapsed from 17 body sites to ONE canonical statement, zero honest scope lost",
+      "P1A abstract de-densified: duplicate basis-completeness restatement removed, structural-tension e-fold run-on split into readable sentences with every number preserved — 39pp→37pp",
+      "AI-methods disclosure (both papers) upgraded to agentic-pipeline-under-author-direction + results-verified-against-committed-artifacts + public-audit-trail",
+      "NO scientific number, claim, or derivation changed anywhere; figures pass the style audit as-is (colorblind-tolerant, serif, 300dpi)",
+      "Directive-G: P1A v1A.0.110→v1A.0.111 (md5 bdb385c57ce3a856b3311cd30fa247b8, 37pp); P1B v1B.0.101→v1B.0.102 (md5 ddaf880631a9c063a0f87b3dad17bd33, 22pp); both mirrored byte-identical to all served paths, date July 7 2026",
+    ],
+    links: [
+      { label: "P1A source", href: `${GH}/arxiv/paper1a_ech_nogo.tex` },
+      { label: "P1B source", href: `${GH}/arxiv/paper1b_mcmc_companion.tex` },
+    ],
+  },
+  {
+    id: "P3-P5-final-polish-dround-2026-07-06",
+    kind: "closure-wave",
+    dateISO: "2026-07-06",
+    title:
+      "P3 v3.1.140 + P5 v0.1.103 — final-polish D-round (data/catalog pair): presentation + disclosure only, NO scientific number/claim changed; abstracts rewritten to lead-with-result, caveat repetition consolidated, AI-methods disclosure added",
+    papers: ["P3", "P5"],
+    summary:
+      "Editorial final-polish pass on the data/catalog pair to top-journal presentation standard, presentation + disclosure ONLY (verified 0 distinct numeric values added/deleted vs prior version on both; 0 undef-refs, 0 overfull hboxes). P3: title sharpened 24→20 words (kept 268,519 validated + 37.3M scanned; 377,780 total moved to abstract); abstract rewritten for a first-time reader — leads with the validated catalog + the real-object injection-recovery demonstration, states the process-volume disclaimer ONCE, consolidates the repeated eROSITA/LAMOST/Gaia/multiplier caveats, ~1000→~550 words with every number byte-identical; prose de-densified in Intro/Method/sec:sdss/sec:desi/Discussion/Conclusions; CC-BY-4.0 license added to the catalog availability statement. P5: title trimmed (dropped the tidal-tensor cross-check tail, footnote condensed to a sec:vweb pointer); abstract reordered to lead with the null RESULT (void-vs-non-void ΔfCW consistent with parity across all five DESIVAST void-finders) before the setup, monopole-invariance caveat consolidated from 3+ to one; prose de-densified in sec:p4/sec:data/Discussion; paperIVarxiv placeholder + coordinated-submission framing verified coherent; script-11 figures regenerated at 300 dpi with serif fonts (plotted values unchanged, read from committed JSON/CSV). Both papers: AI-assisted-methodology disclosure added to acknowledgments (agentic pipeline under author direction, every number verified against committed artifacts, public audit trail). Directive-G hygiene complete; readinessCap held (venue barrier, Houston-gated).",
+    keyTakeaways: [
+      "Both abstracts rewritten to lead with the result (P3: validated catalog + real-object demo; P5: the parity null) and to state each honest caveat exactly once — zero honest scope lost, zero numbers changed",
+      "AI-assisted-methodology disclosure added to both acknowledgments blocks (P5 had none): agentic pipeline under author direction, every number verified against committed artifacts, public audit trail",
+      "Verified 0 distinct numeric VALUES added or deleted on either paper vs the prior version; P5 script-11 figures regenerated at 300 dpi + serif from the committed generator (plotted values unchanged)",
+      "Directive-G: P3 v3.1.139→v3.1.140 (md5 55459a5f46ec48754a74db448f1e7657, 33pp); P5 v0.1.102→v0.1.103 (md5 a3a00abdfa24af461df14be60a1ff19a, 37pp); both mirrored byte-identical to all served paths, date July 6 2026; Convex paperVersions:bump three-way md5-verified",
+    ],
+    links: [
+      { label: "P3 source", href: `${GH}/pipelines/p3_anomaly_engine/paper3_draft.tex` },
+      { label: "P5 source", href: `${GH}/pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex` },
+    ],
+  },
+  {
     id: "FINAL-pre-submission-int-ext-round-2026-07-05",
     kind: "external-browser",
     dateISO: "2026-07-05",

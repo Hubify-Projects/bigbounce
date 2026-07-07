@@ -1,11 +1,11 @@
 title: Testing the Matter Bounce with Primordial Non-Gaussianity: A SPHEREx Sensitivity Recast with a MegaMapper Outlook
 authors: Houston Golden
-version: v1.7.97
+version: v1.7.98
 datestamp: 2026-07-06
-bundle: arxiv_p2_v1.7.97.tar.gz
-bundle_md5: f244b52eb3757da293dc2bd85c2fcf11
-bundle_size_bytes: 424125
-pdf_md5: ca8e376d97f10b85e78a3847f7387bba
+bundle: arxiv_p2_v1.7.98.tar.gz
+bundle_md5: 894fd8bb6e23b0319f928b469286d889
+bundle_size_bytes: 710968
+pdf_md5: 7af1d09f5d61e2603e91b34eaeaf1234
 pages: 34
 main_file: 02_full_draft.tex
 figures:
@@ -19,30 +19,29 @@ bbl: 02_full_draft.bbl (included; rebuilt with paper)
 bib: focused_paper_refs.bib
 primary_class: astro-ph.CO
 cross_lists: gr-qc, hep-th
-standalone_compile: PASS (pdflatex x4; 0 undefined refs; 0 overfull; 34 pages; clean-dir standalone verified 2026-07-06, v1.7.97)
+standalone_compile: PASS (pdflatex x4; 0 undefined refs; 0 overfull; 34 pages; clean-dir standalone verified 2026-07-06, v1.7.98)
 figure_hygiene_note: v1.7.97 regenerated fig1_shape_function.png and fig4_decision_thresholds.png, which still rendered the stale -35/8-era labeling (last regenerated 2026-06-26) while every text/table headline already carried the corrected -35/16. fig1 curve scaled by 1/2 to converge to -35/16 = -2.1875 (legend + benchmarks now match tab:benchmarks: squeezed -35/16, equilateral -255/128 = -1.992, folded -9/8 = -1.125); fig4 prediction line + SPHEREx/MegaMapper error bars moved to -35/16 = -2.1875 and decision regions re-centered so the prediction sits in the dark-green "strongly favors bounce" zone. Cosmetic label-sync of already-corrected headline numbers; no f_NL/sigma value invented.
 data_unlock_note: v1.7.96 adds one sentence to sec:systematics — a systematic availability search (arXiv ancillary, Zenodo, authors' public repos) confirms the Heinrich et al. 2023 per-triangle bispectrum Cov_B is NOT publicly released, so the rho=-0.868-proxy computed-degeneracy bracket is the best currently-constructible marginalized-floor estimate. No headline/f_NL/sigma number changed. Record: project-context/peer-reviews/INT_v3/DATA_UNLOCK_2026-07-05.md
+dround_polish_note: v1.7.98 D-round final polish — abstract restructured to lead with the -35/16 Cai-Li resolution then the forecast then the load-bearing caveat (was caveat-dense); colorblind-safe palette + consistent fonts across all figures and finished the -35/8 -> -35/16 label-sync in fig2/fig3/fig5 (which still showed the retracted value, contradicting their own corrected captions); AI-methods disclosure expanded; a raw file-path column-overflow fixed. Presentation + disclosure only; no science number changed.
 
 abstract: |
-  This work is a sensitivity recast of a single externally published forecast,
-  not an independent forecast: every quoted SPHEREx significance and Bayes factor
-  rescales the imported Heinrich et al. sigma(f_NL^local) ~ 0.7 baseline by an
-  explicit template-mismatch factor r = 0.84 plus a heuristic additive-quadrature
-  systematic budget. A matter-dominated contracting phase preceding a nonsingular
-  bounce predicts a minimally parameterized local-type non-Gaussianity
-  f_NL^local = -35/16 = -2.1875. We resolve the long-standing eight-year Cai-Li
-  factor-of-two literature discrepancy (Cai et al. -35/8 vs. Li et al. -35/16) in
-  favour of -35/16: re-summing Cai et al.'s own four cubic-action vertices at
-  epsilon = 3/2 gives -35/16 in the squeezed limit, matching Li et al.'s
-  independent general-c_s result at c_s = 1, while the published -35/8 traces to a
-  spurious +(99/128) sum_i k_i^3 term in Cai et al.'s final combined polynomial
-  (both works share the identical f_NL = 10A/(3 sum k_i^3) convention, so it is an
-  arithmetic error, not a convention difference). After template-mismatch
-  correction the SPHEREx bispectrum significance for f_NL = -35/16 is
-  ~2.6-2.75 sigma optimistic, reducing to a realistic ~1.3-2.75 sigma after the
-  full systematic budget. A closed-form Bayesian comparison, validated across
-  three 10^5-realization Monte Carlo ensembles, gives illustrative Bayes factors
-  favouring the bounce over tuned multifield competitors (prior-dependent). The
-  forecast is conditional on faithful cubic-order bispectrum transmission through
-  the bounce (derived here to a bounded ~10^-3 systematic via single-clock LQC
-  superhorizon zeta-conservation).
+  A matter-dominated contracting phase preceding a nonsingular bounce predicts a
+  minimally parameterized local-type non-Gaussianity f_NL^local = -35/16 = -2.1875,
+  opposite in sign and ~2 orders of magnitude larger than the single-field slow-roll
+  value. Our central contribution resolves the long-standing eight-year Cai-Li
+  factor-of-two discrepancy (Cai et al. -35/8 vs. Li et al. -35/16) in favour of
+  -35/16: re-summing Cai et al.'s own four cubic-action vertices at epsilon = 3/2
+  gives -35/16 in the squeezed limit, matching Li et al.'s independent general-c_s
+  result at c_s = 1, while the published -35/8 traces to a spurious +(99/128) sum_i
+  k_i^3 term in Cai et al.'s final combined polynomial (both share the identical
+  f_NL = 10A/(3 sum k_i^3) convention, so it is an arithmetic error, not a convention
+  difference). We then recast published SPHEREx and MegaMapper forecasting power onto
+  this prediction: this is a sensitivity recast of a single external forecast, not an
+  independent one. After template-mismatch correction the SPHEREx bispectrum
+  significance for f_NL = -35/16 is ~2.6-2.75 sigma optimistic, reducing to a
+  realistic ~1.3-2.75 sigma after the full systematic budget. A closed-form Bayesian
+  comparison, validated across three 10^5-realization Monte Carlo ensembles, gives
+  illustrative (prior-dependent) Bayes factors favouring the bounce over tuned
+  multifield competitors. The forecast is conditional on faithful cubic-order
+  bispectrum transmission through the bounce (derived here to a bounded ~10^-3
+  systematic via single-clock LQC superhorizon zeta-conservation).

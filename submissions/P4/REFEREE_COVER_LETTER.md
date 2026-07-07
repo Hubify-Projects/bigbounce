@@ -1,6 +1,6 @@
 # Cover Letter — Paper 4
 
-**Title area:** A survey-scale chirality-labeled galaxy catalog and a null spiral-handedness dipole
+**Title area:** A Null Chirality Dipole in 8.5 Million DESI Galaxies from Equivariant Deep Learning
 **Source:** `pipelines/p2_chirality/chirality_catalog_paper.tex`
 **Suggested venue:** Physical Review D (or ApJ / MNRAS)
 
