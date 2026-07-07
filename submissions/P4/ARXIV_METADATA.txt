@@ -1,8 +1,9 @@
 ========================================================================
 arXiv SUBMISSION METADATA — Paper IV (P4)
 Galaxy Chirality Catalog
-Source: pipelines/p2_chirality/chirality_catalog_paper.tex  (v1.0.217, 31pp)
-Bundle: submissions/P4/arxiv_p4_v1.0.217.tar.gz
+Source: pipelines/p2_chirality/chirality_catalog_paper.tex  (v1.0.218, 31pp)
+Bundle: submissions/P4/arxiv_p4_v1.0.218.tar.gz  (md5 d30390858156fd1f4d44595b6b5192da, 26.7MB)
+PDF md5: 2182361bf6a2671dfd705d44f6ba0855 (31 pages)
 ------------------------------------------------------------------------
 This is PREP metadata to paste field-by-field into arxiv.org/submit.
 DO NOT SUBMIT until Houston gives the go.
@@ -34,7 +35,7 @@ astro-ph.GA
 ------------------------------------------------------------------------
 
 COMMENTS:
-31 pages, 10 figures, 14 tables. The canonical-mask ell=1 residual is forward-modeled by imaging-systematic templates (~52-54% of the observed |a_1| in the correct direction, cos-alignment +0.84); a completed per-galaxy morphology forward-model on all 3.2M spirals (real DR8 b/a, fracdev, shape_r) adds negligibly (+0.7pt), so the ~half remainder is honestly disclosed as an open item, not attributed. Edge-on contamination is quantified empirically (f_edge=15.8%). Data, model weights, and reproducibility scripts at https://github.com/Hubify-Projects/bigbounce
+31 pages, 10 figures, 14 tables. The canonical-mask ell=1 residual is forward-modeled by imaging-systematic templates (~52-54% of the observed |a_1| in the correct direction, cos-alignment +0.84); a completed per-galaxy morphology forward-model on all 3.2M spirals (real DR8 b/a, fracdev, shape_r) adds negligibly (+0.7pt), so the ~half remainder is honestly disclosed as an open item, not attributed. Edge-on contamination is quantified empirically (f_edge=15.8%). The edge-on-isolated (b/a<0.30) argmax tie-break population (N=295,170) is directly measured and spatially isotropic (family-wise joint p=0.49, per-leg |z|<1.4), so the argmax step introduces no directional dipole even in the edge-on slice (v1.0.218 App E). Data, model weights, and reproducibility scripts at https://github.com/Hubify-Projects/bigbounce
 
 ------------------------------------------------------------------------
 
@@ -51,4 +52,4 @@ REPORT-NO / JOURNAL-REF / DOI / MSC-CLASS:
 
 SUBMISSION NOTE:
 Submit P4 BEFORE P5 (P5 cites P4 as its companion/input catalog).
-Bundle: submissions/P4/arxiv_p4_v1.0.217.tar.gz
+Bundle: submissions/P4/arxiv_p4_v1.0.218.tar.gz
