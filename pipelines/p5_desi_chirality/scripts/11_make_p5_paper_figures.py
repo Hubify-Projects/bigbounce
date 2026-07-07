@@ -29,6 +29,17 @@ import numpy as np
 import pandas as pd
 from scipy.stats import beta as beta_dist
 
+# Publication-quality defaults (D-round style pass): serif fonts to match the
+# revtex body, print-resolution output. No plotted value is affected — all
+# numbers are read from the committed JSON/CSV artifacts below.
+plt.rcParams.update({
+    "font.family": "serif",
+    "font.serif": ["DejaVu Serif", "Times New Roman", "Computer Modern Roman"],
+    "savefig.dpi": 300,
+    "figure.dpi": 300,
+})
+SAVE_DPI = 300
+
 REPO = Path("/Users/houstongolden/Desktop/CODE_2025/bigbounce")
 P5 = REPO / "pipelines/p5_desi_chirality"
 FIG_DIR = P5 / "figures"
@@ -85,7 +96,7 @@ def fig_volume_fractions_pie() -> None:
     ax.spines["right"].set_visible(False)
     fig.tight_layout()
     out = FIG_DIR / "fig_p5_volume_fractions_pie.png"
-    fig.savefig(out, dpi=150, bbox_inches="tight")
+    fig.savefig(out, dpi=SAVE_DPI, bbox_inches="tight")
     plt.close(fig)
     print(f"wrote {out.relative_to(REPO)}")
 
@@ -125,7 +136,7 @@ def fig_cw_by_env_bar() -> None:
     ax.legend(loc="upper right", fontsize=8.5, frameon=True)
     fig.tight_layout()
     out = FIG_DIR / "fig_p5_cw_by_env_bar.png"
-    fig.savefig(out, dpi=150, bbox_inches="tight")
+    fig.savefig(out, dpi=SAVE_DPI, bbox_inches="tight")
     plt.close(fig)
     print(f"wrote {out.relative_to(REPO)}")
 
@@ -160,7 +171,7 @@ def fig_phase2_sensitivity_heatmap() -> None:
                  "across {void, wall, filament, cluster}", fontsize=11)
     fig.tight_layout()
     out = FIG_DIR / "fig_p5_phase2_sensitivity_heatmap.png"
-    fig.savefig(out, dpi=150, bbox_inches="tight")
+    fig.savefig(out, dpi=SAVE_DPI, bbox_inches="tight")
     plt.close(fig)
     print(f"wrote {out.relative_to(REPO)}")
 
