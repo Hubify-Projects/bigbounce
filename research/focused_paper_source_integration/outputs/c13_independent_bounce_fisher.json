@@ -3,11 +3,11 @@
   "reviewer_objection_closed": "the SPHEREx significance rests on a single scalar rescaling r~0.84 of Heinrich's local sigma(f_NL)~0.7; no independent bounce-template Fisher/covariance computed.",
   "provenance": {
     "script": "research/focused_paper_source_integration/scripts/c13_independent_bounce_fisher.py",
-    "git_hash_at_run": "86d22a7b435aaa8b37b35c26fa99960aa95cee9a",
-    "date_utc": "2026-07-07T18:31:15.831470+00:00",
+    "git_hash_at_run": "32082f38f0f6c1008e6bbbb3250ea912057cc074",
+    "date_utc": "2026-07-07T18:41:56.846387+00:00",
     "camb_version": "1.6.0",
     "python": "3.9.6",
-    "runtime_seconds": 0.63
+    "runtime_seconds": 40.49
   },
   "inputs": {
     "cosmology": {
@@ -73,6 +73,38 @@
     "ratio_to_heinrich_b1_fixed": 22.22602048183838,
     "ratio_to_heinrich_b1_marginalized": 26.956202183098423,
     "interpretation": "A from-scratch real-space monopole single-effective-tracer tree-level Fisher is expected to land ABOVE Heinrich 0.7 because their forecast adds (i) redshift-space multipoles (l=0,2,4), (ii) full 5-sample multi-tracer cosmic-variance cancellation, both of which TIGHTEN sigma. The offset is a known, sourced, one-directional (conservative) effect, NOT tuned away."
+  },
+  "multitracer_validation": {
+    "description": "FULL 5-sample multi-tracer bispectrum Fisher (the cosmic-variance-cancelling computation Heinrich+2023 do). This is the apples-to-apples reproduction of their sigma(f_NL^local)~0.7.",
+    "heinrich_published": 0.7,
+    "mt_sigma_fnl_local_b_fixed": 0.6263525925059,
+    "mt_sigma_fnl_local_b_marginalized": 0.6873943360999341,
+    "mt_ratio_to_heinrich_b_fixed": 0.8947894178655715,
+    "mt_ratio_to_heinrich_b_marginalized": 0.9819919087141916,
+    "mt_sigma_fnl_bounce_b_fixed": 0.6315779672017902,
+    "mt_sigma_fnl_bounce_b_marginalized": 0.6886927109752361,
+    "mt_significance_bounce_-35/16_b_fixed": 3.4635470418509553,
+    "mt_significance_bounce_-35/16_b_marginalized": 3.1763077569128764,
+    "mt_r_eff_b_fixed": 0.9917264772249083,
+    "mt_r_eff_b_marginalized": 0.9981147253998617,
+    "mt_local_full": {
+      "template": "local",
+      "sigma_fnl_b1_fixed": 0.6263525925059,
+      "sigma_fnl_bias_marginalized": 0.6873943360999341,
+      "F_ff": 2.5489554282415825,
+      "F_bb": 5682808.878224448,
+      "F_fb": 1567.9276485070748,
+      "n_triangles_total": 2330
+    },
+    "mt_bounce_full": {
+      "template": "bounce",
+      "sigma_fnl_b1_fixed": 0.6315779672017902,
+      "sigma_fnl_bias_marginalized": 0.6886927109752361,
+      "F_ff": 2.5069522256696435,
+      "F_bb": 5682808.878224448,
+      "F_fb": 1504.9936691089335,
+      "n_triangles_total": 2330
+    }
   },
   "results": {
     "local": {

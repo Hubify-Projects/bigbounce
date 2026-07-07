@@ -467,19 +467,28 @@ def total_fisher(template):
 #                                  + b_A b_B b_C M1 M2 M3 Bphi_tmpl ]
 #   db'_X(k) = 2 delta_c (b_X - 1) / M(k).
 # ============================================================
+def _apply_kron(A1, A2, A3, D):
+    """(A1⊗A2⊗A3) applied to tensor D[a,b,c] via sequential per-axis matmul
+    (fast, no einsum-path recomputation)."""
+    # contract A1 over axis 0: T[A,b,c] = sum_a A1[A,a] D[a,b,c]
+    T = np.tensordot(A1, D, axes=([1], [0]))          # (5,5,5): [A,b,c]
+    T = np.tensordot(A2, T, axes=([1], [1]))          # [B,A,c] -> move
+    T = np.transpose(T, (1, 0, 2))                    # [A,B,c]
+    T = np.tensordot(A3, T, axes=([1], [2]))          # [C,A,B]
+    T = np.transpose(T, (1, 2, 0))                    # [A,B,C]
+    return T
+
+
 def _quad_form_kron(D, A1, A2, A3):
-    """d^T (P1⊗P2⊗P3)^{-1} d for a tensor D[a,b,c] (=reshaped d), using
-    (P1⊗P2⊗P3)^{-1} = P1^{-1}⊗P2^{-1}⊗P3^{-1}. Never forms the 125x125 matrix.
-    A1,A2,A3 are the leg inverse power matrices. Returns a scalar."""
-    # (A1⊗A2⊗A3) applied to D: einsum over each leg index.
-    AD = np.einsum('aA,bB,cC,ABC->abc', A1, A2, A3, D, optimize=True)
-    return float(np.einsum('abc,abc->', D, AD, optimize=True))
+    """d^T (P1⊗P2⊗P3)^{-1} d with (P1⊗P2⊗P3)^{-1}=A1⊗A2⊗A3. Scalar."""
+    AD = _apply_kron(A1, A2, A3, D)
+    return float(np.sum(D * AD))
 
 
 def _cross_form_kron(Df, Db, A1, A2, A3):
-    """Df^T (P1⊗P2⊗P3)^{-1} Db for two tensors."""
-    ADb = np.einsum('aA,bB,cC,ABC->abc', A1, A2, A3, Db, optimize=True)
-    return float(np.einsum('abc,abc->', Df, ADb, optimize=True))
+    """Df^T (P1⊗P2⊗P3)^{-1} Db. Scalar."""
+    ADb = _apply_kron(A1, A2, A3, Db)
+    return float(np.sum(Df * ADb))
 
 
 def multitracer_fisher_zbin(iz, template):
@@ -717,6 +726,24 @@ def main():
                 "(i) redshift-space multipoles (l=0,2,4), (ii) full 5-sample multi-tracer "
                 "cosmic-variance cancellation, both of which TIGHTEN sigma. The offset is a "
                 "known, sourced, one-directional (conservative) effect, NOT tuned away."),
+        },
+        "multitracer_validation": {
+            "description": ("FULL 5-sample multi-tracer bispectrum Fisher (the cosmic-variance-"
+                            "cancelling computation Heinrich+2023 do). This is the apples-to-apples "
+                            "reproduction of their sigma(f_NL^local)~0.7."),
+            "heinrich_published": HEINRICH_SIGMA_FNL_LOCAL,
+            "mt_sigma_fnl_local_b_fixed": mt_sig_loc_fix,
+            "mt_sigma_fnl_local_b_marginalized": mt_sig_loc_marg,
+            "mt_ratio_to_heinrich_b_fixed": mt_ratio_fix,
+            "mt_ratio_to_heinrich_b_marginalized": mt_ratio_marg,
+            "mt_sigma_fnl_bounce_b_fixed": mt_sig_bnc_fix,
+            "mt_sigma_fnl_bounce_b_marginalized": mt_sig_bnc_marg,
+            "mt_significance_bounce_-35/16_b_fixed": mt_signif_bnc_fix,
+            "mt_significance_bounce_-35/16_b_marginalized": mt_signif_bnc_marg,
+            "mt_r_eff_b_fixed": mt_r_eff_fix,
+            "mt_r_eff_b_marginalized": mt_r_eff_marg,
+            "mt_local_full": mt_local,
+            "mt_bounce_full": mt_bounce,
         },
         "results": {
             "local": local,
