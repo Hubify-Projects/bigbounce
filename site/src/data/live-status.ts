@@ -97,9 +97,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-2",
       number: "2",
       shortTitle: "f_NL = −35/16 SPHEREx forecast",
-      version: "v1.7.99",
+      version: "v1.7.100",
       readiness: 74,
-      pendingWork: "Error-clean + verified, NOT reviewer-accepted. Verified EXT board (Jul 6): ChatGPT REJECT · Grok MINOR · Gemini MINOR → 50+0+12+12=74 (highest board). Closing the remaining findings with real science: independent Fisher forecast; f_NL=−35/16 3-way certified.",
+      pendingWork: "Error-clean + verified, NOT reviewer-accepted. Verified EXT board (Jul 6): ChatGPT REJECT · Grok MINOR · Gemini MINOR → 50+0+12+12=74 (highest board). v1.7.100: the INDEPENDENT bispectrum Fisher (ChatGPT/OpenAI standing #1 objection) is now BUILT — from-scratch multi-tracer Fisher reproduces Heinrich σ≈0.7 to 2–11%, r_eff≈0.99 at the bounce template, validating the recast (GR-projection 0.8–1.3σ bracket unchanged). f_NL=−35/16 3-way certified.",
     },
     {
       slug: "paper-3",

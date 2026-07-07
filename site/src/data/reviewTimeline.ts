@@ -46,6 +46,36 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p2-independent-fisher-closure-2026-07-07",
+    kind: "closure-wave",
+    dateISO: "2026-07-07",
+    title:
+      "P2 v1.7.100 — INDEPENDENT bispectrum Fisher built, retiring the 'no independent Fisher / single-source dependence' concession (ChatGPT/OpenAI standing #1 objection) with real computation",
+    papers: ["P2"],
+    summary:
+      "P2's every SPHEREx significance previously rested on a scalar rescale r≈0.84 of Heinrich et al.'s imported σ(f_NL^local)≈0.7 — the paper itself flagged a full bounce-fiducial Fisher re-derivation as 'out of scope / follow-up.' That re-derivation is now built and applied (VERIFIED committed script c13_independent_bounce_fisher.py + outputs/c13_independent_bounce_fisher.json). A from-scratch tree-level galaxy-bispectrum Fisher on the SAME committed SPHEREx public-products table (Doré+2014; 5 samples, 6 z-bins, f_sky=0.75) with the SPT F2 matter bispectrum + Gaussian multi-tracer covariance (Scoccimarro 1998, Sefusatti 2006) reproduces the Heinrich local baseline σ(f_NL^local)=0.626 (b-fixed)/0.687 (b-marg) — within 2–11% (ratio 0.89/0.98, validation PASSED) — and at the bounce B_NL template gives σ(f_NL^bounce)=0.632/0.689 → an independent r_eff=σ_local/σ_bounce≈0.99 and an UNMARGINALIZED ~3.46σ/3.18σ for −35/16. FRAMING DISCIPLINE HELD (integrity, per Houston): presented as VALIDATION of the recast + retirement of the single-source limitation, NOT a headline inflation — the ~3.2–3.5σ is the unmarginalized independent number; the paper's honest GR-projection-degeneracy bracket (c12: ρ≈0.95 → the 0.8–1.3σ marginalized edge) still applies ON TOP and stays disclosed exactly as-is; the abstract 1.3–2.75σ headline range remains the recast, not substituted. Honest limitations stated verbatim-in-substance (real-space monopole only / no RSD, Gaussian covariance, tree-level linear k_max, no b2/bs2 marginalization; the ratio r_eff is more robust than either absolute σ). Single-tracer σ≈15.6 kept only as the labeled conservative bound. Every significance quote re-checked for c12-bracket consistency: no stale contradiction; −35/16 UNCHANGED; nothing fabricated (all numbers read from the committed c13 JSON). Added Scoccimarro:1998 + Sefusatti:2006 to the bib. Directive-G: recompiled 0 undef-refs, /latex-audit 0 overfull, 35 pages, re-mirrored byte-identical to all served paths (md5 55d85fe5…), Convex paperVersions:bump with real md5/pages, bundle rebuilt + standalone-verified.",
+    keyTakeaways: [
+      "Independent multi-tracer bispectrum Fisher reproduces Heinrich σ(f_NL^local)≈0.7 to 2–11% (0.626/0.687) — validation PASSED, no Heinrich number imported",
+      "At the bounce template: σ(f_NL^bounce)=0.632/0.689 → r_eff≈0.99 (the r=0.84 the paper used was conservative — squeezed configs dominate the SPHEREx weight, where bounce and local templates coincide)",
+      "Unmarginalized ~3.2–3.5σ for −35/16 reported strictly as VALIDATION; the c12 GR-projection bracket (0.8–1.3σ) still applies on top; headline 1.3–2.75σ range unchanged — NO inflation",
+      "Directive-G clean: 0 undef-refs, 0 overfull, 35 pages, all served PDFs byte-identical (md5 55d85fe5…), bundle standalone-verified; −35/16 unchanged, nothing fabricated",
+    ],
+    links: [
+      {
+        label: "Independent-Fisher writeup",
+        href: `${PR}/INT_v3/P2_independent_fisher_2026-07-07.md`,
+      },
+      {
+        label: "Independent Fisher script",
+        href: `${GH}/research/focused_paper_source_integration/scripts/c13_independent_bounce_fisher.py`,
+      },
+      {
+        label: "Committed Fisher output (JSON)",
+        href: `${GH}/research/focused_paper_source_integration/outputs/c13_independent_bounce_fisher.json`,
+      },
+    ],
+  },
+  {
     id: "p1a-fierz-lemma-proof-completeness-closure-2026-07-07",
     kind: "closure-wave",
     dateISO: "2026-07-07",
