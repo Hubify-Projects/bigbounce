@@ -11,7 +11,7 @@ clicks are the only remaining step.
 |---|-------|--------|-----|----|-------|
 | 1 | **P4** chirality catalog | `submissions/P4/arxiv_p4_v1.0.217.tar.gz` (26.7MB) | v1.0.217 | 31 | astro-ph.CO, x-list GA. Metadata in `ARXIV_METADATA.txt`. **Submit FIRST — P5 needs its ID.** |
 | 2 | **P1B** MCMC/NaMaster/ALP companion | `submissions/P1B/arxiv_p1b_v1B.0.101.tar.gz` | v1B.0.101 | 22 | P1A cross-ref placeholder inside; reciprocal ID insert per `SUBMISSION_NOTE.md`. |
-| 3 | **P3** anomaly catalog | `submissions/P3/arxiv_p3_v3.1.138.tar.gz` (4.07MB) | v3.1.138 | 34 | Flip HF dataset visibility public (manual); Zenodo DOI mints at submit. |
+| 3 | **P3** anomaly catalog | `submissions/P3/arxiv_p3_v3.1.139.tar.gz` (4.07MB) | v3.1.139 | 34 | Flip HF dataset visibility public (manual); Zenodo DOI mints at submit. DESI score-vs-z DATA-UNLOCK closed (honest MIXED result: DESI composition transfers, score-vs-z scoped to SDSS). |
 | 4 | **P2** f_NL forecast + Cai/Li resolution | `submissions/P2/arxiv_p2_v1.7.95.tar.gz` | v1.7.95 | 34 | Positioned as honest forecast + the −35/16 literature resolution. Zenodo DOI at submit. |
 
 arXiv assigns each ID immediately on submission (announcement later; the ID is usable at once).
