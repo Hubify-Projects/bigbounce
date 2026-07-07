@@ -759,26 +759,33 @@ export function VerdictSeverityTrend() {
 
 /* ── Readiness strip: sparse per-paper checkpoints (95-cap rule) ──────── */
 
-// SSOT current readiness: 96 (R-converged post INT-M2, 2026-06-30).
-// reviewTimeline.ts checkpoints trail at EXT22 (98); subsequent Rounds A/B/C
-// confirmed integrity and set the readiness cap to 96 per SSOT + live-status.ts.
-const CURRENT_READINESS = 96;
+// Honest per-paper readiness. Convex papers:listAllPaperStates is SSOT; update these to match. (2026-07-07 honest-state fix)
+// None are converged. Every paper had a verified ChatGPT REJECT. Edit-loop is exhausted; barrier is venue (Houston-gated).
+const PER_PAPER_READINESS: Record<PaperId, number> = {
+  P1A: 78,
+  P1B: 76,
+  P2: 78,
+  P3: 80,
+  P4: 94,
+  P5: 80,
+};
 
 export function ReadinessStrip() {
   const cps = readinessCheckpoints;
   const last = cps[cps.length - 1];
   return (
-    <div className="readiness-strip" title={`Current readiness: ${CURRENT_READINESS}% (INT-M2, 2026-06-30)`}>
-      <span className="readiness-strip-label">readiness (96 · awaiting Houston sign-off → arXiv)</span>
+    <div className="readiness-strip" title="Verified peer-review status (2026-07-07). Readiness band 76–94%. No paper is converged. Barrier: venue (Houston-gated).">
+      <span className="readiness-strip-label">Peer-review status (verified) · readiness band 76–94%</span>
       {PAPER_IDS.map((p) => {
+        const r = PER_PAPER_READINESS[p as PaperId];
         const trail = cps
           .filter((c) => typeof c.values[p as PaperId] === "number")
           .map((c) => `${c.id} ${c.values[p as PaperId]}%`)
           .join(" → ");
         void last;
         return (
-          <span key={p} className="readiness-chip" title={`${p}: ${trail} → INT-M2 ${CURRENT_READINESS}%`}>
-            <span className="gap-delta-paper">{p}</span> {CURRENT_READINESS}%
+          <span key={p} className="readiness-chip" title={`${p}: ${trail} → verified ${r}% (2026-07-07)`}>
+            <span className="gap-delta-paper">{p}</span> {r}%
           </span>
         );
       })}
