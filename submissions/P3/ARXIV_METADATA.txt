@@ -7,9 +7,9 @@ title: A Multi-Survey Autoencoder Anomaly Catalog: 268,519 Validated Sources
 author: Houston Golden (houston@hubify.com)
 affiliation: Independent Researcher, Los Angeles, California, USA
 
-version: v3.1.142
+version: v3.1.143
 date_in_tex: July 7, 2026
-bundle: arxiv_p3_v3.1.142.tar.gz
+bundle: arxiv_p3_v3.1.143.tar.gz
 main_file: paper3_draft.tex
 bibliography: embedded (\begin{thebibliography} in tex; no external .bib required)
 bbl_file: paper3_draft.bbl (pre-built, included for arXiv)
@@ -20,7 +20,7 @@ standalone_compile_result: PASS
   - 0 undefined citations
   - Compile: pdflatex → pdflatex → pdflatex (no bibtex needed; bibliography embedded)
   - Page count from standalone compile: 33 pages
-  - Smoke-test PDF md5 (from arxiv_p3_v3.1.142 tarball extract + 3-pass compile): 0b4a6ab6ec07d0120e6798376426d0a8
+  - Smoke-test PDF md5 (from arxiv_p3_v3.1.143 tarball extract + 2-pass compile): 9edc1d50ec60c7156c77904c89faa047
   - Float placement warnings present (revtex "float is stuck") — cosmetic only,
     do not affect content or page integrity.
 
@@ -39,6 +39,6 @@ figures (12 total, all in figures/ subdir):
  12. figures/fig_gallery_top10.pdf
 
 tarball_size: 3.9 MB
-tarball_path: submissions/P3/arxiv_p3_v3.1.142.tar.gz
+tarball_path: submissions/P3/arxiv_p3_v3.1.143.tar.gz
 
 suggested_arxiv_categories: astro-ph.IM / astro-ph.GA / astro-ph.CO
