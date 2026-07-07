@@ -47,8 +47,9 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.108}
+\newcommand{\paperVersion}{v1A.0.109}
 \newcommand{\paperTimestamp}{July 5, 2026}
+% v1A.0.108->109 (2026-07-05): UPGRADED Route 2 (sec:r2_oneloop, eq:oneloop_parity_odd) from a FREE-NORMALIZATION ANSATZ to ONE-LOOP-GROUNDED using the explicit one-loop renormalization of on-shell Einstein-Cartan+Holst+fermion gravity by Shapiro & Teixeira 2014 (arXiv:1402.4854, CQG 31 185002; ShapiroTeixeira2014, already cited). The parity-odd Immirzi-dependent coupling lambda_4=gamma kappa^2 (W.J) (their Eq.37, kappa^2=16piG=M_Pl^-2) has classical coeff alpha_4=-6/(1+gamma^2) and one-loop divergence coeffs Omega_44=81gamma^4/[16(1+gamma^2)^2], Omega_24=81gamma^2/[40(1+gamma^2)^2] (Eqs.41-42); their master RG eq d lambda/dt = -sigma/(4pi)^2 (Eq.46) carries EXACTLY the 1/(16pi^2) loop factor already in eq:oneloop_parity_odd. NOW PINNED by the real one-loop computation: (1) loop factor 1/(16pi^2); (2) O(1) Immirzi-rational coefficient beta(gamma) [Omega_44/alpha_4=27gamma^4/(32(1+gamma^2)), O(1) for gamma~1, ~2.5e-3 at gamma=0.24]; (3) explicit kappa^2=M_Pl^-2 Planck suppression on every charge. HONESTLY NOT fixed: the single ABSOLUTE normalization — ST's coupled lambda_4-gamma RG flow (Eqs.51/58) is a Riccati system with NO real fixed point that they "were unable to solve satisfactorily," so R2 is one-loop-grounded but not fully normalization-fixed (unlike R3, whose BS beta-function integrates cleanly to |Delta gamma/gamma|~1.4e-6). Off-shell dim+1 parity-odd operator + ST's explicit kappa^2=M_Pl^-2 => the monotone single-scale NDA no-go (app:dimensions) bounds R2 REGARDLESS of the unfixed O(1) beta(gamma); ~58-60 OOM closure margin untouched. Reworded R2 section + "Ansatz vs derivation (R2/R3)" summary: "free-normalization ansatz" -> "one-loop-grounded (ST coefficients) + NDA-bounded, absolute normalization pending the ST Riccati flow." No fabricated derivation — every ST coefficient PDF-verified + sympy-checked; the "no fixed point" limit is ST's own stated conclusion.
 % v1A.0.106->107 (2026-07-05): Closed ChatGPT "non-exhaustive operator basis" MAJOR by UPGRADING the four-route enumeration from "illustrative, non-exhaustive" to "exhaustive within minimal ECH by symmetry + NDA monotonicity". Added a completeness paragraph to sec:fourroute Scope: two structural facts already proven in the body — (F1) torsion algebraic/non-propagating (Cartan T=kappa S, eq:torsion) => only spin-current contact operators + metric/topological sector, no independent channel; (F2) minimal fermion coupling => totally-antisymmetric (axial) spin current => trace-vector/tensor torsion irreps appear only under non-minimal couplings (out of scope) — collapse the basis to a FINITE set exhausted at mass dim <=6 by (i) torsion-squared/four-fermion (all Fierz VV,AA,VA,TT, shared kappa=M_Pl^{-2}; R1 + Holst partner are two projections; Fierz recombination O(1) cannot change the M_Pl^{-2} power) and (ii) parity-odd curvature/topological (Holst, Nieh-Yan, Jackiw-Pi CS; total-derivative const coupling, R4-class dynamical). Because the dim-+1 parity-odd operator (eq:Seff_comp) is the LEAST-suppressed representative and every higher-dim operator carries strictly more M_Pl suppression, the single-scale NDA bound (app:dimensions) is MONOTONE in dimension and CLASS-BLIND: bounding the ceiling bounds the whole finite tower => basis-complete no-go within minimal ECH. Added one sentence to app:dimensions making the deferred "matching calculation" immediate for minimal-ECH field content. KEPT the honest non-minimal caveat: the one unbounded class introduces a new light scale mu<<M_Pl or an exact cancellation (non-minimal by construction) and IS the tuning being explained. Only the COUNTING/completeness statement added; shared-kappa + total-derivative facts already in body (cited, not re-derived). No new quantitative claim, no fabricated derivation.
 % v1A.0.105->106 (2026-07-05): CRUX REFRAME (2-of-3 reviewers: rho_Lambda mapping is an "on-shell scaling ansatz"/non-derivation, Grok "circular", ChatGPT "+1 vs +4"). Reframed App B app:dimensions from "phenomenological on-shell scaling ansatz" to a controlled SINGLE-SCALE NDA DIMENSIONAL NO-GO: parity-odd operator off-shell dim +1; NDA gives Wilson coeff Lambda^{4-d}=Lambda^3; minimal ECH single-scale (Lambda~M_Pl) FORCES the 3 missing powers to M_Pl^3 (not assumed). Two admissible completions — Case I coefficient-dressing (rho~M_Pl^3<T> -> M_Pl^4 at bounce or 0 today) and Case II curvature-dressing (Eq onshell_rho, rho~1e-2 M_Pl^4 needing e^{-3N}~1e-122 dilution) — BOTH land at rho_Lambda^ECH~M_Pl^4, never (meV)^4. No amplitude derived => NOT circular (answers Grok/ChatGPT flags: the +1->+4 gap IS the mechanism). Honest single-scale residual KEPT: Lambda~M_Pl, no mu<<M_Pl threshold, no exact cancellation; a non-minimal light-scale/symmetry evades but IS the tuning being explained; full closure needs a matching calc over parity-odd ECH completions. Reframed Scope/boxed-disclosure/sec:parityodd/fig:derivation caption to match. Added NDA/SMEFT refs (Buchalla2013NDA=1312.5624, Brivio2017SMEFT=1706.08945, Isidori2023SMEFTReview=2303.16922). No fabricated derivation; no math changed.
 % v1A.0.103->104 (2026-07-03): INT truth-audit of EXT ChatGPT [MAJOR] Eq.(1) T·T variational concern (all 3 EXT reviewers REJECT/MAJOR). VERDICT: LEGITIMATE-BUT-UNCLEAR (misread of a correct presentation, not a real bug). Variational principle is SOUND — Eq.(1) is first-order Palatini-EC; independently varied fields are {e^a_mu, omega^ab_mu, psi}; (1/4)T·T is on-shell Hehl-Datta shorthand appearing only AFTER algebraic torsion elimination (Cartan Eq.2), already stated in the Eq.(1)+Eq.(2) footnotes and body (no double-counting). Rebuttal-by-clarification: added an explicit sentence at Eq.(1) naming the independently-varied first-order fields + that T·T appears only post-elimination, so no referee can read it as ill-defined. No math changed; no fabricated derivation. 0 undef-refs.
@@ -2414,28 +2415,53 @@ treated strictly as an amplitude-budget bound, not a derived
 prediction.} The function
 $\beta(\gamma)$ is written with its explicit argument throughout to
 distinguish this renormalization-group function from the cosmic
-birefringence angle $\beta$ of Sec.~\ref{sec:r4_birefringence}. The form is the natural EFT operator built from the
-Nieh--Yan pseudoscalar and the chiral current at the
-$M_{\rm Pl}^{-1}\,\alpha_{\rm em}/(4\pi)$ scale; no published
-calculation currently derives this exact coefficient structure from
-the Mercuri construction, and the present analysis uses it strictly
-as an upper-bound EFT ansatz for the Route-2 amplitude budget.
-Although no published work computes this exact operator, the one-loop
-analysis of Shapiro \& Teixeira~\cite{ShapiroTeixeira2014} of the
-Holst-plus-fermion sector nonetheless fixes the two features that
-actually control the Route-2 budget: the parity-odd fermion-current
-coupling is generated at one loop---carrying the standard
-$1/(16\pi^2)$ factor already present in
-Eq.~\eqref{eq:oneloop_parity_odd}---with Immirzi-dependent coefficients
-that are $\mathcal{O}(1)$ for $\gamma\!\sim\!\mathcal{O}(1)$, and the
-effect is gravitationally (Planck-scale) suppressed,
-$\propto\kappa^2 = 16\pi G$. The Route-2 \emph{suppression order}
----one loop $\times$ Planck $\times$ an $\mathcal{O}(1)$ Immirzi
-factor---is therefore grounded in a real published computation, even
-though the precise normalization $\beta(\gamma)$ is adopted rather than
-extracted; and because the closure below retains $\gtrsim 60$ orders of
-margin, it is insensitive to the $\mathcal{O}(1)$ ambiguity in
-$\beta(\gamma)$. The dimensionless coefficient is $\mathcal{O}(\alpha_{\rm em}/4\pi)$
+birefringence angle $\beta$ of Sec.~\ref{sec:r4_birefringence}. The
+coefficient structure of Eq.~\eqref{eq:oneloop_parity_odd} is
+\emph{grounded in the explicit one-loop computation} of Shapiro \&
+Teixeira~\cite{ShapiroTeixeira2014}, who renormalize on-shell
+Einstein--Cartan${+}$Holst gravity with external vector and axial
+fermion currents. The parity-odd, Immirzi-dependent current coupling
+they renormalize is $\lambda_4=\gamma\,\kappa^2\,(W\!\cdot\!J)$ (their
+Eq.~37, $\kappa^2=16\pi G=M_{\rm Pl}^{-2}$), with classical coefficient
+$\alpha_4=-6/(1+\gamma^2)$ and one-loop divergence coefficients
+$\Omega_{44}=81\gamma^4/[16(1+\gamma^2)^2]$,
+$\Omega_{24}=81\gamma^2/[40(1+\gamma^2)^2]$ (their Eqs.~41--42). Their
+master renormalization-group equation $d\lambda/dt=-\sigma/(4\pi)^2$
+(their Eq.~46) carries \emph{exactly} the $1/(16\pi^2)$ loop factor
+already written in Eq.~\eqref{eq:oneloop_parity_odd}. Three features of
+the Route-2 budget are therefore fixed by a published one-loop result
+rather than adopted: (i) the loop factor $1/(16\pi^2)$; (ii) the
+coefficient $\beta(\gamma)$ is an $\mathcal{O}(1)$ rational function of
+the Immirzi parameter [the $\alpha_4$/$\Omega_{4x}$ family, e.g.\
+$\Omega_{44}/\alpha_4=27\gamma^4/(32(1+\gamma^2))$, which is
+$\mathcal{O}(1)$ for $\gamma\!\sim\!\mathcal{O}(1)$ and
+${\approx}2.5\times10^{-3}$ at the LQG value $\gamma\!\approx\!0.24$],
+not a free normalization; and (iii) the explicit
+$\kappa^2=M_{\rm Pl}^{-2}$ on every renormalized charge, i.e.\ the
+Planck suppression in the prefactor $\beta(\gamma)/M_{\rm Pl}$. What the
+one-loop analysis does \emph{not} fix is the single \emph{absolute}
+normalization: Shapiro \& Teixeira show the coupled flow for
+$\lambda_4(t)$ and $\gamma(t)$ (their Eqs.~51,~58) is a Riccati system
+whose particular-solution roots are complex for real $\gamma$, so the
+system \emph{has no renormalization-group fixed point} and they were
+``unable to solve it in a completely satisfactory way.'' A
+fully-derived Route-2 amplitude would require a UV boundary condition
+plus a controlled solution of that non-perturbative flow (or a
+dedicated matching calculation for the exact
+$\partial_\mu\vartheta_{\rm NY}J^{5\mu}$ operator). We therefore treat
+the \emph{absolute} $\beta(\gamma)$ normalization as a bounded EFT input
+while the loop factor, Immirzi-rational coefficient, and Planck
+suppression are one-loop-grounded. This is strictly weaker than the
+Route-3 result below (whose Benedetti--Speziale $\beta$-function
+integrates cleanly to $|\Delta\gamma/\gamma|\approx1.4\times10^{-6}$)
+but strictly stronger than a free ansatz: the residual freedom is a
+single $\mathcal{O}(1)$ normalization, and the off-shell dimension-$(+1)$
+parity-odd operator is in any case bounded by the single-scale NDA no-go
+of App.~\ref{app:dimensions} regardless of that $\mathcal{O}(1)$
+coefficient, since ST's explicit $\kappa^2=M_{\rm Pl}^{-2}$ confirms the
+missing powers are Planck powers, not a light scale. Because the closure
+below retains $\gtrsim 60$ orders of margin, it is insensitive to this
+residual $\mathcal{O}(1)$ ambiguity in $\beta(\gamma)$. The dimensionless coefficient is $\mathcal{O}(\alpha_{\rm em}/4\pi)$
 multiplied by the Planck mass to a single negative power. Explicitly, the
 prefactor $\beta(\gamma)/M_{\rm Pl}$ carries mass dimension $-1$ (the
 division by $M_{\rm Pl}$, not multiplication): with $\vartheta_{\rm NY}$ of
@@ -2614,10 +2640,16 @@ and amplitude-suppressed by the chiral-asymmetry running coefficient.}
 boundary the verified Benedetti--Speziale one-loop $\beta$-function
 Eq.~\eqref{eq:bs_beta} integrates to $|\Delta\gamma/\gamma|\approx
 1.4\times10^{-6}$, replacing the prior chiral-count ansatz upper bound as
-the primary Route-3 estimate. R2's amplitude coefficient remains a
-\emph{conservative upper bound from a chiral-count EFT scaling ansatz},
-not a literal extraction from Mercuri~\cite{Mercuri2009} or
-Date--Kaul--Sengupta~\cite{DateKaulSengupta2009}. The kept ansatz value
+the primary Route-3 estimate. R2's amplitude coefficient is now
+\emph{one-loop-grounded}: its loop factor $1/(16\pi^2)$,
+$\mathcal{O}(1)$ Immirzi-rational coefficient, and
+$\kappa^2=M_{\rm Pl}^{-2}$ Planck suppression are fixed by the Shapiro
+\& Teixeira~\cite{ShapiroTeixeira2014} one-loop renormalization of the
+Holst${+}$fermion sector (their Eqs.~41--42,~46); only the single
+absolute normalization remains a bounded EFT input, because that
+sector's coupled RG flow has no fixed point and is not perturbatively
+solvable in closed form, and the operator is bounded by the single-scale
+NDA no-go regardless of that $\mathcal{O}(1)$ normalization. The kept ansatz value
 Eq.~\eqref{eq:gamma_running} ($\Delta\gamma/\gamma\sim0.3$) is retained
 only as a deliberately pessimistic upper bound; the closures of R2/R3
 survive an $\mathcal{O}(1)$ inflation of the ansatz coefficient because
