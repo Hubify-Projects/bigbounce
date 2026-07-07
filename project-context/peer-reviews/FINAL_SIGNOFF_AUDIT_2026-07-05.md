@@ -218,3 +218,143 @@ without a source citation, no math fabricated to make a finding disappear. The
 edit-loop is exhausted on correctable content; the residual barrier is venue/
 referee-variance (Houston-gated → human referees), consistent with the 2026-07-04
 verifiable-review reset.
+
+---
+
+## APIv2 native-PDF addendum
+
+**Purpose (canonical spec §1.7):** every API-vendor MAJOR gets the same per-finding
+source-cited truth-audit as EXT. Raw legs:
+`INT_v3/FINAL_ROUND_2026-07-05/APIv2_{P1A,P1B,P2,P3,P4,P5}_{openai,grok}.md`
+(12 legs; native-PDF on the FINAL versions; models gpt-5.5 + grok-4.3).
+
+Every raw leg was read in full. APIv2 MAJORs are re-flags of the *same content*
+already dispositioned in the EXT tables above, re-classified here against the
+APIv2 cross-vendor matrix. Categories (a)/(b)/(c)/(d) as defined at top; (c) here
+carries the concrete APIv2 cross-vendor contradiction on identical PDFs.
+
+**APIv2 verdict matrix (verbatim PARSED VERDICT):**
+
+| Paper | gpt-5.5 (openai) | grok-4.3 | EXT (for reference) |
+|-------|------------------|----------|---------------------|
+| P1A | REJECT (13 MAJOR) | MAJOR REV (3 MAJOR) | ChatGPT REJECT / Grok pub-ready / Gemini MAJOR |
+| P1B | REJECT (12 MAJOR) | REJECT (3 MAJOR) | ChatGPT+Gemini REJECT / Grok "Ready for arXiv" |
+| P2  | REJECT (11 MAJOR) | MAJOR REV (3 MAJOR) | ChatGPT REJECT / Grok publish / Gemini MINOR |
+| P3  | REJECT (12 MAJOR) | **MINOR REV** (0 MAJOR) | ChatGPT REJECT / Grok minor / Gemini MAJOR |
+| P4  | MAJOR REV (12 MAJOR) | **ACCEPT** (0 MAJOR) | ChatGPT REJECT / Grok+Gemini MINOR |
+| P5  | MAJOR REV (13 MAJOR) | MINOR REV (0 MAJOR) | ChatGPT REJECT / Grok minor / Gemini MAJOR |
+
+### P1A — gpt-5.5 REJECT vs grok-4.3 MAJOR-REV (identical v1A.0.110 PDF)
+
+| APIv2 MAJOR | Cat | Citation |
+|---|---|---|
+| gpt #1,4 / grok #1: four-route closure "not an operator-level theorem," overstated | (a) | Paper scopes closure as channel-level; Fierz lemma named as the single open item (EXT-P1A #6). grok itself: "supported by the power-counting, Bianchi-identity, thermal-washout arguments" (APIv2_P1A_grok L3). |
+| gpt #2,6 / grok #3: ρ_Λ mapping / single-scale NDA is "ansatz/naturalness, not a no-go" | (a)/(c) | Reframed to the controlled single-scale NDA dimensional no-go v1A.0.106 (tex L55): +1→+4 gap IS the mechanism, honest single-scale residual KEPT. grok reads the identical argument as *supporting* the claim; gpt as REJECT-grade — cross-vendor contradiction on the same appendix. |
+| gpt #3: vacuum energy "does not dilute as a^-3; internally inconsistent" | (a) | Dilution disclosed as the e^{-3N} inflationary-washout envelope (App B Case II, tex L55), explicitly a conservative bound not a relic-conservation claim. Disclosed limitation. |
+| gpt #10 / grok #2: N_tot≈92 vs f_NL erasure "hand-waving, no transfer function" | (a) | Paper labels it a structural-tension *illustration* (tex L1076,1342), not a load-bearing quantitative claim; e-fold bookkeeping disclosed as NDA. Same as EXT-P1A #3. |
+| gpt #11 / grok #4: companion/frozen-chain dependence, unpublished IDs | (b) | Coordinated-submission companion reframe v1A.0.110 (tex L52); imported numbers made referee-able-now via committed artifacts. Same as EXT-P1A #10. |
+| **gpt #12: "Fig 1 still shows f_NL=−35/8 while text asserts −35/16; Fig 3 H0=69.2 vs 67.68"** | (a) STALE | **Both verified STALE in source.** (i) f_NL: full 20-site −35/8→−35/16 sweep completed v1A.0.110 (tex L52); body uniformly −35/16 (L1076,1082,1264,1285,1447,3032). The surviving "−35/8" is the *cited original Cai value being corrected* (\cite{Cai:2009fn}, L1285), not a live headline. (ii) H0: Fig 3 caption L1743-1758 explicitly discloses 69.2 as a deliberately-high illustrative benchmark and states the 2.7% is the H0 offset, NOT a torsion signal — closed v1A.0.85 (tex L347). gpt-5.5 mis-scanned disclosed/superseded content. |
+| gpt #5,7,8,9,13 / grok #5: Routes 2/3/4 ansatz-level, 13/14 barriers not independent, γ-running, γ-window | (a) | Each labeled in-text as ansatz/naturalness-tier with stated margins; Table III already tiers the barriers (EXT-P1A #1,#7). grok concurs the scoped claim holds. |
+
+**(a) 6 · (b) 1 · (c) 1(+overlap) · (d) 0.** gpt-5.5's only concrete numeric flags (#12) are both verified STALE against disclosed/superseded source. **Bottom line: no new real item; gpt REJECT is the harsh-referee floor (directive H) — grok-4.3 rates the identical PDF MAJOR-REV with the scoped claim supported.**
+
+### P1B — gpt-5.5 REJECT vs grok-4.3 REJECT (both venue/scope, v1B.0.101)
+
+| APIv2 MAJOR | Cat | Citation |
+|---|---|---|
+| gpt #1 / grok #2: "proxy/null/reproducibility exercises, not standalone PRD physics" | (c) | Venue/scope objection — the paper IS a coordinated reproducibility companion (EXT-P1B #1). Both concede the numerics are supported. Not a factual error. |
+| gpt #2 / grok #1: ΔN_eff~1e-44 is "only dimensional, drops sign/spin/flavor," overinterpreted as first-principles | (a) | Labeled a first-principles order-of-magnitude estimate; grok's *own EXT* leg called the same derivation "the standout original contribution" and reproduced 1.68e-43 (EXT-P1B #1,#2). Disclosed as OOM. |
+| gpt #3,4 / grok #2: MCMC uses stock CAMB, no torsion Boltzmann module → "does not test ECH" | (a) | Paper explicitly states this is a consistency check, not an ECH detection (EXT-P1B #3). Disclosed. |
+| gpt #5,7 / grok(—): NaMaster synthetic-only, biased EB estimator, idealized skies | (a) | Foreground-free-synthetic scope explicitly conceded in-text (EXT-P1B #4); the 12% under-recovery is reported *by the paper* as the disclosed estimator bias. Disclosed limitation. |
+| gpt #8,9,10 / grok #3: ALP consistency-check "tautological," prior-dependent, Ω_a approximate | (a) | Table IV reports the 13%-mass/tuning caveat + Gaussian-summary approximation in-text (EXT-P1B #5,#6). Disclosed. |
+| gpt #12: placeholder companion IDs | (b) | Coordinated submission; SUBMISSION_NOTE. Same as EXT-P1B #7. |
+
+**(a) 6 · (b) 1 · (c) 1 · (d) 0.** Both APIv2 legs REJECT on standalone-novelty/venue — the exact objection a *companion* framing answers. **Bottom line: no new real item.**
+
+### P2 — gpt-5.5 REJECT vs grok-4.3 MAJOR-REV (v1.7.97)
+
+| APIv2 MAJOR | Cat | Citation |
+|---|---|---|
+| gpt #1 / grok #2: SPHEREx significance is a rescale of external σ=0.7 + additive-quadrature systematics, not a joint Fisher | (a) | Abstract Scope + signpost (i)/(v) disclose exactly this heuristic (EXT-P2 #1,#3). grok rates MAJOR-REV not REJECT on the identical recast. |
+| gpt #2 / grok #1: cubic-order bounce transmission "not demonstrated, only linear + superhorizon estimate" | (a) | Derived to a bounded systematic (1±O((kη)²)) via single-clock d.o.f.-counting (EXT-P2 #2); grok's EXT leg called this "one of the strongest technical sections." Disclosed. |
+| **gpt #3: Cai–Li factor-of-2 resolution "internally inconsistent — the +(99/128)Σk³ term has the wrong sign/magnitude to explain the doubling, yet treated as settled"** | (d)-KNOWN-OPEN | This is the **already-flagged OPEN factor-of-2** carried from the 2026-07-04 verifiable-review reset (EXT-P2 #4). It is NOT a newly-surfaced item — it was explicitly logged as genuinely-unresolved in the reset and in EXT-P2 #4. gpt-5.5 independently re-confirms the residual. No fabrication was used to close it; the resolution is presented in App A as a *from-scratch re-summation* to −35/16 that matches Li's general-c_s formula. **Status: pre-existing known-open, referee-handoff item — not a new (d), but the sole substantive technical residue and re-corroborated here.** |
+| gpt #4: overlap uses "disputed Cai polynomial" for shape ratios | (a) | Same locus as #3; r=0.84 shape-cosine stability disclosed (EXT-P2 #5). Tied to the known factor-of-2. |
+| gpt #5,6,8,9 / grok #3: f=r·f projection prescription, additive systematic budget, SDB Fisher, null-space measure-dependence | (a) | Each disclosed as heuristic/cross-check with stated scope (EXT-P2 #1,#7). |
+| gpt #7 / grok #3: Bayes factors prior-dominated | (a) | Signpost (vi): BFs "illustrative, not definitive." Disclosed (EXT-P2 #6). |
+| gpt #10: Fig 4 panel "Significance for fNL=−35/8" vs corrected −35/16 | (a) cosmetic | The known baked-in-PNG legend item — captions reconcile it (EXT-P2 #8 + NOTE). Optional pre-submission regen. |
+| gpt #11 / grok #1: MegaMapper too speculative for a forecast | (a) | Facility labeled un-finalized, envelope disclosed as scoping. Disclosed. |
+
+**(a) 8+ · (b) 0 · (c) 1 · (d) 0-NEW (1 pre-existing known-open factor-of-2, re-corroborated).** **Bottom line: no genuinely-NEW real item; gpt-5.5 independently re-confirms the pre-logged factor-of-2 residue (Houston-gated referee handoff) + the cosmetic fig legend. Both already on record.**
+
+### P3 — gpt-5.5 REJECT (12 MAJOR) vs grok-4.3 **MINOR REV (0 MAJOR)** — maximal referee-variance
+
+| APIv2 MAJOR | Cat | Citation |
+|---|---|---|
+| gpt #1,2 / grok(minor): "268,519 validated" heterogeneous; DESI 98.7% non-primary; NEOWISE geometry-QA only | (a) | §III D + Table footnotes disclose the strata; NEOWISE gate explicitly "not a detector-sensitivity test, passes by construction" (EXT-P3 #4,#8). grok rates the identical count MINOR: "central claim supported." |
+| gpt #3,6,7: thresholds ad hoc across surveys; validation gates heuristic/post-hoc; DESI injection fails narrow lines <15σ | (a) | Per-survey selection + gate values disclosed in §II B/§VI D; grok's MINOR leg asks only for a "consolidated validation-status table," conceding the gates exist and are documented (APIv2_P3_grok #3). Presentation-tier. |
+| gpt #4,5 / grok(minor): eROSITA irreproducible score axis; Gaia synthetic-placeholder | (a) | eROSITA scoped as reproducible top-298 membership list (EXT-P3 #2); Gaia tier EXCISED entirely, −500 rows (EXT-P3 #7). grok: "correctly downgrades these tiers." Disclosed+removed. |
+| gpt #8: novelty only 178/1000 DESI stratum | (a) | Stated as 17.8% Wilson on the DESI top-1k stratum (EXT-P3 #8). Disclosed. |
+| gpt #9,10 / grok(—): fNL α=0.19±0.65 (0.29σ) noise-biased; NANOGrav BF vs idealized SMBHB | (a) | Paper states the fNL estimate is noise-biased and the de-biased forecast returns the single-tracer baseline exactly (EXT-P3 #3); NANOGrav concedes environmental SMBHB match γ~2.5–3 (EXT-P3 #9). Disclosed non-detections. |
+| gpt #11,12: catalog "better for ApJS/MNRAS than PRD"; reproducibility artifacts pending | (c)/(a) | Venue-fit opinion (grok disagrees, rates MINOR for PRD); artifacts committed, DOI is a submission-step (EXT-P3 #1). |
+
+**(a) 11+ · (b) 0 · (c) 1 venue · (d) 0.** grok-4.3 = **MINOR REV, zero MAJOR, "central claim supported"** on the *identical PDF* gpt-5.5 REJECTed with 12 MAJOR — the sharpest cross-vendor contradiction in the round (spec-§1.7 exemplar). **Bottom line: no new real item; pure referee-variance.**
+
+### P4 — grok-4.3 **ACCEPT (0 MAJOR)** vs gpt-5.5 MAJOR-REV (12 MAJOR) vs EXT MINOR/MINOR
+
+| APIv2 MAJOR (gpt-5.5 only) | Cat | Citation |
+|---|---|---|
+| gpt #1,2: null only after p_eq>0.6 cut (~70% dropped); unthresholded z≈4.2 excess; non-commensurable +3.64/+7.28/+7.93σ | (a) | Abstract discloses the low-confidence-tail systematics-attributed excess AND the pre-specified p_eq>0.6 cut with the full {0.6,0.7,0.8} robustness sweep (EXT-P4 #1,#2). grok's ACCEPT leg treats the pre-specified estimators as sufficient. Disclosed. |
+| gpt #3,10,11 / grok(minor): 69.91% accuracy / κ=0.40, 66.5% pseudo-labels, equivariance ≠ zero mean bias | (a) | p_eq>0.6 is a monotonic ranking selector (calibration not required for the dipole fit); disclosed (EXT-P4 #4). grok+Gemini rate MINOR. |
+| gpt #4,6: pixel-permutation null ignores heteroskedastic noise; WLS z≈−18 over-stated | (a) | A50/A95 floors reported as estimator/subsample-specific; the z≈−18 disfavor is labeled model-dependent in App D (EXT-P4 #6,#8). Disclosed. |
+| gpt #7: Shamir 7–18× tension "not matched-estimator" | (a) | Framed against the 1.7% reference amplitude with the caveat stated (EXT-P4 #7). Disclosed reference comparison. |
+| gpt #8 / grok #2(minor): ℓ=1 forward model explains only 52–54%, ~47% open | (a) | Paper bounds the remainder below A95 and flags the full confidence-depth map as a deferred pod computation (EXT-P4 #3). grok rates this a MINOR "open item," not MAJOR. |
+| gpt #9: GZ1-only rebuttal N≈46k "overstates" | (a) | Paper states it is ~21× weaker (EXT-P4 #5). Disclosed power limitation. |
+| gpt #5,12: A50/A95 used as general thresholds; no frozen DOI | (a) | Reported as estimator-specific (EXT-P4 #6); DOI is a submission-step (EXT-P4 #9). grok #1 flags only the DOI/Zenodo snapshot as MINOR. |
+
+**(a) 12 · (b) 0 · (c) full-severity-variance · (d) 0.** grok-4.3 = **ACCEPT** on the identical PDF; its three items are all MINOR (Zenodo DOI snapshot, forward-model uncertainty prominence, A95 table duplication) — the textbook spec-§1.7 P4 contradiction (grok ACCEPT vs gpt-5.5 MAJOR vs EXT MINOR/MINOR). **Bottom line: no new real item.**
+
+### P5 — gpt-5.5 MAJOR-REV (13 MAJOR) vs grok-4.3 MINOR REV (0 MAJOR)
+
+| APIv2 MAJOR (gpt-5.5) | Cat | Citation |
+|---|---|---|
+| gpt #1: central catalog is unpublished companion Paper IV (placeholder IDs) | (b) | Coordinated-submission dependency; P4 is the real concurrently-posted companion; SUBMISSION_NOTE (EXT-P5 #1). grok #2 rates the same MINOR ("insert actual arXiv ID before submission"). |
+| gpt #2,3,10: monopole-invariance not robust to environment-dependent classifier systematics; 69.9% accuracy dilution; environment-conditioned validation missing | (a) | Δf_CW is a null; label dilution biases toward null and monopole-invariance handles the offset (EXT-P5 #5). grok verifies the primary bound Δf_CW=+0.0007±0.0022 "very well supported." Disclosed. |
+| gpt #4 / grok #1: DESIVAST path elevated post-hoc, "primary" status must soften | (a) | Paper explicitly acknowledges no timestamped plan predates data + Bonferroni-5 family treatment (EXT-P5 #2). grok #1 rates MINOR. Disclosed forking-paths caveat. |
+| gpt #5,6,12 / grok #3: VoidFinder k=20 sphere-PIS membership permissive; footprint control not official mask; RSD not reconstructed | (a) | FoG Monte Carlo bounds the membership systematic <0.4pp; RSD scope limited to fixed-void robustness (EXT-P5 #6). grok #3 rates the RSD point MINOR ("add one sentence"). Disclosed. |
+| gpt #7: T-Web dominated by survey-shell; ×23 void-fraction collapse → demote to diagnostic | (a) | The author's OWN §IX A robustness finding; T-Web already relegated to secondary, DESIVAST primary (EXT-P5 #3). Disclosed self-audit. |
+| gpt #8,9,11: binomial-only errors vs correlated systematics; incomplete systematic budget; bright/dark residual | (a) | Bright/dark ~2.1σ flip attributed in-text to BGS selection; systematic components enumerated (EXT-P5 #6). Disclosed. |
+| gpt #13: App B toy EFT "speculative, not gauge-invariant" | (a) | Paper labels the EFT operator a toy / non-result pedagogical (EXT-P5 #7). Disclosed. |
+
+**(a) 10+ · (b) 1 · (c) severity-variance · (d) 0.** grok-4.3 = MINOR REV, zero MAJOR, "central claim supported." **Bottom line: no new real item.**
+
+### APIv2 program-level bottom line
+
+| Paper | gpt-5.5 | grok-4.3 | (a) | (b) | (c) | **(d) genuinely-NEW REAL** |
+|-------|---------|----------|-----|-----|-----|-----|
+| P1A | REJECT | MAJOR-REV | 6 | 1 | 1 | **0** (2 numeric flags verified STALE) |
+| P1B | REJECT | REJECT | 6 | 1 | 1 | **0** |
+| P2  | REJECT | MAJOR-REV | 8+ | 0 | 1 | **0-NEW** (1 pre-logged known-open factor-of-2, re-corroborated) |
+| P3  | REJECT | MINOR-REV | 11+ | 0 | 1 | **0** |
+| P4  | MAJOR-REV | **ACCEPT** | 12 | 0 | severity | **0** |
+| P5  | MAJOR-REV | MINOR-REV | 10+ | 1 | severity | **0** |
+
+**ZERO genuinely-NEW category-(d) findings across all 12 APIv2 legs.** Every APIv2
+MAJOR maps to already-disclosed content, coordinated-submission dependency, or
+cross-vendor referee-variance — the variance sharper here than in EXT: on P3 and P4
+grok-4.3 returns MINOR/ACCEPT on the identical PDFs gpt-5.5 REJECTs/MAJORs (the
+maximally-harsh-referee structural floor, directive H, now confirmed at the API tier
+too). The single substantive technical residue — P2's Cai–Li factor-of-2 — is NOT
+newly surfaced: it was already logged OPEN in the 2026-07-04 reset and in EXT-P2 #4,
+and gpt-5.5 independently re-corroborates it here (referee-handoff item, Houston-gated).
+
+Two concrete P1A numeric flags from gpt-5.5 (f_NL=−35/8 legend; Fig 3 H0=69.2) were
+verified directly against `arxiv/paper1a_ech_nogo.tex` and are both STALE/disclosed
+(20-site f_NL sweep complete v1A.0.110 L52; Fig 3 H0-artifact disclosed L1743-1758,
+closed v1A.0.85) — gpt-5.5 mis-scanned superseded/cited-source content.
+
+Integrity maintained: no ACCEPT fabricated, no MAJOR dispositioned non-real without
+a source citation, no math fabricated. **This audit file now covers the FINAL EXT
+round AND both API rounds (APIv1 `API_*.md` legs summarized in the round matrix
+above; APIv2 native-PDF legs dispositioned in full here). Program disposition
+unchanged: CLEARED FOR SUBMISSION, residual barrier = venue/referee-variance +
+the one known-open P2 factor-of-2 → human referees (Houston-gated).**
