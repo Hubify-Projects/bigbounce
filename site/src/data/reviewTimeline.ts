@@ -67,6 +67,26 @@ export const reviewRounds: ReviewRound[] = [
     ],
   },
   {
+    id: "P3-P5-final-polish-dround-2026-07-06",
+    kind: "closure-wave",
+    dateISO: "2026-07-06",
+    title:
+      "P3 v3.1.140 + P5 v0.1.103 — final-polish D-round (data/catalog pair): presentation + disclosure only, NO scientific number/claim changed; abstracts rewritten to lead-with-result, caveat repetition consolidated, AI-methods disclosure added",
+    papers: ["P3", "P5"],
+    summary:
+      "Editorial final-polish pass on the data/catalog pair to top-journal presentation standard, presentation + disclosure ONLY (verified 0 distinct numeric values added/deleted vs prior version on both; 0 undef-refs, 0 overfull hboxes). P3: title sharpened 24→20 words (kept 268,519 validated + 37.3M scanned; 377,780 total moved to abstract); abstract rewritten for a first-time reader — leads with the validated catalog + the real-object injection-recovery demonstration, states the process-volume disclaimer ONCE, consolidates the repeated eROSITA/LAMOST/Gaia/multiplier caveats, ~1000→~550 words with every number byte-identical; prose de-densified in Intro/Method/sec:sdss/sec:desi/Discussion/Conclusions; CC-BY-4.0 license added to the catalog availability statement. P5: title trimmed (dropped the tidal-tensor cross-check tail, footnote condensed to a sec:vweb pointer); abstract reordered to lead with the null RESULT (void-vs-non-void ΔfCW consistent with parity across all five DESIVAST void-finders) before the setup, monopole-invariance caveat consolidated from 3+ to one; prose de-densified in sec:p4/sec:data/Discussion; paperIVarxiv placeholder + coordinated-submission framing verified coherent; script-11 figures regenerated at 300 dpi with serif fonts (plotted values unchanged, read from committed JSON/CSV). Both papers: AI-assisted-methodology disclosure added to acknowledgments (agentic pipeline under author direction, every number verified against committed artifacts, public audit trail). Directive-G hygiene complete; readinessCap held (venue barrier, Houston-gated).",
+    keyTakeaways: [
+      "Both abstracts rewritten to lead with the result (P3: validated catalog + real-object demo; P5: the parity null) and to state each honest caveat exactly once — zero honest scope lost, zero numbers changed",
+      "AI-assisted-methodology disclosure added to both acknowledgments blocks (P5 had none): agentic pipeline under author direction, every number verified against committed artifacts, public audit trail",
+      "Verified 0 distinct numeric VALUES added or deleted on either paper vs the prior version; P5 script-11 figures regenerated at 300 dpi + serif from the committed generator (plotted values unchanged)",
+      "Directive-G: P3 v3.1.139→v3.1.140 (md5 55459a5f46ec48754a74db448f1e7657, 33pp); P5 v0.1.102→v0.1.103 (md5 a3a00abdfa24af461df14be60a1ff19a, 37pp); both mirrored byte-identical to all served paths, date July 6 2026; Convex paperVersions:bump three-way md5-verified",
+    ],
+    links: [
+      { label: "P3 source", href: `${GH}/pipelines/p3_anomaly_engine/paper3_draft.tex` },
+      { label: "P5 source", href: `${GH}/pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex` },
+    ],
+  },
+  {
     id: "FINAL-pre-submission-int-ext-round-2026-07-05",
     kind: "external-browser",
     dateISO: "2026-07-05",
