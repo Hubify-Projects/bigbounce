@@ -93,5 +93,8 @@ with both caveats load-bearing in the abstract, plus a self-contained,
 independently-certified resolution of the Cai–Li amplitude, and ask you to weigh
 whether that framing meets the bar.
 
+## AI-use disclosure to the editor
+This manuscript was prepared with the assistance of an agentic AI research pipeline built on Anthropic Claude (Opus~4 family, 2026 releases) for agent orchestration and manuscript preparation, with OpenAI GPT-5/o3, xAI Grok-4, and Google Gemini~2.5 used as cross-checking and adversarial internal-review models. The author designed the study, made all scientific and editorial judgments, verified every quantitative result against the committed computational artifacts, and takes full responsibility for the entire content, including any material produced with AI assistance. The AI tools are not authors.
+
 Sincerely,
 Houston Golden (houston@hubify.com)

@@ -46,6 +46,28 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "venue-compliance-disclosure-wave-2026-07-07",
+    kind: "skill-improvement",
+    dateISO: "2026-07-07",
+    title:
+      "Venue-compliance disclosure wave — all 6 papers: added/aligned AI-methods author-responsibility + not-an-author clause and named the AI models used (per arXiv / APS / AAS / MNRAS / IOP-JCAP policy) — disclosure wording only, NO number changed",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary:
+      "Applied the venue-policy compliance edits from submissions/VENUE_POLICY_COMPLIANCE.md across all six papers. Edit A (P3) + Edit B (P5): appended the explicit author-responsibility + 'AI is not an author' clause that these two lacked (closes the AAS/MNRAS/APS responsibility-clause gap). Edit C: named the AI models + versions in P1A + P2 per the IOP/JCAP model+version requirement, and aligned the same one-sentence model naming across P1B + P4 for identical-quality disclosures. Truthful model set from the repo's own review records: Anthropic Claude (Opus 4 family, 2026) for agent orchestration + manuscript prep, with OpenAI GPT-5/o3, xAI Grok-4, and Google Gemini 2.5 as cross-check / adversarial internal-review models. Also added the APS/MNRAS cover-letter AI-disclosure sentence to all 6 REFEREE_COVER_LETTER.md packets (submission-time requirement). Directive-G per paper: recompile 0 undef-refs, patch-bump + date, mirror byte-identical to all served paths, Convex paperVersions:bump, arXiv bundle rebuilt + standalone-verified. Zero science numbers changed.",
+    keyTakeaways: [
+      "P3 v3.1.141 + P5 v0.1.105: added the missing author-responsibility + not-an-author clause (both render in the compiled PDF)",
+      "P1A v1A.0.113 + P2 v1.7.99 (+ P1B v1B.0.103 + P4 v1.0.221 for consistency): AI-methods disclosure now names the models used per IOP/JCAP requirement",
+      "All 6 REFEREE_COVER_LETTER.md packets carry the APS/MNRAS editor AI-disclosure sentence; all 6 arXiv bundles rebuilt + standalone-verified (0 undef-refs)",
+      "Skill upgrade: journal AI-disclosure policy is a hard pre-submission gate — responsibility clause + not-an-author + named model/version, plus a cover-letter disclosure sentence for APS/MNRAS; disclosure wording only, never touch a number",
+    ],
+    links: [
+      {
+        label: "VENUE_POLICY_COMPLIANCE.md",
+        href: `${GH}/submissions/VENUE_POLICY_COMPLIANCE.md`,
+      },
+    ],
+  },
+  {
     id: "P3-postpolish-kit-title-sync-2026-07-07",
     kind: "skill-improvement",
     dateISO: "2026-07-07",
