@@ -46,6 +46,48 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "P1B-pubready-finalization-v1B0101-2026-07-06",
+    kind: "ext-closure",
+    dateISO: "2026-07-06",
+    title: "P1B v1B.0.101 — publication-readiness finalization for coordinated submission: standalone-value framing + [arXiv:XXXX.XXXXX] cross-ref placeholder; content error-clean per INT v3",
+    papers: ["P1B"],
+    summary:
+      "Closure on the 2026-07-05 verified EXT+INT round (INT Claude full-source MINOR REVISIONS — all three data-backed results reproduce from committed chains/JSON, §III.A dimensional fix verified; EXT ChatGPT REJECT + Gemini/Grok MAJOR, all on standalone-vs-appendix venue/scope grounds). The single concrete external quantitative item — a reduced-vs-non-reduced Planck-mass inconsistency in the boxed ΔN_eff^(ECH) numbers, caught by BOTH INT and ChatGPT — was fixed in v1B.0.100 (numbers switched to reduced-M_Pl 1.7e-43 / 1.1e-56, self-consistent with (T/M_Pl)^2). This v1B.0.101 pass surfaces P1B's genuine standalone contributions in the abstract + intro (first-principles bespoke ECH-sector ΔN_eff ~1e-44 at BBN derived HERE not imported; validated NaMaster E→B pipeline; quantified ALP prior-predictive accommodation cost; public reproducibility manifest) so it reads as a legitimate short companion, no honest scope hedge removed. Coordinated-submission cross-ref wired: clearly-marked [arXiv:XXXX.XXXXX] placeholder in the intro + Golden2026P1a bib note; P1A's real ID inserted at coordinated submission (reciprocal for P1A), procedure in submissions/P1B/SUBMISSION_NOTE.md. readinessCap held at 76 (venue barrier, Houston-gated — not hand-bumped). Directive-G hygiene complete.",
+    keyTakeaways: [
+      "Content error-clean per INT full-source review; the one concrete external item (reduced-M_Pl ΔN_eff convention) was real and is fixed (v1B.0.100)",
+      "The genuine standalone result — first-principles bespoke ECH-sector ΔN_eff ~1e-44 at BBN, derived in this paper — is now foregrounded in abstract + intro so P1B reads as a legitimate companion, not an appendix",
+      "Coordinated submission: single [arXiv:XXXX.XXXXX] placeholder (intro + bib note) + SUBMISSION_NOTE.md; post P1B first, insert P1A's ID same-day",
+      "Residual external objection is venue/format (standalone-vs-supplementary), Houston-gated — no genuinely-new correctness defect survived truth-audit; readinessCap left at 76 (not hand-bumped)",
+      "Directive-G: v1B.0.100→v1B.0.101, 0 undef-refs / 0 major overfull hboxes, 22pp, PDF mirrored byte-identical (md5 8f764d280e19f3a210e861c52264e704) to all served paths, packet + standalone-verified tarball rebuilt, Convex three-way md5 match",
+    ],
+    links: [
+      { label: "P1B EXT_real 2026-07-05 round", href: `${PR}/EXT_real/ROUND_2026-07-05` },
+      { label: "P1B INT_v3 2026-07-05", href: `${PR}/INT_v3/ROUND_2026-07-05/P1B_INT_claude.md` },
+      { label: "P1B submission packet", href: `${GH}/submissions/P1B` },
+    ],
+  },
+  {
+    id: "P5-paperIV-reframe-v0102-2026-07-06",
+    kind: "ext-closure",
+    dateISO: "2026-07-06",
+    title: "P5 v0.1.102 — Paper-IV coordinated-submission reframe: recast the dominant cross-reviewer major (unvettable in-prep dependency) into a citation-timing note; monopole-invariance + GZ1-human-only null foregrounded",
+    papers: ["P5"],
+    summary:
+      "Closure on the 2026-07-05/06 verified EXT+INT round (INT Claude full-source MINOR, every headline number verified exact; Grok MINOR; Gemini MAJOR; ChatGPT REJECT). The dominant finding across all four reviewers was the Paper-IV dependency. Reframed to the coordinated-submission reality: Paper IV = the companion chirality-catalog paper in this repo (pipelines/p2_chirality/, first-wave submission), so the dependency closes by posting P4 to arXiv first and citing its real ID same-day. Every Paper-IV reference now routes through one \\paperIVarxiv macro (placeholder arXiv:XXXX.XXXXX + SUBMISSION_NOTE for the real ID). Foregrounded the already-verified fact that the headline Delta f_CW is algebraically monopole-shift invariant and rests only on public GZ1/DESI/DESIVAST data (refereeable independent of Paper IV internals), and added Paper IV's model-free GZ1-human-only parity null (z=-0.54 sigma, N=46,017) as pseudo-label-independence corroboration. No headline number changed. Directive-G hygiene complete.",
+    keyTakeaways: [
+      "Paper IV is NOT an unwritten dependency — it is the companion catalog paper in this repo, submitting first wave; the residual is citation timing, not vettability",
+      "Headline void/non-void Delta f_CW is monopole-shift invariant and uses only PUBLIC per-galaxy labels + public DESI DR1 / DESIVAST — refereeable now independent of Paper IV's internals",
+      "Added the model-free control: replacing learned CW/CCW labels with Galaxy Zoo 1 human votes returns the same parity null (z=-0.54 sigma, N=46,017), so the catalog does not inherit its pseudo-labels",
+      "Single \\paperIVarxiv insertion point + SUBMISSION_NOTE.txt: post P4, drop in its arXiv ID, recompile, rebuild tarball, submit P5 same-day",
+      "Directive-G: v0.1.101->v0.1.102, 0 undef-refs / 0 overfull hboxes, 37pp, PDF mirrored byte-identical (md5 191d698702a805b4805dded18608f48c) to all served paths, packet + standalone-verified tarball rebuilt",
+    ],
+    links: [
+      { label: "P5 EXT_real 2026-07-05 round", href: `${PR}/EXT_real/ROUND_2026-07-05` },
+      { label: "P5 INT_v3 2026-07-05", href: `${PR}/INT_v3/ROUND_2026-07-05/P5_INT_claude.md` },
+      { label: "P5 submission packet", href: `${GH}/submissions/P5` },
+    ],
+  },
+  {
     id: "RS24-VERIFIED-2026-07-03",
     kind: "external-browser",
     dateISO: "2026-07-03",

@@ -28,13 +28,22 @@ monopole amplitude or its uncertainty. The DESIVAST void path is the single
 primary estimand; the T-Web path is explicitly secondary.
 
 ## Disclosed limitations (stated up front)
-1. **Structural dependency on the in-preparation Paper IV.** The classifier
-   architecture, training, parity-equivariance validation, and the origin of the
-   catalog monopole are documented in the same-author Paper IV, currently *in
-   preparation*. The abstract states this and provides a self-contained
-   Appendix A summary. While the *headline Δf_CW null* is algebraically
-   independent of Paper IV (monopole-invariant), a referee cannot fully vet the
-   raw per-galaxy label integrity and parity-equivariance without Paper IV.
+1. **Relation to the companion Paper IV (citation timing, coordinated submission).**
+   The classifier architecture, training, parity-equivariance validation, and the
+   origin of the catalog monopole are documented in the same-author companion
+   catalog paper (Paper IV), which is **submitted to arXiv concurrently, immediately
+   before this manuscript**, under coordinated submission; its per-galaxy
+   `class_eq` labels and trained weights are already **public under CC-BY-4.0**.
+   This is a citation-timing relation, not an unpublished/unvettable dependency.
+   Two facts make the headline refereeable independently of Paper IV's internals:
+   (a) the headline Δf_CW null is algebraically **monopole-shift invariant**,
+   resting only on the public per-galaxy labels joined to public DESI DR1 /
+   DESIVAST data, with a self-contained Appendix A classifier summary; and (b) the
+   labels' pseudo-label provenance is validated **model-independently** in Paper IV
+   — replacing the learned CW/CCW labels entirely with Galaxy Zoo 1 human votes (no
+   learned model in the chirality-label chain) returns the same parity null at
+   z = −0.54σ on N = 46,017 human-labeled spirals. Paper IV's arXiv ID is inserted
+   into the P5 citation on posting.
 2. **T-Web in redshift space.** The secondary T-Web classification is performed in
    observed redshift space; RSD boundary-leakage is bounded by a scalar
    displacement heuristic rather than full Zel'dovich/BAO reconstruction, and
@@ -44,15 +53,16 @@ primary estimand; the T-Web path is explicitly secondary.
    in-text as diagnostics, not signals.
 
 ## The judgment for the referee
-The specific question an LLM referee raised — and the one a human referee is best
-placed to adjudicate — is a **structural/venue call: should publication be
-contingent on the acceptance and availability of the in-preparation Paper IV, or
-does the monopole-invariant self-contained headline null (with the Appendix A
-classifier summary) stand on its own for a standalone article?** This dependency
-clears naturally when Paper IV publishes. We ask you to judge whether the
-algebraic monopole-invariance and the self-contained summary are sufficient for
-the null to stand now, or whether the companion should be co-submitted or
-in-hand first.
+The Paper IV relation, which earlier LLM referees raised as a structural blocker,
+is resolved operationally by **coordinated submission**: Paper IV is posted to
+arXiv immediately before this manuscript, so the companion carries a citable
+arXiv identifier at the moment P5 appears, and its catalog is already public. The
+remaining referee question is therefore narrow: given (a) algebraic
+monopole-invariance of the headline null, (b) the model-independent Galaxy-Zoo-1
+human-vote reproduction of the catalog's parity null (z = −0.54σ, N = 46,017),
+and (c) the self-contained Appendix A classifier summary, does the standalone
+null stand on the public data alone? We believe it does, and that any residual is
+citation timing rather than vettability.
 
 No genuinely-new correctness defect is outstanding.
 

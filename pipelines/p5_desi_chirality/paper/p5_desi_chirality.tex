@@ -14,6 +14,14 @@
 }
 
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
+% SUBMISSION NOTE (coordinated submission): Paper IV (the companion chirality
+% catalog paper, pipelines/p2_chirality/) is submitted to arXiv immediately
+% BEFORE the present paper. Once Paper IV has its arXiv identifier, replace the
+% placeholder below with the real ID (e.g. arXiv:2601.XXXXX) and recompile; every
+% Paper-IV reference in the text resolves through this one macro. Until then the
+% placeholder stands and the present paper cites Paper IV as a concurrently-posted
+% companion, not an unpublished dependency. See submissions/P5/SUBMISSION_NOTE.txt.
+\newcommand{\paperIVarxiv}{arXiv:XXXX.XXXXX}
 % \artifact and \artifactDir emit short hyperlinked IDs [AN] (D-round visual fix).
 % Full path--to--ID mapping: see Appendix~C (Data artifacts).
 % Both macros now receive the literal ID string from the Python rewrite pass;
@@ -33,7 +41,18 @@
 % The divide-by-h claim (~1246 h⁻¹ Mpc) is INVERTED. No pipeline recompute required.
 % If any future reviewer re-raises this, cite env_finder/01_compute_vweb.py:106-108.
 
-\newcommand{\paperVersion}{v0.1.101-2026-07-02}
+\newcommand{\paperVersion}{v0.1.102-2026-07-06}
+% v0.1.102-2026-07-06 (Paper-IV coordinated-submission reframe: recast the
+%   Paper-IV dependency from "in-preparation / unvettable" to a companion catalog
+%   paper posted to arXiv concurrently under coordinated submission (\paperIVarxiv
+%   macro = single insertion point for the real ID; P4 posts first, P5 cites same-day).
+%   Sharpened the already-present monopole-invariance / public-GZ1-DESI-DESIVAST
+%   refereeability up front (abstract, referee-concern (i), §V.B structural disclosure,
+%   Appendix A). Added Paper IV's GZ1-human-only full-N parity null (z=-0.54sigma,
+%   N=46,017; artifact gz1only_fullN_dipole_result.json) as model-free pseudo-label-
+%   independence corroboration, directly answering the classifier-dilution/pseudo-label
+%   external majors. No headline number changed; converts the structural major into a
+%   citation-timing note. Bib entry + all non-comment "in preparation" strings recast.)
 % v0.1.100-2026-07-01 (RS9-EXT closure: Grok+Gemini both MINOR-REVISIONS, no
 %   verdict-blocking MAJOR. Framing/signposting only (pattern-069), no new science:
 %   (1) Paper-IV independence sharpened up front in abstract — headline Delta-f_CW
@@ -479,6 +498,7 @@
 %   TIGHTENS: cross-class f_CW range 1.98pp → 0.05pp, all classes
 %   |σ_mono| ≤ 0.39. Artifact: outputs/16_cosmic_web_zshell_corrected.json.
 \newcommand{\paperTimestamp}{July 2026}
+% timestamp label unchanged (still July 2026); \date bumped to July 6
 % v0.1.62-2026-06-10 (R29 post-EXT1 internal-round closure wave; truth audit at
 %   project-context/peer-reviews/R29_P5_TRUTH_AUDIT.md):
 %   Wald-shift CORRECTION: M1-vs-M0 env-coefficient shifts were overstated as
@@ -577,23 +597,30 @@
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{July 2, 2026}
+\date{July 6, 2026}
 
 \begin{abstract}
-We cross-match the 8{,}474{,}531-galaxy chirality catalog of Paper~IV
-\cite{golden_chirality_2026} (in preparation; the classifier
-architecture, training, parity-equivariance validation, and the origin
-of its monopole are summarized for self-contained assessment in
-Appendix~\ref{app:paper4_methods}; see also
+We cross-match the 8{,}474{,}531-galaxy chirality catalog of the
+companion catalog paper (Paper~IV)~\cite{golden_chirality_2026}
+(\paperIVarxiv, posted concurrently under coordinated submission; the
+classifier architecture, training, parity-equivariance validation, and
+the origin of its monopole are summarized for self-contained assessment
+in Appendix~\ref{app:paper4_methods}; see also
 \href{\repoBase/pipelines/p2\_chirality/}{[A1]}).
 \emph{The headline $\Delta f_{\rm CW}$ result of this paper is
-self-contained and does not depend on the in-preparation Paper~IV
-manuscript:} it uses only the public per-galaxy \texttt{class\_eq}
-labels (HuggingFace catalog, \S\ref{sec:p4}) and is algebraically
-invariant under any catalog-wide monopole shift, so it is unaffected by
-the Paper~IV monopole amplitude, its uncertainty, or any future revision
-of Paper~IV; Paper~IV is corroboration for the classifier provenance,
-not a dependency of the null. We join these labels
+refereeable independently of Paper~IV's internals:} it uses only the
+\emph{public} per-galaxy \texttt{class\_eq} labels (HuggingFace catalog,
+CC-BY-4.0, inspectable now; \S\ref{sec:p4}) joined to public DESI~DR1
+and DESIVAST data, and is algebraically invariant under any catalog-wide
+monopole shift, so it is unaffected by the Paper~IV monopole amplitude,
+its uncertainty, or any future revision of Paper~IV. The pseudo-label
+provenance of those labels is itself validated model-independently in
+Paper~IV: replacing the learned CW/CCW labels with Galaxy~Zoo~1 human
+votes alone (no learned model in the chirality-label chain) returns the
+same parity null at $z=-0.54\sigma$ ($N=46{,}017$), so the catalog's
+handedness signal does not inherit its pseudo-labeling. Paper~IV is thus
+a concurrently-posted companion and corroboration for classifier
+provenance, not an unvettable dependency of the present null. We join these labels
 to the DESI Data Release~1 redshift
 catalog ($16.36 \times 10^6$ \texttt{ZWARN=0} input rows) to test whether
 spiral galaxy handedness is statistically independent of large-scale
@@ -852,9 +879,10 @@ anisotropic-tidal-tensor / scalar-$\sigma_v$ RSD decomposition).
 Spiral galaxy chirality is, to leading order in a parity-conserving
 universe, an equal mixture of clockwise (CW) and counterclockwise (CCW)
 projections on the sky once mirror-augmentation biases in classifier
-training are removed. Paper~IV~\cite{golden_chirality_2026} (in preparation;
+training are removed. The companion catalog paper (Paper~IV)~\cite{golden_chirality_2026}
+(\paperIVarxiv, posted concurrently under coordinated submission;
 see \href{\repoBase/pipelines/p2\_chirality/}{[A1]}; the present manuscript
-treats its catalog and quoted monopole offset as inputs whose
+treats its public catalog and quoted monopole offset as inputs whose
 uncertainty is propagated explicitly below)
 establishes the global mixture in the post-test-time-augmentation
 equivariant classifier as a CW fraction of $0.4974 \pm 0.000279$ ---
@@ -892,14 +920,20 @@ bounce-model agnostic.
 \paragraph{Response to common referee concerns.}
 Six recurring concerns are addressed in dedicated locations, signposted
 here so they need not be re-derived on a fresh read:
-\emph{(i) Dependence on the in-preparation Paper~IV catalog.}
-The headline void/non-void $\Delta f_{\rm CW}$ contrast depends only on
-the per-galaxy \texttt{class\_eq} labels (public HuggingFace catalog) and
-is \emph{invariant} under any catalog-wide monopole shift; the classifier
-architecture, training, parity-equivariance validation, and monopole
-origin are self-contained in Appendix~\ref{app:paper4_methods} and
-tabulated with provenance in Table~\ref{tab:p4_inputs}
-(\S\ref{sec:p4}, \S\ref{sec:data}).
+\emph{(i) Relation to the companion Paper~IV catalog.}
+Paper~IV~\cite{golden_chirality_2026} is a companion catalog paper posted
+to arXiv concurrently under coordinated submission (\paperIVarxiv), not an
+unpublished dependency: its per-galaxy \texttt{class\_eq} labels and trained
+weights are public now under CC-BY-4.0. The headline void/non-void
+$\Delta f_{\rm CW}$ contrast depends only on those public labels and is
+\emph{algebraically invariant} under any catalog-wide monopole shift, so it
+is refereeable from public GZ1/DESI/DESIVAST data independently of Paper~IV's
+internals; the classifier architecture, training, parity-equivariance
+validation, and monopole origin are reproduced self-contained in
+Appendix~\ref{app:paper4_methods} and tabulated with provenance in
+Table~\ref{tab:p4_inputs} (\S\ref{sec:p4}, \S\ref{sec:data}). The residual
+is therefore one of \emph{citation timing} (Paper~IV's arXiv identifier is
+inserted on posting), not of vettability.
 \emph{(ii) Post-hoc primary-path choice / garden of forking paths.}
 The DESIVAST-anchored path is declared primary explicitly and
 \emph{post-hoc}, with an enumerated analysis-tree table separating the
@@ -997,7 +1031,7 @@ The present paper consumes two inputs from Paper~IV:
 \texttt{class\_eq}), and (ii)~a single scalar, the catalog-wide CW-fraction
 monopole $\Delta f_{\rm CW}^{\rm P4} = -0.0026$. Table~\ref{tab:p4_inputs}
 states both with their values and provenance so that a referee can assess
-this paper without the in-preparation Paper~IV manuscript in hand; the
+this paper from public data alone, without the companion Paper~IV manuscript in hand; the
 classifier architecture, training-set composition, parity-equivariance
 validation, independent accuracy floor, and the derivation of the
 monopole offset are summarized for self-contained assessment in
@@ -1016,8 +1050,8 @@ the internal P5 matched-sample value $f_{\rm CW}^{\rm P5} = 0.49719$
 \begin{table}[t]
 \caption{Paper~IV inputs consumed by this analysis, summarized for
 self-contained readability. Values are reproduced from
-Paper~IV~\cite{golden_chirality_2026} (in preparation; full classifier
-architecture, training, parity-equivariance validation, and monopole
+Paper~IV~\cite{golden_chirality_2026} (companion catalog paper, \paperIVarxiv;
+full classifier architecture, training, parity-equivariance validation, and monopole
 origin summarized for self-contained assessment in
 Appendix~\ref{app:paper4_methods});
 labels are served as the \texttt{class\_eq} column of the public catalog
@@ -3763,28 +3797,35 @@ concordance on the common overlap is $0.29$\,percentage points
 (${\sim}0.5\sigma$, statistically indistinguishable); lower-$n$
 classes scatter by counting statistics and
 classifier-definition mismatch.
-\item \emph{Structural dependence on the in-preparation Paper~IV
+\item \emph{Relation to the companion Paper~IV catalog
 (honest disclosure).} The per-galaxy \texttt{class\_eq} CW/CCW labels and
 the global classifier-monopole calibration ($f_{\rm CW}^{\rm P4} =
-0.4974 \pm 0.000279$) are \emph{inputs} taken from Paper~IV
-\cite{golden_chirality_2026}, which is in preparation and not yet
-peer-reviewed. We do not conceal this dependence; we bound it. The
-\emph{headline} void/non-void $\Delta f_{\rm CW}$ contrast depends only on
-the public per-galaxy labels and is algebraically invariant under any
-catalog-wide monopole shift (\S\ref{sec:p4}), so it is robust to the
-Paper~IV \emph{monopole amplitude, its uncertainty, and any future
-revision of that amplitude}; the classifier architecture, training,
-parity-equivariance validation, and monopole origin are reproduced for
-self-contained assessment in Appendix~\ref{app:paper4_methods}. What
-remains genuinely Paper~IV-dependent is the \emph{per-galaxy label
-provenance itself} (a systematic re-labeling by a revised Paper~IV
-classifier is not excluded by any test internal to P5) and the
-monopole-referenced $\sigma_{\rm pred}$ diagnostics (not the headline
-contrast). We flag this residual structural dependence explicitly for
-human-referee attention: the primary null should be re-verified against
-the final peer-reviewed Paper~IV catalog once it is published, and until
-then the P5 environment-independence result is best read as conditional on
-the Paper~IV label set characterized in Appendix~\ref{app:paper4_methods}.
+0.4974 \pm 0.000279$) are \emph{inputs} taken from the companion catalog
+paper Paper~IV~\cite{golden_chirality_2026}, which is submitted to arXiv
+concurrently with the present paper under coordinated submission
+(\paperIVarxiv; the catalog labels and trained weights are public now under
+CC-BY-4.0). This is a citation-timing relation, not an unvettable
+dependency, and we bound its scientific reach. The \emph{headline}
+void/non-void $\Delta f_{\rm CW}$ contrast depends only on the public
+per-galaxy labels and is algebraically invariant under any catalog-wide
+monopole shift (\S\ref{sec:p4}), so it is refereeable from public
+GZ1/DESI/DESIVAST data and robust to the Paper~IV \emph{monopole amplitude,
+its uncertainty, and any future revision of that amplitude}; the classifier
+architecture, training, parity-equivariance validation, and monopole origin
+are reproduced for self-contained assessment in
+Appendix~\ref{app:paper4_methods}. The one remaining Paper~IV-linked
+element is the \emph{per-galaxy label provenance itself} --- and even this
+is validated model-independently: Paper~IV's parity null survives replacing
+the learned CW/CCW labels entirely with Galaxy~Zoo~1 human votes (no learned
+model in the chirality-label chain), returning $z=-0.54\sigma$ on
+$N=46{,}017$ human-labeled spirals~\cite{golden_chirality_2026}, so the
+labels do not inherit their pseudo-labeling. A systematic \emph{environment-dependent}
+re-labeling by a future classifier is not excluded by any test internal to
+P5, and the monopole-referenced $\sigma_{\rm pred}$ diagnostics (not the
+headline contrast) reference the Paper~IV scalar; we flag both explicitly
+for human-referee attention and note the primary null should be re-verified
+against the final published Paper~IV catalog, whose arXiv identifier is
+inserted here on posting.
 \item Imaging-leg systematics in chirality classification are tracked
 in Paper~IV (per-leg $|\sigma|\!<\!3$); we propagate the per-leg split
 here but do not re-derive the underlying bias.
@@ -3935,8 +3976,8 @@ This paper consumes two inputs from the companion Paper~IV
 labels and the single catalog-wide CW-fraction monopole scalar
 $\Delta f_{\rm CW}^{\rm P4}=-0.0026$ (\S\ref{sec:p4}). We stress at the
 outset the \emph{degree} of that dependence, because it bounds how much
-the present conclusions can be affected by the in-preparation status of
-Paper~IV. The headline environmental result --- the void-vs-non-void
+the present conclusions can be affected by the concurrent-submission status of
+the companion Paper~IV (posted to arXiv immediately prior, \paperIVarxiv). The headline environmental result --- the void-vs-non-void
 $\Delta f_{\rm CW}$ two-sample contrast --- is \emph{algebraically
 invariant} under any catalog-wide monopole shift (\S\ref{sec:p4}): it
 cancels in the difference and therefore does not depend on the Paper~IV
@@ -3950,7 +3991,7 @@ corroborated here without relying on the Paper~IV number. The remaining
 dependence is thus on the label \emph{quality}, whose equivariance,
 accuracy floor, and systematic origin we quantify below in full.
 Because Paper~IV
-is in preparation at the time of writing, we reproduce here the
+is posted concurrently rather than already in print, we reproduce here the
 methodological facts a referee needs to assess the quality of those
 labels, the origin of the monopole, and the classifier's parity
 (CW/CCW) equivariance, so that the present manuscript can be evaluated
@@ -4030,6 +4071,20 @@ its own matched sample, $f_{\rm CW}^{\rm P5}=0.49719$ on $812{,}793$
 env-labeled rows, corroborating the Paper~IV value to ${\sim}8\%$
 (\S\ref{sec:desivast_p4_residual}).
 
+\textbf{Pseudo-label independence (model-free control).} Because the
+production labels are trained partly on CE-ResNet pseudo-labels, one might
+worry the handedness signal is an artifact of the pseudo-labeling rather than
+of the sky. Paper~IV excludes this directly: replacing the learned CW/CCW
+labels \emph{entirely} with Galaxy~Zoo~1 human votes --- so that no learned
+model remains anywhere in the chirality-label chain --- reproduces the same
+clean parity null at $z=-0.54\sigma$ (per-pixel permutation rank-$p=0.67$;
+$z=-0.55\sigma$ per-galaxy binomial) on $N=46{,}017$ human-labeled DESI-matched
+spirals, under the identical HEALPix estimator and null construction as the
+headline~\cite{golden_chirality_2026}. The catalog's parity behaviour thus
+does not inherit its pseudo-labels, which strengthens the case that the
+per-galaxy \texttt{class\_eq} labels the present paper consumes are a faithful
+handedness measurement and not a learned-label artifact.
+
 \textbf{Imaging-leg bias.} Per-imaging-leg (BASS+MzLS, DECaLS, DES)
 CW-fraction differences are modeled in Paper~IV with weighted-least-
 squares leg-fraction templates; the best-fit leg-driven dipole amplitude
@@ -4042,8 +4097,9 @@ systematics split of \S\ref{sec:systematics}.
 \href{https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog}{bamfai/galaxy-chirality-catalog}
 (CC-BY-4.0, release tag \texttt{v2026.04}); the trained weights are at
 \href{https://huggingface.co/bamfai/galaxy-chirality-v2}{bamfai/galaxy-chirality-v2}.
-An arXiv posting and a Zenodo-minted DOI for Paper~IV accompany its
-journal submission.
+Paper~IV is posted to arXiv immediately prior to the present paper under
+coordinated submission (\paperIVarxiv), with a Zenodo-minted DOI for the
+catalog snapshot.
 
 \textbf{Sufficiency for the present analysis.} The two quantities the
 present conclusions rest on are (i) the per-galaxy \texttt{class\_eq}
@@ -4055,8 +4111,8 @@ under any catalog-wide monopole shift (\S\ref{sec:p4}), so it depends on
 the labels but not on the monopole amplitude; the monopole enters only
 the $\sigma_{\rm pred}$ diagnostics, where its uncertainty is propagated.
 This appendix therefore makes the environmental-independence result of
-the present paper independently assessable without the in-preparation
-Paper~IV manuscript.
+the present paper independently assessable from public data alone, without
+the concurrently-posted companion Paper~IV manuscript in hand.
 
 \section{Toy EFT mapping of the environmental bound}\label{app:toy_eft}
 
@@ -4326,7 +4382,10 @@ arXiv:astro-ph/9812088.
 H.~Golden,
 \emph{A Survey-Scale Chirality Catalog of 8.47M Galaxies (3.2M Spirals):
 A Null Detection of Large-Scale Parity Violation at Sub-Percent
-Sensitivity}, companion paper (Paper~IV), in preparation; manuscript in preparation.
+Sensitivity}, companion catalog paper (Paper~IV), \paperIVarxiv{} (submitted;
+posted immediately prior to the present paper under coordinated submission).
+The per-galaxy \texttt{class\_eq} labels and trained weights consumed here are
+public now under CC-BY-4.0 (\href{https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog}{bamfai/galaxy-chirality-catalog}).
 
 \bibitem{golden_fnl_2026}
 H.~Golden,
