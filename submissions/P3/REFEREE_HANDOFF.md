@@ -1,45 +1,44 @@
 # Referee Handoff — P3 (Multi-Survey Anomaly Catalog)
 
-`pipelines/p3_anomaly_engine/paper3_draft.tex` · slug `paper-3` · **current version: v3.1.132 (2026-07-02)**
+`pipelines/p3_anomaly_engine/paper3_draft.tex` · slug `paper-3` · **current version: v3.1.140 (2026-07-06)**
 
-## 2026-07-02 closures (new since 2026-07-01 handoff)
+## Headline result
 
-1. **DESI never-sensitivity-tested MAJOR — CLOSED** (commits `6b9db47f`, `da5f5e9f`, v3.1.130)
-   - Full 5σ injection-recovery on real DESI-DR1 spectra completed and folded in.
-   - Results: broad-class recovery 99–100% (3 injection gates); narrow-line injection floor
-     ≥15σ (disclosed, not claimed as a pass). Gates validated at parity with SDSS and Planck
-     injection-recovery.
-   - The paper now carries real committed injection-recovery results for the dominant DESI
-     component; "no injection-recovery executed" language updated to reflect the completed run.
-   - Abstract / §III / `pathc_caveats(i)` updated for internal consistency (v3.1.132 reconciles
-     a contradiction introduced when the fold-in was committed, commit `6d8d5b9c`).
+A validated catalog-grade subset of **268,519 unique multi-survey anomalies**, obtained by
+applying an autoencoder framework to 37.3M sources + CMB map patches across seven surveys
+(DESI, SDSS, LAMOST, eROSITA, Planck, Gaia, NEOWISE) with per-survey native retraining and
+positional deduplication. The count is **directly recomputable** via
+`reproduce_headline_dedup.py`. The validated headline draws from the injection-recovery- and
+stability-gated components only; exploratory tiers (eROSITA score-axis, Gaia) are labeled and
+sequestered. The §V cosmology sections (multi-tracer f_NL, NANOGrav) are presented explicitly
+as **methodological demonstrations yielding null/marginal results**, not detections.
 
-2. **Scaler-leakage flag — CLOSED** (commit `4e1f918d`, v3.1.131)
-   - Gemini RS10 flagged the 5-fold J=0.862 / OOD J=0.732 DESI gates as carrying full-sample
-     scaler leakage. Audit of committed pipeline (`outputs/scaler_leakage_audit_2026-07-02.json`)
-     confirmed the flag confuses two distinct P3 pipelines:
-   - **Spectroscopic path** (DESI/SDSS/LAMOST/Planck): normalizes per-spectrum (each 496-bin
-     vector / its own nonzero-bin median). A row-wise transform computed from each spectrum alone
-     is split-independent → no train/held-out leakage. The J=0.862 / J=0.732 numbers are
-     already leak-free and unchanged.
-   - **Tabular-tier leakage** (eROSITA/NEOWISE/Gaia): a full-sample StandardScaler IS used on
-     tabular tiers; this is already disclosed (Sec Training) and bounded by committed
-     train-split-only refit control (`erosita_scaler_refit.json`): top-1% J(A,B)=0.643,
-     confirming the tabular gates are not headline-load-bearing. The J=0.862 / J=0.732 headline
-     is unaffected.
+## Closed since the 2026-07-01 floor
 
-3. **§IID/§III internal consistency — CLOSED** (subsumed in v3.1.130/131/132 wave)
-   - DESI injection-recovery fold-in resolved the prior §IID/§III inconsistency on DESI's
-     validated status. The abstract summary block and §III/pathc_caveats now agree.
+1. **DESI injection-recovery — real and committed.** A full 5σ injection-recovery on real
+   DESI-DR1 spectra: broad-class recovery 99–100% across 3 validation gates, at parity with
+   SDSS and Planck; narrow-line injection floor ≥15σ (disclosed, not claimed as a pass).
+2. **DESI score-vs-z deferred test — CLOSED (v3.1.139 DATA-UNLOCK).** The previously
+   pod/HF-bound `desi_zall.parquet` test was run and folded in.
+3. **Scaler-leakage flag — CLOSED.** The spectroscopic path (DESI/SDSS/LAMOST/Planck)
+   normalizes per-spectrum and is split-independent → the J=0.862 / J=0.732 headline Jaccard
+   gates are leak-free. The tabular tiers (eROSITA/NEOWISE/Gaia) use a full-sample scaler,
+   already disclosed and bounded by a committed train-split-only refit control; those tiers are
+   not headline-load-bearing.
+4. **NEOWISE 436-vs-419 flag — verified NOT an inconsistency.** 436 = raw top-1% selection;
+   419 = after the |b_ecl|<80° ecliptic-pole mask; both stated with footnote "436 to 419
+   (96.1% retained)." Documented two-stage count.
 
-## Convergence status (as of RS11 / 2026-07-02 floor)
+## Convergence status
 
-P3 has reached the LLM-refereeing floor: **0 genuinely-new real findings** across RS11.
-RS11 verdicts — **Gemini REJECT, Grok MAJOR REVISIONS**. The Gemini REJECT re-flags the
-eROSITA score-axis irreproducibility and the lost Gaia preprocessing script — both of which the
-paper already discloses as exploratory-tier limitations excluded from the validated headline.
-The RS10 LAMOST misread was corrected in RS10 closure and held through RS11 (Gemini now reads
-it correctly: "author correctly sequesters"). No new correctness defect.
+P3 has reached the LLM-refereeing floor: **0 genuinely-new real findings** across the FINAL
+(2026-07-05) and POSTPOLISH (2026-07-06) truth-audited EXT+API rounds
+(`project-context/peer-reviews/FINAL_SIGNOFF_AUDIT_2026-07-05.md`). On the identical v3.1.140
+PDF: **grok-4.3 (API) MINOR REVISIONS, "central claim supported"**; **Grok (EXT) / Gemini
+MAJOR REVISIONS** (Gemini recommends ApJS/MNRAS); **ChatGPT REJECT and openai gpt-5.5 REJECT**
+— the sharpest cross-vendor contradiction of the round (grok-4.3 MINOR vs ChatGPT/openai
+REJECT on the identical PDF), the maximally-harsh-referee structural floor (directive H). No
+new correctness defect surfaced.
 
 ## Recurring objections a human referee should adjudicate
 
@@ -55,7 +54,7 @@ it correctly: "author correctly sequesters"). No new correctness defect.
      a catalog paper require every tier fully reproducible?** (this is the crux of the REJECT)
 
 2. **DESI dominance — injection-recovery now completed (see above).**
-   - The prior "DESI ran no injection-recovery" MAJOR is **closed** by the 2026-07-02 results:
+   - The prior "DESI ran no injection-recovery" MAJOR is **closed** by the committed results:
      broad-class 99–100% recovery, 3-gate validation. Narrow-line floor ≥15σ is disclosed.
    - Remaining judgment call for the human referee: **are the 3-gate broad-class results and the
      ≥15σ narrow-line floor together a sufficient robustness demonstration for the dominant
@@ -82,7 +81,8 @@ audit confirms the headline Jaccard gates are leak-free.
 Submit to **ApJS** (catalog venue) with the eROSITA/Gaia exploratory-tier non-reproducibility
 disclosures flagged to the editor as *by-design scope*, and the released committed products
 (membership lists, per-object catalogs, real DESI injection-recovery results) foregrounded.
-Given the Gemini REJECT hinges entirely on disclosed exploratory-tier limitations — and given
-that the previously-absent DESI injection-recovery is now real and committed — the honest
-framing is: the validated tier stands independently and is now more robustly grounded than
-the 2026-07-01 floor.
+The venue call is the crux: Gemini (and the audit) recommend a catalog/data-release venue
+(ApJS/MNRAS) over PRD, while grok-4.3 rates the same PDF MINOR for PRD — a journal-routing
+opinion, not a correctness objection. The validated tier stands independently and, with the
+DESI injection-recovery and DATA-UNLOCK score-vs-z test now real and committed, is more
+robustly grounded than the 2026-07-01 floor.

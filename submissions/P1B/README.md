@@ -1,8 +1,8 @@
 # P1B — arXiv submission bundle
 
-**Bundle:** `arxiv_p1b_v1B.0.98.tar.gz`
-**Paper version:** v1B.0.98
-**Date:** July 3, 2026
+**Bundle:** `arxiv_p1b_v1B.0.102.tar.gz`
+**Paper version:** v1B.0.102
+**Date:** July 7, 2026
 **Primary arXiv category:** astro-ph.CO
 **Cross-list (suggested):** gr-qc
 
@@ -68,14 +68,20 @@ reproducibility manifest is included.
 
 ## Convergence status
 
-P1B **CONVERGED** at v1B.0.95 (bundle rebuilt to v1B.0.96 for tarball freshness).
-After the exploratory overlap-uncorrected w0wa appendix was surgically removed
-(v1B.0.95) — the sole basis of the prior Gemini REJECT — the targeted external
-re-check returned **Gemini ACCEPT + Grok MAJOR REVISIONS**, with **0
-genuinely-new findings** surviving truth-audit (Grok's MAJOR is a subjective
-companion-note venue opinion plus re-flags of already-disclosed, in-scope
-content). The core ECH/torsion ΔN_eff + NaMaster + ALP analyses were untouched
-by the cut.
+P1B is at the **LLM-refereeing floor: 0 genuinely-new real findings** across the
+verified FINAL (2026-07-05) and POSTPOLISH (2026-07-06) truth-audited EXT+API
+rounds (`project-context/peer-reviews/FINAL_SIGNOFF_AUDIT_2026-07-05.md`). On the
+identical v1B.0.102 PDF: **grok-4.3 (API) MINOR REVISIONS**; **Grok (EXT) / Gemini
+MAJOR REVISIONS**; **ChatGPT REJECT / openai gpt-5.5 MAJOR REVISIONS**. It is **NOT
+converged to an ACCEPT** — every REJECT/MAJOR rests on a standalone-novelty/venue
+judgment (the exact objection a *companion* framing answers), not a factual error.
+Grok verifies the ΔN_eff number independently (1.68e-43) and calls the derivation
+"the standout original contribution"; Gemini concedes it is "structurally
+supported by the analytic first-principles derivation."
+
+The exploratory overlap-uncorrected w0wa appendix was surgically removed at
+v1B.0.95 (it was the basis of an earlier Gemini REJECT and orthogonal to the core
+ECH/torsion ΔN_eff + NaMaster + ALP analyses, which were untouched by the cut).
 
 **v1B.0.97 real-physics upgrade (July 3, 2026):** to answer the residual
 "stock CAMB/Cobaya proxy, no bespoke torsion-modified physics" objection, added
@@ -94,8 +100,10 @@ negligible ΔN_eff in the radiation era). New refs: UngerPoplawski2019, Bruggen1
 
 ## Status
 
-**READY TO SUBMIT** (prep only — Houston submits). Recompile clean, latex-audit
-clean, all links resolve, tarball standalone-compiles byte-identical. Submit-ready
-alongside P4/P5. Grok's residual MAJOR is a subjective venue/scope opinion the
-author can address in the cover letter (frame as a PRD companion / supplementary
-to Paper 1A, or an ApJS reproducibility note), not a correctness defect.
+**READY TO SUBMIT as a coordinated companion** (prep only — Houston submits).
+Recompile clean, latex-audit clean, all links resolve, tarball standalone-compiles
+byte-identical. Alongside P4/P5. The residual standalone-novelty MAJOR/REJECT is a
+venue/scope opinion the author can address in the cover letter (frame as a PRD
+companion / supplementary to Paper 1A, or fold the ΔN_eff derivation into P1A as
+appendices), not a correctness defect. The standalone-vs-fold decision is
+Houston-gated.

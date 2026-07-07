@@ -1,114 +1,101 @@
 # Referee Handoff — P1A (Einstein–Cartan–Holst No-Go)
 
-`arxiv/paper1a_ech_nogo.tex` · slug `paper-1a` · **current version: v1A.0.101 (2026-07-03)**
+`arxiv/paper1a_ech_nogo.tex` · slug `paper-1a` · **current version: v1A.0.112 (2026-07-07)**
 
-> **v1A.0.100→101 note (R3 provenance):** an attempt to derive R3 from the real
-> Benedetti–Speziale β-function (arXiv:1104.4028) was folded in, then partially
-> reverted on truth-audit. **Retained (verified vs the source):** the BS fermion-coupled
-> β-function is four-fermion-driven, has its sole fixed point at γ²=1, and its sign
-> depends on |γ|≷1 — this grounds R3's "|γ|-dependent running" statement. **Removed
-> (could not verify against the paper; abstract says *logarithmic* divergences):** a
-> specific "Eq. 7.24 = −(γ²−1)²(μ²κ²/(8π)²)(23γ²+5)" power-law form and a derived
-> "|Δγ/γ|~10⁻⁶" claim. R3 therefore keeps the chiral-count ansatz as a conservative
-> upper bound (Δγ/γ~0.3, the v1A.0.99 arithmetic fix); closure unaffected (≳60 orders
-> margin). For a referee: R2/R3 remain honestly ansatz-level — the standing rigor
-> question is whether the full |γ|-dependent BS β-function (not the schematic ansatz)
-> should be integrated for a derived bound, a real open theory calculation.
+## Headline result
 
-## 2026-07-03 closure (genuinely-new finding, from an authorized derivation attempt)
+A **channel-level** no-go that minimal Einstein–Cartan–Holst (ECH) spin-torsion cannot
+be the late-time dark-energy route. Four enumerated minimal-ECH channels are closed
+channel-by-channel at M_Pl power-counting. Structure:
 
-3. **R3 Immirzi-running arithmetic self-inconsistency — CLOSED** (commit `096993f9`, v1A.0.99)
-   - An authorized attempt to *derive* R2/R3 from first principles did **not** produce a
-     derivation (they remain honestly ansatz-level), but it **found a real internal
-     inconsistency**: the R3 text stated Δγ/γ ~ 10⁻², while its own displayed formula
-     `(N_L−N_R)·ln(μ_GUT/μ_IR)/(12π²)` with O(1) chiral count + lever arm ~30–35 gives
-     **≈0.27** (verified: 32/118.4 = 0.27) — a 1–2 order self-contradiction.
-   - **Fixed honestly:** corrected to Δγ/γ ≈ 0.25–0.30, adopting ~0.3 as the *conservative*
-     (least-suppressed) value, fixed the backwards "conservative" framing, reconciled all
-     downstream numbers (10⁻⁶³ → 3×10⁻⁶²). **R3 closure is unaffected** — even at 0.3, γ
-     retains its order of magnitude and the route keeps ≳60 orders of suppression margin
-     (the margin absorbs the correction). **R2 arithmetic separately verified (~10⁻⁶⁰).**
-   - **For the referee:** R2/R3 are now internally consistent, but remain *chiral-count EFT
-     scaling ansätze*, NOT first-principles derivations — the honest limit. The LLM-referee
-     rigor objection (Grok/Gemini RS20: "arbitrary upper-bound ansätze, not derivations")
-     is the standing open item a human referee should weigh: is a tiered four-route argument
-     (rigorous Tier-I transparency + ansatz Tier-II/III amplitude bounds + Tier-II R4
-     naturalness) PRD-appropriate, or must the ansatz tiers be upgraded to full derivations
-     (a substantial open theory calculation — the true Immirzi β-function is the
-     |γ|-dependent Benedetti–Speziale result, not the schematic one-loop ansatz used for
-     the amplitude budget)?
+- **Tier-I (rigorous):** the perturbation-transparency theorem (torsion vanishes at all
+  classical perturbation orders for canonical scalar matter, so the Holst sector
+  decouples from scalar/tensor EOM) and the Planck-suppressed NJL four-fermion result (R1).
+- **R3 is now DERIVED** from the real Benedetti–Speziale β-function via explicit
+  integration (scripts `arxiv/scripts/bs_*.py`): the BS fermion-coupled β-function is
+  four-fermion-driven, has its sole fixed point at γ²=1, and its sign depends on |γ|≷1 —
+  this grounds R3's |γ|-dependent Immirzi running.
+- **ρ_Λ mapping** is presented as a **single-scale NDA no-go** (the +1→+4 mass-dimension
+  gap is the mechanism), with the honest single-scale residual kept, not a circular
+  assume-ρ_Λ-to-derive-ρ_Λ step.
+- **Route-2** is one-loop-grounded (Shapiro–Teixeira) and NDA-bounded.
+- Both previously-omitted parity-odd operators are **closed at the operator level**: the
+  Jackiw–Pi CS term (constant coupling θ → Pontryagin density is a total derivative in
+  4D → zero EOM/ρ_Λ contribution) and the parity-odd V·A four-fermion Holst partner
+  (inherits R1's M_Pl⁻² suppression + vanishing coherent mean field).
 
-## 2026-07-02 closures (new since 2026-07-01 handoff)
+The operator basis is **complete within minimal ECH**; the single named open item is the
+**Fierz-by-Fierz lemma** for the full dim-6 parity-odd basis (a scoped follow-up, disclosed
+as such).
 
-1. **Operator-basis MAJOR — CLOSED** (commits `3c2043c7`, `e295c107`, v1A.0.96)
-   - Added explicit closure subsections for BOTH previously-omitted parity-odd operators:
-     - **Jackiw–Pi CS term** (`sec:jackiwpi_cs`): constant-coupling θ → Pontryagin density
-       is a total derivative in 4D → zero EOM / ρ_Λ contribution (Tier-I, operator level;
-       reuses the paper's total-derivative identity). Dynamical θ is not in minimal-ECH
-       field content (γ fixed by LQG area spectrum, Barrier 7); if adjoined it is R4-class
-       naturalness (Tier-II).
-     - **Parity-odd 4-fermion Holst partner** (`sec:r1_parityodd_partner`): the V·A
-       four-fermion operator is the third torsion-elimination projection of the same
-       operator behind R1 (eq:4fermi); it inherits R1's M_Pl⁻² Planck suppression (~70
-       orders below ρ_Λ) and a vanishing coherent mean field (⟨J⁵⟩≈0, ⟨J⟩∝a⁻³ in w=0),
-       so it carries no w=−1 structure (Tier-III).
-   - Full dim-6 operator basis explicitly scoped as follow-up; abstract and intro updated to
-     acknowledge the now-closed CS + parity-odd partners by name.
+**Figure hygiene:** `fig_theory_map.png` previously carried a baked-in f_NL=−35/8 in its
+"Observable prediction" box; regenerated to **−35/16** at v1A.0.112 (generator
+`arxiv/scripts/fig_theory_map.py`, PNG re-mirrored byte-identical to all served paths).
+The body carries 26 −35/16 instances; the sole surviving −35/8 is the cited historical Cai
+value being corrected. No scientific number changed.
 
-2. **ρ_Λ-mapping "circularity" re-flag — CLOSED** (commit `e5bbb92b`, v1A.0.97)
-   - Grok RS8 re-flagged the on-shell dark-energy mapping (ρ_Λ ~ Ξ M_Pl⁴) as circular
-     (assuming ρ_Λ to derive ρ_Λ). Non-circularity signpost added: the on-shell ansatz
-     is a conservative UPPER bound (it makes the hierarchy hardest to bridge, not easiest);
-     the paper claims no derived amplitude — only that R4 naturalness closure stands even
-     under this mapping. Not circular.
+## Convergence status
 
-## Convergence status (as of RS11 / 2026-07-02 floor)
-
-P1A has reached the LLM-refereeing floor: **0 genuinely-new real findings** across RS11.
-RS11 verdicts — **Grok MAJOR REVISIONS, Gemini MAJOR REVISIONS**. Every RS11 major re-flags
-content the paper already discloses: scope-vs-claim, ansatz-based route closures, on-shell DE
-mapping, transparency-theorem scope, barrier-catalog heterogeneity — all with in-text
-disclosures; Gemini explicitly tagged its RS11 majors as "disclosed cross-refs" /
-"disclosed." No re-flag identifies a correctness defect.
+P1A has reached the LLM-refereeing floor: **0 genuinely-new real findings** across the
+FINAL (2026-07-05) and POSTPOLISH (2026-07-06) truth-audited rounds
+(`project-context/peer-reviews/FINAL_SIGNOFF_AUDIT_2026-07-05.md`). On the identical
+v1A.0.112-class PDF: **Grok "mature, publication-ready"**; **Gemini MAJOR REVISIONS**
+(majors tagged by Gemini itself as "disclosed cross-refs"); **ChatGPT REJECT and openai
+gpt-5.5 REJECT** — the maximally-harsh-referee structural floor (directive H). Gemini's
+"excessive and repetitive disclaimers" major is literal disclosure-backfire (penalizing the
+same honest scoping Grok praises). The one concrete new numeric flag of the POSTPOLISH round
+(the Fig-map −35/8) was real and is now **fixed at v1A.0.112**. No re-flag identifies a
+surviving correctness defect.
 
 ## Recurring objections a human referee should adjudicate
 
 1. **Channel-level vs operator-basis closure.**
-   - Concern: the no-go closes the minimal-ECH subset via one-loop channels, not an exhaustive
-     operator basis. The Jackiw–Pi CS and parity-odd 4-fermion partners are now explicitly
-     closed (see above); the full dim-6 basis is scoped as follow-up.
-   - Disclosed: Intro Scope paragraph + four-route "illustrative, non-exhaustive" note;
-     abstract says "channel-level, not operator-level."
-   - Judgment call: **is channel-level closure + an ansatz-bounded route survey + explicit
-     parity-odd operator closures a sufficient PRD contribution, or does it need the full
-     dim-6 basis follow-up first?**
+   - Concern: the no-go closes the minimal-ECH subset channel-by-channel, not via an
+     exhaustive operator-level proof; the dim-6 parity-odd basis Fierz-by-Fierz lemma is
+     named open.
+   - Disclosed: abstract says "channel-level, not operator-level"; the Jackiw–Pi CS and
+     parity-odd 4-fermion partners are explicitly closed at operator level; the Fierz lemma
+     is the single scoped open item. Grok confirms "the one scoped item left open."
+   - Judgment call: **is channel-level closure + operator-basis completeness within minimal
+     ECH + explicit parity-odd operator closures a sufficient PRD "no-go" contribution,
+     expecting a real scope exchange on the one open Fierz lemma — or must that lemma be
+     closed first?**
 
-2. **Ansatz-dependence of R2/R3/R4 amplitude bounds.**
-   - Concern: Routes R2/R3 and the dark-energy mapping rest on a phenomenological on-shell
-     scaling ansatz "motivated by not derived from" Mercuri/Shapiro/Date, not a controlled EFT.
-   - Disclosed: §II.C / App B state the mapping is not a controlled EFT derivation; the 2026-07-02
-     note clarifies the ansatz is a conservative (worst-case) upper bound.
-   - Judgment call: **do Tier-III ansatz-level dimensional bounds + the explicit non-circularity
-     signpost meet PRD's rigor bar, or must they be labeled consistency checks rather than no-gos?**
+2. **Tier of the R2/R3/R4 amplitude bounds.**
+   - Concern: whether R2 (one-loop effective action), R3 (Immirzi running), and R4
+     (naturalness / explanatory-deficit) meet PRD's rigor bar for a "no-go."
+   - Disclosed + strengthened: R3 is now integrated from the real |γ|-dependent
+     Benedetti–Speziale β-function (not a schematic ansatz); R2 is one-loop-grounded
+     (Shapiro–Teixeira) and NDA-bounded; the ρ_Λ mapping is a single-scale NDA no-go with a
+     non-circularity signpost; R4 is correctly closed at the naturalness/explanatory-deficit
+     level. Grok reads the identical content as supporting the scoped claim.
+   - Judgment call: **do the NDA-bounded amplitude routes + the derived R3 running meet
+     PRD's rigor bar for a no-go, or should any route be labeled a consistency check?**
 
 3. **Companion-paper dependency + barrier-catalog framing.**
-   - Concern: observational inputs cite 4 unposted companions; the "13 mechanism-class" catalog
-     mixes first-principles results with naturalness/heuristic entries.
-   - Disclosed: `tab:companion_inputs` isolates every imported number as non-load-bearing;
-     `sec:barriers` defines "distinct mechanism-class" and flags B5/6/7/10/13 general, B9 heuristic.
-   - Judgment call: **coordinated-submission companion reliance + honest barrier-tiering — acceptable
-     now, or hold until companions post?** (venue/timing)
+   - Concern: observational inputs cite coordinated companions; the barrier catalog mixes
+     first-principles results with naturalness/heuristic entries.
+   - Disclosed: `tab:companion_inputs` isolates every imported number as non-load-bearing
+     (`\cite{BigBounceRepro}`, committed artifacts make imports referee-able now);
+     `sec:barriers` tiers the catalog (Table III labels only perturbation-transparency
+     Tier-I rigorous). Grok: "core claims do not load-bear on companion MCMC numbers."
+   - Judgment call: **coordinated-submission companion reliance + honest barrier-tiering —
+     acceptable now, or hold until companions post?** (venue/timing)
 
 ## What is NOT in question
 
-No genuinely-new correctness defect remains. The perturbation-transparency theorem, the four-route
-closure logic, the Jackiw–Pi CS closure, and the parity-odd 4-fermion closure are all truth-audited
-sound within their stated (channel-level, ansatz-bounded) scope. The 2026-07-02 operator-basis
-additions strengthen the operator coverage meaningfully without overclaiming.
+No genuinely-new correctness defect remains. The perturbation-transparency theorem, the
+four-route closure logic, the derived R3 |γ|-running, the single-scale NDA ρ_Λ no-go, and
+both operator-level parity-odd closures are all truth-audited sound within their stated
+(channel-level, minimal-ECH) scope. The Fig-1/theory-map −35/8 legend was the sole real
+POSTPOLISH item and is fixed (−35/16, v1A.0.112). A ChatGPT/openai flag of "Fig 3 H0=69.2
+vs 67.68" was verified STALE — the caption discloses 69.2 as a deliberately-high
+illustrative benchmark (the 2.7% is the H0 offset, not a torsion signal; closed v1A.0.85).
 
 ## Recommended venue / next step
 
-Submit to **PRD** with the scope (channel-level, two parity-odd operators now explicitly closed,
-ansatz-dependent Tier-III bounds, companion-dependency) flagged to the editor up front. Optional
-pre-submission strengthening: the full dim-6 operator-basis completion — but that is a distinct
+Submit to **PRD** (or JCAP) with the scope — channel-level, operator-basis complete within
+minimal ECH, one open Fierz lemma, coordinated-companion dependency — flagged to the editor
+up front. Expect a real scope exchange on the "no-go" label and the open Fierz lemma; that
+is normal refereeing, not a defect. The full dim-6 operator-basis completion is a distinct
 follow-up paper, not a defect fix.

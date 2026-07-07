@@ -1,58 +1,78 @@
 # Referee Handoff — P1B (MCMC / NaMaster / ALP Reproducibility Companion)
 
-`arxiv/paper1b_mcmc_companion.tex` · slug `paper-1b` · **v1B.0.95**
+`arxiv/paper1b_mcmc_companion.tex` · slug `paper-1b` · **current version: v1B.0.102 (2026-07-07)**
 
-## Status: SUBMIT-READY (converged 2026-07-01)
+## Headline result
 
-P1B has **CONVERGED** and moved off the human-referee-adjudication track onto the
-**SUBMIT-READY** track. The single most important pre-submission editorial
-decision — *cut or keep the overlap-uncorrected w0wa appendix* — has been made:
-**the appendix was CUT (v1B.0.95).**
+A coordinated reproducibility / consistency-check companion to Paper 1A. The one original
+contribution is a **derived ΔN_eff ~ 1e-43 bound** — i.e. the ECH/torsion sector does not spoil
+BBN/CMB (negligible). Supporting analyses: a stock-CAMB ΛCDM consistency proxy (MCMC), a
+NaMaster synthetic-sky B-mode validation, and a GR+ALP literature-data accommodation. The paper
+is scoped up front as a technical companion that offers **zero direct ECH-sector verification** —
+this framing is deliberate and answers the standalone-novelty objection.
 
-### What changed (v1B.0.94 → v1B.0.95)
-The entire exploratory w0wa (overlap-uncorrected supernova) analysis was
-surgically removed: Appendix A (`app:w0wa`) with its interpretation, caveats
-(a)–(e) and Table II (`tab:iter2_posterior`); the two main-body pointer
-paragraphs; the conclusions cross-check paragraph; the iter2 row of
-`tab:chain_datasets`; and all body/repro refs to the removed labels. Rationale:
-the w0wa material was the **sole basis of the prior Gemini REJECT** and is
-orthogonal to the paper's core ECH/torsion ΔN_eff + NaMaster + ALP results, so
-cutting it is zero-cost to the science. Core analyses untouched. 0 undef-refs,
-20 pages.
+The exploratory w0wa (overlap-uncorrected supernova) appendix was **cut** (at v1B.0.95) — it was
+orthogonal to the core ECH/torsion + NaMaster + ALP results and was the basis of an earlier
+Gemini REJECT; cutting it was zero-cost to the science. Core analyses untouched.
 
-### Post-cut external re-check verdict
-Targeted external re-check after the cut returned **Gemini ACCEPT** and
-**Grok MAJOR REVISIONS**, with **0 genuinely-new findings** surviving
-truth-audit. The Gemini REJECT is gone (its basis was removed). Grok's residual
-MAJOR is a **subjective companion-note venue opinion** (plus re-flags of
-already-disclosed, in-scope content) — not a correctness defect. The author can
-address it in the cover letter, not the manuscript.
+## Convergence status
 
-## Residual objection a human referee / cover letter should adjudicate
+P1B has reached the LLM-refereeing floor: **0 genuinely-new real findings** across the FINAL
+(2026-07-05) and POSTPOLISH (2026-07-06) truth-audited EXT+API rounds
+(`project-context/peer-reviews/FINAL_SIGNOFF_AUDIT_2026-07-05.md`). On the identical v1B.0.102
+PDF the verdicts span the full range: **grok-4.3 (API) MINOR REVISIONS**; **Grok (EXT) / Gemini
+MAJOR REVISIONS**; **ChatGPT REJECT and openai gpt-5.5 MAJOR REVISIONS**. Every REJECT/MAJOR
+rests on a **standalone-novelty / venue** judgment or a disclosed limitation — the exact
+objection a *companion* framing answers — not a factual error. Grok verifies the ΔN_eff number
+independently (1.68e-43, 3 sig-figs) and calls the derivation "the standout original
+contribution"; Gemini concedes it is "structurally supported by the analytic first-principles
+derivation." No correctness defect survives truth-audit.
 
-**Scope-vs-venue: is a reproducibility/consistency-check companion a standalone
-PRD article, or supplementary to Paper 1A?** (Grok's MAJOR, venue-opinion)
-   - Concern: the paper validates a stock-CAMB ΛCDM proxy + synthetic NaMaster
-     pipeline + a GR+ALP literature-data accommodation, not the ECH/torsion
-     sector; "adjacent cross-check, not independent evidence."
-   - Disclosed: retitled and scoped up front (v87) as a technical
-     reproducibility / consistency-check companion; the abstract's "Scope, stated
-     up front" paragraph and §III both state the analyses offer zero direct
-     ECH-sector verification.
-   - Adjudication: a **subjective venue/scope opinion**, not a defect. Best framed
-     in the cover letter as a **PRD companion / supplementary to Paper 1A** (or an
-     ApJS reproducibility note). No manuscript change required to submit.
+> Integrity note (per the 2026-07-04 verifiable-review reset): this paper is **not** dispositioned
+> as "CONVERGED / Gemini ACCEPT." The honest current state is a coordinated companion at the
+> LLM-refereeing floor with a live standalone-novelty/venue objection from the harshest referees,
+> handed to a human referee / cover-letter decision.
+
+## Recurring objections a human referee / cover letter should adjudicate
+
+1. **Scope-vs-venue: is a reproducibility/consistency-check companion a standalone PRD article,
+   or supplementary to Paper 1A?** (the dominant objection)
+   - Concern: the paper validates a stock-CAMB ΛCDM proxy + synthetic NaMaster pipeline + a
+     GR+ALP literature accommodation, not the ECH/torsion sector directly; "adjacent cross-check,
+     not independent evidence."
+   - Disclosed: retitled and scoped up front as a technical reproducibility / consistency-check
+     companion; the abstract's "Scope, stated up front" paragraph and §III both state the analyses
+     offer zero direct ECH-sector verification.
+   - Options: **(a)** post as a coordinated companion to Paper 1A (current plan,
+     `SUBMISSION_NOTE.md` — reciprocal arXiv-ID swap); **(b)** merge the ΔN_eff derivation +
+     reproducibility material into P1A as appendices and drop P1B; **(c)** route to a methods venue
+     (ApJS reproducibility note). The standalone-novelty REJECT is answered by (a) or (b), not by
+     shipping P1B as a standalone PRD physics paper. **This is a pure structure call for the author.**
+
+2. **ΔN_eff derivation rigor.**
+   - Concern: the ΔN_eff bound is "only dimensional power-counting; drops sign/spin/flavor structure."
+   - Disclosed: the paper labels it a first-principles **order-of-magnitude** estimate. Grok
+     (EXT+API): "parametric estimate … standard and sufficient for the order-of-magnitude claim,"
+     and independently reproduces 1.68e-43. Disclosed as OOM.
+
+3. **NaMaster synthetic-only validation + ALP consistency-check scope.**
+   - Concern: NaMaster validation is on foreground-free synthetic skies only (cannot break the
+     β–α degeneracy); the ALP check uses a Gaussian summary likelihood of a single published β.
+   - Disclosed: the paper explicitly concedes both ("foregrounds absent by construction"; "the
+     author admits this summary approximation omits E/B covariance"). Grok: "explicit statement …
+     correct and important" / "balanced and appropriately modest." Disclosed limitations.
 
 ## What is NOT in question
-No genuinely-new correctness defect remains. With the w0wa appendix cut, the
-remaining null/consistency results are truth-audited sound within their
-disclosed scope. The NaMaster synthetic-sky validation (foreground-free +
-β–α degeneracy scope note), the honestly-quantified ALP tuning (25×/100×), and
-the ΔN_eff null-consistency proxy are all labeled by-design-limited, not hidden
-errors.
+
+No genuinely-new correctness defect remains. With the w0wa appendix cut, the remaining
+null/consistency results are truth-audited sound within their disclosed scope: the NaMaster
+synthetic-sky validation (foreground-free + β–α degeneracy scope note), the honestly-quantified
+ALP tuning (Table IV: 13% posterior mass, ~25×/100× tuning), and the ΔN_eff null-consistency
+bound are all labeled by-design-limited, not hidden errors.
 
 ## Recommended venue / next step
-**Submit-ready alongside P4/P5.** In the cover letter, frame P1B as a PRD
-companion / supplementary reproducibility note to Paper 1A, and note the Grok
-MAJOR is an addressed venue/scope opinion. No further science work is gated on
-submission.
+
+**Coordinated companion to Paper 1A** (or fold into P1A as appendices). In the cover letter, frame
+P1B as a PRD companion / supplementary reproducibility note to Paper 1A, and note the
+standalone-novelty MAJOR/REJECT is an addressed venue/scope opinion. The standalone-vs-fold
+decision is the single structural call the author must make; no further science work is gated on it.
