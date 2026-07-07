@@ -4,10 +4,10 @@ ARXIV SUBMISSION METADATA — P1A
 title:   Channel-Level Amplitude Closure of Four Enumerated Minimal
          Einstein--Cartan--Holst Dark-Energy Routes Under Stated Assumptions,
          and Perturbation Transparency for Scalar Matter
-version: v1A.0.110
-bundle:  arxiv_p1a_v1A.0.110.tar.gz
-pages:   39
-pdf_md5: 94f42aab560d4a4c96f9d6c1995d27fa
+version: v1A.0.111
+bundle:  arxiv_p1a_v1A.0.111.tar.gz
+pages:   37
+pdf_md5: bdb385c57ce3a856b3311cd30fa247b8
 main_file: paper1a_ech_nogo.tex
 primary_category: gr-qc
 cross_lists: astro-ph.CO, hep-th
@@ -25,11 +25,11 @@ other_files:
   paper1a_ech_nogo.bbl  (pre-built; arXiv-safe, no bibtex run needed)
 
 standalone_verify:
-  compile: pdflatex x3, exit 0 all passes (extract-and-recompile smoke test)
+  compile: pdflatex x4, exit 0 all passes (extract-and-recompile smoke test)
   undefined_refs: 0
   undefined_citations: 0
-  output_pages: 39
-  verified: 2026-07-06
+  output_pages: 37
+  verified: 2026-07-07
 
 =====================================================================
 SUBMISSION_NOTE — COORDINATED SUBMISSION (READ BEFORE POSTING)
@@ -46,7 +46,8 @@ insert those IDs into references.bib at the four "%% TODO-SUBMISSION: insert
 arXiv ID at submission" markers (add `eprint = "XXXX.XXXXX", archivePrefix =
 "arXiv"` to each of Golden2026P1b/P2/P3/P4), rerun bibtex + 3x pdflatex, rebuild
 the tarball, and submit P1A SAME DAY. No P1A prose change is required — the text
-already reads "companion, posted concurrently in the coordinated submission."
+already refers to each as a "companion~\cite{}" with one canonical coordinated-
+submission statement in the self-containment paragraph.
 
 The companion NUMBERS are already refereeable NOW without the companions posted:
 the underlying committed artifacts are cited via \cite{BigBounceRepro}

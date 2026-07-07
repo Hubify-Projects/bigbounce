@@ -1,7 +1,7 @@
 # SUBMISSION_NOTE — P1B ↔ P1A coordinated cross-reference
 
-**Paper:** P1B — `arxiv/paper1b_mcmc_companion.tex`, v1B.0.101 (22 pp)
-**Bundle:** `submissions/P1B/arxiv_p1b_v1B.0.101.tar.gz`
+**Paper:** P1B — `arxiv/paper1b_mcmc_companion.tex`, v1B.0.102 (22 pp)
+**Bundle:** `submissions/P1B/arxiv_p1b_v1B.0.102.tar.gz`
 **Status:** publication-ready. Content error-clean per internal full-source
 review (2026-07-05); the one concrete external quantitative item (reduced-M_Pl
 ΔN_eff convention) is fixed (v1B.0.100). Remaining external objections are

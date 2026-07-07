@@ -1,7 +1,7 @@
 # Cover Letter — Paper 2
 
 **Title:** Testing the Matter Bounce with Primordial Non-Gaussianity: A SPHEREx Sensitivity Recast with a MegaMapper Outlook
-**Source:** `research/focused_paper_source_integration/02_full_draft.tex` (v1.7.95, 34 pp)
+**Source:** `research/focused_paper_source_integration/02_full_draft.tex` (v1.7.98, 34 pp)
 **Suggested venue:** Physical Review D
 **Author:** Houston Golden (houston@hubify.com)
 

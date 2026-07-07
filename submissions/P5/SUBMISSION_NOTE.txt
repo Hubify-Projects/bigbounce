@@ -4,7 +4,7 @@ P5 SUBMISSION NOTE — COORDINATED SUBMISSION WITH PAPER IV
 
 Paper IV = the companion galaxy-chirality catalog paper in THIS repo:
   source:  pipelines/p2_chirality/chirality_catalog_paper.tex
-  bundle:  submissions/P4/arxiv_p4_v1.0.217.tar.gz  (or latest)
+  bundle:  submissions/P4/arxiv_p4_v1.0.220.tar.gz  (or latest)
 It is NOT an unwritten / unvettable manuscript. It is a finished companion
 paper at the Grok+Gemini external gate, submitting in the first wave.
 
