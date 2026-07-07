@@ -21,8 +21,11 @@ permutation null, with a block-bootstrap WLS template fit disfavoring a clean
 (p_eq > 0.6) is git-pre-specified in the generator script (not tuned post-hoc);
 the null holds across the high-confidence regime; a systematic battery brackets a
 step-function detection floor (A₉₅ between 1.0% and 1.5%); and — importantly — a
-GZ1-only sub-model trained on human labels alone recovers the same null
-(z ≈ −0.04).
+fully model-independent cross-check that uses the Galaxy Zoo 1 human CW/ACW votes
+directly as the chirality label (no CE-ResNet, no learned model anywhere in the
+label chain; N = 46,017 confident DESI-footprint spirals) recovers the same null
+(z = −0.54σ, rank-p = 0.67). This supersedes an earlier, weaker reduced-N
+GZ1-only-*model* cross-check (z ≈ −0.04) and is 3.08× more statistically powerful.
 
 ## Scope statement
 This is a **standalone observational null result**, not a detection and not a
@@ -42,8 +45,9 @@ not claimed as detections.
 2. **Pseudo-label independence.** ~66.5% of training labels derive from CE-ResNet
    predictions, so the shuffle nulls randomize the model's own outputs and do not
    by themselves rule out inherited large-scale structure. This is bounded by the
-   GZ1-only (human-label) null and the template-regression / cross-spectrum
-   diagnostics of Appendix D, and disclosed as a corollary limitation.
+   fully model-independent GZ1 human-vote null (z = −0.54σ, N = 46,017) and the
+   template-regression / cross-spectrum diagnostics of Appendix D, and disclosed as
+   a corollary limitation.
 
 ## The judgment for the referee
 The questions LLM referees flag but cannot fully adjudicate are: **(a) is the
