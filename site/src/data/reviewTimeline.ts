@@ -46,6 +46,29 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "CW2-ext-retest-P3-P1A-P1B-2026-07-08",
+    kind: "external-browser",
+    dateISO: "2026-07-08",
+    timePT: "Jul 8 · CW2 EXT re-test of the second closure wave (P3, P1A, P1B)",
+    title:
+      "CW2 EXT re-test (P3 v3.1.144 · P1A v1A.0.115 · P1B v1B.0.104) — all three collapse to REJECT/MAJOR/REJECT; no ACCEPT; the P3 reframe did not lift any reviewer",
+    papers: ["P1A", "P1B", "P3"],
+    summary:
+      "External browser re-test of the second closure wave, run in Houston's headed gstack browser with raw verbatim reviewer text + a screenshot saved and READ before every recorded verdict. Verdict matrix (ChatGPT/Grok/Gemini): P1A REJECT/MAJOR/REJECT · P1B REJECT/MAJOR/REJECT · P3 REJECT/MAJOR/REJECT. No ACCEPT anywhere. Against the FULL8 baseline (P3 REJ/MAJ/MAJ · P1A REJ/MAJ/MIN · P1B MAJ/MAJ/MAJ) every paper converged onto the same REJECT/MAJOR/REJECT shape: Grok held MAJOR across all three (P1A + P3 up one tier from REJECT, P1B held), Gemini hardened to REJECT across all three (up from MAJOR/MINOR), ChatGPT held or hardened to REJECT. The decisive P3 title reframe to a Multi-Survey Anomaly-Candidate Catalog of Reconstruction-Outlier Sources did NOT move any reviewer past MAJOR — Grok and ChatGPT re-flagged the same validated-catalog-grade heterogeneity and PRD-journal-fit concerns against the reframed title, and all three still class P3 as an astronomy-catalog / ML-methodology paper outside the core PRD scope. P1A and P1B majors are the same structural set (ansatz-level R2–R4 closure + naturalness-not-amplitude R4 for P1A; standalone-scope / merge-into-Paper-I(a) for P1B) — no genuinely-new real finding surfaced. Both Gemini legs (P1B, P3) hit the EXT7 shared-context tab-collapse (client minted a chat URL, adjacent tab overwrote it); each was re-run from a verified-clean fresh session and persisted (P1B e8e0b842, P3 8d9fd6cf). 9/9 legs harvested with raw verbatim text + screenshots, 0 failed legs, 0 fabricated.",
+    keyTakeaways: [
+      "3×3 from raw (ChatGPT/Grok/Gemini): P1A REJ/MAJ/REJ · P1B REJ/MAJ/REJ · P3 REJ/MAJ/REJ — no ACCEPT",
+      "P3 title reframe (Validated Sources → Anomaly-Candidate Catalog) did not lift any reviewer past MAJOR; Grok/ChatGPT re-flagged catalog-grade + PRD-fit on the reframed title",
+      "Grok held MAJOR ×3 (P1A/P3 up from REJECT), Gemini hardened to REJECT ×3, ChatGPT held/hardened REJECT ×3 — pattern-066 referee variance, no genuinely-new real finding",
+      "Both Gemini legs re-run after EXT7 shared-context tab-collapse; 9/9 harvested with raw text + screenshots, 0 failed, 0 fabricated",
+    ],
+    links: [
+      { label: "CW2 raw reviews + screenshots", href: `${PR}/EXT_real/CW2_2026-07-08` },
+      { label: "P3 ChatGPT raw", href: `${PR}/EXT_real/CW2_2026-07-08/P3_chatgpt.md` },
+      { label: "P1A Gemini raw", href: `${PR}/EXT_real/CW2_2026-07-08/P1A_gemini.md` },
+      { label: "P1B Grok raw", href: `${PR}/EXT_real/CW2_2026-07-08/P1B_grok.md` },
+    ],
+  },
+  {
     id: "CW-full8-closure-P3-P1A-P1B-2026-07-08",
     kind: "closure-wave",
     dateISO: "2026-07-08",
@@ -3587,6 +3610,20 @@ export const externalVerdictRounds: ExternalRoundVerdicts[] = [
       P5: ["MAJOR", "MINOR", "MAJOR"],
     },
     note: "CW re-test (P4/P5/P2 only). Verdict matrix (ChatGPT/Grok/Gemini): P4 MAJOR/MINOR/MINOR · P5 MAJOR/MINOR/MAJOR · P2 REJECT/MINOR/MINOR. No literal ACCEPT anywhere; results track the FULL8 baseline with per-round referee variance (P4 ChatGPT MAJOR = FULL8; P4 Gemini MINOR = FULL8; P5 ChatGPT MAJOR, P5 Gemini MAJOR; P2 ChatGPT REJECT with P2 Grok + Gemini both MINOR). P4 stays closest to convergence (Grok + Gemini both MINOR). Both Gemini legs (P5/P2) required re-submission after the EXT7 backend-drop (client minted a chat URL, server 404'd) — they persisted on a hard-reload retry; 9/9 legs harvested with raw verbatim text + screenshots, 0 failed legs, 0 fabricated. P1A/P1B/P3 not re-swept (NO_VERDICT carry-forward).",
+  },
+  {
+    roundId: "CW2-2026-07-08",
+    dateISO: "2026-07-08",
+    windowPT: "Jul 8 · headed browser, raw verbatim text + screenshot READ before every recorded verdict",
+    verdicts: {
+      P1A: ["REJECT", "MAJOR", "REJECT"],
+      P1B: ["REJECT", "MAJOR", "REJECT"],
+      P2: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P3: ["REJECT", "MAJOR", "REJECT"],
+      P4: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P5: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+    },
+    note: "CW2 re-test of the second closure wave (P3 v3.1.144, P1A v1A.0.115, P1B v1B.0.104). Verdict matrix (ChatGPT/Grok/Gemini): P1A REJECT/MAJOR/REJECT · P1B REJECT/MAJOR/REJECT · P3 REJECT/MAJOR/REJECT. No ACCEPT anywhere. Vs the FULL8 baseline (P3 ChatGPT-REJ/Grok-MAJ/Gemini-MAJ; P1A REJ/MAJ/MIN; P1B MAJ/MAJ/MAJ): every paper collapsed to the same REJECT/MAJOR/REJECT shape — Grok held MAJOR on all three (P1A/P3 up from REJECT, P1B held), Gemini hardened to REJECT on all three (up from MAJOR/MINOR), ChatGPT held/hardened to REJECT. The P3 title reframe to Anomaly-Candidate Catalog did NOT lift any reviewer past MAJOR — Grok/ChatGPT re-flagged the same validated-catalog-grade + PRD-journal-fit concerns against the reframed title; all three still class P3 as an astronomy-catalog paper outside PRD scope. Both Gemini legs (P1B, P3) hit the EXT7 shared-context tab-collapse, were re-run from a verified-clean fresh session, and persisted (P1B e8e0b842, P3 8d9fd6cf). 9/9 legs harvested with raw verbatim text + screenshots, 0 failed legs, 0 fabricated. P2/P4/P5 not re-swept (NO_VERDICT carry-forward). Raws in EXT_real/CW2_2026-07-08/.",
   },
 ];
 

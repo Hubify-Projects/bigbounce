@@ -1,0 +1,20 @@
+VERDICT: MAJOR REVISIONS
+
+ISSUES:
+[MAJOR] Abstract, Sec. IV (title and opening), and Sec. IV F: The phrase “channel-level amplitude closure” of four routes is applied uniformly, yet R4 is explicitly closed only by a naturalness/explanatory-deficit objection (requiring m_θ ∼ H_0 to obtain both β_obs and ρ_Λ), not by amplitude suppression or an operator-level prohibition; this conflates two qualitatively different categories of constraint and overstates the uniformity of the result.
+[MAJOR] Sec. II C (Eq. 6), Appendix B, and Sec. IV (Scope paragraph): The parity-odd operator is introduced as a phenomenological ansatz motivated by Mercuri-type constructions; the subsequent single-scale NDA argument that it forces ρ_ECH^Λ ∼ M_Pl^4 is a restatement of the cosmological-constant problem itself rather than a derivation that any specific ECH dynamics cannot source observed dark energy without new light scales or cancellations.
+[MAJOR] Sec. IV D–E (Eqs. 15–18 and the dimensionless ratio Eq. 16): The amplitude budgets for R2 and R3 rest on illustrative one-loop operators and chiral-count/running ansätze whose absolute normalizations are not fixed by a controlled UV completion (explicitly noted for the Shapiro–Teixeira Riccati system and for the Benedetti–Speziale β-function outside the GUT-scale window); while suppression appears under these choices, the routes are not thereby closed for arbitrary higher-order or non-perturbative corrections within minimal ECH.
+[MAJOR] Sec. IX (Barrier catalog) and Sec. X: Barrier 8 is stated to be subsumed by Barrier 14 (perturbation transparency), yet the catalog retains 14 historical entries while claiming 13 distinct mechanism-class constraints; several Foundations (A–G) are named with only schematic descriptions and cross-references rather than self-contained derivations, weakening the claim of 13 independent structural barriers.
+[MINOR] Sec. X (Statement and Proof): The Bianchi-identity decoupling of the Holst dual contraction from scalar/tensor perturbation equations is rigorously established for canonical scalar matter on the torsion-free branch, but the surrounding text repeatedly extrapolates the implication to “parity-sensitive channels” without reiterating the explicit exclusions (fermion spin density, propagating torsion, dynamical Immirzi, non-minimal couplings) at each use, risking over-generalization by readers.
+[MINOR] Title, abstract, and Sec. IV (Scope): The claim that the four routes are “basis-complete at the M_Pl-power-counting level within minimal ECH” is supported by the F1/F2 structural facts plus the Fierz-by-Fierz lemma (Appendix C), but the title and abstract do not foreground the repeated qualifications that this is neither a full diffeomorphism-invariant operator basis nor an exhaustive partition of all possible parity-odd operators; the scope limitation should be stated in the title/abstract at the same prominence as the closure claim.
+
+The central claim of channel-level closure under the paper’s explicitly labeled assumptions and power-counting completeness lemma is supported by the amplitude estimates and naturalness arguments given for the enumerated routes, but the strength of that support is markedly weaker for R2–R4 than for R1 and does not rise to the level of a general no-go theorem for minimal ECH dark energy.
+
+Explore Loop Quantum Cosmology bounce dynamics
+Investigate Nieh-Yan invariant topological terms
+Clarify R4 naturalness objection distinction
+
+
+
+
+Expert
