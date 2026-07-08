@@ -2,9 +2,9 @@
 
 **Canonical status file. When in doubt about Paper 4, read this.**
 
-## ✅ CURRENT AUTHORITATIVE STATUS — 2026-07-04 (VERIFIED HONEST BOARD — SUPERSEDES all "ACCEPT / converged / 99 / green-light" entries below)
+## ✅ CURRENT AUTHORITATIVE STATUS — 2026-07-08 · v1.0.224 (deep-tier Gemini MAJOR closure: added training-data provenance table + probabilistic-calibration paragraph with ECE lower bound from committed GZ1 confusion matrix; md5 521b5bbb / 32 pp; supersedes v1.0.223)
 
-**⚠️ RETRACTION.** The June "EXT22 / universal 3/3 ACCEPT / FROZEN — readiness 98/99" entries below are **RETRACTED as UNVERIFIED** (sub-agent EXT sweeps, no raw reviewer text, dropped ChatGPT leg, no INT; Houston caught 2026-07-03). Preserved below as audit trail only. **P4 is NOT converged.** (The June "first ChatGPT ACCEPT in campaign" claim for P4 is part of the retracted, unverified record.)
+**⚠️ RETRACTION (2026-07-04 verified board still stands for review status).** The June "EXT22 / universal 3/3 ACCEPT / FROZEN — readiness 98/99" entries below are **RETRACTED as UNVERIFIED** (sub-agent EXT sweeps, no raw reviewer text, dropped ChatGPT leg, no INT; Houston caught 2026-07-03). Preserved below as audit trail only. **P4 is NOT converged.** (The June "first ChatGPT ACCEPT in campaign" claim for P4 is part of the retracted, unverified record.)
 
 **VERIFIED BOARD (RS24-VERIFIED / RS25, 2026-07-03→04; raw evidence in `project-context/peer-reviews/EXT_real/`):**
 - **P4 — v1.0.212:** ChatGPT **REJECT** / Grok **MAJOR** / Gemini **MINOR**. Readiness **76–80** (recut, NOT 98/99).

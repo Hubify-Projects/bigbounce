@@ -10,9 +10,9 @@ headline_pct: 99 — P-round complete 2026-06-20; tarball paper2_arxiv_v1.7.71.t
 submission_status: submission-ready (R42 Wave 14-AAA LANDED -- P2-OA-B4 FULL HARD FIX: Data-and-Code-Availability URL and release tag updated from v1.7.0 to v1.7.9-paper2 in 02_full_draft.tex line 381; git tag v1.7.9-paper2 pushed to remote. Prior: R42 Wave 14-VV LANDED -- P2 v1.7.8->v1.7.9 m3 Planck PR4/NPIPE f_NL citation FULL HARD FIX (Jung2025PlanckPR4fNL, f_NL=-0.1+/-5.0) + m8 P1 SPT-3G INVALID. Prior: Wave 14-AA LANDED — two Gemini-3.1-Pro P2 cheap-fast MAJORS closed in one bundle: P2-CM-M1 sigma_theory={0.5,1.0,2.0} prior-sweep promoted as PRIMARY Bayes-factor headline with delta-prior demoted to "theoretical maximum only" footnote, and P2-CM-M2 b_phi cross-term language fix dropping the misleading "bispectrum nearly independent of b_phi" claim with explicit Delta b(k) proportional to f_NL * b_phi / k^2 Dalal-Slosar form + Heinrich+2023 universality cite + 30%/50% degradation caveats; PDF recompiled clean on Pod 3 2026-05-02 04:30 PDT under v1.7.8)
 ---
 
-## ✅ CURRENT AUTHORITATIVE STATUS — 2026-07-04 (VERIFIED HONEST BOARD — SUPERSEDES all "ACCEPT / converged / 99 / green-light" entries below)
+## ✅ CURRENT AUTHORITATIVE STATUS — 2026-07-08 · v1.7.104 (deep-Grok MAJOR closure: added Appendix A vertex-algebra display with collapsed degree-9 polynomial + epsilon-order-grouped squeezed contributions, transcribed from committed sympy script; md5 c5d4523a / 36 pp; supersedes v1.7.103)
 
-**⚠️ RETRACTION.** The June "EXT22 CLEAN / R40+EXT20 ACCEPT — readiness 98/99" entries below are **RETRACTED as UNVERIFIED** (sub-agent EXT sweeps, no raw reviewer text, dropped ChatGPT leg, no INT; Houston caught 2026-07-03). Preserved below as audit trail only. **P2 is NOT converged.**
+**⚠️ RETRACTION (2026-07-04 verified board still stands for review status).** The June "EXT22 CLEAN / R40+EXT20 ACCEPT — readiness 98/99" entries below are **RETRACTED as UNVERIFIED** (sub-agent EXT sweeps, no raw reviewer text, dropped ChatGPT leg, no INT; Houston caught 2026-07-03). Preserved below as audit trail only. **P2 is NOT converged.**
 
 **VERIFIED BOARD (RS24-VERIFIED / RS25, 2026-07-03→04; raw evidence in `project-context/peer-reviews/EXT_real/`):**
 - **P2 — v1.7.88:** ChatGPT **REJECT** / Grok **MAJOR** / Gemini **MAJOR**. Readiness **76–80** (recut, NOT 96/99).

@@ -115,9 +115,9 @@ After 11 autoloop fires + v3.2 meta-reviewer + persistence tracker: **5 LOAD-BEA
 |-------|---------|---------|------|--------|-----------|--------------------------|
 | **P1A** | v1A.0.104 | REJECT | MAJOR | MAJOR | 76–80 | ansatz-tier sufficiency (venue) |
 | **P1B** | v1B.0.99 | REJECT | MAJOR | REJECT | 76–80 | methodological-companion: standalone vs supplementary (venue) |
-| **P2**  | v1.7.88  | REJECT | MAJOR | MAJOR | 76–80 | conditional single-source recast + unresolved factor-of-2 (real open item) |
+| **P2**  | v1.7.104 | REJECT | MAJOR | MAJOR | 76–80 | conditional single-source recast + unresolved factor-of-2 (real open item); v1.7.104 adds Appendix A vertex-algebra display (deep-Grok MAJOR closure) |
 | **P3**  | v3.1.136 | REJECT | MAJOR | REJECT | 76–80 | process-volume-catalog scope + sequestered exploratory eROSITA (venue) |
-| **P4**  | v1.0.212 | REJECT | MAJOR | MINOR | 76–80 | ~47% ℓ=1 residual disclosed (venue/scope) |
+| **P4**  | v1.0.224 | REJECT | MAJOR | MINOR | 76–80 | ~47% ℓ=1 residual disclosed (venue/scope); v1.0.224 adds provenance table + ECE lower bound (deep-Gemini MAJOR closure); 32 pp |
 | **P5**  | v0.1.101 | REJECT | MINOR | MAJOR | 76–80 | in-prep Paper-IV dependency (venue) |
 
 Content error-clean, edit loop exhausted, cover letters drafted. Raw evidence: `project-context/peer-reviews/EXT_real/`.

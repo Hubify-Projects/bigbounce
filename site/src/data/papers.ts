@@ -35,6 +35,8 @@ export interface Paper {
   preprintId: string;
   /** Short artifact line: size · pages · date. No changelog. */
   pdfMeta: string;
+  /** Ordered list of per-version change notes, most recent first. */
+  changelog?: string[];
   artifacts: Array<{
     label: string;
     href: string;
@@ -200,7 +202,7 @@ export const papers: Paper[] = [
     slug: "paper-2",
     number: "2",
     title: "Testing the Matter Bounce with Primordial Non-Gaussianity: A SPHEREx Sensitivity Recast with a MegaMapper Outlook",
-    version: "v1.7.103",
+    version: "v1.7.104",
     lastUpdated: "2026-07-08",
     tldr: "Resolves the long-standing Cai–Li factor-of-two: the matter-bounce squeezed local non-Gaussianity is f_NL = −35/16 = −2.1875 (not −35/8), and recasts published SPHEREx forecasting power onto it — ~2.6–2.75σ optimistic, ~1.3–2.75σ realistic — as a bounce-vs-inflation discriminator. An independent in-house tree-level multi-tracer bispectrum Fisher validates the recast (reproduces Heinrich σ≈0.7 to 2–11%, r_eff≈0.99 for the bounce template), now extended to the full redshift-space (RSD) tree bispectrum: σ tightens to 0.42–0.45 (+34.7% vs real-space), r_eff≈0.99 persists, and the unmarginalized −35/16 significance rises to 4.9–5.2σ — retiring the 'real-space monopole only' limitation.",
     path: publicationPath({}),
@@ -234,10 +236,13 @@ export const papers: Paper[] = [
       "arXiv endorsement + submission — gated behind a reviewer ACCEPT (packets are ready; reviews are not passed)",
     ],
     preprintId: "HUBIFY-2026-002",
-    pdfMeta: "PDF · 36 pp · v1.7.103 · updated Jul 8, 2026 · md5 cca2e95f",
+    pdfMeta: "PDF · 36 pp · v1.7.104 · updated Jul 8, 2026 · md5 c5d4523a",
+    changelog: [
+      "Appendix A vertex-algebra display (v1.7.104, deep-Grok MAJOR): added the collapsed exact vertex-sum degree-9 polynomial + the epsilon-order-grouped squeezed contributions (fNL|eps^1=-5/2, |eps^2=+5/16, |eps^3=0 -> -35/16), both transcribed verbatim from the committed sympy certification script; no new math, -35/16 unchanged.",
+    ],
     artifacts: [
-      { label: "Read PDF", href: "/papers/02_full_draft_v1.7.103.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/02_full_draft_v1.7.103.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/02_full_draft_v1.7.104.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/02_full_draft_v1.7.104.pdf", kind: "secondary", download: true },
       {
         label: "LaTeX source",
         href: "https://github.com/Hubify-Projects/bigbounce/blob/main/research/focused_paper_source_integration/02_full_draft.tex",
@@ -312,8 +317,8 @@ export const papers: Paper[] = [
     slug: "paper-4",
     number: "4",
     title: "A Null Chirality Dipole in 8.5 Million DESI Galaxies from Equivariant Deep Learning",
-    version: "v1.0.223",
-    lastUpdated: "2026-07-07",
+    version: "v1.0.224",
+    lastUpdated: "2026-07-08",
     tldr: "Classifies 8.47M galaxies for spiral handedness with a rotation-equivariant ViT ensemble and finds a null real-space chirality dipole (+0.41σ, rank-p=0.31; A_dip < 6.8×10⁻³ at 95% UL) — the earlier −0.122σ subsample-mask null was withdrawn in v1.0.166 after a provenance audit.",
     path: [
       { label: "Draft complete", state: "done" },
@@ -343,7 +348,7 @@ export const papers: Paper[] = [
         note: "Gated behind a reviewer ACCEPT · endorsement Houston-only",
       },
     ],
-    pages: "31",
+    pages: "32",
     refs: "46",
     readiness: 80,
     statusVariant: "amber",
@@ -377,10 +382,13 @@ export const papers: Paper[] = [
       "arXiv endorsement + submission — gated behind a reviewer ACCEPT (packets are ready; reviews are not passed)",
     ],
     preprintId: "HUBIFY-2026-004",
-    pdfMeta: "PDF · 31 pp · v1.0.223 · updated Jul 7, 2026 · md5 a9b85166 · 34 MB",
+    pdfMeta: "PDF · 32 pp · v1.0.224 · updated Jul 8, 2026 · md5 521b5bbb · 34 MB",
+    changelog: [
+      "Deep-tier Gemini MAJOR closure (v1.0.224): added self-contained training-data provenance table + a probabilistic-calibration paragraph quantifying a real top-label ECE lower bound from the committed GZ1 confusion matrix (mean-conf 0.951 vs 3-class acc 0.5871 -> ECE>=0.36; chirality 0.6991 -> >=0.25), proven invariant to any monotone recalibration; surfaced existing committed data, no number changed.",
+    ],
     artifacts: [
-      { label: "Read PDF", href: "/papers/chirality_catalog_paper_v1.0.223.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/chirality_catalog_paper_v1.0.223.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/chirality_catalog_paper_v1.0.224.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/chirality_catalog_paper_v1.0.224.pdf", kind: "secondary", download: true },
       {
         label: "LaTeX source",
         href: "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/chirality_catalog_paper.tex",

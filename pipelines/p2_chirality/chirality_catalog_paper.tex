@@ -52,7 +52,20 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.223}
+\newcommand{\paperVersion}{v1.0.224}
+% v1.0.224 (2026-07-08 — DEEP-tier Gemini-DeepThink MAJOR closure (2 items, both editable via
+%   existing committed artifacts; NO number changed): (1) training-provenance documentation gap —
+%   added self-contained Table~\ref{tab:training_provenance} to Appendix~B consolidating the full
+%   label provenance + split semantics (GZ1 6,637 / CE-ResNet 17,153 / synthetic 2,000; 25,790
+%   source manifest; n_train 21,293 / n_val 5,323; 66.5% CE-ResNet fraction; 93.7%/94.9% accuracy),
+%   all transcribed from committed manifest c17_item13_training_semantics.json so nothing depends on
+%   a truncated/external description; (2) NN-calibration rigor-add — added "Probabilistic calibration
+%   quantification" paragraph computing a real top-label ECE LOWER BOUND from the committed GZ1
+%   confusion matrix: mean-conf 0.951 vs 3-class acc 0.5871 -> gap 0.364 (ECE>=0.36); vs chirality
+%   acc 0.6991 -> 0.252 (ECE>=0.25); proved invariant-to-monotone-recalibration null (argmax counts +
+%   ranking cut). Both are surfaced existing calibration data, not new experiments. Remaining Gemini
+%   MAJOR (~47% unmodeled l=1 residual) is the SAME disclosed forward-model limitation (Sec IV.D,
+%   Appendix D) — pod-deferred, a-fortiori bound holds; no genuinely-new finding this round.)
 % v1.0.223 (2026-07-07 — FULL8 EXT round closure (Grok MINOR REVISIONS, Gemini MINOR REVISIONS,
 %   ChatGPT MAJOR REVISIONS). All edits are presentation/visibility only; NO science number changed.
 %   (G1) Grok: abstract already states +0.41sigma (p=0.31) side-by-side — no edit needed (satisfied).
@@ -550,7 +563,7 @@
 %   the established two-step provenance gate.)
 % v1.0.171->172 (2026-06-10 — EXT1 closure wave restamp: recompile + mirror bundle;
 %   Data Availability hash pinned to the v1.0.172 stamp commit per provenance gate.)
-\newcommand{\paperTimestamp}{July 7, 2026}
+\newcommand{\paperTimestamp}{July 8, 2026}
 % v1.0.217->218 (2026-07-05 — DATA-UNLOCK: edge-on-ISOLATED argmax tie-break coherence
 %   now COMPUTED (was pod/data-lab-deferred). Join catalog_production (class_eq/RA/Dec) to
 %   committed spiral_morphology_dr8 b/a on dr8_id; edge-on (b/a<0.30) borderline population
@@ -1150,6 +1163,32 @@ The canonical analysis-footprint declaration is the $N_{\rm all}\!\geq\!1$ pixel
 \paragraph{Training.}
 The model is trained with AdamW optimization (head learning rate $3\!\times\!10^{-4}$, encoder learning rate $2\!\times\!10^{-5}$, weight decay 0.02), batch size~64, cosine annealing warm-restart schedule ($T_0 = 10$, $T_{\rm mult} = 2$). Early stopping with patience 15 monitors best validation \emph{accuracy} within 80 epochs; the production model's best checkpoint was at epoch~79. The reported 93.7\% accuracy is the best-epoch \emph{three-class} (CW/CCW/\NS) validation accuracy on the un-augmented held-out random 80/20 split ($n_{\rm val}=5{,}323$ of $26{,}616$; flip augmentation and the equivariance loss act on training batches only), and 94.9\% is the \emph{CW per-class} validation accuracy on the same split (CCW $91.3\%$, \NS{} $99.4\%$; provenance: \artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/c17\_item13\_training\_semantics.json}). For binary CW/CCW discrimination: 93.2\% accuracy, CW recall 93.8\%, CCW recall 92.6\% (1.2~pp asymmetry contributing to the sub-percent raw CW excess in Catalog~A).
 
+\paragraph{Training-data provenance.}
+For full reproducibility we consolidate the complete training-label provenance in Table~\ref{tab:training_provenance} (all entries transcribed from the committed manifest \artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/c17\_item13\_training\_semantics.json}, itself a provenance recovery from the production training script \artifact{pipelines/p2\_chirality/train\_v2\_fast.py} and the released \texttt{v2\_bias\_audit.json} results artifact; no numbers are invented). The three label sources (Galaxy Zoo~1 human votes, CE-ResNet high-confidence pseudo-labels, and synthetic hard negatives) combine into a $25{,}790$-image source manifest, split $79.4/20.6$ into a training and a never-augmented validation partition \emph{before} any augmentation; horizontal-flip augmentation is applied to the training split only, taking the training partition from its pre-augmentation count to $n_{\rm train}=21{,}293$ while the validation split remains $n_{\rm val}=5{,}323$ (the $826$-image difference between the $25{,}790$ source manifest and the $26{,}616$ combined pool is exactly this training-only flip augmentation). The reported $93.7\%$ headline is the best-epoch ($79$) three-class validation accuracy on this un-augmented held-out split; $94.9\%$ is the CW per-class validation accuracy on the same split (CCW $91.3\%$, \NS{} $99.4\%$). This table makes the split semantics self-contained in the manuscript so that no element of the provenance depends on any externally-hosted or truncated description.
+
+\begin{table}[t]
+\caption{\label{tab:training_provenance}Training-data provenance and split semantics (all values from the committed manifest \texttt{c17\_item13\_training\_semantics.json}). ``pseudo-label'' denotes CE-ResNet~\cite{Jia:2023} model predictions; ``human'' denotes Galaxy Zoo~1~\cite{Lintott:2008} $>\!70\%$-vote labels; ``synthetic'' denotes artificial \NS{} hard negatives. Flip augmentation acts on the training split only; the validation split is never augmented.}
+\begin{ruledtabular}
+\begin{tabular}{lr}
+\textbf{Quantity} & \textbf{Value} \\
+\hline
+GZ1 human labels ($>\!70\%$ vote) & $6{,}637$ \\
+CE-ResNet pseudo-labels & $17{,}153$ \\
+Synthetic \NS{} hard negatives & $2{,}000$ \\
+Source manifest (pre-aug.) & $25{,}790$ \\
+CE-ResNet fraction of labels & $66.5\%$ \\
+Train / val source split & $79.4/20.6$ \\
+$n_{\rm train}$ (post flip-aug.) & $21{,}293$ \\
+$n_{\rm val}$ (never augmented) & $5{,}323$ \\
+Combined pool (train${+}$val) & $26{,}616$ \\
+Best epoch / max epochs & $79/80$ \\
+3-class val.\ accuracy & $93.7\%$ \\
+CW/CCW/\NS{} per-class acc. & $94.9/91.3/99.4$ \\
+GZ1 chirality acc.\ (floor) & $69.91\%$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
 \paragraph{Flip-equivariance consistency loss.}
 The loss combines class-weighted cross-entropy $\mathcal{L}_{\rm CE}$ with a flip-equivariance consistency term:
 \begin{equation}
@@ -1195,6 +1234,9 @@ Table~\ref{tab:gz1_confusion} reports the three-class confusion matrix of the eq
 \end{tabular}
 \end{ruledtabular}
 \end{table}
+
+\paragraph{Probabilistic calibration quantification.}
+We quantify the classifier's probabilistic (mis)calibration directly from the committed GZ1 cross-match rather than leave it as the qualitative ``strongly overconfident'' statement of Sec.~\ref{sec:results}. Against the disjoint GZ1 human-label sample the catalog-wide mean winning-class confidence ($\overline{p_{\rm eq}}=0.951$; Sec.~\ref{sec:results}) exceeds the realized three-class accuracy ($0.5871$; Table~\ref{tab:gz1_confusion}) by a top-label confidence--accuracy gap of $\overline{p_{\rm eq}}-\mathrm{acc}_3 = 0.951-0.5871 = 0.364$, and exceeds the spiral-chirality accuracy ($0.6991$) by $0.951-0.6991=0.252$. Because the top-label Expected Calibration Error is $\mathrm{ECE}=\sum_b (n_b/N)\,|\,\overline{p}_b-\mathrm{acc}_b|\ge|\,\overline{p_{\rm eq}}-\mathrm{acc}\,|$ (Jensen; the binned mean of $|\cdot|$ bounds $|\cdot|$ of the means), these gaps are \emph{lower bounds} on the top-label ECE: $\mathrm{ECE}_{3\text{-class}}\gtrsim0.36$ and $\mathrm{ECE}_{\rm chirality}\gtrsim0.25$. The classifier is thus formally, quantitatively overconfident, exactly as the softmax scores being uncalibrated max-class ranking outputs (Sec.~\ref{sec:notation}) predicts. This is not a threat to the null for a reason the analysis structure makes exact and that no post-hoc Platt/temperature rescaling would alter: (i) the primary real-space dipole estimator consumes \emph{hard argmax} CW/CCW counts, and any monotone recalibration $p\mapsto\sigma(p)$ leaves the argmax --- hence every per-pixel count and the dipole amplitude/direction --- invariant; (ii) the $p_{\rm eq}>0.6$ cut is a \emph{ranking} selector, and any monotone recalibration merely relabels the numerical threshold that isolates the same high-confidence subsample, whose null verdict is already shown stable across the entire $p_{\rm eq}\!\in\!\{0.6,0.7,0.8\}$ sweep (Sec.~\ref{sec:dipole}); and (iii) the load-bearing external-truth validation propagated into the science is the calibration-free GZ1 chirality accuracy ($69.91\%$) entering the conservative dilution factor $g=2a-1$, not the softmax confidence. A full per-bin reliability diagram would refine the exact ECE value above the lower bound quoted here, but it cannot change the null conclusion, which is by construction invariant to any monotone recalibration of $p_{\rm eq}$.
 
 \section{Auxiliary Dipole Diagnostics}
 \label{sec:app_aux}
