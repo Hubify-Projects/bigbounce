@@ -200,7 +200,7 @@ export const papers: Paper[] = [
     slug: "paper-2",
     number: "2",
     title: "Testing the Matter Bounce with Primordial Non-Gaussianity: A SPHEREx Sensitivity Recast with a MegaMapper Outlook",
-    version: "v1.7.100",
+    version: "v1.7.102",
     lastUpdated: "2026-07-07",
     tldr: "Resolves the long-standing Cai–Li factor-of-two: the matter-bounce squeezed local non-Gaussianity is f_NL = −35/16 = −2.1875 (not −35/8), and recasts published SPHEREx forecasting power onto it — ~2.6–2.75σ optimistic, ~1.3–2.75σ realistic — as a bounce-vs-inflation discriminator. An independent in-house tree-level multi-tracer bispectrum Fisher now validates the recast (reproduces Heinrich σ≈0.7 to 2–11%, r_eff≈0.99 for the bounce template), retiring the 'no independent Fisher' concession.",
     path: publicationPath({}),
@@ -233,10 +233,10 @@ export const papers: Paper[] = [
       "arXiv endorsement + submission — gated behind a reviewer ACCEPT (packets are ready; reviews are not passed)",
     ],
     preprintId: "HUBIFY-2026-002",
-    pdfMeta: "PDF · 35 pp · v1.7.100 · updated Jul 7, 2026 · md5 55d85fe5",
+    pdfMeta: "PDF · 35 pp · v1.7.102 · updated Jul 7, 2026 · md5 266118c1",
     artifacts: [
-      { label: "Read PDF", href: "/papers/02_full_draft_v1.7.101.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/02_full_draft_v1.7.101.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/02_full_draft_v1.7.102.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/02_full_draft_v1.7.102.pdf", kind: "secondary", download: true },
       {
         label: "LaTeX source",
         href: "https://github.com/Hubify-Projects/bigbounce/blob/main/research/focused_paper_source_integration/02_full_draft.tex",
@@ -311,7 +311,7 @@ export const papers: Paper[] = [
     slug: "paper-4",
     number: "4",
     title: "A Null Chirality Dipole in 8.5 Million DESI Galaxies from Equivariant Deep Learning",
-    version: "v1.0.222",
+    version: "v1.0.223",
     lastUpdated: "2026-07-07",
     tldr: "Classifies 8.47M galaxies for spiral handedness with a rotation-equivariant ViT ensemble and finds a null real-space chirality dipole (+0.41σ, rank-p=0.31; A_dip < 6.8×10⁻³ at 95% UL) — the earlier −0.122σ subsample-mask null was withdrawn in v1.0.166 after a provenance audit.",
     path: [
@@ -376,10 +376,10 @@ export const papers: Paper[] = [
       "arXiv endorsement + submission — gated behind a reviewer ACCEPT (packets are ready; reviews are not passed)",
     ],
     preprintId: "HUBIFY-2026-004",
-    pdfMeta: "PDF · 31 pp · v1.0.222 · updated Jul 7, 2026 · md5 07bcf358 · 34 MB",
+    pdfMeta: "PDF · 31 pp · v1.0.223 · updated Jul 7, 2026 · md5 a9b85166 · 34 MB",
     artifacts: [
-      { label: "Read PDF", href: "/papers/chirality_catalog_paper_v1.0.222.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/chirality_catalog_paper_v1.0.222.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/chirality_catalog_paper_v1.0.223.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/chirality_catalog_paper_v1.0.223.pdf", kind: "secondary", download: true },
       {
         label: "LaTeX source",
         href: "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/chirality_catalog_paper.tex",
@@ -400,7 +400,7 @@ export const papers: Paper[] = [
     slug: "paper-5",
     number: "5",
     title: "Environmental Dependence of Spiral Chirality: A DESIVAST Three-Algorithm Void Null Test on 56,981 DESI DR1 Spirals, with a Secondary Tidal-Tensor Cross-Check",
-    version: "v0.1.106",
+    version: "v0.1.107",
     lastUpdated: "2026-07-07",
     tldr: "Cross-matches P4's spiral handedness with DESI large-scale structure (791,635 matched spirals + 56,981 void spirals) and finds galaxy chirality is statistically independent of cosmic-web environment — constraining environment-coupled parity models.",
     path: publicationPath({}),
@@ -434,10 +434,10 @@ export const papers: Paper[] = [
       "arXiv endorsement + submission — gated behind a reviewer ACCEPT (packets are ready; reviews are not passed)",
     ],
     preprintId: "HUBIFY-2026-005",
-    pdfMeta: "PDF · 37 pp · v0.1.106 · updated Jul 7, 2026 · md5 a8d51ae6",
+    pdfMeta: "PDF · 39 pp · v0.1.107 · updated Jul 7, 2026 · md5 1b569055",
     artifacts: [
-      { label: "Read PDF", href: "/papers/p5_desi_chirality_v0.1.106.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/p5_desi_chirality_v0.1.106.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/p5_desi_chirality_v0.1.107.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/p5_desi_chirality_v0.1.107.pdf", kind: "secondary", download: true },
       {
         label: "Pipeline + scripts",
         href: "https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p5_desi_chirality",
