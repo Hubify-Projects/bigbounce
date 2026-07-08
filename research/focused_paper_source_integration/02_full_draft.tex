@@ -32,6 +32,15 @@ A SPHEREx Sensitivity Recast with a MegaMapper Outlook}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
 \date{July 8, 2026}
+% v1.7.104 (2026-07-08 — DEEP-tier Grok-Heavy MAJOR closure: Appendix~A vertex algebra "not fully
+%   displayed". Added the two intermediate objects the squeezed reduction collapses, transcribed
+%   verbatim from the committed exact-fraction sympy script scripts/p2_vertex_check.py: (1) the
+%   collapsed exact vertex-sum degree-9 polynomial 256*Pik2*A in the symmetric monomial basis
+%   (Eq. collapsed_vertexsum, coeffs 9/3/-27/15/-198/27 verified against sympy Poly grouping); and
+%   (2) the epsilon-order-grouped squeezed contributions fNL|_eps^1=-5/2, |_eps^2=+5/16, |_eps^3=0
+%   summing to -35/16 (Eq. order_grouped). NO new math — transcription of the existing certified
+%   computation. -35/16 value UNCHANGED. Other Grok MAJORs (sensitivity-envelope framing, length)
+%   already dispositioned as disclosed/editable in prior rounds; no genuinely-new finding.)
 % v1.7.103 (2026-07-08 — RSD-FISHER closure: retires the standing "independent Fisher is real-space
 %   monopole only (no RSD multipoles ell=0,2,4, ~18% conservative offset per Heinrich)" limitation
 %   with REAL computation. Applies the VERIFIED c14 redshift-space tree bispectrum Fisher
@@ -1354,7 +1363,30 @@ Summing the four rows of Table~\ref{tab:vertices} exactly (symbolic fractions) a
 \fnl^{\rm vertex\,sum}(k_1\ll k) = -\frac{35}{16} + \frac{35}{64}\frac{k_1^2}{k^2} + \cdots \;\xrightarrow{k_1\to0}\; -\frac{35}{16},
 \label{eq:vertexsum}
 \end{equation}
-identical to Eq.~(\ref{eq:decisive_sqz}). Two independent certifications bracket this result. First, Cai \etal's own $\epsilon$-order-grouped intermediate expressions ($A^{\epsilon},A^{\epsilon^2},A^{\epsilon^3}$) sum to the Table~\ref{tab:vertices} total \emph{exactly} (difference $=0$ symbolically) and likewise give $-35/16$, so the correction is internal to Cai's own paper. Second, subtracting the vertex sum from Cai's printed final polynomial $A_T$ (their Eq.~37) leaves exactly the spurious local term of Eq.~(\ref{eq:spurious}), $A_T^{\rm printed}-\sum(\text{vertices})=+(99/128)\sum_i k_i^3$, the single term by which Cai \etal's printed polynomial exceeds the exact vertex sum and hence the algebraic origin of the erroneous $-35/8$ that its squeezed reduction produces (not a naive additive shift; cf.\ Eq.~\ref{eq:spurious} discussion above). Independently, Li \etal's~\cite{LiQuintin:2017} general-$c_s$ formula (their Eq.~5.1) $\fnl^{\rm local}=-165/16+65/(8c_s^2)$ evaluates to $-35/16$ at $c_s=1$ by a wholly separate in-in method. The correction $-35/16$ and the specific $+(99/128)\sum_i k_i^3$ error are therefore certified vertex-by-vertex, cross-checked three ways, and traceable to a single algebraic combination step in Ref.~\cite{Cai:2009fn}.
+identical to Eq.~(\ref{eq:decisive_sqz}).
+
+\emph{Displayed intermediate algebra.} For full referee/reader verifiability we display the two intermediate objects that the squeezed reduction Eq.~(\ref{eq:vertexsum}) collapses --- both transcribed verbatim from the committed symbolic-certification script (\texttt{scripts/p2\_vertex\_check.py}, exact-fraction \textsc{sympy}). First, the collapsed exact vertex sum. Multiplying the four Table~\ref{tab:vertices} rows through by the common denominator $\Pi k^2\equiv k_1^2k_2^2k_3^2$, the total shape function at $\epsilon=3/2$ is the degree-9 polynomial
+\begin{widetext}
+\begin{align}
+256\,\Pi k^2\,A \;=\; 9\!\sum_i k_i^9
+&\;+\;3\,\Sigma_{i\neq j}\,k_i^7 k_j^2
+\;-\;27\,\Sigma_{i\neq j}\,k_i^6 k_j^3
+\;+\;15\,\Sigma_{i\neq j}\,k_i^5 k_j^4 \nonumber\\
+&\;-\;198\,\Sigma_{i}^{\rm dist}\,k_i^5 k_j^2 k_l^2
+\;+\;27\,\Sigma_{i\neq j\neq l}\,k_i^4 k_j^3 k_l^2 ,
+\label{eq:collapsed_vertexsum}
+\end{align}
+\end{widetext}
+where $\Sigma_{i\neq j}$ runs over the six ordered pairs $i\neq j$ (six distinct monomials), $\Sigma_{i\neq j\neq l}$ over the six all-distinct triples, and $\Sigma_{i}^{\rm dist}k_i^5 k_j^2 k_l^2\equiv k_1^5 k_2^2 k_3^2+k_2^5 k_1^2 k_3^2+k_3^5 k_1^2 k_2^2$ over the three distinct $(5,2,2)$ monomials (so, e.g., the leading squeezed piece $k_1\to0$ isolates the $9k_2^9+9k_3^9+3k_2^7k_3^2+\dots$ collinear block that reduces to $-35/16$ after forming $\fnl=(10/3)A/\sum_i k_i^3$). Second, the $\epsilon$-order-grouped decomposition. Writing $A=\epsilon A^{\epsilon}+\epsilon^2 A^{\epsilon^2}+\epsilon^3 A^{\epsilon^3}$ (Cai \etal's own intermediate grouping) and forming the squeezed $\fnl$-contribution of each order separately at $\epsilon=3/2$ gives
+\begin{equation}
+\fnl\big|_{\epsilon^1}=-\tfrac{5}{2},\qquad
+\fnl\big|_{\epsilon^2}=+\tfrac{5}{16},\qquad
+\fnl\big|_{\epsilon^3}=0,
+\label{eq:order_grouped}
+\end{equation}
+whose sum $-\tfrac{5}{2}+\tfrac{5}{16}+0=-\tfrac{35}{16}$ reproduces Eq.~(\ref{eq:vertexsum}) term-by-term (the $A^{\epsilon}$ piece is the pure $-\tfrac{\epsilon}{2}\sum_i k_i^3$ local shape; the $A^{\epsilon^2}$ and $A^{\epsilon^3}$ pieces carry the non-local $\Pi k^2$-denominator structure of Eq.~\ref{eq:collapsed_vertexsum}). The order-grouped values Eq.~(\ref{eq:order_grouped}) are the $\epsilon$-decomposition Cai \etal\ describe, made explicit.
+
+Two independent certifications bracket this result. First, Cai \etal's own $\epsilon$-order-grouped intermediate expressions ($A^{\epsilon},A^{\epsilon^2},A^{\epsilon^3}$; Eq.~\ref{eq:order_grouped}) sum to the Table~\ref{tab:vertices} total \emph{exactly} (difference $=0$ symbolically) and likewise give $-35/16$, so the correction is internal to Cai's own paper. Second, subtracting the vertex sum from Cai's printed final polynomial $A_T$ (their Eq.~37) leaves exactly the spurious local term of Eq.~(\ref{eq:spurious}), $A_T^{\rm printed}-\sum(\text{vertices})=+(99/128)\sum_i k_i^3$, the single term by which Cai \etal's printed polynomial exceeds the exact vertex sum and hence the algebraic origin of the erroneous $-35/8$ that its squeezed reduction produces (not a naive additive shift; cf.\ Eq.~\ref{eq:spurious} discussion above). Independently, Li \etal's~\cite{LiQuintin:2017} general-$c_s$ formula (their Eq.~5.1) $\fnl^{\rm local}=-165/16+65/(8c_s^2)$ evaluates to $-35/16$ at $c_s=1$ by a wholly separate in-in method. The correction $-35/16$ and the specific $+(99/128)\sum_i k_i^3$ error are therefore certified vertex-by-vertex, cross-checked three ways, and traceable to a single algebraic combination step in Ref.~\cite{Cai:2009fn}.
 
 \emph{What the factor of two is (definitively).} It is \emph{not} a convention difference: both papers use the identical normalization $\fnl = 10A/(3\sum k_i^3)$ (Cai Eq.~21 $=$ Li Eq.~4.20) with $\Phi=\tfrac{3}{5}\zeta$ (Cai Eq.~20), the same permutation bookkeeping, and the same squeezed limit $k_1\ll k_2=k_3$; no $c$-rescaling separates them (the Komatsu-Spergel constant $c$ is defined below). It is \emph{not} a dropped in-in time-ordering: Li \etal's own integral (their Eq.~4.13) is written explicitly as $-2\times2\,\mathrm{Im}\!\int$, carrying both orderings, and a dropped ordering would halve the entire polynomial rather than only the local amplitude. It \emph{is} a genuine arithmetic error confined to Cai \etal's last algebraic combination step (their Eq.~37): the per-vertex physics is correct and gives $-35/16$; Li \etal\ (same lead-author group; Cai a coauthor of both) silently corrects it to $-35/16$. We therefore \emph{adopt} $\fnl = -35/16$ as the central value throughout, settling an 8-year literature discrepancy, and retain $-35/8$ only as an erroneous literature-reference value. The local-type bispectrum is defined, in terms of the matter-era Bardeen potential $\Phi = \tfrac{3}{5}\zeta$ (the field in which the Komatsu-Spergel constant is conventionally written), as:
 \begin{equation}
