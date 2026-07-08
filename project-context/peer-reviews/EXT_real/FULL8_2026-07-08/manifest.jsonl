@@ -13,3 +13,4 @@
 {"tag":"FULL8_2026-07-08","paper":"P1A","version":"v1A.0.114","reviewer":"grok","verdict":"MAJOR REVISIONS","baseline":"MAJOR REVISIONS","raw":"P1A_grok.md","png":"P1A_grok.png","ts":"2026-07-07T18:35Z"}
 {"tag":"FULL8_2026-07-08","paper":"P1A","version":"v1A.0.114","reviewer":"gemini","verdict":"MINOR REVISIONS","baseline":"MAJOR REVISIONS","delta":"IMPROVED","raw":"P1A_gemini.md","png":"P1A_gemini.png","ts":"2026-07-07T18:37Z"}
 {"tag":"FULL8_2026-07-08","paper":"P1A","version":"v1A.0.114","reviewer":"chatgpt","verdict":"REJECT","baseline":"REJECT","raw":"P1A_chatgpt.md","png":"P1A_chatgpt.png","ts":"2026-07-07T18:40Z"}
+{"tag":"FULL8_2026-07-08","paper":"P1B","version":"v1B.0.103","reviewer":"grok","verdict":"MAJOR REVISIONS","baseline":"MAJOR REVISIONS","raw":"P1B_grok.md","png":"P1B_grok.png","ts":"2026-07-07T18:41Z"}

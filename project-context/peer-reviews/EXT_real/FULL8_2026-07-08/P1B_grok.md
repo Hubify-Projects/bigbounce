@@ -1,0 +1,18 @@
+# P1B (v1B.0.103) — Grok Expert — EXT FULL8 2026-07-08
+
+Verdict (verbatim): VERDICT: MAJOR REVISIONS
+
+## RAW
+
+VERDICT: MAJOR REVISIONS
+
+ISSUES:
+
+[MAJOR] Abstract and Sec. I: The manuscript repeatedly and correctly states that none of the three analyses implements or tests any torsion-modified Boltzmann module or verifies the ECH spin-torsion sector, yet positions the work as a substantive “companion” contribution to the ECH no-go program of Paper I(a). This creates a mismatch: the claimed “concrete and self-contained” advances reduce to one short first-principles estimate (Sec. III A) plus two standard technical exercises (MCMC proxy and synthetic-pipeline validation) whose direct bearing on the structural barriers or perturbation-transparency theorem of I(a) is never demonstrated.
+[MAJOR] Sec. VI (entire spectator-ALP consistency check): The birefringence signal is accommodated by a standard GR + ALP model with fa ∼ MPl; no derivation connects the Holst term or spin-torsion to the required photon coupling Caγ or to the ALP potential. The section quantifies posterior shifts (m median ≃ 36 H0) and prior-predictive fractions (11.6 % within 1σ at fixed Caγ = 8) but ultimately concludes the result “is not a distinctive ECH prediction.” Its inclusion as a core numbered analysis in an ECH companion therefore lacks physical motivation and reads as an ad-hoc parameter scan of an unrelated model.
+[MAJOR] Sec. III A: The four-fermion contact interaction and the scaling ρtor ∼ GN T^6 → ∆N(ECH)eff ∼ (T/MPl)^2 ∼ 10^{-44} at BBN is correctly derived at leading parametric order, but the thermal average ⟨(ψ̄γ5γμψ)^2⟩T is estimated rather than computed from finite-temperature field theory or NJL resummation. No error budget or higher-order correction is provided, and the claim that this constitutes a “genuine result of this paper” overstates a straightforward EFT estimate whose numerical smallness was already qualitatively known for Planck-suppressed operators.
+[MINOR] Secs. II–V and Appendix A: The MCMC is a stock-CAMB ΛCDM+∆Neff run (no torsion physics) whose posterior ∆Neff = −0.020 ± 0.169 (full-tension) is presented as a “conservative observational envelope” on the ECH result. While technically correct, the exercise is a null-consistency check whose outcome was predictable once the 10^{-44} suppression was derived; the extensive chain diagnostics, release-pairing notes, and burn-in reconciliations add length without advancing the ECH program.
+[MINOR] Sec. IV (NaMaster validation): The 500-realization MC on foreground-free synthetic skies quantifies a ∼12 % multiplicative under-recovery and worst-case |bias| = 0.040° for the unweighted χ^2 estimator. This is useful methodology work but is standard pipeline characterization; the paper correctly notes it is not a sky measurement and cannot address the β–α degeneracy. Its prominence as one of only three numbered analyses inflates its weight relative to its generic character.
+[MINOR] Overall presentation: Repetitive scope disclaimers, footnotes, and cross-references to I(a) make the manuscript defensive and longer than necessary for its actual content. The reproducibility manifest is commendable, but the manuscript does not supply DOIs for the exact chain files, scripts, or derived products required by PRD data-availability standards.
+
+The central technical claims (Planck-suppressed ∆N(ECH)eff, quantified NaMaster bias on synthetic skies, and ∼11.6 % prior-predictive accommodation fraction at fixed Caγ = 8) are directly supported by the derivations and Monte Carlo evidence presented; the broader assertion that these checks meaningfully advance or corroborate the ECH spin-torsion no-go program is not.
