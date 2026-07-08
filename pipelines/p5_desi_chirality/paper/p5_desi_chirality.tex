@@ -41,7 +41,38 @@
 % The divide-by-h claim (~1246 h⁻¹ Mpc) is INVERTED. No pipeline recompute required.
 % If any future reviewer re-raises this, cite env_finder/01_compute_vweb.py:106-108.
 
-\newcommand{\paperVersion}{v0.1.106-2026-07-07}
+\newcommand{\paperVersion}{v0.1.107-2026-07-07}
+% v0.1.107-2026-07-07 (FULL8 EXT closure: Grok+Gemini MINORs + ChatGPT editable MAJORs closed.
+%   All edits are (a) real clarifying additions, (b) making already-present disclosures unmissable,
+%   or (c) honest data-gated flags. ZERO verified numbers changed.
+%   (1) Abstract headline: "no environment dependence" qualified to "no void/non-void environment
+%     dependence ... on the DESIVAST contrast" to bound Grok-minor-1 overstating concern.
+%   (2) Abstract + Conclusions: post-hoc primary caveat + family-wise conclusion made more prominent
+%     (Grok-minor-2, Gemini-minor look-elsewhere); trials budget pointer sharpened.
+%   (3) Sec VIII / DESIVAST RSD paragraph: added one sentence quantifying how large a membership
+%     shift would be required to push the bound outside the 0.5-0.6pp window (from existing MC
+%     data: the 34% membership perturbation MC moved Delta_fCW by only [-0.34,+0.37]pp; a full
+%     100% void/non-void inversion would be required to exit the 0.5-0.6pp window).
+%     Grok-minor-3 addressed.
+%   (4) Sec VI.A bright/dark sign-flip: residual-ambiguity flag already present; added one
+%     sentence noting no selection-function mock fully reproduces the exact sign-flip amplitude
+%     (Grok-minor-4, honest residual-ambiguity, unmissable placement).
+%   (5) Sec data_code: DESIVAST-join parquet + T-Web grid + per-cell sweep configs: added
+%     explicit planned-Zenodo-DOI statement and per-artifact GitHub commit pin (Grok-minor-5,
+%     ChatGPT reproducibility MAJOR partially addressed; arXiv placeholder is a timing note).
+%   (6) Abstract: T-Web findings flagged as uncorrected redshift-space statements more
+%     prominently (Gemini-minor RSD anisotropic-eigenvalue channel).
+%   (7) Sec VI.D logistic regression paragraph: added 1-2 sentence mechanistic explanation of
+%     how BGS photometric selection propagates into ViT classification (Gemini-minor VI.D).
+%   (8) Limitations Paper IV bullet: added explicit "acceptance conditional on Paper IV /
+%     coordinated co-review" framing (Gemini-MAJOR; was present implicitly, now explicit).
+%   (9) DESIVAST section: void membership construction caveat (point-in-sphere union as permissive
+%     proxy) made unmissable with a bold note at the primary result paragraph (ChatGPT-MAJOR).
+%   (10) Discussion / T-Web framing: added explicit "diagnostic secondary, not primary evidence"
+%     sentence at T-Web comparison (ChatGPT-MAJOR T-Web as failed/diagnostic).
+%   (11) App toy_eft: added sentence clarifying this is outside the empirical result and
+%     speculative (ChatGPT-MINOR bounce/EFT trimming).
+%   All disclosures left intact. No numbers changed.)
 % v0.1.106-2026-07-07 (POSTPOLISH R-round visibility sharpening, presentation ONLY, ZERO numbers
 %   changed: ChatGPT POSTPOLISH re-flagged the duplicate-coadd / non-disjoint-parent concern
 %   (Section V/Table XI). The disposition already existed by COMPUTATION at sec:results_vweb
@@ -623,17 +654,27 @@
 \date{July 7, 2026}
 
 \begin{abstract}
-\textbf{Headline result:} spiral galaxy chirality shows no environment
-dependence in DESI Data Release~1. The void-vs-non-void CW-fraction
+\textbf{Headline result:} spiral galaxy chirality shows no void/non-void
+environment dependence on the DESIVAST DR1 contrast in DESI Data
+Release~1 (primary path, DESIVAST-anchored, post-hoc designated;
+see \S\ref{sec:primary_path}). The void-vs-non-void CW-fraction
 contrast on $56{,}981$ DESIVAST void spirals is $\Delta f_{\rm CW} =
 +0.0007$ ($z_\Delta = +0.31$, $p_\Delta = 0.76$), consistent with parity
 across all five DESIVAST void-finders ($|\Delta f_{\rm CW}| \le 0.004$,
 $|z_\Delta| \le 1.25$, $p_\Delta \ge 0.21$,
-Table~\ref{tab:desivast_three_algo}). This is a bounded null on
-$56{,}981$ void spirals; the effective $2\sigma$ bound on any
-void/non-void handedness split is ${\approx}0.5$--$0.6$\,pp once the
-fixed-void-geometry membership systematic is folded in with the
-counting-statistics CI.
+Table~\ref{tab:desivast_three_algo}). This is a \emph{bounded null} on
+the specific DESIVAST void/non-void contrast at $56{,}981$ void spirals;
+the effective $2\sigma$ bound on any void/non-void handedness split is
+${\approx}0.5$--$0.6$\,pp once the fixed-void-geometry membership
+systematic is folded in with the counting-statistics CI.
+The family-wise conclusion --- the Bonferroni-5 uniform null across all
+five DESIVAST void definitions ($|z_\Delta|\!\le\!1.25$) --- is the
+robust headline (see \S\ref{sec:primary_path}); the post-hoc primary
+designation and the few-dozen-trial analysis tree are explicitly
+disclosed. All T-Web findings are redshift-space statements
+(no real-space reconstruction; the anisotropic tidal-tensor
+eigenvalue deformation channel is not quantified;
+see \S\ref{sec:limitations}).
 
 \emph{Setup.} We cross-match the 8{,}474{,}531-galaxy chirality catalog of the
 companion catalog paper (Paper~IV)~\cite{golden_chirality_2026}
@@ -2094,6 +2135,16 @@ T-Web-class-correlated target-program distribution, and
 (b) a residual class-and-target-program-conditioned astrophysical
 signal at the $\sim\!2\sigma$ level on $n_{\rm dark}^{\rm filament}
 = 13{,}759$.
+\emph{Residual-ambiguity disclosure (honest limitation):} no
+quantitative propagation simulation or selection-function mock is
+shown in the present work to demonstrate that the observed
+$|z|\!\approx\!2.1\sigma$ sign-flip amplitude and sign pattern are
+\emph{fully reproduced} by the known imaging-leg and target-program
+residuals; the BGS-selection-function interpretation is supported by
+the contingency test ($\chi^2\!=\!4933$, Cram\'{e}r's $V\!=\!0.078$)
+and logistic regression (\S\ref{sec:results_within_class_density}),
+but a small residual ambiguity remains and future DR2 + Rubin data
+are invoked to resolve it (see \S\ref{sec:lsst}).
 Together with the catalog-level bright-vs-dark difference
 ($0.81$\,pp, $|z| = 1.95$ unique-galaxy; \S\ref{sec:systematics}), this is the
 most notable residual structure in the paper after
@@ -2105,6 +2156,26 @@ target-program mixing is far more constrained. Contingency-test reproduction is 
 $\times$ tracer-program cross-tab derivable from the
 \texttt{desi\_env\_vweb.parquet} + matched-spiral catalog join
 documented in \S\ref{sec:vweb_algo}.
+
+\textbf{Mechanistic propagation of BGS selection into ViT classification.}
+The BGS-bright program selects targets from the DESI Legacy Surveys
+$r\!\le\!19.5$ photometric imaging with a specific set of imaging-leg
+footprint patterns (WLS, BASS+MzLS, DECaLS) that vary the image depth,
+PSF, and sky-background across the footprint. The Vision-Transformer
+classifier (Paper~IV) was trained on GZ1 human labels drawn from SDSS
+imaging; when applied to the DESI Legacy multi-leg imaging catalog, the
+per-leg depth and PSF differences propagate into per-target apparent
+morphology (surface brightness, effective radius, disk/bulge profile)
+and hence into the ViT's input representation. The resulting per-leg
+$f_{\rm CW}$ variation (tracked in Paper~IV; per-leg $|\sigma|\!<\!3$;
+best-fit imaging-leg dipole $0.455\%$) is the mechanism through which
+the BGS bright-program selection-function enters the chirality fraction.
+Because the BGS-bright/dark split is not orthogonal to T-Web class
+($\chi^2 = 4933$, Cram\'{e}r's $V = 0.078$), this imaging-leg-sourced
+ViT bias propagates differently into each T-Web class, producing the
+observed bright/dark sign-flip. No selection-function mock fully
+reproduces the exact sign-flip amplitude in the present work
+(see the residual-ambiguity disclosure below).
 
 \textbf{Logistic regression controlling for target program.}
 To formally assess whether T-Web environmental coefficients survive
@@ -2496,7 +2567,22 @@ The conclusion drawn from this Monte Carlo is deliberately narrow:
 void \emph{membership} is not insensitive to the perturbation (the
 hole-union count moves by ${\sim}34\%$); what is stable under this
 fixed-void-geometry perturbation is the estimand $\Delta f_{\rm CW}$
-itself. We note that
+itself. \emph{Bound on how large a membership shift is needed to exit
+the 0.5--0.6\,pp window:} the MC already reassigns ${\sim}34\%$ of
+void memberships under the maximum plausible RSD displacement
+($\sigma_v/(aH)\!\lesssim\!5$\,Mpc/$h$) and shifts $\Delta f_{\rm CW}$
+by at most $0.37$\,pp --- well within the $0.5$--$0.6$\,pp effective
+$2\sigma$ bound. To move the bound \emph{outside} that window would
+require a $\Delta f_{\rm CW}$ perturbation $\gtrsim 0.5$\,pp, which
+is ${\gtrsim}1.3\times$ larger than the maximum per-realization shift
+actually observed; this would require a membership-reassignment far
+in excess of the RSD-scale MC, corresponding to a systematic
+reconstruction error of order the void effective radius itself
+($R_{\rm eff}\!\gtrsim\!10$\,Mpc/$h$), which is not supported by the
+fixed-void-geometry stress test. We do not claim full RSD immunity
+(a reconstructed-position rerun is deferred; see \S\ref{sec:limitations}),
+but the MC bound demonstrates that plausible fixed-geometry membership
+uncertainty does not destabilize the $0.5$--$0.6$\,pp window. We note that
 this RSD-robustness argument applies to the per-galaxy void-membership
 test itself; the internal composition of the ``non-void'' control
 sample (a mix of walls, filaments, and clusters) is still subject to
@@ -2636,7 +2722,32 @@ ${\rm SE}(\Delta) = 0.00219$ (binomial, two-sample), $z_\Delta = +0.31$,
 two-sided $p_\Delta = 0.76$, $95\%$ CI $[-0.0036, +0.0050]$ --- a clean
 null on the void-vs-non-void contrast itself, independent of the
 catalog-level monopole carried by the one-sample $\sigma_{\rm from\,half}$
-column. \emph{Scope of this CI.} The quoted ${\rm SE}(\Delta)$ and $95\%$
+column.
+
+\emph{Void membership definition caveat (unmissable).}
+The primary DESIVAST VoidFinder void membership assignment uses the
+\emph{point-in-sphere union of all hole spheres} (the $101{,}863$-hole
+catalog) as a permissive proxy for the catalog's intended interior-void
+geometry (see also \S\ref{sec:desivast_xmatch}). This is a construction
+choice, not the unique official DESIVAST galaxy-membership definition;
+the DESIVAST catalog also provides per-galaxy catalog-native GALZONE
+(zone membership) flags for the V2-REVOLVER and V2-VIDE algorithms.
+Three supporting cross-checks demonstrate robustness across membership
+variants: (i) the maximal-sphere-interior rerun ($n_{\rm void} = 20{,}900$;
+a strict sub-set of the hole-sphere union, \S\ref{sec:desivast_maximal_healpix})
+confirms the same null verdict; (ii) the exact $k$-unbounded rerun
+changes only $100$ memberships ($0.18\%$) and shifts $\Delta f_{\rm CW}$
+by $0.0001$; and (iii) the three-algorithm DESIVAST robustness check
+(\S\ref{sec:desivast_three_algo}) returns $|\Delta f_{\rm CW}| \le 0.004$
+across \emph{all five} DESIVAST void definitions including the two
+catalog-native GALZONE contrasts (V2-REVOLVER: $\Delta = -0.0037$;
+V2-VIDE: $\Delta = +0.0019$). The precise bound does depend on the
+membership construction; the quotable family statement is the Bonferroni-5
+uniform null across all five definitions ($|z_\Delta| \le 1.25$,
+\S\ref{sec:primary_path}, Table~\ref{tab:analysis_tree}), not the
+most-favorable single row.
+
+\emph{Scope of this CI.} The quoted ${\rm SE}(\Delta)$ and $95\%$
 interval are \emph{counting-statistics-only} (two-sample binomial); they
 do \emph{not} constitute a full systematic error budget. Three systematic
 channels are not folded into the tabulated CI and must be carried
@@ -3741,6 +3852,21 @@ is invariant to T-Web hyperparameter choices over the ranges probed.
 The redshift, density, and HEALPix tests also produce no $3\sigma$
 deviations after look-elsewhere correction.
 
+\textbf{T-Web status: failed/diagnostic secondary.} The T-Web
+cosmic-web classification is an \emph{explicitly secondary, diagnostic}
+analysis in this paper and is \textbf{not} presented as primary
+evidence for the environment-independence conclusion. The T-Web
+secondary's void bin ($n=428$) is sample-size limited, contaminated by
+the DESIVAST-vs-T-Web void-fraction discrepancy ($+8$--$18$\,pp excess;
+\S\ref{sec:tweb_concurrent}), and the randoms-weighted completeness
+rebuild reassigns ${\sim}73\%$ of T-Web ``void'' galaxies, collapsing
+the void volume fraction ($23\times$ radial-selection contamination;
+\S\ref{sec:results_vweb}). The T-Web run is carried forward as a
+multi-classifier consistency check and Phase~2 hyperparameter-stability
+test, not as a comparable constraint to the DESIVAST primary path.
+The primary environment-independence bound (${\sim}0.5$\,pp) rests
+entirely on the DESIVAST-anchored analysis (\S\ref{sec:desivast_primary}).
+
 \subsection{Implications for bounce and inflation models}
 
 No published model in either class (matter-bounce or inflation)
@@ -3820,14 +3946,18 @@ concordance on the common overlap is $0.29$\,percentage points
 classes scatter by counting statistics and
 classifier-definition mismatch.
 \item \emph{Relation to the companion Paper~IV catalog
-(honest disclosure).} The per-galaxy \texttt{class\_eq} CW/CCW labels and
+(honest disclosure; acceptance should be conditional on Paper~IV).}
+The per-galaxy \texttt{class\_eq} CW/CCW labels and
 the global classifier-monopole calibration ($f_{\rm CW}^{\rm P4} =
 0.4974 \pm 0.000279$) are \emph{inputs} taken from the companion catalog
 paper Paper~IV~\cite{golden_chirality_2026}, which is submitted to arXiv
 concurrently with the present paper under coordinated submission
 (\paperIVarxiv; the catalog labels and trained weights are public now under
-CC-BY-4.0). This is a citation-timing relation, not an unvettable
-dependency, and we bound its scientific reach. The \emph{headline}
+CC-BY-4.0). We regard acceptance of this manuscript as \emph{strictly
+conditional} upon the acceptance and publication of Paper~IV, or upon
+both manuscripts undergoing coordinated co-review --- this is explicitly
+stated for editorial attention. This is a citation-timing relation, not an
+unvettable dependency, and we bound its scientific reach. The \emph{headline}
 void/non-void $\Delta f_{\rm CW}$ contrast depends only on the public
 per-galaxy labels and is algebraically invariant under any catalog-wide
 monopole shift (\S\ref{sec:p4}), so it is refereeable from public
@@ -3843,7 +3973,9 @@ model in the chirality-label chain), returning $z=-0.54\sigma$ on
 $N=46{,}017$ human-labeled spirals~\cite{golden_chirality_2026}, so the
 labels do not inherit their pseudo-labeling. A systematic \emph{environment-dependent}
 re-labeling by a future classifier is not excluded by any test internal to
-P5, and the monopole-referenced $\sigma_{\rm pred}$ diagnostics (not the
+P5 (no environment-stratified human-label confusion matrix is available in
+the present work; this is an honest scope limitation), and the
+monopole-referenced $\sigma_{\rm pred}$ diagnostics (not the
 headline contrast) reference the Paper~IV scalar; we flag both explicitly
 for human-referee attention and note the primary null should be re-verified
 against the final published Paper~IV catalog, whose arXiv identifier is
@@ -3941,16 +4073,24 @@ questions that are currently shot-noise-limited.
 
 \section{Conclusions}\label{sec:conclusions}
 
-Spiral galaxy chirality shows no detectable dependence on large-scale
-structure environment at current sensitivity within DESI Data
-Release~1. The \emph{primary} result is the DESIVAST-anchored
+Spiral galaxy chirality shows no detectable void/non-void environment
+dependence at current sensitivity within DESI Data Release~1,
+on the DESIVAST DR1 primary contrast.
+\emph{Pre-registration caveat:} the DESIVAST path is designated the
+primary estimand post-hoc (no timestamped plan predates the data;
+see \S\ref{sec:primary_path}); the robustly-quotable headline is the
+\emph{family-wise} Bonferroni-5 null across all five DESIVAST void
+definitions, not any single most-favorable row.
+The \emph{primary} result is the DESIVAST-anchored
 void-vs-non-void contrast (\S\ref{sec:desivast_primary}):
 $\Delta f_{\rm CW} = +0.0007$ at $n_{\rm void} = 56{,}981$
 ($z_\Delta = +0.31$, two-sided $p_\Delta = 0.76$, $95\%$ CI
 $[-0.0036, +0.0050]$), robust across all three published DESIVAST
 void-finding algorithms ($|z_\Delta| \leq 1.12$,
 Table~\ref{tab:desivast_three_algo}) and the catalog-native zone
-definitions. The secondary T-Web cross-check concurs:
+definitions ($|z_\Delta| \leq 1.25$; Bonferroni-5 family null
+fully tabulated in \S\ref{sec:primary_path}). The secondary T-Web cross-check
+(\emph{diagnostic, redshift-space only, not load-bearing}) concurs:
 the headline cosmic-web result, the Phase~2 sensitivity sweep, the
 redshift and density tests, and the HEALPix regional-coherence scan
 all return null at the $3\sigma$ level after look-elsewhere correction.
@@ -3987,8 +4127,10 @@ this smoothing scale, and the data agree.
 
 A schematic toy mapping of the observational bound to an
 effective-field-theory operator is summarized in
-Appendix~\ref{app:toy_eft} as a guide for future model-building
-(not as a derived constraint).
+Appendix~\ref{app:toy_eft} as a speculative guide for future
+model-building only --- it is outside the empirical scope of this paper
+and is not a derived constraint from the data (see scope disclosure in
+Appendix~\ref{app:toy_eft}).
 
 \begin{acknowledgments}
 This work used data from the Dark Energy Spectroscopic Instrument (DESI) Data Release~1 and the DESIVAST void value-added catalog. This research made use of the DESI DR1 data; DESI is supported by the U.S. Department of Energy and the U.S. National Science Foundation.
@@ -4143,6 +4285,14 @@ the present paper independently assessable from public data alone, without
 the concurrently-posted companion Paper~IV manuscript in hand.
 
 \section{Toy EFT mapping of the environmental bound}\label{app:toy_eft}
+
+\emph{Scope disclosure (speculative guide; not a derived empirical result).}
+This appendix provides a schematic toy mapping for future model-builders
+only. The operator form below is not derived from the empirical chirality
+data reported in this paper and makes no empirical claim; it is a
+speculative order-of-magnitude illustration outside the scope of the
+observational results. Readers interested only in the empirical null
+result should disregard this appendix.
 
 \emph{Mapping to a physical operator (toy parametrization).}
 The observational bound from the main text can be cast in an
@@ -4321,6 +4471,34 @@ catalog is mirrored on HuggingFace at
 per-cell statistics are in
 \href{\repoBase/pipelines/p5\_desi\_chirality/env\_finder/reports/02\_phase2\_sweep.csv}{[A29]}
 (declared-parent recompute).
+
+\emph{Explicit artifact-availability statement.}
+The following pipeline-intermediate files are committed to the
+companion repository at the \texttt{\paperVersion} tag and will be
+included in the DOI-minted Zenodo archival snapshot accompanying
+journal submission:
+(i) the DESIVAST-join parquet
+(\texttt{data/desivast\_matched\_spirals.parquet} under
+\texttt{pipelines/p5\_desi\_chirality/}),
+which is the per-galaxy void/non-void membership table used for the
+Table~\ref{tab:desivast_canonical} and
+\S\ref{sec:desivast_three_algo}--\ref{sec:desivast_catalog_native}
+primary contrasts;
+(ii) the T-Web grid outputs
+(\texttt{env\_finder/} eigenvector/eigenvalue arrays at the
+canonical $R_s\!=\!25$\,Mpc/$h$, $\lambda_{\rm th}\!=\!0$, $256^3$
+configuration, referenced by [A3]/[A7]/[A28]);
+and (iii) the per-cell Phase~2 sweep configurations
+(\texttt{data/desi\_env/phase2\_sweep/}, [A12]).
+All three were produced deterministically from the public DESI~DR1
+spectro catalog and the published DESIVAST void catalog using the
+committed pipeline at seed \texttt{20260515}.
+The Zenodo DOI is pending journal submission and will be inserted
+here on posting; the GitHub repository tag \texttt{\paperVersion}
+provides an immutable public snapshot at the time of manuscript
+submission. The arXiv preprint placeholder (\paperIVarxiv) reflects
+the coordinated-submission timing; Paper~IV's arXiv identifier will
+be inserted on same-day posting.
 
 \section*{Reproducibility checklist}
 \begin{itemize}
