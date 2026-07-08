@@ -1,61 +1,3 @@
-Toggle Sidebar
-Search
-⌘K
-New Chat
-⌘J
-Imagine
-Build
-New
-Skills and Connectors
-Projects
-New Project
-BigBounce - Papers
-myo
-creator-new
-See all
-History
-So I’m a great agentic engineer… I’ve never built ...
-Thoth AI - prompts! Human Layer for AI
-What to do when hitting weekly Claude limits ? Is ...
-EfficiencyForge: Token-Saving Claude Orchestrator
-Hackable Open Fitness Tracker Brands
-Flux Models: Character Consistency Solutions
-xAI Grok API: Features and Limitations
-X Algorithm Optimization Tips 2025
-Top AI SaaS Founders on X
-Today
-Paper Review: Matter Bounce fNL Resolution
-Alphara AI Agentic Investment Brand
-Null Result on DESI Spiral Chirality
-Chirality Dipole Null in Galaxy Catalog
-Chirality Dipole Null Result
-Manuscript Review: Major Revisions Verdict
-Manuscript Review: Physical Review D Verdict
-Physical Review D Manuscript Verdict
-Manuscript Corrections and Revisions
-Minor Revisions Needed for Galaxy Chirality Analysis
-Referee Audit: Chirality Dipole Analysis
-Manuscript Review: Major Revisions for Anomaly Catalog
-Manuscript Review: Major Revisions Needed
-Minor Revisions for fNL Sensitivity Analysis
-Referee Report: Physical Review D Manuscript Review
-Physical Review D Manuscript Verdict
-Physical Review D Manuscript Review
-Physical Review D Manuscript Review
-Minor Revisions: Cai Eq.37 Detail and Template Factor
-PRD Manuscript: Minor Revisions Needed
-Yesterday
-Manuscript Review: Dark Energy Closure
-Peer Review: Spiral Chirality Null Result
-Audit Report: P2 Review
-Referee Report on Anomaly Catalog
-Peer Review of ECH Spin-Torsion Paper
-See all
-Houston Golden
-houston@bamf.ai
-PDF
-cw_P4.pdf
-
 Refer to the following content:
 
 Thought for 39s
@@ -103,5 +45,3 @@ If you’d like a more detailed section-by-section audit, suggested figure/table
 
 
 Expert
-
---- HARVEST META: chat=https://grok.com/c/4c09f8bf-3448-436e-8849-ee9c598b1605 | model=Grok Expert | 2026-07-08 ---

@@ -46,6 +46,29 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "CW-ext-retest-2026-07-08",
+    kind: "external-browser",
+    dateISO: "2026-07-08",
+    timePT: "Jul 8 · headed browser, raw text + screenshots per leg",
+    title:
+      "CW EXT re-test (P4/P5/P2) — 9/9 legs fully verifiable, 0 failed, 0 fabricated: no literal ACCEPT; P4 stays closest to convergence (Grok+Gemini both MINOR)",
+    papers: ["P2", "P4", "P5"],
+    summary:
+      "CW re-test round on the three papers nearest the convergence floor, run in Houston's headed gstack browser with raw verbatim reviewer text + a screenshot saved and READ before every recorded verdict. Verdict matrix (ChatGPT/Grok/Gemini): P4 MAJOR/MINOR/MINOR · P5 MAJOR/MINOR/MAJOR · P2 REJECT/MINOR/MINOR. No literal ACCEPT anywhere. Results track the FULL8 baseline (P4 MIN/MIN/MAJ · P5 MIN/MIN/MAJ · P2 MIN/MAJ/REJ) with the expected pattern-066 per-round referee variance: P4 ChatGPT MAJOR and P4 Gemini MINOR both match FULL8; P5 held (ChatGPT MAJOR, Grok MINOR, Gemini MAJOR); P2 ChatGPT REJECT with Grok + Gemini both MINOR. P4 remains the closest to convergence in the program (Grok + Gemini both MINOR, only ChatGPT's structural-floor MAJOR outstanding). Both Gemini legs (P5, P2) hit the EXT7 backend-drop — the client minted a chat URL but the server returned 'Couldn't load this chat. It doesn't exist or was deleted' — and were re-submitted from a hard-reloaded fresh session until they persisted; every recorded Gemini verdict comes from a persisted, harvested chat, never a login-wall or a dropped tab. Raws in EXT_real/CW_2026-07-08/.",
+    keyTakeaways: [
+      "9/9 legs harvested with raw verbatim text + screenshots — 0 failed legs, 0 fabricated verdicts; the P4 Grok raw (prior chrome-only capture) was recaptured to the full review body",
+      "No literal ACCEPT anywhere; matrix (ChatGPT/Grok/Gemini): P4 MAJOR/MINOR/MINOR · P5 MAJOR/MINOR/MAJOR · P2 REJECT/MINOR/MINOR",
+      "P4 stays closest to convergence — Grok + Gemini both MINOR, only ChatGPT's harsh-referee-floor MAJOR outstanding (pattern-066 / directive-H structural floor)",
+      "Both Gemini legs required re-submission after the EXT7 backend-drop; persisted on a hard-reload retry — recorded from harvested chats only",
+    ],
+    links: [
+      { label: "EXT raw text + screenshots", href: `${PR}/EXT_real/CW_2026-07-08` },
+      { label: "P2 ChatGPT raw", href: `${PR}/EXT_real/CW_2026-07-08/P2_chatgpt.md` },
+      { label: "P4 Grok raw", href: `${PR}/EXT_real/CW_2026-07-08/P4_grok.md` },
+      { label: "P5 Gemini raw", href: `${PR}/EXT_real/CW_2026-07-08/P5_gemini.md` },
+    ],
+  },
+  {
     id: "FULL8-ext-round-2026-07-08",
     kind: "external-browser",
     dateISO: "2026-07-08",
@@ -3530,6 +3553,20 @@ export const externalVerdictRounds: ExternalRoundVerdicts[] = [
       P5: ["MAJOR", "MINOR", "MINOR"],
     },
     note: "FULL8: first round on the latest hardened versions — 3 full-tier lifts tied directly to the real-science closures (P1A Gemini MAJ→MIN on the proven Fierz appendix; P4 ChatGPT REJECT→MAJOR first-ever on the exclusion-bound-first framing; P1B ChatGPT REJ→MAJ). Zero genuinely-new findings, zero failed legs. P4 at MIN/MIN/MAJ = closest to convergence in the program.",
+  },
+  {
+    roundId: "CW-2026-07-08",
+    dateISO: "2026-07-08",
+    windowPT: "Jul 8 · headed browser, raw text + screenshots per leg (Gemini legs re-run after backend-drop until persisted)",
+    verdicts: {
+      P1A: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P1B: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P2: ["REJECT", "MINOR", "MINOR"],
+      P3: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P4: ["MAJOR", "MINOR", "MINOR"],
+      P5: ["MAJOR", "MINOR", "MAJOR"],
+    },
+    note: "CW re-test (P4/P5/P2 only). Verdict matrix (ChatGPT/Grok/Gemini): P4 MAJOR/MINOR/MINOR · P5 MAJOR/MINOR/MAJOR · P2 REJECT/MINOR/MINOR. No literal ACCEPT anywhere; results track the FULL8 baseline with per-round referee variance (P4 ChatGPT MAJOR = FULL8; P4 Gemini MINOR = FULL8; P5 ChatGPT MAJOR, P5 Gemini MAJOR; P2 ChatGPT REJECT with P2 Grok + Gemini both MINOR). P4 stays closest to convergence (Grok + Gemini both MINOR). Both Gemini legs (P5/P2) required re-submission after the EXT7 backend-drop (client minted a chat URL, server 404'd) — they persisted on a hard-reload retry; 9/9 legs harvested with raw verbatim text + screenshots, 0 failed legs, 0 fabricated. P1A/P1B/P3 not re-swept (NO_VERDICT carry-forward).",
   },
 ];
 
