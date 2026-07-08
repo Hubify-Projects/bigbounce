@@ -46,6 +46,30 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "RSD-fisher-closure-P2-2026-07-08",
+    kind: "closure-wave",
+    dateISO: "2026-07-08",
+    timePT: "Jul 8 · P2 RSD-Fisher closure (v1.7.103) — real computation retires the 'real-space monopole only' limitation",
+    title:
+      "P2 v1.7.103 — VERIFIED c14 redshift-space (RSD) tree bispectrum Fisher applied: the standing 'independent Fisher is real-space monopole only (~18% offset per Heinrich)' limitation is retired with real computation",
+    papers: ["P2"],
+    summary:
+      "Closed the single remaining methodological caveat on P2's independent bispectrum Fisher — the ChatGPT/OpenAI standing objection that the c13 Fisher was real-space monopole only (no RSD multipoles ℓ=0,2,4, a ~18% conservative offset per Heinrich) — with real computation, not a disclosure. The committed c14 script (research/focused_paper_source_integration/scripts/c14_rsd_multipole_fisher.py; output c14_rsd_multipole_fisher.json) extends the committed, validated c13 pipeline UNCHANGED (same Planck 2018 CAMB P(k)/M(k,z), SPHEREx public-products survey table, 6 z-bins, f_sky=0.75, 2,330-triangle grid, multi-tracer Gaussian covariance) and replaces the real-space monopole galaxy bispectrum with the full tree-level redshift-space bispectrum: linear Kaiser factor Z1=b+fμ² (Kaiser 1987), second-order redshift-space kernel Z2 (Scoccimarro-Couchman-Frieman 1999; Sefusatti 2006), growth rate f(z)=fσ8/σ8 from the same CAMB cosmology, integrated over the full line-of-sight orientation (μ1,φ) so the ℓ=0,2,4 multipole content is exact with no truncation. VERIFIED numbers only (read verbatim from the committed JSON): σ(f_NL^local)_RSD = 0.415 (bias-fixed) / 0.449 (bias-marginalized) vs c13 real-space 0.687 = +34.7% tighter (RSD/Heinrich ratio 0.64); σ(f_NL^bounce)_RSD = 0.417/0.449; r_eff≈0.99 persists in redshift space; the f→0 limit reproduces c13 to six significant figures (the load-bearing correctness gate). The unmarginalized detection significance for the corrected bounce squeezed value f_NL=−35/16 rises from the real-space 3.2–3.5σ (labeled the conservative floor) to the redshift-space 4.9–5.2σ. Headline discipline held: the 4.9–5.2σ is labeled UNMARGINALIZED everywhere, before the systematic + GR-projection budget; the c12 GR-projection marginalization bracket (ρ≈0.95; marginalized ~0.8–1.3σ edge) is retained EXACTLY. The +34.7%-vs-Heinrich-~18% difference is reconciled honestly as computed (full real-space→redshift-space gain vs the narrower monopole→multipole gain). Honest approximations stated: tree-level, linear k_max, b2=bs2=0, no fingers-of-God (noted conservative at high-k). Added Kaiser:1987 + Scoccimarro:1999 bib entries. Directive-G hygiene complete: recompiled with bibtex (0 undef-refs), latex-audit clean (0 overfull hboxes, no column overflow), bumped v1.7.102→v1.7.103 + \\date July 8 2026, mirrored byte-identical to all served paths (md5 cca2e95f, 36pp), Convex paperVersions:bump. NO headline f_NL changed; nothing fabricated — every number sourced from the committed c14 artifact.",
+    keyTakeaways: [
+      "c14 RSD tree bispectrum Fisher extends c13 UNCHANGED (Kaiser Z1 + SCF99/Sefusatti Z2, growth from same CAMB, orientation-integrated ℓ=0,2,4 exact)",
+      "σ(f_NL^local) 0.687 → 0.415/0.449 (+34.7% tighter; RSD/Heinrich 0.64); σ(bounce)=0.417/0.449; r_eff≈0.99 persists; f→0 reproduces c13 to 6 sig-figs",
+      "Unmarginalized −35/16 significance 3.2–3.5σ (real-space floor) → 4.9–5.2σ (RSD), labeled unmarginalized; c12 GR-projection bracket retained EXACTLY",
+      "Retires the 'real-space monopole only, ~18% offset' limitation with real computation; +34.7%-vs-~18% reconciled honestly (full RS→RSD vs monopole→multipole gain)",
+      "Directive-G: 0 undef-refs, latex-audit clean, v1.7.103 mirrored byte-identical (md5 cca2e95f, 36pp), Convex bumped; added Kaiser:1987 + Scoccimarro:1999; NO headline f_NL changed, nothing fabricated",
+    ],
+    links: [
+      { label: "c14 RSD Fisher output (JSON)", href: `${GH}/research/focused_paper_source_integration/outputs/c14_rsd_multipole_fisher.json` },
+      { label: "c14 RSD Fisher script", href: `${GH}/research/focused_paper_source_integration/scripts/c14_rsd_multipole_fisher.py` },
+      { label: "P2 RSD writeup", href: `${PR}/INT_v3/P2_rsd_fisher_2026-07-08.md` },
+      { label: "P2 paper source (.tex)", href: `${GH}/research/focused_paper_source_integration/02_full_draft.tex` },
+    ],
+  },
+  {
     id: "VENUE-matched-ext-P3-P5-2026-07-08",
     kind: "external-browser",
     dateISO: "2026-07-08",

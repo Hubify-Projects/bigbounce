@@ -97,9 +97,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-2",
       number: "2",
       shortTitle: "f_NL = −35/16 SPHEREx forecast",
-      version: "v1.7.102",
+      version: "v1.7.103",
       readiness: 74,
-      pendingWork: "Error-clean + verified, NOT reviewer-accepted. FULL8 board (Jul 8): Grok MINOR · Gemini MAJOR (tone) · ChatGPT REJECT. v1.7.102 closed the Gemini tone-regression MAJOR — neutralized rebuttal/defensive prose across §I, §VI, §VII, §VIII, §IX.E, and App A to declarative scientific register; Cai–Li App-A internal-inconsistency (ChatGPT) truth-audited as MISREAD (Li Eq.4.19 ≡ Cai Eq.37 at c_s=1; −35/16 from vertex re-summation) with one clarifying sentence. NO NUMBER CHANGED, NO DISCLOSURE WEAKENED.",
+      pendingWork: "Error-clean + verified, NOT reviewer-accepted. v1.7.103 (Jul 8) applies the VERIFIED c14 redshift-space (RSD) tree bispectrum Fisher — retires the standing 'independent Fisher is real-space monopole only (~18% offset per Heinrich)' limitation with real computation: Kaiser Z1+SCF99/Sefusatti Z2, growth from the same CAMB Planck2018, orientation-integrated (ℓ=0,2,4 exact). σ(f_NL) tightens to 0.415/0.449 (+34.7% vs real-space 0.687), r_eff≈0.99 persists, f→0 reproduces c13 to 6 sig-figs; unmarginalized −35/16 significance 3.2–3.5σ (real-space floor) → 4.9–5.2σ (RSD), the c12 GR-projection bracket retained EXACTLY. Added Kaiser:1987 + Scoccimarro:1999. NO headline f_NL changed; nothing fabricated.",
     },
     {
       slug: "paper-3",
