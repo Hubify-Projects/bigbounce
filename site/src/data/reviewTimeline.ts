@@ -46,6 +46,31 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "VENUE-matched-ext-P3-P5-2026-07-08",
+    kind: "external-browser",
+    dateISO: "2026-07-08",
+    timePT: "Jul 8 · venue-matched EXT re-baseline (P3→ApJS, P5→MNRAS)",
+    title:
+      "Venue-matched EXT re-baseline (P3 v3.1.144 ApJS · P5 v0.1.107 MNRAS) — grading each paper against its ACTUAL target journal does NOT move the verdicts off the LLM-referee floor",
+    papers: ["P3", "P5"],
+    summary:
+      "The standing EXT boards grade every paper against a Physical Review D referee, but the submission map (submissions/SUBMIT-TODAY-CHECKLIST.md) targets P3 → ApJS/AJ and P5 → MNRAS/PRD. This round re-reviews those two against their ACTUAL target venues in Houston's headed gstack browser, with raw verbatim reviewer text + a screenshot saved and READ before every recorded verdict. Prompts were the same de-biased structure with only the journal and the venue-appropriate framing swapped (P3 = ApJS survey-catalog / data-release paper; P5 = MNRAS observational galaxy-survey analysis). Verdict matrix (ChatGPT/Grok/Gemini): P3 REJECT/MINOR/MAJOR · P5 MAJOR/MINOR/MAJOR. Against the PRD-referee baseline (P3 REJECT/MAJOR/MAJOR from CW2·FULL8; P5 MAJOR/MINOR/MAJOR from CW) venue-matching did NOT move the verdicts materially: P3 Grok drifted MAJOR→MINOR and P5 held its exact shape, both within per-round referee variance (pattern-066), not a venue effect. The persistent objections are journal-agnostic content items the papers already disclose themselves — P3: heterogeneous validated/exploratory/failed tier mix inside the headline counts, the irreproducible eROSITA production score axis, and data/DOI/weights described as not-yet-available-at-review; P5: the analysis depends on per-galaxy chirality labels from the concurrently-submitted Paper IV plus placeholder arXiv/Zenodo IDs. Zero genuinely-new findings. Grok's read was strongly positive on both (P3 'submission-ready / arXiv-drop ready today'; P5 'rock-solid, referee-proof, textbook best-practice for a clean bounded null'); it did not emit an exact VERDICT token and was conservatively classified MINOR from its own language. Both central results were affirmed as sound (P3 catalog + validation useful; P5 null 'well-supported' / 'broadly supported'). Conclusion: the barrier is content/venue-structural, not a mis-targeted-referee artifact — the correct venue does not lift the papers off the LLM-referee floor; the residual majors route to human referees. 6/6 legs harvested with raw text + screenshots, 0 failed legs, 0 fabricated.",
+    keyTakeaways: [
+      "Venue-matched 2×3 from raw (ChatGPT/Grok/Gemini): P3 (ApJS) REJECT/MINOR/MAJOR · P5 (MNRAS) MAJOR/MINOR/MAJOR",
+      "Vs PRD baseline (P3 REJ/MAJ/MAJ · P5 MAJ/MIN/MAJ): only P3 Grok drifted MAJOR→MINOR; P5 held exactly — deltas are referee variance, not a venue effect",
+      "Zero genuinely-new findings — every issue is an already-disclosed limitation (P3 tier heterogeneity / eROSITA axis / data-not-yet-public; P5 Paper IV label dependency / placeholder DOIs)",
+      "Both centrals affirmed sound (P3 catalog useful; P5 null well-supported); barrier is content/venue-structural → human referees, not editable",
+      "6/6 legs harvested with raw verbatim text + screenshots, 0 failed, 0 fabricated (Raws in EXT_real/VENUE_2026-07-08/)",
+    ],
+    links: [
+      { label: "VENUE raw reviews + screenshots", href: `${PR}/EXT_real/VENUE_2026-07-08` },
+      { label: "P3 ChatGPT (ApJS) raw", href: `${PR}/EXT_real/VENUE_2026-07-08/P3_chatgpt.md` },
+      { label: "P3 Gemini (ApJS) raw", href: `${PR}/EXT_real/VENUE_2026-07-08/P3_gemini.md` },
+      { label: "P5 ChatGPT (MNRAS) raw", href: `${PR}/EXT_real/VENUE_2026-07-08/P5_chatgpt.md` },
+      { label: "P5 Gemini (MNRAS) raw", href: `${PR}/EXT_real/VENUE_2026-07-08/P5_gemini.md` },
+    ],
+  },
+  {
     id: "pod-gated-closure-P3-P4-2026-07-08",
     kind: "closure-wave",
     dateISO: "2026-07-08",
@@ -3647,6 +3672,20 @@ export const externalVerdictRounds: ExternalRoundVerdicts[] = [
       P5: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
     },
     note: "CW2 re-test of the second closure wave (P3 v3.1.144, P1A v1A.0.115, P1B v1B.0.104). Verdict matrix (ChatGPT/Grok/Gemini): P1A REJECT/MAJOR/REJECT · P1B REJECT/MAJOR/REJECT · P3 REJECT/MAJOR/REJECT. No ACCEPT anywhere. Vs the FULL8 baseline (P3 ChatGPT-REJ/Grok-MAJ/Gemini-MAJ; P1A REJ/MAJ/MIN; P1B MAJ/MAJ/MAJ): every paper collapsed to the same REJECT/MAJOR/REJECT shape — Grok held MAJOR on all three (P1A/P3 up from REJECT, P1B held), Gemini hardened to REJECT on all three (up from MAJOR/MINOR), ChatGPT held/hardened to REJECT. The P3 title reframe to Anomaly-Candidate Catalog did NOT lift any reviewer past MAJOR — Grok/ChatGPT re-flagged the same validated-catalog-grade + PRD-journal-fit concerns against the reframed title; all three still class P3 as an astronomy-catalog paper outside PRD scope. Both Gemini legs (P1B, P3) hit the EXT7 shared-context tab-collapse, were re-run from a verified-clean fresh session, and persisted (P1B e8e0b842, P3 8d9fd6cf). 9/9 legs harvested with raw verbatim text + screenshots, 0 failed legs, 0 fabricated. P2/P4/P5 not re-swept (NO_VERDICT carry-forward). Raws in EXT_real/CW2_2026-07-08/.",
+  },
+  {
+    roundId: "VENUE-2026-07-08",
+    dateISO: "2026-07-08",
+    windowPT: "Jul 8 · 11:22–11:28 PT · headed browser, raw verbatim text + screenshot READ before every recorded verdict",
+    verdicts: {
+      P1A: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P1B: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P2: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P3: ["REJECT", "MINOR", "MAJOR"],
+      P4: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P5: ["MAJOR", "MINOR", "MAJOR"],
+    },
+    note: "VENUE-MATCHED re-baseline: referee prompts target each paper's ACTUAL journal per the submission map (submissions/SUBMIT-TODAY-CHECKLIST.md) — P3 graded as an ApJS survey-catalog / data-release paper, P5 as an MNRAS observational galaxy-survey analysis (all other papers NO_VERDICT, not swept). Verdict matrix (ChatGPT/Grok/Gemini): P3 REJECT/MINOR/MAJOR · P5 MAJOR/MINOR/MAJOR. Vs the PRD-referee baseline (P3 REJECT/MAJOR/MAJOR from CW2/FULL8; P5 MAJOR/MINOR/MAJOR from CW): venue-matching did NOT move the verdicts materially — P3 Grok drifted MAJOR→MINOR and P5 held its exact shape; both deltas are per-round referee variance, not a venue effect. ChatGPT's P3 REJECT and Gemini's P3/P5 MAJOR persist under the correct venue: the objections are journal-agnostic content items (P3: heterogeneous validated/exploratory/failed tier mix in headline counts, irreproducible eROSITA score axis, data-not-available-at-review; P5: dependency on the concurrently-submitted Paper IV chirality labels + placeholder DOIs). Zero genuinely-new findings — every issue is an already-disclosed limitation the papers name themselves. Grok's positive read (P3 'submission-ready today'; P5 'rock-solid, referee-proof, textbook null') did not emit an exact VERDICT token and was conservatively classified MINOR from its own language. Conclusion: the barrier is content/venue-structural, not a mis-targeted-referee artifact — matching the venue does not lift the papers off the LLM-referee floor. 6/6 legs harvested with raw verbatim text + screenshots, 0 failed legs, 0 fabricated. Raws in EXT_real/VENUE_2026-07-08/.",
   },
 ];
 
