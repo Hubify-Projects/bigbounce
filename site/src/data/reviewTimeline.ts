@@ -46,6 +46,26 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "CW-full8-closure-P3-P1A-P1B-2026-07-08",
+    kind: "closure-wave",
+    dateISO: "2026-07-08",
+    timePT: "Jul 8 · closure wave on FULL8 raws (P3, P1A, P1B)",
+    title:
+      "FULL8 closure wave (P3 v3.1.144 · P1A v1A.0.115 · P1B v1B.0.104) — every editable item closed, no number changed, no disclosure weakened",
+    papers: ["P3", "P1A", "P1B"],
+    summary:
+      "Closure wave on the three remaining papers against their FULL8_2026-07-08 raw reviews. P3 (Grok/Gemini/ChatGPT MAJ/MAJ/REJ): decisive title reframe to a Multi-Survey Anomaly-Candidate Catalog of Reconstruction-Outlier Sources (268,519 unchanged) — the headline now certifies reconstruction-outlier status, not confirmed detections; abstract already led with the process-volume disclosure, 2,468 science-target benchmark and >=15 sigma narrow-line floor; eROSITA/Gaia exclusion made unmissable; Gemini 'delete failures' + ChatGPT journal-fit dispositioned OPINION/structural. P1A (REJ/MAJ/MIN): all four Gemini MINORs closed — R4-is-naturalness clarifier in the abstract, Fierz-lemma scope sentence in App C (what it establishes vs the operators it does not enumerate), NDA/Immirzi framed as a strict theoretical limitation, Sec X classical/quantum-anomaly caveat, App B +1->+4 flagged heuristic; ChatGPT operator-basis completeness objection dispositioned structural (honestly-scoped, not editable without a full proof). P1B (MAJ/MAJ/MAJ, off REJECT first time): LiteBIRD 9 sigma paired in-sentence with the 0.7 sigma model-discrimination separation, Sec III.A DNeff sharpened as a leading-parametric-order EFT estimate, Sec IV NaMaster foreground-free caveat made unmissable, Sec VI ALP framed as a prior-sensitivity exercise, DOI note added; standalone-scope / merge-into-1A items remain structural (Houston-gated). Directive-G hygiene each: 0 undef-refs, latex-audit clean, byte-identical PDF mirrors to all served paths, Convex paperVersions:bump with real md5/pages, static site (papers.ts/live-status.ts) synced same-bundle.",
+    keyTakeaways: [
+      "P3 v3.1.144 — title reframed 'Validated Sources' to 'Anomaly-Candidate Catalog ... Reconstruction-Outlier Sources'; 0 counts changed; md5 0dc4c23c, 34 pp",
+      "P1A v1A.0.115 — all 4 Gemini MINORs closed (R4 framing, Fierz scope, NDA limitation, Sec X quantum caveat, App B heuristic); md5 68b133c7, 39 pp",
+      "P1B v1B.0.104 — every editable item closed (LiteBIRD pairing, DNeff scope, NaMaster caveat, ALP prior, DOI); md5 76dce947, 22 pp",
+      "No number changed and no honest disclosure weakened across all three; structural/scope items left honest and noted for truth-audit",
+    ],
+    links: [
+      { label: "FULL8 raw reviews", href: `${PR}/EXT_real/FULL8_2026-07-08` },
+    ],
+  },
+  {
     id: "CW-ext-retest-2026-07-08",
     kind: "external-browser",
     dateISO: "2026-07-08",
