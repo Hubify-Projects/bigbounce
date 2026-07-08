@@ -9,9 +9,9 @@ const result = await client.mutation(api.paperVersions.bump, {
   version: "v1.7.102",
   datestamp: "July 7, 2026",
   texCommit: "TBD",
-  pdfMd5: "e89a7e0445155ea4f99facf6e9260216",
+  pdfMd5: "266118c10810cd0410f7f33abc4e3bc1",
   pdfPages: 35,
-  pdfSizeBytes: 1339402,
+  pdfSizeBytes: 1339389,
   arxivTarballPath: "submissions/P2/arxiv_p2_v1.7.102.tar.gz",
   sitePdfPath: "papers/02_full_draft_v1.7.102.pdf",
   changelog:
