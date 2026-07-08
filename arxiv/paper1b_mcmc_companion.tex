@@ -260,8 +260,8 @@
 %   FALSIFIED list (14 items) not acted on.)
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1B.0.103}
-\newcommand{\paperTimestamp}{July 7, 2026}
+\newcommand{\paperVersion}{v1B.0.104}
+\newcommand{\paperTimestamp}{July 8, 2026}
 % v1B.0.101->102 (2026-07-07): FINAL-POLISH D-ROUND (presentation + disclosure ONLY;
 %   NO scientific number/claim/derivation changed; verified 0 undef-refs, 0 large
 %   overfull hbox, 22pp). AI-METHODS disclosure upgraded to explicit agentic-pipeline-
@@ -1644,7 +1644,12 @@ fermion number density, $\langle(\bar\psi\gamma^5\gamma^\mu\psi)^2\rangle_T
 \sim n_f^2 \sim (g_\ast\,T^3)^2$ (a parametric estimate: the standard
 finite-temperature scaling of a four-fermion (Fermi-type) contact operator in
 the early-universe plasma~\cite{KapustaGale2006}, with $\mathcal{O}(1)$
-coefficients dropped rather than a rigorous NJL finite-$T$ computation), so that
+coefficients dropped rather than a rigorous NJL finite-$T$ computation;
+\emph{a full finite-temperature NJL computation of the exact prefactor is outside the scope
+of this companion, but is observationally moot: the $10^{-44}$ BBN suppression
+of $\Delta\Neff^{\rm(ECH)}$ renders any $\mathcal{O}(1)$ correction factor
+physically irrelevant at the $\gtrsim$forty-orders-of-magnitude margin from
+CMB-S4 sensitivity}), so that
 \begin{equation}
 \rho_{\rm tor}\;\sim\;G_N\,T^6 ,\qquad
 \frac{\rho_{\rm tor}}{\rho_{\rm rad}}\;\sim\;G_N\,T^2\;=\;
@@ -1678,7 +1683,7 @@ radiation era; the nearest dedicated BBN study
 constrains a distinct torsion-induced neutrino spin-flip channel, not the
 four-fermion energy density, and likewise reports no detectable
 effect~\cite{Bruggen1999}. We therefore do \emph{not} claim a specific
-non-zero torsion $\Delta\Neff$; the honest, first-principles outcome is the
+non-zero torsion $\Delta\Neff$; the honest, leading-parametric-order first-principles estimate yields the
 upper bound of Eq.~(\ref{eq:neff_bound}).
 
 This reframes the MCMC that follows. The stock-CAMB $\Lambda$CDM$+\Delta\Neff$
@@ -2041,18 +2046,18 @@ summary in the published mean and width, not a refit of the
 Eskilt--Komatsu posterior shape.)
 
 \noindent\textbf{Scope note.}---\emph{The NaMaster pseudo-$C_\ell$ analysis
-below is a bias-injection Monte Carlo validation of the deconvolution pipeline
-on synthetic skies,
-not a cosmological measurement. The high pipeline template-fit SNR figures
+below validates only the algebraic $E\!\to\!B$ mode-coupling deconvolution on
+foreground-free synthetic skies; it does \textbf{not} establish a real-sky
+systematic budget (the $\beta$--$\alpha$ calibration degeneracy, galactic
+foregrounds, instrumental beams, and anisotropic noise are all absent by
+construction and explicitly out of scope).
+The high pipeline template-fit SNR figures
 (e.g., $20.32$, $25.71$; fn.~\ref{fn:snr_definition}) refer to recovery of
 injected MC signals and
 \emph{must not} be conflated with the published Planck/ACT~DR6 $2.7$--$2.9\sigma$
-sky detection. Moreover, because the synthetic skies are CMB-only (no galactic
-foregrounds; see ``Simulated skies'' below), this validation cannot address the
-physical separation of the cosmic-rotation angle $\beta$ from the
-instrumental-miscalibration angle $\alpha$: the $\beta$--$\alpha$ degeneracy that
-dominates real-sky birefringence measurements is broken only by unrotated
-foregrounds, which are absent here by construction (cf.\ abstract).}
+sky detection. The $\beta$--$\alpha$ degeneracy that dominates real-sky
+birefringence measurements is broken only by unrotated galactic foregrounds,
+which are absent from these synthetic skies by construction (cf.\ abstract).}
 
 \noindent\textbf{Pipeline configuration.}---The pseudo-$C_\ell$ analysis follows the NaMaster framework~\cite{Alonso2019}.
 \emph{Simulated skies.}---Each Monte Carlo realization is a synthetic
@@ -2433,8 +2438,10 @@ at the quoted precision (see Sec.~\ref{sec:verification}, limitation note).
 
 \section{Cosmic Birefringence: Spectator ALP Consistency Check}\label{sec:birefringence_check}
 
-\textit{Framing (prior-volume accommodation, not an independent test).}---This
-section is an \emph{accommodation / prior-volume} exercise, not an independent
+\textit{Framing (prior-volume accommodation, not an independent test).}---\textbf{The
+accommodation fraction reported here is a prior-predictive / prior-sensitivity exercise
+at fixed $C_{a\gamma}$, not a measurement and not a distinctive ECH prediction.}
+This section is an \emph{accommodation / prior-volume} exercise, not an independent
 confirmation of the birefringence signal. The ALP likelihood is a Gaussian
 summary centred on the single published datum
 $\beta_{\rm obs}=0.342^\circ\pm 0.094^\circ$~\cite{Eskilt2022}, so the
@@ -2934,15 +2941,13 @@ predicting the observed rotation
 \textit{LiteBIRD forecast.}---LiteBIRD is projected to achieve $\sigma(\beta)
 \approx 0.03^\circ$~\cite{LiteBIRD2023} (a forecast under foreground- and
 calibration-control assumptions, not a guaranteed instrument performance).
-For $\beta=0.27^\circ$ this corresponds to $\sim 9\sigma$ statistical
-significance against the $\beta=0$ null. This $9\sigma$ figure is
-\emph{not} a model-discrimination forecast: separating the spectator-ALP
-value $0.27^\circ$ from the current WMAP+Planck central value
-$0.342^\circ\pm 0.094^\circ$ is limited by the published measurement's
-uncertainty, $|0.342-0.27|/\sqrt{0.03^2+0.094^2}\approx 0.7\sigma$, so
-LiteBIRD alone will not separate the spectator-ALP value from the
-observed central value (the two figures correspond to distinct null
-hypotheses).
+For $\beta=0.27^\circ$ this corresponds to a \emph{null-rejection} significance of
+${\sim}9\sigma$ against $\beta=0$, paired with only ${\approx}0.7\sigma$
+model-discrimination separation from the current WMAP+Planck central value
+($|0.342-0.27|/\sqrt{0.03^2+0.094^2}\approx 0.7\sigma$): these two figures address
+\emph{distinct} null hypotheses, and the $9\sigma$ is a detection-of-nonzero-$\beta$
+forecast, \emph{not} a forecast of model discrimination between the spectator-ALP
+value and the published central value.
 
 \textit{Caveats.}---This birefringence prediction is independent of bounce
 cosmology: the ALP is a spectator field that does not participate in the bounce
@@ -3031,8 +3036,10 @@ saturated-displacement regime; see \S\ref{sec:birefringence_check} for the
 explicit numerical derivation). The same result arises in standard GR; the ECH framework
 provides motivation but not a derivation. Under forecast foreground-cleaning
 and calibration assumptions~\cite{LiteBIRD2023}, a $\beta\simeq 0.27^\circ$
-signal would be detected relative to $\beta=0$ at ${\sim}9\sigma$ by
-LiteBIRD in the early 2030s.
+signal would be detected relative to $\beta=0$ (null-rejection) at ${\sim}9\sigma$
+by LiteBIRD in the early 2030s, while the model-discrimination separation from the
+published central value is only ${\approx}0.7\sigma$ (distinct null hypotheses;
+see Sec.~\ref{sec:birefringence_check}).
 
 \subsection*{Data and Code Availability}
 
@@ -3160,7 +3167,11 @@ driver script; all published birefringence values are literature citations.
 
 \textit{HuggingFace datasets.}---The following HuggingFace datasets accompany
 this work (DOI assignment is pending; identifiers will be inserted at
-submission. The URLs are also recorded in the repository
+submission; no DOI is fabricated here. In the interim, the stable references
+are the frozen-chain git commits and repository SHAs pinned in
+\texttt{CHANGELOG.md} and \texttt{reproducibility/}; these are
+version-locked and independently reproducible without a DOI.
+The URLs are also recorded in the repository
 \texttt{CHANGELOG.md} under the entry for \texttt{\paperVersion} and are
 preserved against future README changes via the version-stamp commit
 identified by the changelog):
