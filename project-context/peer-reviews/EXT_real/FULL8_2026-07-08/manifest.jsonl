@@ -4,3 +4,4 @@
 {"tag":"FULL8_2026-07-08","paper":"P5","version":"v0.1.106","reviewer":"grok","verdict":"MINOR REVISIONS","central_claim":"supported","raw":"P5_grok.md","png":"P5_grok.png","ts":"2026-07-07T18:10Z"}
 {"tag":"FULL8_2026-07-08","paper":"P5","version":"v0.1.106","reviewer":"gemini","verdict":"MINOR REVISIONS","raw":"P5_gemini.md","png":"P5_gemini.png","ts":"2026-07-07T18:13Z"}
 {"tag":"FULL8_2026-07-08","paper":"P5","version":"v0.1.106","reviewer":"chatgpt","verdict":"MAJOR REVISIONS","baseline":"MAJOR REVISIONS","raw":"P5_chatgpt.md","png":"P5_chatgpt.png","ts":"2026-07-07T18:17Z"}
+{"tag":"FULL8_2026-07-08","paper":"P2","version":"v1.7.101","reviewer":"grok","verdict":"MINOR REVISIONS","baseline":"MINOR REVISIONS","raw":"P2_grok.md","png":"P2_grok.png","ts":"2026-07-07T18:19Z"}
