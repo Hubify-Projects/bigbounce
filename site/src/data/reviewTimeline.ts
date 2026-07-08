@@ -46,6 +46,27 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "REALWORK-ext-round-2026-07-07",
+    kind: "external-browser",
+    dateISO: "2026-07-07",
+    title:
+      "REALWORK EXT board (P1A/P2/P3) — real content gains (proven Fierz lemma, independent Fisher, eROSITA excision) explicitly credited by reviewers, yet ZERO literal verdict movement: controlled evidence of the referee-structural floor",
+    papers: ["P1A", "P2", "P3"],
+    summary:
+      "REALWORK round: three papers re-swept in the headed browser after real content gains — P1A proved+machine-verified the Fierz-by-Fierz projection lemma (v1A.0.114), P2 built an INDEPENDENT bispectrum Fisher retiring the single-source concession (v1.7.100), P3 landed the eROSITA excision reproducibility chain (v3.1.142). Each gain was explicitly registered and credited in-text by the reviewers (Grok calls the Fierz lemma novel; Gemini credits the Fisher's central claim; Grok credits the eROSITA excision as reproducible), yet produced ZERO literal verdict movement — and ChatGPT even ESCALATED P2 MINOR→REJECT after it gained the Fisher, attacking the new r_eff≈0.99 vs headline r=0.84 as an inconsistency. This is controlled evidence of the referee-structural floor: adding real, credited rigor does not move the harshest-referee verdict word. Verdict matrix: P1A REJECT/MAJOR/MAJOR · P2 REJECT/MINOR/MINOR · P3 NO_VERDICT/MAJOR/REJECT (ChatGPT/Grok/Gemini; P3 ChatGPT leg hung ~27min on the 4.7MB paper → NO_VERDICT; Gemini Thinking stalled but recovered in Pro mode for P1A/P2). P4/P1B/P5 not re-swept this round (NO_VERDICT carry-forward). 2 genuinely-new framing items surfaced and closed same-day (P2 v1.7.101 r-vs-r_eff reconciliation + Fisher presentation; P3 v3.1.143 process-volume-vs-science-target pairing) — no number changed on either. Raw text + screenshots per leg saved to EXT_real/REALWORK_2026-07-07/ and read before every recorded verdict.",
+    keyTakeaways: [
+      "Real, credited content gains (P1A proven Fierz lemma, P2 independent Fisher, P3 eROSITA excision) produced ZERO literal verdict movement — controlled evidence of the referee-structural floor",
+      "ChatGPT ESCALATED P2 MINOR→REJECT after it gained the independent Fisher (attacked the new r_eff≈0.99 vs headline r=0.84) — added rigor moved the verdict the WRONG way",
+      "2 genuinely-new framing items closed same-day (P2 v1.7.101, P3 v3.1.143); no number changed; P3 ChatGPT leg hung on the 4.7MB paper (NO_VERDICT), P4/P1B/P5 not re-swept",
+    ],
+    links: [
+      { label: "EXT raw text + screenshots", href: `${PR}/EXT_real/REALWORK_2026-07-07` },
+      { label: "P1A ChatGPT raw", href: `${PR}/EXT_real/REALWORK_2026-07-07/P1A_chatgpt.md` },
+      { label: "P2 ChatGPT raw", href: `${PR}/EXT_real/REALWORK_2026-07-07/P2_chatgpt.md` },
+      { label: "P3 Grok raw", href: `${PR}/EXT_real/REALWORK_2026-07-07/P3_grok.md` },
+    ],
+  },
+  {
     id: "postpolish-p4-p5-visibility-2026-07-07",
     kind: "closure-wave",
     dateISO: "2026-07-07",
@@ -3459,6 +3480,20 @@ export const externalVerdictRounds: ExternalRoundVerdicts[] = [
       P5: ["MAJOR", "MINOR", "MINOR"],
     },
     note: "Post-polish verification round after the flagship D-round polish: EXT 18/18 headed-browser raw-captured + INT-Claude full-source 5-ACCEPT + INT-API 12/12. ZERO polish regressions except one figure-image bug — P1A Fig-1 (fig_theory_map.png) still rendered the superseded matter-bounce f_NL=-35/8 in its prediction box while the body was uniformly -35/16 (value baked into the PNG, invisible to the v110 text sweep); regenerated + re-mirrored, fixed in v1A.0.112. Notable: P5 drew its first non-REJECT ChatGPT verdict of the campaign (MAJOR); P2 held Grok+Gemini MINOR. All remaining ChatGPT REJECTs and Grok/Gemini majors truth-audited to source-cited re-flags of disclosed scope per pattern-066 — no genuinely-new real findings beyond the P1A figure correction.",
+  },
+  {
+    roundId: "REALWORK-2026-07-07",
+    dateISO: "2026-07-07",
+    windowPT: "Jul 7 · REALWORK headed-browser EXT board (raw text + screenshots saved to EXT_real/REALWORK_2026-07-07/ before every verdict)",
+    verdicts: {
+      P1A: ["REJECT", "MAJOR", "MAJOR"],
+      P1B: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P2: ["REJECT", "MINOR", "MINOR"],
+      P3: ["NO_VERDICT", "MAJOR", "REJECT"],
+      P4: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P5: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+    },
+    note: "REALWORK round: proven Fierz lemma (P1A), independent Fisher (P2), eROSITA excision (P3) — all explicitly credited by reviewers in-text; zero literal verdict movement (ChatGPT escalated P2 MIN→REJ after it gained the Fisher). Controlled evidence of the referee-structural floor; 2 genuinely-new framing items closed same-day (P2 v1.7.101, P3 v3.1.143). P1A/P2/P3 re-swept (ChatGPT P3 leg hung ~27min on the 4.7MB paper → NO_VERDICT; Gemini Thinking stalled but recovered in Pro mode for P1A/P2); P4/P1B/P5 not re-swept this round (NO_VERDICT carry-forward).",
   },
 ];
 
