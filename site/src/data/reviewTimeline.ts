@@ -46,6 +46,28 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "FULL8-ext-round-2026-07-08",
+    kind: "external-browser",
+    dateISO: "2026-07-08",
+    timePT: "Jul 7 · 18:02–18:46 UTC",
+    title:
+      "FULL8 EXT board (all 6 papers) — first full sweep on the latest hardened versions: 3 full-tier lifts tied directly to the real-science closures, zero genuinely-new findings, zero failed legs",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary:
+      "FULL8: first external browser round run across ALL six papers on the latest hardened versions (P1A v1A.0.114, P1B v1B.0.103, P2 v1.7.101, P3 v3.1.143, P4 v1.0.222, P5 v0.1.106). Three full-tier verdict lifts landed, each tied directly to a real-science closure: P1A Gemini MAJOR->MINOR on the proven+machine-verified Fierz projection appendix; P4 ChatGPT REJECT->MAJOR (first-ever) on the exclusion-bound-first framing; P1B ChatGPT REJECT->MAJOR. Verdict matrix (ChatGPT/Grok/Gemini): P4 MAJOR/MINOR/MINOR · P5 MAJOR/MINOR/MINOR · P2 REJECT/MINOR/MAJOR · P3 REJECT/MAJOR/MAJOR · P1A REJECT/MAJOR/MINOR · P1B MAJOR/MAJOR/MAJOR. Zero genuinely-new findings surfaced and zero legs failed. P4 at MIN/MIN/MAJ (Grok+Gemini both MINOR) is the closest to convergence in the program. Raw verbatim reviewer text + a screenshot per leg saved to EXT_real/FULL8_2026-07-08/ and read before every recorded verdict.",
+    keyTakeaways: [
+      "3 full-tier lifts tied directly to real-science closures: P1A Gemini MAJOR->MINOR (proven Fierz appendix), P4 ChatGPT REJECT->MAJOR (exclusion-bound-first framing, first-ever), P1B ChatGPT REJECT->MAJOR",
+      "Zero genuinely-new findings across all 18 legs; zero failed legs — a clean, fully-verifiable full-board sweep",
+      "P4 at MIN/MIN/MAJ (Grok+Gemini both MINOR) is the closest to convergence in the program",
+    ],
+    links: [
+      { label: "EXT raw text + screenshots", href: `${PR}/EXT_real/FULL8_2026-07-08` },
+      { label: "P1A Gemini raw", href: `${PR}/EXT_real/FULL8_2026-07-08/P1A_gemini.md` },
+      { label: "P4 ChatGPT raw", href: `${PR}/EXT_real/FULL8_2026-07-08/P4_chatgpt.md` },
+      { label: "P1B ChatGPT raw", href: `${PR}/EXT_real/FULL8_2026-07-08/P1B_chatgpt.md` },
+    ],
+  },
+  {
     id: "REALWORK-ext-round-2026-07-07",
     kind: "external-browser",
     dateISO: "2026-07-07",
@@ -3494,6 +3516,20 @@ export const externalVerdictRounds: ExternalRoundVerdicts[] = [
       P5: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
     },
     note: "REALWORK round: proven Fierz lemma (P1A), independent Fisher (P2), eROSITA excision (P3) — all explicitly credited by reviewers in-text; zero literal verdict movement (ChatGPT escalated P2 MIN→REJ after it gained the Fisher). Controlled evidence of the referee-structural floor; 2 genuinely-new framing items closed same-day (P2 v1.7.101, P3 v3.1.143). P1A/P2/P3 re-swept (ChatGPT P3 leg hung ~27min on the 4.7MB paper → NO_VERDICT; Gemini Thinking stalled but recovered in Pro mode for P1A/P2); P4/P1B/P5 not re-swept this round (NO_VERDICT carry-forward).",
+  },
+  {
+    roundId: "FULL8-2026-07-08",
+    dateISO: "2026-07-08",
+    windowPT: "Jul 7 · 18:02–18:46 UTC · headed browser, raw text + screenshots per leg",
+    verdicts: {
+      P1A: ["REJECT", "MAJOR", "MINOR"],
+      P1B: ["MAJOR", "MAJOR", "MAJOR"],
+      P2: ["REJECT", "MINOR", "MAJOR"],
+      P3: ["REJECT", "MAJOR", "MAJOR"],
+      P4: ["MAJOR", "MINOR", "MINOR"],
+      P5: ["MAJOR", "MINOR", "MINOR"],
+    },
+    note: "FULL8: first round on the latest hardened versions — 3 full-tier lifts tied directly to the real-science closures (P1A Gemini MAJ→MIN on the proven Fierz appendix; P4 ChatGPT REJECT→MAJOR first-ever on the exclusion-bound-first framing; P1B ChatGPT REJ→MAJ). Zero genuinely-new findings, zero failed legs. P4 at MIN/MIN/MAJ = closest to convergence in the program.",
   },
 ];
 
