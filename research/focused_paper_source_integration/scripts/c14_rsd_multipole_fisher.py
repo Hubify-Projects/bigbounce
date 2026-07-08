@@ -445,9 +445,13 @@ def multitracer_rsd_fisher_zbin(iz, template, channel="full"):
             z1A = (b + fg * m1**2) * WA
             z1B = (b + fg * m2**2) * WB
             z1C = (b + fg * m3**2) * WC
-            dZ1A = dbA0 * WA
-            dZ1B = dbB0 * WB
-            dZ1C = dbC0 * WC
+            # SDB response of a leg: db'_X un-windowed (matches C13 exactly; the
+            # photo-z window multiplies the OBSERVED bias but the SDB Delta b is
+            # an intrinsic bias shift entering before the radial-smoothing map, as
+            # in the C13 base pipeline where dbp carries no W).
+            dZ1A = dbA0
+            dZ1B = dbB0
+            dZ1C = dbC0
 
             # ---- orientation-dependent RSD gravitational mode-coupling SCALAR ----
             # Generalizes C13's B_grav = sum_cyc 2 F2 P_iP_j.  The redshift-space
