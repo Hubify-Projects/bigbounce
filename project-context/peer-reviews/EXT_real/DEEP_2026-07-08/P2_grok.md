@@ -1,0 +1,25 @@
+# P2 (v1.7.102) — Grok Heavy — EXT DEEP round 2026-07-08
+
+- Reviewer: Grok (Heavy mode — badge confirmed "Heavy", 64 sources)
+- Chat URL: https://grok.com/c/9ca80efb-a231-48b4-a436-9387f8b98f1f
+- Harvested: 2026-07-08
+- Thought for 2m 57s
+
+## PROMPT
+You are an expert referee for Physical Review D. Review the attached manuscript to the standard you would apply to a real submission. Respond with exactly: (1) VERDICT: one of ACCEPT / MINOR REVISIONS / MAJOR REVISIONS / REJECT. (2) ISSUES: a numbered list, each prefixed [MAJOR] or [MINOR], naming the specific section/claim and the concrete problem. (3) One sentence on whether the central claim is supported by the evidence presented. Be rigorous and specific; do not inflate or soften.
+
+## RAW RESPONSE (verbatim)
+
+VERDICT: MAJOR REVISIONS
+ISSUES:
+[MAJOR] Sec. II.A and Appendix A (Cai–Li discrepancy resolution): The central claim of settling an 8-year literature discrepancy by identifying a single spurious +(99/128) ∑k_i³ term in Cai et al. Eq. (37) and re-summing the four explicit cubic-action vertices (field redefinition, ζ˙ζ², ˙ζ∂ζ∂χ, ζ(∂i∂jχ)²) to exact squeezed-limit f_NL = −35/16 (matching Li et al. Eq. 5.1 at c_s=1) is asserted with benchmark confirmation (Table I) but without displaying the intermediate ϵ-order-grouped expressions, collapsed polynomial sum, or algebraic trace of the error; this foundational novelty cannot be verified by referee or reader without the unreleased full appendix or code execution.
+[MAJOR] Abstract, Secs. IV, V, VII (headline sensitivity ranges and "real target" framing): The quoted ~2.6–2.75σ optimistic / ~1.3–2.75σ realistic envelopes (and MegaMapper 1.5–3.5σ) are derived solely from rescaling Heinrich et al. σ(f_NL) ≈ 0.7 by template factor r = 0.84 ± 0.02 plus heuristic additive-quadrature systematics (mismatch + ϵ-correction + b_ϕ marginalization + GR projection + photo-z), with endpoints drawn from qualitatively incompatible null procedures (CMB Fisher vs. LSS noise-weighted) and no joint-covariance Fisher over nuisances performed; the paper correctly labels this a "sensitivity envelope" but must either execute the missing joint analysis or relegate/reframe the specific numerical ranges as purely illustrative scoping bounds in the abstract and conclusions.
+[MAJOR] Overall presentation and length (entire manuscript): The text exceeds PRD standards for conciseness through pervasive repetition (r=0.84 definition, r vs. reff reconciliation, "sensitivity recast not independent forecast" qualifier, assumption (d) caveats, and code/script references appear ≥4 times each), long parentheticals, inline scope disclaimers, and footnote-heavy density, rendering the logical flow hard to follow despite excellent technical detail; substantial condensation (target ~30% reduction) with consolidation of validation material into appendices is required.
+[MINOR] Sec. II.C (load-bearing assumptions, especially (d)): The cubic-order bispectrum transmission through the bounce is bounded by O((kη_bounce)²) ≲ 10^{-4} via single-clock nonlinear superhorizon conservation but verified only at linear order and scaled rather than computed; this must be flagged with equal prominence to the headline significance (currently buried) and accompanied by an explicit future-work call for full numerical Maldacena-integral evaluation at the bounce.
+[MINOR] Sec. VI (Bayesian comparison) and Sec. IV (independent Fisher validation): The four-corner BF grid and σ_theory=1.0 recommendation are rigorously sensitivity-tested with MC ensembles, but competitor prior ranges ([−5,+5] vs. [−15,+15]) and Fisher simplifications (tree-level, Gaussian covariance, fixed b₂, no RSD) require upfront consolidated limitations paragraphs and stronger explicit disclaimers that all quoted significances/BFs are prior- and approximation-dependent illustrative results.
+The central claim—that the matter-bounce f_NL is robustly −35/16 within the enumerated assumptions and provides a realistic, discriminatory SPHEREx target—is supported by the evidence presented (vertex re-summation benchmarks, 10k-sample null-space scan with r_cos>0.97, 200-realization injection-recovery, in-house Fisher reproduction of Heinrich baseline to 2–11%, and explicit prior-sensitivity tables).
+
+## TRUTH-AUDIT SUMMARY
+- VERDICT: MAJOR REVISIONS
+- 3 MAJOR: (1) appendix-A algebra not fully displayed — DISPLAY-request re-flag; Appendix A + tools/ derivation exist in repo, an editable presentation gap not a correctness error; (2) sensitivity-envelope framing — already labeled "sensitivity envelope"/"recast not forecast" in paper; reviewer asks to reframe abstract numerics, an editable disclosure/scope item; (3) length/repetition — presentation/condensation, editable. 2 MINOR: assumption-(d) prominence + Bayesian prior disclaimers, both disclosure/presentation.
+- No genuinely-new physics-correctness finding: all 3 MAJORs are presentation/disclosure/display-of-work items, not new errors. The Cai–Li resolution correctness is not challenged (reviewer says "cannot be verified without the appendix," i.e. wants the algebra shown, not that it is wrong).

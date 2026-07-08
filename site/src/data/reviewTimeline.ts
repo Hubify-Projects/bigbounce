@@ -46,6 +46,33 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "DEEP-tier-ext-P4-P2-2026-07-08",
+    kind: "external-browser",
+    dateISO: "2026-07-08",
+    timePT: "Jul 8 · deep-tier EXT sweep (Grok Heavy · Gemini Deep Research Pro · ChatGPT Deep Research)",
+    title:
+      "Deep-tier EXT sweep (P4 v1.0.223 · P2 v1.7.102) — each reviewer's strongest mode surfaces ZERO ACCEPT and ZERO genuinely-new findings; the deep pass does not lift either paper off the LLM-referee floor",
+    papers: ["P4", "P2"],
+    summary:
+      "Ran the two active-close papers through each reviewer's DEEPEST mode — Grok Heavy, Gemini Deep Research (Pro), ChatGPT Deep Research — in Houston's headed gstack browser, with raw verbatim reviewer text + a screenshot saved and READ before every recorded verdict. Verdict matrix (ChatGPT/Grok/Gemini): P4 MAJOR/MINOR/MAJOR · P2 REJECT/MAJOR/MAJOR. Zero ACCEPT anywhere; after per-finding source-cited truth-audit, zero genuinely-new real findings on either paper. P4: Gemini's deep report AFFIRMS the null is sound ('conclusively dismantles the persistent literature claims'; edge-on contamination 'neutralized' by the test-time-augmentation equivariance; the 46k GZ1 human-only cross-check 'a vital anchor'; the generative-null leakage diagnosis 'a masterclass') — its three requested majors are a training-data-provenance PDF-truncation documentation gap, a request to formally calibrate (Platt/temperature) the classifier scores before the confidence cut, and a formal joint spatial covariance for the already-disclosed ~47% unmodeled ℓ=1 harmonic residual (the SAME residual Grok-Heavy called MINOR and ChatGPT re-flagged). Notably, the alarming items in Gemini's exploratory thinking-stream (an 18σ→5.5σ dilution 'error', a WLS σ below the Fisher floor) did NOT survive into its own final synthesis, which concludes the equivariance neutralizes them — so they were recorded from the verdict-of-record report, not the trace. P2: all three deep reviewers CONVERGE on one load-bearing objection — that the Cai-Li −35/16 resolution rests on vertex re-summation / operator-algebra rather than a full numerical in-in contour integration across the bounce — yet none challenge −35/16 as wrong, and the paper itself discloses it does not claim a full numerical in-in re-derivation (02_full_draft.tex L1370) and names that computation its #1 follow-up. ChatGPT's harsher P2 REJECT literally re-quotes the paper's OWN honest disclosure (the spurious +(99/128)Σk³ term added alone gives +2.58, the wrong sign, 'not by itself the full mechanism', L1334) as if it were a hidden inconsistency; the −35/16 result is certified three independent ways (Cai's own ε-order-grouped intermediates sum exactly, the direct vertex-sum squeezed limit, and Li et al. Eq. 5.1 at c_s=1). Every remaining item on both papers (additive-quadrature systematic budget, cubic-transmission assumption (d), Bayesian prior-volume BF≈4, Fingers-of-God, PBH/PTA literature context) is a source-cited re-flag of a limitation each paper discloses itself. Conclusion: the deepest reviewer tier confirms pattern-066 (universal referee variance) and directive-H (a maximally-harsh LLM referee's structural floor) — the barrier is venue/human-referee-structural, not an editable content-correctness gap. 6/6 legs harvested with raw verbatim text + screenshots (including the two pre-saved Grok-Heavy legs), 0 failed legs, 0 fabricated.",
+    keyTakeaways: [
+      "Deep-tier 2×3 from raw (ChatGPT/Grok/Gemini): P4 MAJOR/MINOR/MAJOR · P2 REJECT/MAJOR/MAJOR — zero ACCEPT, zero genuinely-new findings",
+      "P4: Gemini's deep report affirms the null is sound (edge-on 'neutralized', GZ1 cross-check 'vital', generative nulls 'a masterclass'); 3 majors = doc-gap + calibration rigor-add + already-disclosed ~47% ℓ=1 residual",
+      "P2: all three deep reviewers converge on 'wants full numerical in-in, not vertex re-summation' — a limitation the paper discloses itself (L1370); none challenge −35/16 as wrong (certified 3 ways)",
+      "ChatGPT's P2 REJECT re-quotes the paper's own honest +2.58-wrong-sign disclosure (L1334) as a flaw — a source-cited re-flag, not a new error",
+      "Deep tier does not lift either paper off the LLM-referee floor (pattern-066 / directive-H): barrier is venue/human-referee-structural. 6/6 legs raw+screenshot, 0 failed, 0 fabricated (Raws in EXT_real/DEEP_2026-07-08/)",
+    ],
+    links: [
+      { label: "DEEP raw reviews + screenshots", href: `${PR}/EXT_real/DEEP_2026-07-08` },
+      { label: "P4 ChatGPT (Deep Research) raw", href: `${PR}/EXT_real/DEEP_2026-07-08/P4_chatgpt.md` },
+      { label: "P4 Grok (Heavy) raw", href: `${PR}/EXT_real/DEEP_2026-07-08/P4_grok.md` },
+      { label: "P4 Gemini (Deep Research) raw", href: `${PR}/EXT_real/DEEP_2026-07-08/P4_gemini.md` },
+      { label: "P2 ChatGPT (Deep Research) raw", href: `${PR}/EXT_real/DEEP_2026-07-08/P2_chatgpt.md` },
+      { label: "P2 Grok (Heavy) raw", href: `${PR}/EXT_real/DEEP_2026-07-08/P2_grok.md` },
+      { label: "P2 Gemini (Deep Research) raw", href: `${PR}/EXT_real/DEEP_2026-07-08/P2_gemini.md` },
+    ],
+  },
+  {
     id: "RSD-fisher-closure-P2-2026-07-08",
     kind: "closure-wave",
     dateISO: "2026-07-08",
@@ -3710,6 +3737,20 @@ export const externalVerdictRounds: ExternalRoundVerdicts[] = [
       P5: ["MAJOR", "MINOR", "MAJOR"],
     },
     note: "VENUE-MATCHED re-baseline: referee prompts target each paper's ACTUAL journal per the submission map (submissions/SUBMIT-TODAY-CHECKLIST.md) — P3 graded as an ApJS survey-catalog / data-release paper, P5 as an MNRAS observational galaxy-survey analysis (all other papers NO_VERDICT, not swept). Verdict matrix (ChatGPT/Grok/Gemini): P3 REJECT/MINOR/MAJOR · P5 MAJOR/MINOR/MAJOR. Vs the PRD-referee baseline (P3 REJECT/MAJOR/MAJOR from CW2/FULL8; P5 MAJOR/MINOR/MAJOR from CW): venue-matching did NOT move the verdicts materially — P3 Grok drifted MAJOR→MINOR and P5 held its exact shape; both deltas are per-round referee variance, not a venue effect. ChatGPT's P3 REJECT and Gemini's P3/P5 MAJOR persist under the correct venue: the objections are journal-agnostic content items (P3: heterogeneous validated/exploratory/failed tier mix in headline counts, irreproducible eROSITA score axis, data-not-available-at-review; P5: dependency on the concurrently-submitted Paper IV chirality labels + placeholder DOIs). Zero genuinely-new findings — every issue is an already-disclosed limitation the papers name themselves. Grok's positive read (P3 'submission-ready today'; P5 'rock-solid, referee-proof, textbook null') did not emit an exact VERDICT token and was conservatively classified MINOR from its own language. Conclusion: the barrier is content/venue-structural, not a mis-targeted-referee artifact — matching the venue does not lift the papers off the LLM-referee floor. 6/6 legs harvested with raw verbatim text + screenshots, 0 failed legs, 0 fabricated. Raws in EXT_real/VENUE_2026-07-08/.",
+  },
+  {
+    roundId: "DEEP-2026-07-08",
+    dateISO: "2026-07-08",
+    windowPT: "Jul 8 · deep-tier sweep · Grok Heavy + Gemini Deep Research (Pro) + ChatGPT Deep Research · headed browser, raw verbatim text + screenshot READ before every recorded verdict",
+    verdicts: {
+      P1A: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P1B: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P2: ["REJECT", "MAJOR", "MAJOR"],
+      P3: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P4: ["MAJOR", "MINOR", "MAJOR"],
+      P5: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+    },
+    note: "DEEP-TIER sweep of P4 (v1.0.223) + P2 (v1.7.102) with each reviewer's strongest mode — Grok Heavy, Gemini Deep Research (Pro), ChatGPT Deep Research. Verdict matrix (ChatGPT/Grok/Gemini): P4 MAJOR/MINOR/MAJOR · P2 REJECT/MAJOR/MAJOR (P1A/P1B/P3/P5 not swept, NO_VERDICT carry-forward). ZERO ACCEPT anywhere and — after per-finding source-cited truth-audit — ZERO genuinely-new real findings on either paper. P4: Gemini's deep report explicitly affirms the null is sound ('conclusively dismantles the persistent literature claims', edge-on contamination 'neutralized' by TTA equivariance, GZ1 human cross-check 'vital', generative nulls 'a masterclass'); its 3 majors are a training-provenance PDF-truncation doc gap, an NN-score-calibration rigor-add, and the already-disclosed ~47% ℓ=1 residual — the SAME residual Grok-Heavy (MINOR) and ChatGPT flagged. P2: the load-bearing objection on which all three deep reviewers CONVERGE is 'the Cai-Li −35/16 resolution uses vertex re-summation / operator-algebra, not a full numerical in-in contour integration across the bounce' — but none challenge −35/16 as wrong, and the paper itself discloses it does not claim a full numerical in-in re-derivation (02_full_draft.tex L1370) and flags it as the #1 follow-up. ChatGPT's P2 REJECT MAJOR#1 literally re-quotes the paper's OWN honest '+2.58 wrong-sign, not a naive additive shift' disclosure (L1334) as if it were a hidden inconsistency; the resolution is certified three ways (ε-order-grouped intermediates sum exactly, vertex-sum squeezed limit, Li Eq. 5.1 at c_s=1). Every other item on both papers (additive-quadrature budget, cubic-transmission assumption d, Bayes prior volume, FoG, PBH/PTA context) is a source-cited re-flag of a limitation each paper discloses itself. Deep-tier did NOT lift either paper off the LLM-referee floor and surfaced no new editable error — confirming pattern-066 (universal referee variance) and directive-H (harsh-referee structural floor): the barrier is venue/human-referee-structural, not content-correctness. 6/6 legs harvested with raw verbatim text + screenshots (incl. the 2 pre-saved Grok-Heavy legs), 0 failed legs, 0 fabricated. Raws in EXT_real/DEEP_2026-07-08/.",
   },
 ];
 

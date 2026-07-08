@@ -98,8 +98,8 @@ export const liveStatus: LiveStatus = {
       number: "2",
       shortTitle: "f_NL = −35/16 SPHEREx forecast",
       version: "v1.7.103",
-      readiness: 74,
-      pendingWork: "Error-clean + verified, NOT reviewer-accepted. v1.7.103 (Jul 8) applies the VERIFIED c14 redshift-space (RSD) tree bispectrum Fisher — retires the standing 'independent Fisher is real-space monopole only (~18% offset per Heinrich)' limitation with real computation: Kaiser Z1+SCF99/Sefusatti Z2, growth from the same CAMB Planck2018, orientation-integrated (ℓ=0,2,4 exact). σ(f_NL) tightens to 0.415/0.449 (+34.7% vs real-space 0.687), r_eff≈0.99 persists, f→0 reproduces c13 to 6 sig-figs; unmarginalized −35/16 significance 3.2–3.5σ (real-space floor) → 4.9–5.2σ (RSD), the c12 GR-projection bracket retained EXACTLY. Added Kaiser:1987 + Scoccimarro:1999. NO headline f_NL changed; nothing fabricated.",
+      readiness: 62,
+      pendingWork: "Error-clean + verified, NOT reviewer-accepted. DEEP-tier EXT sweep (Jul 8, each reviewer's strongest mode): ChatGPT Deep Research REJECT · Grok Heavy MAJOR · Gemini Deep Research MAJOR. Readiness 62 = 50 (verified base) + Grok MAJOR (+6) + Gemini MAJOR (+6) + ChatGPT REJECT (0). All three deep reviewers converge on ONE load-bearing objection — the Cai-Li −35/16 resolution uses vertex re-summation / operator-algebra, not a full numerical in-in contour integration across the bounce — a limitation the paper discloses itself (02_full_draft.tex L1370) and names its #1 follow-up; none challenge −35/16 as wrong (certified 3 ways). ChatGPT's REJECT re-quotes the paper's OWN honest +2.58-wrong-sign disclosure (L1334) as a flaw. Zero genuinely-new findings; content unchanged since v1.7.103 (c14 RSD Fisher). Raw verbatim + screenshots in EXT_real/DEEP_2026-07-08/.",
     },
     {
       slug: "paper-3",
@@ -114,8 +114,8 @@ export const liveStatus: LiveStatus = {
       number: "4",
       shortTitle: "8.47M-galaxy chirality null at sub-percent sensitivity",
       version: "v1.0.223",
-      readiness: 80,
-      pendingWork: "Error-clean + verified, NOT reviewer-accepted. CW re-test (Jul 8): Grok MINOR · Gemini MINOR · ChatGPT MAJOR — P4 remains the closest to convergence in the program (Grok+Gemini both MINOR, only ChatGPT's structural-floor MAJOR outstanding). Real-space ℓ=1 dipole +0.41σ null robust; every number preserved. Raw verbatim reviewer text + screenshots in EXT_real/CW_2026-07-08/.",
+      readiness: 74,
+      pendingWork: "Error-clean + verified, NOT reviewer-accepted. DEEP-tier EXT sweep (Jul 8, each reviewer's strongest mode): ChatGPT Deep Research MAJOR · Grok Heavy MINOR · Gemini Deep Research MAJOR. Readiness 74 = 50 (verified base) + Grok MINOR (+12) + Gemini MAJOR (+6) + ChatGPT MAJOR (+6). Gemini's deep report AFFIRMS the null is sound (edge-on contamination 'neutralized' by the TTA equivariance, the GZ1 human cross-check 'a vital anchor', the generative-null leakage diagnosis 'a masterclass') — its 3 majors are a training-provenance PDF-truncation doc gap, an NN-score-calibration rigor-add, and the already-disclosed ~47% ℓ=1 residual (the same residual Grok-Heavy called MINOR). Real-space ℓ=1 dipole +0.41σ null robust; zero genuinely-new findings. Raw verbatim + screenshots in EXT_real/DEEP_2026-07-08/.",
     },
     {
       slug: "paper-5",
