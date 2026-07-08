@@ -4,10 +4,10 @@ ARXIV SUBMISSION METADATA — P1A
 title:   Channel-Level Amplitude Closure of Four Enumerated Minimal
          Einstein--Cartan--Holst Dark-Energy Routes Under Stated Assumptions,
          and Perturbation Transparency for Scalar Matter
-version: v1A.0.114
-bundle:  arxiv_p1a_v1A.0.114.tar.gz
-pages:   38
-pdf_md5: 37de050aa00bfdedfa23837efce07af7
+version: v1A.0.115
+bundle:  arxiv_p1a_v1A.0.115.tar.gz
+pages:   39
+pdf_md5: 68b133c7618778fc67ba105a8833dccd
 main_file: paper1a_ech_nogo.tex
 primary_category: gr-qc
 cross_lists: astro-ph.CO, hep-th
@@ -26,11 +26,11 @@ other_files:
   scripts/fierz_lemma_check.py  (machine-verified Fierz-lemma proof, App. Fierz)
 
 standalone_verify:
-  compile: pdflatex x2, exit 0 all passes (extract-and-recompile smoke test)
+  compile: pdflatex x3 + bibtex, exit 0 all passes (extract-and-recompile smoke test)
   undefined_refs: 0
   undefined_citations: 0
-  output_pages: 38
-  verified: 2026-07-07
+  output_pages: 39
+  verified: 2026-07-08
 
 =====================================================================
 SUBMISSION_NOTE — COORDINATED SUBMISSION (READ BEFORE POSTING)

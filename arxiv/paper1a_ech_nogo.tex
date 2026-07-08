@@ -47,8 +47,24 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.114}
-\newcommand{\paperTimestamp}{July 7, 2026}
+\newcommand{\paperVersion}{v1A.0.115}
+\newcommand{\paperTimestamp}{July 8, 2026}
+% v1A.0.114->115 (2026-07-08): FULL8 closure edits. (1) Abstract + §IV opening: sharpened
+%   R4 framing to make unmissably clear that "amplitude closure" applies to R1–R3 only;
+%   R4 closes by naturalness/explanatory-deficit (CC relocation), NOT amplitude suppression.
+%   (2) §IV Scope + App C: added explicit Fierz-lemma scope sentence stating what the
+%   lemma establishes (basis-completeness of parity-odd four-fermion contact sector at
+%   M_Pl-power-counting within minimal ECH field content) and what it does NOT enumerate
+%   (derivative four-fermion terms, curvature-torsion invariants, chiral/flavor structures,
+%   dynamical topological coefficients, non-minimal torsion irreps). (3) §IV D/E (R2/R3):
+%   added sentence framing NDA one-loop/Immirzi-running inputs as a STRICT THEORETICAL
+%   LIMITATION (bounded EFT input, not a UV-complete flow derivation). (4) §X (sec:transparency):
+%   added sentence noting Holst-term perturbation transparency is proven CLASSICALLY; whether
+%   it survives quantum loop corrections / anomalies is NOT claimed and is outside scope.
+%   (5) tab:companion_inputs caption: already carries "non-load-bearing / context only" note;
+%   no change needed. (6) App B (app:dimensions): added sentence flagging on-shell curvature-
+%   dressing "+1→+4" promotion as a heuristic dimensional argument, not a full field-theoretic
+%   formalization. No numbers changed; no math changed; no disclosures weakened.
 % v1A.0.113->114 (2026-07-07): FIERZ-LEMMA PROOF APPLIED (completeness MAJOR closure).
 %   The operator-basis completeness argument previously named ONE open item -- the
 %   fully explicit Fierz-by-Fierz projection lemma -- as "left to follow-up". That
@@ -1058,7 +1074,13 @@ amplitude mismatch but by an explanatory-deficit / cosmological-constant
 fine-tuning objection: the same coupling that reproduces $\beta_{\rm obs}$
 requires an ultralight-mass tuning $m_\theta\!\sim\!H_0$ to also produce
 $\rho_\Lambda$, relocating the CC problem rather than solving it
-(Sec.~\ref{sec:r4_birefringence}). This is a
+(Sec.~\ref{sec:r4_birefringence}).
+The phrase ``amplitude closure'' in the title applies strictly to R1--R3 (which
+are each ruled out by an explicit amplitude-suppression argument); R4 is
+\emph{not} amplitude-suppressed but is instead closed by this
+naturalness/explanatory-deficit route, and is included in the
+channel-level count because it exhausts the fourth minimal-ECH dark-energy channel.
+This is a
 channel-level assessment, \emph{not} an operator-level theorem: the four
 enumerated routes (NJL, one-loop EA, Immirzi running, parity-CMB) are not
 proven to be a complete diffeomorphism-invariant operator basis for the
@@ -2729,6 +2751,18 @@ $\rho_\Lambda$, using the pessimistic $\Delta\gamma/\gamma \sim 0.3$)
 leaves $\gtrsim 60$ orders of magnitude of margin against any
 $\mathcal{O}(1)$ rescaling of the chiral-asymmetry coefficient, and the
 derived $1.4\times10^{-6}$ value only widens that margin.
+\emph{Strict theoretical limitation:} the NDA one-loop operator (R2) and
+Immirzi-running (R3) inputs used here are bounded EFT inputs, not UV-complete
+flow derivations---the R2 absolute normalization requires a controlled solution
+to the ST Riccati system (no real fixed point; ST explicitly state they could
+not solve it satisfactorily), and the R3 chiral-count
+Eq.~\eqref{eq:gamma_running} is an order-of-magnitude ansatz rather than the
+full Benedetti--Speziale four-fermion-driven RG flow at all loop orders.
+These represent the strict theoretical limitation of the R2/R3 analysis within
+current loop-gravity technology; the $\gtrsim 60$-order closure margins make
+the qualitative conclusions robust to this limitation, but the inputs cannot be
+promoted to precision derivations without a UV-complete treatment of the coupled
+Holst$+$fermion RG system.
 
 \subsection{Route 4 (parity-odd CMB coupling via spectator ALP or
 neutrino current): naturalness objection rather than amplitude
@@ -3563,6 +3597,20 @@ spin density; (2)~the gravitational action includes kinetic terms for torsion
 (Poincar\'{e} gauge theory); (3)~non-minimal derivative couplings between the
 Holst sector and matter are introduced.
 
+\textit{Quantum scope limitation.}---The perturbation-transparency result is
+established at the \emph{classical} level: it follows from the algebraic
+Bianchi identity $R_{\mu[\nu\rho\sigma]}=0$ on the torsion-free Levi-Civita
+connection, which is an exact classical identity, and from the algebraic
+(non-derivative) Cartan constraint that sources no torsion for canonical
+scalar matter. Whether classical Holst-sector decoupling survives quantum loop
+corrections---in particular, whether graviton loops, matter loops, or
+chiral/gravitational anomalies could reintroduce propagating torsion degrees of
+freedom or source an effective Holst contribution at the quantum level---is
+\emph{not} claimed here and lies outside the stated scope of this result.
+The perturbation-transparency theorem is a statement about the classical
+scalar-matter sector of ECH; its quantum extension would require a separate
+analysis of the one-loop effective action in the Holst$+$scalar sector.
+
 \subsection{Implications}
 
 The perturbation-transparency result establishes a clean dichotomy:
@@ -4159,6 +4207,19 @@ curvature $R\sim\MPl^{2}$ gives
 \end{equation}
 a bounce-era density that must dilute by $e^{-3N_{\rm tot}}\sim10^{-122}$
 ($N_{\rm tot}\!\approx\!94$) to reach $\rho_\Lambda^{\rm obs}$.
+The $+1\!\to\!+4$ mass-dimension promotion in Case~II is a
+\emph{heuristic dimensional argument}: absorbing the three missing mass powers
+into on-shell bounce curvature factors ($R\sim\MPl^2$) is a
+dimensional assignment consistent with the single-scale power-counting logic,
+but it does not constitute a full field-theoretic formalization (e.g.,
+a controlled effective-operator construction demonstrating that the specific
+curvature insertion is gauge-invariant, diffeomorphism-covariant, and free of
+operator-mixing contributions at the bounce scale). This limitation is
+explicitly disclosed; the NDA order-of-magnitude conclusion that the
+natural density sits at $\rho_\Lambda^{\rm ECH}\sim\MPl^4$ is unchanged by
+this caveat, since both Case~I and Case~II land at the same Planck-scale
+ceiling via the single-scale power-counting logic, regardless of which
+off-shell completion is adopted.
 \par
 \textit{The single-scale NDA no-go.}---In both admissible completions the
 three missing mass powers are $\MPl$ (the only scale), so any
@@ -4298,6 +4359,21 @@ coefficient bookkeeping is added.) The only operators evading this bound require
 a \emph{non-minimal} completion (a new light scale $\mu\ll M_{\rm Pl}$,
 trace/tensor torsion irreps, or a dynamical Chern--Simons field), which is the
 stated scope boundary of the no-go.
+
+\textit{Scope of the lemma (what it establishes and what it does not).}---The
+Fierz lemma establishes basis-completeness of the \emph{parity-odd four-fermion
+contact sector} at $M_{\rm Pl}$-power-counting within the minimal ECH field
+content (tetrad, algebraic torsion via Cartan constraint, Holst term, and
+minimally-coupled fermion). It does \emph{not} enumerate: derivative four-fermion
+terms suppressed by additional powers of momentum/$M_{\rm Pl}$; curvature-torsion
+mixed invariants built from higher-order contractions of the Riemann tensor and
+spin current; chiral/flavor structures involving independent fermion species
+beyond the single-species minimal content; dynamical topological coefficients
+arising from a promoted Immirzi field; or non-minimal torsion irreps
+(trace-vector and tensor irreps) that appear only when the minimal coupling
+assumption is relaxed. The claim is scoped to the minimal-ECH field content at
+the stated power-counting order; it is not a complete operator-level no-go over
+all diffeomorphism-invariant operators in the full gravitational EFT space.
 
 %% --- C: Line-of-sight birefringence derivation ---
 \section{Line-of-Sight Birefringence from the Maxwell--Chern--Simons
