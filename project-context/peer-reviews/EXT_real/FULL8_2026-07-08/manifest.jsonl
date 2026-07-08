@@ -10,3 +10,4 @@
 {"tag":"FULL8_2026-07-08","paper":"P3","version":"v3.1.143","reviewer":"grok","verdict":"MAJOR REVISIONS","baseline":"MAJOR REVISIONS","raw":"P3_grok.md","png":"P3_grok.png","ts":"2026-07-07T18:28Z"}
 {"tag":"FULL8_2026-07-08","paper":"P3","version":"v3.1.143","reviewer":"gemini","verdict":"MAJOR REVISIONS","baseline":"MAJOR REVISIONS","raw":"P3_gemini.md","png":"P3_gemini.png","ts":"2026-07-07T18:30Z"}
 {"tag":"FULL8_2026-07-08","paper":"P3","version":"v3.1.143","reviewer":"chatgpt","verdict":"REJECT","baseline":"REJECT/FAILED","raw":"P3_chatgpt.md","png":"P3_chatgpt.png","ts":"2026-07-07T18:33Z"}
+{"tag":"FULL8_2026-07-08","paper":"P1A","version":"v1A.0.114","reviewer":"grok","verdict":"MAJOR REVISIONS","baseline":"MAJOR REVISIONS","raw":"P1A_grok.md","png":"P1A_grok.png","ts":"2026-07-07T18:35Z"}
