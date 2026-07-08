@@ -1,0 +1,28 @@
+{
+  "script": "scripts/recompute_spatial_chi2_excised.py",
+  "purpose": "Exact spatial-uniformity chi^2 on the 377,482 post-excision (Gaia-500 + eROSITA-298 removed) headline set, closing the pod-gated item in INT_v3/P3_erosita_closure_2026-07-07.md.",
+  "data_source": "/Users/houstongolden/.cache/huggingface/hub/datasets--bamfai--bigbounce-anomaly-catalog/snapshots/7749ba039589a95c21cd3167d2db50b4c3b78cb9/pathc_unique_objects.parquet",
+  "data_source_note": "HuggingFace bamfai/bigbounce-anomaly-catalog pathc_unique_objects.parquet; per-object ra_mean/dec_mean + survey provenance incl. all LAMOST DR10 positions. NOT fabricated; positions are the committed catalog.",
+  "method": "NSIDE=64 HEALPix; uniform mean over OCCUPIED pixels; chi^2 = sum (n-nbar)^2/nbar (Poisson variance). Identical to r24conf_pod_session_batch.py item #35.",
+  "validation_against_pod": {
+    "reference": "r24conf_pod_session_batch.json item35 7way_headline",
+    "pod_chi2": 376713.1413133129,
+    "pod_n_objects": 378280,
+    "reproduced_chi2": 376713.1413133129,
+    "reproduced_n_objects": 378280,
+    "n_match": true,
+    "chi2_match_within_1": true
+  },
+  "excised_set_377482": {
+    "n_objects": 377482,
+    "n_occupied_pixels": 23637,
+    "n_total_pixels": 49152,
+    "nbar_per_occupied_pixel": 15.969962347167577,
+    "chi2": 365427.70398588537,
+    "dof": 23636,
+    "chi2_reduced": 15.460640716952334
+  },
+  "prior_shipped_chi2_on_inclusive_378280": 376713.1413133129,
+  "delta_chi2_vs_inclusive": -11285.437327427557,
+  "validated": true
+}

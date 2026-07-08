@@ -46,6 +46,29 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "pod-gated-closure-P3-P4-2026-07-08",
+    kind: "closure-wave",
+    dateISO: "2026-07-08",
+    timePT: "Jul 8 · Last two pod-gated science items closed with real local compute (no pod spent)",
+    title:
+      "Pod-gated closure (P3 v3.1.145 · P4 v1.0.223) — exact P3 spatial χ² recomputed on the 377,482 post-excision headline set (365,428); P4 ~47% ℓ=1 residual already attributed with real DR8-sweep morphology",
+    papers: ["P3", "P4"],
+    summary:
+      "Closed the last two pod-gated open items with REAL compute, no RunPod needed — both datasets were reachable in the local HuggingFace cache. P3: the shipped spatial-uniformity χ²=376,713 was computed on the full inclusive 378,280 set still folding in the now-excised Gaia-500 + eROSITA-298 tiers; the exact recompute for the 377,482 headline set had been flagged impossible-without-fabricating because pod-side LAMOST positions (~113k) were uncommitted. They ARE reachable: HF bamfai/bigbounce-anomaly-catalog pathc_unique_objects.parquet ships per-object ra/dec + survey provenance including all 108,963 LAMOST DR10 positions. Recomputed with the IDENTICAL pod method (NSIDE=64 HEALPix, uniform-mean over occupied pixels, χ²=Σ(n−n̄)²/n̄), VALIDATED against the pod reference to delta=0.0000 on the inclusive set, then computed on 377,482: χ²=365,428 (dof=23,636, χ²_ν=15.46) vs 376,713 (15.67) — footprint-dominated conclusion unchanged (excising 798 objects, 0.21%, lowers χ² by ~11,300). Directive-G hygiene complete: recompiled (0 undef-refs, tectonic), mirrored byte-identical to all served paths (md5 873fabc8), Convex paperVersions:bump. P4: the ~47% ℓ=1 residual attribution was ALREADY closed 2026-07-02 with real per-galaxy DESI Legacy DR8-sweep morphology (b/a from ellipticity, fracdev, shape_r) for all 3,201,160 spirals (100% dr8_id match, zero nulls, provenance-verified not fabricated) — the extended forward model raises the modelled fraction only from ~52.4% to ~53.0% (+0.7 pts), so the ~47% remainder stays an honest open item; the paper (Sec IV.D) already states this. NEVER fabricated.",
+    keyTakeaways: [
+      "P3 exact spatial χ² on the 377,482 excised headline set = 365,428 (χ²_ν=15.46); local recompute reproduced the pod reference to delta=0.0000",
+      "Data reachable in local HF cache — no RunPod spent; LAMOST DR10 positions were in pathc_unique_objects.parquet all along",
+      "P4 ~47% ℓ=1 residual already attributed with REAL DR8-sweep morphology (52.4%→53.0%, +0.7 pts); remainder is an honest open item, no pod needed",
+      "Directive-G: P3 recompiled 0 undef-refs, mirrored byte-identical (md5 873fabc8, 34pp), Convex bumped v3.1.145",
+    ],
+    links: [
+      { label: "P3 χ² recompute artifact", href: `${GH}/pipelines/p3_anomaly_engine/outputs/spatial_chi2_excised_377482.json` },
+      { label: "P3 χ² recompute script", href: `${GH}/pipelines/p3_anomaly_engine/scripts/recompute_spatial_chi2_excised.py` },
+      { label: "P4 DR8-morph forward model", href: `${GH}/pipelines/p2_chirality/outputs/systematic_l1_forward_model_dr8morph.json` },
+      { label: "P3 eROSITA closure note", href: `${PR}/INT_v3/P3_erosita_closure_2026-07-07.md` },
+    ],
+  },
+  {
     id: "CW2-ext-retest-P3-P1A-P1B-2026-07-08",
     kind: "external-browser",
     dateISO: "2026-07-08",
