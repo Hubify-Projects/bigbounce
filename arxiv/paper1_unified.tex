@@ -51,8 +51,27 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \providecommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1U.0.4}
+\newcommand{\paperVersion}{v1U.0.5}
 \newcommand{\paperTimestamp}{July 9, 2026}
+% v1U.0.4->0.5 (2026-07-09): W11 EXT presentation-closure wave (NO number changed, nothing
+%   fabricated, no math altered). THE ask (ChatGPT B2 + Gemini Blocker-1, identical): brought
+%   the formally dimension-4 OFF-SHELL parity-odd operator into the MAIN TEXT at Eq.(Seff_comp):
+%   new displayed Eq.(Seff_dim4) S_eff^(4)=int sqrt(-g) sum_n c_n O_n^[4] over the closed O1-O6
+%   basis (Wilson coeffs c_n dim 0 => bona-fide dim-4 densities), with the explicit statement
+%   that the dim-+1 form of Eq.(Seff_comp) is an ON-SHELL PRESENTATION SHORTHAND for that closed
+%   dim-4 set (algebraic torsion eliminated + one curvature stripped by Bianchi), cross-ref to
+%   App B.1 app:dim4_completion + Table tab:dim4_parityodd where the closure was already DERIVED.
+%   The +1-vs-+4 counting is now framed as a property of the on-shell reduction, not an ill-defined
+%   action. (2) Grok "light polishing" list closed: R4 quintessence/f(R) contrast sentence added
+%   (the m_theta~H0 tuning is FORCED by one coupling sourcing both beta_obs and rho_Lambda, not an
+%   added handle); Route-2 margin robustness parenthetical (inflating the one-loop prefactor by 10
+%   OOM still leaves >=48 orders of suppression margin); perturbation-transparency exclusions
+%   rationale sentence (the four excluded sectors are exactly the only ways to reintroduce T!=0).
+%   Abstract/intro evasion-condition + N_tot=92+-2 order-of-magnitude framing already present
+%   (v1A.0.84/107, App B L4503) — verified, no re-edit needed. (3) Gemini/ChatGPT editorial
+%   cross-talk minor: struck the "not the 10^-2 that an earlier draft mis-stated" internal-note
+%   phrasing at Sec IV.E, stating the corrected Delta gamma/gamma~0.3 directly. Version+date bump,
+%   served-PDF re-mirror, Convex paperVersions:bump in same bundle (directive G).
 % v1U.0.3->0.4 (2026-07-09): P1U round-2 REAL-WORK closure wave. (1) Gemini MAJOR
 %   "dim-+1 operator wants full dim-4 completion" — CLOSED BY REAL DERIVATION: new
 %   App B subsection app:dim4_completion enumerates every local gauge-invariant
@@ -1803,14 +1822,37 @@ In components, the leading contribution reduces to
 S_{\rm eff} = \int d^4x\,\sqrt{-g}\;\frac{\alpha}{M}\;\varepsilon^{\mu\nu\rho\sigma}\,e^I_\mu\,e^J_\nu\,\mathcal{F}_{IJ\rho\sigma},
 \end{equation}
 which has naive mass dimension $[\mathcal{L}_{\rm odd}] = +1$---three units
-short of the required $+4$ (see Appendix~\ref{app:dimensions} for the full
-dimensional counting). We state this off-shell mismatch deliberately and do
-\emph{not} claim the operator is dimension-$4$: with $[\alpha]=0$, $[M]=+1$,
-$[e^I_\mu]=0$, and $[\mathcal{F}_{IJ\rho\sigma}]=+2$, the integrand carries
-mass dimension $-1+2=+1$, so $\mathcal{L}_{\rm odd}$ is genuinely dimension-$+1$
-off-shell (in agreement with the referee bookkeeping that flags the mismatch).
+short of the required $+4$ (with $[\alpha]=0$, $[M]=+1$, $[e^I_\mu]=0$, and
+$[\mathcal{F}_{IJ\rho\sigma}]=+2$, the integrand carries mass dimension
+$-1+2=+1$). We state this off-shell mismatch deliberately.
+\emph{The dimension-$+1$ form of Eq.~\eqref{eq:Seff_comp} is an on-shell
+presentation shorthand, not the fundamental action term.} The formally
+dimension-$4$, gauge-invariant, diffeomorphism-covariant off-shell operator
+of which it is the leading representative is the closed local basis
+\begin{equation}\label{eq:Seff_dim4}
+S_{\rm eff}^{(4)} = \int d^4x\,\sqrt{-g}\sum_{n} c_n\,\mathcal{O}_n^{[4]},
+\qquad \{\mathcal{O}_n^{[4]}\}=\{\mathrm{O1}\text{--}\mathrm{O6}\},
+\end{equation}
+the six local dimension-$4$ parity-odd densities that minimal-ECH field
+content admits (Holst dual, Nieh--Yan, Pontryagin, torsion-square,
+axial--torsion, single-curvature dual), enumerated with their fate in
+Appendix~\ref{app:dim4_completion} (Table~\ref{tab:dim4_parityodd}). Each
+Wilson coefficient $c_n$ carries genuine mass dimension $0$ so that every
+$c_n\mathcal{O}_n^{[4]}$ is a bona-fide dimension-$4$ density; the
+algebraic Cartan constraint $T=\kappa S$, the first (algebraic) Bianchi
+identity, and Chern--Weil exactness collapse this basis to (i) topological
+total derivatives (O2, O3), (ii) the $\MPl^{-2}$-suppressed Fierz-closed
+four-fermion sector (O4, O5), or (iii) Bianchi-vanishing single-curvature
+densities (O1, O6). Passing to the on-shell branch (algebraic torsion
+eliminated, one curvature factor stripped by the Bianchi identity) reduces
+this closed dimension-$4$ set to the single dimension-$+1$ representative
+displayed in Eq.~\eqref{eq:Seff_comp}: the $+1$-vs-$+4$ counting is a
+property of that on-shell reduction, not of an ill-defined action.
 The identification $\rho_\Lambda = \Xi\,\MPl^4$ is therefore governed by a
-\textit{single-scale NDA dimensional no-go}: the three-unit deficit forces
+\textit{single-scale NDA dimensional no-go} that holds identically for the
+formal dimension-$4$ basis and its dimension-$+1$ shorthand
+(Appendix~\ref{app:dim4_completion} verifies the closure survives at genuine
+dimension~$4$ without the on-shell dressing): the three-unit deficit forces
 the missing powers to $\MPl^3$ (the only scale in minimal ECH), so the
 natural density is $\sim\MPl^4$, never $(\text{meV})^4$
 (Appendix~\ref{app:dimensions}). This is a dimensional-impossibility
@@ -2128,7 +2170,12 @@ reheating-rate quantity), while the fixed
 $[(\alpha/M)\,\MPl] \sim 10^{-2}$ prefactor does no work on the cosmological
 constant problem itself. The framework has not solved the
 cosmological constant problem; it has only relocated the fine-tuning into
-inflationary initial conditions.
+inflationary initial conditions. Unlike a rolling quintessence or $f(R)$
+scalar, whose potential is engineered by hand to yield $\rho_\Lambda$, the
+$m_\theta\!\sim\!H_0$ tuning here is \emph{forced} by the requirement that a
+single coupling source both the birefringence angle $\beta_{\rm obs}$ and
+$\rho_\Lambda$: the tuning is not an added handle but the residue of demanding
+a single-scale minimal-ECH origin for two observables at once.
 
 \subsubsection{Galaxy Spin Alignment Mechanism}\label{sec:spinmech}
 
@@ -2691,7 +2738,11 @@ $\mathrm{eV}$-vs-$\mathrm{GeV}$ unit conversion is exact
 $1\,\mathrm{GeV} = 10^9\,\mathrm{eV}$ and is not a source of
 ambiguity), i.e.\ the one-loop induced $\beta$ is suppressed by
 ${\approx}60$ (conservatively $\geq 58$) orders of magnitude relative
-to the observed signal. We adopt this contraction as the canonical Route-2 estimate;
+to the observed signal. The qualitative closure is robust to the illustrative
+prefactor: even inflating the one-loop coefficient by ten orders of magnitude
+leaves ${\gtrsim}\,48$ orders of suppression margin, so no plausible
+$\mathcal{O}(1)$--$\mathcal{O}(10^{10})$ normalization ambiguity reopens the
+route. We adopt this contraction as the canonical Route-2 estimate;
 an alternative ordering that contracts the $H_0$ factor with the
 dimensionful coupling differently yields a deliberately loose
 $\sim 10^{-33}$ upper bound, not used in the closure.
@@ -2807,8 +2858,7 @@ $(N_F^L-N_F^R)=\mathcal{O}(1)$ and a GUT-to-IR lever arm
 $\ln(\mu_{\rm GUT}/\mu_{\rm IR})\approx 30$--$35$
 ($\mu_{\rm GUT}\sim 10^{16}$, $\mu_{\rm IR}\sim 1\,\text{GeV}$),
 this is numerically $\Delta\gamma/\gamma \approx 0.25$--$0.30$
-(a few$\,\times 10^{-1}$; e.g.\ $32/(12\pi^2)\approx 0.27$), \emph{not}
-the $10^{-2}$ that an earlier draft mis-stated for this expression.
+(a few$\,\times 10^{-1}$; e.g.\ $32/(12\pi^2)\approx 0.27$).
 We therefore adopt the larger $\Delta\gamma/\gamma \sim 0.3$ as the
 \emph{conservative} (least-suppressed) order-of-magnitude estimate ---
 \emph{not} a precisely derived value, but a conservative upper bound
@@ -3593,7 +3643,12 @@ dynamical-Immirzi-field, fermion-loop, and non-minimal-matter sectors --- where
 $T\neq0$ and the result need not hold --- are explicitly outside the stated
 scope; the theorem is a statement about the scalar-matter sector of ECH, which
 is precisely the Levi-Civita branch, so the $T=0$ hypothesis is the theorem's
-domain rather than a gap in it.
+domain rather than a gap in it. These four are exactly the exclusions relevant
+to the late-time dark-energy claim: each is the only way to reintroduce a
+non-vanishing $T$ (a nonzero spin source, a torsion kinetic term, a running
+$\gamma$, or a spin-carrying matter coupling) once canonical scalar matter has
+set the classical spin density to zero, so ruling them out is what makes the
+$T=0$ branch the operative one for a scalar-dominated late universe.
 
 \subsection{Proof (Scalar Sector)}\label{sec:transp_proof}
 
