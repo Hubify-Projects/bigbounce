@@ -46,6 +46,28 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "P5-R9-closure-2026-07-09",
+    dateISO: "2026-07-09",
+    kind: "ext-closure",
+    title:
+      "P5 R9 EXT closure v0.1.107→v0.1.108 — Grok MINOR / ChatGPT MAJOR / Gemini MAJOR(conditional-on-Paper-IV). 0 genuinely-new real findings; closures = consolidated systematics budget + DR2 pre-registration + Paper-IV co-review request. ZERO numbers changed",
+    papers: ["P5"],
+    summary:
+      "Owner-agent closure of the R9 3-reviewer EXT sweep on P5 (DESI chirality void/non-void null). Verdict matrix (ChatGPT/Grok/Gemini) = MAJOR/MINOR/MAJOR. Per-finding source-cited truth-audit: every MAJOR is a re-flag of already-disclosed content (Paper-IV companion dependency + placeholder arXiv/DOI = submission-time structural, algebraically-monopole-invariant headline refereeable from public GZ1/DESI/DESIVAST alone; post-hoc primary-path already declared with a priori basis + Bonferroni-5 family headline; T-Web already demoted to secondary with the 17.6%→0.75% survey-shell collapse foregrounded; 0.5–0.6pp bound already labeled counting-only). Real closeable items closed in-paper: (1) Grok's consolidated systematic-budget ask — added an explicit next-leading-systematics accounting (geometry ≤0.6pp, match-radius 0.02pp, footprint 0.13pp, classifier-confidence ≤0.24pp), each sub-dominant to the 0.34–0.37pp membership term, so the 0.5–0.6pp envelope is unchanged; (2) Grok's post-hoc concern — added a DR2 pre-registration commitment (timestamped ex-ante plan fixing estimand/family/grid/thresholds); (3) Grok's bright/dark mock ask — flagged the end-to-end injection–recovery mock as the DR2 validation step (secondary T-Web diagnostic, not headline), with a bound on primary leakage; (4) made the Paper-IV coordinated co-review request unmissable at the referee-response flag site; (5) reframed the 'Response to common referee concerns' section as a reader's navigation guide (Gemini's defensive-tone minor). ZERO quantitative values changed — all edits are framing/disclosure. Directive-G hygiene: v0.1.107→v0.1.108, date→July 9 2026, recompile 0 undef-refs + 0 overfull hbox (39pp), md5 08ef947c mirrored byte-identical to all served paths, Convex paper-5 bumped, standalone-verified arXiv tarball rebuilt.",
+    keyTakeaways: [
+      "0 genuinely-new real findings across all 3 reviewers — pattern-066 floor: MAJORs are source-cited re-flags of disclosed content (Paper-IV dependency, post-hoc path, T-Web survey-shell, counting-only CI)",
+      "Real closures: consolidated next-leading-systematics budget (each < the 0.34–0.37pp membership term; 0.5–0.6pp envelope unchanged) + DR2 pre-registration commitment + Paper-IV coordinated co-review request made unmissable",
+      "ZERO quantitative values changed — framing/disclosure edits only; no figure regeneration needed (directive I6 satisfied by inspection)",
+      "Directive-G: v0.1.108-2026-07-09, 39pp, 0 undef/0 overfull, md5 08ef947c mirrored to all served paths, Convex paper-5 bumped, standalone tarball verified",
+    ],
+    links: [
+      { label: "P5 R9 raw reviews + screenshots", href: `${PR}/EXT_real/R9_2026-07-09` },
+      { label: "ChatGPT raw (MAJOR)", href: `${PR}/EXT_real/R9_2026-07-09/P5_chatgpt.md` },
+      { label: "Grok raw (MINOR)", href: `${PR}/EXT_real/R9_2026-07-09/P5_grok.md` },
+      { label: "Gemini raw (MAJOR, conditional on Paper IV)", href: `${PR}/EXT_real/R9_2026-07-09/P5_gemini.md` },
+    ],
+  },
+  {
     id: "P1U3-EXT-retest-2026-07-09",
     dateISO: "2026-07-09",
     kind: "external-browser",

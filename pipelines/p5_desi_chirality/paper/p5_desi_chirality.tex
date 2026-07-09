@@ -41,7 +41,7 @@
 % The divide-by-h claim (~1246 h⁻¹ Mpc) is INVERTED. No pipeline recompute required.
 % If any future reviewer re-raises this, cite env_finder/01_compute_vweb.py:106-108.
 
-\newcommand{\paperVersion}{v0.1.107-2026-07-07}
+\newcommand{\paperVersion}{v0.1.108-2026-07-09}
 % v0.1.107-2026-07-07 (FULL8 EXT closure: Grok+Gemini MINORs + ChatGPT editable MAJORs closed.
 %   All edits are (a) real clarifying additions, (b) making already-present disclosures unmissable,
 %   or (c) honest data-gated flags. ZERO verified numbers changed.
@@ -651,7 +651,7 @@
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{July 7, 2026}
+\date{July 9, 2026}
 
 \begin{abstract}
 \textbf{Headline result:} spiral galaxy chirality shows no void/non-void
@@ -986,9 +986,10 @@ Jeffreys binomial credible intervals and label-shuffle permutation nulls
 (Sections~\ref{sec:results}--\ref{sec:phase2}). The test is
 bounce-model agnostic.
 
-\paragraph{Response to common referee concerns.}
-Six recurring concerns are addressed in dedicated locations, signposted
-here so they need not be re-derived on a fresh read:
+\paragraph{Reader's guide to six recurring concerns.}
+This is a navigation aid, not a preemptive defense: each of the six
+concerns below is fully treated in a dedicated section, and we signpost the
+location here purely so a referee need not re-derive it on a fresh read.
 \emph{(i) Relation to the companion Paper~IV catalog.}
 Paper~IV~\cite{golden_chirality_2026} is a companion catalog paper posted
 to arXiv concurrently under coordinated submission (\paperIVarxiv), not an
@@ -1002,7 +1003,13 @@ validation, and monopole origin are reproduced self-contained in
 Appendix~\ref{app:paper4_methods} and tabulated with provenance in
 Table~\ref{tab:p4_inputs} (\S\ref{sec:p4}, \S\ref{sec:data}). The residual
 is therefore one of \emph{citation timing} (Paper~IV's arXiv identifier is
-inserted on posting), not of vettability.
+inserted on posting), not of vettability. \emph{We request that this
+manuscript be co-reviewed with Paper~IV under coordinated submission:} the
+two are posted the same day, the placeholder \paperIVarxiv\ resolves to
+Paper~IV's real identifier at that time, and any editorial acceptance of the
+present null may be made contingent on Paper~IV's acceptance without
+altering the algebraically monopole-invariant headline contrast, which is
+already refereeable from the public GZ1/DESI/DESIVAST data alone.
 \emph{(ii) Post-hoc primary-path choice / garden of forking paths.}
 The DESIVAST-anchored path is declared primary explicitly and
 \emph{post-hoc}, with an enumerated analysis-tree table separating the
@@ -1023,11 +1030,20 @@ of matched galaxies to a different class (\S\ref{sec:systematics}), while
 leaving every per-class parity null invariant. This is precisely why the
 headline is anchored on the volume-limited DESIVAST primary rather than
 on the T-Web void bin.
-\emph{(iv) DESIVAST is a fixed-void-geometry redshift-space test.} This
-is stated as a bound rather than immunity, with a direct
-$\sigma_v/(aH)\!=\!5$\,Mpc/$h$ finger-of-god Monte Carlo showing
+\emph{(iv) DESIVAST is a fixed-void-geometry redshift-space test, and the
+$0.5$--$0.6$\,pp bound is an approximate sensitivity envelope, not a firm
+systematic exclusion.} This is stated as a bound rather than immunity, with a
+direct $\sigma_v/(aH)\!=\!5$\,Mpc/$h$ finger-of-god Monte Carlo showing
 $\Delta f_{\rm CW}$ stable to $<0.4$\,pp under membership perturbation
-(\S\ref{sec:desivast_primary}).
+(\S\ref{sec:desivast_primary}). The tabulated CI folds only counting
+statistics plus the $\pm0.34$--$0.37$\,pp fixed-void-geometry membership
+term; a consolidated accounting of the next-leading systematics
+(geometry choice $\le0.6$\,pp, match-radius $0.02$\,pp, footprint
+$0.13$\,pp, classifier-confidence $\le0.24$\,pp) shows each is sub-dominant
+to that membership term and does not widen the $0.5$--$0.6$\,pp envelope
+(\S\ref{sec:desivast_primary}). We present the $0.5$--$0.6$\,pp figure as an
+approximate effective $2\sigma$ sensitivity, not a complete systematic
+budget or a hard exclusion.
 \emph{(v) Classifier monopole is not a single scalar.} The monopole
 enters only the $\sigma_{\rm pred}$ diagnostics (not the headline
 contrast), and its anisotropic-eigenvalue (non-scalar) RSD channel for
@@ -1607,7 +1623,17 @@ estimand was designated post-hoc (no timestamped plan predates the data),
 so the ${\sim}0.5$\,pp bound should be read with the look-elsewhere caveat
 that it is the tightest of several correlated void-definition estimators;
 the honestly-quotable family statement is the uniform Bonferroni-5 null,
-not any single most-favorable row.
+not any single most-favorable row. To remove the residual
+garden-of-forking-paths concern in the follow-up, we commit that the
+DESI~DR2 re-measurement will be \emph{pre-registered} before the DR2
+void/non-void contrast is read: a timestamped analysis plan will fix the
+primary estimand (the DESIVAST-successor VoidFinder void/non-void
+$\Delta f_{\rm CW}$ on the volume-limited low-$z$ BGS anchor), the
+Bonferroni-5 estimator family, the smoothing/threshold grid, and the
+significance thresholds \emph{ex ante}, so the DR2 result is confirmatory
+rather than post-hoc. The present DR1 bound is best read as the tightest of
+several correlated void-definition estimators within an already-uniform
+null family.
 
 \textbf{Analysis-tree declaration.}
 Table~\ref{tab:analysis_tree} enumerates the full analysis tree tested
@@ -2144,7 +2170,20 @@ residuals; the BGS-selection-function interpretation is supported by
 the contingency test ($\chi^2\!=\!4933$, Cram\'{e}r's $V\!=\!0.078$)
 and logistic regression (\S\ref{sec:results_within_class_density}),
 but a small residual ambiguity remains and future DR2 + Rubin data
-are invoked to resolve it (see \S\ref{sec:lsst}).
+are invoked to resolve it (see \S\ref{sec:lsst}). The definitive test
+is an end-to-end injection--recovery mock: inject the measured
+per-imaging-leg / per-target-program classifier bias into a
+selection-function-matched DESI mock, propagate it through the
+T-Web classification, and re-measure the filament bright-vs-dark
+$\Delta f_{\rm CW}$ to check whether the observed
+$|z|\!\approx\!2.1\sigma$ amplitude is fully reproduced. We do not run
+this mock here --- it requires a DR2-grade selection-function mock and
+bears only on the \emph{secondary} T-Web diagnostic, not on the headline
+--- and we flag it explicitly as the DR2 validation step. Because the
+DESIVAST primary path is constructed on the volume-limited $z\!\le\!0.24$
+BGS anchor where target-program mixing is far more constrained, a
+comparable leakage into the primary $\Delta f_{\rm CW}\!=\!+0.0007$ null
+is bounded well below the quoted $0.5$--$0.6$\,pp envelope.
 Together with the catalog-level bright-vs-dark difference
 ($0.81$\,pp, $|z| = 1.95$ unique-galaxy; \S\ref{sec:systematics}), this is the
 most notable residual structure in the paper after
@@ -2582,7 +2621,25 @@ reconstruction error of order the void effective radius itself
 fixed-void-geometry stress test. We do not claim full RSD immunity
 (a reconstructed-position rerun is deferred; see \S\ref{sec:limitations}),
 but the MC bound demonstrates that plausible fixed-geometry membership
-uncertainty does not destabilize the $0.5$--$0.6$\,pp window. We note that
+uncertainty does not destabilize the $0.5$--$0.6$\,pp window.
+\emph{Next-leading systematics are each sub-dominant to this membership
+term} and therefore do not widen the $0.5$--$0.6$\,pp effective $2\sigma$
+envelope: the void-center/effective-radius geometry choice moves
+$\Delta f_{\rm CW}$ by $\le 0.6$\,pp between the permissive hole-union and
+the exact maximal-sphere interior and stays flat across all five
+Bonferroni-5 void definitions ($|\Delta f_{\rm CW}| \le 0.004$;
+\S\ref{sec:desivast_three_algo}); the $1''$ cross-match radius is flat to
+$0.02$\,pp across $\{0.5,1,2,3,5\}''$ and the imaging-footprint split to
+$0.13$\,pp (Table~\ref{tab:systematics_splits}); and the
+classifier-confidence variation drifts by at most $0.24$\,pp under the
+$p_{\rm cls\_eq}^{\max}\!\ge\!0.7$ high-confidence cut. Each of these is
+smaller than the $0.34$--$0.37$\,pp membership systematic that already sets
+the width of the folded bound, so the quoted $0.5$--$0.6$\,pp effective
+$2\sigma$ envelope is not altered by the next-leading terms; the one
+structured residual (the ${\sim}2\sigma$ BGS-bright/dark target-program
+split) is by construction suppressed in the volume-limited $z\!\le\!0.24$
+DESIVAST primary path (\S\ref{sec:results_vweb}) and is flagged, not folded,
+as a diagnostic for DR2. We note that
 this RSD-robustness argument applies to the per-galaxy void-membership
 test itself; the internal composition of the ``non-void'' control
 sample (a mix of walls, filaments, and clusters) is still subject to
