@@ -87,7 +87,7 @@ export const papers: Paper[] = [
     slug: "paper-1a",
     number: "1",
     title: "Channel-Level Closure of Four Minimal Einstein–Cartan–Holst Dark-Energy Routes and Perturbation Transparency for Scalar Matter, with a Technical Verification Companion (MCMC · NaMaster · Spectator-ALP)",
-    version: "v1U.0.6",
+    version: "v1U.0.7",
     lastUpdated: "2026-07-09",
     tldr: "Unified Paper 1: closes all four minimal Einstein–Cartan–Holst routes from a quantum bounce to dark energy and proves the Holst sector is invisible to scalar/tensor perturbations, then verifies the program with the former Paper 1B technical companion (309K-sample ΛCDM+ΔN_eff MCMC, NaMaster pipeline recovery, spectator-ALP birefringence check) folded in as appendices — self-contained. Two clean kill-tests remain (LiteBIRD birefringence, SPHEREx f_NL).",
     path: publicationPath({}),
@@ -115,10 +115,10 @@ export const papers: Paper[] = [
       "arXiv endorsement + submission — gated behind a reviewer ACCEPT (packets are ready; reviews are not passed)",
     ],
     preprintId: "HUBIFY-2026-001",
-    pdfMeta: "PDF · 61 pp · v1U.0.6 · updated Jul 9, 2026 · md5 43737a88 — W12 EXT closure. Dimensional truth-audit: ChatGPT was RIGHT that the bare Table-VII invariants O1/O2/O4/O6 are naive dim-2, so 'dimension-4 basis with dimensionless coefficients' was a main-text transcription slip (the appendix derivation was correct). Fixed: new Eq. (7) companion display writes each O_n^[4] with its explicit M_Pl² prefactor (O3/O5 already dim-4, bare) so every c_n·O_n^[4] is a genuine dim-4 density with dimensionless c_n; Table VII gains dim + prefactor columns (now full-width). No physics conclusion changed — closure survives at dimension 4; symbolic checks re-pass. Also fully promoted the completeness argument into the main text (unanimous W12 ask): inline Bianchi-vanishing + Cartan→Fierz collapse + topological-total-derivative closure, with the appendix keeping the derivations.",
+    pdfMeta: "PDF · 61 pp · v1U.0.7 · updated Jul 9, 2026 · md5 b94cf94e — process-leak scrub. Two body-text sentences that referenced the internal review process were rewritten as standalone scientific prose (no number changed, nothing fabricated): the dimension-4 operator-bookkeeping paragraph (Sec II A 2) now states the mass-dimension point directly, and the Ω_a definition subsection now motivates the explicit derivation by reproducibility. A corpus grep of all five paper sources confirmed no other body-text process leaks (remaining model mentions are the legitimate AI-methods disclosure).",
     artifacts: [
-      { label: "Read PDF", href: "/papers/paper1_unified_v1U.0.6.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/paper1_unified_v1U.0.6.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/paper1_unified_v1U.0.7.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/paper1_unified_v1U.0.7.pdf", kind: "secondary", download: true },
       {
         label: "LaTeX source",
         href: "https://github.com/Hubify-Projects/bigbounce/blob/main/arxiv/paper1a_ech_nogo.tex",
