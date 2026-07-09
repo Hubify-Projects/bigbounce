@@ -9,7 +9,7 @@ import os, sys, json, time, warnings, datetime, pathlib
 warnings.filterwarnings("ignore")
 
 REPO = pathlib.Path("/Users/houstongolden/Desktop/CODE_YOU/bigbounce")
-OUTDIR = REPO / "project-context/peer-reviews/INT_v3/ROUND_2026-07-08"
+OUTDIR = REPO / "project-context/peer-reviews/INT_v3/ROUND_2026-07-09"
 OUTDIR.mkdir(parents=True, exist_ok=True)
 MANIFEST = OUTDIR / "manifest.jsonl"
 
@@ -21,6 +21,7 @@ PAPERS = {
     "P3":  ("v3.1.144",  "pipelines/p3_anomaly_engine/paper3_draft.pdf"),
     "P4":  ("v1.0.223",  "pipelines/p2_chirality/chirality_catalog_paper.pdf"),
     "P5":  ("v0.1.107",  "pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf"),
+    "P1U": ("v1U.0.1",   "arxiv/paper1_unified.pdf"),
 }
 
 OPENAI_MODEL = "gpt-5.5"
