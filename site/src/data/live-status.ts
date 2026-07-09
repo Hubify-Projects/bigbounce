@@ -81,9 +81,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-1a",
       number: "1A",
       shortTitle: "ECH dark-energy closure + perturbation transparency",
-      version: "v1U.0.4",
+      version: "v1U.0.5",
       readiness: 62,
-      pendingWork: "UNIFIED Paper 1 (P1B merged in as appendices): 60pp self-contained; v1U.0.4 is a REAL-WORK closure wave against the v1U.0.3 EXT majors — (1) DERIVED the genuine local dimension-4 parity-odd operator completion Gemini asked for (new App B subsection, Table VII, O1–O6; symbolic-verified script dim4_parityodd_enumeration.py: single-scale NDA closure survives at dim 4 without the on-shell dressing — O1/O6 vanish by algebraic Bianchi, O4/O5 collapse to the Fierz-closed four-fermion basis, O2/O3 are exact total derivatives); (2) WROTE OUT the perturbation-transparency proof term-by-term (perturbed tetrad + composite Levi-Civita connection, order-by-order Holst-dual Bianchi vanishing in scalar+tensor sectors) closing Grok's 'outline-level' major; (3) made the first-principles ΔNeff^(ECH)~1e-43 result unmissable so the stock-CAMB proxy reads as a conservative >40-orders envelope, not an unknown-standing proxy; (4) sharpened the title to 'Channel-Level Constraints … (Amplitude Closure for R1–R3, Naturalness Closure for R4)'. No fabrication, no weakened disclosure. Awaiting next EXT re-test.",
+      pendingWork: "UNIFIED Paper 1 (P1B merged in as appendices): 60pp self-contained; v1U.0.5 is a W11 EXT presentation-closure wave (no number changed, nothing fabricated). THE ask (ChatGPT B2 + Gemini Blocker-1, identical): brought the formally dimension-4 OFF-SHELL parity-odd operator into the MAIN TEXT at Eq. (6) — new displayed Eq. (7) S_eff^(4)=∫√−g Σ_n c_n O_n^[4] over the closed O1–O6 basis, with the explicit statement that the dim-+1 form is an on-shell presentation shorthand for that closed dim-4 set (algebraic torsion eliminated + one curvature stripped by Bianchi), cross-ref to App B.1 where the closure was already derived. Grok's polishing list closed: R4 quintessence/f(R) contrast (the m_θ~H0 tuning is forced by one coupling sourcing both β_obs and ρ_Λ); Route-2 margin robustness (inflating the one-loop prefactor by 10 OOM still leaves ≥48 orders of margin); perturbation-transparency exclusions rationale. Struck the Sec IV.E 'earlier-draft mis-stated' editorial cross-talk (Gemini/ChatGPT minor). Awaiting next EXT re-test.",
     },
     {
       slug: "paper-1b",
@@ -97,9 +97,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-2",
       number: "2",
       shortTitle: "f_NL = −35/16 SPHEREx forecast",
-      version: "v1.7.105",
+      version: "v1.7.106",
       readiness: 64,
-      pendingWork: "Error-clean + verified. R9 EXT sweep (Jul 9): ChatGPT major-revisions · Grok major-revisions · Gemini ACCEPT-with-minor-revisions (up from the Jul-8 DEEP MAJOR; Gemini praised the vertex-algebra correction as 'valuable service to the community'). Readiness 64 = 50 (verified base) + Grok major (+6) + Gemini minor (+8) + ChatGPT major (0). v1.7.105 closes the ONE load-bearing objection all reviewers converge on at referee granularity: Appendix A Table VII now walks EACH of Cai's four cubic vertices through the squeezed + equilateral limits (per-vertex fNL summing exact-fraction to −35/16 / −255/128, transcribed verbatim from the committed sympy cert — the 'full term-by-term derivation table' Grok+ChatGPT asked for). Also added a consolidated gauge-vs-physical-frame table (Gemini minor). −35/16 unchanged, certified 3 ways; the remaining objection (full numerical in-in contour integration across the bounce) is the paper's disclosed #1 follow-up, not editable at the recast scope. Raw verbatim + screenshots in EXT_real/R9_2026-07-09/.",
+      pendingWork: "Error-clean + verified. W11 EXT sweep (Jul 9): Grok publication-ready for PRD/JCAP/MNRAS · Gemini + ChatGPT major-revisions, all three crediting the per-vertex table with resolving the 8-year factor-of-two f_NL=−35/16. v1.7.106 closes the residual editable items (all forecast-methodology / claim-strength, no math changed): calibrated the abstract to state the vertex re-summation yields −35/16 EXACTLY + Li's independent derivation decisively favors it (ChatGPT claim-strength — the full algebraic Cai-polynomial→vertex-sum map was already displayed as Eq. vertexsum/collapsed/order_grouped/spurious); made the SPHEREx additive-quadrature budget explicit as displayed Eq. (11) bracketed to ~14% by the ρ=−0.868 marginalized floor (Gemini 'soft'); labeled MegaMapper decisively as an uncalibrated high-z projection (Gemini); fixed the stale f_NL≈−4 → −2 (ChatGPT minor). −35/16 unchanged, certified 3 ways. Raw verbatim + screenshots in EXT_real/W11_2026-07-09/.",
     },
     {
       slug: "paper-3",
