@@ -1,0 +1,76 @@
+{
+  "task": "P3 held-out anomaly-tail preservation test (R9 in-sample-scoring item)",
+  "generated_by": "pipelines/p3_anomaly_engine/pathc_desi_kfold/heldout_tail_preservation.py",
+  "inputs": [
+    "pathc_desi_kfold/results/training_summary.json (per-fold 9,400-row held-out block MSE percentiles)",
+    "pathc_desi_kfold/results/scoring_summary.json (per-fold in-sample 47,000-row scoring percentiles)"
+  ],
+  "n_folds": 5,
+  "n_heldout_rows_total": 47000,
+  "statistic": "tail-to-bulk contrast R = p99/p50; preservation ratio rho = R_heldout / R_insample",
+  "per_fold": [
+    {
+      "fold_id": 0,
+      "n_holdout": 9400,
+      "heldout_p50": 0.146526038646698,
+      "heldout_p99": 6.00720088958741,
+      "heldout_tail_contrast_p99_over_p50": 40.99749740776046,
+      "insample_p50": 0.14828293025493622,
+      "insample_p99": 6.439924168586744,
+      "insample_tail_contrast_p99_over_p50": 43.42997644782761,
+      "preservation_ratio_rho": 0.9439907815057352
+    },
+    {
+      "fold_id": 1,
+      "n_holdout": 9400,
+      "heldout_p50": 0.16106855869293213,
+      "heldout_p99": 7.270890846252445,
+      "heldout_tail_contrast_p99_over_p50": 45.141590048707,
+      "insample_p50": 0.15556523203849792,
+      "insample_p99": 7.013510131835952,
+      "insample_tail_contrast_p99_over_p50": 45.084046351052976,
+      "preservation_ratio_rho": 1.0012763649741188
+    },
+    {
+      "fold_id": 2,
+      "n_holdout": 9400,
+      "heldout_p50": 0.13934418559074402,
+      "heldout_p99": 7.150230135917663,
+      "heldout_tail_contrast_p99_over_p50": 51.31344451585513,
+      "insample_p50": 0.13344822824001312,
+      "insample_p99": 6.989532661437997,
+      "insample_tail_contrast_p99_over_p50": 52.37636163192053,
+      "preservation_ratio_rho": 0.9797061673826231
+    },
+    {
+      "fold_id": 3,
+      "n_holdout": 9400,
+      "heldout_p50": 0.10337808728218079,
+      "heldout_p99": 5.559378809928906,
+      "heldout_tail_contrast_p99_over_p50": 53.777149065972054,
+      "insample_p50": 0.10650080442428589,
+      "insample_p99": 5.5136498260498135,
+      "insample_tail_contrast_p99_over_p50": 51.77096882840548,
+      "preservation_ratio_rho": 1.0387510661470534
+    },
+    {
+      "fold_id": 4,
+      "n_holdout": 9400,
+      "heldout_p50": 0.179535374045372,
+      "heldout_p99": 6.831814093589786,
+      "heldout_tail_contrast_p99_over_p50": 38.052746596129055,
+      "insample_p50": 0.1835118532180786,
+      "insample_p99": 6.6397685670852775,
+      "insample_tail_contrast_p99_over_p50": 36.181687725614246,
+      "preservation_ratio_rho": 1.05171286880546
+    }
+  ],
+  "mean_preservation_ratio": 1.003087449762998,
+  "min_preservation_ratio": 0.9439907815057352,
+  "n_folds_rho_ge_1": 3,
+  "gate_rho_required": 0.5,
+  "gate_pass": true,
+  "result": "Held-out tail preservation PASSES: across all 5 folds the anomaly-defining upper-tail contrast (p99/p50) computed on 47,000 DESI rows the model provably never trained on is preserved relative to the in-sample scoring distribution (mean rho=1.00, min rho=0.94 >= 0.5 gate; 3/5 folds rho>=1, i.e. the held-out tail is AT LEAST as sharp as in-sample). The top-1% DESI anomaly population is not an in-sample-inflation artifact: its defining tail survives on genuinely unseen data.",
+  "honest_bound": "This is a distributional (percentile-level) held-out test on committed summaries, not a per-object held-out re-score of the full 22.5M-spectrum released catalog \u2014 the raw per-object native score parquets live on an exited pod and are not in the committed tree or HF release. It complements, and is consistent with, the committed 5-fold per-object Jaccard stability (mean J=0.862) and the Planck held-out membership test (1.6x over-representation, p=5.5e-4). All three are out-of-sample and all three pass; a full per-object held-out re-inference of the released headline catalog remains pod-blocked and is disclosed as such.",
+  "status": "DONE"
+}

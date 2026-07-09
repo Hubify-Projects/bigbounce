@@ -46,6 +46,28 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "P2-R9-closure-2026-07-09",
+    dateISO: "2026-07-09",
+    kind: "ext-closure",
+    title:
+      "P2 R9 EXT closure v1.7.104→v1.7.105 — ChatGPT MAJOR / Grok MAJOR / Gemini ACCEPT-with-MINOR. Built the 'full term-by-term derivation table' Grok+ChatGPT asked for (App A Table VII: each of Cai's 4 vertices walked through squeezed+equilateral limits, summing exact-fraction to −35/16 / −255/128). ZERO numbers changed",
+    papers: ["P2"],
+    summary:
+      "Owner-agent closure of the R9 3-reviewer EXT sweep on P2 (matter-bounce f_NL=−35/16 SPHEREx recast). Verdict matrix (ChatGPT/Grok/Gemini) = major-revisions/major-revisions/ACCEPT-with-minor (Gemini up from the Jul-8 DEEP MAJOR; it praised the vertex-algebra correction as 'a valuable service to the community'). The load-bearing objection all three converge on — the Cai−Li −35/16 correction should present 'a compact, auditable term-by-term algebraic table, not only code references and prose' (ChatGPT MAJOR + Grok) — is now CLOSED: added Appendix A Table VII (tab:vertexwalk) walking EACH of Cai's four cubic vertices through the squeezed (k1≪k2=k3) AND equilateral limits individually (field-redef −25/16, L_ζζ̇²−5/32, mixed 0, highest-order −15/32 squeezed; −35/32,−5/32,−5/8,−15/128 equilateral), both columns summing exact-fraction to the certified −35/16 and −255/128 benchmarks. Every entry transcribed VERBATIM from the committed exact-fraction sympy certification (scripts/p2_vertex_check.py, ran to extract per-vertex limits); NO new math. Complements the pre-existing collapsed degree-9 polynomial + ε-order-grouped objects, giving the vertex-resummation disclosure its strongest referee-granularity form. Gemini minors closed: (1) consolidated gauge-vs-physical-frame f_NL table (tab:frames: gauge −2.1875/+0.015/≈146, physical −2.1875/→0/≫146) cleanly separating the survey-observable and theoretical-discriminator values; (2) Section-VI Bayes-factor 'missing parenthesis' — verified all Φ()/erf() closed-form parens balanced in source (grep-checked), FALSIFIED as a PDF font-extraction artifact (cf. prior Gemini fNI/OGR artifacts), no fake fix. Grok's recast-vs-independent-Fisher separation + ChatGPT's App-A completeness are already carried by scope point (i) + the App-A three-way cross-check. −35/16 UNCHANGED, certified 3 ways. Remaining objection (full numerical in-in contour integration across the bounce) = the paper's disclosed #1 follow-up, not editable at the recast scope. Directive-G hygiene: v1.7.104→v1.7.105, date→July 9 2026, recompile 0 undef-refs + 0 overfull hbox (36pp), md5 7cfc3239 mirrored byte-identical to all served paths, Convex paper-2 bumped, standalone-verified arXiv tarball rebuilt.",
+    keyTakeaways: [
+      "0 genuinely-new real findings — pattern-066 floor: Gemini ACCEPT-with-minor (praised the correction), ChatGPT+Grok major-revisions converge on the same term-by-term-table ask, now closed in-paper",
+      "App A Table VII: per-vertex squeezed+equilateral f_NL for all 4 of Cai's cubic vertices, exact-fraction summing to −35/16 / −255/128 — transcribed verbatim from committed sympy cert, no new math",
+      "Gemini minors closed: consolidated gauge/physical-frame table added; Section-VI 'missing parenthesis' FALSIFIED as a PDF-extraction artifact (source parens balanced), no fake fix",
+      "−35/16 UNCHANGED (certified 3 ways); Directive-G: v1.7.105-2026-07-09, 36pp, 0 undef/0 overfull, md5 7cfc3239 mirrored to all served paths, Convex paper-2 bumped, standalone tarball verified",
+    ],
+    links: [
+      { label: "P2 R9 raw reviews + screenshots", href: `${PR}/EXT_real/R9_2026-07-09` },
+      { label: "ChatGPT raw (major-revisions)", href: `${PR}/EXT_real/R9_2026-07-09/P2_chatgpt.md` },
+      { label: "Grok raw (major-revisions)", href: `${PR}/EXT_real/R9_2026-07-09/P2_grok.md` },
+      { label: "Gemini raw (ACCEPT-with-minor)", href: `${PR}/EXT_real/R9_2026-07-09/P2_gemini.md` },
+    ],
+  },
+  {
     id: "P5-R9-closure-2026-07-09",
     dateISO: "2026-07-09",
     kind: "ext-closure",
@@ -65,6 +87,30 @@ export const reviewRounds: ReviewRound[] = [
       { label: "ChatGPT raw (MAJOR)", href: `${PR}/EXT_real/R9_2026-07-09/P5_chatgpt.md` },
       { label: "Grok raw (MINOR)", href: `${PR}/EXT_real/R9_2026-07-09/P5_grok.md` },
       { label: "Gemini raw (MAJOR, conditional on Paper IV)", href: `${PR}/EXT_real/R9_2026-07-09/P5_gemini.md` },
+    ],
+  },
+  {
+    id: "P3-R9-closure-2026-07-09",
+    dateISO: "2026-07-09",
+    kind: "ext-closure",
+    title:
+      "P3 R9 EXT closure v3.1.145→v3.1.146 — ChatGPT MAJOR / Gemini MAJOR-if-PRD (ApJS transfer) / Grok MINOR ('suitable for PRD'). New committed-data OOS test answers the in-sample-scoring major; 5,384 QSO tracer selection defined. ZERO counts changed",
+    papers: ["P3"],
+    summary:
+      "Owner-agent closure of the R9 3-reviewer EXT sweep on P3 (multi-survey autoencoder anomaly catalog). Verdict matrix (ChatGPT/Grok/Gemini) = MAJOR / MINOR / MAJOR-if-PRD. The recurring headline objection — the released 22.5M-spectrum DESI catalog is scored in-sample — was attacked with REAL new committed-data out-of-sample work: a held-out anomaly-TAIL-preservation test. Each of the 5 DESI k-folds reserves a 9,400-row block held out of BOTH its train and val partitions; across the folds the anomaly-defining tail-to-bulk reconstruction-MSE contrast (p99/p50) measured on 47,000 never-trained-on spectra is preserved relative to the in-sample scoring distribution at rho = 1.00 ± 0.05 (min 0.94, gate ≥ 0.5 PASS; 3/5 folds rho ≥ 1). The anomaly tail therefore survives on genuinely unseen data — it is not an in-sample-inflation artifact — joining the already-committed 5-fold Jaccard (0.862) and Planck held-out membership (1.6× over-rep, p=5.5e-4) for three convergent OOS gates. The full per-object 22.5M held-out re-inference remains pod-blocked (raw native score parquets are on an exited pod, not committed/HF) and is disclosed as such. Grok's one genuinely-new minor (the 5,384 QSO-candidate multi-tracer sample is used but never defined in main text) closed with a new §V 'Tracer selection' paragraph (W1−W2>0.8 AND S>7, Gaia-parallax objects removed, no redshift cut, 'candidate' not confirmed). The tier-mix / catalog-grade-uniformity MAJOR is a source-cited re-flag of the already-prominent validated-vs-exploratory-vs-membership three-tier split + per-survey gate-type labels (referee variance, pattern-066). Gemini's ApJS/MNRAS venue transfer = scope/venue disposition, Houston-gated. ZERO quantitative values changed — the only new numbers are the OOS-test statistics computed from committed JSON. Directive-G hygiene: v3.1.145→v3.1.146, date→July 9 2026, recompile 0 undef-refs + 0 overfull hbox (35pp), md5 341f1891 mirrored byte-identical to all 12 served paths, Convex paper-3 bumped, standalone-verified arXiv tarball rebuilt.",
+    keyTakeaways: [
+      "REAL committed-data OOS work on the in-sample-scoring major: held-out anomaly-tail-preservation test — 47,000 never-trained-on DESI rows preserve the anomaly tail (p99/p50) vs in-sample at rho=1.00±0.05 (min 0.94, gate PASS); tail is not an in-sample artifact",
+      "Three convergent out-of-sample gates now: 5-fold Jaccard 0.862 + Planck held-out membership (1.6× over-rep, p=5.5e-4) + tail preservation 1.00; full 22.5M per-object held-out re-inference disclosed as pod-blocked",
+      "Grok's one genuinely-new minor closed: main-text definition of the 5,384 QSO-candidate multi-tracer sample added (W1−W2>0.8 ∧ S>7, Gaia-parallax removed, no z-cut)",
+      "Tier-mix MAJOR = source-cited re-flag of the already-prominent three-tier split (referee variance); venue transfer = scope/Houston-gated. ZERO counts changed, nothing fabricated",
+      "Directive-G: v3.1.146-2026-07-09, 35pp, 0 undef/0 overfull, md5 341f1891 mirrored to all served paths, Convex paper-3 bumped, standalone tarball verified",
+    ],
+    links: [
+      { label: "P3 R9 raw reviews + screenshots", href: `${PR}/EXT_real/R9_2026-07-09` },
+      { label: "ChatGPT raw (MAJOR)", href: `${PR}/EXT_real/R9_2026-07-09/P3_chatgpt.md` },
+      { label: "Grok raw (MINOR, 'suitable for PRD')", href: `${PR}/EXT_real/R9_2026-07-09/P3_grok.md` },
+      { label: "Gemini raw (MAJOR-if-PRD, ApJS transfer)", href: `${PR}/EXT_real/R9_2026-07-09/P3_gemini.md` },
+      { label: "Held-out tail-preservation artifact", href: "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p3_anomaly_engine/pathc_desi_kfold/results/heldout_tail_preservation.json" },
     ],
   },
   {

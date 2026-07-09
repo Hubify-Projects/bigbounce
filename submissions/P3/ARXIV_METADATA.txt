@@ -1,14 +1,14 @@
 ARXIV SUBMISSION METADATA — P3
 ================================
-Updated: 2026-07-09 (v3.1.145 bundle rebuild)
+Updated: 2026-07-09 (v3.1.146 bundle rebuild — R9 EXT closure)
 
 --- BUNDLE ---
-version: v3.1.145
-date_in_tex: July 8, 2026
-bundle: arxiv_p3_v3.1.145.tar.gz
-bundle_md5: c4be3ccbb6377893eb9b87abffd27b57
+version: v3.1.146
+date_in_tex: July 9, 2026
+bundle: arxiv_p3_v3.1.146.tar.gz
+bundle_md5: 25807ecb660c8c642fefef9c8f2b7121
 bundle_size: 3.9 MB
-bundle_path: submissions/P3/arxiv_p3_v3.1.145.tar.gz
+bundle_path: submissions/P3/arxiv_p3_v3.1.146.tar.gz
 main_file: paper3_draft.tex
 bibliography: embedded (\begin{thebibliography} in tex; no external .bib required)
 bbl_file: paper3_draft.bbl (pre-built, included for arXiv)
@@ -20,8 +20,8 @@ standalone_compile_result: PASS (verified 2026-07-09)
   - 0 undefined references
   - 0 undefined citations
   - 0 errors
-  - Page count: 34 pages (matches reference)
-  - Smoke-test PDF md5 (extracted from arxiv_p3_v3.1.145.tar.gz + full compile): 72656c15a44d6ecc4d1fb46e1108c766
+  - Page count: 35 pages (matches reference)
+  - Served/source PDF md5 (pipelines/p3_anomaly_engine/paper3_draft.pdf): 341f18910c40ffa44e0a93c93fa1c814
   - Float placement warnings present (revtex "float is stuck") — cosmetic only,
     do not affect content or page integrity.
 
@@ -91,5 +91,6 @@ Cross-citations: "companion data repository" refers to https://github.com/Hubify
 arxiv_p3_v3.1.140.tar.gz — earlier bundle
 arxiv_p3_v3.1.142.tar.gz — earlier bundle
 arxiv_p3_v3.1.143.tar.gz — earlier bundle
-arxiv_p3_v3.1.144.tar.gz — STALE (source was at v3.1.144; source moved to v3.1.145)
-arxiv_p3_v3.1.145.tar.gz — CURRENT (rebuilt 2026-07-09; verified 34 pages, 0 errors)
+arxiv_p3_v3.1.144.tar.gz — earlier bundle
+arxiv_p3_v3.1.145.tar.gz — STALE (source moved to v3.1.146, R9 EXT closure)
+arxiv_p3_v3.1.146.tar.gz — CURRENT (rebuilt 2026-07-09; verified 35 pages, 0 errors, standalone re-extract compile PASS)

@@ -6,7 +6,7 @@ cross-references clean.)
 
 **Verified:** 2026-07-09. Every check below was run, not assumed.
 - P4 `arxiv_p4_v1.0.224.tar.gz` — md5 `12e4f2d0cdbab695889e51791369edb4` — standalone compile exit 0, 0 undef, **32 pages**.
-- P3 `arxiv_p3_v3.1.145.tar.gz` — md5 `c4be3ccbb6377893eb9b87abffd27b57` — **rebuilt today** from current source (the `.144` bundle was one version stale) — smoke-test re-extract+compile exit 0, 0 undef, **34 pages**.
+- P3 `arxiv_p3_v3.1.146.tar.gz` — md5 `25807ecb660c8c642fefef9c8f2b7121` — **rebuilt today** from current source (the `.144` bundle was one version stale) — smoke-test re-extract+compile exit 0, 0 undef, **35 pages**.
 - P2 `arxiv_p2_v1.7.104.tar.gz` — md5 `4522c696b6f42d7db736c4938c8cf45f` — bundle tex byte-identical to source, compile exit 0, 0 undef, **36 pages**.
 - Placeholder scans: all three CLEAN (only commented-out `%\preprint{arXiv:XXXX.XXXXX}` lines, which never render). No dangling companion-paper placeholders.
 - Abstracts: all trimmed to arXiv-form-safe (<1920 chars) versions — the paste blocks below and in each `ARXIV_METADATA.txt`.
@@ -79,7 +79,7 @@ P4 arXiv ID: __________________
 
 ## PAPER 2 — P3 (submit SECOND)
 
-**Upload:** `submissions/P3/arxiv_p3_v3.1.145.tar.gz`
+**Upload:** `submissions/P3/arxiv_p3_v3.1.146.tar.gz`
 (Paste-ready fields also in `submissions/P3/ARXIV_METADATA.txt`.)
 
 > **BEFORE UPLOAD — one optional Houston-gated edit (Zenodo DOI):**
@@ -91,7 +91,7 @@ P4 arXiv ID: __________________
 >   as-is (the sentence reads cleanly; it is not a broken placeholder). Your call.
 
 ### 1. Start submission → upload
-Upload `arxiv_p3_v3.1.145.tar.gz`. Compiles to **34 pages**.
+Upload `arxiv_p3_v3.1.146.tar.gz`. Compiles to **35 pages**.
 
 ### 2. Metadata — paste these blocks
 
@@ -121,7 +121,7 @@ We present a multi-survey autoencoder anomaly catalog produced by applying the B
 **License:** **CC BY 4.0** (recommended). Conservative alt: arXiv non-exclusive.
 
 ### 3. Preview checks
-- Page 1 shows July 8, 2026 / v3.1.145.
+- Page 1 shows July 9, 2026 / v3.1.146.
 - Figures render (12 figures, mix of PNG + PDF).
 - Title/authors/abstract/categories match.
 
