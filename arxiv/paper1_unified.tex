@@ -51,8 +51,25 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \providecommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1U.0.5}
+\newcommand{\paperVersion}{v1U.0.6}
 \newcommand{\paperTimestamp}{July 9, 2026}
+% v1U.0.6 (2026-07-09 — W12 EXT closure, ChatGPT dim-4 dimensional-bookkeeping MAJOR + unanimous
+%   full-promotion ask. VERDICT ON DIM CHECK: ChatGPT RIGHT. Under the paper's own conventions
+%   [e]=0,[R]=+2, physical torsion [T]=[kappa S]=+1, [J^5]=[S]=+3, [kappa]=[M_Pl^-2]=-2, the BARE
+%   Table-VII invariants have naive dim: O1 (eeR)=+2, O2 (NY)=+2, O3 (R^R)=+4, O4 (T^2)=+2,
+%   O5 (TeJ^5)=+4, O6 (single-curvature)=+2. So O1/O2/O4/O6 are NOT dim-4 densities with a bare
+%   dimensionless c_n as previously displayed — only O3 (Pontryagin) + O5 (axial-torsion) are.
+%   The APPENDIX derivation (INT-verified) was correct (it carries the kappa/M_Pl powers); the error
+%   was a MAIN-TEXT/Table-VII transcription slip. FIX: new displayed Eq.dim4_defs gives each
+%   O_n^[4] with its explicit M_Pl^2 prefactor (O1,O2,O4,O6 * M_Pl^2; O3,O5 bare) so every
+%   c_n O_n^[4] is a genuine dim-4 density with dimensionless c_n. Table VII gains dim + prefactor
+%   columns + coefficient-dimension note. NO physics conclusion changed (closure survives at dim 4).
+%   Symbolic checks (dim4_parityodd_enumeration.py) re-run: CHECK A + CHECK D both PASS.
+%   Second half of W12: FULLY promoted the completeness argument (not just Eq.(7)) into the main
+%   text — new "Main-text completeness argument" block after Eq.dim4_defs states the (a) Bianchi-
+%   vanishing, (b) Cartan->Fierz collapse, (c) topological-total-derivative closure inline; appendix
+%   keeps the derivations. Version+date bump, recompile 0 undef-refs, PDF re-mirror all served paths,
+%   Convex paperVersions:bump in same bundle (directive G).
 % v1U.0.4->0.5 (2026-07-09): W11 EXT presentation-closure wave (NO number changed, nothing
 %   fabricated, no math altered). THE ask (ChatGPT B2 + Gemini Blocker-1, identical): brought
 %   the formally dimension-4 OFF-SHELL parity-odd operator into the MAIN TEXT at Eq.(Seff_comp):
@@ -1828,26 +1845,73 @@ $-1+2=+1$). We state this off-shell mismatch deliberately.
 \emph{The dimension-$+1$ form of Eq.~\eqref{eq:Seff_comp} is an on-shell
 presentation shorthand, not the fundamental action term.} The formally
 dimension-$4$, gauge-invariant, diffeomorphism-covariant off-shell operator
-of which it is the leading representative is the closed local basis
+of which it is the leading representative is the closed local expansion
 \begin{equation}\label{eq:Seff_dim4}
 S_{\rm eff}^{(4)} = \int d^4x\,\sqrt{-g}\sum_{n} c_n\,\mathcal{O}_n^{[4]},
 \qquad \{\mathcal{O}_n^{[4]}\}=\{\mathrm{O1}\text{--}\mathrm{O6}\},
 \end{equation}
-the six local dimension-$4$ parity-odd densities that minimal-ECH field
-content admits (Holst dual, Nieh--Yan, Pontryagin, torsion-square,
-axial--torsion, single-curvature dual), enumerated with their fate in
-Appendix~\ref{app:dim4_completion} (Table~\ref{tab:dim4_parityodd}). Each
-Wilson coefficient $c_n$ carries genuine mass dimension $0$ so that every
-$c_n\mathcal{O}_n^{[4]}$ is a bona-fide dimension-$4$ density; the
-algebraic Cartan constraint $T=\kappa S$, the first (algebraic) Bianchi
-identity, and Chern--Weil exactness collapse this basis to (i) topological
-total derivatives (O2, O3), (ii) the $\MPl^{-2}$-suppressed Fierz-closed
-four-fermion sector (O4, O5), or (iii) Bianchi-vanishing single-curvature
-densities (O1, O6). Passing to the on-shell branch (algebraic torsion
-eliminated, one curvature factor stripped by the Bianchi identity) reduces
-this closed dimension-$4$ set to the single dimension-$+1$ representative
-displayed in Eq.~\eqref{eq:Seff_comp}: the $+1$-vs-$+4$ counting is a
-property of that on-shell reduction, not of an ill-defined action.
+where each $\mathcal{O}_n^{[4]}$ is a genuine dimension-$4$ Lagrangian
+density and each Wilson coefficient $c_n$ is a dimensionless rational.
+Because the underlying schematic invariants carry different naive
+dimensions under the paper's conventions ($[e]=0$, $[R]=+2$, physical
+torsion $[T]=[\kappa S]=+1$, spin current $[S]=[J^5]=+3$,
+$[\kappa]=[\MPl^{-2}]=-2$), the operator \emph{definitions} include the
+explicit compensating $\MPl$ power that renders each density dimension-$4$;
+we do \emph{not} attach a dimensionless $c_n$ to a lower-dimension
+invariant. Concretely, the six densities are (names as in
+Table~\ref{tab:dim4_parityodd})
+\begin{align}\label{eq:dim4_defs}
+\mathcal{O}_{1}^{[4]}&=\MPl^{2}\,\varepsilon\,e^I e^J R_{IJ},
+& \mathcal{O}_{2}^{[4]}&=\MPl^{2}\,\mathrm{NY},\notag\\
+\mathcal{O}_{3}^{[4]}&=R^{IJ}\!\wedge R_{IJ},
+& \mathcal{O}_{4}^{[4]}&=\MPl^{2}\,\varepsilon_{IJKL}T^{IJ}T^{KL},\notag\\
+\mathcal{O}_{5}^{[4]}&=\varepsilon\,T\,e\,J^5,
+& \mathcal{O}_{6}^{[4]}&=\MPl^{2}\,\varepsilon^{\mu\nu\rho\sigma}R_{\mu\nu\rho\sigma},
+\end{align}
+so that Pontryagin (O3, $[R\wedge R]=+4$) and axial--torsion
+(O5, $[TeJ^5]=+1+0+3=+4$) already sit at dimension $4$ with a bare
+dimensionless coefficient, while the Holst dual, Nieh--Yan, torsion-square,
+and single-curvature densities (each of naive dimension $+2$ as component
+densities) are promoted to dimension $4$ by the single available scale
+$\MPl^{2}$ inside the operator definition. This is the point ChatGPT's W12
+referee pass correctly raised: calling the bare invariants ``dimension-$4$
+with dimensionless $c_n$'' was a bookkeeping slip; the corrected definitions
+above carry the $\MPl^{2}$ prefactors explicitly so that every
+$c_n\mathcal{O}_n^{[4]}$ is a bona-fide dimension-$4$ density. The physics
+conclusion is unchanged: the algebraic Cartan constraint $T=\kappa S$, the
+first (algebraic) Bianchi identity, and Chern--Weil exactness collapse this
+set to (i) topological total derivatives (O2, O3), (ii) the
+$\MPl^{-2}$-suppressed Fierz-closed four-fermion sector (O4, O5), or
+(iii) Bianchi-vanishing single-curvature densities (O1, O6).
+
+\emph{Main-text completeness argument.}---The collapse is closed by one
+finite enumeration plus two tensor identities, both verified symbolically
+in the released script
+\texttt{arxiv/scripts/dim4\_parityodd\_enumeration.py}. (a) The single-curvature
+parity-odd densities vanish identically: for any Riemann tensor obeying the
+pair antisymmetries and the algebraic Bianchi identity $R_{\mu[\nu\rho\sigma]}=0$,
+$\varepsilon^{\mu\nu\rho\sigma}R_{\mu\nu\rho\sigma}=0$, killing both O1 and O6
+on the torsion-free branch. (b) The torsion-square and axial--torsion densities
+reduce under $T=\kappa S$, using
+$S_{abc}S^{abc}=6\,(J^5\!\cdot\!J^5)$ (from
+$\varepsilon_{abcd}\varepsilon^{abce}=3!\,\delta^e_d$), to the parity-odd
+four-fermion contact operator $\kappa^{2}(J^5\!\cdot\!J^5)$, which the
+Fierz-by-Fierz projection lemma (Appendix~\ref{app:fierz}) shows closes onto
+the finite $\{SS,VV,AA,PP\}$ basis with \emph{no} escape operator and \emph{no}
+change of $\MPl^{-2}$ power. (c) O2 (Nieh--Yan) and O3 (Pontryagin) are exact
+total derivatives, contributing zero to the local equations of motion and zero
+to the vacuum energy. Hence every admissible local dimension-$4$ parity-odd
+density in minimal ECH is topological, Fierz-basis-reducible, or
+Bianchi-vanishing, and none produces a $(\text{meV})^4$ vacuum energy without a
+new light scale $\mu\ll\MPl$ or a protected symmetry --- either of which is
+itself the tuning to be explained. The concrete operator definitions, the
+symbolic checks, and the Fierz matrix are given in full in
+Appendices~\ref{app:dim4_completion}--\ref{app:fierz}
+(Table~\ref{tab:dim4_parityodd}). Passing to the on-shell branch (algebraic
+torsion eliminated, one curvature factor stripped by the Bianchi identity)
+reduces this closed dimension-$4$ set to the single dimension-$+1$
+representative displayed in Eq.~\eqref{eq:Seff_comp}: the $+1$-vs-$+4$ counting
+is a property of that on-shell reduction, not of an ill-defined action.
 The identification $\rho_\Lambda = \Xi\,\MPl^4$ is therefore governed by a
 \textit{single-scale NDA dimensional no-go} that holds identically for the
 formal dimension-$4$ basis and its dimension-$+1$ shorthand
@@ -4583,30 +4647,44 @@ No new light scale $\mu\ll\MPl$, no dynamical Immirzi field, no
 propagating torsion, and no non-minimal (trace/tensor) torsion irreps are
 admitted, as these lie outside the stated minimal scope. Building-block
 dimensions: $[e]=0$, $[\omega]=+1$, $[R]=+2$, $[S]=+3$ (Dirac bilinear),
-so via Cartan each torsion factor carries $[\kappa S]=+1$.
+so via Cartan each torsion factor carries $[\kappa S]=+1$. Under these
+assignments the bare invariants $\varepsilon\,eeR$, Nieh--Yan, and $T^2$ are
+component densities of naive dimension $+2$, while Pontryagin $R\wedge R$ and
+the axial--torsion current structure $\varepsilon\,TeJ^5$ are already
+dimension $+4$. To write a genuine dimension-$4$ Lagrangian with
+\emph{dimensionless} Wilson coefficients we therefore include the single
+available scale $\MPl^{2}$ explicitly in each operator definition
+[Eq.~\eqref{eq:dim4_defs}], rather than attaching a dimensionless $c_n$ to a
+lower-dimension object. Column ``$\dim$'' below records the naive dimension of
+the \emph{bare} schematic invariant; the tabulated operator
+$\mathcal{O}_n^{[4]}$ is that invariant multiplied by the prefactor of
+column ``prefactor'' so that $[\mathcal{O}_n^{[4]}]=+4$ throughout.
 
-\begin{table}[t]
-\caption{Local dimension-$4$ parity-odd densities of minimal ECH and
-their fate. All entries are topological total derivatives ($\to$ zero
-equations of motion), reduce under the algebraic Cartan constraint to the
-Fierz-closed four-fermion basis (App.~\ref{app:fierz}, natural coefficient
-$\sim\MPl^4$ by single-scale NDA), or vanish by the first (algebraic)
-Bianchi identity. None yields a $(\text{meV})^4$ vacuum energy without a
-new light scale.}
+\begin{table*}[t]
+\caption{Local dimension-$4$ parity-odd densities of minimal ECH, their
+coefficient dimensions, and their fate. The bare schematic invariant of
+column~3 has naive dimension ``$\dim$''; the genuine dimension-$4$ density
+$\mathcal{O}_n^{[4]}$ [Eq.~\eqref{eq:dim4_defs}] is that invariant times the
+listed prefactor, carried by a \emph{dimensionless} Wilson coefficient $c_n$.
+All entries are topological total derivatives ($\to$ zero equations of
+motion), reduce under the algebraic Cartan constraint to the Fierz-closed
+four-fermion basis (App.~\ref{app:fierz}, natural coefficient $\sim\MPl^4$
+by single-scale NDA), or vanish by the first (algebraic) Bianchi identity.
+None yields a $(\text{meV})^4$ vacuum energy without a new light scale.}
 \label{tab:dim4_parityodd}
 \begin{ruledtabular}
-\begin{tabular}{cll}
-\# & Operator (schematic) & Fate \\
+\begin{tabular}{ccllc}
+\# & $\dim$ (bare) & Bare invariant (schematic) & Prefactor & Fate \\
 \hline
-O1 & $\varepsilon\,e^I e^J R_{IJ}$ (Holst dual) & vanishes (Bianchi, Check~A) \\
-O2 & $\mathrm{NY}=d(e_I\wedge T^I)$ (Nieh--Yan) & exact 4-form $\to0$ EOM \\
-O3 & $R^{IJ}\wedge R_{IJ}$ (Pontryagin) & exact $\to0$ EOM \\
-O4 & $\varepsilon_{IJKL}T^{IJ}T^{KL}$ (torsion$^2$) & $\to\kappa^2(J^5\!\cdot\!J^5)$, basis \\
-O5 & $\varepsilon\,T\,e\,J^5$ (axial--torsion) & $\to\kappa(J^5\!\cdot\!J^5)$, basis \\
-O6 & $\varepsilon^{\mu\nu\rho\sigma}R_{\mu\nu\rho\sigma}$ & vanishes (Bianchi, Check~A) \\
+O1 & $2$ & $\varepsilon\,e^I e^J R_{IJ}$ (Holst dual) & $\MPl^{2}$ & vanishes (Bianchi, Check~A) \\
+O2 & $2$ & $\mathrm{NY}=d(e_I\wedge T^I)$ (Nieh--Yan) & $\MPl^{2}$ & exact 4-form $\to0$ EOM \\
+O3 & $4$ & $R^{IJ}\wedge R_{IJ}$ (Pontryagin) & $1$ & exact $\to0$ EOM \\
+O4 & $2$ & $\varepsilon_{IJKL}T^{IJ}T^{KL}$ (torsion$^2$) & $\MPl^{2}$ & $\to\kappa^2(J^5\!\cdot\!J^5)$, Fierz basis \\
+O5 & $4$ & $\varepsilon\,T\,e\,J^5$ (axial--torsion) & $1$ & $\to\kappa(J^5\!\cdot\!J^5)$, Fierz basis \\
+O6 & $2$ & $\varepsilon^{\mu\nu\rho\sigma}R_{\mu\nu\rho\sigma}$ & $\MPl^{2}$ & vanishes (Bianchi, Check~A) \\
 \end{tabular}
 \end{ruledtabular}
-\end{table}
+\end{table*}
 
 Two tensor identities carry the enumeration; both are verified symbolically
 in the released script
