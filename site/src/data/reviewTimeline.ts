@@ -46,6 +46,27 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "CA-closure-wave-2026-07-09",
+    dateISO: "2026-07-09",
+    kind: "closure-wave",
+    title:
+      "CA-round closure wave (P4 v1.0.226→v1.0.227 · P5 v0.1.109→v0.1.110 · P3 v3.1.147→v3.1.148): closed the LAST items between P4/P5 and triple-clean boards + P3's 4 ChatGPT MAJORs — all editable framing/reproducibility sharpenings, no verified number changed, no disclosure weakened.",
+    papers: ["P3", "P4", "P5"],
+    summary:
+      "Closure wave on the CA-round residue. P4 (ChatGPT literal ACCEPT + Gemini/Grok accept-track): closed all 8 polish minors — a compact 'Reader's note' directly below Table V restating the harmonic diagnostics are not comparable detection significances; the abstract 47%-residual now explicitly labeled 'not a cosmological loophole'; the Data Availability qc_flip filter now gives the exact command df[df.qc_flip_identity_violator == False]; CW/ACW terminology standardized to CW/CCW throughout (GZ1 native P_ACW column kept once with a CCW-equivalence clarifier). P5 (ChatGPT literal ACCEPT + Gemini/Grok accept-track): closed the minors — filament bright/dark diagnostic now states the concrete program-row split (394,181 bright / 13,759 dark) for the covariance picture Gemini requested; added a boxed 'real- vs redshift-space, in one statement' callout in Conclusions per ChatGPT (the ~0.5–0.6 pp bound is a fixed-redshift-space envelope, not a pure real-space constraint); companion coordinated-review-gating + Bonferroni-family lead already disclosed. P3 (ChatGPT 4 MAJORs, truth-audited: Grok 'arXiv-ready' 0-major, Gemini rates the same items MINOR-already-disclosed → recurring framing/reproducibility re-flags per patterns 061-064, closed as editable sharpenings): (1) NEOWISE — abstract headline relabeled mixed-validation with an explicit DESI/SDSS/Planck detector-sensitivity vs NEOWISE (419) geometry-QA-by-construction split; (2)+(3) SDSS-77,905-continuity-slice + DESI-2,468-science-target — a new §I 'Reader's guide to the headline counts' foregrounds the like-for-like 2,468 (~0.92×) and native SDSS top-1% 19,253 (S>5 = 12) over the process-volume multipliers and the continuity slice; (4) reproducibility — added an explicit at-submission availability commitment (catalog + dedup scripts + weights + MCMC chains + manifest all public and runnable at submission; Zenodo DOI immutable snapshot). Directive-G hygiene each: recompiled 0 undef-refs, /latex-audit clean (P4/P5 0 overfull; P3's 2 pre-existing table-alignment overfulls unchanged by prose), versions + dates bumped, PDFs re-mirrored byte-identical to ALL served paths, Convex paperVersions:bump with real md5/pages, papers.ts + reviewTimeline synced same bundle. New md5s: P4 2d5fdbf7 (33pp) · P5 fbc24cb0 (40pp) · P3 70bb1005 (36pp).",
+    keyTakeaways: [
+      "P4 v1.0.227: 8/8 polish minors closed (Table V reader's note, 'not a cosmological loophole' abstract line, exact qc_flip filter command, CW/ACW→CCW standardization) — no number changed",
+      "P5 v0.1.110: minors closed — concrete filament program-row split (394,181/13,759) + boxed real-vs-redshift-space Conclusions callout; companion-gating + Bonferroni lead already disclosed",
+      "P3 v3.1.148: all 4 ChatGPT MAJORs closed as editable framing/reproducibility sharpenings (NEOWISE mixed-validation label, §I science-target/native-threshold reader's guide, at-submission reproducibility commitment) — Grok arXiv-ready + Gemini MINOR corroborate these are re-flags, not new content errors; no verified number changed, no disclosure weakened",
+    ],
+    links: [
+      { label: "P4 v1.0.227 PDF", href: "/papers/chirality_catalog_paper_v1.0.227.pdf" },
+      { label: "P5 v0.1.110 PDF", href: "/papers/p5_desi_chirality_v0.1.110-2026-07-09.pdf" },
+      { label: "P3 v3.1.148 PDF", href: "/papers/paper3_draft_v3.1.148.pdf" },
+      { label: "CA raw reviews", href: `${PR}/EXT_real/CA_2026-07-09` },
+    ],
+  },
+  {
     id: "CA-clean-accept-retest-2026-07-09",
     dateISO: "2026-07-09",
     kind: "external-browser",

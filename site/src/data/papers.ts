@@ -250,7 +250,7 @@ export const papers: Paper[] = [
     slug: "paper-3",
     number: "3",
     title: "Spectrally Unusual Sources at Scale: A Multi-Survey Anomaly-Candidate Catalog of 378,280 Path-C Reconstruction-Outlier Sources and a Native-Trained Novelty Fraction from 37.3 Million Sources and Map Patches",
-    version: "v3.1.146",
+    version: "v3.1.148",
     lastUpdated: "2026-07-09",
     tldr: "A 378,280-object anomaly catalog mined from 37.3M sources across 7 surveys with one autoencoder architecture — 17.8% of top-ranked objects are new to existing catalogs, plus a NANOGrav free-spectrum fit consistent with matter-bounce γ = 3.0.",
     path: publicationPath({}),
@@ -289,10 +289,10 @@ export const papers: Paper[] = [
       "arXiv endorsement + submission — gated behind a reviewer ACCEPT (packets are ready; reviews are not passed)",
     ],
     preprintId: "HUBIFY-2026-003",
-    pdfMeta: "PDF · 35 pp · v3.1.146 · updated Jul 9, 2026 · md5 341f1891",
+    pdfMeta: "PDF · 36 pp · v3.1.148 · updated Jul 9, 2026 · md5 70bb1005",
     artifacts: [
-      { label: "Read PDF", href: "/papers/paper3_draft_v3.1.146.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/paper3_draft_v3.1.146.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/paper3_draft_v3.1.148.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/paper3_draft_v3.1.148.pdf", kind: "secondary", download: true },
       {
         label: "LaTeX source",
         href: "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p3_anomaly_engine/paper3_draft.tex",
@@ -312,7 +312,7 @@ export const papers: Paper[] = [
     slug: "paper-4",
     number: "4",
     title: "A Null Chirality Dipole in 8.5 Million DESI Galaxies from Equivariant Deep Learning",
-    version: "v1.0.225",
+    version: "v1.0.227",
     lastUpdated: "2026-07-09",
     tldr: "Classifies 8.47M galaxies for spiral handedness with a rotation-equivariant ViT ensemble and finds a null real-space chirality dipole (+0.41σ, rank-p=0.31; A_dip < 6.8×10⁻³ at 95% UL) — the earlier −0.122σ subsample-mask null was withdrawn in v1.0.166 after a provenance audit.",
     path: [
@@ -377,14 +377,14 @@ export const papers: Paper[] = [
       "arXiv endorsement + submission — gated behind a reviewer ACCEPT (packets are ready; reviews are not passed)",
     ],
     preprintId: "HUBIFY-2026-004",
-    pdfMeta: "PDF · 32 pp · v1.0.225 · updated Jul 9, 2026 · md5 35375fda · 34 MB",
+    pdfMeta: "PDF · 33 pp · v1.0.227 · updated Jul 9, 2026 · md5 2d5fdbf7 · 34 MB",
     changelog: [
       "R9 ACCEPT-track minor closure (v1.0.225): Grok = minor-revisions, Gemini = 'Accept with minor revisions'; both referees' concrete minors closed with real edits (no number changed). Abstract z≈−18 now explicitly labeled a model-dependent template-disfavor statistic (not a frequentist exclusion) with the injection-recovery A95∈(1.0,1.5]% cross-referenced as the primary real-space falsification; added a main-text downstream-user warning that raw p_eq scores are not frequentist likelihoods (cite Appendix-B ECE ≥0.25–0.36); abstract real-space p now names its isotropic-pixel-permutation null. ChatGPT major = presentation/consolidation of already-disclosed content.",
       "Deep-tier Gemini MAJOR closure (v1.0.224): added self-contained training-data provenance table + a probabilistic-calibration paragraph quantifying a real top-label ECE lower bound from the committed GZ1 confusion matrix (mean-conf 0.951 vs 3-class acc 0.5871 -> ECE>=0.36; chirality 0.6991 -> >=0.25), proven invariant to any monotone recalibration; surfaced existing committed data, no number changed.",
     ],
     artifacts: [
-      { label: "Read PDF", href: "/papers/chirality_catalog_paper_v1.0.225.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/chirality_catalog_paper_v1.0.225.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/chirality_catalog_paper_v1.0.227.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/chirality_catalog_paper_v1.0.227.pdf", kind: "secondary", download: true },
       {
         label: "LaTeX source",
         href: "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/chirality_catalog_paper.tex",
@@ -405,7 +405,7 @@ export const papers: Paper[] = [
     slug: "paper-5",
     number: "5",
     title: "Environmental Dependence of Spiral Chirality: A DESIVAST Three-Algorithm Void Null Test on 56,981 DESI DR1 Spirals, with a Secondary Tidal-Tensor Cross-Check",
-    version: "v0.1.107",
+    version: "v0.1.110",
     lastUpdated: "2026-07-07",
     tldr: "Cross-matches P4's spiral handedness with DESI large-scale structure (791,635 matched spirals + 56,981 void spirals) and finds galaxy chirality is statistically independent of cosmic-web environment — constraining environment-coupled parity models.",
     path: publicationPath({}),
@@ -439,10 +439,10 @@ export const papers: Paper[] = [
       "arXiv endorsement + submission — gated behind a reviewer ACCEPT (packets are ready; reviews are not passed)",
     ],
     preprintId: "HUBIFY-2026-005",
-    pdfMeta: "PDF · 39 pp · v0.1.107 · updated Jul 7, 2026 · md5 1b569055",
+    pdfMeta: "PDF · 40 pp · v0.1.110 · updated Jul 9, 2026 · md5 fbc24cb0",
     artifacts: [
-      { label: "Read PDF", href: "/papers/p5_desi_chirality_v0.1.107.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/p5_desi_chirality_v0.1.107.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/p5_desi_chirality_v0.1.110-2026-07-09.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/p5_desi_chirality_v0.1.110-2026-07-09.pdf", kind: "secondary", download: true },
       {
         label: "Pipeline + scripts",
         href: "https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p5_desi_chirality",
