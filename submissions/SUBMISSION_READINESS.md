@@ -8,11 +8,11 @@
 
 | Paper | Version | Latest board (ChatGPT / Grok / Gemini) | Cap | The venue question for the referee |
 |---|---|---|---|---|
-| **P1U** (unified Paper 1) | v1U.0.3 | MAJ / MAJ / MAJ (P1U3-2026-07-09) | 68 | Is a channel-level ECH no-go — merged theory + reproducibility companion, one open Fierz lemma, disclosed channel-level scope — a sufficient standalone PRD/JCAP contribution under my name? |
-| **P4** | v1.0.224 | MAJ / MIN / MIN (R9) | 80 | Is the ~47% unexplained ℓ=1 residual an acceptable disclosed limitation (bounded A_p=0.695%<A_50), given the null rests on the +0.41σ real-space HC estimator + the GZ1 human-label independence check? |
+| **P1U** (unified Paper 1) | v1U.0.4 | MAJ / MAJ / MAJ (P1U3-2026-07-09) | 68 | Is a channel-level ECH no-go — merged theory + reproducibility companion, one open Fierz lemma, disclosed channel-level scope — a sufficient standalone PRD/JCAP contribution under my name? |
+| **P4** | v1.0.225 | MAJ / MIN / MIN (R9) | 80 | Is the ~47% unexplained ℓ=1 residual an acceptable disclosed limitation (bounded A_p=0.695%<A_50), given the null rests on the +0.41σ real-space HC estimator + the GZ1 human-label independence check? |
 | **P2** | v1.7.105 | MAJ / MAJ / MIN (R9; closed) | 64 | v1.7.105 added the per-vertex term-by-term derivation table (App A Table VII) Grok+ChatGPT asked for + a gauge/physical-frame table (Gemini minor). Is the vertex-certified Cai/Li resolution (f_NL=−35/16, App. A, scripts committed) + the independent+RSD Fisher forecast publishable now, or does the factor-of-2 need a human referee first? |
 | **P3** | v3.1.146 | MAJ / MIN / MAJ (R9) | 68 | Is a disclosed, sequestered exploratory-tier non-reproducibility (eROSITA excised from all counts) acceptable in a catalog paper — and is this an ApJS/MNRAS catalog paper or PRD? |
-| **P5** | v0.1.107 | MAJ / MIN / MAJ (R9) | 68 | Should publication be contingent on the coordinated companion Paper IV (P4), or does the monopole-invariant self-contained void null stand alone? |
+| **P5** | v0.1.108 | MAJ / MIN / MAJ (R9) | 68 | Should publication be contingent on the coordinated companion Paper IV (P4), or does the monopole-invariant self-contained void null stand alone? |
 
 Cover letters: `submissions/<P>/REFEREE_COVER_LETTER.md`. Bundles: `submissions/<P>/arxiv_*.tar.gz` (each standalone-compile-verified). Readiness caps are honest (68–80), not 96.
 
@@ -22,7 +22,7 @@ For the first time in the campaign, **no reviewer returns a REJECT on any of the
 
 ## What the campaign closed (all source-cited, reviewer-confirmed, zero fabrication)
 
-- **P1 merge + seam fixes.** P1A (theory) and P1B (reproducibility companion) unified into a single self-contained Paper 1 (P1U, 58pp, v1U.0.3); cross-paper seams and duplicated preamble reconciled. Gemini on the merged manuscript: *"self-contained… robustly supported."*
+- **P1 merge + seam fixes.** P1A (theory) and P1B (reproducibility companion) unified into a single self-contained Paper 1 (P1U, 60pp, v1U.0.4); cross-paper seams and duplicated preamble reconciled. Gemini on the merged manuscript: *"self-contained… robustly supported."*
 - **P1 — Fierz proof.** The channel-level no-go's previously-open Fierz-by-Fierz lemma closed with an explicit proof (one open item retired).
 - **P2 — factor-of-2 resolved to −35/16 (vertex-certified) + independent+RSD Fisher.** From-scratch four-vertex in-in re-summation of Cai et al.'s own vertices at ε=3/2 gives f_NL=−35/16, matching Li's independent general-c_s formula at c_s=1 and tracing Cai's printed −35/8 to a spurious +(99/128)Σk³ term in their Eq. 37. The forecast is now an **independent Fisher with RSD**, not a single-external rescale. Reproducing scripts committed.
 - **P3 — eROSITA excision + exact χ².** The disclosed-irreproducible eROSITA tier is excised from **every** count (validated 268,519 and inclusive 377,482 alike); the exact spatial-uniformity χ² was recomputed on the 377,482 post-excision headline set (χ²=365,428, validated δ=0.0000 against the pod reference).

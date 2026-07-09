@@ -9,10 +9,9 @@ clicks are the only remaining step.
 
 | # | Paper | Bundle | Ver | pp | Notes |
 |---|-------|--------|-----|----|-------|
-| 1 | **P4** chirality catalog | `submissions/P4/arxiv_p4_v1.0.221.tar.gz` | v1.0.221 | 31 | astro-ph.CO, x-list GA. Metadata in `ARXIV_METADATA.txt`. v1.0.221 venue-compliance disclosure edit: AI-methods now names models (Anthropic Claude Opus 4 2026 + OpenAI GPT-5/o3 + xAI Grok-4 + Google Gemini 2.5); presentation-only, no science number changed; recompile 0 undef, mirrored byte-identical, bundle rebuilt+standalone-verified. **Submit FIRST — P5 needs its ID.** |
-| 2 | **P1B** MCMC/NaMaster/ALP companion | `submissions/P1B/arxiv_p1b_v1B.0.103.tar.gz` | v1B.0.103 | 22 | P1A cross-ref placeholder inside; reciprocal ID insert per `SUBMISSION_NOTE.md`. v1B.0.103 D-round final polish: presentation + disclosure only, no science number changed; tarball rebuilt + standalone-verified (0 undef-refs, 22pp), stale v1B.0.101 removed. |
-| 3 | **P3** anomaly catalog | `submissions/P3/arxiv_p3_v3.1.142.tar.gz` | v3.1.142 | 33 | Title: "A Multi-Survey Autoencoder Anomaly Catalog: 268,519 Validated Sources from a Native-Trained Scan of 37.3 Million Spectra and Map Patches". v3.1.142 venue-compliance disclosure edit (Edit A): added explicit author-responsibility + not-an-author clause AND model naming per AAS/IOP — closes the P3 responsibility-clause gap; no science number changed; tarball rebuilt + standalone-verified (0 undef-refs). Flip HF dataset visibility public (manual); Zenodo DOI mints at submit. DESI score-vs-z DATA-UNLOCK closed (honest MIXED result: DESI composition transfers, score-vs-z scoped to SDSS). |
-| 4 | **P2** f_NL forecast + Cai/Li resolution | `submissions/P2/arxiv_p2_v1.7.99.tar.gz` (md5 b081ce65) | v1.7.99 | 34 | Positioned as honest forecast + the −35/16 literature resolution. v1.7.99 venue-compliance disclosure edit: AI-methods now names models (Anthropic Claude Opus 4 2026 + OpenAI GPT-5/o3 + xAI Grok-4 + Google Gemini 2.5) per IOP/JCAP. No science number changed. Recompile 0 undef, mirrored byte-identical, bundle rebuilt+standalone-verified. Zenodo DOI at submit. |
+| 1 | **P4** chirality catalog | `submissions/P4/arxiv_p4_v1.0.225.tar.gz` (md5 3adc5739) | v1.0.225 | 32 | astro-ph.CO, x-list GA. Metadata in `ARXIV_METADATA.txt`. Bundle rebuilt from current source 2026-07-09 (the .224 bundle was one version stale); standalone re-extract+compile 0 err / 0 undef / 32pp. **Submit FIRST — P5 needs its ID.** |
+| 2 | **P3** anomaly catalog | `submissions/P3/arxiv_p3_v3.1.146.tar.gz` (md5 25807ecb) | v3.1.146 | 35 | Title: "A Multi-Survey Autoencoder Anomaly-Candidate Catalog: 268,519 Reconstruction-Outlier Sources from a Native-Trained Scan of 37.3 Million Spectra and Map Patches". v3.1.146 R9 EXT closure; standalone re-extract+compile 0 err / 0 undef / 35pp. HF dataset `bamfai/bigbounce-anomaly-catalog` already PUBLIC (no flip needed); Zenodo DOI mints at submit (optional). |
+| 3 | **P2** f_NL forecast + Cai/Li resolution | `submissions/P2/arxiv_p2_v1.7.105.tar.gz` (md5 ed764493) | v1.7.105 | 36 | Positioned as honest forecast + the −35/16 literature resolution. v1.7.105 R9 closure (App A Table VII per-vertex derivation + gauge/physical-frame table); no science number changed, −35/16 unchanged; standalone re-extract+compile 0 err / 0 undef / 36pp. Zenodo DOI at submit (optional). |
 
 arXiv assigns each ID immediately on submission (announcement later; the ID is usable at once).
 
@@ -20,8 +19,8 @@ arXiv assigns each ID immediately on submission (announcement later; the ID is u
 
 | # | Paper | Bundle | Ver | pp | Pre-submit step (~2 min each) |
 |---|-------|--------|-----|----|------------------------------|
-| 5 | **P5** DESI environmental chirality | `submissions/P5/arxiv_p5_v0.1.105.tar.gz` | v0.1.105 | 37 | v0.1.105 venue-compliance disclosure edit (Edit B): added explicit author-responsibility + not-an-author clause AND model naming per MNRAS/APS — closes the P5 responsibility-clause gap; presentation-only, zero numbers changed; tarball rebuilt + standalone-verified. Set `\paperIVarxiv` to P4's real ID (see `SUBMISSION_NOTE.txt`) → recompile → submit. |
-| 6 | **P1A** ECH no-go | `submissions/P1A/arxiv_p1a_v1A.0.113.tar.gz` | v1A.0.113 | 37 | v1A.0.113 venue-compliance disclosure edit (Edit C, VENUE_POLICY_COMPLIANCE.md): AI-methods disclosure now names models used (Anthropic Claude Opus 4 family 2026, with OpenAI GPT-5/o3, xAI Grok-4, Google Gemini 2.5 as cross-check/internal-review) per IOP/JCAP model+version requirement. No science number changed. Recompile 0 undef-refs, mirrored byte-identical to all served paths, bundle rebuilt+standalone-verified (37pp). Fill `TODO-SUBMISSION` markers in references.bib with wave-1 IDs (see `SUBMISSION_NOTE`) → recompile → rebuild tarball → submit. Then insert P1A's ID back into P1B v2 (reciprocal note). |
+| 4 | **P5** DESI environmental chirality | `submissions/P5/arxiv_p5_v0.1.108.tar.gz` | v0.1.108 | 39 | Set the single `\paperIVarxiv` macro to P4's real ID (see `submissions/P5/SUBMISSION_NOTE.txt`) → recompile → rebuild bundle → submit. NOTE: latest committed P5 bundle is `arxiv_p5_v0.1.107.tar.gz`; source is v0.1.108, so the v0.1.108 bundle is produced by the wave-2 ID-insertion rebuild (or rebuild now from source if submitting before wave-1 IDs exist). |
+| 5 | **P1U** unified Paper 1 (theory + reproducibility) | `submissions/P1A/arxiv_p1_unified_v1U.0.4.tar.gz` | v1U.0.4 | 60 | P1B is MERGED into P1U — no standalone P1B submission, no reciprocal note. Fill the four companion arXiv IDs in `arxiv/references.bib` `TODO-SUBMISSION` notes (`Golden2026P2/P3/P4` + P5) with wave-1 IDs; the `Golden2026P1a` self-ref stays `[arXiv:XXXX.XXXXX]` (P1U's own ID does not exist yet) → recompile `arxiv/paper1_unified.tex` (regenerates .bbl) → rebuild tarball → submit. |
 
 ## Post-submit (agent-executable — say the word)
 - Insert real IDs, recompile wave-2, rebuild bundles (I do this the moment you give me the IDs)
@@ -30,14 +29,12 @@ arXiv assigns each ID immediately on submission (announcement later; the ID is u
 - Strengthening computes from the DATA agent (P3-DESI, P4-morphology, P2-CovB) fold into v2
   replacements if they land — none are blocking
 
-## Verified state per paper (today's audit round)
-- **P4**: v1.0.220 D-round polish (condensed title + reader-first abstract); Grok+Gemini MINOR, null "robustly supported"; INT ACCEPT; every number reproduces.
-- **P1B**: INT MINOR/error-clean; standalone ΔN_eff contribution surfaced; false cover claims fixed.
-- **P3**: INT ACCEPT (byte-identical reproduction); anomalies proven real high-z QSOs (p~1e-103).
-- **P2**: v1.7.99 venue-compliance disclosure (AI-methods names models per IOP/JCAP); built on v1.7.98 D-round polish. −35/16 3-way certified; Grok MINOR.
-- **P5**: all numbers exact; Δf_CW monopole-invariant on public data; Paper-IV = citation timing.
-- **P1A**: all tiers derived/grounded/NDA-bounded; f_NL −35/16 propagated (20 sites);
-  companion numbers artifact-cited; 0 genuinely-new Grok/Gemini findings.
+## Verified state per paper (finals: P4 v1.0.225 · P3 v3.1.146 · P2 v1.7.105 · P5 v0.1.108 · P1U v1U.0.4)
+- **P4** (v1.0.225): condensed title + reader-first abstract; Grok+Gemini MINOR, null "robustly supported"; every number reproduces.
+- **P3** (v3.1.146): byte-identical reproduction; anomalies proven real high-z QSOs (p~1e-103); eROSITA tier excised from every count.
+- **P2** (v1.7.105): −35/16 3-way certified (App A Table VII per-vertex derivation); independent+RSD Fisher; Grok MINOR.
+- **P5** (v0.1.108): all numbers exact; Δf_CW monopole-invariant on public data; Paper-IV = citation timing.
+- **P1U** (v1U.0.4): P1A theory + P1B reproducibility companion MERGED; all tiers derived/grounded/NDA-bounded; f_NL −35/16 propagated; Fierz lemma closed; companion numbers artifact-cited; 0 genuinely-new Grok/Gemini findings.
 
 ChatGPT's blanket REJECTs are its structural harsh-referee floor (directive H) — record-only,
 each remaining item truth-audited as re-flag/disclosed. The operative calibrated gate
@@ -62,9 +59,19 @@ in referee exchanges with the verified artifact record.
 
 ## Wave-2 arXiv-ID insertion — one command (`tools/insert_arxiv_ids.sh`)
 
-Once wave-1 IDs (P4, P1B, P3, P2) are assigned, run **one** command to do every
-wave-2 ID insertion, recompile, mirror, bundle-rebuild, and Convex-command
-emission with all gates enforced:
+> **⚠ SUPERSEDED for the merged layout (2026-07-09).** Wave-2 is now **P5 v0.1.108
+> + the unified Paper 1 (P1U v1U.0.4)** — P1B is merged into P1U, so there is **no
+> standalone P1B submission and no reciprocal P1B_V2 note.** The `insert_arxiv_ids.sh`
+> steps below still describe the OLD two-paper (P1A + P1B) layout and the script's
+> own header targets `arxiv/paper1a_ech_nogo.tex`. Its P5 leg (Step 1, `\paperIVarxiv`)
+> is still correct; its P1A/P1B legs are stale. For P1U, insert the four wave-1 IDs
+> directly into `arxiv/references.bib` (see the tool's updated header note + the
+> WAVE RE-PLAN block below), then recompile `arxiv/paper1_unified.tex`. Also note the
+> script's `REPO` path constant still points at the old `CODE_2025/bigbounce` location
+> (repo now lives under `CODE_YOU/bigbounce`).
+
+Once wave-1 IDs (P4, P3, P2) are assigned, run the P5 leg to set `\paperIVarxiv`,
+then insert the companion IDs into P1U's bib and recompile:
 
 ```
 tools/insert_arxiv_ids.sh --p4 2507.NNNNN --p1b 2507.NNNNN --p3 2507.NNNNN --p2 2507.NNNNN [--dry-run]
@@ -101,6 +108,6 @@ TeX PATH the script sets itself: `$HOME/Library/TinyTeX/bin/universal-darwin:/op
 4. When P1A's ID is assigned, apply `submissions/P1B/P1B_V2_NOTE.md` for the P1B v2 replacement.
 
 
-## ⚠ WAVE RE-PLAN (2026-07-08, post-merge — supersedes the tables above)
-P1B is MERGED into the unified Paper 1 (v1U.0.1, 58pp, bundle `submissions/P1A/arxiv_p1_unified_v1U.0.1.tar.gz`) — no standalone P1B submission.
-**Wave 1:** P4 v1.0.224 → P3 v3.1.146 → P2 v1.7.105. **Wave 2 (same day, wave-1 IDs inserted):** P5 v0.1.107 (P4 ID) → Paper 1 unified v1U.0.1 (P2/P3/P4/P5 IDs). `tools/insert_arxiv_ids.sh` targets the OLD two-paper layout for P1A/P1B cross-refs — for the unified paper, insert companion IDs directly in `arxiv/paper1_unified.tex` (grep `arXiv:XXXX` / TODO-SUBMISSION) and recompile.
+## ⚠ WAVE RE-PLAN (2026-07-09, post-merge — supersedes the tables above)
+P1B is MERGED into the unified Paper 1 (P1U, v1U.0.4, 60pp, bundle `submissions/P1A/arxiv_p1_unified_v1U.0.4.tar.gz`) — no standalone P1B submission.
+**Wave 1:** P4 v1.0.225 (32pp) → P3 v3.1.146 (35pp) → P2 v1.7.105 (36pp). **Wave 2 (same day, wave-1 IDs inserted):** P5 v0.1.108 (39pp; P4 ID) → Paper 1 unified v1U.0.4 (60pp; P2/P3/P4/P5 IDs). `tools/insert_arxiv_ids.sh` targets the OLD two-paper layout for P1A/P1B cross-refs — for the unified paper, insert the four companion arXiv IDs directly in `arxiv/references.bib` (bib keys `Golden2026P2/P3/P4` + the P5 ref → wave-1 IDs; `Golden2026P1a` self-ref stays `[arXiv:XXXX.XXXXX]`) or wherever the live `TODO-SUBMISSION` / `arXiv:XXXX.XXXXX` markers sit, then recompile `arxiv/paper1_unified.tex` (regenerates the `.bbl`). See `tools/insert_arxiv_ids.sh` header note (P1U section) for the exact placeholders.

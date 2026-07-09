@@ -5,7 +5,7 @@ cites as a companion; P3 and P2 are independent. This order keeps the wave-2
 cross-references clean.)
 
 **Verified:** 2026-07-09. Every check below was run, not assumed.
-- P4 `arxiv_p4_v1.0.224.tar.gz` — md5 `12e4f2d0cdbab695889e51791369edb4` — standalone compile exit 0, 0 undef, **32 pages**.
+- P4 `arxiv_p4_v1.0.225.tar.gz` — md5 `3adc57391fba963272d9a9b715d37fc8` — **rebuilt today** from current source (the `.224` bundle was one version stale) — standalone re-extract+compile exit 0, 0 undef, **32 pages**.
 - P3 `arxiv_p3_v3.1.146.tar.gz` — md5 `25807ecb660c8c642fefef9c8f2b7121` — **rebuilt today** from current source (the `.144` bundle was one version stale) — smoke-test re-extract+compile exit 0, 0 undef, **35 pages**.
 - P2 `arxiv_p2_v1.7.105.tar.gz` — md5 `ed764493e7091385b0cbf50552cbe0c8` — bundle tex byte-identical to source, compile exit 0, 0 undef, **36 pages**.
 - Placeholder scans: all three CLEAN (only commented-out `%\preprint{arXiv:XXXX.XXXXX}` lines, which never render). No dangling companion-paper placeholders.
@@ -26,11 +26,11 @@ If Step 0 is clean (astro-ph enabled, no endorsement block), proceed. If blocked
 
 ## PAPER 1 — P4 (submit FIRST)
 
-**Upload:** `submissions/P4/arxiv_p4_v1.0.224.tar.gz`
+**Upload:** `submissions/P4/arxiv_p4_v1.0.225.tar.gz`
 (Full paste-ready field text also lives in `submissions/P4/ARXIV_METADATA.txt`.)
 
 ### 1. Start submission → upload the tarball
-arxiv.org/submit → "Start a new submission" → upload `arxiv_p4_v1.0.224.tar.gz`.
+arxiv.org/submit → "Start a new submission" → upload `arxiv_p4_v1.0.225.tar.gz`.
 Let arXiv run AutoTeX. It should compile to **32 pages**.
 
 ### 2. Metadata — paste these blocks
@@ -65,7 +65,7 @@ release). Conservative alternative: arXiv's standard perpetual non-exclusive lic
 
 ### 3. Preview checks (before hitting Submit)
 - Open the arXiv-generated PDF preview.
-- **Page 1** shows version/date consistent with v1.0.224 (title-block emits the timestamp; no stray version tag).
+- **Page 1** shows version/date consistent with v1.0.225 (title-block emits the timestamp; no stray version tag).
 - **Figures render** — spot-check that figure pages show images, not blank boxes (the tarball is ~25 MB precisely because the figures are heavy; if a figure is missing, do NOT submit — reping the loop).
 - Title, authors, abstract, categories match the blocks above.
 
@@ -170,7 +170,7 @@ Testing the Matter Bounce with Primordial Non-Gaussianity: A SPHEREx Sensitivity
 Houston Golden
 ```
 
-**Abstract** (1621 chars, arXiv-safe — paste exactly):
+**Abstract** (1583 chars, arXiv-safe — paste exactly):
 ```
 A matter-dominated contracting phase preceding a nonsingular bounce predicts a minimally parameterized local-type non-Gaussianity f_NL^local = -35/16 = -2.1875, opposite in sign and ~2 orders of magnitude larger than the single-field slow-roll value. Our central contribution resolves the long-standing eight-year Cai-Li factor-of-two discrepancy (Cai et al. -35/8 vs. Li et al. -35/16) in favour of -35/16: re-summing Cai et al.'s own four cubic-action vertices at epsilon = 3/2 gives -35/16 in the squeezed limit, matching Li et al.'s independent general-c_s result at c_s = 1, while the published -35/8 traces to a spurious +(99/128) sum_i k_i^3 term in Cai et al.'s final combined polynomial (both share the identical f_NL = 10A/(3 sum k_i^3) convention, so it is an arithmetic error, not a convention difference). We then recast published SPHEREx and MegaMapper forecasting power onto this prediction: this is a sensitivity recast of a single external forecast, not an independent one. After template-mismatch correction the SPHEREx bispectrum significance for f_NL = -35/16 is ~2.6-2.75 sigma optimistic, reducing to a realistic ~1.3-2.75 sigma after the full systematic budget. A closed-form Bayesian comparison, validated across three 10^5-realization Monte Carlo ensembles, gives illustrative (prior-dependent) Bayes factors favouring the bounce over tuned multifield competitors. The forecast is conditional on faithful cubic-order bispectrum transmission through the bounce (derived here to a bounded ~10^-3 systematic via single-clock LQC superhorizon zeta-conservation).
 ```

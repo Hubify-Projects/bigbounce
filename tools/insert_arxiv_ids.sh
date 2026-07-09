@@ -2,11 +2,47 @@
 # ============================================================================
 # insert_arxiv_ids.sh — wave-2 arXiv-ID insertion automation (bigbounce)
 # ----------------------------------------------------------------------------
-# On submission day, once wave-1 arXiv IDs (P4, P1B, P3, P2) are assigned,
+# ############################################################################
+# # ⚠ MERGED-LAYOUT NOTE (2026-07-09 — READ BEFORE RUNNING) ################### #
+# ############################################################################
+# WAVE-2 IS NOW:  P5 v0.1.108  +  the UNIFIED Paper 1 (P1U, v1U.0.4, 60pp,
+#                 bundle submissions/P1A/arxiv_p1_unified_v1U.0.4.tar.gz).
+# WAVE-1 IS:      P4 v1.0.225 (32pp) -> P3 v3.1.146 (35pp) -> P2 v1.7.105 (36pp).
+#
+# P1B is MERGED into P1U — there is NO standalone P1B submission and NO
+# reciprocal P1B_V2 note. The Step-1 P5 \paperIVarxiv leg below is still
+# CORRECT. The Step-2/3 legs (P1A bib fill + P1B reciprocal) are STALE: they
+# target arxiv/paper1a_ech_nogo.tex, which is the pre-merge P1A, not P1U.
+#
+# For P1U, the wave-2 ID insertion is done in arxiv/references.bib (the shared
+# bib P1U compiles against). Grep of arxiv/paper1_unified.tex + references.bib
+# (2026-07-09) — the ONLY live wave-2 placeholders are the TODO-SUBMISSION
+# companion bib entries in arxiv/references.bib:
+#     Golden2026P1a  -> [arXiv:XXXX.XXXXX --- ID inserted at coordinated submission]
+#                       *** P1U's OWN forward-ref — LEAVE AS-IS (P1U's ID does
+#                           not exist until P1U itself is assigned in wave-2) ***
+#     Golden2026P1b  -> "posted concurrently on arXiv"  (companion, now folded;
+#                        harmless — fill with the P1U ID at v2 or leave)
+#     Golden2026P2   -> fill with the real P2 wave-1 ID
+#     Golden2026P3   -> fill with the real P3 wave-1 ID
+#     Golden2026P4   -> fill with the real P4 wave-1 ID
+#   (Golden2026P2's bib TITLE still reads "-35/8"; the P1U BODY uses -35/16 —
+#    the title string is cosmetic bib metadata, not a rendered science claim,
+#    but tidy it to -35/16 if editing anyway.)
+# The paper1_unified.tex body carries only PROSE "coordinated submission /
+# posted concurrently" wording (lines ~1372, ~1602) — no XXXX ID markers to
+# substitute in the .tex itself; the IDs render through the .bbl once the bib
+# notes are filled and paper1_unified is recompiled (pdflatex + bibtex + x3).
+# ############################################################################
+#
+# On submission day, once wave-1 arXiv IDs (P4, P3, P2) are assigned,
 # this script performs the ID insertions the SUBMISSION_NOTE files describe,
 # recompiles the touched papers, mirrors the served PDFs, rebuilds the
 # arXiv tarballs (standalone-verified), prints the Convex bump commands, and
 # updates the checklist rows — one command, all gates.
+#
+# NOTE: the REPO path constant below still reads CODE_2025/bigbounce; the repo
+# now lives at CODE_YOU/bigbounce — update REPO before a live run.
 #
 # It NEVER changes a scientific number. It only substitutes the clearly-marked
 # arXiv-ID placeholders with the real IDs the caller supplies.

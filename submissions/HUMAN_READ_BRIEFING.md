@@ -22,11 +22,11 @@ arithmetic-error claim.** Read that section first.
 
 | Paper | v | pp | One-line claim | Load-bearing result | Latest board (ChatGPT/Grok/Gemini) |
 |-------|---|----|----------------|---------------------|------------------|
-| **P4** | 1.0.224 | 31 | Chirality dipole in 8.5M DESI galaxies is **null** | Real-space HC dipole +0.41σ, p=0.31 | MAJ / MIN / MIN (R9) |
-| **P2** | 1.7.104 | 34 | Matter-bounce f_NL=**−35/16**; resolves Cai/Li factor-of-2; recasts SPHEREx | The −35/16 resolution + independent+RSD Fisher forecast | MAJ / MAJ / MIN (R9) |
-| P3 | 3.1.145 | 33 | 268,519-source multi-survey anomaly catalog | The catalog + reproducible dedup | MAJ / MIN / MAJ (R9) |
-| P5 | 0.1.107 | 37 | DESI void/non-void chirality is null (Δf_CW≈0) | Δf_CW=+0.0007±0.0022, monopole-invariant | MAJ / MIN / MAJ (R9) |
-| **P1U** | 1U.0.3 | 58 | Unified Paper 1 — channel-level ECH no-go **+** reproducibility companion | Channel-by-channel closure + Fierz proof + derived ΔN_eff bound | MAJ / MAJ / MAJ (P1U3) |
+| **P4** | 1.0.225 | 32 | Chirality dipole in 8.5M DESI galaxies is **null** | Real-space HC dipole +0.41σ, p=0.31 | MAJ / MIN / MIN (R9) |
+| **P2** | 1.7.105 | 36 | Matter-bounce f_NL=**−35/16**; resolves Cai/Li factor-of-2; recasts SPHEREx | The −35/16 resolution + independent+RSD Fisher forecast | MAJ / MAJ / MIN (R9) |
+| P3 | 3.1.146 | 35 | 268,519-source multi-survey anomaly catalog | The catalog + reproducible dedup | MAJ / MIN / MAJ (R9) |
+| P5 | 0.1.108 | 39 | DESI void/non-void chirality is null (Δf_CW≈0) | Δf_CW=+0.0007±0.0022, monopole-invariant | MAJ / MIN / MAJ (R9) |
+| **P1U** | 1U.0.4 | 60 | Unified Paper 1 — channel-level ECH no-go **+** reproducibility companion | Channel-by-channel closure + Fierz proof + derived ΔN_eff bound | MAJ / MAJ / MAJ (P1U3) |
 
 **The universal pattern you must internalize before reading a single review:**
 across every paper, on the *identical PDF*, the boards oscillate MAJOR↔MINOR
@@ -288,8 +288,8 @@ another group's algebra, in print, under your name.**
 
 # P1U — Unified Paper 1: ECH spin-torsion no-go + reproducibility companion (SKIM)
 
-**P1B has been merged into P1A to form a single self-contained Paper 1 (P1U, 58pp,
-v1U.0.3).** The structural "standalone or fold-in?" question that dogged P1B is
+**P1B has been merged into P1A to form a single self-contained Paper 1 (P1U, 60pp,
+v1U.0.4).** The structural "standalone or fold-in?" question that dogged P1B is
 now *answered by construction* — the ΔN_eff derivation and reproducibility material
 are appendices of one paper. Gemini on the merged manuscript: *"self-contained…
 robustly supported."*
