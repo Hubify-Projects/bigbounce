@@ -81,9 +81,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-1a",
       number: "1A",
       shortTitle: "ECH dark-energy closure + perturbation transparency",
-      version: "v1U.0.2",
+      version: "v1U.0.3",
       readiness: 62,
-      pendingWork: "UNIFIED Paper 1 (P1B merged in as appendices, Houston-approved 2026-07-08): 58pp self-contained; v1U.0.2 closes 2 INT merge-seams (stale companion-framing of internal appendices; dangling sample-count table ref); awaiting arXiv wave 2 (companion IDs).",
+      pendingWork: "UNIFIED Paper 1 (P1B merged in as appendices, Houston-approved 2026-07-08): 58pp self-contained; v1U.0.3 closes the P1U-round EXT wave — Gemini's 2 MINORs closed (parity-odd terminology-clarity edit; companion non-load-bearing disclosure made unmissable), Grok's MAJORs dispositioned (self-disclosed scope / falsified-vs-source); awaiting arXiv wave 2 (companion IDs).",
     },
     {
       slug: "paper-1b",

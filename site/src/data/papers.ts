@@ -87,7 +87,7 @@ export const papers: Paper[] = [
     slug: "paper-1a",
     number: "1",
     title: "Channel-Level Closure of Four Minimal Einstein–Cartan–Holst Dark-Energy Routes and Perturbation Transparency for Scalar Matter, with a Technical Verification Companion (MCMC · NaMaster · Spectator-ALP)",
-    version: "v1U.0.2",
+    version: "v1U.0.3",
     lastUpdated: "2026-07-09",
     tldr: "Unified Paper 1: closes all four minimal Einstein–Cartan–Holst routes from a quantum bounce to dark energy and proves the Holst sector is invisible to scalar/tensor perturbations, then verifies the program with the former Paper 1B technical companion (309K-sample ΛCDM+ΔN_eff MCMC, NaMaster pipeline recovery, spectator-ALP birefringence check) folded in as appendices — self-contained. Two clean kill-tests remain (LiteBIRD birefringence, SPHEREx f_NL).",
     path: publicationPath({}),
@@ -115,10 +115,10 @@ export const papers: Paper[] = [
       "arXiv endorsement + submission — gated behind a reviewer ACCEPT (packets are ready; reviews are not passed)",
     ],
     preprintId: "HUBIFY-2026-001",
-    pdfMeta: "PDF · 58 pp · v1U.0.2 · updated Jul 9, 2026 · md5 884b3de6 — P1U INT merge-seam closure (companion-framing + sample-count ref fixed)",
+    pdfMeta: "PDF · 58 pp · v1U.0.3 · updated Jul 9, 2026 · md5 41b5405c — P1U EXT closure wave (Gemini 2 MINOR closed: parity-odd terminology-clarity + companion non-load-bearing disclosure; Grok items dispositioned)",
     artifacts: [
-      { label: "Read PDF", href: "/papers/paper1_unified_v1U.0.2.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/paper1_unified_v1U.0.2.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/paper1_unified_v1U.0.3.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/paper1_unified_v1U.0.3.pdf", kind: "secondary", download: true },
       {
         label: "LaTeX source",
         href: "https://github.com/Hubify-Projects/bigbounce/blob/main/arxiv/paper1a_ech_nogo.tex",

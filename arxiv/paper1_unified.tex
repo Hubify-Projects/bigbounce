@@ -51,8 +51,34 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \providecommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1U.0.2}
+\newcommand{\paperVersion}{v1U.0.3}
 \newcommand{\paperTimestamp}{July 9, 2026}
+% v1U.0.2->0.3 (2026-07-09): P1U-round EXT closure wave (Gemini 2 MINOR + Grok disposition).
+%   GEMINI MINOR-1 (Sec IV D / Fn 3: operator labeled "parity-odd effective action" while Fn 3
+%   shows the Lorentz-scalar contraction is intrinsically parity-EVEN = semantic confusion):
+%   CLOSED by a terminology-clarity edit (no physics change). Added an unmissable inline qualifier
+%   at first use (L~1650 "we derive the parity-odd effective action ...(throughout, 'parity-odd'
+%   labels parity-VIOLATING phenomenology sourced by the P-breaking Nieh-Yan background, not an
+%   intrinsically P-odd Lagrangian density; the individual Lorentz-scalar operators are P-even)")
+%   and sharpened the Fn-3 wording from "retained for consistency" to an explicit reading rule
+%   ("parity-violating in effect via the P-breaking background, never a claim the density is P-odd
+%   under unbroken parity; carries no physical content beyond this background-induced violation").
+%   GEMINI MINOR-2 (Sec I anchors baseline params + secondary forecasts on concurrently-submitted
+%   companion Papers II/III/IV -> limits immediate peer-review validation): CLOSED by making the
+%   already-present non-load-bearing disclosure unmissable at the anchor: added one sentence to the
+%   provenance paragraph -- "a referee can validate every load-bearing claim without any sibling
+%   (Papers II/IV/V) in hand; the sole external inputs (SPHEREx f_NL Paper II; chirality/anomaly
+%   catalogs Papers IV/V) are non-load-bearing illustrative context resting on committed refereeable
+%   artifacts, and their public posting changes no conclusion." No number changed; no disclosure
+%   weakened. GROK dispositions (MAJOR REVISIONS verdict, self-disclosed / falsified-vs-source, no
+%   new edit): (1) channel-level not operator-level completeness -> already unmissable in abstract
+%   L1108-1123; (3) rho_Lambda=Xi M_Pl^4 = standard EFT relocating the CC -> already stated abstract
+%   L1124-1131 + Sec II C/App B; (4) R4 closed by naturalness not amplitude -> already foregrounded
+%   abstract L1096-1107; (2) "perturbation-transparency only sketched, no perturbed-Cartan / delta-K
+%   derivation" = FALSIFIED vs source: sec:transparency L3510-3635 supplies the explicit 5-step
+%   proof (algebraic Cartan constraint => T=0 at all orders; first Bianchi identity R_mu[nu rho sig]=0
+%   => Holst dual vanishes pointwise; differential-form NY+T^2 decomposition; 2nd-order verification).
+%   Grok's companion-cross-ref items were already dead after the v1U.0.2 seam fixes. 0 undef-refs.
 % v1U.0.1->0.2 (2026-07-09): P1U INT-round merge-seam closure (2 MAJOR). SEAM 1: the
 %   "Companion paper." paragraph (L~1429) + tab:companion_inputs still framed the now-INTERNAL
 %   folded MCMC/NaMaster/ALP appendices (E/F) as external "companion / not-yet-postable / audit
@@ -1489,6 +1515,14 @@ self-contained and uses \emph{none} of these numbers; the imported values
 enter only the \emph{illustrative} observational comparisons (the
 $\Lambda$CDM-consistency check of Sec.~\ref{sec:obs} and the
 surviving-signature context of Sec.~\ref{sec:surviving}).
+Consequently, a referee can validate every load-bearing claim of this manuscript
+without any coordinated-submission sibling (Papers~II/IV/V) in hand: the sole
+genuinely external inputs---the SPHEREx $\fnl$ forecast (Paper~II) and the
+galaxy-chirality / anomaly catalogs (Papers~IV/V)---appear \emph{only} as
+non-load-bearing illustrative context, and each rests on a committed, refereeable
+artifact in this repository~\cite{BigBounceRepro} rather than on the sibling
+text. Their eventual public posting sharpens the observational context but
+changes no conclusion of the present paper.
 
 \begin{table*}[tb]
 \caption{\label{tab:companion_inputs} Result-provenance map for the imported
@@ -1647,7 +1681,7 @@ $N_{\rm tot}\approx 92$ with $\Dinf\approx 4\times 10^{-122}$.}
 
 \subsubsection{Derivation of the Parity-Odd Term}\label{sec:parityodd}
 
-Starting with the complete action $S = S_{\rm gravity} + S_{\rm Holst} + S_{\rm fermion}$, we derive the parity-odd effective action through four steps:
+Starting with the complete action $S = S_{\rm gravity} + S_{\rm Holst} + S_{\rm fermion}$, we derive the parity-odd effective action through four steps (throughout, ``parity-odd'' labels \emph{parity-violating phenomenology} sourced by the P-breaking Nieh--Yan background, not an intrinsically P-odd Lagrangian density; the individual Lorentz-scalar operators are P-even by construction, as detailed in the footnote to Eq.~\eqref{eq:oneloop_parity_odd}):
 
 \textit{Step~1: Torsion Activation.}---Torsion is determined algebraically by the
 fermionic spin density:
@@ -2528,8 +2562,13 @@ from the operator's intrinsic P transformation but from a P-breaking
 temporal orientation, spontaneously breaking P and T). The label
 ``parity-odd'' used in the section heading and surrounding text refers to
 the resulting parity-violating phenomenology, not the operator's intrinsic
-parity. The label is retained for consistency with the section's
-established terminology. The photon-coupling chain
+parity. To avoid ambiguity we therefore read ``parity-odd'' throughout Route~2
+(and in the section heading and the superscript of
+Eq.~\eqref{eq:oneloop_parity_odd}) strictly as \emph{parity-violating in effect}
+via the P-breaking Nieh--Yan background, never as a claim that the Lagrangian
+density is P-odd under an unbroken parity transformation; the label is retained
+only for continuity with the established Route-2 terminology and carries no
+physical content beyond this background-induced parity violation. The photon-coupling chain
 used in the dimensionless ratio below proceeds via the standard
 chiral-anomaly
 $\partial_\mu J^{5\mu} \supset (\alpha_{\rm em}/4\pi)\,F\widetilde F$

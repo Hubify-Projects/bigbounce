@@ -46,6 +46,29 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "P1U-EXT-closure-wave-2026-07-09",
+    dateISO: "2026-07-09",
+    kind: "ext-closure",
+    title:
+      "P1U EXT closure wave (v1U.0.2→v1U.0.3): Gemini's 2 MINORs closed with real edits (parity-odd terminology clarity + companion non-load-bearing disclosure); Grok's 4 MAJORs dispositioned (self-disclosed scope / falsified-vs-source)",
+    papers: ["P1A", "P1B"],
+    summary:
+      "Closure wave on the unified Paper 1 targeting the P1U-round (2026-07-08 EXT + 2026-07-09 INT) findings — Gemini rated the unified paper MINOR REVISIONS (\"robustly supported… self-contained\"), so closing its two minors is the program's clearest path to a first Gemini ACCEPT. GEMINI MINOR-1 (Sec IV D / Footnote 3: the one-loop operator is labeled a \"parity-odd effective action\" while Footnote 3 correctly notes the Lorentz-scalar contraction of two pseudovectors is intrinsically parity-EVEN — semantic confusion) → CLOSED by a terminology-clarity edit (no physics change): added an unmissable inline reading-rule at the operator's first use (\"'parity-odd' labels parity-VIOLATING phenomenology sourced by the P-breaking Nieh–Yan background, not an intrinsically P-odd Lagrangian density; the individual Lorentz-scalar operators are P-even\") and sharpened Footnote 3 from \"retained for consistency\" to an explicit reading rule carrying no physical content beyond background-induced parity violation. GEMINI MINOR-2 (Sec I anchors baseline params + secondary survey forecasts on concurrently-submitted companion Papers II/III/IV, limiting immediate peer-review validation) → CLOSED by making the already-present non-load-bearing disclosure unmissable at the anchor: \"a referee can validate every load-bearing claim without any coordinated-submission sibling in hand; the sole external inputs (SPHEREx f_NL Paper II; chirality/anomaly catalogs Papers IV/V) are non-load-bearing illustrative context resting on committed refereeable artifacts, and their public posting changes no conclusion.\" No number changed; no disclosure weakened. GROK dispositions (MAJOR REVISIONS verdict; no new edit needed — all self-disclosed or falsified-vs-source): (1) channel-level-not-operator-level completeness → already unmissable in the abstract; (3) ρ_Λ=Ξ M_Pl⁴ = standard EFT relocating the CC → already stated in the abstract + Sec II C/App B; (4) R4 closed by naturalness not amplitude → already foregrounded in the abstract; (2) \"perturbation-transparency only sketched, no perturbed-Cartan / δK derivation\" = FALSIFIED vs source — sec:transparency supplies the explicit 5-step proof (algebraic Cartan constraint ⇒ T=0 at all orders; first Bianchi identity ⇒ Holst dual vanishes pointwise; differential-form NY+T² decomposition; 2nd-order verification). Grok's companion-cross-ref items were already dead after the v1U.0.2 seam fixes. Recompiled 0 undefined refs, /latex-audit clean (worst overfull 14.6pt, pre-existing), 58pp, md5 41b5405c, mirrored byte-identical to all served paths.",
+    keyTakeaways: [
+      "Gemini's 2 MINORs both CLOSED with real edits (no number changed, no disclosure weakened) — clearest path to a first Gemini ACCEPT",
+      "MINOR-1: parity-odd terminology-clarity — unmissable inline reading-rule at first use + sharpened Footnote 3 (parity-VIOLATING-in-effect, operators P-even)",
+      "MINOR-2: companion non-load-bearing disclosure made unmissable at the Sec I anchor (validate every load-bearing claim without any sibling in hand)",
+      "Grok's 4 MAJORs dispositioned: 3 already-unmissable self-disclosed scope (completeness / CC-relocation / R4-naturalness), 1 FALSIFIED-vs-source (transparency proof IS supplied)",
+      "0 undefined refs · /latex-audit clean · 58pp · md5 41b5405c · all served PDFs byte-identical",
+    ],
+    links: [
+      { label: "P1U raw reviews + screenshots", href: `${PR}/EXT_real/P1U_2026-07-08` },
+      { label: "Gemini raw (2 MINOR)", href: `${PR}/EXT_real/P1U_2026-07-08/gemini.md` },
+      { label: "INT round notes", href: `${PR}/INT_v3/ROUND_2026-07-09/P1U_INT.md` },
+      { label: "Unified PDF", href: "/papers/paper1_unified_v1U.0.3.pdf" },
+    ],
+  },
+  {
     id: "R9-EXT-nonP1-latest-2026-07-09",
     dateISO: "2026-07-09",
     kind: "external-browser",
