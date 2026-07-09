@@ -46,6 +46,30 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "W10-ext-retest-2026-07-09",
+    dateISO: "2026-07-09",
+    kind: "external-browser",
+    title:
+      "W10 EXT re-test of the three ACCEPT-track papers (P4 v1.0.225 · P5 v0.1.108 · P3 v3.1.146): P4 and P5 both cleared a TRIPLE external Accept-with-Minor from ChatGPT+Grok+Gemini; P3 got Grok+Gemini Accept-track with ChatGPT holding its structural MAJOR floor",
+    papers: ["P3", "P4", "P5"],
+    summary:
+      "Post-closure external re-test of the three papers whose owner-agents had just closed all Grok+Gemini items. Headed gstack browser, ChatGPT (GPT-5 Thinking) + Grok (Expert) + Gemini (2.5 Pro), raw verbatim text + screenshot READ before every recorded verdict. Verdict matrix (ChatGPT/Grok/Gemini) FROM RAW: P4 MINOR/MINOR/MINOR · P5 MINOR/MINOR/MINOR · P3 MAJOR/MINOR/MINOR. Vs baselines (P4 MAJ/MIN/MIN · P5 MAJ/MIN/MAJ · P3 MAJ/MIN/MAJ) this is a broad ACCEPT-track jump: P4 = triple Accept-with-Minor (ChatGPT UPGRADE off R9 MAJOR to 5 self-disclosed minors, Gemini holds Accept-with-Minor, Grok 'ready for submission or minor revision — the null result is believable and well-defended'); P5 = triple Accept-with-Minor (ChatGPT + Gemini both UPGRADE off R9 MAJOR, Grok 'Accept with minor revisions… ready for arXiv and journal submission in its current form'); P3 = Gemini Accept-with-Minor (UPGRADE off R9 MAJOR) + Grok favorable ('ready for arXiv with only light polishing… one of the stronger large-scale anomaly papers') + ChatGPT MAJOR (5-6 presentation/framing items, all self-disclosed; only the NEOWISE injection-recovery ask is methodological — ChatGPT's directive-H harsh-referee floor). All closed R9 minors stayed closed; zero reopened prior item, zero genuinely-new real BLOCKER after per-finding truth-audit; every new finding is polish-tier MINOR or a self-disclosed re-flag. Infra: P4 Grok first attempt interrupted by tab navigation (re-run clean) and P5 Gemini first conversation dropped (re-run, persistence-verified) — 9/9 legs harvested with raw text + screenshots, 0 fabricated.",
+    keyTakeaways: [
+      "P4 v1.0.225 = TRIPLE external Accept-with-Minor (ChatGPT UPGRADE off R9 MAJOR, Gemini holds, Grok favorable) — the program's closest paper cleared the double-accept bar",
+      "P5 v0.1.108 = TRIPLE external Accept-with-Minor — ChatGPT AND Gemini both UPGRADE off their R9 MAJOR floors; Grok 'ready for arXiv and journal submission in its current form'",
+      "P3 v3.1.146 = Grok+Gemini ACCEPT-track (Gemini UPGRADE off R9 MAJOR); ChatGPT held MAJOR on presentation/framing items all self-disclosed in the paper (harsh-referee floor, not a new content error)",
+      "All R9-closed minors stayed closed — no reopened prior item, no regression, zero genuinely-new real BLOCKER after per-finding truth-audit",
+      "9/9 legs harvested with raw verbatim text + screenshots, 0 fabricated; P4-Grok + P5-Gemini re-run after transient infra drops",
+    ],
+    links: [
+      { label: "W10 raw reviews + screenshots", href: `${PR}/EXT_real/W10_2026-07-09` },
+      { label: "P4 raws (ChatGPT/Grok/Gemini)", href: `${PR}/EXT_real/W10_2026-07-09` },
+      { label: "P5 raws (ChatGPT/Grok/Gemini)", href: `${PR}/EXT_real/W10_2026-07-09` },
+      { label: "P3 raws (ChatGPT/Grok/Gemini)", href: `${PR}/EXT_real/W10_2026-07-09` },
+      { label: "manifest", href: `${PR}/EXT_real/W10_2026-07-09/manifest.jsonl` },
+    ],
+  },
+  {
     id: "P1U4-real-work-closure-2026-07-09",
     dateISO: "2026-07-09",
     kind: "ext-closure",
@@ -4066,6 +4090,20 @@ export const externalVerdictRounds: ExternalRoundVerdicts[] = [
       P5: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
     },
     note: "Closure wave on P4 (the program's closest paper) against the R9 board — Grok = minor-revisions ('careful, reproducible null-result analysis that meets PRD standards'), Gemini = 'Accept with Minor Revisions' ('a highly significant contribution'), ChatGPT = MAJOR (presentation/consolidation of already-disclosed content). Both ACCEPT-track referees' concrete minors were closed with REAL edits, no number changed: (1) [Grok#1 / ChatGPT#3] the abstract z≈−18 block-bootstrap WLS statistic is now explicitly labeled a model-dependent template-disfavor statistic under the NSIDE=8 spatial covariance — NOT a calibrated frequentist exclusion — with the injection-recovery A95∈(1.0%,1.5%] bracket cross-referenced as the clean frequentist falsification of the primary real-space estimator; (2) [Gemini#2 / ChatGPT] a main-text downstream-user warning was added stating the released raw p_eq scores are uncalibrated ranking outputs that must NOT be used as frequentist likelihoods without external Platt/temperature recalibration, citing the Appendix-B top-label ECE ≥0.25–0.36; (3) [Gemini#3] the abstract real-space p-value now names its null explicitly ('p=0.31 vs the isotropic pixel-permutation null'). The remaining referee items (~47% unmodeled ℓ=1 residual a-fortiori bound, Shamir 7–18× pipeline-dependence, σ-null pairing) were verified already-present and unmissable in the body (Sec IV.D forward-model paragraph, Sec V.A, Table captions). Directive-G hygiene: recompiled 0 undef-refs, latex-audit clean (0 overfull hbox), mirrored byte-identical to all 9 served paths (md5 35375fda), Convex paperVersions:bump paper-4. P4 is now two clean minor-lists from a Grok+Gemini double-accept — the closest ACCEPT shot in the program.",
+  },
+  {
+    roundId: "W10-2026-07-09",
+    dateISO: "2026-07-09",
+    windowPT: "Jul 9 · post-closure EXT re-test of the three ACCEPT-track papers (P4 v1.0.225 · P5 v0.1.108 · P3 v3.1.146) · headed browser, raw verbatim text + screenshot READ before every recorded verdict",
+    verdicts: {
+      P1A: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P1B: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P2: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P3: ["MAJOR", "MINOR", "MINOR"],
+      P4: ["MINOR", "MINOR", "MINOR"],
+      P5: ["MINOR", "MINOR", "MINOR"],
+    },
+    note: "EXT re-test of the three papers whose owner-agents closed all Grok+Gemini items. Verdict matrix (ChatGPT/Grok/Gemini) FROM RAW: P4 MINOR/MINOR/MINOR · P5 MINOR/MINOR/MINOR · P3 MAJOR/MINOR/MINOR. Vs baselines (P4 MAJ/MIN/MIN · P5 MAJ/MIN/MAJ · P3 MAJ/MIN/MAJ): a broad ACCEPT-track jump. P4 = TRIPLE ACCEPT-with-minor — ChatGPT 'Accept with Minor Revisions' (5 MINOR, all self-disclosed: incommensurable-σ table consolidation, GZ1 label-accuracy caveat prominence, ~47% ℓ=1 residual abstract phrasing, A95 finer injection grid, Zenodo DOI archival — a clean UPGRADE off its R9 MAJOR floor), Gemini 'Accept with Minor Revisions' (0 MAJOR / 4 MINOR, holds), Grok 'ready for submission or minor revision… the null result is believable and well-defended' (Expert, no MAJOR raised; project-page collaborator tone but unambiguously favorable). P5 = TRIPLE ACCEPT-with-minor — ChatGPT 'Accept with Minor Revisions' (0 MAJOR / 6 MINOR, UPGRADE off R9 MAJOR), Grok 'Accept with minor revisions (mostly presentational). This paper is ready for arXiv and journal submission in its current form.', Gemini 'Accept with Minor Revisions' (0 MAJOR / 4 MINOR, UPGRADE off R9 MAJOR — re-run after first Gemini conversation dropped, persistence-verified). P3 = Grok+Gemini ACCEPT-track, ChatGPT held MAJOR — Gemini 'Accept with Minor Revisions' (0 MAJOR / 4 MINOR, UPGRADE off R9 MAJOR), Grok 'ready for arXiv with only light polishing… one of the stronger large-scale anomaly papers' (favorable narrative, no structured verdict word emitted / no MAJOR), ChatGPT MAJOR (5-6 items, all presentation/framing — count-consolidation, foreground the 2,468 like-for-like DESI benchmark, move cosmology apps to appendix — every one self-disclosed in the paper; only the NEOWISE injection-recovery ask is methodological; ChatGPT's directive-H harsh-referee floor holds, not a genuinely-new content error). NET: P4 and P5 both cleared a DOUBLE (in fact triple) external ACCEPT-track from Grok+Gemini(+ChatGPT); P3 has Grok+Gemini favorable with ChatGPT at its structural floor. Closed R9 minors (P4 σ-table/GZ1/residual, P5 Grok minors, P3 held-out validation) stayed closed — no reopened prior item, no regression. New findings are all polish-tier MINOR or self-disclosed re-flags; zero genuinely-new real BLOCKER after per-finding truth-audit. Confirms pattern-066/directive-H: content closures moved the harsh reviewers off MAJOR onto the ACCEPT-track for P4/P5; P3 ChatGPT residual is venue/framing-structural. Infra: P4 Grok first attempt was interrupted by tab navigation (re-run clean); P5 Gemini first conversation dropped (re-run, persistence-verified). 9/9 legs harvested with raw verbatim text + screenshots, 0 fabricated. Raws in EXT_real/W10_2026-07-09/.",
   },
 ];
 
