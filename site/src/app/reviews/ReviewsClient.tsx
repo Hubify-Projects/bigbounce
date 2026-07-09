@@ -79,7 +79,9 @@ export default function ReviewsClient({ totalRounds }: { totalRounds: number }) 
     }
     const empty = feed.querySelector<HTMLElement>("[data-feed-empty]");
     if (empty) empty.hidden = visible > 0;
-    setVisibleCount(visible);
+    // Schedule the UI counter after the DOM overlay; this keeps the imperative
+    // filter pass separate from React's render/effect cycle.
+    window.requestAnimationFrame(() => setVisibleCount(visible));
   }, [selectedPapers, selectedKinds]);
 
   const hasFilter = selectedPapers.length > 0 || selectedKinds.length > 0;

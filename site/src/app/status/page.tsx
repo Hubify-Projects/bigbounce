@@ -67,6 +67,10 @@ const stats: Array<{ value: string; label: string }> = [
   { value:"6", label:"Bounce Channels" },
 ];
 
+// Status is statically rendered, so use one stable build timestamp for every
+// pod row instead of calling an impure clock during React render.
+const BUILD_NOW = Date.now();
+
 export const dynamic = "force-static";
 
 export default async function StatusPage() {
@@ -251,7 +255,7 @@ export default async function StatusPage() {
           </div>
         ) : (
           runningPods.map((pod) => {
-            const hoursUp = Math.max(0, (Date.now() - pod.startedAt) / 3.6e6);
+            const hoursUp = Math.max(0, (BUILD_NOW - pod.startedAt) / 3.6e6);
             return (
               <Card key={pod.podId} style={{ marginBottom: 12 }}>
                 <CardHeader>

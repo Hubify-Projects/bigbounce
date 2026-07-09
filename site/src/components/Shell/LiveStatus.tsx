@@ -33,10 +33,11 @@ export function LiveStatus() {
   const [msLeft, setMsLeft] = useState(REFRESH_MS);
 
   useEffect(() => {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved === "true") setExpanded(true);
-    } catch {}
+    queueMicrotask(() => {
+      try {
+        if (localStorage.getItem(STORAGE_KEY) === "true") setExpanded(true);
+      } catch {}
+    });
   }, []);
 
   useEffect(() => {

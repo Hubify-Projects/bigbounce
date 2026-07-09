@@ -108,7 +108,11 @@ function NavLink({
   );
   if (link.external) {
     return (
-      <a href={link.href} className={className}>
+      <a
+        href={link.href}
+        className={className}
+        onClick={() => document.documentElement.removeAttribute("data-sidebar")}
+      >
         <Icon />
         {link.label}
       </a>
@@ -119,6 +123,7 @@ function NavLink({
       href={link.href}
       className={className}
       aria-current={active ? "page" : undefined}
+      onClick={() => document.documentElement.removeAttribute("data-sidebar")}
     >
       <Icon />
       {link.label}
