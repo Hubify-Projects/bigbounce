@@ -1,16 +1,17 @@
 # HUMAN-READ BRIEFING — pre-submission expert read
 
-**For:** Houston Golden · **Date:** 2026-07-07 · **Status:** pre-flight, honest
+**For:** Houston Golden · **Date:** 2026-07-09 · **Status:** pre-flight, honest
 
 This is the document that makes your irreducible expert-read step efficient. It
 directs your attention to exactly what only a human author can judge — the
 judgment calls, the framing choices, and the claims you will personally sign.
-It does **not** soften anything. The automated pipeline cleared all six papers
-(0 genuinely-new category-d findings on the FINAL + POSTPOLISH truth-audits;
-`FINAL_SIGNOFF_AUDIT_2026-07-05.md`), but "cleared by the pipeline" is not the
-same as "an expert stands behind it." The gap between those two is your job.
+It does **not** soften anything. The automated pipeline cleared all five papers
+(P1B is now **merged into a unified Paper 1**; 0 genuinely-new findings on the
+latest P1U3 + R9 truth-audits, and for the first time **zero REJECT chips
+program-wide**), but "cleared by the pipeline" is not the same as "an expert
+stands behind it." The gap between those two is your job.
 
-**Read deeply: P4 + P2 (minimum). Skim: P1A, P3, P5, P1B.**
+**Read deeply: P4 + P2 (minimum). Skim: P1U, P3, P5.**
 
 **The single most consequential judgment in the whole program is the P2 Cai
 arithmetic-error claim.** Read that section first.
@@ -19,23 +20,24 @@ arithmetic-error claim.** Read that section first.
 
 ## The whole program in 6 lines
 
-| Paper | v | pp | One-line claim | Load-bearing result | Pipeline verdict |
+| Paper | v | pp | One-line claim | Load-bearing result | Latest board (ChatGPT/Grok/Gemini) |
 |-------|---|----|----------------|---------------------|------------------|
-| **P4** | 1.0.220 | 31 | Chirality dipole in 8.5M DESI galaxies is **null** | Real-space HC dipole +0.41σ, p=0.31 | Grok+Gemini MINOR / grok-API ACCEPT; ChatGPT REJECT (floor) |
-| **P2** | 1.7.98 | 34 | Matter-bounce f_NL=**−35/16**; resolves Cai/Li factor-of-2; recasts SPHEREx | The −35/16 resolution + ~1.3–2.75σ conditional envelope | Grok+Gemini MINOR; ChatGPT+openai REJECT (floor) |
-| P3 | 3.1.140 | 33 | 268,519-source multi-survey anomaly catalog | The catalog + reproducible dedup | grok-API MINOR; ChatGPT+Gemini REJECT/MAJOR |
-| P5 | 0.1.104 | 37 | DESI void/non-void chirality is null (Δf_CW≈0) | Δf_CW=+0.0007±0.0022, monopole-invariant | Grok+Gemini MINOR (companion to P4) |
-| P1A | 1A.0.112 | 37 | Channel-level no-go: spin-torsion can't be the DE route | The scoped channel-by-channel closure | Grok pub-ready; ChatGPT+Gemini+openai REJECT/MAJOR |
-| P1B | 1B.0.102 | 22 | ECH reproducibility companion + derived ΔN_eff bound | ΔN_eff~1e-43 (negligible) | Grok "ready for arXiv"; ChatGPT+Gemini REJECT (venue) |
+| **P4** | 1.0.224 | 31 | Chirality dipole in 8.5M DESI galaxies is **null** | Real-space HC dipole +0.41σ, p=0.31 | MAJ / MIN / MIN (R9) |
+| **P2** | 1.7.104 | 34 | Matter-bounce f_NL=**−35/16**; resolves Cai/Li factor-of-2; recasts SPHEREx | The −35/16 resolution + independent+RSD Fisher forecast | MAJ / MAJ / MIN (R9) |
+| P3 | 3.1.145 | 33 | 268,519-source multi-survey anomaly catalog | The catalog + reproducible dedup | MAJ / MIN / MAJ (R9) |
+| P5 | 0.1.107 | 37 | DESI void/non-void chirality is null (Δf_CW≈0) | Δf_CW=+0.0007±0.0022, monopole-invariant | MAJ / MIN / MAJ (R9) |
+| **P1U** | 1U.0.3 | 58 | Unified Paper 1 — channel-level ECH no-go **+** reproducibility companion | Channel-by-channel closure + Fierz proof + derived ΔN_eff bound | MAJ / MAJ / MAJ (P1U3) |
 
 **The universal pattern you must internalize before reading a single review:**
-across every paper, on the *identical PDF*, Grok/grok-API rate MINOR-or-ACCEPT
-while ChatGPT/openai-gpt-5.5 REJECT. This is directive-H referee variance (the
-maximally-harsh LLM referee's structural floor — it flags majors on any real
-manuscript, including published PRD papers). A ChatGPT REJECT is **not** evidence
-of an error; it is the noise floor. Treat the ChatGPT/openai REJECT lists as a
-**preview of the toughest human referee's *scope* questions**, already answered
-in the artifact record — not as a bug list.
+across every paper, on the *identical PDF*, the boards oscillate MAJOR↔MINOR
+round-to-round on unchanged, honestly-scoped content — directive-H / pattern-066
+referee variance (the maximally-harsh LLM referee's structural floor, which flags
+majors on any real manuscript, including published PRD papers). As of the P1U3 +
+R9 rounds there are **zero REJECT chips program-wide** (down from 6 a week ago),
+and every surviving MAJOR is a truth-audited self-disclosed scope re-flag with
+**0 genuinely-new findings**. Treat the MAJOR lists as a **preview of the toughest
+human referee's *scope* questions**, already answered in the artifact record — not
+as a bug list.
 
 ---
 
@@ -80,13 +82,13 @@ in the artifact record — not as a bug list.
    The imaging forward model explains only ~52–54% of the ℓ=1 residual; ~47% is
    **explicitly an open item**, bounded below the falsification threshold
    (A_p=0.695% < A_50=0.75% ≪ A_95∈(1.0%,1.5%]) and flagged as a deferred
-   GPU/pod computation. Gemini calls it MAJOR; Grok calls it a MINOR open item;
-   grok-API returns ACCEPT. Disclosed with a hard bound — but it *is* an
+   GPU/pod computation. On the R9 board this is a MINOR for both Grok and Gemini
+   (ChatGPT MAJOR). Disclosed with a hard bound — but it *is* an
    admitted 47% you-don't-model.
 4. **Falsification criterion (end of abstract) — stand behind this personally.**
    You commit to: a future real-space ≥5σ dipole with A≳A_95 would be in tension
    with this null. Make sure you'd defend those thresholds.
-5. **AI-methods disclosure (L1306).** Verbatim: *"This work was conducted using
+5. **AI-methods disclosure.** Verbatim: *"This work was conducted using
    an agentic AI pipeline … operated under the author's direction. Every
    quantitative result … was verified against committed computational artifacts …
    The author designed the study, made all scientific judgments, and takes full
@@ -98,8 +100,8 @@ in the artifact record — not as a bug list.
    sentence asserts you made them.
 
 ### Known accepted risks (won't surprise you if a referee raises them)
-- ChatGPT's 16-MAJOR REJECT = the structural floor. Every item maps to disclosed
-  scope. Grok AND Gemini both return MINOR on the identical PDF; grok-API ACCEPT.
+- ChatGPT's MAJOR list = the structural floor (no REJECT on the R9 board). Every
+  item maps to disclosed scope. Grok AND Gemini both return MINOR on the identical PDF.
 - The p_eq>0.6 / ~70%-discard framing will come back from a human referee. It is
   disclosed, but disclosure ≠ everyone agreeing it's the right cut.
 - Shamir comparison is a *reference-amplitude* comparison, not a matched-footprint
@@ -135,10 +137,14 @@ another group's algebra, in print, under your name.**
   originality. If the arithmetic-error claim is wrong, the paper's central
   contribution collapses and you've publicly accused a group (Cai is a coauthor on
   *both* the 2009 and the correcting-2017 papers) of an error they didn't make.
-- **What a hostile expert attacks first:** two fronts. (1) The forecast:
-  *"every σ is a rescale of a single external Heinrich σ=0.7 with an
-  additive-quadrature systematic budget — this is not an independent Fisher
-  forecast; the ~1.3σ floor is vulnerable."* (2) **The dangerous one:**
+- **What a hostile expert attacks first:** two fronts. (1) The forecast — **note
+  the R9 update:** v1.7.103 closed the old "single external Heinrich rescale,
+  real-space monopole only" limitation with a **real independent RSD-multipole
+  Fisher** (`c14_rsd_multipole_fisher.py`, committed) that reproduces Heinrich to
+  2–11% and gives σ_RSD≈0.415–0.449 (+34.7% tighter than real-space). The forecast
+  is now an independent+RSD Fisher, not a pure rescale — so the "not independent"
+  attack is largely retired; a referee may still push on the imported per-triangle
+  Cov_B (the one remaining external input). (2) **The dangerous one:**
   *"your factor-of-2 'resolution' is internally inconsistent — the +(99/128)Σk³
   term alone has the wrong sign/magnitude to explain −35/16→−35/8."* ChatGPT +
   openai independently RE-RAISE the factor-of-2 at every round.
@@ -169,12 +175,13 @@ another group's algebra, in print, under your name.**
      than working backward from the mis-extracted polynomial — but **you are the
      only one who can judge whether the physics is now actually settled or whether
      the loop talked itself into a resolution.**
-  2. **The decisive sympy scripts are in `/tmp/caili/` — ephemeral, NOT committed
-     to the repo.** For a claim this consequential (public accusation of a
-     published arithmetic error), the reproducing scripts should be committed
-     artifacts. Right now the audit trail for the single most aggressive claim in
-     the program points at a tmp directory. **Fix before submission if you assert
-     this.**
+  2. **The decisive sympy scripts are now committed** at
+     `research/focused_paper_source_integration/scripts/caili_certification/`
+     (cai_vertices.py, cai_shape.py, cai_reconcile.py, cai_conv.py, final_check.py
+     + README) — the earlier `/tmp/caili/` ephemeral state is resolved. For a claim
+     this consequential (public accusation of a published arithmetic error) the
+     audit trail now points at committed artifacts, not a tmp directory. **Re-run
+     them yourself before submission** to personally confirm the −35/16 result.
   3. The pre-submission scripts must be re-run by *you* or an independent tool at
      least once — the from-scratch re-summation is the one place the "AI pipeline
      is a verification instrument" disclosure is doing the most work.
@@ -188,9 +195,10 @@ another group's algebra, in print, under your name.**
    over-strong "naive additive shift" phrasing (adding +(99/128)Σk³ alone gives the
    *wrong* sign, +2.58). Make sure the abstract/App-A wording matches the honest
    body framing and doesn't over-claim the mechanism.
-2. **Abstract ¶2 "Scope." + the load-bearing caveat (★).** The forecast is a
-   *sensitivity recast of a single external Heinrich forecast*, not an independent
-   one — stated up front. The ★ caveat: the whole forecast is conditional on
+2. **Abstract ¶2 "Scope." + the load-bearing caveat (★).** The forecast headline
+   is a sensitivity recast, but v1.7.103 now also constructs an **independent
+   RSD-multipole Fisher as validation** (not just a rescale) — check the Scope
+   sentence reflects that. The ★ caveat: the whole forecast is conditional on
    assumption (d), cubic bispectrum transmission through the bounce, now **derived
    to a bounded systematic** (1±O((kη)²)≈1±1e-4) via single-clock d.o.f.-counting +
    nonlinear superhorizon ζ-conservation. **Your call: is that derivation solid, or
@@ -200,7 +208,7 @@ another group's algebra, in print, under your name.**
    ChatGPT claim that the paper quotes "BF≈10⁸/>10⁵" — it does not; the "10⁵" is a
    Monte-Carlo realization count. But you present BFs; confirm the "illustrative,
    not definitive model-selection evidence" framing (signpost vi) is prominent.
-4. **AI-methods disclosure (L1380).** Verbatim, and it **specifically names the
+4. **AI-methods disclosure.** Verbatim, and it **specifically names the
    Cai–Li resolution** as AI-reached: *"the Cai–Li factor-of-two resolution
    (Appendix A) was reached by a from-scratch symbolic re-summation cross-checked
    three independent ways and against the original arXiv sources."* This is the
@@ -210,7 +218,8 @@ another group's algebra, in print, under your name.**
    makes clear a human didn't hand-derive it first.**
 
 ### Known accepted risks
-- ChatGPT + openai REJECT; Grok + Gemini MINOR ("ready after modest tightening").
+- Latest board (R9): ChatGPT MAJ / Grok MAJ / Gemini MIN — no REJECT. Every MAJOR
+  truth-audited as a self-disclosed scope re-flag (0 genuinely-new findings).
 - **The factor-of-2 is logged as the sole substantive technical residue,
   Houston-gated → human referee.** ChatGPT/openai re-raise it every round. It is
   NOT dispositioned as "resolved and everyone agrees"; it is dispositioned as
@@ -227,9 +236,10 @@ another group's algebra, in print, under your name.**
 > **Am I comfortable publicly asserting, in print and under my name, that Cai et
 > al. 2009 contains an arithmetic error (a spurious +(99/128)Σkᵢ³ term in their
 > Eq. 37) — given that (a) this claim reversed a "genuinely unresolvable" verdict
-> from 3 days earlier, (b) the resolution was AI-derived and disclosed as such,
-> and (c) the decisive sympy scripts are currently uncommitted in /tmp?** If yes:
-> commit the scripts and re-run them yourself first. If not-yet: the honest
+> from 3 days earlier, and (b) the resolution was AI-derived and disclosed as
+> such (the decisive sympy scripts are now committed under
+> `research/focused_paper_source_integration/scripts/caili_certification/`)?** If
+> yes: re-run the committed scripts yourself first. If not-yet: the honest
 > fallback is the pre-v1.7.89 framing (adopt −35/16 as the value, disclose the
 > factor-of-2 as an outstanding literature discrepancy) — which is weaker but
 > unimpeachable.
@@ -244,8 +254,8 @@ another group's algebra, in print, under your name.**
   presented as **methodological demonstrations yielding nulls**, not detections.
 - **First attack:** *"this is an ML catalog for ApJS/MNRAS, not PRD
   fundamental-physics; the cosmology sections are non-detections."* Venue-fit,
-  not correctness. grok-API returns MINOR "central claim supported" on the exact
-  PDF ChatGPT+openai REJECT — the round's sharpest variance.
+  not correctness. On the R9 board Grok returns MINOR "central claim supported"
+  while ChatGPT and Gemini return MAJOR on the exact same PDF — the round's sharpest variance.
 - **Read carefully:** the strata disclosure (§III D) and the two concrete numeric
   flags the audit verified are NON-issues: **NEOWISE 436 vs 419** (raw top-1% vs
   ecliptic-pole-masked, footnote "436→419, 96.1% retained") and **LAMOST 98%
@@ -276,50 +286,39 @@ another group's algebra, in print, under your name.**
 
 ---
 
-# P1A — ECH spin-torsion no-go (SKIM)
+# P1U — Unified Paper 1: ECH spin-torsion no-go + reproducibility companion (SKIM)
+
+**P1B has been merged into P1A to form a single self-contained Paper 1 (P1U, 58pp,
+v1U.0.3).** The structural "standalone or fold-in?" question that dogged P1B is
+now *answered by construction* — the ΔN_eff derivation and reproducibility material
+are appendices of one paper. Gemini on the merged manuscript: *"self-contained…
+robustly supported."*
 
 - **Claim / load-bearing:** a **channel-level** (not full operator-basis) no-go
   that spin-torsion can't be the dark-energy route, closed channel-by-channel at
-  M_Pl power-counting, with the Fierz-by-Fierz lemma named as **the single open
-  item**.
-- **First attack:** *"you call it a no-go 'theorem' but it's channel-level with an
-  open Fierz lemma and NDA/dimensional-analysis estimates, not an operator-level
-  proof."* Grok calls the identical content "mature, publication-ready"; ChatGPT
-  calls it REJECT. The scope (channel-level, one open lemma) is disclosed.
-- **The one question:** **Am I comfortable calling this a "no-go" with the scope
-  explicitly channel-level and one lemma open — expecting (and being fine with) a
-  real scope exchange with a human referee at JCAP/PRD?** The audit predicts "a
-  real scope exchange — normal refereeing." Note: the POSTPOLISH round found and
-  **fixed** a real item here — `fig_theory_map.png` had a baked-in −35/8 (now
-  −35/16, v1A.0.112). Confirm no other figure carries a stale value.
-
----
-
-# P1B — ECH reproducibility companion (SKIM)
-
-- **Claim / load-bearing:** a reproducibility companion to P1A; the one original
-  contribution is a **derived ΔN_eff~1e-43 bound** (negligible, i.e. ECH doesn't
-  spoil BBN/CMB). Grok: "the standout original contribution … Ready for arXiv."
-- **First attack:** *"companion/reproducibility manifest, lacks standalone PRD
-  novelty; ΔN_eff untestable."* This is a **venue/scope** objection, not a factual
-  error — and it's precisely the objection that a *companion* framing answers.
-  Both harsh reviewers concede the numerics are supported.
-- **THE ONE QUESTION (structural):** **Standalone, or fold into P1A?** The audit,
-  the CAMPAIGN_STATUS, and the reviewers all circle this. Options: (a) post as a
-  coordinated companion (current plan, `SUBMISSION_NOTE.md` — P1B first-wave, IDs
-  swap reciprocally with P1A); (b) merge the ΔN_eff derivation + reproducibility
-  material into P1A as appendices and drop P1B; (c) route to a methods venue. The
-  reviewers' standalone-novelty REJECT is answered by (a) or (b), *not* by
-  shipping P1B as a standalone PRD physics paper. This is a pure structure call
-  only you can make.
+  M_Pl power-counting, **now with the Fierz-by-Fierz lemma proved** (the former
+  single open item is retired). The reproducibility companion contributes a
+  **derived ΔN_eff~1e-43 bound** (negligible — ECH doesn't spoil BBN/CMB) as
+  in-paper appendix material.
+- **First attack:** *"you call it a no-go 'theorem' but it's channel-level with
+  NDA/dimensional-analysis estimates, not an operator-level proof."* This is now
+  the sole live objection — a disclosed-scope question, not a factual error. The
+  latest board is MAJ/MAJ/MAJ (P1U3), all truth-audited as self-disclosed scope
+  re-flags with 0 genuinely-new findings; the merge validated cleanly.
+- **THE ONE QUESTION:** **Am I comfortable calling this a channel-level "no-go" —
+  merged theory + reproducibility companion under my name — expecting (and being
+  fine with) a real scope exchange with a human referee at JCAP/PRD?** The audit
+  predicts "a real scope exchange — normal refereeing." (Figure-value hygiene:
+  the earlier POSTPOLISH round already fixed the `fig_theory_map.png` baked-in
+  −35/8 → −35/16; confirm no other figure carries a stale value in the merged PDF.)
 
 ---
 
 # CROSS-CUTTING (1 page)
 
 ### 1. The AI-involvement disclosure — what it says, why
-Both P4 (L1306) and P2 (L1380) carry an explicit, near-identical **"AI-assisted
-methodology"** paragraph in-body (all six papers do). It states: an agentic
+Both P4 and P2 carry an explicit, near-identical **"AI-assisted
+methodology"** paragraph in-body (all five papers do). It states: an agentic
 multi-model AI pipeline did literature review, code, computation, and *adversarial
 internal peer review* under the author's direction; every result is verified
 against committed artifacts with a public audit trail; **the author designed the
@@ -363,20 +362,22 @@ author could rebut after the fact.
   independent cross-checks (Cai's own ε-grouped intermediates, Li's general-c_s
   formula). **This is why committing the scripts and emailing Cai first matters —
   both make this email a 10-minute reply instead of a crisis.**
-- **On the ChatGPT/openai REJECTs:** do not be rattled if a human referee's first
-  pass reads like ChatGPT's. The whole point of directive-H is that a maximally
-  harsh referee flags majors on *any* real paper. Every such item is already
-  dispositioned in `FINAL_SIGNOFF_AUDIT_2026-07-05.md` with a source citation.
-  Keep that file open when the first tough review lands.
+- **On the ChatGPT MAJOR lists:** do not be rattled if a human referee's first
+  pass reads like ChatGPT's. The whole point of directive-H / pattern-066 is that a
+  maximally harsh referee flags majors on *any* real paper (the boards oscillate
+  MAJOR↔MINOR round-to-round on unchanged content; there are now zero rejects).
+  Every such item is already dispositioned with a source citation in the round
+  truth-audits. Keep those open when the first tough review lands.
 
 ### 4. Before you click submit — the honest pre-flight residue
-1. **P2:** commit the `/tmp/caili/` sympy scripts; re-run them yourself; reconcile
-   the stale `REFEREE_EMAIL.md`; decide the Cai email.
+1. **P2:** re-run the (now-committed) Cai/Li sympy scripts yourself; reconcile the
+   stale `REFEREE_EMAIL.md`; decide the Cai email.
 2. **P4:** personally vouch that commit 94113e5 (the p_eq cut) is genuinely
    pre-analysis.
-3. **P1B:** decide standalone vs fold-into-P1A.
-4. Submission order (dependencies): **P4 first** → P5 (needs P4's ID) and P1A/P1B
-   (reciprocal IDs). Zenodo DOIs mint at submission.
+3. **P1U:** confirm you're comfortable shipping the merged theory + companion as
+   one standalone Paper 1.
+4. Submission order (waves): **wave 1 — P4 → P3 → P2**; **wave 2 — P5 + P1U**
+   (P5 needs P4's ID). Zenodo DOIs mint at submission.
 
 ---
 
@@ -386,11 +387,10 @@ author could rebut after the fact.
   unmodelled ℓ=1) something I'll defend under my name, and do I vouch the p_eq>0.6
   cut was pre-specified?
 - **P2:** Am I comfortable publicly asserting Cai 2009 contains an arithmetic
-  error, given the 3-day-old reversal, the AI-derived provenance, and the
-  uncommitted scripts?
+  error, given the 3-day-old reversal and the AI-derived provenance (scripts now
+  committed — re-run them yourself first)?
 - **P3:** PRD, or ApJS/AJ (catalog venue)?
 - **P5:** Does "DESIVAST-primary designated post-hoc, disclosed + Bonferroni"
   survive a forking-paths referee, and is P4-companion (not standalone) right?
-- **P1A:** Am I comfortable calling this a channel-level "no-go" with one lemma
-  open, expecting a real scope exchange?
-- **P1B:** Standalone companion, or fold into P1A?
+- **P1U:** Am I comfortable calling this a channel-level "no-go" — merged theory +
+  reproducibility companion under my name — expecting a real scope exchange?
