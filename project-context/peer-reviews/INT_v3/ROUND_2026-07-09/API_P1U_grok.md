@@ -1,20 +1,21 @@
 # INT API Review — P1U v1U.0.1 — grok (grok-4.3)
 paper: P1U  version: v1U.0.1  model: grok-4.3
 modality: native-PDF (/v1/files file_id)
-UTC: 2026-07-09T07:13:56.054416Z  |  latency: 24.2s  |  attempt: 1
-usage: {"input_tokens": 35362, "input_tokens_details": {"cached_tokens": 128}, "output_tokens": 1099, "output_tokens_details": {"reasoning_tokens": 706}, "total_tokens": 36461, "num_sources_used": 0, "num_server_side_tools_used": 0, "cost_in_usd_ticks": 468156000, "context_details": {"input_tokens": 35362, "output_tokens": 1100}}
-PARSED VERDICT: MAJOR REVISIONS
+UTC: 2026-07-09T17:40:34.080803Z  |  latency: 31.4s  |  attempt: 1
+usage: {"input_tokens": 34963, "input_tokens_details": {"cached_tokens": 192}, "output_tokens": 1189, "output_tokens_details": {"reasoning_tokens": 760}, "total_tokens": 36152, "num_sources_used": 0, "num_server_side_tools_used": 0, "cost_in_usd_ticks": 464746500, "context_details": {"input_tokens": 34963, "output_tokens": 1191}}
+PARSED VERDICT: REJECT
 
 ======================================================================
 RAW RESPONSE (verbatim):
 ======================================================================
 
-(1) VERDICT: MAJOR REVISIONS
+(1) VERDICT: REJECT
 
 (2) ISSUES:
-[MAJOR] Abstract & Sec. IV (Scope paragraph): Explicitly states the four routes "are not proven to be a complete diffeomorphism-invariant operator basis" yet simultaneously claims "basis-complete within minimal ECH at the MPl-power-counting level" (with Fierz lemma in App. C); this internal tension on completeness must be resolved with a single, unambiguous statement of what is and is not claimed.
-[MAJOR] Sec. IV D & E (R2/R3 closures): Both routes are closed via "ansatz-level amplitude budgets" and "phenomenological one-loop operator" (Eq. 15) or chiral-count estimate (Eq. 17) rather than fully derived coefficients from cited works (Shapiro-Teixeira, Benedetti-Speziale); the ~60-order suppression margins are presented as robust but rest on these illustrative upper bounds, requiring either explicit derivation or a clearer "bounded EFT input" disclaimer.
-[MINOR] Sec. II C & App. B (dark-energy mapping): The single-scale NDA no-go and Ntot≈92 bookkeeping are presented as non-circular dimensional arguments, but the off-shell +1 vs. on-shell +4 promotion (and two alternative readings) is only sketched; a dedicated paragraph deriving the precise mass-dimension accounting would eliminate ambiguity.
-[MINOR] Throughout (e.g., Sec. IX, X, XIV D): Repeated cross-references to "companion papers" and "coordinated submission" for MCMC values, even when labeled non-load-bearing, create unnecessary dependence; all numerical anchors should be moved to self-contained tables or removed.
+[MAJOR] Abstract/Sec. IV: The "amplitude closure" for R1–R3 and "naturalness closure" for R4 are not derived from any explicit computation of an amplitude or vacuum energy; they rest on repeated single-scale NDA power counting that the paper itself labels heuristic and non-rigorous (App. B), rendering the no-go statements circular or definitional rather than predictive.
+[MAJOR] Sec. X: The perturbation-transparency result is asserted only for canonical scalar matter with T=0; the Bianchi-identity argument is standard and does not address the propagating-torsion, dynamical-Immirzi, or fermion-loop sectors explicitly excluded in the scope paragraph, so the claimed "decoupling from all scalar/tensor EOM" does not constrain the dark-energy routes as stated.
+[MAJOR] Sec. IV F & IX: Route R4 is closed by an "explanatory-deficit" objection rather than an amplitude mismatch; this is a philosophical preference, not a technical constraint, and the paper acknowledges that the same coupling reproduces β_obs while relocating (not solving) the CC problem.
+[MINOR] Throughout (e.g., Sec. I, IX, XIV): The 14 "barriers" are enumerated by re-labeling standard EFT facts (Planck suppression, total-derivative status, thermal washout) as novel mechanism-class constraints without new derivations or quantitative bounds beyond order-of-magnitude estimates already in the literature.
+[MINOR] Sec. II C & App. B: The dark-energy mapping via Eq. (10) and the N_tot≈92 requirement are introduced as a phenomenological ansatz with no first-principles matching to the ECH action; the +1 vs. +4 mass-dimension mismatch is flagged but never resolved into a controlled local operator.
 
-(3) The central claim that the four enumerated minimal-ECH dark-energy routes are channel-level amplitude-closed under the stated assumptions is supported by the dimensional, torsion-elimination, and perturbation-transparency arguments given in the manuscript.
+(3) The central claim—that the four enumerated minimal-ECH routes are channel-level closed—is not supported, as the arguments are scoped to restrictive assumptions, rely on heuristic NDA, and do not constitute a technical exclusion.
