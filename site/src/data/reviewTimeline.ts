@@ -46,6 +46,43 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "P1U-process-leak-scrub-2026-07-09",
+    dateISO: "2026-07-09",
+    kind: "ext-closure",
+    title:
+      "P1U v1U.0.7 process-leak scrub: closed the W13 Gemini blocker — two body-text sentences that referenced the internal review process were rewritten as standalone scientific prose (no number changed, nothing fabricated), and a full-corpus grep confirmed no other body-text leaks across all five papers.",
+    papers: ["P1A"],
+    summary:
+      "Closed the genuinely-new REAL finding Gemini flagged in W13: a leaked colloquial AI-review sentence in Sec II A 2. FIX 1 (Sec II A 2, ~L1876): \"This is the point ChatGPT's W12 referee pass correctly raised: … was a bookkeeping slip\" → \"This bookkeeping is essential: labelling the bare invariants as 'dimension-4 with dimensionless c_n' would misstate their mass dimension\". FIX 2 (sec:p1b_omega_a_def, ~L6206): \"two independent reviewers flagged the absence of an explicit derivation\" → \"an explicit derivation is required to make the classification reproducible\". CORPUS AUDIT: grepped all five .tex sources (paper1_unified, 02_full_draft, chirality_catalog_paper, paper3_draft, p5_desi_chirality) case-insensitively for process-leak patterns — ChatGPT/Gemini/Grok, referee-pass, review-round, W1x, Rx-round, reviewer noted/raised/flagged/asked, truth-audit, this/prior round, our reviewer, the referee's, pattern-0, CLAUDE, agent — excluding % comments and the legitimate AI-methods disclosure paragraphs. Result: P1U was the ONLY paper with body-text leaks (both now fixed); P2/P3/P4/P5 clean (every hit was the AI-methods disclosure para). Directive-G: bumped v1U.0.6→v1U.0.7 (+date), recompiled 0 undef-refs / 61 pp, PDF re-mirrored byte-identical (md5 b94cf94e) to all served paths, Convex paperVersions:bump with real md5/pages, three-way md5 verified compile==served==Convex.",
+    keyTakeaways: [
+      "P1U v1U.0.7 md5 b94cf94e · 61pp — both W13 Gemini-blocker process-leak sentences scrubbed to standalone scientific prose; no number changed, nothing fabricated",
+      "Corpus audit: P1U was the only paper with body-text process leaks; P2/P3/P4/P5 clean (all model mentions confined to % comments + the legit AI-methods disclosure paragraph)",
+      "Standing pre-compile grep encoded: case-insensitive scan of every .tex for ChatGPT|Gemini|Grok|referee pass|review round|W1[0-9]|R[0-9] round|reviewer (noted|raised|flagged|asked)|truth-audit|this round|prior round|our reviewer|the referee's|pattern-0|CLAUDE|agent, excluding % comments + AI-methods disclosure",
+      "Directive-G met: 0-undef recompile, byte-identical mirror to all served paths (three-way md5 compile==served==Convex), Convex bumped with real md5/pages",
+    ],
+    links: [
+      { label: "W13 origin finding (Gemini blocker)", href: `${PR}/EXT_real/W13_2026-07-09` },
+    ],
+  },
+  {
+    id: "P1U-process-leak-scrub-skill-2026-07-09",
+    dateISO: "2026-07-09",
+    kind: "skill-improvement",
+    title:
+      "Skill upgrade — standing pre-compile process-leak grep: every paper recompile now runs a case-insensitive scan of each .tex body (excluding % comments + the AI-methods disclosure) for reviewer/process language, so owner-agent review-process phrasing can never reach a served PDF again.",
+    papers: ["P1A"],
+    summary:
+      "Encoded the lesson from the W13 Gemini catch (\"This is the point ChatGPT's W12 referee pass correctly raised…\" leaked into P1U body text) as a STANDING pre-compile check. Grep pattern list (case-insensitive, run over every .tex, EXCLUDING % comments and the legitimate AI-assisted-methodology disclosure paragraph — which alone may name Claude/OpenAI/Grok/Gemini): ChatGPT | Gemini | Grok | referee pass | review round | W1[0-9] | R[0-9] round | reviewer (noted|raised|flagged|asked) | truth-audit | this round | prior round | our reviewer | the referee's | pattern-0 | CLAUDE | agent. Any body-text hit describing the review process must be rewritten as standalone scientific prose (state the point itself, drop the reviewer/process reference) before compile. Also sweep figure captions, table notes, and footnotes with the same list. Root cause: an owner-agent narrating a closure inline instead of stating the underlying physics point.",
+    keyTakeaways: [
+      "Trigger: run the grep on every paper recompile (directive-G hygiene), not just when a leak is suspected",
+      "Exclusions: % comments (changelog) and the AI-methods disclosure paragraph are legitimate; everything else describing the review process in body/caption/note/footnote gets rewritten",
+      "Rewrite rule: state the scientific point directly — never reference a reviewer, referee pass, review round, or model by name in body prose",
+    ],
+    links: [
+      { label: "W13 origin finding", href: `${PR}/EXT_real/W13_2026-07-09` },
+    ],
+  },
+  {
     id: "CV-closure-p3-p4-p5-2026-07-09",
     dateISO: "2026-07-09",
     kind: "ext-closure",
