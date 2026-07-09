@@ -41,8 +41,17 @@
 % The divide-by-h claim (~1246 h⁻¹ Mpc) is INVERTED. No pipeline recompute required.
 % If any future reviewer re-raises this, cite env_finder/01_compute_vweb.py:106-108.
 
-\newcommand{\paperVersion}{v0.1.108-2026-07-09}
-% v0.1.107-2026-07-07 (FULL8 EXT closure: Grok+Gemini MINORs + ChatGPT editable MAJORs closed.
+\newcommand{\paperVersion}{v0.1.109-2026-07-09}
+% v0.1.109-2026-07-09 (W10 accept-track minor closure: post-hoc caveat added to abstract
+%   headline sentence; definition-family-null framing for void-membership bound; RSD
+%   redshift-space clarifier in abstract and Conclusions; Paper IV co-review contingency
+%   sentence made explicit; sensitivity-envelope language; bright/dark residual isolation
+%   sentence; DR2 sensitivity forecast paragraph; Appendix B covariance caveat sentence;
+%   Reader's Guide sentence in primary-path subsection. ZERO verified numbers changed.
+%   Overlaps merged: ChatGPT-3/Gemini-10 → single abstract clause + Conclusions phrase;
+%   ChatGPT-4/Gemini-11 → single Paper-IV contingency sentence in Limitations;
+%   ChatGPT-9/Gemini-12 → single Appendix B transfer-function + covariance caveat sentence.)
+% v0.1.108-2026-07-09 (FULL8 EXT closure: Grok+Gemini MINORs + ChatGPT editable MAJORs closed.
 %   All edits are (a) real clarifying additions, (b) making already-present disclosures unmissable,
 %   or (c) honest data-gated flags. ZERO verified numbers changed.
 %   (1) Abstract headline: "no environment dependence" qualified to "no void/non-void environment
@@ -656,25 +665,32 @@
 \begin{abstract}
 \textbf{Headline result:} spiral galaxy chirality shows no void/non-void
 environment dependence on the DESIVAST DR1 contrast in DESI Data
-Release~1 (primary path, DESIVAST-anchored, post-hoc designated;
-see \S\ref{sec:primary_path}). The void-vs-non-void CW-fraction
+Release~1 (\emph{primary path post-hoc designated}; DESIVAST-anchored;
+see \S\ref{sec:primary_path}: no timestamped plan predates the data,
+so the ${\approx}0.5$--$0.6$\,pp bound below should not be read as a
+pre-registered result). The void-vs-non-void CW-fraction
 contrast on $56{,}981$ DESIVAST void spirals is $\Delta f_{\rm CW} =
 +0.0007$ ($z_\Delta = +0.31$, $p_\Delta = 0.76$), consistent with parity
 across all five DESIVAST void-finders ($|\Delta f_{\rm CW}| \le 0.004$,
 $|z_\Delta| \le 1.25$, $p_\Delta \ge 0.21$,
 Table~\ref{tab:desivast_three_algo}). This is a \emph{bounded null} on
 the specific DESIVAST void/non-void contrast at $56{,}981$ void spirals;
-the effective $2\sigma$ bound on any void/non-void handedness split is
+the approximate DR1 sensitivity envelope (not a complete systematic
+budget) on any void/non-void handedness split is
 ${\approx}0.5$--$0.6$\,pp once the fixed-void-geometry membership
 systematic is folded in with the counting-statistics CI.
-The family-wise conclusion --- the Bonferroni-5 uniform null across all
-five DESIVAST void definitions ($|z_\Delta|\!\le\!1.25$) --- is the
-robust headline (see \S\ref{sec:primary_path}); the post-hoc primary
-designation and the few-dozen-trial analysis tree are explicitly
-disclosed. All T-Web findings are redshift-space statements
-(no real-space reconstruction; the anisotropic tidal-tensor
-eigenvalue deformation channel is not quantified;
-see \S\ref{sec:limitations}).
+The robustly-quotable headline is the \emph{family-wise} Bonferroni-5
+null across all five DESIVAST void definitions ($|z_\Delta|\!\le\!1.25$),
+not any single most-favorable row (see \S\ref{sec:primary_path}); the
+post-hoc primary designation and the few-dozen-trial analysis tree are
+explicitly disclosed. All bounds in this paper represent
+\emph{fixed-redshift-space} metrics: the T-Web classification,
+DESIVAST void cross-check, and all null tests are performed without
+real-space reconstruction and inherit redshift-space distortion (RSD)
+effects; model-builders should not interpret them as pure real-space
+environmental constraints (see \S\ref{sec:limitations}).
+The anisotropic tidal-tensor eigenvalue deformation channel is not
+quantified.
 
 \emph{Setup.} We cross-match the 8{,}474{,}531-galaxy chirality catalog of the
 companion catalog paper (Paper~IV)~\cite{golden_chirality_2026}
@@ -1634,6 +1650,12 @@ significance thresholds \emph{ex ante}, so the DR2 result is confirmatory
 rather than post-hoc. The present DR1 bound is best read as the tightest of
 several correlated void-definition estimators within an already-uniform
 null family.
+
+\textbf{Reader's guide.} The headline result and primary analysis live
+in \S\ref{sec:desivast_primary} (DESIVAST-anchored void cross-check).
+\S\ref{sec:results} (T-Web) presents the secondary diagnostic path first
+for narrative flow; it is not load-bearing for the environment-independence
+conclusion.
 
 \textbf{Analysis-tree declaration.}
 Table~\ref{tab:analysis_tree} enumerates the full analysis tree tested
@@ -2799,10 +2821,15 @@ by $0.0001$; and (iii) the three-algorithm DESIVAST robustness check
 across \emph{all five} DESIVAST void definitions including the two
 catalog-native GALZONE contrasts (V2-REVOLVER: $\Delta = -0.0037$;
 V2-VIDE: $\Delta = +0.0019$). The precise bound does depend on the
-membership construction; the quotable family statement is the Bonferroni-5
-uniform null across all five definitions ($|z_\Delta| \le 1.25$,
-\S\ref{sec:primary_path}, Table~\ref{tab:analysis_tree}), not the
-most-favorable single row.
+membership construction; the quotable family statement is the
+\emph{definition-family null} --- the Bonferroni-5 uniform null across
+all five void definitions ($|z_\Delta| \le 1.25$,
+\S\ref{sec:primary_path}, Table~\ref{tab:analysis_tree}) --- not the
+most-favorable single row, and the approximate DR1 sensitivity envelope
+(${\approx}0.5$--$0.6$\,pp folding counting statistics and the
+fixed-void-geometry membership systematic) should be read as the
+definition-family bound, not as a hard exclusion from the $k=20$
+VoidFinder row alone.
 
 \emph{Scope of this CI.} The quoted ${\rm SE}(\Delta)$ and $95\%$
 interval are \emph{counting-statistics-only} (two-sample binomial); they
@@ -3865,7 +3892,14 @@ residual: BGS-bright $f_{\rm CW} = 0.4970$ vs LRG/ELG/QSO-dark
 $0.5051$, a $0.81$\,pp difference ($|z| = 1.95$ unique-galaxy two-sample) with
 opposite-signed deviations from half. The bright/dark
 difference is the $\sim\!2\sigma$ residual structure analyzed at the
-per-class level in \S\ref{sec:results_vweb}. No test produces a
+per-class level in \S\ref{sec:results_vweb}. This residual does
+\emph{not} affect the DESIVAST primary result: the DESIVAST-anchored
+void/non-void contrast (\S\ref{sec:desivast_primary}) is constructed
+on the volume-limited BGS low-$z$ parent ($z \leq 0.24$), where the
+bright BGS path is separately tabulated and the target-program mixing
+that drives the filament bright/dark sign-flip is minimized by
+construction; the primary $\Delta f_{\rm CW} = +0.0007$ is therefore
+insensitive to this residual. No test produces a
 $>3\sigma$ residual after
 Paper~IV-monopole correction.
 
@@ -4011,9 +4045,13 @@ paper Paper~IV~\cite{golden_chirality_2026}, which is submitted to arXiv
 concurrently with the present paper under coordinated submission
 (\paperIVarxiv; the catalog labels and trained weights are public now under
 CC-BY-4.0). We regard acceptance of this manuscript as \emph{strictly
-conditional} upon the acceptance and publication of Paper~IV, or upon
-both manuscripts undergoing coordinated co-review --- this is explicitly
-stated for editorial attention. This is a citation-timing relation, not an
+conditional} upon (i) the formal acceptance and publication of Paper~IV,
+or upon both manuscripts undergoing coordinated co-review, AND (ii) the
+public availability and independent reviewability of the final Paper~IV
+chirality catalog, trained weights, and label-provenance documentation ---
+these are the minimum conditions under which the per-galaxy label
+inputs consumed here can be fully assessed by a referee. This is
+explicitly stated for editorial attention. This is a citation-timing relation, not an
 unvettable dependency, and we bound its scientific reach. The \emph{headline}
 void/non-void $\Delta f_{\rm CW}$ contrast depends only on the public
 per-galaxy labels and is algebraically invariant under any catalog-wide
@@ -4128,6 +4166,26 @@ applied to the DESI footprint would expand the matched sample by
 roughly an order of magnitude and resolve sub-pixel HEALPix coherence
 questions that are currently shot-noise-limited.
 
+\textbf{DESI DR2 sensitivity forecast (qualitative/order-of-magnitude).}
+DESI DR2 is expected to roughly double the DR1 BGS spectroscopic sample in
+the $z \leq 0.24$ void-anchor window, yielding on the order of
+${\sim}2\!\times$ more void spirals than the current $n_{\rm void} = 56{,}981$
+DESIVAST primary sample (exact numbers depend on the DR2 DESIVAST successor
+void catalog, which has not yet been released). Scaling the current
+${\rm SE}(\Delta) = 0.0022$ as $\sqrt{n^{-1}}$ implies the two-sample
+sensitivity on $\Delta f_{\rm CW}$ would improve to ${\sim}0.35$--$0.40$\,pp
+($2\sigma$) at DR2 statistics --- tightening the approximate
+sensitivity envelope from ${\sim}0.5$--$0.6$\,pp to ${\sim}0.35$--$0.45$\,pp
+once the membership systematic is re-evaluated at DR2 depth. A Rubin/LSST
+overlap on the DESI footprint would further increase the parent chirality
+catalog by roughly an order of magnitude, enabling a void-galaxy sample
+that is currently not competitive with the DESIVAST three-algorithm
+constraint to become the leading environmental bound. These are
+\emph{projected scalings, not derived forecasts}; the actual DR2 reach
+depends on the BGS target density, the DESIVAST-successor catalog geometry,
+and the pre-registered analysis plan committed before the DR2 contrast is
+read (\S\ref{sec:primary_path}).
+
 \section{Conclusions}\label{sec:conclusions}
 
 Spiral galaxy chirality shows no detectable void/non-void environment
@@ -4167,11 +4225,14 @@ monopole-subtracted residuals $\le 1.64\sigma$ in resolved cells; look-elsewhere
 $p \ge 0.13$), under grid resolutions $128^3$--$384^3$, and under six
 classes of systematics tests.
 
-This null is a fixed-redshift-space statement: the T-Web
-classification, DESIVAST void cross-check, and all null tests are
-performed in DESI DR1 redshift coordinates without real-space
-deprojection, and inherit redshift-space distortion effects
-(\S\ref{sec:limitations}).
+This null is a \emph{fixed-redshift-space null, not a real-space
+environment null}: the T-Web classification, DESIVAST void cross-check,
+and all null tests are performed in DESI DR1 redshift coordinates without
+real-space deprojection, and inherit redshift-space distortion effects
+(\S\ref{sec:limitations}); model-builders should not interpret the
+${\approx}0.5$--$0.6$\,pp sensitivity envelope as a constraint on
+real-space environmental chirality without accounting for the
+residual RSD on tidal-tensor eigenvalues.
 This null is consistent with the Paper~IV global parity-mixture null
 and provides an observational upper bound that any future model in the
 bounce-chirality coupling class (Sec.~\ref{sec:p4}) proposing an
@@ -4387,11 +4448,19 @@ fractional contrast averages $\sim\!\mathcal O(1)$ across the
 classes. \emph{This is an order-of-magnitude estimate only, not a
 quantitative ALP-coupling exclusion}: a real exclusion would require
 (i) a full transfer-function calculation mapping the high-redshift
-$\phi$-field gradient to the low-redshift T-Web eigenvalue field, and
-(ii) propagation of the per-class $\Delta f_{\rm CW}$ measurement
+$\phi$-field gradient to the low-redshift T-Web eigenvalue field
+(including projection of the scalar field onto the tidal-tensor
+eigenvalue spectrum at the $z\!\lesssim\!0.24$ void-anchor scale),
+and (ii) propagation of the per-class $\Delta f_{\rm CW}$ measurement
 uncertainties through that transfer function. We do not claim either
 calculation here; the parametrization is included as a guide for
 future model-building, not as a derived constraint.
+Furthermore, the notation connecting the polar density-gradient vector
+$\widehat{\nabla\rho}$ with the angular-momentum pseudovector $\hat L$
+in the operator above is explicitly a \emph{heuristic parameterization}
+within the chosen synchronous-comoving slicing at the $R_s = 25$\,Mpc/$h$
+smoothing scale; it does not constitute a manifestly covariant EFT
+operator (see the gauge-invariance caveat below).
 
 \emph{Rotational-invariance and gauge-invariance caveat.} Two distinct theoretical caveats apply to the toy
 operator. \emph{First (rotational invariance):} the parity-odd
