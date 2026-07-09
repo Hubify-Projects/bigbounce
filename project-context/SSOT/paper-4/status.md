@@ -2,7 +2,12 @@
 
 **Canonical status file. When in doubt about Paper 4, read this.**
 
-## ✅ CURRENT AUTHORITATIVE STATUS — 2026-07-08 · v1.0.224 (deep-tier Gemini MAJOR closure: added training-data provenance table + probabilistic-calibration paragraph with ECE lower bound from committed GZ1 confusion matrix; md5 521b5bbb / 32 pp; supersedes v1.0.223)
+## ✅ CURRENT AUTHORITATIVE STATUS — 2026-07-09 · v1.0.225 (R9 ACCEPT-track minor closure: md5 35375fda / 32 pp; supersedes v1.0.224)
+
+**R9 EXT board (2026-07-09, raw in `EXT_real/R9_2026-07-09/`): Grok = MINOR-revisions ("careful, reproducible null meeting PRD standards"), Gemini = "Accept with Minor Revisions" ("a highly significant contribution"), ChatGPT = MAJOR (presentation/consolidation of already-disclosed content).** Readiness **82**. v1.0.225 closed both ACCEPT-track referees' concrete minors with real edits (no number changed): (1) abstract z≈−18 now explicitly a model-dependent template-disfavor statistic (not a frequentist exclusion) with injection-recovery A95∈(1.0%,1.5%] cross-referenced as the primary real-space falsification; (2) main-text downstream-user warning that raw p_eq scores are not frequentist likelihoods (cite Appendix-B ECE ≥0.25–0.36); (3) abstract real-space p names its isotropic-pixel-permutation null. Remaining items (~47% ℓ=1 residual a-fortiori bound, Shamir 7–18× pipeline-dependence, σ-null pairing) verified already-present + unmissable in the body. **P4 is the program's closest paper — two clean minor-lists from a Grok+Gemini double-accept; ChatGPT MAJOR is the harsh-referee structural floor (directive-H).**
+
+### prior status
+2026-07-08 · v1.0.224 (deep-tier Gemini MAJOR closure: added training-data provenance table + probabilistic-calibration paragraph with ECE lower bound from committed GZ1 confusion matrix; md5 521b5bbb / 32 pp)
 
 **⚠️ RETRACTION (2026-07-04 verified board still stands for review status).** The June "EXT22 / universal 3/3 ACCEPT / FROZEN — readiness 98/99" entries below are **RETRACTED as UNVERIFIED** (sub-agent EXT sweeps, no raw reviewer text, dropped ChatGPT leg, no INT; Houston caught 2026-07-03). Preserved below as audit trail only. **P4 is NOT converged.** (The June "first ChatGPT ACCEPT in campaign" claim for P4 is part of the retracted, unverified record.)
 
