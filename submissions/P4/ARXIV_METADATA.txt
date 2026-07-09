@@ -1,16 +1,15 @@
 ========================================================================
 arXiv SUBMISSION METADATA — Paper IV (P4)
 Galaxy Chirality Catalog
-Source: pipelines/p2_chirality/chirality_catalog_paper.tex  (v1.0.224, 32pp)
-Bundle: submissions/P4/arxiv_p4_v1.0.224.tar.gz  (md5 12e4f2d0cdbab695889e51791369edb4, 25MB)
-PDF md5 (freshly compiled, /tmp/p4verify): ae45bafccfab5c652a5c538dc9221685 (32 pages)
-PDF md5 (served site/public/papers/chirality_catalog_paper_v1.0.224.pdf): 521b5bbb9a961d983272024787b27868 (32 pages)
+Source: pipelines/p2_chirality/chirality_catalog_paper.tex  (v1.0.225, 32pp)
+Bundle: submissions/P4/arxiv_p4_v1.0.225.tar.gz  (md5 3adc57391fba963272d9a9b715d37fc8, 25MB)
+PDF md5 (compiled + served, chirality_catalog_paper_v1.0.225.pdf): 35375fda3d94740233dcfc69fd64b38a (32 pages; byte-identical source==public==site==bundle-compile)
 ------------------------------------------------------------------------
 This is PREP metadata to paste field-by-field into arxiv.org/submit.
 DO NOT SUBMIT until Houston gives the go.
 
 VERIFICATION (run 2026-07-09):
-  - Bundle tex \paperVersion == v1.0.224: YES
+  - Bundle tex \paperVersion == v1.0.225: YES (bundle rebuilt from current source 2026-07-09; .224 was one version stale)
   - Standalone compile (4 passes): exit 0 all passes, stable at 32 pages
   - Undefined refs/citations: 0
   - Placeholder scan (XXXX/TODO-SUBMISSION/arXiv:XX/??): CLEAN
@@ -55,7 +54,7 @@ astro-ph.GA
 COMMENTS:
 32 pages, 12 figures; data + code at https://github.com/Hubify-Projects/bigbounce
 
-[Note: previous metadata said "10 figures, 14 tables" — verified 12 \includegraphics / 10 figure environments / 15 table environments in v1.0.224 tex. The "Comments" field above uses figure count from \includegraphics (12) and omits table count as arXiv convention is brief. Adjust if Houston prefers the environment count (10 figure envs) or wants tables listed.]
+[Note: previous metadata said "10 figures, 14 tables" — verified 12 \includegraphics / 10 figure environments / 15 table environments in v1.0.225 tex. The "Comments" field above uses figure count from \includegraphics (12) and omits table count as arXiv convention is brief. Adjust if Houston prefers the environment count (10 figure envs) or wants tables listed.]
 
 ------------------------------------------------------------------------
 
@@ -72,4 +71,4 @@ REPORT-NO / JOURNAL-REF / DOI / MSC-CLASS:
 
 SUBMISSION NOTE:
 Submit P4 BEFORE P5 (P5 cites P4 as its companion/input catalog).
-Bundle: submissions/P4/arxiv_p4_v1.0.224.tar.gz
+Bundle: submissions/P4/arxiv_p4_v1.0.225.tar.gz
