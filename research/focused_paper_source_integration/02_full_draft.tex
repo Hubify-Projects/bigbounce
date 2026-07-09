@@ -31,7 +31,28 @@ A SPHEREx Sensitivity Recast with a MegaMapper Outlook}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{July 8, 2026}
+\date{July 9, 2026}
+% v1.7.105 (2026-07-09 — R9 P2 closure. THREE additions, NO headline number changed, -35/16 UNCHANGED,
+%   nothing fabricated. (1) [Grok MAJOR + ChatGPT MAJOR: "full term-by-term derivation table" for the
+%   vertex re-summation] Added Table tab:vertexwalk in Appendix~A after Eq.vertexsum: the squeezed AND
+%   equilateral local-amplitude contribution of EACH of Cai's four cubic vertices individually
+%   (field-redef -25/16, L_zzdd -5/32, L_dzpzpc 0, L_z(ddc)^2 -15/32 squeezed; -35/32, -5/32, -5/8,
+%   -15/128 equilateral), both columns summing exact-fraction to -35/16 and -255/128 (tab:benchmarks).
+%   Every value transcribed VERBATIM from the committed exact-fraction sympy cert scripts/p2_vertex_check.py
+%   (ran it; per-vertex limits computed there); NO new math. This is the referee-granularity term-by-term
+%   walk both Grok and ChatGPT asked for, complementing the existing collapsed-polynomial + order-grouped
+%   objects. (2) [Gemini MINOR: gauge-frame vs physical-frame nomenclature "slightly convoluted"; wants a
+%   single consolidating table] Added Table tab:frames in the discussion: gauge (survey observable,
+%   fnl_bounce -2.1875 / fnl_inf +0.015 / ratio 146) vs physical conformal-Fermi (fnl_inf -> 0, ratio >>146),
+%   cleanly separating the two frames' expected values. (3) [Gemini MINOR: Sec VI "missing parenthesis"
+%   near the Bayes-factor CDF integrations] Verified source L1032-1046: all Phi()/erf() closed-form
+%   parentheses balanced (grep-checked); the flagged artifact is a PDF font-extraction glitch (cf. prior
+%   Gemini "fNI"/"OGR" extraction artifacts), FALSIFIED as an editable typo, no fake fix. Grok's central
+%   recast-vs-independent-Fisher separation and ChatGPT's Appendix-A completeness are already carried by
+%   scope point (i) + the existing App-A three-way cross-check; the new tab:vertexwalk gives the
+%   disclosure its strongest term-by-term form. Directive-G: recompile 0 undef-refs, latex-audit
+%   (tab:vertexwalk + tab:frames are narrow single-column, no overflow), mirror all served paths, Convex
+%   paper-2 bump, bundle rebuild. \date July 8 -> July 9.)
 % v1.7.104 (2026-07-08 — DEEP-tier Grok-Heavy MAJOR closure: Appendix~A vertex algebra "not fully
 %   displayed". Added the two intermediate objects the squeezed reduction collapses, transcribed
 %   verbatim from the committed exact-fraction sympy script scripts/p2_vertex_check.py: (1) the
@@ -999,7 +1020,18 @@ The significance for a detection at the corrected central $\fnl = -2.1875$ range
 
 \subsection{Can Inflation Reproduce the Signal?}
 
-Standard single-field slow-roll inflation predicts $\fnl = (5/12)(1-n_s) \approx +0.015$~\cite{Maldacena:2002vr} as the gauge-frame value of the consistency relation; in conformal Fermi coordinates the physical observable is parametrically smaller~\cite{Pajer:2013,TanakaUrakawa:2011}. Either way the bounce-vs-inflation contrast remains qualitatively $|\fnl^{\rm bounce}| \gg |\fnl^{\rm inf}|$ and opposite in sign; we cite the gauge-frame ratio $|\fnl^{\rm bounce}|/|\fnl^{\rm inf}| = 2.1875/0.015 \approx 146$ as a benchmark, recognising that the physical contrast is even more favourable to the bounce. Non-canonical single-field models (DBI, etc.) produce equilateral-shape $\fnl$, not local.
+Standard single-field slow-roll inflation predicts $\fnl = (5/12)(1-n_s) \approx +0.015$~\cite{Maldacena:2002vr} as the gauge-frame value of the consistency relation; in conformal Fermi coordinates the physical observable is parametrically smaller~\cite{Pajer:2013,TanakaUrakawa:2011}. Either way the bounce-vs-inflation contrast remains qualitatively $|\fnl^{\rm bounce}| \gg |\fnl^{\rm inf}|$ and opposite in sign; we cite the gauge-frame ratio $|\fnl^{\rm bounce}|/|\fnl^{\rm inf}| = 2.1875/0.015 \approx 146$ as a benchmark, recognising that the physical contrast is even more favourable to the bounce. Non-canonical single-field models (DBI, etc.) produce equilateral-shape $\fnl$, not local. Table~\ref{tab:frames} consolidates the expected local $\fnl$ in the two frames so the gauge-frame (survey-observable) and physical-frame (theoretical-discriminator) values are cleanly separated.
+\begin{table}[h]
+\centering
+\caption{\label{tab:frames}Expected squeezed-limit local $\fnl$ for the quasi-dust matter bounce and single-field slow-roll inflation, separated by observer frame. The \emph{gauge frame} carries the on-sky quantity the SPHEREx/BOSS local-template estimators measure --- this is the row relevant to the forecast. The \emph{physical (conformal-Fermi) frame}~\cite{Pajer:2013,TanakaUrakawa:2011} carries the frame-invariant theoretical discriminator, in which the single-field consistency relation drives $\fnl^{\rm inf}\to0$. The bounce value is frame-robust (its $-35/16$ is a contracting-phase cubic-action prediction, not a squeezed consistency-relation artifact); the inflation value is the one that shifts between frames. In both frames $|\fnl^{\rm bounce}|\gg|\fnl^{\rm inf}|$ with opposite sign, so the discriminating power is frame-independent.}
+\begin{ruledtabular}
+\begin{tabular}{lccc}
+frame & $\fnl^{\rm bounce}$ & $\fnl^{\rm inf}$ & $|\fnl^{\rm bounce}|/|\fnl^{\rm inf}|$ \\ \hline
+gauge (survey observable) & $-2.1875$ & $+0.015$ & ${\approx}\,146$ \\
+physical (conformal-Fermi) & $-2.1875$ & $\to 0^{+}$ & $\gg 146$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
 
 Non-attractor single-field inflation naturally gives $\fnl = +5/2$ (wrong sign)~\cite{Cai:2018non}. Reaching $-2.1875$ requires engineering the attractor-to-slow-roll transition. The standard quadratic curvaton gives minimum $\fnl \approx -1.25$ (insufficient). Self-interacting curvatons or curved field-space models can reach $-2.1875$ but require $\geq 2$ tuned parameters. Note on prior choice: the natural physical prior for the curvaton class is $|\fnl| \lesssim$ a few (and sign-symmetric about zero), so a competitor prior $[-5, +5]$ is the more physically motivated curvaton baseline than the broad $[-15, +15]$ multifield range used in the headline Bayes factor; under the curvaton-natural $[-5, +5]$ prior the headline Bayes factor at the recommended $\sigma_{\rm theory} = 1.0$ bounce prior is $\mathrm{BF} \approx 4$ (Sec.~\ref{sec:bayesian}, Table~\ref{tab:bayes}), still favoring the bounce but at a smaller margin.
 
@@ -1364,6 +1396,22 @@ Summing the four rows of Table~\ref{tab:vertices} exactly (symbolic fractions) a
 \label{eq:vertexsum}
 \end{equation}
 identical to Eq.~(\ref{eq:decisive_sqz}).
+
+\emph{Term-by-term vertex walkthrough.} To make the re-summation fully auditable at referee-report granularity we tabulate the squeezed and equilateral local-amplitude contribution of \emph{each individual} vertex of Table~\ref{tab:vertices}, formed by inserting that vertex's shape-function row alone into $\fnl=(10/3)A/\sum_i k_i^3$ and taking the two limits (squeezed $k_1\ll k_2=k_3=k$, then $k_1\to0$; equilateral $k_1=k_2=k_3$). Table~\ref{tab:vertexwalk} lists the four values; both columns sum, exact-fraction, to the certified benchmarks $-35/16$ (squeezed) and $-255/128$ (equilateral) of Table~\ref{tab:benchmarks}. Every entry is transcribed verbatim from the committed exact-fraction \textsc{sympy} certification (\texttt{scripts/p2\_vertex\_check.py}); no value is fitted or rounded.
+\begin{table}[h]
+\centering
+\caption{\label{tab:vertexwalk}Per-vertex squeezed- and equilateral-limit local-amplitude contribution of each of Cai \etal's~\cite{Cai:2009fn} four cubic vertices (rows of Table~\ref{tab:vertices}), at $\epsilon=3/2$, formed as $\fnl=(10/3)A_v/\sum_i k_i^3$ for each vertex $v$ alone. Column sums are the certified benchmarks $\fnl^{\rm sq}=-35/16$ and $\fnl^{\rm eq}=-255/128$ (Table~\ref{tab:benchmarks}). The single-vertex $\mathcal{L}_{\dot\zeta\partial\zeta\partial\chi}$ squeezed contribution vanishes; the net $-35/16$ is carried by the field-redefinition and highest-order bulk vertices. Values transcribed verbatim from \texttt{scripts/p2\_vertex\_check.py} (exact-fraction \textsc{sympy}); no fitting or rounding.}
+\begin{ruledtabular}
+\begin{tabular}{lcc}
+vertex & squeezed $\fnl^{\rm sq}$ & equilateral $\fnl^{\rm eq}$ \\ \hline
+field redef.\ ($\mathcal{L}_{\rm redef}$) & $-\tfrac{25}{16}$ & $-\tfrac{35}{32}$ \\
+$\mathcal{L}_{\zeta\dot\zeta^2}$ & $-\tfrac{5}{32}$ & $-\tfrac{5}{32}$ \\
+$\mathcal{L}_{\dot\zeta\partial\zeta\partial\chi}$ & $0$ & $-\tfrac{5}{8}$ \\
+$\mathcal{L}_{\zeta(\partial_i\partial_j\chi)^2}$ & $-\tfrac{15}{32}$ & $-\tfrac{15}{128}$ \\ \hline
+\textbf{sum (all four)} & $\mathbf{-\tfrac{35}{16}}$ & $\mathbf{-\tfrac{255}{128}}$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
 
 \emph{Displayed intermediate algebra.} For full referee/reader verifiability we display the two intermediate objects that the squeezed reduction Eq.~(\ref{eq:vertexsum}) collapses --- both transcribed verbatim from the committed symbolic-certification script (\texttt{scripts/p2\_vertex\_check.py}, exact-fraction \textsc{sympy}). First, the collapsed exact vertex sum. Multiplying the four Table~\ref{tab:vertices} rows through by the common denominator $\Pi k^2\equiv k_1^2k_2^2k_3^2$, the total shape function at $\epsilon=3/2$ is the degree-9 polynomial
 \begin{widetext}

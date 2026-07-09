@@ -10,7 +10,7 @@
 |---|---|---|---|---|
 | **P1U** (unified Paper 1) | v1U.0.3 | MAJ / MAJ / MAJ (P1U3-2026-07-09) | 68 | Is a channel-level ECH no-go — merged theory + reproducibility companion, one open Fierz lemma, disclosed channel-level scope — a sufficient standalone PRD/JCAP contribution under my name? |
 | **P4** | v1.0.224 | MAJ / MIN / MIN (R9) | 80 | Is the ~47% unexplained ℓ=1 residual an acceptable disclosed limitation (bounded A_p=0.695%<A_50), given the null rests on the +0.41σ real-space HC estimator + the GZ1 human-label independence check? |
-| **P2** | v1.7.104 | MAJ / MAJ / MIN (R9) | 68 | Is the vertex-certified Cai/Li resolution (f_NL=−35/16, App. A, scripts committed) + the independent+RSD Fisher forecast publishable now, or does the factor-of-2 need a human referee first? |
+| **P2** | v1.7.105 | MAJ / MAJ / MIN (R9; closed) | 64 | v1.7.105 added the per-vertex term-by-term derivation table (App A Table VII) Grok+ChatGPT asked for + a gauge/physical-frame table (Gemini minor). Is the vertex-certified Cai/Li resolution (f_NL=−35/16, App. A, scripts committed) + the independent+RSD Fisher forecast publishable now, or does the factor-of-2 need a human referee first? |
 | **P3** | v3.1.146 | MAJ / MIN / MAJ (R9) | 68 | Is a disclosed, sequestered exploratory-tier non-reproducibility (eROSITA excised from all counts) acceptable in a catalog paper — and is this an ApJS/MNRAS catalog paper or PRD? |
 | **P5** | v0.1.107 | MAJ / MIN / MAJ (R9) | 68 | Should publication be contingent on the coordinated companion Paper IV (P4), or does the monopole-invariant self-contained void null stand alone? |
 

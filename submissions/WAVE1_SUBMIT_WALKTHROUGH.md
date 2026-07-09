@@ -7,7 +7,7 @@ cross-references clean.)
 **Verified:** 2026-07-09. Every check below was run, not assumed.
 - P4 `arxiv_p4_v1.0.224.tar.gz` — md5 `12e4f2d0cdbab695889e51791369edb4` — standalone compile exit 0, 0 undef, **32 pages**.
 - P3 `arxiv_p3_v3.1.146.tar.gz` — md5 `25807ecb660c8c642fefef9c8f2b7121` — **rebuilt today** from current source (the `.144` bundle was one version stale) — smoke-test re-extract+compile exit 0, 0 undef, **35 pages**.
-- P2 `arxiv_p2_v1.7.104.tar.gz` — md5 `4522c696b6f42d7db736c4938c8cf45f` — bundle tex byte-identical to source, compile exit 0, 0 undef, **36 pages**.
+- P2 `arxiv_p2_v1.7.105.tar.gz` — md5 `ed764493e7091385b0cbf50552cbe0c8` — bundle tex byte-identical to source, compile exit 0, 0 undef, **36 pages**.
 - Placeholder scans: all three CLEAN (only commented-out `%\preprint{arXiv:XXXX.XXXXX}` lines, which never render). No dangling companion-paper placeholders.
 - Abstracts: all trimmed to arXiv-form-safe (<1920 chars) versions — the paste blocks below and in each `ARXIV_METADATA.txt`.
 
@@ -150,13 +150,13 @@ curl -s -X PUT -H "Authorization: Bearer $HF_TOKEN" -H "Content-Type: applicatio
 
 ## PAPER 3 — P2 (submit THIRD)
 
-**Upload:** `submissions/P2/arxiv_p2_v1.7.104.tar.gz`
+**Upload:** `submissions/P2/arxiv_p2_v1.7.105.tar.gz`
 (Paste-ready fields also in `submissions/P2/ARXIV_METADATA.txt`.)
 
 ### 1. Start submission → upload
-Upload `arxiv_p2_v1.7.104.tar.gz`. Compiles to **36 pages**.
-(Note: the source `\date{}` intentionally reads "June 9, 2026" — a Convex-sort quirk;
-the real version is v1.7.104. arXiv shows its own submission date, so this is cosmetic.)
+Upload `arxiv_p2_v1.7.105.tar.gz`. Compiles to **36 pages**.
+(Note: the source `\date{}` reads "July 9, 2026"; the real version is v1.7.105.
+arXiv shows its own submission date, so this is cosmetic.)
 
 ### 2. Metadata — paste these blocks
 
