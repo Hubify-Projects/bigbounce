@@ -645,11 +645,15 @@ def fig4_score_distributions():
 # ═══════════════════════════════════════════════════════════════════════════════
 
 def fig5_novelty_fractions():
+    # Gaia DR3 tier removed from the catalog (synthetic-placeholder excision,
+    # \S sec:gaia); it is excluded from this science figure per the
+    # five-surveys-with-coordinate-cross-matching caption. Only the five
+    # real coordinate-cross-matched surveys are plotted.
     surveys = ['DESI DR1\n(top 10K)', 'SDSS DR18', 'eROSITA DR1',
-               'LAMOST DR10', 'NEOWISE', 'Gaia DR3']
-    novelty = [99, 90, 68, 50, 45, 27]
+               'LAMOST DR10', 'NEOWISE']
+    novelty = [99, 90, 68, 50, 45]
     colors = [SURVEY_COLORS[k.split('\n')[0].strip()] for k in
-              ['DESI DR1', 'SDSS DR18', 'eROSITA DR1', 'LAMOST DR10', 'NEOWISE', 'Gaia DR3']]
+              ['DESI DR1', 'SDSS DR18', 'eROSITA DR1', 'LAMOST DR10', 'NEOWISE']]
 
     fig, ax = plt.subplots(figsize=(3.375, 2.6))
 
