@@ -51,8 +51,17 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \providecommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1U.0.6}
+\newcommand{\paperVersion}{v1U.0.7}
 \newcommand{\paperTimestamp}{July 9, 2026}
+% v1U.0.7 (2026-07-09 — PROCESS-LEAK SCRUB. Two body-text sentences that referenced the
+%   internal review process were rewritten as standalone scientific prose (NO number changed,
+%   nothing fabricated). (1) Sec II A 2 (~L1876): "This is the point ChatGPT's W12 referee pass
+%   correctly raised: ... was a bookkeeping slip" -> "This bookkeeping is essential: labelling the
+%   bare invariants as 'dimension-4 with dimensionless c_n' would misstate their mass dimension".
+%   (2) sec:p1b_omega_a_def (~L6206): "two independent reviewers flagged the absence of an explicit
+%   derivation" -> "an explicit derivation is required to make the classification reproducible".
+%   Corpus grep of all 5 .tex sources confirmed no other body-text process leaks (all remaining
+%   ChatGPT/Gemini/Grok/agent mentions are in % comments or the legit AI-methods disclosure para).
 % v1U.0.6 (2026-07-09 — W12 EXT closure, ChatGPT dim-4 dimensional-bookkeeping MAJOR + unanimous
 %   full-promotion ask. VERDICT ON DIM CHECK: ChatGPT RIGHT. Under the paper's own conventions
 %   [e]=0,[R]=+2, physical torsion [T]=[kappa S]=+1, [J^5]=[S]=+3, [kappa]=[M_Pl^-2]=-2, the BARE
@@ -1873,10 +1882,10 @@ so that Pontryagin (O3, $[R\wedge R]=+4$) and axial--torsion
 dimensionless coefficient, while the Holst dual, Nieh--Yan, torsion-square,
 and single-curvature densities (each of naive dimension $+2$ as component
 densities) are promoted to dimension $4$ by the single available scale
-$\MPl^{2}$ inside the operator definition. This is the point ChatGPT's W12
-referee pass correctly raised: calling the bare invariants ``dimension-$4$
-with dimensionless $c_n$'' was a bookkeeping slip; the corrected definitions
-above carry the $\MPl^{2}$ prefactors explicitly so that every
+$\MPl^{2}$ inside the operator definition. This bookkeeping is essential:
+labelling the bare invariants as ``dimension-$4$ with dimensionless $c_n$''
+would misstate their mass dimension, whereas the definitions above carry the
+$\MPl^{2}$ prefactors explicitly so that every
 $c_n\mathcal{O}_n^{[4]}$ is a bona-fide dimension-$4$ density. The physics
 conclusion is unchanged: the algebraic Cartan constraint $T=\kappa S$, the
 first (algebraic) Bianchi identity, and Chern--Weil exactness collapse this
@@ -6203,7 +6212,7 @@ The spectator-status classification in this section uses the ALP dark-energy fra
 $\Omega_a = \rho_a(z=0)/\rho_{\rm crit,0}$.
 We define this quantity precisely here because the Table~\ref{tab:alp_restricted_subsets}
 entries (44\% at $\Omega_a<0.1$; 13\% at $\Omega_a<0.01$) depend on it directly,
-and two independent reviewers flagged the absence of an explicit derivation.
+and an explicit derivation is required to make the classification reproducible.
 
 \textit{Axion potential.}---The spectator ALP carries the standard cosine potential
 \begin{equation}
