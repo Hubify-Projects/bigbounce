@@ -198,3 +198,15 @@ When working on Convex code, **always read `convex/_generated/ai/guidelines.md` 
 
 Convex agent skills for common tasks can be installed by running `npx convex ai-files install`.
 <!-- convex-ai-end -->
+
+
+## Standing directive (2026-07-09 — permanent): J — LITERAL 0/0/0 BAR + NEVER-IDLE LOOP
+
+Houston explicit, final: the program exit bar is LITERAL **0 MAJOR / 0 MINOR / 0 REJECT from
+every reviewer** (INT Claude-subagent/OpenAI/Grok/Gemini + EXT ChatGPT/Grok/Gemini) on every
+paper. Directive-H and "0 genuinely-new findings" are honesty tools, NOT exit conditions.
+**The loop never idles:** every cron tick runs live improvement work on every paper below the
+bar — EXT rounds on some papers while INT closure/science runs on the others, in parallel,
+always. A paper whose open-item list closes re-tests immediately. Orchestrator = Fable 5
+(planning only); all subagents = Opus. "Idle — exit condition holds" is banned while any
+verdict word is below ACCEPT. Houston must never have to re-ask.
