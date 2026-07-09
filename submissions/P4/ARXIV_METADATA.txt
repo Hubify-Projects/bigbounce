@@ -1,12 +1,23 @@
 ========================================================================
 arXiv SUBMISSION METADATA — Paper IV (P4)
 Galaxy Chirality Catalog
-Source: pipelines/p2_chirality/chirality_catalog_paper.tex  (v1.0.222, 31pp)
-Bundle: submissions/P4/arxiv_p4_v1.0.222.tar.gz  (md5 d4f12ee30091b0cca94188f23ff50a95, 25MB)
-PDF md5: 07bcf35825f03c1895f3b3b1b98f6e78 (31 pages)
+Source: pipelines/p2_chirality/chirality_catalog_paper.tex  (v1.0.224, 32pp)
+Bundle: submissions/P4/arxiv_p4_v1.0.224.tar.gz  (md5 12e4f2d0cdbab695889e51791369edb4, 25MB)
+PDF md5 (freshly compiled, /tmp/p4verify): ae45bafccfab5c652a5c538dc9221685 (32 pages)
+PDF md5 (served site/public/papers/chirality_catalog_paper_v1.0.224.pdf): 521b5bbb9a961d983272024787b27868 (32 pages)
 ------------------------------------------------------------------------
 This is PREP metadata to paste field-by-field into arxiv.org/submit.
 DO NOT SUBMIT until Houston gives the go.
+
+VERIFICATION (run 2026-07-09):
+  - Bundle tex \paperVersion == v1.0.224: YES
+  - Standalone compile (4 passes): exit 0 all passes, stable at 32 pages
+  - Undefined refs/citations: 0
+  - Placeholder scan (XXXX/TODO-SUBMISSION/arXiv:XX/??): CLEAN
+  - Page count: compiled=32, served=32. NOTE: existing metadata said "31 pages" — CORRECTED to 32 here.
+  - Abstract char count (raw tex): 3238 — EXCEEDS arXiv 1920-char limit.
+    ACTION REQUIRED: Houston must shorten the abstract before submission.
+    The abstract in this file is the current tex text (unchanged); trim to <1920 chars.
 ========================================================================
 
 TITLE:
@@ -21,7 +32,12 @@ Houston Golden
 
 ------------------------------------------------------------------------
 
-ABSTRACT:
+ABSTRACT — PASTE THIS ONE (arXiv-form-safe, 1583 chars, < 1920 limit):
+We measure the large-scale chirality dipole of spiral galaxies and find it consistent with null. Our primary estimator, a real-space dipole fit to the high-confidence equivariant sample (N ~ 9.5x10^5 spirals), gives +0.41 sigma (moment-z against an isotropic pixel-permutation null; empirical-rank p = 0.31); a block-bootstrap template fit disfavors a clean cosmological dipole at the 1.7% reference amplitude (lower end of Shamir's 1.7%-4.0% range) at z ~ -18. This ell=1 observable is parity-even, not a direct parity-violation test. The measurement rests on the largest chirality-labeled galaxy catalog to date: 8,474,531 DESI Legacy DR8 galaxies classified by a flip-equivariant Vision Transformer (3,201,160 spirals), released publicly with model weights and reproducibility scripts. The p_eq > 0.6 cut is pre-specified: the null is robust across the high-confidence regime while the low-confidence tail (p_eq <= 0.5) carries a systematics-attributed excess. Two limitations are explicit. First, the MASTER pseudo-C_ell channel on this patchy footprint is a systematics diagnostic, not an independent null: a monopole-only generative null reproduces 99.32% of the raw pre-MASTER ell=1 power, and residuals after deconvolution are attributed to survey systematics via an eight-anchor battery, not claimed as detections. Second, the quoted sigma values come from distinct null procedures and are not directly comparable as detection significances. Falsification: a future real-space dipole at >= 5 sigma with amplitude A >~ A_95 in (1.0%, 1.5%] would be in tension with this null.
+
+------------------------------------------------------------------------
+
+FULL ABSTRACT (from the PDF / paper — for reference only; 3238 chars, DO NOT paste into the arXiv form, it exceeds the 1920 limit):
 We measure the large-scale chirality dipole of spiral galaxies and find it consistent with null. Our primary estimator --- a real-space dipole fit to the high-confidence equivariant sample (N ~ 9.5x10^5 spirals) --- gives +0.41 sigma (moment-z against an isotropic pixel-permutation null; empirical-rank p = 0.31, 10^4 realizations), and a block-bootstrap WLS template fit disfavors a clean cosmological dipole at the 1.7% reference amplitude (the lower end of Shamir's reported 1.7%-4.0% range) at z ~ -18. This ell=1 observable is parity-even (an isotropy-breaking axial-vector channel), not a direct parity-violation test. The measurement rests on the largest chirality-labeled galaxy catalog to date: 8,474,531 DESI Legacy DR8 galaxies classified by a flip-equivariant Vision Transformer into clockwise (CW), counter-clockwise (CCW), and non-spiral classes, with N_spiral = 3,201,160 spirals, released publicly with model weights and reproducibility scripts. The p_eq > 0.6 confidence cut is pre-specified (not tuned post-hoc): the null is robust across the high-confidence regime (p_eq in {0.6,0.7,0.8}) of a full confidence-cut sweep, while the low-confidence tail (p_eq <= 0.5) carries a systematics-attributed excess (z ~ 4.0-4.3). The real-space null holds under a per-galaxy label-shuffle test (z = 0.58 same-generator, z = 0.70 independent re-implementation). We are explicit about two limitations. First, the MASTER pseudo-C_ell harmonic channel on this patchy footprint is a systematics diagnostic, not an independent cosmological null: a monopole-only generative null reproduces 99.32% of the raw pre-MASTER ell=1 power (monopole-mask leakage), and MASTER deconvolution reduces but does not remove it, leaving systematics-attributed residuals (+3.64 sigma canonical mask, ~1.9 sigma Gaussian-equivalent; +7.28 sigma apodized footprint) that we attribute to residual survey systematics via an eight-anchor battery rather than claim as detections. Second, the various sigma values quoted above come from distinct null procedures, so they are diagnostic indicators and are not directly comparable to one another as detection significances. Falsification criterion: a future real-space dipole detection at >= 5 sigma with amplitude A >~ A_95, where injection-recovery brackets A_95 in (1.0%, 1.5%] (A_50 ~ 0.75%), would be in tension with this null.
 
 ------------------------------------------------------------------------
@@ -32,10 +48,14 @@ astro-ph.CO
 CROSS-LIST CATEGORIES:
 astro-ph.GA
 
+[Category rationale: galaxy chirality dipole measurement, cosmological isotropy test, DESI Legacy survey. CO primary (cosmological observable, isotropy) + GA cross (galaxy morphology catalog). Correct.]
+
 ------------------------------------------------------------------------
 
 COMMENTS:
-31 pages, 10 figures, 14 tables. The canonical-mask ell=1 residual is forward-modeled by imaging-systematic templates (~52-54% of the observed |a_1| in the correct direction, cos-alignment +0.84); a completed per-galaxy morphology forward-model on all 3.2M spirals (real DR8 b/a, fracdev, shape_r) adds negligibly (+0.7pt), so the ~half remainder is honestly disclosed as an open item, not attributed. Edge-on contamination is quantified empirically (f_edge=15.8%). The edge-on-isolated (b/a<0.30) argmax tie-break population (N=295,170) is directly measured and spatially isotropic (family-wise joint p=0.49, per-leg |z|<1.4), so the argmax step introduces no directional dipole even in the edge-on slice (v1.0.218 App E). Data, model weights, and reproducibility scripts at https://github.com/Hubify-Projects/bigbounce
+32 pages, 12 figures; data + code at https://github.com/Hubify-Projects/bigbounce
+
+[Note: previous metadata said "10 figures, 14 tables" — verified 12 \includegraphics / 10 figure environments / 15 table environments in v1.0.224 tex. The "Comments" field above uses figure count from \includegraphics (12) and omits table count as arXiv convention is brief. Adjust if Houston prefers the environment count (10 figure envs) or wants tables listed.]
 
 ------------------------------------------------------------------------
 
@@ -52,4 +72,4 @@ REPORT-NO / JOURNAL-REF / DOI / MSC-CLASS:
 
 SUBMISSION NOTE:
 Submit P4 BEFORE P5 (P5 cites P4 as its companion/input catalog).
-Bundle: submissions/P4/arxiv_p4_v1.0.222.tar.gz
+Bundle: submissions/P4/arxiv_p4_v1.0.224.tar.gz

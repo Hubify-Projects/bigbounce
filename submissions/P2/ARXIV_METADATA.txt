@@ -1,12 +1,12 @@
 title: Testing the Matter Bounce with Primordial Non-Gaussianity: A SPHEREx Sensitivity Recast with a MegaMapper Outlook
 authors: Houston Golden
-version: v1.7.101
-datestamp: 2026-07-06
-bundle: arxiv_p2_v1.7.101.tar.gz
-bundle_md5: 894fd8bb6e23b0319f928b469286d889
-bundle_size_bytes: 710968
-pdf_md5: 7af1d09f5d61e2603e91b34eaeaf1234
-pages: 34
+affiliation: Independent Researcher, Los Angeles, California, USA
+version: v1.7.104
+datestamp: 2026-07-08
+bundle: arxiv_p2_v1.7.104.tar.gz
+bundle_md5: 4522c696b6f42d7db736c4938c8cf45f
+pdf_md5: 3e017b7c17d65beb334f3923b585655b
+pages: 36
 main_file: 02_full_draft.tex
 figures:
   - fig1_shape_function.png
@@ -18,11 +18,13 @@ figures:
 bbl: 02_full_draft.bbl (included; rebuilt with paper)
 bib: focused_paper_refs.bib
 primary_class: astro-ph.CO
-cross_lists: gr-qc, hep-th
-standalone_compile: PASS (pdflatex x2; 0 undefined refs; 35 pages; clean-dir standalone re-extract verified 2026-07-07, v1.7.101)
+cross_lists: gr-qc
+cross_lists_note: hep-th is an acceptable additional cross-list (bounce cosmology has hep-th readership); task spec says CO+gr-qc; Houston to decide whether to add hep-th as a second cross.
+standalone_compile: PASS (pdflatex x3; 0 undefined refs; 36 pages; clean-dir standalone re-extract verified 2026-07-09, v1.7.104; Overfull vbox 2.67pt on refs pages only — cosmetic, not a content overflow)
 figure_hygiene_note: v1.7.97 regenerated fig1_shape_function.png and fig4_decision_thresholds.png, which still rendered the stale -35/8-era labeling (last regenerated 2026-06-26) while every text/table headline already carried the corrected -35/16. fig1 curve scaled by 1/2 to converge to -35/16 = -2.1875 (legend + benchmarks now match tab:benchmarks: squeezed -35/16, equilateral -255/128 = -1.992, folded -9/8 = -1.125); fig4 prediction line + SPHEREx/MegaMapper error bars moved to -35/16 = -2.1875 and decision regions re-centered so the prediction sits in the dark-green "strongly favors bounce" zone. Cosmetic label-sync of already-corrected headline numbers; no f_NL/sigma value invented.
 data_unlock_note: v1.7.96 adds one sentence to sec:systematics — a systematic availability search (arXiv ancillary, Zenodo, authors' public repos) confirms the Heinrich et al. 2023 per-triangle bispectrum Cov_B is NOT publicly released, so the rho=-0.868-proxy computed-degeneracy bracket is the best currently-constructible marginalized-floor estimate. No headline/f_NL/sigma number changed. Record: project-context/peer-reviews/INT_v3/DATA_UNLOCK_2026-07-05.md
 dround_polish_note: v1.7.98 D-round final polish — abstract restructured to lead with the -35/16 Cai-Li resolution then the forecast then the load-bearing caveat (was caveat-dense); colorblind-safe palette + consistent fonts across all figures and finished the -35/8 -> -35/16 label-sync in fig2/fig3/fig5 (which still showed the retracted value, contradicting their own corrected captions); AI-methods disclosure expanded; a raw file-path column-overflow fixed. Presentation + disclosure only; no science number changed.
+v1104_note: v1.7.103 (RSD-Fisher closure — independent tree-level redshift-space Fisher; sigma_RSD=0.415-0.449, +34.7% tighter than real-space; updates sec:spherex reconciliation para); v1.7.104 (DEEP-tier Grok-Heavy MAJOR closure — added two intermediate Eq blocks in App A for vertex algebra transparency; no new math, -35/16 UNCHANGED).
 
 abstract: |
   A matter-dominated contracting phase preceding a nonsingular bounce predicts a
@@ -45,3 +47,23 @@ abstract: |
   multifield competitors. The forecast is conditional on faithful cubic-order
   bispectrum transmission through the bounce (derived here to a bounded ~10^-3
   systematic via single-clock LQC superhorizon zeta-conservation).
+
+comments: "36 pages, 6 figures; data + code at https://github.com/Hubify-Projects/bigbounce"
+
+license: CC BY 4.0
+license_note: arXiv nonexclusive license (CC BY 4.0 recommended); arXiv also accepts their standard nonexclusive-distribution license as a conservative alternative.
+
+submission_checklist:
+  - bundle_tex_identical_to_source: YES (diff returned 0)
+  - standalone_compile_exit0: YES (pass3, 0 undefined refs)
+  - placeholder_scan: CLEAN (only hit is commented-out %\preprint{arXiv:XXXX.XXXXX} — not rendered)
+  - no_companion_paper_placeholder: N/A (P2 has no cross-citations to companion papers)
+  - abstract_char_count: 1621 (< 1920 limit)
+  - abstract_arxiv_safe: YES (no \cite, no custom macros, plain text + f_NL/sigma notation)
+  - figures_count: 6 (matches \includegraphics count in tex)
+  - bundle_md5_verified: 4522c696b6f42d7db736c4938c8cf45f
+  - pdf_md5_verified: 3e017b7c17d65beb334f3923b585655b
+  - page_count: 36 (metadata previously said 34-35; actual compiled output is 36)
+  - category_primary: astro-ph.CO
+  - category_cross: gr-qc (hep-th: Houston decision)
+  - compile_warnings: Overfull vbox 2.67pt on refs pages (cosmetic only); Underfull hbox in bibliography lines (cosmetic); Label-changed warning resolved by pass3
