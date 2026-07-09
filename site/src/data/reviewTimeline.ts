@@ -46,6 +46,32 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "P1U3-EXT-retest-2026-07-09",
+    dateISO: "2026-07-09",
+    kind: "external-browser",
+    title:
+      "P1U v1U.0.3 EXT re-test — the first-ACCEPT shot: NO ACCEPT (ChatGPT/Grok/Gemini = MAJOR/MAJOR/MAJOR). ChatGPT REJECT→MAJOR (off its reject floor), Gemini MINOR→MAJOR regressed the word, Grok MAJOR held — 0 genuinely-new findings",
+    papers: ["P1A", "P1B"],
+    summary:
+      "Full 3-reviewer EXT re-test of the UNIFIED Paper 1 at v1U.0.3 in Houston's headed gstack browser (real Chrome + extension), native-PDF upload, raw verbatim text + screenshot saved and READ before every recorded verdict. Framed as the program's first-ACCEPT shot: Gemini rated v1U.0.1 MINOR REVISIONS ('robustly supported… self-contained') and BOTH its two minors were closed by v1U.0.3 (parity-odd terminology reading-rule + companion non-load-bearing disclosure). Result — Verdict matrix (ChatGPT/Grok/Gemini): MAJOR/MAJOR/MAJOR, NO ACCEPT. Vs P1U-2026-07-08 baseline (REJECT/MAJOR/MINOR): ChatGPT REJECT→MAJOR improved off its reject floor (perturbation-transparency theorem now 'well supported within its stated scope'; its 7 MAJORs are scope/naturalness-framing recasts, not errors), Grok MAJOR held (same 3 scope majors: R2/R3 ansatz operators are power-counting bounds not derivations; perturbation-transparency proof asserted at outline level; title 'amplitude closure' vs R4-closed-by-naturalness mismatch), Gemini MINOR→MAJOR regressed the verdict word (2 MAJORs: off-shell dim-+1 operator wants a full dim-4 completion for PRD; MCMC uses stock-CAMB ΔN_eff radiation proxy not a bespoke spin-torsion Boltzmann module — both openly acknowledged EFT/scope ceilings in-paper; its central-claim sentence still says the closure is 'well-supported'). All three converge on the SAME disclosed-scope structural set (R2/R3 EFT-ansatz amplitude bounds; R4 closed by naturalness/explanatory-deficit not amplitude; the perturbation-transparency theorem the credited load-bearing result). After per-finding source-cited truth-audit: ZERO genuinely-new real findings — every MAJOR is a source-cited re-flag of a limitation the manuscript discloses itself (App B dimensional-completion heuristic, App E MCMC radiation-proxy scope, Sec IV F R4 naturalness framing, Sec IV D/E ansatz-operator normalization). Confirms pattern-066 + directive-H: closing Gemini's two v1U.0.1 minors did NOT yield an ACCEPT; the noisy LLM referees re-shuffled verdict words (ChatGPT up, Gemini down, Grok flat) around the same structural floor with no genuinely-new content error — the barrier is venue/human-referee-structural, not an editable content gap. 3/3 legs harvested with raw verbatim text + screenshots (Gemini first submit dropped — known EXT7 drop — resubmitted and held), 0 failed legs, 0 fabricated.",
+    keyTakeaways: [
+      "First-ACCEPT shot MISSED: ChatGPT/Grok/Gemini = MAJOR/MAJOR/MAJOR at v1U.0.3, NO ACCEPT",
+      "Closing Gemini's two v1U.0.1 minors did NOT lift it to ACCEPT — Gemini MINOR→MAJOR regressed the verdict word on openly-acknowledged EFT/scope ceilings (dim-4 completion, MCMC radiation-proxy)",
+      "ChatGPT REJECT→MAJOR improved off its reject floor (perturbation-transparency theorem now 'well supported within its stated scope'); Grok MAJOR held on the same 3 scope majors",
+      "All three converge on the same disclosed-scope set (R2/R3 EFT-ansatz bounds, R4 naturalness-not-amplitude, transparency the credited load-bearing result); 0 genuinely-new real findings after truth-audit",
+      "pattern-066 + directive-H: LLM referees re-shuffle verdict words around a structural floor without a new content error — barrier is venue/human-referee-structural",
+      "3/3 legs raw text + screenshots saved and READ before every recorded verdict, 0 fabricated (EXT_real/P1U3_2026-07-09/); Gemini EXT7 drop retried and held",
+    ],
+    links: [
+      { label: "P1U3 raw reviews + screenshots", href: `${PR}/EXT_real/P1U3_2026-07-09` },
+      { label: "ChatGPT raw (REJECT→MAJOR)", href: `${PR}/EXT_real/P1U3_2026-07-09/chatgpt.md` },
+      { label: "Grok raw (MAJOR held)", href: `${PR}/EXT_real/P1U3_2026-07-09/grok.md` },
+      { label: "Gemini raw (MINOR→MAJOR)", href: `${PR}/EXT_real/P1U3_2026-07-09/gemini.md` },
+      { label: "manifest", href: `${PR}/EXT_real/P1U3_2026-07-09/manifest.jsonl` },
+      { label: "Unified PDF", href: "/papers/paper1_unified_v1U.0.3.pdf" },
+    ],
+  },
+  {
     id: "P1U-EXT-closure-wave-2026-07-09",
     dateISO: "2026-07-09",
     kind: "ext-closure",
@@ -3899,6 +3925,20 @@ export const externalVerdictRounds: ExternalRoundVerdicts[] = [
       P5: ["MAJOR", "MINOR", "MAJOR"],
     },
     note: "R9 EXT sweep of the four non-P1 papers at their LATEST versions (all previously un-EXT-tested): P4 v1.0.224 (provenance table + ECE bound added), P2 v1.7.104 (displayed vertex algebra added), P3 v3.1.145 (exact χ²=365,428 recomputable chain added), P5 v0.1.107 (re-sample, unchanged since CW). Verdict matrix (ChatGPT/Grok/Gemini): P4 MAJOR/MINOR/MINOR · P2 MAJOR/MAJOR/MINOR · P3 MAJOR/MINOR/MAJOR · P5 MAJOR/MINOR/MAJOR. Vs baselines (P4 MAJ/MIN/MAJ DEEP · P2 REJ/MIN/MIN CW · P3 REJ/MAJ/REJ CW2 · P5 MAJ/MIN/MIN CW): the content adds SOFTENED the harsh reviewers — P2 ChatGPT REJECT→MAJOR + P3 ChatGPT REJECT→MAJOR + P3 Gemini REJECT→MAJOR (the displayed vertex algebra and exact recomputable χ² chain moved both papers off their reject floors), and P4 Gemini MAJOR→MINOR ('Accept with Minor Revisions'). Zero genuinely-new real findings after per-finding source-cited truth-audit: every surviving item is a source-cited re-flag of an already-disclosed limitation — P2 ('present a full term-by-term derivation table for the −35/8→−35/16 correction' re-flags the disclosed vertex-resummation-not-full-in-in scope the paper names itself; Gemini praised it as 'excellent forensic work'), P3 (heterogeneous tier mix / in-sample DESI scoring / data-not-available-at-review + Gemini venue-fit ApJS-MNRAS suggestion — all disclosed/scope), P4 (unmodeled ~47% ℓ=1 residual + z≈−18 template-disfavor phrasing + Shamir amplitude-tension scope — the SAME disclosed trio from DEEP), P5 (dependency on the concurrently-submitted Paper IV + placeholder DOIs — flagged identically by ChatGPT and Gemini, a disclosed companion contingency). ChatGPT held a structural MAJOR on all four (its harsh-referee floor, directive-H); Grok gave 3 minor + 1 major and Gemini 2 minor + 2 major, both crediting the central results. Confirms pattern-066 (universal referee variance) + directive-H: content adds move the harsh reviewers OFF reject but not to ACCEPT; the residual barrier is venue/human-referee-structural, not an editable content error. Infra note: Grok Expert hit a transient 'unable to finish replying' outage on the first P2/P3 attempts (retried successfully after recovery); the launched-mode browser 403'd ChatGPT until switching to the headed gstack Chrome (directive I4). 12/12 legs harvested with raw verbatim text + screenshots, 0 failed legs, 0 fabricated. Raws in EXT_real/R9_2026-07-09/.",
+  },
+  {
+    roundId: "P1U3-2026-07-09",
+    dateISO: "2026-07-09",
+    windowPT: "Jul 9 · UNIFIED Paper 1 v1U.0.3 re-test (v0.2 seams + v0.3 minor-closures since v1U.0.1) · headed browser, raw verbatim text + screenshot READ before every recorded verdict",
+    verdicts: {
+      P1A: ["MAJOR", "MAJOR", "MAJOR"],
+      P1B: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P2: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P3: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P4: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P5: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+    },
+    note: "Re-test of the UNIFIED Paper 1 at v1U.0.3 (P1A row IS the unified paper; P1B retired-into-P1U carries NO_VERDICT). Framed as the program's first-ACCEPT shot: Gemini rated v1U.0.1 MINOR ('robustly supported… self-contained') and BOTH its two minors were closed by v1U.0.3. Verdict matrix (ChatGPT/Grok/Gemini): MAJOR/MAJOR/MAJOR — NO ACCEPT. Vs P1U-2026-07-08 baseline (REJECT/MAJOR/MINOR): ChatGPT REJECT→MAJOR (improved off its reject floor — perturbation-transparency theorem now 'well supported within its stated scope', 7 structural MAJORs recast as scope/naturalness-framing not error), Grok MAJOR held (same 3 scope majors: R2/R3 ansatz operators are power-counting bounds not derivations, perturbation-transparency proof asserted at outline level, title 'amplitude closure' vs R4-closed-by-naturalness mismatch), Gemini MINOR→MAJOR regressed the verdict word (2 MAJORs: off-shell dim-+1 operator needs a full dim-4 completion for PRD; MCMC uses stock-CAMB ΔN_eff radiation proxy not a bespoke spin-torsion Boltzmann module — both openly acknowledged EFT/scope ceilings in-paper; central closure claim still 'well-supported'). All three converge on the SAME disclosed-scope structural set: R2/R3 amplitude bounds rest on explicitly-labeled EFT ansätze; R4 is closed by naturalness/explanatory-deficit not amplitude mismatch (a title/scope-wording objection the paper acknowledges); the perturbation-transparency theorem is the credited load-bearing result all three call supported. Zero genuinely-new real findings after per-finding truth-audit — every MAJOR is a source-cited re-flag of a limitation the manuscript discloses itself (Appendix B dimensional-completion heuristic, Appendix E MCMC radiation-proxy scope, Sec IV F R4 naturalness framing, Sec IV D/E ansatz-operator normalization). Confirms pattern-066 + directive-H: closing Gemini's two v1U.0.1 minors did NOT yield an ACCEPT; the three noisy LLM referees re-shuffled verdict words (ChatGPT up, Gemini down, Grok flat) around the same structural floor without a genuinely-new content error. The barrier is venue/human-referee-structural, not an editable content gap. 3/3 legs harvested with raw verbatim text + screenshots (Gemini first submit dropped — known EXT7 drop — resubmitted and held), 0 failed legs, 0 fabricated. Raws in EXT_real/P1U3_2026-07-09/.",
   },
 ];
 
