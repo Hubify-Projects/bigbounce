@@ -66,6 +66,28 @@ export const reviewRounds: ReviewRound[] = [
     ],
   },
   {
+    id: "P1U-EXT-2026-07-08",
+    dateISO: "2026-07-08",
+    kind: "external-browser",
+    title:
+      "P1U EXT sweep (unified Paper 1 v1U.0.1, 58pp): REJECT/MAJOR/MINOR (ChatGPT/Grok/Gemini) — Gemini + Grok credit the four-route no-go, ChatGPT holds a structural-floor REJECT",
+    papers: ["P1A", "P1B"],
+    summary:
+      "First external browser sweep of the UNIFIED Paper 1 (v1U.0.1 — the former P1A + P1B merged into one 58pp manuscript), run in Houston's headed gstack browser with raw verbatim reviewer text + a screenshot saved and READ before every recorded verdict. Verdict matrix (ChatGPT/Grok/Gemini): REJECT/MAJOR/MINOR. Gemini (native-PDF upload, houston@bamf.com Thinking) returned MINOR REVISIONS — 2 MINOR, 0 MAJOR — and states the central four-route dark-energy no-go 'is robustly supported by the manuscript's self-contained analytical bounds and perturbation-transparency theorem' (its two minors are a parity-odd-vs-parity-even semantic tightening at Sec IV D/Footnote 3 and companion-paper dependency for illustrative non-load-bearing metrics). Grok Expert returned MAJOR REVISIONS with 4 scope/completeness majors on the channel-level amplitude closure (four-route exhaustiveness, sketched perturbation-transparency verification, NDA dark-energy mapping relocating rather than solving the CC problem, Route 4 closed by naturalness not amplitude). ChatGPT (Extended Thinking Pro, native-PDF) returned REJECT on the same structural set (dark-energy mapping is a phenomenological ansatz not a derived ECH mechanism; R2/R3 rest on ansatz-level EFT budgets; R4 is a naturalness objection not an exclusion; the 13-barrier catalog mixes rigorous identities with heuristics; appendices E–H overextended/companion-dependent). The REJECT/MAJOR/MINOR shape mirrors the pre-merge P1A/P1B LLM-referee floor (pattern-066 / directive-H): two reviewers credit the central result while the harshest holds a structural-floor REJECT on disclosed-scope items — barrier is venue/human-referee-structural, not an editable content-correctness gap. 3/3 legs harvested with raw verbatim text + screenshots, 0 failed legs, 0 fabricated.",
+    keyTakeaways: [
+      "Unified Paper 1 (P1A+P1B merged, v1U.0.1) drew REJECT/MAJOR/MINOR (ChatGPT/Grok/Gemini) on its first EXT sweep",
+      "Gemini MINOR REVISIONS: 2 minors, 0 majors, central four-route no-go 'robustly supported'; Grok MAJOR (4 scope items); ChatGPT REJECT (structural floor)",
+      "Same LLM-referee floor as pre-merge P1A/P1B — pattern-066 / directive-H, barrier is venue/human-referee-structural",
+      "3/3 legs raw text + screenshots saved and READ before every recorded verdict, 0 fabricated (EXT_real/P1U_2026-07-08/)",
+    ],
+    links: [
+      { label: "P1U raw reviews + screenshots", href: `${PR}/EXT_real/P1U_2026-07-08` },
+      { label: "ChatGPT raw", href: `${PR}/EXT_real/P1U_2026-07-08/chatgpt.md` },
+      { label: "Grok raw", href: `${PR}/EXT_real/P1U_2026-07-08/grok.md` },
+      { label: "Gemini raw", href: `${PR}/EXT_real/P1U_2026-07-08/gemini.md` },
+    ],
+  },
+  {
     id: "verdict-board-current-column-2026-07-08",
     dateISO: "2026-07-08",
     kind: "skill-improvement",
