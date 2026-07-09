@@ -143,6 +143,19 @@
   opacity: 0.85;
 }
 
+.verdict-legend-note {
+  margin-top: 8px;
+  font-size: 0.72rem;
+  line-height: 1.5;
+  color: var(--text-tertiary);
+  max-width: 62ch;
+}
+
+.verdict-legend-note strong {
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
 .gap-deltas {
   display: flex;
   flex-wrap: wrap;

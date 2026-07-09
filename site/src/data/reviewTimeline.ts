@@ -46,6 +46,21 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "verdict-board-current-column-2026-07-08",
+    dateISO: "2026-07-08",
+    kind: "skill-improvement",
+    title: "Verdict-board readability: added a CURRENT (latest-per-paper) column + legend note",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary:
+      "Houston flagged that targeted-sweep columns render \"—\" (NO_VERDICT = not re-swept that round) for papers a round didn't test, which reads as missing data rather than carry-forward. Fixed on /reviews: the VerdictTrajectory SVG now renders a labeled CURRENT column at the far right that computes, per paper × reviewer, the latest non-NO_VERDICT verdict across all rounds (walking newest→oldest), with the source round on hover (title attr). Values are computed live from externalVerdictRounds — no verdict is invented and no new data is entered. A legend note under the board explains the \"—\" carry-forward. Current column resolves: P1A/P1B REJ/MAJ/REJ (CW2), P2 REJ/MAJ/MAJ + P4 MAJ/MIN/MAJ (DEEP), P3 REJ/MIN/MAJ + P5 MAJ/MIN/MAJ (VENUE).",
+    keyTakeaways: [
+      "CURRENT column = latest tested verdict per paper × reviewer, computed in-component from existing data (no new entry, no invented verdict)",
+      "\"—\" now legend-documented as \"not re-swept that round; verdict carries from the latest tested round shown in CURRENT\"",
+      "Source round visible on hover of every CURRENT chip (title attr)",
+    ],
+    links: [],
+  },
+  {
     id: "merge-p1-unified-2026-07-08",
     dateISO: "2026-07-08",
     kind: "skill-improvement",

@@ -36,8 +36,31 @@ const GRID = "var(--border)";
 
 /* ── (a) Verdict-trajectory strip: papers × rounds × reviewers ───────── */
 
+/**
+ * Latest genuinely-tested verdict per paper × reviewer.
+ * Walks rounds newest→oldest (externalVerdictRounds is oldest→newest) and takes
+ * the first non-NO_VERDICT cell, remembering the round it came from. NO_VERDICT
+ * ("—") means "not re-swept that round" — this carries the verdict forward from
+ * the latest round that actually tested that paper/reviewer. Computed from the
+ * existing data — no new verdict is invented.
+ */
+function computeCurrent(): Record<PaperId, { verdict: Verdict; roundId: string }[]> {
+  const out = {} as Record<PaperId, { verdict: Verdict; roundId: string }[]>;
+  for (const p of PAPER_IDS) {
+    out[p] = REVIEWERS.map((_rv, ri) => {
+      for (let i = externalVerdictRounds.length - 1; i >= 0; i--) {
+        const v = externalVerdictRounds[i].verdicts[p][ri];
+        if (v !== "NO_VERDICT") return { verdict: v, roundId: externalVerdictRounds[i].roundId };
+      }
+      return { verdict: "NO_VERDICT" as Verdict, roundId: "—" };
+    });
+  }
+  return out;
+}
+
 export function VerdictTrajectory() {
   const rounds = externalVerdictRounds;
+  const current = computeCurrent();
   const cellW = 30;
   const cellH = 20;
   const cellGap = 4;
@@ -46,7 +69,10 @@ export function VerdictTrajectory() {
   const headerH = 46;
   const rowGap = 6;
   const groupW = REVIEWERS.length * cellW + (REVIEWERS.length - 1) * cellGap;
-  const width = labelW + rounds.length * groupW + (rounds.length - 1) * groupGap + 8;
+  const currentGap = 40; // wider gap + divider before the CURRENT column
+  const roundsW = labelW + rounds.length * groupW + (rounds.length - 1) * groupGap;
+  const currentX0 = roundsW + currentGap;
+  const width = currentX0 + groupW + 8;
   const height = headerH + PAPER_IDS.length * (cellH + rowGap);
 
   const groupX = (gi: number) => labelW + gi * (groupW + groupGap);
@@ -126,6 +152,65 @@ export function VerdictTrajectory() {
           </g>
         );
       })}
+      {/* ── CURRENT column: latest tested verdict per paper × reviewer ── */}
+      <line
+        x1={currentX0 - currentGap / 2}
+        y1={4}
+        x2={currentX0 - currentGap / 2}
+        y2={height - 4}
+        stroke={GRID}
+        strokeWidth={1}
+        strokeDasharray="2 3"
+      />
+      <text x={currentX0 + groupW / 2} y={11} textAnchor="middle" fontFamily={MONO} fontSize={9.5} letterSpacing={1} fill="var(--text-primary)" fontWeight={700}>
+        CURRENT
+      </text>
+      <text x={currentX0 + groupW / 2} y={23} textAnchor="middle" fontFamily={MONO} fontSize={8} fill="var(--text-tertiary)">
+        latest per paper
+      </text>
+      {REVIEWERS.map((rv, ri) => (
+        <text key={`cur-hdr-${rv}`} x={currentX0 + ri * (cellW + cellGap) + cellW / 2} y={36} textAnchor="middle" fontFamily={MONO} fontSize={7.5} fill={AXIS}>
+          {rv === "ChatGPT" ? "GPT" : rv === "Grok" ? "GRK" : "GEM"}
+        </text>
+      ))}
+      {PAPER_IDS.map((p, pi) => {
+        const y = headerH + pi * (cellH + rowGap);
+        return (
+          <g key={`cur-${p}`}>
+            {current[p].map((c, ri) => (
+              <g key={`cur-${p}-${ri}`}>
+                <rect
+                  x={currentX0 + ri * (cellW + cellGap)}
+                  y={y}
+                  width={cellW}
+                  height={cellH}
+                  rx={3}
+                  fill={VERDICT_COLOR[c.verdict]}
+                  fillOpacity={c.verdict === "ACCEPT" ? 0.92 : 0.78}
+                  stroke="var(--text-primary)"
+                  strokeOpacity={0.28}
+                  strokeWidth={1}
+                  className="verdict-cell"
+                >
+                  <title>{`${p} · ${REVIEWERS[ri]}: ${c.verdict} — latest tested in ${c.roundId}`}</title>
+                </rect>
+                <text
+                  x={currentX0 + ri * (cellW + cellGap) + cellW / 2}
+                  y={y + cellH / 2 + 3.5}
+                  textAnchor="middle"
+                  fontFamily={MONO}
+                  fontSize={9}
+                  fontWeight={600}
+                  fill="var(--bg)"
+                  pointerEvents="none"
+                >
+                  {VERDICT_SHORT[c.verdict]}
+                </text>
+              </g>
+            ))}
+          </g>
+        );
+      })}
     </svg>
   );
 }
@@ -133,14 +218,20 @@ export function VerdictTrajectory() {
 export function VerdictLegend() {
   const order: Verdict[] = ["REJECT", "MAJOR", "MINOR", "ACCEPT"];
   return (
-    <div className="verdict-legend">
-      {order.map((v) => (
-        <span key={v} className="verdict-legend-item">
-          <span className="verdict-legend-swatch" style={{ background: VERDICT_COLOR[v] }} />
-          {v}
-        </span>
-      ))}
-    </div>
+    <>
+      <div className="verdict-legend">
+        {order.map((v) => (
+          <span key={v} className="verdict-legend-item">
+            <span className="verdict-legend-swatch" style={{ background: VERDICT_COLOR[v] }} />
+            {v}
+          </span>
+        ))}
+      </div>
+      <p className="verdict-legend-note">
+        <strong>—</strong> = not re-swept that round (verdict carries from the latest tested
+        round, shown in the <strong>CURRENT</strong> column at right).
+      </p>
+    </>
   );
 }
 
