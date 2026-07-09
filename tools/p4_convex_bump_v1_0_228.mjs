@@ -8,7 +8,7 @@ const result = await client.mutation(api.paperVersions.bump, {
   paperSlug: "paper-4",
   version: "v1.0.228",
   datestamp: "July 9, 2026",
-  texCommit: "1f6ef3f0",
+  texCommit: "c2eda087",
   pdfMd5: "176e493b75ded77e540367c733e34f10",
   pdfPages: 34,
   pdfSizeBytes: 25105175,
