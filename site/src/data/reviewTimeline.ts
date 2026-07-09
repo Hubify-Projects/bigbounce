@@ -70,6 +70,29 @@ export const reviewRounds: ReviewRound[] = [
     ],
   },
   {
+    id: "W10-minor-closure-2026-07-09",
+    dateISO: "2026-07-09",
+    kind: "ext-closure",
+    title:
+      "W10 minor-closure wave (P4 v1.0.225→v1.0.226 · P5 v0.1.108→v0.1.109 · P3 v3.1.146→v3.1.147): closed EVERY fresh polish-tier MINOR from the W10 Accept-with-Minor boards so the next EXT re-test targets CLEAN ACCEPTs — zero verified number changed, zero disclosure weakened",
+    papers: ["P3", "P4", "P5"],
+    summary:
+      "Owner-agent per-paper closure of every W10 polish-tier minor (wording, clarity, small additions, and making already-addressed content unmissable at the flag site). P4 (ChatGPT 5 + Grok 5 + Gemini 4): incommensurable-σ diagnostic-table caption note (only the two primary-estimator rows carry cosmological weight), GZ1 'excellent for large-scale nulls not per-galaxy truth' + z=−0.54σ human-only null highlighted, abstract ~53%-forward-modeled/~47%-open clause, A95 'conservative-grid-level' label, injection area-uniform-axis convention note, depth-conditioned-calibration follow-up named, Shamir 'matched-footprint Ganalyzer' scoping sentence, parity-sector context (chiral inflation / primordial magnetic fields / gravitational Chern-Simons + Jackiw:2003 cite), Table XIV A_p-convention footnote, Zenodo-DOI-at-submission Data Availability. P5 (ChatGPT 6 + Grok 3 + Gemini 4, overlaps merged): abstract post-hoc-primary caveat lifted to the headline, 'definition-family null' framing (not the k=20 VoidFinder row alone), 'fixed redshift-space null, not real-space environment null' clarifier in abstract + Conclusions, Paper IV co-review/public-availability contingency, 'approximate DR1 sensitivity envelope (not a hard exclusion)' language, bright/dark ~2σ residual explicitly isolated from the DESIVAST primary, §I Reader's Guide (headline lives in §VIII), qualitative DR2 sensitivity forecast, Appendix B synchronous-comoving heuristic-parameterization/covariance caveat. P3 (Gemini 4 accept-track + ChatGPT 5 MAJOR/3 MINOR presentation asks + Grok polish): 268,519-validated made the SOLE abstract/conclusion headline (process-volume totals de-emphasized), NEOWISE geometry-QA-only validation basis disclosed unmissably at every 'validated' site (weaker than the DESI/SDSS/Planck injection tiers — injection test is compute-blocked, disclosed not faked), SDSS 77,905 continuity-slice clarified with strict-S>5 (12) + top-1% (19,253) in main text, DESI 2,468 like-for-like science-target result foregrounded, §V cosmology scoped 'Secondary Demonstrations', spatial-χ² pulled from the headline result list, plus Gemini's train-split scaler / inverse-variance-MSE future-work / novelty-scaling additions and Grok's B-dominant follow-up + fixed-α continuity note + single-architecture limitation bullet. Directive-G on all three: recompile 0 undef-refs, /latex-audit clean, version+date bumped, PDF mirrored byte-identical to every served path, Convex paper-{4,5,3} bumped with real md5/pages, standalone-verified arXiv tarballs rebuilt. NO fabrication, NO weakened disclosure.",
+    keyTakeaways: [
+      "P4 v1.0.226 — all 14 minors closed (ChatGPT 5 / Grok 5 / Gemini 4): σ-table cosmological-weight note, GZ1 scope + human-null highlight, A95 conservative-grid label, parity-sector context, A_p footnote, Zenodo-DOI-at-submission; 33pp · md5 8a653a15",
+      "P5 v0.1.109 — all minors closed (ChatGPT 6 / Grok 3 / Gemini 4, overlaps merged): post-hoc caveat to abstract headline, definition-family-null framing, redshift-space clarifier, Paper IV contingency, sensitivity-envelope language, Reader's Guide, DR2 forecast; 40pp · md5 033140ed",
+      "P3 v3.1.147 — accept-track + editable-presentation MAJORs closed: 268,519-validated sole headline, NEOWISE geometry-QA validation-basis disclosed unmissably, SDSS continuity-slice clarity, 2,468 DESI science-target foregrounded, §V demo-scoped; NEOWISE injection test is compute-blocked (disclosed, not faked); 35pp · md5 186ae2a1",
+      "ZERO verified numbers changed · ZERO disclosures weakened — every close is wording/clarity/prominence/small-addition polish per the Accept-with-Minor mandate",
+      "Directive-G on all three: 0 undef-refs, /latex-audit clean, byte-identical mirrors to every served path, Convex paper-{4,5,3} bumped with real md5/pages, standalone-verified arXiv tarballs rebuilt",
+    ],
+    links: [
+      { label: "W10 raw reviews (the minors closed)", href: `${PR}/EXT_real/W10_2026-07-09` },
+      { label: "P4 PDF (v1.0.226)", href: "/papers/chirality_catalog_paper_v1.0.226.pdf" },
+      { label: "P5 PDF (v0.1.109)", href: "/papers/p5_desi_chirality_v0.1.109-2026-07-09.pdf" },
+      { label: "P3 PDF (v3.1.147)", href: "/papers/paper3_draft_v3.1.147.pdf" },
+    ],
+  },
+  {
     id: "P1U4-real-work-closure-2026-07-09",
     dateISO: "2026-07-09",
     kind: "ext-closure",
