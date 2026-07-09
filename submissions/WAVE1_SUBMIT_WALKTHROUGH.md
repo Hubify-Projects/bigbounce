@@ -5,8 +5,8 @@ cites as a companion; P3 and P2 are independent. This order keeps the wave-2
 cross-references clean.)
 
 **Verified:** 2026-07-09. Every check below was run, not assumed.
-- P4 `arxiv_p4_v1.0.225.tar.gz` — md5 `3adc57391fba963272d9a9b715d37fc8` — **rebuilt today** from current source (the `.224` bundle was one version stale) — standalone re-extract+compile exit 0, 0 undef, **32 pages**.
-- P3 `arxiv_p3_v3.1.146.tar.gz` — md5 `25807ecb660c8c642fefef9c8f2b7121` — **rebuilt today** from current source (the `.144` bundle was one version stale) — smoke-test re-extract+compile exit 0, 0 undef, **35 pages**.
+- P4 `arxiv_p4_v1.0.227.tar.gz` — md5 `4d384c16` — **rebuilt today** from current source (the `.224` bundle was one version stale) — standalone re-extract+compile exit 0, 0 undef, **33 pages**.
+- P3 `arxiv_p3_v3.1.148.tar.gz` — md5 `1fa084f7` — **rebuilt today** from current source (the `.144` bundle was one version stale) — smoke-test re-extract+compile exit 0, 0 undef, **36 pages**.
 - P2 `arxiv_p2_v1.7.106.tar.gz` — md5 `07f2c6c3134fa5fa6ff8a7b0fb568a2d` — bundle tex byte-identical to source, compile exit 0, 0 undef, **37 pages**.
 - Placeholder scans: all three CLEAN (only commented-out `%\preprint{arXiv:XXXX.XXXXX}` lines, which never render). No dangling companion-paper placeholders.
 - Abstracts: all trimmed to arXiv-form-safe (<1920 chars) versions — the paste blocks below and in each `ARXIV_METADATA.txt`.
@@ -26,12 +26,12 @@ If Step 0 is clean (astro-ph enabled, no endorsement block), proceed. If blocked
 
 ## PAPER 1 — P4 (submit FIRST)
 
-**Upload:** `submissions/P4/arxiv_p4_v1.0.225.tar.gz`
+**Upload:** `submissions/P4/arxiv_p4_v1.0.227.tar.gz`
 (Full paste-ready field text also lives in `submissions/P4/ARXIV_METADATA.txt`.)
 
 ### 1. Start submission → upload the tarball
-arxiv.org/submit → "Start a new submission" → upload `arxiv_p4_v1.0.225.tar.gz`.
-Let arXiv run AutoTeX. It should compile to **32 pages**.
+arxiv.org/submit → "Start a new submission" → upload `arxiv_p4_v1.0.227.tar.gz`.
+Let arXiv run AutoTeX. It should compile to **33 pages**.
 
 ### 2. Metadata — paste these blocks
 
@@ -56,7 +56,7 @@ We measure the large-scale chirality dipole of spiral galaxies and find it consi
 
 **Comments:**
 ```
-32 pages, 12 figures; data + code at https://github.com/Hubify-Projects/bigbounce
+33 pages, 12 figures; data + code at https://github.com/Hubify-Projects/bigbounce
 ```
 
 **License:** **CC BY 4.0** (recommended — consistent with the public data + weights
@@ -65,7 +65,7 @@ release). Conservative alternative: arXiv's standard perpetual non-exclusive lic
 
 ### 3. Preview checks (before hitting Submit)
 - Open the arXiv-generated PDF preview.
-- **Page 1** shows version/date consistent with v1.0.225 (title-block emits the timestamp; no stray version tag).
+- **Page 1** shows version/date consistent with v1.0.227 (title-block emits the timestamp; no stray version tag).
 - **Figures render** — spot-check that figure pages show images, not blank boxes (the tarball is ~25 MB precisely because the figures are heavy; if a figure is missing, do NOT submit — reping the loop).
 - Title, authors, abstract, categories match the blocks above.
 
@@ -79,19 +79,19 @@ P4 arXiv ID: __________________
 
 ## PAPER 2 — P3 (submit SECOND)
 
-**Upload:** `submissions/P3/arxiv_p3_v3.1.146.tar.gz`
+**Upload:** `submissions/P3/arxiv_p3_v3.1.148.tar.gz`
 (Paste-ready fields also in `submissions/P3/ARXIV_METADATA.txt`.)
 
 > **BEFORE UPLOAD — one optional Houston-gated edit (Zenodo DOI):**
 > The paper body (`pipelines/p3_anomaly_engine/paper3_draft.tex`, ~line 1542) has the
 > sentence `\emph{DOI inserted at submission}` reserving a spot for a Zenodo DOI.
 > - If you want the DOI in v1: mint the Zenodo DOI for the HF dataset, replace that
->   sentence, recompile, and rebuild the tarball as `arxiv_p3_v3.1.146.tar.gz` before upload.
+>   sentence, recompile, and rebuild the tarball as `arxiv_p3_v3.1.148.tar.gz` before upload.
 > - If you'd rather ship now and add the DOI in a v2: the current bundle is submittable
 >   as-is (the sentence reads cleanly; it is not a broken placeholder). Your call.
 
 ### 1. Start submission → upload
-Upload `arxiv_p3_v3.1.146.tar.gz`. Compiles to **35 pages**.
+Upload `arxiv_p3_v3.1.148.tar.gz`. Compiles to **36 pages**.
 
 ### 2. Metadata — paste these blocks
 
@@ -121,7 +121,7 @@ We present a multi-survey autoencoder anomaly catalog produced by applying the B
 **License:** **CC BY 4.0** (recommended). Conservative alt: arXiv non-exclusive.
 
 ### 3. Preview checks
-- Page 1 shows July 9, 2026 / v3.1.146.
+- Page 1 shows July 9, 2026 / v3.1.148.
 - Figures render (12 figures, mix of PNG + PDF).
 - Title/authors/abstract/categories match.
 
