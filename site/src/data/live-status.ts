@@ -81,9 +81,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-1a",
       number: "1A",
       shortTitle: "ECH dark-energy closure + perturbation transparency",
-      version: "v1A.0.115",
+      version: "v1U.0.1",
       readiness: 62,
-      pendingWork: "Error-clean + verified, NOT reviewer-accepted. FULL8 board (Jul 8): ChatGPT REJECT · Grok MAJOR · Gemini MINOR (improved from MAJOR). v1A.0.115 closed all 4 Gemini MINORs — R4-framing clarifier (amplitude closure applies to R1–R3; R4 is the naturalness route) added unmissably to the abstract; Fierz-lemma scope sentence added to App C (what it establishes vs the operators it does not enumerate); NDA/Immirzi framed as a strict theoretical limitation; §X classical/quantum-anomaly caveat added; App B +1→+4 promotion flagged heuristic. NO NUMBER CHANGED, NO DISCLOSURE WEAKENED. ChatGPT completeness objection dispositioned structural (honestly-scoped, not editable without a full operator-basis proof).",
+      pendingWork: "UNIFIED Paper 1 (P1B merged in as appendices, Houston-approved 2026-07-08): 58pp self-contained; awaiting arXiv wave 2 (companion IDs).",
     },
     {
       slug: "paper-1b",
@@ -91,7 +91,7 @@ export const liveStatus: LiveStatus = {
       shortTitle: "MCMC + NaMaster + ALP technical companion",
       version: "v1B.0.104",
       readiness: 62,
-      pendingWork: "Error-clean + verified, NOT reviewer-accepted. FULL8 board (Jul 8): ChatGPT MAJOR (off REJECT — first time) · Grok MAJOR · Gemini MAJOR. v1B.0.104 closed every editable item — LiteBIRD 9σ (null-rejection vs β=0) now paired in-sentence with the 0.7σ model-discrimination separation; §III.A ΔNeff sharpened as a leading-parametric-order EFT estimate (O(1)/NJL prefactors dropped, moot at 10⁻⁴⁴); §IV NaMaster caveat made unmissable (foreground-free synthetic E→B only, no real-sky systematic budget); §VI ALP framed as a prior-sensitivity exercise; DOI/data-availability note added. NO NUMBER CHANGED, NO DISCLOSURE WEAKENED. Standalone-scope / merge-into-1A items remain structural (Houston-gated).",
+      pendingWork: "MERGED into Paper 1 (2026-07-08, unanimous reviewer recommendation, Houston-approved) — no standalone submission; two-paper fallback preserved.",
     },
     {
       slug: "paper-2",

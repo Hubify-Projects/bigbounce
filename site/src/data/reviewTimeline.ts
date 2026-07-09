@@ -46,6 +46,23 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "merge-p1-unified-2026-07-08",
+    dateISO: "2026-07-08",
+    kind: "skill-improvement",
+    title: "Structural merge: P1B folded into unified Paper 1 (v1U.0.1)",
+    papers: ["P1A", "P1B"],
+    summary:
+      "Houston-approved structural merge per unanimous browser-reviewer recommendation: P1B (MCMC/NaMaster/ALP companion, v1B.0.104) becomes appendices of Paper 1 (P1A v1A.0.115 body incl. the proven Fierz appendix). Every companion cross-reference is now internal — the merge structurally eliminates the two most persistent rejection classes (P1B standalone-scope; P1A companion-reliance). 58pp, 0 undefined refs, standalone-bundle-verified. Two-paper fallback preserved on disk.",
+    keyTakeaways: [
+      "P1B standalone-scope + P1A companion-reliance rejection classes eliminated structurally",
+      "Unified Paper 1 v1U.0.1: 58pp, self-contained, proven-Fierz appendix included",
+      "New submission waves: 1 = P4/P3/P2; 2 = P5 + unified Paper 1",
+    ],
+    links: [
+      { label: "Unified PDF", href: "/papers/paper1_unified_v1U.0.1.pdf" },
+    ],
+  },
+  {
     id: "DEEP-tier-ext-P4-P2-2026-07-08",
     kind: "external-browser",
     dateISO: "2026-07-08",

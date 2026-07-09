@@ -99,3 +99,8 @@ TeX PATH the script sets itself: `$HOME/Library/TinyTeX/bin/universal-darwin:/op
 2. `tools/insert_arxiv_ids.sh --p4 … --p1b … --p3 … --p2 …` (drop `--dry-run`).
 3. Run the two printed Convex bump commands; submit P5 + P1A (new bundles); commit.
 4. When P1A's ID is assigned, apply `submissions/P1B/P1B_V2_NOTE.md` for the P1B v2 replacement.
+
+
+## ⚠ WAVE RE-PLAN (2026-07-08, post-merge — supersedes the tables above)
+P1B is MERGED into the unified Paper 1 (v1U.0.1, 58pp, bundle `submissions/P1A/arxiv_p1_unified_v1U.0.1.tar.gz`) — no standalone P1B submission.
+**Wave 1:** P4 v1.0.224 → P3 v3.1.145 → P2 v1.7.104. **Wave 2 (same day, wave-1 IDs inserted):** P5 v0.1.107 (P4 ID) → Paper 1 unified v1U.0.1 (P2/P3/P4/P5 IDs). `tools/insert_arxiv_ids.sh` targets the OLD two-paper layout for P1A/P1B cross-refs — for the unified paper, insert companion IDs directly in `arxiv/paper1_unified.tex` (grep `arXiv:XXXX` / TODO-SUBMISSION) and recompile.
