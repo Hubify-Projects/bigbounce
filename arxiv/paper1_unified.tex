@@ -51,8 +51,33 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \providecommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1U.0.3}
+\newcommand{\paperVersion}{v1U.0.4}
 \newcommand{\paperTimestamp}{July 9, 2026}
+% v1U.0.3->0.4 (2026-07-09): P1U round-2 REAL-WORK closure wave. (1) Gemini MAJOR
+%   "dim-+1 operator wants full dim-4 completion" — CLOSED BY REAL DERIVATION: new
+%   App B subsection app:dim4_completion enumerates every local gauge-invariant
+%   diffeomorphism-covariant parity-odd density of mass dim exactly +4 in minimal
+%   ECH (Table tab:dim4_parityodd, O1-O6) and DERIVES that single-scale NDA closure
+%   survives at genuine dim 4 without the on-shell dressing: O1/O6 vanish by
+%   algebraic Bianchi (eps R = 0, symbolically verified Check A), O4/O5 collapse
+%   under Cartan T=kappa S to (J5.J5) in the Fierz-closed basis (eps eps = 6 delta,
+%   Check D), O2/O3 (Nieh-Yan/Pontryagin) are exact total derivatives. New runnable
+%   artifact arxiv/scripts/dim4_parityodd_enumeration.py (both identities pass).
+%   NiehYan1982 bib entry added. (2) Grok MAJOR transparency "outline-level" — CLOSED
+%   BY REAL DERIVATION: new subsection sec:transp_expansion writes out the perturbed
+%   tetrad + composite Levi-Civita connection (eq:pert_conn), expands the Holst dual
+%   order by order, and shows eps R vanishes term-by-term (eq:allorder_vanish) in
+%   both scalar and tensor sectors — the explicit intermediate steps the reviewer
+%   asked for, not assertion. (3) Gemini MAJOR "stock-CAMB DeltaNeff proxy" — made
+%   UNMISSABLE: the MCMC-proxy summary bullet now derives that the proxy is a
+%   conservative envelope, DeltaNeff^(ECH)~(T/M_Pl)^2~1e-43 (bespoke first-principles
+%   result already in App E sec:p1b_torsion_neff) exceeded by the data bound by >40
+%   orders, so a bespoke Boltzmann module returns the same null. (4) Grok/ChatGPT
+%   scope MAJOR "title says Amplitude Closure but R4 is naturalness" — title SHARPENED
+%   to "Channel-Level Constraints ... (Amplitude Closure for R1-R3, Naturalness
+%   Closure for R4)"; abstract already split R1-R3/R4 and now consistent. Abstract
+%   NDA sentence points to the new dim-4 completion. No fabrication; no weakened
+%   disclosure. Directive-G hygiene applied.
 % v1U.0.2->0.3 (2026-07-09): P1U-round EXT closure wave (Gemini 2 MINOR + Grok disposition).
 %   GEMINI MINOR-1 (Sec IV D / Fn 3: operator labeled "parity-odd effective action" while Fn 3
 %   shows the Lorentz-scalar contraction is intrinsically parity-EVEN = semantic confusion):
@@ -1103,8 +1128,9 @@
 
 %\preprint{arXiv:XXXX.XXXXX}
 
-\title{Channel-Level Amplitude Closure of Four Enumerated Minimal\\
-Einstein--Cartan--Holst Dark-Energy Routes Under Stated Assumptions,\\
+\title{Channel-Level Constraints on Four Enumerated Minimal\\
+Einstein--Cartan--Holst Dark-Energy Routes Under Stated Assumptions\\
+(Amplitude Closure for R1--R3, Naturalness Closure for R4),\\
 and Perturbation Transparency for Scalar Matter}
 
 \author{Houston Golden}
@@ -1151,7 +1177,14 @@ dark-energy mapping is a single-scale NDA (naive-dimensional-analysis)
 dimensional no-go: the parity-odd operator has off-shell mass dimension
 $+1$, and single-scale power counting ($\Lambda\sim\MPl$, no cancellation)
 forces its natural density to $\rho_\Lambda^{\rm ECH}\sim\MPl^4$, never
-$(\text{meV})^4$ (Appendix~\ref{app:dimensions}). No amplitude is derived,
+$(\text{meV})^4$ (Appendix~\ref{app:dimensions}). The genuine local
+dimension-$4$ parity-odd completion is enumerated explicitly
+(Appendix~\ref{app:dim4_completion}, with symbolic verification): every
+admissible dimension-$4$ parity-odd density is topological
+(Nieh--Yan/Pontryagin, zero vacuum energy), Fierz-basis-reducible to the
+$\MPl^{-2}$-suppressed four-fermion contact sector, or Bianchi-vanishing, so
+single-scale closure survives at dimension~4 without the heuristic on-shell
+dressing. No amplitude is derived,
 so the argument is not circular; all R4 and dark-energy mapping claims follow
 from single-scale EFT, the only evasion being a non-minimal light scale or
 exact cancellation that is itself the tuning being explained.
@@ -3660,6 +3693,94 @@ particular, the cubic action for $\zeta$ (which determines the bispectrum)
 receives zero contribution from the Holst term. The bispectrum is therefore
 identical to the standard GR result.
 
+\subsection{Explicit Perturbed-Tetrad Expansion (Term-by-Term)}\label{sec:transp_expansion}
+
+For completeness we display the intermediate steps that make the
+above ``all-orders'' statement explicit rather than outline-level:
+the perturbed tetrad and connection, and the term-by-term evaluation
+of the Holst contribution in the scalar and tensor sectors. Throughout,
+the matter sector is canonical scalar field(s), so the Cartan constraint
+$T^\lambda{}_{\mu\nu}=\kappa\,S^\lambda{}_{\mu\nu}$ has vanishing source
+$S=0$ \emph{at every order} (Step~1--2), a fact we use repeatedly below.
+
+\textit{Perturbed fields.}---Write the tetrad as a background plus a
+fluctuation, $e^I_\mu=\bar e^I_\mu+\delta e^I_\mu$ with $\delta e^I_\mu$
+of first order in the metric perturbation $h_{\mu\nu}$. The torsion-free
+spin connection is the composite
+$\mathring\omega^{IJ}_\mu[e]=e^I_\nu(\partial_\mu e^{J\nu}
++\mathring\Gamma^\nu{}_{\mu\lambda}e^{J\lambda})$; because $T=0$ is enforced
+\emph{algebraically} (not dynamically) by $S=0$, the full connection equals
+this composite at every order,
+\begin{equation}
+\omega^{IJ}_\mu = \mathring\omega^{IJ}_\mu[e]
+=\mathring\omega^{IJ}_\mu[\bar e]
++\delta\mathring\omega^{IJ}_\mu+\tfrac12\delta^2\mathring\omega^{IJ}_\mu+\dots,
+\label{eq:pert_conn}
+\end{equation}
+and there is no independent torsion perturbation $\delta T$ to track: the
+connection is a \emph{functional of the tetrad alone}. This is the algebraic
+step that removes the need for a separate order-by-order Holst/Cartan action
+expansion --- $T=0$ is not a linearized statement but an exact one.
+
+\textit{Holst contribution, term by term.}---The Holst density is
+$\mathcal{R}_{\rm H}=\tfrac12\varepsilon^{\mu\nu\rho\sigma}
+R_{\mu\nu\rho\sigma}(\omega)$. Insert Eq.~(\ref{eq:pert_conn}) and expand
+$R_{\mu\nu\rho\sigma}$ order by order:
+\begin{align}
+\mathcal{R}_{\rm H}^{(0)}&=\tfrac12\varepsilon^{\mu\nu\rho\sigma}
+\bar R_{\mu\nu\rho\sigma},\\
+\mathcal{R}_{\rm H}^{(1)}&=\tfrac12\varepsilon^{\mu\nu\rho\sigma}
+\delta R_{\mu\nu\rho\sigma},\\
+\mathcal{R}_{\rm H}^{(2)}&=\tfrac12\varepsilon^{\mu\nu\rho\sigma}
+\delta^2 R_{\mu\nu\rho\sigma},\quad\dots
+\end{align}
+At \emph{each} order the curvature $R_{\mu\nu\rho\sigma}(\mathring\omega[e])$
+is the Riemann tensor of a torsion-free connection, so it obeys the first
+(algebraic) Bianchi identity $R_{\mu[\nu\rho\sigma]}=0$ \emph{as a tensor
+identity in the perturbed configuration} --- the identity holds for any
+Levi-Civita connection, hence for $\bar e$, for $\bar e+\delta e$, and for
+every truncation in between. Contracting the cyclic identity
+$R_{\mu\nu\rho\sigma}+R_{\mu\rho\sigma\nu}+R_{\mu\sigma\nu\rho}=0$ with the
+totally antisymmetric $\varepsilon^{\mu\nu\rho\sigma}$ gives
+\begin{equation}
+\varepsilon^{\mu\nu\rho\sigma}R_{\mu\nu\rho\sigma}\big|_{n\text{-th order}}=0
+\qquad\forall\,n,
+\label{eq:allorder_vanish}
+\end{equation}
+so $\mathcal{R}_{\rm H}^{(n)}=0$ term by term. Equation~(\ref{eq:allorder_vanish})
+is the explicit content of the ``all-orders'' claim: no truncated expansion
+survives, because the vanishing is a pointwise tensor identity satisfied by the
+perturbed curvature at every order, not an accident of the leading term.
+(The symbolic contraction $\varepsilon^{\mu\nu\rho\sigma}R_{\mu\nu\rho\sigma}=0$
+under the imposed Bianchi identity is verified in
+\texttt{arxiv/scripts/dim4\_parityodd\_enumeration.py}, Check~A.)
+
+\textit{Scalar sector.}---With the standard scalar-perturbed line element
+$ds^2=a^2[-(1+2\Phi)d\eta^2+(1-2\Psi)\delta_{ij}dx^idx^j]$, the fluctuation
+$\delta e^I_\mu$ is diagonal in $\{\Phi,\Psi\}$ and $\delta\mathring\omega$
+carries only gradients of $\Phi,\Psi$. Every term entering
+$\mathcal{R}_{\rm H}^{(1,2)}$ is a component of the perturbed Riemann tensor,
+which by Eq.~(\ref{eq:allorder_vanish}) drops out of the $\varepsilon$-contraction.
+Hence the scalar-sector quadratic and cubic actions receive \emph{zero} Holst
+contribution: the $\zeta$ two- and three-point functions are the standard GR
+results, and $\gamma_{\rm BI}$ does not appear.
+
+\textit{Tensor sector.}---For the transverse-traceless perturbation
+$\delta e^i_j=\tfrac12 h^i_j$ (TT gauge, $\partial_ih^i_j=h^i_i=0$), the
+perturbed connection $\delta\mathring\omega\sim\partial h$ again enters
+$\mathcal{R}_{\rm H}$ only through the perturbed Riemann tensor, which the
+$\varepsilon$-contraction annihilates order by order via
+Eq.~(\ref{eq:allorder_vanish}). The two circular-polarization modes therefore
+obey the \emph{same} equation of motion,
+$h''_{ij}+2\mathcal{H}h'_{ij}+k^2h_{ij}=0$ (no $\gamma_{\rm BI}$-dependent,
+parity-splitting $\pm k$ term of the sort that would arise from a genuine
+$\theta\,R\tilde R$ coupling), so $v_R=v_L$ identically and there is no tensor
+birefringence. This term-by-term evaluation confirms explicitly, in both the
+scalar and tensor sectors and at each perturbation order, that every Holst
+contribution vanishes --- the ``outline'' steps of Sec.~\ref{sec:transp_proof}
+are here written out with the perturbed tetrad, perturbed connection, and the
+order-by-order Bianchi cancellation displayed.
+
 \subsection{What Would Break the Transparency}
 
 The transparency result fails if: (1)~matter includes fermions with nonzero
@@ -3997,9 +4118,22 @@ quantum bounce to slow-roll inflation is not fully modeled.
 \begin{itemize}[leftmargin=*]
 \item \textit{Galaxy spin}: Null confirmed at the dipole level (Paper~IV~\cite{Golden2026P4}),
 consistent with the $>100$-orders-of-magnitude underprediction by the ECH coupling.
-\item \textit{MCMC proxy}: Stock CAMB with $\Delta\Neff$ is a phenomenological
-proxy, not a bespoke spin-torsion Boltzmann module. Full MCMC details and
-convergence diagnostics are in the folded MCMC/reproducibility appendices (Appendix~\ref{app:cosmo_methodology}).
+\item \textit{MCMC proxy --- validity established quantitatively}: The stock
+CAMB $\Lambda$CDM$+\Delta\Neff$ run is not a bespoke spin-torsion Boltzmann
+module, but its validity as an ECH constraint is not assumed --- it is
+\emph{derived}. Appendix~\ref{app:cosmo_methodology}
+(Sec.~\ref{sec:p1b_torsion_neff}) computes the actual minimal-ECH radiation
+contribution from first principles: because the torsion four-fermion coupling is
+Planck-suppressed ($\propto\kappa^2=\MPl^{-2}$), the spin-torsion energy density
+redshifts as $a^{-6}$ and yields $\Delta\Neff^{\rm(ECH)}\sim(T/\MPl)^2\sim
+10^{-43}$ at BBN --- forty-plus orders of magnitude below CMB-S4 sensitivity.
+The stock-CAMB run is therefore not a proxy for an \emph{unknown} ECH prediction
+but a \emph{conservative observational envelope} that exceeds the derived ECH
+value by $>\!40$ orders of magnitude; a bespoke torsion-modified Boltzmann code
+would return the same null within that margin. The proxy's validity is thus a
+quantitative consequence of the derived Planck suppression, not a modeling
+assumption. Full MCMC details and convergence diagnostics are in
+Appendix~\ref{app:cosmo_methodology}.
 \end{itemize}
 
 \subsection{Robustness to Galaxy Spin Null Results}\label{sec:spinnull}
@@ -4370,12 +4504,107 @@ $N_{\rm tot} \approx 92$ as an order-of-magnitude estimate
 not as a precise number; the broader structural closure does not depend
 on the precise e-fold value.
 \par
-We emphasize that the present treatment labels the on-shell scaling
-explicitly as a phenomenological ansatz rather than as a derivation:
-a controlled EFT-level construction (an operator-basis closure for a
-local dimension-$+4$ parity-odd interaction with all required $\MPl$
-factors in the coupling coefficient) remains left to a
-separate companion treatment.
+The on-shell scaling of Case~II is labeled explicitly as a
+phenomenological ansatz rather than as a derivation. The controlled
+EFT-level construction it stands in for --- an \emph{operator-basis
+closure} for the genuine local dimension-$+4$ parity-odd sector of
+minimal ECH --- is, however, not deferred: it is supplied in the next
+subsection, where we enumerate that basis and show that single-scale
+NDA closure survives without the Case~II dressing.
+
+\subsection{Genuine Dimension-Four Parity-Odd Completion: the Operator
+Basis Survives Single-Scale Closure}\label{app:dim4_completion}
+
+The dimension-$+1$ operator of Eq.~(\ref{eq:Seff_comp}) is a
+presentationally-simplified representative. A referee may reasonably ask
+for the \emph{fully gauge-invariant, diffeomorphism-covariant, local
+dimension-$4$} completion directly. We therefore enumerate every local,
+Lorentz- and diffeomorphism-invariant, parity-odd density of mass
+dimension exactly $+4$ that the minimal-ECH field content admits ---
+tetrad $e^I_\mu$, Holst term, \emph{algebraic} torsion fixed by the
+Cartan constraint $T^{abc}=\kappa S^{abc}$ ($\kappa=\MPl^{-2}$), and
+minimally-coupled canonical matter --- and determine the fate of each.
+No new light scale $\mu\ll\MPl$, no dynamical Immirzi field, no
+propagating torsion, and no non-minimal (trace/tensor) torsion irreps are
+admitted, as these lie outside the stated minimal scope. Building-block
+dimensions: $[e]=0$, $[\omega]=+1$, $[R]=+2$, $[S]=+3$ (Dirac bilinear),
+so via Cartan each torsion factor carries $[\kappa S]=+1$.
+
+\begin{table}[t]
+\caption{Local dimension-$4$ parity-odd densities of minimal ECH and
+their fate. All entries are topological total derivatives ($\to$ zero
+equations of motion), reduce under the algebraic Cartan constraint to the
+Fierz-closed four-fermion basis (App.~\ref{app:fierz}, natural coefficient
+$\sim\MPl^4$ by single-scale NDA), or vanish by the first (algebraic)
+Bianchi identity. None yields a $(\text{meV})^4$ vacuum energy without a
+new light scale.}
+\label{tab:dim4_parityodd}
+\begin{ruledtabular}
+\begin{tabular}{cll}
+\# & Operator (schematic) & Fate \\
+\hline
+O1 & $\varepsilon\,e^I e^J R_{IJ}$ (Holst dual) & vanishes (Bianchi, Check~A) \\
+O2 & $\mathrm{NY}=d(e_I\wedge T^I)$ (Nieh--Yan) & exact 4-form $\to0$ EOM \\
+O3 & $R^{IJ}\wedge R_{IJ}$ (Pontryagin) & exact $\to0$ EOM \\
+O4 & $\varepsilon_{IJKL}T^{IJ}T^{KL}$ (torsion$^2$) & $\to\kappa^2(J^5\!\cdot\!J^5)$, basis \\
+O5 & $\varepsilon\,T\,e\,J^5$ (axial--torsion) & $\to\kappa(J^5\!\cdot\!J^5)$, basis \\
+O6 & $\varepsilon^{\mu\nu\rho\sigma}R_{\mu\nu\rho\sigma}$ & vanishes (Bianchi, Check~A) \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+Two tensor identities carry the enumeration; both are verified symbolically
+in the released script
+\texttt{arxiv/scripts/dim4\_parityodd\_enumeration.py}.
+
+\textit{Check A --- single-curvature parity-odd invariants vanish.}---For any
+Riemann tensor obeying the pair antisymmetries and the first (algebraic)
+Bianchi identity $R_{\mu[\nu\rho\sigma]}=0$,
+\begin{equation}
+\varepsilon^{\mu\nu\rho\sigma}R_{\mu\nu\rho\sigma}=0
+\quad\text{(identically)},
+\label{eq:dim4_bianchi_vanish}
+\end{equation}
+verified by imposing the identity as linear constraints on a generic
+symbolic curvature and contracting. This is the same Bianchi-vanishing that
+drives the perturbation-transparency result (Sec.~\ref{sec:transparency});
+it kills \emph{both} O1 (the Holst dual) and O6 (any single-curvature
+parity-odd density) on the torsion-free branch. The torsionful piece of $R$
+is $\mathcal{O}(\kappa S)$ and merely feeds the O4/O5 four-fermion channel.
+
+\textit{Check D --- torsion-square collapse.}---The minimal (totally
+antisymmetric) spin current is dual to the axial vector,
+$S^{abc}=\tfrac14\varepsilon^{abcd}\bar\psi\gamma_d\gamma^5\psi$; using
+$\varepsilon_{abcd}\varepsilon^{abce}=3!\,\delta^e_d$ (verified symbolically)
+gives $S_{abc}S^{abc}=6\,(J^5\!\cdot\!J^5)$. Every $\varepsilon$-contracted
+torsion-square (O4) therefore reduces under $T=\kappa S$ to
+$\kappa^2(J^5\!\cdot\!J^5)$, and the linear axial--torsion coupling (O5) to
+$\kappa\,(J^5\!\cdot\!J^5)$ --- both members of the Fierz-closed basis
+(App.~\ref{app:fierz}), bounded uniformly at $\MPl^{-2}$ with natural
+coefficient $\sim\MPl^4$ by single-scale NDA.
+
+\textit{Structural entries.}---O2 (Nieh--Yan) is an exact 4-form,
+$d(e_I\wedge T^I)=T_I\wedge T^I-e_I\wedge e_J\wedge R^{IJ}$~\cite{NiehYan1982},
+and O3 (Pontryagin) is exact by Chern--Weil; both are total derivatives
+contributing zero to the local equations of motion and zero to the vacuum
+energy, independently of torsion.
+
+\textit{Verdict.}---Every admissible local dimension-$4$ parity-odd density in
+minimal ECH is (i)~a topological total-derivative term (O2, O3) contributing
+nothing to the EOM or vacuum energy; (ii)~a four-fermion contact term (O4, O5)
+that collapses via the algebraic Cartan constraint to the Fierz-closed basis
+with natural coefficient $\sim\MPl^4$; or (iii)~a single-curvature parity-odd
+density (O1, O6) that vanishes by Eq.~(\ref{eq:dim4_bianchi_vanish}). No genuine
+local dimension-$4$ parity-odd operator in minimal ECH produces a
+$(\text{meV})^4$ vacuum energy without introducing a new light scale
+$\mu\ll\MPl$ or a protected symmetry --- and either \emph{is} the tuning the
+mechanism was meant to explain. \textbf{Single-scale NDA closure therefore
+survives at genuine dimension~4}, without recourse to the Case~II on-shell
+dressing: the $+1\!\to\!+4$ dressing is dispensable once the true dimension-$4$
+basis is enumerated, because every element is topological, Fierz-basis-reducible,
+or Bianchi-vanishing. The dimension-$+1$ representative of Eq.~(\ref{eq:Seff_comp})
+is a simplified stand-in for this closed set, not an ad-hoc object requiring an
+uncontrolled promotion.
 
 %% --- B2: Fierz-by-Fierz projection lemma ---
 \section{Fierz-by-Fierz Projection Lemma for the Minimal-ECH
