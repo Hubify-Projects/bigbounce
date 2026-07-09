@@ -41,7 +41,15 @@
 % The divide-by-h claim (~1246 h⁻¹ Mpc) is INVERTED. No pipeline recompute required.
 % If any future reviewer re-raises this, cite env_finder/01_compute_vweb.py:106-108.
 
-\newcommand{\paperVersion}{v0.1.109-2026-07-09}
+\newcommand{\paperVersion}{v0.1.110-2026-07-09}
+% v0.1.110-2026-07-09 (CA-round polish closure (ChatGPT ACCEPT + Gemini/Grok accept-track minors):
+%   (1) filament bright/dark diagnostic now states the concrete program-row split (394,181 bright /
+%       13,759 dark, bright fraction 0.966) for the covariance picture Gemini requested — the paper
+%       already disclosed that a per-class unique-TARGETID split is not carried by the artifacts, kept;
+%   (2) added a boxed "real- vs redshift-space, in one statement" callout in Conclusions per ChatGPT
+%       (the 0.5-0.6pp bound is a fixed-redshift-space envelope, not a pure real-space constraint).
+%   Companion-paper coordinated-review-gating + contingency already disclosed (S primary_path/limitations);
+%   Bonferroni-family already leads abstract+conclusions. NO science number changed; no disclosure weakened.)
 % v0.1.109-2026-07-09 (W10 accept-track minor closure: post-hoc caveat added to abstract
 %   headline sentence; definition-family-null framing for void-membership bound; RSD
 %   redshift-space clarifier in abstract and Conclusions; Paper IV co-review contingency
@@ -2125,7 +2133,11 @@ disjoint in unique \texttt{TARGETID}s. The overlap is material: the
 per-class dark rows already exceed the unique dark population
 (filament-dark $13{,}759$ $+$ cluster-dark $4{,}234$ $= 17{,}993$
 rows vs $14{,}782$ unique dark spirals in the matched catalog,
-\S\ref{sec:systematics}), and the committed artifacts do not carry a
+\S\ref{sec:systematics}). Concretely, the filament class carries
+$394{,}181$ bright-program and $13{,}759$ dark-program rows
+(bright fraction $0.966$;
+\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/17\_v0151\_closure\_recomputes.json}{[A10]}),
+and the committed artifacts do not carry a
 per-class unique-\texttt{TARGETID} program split, so the row-level
 two-sample $z$ — which assumes disjoint independent samples — should
 be read as approximate. The overlap-free version of the test exists
@@ -4225,6 +4237,12 @@ monopole-subtracted residuals $\le 1.64\sigma$ in resolved cells; look-elsewhere
 $p \ge 0.13$), under grid resolutions $128^3$--$384^3$, and under six
 classes of systematics tests.
 
+\begin{center}\fbox{\parbox{0.95\columnwidth}{\emph{Real- vs.\ redshift-space,
+in one statement:} the quoted ${\approx}0.5$--$0.6$\,pp bound is a
+\emph{fixed-redshift-space} sensitivity envelope, \emph{not} a pure
+real-space constraint. All environment classes are assigned in DESI DR1
+redshift coordinates without real-space deprojection and inherit
+redshift-space distortion effects.}}\end{center}
 This null is a \emph{fixed-redshift-space null, not a real-space
 environment null}: the T-Web classification, DESIVAST void cross-check,
 and all null tests are performed in DESI DR1 redshift coordinates without
