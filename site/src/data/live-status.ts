@@ -81,9 +81,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-1a",
       number: "1A",
       shortTitle: "ECH dark-energy closure + perturbation transparency",
-      version: "v1U.0.1",
+      version: "v1U.0.2",
       readiness: 62,
-      pendingWork: "UNIFIED Paper 1 (P1B merged in as appendices, Houston-approved 2026-07-08): 58pp self-contained; awaiting arXiv wave 2 (companion IDs).",
+      pendingWork: "UNIFIED Paper 1 (P1B merged in as appendices, Houston-approved 2026-07-08): 58pp self-contained; v1U.0.2 closes 2 INT merge-seams (stale companion-framing of internal appendices; dangling sample-count table ref); awaiting arXiv wave 2 (companion IDs).",
     },
     {
       slug: "paper-1b",

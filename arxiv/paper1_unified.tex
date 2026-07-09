@@ -51,8 +51,29 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \providecommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1U.0.1}
-\newcommand{\paperTimestamp}{July 8, 2026}
+\newcommand{\paperVersion}{v1U.0.2}
+\newcommand{\paperTimestamp}{July 9, 2026}
+% v1U.0.1->0.2 (2026-07-09): P1U INT-round merge-seam closure (2 MAJOR). SEAM 1: the
+%   "Companion paper." paragraph (L~1429) + tab:companion_inputs still framed the now-INTERNAL
+%   folded MCMC/NaMaster/ALP appendices (E/F) as external "companion / not-yet-postable / audit
+%   without the companion papers in hand" and the table's provenance column self-referenced an
+%   in-paper appendix as a "Companion" — a stale-seam self-contradiction after the P1B fold.
+%   REWRITE: paragraph->"Observational appendices"; table->honest "Result-provenance map"
+%   (quantity -> derived-in in-paper Appendix E/F -> underlying committed artifact); companion-
+%   caveat language for the folded quantities removed (they ARE in-paper now); only the truly-
+%   external sibling (SPHEREx f_NL, Paper II) keeps its coordinated-submission placeholder. Also
+%   de-seamed the earlier intro passage (L~1289) + summary-table footnote e (L~1360) that reused
+%   the "companion works = folded appendices" framing. SEAM 2: body cited "309,189 accepted
+%   samples ... see Appendix Table I" — a DANGLING ref (no Table~I in App E) with an apparent
+%   mismatch vs App E's 216,432/123,129. VERIFIED from committed chain artifacts
+%   (frozen/full_tension .../parameter_summary_CORRECTED.json total_accepted_samples_raw=176240;
+%   planck_bao_sn .../parameter_summary_CORRECTED.json total_accepted_samples_raw=132949):
+%   176,240+132,949=309,189 is the RAW-ACCEPTED total and is CORRECT; 216,432 is the POST-BURNIN
+%   total (30% cut; full_tension convergence_summary.json total_samples_post_burn=123129). The
+%   body figure was right but MIS-LABELED (raw vs post-burnin conflation) and pointed at a
+%   nonexistent "Table~I". FIX: labeled 309,189 as raw accepted (+ noted 216,432 post-burnin) and
+%   repointed the ref to the real Table~\ref{tab:verification} (which carries the per-dataset
+%   176,240/132,949 breakdown). No number fabricated; no science changed. Version+date bumped.
 % v1A.0.114->115 (2026-07-08): FULL8 closure edits. (1) Abstract + §IV opening: sharpened
 %   R4 framing to make unmissably clear that "amplitude closure" applies to R1–R3 only;
 %   R4 closes by naturalness/explanatory-deficit (CC relocation), NOT amplitude suppression.
@@ -1286,21 +1307,23 @@ of this paper---the perturbation-transparency theorem
 (Sec.~\ref{sec:transparency}), the four-route channel-level closures
 (Sec.~\ref{sec:fourroute}), and the 14-entry constraint catalog
 (Sec.~\ref{sec:barriers})---is established analytically within this manuscript
-and does \emph{not} depend on any companion result. The companion works
-(the folded MCMC/reproducibility appendices, II, III, IV; all posted concurrently in the coordinated submission,
-which fixes only the citable arXiv identifiers) are cited only to anchor
+and does \emph{not} depend on any imported observational result. The folded
+observational appendices of this paper (the MCMC/reproducibility appendices,
+Appendices~\ref{app:cosmo_methodology}--\ref{app:namaster}) and the truly-external
+coordinated-submission siblings (Papers~II, III, IV, posted concurrently, which
+fixes only the citable arXiv identifiers) are cited only to anchor
 \emph{illustrative} numerical values---MCMC posteriors, Fisher-forecast
 significances, and pipeline validations summarized in
 Table~\ref{tab:companion_inputs}---that contextualize the broader observational
-programme; \emph{none of these companion-imported numbers is load-bearing for
-any closure, no-go, or theorem stated here.} A referee unable to access the
-companion papers can therefore still audit every primary claim directly from
+programme; \emph{none of these imported numbers is load-bearing for
+any closure, no-go, or theorem stated here.} A referee can therefore
+audit every primary claim directly from
 this paper's own equations and assumptions. Moreover, the underlying
 computational artifacts behind those illustrative numbers---the frozen MCMC
 chains, the NaMaster pseudo-$C_\ell$ validation suite, the spectator-ALP fit,
 and the galaxy/anomaly catalogs---are archived with this submission in the
 public reproducibility tree~\cite{BigBounceRepro}, so they can be inspected and
-re-derived \emph{now}, independently of the companions' posting schedule.
+re-derived \emph{now}, independently of the external siblings' posting schedule.
 
 Our approach builds on three theoretical pillars:
 
@@ -1330,8 +1353,9 @@ ECH dark-energy mechanism: as Sec.~\ref{sec:structural_tension} proves, the
 $N_{\rm tot}\!\approx\!92$ $e$-folds required to source $\rho_\Lambda$ would erase
 this signature at SPHEREx scales, so the dark-energy route and the observable
 matter-bounce program are \emph{mutually exclusive}. Quantitative cosmological
-values cited below are companion-MCMC inputs (Table~\ref{tab:companion_inputs}),
-not results of this paper.}
+values cited below are imported observational inputs derived in this paper's
+appendices (Table~\ref{tab:companion_inputs}), not results of the theoretical
+no-go argument.}
 \begin{ruledtabular}
 \begin{tabular}{lll}
 \textbf{Question} & \textbf{Result} & \textbf{Status} \\
@@ -1357,8 +1381,9 @@ $^d$The dark-energy route requires $N_{\rm tot}\!\approx\!92$ post-bounce $e$-fo
 which pushes the matter-bounce signature deep into the inflationary subhorizon
 regime and \emph{definitively erases} it at SPHEREx-accessible scales
 (Sec.~\ref{sec:structural_tension}). The two channels cannot both be realized.
-$^e$Companion-MCMC input ($H_0=67.68\pm 1.06$, $\Delta\Neff=-0.020\pm 0.169$;
-Appendix~\ref{app:cosmo_methodology}, coordinated submission), consolidated in
+$^e$Imported observational input derived in this paper's
+Appendix~\ref{app:cosmo_methodology} ($H_0=67.68\pm 1.06$,
+$\Delta\Neff=-0.020\pm 0.169$), consolidated in
 Table~\ref{tab:companion_inputs}; not load-bearing for any closure or theorem here.}
 \end{table*}
 
@@ -1426,97 +1451,99 @@ theoretical implications. Section~\ref{sec:surviving} summarizes surviving
 ECH-independent class tests. Section~\ref{sec:limitations} addresses limitations.
 Section~\ref{sec:conclusions} concludes.
 
-\textit{Companion paper.}---$\Lambda$CDM$+\Delta\Neff$ MCMC verification
-(Cobaya~v3.6.1, $\mathbf{309{,}189}$ frozen accepted samples across two
+\textit{Observational appendices.}---$\Lambda$CDM$+\Delta\Neff$ MCMC verification
+(Cobaya~v3.6.1, $\mathbf{309{,}189}$ raw accepted samples across two
 converged dataset combinations: 176{,}240 full-tension + 132{,}949
-Planck+BAO+SN; see Appendix~\ref{app:cosmo_methodology} Table~I for the
-per-dataset breakdown), NaMaster pseudo-$C_\ell$ pipeline
+Planck+BAO+SN raw accepted samples, i.e.\ $216{,}432$ post-burn-in at the
+uniform $30\%$ cut; see Appendix~\ref{app:cosmo_methodology},
+Table~\ref{tab:verification}, for the per-dataset breakdown),
+NaMaster pseudo-$C_\ell$ pipeline
 validation, spectator-ALP MCMC parameter fitting, and a cross-paper
-reproducibility manifest are reported in Appendix~\ref{app:cosmo_methodology}.
+reproducibility manifest are reported in the appendices of this paper
+(Appendix~\ref{app:cosmo_methodology}).
 Cosmological parameter values referenced in this paper
-($H_0 = 67.68\pm 1.06$, $\Delta\Neff\approx 0$, etc.) are drawn from the
-companion internal MCMC analysis (Appendix~\ref{app:cosmo_methodology},
-\emph{companion; coordinated submission}); they are documented internally rather than as
-externally citable arXiv-posted numbers, and should be read as
-internal-analysis inputs to the present structural argument rather than
-as independently peer-reviewable values until the folded MCMC/reproducibility appendices are publicly
-posted. We emphasize: \emph{none of these companion-imported numerical
+($H_0 = 67.68\pm 1.06$, $\Delta\Neff\approx 0$, etc.) are derived in
+Appendix~\ref{app:cosmo_methodology} of this manuscript from the frozen
+Cobaya chains archived with this submission
+(\texttt{reproducibility/cosmology/chains}); they are in-paper,
+peer-reviewable numbers whose underlying computational artifacts are
+committed and refereeable now. We emphasize: \emph{none of these numerical
 values is used in the channel-level closure proof of
 Sec.~\ref{sec:fourroute} or the 13 mechanism-class structural
 barriers of Sec.~\ref{sec:barriers}}; the structural closure rests on
 the dimensional / operator-counting / perturbation-transparency
-arguments alone, which are evaluable without the companion's MCMC
-posteriors. The companion values are quoted only to anchor the
+arguments alone, which are evaluable without the MCMC
+posteriors. The parameter values are quoted only to anchor the
 discussion of $\Lambda$CDM-consistency in Sec.~\ref{sec:obs} and the
 parameter-summary table in Appendix~\ref{app:params}.
 All subsequent citations to Appendix~\ref{app:cosmo_methodology} in this paper
-refer to this companion work; details are not duplicated here.
-Table~\ref{tab:companion_inputs} consolidates every companion-imported quantity
-referenced anywhere in this paper---its value, the companion it is drawn from,
-and a one-line statement of how it was obtained---so that a referee can audit
-the present paper's logic without the companion papers in hand; these
-inputs are summarized here for self-contained readability, while their full
-derivations reside in the companion papers posted concurrently in the
-coordinated submission. The distinction is sharp: the no-go logic itself (the
-perturbation-transparency theorem, the four-route channel-level closures, and
-the mechanism-class constraint catalog) is self-contained and uses \emph{none}
-of these numbers; the imported values enter only the \emph{illustrative}
-observational comparisons (the $\Lambda$CDM-consistency check of
-Sec.~\ref{sec:obs} and the surviving-signature context of
-Sec.~\ref{sec:surviving}).
+refer to this in-paper observational appendix; details are not duplicated here.
+Table~\ref{tab:companion_inputs} consolidates every imported observational
+quantity referenced anywhere in this paper---its value, the appendix (or
+truly-external sibling paper) it is derived in, and the committed artifact
+it rests on---so that a referee can audit the present paper's logic against
+the archived chains and catalogs directly. The distinction is sharp: the
+no-go logic itself (the perturbation-transparency theorem, the four-route
+channel-level closures, and the mechanism-class constraint catalog) is
+self-contained and uses \emph{none} of these numbers; the imported values
+enter only the \emph{illustrative} observational comparisons (the
+$\Lambda$CDM-consistency check of Sec.~\ref{sec:obs} and the
+surviving-signature context of Sec.~\ref{sec:surviving}).
 
 \begin{table*}[tb]
-\caption{\label{tab:companion_inputs} Companion-imported inputs referenced in
-this paper, summarized here for self-contained readability. For each quantity we
-give the value, the companion it is drawn from, and a one-line statement of how
-it was obtained. These values provide \emph{illustrative} observational context
-only: \emph{none} is load-bearing for the perturbation-transparency theorem
-(Sec.~\ref{sec:transparency}), the four-route channel-level closures
-(Sec.~\ref{sec:fourroute}), or the mechanism-class constraint catalog
-(Sec.~\ref{sec:barriers}), all of which are established analytically within this
-manuscript. Full derivations are in the named companions, posted concurrently in
-the coordinated submission; numerical values are reproduced from
-Table~\ref{tab:params}. The underlying computational artifacts are archived with
-this submission and are refereeable now, independently of the companions'
-posting schedule~\cite{BigBounceRepro}: the
+\caption{\label{tab:companion_inputs} Result-provenance map for the imported
+observational inputs referenced in this paper. For each quantity we give the
+value, the in-paper appendix (or truly-external sibling paper) it is derived in,
+and the committed computational artifact it rests on. These values provide
+\emph{illustrative} observational context only: \emph{none} is load-bearing for
+the perturbation-transparency theorem (Sec.~\ref{sec:transparency}), the
+four-route channel-level closures (Sec.~\ref{sec:fourroute}), or the
+mechanism-class constraint catalog (Sec.~\ref{sec:barriers}), all of which are
+established analytically within this manuscript. Numerical values are reproduced
+from Table~\ref{tab:params}. All underlying computational artifacts are archived
+with this submission and are refereeable now~\cite{BigBounceRepro}: the
 $H_0$/$\Delta\Neff$/$\sigma_8$/$\Omega_m$ posteriors and the spectator-ALP fit
-from the frozen Cobaya chains (\texttt{reproducibility/cosmology/chains}), the
-NaMaster $EB$ validation (\texttt{reproducibility/p1\_namaster\_500mc}), and the
-galaxy-chirality and multi-survey anomaly catalogs
-(\texttt{pipelines/p2\_chirality}, \texttt{pipelines/p3\_anomaly\_engine}).
-External (non-companion) measurements are cited inline at point of use, not
-here.}
+are derived in this paper's Appendix~\ref{app:cosmo_methodology} from the frozen
+Cobaya chains (\texttt{reproducibility/cosmology/chains}); the NaMaster $EB$
+validation is derived in Appendix~\ref{app:namaster}
+(\texttt{reproducibility/p1\_namaster\_500mc}). The one genuinely external input
+is the SPHEREx $\fnl$ forecast, derived in the coordinated-submission sibling
+Paper~II~\cite{Golden2026P2}; the galaxy-chirality and multi-survey anomaly
+catalogs (\texttt{pipelines/p2\_chirality}, \texttt{pipelines/p3\_anomaly\_engine})
+underpin sibling Papers~IV/V and are cited inline where used. Other external
+(non-sibling) measurements are cited inline at point of use, not here.}
 \begin{ruledtabular}
 \begin{tabular}{llll}
-Quantity & Value & Companion & How obtained \\
+Quantity & Value & Derived in & Underlying committed artifact \\
 \colrule
-$H_0$ & $67.68\pm 1.06$ km/s/Mpc & Appendix~\ref{app:cosmo_methodology} &
-\parbox[t]{0.36\textwidth}{\raggedright Joint $\Lambda$CDM$+\Delta\Neff$ MCMC
-posterior; Cobaya v3.6.1 $+$ CAMB on Planck$+$BAO$+$SN (309{,}189 frozen accepted
-samples).\strut} \\[3pt]
-$\Delta\Neff$ & $-0.020\pm 0.169$ (full-tension) & Appendix~\ref{app:cosmo_methodology} &
-\parbox[t]{0.36\textwidth}{\raggedright Same joint MCMC chain; consistent with
-$0$.\strut} \\[3pt]
-$\sigma_8$ & $0.803\pm 0.008$ & Appendix~\ref{app:cosmo_methodology} &
-\parbox[t]{0.36\textwidth}{\raggedright Derived parameter of the same MCMC
-chain.\strut} \\[3pt]
-$\Omega_m$ & $0.308\pm 0.005$ & Appendix~\ref{app:cosmo_methodology} &
-\parbox[t]{0.36\textwidth}{\raggedright Derived parameter of the same MCMC
-chain.\strut} \\[3pt]
-SPHEREx $\fnl$ forecast & \parbox[t]{0.16\textwidth}{\raggedright $1.3$--$2.75\sigma$
-realistic ($2.6$--$2.75\sigma$ optimistic)\strut} & Paper~II~\cite{Golden2026P2} &
-\parbox[t]{0.36\textwidth}{\raggedright Multi-tracer SPHEREx Fisher forecast
+$H_0$ & $67.68\pm 1.06$ km/s/Mpc & Appendix~\ref{app:cosmo_methodology} (this paper) &
+\parbox[t]{0.34\textwidth}{\raggedright Joint $\Lambda$CDM$+\Delta\Neff$ MCMC
+posterior; Cobaya v3.6.1 $+$ CAMB, full-tension chain (176{,}240 raw accepted
+samples); \texttt{reproducibility/cosmology/chains}.\strut} \\[3pt]
+$\Delta\Neff$ & $-0.020\pm 0.169$ (full-tension) & Appendix~\ref{app:cosmo_methodology} (this paper) &
+\parbox[t]{0.34\textwidth}{\raggedright Same joint MCMC chain; consistent with
+$0$; \texttt{parameter\_summary\_CORRECTED.json}.\strut} \\[3pt]
+$\sigma_8$ & $0.803\pm 0.008$ & Appendix~\ref{app:cosmo_methodology} (this paper) &
+\parbox[t]{0.34\textwidth}{\raggedright Derived parameter of the same MCMC
+chain; \texttt{reproducibility/cosmology/chains}.\strut} \\[3pt]
+$\Omega_m$ & $0.308\pm 0.005$ & Appendix~\ref{app:cosmo_methodology} (this paper) &
+\parbox[t]{0.34\textwidth}{\raggedright Derived parameter of the same MCMC
+chain; \texttt{reproducibility/cosmology/chains}.\strut} \\[3pt]
+SPHEREx $\fnl$ forecast & \parbox[t]{0.15\textwidth}{\raggedright $1.3$--$2.75\sigma$
+realistic ($2.6$--$2.75\sigma$ optimistic)\strut} &
+\parbox[t]{0.20\textwidth}{\raggedright Paper~II~\cite{Golden2026P2} (external
+sibling; coordinated submission)\strut} &
+\parbox[t]{0.34\textwidth}{\raggedright Multi-tracer SPHEREx Fisher forecast
 recasting Heinrich$+$2024 $\sigma(\fnl)\!\approx\!0.7$ (ideal) /
 $\approx\!1.0$ (degraded-with-systematics) for the $\fnl=-35/16$ template.\strut} \\[3pt]
 Spectator-ALP $\beta$ benchmark & $\approx 0.27^\circ$ &
-Appendix~\ref{app:cosmo_methodology} &
-\parbox[t]{0.36\textwidth}{\raggedright Spectator-ALP MCMC fit (9{,}720 accepted
+Appendix~\ref{app:cosmo_methodology} (this paper) &
+\parbox[t]{0.34\textwidth}{\raggedright Spectator-ALP MCMC fit (9{,}720 accepted
 samples, $\hat{R}-1<0.01$) at $f_a\sim\MPl$, $m\sim H_0$; sits inside the external
 WMAP$+$Planck band $0.342^\circ\pm 0.094^\circ$~\cite{Eskilt2022}.\strut} \\[3pt]
-NaMaster $EB$ pipeline & validated & Appendix~\ref{app:cosmo_methodology} &
-\parbox[t]{0.36\textwidth}{\raggedright Pseudo-$C_\ell$ ($EB$) estimator
-validation against simulations; methodology and reproducibility manifest
-documented in the companion.\strut} \\
+NaMaster $EB$ pipeline & validated & Appendix~\ref{app:namaster} (this paper) &
+\parbox[t]{0.34\textwidth}{\raggedright Pseudo-$C_\ell$ ($EB$) estimator
+validation against simulations; \texttt{reproducibility/p1\_namaster\_500mc}.\strut} \\
 \end{tabular}
 \end{ruledtabular}
 \end{table*}

@@ -46,6 +46,26 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "P1U-INT-merge-seam-closure-2026-07-09",
+    dateISO: "2026-07-09",
+    kind: "internal-cc",
+    title:
+      "P1U INT round (v1U.0.1→v1U.0.2): 2 REAL merge-seams found + closed — stale companion-framing of the now-internal appendices, and a dangling sample-count table reference",
+    papers: ["P1A", "P1B"],
+    summary:
+      "First INT round on the MERGED unified Paper 1 (Claude full-source + OpenAI gpt-5.5 native-PDF + Grok grok-4.3 native-PDF; verdict matrix MAJOR/REJECT/MAJOR). The science sits at the same disclosed LLM-referee floor as pre-merge (no new physics error), but the fold introduced two mechanical merge-hygiene defects, both convergently flagged across legs. SEAM 1: the \"Companion paper.\" paragraph + tab:companion_inputs still framed the now-INTERNAL folded MCMC/NaMaster/ALP appendices (E/F) as external \"companion / not-yet-postable / audit without the companion papers in hand\", and the table's provenance column self-referenced an in-paper appendix as a \"Companion\" — a self-contradiction after the merge. Rewrote the paragraph to \"Observational appendices\" and the table into an honest Result-provenance map (quantity → derived-in in-paper Appendix E/F → underlying committed artifact); the only surviving external row is the SPHEREx f_NL forecast (Paper II, coordinated submission), which keeps its placeholder. SEAM 2: body cited \"309,189 accepted samples … see Appendix Table I\" — a dangling ref (there is no Table I in Appendix E) with an apparent mismatch vs the appendix's 216,432/123,129. VERIFIED against the committed frozen chain artifacts (full_tension parameter_summary_CORRECTED.json total_accepted_samples_raw=176240; planck_bao_sn=132949): 176,240+132,949=309,189 is the RAW-ACCEPTED total and is CORRECT; 216,432 is the POST-BURNIN total at the 30% cut. The body figure was right but mis-labeled (raw vs post-burnin) and pointed at a nonexistent table; labeled it raw-accepted (noting the 216,432 post-burnin) and repointed the ref to the real Table VII (tab:verification), which carries the per-dataset breakdown. Recompiled 0 undefined refs, /latex-audit clean (worst overfull 14.6pt), 58pp, md5 884b3de6, mirrored byte-identical to all served paths. No count fabricated; no science changed.",
+    keyTakeaways: [
+      "2 merge-seam MAJORs found + closed: stale companion-framing of internal appendices, and a dangling \"Table I\" sample-count ref",
+      "Sample-count truth VERIFIED from committed chains: 309,189 = 176,240 + 132,949 RAW accepted (correct); 216,432 = post-burnin at 30% — body was mis-labeled, not wrong; ref repointed to real Table VII",
+      "tab:companion_inputs rewritten as an honest Result-provenance map (in-paper appendix + committed artifact per quantity); only SPHEREx f_NL stays external (Paper II)",
+      "0 undefined refs · /latex-audit clean · 58pp · md5 884b3de6 · all served PDFs byte-identical",
+    ],
+    links: [
+      { label: "INT round notes", href: `${PR}/INT_v3/ROUND_2026-07-09/P1U_INT.md` },
+      { label: "Unified PDF", href: "/papers/paper1_unified_v1U.0.2.pdf" },
+    ],
+  },
+  {
     id: "verdict-board-current-column-2026-07-08",
     dateISO: "2026-07-08",
     kind: "skill-improvement",
@@ -3783,6 +3803,20 @@ export const externalVerdictRounds: ExternalRoundVerdicts[] = [
       P5: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
     },
     note: "DEEP-TIER sweep of P4 (v1.0.223) + P2 (v1.7.102) with each reviewer's strongest mode — Grok Heavy, Gemini Deep Research (Pro), ChatGPT Deep Research. Verdict matrix (ChatGPT/Grok/Gemini): P4 MAJOR/MINOR/MAJOR · P2 REJECT/MAJOR/MAJOR (P1A/P1B/P3/P5 not swept, NO_VERDICT carry-forward). ZERO ACCEPT anywhere and — after per-finding source-cited truth-audit — ZERO genuinely-new real findings on either paper. P4: Gemini's deep report explicitly affirms the null is sound ('conclusively dismantles the persistent literature claims', edge-on contamination 'neutralized' by TTA equivariance, GZ1 human cross-check 'vital', generative nulls 'a masterclass'); its 3 majors are a training-provenance PDF-truncation doc gap, an NN-score-calibration rigor-add, and the already-disclosed ~47% ℓ=1 residual — the SAME residual Grok-Heavy (MINOR) and ChatGPT flagged. P2: the load-bearing objection on which all three deep reviewers CONVERGE is 'the Cai-Li −35/16 resolution uses vertex re-summation / operator-algebra, not a full numerical in-in contour integration across the bounce' — but none challenge −35/16 as wrong, and the paper itself discloses it does not claim a full numerical in-in re-derivation (02_full_draft.tex L1370) and flags it as the #1 follow-up. ChatGPT's P2 REJECT MAJOR#1 literally re-quotes the paper's OWN honest '+2.58 wrong-sign, not a naive additive shift' disclosure (L1334) as if it were a hidden inconsistency; the resolution is certified three ways (ε-order-grouped intermediates sum exactly, vertex-sum squeezed limit, Li Eq. 5.1 at c_s=1). Every other item on both papers (additive-quadrature budget, cubic-transmission assumption d, Bayes prior volume, FoG, PBH/PTA context) is a source-cited re-flag of a limitation each paper discloses itself. Deep-tier did NOT lift either paper off the LLM-referee floor and surfaced no new editable error — confirming pattern-066 (universal referee variance) and directive-H (harsh-referee structural floor): the barrier is venue/human-referee-structural, not content-correctness. 6/6 legs harvested with raw verbatim text + screenshots (incl. the 2 pre-saved Grok-Heavy legs), 0 failed legs, 0 fabricated. Raws in EXT_real/DEEP_2026-07-08/.",
+  },
+  {
+    roundId: "P1U-2026-07-08",
+    dateISO: "2026-07-08",
+    windowPT: "Jul 8 · UNIFIED Paper 1 (P1A+P1B merged) EXT sweep · headed browser, raw verbatim text + screenshot READ before every recorded verdict",
+    verdicts: {
+      P1A: ["REJECT", "MAJOR", "MINOR"],
+      P1B: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P2: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P3: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P4: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P5: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+    },
+    note: "First EXT sweep of the UNIFIED Paper 1 (v1U.0.1, 58pp — the former P1A + P1B merged into one manuscript; the P1A row here IS the unified paper, and P1B is retired-into-P1U so it carries NO_VERDICT). Verdict matrix (ChatGPT/Grok/Gemini): REJECT/MAJOR/MINOR. Gemini (native-PDF upload, houston@bamf.com Thinking) returned MINOR REVISIONS — 2 MINOR, 0 MAJOR — and states the central four-route dark-energy no-go 'is robustly supported by the manuscript's self-contained analytical bounds and perturbation-transparency theorem'; its two minors are a parity-odd-vs-parity-even semantic tightening (Sec IV D / Footnote 3) and companion-paper dependency for illustrative non-load-bearing metrics. Grok Expert returned MAJOR REVISIONS with 4 majors, all scope/completeness items on the channel-level amplitude closure (four-route exhaustiveness, perturbation-transparency verification sketched, dark-energy NDA mapping relocating rather than solving the CC problem, Route 4 closed by naturalness not amplitude). ChatGPT (Extended Thinking Pro, native-PDF) returned REJECT on the same structural set — dark-energy mapping is a phenomenological ansatz not a derived ECH mechanism, R2/R3 rest on ansatz-level EFT budgets, R4 is a naturalness objection not an exclusion, the 13-barrier catalog mixes rigorous identities with heuristics, and appendices E–H are overextended/companion-dependent. All three legs harvested with raw verbatim text + screenshots, 0 fabricated. The REJECT/MAJOR/MINOR shape mirrors the P1A/P1B LLM-referee floor (pattern-066 / directive-H): Gemini + Grok credit the central result, ChatGPT holds a structural-floor REJECT on the same disclosed-scope items — barrier is venue/human-referee-structural. Raws in EXT_real/P1U_2026-07-08/.",
   },
 ];
 
