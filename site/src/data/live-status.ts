@@ -81,9 +81,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-1a",
       number: "1A",
       shortTitle: "ECH dark-energy closure + perturbation transparency",
-      version: "v1U.0.3",
+      version: "v1U.0.4",
       readiness: 62,
-      pendingWork: "UNIFIED Paper 1 (P1B merged in as appendices, Houston-approved 2026-07-08): 58pp self-contained; v1U.0.3 closes the P1U-round EXT wave — Gemini's 2 MINORs closed (parity-odd terminology-clarity edit; companion non-load-bearing disclosure made unmissable), Grok's MAJORs dispositioned (self-disclosed scope / falsified-vs-source); awaiting arXiv wave 2 (companion IDs).",
+      pendingWork: "UNIFIED Paper 1 (P1B merged in as appendices): 60pp self-contained; v1U.0.4 is a REAL-WORK closure wave against the v1U.0.3 EXT majors — (1) DERIVED the genuine local dimension-4 parity-odd operator completion Gemini asked for (new App B subsection, Table VII, O1–O6; symbolic-verified script dim4_parityodd_enumeration.py: single-scale NDA closure survives at dim 4 without the on-shell dressing — O1/O6 vanish by algebraic Bianchi, O4/O5 collapse to the Fierz-closed four-fermion basis, O2/O3 are exact total derivatives); (2) WROTE OUT the perturbation-transparency proof term-by-term (perturbed tetrad + composite Levi-Civita connection, order-by-order Holst-dual Bianchi vanishing in scalar+tensor sectors) closing Grok's 'outline-level' major; (3) made the first-principles ΔNeff^(ECH)~1e-43 result unmissable so the stock-CAMB proxy reads as a conservative >40-orders envelope, not an unknown-standing proxy; (4) sharpened the title to 'Channel-Level Constraints … (Amplitude Closure for R1–R3, Naturalness Closure for R4)'. No fabrication, no weakened disclosure. Awaiting next EXT re-test.",
     },
     {
       slug: "paper-1b",

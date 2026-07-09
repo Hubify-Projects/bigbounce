@@ -46,6 +46,51 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "P1U4-real-work-closure-2026-07-09",
+    dateISO: "2026-07-09",
+    kind: "ext-closure",
+    title:
+      "P1U REAL-WORK closure wave (v1U.0.3→v1U.0.4): DERIVED the genuine dim-4 parity-odd operator completion Gemini asked for (single-scale closure survives at dim 4, symbolic-verified), WROTE OUT the perturbation-transparency proof term-by-term (Grok 'outline-level' major), made the first-principles ΔNeff^(ECH)~1e-43 proxy-validity argument unmissable, sharpened the title to Channel-Level Constraints (amplitude R1–R3 / naturalness R4)",
+    papers: ["P1A", "P1B"],
+    summary:
+      "Owner-agent REAL-WORK closure of the v1U.0.3 EXT majors on the unified Paper 1 — not dispositions, actual derivations. (1) GEMINI MAJOR 'off-shell dim-+1 operator wants a full gauge-invariant diffeomorphism-covariant local dim-4 completion for PRD' → CLOSED BY DERIVATION: new Appendix B subsection (app:dim4_completion, Table VII) enumerates every local parity-odd density of mass dimension exactly +4 admissible in minimal ECH (tetrad, Holst, algebraic Cartan torsion T=κS, minimal matter) and DERIVES that single-scale NDA closure survives at genuine dimension 4 without the on-shell curvature dressing: O1/O6 (single-curvature parity-odd, incl. the Holst dual) vanish by the first (algebraic) Bianchi identity ε^{μνρσ}R_{μνρσ}=0; O4/O5 (torsion² / axial-torsion) collapse under the algebraic Cartan constraint to the (J5·J5) contact operator already in the Fierz-closed basis (App B Fierz lemma), natural coefficient ~M_Pl⁴; O2/O3 (Nieh–Yan, Pontryagin) are exact total derivatives with zero vacuum energy. Both load-bearing tensor identities (Check A: εR=0 under Bianchi; Check D: εε=6δ ⇒ S·S=6 J5·J5) are verified in a new committed runnable script arxiv/scripts/dim4_parityodd_enumeration.py (both pass). NiehYan1982 bib entry added. (2) GROK MAJOR 'perturbation-transparency proof asserted at outline level — no perturbed tetrad/connection expansion, no term-by-term verification' → CLOSED BY DERIVATION: new subsection sec:transp_expansion writes out the perturbed tetrad e=ē+δe, the composite Levi-Civita connection as a functional of the tetrad alone (eq:pert_conn — no independent δT because T=0 is algebraic not dynamical), expands the Holst dual order by order, and shows ε^{μνρσ}R_{μνρσ}=0 term-by-term at every order (eq:allorder_vanish) in BOTH the scalar (Φ,Ψ) and tensor (TT h_ij) sectors — the explicit intermediate steps the referee asked for, not assertion. (3) GEMINI MAJOR 'MCMC uses stock-CAMB ΔNeff radiation proxy not a bespoke spin-torsion Boltzmann module' → made UNMISSABLE: the MCMC-proxy summary bullet now derives, at the point the reviewer reads it, that the proxy's validity is a quantitative consequence — the first-principles bespoke ECH-sector result already in App E (ΔNeff^(ECH)~(T/M_Pl)²~1e-43 at BBN, Planck-suppressed) is exceeded by the data bound by >40 orders, so a bespoke torsion-modified Boltzmann code returns the SAME null within that margin; the run is a conservative envelope, not a proxy for an unknown. (4) GROK/CHATGPT scope MAJOR 'title says Amplitude Closure but R4 is closed by naturalness not amplitude' → title SHARPENED to 'Channel-Level Constraints on Four Enumerated Minimal Einstein–Cartan–Holst Dark-Energy Routes … (Amplitude Closure for R1–R3, Naturalness Closure for R4)'; the abstract already split R1–R3/R4 and is now consistent with the title, and its NDA sentence points to the new dim-4 completion. No fabrication, no weakened disclosure. Directive-G hygiene: recompile 0 undefined refs, /latex-audit clean (worst overfull 14.6pt, pre-existing), 60pp, md5 5bb71901 mirrored byte-identical to all served paths, papers.ts/live-status.ts bumped, Convex paper-1a bumped.",
+    keyTakeaways: [
+      "Gemini dim-4-completion MAJOR closed BY REAL DERIVATION: new App B enumerates every local dim-4 parity-odd operator in minimal ECH (Table VII O1–O6) and derives single-scale NDA closure SURVIVES at genuine dim 4 — no on-shell dressing needed (O1/O6 vanish by Bianchi, O4/O5 → Fierz basis, O2/O3 total derivatives)",
+      "New committed symbolic-verification script dim4_parityodd_enumeration.py: Check A (εR=0 under algebraic Bianchi) + Check D (εε=6δ ⇒ S·S=6 J5·J5) both PASS",
+      "Grok 'outline-level' transparency MAJOR closed BY REAL DERIVATION: new sec:transp_expansion writes the perturbed tetrad + composite connection and shows the Holst dual vanishes term-by-term at every order in scalar+tensor sectors",
+      "Gemini ΔNeff-proxy MAJOR made unmissable: derived ΔNeff^(ECH)~1e-43 (Planck-suppressed, first-principles) proves the stock-CAMB run is a conservative >40-order envelope — a bespoke Boltzmann module returns the same null",
+      "Title sharpened to 'Channel-Level Constraints … (Amplitude Closure for R1–R3, Naturalness Closure for R4)' — resolves the Grok/ChatGPT title-vs-content scope objection; abstract now consistent",
+      "Directive-G: v1U.0.4 · 60pp · 0 undef-refs · /latex-audit clean · md5 5bb71901 mirrored byte-identical to all served paths · no fabrication · no weakened disclosure",
+    ],
+    links: [
+      { label: "v1U.0.3 EXT raws (the majors attacked)", href: `${PR}/EXT_real/P1U3_2026-07-09` },
+      { label: "Gemini raw (dim-4 + ΔNeff MAJORs)", href: `${PR}/EXT_real/P1U3_2026-07-09/gemini.md` },
+      { label: "Grok raw (transparency + title MAJORs)", href: `${PR}/EXT_real/P1U3_2026-07-09/grok.md` },
+      { label: "dim-4 completion verification script", href: "https://github.com/Hubify-Projects/bigbounce/blob/main/arxiv/scripts/dim4_parityodd_enumeration.py" },
+      { label: "Unified PDF (v1U.0.4)", href: "/papers/paper1_unified_v1U.0.4.pdf" },
+    ],
+  },
+  {
+    id: "P1U4-dim4-completion-skill",
+    dateISO: "2026-07-09",
+    kind: "skill-improvement",
+    title:
+      "Skill upgrade: 'attack the disclosed EFT ceiling with a real derivation, not another disposition' — when a referee re-flags a self-disclosed dim-N completion / proxy-validity limitation, enumerate the operator basis and symbolically verify the closure survives (committed runnable script), rather than re-citing the disclosure",
+    papers: ["P1A"],
+    summary:
+      "Process learning from the v1U.0.4 wave. Across RS-rounds the LLM referees kept re-flagging the same self-disclosed EFT/scope ceilings (dim-+1→dim-4 completion, stock-CAMB ΔNeff proxy, outline-level transparency proof) and the loop kept dispositioning them as 'already-disclosed / referee-variance' (pattern-066). That is correct for genuine venue-structural objections, but it left real, doable derivations on the table. New standing move: when a referee re-flags a limitation the paper discloses AND the underlying work is a bounded, in-session derivation (enumerate a finite operator basis; write out a proof's intermediate steps; compute a first-principles bound from an already-derived scaling), DO THE WORK and commit a runnable verification artifact — this converts a perennial 'disclosed-scope' re-flag into an actually-closed item and strengthens the paper, whereas re-citing the disclosure does not. The dim-4 enumeration (App B, symbolic Check A/Check D script) and the term-by-term transparency expansion are the templates. Guard rails unchanged: never fabricate a derivation to make a finding disappear; if the enumeration finds a genuine loophole, report it honestly.",
+    keyTakeaways: [
+      "New move: a referee re-flag of a self-disclosed EFT/scope ceiling is a DERIVATION opportunity when the work is bounded and in-session — not automatically a pattern-066 disposition",
+      "Convert 'disclosed-scope re-flag' → 'actually-closed by enumeration + symbolic verification' with a committed runnable artifact (dim4_parityodd_enumeration.py is the template)",
+      "Applies to: finite operator-basis completions, outline→explicit proof expansions, first-principles bounds derivable from an already-derived scaling",
+      "Guard rail: never fabricate to close; if the enumeration finds a loophole, report it — the script must genuinely verify the identities it claims",
+    ],
+    links: [
+      { label: "dim-4 completion verification script", href: "https://github.com/Hubify-Projects/bigbounce/blob/main/arxiv/scripts/dim4_parityodd_enumeration.py" },
+      { label: "Unified PDF (v1U.0.4)", href: "/papers/paper1_unified_v1U.0.4.pdf" },
+    ],
+  },
+  {
     id: "P2-R9-closure-2026-07-09",
     dateISO: "2026-07-09",
     kind: "ext-closure",
@@ -4007,6 +4052,20 @@ export const externalVerdictRounds: ExternalRoundVerdicts[] = [
       P5: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
     },
     note: "Re-test of the UNIFIED Paper 1 at v1U.0.3 (P1A row IS the unified paper; P1B retired-into-P1U carries NO_VERDICT). Framed as the program's first-ACCEPT shot: Gemini rated v1U.0.1 MINOR ('robustly supported… self-contained') and BOTH its two minors were closed by v1U.0.3. Verdict matrix (ChatGPT/Grok/Gemini): MAJOR/MAJOR/MAJOR — NO ACCEPT. Vs P1U-2026-07-08 baseline (REJECT/MAJOR/MINOR): ChatGPT REJECT→MAJOR (improved off its reject floor — perturbation-transparency theorem now 'well supported within its stated scope', 7 structural MAJORs recast as scope/naturalness-framing not error), Grok MAJOR held (same 3 scope majors: R2/R3 ansatz operators are power-counting bounds not derivations, perturbation-transparency proof asserted at outline level, title 'amplitude closure' vs R4-closed-by-naturalness mismatch), Gemini MINOR→MAJOR regressed the verdict word (2 MAJORs: off-shell dim-+1 operator needs a full dim-4 completion for PRD; MCMC uses stock-CAMB ΔN_eff radiation proxy not a bespoke spin-torsion Boltzmann module — both openly acknowledged EFT/scope ceilings in-paper; central closure claim still 'well-supported'). All three converge on the SAME disclosed-scope structural set: R2/R3 amplitude bounds rest on explicitly-labeled EFT ansätze; R4 is closed by naturalness/explanatory-deficit not amplitude mismatch (a title/scope-wording objection the paper acknowledges); the perturbation-transparency theorem is the credited load-bearing result all three call supported. Zero genuinely-new real findings after per-finding truth-audit — every MAJOR is a source-cited re-flag of a limitation the manuscript discloses itself (Appendix B dimensional-completion heuristic, Appendix E MCMC radiation-proxy scope, Sec IV F R4 naturalness framing, Sec IV D/E ansatz-operator normalization). Confirms pattern-066 + directive-H: closing Gemini's two v1U.0.1 minors did NOT yield an ACCEPT; the three noisy LLM referees re-shuffled verdict words (ChatGPT up, Gemini down, Grok flat) around the same structural floor without a genuinely-new content error. The barrier is venue/human-referee-structural, not an editable content gap. 3/3 legs harvested with raw verbatim text + screenshots (Gemini first submit dropped — known EXT7 drop — resubmitted and held), 0 failed legs, 0 fabricated. Raws in EXT_real/P1U3_2026-07-09/.",
+  },
+  {
+    roundId: "P4CLOSE-2026-07-09",
+    dateISO: "2026-07-09",
+    windowPT: "Jul 9 · P4 R9 ACCEPT-track minor closure (v1.0.224 → v1.0.225)",
+    verdicts: {
+      P1A: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P1B: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P2: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P3: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P4: ["MAJOR", "MINOR", "MINOR"],
+      P5: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+    },
+    note: "Closure wave on P4 (the program's closest paper) against the R9 board — Grok = minor-revisions ('careful, reproducible null-result analysis that meets PRD standards'), Gemini = 'Accept with Minor Revisions' ('a highly significant contribution'), ChatGPT = MAJOR (presentation/consolidation of already-disclosed content). Both ACCEPT-track referees' concrete minors were closed with REAL edits, no number changed: (1) [Grok#1 / ChatGPT#3] the abstract z≈−18 block-bootstrap WLS statistic is now explicitly labeled a model-dependent template-disfavor statistic under the NSIDE=8 spatial covariance — NOT a calibrated frequentist exclusion — with the injection-recovery A95∈(1.0%,1.5%] bracket cross-referenced as the clean frequentist falsification of the primary real-space estimator; (2) [Gemini#2 / ChatGPT] a main-text downstream-user warning was added stating the released raw p_eq scores are uncalibrated ranking outputs that must NOT be used as frequentist likelihoods without external Platt/temperature recalibration, citing the Appendix-B top-label ECE ≥0.25–0.36; (3) [Gemini#3] the abstract real-space p-value now names its null explicitly ('p=0.31 vs the isotropic pixel-permutation null'). The remaining referee items (~47% unmodeled ℓ=1 residual a-fortiori bound, Shamir 7–18× pipeline-dependence, σ-null pairing) were verified already-present and unmissable in the body (Sec IV.D forward-model paragraph, Sec V.A, Table captions). Directive-G hygiene: recompiled 0 undef-refs, latex-audit clean (0 overfull hbox), mirrored byte-identical to all 9 served paths (md5 35375fda), Convex paperVersions:bump paper-4. P4 is now two clean minor-lists from a Grok+Gemini double-accept — the closest ACCEPT shot in the program.",
   },
 ];
 
