@@ -46,6 +46,27 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "W12-closure-p1u-p2-2026-07-09",
+    dateISO: "2026-07-09",
+    kind: "ext-closure",
+    title:
+      "W12 closure wave (P1U v1U.0.6 · P2 v1.7.107): dimensional truth-audit of ChatGPT's P1U Eq.(7) flag (RIGHT — main-text bookkeeping slip fixed), full main-text promotion of the dim-4 completeness argument, and P2 presentation-major closure (Grok MegaMapper/tone/endpoint + ChatGPT claim-calibration).",
+    papers: ["P1A", "P2"],
+    summary:
+      "Closure of the W12 EXT re-test findings. P1U (v1U.0.5→v1U.0.6): ChatGPT's MAJOR claimed the promoted Eq.(7) 'dimension-4 basis with dimensionless coefficients is not dimensionally correct as written.' Dimensional truth-audit VERDICT — ChatGPT is RIGHT. Under the paper's own conventions ([e]=0, [R]=+2, physical torsion [T]=[κS]=+1, [J⁵]=[S]=+3, [κ]=[M_Pl⁻²]=−2) the bare Table-VII invariants have naive dimension O1 (εeeR)=+2, O2 (Nieh–Yan)=+2, O3 (R∧R)=+4, O4 (T²)=+2, O5 (TeJ⁵)=+4, O6 (single-curvature)=+2 — so O1/O2/O4/O6 are NOT dim-4 densities carrying a bare dimensionless c_n; only Pontryagin (O3) and axial-torsion (O5) are, exactly as ChatGPT stated. The appendix derivation was correct (it carries the κ/M_Pl powers); the error was a main-text/Table-VII transcription slip. Fixed: new displayed Eq.(dim4_defs) writes each O_n^[4] with its explicit M_Pl² prefactor (O1/O2/O4/O6 × M_Pl²; O3/O5 bare) so every c_n·O_n^[4] is a genuine dim-4 density with dimensionless c_n; Table VII gains dim (bare) + prefactor columns + a coefficient-dimension note, now full-width. No physics conclusion changed — single-scale closure survives at dimension 4; the two symbolic checks (dim4_parityodd_enumeration.py CHECK A + CHECK D) re-run and both PASS. Also FULLY promoted the completeness argument into the main text (unanimous W12 ask — all three reviewers said the promotion was still partial): a new inline 'Main-text completeness argument' block states the Bianchi-vanishing of O1/O6, the Cartan→Fierz collapse of O4/O5 to the closed {SS,VV,AA,PP} basis, and the topological-total-derivative closure of O2/O3, with the appendix keeping the derivations. P2 (v1.7.106→v1.7.107): closed the presentation majors — Grok's MegaMapper Fig-2 headlining (removed/shaded as future-scoping, SPHEREx range headlined) + endpoint-language drift (explicit tier→σ mapping, fixed headline labels) + adversarial-tone calibration on the Cai correction; ChatGPT's 'internal contradiction' claim-calibration items aligned to the calibrated −35/16 formula chosen in v1.7.106 (factor-of-2 forensic wording made exactly consistent with what Appendix A proves; stale −35/8-scaled remnants swept); Gemini minors. NO headline number changed on either paper, nothing fabricated. Directive-G on both: recompile 0 undef-refs, latex-audit clean, PDF re-mirrored byte-identical to all served paths, Convex paperVersions:bump with real md5/pages, static mirrors (papers.ts/live-status.ts) synced in the same bundle.",
+    keyTakeaways: [
+      "P1U dimensional truth-audit: ChatGPT RIGHT — bare O1/O2/O4/O6 are naive dim-2, so 'dimensionless c_n' was a main-text transcription slip; O3 (Pontryagin) + O5 (axial-torsion) are the only dim-4 bare invariants",
+      "Fix carries the physics unchanged: each O_n^[4] now written with its explicit M_Pl² prefactor so every c_n·O_n^[4] is a genuine dim-4 density; closure survives at dim 4, both symbolic checks re-pass",
+      "Full main-text promotion done (unanimous W12 ask): inline Bianchi-vanishing + Cartan→Fierz collapse + topological-total-derivative closure; appendix keeps the derivations",
+      "P2 presentation majors closed: MegaMapper Fig-2 scoping, endpoint-language + tone calibration, ChatGPT claim-calibration to the −35/16 formula, Gemini minors — no number changed",
+    ],
+    links: [
+      { label: "P1U ChatGPT (W12 raw)", href: `${PR}/EXT_real/W12_2026-07-09/P1U_chatgpt.md` },
+      { label: "P2 Grok (W12 raw)", href: `${PR}/EXT_real/W12_2026-07-09/P2_grok.md` },
+      { label: "P2 ChatGPT (W12 raw)", href: `${PR}/EXT_real/W12_2026-07-09/P2_chatgpt.md` },
+    ],
+  },
+  {
     id: "W12-ext-retest-p1u-p2-2026-07-09",
     dateISO: "2026-07-09",
     kind: "external-browser",
