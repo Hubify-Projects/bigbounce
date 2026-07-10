@@ -1,0 +1,272 @@
+{
+  "job": "GZ1-overlap stratified human-vs-classifier CW/CCW confusion matrix (P4+P5 referee closure)",
+  "date_utc": "2026-07-10T22:28:11Z",
+  "label_sources": {
+    "human": "Galaxy Zoo 1 Table 2 P_CW/P_ACW human votes (Lintott+2011), confident spirals max(P_CW,P_ACW)>0.6",
+    "classifier": "catalog_production.parquet class_eq / p_cw_eq / p_ccw_eq / confidence_eq (equivariant CE-ResNet pipeline)"
+  },
+  "cross_match": {
+    "tol_arcsec": 1.0,
+    "method": "KDTree unit-vector nearest",
+    "n_confident_gz1": 48414,
+    "n_matched": 46017
+  },
+  "definitions": {
+    "imaging_leg": "BASS+MzLS = dec>+32.0 deg; DECaLS = dec<+32.0 deg (P4 split)",
+    "confidence_bin": "classifier confidence_eq>0.6 vs <=",
+    "error_asymmetry": "err(CW->CCW) - err(CCW->CW); nonzero => differential mislabelling that can bias f_CW",
+    "induced_delta_fCW": "(#CCW->CW - #CW->CCW)/N; first-order net bias the classifier adds to the CW fraction",
+    "ci": "Wilson 95% for single rates; unpooled two-proportion 95% for differences"
+  },
+  "classifier_not_spiral_on_matched": {
+    "n": 5030,
+    "of": 46017,
+    "note": "GZ1-confident spirals the classifier called NOT_SPIRAL; excluded from the CW/CCW confusion (completeness, not chirality-error)"
+  },
+  "overall": {
+    "n": 40987,
+    "n_human_cw": 19864,
+    "n_human_ccw": 21123,
+    "confusion_counts": {
+      "human_CW__clf_CW": 18120,
+      "human_CW__clf_CCW": 1744,
+      "human_CCW__clf_CW": 1853,
+      "human_CCW__clf_CCW": 19270
+    },
+    "accuracy": 0.9122404664893747,
+    "accuracy_ci95": [
+      0.9094624697101718,
+      0.9149411969954354
+    ],
+    "err_CW_to_CCW": 0.0877970197341925,
+    "err_CW_to_CCW_ci95": [
+      0.0839407888035561,
+      0.09181265004173056
+    ],
+    "err_CCW_to_CW": 0.08772428158878948,
+    "err_CCW_to_CW_ci95": [
+      0.08398386662507332,
+      0.09161462338355944
+    ],
+    "error_asymmetry_CWtoCCW_minus_CCWtoCW": 7.27381454030257e-05,
+    "error_asymmetry_ci95": [
+      -0.005408350384015087,
+      0.005553826674821139
+    ],
+    "induced_delta_fCW": 0.0026593798033522826,
+    "induced_delta_fCW_ci95": [
+      -0.0002084586135972107,
+      0.005527218220301765
+    ]
+  },
+  "stratified_by_imaging_leg": {
+    "BASS_MzLS_dec_gt_+32": {
+      "n": 14093,
+      "n_human_cw": 6790,
+      "n_human_ccw": 7303,
+      "confusion_counts": {
+        "human_CW__clf_CW": 6115,
+        "human_CW__clf_CCW": 675,
+        "human_CCW__clf_CW": 695,
+        "human_CCW__clf_CCW": 6608
+      },
+      "accuracy": 0.9027886184630668,
+      "accuracy_ci95": [
+        0.897787288056304,
+        0.9075704250998007
+      ],
+      "err_CW_to_CCW": 0.09941089837997054,
+      "err_CW_to_CCW_ci95": [
+        0.09251886833799129,
+        0.10675594062343242
+      ],
+      "err_CCW_to_CW": 0.0951663699849377,
+      "err_CCW_to_CW_ci95": [
+        0.08864747730553561,
+        0.1021109326963774
+      ],
+      "error_asymmetry_CWtoCCW_minus_CCWtoCW": 0.004244528395032837,
+      "error_asymmetry_ci95": [
+        -0.005550652228941433,
+        0.014039709019007108
+      ],
+      "induced_delta_fCW": 0.0014191442560136237,
+      "induced_delta_fCW_ci95": [
+        -0.0037284039675176467,
+        0.006566692479544895
+      ]
+    },
+    "DECaLS_dec_lt_+32": {
+      "n": 26894,
+      "n_human_cw": 13074,
+      "n_human_ccw": 13820,
+      "confusion_counts": {
+        "human_CW__clf_CW": 12005,
+        "human_CW__clf_CCW": 1069,
+        "human_CCW__clf_CW": 1158,
+        "human_CCW__clf_CCW": 12662
+      },
+      "accuracy": 0.9171934260429836,
+      "accuracy_ci95": [
+        0.9138398460565114,
+        0.9204278417189022
+      ],
+      "err_CW_to_CCW": 0.08176533578093927,
+      "err_CW_to_CCW_ci95": [
+        0.07719043542133729,
+        0.08658593895702567
+      ],
+      "err_CCW_to_CW": 0.08379160636758322,
+      "err_CCW_to_CW_ci95": [
+        0.0792869964258069,
+        0.08852753369096132
+      ],
+      "error_asymmetry_CWtoCCW_minus_CCWtoCW": -0.0020262705866439523,
+      "error_asymmetry_ci95": [
+        -0.008614115028122593,
+        0.004561573854834688
+      ],
+      "induced_delta_fCW": 0.0033092883170967504,
+      "induced_delta_fCW_ci95": [
+        -0.0001296475664953325,
+        0.006748224200688837
+      ]
+    },
+    "compare_BASS_vs_DECaLS": {
+      "err_CW_to_CCW": {
+        "diff": 0.017645562599031273,
+        "se_pooled": 0.004233307892185323,
+        "se_unpooled": 0.004350632677802679,
+        "z": 4.168268183754114,
+        "p_two_sided": 3.0692269189107355e-05,
+        "ci95_diff": [
+          0.009118479240574968,
+          0.026172645957487577
+        ]
+      },
+      "err_CCW_to_CW": {
+        "diff": 0.011374763617354483,
+        "se_pooled": 0.004092569804327136,
+        "se_unpooled": 0.004164858018096152,
+        "z": 2.779369482061802,
+        "p_two_sided": 0.0054464535785627936,
+        "ci95_diff": [
+          0.0032117919011631565,
+          0.01953773533354581
+        ]
+      },
+      "induced_delta_fCW_diff": {
+        "bass": 0.0014191442560136237,
+        "decals": 0.0033092883170967504,
+        "diff": -0.0018901440610831267
+      }
+    }
+  },
+  "stratified_by_confidence": {
+    "confidence_eq_gt_0.6": {
+      "n": 32550,
+      "n_human_cw": 15764,
+      "n_human_ccw": 16786,
+      "confusion_counts": {
+        "human_CW__clf_CW": 15166,
+        "human_CW__clf_CCW": 598,
+        "human_CCW__clf_CW": 669,
+        "human_CCW__clf_CCW": 16117
+      },
+      "accuracy": 0.9610752688172043,
+      "accuracy_ci95": [
+        0.9589190959616551,
+        0.963122624920012
+      ],
+      "err_CW_to_CCW": 0.037934534382136516,
+      "err_CW_to_CCW_ci95": [
+        0.03506315982798658,
+        0.04103105141546111
+      ],
+      "err_CCW_to_CW": 0.039854640772071966,
+      "err_CCW_to_CW_ci95": [
+        0.03699913142885612,
+        0.04292070951256895
+      ],
+      "error_asymmetry_CWtoCCW_minus_CCWtoCW": -0.0019201063899354498,
+      "error_asymmetry_ci95": [
+        -0.006121370299604402,
+        0.0022811575197335026
+      ],
+      "induced_delta_fCW": 0.0021812596006144393,
+      "induced_delta_fCW_ci95": [
+        3.80785469029552e-05,
+        0.00432444065432592
+      ]
+    },
+    "confidence_eq_le_0.6": {
+      "n": 8437,
+      "n_human_cw": 4100,
+      "n_human_ccw": 4337,
+      "confusion_counts": {
+        "human_CW__clf_CW": 2954,
+        "human_CW__clf_CCW": 1146,
+        "human_CCW__clf_CW": 1184,
+        "human_CCW__clf_CCW": 3153
+      },
+      "accuracy": 0.723835486547351,
+      "accuracy_ci95": [
+        0.7141950352660031,
+        0.7332722010784289
+      ],
+      "err_CW_to_CCW": 0.27951219512195125,
+      "err_CW_to_CCW_ci95": [
+        0.26598716227267594,
+        0.2934500094255801
+      ],
+      "err_CCW_to_CW": 0.2729997694258704,
+      "err_CCW_to_CW_ci95": [
+        0.2599462745391346,
+        0.28645503528089006
+      ],
+      "error_asymmetry_CWtoCCW_minus_CCWtoCW": 0.006512425696080848,
+      "error_asymmetry_ci95": [
+        -0.012578929220618464,
+        0.02560378061278016
+      ],
+      "induced_delta_fCW": 0.004503970605665521,
+      "induced_delta_fCW_ci95": [
+        -0.006709035308636107,
+        0.015716976519967132
+      ]
+    },
+    "compare_hi_vs_lo_conf": {
+      "err_CW_to_CCW": {
+        "diff": -0.24157766073981474,
+        "se_pooled": 0.0049612811904959486,
+        "se_unpooled": 0.00717171115895972,
+        "z": -48.69259601785758,
+        "p_two_sided": 0.0,
+        "ci95_diff": [
+          -0.2556339563188998,
+          -0.22752136516072968
+        ]
+      },
+      "err_CCW_to_CW": {
+        "diff": -0.23314512865379844,
+        "se_pooled": 0.004818728381530528,
+        "se_unpooled": 0.006931226913472865,
+        "z": -48.38312313833857,
+        "p_two_sided": 0.0,
+        "ci95_diff": [
+          -0.24673008377287997,
+          -0.2195601735347169
+        ]
+      }
+    }
+  },
+  "stratified_by_environment_void_P5": {
+    "status": "DATA-UNAVAILABLE",
+    "reason": [
+      "P5 matched chirality x DESI-z parquet absent: /Users/houstongolden/Desktop/CODE_YOU/bigbounce/pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet",
+      "DESIVAST void-sphere catalogs absent: /Users/houstongolden/Desktop/CODE_YOU/bigbounce/pipelines/p5_desi_chirality/data/desivast/"
+    ],
+    "note": "GZ1 Table 2 carries no redshift, so the void/non-void split for the GZ1-overlap galaxies requires the P5 matched chirality x DESI-redshift parquet plus the DESIVAST void-sphere catalogs to assign 3D void membership. These P5 artifacts are gitignored / not present in the local checkout. The void-stratified human-vs-classifier confusion is therefore NOT COMPUTED here rather than fabricated. To compute it: materialise p5_matched_chirality_desi.parquet + data/desivast/, then cross-match the GZ1-overlap dr8_id/positions through them (point-in-sphere void membership, identical to results/analysis_cosmic_web/desivast_three_algorithm_void_chirality.json) and re-run with P5_VOID=1."
+  },
+  "wall_seconds": 28.3
+}
