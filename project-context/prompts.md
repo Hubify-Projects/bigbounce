@@ -173,3 +173,23 @@ Switched to Opus 4.7 + xhigh effort for this.
 > Bump \paperVersion v0.1.82→v0.1.83 + date June 19 + changelog "D-round visual polish". Recompile (latexmk). 0 undefined refs. Visual check: pdftoppm Fig 8 page + a couple \artifact-heavy pages → Read PNGs to confirm overlap gone + paths now short IDs. Do NOT push. Do NOT fabricate data — only rerun scripts on existing local data.
 >
 > REPORT (≤180 words): each item done/skipped(+why), whether Fig 8 overlap is fixed, whether \artifact IDs applied (count), new version, pages, md5, overfull/undef counts.
+
+## 2026-07-09 - F14 EXT conversion wave 2026-07-09
+
+### Houston messages, verbatim
+
+**16:27 PT - 15-leg EXT sweep all 5 papers**
+
+- `cwd`: /Users/houstongolden/Desktop/CODE_YOU/bigbounce
+- `session`: F14 EXT conversion wave 2026-07-09
+- `agent`: claude-code/opus-4.8
+
+> FULL CONVERSION WAVE — all five papers at their newest states, every open item from the last rounds closed: P1U v1U.0.7 (dim-fix + full promotion + leak-scrub; W13 baseline: Grok submission-ready/ChatGPT MAJ/Gemini MIN) · P2 v1.7.107 (MIN/MAJ/MIN) · P3 v3.1.149 (CV: MAJ/MIN/MAJ) · P4 v1.0.228 (CV: MAJ/MIN/MIN) · P5 v0.1.111 (CV: MAJ/MIN/MIN). Grok+Gemini+ChatGPT, HEADED browser, canonical spec §2. 15 legs. Repo: /Users/houstongolden/Desktop/CODE_YOU/bigbounce. B=~/.claude/skills/gstack/browse/dist/browse.
+>
+> HARDENED + PROVEN RECIPES (exact as prior waves; Gemini key-code-36 dialog path; expect nav-away drops → re-run): shell timeout 45 every $B call; never repeat timed-out; save-then-advance; one domain at a time; poll 60-90s max 10 → FAILED (one retry at end); ~150 min budget.
+>
+> PDFs fresh (verify page-1 versions): /tmp/f_P1U.pdf ← arxiv/paper1_unified.pdf (61pp) · /tmp/f_P2.pdf ← research/focused_paper_source_integration/02_full_draft.pdf (38pp) · /tmp/f_P3.pdf ← pipelines/p3_anomaly_engine/paper3_draft.pdf (36pp) · /tmp/f_P4.pdf ← pipelines/p2_chirality/chirality_catalog_paper.pdf (34pp) · /tmp/f_P5.pdf ← pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf (42pp). ORDER: grok all 5 → chatgpt all 5 → gemini all 5. Canonical PRD-referee prompt. SAVE: EXT_real/F14_2026-07-09/<PAPER>_<reviewer>.md + .png + manifest.jsonl.
+>
+> AFTER: post same-bundle ON MAIN — externalVerdictRounds "F14-2026-07-09" + reviewRounds, build passes, commit+push. Convex upserts + caps per formula + activityFeed (literal ACCEPTs flagged LOUDLY, caps max 96).
+>
+> Return ≤180 words: 5×3 FROM RAW vs baselines — literal ACCEPTs per paper? genuinely-new findings? board posted, FAILED legs. NEVER fabricate.

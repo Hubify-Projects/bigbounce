@@ -46,6 +46,24 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "F14-closure-wave-2026-07-09",
+    dateISO: "2026-07-09",
+    kind: "closure-wave",
+    title:
+      "F14 genuinely-new-findings closure wave (P5 v0.1.112 · P1U v1U.0.8 · P4 v1.0.229): the three real forecast-methodology / claim-calibration axes surfaced by the F14 sweep closed with real edits — no verified number changed, nothing fabricated, no disclosure weakened.",
+    papers: ["P5", "P1A", "P4"],
+    summary:
+      "Closed the F14 genuinely-new findings identified in the sweep truth-audit (P5 dual-primary + footprint-vs-selection + 0.9pp-envelope + 5-estimator bound; P1U R4 spectator-ALP ECH-specific-vs-generic framing; P4 end-to-end transfer-calibration scope). Each closure is real work from committed numbers or an honest new-simulation flag — never a bare disposition. All three papers recompiled 0 undef-refs, latex-audited clean, re-mirrored byte-identical to every served path, and version-bumped.",
+    keyTakeaways: [
+      "P5 v0.1.112: abstract now leads with the single footprint-restricted primary estimand Δf_CW=+0.0018 (unrestricted +0.0007 demoted to secondary sensitivity check); 'footprint ≠ selection function' distinction added (angular-disc footprint is a geometric construction, not the DESIVAST/BGS completeness mask); ≈0.9pp envelope justified with the explicit quadrature term-sum √(0.44²+…+0.02²)=0.94pp; simultaneous Bonferroni-5 bound computed — no void definition admits |Δf_CW|≳1.1pp at family-wise 95%.",
+      "P1U v1U.0.8: R4 spectator-ALP framing sharpened — m_θ~H_0 tuning acknowledged as the generic quintessence/ultralight-axion feature (not a distinctive ECH barrier); ECH-specific content is the rigid one-loop-coupling 22–36 OOM amplitude overshoot, plus the fact that floating the coupling collapses to a tuning minimal ECH cannot derive, closing the predictive route.",
+      "P4 v1.0.229: end-to-end transfer chain delineated (injection-recovery traverses map-making+estimator+null, NOT classifier/triage/confidence-cut/confusion); asymmetric-confusion transfer slope g_eff=s_CW+s_CCW−1=0.398 shown to equal the symmetric g=2a−1=0.398 for the near-balanced parent; full image-level end-to-end injection honest-flagged as new simulation; operative claims held to the observed hard-label field.",
+    ],
+    links: [
+      { label: "F14 raws + manifest", href: `${PR}/EXT_real/F14_2026-07-09/` },
+    ],
+  },
+  {
     id: "F14-full-5x3-external-sweep-2026-07-09",
     dateISO: "2026-07-09",
     kind: "external-browser",
