@@ -13,16 +13,48 @@ OUTDIR = REPO / "project-context/peer-reviews/INT_v3/ROUND_2026-07-09"
 OUTDIR.mkdir(parents=True, exist_ok=True)
 MANIFEST = OUTDIR / "manifest.jsonl"
 
-# paper -> (version, pdf path relative to repo)
+# paper -> pdf path relative to repo. Version is read LIVE from the sibling
+# .tex \paperVersion macro at run time (2026-07-10 fix: hard-coded labels went
+# stale and mislabeled review headers as reviewing old versions).
 PAPERS = {
-    "P1A": ("v1A.0.115", "arxiv/paper1a_ech_nogo.pdf"),
-    "P1B": ("v1B.0.104", "arxiv/paper1b_mcmc_companion.pdf"),
-    "P2":  ("v1.7.102",  "research/focused_paper_source_integration/02_full_draft.pdf"),
-    "P3":  ("v3.1.144",  "pipelines/p3_anomaly_engine/paper3_draft.pdf"),
-    "P4":  ("v1.0.223",  "pipelines/p2_chirality/chirality_catalog_paper.pdf"),
-    "P5":  ("v0.1.107",  "pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf"),
-    "P1U": ("v1U.0.1",   "arxiv/paper1_unified.pdf"),
+    "P1A": "arxiv/paper1a_ech_nogo.pdf",
+    "P1B": "arxiv/paper1b_mcmc_companion.pdf",
+    "P2":  "research/focused_paper_source_integration/02_full_draft.pdf",
+    "P3":  "pipelines/p3_anomaly_engine/paper3_draft.pdf",
+    "P4":  "pipelines/p2_chirality/chirality_catalog_paper.pdf",
+    "P5":  "pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf",
+    "P1U": "arxiv/paper1_unified.pdf",
 }
+
+TEX_FOR_PDF = {
+    "arxiv/paper1a_ech_nogo.pdf": "arxiv/paper1a_ech_nogo.tex",
+    "arxiv/paper1b_mcmc_companion.pdf": "arxiv/paper1b_mcmc_companion.tex",
+    "research/focused_paper_source_integration/02_full_draft.pdf": "research/focused_paper_source_integration/02_full_draft.tex",
+    "pipelines/p3_anomaly_engine/paper3_draft.pdf": "pipelines/p3_anomaly_engine/paper3_draft.tex",
+    "pipelines/p2_chirality/chirality_catalog_paper.pdf": "pipelines/p2_chirality/chirality_catalog_paper.tex",
+    "pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf": "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex",
+    "arxiv/paper1_unified.pdf": "arxiv/paper1_unified.tex",
+}
+
+def live_version(pdf_rel: str) -> str:
+    import re as _re
+    tex = REPO / TEX_FOR_PDF.get(pdf_rel, "")
+    try:
+        txt = tex.read_text()
+        m = _re.search(r"\\newcommand\{\\paperVersion\}\{([^}]+)\}", txt)
+        if m:
+            return m.group(1)
+        # fallback: version comment on the \date line (P3 style)
+        m = _re.search(r"\\date\{[^}]*\}\s*%\s*(v[\w.\-]+)", txt)
+        if m:
+            return m.group(1)
+        # fallback: first changelog comment "% vX.Y.Z (" (P2 style)
+        m = _re.search(r"^%\s*(v[\w.]+)\s*\(", txt, _re.M)
+        if m:
+            return m.group(1)
+    except Exception:
+        pass
+    return "unknown-version"
 
 OPENAI_MODEL = "gpt-5.5"
 XAI_MODEL = "grok-4.3"
@@ -169,7 +201,8 @@ VENDORS = {"openai": (OPENAI_MODEL, call_openai), "grok": (XAI_MODEL, call_xai)}
 
 
 def run_one(paper, vendor):
-    ver, rel = PAPERS[paper]
+    rel = PAPERS[paper]
+    ver = live_version(rel)
     pdf_path = str(REPO / rel)
     model, fn = VENDORS[vendor]
     ts = datetime.datetime.utcnow().isoformat() + "Z"

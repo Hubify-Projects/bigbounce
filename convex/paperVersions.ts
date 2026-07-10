@@ -1,11 +1,20 @@
 import { mutation, query, internalMutation } from "./_generated/server";
 import { v } from "convex/values";
 
-/** Sort paper_versions newest-first. Ties break on createdAt desc — no future dates needed. */
+/** Sort paper_versions newest-first. Datestamps are parsed as dates (handles
+ * both "July 10, 2026" and ISO); lexicographic localeCompare mis-orders
+ * human-format dates ("July 10" < "July 9"), which left stale "current"
+ * versions on the site (caught 2026-07-10). Unparseable datestamps fall back
+ * to localeCompare. Ties break on createdAt desc. */
 function sortVersions<T extends { datestamp: string; createdAt: number }>(vs: T[]): T[] {
   return vs.sort((a, b) => {
-    const d = b.datestamp.localeCompare(a.datestamp);
-    if (d !== 0) return d;
+    const ta = Date.parse(a.datestamp);
+    const tb = Date.parse(b.datestamp);
+    if (!Number.isNaN(ta) && !Number.isNaN(tb) && ta !== tb) return tb - ta;
+    if (Number.isNaN(ta) || Number.isNaN(tb)) {
+      const d = b.datestamp.localeCompare(a.datestamp);
+      if (d !== 0) return d;
+    }
     return (b.createdAt ?? 0) - (a.createdAt ?? 0);
   });
 }
