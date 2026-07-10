@@ -41,7 +41,7 @@
 % The divide-by-h claim (~1246 h⁻¹ Mpc) is INVERTED. No pipeline recompute required.
 % If any future reviewer re-raises this, cite env_finder/01_compute_vweb.py:106-108.
 
-\newcommand{\paperVersion}{v0.1.113-2026-07-10}
+\newcommand{\paperVersion}{v0.1.115-2026-07-10}
 % v0.1.111-2026-07-09 (CV-round EXT closure (ChatGPT MAJOR-revisions reopened off CA ACCEPT;
 %   Grok/Gemini MINOR). Framing/relocation only; every verified number unchanged EXCEPT the
 %   stated systematic envelope, which was WIDENED (never tightened) to the honest value:
@@ -696,7 +696,7 @@
 
 \begin{document}
 
-\title{Redshift-Space Environmental Dependence of Spiral Chirality: A DESIVAST Three-Algorithm Void Null Test on 56{,}981 DESI DR1 Spirals\protect\footnote{``Redshift-space'': all environment classes are assigned in DESI DR1 redshift coordinates without real-space reconstruction (\S\ref{sec:limitations}); the bound is on fixed-redshift-space DESIVAST void membership. T-Web/V-Web nomenclature: see \S\ref{sec:vweb}.}}
+\title{Redshift-Space Environmental Dependence of Spiral Chirality: A DESIVAST Three-Algorithm Void Null Test on 57{,}081 DESI DR1 Spirals\protect\footnote{``Redshift-space'': all environment classes are assigned in DESI DR1 redshift coordinates without real-space reconstruction (\S\ref{sec:limitations}); the bound is on fixed-redshift-space DESIVAST void membership. T-Web/V-Web nomenclature: see \S\ref{sec:vweb}.}}
 
 \author{Houston Golden}
 \email{houston@hubify.com}
@@ -721,17 +721,23 @@ estimand is the \emph{footprint-restricted} void-vs-non-void CW-fraction
 contrast --- both classes confined to the DESIVAST usable footprint, the
 single same-footprint estimand (\S\ref{sec:desivast_anchored_void}) ---
 $\Delta f_{\rm CW} = +0.0018$ ($z_\Delta = +0.78$, $p_\Delta = 0.43$,
-$n_{\rm non\mbox{-}void} = 253{,}276$), consistent with parity. The
-broader all-$z\!\le\!0.24$-outside-hole contrast on the same $56{,}981$
-DESIVAST void spirals, $\Delta f_{\rm CW} = +0.0007$
+$n_{\rm void} = 57{,}081$, $n_{\rm non\mbox{-}void} = 253{,}276$;
+exact same-footprint retabulation), consistent with parity. The
+broader all-$z\!\le\!0.24$-outside-hole contrast on the approximate
+$k\!=\!20$ VoidFinder membership ($56{,}981$ void spirals),
+$\Delta f_{\rm CW} = +0.0007$
 ($z_\Delta = +0.31$, $p_\Delta = 0.76$, $n_{\rm non\mbox{-}void} =
 621{,}964$), is a \emph{secondary sensitivity check}; the two agree to
 within $0.11$\,pp, so the null verdict is invariant to the control-volume
-choice. The null holds across all five DESIVAST void-finders
+and membership-definition choice. The null holds across all five DESIVAST void definitions
 ($|\Delta f_{\rm CW}| \le 0.004$, $|z_\Delta| \le 1.25$,
-$p_\Delta \ge 0.21$, Table~\ref{tab:desivast_three_algo}). This is a
+$p_\Delta \ge 0.21$): the three sphere-PIS algorithm rows in
+Table~\ref{tab:desivast_three_algo} plus the two catalog-native GALZONE
+rows (V2-REVOLVER, V2-VIDE; \S\ref{sec:desivast_catalog_native}), with
+the full five-member Bonferroni family tabulated in
+Table~\ref{tab:analysis_tree}. This is a
 \emph{bounded null} on the specific DESIVAST void/non-void contrast at
-$56{,}981$ void spirals;
+$57{,}081$ exact-footprint void spirals;
 the honest DR1 systematic envelope on any void/non-void split in the
 \emph{classifier-labelled} CW fraction is ${\approx}0.9$\,pp (quadrature
 of the counting-statistics CI with the fixed-void-geometry membership,
@@ -828,13 +834,18 @@ employed in this work.} on the full
 $14{,}622{,}283$-galaxy DESI DR1 spectro sample on a $256^3$ comoving
 grid with a $25\,{\rm Mpc}/h$ Gaussian smoothing and eigenvalue
 threshold $\lambda_{\rm th}\!=\!0$. Sample ledger: \emph{two distinct parent populations are used.}
-(1)~\textbf{DESIVAST primary:} $56{,}981$ k\,=\,20 VoidFinder void spirals
+(1)~\textbf{DESIVAST primary:} the exact same-footprint retabulation isolates
+$57{,}081$ void spirals (the primary estimand;
+Table~\ref{tab:desivast_three_algo}), with the approximate $k\,=\,20$
+VoidFinder membership ($56{,}981$ void spirals) retained only as a
+sensitivity control; both are
 drawn from $678{,}945$ z\,$\leq$\,$0.24$ matched spirals (the DESIVAST BGS
 coverage range; $n_{\rm lz} = 678{,}945$).
 (2)~\textbf{T-Web secondary:} $783{,}820$ unique chirality-relevant matched spirals
 with an environment row ($791{,}635$ minus $7{,}815$ without), carried on
 $812{,}793$ environment-labeled survey--program coadd rows.
-The $56{,}981$ void spirals are drawn from the DESIVAST low-$z$ parent
+The DESIVAST void spirals ($57{,}081$ exact / $56{,}981$ $k\!=\!20$) are drawn
+from the DESIVAST low-$z$ parent
 ($678{,}945$), not from the full T-Web parent ($812{,}793$).
 
 The CW
@@ -957,8 +968,9 @@ $f_{\rm CW}^{\rm non-void} = 0.4971$, $\Delta f_{\rm CW} \equiv
 f_{\rm CW}^{\rm non\mbox{-}void} - f_{\rm CW}^{\rm void} = +0.0007$,
 statistically indistinguishable.
 Here void membership uses the VoidFinder hole-sphere union as a permissive
-proxy for the catalog's intended interior-void geometry (primary DESIVAST
-VoidFinder result).
+proxy for the catalog's intended interior-void geometry (approximate $k\!=\!20$
+sensitivity control; the primary estimand is the exact same-footprint
+retabulation at $n_{\rm void} = 57{,}081$, \S\ref{sec:desivast_anchored_void}).
 As a supporting cross-check, the \S\ref{sec:desivast_maximal_healpix}
 exact maximal-sphere rerun ($n_{\rm void} = 20{,}900$; distinct from the
 hole-sphere union) confirms the same null verdict, and the
@@ -1675,8 +1687,17 @@ is V2-REVOLVER catalog-native GALZONE $n_{\rm void}=104{,}912$), is built on a
 publicly released peer-reviewed
 DR1 BGS void catalog (Rinc\'on \textit{et al.}\ 2025,
 ApJ~982, 38~\cite{DESIVAST2025}) standardized across the
-DESI collaboration, ships three independent void-finding algorithms
-(VoidFinder, V2-REVOLVER, V2-VIDE) for built-in robustness, and
+DESI collaboration, ships three void-finding algorithm
+definitions (VoidFinder, V2-REVOLVER, V2-VIDE) for built-in
+robustness,\footnote{More precisely these span \emph{two} distinct
+void-finding \emph{families} --- the sphere-growing VoidFinder and the
+ZOBOV/V2 watershed --- with V2-REVOLVER and V2-VIDE being two pruning
+prescriptions on the same watershed construction. Together with the two
+catalog-native GALZONE definitions they form five \emph{correlated}
+sensitivity variants across two families, not five statistically
+independent measurements; we quote the Bonferroni-5 family null with
+this correlation understood, never as five independent detections.}
+and
 provides catalog-native per-galaxy zone memberships
 (\texttt{GALZONE}/\texttt{ZONEVOID}) that the T-Web tidal-tensor
 re-projection cannot match. Beyond these post-hoc considerations, the
@@ -1932,8 +1953,12 @@ $3.56\%$ duplicate rows (28{,}973 of 812{,}793 env-labeled rows) violate strict 
 design-effect inflation of the interval widths is
 $\sqrt{812{,}793/783{,}820} = 1.018$, i.e.\ $\le\!1.9\%$, and the
 homogeneity $\chi^2$ is recomputed on the unique-spiral subset in
-\S\ref{sec:results_vweb}. The void bin ($n\!=\!428$) is dominated
-by counting noise and brackets parity. The dashed horizontal line is
+\S\ref{sec:results_vweb}. The T-Web void bin ($n\!=\!428$) is
+\emph{not load-bearing}: it is dominated by counting noise and by the
+survey-shell selection artifact (\S\ref{sec:tweb_concurrent}), has
+negligible overlap with the DESIVAST voids that anchor the primary
+result, and is retained only as a secondary diagnostic --- it carries
+no weight in the headline null. The dashed horizontal line is
 parity ($f_{\rm CW}\!=\!0.5$); the dotted red line is the Paper~IV
 global $\bar f_{\rm CW}\!=\!0.4974$ classifier-monopole offset. All
 four classes bracket the Paper~IV monopole, consistent with no
@@ -2945,22 +2970,33 @@ rerun at the $0.18\%$ membership level, \S\ref{sec:desivast_xmatch};
 the non-void $k\!=\!20$ count $n=621{,}964$ differs from the exact
 rerun $n=621{,}864$ by 100 counts, $0.016\%$, within the stated
 equivalence bound).
-The footprint-restricted control row (``Footprint-restricted non-void
-(exact)'') restricts the non-void sample to the union of hole-sphere
-angular discs (NSIDE\,$=\!64$, inclusive) intersected with the
-holes' comoving radial span, using the exact $k$-unbounded membership
+The \emph{primary} contrast is the exact-vs-exact pair (top block): the
+exact ($k$-unbounded) void row ($n = 57{,}081$, $n_{\rm CW} = 28{,}339$)
+against the exact footprint-restricted non-void row ($n = 253{,}276$,
+$n_{\rm CW} = 126{,}202$), giving
+$\Delta f_{\rm CW} = 0.4983 - 0.4965 = +0.0018$ reproducible from the
+integer counts. The footprint-restricted control restricts the non-void
+sample to the union of hole-sphere angular discs (NSIDE\,$=\!64$,
+inclusive) intersected with the holes' comoving radial span, using the
+exact $k$-unbounded membership
 (\S\ref{sec:desivast_maximal_healpix};
-\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/29\_ext3\_desivast\_footprint\_retabulation.json}{[A15]}).}
+\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/29\_ext3\_desivast\_footprint\_retabulation.json}{[A15]}).
+The $k=20$ rows (bottom block) are the \emph{unrestricted sensitivity
+check} ($\Delta f_{\rm CW} = +0.0007$); they use the approximate $k=20$
+membership, which differs from the exact rerun by $100$ galaxies
+($0.016$--$0.18\%$) and changes no verdict.}
 \label{tab:desivast_canonical}
 \begin{ruledtabular}
 \begin{tabular}{lrrrr}
 Class & $n$ & $n_{\rm CW}$ & $f_{\rm CW}$ & $\sigma_{\rm from\,half}$ \\
 \hline
+\multicolumn{5}{l}{\textit{Primary estimand (exact $k$-unbounded membership)}} \\
+DESIVAST void (exact) & $57{,}081$ & $28{,}339$ & $0.4965$ & $-1.69$ \\
+Footprint-restricted non-void (exact) & $253{,}276$ & $126{,}202$ & $0.4983$ & $-1.73$ \\
+\hline
+\multicolumn{5}{l}{\textit{Sensitivity-check control ($k=20$ membership; unrestricted)}} \\
 DESIVAST void (k=20) & $56{,}981$ & $28{,}286$ & $0.4964$ & $-1.71$ \\
 Non-void (k=20)      & $621{,}964$ & $309{,}173$ & $0.4971$ & $-4.59$ \\
-\hline
-\multicolumn{5}{l}{\textit{Footprint-restricted control}} \\
-Footprint-restricted non-void (exact) & $253{,}276$ & $126{,}202$ & $0.4983$ & $-1.73$ \\
 \end{tabular}
 \end{ruledtabular}
 \end{table*}
@@ -3025,6 +3061,12 @@ geometry (see also \S\ref{sec:desivast_xmatch}). This is a construction
 choice, not the unique official DESIVAST galaxy-membership definition;
 the DESIVAST catalog also provides per-galaxy catalog-native GALZONE
 (zone membership) flags for the V2-REVOLVER and V2-VIDE algorithms.
+For those catalog-native contrasts the void/non-void split is taken
+\emph{within the GALZONE-joined valid BGS parent} (an inner join on
+\texttt{TARGET}; \S\ref{sec:desivast_catalog_native}), so both classes
+share the identical catalog-valid footprint by construction and no
+catalog-invalid row (\texttt{OUT}$\neq0$ or unassigned zone) is pooled
+into the non-void complement.
 Three supporting cross-checks demonstrate robustness across membership
 variants: (i) the maximal-sphere-interior rerun ($n_{\rm void} = 20{,}900$;
 a strict sub-set of the hole-sphere union, \S\ref{sec:desivast_maximal_healpix})
@@ -3328,9 +3370,15 @@ The declared primary estimand $\Delta f_{\rm CW} \equiv
 f_{\rm CW}^{\rm non\mbox{-}void} - f_{\rm CW}^{\rm void}$
 (sign convention of Table~\ref{tab:desivast_three_algo}) is now also
 tabulated on the catalog-native axis, with the non-void complement
-defined as the GALZONE-joined rows that fail the catalog-native void
-cut (\texttt{OUT}$=0\,\wedge\,$\texttt{ZONE}$\geq 0\,\wedge\,$%
-\texttt{VOID0}$\geq 0$). V2-REVOLVER: $n_{\rm void} = 104{,}912$
+defined as the rows \emph{within the GALZONE-joined valid BGS parent}
+(inner join on \texttt{TARGET}, which is itself the valid-footprint
+restriction --- catalog-invalid targets absent from the GALZONE HDU
+never enter either class) that fail the catalog-native void cut
+(\texttt{OUT}$=0\,\wedge\,$\texttt{ZONE}$\geq 0\,\wedge\,$%
+\texttt{VOID0}$\geq 0$). Both classes therefore draw from the identical
+$145{,}789$-row catalog-valid parent (void~$+$~non-void~$=145{,}789$ for
+each algorithm), so the non-void sample is the true valid-footprint
+complement, not a pool of catalog-excluded rows. V2-REVOLVER: $n_{\rm void} = 104{,}912$
 ($f_{\rm CW}^{\rm void} = 0.4992$) vs $n_{\rm non\mbox{-}void} =
 40{,}877$ ($f_{\rm CW}^{\rm non\mbox{-}void} = 0.4955$),
 $\Delta f_{\rm CW} = -0.0037$, ${\rm SE}(\Delta) = 0.0029$,
@@ -3354,6 +3402,57 @@ at most $0.04$ ($0.08$)\,pp for either algorithm, with all variants
 still null ($|\sigma| \leq 1.80$). The V2-REVOLVER
 catalog-native $\sigma = -0.52$ at $n_{\rm void} > 10^{5}$ is the
 cleanest single chirality-in-voids measurement in this paper.
+
+\emph{Consolidated Bonferroni-5 family.}
+Table~\ref{tab:bonferroni5_family} collects all five members of the
+primary void-definition family --- the three sphere-PIS rows of
+Table~\ref{tab:desivast_three_algo} and the two catalog-native GALZONE
+rows above --- in a single tabulation with a common sign convention
+($\Delta f_{\rm CW} \equiv f_{\rm CW}^{\rm non\mbox{-}void} -
+f_{\rm CW}^{\rm void}$), the parent/membership definition for each row,
+integer void/non-void counts, and the two-sample $z_\Delta$ and
+$p_\Delta$. This is the ``Bonferroni-5 primary family'' referenced in the
+abstract and in Table~\ref{tab:analysis_tree}; the five members are
+\emph{correlated variants} (they reuse the same $z\!\le\!0.24$
+matched-spiral subsample and differ only in the void-finding algorithm
+and membership definition), so the family-wise Bonferroni threshold
+$|z|^{\rm Bonf}_{0.05,5}\!\approx\!2.58$ is conservative for a fully
+correlated family (\S\ref{sec:primary_path}). All five members sit well
+below that threshold, so the family-wise null holds.
+
+\begin{table*}[ht]
+\caption{Consolidated Bonferroni-5 primary void-definition family
+(three sphere-PIS rows from Table~\ref{tab:desivast_three_algo} plus the
+two catalog-native GALZONE rows). Common sign convention
+$\Delta f_{\rm CW} \equiv f_{\rm CW}^{\rm non\mbox{-}void} -
+f_{\rm CW}^{\rm void}$ (fractional units). The five members are
+\emph{correlated variants} on a common $z\!\le\!0.24$ matched-spiral
+subsample, so the Bonferroni-5 threshold $|z|\!\approx\!2.58$ is
+conservative. All five are nominal nulls below that threshold. Sphere-PIS
+rows use point-in-sphere KDTree membership against published
+void-effective-radius spheres (author-constructed approximation);
+GALZONE rows use the official catalog-native per-galaxy
+\texttt{OUT}$=0\,\wedge\,$\texttt{ZONE}$\ge0\,\wedge\,$\texttt{VOID0}$\ge0$
+membership. Artifacts:
+\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/17\_v0151\_closure\_recomputes.json}{[A10]}
+(sphere-PIS),
+\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/30\_ext4\_galzone\_complement\_contrasts.json}{[A2]}
+(GALZONE).}
+\label{tab:bonferroni5_family}
+\begin{ruledtabular}
+\begin{tabular}{llrrrrr}
+Void definition & Membership (parent) & $n_{\rm void}$ &
+$n_{\rm non\mbox{-}void}$ & $\Delta f_{\rm CW}$ & $z_\Delta$ &
+$p_\Delta$ \\
+\hline
+VoidFinder & sphere-PIS ($k\!=\!20$; $n_{\rm lz}=678{,}945$) & $56{,}981$ & $621{,}964$ & $+0.0007$ & $+0.31$ & $0.76$ \\
+V2-REVOLVER & sphere-PIS ($n_{\rm lz}=678{,}945$) & $102{,}911$ & $576{,}034$ & $-0.0019$ & $-1.12$ & $0.26$ \\
+V2-VIDE & sphere-PIS ($n_{\rm lz}=678{,}945$) & $81{,}354$ & $597{,}591$ & $-0.0001$ & $-0.05$ & $0.96$ \\
+V2-REVOLVER & GALZONE catalog-native ($n_{\rm join}=145{,}789$) & $104{,}912$ & $40{,}877$ & $-0.0037$ & $-1.25$ & $0.21$ \\
+V2-VIDE & GALZONE catalog-native ($n_{\rm join}=145{,}789$) & $74{,}111$ & $71{,}678$ & $+0.0019$ & $+0.72$ & $0.47$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
 
 \subsection{Maximal-void HEALPix sky-position stratification}\label{sec:desivast_maximal_healpix}
 
@@ -4541,11 +4640,20 @@ is the quotable statement. The DESIVAST path is the
 timestamped plan predates the data; see \S\ref{sec:primary_path}), so
 all quoted bounds are exploratory rather than pre-registered exclusions;
 the T-Web and other paths are explicitly secondary.
-The \emph{primary} result is the DESIVAST-anchored
-void-vs-non-void contrast (\S\ref{sec:desivast_primary}):
-$\Delta f_{\rm CW} = +0.0007$ at $n_{\rm void} = 56{,}981$
+The \emph{primary} DESIVAST estimand is the
+\emph{footprint-restricted} void-vs-non-void contrast --- both classes
+confined to the DESIVAST usable footprint, exact ($k$-unbounded)
+membership on both sides (\S\ref{sec:desivast_anchored_void}):
+$\Delta f_{\rm CW} = +0.0018$ at $n_{\rm void} = 57{,}081$,
+$n_{\rm non\mbox{-}void} = 253{,}276$
+($z_\Delta = +0.78$, two-sided $p_\Delta = 0.43$, $95\%$ CI
+$[-0.0027, +0.0064]$), consistent with parity. The broader
+all-$z\!\le\!0.24$-outside-hole contrast, $\Delta f_{\rm CW} = +0.0007$
+at $n_{\rm void} = 56{,}981$
 ($z_\Delta = +0.31$, two-sided $p_\Delta = 0.76$, $95\%$ CI
-$[-0.0036, +0.0050]$), robust across all three published DESIVAST
+$[-0.0036, +0.0050]$), is a \emph{sensitivity check}; the two agree to
+within $0.11$\,pp, so the null verdict is invariant to the control-volume
+choice. The primary is robust across all three published DESIVAST
 void-finding algorithms ($|z_\Delta| \leq 1.12$,
 Table~\ref{tab:desivast_three_algo}) and the catalog-native zone
 definitions ($|z_\Delta| \leq 1.25$; Bonferroni-5 family null
@@ -4964,6 +5072,24 @@ tabulated rows provide a reproducibility anchor; the
 $\chi^2$ values are computed against the same artifact arrays.
 
 \section{Data and code availability}\label{sec:data_code}
+
+\emph{Data Availability Statement.} All primary inputs are public.
+(i)~DESI Data Release~1 redshifts: the \texttt{zall-pix-iron} healpix
+redshift catalog (Iron spectroscopic reduction, DR1), available from
+\url{https://data.desi.lbl.gov/public/dr1/}.
+(ii)~DESIVAST void value-added catalog: the DR1 public VAC release
+(\texttt{DESIVAST\_BGS\_VOLLIM} VoidFinder, V2-REVOLVER, and V2-VIDE
+FITS files, NGC$+$SGC caps)~\cite{DESIVAST2025}.
+(iii)~Chirality catalog (Paper~IV): the CC-BY-4.0 per-galaxy
+\texttt{class\_eq} label catalog mirrored on HuggingFace at
+\href{https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog}%
+{\texttt{bamfai/galaxy-chirality-catalog}} (catalog tag matching
+manuscript \texttt{\paperVersion}).
+(iv)~All analysis code, configuration, derived parquet files, and
+per-output provenance JSON are committed to the companion GitHub
+repository at the \texttt{\paperVersion} tag and archived in a
+DOI-minted Zenodo snapshot accompanying journal submission (DOI to be
+minted at acceptance; see below).
 
 The companion data repository referenced throughout this paper is the
 versioned GitHub repository
