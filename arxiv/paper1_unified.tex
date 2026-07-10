@@ -51,7 +51,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \providecommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1U.0.9}
+\newcommand{\paperVersion}{v1U.0.10}
 \newcommand{\paperTimestamp}{July 10, 2026}
 % v1U.0.7 (2026-07-09 — PROCESS-LEAK SCRUB. Two body-text sentences that referenced the
 %   internal review process were rewritten as standalone scientific prose (NO number changed,
@@ -1207,9 +1207,10 @@ channel-level assessment, \emph{not} an operator-level theorem: the four
 enumerated routes (NJL, one-loop EA, Immirzi running, parity-CMB) are not
 proven to be a complete diffeomorphism-invariant operator basis for the
 minimal-ECH effective action. The two previously-omitted parity-odd operators
-(Jackiw-Pi gravitational Chern-Simons $R\!\wedge\!\tilde R$; parity-odd
+(Jackiw-Pi gravitational Chern-Simons $R\!\wedge\!\tilde R$; the vector--axial
 four-fermion partner with $\gamma_{\rm BI}/(\gamma_{\rm BI}^2+1)\cdot 8\pi G$
-coefficient) are now closed explicitly at the operator level
+coefficient, which per Freidel--Minic--Takeuchi arises only under non-minimal
+fermion coupling --- minimal coupling gives only the axial--axial R1 term) are now closed explicitly at the operator level
 (Sec.~\ref{sec:jackiwpi_cs}, Sec.~\ref{sec:r1_parityodd_partner}): the former is
 a total derivative for constant coupling and R4-class otherwise, the latter
 inherits R1's $M_{\rm Pl}^{-2}$ suppression as the parity-odd projection of the
@@ -1224,7 +1225,10 @@ $+1$, and single-scale power counting ($\Lambda\sim\MPl$, no cancellation)
 forces its natural density to $\rho_\Lambda^{\rm ECH}\sim\MPl^4$, never
 $(\text{meV})^4$ (Appendix~\ref{app:dimensions}). The genuine local
 dimension-$4$ parity-odd completion is enumerated explicitly
-(Appendix~\ref{app:dim4_completion}, with symbolic verification): every
+(Appendix~\ref{app:dim4_completion}, with the two load-bearing tensor
+identities verified symbolically --- the $\varepsilon R=0$ Bianchi contraction
+and the $\varepsilon\varepsilon=3!\,\delta$ collapse --- not a completeness
+proof, which is argued analytically): every enumerated
 admissible dimension-$4$ parity-odd density is topological
 (Nieh--Yan/Pontryagin, zero vacuum energy), Fierz-basis-reducible to the
 $\MPl^{-2}$-suppressed four-fermion contact sector, or Bianchi-vanishing, so
@@ -1682,7 +1686,19 @@ S_{\rm ECH} &= \frac{1}{16\pi G} \int d^4x\, e \Bigl[e^\mu_a\,e^\nu_b\,R^{ab}_{\
 \end{align}
 where $e = \det(e^a_\mu)$ is the tetrad determinant, $R^{ab}_{\;\;\;\mu\nu}$ is
 the curvature of the Lorentz connection, $\gamma$ is the Barbero-Immirzi
-parameter, and $T^{abc}$ is the torsion tensor.\footnote{Two convention
+parameter, and $T^{abc}$ is the torsion tensor. To forestall any ambiguity in
+the variational principle, we read Eq.~\eqref{eq:ECH} as a \emph{two-step}
+object: (step~1) the fundamental, off-shell first-order
+Einstein--Cartan--Holst$+$Dirac action is varied with respect to the
+independent fields $\{e^a_\mu,\omega^{ab}_\mu,\psi\}$ --- the displayed
+$\tfrac14 T^{abc}T_{abc}$ is \emph{not} present as an independent term at this
+stage and is \emph{not} varied; (step~2) the algebraic Cartan equation
+Eq.~\eqref{eq:torsion} is solved pointwise and back-substituted, and only the
+resulting effective four-fermion contact term Eq.~\eqref{eq:4fermi} appears.
+The $\tfrac14 T^{abc}T_{abc}$ written above is purely the on-shell Hehl--Datta
+shorthand for that step-2 effective term; Eqs.~\eqref{eq:torsion}--\eqref{eq:4fermi}
+are therefore derived from the step-1 off-shell action, not from varying the
+displayed shorthand.\footnote{Two convention
 notes for Eq.~\eqref{eq:ECH}. (i)~The displayed $\tfrac{1}{4}T^{abc}T_{abc}$
 is an on-shell Hehl--Datta \emph{shorthand} for the four-fermion contact
 term obtained after eliminating the non-propagating torsion via the Cartan
@@ -2071,12 +2087,19 @@ density is $\rho_\Lambda = \Leff\,\MPl^2 = \Xi\,\MPl^4$, so $\Xi$ is the
 dimensionless ratio $\rho_\Lambda/\MPl^4$ --- consistent with the
 $\Xi \lesssim 10^{-123}$ identification below and the $\MPl^4$ ansatz of
 Appendix~B. Throughout this paper $\MPl = G^{-1/2} \approx
-1.22\times 10^{19}\,$GeV is the \emph{unreduced} Planck mass, with
-$\kappa \equiv 8\pi G = \MPl^{-2}$; the companion gravitational coupling
-is $\kappa^2 = 16\pi G$ in the one-loop renormalisation conventions of
-Shapiro~\&~Teixeira~\cite{ShapiroTeixeira2014}.\footnote{Planck-mass and
+1.22\times 10^{19}\,$GeV is the \emph{unreduced} Planck mass, so that
+$\kappa \equiv 8\pi G = 8\pi\,\MPl^{-2} = \bar M_{\rm Pl}^{-2}$ with
+$\bar M_{\rm Pl}=(8\pi G)^{-1/2}=\MPl/\sqrt{8\pi}$ the reduced Planck mass;
+the compact identity $\kappa=M_{\rm Pl}^{-2}$ used as shorthand in the
+order-of-magnitude estimates below is understood in this reduced-mass sense,
+the $8\pi\approx25$ factor being immaterial to every such estimate
+(the reduced-mass distinction is a factor $8\pi$ in $M_{\rm Pl}^2$, below the
+order-of-magnitude resolution of all contact-term and amplitude budgets). The
+companion one-loop coupling is $\kappa^2 = 16\pi G$ in the renormalisation
+conventions of Shapiro~\&~Teixeira~\cite{ShapiroTeixeira2014}.\footnote{Planck-mass and
 $\kappa$ conventions: main-text analyses use unreduced $\MPl=G^{-1/2}
-\approx 1.22\times10^{19}\,$GeV with $\kappa=8\pi G=\MPl^{-2}$.
+\approx1.22\times10^{19}\,$GeV; $\kappa=8\pi G=8\pi\MPl^{-2}=\bar M_{\rm Pl}^{-2}$, and
+$\kappa=M_{\rm Pl}^{-2}$ appears only as a reduced-mass shorthand in order-of-magnitude budgets.
 Appendix~\ref{sec:p1b_torsion_neff} (the bespoke ECH-sector $\Delta\Neff$
 calculation) uses the \emph{reduced} Planck mass
 $\bar M_{\rm Pl}=(8\pi G_N)^{-1/2}\approx2.44\times10^{18}$\,GeV for
@@ -2458,7 +2481,9 @@ gauge- and Lorentz-invariant operators that can carry a coherent $w=-1$ density
 are then exhausted, at mass dimension $\le 6$, by (i)~the
 torsion-squared/four-fermion class (all Fierz structures $VV,AA,VA,TT$, sharing
 the single $\kappa=M_{\rm Pl}^{-2}$ prefactor of the same torsion-elimination
-operator---R1 and its Holst partner are two projections, and any Fierz
+operator---minimal coupling yields only the axial--axial R1 projection
+[Freidel--Minic--Takeuchi~\cite{Freidel2005}], while the vector--axial
+``Holst partner'' arises only under non-minimal coupling; either way any Fierz
 rearrangement is an $O(1)$ recombination that cannot alter the $M_{\rm
 Pl}^{-2}$ power), and (ii)~the parity-odd curvature/topological class (Holst,
 Nieh--Yan, and the Jackiw--Pi gravitational Chern--Simons term), each a total
@@ -2601,7 +2626,17 @@ $\langle J^5 J^5\rangle$ of the four-fermion contact operator is zero
 --- an incoherent thermal contribution from the variance is permitted ---
 but such an incoherent contribution does not carry a coherent
 $w=-1$ equation of state and is in any case bounded above by the
-amplitude estimate of leg (i).
+amplitude estimate of leg (i). We stress the scope precisely: what is
+established here is the finite-density, mean-field bound of leg~(i) together
+with the absence of a coherent $w=-1$ structure of leg~(ii); we do
+\emph{not} claim to exclude a fully regulated NJL vacuum condensate
+$\langle\psi\bar\psi\rangle\neq0$ via a gap equation and effective potential
+--- that self-consistent strong-coupling analysis is beyond the present
+mean-field treatment and is noted as an out-of-scope open item
+(Sec.~\ref{sec:barriers}), not as a solved case. What we do claim, and what
+leg~(i) delivers, is that at the $\kappa=M_{\rm Pl}^{-2}$ Planck-suppressed
+coefficient no such condensate can reach the $(\text{meV})^4$ scale without a
+new light scale, which is the tuning the mechanism is meant to explain.
 The combined conclusion is therefore: amplitude-suppressed (by ${\sim}70$
 orders relative to $\rho_\Lambda$) \emph{and} parity-even / mean-zero in
 the coherent dark-energy sense
@@ -2625,17 +2660,29 @@ Planck suppression and vanishing mean field}
 The pure-axial contact term of Eq.~\eqref{eq:4fermi} retains only the
 parity-even $J^5\!\cdot\!J^5$ projection of the operator generated by
 integrating out torsion in the Holst-extended Einstein--Cartan
-action~\cite{Freidel2005,Mercuri2009}. At finite Barbero--Immirzi parameter the
-same torsion-elimination step also produces a parity-\emph{odd} vector--axial
-cross term, the genuine ``Holst partner'' flagged in the Scope paragraph,
+action~\cite{Freidel2005,Mercuri2009}. We stress the minimal-coupling
+status of this projection explicitly, following the effective-Lagrangian
+analysis of Freidel, Minic \& Takeuchi~\cite{Freidel2005}: with the
+\emph{minimally} coupled Dirac action the spin current is totally
+antisymmetric (structural fact F2, Sec.~\ref{sec:fourroute}), the effective
+four-fermion interaction contains \emph{only} the parity-even axial--axial
+$J^5\!\cdot\!J^5$ term, and there is no parity violation --- exactly
+Eq.~\eqref{eq:4fermi}. A parity-\emph{odd} vector--axial cross term arises in
+that same analysis \emph{only} once a \emph{non-minimal} fermion--torsion
+coupling is switched on; it is therefore \emph{not} a minimal-ECH operator but
+a non-minimal ``Holst partner,''
 \begin{equation}\label{eq:4fermi_partner}
 \mathcal{L}^{\rm VA}_{\rm int}
 \;\propto\; \frac{\gamma_{\rm BI}}{\gamma_{\rm BI}^2+1}\,8\pi G\;
 J_\mu\,J^{5\mu},
 \end{equation}
-whose coefficient carries a single power of $\gamma_{\rm BI}$ in the numerator
+present only under non-minimal coupling. Its
+coefficient carries a single power of $\gamma_{\rm BI}$ in the numerator
 (parity-odd), versus the $\gamma_{\rm BI}^2$ of the parity-even R1 term
-Eq.~\eqref{eq:4fermi}. This operator does \emph{not} open a new dark-energy
+Eq.~\eqref{eq:4fermi}. We include it here for completeness --- to show that
+\emph{even if} the minimal-coupling restriction is relaxed to admit this
+non-minimal partner, the route stays closed --- not as a claim that it is
+present in the minimal theory. This operator does \emph{not} open a new dark-energy
 route, by the same two-leg argument that closes R1, because it is literally the
 third projection of the identical dimension-6 torsion-elimination operator
 (the R1 and R4 projections are the other two, as stated in the Scope
@@ -4760,7 +4807,16 @@ available scale $\MPl^{2}$ explicitly in each operator definition
 lower-dimension object. Column ``$\dim$'' below records the naive dimension of
 the \emph{bare} schematic invariant; the tabulated operator
 $\mathcal{O}_n^{[4]}$ is that invariant multiplied by the prefactor of
-column ``prefactor'' so that $[\mathcal{O}_n^{[4]}]=+4$ throughout.
+column ``prefactor'' so that $[\mathcal{O}_n^{[4]}]=+4$ throughout. The
+``Fate'' column records the reduction of the \emph{bare} invariant (hence its
+$\kappa$-power tracks the bare dimension: O4's bare torsion-square
+$\varepsilon T T\to\kappa^2(J^5\!\cdot\!J^5)$ at dim~$+2$, O5's bare
+$\varepsilon T e J^5\to\kappa(J^5\!\cdot\!J^5)$ at dim~$+4$). Restoring each
+prefactor, the two \emph{genuine} dimension-$4$ densities land on the same
+member of the Fierz basis at the same power: $\mathcal{O}_4^{[4]}=\MPl^2\cdot
+\kappa^2(J^5\!\cdot\!J^5)=\kappa(J^5\!\cdot\!J^5)$ [using $\MPl^2\kappa^2=\kappa$]
+$=\mathcal{O}_5^{[4]}$, both at dimension~$+4$ and both
+$\MPl^{-2}$-suppressed --- consistent with the ``$+4$ throughout'' contract.
 
 \begin{table*}[t]
 \caption{Local dimension-$4$ parity-odd densities of minimal ECH, their
@@ -4825,7 +4881,12 @@ contributing zero to the local equations of motion and zero to the vacuum
 energy, independently of torsion.
 
 \textit{Verdict.}---Every admissible local dimension-$4$ parity-odd density in
-minimal ECH is (i)~a topological total-derivative term (O2, O3) contributing
+minimal ECH \emph{within the enumerated set $\{$O1--O6$\}$ at the stated
+power-counting order} (the non-enumerated classes of the Fierz scope caveat
+below --- derivative four-fermion terms, higher-curvature--torsion mixed
+invariants, multi-species chiral structures, dynamical-Immirzi coefficients,
+non-minimal torsion irreps --- are explicitly excluded) is
+(i)~a topological total-derivative term (O2, O3) contributing
 nothing to the EOM or vacuum energy; (ii)~a four-fermion contact term (O4, O5)
 that collapses via the algebraic Cartan constraint to the Fierz-closed basis
 with natural coefficient $\sim\MPl^4$; or (iii)~a single-curvature parity-odd
@@ -4847,7 +4908,9 @@ Four-Fermion Basis}\label{app:fierz}
 The torsion-elimination step (Sec.~\ref{sec:parityodd},
 Eqs.~\eqref{eq:torsion}--\eqref{eq:4fermi_partner}) generates, at the single
 prefactor $\kappa=8\pi G=M_{\rm Pl}^{-2}$, the axial--axial contact term
-$c_{AA}\,(J^5\!\cdot\!J^5)$ and---at finite Barbero--Immirzi parameter---the
+$c_{AA}\,(J^5\!\cdot\!J^5)$ (the only structure present under \emph{minimal}
+fermion coupling, per Freidel--Minic--Takeuchi~\cite{Freidel2005}) and---only
+once a \emph{non-minimal} fermion coupling is admitted---the
 vector--axial Holst partner $c_{VA}\,(J\!\cdot\!J^5)$. We prove that the
 complete Fierz rearrangement of these operators closes onto the enumerated
 dimension-$\le 6$ parity-relevant basis with \emph{no} escape operator and
