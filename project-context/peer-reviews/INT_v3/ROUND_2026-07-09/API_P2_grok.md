@@ -1,8 +1,8 @@
 # INT API Review — P2 v1.7.102 — grok (grok-4.3)
 paper: P2  version: v1.7.102  model: grok-4.3
 modality: native-PDF (/v1/files file_id)
-UTC: 2026-07-09T17:42:35.742204Z  |  latency: 39.2s  |  attempt: 1
-usage: {"input_tokens": 36142, "input_tokens_details": {"cached_tokens": 192}, "output_tokens": 1468, "output_tokens_details": {"reasoning_tokens": 973}, "total_tokens": 37610, "num_sources_used": 0, "num_server_side_tools_used": 0, "cost_in_usd_ticks": 486459000, "context_details": {"input_tokens": 36142, "output_tokens": 1469}}
+UTC: 2026-07-10T07:50:06.831571Z  |  latency: 23.7s  |  attempt: 1
+usage: {"input_tokens": 36084, "input_tokens_details": {"cached_tokens": 896}, "output_tokens": 1102, "output_tokens_details": {"reasoning_tokens": 614}, "total_tokens": 37186, "num_sources_used": 0, "num_server_side_tools_used": 0, "cost_in_usd_ticks": 469192000, "context_details": {"input_tokens": 36084, "output_tokens": 1103}}
 PARSED VERDICT: MAJOR REVISIONS
 
 ======================================================================
@@ -12,10 +12,10 @@ RAW RESPONSE (verbatim):
 (1) VERDICT: MAJOR REVISIONS
 
 (2) ISSUES:
-[MAJOR] Sec. II A & Appendix A: The claimed resolution of the Cai–Li factor-of-two discrepancy as a single “arithmetic error” (spurious +(99/128) term in Eq. 37) is asserted without reproducing the explicit four-vertex summation or the intermediate ϵ-ordered expressions in the main text; readers cannot verify the correction independently from the published Cai expressions alone.
-[MAJOR] Sec. II C (assumption (d)) & Sec. IV: The entire forecast rests on “faithful cubic-order transmission” through the bounce, which is only linearly verified in Ref. [4] and closed by a scaling argument O((kη_bounce)^2)∼10^{-4}; no explicit cubic bounce calculation or bound on δf_NL is supplied, rendering the central sensitivity claim conditional on an untested assumption.
-[MAJOR] Sec. III B & IV: The headline 2.6–2.75σ (and post-systematic 1.3–2.75σ) ranges are obtained by rescaling the external Heinrich et al. σ(f_NL)≈0.7 baseline with a single template-mismatch factor r=0.84; the independent in-house Fisher is presented only as “validation,” so the result is not an independent forecast and the systematic budget is combined in quadrature without a joint covariance.
-[MINOR] Throughout: The 36-page length, repeated self-referential citations to private code/json files, and dense hedging language (“conditional on assumptions (a)–(f)”, “illustrative”, “scoping envelope”) obscure the central result and exceed typical PRD expectations for clarity and conciseness.
-[MINOR] Sec. VI & Table III: The Bayes-factor grid is computed under a closed-form formula that assumes the bounce prior is exactly centered on the corrected value; the effect of the 0.6–8% ϵ-correction and the 13% null-space scatter on the prior width is only discussed qualitatively, weakening the model-discrimination claim.
+[MAJOR] Abstract & Sec. II A: The central resolution of the Cai–Li factor-of-two discrepancy rests on an identified transcription error in Cai et al. Eq. (37) (a −(99/128)∑k_i^3 term) and a direct vertex re-summation claimed to yield exactly −35/16; however, the paper provides neither the explicit four-vertex algebra nor the full in-in symmetrized expressions in the main text or visible appendices, rendering independent verification impossible.
+[MAJOR] Sec. II C (assumption (d)) & abstract: The entire forecast is conditional on faithful cubic-order bispectrum transmission through the bounce, asserted to hold at O((kη_bounce)^2)∼10^{-4} via single-clock nonlinear adiabaticity; yet the paper itself states this is “verified only at linear order” [4] and offers only a scaling estimate (not a derived bound) at cubic order, violating the standard requirement that all load-bearing assumptions be rigorously demonstrated.
+[MAJOR] Sec. IV & VII: The headline 1.3–2.75σ range is obtained by rescaling an external Heinrich et al. σ(f_NL)≈0.7 via an ad-hoc template-mismatch factor r=0.84 plus an “additive-quadrature systematic budget” whose individual contributions are never jointly marginalized; this is not a forecast but a scoping envelope whose numerical endpoints cannot be directly compared, contrary to PRD standards for quantitative sensitivity claims.
+[MINOR] Sec. II B & Appendix A: Multiple references to “committed symbolic check,” “c9i epsilon ratio check.json,” and “null space analysis.py” as the sole evidence for coefficient sets and vertex sums; these external artifacts must be replaced by self-contained analytic expressions or tabulated intermediate results.
+[MINOR] Throughout: The manuscript is 38 pages with extensive self-referential code/data-availability statements; the length is driven by defensive bookkeeping rather than new physics, violating PRD’s preference for concise presentation of incremental results.
 
-(3) The central claim that SPHEREx can meaningfully test the corrected matter-bounce prediction f_NL=−35/16 is supported only at the marginal ∼1.3–2σ level once all stated systematics, template mismatch, and imported-forecast caveats are included.
+(3) The central claim (f_NL^local = −35/16 with detectable SPHEREx significance) is supported only conditionally on unverified cubic transmission and an external rescaling whose systematic budget is not jointly propagated.

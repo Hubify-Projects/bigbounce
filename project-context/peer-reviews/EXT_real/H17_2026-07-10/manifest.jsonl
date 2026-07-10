@@ -1,0 +1,33 @@
+{"paper":"P1U","reviewer":"grok","url":"https://grok.com/project/e6c9ce77-4f86-4d94-b440-1062a78171c1?chat=cda657aa-09f4-40e7-b033-fbee26872be6","status":"submitted","ts":"2026-07-10T00:10-07:00"}
+{"paper":"P2","reviewer":"grok","url":"https://grok.com/project/e6c9ce77-4f86-4d94-b440-1062a78171c1?chat=3ff508e1-1a17-4125-aafa-082b75a90ca9","status":"submitted"}
+{"paper":"P3","reviewer":"grok","url":"https://grok.com/project/e6c9ce77-4f86-4d94-b440-1062a78171c1?chat=836b761c-5a95-4946-a0ac-efa8fe2b6031","status":"submitted"}
+{"paper":"P4","reviewer":"grok","url":"https://grok.com/project/e6c9ce77-4f86-4d94-b440-1062a78171c1?chat=81fab6c8-df66-4b37-8222-8551465a0237","status":"submitted"}
+{"paper":"P5","reviewer":"grok","url":"https://grok.com/project/e6c9ce77-4f86-4d94-b440-1062a78171c1?chat=c8f76e8e-69ec-4e5f-bbbd-af7db21421bb","status":"submitted"}
+{"paper":"P1U","reviewer":"chatgpt","url":"https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a509a39-5978-83e8-aebf-8f7dcb3621fd","status":"submitted"}
+{"paper":"P2","reviewer":"chatgpt","url":"https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a509a5d-2234-83e8-84e2-2ef5911da6b3","status":"submitted"}
+{"paper":"P3","reviewer":"chatgpt","url":"https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a509a80-cf8c-83e8-a2ff-54b3e09a365b","status":"submitted"}
+{"paper":"P4","reviewer":"chatgpt","url":"https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a509aa5-025c-83e8-a455-71b0f2b6df6c","status":"submitted"}
+{"paper":"P5","reviewer":"chatgpt","url":"https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a509acf-1a78-83e8-9cd8-de13fc0ec1f6","status":"submitted"}
+{"paper":"P1U","reviewer":"gemini","url":"https://gemini.google.com/u/1/app/4b6478dacefc0434","status":"submitted"}
+{"paper":"P2","reviewer":"gemini","url":"https://gemini.google.com/u/1/app/46aba79e8fb3b3b9","status":"submitted"}
+{"paper":"P3","reviewer":"gemini","url":"https://gemini.google.com/u/1/app/51d3578729c0463e","status":"submitted"}
+{"paper":"P4","reviewer":"gemini","url":"https://gemini.google.com/u/1/app/8ef554bf995ca492","status":"submitted"}
+{"paper":"P5","reviewer":"gemini","url":"https://gemini.google.com/u/1/app/06dffc8219548d98","status":"submitted"}
+{"paper":"P1U","reviewer":"gemini","round":"retry1","url":"https://gemini.google.com/u/1/app/beeff359708d2ded","status":"DROPPED"}
+{"paper":"P2","reviewer":"gemini","round":"retry1","url":"https://gemini.google.com/u/1/app/5e4035c2547a7816","status":"DROPPED"}
+{"paper":"P3","reviewer":"gemini","round":"retry1","url":"https://gemini.google.com/u/1/app/3b766f0e6e99b85e","status":"DROPPED"}
+{"paper":"P4","reviewer":"gemini","round":"retry1","url":"https://gemini.google.com/u/1/app/b243c0f5967f3b49","status":"DROPPED"}
+{"paper":"P1U","reviewer":"gemini","round":"H17","status":"FAILED-upload-throttle","note":"silent chip-drop before send; retry next cycle fresh session"}
+{"paper":"P2","reviewer":"gemini","round":"H17","status":"FAILED-upload-throttle","note":"silent chip-drop before send; retry next cycle fresh session"}
+{"paper":"P3","reviewer":"gemini","round":"H17","status":"FAILED-upload-throttle","note":"silent chip-drop before send; retry next cycle fresh session"}
+{"paper":"P4","reviewer":"gemini","round":"H17","status":"FAILED-upload-throttle","note":"silent chip-drop before send; retry next cycle fresh session"}
+{"paper":"P1U","reviewer":"grok","round":"retest","url":"https://grok.com/project/e6c9ce77-4f86-4d94-b440-1062a78171c1?chat=65652c97-aa61-4328-b27f-1e2602ce5f2d","status":"submitted"}
+{"paper":"P2","reviewer":"grok","round":"retest","url":"https://grok.com/project/e6c9ce77-4f86-4d94-b440-1062a78171c1?chat=31c80937-00d9-4775-98be-2622d01355e2","status":"submitted"}
+{"paper":"P3","reviewer":"grok","round":"retest","url":"https://grok.com/project/e6c9ce77-4f86-4d94-b440-1062a78171c1?chat=b0b90a81-5381-4bd8-8e50-21feae3ef038","status":"submitted"}
+{"paper":"P4","reviewer":"grok","round":"retest","url":"https://grok.com/project/e6c9ce77-4f86-4d94-b440-1062a78171c1?chat=3019befd-7c22-4d87-ac9a-8f263b81b64d","status":"submitted"}
+{"paper":"P5","reviewer":"grok","round":"retest","url":"https://grok.com/project/e6c9ce77-4f86-4d94-b440-1062a78171c1?chat=c289e8d5-4b73-486d-8ffc-94496f968454","status":"submitted"}
+{"paper":"P1U","reviewer":"chatgpt","round":"retest","url":"https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a50aafb-dde8-83e8-9c60-82b5821e309c","status":"submitted"}
+{"paper":"P2","reviewer":"chatgpt","round":"retest","url":"https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a50ab20-a1d0-83e8-b98d-bee4a4d3680d","status":"submitted"}
+{"paper":"P3","reviewer":"chatgpt","round":"retest","url":"https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a50ab45-e960-83e8-8515-db999361d298","status":"submitted"}
+{"paper":"P4","reviewer":"chatgpt","round":"retest","url":"https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a50ab69-f8fc-83e8-95c3-a9b01abe0f95","status":"submitted"}
+{"paper":"P5","reviewer":"chatgpt","round":"retest","url":"https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a50ab8d-9be0-83e8-a92e-85f35280c3f5","status":"submitted"}

@@ -1,8 +1,8 @@
 # INT API Review — P1U v1U.0.1 — grok (grok-4.3)
 paper: P1U  version: v1U.0.1  model: grok-4.3
 modality: native-PDF (/v1/files file_id)
-UTC: 2026-07-09T17:40:34.080803Z  |  latency: 31.4s  |  attempt: 1
-usage: {"input_tokens": 34963, "input_tokens_details": {"cached_tokens": 192}, "output_tokens": 1189, "output_tokens_details": {"reasoning_tokens": 760}, "total_tokens": 36152, "num_sources_used": 0, "num_server_side_tools_used": 0, "cost_in_usd_ticks": 464746500, "context_details": {"input_tokens": 34963, "output_tokens": 1191}}
+UTC: 2026-07-10T07:34:55.235089Z  |  latency: 31.2s  |  attempt: 1
+usage: {"input_tokens": 35395, "input_tokens_details": {"cached_tokens": 192}, "output_tokens": 1050, "output_tokens_details": {"reasoning_tokens": 626}, "total_tokens": 36445, "num_sources_used": 0, "num_server_side_tools_used": 0, "cost_in_usd_ticks": 466671500, "context_details": {"input_tokens": 35395, "output_tokens": 1051}}
 PARSED VERDICT: REJECT
 
 ======================================================================
@@ -12,10 +12,10 @@ RAW RESPONSE (verbatim):
 (1) VERDICT: REJECT
 
 (2) ISSUES:
-[MAJOR] Abstract/Sec. IV: The "amplitude closure" for R1–R3 and "naturalness closure" for R4 are not derived from any explicit computation of an amplitude or vacuum energy; they rest on repeated single-scale NDA power counting that the paper itself labels heuristic and non-rigorous (App. B), rendering the no-go statements circular or definitional rather than predictive.
-[MAJOR] Sec. X: The perturbation-transparency result is asserted only for canonical scalar matter with T=0; the Bianchi-identity argument is standard and does not address the propagating-torsion, dynamical-Immirzi, or fermion-loop sectors explicitly excluded in the scope paragraph, so the claimed "decoupling from all scalar/tensor EOM" does not constrain the dark-energy routes as stated.
-[MAJOR] Sec. IV F & IX: Route R4 is closed by an "explanatory-deficit" objection rather than an amplitude mismatch; this is a philosophical preference, not a technical constraint, and the paper acknowledges that the same coupling reproduces β_obs while relocating (not solving) the CC problem.
-[MINOR] Throughout (e.g., Sec. I, IX, XIV): The 14 "barriers" are enumerated by re-labeling standard EFT facts (Planck suppression, total-derivative status, thermal washout) as novel mechanism-class constraints without new derivations or quantitative bounds beyond order-of-magnitude estimates already in the literature.
-[MINOR] Sec. II C & App. B: The dark-energy mapping via Eq. (10) and the N_tot≈92 requirement are introduced as a phenomenological ansatz with no first-principles matching to the ECH action; the +1 vs. +4 mass-dimension mismatch is flagged but never resolved into a controlled local operator.
+[MAJOR] Sec. IV (Scope paragraph and R1–R4 closures): The four-route “channel-level closure” is repeatedly qualified as “not an operator-level theorem,” “not a completeness proof,” and “under explicitly-labeled scaling ansätze” with non-minimal loopholes left open; this reduces the central claim to an interpretive survey rather than a substantiated no-go.
+[MAJOR] Sec. IV A–D and App. B: The single-scale NDA dimensional no-go (off-shell mass dimension +1 forcing \(\rho_\Lambda\sim M_\mathrm{Pl}^4\)) and Fierz-by-Fierz lemma rely on heuristic power counting and on-shell reductions without a controlled EFT matching calculation or explicit Wilson-coefficient bounds; the +1-vs-+4 mismatch is an artifact of the shorthand in Eq. (6), not a rigorous operator-level obstruction.
+[MAJOR] Sec. IV F (R4 naturalness closure): Labeling the requirement \(m_\theta\sim H_0\) an “explanatory-deficit objection” rather than an amplitude mismatch is a subjective preference, not a technical constraint; the same coupling that fits \(\beta_\mathrm{obs}\) is simply reparameterized, relocating rather than resolving the CC problem.
+[MINOR] Sec. X (perturbation-transparency result): The Bianchi-identity decoupling is correctly stated for canonical scalars but the claim that it subsumes Barrier B8 is asserted without an explicit order-by-order verification of the perturbed Holst term in the tetrad formalism; the footnote distinction from Pontryagin is helpful but insufficient to close the scope.
+[MINOR] Overall manuscript: Excessive self-referential hedging (“this paper,” “under stated assumptions,” “not load-bearing”) and 14-barrier catalog inflate length without adding falsifiable content; the paper would be clearer as a concise Letter focused on the single transparency theorem.
 
-(3) The central claim—that the four enumerated minimal-ECH routes are channel-level closed—is not supported, as the arguments are scoped to restrictive assumptions, rely on heuristic NDA, and do not constitute a technical exclusion.
+(3) The central claim of channel-level amplitude closure for the four enumerated minimal-ECH dark-energy routes is not supported.
