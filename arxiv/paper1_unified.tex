@@ -51,8 +51,8 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \providecommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1U.0.8}
-\newcommand{\paperTimestamp}{July 9, 2026}
+\newcommand{\paperVersion}{v1U.0.9}
+\newcommand{\paperTimestamp}{July 10, 2026}
 % v1U.0.7 (2026-07-09 — PROCESS-LEAK SCRUB. Two body-text sentences that referenced the
 %   internal review process were rewritten as standalone scientific prose (NO number changed,
 %   nothing fabricated). (1) Sec II A 2 (~L1876): "This is the point ChatGPT's W12 referee pass
@@ -1555,8 +1555,8 @@ theoretical implications. Section~\ref{sec:surviving} summarizes surviving
 ECH-independent class tests. Section~\ref{sec:limitations} addresses limitations.
 Section~\ref{sec:conclusions} concludes.
 
-\textit{Observational appendices.}---$\Lambda$CDM$+\Delta\Neff$ MCMC verification
-(Cobaya~v3.6.1, $\mathbf{309{,}189}$ raw accepted samples across two
+\textit{Observational appendices.}---$\Lambda$CDM$+\Delta\Neff$ MCMC baseline
+envelope check (Cobaya~v3.6.1, $\mathbf{309{,}189}$ raw accepted samples across two
 converged dataset combinations: 176{,}240 full-tension + 132{,}949
 Planck+BAO+SN raw accepted samples, i.e.\ $216{,}432$ post-burn-in at the
 uniform $30\%$ cut; see Appendix~\ref{app:cosmo_methodology},
@@ -1850,24 +1850,47 @@ S_{\rm eff} = \int d^4x\,\sqrt{-g}\;\frac{\alpha}{M}\;\varepsilon^{\mu\nu\rho\si
 which has naive mass dimension $[\mathcal{L}_{\rm odd}] = +1$---three units
 short of the required $+4$ (with $[\alpha]=0$, $[M]=+1$, $[e^I_\mu]=0$, and
 $[\mathcal{F}_{IJ\rho\sigma}]=+2$, the integrand carries mass dimension
-$-1+2=+1$). We state this off-shell mismatch deliberately.
-\emph{The dimension-$+1$ form of Eq.~\eqref{eq:Seff_comp} is an on-shell
-presentation shorthand, not the fundamental action term.} The formally
-dimension-$4$, gauge-invariant, diffeomorphism-covariant off-shell operator
-of which it is the leading representative is the closed local expansion
+$-1+2=+1$). We state this off-shell mismatch deliberately, and we address it
+immediately by identifying the physical foundation before using the shorthand.
+
+\emph{Physical foundation: the dimension-$4$ off-shell operator basis.}---The
+formally dimension-$4$, gauge-invariant, diffeomorphism-covariant off-shell
+operator basis is the closed local expansion
 \begin{equation}\label{eq:Seff_dim4}
 S_{\rm eff}^{(4)} = \int d^4x\,\sqrt{-g}\sum_{n} c_n\,\mathcal{O}_n^{[4]},
 \qquad \{\mathcal{O}_n^{[4]}\}=\{\mathrm{O1}\text{--}\mathrm{O6}\},
 \end{equation}
 where each $\mathcal{O}_n^{[4]}$ is a genuine dimension-$4$ Lagrangian
 density and each Wilson coefficient $c_n$ is a dimensionless rational.
+The operators $\{$O1--O6$\}$ constitute the \emph{primary physical
+foundation} of the no-go: the single-scale NDA ceiling, the Fierz closure,
+and the Bianchi-vanishing results below are all derived properties of this
+off-shell dimension-$4$ basis; none depends on the on-shell shorthand
+Eq.~\eqref{eq:Seff_comp} for its logical force.
 Because the underlying schematic invariants carry different naive
 dimensions under the paper's conventions ($[e]=0$, $[R]=+2$, physical
 torsion $[T]=[\kappa S]=+1$, spin current $[S]=[J^5]=+3$,
 $[\kappa]=[\MPl^{-2}]=-2$), the operator \emph{definitions} include the
 explicit compensating $\MPl$ power that renders each density dimension-$4$;
 we do \emph{not} attach a dimensionless $c_n$ to a lower-dimension
-invariant. Concretely, the six densities are (names as in
+invariant.
+\emph{Shorthand and its relation to the basis.}---Eq.~\eqref{eq:Seff_comp}
+with its dimension-$+1$ integrand is the on-shell reduction of the
+dimension-$4$ basis after the algebraic Bianchi identity strips one curvature
+factor; it is a convenient dimensional-analysis shorthand, \emph{not} the
+fundamental action term and \emph{not} load-bearing for the no-go. To
+clarify the mass-dimension bookkeeping: the off-shell operators O1--O6 are
+genuinely dimension $+4$ (each carrying the compensating $\MPl^2$ factor that
+makes the Wilson coefficient dimensionless), while Eq.~\eqref{eq:Seff_comp}
+represents the same physics on the torsion-free branch after the Bianchi
+identity reduces $[\mathcal{F}_{IJ\rho\sigma}]$ from $+2$ to $+1$; the
+apparent dimension-$+1$ deficit is an artifact of that on-shell reduction,
+not of any ill-defined operator. The Case~II on-shell curvature dressing
+(inserting $R\sim\MPl^2$ to close the dimension count) is an
+\emph{illustrative heuristic}, subordinate to the operator basis and used
+solely for dimensional-analysis aesthetics; it carries no independent
+logical weight in the no-go argument.
+Concretely, the six dimension-$4$ densities are (names as in
 Table~\ref{tab:dim4_parityodd})
 \begin{align}\label{eq:dim4_defs}
 \mathcal{O}_{1}^{[4]}&=\MPl^{2}\,\varepsilon\,e^I e^J R_{IJ},
@@ -2048,8 +2071,21 @@ density is $\rho_\Lambda = \Leff\,\MPl^2 = \Xi\,\MPl^4$, so $\Xi$ is the
 dimensionless ratio $\rho_\Lambda/\MPl^4$ --- consistent with the
 $\Xi \lesssim 10^{-123}$ identification below and the $\MPl^4$ ansatz of
 Appendix~B. Throughout this paper $\MPl = G^{-1/2} \approx
-1.22\times 10^{19}\,$GeV is the \emph{unreduced} Planck mass; the
-reduced-mass distinction ($\bar M_{\rm Pl} = \MPl/\sqrt{8\pi}$, a factor
+1.22\times 10^{19}\,$GeV is the \emph{unreduced} Planck mass, with
+$\kappa \equiv 8\pi G = \MPl^{-2}$; the companion gravitational coupling
+is $\kappa^2 = 16\pi G$ in the one-loop renormalisation conventions of
+Shapiro~\&~Teixeira~\cite{ShapiroTeixeira2014}.\footnote{Planck-mass and
+$\kappa$ conventions: main-text analyses use unreduced $\MPl=G^{-1/2}
+\approx 1.22\times10^{19}\,$GeV with $\kappa=8\pi G=\MPl^{-2}$.
+Appendix~\ref{sec:p1b_torsion_neff} (the bespoke ECH-sector $\Delta\Neff$
+calculation) uses the \emph{reduced} Planck mass
+$\bar M_{\rm Pl}=(8\pi G_N)^{-1/2}\approx2.44\times10^{18}$\,GeV for
+convenient comparison with standard CMB references; numerical results in
+that appendix are self-consistent and differ from the main-text convention
+by $\sqrt{8\pi}\approx5$ in mass or $8\pi\approx25$ in $M_{\rm Pl}^2$,
+which is below the order-of-magnitude resolution of all contact-term and
+amplitude-budget estimates.}
+The reduced-mass distinction ($\bar M_{\rm Pl} = \MPl/\sqrt{8\pi}$, a factor
 $8\pi \approx 25$ in $\MPl^2$) is below the order-of-magnitude resolution
 of every estimate in this paper. The $c_\omega\omega^2$ entry is a
 phenomenological bookkeeping bound with dimensionless
@@ -2313,8 +2349,9 @@ Paper~IV~\cite{Golden2026P4}). The minimal ECH
 framework predicts a spin-dipole amplitude $A_0$ far below current
 observational sensitivity, consistent with this observed null.
 
-\textit{MCMC verification and cosmological fits.}---The $\Lambda$CDM$+\Delta\Neff$
-companion analysis finds $\Delta\Neff\approx 0$ and recovers a Hubble
+\textit{MCMC baseline envelope check and cosmological fits.}---The $\Lambda$CDM$+\Delta\Neff$
+stock-CAMB run (upper-bound observational envelope on any generic extra radiation
+degree of freedom, not a test of the ECH spin-torsion module) finds $\Delta\Neff\approx 0$ and recovers a Hubble
 constant consistent with standard $\Lambda$CDM at the Planck~2018
 prior level. Sample-size and dataset details, posterior values with
 uncertainties, MCMC diagnostics, and the AIC/BIC model comparison are
@@ -2676,8 +2713,12 @@ explain, and is the stated scope boundary of this no-go.
 closed by parity-odd coefficient and Planck suppression}
 \label{sec:r2_oneloop}
 At the classical level the Holst term $\gamma^{-1}\,e^a\!\wedge e^b\wedge
-R_{ab}$ is topological in vacuum and reduces to the Nieh--Yan density on
-shell once torsion is integrated out~\cite{Holst1996,Freidel2005}. Quantum
+R_{ab}$ vanishes identically in the torsion-free sector by the first
+algebraic Bianchi identity (it is \emph{not} a topological invariant in the
+sense of the Pontryagin density; it reduces to the Nieh--Yan density plus a
+torsion-squared piece, both of which vanish at $T=0$ as shown in
+Sec.~\ref{sec:transparency}) and reduces to the Nieh--Yan density on shell
+once torsion is integrated out~\cite{Holst1996,Freidel2005}. Quantum
 corrections from minimally coupled fermions, however, generate a
 parity-odd coupling between the gravitational field and the chiral
 fermion current at one loop, with the Holst sector developing
@@ -2777,7 +2818,13 @@ of App.~\ref{app:dimensions} regardless of that $\mathcal{O}(1)$
 coefficient, since ST's explicit $\kappa^2=M_{\rm Pl}^{-2}$ confirms the
 missing powers are Planck powers, not a light scale. Because the closure
 below retains $\gtrsim 60$ orders of margin, it is insensitive to this
-residual $\mathcal{O}(1)$ ambiguity in $\beta(\gamma)$. The dimensionless coefficient is $\mathcal{O}(\alpha_{\rm em}/4\pi)$
+residual $\mathcal{O}(1)$ ambiguity in $\beta(\gamma)$.
+\emph{Margin note (Eq.~\eqref{eq:oneloop_parity_odd}):} the ${\sim}60$-order
+suppression margin renders the precise one-loop prefactor $\beta(\gamma)$
+irrelevant to the Route-2 closure: even an $\mathcal{O}(1)$--$\mathcal{O}(10^{10})$
+normalization uncertainty leaves $\gtrsim\!48$ orders of amplitude suppression
+below the observed birefringence signal, so no plausible prefactor ambiguity
+reopens Route~2. The dimensionless coefficient is $\mathcal{O}(\alpha_{\rm em}/4\pi)$
 multiplied by the Planck mass to a single negative power. Explicitly, the
 prefactor $\beta(\gamma)/M_{\rm Pl}$ carries mass dimension $-1$ (the
 division by $M_{\rm Pl}$, not multiplication): with $\vartheta_{\rm NY}$ of
@@ -3201,6 +3248,15 @@ treated as a free parameter, a spectator-ALP fit reproduces both
 $\beta_{\rm obs}$ and $\rho_\Lambda$, but minimal ECH does not derive
 $m_\theta\sim H_0$ or the fitted $\alpha/M$, so the channel closes at
 the level of an explanatory deficit rather than an amplitude exclusion.
+\emph{Tiered closure structure:} R1--R3 achieve \emph{mathematical
+amplitude closure} (the predicted amplitude is suppressed by explicit
+$M_{\rm Pl}$ powers and loop factors, placing it many orders below any
+observable threshold regardless of normalisation assumptions);
+R4 achieves \emph{naturalness/explanatory closure} (the amplitude can
+be matched to observations but only at the cost of importing the
+cosmological-constant fine-tuning the channel was meant to resolve).
+These are logically distinct closure modes and are classified
+separately in the evidentiary table below.
 The NJL contact term is parametrically far below $\rho_\Lambda$ even at
 dense ISM-like densities $n_\psi\!\sim\!10^2\,\text{cm}^{-3}$ (${\sim}70$ orders
 below $\rho_\Lambda$; see Sec.~\ref{sec:r1_njl}),
@@ -3727,7 +3783,14 @@ In minimal ECH gravity with canonical scalar field matter, the Holst term is
 dynamically inert for both scalar and tensor perturbations at all orders. The
 Barbero-Immirzi parameter $\gamma$ is invisible in all perturbation observables.
 This generalizes Hehl~\etal~(1976)~\cite{Hehl1976} to the Holst sector and to
-all perturbation orders. The restriction to the torsion-free ($T=0$) branch is
+all perturbation orders. The decoupling is \emph{exact and non-perturbative on the
+torsion-free branch}: it does not rely on a truncated perturbative series but
+follows from two algebraic identities (the Cartan constraint $T=\kappa S$ with
+$S=0$, and the first Bianchi identity $R_{\mu[\nu\rho\sigma]}=0$) that hold
+pointwise for any field configuration in the scalar-matter sector. The background
+is FLRW or any near-FLRW metric for which the torsion-free Levi-Civita connection
+is operative; no slow-roll or adiabaticity assumption beyond canonical scalar
+matter is needed. The restriction to the torsion-free ($T=0$) branch is
 not an additional assumption but a \emph{consequence} of the matter content:
 canonical scalar matter carries zero spin density (Step~1 below), hence in
 Einstein--Cartan theory sources no torsion (Step~2), and the connection reduces
@@ -5010,19 +5073,22 @@ precision.
 %% ============================================================
 %%  3. STOCK-CAMB LCDM+DNEFF MCMC: GENERIC RADIATION-PROXY TEST
 %% ============================================================
-\subsection{Stock-CAMB $\Lambda$CDM$+\Delta\Neff$ MCMC: Generic Radiation-Proxy Test\\
+\subsection{Stock-CAMB $\Lambda$CDM$+\Delta\Neff$ MCMC: Upper-Bound Baseline Envelope Check\\
 (Not a Spin-Torsion Theory Module)}\label{sec:p1b_verification}
 
-\textit{Scope statement.}---``MCMC verification'' refers throughout to a stock
-CAMB run of $\Lambda$CDM extended by $\Delta\Neff$ as a free parameter.
+\textit{Scope statement.}---Every use of ``MCMC'' or ``MCMC baseline envelope check'' throughout this
+appendix refers to a stock CAMB run of $\Lambda$CDM extended by $\Delta\Neff$ as a free parameter.
 \emph{No custom CAMB modifications are used; no torsion-modified Boltzmann
-equations are solved.} The MCMC therefore tests whether the data prefer an
-extra radiation-like degree of freedom, treated as a generic phenomenological
-proxy for the spin-torsion sector's possible effective radiation contribution.
-It does \emph{not} verify the spin-torsion theory module itself; that would
-require a bespoke modified Boltzmann code. What the MCMC \emph{does} anchor,
+equations are solved.} This is an \emph{upper-bound baseline envelope check}:
+it tests whether the data prefer a generic extra radiation-like degree of freedom
+(a phenomenological proxy for any possible effective radiation contribution from the
+spin-torsion sector), and establishes a conservative observational ceiling on
+$\Delta\Neff$.  It does \emph{not} test the ECH spin-torsion module itself,
+simulate ECH dynamics, or constitute an independent verification of ECH physics;
+that would require a bespoke modified Boltzmann code incorporating torsion-modified
+perturbation equations. What the MCMC envelope \emph{does} anchor,
 via the bespoke ECH-sector calculation in Sec.~\ref{sec:p1b_torsion_neff} below,
-is a conservative observational envelope on the actual radiation contribution
+is a conservative observational ceiling on the actual radiation contribution
 of the minimal Einstein--Cartan--Holst spin-torsion sector, which that
 calculation shows is Planck-suppressed and therefore far smaller than the
 proxy prior permits.
