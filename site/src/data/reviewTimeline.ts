@@ -46,6 +46,25 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "G15-closure-2026-07-10",
+    dateISO: "2026-07-10",
+    kind: "ext-closure",
+    title:
+      "G15 editable-item closure iteration (P1U v1U.0.9 · P4 v1.0.230 · P5 v0.1.113): every editable named item from the G15 raw board closed with presentation-only edits — no verified number changed, nothing fabricated, no disclosure weakened.",
+    papers: ["P1A", "P4", "P5"],
+    summary:
+      "Closed the editable items from the G15 ChatGPT/Grok/Gemini raws. P1U (→v1U.0.9): Gemini MCMC-envelope reframe (stock-CAMB run now explicitly an upper-bound baseline envelope check, not an ECH test) + Eq.6→Eq.7 mass-dimension presentation (dimension-4 operator basis O_1..O_6 led as the physical foundation, Case II curvature-dressing marked subordinate) + Grok minors (Eq.17 margin note, Sec X.A all-orders/FLRW clause, R1-R3-vs-R4 closure-type distinction) + ChatGPT minors (M_Pl/κ convention footnote, Holst-'topological' terminology fix). P4 (→v1.0.230): Grok's 3 non-blocking concerns (z≈−18 template-disfavor caveat near Table I, ~47% remainder < A_50 consistency sentence, Shamir mechanism context) + Fig 10 'null'→'sampling distribution' caption. P5 (→v0.1.113): Grok MAJOR presentational reframe (Bonferroni-5 null led from the outset, 'designated primary' softened, Table IV disclosure kept) + de-attenuated physical bound ≈2.26pp (= 0.9pp/0.3982 from the paper's own attenuation factor) quoted alongside the classifier-label bound + App B non-covariant-EFT hardening sentence. Each paper directive-G: recompiled 0 undef-refs, byte-identical mirror to all served paths, version+date bump. Held-open items (companion-catalog dependency, RSD-space classification, end-to-end transfer calibration, edge-void/selection-matched reanalysis, ChatGPT structural MAJORs) remain the directive-H harsh-referee floor — Houston-gated to human referees.",
+    keyTakeaways: [
+      "P1U v1U.0.9 (md5 429365be, 62pp), P4 v1.0.230 (md5 ccc7ba80, 34pp), P5 v0.1.113 (md5 5b939680, 43pp) — all recompiled 0 undef-refs, mirrored byte-identical to every served path",
+      "Every closed item is presentation-only: reframing/caveat/hardening sentences and one arithmetic de-attenuation (0.9pp→2.26pp) that makes the P5 bound more conservative — no verified number changed, nothing fabricated",
+      "P5's de-attenuated physical bound is a self-favoring correction (looser bound) computed from the paper's own 2a−1=0.3982 factor — integrity-safe per the anti-value-headlining rule",
+      "Held-open MAJOR/REJECT items are un-editable structural/venue axes (pattern-066 referee variance + directive-H floor); caps stay ≤96, human referees next",
+    ],
+    links: [
+      { label: "G15 raws + manifest", href: `${PR}/EXT_real/G15_2026-07-09/` },
+    ],
+  },
+  {
     id: "G15-ext-retest-2026-07-09",
     dateISO: "2026-07-09",
     kind: "external-browser",
