@@ -328,16 +328,14 @@ import json,sys
 print(json.dumps({"path":"paperVersions:current","args":{"paperSlug":sys.argv[1]},"format":"json"}))
 PY
 )"
-VERIFY_OK=0
-LAST_ERR=""
-for attempt in 1 2 3 4 5 6 7 8; do
-  CUR_RESP="$(curl -sS -X POST "$CONVEX_QUERY_URL" -H 'Content-Type: application/json' -d "$QUERY_BODY" 2>/dev/null || true)"
-  if [ -z "$CUR_RESP" ]; then LAST_ERR="empty response"; sleep 1; continue; fi
-  MSG="$(printf '%s' "$CUR_RESP" | python3 - "$NEWVER" "$NEWMD5" 2>&1 <<'PY'
+# Verifier reads the response body from stdin and want-version/md5 from argv.
+VERIFY_PY="$REPO/tools/.directive_g_verify.py"
+cat > "$VERIFY_PY" <<'PY'
 import sys, json
 want_ver, want_md5 = sys.argv[1], sys.argv[2]
+raw = sys.stdin.read()
 try:
-    d = json.load(sys.stdin)
+    d = json.loads(raw)
 except Exception as e:
     print(f"unparseable: {e}"); sys.exit(1)
 if d.get("status") != "success":
@@ -347,7 +345,14 @@ if v.get("version") != want_ver or v.get("pdfMd5") != want_md5:
     print(f"mismatch: got {v.get('version')}/{v.get('pdfMd5')} want {want_ver}/{want_md5}"); sys.exit(1)
 print("ok")
 PY
-)" && { VERIFY_OK=1; break; }
+trap 'rm -f "$VERIFY_PY"' EXIT
+
+VERIFY_OK=0
+LAST_ERR=""
+for attempt in 1 2 3 4 5 6 7 8; do
+  CUR_RESP="$(curl -sS -X POST "$CONVEX_QUERY_URL" -H 'Content-Type: application/json' -d "$QUERY_BODY" 2>/dev/null || true)"
+  if [ -z "$CUR_RESP" ]; then LAST_ERR="empty response"; sleep 1; continue; fi
+  MSG="$(printf '%s' "$CUR_RESP" | python3 "$VERIFY_PY" "$NEWVER" "$NEWMD5" 2>&1)" && { VERIFY_OK=1; break; }
   LAST_ERR="$MSG"
   sleep 1
 done
