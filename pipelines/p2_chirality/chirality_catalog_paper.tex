@@ -52,7 +52,7 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.228}
+\newcommand{\paperVersion}{v1.0.229}
 % v1.0.227 (2026-07-09 — CA-round polish closure (ChatGPT ACCEPT + Gemini/Grok accept-track minors):
 %   (1) compact "Reader's note" directly below Table V (tab:multipole) restating harmonic diagnostics
 %       are not detection significances + not comparable; (2) abstract 47% remainder explicitly labeled
@@ -1080,6 +1080,61 @@ at $N_{\rm spiral}=3{,}201{,}160$ (i.e.\ $\sigma(A/2)\approx0.048\%$), giving a 
 
 \paragraph{Empirical injection-recovery floor.}
 The injection-recovery sweep on the HC-broad spiral subsample ($p_{\rm eq}\!>\!0.6$, $N\!=\!949{,}584$; $N_{\rm MC,null}\!=\!1000$, $N_{\rm MC,inj}\!=\!100$ per amplitude, per-pixel-shuffle null) is summarized in Table~\ref{tab:injection_recovery}. The scorer's $\sigma$ convention, verified from the committed script (\artifact{pipelines/p2\_chirality/scripts/injection\_sweep\_extended.py}), is $\sigma_{\rm inj}=(A_{\rm rec}-\langle A_{\rm null}\rangle)/\mathrm{std}(A_{\rm null};\mathrm{ddof}{=}1)$ against a fixed calibration of $1000$ per-pixel binomial label-shuffle realizations $n_{\rm CW}(p)\!\sim\!\mathrm{Binomial}(N_{\rm spiral}(p),\,p_{\rm CW}^{\rm global})$, which preserve per-pixel totals and the global monopole (artifact \artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/c12\_r24conf\_local\_batch.json}). Injection generative model (verified from the same committed script): $p_{\rm CW}(\hat n_p) = p_{\rm CW}^{\rm global} + (A/2)\cos\theta_{\rm axis}(p)$, i.e.\ the full-amplitude dipole is added around the \emph{observed} global rate ($0.4974$), not re-centered at $0.5$, matching the null's baseline; at the tested amplitudes ($A\!\leq\!2\%$) all per-pixel probabilities remain within $[0,1]$, so no clipping is applied. Axis protocol: each injection draws an \emph{independent random dipole axis}, so the tabulated $P(\sigma\!>\!3)$ values are \emph{axis-averaged} detection probabilities and the falsification criterion of Sec.~\ref{sec:conclusions} is correspondingly axis-averaged. \emph{We adopt the area-uniform (isotropic) axis draw as primary.} The geometrically-correct isotropic prescription samples $\cos\theta\!\sim\!U(-1,1)$, $\phi\!\sim\!U(0,2\pi)$ (equatorial frame), which distributes injected axes uniformly over the sphere and carries no polar-weighting bias; the published $A_{50}/A_{95}$ thresholds therefore reflect axis-averaged (not fixed-axis) detection probabilities under this isotropic-draw convention, and the recovery curve is correspondingly axis-averaged over the full sphere. The full recovery curve under this primary convention reproduces the published floors ($P(\sigma\!>\!3)=0.59$ at $A=0.75\%$, $A_{50}$ crossing at $0.75\%$, $A_{95}\!\in\!(1.0\%,1.5\%]$; log-interpolated $1.20\%$; artifact \artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/c16\_r24conf\_pod\_batch.json}). The originally-tabulated sweep (Table~\ref{tab:injection_recovery}) used a $\theta\!\sim\!U(0,\pi)$, $\phi\!\sim\!U(0,2\pi)$ polar-angle-uniform draw, which mildly over-weights near-polar axes relative to the area-uniform prescription; we retain it as a cross-check because its thresholds coincide with the primary area-uniform draw within MC error (below). A fixed-axis spot check at $A\!=\!0.75\%$ (10 axes drawn area-uniformly on the sphere, 100 injections each) gives per-axis $P(\sigma\!>\!3)$ spanning $0.45$--$0.62$ ($16$--$84\%$ range $0.49$--$0.58$; axis mean $0.54$), consistent with the tabulated axis-averaged $0.55$ within MC error (artifact \artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/c11\_meta\_e1\_e2\_realspace\_nulls.json}; note the spot check draws axes \emph{area-uniformly} while the tabulated sweep is $\theta$-uniform --- the $0.54$ vs $0.55$ agreement shows the two axis conventions coincide within MC error at this amplitude, and the falsification criterion is defined under the tabulated $\theta$-uniform convention); the primary area-uniform re-run of the entire recovery curve ($\cos\theta\!\sim\!U(-1,1)$, $N_{\rm MC,inj}=100$ per amplitude, independent $1000$-realization null calibration) and the $\theta$-uniform tabulated sweep agree within MC error --- primary area-uniform: $P(\sigma\!>\!3)=0.59$ at $A=0.75\%$ vs.\ $0.55$ tabulated, common $A_{50}$ crossing at $0.75\%$, common $A_{95}\in(1.0\%,1.5\%]$ (log-interpolated $1.20\%$) --- so the choice of axis convention does not bias the published floors (artifact \artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/c16\_r24conf\_pod\_batch.json}); axis dependence in the harmonic channel is quantified separately by the fixed-axis injection battery (artifact c9b; median $z\!\approx\!68$--$218$ across coordinate axes at $A_p\!=\!1.7\%$, Sec.~\ref{sec:conclusions}). The $50\%$-recovery-at-$3\sigma$ threshold is $A_{50}\!\approx\!0.75\%$ ($P(\sigma\!>\!3)\!=\!0.55$ there; $0.15$ at $A\!=\!0.5\%$, a non-detection point), above the Fisher reference. The $A_{50}/\,$floor gap decomposes into three factors: sample size (the $0.29\%$ primary floor is computed at the full $N_{\rm spiral}=3{,}201{,}160$; the HC-broad sweep sample alone raises the ideal floor to ${\approx}\,0.53\%$, a factor $\sqrt{3{,}201{,}160/949{,}584}\approx1.84$), footprint geometry (the $\mathcal{O}(1)$ axis-orientation-dependent $f_{\rm sky}$ factor above), and classification noise (GZ1-dilution factor $g\!=\!2a\!-\!1\!\approx\!0.398$ for $a\!=\!0.6991$, giving a true-underlying threshold $\sim\!1.88\%$). The $g\!=\!2a\!-\!1$ mapping assumes symmetric CW$\leftrightarrow$CCW misclassification with no triage to \NS; the GZ1 confusion matrix (Table~\ref{tab:gz1_confusion}) shows the per-class chirality accuracies are mildly asymmetric --- $39{,}011/(39{,}011{+}18{,}889)=67.4\%$ for CW vs $42{,}928/(16{,}377{+}42{,}928)=72.4\%$ for CCW, pooling to the quoted $a=0.6991$ --- and that triage to \NS{} removes a further ${\sim}19\%$ of GZ1 spirals from the chirality-labeled pool ($27{,}435$ of $144{,}640$ GZ1-spiral rows). The $\sim\!1.88\%$ true-amplitude figure is therefore an approximate symmetric-error mapping; the operative falsification thresholds are the observed-space $A_{50}$/$A_{95}$ values, which do not depend on this mapping. The $95\%$-recovery point $A_{95}$ is \emph{bracketed, not measured}: $P(\sigma\!>\!3)$ rises from $0.91$ at $A\!=\!1.0\%$ to $1.00$ at $A\!=\!1.5\%$, so $A_{95}\in(1.0\%,1.5\%]$ on the tested grid. \textit{This is a conservative-grid-level falsification criterion} (current grid spacing $0.5\%$ near the crossing; $N_{\rm MC,inj}\!=\!100$ per amplitude): the bracket would tighten with a finer grid and larger injection ensemble, which is left to future work; the bracket as stated is conservative in the sense that the true $A_{95}$ crossing lies within it at the tested resolution. On the stricter HC-0.9 subsample ($\max(p_{\rm CW}^{\rm eq},p_{\rm CCW}^{\rm eq})\!>\!0.9$, $N\!=\!471{,}049$) the curve shifts upward as expected from the smaller sample: $P(\sigma\!>\!3)=0.23$, $0.48$, $0.99$ at $A=0.75\%$, $1.0\%$, $1.5\%$, bracketing both the $50\%$ and $95\%$ crossings within $(1.0\%,1.5\%]$. \emph{The $A_{50}/A_{95}$ thresholds are, by definition, properties of a specific (estimator, subsample) pair} --- the real-space dipole on the HC-broad $p_{\rm eq}\!>\!0.6$ selection --- and are \emph{not} claimed to be estimator- or cut-invariant; a smaller subsample or a different estimator (e.g.\ HC-0.9, or the harmonic channel) yields a correspondingly rescaled floor, as tabulated above. To avoid ambiguity, the single quantity carried into the falsification statement of Sec.~\ref{sec:conclusions} and the parity-sector discussion (Sec.~\ref{sec:parity_translation}) is the HC-broad-$0.6$ pair: $A_{50}\!\approx\!0.75\%$, $A_{95}\!\in\!(1.0\%,1.5\%]$. The cut-dependence is thus a disclosed selection property, not an unresolved inconsistency: the primary estimator and its sample are fixed \emph{a priori} (Sec.~\ref{sec:prereg}), and the alternative-cut curves are reported only to characterize how the sensitivity scales with sample size.
+
+\emph{What the injection-recovery chain does and does not traverse.}
+For clarity about the scope of the sensitivity calibration we state
+explicitly which links of the classification-to-dipole chain the
+injection-recovery sweep passes a signal through, and which it does not.
+The sweep injects a dipole in the \emph{observed hard-label} CW/CCW
+field and propagates it through (i) the per-pixel map-making, (ii) the
+$\ell\!=\!1$ dipole estimator, and (iii) the per-pixel-shuffle null
+calibration --- so $A_{50}/A_{95}$ are genuine end-to-end thresholds
+\emph{for the observed-label field and the dipole estimator on it}. It
+does \emph{not} pass a signal through the upstream image links: the ViT
+classifier, the \NS{} triage, the $p_{\rm eq}$ confidence cut, or the
+depth-/leg-/seeing-dependent confusion. Consequently $A_{50}\!\approx\!0.75\%$
+and $A_{95}\!\in\!(1.0\%,1.5\%]$ are, as stated above, thresholds on the
+\emph{observed} $f_{\rm CW}$ field; they are the operative falsification
+quantities and we do not claim them as physical morphology-dipole
+thresholds. The bridge from observed-label amplitude to underlying
+physical amplitude is the single dilution factor $g$, and we make its
+value robust to the asymmetric-confusion concern rather than assume
+symmetric errors: the correct first-order transfer slope of the observed
+CW fraction under an asymmetric confusion matrix with CW sensitivity
+$s_{\rm CW}$ and CCW sensitivity $s_{\rm CCW}$ is
+$g_{\rm eff}=s_{\rm CW}+s_{\rm CCW}-1$ (the derivative of
+$q\,s_{\rm CW}+(1-q)(1-s_{\rm CCW})$ with respect to the true CW fraction
+$q$). Substituting the committed GZ1 confusion values
+($s_{\rm CW}=0.674$, $s_{\rm CCW}=0.724$; Table~\ref{tab:gz1_confusion})
+gives $g_{\rm eff}=0.674+0.724-1=0.398$, \emph{identical to three
+decimals} to the symmetric $g=2a-1=0.398$ (with $a=0.6991$), because for
+a near-balanced parent ($f_{\rm CW}\!\approx\!0.4974\!\approx\!0.5$) the
+pooled accuracy satisfies $a=(s_{\rm CW}+s_{\rm CCW})/2$ exactly, so
+$2a-1=s_{\rm CW}+s_{\rm CCW}-1$ identically. The mild CW/CCW asymmetry
+therefore does \emph{not} bias the physical-amplitude conversion at
+leading order --- it changes $g$ by $<10^{-3}$ --- so the
+$\sim\!1.88\%$ ($=0.75\%/g$) physical-amplitude figure is not degraded by
+the asymmetry, and the residual triage-to-\NS{} removal
+(${\sim}19\%$; approximately chirality-neutral, since it removes both CW
+and CCW spirals) rescales the effective sample size (already folded into
+the $N$-dependent floor above), not the transfer slope $g$. \emph{What
+remains genuinely outside this calibration --- and requires new
+simulation, not a table reconciliation --- is a full image-level
+end-to-end injection}: applying an image-plane chirality transformation
+to the raw galaxy cutouts, re-running the classifier, triage, and
+confidence cut, and only then fitting the dipole, with a
+\emph{spatially-varying} confusion model conditioned on depth, PSF,
+morphology, and imaging leg. That test is the one calibration that would
+convert the observed-label thresholds into a spatially-resolved physical
+transfer function; it requires per-cutout image transforms at
+$\sim\!10^{6}$-galaxy scale and a validated conditional confusion model,
+which we flag as the operative next step and do not perform here. In its
+absence we hold the operative claims to the observed hard-label field
+(the $+0.41\sigmaunit$ real-space null and the $A_{50}/A_{95}$ observed-label
+thresholds), and treat the $g$-based physical-amplitude conversion as an
+approximate --- but, per the leading-order identity above, not
+symmetric-error-sensitive --- illustrative mapping rather than a
+spatially-resolved physical bound.
 
 \begin{table}[t]
 \caption{Injection-recovery probabilities $P(\sigma\!>\!3)$ vs.\ injected full amplitude $A$ (HC-broad subsample, $p_{\rm eq}\!>\!0.6$, $N\!=\!949{,}584$; $N_{\rm MC,inj}\!=\!100$ per amplitude, per-pixel-shuffle null). Each injection draws a new random dipole axis, so the quoted $P$ values are \emph{axis-averaged} detection probabilities, not fixed-axis completeness (axis protocol and orientation spread: Sec.~\ref{sec:sensitivity} text). The $\geq\!95\%$ crossing is bracketed between $A\!=\!1.0\%$ and $A\!=\!1.5\%$, not measured. With $N_{\rm MC,inj}\!=\!100$ per amplitude, each tabulated $P$ carries a binomial standard error $\sqrt{P(1-P)/100}\!\leq\!0.05$ (e.g.\ $0.55\pm0.05$ at $A\!=\!0.75\%$), so $A_{50}\!\approx\!0.75\%$ is quoted at the tested-grid precision, not as a two-decimal measurement. \emph{These thresholds are convention-specific:} the tabulated $A_{50}\!\approx\!0.75\%$ / $A_{95}\!\in\!(1.0\%,1.5\%]$ are properties of the real-space dipole estimator under the $\theta$-uniform axis-draw convention (Sec.~\ref{sec:sensitivity}; the area-uniform re-run reproduces them within MC error) and are \emph{not} interchangeable with the harmonic-channel completeness of Table~\ref{tab:harmonic_completeness}, which lives in the distinct MASTER $\ell\!=\!1$ label-shuffle $\sigma$-convention.\label{tab:injection_recovery}}
