@@ -3,7 +3,9 @@
 committed artifact joint_nuisance_bootstrap_sigma.json (percentiles of the
 block-bootstrap A_dipole distribution). No new computation; purely renders the
 committed bootstrap resample distribution against the interpretation-(i)
-reference amplitude A_ref=0.034 (A_p units). RS9 Grok minor #4."""
+reference amplitude A_ref=0.017 (A_p units). RS9 Grok minor #4.
+H17 2026-07-10 fix: Shamir's 1.7% is a full-count asymmetry (N_CW-N_CCW)/(N_CW+N_CCW)
+which equals A_p directly, so A_ref=0.017 (not the previously-doubled 0.034)."""
 import json, numpy as np, matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
@@ -13,8 +15,8 @@ art = json.load(open("outputs/canonical_provenance/joint_nuisance_bootstrap_sigm
 best = art["full_sample"]["A_dipole_A_p_units"]          # 4.55e-3
 sig  = art["bootstrap"]["sigma_A_dipole_A_p_units"]       # 1.63e-3
 pct  = art["bootstrap"]["A_dipole_percentiles"]           # p0.5..p99.5
-A_ref = 0.034                                             # interpretation-(i) 1.7% f_CW = 3.4% A_p
-z_ref = art["comparison"]["z_vs_1pct7_reference_bootstrap"]  # -18.07
+A_ref = 0.017                                             # Shamir 1.7% asymmetry == A_p directly (not doubled)
+z_ref = art["comparison"]["z_vs_shamir_1p7_asymmetry_bootstrap"]  # -7.64
 
 # Reconstruct the bootstrap null density as a Gaussian anchored on the committed
 # mean/std, with the committed empirical percentiles overplotted as ticks so the
@@ -32,7 +34,7 @@ ax.axvline(best, color="#4C72B0", lw=1.6, ls="-",
 for key, val in pct.items():
     ax.plot([val, val], [0, 0.04*pdf.max()], color="#2b4a7a", lw=0.8, alpha=0.7)
 ax.axvline(A_ref, color="#C44E52", lw=1.8, ls="--",
-           label=rf"interp.\,(i) ref $A_{{\rm ref}}=0.034$")
+           label=rf"interp. (i) ref $A_{{\rm ref}}=0.017$")
 # arrow annotating the exclusion distance
 ax.annotate("", xy=(A_ref, 0.42*pdf.max()), xytext=(best, 0.42*pdf.max()),
             arrowprops=dict(arrowstyle="<->", color="0.35", lw=1.0))
@@ -43,7 +45,7 @@ ax.set_ylabel("bootstrap density")
 ax.set_yticks([])
 ax.set_xlim(x.min(), A_ref*1.02)
 ax.legend(loc="upper right", fontsize=7.5, frameon=False)
-ax.set_title(r"NSIDE$=8$ block-bootstrap null vs.\ clean-dipole reference",
+ax.set_title(r"NSIDE$=8$ block-bootstrap null vs. clean-dipole reference",
              fontsize=9)
 fig.tight_layout()
 fig.savefig("fig_bootstrap_null.png", dpi=200)
