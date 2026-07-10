@@ -1,53 +1,54 @@
 {
  "script": "research/focused_paper_source_integration/c9k_gr_continuous_marginalization.py",
  "purpose": "R24conf Grok P2-M2: continuous sigma_GR in [0,1] uniform-prior marginal-likelihood Bayes factors vs the discrete {0, 0.5, 1.0} grid of Table III (tab:gr).",
- "conventions": "identical to committed c9g_bf_table_recompute.py; evaluated at central mock detection fhat = -35/8",
+ "conventions": "identical to committed c9g_bf_table_recompute.py; evaluated at corrected central mock detection fhat = -35/16 (all BF/SSFSR values in this file are at -35/16; the -35/8-era values -- e.g. SSFSR 3.5e8 -- are superseded and do NOT appear here)",
  "discrete_grid_cells": {
   "sigma_GR=0.0": {
    "sigma_eff": 0.7,
-   "BF_vs_SSFSR": "3.472e+08",
-   "BF_vs_tuned_narrow": 7.001
+   "BF_vs_SSFSR": "1.412e+02",
+   "BF_vs_tuned_narrow": 5.699
   },
   "sigma_GR=0.5": {
    "sigma_eff": 0.8602,
-   "BF_vs_SSFSR": "4.521e+05",
-   "BF_vs_tuned_narrow": 6.052
+   "BF_vs_SSFSR": "2.651e+01",
+   "BF_vs_tuned_narrow": 4.64
   },
   "sigma_GR=1.0": {
    "sigma_eff": 1.2207,
-   "BF_vs_SSFSR": "6.436e+02",
-   "BF_vs_tuned_narrow": 4.698
+   "BF_vs_SSFSR": "5.093e+00",
+   "BF_vs_tuned_narrow": 3.303
   }
  },
  "continuous_marginal": {
-  "BF_vs_SSFSR": "8.630e+03",
-  "BF_vs_tuned_narrow": 6.036,
+  "BF_vs_SSFSR": "1.939e+01",
+  "BF_vs_tuned_narrow": 4.615,
   "grid_convergence": {
    "3": {
-    "BF_vs_SSFSR": "3.5782e+03",
-    "BF_vs_tuned_narrow": 5.9965
+    "BF_vs_SSFSR": "1.7679e+01",
+    "BF_vs_tuned_narrow": 4.5741
    },
    "11": {
-    "BF_vs_SSFSR": "8.1130e+03",
-    "BF_vs_tuned_narrow": 6.0343
+    "BF_vs_SSFSR": "1.9313e+01",
+    "BF_vs_tuned_narrow": 4.6134
    },
    "101": {
-    "BF_vs_SSFSR": "8.6241e+03",
-    "BF_vs_tuned_narrow": 6.0359
+    "BF_vs_SSFSR": "1.9386e+01",
+    "BF_vs_tuned_narrow": 4.615
    },
    "1001": {
-    "BF_vs_SSFSR": "8.6295e+03",
-    "BF_vs_tuned_narrow": 6.0359
+    "BF_vs_SSFSR": "1.9386e+01",
+    "BF_vs_tuned_narrow": 4.615
    },
    "10001": {
-    "BF_vs_SSFSR": "8.6296e+03",
-    "BF_vs_tuned_narrow": 6.0359
+    "BF_vs_SSFSR": "1.9386e+01",
+    "BF_vs_tuned_narrow": 4.615
    }
   }
  },
  "three_point_vs_fine_log_evidence_gap": {
-  "delta_logBF_vs_SSFSR": 0.8803,
-  "delta_logBF_vs_tuned": 0.0065,
+  "delta_logBF_vs_SSFSR": 0.0922,
+  "delta_logBF_vs_tuned": 0.0089,
   "note": "gap between the paper's 3-point trapezoid and the 10001-point fine grid; < 0.1 in log-evidence satisfies the Grok P2-M2 convergence criterion (applies to the smooth BF_vs_tuned column; the SSFSR column is exponentially sigma-sensitive and is reported via the continuous value directly)"
- }
+ },
+ "_provenance_note": "2026-07-10 H17: conventions string refreshed from stale \"-35/8\" to the actual -35/16 center at which every value in this file was computed; values unchanged."
 }
