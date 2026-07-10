@@ -41,7 +41,7 @@
 % The divide-by-h claim (~1246 h⁻¹ Mpc) is INVERTED. No pipeline recompute required.
 % If any future reviewer re-raises this, cite env_finder/01_compute_vweb.py:106-108.
 
-\newcommand{\paperVersion}{v0.1.112-2026-07-09}
+\newcommand{\paperVersion}{v0.1.113-2026-07-10}
 % v0.1.111-2026-07-09 (CV-round EXT closure (ChatGPT MAJOR-revisions reopened off CA ACCEPT;
 %   Grok/Gemini MINOR). Framing/relocation only; every verified number unchanged EXCEPT the
 %   stated systematic envelope, which was WIDENED (never tightened) to the honest value:
@@ -702,16 +702,21 @@
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{July 9, 2026}
+\date{July 10, 2026}
 
 \begin{abstract}
 \textbf{Headline result:} spiral galaxy chirality shows no void/non-void
-environment dependence on the DESIVAST DR1 contrast in DESI Data
-Release~1 (\emph{designated primary for reporting; exploratory/post-hoc};
-DESIVAST-anchored; see \S\ref{sec:primary_path}: no timestamped plan
-predates the data, so the ${\approx}0.9$\,pp bound below is exploratory
-and should not be read as a pre-registered exclusion; the quotable result
-is the family-wise Bonferroni-5 null). The \emph{primary} DESIVAST
+environment dependence across all five DESIVAST void definitions in DESI
+Data Release~1: the \emph{family-wise Bonferroni-5 null}
+($|\Delta f_{\rm CW}|\!\le\!0.004$, $|z_\Delta|\!\le\!1.25$,
+$p_\Delta\!\ge\!0.21$ across all five estimators) is the strictly
+quotable result; the single-estimand contrasts reported below are
+secondary summaries within that family.
+The DESIVAST-anchored path is \emph{designated primary for reporting}
+(exploratory/post-hoc; see \S\ref{sec:primary_path}: no timestamped plan
+predates the data, so all bounds below are exploratory and should not be
+read as pre-registered exclusions; T-Web is explicitly secondary).
+The \emph{primary} DESIVAST
 estimand is the \emph{footprint-restricted} void-vs-non-void CW-fraction
 contrast --- both classes confined to the DESIVAST usable footprint, the
 single same-footprint estimand (\S\ref{sec:desivast_anchored_void}) ---
@@ -737,9 +742,15 @@ co-dominant with --- not sub-dominant to --- the membership term).
 This is a bound on the classifier-labelled CW fraction, not on physical
 spiral chirality: at the $69.91\%$ ($\kappa=0.40$) GZ1 accuracy floor the
 classifier-label statistic is an attenuated proxy for the underlying
-handedness contrast, and a physical-chirality bound must apply the
-de-attenuation and environment-dependent-relabeling caveats of
-\S\ref{sec:limitations}/Appendix~\ref{app:paper4_methods}.
+handedness contrast (attenuation factor $2a-1 \simeq 0.40$;
+Appendix~\ref{app:paper4_methods}). Under the symmetric-error
+approximation, the ${\approx}0.9$\,pp classifier-label bound corresponds
+to a de-attenuated physical-chirality bound of ${\approx}2.26$\,pp
+($0.9/0.3982$); this weaker physical bound is the quantity model-builders
+should use to constrain parity-violation amplitudes. The de-attenuation
+carries additional uncertainty from environment-dependent relabeling (no
+environment-stratified confusion matrix is available;
+\S\ref{sec:limitations}/Appendix~\ref{app:paper4_methods}).
 The robustly-quotable headline is the \emph{family-wise} Bonferroni-5
 null across all five DESIVAST void definitions ($|z_\Delta|\!\le\!1.25$),
 not any single most-favorable row (see \S\ref{sec:primary_path}); the
@@ -1645,8 +1656,15 @@ analysis plan was not filed; the choice of which classifier to
 report as ``primary'' is therefore made post-hoc, and we declare it
 explicitly here to bound the garden-of-forking-paths concern.
 
-\textbf{Designated-primary-for-reporting analysis path.} We designate the
-DESIVAST-anchored void cross-check
+\textbf{Designated-primary-for-reporting analysis path.}
+\emph{The strictly quotable headline is the family-wise Bonferroni-5
+null across all five DESIVAST void definitions
+($|z_\Delta|\!\le\!1.25$, Table~\ref{tab:desivast_three_algo}), not
+any single most-favorable estimator.} The designation below identifies
+one of those five estimators as an organizational focus for narrative
+reporting; it is a secondary framing choice, not the primary scientific
+claim.
+We designate the DESIVAST-anchored void cross-check
 (Section~\ref{sec:desivast_primary}) as the
 \emph{designated primary for reporting} (equivalently, the
 \emph{exploratory primary}, since no timestamped analysis plan predates
@@ -4292,10 +4310,13 @@ sensitivity. \emph{This is a bound on the classifier-labelled CW
 fraction, not on physical spiral chirality:} at the $69.91\%$
 ($\kappa=0.40$) GZ1 accuracy floor the classifier-label statistic is an
 attenuated proxy for the physical-handedness contrast (attenuation
-factor $\approx 2a-1\simeq 0.40$; App~\ref{app:paper4_methods}), so a
-model-builder mapping this onto a physical parity-violation amplitude
-must apply that de-attenuation and the environment-dependent-relabeling
-caveat of \S\ref{sec:limitations}. The secondary T-Web
+factor $\approx 2a-1\simeq 0.40$; App~\ref{app:paper4_methods}). Under
+the symmetric-error approximation, the ${\approx}0.9$\,pp classifier-label
+envelope de-attenuates to ${\approx}2.26$\,pp on the physical-chirality
+contrast ($0.9/0.3982$); model-builders should use this weaker physical
+bound, not the classifier-label figure, when constraining parity-violation
+amplitudes, and should apply the environment-dependent-relabeling caveat
+of \S\ref{sec:limitations}. The secondary T-Web
 void bin, power-limited at $n = 428$, constrains only
 $|\Delta f_{\rm CW}| \lesssim 4.8$\,pp ($2\sigma$ counting). The
 ${\sim}0.9$--$4.8$\,pp window remains
@@ -4508,18 +4529,18 @@ read (\S\ref{sec:primary_path}).
 \section{Conclusions}\label{sec:conclusions}
 
 Spiral galaxy chirality shows no detectable void/non-void environment
-dependence at current sensitivity within DESI Data Release~1,
-on the DESIVAST DR1 primary contrast.
-\emph{Pre-registration caveat:} the DESIVAST path is the
+dependence at current sensitivity within DESI Data Release~1.
+The strictly quotable result is the \emph{family-wise} Bonferroni-5 null
+across all five DESIVAST void definitions ($|z_\Delta|\!\le\!1.25$,
+$p_\Delta\!\ge\!0.21$; Table~\ref{tab:desivast_three_algo}); this is the
+headline, not any single most-favorable estimator.
+For a post-hoc upper bound a look-elsewhere correction can change
+the strength of the quoted bound, which is why the family-wise null
+is the quotable statement. The DESIVAST path is the
 \emph{designated primary for reporting} (exploratory/post-hoc: no
-timestamped plan predates the data; see \S\ref{sec:primary_path}), so the
-DR1 result is exploratory rather than a pre-registered exclusion; the
-strictly quotable result is the \emph{family-wise} Bonferroni-5 null
-across all five DESIVAST void definitions, not any single most-favorable
-row. For a post-hoc upper bound a look-elsewhere correction can change
-the strength of the quoted bound (it does not only weaken a null), which
-is why the family-wise null --- not the tightest single row --- is the
-quotable statement.
+timestamped plan predates the data; see \S\ref{sec:primary_path}), so
+all quoted bounds are exploratory rather than pre-registered exclusions;
+the T-Web and other paths are explicitly secondary.
 The \emph{primary} result is the DESIVAST-anchored
 void-vs-non-void contrast (\S\ref{sec:desivast_primary}):
 $\Delta f_{\rm CW} = +0.0007$ at $n_{\rm void} = 56{,}981$
@@ -4671,27 +4692,33 @@ the labels this paper actually consumes. The corresponding label
 dilution is folded into the injection-recovery sensitivity floors used
 when interpreting the present null.
 
-\emph{The quoted ${\approx}0.5$--$0.6$\,pp environmental bound is a bound
+\emph{The quoted ${\approx}0.9$\,pp environmental bound is a bound
 on the classifier-labelled CW fraction, not on physical spiral
 chirality.} The $69.91\%$ binary accuracy ($\kappa=0.40$) means the
 classifier-labelled CW fraction is an attenuated proxy for the true
 physical handedness fraction: for a symmetric binary error rate
 $a\simeq0.699$, a true environment-dependent contrast would be
-suppressed by a factor $\approx 2a-1\simeq0.40$ in the classifier-label
-statistic, so an observed classifier-label bound of $0.5$--$0.6$\,pp
-corresponds, even in the optimistic symmetric-error case, to a weaker
-bound on the underlying physical-chirality contrast (of order a few
-tenths of a percentage point looser). We deliberately do \emph{not}
-publish a single de-attenuated number, because the de-attenuation factor
-is only exact under the symmetric-error assumption and no
-environment-stratified human-label confusion matrix is available in the
-present work (\S\ref{sec:limitations}); a \emph{systematic
+suppressed by a factor $\approx 2a-1 = 2(0.6991)-1 = 0.3982$ in the
+classifier-label statistic. Under this symmetric-error approximation,
+the ${\approx}0.9$\,pp classifier-label bound corresponds to a de-attenuated
+physical-chirality bound of ${\approx}0.9/0.3982 \approx 2.26$\,pp; the
+stale $0.5$--$0.6$\,pp figure would map to ${\approx}1.3$--$1.5$\,pp.
+The physical bound (${\approx}2.26$\,pp) is thus substantially
+\emph{weaker} (more conservative) than the classifier-label figure, and
+model-builders should use the de-attenuated value when constraining
+physical parity-violation amplitudes.
+We flag that the $0.3982$ factor is exact only under the
+symmetric-error assumption and no environment-stratified human-label
+confusion matrix is available in the present work (\S\ref{sec:limitations});
+the de-attenuated number should therefore be read as an indicative
+order-of-magnitude guide, not a precision bound. A \emph{systematic
 environment-dependent re-labeling by a future classifier is therefore
 not excluded}. Accordingly every environmental bound in this paper is
 stated as a bound on the classifier-labelled CW fraction under
 fixed-redshift-space DESIVAST void membership, and the reader should
-apply the attenuation caveat above before mapping it onto a physical
-handedness contrast.
+apply the attenuation factor (${\approx}0.40$; de-attenuated scale
+${\approx}2.26$\,pp for the $0.9$\,pp envelope) before mapping it onto
+a physical handedness contrast.
 
 \textbf{Catalog.} The released catalog contains $8{,}474{,}531$
 galaxies (157 of $8{,}474{,}688$ failed QC), of which $3{,}201{,}160$
@@ -4769,6 +4796,17 @@ illustration outside the scope of the observational results, retained as a
 single compact appendix rather than in the main text. Readers interested
 only in the empirical null result should disregard this appendix; it may
 be moved to online supplementary material at the journal's discretion.
+
+\emph{Theoretical scope of this appendix (rebuttal note).}
+The operator introduced below is \emph{explicitly non-covariant and
+coordinate-dependent}: it is defined in a specific synchronous-comoving
+slicing at the T-Web smoothing scale $R_s = 25$\,Mpc/$h$, is not a
+manifestly gauge-invariant EFT operator in the sense of the
+EFT-of-inflation or EFT-of-LSS literature, and is provided solely as a
+heuristic order-of-magnitude parameterization for future model-building
+on the T-Web smoothing scale. It lies entirely outside the empirical
+scope of the paper; the gauge-invariance and rotational-invariance
+caveats are detailed in the paragraph below.
 
 \emph{Mapping to a physical operator (toy parametrization).}
 The observational bound from the main text can be cast in an
