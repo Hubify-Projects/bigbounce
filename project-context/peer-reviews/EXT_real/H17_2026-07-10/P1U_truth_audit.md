@@ -194,3 +194,97 @@ content or a SCOPE item the paper honestly discloses. No edit; no version bump.*
   d κ/M_Pl convention L2090) are all confirmed present in source and pre-empt findings #15/#2/#10/#2.
 - **No new edit made → no v1U.0.11 bump, no directive-G, no Convex write.** v1U.0.10 stands.
 - **No fabricated math.** All dispositions source-cited.
+
+---
+
+## Addendum — EXT re-test (v1U.0.10 → v1U.0.11, 2026-07-10)
+
+Fresh EXT re-tests on the CURRENT v1U.0.10 PDF: `retest/P1U_grok_retest.md` (MAJOR, 3 MAJOR + 2 MINOR),
+`retest/P1U_chatgpt_retest.md` (REJECT, ~15 MAJOR + 1 MINOR). Every finding re-audited against
+v1U.0.10 source. **Result: 1 genuinely-new real+editable finding (ChatGPT "Check D") — CLOSED;
+1 disclosure-backfire documented; all other findings source-cited RE-FLAG of prior-audit content.**
+
+### GENUINELY-NEW REAL+EDITABLE — CLOSED
+
+**ChatGPT MAJOR "Check D / torsion-current normalization" — REAL, internal inconsistency, FIXED.**
+ChatGPT: "the footnote below Eq.(3) obtains S_abc S^abc = -3/8 J5², whereas Appendix B states the same
+contraction gives 6 J5² — sign error and factor-of-16 discrepancy." VERIFIED against source:
+- Footnote below Eq.(torsion) (L1796-1797) *carefully derives*: `S^abc = ¼ ε^abcd J5_d` ⟹
+  `S_abc S^abc = (1/16) ε_abcd ε^abce J5^d J5_e = -3/8 (J5·J5)`, using the correct Lorentzian
+  mostly-plus `ε_abcd ε^abce = -3! δ_d^e` (ε^0123=+1). This is the once-fixed normalization.
+- Check D (L4866-4870) AND the O4/O5 reduction (L1944) both printed `S_abc S^abc = 6 (J5·J5)`
+  using `ε_abcd ε^abce = +3! δ` (WRONG sign for Lorentzian) AND dropping the `(1/4)²=1/16` from
+  `S=¼ε J5` — two independent slips relative to the footnote.
+ChatGPT is correct: sign + factor-16. **CLOSED (v1U.0.11):** propagated the footnote's carefully-derived
+`-3/8 (J5·J5)` + the correct `-3!` Lorentzian sign to BOTH restatements (L4866-4870, L1944).
+No fabrication — the correct value was already derived in the paper's own footnote; this only
+propagates it. **Structural conclusion UNCHANGED**: O4 still reduces to `κ²(J5·J5)`, O5 to
+`κ(J5·J5)`, same `M_Pl⁻²` power, same Fierz-closed {SS,VV,AA,PP} basis. The sign/overall constant
+of the S·S intermediate is not a load-bearing coefficient of the no-go — it only sets which
+four-fermion contact operator the torsion-square collapses onto, and that operator's identity and
+power counting are unchanged. PDF page renders the corrected `-3/8 (J5·J5)` in Check D.
+
+### DISCLOSURE-BACKFIRE (pattern-066) — documented, not editable
+
+**Grok MAJOR #7 (Sec IV scope + App C) — punishes this program's honest scope hedging.**
+Quote: *"Repeated disclaimers that the work is 'channel-level, not an operator-level theorem' and
+'not proven to be a complete diffeomorphism-invariant operator basis' sit in direct tension with the
+assertion that the four routes … 'exhaust' minimal-ECH channels … this hedging undermines the
+strength of the claimed closure."* The paper's honest scope disclosures — reinforced across prior
+rounds precisely to be truthful about what is and is not proven — are here recast as a *weakness*.
+This is the canonical disclosure-backfire: honesty penalized. Not editable (removing the hedging
+would be dishonest overclaiming). Documented per directive-C.
+
+### RE-FLAG of prior-audit-dispositioned content (source-cited non-real)
+
+- **ChatGPT: single-action model / Eq.(10) not from Eq.(1) / N_tot not a common model** — RE-FLAG.
+  Self-containment + companion-independence disclosed (prior audit self-containment item; L1413).
+- **ChatGPT: Eq.(1) variational hybrid (T·T displayed but not varied)** — RE-FLAG. = prior audit (a);
+  two-step off-shell/effective reading added v1U.0.10 (L1683+).
+- **ChatGPT: F2 Cartan finite-γ contorsion has ε + η/γ terms, nonzero trace** — RE-FLAG. The paper's
+  minimal-coupling totally-antisymmetric spin current is derived from the *symmetrized Hermitian*
+  Dirac action (L1789-1794); the trace/η parts are the *non-minimal* content the paper explicitly
+  puts OUT-OF-SCOPE (F2 disclosure; prior audit (b)/O1-O6 items).
+- **ChatGPT: dimensional no-go Eq.(6) dim-1 / Bianchi "strips a curvature factor"** — RE-FLAG.
+  +1→+4 dressing labeled "dispensable illustrative heuristic, not load-bearing" (prior audit dim+1
+  item, L1877-1892); the genuine dim-4 O1-O6 basis is primary.
+- **ChatGPT/Grok: O1-O6 not complete/independent, Nieh-Yan redundancy, infinite invariants** — RE-FLAG.
+  Completeness argued analytically (F1+F2+NDA monotonicity, L2448-2467); non-minimal/derivative/
+  multi-species irreps explicitly excluded (prior audit O1/O6 + OpenAI #3).
+- **ChatGPT: Route 1 finite-density vs NJL vacuum condensate; ⟨J5⟩=0 ⇏ ⟨J5 J5⟩=0** — RE-FLAG/SCOPE.
+  = prior audit (c); regulated NJL vacuum condensate explicitly NOT claimed excluded (L2599+).
+- **ChatGPT: Route 2 ϑ_NY invented matching chain / Route 3 Δγ→ρ_Λ asserted / Route 4 ALP imported**
+  — RE-FLAG. Route 2 "exploratory framing, not load-bearing"; Route 3 conditional amplitude budget;
+  Route 4 "closed by explanatory-deficit/CC relocation, NOT amplitude" (prior audit Routes 2/3/4).
+- **ChatGPT: N_tot ansatz / D_inf scaffolding / matter-bounce erasure "definitively"** — RE-FLAG.
+  D_inf labeled "mathematical scaffolding"; N_tot spread disclosed bookkeeping (prior audit D_inf item).
+- **ChatGPT: −35/16 vs Cai's −35/8, companion title still −35/8** — RE-FLAG. = prior audit
+  "−35/16 self-containedness"; the historical −35/8 is a deliberately-cited comparison; the P2
+  companion resolves the factor-of-two (P2 audit, quadruple-certified −35/16).
+- **ChatGPT: 13 barriers not independent; ChatGPT MINOR + appendices E-H don't test ECH** — RE-FLAG.
+  sec:barriers head disclosure "no barrier is a logical consequence of another"; each obs appendix
+  labeled stock-CAMB proxy / synthetic-sky / not-an-ECH-test (prior audit barrier + appendices items).
+- **Grok MAJOR #1 (NDA relocates CC problem)** — RE-FLAG. = prior audit OpenAI #2 + R4 framing;
+  the paper itself states R4 "relocates the CC problem rather than solving it" (L1198).
+- **Grok MAJOR #6/#2 (transparency high-level sketch; term-by-term not shown in detail)** — RE-FLAG/
+  SCOPE. Transparency scoped to canonical scalar matter, excluding fermions/torsion/non-minimal
+  (prior audit transparency item, L1248,3333).
+- **Grok MINOR (14-barrier numbering overhead) + MINOR (60pp density/self-reference)** — OPINION.
+  Style/venue preference (= OpenAI #19 / Grok #5 prior audit).
+
+### Addendum counts
+- **Genuinely-new real+editable:** 1 (ChatGPT Check D S·S sign+factor-16) — CLOSED v1U.0.11.
+- **Disclosure-backfire (pattern-066):** 1 (Grok MAJOR #7 punishing honest scope hedging).
+- **RE-FLAG of prior-audit/disclosed content (source-cited non-real):** ChatGPT ~14 MAJ + 1 MIN;
+  Grok 2 MAJ + 2 MIN.
+- **No fabricated math.** The one fix propagates the paper's own footnote-derived value; conclusion
+  unchanged.
+
+### Directive-G hygiene (v1U.0.11)
+- `\paperVersion` v1U.0.10 → v1U.0.11; `\paperTimestamp`/`\date` = July 10, 2026 (unchanged); full changelog comment inline.
+- Leak-gate: 0 secret patterns pre-compile.
+- TinyTeX (universal-darwin) 3-pass + bibtex: 0 undefined references (the lone "undefined" is a cosmetic OMS/cmtt font-shape warning), 3 pre-existing overfull hboxes (L1645/4715/5192, none at the edits), 60 pages.
+- PDF md5 = `ba2cf6754d774c8736be5e7cf458419f`, 2582392 bytes, 60 pages. Page 1 verified: "July 10, 2026", version chip v1U.0.11; Check D renders corrected `-3/8 (J5·J5)`.
+- Mirrored byte-identical to all served paths: `public/papers/paper1_unified_v1U.0.11.pdf` + `paper1_unified.pdf`, `site/public/papers/…` (both), source `arxiv/paper1_unified.pdf` — all md5 `ba2cf675…`.
+- Convex `paperVersions:bump` paper-1a v1U.0.11 (real md5/pages/bytes, "July 10, 2026", texCommit "post-H17-bundle", sitePdfPath /papers/paper1_unified_v1U.0.11.pdf) → row `k57d3hpz6a9r04qvhgedch3q7h8a864h`.
+- No commit (per instructions).

@@ -140,3 +140,30 @@ Closure (no fabrication; every number already in the paper): added footnote `$^{
 
 ### Integrity
 No ACCEPT fabricated; both API REJECTs recorded as-is. Every finding carries a source-cited verdict. The single closure reads only numbers already in the paper (verified relation 37,272,042 = 37,292,042 − 20,000); no math fabricated. v3.1.152: TinyTeX 2-pass exit 0, 0 undef refs, 37 pages, page-1 date "July 10, 2026", footnote renders in-column (pages 8-9 visual-checked, no overflow). md5 c526aea2a64e2b4f32822fdc8a21440c mirrored byte-identical to all 7 served paths + 2 versioned aliases; Convex paperVersions:bump success (paper-3).
+
+---
+
+## Addendum — EXT re-test (2026-07-10, audited against current v3.1.152)
+
+Fresh EXT re-tests on the **current** version: `retest/P3_grok_retest.md` (MAJOR), `retest/P3_chatgpt_retest.md` (REJECT, 13 MAJOR + 1 MINOR). Every finding audited line-by-line against v3.1.152 source. **Result: 0 genuinely-new editable findings.** No version bump, no directive-G, no Convex bump warranted this round.
+
+### P3 Grok re-test (MAJOR — NO flip; was MAJOR in H17)
+| Grok finding | Verdict | Source-cited disposition |
+|---|---|---|
+| M1 "268,519 validated catalog-grade" vs 2,468 science-target / 98.7% sky-filler | **RE-FLAG** | = prior Grok-EXT#1. Abstract leads with process-volume framing + 2,468 like-for-like benchmark; §I "Reader's guide" states 98.7% sky/filler up front. Disclosed verbatim. |
+| M2 eROSITA production axis irreproducible (16 rescalings + 3 IF retrains fail, ρ=−0.10) | **RE-FLAG** | = prior Grok-EXT#2. `tab:provenance` excises eROSITA from EVERY count; irreproducible-axis disclosed. |
+| M3 LAMOST 5.8% FAIL + DESI rests on 1 gate + 2 correlated proxy-fold checks failing val-loss≤0.30 | **RE-FLAG (already CLOSED v3.1.150-151)** | = F1/CG-A. The honest three-gate downgrade is present at L988/L1069/L1100/L1598. Grok's exact phrasing ("two correlated fold-stability checks... fail the val_loss≤0.30 retain gate") mirrors the paper's OWN disclosure language — re-flagging the closed disclosure. |
+| MINOR Gaia synthetic / abstract length / SDSS continuity-slice | **RE-FLAG** | = prior minors. Gaia excised (disclosed); SDSS 77,905 fixed-size slice + 19,253 top-1% + 12 (S>5) tabulated in `tab:survey_summary`. |
+
+### P3 ChatGPT re-test (REJECT, 13 MAJOR + 1 MINOR)
+Section-by-section identical to the already-dispositioned CG-1..CG-13 (heterogeneous 268,519 definition, injection≠purity, DESI non-astrophysical/98.7% sky, five-fold in-sample+fail-retain-gate, Fig 10 selection-function, Planck patches/0.10%, score-definition Eq(2)-vs-Table-II, 17.8% novelty, spatial statistics, f_NL forecast, NANOGrav decoupled, reproducibility provenance, "37.3M"/journal-scope). All previously dispositioned RE-FLAG / DISCLOSED-LIMITATION / OPINION with source-cited verdicts, all closures verified intact in v3.1.152:
+- "37.3M mixes 36.758/36.93/37.272/37.292" = F3, closed by footnote $^{\otimes}$ (L1106/L1180) with exact relation 37,272,042 = 37,292,042 − 20,000.
+- "58.8% denominator 400 includes removed Gaia" = annotated inline (L1387/L1406).
+- 195,790-vs-195,829 = CG-C, reconciled (L uses 195{,}790, primary-coadd subset).
+- three-gate framing = CG-A, downgraded honestly (L988/L1100).
+
+### Counts (P3 re-test)
+- **Genuinely-new real+editable:** 0 (Grok 0 new, ChatGPT 0 new).
+- **Re-flag / disclosed-limitation / opinion:** Grok 6, ChatGPT 14 — all source-cited to a paper line or a prior-audit disposition, all closures verified intact.
+- **Backfire (pattern-066):** none isolated for P3 (Grok stayed MAJOR→MAJOR on the same disclosed content; not a harsher flip).
+- **Integrity:** no ACCEPT fabricated; both REJECT/MAJOR verdicts recorded as-is; no math fabricated; no edit needed (nothing genuinely-new to close).

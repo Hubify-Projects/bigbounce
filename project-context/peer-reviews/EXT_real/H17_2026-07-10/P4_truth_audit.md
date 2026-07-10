@@ -145,3 +145,34 @@ No other `−18 / 0.034 / 7–18× / −264.5` survives in live text (remaining 
 - Convex `paperVersions:bump` (paper-4, v1.0.232) written (id k571gs2p9mwbrr9rkwdr0mhd4n8a8s8n).
 
 **No fabrication.** The two straggler fixes propagate the already-committed corrected arithmetic; the reconciliation sentence and figure fix change presentation only. All vendor MAJORs are re-flags of disclosed content; barrier remains compute/venue, not text.
+
+---
+
+## Addendum — EXT re-test (2026-07-10, audited against current v1.0.232)
+
+Fresh EXT re-tests on the **current** version: `retest/P4_grok_retest.md` (MAJOR — **WORSENED from MINOR**), `retest/P4_chatgpt_retest.md` (REJECT, 14 MAJOR + 3 MINOR). Every finding audited against v1.0.232 source. **Result: 0 genuinely-new editable findings.** No version bump, no directive-G, no Convex bump warranted.
+
+### ⚠ P4 Grok flip diagnosis — CORRECTION/DISCLOSURE-BACKFIRE (pattern-066), NOT new content
+
+Grok went **MINOR (H17) → MAJOR (re-test)** on the SAME THREE findings, and every fact it cites is the paper's OWN honestly-corrected/downgraded content from the v1.0.231–232 Shamir fix. It attacks the **corrected** numbers (A_ref 0.017, z≈−7.6, tension 3.7–8.8×) and the newly-strengthened caveats — i.e. it flipped harsher *because* the paper added honesty. Before/after:
+
+| Finding | H17 Grok (MINOR) quote | Re-test Grok (MAJOR) quote | Diagnosis |
+|---|---|---|---|
+| Shamir z≈−7.6 exclusion language | "the amplitude-level tension (~7–18×)... must state more explicitly... this is not a statistical exclusion" (on the OLD doubled 7–18×/z≈−18) | "the phrasing that the WLS fit 'disfavors a clean cosmological dipole at the 1.7% reference amplitude... at z≈−7.6' is not supported... the text explicitly states this z is a model-dependent template-disfavor statistic... not a calibrated frequentist exclusion significance" | **BACKFIRE.** Grok's own MAJOR quotes the paper's disclosed caveat *verbatim* (L616, L707, L1367) and re-flags it as a defect. Attacks the CORRECTED z≈−7.6 and A_ref=0.017. |
+| §IV D 53%/47% harmonic residual | "reproduces only ≈53%... ~47% remainder... although the paper correctly bounds this remainder below the real-space A95 and states it does not affect primary conclusions" (conceded disclosed) | same 53%/47%, same \|a1\|=6.95e-3, escalated to MAJOR: "the harmonic-channel systematic budget is therefore not closed" | **BACKFIRE / RE-FLAG.** = CG-7/GK-3. Disclosed verbatim L620 + §monopole_mask_null (L1017) + Appendix D; Grok concedes the bound in its own text. |
+| §II B / §VI A pseudo-labels + GZ1 | (not a MAJOR in H17) | "66.5% of training labels are CE-ResNet pseudo-labels... GZ1-human-only... z=−0.54σ... ~4.5× coarser sensitivity (A50≈3.4%, A95≈4.5–6.8%)" | **RE-FLAG.** Every number (66.5%, 4.60e4, z=−0.54, A50≈3.4%, A95≈4.5–6.8%) lifted directly from the paper's OWN disclosures L639/L683/L1067. |
+
+**Verdict: the P4 Grok flip is disclosure/correction-backfire, not something genuinely new.** All three MAJORs are the paper's own honestly-corrected/downgraded content; zero new editable defect.
+
+### P4 ChatGPT re-test (REJECT, 14 MAJOR + 3 MINOR)
+All 14 MAJORs map 1:1 to prior CG-1..CG-10 + INT dispositions (verified intact in v1.0.232):
+- p_eq>0.6 post-selection (CG-1, RE-FLAG §prereg L707); rotational-invariance/21.4% D4 flips (CG-3, RE-FLAG L801); transfer calibration 69.91%/injection bypass (CG-4, RE-FLAG §sensitivity); harmonic residual/estimator conflict (CG-7, OPEN-disclosed); eight-anchor (CG-6, OPEN); null calibration exchangeability (CG-6, OPEN); sensitivity language A95 (GK-6, RE-FLAG); GZ1 coarse + "unit error factor-of-two" (RE-FLAG — paper is unit-explicit, A_p vs f_CW conversions given throughout e.g. L1067); low-conf interpretation (CG-1); theory transfer function (CG-MINOR-1, RE-FLAG hedged L1155); DOI/sample-N (CG-MINOR-2, OPEN Houston-gated).
+- Two apparently-"new" numeric MAJORs are **definitional re-frames, not defects:**
+  - **"z≈−7.6 is only ~1.4σ not 7.6σ under g=0.398 dilution"** — this dilution point, built on the paper's g and A_ref=0.017, is subsumed: the paper explicitly states the block-bootstrap z is a *template-disfavor statistic, not a detection significance* ("disfavors, not excludes at 7.6σ", L1367) and that classifier dilution makes it *conservative* (folded into A50/A95 via g=2a−1). Definitional, disclosed.
+  - **"53%/47% is numerically incorrect — vector residual is 62%"** — the paper's statistic is explicitly the *scalar amplitude* reproduction (\|a_sys\|=3.75e−3 ≈54% of \|a_obs\|=6.95e−3, cosθ=+0.83/+0.84 stated, L1017) and it bounds the **entire** residual (100%, not just 47%) below A50/A95, so the 47%-vs-62% quibble is immaterial to any conclusion. RE-FLAG/OPINION, no fabrication.
+
+### Counts (P4 re-test)
+- **Genuinely-new real+editable:** 0 (Grok 0, ChatGPT 0).
+- **Correction/disclosure-backfire (pattern-066):** 1 confirmed — the P4 Grok MINOR→MAJOR flip, all 3 items, before/after quoted above.
+- **Re-flag / disclosed-limitation / opinion:** Grok 3, ChatGPT 17 — all source-cited to a paper line or a prior-audit disposition; all closures (Shamir factor-2, straggler fixes, figure regens) verified intact in v1.0.232.
+- **Integrity:** no ACCEPT fabricated; both REJECT/MAJOR verdicts recorded as-is; no math fabricated; no edit warranted (nothing genuinely-new to close). Barrier remains compute/venue + LLM referee-variance (pattern-066), not text.

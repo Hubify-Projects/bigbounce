@@ -281,3 +281,97 @@ source-cited sections, NOT dismissed by fabrication. Headline −35/16 unchanged
 - Mirrored byte-identical to all 13 served paths (public + site/public, aliases + v1.7.110 versioned) — all md5-verified.
 - Convex `paperVersions:bump` paper-2 v1.7.110 (real md5/pages/bytes, "July 10, 2026", texCommit "pending-H17-bundle") → row `k57d9q2xd9j7056t0nq6mmh0zh8a8qvp`.
 - No commit (per instructions).
+
+---
+
+## Addendum 3 — EXT re-test (v1.7.110, 2026-07-10) — NO EDIT, at the bar
+
+Fresh EXT re-tests on the CURRENT v1.7.110 PDF: `retest/P2_grok_retest.md` (**MINOR REVISIONS** —
+improved from H17 MAJOR: 1 MAJOR + 3 MINOR), `retest/P2_chatgpt_retest.md` (REJECT, 10 MAJOR + 1 MINOR).
+Every finding re-audited against v1.7.110 source (grep-verified). **Result: 0 genuinely-new
+real+editable findings on either reviewer. Every Grok MINOR is ALREADY closed in v1.7.110 source;
+every Grok MAJOR + ChatGPT finding is a source-cited RE-FLAG of prior-addendum-dispositioned content.
+No edit, no v1.7.111 bump.**
+
+### Grok EXT (MINOR REVISIONS — improved from MAJOR) — every item already in source
+
+- **Grok MINOR #1 (per-vertex numerical squeezed contributions of the four vertices in *main text*)**
+  — RE-FLAG (already present, appendix location). `tab:vertexwalk` (App A, L1502-1505) already
+  tabulates the four per-vertex squeezed AND equilateral local-amplitude contributions at ε=3/2,
+  with column sums = the certified `-35/16` / `-255/128` benchmarks; the abstract (L886) names the
+  four vertices and cites "certified vertex-by-vertex in Table VII". Grok asks for main-*text*
+  placement — a location preference, not a missing computation. Non-real.
+- **Grok MAJOR (headline 1.3-2.75σ from heterogeneous endpoints w/o joint covariance)** — RE-FLAG.
+  Already subordinated v1.7.108: abstract (L888) states the ranges are "conditional sensitivity
+  envelopes" whose endpoints are "not directly comparable"; L892 states plainly it is "a scoping
+  sensitivity envelope … not a joint-covariance forecasted measurement precision." = prior addendum
+  Grok-EXT-M2 / OpenAI-M8/M10. Non-real.
+- **Grok MINOR (assumption (d) cubic transmission — only scaling/gradient bound, no explicit 4-integral
+  eval)** — RE-FLAG = load-bearing caveat (d). Disclosed OOM single-clock estimate, explicitly the
+  weakest link, "not a full 3rd-order in-in" (prior addendum Grok MINOR-a / OpenAI M6). Non-real.
+- **Grok MINOR (null-space: brief statement on invariance under linear reparametrization of monomials)**
+  — RE-FLAG (already present *verbatim*). L951 already reads: "the uniform Euclidean measure in this
+  monomial basis is **not invariant under linear reparametrizations of the monomials or rotations
+  within the null space** — an equally valid basis choice would yield a different ±0.13 scatter …
+  the quoted scatter should therefore be read as indicative … rather than as a calibrated,
+  basis-independent uncertainty." The exact sentence Grok requests is in the paper. Non-real.
+- **Grok MINOR (Bayes-factor: single consolidated table showing exact prior convolution per cell)**
+  — RE-FLAG (already present). The four-corner prior grid (curvaton-narrow [-5,+5] vs broad [-15,+15]
+  × delta vs σ_theory=1.0 Gaussian) is tabulated in `tab:bayes` and stated cell-by-cell at L1241:
+  "17.1→14.4 (delta, broad), 9.8→9.2 (σ=1.0, broad), 5.7→4.8 (delta, narrow), 3.9→3.9 (σ=1.0, narrow)";
+  L1143 documents which cells are analytic vs MC; L1173 gives the exact eq-to-prior assignment.
+  The consolidated per-cell convolution Grok asks for exists. Non-real.
+
+### ChatGPT EXT (REJECT) — all RE-FLAG of prior-addendum content (raw self-cites "h17b_P2")
+
+The ChatGPT raw explicitly tags "h17b_P2" — it reviewed a state at/near the H17 body, so its findings
+re-flag content the first-pass + ChatGPT-addendum owner already closed:
+- **MAJOR (App A three statements can't all be true / +c.c. doubling / -305/64)** — RE-FLAG =
+  prior ChatGPT addendum MAJOR #1+#2. App A L1489 states the ordered-sum convention explicitly;
+  L1518-1572 give the in-in operator algebra (A7-A12) + the honest -305/64 restatement with the
+  -(99/128) sign. Non-real.
+- **MAJOR (null-space artificial / coefficients fixed / additive-local not global-½)** — RE-FLAG.
+  Disclosed as an amplitude-invariant shape-basis stress band (r=0.85±0.13) that never enters σ_eff
+  (L987); -35/16 fixes amplitude only. = prior ChatGPT #3 / OpenAI M2. Non-real.
+- **MAJOR (cubic transmission not derived / ζ∝|η|⁻³ growing mode)** — RE-FLAG = caveat (d).
+  = prior ChatGPT #7 / Grok MINOR-a. Non-real.
+- **MAJOR (c_s: -35/16 is c_s=1 limit vs c_s≪1 tensor suppression incompatible)** — RE-FLAG =
+  prior ChatGPT #9. Assumption (a) fixes the c_s=1 quasi-dust benchmark (L954); low-c_s is a
+  separate qualitative note. Disclosed scope. Non-real.
+- **MAJOR (template-mismatch Eq.(5) conflates response/cosine/rescale; CMB weight ≠ SPHEREx)** —
+  RE-FLAG = prior ChatGPT #4/#5. r=0.84 flat-weight cosine (conservative headline) vs r_eff≈0.99
+  survey-optimal validation reconciled at §spherex (L1045). Non-real.
+- **MAJOR (independent Fisher 0.42-0.45 vs Heinrich 0.73 not a 2-11% reproduction)** — RE-FLAG.
+  Reproduction-vs-Heinrich limitations (bias-fixed, diagonal Gaussian cov) disclosed as an explicit
+  limitation list (L1045); validation not independent forecast (L847). = prior ChatGPT #5. Non-real.
+- **MAJOR (systematic budget 1.3-2.75σ no statistical interpretation; 0.8σ proxy vs 1.3σ headline)**
+  — RE-FLAG. |ρ|=0.95→0.8σ lower-edge row added v1.7.109 (directive-F); envelope disclosed as
+  additive-quadrature heuristic. = prior ChatGPT #6 / OpenAI M9. Non-real.
+- **MAJOR (Bayes factors are prior-volume ratios, multifield only a uniform f_NL prior)** — RE-FLAG.
+  Labeled "illustrative not definitive"; broad-competitor BF∝W center-independent, disclosed (L1143).
+  = prior OpenAI M10. Non-real.
+- **MAJOR (κ_ε∈[2.8,40] not calculated; 8% shift → f_NL≈-2.01 → 2.41σ outside 2.6-2.75σ)** —
+  RE-FLAG = prior ChatGPT #10. κ_ε labeled single-prefactor-derivative estimate; f_NL-n_s relation
+  indicative. The 2.41σ note is the post-shift value, disclosed as a bracket not the headline. Non-real.
+- **MAJOR (observer-frame: gauge-frame f_NL not "measured directly"; factor-146)** — RE-FLAG =
+  prior ChatGPT #11. Template-amplitude comparison disclosed as such; framing dispute, no numeric
+  error. Non-real.
+- **MINOR (overextended, artifact names, multi-page abstract, Zenodo placeholder)** — OPINION /
+  presentation. = prior ChatGPT MINOR. Non-blocking.
+
+### Disclosure-backfire (pattern-066): 0 new
+The ChatGPT/Grok raws punish scope disclosures + the disclosed load-bearing caveat, but these are
+the same disclosed-limitation re-flags already dispositioned in prior addenda, not attacks on *new*
+honest corrections. (The prior audits already documented the -305/64/smaller-BF backfire pattern; no
+new instance this re-test.) Grok's *improvement* MAJOR→MINOR is the honest signal: P2 is at the
+LLM-referee floor with every editable item closed.
+
+### Addendum-3 counts
+- **Genuinely-new real+editable:** 0 (Grok) + 0 (ChatGPT).
+- **RE-FLAG already-in-source / prior-addendum-dispositioned (source-cited non-real):** Grok 1 MAJ +
+  4 items (3 MIN + the per-vertex-location MIN); ChatGPT 10 MAJ.
+- **OPINION / presentation:** 1 ChatGPT MINOR.
+- **Disclosure-backfire (pattern-066):** 0 new.
+- **No edit → no v1.7.111 bump, no directive-G, no Convex write.** v1.7.110 stands (row
+  `k57d9q2xd9j7056t0nq6mmh0zh8a8qvp` from Addendum-2).
+- **No fabricated math.** Headline -35/16 unchanged, quadruple-certified.
