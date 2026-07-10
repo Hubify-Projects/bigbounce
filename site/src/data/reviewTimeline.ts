@@ -46,6 +46,24 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "H17-retest-grok-2026-07-10",
+    dateISO: "2026-07-10",
+    kind: "external-browser",
+    title:
+      "H17 Grok RE-TEST (5 papers at H17 versions) — Grok-only leg harvested: P2 improved MAJOR→MINOR, P4 regressed MINOR→MAJOR (referee variance), P1U/P3/P5 unchanged. ChatGPT retest submitted-but-unharvested (headless cron); Gemini upload-throttle-FAILED.",
+    papers: ["P1A", "P2", "P3", "P4", "P5"],
+    summary:
+      "Grok re-test of all 5 papers at the H17-closure versions (P1U v1U.0.10 · P2 v1.7.110 · P3 v3.1.152 · P4 v1.0.232 · P5 v0.1.115). Verdicts FROM RAW: P1U MAJOR (unchanged) · P2 MINOR (improved from H17 MAJOR — the −35/16 vertex-sum + Eq.11 systematic-budget closures held; one embedded [MAJOR] on the SPHEREx heuristic-envelope covariance remains, compute-gated) · P3 MAJOR (unchanged — 268,519-vs-2,468 yield framing + eROSITA/LAMOST gate-FAIL tiers) · P4 MAJOR (regressed from H17 MINOR; the three MAJOR items are the already-disclosed template-diagnostic z≈−7.6 phrasing, the 47% unmodelled ℓ=1 remainder, and the 66.5% CE-ResNet pseudo-label pipeline — pattern-066 referee variance) · P5 MINOR (unchanged; verdict WORD MINOR with one embedded [MAJOR] on the post-hoc primary-estimand designation). ChatGPT + Grok retest legs were both SUBMITTED (manifest.jsonl round:retest) but only Grok's output was harvestable this cron tick; the ChatGPT retest remains in-flight and Gemini stays upload-throttle-gated. Honest re-cap from the Grok delta (ChatGPT carry=REJECT, Gemini carry=P5 MAJOR): P2 56→62, P4 62→56; P1U/P3/P5 unchanged (56/56/68). No paper reached ACCEPT — the literal 0/0/0 bar (directive-J) is not met. Raws + screenshots in EXT_real/H17_2026-07-10/retest/.",
+    keyTakeaways: [
+      "Grok retest movement: P2 MAJOR→MINOR (improved — −35/16 vertex-sum + Eq.11 systematic-budget closures held), P4 MINOR→MAJOR (referee variance on already-disclosed items), P1U/P3/P5 unchanged",
+      "ChatGPT retest submitted but unharvested (headless cron can't drive the browser); Gemini still upload-throttle-FAILED — this tick harvested the Grok leg only",
+      "Honest re-cap: P2 56→62, P4 62→56 (Grok delta); P1U/P3/P5 hold 56/56/68. No ACCEPT — literal 0/0/0 bar not met",
+    ],
+    links: [
+      { label: "H17 Grok retest raws", href: `${PR}/EXT_real/H17_2026-07-10/retest/` },
+    ],
+  },
+  {
     id: "H17-full-external-sweep-2026-07-10",
     dateISO: "2026-07-10",
     kind: "external-browser",
@@ -4586,6 +4604,20 @@ export const externalVerdictRounds: ExternalRoundVerdicts[] = [
       P5: ["REJECT", "MINOR", "MAJOR"],
     },
     note: "Full 5-paper external sweep after the H17 REAL-error closure wave. Verdict matrix stored [ChatGPT, Grok, Gemini] FROM RAW (verbatim recommendation line READ from each saved raw before recording): P1U REJECT/MAJOR/(FAILED) · P2 REJECT/MAJOR/(FAILED) · P3 REJECT/MAJOR/(FAILED) · P4 REJECT/MINOR/(FAILED) · P5 REJECT/MINOR/MAJOR. (P1U is the unified Paper 1 with no P1A/P1B matrix column — its result lives in this note; the P1A row above carries the P1U verdicts.) HARVESTED legs = 5 ChatGPT + 5 Grok + 1 Gemini (P5) = 11 verdicts; the four Gemini P1U/P2/P3/P4 legs FAILED on a silent upload-throttle chip-drop before send (documented FAILED-upload-throttle in manifest.jsonl — NO verdict posted for a failed leg, stored NO_VERDICT). ChatGPT = its structural harsh-referee floor: all 5 REJECT (P1U 7 majors on the Eq.16 non-minimal/dim-no-go/basis-completeness axis; P2 6 majors on the Cai factor-of-2 forensic algebra + null-space + Fisher-recast; P3 8 majors on the 268,519 catalog-definition + scan-volume arithmetic + Liang like-for-like denominators; P4 7 majors on pre-specified-cut provenance + classifier validity + injection-transfer + exchangeability-null; P5 6 majors on primary-estimand consistency + footprint-vs-selection + volume-limited mischaracterization + de-attenuation justification). Grok = moderate: P1U/P2/P3 MAJOR REVISIONS, P4/P5 MINOR REVISIONS — NOTE P5 Grok's verdict WORD is 'MINOR REVISIONS' but its raw carries two [MAJOR]-tagged items (post-hoc primary-path designation + de-attenuated 2.26pp bound); recorded as MINOR per the verbatim verdict line with the two-MAJOR caveat noted here. Gemini P5 = MAJOR REVISIONS (companion-Paper-IV cross-manuscript dependency + post-hoc primary path + RSD + target-program/environmental non-orthogonality; concludes the no-environment-dependence null is 'well-supported'). This round's owner-agents closed 5 REAL errors before the sweep (each source-verified, none fabricated): P1U v1U.0.10 — Eq.16 non-minimal-coupling relabel + M_Pl/κ convention; P2 v1.7.110 — spurious-term sign −(99/128), printed-polynomial→−305/64, SSFSR BF columns recomputed at the −35/16 center (10⁸→1.4×10² stale-value correction), FoG sign, +4 Claude minors; P3 v3.1.152 — three-gate honest downgrade + scan-volume/provenance reconciliations; P4 v1.0.232 — Shamir factor-of-2 double-count (A_ref 0.034→0.017, z −18→−7.6, tension 3.7–8.8×, figure regenerated); P5 v0.1.115 — primary-estimand seam + Table X exact counts + Bonferroni-5 consolidated table + GALZONE text-matched-code + DAS. A same-day EXT re-test wave (ChatGPT + Grok, all 5 papers at these new versions) is IN FLIGHT. Every surviving MAJOR/REJECT is either a source-cited re-flag of an already-disclosed limitation or the structural harsh-referee floor (patterns 061-064 + pattern-066 referee variance + directive-H). Caps updated per the harvested-EXT formula (50 + per-reviewer points): P1U/P2/P3=56, P4=62, P5=68. 11/11 harvested legs have raw verbatim text + screenshots, 0 fabricated; 4 Gemini legs FAILED (upload throttle). Raws + manifest in EXT_real/H17_2026-07-10/.",
+  },
+  {
+    roundId: "H17-retest-2026-07-10",
+    dateISO: "2026-07-10",
+    windowPT: "Jul 10 · Grok RE-TEST of all 5 papers at H17-closure versions (P1U v1U.0.10 · P2 v1.7.110 · P3 v3.1.152 · P4 v1.0.232 · P5 v0.1.115) · ChatGPT retest submitted-but-unharvested (headless cron), Gemini upload-throttle-FAILED · raw verbatim text + screenshot READ before every recorded verdict · 0 fabricated",
+    verdicts: {
+      P1A: ["NO_VERDICT", "MAJOR", "NO_VERDICT"],
+      P1B: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P2: ["NO_VERDICT", "MINOR", "NO_VERDICT"],
+      P3: ["NO_VERDICT", "MAJOR", "NO_VERDICT"],
+      P4: ["NO_VERDICT", "MAJOR", "NO_VERDICT"],
+      P5: ["NO_VERDICT", "MINOR", "NO_VERDICT"],
+    },
+    note: "Grok RE-TEST of all 5 papers at H17-closure versions, harvested this cron tick. Verdict matrix stored [ChatGPT, Grok, Gemini]; only Grok was harvestable (ChatGPT retest SUBMITTED but unharvested by the headless cron — no browser; Gemini remained upload-throttle-FAILED), so ChatGPT + Gemini columns are NO_VERDICT for this retest round (carry-forward from H17: ChatGPT REJECT ×5, Gemini P5 MAJOR). Grok FROM RAW: P1U MAJOR REVISIONS (unchanged; single-scale-NDA-reframe + Sec-X sketch-level transparency + scope hedging) · P2 MINOR REVISIONS (IMPROVED from H17 MAJOR — verdict WORD MINOR, one embedded [MAJOR] on the SPHEREx 1.3–2.75σ heuristic-envelope covariance not recomputed = compute-gated) · P3 MAJOR REVISIONS (unchanged — 268,519 headline vs 2,468 science-target yield + eROSITA irreproducible score axis + LAMOST 5.8%/eROSITA 1.2% gate FAIL) · P4 MAJOR REVISIONS (regressed from H17 MINOR — referee variance, pattern-066; the three MAJORs are the already-disclosed z≈−7.6 template-diagnostic, the ~47% unmodelled ℓ=1 harmonic remainder, and the 66.5% CE-ResNet pseudo-label pipeline) · P5 MINOR REVISIONS (unchanged — verdict WORD MINOR, one embedded [MAJOR] on the post-hoc DESIVAST primary-estimand designation without pre-registration; family-wise Bonferroni-5 null holds). Honest re-cap from the Grok delta (formula 50 + per-reviewer pts, ChatGPT carry REJECT=0, Gemini carry P5 MAJOR=+6): P2 56→62 (Grok MAJOR→MINOR, +6), P4 62→56 (Grok MINOR→MAJOR, −6); P1U/P3/P5 hold 56/56/68. NO paper reached ACCEPT — the literal 0/0/0 bar (directive-J) is not met; every surviving item is a source-cited re-flag of an already-disclosed limitation, a compute-gated envelope, or the harsh-referee floor (patterns 061-064 + pattern-066 + directive-H). 5/5 Grok legs harvested with raw verbatim text + screenshots, 0 fabricated. Raws + manifest in EXT_real/H17_2026-07-10/retest/.",
   },
 ];
 

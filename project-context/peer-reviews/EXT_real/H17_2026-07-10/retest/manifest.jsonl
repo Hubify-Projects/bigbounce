@@ -1,0 +1,11 @@
+{"paper":"P1U","reviewer":"grok","round":"H17-retest","verdict":"MAJOR REVISIONS","major":3,"minor":2,"status":"harvested","raw":"P1U_grok_retest.md","screenshot":"P1U_grok_retest.png"}
+{"paper":"P2","reviewer":"grok","round":"H17-retest","verdict":"MINOR REVISIONS","major":1,"minor":4,"note":"improved from H17 MAJOR; 1 embedded [MAJOR] SPHEREx envelope (compute-gated)","status":"harvested","raw":"P2_grok_retest.md","screenshot":"P2_grok_retest.png"}
+{"paper":"P3","reviewer":"grok","round":"H17-retest","verdict":"MAJOR REVISIONS","major":3,"minor":3,"status":"harvested","raw":"P3_grok_retest.md","screenshot":"P3_grok_retest.png"}
+{"paper":"P4","reviewer":"grok","round":"H17-retest","verdict":"MAJOR REVISIONS","major":3,"minor":2,"note":"regressed from H17 MINOR; referee variance pattern-066 on already-disclosed items","status":"harvested","raw":"P4_grok_retest.md","screenshot":"P4_grok_retest.png"}
+{"paper":"P5","reviewer":"grok","round":"H17-retest","verdict":"MINOR REVISIONS","major":1,"minor":4,"note":"1 embedded [MAJOR] post-hoc primary-estimand designation","status":"harvested","raw":"P5_grok_retest.md","screenshot":"P5_grok_retest.png"}
+{"paper":"P1U","reviewer":"chatgpt","round":"H17-retest","status":"SUBMITTED-UNHARVESTED","note":"submitted (parent manifest round:retest) but headless cron cannot drive browser to harvest; carry-forward ChatGPT H17 = REJECT"}
+{"paper":"P2","reviewer":"chatgpt","round":"H17-retest","status":"SUBMITTED-UNHARVESTED"}
+{"paper":"P3","reviewer":"chatgpt","round":"H17-retest","status":"SUBMITTED-UNHARVESTED"}
+{"paper":"P4","reviewer":"chatgpt","round":"H17-retest","status":"SUBMITTED-UNHARVESTED"}
+{"paper":"P5","reviewer":"chatgpt","round":"H17-retest","status":"SUBMITTED-UNHARVESTED"}
+{"paper":"ALL","reviewer":"gemini","round":"H17-retest","status":"FAILED-upload-throttle","note":"H17 Gemini legs FAILED silent chip-drop; not re-attempted headless"}
