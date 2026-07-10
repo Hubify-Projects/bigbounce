@@ -41,7 +41,7 @@
 % The divide-by-h claim (~1246 h⁻¹ Mpc) is INVERTED. No pipeline recompute required.
 % If any future reviewer re-raises this, cite env_finder/01_compute_vweb.py:106-108.
 
-\newcommand{\paperVersion}{v0.1.111-2026-07-09}
+\newcommand{\paperVersion}{v0.1.112-2026-07-09}
 % v0.1.111-2026-07-09 (CV-round EXT closure (ChatGPT MAJOR-revisions reopened off CA ACCEPT;
 %   Grok/Gemini MINOR). Framing/relocation only; every verified number unchanged EXCEPT the
 %   stated systematic envelope, which was WIDENED (never tightened) to the honest value:
@@ -711,13 +711,22 @@ Release~1 (\emph{designated primary for reporting; exploratory/post-hoc};
 DESIVAST-anchored; see \S\ref{sec:primary_path}: no timestamped plan
 predates the data, so the ${\approx}0.9$\,pp bound below is exploratory
 and should not be read as a pre-registered exclusion; the quotable result
-is the family-wise Bonferroni-5 null). The void-vs-non-void CW-fraction
-contrast on $56{,}981$ DESIVAST void spirals is $\Delta f_{\rm CW} =
-+0.0007$ ($z_\Delta = +0.31$, $p_\Delta = 0.76$), consistent with parity
-across all five DESIVAST void-finders ($|\Delta f_{\rm CW}| \le 0.004$,
-$|z_\Delta| \le 1.25$, $p_\Delta \ge 0.21$,
-Table~\ref{tab:desivast_three_algo}). This is a \emph{bounded null} on
-the specific DESIVAST void/non-void contrast at $56{,}981$ void spirals;
+is the family-wise Bonferroni-5 null). The \emph{primary} DESIVAST
+estimand is the \emph{footprint-restricted} void-vs-non-void CW-fraction
+contrast --- both classes confined to the DESIVAST usable footprint, the
+single same-footprint estimand (\S\ref{sec:desivast_anchored_void}) ---
+$\Delta f_{\rm CW} = +0.0018$ ($z_\Delta = +0.78$, $p_\Delta = 0.43$,
+$n_{\rm non\mbox{-}void} = 253{,}276$), consistent with parity. The
+broader all-$z\!\le\!0.24$-outside-hole contrast on the same $56{,}981$
+DESIVAST void spirals, $\Delta f_{\rm CW} = +0.0007$
+($z_\Delta = +0.31$, $p_\Delta = 0.76$, $n_{\rm non\mbox{-}void} =
+621{,}964$), is a \emph{secondary sensitivity check}; the two agree to
+within $0.11$\,pp, so the null verdict is invariant to the control-volume
+choice. The null holds across all five DESIVAST void-finders
+($|\Delta f_{\rm CW}| \le 0.004$, $|z_\Delta| \le 1.25$,
+$p_\Delta \ge 0.21$, Table~\ref{tab:desivast_three_algo}). This is a
+\emph{bounded null} on the specific DESIVAST void/non-void contrast at
+$56{,}981$ void spirals;
 the honest DR1 systematic envelope on any void/non-void split in the
 \emph{classifier-labelled} CW fraction is ${\approx}0.9$\,pp (quadrature
 of the counting-statistics CI with the fixed-void-geometry membership,
@@ -1695,7 +1704,25 @@ DESIVAST estimators as a Bonferroni-5 family at $\alpha = 0.05$, the
 per-test threshold is $|z|^{\rm Bonf}_{0.05,5} \approx 2.58$; no
 tabulated contrast across the five rows approaches it. The
 family-level conclusion is a clean primary null on the declared
-contrast estimand uniformly across all five rows. The secondary T-Web / Tempel / ASTRA
+contrast estimand uniformly across all five rows.
+\emph{Simultaneous upper bound across the five estimators.} Beyond the
+family-wise non-rejection statement, we report the least-constraining
+\emph{simultaneous} interval, i.e.\ the widest of the five per-estimator
+confidence intervals inflated to the Bonferroni-5 per-test level
+($z = 2.576$) so that all five hold jointly at family-wise $95\%$
+confidence. Using the tabulated $(\Delta f_{\rm CW}, {\rm SE})$ pairs,
+the simultaneous half-widths are: VoidFinder (footprint-restricted)
+$0.77$\,pp, V2-REVOLVER sphere $0.63$\,pp, V2-VIDE sphere $0.50$\,pp,
+V2-REVOLVER GALZONE $1.12$\,pp, and V2-VIDE GALZONE $0.86$\,pp. The
+\emph{widest} of these --- the V2-REVOLVER catalog-native GALZONE
+interval $[-0.0112, +0.0038]$ --- gives the least-constraining
+simultaneous bound: no DESIVAST void definition admits
+$|\Delta f_{\rm CW}| \gtrsim 1.1$\,pp at family-wise $95\%$ confidence.
+This is the honest joint statement across five correlated, differently
+defined estimators; it is deliberately looser than the tightest single
+row and than the ${\approx}0.9$\,pp systematic-envelope quadrature, and
+it is the value model-builders should adopt when they need a single
+simultaneous constraint rather than a preferred-row bound. The secondary T-Web / Tempel / ASTRA
 / external T-Web~\cite{TWebDESI2026} / per-stratification estimators carry their own multiplicity
 budget but, per the primary/secondary separation above, do not enter
 the headline-result family. We caution that any single secondary-path
@@ -2935,7 +2962,26 @@ $z_\Delta = +0.78$, two-sided $p_\Delta = 0.43$, $95\%$ CI
 $[-0.0027, +0.0064]$) --- consistent with null. Restricting the control
 to the DESIVAST footprint removes the outside-footprint population
 ($n = 368{,}588$, $\sigma = -4.53$) that carries the catalog-level
-monopole and does not share the void sample's selection function.
+monopole and does not share the void sample's usable survey volume.
+\emph{Footprint $\neq$ selection function.} We are precise about what
+this restriction is and is not: the ``footprint'' here is a purely
+\emph{geometric} construction --- the union of the $101{,}863$
+hole-sphere angular discs (NSIDE\,$=\!64$) intersected with the holes'
+comoving radial span (\S\ref{sec:desivast_maximal_healpix}) --- and is
+\emph{not} the published DESIVAST/BGS angular-plus-radial completeness
+mask, its vetoes, or a DESI random-catalog estimate of the usable
+selection function. Matching the void and control classes on this
+angular--radial support removes the gross outside-coverage population but
+does \emph{not} guarantee matched fibre-assignment completeness, imaging
+depth, or radial selection between the two classes; a fully
+selection-function-matched control would require the DESIVAST/BGS mask and
+DESI randoms (or a per-void matched control in redshift and
+angular-selection space), which we do not construct here. The
+footprint-restricted contrast should therefore be read as a
+\emph{same-survey-volume} estimand that removes the dominant
+outside-footprint monopole, not as a completeness-matched estimator;
+the residual selection mismatch is one of the systematic channels folded
+into the envelope of Table~\ref{tab:systematic_budget}.
 
 \emph{Sensitivity check: the all-$z\le0.24$-outside-hole contrast.}
 The broader control that admits every $z \le 0.24$ matched spiral
@@ -2994,8 +3040,15 @@ vs.\ maximal-sphere \emph{geometry} ($0.60$\,pp) --- are of
 \emph{not} sub-dominant to the membership term (an earlier draft
 mislabeled it so). Combining the seven counting-plus-systematic terms in
 quadrature (treating them as approximately independent) gives an
-effective $2\sigma$ half-width of ${\approx}0.9$\,pp; the maximum single
-absolute excursion across all accepted void definitions is the
+effective $2\sigma$ half-width of ${\approx}0.9$\,pp. Explicitly, the
+term-sum is
+$\sqrt{0.44^2 + 0.37^2 + 0.60^2 + 0.37^2 + 0.11^2 + 0.24^2 + 0.02^2}
+= \sqrt{0.885} = 0.94$\,pp $\approx 0.9$\,pp (rows of
+Table~\ref{tab:systematic_budget}, in order: counting CI, membership,
+geometry, sphere-PIS-vs-GALZONE, footprint, confidence, match-radius);
+the geometry ($0.60$) and counting ($0.44$) terms dominate the sum and
+the smaller four contribute $<0.1$\,pp each in quadrature. The maximum
+single absolute excursion across all accepted void definitions is the
 $0.60$\,pp geometry term. We therefore \emph{widen} the quoted primary
 environment-independence bound to ${\approx}0.9$\,pp (honest quadrature
 envelope), superseding the earlier ${\approx}0.5$--$0.6$\,pp figure,
