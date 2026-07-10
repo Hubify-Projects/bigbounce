@@ -110,18 +110,20 @@ After 11 autoloop fires + v3.2 meta-reviewer + persistence tracker: **5 LOAD-BEA
 >
 > **Readiness caps RECUT to 76–80 (NOT 96/98/99).** Honest referee cover letters drafted for all 6 at `submissions/{P1A,P1B,P2,P3,P4,P5}/REFEREE_COVER_LETTER.md`. **Next gate = Houston decision per paper:** submit to a venue / route to a human referee / decide companion-vs-standalone publication. No further autonomous editing clears these.
 
-### Verified dashboard (2026-07-04)
+### Current dashboard (H17, 2026-07-10)
 
-| Paper | Version | ChatGPT | Grok | Gemini | Readiness | Barrier (Houston-gated) |
+Verdicts FROM RAW [ChatGPT / Grok / Gemini], EXT_real/H17_2026-07-10. Gemini P1U/P2/P3/P4 legs FAILED (upload throttle) — no verdict posted (—). P5 Grok verdict WORD = MINOR but its raw carries 2 [MAJOR]-tagged items. Caps per harvested-EXT formula (50 + per-reviewer points). A same-day ChatGPT+Grok re-test at these versions is in flight.
+
+| Paper | Version | ChatGPT | Grok | Gemini | Readiness | H17 state (5 REAL errors closed this wave) |
 |-------|---------|---------|------|--------|-----------|--------------------------|
-| **P1A** | v1A.0.104 | REJECT | MAJOR | MAJOR | 76–80 | ansatz-tier sufficiency (venue) |
-| **P1B** | v1B.0.99 | REJECT | MAJOR | REJECT | 76–80 | methodological-companion: standalone vs supplementary (venue) |
-| **P2**  | v1.7.104 | REJECT | MAJOR | MAJOR | 76–80 | conditional single-source recast + unresolved factor-of-2 (real open item); v1.7.104 adds Appendix A vertex-algebra display (deep-Grok MAJOR closure) |
-| **P3**  | v3.1.136 | REJECT | MAJOR | REJECT | 76–80 | process-volume-catalog scope + sequestered exploratory eROSITA (venue) |
-| **P4**  | v1.0.225 | MAJOR | MINOR | MINOR | 82 | R9 board: Grok minor-rev + Gemini "Accept w/ minor" + ChatGPT major (presentation); v1.0.225 closed both ACCEPT-track minors (z≈−18 template-disfavor framing + A95 cross-ref; raw-p_eq-not-likelihood main-text warning; abstract p names its null); two clean minor-lists from a double-accept — program's closest; 32 pp |
-| **P5**  | v0.1.101 | REJECT | MINOR | MAJOR | 76–80 | in-prep Paper-IV dependency (venue) |
+| **P1U** | v1U.0.10 | REJECT | MAJOR | — | 56 | Eq.16 non-minimal-coupling relabel + M_Pl/κ convention (both REAL). Residual = Eq.16/dim-no-go/basis-completeness harsh-referee floor |
+| **P1B** | folded into P1U (2026-07-08 merge) | — | — | — | — | folded into unified Paper 1 |
+| **P2**  | v1.7.110 | REJECT | MAJOR | — | 56 | spurious-term sign −(99/128) → printed polynomial −305/64; SSFSR BF columns recomputed at −35/16 center (10⁸→1.4×10² stale-value fix); FoG sign; +4 Claude minors (all REAL) |
+| **P3**  | v3.1.152 | REJECT | MAJOR | — | 56 | three-gate honest downgrade + scan-volume/provenance reconciliations (REAL). Residual = process-volume-catalog scope (venue) |
+| **P4**  | v1.0.232 | REJECT | MINOR | — | 62 | Shamir factor-of-2 double-count (A_ref 0.034→0.017, z −18→−7.6, tension 3.7–8.8×, figure regenerated) (REAL). ChatGPT REJECT on structural axes |
+| **P5**  | v0.1.115 | REJECT | MINOR* | MAJOR | 68 | primary-estimand seam + Table X exact counts + Bonferroni-5 consolidated table + GALZONE text-matched-code + DAS (REAL). *Grok raw carries 2 [MAJOR] items |
 
-Content error-clean, edit loop exhausted, cover letters drafted. Raw evidence: `project-context/peer-reviews/EXT_real/`.
+5 REAL errors found + closed this wave (all source-verified, none fabricated). Surviving MAJOR/REJECT = source-cited re-flags of disclosed limitations or the directive-H harsh-referee floor. Raw evidence: `project-context/peer-reviews/EXT_real/H17_2026-07-10/`.
 
 ---
 
