@@ -1,8 +1,8 @@
-# INT API Review — P5 v0.1.107 — grok (grok-4.3)
-paper: P5  version: v0.1.107  model: grok-4.3
+# INT API Review — P5 v0.1.116-2026-07-10 — grok (grok-4.3)
+paper: P5  version: v0.1.116-2026-07-10  model: grok-4.3
 modality: native-PDF (/v1/files file_id)
-UTC: 2026-07-10T07:30:28.054513Z  |  latency: 25.9s  |  attempt: 1
-usage: {"input_tokens": 35895, "input_tokens_details": {"cached_tokens": 896}, "output_tokens": 1050, "output_tokens_details": {"reasoning_tokens": 707}, "total_tokens": 36945, "num_sources_used": 0, "num_server_side_tools_used": 0, "cost_in_usd_ticks": 465529500, "context_details": {"input_tokens": 35895, "output_tokens": 1051}}
+UTC: 2026-07-10T22:35:07.983795Z  |  latency: 24.7s  |  attempt: 1
+usage: {"input_tokens": 36176, "input_tokens_details": {"cached_tokens": 192}, "output_tokens": 845, "output_tokens_details": {"reasoning_tokens": 602}, "total_tokens": 37021, "num_sources_used": 0, "num_server_side_tools_used": 0, "cost_in_usd_ticks": 471309000, "context_details": {"input_tokens": 36176, "output_tokens": 846}}
 PARSED VERDICT: MINOR REVISIONS
 
 ======================================================================
@@ -12,9 +12,8 @@ RAW RESPONSE (verbatim):
 (1) VERDICT: MINOR REVISIONS
 
 (2) ISSUES:
-[MINOR] Abstract/headline result: The phrasing “the family-wise Bonferroni-5 null … is the strictly quotable result” is inconsistent with the explicit post-hoc/exploratory designation and ~dozen-trial analysis tree disclosed in §V B (and Table IV); this language should be removed or qualified to avoid implying pre-registered status.
-[MINOR] §VIII B / Table XI: The consolidated ≈0.9 pp systematic envelope is obtained by quadrature summation of individual terms (membership, geometry, etc.) without an end-to-end Monte-Carlo propagation of the full void-membership + RSD + classifier pipeline; the quoted envelope should be labeled an approximate sensitivity figure rather than a rigorous bound.
-[MINOR] §XIII: The statement that all bounds “inherit redshift-space distortion (RSD) effects” and “should not be interpreted as pure real-space environmental constraints” is correct but appears only in the closing discussion; it must be repeated verbatim in the abstract and §VIII primary-result paragraph so that model-builders cannot mis-cite the result.
-[MINOR] Appendix A / §II: The de-attenuated physical-chirality bound (≈2.26 pp) assumes symmetric classification errors and no environment-dependent confusion-matrix variation; both assumptions are stated as limitations but the numerical factor is presented without propagating the additional uncertainty, which should be quantified or dropped.
+[MINOR] Abstract/§I: The de-attenuated physical-chirality bound (≈2.26 pp) is presented without propagating the acknowledged uncertainty from the missing environment-stratified confusion matrix (§XIII/Appendix A), which directly affects model constraints.
+[MINOR] §V B/Table IV: The post-hoc primary-path designation (DESIVAST) and “few-dozen-trial” analysis tree are disclosed but should be accompanied by an explicit statement that the quoted family-wise Bonferroni-5 null remains valid even under the most conservative pre-data choice of any single estimator.
+[MINOR] §VIII/§XIII: The redshift-space nature of all bounds (including the T-Web secondary path) is correctly flagged, but the text should quantify the maximum possible RSD-induced shift in the void/non-void contrast using the already-mentioned σ_v/(aH) Monte Carlo.
 
-(3) The central claim of a family-wise null on the DESIVAST void/non-void CW-fraction contrast at the ≈0.9 pp level is supported by the reported data and corrections.
+(3) The central claim of a bounded null (|∆f_CW| ≲ 0.9 pp systematic envelope) on the classifier-labelled CW fraction is supported by the data and analysis.

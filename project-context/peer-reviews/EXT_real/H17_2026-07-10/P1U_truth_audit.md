@@ -288,3 +288,53 @@ would be dishonest overclaiming). Documented per directive-C.
 - Mirrored byte-identical to all served paths: `public/papers/paper1_unified_v1U.0.11.pdf` + `paper1_unified.pdf`, `site/public/papers/…` (both), source `arxiv/paper1_unified.pdf` — all md5 `ba2cf675…`.
 - Convex `paperVersions:bump` paper-1a v1U.0.11 (real md5/pages/bytes, "July 10, 2026", texCommit "post-H17-bundle", sitePdfPath /papers/paper1_unified_v1U.0.11.pdf) → row `k57d3hpz6a9r04qvhgedch3q7h8a864h`.
 - No commit (per instructions).
+
+---
+
+## Addendum 3 — INT retest2 v1U.0.11 (2026-07-10 22:25 UTC)
+
+DELTA-ONLY pass on fresh INT raws for the CURRENT v1U.0.11 PDF (post Check-D fix):
+`INT_v3/ROUND_2026-07-09/API_P1U_openai.md` (gpt-5.5, native-PDF, REJECT, 12 MAJOR + 4 MINOR,
+UTC 22:25:48) and `API_P1U_grok.md` (grok-4.3, native-PDF, MAJOR REVISIONS — improved from the
+prior REJECT, 3 MAJOR + 2 MINOR, UTC 22:25:48; header now reads v1U.0.11). Every item checked
+against the two prior addenda + body. **Result: 0 genuinely-new real+editable findings on either
+vendor.** No re-litigation of already-dispositioned items below — one-line map only.
+
+### OpenAI gpt-5.5 (REJECT) — delta map
+
+| # | Sev | Maps to prior disposition |
+|---|-----|---------------------------|
+| 1 | MAJ | RE-FLAG — completeness "analytically argued, not proven diffeo-basis" (Add-1 OpenAI #1/#3; body P2 O1/O6). |
+| 2 | MAJ | RE-FLAG — +1→+4 dressing "dispensable illustrative heuristic" (Add-1 #2; body dim+1 item). |
+| 3 | MAJ | RE-FLAG — Eq.(1) ¼T·T "not varied", two-step off-shell/effective reading added v1U.0.10 (body (a); Add-1 #15). |
+| 4 | MAJ | RE-FLAG — Fierz lemma + V·A non-minimal relabel; NJL scope disclosed (body (b)/(c); Add-1 #10). |
+| 5 | MAJ | RE-FLAG — Route 2 "exploratory framing, not load-bearing" (Add-1 #4; body Route-2). |
+| 6 | MAJ | RE-FLAG/SCOPE — Route 3 conditional amplitude budget, one clean β-fn (Add-1 #5; body Route-3). |
+| 7 | MAJ | RE-FLAG — R4 "closed by explanatory-deficit/CC relocation, NOT amplitude" (Add-1 #6; body Route-4). |
+| 8 | MAJ | RE-FLAG/OPINION — transparency scoped to canonical scalar; novelty=referee-pref (Add-1 #9; body transparency). |
+| 9 | MAJ | RE-FLAG — barriers "no barrier a logical consequence of another" (Add-1 #8; body barrier item). |
+| 10 | MAJ | RE-FLAG — obs appendices labeled stock-CAMB/synthetic/not-an-ECH-test (Add-1 #12; body appendices). |
+| 11 | MAJ | RE-FLAG — −35/16 companion-delegated, historical −35/8 deliberately cited (body −35/16 self-containedness). |
+| 12 | MAJ | RE-FLAG — claim-status "contradictions" are the paper's own honest tier/scope disclosures (Add-1 #1/#7). |
+| 13 | MIN | RE-FLAG — LQC ρ_crit range attributed to canonical γ-choices, disclosed (Add-1 #16). |
+| 14 | MIN | RE-FLAG — notation/M_Pl reduced-vs-unreduced = the disclosed κ convention block, L2103-2113 (body (d), verified present). |
+| 15 | MIN | RE-FLAG — Figs illustrative/exploratory tags on captions (Add-1 #14). |
+| 16 | MIN | RE-FLAG — self-containment: no theorem depends on companion numerics, reproducible-now (Add-1 #13/#20). |
+
+### Grok grok-4.3 (MAJOR REVISIONS — improved from REJECT) — delta map
+
+| # | Sev | Maps to prior disposition |
+|---|-----|---------------------------|
+| 1 | MAJ | RE-FLAG — completeness "analytically argued vs not-proven-basis" contradiction = OpenAI #1 (Add-1 Grok #1). |
+| 2 | MAJ | RE-FLAG/SCOPE — transparency proven for scalar, routes use fermion/ALP; scoped disclosure (Add-1 Grok #4; body transparency). |
+| 3 | MAJ | RE-FLAG — B8⊂B14 interdependence + single-scale NDA premise disclosed at sec:barriers head (Add-1 #8/Grok #3). |
+| 4 | MIN | OPINION — 60pp/14-barrier length = venue/style preference (Add-1 #19/Grok #5). |
+| 5 | MIN | RE-FLAG — N_tot≈92/D_inf "phenomenological" bookkeeping disclosed (Add-1 #11; body D_inf). |
+
+### Addendum 3 counts
+- **Genuinely-new real+editable:** OpenAI 0/12 MAJOR + 0/4 MINOR; Grok 0/3 MAJOR + 0/2 MINOR.
+- **Re-flag / prior-dispositioned (source-cited non-real):** OpenAI 12 MAJ + 4 MIN; Grok 3 MAJ + 2 MIN.
+- **Grok delta:** verdict improved REJECT → MAJOR REVISIONS on the v1U.0.11 PDF (no new items; the
+  Check-D fix + prior clarity edits removed the reject-tier trigger).
+- **No new edit → no v1U.0.12 bump, no directive-G, no Convex write.** v1U.0.11 (md5 `ba2cf675…`, 60 pp) stands.
+- **No fabricated math.** All dispositions cite a live v1U.0.11 source line or a prior-addendum/body entry.

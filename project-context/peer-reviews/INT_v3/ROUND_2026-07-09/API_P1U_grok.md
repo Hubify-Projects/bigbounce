@@ -1,21 +1,21 @@
-# INT API Review — P1U v1U.0.1 — grok (grok-4.3)
-paper: P1U  version: v1U.0.1  model: grok-4.3
+# INT API Review — P1U v1U.0.11 — grok (grok-4.3)
+paper: P1U  version: v1U.0.11  model: grok-4.3
 modality: native-PDF (/v1/files file_id)
-UTC: 2026-07-10T07:34:55.235089Z  |  latency: 31.2s  |  attempt: 1
-usage: {"input_tokens": 35395, "input_tokens_details": {"cached_tokens": 192}, "output_tokens": 1050, "output_tokens_details": {"reasoning_tokens": 626}, "total_tokens": 36445, "num_sources_used": 0, "num_server_side_tools_used": 0, "cost_in_usd_ticks": 466671500, "context_details": {"input_tokens": 35395, "output_tokens": 1051}}
-PARSED VERDICT: REJECT
+UTC: 2026-07-10T22:25:48.486865Z  |  latency: 26.6s  |  attempt: 1
+usage: {"input_tokens": 35421, "input_tokens_details": {"cached_tokens": 128}, "output_tokens": 1250, "output_tokens_details": {"reasoning_tokens": 785}, "total_tokens": 36671, "num_sources_used": 0, "num_server_side_tools_used": 0, "cost_in_usd_ticks": 472668500, "context_details": {"input_tokens": 35421, "output_tokens": 1252}}
+PARSED VERDICT: MAJOR REVISIONS
 
 ======================================================================
 RAW RESPONSE (verbatim):
 ======================================================================
 
-(1) VERDICT: REJECT
+(1) VERDICT: MAJOR REVISIONS
 
 (2) ISSUES:
-[MAJOR] Sec. IV (Scope paragraph and R1–R4 closures): The four-route “channel-level closure” is repeatedly qualified as “not an operator-level theorem,” “not a completeness proof,” and “under explicitly-labeled scaling ansätze” with non-minimal loopholes left open; this reduces the central claim to an interpretive survey rather than a substantiated no-go.
-[MAJOR] Sec. IV A–D and App. B: The single-scale NDA dimensional no-go (off-shell mass dimension +1 forcing \(\rho_\Lambda\sim M_\mathrm{Pl}^4\)) and Fierz-by-Fierz lemma rely on heuristic power counting and on-shell reductions without a controlled EFT matching calculation or explicit Wilson-coefficient bounds; the +1-vs-+4 mismatch is an artifact of the shorthand in Eq. (6), not a rigorous operator-level obstruction.
-[MAJOR] Sec. IV F (R4 naturalness closure): Labeling the requirement \(m_\theta\sim H_0\) an “explanatory-deficit objection” rather than an amplitude mismatch is a subjective preference, not a technical constraint; the same coupling that fits \(\beta_\mathrm{obs}\) is simply reparameterized, relocating rather than resolving the CC problem.
-[MINOR] Sec. X (perturbation-transparency result): The Bianchi-identity decoupling is correctly stated for canonical scalars but the claim that it subsumes Barrier B8 is asserted without an explicit order-by-order verification of the perturbed Holst term in the tetrad formalism; the footnote distinction from Pontryagin is helpful but insufficient to close the scope.
-[MINOR] Overall manuscript: Excessive self-referential hedging (“this paper,” “under stated assumptions,” “not load-bearing”) and 14-barrier catalog inflate length without adding falsifiable content; the paper would be clearer as a concise Letter focused on the single transparency theorem.
+[MAJOR] Sec. IV (Scope paragraph and completeness argument): The paper asserts that the four routes are “basis-complete at the M_Pl-power-counting level” via structural facts F1–F2 plus NDA monotonicity, yet simultaneously states it is “not a proven complete diffeomorphism-invariant operator basis”; this internal contradiction leaves the channel-level closure claim ambiguous and unsupported without an explicit enumeration or citation of the full dimension-6 parity-odd basis.
+[MAJOR] Sec. X (perturbation-transparency result) and Sec. IV F (R4 closure): The transparency theorem is proven only for canonical scalar matter, yet R1–R4 and the dark-energy mechanism rely on fermion axial currents, non-minimal couplings, or spectator ALPs; the paper never demonstrates that the result survives when those sectors are restored, rendering the decoupling claim inapplicable to the routes it claims to close.
+[MAJOR] Sec. IX and Appendix B (14-barrier catalog and single-scale NDA no-go): Barriers are presented as independent mechanism-class constraints, but several (B8 subsumed by B14, B14 itself) are logically interdependent or rest on the same unproven assumption that no light scale or exact cancellation is allowed; the NDA argument therefore collapses to a single unmotivated premise rather than 13 distinct obstructions.
+[MINOR] Throughout (presentation): The manuscript is 60+ pages with 14 numbered barriers, 7 foundations, 6 branches, repeated scope disclaimers, and dozens of footnotes that restate the same caveats; this obscures the logical flow and violates PRD’s expectation of concise, self-contained reasoning.
+[MINOR] Sec. II C 1 and Eq. (13) (inflationary-suppression bookkeeping): The N_tot≈92 value and D_inf factor are introduced as “phenomenological” yet used to relocate the CC problem; no quantitative error budget or sensitivity analysis is provided for the order-of-magnitude matching.
 
-(3) The central claim of channel-level amplitude closure for the four enumerated minimal-ECH dark-energy routes is not supported.
+(3) The central claim of channel-level closure for all four enumerated minimal-ECH dark-energy routes is not supported, because the completeness, applicability, and independence of the listed constraints remain unproven under the paper’s own stated scope.

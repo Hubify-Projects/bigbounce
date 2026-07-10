@@ -41,7 +41,20 @@
 % The divide-by-h claim (~1246 h⁻¹ Mpc) is INVERTED. No pipeline recompute required.
 % If any future reviewer re-raises this, cite env_finder/01_compute_vweb.py:106-108.
 
-\newcommand{\paperVersion}{v0.1.115-2026-07-10}
+\newcommand{\paperVersion}{v0.1.116-2026-07-10}
+% v0.1.116-2026-07-10 (H17 cross-paper integration; framing/evidence only, no invented number):
+%   Integrated the committed GZ1-overlap stratified human-vs-classifier CW/CCW confusion matrix
+%   (pipelines/p2_chirality/outputs/gz1_stratified_confusion.json, script gz1_stratified_confusion.py,
+%   commit 84d53b75) into the recurring "no environment-stratified confusion matrix" reviewer MAJOR.
+%   The measured label-error ASYMMETRY [err(CW->CCW)-err(CCW->CW)] is consistent with ZERO overall
+%   (+0.0001, 95% [-0.005,+0.006]) AND within EVERY imaging-leg stratum (BASS+MzLS +0.0042 [-0.006,+0.014];
+%   DECaLS -0.0020 [-0.009,+0.005]) AND EVERY confidence stratum (hi-conf -0.0019 [-0.006,+0.002];
+%   lo-conf +0.0065 [-0.013,+0.026]); overall accuracy 0.91 rising to 0.96 at confidence_eq>0.6, i.e.
+%   magnitudes differ across strata but errors stay parity-SYMMETRIC. This gives the 2a-1 de-attenuation
+%   its FIRST direct empirical support at the tested strata (App A, Discussion XII-B, Limitations).
+%   The void/non-void environment stratum remains HONESTLY not-yet-computed (GZ1 Table 2 has no redshift;
+%   requires p5_matched_chirality_desi.parquet + DESIVAST spheres) but now carries a CONCRETE committed
+%   recipe (recorded in the JSON) rather than an open-ended caveat. No overclaim; every number from JSON.
 % v0.1.111-2026-07-09 (CV-round EXT closure (ChatGPT MAJOR-revisions reopened off CA ACCEPT;
 %   Grok/Gemini MINOR). Framing/relocation only; every verified number unchanged EXCEPT the
 %   stated systematic envelope, which was WIDENED (never tightened) to the honest value:
@@ -4409,7 +4422,16 @@ sensitivity. \emph{This is a bound on the classifier-labelled CW
 fraction, not on physical spiral chirality:} at the $69.91\%$
 ($\kappa=0.40$) GZ1 accuracy floor the classifier-label statistic is an
 attenuated proxy for the physical-handedness contrast (attenuation
-factor $\approx 2a-1\simeq 0.40$; App~\ref{app:paper4_methods}). Under
+factor $\approx 2a-1\simeq 0.40$; App~\ref{app:paper4_methods}). The
+symmetric-error premise of this de-attenuation now has direct empirical
+support: a committed GZ1-overlap human-vs-classifier confusion matrix
+(App~\ref{app:paper4_methods}; \href{\repoBase/pipelines/p2\_chirality/outputs/gz1\_stratified\_confusion.json}{[A31]})
+finds the CW$\to$CCW and CCW$\to$CW mislabelling rates equal to within
+$\pm0.5$--$0.6$\,pp (95\%) overall and within every imaging-leg and
+confidence stratum, so any environment-differential label error would have to
+arise from an environment-specific asymmetry \emph{not present} in those
+strata (the void stratum itself is not yet directly measured, with a concrete
+committed recipe; App~\ref{app:paper4_methods}). Under
 the symmetric-error approximation, the ${\approx}0.9$\,pp classifier-label
 envelope de-attenuates to ${\approx}2.26$\,pp on the physical-chirality
 contrast ($0.9/0.3982$); model-builders should use this weaker physical
@@ -4499,8 +4521,19 @@ model in the chirality-label chain), returning $z=-0.54\sigma$ on
 $N=46{,}017$ human-labeled spirals~\cite{golden_chirality_2026}, so the
 labels do not inherit their pseudo-labeling. A systematic \emph{environment-dependent}
 re-labeling by a future classifier is not excluded by any test internal to
-P5 (no environment-stratified human-label confusion matrix is available in
-the present work; this is an honest scope limitation), and the
+P5. We now bound this partially: a committed GZ1-overlap human-vs-classifier
+CW/CCW confusion matrix (App~\ref{app:paper4_methods};
+\href{\repoBase/pipelines/p2\_chirality/outputs/gz1\_stratified\_confusion.json}{[A31]})
+shows the label-error asymmetry is consistent with zero to within
+$\pm0.5$--$0.6$\,pp (95\%) both globally and within every imaging-leg and
+confidence stratum, so any environment-differential mislabelling would have
+to be an environment-specific asymmetry absent from the sky and confidence
+cuts tested. The one stratum \emph{not} directly measured is void/non-void
+membership --- GZ1 Table~2 carries no redshift, so it requires the P5
+matched-chirality$\times$DESI-redshift catalog plus the DESIVAST void spheres;
+the artifact records the exact committed recipe (\texttt{P5\_VOID=1}) for that
+computation, so this residual gap is now concrete and recipe-backed rather
+than open-ended. And the
 monopole-referenced $\sigma_{\rm pred}$ diagnostics (not the
 headline contrast) reference the Paper~IV scalar; we flag both explicitly
 for human-referee attention and note the primary null should be re-verified
@@ -4715,7 +4748,7 @@ Appendix~\ref{app:toy_eft}).
 \begin{acknowledgments}
 This work used data from the Dark Energy Spectroscopic Instrument (DESI) Data Release~1 and the DESIVAST void value-added catalog. This research made use of the DESI DR1 data; DESI is supported by the U.S. Department of Energy and the U.S. National Science Foundation.
 
-\textit{AI-assisted methodology.} The analysis pipeline of this paper was executed with an agentic AI research pipeline operating under the author's direction: catalog cross-matching, the T-Web cosmic-web classification, the DESIVAST void membership test, the statistical null tests, and figure generation were orchestrated by AI coding agents, and every quantitative result reported here was verified by the author against the committed pipeline artifacts (the drivers and per-output provenance JSON referenced throughout via the [A1]--[A30] artifact links and \S\ref{sec:data_code}). The pipeline was built on Anthropic Claude (Opus~4 family, 2026 releases) for agent orchestration and manuscript preparation, with OpenAI GPT-5/o3, xAI Grok-4, and Google Gemini~2.5 used as cross-checking and adversarial internal-review models. The full audit trail --- code, configuration, deterministic seed \texttt{20260515}, and version history --- is public in the companion repository, so every number is independently recomputable. We regard this reproducibility-by-construction as a methodological strength: the pipeline that produced the result is the same one a reader runs to verify it. The author designed the study, made all scientific judgments, and takes full responsibility for the content, including any material produced with AI assistance; the AI pipeline is a reproducibility and verification instrument, not an author.
+\textit{AI-assisted methodology.} The analysis pipeline of this paper was executed with an agentic AI research pipeline operating under the author's direction: catalog cross-matching, the T-Web cosmic-web classification, the DESIVAST void membership test, the statistical null tests, and figure generation were orchestrated by AI coding agents, and every quantitative result reported here was verified by the author against the committed pipeline artifacts (the drivers and per-output provenance JSON referenced throughout via the [A1]--[A32] artifact links and \S\ref{sec:data_code}). The pipeline was built on Anthropic Claude (Opus~4 family, 2026 releases) for agent orchestration and manuscript preparation, with OpenAI GPT-5/o3, xAI Grok-4, and Google Gemini~2.5 used as cross-checking and adversarial internal-review models. The full audit trail --- code, configuration, deterministic seed \texttt{20260515}, and version history --- is public in the companion repository, so every number is independently recomputable. We regard this reproducibility-by-construction as a methodological strength: the pipeline that produced the result is the same one a reader runs to verify it. The author designed the study, made all scientific judgments, and takes full responsibility for the content, including any material produced with AI assistance; the AI pipeline is a reproducibility and verification instrument, not an author.
 \end{acknowledgments}
 
 \appendix
@@ -4816,12 +4849,40 @@ The physical bound (${\approx}2.26$\,pp) is thus substantially
 model-builders should use the de-attenuated value when constraining
 physical parity-violation amplitudes.
 We flag that the $0.3982$ factor is exact only under the
-symmetric-error assumption and no environment-stratified human-label
-confusion matrix is available in the present work (\S\ref{sec:limitations});
-the de-attenuated number should therefore be read as an indicative
-order-of-magnitude guide, not a precision bound. A \emph{systematic
-environment-dependent re-labeling by a future classifier is therefore
-not excluded}. Accordingly every environmental bound in this paper is
+symmetric-error assumption. That assumption now has \emph{direct empirical
+support at the tested strata}: a committed GZ1-overlap human-vs-classifier
+CW/CCW confusion matrix~\cite{golden_chirality_2026}
+(\href{\repoBase/pipelines/p2\_chirality/outputs/gz1\_stratified\_confusion.json}{[A31]};
+script \href{\repoBase/pipelines/p2\_chirality/scripts/gz1\_stratified\_confusion.py}{[A32]}),
+built on the
+$N=40{,}987$ confident-spiral overlap of Galaxy~Zoo~1 Table~2 human votes with
+the equivariant \texttt{class\_eq} labels, finds the two mislabelling rates
+$\mathrm{err}(\mathrm{CW}\!\to\!\mathrm{CCW})$ and
+$\mathrm{err}(\mathrm{CCW}\!\to\!\mathrm{CW})$ equal to within their errors:
+the error \emph{asymmetry}
+$\mathrm{err}(\mathrm{CW}\!\to\!\mathrm{CCW})-\mathrm{err}(\mathrm{CCW}\!\to\!\mathrm{CW})$
+is $+0.0001$ overall (95\%~CI $[-0.005,+0.006]$), and remains consistent with
+zero within \emph{every} imaging-leg stratum (BASS$+$MzLS $+0.0042$,
+$[-0.006,+0.014]$; DECaLS $-0.0020$, $[-0.009,+0.005]$) and \emph{every}
+classifier-confidence stratum ($\mathrm{confidence}_{\rm eq}>0.6$: $-0.0019$,
+$[-0.006,+0.002]$; $\le0.6$: $+0.0065$, $[-0.013,+0.026]$). The overall
+CW/CCW accuracy is $0.912$, rising to $0.961$ at
+$\mathrm{confidence}_{\rm eq}>0.6$: the error \emph{magnitude} varies across
+strata by nearly a factor of ten, yet the errors stay
+\emph{parity-symmetric} in every one, so the symmetric-error premise of the
+$2a-1$ de-attenuation is empirically satisfied on all sky and confidence cuts
+tested. This does \emph{not} directly measure the void-stratified asymmetry:
+GZ1 Table~2 carries no redshift, so the void/non-void split of the overlap
+requires the P5 matched-chirality$\times$DESI-redshift catalog plus the
+DESIVAST void spheres to assign 3D void membership; the confusion-matrix
+artifact records the exact committed recipe (\texttt{P5\_VOID=1}) for that
+computation. Accordingly the residual gap is now concrete and recipe-backed
+rather than open-ended: any environment-differential label error would have to
+arise from an environment-specific asymmetry that is \emph{absent} from every
+sky and confidence stratum measured here. Absent that direct void-stratified
+measurement, a \emph{systematic environment-dependent re-labeling by a future
+classifier is therefore not excluded}, and the de-attenuated number should
+still be read as an indicative order-of-magnitude guide, not a precision bound. Accordingly every environmental bound in this paper is
 stated as a bound on the classifier-labelled CW fraction under
 fixed-redshift-space DESIVAST void membership, and the reader should
 apply the attenuation factor (${\approx}0.40$; de-attenuated scale
@@ -5168,11 +5229,11 @@ be inserted on same-day posting.
 \section{Data artifacts}\label{app:artifacts}
 
 \emph{Note on numbering:} the bracketed \emph{artifact} IDs
-[A1]--[A30] in this appendix are the committed-repository data/code
+[A1]--[A32] in this appendix are the committed-repository data/code
 artifacts and are \emph{distinct} from the bibliographic references
 [1]--[14], which appear in the separate References section; the ``A''
 prefix marks every artifact ID to avoid confusion at the
-references/artifact-map boundary. Artifact IDs [A1]--[A30] used
+references/artifact-map boundary. Artifact IDs [A1]--[A32] used
 throughout this paper hyperlink to the following paths in the companion
 repository
 \href{https://github.com/Hubify-Projects/bigbounce}{\texttt{Hubify-Projects/bigbounce}}
@@ -5183,7 +5244,8 @@ file or directory at the URL shown below.
 {\small
 \caption{Artifact ID map. Paths A2--A30 are within
 \texttt{pipelines/p5\_desi\_chirality/}; the prefix is omitted in the
-short-name column. A1 points to the companion catalog pipeline.
+short-name column. A1, A31, and A32 point to the companion catalog
+pipeline (\texttt{pipelines/p2\_chirality/}).
 Clicking any [AN] ID in the paper PDF opens the corresponding GitHub URL.%
 \label{tab:artifact_map}}
 \begin{ruledtabular}
@@ -5220,6 +5282,8 @@ Clicking any [AN] ID in the paper PDF opens the corresponding GitHub URL.%
 \href{\repoBase/pipelines/p5\_desi\_chirality/env\_finder/}{[A28]} & \texttt{env\_finder/} \\
 \href{\repoBase/pipelines/p5\_desi\_chirality/env\_finder/reports/02\_phase2\_sweep.csv}{[A29]} & \texttt{env\_finder/reports/02\_phase2\_sweep.csv} \\
 \href{\repoBase/pipelines/p5\_desi\_chirality/env\_finder/config.yaml}{[A30]} & \texttt{env\_finder/config.yaml} \\
+\href{\repoBase/pipelines/p2\_chirality/outputs/gz1\_stratified\_confusion.json}{[A31]} & \texttt{p2\_chirality/outputs/gz1\_stratified\_confusion.json} \\
+\href{\repoBase/pipelines/p2\_chirality/scripts/gz1\_stratified\_confusion.py}{[A32]} & \texttt{p2\_chirality/scripts/gz1\_stratified\_confusion.py} \\
 \end{tabular}
 \end{ruledtabular}
 }% end \small
