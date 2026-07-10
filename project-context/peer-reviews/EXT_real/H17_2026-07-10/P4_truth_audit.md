@@ -255,3 +255,50 @@ honestly-scoped, disclosed content — the same behavior documented across RS5�
 
 **No fabrication.** Barrier remains compute (image-level end-to-end injection, joint nuisance likelihood,
 matched-footprint Ganalyzer reanalysis) + venue + LLM referee-variance (pattern-066), not text.
+
+---
+
+## Addendum — loop iter-2: v1.0.234 → v1.0.235 (one Claude-ACCEPT cosmetic nit closed)
+
+The v1.0.234 re-test (OpenAI+Grok API + Claude subagent, all on the v234 served PDF):
+- **OpenAI-API (REJECT, 12 MAJOR + 3 MINOR):** all 15 fingerprint-match dispositioned findings, verified intact —
+  OA-1↔CG-1 (p_eq post-selection / full-catalog excess), OA-2↔CG-4 (classifier validation + image-level injection
+  bypass), OA-3↔CG-1 (git-commit prereg not acceptable), OA-4↔CG-MINOR-2 (fragmented σ framework), OA-5/6/7↔CG-7
+  (harmonic +3.64/+7.28/+7.93σ, ~47% remainder, threshold≠upper-limit, MASTER normalization), OA-8↔GK-4 (Shamir
+  z≈−7.6 tension overstated — paper already says "disfavors not excludes", matched-Ganalyzer flagged required),
+  OA-9↔CG-MINOR-1 (parity/birefringence w/o transfer function — hedged), OA-10↔CG-4 (deprojection/edge-on/seeing
+  at image level — OPEN), OA-11↔GK-2 (reproducibility/DOI — Houston-gated at submission), MINORs = length/tables/
+  monopole-9.5σ(disclosed classifier artifact §IV B)/AI-statement = OPINION. **0 genuinely-new.** Structural REJECT
+  floor (pattern-066).
+- **Grok-API (MINOR, 4):** 8.5M rounding (cosmetic; exact 8,474,531 stated in-paper), git-commit-not-immutable
+  (=GK-2, Houston-gated Zenodo), 53% template design-matrix coefficients (=CG-7, released artifact), eight-anchor
+  supplementary table (=disclosed external artifacts). All **RE-FLAG/OPEN, 0 genuinely-new editable.**
+- **Claude-subagent (ACCEPT):** verified all three v234 closures numerically faithful to the committed
+  `gz1_stratified_confusion.json` (overall asymmetry +7.27e-05 / CI[-0.005408,+0.005554]; science-cut −0.00192 /
+  CI[-0.006121,+0.002281]; acc 0.91224/0.96108; floor 0.6991/κ0.40 retained), no fabrication, all three prior
+  MINORs closed. Caught **one genuinely-new cosmetic nit:** "disjoint subsamples" was imprecise (the confident-spiral
+  set is nested within, not disjoint from, the GZ1×catalog match feeding the floor). **FIX (v1.0.235):** "disjoint
+  subsamples" → "distinct (nested) subsamples...of which the here-sample is a high-confidence subset." Wording only,
+  no number/claim/result changed.
+
+**Loop iter-2 re-test (Claude subagent on v1.0.235):** **ACCEPT, 0 genuinely-new editable errors** — confirmed the
+"distinct (nested)...high-confidence subset" descriptor is factually correct (the 40,987 confident-spiral CW/CCW set
+IS the high-confidence nested subset of the ~234,282-scale GZ1×catalog chirality match feeding the 0.6991 floor),
+strictly more accurate than the prior "disjoint."
+
+### Directive-G hygiene (v1.0.235)
+- `.tex` v1.0.234 → **v1.0.235**; `\paperTimestamp` = July 10, 2026.
+- TinyTeX 2-pass: **0 undef refs, 0 overfull hboxes**, 35 pp. "distinct (nested)" render-verified in PDF text.
+- Mirrored byte-identical to all 10 served paths + v1.0.235 alias. **md5 = `8307d864a305361d340009c35d25f397`**,
+  35 pp, 34,036,619 bytes.
+- Convex `paperVersions:bump` (paper-4, v1.0.235) id k57d3bn0z3j3g477s0cghy62p98a8pnt. papers.ts + live-status.ts
+  synced to v1.0.235.
+
+## Loop verdict — CONVERGED (0 genuinely-new)
+Two iterations (v233→v234 closing 3 Claude MINORs; v234→v235 closing 1 Claude cosmetic nit). **Final state: 0
+genuinely-new real editable findings across all INT reviewers.** Claude subagent = ACCEPT. OpenAI-API = REJECT and
+Grok-API = MINOR, but every one of their items is a source-cited re-flag of already-disclosed content or an
+honestly-disclosed OPEN limitation (compute/venue-gated: image-level end-to-end injection, joint nuisance likelihood,
+matched-footprint Ganalyzer reanalysis, Zenodo DOI) — the pattern-066 structural floor, NOT an editable defect. No
+ACCEPT fabricated, no math fabricated, no finding dispositioned non-real without a source-cited verdict. Barrier
+remains compute + venue + LLM referee-variance, not text.

@@ -320,32 +320,38 @@ echo "$BUMP_RESP" | python3 -c 'import sys,json; d=json.load(sys.stdin); sys.exi
   || die "convex bump did not return status=success"
 ROWID="$(echo "$BUMP_RESP" | python3 -c 'import sys,json; print(json.load(sys.stdin).get("value",""))')"
 
-# read-back verify current row matches version + md5 (retry a few times: the
-# read-back can momentarily return empty right after the mutation).
+# read-back verify current row matches version + md5. The query can transiently
+# return an empty body immediately after the mutation, so query+verify together
+# inside a retry loop and only fail after all attempts are exhausted.
 QUERY_BODY="$(python3 - "$SLUG" <<'PY'
 import json,sys
 print(json.dumps({"path":"paperVersions:current","args":{"paperSlug":sys.argv[1]},"format":"json"}))
 PY
 )"
-CUR_RESP=""
-for attempt in 1 2 3 4 5; do
-  CUR_RESP="$(curl -sS -X POST "$CONVEX_QUERY_URL" -H 'Content-Type: application/json' -d "$QUERY_BODY" || true)"
-  if printf '%s' "$CUR_RESP" | python3 -c 'import sys,json; d=json.load(sys.stdin); sys.exit(0 if d.get("status")=="success" and d.get("value") else 1)' 2>/dev/null; then
-    break
-  fi
-  sleep 1
-done
-echo "$CUR_RESP" | python3 - "$NEWVER" "$NEWMD5" <<'PY' || die "convex read-back verify failed"
+VERIFY_OK=0
+LAST_ERR=""
+for attempt in 1 2 3 4 5 6 7 8; do
+  CUR_RESP="$(curl -sS -X POST "$CONVEX_QUERY_URL" -H 'Content-Type: application/json' -d "$QUERY_BODY" 2>/dev/null || true)"
+  if [ -z "$CUR_RESP" ]; then LAST_ERR="empty response"; sleep 1; continue; fi
+  MSG="$(printf '%s' "$CUR_RESP" | python3 - "$NEWVER" "$NEWMD5" 2>&1 <<'PY'
 import sys, json
 want_ver, want_md5 = sys.argv[1], sys.argv[2]
-d = json.load(sys.stdin)
+try:
+    d = json.load(sys.stdin)
+except Exception as e:
+    print(f"unparseable: {e}"); sys.exit(1)
 if d.get("status") != "success":
-    print("FAIL: paperVersions:current query failed", file=sys.stderr); sys.exit(1)
+    print("query status != success"); sys.exit(1)
 v = d.get("value") or {}
 if v.get("version") != want_ver or v.get("pdfMd5") != want_md5:
-    print(f"FAIL: convex current version/md5 mismatch: got {v.get('version')}/{v.get('pdfMd5')} want {want_ver}/{want_md5}", file=sys.stderr)
-    sys.exit(1)
+    print(f"mismatch: got {v.get('version')}/{v.get('pdfMd5')} want {want_ver}/{want_md5}"); sys.exit(1)
+print("ok")
 PY
+)" && { VERIFY_OK=1; break; }
+  LAST_ERR="$MSG"
+  sleep 1
+done
+[ "$VERIFY_OK" -eq 1 ] || die "convex read-back verify failed: $LAST_ERR"
 echo "    ok: convex current == $NEWVER / $NEWMD5 (row $ROWID)"
 
 # ---------------------------------------------------------------------------
