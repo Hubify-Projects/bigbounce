@@ -193,3 +193,23 @@ Switched to Opus 4.7 + xhigh effort for this.
 > AFTER: post same-bundle ON MAIN — externalVerdictRounds "F14-2026-07-09" + reviewRounds, build passes, commit+push. Convex upserts + caps per formula + activityFeed (literal ACCEPTs flagged LOUDLY, caps max 96).
 >
 > Return ≤180 words: 5×3 FROM RAW vs baselines — literal ACCEPTs per paper? genuinely-new findings? board posted, FAILED legs. NEVER fabricate.
+
+## 2026-07-09 - EXT re-test G15 2026-07-09
+
+### Houston messages, verbatim
+
+**18:04 PT - 9-leg EXT re-test after F14 closures — P5/P1U/P4**
+
+- `cwd`: /Users/houstongolden/Desktop/CODE_YOU/bigbounce
+- `session`: EXT re-test G15 2026-07-09
+- `agent`: Claude Code / Opus 4.8
+
+> EXT re-test — P5 v0.1.112, P1U v1U.0.8, P4 v1.0.229 (all F14 genuinely-new findings closed with real computation). Baselines (F14): P5 MAJ/MIN/MAJ · P1U MAJ/MIN/REJ · P4 MAJ/ACCEPT/MAJ. Grok+Gemini+ChatGPT, HEADED browser, canonical spec §2. 9 legs. Repo: /Users/houstongolden/Desktop/CODE_YOU/bigbounce. `B=~/.claude/skills/gstack/browse/dist/browse`.
+>
+> HARDENED + PROVEN RECIPES (exact as prior waves; Gemini key-code-36 + persistence re-runs; note ChatGPT was rate-limited recently — if rate-limited, wait 120s ×3 then mark FAILED and continue): shell `timeout 45` every $B call; never repeat timed-out; save-then-advance; one domain at a time; poll 60-90s max 10 → FAILED (one retry at end).
+>
+> PDFs fresh (verify page-1: P5 v0.1.112 43pp · P1U v1U.0.8 59pp · P4 v1.0.229 34pp): /tmp/g_P5.pdf ← pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf · /tmp/g_P1U.pdf ← arxiv/paper1_unified.pdf (gs-compress if >8MB) · /tmp/g_P4.pdf ← pipelines/p2_chirality/chirality_catalog_paper.pdf. ORDER: grok all → chatgpt all → gemini all. Canonical PRD-referee prompt. SAVE: EXT_real/G15_2026-07-09/<PAPER>_<reviewer>.md + .png + manifest.jsonl.
+>
+> AFTER: post same-bundle ON MAIN — externalVerdictRounds "G15-2026-07-09" (P2/P3 NO_VERDICT) + reviewRounds, build passes, commit+push. Convex upserts + caps per formula + activityFeed (literal ACCEPTs flagged LOUDLY).
+>
+> Return ≤160 words: 3×3 FROM RAW vs F14 — did the closures convert? literal ACCEPTs? genuinely-new findings? board posted, FAILED legs. NEVER fabricate.
