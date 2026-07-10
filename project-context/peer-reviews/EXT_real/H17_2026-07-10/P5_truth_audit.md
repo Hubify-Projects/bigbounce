@@ -120,3 +120,49 @@ CLOSED by real edit in v0.1.115; the rest re-flag already-dispositioned content.
 | 12-18 [MINOR] | Fig 6/8 label crowding; vweb naming; N_MC=1000 precision; match-radius row convention; prose-vs-table cross-checks; DOI/reproduction; length | RE-FLAG / polish | Fig legibility is the standing D-round item; the new `tab:bonferroni5_family` directly answers "tabulate central robustness quantities" (16); DAS/DOI added last pass (G1); naming/precision/length are cosmetic. No science defect. |
 
 **Re-test outcome:** 2 genuinely-new actionable items closed by real edit in v0.1.115 (seam 57,081 everywhere; consolidated Bonferroni-5 family table); remaining 10 MAJORs + 7 MINORs are source-cited re-flags of already-disclosed limitations, honest scope, or presentation preference. No ACCEPT faked; no finding dismissed without a source-cited verdict; no value fabricated (all numbers read from artifacts 29 + 30). Consistent with directive-H: genuinely-new real findings closed; correlated-referee re-flags dispositioned.
+
+---
+
+# Addendum 3 — H17 retest2 FUSED-OWNER close→re-test loop (2026-07-10, v0.1.116 → v0.1.117)
+
+**Owner:** P5 fused owner (accelerated pattern, directive H17). Iterated internally; 1 iteration to 0 genuinely-new.
+
+## Fresh raws audited (all on v0.1.116)
+- `INT_v3/ROUND_2026-07-09/API_P5_openai.md` (gpt-5.5, MAJOR REVISIONS, 20 items)
+- `INT_v3/ROUND_2026-07-09/API_P5_grok.md` (grok-4.3, MINOR REVISIONS, 3 items)
+- `INT_api/H17_2026-07-10/retest2_P5_claude.md` (Claude subagent, MINOR REVISIONS, 5 items)
+- `EXT_real/H17_2026-07-10/retest/P5_chatgpt_retest.md` (ChatGPT, REJECT, on v0.1.115)
+
+## ITERATION 1 — audit + close
+
+### Genuinely-new editable items (3, all from the Claude retest2 leg — the current-version full-context read)
+
+| # | Finding | Verdict | Close (v0.1.117) |
+|---|---------|---------|------------------|
+| C1 [MAJOR] | Two residual stale "primary Δf_CW=+0.0007" labels at tex L4330 + L2886-87 contradict the promoted footprint-restricted primary +0.0018 (n_void=57,081). Not a science error (both nulls agree to 0.11 pp) but a reader-facing headline-estimand contradiction. | **VERIFIED real editable** (lines confirmed pre-edit) | Both relabeled to primary=+0.0018 (n_void=57,081); +0.0007 explicitly the k=20 same-verdict sensitivity control. Repo grep for surviving "primary"+"0.0007" co-occurrence → empty (confirmed by Claude re-test). |
+| C2 [MINOR] | "The symmetric-error premise … now has **direct empirical support**" (L4426) overstates — the support is on imaging-leg/confidence strata, NOT the void axis this paper constrains; and the 0.912 symmetry-demo accuracy vs the 0.699 de-attenuation accuracy is a scope mismatch needing a reconciling sentence. | **VERIFIED real editable** | L4426 sharpened to "direct empirical support *on adjacent (imaging-leg and confidence) strata — not yet on the void axis this paper constrains*". App A (L4869) gained a reconciliation sentence: 0.912–0.961 overlap accuracy vs the conservative 0.699 floor; only the *symmetry* property (magnitude-independent across a 10× accuracy range) is imported, not the accuracy value. |
+| C3 [MINOR] | "|z_Δ|≤1.25" family cross-ref at L1687 cites `tab:desivast_three_algo` (whose max is |z|=1.12); the 1.25 extremal value lives in the V2-REVOLVER GALZONE catalog-native row. | **VERIFIED real editable** (L1750 confirms three_algo maxes at 1.12; 1.25 = GALZONE) | L1687 repointed to the V2-REVOLVER GALZONE catalog-native row / consolidated `tab:bonferroni5_family`; abstract full-family ref (L750) repointed from `tab:analysis_tree` to `tab:bonferroni5_family`. |
+
+### Void-stratum result (checked per H17 instruction)
+`pipelines/p2_chirality/outputs/gz1_stratified_confusion.json` DID gain a `stratified_by_environment_void_P5` key from the parallel compute agent — but its status is **DATA-UNAVAILABLE**: the P5 matched-chirality×DESI-z parquet + DESIVAST void-sphere catalogs are gitignored/absent in the local checkout, so the void/non-void confusion was **honestly NOT COMPUTED (not fabricated)**, with a concrete committed recipe (`P5_VOID=1`). The paper already discloses exactly this (L4874-4885: "This does not directly measure the void-stratified asymmetry … the residual gap is now concrete and recipe-backed rather than open-ended"). C2's sharpening makes the adjacent-strata scope explicit at the abstract-adjacent de-attenuation claim too. **Not integrated as a numeric result — because there is no numeric result to integrate; integrated honestly as a disclosed, recipe-backed limitation** (consistent with the leg/confidence strata, which WERE computed and are cited).
+
+### Re-flags (dispositioned, source-cited — 0 genuinely-new)
+- **OpenAI MAJOR (20 items):** all map to prior dispositions — Paper IV dependency (P2.11/OpenAI-6), classifier-label-vs-physical + missing void-stratified matrix (P2.3/P2.4, now sharpened by C2), post-hoc/garden-of-forking-paths (P2.8/OpenAI-2), footprint≠selection-mask (P2.1/OpenAI-3), membership-definition plurality (OpenAI-9, now consolidated in `tab:bonferroni5_family`), T-Web selection-dominated (P2.9/OpenAI-7, paper's own demotion), RSD redshift-space (P2.7/OpenAI-10), 0.9pp quadrature (P2.6/OpenAI-4 OPINION), target-program/2σ sign-flip (Gemini-G4 §VI D disclosure), EFT/length/figs/data-avail (P2.12 + standing D-round/polish). 0 genuinely-new.
+- **Grok MINOR (3 items):** 2.26pp uncertainty-propagation (P2.3/P2.4), post-hoc primary (P2.8), RSD MC quantify (P2.7). All disclosed. 0 genuinely-new.
+- **ChatGPT REJECT (on v0.1.115):** the standing maximal-harsh-referee floor — every MAJOR maps to a prior disposition (primary-control-not-selection-mask P2.1; multiplicity/exact-vs-Bonferroni-5 OpenAI-8 [consolidated table]; volume-limited-anchor P2.2; no covariate regression P2.5; 2a−1/no void-stratified matrix P2.3; conditioning-on-classifier-output P2.5-family; binomial-independence P2.5; 0.9pp quadrature P2.6; RSD MC P2.7; void-definition estimand OpenAI-9; T-Web P2.9; EFT parity-sign App B P2.12 — App B is explicitly labeled speculative/non-derived; Paper IV P2.11). The "2.8 not 2.26" point uses the 1.1pp Bonferroni input, not the paper's 0.9pp envelope (0.9/0.3982=2.26 is internally consistent) — reviewer-input choice, not a paper error. 0 genuinely-new.
+
+## DIRECTIVE-G HYGIENE (v0.1.117)
+- Version bumped `v0.1.116-2026-07-10` → `v0.1.117-2026-07-10` (+ changelog block); \date already July 10, 2026.
+- TinyTeX 2-pass recompile: **0 undefined references, 0 undefined citations** (only benign OMS/cmtt font-shape substitution warning); max overfull hbox 2.07pt.
+- **md5 = `f866095e3933742ab8ce9d46dbee0053`**, 45 pages, 1,525,584 bytes.
+- Mirrored byte-identical to all 8 served paths (public/papers/ versioned+alias, site/public/papers/ versioned+alias, site/public/ root alias, site/out/papers/, site/out/, source dir) — all md5==source ✓. Three-way check compile==served==Convex ✓.
+- Page-1 shows "Dated: July 10, 2026"; PDF body carries only `v0.1.117-2026-07-10` (no stale strings); leak-gate: 0 `/Users/houstongolden` paths in text.
+- Convex `paperVersions:bump` (slug `paper-5`, v0.1.117-2026-07-10) written — id `k573ft6pxfbfvj5cjvqc64qnw18a8c1m`; sitePdfPath `/papers/p5_desi_chirality_v0.1.117-2026-07-10.pdf`.
+
+## RE-TEST (v0.1.117, all three INT legs)
+- **OpenAI (gpt-5.5, native-PDF):** REJECT, 14 items — audited: **0 genuinely-new** (all re-flags of prior dispositions, standing maximal-harsh floor).
+- **Grok (grok-4.3, native-PDF):** MINOR REVISIONS, 4 items — audited: **0 genuinely-new** (all disclosed). (First attempt hit a transient XAI media-service file-ingest HTTP-400 = infra FAIL not a verdict; retry succeeded.)
+- **Claude subagent (Opus, full-context):** **ACCEPT** — verified all 3 closures landed correctly with no regression, headline numbers reconcile from committed integer counts; 2 MINORs (CI last-digit rounding = benign/pre-existing; three-accuracy-tracking = correctly handled by the added reconciliation sentence). 0 genuinely-new.
+
+## OUTCOME — CONVERGED at the LLM-refereeing floor (pattern-066 / directive-H)
+Iteration 1 closed all 3 genuinely-new editable items (1 MAJOR + 2 MINOR) by real edit; the v0.1.117 re-test surfaced **0 genuinely-new real findings across all three INT legs**. Verdict triple: **INT Claude ACCEPT / OpenAI REJECT / Grok MINOR** — the below-ACCEPT verdict words are the known maximal-harsh-referee structural floor (they re-flag only already-disclosed limitations + the Houston-gated Paper IV venue coordination), NOT continuation signal. Loop STOPS per directive H-refined (0 genuinely-new = converged regardless of literal verdict word). No ACCEPT faked; no finding dismissed without a source-cited verdict; no value fabricated; void-stratum honestly integrated as DATA-UNAVAILABLE.

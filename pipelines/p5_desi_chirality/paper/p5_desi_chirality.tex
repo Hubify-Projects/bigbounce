@@ -41,7 +41,22 @@
 % The divide-by-h claim (~1246 h⁻¹ Mpc) is INVERTED. No pipeline recompute required.
 % If any future reviewer re-raises this, cite env_finder/01_compute_vweb.py:106-108.
 
-\newcommand{\paperVersion}{v0.1.116-2026-07-10}
+\newcommand{\paperVersion}{v0.1.117-2026-07-10}
+% v0.1.117-2026-07-10 (H17 retest2 close; consistency/framing only, no invented number):
+%   - Fixed two residual stale "primary Delta_fCW=+0.0007" labels (L4330, L2886-87)
+%     to the promoted footprint-restricted +0.0018 (n_void=57,081); +0.0007 relabeled
+%     k=20 same-verdict sensitivity control everywhere [Claude retest2 MAJOR#1].
+%   - Sharpened "direct empirical support" for 2a-1 symmetry to "on adjacent
+%     imaging/confidence strata, not the void axis" + added accuracy-reconciliation
+%     sentence (0.912-0.961 overlap accuracy vs 0.699 conservative floor; only
+%     the symmetry property is imported) [Claude retest2 MINOR#3/#4].
+%   - Repointed the |z_Delta|<=1.25 family cross-ref (L1687) from tab:desivast_three_algo
+%     (whose max is 1.12) to the V2-REVOLVER GALZONE catalog-native row / consolidated
+%     tab:bonferroni5_family; abstract full-family ref -> tab:bonferroni5_family
+%     [Claude retest2 MINOR#5]. OpenAI MAJOR/Grok MINOR fresh raws = re-flags of
+%     already-dispositioned content (H17 P5_truth_audit Addendum-2). Void-stratum
+%     confusion = DATA-UNAVAILABLE (P5 parquet+DESIVAST gitignored), honestly NOT
+%     COMPUTED, recipe committed in gz1_stratified_confusion.json.
 % v0.1.116-2026-07-10 (H17 cross-paper integration; framing/evidence only, no invented number):
 %   Integrated the committed GZ1-overlap stratified human-vs-classifier CW/CCW confusion matrix
 %   (pipelines/p2_chirality/outputs/gz1_stratified_confusion.json, script gz1_stratified_confusion.py,
@@ -748,7 +763,7 @@ $p_\Delta \ge 0.21$): the three sphere-PIS algorithm rows in
 Table~\ref{tab:desivast_three_algo} plus the two catalog-native GALZONE
 rows (V2-REVOLVER, V2-VIDE; \S\ref{sec:desivast_catalog_native}), with
 the full five-member Bonferroni family tabulated in
-Table~\ref{tab:analysis_tree}. This is a
+Table~\ref{tab:bonferroni5_family}. This is a
 \emph{bounded null} on the specific DESIVAST void/non-void contrast at
 $57{,}081$ exact-footprint void spirals;
 the honest DR1 systematic envelope on any void/non-void split in the
@@ -1684,7 +1699,9 @@ explicitly here to bound the garden-of-forking-paths concern.
 \textbf{Designated-primary-for-reporting analysis path.}
 \emph{The strictly quotable headline is the family-wise Bonferroni-5
 null across all five DESIVAST void definitions
-($|z_\Delta|\!\le\!1.25$, Table~\ref{tab:desivast_three_algo}), not
+($|z_\Delta|\!\le\!1.25$, the extremal value being the V2-REVOLVER
+GALZONE catalog-native row; the full family is collected in
+Table~\ref{tab:bonferroni5_family}), not
 any single most-favorable estimator.} The designation below identifies
 one of those five estimators as an organizational focus for narrative
 reporting; it is a secondary framing choice, not the primary scientific
@@ -2882,9 +2899,11 @@ path (\S\ref{sec:vweb}, \S\ref{sec:phase2}; limitations in
 field is computed from redshift-space galaxy positions on a
 $R_s\!=\!25$\,Mpc/$h$ Gaussian smoothing and is therefore
 RSD-bounded only at the scalar-displacement level. The primary
-P5 environment-independence claim, anchored on the
-DESIVAST $\Delta f_{\rm CW}\!\approx\!0.0007$ null at
-$n\!=\!56{,}981$, does not depend on the T-Web RSD argument.
+P5 environment-independence claim, anchored on the footprint-restricted
+DESIVAST $\Delta f_{\rm CW}\!\approx\!0.0018$ null at
+$n_{\rm void}\!=\!57{,}081$ (with the $\approx\!0.0007$ $k\!=\!20$
+control at $n\!=\!56{,}981$ agreeing to $0.11$\,pp), does not depend on
+the T-Web RSD argument.
 
 \subsection{DESIVAST per-galaxy cross-match (this work)}\label{sec:desivast_xmatch}
 
@@ -4327,7 +4346,9 @@ void/non-void contrast (\S\ref{sec:desivast_primary}) is constructed
 on the volume-limited BGS low-$z$ parent ($z \leq 0.24$), where the
 bright BGS path is separately tabulated and the target-program mixing
 that drives the filament bright/dark sign-flip is minimized by
-construction; the primary $\Delta f_{\rm CW} = +0.0007$ is therefore
+construction; the primary footprint-restricted
+$\Delta f_{\rm CW} = +0.0018$ (and its same-verdict $k\!=\!20$
+sensitivity control $+0.0007$) is therefore
 insensitive to this residual. No test produces a
 $>3\sigma$ residual after
 Paper~IV-monopole correction.
@@ -4424,7 +4445,9 @@ fraction, not on physical spiral chirality:} at the $69.91\%$
 attenuated proxy for the physical-handedness contrast (attenuation
 factor $\approx 2a-1\simeq 0.40$; App~\ref{app:paper4_methods}). The
 symmetric-error premise of this de-attenuation now has direct empirical
-support: a committed GZ1-overlap human-vs-classifier confusion matrix
+support \emph{on adjacent (imaging-leg and confidence) strata --- not yet
+on the void axis this paper constrains}: a committed GZ1-overlap
+human-vs-classifier confusion matrix
 (App~\ref{app:paper4_methods}; \href{\repoBase/pipelines/p2\_chirality/outputs/gz1\_stratified\_confusion.json}{[A31]})
 finds the CW$\to$CCW and CCW$\to$CW mislabelling rates equal to within
 $\pm0.5$--$0.6$\,pp (95\%) overall and within every imaging-leg and
@@ -4871,7 +4894,15 @@ $\mathrm{confidence}_{\rm eq}>0.6$: the error \emph{magnitude} varies across
 strata by nearly a factor of ten, yet the errors stay
 \emph{parity-symmetric} in every one, so the symmetric-error premise of the
 $2a-1$ de-attenuation is empirically satisfied on all sky and confidence cuts
-tested. This does \emph{not} directly measure the void-stratified asymmetry:
+tested. (The $0.912$--$0.961$ accuracy quoted here is measured on the
+confident-spiral GZ1 overlap; the more conservative floor accuracy
+$a\!\simeq\!0.699$ used for the de-attenuation \emph{magnitude} yields a
+weaker, deliberately conservative physical bound. We import only the
+\emph{symmetry} property --- not the accuracy value --- from the overlap
+sample, and the observed magnitude-independence of that symmetry across a
+ten-fold accuracy range is precisely why it is taken to transfer to the
+$a\!\simeq\!0.699$ floor regime.) This does \emph{not} directly measure the
+void-stratified asymmetry:
 GZ1 Table~2 carries no redshift, so the void/non-void split of the overlap
 requires the P5 matched-chirality$\times$DESI-redshift catalog plus the
 DESIVAST void spheres to assign 3D void membership; the confusion-matrix

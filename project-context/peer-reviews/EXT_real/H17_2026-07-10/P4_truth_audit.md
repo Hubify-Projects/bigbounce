@@ -176,3 +176,82 @@ All 14 MAJORs map 1:1 to prior CG-1..CG-10 + INT dispositions (verified intact i
 - **Correction/disclosure-backfire (pattern-066):** 1 confirmed — the P4 Grok MINOR→MAJOR flip, all 3 items, before/after quoted above.
 - **Re-flag / disclosed-limitation / opinion:** Grok 3, ChatGPT 17 — all source-cited to a paper line or a prior-audit disposition; all closures (Shamir factor-2, straggler fixes, figure regens) verified intact in v1.0.232.
 - **Integrity:** no ACCEPT fabricated; both REJECT/MAJOR verdicts recorded as-is; no math fabricated; no edit warranted (nothing genuinely-new to close). Barrier remains compute/venue + LLM referee-variance (pattern-066), not text.
+
+---
+
+## Addendum — INT re-test on v1.0.233 → close → v1.0.234 (H17, 2026-07-10)
+
+Fresh INT raws audited (all headed v1.0.233):
+`INT_v3/ROUND_2026-07-09/API_P4_openai.md` (REJECT, 15 items: 12 MAJOR + 3 MINOR),
+`API_P4_grok.md` (MINOR, 3), `INT_api/H17_2026-07-10/retest2_P4_claude.md` (MINOR, 3).
+
+### Claude-subagent (MINOR, 3) — GENUINELY-NEW on the v1.0.233 stratified section → ALL FIXED
+The Claude retest read the brand-new Appendix-B stratified-confusion content (Table `tab:gz1_stratified`,
+committed `outputs/gz1_stratified_confusion.json`) and raised 3 precision/scoping tightenings — the only
+genuinely-new findings this round (they target v233-new text that no prior audit had seen):
+
+| # | Finding | Verdict | Close (v1.0.234) |
+|---|---------|---------|------------------|
+| CL2-1 | Sec IV C "leg-symmetric...cannot manufacture a dipole at the A_p scale of the null" (L1148) slightly stronger than the CIs (science-cut asymmetry CI ≈±0.42pp, half-width ≲0.6pp) support; sits in mild tension with the paper's own "do not exclude a sub-percent differential asymmetry" | **FIX** | Softened to "corroborates but does not fully close the differential-error channel at the sub-percent level" + explicit "the quoted CI half-widths (≲0.6pp science-cut) are the operative bound and do NOT exclude a sub-percent differential asymmetry" (Sec IV C narrative, ~L1148). |
+| CL2-2 | Appendix-B conclusion: a 2-bin dec-split (dec≷+32°) is coarse as a *dipole* bound — an off-leg-axis differential-error dipole (RA-varying within a leg) is not directly bounded; the coarseness should be stated explicitly | **FIX** | Added: "this is a two-cell projection, not a full dipole map: a differential-error dipole not aligned with the leg-split axis...is bounded only through the coarser overall-stratum CI (±0.56pp), not resolved; the two-leg decomposition is the dominant-axis instance of, not a substitute for, the per-pixel model." (±0.56pp = overall asymmetry CI half-width 0.0056 from the table.) |
+| CL2-3 | Stratified accuracies (0.912 overall, 0.961 science-cut) sit far above the headline conservative 0.6991 GZ1 chirality floor (κ=0.40) feeding g — a reader can conflate them | **FIX** | Added: "the high stratified accuracies here (0.912 / 0.961) are the confident-spiral ∩ classifier-CW/CCW accuracies...and are NOT a revision of the headline conservative GZ1 chirality-accuracy floor (0.6991, κ=0.40; Training Labels, Sec. IV)...measured on disjoint subsamples...the conservative 0.6991 floor is retained unchanged for all downstream isotropy bounds." |
+
+All three are honest scoping tightenings; **no number changed**, no new claim fabricated. The ±0.56pp
+and 0.912/0.961/0.6991 values all trace to the committed `tab:gz1_stratified` / stratified JSON.
+Claude's own math check (retest2) independently confirmed the Shamir identity and the table arithmetic
+(14,093+26,894=40,987; +5,030 NS=46,017) — no correctness defect.
+
+### Grok-API (MINOR, 3) — all RE-FLAGs of disclosed content (0 new)
+- GK2-a: multiple incommensurable null procedures quoted side-by-side despite the "not directly comparable"
+  warning → **RE-FLAG** = CG-MINOR-2 / GK-1; reader's-note (L975) + notation section + decision-tree Table I
+  already present; the warning is the disclosure.
+- GK2-b: ~53% forward-model / ~47% remainder, injection-recovery grid resolution not cross-validated against
+  the residual-decomposition templates → **RE-FLAG/OPEN** = CG-7 / GK-3; disclosed §Appendix-D, bounded below
+  A95 a-fortiori; the joint cross-validation is the disclosed joint-covariance future item.
+- GK2-c: Shamir tension (1.7–4.0% vs 0.455%, "3.7–8.8×") risks overstating given distinct estimator/selection
+  → **RE-FLAG** = GK-4; the paper already states verbatim it does NOT claim a frequentist exclusion of Shamir's
+  Ganalyzer estimator, and the factor-of-2 fix now correctly sizes the tension. No new editable defect.
+
+### OpenAI-API (REJECT, 12 MAJOR + 3 MINOR) — all map 1:1 to dispositioned findings (0 new)
+Every MAJOR fingerprint-matches a prior disposition, verified intact in v1.0.234:
+OA2-1↔CG-4 (GZ1 69.91%/κ0.40 not validated for sub-percent + no image-level end-to-end injection; RE-FLAG/OPEN
+§sensitivity — injection-bypass disclosed verbatim); OA2-2↔CG-1 (≈30% hard-confidence selection + low-conf z≈4
+excess; RE-FLAG §prereg — HC 0.6 declared a-priori, sweep stable, GZ1-human-only model-free null z=−0.54);
+OA2-3↔CG-7 (two primary estimators on different samples w/o common likelihood; OPEN-disclosed, joint-covariance
+future item L1159); OA2-4↔CG-7 (harmonic +7.28/+7.93σ, ~47% not forward-modeled; OPEN-disclosed, bounded <A50);
+OA2-5↔CG-MINOR-2 (many incommensurable σ; RE-FLAG reader's note); OA2-6↔CG-4 (A50/A95 are label-field
+thresholds not physical; RE-FLAG — stated verbatim §sensitivity); OA2-7↔GK-4/CG-8 (Shamir tension + z≈−7.6
+"disfavor" overstated; RE-FLAG — paper already says "disfavors not excludes", matched-Ganalyzer flagged
+required); OA2-8↔CG-4/Claude-#4 (66.5% CE-ResNet pseudo-labels → not independent; RE-FLAG/OPEN
+§pseudolabel_independence, GZ1-human-only null is model-free); OA2-9↔CG-6 (pixel-permutation doesn't preserve
+survey geometry / spatially-varying error; OPEN-disclosed, density-stratified null run); OA2-10↔CG-8/GK-a
+(block-bootstrap WLS covariance/rank-deficient nuisance for high-sig exclusion; RE-FLAG — "not a calibrated
+frequentist exclusion" stated verbatim L1367); OA2-11↔the disclosed 2.9%/6.3% flip-prob QC issue (RE-FLAG
+Appendix-B — dipole unchanged after removal, disclosed); OA2-12↔CG-MINOR-1 (parity framing without transfer
+function; RE-FLAG — hedged "in principle, pending a derived transfer function" L1155). MINORs (length/DOI/notation)
+= OPINION/OPEN Houston-gated (Zenodo DOI at submission). **Zero genuinely-new editable finding**; the OpenAI
+snapshot re-raises the same structural REJECT floor (pattern-066: a maximally-harsh LLM referee returns MAJOR on
+honestly-scoped, disclosed content — the same behavior documented across RS5–RS10).
+
+### Counts (this re-test, v1.0.233 → v1.0.234)
+- **Genuinely-new real + editable:** 3 (all Claude MINOR: CL2-1/2/3) — **all closed in v1.0.234**.
+- **Genuinely-new per vendor:** Claude 3 (all closed) · Grok 0 · OpenAI 0.
+- **Re-flag / disclosed-limitation / opinion:** Grok 3 · OpenAI 15 = 18, all source-cited to a paper line or a
+  prior disposition.
+- **Integrity:** no ACCEPT fabricated; the OpenAI REJECT and Grok/Claude MINOR verdicts recorded as-is; no math
+  fabricated; the 3 closures change scoping/presentation only, every table number preserved.
+
+### Directive-G hygiene (v1.0.234)
+- `.tex` **v1.0.233 → v1.0.234**; `\paperTimestamp` = July 10, 2026 (already current).
+- TinyTeX 2-pass: **0 errors, 0 undefined references, 0 overfull hboxes**, 35 pp (grew from 34 via the v233
+  stratified section + these clauses).
+- Page-1 render-verified ("Dated: July 10, 2026"; version tag intentionally date-only per P4-E1/E6). New clauses
+  ("corroborates but does not fully close", "not a revision of the headline") render-verified in the PDF text.
+- PDF mirrored **byte-identical to all 10 served paths** + new v1.0.234 versioned alias (public/papers/,
+  site/public/papers/ incl. paper4_chirality_catalog.pdf + p4-chirality.pdf, arxiv/) .
+- **md5 = `e687559202f6d4cfb8ab3bdd8bd60912`**, 35 pp, 34,036,610 bytes; three-way check compile==served==Convex ✓.
+- Convex `paperVersions:bump` (paper-4, v1.0.234) written (id k57chnh0srwvz5d6wyyf1fxrmd8a8hvx). papers.ts +
+  live-status.ts version/hrefs/pdfMeta synced to v1.0.234.
+
+**No fabrication.** Barrier remains compute (image-level end-to-end injection, joint nuisance likelihood,
+matched-footprint Ganalyzer reanalysis) + venue + LLM referee-variance (pattern-066), not text.

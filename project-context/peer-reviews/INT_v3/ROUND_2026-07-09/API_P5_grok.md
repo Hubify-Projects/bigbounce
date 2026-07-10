@@ -1,8 +1,8 @@
-# INT API Review — P5 v0.1.116-2026-07-10 — grok (grok-4.3)
-paper: P5  version: v0.1.116-2026-07-10  model: grok-4.3
+# INT API Review — P5 v0.1.117-2026-07-10 — grok (grok-4.3)
+paper: P5  version: v0.1.117-2026-07-10  model: grok-4.3
 modality: native-PDF (/v1/files file_id)
-UTC: 2026-07-10T22:35:07.983795Z  |  latency: 24.7s  |  attempt: 1
-usage: {"input_tokens": 36176, "input_tokens_details": {"cached_tokens": 192}, "output_tokens": 845, "output_tokens_details": {"reasoning_tokens": 602}, "total_tokens": 37021, "num_sources_used": 0, "num_server_side_tools_used": 0, "cost_in_usd_ticks": 471309000, "context_details": {"input_tokens": 36176, "output_tokens": 846}}
+UTC: 2026-07-10T22:51:06.166978Z  |  latency: 23.4s  |  attempt: 1
+usage: {"input_tokens": 36178, "input_tokens_details": {"cached_tokens": 128}, "output_tokens": 947, "output_tokens_details": {"reasoning_tokens": 632}, "total_tokens": 37125, "num_sources_used": 0, "num_server_side_tools_used": 0, "cost_in_usd_ticks": 474556000, "context_details": {"input_tokens": 36178, "output_tokens": 947}}
 PARSED VERDICT: MINOR REVISIONS
 
 ======================================================================
@@ -12,8 +12,9 @@ RAW RESPONSE (verbatim):
 (1) VERDICT: MINOR REVISIONS
 
 (2) ISSUES:
-[MINOR] Abstract/§I: The de-attenuated physical-chirality bound (≈2.26 pp) is presented without propagating the acknowledged uncertainty from the missing environment-stratified confusion matrix (§XIII/Appendix A), which directly affects model constraints.
-[MINOR] §V B/Table IV: The post-hoc primary-path designation (DESIVAST) and “few-dozen-trial” analysis tree are disclosed but should be accompanied by an explicit statement that the quoted family-wise Bonferroni-5 null remains valid even under the most conservative pre-data choice of any single estimator.
-[MINOR] §VIII/§XIII: The redshift-space nature of all bounds (including the T-Web secondary path) is correctly flagged, but the text should quantify the maximum possible RSD-induced shift in the void/non-void contrast using the already-mentioned σ_v/(aH) Monte Carlo.
+[MINOR] Abstract & §V B: the post-hoc designation of the DESIVAST primary path (explicitly noted as exploratory with no timestamped pre-registration) is disclosed but should be elevated to a dedicated limitations paragraph with explicit statement that the family-wise Bonferroni-5 null is the only strictly quotable result.
+[MINOR] §I & §XIII: the redshift-space nature of all reported bounds (including the ≈0.9 pp systematic envelope) is stated but requires an explicit forward-looking sentence on the absence of real-space reconstruction and the unquantified anisotropic RSD channel.
+[MINOR] Table I & Appendix A: the 69.91 % GZ1 accuracy floor and de-attenuation factor (2a−1 ≃ 0.40) are summarized but the environment-dependent relabeling uncertainty is only referenced to §XIII; a one-sentence quantitative caveat on the de-attenuated 2.26 pp physical bound should appear in the abstract.
+[MINOR] §II & references: the concurrent companion Paper IV is cited with placeholder arXiv:XXXX.XXXXX; replace with final identifier before submission.
 
-(3) The central claim of a bounded null (|∆f_CW| ≲ 0.9 pp systematic envelope) on the classifier-labelled CW fraction is supported by the data and analysis.
+(3) The central claim of a family-wise Bonferroni-5 null on the DESIVAST void/non-void CW-fraction contrast (|∆fCW| ≤ 0.004, |z∆| ≤ 1.25) is supported by the reported data and cross-checks.

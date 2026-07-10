@@ -312,7 +312,7 @@ export const papers: Paper[] = [
     slug: "paper-4",
     number: "4",
     title: "A Null Chirality Dipole in 8.5 Million DESI Galaxies from Equivariant Deep Learning",
-    version: "v1.0.232",
+    version: "v1.0.234",
     lastUpdated: "2026-07-10",
     tldr: "Classifies 8.47M galaxies for spiral handedness with a rotation-equivariant ViT ensemble and finds a null real-space chirality dipole (+0.41σ, rank-p=0.31; A_dip < 6.8×10⁻³ at 95% UL) — the earlier −0.122σ subsample-mask null was withdrawn in v1.0.166 after a provenance audit.",
     path: [
@@ -377,15 +377,15 @@ export const papers: Paper[] = [
       "arXiv endorsement + submission — gated behind a reviewer ACCEPT (packets are ready; reviews are not passed)",
     ],
     preprintId: "HUBIFY-2026-004",
-    pdfMeta: "PDF · 34 pp · v1.0.230 · updated Jul 10, 2026 · md5 ccc7ba80 · 34 MB G15 closure (v1.0.230, Jul 10): closed Grok's three non-blocking concerns — z≈−18 flagged near Table I as a model-dependent template-disfavor statistic (not a frequentist exclusion), a sentence in Sec IV D bounding any cosmological content of the ~47% unmodelled ℓ=1 remainder below A_50 (consistent with the +0.41σ real-space null), and Shamir-comparison mechanism context (monopole-mask leakage + depth-coupled bias); Fig 10 caption corrected from 'null' to 'block-bootstrap sampling distribution'. Presentation-only, no number changed.",
+    pdfMeta: "PDF · 35 pp · v1.0.234 · updated Jul 10, 2026 · md5 e6875592 · 34 MB — H17 INT re-test closure (v1.0.234): closed the three genuinely-new Claude-subagent MINORs on the new v1.0.233 sky/confidence-stratified confusion analysis (Appendix B, Table tab:gz1_stratified). (1) softened the Sec IV C narrative 'cannot manufacture a dipole' phrasing to 'corroborates but does not fully close the differential-error channel at the sub-percent level', with the CI half-widths (≲0.6 pp science-cut) stated as the operative bound that does not exclude a sub-percent differential asymmetry; (2) added an explicit two-cell (dec≷+32°) scope caveat that a differential-error dipole not aligned with the leg-split axis is bounded only through the coarser overall-stratum CI (±0.56 pp), not resolved; (3) added a one-line note that the stratified accuracies (0.912 overall, 0.961 science-cut) are the confident-spiral ∩ classifier-CW/CCW accuracies, not a revision of the headline conservative GZ1 chirality-accuracy floor (0.6991, κ=0.40) that feeds g=2a−1. Presentation/scoping only, no verified number changed. Shamir factor-of-2 (A_ref=0.017, z≈−7.6) intact from v1.0.231.",
     changelog: [
       "End-to-end transfer-calibration scope statement (v1.0.229): the injection-recovery section now delineates which links of the classify→dipole chain the sweep traverses (map-making + dipole estimator + null calibration) versus which it does not (ViT classifier, NS triage, confidence cut, spatially-varying confusion), shows from the committed GZ1 confusion numbers that the asymmetric-confusion transfer slope g_eff = s_CW + s_CCW − 1 = 0.398 equals the symmetric g = 2a − 1 = 0.398 for the near-balanced parent (so CW/CCW asymmetry does not degrade the physical-amplitude conversion), and honest-flags the full image-level end-to-end injection through the classifier as requiring new simulation — operative claims held to the observed hard-label field. No number changed, nothing fabricated.",
       "R9 ACCEPT-track minor closure (v1.0.225): Grok = minor-revisions, Gemini = 'Accept with minor revisions'; both referees' concrete minors closed with real edits (no number changed). Abstract z≈−18 now explicitly labeled a model-dependent template-disfavor statistic (not a frequentist exclusion) with the injection-recovery A95∈(1.0,1.5]% cross-referenced as the primary real-space falsification; added a main-text downstream-user warning that raw p_eq scores are not frequentist likelihoods (cite Appendix-B ECE ≥0.25–0.36); abstract real-space p now names its isotropic-pixel-permutation null. ChatGPT major = presentation/consolidation of already-disclosed content.",
       "Deep-tier Gemini MAJOR closure (v1.0.224): added self-contained training-data provenance table + a probabilistic-calibration paragraph quantifying a real top-label ECE lower bound from the committed GZ1 confusion matrix (mean-conf 0.951 vs 3-class acc 0.5871 -> ECE>=0.36; chirality 0.6991 -> >=0.25), proven invariant to any monotone recalibration; surfaced existing committed data, no number changed.",
     ],
     artifacts: [
-      { label: "Read PDF", href: "/papers/chirality_catalog_paper_v1.0.232.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/chirality_catalog_paper_v1.0.232.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/chirality_catalog_paper_v1.0.234.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/chirality_catalog_paper_v1.0.234.pdf", kind: "secondary", download: true },
       {
         label: "LaTeX source",
         href: "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/chirality_catalog_paper.tex",

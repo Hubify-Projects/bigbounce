@@ -1,8 +1,8 @@
 {
   "output": "p4_chirality.parquet",
-  "written_utc": "2026-05-16T06:05:38Z",
-  "git_sha": "4feb56e4da61",
-  "python": "3.10.6",
+  "written_utc": "2026-07-10T22:51:02Z",
+  "git_sha": "4a2d551d524e",
+  "python": "3.9.6",
   "source": "huggingface",
   "hf_repo": "bamfai/galaxy-chirality-catalog",
   "hf_file": "catalog_production.parquet",
@@ -11,5 +11,5 @@
   "rows_observed": 8474531,
   "rows_expected": 8474531,
   "config_version": "0.1.0",
-  "config_hash": "deb9887db991468c"
+  "config_hash": "83970171f71bb863"
 }
