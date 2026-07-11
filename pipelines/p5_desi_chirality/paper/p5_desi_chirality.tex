@@ -41,7 +41,7 @@
 % The divide-by-h claim (~1246 h⁻¹ Mpc) is INVERTED. No pipeline recompute required.
 % If any future reviewer re-raises this, cite env_finder/01_compute_vweb.py:106-108.
 
-\newcommand{\paperVersion}{v0.1.117-2026-07-10}
+\newcommand{\paperVersion}{v0.1.118-2026-07-10}
 % v0.1.117-2026-07-10 (H17 retest2 close; consistency/framing only, no invented number):
 %   - Fixed two residual stale "primary Delta_fCW=+0.0007" labels (L4330, L2886-87)
 %     to the promoted footprint-restricted +0.0018 (n_void=57,081); +0.0007 relabeled
@@ -4445,16 +4445,21 @@ fraction, not on physical spiral chirality:} at the $69.91\%$
 attenuated proxy for the physical-handedness contrast (attenuation
 factor $\approx 2a-1\simeq 0.40$; App~\ref{app:paper4_methods}). The
 symmetric-error premise of this de-attenuation now has direct empirical
-support \emph{on adjacent (imaging-leg and confidence) strata --- not yet
-on the void axis this paper constrains}: a committed GZ1-overlap
+support \emph{on all measured strata, including the void axis this paper
+constrains}: a committed GZ1-overlap
 human-vs-classifier confusion matrix
 (App~\ref{app:paper4_methods}; \href{\repoBase/pipelines/p2\_chirality/outputs/gz1\_stratified\_confusion.json}{[A31]})
 finds the CW$\to$CCW and CCW$\to$CW mislabelling rates equal to within
 $\pm0.5$--$0.6$\,pp (95\%) overall and within every imaging-leg and
-confidence stratum, so any environment-differential label error would have to
+confidence stratum, and the void axis itself is now directly measured with
+the paper's exact primary recipe (footprint-restricted: void $N=933$,
+error-asymmetry $-0.023\,[-0.060,+0.014]$; non-void $N=5{,}778$,
+$-0.005\,[-0.020,+0.010]$; two-proportion difference $-0.018$, $z=-0.89$,
+$p=0.37\,[-0.057,+0.022]$, with consistent nulls across all three DESIVAST
+void definitions --- all-low-$z$ $p=0.25$, REVOLVER $p=0.66$, VIDE $p=0.19$),
+so any environment-differential label error would have to
 arise from an environment-specific asymmetry \emph{not present} in those
-strata (the void stratum itself is not yet directly measured, with a concrete
-committed recipe; App~\ref{app:paper4_methods}). Under
+strata. Under
 the symmetric-error approximation, the ${\approx}0.9$\,pp classifier-label
 envelope de-attenuates to ${\approx}2.26$\,pp on the physical-chirality
 contrast ($0.9/0.3982$); model-builders should use this weaker physical
@@ -4544,19 +4549,28 @@ model in the chirality-label chain), returning $z=-0.54\sigma$ on
 $N=46{,}017$ human-labeled spirals~\cite{golden_chirality_2026}, so the
 labels do not inherit their pseudo-labeling. A systematic \emph{environment-dependent}
 re-labeling by a future classifier is not excluded by any test internal to
-P5. We now bound this partially: a committed GZ1-overlap human-vs-classifier
+P5. We now bound this directly: a committed GZ1-overlap human-vs-classifier
 CW/CCW confusion matrix (App~\ref{app:paper4_methods};
 \href{\repoBase/pipelines/p2\_chirality/outputs/gz1\_stratified\_confusion.json}{[A31]})
 shows the label-error asymmetry is consistent with zero to within
 $\pm0.5$--$0.6$\,pp (95\%) both globally and within every imaging-leg and
 confidence stratum, so any environment-differential mislabelling would have
 to be an environment-specific asymmetry absent from the sky and confidence
-cuts tested. The one stratum \emph{not} directly measured is void/non-void
-membership --- GZ1 Table~2 carries no redshift, so it requires the P5
-matched-chirality$\times$DESI-redshift catalog plus the DESIVAST void spheres;
-the artifact records the exact committed recipe (\texttt{P5\_VOID=1}) for that
-computation, so this residual gap is now concrete and recipe-backed rather
-than open-ended. And the
+cuts tested. The void/non-void stratum is now measured directly using the
+P5 matched-chirality$\times$DESI-redshift catalog and the DESIVAST void
+spheres, built with the paper's exact primary recipe ($1.0''$ match,
+\texttt{ZWARN}$=0$, \texttt{SPECTYPE} GALAXY/QSO, $z\le0.24$, VoidFinder
+point-in-sphere footprint-restricted; \texttt{P5\_VOID=1}): it finds
+\emph{no} detectable void/non-void difference in the directional
+error-asymmetry (void $N=933$, $-0.023$; non-void $N=5{,}778$, $-0.005$;
+difference $-0.018$, $z=-0.89$, $p=0.37$), a null that holds across all
+three void definitions (all-low-$z$ $p=0.25$, REVOLVER $p=0.66$, VIDE
+$p=0.19$). This measurement \emph{corroborates} the symmetric-error premise
+on the very axis this paper constrains, but the void-arm $95\%$ CI
+half-width ($\pm3.7$\,pp) exceeds the paper's $\Delta f_{\rm CW}$ bounds
+($0.2$--$0.6$\,pp) by nearly an order of magnitude, so this stratum alone
+cannot exclude an environment-dependent label bias at the headline scale;
+the de-attenuation caveat of \S\ref{sec:limitations} therefore stands. And the
 monopole-referenced $\sigma_{\rm pred}$ diagnostics (not the
 headline contrast) reference the Paper~IV scalar; we flag both explicitly
 for human-referee attention and note the primary null should be re-verified
@@ -4901,18 +4915,31 @@ weaker, deliberately conservative physical bound. We import only the
 \emph{symmetry} property --- not the accuracy value --- from the overlap
 sample, and the observed magnitude-independence of that symmetry across a
 ten-fold accuracy range is precisely why it is taken to transfer to the
-$a\!\simeq\!0.699$ floor regime.) This does \emph{not} directly measure the
-void-stratified asymmetry:
+$a\!\simeq\!0.699$ floor regime.) The void-stratified asymmetry is now measured directly.
 GZ1 Table~2 carries no redshift, so the void/non-void split of the overlap
-requires the P5 matched-chirality$\times$DESI-redshift catalog plus the
-DESIVAST void spheres to assign 3D void membership; the confusion-matrix
-artifact records the exact committed recipe (\texttt{P5\_VOID=1}) for that
-computation. Accordingly the residual gap is now concrete and recipe-backed
-rather than open-ended: any environment-differential label error would have to
-arise from an environment-specific asymmetry that is \emph{absent} from every
-sky and confidence stratum measured here. Absent that direct void-stratified
-measurement, a \emph{systematic environment-dependent re-labeling by a future
-classifier is therefore not excluded}, and the de-attenuated number should
+was built from the P5 matched-chirality$\times$DESI-redshift catalog plus the
+DESIVAST void spheres to assign 3D void membership, using the paper's exact
+primary recipe ($1.0''$ nearest-neighbour match, \texttt{ZWARN}$=0$,
+\texttt{SPECTYPE} in \{GALAXY,\,QSO\}, $z\le0.24$, VoidFinder point-in-sphere
+footprint-restricted; \texttt{P5\_VOID=1};
+\href{\repoBase/pipelines/p2\_chirality/outputs/gz1\_stratified\_confusion.json}{[A31]},
+\href{\repoBase/pipelines/p2\_chirality/scripts/gz1\_stratified\_confusion.py}{[A32]}).
+The footprint-restricted primary stratum gives a void arm of $N=933$ with
+error-asymmetry $-0.023\,[-0.060,+0.014]$ and a non-void arm of $N=5{,}778$
+with $-0.005\,[-0.020,+0.010]$; the two-proportion difference is $-0.018$
+($z=-0.89$, $p=0.37$, $[-0.057,+0.022]$), i.e.\ \emph{no detectable
+void/non-void difference in directional error asymmetry}, and this null is
+consistent across all three DESIVAST void catalogs (all-low-$z$ $p=0.25$,
+REVOLVER $p=0.66$, VIDE $p=0.19$). Two-sided reading: (a)~the errors stay
+parity-symmetric on the void axis as on every other stratum, so any
+environment-differential label error would have to arise from an
+environment-specific asymmetry \emph{absent} from every stratum measured
+here; but (b)~the void-arm $95\%$ CI half-width ($\pm3.7$\,pp) exceeds the
+paper's $\Delta f_{\rm CW}$ bounds ($0.2$--$0.6$\,pp), so this measurement
+\emph{corroborates but cannot by itself exclude} an environment-dependent
+label bias at the headline scale. A \emph{systematic environment-dependent
+re-labeling by a future classifier is therefore not fully excluded}, the
+de-attenuation caveat stands, and the de-attenuated number should
 still be read as an indicative order-of-magnitude guide, not a precision bound. Accordingly every environmental bound in this paper is
 stated as a bound on the classifier-labelled CW fraction under
 fixed-redshift-space DESIVAST void membership, and the reader should
