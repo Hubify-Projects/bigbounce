@@ -369,3 +369,20 @@ Adjudicated the W1 INT wave for P1U across three recorded raws, ledger-matched v
 Fingerprint keywords added to DP1U-01/-03/-08/-09/-13/-15/-16/-18/-22 so these re-phrasings auto-MATCH next wave.
 
 **Outcome:** 1 genuinely-new real+editable (DP1U-25, CLOSED v1U.0.12) + all others re-flags/OPINION/FALSIFIED. Streak → 0. INT verdicts recorded: OpenAI reject, Grok major-revisions, Claude minor-revisions. Convex readinessMetrics row `mn79xqtqb0ft6drsfeh2a0r8pd8aa9h0` (paper-1a, W1-INT). No math fabricated; no hedging removed.
+
+---
+
+## W2b-EXT adjudication addendum (2026-07-11, vs v1U.0.12 — ChatGPT re-sweep)
+
+**Raw:** `EXT_real/H17_2026-07-10/W2b/P1U_chatgpt_W2b.md` (ChatGPT = **REJECT**, 15 MAJOR + 2 MINOR). `tools/ledger_match.py … P1U` → 11/16 MATCHED, 5 UNMATCHED; full §3 truth-audit of every UNMATCHED item vs `arxiv/paper1_unified.tex` v1U.0.12 + `DISPOSITIONS/P1U.md`.
+
+**5 UNMATCHED — all source-cited re-flags, none genuinely-new:**
+- **#2 "Eq.(6) dim +1; an algebraic/Bianchi identity cannot change mass dimension; remove or replace with an explicit dim-4 operator"** → **RE-FLAG of DP1U-08.** The paper states this off-shell mismatch *itself*: "which has naive mass dimension $[\mathcal L_{\rm odd}]=+1$—three units short of the required $+4$ … We state this off-shell mismatch deliberately" (L1875-1885), then makes the genuine dim-4 O1–O6 basis the "primary physical foundation" (`eq:Seff_dim4`, L1888-1892) and labels the +1→+4 shorthand a dispensable illustrative heuristic (DP1U-08). ChatGPT's demand is already satisfied in-paper; not editable.
+- **#4 "single-scale NDA dimensional no-go is not a no-go theorem; J5²/M_Pl²∼E⁶/M_Pl²; fails at bounce where E/M_Pl=O(1)"** → **RE-FLAG of DP1U-08 (+ DP1U-11).** The NDA argument is disclosed channel-level (not a theorem, DP1U-06) and the +1→+4 heuristic explicitly non-load-bearing; the O1–O6 dim-4 basis carries the closure. The "restates the CC problem" objection is the DP1U-11 explanatory-deficit framing the abstract owns verbatim. Not editable.
+- **#6 "Route-2 operator (∂ϑ_NY)J5/M_Pl not derived; ST renormalize λ4=γκ²(W·J) not this operator; [ϑ_NY]=1 dimensional error → H0/M_Pl spurious"** → **RE-FLAG of DP1U-09.** R2 is disclosed one-loop-grounded via the exact ST λ4=γκ²(W·J) coefficients (L1988/2197/2787; provenance comment L246) with the absolute normalization *honestly* pending the ST Riccati flow; ∂ϑ dimensions are stated correctly (∂ϑ dim +2, operator dim +4) and R2 is flagged "exploratory framing, not load-bearing" (L618). The dimensional "error" is the reviewer reading the disclosed ∂ϑ∼H₀ loose bound as a derivation. Not editable.
+- **#8 "Route-3 β-function is Euclidean Majorana / scheme+gauge-caveated; multiplying Δγ/γ by H0/M_Pl with no operator/stress-tensor is spurious"** → **RE-FLAG of DP1U-10.** R3's scheme/γ-spread caveats and the H0/M_Pl *amplitude-budget* (not operator-derivation) framing are disclosed throughout (γ scheme-spread L560/752/1058; amplitude-budget L1205/1323/1387; "conditional" tiering). The paper never claims a derived operator for R3 — it's the cleanly-integrated β-function anchor mapped conditionally. Not editable.
+- **#16 "not PRD-suitable; 60pp restates scope; needs a fundamentally new shorter paper"** → **RE-FLAG of DP1U-22** (length/venue OPINION; structural harsh-referee floor).
+
+**11 MATCHED confirmed:** #1→DP1U-03, #3→DP1U-20, #5→DP1U-05, #7→DP1U-10, #9→DP1U-05/-11, #10→DP1U-20/-06, #11→DP1U-14, #12→DP1U-12, #13→DP1U-15, #14→DP1U-17 (P2 companion quadruple-certifies −35/16), #15 (MINOR)→DP1U-02. All correct on spot-check.
+
+**Outcome: 0 genuinely-new real+editable findings.** Identical structure to the H17G / W1-EXT ChatGPT REJECTs — the ChatGPT structural harsh-referee floor (directive-H) on honestly-scoped, unchanged v1U.0.12 content. **clean-wave streak holds at 2 — P1U REMAINS across the directive-K bar.** No v1U.0.13 bump; v1U.0.12 stands. `directive_g.sh` not run (no edit). Integrity: REJECT recorded as-is; no ACCEPT faked; no finding dismissed without a source-cited verdict; no math fabricated; no hedging removed.

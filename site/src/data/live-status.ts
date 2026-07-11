@@ -84,7 +84,7 @@ export const liveStatus: LiveStatus = {
       shortTitle: "Unified Paper 1 — ECH constraints + reproducibility (P1B merged in)",
       version: "v1U.0.12",
       readiness: 62,
-      pendingWork: "CROSSED the two-clean-waves bar (streak 2). W2 EXT: Grok MINOR→MAJOR was truth-audited as pattern-066 verdict-word oscillation on unchanged v1U.0.12 — same 6-item structure as its W1 MINOR, all source-cited re-flags (DP1U-06/-08/-11/-12/-20/-22), 0 genuinely-new. ChatGPT REJECT = documented floor. (W1 INT had caught + fixed the Check-D script/abstract sync in v1U.0.12.)",
+      pendingWork: "CROSSED the two-clean-waves bar (streak 2, HELD at W2b). W2b EXT: ChatGPT re-sweep of v1U.0.12 = REJECT, 15 MAJOR+2 MINOR, all source-cited re-flags (DP1U-03/-05/-08/-09/-10/-12/-14/-15/-17/-20/-22), 0 genuinely-new — the documented ChatGPT harsh-referee floor. W2 EXT: Grok MINOR→MAJOR was truth-audited as pattern-066 verdict-word oscillation on unchanged v1U.0.12 — all source-cited re-flags, 0 genuinely-new. (W1 INT had caught + fixed the Check-D script/abstract sync in v1U.0.12.)",
     },
     {
       slug: "paper-2",
