@@ -141,3 +141,28 @@ echo "$CAP_RESP" | python3 -c 'import sys,json;sys.exit(0 if json.load(sys.stdin
   || die "papers:setReadinessCap did not succeed"
 
 echo "PASS: $SLUG $RLABEL=$REC cap=$CAP"
+
+# ---- step 4: mirror this verdict into readinessMetrics (trajectory chart + ETA) ----
+# One row per (paper, wave). Reviewer + wave label derived from the reviewer-label.
+# Keeps the /reviews Verdict-trajectory chart + the homepage Submission-ready ETA
+# live on every harvest with no extra manual step. Non-fatal: a readinessMetrics
+# failure must not fail the verdict post.
+REVIEWER="Grok"
+case "$(printf '%s' "$RLABEL" | tr 'A-Z' 'a-z')" in
+  *chatgpt*|*gpt*) REVIEWER="ChatGPT" ;;
+  *grok*)          REVIEWER="Grok" ;;
+  *gemini*)        REVIEWER="Gemini" ;;
+esac
+# wave label = reviewer-label with the trailing reviewer token stripped,
+# e.g. "H17H-Grok" -> "H17H". Falls back to the full label.
+WAVE_LABEL="$(printf '%s' "$RLABEL" | sed -E 's/[-_]?(chatgpt|gpt|grok|gemini)$//I')"
+[ -n "$WAVE_LABEL" ] || WAVE_LABEL="$RLABEL"
+TODAY_ISO="$(date '+%Y-%m-%d')"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+if [ -x "$SCRIPT_DIR/record_wave.sh" ]; then
+  # genuinelyNew/streak/open counts default to 0 here — the orchestrator posts a
+  # fuller row via record_wave.sh directly when it knows the audit outcome.
+  "$SCRIPT_DIR/record_wave.sh" "$PAPER" "$WAVE_LABEL" "$TODAY_ISO" 0 0 0 0 \
+    "$REVIEWER:EXT:$REC" "auto from post_verdict.sh ($RLABEL); raw: $RAW" \
+    || echo "WARN: readinessMetrics record_wave failed (non-fatal)" >&2
+fi
