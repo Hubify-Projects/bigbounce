@@ -27,6 +27,7 @@ import type * as pathcCaveats from "../pathcCaveats.js";
 import type * as pipelineState from "../pipelineState.js";
 import type * as pods from "../pods.js";
 import type * as rRounds from "../rRounds.js";
+import type * as readinessMetrics from "../readinessMetrics.js";
 import type * as reviews from "../reviews.js";
 import type * as spectralResults from "../spectralResults.js";
 import type * as tasks from "../tasks.js";
@@ -57,6 +58,7 @@ declare const fullApi: ApiFromModules<{
   pipelineState: typeof pipelineState;
   pods: typeof pods;
   rRounds: typeof rRounds;
+  readinessMetrics: typeof readinessMetrics;
   reviews: typeof reviews;
   spectralResults: typeof spectralResults;
   tasks: typeof tasks;

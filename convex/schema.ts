@@ -451,4 +451,55 @@ export default defineSchema({
     .index("by_status", ["status", "priority"])
     .index("by_paper", ["paperSlug", "status"])
     .index("by_owner", ["owner", "status"]),
+
+  // ── Readiness metrics: per-paper per-wave verdict rows + ETA inputs ──
+  // ONE row per (paperSlug, waveLabel). Drives the /reviews Verdict-trajectory
+  // chart and the homepage Submission-ready ETA widget. Verdicts are the REAL
+  // recorded verdicts from INT-API raws + EXT browser raws (never synthesized);
+  // a leg that produced no output is recorded verdict:"failed" (rendered as a
+  // GAP, never a zero). See tools/backfill_readiness_metrics.py + tools/record_wave.sh.
+  readinessMetrics: defineTable({
+    paperSlug: v.string(),               // canonical slug (paper-1a .. paper-5)
+    paperId: v.string(),                 // display id (P1A, P1B, P2, P3, P4, P5)
+    waveLabel: v.string(),               // e.g. "EXT7", "H17-INT", "CW2·FULL8"
+    dateISO: v.string(),                 // "2026-07-10"
+    seq: v.number(),                     // chronological sort key (ms since epoch of dateISO + tiebreak)
+    // Honest convergence inputs:
+    genuinelyNewCount: v.number(),       // genuinely-new REAL findings this wave (0 = clean wave)
+    cleanWaveStreak: v.number(),         // consecutive clean waves ending at this wave
+    openComputeCount: v.number(),        // open items gated on compute (not editable now)
+    openVenueCount: v.number(),          // open items that are scope/venue → human referees
+    // Per-reviewer verdicts (real; "failed" = no output that leg → chart gap):
+    verdicts: v.array(
+      v.object({
+        reviewer: v.string(),            // "ChatGPT" | "Grok" | "Gemini" | "OpenAI" | "Claude"
+        channel: v.union(v.literal("INT"), v.literal("EXT")),
+        verdict: v.union(
+          v.literal("reject"),
+          v.literal("major-revisions"),
+          v.literal("minor-revisions"),
+          v.literal("accept"),
+          v.literal("failed")
+        ),
+      })
+    ),
+    note: v.optional(v.string()),
+    createdAt: v.number(),
+  })
+    .index("by_paper", ["paperSlug", "seq"])
+    .index("by_wave", ["waveLabel"])
+    .index("by_seq", ["seq"]),
+
+  // ── Rigor events: documented changes to review rigor / process ──
+  // Vertical annotation markers on the trajectory chart. Each cites its source
+  // (a CLAUDE.md directive letter or a board / reviewTimeline entry). These
+  // explain anomalies in the trend (e.g. a MINOR→MAJOR jump after a stricter
+  // de-biased prompt) so the drop is attributable, not mysterious.
+  rigorEvents: defineTable({
+    label: v.string(),                   // short marker label, e.g. "De-biased prompt"
+    dateISO: v.string(),                 // "2026-06-29"
+    description: v.string(),             // one-line what-changed
+    source: v.string(),                  // citation: "CLAUDE.md directive F" | "board 2026-07-04" | ...
+    createdAt: v.number(),
+  }).index("by_date", ["dateISO"]),
 });

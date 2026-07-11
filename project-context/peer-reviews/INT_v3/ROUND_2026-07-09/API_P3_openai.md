@@ -1,51 +1,68 @@
-# INT API Review — P3 v3.1.144 — openai (gpt-5.5)
-paper: P3  version: v3.1.144  model: gpt-5.5
+# INT API Review — P3 v3.1.152 — openai (gpt-5.5)
+paper: P3  version: v3.1.152  model: gpt-5.5
 modality: native-PDF (Files API input_file)
-UTC: 2026-07-10T07:40:16.710798Z  |  latency: 52.3s  |  attempt: 1
-usage: {"input_tokens": 63452, "input_tokens_details": {"cache_write_tokens": 0, "cached_tokens": 0}, "output_tokens": 2380, "output_tokens_details": {"reasoning_tokens": 1034}, "total_tokens": 65832}
+UTC: 2026-07-11T02:19:23.019652Z  |  latency: 53.0s  |  attempt: 1
+usage: {"input_tokens": 64111, "input_tokens_details": {"cache_write_tokens": 0, "cached_tokens": 0}, "output_tokens": 2271, "output_tokens_details": {"reasoning_tokens": 437}, "total_tokens": 66382}
 PARSED VERDICT: REJECT
 
 ======================================================================
 RAW RESPONSE (verbatim):
 ======================================================================
 
-(1) VERDICT: REJECT
+(1) VERDICT: REJECT.
 
 (2) ISSUES:
-1. [MAJOR] Abstract/Title/§VII, headline “validated catalog-grade” claim: the 268,519-object count is not uniformly validated—DESI is validated only for broad/extended injected morphologies, SDSS uses a fixed-size continuity slice, Planck is an in-sample fixed-count patch ranking, and NEOWISE passes only a mask-geometry QA test by construction—so the term “validated catalog-grade” is materially overstated.
 
-2. [MAJOR] §III A / Table III, DESI comparison to prior work: the manuscript repeatedly advertises large process-scale multipliers, but the like-for-like DESI science-target yield is 2,468 objects, below the cited 2,685-object benchmark; the full-stream count is dominated by sky/filler/non-primary spectra and cannot be presented as a catalog-size advance in the same scientific sense.
+1. [MAJOR] Title/Abstract/Conclusions — The headline claim of a “validated catalog-grade subset of 268,519 unique anomalies” is not supported by uniform validation: DESI is validated only for broad/extended injected residuals, SDSS only for one continuum-dip morphology, Planck for artificial Gaussian bumps, and NEOWISE only by a mask-geometry QA test that is explicitly not a detector-sensitivity test.
 
-3. [MAJOR] §II B–§III, thresholding and anomaly-rate definitions: the survey thresholds are heterogeneous and partly arbitrary—DESI S>5, SDSS fixed-size 77,905 continuity slice, LAMOST top-1% despite failed validation, Planck/NEOWISE fixed top-1%, eROSITA top-298 membership only—making the quoted rates and totals statistically non-comparable.
+2. [MAJOR] Scope and suitability for Physical Review D — The manuscript is primarily an astronomical machine-learning catalog paper, while the PRD-relevant cosmology sections are explicitly secondary, non-detections; the claimed cosmological applications do not provide a substantive new theoretical or observational constraint appropriate for PRD as the main result.
 
-4. [MAJOR] §II B / §III E / Data availability, reproducibility: several key production artifacts are missing, pod-side, irreproducible, or only promised at submission; eROSITA’s score axis is explicitly unrecoverable, Gaia outputs were synthetic placeholders, some native checkpoints/raw score parquets are unavailable, and “will be released” is insufficient for a paper whose main claim is a reproducible catalog.
+3. [MAJOR] §III A / Table III — The DESI headline count is dominated by non-primary science targets: the manuscript states that only 2,468 of 190,015 deduplicated DESI clusters match primary science-class targets and that ∼98.7% are sky/filler/non-primary spectra. This undermines the presentation of the DESI tier as a catalog of astrophysical source anomalies.
 
-5. [MAJOR] §III E, eROSITA treatment: the manuscript both documents severe provenance failure and detector-sensitivity failure, yet retains eROSITA as a separately released “membership addendum”; this should not be advertised alongside the catalog without independent validation, and its presence contributes to confusion about what is actually scientifically usable.
+4. [MAJOR] Abstract / §III / Conclusions — The “validated” 268,519 count includes the 77,905-object SDSS fixed-size continuity slice, which the manuscript itself says is not a native physical threshold; the strict native S > 5 SDSS cut gives only 12 objects and the native top-1% gives 19,253, so the adopted SDSS contribution is arbitrary and materially affects the headline count.
 
-6. [MAJOR] §III D / §VI A, LAMOST inclusion: the LAMOST tier is identified as a 98% blue-excess training-bias artifact and fails injection recovery, but is still included in the inclusive 377,482 “largest catalog” total; counting a known failed artifact tier in the headline-scale result is not scientifically defensible.
+5. [MAJOR] §II B / Table II — The anomaly score thresholds are heterogeneous and in several cases predetermined fixed-count selections rather than data-driven detections. Combining DESI S > 5, SDSS fixed-size continuity, LAMOST top-1%, Planck top-200, NEOWISE top-1%, and eROSITA top-298 into catalog-scale statements does not define a coherent statistical selection function.
 
-7. [MAJOR] §III C, SDSS native tier: the 77,905-object SDSS count is a fixed-size continuity slice rather than a native anomaly threshold, while several physical-taxonomy statements are based on the cross-transfer failure-mode population; the SDSS catalog component therefore lacks a clean statistical definition.
+6. [MAJOR] §III D / §VI A — LAMOST is acknowledged to fail injection-recovery and to be a 98% blue-excess training-bias artifact, yet it remains in the inclusive 377,482 count. This makes the inclusive catalog scientifically misleading, even if flagged as “exploratory.”
 
-8. [MAJOR] §III F, Planck CMB tier: the Planck “anomalies” are fixed-count, in-sample, raw-MSE-ranked map patches from a model whose validation loss fails the stated criterion; Gaussian-bump injection recovery does not establish sensitivity to physically relevant CMB anomalies, and the held-out enrichment calculation assumes independence despite acknowledged patch correlations.
+7. [MAJOR] §III H / Fig. 10 — NEOWISE is included in the validated headline despite the manuscript admitting its validation gate “passes by construction” and tests only masking geometry, not anomaly-detection sensitivity. This should not be classed with detector-validated survey components.
 
-9. [MAJOR] §VI D(i), DESI validation: the DESI robustness evidence relies heavily on short-trained proxy folds that fail the paper’s own validation-loss retain gate, plus an injection family matched to broad/extended residuals; this does not establish purity, completeness, or robustness for the released full-stream catalog, especially given the sky/filler dominance.
+8. [MAJOR] §III E — The eROSITA tier has an irreproducible production score axis, failed injection-recovery, and was excised from all counts, yet it is still discussed extensively as a catalog product and follow-up target set. The paper’s treatment of this component is internally inconsistent and does not meet a reproducible-catalog standard.
 
-10. [MAJOR] §IV A, novelty claims: the SIMBAD-unmatched fractions are correctly caveated but still overemphasized; the genuine novelty estimate is only 178/1,000 in the highest-score DESI stratum, with no demonstrated extrapolation to the full catalog and no spectroscopic confirmation of novelty.
+9. [MAJOR] §III G — The Gaia tier was discovered to be synthetic placeholder output after manuscript construction. This raises serious concerns about pipeline provenance and quality control for the entire multi-agent workflow, especially given the many other “recovered,” “pod-side,” or unavailable artifacts.
 
-11. [MAJOR] §IV C, cross-survey matches and deduplication: the 5″ positional union-find treatment is too crude for heterogeneous astrometry and for mixing point sources with CMB patches; the few DESI×SDSS matches are consistent with small-number coincidences unless spectroscopically confirmed, and they do not validate the catalog statistically.
+10. [MAJOR] Data availability statement / §II D / §III F — Several crucial raw score parquets, checkpoints, and tensors are stated to reside on exited pods or not be in the public release, while the catalog and scripts “will be made public” with arXiv/submission. A PRD referee cannot verify the headline claims from unavailable or partially lost artifacts.
 
-12. [MAJOR] §V, multi-tracer fNL application: the empirical bias measurement is consistent with zero, the de-biased result gives no improvement, the QSO-candidate sample lacks secure redshifts and a calibrated selection function, and the SPHEREx sensitivity discussion is therefore speculative rather than a delivered PRD-level cosmological result.
+11. [MAJOR] §II B / §VI C — The reconstruction loss is unweighted MSE over survey-normalized inputs, with no use of per-pixel noise variance. For spectra and CMB patches this makes the anomaly score strongly sensitive to noise, sky residuals, arm edges, and preprocessing choices; the manuscript acknowledges this but does not correct or adequately quantify the induced selection function.
 
-13. [MAJOR] §V A / Appendix E, NANOGrav analysis: the PTA spectral-index exercise is essentially independent of the anomaly catalog, uses a simplified KDE free-spectrum likelihood rather than timing data, and compares matter-bounce γ=3 only to an idealized circular SMBHB reference despite acknowledging environmentally modified SMBHB models; it does not support a new cosmological conclusion.
+12. [MAJOR] §II B — For eROSITA and NEOWISE, scalers are fit on the full sample rather than the training split, introducing validation/tail leakage. The eROSITA refit check shows substantial extreme-tail churn, and the corresponding checks for NEOWISE are not done, yet NEOWISE remains in the validated headline.
 
-14. [MAJOR] Overall statistical methodology: there is no coherent false-discovery-rate, purity, completeness, or selection-function model for the combined catalog; z-scored reconstruction residuals are survey-local, thresholds are post hoc, and injection tests are morphology-dependent, preventing the headline count from having a well-defined statistical interpretation.
+13. [MAJOR] §II C / §VI D(i) — DESI robustness relies heavily on proxy k-fold models that fail the manuscript’s own validation-loss retain gate, plus an injection-recovery test on re-pulled spectra after loss of the production raw spectra. These are useful diagnostics but insufficient to certify the released 22.5M-stream catalog as “validated catalog-grade.”
 
-15. [MINOR] Presentation: the manuscript is excessively long, repetitive, and caveat-heavy, with many crucial qualifications buried in captions and footnotes rather than stated cleanly in the main result definitions.
+14. [MAJOR] §III A / §IV A — The novelty claims are overstated relative to the evidence. The robust novelty estimate is only a top-1,000 DESI point estimate of 17.8% against archival catalogs, explicitly not survey-wide; SIMBAD-unmatched fractions are repeatedly displayed and summarized despite being acknowledged as database-coverage diagnostics, not discovery rates.
 
-16. [MINOR] Figures: several figures are too small or too visually compressed to support the claimed interpretations, especially the UMAP plots, cross-survey spectra, and shot-noise/Fisher diagnostic plots.
+15. [MAJOR] §IV B — The spatial analysis uses raw occupied-pixel χ² tests without survey selection functions, completeness maps, or targeting weights. The manuscript correctly says the result is footprint-dominated, but then still reports extremely significant χ² values that are not physically interpretable.
 
-17. [MINOR] Notation: the manuscript uses “S”, “SBigAE”, raw MSE, IF scores, score-knee axes, and display scores in ways that remain confusing despite caveats; a single score-schema table should precede all results.
+16. [MAJOR] §IV C — The cross-survey validation is weak: only 637 multi-survey coincidences among 387,695 detections, and the highlighted DESI×SDSS matches are only three objects with random-coincidence expectations of comparable order. This does not validate the catalog at scale.
 
-18. [MINOR] Scope for Physical Review D: the main deliverable is an astronomical data catalog and pipeline audit, while the cosmological sections are explicitly non-detections; the manuscript is not well matched to PRD unless a substantially stronger, self-contained physics result is provided.
+17. [MAJOR] §V — The fNL multi-tracer application is not a meaningful constraint: the empirical bias α = 0.19 ± 0.65 is consistent with zero, the debiased result gives no improvement, the QSO-candidate sample lacks redshift confirmation, and the Fisher model relies on simplified assumptions and arbitrary tracer definitions.
 
-(3) The central claim is not supported: the manuscript does not establish a uniformly validated, reproducible, physically meaningful 268,519-object anomaly catalog, nor does it deliver a substantive cosmological result suitable for Physical Review D.
+18. [MAJOR] §V A / Appendix E — The NANOGrav analysis compares matter-bounce γ = 3.0 to an idealized circular SMBHB γ = 4.33 strawman, while acknowledging environmentally modified SMBHBs can give γ ∼ 2.5–3. The Bayes factor is therefore not evidence for bounce cosmology and should not be presented as a substantive cosmological application.
+
+19. [MAJOR] §V / Appendix E — The claimed connection between the anomaly catalog and the NANOGrav spectral-index fit is essentially absent; the PTA analysis does not use the anomaly catalog and appears as an unrelated cosmology calculation appended to a catalog paper.
+
+20. [MAJOR] Throughout — The manuscript contains excessive caveats, self-corrections, provenance disclaimers, and mutually qualified counts. This indicates that the analysis is not yet mature enough for archival publication in its present form.
+
+21. [MINOR] Abstract / §III / Table I — The scan-volume accounting is confusing: 36.76M retained-native, 36.93M read/scored, 37.29M cross-transfer-inclusive, and “37.3M” are all used. A single primary denominator should be adopted.
+
+22. [MINOR] §II B / Fig. 3 — The notation “z-scored” anomaly score S risks confusion with redshift z, and the plotted cross-transfer/native score axes are not directly comparable despite being visually juxtaposed.
+
+23. [MINOR] §III C / Fig. 4 — The SDSS UMAP/HDBSCAN classification is based on the cross-transfer failure-mode set, not the native re-score slice, but is visually prominent and could be mistaken for the released catalog taxonomy.
+
+24. [MINOR] Fig. 8 — The figure includes “display score (non-catalog)” annotations, some below the DESI S > 5 catalog threshold, which is confusing for a catalog-selection paper.
+
+25. [MINOR] §ACKNOWLEDGMENTS — The description of extensive AI-agent involvement is acceptable only if the public repository fully supports reproducibility; otherwise it heightens, rather than alleviates, provenance concerns.
+
+26. [MINOR] References — Several references appear incomplete, future-dated, accepted-but-unpublished, or only loosely relevant to the claims; the bibliography should be checked carefully before any resubmission.
+
+(3) The central claim is not supported: the manuscript does not demonstrate a uniformly validated, reproducible, astrophysically reliable 268,519-object anomaly catalog or a PRD-significant cosmological result.
