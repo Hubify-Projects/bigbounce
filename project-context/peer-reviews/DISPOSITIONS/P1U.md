@@ -216,3 +216,10 @@ numbers spot-checked against current `arxiv/paper1_unified.tex` v1U.0.11 and upd
   5. [MINOR] Reliance on unpublished companions II–V → PROCESS-NIT (style; DP1U-04-adjacent).
 - **0 genuinely-new editable findings.** A fresh 7th reviewer with no round history independently landed on the same disclosed classes. **clean-wave streak HOLDS at 2 — P1U REMAINS across the directive-K bar.** No v1U.0.13 bump; v1U.0.12 stands. `directive_g.sh` not run (no edit).
 - **Integrity:** Gemini MAJOR recorded as-is; no ACCEPT faked; no finding dismissed without a source-cited verdict; no math fabricated.
+
+## FR1 adjudication wave (2026-07-11, vs v1U.0.13 restamp)
+- **INT REJ/REJ/MAJ/MIN; EXT-grok MAJOR.** All findings re-flags of DP1U ledger: single-scale NDA no-go→DP1U-08; channel-vs-operator-level completeness→DP1U-06/-20; ECH action/torsion normalization→DP1U-02; R1 mean-field/NJL→DP1U-05; R2 one-loop-Holst ansatz→DP1U-09; R3 Immirzi-running→DP1U-10; R4 free-coupling ALP not-ruled-out→DP1U-11; Sec-X perturbation-transparency→DP1U-12; f_NL -35/16 self-containedness→DP1U-17; verbosity/tone/14-constraints-nomenclature→DP1U-22 PROCESS-NIT; companion-artifact provenance→DP1U-16.
+- **OSCILLATION:** Grok-INT flipped MINOR→REJECT on unchanged v1U.0.13 — same 4-item scope structure (DP1U-06/-08/-11/-12), pure pattern-066 referee variance, NOT a new finding. Gemini MAJOR = same disclosed classes.
+- Claude R3 lever-arm ln(10^16)=36.8 vs "30-35" → DP1U-10 (conservative-upper-bound ansatz, ≥60 orders margin; framing already disclosed; not a headline value) — re-flag, not editable defect.
+- **0 genuinely-new editable findings.** clean-wave streak 2→3 (HOLDS across directive-K bar). No bump; v1U.0.13 stands. directive_g.sh not run (no edit).
+- **Integrity:** EXT ChatGPT+Gemini FAILED (rate-limit) recorded as chart GAP not verdict; no ACCEPT faked; no finding dismissed without a source-cited verdict; no math fabricated.
