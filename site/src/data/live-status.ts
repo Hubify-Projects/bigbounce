@@ -102,7 +102,7 @@ export const liveStatus: LiveStatus = {
       shortTitle: "Multi-survey anomaly catalog",
       version: "v3.1.154",
       readiness: 62,
-      pendingWork: "FR1 (2026-07-11) RESET streak 4→0: Claude-INT caught a genuinely-new reader-visible mis-round — NANOGrav SMBHB parameter-shift printed +4.61σ; correct (4.333−2.5665)/0.3818=4.627→+4.63σ. Fixed at 4 sites, bumped v3.1.153→v3.1.154, directive-G verified (0 undef-refs, 16 mirrors byte-identical, PDF renders +4.63σ×4). DP3-18. One more clean wave re-crosses the two-clean-waves bar. Venue question (PRD vs ApJS/MNRAS) is Houston-gated.",
+      pendingWork: "FR2 (2026-07-11) REBUILD streak 0→1: first clean wave on the NANOGrav-fixed v3.1.154 (INT openai/grok/gemini/claude REJ/MAJ/REJ/MIN + EXT-Grok MAJOR). Claude-INT independently recomputed +4.63σ from the committed chain — DP3-18 fix VERIFIED at 4 sites, no regressions. 0 genuinely-new reader-visible editable findings; all 22 flagged findings are source-cited re-flags of the DP3 ledger (venue DP3-16 / process-volume DP3-07 / disclosed-artifact DP3-08/-15 classes). No NANOGrav arithmetic re-flag (all NANOGrav findings are scope critiques → DP3-10). No version bump; v3.1.154 stands. One more clean wave re-crosses the two-clean-waves bar. Venue question (PRD vs ApJS/MNRAS) is Houston-gated.",
     },
     {
       slug: "paper-4",

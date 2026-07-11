@@ -1,21 +1,21 @@
-# INT API Review — P3 v3.1.153 — gemini (gemini-3.1-pro-preview)
-paper: P3  version: v3.1.153  model: gemini-3.1-pro-preview
+# INT API Review — P3 v3.1.154 — gemini (gemini-3.1-pro-preview)
+paper: P3  version: v3.1.154  model: gemini-3.1-pro-preview
 modality: native-PDF (inline_data base64)
-UTC: 2026-07-11T15:03:01.395391Z  |  latency: 59.9s  |  attempt: 1
-usage: {"promptTokenCount": 19334, "candidatesTokenCount": 474, "totalTokenCount": 22083, "promptTokensDetails": [{"modality": "TEXT", "tokenCount": 94}, {"modality": "IMAGE", "tokenCount": 19240}], "thoughtsTokenCount": 2275, "serviceTier": "standard"}
+UTC: 2026-07-11T15:30:42.975835Z  |  latency: 41.9s  |  attempt: 1
+usage: {"promptTokenCount": 19334, "candidatesTokenCount": 633, "totalTokenCount": 22230, "promptTokensDetails": [{"modality": "IMAGE", "tokenCount": 19240}, {"modality": "TEXT", "tokenCount": 94}], "thoughtsTokenCount": 2263, "serviceTier": "standard"}
 PARSED VERDICT: REJECT
 
 ======================================================================
 RAW RESPONSE (verbatim):
 ======================================================================
 
-VERDICT: REJECT
+(1) VERDICT: REJECT
 
-ISSUES:
-1. [MAJOR] Section V (Cosmological Applications): The manuscript explicitly concedes that its cosmological analyses are "secondary demonstrations, not headline results" that yield no statistically significant physical constraints (the $f_{\rm NL}$ forecast shows no improvement over the single-tracer baseline, and the NANOGrav consistency check merely re-evaluates a published posterior). Because the primary contribution is a purely observational anomaly catalog rather than new theoretical or observational physics, the manuscript falls outside the scope of *Physical Review D* and is better suited for an astronomical data journal like *ApJS*.
-2. [MAJOR] Throughout the text (e.g., Sections II, III, IV): The narrative is severely cluttered with internal software repository paths and JSON artifact filenames (e.g., `pipelines/p3_anomaly_engine/outputs/reproduce_headline_dedup.json`). This reads like an internal pipeline audit rather than a journal article; such provenance tracking belongs exclusively in a software repository README, as it completely disrupts the readability of the scientific prose.
-3. [MAJOR] Section V (Fisher forecast): The physical motivation for using an unsupervised anomaly-selected catalog—which the text admits inherently mixes unusual stars, instrumental artifacts, and diverse galaxies—as a clean, high-bias tracer for primordial non-Gaussianity is theoretically unsupported. Furthermore, the empirical bias enhancement measurement is noise-dominated ($0.19 \pm 0.65$), rendering the subsequent quantitative Fisher forecast physically uninformative.
-4. [MINOR] Acknowledgments / General text: The disclosed use of an "agentic AI research pipeline" for manuscript preparation has resulted in a repetitive, overly verbose, and highly unusual narrative structure (frequently foregrounding what the paper is *not* claiming) that requires comprehensive human rewriting to meet standard scientific publishing expectations. 
-5. [MINOR] Title page: The manuscript is dated "July 11, 2026", which is a future date and likely an artifact of the automated drafting process.
+(2) ISSUES: 
+1. [MAJOR] Entire Manuscript / Journal Scope: The manuscript is overwhelmingly an astronomical dataset release and machine-learning methodology paper. The cosmological analyses (Section V) are explicitly described by the author as "secondary methodological demonstrations" that "return no statistically significant improvement." A manuscript lacking novel, robust results in fundamental physics, gravitation, or cosmology does not meet the editorial criteria for *Physical Review D* and is instead suited for an astrophysical or data-centric journal (e.g., ApJS or MNRAS).
+2. [MAJOR] Section V ($f_{NL}$ forecast): The $f_{NL}$ multi-tracer Fisher forecast is physically unconvincing. It relies on a highly impure, unconfirmed "QSO-candidate" sample lacking redshift cuts. Deriving an empirical bias from an angular two-point correlation of this photometrically/anomaly-selected sample—while explicitly assuming zero observational systematics in the Fisher forecast (Section V.d)—renders the constraint projections highly speculative and insufficiently rigorous for PRD.
+3. [MAJOR] Section V.A (NANOGrav Bounce Consistency): The conclusion that the NANOGrav 15-year free-spectrum posterior ($\gamma = 2.567 \pm 0.382$) is "marginally consistent" with a matter-bounce prediction ($\gamma=3.0$) while ruling out idealized SMBHBs ($\gamma=4.33$) is entirely trivialized by the author's own caveat. Standard environmental SMBHB effects (eccentricity, stellar scattering) naturally produce $\gamma \sim 2.5-3.0$. Therefore, the calculated Bayes factor provides zero actual discriminating power for bouncing cosmologies.
+4. [MAJOR] Entire Manuscript / Presentation and Style: The writing style is entirely unsuitable for a scholarly physics journal. The text is saturated with defensive, legalistic disclaimers (e.g., "Reader’s guide to the headline counts", "What this appendix is not"), conversational justifications, and excessive inline repository file paths (e.g., `pipelines/p3_anomaly_...`), causing it to read like a software release manifesto or raw AI-agent log rather than a formal peer-reviewed article. 
+5. [MINOR] Section II.A (BigAE Architecture): The choice of a deterministic, fully connected autoencoder rather than a probabilistic architecture (e.g., a Variational Autoencoder) limits the statistical rigor of the anomaly scores. Because the unweighted Mean Squared Error (MSE) loss fails to incorporate per-pixel inverse-variance weighting, high-noise spectral channels are placed on equal footing with genuine high-S/N features, a flaw the author acknowledges but leaves unresolved.
 
-One sentence: While the manuscript presents a methodologically extensive machine-learning catalog of astronomical anomalies, its physical and cosmological claims are explicitly self-described as secondary and statistically insignificant, failing to provide the substantial advancement in physics required for *Physical Review D*.
+(3) The central claim—that a large-scale, multi-survey anomaly catalog has been systematically generated and validated via extensive algorithmic reproducibility—is technically supported by the data pipelines, but the manuscript's cosmological applications are admittedly null and the presentation is fundamentally incompatible with the standards of a physics journal.

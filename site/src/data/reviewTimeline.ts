@@ -4187,6 +4187,27 @@ export const reviewRounds: ReviewRound[] = [
       { label: "P3 disposition ledger", href: `${PR}/DISPOSITIONS/P3.md` },
     ],
   },
+  {
+    id: "FR2-P3-2026-07-11",
+    kind: "internal-api",
+    dateISO: "2026-07-11",
+    timePT: "Jul 11 · ~15:49 UTC",
+    title: "FR2 (P3) — first clean wave on the NANOGrav-fixed v3.1.154: DP3-18 fix verified, 0 genuinely-new, streak rebuilds 0→1",
+    papers: ["P3"],
+    summary: "Rebuild of P3 wave 1/2 after the +4.61→+4.63σ fix. INT (openai/grok/gemini/claude REJ/MAJ/REJ/MIN) + EXT-Grok MAJOR, all on v3.1.154. Claude-INT independently recomputed +4.63σ from the committed chain (DP3-18 fix VERIFIED at 4 sites, no regressions). ledger_match.py + strict Opus §3 truth-audit: all 22 flagged findings are source-cited re-flags of the DP3 ledger — 0 genuinely-new reader-visible editable findings.",
+    keyTakeaways: [
+      "DP3-18 fix VERIFIED — Claude-INT recomputed +4.63σ from savage_dickey_2026-05-29.json (z-distance 4.6274→4.63); +4.63σ confirmed at all 4 tex sites, no regressions",
+      "0 genuinely-new: findings map to DP3-07 (process-volume) / DP3-08/-15 (excised-tier + pod-blocked repro) / DP3-01/-09/-12 (heterogeneous gates + correlated fold proxies) / DP3-10 (§V secondary null) / DP3-16 (catalog-vs-PRD venue, Houston-gated)",
+      "NO NANOGrav arithmetic re-flag — all NANOGrav findings are scope critiques (γ=3 mapping / SMBHB reference) → DP3-10; scaler-leak (OpenAI#8/Grok-API#7) disclosed L1051 with bounded control + queued NEOWISE check → DP3-13/-15",
+      "clean-wave streak REBUILDS 0→1 (first clean wave post-fix); no v3.1.155 bump, v3.1.154 stands, directive-G not run (no edit); cap 62",
+    ],
+    links: [
+      { label: "EXT Grok raw (FR2)", href: `${PR}/EXT_real/H17_2026-07-10/FR2/P3_grok_FR2.md` },
+      { label: "FR2 truth-audit", href: `${PR}/EXT_real/H17_2026-07-10/FR2/P3_truth_audit.md` },
+      { label: "INT API raws", href: `${PR}/INT_v3/ROUND_2026-07-09/` },
+      { label: "P3 disposition ledger", href: `${PR}/DISPOSITIONS/P3.md` },
+    ],
+  },
 ];
 
 /* ── Structured progress dataset (powers the /reviews Progress visualizations) ──

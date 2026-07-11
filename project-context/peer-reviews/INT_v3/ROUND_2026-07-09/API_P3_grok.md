@@ -1,21 +1,21 @@
-# INT API Review — P3 v3.1.153 — grok (grok-4.3)
-paper: P3  version: v3.1.153  model: grok-4.3
+# INT API Review — P3 v3.1.154 — grok (grok-4.3)
+paper: P3  version: v3.1.154  model: grok-4.3
 modality: native-PDF (/v1/files file_id)
-UTC: 2026-07-11T15:03:01.402695Z  |  latency: 50.2s  |  attempt: 1
-usage: {"input_tokens": 35898, "input_tokens_details": {"cached_tokens": 896}, "output_tokens": 944, "output_tokens_details": {"reasoning_tokens": 523}, "total_tokens": 36842, "num_sources_used": 0, "num_server_side_tools_used": 0, "cost_in_usd_ticks": 462917000, "context_details": {"input_tokens": 35898, "output_tokens": 945}}
-PARSED VERDICT: REJECT
+UTC: 2026-07-11T15:30:43.066013Z  |  latency: 30.5s  |  attempt: 1
+usage: {"input_tokens": 35734, "input_tokens_details": {"cached_tokens": 192}, "output_tokens": 1249, "output_tokens_details": {"reasoning_tokens": 834}, "total_tokens": 36983, "num_sources_used": 0, "num_server_side_tools_used": 0, "cost_in_usd_ticks": 475884000, "context_details": {"input_tokens": 35734, "output_tokens": 1250}}
+PARSED VERDICT: MAJOR REVISIONS
 
 ======================================================================
 RAW RESPONSE (verbatim):
 ======================================================================
 
-(1) VERDICT: REJECT
+(1) VERDICT: MAJOR REVISIONS
 
-(2) ISSUES:
-[MAJOR] Abstract/§I/§III: The headline claim of a "validated catalog-grade subset of 268,519 unique anomalies" is unsupported; the text repeatedly qualifies this as a "process-volume figure" of candidates surviving gates (not confirmed physical detections), with mixed validation (DESI/SDSS/Planck pass broad-class injection-recovery; NEOWISE is only geometry-QA; LAMOST/eROSITA/Gaia are excised or exploratory), rendering the title/abstract misleading.
-[MAJOR] §II B/§III E/§III G: Production eROSITA score axis (threshold 0.259) is irreproducible from any committed artifact (fails 16 rescalings + IsolationForest retrains; non-monotone in raw scores), and the synthetic Gaia tier is removed post-audit; both violate the paper's own reproducibility standard yet are retained in the narrative.
-[MAJOR] §V: Cosmological applications (multi-tracer fNL and NANOGrav) are presented as "secondary demonstrations" but return null results (0.29σ from null; γ consistent only with modified models); this framing does not justify inclusion in a PRD submission whose primary deliverable is already heavily caveated.
-[MINOR] Table II/§III A/footnotes: Multiple internal count inconsistencies (e.g., 195,829 vs. 2,468 science-target benchmark; 377,482 vs. 268,519; 21.5× rate compression) and non-comparable S thresholds across surveys require extensive footnotes that obscure rather than clarify.
-[MINOR] §II B/§VI D: Injection-recovery tests use deliberately short-trained proxy models for stability checks and acknowledge that narrow-line sensitivity is untested below 15σ; this limits the "validated" label to a narrow subclass without sufficient qualification in the abstract.
+(2) ISSUES:  
+[MAJOR] Abstract and §I: The primary deliverable is repeatedly labeled a “validated catalog-grade subset of 268,519” while the text itself defines it as a “process-volume figure” of candidates surviving per-survey gates (not confirmed physical detections), with the like-for-like science-target yield only 2,468; this mismatch between title/abstract framing and explicit caveats is irreconcilable.  
+[MAJOR] §III (three-tier structure) and §III E: The eROSITA tier is excised from every count because its production score axis is “irreproducible as a matter of provenance,” yet the same section retains NEOWISE on a geometry-QA gate that is explicitly “not a detector-sensitivity test”; the resulting mixed-validation standard is never reconciled.  
+[MAJOR] §II B and §VI D (i): The DESI robustness claim rests on a single production-ensemble injection-recovery gate (99–100 % at 5σ for broad class) whose supporting 5-fold and OOD checks are performed on deliberately short-trained proxy models that fail the paper’s own val-loss ≤0.30 retain gate, rendering them correlated rather than independent.  
+[MINOR] Table II and footnotes ♡/♠/‡/⊗: Multiple mutually inconsistent denominators and threshold definitions (fixed-size continuity slice, top-1 %, S>5, score-knee) are used for the same survey within one table, with no single canonical cut stated for cross-survey comparison.  
+[MINOR] §II B: Full-sample feature scalers for tabular surveys leak validation-set tail information into the normalization; the bounded eROSITA check shows ~15–17 % extreme-tail churn, but no equivalent check is reported for NEOWISE despite the same methodology.
 
-(3) The central claim of a validated 268,519-object multi-survey anomaly catalog is not supported.
+(3) The central claim of a reproducible, validated 268,519-object multi-survey anomaly catalog is not supported.
