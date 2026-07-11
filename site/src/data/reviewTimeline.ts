@@ -4167,6 +4167,26 @@ export const reviewRounds: ReviewRound[] = [
       { label: "P1A truth-audit", href: `${PR}/R23conf_P1A_TRUTH_AUDIT.md` },
     ],
   },
+  {
+    id: "FR1-2026-07-11",
+    kind: "internal-api",
+    dateISO: "2026-07-11",
+    timePT: "Jul 11 · ~08:0x PT",
+    title: "FR1 — fresh full-board round on the July-11 restamps: 4/5 clean, P3 NANOGrav +4.61→+4.63σ mis-round caught + fixed, OpenAI's first non-REJECT on P4",
+    papers: ["P1A", "P2", "P3", "P4", "P5"],
+    summary: "Fresh INT (openai/grok/gemini/claude) + EXT-Grok round on the restamped versions (no content change since exit). Every finding a source-cited re-flag except ONE genuinely-new reader-visible mis-round on P3 (NANOGrav SMBHB parameter-shift), caught by Claude-INT and closed same-bundle (v3.1.154). EXT ChatGPT+Gemini FAILED-dead (rate-limit) → NO_VERDICT gaps.",
+    keyTakeaways: [
+      "MILESTONE — OpenAI-INT returned MAJOR-REVISIONS on P4, its FIRST non-REJECT verdict on that paper (native-PDF, latency 102.4s)",
+      "P3 v3.1.154 — Claude-INT caught NANOGrav SMBHB shift printed +4.61σ; correct (4.333−2.5665)/0.3818=4.627→+4.63σ; fixed at 4 sites, directive-G verified (0 undef-refs, 16 mirrors byte-identical, PDF renders +4.63σ×4)",
+      "Oscillations = pattern-066 referee variance on UNCHANGED content: P1U Grok-INT MINOR→REJECT (DP1U-06/-08/-11/-12), P5 Claude-INT MINOR→MAJOR (DP5-04/-21 disclosed venue items) — neither a new finding",
+      "Clean-wave streaks: P1U 2→3, P2 3→4, P4 4→5, P5 2→3 (HOLD); P3 RESET 4→0 (DP3-18)",
+    ],
+    links: [
+      { label: "EXT Grok raws (FR1)", href: `${PR}/EXT_real/H17_2026-07-10/FR1/` },
+      { label: "INT API raws", href: `${PR}/INT_v3/ROUND_2026-07-09/` },
+      { label: "P3 disposition ledger", href: `${PR}/DISPOSITIONS/P3.md` },
+    ],
+  },
 ];
 
 /* ── Structured progress dataset (powers the /reviews Progress visualizations) ──
@@ -5054,6 +5074,20 @@ export const externalVerdictRounds: ExternalRoundVerdicts[] = [
       P5: ["MAJOR", "MINOR", "NO_VERDICT"],
     },
     note: "W4 EXT confirm half of P5's exit wave — 2 verdicts harvested (Grok + ChatGPT × P5; Gemini not swept, NO_VERDICT; other papers carry-forward). Verdict matrix stored [ChatGPT, Grok, Gemini] FROM RAW (verbatim VERDICT line READ from each saved raw before recording). *** ChatGPT P5 moved UP a tier REJECT → MAJOR REVISIONS *** — its first non-REJECT EXT verdict on this paper (raw l.1 'VERDICT: MAJOR REVISIONS'), mirroring OpenAI's INT REJECT→MAJOR the same wave; honest tier-lift on unchanged reader-visible content. P5 Grok = MINOR (1 MAJOR-tagged post-hoc item + 4 minors → DP5-04/-09/-12/-13/-21). ledger_match: Grok 5/6, ChatGPT 10/13; all UNMATCHED Opus-adjudicated. The 2 substantive UNMATCHED are source-cited RE-FLAGs: ChatGPT #3 footprint-restricted-control-not-selection-mask/covariate-control → DP5-06 + DP5-19 (§VIII B 'Footprint ≠ selection function' tex l.3072-3090 states verbatim the footprint is a purely geometric union, NOT the completeness mask/vetoes/randoms, does not guarantee matched fibre-completeness/imaging-depth/radial-selection, and a fully selection-matched control would require the mask+randoms 'which we do not construct here'; logistic/IPW control DR2-deferred at l.3308); ChatGPT #12 non-rejection-not-independence/Table-XVI-residual-covariance → DP5-19 + DP5-13 (paper's own 'a null is not positive evidence … controlled-sample non-detection' l.3228-3229; tab:p4_monopole_residual z convention disclosed l.3664-3672, subtracting the same-observations P5 monopole f_CW^P5=0.4972 as a diagnostic supporting statistic, not the load-bearing inference). Grok #1 + ChatGPT #1 UNMATCHED = parser noise (verdict-header fragments). Truth-audit: 0 genuinely-new reader-visible editable findings → NO version bump (P5 v0.1.120 stands), no directive-G this leg. Streak: no PROCESS-NIT and no genuinely-new → P5's clean-wave streak HOLDS at 2; the EXT half CONFIRMS the exit crossing (both INT + EXT halves clean), P5 stays PAST the directive-K two-clean-waves bar, all five papers past the bar, edit-loop program exit HOLDS. Cap recomputed per latest-per-reviewer → 74 (50 + grok-MIN 12 + chatgpt-MAJ 6 + gemini-MAJ 6). No ACCEPT faked, no finding dismissed without a source-cited verdict, no math fabricated. Raws + screenshots in EXT_real/H17_2026-07-10/W4/.",
+  },
+  {
+    roundId: "FR1-2026-07-11",
+    dateISO: "2026-07-11",
+    windowPT: "Jul 11 · ~15:0x UTC · FR1 fresh full-board round on the July-11 restamped versions (no content change since exit) · INT (openai/grok/gemini/claude) + EXT Grok · EXT ChatGPT + Gemini FAILED-dead (rate-limit)",
+    verdicts: {
+      P1A: ["NO_VERDICT", "MAJOR", "NO_VERDICT"],
+      P1B: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P2: ["NO_VERDICT", "MINOR", "NO_VERDICT"],
+      P3: ["NO_VERDICT", "MAJOR", "NO_VERDICT"],
+      P4: ["NO_VERDICT", "MINOR", "NO_VERDICT"],
+      P5: ["NO_VERDICT", "MINOR", "NO_VERDICT"],
+    },
+    note: "FR1 fresh round on the July-11 restamped paper versions (NO content change since the prior exit state, so re-flags expected; audited strictly anyway). EXT ChatGPT + Gemini legs FAILED-dead on rate-limit (recorded as NO_VERDICT chart GAPs, never zeros; FR1b retry in flight, not waited on). EXT Grok harvested for all 5: P1A(P1U) MAJOR, P2 MINOR, P3 MAJOR, P4 MINOR, P5 MINOR — every finding source-cited RE-FLAG of the DISPOSITIONS ledger (ledger_match: only parser-header artifacts UNMATCHED). INT verdict matrix (openai/grok/gemini/claude): P1U REJ/REJ/MAJ/MIN · P2 REJ/MAJ/MAJ/MAJ · P3 REJ/REJ/REJ/MIN · P4 MAJ/MIN/MIN/MIN · P5 MAJ/MIN/MIN/MAJ. *** MILESTONE: OpenAI-INT returned MAJOR-REVISIONS on P4 — its FIRST non-REJECT verdict on P4 (native-PDF Files API, latency 102.4s). *** Oscillations (pattern-066 referee variance on UNCHANGED content, NOT new findings): P1U Grok-INT flipped MINOR→REJECT (same 4-item scope structure → DP1U-06/-08/-11/-12); P5 Claude-INT flipped MINOR→MAJOR (severity bump lands on abstract-length DP5-04 + Paper-IV-dependency DP5-21, both disclosed venue items). Truth-audit (Opus, skeptical, ledger_match-assisted): 4 of 5 papers 0 genuinely-new → clean-wave streaks P1U 2→3, P2 3→4, P4 4→5, P5 2→3 (all HOLD past directive-K bar). *** P3 = 1 GENUINELY-NEW reader-visible editable defect (Claude-INT): NANOGrav SMBHB parameter-shift printed +4.61σ; correct (4.333−2.5665)/0.3818 = 4.627 → +4.63σ at 4 sites (paper3_draft.tex L993/1552/1617/1635) — NOT ledgered, NOT a disclosed bracket → DP3-18 → P3 streak RESET 4→0. *** Closed same-bundle: +4.61→+4.63 at all 4 sites, P3 v3.1.153→v3.1.154, directive-G HARD-GATE (0 undef-refs, 37pp, 16 served mirrors byte-identical md5 bea96502…, Convex paperVersions:bump read-back verified, compiled PDF renders +4.63σ ×4 / 0 stray +4.61). Gemini 'July-11-2026 future date' DISMISSED (today IS 2026-07-11). No ACCEPT faked, no finding dismissed without a source-cited verdict, no math fabricated. Raws: EXT_real/H17_2026-07-10/FR1/ + INT_v3/ROUND_2026-07-09/ + INT_api/H17_2026-07-10/intwave_*_claude_0803.md.",
   },
 ];
 

@@ -15,6 +15,10 @@
 - Barrier is *process-volume-catalog scope* (positioning as a methods/catalog paper) **+ sequestered exploratory eROSITA** (exploratory eROSITA content kept sequestered rather than headlined). Houston-gated scope/venue call.
 - Edit loop **EXHAUSTED** (pattern-066 referee variance; editing scope items backfired elsewhere). Do NOT resume noise EXT sweeps. Honest referee cover letter drafted: `submissions/P3/REFEREE_COVER_LETTER.md`. **Next gate: Houston venue / human-referee decision.**
 
+### FR1 wave (2026-07-11) — P3 v3.1.153 → **v3.1.154** — 1 genuinely-new reader-visible fix, streak RESET 4→0
+
+FR1 fresh round (INT openai/grok/gemini/claude REJ/REJ/REJ/MIN + EXT-Grok MAJOR; EXT ChatGPT+Gemini FAILED rate-limit). Every finding a source-cited re-flag of the DP3 ledger (venue/process-volume/artifact classes DP3-04/-06/-07/-08/-10/-15/-16) **except ONE genuinely-new reader-visible editable defect** caught by Claude-INT: the NANOGrav SMBHB parameter-shift was printed **+4.61σ** but the correct value is **(4.333−2.5665)/0.3818 = 4.627 → +4.63σ** (printed-3sf (4.33−2.567)/0.382 = 4.615 → +4.62σ either way), reader-visible at 4 sites (`paper3_draft.tex` L993/1552/1617/1635) → **DP3-18**, streak **RESET 4→0**. Fixed all 4 sites; bumped v3.1.154; directive-G HARD-GATE PASS (0 undef-refs, 37pp, 16 served mirrors byte-identical **md5 `bea96502a49ee7860a289bd6756c91b5`**, Convex `paperVersions:bump` read-back verified; compiled PDF renders +4.63σ×4 / 0 stray +4.61). Gemini "July-11-2026 future date" DISMISSED (today IS 2026-07-11). No ACCEPT faked, no finding dismissed without a source-cited verdict, no math fabricated. One more clean wave re-crosses the two-clean-waves bar; venue/human-referee decision remains Houston-gated.
+
 ---
 
 <!-- HISTORICAL LOG BELOW — audit trail only. The "ACCEPT / 98 / 99 / green-light" claims below are RETRACTED per the 2026-07-04 verified board above. -->

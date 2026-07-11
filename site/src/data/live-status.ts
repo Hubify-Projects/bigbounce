@@ -100,9 +100,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-3",
       number: "3",
       shortTitle: "Multi-survey anomaly catalog",
-      version: "v3.1.153",
+      version: "v3.1.154",
       readiness: 62,
-      pendingWork: "CROSSED the bar (streak 4). W1 EXT: Grok MAJOR→MINOR. Honest three-gate downgrade + provenance reconciliations shipped this round. Venue question (PRD vs ApJS/MNRAS) is Houston-gated, not editable.",
+      pendingWork: "FR1 (2026-07-11) RESET streak 4→0: Claude-INT caught a genuinely-new reader-visible mis-round — NANOGrav SMBHB parameter-shift printed +4.61σ; correct (4.333−2.5665)/0.3818=4.627→+4.63σ. Fixed at 4 sites, bumped v3.1.153→v3.1.154, directive-G verified (0 undef-refs, 16 mirrors byte-identical, PDF renders +4.63σ×4). DP3-18. One more clean wave re-crosses the two-clean-waves bar. Venue question (PRD vs ApJS/MNRAS) is Houston-gated.",
     },
     {
       slug: "paper-4",
@@ -127,7 +127,7 @@ export const liveStatus: LiveStatus = {
     openMajors: 6, // latest-per-reviewer verdict words below MINOR: ChatGPT REJECT x5 (documented floor) + OpenAI INT REJECT class -- all ledger-dispositioned re-flags, 0 genuinely-new open
     openMinors: 8, // Grok/Claude MINOR lists -- all ledger re-flags of disclosed limitations
   },
-  cronStatus: "W4-INT confirm wave adjudicated (2026-07-11): P5 (v0.1.120) posts its SECOND consecutive clean wave (streak 2) and CROSSES the two-clean-waves bar — 0 genuinely-new reader-visible findings across INT Claude MINOR / OpenAI MAJOR / Grok MINOR (13 source-cited re-flags + 4 parser-noise fragments). OpenAI moved REJECT → MAJOR on P5, its first non-REJECT (native-PDF v0.1.120). No bump (comment-only wave, v0.1.120 stands). Streaks: P1U 2, P2 3, P3 4, P4 4, P5 2 — ALL FIVE PAST THE BAR. The edit-loop program exits; remaining work is Houston-gated.",
+  cronStatus: "FR1 fresh full-board round adjudicated (2026-07-11): INT (openai/grok/gemini/claude) + EXT-Grok on the July-11 restamps (no content change since exit); EXT ChatGPT+Gemini FAILED-dead (rate-limit) → chart GAPs. 4 of 5 papers clean (streaks P1U 2→3, P2 3→4, P4 4→5, P5 2→3, all HOLD past the bar). P3 RESET 4→0: Claude-INT caught a genuinely-new reader-visible mis-round (NANOGrav SMBHB shift +4.61→+4.63σ), fixed same-bundle → v3.1.154 (directive-G verified). MILESTONE: OpenAI-INT returned MAJOR-REVISIONS on P4 — its FIRST non-REJECT on that paper. Oscillations P1U Grok MINOR→REJECT + P5 Claude MINOR→MAJOR = pattern-066 variance on unchanged content, not new findings. No ACCEPT faked, no finding dismissed without a source-cited verdict, no math fabricated.",
   etaToCompletion:
     "PROGRAM PAST THE CONVERGENCE BAR — wave-1 kit verified. Two independent clocks remain, both external to the loop. arXiv clock: the rebuilt + standalone-verified kit is a set of Houston submission clicks away (minutes) — walk submissions/WAVE1_SUBMIT_WALKTHROUGH.md. Journal clock: human referees (months). No further autonomous editing clears the disclosed venue/scope items.",
   pods: [],
