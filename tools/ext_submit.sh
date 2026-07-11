@@ -64,6 +64,33 @@ bcall() {
   return $rc
 }
 
+# ---- type helper. `type` fires keystrokes that (a) HANG on a post-type settle
+# wait, and worse (b) land OUT OF ORDER in ProseMirror/tiptap while the editor is
+# still hydrating (observed: 343/386 chars, scrambled). Instead set the prompt
+# ATOMICALLY: focus the composer, select-all, then execCommand("insertText").
+# This is ordered, single-shot, and works for both contenteditable (Grok tiptap)
+# and textarea (ChatGPT #prompt-textarea). Verify head+tail before returning.
+# usage: type_prompt <single-composer-selector>
+composer_has_prompt() {   # 0 if composer holds prompt head AND tail, in order
+  local sel="$1"
+  bcall 20 js '(function(){var t=document.querySelector("'"$sel"'");var v=t?(t.innerText||t.value||""):"";var ok=v.indexOf("You are an expert referee")===0 && v.includes("central claim supported");return ok?"FULL":("BAD len="+v.length+" head="+JSON.stringify(v.slice(0,25)))})()' || true
+  printf '%s' "$BOUT" | grep -q FULL
+}
+type_prompt() {
+  local sel="$1"
+  local pjson; pjson="$(python3 -c 'import json,sys;print(json.dumps(sys.argv[1]))' "$PROMPT")"
+  # atomic set via execCommand insertText after select-all
+  bcall 30 js '(function(){var t=document.querySelector("'"$sel"'");if(!t)return "no-composer";t.focus();var s=window.getSelection();if(t.value!==undefined){t.select();document.execCommand("insertText",false,'"$pjson"');}else{s.selectAllChildren(t);document.execCommand("insertText",false,'"$pjson"');}t.dispatchEvent(new InputEvent("input",{bubbles:true}));return "set len="+((t.innerText||t.value||"").length)})()' || true
+  echo "    [insertText] $BOUT"
+  if composer_has_prompt "$sel"; then return 0; fi
+  # fallback: keystroke type, then verify ordered content
+  bcall 20 js '(function(){var t=document.querySelector("'"$sel"'");if(!t)return;t.focus();if(t.value!==undefined){t.value="";}else{t.innerHTML="<p></p>";}t.dispatchEvent(new InputEvent("input",{bubbles:true}));})()' || true
+  bcall 60 type "$PROMPT" || true
+  if composer_has_prompt "$sel"; then echo "    [type-fallback] prompt set via keystrokes"; return 0; fi
+  echo "    type_prompt FAILED — composer state: $BOUT"
+  return 1
+}
+
 # ---- args ----
 [ $# -ge 3 ] || die "usage: tools/ext_submit.sh <P1U|P2|P3|P4|P5> <grok|chatgpt|gemini> <round-label> [pdf-path]"
 PAPER="$1"; REVIEWER="$2"; ROUND="$3"; PDF_ARG="${4:-}"
@@ -140,9 +167,8 @@ submit_grok() {
   # button's innerText includes Expert (mode label present in the composer bar).
   bcall 45 js '(function(){var b=[...document.querySelectorAll("button,[role=button]")].find(function(e){return /Expert/i.test(e.textContent||e.getAttribute("aria-label")||"")});return b?"expert-present":"expert-not-visible"})()' || true
   echo "    grok mode(verify-only): $BOUT"
-  # type the prompt
-  bcall 45 js 'var t=document.querySelector("textarea,[contenteditable=true]");if(t){t.focus();}' || true
-  bcall 60 type "$PROMPT" || die "grok type failed: $BOUT"
+  # type the prompt (Grok tiptap/ProseMirror — atomic insertText, verify ordered)
+  type_prompt '.tiptap.ProseMirror' || die "grok type failed: $BOUT"
   sleep 2
   # JS-click submit/send (aria)
   bcall 45 js '(function(){var b=document.querySelector("button[aria-label*=Submit i],button[aria-label*=Send i],button[type=submit]");if(b){b.click();return "sent"}var f=[...document.querySelectorAll("button")].find(function(e){return /submit|send/i.test(e.getAttribute("aria-label")||"")});if(f){f.click();return "sent-fallback"}return "no-send-btn"})()' || die "grok send failed: $BOUT"
@@ -158,24 +184,24 @@ submit_grok() {
 submit_chatgpt() {
   # Unique per-round input id so `upload` NEVER matches multiple elements
   # (the old bare 'input[type=file]' fallback errored "matched multiple").
-  local UID="extUpload_${PAPER}_${ROUND}"
+  local INPID="extUpload_${PAPER}_${ROUND}"
   bcall 45 goto "$CHATGPT_PROJECT" || die "chatgpt goto failed: $BOUT"
   sleep 10
   # JS-tag the first file input with the unique id. If NO-INPUT, the page may
   # not have hydrated yet — sleep 5 and retry the goto+tag ONCE.
-  bcall 45 js '(function(){var f=document.querySelector("input[type=file]");if(f){f.id="'"$UID"'";return "tagged"}return "NO-INPUT"})()' || true
+  bcall 45 js '(function(){var f=document.querySelector("input[type=file]");if(f){f.id="'"$INPID"'";return "tagged"}return "NO-INPUT"})()' || true
   echo "    chatgpt tag: $BOUT"
   if printf '%s' "$BOUT" | grep -q NO-INPUT; then
     echo "    chatgpt file-input not hydrated — retry goto+tag once"
     sleep 5
     bcall 45 goto "$CHATGPT_PROJECT" || die "chatgpt goto(retry) failed: $BOUT"
     sleep 8
-    bcall 45 js '(function(){var f=document.querySelector("input[type=file]");if(f){f.id="'"$UID"'";return "tagged"}return "NO-INPUT"})()' || true
+    bcall 45 js '(function(){var f=document.querySelector("input[type=file]");if(f){f.id="'"$INPID"'";return "tagged"}return "NO-INPUT"})()' || true
     echo "    chatgpt tag(retry): $BOUT"
     printf '%s' "$BOUT" | grep -q NO-INPUT && die "chatgpt file input never appeared"
   fi
   # Upload ONLY via the unique id — never a bare multi-match selector.
-  bcall 90 upload "#$UID" "$STAGE" || die "chatgpt upload failed: $BOUT"
+  bcall 90 upload "#$INPID" "$STAGE" || die "chatgpt upload failed: $BOUT"
   # chip poll 6 x 6s
   local i chip=0 base; base="$(basename "$STAGE")"
   for i in 1 2 3 4 5 6; do
@@ -184,9 +210,8 @@ submit_chatgpt() {
     sleep 6
   done
   [ "$chip" = 1 ] || echo "    WARN chatgpt chip not confirmed — continuing"
-  # type
-  bcall 45 js 'var t=document.querySelector("#prompt-textarea,[contenteditable=true],textarea");if(t){t.focus();}' || true
-  bcall 60 type "$PROMPT" || die "chatgpt type failed: $BOUT"
+  # type (ChatGPT #prompt-textarea — atomic insertText, verify ordered)
+  type_prompt '#prompt-textarea' || die "chatgpt type failed: $BOUT"
   # JS-click send: testid first, aria fallback
   bcall 45 js '(function(){var b=document.querySelector("button[data-testid=send-button]");if(b){b.click();return "sent-testid"}var a=document.querySelector("button[aria-label*=Send i]");if(a){a.click();return "sent-aria"}return "no-send-btn"})()' || die "chatgpt send failed: $BOUT"
   echo "    chatgpt send: $BOUT"
