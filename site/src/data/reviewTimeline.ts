@@ -46,6 +46,26 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "readiness-eta-trajectory-instrument-2026-07-10",
+    dateISO: "2026-07-10",
+    kind: "skill-improvement",
+    title:
+      "New instrument: honest publishability-ETA + verdict-trajectory tracking — live per-paper per-wave verdict rows in Convex, a /reviews trajectory chart, and a homepage Submission-ready ETA widget. Backfilled from real EXT (reviewTimeline externalVerdictRounds) + H17 INT-API raws; nothing synthesized.",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary:
+      "Added a readinessMetrics Convex table (one REAL verdict row per paper x wave; a leg with no output is recorded 'failed' = a chart GAP, never a zero) plus a computeEta query and a rigorEvents annotation table. Backfilled 288 rows from the two verifiable sources — 45 EXT rounds from reviewTimeline.ts externalVerdictRounds and 40 INT-API verdict rows read literally from the H17 INT_api raws' PARSED-VERDICT lines (INT history before H17 is patchy and was NOT fabricated). The /reviews page gains a Verdict-trajectory chart: every paper x reviewer per wave on the REJECT/MAJOR/MINOR/ACCEPT scale (higher=better), toggleable per paper, with a bold program-average line, FAILED legs as gaps, six rigor-event vertical markers (de-biased prompt 06-29, integrity gate 06-26, recalibrated gate 07-01, verified-review reset 07-04, directive J 07-09, fused loops + directive K 07-10) each citing its CLAUDE.md/board source, and a last-3-wave trend indicator. The homepage overview + /reviews gain a Submission-ready ETA widget: computeEta = per paper remaining = max(0, 2 - cleanWaveStreak) waves x rolling-median wave cadence (last 5 gaps, fallback 3h) + 2h closure-buffer if the last wave had genuinely-new>0; program ETA = MAX over papers; the copy states its assumption explicitly (assumes 0 new findings; a genuinely-new finding resets that paper) and the two-clock honesty note (journal acceptance is a separate human-referee clock, months). Loop integration: tools/record_wave.sh posts a row per wave and tools/post_verdict.sh calls it on every harvest, so the data stays live with no manual step; documented in the canonical bigbounce-r-round SKILL.md. Current computed ETA: 5/6 papers at the 2-clean-wave bar; program ETA driven by P1B (no fresh H17 re-test → 2 clean waves to go).",
+    keyTakeaways: [
+      "readinessMetrics Convex table + computeEta query + rigorEvents table; 288 rows backfilled from REAL EXT (reviewTimeline externalVerdictRounds) + H17 INT-API raws — nothing synthesized, missing legs recorded 'failed' (chart gap)",
+      "/reviews Verdict-trajectory chart: paper x reviewer per wave on REJECT/MAJOR/MINOR/ACCEPT, bold program-average line, rigor-event annotations (each cites its source), trend indicator",
+      "Homepage + /reviews Submission-ready ETA widget (live Convex computeEta): per-paper clean-wave-streak chips, explicit assumption copy, two-clock honesty note (journal acceptance = separate human-referee clock)",
+      "Loop integration: record_wave.sh + post_verdict.sh keep the data live on every harvest; documented in bigbounce-r-round SKILL.md",
+    ],
+    links: [
+      { label: "record_wave.sh", href: `${GH}/tools/record_wave.sh` },
+      { label: "backfill script", href: `${GH}/tools/backfill_readiness_metrics.py` },
+    ],
+  },
+  {
     id: "H17H-P2-presentation-closure-2026-07-10",
     dateISO: "2026-07-10",
     kind: "internal-api",
