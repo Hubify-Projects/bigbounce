@@ -48,6 +48,47 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "skill-loop-watchdog-autolog-2026-07-11",
+    dateISO: "2026-07-11",
+    kind: "skill-improvement",
+    title:
+      "Loop durability: OS-level watchdog daemon + heartbeat gate (60-min recovery cap) and tools/skills_autolog.sh — a generative, sha-cited self-improvement changelog with a --check gate. Every asset git-sha-cited.",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary:
+      "Two never-again durability assets shipped (tooling 13→15). (1) tools/loop_watchdog.sh + tools/launchd/com.bigbounce.loopwatchdog.plist — an OS-level watchdog daemon plus a heartbeat gate that detects a wedged or dead cron-tick and recovers it within a 60-minute cap, closing the failure mode where the review loop silently stalled for hours (commit 3266efe8); the cron-tick itself was retired/repaired with hourly watchdog recovery in the same family (commit 0d77ba69). (2) tools/skills_autolog.sh — this very generative skill/self-improvement changelog: it walks git since the last skillsSeries point, emits paste-ready sha-cited reviewTimeline drafts, and exposes a --check mode that exits non-zero on ANY unlogged skill/process/tooling commit — the standing enforcement that keeps this skills chart honest (commit 0d77ba69). The scistack canonical bigbounce-r-round SKILL.md gained the matching watchdog-recovery-cap + heartbeat/skillslog freshness-surface documentation and ext_{submit,harvest,post_verdict}.sh owner pointers (scistack d0347cf, 0cefd57, d4c6a7c). This backfill also closes out the 07-09/07-10 skill/process commits (CV-round EXT closures, submission-kit re-syncs, prior reviewTimeline backfills, machine auto-sync) as sha-cited but non-counter-incrementing — dropped as routine per honest curation.",
+    keyTakeaways: [
+      "tools/loop_watchdog.sh + launchd plist — OS-level watchdog daemon + heartbeat gate, 60-min recovery cap; loop can never again silently stall for hours (commit 3266efe8)",
+      "Wedged cron-tick retired/repaired + hourly watchdog recovery (commit 0d77ba69)",
+      "tools/skills_autolog.sh — generative sha-cited self-improvement changelog with a --check gate that fails on any unlogged skill/process/tooling commit (commit 0d77ba69)",
+      "scistack bigbounce-r-round SKILL.md documents the watchdog-recovery-cap + heartbeat/skillslog freshness surfaces + ext_*.sh owner pointers (d0347cf, 0cefd57, d4c6a7c)",
+    ],
+    links: [
+      { label: "commit 3266efe8 (watchdog daemon)", href: `${GH_COMMIT}/3266efe8` },
+      { label: "commit 0d77ba69 (cron repair + autolog)", href: `${GH_COMMIT}/0d77ba69` },
+      { label: "tools/loop_watchdog.sh", href: `${GH}/tools/loop_watchdog.sh` },
+      { label: "tools/skills_autolog.sh", href: `${GH}/tools/skills_autolog.sh` },
+    ],
+  },
+  {
+    id: "skill-directive-k-two-clean-waves-2026-07-11",
+    dateISO: "2026-07-11",
+    kind: "skill-improvement",
+    title:
+      "Directive K — a paper converges on TWO consecutive clean waves, not a single 0/0/0 sweep. The streak-gate absorbs LLM-referee run-to-run variance (pattern-066). git-sha-cited.",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary:
+      "New reviewer-loop exit-gate rule (promptRules 37→38 = rule 38, Houston 2026-07-10, bigbounce 57b3bab3). A paper is CONVERGED only after TWO consecutive clean waves — each with 0 genuinely-new real findings on truth-audit — rather than after a single literal 0/0/0 sweep. Rationale: pattern-066 established that LLM referees swing verdict severity run-to-run on unchanged content in BOTH directions, so a single quiet sweep is noise and can't be trusted to declare convergence, while a single noisy re-flag mustn't be allowed to reset a genuinely-converged paper. The two-clean-waves streak is the operational filter over that variance. Directive J's literal 0/0/0 all-reviewer bar remains the honesty TARGET; directive K is the loop-control rule that decides when to STOP re-testing a paper. Integrity stays hard: still never fake an accept, still disposition every finding with a source-cited verdict, still never fabricate.",
+    keyTakeaways: [
+      "Directive K = convergence requires TWO consecutive clean waves (0 genuinely-new real findings), not one 0/0/0 sweep (Houston 2026-07-10, commit 57b3bab3)",
+      "Absorbs LLM-referee run-to-run variance (pattern-066): one quiet sweep can't declare convergence; one noisy re-flag can't reset a converged paper",
+      "Directive J's literal 0/0/0 stays the honesty target; directive K is the operational streak-gate for when the loop stops re-testing",
+      "Integrity unchanged: never fake an accept, always source-cite each disposition, never fabricate",
+    ],
+    links: [
+      { label: "commit 57b3bab3 (directive K)", href: `${GH_COMMIT}/57b3bab3` },
+    ],
+  },
+  {
     id: "skill-site-freshness-gate-2026-07-11",
     dateISO: "2026-07-11",
     kind: "skill-improvement",
@@ -5275,6 +5316,8 @@ export const skillsSeries: SkillsPoint[] = [
   { id: "H17 accel round-1 · directive_g.sh + ledgers + Convex fixes", dateISO: "2026-07-10", patterns: 71, promptRules: 37, tooling: 5, note: "H17 acceleration round-1 (ACCELERATION_LOG items 1-7) shipped 4 tooling assets (tooling 1→5): (a) tools/directive_g.sh one-shot PDF-hygiene chain — leak-gate + 0-undef compile + byte-identical mirror + Convex bump/read-back, per-closure hygiene ~15min→~2min, slug drift impossible (commit 533481ae); (b) canonical disposition ledgers project-context/peer-reviews/DISPOSITIONS/*.md — 107 numbered fingerprinted entries; audits cite D<P>-NN instead of re-writing from scratch, wave audit time ~halved (commit 4a2d551d); (c) tools/int_api_review reads \\paperVersion live from the tex so review headers are always truthful (commit 729165b5); (d) convex/paperVersions.ts sortVersions Date.parse fix — killed the lexicographic 'July 10 < July 9' bug that left stale 'current' chips site-wide (commit 729165b5). Also documented pattern-066 in both directions (Grok MINOR→MAJOR AND MAJOR→MINOR on unchanged content) — referee variance is symmetric; no new pattern number. The fused-owner-loop pattern (one Opus owner iterates close→INT-retest→audit internally, returns once) codified in the canonical spec (item 1). patterns/promptRules unchanged — these are process/tooling, honestly not new review-patterns or reviewer-prompt rules." },
   { id: "H17 accel round-2 · ext/int wave automation + verify-only + ETA instrument", dateISO: "2026-07-10", patterns: 71, promptRules: 37, tooling: 12, note: "H17 acceleration round-2 (ACCELERATION_LOG items 8-13 + the readiness-ETA instrument) shipped 7 tooling assets (tooling 5→12): tools/ext_submit.sh + tools/ext_harvest.sh + tools/post_verdict.sh (EXT wave automation — proven submit/extract recipes, dead-chat detection, schema+slug+cap-formula baked in; commits 6ca8aae7, 085ce1ae, bfc8a76d); tools/int_wave.sh + tools/ledger_match.py (all-three-INT-legs parallel with raw-save enforced + a fingerprint pre-matcher that drafts the ledger match table so Opus adjudicates only UNMATCHED; commit 576b5ef9); directive_g.sh --verify-only flag (validate without re-mirroring/re-bumping — fixed the same-date tie-break that stole the Convex 'current' row; commit 576b5ef9); the readinessMetrics Convex table + computeEta query + rigorEvents annotations + tools/record_wave.sh + tools/backfill_readiness_metrics.py — a live per-paper per-wave verdict-trajectory chart + Submission-ready ETA widget, 288 rows backfilled from REAL EXT + H17 INT-API raws, missing legs recorded 'failed' (chart gap, never a zero); commits 4af8a76a, 6f4180cf, d177d100. patterns/promptRules unchanged — pure process/tooling." },
   { id: "site-freshness-gate · pre-push", dateISO: "2026-07-11", patterns: 71, promptRules: 37, tooling: 13, note: "Site-freshness pre-push gate (tooling 12→13): tools/site_freshness_check.sh + tools/hooks/pre-push (commit 0c263178) — a hard pre-push hook that BLOCKS a push whenever a public surface (banner / this very skills chart / /reviews board / version chips) has fallen behind the newest Convex wave or tools/ commit, killing the stale-surface class that let this skills chart sit flat for ~10 days while real work shipped. It is the standing enforcement of the exact staleness Houston caught; this backfill is its first cleared run. patterns/promptRules unchanged — process/tooling." },
+  { id: "directive-K · two-clean-waves exit", dateISO: "2026-07-11", patterns: 71, promptRules: 38, tooling: 13, note: "Directive K codified as a loop exit-gate rule (promptRules 37→38 = rule 38): a paper CONVERGES on TWO consecutive clean waves (0 genuinely-new real findings on truth-audit) rather than a single literal 0/0/0 sweep — the two-clean-waves streak absorbs LLM-referee run-to-run variance (pattern-066) so one lucky quiet sweep can't declare convergence, and one noisy re-flag can't reset a genuinely-converged paper (Houston 2026-07-10, bigbounce 57b3bab3). Directive J's literal 0/0/0 stays the honesty target; directive K is the operational streak-gate that decides when the loop stops re-testing a paper. This is a genuinely-new reviewer-loop rule, hence a promptRules increment; patterns/tooling unchanged." },
+  { id: "loop-watchdog + skills-autolog", dateISO: "2026-07-11", patterns: 71, promptRules: 38, tooling: 15, note: "Never-again loop durability tooling (tooling 13→15, +2 new scripts): (a) tools/loop_watchdog.sh + tools/launchd/com.bigbounce.loopwatchdog.plist — an OS-level watchdog daemon + heartbeat gate that detects a wedged/dead cron-tick and recovers it within a 60-min cap, so the review loop can never again silently stall for hours (commit 3266efe8); (b) tools/skills_autolog.sh — this very generative skill/self-improvement changelog tool that emits sha-cited paste-ready reviewTimeline drafts and a --check gate that fails on any unlogged skill/process/tooling commit, shipped alongside the cron-tick retire/repair + hourly watchdog recovery (commit 0d77ba69). The scistack canonical bigbounce-r-round SKILL.md gained the matching watchdog-recovery-cap + heartbeat/skillslog freshness-surface docs and ext_{submit,harvest,post_verdict}.sh owner pointers (scistack d0347cf, 0cefd57, d4c6a7c). patterns/promptRules unchanged — pure process/tooling. Also cites the 07-09/07-10 skill/process commits this backfill closes out: 54d7a3cf 9fb9bb29 b20b8e95 d67b6a9a 61827a1d 86a7bee3 14e4f405 8bc9a4fc 0561982f 5a123fc6 7d914020 22c4d9bb 7d1af794 8a804f4." },
 ];
 
 export function getReviewRoundByReportSlug(slug: string): ReviewRound | undefined {
