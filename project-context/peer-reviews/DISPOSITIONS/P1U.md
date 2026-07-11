@@ -206,3 +206,13 @@ numbers spot-checked against current `arxiv/paper1_unified.tex` v1U.0.11 and upd
 - **11 MATCHED confirmed:** #1→DP1U-03, #3→DP1U-20, #5→DP1U-05, #7→DP1U-10, #9→DP1U-05/-11, #10→DP1U-20/-06, #11→DP1U-14, #12→DP1U-12, #13→DP1U-15, #14→DP1U-17, MINOR #15→DP1U-02.
 - **0 genuinely-new real+editable findings.** Identical structure to the H17G / W1-EXT ChatGPT REJECTs — ChatGPT structural harsh-referee floor (directive-H) on unchanged v1U.0.12. **clean-wave streak HOLDS at 2 — P1U REMAINS across the directive-K bar.** No v1U.0.13 bump; v1U.0.12 stands. `directive_g.sh` not run (no edit).
 - **Integrity:** ChatGPT REJECT recorded as-is (post_verdict.sh); no ACCEPT faked; no finding dismissed without a source-cited verdict; no math fabricated; no hedging removed.
+
+## GEM1-INT wave (2026-07-11, v1U.0.12 — FIRST verified Gemini INT leg, gemini-3.1-pro-preview)
+- **Gemini INT = MAJOR REVISIONS** (raw `INT_v3/ROUND_2026-07-09/API_P1U_gemini.md`; native-PDF; audit `GEM1_INT_truth_audit.md`). 5 findings, all source-cited:
+  1. [MAJOR] Holst-vanishes / §X transparency "trivial, reduce to one paragraph" → **DP1U-12** (standard on-shell scalar equivalence; novelty/presentation OPINION).
+  2. [MAJOR] Appendices E–H "irrelevant/bloat, remove" → **DP1U-06/-11** (author-tagged "not load-bearing"; length/scope OPINION, Houston-gated presentation class).
+  3. [MAJOR] Four no-go routes "overstated novelty, standard EFT dim-analysis" → **DP1U-06/-11** (verbatim the paper's channel-level-not-operator-level + CC-relocation framing, L1195-1219).
+  4. [MINOR] Verbosity/repetitive caveats → PROCESS-NIT (style; DP1U-06 OPINION).
+  5. [MINOR] Reliance on unpublished companions II–V → PROCESS-NIT (style; DP1U-04-adjacent).
+- **0 genuinely-new editable findings.** A fresh 7th reviewer with no round history independently landed on the same disclosed classes. **clean-wave streak HOLDS at 2 — P1U REMAINS across the directive-K bar.** No v1U.0.13 bump; v1U.0.12 stands. `directive_g.sh` not run (no edit).
+- **Integrity:** Gemini MAJOR recorded as-is; no ACCEPT faked; no finding dismissed without a source-cited verdict; no math fabricated.
