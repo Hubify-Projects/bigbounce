@@ -48,6 +48,36 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "P3-FR4-clean-rebuild-2026-07-11",
+    dateISO: "2026-07-11",
+    kind: "ext-closure",
+    title:
+      "P3 FR4 (rebuild wave 1/2 on the DP3-19 fix) — FIRST CLEAN WAVE on v3.1.155; 0 genuinely-new → streak REBUILDS 0→1. DP3-19 +1.14σ fix verified landed at all 7 sites, no regression. Still OFF the exit set (needs 2).",
+    papers: ["P3"],
+    summary:
+      "FR4 rebuild wave 1/2 on P3 v3.1.155 — the first clean wave on the DP3-19 correction. Full board (run.log 16:28): INT Claude-subscription MINOR + OpenAI REJECT + Grok-API REJECT + Gemini REJECT, EXT Grok MAJOR, EXT ChatGPT FAILED-dead (FR4b retry in flight — recorded as a chart GAP, never a verdict, not waited on per directive-D). THE SPECIAL VERIFY PASSED: the FR3 DP3-19 correction (matter-bounce parameter-shift +1.13σ → +1.14σ, made consistent with the v3.1.154 SMBHB +4.63σ fix) is confirmed LANDED at all 7 reader-visible sites (abstract, §nanograv ×3, §disc, contributions, Table VIII footnote), with 0 stray +1.13σ/+4.61σ in body (only version-block comments) and NO regression — the recompute-verifying Claude INT leg independently confirms matter_bounce_3p0=1.13543 → +1.14σ (all 7 sites, 0 stale), smbhb_13_3=4.6274 → +4.63σ, and F_0=0.01240 all reproduce against savage_dickey_2026-05-29.json + results.json. FR4 surfaced 0 genuinely-new editable findings: Grok EXT MAJOR (4 MAJOR + 2 MINOR) all re-flag the canonical DP3 ledger (268,519 process-volume DP3-07; eROSITA irreproducible-axis excision DP3-08; DESI broad-class-only / 5-fold-not-independent DP3-01; multiple-surveys-fail-5σ mixed-gate non-uniform validation DP3-01/-08/-09; committed-scripts-not-self-contained DP3-15; §V fNL/NANOGrav null-secondary DP3-10); Claude's display-vs-full-precision reproducibility note is a PROCESS-NIT under DP3-19 (the +1.14σ/+4.63σ values are arithmetically correct + now internally consistent — the residual is intrinsic display-rounding of an intermediate, optional polish only, not a reset); the OpenAI/Grok-API/Gemini legs (all REJECT on v3.1.155, native-PDF) are the known catalog-vs-PRD venue (DP3-16) + provenance (DP3-08/-15) + heterogeneous-validation (DP3-01/-09) + referee-variance (pattern-066) classes. No number fabricated; no ACCEPT faked; no finding dismissed without a source-cited verdict. No version bump (v3.1.155 stands, served md5 ebd4bfd1…); directive_g.sh not run (no edit warranted). P3 clean-wave streak REBUILDS 0→1 and stays OFF the exit set — it must post one more clean wave to cross the two-clean-waves bar. Convex EXT cap 56.",
+    keyTakeaways: [
+      "FIRST clean wave on the DP3-19 fix → P3 streak REBUILDS 0→1 (still OFF the exit set; needs one more clean wave for the two-clean-waves bar)",
+      "Special verify PASSED: +1.13σ→+1.14σ correction landed at all 7 reader-visible sites, 0 stray +1.13/+4.61 in body, no regression — Claude INT re-test confirms every σ-shift + F_0 reproduces against the committed savage_dickey chain",
+      "0 genuinely-new editable findings: EXT Grok MAJOR + INT REJ/MAJ/REJ/MIN all canonical DP3 re-flags (process-volume, eROSITA-excision, validation-heterogeneity, pod-blocked reproducibility, §V-null, PRD-vs-ApJS venue) — pattern-066",
+      "ChatGPT FR4 EXT FAILED-dead recorded as a chart GAP (FR4b retry in flight, not waited on); Claude's precision note = PROCESS-NIT under DP3-19 (no reset); no bump, v3.1.155 stands; Convex EXT cap 56",
+    ],
+    links: [
+      {
+        label: "P3 Grok FR4 raw (MAJOR)",
+        href: `${GH}/project-context/peer-reviews/EXT_real/H17_2026-07-10/FR4/P3_grok_FR4.md`,
+      },
+      {
+        label: "INT Claude FR4 raw (MINOR, v3.1.155 recompute)",
+        href: `${GH}/project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P3_claude_0922.md`,
+      },
+      {
+        label: "P3 DISPOSITIONS ledger (DP3-19 + FR4 wave)",
+        href: `${GH}/project-context/peer-reviews/DISPOSITIONS/P3.md`,
+      },
+    ],
+  },
+  {
     id: "P3-FR3-int-claude-closure-2026-07-11",
     dateISO: "2026-07-11",
     kind: "internal-cc",
@@ -59,7 +89,7 @@ export const reviewRounds: ReviewRound[] = [
     keyTakeaways: [
       "1 genuinely-new reader-visible finding (DP3-19): matter-bounce parameter-shift +1.13σ → +1.14σ at all 7 sites — made consistent with the v3.1.154 full-precision SMBHB +4.63σ fix (chain: 1.13543)",
       "Cosmetic companion: F_0 0.01239 → 0.01240 (downstream 0.01509 → 0.01510); headline σ(f_NL)=8.14 + envelope [3.92,8.98] unchanged",
-      "Full board REJ/MAJ/REJ/MIN + EXT Grok MAJOR / ChatGPT REJECT — all EXT/API findings are canonical DP3 re-flags (pattern-066); NO reviewer re-flagged the precision item, caught only by the recompute Claude INT leg",
+      "Full board REJ/REJ/REJ/MIN + EXT Grok MAJOR / ChatGPT FAILED — all EXT/API findings are canonical DP3 re-flags (pattern-066); NO reviewer re-flagged the precision item, caught only by the recompute Claude INT leg",
       "directive-G verified (37pp, 0 undef-refs, 0 overfull, byte-identical mirror); P3 streak RESET 1→0, P3 NOT in the exit set, clock restarts",
     ],
     links: [
