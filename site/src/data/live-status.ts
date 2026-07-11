@@ -47,24 +47,19 @@ export interface LiveStatus {
 }
 
 export const liveStatus: LiveStatus = {
-  lastUpdatedISO: "2026-07-11T07:45:00Z",
-  lastUpdatedDisplay: "July 11, 2026 · 12:45 AM PT",
+  lastUpdatedISO: "2026-07-11T08:55:00Z",
+  lastUpdatedDisplay: "July 11, 2026 · 1:55 AM PT",
   headline:
     "PROGRAM PAST THE CONVERGENCE BAR — wave-1 kit verified, awaiting Houston submission clicks. All five papers (P1U/P2/P3/P4/P5) are past the directive-K two-clean-waves bar; the edit-loop program has EXITED. Streaks: P1U 2 · P2 3 · P3 4 · P4 4 · P5 2. The wave-1 arXiv kit (P4 → P3 → P2) plus the wave-2 P5 + P1U bundles are rebuilt at the exit versions and standalone-compile-verified (0 errors, 0 undef-refs; each tarball's .tex byte-matches the repo source; P4/P3 unchanged since Jul-10, P2/P5/P1U rebuilt to v1.7.112 / v0.1.120 / v1U.0.12). Grok EXT returned literal ACCEPTs on P5 (v0.1.117) and P4 (v1.0.235) — the program's first two external ACCEPTs; Claude INT ACCEPTed P4 and P5. Remaining work is two Houston-gated clocks: arXiv wave-1 submission clicks (minutes) and human journal referees (months).",
   summary:
     "Round H17 (Jul 10) found and FIXED 8 real errors — P4's Shamir factor-of-2 (survived ~17 prior waves), P2's spurious-term sign + 5 stale Bayes columns, P1U's Check-D contradiction + conventions, P5's primary-estimand seam — then converged: two consecutive waves with 0 genuinely-new findings, 49 findings all ledger-matched. New real science shipped: GZ1 confusion matrices stratified by sky-leg, confidence AND void/non-void environment (parity-symmetric errors measured, not assumed). Verdict-gap trend: program average up from ~0.3 (Jul-4 verified-reset era, all REJECT/MAJOR) to ~1.0-1.2 today, driven by real fixes.",
   currentlyRunning: [
+    "GEM1-INT adjudicated (Jul 11) — 7TH REVIEWER ONLINE: the first-ever verified Gemini INT verdicts (gemini-3.1-pro-preview, native-PDF) landed across all five papers — P5/P4/P2 MINOR · P1U MAJOR · P3 REJECT. Full source-cited truth-audit: 0 genuinely-new reader-visible editable findings on any paper (every finding → a standing D-id; P3's REJECT is the known catalog-vs-PRD venue class DP3-08/-10/-16). A fresh zero-history reviewer independently reproducing the already-disclosed limitation classes is the honest stress-test of the exit PASSING. All five clean-wave streaks HOLD (P1U 2 · P2 3 · P3 4 · P4 4 · P5 2); no version bumps.",
     "W4-EXT confirm half adjudicated (Jul 11) — the EXT leg of the exit wave CONFIRMS P5's crossing: Grok EXT MINOR + ChatGPT EXT MAJOR REVISIONS on v0.1.120 surfaced 0 genuinely-new reader-visible findings (2 parser-noise headers + ChatGPT footprint≠selection-mask/covariate-control → DP5-06/DP5-19 + non-rejection-not-independence/Table-XVI-residual → DP5-19/DP5-13, all source-cited re-flags). P5's clean-wave streak HOLDS at 2. ChatGPT EXT moved REJECT → MAJOR — its first non-REJECT EXT verdict on P5.",
     "W4-INT confirm wave adjudicated (Jul 11) — P5 (v0.1.120) posts its SECOND consecutive clean wave (streak 2) and CROSSES the two-clean-waves bar: 0 genuinely-new reader-visible findings across INT Claude MINOR / OpenAI MAJOR / Grok MINOR (13 source-cited re-flags + 4 parser-noise fragments). OpenAI moved REJECT → MAJOR on P5 — its first non-REJECT here. All five papers are now past the bar; the edit-loop program exits and the wave-1 arXiv kit + human-referee handoff are Houston-gated.",
     "Live ETA + verdict-trajectory chart on this page + /reviews, fed by readinessMetrics on every wave.",
   ],
   needsHouston: [
-    {
-      title: "Billed Gemini API key",
-      blockedPaper: "all",
-      why: "Browser Gemini is hard-throttled (silent upload drops); the missing reviewer leg on both remaining waves needs the API.",
-      ask: "Provision a billing-enabled Gemini API key and drop it in .env.local as GEMINI_API_KEY.",
-    },
     {
       title: "arXiv wave-1 submission clicks",
       blockedPaper: "P4, P3, P2",

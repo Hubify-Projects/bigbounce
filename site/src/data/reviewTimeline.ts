@@ -48,6 +48,27 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "GEM1-INT-2026-07-11",
+    dateISO: "2026-07-11",
+    kind: "internal-api",
+    title:
+      "GEM1-INT — 7th reviewer online: FIRST verified Gemini INT verdicts across all five papers (gemini-3.1-pro-preview, native-PDF). P5/P4/P2 MINOR · P1U MAJOR · P3 REJECT. 0 genuinely-new reader-visible findings; all five streaks HOLD.",
+    papers: ["P1A", "P2", "P3", "P4", "P5"],
+    summary:
+      "First-ever verified Gemini INT leg (gemini-3.1-pro-preview, native-PDF — inline_data/Files upload, real usage metadata, latency 31–58s), reviewing P1U v1U.0.12 · P2 v1.7.112 · P3 v3.1.152 · P4 v1.0.235 · P5 v0.1.120. Gemini is a genuinely fresh 7th reviewer with ZERO prior round history or ledger exposure — the honest stress-test of the directive-K exit. Every finding got a full source-cited §3 truth-audit against the current .tex + DISPOSITIONS/<P>.md (audit: INT_v3/ROUND_2026-07-09/GEM1_INT_truth_audit.md; per-raw ledger_match.py drafts). RESULT: 0 genuinely-new reader-visible editable findings on ANY paper. P1U MAJOR (5 findings → DP1U-06/-11/-12: transparency/novelty/scope OPINION + 2 style NITs). P2 MINOR (SDB-proxy→DP2-04, Bayes-prior→DP2-18, App-A placement→DP2-02, tone→DP2-13). P3 REJECT is the KNOWN catalog-vs-PRD venue class, NOT new: scope/journal-fit→DP3-16+DP3-10, weak §V cosmology→DP3-10, LAMOST/Gaia/eROSITA contamination→DP3-08 (all excisions disclosed in tab:provenance + abstract L984 + §III.F L1179), 17.8%-novelty→DP3-07/-09. P4 MINOR (47%-ℓ=1-residual masked-physics upper-bound→DP4-17 OPEN-COMPUTE, already a-fortiori-bounded below A_50/A_95 §monopole_mask_null L1005; + 3 style NITs). P5 MINOR (Toy-EFT-terminology→DP5-20, Paper-IV-de-attenuation dependency→DP5-09, RSD-eigenvalue OOM→DP5-12 — all RE-FLAG-DISCLOSED). A fresh reviewer independently reproducing the already-disclosed limitation classes is the strongest available evidence the disclosures are real and the exit is GENUINE, not engineered. No ACCEPT faked, no finding dismissed without a source-cited verdict, nothing fabricated. No version bumps (all versions stand); directive_g.sh not run (no edit). Clean-wave streaks HOLD: P1U 2 · P2 3 · P3 4 · P4 4 · P5 2 — all five past the directive-K two-clean-waves bar. Convex synced: 5 readinessMetrics 'GEM1-INT' rows (streaks held, genuinelyNewCount 0) + activityFeed '7th reviewer online' milestone. Needs-Houston Gemini-key item removed — delivered.",
+    keyTakeaways: [
+      "7th reviewer online: first verified Gemini INT verdicts — P5/P4/P2 MINOR · P1U MAJOR · P3 REJECT (raws INT_v3/ROUND_2026-07-09/API_<P>_gemini.md, gemini-3.1-pro-preview native-PDF)",
+      "0 genuinely-new reader-visible editable findings on any paper — every Gemini finding maps to a standing D-id (RE-FLAG-DISCLOSED / OPINION / OPEN-COMPUTE / OPEN-VENUE)",
+      "P3 REJECT = the KNOWN catalog-vs-PRD venue class (DP3-08/-10/-16), not new; a fresh zero-history reviewer landing on the same disclosed limitation classes is the honest stress-test of the exit PASSING",
+      "All five clean-wave streaks HOLD (P1U 2 · P2 3 · P3 4 · P4 4 · P5 2); no version bumps, no directive-G. Convex synced (5 readinessMetrics GEM1-INT rows + milestone); Gemini-key needs-Houston item removed (delivered)",
+    ],
+    links: [
+      { label: "P1U Gemini INT raw (MAJOR)", href: `${PR}/INT_v3/ROUND_2026-07-09/API_P1U_gemini.md` },
+      { label: "P3 Gemini INT raw (REJECT)", href: `${PR}/INT_v3/ROUND_2026-07-09/API_P3_gemini.md` },
+      { label: "GEM1-INT truth-audit (all 5)", href: `${PR}/INT_v3/ROUND_2026-07-09/GEM1_INT_truth_audit.md` },
+    ],
+  },
+  {
     id: "W4-ext-adjudication-2026-07-11",
     dateISO: "2026-07-11",
     kind: "ext-closure",
