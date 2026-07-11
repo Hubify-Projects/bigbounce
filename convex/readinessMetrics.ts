@@ -182,7 +182,13 @@ export const computeEta = query({
       byPaper.set(r.paperId, arr);
     }
 
+    // paper-1b is folded into the unified Paper 1 (paper-1a) — not an active
+    // submission target, so it must not drive the program ETA. Historical rows
+    // stay for the trajectory chart; it is only excluded from the ETA set.
+    const FOLDED_PAPERS = new Set(["paper-1b"]);
+
     const perPaper = Array.from(byPaper.entries())
+      .filter(([, waves]) => !FOLDED_PAPERS.has(waves[waves.length - 1].paperSlug))
       .map(([paperId, waves]) => {
         waves.sort((a, b) => a.seq - b.seq);
         const last = waves[waves.length - 1];
