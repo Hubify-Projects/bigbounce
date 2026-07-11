@@ -46,6 +46,26 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "W1-ext-adjudication-2026-07-11",
+    dateISO: "2026-07-11",
+    kind: "ext-closure",
+    title:
+      "W1 EXT re-test (P1U · P2 · P3 · P4) — SECOND EXT ACCEPT of the campaign (P4 Grok) + P1U & P3 Grok MAJOR→MINOR improvements; 0 genuinely-new real findings across all 8 raws, every paper version stands.",
+    papers: ["P1A", "P2", "P3", "P4"],
+    summary:
+      "W1 headed-browser EXT re-test of the four active papers (P1U v1U.0.12 · P2 v1.7.112 · P3 v3.1.152 · P4 v1.0.235); ChatGPT + Grok harvested, 8 verdicts, raw verbatim text + screenshot READ before every recorded verdict, 0 fabricated. *** P4 Grok = ACCEPT — the SECOND EXT ACCEPT of the entire program *** (raw literally 'VERDICT: ACCEPT'; central sub-percent chirality-dipole null 'supported by the primary real-space dipole estimator on the pre-specified high-confidence p_eq>0.6 subsample'; 3 minors all source-cited re-flags of disclosed content). P1U Grok MAJOR→MINOR and P3 Grok MAJOR→MINOR are the honest floor-improvement signal — the moderate calibrated referee softened a full verdict tier on unchanged/disclosed content. P2 Grok = ACCEPT WITH MINOR REVISIONS (recommends PRD publication). ChatGPT held REJECT on all four (its structural harsh-referee floor); each REJECT/MAJOR truth-audited (ledger_match.py + full §3 manual audit vs each .tex + the DISPOSITIONS ledger) to a source-cited existing D-id — including the two P4 ChatGPT MINORs (ECE-Jensen lower bound already computed at tex L1345 on the disjoint GZ1 sample; Bonferroni-independence already downgraded to a non-principled heuristic at L1379 with direct-MC max-statistic as the principled control). 0 genuinely-new real+editable findings on any paper → no version bump, no directive-G, all versions stand. Clean-wave streaks: P1U 1 (re-increment after the W1-INT DP1U-25 reset), P2 3, P3 4, P4 4. Convex synced: 8 externalReviews rows + 4 readinessMetrics W1-EXT waves + reviewTimeline externalVerdictRounds 'W1-2026-07-11'. Site build must pass.",
+    keyTakeaways: [
+      "P4 Grok EXT ACCEPT — SECOND EXT ACCEPT of the campaign (first was P5 Grok at H17F); raw line 1 literally 'VERDICT: ACCEPT', central null supported",
+      "P1U Grok MAJOR→MINOR and P3 Grok MAJOR→MINOR — honest floor-improvement on unchanged/disclosed content; P2 Grok = accept-with-minor (recommends PRD)",
+      "0 genuinely-new real+editable findings across all 8 raws (ledger_match.py + §3 manual audit); every ChatGPT REJECT/MAJOR = source-cited re-flag of an existing D-id — no version bump on any paper",
+      "clean-wave streaks → P1U 1 · P2 3 · P3 4 · P4 4; Convex synced (8 externalReviews + 4 readinessMetrics W1-EXT waves + externalVerdictRounds W1-2026-07-11)",
+    ],
+    links: [
+      { label: "P4 Grok raw (ACCEPT)", href: `${PR}/EXT_real/H17_2026-07-10/W1/P4_grok_W1.md` },
+      { label: "P1U dispositions", href: `${PR}/DISPOSITIONS/P1U.md` },
+    ],
+  },
+  {
     id: "readiness-eta-trajectory-instrument-2026-07-10",
     dateISO: "2026-07-10",
     kind: "skill-improvement",
@@ -4691,6 +4711,20 @@ export const externalVerdictRounds: ExternalRoundVerdicts[] = [
       P5: ["MAJOR", "ACCEPT", "NO_VERDICT"],
     },
     note: "H17 FINAL-WAVE re-test — the milestone round. Verdict matrix stored [ChatGPT, Grok, Gemini] FROM RAW (verbatim recommendation line READ from each saved raw before recording): P5 MAJOR/ACCEPT/(pending) · P4 REJECT/MINOR/(pending) · P2 REJECT/(pending)/(pending) · P1U (pending)/MAJOR/(pending). (P1U = the unified Paper 1; its verdicts sit on the P1A row. Legs not harvested this wave stored NO_VERDICT — carry-forward: Gemini P5 MAJOR; ChatGPT P1U REJECT; Grok P2 MINOR.) *** P5 GROK = ACCEPT — the FIRST EXT ACCEPT in the entire program *** (raw final/P5_grok_final.md line 25 literally 'VERDICT: ACCEPT'; 'ready for publication after the minor clarifications'; 4 minors all source-cited re-flags of disclosed content — de-attenuation extra-uncertainty note, T-Web not-load-bearing reiteration, caption polish, 'null holds'→'consistent with null' softening). P5 ChatGPT REJECT→MAJOR REVISIONS (moved UP a verdict tier on unchanged v0.1.117; 10 MAJOR + 2 MINOR all map 1:1 to prior dispositions DP5-06/08/09/10/11/12/13/14/19/20/21/22 — the imported-label Paper-IV + companion-venue + OPEN-COMPUTE class, 0 genuinely-new). P4 Grok MAJOR→MINOR — the H17 backfire (DP4-18) REVERSED to MINOR on the honestly-corrected v1.0.235; both 'major comments' explicitly 'addressable with modest additions … do not require new computations' (47% remainder roadmap DP4-17; GZ1 elevation DP4-15). P4 ChatGPT REJECT (12 MAJOR + 2 MINOR all → DP4-07/09/12/14/15/16/17/19/21; the '62% not 47%' + 'z≈−7.6 is 1.4σ' are the DP4-19 definitional re-frames, not defects). P2 ChatGPT REJECT (10 MAJOR + 1 MINOR all → DP2-01/03/04/07/13/14/15/16/17/18/20/21/22/30; the raw's OWN concluding line concedes the headline −35/16 IS supported by Cai/Li correctly-counted expressions — disputes framing only). P1U Grok MAJOR (10 items all → DP1U-02/06/07/08/09/12/14/16/21/22; the channel-level 'overclaim risk' is the paper's OWN verbatim framing DP1U-06; scope-hedging-as-weakness is the DP1U-21 disclosure-backfire). BOTH fused loops converged with Claude INT ACCEPTs (P5 + P4 truth-audit outcome sections: Claude subagent ACCEPT, 0 genuinely-new). Truth-audit result: 0 genuinely-new real+editable findings across all 6 harvested raws → NO version bump on any paper, no directive-G, all versions stand. Every surviving MAJOR/REJECT is a source-cited re-flag of an already-disclosed limitation, an imported-label/companion-venue barrier, an OPEN-COMPUTE item, or the structural harsh-referee floor (patterns 061-064 + pattern-066 + directive-H). Caps recomputed per the latest-per-reviewer-verdict formula (50 + ACCEPT 16.7 / MIN 12 / MAJ 6 / REJ 0): P5 = 50 + grok-ACCEPT 16.7 + chatgpt-MAJ 6 + gemini-MAJ 6 = 78.7→79 (up from 68); P4 = 50 + grok-MIN 12 + chatgpt-REJ 0 (gemini FAILED, excluded) = 62; P2 = 50 + grok-MIN 12 (H17-retest latest) + chatgpt-REJ 0 = 62; P1U = 50 + grok-MAJ 6 + chatgpt-REJ 0 (H17 carry) = 56. No ACCEPT faked, no finding dismissed without a source-cited verdict, no math fabricated. Raws + screenshots in EXT_real/H17_2026-07-10/final/.",
+  },
+  {
+    roundId: "W1-2026-07-11",
+    dateISO: "2026-07-11",
+    windowPT: "Jul 11 · W1 EXT re-test (P1U v1U.0.12 · P2 v1.7.112 · P3 v3.1.152 · P4 v1.0.235) · ChatGPT + Grok harvested (Gemini not swept this wave) · headed browser, raw verbatim text + screenshot READ before every recorded verdict · 0 fabricated · 8 verdicts",
+    verdicts: {
+      P1A: ["REJECT", "MINOR", "NO_VERDICT"],
+      P1B: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P2: ["REJECT", "MINOR", "NO_VERDICT"],
+      P3: ["REJECT", "MINOR", "NO_VERDICT"],
+      P4: ["REJECT", "ACCEPT", "NO_VERDICT"],
+      P5: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+    },
+    note: "W1 EXT re-test — 8 verdicts harvested (ChatGPT + Grok × P1U/P2/P3/P4; Gemini not swept, NO_VERDICT; P1B/P5 not swept, carry-forward). Verdict matrix stored [ChatGPT, Grok, Gemini] FROM RAW (verbatim VERDICT line READ from each saved raw before recording; P1U = the unified Paper 1, its verdicts sit on the P1A row). *** P4 GROK = ACCEPT — the SECOND EXT ACCEPT of the campaign *** (raw W1/P4_grok_W1.md line 1 literally 'VERDICT: ACCEPT'; central null 'supported by the primary real-space dipole estimator on the pre-specified high-confidence (p_eq>0.6) subsample'; 3 minors all source-cited re-flags of disclosed content — abstract amplitude-tension caveat DP4-11, 47% residual bound DP4-17, harmonic-diagnostic reminder DP4-07/-13). P1U Grok MAJOR→MINOR IMPROVEMENT (verdict WORD 'MINOR REVISIONS'; 6 minors all → DP1U-02/-05/-06/-07/-09/-12/-13/-19, disclosed channel-level scope + closed convention block). P3 Grok MAJOR→MINOR IMPROVEMENT (verdict WORD 'MINOR REVISIONS'; 2 MAJOR + 3 MINOR all → DP3-07/-08/-09/-10/-14, disclosed process-volume + excised-tier + secondary-null items). P2 Grok = ACCEPT WITH MINOR REVISIONS (raw recommends PRD publication; 3 minor blocks → DP2-01/-03/-04/-14/-26/-30, all already-covered). ChatGPT held REJECT on all 4 (P1U 11 MAJOR → DP1U-03/-05/-07/-08/-09/-10/-11/-12/-14/-17/-20; P2 10 MAJOR → DP2-02/-07/-13/-14/-15/-16/-18/-19/-20/-22/-30; P3 13 MAJOR → DP3-01/-03/-06/-07/-09/-10/-11/-12/-13/-15/-16; P4 16 MAJOR → DP4-01/-07/-08/-09/-10/-11/-12/-13/-14/-15/-16/-17/-21, incl. the two MINORs ECE-Jensen (paper L1345 already computes the Jensen lower bound on the disjoint GZ1 sample) + Bonferroni-independence (paper L1379 already downgrades Bonferroni to a non-principled heuristic, principled control = direct-MC max-statistic)). Truth-audit result: 0 genuinely-new real+editable findings across all 8 raws (ledger_match.py + full §3 manual audit vs each .tex + DISPOSITIONS ledger) → NO version bump on any paper, no directive-G, all versions stand. Every surviving MAJOR/REJECT is a source-cited re-flag of an already-disclosed limitation, an OPEN-COMPUTE/VENUE item, or the structural harsh-referee floor (patterns 061-064 + pattern-066 + directive-H). clean-wave streaks → P1U 1 (re-increment after the W1-INT DP1U-25 reset), P2 3, P3 4, P4 4. No ACCEPT faked, no finding dismissed without a source-cited verdict, no math fabricated. Raws + screenshots in EXT_real/H17_2026-07-10/W1/.",
   },
 ];
 
