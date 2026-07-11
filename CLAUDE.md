@@ -210,3 +210,19 @@ bar — EXT rounds on some papers while INT closure/science runs on the others, 
 always. A paper whose open-item list closes re-tests immediately. Orchestrator = Fable 5
 (planning only); all subagents = Opus. "Idle — exit condition holds" is banned while any
 verdict word is below ACCEPT. Houston must never have to re-ask.
+
+## Standing directive (2026-07-10 — Houston explicit): K — TWO-CLEAN-WAVES EXIT
+
+Houston's words: "keep the loop going until two clean waves then prep arXiv wave-1."
+This SUPERSEDES directive J's literal 0/0/0 verdict-word bar as the loop exit
+condition. Exit = two CONSECUTIVE full waves (every reviewer leg we have access
+to, every paper) in which the truth-audit finds **0 genuinely-new findings** —
+every finding fingerprint-matches a canonical disposition (DISPOSITIONS/<P>.md).
+A genuinely-new finding on ANY paper resets that paper's clean-wave count (found
+items are closed with real edits/science first, then re-tested). Integrity rules
+unchanged: never fake an ACCEPT, never fabricate, every leg saves its raw before
+any verdict is recorded, dispositions stay source-cited. On exit: finalize the
+wave-1 arXiv kit (bundles re-verified against final versions, walkthrough
+current) and report to Houston for submission clicks. H17F+H17G were clean, but
+P2's verified Claude re-run then surfaced genuinely-new presentation items —
+P2's count reset; the clock restarts after v1.7.112 closes them.
