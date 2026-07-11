@@ -1,0 +1,8 @@
+VERDICT: ACCEPT
+
+ISSUES:
+[MINOR] Abstract (and Sec. V A): The phrasing “our amplitude in ∼3.7–8.8× tension with Shamir’s claimed ∼2–4% signal” is an amplitude-level comparison only; while the text later qualifies that a matched-footprint Ganalyzer reanalysis is required for a true statistical exclusion, this caveat should appear in the abstract and opening paragraph of the comparison section to prevent over-interpretation by readers.
+[MINOR] Sec. IV D (and Appendix D): The imaging+morphology forward model accounts for only ≈53% of the post-MASTER ℓ=1 residual amplitude, with the remaining ∼47% left as an explicit open item. Although the paper correctly demonstrates that even the full residual amplitude lies below the real-space estimator’s A50 recovery floor, a concise quantitative statement bounding any possible cosmological dipole contribution consistent with both the real-space +0.41σ null and the observed harmonic residual would close the systematics discussion more tightly.
+[MINOR] Sec. III A and Table I: The multi-null hierarchy and the explicit statement that “only the two rows marked primary carry cosmological weight” are excellent, but a one-sentence reminder in the main-text dipole results paragraph (or a small call-out box) reiterating that all harmonic-channel σ values are diagnostics only would further reduce the chance that casual readers misread the +3.64σ / +7.28σ figures as competing detections.
+
+The central claim that the large-scale chirality dipole is consistent with null at sub-percent sensitivity is supported by the primary real-space dipole estimator on the pre-specified high-confidence (peq > 0.6) subsample.
