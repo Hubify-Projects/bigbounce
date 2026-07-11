@@ -348,3 +348,24 @@ Raw: `final/P1U_grok_final.md` (read + verified). ChatGPT final-wave leg PENDING
 - **Grok EXT = MAJOR REVISIONS** — 10 items, all map 1:1 to prior dispositions: excessive length/idiosyncratic structure (DP1U-22 OPINION), channel-level vs no-go overclaim risk (DP1U-06 — the paper's OWN verbatim framing), perturbation-transparency proof sketch depth (DP1U-12), dim-4 parity-odd completeness enumeration (DP1U-07), Route-2 Eq.(17) normalization/Shapiro-Teixeira status (DP1U-09), N_tot≈92 vs matter-bounce erasure mapping (DP1U-08/14), convention consistency κ/M_Pl/Holst (DP1U-02 — already closed by edit), coordinated-submission self-containedness (DP1U-16), related-work/novelty framing (DP1U-12 OPINION). The scope-hedging-recast-as-weakness thread is the standing disclosure-backfire (DP1U-21). **0 genuinely-new real+editable.**
 
 **Outcome:** Grok EXT stays MAJOR on unchanged v1U.0.11 — every item a source-cited re-flag of disclosed channel-level scope, a Houston-gated venue/length OPINION, or already-closed convention edits. ChatGPT final leg pending — does not change the disposition (prior EXT ChatGPT already dispositioned 0 genuinely-new). 0 genuinely-new → no v1U.0.12 bump, v1U.0.11 stands. No math fabricated; no hedging removed (removing it would be dishonest overclaiming).
+
+---
+
+## W1-INT adjudication addendum (2026-07-11, vs v1U.0.11 → v1U.0.12)
+
+Adjudicated the W1 INT wave for P1U across three recorded raws, ledger-matched via `tools/ledger_match.py` then full §3 truth-audit of every UNMATCHED / low-score item vs current `arxiv/paper1_unified.tex` + `DISPOSITIONS/P1U.md`.
+
+**Raws:** Claude INT MINOR (`INT_api/H17_2026-07-10/intwave_P1U_claude_1931.md`); OpenAI/gpt-5.5 INT REJECT (`INT_v3/ROUND_2026-07-09/API_P1U_openai.md`, 21 findings, 9 UNMATCHED in draft); Grok/grok-4.3 INT MAJOR (`.../API_P1U_grok.md`, 7 parsed incl. 2 header-parse artifacts, 3 UNMATCHED in draft).
+
+**MATCHED spot-check (accepted draft D-ids):** OpenAI #16 `ρ_NJL~n_ψ²/M_Pl²` → DP1U-05 (score 0.77, verified — finite-density mean-field bound, not vacuum condensate; disclosed); OpenAI #1 four-route-not-a-theorem → DP1U-06 (0.76, verified — paper's own "channel-level, not operator-level" verbatim framing); OpenAI #12 obs-appendices-non-load-bearing → DP1U-15 (0.69, verified — each appendix labeled stock-CAMB/synthetic-sky/import). All correct.
+
+**GENUINELY-NEW (1): DP1U-25 — Claude MAJOR.** The v1U.0.11 Check D fix (`S_abc S^abc = -3/8 (J5·J5)`, Lorentzian `εε=-3!δ` + `(1/4)²` norm) was propagated only to the .tex body, NOT the cited verification script `arxiv/scripts/dim4_parityodd_enumeration.py` (L163 still `6*sp.eye`, prints `= 6 (J5.J5)`, docstring called the sign "immaterial") nor abstract L1243 (still `3!δ`). VERIFIED against files. Real, editable, non-science (body already correct) — a directive-I6/artifact-sync gap. **CLOSED v1U.0.12:** `check_D()` rewritten to compute+assert+print the signed `-3/8 (J5·J5)` (script run PASS); abstract → `Lorentzian εε=-3!δ`. Directive-K: this reset P1U's clean-wave streak to 0.
+
+**RE-FLAGS (all other findings — source-cited, non-editable):**
+- OpenAI: #1→DP1U-06, #2→DP1U-08 (single-scale NDA no-go, disclosed illustrative), #3→DP1U-07/-20 (basis completeness, out-of-scope), #4→DP1U-09 (Route-2 Eq.17 ansatz, exploratory), #5→DP1U-10, #6→DP1U-11, #7→DP1U-03, #8→DP1U-03/-04 (Holst four-fermion; V·A non-minimal reclassification disclosed), #9→DP1U-12, #10→DP1U-13 (Sec X B "total-derivative" reasoning — the paper distinguishes Holst-density from Pontryagin/NY elsewhere; not a new error), #11→DP1U-14, #12→DP1U-15, #13→DP1U-16, #14→DP1U-13, #15→DP1U-09 (literature-attribution overstatement — related-work novelty framing, OPINION), #16→DP1U-05, #17→DP1U-18/-22 (abstract length), #18→DP1U-22 (γ notation), #19→DP1U-08 (illustrative figures), #20→DP1U-15 (negative ΔN_eff proxy), #21→DP1U-22 (style).
+- Grok: #3→DP1U-06, #4→DP1U-12, #5→DP1U-11, #6→DP1U-13 (13/14-barrier phrasing), #7→DP1U-06 (Fierz lemma script-verification) — real items 4/7, 2 header-parse artifacts, 0 genuinely-new.
+- Claude MINOR #2→DP1U-25 (abstract, closed same bundle); MINOR #3 (repro tree not resolvable) → **FALSIFIED**: `parameter_summary_CORRECTED.json` DO exist under `reproducibility/cosmology/frozen/*/diagnostics/`; the abstract cites `\cite{BigBounceRepro}` = public repro tree, not the `arxiv/` submission checkout the reviewer inspected → DP1U-16 re-flag, not editable.
+
+Fingerprint keywords added to DP1U-01/-03/-08/-09/-13/-15/-16/-18/-22 so these re-phrasings auto-MATCH next wave.
+
+**Outcome:** 1 genuinely-new real+editable (DP1U-25, CLOSED v1U.0.12) + all others re-flags/OPINION/FALSIFIED. Streak → 0. INT verdicts recorded: OpenAI reject, Grok major-revisions, Claude minor-revisions. Convex readinessMetrics row `mn79xqtqb0ft6drsfeh2a0r8pd8aa9h0` (paper-1a, W1-INT). No math fabricated; no hedging removed.

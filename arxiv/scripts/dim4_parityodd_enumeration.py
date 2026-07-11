@@ -140,18 +140,28 @@ def check_A():
 
 def check_D():
     """
-    CHECK D: epsilon_{abcd} epsilon^{abce} = 3! delta^e_d  (Lorentzian, one
-    minus sign from the metric determinant convention absorbed into an overall
-    sign; the magnitude 3! = 6 is what collapses the torsion-square to (J5.J5)).
+    CHECK D: Lorentzian (mostly-plus, eps^{0123}=+1) contraction
 
-    This is the identity that turns S_{abc} S^{abc} = 6 (J5.J5) for the totally
-    antisymmetric minimal spin current S_{abc} = (1/4) eps_{abcd} bar-psi
-    gamma^d gamma5 psi (dual to the axial vector J5^d).
+        eps_{abcd} eps^{abce} = -3! delta^e_d ,
+
+    which — carrying the (1/4)^2 = 1/16 normalization of the totally
+    antisymmetric minimal spin current S^{abc} = (1/4) eps^{abcd} J5_d
+    (dual to the axial vector J5^d) — collapses the torsion-square to
+
+        S_{abc} S^{abc} = (1/16) eps_{abcd} eps^{abce} J5^d J5_e
+                        = (1/16)(-3! delta^e_d) J5^d J5_e = -3/8 (J5.J5).
+
+    This matches the corrected v1U.0.11 body normalization (footnote below
+    Eq.(torsion), O4/O5 reduction, and the Check-D block). The Lorentzian
+    sign is NOT immaterial: it fixes the sign of the collapse coefficient.
     """
     d = 4
-    # Euclidean-signature contraction (magnitude); Lorentzian differs by the
-    # overall metric-determinant sign, immaterial to the collapse coefficient.
-    result = sp.zeros(d, d)
+    # Euclidean sympy Levi-Civita gives the magnitude 3! = 6. The Lorentzian
+    # (mostly-plus, eps^{0123}=+1) contraction differs by one factor of the
+    # metric determinant sign, det(eta) = -1, giving -3! delta^e_d. We apply
+    # that sign explicitly rather than dropping it: it fixes the sign of the
+    # torsion-square collapse coefficient (-3/8, not +3/8).
+    result_euclid = sp.zeros(d, d)
     for e_ in range(d):
         for f_ in range(d):
             acc = sp.Integer(0)
@@ -159,13 +169,19 @@ def check_D():
                 for b in range(d):
                     for c in range(d):
                         acc += levi_civita((a, b, c, e_)) * levi_civita((a, b, c, f_))
-            result[e_, f_] = acc
-    expected = 6 * sp.eye(d)
+            result_euclid[e_, f_] = acc
+    # Lorentzian signed contraction:
+    result = -result_euclid
+    expected = -6 * sp.eye(d)  # = -3! delta^e_d
     ok = result == expected
-    print("[CHECK D] eps_{abcd} eps^{abce} = 3! delta^e_d")
+    # Carry the (1/4)^2 = 1/16 spin-current normalization to the collapse coeff.
+    collapse_coeff = sp.Rational(1, 16) * (-6)  # = -3/8
+    ok = ok and (collapse_coeff == sp.Rational(-3, 8))
+    print("[CHECK D] Lorentzian eps_{abcd} eps^{abce} = -3! delta^e_d")
     print(f"          computed matrix diag = {[result[i, i] for i in range(d)]}")
     print(f"          off-diagonal all zero: {all(result[i, j] == 0 for i in range(d) for j in range(d) if i != j)}")
-    print(f"          equals 6*I (=> S_abc S^abc = 6 (J5.J5)): {ok}")
+    print(f"          equals -6*I (= -3! delta^e_d): {result == expected}")
+    print(f"          with (1/4)^2 norm => S_abc S^abc = {collapse_coeff} (J5.J5) = -3/8 (J5.J5): {ok}")
     return ok
 
 

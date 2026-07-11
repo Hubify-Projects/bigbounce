@@ -10,7 +10,7 @@ numbers spot-checked against current `arxiv/paper1_unified.tex` v1U.0.11 and upd
 - **class:** CLOSED-BY-EDIT (v1U.0.11)
 - ChatGPT: footnote below Eq.(torsion) gives `S_abc S^abc = -3/8 J5²` but Check D / O4–O5 reduction printed `6 J5²` — sign error + factor-of-16 discrepancy.
 - Real internal inconsistency, VERIFIED. The footnote's carefully-derived `S^abc=¼ε^abcd J5_d ⟹ S_abc S^abc = -3/8 (J5·J5)` (Lorentzian `ε_abcd ε^abce = -3! δ`, L1810-1811) was propagated to both restatements (O4/O5 reduction L1958; Check D L4883). Structural conclusion unchanged (O4→κ²(J5·J5), O5→κ(J5·J5), same M_Pl⁻² power). No fabrication — only propagates the paper's own footnote value.
-- **fingerprint:** Check D, S·S, torsion-current normalization, -3/8, factor-16, sign error, J5², epsilon contraction
+- **fingerprint:** Check D, S·S, torsion-current normalization, -3/8, factor-16, sign error, J5², epsilon contraction, eps-eps=3!delta, verified symbolically, dim4_parityodd_enumeration.py, Lorentzian sign, collapse coefficient
 
 ### DP1U-02: κ / M_Pl convention (M_Pl=G^{-1/2} vs 8πG=M_Pl^{-2}, κ vs κ²)
 - **class:** CLOSED-BY-EDIT (v1U.0.11)
@@ -22,7 +22,7 @@ numbers spot-checked against current `arxiv/paper1_unified.tex` v1U.0.11 and upd
 - **class:** RE-FLAG-DISCLOSED (clarity edit v1U.0.10)
 - ChatGPT #2, OpenAI-grok #1, OpenAI retest MIN #15/#3, ChatGPT retest: ¼T·T shown on-shell but "not an independent kinetic term"; claim Eqs.(3)–(4) not derived from written action.
 - Already disclosed (footnote; body): Eq.(1) is first-order Palatini–EC varied over {e,ω,ψ} with ¼T·T "not varied," appearing only after on-shell torsion elimination; Eqs.(3)–(4) derived from connection variation. Clarity: two-step off-shell→effective reading added inline after Eq.(1) (v1U.0.10, L1683+). No physics change.
-- **fingerprint:** Eq(1), variational hybrid, T·T not varied, on-shell shorthand, Palatini, Cartan, two-step reading
+- **fingerprint:** Eq(1), variational hybrid, T·T not varied, on-shell shorthand, Palatini, Cartan, two-step reading, foundational action inconsistent, torsion-squared inside action, off-shell first-order action, four-fermion derivation, Holst-induced four-fermion, Fierz does not cure, V-A partner nonminimal
 
 ### DP1U-04: Eq.(16) V·A parity-odd partner provenance (FMT: minimal coupling → no V·A)
 - **class:** CLOSED-BY-EDIT (v1U.0.10)
@@ -52,13 +52,13 @@ numbers spot-checked against current `arxiv/paper1_unified.tex` v1U.0.11 and upd
 - **class:** RE-FLAG-DISCLOSED
 - OpenAI #2/#3, Grok-EXT M2, Claude, OpenAI retest #2, ChatGPT retest (Eq.6 dim-1 / Bianchi): +1→+4 dressing artifact; Eq.(6) dimensionally incomplete; N_tot spread.
 - The +1→+4 dressing is labeled "dispensable illustrative heuristic, not load-bearing" (L1877-1892-adjacent comments; the +1→+4 named a property of the on-shell reduction, L1223); genuine dim-4 O1–O6 basis is primary. N_tot spread is disclosed bookkeeping (L1757-adjacent). No over-claim.
-- **fingerprint:** dim+1, +1-vs-+4, dimensional promotion, N_tot 92, Eq(6), Bianchi, illustrative heuristic, bookkeeping
+- **fingerprint:** dim+1, +1-vs-+4, dimensional promotion, N_tot 92, Eq(6), Bianchi, illustrative heuristic, bookkeeping, single-scale NDA, no-go, wrong mass dimension, on-shell curvature dressing, EFT matching, non-adopted benchmark figures, Fig 3-7 illustrative
 
 ### DP1U-09: Route 2 one-loop parity-odd (ansatz vs derivation, ∂ϑ bookkeeping)
 - **class:** RE-FLAG-DISCLOSED
 - OpenAI-grok #6, Grok-EXT, OpenAI #4, OpenAI retest #5, ChatGPT retest: R2 Eq.(17) phenomenological; ∂ϑ dimension / field-excursion vs instantaneous-rate; birefringence anomaly-chain not justified.
 - Dimensions explicitly correct (∂ϑ dim +2, operator dim +4); ∂ϑ∼H substitution + alternative-ordering loose bound disclosed. Route labeled "exploratory framing, not load-bearing" (L2919/L3381-adjacent). One-loop-grounded via Shapiro–Teixeira coefficients (v1A.0.108→109), absolute normalization honestly pending the ST Riccati flow.
-- **fingerprint:** Route 2, one-loop, parity-odd, ∂ϑ dimension, Shapiro-Teixeira, exploratory framing, birefringence, ansatz
+- **fingerprint:** Route 2, one-loop, parity-odd, ∂ϑ dimension, Shapiro-Teixeira, exploratory framing, birefringence, ansatz, literature attribution overstated, related work, Holst/Nieh-Yan papers, one-loop papers, imply stronger support, anomaly-chain, Eq(17) phenomenological
 
 ### DP1U-10: Route 3 Δγ → dark-energy / (H0/M_Pl) mapping is ansatz
 - **class:** RE-FLAG-DISCLOSED (SCOPE)
@@ -82,7 +82,7 @@ numbers spot-checked against current `arxiv/paper1_unified.tex` v1U.0.11 and upd
 - **class:** RE-FLAG-DISCLOSED
 - ChatGPT #13, OpenAI #13, OpenAI-grok #10, Grok-EXT minor2, OpenAI retest #9, Grok retest #3: 13 barriers not independent/comparable status.
 - Exemplary disclosure at sec:barriers head: "no barrier is a logical consequence of another ... not a claim that thirteen separately decisive theorems each independently exclude." B8 subsumed by B14, B9 heuristic, B5/6/7/10/13 general — all flagged. No edit needed.
-- **fingerprint:** 13 barriers, 14 catalog, independence, logical consequence, separately decisive, B8 subsumed by B14, sec:barriers
+- **fingerprint:** 13 barriers, 14 catalog, independence, logical consequence, separately decisive, B8 subsumed by B14, sec:barriers, heterogeneous constraints, cumulative barrier catalog, mechanism-class, Sec X B logical slip, total derivative contributes nothing, Holst contraction vanishes pointwise, 13/14-barrier phrasing
 
 ### DP1U-14: D_inf non-derivation, a^{-6} scaling, N_tot ansatz, matter-bounce erasure
 - **class:** RE-FLAG-DISCLOSED
@@ -94,13 +94,13 @@ numbers spot-checked against current `arxiv/paper1_unified.tex` v1U.0.11 and upd
 - **class:** RE-FLAG-DISCLOSED
 - OpenAI #15, OpenAI-grok #13, ChatGPT, OpenAI retest #12/#18, ChatGPT retest: observational appendices provide no ECH test (stock-CAMB proxy / synthetic-sky / ALP import).
 - Each appendix explicitly labeled a stock-CAMB proxy / synthetic-sky validation / companion import, "not an ECH test" (Claude verified; L5537-adjacent). Honestly bounded.
-- **fingerprint:** appendices E-H, stock-CAMB proxy, synthetic sky, NaMaster, not an ECH test, MCMC, evidentiary value
+- **fingerprint:** appendices E-H, stock-CAMB proxy, synthetic sky, NaMaster, not an ECH test, MCMC, evidentiary value, negative Delta N_eff, one-sided positive bounds, proxy MCMC statistical device, App E convoluted
 
 ### DP1U-16: Companion-reliance / self-containedness / future-dated refs
 - **class:** RE-FLAG-DISCLOSED
 - OpenAI #13, ChatGPT (single-action / Eq.(10) not from Eq.(1) / N_tot), OpenAI retest #13/#16/#20, ChatGPT retest: depends on companions/repo artifacts/future-dated refs; not self-contained.
 - Self-containment paragraph: no theorem depends on companion numerics; artifacts reproducible-now via `\cite{BigBounceRepro}` archive + explicit paths (frozen Cobaya chains, NaMaster MC, catalogs); TODO-SUBMISSION arXiv-ID markers pending same-day insertion (L1413-adjacent). Reproducible-now, not "cannot be refereed until posted."
-- **fingerprint:** self-containment, companion reliance, in-preparation, BigBounceRepro, future-dated refs, arXiv-ID, reproducible-now
+- **fingerprint:** self-containment, companion reliance, in-preparation, BigBounceRepro, future-dated refs, arXiv-ID, reproducible-now, repository artifacts, unpublished forecasts, provenance, external unpublished material, CORRECTED.json present in repro tree
 
 ### DP1U-17: f_NL = −35/16 vs Cai −35/8 self-containedness
 - **class:** RE-FLAG-DISCLOSED (companion-resolved)
@@ -136,7 +136,7 @@ numbers spot-checked against current `arxiv/paper1_unified.tex` v1U.0.11 and upd
 - **class:** BACKFIRE-PATTERN-066
 - OpenAI retest MIN #18/#19, Grok minor / Grok retest #4: 60pp too long/repetitive/self-referential; 14-barrier catalog inflates length; clearer as a Letter.
 - Pure venue/style preference, not an editable error. Multiple reviewers echo — recorded as OPINION-class referee variance.
-- **fingerprint:** length, 60 pages, repetitive, self-referential, Letter, 14-barrier overhead, style preference
+- **fingerprint:** length, 60 pages, repetitive, self-referential, Letter, 14-barrier overhead, style preference, abstract too long, response-to-referees document, overburdened with disclaimers, tier labels, scope statements, notation gamma confusing
 
 ### DP1U-23: LQC ρ_crit range / dataset-provenance minors
 - **class:** RE-FLAG-DISCLOSED
@@ -162,6 +162,21 @@ numbers spot-checked against current `arxiv/paper1_unified.tex` v1U.0.11 and upd
 - ChatGPT H17G (H17F) MINOR: Figs 4/7 combine significances for unrelated fNL/birefringence estimators "using an arbitrary correlation coefficient without a defined joint likelihood or common hypothesis"; Fig 3 compares models with different imposed H0.
 - Already disclosed IN-CAPTION: the ρ curve families are labeled the *assumed* cross-correlation coefficient (ρ=0 uncorrelated baseline; ρ>0 track joint-significance gain) with the physical role stated explicitly (`fig:obs_timeline` caption, arxiv/paper1_unified.tex L3483-3487); the birefringence β comparison is stated as differential against β_obs=0.342°±0.094° (L3491). The raw itself concedes "portions of their captions acknowledge the problem." Figure-presentation OPINION / referee variance — the caption already carries exactly the disclosure requested. Not an editable defect.
 - **fingerprint:** Fig 4, Fig 7, correlation coefficient, joint likelihood, arbitrary rho, Fig 3, imposed H0, figure presentation
+
+### DP1U-25: Check D artifact/abstract not synced to v1U.0.11 body fix (directive-I6)
+- **class:** CLOSED-BY-EDIT (v1U.0.12)
+- Claude INT MAJOR (W1, 2026-07-11): the v1U.0.11 Check D correction (`S_abc S^abc = -3/8 (J5.J5)`, Lorentzian `εε=-3!δ` + `(1/4)²` norm) was propagated ONLY through the .tex body (footnote L1810, O4/O5 L1957, Check D L4883-4884). The cited verification script `arxiv/scripts/dim4_parityodd_enumeration.py:141-169` still asserted `expected = 6*sp.eye(d)` and printed `εε=3!δ ⇒ S_abc S^abc = 6 (J5.J5)` (pre-fix, unsigned, no 1/16, docstring called the sign "immaterial"); the abstract L1243 still listed `εε=3!δ` (positive). A referee re-running the cited artifact got output contradicting the body Eq.
+- **GENUINELY-NEW, REAL, EDITABLE** — verified against files: script L163 `6*sp.eye`, abstract L1243 `3!δ`, body L1810/1957/4883 `-3/8`/`-3!δ`. Not a science error (body already correct since v1U.0.11); a directive-I6/artifact-sync completeness gap introduced by incomplete propagation of the last fix. Under directive-K this RESET P1U's clean-wave streak to 0.
+- **CLOSED v1U.0.12:** `check_D()` rewritten to apply the Lorentzian sign (`result = -result_euclid`, `expected = -6*I`) and carry the `(1/16)` normalization, so it now computes+asserts+prints `S_abc S^abc = -3/8 (J5.J5)` (script run confirms PASS); docstring corrected ("Lorentzian sign is NOT immaterial"). Abstract L1243 → `Lorentzian εε=-3!δ`. Recompiled 0 undef-refs, mirrored 6 paths, Convex bumped (row k572qqqjnwa8pcs1xe1v4xgk118aaaq1).
+- Claude MINOR #3 (repro tree not resolvable): FALSIFIED — `parameter_summary_CORRECTED.json` files DO exist in `reproducibility/cosmology/frozen/*/diagnostics/`; reviewer's checkout was the `arxiv/` submission dir, but the abstract cites `\cite{BigBounceRepro}` = the public repro tree which contains them → DP1U-16 re-flag, not editable.
+- **fingerprint:** Check D script sync, dim4_parityodd_enumeration.py, verified symbolically contradicts, abstract 3!delta vs body -3!delta, artifact propagation, directive-I6, expected 6 eye, 1/16 normalization, immaterial sign
+
+## W1-INT adjudication wave (2026-07-11, vs v1U.0.11→v1U.0.12)
+- **Inputs:** Claude INT MINOR (`INT_api/H17_2026-07-10/intwave_P1U_claude_1931.md`), OpenAI/gpt-5.5 INT REJECT (`INT_v3/ROUND_2026-07-09/API_P1U_openai.md`, 21 findings), Grok/grok-4.3 INT MAJOR (`.../API_P1U_grok.md`, 7 findings incl. 2 header-parse artifacts).
+- **1 genuinely-new real+editable finding: DP1U-25** (Claude MAJOR — Check D script+abstract not synced to v1U.0.11 body fix). CLOSED in v1U.0.12 this bundle.
+- **All other findings = source-cited re-flags** of ledgered D-ids (fingerprints enriched this wave): OpenAI 21 → DP1U-06,-08,-20,-09,-10,-11,-03/-04,-12,-13,-14,-15,-16,-18,-22; Grok 5 real → DP1U-06,-12,-11,-13. Claude MINOR #3 → DP1U-16 (FALSIFIED, CORRECTED.json present).
+- **Clean-wave streak RESET to 0** (directive-K: the genuinely-new DP1U-25 was surfaced against a "no changes" re-test). v1U.0.12 re-tests fresh next wave.
+- verdicts: OpenAI INT=reject, Grok INT=major-revisions, Claude INT=minor-revisions.
 
 ## H17G ledger-audit wave (2026-07-10, vs v1U.0.11)
 - **ChatGPT EXT = REJECT** (raw `H17_2026-07-10/final/P1U_chatgpt_final.md`, on v1U.0.11) — 16 MAJOR + 2 MINOR. Fingerprint-match: 4-route/no-go=DP1U-06; Eq(1)-(4) variational=DP1U-03; Eq(5)-(8) dim+1/+1→+4=DP1U-08; App-B1 basis/O1=O6/Nieh-Yan=DP1U-07; NDA CC-naturalness restatement=DP1U-07/-11; Route-1 NJL ⟨J5⟩⇏⟨J5J5⟩=DP1U-05/-19; Route-2 ϑNY ansatz=DP1U-09; Route-3 Δγ inserted=DP1U-10; Route-4 ALP fixed-vs-floated=DP1U-11; App-C Fierz V⊗A=DP1U-04; quantum-consistency/counterterms=DP1U-07; Sec-X transparency novelty=DP1U-12; Eq(13)/N_tot≃92 dilution=DP1U-14; matter-bounce erasure + −35/8→−35/16=DP1U-14/-17; 13-barrier=DP1U-13; App-E-G don't test ECH=DP1U-15; MINOR figs=DP1U-24; MINOR length/organization=DP1U-22.
