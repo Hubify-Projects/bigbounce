@@ -8,10 +8,10 @@
 {"paper": "P3", "reviewer": "chatgpt", "url": "https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a509a80-cf8c-83e8-a2ff-54b3e09a365b", "status": "harvested-legacy", "note": "status backfilled 2026-07-11: harvested inline pre-ext_harvest.sh, raw+adjudication on file"}
 {"paper": "P4", "reviewer": "chatgpt", "url": "https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a509aa5-025c-83e8-a455-71b0f2b6df6c", "status": "harvested-legacy", "note": "status backfilled 2026-07-11: harvested inline pre-ext_harvest.sh, raw+adjudication on file"}
 {"paper": "P5", "reviewer": "chatgpt", "url": "https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a509acf-1a78-83e8-9cd8-de13fc0ec1f6", "status": "harvested-legacy", "note": "status backfilled 2026-07-11: harvested inline pre-ext_harvest.sh, raw+adjudication on file"}
-{"paper": "P1U", "reviewer": "gemini", "url": "https://gemini.google.com/u/1/app/4b6478dacefc0434", "status": "submitted"}
-{"paper": "P2", "reviewer": "gemini", "url": "https://gemini.google.com/u/1/app/46aba79e8fb3b3b9", "status": "submitted"}
-{"paper": "P3", "reviewer": "gemini", "url": "https://gemini.google.com/u/1/app/51d3578729c0463e", "status": "submitted"}
-{"paper": "P4", "reviewer": "gemini", "url": "https://gemini.google.com/u/1/app/8ef554bf995ca492", "status": "submitted"}
+{"paper": "P1U", "reviewer": "gemini", "url": "https://gemini.google.com/u/1/app/4b6478dacefc0434", "status": "superseded-FAILED", "note": "superseded by the FAILED-upload-throttle rows (Gemini backend drop, documented in spec); P5's gemini leg was separately harvested"}
+{"paper": "P2", "reviewer": "gemini", "url": "https://gemini.google.com/u/1/app/46aba79e8fb3b3b9", "status": "superseded-FAILED", "note": "superseded by the FAILED-upload-throttle rows (Gemini backend drop, documented in spec); P5's gemini leg was separately harvested"}
+{"paper": "P3", "reviewer": "gemini", "url": "https://gemini.google.com/u/1/app/51d3578729c0463e", "status": "superseded-FAILED", "note": "superseded by the FAILED-upload-throttle rows (Gemini backend drop, documented in spec); P5's gemini leg was separately harvested"}
+{"paper": "P4", "reviewer": "gemini", "url": "https://gemini.google.com/u/1/app/8ef554bf995ca492", "status": "superseded-FAILED", "note": "superseded by the FAILED-upload-throttle rows (Gemini backend drop, documented in spec); P5's gemini leg was separately harvested"}
 {"paper": "P5", "reviewer": "gemini", "url": "https://gemini.google.com/u/1/app/06dffc8219548d98", "status": "harvested-legacy", "note": "status backfilled 2026-07-11: harvested inline pre-ext_harvest.sh, raw+adjudication on file"}
 {"paper": "P1U", "reviewer": "gemini", "round": "retry1", "url": "https://gemini.google.com/u/1/app/beeff359708d2ded", "status": "DROPPED"}
 {"paper": "P2", "reviewer": "gemini", "round": "retry1", "url": "https://gemini.google.com/u/1/app/5e4035c2547a7816", "status": "DROPPED"}
@@ -31,7 +31,7 @@
 {"paper": "P3", "reviewer": "chatgpt", "round": "retest", "url": "https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a50ab45-e960-83e8-8515-db999361d298", "status": "harvested-legacy", "note": "status backfilled 2026-07-11: harvested inline pre-ext_harvest.sh, raw+adjudication on file"}
 {"paper": "P4", "reviewer": "chatgpt", "round": "retest", "url": "https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a50ab69-f8fc-83e8-95c3-a9b01abe0f95", "status": "harvested-legacy", "note": "status backfilled 2026-07-11: harvested inline pre-ext_harvest.sh, raw+adjudication on file"}
 {"paper": "P5", "reviewer": "chatgpt", "round": "retest", "url": "https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a50ab8d-9be0-83e8-a92e-85f35280c3f5", "status": "harvested-legacy", "note": "status backfilled 2026-07-11: harvested inline pre-ext_harvest.sh, raw+adjudication on file"}
-{"paper": "P5", "reviewer": "chatgpt", "round": "retest-retry", "url": "https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a517259-79fc-83e8-abf8-b4dc2c61b125", "status": "submitted"}
+{"paper": "P5", "reviewer": "chatgpt", "round": "retest-retry", "url": "https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a517259-79fc-83e8-abf8-b4dc2c61b125", "status": "harvested-legacy", "note": "raw at retest/P5_chatgpt_retest.md, adjudicated"}
 {"paper": "P1U", "reviewer": "gemini", "round": "daily-retry", "status": "FAILED-upload"}
 {"paper": "P2", "reviewer": "gemini", "round": "daily-retry", "status": "FAILED-upload"}
 {"paper": "P3", "reviewer": "gemini", "round": "daily-retry", "status": "SKIPPED-after-drops"}
