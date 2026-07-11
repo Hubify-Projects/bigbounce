@@ -47,8 +47,8 @@ export interface LiveStatus {
 }
 
 export const liveStatus: LiveStatus = {
-  lastUpdatedISO: "2026-07-11T04:30:00Z",
-  lastUpdatedDisplay: "July 10, 2026 · 9:30 PM PT",
+  lastUpdatedISO: "2026-07-11T06:05:00Z",
+  lastUpdatedDisplay: "July 10, 2026 · 11:05 PM PT",
   headline:
     "W1 WAVE CLEAN ON 4 OF 5 PAPERS (Jul 10-11). The program is now FIVE papers — P1B is merged into the unified Paper 1 (Houston-approved, reviewer-recommended). P2, P3 and P4 have crossed the two-clean-waves convergence bar (directive K); P1U and P5 each need one more clean wave. Grok EXT has returned literal ACCEPTs on P5 (v0.1.117) and P4 (v1.0.235) — the program's first two external ACCEPTs — while ChatGPT/OpenAI hold their documented REJECT floor (pattern-066).",
   summary:
@@ -114,9 +114,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-5",
       number: "5",
       shortTitle: "DESI environmental chirality independence",
-      version: "v0.1.118",
+      version: "v0.1.119",
       readiness: 68,
-      pendingWork: "Streak 1/2 (reset only because v0.1.118 added NEW content: the void-stratified confusion measurement, void N=933 asymmetry -0.023 +/- CI, p=0.37). First EXT ACCEPT of the program (Grok, v0.1.117) + Claude INT ACCEPT. One more clean wave to the bar.",
+      pendingWork: "Streak reset to 0/2 — the W2 INT leg caught one missed integration site (§XII-B still cited the old not-yet-computed wording; fixed v0.1.119, the void measurement is now cited at every site). This is the convergence bar working. (v0.1.118 context: the void-stratified confusion measurement, void N=933 asymmetry -0.023 +/- CI, p=0.37). First EXT ACCEPT of the program (Grok, v0.1.117) + Claude INT ACCEPT. One more clean wave to the bar.",
     },
   ],
   blockerTally: {
