@@ -403,6 +403,71 @@ def _galzone_native_membership(desi_targetid, algo, desivast_dir):
     return mapped.values, int(mapped.notna().sum())
 
 
+# DESI zall <-> P4 positional match constants (identical to the P5 primary,
+# pipelines/p5_desi_chirality/scripts/03_crossmatch.py + config/p5_config.yaml:
+# primary_radius_arcsec=1.0, duplicate_strategy="nearest",
+# quality cuts require_zwarn_zero + drop_zfail SPECTYPE in {GALAXY,QSO}).
+P5_MATCH_ARCSEC = 1.0
+P5_ZALL_FITS = "pipelines/p5_desi_chirality/data/desi_zall.fits"
+P5_P4_PARQUET = "pipelines/p5_desi_chirality/data/p4_chirality.parquet"
+
+
+def _build_p5_matched_from_zall(repo):
+    """Materialize the P5 matched-chirality x DESI-z frame directly from the raw
+    downloaded inputs (desi_zall.fits + p4_chirality.parquet), byte-identical in
+    recipe to pipelines/p5_desi_chirality/scripts/03_crossmatch.py.
+
+    Returns a DataFrame keyed on dr8_id with columns
+    [dr8_id, desi_z, desi_targetid, desi_ra, desi_dec] (one row per dr8_id,
+    nearest DESI match within 1.0 arcsec, primary-deduped), or None if inputs
+    are absent. This is the on-disk substitute for the (absent)
+    p5_matched_chirality_desi.parquet, using the SAME quality cuts + match radius
+    the paper's primary used.
+    """
+    zall = repo / P5_ZALL_FITS
+    p4 = repo / P5_P4_PARQUET
+    if not zall.exists() or not p4.exists():
+        return None
+    from astropy.io import fits
+    from astropy.coordinates import SkyCoord
+    import astropy.units as u
+
+    # --- DESI zall: quality cuts identical to 03_crossmatch/_load_desi ---
+    with fits.open(zall, memmap=True) as h:
+        d = h["ZCATALOG"].data
+        zwarn = np.asarray(d["ZWARN"])
+        spectype = np.asarray(d["SPECTYPE"]).astype(str)
+        keep = (zwarn == 0) & np.isin(np.char.strip(spectype), ["GALAXY", "QSO"])
+        desi_ra = np.asarray(d["TARGET_RA"])[keep].astype(np.float64)
+        desi_dec = np.asarray(d["TARGET_DEC"])[keep].astype(np.float64)
+        desi_z = np.asarray(d["Z"])[keep].astype(np.float64)
+        desi_tid = np.asarray(d["TARGETID"])[keep].astype(np.int64)
+    # --- P4 chirality catalog ---
+    p4df = pd.read_parquet(p4, columns=["dr8_id", "ra", "dec"])
+    p4df = p4df[p4df["ra"].notna() & p4df["dec"].notna()].reset_index(drop=True)
+
+    # --- nearest DESI -> P4 match, <=1.0 arcsec (astropy match_to_catalog_sky,
+    #     unit-sphere KD-tree; same direction as 03_crossmatch) ---
+    desi_sc = SkyCoord(ra=desi_ra * u.deg, dec=desi_dec * u.deg)
+    p4_sc = SkyCoord(ra=p4df["ra"].to_numpy() * u.deg,
+                     dec=p4df["dec"].to_numpy() * u.deg)
+    idx, sep2d, _ = desi_sc.match_to_catalog_sky(p4_sc)
+    sep_arcsec = sep2d.to(u.arcsec).value
+    mm = sep_arcsec <= P5_MATCH_ARCSEC
+    out = pd.DataFrame({
+        "dr8_id": p4df["dr8_id"].to_numpy()[idx][mm],
+        "desi_targetid": desi_tid[mm],
+        "desi_ra": desi_ra[mm],
+        "desi_dec": desi_dec[mm],
+        "desi_z": desi_z[mm],
+        "sep_arcsec": sep_arcsec[mm],
+    })
+    # primary-dedupe: one row per dr8_id, nearest DESI match wins
+    out = out.sort_values("sep_arcsec").drop_duplicates("dr8_id", keep="first")
+    out = out.drop(columns=["sep_arcsec"]).reset_index(drop=True)
+    return out
+
+
 def _try_void_stratum(matched):
     """P5 void / non-void human-vs-classifier confusion stratum on the GZ1 overlap.
 
@@ -426,8 +491,24 @@ def _try_void_stratum(matched):
     p5_matched = REPO / "pipelines/p5_desi_chirality/results/p5_matched_chirality_desi.parquet"
     desivast_dir = REPO / "pipelines/p5_desi_chirality/data/desivast"
     vf_files = [desivast_dir / f"DESIVAST_BGS_VOLLIM_VoidFinder_{gc}.fits" for gc in ("NGC", "SGC")]
-    if not p5_matched.exists():
-        reason_missing.append(f"P5 matched chirality x DESI-z parquet absent: {p5_matched}")
+    zall_fits = REPO / P5_ZALL_FITS
+    p4_parquet = REPO / P5_P4_PARQUET
+
+    # Two ways to get per-galaxy desi_z/desi_ra/desi_dec/desi_targetid for the
+    # GZ1-overlap galaxies:
+    #   (A) the pre-built P5 matched parquet (if present), OR
+    #   (B) build the same join on-the-fly from the raw desi_zall.fits +
+    #       p4_chirality.parquet (identical recipe to 03_crossmatch: 1.0 arcsec
+    #       nearest, ZWARN==0, SPECTYPE in {GALAXY,QSO}, primary-deduped).
+    # (B) is used whenever (A) is absent but the raw inputs are on disk -- this
+    # is the materialized-inputs path the void measurement is meant to close.
+    have_parquet = p5_matched.exists()
+    have_raw = zall_fits.exists() and p4_parquet.exists()
+    if not (have_parquet or have_raw):
+        reason_missing.append(
+            f"neither P5 matched parquet ({p5_matched}) nor raw "
+            f"desi_zall.fits + p4_chirality.parquet present under "
+            f"pipelines/p5_desi_chirality/data/")
     if not all(f.exists() for f in vf_files):
         reason_missing.append(f"DESIVAST VoidFinder NGC+SGC FITS absent under {desivast_dir}/")
 
@@ -437,10 +518,12 @@ def _try_void_stratum(matched):
             "reason": reason_missing,
             "note": (
                 "GZ1 Table 2 carries no redshift; the void/non-void split for the "
-                "GZ1-overlap galaxies requires the P5 matched chirality x DESI-redshift "
-                "parquet plus the DESIVAST VoidFinder void-sphere catalogs. Rebuild the "
-                "parquet via pipelines/p5_desi_chirality/scripts/{01,02,03} and fetch "
-                "DESIVAST from https://data.desi.lbl.gov/public/dr1/vac/dr1/desivast/v1.0/, "
+                "GZ1-overlap galaxies requires per-galaxy DESI redshifts (from the P5 "
+                "matched chirality x DESI-z parquet OR the raw desi_zall.fits + "
+                "p4_chirality.parquet) plus the DESIVAST VoidFinder void-sphere catalogs. "
+                "Rebuild the parquet via pipelines/p5_desi_chirality/scripts/{01,02,03} or "
+                "download desi_zall.fits, and fetch DESIVAST from "
+                "https://data.desi.lbl.gov/public/dr1/vac/dr1/desivast/v1.0/, "
                 "then re-run with P5_VOID=1."
             ),
         }
@@ -451,17 +534,31 @@ def _try_void_stratum(matched):
                            "was unavailable during cross-match); cannot join to P5 parquet"]}
 
     try:
-        cols = ["match_dr8_id", "desi_z", "desi_targetid", "desi_ra", "desi_dec",
-                "match_class_eq", "matched_primary_deduped"]
-        pm = pd.read_parquet(p5_matched, columns=cols)
-        pm = pm[pm["matched_primary_deduped"]].copy()
-        pm = pm.rename(columns={"match_dr8_id": "dr8_id"})
-        # dedupe P5 side to unique dr8_id (nearest already picked in pipeline)
-        pm = pm.drop_duplicates("dr8_id", keep="first")
+        z_source = None
+        if have_parquet:
+            cols = ["match_dr8_id", "desi_z", "desi_targetid", "desi_ra", "desi_dec",
+                    "match_class_eq", "matched_primary_deduped"]
+            pm = pd.read_parquet(p5_matched, columns=cols)
+            pm = pm[pm["matched_primary_deduped"]].copy()
+            pm = pm.rename(columns={"match_dr8_id": "dr8_id"})
+            # dedupe P5 side to unique dr8_id (nearest already picked in pipeline)
+            pm = pm.drop_duplicates("dr8_id", keep="first")
+            pm = pm[["dr8_id", "desi_z", "desi_targetid", "desi_ra", "desi_dec"]]
+            z_source = "p5_matched_chirality_desi.parquet (matched_primary_deduped)"
+        else:
+            print("  [P5-void] building DESI z join from raw desi_zall.fits + "
+                  "p4_chirality.parquet (1.0 arcsec, ZWARN==0, GALAXY/QSO)...",
+                  flush=True)
+            pm = _build_p5_matched_from_zall(REPO)
+            if pm is None or len(pm) == 0:
+                return {"status": "DATA-UNAVAILABLE",
+                        "reason": ["raw desi_zall.fits + p4_chirality.parquet join "
+                                   "produced no rows"]}
+            z_source = ("materialized on-the-fly from desi_zall.fits + "
+                        "p4_chirality.parquet (03_crossmatch recipe: 1.0 arcsec "
+                        "nearest, ZWARN==0, SPECTYPE in {GALAXY,QSO}, primary-deduped)")
 
-        j = matched.merge(
-            pm[["dr8_id", "desi_z", "desi_targetid", "desi_ra", "desi_dec"]],
-            on="dr8_id", how="inner")
+        j = matched.merge(pm, on="dr8_id", how="inner")
         n_join_total = int(len(j))
         # DESIVAST volume cut
         j = j[j["desi_z"] <= Z_DESIVAST_MAX].reset_index(drop=True)
@@ -477,7 +574,8 @@ def _try_void_stratum(matched):
         result = {
             "status": "COMPUTED",
             "join": {
-                "key": "dr8_id (GZ1 overlap) == match_dr8_id (P5 matched parquet, deduped primary)",
+                "key": "dr8_id (GZ1 overlap) == dr8_id (P5 DESI-z matched, deduped primary)",
+                "desi_z_source": z_source,
                 "n_gz1_overlap_cw_ccw": int(len(matched)),
                 "n_joined_to_p5_matched": n_join_total,
                 "n_z_leq_0p24": n_lowz,
