@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.bigbounce.loopwatchdog</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/houstongolden/Desktop/CODE_YOU/bigbounce/tools/loop_watchdog.sh</string>
+    </array>
+
+    <!-- run every 15 minutes -->
+    <key>StartInterval</key>
+    <integer>900</integer>
+
+    <!-- also run immediately on load / login so a fresh boot is covered -->
+    <key>RunAtLoad</key>
+    <true/>
+
+    <key>StandardOutPath</key>
+    <string>/tmp/bigbounce_watchdog.log</string>
+    <key>StandardErrorPath</key>
+    <string>/tmp/bigbounce_watchdog.log</string>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/houstongolden/Desktop/CODE_YOU/bigbounce</string>
+
+    <!-- ensure claude + tinytex on PATH for the recovery tick -->
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/Users/houstongolden/.claude/local:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+    </dict>
+</dict>
+</plist>

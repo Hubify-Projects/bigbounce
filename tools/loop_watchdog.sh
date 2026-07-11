@@ -1,0 +1,188 @@
+#!/usr/bin/env bash
+# loop_watchdog.sh — OS-level watchdog for the bigbounce drive-to-100 loop.
+#
+# THE PROBLEM this fixes: Claude Code's in-session cron is SESSION-ONLY. It dies
+# when the app closes, skips ticks while the session is busy, and expires after
+# 7 days. When it silently died, Houston had to NOTICE the loop was down. That is
+# unacceptable — the watchdog is the thing that notices, outside Claude, in
+# launchd (~/Library/LaunchAgents/com.bigbounce.loopwatchdog.plist, every 15min).
+#
+# What it does each run:
+#   - reads project-context/LOOP_HEARTBEAT.json (lastTickUTC)
+#   - if the heartbeat is FRESH (<45min): log one PASS line, exit 0 (silent).
+#   - if the heartbeat is STALE (>=45min), the loop is considered DOWN:
+#       (a) macOS notification: "bigbounce loop DOWN — last tick <age>"
+#       (b) POST a Convex activityFeed:add alert row so the live site shows it
+#       (c) RECOVERY: launch ONE headless recovery `claude -p` tick that writes a
+#           fresh heartbeat, runs site_freshness_check + fixes FAILs, harvests any
+#           submitted-unharvested EXT manifests, and appends a status line to
+#           LOOP_WATCHDOG_LOG.md so the interactive session knows what happened.
+#       RECOVERY CAP: if a recovery ran <2h ago, only notify+alert (don't stack).
+#   - every run logs exactly one line to project-context/LOOP_WATCHDOG_LOG.md.
+#
+# See canonical spec: ~/.claude/scistack/astrostack/bigbounce-r-round/SKILL.md
+#   §"Loop watchdog".
+
+set -uo pipefail
+
+# ---------------------------------------------------------------------------
+# Config
+# ---------------------------------------------------------------------------
+REPO="/Users/houstongolden/Desktop/CODE_YOU/bigbounce"
+HEARTBEAT="$REPO/project-context/LOOP_HEARTBEAT.json"
+WATCHDOG_LOG="$REPO/project-context/LOOP_WATCHDOG_LOG.md"
+CONVEX_MUTATION_URL="https://brilliant-panther-471.convex.cloud/api/mutation"
+STALE_SECONDS=$((45 * 60))          # 45 minutes
+RECOVERY_COOLDOWN_SECONDS=$((2 * 60 * 60))  # 2 hours
+# marker file records the epoch of the last recovery launch (recovery cap)
+RECOVERY_MARKER="/tmp/bigbounce_watchdog_last_recovery"
+CLAUDE_BIN="$(command -v claude || echo "$HOME/.claude/local/claude")"
+
+NOW_EPOCH="$(date -u +%s)"
+NOW_ISO="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+
+# ---------------------------------------------------------------------------
+# Helpers
+# ---------------------------------------------------------------------------
+log_line() {
+  # append one line to the watchdog log; create with a header if missing
+  if [ ! -f "$WATCHDOG_LOG" ]; then
+    printf '# Loop Watchdog Log\n\nOne line per watchdog run (launchd, ~15min). Recovery lines start with `RECOVERY`.\n\n' > "$WATCHDOG_LOG"
+  fi
+  printf '%s  %s\n' "$NOW_ISO" "$1" >> "$WATCHDOG_LOG"
+}
+
+# human-readable age string from a number of seconds
+age_str() {
+  local s="$1" m h
+  if [ "$s" -lt 60 ]; then echo "${s}s"; return; fi
+  m=$((s / 60)); h=$((m / 60))
+  if [ "$h" -ge 1 ]; then echo "${h}h$((m % 60))m"; else echo "${m}m"; fi
+}
+
+# parse lastTickUTC epoch out of the heartbeat json (bash-3.2 + python fallback)
+heartbeat_epoch() {
+  [ -f "$HEARTBEAT" ] || { echo ""; return; }
+  python3 - "$HEARTBEAT" <<'PY' 2>/dev/null
+import sys, json
+from datetime import datetime, timezone
+try:
+    d = json.load(open(sys.argv[1]))
+    s = d.get("lastTickUTC", "").strip()
+    if not s:
+        print(""); sys.exit(0)
+    # normalize trailing Z
+    if s.endswith("Z"):
+        s = s[:-1] + "+00:00"
+    dt = datetime.fromisoformat(s)
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=timezone.utc)
+    print(int(dt.timestamp()))
+except Exception:
+    print("")
+PY
+}
+
+notify() {
+  # macOS user notification (best-effort; never fail the run on it)
+  /usr/bin/osascript -e "display notification \"$1\" with title \"bigbounce watchdog\"" >/dev/null 2>&1 || true
+}
+
+convex_alert() {
+  # POST an activityFeed:add alert row so the live site surfaces the outage.
+  # Best-effort — a network failure must not abort the watchdog.
+  local body_title="$1" body_text="$2"
+  local payload
+  payload="$(python3 - "$body_title" "$body_text" "$NOW_ISO" <<'PY' 2>/dev/null
+import sys, json
+title, body, iso = sys.argv[1], sys.argv[2], sys.argv[3]
+print(json.dumps({
+  "path": "activityFeed:add",
+  "args": {
+    "type": "alert",
+    "date": iso,
+    "title": title,
+    "body": body,
+    "tags": [
+      {"label": "watchdog", "kind": "alert"},
+      {"label": "loop-down", "kind": "alert"},
+    ],
+  },
+  "format": "json",
+}))
+PY
+)"
+  [ -z "$payload" ] && return 0
+  curl -sS -X POST "$CONVEX_MUTATION_URL" \
+    -H "Content-Type: application/json" \
+    -d "$payload" >/dev/null 2>&1 || true
+}
+
+recovery_last_epoch() {
+  [ -f "$RECOVERY_MARKER" ] || { echo 0; return; }
+  cat "$RECOVERY_MARKER" 2>/dev/null | tr -dc '0-9' || echo 0
+}
+
+RECOVERY_PROMPT='You are the OS-level RECOVERY tick for the bigbounce drive-to-100 loop. The in-session cron died and the launchd watchdog spawned you. Do ONLY these steps, then stop:
+1. Write a fresh heartbeat to project-context/LOOP_HEARTBEAT.json: {"lastTickUTC":"<current UTC ISO8601>","source":"watchdog-recovery","note":"recovery tick"}.
+2. Run: tools/site_freshness_check.sh --report . For every surface reported STALE/FAIL, fix it in-repo (update the live-status.ts / reviewTimeline.ts / SSOT surface the report names) and re-run until it passes or you have made a real fix attempt for each.
+3. For any EXT round with a submitted-but-unharvested manifest, run tools/ext_harvest.sh <round-label> to harvest verdicts.
+4. Append ONE dated status line to project-context/LOOP_WATCHDOG_LOG.md prefixed "RECOVERY-TICK" summarizing what you did (heartbeat written, which surfaces fixed, which rounds harvested) so the interactive session knows what happened.
+Do not start new review sweeps. Do not open new work. Recovery only. Commit any file fixes with a chore(watchdog-recovery): message.'
+
+launch_recovery() {
+  # fire-and-forget headless recovery tick; the tick itself writes the heartbeat
+  # + appends its own RECOVERY-TICK line to the log.
+  echo "$NOW_EPOCH" > "$RECOVERY_MARKER"
+  ( unset ANTHROPIC_API_KEY
+    "$CLAUDE_BIN" -p "$RECOVERY_PROMPT" \
+      --model claude-opus-4-8 \
+      --dangerously-skip-permissions \
+      --add-dir "$REPO" \
+      >> /tmp/bigbounce_watchdog_recovery.log 2>&1
+  ) &
+}
+
+# ---------------------------------------------------------------------------
+# Main
+# ---------------------------------------------------------------------------
+HB_EPOCH="$(heartbeat_epoch)"
+
+if [ -z "$HB_EPOCH" ]; then
+  # No parseable heartbeat at all — treat as DOWN.
+  log_line "DOWN   heartbeat missing/unparseable — launching recovery"
+  notify "bigbounce loop DOWN — no heartbeat"
+  convex_alert "bigbounce loop DOWN" "Watchdog found no parseable LOOP_HEARTBEAT.json at $NOW_ISO. Launching recovery tick."
+  REC_LAST="$(recovery_last_epoch)"
+  if [ "$((NOW_EPOCH - REC_LAST))" -lt "$RECOVERY_COOLDOWN_SECONDS" ]; then
+    log_line "RECOVERY skipped — last recovery <2h ago (notify-only)"
+  else
+    launch_recovery
+    log_line "RECOVERY launched (headless claude -p recovery tick)"
+  fi
+  exit 0
+fi
+
+AGE=$((NOW_EPOCH - HB_EPOCH))
+AGE_H="$(age_str "$AGE")"
+
+if [ "$AGE" -lt "$STALE_SECONDS" ]; then
+  # fresh — silent pass
+  log_line "PASS   heartbeat fresh (age ${AGE_H})"
+  exit 0
+fi
+
+# STALE — the loop is DOWN
+notify "bigbounce loop DOWN — last tick ${AGE_H} ago"
+convex_alert "bigbounce loop DOWN — last tick ${AGE_H} ago" \
+  "The drive-to-100 loop heartbeat is ${AGE_H} old (threshold 45m) as of ${NOW_ISO}. The OS watchdog is attempting a recovery tick."
+
+REC_LAST="$(recovery_last_epoch)"
+if [ "$((NOW_EPOCH - REC_LAST))" -lt "$RECOVERY_COOLDOWN_SECONDS" ]; then
+  REC_AGE="$(age_str $((NOW_EPOCH - REC_LAST)))"
+  log_line "DOWN   heartbeat stale (age ${AGE_H}) — notified+alerted; recovery SKIPPED (last recovery ${REC_AGE} ago, <2h cap)"
+else
+  launch_recovery
+  log_line "DOWN   heartbeat stale (age ${AGE_H}) — notified+alerted; RECOVERY launched (headless claude -p)"
+fi
+exit 0

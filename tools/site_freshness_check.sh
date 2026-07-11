@@ -43,11 +43,12 @@ done
 
 # All parsing + comparison is done in one python pass for robustness. It prints
 # lines "STATUS<TAB>SURFACE<TAB>DETAIL" then a final "OVERALL<TAB>PASS|FAIL".
-PYOUT="$(python3 - "$LIVE_STATUS" "$REVIEW_TIMELINE" "$EXT_REAL" "$CONVEX_URL" "$SCISTACK/$SKILL_MD_REL" "$REPO" <<'PY'
+HEARTBEAT="$REPO/project-context/LOOP_HEARTBEAT.json"
+PYOUT="$(python3 - "$LIVE_STATUS" "$REVIEW_TIMELINE" "$EXT_REAL" "$CONVEX_URL" "$SCISTACK/$SKILL_MD_REL" "$REPO" "$HEARTBEAT" <<'PY'
 import sys, os, re, json, subprocess, glob
 from datetime import datetime, timezone
 
-live_status, review_timeline, ext_real, convex_url, skill_md, repo = sys.argv[1:7]
+live_status, review_timeline, ext_real, convex_url, skill_md, repo, heartbeat = sys.argv[1:8]
 
 def now_utc():
     return datetime.now(timezone.utc)
@@ -312,6 +313,32 @@ if mismatches:
     overall_fail = True
 else:
     results.append(("FRESH", "versions", "all match: " + ", ".join(oks)))
+
+# ---------------------------------------------------------------------------
+# 5. HEARTBEAT (loop liveness — report-level; the launchd watchdog is the actor)
+#    STALE if LOOP_HEARTBEAT.json lastTickUTC is >45min old (or missing).
+#    This is a REPORT signal only: tools/loop_watchdog.sh (launchd, ~15min) is
+#    what actually notifies + posts a Convex alert + fires recovery.
+# ---------------------------------------------------------------------------
+try:
+    hb = json.load(open(heartbeat))
+    last = parse_iso(hb.get("lastTickUTC", ""))
+    if last is None:
+        results.append(("STALE", "heartbeat", "LOOP_HEARTBEAT.json has no parseable lastTickUTC"))
+        overall_fail = True
+    else:
+        age_min = (now_utc() - last).total_seconds() / 60.0
+        if age_min > 45:
+            results.append(("STALE", "heartbeat",
+                "loop heartbeat %.0fmin old (>45min) — watchdog should have fired; check LOOP_WATCHDOG_LOG.md" % age_min))
+            overall_fail = True
+        else:
+            results.append(("FRESH", "heartbeat", "loop heartbeat %.0fmin old" % age_min))
+except FileNotFoundError:
+    results.append(("STALE", "heartbeat", "LOOP_HEARTBEAT.json missing — loop never started / watchdog down"))
+    overall_fail = True
+except Exception as e:
+    results.append(("WARN", "heartbeat", "could not read heartbeat: %s" % e))
 
 # emit
 for status, surface, detail in results:
