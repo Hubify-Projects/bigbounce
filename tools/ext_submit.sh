@@ -120,24 +120,30 @@ echo "    pdf: $STAGE"
 # GROK
 # =====================================================================
 submit_grok() {
+  # Expert is the session default in this project; clicking the Expert button
+  # opens a menu that STEALS composer focus and makes the subsequent type step
+  # time out. So: NEVER click Expert — only VERIFY the mode label reads Expert.
   bcall 45 goto "$GROK_PROJECT" || die "grok goto failed: $BOUT"
-  bcall 45 wait --networkidle || true
+  sleep 6
   # upload into the file input
   bcall 90 upload 'input[type="file"]' "$STAGE" || die "grok upload failed: $BOUT"
-  # chip check: wait for an attachment chip to appear
-  local i chip=0
+  sleep 8
+  # chip check: innerText match on the staged filename (or an attachment chip)
+  local i chip=0 base; base="$(basename "$STAGE")"
   for i in 1 2 3 4 5 6; do
-    bcall 45 js 'document.body.innerText.includes("'"$(basename "$STAGE")"'") || !!document.querySelector("[class*=attachment],[class*=file-chip],[class*=preview]")' || true
+    bcall 45 js 'document.body.innerText.includes("'"$base"'") || !!document.querySelector("[class*=attachment],[class*=file-chip],[class*=preview]")' || true
     printf '%s' "$BOUT" | grep -qi true && { chip=1; break; }
     sleep 6
   done
   [ "$chip" = 1 ] || echo "    WARN grok chip not confirmed — continuing"
-  # verify Expert mode button (best-effort — click if present and not active)
-  bcall 45 js '(function(){var b=[...document.querySelectorAll("button,[role=button]")].find(function(e){return /Expert/i.test(e.textContent||"")});if(b){b.click();return "clicked-expert"}return "no-expert-btn"})()' || true
-  echo "    grok mode: $BOUT"
+  # VERIFY Expert mode is active (read-only) — do NOT click. Just confirm a
+  # button's innerText includes Expert (mode label present in the composer bar).
+  bcall 45 js '(function(){var b=[...document.querySelectorAll("button,[role=button]")].find(function(e){return /Expert/i.test(e.textContent||e.getAttribute("aria-label")||"")});return b?"expert-present":"expert-not-visible"})()' || true
+  echo "    grok mode(verify-only): $BOUT"
   # type the prompt
   bcall 45 js 'var t=document.querySelector("textarea,[contenteditable=true]");if(t){t.focus();}' || true
-  bcall 45 type "$PROMPT" || die "grok type failed: $BOUT"
+  bcall 60 type "$PROMPT" || die "grok type failed: $BOUT"
+  sleep 2
   # JS-click submit/send (aria)
   bcall 45 js '(function(){var b=document.querySelector("button[aria-label*=Submit i],button[aria-label*=Send i],button[type=submit]");if(b){b.click();return "sent"}var f=[...document.querySelectorAll("button")].find(function(e){return /submit|send/i.test(e.getAttribute("aria-label")||"")});if(f){f.click();return "sent-fallback"}return "no-send-btn"})()' || die "grok send failed: $BOUT"
   echo "    grok send: $BOUT"
@@ -150,27 +156,41 @@ submit_grok() {
 # CHATGPT
 # =====================================================================
 submit_chatgpt() {
+  # Unique per-round input id so `upload` NEVER matches multiple elements
+  # (the old bare 'input[type=file]' fallback errored "matched multiple").
+  local UID="extUpload_${PAPER}_${ROUND}"
   bcall 45 goto "$CHATGPT_PROJECT" || die "chatgpt goto failed: $BOUT"
-  bcall 45 wait --networkidle || true
-  # JS-tag the first file input with a unique id so upload targets it reliably
-  bcall 45 js '(function(){var f=document.querySelector("input[type=file]");if(f){f.id="extUpload";return "tagged"}return "no-file-input"})()' || true
+  sleep 10
+  # JS-tag the first file input with the unique id. If NO-INPUT, the page may
+  # not have hydrated yet — sleep 5 and retry the goto+tag ONCE.
+  bcall 45 js '(function(){var f=document.querySelector("input[type=file]");if(f){f.id="'"$UID"'";return "tagged"}return "NO-INPUT"})()' || true
   echo "    chatgpt tag: $BOUT"
-  bcall 90 upload '#extUpload' "$STAGE" || bcall 90 upload 'input[type="file"]' "$STAGE" || die "chatgpt upload failed: $BOUT"
+  if printf '%s' "$BOUT" | grep -q NO-INPUT; then
+    echo "    chatgpt file-input not hydrated — retry goto+tag once"
+    sleep 5
+    bcall 45 goto "$CHATGPT_PROJECT" || die "chatgpt goto(retry) failed: $BOUT"
+    sleep 8
+    bcall 45 js '(function(){var f=document.querySelector("input[type=file]");if(f){f.id="'"$UID"'";return "tagged"}return "NO-INPUT"})()' || true
+    echo "    chatgpt tag(retry): $BOUT"
+    printf '%s' "$BOUT" | grep -q NO-INPUT && die "chatgpt file input never appeared"
+  fi
+  # Upload ONLY via the unique id — never a bare multi-match selector.
+  bcall 90 upload "#$UID" "$STAGE" || die "chatgpt upload failed: $BOUT"
   # chip poll 6 x 6s
-  local i chip=0
+  local i chip=0 base; base="$(basename "$STAGE")"
   for i in 1 2 3 4 5 6; do
-    bcall 45 js '!!document.querySelector("[class*=attachment],[class*=file],[data-testid*=attachment]") || document.body.innerText.includes("'"$(basename "$STAGE")"'")' || true
+    bcall 45 js '!!document.querySelector("[class*=attachment],[class*=file],[data-testid*=attachment]") || document.body.innerText.includes("'"$base"'")' || true
     printf '%s' "$BOUT" | grep -qi true && { chip=1; break; }
     sleep 6
   done
   [ "$chip" = 1 ] || echo "    WARN chatgpt chip not confirmed — continuing"
   # type
   bcall 45 js 'var t=document.querySelector("#prompt-textarea,[contenteditable=true],textarea");if(t){t.focus();}' || true
-  bcall 45 type "$PROMPT" || die "chatgpt type failed: $BOUT"
+  bcall 60 type "$PROMPT" || die "chatgpt type failed: $BOUT"
   # JS-click send: testid first, aria fallback
   bcall 45 js '(function(){var b=document.querySelector("button[data-testid=send-button]");if(b){b.click();return "sent-testid"}var a=document.querySelector("button[aria-label*=Send i]");if(a){a.click();return "sent-aria"}return "no-send-btn"})()' || die "chatgpt send failed: $BOUT"
   echo "    chatgpt send: $BOUT"
-  sleep 8
+  sleep 10
   bcall 45 url || true
   SUBMIT_URL="$(printf '%s' "$BOUT" | tr -d '\r' | tail -1)"
 }
