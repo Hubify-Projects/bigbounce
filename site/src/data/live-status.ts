@@ -47,10 +47,10 @@ export interface LiveStatus {
 }
 
 export const liveStatus: LiveStatus = {
-  lastUpdatedISO: "2026-07-11T08:55:00Z",
-  lastUpdatedDisplay: "July 11, 2026 · 1:55 AM PT",
+  lastUpdatedISO: "2026-07-11T14:59:00Z",
+  lastUpdatedDisplay: "July 11, 2026 · 7:59 AM PT",
   headline:
-    "PROGRAM PAST THE CONVERGENCE BAR — wave-1 kit verified, awaiting Houston submission clicks. All five papers (P1U/P2/P3/P4/P5) are past the directive-K two-clean-waves bar; the edit-loop program has EXITED. Streaks: P1U 2 · P2 3 · P3 4 · P4 4 · P5 2. The wave-1 arXiv kit (P4 → P3 → P2) plus the wave-2 P5 + P1U bundles are rebuilt at the exit versions and standalone-compile-verified (0 errors, 0 undef-refs; each tarball's .tex byte-matches the repo source; P4/P3 unchanged since Jul-10, P2/P5/P1U rebuilt to v1.7.113 / v0.1.120 / v1U.0.12). Grok EXT returned literal ACCEPTs on P5 (v0.1.117) and P4 (v1.0.235) — the program's first two external ACCEPTs; Claude INT ACCEPTed P4 and P5. Remaining work is two Houston-gated clocks: arXiv wave-1 submission clicks (minutes) and human journal referees (months).",
+    "PROGRAM PAST THE CONVERGENCE BAR — wave-1 kit verified, awaiting Houston submission clicks. All five papers (P1U/P2/P3/P4/P5) are past the directive-K two-clean-waves bar; the edit-loop program has EXITED. Streaks: P1U 2 · P2 3 · P3 4 · P4 4 · P5 2. The wave-1 arXiv kit (P4 → P3 → P2) plus the wave-2 P5 + P1U bundles are rebuilt at the exit versions and standalone-compile-verified (0 errors, 0 undef-refs; each tarball's .tex byte-matches the repo source; all five restamped Jul-11 to P4 v1.0.236 / P3 v3.1.153 / P2 v1.7.113 / P5 v0.1.121 / P1U v1U.0.13, page 1 dated July 11, 2026, no content change). Grok EXT returned literal ACCEPTs on P5 (v0.1.117) and P4 (v1.0.235) — the program's first two external ACCEPTs; Claude INT ACCEPTed P4 and P5. Remaining work is two Houston-gated clocks: arXiv wave-1 submission clicks (minutes) and human journal referees (months).",
   summary:
     "Round H17 (Jul 10) found and FIXED 8 real errors — P4's Shamir factor-of-2 (survived ~17 prior waves), P2's spurious-term sign + 5 stale Bayes columns, P1U's Check-D contradiction + conventions, P5's primary-estimand seam — then converged: two consecutive waves with 0 genuinely-new findings, 49 findings all ledger-matched. New real science shipped: GZ1 confusion matrices stratified by sky-leg, confidence AND void/non-void environment (parity-symmetric errors measured, not assumed). Verdict-gap trend: program average up from ~0.3 (Jul-4 verified-reset era, all REJECT/MAJOR) to ~1.0-1.2 today, driven by real fixes.",
   currentlyRunning: [
@@ -84,7 +84,7 @@ export const liveStatus: LiveStatus = {
       slug: "paper-1a",
       number: "1U",
       shortTitle: "Unified Paper 1 — ECH constraints + reproducibility (P1B merged in)",
-      version: "v1U.0.12",
+      version: "v1U.0.13",
       readiness: 62,
       pendingWork: "CROSSED the two-clean-waves bar (streak 2, HELD at W2b). W2b EXT: ChatGPT re-sweep of v1U.0.12 = REJECT, 15 MAJOR+2 MINOR, all source-cited re-flags (DP1U-03/-05/-08/-09/-10/-12/-14/-15/-17/-20/-22), 0 genuinely-new — the documented ChatGPT harsh-referee floor. W2 EXT: Grok MINOR→MAJOR was truth-audited as pattern-066 verdict-word oscillation on unchanged v1U.0.12 — all source-cited re-flags, 0 genuinely-new. (W1 INT had caught + fixed the Check-D script/abstract sync in v1U.0.12.)",
     },
@@ -108,7 +108,7 @@ export const liveStatus: LiveStatus = {
       slug: "paper-4",
       number: "4",
       shortTitle: "8.47M-galaxy chirality null at sub-percent sensitivity",
-      version: "v1.0.235",
+      version: "v1.0.236",
       readiness: 74,
       pendingWork: "CROSSED the bar (streak 4) + Grok EXT literal ACCEPT (W1) + Claude INT ACCEPT. Shamir factor-of-2 REAL error fixed this round (A_ref 0.017, z -7.6); stratified confusion matrices measured and integrated. ChatGPT REJECT = documented floor.",
     },
@@ -116,7 +116,7 @@ export const liveStatus: LiveStatus = {
       slug: "paper-5",
       number: "5",
       shortTitle: "DESI environmental chirality independence",
-      version: "v0.1.120-2026-07-10",
+      version: "v0.1.121-2026-07-11",
       readiness: 68,
       pendingWork: "CROSSED the two-clean-waves bar (streak 2). W4-INT confirm wave (Jul 11): 0 genuinely-new reader-visible findings across INT Claude MINOR / OpenAI MAJOR / Grok MINOR. NEW — OpenAI moved REJECT → MAJOR on P5, its first non-REJECT (native-PDF v0.1.120, INT_v3/ROUND_2026-07-09/API_P5_openai.md). All 8 OpenAI real UNMATCHED = source-cited re-flags (footprint≠selection-mask DP5-06, 2a−1 under-powered void arm DP5-08/-09, duplicate-TARGETID/T-Web DP5-14, fragmented multiplicity DP5-04/-19, abstract-length/Fig-legibility/N_MC DP5-22, DOI-at-acceptance DP5-18/-21); Grok's 2 + Claude's residual all re-flags or parser noise. No bump (v0.1.120 stands, comment-only wave). First EXT ACCEPT of the program (Grok, v0.1.117) + Claude INT ACCEPT.",
     },

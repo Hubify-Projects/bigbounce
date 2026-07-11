@@ -48,6 +48,28 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "RESTAMP-2026-07-11",
+    dateISO: "2026-07-11",
+    kind: "closure-wave",
+    title:
+      "Program-exit restamp — all five papers re-dated July 11, 2026 + one fresh patch version each (P4 v1.0.236 · P3 v3.1.153 · P2 v1.7.113 · P5 v0.1.121 · P1U v1U.0.13). No content change; PDFs recompiled + re-mirrored, arXiv bundles rebuilt + standalone-verified.",
+    papers: ["P1A", "P2", "P3", "P4", "P5"],
+    summary:
+      "Houston-requested program-exit restamp: each of the five papers bumped one patch version and re-dated to July 11, 2026 with ZERO content change (single-line changelog comment only). directive_g.sh ran the full hygiene chain per paper — leak-gate clean, TinyTeX recompile (0 errors, 0 undefined refs), byte-identical mirror to every served path + versioned alias, Convex paperVersions:bump with the real new md5/pages, and read-back verify. New served-PDF md5 / pages: P4 fd34a3ed / 35 · P3 9b7391ed / 37 · P2 de34d7ac / 37 · P5 6422770c / 45 · P1U 7ba02c4a / 60; page 1 of every recompiled PDF confirmed to render 'July 11, 2026'. All five arXiv submission bundles were rebuilt at the new versions from the same known-good file sets and standalone re-extract+compile-verified (0 err / 0 undef, correct page counts, page-1 date July 11, 2026): P4 arxiv_p4_v1.0.236 (tarball 2742b0dd) · P3 arxiv_p3_v3.1.153 (af0045ac) · P2 arxiv_p2_v1.7.113 (33dfb04a) · P5 arxiv_p5_v0.1.121 (7ec341c5) · P1U arxiv_p1_unified_v1U.0.13 (5a06e6b9). WAVE1_SUBMIT_WALKTHROUGH.md + live-status version chips updated to the new versions. No verdicts changed — the directive-K exit state and all clean-wave streaks (P1U 2 · P2 3 · P3 4 · P4 4 · P5 2) stand unchanged; this is a date/version freshness pass, not a review round.",
+    keyTakeaways: [
+      "All five papers restamped to July 11, 2026 with a fresh patch version and no content change (P4 v1.0.236 · P3 v3.1.153 · P2 v1.7.113 · P5 v0.1.121 · P1U v1U.0.13)",
+      "directive_g.sh per paper: recompile 0-err/0-undef, byte-identical mirror to all served paths, Convex bump with real md5/pages, read-back verified; page 1 renders July 11, 2026",
+      "All five arXiv bundles rebuilt at the new versions and standalone re-extract+compile-verified (0 err / 0 undef, correct page counts)",
+      "Verdicts + directive-K exit state + clean-wave streaks unchanged — freshness pass only, not a review round",
+    ],
+    links: [
+      {
+        label: "WAVE1_SUBMIT_WALKTHROUGH.md",
+        href: `${GH}/submissions/WAVE1_SUBMIT_WALKTHROUGH.md`,
+      },
+    ],
+  },
+  {
     id: "GEM1-INT-2026-07-11",
     dateISO: "2026-07-11",
     kind: "internal-api",

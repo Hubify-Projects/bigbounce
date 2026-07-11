@@ -4,16 +4,16 @@
 cites as a companion; P3 and P2 are independent. This order keeps the wave-2
 cross-references clean.)
 
-**Verified:** 2026-07-11 (program-exit final versions — all 5 papers past the directive-K two-clean-waves bar). Every bundle below is rebuilt from the current source at the exit versions and standalone re-extract+compile-verified (0 errors, 0 undefined refs; the .tex inside each tarball matches the repo source byte-for-byte). Wave-1 papers **P4 + P3 are byte-for-byte unchanged** since the 2026-07-10 build (source `.tex` md5 inside the tarball == source `.tex` md5 on disk — verified). Wave-1 P2 + wave-2 P5/P1U were rebuilt 2026-07-11 to their exit versions.
-- P4 `arxiv_p4_v1.0.235.tar.gz` — **UNCHANGED** (v1.0.235; tarball `.tex` md5 == source md5 `3c3eaf9d39ece100434ea9ec36a5d3ee`) — standalone exit 0, 0 undef, **35 pages**. 20 bare-filename entries. Grok EXT literal ACCEPT + Claude INT ACCEPT.
-- P3 `arxiv_p3_v3.1.152.tar.gz` — **UNCHANGED** (v3.1.152; tarball `.tex` md5 == source md5 `2c7a98e1c170609f14a107204c34d049`) — standalone exit 0, 0 undef, **37 pages**. Subdir prefix `arxiv_p3_v3.1.152/`.
-- P2 `arxiv_p2_v1.7.112.tar.gz` — **rebuilt 2026-07-11** at v1.7.112 (.bbl regenerated via bibtex) — standalone exit 0, 0 undef, **37 pages**; page 1 shows "July 10, 2026". PDF md5 `ce0c2261fcd6cd900a7f4383f11dff2c`. `./`-prefixed (`02_full_draft.tex` + `.bbl` + `focused_paper_refs.bib` + revtex `02_full_draftNotes.bib` control file + 5 figs + `bphi_sensitivity.pdf`).
+**Verified:** 2026-07-11 (program-exit restamp — all 5 papers re-stamped to today's date + a fresh patch version, no content change). Every bundle below is rebuilt from the current source at the exit versions and standalone re-extract+compile-verified (0 errors, 0 undefined refs; the .tex inside each tarball matches the repo source; page 1 shows "July 11, 2026"). All 5 wave bundles (P4/P3/P2/P5/P1U) rebuilt 2026-07-11 at the restamp versions.
+- P4 `arxiv_p4_v1.0.236.tar.gz` — **rebuilt 2026-07-11** at v1.0.236 (restamp) — standalone exit 0, 0 undef, **35 pages**; page 1 "July 11, 2026". Served-PDF md5 `fd34a3ed45cd0425dd984aee03d97041`; tarball md5 `2742b0dd8bc7af4bbe83f0b287e0bc96`. 20 bare-filename entries. Grok EXT literal ACCEPT + Claude INT ACCEPT.
+- P3 `arxiv_p3_v3.1.153.tar.gz` — **rebuilt 2026-07-11** at v3.1.153 (restamp) — standalone exit 0, 0 undef, **37 pages**; page 1 "July 11, 2026". Served-PDF md5 `9b7391ed5438f43d7f2a1499567902e8`; tarball md5 `af0045ac92d796341ee756f012b59ab9`. Subdir prefix `arxiv_p3_v3.1.153/`.
+- P2 `arxiv_p2_v1.7.113.tar.gz` — **rebuilt 2026-07-11** at v1.7.113 (restamp; .bbl regenerated via bibtex) — standalone exit 0, 0 undef, **37 pages**; page 1 shows "July 11, 2026". Served-PDF md5 `de34d7ac50d3f1f3cc3d2ef35f3b409b`; tarball md5 `33dfb04a55b2c2a96412acf632d664bd`. `./`-prefixed (`02_full_draft.tex` + `.bbl` + `focused_paper_refs.bib` + revtex `02_full_draftNotes.bib` control file + 5 figs + `bphi_sensitivity.pdf`).
 - Placeholder scans: all three CLEAN (only commented-out `%\preprint{arXiv:XXXX.XXXXX}` lines, which never render). No dangling companion-paper placeholders. P3 still carries one optional `\emph{DOI inserted at submission}` Zenodo sentence (see P3 note below).
 - Abstracts: the paste blocks below are the arXiv-form-safe (<1920 chars) versions; the H17→W-wave convergence tail changed **no headline number** (−35/16 unchanged in P2 final tex; all counts stable — "0 genuinely-new findings"), so the science text in every wave-1 abstract remains valid at the final versions. (P4 abstract 1583 chars, P3 1559 chars, P2 1583 chars — all ≤1920, re-checked against final source.)
 
 **Wave-2 bundles (rebuilt 2026-07-11 to exit versions, for the P5+P1U wave):**
-- P5 `arxiv_p5_v0.1.120.tar.gz` — **rebuilt 2026-07-11** at v0.1.120-2026-07-10, standalone exit 0, 0 undef, **45 pages**; page 1 "July 10, 2026". PDF md5 `fb6594d36d94a56de13792790e933b37`. Subdir prefix `p5_arxiv_v0.1.120/`. Inline `thebibliography` (no bibtex pass; .bbl carried from source; revtex `p5_desi_chiralityNotes.bib` control file included). First EXT ACCEPT of the program (Grok, v0.1.117) + Claude INT ACCEPT.
-- P1U `arxiv_p1_unified_v1U.0.12.tar.gz` — **rebuilt 2026-07-11** at v1U.0.12 (.bbl regenerated via bibtex), standalone exit 0, 0 undef, **60 pages**; page 1 "July 11, 2026". PDF md5 `df4e711318dfb1668b92c21c7ea6c378`. `./`-prefixed; includes both `.bib` files + `scripts/*.py` (P1A+P1B merged; there is NO standalone P1B submission).
+- P5 `arxiv_p5_v0.1.121.tar.gz` — **rebuilt 2026-07-11** at v0.1.121-2026-07-11 (restamp), standalone exit 0, 0 undef, **45 pages**; page 1 "July 11, 2026". Served-PDF md5 `6422770cccbd81a8c7c35375b9781840`; tarball md5 `7ec341c5fa9932be0f855325fbd37aca`. Subdir prefix `p5_arxiv_v0.1.121/`. Inline `thebibliography` (no bibtex pass; .bbl carried from source; revtex `p5_desi_chiralityNotes.bib` control file included). First EXT ACCEPT of the program (Grok, v0.1.117) + Claude INT ACCEPT.
+- P1U `arxiv_p1_unified_v1U.0.13.tar.gz` — **rebuilt 2026-07-11** at v1U.0.13 (restamp; .bbl regenerated via bibtex), standalone exit 0, 0 undef, **60 pages**; page 1 "July 11, 2026". Served-PDF md5 `7ba02c4a178f5de0dc6332bd7265a228`; tarball md5 `5a06e6b9385425827959122aca8415bb`. `./`-prefixed; includes both `.bib` files + `scripts/*.py` (P1A+P1B merged; there is NO standalone P1B submission).
 
 ---
 
@@ -30,11 +30,11 @@ If Step 0 is clean (astro-ph enabled, no endorsement block), proceed. If blocked
 
 ## PAPER 1 — P4 (submit FIRST)
 
-**Upload:** `submissions/P4/arxiv_p4_v1.0.235.tar.gz`
+**Upload:** `submissions/P4/arxiv_p4_v1.0.236.tar.gz`
 (Full paste-ready field text also lives in `submissions/P4/ARXIV_METADATA.txt`.)
 
 ### 1. Start submission → upload the tarball
-arxiv.org/submit → "Start a new submission" → upload `arxiv_p4_v1.0.235.tar.gz`.
+arxiv.org/submit → "Start a new submission" → upload `arxiv_p4_v1.0.236.tar.gz`.
 Let arXiv run AutoTeX. It should compile to **35 pages**.
 
 ### 2. Metadata — paste these blocks
@@ -69,7 +69,7 @@ release). Conservative alternative: arXiv's standard perpetual non-exclusive lic
 
 ### 3. Preview checks (before hitting Submit)
 - Open the arXiv-generated PDF preview.
-- **Page 1** shows version/date consistent with v1.0.235 (title-block emits the timestamp; no stray version tag).
+- **Page 1** shows version/date consistent with v1.0.236 (title-block emits the timestamp; no stray version tag).
 - **Figures render** — spot-check that figure pages show images, not blank boxes (the tarball is ~25 MB precisely because the figures are heavy; if a figure is missing, do NOT submit — reping the loop).
 - Title, authors, abstract, categories match the blocks above.
 
@@ -83,19 +83,19 @@ P4 arXiv ID: __________________
 
 ## PAPER 2 — P3 (submit SECOND)
 
-**Upload:** `submissions/P3/arxiv_p3_v3.1.152.tar.gz`
+**Upload:** `submissions/P3/arxiv_p3_v3.1.153.tar.gz`
 (Paste-ready fields also in `submissions/P3/ARXIV_METADATA.txt`.)
 
 > **BEFORE UPLOAD — one optional Houston-gated edit (Zenodo DOI):**
 > The paper body (`pipelines/p3_anomaly_engine/paper3_draft.tex`, ~line 1542) has the
 > sentence `\emph{DOI inserted at submission}` reserving a spot for a Zenodo DOI.
 > - If you want the DOI in v1: mint the Zenodo DOI for the HF dataset, replace that
->   sentence, recompile, and rebuild the tarball as `arxiv_p3_v3.1.152.tar.gz` before upload.
+>   sentence, recompile, and rebuild the tarball as `arxiv_p3_v3.1.153.tar.gz` before upload.
 > - If you'd rather ship now and add the DOI in a v2: the current bundle is submittable
 >   as-is (the sentence reads cleanly; it is not a broken placeholder). Your call.
 
 ### 1. Start submission → upload
-Upload `arxiv_p3_v3.1.152.tar.gz`. Compiles to **37 pages**.
+Upload `arxiv_p3_v3.1.153.tar.gz`. Compiles to **37 pages**.
 
 ### 2. Metadata — paste these blocks
 
@@ -125,7 +125,7 @@ We present a multi-survey autoencoder anomaly catalog produced by applying the B
 **License:** **CC BY 4.0** (recommended). Conservative alt: arXiv non-exclusive.
 
 ### 3. Preview checks
-- Page 1 shows July 10, 2026 / v3.1.152.
+- Page 1 shows July 11, 2026 / v3.1.153.
 - Figures render (12 figures, mix of PNG + PDF).
 - Title/authors/abstract/categories match.
 
@@ -154,12 +154,12 @@ curl -s -X PUT -H "Authorization: Bearer $HF_TOKEN" -H "Content-Type: applicatio
 
 ## PAPER 3 — P2 (submit THIRD)
 
-**Upload:** `submissions/P2/arxiv_p2_v1.7.112.tar.gz`
+**Upload:** `submissions/P2/arxiv_p2_v1.7.113.tar.gz`
 (Paste-ready fields also in `submissions/P2/ARXIV_METADATA.txt`.)
 
 ### 1. Start submission → upload
-Upload `arxiv_p2_v1.7.112.tar.gz`. Compiles to **37 pages**.
-(Note: the source `\date{}` reads "July 10, 2026"; the real version is v1.7.112.
+Upload `arxiv_p2_v1.7.113.tar.gz`. Compiles to **37 pages**.
+(Note: the source `\date{}` reads "July 11, 2026"; the real version is v1.7.113.
 arXiv shows its own submission date, so this is cosmetic.)
 
 ### 2. Metadata — paste these blocks
@@ -221,8 +221,8 @@ line in each source `.tex` for the version-of-record, then rebuild. Not required
 **Paste the three assigned arXiv IDs (P4, P3, P2) — plus P1B's, if a standalone P1B is
 ever posted — back to the loop; wave-2 insertion is automated by
 `tools/insert_arxiv_ids.sh` (REPO path corrected to CODE_YOU 2026-07-10; dry-run
-green).** Wave-2 papers are **P5** (`arxiv_p5_v0.1.120.tar.gz`, v0.1.120, 45 pp) and the
-**unified Paper 1 P1U** (`arxiv_p1_unified_v1U.0.12.tar.gz`, v1U.0.12, 60 pp — P1A+P1B
+green).** Wave-2 papers are **P5** (`arxiv_p5_v0.1.121.tar.gz`, v0.1.121, 45 pp) and the
+**unified Paper 1 P1U** (`arxiv_p1_unified_v1U.0.13.tar.gz`, v1U.0.13, 60 pp — P1A+P1B
 merged; there is NO standalone P1B submission). Both cross-cite the wave-1 IDs:
 - **P5**: the `\paperIVarxiv` macro (`p5_desi_chirality.tex:24`, currently
   `arXiv:XXXX.XXXXX`) resolves to **P4's** assigned ID.
