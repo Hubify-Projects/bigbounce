@@ -384,4 +384,30 @@ Raw: `final/P2_chatgpt_final.md` (read + verified). Grok final-wave leg PENDING 
 
 - **ChatGPT EXT = REJECT** — 10 MAJOR + 1 MINOR, all map 1:1 to prior dispositions: spurious-term / claimed-novelty (DP2-01/03 — paper already retracted the "doubling mechanism" overclaim and states −305/64 explicitly), in-in +c.c. time-ordering (DP2-16), null-space scan unphysical (DP2-15), cubic-transmission bound not derived (DP2-13), r=0.84 not a covariance-weighted response / r_eff≈0.99 (DP2-14/17), Fisher 0.42–0.45 vs Heinrich (DP2-22), systematic envelope no covariance (DP2-04/07), Bayes prior-volume toy (DP2-18), κ_ε∈[0.6,8%] not computed (DP2-20), gauge-frame/factor-146 (DP2-21), length/abstract/DOI MINOR (DP2-30). The raw's own concluding line concedes the headline −35/16 IS supported by Cai/Li correctly-counted expressions — confirming the value, disputing framing. **0 genuinely-new real+editable** (matches the DP2-24 structural-floor finding).
 
-**Outcome:** ChatGPT at the maximal-harsh floor; every item a source-cited re-flag or Houston-gated venue barrier (DP2-26/29 external-data, DP2-30 presentation). 0 genuinely-new → no v1.7.111 bump, v1.7.110 stands. Grok final leg pending — does not change the disposition (Addendum-3 Grok already MINOR, 0 genuinely-new). No fabricated math; headline −35/16 quadruple-certified.
+**Outcome:** ChatGPT at the maximal-harsh floor; every item a source-cited re-flag or Houston-gated venue barrier (DP2-26/29 external-data, DP2-30 presentation). Grok final leg (below) is now harvested and closes to v1.7.111.
+
+---
+
+## H17F FINAL-WAVE ADDENDUM 2 (2026-07-10) — Grok EXT = ACCEPT WITH MINOR REVISIONS → v1.7.111
+
+Raw: `final/P2_grok_final.md` (read + verified). **Verdict: "Accept with minor revisions"** — the first real EXT ACCEPT on P2. Grok's substantive summary independently confirms the science: −35/16 exactly from the four cubic vertices (matching Li at c_s=1), the −(99/128)Σkᵢ³ monomial trace, the r≈0.84–0.876 template-mismatch map, the 200-injection MC, the 10⁴-sample null-space scan, the independent tree-level Fisher (r_eff≈0.99 validation), and the closed-form Bayesian comparison — "technically sound, assumptions stated explicitly and defended … suitable for publication in Phys. Rev. D after the minor revisions."
+
+Six prose-listed minors (NOT [MINOR]-tagged; read from the raw's "Minor revisions requested" + "Minor presentational items" blocks). Dispositioned in DISPOSITIONS/P2.md DP2-31:
+
+| # | Grok minor | Verdict | Closure (v1.7.111) |
+|---|---|---|---|
+| 1 | Clarify independent-Fisher status in abstract (validation only) | ALREADY-COVERED | Abstract Scope L888 already states in-house Fisher "not as the source of the headline numbers"; = DP2-14/17. No edit. |
+| 2 | Shorten/relegate technical appendices (App A, null-space histograms → SM) | PRESENTATION-SCOPE (Houston-gated) | = DP2-30; content essential+correct, only length flagged. Not an edit-loop item. |
+| 3 | Explicit GR-projection = scoping envelope not joint covariance | ALREADY-COVERED | Abstract L892 + tab:systematics caption + scope-summary(v) = DP2-04/26. No edit. |
+| 4 | Unify `r` notation (flat-weight cosine vs noise-weighted recovery) | REAL / EDITABLE — CLOSED | Added "Notation for the overlap factor (fixed throughout)" clause at Eq.(projection): bare r=noise-weighted (0.84±0.02); r_cos=flat-weight cosine; r_eff≈0.99=survey-optimal validation; r=0.85±0.13=basis stress band. |
+| 5 | One-line public-repo/Zenodo pointer in Data Availability | REAL / EDITABLE — CLOSED | DAS reworded to lead with crisp single external pointer to github.com/Hubify-Projects/bigbounce (real repo) + this paper's sources path; Zenodo DOI kept pending-at-camera-ready (no DOI invented). |
+| 6 | Abstract phrase "the erroneous ≥5σ headline the −35/8 value would have produced" awkward | REAL / EDITABLE — CLOSED | Rephrased (L896): "The superseded −35/8 value, being twice as large, would have implied a spuriously optimistic ≥5σ target; the corrected amplitude replaces it with the realistic sensitivity above." |
+
+### Integrity
+No fabrication. Headline −35/16 unchanged (quadruple-certified). The three editable minors (#4, #5, #6) are pure clarity/notation/pointer edits — no number, derivation, or claim altered. The three already-covered/scope minors (#1, #2, #3) were dispositioned with source-cited section pointers, not silently dropped. The Zenodo DOI remains pending; only the real, existing GitHub repo is cited (per prompt).
+
+### Directive-G hygiene (v1.7.111)
+- `\date` = July 10, 2026; version comment header bumped v1.7.110 → v1.7.111.
+- `tools/directive_g.sh P2 v1.7.111` PASS: 0 errors, 0 undefined refs, 0 overfull >50pt hboxes, 38 pages.
+- PDF md5 = `85d94d28e74c6f0fb5fe09677026e1c3`, mirrored byte-identical to all 6 served paths.
+- Leak-gate: clean. Convex `paperVersions:bump` paper-2 v1.7.111 → row `k5782h23n67c0tte2wzwcc5d4h8abcbs` (current == v1.7.111, md5 verified).
