@@ -4,12 +4,16 @@
 cites as a companion; P3 and P2 are independent. This order keeps the wave-2
 cross-references clean.)
 
-**Verified:** 2026-07-09. Every check below was run, not assumed.
-- P4 `arxiv_p4_v1.0.227.tar.gz` — md5 `4d384c16` — **rebuilt today** from current source (the `.224` bundle was one version stale) — standalone re-extract+compile exit 0, 0 undef, **33 pages**.
-- P3 `arxiv_p3_v3.1.148.tar.gz` — md5 `1fa084f7` — **rebuilt today** from current source (the `.144` bundle was one version stale) — smoke-test re-extract+compile exit 0, 0 undef, **36 pages**.
-- P2 `arxiv_p2_v1.7.106.tar.gz` — md5 `07f2c6c3134fa5fa6ff8a7b0fb568a2d` — bundle tex byte-identical to source, compile exit 0, 0 undef, **37 pages**.
-- Placeholder scans: all three CLEAN (only commented-out `%\preprint{arXiv:XXXX.XXXXX}` lines, which never render). No dangling companion-paper placeholders.
-- Abstracts: all trimmed to arXiv-form-safe (<1920 chars) versions — the paste blocks below and in each `ARXIV_METADATA.txt`.
+**Verified:** 2026-07-10 (H17 final versions). Every bundle below was rebuilt from the current H17-final source and standalone re-extract+compile-verified (pdflatex 2-pass; 0 errors, 0 undefined refs; page 1 shows "July 10, 2026").
+- P4 `arxiv_p4_v1.0.235.tar.gz` — src PDF md5 `8307d864a305361d340009c35d25f397` — **rebuilt 2026-07-10** from v1.0.235 source (.bbl regenerated via bibtex) — standalone exit 0, 0 undef, **35 pages**. 20 bare-filename entries.
+- P3 `arxiv_p3_v3.1.152.tar.gz` — src PDF md5 `c526aea2a64e2b4f32822fdc8a21440c` — **rebuilt 2026-07-10** from v3.1.152 source (.bbl regenerated; no citation changes) — standalone exit 0, 0 undef, **37 pages**. Subdir prefix `arxiv_p3_v3.1.152/`.
+- P2 `arxiv_p2_v1.7.111.tar.gz` — src PDF md5 `85d94d28e74c6f0fb5fe09677026e1c3` — **rebuilt 2026-07-10** from v1.7.111 source — standalone exit 0, 0 undef, **38 pages**. 9 `./`-prefixed entries.
+- Placeholder scans: all three CLEAN (only commented-out `%\preprint{arXiv:XXXX.XXXXX}` lines, which never render). No dangling companion-paper placeholders. P3 still carries one optional `\emph{DOI inserted at submission}` Zenodo sentence (see P3 note below).
+- Abstracts: the paste blocks below are the arXiv-form-safe (<1920 chars) versions; the H17 waves changed **no headline number** (−35/16 unchanged, all counts stable — "0 genuinely-new findings" in the convergence tail), so the science text in every abstract remains valid at the final versions.
+
+**Wave-2 bundles (rebuilt same day, for the P5+P1U wave):**
+- P5 `arxiv_p5_v0.1.118.tar.gz` — src PDF md5 `f902a742efa3f8fc64b8a864b3b74fb7` — v0.1.118, standalone exit 0, 0 undef, **45 pages**. Subdir prefix `p5_arxiv_v0.1.118/`. Inline `thebibliography` (no bibtex pass; .bbl carried from source).
+- P1U `arxiv_p1_unified_v1U.0.11.tar.gz` — src PDF md5 `ba2cf6754d774c8736be5e7cf458419f` — v1U.0.11, standalone exit 0, 0 undef, **60 pages** (TinyTeX env may render 62; content clean). `./`-prefixed; includes both `.bib` files + `scripts/*.py`.
 
 ---
 
@@ -26,12 +30,12 @@ If Step 0 is clean (astro-ph enabled, no endorsement block), proceed. If blocked
 
 ## PAPER 1 — P4 (submit FIRST)
 
-**Upload:** `submissions/P4/arxiv_p4_v1.0.227.tar.gz`
+**Upload:** `submissions/P4/arxiv_p4_v1.0.235.tar.gz`
 (Full paste-ready field text also lives in `submissions/P4/ARXIV_METADATA.txt`.)
 
 ### 1. Start submission → upload the tarball
-arxiv.org/submit → "Start a new submission" → upload `arxiv_p4_v1.0.227.tar.gz`.
-Let arXiv run AutoTeX. It should compile to **33 pages**.
+arxiv.org/submit → "Start a new submission" → upload `arxiv_p4_v1.0.235.tar.gz`.
+Let arXiv run AutoTeX. It should compile to **35 pages**.
 
 ### 2. Metadata — paste these blocks
 
@@ -56,7 +60,7 @@ We measure the large-scale chirality dipole of spiral galaxies and find it consi
 
 **Comments:**
 ```
-33 pages, 12 figures; data + code at https://github.com/Hubify-Projects/bigbounce
+35 pages, 12 figures; data + code at https://github.com/Hubify-Projects/bigbounce
 ```
 
 **License:** **CC BY 4.0** (recommended — consistent with the public data + weights
@@ -65,7 +69,7 @@ release). Conservative alternative: arXiv's standard perpetual non-exclusive lic
 
 ### 3. Preview checks (before hitting Submit)
 - Open the arXiv-generated PDF preview.
-- **Page 1** shows version/date consistent with v1.0.227 (title-block emits the timestamp; no stray version tag).
+- **Page 1** shows version/date consistent with v1.0.235 (title-block emits the timestamp; no stray version tag).
 - **Figures render** — spot-check that figure pages show images, not blank boxes (the tarball is ~25 MB precisely because the figures are heavy; if a figure is missing, do NOT submit — reping the loop).
 - Title, authors, abstract, categories match the blocks above.
 
@@ -79,19 +83,19 @@ P4 arXiv ID: __________________
 
 ## PAPER 2 — P3 (submit SECOND)
 
-**Upload:** `submissions/P3/arxiv_p3_v3.1.148.tar.gz`
+**Upload:** `submissions/P3/arxiv_p3_v3.1.152.tar.gz`
 (Paste-ready fields also in `submissions/P3/ARXIV_METADATA.txt`.)
 
 > **BEFORE UPLOAD — one optional Houston-gated edit (Zenodo DOI):**
 > The paper body (`pipelines/p3_anomaly_engine/paper3_draft.tex`, ~line 1542) has the
 > sentence `\emph{DOI inserted at submission}` reserving a spot for a Zenodo DOI.
 > - If you want the DOI in v1: mint the Zenodo DOI for the HF dataset, replace that
->   sentence, recompile, and rebuild the tarball as `arxiv_p3_v3.1.148.tar.gz` before upload.
+>   sentence, recompile, and rebuild the tarball as `arxiv_p3_v3.1.152.tar.gz` before upload.
 > - If you'd rather ship now and add the DOI in a v2: the current bundle is submittable
 >   as-is (the sentence reads cleanly; it is not a broken placeholder). Your call.
 
 ### 1. Start submission → upload
-Upload `arxiv_p3_v3.1.148.tar.gz`. Compiles to **36 pages**.
+Upload `arxiv_p3_v3.1.152.tar.gz`. Compiles to **37 pages**.
 
 ### 2. Metadata — paste these blocks
 
@@ -115,13 +119,13 @@ We present a multi-survey autoencoder anomaly catalog produced by applying the B
 
 **Comments:**
 ```
-34 pages, 12 figures; data + code at https://github.com/Hubify-Projects/bigbounce
+37 pages, 12 figures; data + code at https://github.com/Hubify-Projects/bigbounce
 ```
 
 **License:** **CC BY 4.0** (recommended). Conservative alt: arXiv non-exclusive.
 
 ### 3. Preview checks
-- Page 1 shows July 9, 2026 / v3.1.148.
+- Page 1 shows July 10, 2026 / v3.1.152.
 - Figures render (12 figures, mix of PNG + PDF).
 - Title/authors/abstract/categories match.
 
@@ -150,12 +154,12 @@ curl -s -X PUT -H "Authorization: Bearer $HF_TOKEN" -H "Content-Type: applicatio
 
 ## PAPER 3 — P2 (submit THIRD)
 
-**Upload:** `submissions/P2/arxiv_p2_v1.7.106.tar.gz`
+**Upload:** `submissions/P2/arxiv_p2_v1.7.111.tar.gz`
 (Paste-ready fields also in `submissions/P2/ARXIV_METADATA.txt`.)
 
 ### 1. Start submission → upload
-Upload `arxiv_p2_v1.7.106.tar.gz`. Compiles to **37 pages**.
-(Note: the source `\date{}` reads "July 9, 2026"; the real version is v1.7.106.
+Upload `arxiv_p2_v1.7.111.tar.gz`. Compiles to **38 pages**.
+(Note: the source `\date{}` reads "July 9, 2026"; the real version is v1.7.111.
 arXiv shows its own submission date, so this is cosmetic.)
 
 ### 2. Metadata — paste these blocks
@@ -183,7 +187,7 @@ the extra reach.
 
 **Comments:**
 ```
-36 pages, 6 figures; data + code at https://github.com/Hubify-Projects/bigbounce
+38 pages, 6 figures; data + code at https://github.com/Hubify-Projects/bigbounce
 ```
 
 **License:** **CC BY 4.0** (recommended). Conservative alt: arXiv non-exclusive.
@@ -213,16 +217,65 @@ add in v2.
 Once arXiv assigns each ID, you may uncomment and fill the `%\preprint{arXiv:XXXX.XXXXX}`
 line in each source `.tex` for the version-of-record, then rebuild. Not required for v1.
 
-### Wave-2 handoff
-**Paste the three assigned arXiv IDs (P4, P3, P2) back to the loop — wave-2 insertion
-is automated.** Wave-2 papers (P5, and P1A/P1B where applicable) cross-cite these; once
-the IDs exist, the loop wires the real `arXiv:NNNN.NNNNN` references into the wave-2
-sources in place of the "companion paper, submitted concurrently" wording.
+### Wave-2 handoff (P5 + P1U)
+**Paste the three assigned arXiv IDs (P4, P3, P2) — plus P1B's, if a standalone P1B is
+ever posted — back to the loop; wave-2 insertion is automated by
+`tools/insert_arxiv_ids.sh` (REPO path corrected to CODE_YOU 2026-07-10; dry-run
+green).** Wave-2 papers are **P5** (`arxiv_p5_v0.1.118.tar.gz`, v0.1.118, 45 pp) and the
+**unified Paper 1 P1U** (`arxiv_p1_unified_v1U.0.11.tar.gz`, v1U.0.11, 60 pp — P1A+P1B
+merged; there is NO standalone P1B submission). Both cross-cite the wave-1 IDs:
+- **P5**: the `\paperIVarxiv` macro (`p5_desi_chirality.tex:24`, currently
+  `arXiv:XXXX.XXXXX`) resolves to **P4's** assigned ID.
+- **P1U**: five `%% TODO-SUBMISSION` companion bib entries in `arxiv/references.bib`
+  (see the list below) get the wave-1 IDs; regenerate the `.bbl` and recompile so the
+  IDs render.
+
+### Only-remaining manual fills (everything else is automated)
+These are the **sole** placeholders a human/loop must fill at submission — all others in
+the sources are commented-out `%\preprint{...}` lines that never render:
+
+| # | File / location | Placeholder | Fill with |
+|---|---|---|---|
+| 1 | `arxiv/references.bib` L1114–1118 `Golden2026P1a` | `[arXiv:XXXX.XXXXX --- ID inserted at coordinated submission]` | **P1U's OWN** forward-ref — **LEAVE AS-IS** (P1U's ID doesn't exist until P1U itself is assigned; fill at P1U v2 or leave) |
+| 2 | `arxiv/references.bib` L1130 `Golden2026P1b` | `note = "Companion paper, posted concurrently on arXiv"` | P1B's ID if a standalone P1B is posted; else leave (P1B folded into P1U) |
+| 3 | `arxiv/references.bib` L1138 `Golden2026P2` | same companion note | **P2** wave-1 ID |
+| 4 | `arxiv/references.bib` L1146 `Golden2026P3` | same companion note | **P3** wave-1 ID |
+| 5 | `arxiv/references.bib` L1154 `Golden2026P4` | same companion note | **P4** wave-1 ID |
+| 6 | `pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex:24` | `\newcommand{\paperIVarxiv}{arXiv:XXXX.XXXXX}` | **P4** wave-1 ID |
+| 7 (optional) | `pipelines/p3_anomaly_engine/paper3_draft.tex` (~L1654) | `\emph{DOI inserted at submission}` | Zenodo DOI (mint-before-upload or add in v2) |
+| 8 (optional) | `research/.../02_full_draft.tex` (comment L644) | Zenodo `(DOI inserted at submission)` note | Zenodo DOI (optional) |
+
+Fills 3–6 are exactly what `tools/insert_arxiv_ids.sh --p4 … --p3 … --p2 …` performs
+(it also regenerates the `.bbl`, mirrors PDFs, and rebuilds the bundle). Fill 1 stays as
+the self-placeholder; fill 2 is inert while P1B is folded into P1U.
+
+---
+
+## H17 state — honest snapshot (2026-07-10)
+
+The bundles above are the **H17 final versions**. Two consecutive convergence-tail waves
+(retest + H17F/H17G legs) surfaced **0 genuinely-new real findings** on every paper —
+the earlier base H17 wave *did* surface real errors (P4 Shamir factor-of-2, P2
+vertex-sign, P3 k-fold/37.3M bookkeeping, P5 primary-estimand seam, P1U Check-D sign),
+and **each was closed by a real, source-cited edit** at the versions bundled here.
+Verdict highlights (literal, read from raw text in `project-context/peer-reviews/`):
+- **P5 — first EXT ACCEPT in the program:** Grok EXT `VERDICT: ACCEPT`
+  (`EXT_real/H17_2026-07-10/final/P5_grok_final.md`). Claude-subagent INT ACCEPT on the
+  v0.1.117 retest; ChatGPT MAJOR, Gemini MAJOR.
+- **Claude-subagent INT ACCEPTs:** **P4 and P5** on retest after closures
+  (`INT_api/H17_2026-07-10/retest3_P4_claude.md`, P5 truth-audit). P1U/P2/P3 stay at
+  MINOR/MAJOR — **no third Claude ACCEPT was recorded**; do not claim one.
+- **Remaining below-ACCEPT verdicts are pattern-066 oscillation**, not correctable
+  errors: ChatGPT holds REJECT on P1U/P2/P3/P4 and the OpenAI-API leg holds REJECT on
+  several papers **on stale-header PDFs** (v1U.0.1, v1.7.102, v3.1.144, v1.0.223,
+  v0.1.107) — recorded verbatim, dispositioned (never flipped) in
+  `project-context/peer-reviews/DISPOSITIONS/P{1U,2,3,4,5}.md`. Convex honest caps:
+  P1A/P1B 56, P2 62, P3 56, P4 62, P5 79.
 
 ---
 
 ## Decisions Houston must make (flagged)
-1. **License** for all three: CC BY 4.0 (recommended) vs arXiv non-exclusive. Default CC BY 4.0.
+1. **License** for all: CC BY 4.0 (recommended) vs arXiv non-exclusive. Default CC BY 4.0.
 2. **P2 hep-th** cross-list: add as a second cross-list, or keep CO + gr-qc only.
 3. **P3 Zenodo DOI timing**: mint-before-upload (fills the reserved sentence, needs a
-   `.146` rebuild) vs ship-now-add-in-v2.
+   `.153` rebuild) vs ship-now-add-in-v2.

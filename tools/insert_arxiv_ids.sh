@@ -5,9 +5,9 @@
 # ############################################################################
 # # ⚠ MERGED-LAYOUT NOTE (2026-07-09 — READ BEFORE RUNNING) ################### #
 # ############################################################################
-# WAVE-2 IS NOW:  P5 v0.1.108  +  the UNIFIED Paper 1 (P1U, v1U.0.4, 60pp,
-#                 bundle submissions/P1A/arxiv_p1_unified_v1U.0.4.tar.gz).
-# WAVE-1 IS:      P4 v1.0.225 (32pp) -> P3 v3.1.146 (35pp) -> P2 v1.7.105 (36pp).
+# WAVE-2 IS NOW:  P5 v0.1.118 (45pp)  +  the UNIFIED Paper 1 (P1U, v1U.0.11, 60pp,
+#                 bundle submissions/P1A/arxiv_p1_unified_v1U.0.11.tar.gz).
+# WAVE-1 IS:      P4 v1.0.235 (35pp) -> P3 v3.1.152 (37pp) -> P2 v1.7.111 (38pp).
 #
 # P1B is MERGED into P1U — there is NO standalone P1B submission and NO
 # reciprocal P1B_V2 note. The Step-1 P5 \paperIVarxiv leg below is still
@@ -41,8 +41,8 @@
 # arXiv tarballs (standalone-verified), prints the Convex bump commands, and
 # updates the checklist rows — one command, all gates.
 #
-# NOTE: the REPO path constant below still reads CODE_2025/bigbounce; the repo
-# now lives at CODE_YOU/bigbounce — update REPO before a live run.
+# NOTE (2026-07-10): REPO path constant corrected to CODE_YOU/bigbounce (was the
+# stale CODE_2025/bigbounce). Repo now lives at CODE_YOU/bigbounce.
 #
 # It NEVER changes a scientific number. It only substitutes the clearly-marked
 # arXiv-ID placeholders with the real IDs the caller supplies.
@@ -78,7 +78,7 @@ set -euo pipefail
 # --- TeX toolchain (per Houston's standing env) -----------------------------
 export PATH="$PATH:$HOME/Library/TinyTeX/bin/universal-darwin:/opt/homebrew/bin"
 
-REPO="/Users/houstongolden/Desktop/CODE_2025/bigbounce"
+REPO="/Users/houstongolden/Desktop/CODE_YOU/bigbounce"
 
 # md5 helper (macos: md5sum or gmd5sum or md5)
 md5of() {
