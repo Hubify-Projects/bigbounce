@@ -1,12 +1,21 @@
 # WAVE-1 arXiv Submission Walkthrough — P4 → P3 → P2
 
+> **⚠️ P3 FELL BACK OFF THE BAR (FR3, 2026-07-11).** The recompute-verifying Claude INT leg
+> caught a genuinely-new reader-visible matter-bounce/SMBHB parameter-shift precision
+> inconsistency (+1.13σ vs +4.63σ in the same clause; committed chain → +1.14σ), fixed
+> same-bundle in **v3.1.155 (DP3-19)** → **P3 clean-wave streak RESET 1→0; P3 is NOT
+> submit-ready.** The P3 wave-1 bundle below (`arxiv_p3_v3.1.153.tar.gz`) is **STALE** —
+> superseded by v3.1.155 with the +1.14σ correction — and must be rebuilt at v3.1.155
+> AND P3 must post two fresh clean waves before it re-enters wave-1. **Submit P4 and P2
+> only until P3 rebuilds.** The P4/P2 lines below are unaffected.
+
 **Order matters:** submit **P4 first, then P3, then P2.** (P4 is the input catalog P5
 cites as a companion; P3 and P2 are independent. This order keeps the wave-2
 cross-references clean.)
 
 **Verified:** 2026-07-11 (program-exit restamp — all 5 papers re-stamped to today's date + a fresh patch version, no content change). Every bundle below is rebuilt from the current source at the exit versions and standalone re-extract+compile-verified (0 errors, 0 undefined refs; the .tex inside each tarball matches the repo source; page 1 shows "July 11, 2026"). All 5 wave bundles (P4/P3/P2/P5/P1U) rebuilt 2026-07-11 at the restamp versions.
 - P4 `arxiv_p4_v1.0.236.tar.gz` — **rebuilt 2026-07-11** at v1.0.236 (restamp) — standalone exit 0, 0 undef, **35 pages**; page 1 "July 11, 2026". Served-PDF md5 `fd34a3ed45cd0425dd984aee03d97041`; tarball md5 `2742b0dd8bc7af4bbe83f0b287e0bc96`. 20 bare-filename entries. Grok EXT literal ACCEPT + Claude INT ACCEPT.
-- P3 `arxiv_p3_v3.1.153.tar.gz` — **rebuilt 2026-07-11** at v3.1.153 (restamp) — standalone exit 0, 0 undef, **37 pages**; page 1 "July 11, 2026". Served-PDF md5 `9b7391ed5438f43d7f2a1499567902e8`; tarball md5 `af0045ac92d796341ee756f012b59ab9`. Subdir prefix `arxiv_p3_v3.1.153/`.
+- P3 `arxiv_p3_v3.1.153.tar.gz` — **STALE / SUPERSEDED by v3.1.155 (FR3 DP3-19, 2026-07-11).** This v3.1.153 bundle predates the +1.13σ → +1.14σ matter-bounce precision fix; served-PDF is now v3.1.155 (md5 `ebd4bfd13962b0ee8d14e5393a9bd2c9`, 37 pages). **Do NOT submit P3 until the bundle is rebuilt at v3.1.155 and P3 re-crosses the two-clean-waves bar.** (Historical: v3.1.153 restamp bundle tarball md5 `af0045ac92d796341ee756f012b59ab9`.)
 - P2 `arxiv_p2_v1.7.113.tar.gz` — **rebuilt 2026-07-11** at v1.7.113 (restamp; .bbl regenerated via bibtex) — standalone exit 0, 0 undef, **37 pages**; page 1 shows "July 11, 2026". Served-PDF md5 `de34d7ac50d3f1f3cc3d2ef35f3b409b`; tarball md5 `33dfb04a55b2c2a96412acf632d664bd`. `./`-prefixed (`02_full_draft.tex` + `.bbl` + `focused_paper_refs.bib` + revtex `02_full_draftNotes.bib` control file + 5 figs + `bphi_sensitivity.pdf`).
 - Placeholder scans: all three CLEAN (only commented-out `%\preprint{arXiv:XXXX.XXXXX}` lines, which never render). No dangling companion-paper placeholders. P3 still carries one optional `\emph{DOI inserted at submission}` Zenodo sentence (see P3 note below).
 - Abstracts: the paste blocks below are the arXiv-form-safe (<1920 chars) versions; the H17→W-wave convergence tail changed **no headline number** (−35/16 unchanged in P2 final tex; all counts stable — "0 genuinely-new findings"), so the science text in every wave-1 abstract remains valid at the final versions. (P4 abstract 1583 chars, P3 1559 chars, P2 1583 chars — all ≤1920, re-checked against final source.)
@@ -253,9 +262,11 @@ the self-placeholder; fill 2 is inert while P1B is folded into P1U.
 
 ## Program-exit state — honest snapshot (2026-07-11)
 
-**All five papers are past the directive-K two-clean-waves convergence bar.** The
-edit-loop program has EXITED. Clean-wave streaks at exit: **P1U 2 · P2 3 · P3 4 · P4 4 ·
-P5 2**. The H17 base wave *did* surface real errors (P4 Shamir factor-of-2, P2
+**Four of five papers are past the directive-K two-clean-waves convergence bar; P3 fell
+back at FR3 (2026-07-11).** Clean-wave streaks now: **P1U 2 · P2 3 · P3 0 · P4 4 ·
+P5 2** — P3 RESET 1→0 on a genuinely-new reader-visible precision fix (matter-bounce
++1.13σ → +1.14σ, DP3-19, closed v3.1.155) and must rebuild two clean waves; P1U/P2/P4/P5
+remain past the bar. The H17 base wave *did* surface real errors (P4 Shamir factor-of-2, P2
 vertex-sign, P3 k-fold/37.3M bookkeeping, P5 primary-estimand seam, P1U Check-D sign),
 and **each was closed by a real, source-cited edit** at the versions bundled here; the
 subsequent W-waves surfaced **0 genuinely-new real findings** — every remaining MAJOR/
