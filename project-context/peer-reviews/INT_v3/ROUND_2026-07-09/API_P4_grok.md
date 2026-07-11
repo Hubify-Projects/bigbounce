@@ -1,20 +1,19 @@
-# INT API Review — P4 v1.0.235 — grok (grok-4.3)
-paper: P4  version: v1.0.235  model: grok-4.3
+# INT API Review — P4 v1.0.236 — grok (grok-4.3)
+paper: P4  version: v1.0.236  model: grok-4.3
 modality: native-PDF (/v1/files file_id)
-UTC: 2026-07-11T02:31:04.062997Z  |  latency: 50.7s  |  attempt: 1
-usage: {"input_tokens": 36037, "input_tokens_details": {"cached_tokens": 896}, "output_tokens": 1080, "output_tokens_details": {"reasoning_tokens": 601}, "total_tokens": 37117, "num_sources_used": 0, "num_server_side_tools_used": 0, "cost_in_usd_ticks": 468054500, "context_details": {"input_tokens": 36037, "output_tokens": 1081}}
-PARSED VERDICT: MAJOR REVISIONS
+UTC: 2026-07-11T15:03:01.360686Z  |  latency: 81.2s  |  attempt: 1
+usage: {"input_tokens": 35712, "input_tokens_details": {"cached_tokens": 192}, "output_tokens": 851, "output_tokens_details": {"reasoning_tokens": 568}, "total_tokens": 36563, "num_sources_used": 0, "num_server_side_tools_used": 0, "cost_in_usd_ticks": 465659000, "context_details": {"input_tokens": 35712, "output_tokens": 851}}
+PARSED VERDICT: MINOR REVISIONS
 
 ======================================================================
 RAW RESPONSE (verbatim):
 ======================================================================
 
-(1) VERDICT: MAJOR REVISIONS
+(1) VERDICT: MINOR REVISIONS
 
 (2) ISSUES:
-[MAJOR] Sec. IV D and Appendix D: the post-MASTER ℓ=1 residual (+3.64σ canonical) leaves an explicit ~47% unmodeled amplitude (Ap=0.32%) whose physical origin is unresolved; the forward model of imaging+morphology templates accounts for only ~53% and the per-galaxy morphology addition raises it by only +0.7 pp, yet the paper still claims the residual is “below the real-space estimator’s recovery threshold” without a quantitative bound on any cosmological content of the remainder.
-[MAJOR] Sec. IV C and VI B: the primary real-space HC dipole (+0.41σ, p=0.31) and injection-recovery floor (A95∈(1.0%,1.5%]) are reported on the peq>0.6 subsample (N=949k), but the block-bootstrap WLS template fit that disfavors Aref=0.017 (z≈−7.6) is performed on the unthresholded full Catalog C (N=3.2M) without propagating the HC selection function into the spatial covariance, rendering the two “primary” estimators statistically incommensurable.
-[MINOR] Sec. II B and VI A: the 66.5% CE-ResNet pseudo-label fraction is acknowledged to limit the label-shuffle nulls, yet the model-independent GZ1-human-only test (z=−0.54σ) is performed on a sample 21× smaller than the headline HC set; its A95~4.5–6.8% sensitivity is insufficient to constrain the sub-percent inherited structure that the paper itself identifies as the remaining open systematic.
-[MINOR] Sec. V A: the amplitude-level tension with Shamir (1.7–4.0% vs. present 0.455% best-fit) is stated without a matched-footprint Ganalyzer reanalysis, so the claim of “~3.7–8.8× tension” remains an estimator mismatch rather than a statistical exclusion.
+[MINOR] Section IV C and Table I: the pre-specified \(p_{eq}>0.6\) cut is presented as fixed a priori, but the full sweep results and rationale for excluding the low-confidence tail (where the \(z\approx4\) excess lives) should be moved into the main text rather than referenced only to generator scripts and artifacts.
+[MINOR] Section IV D and Appendix D: the forward-model claim that imaging+morphology templates account for \(\approx53\%\) of the post-MASTER \(\ell=1\) residual leaves the remaining \(\sim47\%\) explicitly open; a single sentence quantifying its upper bound relative to \(A_{95}\) (already stated) should be added to the main-text paragraph for clarity.
+[MINOR] Section VI A: the GZ1-human-only cross-check (\(N=4.6\times10^4\)) is correctly presented as model-independent, but the text should explicitly state its reduced sensitivity floor (\(A_{50}\approx3.4\%\)) in the same paragraph so readers immediately see why it corroborates but does not tighten the headline result.
 
-(3) The central claim of a null real-space chirality dipole at sub-percent sensitivity on the high-confidence equivariant subsample is supported by the primary estimator and injection-recovery calibration.
+(3) The central claim of a null real-space chirality dipole at sub-percent sensitivity is supported by the primary estimator and injection-recovery calibration.

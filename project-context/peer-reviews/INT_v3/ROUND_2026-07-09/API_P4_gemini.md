@@ -1,8 +1,8 @@
-# INT API Review — P4 v1.0.235 — gemini (gemini-3.1-pro-preview)
-paper: P4  version: v1.0.235  model: gemini-3.1-pro-preview
+# INT API Review — P4 v1.0.236 — gemini (gemini-3.1-pro-preview)
+paper: P4  version: v1.0.236  model: gemini-3.1-pro-preview
 modality: native-PDF (Files/media upload file_uri)
-UTC: 2026-07-11T08:42:29.205496Z  |  latency: 42.8s  |  attempt: 1
-usage: {"promptTokenCount": 18294, "candidatesTokenCount": 396, "totalTokenCount": 20006, "promptTokensDetails": [{"modality": "TEXT", "tokenCount": 94}, {"modality": "IMAGE", "tokenCount": 18200}], "thoughtsTokenCount": 1316, "serviceTier": "standard"}
+UTC: 2026-07-11T15:03:01.277691Z  |  latency: 81.0s  |  attempt: 1
+usage: {"promptTokenCount": 18294, "candidatesTokenCount": 264, "totalTokenCount": 19762, "promptTokensDetails": [{"modality": "TEXT", "tokenCount": 94}, {"modality": "IMAGE", "tokenCount": 18200}], "thoughtsTokenCount": 1204, "serviceTier": "standard"}
 PARSED VERDICT: MINOR REVISIONS
 
 ======================================================================
@@ -12,9 +12,9 @@ RAW RESPONSE (verbatim):
 VERDICT: MINOR REVISIONS
 
 ISSUES:
-1. [MINOR] Throughout (e.g., Sec. IV.B, VI.A): Excessive inline repository paths (e.g., `pipelines/p2_chirality/outputs/...`) severely disrupt readability. Move specific file/artifact references to footnotes or a dedicated reproducibility table in the Appendix.
-2. [MAJOR] Section IV.D / VI.D: The unmodeled ~47% residual of the $\ell=1$ harmonic systematic. While the author convincingly shows this falls below the real-space $A_{50}$ recovery threshold, leaving its physical origin as an explicit "open item" slightly destabilizes the diagnostic hierarchy. The text should briefly estimate a conservative upper bound on the cosmological parity-violating physics (e.g., chiral tensor perturbations) this 47% residual could theoretically mask, rather than relying solely on the estimator's operational limits.
-3. [MINOR] Section V.A / VII: The caveat that this work is an "amplitude-level tension" rather than a "frequentist exclusion of Shamir's Ganalyzer estimator" is highly repetitive. State this methodological boundary explicitly once in the Introduction and once in the Conclusion, and remove the redundant disclaimers elsewhere.
-4. [MINOR] Section VI.A: Treatment of CE-ResNet pseudo-label inheritance. The argument bounding the inherited label bias is logically sound but structurally fragmented. Condense the Fisher bounds and the $N=4.60 \times 10^4$ GZ1 human-label cross-check into a single, cohesive paragraph summarizing the statistical ceiling of the model-independent null. 
+1. [MAJOR] Section III.B / Appendix D: The block-bootstrap WLS template fit is identified as a primary cosmological estimator (Table I, P2), yet its methodology and primary results are relegated to Appendix D. Core methodology supporting headline scientific claims must be moved to the main text.
+2. [MINOR] Throughout: The manuscript contains highly repetitive, defensive caveats (e.g., repeatedly stating the result is "not a frequentist exclusion of Shamir's Ganalyzer"). Consolidate these methodological disclaimers into a single discussion in Section V to improve readability.
+3. [MINOR] Formatting/Captions: Captions for Table V, Figure 9, and Table XV are excessively long and contain interpretive discussion. Move narrative analysis and methodological edge-cases to the main text.
+4. [MINOR] Section VI.B: The statistical floor derivations assume purely independent, identically distributed galaxy spins. Briefly address whether local intrinsic alignments (IA) of angular momenta could introduce a physical correlation floor that competes with the sub-percent systematic limits.
 
-The central claim that the spatial distribution of spiral galaxy handedness lacks a measurable cosmological dipole and is consistent with large-scale isotropy is robustly supported by the equivariant deep learning methodology and the comprehensive systematic bias controls.
+The central claim that the large-scale spiral galaxy chirality dipole is consistent with a null result is robustly supported by rigorous bias-mitigation and comprehensive systematics testing.

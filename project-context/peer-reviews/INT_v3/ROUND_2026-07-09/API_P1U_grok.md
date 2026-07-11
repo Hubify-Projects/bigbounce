@@ -1,21 +1,22 @@
-# INT API Review — P1U v1U.0.12 — grok (grok-4.3)
-paper: P1U  version: v1U.0.12  model: grok-4.3
+# INT API Review — P1U v1U.0.13 — grok (grok-4.3)
+paper: P1U  version: v1U.0.13  model: grok-4.3
 modality: native-PDF (/v1/files file_id)
-UTC: 2026-07-11T03:44:50.739685Z  |  latency: 35.4s  |  attempt: 1
-usage: {"input_tokens": 35423, "input_tokens_details": {"cached_tokens": 192}, "output_tokens": 1167, "output_tokens_details": {"reasoning_tokens": 736}, "total_tokens": 36590, "num_sources_used": 0, "num_server_side_tools_used": 0, "cost_in_usd_ticks": 469946500, "context_details": {"input_tokens": 35423, "output_tokens": 1169}}
-PARSED VERDICT: MAJOR REVISIONS
+UTC: 2026-07-11T15:03:01.362929Z  |  latency: 44.2s  |  attempt: 1
+usage: {"input_tokens": 35419, "input_tokens_details": {"cached_tokens": 896}, "output_tokens": 1179, "output_tokens_details": {"reasoning_tokens": 682}, "total_tokens": 36598, "num_sources_used": 0, "num_server_side_tools_used": 0, "cost_in_usd_ticks": 462804500, "context_details": {"input_tokens": 35419, "output_tokens": 1181}}
+PARSED VERDICT: REJECT
 
 ======================================================================
 RAW RESPONSE (verbatim):
 ======================================================================
 
-(1) VERDICT: MAJOR REVISIONS
+(1) VERDICT: REJECT
 
 (2) ISSUES:
-[MAJOR] Abstract/Sec. IV/Sec. IX: The central “channel-level closure” of the four enumerated routes (and the 14-barrier catalog) is presented as a definitive assessment, yet the paper repeatedly qualifies that the four routes are neither proven complete nor an operator-level theorem; the amplitude/naturalness arguments are order-of-magnitude NDA estimates under explicit scaling ansätze rather than derived amplitudes or a basis-complete no-go.
-[MAJOR] Sec. X: The perturbation-transparency theorem is asserted for canonical scalar matter, but the proof is only sketched (Bianchi identity + algebraic torsion elimination) without an explicit term-by-term expansion of the perturbed Holst sector to all orders in the metric/scalar perturbations, leaving the claim unverified at the level required for a PRD theorem.
-[MAJOR] Sec. II C/Appendix B/Sec. IV F: The dark-energy mapping and R4 naturalness closure rest on a single-scale NDA dimensional mismatch (+1 vs. +4) plus an m_θ∼H_0 tuning objection, but no explicit matching calculation or EFT completion is supplied to show that the same coupling cannot simultaneously satisfy both β_obs and ρ_Λ without relocating the CC problem.
-[MINOR] Throughout: Excessive length, repetitive footnotes, and heavy dependence on “companion papers” and archived artifacts for all numerical context (even when declared non-load-bearing) make the manuscript difficult to referee as a self-contained submission.
-[MINOR] Sec. IV B/C: The newly closed Jackiw–Pi and parity-odd four-fermion partners are asserted to exhaust the minimal-ECH basis via the Fierz lemma in Appendix C, yet the paper does not demonstrate that no other dimension-6 operators survive under minimal fermion coupling.
+[MAJOR] Sec. IV (Scope paragraph) and abstract: the four-route “channel-level closure” is explicitly not an operator-level theorem, yet the title, abstract, and Sec. IX claim it rules out “the enumerated channels of the minimal-ECH route” at amplitude-budget granularity; this is an overclaim because the completeness lemma (Appendix C) is restricted to minimal coupling and single-scale NDA.
+[MAJOR] Sec. IV F and Appendix B: R4 is closed only by a “naturalness/explanatory-deficit objection” that relocates the CC problem; this is an interpretive judgment, not a derived no-go, and contradicts the paper’s own statement that R4 is “not amplitude-suppressed.”
+[MAJOR] Sec. X (perturbation-transparency result): the claim that the Holst sector “decouples from all scalar/tensor perturbation equations” is derived only for canonical scalar matter with T=0; the paper simultaneously uses this result to subsume Barrier B8 while excluding fermion-loop, propagating-torsion, and non-minimal sectors, rendering the barrier catalog internally inconsistent.
+[MAJOR] Sec. II C and Appendix B: the single-scale NDA dimensional no-go for ρ_Λ relies on an off-shell mass-dimension +1 ansatz whose on-shell promotion (inserting R∼M_Pl²) is presented as both heuristic and load-bearing; the two alternative completions (on-shell curvature dressing vs. local-operator promotion) are not shown to be equivalent beyond order-of-magnitude bookkeeping.
+[MINOR] Title and abstract: the parenthetical “(Amplitude Closure for R1–R3, Naturalness Closure for R4)” is repeated verbatim in the body but is not reflected in the PACS numbers or the four-route enumeration, creating a mismatch between title and content.
+[MINOR] Sec. XIV D: the claimed structural tension between N_tot≈92 and the matter-bounce f_NL signature is derived from a comoving-wavenumber mapping that assumes a single exit time; this is not shown to hold for the full range of bounce models referenced in Fig. 1.
 
-(3) The central claim that the four enumerated minimal-ECH dark-energy routes are constrained at the channel-amplitude level under the stated assumptions is supported by the dimensional/naturalness arguments given, though only within the paper’s explicitly hedged scope.
+(3) The central claim of channel-level closure for the four enumerated minimal-ECH dark-energy routes is not supported, because the arguments are either dimensional estimates under explicitly labeled assumptions or interpretive naturalness objections rather than derived exclusions.
