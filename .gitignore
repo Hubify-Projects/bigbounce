@@ -81,3 +81,4 @@ reproducibility/cosmology/w0wa_chains_backup/
 research/cubic_bounce_transmission/pathz_pid.txt
 pipelines/p2_chirality/outputs/spiral_morphology_dr8.parquet
 tools/.freshness_skip.log
+project-context/LOOP_HEARTBEAT.json
