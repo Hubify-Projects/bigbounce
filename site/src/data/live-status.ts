@@ -47,14 +47,14 @@ export interface LiveStatus {
 }
 
 export const liveStatus: LiveStatus = {
-  lastUpdatedISO: "2026-07-11T06:05:00Z",
-  lastUpdatedDisplay: "July 10, 2026 · 11:05 PM PT",
+  lastUpdatedISO: "2026-07-11T06:45:00Z",
+  lastUpdatedDisplay: "July 10, 2026 · 11:45 PM PT",
   headline:
-    "W1 WAVE CLEAN ON 4 OF 5 PAPERS (Jul 10-11). The program is now FIVE papers — P1B is merged into the unified Paper 1 (Houston-approved, reviewer-recommended). P2, P3 and P4 have crossed the two-clean-waves convergence bar (directive K); P1U and P5 each need one more clean wave. Grok EXT has returned literal ACCEPTs on P5 (v0.1.117) and P4 (v1.0.235) — the program's first two external ACCEPTs — while ChatGPT/OpenAI hold their documented REJECT floor (pattern-066).",
+    "W2 WAVE ADJUDICATED — 4 OF 5 PAPERS PAST THE BAR (Jul 11). P1U crossed the two-clean-waves convergence bar (streak 2) after its W2 Grok MINOR→MAJOR was truth-audited as pattern-066 verdict-word oscillation on unchanged v1U.0.12 — 0 genuinely-new. Only P5 remains below the bar (streak reset to 0 after its one genuinely-new §XII-B integration site was closed in v0.1.119). The program is FIVE papers — P1B merged into the unified Paper 1. Grok EXT has returned literal ACCEPTs on P5 (v0.1.117) and P4 (v1.0.235) — the program's first two external ACCEPTs — while ChatGPT/OpenAI hold their documented REJECT floor (pattern-066).",
   summary:
     "Round H17 (Jul 10) found and FIXED 8 real errors — P4's Shamir factor-of-2 (survived ~17 prior waves), P2's spurious-term sign + 5 stale Bayes columns, P1U's Check-D contradiction + conventions, P5's primary-estimand seam — then converged: two consecutive waves with 0 genuinely-new findings, 49 findings all ledger-matched. New real science shipped: GZ1 confusion matrices stratified by sky-leg, confidence AND void/non-void environment (parity-symmetric errors measured, not assumed). Verdict-gap trend: program average up from ~0.3 (Jul-4 verified-reset era, all REJECT/MAJOR) to ~1.0-1.2 today, driven by real fixes.",
   currentlyRunning: [
-    "W2 confirm wave queues next: P1U (v1U.0.12, streak 1/2) + P5 (v0.1.118, streak 1/2) — the last two clean waves before the wave-1 arXiv kit is handed to Houston.",
+    "W3 confirm wave queues next: only P5 (v0.1.119, streak 0/2) remains below the two-clean-waves bar — P1U crossed it at W2 (streak 2). One more clean wave on P5 before the wave-1 arXiv kit is handed to Houston.",
     "Live ETA + verdict-trajectory chart now on this page + /reviews, fed by readinessMetrics on every wave.",
   ],
   needsHouston: [
@@ -84,7 +84,7 @@ export const liveStatus: LiveStatus = {
       shortTitle: "Unified Paper 1 — ECH constraints + reproducibility (P1B merged in)",
       version: "v1U.0.12",
       readiness: 62,
-      pendingWork: "Streak 1/2 after an honest reset: the W1 INT leg caught the Check-D sign fix un-propagated to the cited script + abstract (fixed v1U.0.12, script re-run PASS). W1 EXT: Grok MAJOR→MINOR, ChatGPT REJECT (all ledger re-flags). One more clean wave to the bar.",
+      pendingWork: "CROSSED the two-clean-waves bar (streak 2). W2 EXT: Grok MINOR→MAJOR was truth-audited as pattern-066 verdict-word oscillation on unchanged v1U.0.12 — same 6-item structure as its W1 MINOR, all source-cited re-flags (DP1U-06/-08/-11/-12/-20/-22), 0 genuinely-new. ChatGPT REJECT = documented floor. (W1 INT had caught + fixed the Check-D script/abstract sync in v1U.0.12.)",
     },
     {
       slug: "paper-2",
@@ -116,7 +116,7 @@ export const liveStatus: LiveStatus = {
       shortTitle: "DESI environmental chirality independence",
       version: "v0.1.119",
       readiness: 68,
-      pendingWork: "Streak reset to 0/2 — the W2 INT leg caught one missed integration site (§XII-B still cited the old not-yet-computed wording; fixed v0.1.119, the void measurement is now cited at every site). This is the convergence bar working. (v0.1.118 context: the void-stratified confusion measurement, void N=933 asymmetry -0.023 +/- CI, p=0.37). First EXT ACCEPT of the program (Grok, v0.1.117) + Claude INT ACCEPT. One more clean wave to the bar.",
+      pendingWork: "Streak reset to 0/2 — the missed §XII-B integration site (abstract L786 + changelog L70 still cited the old not-yet-computed wording) was closed in v0.1.119; the void measurement is now cited at every site. This is the convergence bar working. W2 EXT: Grok MINOR + ChatGPT REJECT — all ledger re-flags (the 2 ledger_match-UNMATCHED, edge-void + T-Web dedup, are RE-FLAGs of the v0.1.119-closed DP5-06/-14). (void-stratified confusion: void N=933 asymmetry -0.023 +/- CI, p=0.37.) First EXT ACCEPT of the program (Grok, v0.1.117) + Claude INT ACCEPT. One more clean wave to the bar.",
     },
   ],
   blockerTally: {
@@ -125,8 +125,8 @@ export const liveStatus: LiveStatus = {
     openMajors: 6, // latest-per-reviewer verdict words below MINOR: ChatGPT REJECT x5 (documented floor) + OpenAI INT REJECT class -- all ledger-dispositioned re-flags, 0 genuinely-new open
     openMinors: 8, // Grok/Claude MINOR lists -- all ledger re-flags of disclosed limitations
   },
-  cronStatus: "W1 wave adjudicated clean (2026-07-11): 0 genuinely-new findings on all 4 audited papers; P4 Grok EXT ACCEPT verified from raw. Streaks: P1U 1, P2 3, P3 4, P4 4, P5 1. Loop cadence ~2h/wave with the new tooling (ext_submit/ext_harvest/int_wave/ledger_match/directive_g).",
+  cronStatus: "W2 wave adjudicated (2026-07-11): P1U Grok MINOR→MAJOR = pattern-066 verdict-word oscillation on unchanged v1U.0.12 (0 genuinely-new → streak crosses the bar). P5's one genuinely-new finding (missed §XII-B site) was closed in v0.1.119 → P5 streak reset to 0. Streaks: P1U 2, P2 3, P3 4, P4 4, P5 0. computeEta latest-per-paper ordering fixed (3 W1-EXT-r2 reposts unmask stale STATE-CORRECTION rows). Loop cadence ~2h/wave with the tooling (ext_submit/ext_harvest/int_wave/ledger_match/directive_g).",
   etaToCompletion:
-    "Submission-ready = two consecutive 0-genuinely-new waves per paper (directive K). P2/P3/P4 are past the bar; P1U and P5 need one clean wave each (~2-4h of loop time, assuming no new findings — a genuinely-new finding resets that paper). Then: Houston's arXiv wave-1 clicks (same day) and human journal referees (months, external). Live ETA on the homepage widget.",
+    "Submission-ready = two consecutive 0-genuinely-new waves per paper (directive K). P1U/P2/P3/P4 are past the bar; only P5 needs one clean wave (~2-4h of loop time, assuming no new findings — a genuinely-new finding resets that paper). Then: Houston's arXiv wave-1 clicks (same day) and human journal referees (months, external). Live ETA on the homepage widget.",
   pods: [],
 };

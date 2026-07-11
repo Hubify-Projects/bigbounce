@@ -87,6 +87,27 @@ export const reviewRounds: ReviewRound[] = [
     ],
   },
   {
+    id: "W2-ext-adjudication-2026-07-11",
+    dateISO: "2026-07-11",
+    kind: "ext-closure",
+    title:
+      "W2 EXT re-test (P1U · P5) — P1U Grok MINOR→MAJOR is verdict-word OSCILLATION on unchanged v1U.0.12 (pattern-066), 0 genuinely-new → P1U crosses the bar (streak 2); P5's one genuinely-new §XII-B site was already closed in v0.1.119 → P5 streak reset to 0.",
+    papers: ["P1A", "P5"],
+    summary:
+      "W2 headed-browser EXT re-test — 3 verdicts (Grok × P1U/P5 + ChatGPT × P5; Gemini not swept), raw verbatim text + screenshot READ before every recorded verdict, 0 fabricated. *** P1U Grok MINOR(W1)→MAJOR(W2) is pure verdict-word oscillation, NOT a new finding: *** the W2 Grok raw is the same 6-item structure as its W1 MINOR — 3 MAJOR + 2 MINOR all source-cited re-flags → DP1U-11 (R4 'naturalness closure' = the paper's OWN verbatim abstract framing), DP1U-08/-20 (single-scale NDA no-go 'restates the CC problem' + basis-completeness 'tension', both disclosed channel-level-not-operator-level), DP1U-12 (transparency scope), DP1U-06/-22 (length/repetition OPINION). This is exactly the pattern-066 referee variance the directives anticipate — the moderate calibrated referee flips a full tier on identical honestly-scoped content. 0 genuinely-new real+editable → P1U clean-wave streak 1→2 (crosses the directive-K bar). P5 Grok = MINOR (5 minors → DP5-01/-04/-06/-09/-21) + P5 ChatGPT = REJECT (10 MAJOR + 2 MINOR; ledger_match matched 11/12, the 2 UNMATCHED candidates — edge-void handling + T-Web dedup sensitivity — Opus-adjudicated as RE-FLAGs of DP5-06/-14, the same T-Web/footprint-selection axis already closed in v0.1.119). The one genuinely-new finding of the W2 wave (the missed §XII-B env-stratified-confusion integration site — abstract L786 + changelog L70 still cited the old 'not-yet-computed' wording) was CLOSED in v0.1.119 (commit a65111df) → P5 clean-wave streak reset to 0 (recorded genuinelyNewCount 1 on P5's readinessMetrics W2 row). NO further version bump (P1U v1U.0.12 + P5 v0.1.119 stand), no directive-G this wave. Caps: P1U 62, P5 68. Convex synced: 3 externalReviews rows + 2 readinessMetrics W2 waves + 3 W1-EXT-r2 reposts (unmasking stale STATE-CORRECTION rows so computeEta's latest-per-paper is truthful) + externalVerdictRounds 'W2-2026-07-11'.",
+    keyTakeaways: [
+      "P1U Grok MINOR→MAJOR = pattern-066 verdict-word oscillation on UNCHANGED v1U.0.12; same 6-item structure, all source-cited re-flags (DP1U-06/-08/-11/-12/-20/-22) — 0 genuinely-new → streak 1→2, crosses the bar",
+      "P5 ChatGPT REJECT: 12/12 findings dispositioned; the 2 ledger_match-UNMATCHED (edge-void + T-Web dedup) are RE-FLAGs of the already-v0.1.119-closed DP5-06/-14 axis",
+      "The W2 wave's one genuinely-new finding — the missed §XII-B env-stratified-confusion site — was closed in v0.1.119 (commit a65111df); P5 streak reset to 0 (the convergence bar working)",
+      "Convex synced: 3 externalReviews + 2 readinessMetrics W2 waves + 3 W1-EXT-r2 reposts (fix computeEta latest-per-paper ordering) + externalVerdictRounds W2-2026-07-11; caps P1U 62 / P5 68",
+    ],
+    links: [
+      { label: "P1U Grok W2 raw (MAJOR)", href: `${PR}/EXT_real/H17_2026-07-10/W2/P1U_grok_W2.md` },
+      { label: "P5 ChatGPT W2 raw (REJECT)", href: `${PR}/EXT_real/H17_2026-07-10/W2/P5_chatgpt_W2.md` },
+      { label: "v0.1.119 §XII-B closure", href: `${GH_COMMIT}/a65111df` },
+    ],
+  },
+  {
     id: "readiness-eta-trajectory-instrument-2026-07-10",
     dateISO: "2026-07-10",
     kind: "skill-improvement",
@@ -4865,6 +4886,20 @@ export const externalVerdictRounds: ExternalRoundVerdicts[] = [
       P5: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
     },
     note: "W1 EXT re-test — 8 verdicts harvested (ChatGPT + Grok × P1U/P2/P3/P4; Gemini not swept, NO_VERDICT; P1B/P5 not swept, carry-forward). Verdict matrix stored [ChatGPT, Grok, Gemini] FROM RAW (verbatim VERDICT line READ from each saved raw before recording; P1U = the unified Paper 1, its verdicts sit on the P1A row). *** P4 GROK = ACCEPT — the SECOND EXT ACCEPT of the campaign *** (raw W1/P4_grok_W1.md line 1 literally 'VERDICT: ACCEPT'; central null 'supported by the primary real-space dipole estimator on the pre-specified high-confidence (p_eq>0.6) subsample'; 3 minors all source-cited re-flags of disclosed content — abstract amplitude-tension caveat DP4-11, 47% residual bound DP4-17, harmonic-diagnostic reminder DP4-07/-13). P1U Grok MAJOR→MINOR IMPROVEMENT (verdict WORD 'MINOR REVISIONS'; 6 minors all → DP1U-02/-05/-06/-07/-09/-12/-13/-19, disclosed channel-level scope + closed convention block). P3 Grok MAJOR→MINOR IMPROVEMENT (verdict WORD 'MINOR REVISIONS'; 2 MAJOR + 3 MINOR all → DP3-07/-08/-09/-10/-14, disclosed process-volume + excised-tier + secondary-null items). P2 Grok = ACCEPT WITH MINOR REVISIONS (raw recommends PRD publication; 3 minor blocks → DP2-01/-03/-04/-14/-26/-30, all already-covered). ChatGPT held REJECT on all 4 (P1U 11 MAJOR → DP1U-03/-05/-07/-08/-09/-10/-11/-12/-14/-17/-20; P2 10 MAJOR → DP2-02/-07/-13/-14/-15/-16/-18/-19/-20/-22/-30; P3 13 MAJOR → DP3-01/-03/-06/-07/-09/-10/-11/-12/-13/-15/-16; P4 16 MAJOR → DP4-01/-07/-08/-09/-10/-11/-12/-13/-14/-15/-16/-17/-21, incl. the two MINORs ECE-Jensen (paper L1345 already computes the Jensen lower bound on the disjoint GZ1 sample) + Bonferroni-independence (paper L1379 already downgrades Bonferroni to a non-principled heuristic, principled control = direct-MC max-statistic)). Truth-audit result: 0 genuinely-new real+editable findings across all 8 raws (ledger_match.py + full §3 manual audit vs each .tex + DISPOSITIONS ledger) → NO version bump on any paper, no directive-G, all versions stand. Every surviving MAJOR/REJECT is a source-cited re-flag of an already-disclosed limitation, an OPEN-COMPUTE/VENUE item, or the structural harsh-referee floor (patterns 061-064 + pattern-066 + directive-H). clean-wave streaks → P1U 1 (re-increment after the W1-INT DP1U-25 reset), P2 3, P3 4, P4 4. No ACCEPT faked, no finding dismissed without a source-cited verdict, no math fabricated. Raws + screenshots in EXT_real/H17_2026-07-10/W1/.",
+  },
+  {
+    roundId: "W2-2026-07-11",
+    dateISO: "2026-07-11",
+    windowPT: "Jul 11 · W2 EXT re-test (P1U v1U.0.12 · P5 v0.1.119) · Grok × P1U/P5 + ChatGPT × P5 harvested (Gemini not swept) · headed browser, raw verbatim text + screenshot READ before every recorded verdict · 0 fabricated · 3 verdicts",
+    verdicts: {
+      P1A: ["NO_VERDICT", "MAJOR", "NO_VERDICT"],
+      P1B: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P2: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P3: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P4: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P5: ["REJECT", "MINOR", "NO_VERDICT"],
+    },
+    note: "W2 EXT re-test — 3 verdicts harvested (Grok × P1U/P5 + ChatGPT × P5; Gemini not swept, NO_VERDICT; P2/P3/P4/P1B carry-forward). Verdict matrix stored [ChatGPT, Grok, Gemini] FROM RAW (verbatim VERDICT line READ from each saved raw before recording; P1U = the unified Paper 1, its verdicts sit on the P1A row). *** P1U GROK MINOR(W1)→MAJOR(W2) = verdict-word OSCILLATION on UNCHANGED v1U.0.12 content, NOT a new finding *** — the W2 Grok raw (P1U_grok_W2.md) is the same 6-item structure as its W1 MINOR: 3 MAJOR + 2 MINOR all source-cited re-flags → DP1U-11 (R4 'naturalness closure' = the paper's OWN verbatim abstract framing, 'not closed by amplitude mismatch but by an explanatory-deficit/CC-relocation objection'), DP1U-08/-20 (single-scale NDA no-go 'restates the CC problem' + basis-completeness 'tension' — both honestly disclosed as channel-level not operator-level, L1219/L2448), DP1U-20 (four-route enumeration ambiguity, disclosed), DP1U-12 (Sec.X transparency scope), DP1U-06/-22 (length/repetition OPINION). This is exactly the pattern-066 referee-variance the directives anticipate — the moderate calibrated referee flips a full verdict tier on identical honestly-scoped content; 0 genuinely-new real+editable → P1U clean-wave streak 1→2 (crosses the directive-K bar). P5 Grok = MINOR (5 minors, all → DP5-01/-04/-06/-09/-21, disclosed post-hoc/footprint/de-attenuation/Paper-IV items). P5 ChatGPT = REJECT (10 MAJOR + 2 MINOR; ledger_match matched 11/12, the 2 ledger_match-UNMATCHED candidates — edge-void handling + T-Web dedup sensitivity — Opus-adjudicated as RE-FLAGs of DP5-06/-14, the SAME T-Web/footprint-selection axis already CLOSED in v0.1.119; all others → DP5-04/-09/-10/-11/-12/-20/-21). The v0.1.119 closure (commit a65111df) completed the last missed §XII-B env-stratified-confusion integration site (abstract L786 + changelog L70 reconciled) — the ONE genuinely-new finding of the W2 wave (recorded on P5's readinessMetrics W2 row, genuinelyNewCount 1) → P5 clean-wave streak reset to 0. Truth-audit: 0 genuinely-new real+editable findings beyond the already-closed §XII-B item → NO further version bump (P1U v1U.0.12 + P5 v0.1.119 stand), no directive-G this wave. Caps (50 + latest-per-reviewer ACCEPT 16.7/MIN 12/MAJ 6/REJ 0): P1U = 50 + grok-MAJ 6 + chatgpt-REJ 0 + gemini-MAJ 6 = 62; P5 = 50 + grok-MIN 12 + chatgpt-REJ 0 + gemini-MAJ 6 = 68. No ACCEPT faked, no finding dismissed without a source-cited verdict, no math fabricated. Raws + screenshots in EXT_real/H17_2026-07-10/W2/.",
   },
 ];
 
