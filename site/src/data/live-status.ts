@@ -72,6 +72,12 @@ export const liveStatus: LiveStatus = {
       why: "The -35/16 certification note is drafted do-not-send; only Houston sends author correspondence.",
       ask: "Review research/focused_paper_source_integration/CAI_COURTESY_EMAIL_DRAFT.md and send.",
     },
+    {
+      title: "P3 venue decision — PRD vs ApJS vs MNRAS",
+      blockedPaper: "P3",
+      why: "Three of five reviewers (Gemini INT, ChatGPT EXT, OpenAI INT) independently converged on 'catalog paper, wrong venue for PRD' — a Houston-gated routing call, not an editable defect.",
+      ask: "Read submissions/P3_VENUE_DECISION.md and pick a lane (recommended: ApJS; science + arXiv categories unchanged, ~30-min format conversion if not PRD).",
+    },
   ],
   papers: [
     {

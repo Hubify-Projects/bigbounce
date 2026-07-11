@@ -1,15 +1,21 @@
 # HUMAN-READ BRIEFING — pre-submission expert read
 
-**For:** Houston Golden · **Date:** 2026-07-09 · **Status:** pre-flight, honest
+**For:** Houston Golden · **Date:** 2026-07-11 (synced to program-exit state) · **Status:** pre-flight, honest — edit-loop EXITED
 
 This is the document that makes your irreducible expert-read step efficient. It
 directs your attention to exactly what only a human author can judge — the
 judgment calls, the framing choices, and the claims you will personally sign.
-It does **not** soften anything. The automated pipeline cleared all five papers
-(P1B is now **merged into a unified Paper 1**; 0 genuinely-new findings on the
-latest P1U3 + R9 truth-audits, and for the first time **zero REJECT chips
-program-wide**), but "cleared by the pipeline" is not the same as "an expert
-stands behind it." The gap between those two is your job.
+It does **not** soften anything. **The edit-loop program has EXITED:** all five
+papers (P1B is **merged into a unified Paper 1**) are past the directive-K
+two-clean-waves bar — two consecutive review waves with **0 genuinely-new
+findings**. Round H17 (Jul 10) found and FIXED **8 real errors** before that exit
+(P4's Shamir factor-of-2 that survived ~17 prior waves; P2's spurious-term sign +
+5 stale Bayes columns; P1U's Check-D contradiction; P5's primary-estimand seam).
+The program's **first two external ACCEPTs** landed: Grok EXT ACCEPTed P5
+(v0.1.117) and P4 (v1.0.235); Claude INT ACCEPTed P4 and P5. But "cleared by the
+pipeline / floor-converged" is not "an expert stands behind it." That gap is your
+job. The two remaining clocks are both external to the loop: arXiv submission
+clicks (minutes) and human journal referees (months).
 
 **Read deeply: P4 + P2 (minimum). Skim: P1U, P3, P5.**
 
@@ -18,26 +24,66 @@ arithmetic-error claim.** Read that section first.
 
 ---
 
-## The whole program in 6 lines
+## The whole program in 6 lines (exit state, 2026-07-11)
 
-| Paper | v | pp | One-line claim | Load-bearing result | Latest board (ChatGPT/Grok/Gemini) |
-|-------|---|----|----------------|---------------------|------------------|
-| **P4** | 1.0.225 | 32 | Chirality dipole in 8.5M DESI galaxies is **null** | Real-space HC dipole +0.41σ, p=0.31 | MAJ / MIN / MIN (R9) |
-| **P2** | 1.7.105 | 36 | Matter-bounce f_NL=**−35/16**; resolves Cai/Li factor-of-2; recasts SPHEREx | The −35/16 resolution + independent+RSD Fisher forecast | MAJ / MAJ / MIN (R9) |
-| P3 | 3.1.146 | 35 | 268,519-source multi-survey anomaly catalog | The catalog + reproducible dedup | MAJ / MIN / MAJ (R9) |
-| P5 | 0.1.108 | 39 | DESI void/non-void chirality is null (Δf_CW≈0) | Δf_CW=+0.0007±0.0022, monopole-invariant | MAJ / MIN / MAJ (R9) |
-| **P1U** | 1U.0.4 | 60 | Unified Paper 1 — channel-level ECH no-go **+** reproducibility companion | Channel-by-channel closure + Fierz proof + derived ΔN_eff bound | MAJ / MAJ / MAJ (P1U3) |
+Streaks = consecutive clean waves (0 genuinely-new findings). All five past the
+two-clean-waves bar.
+
+| Paper | v | Streak | One-line claim | Load-bearing result | Latest board (ChatGPT/Grok/Gemini) |
+|-------|---|--------|----------------|---------------------|------------------|
+| **P4** | 1.0.235 | 4 | Chirality dipole in 8.5M DESI galaxies is **null** | Real-space HC dipole +0.41σ, p=0.31 | MAJ / **ACCEPT** / MIN |
+| **P2** | 1.7.112 | 3 | Matter-bounce f_NL=**−35/16**; resolves Cai/Li factor-of-2; recasts SPHEREx | The −35/16 resolution + independent+RSD Fisher forecast | REJECT / MIN / MIN |
+| P3 | 3.1.152 | 4 | 268,519-source multi-survey anomaly catalog | The catalog + reproducible dedup | REJECT / MIN / **REJECT (venue)** |
+| P5 | 0.1.120 | 2 | DESI void/non-void chirality is null (Δf_CW≈0) | Δf_CW=+0.0007±0.0022, monopole-invariant | MAJ / **ACCEPT** / MIN |
+| **P1U** | 1U.0.12 | 2 | Unified Paper 1 — channel-level ECH no-go **+** reproducibility companion | Channel-by-channel closure + Fierz proof + derived ΔN_eff bound | REJECT / MAJ / MAJ |
+
+*Board = latest per-reviewer verdict word. The verdict-word oscillation is the
+point — see the pattern note below and the 7-reviewer record.*
 
 **The universal pattern you must internalize before reading a single review:**
 across every paper, on the *identical PDF*, the boards oscillate MAJOR↔MINOR
 round-to-round on unchanged, honestly-scoped content — directive-H / pattern-066
 referee variance (the maximally-harsh LLM referee's structural floor, which flags
-majors on any real manuscript, including published PRD papers). As of the P1U3 +
-R9 rounds there are **zero REJECT chips program-wide** (down from 6 a week ago),
-and every surviving MAJOR is a truth-audited self-disclosed scope re-flag with
-**0 genuinely-new findings**. Treat the MAJOR lists as a **preview of the toughest
-human referee's *scope* questions**, already answered in the artifact record — not
-as a bug list.
+majors on any real manuscript, including published PRD papers). Every surviving
+MAJOR/REJECT is a truth-audited self-disclosed scope re-flag with **0
+genuinely-new findings** — the convergence bar is "0 genuinely-new," not a literal
+ACCEPT word (directive-H). Treat the MAJOR/REJECT lists as a **preview of the
+toughest human referee's *scope* questions**, already answered in the artifact
+record — not as a bug list. What *did* move the needle: H17 fixed 8 real errors
+that raised the program's average verdict-gap from ~0.3 (Jul-4 verified-reset era,
+all REJECT/MAJOR) to ~1.0–1.2 today, and Grok EXT crossed to literal ACCEPT on P4
+and P5.
+
+---
+
+## The 7-reviewer verified record (why you can trust the board above)
+
+The board is a **verified** record, not a summary — every EXT verdict was recorded
+only after the orchestrator READ the raw reviewer text + screenshot
+(`project-context/peer-reviews/EXT_real/`), and every INT-API verdict has a saved
+raw response. Seven distinct referees, each seeing the identical live PDF:
+
+| # | Reviewer | Kind | Modality | Notes |
+|---|----------|------|----------|-------|
+| 1 | **Claude** (this agent) | INT | full repo + source + context | subscription subagent, not API (CLAUDE.md I1); recomputes committed artifacts. ACCEPTed P4 + P5. |
+| 2 | **OpenAI** (gpt-5.5) | INT | native-PDF (Files API) | moved REJECT→MAJOR on P5 — first non-REJECT there |
+| 3 | **Grok** (grok-4.3) | INT | native-PDF | the "moderate" referee; MINOR on most |
+| 4 | **Gemini** (gemini-3.1-pro-preview) | INT | native-PDF | **7TH REVIEWER, first-ever verified Gemini INT (Jul 11)** — the fresh-eyes stress-test (see below) |
+| 5 | **ChatGPT** | EXT | browser, PDF-only | the harsh-referee floor; REJECT on P2/P3/P1U (documented structural floor) |
+| 6 | **Grok** | EXT | browser, PDF-only | crossed to **literal ACCEPT** on P4 (v1.0.235) + P5 (v0.1.117) — program's first two external ACCEPTs |
+| 7 | **Gemini** | EXT | browser (houston@bamf.com Ultra) | Deep Research / Deep Think available |
+
+**The Gemini fresh-eyes stress-test (the honest exit signal).** Gemini INT came
+online Jul 11 with **zero history of the program** — no prior rounds, no ledger, no
+knowledge of what was already disclosed. It independently reproduced the
+already-disclosed limitation classes on all five papers and surfaced **0
+genuinely-new reader-visible editable findings** (full source-cited audit:
+`GEM1_INT_truth_audit.md` and per-paper `GEM1_INT` entries). Its P3 verdict was
+**REJECT — but purely the catalog-vs-PRD *venue* class** (DP3-08/-10/-16), not a
+science defect. A brand-new zero-history reviewer reaching only the
+already-known-and-disclosed objections is the strongest available evidence that the
+exit is genuine and not loop self-gaming — it is the intended function of directive-F
+(independent integrity audit) working.
 
 ---
 
@@ -261,8 +307,14 @@ another group's algebra, in print, under your name.**
   ecliptic-pole-masked, footnote "436→419, 96.1% retained") and **LAMOST 98%
   blue-excess** (labeled a transparent FAIL, excluded from the validated subset).
   Both are documented, not contradictions.
-- **The one question:** **PRD or ApJS/AJ?** Both Gemini and the audit recommend a
-  catalog/data-release venue. This is a venue routing call, not a science call.
+- **The one question:** **PRD or ApJS/MNRAS?** Three of five reviewers (Gemini INT,
+  ChatGPT EXT, OpenAI INT) independently converged on "catalog paper, wrong venue
+  for PRD." That is signal, not noise. **A dedicated decision packet is now on your
+  desk: `submissions/P3_VENUE_DECISION.md`** — side-by-side PRD vs ApJS vs MNRAS
+  with verbatim reviewer quotes, the ~30-min format-conversion estimate, and one
+  clear recommendation (**ApJS**; the science and arXiv categories don't change).
+  This is a venue routing call, not a science call — but it's the one P3 decision
+  only you can make.
 
 ---
 
@@ -369,14 +421,61 @@ author could rebut after the fact.
   Every such item is already dispositioned with a source citation in the round
   truth-audits. Keep those open when the first tough review lands.
 
-### 4. Before you click submit — the honest pre-flight residue
-1. **P2:** re-run the (now-committed) Cai/Li sympy scripts yourself; reconcile the
+### 4. The honest soft spots — what a human expert should specifically pressure-test
+
+These are the top OPEN items pulled directly from each paper's disposition ledger
+(`project-context/peer-reviews/DISPOSITIONS/<P>.md`). Every one is **disclosed in
+the paper** — none is a hidden defect — but they are where a hostile expert will
+push hardest, and where the honest answer is "disclosed limitation," not "closed."
+
+- **P4** — DP4-17 (OPEN-COMPUTE): the ~47% unmodelled ℓ=1 forward-model remainder
+  needs a joint real-space × harmonic covariance likelihood not yet computed
+  (bounded below falsification, but admitted). DP4-15/-16: spatially-resolved
+  confusion matrix + generative survey-systematics null are future compute. DP4-21
+  (OPEN-VENUE): commit hash + Zenodo DOI mint at submission.
+- **P2** — DP2-25 (OPEN-COMPUTE): only ONE of Cai's discrepancies is traced; his
+  published −35/8 is **not fully reproduced** from his printed coefficients (the
+  full mechanism remains unidentified; headline −35/16 is quadruple-certified and
+  unaffected). DP2-26/-29 (OPEN-COMPUTE/VENUE): the forecast still imports the
+  Heinrich Cov_B — a truly independent multi-tracer forecast needs external survey
+  products. This is the paper's single live technical residue → human referee.
+- **P3** — DP3-15 (OPEN-COMPUTE): full per-object held-out re-inference of the
+  22.5M-spectrum DESI catalog is **pod-blocked** (raw score parquets on an exited
+  node); headline recomputable via `reproduce_headline_dedup.py`, but the
+  acquisition chain is not. DP3-16 (OPEN-VENUE): the catalog-vs-PRD venue call →
+  **`P3_VENUE_DECISION.md`**.
+- **P5** — DP5-10 (OPEN-COMPUTE): cluster/void-level bootstrap for spatial
+  covariance is disclosed but uses counting-only CIs. DP5-21 (OPEN-VENUE):
+  Paper-IV coordination — placeholder arXiv IDs + imported labels, resolved by
+  coordinated submission.
+- **P1U** — DP1U-20 (OPEN-VENUE): full operator-level completeness across the
+  diffeomorphism-invariant basis is **not** done — the paper is channel-level by
+  design; this is the sole live scope objection ("no-go theorem" vs channel-level
+  no-go). DP1U-19: regulated-NJL vacuum-condensate exclusion is disclosed future
+  derivation. DP1U-22 (OPEN-VENUE): 60pp length / "should be a Letter."
+
+### 5. Reading order recommendation
+
+1. **P2 §Cai/Appendix A first** — the highest-stakes claim in the program (a public
+   arithmetic-error accusation against a published paper). Re-run the committed
+   sympy scripts before anything else.
+2. **P4** — the p_eq>0.6 cut (commit 94113e5) + the residual/anchor framing; the
+   one you'll defend most on garden-of-forking-paths grounds.
+3. **P3** — skim, then make the **venue call** (`P3_VENUE_DECISION.md`); no science
+   read needed, it's routing.
+4. **P5** — skim as the P4 companion; confirm the DESIVAST-primary post-hoc + Bonferroni framing.
+5. **P1U** — skim; confirm you'll defend "channel-level no-go" through a real scope exchange.
+
+### 6. Before you click submit — the honest pre-flight residue
+1. **P3:** pick a venue lane from `submissions/P3_VENUE_DECISION.md` (recommended:
+   ApJS). If ApJS/MNRAS, a ~30-min format conversion runs first; science unchanged.
+2. **P2:** re-run the (now-committed) Cai/Li sympy scripts yourself; reconcile the
    stale `REFEREE_EMAIL.md`; decide the Cai email.
-2. **P4:** personally vouch that commit 94113e5 (the p_eq cut) is genuinely
+3. **P4:** personally vouch that commit 94113e5 (the p_eq cut) is genuinely
    pre-analysis.
-3. **P1U:** confirm you're comfortable shipping the merged theory + companion as
+4. **P1U:** confirm you're comfortable shipping the merged theory + companion as
    one standalone Paper 1.
-4. Submission order (waves): **wave 1 — P4 → P3 → P2**; **wave 2 — P5 + P1U**
+5. Submission order (waves): **wave 1 — P4 → P3 → P2**; **wave 2 — P5 + P1U**
    (P5 needs P4's ID). Zenodo DOIs mint at submission.
 
 ---
