@@ -13,7 +13,13 @@ import {
   ReadinessStrip,
   VerdictSeverityTrend,
 } from "./ProgressViz";
+import { VerdictTrajectoryChart } from "./VerdictTrajectoryChart";
+import { PublishEtaWidget } from "@/components/PublishEtaWidget";
+import { getReadinessWaves, getRigorEvents, getPublishEta } from "@/lib/liveReadiness";
 import "./reviews.css";
+
+// Live data updates on every commit/push (Vercel rebuild) + Convex subscription.
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "Review Activity",
@@ -21,8 +27,13 @@ export const metadata: Metadata = {
     "Filterable timeline of the internal/external paper-review loop — verdict trajectories, gap-closure and skills-growth visualizations, every round, truth-audit, closure wave, and skill upgrade, in the open.",
 };
 
-export default function ReviewsPage() {
+export default async function ReviewsPage() {
   const rounds = sortedReviewRounds();
+  const [waveRows, rigorEvents, eta] = await Promise.all([
+    getReadinessWaves(),
+    getRigorEvents(),
+    getPublishEta(),
+  ]);
   return (
     <>
       <p
@@ -95,6 +106,19 @@ export default function ReviewsPage() {
         <summary className="progress-summary">Progress</summary>
         <div className="progress-body">
           <ReadinessStrip />
+          <div className="progress-block">
+            <h3 className="progress-block-title">Verdict trajectory — every paper × reviewer per round, driving REJECT/MAJOR → MINOR/ACCEPT</h3>
+            <p className="progress-block-sub">
+              Each review wave (internal API + external browser) plotted on the verdict scale
+              (REJECT → MAJOR → MINOR → ACCEPT; higher is better). Thin lines are per-paper
+              averages (toggle by paper); the bold line is the program average. FAILED reviewer
+              legs are shown as gaps, never zeros. Vertical ⚑ markers flag documented changes in
+              review rigor (de-biased prompt, integrity gate, verified-review reset, directive J)
+              so any dip in the average is attributable, not mysterious. Every point is a real
+              recorded verdict — nothing synthesized.
+            </p>
+            <VerdictTrajectoryChart rows={waveRows} rigorEvents={rigorEvents} />
+          </div>
           <div className="progress-block">
             <h3 className="progress-block-title">External referee verdicts — driving toward a reviewer ACCEPT</h3>
             <p className="progress-block-sub">
@@ -208,6 +232,11 @@ export default function ReviewsPage() {
       {/* ── ETA to publishable ───────────────────────────────────────────── */}
       <div className="eta-panel">
         <h2 className="campaign-obs-heading">Publication status</h2>
+        {eta ? (
+          <div style={{ margin: "0 0 20px 0" }}>
+            <PublishEtaWidget eta={eta} />
+          </div>
+        ) : null}
         <div className="eta-table-wrap">
           <table className="eta-table">
             <thead>

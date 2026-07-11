@@ -4,6 +4,8 @@ import { sortedReviewRounds } from "@/data/reviewTimeline";
 import { Button } from "@/components/ui/button";
 import { LiveStatus } from "@/components/Shell/LiveStatus";
 import { getLivePapers, displayVersion } from "@/lib/livePapers";
+import { getPublishEta } from "@/lib/liveReadiness";
+import { PublishEtaWidget } from "@/components/PublishEtaWidget";
 import {
   ArrowRight,
   Database,
@@ -183,6 +185,7 @@ export default async function HomePage() {
   // Readiness comes from getLivePapers ONLY — the single Convex-first source
   // shared with the live paper-state surfaces. Never re-read papers.ts.readiness.
   const livePapers = await getLivePapers();
+  const eta = await getPublishEta();
 
   // Review-proof band data. Only kinds that ARE reviews count as review
   // rounds; skill-improvement entries are program bookkeeping and closure
@@ -268,6 +271,13 @@ export default async function HomePage() {
           </p>
         </div>
       </section>
+
+      {/* 1.6 — Honest publishability ETA (live from Convex computeEta). */}
+      {eta ? (
+        <section style={{ marginBottom: 40 }}>
+          <PublishEtaWidget eta={eta} />
+        </section>
+      ) : null}
 
       {/* 2 — Two halves / program arc */}
       <section className="section" style={{ marginTop: 8 }}>
