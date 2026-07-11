@@ -100,7 +100,7 @@ export const liveStatus: LiveStatus = {
       slug: "paper-3",
       number: "3",
       shortTitle: "Multi-survey anomaly catalog",
-      version: "v3.1.152",
+      version: "v3.1.153",
       readiness: 62,
       pendingWork: "CROSSED the bar (streak 4). W1 EXT: Grok MAJOR→MINOR. Honest three-gate downgrade + provenance reconciliations shipped this round. Venue question (PRD vs ApJS/MNRAS) is Houston-gated, not editable.",
     },
