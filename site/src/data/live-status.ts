@@ -50,7 +50,7 @@ export const liveStatus: LiveStatus = {
   lastUpdatedISO: "2026-07-11T08:55:00Z",
   lastUpdatedDisplay: "July 11, 2026 · 1:55 AM PT",
   headline:
-    "PROGRAM PAST THE CONVERGENCE BAR — wave-1 kit verified, awaiting Houston submission clicks. All five papers (P1U/P2/P3/P4/P5) are past the directive-K two-clean-waves bar; the edit-loop program has EXITED. Streaks: P1U 2 · P2 3 · P3 4 · P4 4 · P5 2. The wave-1 arXiv kit (P4 → P3 → P2) plus the wave-2 P5 + P1U bundles are rebuilt at the exit versions and standalone-compile-verified (0 errors, 0 undef-refs; each tarball's .tex byte-matches the repo source; P4/P3 unchanged since Jul-10, P2/P5/P1U rebuilt to v1.7.112 / v0.1.120 / v1U.0.12). Grok EXT returned literal ACCEPTs on P5 (v0.1.117) and P4 (v1.0.235) — the program's first two external ACCEPTs; Claude INT ACCEPTed P4 and P5. Remaining work is two Houston-gated clocks: arXiv wave-1 submission clicks (minutes) and human journal referees (months).",
+    "PROGRAM PAST THE CONVERGENCE BAR — wave-1 kit verified, awaiting Houston submission clicks. All five papers (P1U/P2/P3/P4/P5) are past the directive-K two-clean-waves bar; the edit-loop program has EXITED. Streaks: P1U 2 · P2 3 · P3 4 · P4 4 · P5 2. The wave-1 arXiv kit (P4 → P3 → P2) plus the wave-2 P5 + P1U bundles are rebuilt at the exit versions and standalone-compile-verified (0 errors, 0 undef-refs; each tarball's .tex byte-matches the repo source; P4/P3 unchanged since Jul-10, P2/P5/P1U rebuilt to v1.7.113 / v0.1.120 / v1U.0.12). Grok EXT returned literal ACCEPTs on P5 (v0.1.117) and P4 (v1.0.235) — the program's first two external ACCEPTs; Claude INT ACCEPTed P4 and P5. Remaining work is two Houston-gated clocks: arXiv wave-1 submission clicks (minutes) and human journal referees (months).",
   summary:
     "Round H17 (Jul 10) found and FIXED 8 real errors — P4's Shamir factor-of-2 (survived ~17 prior waves), P2's spurious-term sign + 5 stale Bayes columns, P1U's Check-D contradiction + conventions, P5's primary-estimand seam — then converged: two consecutive waves with 0 genuinely-new findings, 49 findings all ledger-matched. New real science shipped: GZ1 confusion matrices stratified by sky-leg, confidence AND void/non-void environment (parity-symmetric errors measured, not assumed). Verdict-gap trend: program average up from ~0.3 (Jul-4 verified-reset era, all REJECT/MAJOR) to ~1.0-1.2 today, driven by real fixes.",
   currentlyRunning: [
@@ -92,7 +92,7 @@ export const liveStatus: LiveStatus = {
       slug: "paper-2",
       number: "2",
       shortTitle: "f_NL = -35/16 SPHEREx forecast + Cai-Li certification",
-      version: "v1.7.112",
+      version: "v1.7.113",
       readiness: 74,
       pendingWork: "CROSSED the two-clean-waves bar (streak 3). Grok EXT: 'Accept with minor revisions' then MINOR after closures; Claude INT hand-verified every fraction ('no computational error, no fabrication'). ChatGPT REJECT = documented floor. -35/16 quadruple-certified.",
     },
