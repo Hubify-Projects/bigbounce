@@ -47,8 +47,8 @@ export interface LiveStatus {
 }
 
 export const liveStatus: LiveStatus = {
-  lastUpdatedISO: "2026-07-11T06:45:00Z",
-  lastUpdatedDisplay: "July 10, 2026 · 11:45 PM PT",
+  lastUpdatedISO: "2026-07-11T06:55:00Z",
+  lastUpdatedDisplay: "July 10, 2026 · 11:55 PM PT",
   headline:
     "W2 WAVE ADJUDICATED — 4 OF 5 PAPERS PAST THE BAR (Jul 11). P1U crossed the two-clean-waves convergence bar (streak 2) after its W2 Grok MINOR→MAJOR was truth-audited as pattern-066 verdict-word oscillation on unchanged v1U.0.12 — 0 genuinely-new. Only P5 remains below the bar (streak reset to 0 after its one genuinely-new §XII-B integration site was closed in v0.1.119). The program is FIVE papers — P1B merged into the unified Paper 1. Grok EXT has returned literal ACCEPTs on P5 (v0.1.117) and P4 (v1.0.235) — the program's first two external ACCEPTs — while ChatGPT/OpenAI hold their documented REJECT floor (pattern-066).",
   summary:
@@ -114,9 +114,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-5",
       number: "5",
       shortTitle: "DESI environmental chirality independence",
-      version: "v0.1.119",
+      version: "v0.1.120-2026-07-10",
       readiness: 68,
-      pendingWork: "Streak reset to 0/2 — the missed §XII-B integration site (abstract L786 + changelog L70 still cited the old not-yet-computed wording) was closed in v0.1.119; the void measurement is now cited at every site. This is the convergence bar working. W2 EXT: Grok MINOR + ChatGPT REJECT — all ledger re-flags (the 2 ledger_match-UNMATCHED, edge-void + T-Web dedup, are RE-FLAGs of the v0.1.119-closed DP5-06/-14). (void-stratified confusion: void N=933 asymmetry -0.023 +/- CI, p=0.37.) First EXT ACCEPT of the program (Grok, v0.1.117) + Claude INT ACCEPT. One more clean wave to the bar.",
+      pendingWork: "Streak reset to 0/2 AGAIN at W3-INT — the convergence bar working a second time. Claude INT (MINOR) caught one genuinely-new editable bookkeeping item: the void-stratum integration had no dedicated v0.1.118/119 changelog block of record, only a retro-annotation on the older v0.1.116 block. CLOSED in v0.1.120 (comment-only, no reader-visible change). W3-INT verdicts: OpenAI REJECT (documented structural floor, all 8 unmatched map to DP5-06/-18/-19/-21/-22 harsh-floor/cosmetic re-flags), Grok MINOR + Claude MINOR (re-flags of disclosed limits). (void-stratified confusion: void N=933 asymmetry -0.023 +/- CI, p=0.37.) First EXT ACCEPT of the program (Grok, v0.1.117) + Claude INT ACCEPT. One more clean wave to the bar.",
     },
   ],
   blockerTally: {
@@ -125,7 +125,7 @@ export const liveStatus: LiveStatus = {
     openMajors: 6, // latest-per-reviewer verdict words below MINOR: ChatGPT REJECT x5 (documented floor) + OpenAI INT REJECT class -- all ledger-dispositioned re-flags, 0 genuinely-new open
     openMinors: 8, // Grok/Claude MINOR lists -- all ledger re-flags of disclosed limitations
   },
-  cronStatus: "W2 wave adjudicated (2026-07-11): P1U Grok MINOR→MAJOR = pattern-066 verdict-word oscillation on unchanged v1U.0.12 (0 genuinely-new → streak crosses the bar). P5's one genuinely-new finding (missed §XII-B site) was closed in v0.1.119 → P5 streak reset to 0. Streaks: P1U 2, P2 3, P3 4, P4 4, P5 0. computeEta latest-per-paper ordering fixed (3 W1-EXT-r2 reposts unmask stale STATE-CORRECTION rows). Loop cadence ~2h/wave with the tooling (ext_submit/ext_harvest/int_wave/ledger_match/directive_g).",
+  cronStatus: "W3-INT wave adjudicated (2026-07-11): P5 Claude INT (MINOR) caught one genuinely-new editable item — the void-stratum integration lacked a dedicated v0.1.118/119 changelog block of record (only a retro-annotation on v0.1.116) → CLOSED in v0.1.120, P5 streak resets to 0 again (the bar working). OpenAI REJECT + Grok MINOR = documented floor / disclosed re-flags, 0 genuinely-new beyond the changelog item. Streaks: P1U 2, P2 3, P3 4, P4 4, P5 0. Loop cadence ~2h/wave with the tooling (ext_submit/ext_harvest/int_wave/ledger_match/directive_g).",
   etaToCompletion:
     "Submission-ready = two consecutive 0-genuinely-new waves per paper (directive K). P1U/P2/P3/P4 are past the bar; only P5 needs one clean wave (~2-4h of loop time, assuming no new findings — a genuinely-new finding resets that paper). Then: Houston's arXiv wave-1 clicks (same day) and human journal referees (months, external). Live ETA on the homepage widget.",
   pods: [],
