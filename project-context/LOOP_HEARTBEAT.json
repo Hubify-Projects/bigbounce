@@ -1,5 +1,5 @@
 {
- "lastTickUTC": "2026-07-11T08:08:53.931710+00:00",
+ "lastTickUTC": "2026-07-11T09:09:25+00:00",
  "source": "orchestrator",
- "note": "maintenance tick \u2014 program past exit bar, awaiting Houston wave-1 clicks"
+ "note": "hourly tick — directive-K exit state verified intact: two clean waves hold; GEM1-INT (7th reviewer, Gemini API) 0 genuinely-new across P1U/P2/P3/P4/P5; wave-1 arXiv kit + walkthrough current at exit versions; site_freshness_check PASS (exit 0). No un-harvested results, no running review procs, EXT browser-gated on headless tick. Barrier is Houston-gated (arXiv submission clicks / human-referee routing). Did NOT re-spin EXT (backfire per standing directive) — no autonomous edit exists that isn't noise/gaming."
 }
