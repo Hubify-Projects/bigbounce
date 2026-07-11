@@ -52,20 +52,32 @@ export const reviewRounds: ReviewRound[] = [
     dateISO: "2026-07-11",
     kind: "internal-cc",
     title:
-      "P3 FR3 — INT-Claude wave-2 truth-audit closes 2 genuinely-new correctable items → v3.1.155 (streak reset 1→0).",
+      "P3 FR3 (rebuild wave 2/2) — 1 genuinely-new reader-visible fix → v3.1.155; streak RESET 1→0, P3 NOT in the exit set.",
     papers: ["P3"],
     summary:
-      "The FR3 INT wave-2 on P3 v3.1.154 (Claude-subscription MINOR + OpenAI REJECT + Grok MAJOR + Gemini REJECT) surfaced 2 GENUINELY-NEW correctable items from the Claude-subscription leg, both verified against the committed savage_dickey JSON and closed same-bundle in v3.1.155 (DP3-19): (1) the v3.1.154 SMBHB fix moved the parameter-shift to full-precision +4.63σ but left its matter-bounce partner at display-precision +1.13σ — the committed chain gives matter_bounce_3p0 = 1.13543 → +1.14σ, so all 7 reader-visible sites were made consistent (+1.13σ → +1.14σ); (2) F_0 = 1/(8.98)² last-digit rounding 0.01239 → 0.01240 (downstream 1/σ² 0.01509 → 0.01510; the headline σ(f_NL)=8.14 and envelope [3.92,8.98] are UNCHANGED). No number was fabricated; both fixes are arithmetic-consistency corrections against committed artifacts. Every OpenAI/Grok/Gemini MAJOR is a canonical DP3-ledger re-flag (PRD-vs-ApJS venue, validation-heterogeneity, process-volume framing, LAMOST training-bias, eROSITA provenance) — pattern-066 referee variance, not new findings. directive-G hygiene verified: TinyTeX recompile 0-err/0-undef, 37 pp, 0 overfull hboxes, byte-identical mirror to all four served paths (md5 ebd4bfd1…), Convex paperVersions:bump. P3 clean-wave streak resets 1→0; the two-clean-waves clock restarts from here.",
+      "FR3 rebuild wave 2/2 on P3 v3.1.154 — full board: INT Claude-subscription MINOR + OpenAI REJECT + Grok-API MAJOR + Gemini REJECT, EXT Grok MAJOR + EXT ChatGPT REJECT (run.log 15:55). The recompute-verifying Claude INT leg surfaced 1 GENUINELY-NEW reader-visible correctable finding (closed same-bundle in v3.1.155, DP3-19): the v3.1.154 SMBHB fix (DP3-18) moved the parameter-shift to full-precision +4.63σ but left its matter-bounce partner at display-precision +1.13σ IN THE SAME CLAUSE — the committed chain gives matter_bounce_3p0 = 1.13543 → +1.14σ, a reader-visible arithmetic self-inconsistency, so all 7 sites were made consistent (+1.13σ → +1.14σ). A cosmetic companion F_0 = 1/(8.98)² 0.01239 → 0.01240 rode along (downstream 1/σ² 0.01509 → 0.01510; headline σ(f_NL)=8.14 and envelope [3.92,8.98] UNCHANGED). No number was fabricated; both re-derived from committed artifacts. Every OpenAI/Grok/Gemini + EXT ChatGPT/Grok MAJOR/REJECT is a canonical DP3-ledger re-flag (PRD-vs-ApJS venue, validation-heterogeneity, process-volume framing, LAMOST training-bias, eROSITA provenance, provenance/pod-lost) — pattern-066 referee variance, not new; NO EXT/API reviewer flagged the precision item (caught only by the recompute Claude leg). directive-G hygiene verified: recompile 0-err/0-undef, 37 pp, 0 overfull hboxes, byte-identical mirror to every served path (md5 ebd4bfd1…), Convex paperVersions:bump. P3 clean-wave streak resets 1→0 and P3 does NOT rejoin the exit set; it must post another clean wave to rebuild toward the two-clean-waves bar.",
     keyTakeaways: [
-      "matter-bounce parameter-shift +1.13σ → +1.14σ at all 7 reader-visible sites — made consistent with the v3.1.154 full-precision SMBHB +4.63σ fix (chain: 1.13543)",
-      "F_0 0.01239 → 0.01240 (downstream 0.01509 → 0.01510); headline σ(f_NL)=8.14 + envelope [3.92,8.98] unchanged",
-      "Both items verified against committed savage_dickey JSON — no fabrication; INT MAJORs (OpenAI/Grok/Gemini) are canonical DP3 re-flags (venue/process-volume/LAMOST/eROSITA), pattern-066 variance",
-      "directive-G verified (37pp, 0 undef-refs, 0 overfull, 3-way md5); P3 streak reset 1→0, clock restarts",
+      "1 genuinely-new reader-visible finding (DP3-19): matter-bounce parameter-shift +1.13σ → +1.14σ at all 7 sites — made consistent with the v3.1.154 full-precision SMBHB +4.63σ fix (chain: 1.13543)",
+      "Cosmetic companion: F_0 0.01239 → 0.01240 (downstream 0.01509 → 0.01510); headline σ(f_NL)=8.14 + envelope [3.92,8.98] unchanged",
+      "Full board REJ/MAJ/REJ/MIN + EXT Grok MAJOR / ChatGPT REJECT — all EXT/API findings are canonical DP3 re-flags (pattern-066); NO reviewer re-flagged the precision item, caught only by the recompute Claude INT leg",
+      "directive-G verified (37pp, 0 undef-refs, 0 overfull, byte-identical mirror); P3 streak RESET 1→0, P3 NOT in the exit set, clock restarts",
     ],
     links: [
       {
-        label: "INT Claude wave-2 raw",
+        label: "INT Claude wave-2 raw (MINOR)",
         href: `${GH}/project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P3_claude_0852.md`,
+      },
+      {
+        label: "P3 Grok FR3 raw (MAJOR)",
+        href: `${GH}/project-context/peer-reviews/EXT_real/H17_2026-07-10/FR3/P3_grok_FR3.md`,
+      },
+      {
+        label: "P3 ChatGPT FR3 raw (REJECT)",
+        href: `${GH}/project-context/peer-reviews/EXT_real/H17_2026-07-10/FR3/P3_chatgpt_FR3.md`,
+      },
+      {
+        label: "P3 FR3 truth-audit",
+        href: `${GH}/project-context/peer-reviews/EXT_real/H17_2026-07-10/FR3/P3_truth_audit.md`,
       },
     ],
   },
