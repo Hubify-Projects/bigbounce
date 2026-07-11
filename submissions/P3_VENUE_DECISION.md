@@ -66,7 +66,7 @@ correctly flagged **OPEN-VENUE / HOUSTON-GATED**, not an editable defect.
 **What does NOT change in any lane:** the science. 268,519-candidate process-volume
 catalog, the 2,468 like-for-like benchmark, the DESI injection-recovery gate + two
 correlated fold-stability probes, §V's honest nulls (f_NL σ=8.14 envelope,
-NANOGrav γ=2.567 at +1.13σ), every disclosed provenance limitation. The reviewers
+NANOGrav γ=2.567 at +1.14σ), every disclosed provenance limitation. The reviewers
 are unanimous that the catalog itself is technically supported.
 
 ---
