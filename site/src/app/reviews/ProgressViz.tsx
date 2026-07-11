@@ -404,6 +404,24 @@ export function SkillsGrowthChart() {
 
   const patternPath = step(pts.map((p) => p.patterns));
   const rulesPath = step(pts.map((p) => p.promptRules));
+  // tooling is optional (undefined on legacy points before the counter existed).
+  // Build a stepped path only over the contiguous tail where it is defined, so
+  // undefined renders as a gap — never a zero.
+  const toolingIdx = pts.map((p, i) => (p.tooling != null ? i : -1)).filter((i) => i >= 0);
+  const toolingStart = toolingIdx.length ? toolingIdx[0] : -1;
+  const toolingPath =
+    toolingStart >= 0
+      ? pts
+          .slice(toolingStart)
+          .map((p, k) => {
+            const i = toolingStart + k;
+            const v = p.tooling as number;
+            if (k === 0) return `M${x(i)},${y(v)}`;
+            const prev = pts[i - 1].tooling as number;
+            return `L${x(i)},${y(prev)} L${x(i)},${y(v)}`;
+          })
+          .join(" ")
+      : "";
 
   // Shorten long id strings for the x-axis label: take the part before "·"/"(",
   // strip date suffixes + verbose tags, cap length so rotated labels don't clip.
@@ -420,7 +438,7 @@ export function SkillsGrowthChart() {
   };
 
   return (
-    <svg viewBox={`0 0 ${width} ${height}`} role="img" aria-label="Skills-stack growth: review patterns and reviewer-prompt rules per round" className="progress-svg">
+    <svg viewBox={`0 0 ${width} ${height}`} role="img" aria-label="Skills-stack growth: review patterns, reviewer-prompt rules, and process/tooling assets per round" className="progress-svg">
       {/* y grid + ticks — updated to match new maxY */}
       {[0, 25, 50, 75].map((v) => (
         <g key={v}>
@@ -430,6 +448,10 @@ export function SkillsGrowthChart() {
           </text>
         </g>
       ))}
+      {/* process/tooling (tertiary) — dotted, only over the tail where defined */}
+      {toolingPath && (
+        <path d={toolingPath} fill="none" stroke="var(--model-grok, #c084fc)" strokeWidth={1.25} strokeDasharray="1.5 3" />
+      )}
       {/* prompt rules (secondary) */}
       <path d={rulesPath} fill="none" stroke="var(--text-muted)" strokeWidth={1.25} strokeDasharray="4 3" />
       {/* patterns (primary) */}
@@ -437,7 +459,7 @@ export function SkillsGrowthChart() {
       {pts.map((p, i) => (
         <g key={p.id}>
           <circle cx={x(i)} cy={y(p.patterns)} r={3} fill="var(--accent)" stroke="var(--bg)" strokeWidth={1.5}>
-            <title>{`${p.id}: ${p.patterns} patterns · ${p.promptRules} prompt rules — ${p.note}`}</title>
+            <title>{`${p.id}: ${p.patterns} patterns · ${p.promptRules} prompt rules${p.tooling != null ? ` · ${p.tooling} process/tooling` : ""} — ${p.note}`}</title>
           </circle>
           <text x={x(i)} y={y(p.patterns) - 8} textAnchor="middle" fontFamily={MONO} fontSize={9.5} fontWeight={600} fill="var(--text)">
             {p.patterns}
@@ -445,6 +467,11 @@ export function SkillsGrowthChart() {
           <circle cx={x(i)} cy={y(p.promptRules)} r={2.25} fill="var(--text-muted)" stroke="var(--bg)" strokeWidth={1.25}>
             <title>{`${p.id}: ${p.promptRules} reviewer-prompt rules`}</title>
           </circle>
+          {p.tooling != null && (
+            <circle cx={x(i)} cy={y(p.tooling)} r={2.25} fill="var(--model-grok, #c084fc)" stroke="var(--bg)" strokeWidth={1.25}>
+              <title>{`${p.id}: ${p.tooling} process/tooling assets (cumulative, sha-cited)`}</title>
+            </circle>
+          )}
           {/* x-axis tick */}
           <line x1={x(i)} y1={xAxisY} x2={x(i)} y2={xAxisY + 3} stroke={AXIS} strokeWidth={0.75} />
           {/* single rotated x-axis label — -45° prevents overlap on dense series */}
@@ -461,17 +488,23 @@ export function SkillsGrowthChart() {
           </text>
         </g>
       ))}
-      {/* stacked legend — sits in padT zone, above the plot, well clear of data */}
+      {/* stacked legend — sits in padT zone, above the plot, well clear of data.
+          Three inline columns so a third series fits without pushing into data. */}
       <g fontFamily={MONO} fontSize={8}>
-        {/* row 1: review patterns */}
-        <line x1={padL + 2} y1={padT - 30} x2={padL + 18} y2={padT - 30} stroke="var(--accent)" strokeWidth={1.75} />
-        <text x={padL + 22} y={padT - 27} fill="var(--text-secondary)">
+        {/* col 1: review patterns */}
+        <line x1={padL + 2} y1={padT - 22} x2={padL + 18} y2={padT - 22} stroke="var(--accent)" strokeWidth={1.75} />
+        <text x={padL + 22} y={padT - 19} fill="var(--text-secondary)">
           review patterns
         </text>
-        {/* row 2: reviewer-prompt rules */}
-        <line x1={padL + 2} y1={padT - 16} x2={padL + 18} y2={padT - 16} stroke="var(--text-muted)" strokeWidth={1.25} strokeDasharray="4 3" />
-        <text x={padL + 22} y={padT - 13} fill="var(--text-secondary)">
+        {/* col 2: reviewer-prompt rules */}
+        <line x1={padL + 118} y1={padT - 22} x2={padL + 134} y2={padT - 22} stroke="var(--text-muted)" strokeWidth={1.25} strokeDasharray="4 3" />
+        <text x={padL + 138} y={padT - 19} fill="var(--text-secondary)">
           reviewer-prompt rules
+        </text>
+        {/* col 3: process/tooling (dotted) */}
+        <line x1={padL + 258} y1={padT - 22} x2={padL + 274} y2={padT - 22} stroke="var(--model-grok, #c084fc)" strokeWidth={1.25} strokeDasharray="1.5 3" />
+        <text x={padL + 278} y={padT - 19} fill="var(--text-secondary)">
+          process/tooling (sha-cited)
         </text>
       </g>
     </svg>

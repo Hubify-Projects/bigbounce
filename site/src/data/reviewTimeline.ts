@@ -42,9 +42,30 @@ export interface ReviewRound {
 
 const GH = "https://github.com/Hubify-Projects/bigbounce/blob/main";
 const PR = `${GH}/project-context/peer-reviews`;
+/** Commit-permalink base for sha-cited skill-improvement provenance. */
+const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
+  {
+    id: "skill-site-freshness-gate-2026-07-11",
+    dateISO: "2026-07-11",
+    kind: "skill-improvement",
+    title:
+      "Site-freshness pre-push gate — a hard hook that BLOCKS a push whenever a public surface (banner, this skills chart, /reviews board, version chips) falls behind the newest Convex wave or tools/ commit. Kills the stale-surface class. git-sha-cited.",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary:
+      "tools/site_freshness_check.sh + tools/hooks/pre-push (commit 0c263178): a pre-push hook that compares every public surface — the homepage banner, the skills-growth chart, the /reviews board, and the version chips — against the newest Convex wave and newest tools/ commit, and BLOCKS the push if any surface is stale, printing exactly which one and why. This is the standing enforcement of the very failure Houston caught (the skills chart flat since RS11 while ~10 days of real self-improvement shipped): from now on a round that doesn't update its public surfaces cannot be pushed. This backfill commit is the gate's first cleared run — it forced the skills chart current before it would allow the push.",
+    keyTakeaways: [
+      "pre-push hook blocks any push with a stale public surface (banner / skills chart / /reviews board / version chips) — commit 0c263178",
+      "checks each surface against the newest Convex wave + newest tools/ commit and names the stale one",
+      "standing enforcement of the exact staleness this backfill closes — no more silently-flat charts",
+    ],
+    links: [
+      { label: "commit 0c263178", href: `${GH_COMMIT}/0c263178` },
+      { label: "site_freshness_check.sh", href: `${GH}/tools/site_freshness_check.sh` },
+    ],
+  },
   {
     id: "W1-ext-adjudication-2026-07-11",
     dateISO: "2026-07-11",
@@ -83,6 +104,125 @@ export const reviewRounds: ReviewRound[] = [
     links: [
       { label: "record_wave.sh", href: `${GH}/tools/record_wave.sh` },
       { label: "backfill script", href: `${GH}/tools/backfill_readiness_metrics.py` },
+    ],
+  },
+  {
+    id: "skill-h17-accel-round2-2026-07-10",
+    dateISO: "2026-07-10",
+    kind: "skill-improvement",
+    title:
+      "H17 acceleration round-2 — EXT/INT wave automation + directive_g --verify-only. Seven tooling assets shipped; wave cycle ~4–5h → ~1.5–2h. Every asset git-sha-cited.",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary:
+      "ACCELERATION_LOG_2026-07-10 round-2 (items 8–13): tools/ext_submit.sh + ext_harvest.sh + post_verdict.sh (EXT wave automation — proven per-reviewer submit recipes with URL-at-submit + Gemini in-place send-verify, union extraction selectors, dead-chat detection, and a Convex verdict poster with schema+slug+cap-formula baked in — replacing the ad-hoc browser shell blocks that were the day's biggest bug source, commit 6ca8aae7 refined by 085ce1ae + bfc8a76d); tools/int_wave.sh + ledger_match.py (all three INT legs parallel with raw-save enforced + a fingerprint pre-matcher that drafts the disposition match table so Opus adjudicates only UNMATCHED, commit 576b5ef9); directive_g.sh --verify-only (validate a paper without re-mirroring/re-bumping — fixes the same-date tie-break that stole the Convex 'current' row, commit 576b5ef9); browser auto-reconnect-and-retry wrapped into the round-2 scripts (item 13). Verifiable in project-context/ACCELERATION_LOG_2026-07-10.md (items numbered 1–13) — nothing invented.",
+    keyTakeaways: [
+      "tools/ext_submit.sh + ext_harvest.sh + post_verdict.sh — EXT submit/harvest/verdict-post automation (commit 6ca8aae7; live-test fixes 085ce1ae, bfc8a76d)",
+      "tools/int_wave.sh + ledger_match.py — parallel 3-leg INT wave with raw-save enforced + fingerprint pre-matcher for disposition ledgers (commit 576b5ef9)",
+      "directive_g.sh --verify-only flag — validate without re-mirroring/re-bumping; fixes the same-date Convex 'current'-row tie-break (commit 576b5ef9)",
+      "measured effect: wave cycle ~4–5h (morning, ad-hoc) → ~1.5–2h (evening, tooled) per ACCELERATION_LOG",
+    ],
+    links: [
+      { label: "commit 6ca8aae7 (ext wave)", href: `${GH_COMMIT}/6ca8aae7` },
+      { label: "commit 576b5ef9 (int_wave + ledger + verify-only)", href: `${GH_COMMIT}/576b5ef9` },
+      { label: "ACCELERATION_LOG", href: `${GH}/project-context/ACCELERATION_LOG_2026-07-10.md` },
+    ],
+  },
+  {
+    id: "skill-h17-accel-round1-2026-07-10",
+    dateISO: "2026-07-10",
+    kind: "skill-improvement",
+    title:
+      "H17 acceleration round-1 — directive_g.sh one-shot PDF hygiene, canonical disposition ledgers (107 entries), live INT version labels, Convex sort fix. Every asset git-sha-cited.",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary:
+      "ACCELERATION_LOG_2026-07-10 round-1 (items 1–7): tools/directive_g.sh <paper> <ver> \"<changelog>\" — one-shot bump→compile→mirror→Convex chain with leak-gate + 0-undef compile check + byte-identical mirror discovery + Convex bump/read-back verify + canonical slug map, cutting per-closure hygiene ~15min→~2min and making slug drift impossible (commit 533481ae). Canonical disposition ledgers project-context/peer-reviews/DISPOSITIONS/<P>.md — 107 numbered fingerprinted entries; audits cite D<P>-NN one-line instead of re-writing dispositions from scratch, roughly halving wave audit time (commit 4a2d551d). tools/int_api_review now reads \\paperVersion live from the tex so review headers are always truthful (commit 729165b5). convex/paperVersions.ts sortVersions Date.parse fix — killed the lexicographic 'July 10 < July 9' bug that left stale 'current' chips site-wide (commit 729165b5). Also codified the fused-owner-loop pattern (one Opus owner iterates close→INT-retest→audit internally, returns once) and documented pattern-066 in BOTH directions (referee variance flips MINOR→MAJOR and MAJOR→MINOR on unchanged content) in the canonical spec. Verifiable in ACCELERATION_LOG items 1–7.",
+    keyTakeaways: [
+      "tools/directive_g.sh — one-shot PDF-hygiene chain (leak-gate + 0-undef compile + byte-identical mirror + Convex bump/verify); per-closure ~15min→~2min (commit 533481ae)",
+      "canonical disposition ledgers DISPOSITIONS/*.md — 107 numbered fingerprinted entries; wave audit time ~halved (commit 4a2d551d)",
+      "live \\paperVersion INT labels + convex sortVersions Date.parse fix — truthful review headers + honest 'current' chips (commit 729165b5)",
+      "fused-owner-loop pattern + pattern-066 both-directions documentation codified in the canonical bigbounce-r-round spec",
+    ],
+    links: [
+      { label: "commit 533481ae (directive_g.sh)", href: `${GH_COMMIT}/533481ae` },
+      { label: "commit 4a2d551d (disposition ledgers)", href: `${GH_COMMIT}/4a2d551d` },
+      { label: "commit 729165b5 (int label + convex sort)", href: `${GH_COMMIT}/729165b5` },
+    ],
+  },
+  {
+    id: "skill-directive-j-leak-gate-url-at-submit-2026-07-09",
+    dateISO: "2026-07-09",
+    kind: "skill-improvement",
+    title:
+      "Standing directive J (literal 0/0/0 + never-idle) + directive-G leak gate + URL-at-submit rule — three reviewer-prompt/process rules codified in the canonical spec. scistack-sha-cited.",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary:
+      "Three loop-hardening rules added to astrostack/bigbounce-r-round/SKILL.md: (1) Houston's standing directive J — the exit bar is LITERAL 0 MAJOR/0 MINOR/0 REJECT from every reviewer, the loop never idles below the bar, Fable orchestrator + Opus subagents (scistack 000cd25); (2) directive-G leak gate — grep for review-process/audit language before EVERY recompile so internal-audit prose can't leak into a served PDF (P1U W13 lesson, scistack c40ca88); (3) URL-at-submit — capture the chat URL before any polling so a died agent can never orphan a submitted EXT leg (H16 failure mode, scistack b570c78). Also: INT lanes never wait on the browser (parallel-resource rule, scistack 01688957). Verifiable in the scistack spec repo git history.",
+    keyTakeaways: [
+      "directive J: literal 0/0/0 all-reviewer exit bar + never-idle parallel work (scistack 000cd25)",
+      "directive-G leak gate: grep for review-process language before every recompile — no audit prose in served PDFs (scistack c40ca88, P1U W13 lesson)",
+      "URL-at-submit: capture chat URL before polling — a died agent can never orphan a submitted EXT leg (scistack b570c78, H16 lesson)",
+      "INT lanes never wait on the browser (parallel-resource rule, scistack 01688957)",
+    ],
+    links: [
+      { label: "scistack 000cd25 (directive J)", href: "https://github.com/Hubify-Projects/scistack/commit/000cd25" },
+      { label: "scistack c40ca88 (leak gate)", href: "https://github.com/Hubify-Projects/scistack/commit/c40ca88" },
+      { label: "scistack b570c78 (URL-at-submit)", href: "https://github.com/Hubify-Projects/scistack/commit/b570c78" },
+    ],
+  },
+  {
+    id: "skill-same-commit-board-2026-07-07",
+    dateISO: "2026-07-07",
+    kind: "skill-improvement",
+    title:
+      "Every verdict round must hit the /reviews board in the same commit as its artifacts; the loop never self-idles below the bar. Canonical-spec rule, scistack-sha-cited.",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary:
+      "Codified in astrostack/bigbounce-r-round/SKILL.md (scistack 71e4a5c): a verdict round is not done until its data reaches the live /reviews board in the SAME commit as the round artifacts, and the loop must not declare itself idle while any verdict word is below ACCEPT. This is the process root-cause fix for the very drift Houston caught (the skills chart flat while real work shipped). Verifiable in the scistack spec repo.",
+    keyTakeaways: [
+      "verdict rounds hit the /reviews board same-commit as artifacts — no deferred site sync (scistack 71e4a5c)",
+      "the loop never self-idles below the ACCEPT bar",
+      "directly addresses the timeline-staleness failure mode this backfill closes",
+    ],
+    links: [
+      { label: "scistack 71e4a5c", href: "https://github.com/Hubify-Projects/scistack/commit/71e4a5c" },
+    ],
+  },
+  {
+    id: "skill-canonical-r-round-spec-headed-browser-2026-07-06",
+    dateISO: "2026-07-06",
+    kind: "skill-improvement",
+    title:
+      "bigbounce-r-round made the single canonical INT/EXT round spec (DRY) + HEADED-browser-mandatory-before-EXT rule. scistack-sha-cited.",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary:
+      "astrostack/bigbounce-r-round/SKILL.md became the canonical INT/EXT round spec — all other R-round skills now point here (DRY, scistack a82bc5f). Same window added the HEADED-browser-mandatory rule: before any EXT sweep you MUST $B connect to a headed Chromium, because the default headless browser can't pass ChatGPT's Cloudflare bot-check or Google/Gemini OAuth and silently loses reviewer sessions (Houston 2026-07-05 lesson, scistack 8a5ae11). Verifiable in the scistack spec repo.",
+    keyTakeaways: [
+      "bigbounce-r-round/SKILL.md is now the single canonical INT/EXT round spec — all other R-round skills point here (scistack a82bc5f)",
+      "HEADED browser mandatory before EXT ($B connect) — headless can't pass Cloudflare/OAuth (scistack 8a5ae11)",
+    ],
+    links: [
+      { label: "scistack a82bc5f (canonical spec)", href: "https://github.com/Hubify-Projects/scistack/commit/a82bc5f" },
+      { label: "scistack 8a5ae11 (headed browser)", href: "https://github.com/Hubify-Projects/scistack/commit/8a5ae11" },
+    ],
+  },
+  {
+    id: "skill-verified-review-reset-2026-07-03",
+    dateISO: "2026-07-03",
+    kind: "skill-improvement",
+    title:
+      "Verifiable-review reset (I1–I5): every EXT leg saves raw text + screenshot read before any verdict; INT Claude leg = subscription subagent NOT the Anthropic API. bigbounce + scistack sha-cited.",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary:
+      "The durable review-routing fix after Houston caught a 'converged/18-18 ACCEPT' state as fabricated (unverified sub-agent sweeps, ChatGPT silently dropped, no raw text). Codified: every EXT leg saves COMPLETE raw reviewer text + a screenshot and the orchestrator READS+verifies before recording any verdict (a leg with no output is FAILED, not a verdict); the INT Claude leg is the running Claude Code subscription subagent, NEVER the Anthropic API, and an INT infra failure never stops EXT; ChatGPT is never silently dropped; Perplexity is optional. tools/v3_native_pdf_review.py was de-required of ANTHROPIC/PERPLEXITY keys and routes the Claude leg to a subagent (bigbounce commit 6357a9aa; scistack 40fe0cc).",
+    keyTakeaways: [
+      "every EXT leg saves raw text + screenshot, READ+verified before any recorded verdict (no-output leg = FAILED, not a verdict)",
+      "INT Claude leg = Claude Code subscription subagent, NEVER the Anthropic API; INT-fail never stops EXT; ChatGPT never dropped",
+      "tools/v3_native_pdf_review.py de-required ANTHROPIC/PERPLEXITY keys + routes Claude leg to a subagent (bigbounce 6357a9aa)",
+      "durable fix in the scistack review spec (scistack 40fe0cc) — I1–I5",
+    ],
+    links: [
+      { label: "bigbounce 6357a9aa", href: `${GH_COMMIT}/6357a9aa` },
+      { label: "scistack 40fe0cc (I1–I5)", href: "https://github.com/Hubify-Projects/scistack/commit/40fe0cc" },
     ],
   },
   {
@@ -5029,6 +5169,15 @@ export interface SkillsPoint {
   patterns: number;
   /** v3 native-PDF reviewer-prompt instruction rules. */
   promptRules: number;
+  /**
+   * Cumulative count of shipped process/tooling assets — automation scripts,
+   * canonical ledgers, and codified process protocols that improve the review
+   * loop without being a new review-pattern or reviewer-prompt rule. Each
+   * increment is git-sha-cited in the note. Optional for legacy points
+   * authored before the counter existed (undefined = not-yet-tracked, renders
+   * as a gap, never a zero).
+   */
+  tooling?: number;
   note: string;
 }
 
@@ -5048,7 +5197,14 @@ export const skillsSeries: SkillsPoint[] = [
   { id: "site-sync · staleness-gate", dateISO: "2026-06-30", patterns: 67, promptRules: 27, note: "Site-integrity skill upgrade (Houston caught the /reviews + /papers pages showing June-26 data after 3 rounds): pattern-065 static-site-data-staleness drafted (patterns 66→67) + the static-data same-commit gate = reviewer-prompt rule 27. Root cause: the site reads BOTH the live DB AND static build-time files (papers.ts / reviewTimeline.ts / live-status.ts / hardcoded page prose) — updating the live DB alone leaves the public-facing surfaces stale. Every round now updates ALL static surfaces + verifies-after-deploy in the same commit. Folded into /bigbounce-site-sync." },
   { id: "INT-M2 · rebuttal-hardening", dateISO: "2026-06-30", patterns: 68, promptRules: 28, note: "INT-M2 round skill upgrade: pattern-068 preemptive-rebuttal-hardening drafted (patterns 67→68) — all 6 paper-owner agents independently converged on it. At convergence reviewers stop finding NEW defects but keep re-flagging the SAME disclosed caveats; the technique is to ADD an explicit in-paper rebuttal for any finding that recurs ≥2 rounds as STALE/FALSIFIED, so the next pass can't re-raise it = reviewer-prompt rule 28. This is how a converged review keeps producing real improvement every round (7 closures + 6 papers hardened this round) rather than flatlining. Source-grounded only; for null results, hardening makes the null MORE conservative." },
   { id: "RS5 · signpost + cross-vendor + de-biased-calibration", dateISO: "2026-07-01", patterns: 71, promptRules: 29, note: "EXT RS5 skill upgrade (3 new patterns 069-071, count 68→71): 069 signpost-resolved-concerns — a fresh de-biased sweep re-flagged ~48 of ~52 MAJORs that were ALREADY addressed; the fix is explicit 'Response to common referee concerns' signposting (Intro box / inline pointers) so the next pass can't re-raise them (concrete technique for pattern-068). 070 cross-vendor-agreement-weighting = reviewer-prompt rule 29 — weight the truth-audit by how many independent vendors flag the same item: 2-3 vendors=real, single-harsh-vendor (ChatGPT REJECTed P1A+P3 while Grok/Gemini gave major/minor)=likely referee variance. 071 de-biased-prompt-surfaces-more — the de-biased referee prompt raises raw MAJOR counts (a feature) but is only safe paired with the source-cited audit + integrity check; the durable asset is the instrument+audit pipeline, not any single prompt. Validated: RS5's 73 raw MAJORs truth-audited down to ~4 genuinely-new items, honestly." },
-  { id: "RS11 · convergence-floor", dateISO: "2026-07-01", patterns: 71, promptRules: 29, note: "RS11 convergence-floor: patterns unchanged at 71, promptRules at 29. RS7-RS11 campaign validated pattern-066 (LLM-referee run-to-run variance) as the operative convergence theory — Grok flipped minor->major on unchanged content (RS10), 2 Gemini REJECTs (RS11) truth-audited to misreads. Finding-count trend (RS8=1, RS9=0, RS10=3, RS11=0) IS the convergence signal; the terminating gate is '0 genuinely-new real findings', not literal all-vendor ACCEPT. P4+P5 at genuine convergence floor; P1A/P2/P3/P1B at the LLM-refereeing practical ceiling — human referees next." },
+  { id: "RS11 · convergence-floor", dateISO: "2026-07-01", patterns: 71, promptRules: 29, tooling: 0, note: "RS11 convergence-floor: patterns unchanged at 71, promptRules at 29. RS7-RS11 campaign validated pattern-066 (LLM-referee run-to-run variance) as the operative convergence theory — Grok flipped minor->major on unchanged content (RS10), 2 Gemini REJECTs (RS11) truth-audited to misreads. Finding-count trend (RS8=1, RS9=0, RS10=3, RS11=0) IS the convergence signal; the terminating gate is '0 genuinely-new real findings', not literal all-vendor ACCEPT. P4+P5 at genuine convergence floor; P1A/P2/P3/P1B at the LLM-refereeing practical ceiling — human referees next. Process/tooling counter starts here at 0 — the ~10 days of self-improvement below are backfilled from git, every increment sha-cited." },
+  { id: "verified-review-reset · I1-I5", dateISO: "2026-07-03", patterns: 71, promptRules: 31, tooling: 1, note: "Verified-review reset (bigbounce commit 6357a9aa + scistack 40fe0cc): the I1-I5 durable review-routing fix. +2 reviewer-prompt rules (29→31): rule 30 = every EXT leg saves COMPLETE raw text + screenshot, orchestrator READS+verifies before recording any verdict (a leg with no output is FAILED, not a verdict); rule 31 = INT Claude leg is the Claude Code subscription subagent NEVER the Anthropic API, never fail an INT round on Anthropic-API billing, INT-fail never stops EXT, ChatGPT never silently dropped, Perplexity optional. +1 tooling = tools/v3_native_pdf_review.py de-required ANTHROPIC/PERPLEXITY keys + routed the Claude leg to a subagent (commit 6357a9aa). Trigger: Houston caught 'converged/18-18 ACCEPT' as fabricated (unverified sub-agent sweeps, no raw text)." },
+  { id: "canonical-r-round-spec · DRY", dateISO: "2026-07-06", patterns: 71, promptRules: 32, tooling: 1, note: "Canonical R-round spec consolidation (scistack a82bc5f + 8a5ae11): made astrostack/bigbounce-r-round/SKILL.md the single canonical INT/EXT round spec (DRY — all other R-round skills point here) and +1 reviewer-prompt/process rule (31→32) = HEADED browser is MANDATORY before any EXT sweep ($B connect; headless can't pass Cloudflare/Google-OAuth, silently loses reviewer sessions), Houston 2026-07-05 lesson. Tooling unchanged at 1." },
+  { id: "same-commit-board + INT-parallel", dateISO: "2026-07-07", patterns: 71, promptRules: 34, tooling: 1, note: "Two loop-discipline rules codified in the canonical spec (scistack 71e4a5c + 01688957): rule 33 = every verdict round MUST hit the /reviews board in the SAME commit as its artifacts and the loop never self-idles below the bar (2026-07-08 lesson); rule 34 = INT API lanes never wait on the browser — INT closure/science runs in parallel with EXT so an INT infra stall can't stall the round (parallel-resource rule). promptRules 32→34, tooling unchanged." },
+  { id: "directive-J + directive-G-leak-gate + URL-at-submit", dateISO: "2026-07-09", patterns: 71, promptRules: 37, tooling: 1, note: "H16/W13 lessons + Houston directive J codified (scistack 000cd25 + c40ca88 + b570c78): rule 35 = STANDING literal 0/0/0 all-reviewer bar with never-idle parallel work (Fable orchestrator + Opus subagents, Houston 2026-07-09); rule 36 = directive-G leak gate — grep for review-process/audit language before EVERY recompile so internal-audit prose can't leak into a served PDF (P1U W13 lesson); rule 37 = URL-at-submit — capture the chat URL before any polling so a died agent can never orphan a submitted EXT leg (H16 failure mode). promptRules 34→37, tooling unchanged." },
+  { id: "H17 accel round-1 · directive_g.sh + ledgers + Convex fixes", dateISO: "2026-07-10", patterns: 71, promptRules: 37, tooling: 5, note: "H17 acceleration round-1 (ACCELERATION_LOG items 1-7) shipped 4 tooling assets (tooling 1→5): (a) tools/directive_g.sh one-shot PDF-hygiene chain — leak-gate + 0-undef compile + byte-identical mirror + Convex bump/read-back, per-closure hygiene ~15min→~2min, slug drift impossible (commit 533481ae); (b) canonical disposition ledgers project-context/peer-reviews/DISPOSITIONS/*.md — 107 numbered fingerprinted entries; audits cite D<P>-NN instead of re-writing from scratch, wave audit time ~halved (commit 4a2d551d); (c) tools/int_api_review reads \\paperVersion live from the tex so review headers are always truthful (commit 729165b5); (d) convex/paperVersions.ts sortVersions Date.parse fix — killed the lexicographic 'July 10 < July 9' bug that left stale 'current' chips site-wide (commit 729165b5). Also documented pattern-066 in both directions (Grok MINOR→MAJOR AND MAJOR→MINOR on unchanged content) — referee variance is symmetric; no new pattern number. The fused-owner-loop pattern (one Opus owner iterates close→INT-retest→audit internally, returns once) codified in the canonical spec (item 1). patterns/promptRules unchanged — these are process/tooling, honestly not new review-patterns or reviewer-prompt rules." },
+  { id: "H17 accel round-2 · ext/int wave automation + verify-only + ETA instrument", dateISO: "2026-07-10", patterns: 71, promptRules: 37, tooling: 12, note: "H17 acceleration round-2 (ACCELERATION_LOG items 8-13 + the readiness-ETA instrument) shipped 7 tooling assets (tooling 5→12): tools/ext_submit.sh + tools/ext_harvest.sh + tools/post_verdict.sh (EXT wave automation — proven submit/extract recipes, dead-chat detection, schema+slug+cap-formula baked in; commits 6ca8aae7, 085ce1ae, bfc8a76d); tools/int_wave.sh + tools/ledger_match.py (all-three-INT-legs parallel with raw-save enforced + a fingerprint pre-matcher that drafts the ledger match table so Opus adjudicates only UNMATCHED; commit 576b5ef9); directive_g.sh --verify-only flag (validate without re-mirroring/re-bumping — fixed the same-date tie-break that stole the Convex 'current' row; commit 576b5ef9); the readinessMetrics Convex table + computeEta query + rigorEvents annotations + tools/record_wave.sh + tools/backfill_readiness_metrics.py — a live per-paper per-wave verdict-trajectory chart + Submission-ready ETA widget, 288 rows backfilled from REAL EXT + H17 INT-API raws, missing legs recorded 'failed' (chart gap, never a zero); commits 4af8a76a, 6f4180cf, d177d100. patterns/promptRules unchanged — pure process/tooling." },
+  { id: "site-freshness-gate · pre-push", dateISO: "2026-07-11", patterns: 71, promptRules: 37, tooling: 13, note: "Site-freshness pre-push gate (tooling 12→13): tools/site_freshness_check.sh + tools/hooks/pre-push (commit 0c263178) — a hard pre-push hook that BLOCKS a push whenever a public surface (banner / this very skills chart / /reviews board / version chips) has fallen behind the newest Convex wave or tools/ commit, killing the stale-surface class that let this skills chart sit flat for ~10 days while real work shipped. It is the standing enforcement of the exact staleness Houston caught; this backfill is its first cleared run. patterns/promptRules unchanged — process/tooling." },
 ];
 
 export function getReviewRoundByReportSlug(slug: string): ReviewRound | undefined {
