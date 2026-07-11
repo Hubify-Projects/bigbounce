@@ -1,4 +1,4 @@
-# Canonical dispositions — P1U (as of v1U.0.11, 2026-07-10)
+# Canonical dispositions — P1U (as of v1U.0.11, 2026-07-10; H17G ledger-audit appended)
 
 One numbered entry per DISTINCT finding-class. Duplicates across reviewers/rounds are
 merged. Source: `EXT_real/H17_2026-07-10/P1U_truth_audit.md` (body + INT re-test,
@@ -156,3 +156,13 @@ numbers spot-checked against current `arxiv/paper1_unified.tex` v1U.0.11 and upd
 - **Grok EXT = MAJOR** — 10 items all → DP1U-02/06/07/08/09/12/14/16/21/22. Channel-level "overclaim risk" = paper's own verbatim framing (DP1U-06); hedging-as-weakness = DP1U-21 backfire. 0 genuinely-new.
 - **ChatGPT EXT = PENDING** (not harvested this wave; prior EXT ChatGPT already 0 genuinely-new).
 - No bump; v1U.0.11 stands.
+
+### DP1U-24: Figure statistical presentation (Figs 4/7 assumed correlation ρ; Fig 3 different H0)
+- **class:** RE-FLAG-DISCLOSED
+- ChatGPT H17G (H17F) MINOR: Figs 4/7 combine significances for unrelated fNL/birefringence estimators "using an arbitrary correlation coefficient without a defined joint likelihood or common hypothesis"; Fig 3 compares models with different imposed H0.
+- Already disclosed IN-CAPTION: the ρ curve families are labeled the *assumed* cross-correlation coefficient (ρ=0 uncorrelated baseline; ρ>0 track joint-significance gain) with the physical role stated explicitly (`fig:obs_timeline` caption, arxiv/paper1_unified.tex L3483-3487); the birefringence β comparison is stated as differential against β_obs=0.342°±0.094° (L3491). The raw itself concedes "portions of their captions acknowledge the problem." Figure-presentation OPINION / referee variance — the caption already carries exactly the disclosure requested. Not an editable defect.
+- **fingerprint:** Fig 4, Fig 7, correlation coefficient, joint likelihood, arbitrary rho, Fig 3, imposed H0, figure presentation
+
+## H17G ledger-audit wave (2026-07-10, vs v1U.0.11)
+- **ChatGPT EXT = REJECT** (raw `H17_2026-07-10/final/P1U_chatgpt_final.md`, on v1U.0.11) — 16 MAJOR + 2 MINOR. Fingerprint-match: 4-route/no-go=DP1U-06; Eq(1)-(4) variational=DP1U-03; Eq(5)-(8) dim+1/+1→+4=DP1U-08; App-B1 basis/O1=O6/Nieh-Yan=DP1U-07; NDA CC-naturalness restatement=DP1U-07/-11; Route-1 NJL ⟨J5⟩⇏⟨J5J5⟩=DP1U-05/-19; Route-2 ϑNY ansatz=DP1U-09; Route-3 Δγ inserted=DP1U-10; Route-4 ALP fixed-vs-floated=DP1U-11; App-C Fierz V⊗A=DP1U-04; quantum-consistency/counterterms=DP1U-07; Sec-X transparency novelty=DP1U-12; Eq(13)/N_tot≃92 dilution=DP1U-14; matter-bounce erasure + −35/8→−35/16=DP1U-14/-17; 13-barrier=DP1U-13; App-E-G don't test ECH=DP1U-15; MINOR figs=DP1U-24; MINOR length/organization=DP1U-22.
+- **0 genuinely-new editable findings.** Every MAJOR is a source-cited re-flag of already-disclosed channel-level scope / honest out-of-scope items; both MINORs are disclosed-in-caption / OPINION. Consistent with the ChatGPT structural harsh-referee floor. No bump; v1U.0.11 stands.
