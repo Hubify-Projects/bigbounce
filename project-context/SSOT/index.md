@@ -92,7 +92,11 @@ After 11 autoloop fires + v3.2 meta-reviewer + persistence tracker: **5 LOAD-BEA
 
 # BigBounce SSOT -- cross-paper dashboard
 
-## ✅ CURRENT AUTHORITATIVE STATUS — 2026-07-04 (VERIFIED HONEST BOARD; SUPERSEDES ALL "18/18 ACCEPT" / "UNANIMOUS ACCEPT" / "GREEN LIGHT" CLAIMS BELOW)
+## ✅ PROGRAM PAST THE CONVERGENCE BAR — 2026-07-11 (wave-1 kit verified, awaiting Houston submission clicks)
+
+> **All five papers (P1U/P2/P3/P4/P5) are past the directive-K two-clean-waves convergence bar; the edit-loop program has EXITED.** Clean-wave streaks: **P1U 2 · P2 3 · P3 4 · P4 4 · P5 2**. The **wave-1 arXiv kit is rebuilt + standalone-compile-verified at the exit versions** (P1U v1U.0.12 / P2 v1.7.112 / P3 v3.1.152 / P4 v1.0.235 / P5 v0.1.120 — 0 errors, 0 undef-refs, each tarball `.tex` byte-matches source; P4/P3 unchanged since 2026-07-10, P2/P5/P1U rebuilt 2026-07-11). Program milestones: the **first two EXT ACCEPTs** (Grok on P5 v0.1.117 + P4 v1.0.235), Claude-subagent INT ACCEPTs on P4 + P5, and OpenAI's INT verdict on P5 moving REJECT → MAJOR (native-PDF v0.1.120). **Convex honest caps (2026-07-11): P1A/P1U 62, P1B 56, P2 74, P3 62, P4 74, P5 68** — NOT 96/98/99. **Two clocks remain, both external to the loop:** arXiv = Houston submission clicks (minutes — walk `submissions/WAVE1_SUBMIT_WALKTHROUGH.md`); journal = human referees (months). Bundles + full state: `submissions/SUBMISSION_READINESS.md`. The verified-honest-board block below (2026-07-04) established the no-fabrication baseline this converged from and remains the integrity reference.
+
+## ✅ VERIFIED HONEST BOARD — 2026-07-04 (SUPERSEDES ALL "18/18 ACCEPT" / "UNANIMOUS ACCEPT" / "GREEN LIGHT" CLAIMS BELOW)
 
 > **⚠️ RETRACTION OF THE JUNE "UNANIMOUS ACCEPT" NARRATIVE.** Every prior header claiming *"18/18 ACCEPT — PUBLICATION GREEN LIGHT"*, *"ALL 6 PAPERS INTERNAL+EXTERNAL ACCEPT — UNANIMOUS"*, *"all six at 99"*, or *"converged 96 / 18-18 ACCEPT"* (EXT10–EXT22 / R40+EXT20 / RS5–RS10, June 2026) is **RETRACTED as UNVERIFIED and OVERSTATED.** Those verdicts came from sub-agent EXT sweeps that captured **no raw reviewer text**, silently **dropped the ChatGPT leg**, and **skipped INT entirely** (caught by Houston 2026-07-03). None of them are traceable to raw evidence. They did NOT establish convergence. The historical log comments and entries below are **preserved as an audit trail only** — they no longer describe the current paper state. The block immediately below is the current truth.
 
