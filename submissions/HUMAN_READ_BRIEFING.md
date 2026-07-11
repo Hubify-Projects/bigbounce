@@ -31,14 +31,21 @@ two-clean-waves bar.
 
 | Paper | v | Streak | One-line claim | Load-bearing result | Latest board (ChatGPT/Grok/Gemini) |
 |-------|---|--------|----------------|---------------------|------------------|
-| **P4** | 1.0.235 | 4 | Chirality dipole in 8.5M DESI galaxies is **null** | Real-space HC dipole +0.41σ, p=0.31 | MAJ / **ACCEPT** / MIN |
-| **P2** | 1.7.112 | 3 | Matter-bounce f_NL=**−35/16**; resolves Cai/Li factor-of-2; recasts SPHEREx | The −35/16 resolution + independent+RSD Fisher forecast | REJECT / MIN / MIN |
-| P3 | 3.1.152 | 4 | 268,519-source multi-survey anomaly catalog | The catalog + reproducible dedup | REJECT / MIN / **REJECT (venue)** |
-| P5 | 0.1.120 | 2 | DESI void/non-void chirality is null (Δf_CW≈0) | Δf_CW=+0.0007±0.0022, monopole-invariant | MAJ / **ACCEPT** / MIN |
-| **P1U** | 1U.0.12 | 2 | Unified Paper 1 — channel-level ECH no-go **+** reproducibility companion | Channel-by-channel closure + Fierz proof + derived ΔN_eff bound | REJECT / MAJ / MAJ |
+| **P4** | 1.0.236 | 5 | Chirality dipole in 8.5M DESI galaxies is **null** | Real-space HC dipole +0.41σ, p=0.31 | MAJ / **ACCEPT** / MIN |
+| **P2** | 1.7.113 | 4 | Matter-bounce f_NL=**−35/16**; resolves Cai/Li factor-of-2; recasts SPHEREx | The −35/16 resolution + independent+RSD Fisher forecast | REJECT / MIN / MIN |
+| P3 | 3.1.155 | 2 | 268,519-source multi-survey anomaly catalog | The catalog + reproducible dedup | REJECT / MIN / **REJECT (venue)** |
+| P5 | 0.1.121 | 3 | DESI void/non-void chirality is null (Δf_CW≈0) | Δf_CW=+0.0007±0.0022, monopole-invariant | MAJ / **ACCEPT** / MIN |
+| **P1U** | 1U.0.13 | 3 | Unified Paper 1 — channel-level ECH no-go **+** reproducibility companion | Channel-by-channel closure + Fierz proof + derived ΔN_eff bound | REJECT / MAJ / MAJ |
 
 *Board = latest per-reviewer verdict word. The verdict-word oscillation is the
 point — see the pattern note below and the 7-reviewer record.*
+
+*Versions + streaks synced 2026-07-11 to the freshest cron state in
+`site/src/data/live-status.ts` (FR1/FR1b full-board round: P1U 2→3 · P2 3→4 ·
+P4 4→5 · P5 2→3; P3 was reset 4→0 by a genuinely-new NANOGrav mis-round fixed in
+v3.1.154, then recovered 0→1→2 through FR4/FR5 on v3.1.155 and REJOINED the
+five-paper exit set). Served PDFs, latest arXiv tarballs, and `papers.ts` all
+agree on these versions. All five remain past the directive-K two-clean-waves bar.*
 
 **The universal pattern you must internalize before reading a single review:**
 across every paper, on the *identical PDF*, the boards oscillate MAJOR↔MINOR
