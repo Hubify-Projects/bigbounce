@@ -15,7 +15,15 @@
 #   5. Convex paperVersions:bump + read-back verify
 #   6. one-line PASS summary
 #
-# Usage: tools/directive_g.sh <P1U|P2|P3|P4|P5> <new-version> "<changelog>"
+# Usage: tools/directive_g.sh [--verify-only] <P1U|P2|P3|P4|P5> <new-version> "<changelog>"
+#
+#   --verify-only : run the step 1-2-3 checks (tex version+date, leak-gate,
+#                   compile) + md5 comparison of the already-served mirrors + the
+#                   Convex read-back, WITHOUT re-mirroring or re-bumping. Use to
+#                   validate current state (2026-07-10 lesson: a full validation
+#                   re-run re-inserts the version with a newer createdAt and can
+#                   steal "current" under the same-datestamp tie-break — verify-only
+#                   never writes Convex, so it never displaces the true current).
 #
 # See canonical spec: ~/.claude/scistack/astrostack/bigbounce-r-round/SKILL.md
 #   §"directive-G one-shot: tools/directive_g.sh".
@@ -86,7 +94,12 @@ PY
 # ---------------------------------------------------------------------------
 # Args
 # ---------------------------------------------------------------------------
-[ $# -eq 3 ] || die "usage: tools/directive_g.sh <P1U|P2|P3|P4|P5> <new-version> \"<changelog>\""
+VERIFY_ONLY=0
+if [ "${1:-}" = "--verify-only" ]; then
+  VERIFY_ONLY=1
+  shift
+fi
+[ $# -eq 3 ] || die "usage: tools/directive_g.sh [--verify-only] <P1U|P2|P3|P4|P5> <new-version> \"<changelog>\""
 PAPER="$1"; NEWVER="$2"; CHANGELOG="$3"
 
 TEX_REL="$(tex_for_paper "$PAPER")"
@@ -103,7 +116,8 @@ SRC_PDF="$TEX_DIR/$TEX_BASE.pdf"
 # Current human date "July D, YYYY" derived from `date` (no leading zero on day).
 TODAY_HUMAN="$(date '+%B %-d, %Y')"       # e.g. "July 10, 2026"
 
-echo "=== directive_g.sh :: $PAPER $NEWVER (slug=$SLUG) ==="
+echo "=== directive_g.sh :: $PAPER $NEWVER (slug=$SLUG)${VERIFY_ONLY:+ [VERIFY-ONLY]} ==="
+[ "$VERIFY_ONLY" -eq 1 ] && echo "    mode: VERIFY-ONLY (no re-mirror, no Convex bump)"
 echo "    tex:  $TEX_REL"
 echo "    date: $TODAY_HUMAN"
 
@@ -270,28 +284,65 @@ EOF
 
 NCOPIED=0
 SRC_ABS="$(cd "$(dirname "$SRC_PDF")" && pwd)/$(basename "$SRC_PDF")"
-for tgt in "${MIRROR_TARGETS[@]}"; do
-  mkdir -p "$(dirname "$tgt")"
-  tgt_abs="$(cd "$(dirname "$tgt")" && pwd)/$(basename "$tgt")"
-  # The source PDF is itself a served path (lives in the tex dir); don't cp onto
-  # itself, but still count + md5-verify it as a mirror.
-  if [ "$tgt_abs" != "$SRC_ABS" ]; then
-    cp -f "$SRC_PDF" "$tgt"
-  fi
-  got="$(md5of "$tgt")"
-  [ "$got" = "$NEWMD5" ] || die "mirror md5 mismatch at $tgt ($got != $NEWMD5)"
-  NCOPIED=$((NCOPIED+1))
-done
-echo "    ok: mirrored to $NCOPIED path(s), all md5==$NEWMD5"
+if [ "$VERIFY_ONLY" -eq 1 ]; then
+  # Compare-only: validate the CURRENTLY-SERVED set is internally byte-identical
+  # and matches what Convex records — do NOT compare against the fresh recompile
+  # (a recompile is non-reproducible: it re-embeds a build /CreationDate, so its
+  # md5 differs from a committed PDF even with identical content). The reference
+  # is the canonical served copy site/public/<base>.pdf (PREV_MD5). Step 3 still
+  # confirms the source COMPILES clean; this step confirms served coherence.
+  [ -n "$PREV_MD5" ] || die "verify-only: no canonical served copy at site/public/$BASE_PDF_NAME to reference"
+  REFMD5="$PREV_MD5"
+  MISMATCH=0
+  for tgt in "${MIRROR_TARGETS[@]}"; do
+    if [ ! -f "$tgt" ]; then
+      # versioned aliases for a not-yet-mirrored version are expected-absent;
+      # only flag absence of the unversioned canonical copies.
+      case "$(basename "$tgt")" in
+        "$TEX_BASE"_*) echo "    (skip absent versioned alias: ${tgt#$REPO/})"; continue ;;
+        *) echo "    MISMATCH: served copy missing: $tgt" >&2; MISMATCH=1; continue ;;
+      esac
+    fi
+    got="$(md5of "$tgt")"
+    if [ "$got" = "$REFMD5" ]; then
+      NCOPIED=$((NCOPIED+1))
+    else
+      echo "    MISMATCH: $tgt md5=$got != canonical-served $REFMD5" >&2
+      MISMATCH=1
+    fi
+  done
+  [ "$MISMATCH" -eq 0 ] || die "verify-only: served mirror(s) not byte-identical to canonical served copy (above)"
+  # For the Convex read-back below, the served set (not the recompile) is truth.
+  NEWMD5="$REFMD5"
+  echo "    ok: $NCOPIED served path(s) byte-identical, md5==$REFMD5 (compare-only, nothing re-mirrored)"
+else
+  for tgt in "${MIRROR_TARGETS[@]}"; do
+    mkdir -p "$(dirname "$tgt")"
+    tgt_abs="$(cd "$(dirname "$tgt")" && pwd)/$(basename "$tgt")"
+    # The source PDF is itself a served path (lives in the tex dir); don't cp onto
+    # itself, but still count + md5-verify it as a mirror.
+    if [ "$tgt_abs" != "$SRC_ABS" ]; then
+      cp -f "$SRC_PDF" "$tgt"
+    fi
+    got="$(md5of "$tgt")"
+    [ "$got" = "$NEWMD5" ] || die "mirror md5 mismatch at $tgt ($got != $NEWMD5)"
+    NCOPIED=$((NCOPIED+1))
+  done
+  echo "    ok: mirrored to $NCOPIED path(s), all md5==$NEWMD5"
+fi
 
 # ---------------------------------------------------------------------------
 # STEP 5 — Convex bump + read-back verify
 # ---------------------------------------------------------------------------
-echo "--- step 5: convex bump ---"
-TEXCOMMIT="$(git rev-parse --short HEAD)"
-SITE_PDF_PATH="/papers/${TEX_BASE}_${NEWVER}.pdf"
+if [ "$VERIFY_ONLY" -eq 1 ]; then
+  echo "--- step 5: convex read-back (verify-only — no bump) ---"
+  ROWID="(verify-only)"
+else
+  echo "--- step 5: convex bump ---"
+  TEXCOMMIT="$(git rev-parse --short HEAD)"
+  SITE_PDF_PATH="/papers/${TEX_BASE}_${NEWVER}.pdf"
 
-BUMP_PAYLOAD="$(python3 - "$SLUG" "$NEWVER" "$TODAY_HUMAN" "$TEXCOMMIT" "$NEWMD5" "$NEWPAGES" "$NEWSIZE" "$CHANGELOG" "$SITE_PDF_PATH" <<'PY'
+  BUMP_PAYLOAD="$(python3 - "$SLUG" "$NEWVER" "$TODAY_HUMAN" "$TEXCOMMIT" "$NEWMD5" "$NEWPAGES" "$NEWSIZE" "$CHANGELOG" "$SITE_PDF_PATH" <<'PY'
 import json, sys
 slug, ver, datestamp, commit, md5, pages, size, changelog, sitepath = sys.argv[1:10]
 print(json.dumps({
@@ -312,13 +363,14 @@ print(json.dumps({
 PY
 )"
 
-BUMP_RESP="$(curl -sS -X POST "$CONVEX_URL" \
-  -H 'Content-Type: application/json' \
-  -d "$BUMP_PAYLOAD")"
-echo "    bump response: $BUMP_RESP"
-echo "$BUMP_RESP" | python3 -c 'import sys,json; d=json.load(sys.stdin); sys.exit(0 if d.get("status")=="success" else 1)' \
-  || die "convex bump did not return status=success"
-ROWID="$(echo "$BUMP_RESP" | python3 -c 'import sys,json; print(json.load(sys.stdin).get("value",""))')"
+  BUMP_RESP="$(curl -sS -X POST "$CONVEX_URL" \
+    -H 'Content-Type: application/json' \
+    -d "$BUMP_PAYLOAD")"
+  echo "    bump response: $BUMP_RESP"
+  echo "$BUMP_RESP" | python3 -c 'import sys,json; d=json.load(sys.stdin); sys.exit(0 if d.get("status")=="success" else 1)' \
+    || die "convex bump did not return status=success"
+  ROWID="$(echo "$BUMP_RESP" | python3 -c 'import sys,json; print(json.load(sys.stdin).get("value",""))')"
+fi
 
 # read-back verify current row matches version + md5. The query can transiently
 # return an empty body immediately after the mutation, so query+verify together
@@ -362,4 +414,8 @@ echo "    ok: convex current == $NEWVER / $NEWMD5 (row $ROWID)"
 # ---------------------------------------------------------------------------
 # STEP 6 — PASS summary
 # ---------------------------------------------------------------------------
-echo "PASS: $PAPER $NEWVER md5=$NEWMD5 pages=$NEWPAGES mirrored=$NCOPIED convexRow=$ROWID"
+if [ "$VERIFY_ONLY" -eq 1 ]; then
+  echo "PASS [verify-only]: $PAPER $NEWVER md5=$NEWMD5 pages=$NEWPAGES served=$NCOPIED convex=current-match (no writes)"
+else
+  echo "PASS: $PAPER $NEWVER md5=$NEWMD5 pages=$NEWPAGES mirrored=$NCOPIED convexRow=$ROWID"
+fi
