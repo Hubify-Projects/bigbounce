@@ -14,6 +14,7 @@ import {
   VerdictSeverityTrend,
 } from "./ProgressViz";
 import { VerdictTrajectoryChart } from "./VerdictTrajectoryChart";
+import { ChartShell } from "./ChartShell";
 import { PublishEtaWidget } from "@/components/PublishEtaWidget";
 import { getReadinessWaves, getRigorEvents, getPublishEta } from "@/lib/liveReadiness";
 import "./reviews.css";
@@ -136,9 +137,11 @@ export default async function ReviewsPage() {
               Fisher · P1A Fierz-lemma proof attempt · P3 eROSITA reproducibility fix · P1B→P1A
               merge prep).
             </p>
-            <div className="verdict-carousel">
-              <VerdictTrajectory />
-            </div>
+            <ChartShell title="External referee verdicts — every paper × reviewer per round">
+              <div className="verdict-carousel">
+                <VerdictTrajectory />
+              </div>
+            </ChartShell>
             <VerdictLegend />
           </div>
           <div className="progress-charts">
@@ -153,7 +156,9 @@ export default async function ReviewsPage() {
                 verified board still shows a real ChatGPT REJECT on every paper — the strongest
                 evidence that verifiable, full-context review catches what label-only sweeps cannot.
               </p>
-              <GapClosureChart />
+              <ChartShell title="Internal/external gap — externally-caught findings per round">
+                <GapClosureChart />
+              </ChartShell>
               <GapPerPaperDeltas />
               <p
                 style={{
@@ -182,7 +187,9 @@ export default async function ReviewsPage() {
                 Every external miss is mined into the pattern catalog and the reviewer prompts, then
                 validated against the pre-closure snapshot before it counts.
               </p>
-              <SkillsGrowthChart />
+              <ChartShell title="Skills stack — review patterns + reviewer-prompt rules">
+                <SkillsGrowthChart />
+              </ChartShell>
             </div>
           </div>
           <div className="progress-block">
@@ -192,7 +199,9 @@ export default async function ReviewsPage() {
               The vertical dashed line marks the 2026-06-26 integrity gate, after which the referee prompt was de-biased —
               the subsequent MAJOR uptick reflects a stricter, more honest bar, not paper degradation.
             </p>
-            <VerdictSeverityTrend />
+            <ChartShell title="Verdict severity trend — per-round and per-model">
+              <VerdictSeverityTrend />
+            </ChartShell>
           </div>
         </div>
       </details>

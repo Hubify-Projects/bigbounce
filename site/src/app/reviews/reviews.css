@@ -72,6 +72,132 @@
   gap: 28px;
 }
 
+/* ── Chart shell + full-page expand modal ─────────────────────────── */
+
+.chart-shell {
+  position: relative;
+}
+
+.chart-shell-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 0 0 6px 0;
+  min-height: 22px;
+}
+
+.chart-shell-hint {
+  font-family: var(--font-mono-stack);
+  font-size: 0.64rem;
+  color: var(--text-tertiary);
+}
+
+.chart-expand-btn,
+.chart-modal-close {
+  font-family: var(--font-mono-stack);
+  font-size: 0.66rem;
+  letter-spacing: 0.04em;
+  padding: 3px 10px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: border-color 120ms ease, color 120ms ease, background 120ms ease;
+}
+
+.chart-expand-btn:hover,
+.chart-modal-close:hover {
+  border-color: var(--border-strong);
+  color: var(--text);
+  background: color-mix(in srgb, var(--surface) 50%, transparent);
+}
+
+.chart-expand-btn span,
+.chart-modal-close span {
+  margin-left: 3px;
+  opacity: 0.8;
+}
+
+.chart-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200; /* above header (100) */
+  background: color-mix(in srgb, var(--bg) 82%, rgba(0, 0, 0, 0.55));
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  padding: clamp(12px, 3vw, 40px);
+  animation: chart-modal-fade 140ms ease;
+}
+
+@keyframes chart-modal-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.chart-modal {
+  width: 100%;
+  max-width: 1600px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: clamp(16px, 2.4vw, 30px);
+  overflow: hidden;
+}
+
+.chart-modal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.chart-modal-title {
+  margin: 0;
+  font-family: var(--font-mono-stack);
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.chart-modal-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+.chart-modal-foot {
+  margin: 0;
+  font-size: 0.66rem;
+  color: var(--text-tertiary);
+  flex: 0 0 auto;
+}
+
+/* In the expanded modal the trajectory carousel gets the full width/height. */
+.verdict-carousel--expanded {
+  border: none;
+  padding: 0;
+  background: transparent;
+  overflow-x: auto;
+}
+
+.verdict-carousel--expanded .progress-svg {
+  height: auto;
+}
+
 /* Horizontally-scrollable verdict carousel */
 .verdict-carousel {
   overflow-x: auto;
