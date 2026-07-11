@@ -183,3 +183,13 @@ Raw: `project-context/peer-reviews/EXT_real/H17_2026-07-10/final/P3_chatgpt_H17G
 - **Re-flag / disclosed-limitation / opinion / open-compute:** 16 MAJOR + 2 MINOR — all source-cited to a paper line or prior-audit disposition; all closures verified intact in v3.1.152.
 - **Backfire (pattern-066):** ChatGPT stayed REJECT on the same disclosed content (maximally-harsh-referee structural floor per directive H; no new editable item).
 - **Integrity:** REJECT recorded as-is; no ACCEPT fabricated; no math fabricated; no edit needed → no v3.1.153 bump, v3.1.152 stands, directive_g.sh not run.
+
+---
+
+## H17H INT RE-TEST ADDENDUM (2026-07-10, Claude subscription subagent vs v3.1.152)
+
+Raw: `INT_api/H17_2026-07-10/intwave_P3_claude_1919.md` — **VERDICT: MINOR REVISIONS** (2 MAJOR + 3 MINOR), full-repo `claude -p` subagent that recomputed committed artifacts (training_summary best_val_mean=1.9124/all_folds_pass_gate=false ✓; reproduce_headline_dedup 274,353→268,519 ✓; 37,292,042−20,000=37,272,042 ✓). Pre-triage left this the P3 INT leg. Opus-confirmed every issue is RE-FLAG of an existing DP3-id:
+- MAJOR#1 end-to-end reproducibility (pod-lost score parquets; dedup-only reproduce script) → DP3-15 OPEN-COMPUTE (disclosed §II.F L1069; GPU re-run, not an edit).
+- MAJOR#2 single production-ensemble gate / correlated k-fold probes (val_loss 1.91≫0.30) → DP3-01 + DP3-02 (abstract L988 "correlated stability probes, not independent confirmations"; closure intact).
+- MINOR#1 268,519 process-volume vs 2,468 like-for-like + 98.7% filler → DP3-07. MINOR#2 heterogeneous per-survey gates → DP3-09 + DP3-14. MINOR#3 §V secondary null → DP3-10 + DP3-16.
+Subagent's own stability line: "0 genuinely-new editable findings — every point fingerprint-matches an existing DP3-xx with closures verified intact." **post_verdict.sh is EXT-only (no INT column) → this INT verdict recorded in ledger/truth-audit only, not Convex, per prior INT-re-test handling. No v3.1.153 bump; v3.1.152 stands; directive_g.sh not run.**
