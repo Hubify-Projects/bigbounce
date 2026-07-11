@@ -108,6 +108,27 @@ export const reviewRounds: ReviewRound[] = [
     ],
   },
   {
+    id: "W3-ext-adjudication-2026-07-11",
+    dateISO: "2026-07-11",
+    kind: "ext-closure",
+    title:
+      "W3 EXT close-out (P5) — 0 genuinely-new reader-visible findings; wave W3 completes clean, P5 posts its first clean wave (streak 1/2) under the new no-reset-for-process-nits rule. v0.1.120 stands.",
+    papers: ["P5"],
+    summary:
+      "W3 headed-browser EXT re-test of P5 (reviewed the served v0.1.119 PDF; the v0.1.120 delta is a comment-only W3-INT changelog block — a PROCESS-NIT not reader-visible in the compiled PDF per the 2026-07-11 spec rule). Grok = MINOR REVISIONS (5 minors), ChatGPT = REJECT (10 MAJOR + 3 MINOR); raw verbatim text + screenshot READ before every recorded verdict, 0 fabricated. ledger_match.py: Grok 5/7 matched, ChatGPT 12/13 matched; all UNMATCHED Opus-adjudicated (§3 manual audit vs the .tex + DISPOSITIONS/P5.md). The two substantive UNMATCHED are source-cited RE-FLAGs of the standing DP5-22 D-round class: Grok #6 'overall-presentation: extreme length, condense §VI–VII, separate headline from supporting cross-checks' (editorial-length/readability), and ChatGPT #11 '§III C angular cross-match — quantify false associations, shifted-coordinate control, match-radius effect on the primary Δf_CW' — already disclosed at the §Cross-match method block (tex l.1339-1367: median 0.30″ separation, shared-astrometric-provenance explanation, acceptance-radius sensitivity {0.5,1.0,2.0,3.0,5.0}″) with the 0.02pp match-radius systematic tabulated in tab:systematic_budget and folded into the primary envelope. The remaining Grok #1 was parser noise (verdict-header fragment). The 12 matched ChatGPT items + 4 other Grok minors map 1:1 to standing D-ids (DP5-04/-07/-09/-10/-11/-12/-13/-14/-17/-20/-21). 0 genuinely-new real+editable → no version bump (v0.1.120 stands), no directive-G this leg. Streak: the W3-INT PROCESS-NIT (DP5-23 dedicated-changelog-block, comment-only, closed in v0.1.120) was recorded genuinelyNew=1/streak0 BEFORE the 2026-07-11 no-reset-for-process-nits rule and is left as-recorded (not retro-changed); the W3-EXT sweep is clean of reader-visible findings, so wave W3 completes clean and P5 posts cleanWaveStreak=1 — the first clean wave measured under the new rule. Cap 68 (50 + grok-MIN 12 + chatgpt-REJ 0 + gemini-MAJ 6). Convex synced: 2 externalReviews rows ('Grok (W3)'/'ChatGPT (W3)') + readinessMetrics W3-EXT wave (streak 1).",
+    keyTakeaways: [
+      "Wave W3 complete on P5 — 0 genuinely-new reader-visible editable findings; both substantive UNMATCHED (Grok overall-presentation, ChatGPT angular-cross-match/match-radius) are source-cited RE-FLAGs of the standing DP5-22 D-round class",
+      "No version bump — v0.1.120 stands (its only W3 delta was the W3-INT PROCESS-NIT changelog block, comment-only/not reader-visible)",
+      "Streak: W3-INT PROCESS-NIT reset left as-recorded (pre-rule); W3-EXT posts cleanWaveStreak=1 — P5's first clean wave under the 2026-07-11 no-reset-for-process-nits rule; one more clean wave to the two-clean-waves bar",
+      "Integrity: Grok MINOR + ChatGPT REJECT recorded as-is; no ACCEPT faked, no finding dismissed without a source-cited verdict, no math fabricated; DP5-22 fingerprint extended so the matcher catches these re-flags next round",
+    ],
+    links: [
+      { label: "P5 Grok W3 raw (MINOR)", href: `${PR}/EXT_real/H17_2026-07-10/W3/P5_grok_W3.md` },
+      { label: "P5 ChatGPT W3 raw (REJECT)", href: `${PR}/EXT_real/H17_2026-07-10/W3/P5_chatgpt_W3.md` },
+      { label: "P5 dispositions", href: `${PR}/DISPOSITIONS/P5.md` },
+    ],
+  },
+  {
     id: "readiness-eta-trajectory-instrument-2026-07-10",
     dateISO: "2026-07-10",
     kind: "skill-improvement",
@@ -4900,6 +4921,20 @@ export const externalVerdictRounds: ExternalRoundVerdicts[] = [
       P5: ["REJECT", "MINOR", "NO_VERDICT"],
     },
     note: "W2 EXT re-test — 3 verdicts harvested (Grok × P1U/P5 + ChatGPT × P5; Gemini not swept, NO_VERDICT; P2/P3/P4/P1B carry-forward). Verdict matrix stored [ChatGPT, Grok, Gemini] FROM RAW (verbatim VERDICT line READ from each saved raw before recording; P1U = the unified Paper 1, its verdicts sit on the P1A row). *** P1U GROK MINOR(W1)→MAJOR(W2) = verdict-word OSCILLATION on UNCHANGED v1U.0.12 content, NOT a new finding *** — the W2 Grok raw (P1U_grok_W2.md) is the same 6-item structure as its W1 MINOR: 3 MAJOR + 2 MINOR all source-cited re-flags → DP1U-11 (R4 'naturalness closure' = the paper's OWN verbatim abstract framing, 'not closed by amplitude mismatch but by an explanatory-deficit/CC-relocation objection'), DP1U-08/-20 (single-scale NDA no-go 'restates the CC problem' + basis-completeness 'tension' — both honestly disclosed as channel-level not operator-level, L1219/L2448), DP1U-20 (four-route enumeration ambiguity, disclosed), DP1U-12 (Sec.X transparency scope), DP1U-06/-22 (length/repetition OPINION). This is exactly the pattern-066 referee-variance the directives anticipate — the moderate calibrated referee flips a full verdict tier on identical honestly-scoped content; 0 genuinely-new real+editable → P1U clean-wave streak 1→2 (crosses the directive-K bar). P5 Grok = MINOR (5 minors, all → DP5-01/-04/-06/-09/-21, disclosed post-hoc/footprint/de-attenuation/Paper-IV items). P5 ChatGPT = REJECT (10 MAJOR + 2 MINOR; ledger_match matched 11/12, the 2 ledger_match-UNMATCHED candidates — edge-void handling + T-Web dedup sensitivity — Opus-adjudicated as RE-FLAGs of DP5-06/-14, the SAME T-Web/footprint-selection axis already CLOSED in v0.1.119; all others → DP5-04/-09/-10/-11/-12/-20/-21). The v0.1.119 closure (commit a65111df) completed the last missed §XII-B env-stratified-confusion integration site (abstract L786 + changelog L70 reconciled) — the ONE genuinely-new finding of the W2 wave (recorded on P5's readinessMetrics W2 row, genuinelyNewCount 1) → P5 clean-wave streak reset to 0. Truth-audit: 0 genuinely-new real+editable findings beyond the already-closed §XII-B item → NO further version bump (P1U v1U.0.12 + P5 v0.1.119 stand), no directive-G this wave. Caps (50 + latest-per-reviewer ACCEPT 16.7/MIN 12/MAJ 6/REJ 0): P1U = 50 + grok-MAJ 6 + chatgpt-REJ 0 + gemini-MAJ 6 = 62; P5 = 50 + grok-MIN 12 + chatgpt-REJ 0 + gemini-MAJ 6 = 68. No ACCEPT faked, no finding dismissed without a source-cited verdict, no math fabricated. Raws + screenshots in EXT_real/H17_2026-07-10/W2/.",
+  },
+  {
+    roundId: "W3-2026-07-11",
+    dateISO: "2026-07-11",
+    windowPT: "Jul 11 · W3 EXT close-out (P5 v0.1.120; reviewed served v0.1.119, v0.1.120 delta = comment-only W3-INT changelog block) · Grok + ChatGPT × P5 harvested (Gemini not swept) · headed browser, raw verbatim text + screenshot READ before every recorded verdict · 0 fabricated · 2 verdicts",
+    verdicts: {
+      P1A: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P1B: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P2: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P3: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P4: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P5: ["REJECT", "MINOR", "NO_VERDICT"],
+    },
+    note: "W3 EXT close-out — 2 verdicts harvested (Grok + ChatGPT × P5; Gemini not swept, NO_VERDICT; P1U/P2/P3/P4/P1B carry-forward). Verdict matrix stored [ChatGPT, Grok, Gemini] FROM RAW (verbatim VERDICT line READ from each saved raw before recording). Reviewed the served v0.1.119 PDF; the v0.1.120 delta is a comment-only W3-INT changelog block — a PROCESS-NIT not reader-visible in the compiled PDF (2026-07-11 spec rule). P5 Grok = MINOR (5 minors → DP5-07/-09/-12/-13/-14 + DP5-22, disclosed post-hoc-primary/de-attenuation/RSD/T-Web + editorial-length). P5 ChatGPT = REJECT (10 MAJOR + 3 MINOR; ledger_match matched 12/13; the 1 UNMATCHED candidate — §III C angular-cross-match false-associations/shifted-coordinate/match-radius-effect — Opus-adjudicated as a RE-FLAG of DP5-22: the §Cross-match method block (tex l.1339-1367) already gives median 0.30″ separation + shared-astrometric-provenance + acceptance-radius sensitivity {0.5,1.0,2.0,3.0,5.0}″, with the 0.02pp match-radius systematic tabulated in tab:systematic_budget; all matched items → DP5-04/-07/-09/-10/-11/-12/-14/-17/-20/-21). Grok #1 UNMATCHED = parser noise (verdict-header fragment). Truth-audit: 0 genuinely-new reader-visible editable findings → NO version bump (P5 v0.1.120 stands), no directive-G this leg. Streak: the W3-INT PROCESS-NIT (DP5-23 dedicated-changelog-block, comment-only, closed v0.1.120) was recorded genuinelyNew=1/streak0 BEFORE the 2026-07-11 no-reset-for-process-nits rule and is left as-recorded; wave W3 completes clean of reader-visible findings, so P5 posts cleanWaveStreak=1 — the first clean wave under the new rule; one more clean wave to the two-clean-waves bar. Cap 68 (50 + grok-MIN 12 + chatgpt-REJ 0 + gemini-MAJ 6). No ACCEPT faked, no finding dismissed without a source-cited verdict, no math fabricated. Raws + screenshots in EXT_real/H17_2026-07-10/W3/.",
   },
 ];
 
