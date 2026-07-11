@@ -48,6 +48,32 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "wave1-exit-surface-honesty-freshness-papers-gate-2026-07-11",
+    dateISO: "2026-07-11",
+    kind: "skill-improvement",
+    title:
+      "Wave-1 exit-surface honesty sweep + new site-freshness papers-gate — rebuild the stale P3 v3.1.153 arXiv bundle to v3.1.155, re-sync every reader-facing PDF link to its served file, and add a push-blocking gate that kills the stale-download-link class.",
+    papers: ["P1A", "P2", "P3", "P4", "P5"],
+    summary:
+      "Exit-state maintenance tick (all five papers past the directive-K two-clean-waves bar). Caught two genuine stale reader-facing surfaces the existing freshness gate missed and killed the class: (1) the P3 wave-1 arXiv bundle was still arxiv_p3_v3.1.153.tar.gz — one restamp behind the two REAL content fixes v3.1.154 (DP3-18 NANOGrav SMBHB +4.61→+4.63σ) and v3.1.155 (DP3-19 matter-bounce +1.13→+1.14σ consistency + F₀ rounding). Rebuilt arxiv_p3_v3.1.155.tar.gz from the current source + .bbl, standalone-compile-verified via fresh extract (0 undef-refs, 37pp, PDF md5 ebd4bfd1 byte-matching the served alias). (2) site/src/data/papers.ts served STALE 'Read/Download PDF' hrefs to readers while the version chip already read current — P3 link=v3.1.149 (chip v3.1.155), P1U link=v1U.0.9 (src v1U.0.13), P2 link=v1.7.107 (src v1.7.113), P4 link=v1.0.235 (src v1.0.236), P5 link=v0.1.113 (src v0.1.121). All hrefs + version chips + pages + pdfMeta prefixes re-synced to machine-verified served values (each target versioned PDF md5-confirmed == its current alias). The SUBMISSION_READINESS board version column + bundle note updated to the exit versions. STALE-SURFACE CLASS-KILL: extended tools/site_freshness_check.sh with a papers-gate that asserts, per paper block, version-chip == pdfMeta-version == download-href-version AND that every href resolves to a served file — negative-tested (correctly flags chip v3.1.155 / href v3.1.149 → OVERALL FAIL) then restored green. The pre-push hook now blocks any future chip/link version split-brain.",
+    keyTakeaways: [
+      "Rebuilt the stale P3 wave-1 bundle v3.1.153 → v3.1.155 (fresh-extract recompile: 0 undef-refs, 37pp, md5 ebd4bfd1 == served alias) — the kit now matches the DP3-18/-19 corrected source",
+      "Re-synced every reader-facing PDF link across all 5 papers (papers.ts hrefs + version chips + pages + pdfMeta) to the current served file; each target md5-verified == its alias, no metadata fabricated",
+      "Kill-the-class: new site_freshness_check.sh papers-gate blocks any version chip/pdfMeta/href split-brain at push; teeth-tested (flags the exact P3 chip-vs-link mismatch the old gate missed)",
+      "Program stays at the directive-K exit bar (P1U 2 · P2 3 · P3 2 · P4 4 · P5 2 clean waves); this tick advanced surface honesty, not verdicts — no ACCEPT faked, no number changed",
+    ],
+    links: [
+      {
+        label: "site_freshness_check.sh (new papers-gate)",
+        href: `${GH}/tools/site_freshness_check.sh`,
+      },
+      {
+        label: "Submission readiness board",
+        href: `${GH}/submissions/SUBMISSION_READINESS.md`,
+      },
+    ],
+  },
+  {
     id: "P3-FR5-second-clean-rejoins-exit-set-2026-07-11",
     dateISO: "2026-07-11",
     kind: "ext-closure",
@@ -5567,6 +5593,7 @@ export const skillsSeries: SkillsPoint[] = [
   { id: "site-freshness-gate · pre-push", dateISO: "2026-07-11", patterns: 71, promptRules: 37, tooling: 13, note: "Site-freshness pre-push gate (tooling 12→13): tools/site_freshness_check.sh + tools/hooks/pre-push (commit 0c263178) — a hard pre-push hook that BLOCKS a push whenever a public surface (banner / this very skills chart / /reviews board / version chips) has fallen behind the newest Convex wave or tools/ commit, killing the stale-surface class that let this skills chart sit flat for ~10 days while real work shipped. It is the standing enforcement of the exact staleness Houston caught; this backfill is its first cleared run. patterns/promptRules unchanged — process/tooling." },
   { id: "directive-K · two-clean-waves exit", dateISO: "2026-07-11", patterns: 71, promptRules: 38, tooling: 13, note: "Directive K codified as a loop exit-gate rule (promptRules 37→38 = rule 38): a paper CONVERGES on TWO consecutive clean waves (0 genuinely-new real findings on truth-audit) rather than a single literal 0/0/0 sweep — the two-clean-waves streak absorbs LLM-referee run-to-run variance (pattern-066) so one lucky quiet sweep can't declare convergence, and one noisy re-flag can't reset a genuinely-converged paper (Houston 2026-07-10, bigbounce 57b3bab3). Directive J's literal 0/0/0 stays the honesty target; directive K is the operational streak-gate that decides when the loop stops re-testing a paper. This is a genuinely-new reviewer-loop rule, hence a promptRules increment; patterns/tooling unchanged." },
   { id: "loop-watchdog + skills-autolog", dateISO: "2026-07-11", patterns: 71, promptRules: 38, tooling: 15, note: "Never-again loop durability tooling (tooling 13→15, +2 new scripts): (a) tools/loop_watchdog.sh + tools/launchd/com.bigbounce.loopwatchdog.plist — an OS-level watchdog daemon + heartbeat gate that detects a wedged/dead cron-tick and recovers it within a 60-min cap, so the review loop can never again silently stall for hours (commit 3266efe8); (b) tools/skills_autolog.sh — this very generative skill/self-improvement changelog tool that emits sha-cited paste-ready reviewTimeline drafts and a --check gate that fails on any unlogged skill/process/tooling commit, shipped alongside the cron-tick retire/repair + hourly watchdog recovery (commit 0d77ba69). The scistack canonical bigbounce-r-round SKILL.md gained the matching watchdog-recovery-cap + heartbeat/skillslog freshness-surface docs and ext_{submit,harvest,post_verdict}.sh owner pointers (scistack d0347cf, 0cefd57, d4c6a7c). patterns/promptRules unchanged — pure process/tooling. Also cites the 07-09/07-10 skill/process commits this backfill closes out: 54d7a3cf 9fb9bb29 b20b8e95 d67b6a9a 61827a1d 86a7bee3 14e4f405 8bc9a4fc 0561982f 5a123fc6 7d914020 22c4d9bb 7d1af794 8a804f4." },
+   { id: "papers-link-gate + skills-date-granularity", dateISO: "2026-07-11", patterns: 71, promptRules: 38, tooling: 16, note: "Site-freshness papers-gate + a granularity bugfix (tooling 15→16, extends tools/site_freshness_check.sh). NEW papers-gate: asserts per papers.ts paper block that the version chip == the pdfMeta version == the download-href version AND that every 'Read/Download PDF' href resolves to a served file — killing the stale-download-link split-brain the old gate never checked (a reader was served paper3_draft_v3.1.149.pdf while the chip already read v3.1.155; also caught P1U/P2/P4/P5 links lagging their source versions). Negative-tested: correctly flags chip v3.1.155 / href v3.1.149 → OVERALL FAIL, then restored green. BUGFIX: the skills-freshness check compared a DATE-only skillsSeries point against an hour threshold, so any tooling commit after ~12:00 UTC on the same calendar day tripped a false '>12h behind' — changed to date-granularity (stale only if a lesson/tool commit lands on a LATER day; the sha-based skillslog check remains the precise same-day enforcement). patterns/promptRules unchanged — pure process/tooling." },
 ];
 
 export function getReviewRoundByReportSlug(slug: string): ReviewRound | undefined {

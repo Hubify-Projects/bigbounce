@@ -44,11 +44,12 @@ done
 # All parsing + comparison is done in one python pass for robustness. It prints
 # lines "STATUS<TAB>SURFACE<TAB>DETAIL" then a final "OVERALL<TAB>PASS|FAIL".
 HEARTBEAT="$REPO/project-context/LOOP_HEARTBEAT.json"
-PYOUT="$(python3 - "$LIVE_STATUS" "$REVIEW_TIMELINE" "$EXT_REAL" "$CONVEX_URL" "$SCISTACK/$SKILL_MD_REL" "$REPO" "$HEARTBEAT" <<'PY'
+PAPERS_TS="$REPO/site/src/data/papers.ts"
+PYOUT="$(python3 - "$LIVE_STATUS" "$REVIEW_TIMELINE" "$EXT_REAL" "$CONVEX_URL" "$SCISTACK/$SKILL_MD_REL" "$REPO" "$HEARTBEAT" "$PAPERS_TS" <<'PY'
 import sys, os, re, json, subprocess, glob
 from datetime import datetime, timezone
 
-live_status, review_timeline, ext_real, convex_url, skill_md, repo, heartbeat = sys.argv[1:8]
+live_status, review_timeline, ext_real, convex_url, skill_md, repo, heartbeat, papers_ts = sys.argv[1:9]
 
 def now_utc():
     return datetime.now(timezone.utc)
@@ -223,16 +224,23 @@ if last_skill is None:
 elif newest_lesson is None:
     results.append(("WARN", "skills", "no lesson/tool commit to compare against"))
 else:
-    lag = hours_between(newest_lesson, last_skill)
-    if lag > 12:
+    # skillsSeries points carry DATE granularity only (dateISO: "YYYY-MM-DD" →
+    # parses to 00:00 UTC), so an intra-day hour threshold against an afternoon
+    # commit is a structural false-positive (any tool commit after ~12:00 UTC on
+    # a day whose skills point is that same day trips it). Compare at DATE
+    # granularity: stale only if the newest lesson/tool commit lands on a LATER
+    # calendar day than the last skills point. The sha-based `skillslog` check
+    # (below) is the precise same-day enforcement — this is the coarse signal.
+    day_lag = (newest_lesson.date() - last_skill.date()).days
+    if day_lag > 0:
         results.append(("STALE", "skills",
-            "last skills point %s is %.1fh behind newest %s commit (%s)" %
-            (last_skill.date().isoformat(), lag, nl_src, newest_lesson.isoformat())))
+            "last skills point %s is %d day(s) behind newest %s commit (%s)" %
+            (last_skill.date().isoformat(), day_lag, nl_src, newest_lesson.date().isoformat())))
         overall_fail = True
     else:
         results.append(("FRESH", "skills",
-            "last skills point %s within 12h of newest %s commit (lag %.1fh)" %
-            (last_skill.date().isoformat(), nl_src, lag)))
+            "last skills point %s current with newest %s commit (%s)" %
+            (last_skill.date().isoformat(), nl_src, newest_lesson.date().isoformat())))
 
 # ---------------------------------------------------------------------------
 # 3. BOARD (externalVerdictRounds latest date vs newest harvested round)
@@ -339,6 +347,55 @@ except FileNotFoundError:
     overall_fail = True
 except Exception as e:
     results.append(("WARN", "heartbeat", "could not read heartbeat: %s" % e))
+
+# ---------------------------------------------------------------------------
+# 6. PAPERS.TS LINK CONSISTENCY (kills the stale-download-link split-brain:
+#    version chip current but "Read/Download PDF" href still points at an old
+#    versioned PDF — e.g. chip v3.1.155 while href = paper3_draft_v3.1.149.pdf,
+#    which the reader actually downloads). For each paper block, the version
+#    token in `version:`, in `pdfMeta:`, and in the first PDF `href:` MUST agree.
+# ---------------------------------------------------------------------------
+def core_ver(s):
+    """Extract vX.Y.Z (drop any -YYYY-MM-DD suffix / ' (merged)') for compare."""
+    if not s:
+        return None
+    m = re.search(r'v[0-9A-Za-z]+\.[0-9]+\.[0-9]+', s)
+    return m.group(0) if m else None
+
+pt = read(papers_ts)
+if not pt:
+    results.append(("WARN", "papers", "papers.ts unreadable — skipping link check"))
+else:
+    # split into per-paper blocks on `slug:` lines
+    blocks = re.split(r'\n\s*slug:\s*', pt)[1:]
+    bad = []
+    okc = 0
+    for b in blocks:
+        sm = re.match(r'"([^"]+)"', b.strip())
+        slug = sm.group(1) if sm else "?"
+        vm = re.search(r'version:\s*"([^"]+)"', b)
+        pm = re.search(r'pdfMeta:\s*"([^"]+)"', b)
+        hm = re.search(r'href:\s*"(/papers/[^"]+\.pdf)"', b)
+        chip = core_ver(vm.group(1)) if vm else None
+        meta = core_ver(pm.group(1)) if pm else None
+        href = core_ver(hm.group(1)) if hm else None
+        present = [x for x in (chip, meta, href) if x]
+        if len(set(present)) > 1:
+            bad.append("%s: chip=%s meta=%s href=%s disagree" % (slug, chip, meta, href))
+        else:
+            okc += 1
+        # href file must also exist on disk (a link to a missing PDF is stale too)
+        if hm:
+            fpath = os.path.join(repo, "site/public", hm.group(1).lstrip("/"))
+            fpath2 = os.path.join(repo, "public", hm.group(1).lstrip("/"))
+            if not (os.path.exists(fpath) or os.path.exists(fpath2)):
+                bad.append("%s: href %s resolves to no served file" % (slug, hm.group(1)))
+    if bad:
+        for x in bad:
+            results.append(("STALE", "papers", x))
+        overall_fail = True
+    else:
+        results.append(("FRESH", "papers", "all %d paper blocks: version chip == pdfMeta == href" % okc))
 
 # emit
 for status, surface, detail in results:
