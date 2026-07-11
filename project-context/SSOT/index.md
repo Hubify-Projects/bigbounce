@@ -110,20 +110,20 @@ After 11 autoloop fires + v3.2 meta-reviewer + persistence tracker: **5 LOAD-BEA
 >
 > **Readiness caps RECUT to 76–80 (NOT 96/98/99).** Honest referee cover letters drafted for all 6 at `submissions/{P1A,P1B,P2,P3,P4,P5}/REFEREE_COVER_LETTER.md`. **Next gate = Houston decision per paper:** submit to a venue / route to a human referee / decide companion-vs-standalone publication. No further autonomous editing clears these.
 
-### Current dashboard (H17, 2026-07-10)
+### Current dashboard (H17F final-wave, 2026-07-10)
 
-Verdicts FROM RAW [ChatGPT / Grok / Gemini], EXT_real/H17_2026-07-10. Gemini P1U/P2/P3/P4 legs FAILED (upload throttle) — no verdict posted (—). P5 Grok verdict WORD = MINOR but its raw carries 2 [MAJOR]-tagged items. Caps per harvested-EXT formula (50 + per-reviewer points). A same-day ChatGPT+Grok re-test at these versions is in flight.
+Verdicts FROM RAW [ChatGPT / Grok / Gemini], EXT_real/H17_2026-07-10/final/. **P5 Grok = ACCEPT — the FIRST external ACCEPT of the program** (raw literally "VERDICT: ACCEPT"). ChatGPT P5 moved UP a tier REJECT→MAJOR; P4 Grok backfire reversed MAJOR→MINOR on the corrected paper. Both fused loops (P5 + P4) converged with Claude INT ACCEPTs. Truth-audit: **0 genuinely-new real+editable findings across all 6 harvested raws** → no version bump, all versions stand. Legs not re-swept this wave carry forward (—). Caps recomputed per latest-per-reviewer verdict (50 + ACCEPT 16.7 / MIN 12 / MAJ 6 / REJ 0).
 
-| Paper | Version | ChatGPT | Grok | Gemini | Readiness | H17 state (5 REAL errors closed this wave) |
+| Paper | Version | ChatGPT | Grok | Gemini | Readiness | H17F state (0 genuinely-new; all items = source-cited disposition re-flags) |
 |-------|---------|---------|------|--------|-----------|--------------------------|
-| **P1U** | v1U.0.10 | REJECT | MAJOR | — | 56 | Eq.16 non-minimal-coupling relabel + M_Pl/κ convention (both REAL). Residual = Eq.16/dim-no-go/basis-completeness harsh-referee floor |
+| **P1U** | v1U.0.11 | REJECT‡ | MAJOR | — | 56 | ‡ChatGPT final leg pending (H17 carry REJECT). Grok MAJOR = all DP1U-02/06/07/08/09/12/14/16/21/22 re-flags; channel-level "overclaim risk" is the paper's own framing. 0 genuinely-new |
 | **P1B** | folded into P1U (2026-07-08 merge) | — | — | — | — | folded into unified Paper 1 |
-| **P2**  | v1.7.110 | REJECT | MAJOR | — | 56 | spurious-term sign −(99/128) → printed polynomial −305/64; SSFSR BF columns recomputed at −35/16 center (10⁸→1.4×10² stale-value fix); FoG sign; +4 Claude minors (all REAL) |
-| **P3**  | v3.1.152 | REJECT | MAJOR | — | 56 | three-gate honest downgrade + scan-volume/provenance reconciliations (REAL). Residual = process-volume-catalog scope (venue) |
-| **P4**  | v1.0.232 | REJECT | MINOR | — | 62 | Shamir factor-of-2 double-count (A_ref 0.034→0.017, z −18→−7.6, tension 3.7–8.8×, figure regenerated) (REAL). ChatGPT REJECT on structural axes |
-| **P5**  | v0.1.115 | REJECT | MINOR* | MAJOR | 68 | primary-estimand seam + Table X exact counts + Bonferroni-5 consolidated table + GALZONE text-matched-code + DAS (REAL). *Grok raw carries 2 [MAJOR] items |
+| **P2**  | v1.7.110 | REJECT | MINOR‡ | — | 62 | ‡Grok final leg pending (H17-retest carry MINOR). ChatGPT REJECT = all DP2-01..30 re-flags; raw's own conclusion concedes −35/16 IS supported. 0 genuinely-new |
+| **P3**  | v3.1.152 | REJECT | MAJOR | — | 56 | not re-swept this final wave (H17 carry). Residual = process-volume-catalog scope (venue) |
+| **P4**  | v1.0.235 | REJECT | MINOR | — | 62 | Grok backfire REVERSED MAJOR→MINOR on corrected paper (both majors "do not require new computations"). ChatGPT REJECT = DP4-07..21 re-flags. Claude INT ACCEPT. 0 genuinely-new |
+| **P5**  | v0.1.117 | MAJOR | **ACCEPT** | MAJOR | **79** | **FIRST EXT ACCEPT of the program** (Grok raw literally "VERDICT: ACCEPT"). ChatGPT REJECT→MAJOR (up a tier). All items DP5-06..22 re-flags. Claude INT ACCEPT. 0 genuinely-new |
 
-5 REAL errors found + closed this wave (all source-verified, none fabricated). Surviving MAJOR/REJECT = source-cited re-flags of disclosed limitations or the directive-H harsh-referee floor. Raw evidence: `project-context/peer-reviews/EXT_real/H17_2026-07-10/`.
+H17F final-wave: **0 genuinely-new real+editable findings** across all 6 harvested raws → no version bump, all versions stand. **P5 Grok returned the program's FIRST external ACCEPT** (raw literally "VERDICT: ACCEPT"); ChatGPT P5 moved UP a tier REJECT→MAJOR; the P4 Grok H17 MAJOR backfire reversed to MINOR on the corrected paper. Both fused loops (P5 + P4) converged with Claude INT ACCEPTs. Every surviving MAJOR/REJECT = source-cited disposition re-flag (P5 DP5-06..22, P4 DP4-07..21, P2 DP2-01..30, P1U DP1U-02..22) or the directive-H harsh-referee floor. Caps recomputed per latest-per-reviewer verdict: P5 68→**79**, P4 62, P2 62, P1U 56. Raw evidence: `project-context/peer-reviews/EXT_real/H17_2026-07-10/final/`.
 
 ---
 
