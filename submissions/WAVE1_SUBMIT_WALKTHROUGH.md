@@ -4,16 +4,16 @@
 cites as a companion; P3 and P2 are independent. This order keeps the wave-2
 cross-references clean.)
 
-**Verified:** 2026-07-10 (H17 final versions). Every bundle below was rebuilt from the current H17-final source and standalone re-extract+compile-verified (pdflatex 2-pass; 0 errors, 0 undefined refs; page 1 shows "July 10, 2026").
-- P4 `arxiv_p4_v1.0.235.tar.gz` — src PDF md5 `8307d864a305361d340009c35d25f397` — **rebuilt 2026-07-10** from v1.0.235 source (.bbl regenerated via bibtex) — standalone exit 0, 0 undef, **35 pages**. 20 bare-filename entries.
-- P3 `arxiv_p3_v3.1.152.tar.gz` — src PDF md5 `c526aea2a64e2b4f32822fdc8a21440c` — **rebuilt 2026-07-10** from v3.1.152 source (.bbl regenerated; no citation changes) — standalone exit 0, 0 undef, **37 pages**. Subdir prefix `arxiv_p3_v3.1.152/`.
-- P2 `arxiv_p2_v1.7.111.tar.gz` — src PDF md5 `85d94d28e74c6f0fb5fe09677026e1c3` — **rebuilt 2026-07-10** from v1.7.111 source — standalone exit 0, 0 undef, **38 pages**. 9 `./`-prefixed entries.
+**Verified:** 2026-07-11 (program-exit final versions — all 5 papers past the directive-K two-clean-waves bar). Every bundle below is rebuilt from the current source at the exit versions and standalone re-extract+compile-verified (0 errors, 0 undefined refs; the .tex inside each tarball matches the repo source byte-for-byte). Wave-1 papers **P4 + P3 are byte-for-byte unchanged** since the 2026-07-10 build (source `.tex` md5 inside the tarball == source `.tex` md5 on disk — verified). Wave-1 P2 + wave-2 P5/P1U were rebuilt 2026-07-11 to their exit versions.
+- P4 `arxiv_p4_v1.0.235.tar.gz` — **UNCHANGED** (v1.0.235; tarball `.tex` md5 == source md5 `3c3eaf9d39ece100434ea9ec36a5d3ee`) — standalone exit 0, 0 undef, **35 pages**. 20 bare-filename entries. Grok EXT literal ACCEPT + Claude INT ACCEPT.
+- P3 `arxiv_p3_v3.1.152.tar.gz` — **UNCHANGED** (v3.1.152; tarball `.tex` md5 == source md5 `2c7a98e1c170609f14a107204c34d049`) — standalone exit 0, 0 undef, **37 pages**. Subdir prefix `arxiv_p3_v3.1.152/`.
+- P2 `arxiv_p2_v1.7.112.tar.gz` — **rebuilt 2026-07-11** at v1.7.112 (.bbl regenerated via bibtex) — standalone exit 0, 0 undef, **37 pages**; page 1 shows "July 10, 2026". PDF md5 `ce0c2261fcd6cd900a7f4383f11dff2c`. `./`-prefixed (`02_full_draft.tex` + `.bbl` + `focused_paper_refs.bib` + revtex `02_full_draftNotes.bib` control file + 5 figs + `bphi_sensitivity.pdf`).
 - Placeholder scans: all three CLEAN (only commented-out `%\preprint{arXiv:XXXX.XXXXX}` lines, which never render). No dangling companion-paper placeholders. P3 still carries one optional `\emph{DOI inserted at submission}` Zenodo sentence (see P3 note below).
-- Abstracts: the paste blocks below are the arXiv-form-safe (<1920 chars) versions; the H17 waves changed **no headline number** (−35/16 unchanged, all counts stable — "0 genuinely-new findings" in the convergence tail), so the science text in every abstract remains valid at the final versions.
+- Abstracts: the paste blocks below are the arXiv-form-safe (<1920 chars) versions; the H17→W-wave convergence tail changed **no headline number** (−35/16 unchanged in P2 final tex; all counts stable — "0 genuinely-new findings"), so the science text in every wave-1 abstract remains valid at the final versions. (P4 abstract 1583 chars, P3 1559 chars, P2 1583 chars — all ≤1920, re-checked against final source.)
 
-**Wave-2 bundles (rebuilt same day, for the P5+P1U wave):**
-- P5 `arxiv_p5_v0.1.118.tar.gz` — src PDF md5 `f902a742efa3f8fc64b8a864b3b74fb7` — v0.1.118, standalone exit 0, 0 undef, **45 pages**. Subdir prefix `p5_arxiv_v0.1.118/`. Inline `thebibliography` (no bibtex pass; .bbl carried from source).
-- P1U `arxiv_p1_unified_v1U.0.11.tar.gz` — src PDF md5 `ba2cf6754d774c8736be5e7cf458419f` — v1U.0.11, standalone exit 0, 0 undef, **60 pages** (TinyTeX env may render 62; content clean). `./`-prefixed; includes both `.bib` files + `scripts/*.py`.
+**Wave-2 bundles (rebuilt 2026-07-11 to exit versions, for the P5+P1U wave):**
+- P5 `arxiv_p5_v0.1.120.tar.gz` — **rebuilt 2026-07-11** at v0.1.120-2026-07-10, standalone exit 0, 0 undef, **45 pages**; page 1 "July 10, 2026". PDF md5 `fb6594d36d94a56de13792790e933b37`. Subdir prefix `p5_arxiv_v0.1.120/`. Inline `thebibliography` (no bibtex pass; .bbl carried from source; revtex `p5_desi_chiralityNotes.bib` control file included). First EXT ACCEPT of the program (Grok, v0.1.117) + Claude INT ACCEPT.
+- P1U `arxiv_p1_unified_v1U.0.12.tar.gz` — **rebuilt 2026-07-11** at v1U.0.12 (.bbl regenerated via bibtex), standalone exit 0, 0 undef, **60 pages**; page 1 "July 11, 2026". PDF md5 `df4e711318dfb1668b92c21c7ea6c378`. `./`-prefixed; includes both `.bib` files + `scripts/*.py` (P1A+P1B merged; there is NO standalone P1B submission).
 
 ---
 
@@ -154,12 +154,12 @@ curl -s -X PUT -H "Authorization: Bearer $HF_TOKEN" -H "Content-Type: applicatio
 
 ## PAPER 3 — P2 (submit THIRD)
 
-**Upload:** `submissions/P2/arxiv_p2_v1.7.111.tar.gz`
+**Upload:** `submissions/P2/arxiv_p2_v1.7.112.tar.gz`
 (Paste-ready fields also in `submissions/P2/ARXIV_METADATA.txt`.)
 
 ### 1. Start submission → upload
-Upload `arxiv_p2_v1.7.111.tar.gz`. Compiles to **38 pages**.
-(Note: the source `\date{}` reads "July 9, 2026"; the real version is v1.7.111.
+Upload `arxiv_p2_v1.7.112.tar.gz`. Compiles to **37 pages**.
+(Note: the source `\date{}` reads "July 10, 2026"; the real version is v1.7.112.
 arXiv shows its own submission date, so this is cosmetic.)
 
 ### 2. Metadata — paste these blocks
@@ -221,8 +221,8 @@ line in each source `.tex` for the version-of-record, then rebuild. Not required
 **Paste the three assigned arXiv IDs (P4, P3, P2) — plus P1B's, if a standalone P1B is
 ever posted — back to the loop; wave-2 insertion is automated by
 `tools/insert_arxiv_ids.sh` (REPO path corrected to CODE_YOU 2026-07-10; dry-run
-green).** Wave-2 papers are **P5** (`arxiv_p5_v0.1.118.tar.gz`, v0.1.118, 45 pp) and the
-**unified Paper 1 P1U** (`arxiv_p1_unified_v1U.0.11.tar.gz`, v1U.0.11, 60 pp — P1A+P1B
+green).** Wave-2 papers are **P5** (`arxiv_p5_v0.1.120.tar.gz`, v0.1.120, 45 pp) and the
+**unified Paper 1 P1U** (`arxiv_p1_unified_v1U.0.12.tar.gz`, v1U.0.12, 60 pp — P1A+P1B
 merged; there is NO standalone P1B submission). Both cross-cite the wave-1 IDs:
 - **P5**: the `\paperIVarxiv` macro (`p5_desi_chirality.tex:24`, currently
   `arXiv:XXXX.XXXXX`) resolves to **P4's** assigned ID.
@@ -251,26 +251,34 @@ the self-placeholder; fill 2 is inert while P1B is folded into P1U.
 
 ---
 
-## H17 state — honest snapshot (2026-07-10)
+## Program-exit state — honest snapshot (2026-07-11)
 
-The bundles above are the **H17 final versions**. Two consecutive convergence-tail waves
-(retest + H17F/H17G legs) surfaced **0 genuinely-new real findings** on every paper —
-the earlier base H17 wave *did* surface real errors (P4 Shamir factor-of-2, P2
+**All five papers are past the directive-K two-clean-waves convergence bar.** The
+edit-loop program has EXITED. Clean-wave streaks at exit: **P1U 2 · P2 3 · P3 4 · P4 4 ·
+P5 2**. The H17 base wave *did* surface real errors (P4 Shamir factor-of-2, P2
 vertex-sign, P3 k-fold/37.3M bookkeeping, P5 primary-estimand seam, P1U Check-D sign),
-and **each was closed by a real, source-cited edit** at the versions bundled here.
-Verdict highlights (literal, read from raw text in `project-context/peer-reviews/`):
-- **P5 — first EXT ACCEPT in the program:** Grok EXT `VERDICT: ACCEPT`
-  (`EXT_real/H17_2026-07-10/final/P5_grok_final.md`). Claude-subagent INT ACCEPT on the
-  v0.1.117 retest; ChatGPT MAJOR, Gemini MAJOR.
-- **Claude-subagent INT ACCEPTs:** **P4 and P5** on retest after closures
-  (`INT_api/H17_2026-07-10/retest3_P4_claude.md`, P5 truth-audit). P1U/P2/P3 stay at
-  MINOR/MAJOR — **no third Claude ACCEPT was recorded**; do not claim one.
+and **each was closed by a real, source-cited edit** at the versions bundled here; the
+subsequent W-waves surfaced **0 genuinely-new real findings** — every remaining MAJOR/
+MINOR is a source-cited re-flag of already-disclosed content (pattern-066 referee
+variance). Verdict highlights (literal, read from raw text in `project-context/peer-reviews/`):
+- **Two literal EXT ACCEPTs — the program's first two:** Grok EXT `VERDICT: ACCEPT` on
+  **P5** (v0.1.117, `EXT_real/H17_2026-07-10/final/P5_grok_final.md`) and on **P4**
+  (v1.0.235, W1-EXT).
+- **Claude-subagent INT ACCEPTs:** **P4 and P5** on retest after closures. P1U/P2/P3
+  stay at MINOR/MAJOR — **no third Claude ACCEPT was recorded**; do not claim one.
+  OpenAI's INT verdict on **P5 moved REJECT → MAJOR** on native-PDF v0.1.120 — its first
+  non-REJECT on that paper.
 - **Remaining below-ACCEPT verdicts are pattern-066 oscillation**, not correctable
-  errors: ChatGPT holds REJECT on P1U/P2/P3/P4 and the OpenAI-API leg holds REJECT on
-  several papers **on stale-header PDFs** (v1U.0.1, v1.7.102, v3.1.144, v1.0.223,
-  v0.1.107) — recorded verbatim, dispositioned (never flipped) in
-  `project-context/peer-reviews/DISPOSITIONS/P{1U,2,3,4,5}.md`. Convex honest caps:
-  P1A/P1B 56, P2 62, P3 56, P4 62, P5 79.
+  errors: ChatGPT holds a structural REJECT on P1U/P2/P3/P4 — recorded verbatim,
+  dispositioned (never flipped) in `project-context/peer-reviews/DISPOSITIONS/P{1U,2,3,4,5}.md`.
+- **Convex honest caps (2026-07-11):** P1A/P1U 62, P1B 56, P2 74, P3 62, P4 74, P5 68 —
+  **not 96/98/99.**
+
+**Two-clock note.** There are two independent completion clocks. The **arXiv clock** is
+now Houston-gated only: the kit is rebuilt + standalone-verified at the exit versions, so
+it is one set of **Houston submission clicks** away (minutes). The **journal clock** runs
+on **human referees** (months, external) and is the only remaining path to lift the
+LLM-referee scope items — no further autonomous editing clears them.
 
 ---
 
