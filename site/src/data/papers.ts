@@ -254,7 +254,7 @@ export const papers: Paper[] = [
     lastUpdated: "2026-07-11",
     tldr: "A 378,280-object anomaly catalog mined from 37.3M sources across 7 surveys with one autoencoder architecture — 17.8% of top-ranked objects are new to existing catalogs, plus a NANOGrav free-spectrum fit consistent with matter-bounce γ = 3.0.",
     path: publicationPath({}),
-    pages: "33",
+    pages: "37",
     refs: "71",
     readiness: 56,
     statusVariant: "amber",
