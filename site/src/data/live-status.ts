@@ -47,15 +47,15 @@ export interface LiveStatus {
 }
 
 export const liveStatus: LiveStatus = {
-  lastUpdatedISO: "2026-07-11T07:16:00Z",
-  lastUpdatedDisplay: "July 11, 2026 · 12:16 AM PT",
+  lastUpdatedISO: "2026-07-11T07:30:00Z",
+  lastUpdatedDisplay: "July 11, 2026 · 12:30 AM PT",
   headline:
-    "W2 WAVE ADJUDICATED — 4 OF 5 PAPERS PAST THE BAR (Jul 11). P1U crossed the two-clean-waves convergence bar (streak 2) after its W2 Grok MINOR→MAJOR was truth-audited as pattern-066 verdict-word oscillation on unchanged v1U.0.12 — 0 genuinely-new. Only P5 remains below the bar — its wave W3 is now clean (streak 1/2 after the W3-EXT close-out surfaced 0 genuinely-new reader-visible findings; one more clean wave to cross). The program is FIVE papers — P1B merged into the unified Paper 1. Grok EXT has returned literal ACCEPTs on P5 (v0.1.117) and P4 (v1.0.235) — the program's first two external ACCEPTs — while ChatGPT/OpenAI hold their documented REJECT floor (pattern-066).",
+    "W4-INT WAVE ADJUDICATED — ALL FIVE PAPERS PAST THE BAR (Jul 11). P5 crossed the two-clean-waves convergence bar (streak 2) on its W4-INT confirm wave: 0 genuinely-new reader-visible findings across all three INT legs. Every UNMATCHED finding was a source-cited re-flag of already-disclosed content or parser noise. NEW: OpenAI's INT verdict on P5 moved REJECT → MAJOR REVISIONS — its first non-REJECT on this paper (native-PDF on v0.1.120, raw INT_v3/ROUND_2026-07-09/API_P5_openai.md). The edit-loop program now EXITS: P1U 2 · P2 3 · P3 4 · P4 4 · P5 2, all five past the bar. Remaining work is Houston-gated (arXiv wave-1 clicks + human journal referees). Grok EXT returned literal ACCEPTs on P5 (v0.1.117) and P4 (v1.0.235) — the program's first two external ACCEPTs.",
   summary:
     "Round H17 (Jul 10) found and FIXED 8 real errors — P4's Shamir factor-of-2 (survived ~17 prior waves), P2's spurious-term sign + 5 stale Bayes columns, P1U's Check-D contradiction + conventions, P5's primary-estimand seam — then converged: two consecutive waves with 0 genuinely-new findings, 49 findings all ledger-matched. New real science shipped: GZ1 confusion matrices stratified by sky-leg, confidence AND void/non-void environment (parity-symmetric errors measured, not assumed). Verdict-gap trend: program average up from ~0.3 (Jul-4 verified-reset era, all REJECT/MAJOR) to ~1.0-1.2 today, driven by real fixes.",
   currentlyRunning: [
-    "W3 EXT wave adjudicated (Jul 11) — wave W3 complete on P5: 0 genuinely-new reader-visible findings (Grok MINOR / ChatGPT REJECT both source-cited re-flags of the standing DP5-22 presentation/cross-match D-round class). P5 (v0.1.120) posts its first clean wave (streak 1/2) under the new no-reset-for-process-nits rule. One more clean wave to the two-clean-waves bar, then the wave-1 arXiv kit is handed to Houston.",
-    "Live ETA + verdict-trajectory chart now on this page + /reviews, fed by readinessMetrics on every wave.",
+    "W4-INT confirm wave adjudicated (Jul 11) — P5 (v0.1.120) posts its SECOND consecutive clean wave (streak 2) and CROSSES the two-clean-waves bar: 0 genuinely-new reader-visible findings across INT Claude MINOR / OpenAI MAJOR / Grok MINOR (13 source-cited re-flags + 4 parser-noise fragments). OpenAI moved REJECT → MAJOR on P5 — its first non-REJECT here. All five papers are now past the bar; the edit-loop program exits and the wave-1 arXiv kit + human-referee handoff are Houston-gated.",
+    "Live ETA + verdict-trajectory chart on this page + /reviews, fed by readinessMetrics on every wave.",
   ],
   needsHouston: [
     {
@@ -67,8 +67,8 @@ export const liveStatus: LiveStatus = {
     {
       title: "arXiv wave-1 submission clicks",
       blockedPaper: "P4, P3, P2",
-      why: "Kit is rebuilt and standalone-verified against the final versions; only Houston holds the arXiv account.",
-      ask: "Walk submissions/WAVE1_SUBMIT_WALKTHROUGH.md when the last two clean waves land (site ETA is live).",
+      why: "Kit is rebuilt and standalone-verified against the final versions; all five papers are now past the two-clean-waves bar, so nothing further blocks submission; only Houston holds the arXiv account.",
+      ask: "Walk submissions/WAVE1_SUBMIT_WALKTHROUGH.md — all clean waves have landed (site ETA is live).",
     },
     {
       title: "Send the Cai courtesy email",
@@ -116,7 +116,7 @@ export const liveStatus: LiveStatus = {
       shortTitle: "DESI environmental chirality independence",
       version: "v0.1.120-2026-07-10",
       readiness: 68,
-      pendingWork: "W3-EXT close-out (Jul 11) — wave W3 complete: 0 genuinely-new reader-visible findings. W3-EXT verdicts: Grok MINOR + ChatGPT REJECT, both source-cited re-flags of the standing DP5-22 presentation/cross-match D-round class (Grok 'overall-presentation length/condensation'; ChatGPT '§III C angular-cross-match/match-radius' — both already disclosed: cross-match §method l.1339-1367 + match-radius row in tab:systematic_budget); 1 parser-noise fragment. No bump (v0.1.120 stands). The W3-INT PROCESS-NIT (missing dedicated v0.1.118/119 changelog block, comment-only) was closed in v0.1.120 and left as-recorded (pre-rule streak reset). P5 posts streak 1/2 — first clean wave under the 2026-07-11 no-reset-for-process-nits rule. First EXT ACCEPT of the program (Grok, v0.1.117) + Claude INT ACCEPT. One more clean wave to the two-clean-waves bar.",
+      pendingWork: "CROSSED the two-clean-waves bar (streak 2). W4-INT confirm wave (Jul 11): 0 genuinely-new reader-visible findings across INT Claude MINOR / OpenAI MAJOR / Grok MINOR. NEW — OpenAI moved REJECT → MAJOR on P5, its first non-REJECT (native-PDF v0.1.120, INT_v3/ROUND_2026-07-09/API_P5_openai.md). All 8 OpenAI real UNMATCHED = source-cited re-flags (footprint≠selection-mask DP5-06, 2a−1 under-powered void arm DP5-08/-09, duplicate-TARGETID/T-Web DP5-14, fragmented multiplicity DP5-04/-19, abstract-length/Fig-legibility/N_MC DP5-22, DOI-at-acceptance DP5-18/-21); Grok's 2 + Claude's residual all re-flags or parser noise. No bump (v0.1.120 stands, comment-only wave). First EXT ACCEPT of the program (Grok, v0.1.117) + Claude INT ACCEPT.",
     },
   ],
   blockerTally: {
@@ -125,8 +125,8 @@ export const liveStatus: LiveStatus = {
     openMajors: 6, // latest-per-reviewer verdict words below MINOR: ChatGPT REJECT x5 (documented floor) + OpenAI INT REJECT class -- all ledger-dispositioned re-flags, 0 genuinely-new open
     openMinors: 8, // Grok/Claude MINOR lists -- all ledger re-flags of disclosed limitations
   },
-  cronStatus: "W3-EXT wave adjudicated (2026-07-11): P5 wave W3 complete — 0 genuinely-new reader-visible findings (Grok MINOR / ChatGPT REJECT both source-cited re-flags of the standing DP5-22 presentation/cross-match D-round class). No bump (v0.1.120 stands). The W3-INT PROCESS-NIT changelog block (comment-only) was closed in v0.1.120 and left as-recorded; P5 posts its first clean wave (streak 1) under the 2026-07-11 no-reset-for-process-nits rule. Streaks: P1U 2, P2 3, P3 4, P4 4, P5 1. Loop cadence ~2h/wave with the tooling (ext_submit/ext_harvest/int_wave/ledger_match/directive_g).",
+  cronStatus: "W4-INT confirm wave adjudicated (2026-07-11): P5 (v0.1.120) posts its SECOND consecutive clean wave (streak 2) and CROSSES the two-clean-waves bar — 0 genuinely-new reader-visible findings across INT Claude MINOR / OpenAI MAJOR / Grok MINOR (13 source-cited re-flags + 4 parser-noise fragments). OpenAI moved REJECT → MAJOR on P5, its first non-REJECT (native-PDF v0.1.120). No bump (comment-only wave, v0.1.120 stands). Streaks: P1U 2, P2 3, P3 4, P4 4, P5 2 — ALL FIVE PAST THE BAR. The edit-loop program exits; remaining work is Houston-gated.",
   etaToCompletion:
-    "Submission-ready = two consecutive 0-genuinely-new waves per paper (directive K). P1U/P2/P3/P4 are past the bar; only P5 needs one clean wave (~2-4h of loop time, assuming no new findings — a genuinely-new finding resets that paper). Then: Houston's arXiv wave-1 clicks (same day) and human journal referees (months, external). Live ETA on the homepage widget.",
+    "Submission-ready = two consecutive 0-genuinely-new waves per paper (directive K). ALL FIVE papers (P1U/P2/P3/P4/P5) are now past the bar — the edit-loop program has exited. Remaining: Houston's arXiv wave-1 clicks (same day) and human journal referees (months, external). Live ETA on the homepage widget.",
   pods: [],
 };
