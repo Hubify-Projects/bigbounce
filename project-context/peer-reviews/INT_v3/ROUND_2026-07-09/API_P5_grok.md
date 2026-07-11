@@ -1,20 +1,21 @@
 # INT API Review — P5 v0.1.118-2026-07-10 — grok (grok-4.3)
 paper: P5  version: v0.1.118-2026-07-10  model: grok-4.3
 modality: native-PDF (/v1/files file_id)
-UTC: 2026-07-11T01:44:46.883327Z  |  latency: 28.8s  |  attempt: 1
-usage: {"input_tokens": 36187, "input_tokens_details": {"cached_tokens": 192}, "output_tokens": 987, "output_tokens_details": {"reasoning_tokens": 573}, "total_tokens": 37174, "num_sources_used": 0, "num_server_side_tools_used": 0, "cost_in_usd_ticks": 474996500, "context_details": {"input_tokens": 36187, "output_tokens": 988}}
+UTC: 2026-07-11T03:44:50.688746Z  |  latency: 24.5s  |  attempt: 1
+usage: {"input_tokens": 36187, "input_tokens_details": {"cached_tokens": 192}, "output_tokens": 978, "output_tokens_details": {"reasoning_tokens": 635}, "total_tokens": 37165, "num_sources_used": 0, "num_server_side_tools_used": 0, "cost_in_usd_ticks": 474771500, "context_details": {"input_tokens": 36187, "output_tokens": 979}}
 PARSED VERDICT: MINOR REVISIONS
 
 ======================================================================
 RAW RESPONSE (verbatim):
 ======================================================================
 
-**VERDICT: MINOR REVISIONS**
+(1) VERDICT: MINOR REVISIONS
 
-**ISSUES:**
-1. [MINOR] §V B and Table IV: The post-hoc designation of the DESIVAST path as “primary” (with an explicit ~dozen-trial analysis tree and no pre-timestamped plan) is disclosed, but the repeated emphasis on a single “strictly quotable” family-wise Bonferroni-5 null risks understating the exploratory character; the text should state the family null first and relegate the “designated primary” framing to a single clarifying sentence.
-2. [MINOR] Abstract + §I + Table XI: The quoted ≈0.9 pp systematic envelope and the derived ≈2.26 pp physical-chirality bound are presented as headline quantities, yet they rest on an approximate quadrature that treats the geometry term (0.60 pp) as independent of membership; the paper should either tabulate the full covariance or replace the single “≈0.9 pp” figure with the explicit per-term budget already given in Table XI.
-3. [MINOR] §VIII and §XIII: The statement that all results are “fixed-redshift-space metrics” and therefore inherit RSD is correct, but the paper never quantifies the possible scalar-σv or anisotropic tidal channel leakage into the void/non-void contrast; a one-sentence order-of-magnitude estimate (or explicit statement that it is left for DR2) would remove the ambiguity.
-4. [MINOR] §II and Appendix A: The claim that the headline ∆fCW contrast is “algebraically invariant under any catalog-wide monopole shift” is true, but the text does not show the explicit cancellation algebra; adding the two-line derivation would make the independence from Paper IV fully self-contained for a reader who does not consult the companion catalog paper.
+(2) ISSUES:
+[MAJOR] §V B (and abstract): Primary DESIVAST path and Bonferroni-5 family are designated post-hoc with no pre-registered plan; the explicit “exploratory” disclaimer and “garden-of-forking-paths” disclosure weaken the claimed robustness of the family-wise null and require a dedicated limitations paragraph.
+[MAJOR] Abstract + §VIII + Appendix A: De-attenuated physical-chirality bound of ≈2.26 pp assumes symmetric classifier error and no environment-dependent relabeling; neither is validated by a stratified confusion matrix, so the quoted physical bound is an unquantified extrapolation.
+[MINOR] §IV A step 4 + §IX A: T-Web void bin (n=428) is acknowledged as survey-shell dominated, yet the paper still reports it as a “secondary diagnostic” without quantifying the radial-selection bias on the chirality statistic itself.
+[MINOR] Table XI + text: Systematic envelope of ≈0.9 pp is presented as a quadrature sum; the geometry and membership terms are stated to be co-dominant, but their possible correlation is not assessed, making the final envelope an approximate rather than rigorous budget.
+[MINOR] §II + arXiv placeholder: Dependence on the concurrently submitted companion Paper IV (arXiv:XXXX.XXXXX) for classifier provenance is acceptable only if the journal explicitly coordinates the two submissions.
 
-The central claim (a bounded null on the DESIVAST void/non-void CW-fraction contrast at the few-per-mille level across five estimators) is supported by the reported statistics and robustness checks.
+(3) The central claim of a bounded null on void/non-void chirality contrast is supported by the reported statistics and cross-checks once the post-hoc and de-attenuation caveats are accepted.

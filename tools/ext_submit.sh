@@ -215,9 +215,20 @@ submit_chatgpt() {
   # JS-click send: testid first, aria fallback
   bcall 45 js '(function(){var b=document.querySelector("button[data-testid=send-button]");if(b){b.click();return "sent-testid"}var a=document.querySelector("button[aria-label*=Send i]");if(a){a.click();return "sent-aria"}return "no-send-btn"})()' || die "chatgpt send failed: $BOUT"
   echo "    chatgpt send: $BOUT"
-  sleep 10
-  bcall 45 url || true
-  SUBMIT_URL="$(printf '%s' "$BOUT" | tr -d '\r' | tail -1)"
+  # ChatGPT redirects the project page to /c/<uuid> AFTER send completes —
+  # capturing too early records the project URL and orphans the leg
+  # (2026-07-11: two legs lost this way). Poll for the /c/ URL.
+  SUBMIT_URL=""
+  for _i in 1 2 3 4 5 6; do
+    sleep 5
+    bcall 45 url || true
+    SUBMIT_URL="$(printf '%s' "$BOUT" | tr -d '\r' | tail -1)"
+    case "$SUBMIT_URL" in */c/*) break ;; esac
+  done
+  case "$SUBMIT_URL" in
+    */c/*) : ;;
+    *) echo "    WARN: no /c/ redirect after 30s — URL may be the project page" ;;
+  esac
 }
 
 # =====================================================================

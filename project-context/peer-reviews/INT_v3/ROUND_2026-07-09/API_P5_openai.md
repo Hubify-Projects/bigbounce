@@ -1,8 +1,8 @@
 # INT API Review — P5 v0.1.118-2026-07-10 — openai (gpt-5.5)
 paper: P5  version: v0.1.118-2026-07-10  model: gpt-5.5
 modality: native-PDF (Files API input_file)
-UTC: 2026-07-11T01:44:46.989409Z  |  latency: 46.9s  |  attempt: 1
-usage: {"input_tokens": 75170, "input_tokens_details": {"cache_write_tokens": 0, "cached_tokens": 0}, "output_tokens": 2399, "output_tokens_details": {"reasoning_tokens": 1034}, "total_tokens": 77569}
+UTC: 2026-07-11T03:44:50.740990Z  |  latency: 48.0s  |  attempt: 1
+usage: {"input_tokens": 75170, "input_tokens_details": {"cache_write_tokens": 0, "cached_tokens": 0}, "output_tokens": 2150, "output_tokens_details": {"reasoning_tokens": 920}, "total_tokens": 77320}
 PARSED VERDICT: REJECT
 
 ======================================================================
@@ -13,38 +13,40 @@ RAW RESPONSE (verbatim):
 
 (2) ISSUES:
 
-1. [MAJOR] §II, §III, Appendix A, Ref. [3]: The analysis depends critically on an unpublished companion “Paper IV” with placeholder arXiv identifiers and on its per-galaxy chirality labels; the appendix summary is not a substitute for an independently refereed, archived, citable catalog and classifier-validation paper, and PRD cannot condition acceptance on an unavailable companion result.
+1. [MAJOR] Abstract / Secs. V B, XV: The “primary” DESIVAST estimand is explicitly post-hoc, while the manuscript still presents quantitative exclusion-style bounds; Bonferroni over five correlated void definitions does not cure the much larger disclosed analysis tree or justify the quoted “strictly quotable” constraint.
 
-2. [MAJOR] §V B / Table IV / Abstract: The “primary” DESIVAST path is explicitly post-hoc, yet the manuscript quotes exclusion-style bounds and “model-builder” constraints; Bonferroni over five chosen DESIVAST variants does not account for the full analysis tree, classifier choices, control-volume choices, footprint definitions, T-Web variants, density/redshift/sky scans, and diagnostic redefinitions disclosed in the paper.
+2. [MAJOR] Sec. II / Appendix A / Ref. [3]: The analysis depends critically on an unpublished companion catalog paper with placeholder arXiv identifier and unrefereed classifier labels; the manuscript cannot be evaluated as a stand-alone PRD submission until the label-generation, training, validation, and catalog products are independently refereed and permanently archived.
 
-3. [MAJOR] §VIII B–E: The primary DESIVAST “same-footprint” control is not a demonstrated selection-function-matched control. The footprint is a geometric union of hole-sphere angular discs and radial spans, not the DESIVAST/BGS angular completeness mask or a DESI-randoms-based selection function; therefore the void/non-void contrast may retain redshift, sky, imaging-depth, fiber-assignment, morphology, and target-selection imbalances.
+3. [MAJOR] Appendix A / Sec. XII B: The conversion from classifier-labelled CW-fraction bounds to “physical chirality” bounds relies on a symmetric-error attenuation model despite only weak and low-precision environment-stratified validation; the quoted de-attenuated ≈2.26 pp physical bound is therefore not established.
 
-4. [MAJOR] §VIII A–E / Tables X, XIII, XIV: Void membership is not defined consistently. The VoidFinder “any-hole” point-in-sphere union is an author-constructed permissive proxy, the maximal-sphere variant shifts the result by 0.60 pp, the k=20 approximation is acknowledged as insufficient for many galaxies, and the GALZONE rows use different parents. Treating these as one clean five-member family does not establish a single well-defined estimand.
+4. [MAJOR] Sec. VIII B / Table X: The primary “same-footprint” DESIVAST control is not a true selection-function-matched control; the footprint is an author-constructed union of hole-sphere angular discs and radial spans, not the DESIVAST/BGS angular mask, veto mask, completeness map, or random-catalog selection function.
 
-5. [MAJOR] §VIII / §XIII: Redshift-space distortions are not adequately treated. Perturbing galaxies while holding void centers/radii fixed is not a reconstruction of the void catalog under RSD, and the manuscript itself acknowledges anisotropic tidal-eigenvalue deformation is unquantified. Consequently the redshift-space null cannot be promoted to the physical environmental constraint implied in several places.
+5. [MAJOR] Sec. VIII / Tables XI, XIV: The systematic-error budget is ad hoc: counting intervals, peak excursions, membership perturbations, geometry changes, and correlated void-definition variations are combined in quadrature without demonstrating independence or a statistical model, so the ≈0.9 pp “honest envelope” is not a defensible confidence bound.
 
-6. [MAJOR] Appendix A / §XII B / §XIII: The conversion from a classifier-label bound to a physical-chirality bound is not robust. The classifier accuracy floor is low, the GZ1 void-stratified confusion test has a void-arm uncertainty far larger than the quoted DESIVAST bound, and environment-dependent relabeling remains insufficiently constrained; the “≈2.26 pp physical bound” should not be presented as a usable constraint.
+6. [MAJOR] Sec. VIII: The RSD treatment is insufficient for the claimed precision. The Monte Carlo perturbation changes void membership by tens of thousands of galaxies and increases the void count by ∼34%, yet the manuscript treats the resulting small change in ∆fCW as validating the fixed-geometry estimator without rebuilding the void catalog or propagating correlated membership changes.
 
-7. [MAJOR] §IV, §VI, §VII, §IX A: The T-Web analysis is severely compromised by the DESI radial selection function, redshift-space positions, no initial randoms weighting, and survey-edge effects; the later randoms-weighted rebuild reassigns most galaxies and collapses the void volume fraction by a factor ≈23. Although labeled secondary, the T-Web material occupies much of the manuscript and should not be used as robustness evidence in its present form.
+7. [MAJOR] Secs. IV, VI, IX A: The T-Web environment classification is demonstrably dominated by survey selection and mask effects; the randoms-weighted rebuild reassigns ∼73% of matched galaxies and collapses the void volume fraction by ≈23×. Even if labelled secondary, the manuscript devotes major interpretive weight to a classifier whose physical environment labels are not reliable.
 
-8. [MAJOR] §V, §VIII B, Table XI: The “≈0.9 pp systematic envelope” is not a statistically justified uncertainty budget. It combines counting intervals and heterogeneous maximum excursions in quadrature as if independent Gaussian 2σ errors, while several terms are correlated choices of void definition, geometry, footprint, and membership; this cannot support the quoted bound.
+8. [MAJOR] Sec. V / Sec. VI / Tables V, XX: The statistical treatment of duplicated DESI coadd rows, repeated TARGETIDs, and environment-label conflicts is not consistently propagated through all tests; χ², binomial intervals, and permutation p-values are sometimes row-level and sometimes unique-galaxy-level, weakening the stated significances and intervals.
 
-9. [MAJOR] §VI / Tables V, XVI / Appendix C: The manuscript alternates among row-level coadd parents, unique TARGETID parents, footprint-restricted parents, and catalog-native GALZONE parents. Although some reconciliations are given, the inferential target is obscured, and χ², permutation, and binomial tests are sometimes applied to non-independent or duplicated rows before being retroactively checked.
+9. [MAJOR] Sec. V A / Phase-2 tests: The use of only NMC = 1000 permutations is inadequate for claims involving 3σ-level look-elsewhere thresholds, Bonferroni families, and max-statistic tails; the quoted p-values have insufficient tail resolution for the stated inference.
 
-10. [MAJOR] §VI B–D: Covariate control is inadequate for the claimed environmental null. The paper reports a T-Web logistic regression with morphology covariates, but explicitly does not perform the analogous covariate-adjusted or propensity-weighted regression for the DESIVAST primary estimand; this is a central missing robustness test.
+10. [MAJOR] Secs. V B, XI, XIII: The manuscript acknowledges many secondary scans and “few-dozen” trials but does not provide a single coherent global multiplicity framework; null upper bounds can be strengthened by post-hoc estimator selection, and this is not quantitatively controlled.
 
-11. [MAJOR] §XII B / Appendix B: The bounce/inflation and EFT discussion is not supported by the data. The toy operator is non-covariant, non-standard, and explicitly speculative; it should be removed or relegated to non-refereed supplementary discussion, and no PRD-level theoretical constraint follows from the observational null as written.
+11. [MAJOR] Sec. VIII C–D: The void-finder variants are not independent measurements. V2-REVOLVER and V2-VIDE share the ZOBOV/V2 watershed construction, and sphere-PIS versus GALZONE memberships are correlated transformations of the same galaxy sample; the manuscript sometimes notes this but still treats the family in a way that suggests stronger robustness than warranted.
 
-12. [MINOR] Abstract and “Headline result”: The abstract is excessively long, repetitive, and contains caveats, results, systematic budgets, and interpretation all at once; it should be reduced to a conventional abstract with one clearly defined estimand, sample, result, and limitation.
+12. [MAJOR] Sec. III / Appendix D: Reproducibility is not yet journal-grade: the Zenodo DOI is pending, several key references are placeholders or future-dated, and the artifact map points to mutable repository paths rather than a citable archival record available at review time.
 
-13. [MINOR] §V B / §XV: There is inconsistency in what is called the “strictly quotable” result versus the “primary estimand”: at times it is the Bonferroni-5 family, at times the footprint-restricted VoidFinder row, and at times the ≈0.9 pp envelope.
+13. [MAJOR] Sec. XII B / Appendix B: The claimed implications for bounce/inflation or parity-violating EFT model-building are not supported by a physical model calculation. Appendix B explicitly introduces a non-covariant, gauge-dependent toy operator and should not be used to motivate PRD-level theoretical constraints.
 
-14. [MINOR] Tables XIII–XIV / §XV: Some references to the Bonferroni-5 family point to Table XIII even though the five-member family is in Table XIV; table numbering and cross-references require careful correction.
+14. [MINOR] Abstract: The abstract is far too long, mixes headline, caveats, methods, systematics, and interpretation, and is not written in the style of a PRD paper.
 
-15. [MINOR] Figures 6 and 8: Figure 8 in particular appears visually corrupted/overplotted in the supplied rendering, with overlapping titles/color bars; figures must be regenerated in publication quality.
+15. [MINOR] Throughout: The manuscript contains excessive defensive language, referee-directed commentary, “strictly quotable” phrasing, and editorial instructions about companion-paper acceptance that should be removed from a scientific article.
 
-16. [MINOR] Appendix D–E: Repository paths and pending Zenodo DOI are not sufficient for archival reproducibility at review time. A fixed DOI, exact commit hash, environment file, and executable reproduction instructions are required.
+16. [MINOR] Figs. 6 and 8 / captions: Several figures and captions are visually or internally inconsistent; Fig. 8 in particular appears malformed, with overlapping labels/axes and confusing NSIDE/pixel-count statements.
 
-17. [MINOR] Acknowledgments / AI-assisted methodology: The AI disclosure is unusually prominent and not itself a validation method; the manuscript should emphasize independently reproducible code and human scientific responsibility rather than listing model brands.
+17. [MINOR] Sec. IV A: Distance-unit notation alternates between Mpc/h and h⁻¹ Mpc in a way that is potentially confusing; the DESIVAST coordinate convention and all conversions should be stated once cleanly and verified.
 
-(3) No: the data may suggest a narrow null for the chosen classifier labels, but uncontrolled label, selection-function, void-membership, redshift-space, and post-hoc-analysis systematics prevent the central quoted physical/environmental bound from being supported to PRD standards.
+18. [MINOR] References: Several citations are unpublished, in preparation, placeholder, or future-dated; this is not acceptable for supporting central methodology in a final PRD submission.
+
+(3) The qualitative statement that no obvious void/non-void dependence is seen in the classifier-labelled CW fraction is plausible, but the quantitative central claim and quoted bounds are not supported to publication standard.

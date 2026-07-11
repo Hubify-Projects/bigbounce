@@ -41,7 +41,7 @@
 % The divide-by-h claim (~1246 h⁻¹ Mpc) is INVERTED. No pipeline recompute required.
 % If any future reviewer re-raises this, cite env_finder/01_compute_vweb.py:106-108.
 
-\newcommand{\paperVersion}{v0.1.118-2026-07-10}
+\newcommand{\paperVersion}{v0.1.119-2026-07-10}
 % v0.1.117-2026-07-10 (H17 retest2 close; consistency/framing only, no invented number):
 %   - Fixed two residual stale "primary Delta_fCW=+0.0007" labels (L4330, L2886-87)
 %     to the promoted footprint-restricted +0.0018 (n_void=57,081); +0.0007 relabeled
@@ -67,9 +67,10 @@
 %   lo-conf +0.0065 [-0.013,+0.026]); overall accuracy 0.91 rising to 0.96 at confidence_eq>0.6, i.e.
 %   magnitudes differ across strata but errors stay parity-SYMMETRIC. This gives the 2a-1 de-attenuation
 %   its FIRST direct empirical support at the tested strata (App A, Discussion XII-B, Limitations).
-%   The void/non-void environment stratum remains HONESTLY not-yet-computed (GZ1 Table 2 has no redshift;
-%   requires p5_matched_chirality_desi.parquet + DESIVAST spheres) but now carries a CONCRETE committed
-%   recipe (recorded in the JSON) rather than an open-ended caveat. No overclaim; every number from JSON.
+%   [SUPERSEDED v0.1.119] The void/non-void environment stratum is now DIRECTLY COMPUTED and integrated
+%   (artifact stratified_by_environment_void_P5 in gz1_stratified_confusion.json): void N=933 err-asym
+%   -0.023, non-void N=5778 -0.005, diff -0.018 z=-0.89 p=0.37, nulls across all three void defs. The
+%   abstract + body now report this directly; do NOT re-propagate the old "not-yet-computed" wording.
 % v0.1.111-2026-07-09 (CV-round EXT closure (ChatGPT MAJOR-revisions reopened off CA ACCEPT;
 %   Grok/Gemini MINOR). Framing/relocation only; every verified number unchanged EXCEPT the
 %   stated systematic envelope, which was WIDENED (never tightened) to the honest value:
@@ -782,9 +783,13 @@ approximation, the ${\approx}0.9$\,pp classifier-label bound corresponds
 to a de-attenuated physical-chirality bound of ${\approx}2.26$\,pp
 ($0.9/0.3982$); this weaker physical bound is the quantity model-builders
 should use to constrain parity-violation amplitudes. The de-attenuation
-carries additional uncertainty from environment-dependent relabeling (no
-environment-stratified confusion matrix is available;
-\S\ref{sec:limitations}/Appendix~\ref{app:paper4_methods}).
+carries additional uncertainty from environment-dependent relabeling; the
+void/non-void stratum is now directly measured and consistent with
+symmetric error (void/non-void error-asymmetry difference $-0.018$,
+$z=-0.89$, $p=0.37$), though the void arm is under-powered ($\pm3.7$\,pp)
+relative to the $0.2$--$0.6$\,pp headline bounds, so it corroborates but
+cannot by itself exclude a headline-scale environment-dependent label bias
+(\S\ref{sec:limitations}/Appendix~\ref{app:paper4_methods}).
 The robustly-quotable headline is the \emph{family-wise} Bonferroni-5
 null across all five DESIVAST void definitions ($|z_\Delta|\!\le\!1.25$),
 not any single most-favorable row (see \S\ref{sec:primary_path}); the

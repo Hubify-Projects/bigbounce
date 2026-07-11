@@ -1,8 +1,8 @@
-# INT API Review — P1U v1U.0.11 — grok (grok-4.3)
-paper: P1U  version: v1U.0.11  model: grok-4.3
+# INT API Review — P1U v1U.0.12 — grok (grok-4.3)
+paper: P1U  version: v1U.0.12  model: grok-4.3
 modality: native-PDF (/v1/files file_id)
-UTC: 2026-07-11T02:31:04.315507Z  |  latency: 24.4s  |  attempt: 1
-usage: {"input_tokens": 35420, "input_tokens_details": {"cached_tokens": 192}, "output_tokens": 1197, "output_tokens_details": {"reasoning_tokens": 779}, "total_tokens": 36617, "num_sources_used": 0, "num_server_side_tools_used": 0, "cost_in_usd_ticks": 470659000, "context_details": {"input_tokens": 35420, "output_tokens": 1199}}
+UTC: 2026-07-11T03:44:50.739685Z  |  latency: 35.4s  |  attempt: 1
+usage: {"input_tokens": 35423, "input_tokens_details": {"cached_tokens": 192}, "output_tokens": 1167, "output_tokens_details": {"reasoning_tokens": 736}, "total_tokens": 36590, "num_sources_used": 0, "num_server_side_tools_used": 0, "cost_in_usd_ticks": 469946500, "context_details": {"input_tokens": 35423, "output_tokens": 1169}}
 PARSED VERDICT: MAJOR REVISIONS
 
 ======================================================================
@@ -12,10 +12,10 @@ RAW RESPONSE (verbatim):
 (1) VERDICT: MAJOR REVISIONS
 
 (2) ISSUES:
-[MAJOR] Sec. IV (four-route closure) and App. B: the amplitude-suppression arguments for R1–R3 rely on explicitly labeled scaling ansätze and single-scale NDA power counting without a derived positive amplitude or complete operator basis, rendering the “channel-level no-go” a conditional enumeration rather than a theorem.
-[MAJOR] Sec. X (perturbation transparency): the Bianchi-identity argument that the Holst term decouples from scalar/tensor EOM is restricted to canonical scalar matter and explicitly excludes fermion spin density, propagating torsion, dynamical Immirzi, and non-minimal couplings, yet the abstract and title present it as broadly applicable without sufficient qualification of scope.
-[MAJOR] Sec. IV F and Sec. IX (R4 naturalness closure and 14-barrier catalog): the explanatory-deficit objection for the spectator-ALP/neutrino route re-locates the CC problem but does not derive a quantitative fine-tuning measure or demonstrate that the same coupling cannot simultaneously satisfy βobs and ρΛ under any protected symmetry, leaving the “naturalness closure” qualitative.
-[MINOR] Abstract, title, and Sec. I: the phrasing “amplitude closure for R1–R3, naturalness closure for R4” and the 13/14-barrier count are internally consistent only after repeated caveats; the abstract must be rewritten for immediate clarity on what is proved versus assumed.
-[MINOR] App. C and Sec. IV B–C: the Fierz-by-Fierz lemma and operator closures for the parity-odd four-fermion and Jackiw–Pi terms are new but rest on a released symbolic script whose verification is not reproduced in the manuscript.
+[MAJOR] Abstract/Sec. IV/Sec. IX: The central “channel-level closure” of the four enumerated routes (and the 14-barrier catalog) is presented as a definitive assessment, yet the paper repeatedly qualifies that the four routes are neither proven complete nor an operator-level theorem; the amplitude/naturalness arguments are order-of-magnitude NDA estimates under explicit scaling ansätze rather than derived amplitudes or a basis-complete no-go.
+[MAJOR] Sec. X: The perturbation-transparency theorem is asserted for canonical scalar matter, but the proof is only sketched (Bianchi identity + algebraic torsion elimination) without an explicit term-by-term expansion of the perturbed Holst sector to all orders in the metric/scalar perturbations, leaving the claim unverified at the level required for a PRD theorem.
+[MAJOR] Sec. II C/Appendix B/Sec. IV F: The dark-energy mapping and R4 naturalness closure rest on a single-scale NDA dimensional mismatch (+1 vs. +4) plus an m_θ∼H_0 tuning objection, but no explicit matching calculation or EFT completion is supplied to show that the same coupling cannot simultaneously satisfy both β_obs and ρ_Λ without relocating the CC problem.
+[MINOR] Throughout: Excessive length, repetitive footnotes, and heavy dependence on “companion papers” and archived artifacts for all numerical context (even when declared non-load-bearing) make the manuscript difficult to referee as a self-contained submission.
+[MINOR] Sec. IV B/C: The newly closed Jackiw–Pi and parity-odd four-fermion partners are asserted to exhaust the minimal-ECH basis via the Fierz lemma in Appendix C, yet the paper does not demonstrate that no other dimension-6 operators survive under minimal fermion coupling.
 
-(3) The central claim that the four enumerated minimal-ECH dark-energy routes are constrained at the channel-amplitude level under the stated assumptions is supported only conditionally by dimensional power counting and enumerated operator reductions, not by a first-principles derivation or exhaustive basis theorem.
+(3) The central claim that the four enumerated minimal-ECH dark-energy routes are constrained at the channel-amplitude level under the stated assumptions is supported by the dimensional/naturalness arguments given, though only within the paper’s explicitly hedged scope.
