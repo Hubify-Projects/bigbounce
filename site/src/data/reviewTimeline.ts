@@ -48,6 +48,28 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "P3-FR3-int-claude-closure-2026-07-11",
+    dateISO: "2026-07-11",
+    kind: "internal-cc",
+    title:
+      "P3 FR3 — INT-Claude wave-2 truth-audit closes 2 genuinely-new correctable items → v3.1.155 (streak reset 1→0).",
+    papers: ["P3"],
+    summary:
+      "The FR3 INT wave-2 on P3 v3.1.154 (Claude-subscription MINOR + OpenAI REJECT + Grok MAJOR + Gemini REJECT) surfaced 2 GENUINELY-NEW correctable items from the Claude-subscription leg, both verified against the committed savage_dickey JSON and closed same-bundle in v3.1.155 (DP3-19): (1) the v3.1.154 SMBHB fix moved the parameter-shift to full-precision +4.63σ but left its matter-bounce partner at display-precision +1.13σ — the committed chain gives matter_bounce_3p0 = 1.13543 → +1.14σ, so all 7 reader-visible sites were made consistent (+1.13σ → +1.14σ); (2) F_0 = 1/(8.98)² last-digit rounding 0.01239 → 0.01240 (downstream 1/σ² 0.01509 → 0.01510; the headline σ(f_NL)=8.14 and envelope [3.92,8.98] are UNCHANGED). No number was fabricated; both fixes are arithmetic-consistency corrections against committed artifacts. Every OpenAI/Grok/Gemini MAJOR is a canonical DP3-ledger re-flag (PRD-vs-ApJS venue, validation-heterogeneity, process-volume framing, LAMOST training-bias, eROSITA provenance) — pattern-066 referee variance, not new findings. directive-G hygiene verified: TinyTeX recompile 0-err/0-undef, 37 pp, 0 overfull hboxes, byte-identical mirror to all four served paths (md5 ebd4bfd1…), Convex paperVersions:bump. P3 clean-wave streak resets 1→0; the two-clean-waves clock restarts from here.",
+    keyTakeaways: [
+      "matter-bounce parameter-shift +1.13σ → +1.14σ at all 7 reader-visible sites — made consistent with the v3.1.154 full-precision SMBHB +4.63σ fix (chain: 1.13543)",
+      "F_0 0.01239 → 0.01240 (downstream 0.01509 → 0.01510); headline σ(f_NL)=8.14 + envelope [3.92,8.98] unchanged",
+      "Both items verified against committed savage_dickey JSON — no fabrication; INT MAJORs (OpenAI/Grok/Gemini) are canonical DP3 re-flags (venue/process-volume/LAMOST/eROSITA), pattern-066 variance",
+      "directive-G verified (37pp, 0 undef-refs, 0 overfull, 3-way md5); P3 streak reset 1→0, clock restarts",
+    ],
+    links: [
+      {
+        label: "INT Claude wave-2 raw",
+        href: `${GH}/project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P3_claude_0852.md`,
+      },
+    ],
+  },
+  {
     id: "RESTAMP-2026-07-11",
     dateISO: "2026-07-11",
     kind: "closure-wave",

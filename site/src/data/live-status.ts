@@ -100,9 +100,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-3",
       number: "3",
       shortTitle: "Multi-survey anomaly catalog",
-      version: "v3.1.154",
+      version: "v3.1.155",
       readiness: 62,
-      pendingWork: "FR2 (2026-07-11) REBUILD streak 0→1: first clean wave on the NANOGrav-fixed v3.1.154 (INT openai/grok/gemini/claude REJ/MAJ/REJ/MIN + EXT-Grok MAJOR). Claude-INT independently recomputed +4.63σ from the committed chain — DP3-18 fix VERIFIED at 4 sites, no regressions. 0 genuinely-new reader-visible editable findings; all 22 flagged findings are source-cited re-flags of the DP3 ledger (venue DP3-16 / process-volume DP3-07 / disclosed-artifact DP3-08/-15 classes). No NANOGrav arithmetic re-flag (all NANOGrav findings are scope critiques → DP3-10). No version bump; v3.1.154 stands. One more clean wave re-crosses the two-clean-waves bar. Venue question (PRD vs ApJS/MNRAS) is Houston-gated.",
+      pendingWork: "FR3 (2026-07-11) INT-Claude wave-2 truth-audit surfaced 2 GENUINELY-NEW correctable items → P3 streak RESET 1→0, closed same-bundle in v3.1.155 (DP3-19): (1) matter-bounce parameter-shift precision made consistent with the v3.1.154 SMBHB fix — SMBHB moved to full-precision +4.63σ but its matter-bounce partner was left at display-precision +1.13σ; committed chain matter_bounce_3p0=1.13543 → +1.14σ, updated all 7 reader-visible sites; (2) F_0 last-digit 0.01239→0.01240 (downstream 0.01509→0.01510; σ=8.14 and envelope [3.92,8.98] UNCHANGED). Both verified against savage_dickey JSON, no fabrication. INT verdicts openai/grok/gemini/claude = REJECT/MAJOR/REJECT/MINOR; every MAJOR is a canonical DP3 re-flag (venue PRD-vs-ApJS DP3-16, validation-heterogeneity, process-volume DP3-07, LAMOST bias, eROSITA provenance) — referee variance, not new. directive-G verified (3-way md5, 37pp, 0 undef-refs, 0 overfull). Clock restarts; two clean waves from here. Venue question Houston-gated.",
     },
     {
       slug: "paper-4",
