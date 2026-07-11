@@ -223,3 +223,9 @@ numbers spot-checked against current `arxiv/paper1_unified.tex` v1U.0.11 and upd
 - Claude R3 lever-arm ln(10^16)=36.8 vs "30-35" → DP1U-10 (conservative-upper-bound ansatz, ≥60 orders margin; framing already disclosed; not a headline value) — re-flag, not editable defect.
 - **0 genuinely-new editable findings.** clean-wave streak 2→3 (HOLDS across directive-K bar). No bump; v1U.0.13 stands. directive_g.sh not run (no edit).
 - **Integrity:** EXT ChatGPT+Gemini FAILED (rate-limit) recorded as chart GAP not verdict; no ACCEPT faked; no finding dismissed without a source-cited verdict; no math fabricated.
+
+## FR1b adjudication wave (2026-07-11, vs v1U.0.13 restamp) — ChatGPT retry (recovered FR1 rate-limit gap)
+- **EXT ChatGPT = REJECT** (14 MAJOR + 1 MINOR). Recovers the FR1-round rate-limit GAP. All findings source-cited re-flags of DP1U ledger: variational-hybrid Eq(1)/Cartan→DP1U-03; dim+1→+4 no-go→DP1U-08; O1–O6 basis-completeness/Nieh–Yan→DP1U-07/-20; Fierz mixed V⊗A closure→DP1U-07 (Fierz sub-claim, disclosed basis scope); R1 NJL condensate ⟨J5⟩≠⟨J5 J5⟩→DP1U-05; R2 one-loop/∂ϑ bookkeeping→DP1U-09; R3 Δγ→dark-energy mapping→DP1U-10; R4 ALP free-coupling→DP1U-11/-05; dynamical-CS transparency-misapplication + Sec-X overuse→DP1U-12; D_inf/N_tot≃92/matter-bounce-erasure→DP1U-14; 13-barrier independence→DP1U-13; App E–G don't test ECH→DP1U-15; global-restructure/repetition MINOR→DP1U-22 PROCESS-NIT.
+- ledger_match.py: 9/15 auto-MATCHED; 6 UNMATCHED (conservative <0.30 prose-diluted) all Opus-adjudicated to the D-ids above — 0 genuinely-new.
+- **0 genuinely-new editable findings.** clean-wave streak HOLDS at 3 (no reset). No bump; v1U.0.13 stands. directive_g.sh not run (no edit).
+- **Integrity:** raw verbatim REJECT verdict READ before recording; no ACCEPT faked; no finding dismissed without a source-cited verdict; no math fabricated.
