@@ -411,3 +411,54 @@ No fabrication. Headline −35/16 unchanged (quadruple-certified). The three edi
 - `tools/directive_g.sh P2 v1.7.111` PASS: 0 errors, 0 undefined refs, 0 overfull >50pt hboxes, 38 pages.
 - PDF md5 = `85d94d28e74c6f0fb5fe09677026e1c3`, mirrored byte-identical to all 6 served paths.
 - Leak-gate: clean. Convex `paperVersions:bump` paper-2 v1.7.111 → row `k5782h23n67c0tte2wzwcc5d4h8abcbs` (current == v1.7.111, md5 verified).
+
+---
+
+## H17H presentation-closure wave truth-audit (v1.7.111 → v1.7.112, 2026-07-10)
+
+Driver: INT Claude (retest2, `INT_api/H17_2026-07-10/retest2_P2_claude.md`) = MAJOR REVISIONS,
+**verdict-first: NO computational error, all arithmetic reconciled** — 8 presentation/disclosure
+items. No number changed; −35/16 quadruple-certification unchanged; nothing fabricated. Full
+per-item ledger in `DISPOSITIONS/P2.md` DP2-32 / DP2-33.
+
+| # | Claude-INT item | Verdict | Action |
+|---|-----------------|---------|--------|
+| 1 | [MAJOR] PRD abstract format (single ~200-word paragraph, no displayed eqs) | REAL / EDITABLE — CLOSED | Abstract rewritten; long-form scope relocated (not deleted) to new "Scope and conventions" ¶ at head of Intro (L910); r/r_cos/r_eff/r_t/ρ disambiguation consolidated to one canonical clause + cross-ref. |
+| 2 | [MAJOR] state 1.3σ floor is proxy-based | REAL / EDITABLE — CLOSED | Abstract + Scope: "the conservative 1.3σ floor uses a proxy correlation transferred from the power-spectrum SDB channel, as the per-triangle bispectrum covariance Cov_B is not public." |
+| 3 | [MINOR] certify-framing (not "resolve the factor-of-two") | REAL / EDITABLE — CLOSED | Abstract + intro L916: "certify −35/16 four ways; the printed −35/8 is an unreproduced erroneous literature value." |
+| 4 | [MINOR] Jolicoeur:2025 author name | VERIFIED NON-DEFECT | bib first author = Addis (bib L166); prose L1294 = "Addis et al."; other cites unnamed numeric. Already consistent — no change. |
+| 5 | [MINOR] Heinrich prose year vs bibkey | VERIFIED NON-DEFECT | bib year = 2024 (L73); prose "Heinrich et al. 2024" matches. Bibkey label ≠ year, cosmetic — no change. |
+| 6 | [MINOR] Assumption-(d) soften to conditional-on-dressed-metric | REAL / EDITABLE — CLOSED | deformed-algebra signature-change window flagged; closure now "conditional on the dressed-metric quantization … plausible but not derived" in the deformed-algebra scheme. |
+| 7 | [MINOR] abstract MC wording | REAL / EDITABLE — CLOSED | "cross-checked by three Monte Carlo validations of the closed-form integral". |
+| 8 | [MINOR/I6] figures show −35/16 | VERIFIED — NO REGEN | fig1: "Squeezed limit −35/16 = −2.1875", equil −255/128, folded −9/8; fig2: title "f_NL = −35/16", bars ~3.8σ (not doubled ~5.5σ). Rendered from source PNG + re-mirrored byte-identical. |
+| — | retest3 Claude M1: abstract carry honest 0.8σ floor | REAL / EDITABLE — CLOSED (DP2-33) | Abstract now "(∼0.8σ under the unresolved GR-correlation bracket) … both disclosed as marginal-sensitivity estimates, not channel-native measurement precisions." No number change (0.8σ already in body). |
+
+### H17H re-test triple (v1.7.112, native-PDF)
+- **Claude INT (subscription subagent) = MINOR REVISIONS** — confirms all H17H closures landed,
+  no computational error, nothing fabricated, central claim fully supported; hand-verified every
+  load-bearing fraction. Its one MAJOR (abstract 0.8σ floor) closed as DP2-33.
+- **OpenAI INT (gpt-5.5, native-PDF) = REJECT** — 11 MAJOR + 4 MINOR, **0 genuinely-new real
+  findings**; every item a source-cited re-flag of already-dispositioned scope/derivation/venue
+  content (DP2-02/03/04/13/14/15/22/24/26/30). Structural harsh-referee floor (directive H) on
+  honestly-scoped content, not an editable defect.
+- **Grok INT (grok-4.3, native-PDF) = MAJOR REVISIONS** — 3 MAJOR + 2 MINOR, **0 genuinely-new
+  real findings**; MAJORs quote the NEW H17H disclosure clauses as their basis (confirming the
+  closures registered) and re-flag the honestly-disclosed proxy-floor / assumption-(d) / Fisher
+  limitations (DP2-24/-32.2, DP2-13/-32.6, DP2-14/-22).
+
+### Convergence read (directive H-refined + pattern-066)
+**0 genuinely-new real findings across all three INT reviewers.** Every MAJOR/minor is a
+source-cited re-flag of already-disclosed scope/venue content or an honestly-disclosed
+out-of-scope limitation. −35/16 unchanged + quadruple-certified; no fabrication; no fake ACCEPT;
+no finding dismissed without a source-cited verdict. Remaining OpenAI-REJECT = known LLM
+harsh-referee structural floor on a marginal-significance single-source recast whose external
+per-triangle covariance is unavailable (venue/impact judgment, Houston-gated).
+
+### Directive-G hygiene (v1.7.112)
+- `\date` = July 10, 2026; changelog header bumped v1.7.111 → v1.7.112.
+- `tools/directive_g.sh P2 v1.7.112` PASS (twice — abstract closures, then the 0.8σ M1 edit):
+  0 errors, 0 undefined refs, 0 overfull >50pt hboxes, 37 pages.
+- Final PDF md5 = `9eece8926305e1e7ca619541453a57f1`, mirrored byte-identical to all 6 served paths.
+- Leak-gate: clean. Convex `paperVersions:bump` paper-2 v1.7.112 → row
+  `k57a9g7a6gabgjnr8bj4he6dh18ab9xs` (current == v1.7.112, md5 verified). Page-1 render confirms
+  single-paragraph PRD abstract + version + date.

@@ -46,6 +46,26 @@ const PR = `${GH}/project-context/peer-reviews`;
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "H17H-P2-presentation-closure-2026-07-10",
+    dateISO: "2026-07-10",
+    kind: "internal-api",
+    title:
+      "H17H P2 presentation-closure wave — Claude-INT MAJOR (verdict-first: NO computational error) closed as 8 PRD presentation/disclosure items; v1.7.111 → v1.7.112. Re-test INT triple: Claude MINOR / OpenAI REJECT / Grok MAJOR — 0 genuinely-new real findings.",
+    papers: ["P2"],
+    summary:
+      "P2 owner (H17H) closed the Claude-INT retest2 MAJOR-REVISIONS report (raw explicitly: NO computational error, all arithmetic reconciled; 8 presentation/disclosure items). Closures (no number changed, −35/16 quadruple-certification unchanged, nothing fabricated): (1) abstract rewritten as a single PRD-format ~200-word paragraph with the long-form scope material RELOCATED (not deleted) to a new 'Scope and conventions' paragraph at the head of the Introduction, plus a consolidation pass folding the ~6× r/r_cos/r_eff/r_t/ρ notation disambiguation to one canonical clause; (2) abstract now discloses the conservative 1.3σ floor is proxy-based (ρ=−0.868 from the power-spectrum SDB channel; Cov_B not public) and carries the honest 0.8σ GR-correlation edge; (3) certify-framing ('certify −35/16 four ways; printed −35/8 is an unreproduced erroneous literature value'); (4/5) Jolicoeur=Addis + Heinrich-2024 verified already-consistent; (6) assumption-(d) closure softened to conditional-on-dressed-metric in the deformed-algebra signature-change window; (7) abstract MC wording fixed; (8/I6) fig1+fig2 rendered + verified −35/16-era (no regen). Re-test triple on v1.7.112 (native-PDF): Claude-subscription-subagent MINOR (all closures confirmed, central claim supported, nothing fabricated, every load-bearing fraction hand-verified); OpenAI gpt-5.5 REJECT (11 MAJOR, 0 genuinely-new — structural harsh-referee floor); Grok grok-4.3 MAJOR (3 MAJOR, 0 genuinely-new — re-flags the NEW H17H disclosure clauses themselves). Per directive H-refined + pattern-066: 0 genuinely-new real findings across all three INT reviewers; every item a source-cited re-flag of disclosed scope/venue content. Directive-G: md5 9eece8926305e1e7ca619541453a57f1, 37pp, 6 served paths, Convex row k57a9g7a6gabgjnr8bj4he6dh18ab9xs. Raws in INT_api/H17_2026-07-10/retest3_P2_{claude,openai,grok}.md; ledger DP2-32/33.",
+    keyTakeaways: [
+      "Claude-INT MAJOR was verdict-first honest: NO computational error, all arithmetic reconciled — the 'major' was PRD abstract-format non-compliance + one disclosure, closed as 8 presentation/disclosure items with no number change",
+      "PRD abstract rewritten to one ~200-word paragraph; long-form scope RELOCATED to a 'Scope and conventions' paragraph at the head of the Introduction (not deleted); notation disambiguation consolidated to one canonical clause",
+      "Re-test INT triple v1.7.112: Claude MINOR (closures confirmed, claim supported) / OpenAI REJECT / Grok MAJOR — 0 genuinely-new real findings; every item a source-cited re-flag of disclosed scope/venue content (directive H-refined + pattern-066)",
+      "−35/16 quadruple-certification unchanged; figures verified −35/16-era; nothing fabricated; directive-G PDF hygiene clean (md5 9eece89…, 37pp, 6 served paths)",
+    ],
+    links: [
+      { label: "H17H re-test raws (INT triple)", href: `${PR}/INT_api/H17_2026-07-10/` },
+      { label: "P2 disposition ledger", href: `${PR}/DISPOSITIONS/P2.md` },
+    ],
+  },
+  {
     id: "H17F-final-wave-2026-07-10",
     dateISO: "2026-07-10",
     kind: "external-browser",
