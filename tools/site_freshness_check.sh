@@ -353,6 +353,30 @@ if [ $RC -ne 0 ] && [ -z "$PYOUT" ]; then
   exit 2
 fi
 
+# ---------------------------------------------------------------------------
+# 6. SKILLSLOG (WARN-level — does NOT flip OVERALL to FAIL).
+#    tools/skills_autolog.sh --check exits 2 when git history has skill/process/
+#    tooling commits whose sha is not yet in reviewTimeline.ts. That is a "you
+#    have un-drafted self-improvement to log" nudge, not a blocking staleness —
+#    so it is reported WARN and never blocks a push. Run tools/skills_autolog.sh
+#    (no flag) to get paste-ready drafts.
+SKILLSLOG_SH="$REPO/tools/skills_autolog.sh"
+if [ -x "$SKILLSLOG_SH" ]; then
+  SKILLSLOG_MSG="$("$SKILLSLOG_SH" --check 2>&1)"
+  SKILLSLOG_RC=$?
+  if [ "$SKILLSLOG_RC" -eq 2 ]; then
+    SKILLSLOG_ROW="WARN	skillslog	${SKILLSLOG_MSG:-unlogged skill/process improvements found}"
+  elif [ "$SKILLSLOG_RC" -eq 0 ]; then
+    SKILLSLOG_ROW="FRESH	skillslog	all skill/process improvements logged in reviewTimeline.ts"
+  else
+    SKILLSLOG_ROW="WARN	skillslog	skills_autolog --check error (rc=$SKILLSLOG_RC): ${SKILLSLOG_MSG}"
+  fi
+  # Insert the skillslog row BEFORE the OVERALL line so it renders in the table
+  # body. WARN never flips OVERALL (that stays whatever the 5 gate checks decided).
+  PYOUT="$(printf '%s\n' "$PYOUT" | awk -v row="$SKILLSLOG_ROW" -F'\t' \
+    '$1=="OVERALL"{print row} {print}')"
+fi
+
 OVERALL="$(printf '%s\n' "$PYOUT" | awk -F'\t' '$1=="OVERALL"{print $2}')"
 
 print_table() {

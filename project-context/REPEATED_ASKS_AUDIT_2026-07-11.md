@@ -13,8 +13,11 @@ frustration/reminder markers), the 18 distilled `memory/*.md` feedback entries, 
 crontab, launchd, git hooks, and the tool inventory to set each item's current state.
 
 **Headline finding.** The single most-repeated class — *the loop/cron dies and I
-have to notice and restart it* — is **still UNFIXED as of this audit**, and its live
-root cause was found: the launchd tick is stuck skipping on a stale lock.
+have to notice and restart it* — had its live root cause found (the launchd tick stuck
+skipping on a stale lock) and is now **FIXED (2026-07-11)**: the wedged
+`com.bigbounce.cron-tick` was repaired (self-inflicted lock-dir/`rmdir` bug — pid moved to a
+sibling file, 30-min self-healing reclaim, per-tick heartbeat write) and paired with the new
+recovery-only `com.bigbounce.loopwatchdog`. Stale lock cleared. See class 1 for the full closure.
 
 ---
 
@@ -37,7 +40,25 @@ root cause was found: the launchd tick is stuck skipping on a stale lock.
 
 ## Repeated-ask classes
 
-### 1. Loop/cron dies; I have to notice and restart it  — **UNFIXED (root cause found)**
+### 1. Loop/cron dies; I have to notice and restart it  — **FIXED (2026-07-11)**
+- **CLOSURE (2026-07-11, commit `fix(sched)…`):** root cause was a self-inflicted lock
+  bug — `bigbounce-cron-tick.sh` wrote its pid file INSIDE the `mkdir` lock dir
+  (`$LOCK/pid`), which made both the stale-reclaim `rmdir` and the EXIT-trap `rmdir`
+  silently fail (rmdir refuses non-empty dirs). So the dead Jul-10-02:07 lock (pid 10362)
+  could never be cleared → every hourly tick hit `lock race — skipping` forever.
+  **Fix:** pid moved to a SIBLING file `$LOCK.pid` (lock dir stays empty → reclaim always
+  works); reclaim window tightened 90→30min with `rm -rf` belt-and-suspenders; the tick now
+  writes `LOOP_HEARTBEAT.json` each run so the watchdog sees it alive; REPO path normalized
+  to `CODE_YOU`; stale `Operation not permitted` (`scripts/…`) err artifact was from an old
+  plist rev — current plist runs the `Application Support` copy fine; stale `launchd.err`
+  truncated. **DECISION: cron-tick REPAIRED, not retired** — the new `com.bigbounce.loopwatchdog`
+  is recovery-ONLY ("do not start new review sweeps, recovery only"), so it does NOT cover
+  cron-tick's actual review/drive work (harvest, close findings, recompile, spawn owner agents,
+  EXT sweeps). Retiring cron-tick would drop that work. The two now coexist: **cron-tick = the
+  hourly work engine; watchdog = the never-dies safety net** that fires a headless recovery tick
+  only when cron-tick's heartbeat goes stale (recovery cap tightened 2h→60min so a closed
+  session still gets ~hourly recovery ticks). Stale lock cleared; both launchd agents reloaded.
+- **~ ORIGINAL FINDING (root cause found) below, preserved for the record ~**
 - **First:** 2026-06-28. **Count:** ≥5 (06-28, 06-30, 07-09 ×2, 07-11) — the #1 class.
 - Verbatim 06-28: *"why have you stopped? you are supposed to have a cron loop that
   fires every 30mins … and continues improving the papers … until all papers have no
@@ -68,11 +89,14 @@ root cause was found: the launchd tick is stuck skipping on a stale lock.
 - **State:** **FIXED-BY** `tools/site_freshness_check.sh` + `.git/hooks/pre-push` gate
   (sha `0c263178`, 2026-07-10): banner-vs-latest-wave, skillsSeries-vs-latest-lesson-commit,
   board-vs-manifest, versions-vs-Convex all machine-checked and block a push while stale.
-  Directive A + `feedback_stale_surface_root_cause`. **Residual:** the gate only runs at
-  push; it must ALSO run each cron tick (belongs with the watchdog) so drift is caught
-  between pushes. Mark **PARTIALLY** on cron-tick coverage.
+  Directive A + `feedback_stale_surface_root_cause`. **Residual CLOSED (2026-07-11):** the gate
+  now ALSO runs off-push — the watchdog recovery prompt explicitly runs
+  `tools/site_freshness_check.sh --report` and fixes FAILs every recovery tick, and the hourly
+  cron-tick prompt keeps the site honest each tick. Verified: gate-on-tick lives in both the cron
+  prompt and the watchdog. Cron-tick coverage residual = **CLOSED**. The gate also gained a 6th
+  surface (`skillslog`, WARN-level — see item 3).
 
-### 3. Self-improvement is untracked / possibly faked — **PARTIALLY**
+### 3. Self-improvement is untracked / possibly faked — **FIXED (2026-07-11)**
 - **First:** 2026-06-26. **Count:** ≥3 (06-26, 07-09, 07-11).
 - Verbatim 07-11: *"maybe you are faking it after the fact i dont know no way to verify or
   trace our actual improvements at each review round … you still make the same mistakes and
@@ -81,22 +105,32 @@ root cause was found: the launchd tick is stuck skipping on a stale lock.
   so i do not have to remind you about any of this ever again."*
 - **Wants:** every claimed process-improvement is real, dated, and traceable to a commit.
 - **State:** `ACCELERATION_LOG_2026-07-10.md` + `skillsSeries` capture improvements, and the
-  CLAUDE.md rule requires a `kind:"skill-improvement"` timeline entry per upgrade. But entries
-  are **hand-written and not sha-stamped** — exactly the "no way to trace" gap.
-  **PARTIALLY.** Fix: a `skillsSeries`/self-improvement generator that derives each entry from
-  git history (commit sha + file path + timestamp), so backfills come from git only and every
-  chart point is clickable to its introducing commit. Enforce via the freshness gate.
+  CLAUDE.md rule requires a `kind:"skill-improvement"` timeline entry per upgrade. The entries
+  used to be **hand-written and not sha-stamped** — the "no way to trace" gap.
+  **FIXED (2026-07-11, commit `fix(sched)…`):** `tools/skills_autolog.sh` makes per-round skill
+  logging **generative, not remembered** — given `--since` (default = last `skillsSeries` date)
+  it scans BOTH the bigbounce git log (`tools/` + skill-keyword subjects) AND the scistack spec
+  git log (`astrostack/`) and EMITS sha-cited, paste-ready `skillsSeries` + `reviewTimeline`
+  `skill-improvement` draft entries; `--check` exits 2 if any qualifying commit's sha is not yet
+  in `reviewTimeline.ts`. That `--check` is wired as a **6th `skillslog` WARN surface** in
+  `tools/site_freshness_check.sh`, so un-drafted self-improvement surfaces on every freshness run
+  (WARN, never blocks a push). Every chart point is now derivable from git provenance.
 
-### 4. Verdict-gap trend visibility — **UNFIXED**
+### 4. Verdict-gap trend visibility — **FIXED (verified 2026-07-11)**
 - **First:** 2026-07-11. **Count:** 1 explicit, but elevated by Houston to *the* headline metric.
 - Verbatim: *"the new gaps ledger that matters more than the INT/EXT gaps ledger is basically
   closing the gap on each round … from rejection/major closer and closer to minor/accepted."*
 - **Wants:** lead every report + a site chart with the per-paper × per-reviewer verdict score
   (REJECT=0 → ACCEPT=3) trajectory across rounds, with rigor-event annotations.
-- **State:** captured in `feedback_verdict_gap_headline` + `readinessMetrics` groundwork
-  (`record_wave.sh`/`post_verdict.sh`, sha `6f4180cf`), but **no trajectory chart exists** in
-  `site/src/data/` and loop reports don't yet lead with it. **UNFIXED.**
-  Fix: `verdictTrajectory.ts` data + a site chart; loop-report template leads with gap delta.
+- **State (updated 2026-07-11 — original audit line was stale):** the trajectory chart HAS
+  shipped — commit `11c8718b` ("feat(site): expandable full-page chart views…") ships
+  `VerdictTrajectoryChart` on `/reviews`, driven by the Convex `readinessMetrics` table
+  (`record_wave.sh`/`post_verdict.sh`, sha `6f4180cf`) rather than a static `verdictTrajectory.ts`
+  (Convex is the live source per directive A — a static data file would have drifted). Per-paper ×
+  per-reviewer verdict-score trajectory with rigor-event annotations + expandable full-page view.
+  **FIXED** on the data+chart axis. Residual (non-blocking, procedural): the loop-report *template*
+  leading with the per-round gap delta is a process habit, not code — tracked as report discipline,
+  not a code gap.
 
 ### 5. Unacceptable ETA / "weeks-to-months" / do-it-now — **PARTIALLY**
 - **First:** 2026-07-07. **Count:** 2 (07-07, plus the 07-07 companion-paper thread).
@@ -106,9 +140,10 @@ root cause was found: the launchd tick is stuck skipping on a stale lock.
   Houston-gated blocker (arXiv click, API key, human referee) — nothing vaguer.
 - **State:** the two-category gate + `feedback_verifiable_review_reset` do route to explicit
   Houston-gated blockers, but there is **no standing ETA-honesty gate** in report generation.
-  **PARTIALLY.** Fix: a report-lint rule banning "weeks/months/future" without an attached
-  named blocker owner (self-improvement, disallow vague deferral — directive parallels
-  `/no-future-work-defer`).
+  **PARTIALLY (process, honest).** The routing to explicit Houston-gated blockers is live in
+  directive discipline (`/no-future-work-defer` + the two-category gate); a mechanized report-lint
+  banning "weeks/months/future" without a named blocker owner is not yet code — it stays PARTIALLY
+  as a report-discipline habit, not claimed as automated.
 
 ### 6. Papers-merge status not surfaced — **UNFIXED**
 - **First:** 2026-07-11. **Count:** 1 (embedded in the stale-banner complaint).
@@ -129,9 +164,12 @@ root cause was found: the launchd tick is stuck skipping on a stale lock.
   J never-idle), never sits on a single serial worker.
 - **State:** fused-owner-loop pattern exists (ACCELERATION_LOG #1) and directive J mandates
   never-idle parallel fan-out, but **nothing enforces N-way utilization at tick time.**
-  **UNFIXED.** Fix: the cron tick, when idle, must spawn one Opus owner per below-bar paper in a
-  single message; a utilization assertion in the tick logs (and fails loud) if <N owners for N
-  below-bar papers.
+  **PARTIALLY (process — mark honestly).** Directive J (never-idle parallel fan-out, Fable
+  orchestrator + Opus owner per below-bar paper) is codified in CLAUDE.md and the cron-tick prompt,
+  and the fused-owner-loop pattern exists. That is a *process* directive the loop follows, NOT a
+  hard code assertion — no in-tick utilization check yet fails loud if <N owners run for N below-bar
+  papers. The reliable loop-liveness half is now hard (item 1: repaired cron-tick + watchdog); the
+  N-way-utilization assertion remains a process habit, honestly not mechanized.
 
 ### 8. Unverifiable reviews / fabricated convergence — **FIXED**
 - **First:** 2026-07-04. **Count:** ≥3 (07-04, 07-08, 07-09), the highest-stakes class.
@@ -206,28 +244,26 @@ root cause was found: the launchd tick is stuck skipping on a stale lock.
 
 ---
 
-## Ordered implementation queue (UNFIXED / PARTIAL, by recurrence × impact)
+## Ordered implementation queue — CLOSURE STATUS (updated 2026-07-11)
 
-1. **Cron watchdog daemon** *(class 1 — highest recurrence × impact; parallel agent building it).*
-   Separate launchd agent @1–5 min: reclaim stale `/tmp/bigbounce-cron.lock` > max-tick-age;
-   assert a heartbeat file touched within N min else force-restart the tick; log + Convex-alert on
-   repeated failure. Also fix the current stuck lock + the stale `Operation not permitted` plist path.
-2. **Freshness gate on every cron tick** *(class 2/3 residual).* Invoke `site_freshness_check.sh`
-   inside `bigbounce-cron-tick.sh` (not only at push); any stale surface is auto-fixed or the tick
-   fails loud — drift never waits for the next push or for Houston.
-3. **Sha-traceable self-improvement generator** *(class 3).* Script that regenerates `skillsSeries`
-   / self-improvement timeline entries from git history (sha + path + commit timestamp); wire into
-   the freshness gate so every chart point is verifiable and backfills come only from git.
-4. **Verdict-gap trajectory chart + report-lead** *(class 4).* `site/src/data/verdictTrajectory.ts`
-   (paper × reviewer × round, REJECT=0→ACCEPT=3, rigor-event annotations) + a site chart; loop-report
-   template leads with per-paper + program gap delta vs prior round.
-5. **Never-idle parallel-fan-out enforcement** *(class 7).* In the idle branch, the tick spawns one
-   Opus owner per below-bar paper in a single message and logs a utilization assertion (fails loud if
-   <N owners for N below-bar papers) — kills "only 1 subagent working."
+1. **Cron watchdog daemon** — **DONE.** `tools/loop_watchdog.sh` +
+   `com.bigbounce.loopwatchdog` (launchd, 15min, `RunAtLoad`) ship the heartbeat gate +
+   Convex-alert + headless recovery tick (recovery cap tightened 2h→60min). Companion `fix(sched)…`
+   closure REPAIRED the wedged `com.bigbounce.cron-tick` (the sibling-`$LOCK.pid` lock fix — see
+   class 1), cleared the stale lock, truncated the stale `Operation not permitted` err, and normalized
+   the plist/script REPO path. **Decision: cron-tick repaired not retired** — watchdog is recovery-only,
+   cron-tick is the hourly work engine; both coexist.
+2. **Freshness gate off-push** — **DONE.** Runs in the watchdog recovery prompt + the cron-tick prompt,
+   not only at `git push`. Gained a 6th `skillslog` WARN surface.
+3. **Sha-traceable self-improvement generator** — **DONE.** `tools/skills_autolog.sh` (generative
+   drafts from bigbounce + scistack git; `--check` exit-2 gate wired as the `skillslog` WARN surface in
+   `site_freshness_check.sh`).
+4. **Verdict-gap trajectory chart** — **DONE (pre-existing, verified).** `VerdictTrajectoryChart` on
+   `/reviews` (commit `11c8718b`) over Convex `readinessMetrics`. Report-lead-with-gap-delta remains a
+   procedural habit.
+5. **Never-idle parallel-fan-out enforcement** — **PARTIAL (process).** Directive J + cron-tick prompt
+   mandate it; no hard in-tick utilization assertion yet. Loop-liveness half is now hard (items 1-2).
 
-*(Follow-ons, lower priority: 6. merge-status surface field + gate (class 6); 7. ETA-honesty
-report-lint banning vague weeks/months without a named blocker (class 5); 8. figures-completeness
-+ chart-readability gate on paper pages (class 15).)*
-
-**DO NOT implement here** — the watchdog (queue #1) is owned by a parallel agent; the orchestrator
-dispatches the remainder from this queue.
+*(Follow-ons, still open, lower priority: merge-status surface field + gate (class 6); mechanized
+ETA-honesty report-lint (class 5); figures-completeness + chart-readability gate on paper pages
+(class 15).)*

@@ -17,7 +17,8 @@
 #           fresh heartbeat, runs site_freshness_check + fixes FAILs, harvests any
 #           submitted-unharvested EXT manifests, and appends a status line to
 #           LOOP_WATCHDOG_LOG.md so the interactive session knows what happened.
-#       RECOVERY CAP: if a recovery ran <2h ago, only notify+alert (don't stack).
+#       RECOVERY CAP: if a recovery ran <60min ago, only notify+alert (don't stack).
+#       => a closed session gets ~hourly headless recovery ticks.
 #   - every run logs exactly one line to project-context/LOOP_WATCHDOG_LOG.md.
 #
 # See canonical spec: ~/.claude/scistack/astrostack/bigbounce-r-round/SKILL.md
@@ -33,7 +34,11 @@ HEARTBEAT="$REPO/project-context/LOOP_HEARTBEAT.json"
 WATCHDOG_LOG="$REPO/project-context/LOOP_WATCHDOG_LOG.md"
 CONVEX_MUTATION_URL="https://brilliant-panther-471.convex.cloud/api/mutation"
 STALE_SECONDS=$((45 * 60))          # 45 minutes
-RECOVERY_COOLDOWN_SECONDS=$((2 * 60 * 60))  # 2 hours
+RECOVERY_COOLDOWN_SECONDS=$((60 * 60))  # 60 minutes — a closed session gets ~hourly
+                                         # headless recovery ticks (each writes the
+                                         # heartbeat, runs the freshness gate, harvests
+                                         # pending EXT rounds). Tightened from 2h
+                                         # 2026-07-11 so the loop never idles >1h.
 # marker file records the epoch of the last recovery launch (recovery cap)
 RECOVERY_MARKER="/tmp/bigbounce_watchdog_last_recovery"
 CLAUDE_BIN="$(command -v claude || echo "$HOME/.claude/local/claude")"
