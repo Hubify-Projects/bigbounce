@@ -1,0 +1,35 @@
+Referee Report: Physical Review D
+
+Manuscript: Redshift-Space Environmental Dependence of Spiral Chirality: A DESIVAST Three-Algorithm Void Null Test on 57,081 DESI DR1 Spirals
+Author: Houston Golden
+Date: July 10, 2026 (exploratory/post-hoc analysis; no pre-registered plan)
+
+Summary
+The manuscript presents a careful null test of whether the clockwise/counterclockwise (CW/CCW) fraction of spiral galaxies in the DESI DR1 chirality catalog (Paper IV companion) depends on large-scale environment. The primary analysis uses the public DESIVAST void catalog (three algorithms: VoidFinder sphere-growing + two V2 watershed variants) on the volume-limited low-z BGS sample, yielding a footprint-restricted void/non-void contrast on 57,081 void spirals. All five DESIVAST estimators return |Δf_CW| ≤ 0.004, |z_Δ| ≤ 1.25 (Bonferroni-5 family null at α = 0.05). Secondary T-Web tidal-tensor classification on the full matched sample (n_env-labeled = 812,793) and supporting checks (Tempel FoF, ASTRA EDR, density/redshift/sky-position scans) are consistent with the same null after monopole subtraction. The headline result is framed as a bounded upper limit (≈0.9 pp effective 2σ systematic envelope on the classifier-labelled fraction; de-attenuated physical-chirality bound ≈2.26 pp) rather than a discovery claim. The analysis is performed entirely in redshift space and inherits RSD effects.
+
+The paper is transparent about its post-hoc primary-path designation, the garden-of-forking-paths exposure (few-dozen trials), the small T-Web void bin (n = 428, survey-shell dominated), and the fact that the result constrains the classifier-labelled CW fraction, not physical handedness (GZ1 accuracy floor κ ≈ 0.40 implies attenuation factor ≈0.40). All numeric results are stated to regenerate from a committed pipeline tag with DOI-minted archival snapshot.
+
+Overall Assessment
+This is a high-quality, statistically rigorous null-result paper that meets the standards of Physical Review D for cosmology/large-scale-structure analyses. The methodology is sound, the treatment of systematics (classifier monopole, membership geometry, footprint, match radius) is honest and quantitative, and the multiplicity bookkeeping (Bonferroni-5 primary family + explicit LEE disclosure) is exemplary. The work complements the global-dipole null of the companion Paper IV and supplies a useful empirical bound for bounce/inflation models that might couple chirality to environment at ≳25 Mpc/h scales.
+
+The manuscript is already close to publication-ready. The main issues are presentational and interpretive framing rather than fatal flaws in the science. With minor revisions the paper should be accepted.
+
+Major Comments
+
+Primary-path designation and pre-registration caveat (most important presentational issue). The paper correctly flags that the DESIVAST-anchored path is designated post-hoc (§V B, Table IV) and that no timestamped plan predates the data. This is handled transparently, but the abstract and headline result paragraph still lead with the DESIVAST numbers. I recommend moving the explicit “exploratory/post-hoc; family-wise Bonferroni-5 null is the strictly quotable result” language into the abstract itself (one sentence) and adding a short “Reader’s guide” box or italicized paragraph immediately after the abstract that directs referees/readers to §V B/Table IV for the analysis-tree declaration. This removes any residual perception of selective reporting.
+De-attenuation and physical-chirality bound. The ≈0.9 pp classifier-label envelope is correctly converted to a de-attenuated physical bound of ≈2.26 pp under the symmetric-error approximation (Appendix A). However, the text notes (but does not quantify) additional uncertainty from possible environment-dependent relabeling because no environment-stratified confusion matrix exists. This caveat should be elevated to a dedicated short paragraph in §XIII (or a new subsection) with a clear statement of the form: “Model-builders should therefore treat the de-attenuated 2.26 pp figure as a nominal upper bound whose true width is larger by an unknown factor set by any environment dependence of the classifier error matrix.” A one-sentence version of this warning should also appear in the abstract’s final sentence on the physical bound.
+Redshift-space vs. real-space interpretation. The paper repeatedly and correctly states that all results are fixed-redshift-space metrics and inherit RSD effects; model-builders should not read them as pure real-space constraints. This is already well done, but the final sentence of the abstract and the last paragraph of §I could be tightened to: “All quoted bounds are redshift-space statements; anisotropic tidal-tensor / scalar-σ_v RSD decomposition is left for future work.” (The current wording is slightly softer.)
+T-Web void bin and survey-shell artifact. The secondary T-Web path is appropriately labelled “diagnostic, not load-bearing.” The text already explains why the n = 428 void bin is dominated by the z ≲ 0.24 selection function rather than genuine cosmic-web voids. A one-sentence cross-reference in §VI A to the DESIVAST re-projection (n ≈ 57 k) that supplies the controlling constraint would help readers who skim.
+
+Minor Comments / Suggestions
+
+Table XI (systematic budget) is excellent; please ensure the quadrature sum that produces the ≈0.9 pp envelope is shown explicitly (or give the exact formula in a footnote).
+The Phase-2 (R_s, λ_th) sweep results are reassuring; consider adding a short sentence in §VII stating that the maximum monopole-subtracted residual among the six grid-resolved cells is 1.64σ (currently only the full nine-cell maximum is quoted).
+A few typographical/notation items: (i) “pp” is used for percentage points throughout—define once in the abstract or §I; (ii) the symbol Δf_CW is occasionally used both for the signed contrast and for the absolute value—standardize or add a clarifying clause on first use; (iii) the companion Paper IV arXiv placeholder should be updated on posting.
+The HEALPix Mollweide figures (Fig. 6) are clear; consider adding a short note that the high-|σ| pixels are isolated (no coherent superstructure), which is already visible but worth stating for readers.
+Reference list: the concurrent DR1 T-Web analysis [11] and the DESIVAST paper [13] are appropriately cited; no missing key references apparent from the provided sections.
+
+Recommendation
+Accept with minor revisions. The scientific content is sound, the statistical controls are strong, and the transparency about post-hoc choices and limitations is exemplary for a null-result cosmology paper. The requested changes are primarily presentational and interpretive framing; none alter the headline null or the quoted bounds. Once revised, the manuscript will be a clean, citable contribution to the DESI DR1 void/chirality literature and a useful benchmark for future DR2 + Rubin analyses.
+
+I am happy to re-referee a revised version if the editor requests it.
