@@ -268,3 +268,15 @@ if [ -s "$MATRIX_FILE" ]; then
   done < "$MATRIX_FILE"
 fi
 echo "=============================================================="
+
+# --- site-freshness gate (non-fatal warn) --------------------------------
+# A harvest just landed new verdicts; the public surfaces (banner/board/skills/
+# versions) must reflect them. Warn here so the operator fixes them same-tick;
+# the pre-push hook enforces it hard.
+FRESH_CHECK="$REPO/tools/site_freshness_check.sh"
+if [ -x "$FRESH_CHECK" ]; then
+  echo ""
+  if ! "$FRESH_CHECK" --report; then
+    echo "WARN: site is STALE after this harvest — sync the flagged surface(s) THIS tick (see table above)." >&2
+  fi
+fi
