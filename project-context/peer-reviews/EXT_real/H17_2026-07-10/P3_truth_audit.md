@@ -167,3 +167,19 @@ Section-by-section identical to the already-dispositioned CG-1..CG-13 (heterogen
 - **Re-flag / disclosed-limitation / opinion:** Grok 6, ChatGPT 14 — all source-cited to a paper line or a prior-audit disposition, all closures verified intact.
 - **Backfire (pattern-066):** none isolated for P3 (Grok stayed MAJOR→MAJOR on the same disclosed content; not a harsher flip).
 - **Integrity:** no ACCEPT fabricated; both REJECT/MAJOR verdicts recorded as-is; no math fabricated; no edit needed (nothing genuinely-new to close).
+
+---
+
+## Addendum — H17G ChatGPT ledger-audit (2026-07-10, vs v3.1.152)
+
+Raw: `project-context/peer-reviews/EXT_real/H17_2026-07-10/final/P3_chatgpt_H17G.md` — **VERDICT: REJECT**, 16 MAJOR + 2 MINOR, on v3.1.152. Every finding fingerprint-matched to a canonical DP3-xx disposition (full mapping in `DISPOSITIONS/P3.md` → "H17G ledger-audit wave" ChatGPT block). Closures spot-verified intact in `pipelines/p3_anomaly_engine/paper3_draft.tex`.
+
+- MAJOR#1 (268,519/FDR/purity/0-of-200) → DP3-07 + DP3-12; MAJOR#2 (SDSS 77,905 slice) → DP3-09 + DP3-14; MAJOR#3 (NEOWISE by-construction) → DP3-08 + DP3-09; MAJOR#4 (DESI 98.7% pop) → DP3-11 + DP3-12; MAJOR#5 (37,300 vs 2,468) → DP3-07 + DP3-11; MAJOR#6 (Liang 2,468/2,685) → DP3-07; MAJOR#7 (in-sample folds / fail val_loss) → DP3-01 + DP3-12; MAJOR#8 (Eq2 vs Table II score-def) → DP3-09; MAJOR#9 (Planck memorization/overlap) → DP3-06 (=CG-8: L1349/L1323 disclose 152/200-in-training + overlapping-tile inflation + over-rep toward held-out patches); MAJOR#10 (SDSS char on cross-transfer set) → DP3-14; MAJOR#11 (novelty/637-cluster/5″-on-10°) → DP3-07 + DP3-09 (=CG-10); MAJOR#12 (§V bias/f_NL) → DP3-10 (=CG-12); MAJOR#14 (NANOGrav bins) → DP3-10 (=CG-13); MAJOR#15 (Data-Availability/reproducibility) → DP3-08 + DP3-15 (=CG-11); MAJOR#16 (scope/NANOGrav unrelated) → DP3-10 + DP3-16 (=CG-13); MINOR#1 (scan-volume 36.758/36.93/37.292/37.3M) → DP3-03 + DP3-04; MINOR#2 (repetitive/repo-paths/obsolete figs) → DP3-16.
+
+**MAJOR#13 (§V forecast internal inconsistency: 5.67@α=0.5 vs 7.15@α=0.5 vs 16.85) — full audit → DP3-10, RE-FLAG.** The identical "incompatible absolute normalizations 8.98 and 16.85 + linear fixed-α appendix" was already surfaced by the fresh ChatGPT **retest** (`retest/P3_chatgpt_retest.md` L47) against this same v3.1.152 and truth-audited RE-FLAG/OPINION. Verified against source: (a) Table IX / L1717-1727 is explicitly "computed by **linear scaling**" of the α=0.15 fiducial, "retained for **reference only** … should not be read as a forecast for the current data" — a disclosed non-primary reference model. (b) The 16.85 Fig-11 baseline carries an explicit **Normalization note** (L1777-1788) + §V cross-reference (L1519): it is on "a different internal normalization … not comparable … only relative quantities transfer … whose canonical single-tracer baseline is σ_std = 8.98"; audit-era comment L951-952 records the same. (c) The {5.67, 8.98, 5.67, 3.39, 2.35} grid (L1598) is the primary Fisher-positivity-respecting form. The specific α=0.5 5.67-vs-7.15 pair is two already-labeled distinct reference models (Fisher-positivity primary vs superseded linear-scaling appendix), NOT one calculation presented as internally consistent. No undisclosed contradiction; no editable defect. The f_NL=−35/8-not-exactly-local sub-point → DP3-10 (App C caveat, secondary demonstration).
+
+### Counts (P3 H17G ChatGPT)
+- **Genuinely-new real+editable:** 0.
+- **Re-flag / disclosed-limitation / opinion / open-compute:** 16 MAJOR + 2 MINOR — all source-cited to a paper line or prior-audit disposition; all closures verified intact in v3.1.152.
+- **Backfire (pattern-066):** ChatGPT stayed REJECT on the same disclosed content (maximally-harsh-referee structural floor per directive H; no new editable item).
+- **Integrity:** REJECT recorded as-is; no ACCEPT fabricated; no math fabricated; no edit needed → no v3.1.153 bump, v3.1.152 stands, directive_g.sh not run.
