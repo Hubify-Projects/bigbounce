@@ -338,3 +338,13 @@ vendor.** No re-litigation of already-dispositioned items below — one-line map
   Check-D fix + prior clarity edits removed the reject-tier trigger).
 - **No new edit → no v1U.0.12 bump, no directive-G, no Convex write.** v1U.0.11 (md5 `ba2cf675…`, 60 pp) stands.
 - **No fabricated math.** All dispositions cite a live v1U.0.11 source line or a prior-addendum/body entry.
+
+---
+
+## H17F FINAL-WAVE ADDENDUM (2026-07-10, EXT re-test vs v1U.0.11)
+
+Raw: `final/P1U_grok_final.md` (read + verified). ChatGPT final-wave leg PENDING (not harvested this wave).
+
+- **Grok EXT = MAJOR REVISIONS** — 10 items, all map 1:1 to prior dispositions: excessive length/idiosyncratic structure (DP1U-22 OPINION), channel-level vs no-go overclaim risk (DP1U-06 — the paper's OWN verbatim framing), perturbation-transparency proof sketch depth (DP1U-12), dim-4 parity-odd completeness enumeration (DP1U-07), Route-2 Eq.(17) normalization/Shapiro-Teixeira status (DP1U-09), N_tot≈92 vs matter-bounce erasure mapping (DP1U-08/14), convention consistency κ/M_Pl/Holst (DP1U-02 — already closed by edit), coordinated-submission self-containedness (DP1U-16), related-work/novelty framing (DP1U-12 OPINION). The scope-hedging-recast-as-weakness thread is the standing disclosure-backfire (DP1U-21). **0 genuinely-new real+editable.**
+
+**Outcome:** Grok EXT stays MAJOR on unchanged v1U.0.11 — every item a source-cited re-flag of disclosed channel-level scope, a Houston-gated venue/length OPINION, or already-closed convention edits. ChatGPT final leg pending — does not change the disposition (prior EXT ChatGPT already dispositioned 0 genuinely-new). 0 genuinely-new → no v1U.0.12 bump, v1U.0.11 stands. No math fabricated; no hedging removed (removing it would be dishonest overclaiming).

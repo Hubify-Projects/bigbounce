@@ -166,3 +166,14 @@ CLOSED by real edit in v0.1.115; the rest re-flag already-dispositioned content.
 
 ## OUTCOME — CONVERGED at the LLM-refereeing floor (pattern-066 / directive-H)
 Iteration 1 closed all 3 genuinely-new editable items (1 MAJOR + 2 MINOR) by real edit; the v0.1.117 re-test surfaced **0 genuinely-new real findings across all three INT legs**. Verdict triple: **INT Claude ACCEPT / OpenAI REJECT / Grok MINOR** — the below-ACCEPT verdict words are the known maximal-harsh-referee structural floor (they re-flag only already-disclosed limitations + the Houston-gated Paper IV venue coordination), NOT continuation signal. Loop STOPS per directive H-refined (0 genuinely-new = converged regardless of literal verdict word). No ACCEPT faked; no finding dismissed without a source-cited verdict; no value fabricated; void-stratum honestly integrated as DATA-UNAVAILABLE.
+
+---
+
+## H17F FINAL-WAVE ADDENDUM (2026-07-10, EXT re-test vs v0.1.117)
+
+Raws: `final/P5_grok_final.md`, `final/P5_chatgpt_final.md` (read + verified before any verdict).
+
+- **Grok EXT = ACCEPT** (raw l.25 literally `VERDICT: ACCEPT`). **First EXT ACCEPT in the program.** 4 minors all re-flags: 2a−1 extra-uncertainty note (DP5-09), T-Web not-load-bearing reiteration (DP5-14), caption "key takeaway" polish (DP5-22), "null holds"→"consistent with null" softening (DP5-22). **0 genuinely-new.**
+- **ChatGPT EXT = MAJOR REVISIONS** (up a tier from REJECT). 10 MAJOR + 2 MINOR, all map 1:1 to prior dispositions — footprint≠selection-mask (DP5-06), no DESIVAST covariate regression (DP5-19/DP5-08), Bonferroni-5 family/estimand plurality (DP5-01/03/04), family-wise-null≠equivalence (DP5-11/13), 0.9pp quadrature (DP5-11), void-clustered binomial-independence (DP5-10), 2.26pp physical bound / void-stratified matrix (DP5-08/09), RSD membership-only MC (DP5-12), T-Web selection-dominated (DP5-14), Paper-IV placeholder-arXiv dependency (DP5-21), match-radius dedup MINOR (DP5-22), EFT non-derived MINOR (DP5-20). The remaining MAJORs are the **imported-label (Paper-IV, DP5-21) + companion-venue + disclosed-limitation (DP5-08/10 OPEN-COMPUTE)** class — NOT anything new. **0 genuinely-new real+editable.**
+
+**Outcome:** Grok EXT ACCEPT confirms P5 at/above the LLM-referee floor; ChatGPT REJECT→MAJOR is honest improvement on unchanged content. 0 genuinely-new → no bump, no directive-G, v0.1.117 stands. No ACCEPT faked, no finding dismissed without a source-cited verdict, no math fabricated.

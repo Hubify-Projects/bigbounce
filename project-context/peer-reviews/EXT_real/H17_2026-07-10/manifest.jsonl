@@ -35,3 +35,13 @@
 {"paper":"P1U","reviewer":"gemini","round":"daily-retry","status":"FAILED-upload"}
 {"paper":"P2","reviewer":"gemini","round":"daily-retry","status":"FAILED-upload"}
 {"paper":"P3","reviewer":"gemini","round":"daily-retry","status":"SKIPPED-after-drops"}
+{"paper":"P4","reviewer":"grok","round":"final","url":"https://grok.com/project/e6c9ce77-4f86-4d94-b440-1062a78171c1?chat=23a563ae-71be-4003-8c83-b4494cc54fcc","status":"submitted"}
+{"paper":"P5","reviewer":"grok","round":"final","url":"https://grok.com/project/e6c9ce77-4f86-4d94-b440-1062a78171c1?chat=9093b3c5-2cea-4b54-82ac-812ccc5db56a","status":"submitted"}
+{"paper":"P4","reviewer":"chatgpt","round":"final","status":"FAILED-upload"}
+{"paper":"P5","reviewer":"chatgpt","round":"final","url":"https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a517b9f-2854-83e8-99a7-af7e8c49a926","status":"submitted"}
+{"paper":"P4","reviewer":"chatgpt","round":"final","url":"https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a517f80-791c-83e8-a00a-a21b6e65682c","status":"submitted","retry":1}
+{"paper":"P1U","reviewer":"grok","round":"final","url":"https://grok.com/project/e6c9ce77-4f86-4d94-b440-1062a78171c1?chat=b94bbea2-555d-4ca6-8e6a-6056ccc2c4a4","status":"submitted"}
+{"paper":"P2","reviewer":"grok","round":"final","url":"https://grok.com/project/e6c9ce77-4f86-4d94-b440-1062a78171c1?chat=614861aa-48f9-4c2a-a835-5fa01572cb1d","status":"submitted"}
+{"paper":"P1U","reviewer":"chatgpt","round":"final","status":"FAILED-upload"}
+{"paper":"P2","reviewer":"chatgpt","round":"final","url":"https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a51822b-12a4-83e8-bfbb-276b8b291320","status":"submitted"}
+{"paper":"P1U","reviewer":"chatgpt","round":"final","url":"https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/c/6a5182aa-3e04-83e8-b9e6-7d9046099b91","status":"submitted","retry":1}

@@ -302,3 +302,14 @@ honestly-disclosed OPEN limitation (compute/venue-gated: image-level end-to-end 
 matched-footprint Ganalyzer reanalysis, Zenodo DOI) — the pattern-066 structural floor, NOT an editable defect. No
 ACCEPT fabricated, no math fabricated, no finding dispositioned non-real without a source-cited verdict. Barrier
 remains compute + venue + LLM referee-variance, not text.
+
+---
+
+## H17F FINAL-WAVE ADDENDUM (2026-07-10, EXT re-test vs v1.0.235)
+
+Raws: `final/P4_grok_final.md`, `final/P4_chatgpt_final.md` (read + verified before any verdict).
+
+- **Grok EXT = MINOR REVISIONS** — **the H17 MAJOR backfire (DP4-18) is REVERSED back to MINOR** on the honestly-corrected v1.0.235. Both "major comments" (47% harmonic remainder roadmap — DP4-17; GZ1 model-independent elevation — DP4-15/pseudolabel-independence) are explicitly called "addressable with modest additions … do not require new computations" and re-flag disclosed content; minors are proofreading/DAS/caption polish. **0 genuinely-new.**
+- **ChatGPT EXT = REJECT** — 12 MAJOR + 2 MINOR, all map 1:1: physical-vs-classifier-label sensitivity (DP4-09), p_eq>0.6 post-selection (DP4-07), block-bootstrap z not a test (DP4-14), "47% is really 62% / 0.43% unexplained" (DP4-19 definitional re-frame — paper's scalar-amplitude statistic bounds the *entire* residual below A50/A95), spatial-systematic can anti-align (DP4-16/17), UPL/binomial variance (DP4-16), z=+3.64 vs +7.93 null-definition (DP4-14/rank-p disclosed), GZ1 low-sensitivity cross-check (DP4-15), axis-averaged completeness (DP4-09/sensitivity), reproducibility freeze/DOI (DP4-21), Bonferroni/LEE + birefringence MINORs (DP4-12). **0 genuinely-new real+editable** — the imported-label/companion + compute/venue-gated class.
+
+**Outcome:** Grok backfire reversed (honest signal the corrections landed); ChatGPT at the standing maximal-harsh floor. 0 genuinely-new → no bump, v1.0.235 stands.

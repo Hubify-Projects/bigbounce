@@ -375,3 +375,13 @@ LLM-referee floor with every editable item closed.
 - **No edit → no v1.7.111 bump, no directive-G, no Convex write.** v1.7.110 stands (row
   `k57d9q2xd9j7056t0nq6mmh0zh8a8qvp` from Addendum-2).
 - **No fabricated math.** Headline -35/16 unchanged, quadruple-certified.
+
+---
+
+## H17F FINAL-WAVE ADDENDUM (2026-07-10, EXT re-test vs v1.7.110)
+
+Raw: `final/P2_chatgpt_final.md` (read + verified). Grok final-wave leg PENDING (not harvested this wave).
+
+- **ChatGPT EXT = REJECT** — 10 MAJOR + 1 MINOR, all map 1:1 to prior dispositions: spurious-term / claimed-novelty (DP2-01/03 — paper already retracted the "doubling mechanism" overclaim and states −305/64 explicitly), in-in +c.c. time-ordering (DP2-16), null-space scan unphysical (DP2-15), cubic-transmission bound not derived (DP2-13), r=0.84 not a covariance-weighted response / r_eff≈0.99 (DP2-14/17), Fisher 0.42–0.45 vs Heinrich (DP2-22), systematic envelope no covariance (DP2-04/07), Bayes prior-volume toy (DP2-18), κ_ε∈[0.6,8%] not computed (DP2-20), gauge-frame/factor-146 (DP2-21), length/abstract/DOI MINOR (DP2-30). The raw's own concluding line concedes the headline −35/16 IS supported by Cai/Li correctly-counted expressions — confirming the value, disputing framing. **0 genuinely-new real+editable** (matches the DP2-24 structural-floor finding).
+
+**Outcome:** ChatGPT at the maximal-harsh floor; every item a source-cited re-flag or Houston-gated venue barrier (DP2-26/29 external-data, DP2-30 presentation). 0 genuinely-new → no v1.7.111 bump, v1.7.110 stands. Grok final leg pending — does not change the disposition (Addendum-3 Grok already MINOR, 0 genuinely-new). No fabricated math; headline −35/16 quadruple-certified.

@@ -151,3 +151,8 @@ numbers spot-checked against current `arxiv/paper1_unified.tex` v1U.0.11 and upd
 | DP1U-20 | OPEN-VENUE | Full operator-level completeness across the diffeomorphism-invariant basis (non-minimal/derivative/multi-species irreps) | Out of scope; paper is channel-level by design (L1219, L1389-1390). Human-referee / venue barrier — Houston-gated. |
 | DP1U-21 | HOUSTON-GATED | Grok recasts honest scope hedging as weakness (disclosure-backfire) | Not editable (removing hedging = overclaiming). Referee variance — route to human referee, do not re-spin sweeps. |
 | DP1U-22 | HOUSTON-GATED | Length/venue OPINION (60pp, "should be a Letter") | Style/venue preference, not an error. Houston-gated venue decision. |
+
+## H17F final-wave (2026-07-10, vs v1U.0.11)
+- **Grok EXT = MAJOR** — 10 items all → DP1U-02/06/07/08/09/12/14/16/21/22. Channel-level "overclaim risk" = paper's own verbatim framing (DP1U-06); hedging-as-weakness = DP1U-21 backfire. 0 genuinely-new.
+- **ChatGPT EXT = PENDING** (not harvested this wave; prior EXT ChatGPT already 0 genuinely-new).
+- No bump; v1U.0.11 stands.
