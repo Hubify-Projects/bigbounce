@@ -48,6 +48,44 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "P3-FR5-second-clean-rejoins-exit-set-2026-07-11",
+    dateISO: "2026-07-11",
+    kind: "ext-closure",
+    title:
+      "P3 FR5 (rebuild wave 2/2) — SECOND CONSECUTIVE CLEAN WAVE on v3.1.155; 0 genuinely-new → streak 1→2, P3 REJOINS the five-paper exit set. Gemini INT's FIRST non-REJECT on P3 (REJECT→MAJOR, verified).",
+    papers: ["P3"],
+    summary:
+      "FR5 rebuild wave 2/2 on P3 v3.1.155 — the SECOND consecutive clean wave on the DP3-19 fix, so P3's clean-wave streak REBUILDS 1→2 and P3 REJOINS the full five-paper exit set (clears the directive-K two-clean-waves bar; streaks now P1U 2 · P2 3 · P3 2 · P4 4 · P5 2). Full board (run.log 16:57 / intwave_P3_FR5.log): INT Claude-subscription MINOR + OpenAI (gpt-5.5) REJECT + Grok-API (grok-4.3) MAJOR + Gemini (gemini-3.1-pro) MAJOR + EXT Grok MAJOR + EXT ChatGPT REJECT (FR4b carryover). GEMINI-MOVE VERIFIED REAL: the INT Gemini leg moved REJECT → MAJOR — its FIRST non-REJECT on P3 — confirmed from the raw verdict line (API_P3_gemini.md, native-PDF, UTC 16:50:28, PARSED VERDICT MAJOR REVISIONS, 3 MAJOR + 2 MINOR) AND the .intwave_P3_gemini_0950.log milestone ([OK] P3 gemini -> MAJOR REVISIONS, 36.4s). All 5 Gemini findings are source-cited re-flags (§V NANOGrav-disjoint DP3-10/-18; journal-fit/null-cosmology DP3-10/-16; repo-paths/signposts DP3-16 PROCESS-NIT; heterogeneous thresholds DP3-09; SIMBAD 58.8% novelty DP3-07/-09) — a REJECT→MAJOR softening on unchanged, honestly-scoped content, the honest floor signal. FR5 surfaced 0 genuinely-new editable findings: Grok EXT MAJOR (3 MAJOR + 2 MINOR) all re-flag DP3-07/-08/-10/-13/-15/-16; the recompute-verifying Claude INT leg reproduced the 268,519 dedup + NANOGrav chain + f_NL Fisher + DESI injection curve and found 0 genuinely-new factual error (4 MINOR = residual display-precision γ=2.567 rounding → DP3-19 PROCESS-NIT, values arithmetically correct + consistent; 3 sub-7pt overfull hboxes = latex-audit cosmetic; presentation → DP3-07/-16); OpenAI + Grok-API are the canonical catalog-vs-PRD venue (DP3-16) + disclosed-artifact (DP3-08/-15) + heterogeneous-validation (DP3-01/-09) + referee-variance (pattern-066) classes. Separately, the FR4-round ChatGPT FAILED-dead gap is recovered by FR4b = ChatGPT REJECT (20 MAJOR + 2 MINOR), every one re-flagging DP3-01…DP3-19 (13/20 auto-matched, 7 UNMATCHED Opus-adjudicated), 0 genuinely-new — no additional streak reset. No number fabricated; no ACCEPT faked; no finding dismissed without a source-cited verdict. No version bump (v3.1.155 stands, served md5 ebd4bfd1…); directive_g.sh not run (no edit warranted). Convex EXT cap 56 (INT Gemini MAJOR does not enter the EXT-only cap formula).",
+    keyTakeaways: [
+      "SECOND consecutive clean wave (0 genuinely-new) → P3 clean-wave streak 1→2 → P3 REJOINS the full five-paper exit set (all five now past the directive-K two-clean-waves bar: P1U 2 · P2 3 · P3 2 · P4 4 · P5 2)",
+      "Gemini INT's FIRST non-REJECT on P3 (REJECT→MAJOR) — verified from the raw verdict line + the gemini milestone log, not a label; all 5 findings are source-cited DP3 re-flags (honest softening on unchanged content)",
+      "FR4b recovers the FR4 ChatGPT FAILED-dead gap = ChatGPT REJECT (20 MAJOR + 2 MINOR); all 22 re-flag DP3-01…DP3-19, 0 genuinely-new, no additional reset",
+      "0 genuinely-new across all 6 FR5 legs; no version bump (v3.1.155 stands, served md5 ebd4bfd1…); Convex EXT cap 56 (INT Gemini MAJOR is not an EXT-cap input)",
+    ],
+    links: [
+      {
+        label: "P3 Grok FR5 raw (MAJOR)",
+        href: `${GH}/project-context/peer-reviews/EXT_real/H17_2026-07-10/FR5/P3_grok_FR5.md`,
+      },
+      {
+        label: "P3 ChatGPT FR4b raw (REJECT — recovers FR4 gap)",
+        href: `${GH}/project-context/peer-reviews/EXT_real/H17_2026-07-10/FR4b/P3_chatgpt_FR4b.md`,
+      },
+      {
+        label: "INT Gemini FR5 raw (MAJOR — first non-REJECT on P3)",
+        href: `${GH}/project-context/peer-reviews/INT_v3/ROUND_2026-07-09/API_P3_gemini.md`,
+      },
+      {
+        label: "INT Claude FR5 raw (MINOR, v3.1.155 recompute)",
+        href: `${GH}/project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P3_claude_0950.md`,
+      },
+      {
+        label: "P3 DISPOSITIONS ledger (FR4b + FR5 waves)",
+        href: `${GH}/project-context/peer-reviews/DISPOSITIONS/P3.md`,
+      },
+    ],
+  },
+  {
     id: "P3-FR4-clean-rebuild-2026-07-11",
     dateISO: "2026-07-11",
     kind: "ext-closure",

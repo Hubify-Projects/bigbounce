@@ -1,13 +1,16 @@
 # WAVE-1 arXiv Submission Walkthrough — P4 → P3 → P2
 
-> **⚠️ P3 FELL BACK OFF THE BAR (FR3, 2026-07-11).** The recompute-verifying Claude INT leg
-> caught a genuinely-new reader-visible matter-bounce/SMBHB parameter-shift precision
-> inconsistency (+1.13σ vs +4.63σ in the same clause; committed chain → +1.14σ), fixed
-> same-bundle in **v3.1.155 (DP3-19)** → **P3 clean-wave streak RESET 1→0; P3 is NOT
-> submit-ready.** The P3 wave-1 bundle below (`arxiv_p3_v3.1.153.tar.gz`) is **STALE** —
-> superseded by v3.1.155 with the +1.14σ correction — and must be rebuilt at v3.1.155
-> AND P3 must post two fresh clean waves before it re-enters wave-1. **Submit P4 and P2
-> only until P3 rebuilds.** The P4/P2 lines below are unaffected.
+> **✅ P3 RE-CROSSED THE TWO-CLEAN-WAVES BAR (FR5, 2026-07-11).** After the FR3 DP3-19 precision
+> fix (matter-bounce parameter-shift +1.13σ → +1.14σ, made consistent with the v3.1.154 SMBHB
+> +4.63σ fix; committed chain matter_bounce_3p0=1.13543 → +1.14σ), P3 posted **two consecutive
+> clean waves on v3.1.155 — FR4 (0 genuinely-new, streak 0→1) and FR5 (0 genuinely-new, streak
+> 1→2)** — so **P3 REJOINS the full five-paper exit set** (all five past the directive-K bar:
+> P1U 2 · P2 3 · P3 2 · P4 4 · P5 2). FR5 also logged Gemini INT's first non-REJECT on P3
+> (REJECT→MAJOR, verified). **One remaining pre-submit step:** the P3 wave-1 bundle below
+> (`arxiv_p3_v3.1.153.tar.gz`) is **STALE** — it predates the +1.14σ correction and must be
+> **rebuilt at v3.1.155** (served-PDF md5 `ebd4bfd13962b0ee8d14e5393a9bd2c9`, 37 pages) before
+> the P3 submit click. The venue call (PRD vs ApJS/MNRAS) remains Houston-gated. The P4/P2 lines
+> below are unaffected.
 
 **Order matters:** submit **P4 first, then P3, then P2.** (P4 is the input catalog P5
 cites as a companion; P3 and P2 are independent. This order keeps the wave-2
