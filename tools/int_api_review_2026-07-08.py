@@ -3,7 +3,7 @@
 Runs EXACTLY ONE (paper, vendor) leg per invocation so a hang loses one leg, not the round.
 Keys from .env.local by NAME (first token before inline comments; never printed).
 Per-request timeout 300s. One retry, then FAILED with the error string.
-Usage: int_api_review_2026-07-08.py <PAPER> <openai|grok>
+Usage: int_api_review_2026-07-08.py <PAPER> <openai|grok|gemini>
 """
 import os, sys, json, time, warnings, datetime, pathlib
 warnings.filterwarnings("ignore")
@@ -58,6 +58,12 @@ def live_version(pdf_rel: str) -> str:
 
 OPENAI_MODEL = "gpt-5.5"
 XAI_MODEL = "grok-4.3"
+# Gemini INT leg (keyed 2026-07-11). Newest pro-tier model with native-PDF input,
+# probed live from generativelanguage.googleapis.com/v1beta/models. The default
+# below is what the models-list endpoint reported as the latest pro preview; an
+# override env GEMINI_MODEL wins if Houston pins a different one.
+GEMINI_MODEL = "gemini-3.1-pro-preview"
+GEMINI_BASE = "https://generativelanguage.googleapis.com"
 REQ_TIMEOUT = 300
 
 PROMPT = (
@@ -197,7 +203,108 @@ def call_xai(pdf_path):
     return txt, {"file_id": file_id, "usage": j.get("usage", {}), "modality": "native-PDF (/v1/files file_id)"}
 
 
-VENDORS = {"openai": (OPENAI_MODEL, call_openai), "grok": (XAI_MODEL, call_xai)}
+# ---------- Gemini: Google Generative Language API, native-PDF ----------
+# Files/media resumable upload (handles any size incl. P4's 32MB) -> generateContent
+# with file_data.file_uri. Inline base64 (inline_data) is used for small PDFs
+# (<=18MB, leaving headroom under the ~20MB request cap) to save a round-trip.
+# Model probed live: the newest pro-tier model reporting generateContent from the
+# models-list endpoint (GEMINI_MODEL env override wins).
+GEMINI_INLINE_MAX = 18 * 1024 * 1024
+
+
+def _gemini_model():
+    return ENV.get("GEMINI_MODEL") or os.environ.get("GEMINI_MODEL") or GEMINI_MODEL
+
+
+def _gemini_upload(pdf_path, key):
+    data = open(pdf_path, "rb").read()
+    n = len(data)
+    start = requests.post(
+        f"{GEMINI_BASE}/upload/v1beta/files",
+        headers={
+            "x-goog-api-key": key,
+            "X-Goog-Upload-Protocol": "resumable",
+            "X-Goog-Upload-Command": "start",
+            "X-Goog-Upload-Header-Content-Length": str(n),
+            "X-Goog-Upload-Header-Content-Type": "application/pdf",
+            "Content-Type": "application/json",
+        },
+        json={"file": {"display_name": os.path.basename(pdf_path)}},
+        timeout=REQ_TIMEOUT,
+    )
+    if start.status_code != 200:
+        raise RuntimeError(f"upload-start HTTP {start.status_code}: {start.text[:400]}")
+    upload_url = start.headers.get("X-Goog-Upload-URL")
+    if not upload_url:
+        raise RuntimeError("upload-start missing X-Goog-Upload-URL")
+    fin = requests.post(
+        upload_url,
+        headers={
+            "Content-Length": str(n),
+            "X-Goog-Upload-Offset": "0",
+            "X-Goog-Upload-Command": "upload, finalize",
+        },
+        data=data, timeout=REQ_TIMEOUT,
+    )
+    if fin.status_code != 200:
+        raise RuntimeError(f"upload-finalize HTTP {fin.status_code}: {fin.text[:400]}")
+    f = fin.json()["file"]
+    fname, uri, state = f["name"], f["uri"], f.get("state")
+    # poll until ACTIVE (PDF processing) — cap ~40s so a stuck file fails, not hangs.
+    for _ in range(20):
+        if state == "ACTIVE":
+            break
+        if state == "FAILED":
+            raise RuntimeError(f"file processing FAILED: {fname}")
+        time.sleep(2)
+        g = requests.get(f"{GEMINI_BASE}/v1beta/{fname}",
+                         headers={"x-goog-api-key": key}, timeout=60)
+        state = g.json().get("state") if g.status_code == 200 else state
+    if state != "ACTIVE":
+        raise RuntimeError(f"file not ACTIVE after poll (state={state})")
+    return uri, fname
+
+
+def call_gemini(pdf_path):
+    key = ENV["GEMINI_API_KEY"]
+    model = _gemini_model()
+    size = os.path.getsize(pdf_path)
+    if size <= GEMINI_INLINE_MAX:
+        import base64
+        b64 = base64.b64encode(open(pdf_path, "rb").read()).decode()
+        part = {"inline_data": {"mime_type": "application/pdf", "data": b64}}
+        modality = "native-PDF (inline_data base64)"
+    else:
+        uri, _ = _gemini_upload(pdf_path, key)
+        part = {"file_data": {"mime_type": "application/pdf", "file_uri": uri}}
+        modality = "native-PDF (Files/media upload file_uri)"
+    payload = {
+        "systemInstruction": {"parts": [{"text": "You are an expert Physical Review D referee."}]},
+        "contents": [{"role": "user", "parts": [part, {"text": PROMPT}]}],
+    }
+    r = requests.post(
+        f"{GEMINI_BASE}/v1beta/models/{model}:generateContent",
+        headers={"x-goog-api-key": key, "Content-Type": "application/json"},
+        json=payload, timeout=REQ_TIMEOUT,
+    )
+    if r.status_code != 200:
+        raise RuntimeError(f"generateContent HTTP {r.status_code}: {r.text[:400]}")
+    j = r.json()
+    parts = []
+    for cand in j.get("candidates", []):
+        for c in cand.get("content", {}).get("parts", []):
+            if c.get("text"):
+                parts.append(c["text"])
+    txt = "\n".join(parts)
+    usage = j.get("usageMetadata", {})
+    return txt, {"usage": usage, "modality": modality, "model": model}
+
+
+VENDORS = {
+    "openai": (OPENAI_MODEL, call_openai),
+    "grok": (XAI_MODEL, call_xai),
+    "gemini": (GEMINI_MODEL, call_gemini),
+}
 
 
 def run_one(paper, vendor):
@@ -214,12 +321,16 @@ def run_one(paper, vendor):
             t0 = time.time()
             content, meta = fn(pdf_path)
             dt = round(time.time() - t0, 1)
+            # a vendor may resolve its actual model at call time (e.g. Gemini
+            # GEMINI_MODEL override) — record the real model in the header.
+            eff_model = meta.get("model", model)
             verdict = parse_verdict(content)
             rec.update({"status": "ok", "verdict": verdict, "seconds": dt,
+                        "model": eff_model,
                         "modality": meta.get("modality"), "attempt": attempt})
             with open(outfile, "w") as f:
-                f.write(f"# INT API Review — {paper} {ver} — {vendor} ({model})\n")
-                f.write(f"paper: {paper}  version: {ver}  model: {model}\n")
+                f.write(f"# INT API Review — {paper} {ver} — {vendor} ({eff_model})\n")
+                f.write(f"paper: {paper}  version: {ver}  model: {eff_model}\n")
                 f.write(f"modality: {meta.get('modality')}\n")
                 f.write(f"UTC: {ts}  |  latency: {dt}s  |  attempt: {attempt}\n")
                 f.write(f"usage: {json.dumps(meta.get('usage', {}))}\n")
@@ -247,6 +358,6 @@ def run_one(paper, vendor):
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
-        print("usage: int_api_review_2026-07-08.py <PAPER> <openai|grok>")
+        print("usage: int_api_review_2026-07-08.py <PAPER> <openai|grok|gemini>")
         sys.exit(2)
     run_one(sys.argv[1], sys.argv[2])

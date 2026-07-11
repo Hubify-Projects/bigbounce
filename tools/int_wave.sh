@@ -1,10 +1,15 @@
 #!/usr/bin/env bash
-# int_wave.sh — run all three INT legs (OpenAI API, Grok API, Claude subscription)
-# in parallel and block until all finish, then print the verdict triple.
+# int_wave.sh — run the INT legs (OpenAI API, Grok API, Claude subscription, and
+# Gemini API when GEMINI_API_KEY is set) in parallel, block until all finish, then
+# print the verdict matrix.
 #
 # Legs:
 #   (a) OpenAI: native-PDF API via tools/int_api_review_2026-07-08.py <paper> openai
 #   (b) Grok:   native-PDF API via tools/int_api_review_2026-07-08.py <paper> grok
+#   (d) Gemini: native-PDF API via tools/int_api_review_2026-07-08.py <paper> gemini
+#               (7th reviewer leg, keyed 2026-07-11 — only runs when GEMINI_API_KEY
+#               is present in .env.local; skipped-as-ABSENT otherwise, never fails
+#               the wave on a missing key).
 #   (c) Claude subscription: `claude -p` with the canonical PRD-referee prompt,
 #       run with ANTHROPIC_API_KEY UNSET (2026-07-10 lesson: a sourced
 #       ANTHROPIC_API_KEY takes precedence over the claude.ai login and fails /
@@ -119,6 +124,19 @@ PID_OPENAI=$!
 ) >"$CLAUDE_OUTDIR/.intwave_${PAPER}_grok_${HHMM}.log" 2>&1 &
 PID_GROK=$!
 
+# (d) Gemini leg — 7th reviewer, only when GEMINI_API_KEY is present (keyed
+#     2026-07-11). We source .env.local in a subshell to test the key without
+#     leaking it into this shell's env or any log line.
+GEMINI_ON=0
+if ( set -a; source "$REPO/.env.local" >/dev/null 2>&1; set +a; [ -n "${GEMINI_API_KEY:-}" ] ); then
+  GEMINI_ON=1
+  (
+    set -a; source "$REPO/.env.local"; set +a
+    python3 "$PY_REVIEW" "$PAPER" gemini
+  ) >"$CLAUDE_OUTDIR/.intwave_${PAPER}_gemini_${HHMM}.log" 2>&1 &
+  PID_GEMINI=$!
+fi
+
 # (c) Claude subscription leg — ANTHROPIC_API_KEY MUST be unset (never source
 #     .env.local in this subshell). Save raw to the mandated path.
 (
@@ -140,11 +158,17 @@ PID_GROK=$!
 ) &
 PID_CLAUDE=$!
 
-echo "    launched: openai(pid $PID_OPENAI) grok(pid $PID_GROK) claude(pid $PID_CLAUDE) — blocking until all done..."
+if [ "$GEMINI_ON" = 1 ]; then
+  echo "    launched: openai(pid $PID_OPENAI) grok(pid $PID_GROK) gemini(pid $PID_GEMINI) claude(pid $PID_CLAUDE) — blocking until all done..."
+else
+  echo "    launched: openai(pid $PID_OPENAI) grok(pid $PID_GROK) claude(pid $PID_CLAUDE) [gemini: no key] — blocking until all done..."
+fi
 
 wait "$PID_OPENAI"; RC_OPENAI=$?
 wait "$PID_GROK";   RC_GROK=$?
 wait "$PID_CLAUDE"; RC_CLAUDE=$?
+RC_GEMINI=0
+if [ "$GEMINI_ON" = 1 ]; then wait "$PID_GEMINI"; RC_GEMINI=$?; fi
 
 # ---------------------------------------------------------------------------
 # Parse the verdict triple.
@@ -160,6 +184,11 @@ parse_api_verdict() {
 
 V_OPENAI="$(parse_api_verdict openai)"; [ -n "$V_OPENAI" ] || V_OPENAI="ABSENT"
 V_GROK="$(parse_api_verdict grok)";     [ -n "$V_GROK" ]   || V_GROK="ABSENT"
+if [ "$GEMINI_ON" = 1 ]; then
+  V_GEMINI="$(parse_api_verdict gemini)"; [ -n "$V_GEMINI" ] || V_GEMINI="ABSENT"
+else
+  V_GEMINI="NO-KEY"
+fi
 
 # Claude verdict: pull the (1) VERDICT line from the just-written raw file, then
 # normalize to a bare verdict token (strip markdown **, trailing punctuation, and
@@ -180,14 +209,15 @@ else:
 
 TS_UTC="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 echo ""
-echo "=== INT WAVE VERDICT TRIPLE :: $PAPER $VER ==="
-echo "  OpenAI (gpt-5.5):     $V_OPENAI"
-echo "  Grok (grok-4.3):      $V_GROK"
-echo "  Claude (opus-4-8):    $V_CLAUDE"
-echo "  (rc: openai=$RC_OPENAI grok=$RC_GROK claude=$RC_CLAUDE)"
+echo "=== INT WAVE VERDICT MATRIX :: $PAPER $VER ==="
+echo "  OpenAI (gpt-5.5):          $V_OPENAI"
+echo "  Grok (grok-4.3):           $V_GROK"
+echo "  Gemini (gemini-3.1-pro):   $V_GEMINI"
+echo "  Claude (opus-4-8):         $V_CLAUDE"
+echo "  (rc: openai=$RC_OPENAI grok=$RC_GROK gemini=$RC_GEMINI claude=$RC_CLAUDE)"
 
 # Append to run.log.
-LOGLINE="$TS_UTC | $PAPER $VER | openai=$V_OPENAI | grok=$V_GROK | claude=$V_CLAUDE | claude_raw=${CLAUDE_OUT#$REPO/}"
+LOGLINE="$TS_UTC | $PAPER $VER | openai=$V_OPENAI | grok=$V_GROK | gemini=$V_GEMINI | claude=$V_CLAUDE | claude_raw=${CLAUDE_OUT#$REPO/}"
 [ -n "$CONTEXT" ] && LOGLINE="$LOGLINE | ctx=\"$CONTEXT\""
 echo "$LOGLINE" >>"$RUNLOG"
 echo "  logged -> ${RUNLOG#$REPO/}"
