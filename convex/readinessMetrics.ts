@@ -139,7 +139,9 @@ function rollingMedianWaveHours(seqs: number[], fallbackH: number): number {
   const gaps: number[] = [];
   for (let i = 1; i < last.length; i++) {
     const h = (last[i] - last[i - 1]) / 3_600_000;
-    if (h > 0) gaps.push(h);
+    // Sub-30-minute gaps are correction/bookkeeping rows posted back-to-back,
+    // not real wave cadence — excluding them keeps the median honest.
+    if (h > 0.5) gaps.push(h);
   }
   if (gaps.length === 0) return fallbackH;
   gaps.sort((a, b) => a - b);
