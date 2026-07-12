@@ -110,9 +110,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-4",
       number: "4",
       shortTitle: "8.47M-galaxy chirality null at sub-percent sensitivity",
-      version: "v1.0.236",
+      version: "v1.0.237",
       readiness: 74,
-      pendingWork: "CROSSED the bar (streak 4) + Grok EXT literal ACCEPT (W1) + Claude INT ACCEPT. Shamir factor-of-2 REAL error fixed this round (A_ref 0.017, z -7.6); stratified confusion matrices measured and integrated. ChatGPT REJECT = documented floor.",
+      pendingWork: "Directive-M presentation overhaul (v1.0.237): PRD single-paragraph abstract + de-dup σ caveat answering the recurring ChatGPT/OpenAI 'excessively long/repetitive' MINOR (DP4-13 CLOSED-BY-EDIT), zero content change. INT re-test: OpenAI REJECT / Grok MAJOR / Gemini MINOR / Claude MINOR, 0-genuinely-new. Grok EXT literal ACCEPT (W1) + Claude INT ACCEPT held. Science findings remain source-cited re-flags; ChatGPT REJECT = documented harsh-referee floor.",
     },
     {
       slug: "paper-5",

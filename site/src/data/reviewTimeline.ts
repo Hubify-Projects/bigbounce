@@ -48,6 +48,29 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p4-fr2-directive-m-presentation-overhaul-2026-07-12",
+    dateISO: "2026-07-12",
+    kind: "internal-api",
+    title:
+      "P4 FR2 — directive-M presentation overhaul (v1.0.236→237) answering the recurring ChatGPT/OpenAI 'excessively long, repetitive, internally self-justifying' MINOR + PRD single-paragraph-abstract ask (DP4-13). Abstract collapsed 5 dense paras (~430w)→ONE ~230-word PRD paragraph, byte-preserving every number; de-duplicated the 'σ not comparable' caveat (removed 4 per-figure parentheticals + trimmed 2 table captions to one canonical §notation statement). ZERO content/number change. INT re-test: OpenAI=REJECT, Grok=MAJOR, Gemini=MINOR, Claude=MINOR — 0 genuinely-new editable; OpenAI's repetition complaint measurably reduced (double-hit MINOR-11+12 → single #14). DP4-13 presentation half → CLOSED-BY-EDIT.",
+    papers: ["P4"],
+    summary:
+      "Directive-M presentation overhaul on P4 (chirality catalog). Gap-plan built from the 3 most-recent ChatGPT REJECT raws (H17 final/retest/FR1b), the latest OpenAI-INT MAJOR (11M/9m), and the Grok EXT ACCEPT/MINOR + Gemini/Claude minors: the ONLY recurring EDITABLE presentation asks (single-paragraph PRD abstract; kill repetition; consolidate the σ-not-comparable / diagnostic-vs-primary restatements to one canonical statement; foreground the single primary-result narrative; distinguish the 8.5M/949,584/3.2M sample counts prominently) were executed; the NOT-editable items (spatially-resolved confusion matrix DP4-15 — needs image-level compute, largely closed by the e2e sweep with full-run integration to follow separately; generative hierarchical null DP4-16; joint real-space×harmonic covariance / 47% remainder DP4-17; Zenodo DOI minting DP4-21 Houston-gated) stay honestly disclosed and unchanged. Overhaul: abstract 5 paras (~430w)→1 para (~230w) with every number byte-preserved and its two-limitations detail relocated to the in-body §notation / §monopole_mask_null / Appendix-B/D homes that already carry it verbatim; the 'σ values not directly comparable' caveat (was 33 occurrences) de-duplicated by removing 4 redundant per-figure parentheticals (Figs sky_map/confidence_dist/raw_vs_eq/harmonic_completeness) and trimming intra-caption repeats in tab:primary_callout + tab:decision_tree to one statement each, all cross-ref'd to canonical §notation. No scientific claim weakened. Directive-G: v1.0.237, recompile 0 undef, 35pp, md5 df384089564e39933892cdf4ecd42b96, 13 served paths byte-identical, Convex row k57aq6cqe62k8253t9zn66jyhh8acdfr; page-1 render verified (8,474,531 / 3,201,160 / 0.41 / 0.017 / 47% / 99.32 all present). INT re-test triple (native-PDF API + Claude subscription): OpenAI=REJECT, Grok=MAJOR, Gemini=MINOR, Claude=MINOR. Truth-audit: 0 genuinely-new editable findings — OpenAI residual MINORs #14/#15/#17=DP4-13 (presentation now addressed; residual is referee-taste OPINION on already-tabulated structure), #16=DP4-21 (Houston-gated); Grok MAJOR + Gemini/Claude MINOR carry the standing DP4-07/09/15/16/17 re-flags, all verified intact through v1.0.237. Integrity: Grok did NOT worsen on the tightened content (held MAJOR); OpenAI held its harsh-referee-floor REJECT (directive H) with its repetition complaint measurably reduced. No ACCEPT faked, nothing dismissed without a source-cited verdict, no math fabricated. DP4-13 presentation/repetition half → CLOSED-BY-EDIT.",
+    keyTakeaways: [
+      "P4 directive-M presentation overhaul v1.0.236→237: abstract collapsed 5 dense paras (~430w)→ONE ~230-word PRD paragraph, byte-preserving every number/claim (detail relocated to in-body §notation/§monopole_mask_null/Appendix B/D that already carry it verbatim)",
+      "De-duplicated the 'σ values not directly comparable' caveat (was 33 occurrences): removed 4 redundant per-figure parentheticals + trimmed tab:primary_callout & tab:decision_tree caption repeats to one canonical §notation statement each",
+      "INT re-test on v1.0.237: OpenAI=REJECT, Grok=MAJOR, Gemini=MINOR, Claude=MINOR — 0 genuinely-new editable; OpenAI's repetition complaint measurably reduced (was double-hit MINOR-11+12 → single #14)",
+      "Directive-G: v1.0.237, 0 undef, 35pp, md5 df384089564e39933892cdf4ecd42b96, 13 served paths, Convex row k57aq6cqe62k8253t9zn66jyhh8acdfr; page-1 render-verified",
+      "DP4-13 presentation/repetition half → CLOSED-BY-EDIT (answers the ChatGPT/OpenAI/Grok OWN-words asks without touching a number — directive-M compliant); science findings remain 0-genuinely-new re-flags",
+    ],
+    links: [
+      { label: "P4 disposition ledger", href: `${PR}/DISPOSITIONS/P4.md` },
+      { label: "INT OpenAI P4 v1.0.237 raw", href: `${PR}/INT_v3/ROUND_2026-07-09/API_P4_openai.md` },
+      { label: "INT Grok P4 v1.0.237 raw", href: `${PR}/INT_v3/ROUND_2026-07-09/API_P4_grok.md` },
+      { label: "INT Gemini P4 v1.0.237 raw", href: `${PR}/INT_v3/ROUND_2026-07-09/API_P4_gemini.md` },
+    ],
+  },
+  {
     id: "p1u-nj6-ext-int-streak2-2026-07-12",
     dateISO: "2026-07-12",
     kind: "external-browser",
