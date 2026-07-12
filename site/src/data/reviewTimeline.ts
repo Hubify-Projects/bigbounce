@@ -48,6 +48,28 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p2-channel-native-fisher-open-compute-2026-07-11",
+    dateISO: "2026-07-11",
+    kind: "closure-wave",
+    title:
+      "P2 OPEN-COMPUTE (directive L): channel-native joint {f_NL,b_phi,A_GR} bispectrum Fisher closes the recurring proxy-floor MAJOR by adopting a defensible covariance surrogate.",
+    papers: ["P2"],
+    summary:
+      "The recurring DP2 MAJOR — 'the conservative ~1.3sigma floor rests on a PROXY correlation rho=-0.868 transferred from the c8 power-spectrum SDB channel, not a channel-native bispectrum-Fisher marginalization; Cov_B external' — is closed by ADOPTING the committed, Heinrich-validated c13 tree-level Gaussian multi-tracer bispectrum covariance as the Cov_B surrogate (it reproduces sigma(f_NL^local)~0.7 to 2-11%, so the same covariance calibrates diagonal and off-diagonal) and running the joint {f_NL^bounce, b_phi, A_GR} Fisher on it (c15_channel_native_fisher.py/.json). Channel-native, nothing transferred: cross-Fisher alpha=F(local,bounce)/F(local,local)=0.992 (native Fisher cosine 1.000, corroborates r_eff~0.99); rho(f_NL,A_GR)=-0.001 (near-ORTHOGONAL — the -0.868 SDB proxy AND the c12 |rho|~0.95 shape-cosine BOTH overstated the GR degeneracy); rho(f_NL,b_phi)=+0.99 (analytic f_NL*b_phi product degeneracy). b_phi-30%-widening-prior sigma_marg(f_NL^bounce)=0.88 -> 2.48sigma for -35/16 (local self-consistency sigma_local=0.87, ~Heinrich 0.7 to ~25%); fully-free b_phi=4.5 is the no-prior limit, reported not headlined. Channel-native floor 2.48sigma is HIGHER than the 1.30sigma proxy floor -> the proxy was conservative, not optimistic. Paper takes the real number; retains the proxy as a strict cross-check below it (no headline loosened). Integrated into abstract + Sec.~systematics; v1.7.114, directive-G hygiene clean.",
+    keyTakeaways: [
+      "Adopted covariance surrogate = committed c13 tree-level Gaussian multi-tracer covariance (reproduces Heinrich sigma_local~0.7 to 2-11%) — the defensible substitute the reviewers invited",
+      "Channel-native rho(f_NL,A_GR)=-0.001 (near-orthogonal): the transferred -0.868 SDB proxy and the |rho|~0.95 shape-cosine both OVERSTATED the GR degeneracy",
+      "b_phi-30%-prior channel-native floor sigma_marg=0.88 -> 2.48sigma, HIGHER than the 1.30sigma proxy floor (proxy was conservative)",
+      "cross-Fisher alpha=0.992 corroborates the paper's r_eff~0.99 in the same survey-covariance metric",
+      "Nothing fabricated: every number a direct output of the committed Fisher run; proxy retained as a cross-check, no headline loosened",
+    ],
+    links: [
+      { label: "c15_channel_native_fisher.py", href: `${GH}/research/focused_paper_source_integration/scripts/c15_channel_native_fisher.py` },
+      { label: "c15 JSON output", href: `${GH}/research/focused_paper_source_integration/outputs/c15_channel_native_fisher.json` },
+      { label: "DP2 dispositions (DP2-34)", href: `${PR}/DISPOSITIONS/P2.md` },
+    ],
+  },
+  {
     id: "loop-watchdog-launchd-tcc-classkill-2026-07-11",
     dateISO: "2026-07-11",
     kind: "skill-improvement",
