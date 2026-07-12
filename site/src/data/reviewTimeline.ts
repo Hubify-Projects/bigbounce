@@ -48,6 +48,30 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p1u-nj5-aa-bound-retest-2026-07-12",
+    dateISO: "2026-07-12",
+    kind: "external-browser",
+    title:
+      "P1U NJ5: FIRST re-test of the v1U.0.17 AA-channel bound fix → 0 genuinely-new reader-visible editable findings across all 6 legs; the DP1U-NJ4-01 PP-only overstatement fix HOLDS on independent re-test → clean-wave streak RESET(0)→1. No bump; v1U.0.17 stands; directive_g.sh NOT run.",
+    papers: ["P1A"],
+    summary:
+      "STRICT ledger-first adjudication of the FIRST re-test of the v1U.0.17 AA-channel bound fix (DP1U-NJ4-01). INT (run.log 10:22Z): openai=REJECT / grok=MAJOR (softened from prior REJECT) / gemini=MAJOR / claude=MINOR. EXT: Grok=MAJOR (4 MAJOR + 2 MINOR) + ChatGPT=REJECT (12 MAJOR + 2 MINOR), both raws read verbatim (Grok l.1 'VERDICT: MAJOR REVISIONS', ChatGPT l.1 'VERDICT: REJECT'). AA-BOUND FIX ENGAGED + VERIFIED: INT-Claude explicitly recomputed the leg-(B) AA-channel numbers against the committed artifacts — eq:AAdecomp column-A vs fierz_lemma_check.py; G_scalar=−3/64κ (repulsive) / G_AA=+3/32κ / G_PP=+3/64κ all match njl_gap_equation_route1_results.json; AA worst-case 2×0.156=0.31 (factor G_AA/|G_scalar|=2 exact); 'far'→'sub-critical' alignment confirmed — verdict: 'correct, honest, and fully closes the overstatement … no fabrication.' The PP-only overstatement fix holds on independent re-test. 0 GENUINELY-NEW reader-visible editable findings: INT-Claude's 3 MINORs are all PROCESS-NITs on the just-added AA leg with the reviewer's OWN 'conclusion is safe / no change required' — (1) G_crit is a scalar-channel proxy yardstick for AA criticality (does not threaten the conclusion; decisive leg is the channel-independent scalar sign) → DP1U-NJ4-01/-19; (2) flavor scan tops at N_fN_c=9, realistic SM ≈24 → 0.42 still sub-critical (crossing 1 needs ≈210), monotone → DP1U-19/-05 presentation/scope-labeling; (3) mean-field-NJL qualifier must not be dropped, reviewer 'no change required' → DP1U-19. EXT-Grok's 4 MAJOR (four-route channel-vs-operator DP1U-06/-07/-20, 13-barrier independence DP1U-13, §X transparency-novelty DP1U-12, dim+1→ρ_Λ NDA ansatz 'relocates CC' DP1U-08/-11) + 2 MINOR (63pp length DP1U-22; explicit SS/PP/VV/AA channel tabulation — DIRECTLY answered by the v1U.0.17 AA addition, DP1U-19/-NJ4-01) all re-flags; Grok's own close: the four-route closure 'is supported under the stated assumptions.' EXT-ChatGPT REJECT = identical structure to every prior ChatGPT REJECT (DP1U-03/-08/-07/-20/-05/-19/-26/-09/-10/-11/-12/-14/-17/-13/-15/-02), harsh-referee structural floor (directive-H); engaged the NJL appendix via leg-(B)/Fierz only, did not rebut the leg-(A) convention-independent sign exclusion. INT Grok REJECT→MAJOR softening on the improved v1U.0.17 = presentational pattern-066. Under directive-K, 0 genuinely-new on the re-test RE-INCREMENTS the streak RESET(0)→1. No bump (v1U.0.17 stands, no edit); directive_g.sh NOT run. Cap 62 HOLDS. No faked ACCEPT, no un-sourced dismissal, no math fabricated.",
+    keyTakeaways: [
+      "FIRST re-test of the v1U.0.17 AA-channel bound fix (DP1U-NJ4-01) — 0 genuinely-new reader-visible editable findings across all 6 legs; the PP-only overstatement fix HOLDS",
+      "INT-Claude recomputed the leg-(B) AA numbers vs the committed script/JSON (G_AA=+3/32κ, worst 2×0.156=0.31, factor exactly 2) — verdict: 'correct, honest, fully closes the overstatement, no fabrication'",
+      "INT board (run.log 10:22Z): openai REJECT / grok MAJOR (softened from REJECT) / gemini MAJOR / claude MINOR; EXT Grok MAJOR + ChatGPT REJECT",
+      "INT-Claude's 3 MINORs = PROCESS-NITs on the just-added AA leg (G_crit-proxy caveat, N_fN_c=9→24 still sub-critical, mean-field qualifier) — reviewer's own 'conclusion is safe / no change required'; all → DP1U-NJ4-01/-19/-05",
+      "EXT-Grok's SS/PP/VV/AA-tabulation MINOR request is now DIRECTLY answered by the v1U.0.17 AA-channel addition (eq:AAdecomp + coefficients) — a re-flag the fix already satisfies",
+      "clean-wave streak RESET(0)→1 (directive-K); no bump (v1U.0.17 stands); directive_g.sh NOT run; cap 62 HOLDS",
+    ],
+    links: [
+      { label: "EXT Grok P1U NJ5 raw", href: `${PR}/EXT_real/H17_2026-07-10/NJ5/P1U_grok_NJ5.md` },
+      { label: "EXT ChatGPT P1U NJ5 raw", href: `${PR}/EXT_real/H17_2026-07-10/NJ5/P1U_chatgpt_NJ5.md` },
+      { label: "INT-Claude P1U NJ5 raw", href: `${PR}/INT_api/H17_2026-07-10/intwave_P1U_claude_0317.md` },
+      { label: "P1U v1U.0.17 PDF", href: "/papers/paper1_unified_v1U.0.17.pdf" },
+    ],
+  },
+  {
     id: "p1u-nj4-njl-legB-aa-channel-closure-2026-07-12",
     dateISO: "2026-07-12",
     kind: "closure-wave",
