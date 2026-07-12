@@ -51,8 +51,12 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \providecommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1U.0.15}
+\newcommand{\paperVersion}{v1U.0.16}
 \newcommand{\paperTimestamp}{July 12, 2026}
+% v1U.0.16 (2026-07-12 — INT-Claude genuinely-new MINOR closed: Route-1 NJL leg-(A)
+%   sign exclusion scoped to the scalar chiSB channel; attractive AA/PP channels
+%   (G_AA=+3/32kappa, G_PP=+3/64kappa per eq:AAdecomp) excluded by magnitude leg (B);
+%   "far sub-critical" tempered to "comfortably sub-critical". Conclusion unchanged.)
 % v1U.0.15 (2026-07-12 — NJ1 wave: Holst NJL suppression factor corrected 30x->14x
 %   per the paper's own committed script arxiv/scripts/njl_gap_equation_route1.py
 %   (+_results.json): holst_factor = gamma^2/(gamma^2+1) = 0.0698 with gamma_BI=0.274,
@@ -2687,8 +2691,14 @@ $G_{\rm scalar}=-\tfrac{3}{64}\kappa<0$, a \emph{repulsive} scalar coupling,
 whereas NJL condensation requires an \emph{attractive} channel ($G_s>0$); a
 repulsive channel admits no non-trivial gap-equation solution, leaving $M=0$
 as the only $\chi$SB minimum of the effective potential at \emph{any} coupling
-strength or cutoff, so no condensate forms. Second,
-the magnitude: even taking $|G_{\rm eff}|$, the coupling is far sub-critical
+strength or cutoff \emph{in the scalar channel}, so no scalar condensate forms.
+(By the same Fierz lemma the axial and pseudoscalar channels are
+\emph{attractive}, $G_{\rm AA}=+\tfrac{3}{32}\kappa$ and
+$G_{\rm PP}=+\tfrac{3}{64}\kappa>0$; these are not excluded by the sign leg but
+are disposed of by the magnitude leg below, since
+$|G_{\rm PP}|=|G_{\rm scalar}|$ is equally sub-critical.) Second,
+the magnitude: even taking $|G_{\rm eff}|$, the coupling is comfortably
+sub-critical
 relative to the (derived, not quoted) critical value
 $G_{\rm crit}=\pi^2/(N_f N_c\Lambda^2)$; at $\Lambda=M_{\rm Pl}$ the ratio is
 cutoff-independent, $|G_{\rm eff}|/G_{\rm crit}=(3/64)\,N_f N_c/\pi^2
@@ -5092,7 +5102,14 @@ $G_{\rm scalar}=-\tfrac{3}{64}\kappa<0$: \emph{repulsive}. Dynamical
 chiral-symmetry breaking in NJL requires an \emph{attractive} scalar channel
 ($G_s>0$); with $G_s<0$ the gap equation admits no non-trivial solution and
 $M=0$ is the only $\chi$SB minimum of the effective potential---\emph{no
-condensate forms at any coupling strength or cutoff}. \textbf{(B) Magnitude (belt-and-suspenders).}
+scalar condensate forms at any coupling strength or cutoff}. This sign
+exclusion is specific to the scalar ($SS$) channel: by
+Eq.~\eqref{eq:AAdecomp} the axial ($AA$) and pseudoscalar ($PP$) channels are
+instead \emph{attractive}, $G_{\rm AA}=(-\tfrac{3}{16})(-\tfrac12)\kappa
+=+\tfrac{3}{32}\kappa$ and $G_{\rm PP}=(-\tfrac{3}{16})(-\tfrac14)\kappa
+=+\tfrac{3}{64}\kappa>0$, so leg (A) does not by itself exclude them; they are
+disposed of by leg (B) below, since $|G_{\rm PP}|=|G_{\rm scalar}|$ is equally
+sub-critical. \textbf{(B) Magnitude (belt-and-suspenders).}
 Even discarding the sign and taking $|G_{\rm eff}|$, the coupling is far
 sub-critical. At $\Lambda=M_{\rm Pl}$ the ratio is cutoff-independent
 ($M_{\rm Pl}$ cancels),
@@ -5111,7 +5128,8 @@ smaller again.
 
 \emph{Verdict.}---The Route-1 vacuum condensate is \emph{excluded} for two
 independent reasons: the condensate channel is repulsive (no condensate at
-any coupling), and $|G_{\rm eff}|$ is far sub-critical in every case scanned.
+any coupling), and $|G_{\rm eff}|$ is comfortably sub-critical in every case
+scanned (worst scanned ratio $0.156$).
 This closes the vacuum case with the regulated gap equation and effective
 potential that the scope statement of Sec.~\ref{sec:r1_njl} previously
 deferred---within the standard mean-field NJL framework, and using only the
