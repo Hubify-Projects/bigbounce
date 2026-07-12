@@ -57,6 +57,31 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p3-dp3-15-heldout-reinference-2026-07-12",
+    dateISO: "2026-07-12",
+    kind: "closure-wave",
+    title:
+      "P3 DP3-15 — held-out re-inference of the released DESI anomaly catalog (the last standing OPEN-COMPUTE item; reviewers' 'raw native scores reside on an exited pod' objection). Executed to the structural ceiling the committed release allows, fabrication-free: (A) MEASURED the exact re-pullable fraction — the released tid column is 26,218 real DESI TARGETIDs (13.4%) + 169,611 internal hashed ids (86.6%), and only ~9.8% of the real-tid rows resolve in NOIRLab SPARCL DESI-DR1, so ~1.3% of released rows are re-pullable → an exact per-released-row rescore is STRUCTURALLY bounded by pod-lost input linkage, NOT compute-bounded (no GPU budget can recover the hashed-tid majority); (B) DEMONSTRATED scoring-pipeline reproducibility — the committed r42_phase2 5-seed BigAE ensemble on a fresh real DESI-DR1 SPARCL substrate reproduces the native-scale reconstruction-MSE axis (median 0.233, == the reconciled reference) and the injection-recovery validation gate that defines the S>5 population (broad 99–100% @5σ, narrow ≥15σ floor) with tight cross-seed agreement → the anomaly axis is not a single-training-sample artifact. Driver + result committed and added to RELEASE_MANIFEST.json. Both variants bumped v3.1.158/v3.1.158-apjs with the §II.F disclosure now QUANTIFYING the pod-block. NO headline number changed. Compute: local CPU, 0 GPU-hours, $0 RunPod.",
+    papers: ["P3"],
+    summary:
+      "DP3-15 (last OPEN-COMPUTE item) closed to its honest ceiling. Released DESI tid = 13.4% real TARGETIDs + 86.6% hashed → only ~1.3% re-pullable, so exact per-released-row rescore is STRUCTURALLY bounded (pod-lost input linkage), not compute-bounded. Committed 5-seed ensemble REPRODUCES the native-scale MSE axis (median 0.233) + injection-recovery gate (broad 99–100% @5σ, narrow ≥15σ) on fresh real DESI-DR1 SPARCL spectra → anomaly axis not a single-sample artifact. Driver dp3_15_heldout_reinference.py + result JSON committed + in RELEASE_MANIFEST. Both variants → v3.1.158 (37pp) / v3.1.158-apjs (41pp), §II.F disclosure quantified. 0 headline numbers changed; 0 GPU-hours; $0. DP3-15 stays OPEN-COMPUTE honestly (literal full-catalog rescore not achievable) but now bounded + pipeline-demonstrated.",
+    keyTakeaways: [
+      "Scope decision = RELEASED-SET, not full-22.5M, because the barrier is STRUCTURAL not budgetary: 86.6% of released rows carry pod-lost/hashed tids and only ~9.8% of the real-tid remainder resolve in SPARCL → ~1.3% ceiling. No fabrication, no scale-match invented (released score axis median 5.54 vs fresh-pull 0.233 disclosed).",
+      "Committed r42_phase2 5-seed ensemble reproduces the native-scale reconstruction-MSE axis (median 0.233, == RECONCILIATION_RESOLVED reference) and the injection-recovery gate (broad_emission_spike 0.988 @5σ, spectral_break 1.0, narrow_line ≥15σ floor) on a fresh real DESI-DR1 SPARCL substrate → pipeline-level reproducibility demonstrated.",
+      "0 GPU-hours / $0 RunPod: the task is archive-network + trivial-forward-pass bound, so no pod was spun (the $25 cap went entirely unused — the honest engineering call).",
+      "Both P3 variants bumped v3.1.158 / v3.1.158-apjs; §II.F disclosure upgraded from a bare 'pod-blocked' promise to a source-cited quantified bound + demonstrated pipeline reproduction; directive-G HARD-GATE PASS on the PRD variant (0 undef-refs, 16 mirrors md5 a1da87d3, Convex bump verified); ApJS variant recompiled clean (41pp) + mirrored. NO headline number changed.",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 0,
+      note: "Compute/closure round, not a review round: 0 new findings. Closes the reviewers' standing DP3-15 objection to its honest structural ceiling (~1.3% re-pullable; pipeline reproduces) without fabricating exact per-released-row score reproduction.",
+    },
+    links: [
+      { label: "DP3-15 re-inference driver", href: "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p3_anomaly_engine/dp3_15_heldout_reinference.py" },
+      { label: "DP3-15 result JSON", href: "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p3_anomaly_engine/outputs/dp3_15_heldout_reinference.json" },
+      { label: "DP3-15 disposition", href: `${PR}/DISPOSITIONS/P3.md` },
+    ],
+  },
+  {
     id: "m2-wave-post-fix-external-2026-07-12",
     dateISO: "2026-07-12",
     kind: "external-browser",

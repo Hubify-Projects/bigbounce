@@ -213,3 +213,10 @@ Switched to Opus 4.7 + xhigh effort for this.
 > AFTER: post same-bundle ON MAIN — externalVerdictRounds "G15-2026-07-09" (P2/P3 NO_VERDICT) + reviewRounds, build passes, commit+push. Convex upserts + caps per formula + activityFeed (literal ACCEPTs flagged LOUDLY).
 >
 > Return ≤160 words: 3×3 FROM RAW vs F14 — did the closures convert? literal ACCEPTs? genuinely-new findings? board posted, FAILED legs. NEVER fabricate.
+
+---
+## 2026-07-12 — DP3-15 full held-out re-inference (last major OPEN-COMPUTE item)
+
+> Execute the program's LAST major OPEN-COMPUTE item: P3's DP3-15 — the full per-object held-out re-inference of the released catalog ("raw native scores reside on an exited pod" is the reviewers' standing objection). Budget: hard cap $25 RunPod; backup-3plus; NEVER terminate (STOP only); never print secrets. NEVER fabricate — if the full 22.5M re-inference is genuinely larger than the cap allows, execute the largest defensible held-out subset and report honestly what it does/doesn't establish.
+> [Steps 1-4: SCOPE from repo → PLAN GPU-hours → EXECUTE defensible version + backup-3plus + HF manifest → commit+DP3-15 update+truth-audit+DAS note+bump pair.]
+> Return ≤150 words: scope decision, compute+cost, agreement stats, DP3-15 status, versions, commit shas.
