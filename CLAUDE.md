@@ -226,3 +226,21 @@ wave-1 arXiv kit (bundles re-verified against final versions, walkthrough
 current) and report to Houston for submission clicks. H17F+H17G were clean, but
 P2's verified Claude re-run then surfaced genuinely-new presentation items —
 P2's count reset; the clock restarts after v1.7.112 closes them.
+
+## Standing directive (2026-07-11 — Houston explicit): L — ACCEPT-BAR RESTORED, OPEN-COMPUTE CAMPAIGN
+
+Houston (verbatim): "shouldn't the bar be that all papers are pushed to Accepted
+by all reviewers." Directive K's two-clean-waves bar is a CHECKPOINT, not the
+finish line — it proved 0-genuinely-new-findings, but the program target returns
+to ALL-ACCEPT from every reviewer leg. The path is NOT more text waves (verdict
+words oscillate on unchanged content — measured) and NEVER prompting tricks or
+watered-down claims. The path is CLOSING THE OPEN-COMPUTE/VENUE LEDGER with real
+science: P4 image-level end-to-end classifier injection (GPU/RunPod) + per-pixel
+confusion + generative null; P2 channel-native Fisher via an adopted covariance
+surrogate + full cubic in-in transmission + Zenodo DOI; P3 uniform end-to-end
+held-out re-inference (RunPod) + ApJS venue variant; P5 Zel'dovich RSD
+reconstruction + higher-N environment confusion; P1U regulated NJL gap equation.
+Each closure: real computation, committed artifacts, integrated honestly, full
+re-test wave. Waves continue to MEASURE movement (never to farm verdicts).
+RunPod authorized per existing directives (backup-3plus applies). Integrity
+rules unchanged and absolute.
