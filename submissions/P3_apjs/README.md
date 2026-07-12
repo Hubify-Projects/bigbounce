@@ -1,9 +1,18 @@
-# P3 — ApJS variant (AASTeX conversion)
+# P3 — ApJS variant (AASTeX conversion) · REVIEW-OF-RECORD
 
-**Bundle:** `arxiv_p3_apjs_v3.1.155.tar.gz`
+**Bundle:** `arxiv_p3_apjs_v3.1.156.tar.gz`
 **Class:** AASTeX v7.0.1 (`\documentclass[twocolumn]{aastex701}`)
-**Source of record:** `pipelines/p3_anomaly_engine/paper3_apjs.tex` (v3.1.155)
-**Derived from:** `pipelines/p3_anomaly_engine/paper3_draft.tex` (revtex4-2, v3.1.155) — the PRD version, which is UNCHANGED.
+**Source of record:** `pipelines/p3_anomaly_engine/paper3_apjs.tex` (v3.1.156-apjs, 40pp)
+**Derived from:** `pipelines/p3_anomaly_engine/paper3_draft.tex` (revtex4-2, v3.1.156) — the PRD version, kept in lockstep.
+
+**Review-of-record (directive M, 2026-07-12):** this ApJS-framed variant is now
+P3's **review-of-record**. The ApJS-framed Gemini INT returned **MINOR
+REVISIONS** ("the central claim ... is strongly supported and perfectly aligns
+with the ApJS mandate", `INT_api/H17_2026-07-10/API_P3apjs_gemini.md`) — a
+legitimate review of the same science at the correct venue. Houston's formal
+venue-of-record word is **PENDING (awaiting-confirmation)**; the review protocol
+now measures P3 against ApJS. v3.1.156 closed the ApJS Gemini MINOR#5
+(empirical-provenance guarantee), byte-identical in both variants.
 
 ---
 
