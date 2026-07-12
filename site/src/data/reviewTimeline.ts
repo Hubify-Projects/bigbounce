@@ -4827,6 +4827,32 @@ export const reviewRounds: ReviewRound[] = [
       { label: "P1U disposition ledger", href: `${PR}/DISPOSITIONS/P1U.md` },
     ],
   },
+  {
+    id: "M3b-M4-INT-2026-07-12",
+    kind: "internal-api",
+    dateISO: "2026-07-12",
+    timePT: "Jul 12 · ~19:1x UTC",
+    title: "M3b + M4-INT — P5 ChatGPT gap-fill (MAJOR, 0 genuinely-new, streak 1→2) + P2/P1U M4-INT waves; P1U Claude MIN→MAJ diagnosed as referee oscillation",
+    papers: ["P5", "P2", "P1A"],
+    summary: "Three adjudications, all strict ledger-first with every raw read+verified before any verdict. P5 M3b: the recovered ChatGPT EXT leg (the M3 dead-GAP) came back MAJOR REVISIONS (up from REJECT); ledger_match 12/13, the 1 UNMATCHED is a header parse-artifact, every real finding is a source-cited standing DP5 re-flag. P2 + P1U M4-INT: fresh 4-vendor INT waves on byte-unchanged versions; each finding truth-audited against the ledger.",
+    keyTakeaways: [
+      "P5 M3b — ChatGPT REJECT→MAJOR on v0.1.126: 12/13 ledger-matched (DP5-01/06/08/10/11/13/16/20/22 + terminology), the lone UNMATCHED (#1 'REVISIONS ISSUES:') is a scaffold header, NOT a finding. 0 genuinely-new; no bump (v0.1.126 stands); clean-wave streak 1→2. Cap HOLDS 80.",
+      "P2 M4-INT (v1.7.116 unchanged) — OpenAI REJECT / Grok MAJOR / Gemini MAJOR / Claude MINOR. All 6 Claude items MINOR re-flags, every number recompute-verified (BF 17.10/132, Cai-Li −35/16 per-vertex column sums −35/16, equilateral −255/128). OpenAI/Grok/Gemini = standing pattern-066 harsh-referee floor on disclosed content. 0 genuinely-new; cap HOLDS 74.",
+      "P1U M4-INT (v1U.0.19 byte-unchanged) — OpenAI REJECT / Grok REJECT / Gemini MAJOR / Claude MAJOR. Claude MIN→MAJ DIAGNOSED as referee oscillation (pattern-066): every M4 MAJOR item (transparency-lemma 'thin', 'four-route closure' word-strength, NJL leg-B 8π convention-fragility, scope/merge) is a KNOWN issue already surfaced at MINOR-tier across NJ2–NJ6 on the SAME unchanged content, severity re-graded up with ZERO fresh content — Claude itself: 'physics self-consistent, numbers reproduce, nothing fabricated'. 0 genuinely-new; cap HOLDS 62.",
+      "Integrity: no faked ACCEPT, no finding dispositioned non-real without a source-cited D-id, no math fabricated. The P5 MAJOR verdict word is recorded truthfully even though 0 findings are editable (honest MAJOR on an all-re-flag body).",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 0,
+      note: "P5 M3b recovers the M3 ChatGPT chart GAP as a real MAJOR (never faked). P2/P1U M4-INT: 0 genuinely-new across all 4 INT legs each; the harsher verdict words are documented referee variance, not content.",
+    },
+    links: [
+      { label: "P5 M3b ChatGPT raw", href: `${PR}/EXT_real/H17_2026-07-10/M3b/P5_chatgpt_M3b.md` },
+      { label: "P5 M3b truth-audit", href: `${PR}/EXT_real/H17_2026-07-10/M3b/P5_truth_audit_M3b.md` },
+      { label: "M4-INT truth-audit (P2+P1U)", href: `${PR}/INT_api/H17_2026-07-10/M4_INT_truth_audit.md` },
+      { label: "P1U Claude M4 raw", href: `${PR}/INT_api/H17_2026-07-10/intwave_P1U_claude_1209.md` },
+      { label: "P5 disposition ledger", href: `${PR}/DISPOSITIONS/P5.md` },
+    ],
+  },
 ];
 
 /* ── Structured progress dataset (powers the /reviews Progress visualizations) ──
