@@ -1,19 +1,21 @@
-# INT API Review — P4 v1.0.236 — grok (grok-4.3)
-paper: P4  version: v1.0.236  model: grok-4.3
+# INT API Review — P4 v1.0.237 — grok (grok-4.3)
+paper: P4  version: v1.0.237  model: grok-4.3
 modality: native-PDF (/v1/files file_id)
-UTC: 2026-07-11T15:03:01.360686Z  |  latency: 81.2s  |  attempt: 1
-usage: {"input_tokens": 35712, "input_tokens_details": {"cached_tokens": 192}, "output_tokens": 851, "output_tokens_details": {"reasoning_tokens": 568}, "total_tokens": 36563, "num_sources_used": 0, "num_server_side_tools_used": 0, "cost_in_usd_ticks": 465659000, "context_details": {"input_tokens": 35712, "output_tokens": 851}}
-PARSED VERDICT: MINOR REVISIONS
+UTC: 2026-07-12T16:21:51.002054Z  |  latency: 65.5s  |  attempt: 1
+usage: {"input_tokens": 36128, "input_tokens_details": {"cached_tokens": 192}, "output_tokens": 1105, "output_tokens_details": {"reasoning_tokens": 637}, "total_tokens": 37233, "num_sources_used": 0, "num_server_side_tools_used": 0, "cost_in_usd_ticks": 477209000, "context_details": {"input_tokens": 36128, "output_tokens": 1107}}
+PARSED VERDICT: MAJOR REVISIONS
 
 ======================================================================
 RAW RESPONSE (verbatim):
 ======================================================================
 
-(1) VERDICT: MINOR REVISIONS
+(1) VERDICT: MAJOR REVISIONS
 
 (2) ISSUES:
-[MINOR] Section IV C and Table I: the pre-specified \(p_{eq}>0.6\) cut is presented as fixed a priori, but the full sweep results and rationale for excluding the low-confidence tail (where the \(z\approx4\) excess lives) should be moved into the main text rather than referenced only to generator scripts and artifacts.
-[MINOR] Section IV D and Appendix D: the forward-model claim that imaging+morphology templates account for \(\approx53\%\) of the post-MASTER \(\ell=1\) residual leaves the remaining \(\sim47\%\) explicitly open; a single sentence quantifying its upper bound relative to \(A_{95}\) (already stated) should be added to the main-text paragraph for clarity.
-[MINOR] Section VI A: the GZ1-human-only cross-check (\(N=4.6\times10^4\)) is correctly presented as model-independent, but the text should explicitly state its reduced sensitivity floor (\(A_{50}\approx3.4\%\)) in the same paragraph so readers immediately see why it corroborates but does not tighten the headline result.
+[MAJOR] Sec. II B and VI A: 66.5% of training labels are CE-ResNet pseudo-labels; per-galaxy label-shuffle and pixel-permutation nulls therefore cannot test independence from inherited survey-correlated structure, while the model-free GZ1 human-label cross-check (N=4.60×10^4) reaches only A95≈4.5–6.8% sensitivity and cannot constrain the sub-percent regime of the headline result.
+[MAJOR] Sec. IV D and Appendix D: the eight-anchor battery attributes the +3.64σ canonical-mask ℓ=1 residual to systematics, but the imaging+morphology forward model reproduces only ~53% of its amplitude, leaving an explicit ~47% open item below A95 whose origin is unresolved and whose cosmological content is bounded only indirectly.
+[MAJOR] Sec. IV C and VI B: the block-bootstrap WLS template-fit exclusion (z≈−7.6 against Aref=0.017) is presented as a primary result, yet its selection function is not propagated into the covariance, its statistic is explicitly not a calibrated frequentist exclusion, and its relation to the real-space dipole (the declared primary) is not quantified by a joint likelihood.
+[MINOR] Sec. III A and Table I: significance conventions (moment-z vs. rank-p vs. block-bootstrap z) are not directly comparable across estimators, yet the text repeatedly juxtaposes +0.41σ, +3.64σ, +7.28σ and z≈−7.6 without a single decision-tree table that readers can use to map each number to its scientific claim.
+[MINOR] Data Availability and Appendix B: the public catalog release is announced but the precise commit hashes, training-semantics JSON, and GZ1 cross-match files required to reproduce the 69.91% accuracy floor and the model-free dipole test are referenced only via internal pipeline paths.
 
-(3) The central claim of a null real-space chirality dipole at sub-percent sensitivity is supported by the primary estimator and injection-recovery calibration.
+(3) The central claim of a null real-space dipole at sub-percent sensitivity on the pre-specified HC subsample is supported by the primary estimator and the GZ1 cross-check, but the systematics attribution and independence arguments contain unresolved gaps.

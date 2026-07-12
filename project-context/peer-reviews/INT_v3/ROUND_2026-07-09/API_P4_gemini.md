@@ -1,20 +1,19 @@
-# INT API Review — P4 v1.0.236 — gemini (gemini-3.1-pro-preview)
-paper: P4  version: v1.0.236  model: gemini-3.1-pro-preview
+# INT API Review — P4 v1.0.237 — gemini (gemini-3.1-pro-preview)
+paper: P4  version: v1.0.237  model: gemini-3.1-pro-preview
 modality: native-PDF (Files/media upload file_uri)
-UTC: 2026-07-11T15:03:01.277691Z  |  latency: 81.0s  |  attempt: 1
-usage: {"promptTokenCount": 18294, "candidatesTokenCount": 264, "totalTokenCount": 19762, "promptTokensDetails": [{"modality": "TEXT", "tokenCount": 94}, {"modality": "IMAGE", "tokenCount": 18200}], "thoughtsTokenCount": 1204, "serviceTier": "standard"}
+UTC: 2026-07-12T16:21:51.289580Z  |  latency: 61.0s  |  attempt: 1
+usage: {"promptTokenCount": 18294, "candidatesTokenCount": 370, "totalTokenCount": 20020, "promptTokensDetails": [{"modality": "TEXT", "tokenCount": 94}, {"modality": "IMAGE", "tokenCount": 18200}], "thoughtsTokenCount": 1356, "serviceTier": "standard"}
 PARSED VERDICT: MINOR REVISIONS
 
 ======================================================================
 RAW RESPONSE (verbatim):
 ======================================================================
 
-VERDICT: MINOR REVISIONS
+(1) VERDICT: MINOR REVISIONS
 
-ISSUES:
-1. [MAJOR] Section III.B / Appendix D: The block-bootstrap WLS template fit is identified as a primary cosmological estimator (Table I, P2), yet its methodology and primary results are relegated to Appendix D. Core methodology supporting headline scientific claims must be moved to the main text.
-2. [MINOR] Throughout: The manuscript contains highly repetitive, defensive caveats (e.g., repeatedly stating the result is "not a frequentist exclusion of Shamir's Ganalyzer"). Consolidate these methodological disclaimers into a single discussion in Section V to improve readability.
-3. [MINOR] Formatting/Captions: Captions for Table V, Figure 9, and Table XV are excessively long and contain interpretive discussion. Move narrative analysis and methodological edge-cases to the main text.
-4. [MINOR] Section VI.B: The statistical floor derivations assume purely independent, identically distributed galaxy spins. Briefly address whether local intrinsic alignments (IA) of angular momenta could introduce a physical correlation floor that competes with the sub-percent systematic limits.
+(2) ISSUES:
+1. [MINOR] (Throughout) The frequent inline inclusion of long file paths, script names, and JSON artifact identifiers (e.g., `pipelines/p2_chirality/outputs/canonical_provenance/...`) significantly disrupts the flow and readability of the main text. It is highly recommended to move these specific reproducibility pointers into footnotes, or to consolidate them into a dedicated table in the appendix/data availability section.
+2. [MINOR] (Section V.A / VI.C) The manuscript highlights a factor of ~3.7–8.8 amplitude tension with the dipole signals reported by Shamir (specifically the 2022b DESI Legacy analysis). While the author properly caveats that a matched-footprint reanalysis is required for a formal statistical exclusion, briefly summarizing the exact footprint and target-selection overlap between the catalog used here (8.47M galaxies) and Shamir's (~1.3M galaxies) would strengthen the context for this amplitude comparison. 
+3. [MINOR] (Section VI.B) When discussing the physical-amplitude transfer slope $g = 2a - 1$ and the ~19% triage to the `NOT_SPIRAL` class, the text asserts that this triage only rescales the effective sample size. To fully close out this channel, the author should add a brief explicit confirmation that this triage is empirically parity-symmetric (i.e., it does not preferentially drop CW over CCW in a spatially correlated way that could bypass the dilution-only assumption). 
 
-The central claim that the large-scale spiral galaxy chirality dipole is consistent with a null result is robustly supported by rigorous bias-mitigation and comprehensive systematics testing.
+(3) The central claim of a null cosmological chirality dipole is exceptionally well-supported by the rigorous equivariant neural network methodology and the exhaustive suite of systematics audits.

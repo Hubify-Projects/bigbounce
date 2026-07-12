@@ -1,56 +1,50 @@
-# INT API Review — P4 v1.0.236 — openai (gpt-5.5)
-paper: P4  version: v1.0.236  model: gpt-5.5
+# INT API Review — P4 v1.0.237 — openai (gpt-5.5)
+paper: P4  version: v1.0.237  model: gpt-5.5
 modality: native-PDF (Files API input_file)
-UTC: 2026-07-11T15:03:01.285098Z  |  latency: 102.4s  |  attempt: 1
-usage: {"input_tokens": 62065, "input_tokens_details": {"cache_write_tokens": 0, "cached_tokens": 0}, "output_tokens": 2193, "output_tokens_details": {"reasoning_tokens": 516}, "total_tokens": 64258}
-PARSED VERDICT: MAJOR REVISIONS
+UTC: 2026-07-12T16:21:51.262751Z  |  latency: 89.9s  |  attempt: 1
+usage: {"input_tokens": 61423, "input_tokens_details": {"cache_write_tokens": 0, "cached_tokens": 0}, "output_tokens": 2654, "output_tokens_details": {"reasoning_tokens": 1034}, "total_tokens": 64077}
+PARSED VERDICT: REJECT
 
 ======================================================================
 RAW RESPONSE (verbatim):
 ======================================================================
 
-(1) VERDICT: MAJOR REVISIONS
+(1) VERDICT: REJECT
 
 (2) ISSUES:
 
-1. [MAJOR] Secs. III–IV, “primary estimator” hierarchy: the manuscript repeatedly reports large, significant low-ℓ residuals in the harmonic channel (+3.64σ, +7.28σ, +7.93σ) while declaring them diagnostic and non-cosmological, but the statistical relationship between these residuals and the primary real-space null is not modeled. Stating that the σ values are “not comparable” is not sufficient; the paper needs a coherent joint statistical model or a much narrower claim restricted to the selected real-space estimator.
+1. [MAJOR] Secs. III B, IV C, VI B, VII — Primary estimator and sample selection are not statistically justified: the manuscript declares the high-confidence \(p_{\rm eq}>0.6\) real-space estimator as “primary” precisely where the signal disappears, while the unthresholded catalog shows a \(z\simeq 4.2\) real-space excess and the harmonic channel shows \(z\simeq 7\) residuals. A git commit is not a credible pre-registration, and the confidence-cut selection function is not propagated into the covariance or into a joint likelihood.
 
-2. [MAJOR] Secs. IV C, VI B, VII, injection-recovery/falsification threshold: the quoted A50≈0.75% and A95∈(1.0%,1.5%] are observed-label injection thresholds, not image-level or physical chirality thresholds. The text sometimes treats them as constraints on physical cosmological dipoles. A full image-level injection through classification, confidence selection, and survey-dependent confusion is needed, or the claims must be explicitly weakened to “observed classifier-label dipoles.”
+2. [MAJOR] Secs. II, IV A, Appendix B — The chirality labels are insufficiently validated for the claimed cosmological use: 66.5% of the training labels are CE-ResNet pseudo-labels, the independent GZ1 chirality accuracy is only 69.91% with \(\kappa=0.40\), the three-class external accuracy is 58.7%, and the softmax scores are strongly miscalibrated. This is not adequate to claim sub-percent isotropy bounds without a spatially resolved, externally validated confusion model.
 
-3. [MAJOR] Secs. II, VI A, Appendix B, classifier validation: 66.5% of the training labels come from CE-ResNet pseudo-labels, the independent GZ1 chirality accuracy is only 69.91% with κ=0.40, and the catalog probabilities are severely overconfident. This is a weak basis for sub-percent cosmological inference unless a spatially resolved confusion model is propagated. The leg-stratified GZ1 test is useful but insufficient to exclude RA/Dec-, depth-, seeing-, morphology-, and redshift-dependent differential CW↔CCW errors at the required level.
+3. [MAJOR] Secs. III A, IV C, VI A — The permutation and label-shuffle nulls are not valid cosmological nulls for the dominant failure mode: they randomize the model’s own labels and therefore erase survey-correlated classifier bias, depth dependence, pseudo-label inheritance, and morphology-dependent selection effects. The manuscript acknowledges this limitation but then continues to use these nulls for headline sensitivity and consistency claims.
 
-4. [MAJOR] Sec. IV C, confidence cut peq>0.6: the primary null appears only after excluding the low-confidence tail, while the full unthresholded sample shows a z≈4.2–4.4 real-space excess. The manuscript argues this is systematics, but the confidence cut is based on an uncalibrated network score and the selection function is not propagated into all estimators. This needs a pre-defined validation-based selection criterion, an explicit selection-function model, and a demonstration that cosmological signals would not be preferentially removed.
+4. [MAJOR] Secs. IV C–D, Appendix D — The harmonic residuals are large, internally inconsistent, and not adequately modeled: the paper reports \(+3.64\sigma\), \(+7.28\sigma\), and \(+7.93\sigma\) low-\(\ell\) residuals under different conventions, then labels them “diagnostic” without providing a coherent joint statistical model. Declaring them non-primary does not remove the need to explain why a purported null catalog has highly significant low-\(\ell\) structure.
 
-5. [MAJOR] Secs. IV D and Appendix D, systematics attribution: the forward model explains only ≈53% of the post-MASTER ℓ=1 residual amplitude, leaving ≈47% unresolved. The paper then asserts that the remainder is likely survey systematic and below the real-space recovery threshold. That is plausible but not demonstrated; an unexplained coherent residual in a nominally null observable cannot be dismissed without a quantitative nuisance model and posterior bound.
+5. [MAJOR] Sec. IV D — The “47% open item” in the post-MASTER residual is fatal for the claimed systematics closure. The manuscript states that roughly half of the \(\ell=1\) residual amplitude is not explained by the imaging/morphology forward model, yet still attributes the residual to systematics and asserts it does not affect the null. That is not a demonstrated conclusion; it is an assumption.
 
-6. [MAJOR] Sec. IV C and Appendix A, null construction: the primary pixel-permutation null preserves the one-point distribution of Ap but does not naturally preserve the heteroscedastic binomial noise, depth correlations, morphology correlations, or survey-mask covariance. The label-shuffle cross-check helps, but the paper should make the per-galaxy/binomial null primary or demonstrate analytically and empirically that the pixel-permutation null has correct coverage for the actual estimator.
+6. [MAJOR] Secs. VI B, VII — The injection–recovery study is not end-to-end: injected signals are added to the observed hard-label CW/CCW map, not to galaxy images before classification, not through the not-spiral triage, and not through the \(p_{\rm eq}\) selection. Therefore the quoted \(A_{50}\simeq0.75\%\) and \(A_{95}\in(1.0\%,1.5\%]\) are estimator-level observed-label thresholds, not physical chirality-dipole sensitivity limits.
 
-7. [MAJOR] Secs. III A, IV C, VII, inconsistent use of significances: the paper contains many σ values from incompatible procedures, and despite repeated caveats it still uses them rhetorically to support conclusions. The manuscript should remove nonessential σ claims, replace them with clearly defined likelihoods or empirical p-values, and avoid comparing harmonic-channel completeness to real-space falsification thresholds.
+7. [MAJOR] Secs. V, VI C, VII — The comparison with Shamir is overstated. The manuscript repeatedly says it does not perform a matched Ganalyzer reanalysis, but nevertheless claims strong amplitude-level tension and that a Shamir-scale signal “would have been detected.” Because the estimators, selections, masks, classifiers, and definitions of samples differ, this comparison cannot support the stated level of inference.
 
-8. [MAJOR] Secs. V–VII, comparison with Shamir: the claimed “factor ∼3.7–8.8 tension” and z≈−7.6 “clean 1.7% dipole disfavor” are not a like-for-like comparison with Shamir’s Ganalyzer samples, cuts, redshift distributions, and estimator. The manuscript acknowledges this but still overstates the implication. The comparison should be framed as sensitivity to an idealized clean dipole only, not as tension with a specific published result.
+8. [MAJOR] Appendix D — The block-bootstrap WLS “\(z\simeq-7.6\)” clean-dipole disfavor is not a calibrated exclusion. It is performed on the full Catalog C field rather than the declared high-confidence primary sample, uses an incomplete covariance model, does not include classifier uncertainty or the \(p_{\rm eq}\) selection function, and is then elevated to a primary cosmological claim. This is not acceptable as a PRD-level exclusion statistic.
 
-9. [MAJOR] Secs. VI C and Introduction, physical interpretation: the connection to parity violation, Chern-Simons gravity, cosmic birefringence, and primordial chiral tensors is speculative and unsupported by a transfer function from primordial parity-violating physics to projected apparent spiral handedness. For PRD, either provide a quantitative theory mapping or substantially reduce these claims.
+9. [MAJOR] Appendix A, Table V, Sec. IV C — The MASTER analysis lacks a clean, stable field definition. The paper alternates between \(A_p\), \(f_{\rm CW}-0.5\), different masks, different weights \(W_p=N_{\rm all}\) and \(W_p=N_{\rm spiral}\), different monopole subtractions, and different null ensembles. These choices materially affect the reported significances and must be unified before any inference can be trusted.
 
-10. [MAJOR] Sec. IV B, global CW monopole: the catalog has a highly significant global CW/CCW imbalance, explicitly attributed to classifier/training artifact. Since a monopole is the parity-odd chirality channel, this undermines the use of the same catalog for parity-related statements unless local monopole subtraction and its uncertainty are incorporated rigorously throughout.
+10. [MAJOR] Sec. IV D, Appendix A — The claimed 99.32% monopole–mask leakage reproduction is demonstrated for an un-deconvolved, pre-MASTER, monopole-preserving pseudo-\(C_\ell\), whereas the problematic residuals remain after monopole subtraction and/or MASTER treatment. The result is interesting as a diagnostic but does not explain the main residuals.
 
-11. [MAJOR] Appendix D, block-bootstrap WLS “exclusion”: the z≈−7.6 statistic is not a calibrated frequentist exclusion, uses the full Catalog C field rather than the high-confidence primary sample, and does not include classifier-label uncertainty in the covariance. It should not be listed as a “primary cosmological estimator” unless converted into a properly calibrated likelihood or downgraded to a diagnostic.
+11. [MAJOR] Secs. IV A, VI B, Appendix E — The treatment of morphology, inclination, and edge-on contamination is inadequate. The manuscript assumes equivariance converts edge-on contamination into pure dilution, but the science estimator uses hard argmax labels after a confidence cut, where nonlinear tie-breaking and depth-dependent morphology selection can generate spatial bias. The edge-on and morphology analyses are not sufficient to close this channel.
 
-12. [MAJOR] Appendix B/E, hard-argmax and flip-equivariance: flip-TTA enforces soft-probability equivariance, but the analysis uses hard argmax counts after confidence selection. The manuscript acknowledges that argmax can reintroduce nonlinear effects, especially for borderline/edge-on objects, but does not propagate this into the main error budget.
+12. [MAJOR] Secs. II, VI A — The GZ1-human-only cross-check is too small and too insensitive to validate the headline sub-percent claim. The manuscript itself estimates \(A_{50}\approx3.4\%\) and \(A_{95}\approx4.5\)–\(6.8\%\) for this test, so it cannot rule out the sub-percent inherited or classifier-induced structure relevant to the main catalog.
 
-13. [MINOR] Sec. II B: the training-set accounting is confusing: 25,790 source images, 26,616 combined pool, 21,293 post-augmentation training, and 5,323 validation are described in a way that is hard to audit. Present this once in a clean table in the main text.
+13. [MAJOR] Secs. I, VI C — The cosmological framing is overextended. The paper acknowledges that the \(\ell=1\) observable is parity-even and that no transfer function to primordial parity-violating sectors is derived, yet it discusses constraints on cosmic birefringence, Chern–Simons gravity, and primordial chirality. These claims should be removed or sharply demoted.
 
-14. [MINOR] Sec. IV A and Appendix B: the “flip identity” QC problem affecting 2.9% of rows is concerning and should be introduced earlier and more plainly. Readers should not have to infer that some raw/equivariant probability columns are inconsistent.
+14. [MINOR] Throughout — The manuscript is excessively long, repetitive, and self-contradictory in presentation. Many caveats are repeated multiple times, often with slightly different numbers or conventions, making it difficult to identify the actual analysis chain.
 
-15. [MINOR] Sec. IV C: the quoted best-fit dipole direction (l,b)=(293°,12°) is meaningless at 0.41σ and should be removed from the abstract and main conclusions, or clearly relegated to a diagnostic table.
+15. [MINOR] Tables I–III, V, VIII, IX — The paper uses many nonstandard significance conventions and mixes moment-\(z\), rank \(p\), Gaussian-equivalent language, bootstrap \(z\), and recovery probabilities. Even where caveats are stated, the presentation invites misinterpretation.
 
-16. [MINOR] Tables I–III: the decision-tree tables are repetitive and partly inconsistent in terminology. Consolidate into one concise estimator table with sample, field, mask, null, statistic, and scientific role.
+16. [MINOR] Data Availability — The reproducibility record is incomplete for publication: the Zenodo DOI and immutable release hash are not yet provided, while many claims rely on internal artifact paths rather than archival, citable data products.
 
-17. [MINOR] Secs. IV–VII: the manuscript is excessively long and defensive, with many caveats repeated multiple times. A PRD article should be shortened and reorganized around a small number of well-defined statistical tests.
+17. [MINOR] Figures 4, 7, 8, 9 — The figures would benefit from clearer annotation of which sample, mask, field convention, and null correspond to each plotted statistic. At present the visual material reinforces rather than resolves the estimator-confusion problem.
 
-18. [MINOR] Figures 4, 7, and 8: the maps and power-spectrum plots need clearer labeling of field convention, mask, weighting, and whether the plotted quantity is Ap, fCW, pseudo-Cℓ, or MASTER-decoupled Cℓ.
-
-19. [MINOR] Data availability: the absence of a frozen DOI/commit hash at submission is not acceptable for a reproducibility-heavy paper. The archival snapshot should exist before review, not be promised for later.
-
-20. [MINOR] AI-assisted methodology statement: acceptable in principle, but the manuscript should emphasize reproducible code and artifacts rather than the particular AI models used, which are irrelevant to the scientific validation.
-
-(3) The central claim is supported only in the narrow sense that the selected high-confidence classifier-label real-space dipole is consistent with null, but the broader cosmological null and exclusion claims are not yet fully supported.
+(3) The narrow statement that the selected \(p_{\rm eq}>0.6\) hard-label real-space estimator is consistent with zero is plausible, but the manuscript does not support the broader central claim of a robust sub-percent cosmological null dipole or a reliable Shamir-scale falsification.
