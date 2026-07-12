@@ -57,6 +57,34 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "m5-ext-confirm-wave-2026-07-12",
+    dateISO: "2026-07-12",
+    kind: "external-browser",
+    title:
+      "M5-EXT confirm wave — FIRST external read of P1U's compressed PRD-format abstract (v1U.0.20, ~1031w→213w) + FIRST clean EXT wave on P4 after the M5-INT P4-E7 reset. P1U: EXT ChatGPT REJECT (12 MAJOR / 1 MINOR) + Grok MAJOR REVISIONS (4 MAJOR / 2 MINOR) — Grok ACKNOWLEDGES the new abstract, quoting 'basis-complete at the level of MPl-power-counting classes' (L1268-69) and 'channel-level, assumption-conditional … not an operator-level theorem' (L1273-74) verbatim; 0 genuinely-new, compression introduced 0 defects; streak 2→3. P4: EXT ChatGPT REJECT (12 MAJOR / 1 MINOR) + Grok MINOR REVISIONS (4 MINOR) — Grok's closing sentence AFFIRMS the null ('consistent with null at sub-percent sensitivity … robustly supported'); ChatGPT #9 factor-of-2 A_p vs f_CW arithmetically CORRECT (A_p=2(f_CW-1/2)); 0 genuinely-new; streak 0→1. Both caps hold: P1A 62 · P4 74. No bumps; directive_g.sh not run.",
+    papers: ["P1U", "P4"],
+    summary:
+      "M5-EXT: two papers, zero genuinely-new findings. P1U (v1U.0.20): the FIRST external read of the compressed PRD abstract — Grok quotes the new abstract phrases verbatim, confirming the ~1031w→213w compression introduced 0 defects; ChatGPT REJECT = harsh-referee floor on unchanged science; clean-wave streak 2→3; cap 62 HOLDS. P4 (v1.0.239; reviewers saw v1.0.238, tex on disk v1.0.239 with M5-INT P4-E7 already folded): Grok MINOR + Grok closing-line null affirmation; ChatGPT REJECT with #9 factor-of-2 arithmetically verified correct; first clean EXT wave after the M5-INT P4-E7 reset; streak 0→1; cap 74 HOLDS. No bumps; D-ids mapped verbatim for every finding.",
+    keyTakeaways: [
+      "P1U M5-EXT = FIRST external read of the compressed PRD-format abstract (v1U.0.20, ~1031w→213w): Grok MAJOR quotes the new abstract verbatim — 'basis-complete at the level of MPl-power-counting classes' (L1268-69) and 'channel-level, assumption-conditional … not an operator-level theorem' (L1273-74) — confirming the compression introduced 0 abstract-level defects. Grok #1→DP1U-06/-21 (channel-vs-operator = the standing disclosure-backfire, not a compression artifact). All 6 Grok items and 13 ChatGPT items source-cited standing DP1U re-flags. Clean-wave streak 2→3.",
+      "P4 M5-EXT = FIRST clean EXT wave after the M5-INT P4-E7 streak reset (7→0). Grok MINOR (4 MINOR): #2→DP4-17, #3→DP4-01/-11, #4→DP4-07/-21, #5→DP4-13; closing sentence 'The central claim that the large-scale chirality dipole is consistent with null at sub-percent sensitivity (with prior claims likely systematics-driven under improved methodology) is robustly supported.' ChatGPT REJECT (12 MAJOR / 1 MINOR): all 13 items source-cited standing DP4 re-flags; #9 factor-of-2 A_p vs f_CW is arithmetically CORRECT (A_p=2(f_CW-1/2) → 1.5% f_CW-dev = 3e-2 A_p, not an error). Streak 0→1.",
+      "D-id mappings (all source-cited). P1U — Grok: #1→DP1U-06/-21, #2→DP1U-05/-19/-26/-NJ4-01, #3→DP1U-09/-10, #4→DP1U-12, #5→DP1U-14/-08, #6→DP1U-13/-22; ChatGPT: #1→DP1U-03, #2→DP1U-08, #3→DP1U-07/-20, #4→DP1U-11/-08, #5→DP1U-05/-19/-26/-NJ4-01, #6→DP1U-09, #7→DP1U-10, #8→DP1U-11, #9→DP1U-14, #10→DP1U-12/-13, #11→DP1U-17/-14 (ChatGPT #11 'N_coh undefined' source-contradicted: N_coh~O(few) defined at L1509), #12→DP1U-15/-24, #13(MIN)→DP1U-02/-22/-14. P4 — ChatGPT: #1→DP4-07/-13, #2→DP4-09/-01, #3→DP4-09, #4→DP4-16, #5→DP4-14, #6→DP4-17, #7→DP4-15/-08, #8→DP4-13/-10, #9→DP4-13/-01, #10→DP4-11, #11→DP4-12, #12→DP4-21, #13(MIN)→DP4-13.",
+      "Integrity: both EXT raws (P1U + P4 × ChatGPT + Grok) read verbatim before any disposition; 0 genuinely-new findings on either paper; no ACCEPT faked; every finding source-cited to a D-id; no math fabricated; no bump on either paper (directive_g.sh not run); Streaks: P1U 3 · P2 2 · P3 1 · P4 1 · P5 2. Caps: P1A 62 · P2 74 · P3 56 · P4 74 · P5 80.",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 0,
+      note: "0 genuinely-new reader-visible editable findings across P1U M5-EXT (ChatGPT REJECT + Grok MAJOR; first ext read of compressed abstract, Grok quotes new abstract verbatim) and P4 M5-EXT (ChatGPT REJECT + Grok MINOR; Grok null-affirmation closing sentence). P1U streak 2→3; P4 streak 0→1. Caps hold P1A 62 · P4 74.",
+    },
+    links: [
+      { label: "P1U M5-EXT truth-audit", href: `${PR}/EXT_real/H17_2026-07-10/M5/P1U_truth_audit_M5.md` },
+      { label: "P1U ChatGPT M5 EXT raw", href: `${PR}/EXT_real/H17_2026-07-10/M5/P1U_chatgpt_M5.md` },
+      { label: "P1U Grok M5 EXT raw", href: `${PR}/EXT_real/H17_2026-07-10/M5/P1U_grok_M5.md` },
+      { label: "P4 M5-EXT truth-audit", href: `${PR}/EXT_real/H17_2026-07-10/M5/P4_truth_audit_M5.md` },
+      { label: "P4 ChatGPT M5 EXT raw", href: `${PR}/EXT_real/H17_2026-07-10/M5/P4_chatgpt_M5.md` },
+      { label: "P4 Grok M5 EXT raw", href: `${PR}/EXT_real/H17_2026-07-10/M5/P4_grok_M5.md` },
+    ],
+  },
+  {
     id: "p4-m5-e2e-fold-retest-2026-07-12",
     dateISO: "2026-07-12",
     kind: "internal-api",

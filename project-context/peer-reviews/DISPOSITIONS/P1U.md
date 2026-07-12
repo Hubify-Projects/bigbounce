@@ -450,3 +450,29 @@ Unchanged EXT verdict words — ChatGPT REJECT, Grok MAJOR, Gemini MAJOR (carry-
 Both EXT raws read verbatim before any disposition (Grok l.1 `VERDICT: MAJOR REVISIONS`, ChatGPT l.1 `VERDICT: REJECT`). No ACCEPT faked. Every finding source-cited to an existing D-id + tex line or committed script. No un-sourced dismissal. No math fabricated. No version bumped.
 
 Full audit: `project-context/peer-reviews/EXT_real/H17_2026-07-10/M4/P1U_truth_audit_M4.md`
+
+---
+
+## M5-EXT adjudication (v1U.0.20, 2026-07-12) — STRICT ledger-first — FIRST external read of the compressed abstract — STREAK 2→3
+
+Raws verified verbatim: `EXT_real/H17_2026-07-10/M5/P1U_grok_M5.md` = **MAJOR REVISIONS** (4 MAJOR + 2 MINOR) + `EXT_real/H17_2026-07-10/M5/P1U_chatgpt_M5.md` = **REJECT** (12 MAJOR + 1 MINOR) on **v1U.0.20** — the FIRST external reads of the PRD-format compressed abstract (~1031w→213w single paragraph, v1U.0.19→v1U.0.20). `ledger_match.py` pre-match + full §3 Opus truth-audit vs `arxiv/paper1_unified.tex` + this ledger.
+
+### Compressed-abstract adjudication (the point of this wave)
+The v1U.0.20 abstract compression introduced/exposed **NO** reader-visible defect. **Grok ACKNOWLEDGES the compressed abstract** (raw l.4): it quotes verbatim "basis-complete at the level of MPl-power-counting classes" (= L1268-69) and "channel-level, assumption-conditional … not an operator-level theorem" (= L1273-74) — both confirmed present verbatim in the compressed abstract, so Grok's alleged "internal tension" is the STANDING DP1U-06/-21 channel-vs-operator disclosure-backfire (re-flagged H17F/M4/NJ3-6), NOT a compression artifact. Every scope qualifier survives; no claim strengthened, no new tension. **ChatGPT does NOT acknowledge the compression** — no quote of the new wording, no length remark; its REJECT is the standing harsh-referee floor on unchanged science.
+
+### 0 genuinely-new reader-visible editable findings
+
+**EXT-Grok MAJOR (4 MAJOR + 2 MINOR):** #1 completeness/scope-prominence → **DP1U-06/-21**; #2 Route-1 NJL Fierz-lemma-in-main-text → **DP1U-05/-19/-26/-NJ4-01**; #3 Route2/Route3 ansatz-not-derived → **DP1U-09/-10**; #4 §X proof term-by-term → **DP1U-12**; #5 N_tot≈92 arithmetic MINOR → **DP1U-14/-08**; #6 14-constraint catalog collect-in-main-text MINOR → **DP1U-13/-22**. Grok's closing sentence affirms "the central claim … is supported … once the scope qualifiers, explicit derivations, and appendix-to-main-text summaries are strengthened" — every requested change is presentation/strengthen, MAJOR = severity-on-presentation (pattern-066). **0 genuinely-new.**
+
+**EXT-ChatGPT REJECT (12 MAJOR + 1 MINOR):** #1 Eq(1) variational → **DP1U-03**; #2 dim-no-go → **DP1U-08**; #3 basis-completeness false → **DP1U-07/-20**; #4 naturalness-not-exclusion → **DP1U-11/-08**; #5 NJL condensate → **DP1U-05/-19/-26/-NJ4-01**; #6 Route-2 ∂ϑ dim → **DP1U-09**; #7 Route-3 running-≠-DE → **DP1U-10**; #8 Route-4 g_aγ matching → **DP1U-11**; #9 N_tot≃92 dilution → **DP1U-14**; #10 §X/B14 scope → **DP1U-12/-13**; #11 matter-bounce not demonstrated → **DP1U-17/-14**; #12 App F–H don't test theory → **DP1U-15/-24**; #13(MIN) conventions/length → **DP1U-02/-22/-14**. Fingerprint-UNMATCHED set (#2/#3/#4/#5/#6/#8/#9/#13) each independently source-verified against live v1U.0.20 `.tex` (∂ϑ_NY dim +2 L2878-2881; naturalness "relocating not solving" L1266-67; N_tot dilution L1744). **N_coh source-check:** ChatGPT #11's "N_coh=O(few) undefined" is SOURCE-CONTRADICTED — N_coh∼O(few) is explicitly defined at L1509 with the erasure-sensitivity condition. Standing ChatGPT harsh-referee structural floor (directive-H); engaged NJL appendix via Fierz/leg-(B) only, not the leg-(A) convention-independent sign exclusion. **0 genuinely-new.**
+
+### Streak
+Prior streak was 2 (M4-EXT 1→2). **M5-EXT = first external read of the NEW v1U.0.20 compressed abstract, 0 genuinely-new reader-visible editable findings → streak 2→3** (directive-K). The compression is qualifier-complete and defect-free; no content bump; `directive_g.sh` NOT run (no reader-visible edit warranted). Cap 62 HOLDS.
+
+### Cap
+Unchanged EXT verdict words — ChatGPT REJECT, Grok MAJOR, Gemini MAJOR (carry-forward): 50 + grok(major 6) + chatgpt(reject 0) + gemini(major 6) = **62 HOLDS**.
+
+### Integrity
+Both EXT raws read verbatim before any disposition (Grok l.1 `VERDICT: MAJOR REVISIONS`, ChatGPT l.1 `VERDICT: REJECT`). No ACCEPT faked. Every finding source-cited to an existing D-id + tex line verified this session. No un-sourced dismissal (the N_coh "undefined" claim source-contradicted at L1509, not hand-waved). No math fabricated. No version bumped.
+
+Full audit: `project-context/peer-reviews/EXT_real/H17_2026-07-10/M5/P1U_truth_audit_M5.md`
