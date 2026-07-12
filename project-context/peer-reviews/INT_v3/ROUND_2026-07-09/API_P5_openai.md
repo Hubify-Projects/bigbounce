@@ -1,8 +1,8 @@
-# INT API Review — P5 v0.1.124-2026-07-12 — openai (gpt-5.5)
-paper: P5  version: v0.1.124-2026-07-12  model: gpt-5.5
+# INT API Review — P5 v0.1.126-2026-07-12 — openai (gpt-5.5)
+paper: P5  version: v0.1.126-2026-07-12  model: gpt-5.5
 modality: native-PDF (Files API input_file)
-UTC: 2026-07-12T16:23:06.822547Z  |  latency: 47.7s  |  attempt: 1
-usage: {"input_tokens": 70604, "input_tokens_details": {"cache_write_tokens": 0, "cached_tokens": 0}, "output_tokens": 2369, "output_tokens_details": {"reasoning_tokens": 1152}, "total_tokens": 72973}
+UTC: 2026-07-12T18:30:10.471261Z  |  latency: 51.0s  |  attempt: 1
+usage: {"input_tokens": 70630, "input_tokens_details": {"cache_write_tokens": 0, "cached_tokens": 0}, "output_tokens": 2393, "output_tokens_details": {"reasoning_tokens": 1552}, "total_tokens": 73023}
 PARSED VERDICT: REJECT
 
 ======================================================================
@@ -11,38 +11,18 @@ RAW RESPONSE (verbatim):
 
 (1) VERDICT: REJECT.
 
-(2) ISSUES:
+(2) ISSUES:  
+1. [MAJOR] Sections II, III.A, XIII, Appendix A: the analysis depends on an unpublished companion “Paper IV” with placeholder arXiv identifiers; the per-galaxy chirality labels, classifier validation, monopole calibration, and label provenance are therefore not independently reviewable within this submission.  
+2. [MAJOR] Abstract, Sections VIII, XII, XV: the quoted “≈0.9 pp” systematic envelope is not a statistically well-defined confidence interval; it is an ad hoc quadrature of correlated excursions, counting intervals, geometry choices, and stress tests, and it conflicts in interpretation with the separate Bonferroni-5 simultaneous bound of ≈1.1 pp.  
+3. [MAJOR] Sections V.B and VIII: the primary DESIVAST path is explicitly post hoc after many classifiers, cuts, and stratifications were examined; the Bonferroni-5 correction over only five DESIVAST definitions does not account for the full analysis-tree selection involved in choosing the headline estimator and bound.  
+4. [MAJOR] Section VIII: the DESIVAST “footprint-restricted” non-void control is not a demonstrated DESIVAST/BGS selection-function-matched control; the union of hole angular discs is not equivalent to the survey mask, random catalog, completeness mask, or radial selection function.  
+5. [MAJOR] Section VIII and Table XIII/XIV: the VoidFinder point-in-sphere “any-hole” membership is an author-constructed proxy rather than an official per-galaxy DESIVAST membership definition, and the manuscript does not establish that this proxy yields an unbiased void/non-void contrast.  
+6. [MAJOR] Appendix A, Sections XII–XIII: the conversion from classifier-labelled chirality to physical chirality relies on a symmetric-error attenuation model that is not validated at the sub-percent void/non-void scale; the stated void-stratified GZ1 error-asymmetry uncertainty is far larger than the claimed environmental bound.  
+7. [MAJOR] Sections IV, VII, IX.A: the T-Web implementation has serious survey-selection, masking, radial-density, redshift-space, and duplicate-coadd complications; the randoms-weighted rebuild drastically changes class assignments, so the T-Web results should not be used as substantive support beyond a very weak diagnostic.  
+8. [MAJOR] Sections VIII and XIII: the treatment of redshift-space distortions is insufficient for the model-building claims; the void catalog is not re-derived in reconstructed space, the tidal-tensor eigenvalue RSD channel is unquantified, and the result remains a redshift-space classifier-label null rather than a real-space physical chirality constraint.  
+9. [MAJOR] Section V: the statistical framework is fragmented and not adequate for the stated precision; 1000 permutations are insufficient for the quoted tail-level look-elsewhere claims, classifier-label uncertainty is not included in the main likelihood, and the analysis lacks a unified covariate- and selection-function-aware model.  
+10. [MAJOR] Appendix D/E: the reproducibility claims are not yet satisfied for a real submission because the archival DOI is pending, many artifact references are internal repository labels rather than stable citations, and the analysis depends on a companion catalog whose final version is not fixed.  
+11. [MINOR] Appendix B: the speculative non-covariant toy EFT mapping is explicitly not derived from the data and should be removed or relegated to nonessential supplementary material.  
+12. [MINOR] Presentation throughout: the manuscript is excessively long, repetitive, and often editorializes; the central empirical null test should be rewritten as a concise, self-contained analysis with fewer secondary diagnostics and clearer separation between measurement, systematics, and speculation.
 
-1. [MAJOR] Secs. II, XIII, Appendix A / dependence on Paper IV: the analysis is critically dependent on a concurrently submitted, unpublished chirality catalog with placeholder arXiv identifiers and no independently reviewable published validation; PRD refereeing cannot accept the environmental result while the label provenance, training systematics, and monopole calibration remain external and unresolved.
-
-2. [MAJOR] Abstract, Secs. XII–XV / physics claim: the manuscript repeatedly frames the null as a constraint on bounce/inflation or parity-violating cosmology, but no concrete model prediction is tested and Appendix B’s toy EFT operator is explicitly non-covariant, gauge-dependent, and speculative; this does not meet the theoretical standard for a Physical Review D cosmology/gravitation constraint.
-
-3. [MAJOR] Sec. V B / post-hoc primary analysis: the “primary” DESIVAST path is designated after seeing the data, while many environment classifiers, void definitions, cuts, and stratifications were explored; the Bonferroni-5 treatment does not adequately represent the full garden-of-forking-paths exposure for an upper-bound claim.
-
-4. [MAJOR] Sec. VIII B–E / DESIVAST control sample: the primary “footprint-restricted” non-void control is based on an author-constructed geometric union of void-sphere angular discs, not the DESIVAST/BGS selection function, veto mask, completeness mask, or DESI randoms; therefore the stated same-selection-function void/non-void contrast is not demonstrated.
-
-5. [MAJOR] Sec. VIII / void membership definition: the main VoidFinder membership is an author-defined point-in-sphere/hole-union proxy, not an official per-galaxy DESIVAST membership; the any-hole versus maximal-sphere shift is comparable to or larger than the statistical error, showing that the quoted bound is definition-dependent.
-
-6. [MAJOR] Secs. VIII, XIII / redshift-space distortions: the DESIVAST RSD treatment does not re-run the void finder on reconstructed positions, and the T-Web anisotropic eigenvalue RSD channel is explicitly unquantified; nevertheless the abstract and conclusions quote a physical-looking bound that is only a fixed-redshift-space, classifier-label statement.
-
-7. [MAJOR] Secs. IV, VI, VII, IX / T-Web implementation: the T-Web field is built from a strongly selection-function-limited redshift-space survey with masked FFTs and initially no random-catalog weighting; the later randoms-weighted rebuild radically changes class assignments, so the T-Web analysis cannot serve as robust environmental evidence and should not occupy the manuscript’s central narrative.
-
-8. [MAJOR] Secs. V, VIII, XI / systematic budget: the ≈0.9 pp envelope is an ad hoc quadrature of heterogeneous quantities—counting intervals, maximum excursions, membership variants, confidence cuts, match-radius shifts, and RSD estimates—without a covariance model, nuisance-parameter fit, or demonstrated coverage; it should not be presented as an “honest” 2σ systematic bound.
-
-9. [MAJOR] Secs. V–VIII / statistical interpretation: the manuscript mixes one-sample deviations from 0.5, monopole-subtracted residuals, conditional label-shuffle p-values, two-sample contrasts, Bonferroni thresholds, and empirical max-statistics in a way that obscures the actual estimand; the headline should be based solely on a prespecified two-sample void/non-void contrast with a transparent uncertainty model.
-
-10. [MAJOR] Appendix A / classifier attenuation and label errors: the quoted physical de-attenuation from classifier-labelled chirality to true chirality assumes symmetric errors, but the void-stratified GZ1 overlap is far too small to exclude environment-dependent label asymmetry at the claimed sub-percent level; the physical-chirality bound is therefore not established.
-
-11. [MAJOR] Secs. III, VI, VIII F / sample accounting: the manuscript alternates between unique-galaxy and row-level coadd parents, producing 791,635 chirality-relevant spirals but 812,793 environment-labelled rows; although some reconciliation is attempted, the analysis would need a single unique-object parent for all primary statistics.
-
-12. [MAJOR] Appendix D–E / reproducibility: many crucial artifacts are cited as repository paths, pending Zenodo DOIs, or companion-paper products rather than stable archival data; a PRD submission must provide fixed, accessible, independently reproducible inputs at review time.
-
-13. [MINOR] Title and abstract: “DESIVAST Three-Algorithm Void Null Test” is clearer than the manuscript’s actual mixture of T-Web, Tempel, ASTRA, DESIVAST, HEALPix, and multiple auxiliary diagnostics; the title and abstract should be narrowed to the true primary analysis.
-
-14. [MINOR] Sec. III / object classification: the inclusion of SPECTYPE==QSO rows in the matched parent is not adequately justified for a spiral-galaxy chirality analysis.
-
-15. [MINOR] Figures and captions: several figures/captions are overloaded, and Fig. 6/Fig. 8 style descriptions appear inconsistent with the plotted quantities; the presentation should be simplified and checked carefully.
-
-16. [MINOR] Writing and structure: the manuscript is excessively long, repetitive, and filled with defensive caveats; a publishable version would need to remove most secondary diagnostics, speculative theory discussion, and artifact bookkeeping from the main text.
-
-(3) The central empirical claim is supported only in the narrow sense that the classifier-labelled DESIVAST void/non-void contrast is consistent with zero in this post-hoc redshift-space analysis, but the broader physical and model-building claims are not supported.
+(3) The narrow catalog-level statement that the DESIVAST-matched classifier labels show no obvious void/non-void CW-fraction difference is plausible, but the stronger claimed physical chirality bound and model-building constraint are not supported.
