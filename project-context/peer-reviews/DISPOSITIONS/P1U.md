@@ -275,3 +275,27 @@ RESET to 0 (a genuinely-new editable finding surfaced on retest, per directive-K
 
 ### Integrity
 No faked ACCEPT. No un-sourced dismissal. No fabrication. Every EXT finding mapped to a source-cited D-id.
+
+---
+
+## NJ2 adjudication wave (2026-07-12, v1U.0.15 → v1U.0.16)
+Raws verified: EXT Grok=MAJOR (NJ2/), EXT ChatGPT=REJECT (NJ2b/); INT openai=REJECT/grok=MAJOR/gemini=MINOR/claude=MINOR. Full audit: `EXT_real/H17_2026-07-10/NJ2/P1U_NJ2_truth_audit.md`.
+
+### DP1U-26: NJL leg-(A) sign exclusion channel-completeness (NEW, genuinely-new)
+- **class:** CLOSED-BY-EDIT (v1U.0.16)
+- INT-Claude MINOR #1: leg (A) claims "no condensate at any coupling/cutoff" but only excludes the SCALAR χSB channel; by the paper's own `eq:AAdecomp` the AA/PP channels are attractive ($G_{\rm AA}=+3/32\kappa$, $G_{\rm PP}=+3/64\kappa>0$) and are excluded only by magnitude leg (B). VERIFIED (source-cited to :2688,:5089-5095,:5008). Closed by scoping leg (A) to the scalar channel + crediting leg (B) with the attractive channels; "far sub-critical"→"comfortably sub-critical (worst 0.156)". Arithmetic = algebraic consequence of the paper's own lemma; nothing fabricated.
+- **fingerprint:** NJL leg-A sign exclusion, scalar channel, AA PP attractive, G_AA +3/32 kappa, G_PP +3/64 kappa, eq:AAdecomp, channel-complete, magnitude leg B, far vs comfortably sub-critical, condensate any coupling
+
+### NJ2 re-flags (source-cited)
+- EXT-Grok IV-A/App-D transparency-of-derivation MAJOR (display Fierz coeffs + gap-eq excerpt in main text) → DP1U-19 (self-containment). ENGAGED the appendix; central claim supported per Grok's own one-sentence. PROCESS/transparency, not a defeater.
+- EXT-Grok Routes-2/3 scaling-ansätze MAJOR → DP1U-10; 13-barrier catalog MAJOR → DP1U-13; minors → DP1U-08/-12/-19.
+- EXT-ChatGPT #8 NJL-Fierz-coefficient MAJOR (demands Fock channel, exchange signs, full auxiliary-field decomposition) → DP1U-05 — ENGAGED (re-derived the coupling); documented maximal-harsh structural floor on Route-1 NJL; v1U.0.16 leg-A scoping partially answers, broader Fock demand is the floor re-flag. Remaining #1-7,9-14,15 → DP1U-03/-08/-07/-04/-09/-10/-11/-12/-13/-14/-17/-14/-15/-02.
+
+### CORRECTION to prior W2-ledger note
+The earlier "NEITHER Grok NOR ChatGPT engaged the new NJL appendix" note is SUPERSEDED for NJ2: both EXT-Grok (IV-A MAJOR names G_scalar) and EXT-ChatGPT (#8 re-derives the Fierz coupling) engaged the appendix this wave.
+
+### Streak
+RESET to 0 (DP1U-26 genuinely-new editable finding).
+
+### Integrity
+No faked ACCEPT. No un-sourced dismissal. No fabrication. Gemini INT first-MINOR-on-P1U milestone verified from raw + posted to activityFeed.
