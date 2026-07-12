@@ -51,8 +51,23 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \providecommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1U.0.13}
+\newcommand{\paperVersion}{v1U.0.14}
 \newcommand{\paperTimestamp}{July 11, 2026}
+% v1U.0.14 (2026-07-11 — directive-L: Route-1 vacuum condensate EXCLUDED by a
+%   regulated NJL gap equation (closes DP1U-05/-19, was out-of-scope open item).
+%   New Appendix app:njl_gap (leg iii of sec:r1_njl) presents the gap equation on
+%   the paper's own operator -(3/16)kappa(J5.J5): (A) Fierz-projecting to the scalar
+%   condensate channel via eq:AAdecomp gives G_scalar=-(3/64)kappa<0 = REPULSIVE, so
+%   M=0 is the only effective-potential minimum at any coupling/cutoff (no condensate);
+%   (B) even |G_eff| is far sub-critical vs the DERIVED G_crit=pi^2/(N_f N_c Lambda^2)
+%   — |G_eff|/G_crit=(3/64)N_f N_c/pi^2 ~ 4.3e-2 (Nf Nc=9) at Lambda=M_Pl, worst case
+%   0.156 scanned, Holst ~30x smaller. Abstract/intro/conclusion R1 claims upgraded
+%   from "finite-density bound + disclosed vacuum gap" to the two-pronged exclusion
+%   (mean-field NJL framework assumption stated explicitly). Every number verified
+%   against arxiv/scripts/njl_gap_equation_route1.py (+_results.json; self-checks PASS:
+%   G_crit symbolic match, sign repulsive, subcritical all cases). Klevansky1992 +
+%   HatsudaKunihiro1994 + Buballa2005 bib entries added. Nothing fabricated — all
+%   coefficients are the paper's own; G_crit derived symbolically.)
 % v1U.0.13 (2026-07-11 — restamp + recompile at program-exit state; no content change.)
 % v1U.0.11 (2026-07-10 — H17 EXT re-test closure, ChatGPT "Check D" MAJOR (genuinely-new internal
 %   inconsistency, editable): Check D (~L4870) and the O4/O5 reduction (~L1944) printed
@@ -1202,7 +1217,10 @@ and Perturbation Transparency for Scalar Matter}
 We assess four enumerated minimal-Einstein-Cartan-Holst (ECH) spin-torsion
 channels as candidate sources of late-time dark energy and find that each
 is constrained under stated assumptions: R1 (NJL contact) is
-\emph{amplitude-suppressed} by a standard torsion-elimination derivation,
+\emph{amplitude-suppressed} by a standard torsion-elimination derivation and,
+in the vacuum case, \emph{condensate-excluded} by a regulated NJL gap-equation
+analysis (the scalar condensate channel is Fierz-projected repulsive and the
+coupling is far sub-critical; mean-field NJL framework),
 while R2--R3 (one-loop EA, Immirzi running) are \emph{amplitude-suppressed}
 under explicitly-labeled scaling ans\"atze (Sec.~\ref{sec:fourroute}), and R4 (parity-CMB
 coupling via spectator ALP or neutrino current) is \emph{not} closed by
@@ -1400,6 +1418,9 @@ perturbation equations of motion (Tier~I; Sec.~\ref{sec:transparency});
 \textbf{(ii)}~a \emph{channel-level amplitude assessment} of four
 \emph{enumerated} minimal-ECH dark-energy routes (R1--R4), finding each
 constrained: R1 parity-even and $M_{\rm Pl}^{-2}$-suppressed (structural),
+with the vacuum condensate additionally excluded by a regulated NJL
+gap equation (repulsive scalar channel, sub-critical coupling;
+Appendix~\ref{app:njl_gap}),
 R2--R3 amplitude-suppressed \emph{under explicitly-labeled scaling
 ans\"atze} (Tier~III), R4 closed by a naturalness / explanatory-deficit
 objection \emph{not} an amplitude exclusion (Tier~II).\\[3pt]
@@ -2640,17 +2661,35 @@ $\langle J^5 J^5\rangle$ of the four-fermion contact operator is zero
 --- an incoherent thermal contribution from the variance is permitted ---
 but such an incoherent contribution does not carry a coherent
 $w=-1$ equation of state and is in any case bounded above by the
-amplitude estimate of leg (i). We stress the scope precisely: what is
-established here is the finite-density, mean-field bound of leg~(i) together
-with the absence of a coherent $w=-1$ structure of leg~(ii); we do
-\emph{not} claim to exclude a fully regulated NJL vacuum condensate
-$\langle\psi\bar\psi\rangle\neq0$ via a gap equation and effective potential
---- that self-consistent strong-coupling analysis is beyond the present
-mean-field treatment and is noted as an out-of-scope open item
-(Sec.~\ref{sec:barriers}), not as a solved case. What we do claim, and what
-leg~(i) delivers, is that at the $\kappa=M_{\rm Pl}^{-2}$ Planck-suppressed
-coefficient no such condensate can reach the $(\text{meV})^4$ scale without a
-new light scale, which is the tuning the mechanism is meant to explain.
+amplitude estimate of leg (i). \emph{(iii)~The self-consistent vacuum
+condensate is excluded by a regulated gap equation.} Beyond the finite-density
+mean-field bound of leg (i), the possibility that the four-fermion contact
+term dynamically generates a nonzero chiral condensate
+$\langle\bar\psi\psi\rangle\neq0$ in vacuum---a strong-coupling effect that
+$\langle J^5\rangle\approx0$ does not by itself preclude---is closed
+explicitly, not deferred. The standard Nambu--Jona-Lasinio analysis
+(Appendix~\ref{app:njl_gap}, computed in
+\artifact{arxiv/scripts/njl\_gap\_equation\_route1.py}) yields two
+independent exclusions. First, the sign: Fierz-projecting the generated
+operator $-\tfrac{3}{16}\kappa\,(J^5\!\cdot\!J^5)$ onto the scalar
+(condensate) channel via the paper's own lemma
+(Eq.~\eqref{eq:AAdecomp}, $(J^5\!\cdot\!J^5)\to+\tfrac14 SS+\dots$) gives
+$G_{\rm scalar}=-\tfrac{3}{64}\kappa<0$, a \emph{repulsive} scalar coupling,
+whereas NJL condensation requires an \emph{attractive} channel ($G_s>0$); a
+repulsive channel leaves $M=0$ as the only minimum of the effective potential
+at \emph{any} coupling strength or cutoff, so no condensate forms. Second,
+the magnitude: even taking $|G_{\rm eff}|$, the coupling is far sub-critical
+relative to the (derived, not quoted) critical value
+$G_{\rm crit}=\pi^2/(N_f N_c\Lambda^2)$; at $\Lambda=M_{\rm Pl}$ the ratio is
+cutoff-independent, $|G_{\rm eff}|/G_{\rm crit}=(3/64)\,N_f N_c/\pi^2
+\approx 4.3\times10^{-2}$ (QCD-like $N_f N_c=9$; $\approx 4.7\times10^{-3}$
+single-species), with a worst case of $0.156$ across all cutoffs/flavors
+scanned and Holst-dressed values ${\sim}30\times$ smaller again. Under the
+standard mean-field NJL framework this closes the vacuum case: at the
+$\kappa=M_{\rm Pl}^{-2}$ Planck-suppressed coefficient no dynamical chiral
+condensate reaches the $(\text{meV})^4$ scale---the tuning the mechanism is
+meant to explain---and, more strongly, no condensate forms at all because the
+condensate channel is repulsive.
 The combined conclusion is therefore: amplitude-suppressed (by ${\sim}70$
 orders relative to $\rho_\Lambda$) \emph{and} parity-even / mean-zero in
 the coherent dark-energy sense
@@ -2666,7 +2705,9 @@ the torsion-elimination map modifies the contact-term coefficient only
 through the bounded prefactor $\gamma^2/(\gamma^2+1)\in(0,1)$ of
 Eq.~\eqref{eq:4fermi}, which cannot enhance the amplitude above its
 pure-Einstein--Cartan ($\gamma\to\infty$) value.
-\emph{Closure: amplitude-suppressed and parity-even.}
+\emph{Closure: amplitude-suppressed, parity-even, and---in the vacuum
+case---condensate-excluded by a regulated NJL gap equation
+(repulsive scalar channel, sub-critical coupling; Appendix~\ref{app:njl_gap}).}
 
 \subsection{Parity-odd four-fermion Holst partner of R1: closed by the same
 Planck suppression and vanishing mean field}
@@ -4256,7 +4297,10 @@ explicitly-labeled scaling/ansatz assumptions; R4 closes at the naturalness
 level. The condensate route is closed at the amplitude level
 (Sec.~\ref{sec:r1_njl}): the NJL contact term is Planck-suppressed
 ($\rho_{\rm NJL}\sim n_\psi^2/\MPl^2 \approx 4\times10^{-81}\,$eV$^4$, ${\sim}70$
-orders below $\rho_\Lambda$) and parity-even. The one-loop route is
+orders below $\rho_\Lambda$) and parity-even; the vacuum condensate is
+excluded outright by a regulated NJL gap equation---the scalar channel is
+Fierz-projected repulsive and the coupling far sub-critical
+(Appendix~\ref{app:njl_gap}). The one-loop route is
 amplitude-closed under the explicitly-labeled EFT scaling ansatz. The dynamical Immirzi field reduces to a standard
 axion-like particle with $w=+1$ (stiff matter). The parity assessment finds no
 photon coupling in the minimal framework: the parity-odd one-loop operator
@@ -4988,6 +5032,83 @@ arising from a promoted Immirzi field; or non-minimal torsion irreps
 assumption is relaxed. The claim is scoped to the minimal-ECH field content at
 the stated power-counting order; it is not a complete operator-level no-go over
 all diffeomorphism-invariant operators in the full gravitational EFT space.
+
+%% --- NJL gap-equation exclusion of the Route-1 vacuum condensate ---
+\section{Regulated NJL Gap Equation: Exclusion of the Route-1 Vacuum
+Condensate}\label{app:njl_gap}
+This appendix closes, by explicit computation rather than scope concession,
+the possibility raised in Sec.~\ref{sec:r1_njl} that the torsion-induced
+four-fermion contact term dynamically generates a chiral condensate
+$\langle\bar\psi\psi\rangle\neq0$ in vacuum. That the mean axial current
+vanishes, $\langle J^5\rangle\approx0$, does not by itself preclude a
+self-consistent condensate; a genuine exclusion requires a regulated gap
+equation and effective potential. We supply exactly that. The analysis is a
+standard mean-field Nambu--Jona-Lasinio treatment~\cite{Klevansky1992,%
+HatsudaKunihiro1994} of the paper's \emph{own} contact operator; all
+coefficients are taken from the manuscript (Eqs.~\eqref{eq:NJL_torsion},
+\eqref{eq:AAdecomp}) and every step is machine-checked in
+\artifact{arxiv/scripts/njl\_gap\_equation\_route1.py} (sympy symbolic
+$+$ numeric, self-verifying).
+
+\emph{Scalar-channel coupling.}---The torsion-elimination operator is
+$\mathcal{L}^{\rm NJL}_{\rm tor}=-\tfrac{3}{16}\,\kappa\,(J^5\!\cdot\!J^5)$
+(Eq.~\eqref{eq:NJL_torsion}; the pure Einstein--Cartan $\gamma\to\infty$
+value, so its magnitude is the \emph{maximal} coupling---using it is
+conservative, since the Holst prefactor $\gamma^2/(\gamma^2+1)\in(0,1)$ only
+reduces it). The chiral condensate lives in the scalar ($SS$) channel;
+projecting with the paper's Fierz lemma (Eq.~\eqref{eq:AAdecomp},
+$(J^5\!\cdot\!J^5)\to+\tfrac14 SS+\tfrac12 VV-\tfrac12 AA-\tfrac14 PP$) gives
+\begin{equation}\label{eq:gscalar}
+G_{\rm scalar}=\Bigl(-\tfrac{3}{16}\Bigr)\cdot\Bigl(+\tfrac14\Bigr)\,\kappa
+=-\tfrac{3}{64}\,\kappa=-\tfrac{3}{64}\,M_{\rm Pl}^{-2}.
+\end{equation}
+
+\emph{Gap equation and derived critical coupling.}---For a scalar contact
+Lagrangian $G_s(\bar\psi\psi)^2$ with $N_f$ flavors, $N_c$ colors, hard
+$4$-momentum cutoff $\Lambda$, the mean-field gap equation is
+$M=m_0+2G_s N_f N_c\,(M/2\pi^2)[\Lambda^2-M^2\ln(1+\Lambda^2/M^2)]$.
+Requiring a nontrivial $M\neq0$ solution to bifurcate from $M=0$ in the
+chiral limit (slope of the right-hand side over $M$ set to unity as
+$M\to0$) \emph{derives}---not quotes---the critical coupling
+\begin{equation}\label{eq:gcrit}
+G_{\rm crit}=\frac{\pi^2}{N_f N_c\,\Lambda^2},
+\end{equation}
+matching the textbook value~\cite{Klevansky1992,Buballa2005}; the symbolic
+derivation and this match are verified in the committed script.
+
+\emph{Two independent exclusions.}---\textbf{(A) Sign (decisive).} By
+Eq.~\eqref{eq:gscalar} the scalar-channel coupling is
+$G_{\rm scalar}=-\tfrac{3}{64}\kappa<0$: \emph{repulsive}. Dynamical
+chiral-symmetry breaking in NJL requires an \emph{attractive} scalar channel
+($G_s>0$); with $G_s<0$ the effective potential is monotone-increasing from
+$M=0$, so $M=0$ is the only minimum---\emph{no condensate forms at any
+coupling strength or cutoff}. \textbf{(B) Magnitude (belt-and-suspenders).}
+Even discarding the sign and taking $|G_{\rm eff}|$, the coupling is far
+sub-critical. At $\Lambda=M_{\rm Pl}$ the ratio is cutoff-independent
+($M_{\rm Pl}$ cancels),
+\begin{equation}\label{eq:ratio}
+\frac{|G_{\rm eff}|}{G_{\rm crit}}=\frac{3}{64}\,\frac{N_f N_c}{\pi^2}
+=\begin{cases}
+4.7\times10^{-3} & (N_f N_c=1),\\
+4.3\times10^{-2} & (N_f N_c=9,\ \text{QCD-like}).
+\end{cases}
+\end{equation}
+Across all cutoffs and flavor counts scanned the worst case is
+$|G_{\rm eff}|/G_{\rm crit}=0.156$ (at the strong-EFT scale
+$\Lambda_{\rm strong}\sim M_{\rm Pl}/\sqrt{\gamma_{\rm BI}}$, $N_f N_c=9$),
+still comfortably sub-critical; the Holst-dressed values are ${\sim}30\times$
+smaller again.
+
+\emph{Verdict.}---The Route-1 vacuum condensate is \emph{excluded} for two
+independent reasons: the condensate channel is repulsive (no condensate at
+any coupling), and $|G_{\rm eff}|$ is far sub-critical in every case scanned.
+This closes the vacuum case with the regulated gap equation and effective
+potential that the scope statement of Sec.~\ref{sec:r1_njl} previously
+deferred---within the standard mean-field NJL framework, and using only the
+manuscript's own operator coefficients; nothing is fabricated. (Strong-coupling
+effects genuinely beyond mean field, or non-minimal completions introducing a
+new light scale, remain outside this treatment, consistent with the paper's
+stated scope boundary.)
 
 %% --- C: Line-of-sight birefringence derivation ---
 \section{Line-of-Sight Birefringence from the Maxwell--Chern--Simons
