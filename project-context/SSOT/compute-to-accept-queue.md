@@ -1,6 +1,27 @@
 # Compute-to-ACCEPT queue (the real research that drives external ACCEPT)
 
-<!-- last_updated: 2026-07-12 (15:07 tick — b/a ledger reconcile) -->
+<!-- last_updated: 2026-07-12 (16:07 tick — state-honesty + cost-safety attestation) -->
+
+## 2026-07-12 (hourly cron tick, 16:07) — state verified honest, $0 pod burn, no fireable atomic increment
+
+**State check (step 1):** no concurrent driver (only my own `claude -p` tick PID); working tree clean;
+`tools/site_freshness_check.sh` → **exit 0** (no stale surface). All EXT harvested + adjudicated —
+**M7-EXT** (P4/P2) closed 17 min prior (`ee2a06fd`): P4 clean-wave streak 1→2 (**ChatGPT floor-crack**
+= first non-REJECT on P4, recorded as a verdict-word milestone, EXT cap correctly held 74), P2 streak
+2→3 (Grok slip diagnosed). M6-EXT (P5/P3) closed 78 min prior, 0 genuinely-new. Dispositions P1U/P2/P3/P4/P5
+all current. **0 genuinely-new editable findings** open on any paper — every open item is a source-cited
+re-flag, an OPEN-COMPUTE frontier item, an OPEN-VENUE item, or a process-nit.
+
+**Cost-safety (RunPod API, this tick):** all **9 pods EXITED**, `runtime=None` → **$0 compute burn**
+(incl. `bigbounce-p4-e2e-mirror`, `-dr8morph`, `-gz1only`, `-c123-namaster`, `-p1b-snctrl`). No pod leaking spend.
+
+**Why no paper edit / no version bump this tick:** no paper changed since its last INT/EXT, so no re-test
+is due; a fresh EXT sweep 17 min after M7 on unchanged content = verdict-farming churn (directive-M forbids —
+waves MEASURE movement, never farm verdicts). The only genuinely-open forward levers are multi-hour **paid**
+pod runs (P4 Stage B image→field + spatially-resolved confusion + joint-covariance likelihood; P1B ALP
+prior-predictive) — Houston go/scope-gated + thin balance (~$15), NOT fireable unsupervised in one atomic
+headless tick. Correct honest increment = this state + cost attestation. No fabrication, no gamed verdict,
+no false readiness change.
 
 ## 2026-07-12 (hourly cron tick, 15:07) — ledger reconcile: P4 b/a axis-ratio cross-match marked DONE (was stale-open ×2)
 
