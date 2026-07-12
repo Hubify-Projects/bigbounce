@@ -48,6 +48,30 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p1u-nj6-ext-int-streak2-2026-07-12",
+    dateISO: "2026-07-12",
+    kind: "external-browser",
+    title:
+      "P1U NJ6 — SECOND consecutive 0-new re-test of the v1U.0.17 AA-channel bound fix. EXT Grok=MAJOR (4M+2m) + ChatGPT=REJECT (14M+2m) both raws read verbatim; INT (run.log 10:49Z) openai/grok=REJECT, gemini=MINOR (softened from MAJOR), claude=MINOR. Every finding a source-cited re-flag of an existing D-id → 0 genuinely-new reader-visible editable. Clean-wave streak 1→2 — restores the full FIVE-PAPER directive-K set to streak-2 with all science closures aboard (milestone FIRES). No content bump (v1U.0.17 stands); cap 62 HOLDS.",
+    papers: ["P1A"],
+    summary:
+      "STRICT ledger-first adjudication of NJ6 — the SECOND consecutive re-test of the DP1U-NJ4-01 AA-channel bound fix, no content change since the 0-new NJ5 wave (the editorial v1U.0.18 'far'→'comfortably sub-critical' internal-consistency fix is non-reviewer-facing). Both EXT raws read + verified verbatim before any verdict (Grok l.1 'VERDICT: MAJOR REVISIONS', ChatGPT l.1 'VERDICT: REJECT'). ledger_match.py pre-triage (Grok 5/8, ChatGPT 5/16 MATCHED — conservative threshold; UNMATCHED all prose-diluted / verbose-restated re-flags) + full Opus §3 truth-audit vs arxiv/paper1_unified.tex + the P1U disposition ledger. AA-BOUND FIX HOLDS ON 2ND RE-TEST: INT-Claude (intwave_P1U_claude_0346.md) re-confirmed leg-(A) convention-independent scalar sign exclusion + leg-(B) magnitude bound (AA worst 2×0.156=0.31, sub-critical) against the committed njl_gap_equation_route1_results.json. 0 GENUINELY-NEW reader-visible editable findings across all 6 legs. EXT-Grok 4 MAJOR (channel-vs-operator no-go language DP1U-06/-20/-21; R4 naturalness-vs-amplitude tiering DP1U-11; §X transparency restricted to canonical scalar / excludes fermion-torsion-Immirzi DP1U-12; R1 NJL Fierz/Λ=M_Pl/mean-field robustness 'could reopen' DP1U-05/-19/-26/-NJ4-01) + 2 MINOR (13/14-barrier not self-contained DP1U-13; N_tot≈92 two-completions + 63pp DP1U-08/-14/-22) all re-flags; Grok's own close: central claim 'is supported … subject to the scope limitations and assumptions the paper itself enumerates.' EXT-ChatGPT REJECT (14 MAJOR + 2 MINOR) = structurally identical to every prior ChatGPT REJECT (Eq(1)-(4) DP1U-03; dim+1/M_Pl-promotion DP1U-08; basis O1=O6/Nieh-Yan DP1U-07/-20; R1 Fierz f_IJ-vs-true-matrix DP1U-05/-19/-26/-NJ4-01; single-scale NDA naturalness DP1U-08/-18; R2 (∂ϑ)J5 DP1U-09; R3 Δγ→ρ_Λ DP1U-10; R4 α/M floats both DP1U-11; N_tot≃92 a⁻³-vs-a⁻⁶ DP1U-14; matter-bounce −35/16-vs-Cai−35/8 DP1U-14/-17; §X standard DP1U-12; 13-constraints slogans DP1U-13; App F-H don't test theory DP1U-15/-24; κ conventions DP1U-02; length DP1U-22), harsh-referee structural floor (directive-H); again engaged the NJL appendix only via leg-(B)/Fierz, did not rebut the leg-(A) convention-independent sign exclusion. DISPOSITIVE referee-variance evidence: INT-Grok softened MAJOR→REJECT while INT-Gemini softened MAJOR→MINOR on the SAME unchanged v1U.0.17 in the SAME wave — opposite-direction verdict-word motion = noise, not content (pattern-066). Under directive-K, 0 genuinely-new on a 2nd consecutive re-test increments the clean-wave streak 1→2, restoring the full five-paper directive-K set to streak-2 with all science closures aboard — the streak-2 / five-paper-restoration milestone FIRES (activityFeed). No content bump (v1U.0.17 stands as reviewed); directive_g.sh NOT re-run for NJ6; cap 62 HOLDS. No faked ACCEPT, no un-sourced dismissal (every finding → §/L + D-id), no math fabricated (the AA factor-2 / 0.31 is an algebraic consequence of the paper's own eq:AAdecomp).",
+    keyTakeaways: [
+      "P1U NJ6: SECOND consecutive 0-new re-test of the v1U.0.17 AA-channel bound fix → clean-wave streak 1→2; restores the full FIVE-PAPER directive-K set to streak-2 with all science closures aboard (milestone FIRES)",
+      "EXT Grok=MAJOR (4M+2m) + ChatGPT=REJECT (14M+2m), both raws read verbatim; every finding a source-cited re-flag of an existing D-id (Grok→DP1U-06/-20/-21/-11/-12/-05/-19/-26/-NJ4-01/-13/-08/-14/-22; ChatGPT→DP1U-03/-08/-07/-20/-05/-19/-26/-NJ4-01/-18/-09/-10/-11/-14/-17/-12/-13/-15/-24/-02/-22)",
+      "AA-bound fix HOLDS on 2nd independent re-test: INT-Claude re-confirmed leg-(A) convention-independent scalar sign exclusion + leg-(B) AA worst 2×0.156=0.31 (sub-critical) vs njl_gap_equation_route1_results.json",
+      "DISPOSITIVE referee-variance: INT-Grok MAJOR→REJECT while INT-Gemini MAJOR→MINOR on the SAME unchanged v1U.0.17 in the SAME wave — opposite-direction verdict-word motion = noise, not content (pattern-066)",
+      "No content bump (v1U.0.17 stands as the reviewed version; the editorial v1U.0.18 'far'→'comfortably sub-critical' fix is non-reviewer-facing); directive_g.sh NOT re-run for NJ6; cap 62 HOLDS",
+    ],
+    links: [
+      { label: "EXT Grok P1U NJ6 raw", href: `${PR}/EXT_real/H17_2026-07-10/NJ6/P1U_grok_NJ6.md` },
+      { label: "EXT ChatGPT P1U NJ6 raw", href: `${PR}/EXT_real/H17_2026-07-10/NJ6/P1U_chatgpt_NJ6.md` },
+      { label: "INT-Claude P1U NJ6 raw", href: `${PR}/INT_api/H17_2026-07-10/intwave_P1U_claude_0346.md` },
+      { label: "P1U NJ6 truth-audit", href: `${PR}/EXT_real/H17_2026-07-10/NJ6/P1U_NJ6_truth_audit.md` },
+      { label: "P1U disposition ledger", href: `${PR}/DISPOSITIONS/P1U.md` },
+    ],
+  },
+  {
     id: "p1u-nj5-aa-bound-retest-2026-07-12",
     dateISO: "2026-07-12",
     kind: "external-browser",
