@@ -57,6 +57,32 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p1u-dp1u-prd-abstract-rewrite-2026-07-12",
+    dateISO: "2026-07-12",
+    kind: "closure-wave",
+    title:
+      "P1U DP1U — final standing EDITABLE item closed: full PRD-format abstract rewrite (v1U.0.19→v1U.0.20). The §4 carry-forward from the directive-M overhaul (every referee flagged abstract length/density) executed: abstract rewritten from ~1031 words / ~125 lines to ONE 213-word PRD paragraph — no displayed equations, no enumeration sprawl. Content-inventory cross-check confirms every load-bearing number/claim is already present in the intro scope paragraph, the boxed 'what this paper does/does not establish' figure, Table I, and body sections, so nothing was deleted — only summarized-and-relocated: the three items that lived 'only in the abstract' prose (dim-4 completion enumeration, Foundations A–G / Branches count, and the birefringence battery 0.342°±0.094° ~3.6σ / ACT-DR6 0.215°±0.074° ~2.9σ) each verified independently present in the body via grep. Directive-G HARD-GATE PASS. INT re-test (native-PDF): OpenAI REJECT / Grok MAJOR / Gemini MAJOR — Grok SOFTENED REJECT→MAJOR post-rewrite, no verdict worsened; truth-audit = 0 genuinely-new real findings (every finding a source-cited standing DP1U structural/scope re-flag).",
+    papers: ["P1U"],
+    summary:
+      "P1U's last standing editable item closed. Abstract rewritten ~1031w→213w as a single PRD paragraph; content-inventory cross-check verifies every load-bearing number relocated (never deleted) — dim-4 completion, Foundations/Branches count, and the full birefringence battery all independently present in intro/body/Table I. Directive-G: v1U.0.20, 62pp, 0 undef-refs, 6 served mirrors md5 c295beef, Convex bump verified. INT triple OpenAI REJECT / Grok MAJOR / Gemini MAJOR (Grok softened REJECT→MAJOR vs v1U.0.19); 0 genuinely-new — all findings standing DP1U scope re-flags (pattern-066 harsh-referee floor). Remaining gap = Houston-gated structural/venue barrier (not editable without softening science).",
+    keyTakeaways: [
+      "Final EDITABLE item CLOSED-BY-EDIT: the PRD single-paragraph abstract rewrite (~1031w→213w) that every referee had flagged (ChatGPT MINOR length, Grok 'single crisp statement not distributed caveats', Gemini/OpenAI meta-commentary). Grok's own distributed-caveat MINOR now targets the body boxes, not the compressed abstract — that abstract complaint is resolved.",
+      "Zero claims changed: content-inventory cross-check maps every prior-abstract number to an existing home (intro Scope para + box (i)/(ii)/(a)/(b), Table I, sec:rotation/app:dim4_completion, sec:obs+sec:r4_birefringence, sec:foundations L1594). The 3 'abstract-only' items (dim-4 completion, Foundations A–G/Branches, birefringence battery) verified independently present in the body via grep before relocation.",
+      "INT triple (native-PDF): OpenAI REJECT / Grok MAJOR / Gemini MAJOR. Grok SOFTENED REJECT→MAJOR vs v1U.0.19; OpenAI/Gemini unchanged — no verdict worsened by the compression. 0 genuinely-new real findings: OpenAI #2/#7/#12/#15 + all Grok items are source-cited standing DP1U structural/scope re-flags dispositioned disclosed-scope (patterns 061-064).",
+      "Integrity: content relocated not deleted (grep-verified), directive_g.sh HARD-GATE PASS (v1U.0.20, 0 undef-refs, 62pp, 6 mirrors md5 c295beeff7c2, Convex row k57ctkx6 verified), no ACCEPT faked, no OpenAI major dismissed without a source-cited verdict, no math fabricated. Remaining gap to all-A is the Houston-gated structural/venue barrier only.",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 0,
+      note: "Closure round (final EDITABLE item): 0 genuinely-new findings. Abstract compressed ~1031w→213w PRD single-paragraph with every load-bearing number relocated (grep-verified present in intro/body/Table I), not deleted. INT triple OpenAI REJECT / Grok MAJOR / Gemini MAJOR — Grok softened REJECT→MAJOR; all findings standing DP1U scope re-flags.",
+    },
+    links: [
+      { label: "DP1U ledger (round 2)", href: `${PR}/DP1U_2026-07-12.md` },
+      { label: "P1U OpenAI INT raw (v1U.0.20)", href: `${GH}/project-context/peer-reviews/INT_v3/ROUND_2026-07-09/API_P1U_openai.md` },
+      { label: "P1U Grok INT raw (v1U.0.20)", href: `${GH}/project-context/peer-reviews/INT_v3/ROUND_2026-07-09/API_P1U_grok.md` },
+      { label: "P1U Gemini INT raw (v1U.0.20)", href: `${GH}/project-context/peer-reviews/INT_v3/ROUND_2026-07-09/API_P1U_gemini.md` },
+    ],
+  },
+  {
     id: "m4-ext-confirm-wave-2026-07-12",
     dateISO: "2026-07-12",
     kind: "external-browser",
