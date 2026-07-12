@@ -1,4 +1,4 @@
-# Canonical dispositions — P1U (as of v1U.0.12, 2026-07-11; W2-EXT adjudication appended)
+# Canonical dispositions — P1U (as of v1U.0.16, 2026-07-12; NJ1–NJ3 + NJ3b adjudication appended; NJ3b = recovered ChatGPT retry REJECT on v1U.0.16 → 0 genuinely-new [incl. rigorous 8π/1.07 NJL non-defeater], streak HOLDS 1, cap 62 HOLDS)
 
 One numbered entry per DISTINCT finding-class. Duplicates across reviewers/rounds are
 merged. Source: `EXT_real/H17_2026-07-10/P1U_truth_audit.md` (body + INT re-test,
@@ -16,7 +16,7 @@ numbers spot-checked against current `arxiv/paper1_unified.tex` v1U.0.11 and upd
 - **class:** CLOSED-BY-EDIT (v1U.0.11)
 - ChatGPT #19, OpenAI-grok minor, Claude, OpenAI retest2 MIN #14: `κ ≡ 8πG = M_Pl⁻²` with unreduced `M_Pl=G^{-1/2}` is mathematically wrong (8πG=8π M_Pl⁻²≠M_Pl⁻²).
 - Confirmed error, fixed. Convention block now states `κ ≡ 8πG = 8π M_Pl⁻² = M̄_Pl⁻²` with `M̄_Pl=(8πG)^{-1/2}=M_Pl/√(8π)` reduced (L2103-2109); the compact `κ=M_Pl⁻²` shorthand flagged as reduced-mass sense (8π factor immaterial to OOM budgets). κ² usage (=16πG, Shapiro–Teixeira) already correctly attributed.
-- **fingerprint:** kappa convention, reduced Planck mass, M_Pl, 8πG, kappa vs kappa-squared, unreduced
+- **fingerprint:** kappa convention, reduced Planck mass, M_Pl, 8πG, kappa vs kappa-squared, unreduced, 8pi immaterial claim, criticality ratio 1.07, 3 Nf Nc/(8pi), unreduced-vs-reduced in leg-B, kappa Lambda^2 convention, factor-25 crosses subcritical boundary
 
 ### DP1U-03: Eq.(1) variational hybrid (¼T·T displayed but not varied)
 - **class:** RE-FLAG-DISCLOSED (clarity edit v1U.0.10)
@@ -34,7 +34,7 @@ numbers spot-checked against current `arxiv/paper1_unified.tex` v1U.0.11 and upd
 - **class:** CLOSED-BY-COMPUTE (directive-L, v1U.0.14) — was RE-FLAG-DISCLOSED
 - ChatGPT, OpenAI-grok #5, OpenAI retest #10, ChatGPT retest: mean-vanishing doesn't exclude variance; no regulated gap-equation / effective-potential NJL vacuum-condensate exclusion.
 - **CLOSED v1U.0.14 (directive-L):** the finite-density mean-field concession is upgraded to a *derived* exclusion. New Appendix `app:njl_gap` (leg iii of §r1_njl) presents the regulated NJL gap equation on the paper's own operator −(3/16)κ(J5·J5): (A) Fierz-projecting to the scalar (SS) condensate channel via eq:AAdecomp gives G_scalar=−(3/64)κ<0 → **repulsive** → M=0 is the only effective-potential minimum at ANY coupling/cutoff (no condensate forms); (B) even |G_eff| is far sub-critical vs the derived G_crit=π²/(N_f N_c Λ²) — |G_eff|/G_crit=(3/64)N_f N_c/π²≈4.3e-2 (Nf Nc=9) at Λ=M_Pl, worst case 0.156 scanned, Holst ~30× smaller. **Truth-audit note:** every number verified against `arxiv/scripts/njl_gap_equation_route1.py` + `_results.json` (script self-checks PASS: G_crit symbolic match=True, sign repulsive, worst-case ratio 0.156, subcritical all cases). Nothing fabricated — coefficients are the paper's own (eq:NJL_torsion, eq:AAdecomp), G_crit derived symbolically. Framework assumption (standard mean-field NJL) stated explicitly in-paper. Residual strong-coupling-beyond-mean-field / non-minimal completion stays out-of-scope (unchanged).
-- **fingerprint:** Route 1, NJL, gap equation, effective potential, vacuum condensate, J5 variance, w=-1, finite-density
+- **fingerprint:** Route 1, NJL, gap equation, effective potential, vacuum condensate, J5 variance, w=-1, finite-density, Fierz matrix f/4 normalization, Nieves-Pal, leg-B magnitude only, sign leg convention-independent, maximal EC vs Holst-dressed worst corner, ChatGPT NJ3b partial-engagement leg-B-only, scalar channel repulsive at any coupling, standard Fierz matrix, exchanged spinor ordering Grassmann signs
 
 ### DP1U-06: Four-route closure = channel-level, not operator-level theorem
 - **class:** RE-FLAG-DISCLOSED
@@ -58,7 +58,7 @@ numbers spot-checked against current `arxiv/paper1_unified.tex` v1U.0.11 and upd
 - **class:** RE-FLAG-DISCLOSED
 - OpenAI-grok #6, Grok-EXT, OpenAI #4, OpenAI retest #5, ChatGPT retest: R2 Eq.(17) phenomenological; ∂ϑ dimension / field-excursion vs instantaneous-rate; birefringence anomaly-chain not justified.
 - Dimensions explicitly correct (∂ϑ dim +2, operator dim +4); ∂ϑ∼H substitution + alternative-ordering loose bound disclosed. Route labeled "exploratory framing, not load-bearing" (L2919/L3381-adjacent). One-loop-grounded via Shapiro–Teixeira coefficients (v1A.0.108→109), absolute normalization honestly pending the ST Riccati flow.
-- **fingerprint:** Route 2, one-loop, parity-odd, ∂ϑ dimension, Shapiro-Teixeira, exploratory framing, birefringence, ansatz, literature attribution overstated, related work, Holst/Nieh-Yan papers, one-loop papers, imply stronger support, anomaly-chain, Eq(17) phenomenological
+- **fingerprint:** Route 2, one-loop, parity-odd, ∂ϑ dimension, Shapiro-Teixeira, exploratory framing, birefringence, ansatz, literature attribution overstated, related work, Holst/Nieh-Yan papers, one-loop papers, imply stronger support, anomaly-chain, Eq(17) phenomenological, [partial vartheta_NY]=2 vs H_0 dim-1, line-of-sight integral dt theta-dot, 10^-60 not calculated, Eq(17) admitted phenomenological operator, endpoint formula Appendix E
 
 ### DP1U-10: Route 3 Δγ → dark-energy / (H0/M_Pl) mapping is ansatz
 - **class:** RE-FLAG-DISCLOSED (SCOPE)
@@ -88,7 +88,7 @@ numbers spot-checked against current `arxiv/paper1_unified.tex` v1U.0.11 and upd
 - **class:** RE-FLAG-DISCLOSED
 - OpenAI #14, OpenAI-grok #9, OpenAI retest #11, ChatGPT retest, Grok retest #5: D_inf phenomenological not derived; a^{-6} vs a^{-3}; N_tot≈92 ansatz; erasure claimed "definitively."
 - D_inf explicitly "mathematical scaffolding" after reheating resets the axial mean (disclosed); a^{-6} concerns the erased channel already conceded not a dynamical prediction; N_tot spread disclosed bookkeeping (L1757-adjacent). Honest.
-- **fingerprint:** D_inf, mathematical scaffolding, a^-6 scaling, N_tot 92, matter-bounce erasure, reheating reset
+- **fingerprint:** D_inf, mathematical scaffolding, a^-6 scaling, N_tot 92, matter-bounce erasure, reheating reset, n^2 propto a^-6 not w=-1, no stress tensor continuity equation, e^-3Ntot (Treh/MGUT)^3/2 phase-space ansatz, scaffolding-vs-physical-requirement, no coherent single-action model, bounce-to-inflation matching conditions
 
 ### DP1U-15: Appendices E–H don't test ECH (stock-CAMB / synthetic-sky / imported)
 - **class:** RE-FLAG-DISCLOSED
@@ -284,7 +284,7 @@ Raws verified: EXT Grok=MAJOR (NJ2/), EXT ChatGPT=REJECT (NJ2b/); INT openai=REJ
 ### DP1U-26: NJL leg-(A) sign exclusion channel-completeness (NEW, genuinely-new)
 - **class:** CLOSED-BY-EDIT (v1U.0.16)
 - INT-Claude MINOR #1: leg (A) claims "no condensate at any coupling/cutoff" but only excludes the SCALAR χSB channel; by the paper's own `eq:AAdecomp` the AA/PP channels are attractive ($G_{\rm AA}=+3/32\kappa$, $G_{\rm PP}=+3/64\kappa>0$) and are excluded only by magnitude leg (B). VERIFIED (source-cited to :2688,:5089-5095,:5008). Closed by scoping leg (A) to the scalar channel + crediting leg (B) with the attractive channels; "far sub-critical"→"comfortably sub-critical (worst 0.156)". Arithmetic = algebraic consequence of the paper's own lemma; nothing fabricated.
-- **fingerprint:** NJL leg-A sign exclusion, scalar channel, AA PP attractive, G_AA +3/32 kappa, G_PP +3/64 kappa, eq:AAdecomp, channel-complete, magnitude leg B, far vs comfortably sub-critical, condensate any coupling
+- **fingerprint:** NJL leg-A sign exclusion, scalar channel, AA PP attractive, G_AA +3/32 kappa, G_PP +3/64 kappa, eq:AAdecomp, channel-complete, magnitude leg B, far vs comfortably sub-critical, condensate any coupling, 8pi factor leg-B worst corner, criticality ratio 0.043 vs 1.07, sign convention-independent, leg-A decisive not leg-B
 
 ### NJ2 re-flags (source-cited)
 - EXT-Grok IV-A/App-D transparency-of-derivation MAJOR (display Fierz coeffs + gap-eq excerpt in main text) → DP1U-19 (self-containment). ENGAGED the appendix; central claim supported per Grok's own one-sentence. PROCESS/transparency, not a defeater.
@@ -323,3 +323,26 @@ post_verdict after Grok EXT MAJOR (unchanged): 50 + grok(major 6) + chatgpt(reje
 
 ### Integrity
 No faked ACCEPT. No un-sourced dismissal (every finding → §/L + D-id). No fabrication. Gemini oscillation diagnosed from the raw, not steered.
+
+---
+
+## NJ3b adjudication (v1U.0.16, 2026-07-12) — recovered ChatGPT EXT retry (fills the NJ3 ChatGPT dead-GAP) — STRICT ledger-first
+
+Raw read+verified: `EXT_real/H17_2026-07-10/NJ3b/P1U_chatgpt_NJ3b.md` = **REJECT** (raw l.1 literal `VERDICT: REJECT`; 12 MAJOR + 1 MINOR). Pre-triage `tools/ledger_match.py`: 9/11 MATCHED, 2 UNMATCHED (#1 DP1U-03 score 0.28, #4 DP1U-09 score 0.28); all Opus-adjudicated below (skeptical, verdict-first, not told a convergence conclusion). The highest-stakes finding (#3, the 8π/criticality-ratio-1.07 NJL claim) was rigorously source-verified against `arxiv/scripts/njl_gap_equation_route1.py` + `app:njl_gap`.
+
+**0 genuinely-new reader-visible editable findings.** All 13 findings = source-cited re-flags:
+- **UNMATCHED#1 MAJOR (score 0.28) "Eq.(1) ¼T·T not varied; Eq.(3) not the finite-γ Cartan solution (missing ε^IJKL A_L + η A_K/γ); 'non-axial torsion vanishes under minimal coupling is false'; F1/F2 doesn't follow"** → **RE-FLAG of DP1U-03 + DP1U-04 + DP1U-07.** The ¼T·T-not-varied is DP1U-03 (footnote L1826/L1833-1843); the paper DERIVES the minimal-coupling Dirac spin current *totally antisymmetric* `S^abc=¼ε^abcd J5_d` (L1841-1842) so all trace/vector torsion parts vanish — the finite-γ vector components arise only under NON-minimal coupling, scoped out per DP1U-04 (FMT); the F1/F2 completeness argument is DP1U-07. Disclosed. Fingerprint added.
+- **UNMATCHED#4 MAJOR (score 0.28) "Route R2 Eq.(17) admitted phenomenological; [∂ϑ_NY]=2 but ∂ϑ~H_0 (dim 1); missing ∫dt ϑ̇=Δϑ; 10⁻⁶⁰ not calculated"** → **RE-FLAG of DP1U-09.** The paper states ϑ_NY dim +1, ∂ϑ_NY dim +2 explicitly (L2952-2955), discloses the ∂ϑ∼H substitution as an approximation, and labels Route 2 "exploratory framing, not load-bearing" (L2994). Verbatim DP1U-09. Fingerprint added.
+- **#3 MAJOR (the highest-stakes) "Fierz matrix in Eq.(C1) is f/4 not the properly-normalized matrix; using G_scalar=3κ/64, N_fN_c=9, Λ=M_Pl changes the criticality ratio from 0.043 to 3N_fN_c/(8π)≃1.07 — the discarded 8π changes the conclusion"** → **RE-FLAG of DP1U-02 + DP1U-05/-26 (PROCESS-NIT tightening available; NOT a defeater, NOT genuinely-new).** RIGOROUS VERDICT: the reviewer's 1.07 IS arithmetically correct (3·9/(8π)=1.074) — BUT only for leg (B) evaluated at the *unreduced* κ=8πM_Pl⁻² AND unreduced Λ=M_Pl AND *maximal* (γ→∞) EC coupling. This does NOT overturn the Route-1 exclusion for three source-cited reasons: (1) **leg (A) — the decisive exclusion — is convention-independent:** `G_scalar=−(3/64)κ<0` is *repulsive* regardless of any 8π factor (tex L5082-5083/L5099-5105; script L89/L149-155/L278), so M=0 is the only minimum at ANY coupling magnitude; the 8π cannot touch the sign. (2) The 8π touches only leg (B), the explicitly-labeled belt-and-suspenders magnitude argument (L5112); even there the *physical* Holst-dressed coupling gives 0.075 and the paper's EFT cutoff Λ_strong=M_Pl/√γ_BI gives 0.294 (both <1) — only the worst unreduced+maximal corner reaches 1.07. (3) The disputed Fierz coefficients are the paper's OWN `eq:AAdecomp` (L5018), machine-checked. THE ONE REAL SLIVER: the blanket "8π immaterial to every such estimate" footnote (L2143-2145) is not strictly accurate for leg (B)'s worst corner (0.043→1.07 crosses the sub-critical boundary) — a comment-level tightening opportunity intersecting DP1U-02 (convention-immateriality) × DP1U-05/-26 (leg-B magnitude scope), NOT a reader-visible science defect since the exclusion rests on leg (A). Fingerprint added.
+- The other 10 MATCHED map to DP1U-08 (Eq.6 dim+1/O1=O6/basis) / DP1U-10 (R3 Immirzi running) / DP1U-11 (R4 ALP spectator) / DP1U-14 (N_tot≃92 dilution, n²∝a⁻⁶ not w=−1) / DP1U-12 (§X transparency "standard") / DP1U-17 (f_NL −35/8→−35/16) / DP1U-14+06+16 (no coherent cosmological model) / DP1U-15+24+02+22 (App F–I stock-CAMB/figs/κ-conventions/length MINOR). Same ChatGPT harsh-referee structural floor as H17G/W1-EXT/W2b/FR1b.
+
+**EXT engagement note:** ChatGPT NJ3b ENGAGED the new NJL appendix — finding #3 (raw l.66-123) names "Appendix D," `G_scalar=3κ/64`, the Fierz matrix "Eq.(C1)," and computes an alternative criticality ratio. But it engaged only leg (B) (magnitude) via a convention mix and did NOT engage/rebut leg (A) (the sign exclusion, L5099-5105) — the same partial-engagement pattern as NJ2 (ledger note above). It did not separately name the leg-(A) scalar-vs-AA/PP channel structure (DP1U-26).
+
+### Streak
+NJ3 clean → streak was 0→1. NJ3b = 0 genuinely-new → **streak HOLDS at 1** (this leg is the ChatGPT retry recovering the NJ3 ChatGPT dead-GAP; no reset).
+
+### Cap
+post_verdict after ChatGPT REJECT (fills the prior GAP, score 0 = same as GAP contribution): 50 + grok(NJ3 major 6) + chatgpt(reject 0) + gemini(FR1-INT major 6) = **62 HOLDS** (unchanged from NJ3).
+
+### Integrity
+REJECT verdict read verbatim before any disposition; no ACCEPT faked; every disposition source-cites a tex line or script line; no dismissal without a source-cited verdict; no math fabricated. The 8π/1.07 claim was adjudicated arithmetically (reproduced the number) and dispositioned on the leg-(A) convention-independent sign, not waved away. Fingerprint keywords added to DP1U-02/-05/-26/-09/-14.
