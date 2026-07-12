@@ -48,6 +48,27 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p1u-nj4-njl-legB-aa-channel-closure-2026-07-12",
+    dateISO: "2026-07-12",
+    kind: "closure-wave",
+    title:
+      "P1U NJ4: INT-Claude MINOR surfaced a GENUINELY-NEW reader-visible finding (DP1U-NJ4-01) → closed v1U.0.17; under directive-K the clean-wave streak RESETS 1→0 (the streak-2 / five-paper-restoration milestone did NOT fire). Route-1 NJL magnitude leg (B) previously covered only the PP-equal bound and was silent on the 2×-larger attractive AA channel; now states worst |G_AA|/G_crit = 2×0.156 = 0.31 (still sub-critical, conclusion unchanged); AA/PP shown not to be the scalar σ-condensate at issue; 'far'→'sub-critical' wording unified.",
+    papers: ["P1A"],
+    summary:
+      "Harvested + closed the pending NJ4 rebuild-wave INT leg: a Claude-subscription subagent re-review of P1U v1U.0.16 returned MINOR REVISIONS — 0 correctness bugs, central claim supported, conclusion unchanged — with three presentation items on the Route-1 NJL condensate-exclusion appendix. All three closed same-bundle as v1U.0.17 (presentation-only, no number changed): (1) leg (B) magnitude bound previously disposed of the attractive axial (AA) and pseudoscalar (PP) channels via the PP-only equality |G_PP|=|G_scalar|, silent on AA whose coupling is larger by the exact factor G_AA/|G_scalar|=2; App. njl_gap + the main-text mirror now state the AA worst-case ratio explicitly, |G_AA|/G_crit ≈ 2×0.156 = 0.31 — still sub-critical, conclusion unchanged; (2) added the physical point that an AA 'condensate' ⟨ψ̄γ^μγ_5ψ⟩ is a Lorentz-violating axial-vector vacuum and PP ⟨ψ̄iγ_5ψ⟩ is parity-breaking — neither is the scalar σ-condensate ⟨ψ̄ψ⟩ that leg (A) kills or that could source a coherent w=−1 term, so leg (A)'s sign exclusion is already decisive for the object under exclusion; (3) the blanket 'far sub-critical' phrasing in the abstract + discussion was aligned to plain 'sub-critical' to match the appendix's tempered worst-case (0.156 / AA 0.31), while the headline single-species/QCD-like ratios (4.7×10⁻³, 4.3×10⁻²) that justify 'far' stay in the appendix. Recompiled TinyTeX 4-pass, 0 undef-refs, 63 pp; directive-G hygiene: byte-identical PDF across all served paths (md5 67127cda…), Convex paperVersions:bump, papers.ts + live-status.ts same-bundle. STRICT ADJUDICATION (ledger-first): Issue #1 is NOT cosmetic — the v1U.0.16 changelog asserted the attractive AA/PP channels were 'excluded by magnitude leg (B)', but leg (B) literally evaluated only the PP-equal |G_scalar| bound and never computed G_AA/G_crit, so the 2×-larger AA channel was uncovered in the served paper. That is a GENUINELY-NEW reader-visible completeness gap requiring an actual edit to the served PDF (NOT a DP1U-26 re-flag — DP1U-26 scoped leg-A and merely credited leg-B). Under directive-K a genuinely-new editable finding on a no-changes re-test RESETS the clean-wave streak 1→0 (same as NJ1/NJ2), so P1U does NOT reach the two-clean-waves bar this wave and the five-paper-restoration milestone did NOT fire. EXT-Grok MAJOR + EXT-ChatGPT REJECT + INT openai/grok REJECT + gemini MAJOR (presentational pattern-066) = all source-cited re-flags of the existing ledger; cap 62 HOLDS. No faked ACCEPT, every edit traceable to the reviewer's own arithmetic, conclusion unchanged.",
+    keyTakeaways: [
+      "INT-Claude subscription re-review of P1U v1U.0.16 = MINOR REVISIONS, 0 correctness bugs, conclusion unchanged — 3 presentation items on the NJL leg-(B) bookkeeping, all closed v1U.0.17",
+      "leg (B) now explicitly covers the attractive AA channel: worst |G_AA|/G_crit ≈ 2×0.156 = 0.31 (exact factor G_AA/|G_scalar|=2), no longer relying on the PP-only |G_PP|=|G_scalar| equality",
+      "Physical hardening: AA (Lorentz-violating axial-vector) + PP (parity-breaking) vacua are not the scalar σ-condensate at issue, so leg-(A)'s sign exclusion is already decisive",
+      "Wording unified: blanket 'far sub-critical' in abstract + discussion → plain 'sub-critical' to match the tempered appendix worst-case (0.156 / 0.31)",
+      "Bump v1U.0.16→v1U.0.17 (md5 67127cda, 63 pp, 0 undef-refs); Issue #1 = a GENUINELY-NEW reader-visible leg-(B) AA-coverage gap → directive-K streak RESET 1→0 (streak-2 / five-paper-restoration milestone did NOT fire); cap 62 HOLDS",
+    ],
+    links: [
+      { label: "INT-Claude P1U NJ4 raw", href: `${PR}/INT_api/H17_2026-07-10/intwave_P1U_claude_0239.md` },
+      { label: "P1U v1U.0.17 PDF", href: "/papers/paper1_unified_v1U.0.17.pdf" },
+    ],
+  },
+  {
     id: "h17-nj3-rs2-adjudication-2026-07-12",
     dateISO: "2026-07-12",
     kind: "external-browser",

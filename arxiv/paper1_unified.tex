@@ -51,8 +51,17 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \providecommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1U.0.16}
+\newcommand{\paperVersion}{v1U.0.17}
 \newcommand{\paperTimestamp}{July 12, 2026}
+% v1U.0.17 (2026-07-12 — NJ4 INT-Claude MINOR-REVISIONS closed: (1) leg-(B) magnitude
+%   bound now explicitly covers the attractive AA channel — worst scanned
+%   |G_AA|/G_crit = 2x0.156 = 0.31 (exact factor G_AA/|G_scalar|=2) stated in App.
+%   njl_gap + main-text mirror, no longer relying on the PP-only |G_PP|=|G_scalar|
+%   equality; (2) added the physical point that AA (Lorentz-violating axial-vector)
+%   and PP (parity-breaking) vacua are not the scalar sigma-condensate at issue, so
+%   the scalar sign leg is already decisive; (3) blanket "far sub-critical" in
+%   abstract + discussion aligned to plain "sub-critical" to match the tempered
+%   appendix worst-case (0.156/0.31). Conclusion unchanged; presentation-only.)
 % v1U.0.16 (2026-07-12 — INT-Claude genuinely-new MINOR closed: Route-1 NJL leg-(A)
 %   sign exclusion scoped to the scalar chiSB channel; attractive AA/PP channels
 %   (G_AA=+3/32kappa, G_PP=+3/64kappa per eq:AAdecomp) excluded by magnitude leg (B);
@@ -1233,7 +1242,7 @@ is constrained under stated assumptions: R1 (NJL contact) is
 \emph{amplitude-suppressed} by a standard torsion-elimination derivation and,
 in the vacuum case, \emph{condensate-excluded} by a regulated NJL gap-equation
 analysis (the scalar condensate channel is Fierz-projected repulsive and the
-coupling is far sub-critical; mean-field NJL framework),
+coupling is sub-critical; mean-field NJL framework),
 while R2--R3 (one-loop EA, Immirzi running) are \emph{amplitude-suppressed}
 under explicitly-labeled scaling ans\"atze (Sec.~\ref{sec:fourroute}), and R4 (parity-CMB
 coupling via spectator ALP or neutrino current) is \emph{not} closed by
@@ -2694,9 +2703,11 @@ as the only $\chi$SB minimum of the effective potential at \emph{any} coupling
 strength or cutoff \emph{in the scalar channel}, so no scalar condensate forms.
 (By the same Fierz lemma the axial and pseudoscalar channels are
 \emph{attractive}, $G_{\rm AA}=+\tfrac{3}{32}\kappa$ and
-$G_{\rm PP}=+\tfrac{3}{64}\kappa>0$; these are not excluded by the sign leg but
-are disposed of by the magnitude leg below, since
-$|G_{\rm PP}|=|G_{\rm scalar}|$ is equally sub-critical.) Second,
+$G_{\rm PP}=+\tfrac{3}{64}\kappa>0$; these are not the scalar condensate at
+issue---$AA$ is a Lorentz-violating axial-vector vacuum and $PP$ is
+parity-breaking, neither sourcing a coherent $w=-1$ term---and are in any case
+sub-critical in magnitude ($|G_{\rm PP}|=|G_{\rm scalar}|$; the $AA$ ratio is
+larger by the exact factor $2$, worst scanned $\approx0.31$).) Second,
 the magnitude: even taking $|G_{\rm eff}|$, the coupling is comfortably
 sub-critical
 relative to the (derived, not quoted) critical value
@@ -4319,7 +4330,7 @@ level. The condensate route is closed at the amplitude level
 ($\rho_{\rm NJL}\sim n_\psi^2/\MPl^2 \approx 4\times10^{-81}\,$eV$^4$, ${\sim}70$
 orders below $\rho_\Lambda$) and parity-even; the vacuum condensate is
 excluded outright by a regulated NJL gap equation---the scalar channel is
-Fierz-projected repulsive and the coupling far sub-critical
+Fierz-projected repulsive and the coupling sub-critical
 (Appendix~\ref{app:njl_gap}). The one-loop route is
 amplitude-closed under the explicitly-labeled EFT scaling ansatz. The dynamical Immirzi field reduces to a standard
 axion-like particle with $w=+1$ (stiff matter). The parity assessment finds no
@@ -5107,8 +5118,17 @@ exclusion is specific to the scalar ($SS$) channel: by
 Eq.~\eqref{eq:AAdecomp} the axial ($AA$) and pseudoscalar ($PP$) channels are
 instead \emph{attractive}, $G_{\rm AA}=(-\tfrac{3}{16})(-\tfrac12)\kappa
 =+\tfrac{3}{32}\kappa$ and $G_{\rm PP}=(-\tfrac{3}{16})(-\tfrac14)\kappa
-=+\tfrac{3}{64}\kappa>0$, so leg (A) does not by itself exclude them; they are
-disposed of by leg (B) below, since $|G_{\rm PP}|=|G_{\rm scalar}|$ is equally
+=+\tfrac{3}{64}\kappa>0$, so leg (A) does not by itself exclude them. They are,
+however, not the dark-energy condensate at issue: leg (A) kills the scalar
+$\sigma$-condensate $\langle\bar\psi\psi\rangle$, whereas an $AA$ ``condensate''
+$\langle\bar\psi\gamma^\mu\gamma_5\psi\rangle$ is a Lorentz-violating
+axial-vector vacuum and $PP$ is $\langle\bar\psi i\gamma_5\psi\rangle$
+(parity-breaking); neither is a scalar condensate that could source a coherent
+$w=-1$ term, so the scalar sign leg is already decisive for the object under
+exclusion. As a magnitude check they are sub-critical as well: the $PP$ ratio
+equals the scalar ratio ($|G_{\rm PP}|=|G_{\rm scalar}|$), and the $AA$ ratio,
+larger by the exact factor $G_{\rm AA}/|G_{\rm scalar}|=2$, reaches a worst
+scanned value $|G_{\rm AA}|/G_{\rm crit}\approx 2\times0.156=0.31$---still
 sub-critical. \textbf{(B) Magnitude (belt-and-suspenders).}
 Even discarding the sign and taking $|G_{\rm eff}|$, the coupling is far
 sub-critical. At $\Lambda=M_{\rm Pl}$ the ratio is cutoff-independent

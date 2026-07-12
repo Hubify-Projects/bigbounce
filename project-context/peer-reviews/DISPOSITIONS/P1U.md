@@ -1,4 +1,4 @@
-# Canonical dispositions — P1U (as of v1U.0.16, 2026-07-12; NJ1–NJ3 + NJ3b adjudication appended; NJ3b = recovered ChatGPT retry REJECT on v1U.0.16 → 0 genuinely-new [incl. rigorous 8π/1.07 NJL non-defeater], streak HOLDS 1, cap 62 HOLDS)
+# Canonical dispositions — P1U (as of v1U.0.17, 2026-07-12; NJ1–NJ4 adjudication appended; NJ4 = INT-Claude MINOR surfaced a genuinely-new reader-visible leg-(B) AA-coverage gap → CLOSED v1U.0.17, streak RESET 1→0, cap 62 HOLDS)
 
 One numbered entry per DISTINCT finding-class. Duplicates across reviewers/rounds are
 merged. Source: `EXT_real/H17_2026-07-10/P1U_truth_audit.md` (body + INT re-test,
@@ -346,3 +346,30 @@ post_verdict after ChatGPT REJECT (fills the prior GAP, score 0 = same as GAP co
 
 ### Integrity
 REJECT verdict read verbatim before any disposition; no ACCEPT faked; every disposition source-cites a tex line or script line; no dismissal without a source-cited verdict; no math fabricated. The 8π/1.07 claim was adjudicated arithmetically (reproduced the number) and dispositioned on the leg-(A) convention-independent sign, not waved away. Fingerprint keywords added to DP1U-02/-05/-26/-09/-14.
+
+---
+
+## NJ4 adjudication (v1U.0.16 → v1U.0.17, 2026-07-12) — STRICT ledger-first — STREAK RESET
+
+Raws verified: EXT `NJ4/P1U_grok_NJ4.md` = **MAJOR** (5 items) + `NJ4/P1U_chatgpt_NJ4.md` = **REJECT** (14 MAJOR + 3 MINOR); INT (`intwave_P1U_NJ4.log`, 09:39Z) openai=REJECT / grok=REJECT / gemini=MAJOR / claude=**MINOR** (`intwave_P1U_claude_0239.md` + `API_P1U_*.md`). All reviewed v1U.0.16 (no changes since NJ3). `ledger_match.py` + full §3 manual truth-audit vs `arxiv/paper1_unified.tex` + this ledger.
+
+### DP1U-NJ4-01: NJL leg-(B) magnitude bound literally covered only PP, silent on the 2×-larger AA channel (GENUINELY-NEW, reader-visible)
+- **class:** CLOSED-BY-EDIT (v1U.0.17)
+- **INT-Claude MINOR #1** (`intwave_P1U_claude_0239.md`, source-cited `:5108-5112`/`:2695-2699`/`:5116-5122` + committed script): the appendix conceded AA is *attractive* with `G_AA=+3/32 κ` = **twice** `|G_scalar|=|G_PP|=3/64 κ`, then asserted AA/PP are "disposed of by leg (B) below, since `|G_PP|=|G_scalar|`" — but leg (B)'s worst-case ratio (0.156) was evaluated with `|G_eff|=3/64 κ` and the committed script never evaluated `G_AA/G_crit`. The justification literally covered only PP; the v1U.0.16 changelog claim ("attractive AA/PP channels ... excluded by magnitude leg (B)") **overstated** what leg (B) showed. The true AA worst-case ≈ 2×0.156 = 0.31 (still sub-critical → conclusion unchanged).
+- **GENUINELY-NEW, REAL, EDITABLE — NOT a DP1U-26 re-flag.** DP1U-26 scoped leg (A) to the scalar channel and *credited* leg (B) with AA/PP; this NJ4 finding is that leg (B) never actually evaluated the AA ratio. A completeness/bookkeeping gap in the very magnitude leg DP1U-26 leaned on. Under directive-K this RESETS P1U's clean-wave streak to 0.
+- **CLOSED v1U.0.17:** (1) AA worst-case ratio stated explicitly at both sites (App `app:njl_gap` L5118-5131 + main-text mirror L2703-2710): `G_AA/|G_scalar|=2`, worst scanned `|G_AA|/G_crit≈2×0.156=0.31`; (2) added the physical point that AA (Lorentz-violating axial-vector vacuum ⟨ψ̄γ^μγ₅ψ⟩) and PP (parity-breaking ⟨ψ̄iγ₅ψ⟩) are **not** the scalar σ-condensate ⟨ψ̄ψ⟩ at issue nor source a coherent w=−1 term, so the scalar sign leg (A) is already decisive; (3) INT-Claude MINOR #3 — blanket "far sub-critical" in abstract (L1245) + discussion (L4332) tempered to plain "sub-critical" to match the appendix worst-case (0.156/0.31). All reader-visible; arithmetic = algebraic consequence of the paper's own `eq:AAdecomp` (factor `G_AA/|G_scalar|=2`), nothing fabricated. Recompiled via `directive_g.sh` (0 undef-refs), mirrored all served paths, Convex `paperVersions:bump`.
+- **fingerprint:** NJL leg-B AA coverage, G_AA +3/32 kappa twice G_scalar, magnitude leg silent on AA, worst 0.31, 2x0.156, AA axial-vector vacuum not scalar condensate, PP parity-breaking, w=-1 scalar sigma-condensate, far vs plain sub-critical abstract discussion, changelog overstated leg-B, G_AA/G_crit never scanned
+
+### NJ4 re-flags (source-cited, 0 genuinely-new beyond DP1U-NJ4-01)
+- **EXT-Grok MAJOR** (5): channel-vs-operator "channel-level closure"/non-exhaustive → **DP1U-06/-07/-20**; Sec.X all-orders transparency term-by-term-not-displayed → **DP1U-12**; R4 naturalness-vs-amplitude asymmetry counted equally in 14-catalog → **DP1U-11**; 13/14-barrier lack self-contained derivations → **DP1U-13**; interleaved MCMC/NaMaster dilutes the no-go / length → **DP1U-15/-22**. `ledger_match.py` 5/6 auto-MATCHED (line-1 verdict header the only UNMATCHED, non-finding).
+- **EXT-ChatGPT REJECT** (14 MAJOR + 3 MINOR): identical structure to H17G/W1/W2b/NJ3b ChatGPT REJECTs — Eq(1)-(4) variational=DP1U-03; dim+1 "identity can't change dimension"=DP1U-08/-12; App-B1 basis/O1=O6/Nieh-Yan=DP1U-07/-20; R2 (∂ϑ)J5 ansatz + ΔϑNY/M_Pl endpoint=DP1U-09; R3 Euclidean γ²∓1 / no w=−1=DP1U-10; R1 Fierz mixed V⊗A / NJL condensate=DP1U-05/-19/-26; R4 ALP fixed-vs-floated + m_θ~H0 tuning=DP1U-11; no DE stress tensor / a⁻⁶ stiff / N_tot≃92=DP1U-14; 10¹²²→10⁵ e^{3ΔN}=DP1U-14/-17; 13-constraints not independent=DP1U-13; §X transparency standard=DP1U-12; matter-bounce erasure "definitively" + −35/8→−35/16=DP1U-14/-17; no coherent single-action model=DP1U-14/-06/-16; MINOR App F–H don't test ECH=DP1U-15; MINOR T³ cm⁻³ unit note=DP1U-08/-14 (thermal bookkeeping, disclosed non-load-bearing scaffolding); MINOR condensation/style=DP1U-22. ChatGPT structural harsh-referee floor (directive-H). **0 genuinely-new.**
+- **INT OpenAI REJECT / Grok REJECT / Gemini MAJOR:** same disclosed classes (single-scale NDA no-go→DP1U-08; channel-vs-operator→DP1U-06/-20; routes→DP1U-05/-09/-10/-11; §X→DP1U-12; style/length→DP1U-22/-24). Gemini MAJOR = presentational-axis referee variance (pattern-066), not new content. **0 genuinely-new.**
+
+### Streak
+Prior streak was 1 (NJ3 clean → 0→1; NJ3b held 1). **NJ4 surfaced DP1U-NJ4-01 (genuinely-new reader-visible editable) → streak RESET 1→0** (directive-K). v1U.0.17 re-tests fresh next wave. The streak-2 / five-paper-restoration milestone did **NOT** fire.
+
+### Cap
+post_verdict after this wave (unchanged verdict words): 50 + grok(EXT major 6) + chatgpt(EXT reject 0) + gemini(INT major 6) = **62 HOLDS**.
+
+### Integrity
+Both EXT raws read verbatim (Grok l.1 `VERDICT: MAJOR REVISIONS`, ChatGPT l.1 `VERDICT: REJECT`) before any disposition. INT-Claude MINOR surfaced the genuinely-new finding and it was CLOSED, not dismissed — no faked ACCEPT, no un-sourced dismissal, no math fabricated (the AA factor-2 / 0.31 is an algebraic consequence of the paper's own `eq:AAdecomp`). No hedging removed.
