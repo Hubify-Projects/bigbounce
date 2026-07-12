@@ -4483,6 +4483,31 @@ export const reviewRounds: ReviewRound[] = [
       { label: "P3 disposition ledger", href: `${PR}/DISPOSITIONS/P3.md` },
     ],
   },
+  {
+    id: "RS2b-NJ3b-recovered-chatgpt-2026-07-12",
+    kind: "external-browser",
+    dateISO: "2026-07-12",
+    timePT: "Jul 12 · ~09:xx UTC",
+    title: "RS2b + NJ3b — recovered ChatGPT EXT legs adjudicated: P5 MAJOR on corrected v0.1.123 (floor-crack holds, cap 79→85), P1U REJECT on v1U.0.16 (8π/1.07 NJL claim rigorously dispositioned non-defeater)",
+    papers: ["P5", "P1A"],
+    summary: "The two ChatGPT EXT legs that FAILED-dead in RS2 (P5) and NJ3 (P1U) — recorded as chart GAPs, never faked — were recovered and adjudicated strict ledger-first. Both raws read+verified verbatim before any verdict. ledger_match.py + full Opus §3 truth-audit against the live .tex. 0 genuinely-new reader-visible editable findings on either paper; no version bump on either.",
+    keyTakeaways: [
+      "P5 RS2b — ChatGPT REJECT(pre-fix v0.1.122) → MAJOR(corrected v0.1.123): floor-crack HOLDS on the fixed paper; ChatGPT engaged the corrected RSD block and did NOT re-raise the DP5-22 estimand/sign defect it caught in RS1 — the fix landed. 12 MAJOR + 3 MINOR all source-cited re-flags (DP5-06/07/04/11/10/08/09/12/14/19/20/21/22). Streak HOLDS 3.",
+      "P5 cap 79→85 — the ChatGPT reject→major floor-crack genuinely lifts +6 (50 + grok-ACCEPT 16.7 + chatgpt-MAJOR 6 + gemini-MINOR 12 = 84.7). Same-datestamp tie-break bug in post_verdict.sh corrected via true latest-by-creationTime.",
+      "P1U NJ3b — ChatGPT REJECT on v1U.0.16, 12 MAJOR + 1 MINOR all source-cited re-flags (DP1U-03/04/07/08/09/10/11/12/14/17/15/24/02). Streak HOLDS 1, cap 62 HOLDS (fills the NJ3 GAP, score 0 = GAP contribution).",
+      "HIGH-STAKES adjudication — ChatGPT's 8π/criticality-ratio-1.07 NJL claim is arithmetically REAL (3·9/8π=1.07) but NOT a defeater: leg (A) sign exclusion G_scalar=−(3/64)κ<0 is convention-independent + decisive; 8π touches only leg (B) magnitude at the unreduced+maximal worst corner; physical Holst-dressed=0.075/Λ_strong=0.294 stay sub-critical. Maps to DP1U-02 + DP1U-05/-26; optional footnote tightening (PROCESS-NIT), no v1U.0.17.",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 0,
+      note: "Both recovered ChatGPT legs = 0 genuinely-new. The RS1 ChatGPT MAJOR had independently caught the real DP5-22 RSD defect (now fixed); RS2b confirms the fix and does not re-raise it — verifiable-review discipline (raw read before verdict, GAP never faked).",
+    },
+    links: [
+      { label: "P5 RS2b ChatGPT raw", href: `${PR}/EXT_real/H17_2026-07-10/RS2b/P5_chatgpt_RS2b.md` },
+      { label: "P1U NJ3b ChatGPT raw", href: `${PR}/EXT_real/H17_2026-07-10/NJ3b/P1U_chatgpt_NJ3b.md` },
+      { label: "P5 disposition ledger", href: `${PR}/DISPOSITIONS/P5.md` },
+      { label: "P1U disposition ledger", href: `${PR}/DISPOSITIONS/P1U.md` },
+    ],
+  },
 ];
 
 /* ── Structured progress dataset (powers the /reviews Progress visualizations) ──
