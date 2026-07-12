@@ -416,3 +416,4 @@ The tag points at the commit that includes the Wave 11-F reproducibility deposit
 ---
 
 _This file is the SSOT for Paper 2. Last audited 2026-04-17 by Claude Code forensic sweep (agent a4cb732018c8ccc35). Contradictions between this file and any other paper-2 reference should be resolved by updating the other reference, not this file._
+<!-- CN1 2026-07-12: v1.7.115 — c15 GR M123 fix: ρ=−0.42, σ_marg=2.32σ; floor 2.32σ>1.30σ holds; EXT re-flagged old classes; readiness cap 74; streak 0 -->

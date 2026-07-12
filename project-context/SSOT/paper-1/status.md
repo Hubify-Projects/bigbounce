@@ -390,3 +390,4 @@ This work was queued by R42 Wave 11-F, the same reproducibility-deposit pass tha
 ---
 
 _This file is the SSOT for Paper 1. Last audited 2026-04-17 by Claude Code forensic sweep. Contradictions between this file and any other paper-1 reference should be resolved by updating the other reference, not this file._
+<!-- NJ1 2026-07-12: v1U.0.15 — Holst NJL factor 30×→14× closed; NJL appendix verified SOUND; EXT re-flagged old classes; readiness cap 62; streak 0 -->
