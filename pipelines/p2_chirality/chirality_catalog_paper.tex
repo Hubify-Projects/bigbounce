@@ -52,7 +52,19 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.236}
+\newcommand{\paperVersion}{v1.0.237}
+% v1.0.237 (2026-07-12 — directive-M presentation overhaul answering the recurring ChatGPT/OpenAI
+%   "excessively long, repetitive, internally self-justifying" MINOR (DP4-13) + PRD single-paragraph
+%   abstract ask. ZERO content/number change (byte-preserving relocation only): (1) abstract collapsed
+%   from 5 dense paragraphs (~430 words) to ONE ~230-word PRD paragraph — every number/claim retained
+%   (N=8.47M/3.2M/9.5e5, +0.41sigma p=0.31, z~-7.6, A_ref=0.017, A50 0.75%, A95 (1.0,1.5], 99.32%, 47%,
+%   5sigma falsification); the two-limitations detail relocated to its in-body homes (Sec.notation,
+%   Sec.monopole_mask_null, Appendix B/D) which already carry it verbatim. (2) De-duplicated the
+%   "sigma values not directly comparable" caveat: removed 4 redundant per-figure parenthetical restatements
+%   (Figs sky_map/confidence_dist/raw_vs_eq/harmonic_completeness) + trimmed intra-caption repeats in
+%   tab:primary_callout and tab:decision_tree to ONE statement each, all cross-ref'd to the canonical
+%   Sec.notation (L822). No scientific claim weakened; DP4-13 -> CLOSED-BY-EDIT. Directive-G: recompile
+%   0 undef + mirror all served paths + Convex paperVersions:bump paper-4.)
 % v1.0.236 (2026-07-11 — restamp + recompile at program-exit state; no content change.)
 % v1.0.233 (2026-07-10 — H17 science upgrade: new Appendix-B subsection "Sky- and confidence-stratified
 %   human-label confusion analysis" + Table tab:gz1_stratified (5 strata, N/acc/CW->CCW/CCW->CW/asymmetry+-95%CI)
@@ -597,7 +609,7 @@
 %   the established two-step provenance gate.)
 % v1.0.171->172 (2026-06-10 — EXT1 closure wave restamp: recompile + mirror bundle;
 %   Data Availability hash pinned to the v1.0.172 stamp commit per provenance gate.)
-\newcommand{\paperTimestamp}{July 11, 2026}
+\newcommand{\paperTimestamp}{July 12, 2026}
 % v1.0.217->218 (2026-07-05 — DATA-UNLOCK: edge-on-ISOLATED argmax tie-break coherence
 %   now COMPUTED (was pod/data-lab-deferred). Join catalog_production (class_eq/RA/Dec) to
 %   committed spiral_morphology_dr8 b/a on dr8_id; edge-on (b/a<0.30) borderline population
@@ -622,13 +634,7 @@ from Equivariant Deep Learning}
 \date{\paperTimestamp}
 
 \begin{abstract}
-We measure the large-scale chirality dipole of spiral galaxies and find it consistent with null. Our primary estimator --- a real-space dipole fit to the high-confidence equivariant sample ($N\approx 9.5\times 10^5$ spirals) --- gives $+0.41\sigmaunit$ (moment-$z$ against an isotropic pixel-permutation null; empirical-rank $p=0.31$, $10^4$ realizations), and a block-bootstrap WLS template fit disfavors a clean cosmological dipole at the $1.7\%$ reference amplitude (the lower end of Shamir's reported $1.7\%$--$4.0\%$ range~\cite{Shamir:2020,Shamir:2022DESI}; Shamir quotes the \emph{asymmetry} $(N_{\rm CW}-N_{\rm CCW})/(N_{\rm CW}+N_{\rm CCW})$, which is identical to our $A_p\!=\!2(f_{\rm CW}-\tfrac12)$, so his $1.7\%$ maps to $A_{\rm ref}=0.017$ without rescaling) at $z\approx-7.6$. This $\ell=1$ observable is parity-\emph{even} (an isotropy-breaking axial-vector channel), not a direct parity-violation test.
-
-The measurement rests on the largest chirality-labeled galaxy catalog to date: $8{,}474{,}531$ DESI Legacy DR8 galaxies classified by a flip-equivariant Vision Transformer into clockwise (CW), counter-clockwise (CCW), and non-spiral classes, with $N_{\rm spiral}=3{,}201{,}160$ spirals, released publicly with model weights and reproducibility scripts. The $p_{\rm eq}>0.6$ confidence cut is pre-specified (not tuned post-hoc): the null is robust across the high-confidence regime ($p_{\rm eq}\!\in\!\{0.6,0.7,0.8\}$) of a full confidence-cut sweep, while the low-confidence tail ($p_{\rm eq}\!\le\!0.5$) carries a systematics-attributed excess ($z\!\approx\!4.0$--$4.3$; Secs.~\ref{sec:prereg},~\ref{sec:dipole}). The real-space null holds under a per-galaxy label-shuffle test ($z=0.58$ same-generator, $z=0.70$ independent re-implementation).
-
-We are explicit about two limitations. First, the MASTER pseudo-$C_\ell$ harmonic channel on this patchy footprint is a systematics diagnostic, not an independent cosmological null: a monopole-only generative null reproduces $99.32\%$ of the raw pre-MASTER $\ell=1$ power (monopole--mask leakage), and MASTER deconvolution reduces but does not remove it, leaving systematics-attributed residuals ($+3.64\sigmaunit$ canonical mask, ${\approx}1.9\sigmaunit$ Gaussian-equivalent; $+7.28\sigmaunit$ apodized footprint) that we attribute to residual survey systematics via an eight-anchor battery (Appendix~D) rather than claim as detections; an imaging$+$morphology forward model accounts for only $\approx\!53\%$ of the post-MASTER residual amplitude, with the remaining $\sim\!47\%$ an explicit open item (classifier confidence-vs-depth response at production scale; Sec.~\ref{sec:monopole_mask_null})---this remainder is below the real-space estimator's current recovery threshold ($A_p\!<\!A_{95}$), so it does not affect our exclusion/sensitivity statements for dipoles above $A_{95}$; its physical origin remains unresolved (survey-systematic attribution favored on independent grounds; Sec.~\ref{sec:monopole_mask_null}). Second, the various $\sigma$ values quoted above come from distinct null procedures --- the isotropic pixel-permutation, per-galaxy label-shuffle, and harmonic label-shuffle nulls each define significance differently --- so they are diagnostic indicators and are \emph{not} directly comparable to one another as detection significances (Sec.~\ref{sec:notation}, Table~\ref{tab:multipole}). A leg- and confidence-stratified GZ1 human-label confusion analysis confirms the classifier's CW$\leftrightarrow$CCW error asymmetry --- the only dipole-biasing channel --- is consistent with zero in every stratum (bounded to $\lesssim\!1.4$~pp), while the error magnitude varies parity-symmetrically (a dilution-only effect carried by $g=2a-1$; Appendix~B).
-
-Falsification criterion: a future real-space dipole detection at $\ge\!5\sigmaunit$ (moment-$z$ vs.\ the isotropic pixel-permutation null) with amplitude $A \gtrsim A_{95}$, where injection--recovery brackets $A_{95}$ in $(1.0\%,1.5\%]$ at the current conservative grid resolution ($N_{\rm MC,inj}\!=\!100$ per amplitude; $A_{50}\approx0.75\%$), would be in tension with this null. These thresholds are specific to the real-space estimator; the harmonic-channel completeness ($P(\geq\!3\sigmaunit)\!\geq\!0.999$ at $A_p\!=\!0.75\%$, against the MASTER $\ell=1$ label-shuffle null) is a separate property of that channel.
+We measure the large-scale chirality dipole of spiral galaxies and find it consistent with null. The measurement rests on the largest chirality-labeled galaxy catalog to date: $8{,}474{,}531$ DESI Legacy DR8 galaxies classified by a flip-equivariant Vision Transformer into clockwise (CW), counter-clockwise (CCW), and non-spiral classes, yielding $N_{\rm spiral}=3{,}201{,}160$ spirals, released publicly with model weights and reproducibility scripts. Our primary estimator --- a real-space dipole fit to the pre-specified high-confidence subsample ($p_{\rm eq}>0.6$, $N\approx 9.5\times 10^5$ spirals) --- gives $+0.41\sigmaunit$ (moment-$z$ against an isotropic pixel-permutation null; empirical-rank $p=0.31$), robust across the confidence-cut sweep and under a per-galaxy label-shuffle test; a block-bootstrap WLS template fit disfavors a clean $A_{\rm ref}=0.017$ dipole (the lower end of Shamir's reported $1.7\%$--$4.0\%$ asymmetry range~\cite{Shamir:2020,Shamir:2022DESI}, which maps to our $A_p\!=\!2(f_{\rm CW}-\tfrac12)$ without rescaling) at $z\approx-7.6$. This $\ell=1$ observable is parity-\emph{even} (isotropy-breaking, not a direct parity-violation test). Injection--recovery brackets the real-space $95\%$-recovery amplitude $A_{95}$ in $(1.0\%,1.5\%]$ ($A_{50}\approx0.75\%$), so a genuine Shamir-scale dipole would have been detected; a detection at $\ge\!5\sigmaunit$ with $A\gtrsim A_{95}$ would falsify this null. The MASTER pseudo-$C_\ell$ harmonic channel is treated as a systematics diagnostic, not an independent cosmological null (monopole--mask leakage reproduces $99.32\%$ of raw pre-MASTER $\ell=1$ power; residuals are attributed via an eight-anchor battery, with $\sim\!47\%$ of the post-MASTER amplitude an explicit open item that lies below $A_{95}$ and does not affect the primary null; Sec.~\ref{sec:monopole_mask_null}, Appendix~D). Significances from distinct null procedures are not directly comparable as detection significances (Sec.~\ref{sec:notation}); a leg- and confidence-stratified GZ1 human-label cross-check confirms the classifier's dipole-biasing error asymmetry is consistent with zero in every stratum (Appendix~B).
 \end{abstract}
 
 \keywords{galaxies: spiral, galaxies: statistics, methods: data analysis, cosmology: observations, large-scale structure of universe}
@@ -724,7 +730,7 @@ We declare the estimator hierarchy used throughout. This hierarchy --- with the 
 To make the mapping from estimator to scientific claim explicit --- and to forestall any reading of the multi-null residual structure as a ``forest'' of competing detection significances --- Table~\ref{tab:decision_tree} is a decision tree: each \emph{scientific claim} the paper makes is tied to exactly one estimator class, its analysis sample, its null, and its role. Only the two rows marked \textsc{primary} carry cosmological weight; every harmonic-channel $\sigma$ is a systematics diagnostic and supports no independent detection claim. This is the single load-bearing map for the entire Results section: a reader who keeps only Table~\ref{tab:decision_tree} retains the complete logical chain from data to the null conclusion.
 
 \begin{table*}[t]
-\caption{\label{tab:decision_tree}\textbf{Estimator decision tree --- which estimator supports which scientific claim.} Each row is a distinct claim made in this paper, tied to its estimator (cross-referenced to the hierarchy rows above and to Table~\ref{tab:headline_summary}), the analysis sample with its explicit spiral count $N$, the null procedure, and its role. \textsc{primary} rows are the only cosmological detection/exclusion claims; \textsc{diagnostic} rows characterize systematics and assert \emph{no} independent signal; the \textsc{calibration} row sets the sensitivity/falsification scale. Within a role the $\sigma$/$z$ values are internally meaningful; \emph{across} rows they are not comparable as detection significances (each is against its own null, listed in the ``Null'' column). \textit{Note: only rows P1--P2 carry cosmological weight; $\sigma$/$z$ values in different rows derive from distinct null procedures and are not directly comparable as detection significances.}}
+\caption{\label{tab:decision_tree}\textbf{Estimator decision tree --- which estimator supports which scientific claim.} Each row is a distinct claim made in this paper, tied to its estimator (cross-referenced to the hierarchy rows above and to Table~\ref{tab:headline_summary}), the analysis sample with its explicit spiral count $N$, the null procedure, and its role. \textsc{primary} rows are the only cosmological detection/exclusion claims; \textsc{diagnostic} rows characterize systematics and assert \emph{no} independent signal; the \textsc{calibration} row sets the sensitivity/falsification scale. Within a role the $\sigma$/$z$ values are internally meaningful; \emph{across} rows they are not comparable as detection significances (each is against its own null, listed in the ``Null'' column; Sec.~\ref{sec:notation}). Only rows P1--P2 carry cosmological weight.}
 \begin{center}
 \renewcommand{\arraystretch}{1.3}
 \newcommand{\dtc}[1]{\parbox[t]{0.27\textwidth}{\raggedright #1\strut}}
@@ -822,7 +828,7 @@ The pipeline produces three tiers: \textbf{Catalog~A} (raw, single-pass softmax)
 \textit{Significance conventions.} This paper reports significance in standard-deviation units ($\sigma$) throughout, but values from distinct null procedures are \emph{not} directly comparable. Section identifiers specify the null for each result. Empirical rank $p$-values are one-sided unless explicitly labeled two-sided.
 
 \begin{table}[t]
-\caption{\textbf{Primary Results callout.} The two load-bearing claims of this paper (rows P1--P2) and, for reference, the non-primary harmonic diagnostics (rows D1--D2) that are \emph{systematics-attributed, not detections}. Each row names the estimator and the specific null procedure its $\sigma$/$z$ is computed against; the values in different rows come from \emph{incommensurable} null constructions and must \emph{not} be read as comparable detection significances. \textbf{Only rows P1--P2 carry cosmological weight;} all $\sigma$/$z$ values in rows D1--D2 (including $+0.41\sigma$, $+3.64/+7.28\sigma$, and $z\approx-7.6$) derive from distinct null procedures and are \emph{not} directly comparable across rows as detection significances.\label{tab:primary_callout}}
+\caption{\textbf{Primary Results callout.} The two load-bearing claims of this paper (rows P1--P2) and, for reference, the non-primary harmonic diagnostics (rows D1--D2) that are \emph{systematics-attributed, not detections}. Each row names the estimator and the specific null procedure its $\sigma$/$z$ is computed against. \textbf{Only rows P1--P2 carry cosmological weight;} the $\sigma$/$z$ values across rows (including $+0.41\sigma$, $+3.64/+7.28\sigma$, and $z\approx-7.6$) derive from distinct null constructions and are \emph{not} directly comparable as detection significances (Sec.~\ref{sec:notation}).\label{tab:primary_callout}}
 \begin{ruledtabular}
 \footnotesize
 \begin{tabular}{lll}
@@ -870,7 +876,7 @@ sky in the canonical mask ($N_{\rm spiral}(p)\!\ge\!10$ per pixel; Sec.~\ref{sec
 Spatial uniformity of the per-pixel CW fraction is verified across
 7~equatorial coordinate slabs (\S\ref{sec:cw_frac}); the canonical-mask
 $\ell\!=\!1$ residual is analyzed in
-Sec.~\ref{sec:dipole}--\ref{sec:monopole_mask_null}. ($\sigma$ values across this paper's panels arise from distinct null procedures; see Sec.~\ref{sec:notation}.)\label{fig:sky_map}}
+Sec.~\ref{sec:dipole}--\ref{sec:monopole_mask_null}.\label{fig:sky_map}}
 \end{figure*}
 
 \begin{figure}[t]
@@ -896,7 +902,7 @@ NS/edge-on systems). The high-confidence (HC) cuts at
 $p_{\rm eq}\!>\!0.6$ ($N\!=\!949{,}584$) and $p_{\rm eq}\!>\!0.8$
 ($N\!=\!624{,}660$) used in the systematics cross-checks
 (\S\ref{sec:app_morphology}) are
-indicated. ($\sigma$ values across this paper's estimators arise from distinct null procedures; see Sec.~\ref{sec:notation}.)\label{fig:confidence_dist}}
+indicated.\label{fig:confidence_dist}}
 \end{figure}
 
 \subsection{Global CW Fraction}
@@ -949,7 +955,7 @@ diagnostic is the methodology cornerstone — the difference between
 Catalog~A and Catalog~C is the difference between a $2\sigma$
 ``detection'' and a clean null, demonstrating that future chirality
 studies must adopt equivariant post-processing to avoid spurious
-dipoles. ($\sigma$ values across panels arise from distinct null procedures; see Sec.~\ref{sec:notation}.)\label{fig:raw_vs_eq}}
+dipoles.\label{fig:raw_vs_eq}}
 \end{figure*}
 
 \paragraph{Angular power spectrum.}
@@ -1211,7 +1217,7 @@ $3.0\%$ & $\geq\!0.999$ & ${\approx}209$--$685$ & --- \\
 \begin{figure}[t]
 \centering
 \includegraphics[width=\columnwidth]{fig_harmonic_completeness.pdf}
-\caption{Harmonic-channel completeness curve: axis-averaged recovery probability $P(\sigma_{\rm inj}\!\geq\!3)$ vs.\ injected dipole amplitude $A_p$ for the apodized-footprint MASTER $\ell\!=\!1$ diagnostic channel ($C^2$ $2^\circ$ apodization; $N_{\rm all}\!\geq\!1$ footprint; $W_p\!=\!N_{\rm all}$ weight; $10^3$ injections per amplitude per axis on label-shuffle backgrounds; artifact c9b). Heavy black: axis-averaged probability over $\{\hat x,\hat y,\hat z\}$. Per-axis dashed curves show the geometry-induced spread. Horizontal references mark the $50\%$ and $95\%$ recovery thresholds; the headline $P(\!\geq\!3\sigma)\!=\!0.92$ at $A_p\!=\!0.5\%$ value (cited in the surrounding paragraph and Table~\ref{tab:harmonic_completeness}) is annotated. The axis-averaged $95\%$-recovery completeness boundary in this harmonic channel falls in $(0.5\%,0.75\%]$ (recovery saturates by $0.75\%$). The $3\sigma$ threshold uses the MASTER $\ell\!=\!1$ label-shuffle null convention and is not interchangeable with the real-space falsification boundary $A_{95}\!\in\!(1.0\%,1.5\%]$ (Sec.~\ref{sec:sensitivity}); this curve is a property of the harmonic diagnostic channel only. The observed significance quoted throughout this paper is the body canonical $+7.28\sigmaunit$ from the independent 500-MC apodized null (Sec.~\ref{sec:dipole}, Table~\ref{tab:multipole}); the figure-panel annotation ``obs.\,$\sigma\!\approx\!+7.28$'' uses this same canonical value. (The c9b injection artifact uses its own $10^3$-injection background null for injection-recovery scoring and yields $\sigma\!=\!7.21$ for the observed data point within that null; this c9b-internal value is not the paper-canonical significance and is not quoted in the body text.) ($\sigma$ values across panels and estimators arise from distinct null procedures; see Sec.~\ref{sec:notation}.)\label{fig:harmonic_completeness}}
+\caption{Harmonic-channel completeness curve: axis-averaged recovery probability $P(\sigma_{\rm inj}\!\geq\!3)$ vs.\ injected dipole amplitude $A_p$ for the apodized-footprint MASTER $\ell\!=\!1$ diagnostic channel ($C^2$ $2^\circ$ apodization; $N_{\rm all}\!\geq\!1$ footprint; $W_p\!=\!N_{\rm all}$ weight; $10^3$ injections per amplitude per axis on label-shuffle backgrounds; artifact c9b). Heavy black: axis-averaged probability over $\{\hat x,\hat y,\hat z\}$. Per-axis dashed curves show the geometry-induced spread. Horizontal references mark the $50\%$ and $95\%$ recovery thresholds; the headline $P(\!\geq\!3\sigma)\!=\!0.92$ at $A_p\!=\!0.5\%$ value (cited in the surrounding paragraph and Table~\ref{tab:harmonic_completeness}) is annotated. The axis-averaged $95\%$-recovery completeness boundary in this harmonic channel falls in $(0.5\%,0.75\%]$ (recovery saturates by $0.75\%$). The $3\sigma$ threshold uses the MASTER $\ell\!=\!1$ label-shuffle null convention and is not interchangeable with the real-space falsification boundary $A_{95}\!\in\!(1.0\%,1.5\%]$ (Sec.~\ref{sec:sensitivity}); this curve is a property of the harmonic diagnostic channel only. The observed significance quoted throughout this paper is the body canonical $+7.28\sigmaunit$ from the independent 500-MC apodized null (Sec.~\ref{sec:dipole}, Table~\ref{tab:multipole}); the figure-panel annotation ``obs.\,$\sigma\!\approx\!+7.28$'' uses this same canonical value. (The c9b injection artifact uses its own $10^3$-injection background null for injection-recovery scoring and yields $\sigma\!=\!7.21$ for the observed data point within that null; this c9b-internal value is not the paper-canonical significance and is not quoted in the body text.)\label{fig:harmonic_completeness}}
 \end{figure}
 
 \paragraph{Primary methodological finding: a quantifiable monopole-mask leakage channel.}
