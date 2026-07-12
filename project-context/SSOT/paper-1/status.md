@@ -1,3 +1,4 @@
+<!-- M8-EXT (2026-07-12): 0 genuinely-new on byte-unchanged v1U.0.20; SECOND external read of the compressed abstract; EXT Grok MAJOR (3 MAJOR / 2 MINOR) + ChatGPT REJECT (11 MAJOR / 1 MINOR); all source-cited standing DP1U D-id re-flags (pattern-066 / directive-H floor); clean-wave streak 3→4; no bump; cap 62 HOLDS. -->
 <!-- M4-EXT (2026-07-12): 0 genuinely-new on byte-unchanged v1U.0.19; EXT ChatGPT REJECT (16 MAJOR / 2 MINOR) + Grok MAJOR (3 MAJOR / 2 MINOR); all source-cited standing D-id re-flags (pattern-066 floor); clean-wave streak 1→2; no bump; cap 62 HOLDS. -->
 <!-- M1 wave note (2026-07-12): P1U 0 genuinely-new; all findings re-flags of standing DP1U D-ids; clean-wave streak 3→4; cap 62 HOLDS. -->
 ---

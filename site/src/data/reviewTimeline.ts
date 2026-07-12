@@ -57,6 +57,32 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "m8-ext-confirm-wave-2026-07-12",
+    dateISO: "2026-07-12",
+    kind: "external-browser",
+    title:
+      "M8-EXT confirm wave — both papers post a clean wave (0 genuinely-new). P1U (v1U.0.20, byte-unchanged): Grok MAJOR + ChatGPT REJECT — SECOND external read of the compressed PRD-format abstract; all Grok(3 MAJOR/2 MINOR) + ChatGPT(11 MAJOR/1 MINOR) findings source-cited to the standing DP1U ledger; streak 3→4; cap 62 HOLDS. P3 (v3.1.158-apjs, byte-unchanged): Grok MAJOR + ChatGPT REJECT — SECOND EXT read with the bounded DP3-15 disclosure; the DP3-20 immutable-release bar stays DISSOLVED and DP3-15 is again cited at the disclosed ~1.3% structural ceiling (not a re-run demand); streak 2→3; cap 56 HOLDS. No bumps; directive_g.sh not run.",
+    papers: ["P1U", "P3"],
+    summary:
+      "M8-EXT: two papers, zero genuinely-new findings, both on byte-unchanged versions. P1U (v1U.0.20): Grok MAJOR REVISIONS (3 MAJOR/2 MINOR) + ChatGPT REJECT (11 MAJOR/1 MINOR) — the second external read of the compressed abstract, identical re-flag structure to M5-EXT; every finding maps to DP1U-03/-05/-06/-07/-08/-09/-10/-11/-12/-13/-14/-15/-17/-19/-20/-21/-24/-NJ4-01; clean-wave streak 3→4; cap 62 HOLDS. P3 (v3.1.158-apjs): Grok MAJOR REVISIONS (4 MAJOR/2 MINOR) + ChatGPT REJECT (15 MAJOR/1 MINOR) — the second EXT read with the bounded DP3-15 disclosure; neither leg re-raises the DP3-20 immutable-release bar (dissolved), and the reproducibility ask stays at the disclosed ~1.3% structural (not compute) ceiling; every finding maps to DP3-01/-06/-07/-08/-09/-10/-11/-12/-13/-14/-15/-16/-20; clean-wave streak 2→3; cap 56 HOLDS. Both = the directive-H harsh-referee structural floor on unchanged, honestly-scoped content. No bumps.",
+    keyTakeaways: [
+      "P1U: 0 genuinely-new across Grok(3 MAJOR/2 MINOR) + ChatGPT(11 MAJOR/1 MINOR) on byte-unchanged v1U.0.20; every finding source-cited to DP1U-03/-05/-06/-07/-08/-09/-10/-11/-12/-13/-14/-15/-17/-19/-20/-21/-24/-NJ4-01. Fingerprint-UNMATCHED ChatGPT items (#1 variational, #7 R4 ALP, #8 torsion-dilution, #9 completeness) independently source-verified against the live tex (variational L308/L336; R4 naturalness 'relocating not solving' L247/L346/L354; D_inf scaffolding L803-810; channel-vs-operator L336). Streak 3→4.",
+      "P3: 0 genuinely-new across Grok(4 MAJOR/2 MINOR) + ChatGPT(15 MAJOR/1 MINOR) on byte-unchanged v3.1.158-apjs; every finding source-cited to DP3-01/-06/-07/-08/-09/-10/-11/-12/-13/-14/-15/-16/-20. DP3-20 immutable-release REJECT hinge stays DISSOLVED; ChatGPT's reproducibility MAJOR again cites the paper's own ~1.3%-recoverable held-out numbers (DP3-15 structural ceiling), not a re-run. NEOWISE geometry-QA-by-construction (L143/151/401), in-sample fold held-out tail-preservation (L162-165), and 17.8%-novelty=database-coverage-not-discovery (L375/L499-501) all confirmed disclosed in the live tex. Streak 2→3.",
+      "Both papers = the directive-H maximal-harsh-referee structural floor (ChatGPT REJECT→REJECT, Grok MAJOR→MAJOR) on unchanged, honestly-scoped content — the same re-flag battery as M5 (P1U) and M6 (P3). No content bump on either paper; directive_g.sh not run (no reader-visible edit warranted).",
+      "Integrity: all four EXT raws read verbatim before disposition (Grok l.1 'VERDICT: MAJOR REVISIONS', ChatGPT l.1 'VERDICT: REJECT'); every finding source-cited to a D-id + tex line verified this session; no ACCEPT faked; no dismissal without a source-cited verdict; no math fabricated; caps recomputed from the EXT formula (P1A 62 = 50+grok-MAJ6+chatgpt-REJ0+gemini-MAJ6; P3 56 = 50+grok-MAJ6+chatgpt-REJ0+gemini-REJ0). Streaks: P1U 4 · P2 3 · P3 3 · P4 2 · P5 3. Caps: P1A 62 · P2 74 · P3 56 · P4 74 · P5 80.",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 0,
+      note: "0 genuinely-new reader-visible editable findings across P1U M8-EXT (Grok MAJOR + ChatGPT REJECT — second read of the compressed abstract) and P3 M8-EXT (Grok MAJOR + ChatGPT REJECT — DP3-15 cited at its ~1.3% structural ceiling, DP3-20 dissolved). P1U streak 3→4; P3 streak 2→3. Caps hold P1A 62 · P3 56.",
+    },
+    links: [
+      { label: "P1U Grok M8 EXT raw", href: `${PR}/EXT_real/H17_2026-07-10/M8/P1U_grok_M8.md` },
+      { label: "P1U ChatGPT M8 EXT raw", href: `${PR}/EXT_real/H17_2026-07-10/M8/P1U_chatgpt_M8.md` },
+      { label: "P3 Grok M8 EXT raw", href: `${PR}/EXT_real/H17_2026-07-10/M8/P3APJS_grok_M8.md` },
+      { label: "P3 ChatGPT M8 EXT raw", href: `${PR}/EXT_real/H17_2026-07-10/M8/P3APJS_chatgpt_M8.md` },
+    ],
+  },
+  {
     id: "m7-ext-confirm-wave-2026-07-12",
     dateISO: "2026-07-12",
     kind: "external-browser",
