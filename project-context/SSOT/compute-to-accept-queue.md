@@ -1,6 +1,20 @@
 # Compute-to-ACCEPT queue (the real research that drives external ACCEPT)
 
-<!-- last_updated: 2026-07-01 -->
+<!-- last_updated: 2026-07-11 -->
+
+## 2026-07-11 fundability check (hourly cron tick) — compute lever is ACTIONABLE, not credit-blocked
+
+State verified this tick: RunPod balance **$15.67**, live `RUNPOD_API_KEY` present, **all pods EXITED** (none running / no spend). The edit-loop is exhausted per directive K (two clean waves; P4 ledger shows every ChatGPT/Gemini MAJOR is source-cited disposed — RE-FLAG-DISCLOSED / OPEN-COMPUTE / OPEN-VENUE), so the **only remaining non-gaming lever to flip a reviewer off MAJOR/REJECT is the OPEN-COMPUTE science below**, and it is now confirmed fundable at current balance (A4000 ≈ $0.17/hr). This reframes these items from "Houston-gated on credit" to "Houston-gated on go/scope only."
+
+Still-open, highest-leverage OPEN-COMPUTE items (each targets a specific un-disposed external MAJOR — NOT churn on disclosed content):
+- **P4 — empirical b/a (axis-ratio) cross-match** (Gemini MAJOR): test the edge-on directional-bias exclusion empirically vs analytically. Cleanest single closer; likely local-runnable like `sixway_dedup.py` was.
+- **P4 — ≥200-random-axis harmonic injection battery** (OpenAI-INT M5): full look-elsewhere null for the harmonic channel.
+- **P4 — spatially-resolved confusion matrix** (DP4-15, ChatGPT recurring): needs image-level compute.
+- **P1B — ALP prior-predictive fraction** (ChatGPT-B2): quantify the prior-volume/accommodation cost.
+
+**Why the cron did not auto-launch this tick:** a multi-hour paid compute run whose results fold into a paper cannot be started + supervised-against-fabrication + validated + folded + recompiled in one atomic headless tick, and balance is thin ($15.67). This is a genuine Houston go/scope decision (spend + which item first), not something to fire unsupervised. Once greenlit, a dedicated Opus owner-agent runs it end-to-end with real artifacts (no faking).
+
+---
 
 The drive-to-ACCEPT round (2026-06-30, v*.91/.86/.82/.122/.200/.96) restructured
 each paper around the reviewers' actual asks. But several reviewer demands
