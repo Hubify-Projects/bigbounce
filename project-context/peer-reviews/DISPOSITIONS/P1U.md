@@ -299,3 +299,27 @@ RESET to 0 (DP1U-26 genuinely-new editable finding).
 
 ### Integrity
 No faked ACCEPT. No un-sourced dismissal. No fabrication. Gemini INT first-MINOR-on-P1U milestone verified from raw + posted to activityFeed.
+
+---
+
+## NJ3 adjudication (v1U.0.16, 2026-07-12) — STRICT ledger-first
+
+Raws: EXT `NJ3/P1U_grok_NJ3.md` = **MAJOR** (verified); INT (run.log 08:24Z) openai=REJECT / grok=REJECT / gemini=**MAJOR** / claude=MINOR (`API_P1U_*.md`); ChatGPT EXT FAILED-dead (NJ3b retry in flight) = chart GAP. Full audit: `EXT_real/H17_2026-07-10/NJ3/P1U_NJ3_truth_audit.md`.
+
+**0 genuinely-new reader-visible editable findings.** All EXT-Grok findings re-flag existing dispositions:
+- [MAJOR] four-route/channel-vs-operator "no-go" overstatement → **DP1U-06** (RE-FLAG-DISCLOSED; title already "Under Stated Assumptions").
+- [MAJOR] Sec X all-orders transparency ambiguity → **DP1U-12** (RE-FLAG-DISCLOSED, OPINION on novelty).
+- [MINOR] 14-barrier tiering/redundancy → **DP1U-13** (sec:barriers head already discloses non-independence).
+- [MINOR] NJL Route-1 mean-field caveats → **DP1U-05** (CLOSED-BY-COMPUTE v1U.0.14; Grok ENGAGED the v1U.0.16 leg-A fix).
+- [MINOR] length/self-reference/condense Sec IX → **DP1U-18 / DP1U-24** (CLOSED-BY-EDIT + style-disclosure).
+
+**Gemini-P1U INT oscillation (MIN→MAJ) — DIAGNOSED as presentational-axis referee variance (pattern-066), NOT a response to new content.** NJ2 (v1U.0.15) Gemini INT = MINOR (first-ever P1U minor); NJ3 (v1U.0.16) = MAJOR (`API_P1U_gemini.md` PARSED VERDICT). Only content delta = DP1U-26 NJL leg-A scoping. NJ3 Gemini's 3 MAJORs = #1 abstract-too-long/PRD-style, #2 meta-commentary/tier-labels, #3 Sec-X "trivial corollary" framing — NONE touch the delta (all → **DP1U-24** style-disclosure + **DP1U-12**). Its 2 minors (#4 NDA "no-go" terminology, #5 NJL mean-field breakdown) are disclosed re-flags near the appendix. Gemini's own one-sentence: "the central claim … is robustly supported by the physics." Oscillation is presentational re-weighting on unchanged science, not genuinely-new.
+
+### Streak
+RESET-at-NJ2 was to 0 (DP1U-26). NJ3 clean → **streak 0→1** (directive-K).
+
+### Cap
+post_verdict after Grok EXT MAJOR (unchanged): 50 + grok(major 6) + chatgpt(reject 0) + gemini(major 6) = **62 HOLDS**.
+
+### Integrity
+No faked ACCEPT. No un-sourced dismissal (every finding → §/L + D-id). No fabrication. Gemini oscillation diagnosed from the raw, not steered.

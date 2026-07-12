@@ -1,0 +1,10 @@
+VERDICT: ACCEPT
+
+ISSUES:
+
+[MINOR] Abstract/§I/§V B: The post-hoc designation of the DESIVAST path (and exploratory nature pending DR2 pre-registration) is disclosed in §V B and the analysis-tree table, but the abstract and opening headline paragraph should add one explicit sentence stating “this DR1 result is exploratory/post-hoc (no timestamped plan predates the data)” to eliminate any residual perception of selective emphasis on the most favorable estimator family.
+[MINOR] §VI D and §XI: The ~2.1σ bright/dark filament sign-flip is correctly bounded as not propagating into the primary DESIVAST ∆fCW (difference in dark fraction only 0.12 pp → leakage ≲0.001 pp); however, the residual-ambiguity paragraph should be tightened with the explicit numerical leakage calculation already performed in the text so readers see immediately that it is three orders of magnitude below the headline systematic envelope.
+[MINOR] §VIII/Table XI/XIII: The consolidated ~0.9 pp systematic envelope (quadrature of counting + geometry + membership + footprint terms) is presented as an approximate effective 2σ sensitivity figure rather than a complete budget; the text already flags the dominant any-hole-vs-maximal-sphere term (0.60 pp) as co-dominant, but a one-sentence statement that this is the tightest of several correlated void-definition estimators (not a hard exclusion) would prevent over-interpretation by model-builders.
+[MINOR] General (submission logistics): All internal artifacts [A1]–[A13], the committed pipeline tag v0.1.123-2026-07-12, and the companion data repository must be publicly archived with DOIs or permanent links at acceptance; the concurrent Paper IV (arXiv placeholder) must be accepted or cross-referenced so the public class_eq labels remain independently verifiable.
+
+The central claim of a family-wise Bonferroni-5 null on the DESIVAST void/non-void CW-fraction contrast (|\Delta f_CW| ≲ 0.004 after systematics, redshift-space) is supported by the data, the five-estimator robustness suite, and the transparent multiplicity and post-hoc disclosures.

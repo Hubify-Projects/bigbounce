@@ -1,8 +1,8 @@
-# INT API Review — P1U v1U.0.13 — openai (gpt-5.5)
-paper: P1U  version: v1U.0.13  model: gpt-5.5
+# INT API Review — P1U v1U.0.16 — openai (gpt-5.5)
+paper: P1U  version: v1U.0.16  model: gpt-5.5
 modality: native-PDF (Files API input_file)
-UTC: 2026-07-11T15:03:01.350521Z  |  latency: 49.8s  |  attempt: 1
-usage: {"input_tokens": 100188, "input_tokens_details": {"cache_write_tokens": 0, "cached_tokens": 0}, "output_tokens": 2388, "output_tokens_details": {"reasoning_tokens": 1034}, "total_tokens": 102576}
+UTC: 2026-07-12T08:24:50.719723Z  |  latency: 45.0s  |  attempt: 1
+usage: {"input_tokens": 101656, "input_tokens_details": {"cache_write_tokens": 0, "cached_tokens": 0}, "output_tokens": 1987, "output_tokens_details": {"reasoning_tokens": 516}, "total_tokens": 103643}
 PARSED VERDICT: REJECT
 
 ======================================================================
@@ -13,34 +13,38 @@ RAW RESPONSE (verbatim):
 
 (2) ISSUES:
 
-1. [MAJOR] Secs. II A, IV, App. B — The central “single-scale NDA dimensional no-go” is not a valid EFT proof: Eq. (6) is acknowledged to have the wrong mass dimension for a local Lagrangian, and the subsequent promotion by inserting powers of \(M_{\rm Pl}\) or “on-shell curvature dressing” is an assumption, not a derivation; it cannot establish a no-go for dark energy in minimal ECH.
+1. [MAJOR] Secs. I, IV, IX, XV: The manuscript repeatedly changes the strength of its main claim—“four-route closure,” “basis-complete at the \(M_{\rm Pl}\)-power-counting level,” “not an operator-level theorem,” “13/14 barriers,” and “all four routes closed”—so the central theorem is not stated in a logically precise, falsifiable form.
 
-2. [MAJOR] Secs. I, IV, App. B–C — The manuscript repeatedly alternates between “channel-level only” and “basis-complete within minimal ECH at \(M_{\rm Pl}\)-power-counting level”; the asserted operator completeness is not demonstrated. The listed parity-odd operators do not constitute a complete diffeomorphism-invariant EFT basis, and dark energy need not arise from parity-odd operators at all.
+2. [MAJOR] Secs. II A, IV, Appendices B–C: The alleged completeness of the minimal-ECH operator analysis is not demonstrated. The list \(O_1\)–\(O_6\) is not a complete diffeomorphism- and local-Lorentz-invariant EFT basis even at the advertised order, derivative operators, curvature-torsion mixed terms, boundary terms with nontrivial coefficients, nonminimal fermion structures, and higher-dimensional operators are excluded by assertion rather than by a systematic Hilbert-series/EFT classification.
 
-3. [MAJOR] Sec. II A, Eqs. (1)–(4) — The foundational ECH action and torsion-elimination treatment are internally confused: an on-shell \(T^{abc}T_{abc}\) term is written inside the “fundamental” action, then declared not to be varied; \(\kappa\), \(\kappa^2\), reduced/unreduced \(M_{\rm Pl}\), and Holst-fermion coefficients are used inconsistently. This undermines the normalization of the four-fermion terms central to R1 and later appendices.
+3. [MAJOR] Secs. II A 2, Appendix B: The “dimension \(+1\)” parity-odd operator and subsequent promotion to a dark-energy density are not a controlled EFT construction. Multiplying lower-dimensional geometric densities by \(M_{\rm Pl}^2\) or inserting “on-shell curvature dressing” does not establish a physical no-go for \(\rho_\Lambda\); it only restates a dimensional naturalness expectation.
 
-4. [MAJOR] Sec. IV A–B — The R1/R1-partner closure is only a finite-density mean-field estimate, not a closure of possible vacuum condensates or renormalized effective potentials. The manuscript itself admits that a regulated NJL gap-equation analysis is out of scope, but nevertheless counts the route as closed.
+4. [MAJOR] Secs. II C, XII, Appendix B: The dark-energy mapping \(\rho_\Lambda=\Xi M_{\rm Pl}^4\), the \(D_{\rm inf}=e^{-3N_{\rm tot}}(T_{\rm reh}/M_{\rm GUT})^{3/2}\) factor, and the claim that \(N_{\rm tot}\simeq92\) “reparameterizes” the cosmological-constant problem are phenomenological ansätze, not derived results. The manuscript itself admits this, but still uses them as organizing load-bearing claims.
 
-5. [MAJOR] Sec. IV D — The R2 “one-loop Holst” operator is not derived from the cited literature and is explicitly admitted to be an ansatz-level amplitude budget. The dimensional reduction leading to Eq. (18) is model-dependent and cannot support the claimed closure of a route in a PRD-level no-go paper.
+5. [MAJOR] Sec. IV D: Route R2 is not closed by a derived calculation. The operator \(\partial_\mu\vartheta_{\rm NY}J_5^\mu/M_{\rm Pl}\), the mapping to CMB birefringence through an anomaly chain, and the numerical suppression estimate are not obtained from the cited Holst/Nieh–Yan one-loop literature. The argument is therefore an illustrative dimensional estimate, not a PRD-level exclusion.
 
-6. [MAJOR] Sec. IV E — The R3 Immirzi-running argument mixes an ad hoc chiral-count beta function with the Benedetti–Speziale result, then propagates the running into dark energy through another unproved scaling relation \((\Delta\gamma/\gamma)(H_0/M_{\rm Pl})\). This is not a derivation of an amplitude bound.
+6. [MAJOR] Sec. IV E: Route R3 misuses the running of the Immirzi parameter as a cosmological amplitude calculation. The Benedetti–Speziale perturbative RG result is not a computation of a late-time dark-energy contribution, and the subsequent \((\Delta\gamma/\gamma)(H_0/M_{\rm Pl})\) suppression factor is asserted rather than derived from an effective action.
 
-7. [MAJOR] Sec. IV F, App. G — R4 is not ruled out: the manuscript concedes that a free-coupling spectator ALP can reproduce both \(\beta_{\rm obs}\) and \(\rho_\Lambda\). Reclassifying this as “closed by naturalness” is a philosophical objection, not a physical exclusion, and should not be included in a four-route no-go count.
+7. [MAJOR] Sec. IV F, Appendix H: Route R4 is not an ECH no-go. The conclusion reduces to the standard ultralight-ALP/quintessence naturalness problem \(m\sim H_0\), which is generic and not specific to Einstein–Cartan–Holst gravity. Treating this as “closure” of a minimal-ECH dark-energy route is a semantic relabeling rather than a demonstrated exclusion.
 
-8. [MAJOR] Sec. X — The “perturbation-transparency theorem” is essentially the standard statement that classical scalar matter has zero spin density, hence torsion vanishes and the Holst contraction is Bianchi-trivial on the Levi-Civita branch. This result is correct within its narrow assumptions but too trivial and too restricted to support the broader dark-energy conclusions, especially since fermions, loops, dynamical Immirzi fields, and nonminimal couplings are excluded.
+8. [MAJOR] Sec. X: The perturbation-transparency result is essentially the standard statement that minimally coupled scalar matter has zero spin density, hence vanishing algebraic torsion, and that the Holst contraction vanishes for a torsion-free Levi-Civita connection. This is correct within its narrow classical scope, but it is overstated as a central new result and does not support the broader dark-energy no-go claims.
 
-9. [MAJOR] Sec. IX — The “13/14 barriers” are not independent no-go results. Many are qualitative naturalness statements, heuristic assumptions, or restatements of the same decoupling fact; several are explicitly conditional or non-ECH-specific. They cannot be aggregated as evidence for a rigorous closure.
+9. [MAJOR] Sec. IX: The “13 mechanism-class constraints” are heterogeneous and not independent: some are rigorous identities, some are dimensional estimates, some are heuristic naturalness objections, and some are observational null statements imported from companion work. Counting them as cumulative barriers gives a misleading impression of evidentiary weight.
 
-10. [MAJOR] Secs. XIII–XIV — The surviving “predictions” \(f_{\rm NL}=-35/16\) and ALP birefringence are repeatedly stated not to be predictions of ECH. Their inclusion obscures the paper’s scientific claim and relies on companion papers for central numerical assertions.
+10. [MAJOR] Secs. III, V–VIII, Appendices F–I: The observational material is largely irrelevant to the claimed theoretical no-go. Stock-CAMB \(\Lambda\)CDM+\(\Delta N_{\rm eff}\) runs, NaMaster synthetic-sky tests, galaxy-chirality catalogs, and spectator-ALP MCMC fits do not test minimal ECH torsion dynamics and should not be presented as supporting evidence for the central theoretical claim.
 
-11. [MAJOR] App. E–H — The large observational appendices are mostly irrelevant to the claimed ECH no-go. Stock-CAMB \(\Lambda\)CDM+\(\Delta N_{\rm eff}\), NaMaster synthetic-sky tests, galaxy-spin classifiers, PTA catalogs, and ALP summary-likelihood fits do not test the ECH spin-torsion sector and should not be presented as support for the theoretical closure.
+11. [MAJOR] Secs. XIII, XIV D: The discussion of the matter-bounce value \(f_{\rm NL}=-35/16\), SPHEREx forecasts, and erasure by \(N_{\rm tot}\simeq92\) is not a result of the ECH analysis. It depends on companion papers and on additional assumptions about mode transfer through bounce and inflation that are not calculated here.
 
-12. [MAJOR] Throughout — The manuscript contains numerous internal inconsistencies in numerical values and interpretations: \(N_{\rm tot}\simeq92\) versus \(94\), \(\Delta N_{\rm eff}\) as both a proxy and a derived ECH prediction, \(H_0=69.2\) in Fig. 3 versus the adopted \(67.68\), different Planck-mass conventions, and shifting meanings of “amplitude closure,” “naturalness closure,” and “basis completeness.”
+12. [MAJOR] References and provenance: The manuscript relies heavily on “companion papers,” future-dated arXiv-style references, private repositories, and unreleased artifacts. A PRD submission must stand on published or submitted material available to referees; otherwise these claims are not independently reviewable.
 
-13. [MINOR] Throughout — The manuscript is excessively long, repetitive, and self-referential, with extensive caveats embedded in captions and footnotes. A PRD submission should sharply separate theorem, assumption, phenomenological ansatz, and observational context.
+13. [MAJOR] Presentation: The paper is far too diffuse for a theoretical PRD article. The core argument is obscured by excessive caveats, repetitive scope statements, observational appendices, AI-process disclosure, repository logistics, and figure captions that often contradict or weaken the main claims.
 
-14. [MINOR] References and provenance — Several claims depend on “companion” papers, repository artifacts, or unpublished future/concurrent analyses. These should not be load-bearing in a standalone PRD paper, and all cited observational numbers should be either standard published results or fully reproducible within the manuscript.
+14. [MINOR] Notation is inconsistent: \(\gamma\) denotes both the Barbero–Immirzi parameter and spectral indices in places; \(M_{\rm Pl}\) alternates between reduced and unreduced conventions; \(\theta,\vartheta,\phi,\varphi\) are used for multiple pseudoscalars; and \(\beta\) denotes both birefringence and beta functions.
 
-15. [MINOR] Notation — The same symbols are used for different quantities, e.g. \(\gamma\) for the Barbero–Immirzi parameter and \(\gamma_{\rm PTA}\), \(\beta\) for birefringence and beta functions, and \(\theta,\vartheta,\phi\) for distinct pseudoscalars. This creates avoidable ambiguity in already delicate dimensional arguments.
+15. [MINOR] Several equations and captions contain dimensional or definitional ambiguities, especially Eqs. (5)–(12), (17)–(21), the \(O_i\) operator table, and the ALP normalization conventions.
 
-(3) No, the central claim is not supported: the manuscript establishes only the narrow classical torsionless-scalar decoupling of the Holst term, while the advertised four-route dark-energy closure rests on incomplete operator enumeration, inconsistent dimensional bookkeeping, and ansatz-level naturalness arguments rather than derivations.
+16. [MINOR] The action in Eq. (1) is written in a way that invites double-counting confusion despite later caveats; the fundamental first-order action and the on-shell four-fermion effective action should be separated cleanly.
+
+17. [MINOR] The manuscript should not quote forecast significances, unpublished survey outcomes, or “2026 releases” as if they were established inputs.
+
+(3) The central claim is not supported: only the narrow classical scalar-matter Holst decoupling statement is established, while the advertised channel-level closure of minimal-ECH dark energy rests on incomplete operator enumeration, dimensional ansätze, and generic naturalness arguments rather than derived no-go theorems.
