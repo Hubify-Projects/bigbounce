@@ -48,6 +48,27 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "h17-nj2-cn2-rs1b-ext-harvest-2026-07-12",
+    dateISO: "2026-07-12",
+    kind: "external-browser",
+    title:
+      "H17 EXT harvest (NJ2/CN2/RS1b): 5 pending browser legs harvested against the latest versions — P1U grok MAJOR + ChatGPT REJECT, P2 grok MINOR + ChatGPT REJECT, P5 ChatGPT REJECT; 0 genuinely-new findings on truth-audit.",
+    papers: ["P1A", "P2", "P5"],
+    summary:
+      "A prior sweep left five submitted-but-un-harvested browser legs; this tick drove Houston's headed gstack Chrome to read + verify each raw response before recording any verdict (integrity rule I4). Real verdicts: P1U/NJ2 Grok = MAJOR REVISIONS (3 majors, all transparency-of-derivation asks — display the Fierz projection coefficients + regulated gap-equation excerpt in the main text, derive the R2/R3 scaling ansaetze, self-contain the 13-barrier catalog; the NJL Route-1 exclusion itself read as sound-in-principle), P1U/NJ2b ChatGPT = REJECT (14 majors, the documented maximal-harsh structural floor — same Eq.(6) off-shell-dimension, operator-basis-completeness, four-route and -35/16-vs-published-35/8 axes it re-flags every sweep). P2/CN2 Grok = MINOR REVISIONS (holds P2 at MINOR, consistent with CN1), P2/CN2b ChatGPT = REJECT (structural floor). P5/RS1b ChatGPT = REJECT — its lead MAJOR (DESIVAST edge-void contamination: GALZONE.EDGE is cell-level not void-level, >60% of DR1 voids edge-affected, repeat with interior-fiducial cuts) is a source-verified RE-FLAG of the already-disclosed DP5-06 footprint-not-selection-function boundary-geometry axis (fingerprint keywords added in the W2 wave), an OPEN-COMPUTE randoms-weighted-reconstruction item, NOT a genuinely-new editable defect. P5/RS1 Grok = MINOR (5 minors, all disclosed/scope re-flags). Net: 0 genuinely-new real findings this harvest; no paper content changed. Verdicts recorded to Convex via post_verdict.sh (externalReviews:upsertByLabelDate, source internal-stage3); readiness caps recomputed from the EXT-reviewer formula (P1U 62, P2 74, P5 74). No fabrication, no faked ACCEPT, every dismissal source-cited against the DP ledgers.",
+    keyTakeaways: [
+      "5 pending browser legs harvested with raw-read-then-verify (I4): P1U grok MAJOR + ChatGPT REJECT, P2 grok MINOR + ChatGPT REJECT, P5 ChatGPT REJECT (P5 grok RS1 MINOR)",
+      "P5 ChatGPT edge-void MAJOR = source-verified RE-FLAG of disclosed DP5-06 (footprint-not-selection boundary axis / OPEN-COMPUTE interior-fiducial recompute), not genuinely-new",
+      "P1U grok MAJORs are transparency-of-derivation asks (show Fierz coeffs + gap-eq excerpt in main text); NJL Route-1 exclusion read as sound-in-principle",
+      "ChatGPT legs remain the documented maximal-harsh structural floor (REJECT on unchanged/improved content); grok holds P1U MAJOR, P2/P5 MINOR",
+      "0 genuinely-new findings; Convex verdicts + honest EXT-formula caps written (P1U 62 / P2 74 / P5 74); no content change, no fabrication, no faked ACCEPT",
+    ],
+    links: [
+      { label: "H17 EXT manifest", href: `${PR}/EXT_real/H17_2026-07-10/manifest.jsonl` },
+      { label: "DP5 dispositions (DP5-06 edge-void re-flag)", href: `${PR}/DISPOSITIONS/P5.md` },
+    ],
+  },
+  {
     id: "p2-c15-gr-leg-basis-fix-recompute-2026-07-12",
     dateISO: "2026-07-12",
     kind: "closure-wave",
