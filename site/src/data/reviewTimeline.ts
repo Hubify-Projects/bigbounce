@@ -57,6 +57,32 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p4-m5-e2e-fold-retest-2026-07-12",
+    dateISO: "2026-07-12",
+    kind: "internal-api",
+    title:
+      "P4 M5 — INT native-PDF re-test of the v1.0.238 image-level e2e fold (v1.0.238→v1.0.239). After the directive-L compute closer (full 8.47M-galaxy mirror-flip injection through the production ViT) folded into §VI B, this round re-tested to measure the fold's effect: OpenAI gpt-5 MAJOR (softened off its prior REJECTs), Gemini 2.5-pro ACCEPT-with-minor ('highly recommended for publication in PRD', 0 image-level MAJOR), Grok 4.3 REJECT (4 majors all standing items). The re-test surfaced ONE genuinely-new correctness item in the newly-folded text — OpenAI-INT P4-E7 — now CLOSED-BY-EDIT.",
+    papers: ["P4"],
+    summary:
+      "INT native-PDF re-test of the v1.0.238 e2e fold. OpenAI MAJOR (off REJECT) / Gemini ACCEPT-with-minor / Grok REJECT. One genuinely-new correctness item (OpenAI P4-E7): the folded §VI B wording 'exactly parity-antisymmetric … T_eq=0.9997 with maximum antisymmetry deviation 0.0' conflated two quantities → corrected to distinguish probability-level antisymmetry (exact by Z2-TTA construction, max deviation 0.0) from the argmax-label flip-recovery rate (T_eq=0.9997, residual 2.6×10⁻⁴ = argmax ties p_CW^eq=p_CCW^eq, not physical asymmetry), per the e2e artifact JSON note. No number changed. Directive-G: v1.0.239, 35pp, 0 undef-refs, 4 served mirrors md5 15211f0f, Convex bump verified. All other findings (Grok 4 majors, OpenAI E1–E6/E9/M1–M8, Gemini minors) source-cited standing re-flags. Genuinely-new item resets P4 clean-wave streak 7→0.",
+    keyTakeaways: [
+      "The honest compute lever moved reviewers: after the real 8.47M-galaxy image-level e2e result folded into §VI B, OpenAI-INT softened off REJECT to MAJOR and Gemini-INT returned ACCEPT-with-minor ('highly recommended for publication in PRD') with NO image-level/pseudo-label MAJOR — the previously recurring DP4-15 image-level objection is not re-raised by either.",
+      "ONE genuinely-new correctness item, in the NEW content, closed in-round: OpenAI P4-E7 correctly flagged that 'exactly parity-antisymmetric … T_eq=0.9997 with maximum deviation 0.0' is internally inconsistent. Fixed honestly per the artifact JSON: the probability-level antisymmetry is exact by Z2-TTA construction (max deviation 0.0); the argmax-label flip-recovery rate is T_eq=0.9997, the 2.6×10⁻⁴ shortfall being argmax ties (p_CW^eq=p_CCW^eq), not a physical asymmetry. No number changed, nothing fabricated.",
+      "Grok 4.3 REJECT: 4 majors all standing items (abstract-number reproduction DP4-01, non-equivalent-σ comparability DP4-13, mask-threshold robustness DP4-14, injection-recovery convention DP4-09) — none engages the e2e result as wrong. Pattern-066 harsh-referee floor on honestly-scoped content.",
+      "Integrity: all three raw referee reports read verbatim before any verdict recorded; directive-G HARD-GATE PASS (v1.0.239, 0 undef-refs, 35pp, 4 mirrors byte-identical md5 15211f0f, Convex bump); genuinely-new item resets P4 clean-wave streak 7→0 (found+closed, re-test next round); no ACCEPT faked, no major dismissed without a source-cited verdict.",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 1,
+      note: "INT re-test of the e2e fold: 1 genuinely-new correctness item (OpenAI P4-E7, in the newly-folded §VI B) closed in-round; all other findings source-cited standing re-flags. OpenAI softened off REJECT→MAJOR, Gemini ACCEPT-with-minor (no image-level MAJOR), Grok REJECT (standing items). Streak resets 7→0.",
+    },
+    links: [
+      { label: "P4 OpenAI INT raw (v1.0.239 re-test)", href: `${PR}/DP4-E2E-RETEST-v1.0.238_P4_OpenAI_methodology.md` },
+      { label: "P4 Gemini INT raw (v1.0.239 re-test)", href: `${PR}/DP4-E2E-RETEST-v1.0.238_P4_Gemini_cosmology.md` },
+      { label: "P4 Grok INT raw (v1.0.239 re-test)", href: `${PR}/DP4-E2E-RETEST-v1.0.238_P4_Grok_brutal.md` },
+      { label: "e2e run summary (192/192 shards)", href: `${GH}/pipelines/p2_chirality/outputs/canonical_provenance/e2e_fullrun/RUN_SUMMARY.md` },
+    ],
+  },
+  {
     id: "p1u-dp1u-prd-abstract-rewrite-2026-07-12",
     dateISO: "2026-07-12",
     kind: "closure-wave",

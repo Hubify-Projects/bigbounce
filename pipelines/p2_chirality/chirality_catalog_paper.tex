@@ -52,7 +52,16 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.238}
+\newcommand{\paperVersion}{v1.0.239}
+% v1.0.239 (2026-07-12 — INT re-test of the v1.0.238 e2e fold (OpenAI MAJOR / Gemini ACCEPT-minor /
+%   Grok REJECT, all native-PDF): closes the ONE genuinely-new correctness item OpenAI-INT P4-E7 raised
+%   in the newly-folded Sec.~VI B paragraph. The prior wording ("exactly parity-antisymmetric ... T_eq=0.9997
+%   with maximum antisymmetry deviation 0.0") conflated two distinct quantities; corrected to distinguish the
+%   probability-level antisymmetry (exact by Z2-TTA construction, max deviation 0.0) from the argmax-label
+%   flip-recovery rate (T_eq=0.9997, residual 2.6e-4 = argmax ties p_CW^eq=p_CCW^eq, not physical asymmetry),
+%   per the e2e_transfer_function_full.json note. No number changed; nothing fabricated. All other findings
+%   (Grok's 4 majors, OpenAI E1-E6/E9/M1-M8, Gemini minors) are source-cited standing re-flags / carry-forward
+%   presentation minors — see DISPOSITIONS/P4.md.)
 % v1.0.238 (2026-07-12 — directive-L compute closer FOLDED: the full image-level end-to-end
 %   mirror-flip injection flagged in Sec.~sensitivity as "the operative next step and do not
 %   perform here" is now PERFORMED on the full 8.47M-galaxy image source through the production
@@ -1167,10 +1176,14 @@ original-confidence bins ($0.207$--$0.261$ from the $[0.9,0.99)$ to the
 $[0,0.7)$ bin) and across the North/South hemisphere split ($T_{\rm
 raw}^{N}\!=\!0.218$ vs.\ $T_{\rm raw}^{S}\!=\!0.251$, a $\lesssim\!0.033$
 absolute variation). Crucially, the production Z2-equivariant TTA labeling
-(\texttt{class\_eq}/$p_{\rm eq}$) is \emph{exactly parity-antisymmetric at
-the image level}: the mirror-flip transfer under TTA is $T_{\rm eq}=0.9997$
-with maximum antisymmetry deviation $0.0$, verified numerically image-by-image
-on all $8.47\times10^{6}$ galaxies (artifact
+(\texttt{class\_eq}/$p_{\rm eq}$) is parity-antisymmetric at the image level
+\emph{by construction}: the symmetrized probability vector satisfies mirror
+antisymmetry exactly (maximum probability-level antisymmetry deviation $0.0$,
+verified numerically image-by-image), while the corresponding argmax
+flip-recovery rate is $T_{\rm eq}=0.9997$ --- the residual $2.6\times10^{-4}$
+shortfall from unity arising solely from argmax ties
+($p_{\rm CW}^{\rm eq}\!=\!p_{\rm CCW}^{\rm eq}$), not from any physical
+handedness asymmetry --- on all $8.47\times10^{6}$ galaxies (artifact
 \artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/e2e\_fullrun/e2e\_transfer\_function\_full.json}).
 The net image-level handedness preference that a spatially-varying confusion
 would have to organize into a coherent dipole is therefore \emph{absent by
