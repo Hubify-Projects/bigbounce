@@ -47,8 +47,8 @@ export interface LiveStatus {
 }
 
 export const liveStatus: LiveStatus = {
-  lastUpdatedISO: "2026-07-12T10:42:25Z",
-  lastUpdatedDisplay: "July 12, 2026 · 3:42 AM PT",
+  lastUpdatedISO: "2026-07-12T17:11:53Z",
+  lastUpdatedDisplay: "July 12, 2026 · 9:50 AM PT",
   headline:
     "P3 FR5 (Jul 11) — SECOND CONSECUTIVE CLEAN WAVE on the DP3-19 fix → P3 clean-wave streak 1→2, and P3 REJOINS the full five-paper exit set (all five now past the directive-K two-clean-waves bar: P1U 2 · P2 3 · P3 2 · P4 4 · P5 2). FR5 board (run.log 16:57): INT Claude MINOR + OpenAI REJECT + Grok-API MAJOR + Gemini MAJOR + EXT Grok MAJOR + EXT ChatGPT REJECT (FR4b carryover). GEMINI INT'S FIRST NON-REJECT ON P3 (REJECT→MAJOR) — verified from the raw verdict line (native-PDF, PARSED VERDICT MAJOR REVISIONS) + the gemini milestone log; all 5 findings are source-cited DP3 re-flags (honest softening on unchanged content). 0 genuinely-new editable findings across all 6 legs (Grok EXT + Gemini/OpenAI/Grok-API all re-flag DP3-07/-08/-10/-09/-15/-16; Claude recomputed the 268,519 dedup + NANOGrav + f_NL Fisher chain, 0 new factual error). Separately, FR4b recovers the FR4 ChatGPT FAILED gap = ChatGPT REJECT (20 MAJOR + 2 MINOR, all re-flag DP3-01…DP3-19, 0 genuinely-new, no additional reset). No version bump (v3.1.155 stands, served md5 ebd4bfd1…). Convex EXT cap 56 (INT Gemini MAJOR is not an EXT-cap input). Venue/human-referee decision remains Houston-gated.",
   summary:
@@ -129,7 +129,7 @@ export const liveStatus: LiveStatus = {
     openMajors: 6, // latest-per-reviewer verdict words below MINOR: ChatGPT REJECT x5 (documented floor) + OpenAI INT REJECT class -- all ledger-dispositioned re-flags, 0 genuinely-new open
     openMinors: 8, // Grok/Claude MINOR lists -- all ledger re-flags of disclosed limitations
   },
-  cronStatus: "FR1 fresh full-board round adjudicated (2026-07-11): INT (openai/grok/gemini/claude) + EXT-Grok on the July-11 restamps (no content change since exit); EXT ChatGPT+Gemini FAILED-dead (rate-limit) → chart GAPs. 4 of 5 papers clean (streaks P1U 2→3, P2 3→4, P4 4→5, P5 2→3, all HOLD past the bar). P3 RESET 4→0: Claude-INT caught a genuinely-new reader-visible mis-round (NANOGrav SMBHB shift +4.61→+4.63σ), fixed same-bundle → v3.1.154 (directive-G verified). MILESTONE: OpenAI-INT returned MAJOR-REVISIONS on P4 — its FIRST non-REJECT on that paper. Oscillations P1U Grok MINOR→REJECT + P5 Claude MINOR→MAJOR = pattern-066 variance on unchanged content, not new findings. No ACCEPT faked, no finding dismissed without a source-cited verdict, no math fabricated. FR1b ChatGPT-retry (2026-07-11) recovered the rate-limit GAP: EXT ChatGPT = P1U REJECT · P2 REJECT · P3 REJECT · P4 REJECT · P5 MAJOR-REVISIONS. 0 genuinely-new reader-visible editable findings on any paper — all source-cited re-flags of the DISPOSITIONS ledger; no streak resets (P1U 3 · P2 4 · P3 0 · P4 5 · P5 3 HOLD). P5's ChatGPT tier-lift REJECT→MAJOR (floor-crack) HOLDS on the restamp → P5 cap 74→80. P3's NANOGrav ChatGPT finding is a scope re-flag; the +4.61→+4.63σ arithmetic was already fixed in v3.1.154 (DP3-18).",
+  cronStatus: "M1 wave harvested (2026-07-12): all 5 papers re-measured after the directive-M presentation overhauls + science closures. Grok: P4 MINOR, P1U/P2/P5/P3-ApJS MAJOR. ChatGPT: REJECT floor re-hardened across all. P4 e2e full sweep COMPLETE (192/192 shards, 8.47M galaxies). Adjudication running; All-A meter drives the goal.",
   etaToCompletion:
     "PROGRAM PAST THE CONVERGENCE BAR — wave-1 kit verified. Two independent clocks remain, both external to the loop. arXiv clock: the rebuilt + standalone-verified kit is a set of Houston submission clicks away (minutes) — walk submissions/WAVE1_SUBMIT_WALKTHROUGH.md. Journal clock: human referees (months). No further autonomous editing clears the disclosed venue/scope items.",
   pods: [],
