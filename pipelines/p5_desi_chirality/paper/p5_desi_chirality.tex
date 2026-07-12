@@ -41,7 +41,16 @@
 % The divide-by-h claim (~1246 h⁻¹ Mpc) is INVERTED. No pipeline recompute required.
 % If any future reviewer re-raises this, cite env_finder/01_compute_vweb.py:106-108.
 
-\newcommand{\paperVersion}{v0.1.124-2026-07-12}
+\newcommand{\paperVersion}{v0.1.125-2026-07-12}
+% v0.1.125 (2026-07-12 -- M1 wave genuinely-new (overhaul-introduced): the directive-M
+%   abstract rewrite (v0.1.124) over-tightened "the primary estimand" to "the primary,
+%   pre-declared estimand" (L778), which flatly CONTRADICTS the honest post-hoc disclosure
+%   at Sec.~V.B ("made post-hoc"; "exploratory primary, since no timestamped analysis plan
+%   predates the data"). BOTH M1 EXT referees (Grok MAJOR#1, ChatGPT MAJOR#1) caught it.
+%   Fix: abstract now reads "designated-primary (exploratory, not pre-registered) estimand",
+%   consistent with Sec.~V.B + L4446. ONE-WORD honesty fix, no number changed. Streak 3->0.)
+% v0.1.124-2026-07-12 (directive-M presentation completion: 352->41-line PRD abstract,
+%   removed reader's-guide/co-review-request residue; byte-preserving all numbers.)
 % v0.1.123 (2026-07-12 -- INT-Claude + EXT-ChatGPT genuinely-new: RSD reconstruction
 %   relabeled as the UNRESTRICTED (secondary) contrast (not primary), sign corrected to
 %   paper convention +0.069->+0.045 pp; quadrature intermediate 0.886->0.898.
@@ -775,7 +784,8 @@ environment in DESI Data Release~1, cross-matching the
 $8{,}474{,}531$-galaxy chirality catalog of the companion catalog paper
 (Paper~IV)~\cite{golden_chirality_2026} (\paperIVarxiv, posted
 concurrently under coordinated submission) to the DESI DR1 redshift
-catalog. The primary, pre-declared estimand is the footprint-restricted
+catalog. The designated-primary (exploratory, not pre-registered)
+estimand is the footprint-restricted
 DESIVAST~\cite{DESIVAST2025} void-vs-non-void CW-fraction contrast
 $\Delta f_{\rm CW} = +0.0018$ ($z_\Delta = +0.78$, $p_\Delta = 0.43$,
 $n_{\rm void} = 57{,}081$), consistent with parity; the void/non-void
