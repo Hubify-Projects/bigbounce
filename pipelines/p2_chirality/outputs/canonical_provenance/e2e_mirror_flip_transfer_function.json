@@ -1,0 +1,59 @@
+{
+  "purpose": "end-to-end image-level chirality transfer function via mirror-flip injection through the ACTUAL ViT classifier",
+  "model": "bamfai/galaxy-chirality-v2 (ViT-Small/16 + 3-class head)",
+  "model_ckpt": "/Users/houstongolden/.cache/huggingface/hub/models--bamfai--galaxy-chirality-v2/snapshots/237d021c451d75cf86a875e86d4de498b74e2f12/chirality_model_v2_best.pt",
+  "model_val_acc": 0.9368777275085449,
+  "image_source": "mwalmsley/gz_desi (HF streaming) \u2014 same source as run_v2_inference.py",
+  "preprocessing": "Resize(224,224)->ToTensor->Normalize(ImageNet) [matches run_v2_inference.py]",
+  "device": "mps",
+  "n_scanned": 288,
+  "n_pairs_cw_ccw_original": 212,
+  "flip_confusion_matrix_orig_to_mirror": {
+    "rows_orig": [
+      "CW",
+      "CCW",
+      "NS"
+    ],
+    "cols_mirror": [
+      "CW",
+      "CCW",
+      "NS"
+    ],
+    "counts": [
+      [
+        58,
+        67,
+        6
+      ],
+      [
+        54,
+        23,
+        4
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ]
+  },
+  "n_flip_recovered_CWtoCCW_or_CCWtoCW": 121,
+  "n_stayed_same_spiral_class": 81,
+  "n_spiral_original_to_NS_mirror": 10,
+  "transfer_function_T": 0.5707547169811321,
+  "transfer_function_T_stderr": 0.033994572959276666,
+  "transfer_function_T_conf_gate": {
+    "min_orig_conf": 0.0,
+    "value": 0.5707547169811321,
+    "n": 212
+  },
+  "image_level_flip_accuracy_a_img_spiral_spiral_pool": 0.599009900990099,
+  "image_level_g_img_2a_img_minus_1": 0.19801980198019797,
+  "paper_assumed_hard_label_g": 0.398,
+  "paper_assumed_a": 0.6991,
+  "orig_conf_mean": 0.9684952891097879,
+  "mirror_conf_mean": 0.9497857017899459,
+  "interpretation": "T is the end-to-end probability that a physically exact chirality inversion (image mirror-flip) is registered by the ACTUAL classifier. T=1 => perfect parity equivariance; the paper's dilution g=2a-1 would then be a conservative lower bound set by human(GZ1)-label noise, not classifier noise. T<1 substantially => the classifier itself dilutes the chirality signal at the image level, and g must reflect the image-level a_img, not just the GZ1 cross-match a=0.6991.",
+  "runtime_sec": 28.8,
+  "timestamp_utc": "2026-07-12T06:21:19Z"
+}
