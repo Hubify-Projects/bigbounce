@@ -1,6 +1,27 @@
 # Compute-to-ACCEPT queue (the real research that drives external ACCEPT)
 
-<!-- last_updated: 2026-07-12 -->
+<!-- last_updated: 2026-07-12 (15:07 tick — b/a ledger reconcile) -->
+
+## 2026-07-12 (hourly cron tick, 15:07) — ledger reconcile: P4 b/a axis-ratio cross-match marked DONE (was stale-open ×2)
+
+**State check:** no concurrent driver (only my own `claude -p`); no un-harvested EXT (M6 P5/P3 was
+harvested + adjudicated 18 min prior, `80ec60db`, 0 genuinely-new); working tree clean. A fresh EXT
+sweep now = verdict-churn on unchanged content (directive-M forbids); no paper changed since the last
+INT so no INT re-test is due. The only genuinely-open compute levers are multi-hour **paid** pod runs
+(P4 Stage B image→field, spatially-resolved confusion, joint covariance likelihood; P1B ALP
+prior-predictive) — Houston go/scope-gated + thin balance ($15.67), NOT fireable unsupervised in one
+atomic headless tick. So the correct honest atomic increment this tick was **state-honesty**: reconcile
+the stale ledger (same class the 14:07 tick fixed for the e2e Stage A run).
+
+**Fixed:** the compute-queue listed the **P4 empirical b/a (axis-ratio) cross-match** (Gemini MAJOR)
+as open `[ ]` in **three** places (the P4 section had it duplicated verbatim) — but it is **DONE
+2026-07-02 and folded into P4 v1.0.218**: real per-galaxy DR8 morphology pulled for all 3,201,160
+spirals (`spiral_morphology_dr8.parquet`), empirical f_edge=15.8% at b/a<0.30 metric
+(`edge_on_contamination_metric.json`, git_head 67ae7e3f) superseding the qualitative 5–8% App-E bound,
+and an **edge-on-isolated dipole slice** (per-leg |z|<1.4) showing no directional dipole even in the
+edge-on population → closes Gemini App E empirically. Marked `[x]` with cited artifacts, de-duplicated,
+and removed from the "still-open" leverage list. No paper edit, no version bump, no verdict change, no
+readiness change (caps already honest). No fabrication.
 
 ## 2026-07-12 (hourly cron tick) — ✅ P4 end-to-end image-level run COMPLETE + FOLDED + COMMITTED
 
@@ -28,17 +49,19 @@ honest closer for the P4 image-level / pseudo-label-independence MAJOR (ChatGPT 
   the full catalog). The GZ1-derived g=0.398 is the human-ground-truth accuracy calibration — a
   distinct, complementary quantity. Both are now in the paper honestly.
 - **NEXT compute lever for P4** (Stage B, when Houston greenlights spend): hybrid image→field
-  injection-recovery consuming the precomputed flip labels; and the empirical b/a axis-ratio
-  cross-match (Gemini MAJOR) — see the OPEN-COMPUTE list below.
+  injection-recovery consuming the precomputed flip labels; and the full spatially-resolved
+  confusion matrix (DP4-15) — see the OPEN-COMPUTE list below. (The empirical b/a axis-ratio
+  cross-match is already DONE + folded v1.0.218; no longer a compute lever.)
 
 ## 2026-07-11 fundability check (hourly cron tick) — compute lever is ACTIONABLE, not credit-blocked
 
 State verified this tick: RunPod balance **$15.67**, live `RUNPOD_API_KEY` present, **all pods EXITED** (none running / no spend). The edit-loop is exhausted per directive K (two clean waves; P4 ledger shows every ChatGPT/Gemini MAJOR is source-cited disposed — RE-FLAG-DISCLOSED / OPEN-COMPUTE / OPEN-VENUE), so the **only remaining non-gaming lever to flip a reviewer off MAJOR/REJECT is the OPEN-COMPUTE science below**, and it is now confirmed fundable at current balance (A4000 ≈ $0.17/hr). This reframes these items from "Houston-gated on credit" to "Houston-gated on go/scope only."
 
 Still-open, highest-leverage OPEN-COMPUTE items (each targets a specific un-disposed external MAJOR — NOT churn on disclosed content):
-- **P4 — empirical b/a (axis-ratio) cross-match** (Gemini MAJOR): test the edge-on directional-bias exclusion empirically vs analytically. Cleanest single closer; likely local-runnable like `sixway_dedup.py` was.
-- **P4 — ≥200-random-axis harmonic injection battery** (OpenAI-INT M5): full look-elsewhere null for the harmonic channel.
-- **P4 — spatially-resolved confusion matrix** (DP4-15, ChatGPT recurring): needs image-level compute.
+- ~~**P4 — empirical b/a (axis-ratio) cross-match** (Gemini MAJOR)~~ — **DONE 2026-07-02, folded v1.0.218** (this was the predicted cleanest single closer; it ran locally as expected). See the P4 section below for the empirical f_edge=15.8% metric + the edge-on-isolated dipole slice (per-leg |z|<1.4, closes Gemini App E). No longer open.
+- **P4 — spatially-resolved confusion matrix** (DP4-15, ChatGPT recurring): needs image-level compute (largely closed by the 2026-07-12 end-to-end 8.47M-galaxy mirror-flip run; full spatial-resolution integration is the remaining paid-pod step).
+- **P4 — joint real-space×harmonic covariance likelihood** (DP4-17; the ≥200-random-axis harmonic battery's remaining leg after the A→2% amplitude sweep already shipped): genuine future-work likelihood, not a local in-tick edit.
+- **P4 — Stage B hybrid image→field injection-recovery** (consumes the precomputed e2e flip labels): the next paid-pod lever after Stage A completed 2026-07-12.
 - **P1B — ALP prior-predictive fraction** (ChatGPT-B2): quantify the prior-volume/accommodation cost.
 
 **Why the cron did not auto-launch this tick:** a multi-hour paid compute run whose results fold into a paper cannot be started + supervised-against-fabrication + validated + folded + recompiled in one atomic headless tick, and balance is thin ($15.67). This is a genuine Houston go/scope decision (spend + which item first), not something to fire unsupervised. Once greenlit, a dedicated Opus owner-agent runs it end-to-end with real artifacts (no faking).
@@ -105,9 +128,27 @@ fold real results into the paper; re-review.
   ≤80 epochs early-stopped on ~26K images). NEXT: on completion, run inference +
   `preliminary_dipole.py` on the GZ1-only catalog, confirm null, backup ckpt to
   local+HF+B2 (Lesson E), then flip this to [x].
-- [ ] **Empirical b/a (axis-ratio) cross-match**: test the edge-on directional-bias-exclusion argument empirically, not just analytically. (Gemini MAJOR.)
-- [ ] **Empirical b/a (axis-ratio) cross-match**: test the edge-on directional-bias-exclusion argument empirically, not just analytically. (Gemini MAJOR.)
-- [ ] **≥200-random-axis harmonic injection battery**: full look-elsewhere null for the harmonic channel. (OpenAI-INT M5.)
+- [x] **Empirical b/a (axis-ratio) cross-match** (Gemini MAJOR) — **DONE 2026-07-02, FOLDED v1.0.218**.
+  Pulled real per-galaxy DR8 morphology (`ls_dr8.tractor` via NOIRLab Astro Data Lab TAP) for
+  all 3,201,160 classified spirals → `outputs/spiral_morphology_dr8.parquet` (b/a from
+  DEV/EXP shape ellipticities). Measured the empirical axis-ratio distribution directly
+  (`outputs/edge_on_contamination_metric.json`, git_head 67ae7e3f): **f_edge = 15.8%** at b/a<0.30
+  (505,889 edge-on spirals), sensitivity-floor inflation 9.0% — the empirical number supersedes the
+  prior qualitative 5–8% Appendix-E estimate. Because equivariant Z2-TTA forces ⟨p_CW⟩=⟨p_CCW⟩ on
+  flip-symmetric edge-on morphologies, this contamination is pure N_eff dilution, **not** a directional
+  bias on the ℓ=1 dipole. v1.0.217→218 (2026-07-05 DATA-UNLOCK) added the **edge-on-ISOLATED dipole
+  slice** (b/a<0.30 population): per-leg |z|<1.4 (BASS+MzLS −0.23 / DECaLS +0.71 / DES +1.17), i.e.
+  no directional dipole even when isolating the edge-on slice → **closes Gemini App E** empirically,
+  not just analytically. This is the cleanest single closer as predicted (local-runnable, like
+  `sixway_dedup.py`); it required no paid pod for the metric (the b/a pull ran on a spot A4000 that is
+  now EXITED). Artifacts committed; morphology parquet mirrored to HF + B2 (Lesson E).
+- [ ] **≥200-random-axis harmonic injection battery** (OpenAI-INT M5) — **partial / dispositioned OPEN-COMPUTE (DP4-17).**
+  The amplitude sweep is DONE (`injection_sweep_extended.py` extended to A=2.0%, closing the GPT-5
+  "abstract claims up to 2% but artifact only tested 0.5%" BLOCKER). The remaining ask — a full
+  ≥200-random-axis look-elsewhere null for the harmonic channel plus a joint real-space×harmonic
+  covariance likelihood — is dispositioned **DP4-17 OPEN-COMPUTE** (the 47% harmonic remainder is
+  disclosed and bounded a-fortiori below A_50/A_95; a joint-nuisance likelihood is genuine future
+  work, not editable now). Not a local in-tick lever.
 
 ## P3 (anomaly catalog) — 3/3 MAJOR, needs reproducibility artifacts
 - [x] **Independent 6-way dedup artifact** (OpenAI E1 "most critical") — **DONE 2026-06-30**.
