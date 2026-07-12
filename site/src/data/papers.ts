@@ -87,8 +87,8 @@ export const papers: Paper[] = [
     slug: "paper-1a",
     number: "1",
     title: "Channel-Level Closure of Four Minimal Einstein–Cartan–Holst Dark-Energy Routes and Perturbation Transparency for Scalar Matter, with a Technical Verification Companion (MCMC · NaMaster · Spectator-ALP)",
-    version: "v1U.0.13",
-    lastUpdated: "2026-07-11",
+    version: "v1U.0.15",
+    lastUpdated: "2026-07-12",
     tldr: "Unified Paper 1: closes all four minimal Einstein–Cartan–Holst routes from a quantum bounce to dark energy and proves the Holst sector is invisible to scalar/tensor perturbations, then verifies the program with the former Paper 1B technical companion (309K-sample ΛCDM+ΔN_eff MCMC, NaMaster pipeline recovery, spectator-ALP birefringence check) folded in as appendices — self-contained. Two clean kill-tests remain (LiteBIRD birefringence, SPHEREx f_NL).",
     path: publicationPath({}),
     pages: "60",
@@ -115,10 +115,13 @@ export const papers: Paper[] = [
       "arXiv endorsement + submission — gated behind a reviewer ACCEPT (packets are ready; reviews are not passed)",
     ],
     preprintId: "HUBIFY-2026-001",
-    pdfMeta: "PDF · 60 pp · v1U.0.13 · updated Jul 11, 2026 · md5 7ba02c4a — R4 spectator-ALP framing sharpened (no number changed, nothing fabricated). The Route-4 closure now states explicitly what is ECH-specific versus generic: the m_θ~H₀ ultralight-mass tuning is acknowledged as the same tuning that afflicts every quintessence/ultralight-axion dark-energy model (not a distinctive ECH barrier), while the ECH-specific content is (i) the rigid one-loop-coupling amplitude overshoot of ρ_θ over ρ_Λ by 22–36 orders of magnitude, and (ii) that once the coupling is floated to escape that overshoot, minimal ECH supplies no first-principles reason for m_θ~H₀, so the predictive route is closed. G15 closure (v1U.0.9, Jul 10): reframed the stock-CAMB MCMC as an upper-bound baseline envelope check (not an ECH test) per Gemini, restructured the Eq.6→Eq.7 hand-off to lead with the dimension-4 operator basis over the Case II curvature-dressing heuristic, and closed Grok/ChatGPT minors (Eq.17 margin note, transparency-theorem all-orders/FLRW clause, M_Pl/κ convention footnote, Holst-topological terminology). Presentation-only, no verified number changed.",
+    pdfMeta: "PDF · 63 pp · v1U.0.15 · updated Jul 12, 2026 · md5 3519880a — NJ1 closure: INT-Claude verified the new NJL-exclusion appendix (app:njl_gap) SOUND and caught Holst-dressed NJL factor stated as ∼30× in body when the paper's own committed script arxiv/scripts/njl_gap_equation_route1.py gives holst_factor=0.0698=γ²/(γ²+1) → 14.3× ≈ ∼14×; corrected at 2 body sites + header comment; conservative direction preserved, conclusion unchanged. EXT Grok MAJOR + ChatGPT REJECT re-flagged pre-existing ledger classes (DP1U-06/-07/-08/-11/-12 etc.) without engaging the new appendix. INT OpenAI/Grok/Gemini did not engage the new appendix; only INT-Claude verified the new content. R4 spectator-ALP framing sharpened (no number changed, nothing fabricated). The Route-4 closure now states explicitly what is ECH-specific versus generic: the m_θ~H₀ ultralight-mass tuning is acknowledged as the same tuning that afflicts every quintessence/ultralight-axion dark-energy model (not a distinctive ECH barrier), while the ECH-specific content is (i) the rigid one-loop-coupling amplitude overshoot of ρ_θ over ρ_Λ by 22–36 orders of magnitude, and (ii) that once the coupling is floated to escape that overshoot, minimal ECH supplies no first-principles reason for m_θ~H₀, so the predictive route is closed. G15 closure (v1U.0.9, Jul 10): reframed the stock-CAMB MCMC as an upper-bound baseline envelope check (not an ECH test) per Gemini, restructured the Eq.6→Eq.7 hand-off to lead with the dimension-4 operator basis over the Case II curvature-dressing heuristic, and closed Grok/ChatGPT minors (Eq.17 margin note, transparency-theorem all-orders/FLRW clause, M_Pl/κ convention footnote, Holst-topological terminology). Presentation-only, no verified number changed.",
+    changelog: [
+      "NJ1 Holst NJL factor 30×→14× correction (v1U.0.15, INT-Claude genuinely-new catch): paper body stated Holst-dressed NJL couplings are ∼30× the bare value; the paper's own committed script arxiv/scripts/njl_gap_equation_route1.py gives holst_factor=0.0698=γ²/(γ²+1) → 14.3× ≈ ∼14×. Corrected at 2 body sites + header comment. NJL-exclusion appendix (app:njl_gap) verified SOUND by INT-Claude. Conservative direction and conclusion unchanged. EXT Grok MAJOR + ChatGPT REJECT re-flagged old ledger classes without engaging the new appendix. Streak reset to 0.",
+    ],
     artifacts: [
-      { label: "Read PDF", href: "/papers/paper1_unified_v1U.0.13.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/paper1_unified_v1U.0.13.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/paper1_unified_v1U.0.15.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/paper1_unified_v1U.0.15.pdf", kind: "secondary", download: true },
       {
         label: "LaTeX source",
         href: "https://github.com/Hubify-Projects/bigbounce/blob/main/arxiv/paper1a_ech_nogo.tex",

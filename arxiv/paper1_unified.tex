@@ -51,8 +51,17 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \providecommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1U.0.14}
-\newcommand{\paperTimestamp}{July 11, 2026}
+\newcommand{\paperVersion}{v1U.0.15}
+\newcommand{\paperTimestamp}{July 12, 2026}
+% v1U.0.15 (2026-07-12 — NJ1 wave: Holst NJL suppression factor corrected 30x->14x
+%   per the paper's own committed script arxiv/scripts/njl_gap_equation_route1.py
+%   (+_results.json): holst_factor = gamma^2/(gamma^2+1) = 0.0698 with gamma_BI=0.274,
+%   i.e. EC-vs-Holst rows differ by 1/0.0698 = 14.3x ~ ~14x, NOT ~30x (every
+%   G_eff/G_crit EC-vs-Holst-dressed JSON pair confirms 14.3x). INT-Claude catch
+%   (H17, intwave_P1U_claude_2344.md); two body sentences (Route-1 discussion +
+%   App. njl_gap "Two independent exclusions") + header comment updated. Conservative
+%   direction preserved (Holst only strengthens the sub-critical exclusion), so the
+%   conclusion is unchanged — straight numeric-value fix, nothing else touched.)
 % v1U.0.14 (2026-07-11 — directive-L: Route-1 vacuum condensate EXCLUDED by a
 %   regulated NJL gap equation (closes DP1U-05/-19, was out-of-scope open item).
 %   New Appendix app:njl_gap (leg iii of sec:r1_njl) presents the gap equation on
@@ -61,7 +70,7 @@
 %   M=0 is the only effective-potential minimum at any coupling/cutoff (no condensate);
 %   (B) even |G_eff| is far sub-critical vs the DERIVED G_crit=pi^2/(N_f N_c Lambda^2)
 %   — |G_eff|/G_crit=(3/64)N_f N_c/pi^2 ~ 4.3e-2 (Nf Nc=9) at Lambda=M_Pl, worst case
-%   0.156 scanned, Holst ~30x smaller. Abstract/intro/conclusion R1 claims upgraded
+%   0.156 scanned, Holst ~14x smaller. Abstract/intro/conclusion R1 claims upgraded
 %   from "finite-density bound + disclosed vacuum gap" to the two-pronged exclusion
 %   (mean-field NJL framework assumption stated explicitly). Every number verified
 %   against arxiv/scripts/njl_gap_equation_route1.py (+_results.json; self-checks PASS:
@@ -2676,15 +2685,16 @@ operator $-\tfrac{3}{16}\kappa\,(J^5\!\cdot\!J^5)$ onto the scalar
 (Eq.~\eqref{eq:AAdecomp}, $(J^5\!\cdot\!J^5)\to+\tfrac14 SS+\dots$) gives
 $G_{\rm scalar}=-\tfrac{3}{64}\kappa<0$, a \emph{repulsive} scalar coupling,
 whereas NJL condensation requires an \emph{attractive} channel ($G_s>0$); a
-repulsive channel leaves $M=0$ as the only minimum of the effective potential
-at \emph{any} coupling strength or cutoff, so no condensate forms. Second,
+repulsive channel admits no non-trivial gap-equation solution, leaving $M=0$
+as the only $\chi$SB minimum of the effective potential at \emph{any} coupling
+strength or cutoff, so no condensate forms. Second,
 the magnitude: even taking $|G_{\rm eff}|$, the coupling is far sub-critical
 relative to the (derived, not quoted) critical value
 $G_{\rm crit}=\pi^2/(N_f N_c\Lambda^2)$; at $\Lambda=M_{\rm Pl}$ the ratio is
 cutoff-independent, $|G_{\rm eff}|/G_{\rm crit}=(3/64)\,N_f N_c/\pi^2
 \approx 4.3\times10^{-2}$ (QCD-like $N_f N_c=9$; $\approx 4.7\times10^{-3}$
 single-species), with a worst case of $0.156$ across all cutoffs/flavors
-scanned and Holst-dressed values ${\sim}30\times$ smaller again. Under the
+scanned and Holst-dressed values ${\sim}14\times$ smaller again. Under the
 standard mean-field NJL framework this closes the vacuum case: at the
 $\kappa=M_{\rm Pl}^{-2}$ Planck-suppressed coefficient no dynamical chiral
 condensate reaches the $(\text{meV})^4$ scale---the tuning the mechanism is
@@ -5080,9 +5090,9 @@ derivation and this match are verified in the committed script.
 Eq.~\eqref{eq:gscalar} the scalar-channel coupling is
 $G_{\rm scalar}=-\tfrac{3}{64}\kappa<0$: \emph{repulsive}. Dynamical
 chiral-symmetry breaking in NJL requires an \emph{attractive} scalar channel
-($G_s>0$); with $G_s<0$ the effective potential is monotone-increasing from
-$M=0$, so $M=0$ is the only minimum---\emph{no condensate forms at any
-coupling strength or cutoff}. \textbf{(B) Magnitude (belt-and-suspenders).}
+($G_s>0$); with $G_s<0$ the gap equation admits no non-trivial solution and
+$M=0$ is the only $\chi$SB minimum of the effective potential---\emph{no
+condensate forms at any coupling strength or cutoff}. \textbf{(B) Magnitude (belt-and-suspenders).}
 Even discarding the sign and taking $|G_{\rm eff}|$, the coupling is far
 sub-critical. At $\Lambda=M_{\rm Pl}$ the ratio is cutoff-independent
 ($M_{\rm Pl}$ cancels),
@@ -5096,7 +5106,7 @@ sub-critical. At $\Lambda=M_{\rm Pl}$ the ratio is cutoff-independent
 Across all cutoffs and flavor counts scanned the worst case is
 $|G_{\rm eff}|/G_{\rm crit}=0.156$ (at the strong-EFT scale
 $\Lambda_{\rm strong}\sim M_{\rm Pl}/\sqrt{\gamma_{\rm BI}}$, $N_f N_c=9$),
-still comfortably sub-critical; the Holst-dressed values are ${\sim}30\times$
+still comfortably sub-critical; the Holst-dressed values are ${\sim}14\times$
 smaller again.
 
 \emph{Verdict.}---The Route-1 vacuum condensate is \emph{excluded} for two

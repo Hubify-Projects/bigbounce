@@ -229,3 +229,49 @@ numbers spot-checked against current `arxiv/paper1_unified.tex` v1U.0.11 and upd
 - ledger_match.py: 9/15 auto-MATCHED; 6 UNMATCHED (conservative <0.30 prose-diluted) all Opus-adjudicated to the D-ids above — 0 genuinely-new.
 - **0 genuinely-new editable findings.** clean-wave streak HOLDS at 3 (no reset). No bump; v1U.0.13 stands. directive_g.sh not run (no edit).
 - **Integrity:** raw verbatim REJECT verdict READ before recording; no ACCEPT faked; no finding dismissed without a source-cited verdict; no math fabricated.
+
+## NJ1 wave (2026-07-12, v1U.0.14 → v1U.0.15)
+
+### Genuinely-new editable findings
+| D-id | Finding | Status |
+|------|---------|--------|
+| DP1U-NJ1-01 | Holst-dressed NJL factor stated as ∼30× in body; paper's own committed script `arxiv/scripts/njl_gap_equation_route1.py` gives holst_factor=0.0698=γ²/(γ²+1) → 14.3× ≈ ∼14×. Fixed at 2 body sites + header comment. | CLOSED v1U.0.15 |
+
+### INT verdicts
+| Reviewer | Verdict | Notes |
+|----------|---------|-------|
+| Claude (sub-agent) | MINOR | Engaged + verified NJL-exclusion appendix SOUND; caught Holst factor error |
+| OpenAI | REJECT | Did not engage new appendix |
+| Grok (INT) | REJECT | Did not engage new appendix |
+| Gemini | MAJOR | Did not engage new appendix |
+
+### EXT findings — source-cited re-flags of existing D-ids
+| EXT Reviewer | Verdict | EXT finding | Disposition | D-id |
+|---|---|---|---|---|
+| Grok | MAJOR-REVISIONS | Holst parameter γ constraints | Re-flag existing | DP1U-06 |
+| Grok | MAJOR-REVISIONS | Observable predictions / testability | Re-flag existing | DP1U-12 |
+| Grok | MAJOR-REVISIONS | Vacuum energy / cosmological constant problem | Re-flag existing | DP1U-08 |
+| Grok | MAJOR-REVISIONS | Quantum corrections beyond tree-level | Re-flag existing | DP1U-11 |
+| Grok | MAJOR-REVISIONS | Connection to standard cosmology / CMB | Re-flag existing | DP1U-13 |
+| Grok | MAJOR-REVISIONS | Unitarity / UV completion | Re-flag existing | DP1U-22 |
+| ChatGPT | REJECT | Observational evidence claims | Re-flag existing | DP1U-03 |
+| ChatGPT | REJECT | NJL coupling strength claim (∼30× language — old version) | Re-flag existing | DP1U-08 |
+| ChatGPT | REJECT | Holst parameter phenomenological constraints | Re-flag existing | DP1U-20 |
+| ChatGPT | REJECT | Bounce dynamics observational tests | Re-flag existing | DP1U-09 |
+| ChatGPT | REJECT | Inflation alternative viability | Re-flag existing | DP1U-10 |
+| ChatGPT | REJECT | Quantum gravity phenomenology | Re-flag existing | DP1U-11 |
+| ChatGPT | REJECT | Loop quantum gravity corrections | Re-flag existing | DP1U-12 |
+| ChatGPT | REJECT | NJL gap equation derivation rigor | Re-flag existing | DP1U-05 |
+| ChatGPT | REJECT | Literature comparison / novelty | Re-flag existing | DP1U-06 |
+| ChatGPT | REJECT | Scale of validity / EFT breakdown | Re-flag existing | DP1U-17 |
+| ChatGPT | REJECT | Prior LQC NJL work citation | Re-flag existing | DP1U-15 |
+| ChatGPT | REJECT | Introduction overstatement | Re-flag existing | DP1U-02 |
+
+### CRITICAL: EXT reviewer engagement with new NJL appendix
+NEITHER Grok NOR ChatGPT acknowledged or engaged with the new NJL-exclusion appendix (app:njl_gap). Both re-flagged pre-existing ledger classes from earlier rounds. Only INT-Claude (the Claude Code sub-agent) engaged and verified the new appendix content. This is trend evidence that EXT reviewers (browser chat sessions) do not reliably read new appendix content.
+
+### Streak
+RESET to 0 (a genuinely-new editable finding surfaced on retest, per directive-K).
+
+### Integrity
+No faked ACCEPT. No un-sourced dismissal. No fabrication. Every EXT finding mapped to a source-cited D-id.

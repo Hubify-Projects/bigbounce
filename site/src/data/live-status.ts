@@ -86,9 +86,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-1a",
       number: "1U",
       shortTitle: "Unified Paper 1 — ECH constraints + reproducibility (P1B merged in)",
-      version: "v1U.0.14",
+      version: "v1U.0.15",
       readiness: 62,
-      pendingWork: "v1U.0.14 (directive-L): Route-1 vacuum condensate now EXCLUDED by a regulated NJL gap equation (closes DP1U-05/-19, was an out-of-scope open item). New Appendix app:njl_gap on the paper's own operator -(3/16)κ(J5·J5): (A) Fierz-projecting to the scalar condensate channel gives G_scalar=-(3/64)κ<0 = repulsive → no condensate at any coupling; (B) even |G_eff| is far sub-critical (|G_eff|/G_crit≈4.3e-2 at Λ=M_Pl, worst case 0.156 scanned). Every number verified against arxiv/scripts/njl_gap_equation_route1.py; abstract/intro/conclusion R1 claims upgraded to the two-pronged exclusion (mean-field NJL framework). Prior: CROSSED the two-clean-waves bar (streak 2, HELD at W2b), documented ChatGPT harsh-referee floor / pattern-066 variance on unchanged content.",
+      pendingWork: "NJ1 wave (v1U.0.15, Jul 12): INT-Claude caught Holst-dressed NJL factor stated as ∼30× in body; paper's own committed script gives holst_factor=0.0698=γ²/(γ²+1) → 14.3× ≈ ∼14×; corrected at 2 body sites + header comment; NJL-exclusion appendix (app:njl_gap) verified SOUND; conservative direction + conclusion unchanged; EXT Grok MAJOR + ChatGPT REJECT re-flagged old ledger classes without engaging the new appendix; streak reset to 0; md5 3519880a; 63 pp. v1U.0.14 (directive-L): Route-1 vacuum condensate now EXCLUDED by a regulated NJL gap equation (closes DP1U-05/-19). New Appendix app:njl_gap on the paper's own operator -(3/16)κ(J5·J5): (A) Fierz-projecting to scalar condensate channel gives G_scalar=-(3/64)κ<0 = repulsive; (B) |G_eff|/G_crit≈4.3e-2 at Λ=M_Pl (worst case 0.156). Every number verified against the committed njl_gap_equation_route1.py script.",
     },
     {
       slug: "paper-2",
