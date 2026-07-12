@@ -51,8 +51,23 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \providecommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1U.0.18}
+\newcommand{\paperVersion}{v1U.0.19}
 \newcommand{\paperTimestamp}{July 12, 2026}
+% v1U.0.19 (2026-07-12 — DP1U presentation overhaul (directive M): (a) abstract
+%   repetition purge — the "channel-level not operator-level" caveat, restated
+%   ~4x, now stated once with a pointer to the Sec.-IV scope paragraph, and the
+%   duplicate 13-barrier caveat collapsed to a bare cross-ref; (b) barrier
+%   catalog consolidated — the 14 verbose per-barrier \subsection blocks folded
+%   into one compact description-list (\sec:barrier_details) with an explicit
+%   barrier→route bracket map (Grok's exact ask), both equations (B1,B12)
+%   preserved inline; (c) appendix E/F/G reframed — bespoke ECH-sector ΔNeff
+%   derivation + all referenced result tables/figures KEPT byte-identical, the
+%   stock-CAMB MCMC / NaMaster pipeline / ALP-chain mechanics signposted as
+%   supplementary (companion + \cite{BigBounceRepro} + App reproducibility),
+%   H0/σ8 tension narrative tightened. Zero numeric/physics change; every
+%   headline number byte-preserved. Addresses the "excessively repetitive /
+%   excessive caveats / condense appendices" complaints common to every ChatGPT
+%   REJECT raw + Grok/Gemini MAJOR. Prior:
 % v1U.0.18 (2026-07-12 — NJ5 INT-Claude MINOR closed: the single residual "far
 %   sub-critical" left by the v1U.0.17 tempering pass at the App. njl_gap leg-(B)
 %   intro (was internally inconsistent with the tempered abstract/main-text/verdict
@@ -1263,40 +1278,32 @@ are each ruled out by an explicit amplitude-suppression argument); R4 is
 naturalness/explanatory-deficit route, and is included in the
 channel-level count because it exhausts the fourth minimal-ECH dark-energy channel.
 This is a
-channel-level assessment, \emph{not} an operator-level theorem: the four
-enumerated routes (NJL, one-loop EA, Immirzi running, parity-CMB) are not
-proven to be a complete diffeomorphism-invariant operator basis for the
-minimal-ECH effective action. The two previously-omitted parity-odd operators
-(Jackiw-Pi gravitational Chern-Simons $R\!\wedge\!\tilde R$; the vector--axial
-four-fermion partner with $\gamma_{\rm BI}/(\gamma_{\rm BI}^2+1)\cdot 8\pi G$
-coefficient, which per Freidel--Minic--Takeuchi arises only under non-minimal
-fermion coupling --- minimal coupling gives only the axial--axial R1 term) are now closed explicitly at the operator level
-(Sec.~\ref{sec:jackiwpi_cs}, Sec.~\ref{sec:r1_parityodd_partner}): the former is
-a total derivative for constant coupling and R4-class otherwise, the latter
-inherits R1's $M_{\rm Pl}^{-2}$ suppression as the parity-odd projection of the
-same torsion-elimination operator. The Fierz-by-Fierz projection lemma
-establishing that these four-fermion structures close onto a finite, uniformly
-$M_{\rm Pl}^{-2}$-suppressed dimension-6 basis is proven in
-Appendix~\ref{app:fierz}; the only residual scope is the non-minimal completion
-(a new light scale or non-minimal torsion coupling). The
-dark-energy mapping is a single-scale NDA (naive-dimensional-analysis)
-dimensional no-go: the parity-odd operator has off-shell mass dimension
-$+1$, and single-scale power counting ($\Lambda\sim\MPl$, no cancellation)
-forces its natural density to $\rho_\Lambda^{\rm ECH}\sim\MPl^4$, never
-$(\text{meV})^4$ (Appendix~\ref{app:dimensions}). The genuine local
-dimension-$4$ parity-odd completion is enumerated explicitly
-(Appendix~\ref{app:dim4_completion}, with the two load-bearing tensor
-identities verified symbolically --- the $\varepsilon R=0$ Bianchi contraction
-and the Lorentzian $\varepsilon\varepsilon=-3!\,\delta$ collapse --- not a completeness
-proof, which is argued analytically): every enumerated
-admissible dimension-$4$ parity-odd density is topological
-(Nieh--Yan/Pontryagin, zero vacuum energy), Fierz-basis-reducible to the
-$\MPl^{-2}$-suppressed four-fermion contact sector, or Bianchi-vanishing, so
-single-scale closure survives at dimension~4 without the heuristic on-shell
-dressing. No amplitude is derived,
-so the argument is not circular; all R4 and dark-energy mapping claims follow
-from single-scale EFT, the only evasion being a non-minimal light scale or
-exact cancellation that is itself the tuning being explained.
+channel-level assessment, \emph{not} an operator-level theorem (the precise
+scope --- what is and is not claimed --- is fixed once in
+Sec.~\ref{sec:derivations}): the four enumerated routes (NJL, one-loop EA,
+Immirzi running, parity-CMB) are not proven to be a complete
+diffeomorphism-invariant operator basis for the minimal-ECH effective action.
+Two previously-omitted parity-odd operators are nonetheless closed explicitly at
+the operator level (Sec.~\ref{sec:jackiwpi_cs}, Sec.~\ref{sec:r1_parityodd_partner}):
+the Jackiw--Pi gravitational Chern--Simons $R\!\wedge\!\tilde R$ (a total
+derivative for constant coupling, R4-class otherwise) and the vector--axial
+four-fermion partner (which inherits R1's $M_{\rm Pl}^{-2}$ suppression, and
+per Freidel--Minic--Takeuchi arises only under non-minimal fermion coupling).
+The Fierz-by-Fierz projection lemma establishing that these four-fermion
+structures close onto a finite, uniformly $M_{\rm Pl}^{-2}$-suppressed
+dimension-6 basis is proven in Appendix~\ref{app:fierz}; the only residual
+scope is the non-minimal completion (a new light scale or non-minimal torsion
+coupling). The dark-energy mapping is a single-scale NDA dimensional no-go: the
+parity-odd operator has off-shell mass dimension $+1$, and single-scale power
+counting ($\Lambda\sim\MPl$, no cancellation) forces its natural density to
+$\rho_\Lambda^{\rm ECH}\sim\MPl^4$, never $(\text{meV})^4$
+(Appendix~\ref{app:dimensions}); the genuine local dimension-$4$ parity-odd
+completion is enumerated in Appendix~\ref{app:dim4_completion} (every admissible
+density is topological, Fierz-reducible, or Bianchi-vanishing), so single-scale
+closure survives at dimension~4 without the heuristic on-shell dressing. No
+amplitude is derived, so the argument is not circular; the only evasion is a
+non-minimal light scale or exact cancellation that is itself the tuning being
+explained.
 Through 7 foundation studies (Foundations~A--G) and 6 observational research
 branches (Branches~H, J, L, M, N, O) we report 13 distinct barriers
 (Sec.~\ref{sec:barriers}; 14 historical catalog entries with B8 subsumed by B14)
@@ -1329,8 +1336,8 @@ follows from the Bianchi-trivial argument, not from a Pontryagin
 total-derivative argument.}
 The proposed link from ECH to a late-time vacuum energy requires a phenomenological
 dimensional ansatz beyond the minimal framework (Appendix~\ref{app:dimensions}),
-and is constrained at the channel-amplitude level by 13 mechanism-class constraints
-(Sec.~\ref{sec:barriers}; 14 historical catalog entries, of which B8 is subsumed by B14 per the perturbation-transparency result), each probing a distinct physical failure mode.
+and is constrained at the channel-amplitude level by the mechanism-class
+constraints above (Sec.~\ref{sec:barriers}).
 A structural tension (Sec.~\ref{sec:structural_tension}) exists between
 the dark-energy mechanism, which requires $N_{\rm tot}\approx 92$ post-bounce
 $e$-folds, and the matter-bounce $\fnl=-35/16$ signature: that many $e$-folds
@@ -3786,129 +3793,114 @@ but should not be counted as a separate mechanism-class constraint.}
 \end{tabular*}
 \end{table*}
 
-\subsection{Barrier 1: Mass-Coupling Lock (Foundation A)}
+\subsection{Barrier details}\label{sec:barrier_details}
 
-In Poincar\'{e} gauge theory (PGT), ultralight torsion modes ($m_T\sim H_0$)
-require coupling:
-\begin{equation}
-g_{\rm eff} \sim \frac{1}{\MPl\sqrt{|t_3|}} \sim \frac{H_0}{\MPl} \sim 10^{-61},
-\end{equation}
-where $t_3$ is the quadratic-torsion coupling of the PGT Lagrangian
-controlling the tensor-torsion mode mass, with
-$\sqrt{|t_3|} \sim m_T^{-1}$ for an ultralight mode ($m_T \sim H_0$),
-which makes $g_{\rm eff}$ dimensionless and yields the displayed
-$H_0/\MPl$ equality; the chain is a scaling ansatz of the PGT mass
-spectrum, labeled as such, not a derived equality.
-To achieve $g_{\rm eff}\sim 1$, one needs $m_T\sim\MPl$. The required
-fine-tuning is equivalent to the standard cosmological constant hierarchy:
-$\delta m_T^2/m_T^2\sim (H_0/\MPl)^2 \sim 10^{-122}$.
+The fourteen catalog entries of Table~\ref{tab:barriers} are stated compactly
+below; the route each barrier constrains is given in brackets (the one-to-one
+barrier$\to$route map is drawn in Fig.~\ref{fig:barrier_map}). Two entries carry
+the only equations in the catalog (B1, B12); the remainder are one-line
+mechanism statements.
 
-\subsection{Barrier 2: Topological-Shift Duality (Foundation B)}
+\begin{description}[leftmargin=1.6em,itemsep=3pt]
 
-In metric-affine gravity, a duality emerges:
-\begin{equation}
-\text{Mass protection} \iff \text{No geometric fingerprint}.
-\end{equation}
-Configurations protecting the pseudoscalar mass through topological structure
-eliminate the geometric content (the field reduces to a standard ALP after
-torsion elimination). Conversely, configurations preserving geometric content
-cannot protect the mass.
+\item[B1 --- Mass-Coupling Lock (Found.\ A) {[R1]}.] In Poincar\'{e} gauge
+theory (PGT), ultralight torsion modes ($m_T\sim H_0$) require
+$g_{\rm eff} \sim 1/(\MPl\sqrt{|t_3|}) \sim H_0/\MPl \sim 10^{-61}$, where $t_3$
+is the quadratic-torsion coupling controlling the tensor-torsion mode mass, with
+$\sqrt{|t_3|} \sim m_T^{-1}$ for an ultralight mode (a labeled scaling ansatz of
+the PGT mass spectrum, not a derived equality). Achieving $g_{\rm eff}\sim 1$
+needs $m_T\sim\MPl$; the required tuning
+$\delta m_T^2/m_T^2\sim (H_0/\MPl)^2 \sim 10^{-122}$ is the standard
+cosmological-constant hierarchy.
 
-\subsection{Barrier 3: Scalar-Tensor Universality (Foundation C)}
+\item[B2 --- Topological-Shift Duality (Found.\ B) {[R1]}.] In metric-affine
+gravity, mass protection $\iff$ no geometric fingerprint: configurations
+protecting the pseudoscalar mass through topological structure eliminate the
+geometric content (the field reduces to a standard ALP after torsion
+elimination), while configurations preserving geometric content cannot protect
+the mass.
 
-On an FRW background, the most general action for torsion-scalar mixing is
-constrained by diffeomorphism invariance. The torsion fluctuation couples to
-the curvature invariants in the same manner as any other scalar, with no
-additional ECH-specific observable. Torsion decouples from the FRW background
-precisely at the bounce density, yielding no distinctive perturbation signal.
+\item[B3 --- Scalar-Tensor Universality (Found.\ C) {[R2]}.] On an FRW
+background, diffeomorphism invariance forces the torsion fluctuation to couple to
+the curvature invariants like any other scalar, with no ECH-specific observable;
+torsion decouples from the FRW background precisely at the bounce density,
+yielding no distinctive perturbation signal.
 
-\subsection{Barrier 4: Planck Suppression (Foundation D)}
+\item[B4 --- Planck Suppression (Found.\ D) {[R2]}.] Disformal torsion couplings
+are Planck-suppressed by $m_\phi^2/\MPl^2$ or $(\partial\phi)^2/\MPl^4$; at
+cosmological scales ($m_\phi\sim H_0$) these are
+$\mathcal{O}(10^{-122})$---observationally inaccessible.
 
-Disformal couplings from torsion are Planck-suppressed by factors of
-$m_\phi^2/\MPl^2$ or $(\partial\phi)^2/\MPl^4$. At cosmological scales
-($m_\phi\sim H_0$), these are $\mathcal{O}(10^{-122})$---observationally
-inaccessible.
+\item[B5 --- Scale Separation (Found.\ E) {[R3]}.] The global vacuum integral
+$\int d^4x\,\sqrt{-g}\,\rho_\Lambda$ cannot be connected to the local bounce
+density without a mechanism to store and transfer the integrated vacuum energy
+across $\sim 92$ $e$-folds of inflation; none exists within minimal ECH.
+(General naturalness/classification argument, not an ECH-specific calculation.)
 
-\subsection{Barrier 5: Scale Separation (Foundation E)}
+\item[B6 --- Attractor-Sensitivity Dilemma (Found.\ F) {[R3]}.] If post-bounce
+inflation converges to an attractor, bounce initial conditions are washed out;
+if it is sensitive to them, inflation destabilizes. The bounce cannot
+simultaneously seed dark energy \textit{and} preserve standard inflation
+dynamics. (General naturalness argument.)
 
-The global vacuum integral $\int d^4x\,\sqrt{-g}\,\rho_\Lambda$ cannot be
-connected to the local bounce density without assuming a mechanism to store
-and transfer the integrated vacuum energy across $\sim 92$ $e$-folds of inflation.
-No such mechanism exists within minimal ECH.
+\item[B7 --- Parameter Immunity (Found.\ G) {[R4]}.] Cyclic vacuum selection
+requires $\gamma$ to vary across cycles, but $\gamma$ is fixed by the LQG area
+spectrum at a universal value; LQG provides no landscape of $\gamma$ values for
+selection to operate on. (General classification argument.)
 
-\subsection{Barrier 6: Attractor-Sensitivity Dilemma (Foundation F)}
+\item[B8 --- Parity-Even Interaction (Branch H).] \emph{[R1; subsumed by B14.]}
+The spin-torsion interaction $(J^5)^2$ is parity-\textit{even} (a product of two
+axial currents is a Lorentz scalar, not a pseudoscalar), so it cannot generate
+tensor chirality in primordial gravitational waves; independently confirmed by
+the perturbation-transparency result (B14).
 
-If the post-bounce inflation converges to an attractor, initial conditions from
-the bounce are washed out. If it is sensitive to initial conditions, inflation
-itself is destabilized. The bounce therefore cannot simultaneously seed dark
-energy \textit{and} preserve the standard inflation dynamics.
+\item[B9 --- Liouville Conservation (Branch J) {[R2]}.] Phase-space volume
+conservation prevents irreversible selection among post-bounce states, closing
+the ``vacuum selection at the bounce'' class: the time-symmetric bounce selects
+no net dark-energy state. This is a \emph{heuristic} closure under explicit
+assumptions (closed non-dissipative evolution, no particle production, no entropy
+injection); dissipative/particle-producing bounces evade B9 and are constrained
+instead by B10--B11, so B9 is never used as a stand-alone closure.
 
-\subsection{Barrier 7: Parameter Immunity (Foundation G)}
+\item[B10 --- UV$\to$IR Specificity Dilemma (Branch L) {[R3]}.] Any bridge from
+Planck-scale bounce physics to the late-time $H_0$ scale must be either generic
+(explaining \emph{any} vacuum energy) or bounce-specific (requiring free
+parameters equivalent to the cosmological constant); no ECH mechanism achieves
+both. (General naturalness argument.)
 
-Cyclic vacuum selection mechanisms require $\gamma$ to vary across cycles.
-However, $\gamma$ is fixed by the LQG area spectrum at a universal value;
-there is no mechanism within LQG to produce a landscape of $\gamma$ values
-from which selection could operate.
+\item[B11 --- Decoupling Universality (Branches L/M) {[R3]}.] At low energies all
+gauge fields decouple from the Planck-suppressed torsion sector equally; the ECH
+bounce cannot preferentially couple to photons or dark-energy degrees of freedom
+without new non-minimal couplings.
 
-\subsection{Barrier 8: Parity-Even Interaction (Branch H)}
+\item[B12 --- Vacuum Amplification Ceiling (Branch M) {[R3]}.] Gravitational-wave
+production from the ECH bounce is bounded above by
+$\Omega_{\rm GW}^{\rm ECH}|_{\rm bounce} \lesssim (\rhocrit/\rhoPl)^2 \simeq
+0.07\text{--}0.17$, using the LQG-bounce critical-density window
+$\rhocrit/\rhoPl \simeq 0.27\text{--}0.41$ from the Ashtekar--Singh effective-LQC
+status report~\cite{Ashtekar2011}. The quadratic scaling is an order-of-magnitude
+ceiling \emph{ansatz} (not derived here); B12 is used only as a global ceiling.
+This bounce-epoch fraction is not directly comparable to the present-day PTA
+spectral density $\Omega_{\rm GW}(f_{\rm nHz}) \sim 10^{-9}$ (which differs by
+redshift/dilution and by frequency-integration); a quantitative NANOGrav
+comparison requires propagating the bounce GW spectrum through the transfer
+function to the nHz band, deferred to a dedicated bounce-GW paper, so B12 closes
+as a global energy-density-fraction ceiling, not a direct NANOGrav exclusion.
 
-The spin-torsion effective interaction $(J^5)^2$ is parity-\textit{even}:
-the product of two axial currents is a Lorentz scalar, not a pseudoscalar.
-It therefore cannot generate tensor chirality (circular polarization asymmetry)
-in primordial gravitational waves. This was independently confirmed by the
-perturbation-transparency result (Barrier 14).
+\item[B13 --- Gravitational Democracy (Branches N/O) {[R4]}.] Torsion couples
+democratically to all spin-$1/2$ species and cannot preferentially source
+baryogenesis, dark-matter relics, or vacuum transitions without
+species-dependent non-minimal couplings. (Structural/philosophical observation,
+included for completeness.)
 
-\subsection{Barrier 9: Liouville Conservation (Branch J)}
+\item[B14 --- Perturbation Transparency (ECH gates).] \emph{[R1--R4.]} For
+canonical scalar matter, torsion vanishes at all perturbation orders and the Holst sector
+decouples from all scalar/tensor perturbation observables; elaborated in
+Sec.~\ref{sec:transparency} (scalar-sector proof, Sec.~\ref{sec:transp_proof};
+explicit all-order Holst-term verification, Sec.~\ref{sec:transp_holst}). This is
+one of the two first-principles results in the catalog.
 
-Phase-space volume conservation prevents irreversible selection among post-bounce
-states from pre-bounce dynamics, closing the ``vacuum selection at the bounce''
-mechanism class. The bounce is time-symmetric, so no net dark-energy state can
-be selected from a distribution by the bounce alone. This barrier is a
-heuristic closure under explicit assumptions: closed Hamiltonian
-(non-dissipative) evolution through the bounce, no particle production,
-and no coarse-grained entropy injection. Scenarios that break these
-assumptions (dissipative or particle-producing bounces) evade Barrier~9
-as stated and are constrained instead by the amplitude-budget arguments
-of Barriers~10--11; Barrier~9 is not used as a stand-alone closure of
-any route.
-
-\subsection{Barrier 10: UV$\to$IR Specificity Dilemma (Branch L)}
-
-Any mechanism that bridges from Planck-scale bounce physics to the late-time
-$H_0$ scale must be either generic (explaining \textit{any} vacuum energy, not
-specifically the ECH value) or bounce-specific (requiring free parameters
-equivalent to the cosmological constant itself). No mechanism achieves both
-simultaneously within ECH.
-
-\subsection{Barrier 11: Decoupling Universality (Branches L/M)}
-
-At low energies, all gauge fields decouple from the torsion sector equally
-(since torsion is Planck-suppressed). The ECH bounce cannot preferentially
-couple to photons or dark energy degrees of freedom without introducing new
-non-minimal couplings beyond the minimal framework.
-
-\subsection{Barrier 12: Vacuum Amplification Ceiling (Branch M)}
-
-Gravitational wave production from the ECH bounce is bounded above by:
-\begin{equation}
-\Omega_{\rm GW}^{\rm ECH}|_{\rm bounce} \lesssim \left(\frac{\rhocrit}{\rhoPl}\right)^2 \simeq 0.07\text{--}0.17,
-\end{equation}
-where we have used the LQG-bounce critical-density window $\rhocrit/\rhoPl \simeq 0.27\text{--}0.41$ from the Ashtekar--Singh effective-LQC status report~\cite{Ashtekar2011}. The quadratic scaling in $\rhocrit/\rhoPl$ is adopted here as an order-of-magnitude ceiling \emph{ansatz} (not derived in this paper); Barrier~12 is correspondingly used only as a global ceiling, not as a precise bound. This total bounce-epoch GW energy-density fraction is not directly comparable to the present-day PTA spectral-density measurement $\Omega_{\rm GW}(f_{\rm nHz}) \sim 10^{-9}$, which differs by both (i)~redshift / cosmological-dilution factors from the bounce epoch to today, and (ii)~the integration over frequency to recover a spectral density at a given band. A quantitative comparison to NANOGrav requires propagating the bounce GW spectrum through the transfer function to the nHz band, which is deferred to a forthcoming bounce-GW dedicated paper (deferred); for the present analysis, Barrier~12 closes as a global energy-density-fraction ceiling rather than a direct NANOGrav exclusion.
-
-\subsection{Barrier 13: Gravitational Democracy (Branches N/O)}
-
-Torsion couples democratically to all spin-$1/2$ matter species. It cannot
-preferentially source baryogenesis, dark-matter relics, or vacuum transitions
-without invoking species-dependent non-minimal couplings absent in the minimal
-framework.
-
-\subsection{Barrier 14: Perturbation Transparency}
-
-For canonical scalar field matter, torsion vanishes at all perturbation orders;
-the Holst sector decouples from all scalar/tensor perturbation observables.
-This is elaborated in Sec.~\ref{sec:transparency}: the scalar-sector proof is
-in Sec.~\ref{sec:transp_proof} and the explicit Holst-term verification at all
-perturbation orders is in Sec.~\ref{sec:transp_holst}.
+\end{description}
 
 
 %% ============================================================
@@ -5291,38 +5283,32 @@ $\beta > 0$.
 %% ============================================================
 \section{Cosmological Constraint Methodology: $\Lambda$CDM$+\Delta\Neff$ MCMC Proxy and the ECH-Sector $\Delta\Neff$ Bound}\label{app:cosmo_methodology}
 
-This appendix documents the stock-CAMB $\Lambda$CDM$+\Delta\Neff$ MCMC proxy
-run, the first-principles bespoke ECH-sector $\Delta\Neff$ bound, and the
-full cosmological fits and model comparison. These analyses are numerical
-consistency cross-checks that contextualize the main-text no-go; none tests or
-verifies the spin-torsion sector. All quantitative values here are reproducible
-from the committed artifacts (Appendix~\ref{app:reproducibility}).
+The load-bearing physics of this appendix is the first-principles bespoke
+ECH-sector $\Delta\Neff$ bound (Sec.~\ref{sec:p1b_torsion_neff}). The
+accompanying stock-CAMB $\Lambda$CDM$+\Delta\Neff$ MCMC proxy run and its full
+cosmological fits and model comparison are numerical consistency cross-checks
+that contextualize the main-text no-go and test no spin-torsion physics; their
+complete likelihood configurations, per-chain convergence diagnostics, and
+posterior tables are supplementary, documented in the MCMC companion
+(\texttt{paper1b\_mcmc\_companion.tex}) and reproducible from the committed
+artifacts~\cite{BigBounceRepro} (Appendix~\ref{app:reproducibility}). Summary
+result tables (Tables~\ref{tab:verification}, \ref{tab:chain_datasets}) are
+retained here.
 
 \subsection{Cosmological Tensions: $H_0$ and $\sigma_8$}\label{sec:p1b_tensions}
 
 The bounce scenario motivates extending $\Lambda$CDM by $\Delta\Neff$ (particle
-production at the bounce) as a phenomenological proxy parameter; $(\omega/H)_0$
-(angular momentum transfer) and $\Omega_k$ are fixed to zero in the actual
-sampled MCMC configuration of this paper (per the explicit
-parameter-scope clarification in Sec.~\ref{sec:p1b_fullcomp}; the
-$(\omega/H)_0$ parameter is discussed in the main text as a phenomenological
-bounce-class indicator but is not separately sampled here).
-The full-tension dataset combination includes the SH0ES~\cite{Riess2022}
-$M_B$-anchor likelihood (\texttt{H0.riess2020Mb}, entering through the
-supernova absolute magnitude rather than as a direct $H_0$ prior) in the
-Cobaya likelihood configuration, but the
-high-precision Planck NPIPE (PR4) CamSpec high-$\ell$ TTTEEE + Planck 2018
-low-$\ell$ TT/EE + Planck 2018 lensing likelihoods
-carry sufficient inverse-variance weight that the posterior $H_0$ in
-the proxy run is pulled to $67.68 \pm 1.06$ (Planck-dominated value)
-rather than to the simple Gaussian-combination value $\sim 70$ that
-would emerge if SH0ES and Planck were equally weighted. We do not
-therefore claim that the SH0ES tension is resolved or even moved by
-adding $\Delta\Neff$ in stock CAMB; in this configuration the
-$\Delta\Neff$ posterior is consistent with zero and the
-$H_0$ posterior is dominated by Planck. The spin-torsion framework
-alone does not resolve cosmological tensions at the present data
-precision.
+production at the bounce) as a phenomenological proxy; $(\omega/H)_0$ and
+$\Omega_k$ are fixed to zero in the sampled configuration
+(Sec.~\ref{sec:p1b_fullcomp}). In the full-tension combination, which includes
+the SH0ES~\cite{Riess2022} $M_B$-anchor likelihood (\texttt{H0.riess2020Mb}, via
+the supernova absolute magnitude, not a direct $H_0$ prior), the Planck NPIPE
+(PR4) CamSpec + Planck~2018 low-$\ell$ + lensing likelihoods carry sufficient
+inverse-variance weight that the posterior is Planck-dominated at
+$H_0 = 67.68 \pm 1.06$ (not the equal-weight $\sim 70$), with $\Delta\Neff$
+consistent with zero. Adding $\Delta\Neff$ in stock CAMB therefore neither
+resolves nor moves the SH0ES tension; the spin-torsion framework alone does not
+resolve cosmological tensions at present data precision.
 
 
 %% ============================================================
@@ -5858,7 +5844,13 @@ at the quoted precision (see Sec.~\ref{sec:p1b_verification}, limitation note).
 This appendix reports the NaMaster pseudo-$C_\ell$ bias-injection Monte-Carlo
 validation of the $E\!\to\!B$ deconvolution pipeline on synthetic
 $\Lambda$CDM polarization skies. It is a pipeline-recovery validation, not a
-competitive sky-detection significance claim.
+competitive sky-detection significance claim. The full pipeline mechanics
+(mask/apodization construction, mode-coupling-matrix inversion, band-power
+binning, noise model, software versions, and convergence diagnostics) are
+supplementary and are documented in the companion~\cite{Golden2026P1B} and
+reproducible from the committed artifacts~\cite{BigBounceRepro}
+(Appendix~\ref{app:reproducibility});
+the load-bearing recovered-bias results are retained below.
 
 \subsection{Data Methods: CMB $E$-$B$ Analysis}\label{sec:p1b_data_cmb}
 
@@ -6205,7 +6197,14 @@ Artifacts: \path{reproducibility/p1_namaster_500mc/results/c1_fsky_sweep.json};
 This appendix reports the spectator-ALP birefringence consistency check,
 including the prior-predictive accommodation-cost Monte-Carlo. The same
 birefringence arises in standard GR with an identical ALP; it is not a
-distinctive ECH prediction.
+distinctive ECH prediction. The full ALP-MCMC chain mechanics --- the
+sampled-parameter list, per-parameter priors, the dataset-likelihood stack,
+sampler settings, and per-chain convergence diagnostics --- are supplementary:
+the priors/likelihood table is in Appendix~\ref{app:alp_priors}, and the chains
+and reductions are committed as reproducibility
+artifacts~\cite{BigBounceRepro} (Appendix~\ref{app:reproducibility}). This
+appendix retains the load-bearing benchmark result and a compact summary of the
+chain outputs.
 
 \subsection{Cosmic Birefringence: Spectator ALP Consistency Check}\label{sec:p1b_birefringence_check}
 
