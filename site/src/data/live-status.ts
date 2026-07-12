@@ -47,8 +47,8 @@ export interface LiveStatus {
 }
 
 export const liveStatus: LiveStatus = {
-  lastUpdatedISO: "2026-07-11T16:57:00Z",
-  lastUpdatedDisplay: "July 11, 2026 · 9:57 AM PT",
+  lastUpdatedISO: "2026-07-12T06:44:23Z",
+  lastUpdatedDisplay: "July 11, 2026 · 11:44 PM PT",
   headline:
     "P3 FR5 (Jul 11) — SECOND CONSECUTIVE CLEAN WAVE on the DP3-19 fix → P3 clean-wave streak 1→2, and P3 REJOINS the full five-paper exit set (all five now past the directive-K two-clean-waves bar: P1U 2 · P2 3 · P3 2 · P4 4 · P5 2). FR5 board (run.log 16:57): INT Claude MINOR + OpenAI REJECT + Grok-API MAJOR + Gemini MAJOR + EXT Grok MAJOR + EXT ChatGPT REJECT (FR4b carryover). GEMINI INT'S FIRST NON-REJECT ON P3 (REJECT→MAJOR) — verified from the raw verdict line (native-PDF, PARSED VERDICT MAJOR REVISIONS) + the gemini milestone log; all 5 findings are source-cited DP3 re-flags (honest softening on unchanged content). 0 genuinely-new editable findings across all 6 legs (Grok EXT + Gemini/OpenAI/Grok-API all re-flag DP3-07/-08/-10/-09/-15/-16; Claude recomputed the 268,519 dedup + NANOGrav + f_NL Fisher chain, 0 new factual error). Separately, FR4b recovers the FR4 ChatGPT FAILED gap = ChatGPT REJECT (20 MAJOR + 2 MINOR, all re-flag DP3-01…DP3-19, 0 genuinely-new, no additional reset). No version bump (v3.1.155 stands, served md5 ebd4bfd1…). Convex EXT cap 56 (INT Gemini MAJOR is not an EXT-cap input). Venue/human-referee decision remains Houston-gated.",
   summary:
@@ -86,9 +86,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-1a",
       number: "1U",
       shortTitle: "Unified Paper 1 — ECH constraints + reproducibility (P1B merged in)",
-      version: "v1U.0.13",
+      version: "v1U.0.14",
       readiness: 62,
-      pendingWork: "CROSSED the two-clean-waves bar (streak 2, HELD at W2b). W2b EXT: ChatGPT re-sweep of v1U.0.12 = REJECT, 15 MAJOR+2 MINOR, all source-cited re-flags (DP1U-03/-05/-08/-09/-10/-12/-14/-15/-17/-20/-22), 0 genuinely-new — the documented ChatGPT harsh-referee floor. W2 EXT: Grok MINOR→MAJOR was truth-audited as pattern-066 verdict-word oscillation on unchanged v1U.0.12 — all source-cited re-flags, 0 genuinely-new. (W1 INT had caught + fixed the Check-D script/abstract sync in v1U.0.12.)",
+      pendingWork: "v1U.0.14 (directive-L): Route-1 vacuum condensate now EXCLUDED by a regulated NJL gap equation (closes DP1U-05/-19, was an out-of-scope open item). New Appendix app:njl_gap on the paper's own operator -(3/16)κ(J5·J5): (A) Fierz-projecting to the scalar condensate channel gives G_scalar=-(3/64)κ<0 = repulsive → no condensate at any coupling; (B) even |G_eff| is far sub-critical (|G_eff|/G_crit≈4.3e-2 at Λ=M_Pl, worst case 0.156 scanned). Every number verified against arxiv/scripts/njl_gap_equation_route1.py; abstract/intro/conclusion R1 claims upgraded to the two-pronged exclusion (mean-field NJL framework). Prior: CROSSED the two-clean-waves bar (streak 2, HELD at W2b), documented ChatGPT harsh-referee floor / pattern-066 variance on unchanged content.",
     },
     {
       slug: "paper-2",
