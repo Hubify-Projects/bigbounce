@@ -2,31 +2,34 @@
 
 <!-- last_updated: 2026-07-12 -->
 
-## 2026-07-12 (hourly cron tick) — P4 end-to-end image-level run LAUNCHED + RESCUED, ~45min from done
+## 2026-07-12 (hourly cron tick) — ✅ P4 end-to-end image-level run COMPLETE + FOLDED + COMMITTED
 
-The directive-L **P4 image-level end-to-end classifier injection** IS RUNNING (launched by
-a prior owner-agent, real compute, not faked). This is the honest closer for the P4
-image-level / pseudo-label-independence MAJOR (ChatGPT DP4-15, Gemini): mirror-flip every
-galaxy image through the ACTUAL `bamfai/galaxy-chirality-v2` ViT (val_acc 0.9369) to measure
-the raw image-level chirality transfer function T_raw.
+The directive-L **P4 image-level end-to-end classifier injection** is **DONE** (real compute,
+never faked). Mirror-flipped every galaxy image through the ACTUAL `bamfai/galaxy-chirality-v2`
+ViT (val_acc 0.9369) to measure the raw image-level chirality transfer function T_raw — the
+honest closer for the P4 image-level / pseudo-label-independence MAJOR (ChatGPT DP4-15, Gemini).
 
-- **Pod**: A100 80GB, `root@104.255.9.187:12576` (coords in `/tmp/e2e_ssh.txt`); supervisor
-  `/workspace/e2e_supervisor.sh` (40-pass, recycles every 10 shards, resumes from checkpoint).
-- **Local mirror**: `pipelines/p2_chirality/outputs/canonical_provenance/e2e_fullrun/`
-  (rsync loop `/tmp/e2e_rsync_loop2.sh`, breaks at 192 shards). Currently UNTRACKED (mid-run;
-  do NOT commit partial — commit the complete artifact set when the run finishes).
-- **State this tick**: 169/192 shards. **Pass 16 had HUNG for 2h45m** (GPU 0%, python alive but
-  idle — DataLoader/HF-stream stall on shard 169). This tick killed the hung proc → supervisor
-  auto-restarted pass 17, **resumed from the 169-shard checkpoint, GPU back to 96%**. ~23 shards
-  left, ~45min ETA. No data loss (all 169 shards complete on disk + locally mirrored).
-- **Preliminary result (169/192 shards, will finalize at 192)**: `T_raw ≈ 0.230 ± 0.0003`,
-  image-level `g_img ≈ -0.454` (parity-odd measure), stable across confidence bins + N/S sky
-  strata. Production Z2-TTA catalog `T_eq = 1.0` by construction (unchanged).
-- **NEXT TICK / owner TODO when `SUPERVISOR_DONE` appears in run.log**: (1) verify 192/192 +
-  final summary JSON; (2) commit the complete `e2e_fullrun/` artifact set; (3) fold the real
-  T_raw + g_img into P4's pseudo-label-independence section as the empirical image-level answer
-  to DP4-15 (real numbers only, cite the artifact); (4) directive-G PDF hygiene + recompile +
-  mirror + Convex bump + reviewTimeline; (5) re-test P4 externally. **Do NOT fold until 192/192.**
+- **Run status**: `SUPERVISOR_DONE`, **192/192 shards**, 8,474,531 galaxies × 2 passes =
+  16,949,062 inferences. Wall 10.45 h, cost ≈ $12.44 (cap $20). Pod `0hh3humgpacgz1` now
+  **EXITED** (verified via RunPod API this tick — runtime null, $0 compute burn; all pods exited).
+- **Final results** (from `e2e_transfer_function_full.json`, md5 `925649b752ebaa07…`):
+  `T_raw = 0.2303 ± 0.0002`, image-level `g_img = -0.4534` (RAW parity-odd measure), stable
+  across confidence bins (0.207–0.261) + N/S strata (0.218 vs 0.251). Production Z2-TTA catalog
+  `T_eq = 0.99974` (exactly parity-antisymmetric by construction; residual 2.6e-4 = argmax ties).
+- **Folded into paper**: P4 **v1.0.239** §VI B (`sec:pseudolabel_independence`) carries the real
+  numbers; OpenAI-INT P4-E7 (probability-level vs argmax-tie wording) closed-by-edit in v1.0.239.
+  DP4-15 = **CLOSED-BY-ARTIFACT** in `DISPOSITIONS/P4.md` (M1 wave).
+- **Artifacts committed** (HEAD `ba917177` "Stage A FINAL"): RUN_SUMMARY.md, JSON, run.log,
+  supervisor.log. The 192 shard parquets (685 MB) are intentionally NOT in git — mirrored to
+  HF `bamfai/galaxy-chirality-catalog` + Backblaze B2 + pod volume (backup-3plus satisfied).
+- **What T_raw/g_img mean (honest, per RUN_SUMMARY note 2)**: RAW-mode T measures the parity-odd
+  info in single-pass argmax calls; it does NOT dilute the dipole because the production labels
+  are EQ (Z2-TTA), whose mirror response is exactly antisymmetric (T_eq≈1, verified end-to-end on
+  the full catalog). The GZ1-derived g=0.398 is the human-ground-truth accuracy calibration — a
+  distinct, complementary quantity. Both are now in the paper honestly.
+- **NEXT compute lever for P4** (Stage B, when Houston greenlights spend): hybrid image→field
+  injection-recovery consuming the precomputed flip labels; and the empirical b/a axis-ratio
+  cross-match (Gemini MAJOR) — see the OPEN-COMPUTE list below.
 
 ## 2026-07-11 fundability check (hourly cron tick) — compute lever is ACTIONABLE, not credit-blocked
 
