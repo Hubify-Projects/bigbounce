@@ -31,9 +31,9 @@ numbers spot-checked against current `arxiv/paper1_unified.tex` v1U.0.11 and upd
 - **fingerprint:** V·A partner, Freidel-Minic-Takeuchi, FMT, non-minimal coupling, parity-odd, finite Immirzi, J·J5
 
 ### DP1U-05: Route 1 NJL closure — ⟨J5⟩=0 ⇏ ⟨J5 J5⟩=0 / vacuum condensate
-- **class:** RE-FLAG-DISCLOSED (scope sentence added v1U.0.10)
+- **class:** CLOSED-BY-COMPUTE (directive-L, v1U.0.14) — was RE-FLAG-DISCLOSED
 - ChatGPT, OpenAI-grok #5, OpenAI retest #10, ChatGPT retest: mean-vanishing doesn't exclude variance; no regulated gap-equation / effective-potential NJL vacuum-condensate exclusion.
-- Already conceded in-paper: variance ⟨J⁵J⁵⟩ permitted as incoherent thermal contribution, no coherent w=−1, bounded by leg (i). Route-1 claim scoped to finite-density mean-field bound + no coherent w=−1 (§r1_njl, L2589+). Explicit sentence added that a fully regulated NJL vacuum condensate via gap-equation/effective-potential is NOT claimed excluded — honest out-of-scope open item (see DP1U-19).
+- **CLOSED v1U.0.14 (directive-L):** the finite-density mean-field concession is upgraded to a *derived* exclusion. New Appendix `app:njl_gap` (leg iii of §r1_njl) presents the regulated NJL gap equation on the paper's own operator −(3/16)κ(J5·J5): (A) Fierz-projecting to the scalar (SS) condensate channel via eq:AAdecomp gives G_scalar=−(3/64)κ<0 → **repulsive** → M=0 is the only effective-potential minimum at ANY coupling/cutoff (no condensate forms); (B) even |G_eff| is far sub-critical vs the derived G_crit=π²/(N_f N_c Λ²) — |G_eff|/G_crit=(3/64)N_f N_c/π²≈4.3e-2 (Nf Nc=9) at Λ=M_Pl, worst case 0.156 scanned, Holst ~30× smaller. **Truth-audit note:** every number verified against `arxiv/scripts/njl_gap_equation_route1.py` + `_results.json` (script self-checks PASS: G_crit symbolic match=True, sign repulsive, worst-case ratio 0.156, subcritical all cases). Nothing fabricated — coefficients are the paper's own (eq:NJL_torsion, eq:AAdecomp), G_crit derived symbolically. Framework assumption (standard mean-field NJL) stated explicitly in-paper. Residual strong-coupling-beyond-mean-field / non-minimal completion stays out-of-scope (unchanged).
 - **fingerprint:** Route 1, NJL, gap equation, effective potential, vacuum condensate, J5 variance, w=-1, finite-density
 
 ### DP1U-06: Four-route closure = channel-level, not operator-level theorem
@@ -114,10 +114,10 @@ numbers spot-checked against current `arxiv/paper1_unified.tex` v1U.0.11 and upd
 - "Every admissible" softened to "within the enumerated set at the stated power-counting order," excluding Fierz-caveat non-enumerated classes (L4827-adjacent). "Symbolic verification" reworded to "two load-bearing tensor identities verified symbolically ... not a completeness proof, which is argued analytically" (L1226-adjacent). O4 table dim ambiguity resolved with an explicit note (physics unchanged).
 - **fingerprint:** every admissible, symbolic verification, enumerated set, power-counting order, O4 table note, Fierz caveat
 
-### DP1U-19: Regulated NJL vacuum-condensate exclusion (out of scope)
-- **class:** OPEN-VENUE (honest scope, not editable)
+### DP1U-19: Regulated NJL vacuum-condensate exclusion
+- **class:** CLOSED-BY-COMPUTE (directive-L, v1U.0.14) — was OPEN-VENUE
 - OpenAI-grok #5 escalation, OpenAI retest #10: paper does not exclude a fully regulated NJL vacuum condensate via gap-equation / effective-potential.
-- Explicitly disclosed as an out-of-scope open item (§r1_njl scope sentence, L2589+; DP1U-05). What IS established: Planck-suppressed finite-density bound + no coherent w=−1. A regulated gap-equation/effective-potential exclusion is genuinely beyond the paper's stated scope — not an editable error.
+- **CLOSED v1U.0.14:** the exact object these reviewers asked for is now delivered — a regulated NJL gap equation + effective-potential analysis (App. `app:njl_gap`; script `arxiv/scripts/njl_gap_equation_route1.py`). Two independent exclusions: repulsive scalar channel (no condensate at any coupling) + sub-critical coupling. See DP1U-05 for the full truth-audit note. The exclusion is stated within the standard mean-field NJL framework (assumption disclosed in-paper); strong-coupling-beyond-mean-field remains out-of-scope.
 - **fingerprint:** regulated NJL, vacuum condensate, gap equation, effective potential, out-of-scope, open item
 
 ### DP1U-20: Operator-level (vs channel-level) completeness across full diffeo basis
@@ -147,7 +147,7 @@ numbers spot-checked against current `arxiv/paper1_unified.tex` v1U.0.11 and upd
 ## OPEN ITEMS
 | ID | Class | Item | Gate |
 |----|-------|------|------|
-| DP1U-19 | OPEN-VENUE | Regulated NJL vacuum-condensate exclusion via gap-equation/effective-potential | Out of scope; disclosed in-paper (§r1_njl, L2589+). New derivation, not an edit — Houston-gated / human-referee. |
+| DP1U-19 | ~~OPEN-VENUE~~ **CLOSED-BY-COMPUTE (v1U.0.14)** | Regulated NJL vacuum-condensate exclusion via gap-equation/effective-potential | **CLOSED (directive-L):** derived exclusion added — App. `app:njl_gap` + `arxiv/scripts/njl_gap_equation_route1.py` (repulsive scalar channel + sub-critical coupling; mean-field NJL framework). See DP1U-05/-19 truth-audit note. |
 | DP1U-20 | OPEN-VENUE | Full operator-level completeness across the diffeomorphism-invariant basis (non-minimal/derivative/multi-species irreps) | Out of scope; paper is channel-level by design (L1219, L1389-1390). Human-referee / venue barrier — Houston-gated. |
 | DP1U-21 | HOUSTON-GATED | Grok recasts honest scope hedging as weakness (disclosure-backfire) | Not editable (removing hedging = overclaiming). Referee variance — route to human referee, do not re-spin sweeps. |
 | DP1U-22 | HOUSTON-GATED | Length/venue OPINION (60pp, "should be a Letter") | Style/venue preference, not an error. Houston-gated venue decision. |
