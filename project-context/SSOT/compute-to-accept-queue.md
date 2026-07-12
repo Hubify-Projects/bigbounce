@@ -1,6 +1,32 @@
 # Compute-to-ACCEPT queue (the real research that drives external ACCEPT)
 
-<!-- last_updated: 2026-07-11 -->
+<!-- last_updated: 2026-07-12 -->
+
+## 2026-07-12 (hourly cron tick) — P4 end-to-end image-level run LAUNCHED + RESCUED, ~45min from done
+
+The directive-L **P4 image-level end-to-end classifier injection** IS RUNNING (launched by
+a prior owner-agent, real compute, not faked). This is the honest closer for the P4
+image-level / pseudo-label-independence MAJOR (ChatGPT DP4-15, Gemini): mirror-flip every
+galaxy image through the ACTUAL `bamfai/galaxy-chirality-v2` ViT (val_acc 0.9369) to measure
+the raw image-level chirality transfer function T_raw.
+
+- **Pod**: A100 80GB, `root@104.255.9.187:12576` (coords in `/tmp/e2e_ssh.txt`); supervisor
+  `/workspace/e2e_supervisor.sh` (40-pass, recycles every 10 shards, resumes from checkpoint).
+- **Local mirror**: `pipelines/p2_chirality/outputs/canonical_provenance/e2e_fullrun/`
+  (rsync loop `/tmp/e2e_rsync_loop2.sh`, breaks at 192 shards). Currently UNTRACKED (mid-run;
+  do NOT commit partial — commit the complete artifact set when the run finishes).
+- **State this tick**: 169/192 shards. **Pass 16 had HUNG for 2h45m** (GPU 0%, python alive but
+  idle — DataLoader/HF-stream stall on shard 169). This tick killed the hung proc → supervisor
+  auto-restarted pass 17, **resumed from the 169-shard checkpoint, GPU back to 96%**. ~23 shards
+  left, ~45min ETA. No data loss (all 169 shards complete on disk + locally mirrored).
+- **Preliminary result (169/192 shards, will finalize at 192)**: `T_raw ≈ 0.230 ± 0.0003`,
+  image-level `g_img ≈ -0.454` (parity-odd measure), stable across confidence bins + N/S sky
+  strata. Production Z2-TTA catalog `T_eq = 1.0` by construction (unchanged).
+- **NEXT TICK / owner TODO when `SUPERVISOR_DONE` appears in run.log**: (1) verify 192/192 +
+  final summary JSON; (2) commit the complete `e2e_fullrun/` artifact set; (3) fold the real
+  T_raw + g_img into P4's pseudo-label-independence section as the empirical image-level answer
+  to DP4-15 (real numbers only, cite the artifact); (4) directive-G PDF hygiene + recompile +
+  mirror + Convex bump + reviewTimeline; (5) re-test P4 externally. **Do NOT fold until 192/192.**
 
 ## 2026-07-11 fundability check (hourly cron tick) — compute lever is ACTIONABLE, not credit-blocked
 
