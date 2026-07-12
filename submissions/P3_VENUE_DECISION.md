@@ -108,3 +108,18 @@ objection into the human round for no science gain.
 **Ask:** pick **ApJS** (recommended) / MNRAS / PRD. On ApJS or MNRAS I run the
 ~30-min class-conversion + MRT-table + Zenodo-DOI pass and re-verify the compile;
 the science and the arXiv categories are untouched.
+
+## 2026-07-11 UPDATE — the venue hypothesis was TESTED, and confirmed
+
+The ApJS-formatted variant (format-only conversion, every number byte-identical;
+`submissions/P3_apjs/`) was submitted to the same Gemini reviewer leg that
+REJECTs the PRD framing. **Verdict on the ApJS framing: MINOR REVISIONS**, with
+the close: "The central claim of delivering a massive, systematically
+cross-validated, and rigorously reproducible multi-survey anomaly catalog is
+strongly supported and perfectly aligns with the ApJS mandate for high-value
+data releases and methodological transparency." (Raw:
+`project-context/peer-reviews/INT_api/H17_2026-07-10/API_P3apjs_gemini.md`.)
+
+The venue-class REJECT disappears when the venue matches. Recommendation stands,
+now evidence-backed: **submit P3 to ApJS** (bundle ready:
+`submissions/P3_apjs/arxiv_p3_apjs_v3.1.155.tar.gz`).
