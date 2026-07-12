@@ -48,6 +48,26 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p5-dp5-presentation-completion-2026-07-12",
+    dateISO: "2026-07-12",
+    kind: "internal-api",
+    title:
+      "P5 DP5 — presentation-completion round (directive M). P5 is closest to all-A (Grok EXT ACCEPT ×2, ChatGPT cracked MAJOR, best INT board). Re-audited the recurring ChatGPT/OpenAI/Grok/Gemini asks as EDITABLE-BY-RESTRUCTURE and executed presentation completion with ZERO content/number change: abstract cut 352→41 lines to one PRD-format paragraph; deleted the intro 'Reader's guide to six recurring concerns' + co-review-request + '(rebuttal note)' review-process residue (all six concerns still §-signposted); single linear primary-estimand narrative (footprint-restricted +0.0018); recast the overfull systematics-budget radical as a multline display equation. INT re-test v0.1.124: OpenAI=REJECT (12 identical structural re-flags), Grok/Gemini/Claude=MINOR. 0 genuinely-new REAL findings; 2 genuinely-new editable presentation items (36pt hbox, body Reader's-guide remnant) closed in-round. Gap to all-A = the Houston-gated structural/venue floor.",
+    papers: ["P5"],
+    summary:
+      "Presentation completion only, byte-preserving every number: 352→41-line PRD abstract, rebuttal/reader's-guide residue stripped, single primary narrative, overfull radical fixed via multline. v0.1.123→v0.1.124-2026-07-12.",
+    keyTakeaways: [
+      "Abstract 352→41 lines (one PRD paragraph); every headline number preserved.",
+      "Removed intro six-concerns Reader's guide, co-review request, and '(rebuttal note)' residue — all fully covered in dedicated sections.",
+      "INT v0.1.124: OpenAI REJECT (structural re-flags), Grok/Gemini/Claude MINOR; 0 genuinely-new real findings, 2 editable presentation items closed in-round.",
+    ],
+    links: [
+      { label: "DP5 ledger + truth-audit", href: `${PR}/DP5_2026-07-12.md` },
+      { label: "INT OpenAI P5 v0.1.124 raw", href: `${PR}/INT_v3/ROUND_2026-07-09/API_P5_openai.md` },
+      { label: "INT run log", href: `${PR}/INT_api/H17_2026-07-10/run.log` },
+    ],
+  },
+  {
     id: "p3-mw1-apjs-review-of-record-2026-07-12",
     dateISO: "2026-07-12",
     kind: "internal-api",
