@@ -41,7 +41,11 @@
 % The divide-by-h claim (~1246 h⁻¹ Mpc) is INVERTED. No pipeline recompute required.
 % If any future reviewer re-raises this, cite env_finder/01_compute_vweb.py:106-108.
 
-\newcommand{\paperVersion}{v0.1.122-2026-07-12}
+\newcommand{\paperVersion}{v0.1.123-2026-07-12}
+% v0.1.123 (2026-07-12 -- INT-Claude + EXT-ChatGPT genuinely-new: RSD reconstruction
+%   relabeled as the UNRESTRICTED (secondary) contrast (not primary), sign corrected to
+%   paper convention +0.069->+0.045 pp; quadrature intermediate 0.886->0.898.
+%   |shift|=0.024pp + null-preserved unchanged.)
 % v0.1.122-2026-07-12 (directive-L closure DP5-12: RSD reconstruction bound INTEGRATED):
 %   - DP5-12 (recurring ChatGPT-M4/Grok-M3 RSD MAJOR) goes from RE-FLAG-DISCLOSED
 %     ("reconstruction deferred") to CLOSED-BY-COMPUTE (first-order). Consistent
@@ -831,16 +835,19 @@ explicitly disclosed. All bounds in this paper are quoted at
 DESIVAST void cross-check, and all null tests are performed in DESI DR1
 redshift coordinates and inherit redshift-space distortion (RSD)
 effects; model-builders should not interpret them as pure real-space
-environmental constraints (see \S\ref{sec:limitations}). For the
-\emph{primary} DESIVAST path the dominant coherent void-outflow RSD term
-is bounded by a consistent first-order Zel'dovich reconstruction that
-displaces galaxies and the DESIVAST holes together under one physical
-velocity field: the primary $\Delta f_{\rm CW}$ shifts by only
-$0.024$\,pp ($-0.069\!\to\!-0.045$\,pp), ${\approx}40\times$ under the
-${\approx}0.9$\,pp systematic envelope, with the null preserved. This
-first-order bound is not a full nonlinear re-derivation of the void
-catalog, and the anisotropic tidal-tensor eigenvalue deformation channel
-of the secondary T-Web path remains unquantified.
+environmental constraints (see \S\ref{sec:limitations}). For the DESIVAST
+void path the dominant coherent void-outflow RSD term is bounded by a
+consistent first-order Zel'dovich reconstruction that displaces galaxies
+and the DESIVAST holes together under one physical velocity field: the
+\emph{unrestricted} (secondary) $\Delta f_{\rm CW}$ contrast shifts by
+only $0.024$\,pp ($+0.069\!\to\!+0.045$\,pp), ${\approx}40\times$ under
+the ${\approx}0.9$\,pp systematic envelope, with the null preserved. The
+primary footprint-restricted estimand was not itself reconstructed; the
+bound is established on the larger-sample unrestricted void contrast,
+which is the more conservative coherent-outflow probe. This first-order
+bound is not a full nonlinear re-derivation of the void catalog, and the
+anisotropic tidal-tensor eigenvalue deformation channel of the secondary
+T-Web path remains unquantified.
 
 \emph{Setup.} We cross-match the 8{,}474{,}531-galaxy chirality catalog of the
 companion catalog paper (Paper~IV)~\cite{golden_chirality_2026}
@@ -2920,9 +2927,13 @@ center and $R_{\rm eff}$), and the exact primary VoidFinder any-hole
 membership test of \S\ref{sec:desivast_maximal_healpix} is re-run in the
 reconstructed frame (sample validated at $678{,}987$ matched CW/CCW
 spirals and $n_{\rm void}=57{,}058$ against the published rerun's
-$678{,}945$ and $57{,}081$). The primary footprint-restricted
-$\Delta f_{\rm CW}$ moves from $-0.069$\,pp in redshift space to
-$-0.045$\,pp reconstructed --- a computed RSD systematic
+$678{,}945$ and $57{,}081$). The reconstruction is applied to the
+\emph{unrestricted} void contrast (void bin vs.\ all $z\le0.24$ non-void
+spirals, no footprint mask); the primary footprint-restricted estimand
+was not itself reconstructed, so this bounds the more conservative,
+larger-sample coherent-outflow probe. The unrestricted
+$\Delta f_{\rm CW}$ moves from $+0.069$\,pp in redshift space to
+$+0.045$\,pp reconstructed --- a computed RSD systematic
 $|\text{shift}| = 0.024$\,pp (Monte Carlo $+0.026 \pm 0.049$\,pp over
 $200$ scatter realizations of the profile depth), roughly $40\times$
 under the ${\approx}0.9$\,pp systematic envelope, with the null verdict
@@ -2930,6 +2941,11 @@ preserved ($|z|$ moving from $0.32$ in redshift space to $0.18$ in the
 reconstructed frame;
 \href{\repoBase/pipelines/p5\_desi\_chirality/outputs/27\_rsd\_void\_recon\_bound.json}{[A33]},
 \href{\repoBase/pipelines/p5\_desi\_chirality/scripts/27\_rsd\_void\_recon\_bound.py}{[A34]}).
+Reconstruction reassigns void membership substantially (the void count
+falls $n_{\rm void}=57{,}058\to42{,}864$, a ${-}25\%$ change as
+LOS-elongated redshift-space holes contract in real space), yet because
+the reassigned galaxies are parity-symmetric the $\Delta f_{\rm CW}$
+shift stays tiny.
 This bounds the \emph{dominant coherent void-outflow} RSD term that the
 fixed-void-geometry MC cannot see; it is a first-order linear/Zel'dovich
 reconstruction, \emph{not} a full nonlinear iterative re-derivation of
@@ -3206,7 +3222,7 @@ effective $2\sigma$ half-width of ${\approx}0.9$\,pp. Explicitly, the
 term-sum is
 $\sqrt{0.44^2 + 0.37^2 + 0.60^2 + 0.37^2 + 0.11^2 + 0.24^2 + 0.02^2
 + 0.02^2}
-= \sqrt{0.886} = 0.94$\,pp $\approx 0.9$\,pp (rows of
+= \sqrt{0.898} = 0.94$\,pp $\approx 0.9$\,pp (rows of
 Table~\ref{tab:systematic_budget}, in order: counting CI, membership,
 geometry, sphere-PIS-vs-GALZONE, footprint, confidence, match-radius,
 first-order RSD reconstruction);
