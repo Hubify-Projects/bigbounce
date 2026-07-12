@@ -48,6 +48,27 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p3-mw1-apjs-review-of-record-2026-07-12",
+    dateISO: "2026-07-12",
+    kind: "internal-api",
+    title:
+      "P3 MW1 — ApJS review-of-record wave (directive M). P3's PRD REJECTs are PROVEN venue-class (three referees converged on 'catalog paper, wrong venue'; ApJS-framed Gemini INT drew MINOR 'perfectly aligns with the ApJS mandate'). Promoted the byte-identical-science ApJS variant (paper3_apjs.tex v3.1.156-apjs) to P3's review-of-record and ran all 4 INT legs ApJS-framed: OpenAI=MAJOR, Grok=MAJOR, Gemini=MINOR, Claude=MINOR (recompute-verified, nothing fabricated). 0 genuinely-new editable findings; Gemini+Claude affirm the catalog is supported and squarely appropriate for ApJS. Venue-of-record shift Houston-gated (awaiting confirmation).",
+    papers: ["P3"],
+    summary:
+      "Directive-M ApJS review-of-record wave on P3. The catalog-vs-PRD venue objection (three independent referees, submissions/P3_VENUE_DECISION.md) is the proven honest lever: an ApJS-framed review is a legitimate review of the SAME science at the right journal. Verified the ApJS variant paper3_apjs.tex was current (built from v3.1.155, +4.63σ/+1.14σ/σ=8.14/268,519/2,468 all present), then closed the ApJS-framed Gemini INT MINOR#5 in BOTH variants (v3.1.156 / v3.1.156-apjs, lockstep): added an explicit empirical-provenance guarantee to the AI-assisted-methodology paragraph confirming the six retained surveys are strictly empirical archival products (not AI placeholders like the excised synthetic Gaia tier), each traced to its originating archive query + audited via the same gaia_provenance_audit.py that flagged Gaia. Gemini ApJS MINOR#4 (§V enabling-framing) dispositioned ALREADY-ADDRESSED (§V L1518/L1520 open with the enabling framing + inside-1σ null caveat verbatim; cutting theory context would violate the CRITICAL RESEARCH DIRECTIVE). Grok/ChatGPT PRD MAJOR items: none genuinely-new — all map to disclosed-content classes (DP3-01/-03/-07/-08/-09/-10/-15/-16). Ran the INT wave against the ApJS variant with the ApJS referee prompt (tools/int_wave_apjs.sh, raws INT_apjs/2026-07-12/, all legs verified ApJS-framed): OpenAI MAJOR (headline accounting + validated-non-uniform + reproducibility = DP3-03/-07/-01/-15), Grok MAJOR (eROSITA axis DP3-08 + non-uniform DP3-01/-09 + 268,519-vs-2,468 DP3-07), Gemini MINOR ('exceptionally well-supported ... ideal data-release contribution for ApJS'), Claude MINOR (recomputed every headline against committed artifacts — all match, 'is supported and squarely appropriate for ApJS'). Truth-audit: 0 genuinely-new editable findings; the venue-framing softens the aggregate materially (2 MINOR affirming ApJS-appropriateness; OpenAI/Grok soften standing PRD REJECTs to MAJOR). Directive-G hygiene both variants: recompile 0 undef (PRD 37pp md5 8ff265dc2b16162a1ef59f916fff127b; ApJS 40pp md5 59723f4db7397023d9340d5d8e4b1bf6), mirrored byte-identical to all served paths + submissions/P3_apjs, ApJS tarball arxiv_p3_apjs_v3.1.156.tar.gz rebuilt + standalone-verified (40pp, 0 undef). Convex: record_wave MW1-apjs + activityFeed note. Integrity: all 4 raws READ verbatim, venue-framing confirmed per-raw, Claude recompute-verified, no ACCEPT faked, no dismissal without a source-cited verdict, no math fabricated, venue shift flagged Houston-gated not asserted.",
+    keyTakeaways: [
+      "P3's PRD REJECTs are PROVEN venue-class — the directive-M honest lever is the venue: the ApJS-framed variant (byte-identical science) is now P3's review-of-record; Houston's formal venue-of-record word is PENDING (awaiting-confirmation).",
+      "ApJS-framed INT quad on v3.1.156-apjs: OpenAI MAJOR / Grok MAJOR / Gemini MINOR / Claude MINOR (recompute-verified) — 0 genuinely-new editable findings; Gemini + Claude both affirm the catalog is supported and squarely appropriate for ApJS.",
+      "Closed the ApJS Gemini MINOR#5 (empirical-provenance guarantee, both variants v3.1.156/v3.1.156-apjs); Gemini MINOR#4 §V-enabling-framing dispositioned ALREADY-ADDRESSED; all Grok/ChatGPT PRD MAJORs source-cited to DP3-01…-16.",
+      "Directive-G both variants: 0-undef recompile (PRD 37pp, ApJS 40pp), byte-identical mirrors to all served paths, ApJS tarball rebuilt + standalone-verified; Convex record_wave + activityFeed; new engine tools/int_wave_apjs.sh (env-override venue prompt, DRY over int_api_review).",
+    ],
+    links: [
+      { label: "Venue decision packet", href: `${GH}/submissions/P3_VENUE_DECISION.md` },
+      { label: "ApJS INT raws (2026-07-12)", href: `${PR}/INT_apjs/2026-07-12` },
+      { label: "P3 dispositions ledger", href: `${PR}/DISPOSITIONS/P3.md` },
+    ],
+  },
+  {
     id: "p4-fr2-directive-m-presentation-overhaul-2026-07-12",
     dateISO: "2026-07-12",
     kind: "internal-api",
