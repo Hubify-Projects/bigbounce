@@ -214,7 +214,13 @@ def joint_fisher_zbin(iz, template):
         # makes the {f_NL, A_SDB} block the honest b_phi--f_NL degeneracy.
         Db = F_NL_BOUNCE * Dsdb
         # d B / d A_GR : GR-projection template, tracer-labelled.
-        Dg = np.einsum('a,b,c->abc', bA, bB, bC) * Sgr
+        # Sgr is built from P_phi legs (potential space, gr_reduced); it MUST be
+        # promoted to the observed galaxy-density basis by the SAME transfer
+        # product M123 that Dprim carries (line above) so the {f_NL, A_GR}
+        # overlap is contracted against the density-space covariance in ONE
+        # common basis. Omitting M123 here left Dg in potential space, collapsing
+        # F[2,2] ~1e-18 and faking a rho(f_NL,A_GR)~0 orthogonality (fixed 2026-07-12).
+        Dg = np.einsum('a,b,c->abc', bA, bB, bC) * (M123 * Sgr)
 
         # adopted Gaussian multi-tracer covariance (Kronecker inverse)
         P1inv = np.linalg.inv(c13_pgg(b, nbar, Wk, Pm, i1))

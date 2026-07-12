@@ -4,11 +4,11 @@
   "provenance": {
     "script": "research/focused_paper_source_integration/scripts/c15_channel_native_fisher.py",
     "imports": "c13_independent_bounce_fisher (validated MT covariance pipeline)",
-    "git_hash_at_run": "9dd7c00dc4643e68967b21bb6987704f440ebbb1",
-    "date_utc": "2026-07-12T06:25:12.093617+00:00",
+    "git_hash_at_run": "9826ab86f4c7a23158d62a8b046ce72ce01707af",
+    "date_utc": "2026-07-12T07:14:48.355640+00:00",
     "camb_version": "1.6.0",
     "python": "3.9.6",
-    "runtime_seconds": 106.51
+    "runtime_seconds": 36.28
   },
   "adopted_covariance_surrogate": {
     "definition": "c13 tree-level GAUSSIAN multi-tracer bispectrum covariance on the SPHEREx grid: Cov[B^ABC,B^A'B'C'] = s_B (V/Nmodes)(Pgg^AA' Pgg^BB' Pgg^CC' + Wick perms), Pgg^XY = b_X b_Y W_X W_Y P_m + dXY/n_X.",
@@ -35,29 +35,29 @@
         [
           2.5489554282415825,
           -5.2119342622264995,
-          2.582519853210415e-12
+          0.023488474344838448
         ],
         [
           -5.2119342622264995,
           10.887077626997648,
-          -3.5322829355197725e-12
+          -0.04050546623390164
         ],
         [
-          2.582519853210415e-12,
-          -3.5322829355197725e-12,
-          2.809481188137865e-18
+          0.023488474344838448,
+          -0.04050546623390164,
+          0.0011373506910684389
         ]
       ],
       "n_triangles_total": 2330,
       "sigma_fnl_all_fixed": 0.6263525925059,
-      "sigma_fnl_marg_full_3x3_bphi_free": 4.308772613753796,
-      "sigma_fnl_marg_fNL_AGR_2x2": 0.6263528841734777,
-      "sigma_fnl_marg_bphi_prior20pct": 0.7470143684752693,
-      "sigma_fnl_marg_bphi_prior30pct": 0.8723354819956043,
-      "sigma_fnl_marg_bphi_prior50pct": 1.1750340487201643,
-      "rho_fNL_ASDB": 0.9893778179463657,
-      "rho_fNL_AGR_3x3": -0.0022917722393117766,
-      "rho_fNL_AGR_2x2": -0.0009650492642330805,
+      "sigma_fnl_marg_full_3x3_bphi_free": 5.209500414956022,
+      "sigma_fnl_marg_fNL_AGR_2x2": 0.6960789130523233,
+      "sigma_fnl_marg_bphi_prior20pct": 0.8143083064622344,
+      "sigma_fnl_marg_bphi_prior30pct": 0.9396682534803197,
+      "sigma_fnl_marg_bphi_prior50pct": 1.2500721454065113,
+      "rho_fNL_ASDB": 0.9910330171510295,
+      "rho_fNL_AGR_3x3": -0.5620594520730506,
+      "rho_fNL_AGR_2x2": -0.4362410100516331,
       "F00_ff": 2.5489554282415825
     },
     "bounce_template_3x3": {
@@ -66,48 +66,48 @@
         [
           2.5069522256696435,
           -5.173397880257138,
-          2.4280631271957443e-12
+          0.022671714749228487
         ],
         [
           -5.173397880257138,
           10.887077626997648,
-          -3.5322829355197725e-12
+          -0.04050546623390164
         ],
         [
-          2.4280631271957443e-12,
-          -3.5322829355197725e-12,
-          2.809481188137865e-18
+          0.022671714749228487,
+          -0.04050546623390164,
+          0.0011373506910684389
         ]
       ],
       "n_triangles_total": 2330,
       "sigma_fnl_all_fixed": 0.6315779672017902,
-      "sigma_fnl_marg_full_3x3_bphi_free": 4.535133481236242,
-      "sigma_fnl_marg_fNL_AGR_2x2": 0.6315782315309096,
-      "sigma_fnl_marg_bphi_prior20pct": 0.75352882310056,
-      "sigma_fnl_marg_bphi_prior30pct": 0.8803473104740449,
-      "sigma_fnl_marg_bphi_prior50pct": 1.1874944923830422,
-      "rho_fNL_ASDB": 0.9902553700116274,
-      "rho_fNL_AGR_3x3": -0.0020280905112784473,
-      "rho_fNL_AGR_2x2": -0.0009149005330600721,
+      "sigma_fnl_marg_full_3x3_bphi_free": 5.217254434276956,
+      "sigma_fnl_marg_fNL_AGR_2x2": 0.6975768940212365,
+      "sigma_fnl_marg_bphi_prior20pct": 0.8160570965544678,
+      "sigma_fnl_marg_bphi_prior30pct": 0.9416811149071854,
+      "sigma_fnl_marg_bphi_prior50pct": 1.2527287488301273,
+      "rho_fNL_ASDB": 0.9910210762635703,
+      "rho_fNL_AGR_3x3": -0.49436409783853236,
+      "rho_fNL_AGR_2x2": -0.4245845061337334,
       "F00_ff": 2.5069522256696435
     },
     "sigma_fnl_bounce_all_fixed": 0.6315779672017902,
-    "sigma_fnl_bounce_marg_fNL_AGR_2x2": 0.6315782315309096,
-    "sigma_fnl_bounce_marg_bphi_prior30pct_HONEST_FLOOR": 0.8803473104740449,
-    "sigma_fnl_bounce_marg_bphi_prior20pct": 0.75352882310056,
-    "sigma_fnl_bounce_marg_bphi_prior50pct": 1.1874944923830422,
-    "sigma_fnl_bounce_marg_bphi_FREE_noprior": 4.535133481236242,
+    "sigma_fnl_bounce_marg_fNL_AGR_2x2": 0.6975768940212365,
+    "sigma_fnl_bounce_marg_bphi_prior30pct_HONEST_FLOOR": 0.9416811149071854,
+    "sigma_fnl_bounce_marg_bphi_prior20pct": 0.8160570965544678,
+    "sigma_fnl_bounce_marg_bphi_prior50pct": 1.2527287488301273,
+    "sigma_fnl_bounce_marg_bphi_FREE_noprior": 5.217254434276956,
     "significance_all_fixed": 3.4635470418509553,
-    "significance_marg_2x2_fNL_AGR": 3.463545592281774,
-    "significance_marg_bphi_prior30pct_HONEST_FLOOR": 2.4848147702320875,
-    "significance_marg_bphi_FREE_noprior": 0.48234522953968373,
-    "rho_fNL_AGR_channel_native_2x2": -0.0009149005330600721,
-    "rho_fNL_AGR_channel_native_3x3": -0.0020280905112784473,
-    "rho_fNL_bphi_channel_native": 0.9902553700116274,
+    "significance_marg_2x2_fNL_AGR": 3.135855012900421,
+    "significance_marg_bphi_prior30pct_HONEST_FLOOR": 2.3229732075657115,
+    "significance_marg_bphi_FREE_noprior": 0.4192818325340422,
+    "rho_fNL_AGR_channel_native_2x2": -0.4245845061337334,
+    "rho_fNL_AGR_channel_native_3x3": -0.49436409783853236,
+    "rho_fNL_bphi_channel_native": 0.9910210762635703,
     "local_template_marg_3x3_vs_heinrich": {
-      "sigma_local_marg_3x3": 0.8723354819956043,
+      "sigma_local_marg_3x3": 0.9396682534803197,
       "heinrich_scalar": 0.7,
-      "ratio": 1.2461935457080062
+      "ratio": 1.3423832192575997
     }
   },
   "comparison_to_proxy_floor": {
@@ -115,7 +115,7 @@
     "proxy_sigma_marg": 1.4096868173381965,
     "proxy_floor_significance": 1.303481012519937,
     "paper_headline_envelope_sigma": "1.3-2.75",
-    "channel_native_3x3_floor_significance": 2.4848147702320875,
+    "channel_native_3x3_floor_significance": 2.3229732075657115,
     "verdict": "HIGHER (channel-native floor is MORE significant than the proxy)",
     "honest_note": "Whatever the channel-native floor is, the paper takes it. The channel-native rho REPLACES the transferred proxy; the proxy is kept only as a cross-check."
   },

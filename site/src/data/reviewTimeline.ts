@@ -48,6 +48,28 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p2-c15-gr-leg-basis-fix-recompute-2026-07-12",
+    dateISO: "2026-07-12",
+    kind: "closure-wave",
+    title:
+      "P2 v1.7.115: INT-Claude found + we closed a genuinely-new MAJOR by RE-COMPUTE — the c15 channel-native Fisher's GR leg was in the wrong basis (missing the M123 transfer product), faking a rho(f_NL,A_GR)=-0.001 orthogonality.",
+    papers: ["P2"],
+    summary:
+      "The running Claude INT leg (subscription subagent, full-repo source access) surfaced a genuinely-new MAJOR by direct source inspection: c15_channel_native_fisher.py built the GR-projection derivative dB/dA_GR = b*b*b*S_GR WITHOUT the M123=M(k1)M(k2)M(k3) transfer product that the f_NL primordial leg (dB/df_NL ⊃ b*b*b*M123*B_phi) carries. S_GR is a potential-space template (P_phi legs, per gr_reduced), so omitting M123 left the GR leg in potential space while the f_NL leg was in the observed galaxy-density basis. Contracted against the density-space multi-tracer covariance this collapsed the Fisher entry F[2,2] to ~2.8e-18 (sigma_AGR~6e8) and FAKED the near-orthogonal rho(f_NL,A_GR)=-0.001 that v1.7.114 headlined. This is a real code-consistency bug, not referee variance — the SAME file's cross_fisher_alpha() already applies M123 (base = b*b*b*M123), proving M123 is the established convention and the GR leg's omission is the defect. FIX: Dg = b*b*b*(M123*S_GR); re-ran the full CAMB Fisher (231s, CAMB 1.6.0, git 9826ab86). CORRECTED results: F[2,2]=1.14e-3 (~15 orders restored); rho(f_NL,A_GR)=-0.42 (2x2 {f_NL,A_GR} block) / -0.49 (full 3x3) — the GR channel is MODERATELY correlated with f_NL, less degenerate than the -0.868 SDB proxy or the |rho|~0.95 shape-cosine (both overstated the loss) but distinctly NOT orthogonal; rho(f_NL,b_phi)=+0.99 unchanged; b_phi-30%-prior sigma_marg(f_NL^bounce)=0.94 -> 2.32sigma for -35/16 (local self-consistency sigma_local=0.94); b_phi-free no-prior limit sigma=5.2. LOAD-BEARING CONCLUSION SURVIVES: the channel-native floor 2.32sigma is still HIGHER than the retained 1.30sigma proxy floor, so the rho=-0.868 proxy remains the conservative quoted headline endpoint (no headline number loosened); cross-Fisher alpha=0.992 unchanged (that path already had M123). Abstract Scope paragraph + Sec.~systematics corrected: 'near-orthogonal / both proxies overstated' -> 'moderately correlated (rho~-0.42), less degenerate than the proxies but not orthogonal'. Recompiled 0 undef-refs / 0 overfull, 37pp, md5 3f14801e mirrored byte-identical to all served paths; papers.ts + live-status.ts + Convex bumped same-bundle. Nothing fabricated — every number a direct output of the corrected committed Fisher run. This genuinely-new finding RESETS P2's directive-K clean-wave streak.",
+    keyTakeaways: [
+      "Genuinely-new MAJOR from the Claude INT leg: c15 GR leg missing the M123 transfer product left it in potential space vs the f_NL density basis — a real basis-mismatch bug, not referee variance (cross_fisher_alpha already applied M123)",
+      "Symptom: F[2,2]~2.8e-18 and a FAKE rho(f_NL,A_GR)=-0.001 'near-orthogonality' that v1.7.114 headlined",
+      "Fix (Dg *= M123) + re-run: CORRECTED rho(f_NL,A_GR)=-0.42 (2x2)/-0.49 (3x3) — GR channel moderately correlated with f_NL, not orthogonal",
+      "Corrected b_phi-30%-prior floor sigma_marg=0.94 -> 2.32sigma, STILL higher than the 1.30sigma retained proxy floor -> load-bearing conclusion survives, no headline loosened",
+      "P2's clean-wave streak RESETS on this genuinely-new finding (directive K); recompiled clean, PDF re-mirrored + surfaces synced same-bundle; nothing fabricated",
+    ],
+    links: [
+      { label: "c15_channel_native_fisher.py (M123 fix)", href: `${GH}/research/focused_paper_source_integration/scripts/c15_channel_native_fisher.py` },
+      { label: "c15 corrected JSON output", href: `${GH}/research/focused_paper_source_integration/outputs/c15_channel_native_fisher.json` },
+      { label: "DP2 dispositions", href: `${PR}/DISPOSITIONS/P2.md` },
+    ],
+  },
+  {
     id: "p5-rsd-first-order-reconstruction-bound-directive-L-2026-07-12",
     dateISO: "2026-07-12",
     kind: "closure-wave",
@@ -77,11 +99,11 @@ export const reviewRounds: ReviewRound[] = [
       "P2 OPEN-COMPUTE (directive L): channel-native joint {f_NL,b_phi,A_GR} bispectrum Fisher closes the recurring proxy-floor MAJOR by adopting a defensible covariance surrogate.",
     papers: ["P2"],
     summary:
-      "The recurring DP2 MAJOR — 'the conservative ~1.3sigma floor rests on a PROXY correlation rho=-0.868 transferred from the c8 power-spectrum SDB channel, not a channel-native bispectrum-Fisher marginalization; Cov_B external' — is closed by ADOPTING the committed, Heinrich-validated c13 tree-level Gaussian multi-tracer bispectrum covariance as the Cov_B surrogate (it reproduces sigma(f_NL^local)~0.7 to 2-11%, so the same covariance calibrates diagonal and off-diagonal) and running the joint {f_NL^bounce, b_phi, A_GR} Fisher on it (c15_channel_native_fisher.py/.json). Channel-native, nothing transferred: cross-Fisher alpha=F(local,bounce)/F(local,local)=0.992 (native Fisher cosine 1.000, corroborates r_eff~0.99); rho(f_NL,A_GR)=-0.001 (near-ORTHOGONAL — the -0.868 SDB proxy AND the c12 |rho|~0.95 shape-cosine BOTH overstated the GR degeneracy); rho(f_NL,b_phi)=+0.99 (analytic f_NL*b_phi product degeneracy). b_phi-30%-widening-prior sigma_marg(f_NL^bounce)=0.88 -> 2.48sigma for -35/16 (local self-consistency sigma_local=0.87, ~Heinrich 0.7 to ~25%); fully-free b_phi=4.5 is the no-prior limit, reported not headlined. Channel-native floor 2.48sigma is HIGHER than the 1.30sigma proxy floor -> the proxy was conservative, not optimistic. Paper takes the real number; retains the proxy as a strict cross-check below it (no headline loosened). Integrated into abstract + Sec.~systematics; v1.7.114, directive-G hygiene clean.",
+      "The recurring DP2 MAJOR — 'the conservative ~1.3sigma floor rests on a PROXY correlation rho=-0.868 transferred from the c8 power-spectrum SDB channel, not a channel-native bispectrum-Fisher marginalization; Cov_B external' — is closed by ADOPTING the committed, Heinrich-validated c13 tree-level Gaussian multi-tracer bispectrum covariance as the Cov_B surrogate (it reproduces sigma(f_NL^local)~0.7 to 2-11%, so the same covariance calibrates diagonal and off-diagonal) and running the joint {f_NL^bounce, b_phi, A_GR} Fisher on it (c15_channel_native_fisher.py/.json). Channel-native, nothing transferred: cross-Fisher alpha=F(local,bounce)/F(local,local)=0.992 (native Fisher cosine 1.000, corroborates r_eff~0.99); rho(f_NL,A_GR) [CORRECTED in v1.7.115 — see the M123 basis-fix entry below]; rho(f_NL,b_phi)=+0.99 (analytic f_NL*b_phi product degeneracy). Channel-native floor is HIGHER than the 1.30sigma proxy floor -> the proxy was conservative, not optimistic. Paper takes the real number; retains the proxy as a strict cross-check below it (no headline loosened). Integrated into abstract + Sec.~systematics; directive-G hygiene clean. NOTE: the original rho(f_NL,A_GR)=-0.001 'near-orthogonal' claim in this entry was itself a GR-leg basis-mismatch artifact, corrected the next day to rho=-0.42/-0.49 (v1.7.115).",
     keyTakeaways: [
       "Adopted covariance surrogate = committed c13 tree-level Gaussian multi-tracer covariance (reproduces Heinrich sigma_local~0.7 to 2-11%) — the defensible substitute the reviewers invited",
-      "Channel-native rho(f_NL,A_GR)=-0.001 (near-orthogonal): the transferred -0.868 SDB proxy and the |rho|~0.95 shape-cosine both OVERSTATED the GR degeneracy",
-      "b_phi-30%-prior channel-native floor sigma_marg=0.88 -> 2.48sigma, HIGHER than the 1.30sigma proxy floor (proxy was conservative)",
+      "rho(f_NL,A_GR) initially reported near-orthogonal (-0.001) but that was a GR-leg basis bug — CORRECTED to -0.42/-0.49 in v1.7.115 (moderately correlated)",
+      "b_phi-30%-prior channel-native floor (corrected v1.7.115: sigma_marg=0.94 -> 2.32sigma) still HIGHER than the 1.30sigma proxy floor (proxy was conservative)",
       "cross-Fisher alpha=0.992 corroborates the paper's r_eff~0.99 in the same survey-covariance metric",
       "Nothing fabricated: every number a direct output of the committed Fisher run; proxy retained as a cross-check, no headline loosened",
     ],
