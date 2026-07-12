@@ -1,4 +1,5 @@
 # Canonical dispositions — P1U (as of v1U.0.17, 2026-07-12; NJ1–NJ5 adjudication appended; NJ4 = INT-Claude MINOR surfaced a genuinely-new reader-visible leg-(B) AA-coverage gap → CLOSED v1U.0.17, streak RESET 1→0; NJ5 = first re-test of v1U.0.17 AA-bound fix, 0 genuinely-new, streak 0→1, cap 62 HOLDS)
+<!-- M1 wave (2026-07-12): 0 genuinely-new; all findings source-cited re-flags of standing DP1U D-ids (DP1U-03/-05/-06/-08/-09/-10/-11/-12/-13/-14/-15/-17/-19/-20/-21/-22/-24/-26); clean-wave streak 3→4; cap 62 HOLDS. -->
 
 One numbered entry per DISTINCT finding-class. Duplicates across reviewers/rounds are
 merged. Source: `EXT_real/H17_2026-07-10/P1U_truth_audit.md` (body + INT re-test,

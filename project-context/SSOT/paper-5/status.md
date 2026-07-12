@@ -1,3 +1,9 @@
+## M1 WAVE NOTE — 2026-07-12 · v0.1.125 · cap 74 · streak RESET 3→0
+
+**M1 adjudication (2026-07-12):** EXT verdicts ChatGPT REJECT / Grok MAJOR. **1 GENUINELY-NEW finding (DP5-24)**: directive-M abstract rewrite (v0.1.124) over-tightened "primary estimand"→"primary, pre-declared estimand" (L778), contradicting §V.B's honest "post-hoc/exploratory primary, since no timestamped analysis plan predates the data". git -S confirmed "pre-declared" entered ONLY in the overhaul commit → **overhaul-REACTION, not oscillation**. BOTH Grok MAJOR#1 and ChatGPT MAJOR#1 independently caught it. **CLOSED same-bundle in v0.1.125**: abstract now reads "designated-primary (exploratory, not pre-registered) estimand" — one-word honesty fix, ZERO number change; recompiled 42pp/0-undef-refs, mirrored 8 paths, Convex md5 2f49a251. All other findings source-cited re-flags of standing DP5 D-ids (DP5-04/-06/-08/-09/-10/-11/-12/-13/-14/-15/-16/-20/-21/-22). Readiness cap 80→74 (Grok slipped ACCEPT→MAJOR = overhaul-reaction). Clean-wave **streak RESET 3→0** (a genuinely-new item resets per directive-K). No faked accept, no un-sourced dismissal, no fabrication.
+
+---
+
 ---
 title: "Paper 5 SSOT — Environmental Dependence of Spiral Chirality Across DESI LSS"
 type: ssot

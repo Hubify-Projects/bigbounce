@@ -1,3 +1,4 @@
+<!-- M1 wave note (2026-07-12): P1U 0 genuinely-new; all findings re-flags of standing DP1U D-ids; clean-wave streak 3→4; cap 62 HOLDS. -->
 ---
 title: "Paper 1 SSOT — Spin-Torsion Cosmology (ECH Geometric Dark Energy)"
 type: ssot

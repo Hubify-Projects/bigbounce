@@ -2,6 +2,12 @@
 
 **Canonical status file. When in doubt about Paper 4, read this.**
 
+## M1 WAVE NOTE — 2026-07-12 · v1.0.238 · cap 74 · streak 5→6
+
+**M1 adjudication (2026-07-12):** EXT verdicts ChatGPT REJECT / Grok MINOR (SOFTENED, 0 MAJOR) — Grok dropped to a pure MINOR after the directive-M presentation overhaul. **DP4-15 CLOSED-BY-ARTIFACT**: staged compute close via full 8.47M image-level e2e mirror-flip injection (T_raw=0.2303±0.0002, T_eq=0.9997, artifact `e2e_transfer_function_full.json` 192/192 shards, VERIFIED). All other findings source-cited re-flags of standing DP4 D-ids (DP4-01/-07/-10/-11/-12/-13/-14/-15/-16/-17/-19/-20/-21). **0 overhaul-introduced broken refs/orphans.** Readiness cap 68→74 (Grok SOFTENED). Clean-wave streak 5→6. No faked accept, no un-sourced dismissal, no fabrication.
+
+---
+
 ## ✅ CURRENT AUTHORITATIVE STATUS — 2026-07-09 · v1.0.225 (R9 ACCEPT-track minor closure: md5 35375fda / 32 pp; supersedes v1.0.224)
 
 **R9 EXT board (2026-07-09, raw in `EXT_real/R9_2026-07-09/`): Grok = MINOR-revisions ("careful, reproducible null meeting PRD standards"), Gemini = "Accept with Minor Revisions" ("a highly significant contribution"), ChatGPT = MAJOR (presentation/consolidation of already-disclosed content).** Readiness **82**. v1.0.225 closed both ACCEPT-track referees' concrete minors with real edits (no number changed): (1) abstract z≈−18 now explicitly a model-dependent template-disfavor statistic (not a frequentist exclusion) with injection-recovery A95∈(1.0%,1.5%] cross-referenced as the primary real-space falsification; (2) main-text downstream-user warning that raw p_eq scores are not frequentist likelihoods (cite Appendix-B ECE ≥0.25–0.36); (3) abstract real-space p names its isotropic-pixel-permutation null. Remaining items (~47% ℓ=1 residual a-fortiori bound, Shamir 7–18× pipeline-dependence, σ-null pairing) verified already-present + unmissable in the body. **P4 is the program's closest paper — two clean minor-lists from a Grok+Gemini double-accept; ChatGPT MAJOR is the harsh-referee structural floor (directive-H).**

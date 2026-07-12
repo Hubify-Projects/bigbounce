@@ -1,8 +1,8 @@
-# INT API Review — P2 v1.7.115 — grok (grok-4.3)
-paper: P2  version: v1.7.115  model: grok-4.3
+# INT API Review — P2 v1.7.116 — grok (grok-4.3)
+paper: P2  version: v1.7.116  model: grok-4.3
 modality: native-PDF (/v1/files file_id)
-UTC: 2026-07-12T07:32:16.260683Z  |  latency: 25.8s  |  attempt: 1
-usage: {"input_tokens": 36188, "input_tokens_details": {"cached_tokens": 192}, "output_tokens": 1205, "output_tokens_details": {"reasoning_tokens": 681}, "total_tokens": 37393, "num_sources_used": 0, "num_server_side_tools_used": 0, "cost_in_usd_ticks": 480459000, "context_details": {"input_tokens": 36188, "output_tokens": 1206}}
+UTC: 2026-07-12T16:27:09.439098Z  |  latency: 27.2s  |  attempt: 1
+usage: {"input_tokens": 36218, "input_tokens_details": {"cached_tokens": 192}, "output_tokens": 1252, "output_tokens_details": {"reasoning_tokens": 680}, "total_tokens": 37470, "num_sources_used": 0, "num_server_side_tools_used": 0, "cost_in_usd_ticks": 482009000, "context_details": {"input_tokens": 36218, "output_tokens": 1253}}
 PARSED VERDICT: MAJOR REVISIONS
 
 ======================================================================
@@ -12,10 +12,10 @@ RAW RESPONSE (verbatim):
 (1) VERDICT: MAJOR REVISIONS
 
 (2) ISSUES:
-[MAJOR] Abstract & Sec. I: The headline sensitivity range 1.3–2.75σ (and BF ≈9–14) is derived from a single external forecast (Heinrich et al. σ≈0.7) rescaled by an ad-hoc r=0.84 template factor plus a proxy ρ=−0.868 GR correlation transferred from the power-spectrum channel; the per-triangle CovB is never public and the channel-native GR–fNL correlation (ρ≈−0.42) yields a materially different floor, rendering the quoted range non-reproducible from the supplied information.
-[MAJOR] Sec. II A & Appendix A (referenced): The central claim that the printed −35/8 is an “unreproduced erroneous literature value” rests on a single identified −(99/128)∑k_i^3 discrepancy in the transcribed polynomial; while the four-way verification (vertex re-summation, ϵ-grouped intermediates, three-configuration matching, Li et al. formula) is presented, no independent code or intermediate expressions are supplied, so the correction cannot be audited by a referee.
-[MAJOR] Sec. II C (assumption (d)): The assertion that cubic-order bispectrum transmission is “closed to a bounded δf_NL≲10^{-3} systematic via single-clock nonlinear ζ-conservation” is supported only by a scaling argument (kη_bounce)^2∼10^{-4} plus a reference to linear-order verification; no explicit cubic-order calculation through the bounce is performed, violating the standard requirement that all-order claims be demonstrated rather than conjectured.
-[MINOR] Sec. IV & V: The in-house tree-level Fisher validation reproduces the Heinrich baseline only to 2–11% and is performed at tree level with diagonal Gaussian covariance and fixed b_2/bs_2; these limitations are acknowledged but the headline numbers continue to quote the published 0.7 value without propagating the validation uncertainty.
-[MINOR] Throughout: The manuscript is written as a sensitivity recast yet repeatedly presents new technical results (null-space sampling, closed-form Bayes factor, multi-radius r_cos convergence) whose length and detail exceed what is customary for a pure re-cast paper in PRD.
+[MAJOR] Sec. I and VII: The headline 1.3σ GR-marginalized floor (and 0.8σ unresolved-GR edge) is derived from a proxy correlation ρ = −0.868 transferred from the power-spectrum SDB channel because the per-triangle bispectrum covariance CovB of Heinrich et al. is not public; the subsequent channel-native surrogate Fisher still leaves the GR–fNL correlation incompletely closed.
+[MAJOR] Sec. II C (assumption (d)) and App. A: Cubic-order bispectrum transmission through the bounce is asserted to be bounded by δfNL ≲ 10−3 via single-clock nonlinear ζ-conservation, but is only explicitly verified at linear order (Ref. [2]); the O((k ηbounce)2) gradient correction remains a scaling estimate rather than a computed coefficient from the full Maldacena integrals with bounce-modified mode functions.
+[MAJOR] Sec. VI and Table III: The Bayes-factor range BF ≈ 9–14 (and the narrower 3.9–5.7 values under the curvaton prior) is presented as “illustrative” and depends on an externally chosen σtheory = 1.0 Gaussian bounce prior together with broad vs. narrow competitor priors whose widths are not observationally or theoretically justified within the paper; the Monte-Carlo ensembles only validate a subset of the four-corner grid.
+[MINOR] Sec. II A and App. A: The claimed −(99/128) ∑k_i^3 discrepancy in Cai et al.’s transcribed polynomial is traced to a single term, but the explicit vertex-by-vertex re-summation and the three-benchmark matching are only summarized; the full algebraic collapse that produces exactly −35/16 (rather than the printed −35/8) must be reproduced in the appendix for independent verification.
+[MINOR] Sec. IV: The independent in-house Fisher reproduces the Heinrich baseline to 2–11 % and yields reff ≈ 0.99, but is performed at tree-level Gaussian covariance with b2/bs2 held fixed; the paper must state whether marginalizing these nuisance parameters alters reff by more than the quoted ±0.02 uncertainty on r.
 
-(3) The central claim—that the corrected f_NL=−35/16 sets a realistic sensitivity target preserving qualitative discriminatory power—is only marginally supported once the full systematic budget and proxy-based marginalization are included.
+(3) The central claim that a matter-bounce signal at the corrected fNL = −35/16 is detectable by SPHEREx at 1.3–2.75σ (and favored over tuned multifield inflation by BF ≈ 9–14) is supported by the explicit template-mismatch recast and the closed-form Bayes-factor formula, but only under the stated set of proxies, priors, and linear-order verifications whose robustness is not yet demonstrated.

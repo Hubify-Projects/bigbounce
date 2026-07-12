@@ -2,6 +2,12 @@
 
 **Canonical status file. When in doubt about Paper 3, read this.**
 
+## M1 WAVE NOTE — 2026-07-12 · v3.1.156-apjs · cap 56 · streak 0→1
+
+**M1 adjudication (2026-07-12):** First EXT read of the ApJS-framed `paper3_apjs.tex` (v3.1.156-apjs). EXT verdicts ChatGPT REJECT / Grok MAJOR. **0 genuinely-new editable findings.** ChatGPT REJECT is **VENUE-REASONED** (verbatim: "the catalog and DOI are also described prospectively rather than supplied as an immutable reviewable release. This is … disqualifying for an ApJS catalog submission") — 12/14 MAJORs are standing DP3 re-flags weighed against the ApJS catalog-purity/immutable-release bar; Grok never invokes that bar ("a transparent process-volume catalog"). All findings source-cited re-flags of standing D-ids (DP3-01/-06/-07/-08/-09/-10/-11/-14/-15/-16/-19). Format conversion (revtex→AASTeX): bibitem-clean, label-62/62-clean, figure-12/12-clean — ZERO overhaul-introduced broken refs. Readiness cap 62→56 (ApJS venue bar). Clean-wave streak 0→1. No faked accept, no un-sourced dismissal, no fabrication.
+
+---
+
 ## ✅ CURRENT AUTHORITATIVE STATUS — 2026-07-04 (VERIFIED HONEST BOARD — SUPERSEDES all "ACCEPT / converged / 99 / green-light" entries below)
 
 **⚠️ RETRACTION.** The June "EXT22 CLEAN / R52 / UNANIMOUS ACCEPT — readiness 98/99" entries below are **RETRACTED as UNVERIFIED** (sub-agent EXT sweeps, no raw reviewer text, dropped ChatGPT leg, no INT; Houston caught 2026-07-03). Preserved below as audit trail only. **P3 is NOT converged.**

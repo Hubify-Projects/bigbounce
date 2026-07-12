@@ -1,3 +1,4 @@
+<!-- M1 wave note (2026-07-12): P2 0 genuinely-new (+Claude INT MAJOR = presentation-only re-flag); all findings re-flags of standing DP2 D-ids; clean-wave streak 4→5; cap 74 HOLDS. -->
 ---
 title: "Paper 2 SSOT — f_NL Forecast (SPHEREx / MegaMapper)"
 type: ssot
