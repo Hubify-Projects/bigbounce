@@ -57,6 +57,32 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p3-immutable-reviewable-release-2026-07-12",
+    dateISO: "2026-07-12",
+    kind: "closure-wave",
+    title:
+      "P3 immutable reviewable release — closing the ChatGPT ApJS-framed REJECT hinge. The M1 REJECT hinged verbatim on the P3 catalog being 'described prospectively rather than supplied as an immutable reviewable release … disqualifying for an ApJS catalog submission'. The release was made real: assembled RELEASE_MANIFEST.json (25 files, per-file SHA-256 + byte sizes + row counts, every count VERIFIED against the paper — pathc_unique_objects.parquet 378,480 → 377,482 headline (minus act/gaia/erosita) → 378,280 inclusive; 268,519 validated via reproduce_headline_dedup.py; 637 multi-survey clusters; DESI 195,829 / SDSS 77,905 / Planck 200 / NEOWISE 436 / Gaia 500 / eROSITA 298 / ACT 200), wrote a schema/provenance README, committed both to the public HF dataset bamfai/bigbounce-anomaly-catalog (CC-BY-4.0), and PINNED an immutable git tag p3-v3.1.157 (commit 573b5da7). The Data Availability statement in BOTH variants (paper3_draft.tex + paper3_apjs.tex, v3.1.157/-apjs) was rewritten to replace all prospective 'will be made public / at submission / DOI-inserted-at-submission' language with the concrete pinned immutable release + checksums + exact recompute recipe. The RELEASE-wave ApJS-framed INT re-test (OpenAI MAJOR / Grok MAJOR / Gemini MINOR / Claude-subscription MAJOR) — with the full-repo Claude leg — caught and fixed 4 genuinely-new self-consistency defects introduced in the first release pass (pinned-hash ambiguity → single git tag; JSON-vs-stale-MD file-set divergence → JSON authoritative + LAMOST correctly noted as a failed-exploratory tier NOT released per-object; abstract prospective sentence flipped to present; stale MD checksum date). No headline number changed. The distinct end-to-end 22.5M re-inference residual stays DP3-15 OPEN-COMPUTE (pod-gated).",
+    papers: ["P3"],
+    summary:
+      "P3's ApJS REJECT hinge (catalog 'described prospectively … not an immutable reviewable release') is CLOSED-BY-RELEASE (DP3-20). Built + published a real immutable HF release: RELEASE_MANIFEST.json (25 files, SHA-256 + row counts all verified vs the paper — 377,482 / 378,280 / 268,519 / 637), schema README, pinned git tag p3-v3.1.157 (573b5da7), CC-BY-4.0. DAS rewritten in both variants (v3.1.157/-apjs) — prospective language replaced with the concrete pinned release + checksums + recompute recipe. RELEASE INT re-test quad (OpenAI/Grok MAJOR · Gemini MINOR · Claude MAJOR) caught+fixed 4 real consistency defects in-loop before commit. No number changed; DP3-15 (end-to-end re-inference) stays pod-gated.",
+    keyTakeaways: [
+      "Release is now REAL + immutable, not prospective: RELEASE_MANIFEST.json (25 files, per-file SHA-256 + row counts) committed to HF bamfai/bigbounce-anomaly-catalog (CC-BY-4.0), pinned at immutable git tag p3-v3.1.157 (commit 573b5da7). Verified the tag is a working download pointer and 377,482 recomputes from the tagged parquet.",
+      "Both variants' Data Availability statements (v3.1.157 / v3.1.157-apjs) rewritten: 'will be made public / at submission / DOI inserted at submission / at-submission commitment / chicken-and-egg' → concrete HF repo + pinned tag/revision + RELEASE_MANIFEST.json checksums + exact recompute recipe for both headline counts. Abstract prospective sentence also flipped to present tense.",
+      "The full-repo Claude INT leg earned its keep: it caught 4 genuinely-new EDITABLE self-consistency defects I introduced in the first release pass (pinned-hash ambiguity, JSON-vs-stale-MD file-set divergence incl. an over-claimed LAMOST per-object release, abstract future-tense, stale checksum date) — all fixed in-loop before commit.",
+      "Honesty preserved: no headline number changed (every count identical, now backed by a downloadable pinned artifact). The immutable-release bar is closed (DP3-20); the DISTINCT end-to-end 22.5M per-object re-inference residual (pod-lost raw score parquets) stays DP3-15 OPEN-COMPUTE — a GPU re-run, not an edit. Zenodo DOI = optional post-acceptance snapshot (Houston-gated).",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 0,
+      note: "0 genuinely-new findings from external legs on this closure; the ApJS immutable-release hinge (DP3-20) is now closed by a real pinned public release. 4 self-consistency defects in the first release pass were caught by the full-repo INT Claude leg and fixed in-loop.",
+    },
+    links: [
+      { label: "HF dataset (pinned tag p3-v3.1.157)", href: "https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog/tree/p3-v3.1.157" },
+      { label: "P3 dispositions ledger (DP3-20)", href: `${PR}/DISPOSITIONS/P3.md` },
+      { label: "RELEASE-wave ApJS INT re-test", href: `${PR}/INT_apjs/2026-07-12/run.log` },
+      { label: "M1 ApJS truth-audit (REJECT hinge)", href: `${PR}/EXT_real/H17_2026-07-10/M1/P3APJS_truth_audit_M1.md` },
+    ],
+  },
+  {
     id: "m1-wave-post-directive-m-overhaul-2026-07-12",
     dateISO: "2026-07-12",
     kind: "external-browser",
