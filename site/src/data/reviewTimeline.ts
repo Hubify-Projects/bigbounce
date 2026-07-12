@@ -7,6 +7,15 @@ export type ReviewRoundKind =
   | "ext-closure";
 
 export type PaperId = "P1A" | "P1B" | "P2" | "P3" | "P4" | "P5";
+/**
+ * Paper ids that may appear in a {@link ReviewRound}'s `papers` list. This is a
+ * superset of {@link PaperId}: it adds "P1U" (the unified Paper 1) which is an
+ * active review target but is not one of the six papers keyed by the historical
+ * `Record<PaperId, …>` verdict/gap matrices below, so it deliberately does NOT
+ * widen `PaperId` (that would require a P1U column in every one of those
+ * matrices).
+ */
+export type RoundPaperId = PaperId | "P1U";
 
 export interface ReviewRoundLink {
   label: string;
@@ -31,7 +40,7 @@ export interface ReviewRound {
   /** Optional PT time window for cadence visibility on the timeline. */
   timePT?: string;
   title: string;
-  papers: PaperId[];
+  papers: RoundPaperId[];
   summary: string;
   keyTakeaways: string[];
   gapMetric?: GapMetric;
@@ -47,6 +56,28 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
+  {
+    id: "p1u-dp1u-presentation-overhaul-2026-07-12",
+    dateISO: "2026-07-12",
+    kind: "internal-api",
+    title:
+      "P1U DP1U — presentation overhaul round (directive M). P1U is the hardest paper: its ChatGPT/OpenAI/Grok-API REJECTs mix EDITABLE presentation (length, repetition, barrier-catalog sprawl) with STRUCTURAL-SCOPE items honestly ledgered as venue/scope. Executed the editable lane with ZERO physics change, byte-preserving every number: (a) abstract repetition purge — the 'channel-level, not operator-level' caveat (restated ~4x) stated ONCE with a Sec. IV pointer, duplicate 13-barrier caveat collapsed to a cross-ref; (b) barrier catalog consolidated — 14 verbose per-barrier subsections folded into one compact description-list (sec:barrier_details) with an explicit per-barrier → route bracket map (Grok's exact ask), both equations (B1, B12) preserved inline, summary table + map figure retained; (c) appendices E/F/G reframed — bespoke ECH-sector ΔNeff derivation + every externally-referenced result table/figure kept byte-identical, stock-CAMB MCMC / NaMaster-pipeline / ALP-chain mechanics signposted as supplementary (companion + BigBounceRepro + App reproducibility). INT re-test v1U.0.19: OpenAI=REJECT, Grok=MAJOR, Gemini=REJECT, Claude-subagent=MAJOR. 0 genuinely-new REAL findings beyond 1 editable MINOR closed in-round (H0/MPl exponent 10^-60→10^-61 consistency, true 1.2e-61); all structural re-flags dispositioned disclosed-scope/limitation with source-cited verdicts — no faked ACCEPT, no fabricated math. Gap to all-A = a further full-PRD single-paragraph abstract rewrite (next round) + the Houston-gated structural/venue barrier.",
+    papers: ["P1U"],
+    summary:
+      "Presentation overhaul, byte-preserving every number: abstract ~4x-repeated scope caveat purged to one statement, 14-barrier catalog consolidated to a route-mapped description-list, appendix E/F/G mechanics reframed supplementary (derivation + referenced tables kept). INT v1U.0.19: OpenAI/Gemini REJECT, Grok/Claude MAJOR; 1 editable MINOR (H0/MPl exponent) closed in-round, structural items dispositioned scope. v1U.0.18→v1U.0.19.",
+    keyTakeaways: [
+      "Abstract 'channel-level, not operator-level' caveat (restated ~4x) purged to one statement + Sec. IV pointer; every headline number preserved.",
+      "14-barrier catalog: verbose per-barrier subsections → one compact description-list with explicit barrier→route map (Grok's ask); both equations kept inline; 0 undefined refs.",
+      "Appendix E/F/G mechanics reframed supplementary; bespoke ECH-sector ΔNeff derivation + all externally-referenced tables/figures kept byte-identical.",
+      "INT v1U.0.19: OpenAI REJECT, Grok MAJOR, Gemini REJECT, Claude-subagent MAJOR; 1 editable MINOR (H0/MPl 10^-60→10^-61) closed in-round; structural re-flags dispositioned disclosed-scope, no faked ACCEPT.",
+    ],
+    links: [
+      { label: "DP1U ledger + truth-audit", href: `${PR}/DP1U_2026-07-12.md` },
+      { label: "INT OpenAI P1U v1U.0.19 raw", href: `${PR}/INT_v3/ROUND_2026-07-09/API_P1U_openai.md` },
+      { label: "INT Claude-subagent P1U v1U.0.19 raw", href: `${PR}/INT_api/H17_2026-07-10/intwave_P1U_claude_0929.md` },
+      { label: "INT run log", href: `${PR}/INT_api/H17_2026-07-10/run.log` },
+    ],
+  },
   {
     id: "p5-dp5-presentation-completion-2026-07-12",
     dateISO: "2026-07-12",
