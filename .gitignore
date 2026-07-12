@@ -82,3 +82,6 @@ research/cubic_bounce_transmission/pathz_pid.txt
 pipelines/p2_chirality/outputs/spiral_morphology_dr8.parquet
 tools/.freshness_skip.log
 project-context/LOOP_HEARTBEAT.json
+# Watchdog log is now a best-effort runtime mirror; authoritative copy lives in
+# ~/Library/Application Support/bigbounce/ (launchd-writable). Don't track churn.
+project-context/LOOP_WATCHDOG_LOG.md

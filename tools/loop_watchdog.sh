@@ -1,6 +1,15 @@
 #!/usr/bin/env bash
 # loop_watchdog.sh — OS-level watchdog for the bigbounce drive-to-100 loop.
 #
+# ⚠️ DEPLOYMENT (2026-07-11): the launchd agent has NO ~/Desktop TCC grant, so it
+# cannot read/exec a script that lives under ~/Desktop (getcwd + exec both EPERM).
+# The plist therefore runs a DEPLOYED COPY at
+#   ~/Library/Application Support/bigbounce/loop_watchdog.sh
+# THIS repo file is the CANONICAL SOURCE. After editing it, re-deploy:
+#   cp tools/loop_watchdog.sh "$HOME/Library/Application Support/bigbounce/loop_watchdog.sh"
+# Authoritative runtime heartbeat + log live in that same App Support dir (the
+# repo copies under project-context/ are best-effort human-visible mirrors only).
+#
 # THE PROBLEM this fixes: Claude Code's in-session cron is SESSION-ONLY. It dies
 # when the app closes, skips ticks while the session is busy, and expires after
 # 7 days. When it silently died, Houston had to NOTICE the loop was down. That is
@@ -30,8 +39,16 @@ set -uo pipefail
 # Config
 # ---------------------------------------------------------------------------
 REPO="/Users/houstongolden/Desktop/CODE_YOU/bigbounce"
-HEARTBEAT="$REPO/project-context/LOOP_HEARTBEAT.json"
-WATCHDOG_LOG="$REPO/project-context/LOOP_WATCHDOG_LOG.md"
+# Authoritative runtime state lives in the launchd-owned dir (NOT the git tree):
+# a launchd agent can CREATE files under ~/Desktop but EPERMs when overwriting an
+# EXISTING git-tracked file (macOS App-Management/TCC). Repo paths are kept only
+# as best-effort human-visible mirrors.
+RUNTIME_DIR="$HOME/Library/Application Support/bigbounce"
+mkdir -p "$RUNTIME_DIR" 2>/dev/null || true
+HEARTBEAT_RUNTIME="$RUNTIME_DIR/LOOP_HEARTBEAT.json"
+HEARTBEAT="$REPO/project-context/LOOP_HEARTBEAT.json"          # repo mirror
+WATCHDOG_LOG_RUNTIME="$RUNTIME_DIR/LOOP_WATCHDOG_LOG.md"
+WATCHDOG_LOG="$REPO/project-context/LOOP_WATCHDOG_LOG.md"      # repo mirror
 CONVEX_MUTATION_URL="https://brilliant-panther-471.convex.cloud/api/mutation"
 STALE_SECONDS=$((45 * 60))          # 45 minutes
 RECOVERY_COOLDOWN_SECONDS=$((60 * 60))  # 60 minutes — a closed session gets ~hourly
@@ -50,11 +67,17 @@ NOW_ISO="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 # Helpers
 # ---------------------------------------------------------------------------
 log_line() {
-  # append one line to the watchdog log; create with a header if missing
-  if [ ! -f "$WATCHDOG_LOG" ]; then
-    printf '# Loop Watchdog Log\n\nOne line per watchdog run (launchd, ~15min). Recovery lines start with `RECOVERY`.\n\n' > "$WATCHDOG_LOG"
-  fi
-  printf '%s  %s\n' "$NOW_ISO" "$1" >> "$WATCHDOG_LOG"
+  # Append one line to the AUTHORITATIVE runtime watchdog log (launchd-writable),
+  # and best-effort mirror to the repo copy (may EPERM under launchd — non-fatal).
+  local hdr='# Loop Watchdog Log\n\nOne line per watchdog run (launchd, ~15min). Recovery lines start with `RECOVERY`.\n\n'
+  # Authoritative runtime log (launchd-writable). Subshell wraps the redirect so a
+  # failed open never leaks an error to stderr (bash reports redirect-open errors
+  # before an inline 2>/dev/null takes effect).
+  ( [ -f "$WATCHDOG_LOG_RUNTIME" ] || printf "$hdr" > "$WATCHDOG_LOG_RUNTIME"
+    printf '%s  %s\n' "$NOW_ISO" "$1" >> "$WATCHDOG_LOG_RUNTIME" ) 2>/dev/null || true
+  # Best-effort repo mirror (EPERMs under launchd — no ~/Desktop grant; expected).
+  ( [ -f "$WATCHDOG_LOG" ] || printf "$hdr" > "$WATCHDOG_LOG"
+    printf '%s  %s\n' "$NOW_ISO" "$1" >> "$WATCHDOG_LOG" ) 2>/dev/null || true
 }
 
 # human-readable age string from a number of seconds
@@ -65,26 +88,29 @@ age_str() {
   if [ "$h" -ge 1 ]; then echo "${h}h$((m % 60))m"; else echo "${m}m"; fi
 }
 
-# parse lastTickUTC epoch out of the heartbeat json (bash-3.2 + python fallback)
+# parse the FRESHEST lastTickUTC epoch across the runtime + repo heartbeats
+# (runtime is authoritative; repo is a best-effort mirror that may be stale).
 heartbeat_epoch() {
-  [ -f "$HEARTBEAT" ] || { echo ""; return; }
-  python3 - "$HEARTBEAT" <<'PY' 2>/dev/null
+  python3 - "$HEARTBEAT_RUNTIME" "$HEARTBEAT" <<'PY' 2>/dev/null
 import sys, json
 from datetime import datetime, timezone
-try:
-    d = json.load(open(sys.argv[1]))
-    s = d.get("lastTickUTC", "").strip()
-    if not s:
-        print(""); sys.exit(0)
-    # normalize trailing Z
-    if s.endswith("Z"):
-        s = s[:-1] + "+00:00"
-    dt = datetime.fromisoformat(s)
-    if dt.tzinfo is None:
-        dt = dt.replace(tzinfo=timezone.utc)
-    print(int(dt.timestamp()))
-except Exception:
-    print("")
+best = None
+for path in sys.argv[1:]:
+    try:
+        s = json.load(open(path)).get("lastTickUTC", "").strip()
+        if not s:
+            continue
+        if s.endswith("Z"):
+            s = s[:-1] + "+00:00"
+        dt = datetime.fromisoformat(s)
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        e = int(dt.timestamp())
+        if best is None or e > best:
+            best = e
+    except Exception:
+        continue
+print("" if best is None else best)
 PY
 }
 
@@ -129,7 +155,7 @@ recovery_last_epoch() {
 }
 
 RECOVERY_PROMPT='You are the OS-level RECOVERY tick for the bigbounce drive-to-100 loop. The in-session cron died and the launchd watchdog spawned you. Do ONLY these steps, then stop:
-1. Write a fresh heartbeat to project-context/LOOP_HEARTBEAT.json: {"lastTickUTC":"<current UTC ISO8601>","source":"watchdog-recovery","note":"recovery tick"}.
+1. Write a fresh heartbeat to the AUTHORITATIVE runtime path "$HOME/Library/Application Support/bigbounce/LOOP_HEARTBEAT.json" (this always succeeds under launchd) AND best-effort to the repo mirror project-context/LOOP_HEARTBEAT.json, both with body {"lastTickUTC":"<current UTC ISO8601>","source":"watchdog-recovery","note":"recovery tick"}. If the repo write fails with EPERM that is expected — the runtime copy is what the watchdog reads.
 2. Run: tools/site_freshness_check.sh --report . For every surface reported STALE/FAIL, fix it in-repo (update the live-status.ts / reviewTimeline.ts / SSOT surface the report names) and re-run until it passes or you have made a real fix attempt for each.
 3. For any EXT round with a submitted-but-unharvested manifest, run tools/ext_harvest.sh <round-label> to harvest verdicts.
 4. Append ONE dated status line to project-context/LOOP_WATCHDOG_LOG.md prefixed "RECOVERY-TICK" summarizing what you did (heartbeat written, which surfaces fixed, which rounds harvested) so the interactive session knows what happened.
