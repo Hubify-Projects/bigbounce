@@ -1,0 +1,173 @@
+{
+  "release_name": "BigBounce Multi-Survey Autoencoder Anomaly Catalog (Paper 3)",
+  "paper": "Golden (2026), Paper 3 (P3): A Multi-Survey Autoencoder Anomaly Catalog",
+  "paper_versions": {
+    "prd_variant": "v3.1.157",
+    "apjs_variant": "v3.1.157-apjs"
+  },
+  "author": "Houston Golden <houston@hubify.com>",
+  "license": "CC-BY-4.0",
+  "hf_repo": "https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog",
+  "hf_repo_type": "dataset",
+  "pinned_revision": "f738267c6b62105af6012a645741ac8cceb265bf",
+  "manifest_frozen_utc": "2026-07-12T17:45:58Z",
+  "immutable_release": true,
+  "checksum_algo": "SHA-256",
+  "headline_counts": {
+    "validated_catalog_grade": 268519,
+    "validated_point_source": 268319,
+    "headline_inclusive_no_act": 378280,
+    "headline_excised_no_act_gaia_erosita": 377482,
+    "multi_survey_coincidence_clusters": 637,
+    "note": "377,482 = pathc_unique_objects (378,480) minus ACT(200) minus Gaia(500) minus eROSITA(298). 268,519 = exact 4-way 5-arcsec dedup of the validated per-survey lists (DESI+SDSS+Planck+NEOWISE), reproducible via scripts/reproduce_headline_dedup.py. Both verified against this release 2026-07-12."
+  },
+  "verification": "Recompute headline: load pathc_unique_objects.parquet; 377,482 = rows whose survey_list excludes act_dr6, gaia_dr3, erosita_dr1. Recompute 268,519: run scripts/reproduce_headline_dedup.py against the released validated per-survey tables.",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "4f59d8211a22e47b40aef9c2e029d6420c49ae86549d97e63bc71758cec8a7dc",
+      "size_bytes": 1339
+    },
+    {
+      "path": "act_dr6_anomalies.parquet",
+      "sha256": "65fa89af6b01d1fea711a1d21a9a528a49193bf8e82231f1c58f3a26e47cde72",
+      "size_bytes": 8922,
+      "rows": 200,
+      "description": "ACT DR6 cross-transfer (200; quarantined/diagnostic, EXCLUDED from all headline counts)."
+    },
+    {
+      "path": "blocks/erosita_dr1/erosita_dr1_anomalies.parquet",
+      "sha256": "4ea1b032aa8a5e51ea10fd600aec7b52f80598830e04f54f2dfa2dd4e082d2de",
+      "size_bytes": 72095,
+      "rows": 298,
+      "description": "eROSITA DR1 (298, membership-list-only addendum; EXCLUDED from the 377,482 headline; S_BigAE axis irreproducible - see README warning)."
+    },
+    {
+      "path": "desi_dr1_anomalies.parquet",
+      "sha256": "0a36b8d6dfb8086c2c417885c99689d7a75b416dad1b030db56477baf103ec65",
+      "size_bytes": 10514503,
+      "rows": 195829,
+      "description": "DESI DR1 native-retrained anomalies (195,829); per-object canonical-S scores."
+    },
+    {
+      "path": "gaia_dr3_anomalies.parquet",
+      "sha256": "819c59789eb1b94de4d46a62777fd125fb084b8c70f3d627b734a45af7396ced",
+      "size_bytes": 122457,
+      "rows": 500,
+      "description": "Gaia DR3 anomalies (500, exploratory tier; EXCLUDED from the 377,482 headline). Per-object canonical-S scores."
+    },
+    {
+      "path": "neowise_anomalies.parquet",
+      "sha256": "2740d936a2289ab32bc925f4507a449aa14445976e916459303874386aac42da",
+      "size_bytes": 91283,
+      "rows": 436,
+      "description": "NEOWISE raw anomalies (436 pre-mask; 419 survive the 80-deg ecliptic-pole mask used in the headline dedup); per-object canonical-S scores."
+    },
+    {
+      "path": "p3_compute_to_accept/SIXWAY_DEDUP_AND_HELDOUT_METHODS.md",
+      "sha256": "2dca262d10abef4c72190890193e1bb6598f942f3d99cd6002f113ac7265ec9a",
+      "size_bytes": 4077
+    },
+    {
+      "path": "p3_compute_to_accept/held_out_rescore.py",
+      "sha256": "668f0aa9ca3f27a3cf9e1c1594152bf639f54f3184a6a9e136fa185b1d2f70a0",
+      "size_bytes": 8577
+    },
+    {
+      "path": "p3_compute_to_accept/held_out_rescore_result.json",
+      "sha256": "c218fe149d36fd7ca28254df72232a89589eea6878ef7e5a9a42bfde38bf35be",
+      "size_bytes": 3228
+    },
+    {
+      "path": "p3_compute_to_accept/sixway_dedup.py",
+      "sha256": "60c853b628b06cf1a393ca5c999ef8449b649d9eec398297bdb547d20ed53285",
+      "size_bytes": 13729
+    },
+    {
+      "path": "p3_compute_to_accept/sixway_dedup_artifact.csv",
+      "sha256": "7d689c1e687c751fdfe2843962d5d7f8348eab8f8aa1ef422430482fedc667f5",
+      "size_bytes": 23927312
+    },
+    {
+      "path": "p3_compute_to_accept/sixway_dedup_artifact.json",
+      "sha256": "f9273b1ff170053d78b0e401154205b8c2d4eb967d02abcf67b9c92fab37a066",
+      "size_bytes": 2058
+    },
+    {
+      "path": "pathc_dedup_summary.json",
+      "sha256": "0ece318a225a726b0d30a6006b54a32f9c4fd50709041ed61199bafe4329c6a9",
+      "size_bytes": 2433
+    },
+    {
+      "path": "pathc_dedup_summary_no_act.json",
+      "sha256": "edb1330a42e856b04789b53bca781f951c121761d9be6a3214a05236bc18e8f4",
+      "size_bytes": 2364
+    },
+    {
+      "path": "pathc_multi_survey_matches.parquet",
+      "sha256": "3605b16a939b1dc44c4cb76e96dcbb7411a6eeb5917d12567c4fbc35fc85e784",
+      "size_bytes": 37722,
+      "rows": 637,
+      "description": "637 multi-survey coincidence clusters (canonical, ACT-excluded; ACT contributes zero cross-survey overlaps)."
+    },
+    {
+      "path": "pathc_unique_objects.parquet",
+      "sha256": "b14deb02ddc374cc30a54e6013c0695d1c35cbf18cef9144245e338d6138c643",
+      "size_bytes": 12087824,
+      "rows": 378480,
+      "description": "Merged 8-way 5-arcsec deduplicated unique-object table. 378,480 rows total; excise ACT(200) -> 378,280 inclusive; excise ACT+Gaia(500)+eROSITA(298) -> 377,482 HEADLINE set. survey_list column drives all tier derivations."
+    },
+    {
+      "path": "planck_cmb_anomalies.parquet",
+      "sha256": "9dd3576f8de7251b9ee2bed13e61acc66d3faa530c317ae61dfd2e6b05a92740",
+      "size_bytes": 7926,
+      "rows": 200,
+      "description": "Planck CMB native retrain (200 patches); ranked by raw per-patch reconstruction MSE (survey-specific axis, NOT canonical-S)."
+    },
+    {
+      "path": "pta_real_kde_2026-05-01/chain_real_freespec.npy",
+      "sha256": "50abc38a04e1bf886adc833b5eb653be4e986877fe2476f87a78927f4f3610fc",
+      "size_bytes": 5120128
+    },
+    {
+      "path": "pta_real_kde_2026-05-01/emcee_freespec.log",
+      "sha256": "c1c830bb40f353e129a3e6d0223db9d1707f6a750d32d812d4508c0f458913f0",
+      "size_bytes": 1373
+    },
+    {
+      "path": "pta_real_kde_2026-05-01/emcee_freespec.py",
+      "sha256": "2cf5b3535d2b997885b12cb9fb8460e6a893227af0b593337c2a4755bd224c97",
+      "size_bytes": 7083
+    },
+    {
+      "path": "pta_real_kde_2026-05-01/gamma_posterior.png",
+      "sha256": "3e9926291aba95165c19025c621950f3edcc5b511e6910fdf02ce75533e29736",
+      "size_bytes": 103787
+    },
+    {
+      "path": "pta_real_kde_2026-05-01/results.json",
+      "sha256": "80617e05030e241a4bf57854f86c2decc15217cfc6065687886ba45eae2d21c1",
+      "size_bytes": 1001
+    },
+    {
+      "path": "r42_results/B10_ood_results_100k.json",
+      "sha256": "b801666f44cad291974c0a765e2aa5eb96c03076c7dfc1094511e2d985e5bab2",
+      "size_bytes": 883
+    },
+    {
+      "path": "r42_results/wave_14_rr_nanograv_bayesian.json",
+      "sha256": "8855682d10a26eed1b88c0cc63709547b4bb59c996361daa31aa80e83c670dd3",
+      "size_bytes": 3781
+    },
+    {
+      "path": "sdss_dr18_pathc_native.parquet",
+      "sha256": "5139c663c12f40217ea646fa8140c91f40194b42ca891912db73301ab78a31e6",
+      "size_bytes": 3095874,
+      "rows": 77905,
+      "description": "SDSS DR18 native-retrained continuity slice (77,905); per-object canonical-S scores."
+    }
+  ],
+  "pinned_revision_note": "IMMUTABLE POINTER. Download the dataset at git tag \"p3-v3.1.157\" (equivalently commit f738267c6b62105af6012a645741ac8cceb265bf), which carries this fully-reconciled complete manifest and the frozen catalog files. The per-file SHA-256 hashes below are byte-stable across the release commits; only the manifest text was reconciled. This tag/commit is the single pointer cited in the paper Data Availability statement.",
+  "manifest_files_are_complete": "This files[] array enumerates EXACTLY the catalog + reproducibility files that are released on HuggingFace at the pinned revision. LAMOST DR10 is a failed-exploratory tier (injection-recovery FAIL) documented in the paper but deliberately NOT released as a per-object table and excluded from every headline count; do not expect a LAMOST file here.",
+  "pinned_tag": "p3-v3.1.157"
+}
