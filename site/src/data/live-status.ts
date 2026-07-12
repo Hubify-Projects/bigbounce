@@ -94,9 +94,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-2",
       number: "2",
       shortTitle: "f_NL = -35/16 SPHEREx forecast + Cai-Li certification",
-      version: "v1.7.115",
+      version: "v1.7.116",
       readiness: 74,
-      pendingWork: "v1.7.115: INT-Claude found + we closed a genuinely-new MAJOR by RE-COMPUTE — the c15 channel-native Fisher built the GR leg dB/dA_GR WITHOUT the M123 transfer product the f_NL primordial leg carries (GR template in potential space vs f_NL density basis), collapsing F[2,2]~1e-18 and faking rho(f_NL,A_GR)=-0.001 orthogonality. Fixed (Dg *= M123, the same promotion cross_fisher_alpha already used) + re-ran (231s): CORRECTED rho(f_NL,A_GR)=-0.42 (2x2)/-0.49 (3x3) — GR channel MODERATELY correlated with f_NL, not orthogonal; sigma_marg=0.94 -> 2.32sigma. Load-bearing result HOLDS: channel-native floor 2.32sigma still > proxy 1.30sigma floor, proxy stays the conservative quoted endpoint; alpha=0.992 unchanged. Grok EXT MINOR; ChatGPT REJECT = documented floor. -35/16 quadruple-certified, nothing fabricated.",
+      pendingWork: "v1.7.116 (directive-M presentation restructure, ZERO content change): consolidated the repeated scope/caveat/proxy/illustrative statements the REJECT/minor raws named (DP2-30 presentation-scope) to canonical homes + cross-refs, relegated the cosmic-birefringence auxiliary paragraph to a new Appendix, tightened the Caveats->Scope-and-limitations register. FREEZE HELD: every number byte-identical (only one redundant body-prose 10^-3 disclosure consolidated to a cross-ref; 6 canonical disclosures remain); -35/16 quadruple-certification untouched (App-A+tables cert count 20->20); abstract still states all four certification methods. INT re-test (v1.7.116): OpenAI REJECT / Grok MAJOR / Gemini MAJOR / Claude ABSENT (session-blocked -> GAP). 0 genuinely-new editable findings — all OpenAI items map to standing DP2 classes (its 'far too long' #9 is the exact class this restructure actions); 0 regressions. Residual REJECT/MAJOR = the documented LLM harsh-referee floor (Cov_B unavailable, venue/Houston-gated). Prior science (v1.7.115): INT-Claude c15 channel-native GR-leg M123 basis fix -> rho(f_NL,A_GR)=-0.42, sigma_marg 2.32sigma > 1.30sigma proxy floor; -35/16 quadruple-certified, nothing fabricated.",
     },
     {
       slug: "paper-3",
