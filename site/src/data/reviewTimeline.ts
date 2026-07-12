@@ -57,6 +57,34 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "m3-m2c-confirm-wave-2026-07-12",
+    dateISO: "2026-07-12",
+    kind: "external-browser",
+    title:
+      "M3 / M2c confirm wave — re-tests on the two just-fixed/released papers. P5 M3: first read of the v0.1.126 Eq.(4) term-count fix — EXT Grok MINOR PLUS an internal native-PDF API wave that returned the CAMPAIGN'S FIRST INT-API ACCEPT (Grok grok-4.3 ACCEPT; OpenAI REJECT / Gemini MINOR / Claude MINOR), verified from the raw referee body (API_P5_grok.md, native-PDF /v1/files, explicit central-claim endorsement) AND the milestone log — not a laundered label; ChatGPT EXT M3 FAILED-dead (M3b retry cooking). P3-ApJS M2c: the recovered ChatGPT EXT leg (the M2 GAP) on release-live v3.1.158-apjs came back REJECT, but its immutable-release hinge has DISSOLVED exactly like Grok's — it no longer re-raises the 'described prospectively … disqualifying for an ApJS catalog submission' bar (closed by the pinned p3-v3.1.157 HuggingFace release); its only Data-Availability MAJOR now cites the manuscript's OWN admission that the native score parquets / Planck checkpoint 'needed for full re-inference are unavailable' = the pod-blocked DP3-15 OPEN-COMPUTE residual, plus the standing catalog-vs-PRD validated-purity venue judgment (DP3-16, Houston-gated). Strict verdict-first truth-audit (ledger_match + one Opus sub-agent per paper vs each .tex + DISPOSITIONS): 0 genuinely-new reader-visible editable findings on either paper.",
+    papers: ["P3", "P5"],
+    summary:
+      "Confirm wave on the two just-touched papers. P5 M3 (v0.1.126): EXT Grok MINOR + INT-API OpenAI REJECT / Grok ACCEPT / Gemini MINOR / Claude MINOR — Grok's is the CAMPAIGN'S FIRST INT-API ACCEPT (verified raw body + milestone log, 4 non-blocking MINORs, central-claim endorsement); ChatGPT EXT M3 FAILED (M3b pending). 0 genuinely-new → P5 clean-wave streak REBUILDS 0→1. P3-ApJS M2c (v3.1.158-apjs): recovered ChatGPT EXT REJECT completes the M2 wave — immutable-release hinge DISSOLVED (remaining basis = DP3-15 pod-blocked re-inference OPEN-COMPUTE + DP3-16 catalog-vs-PRD venue, both Houston-gated/non-editable); 0 genuinely-new → P3 clean-wave streak 0→1. Caps HOLD: P5 80 · P3 56.",
+    keyTakeaways: [
+      "MILESTONE — first INT-API ACCEPT of the campaign: Grok (grok-4.3) ACCEPTs P5 v0.1.126 in the native-PDF internal review (OpenAI REJECT / Grok ACCEPT / Gemini MINOR / Claude MINOR). Verified from the raw referee body API_P5_grok.md (UTC 2026-07-12T18:30:10Z, PARSED VERDICT ACCEPT, explicit central-claim endorsement) AND the milestone log — the 4 MINORs are non-blocking RE-FLAG-DISCLOSED strengthen-requests (DP5-13/-11/-12/-21).",
+      "P5 M3 EXT Grok MINOR = 5 source-cited standing re-flags (post-hoc primary DP5-13/-24; Paper-IV DP5-21; RSD/0.9pp envelope DP5-11/-12 with Zel'dovich 0.024pp + √0.898 disclosed; T-Web sign-flip DP5-14; Rs=10 grid + 384³ convergence test — BOTH already in tex). 0 genuinely-new → streak 0→1.",
+      "P3-ApJS M2c ChatGPT REJECT hinge DISSOLVED: no longer the disqualifying immutable-release bar (closed by pinned p3-v3.1.157). Remaining Data-Availability MAJOR quotes the manuscript's OWN disclosure — 'the native score parquets required for full held-out re-inference are unavailable … key DESI production-score artifacts and the Planck checkpoint/tensor … are unavailable' = DP3-15 OPEN-COMPUTE (pod-blocked, not editable).",
+      "P3-ApJS M2c residual REJECT basis (verbatim close): 'membership is partly post hoc or predetermined, its validation does not establish catalog purity or production-level out-of-sample stability' = the standing catalog-vs-PRD validated-purity venue judgment (DP3-07/-09/-12/-16, Houston-gated). REJECT→REJECT on unchanged disclosed content = DP3-17 backfire floor. 0 genuinely-new → streak 0→1.",
+      "Integrity: EXT Grok raw + all 4 P5 INT raws + the P3 ChatGPT raw READ verbatim before disposition; the first INT-API ACCEPT verified from raw body + milestone (not label); the P3 hinge dissolution verified from raw L41 vs tex L1700; ChatGPT P5 M3 FAILED recorded as a GAP; no ACCEPT faked, no math fabricated.",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 0,
+      note: "0 genuinely-new reader-visible editable findings across P5 M3 (EXT Grok + 4 INT legs incl. the first INT-API ACCEPT) and P3-ApJS M2c (recovered ChatGPT EXT). Both papers' clean-wave streaks rebuild 0→1; caps hold P5 80 · P3 56.",
+    },
+    links: [
+      { label: "P5 M3 truth-audit (first INT-API ACCEPT)", href: `${PR}/EXT_real/H17_2026-07-10/M3/P5_truth_audit_M3.md` },
+      { label: "P5 Grok M3 EXT raw", href: `${PR}/EXT_real/H17_2026-07-10/M3/P5_grok_M3.md` },
+      { label: "P5 Grok INT-API raw (ACCEPT)", href: `${GH}/project-context/peer-reviews/INT_v3/ROUND_2026-07-09/API_P5_grok.md` },
+      { label: "P3-ApJS M2c truth-audit (hinge dissolved)", href: `${PR}/EXT_real/H17_2026-07-10/M2c/P3APJS_truth_audit_M2c.md` },
+      { label: "P3-ApJS ChatGPT M2c EXT raw", href: `${PR}/EXT_real/H17_2026-07-10/M2c/P3APJS_chatgpt_M2c.md` },
+    ],
+  },
+  {
     id: "p3-dp3-15-heldout-reinference-2026-07-12",
     dateISO: "2026-07-12",
     kind: "closure-wave",
@@ -5743,6 +5771,20 @@ export const externalVerdictRounds: ExternalRoundVerdicts[] = [
     },
     note: "M2 — targeted re-reads. Verdict matrix [ChatGPT, Grok, Gemini] FROM RAW (verbatim VERDICT line READ before recording; ChatGPT P3 leg produced no output → NO_VERDICT/GAP, M2c retry in flight, never synthesized). Truth-audit (ledger_match + one Opus per paper vs each .tex + DISPOSITIONS): 1 genuinely-new reader-visible editable finding total — P5's Eq.(4) prose said 'the SEVEN counting-plus-systematic terms' while the multline (tex L2862-2865) sums EIGHT squared terms and the ordered source-list names eight; NOT in the M1 ledger (M1 ChatGPT flagged Eq(4) only on statistical-coverage = DP5-11) → CLOSED-BY-EDIT one-word seven→eight in P5 v0.1.126 (√0.898=0.94 pp unchanged, no number changed). TWO task-critical engagement checks: (1) P4 ChatGPT M2b REJECT DID engage the new e2e section — 'the injection begins in the final hard-label map, downstream of the image classifier, not-spiral triage, confidence cut … Thus these numbers are neither controlled-false-alarm thresholds nor end-to-end sensitivities to a physical chirality dipole' — but re-frames the disclosed image-level injection (§VI B) = standing DP4-15 RE-FLAG, not new; the 3,200,420+740=3,201,160 mask-count 'inconsistency' is reconciled verbatim in tex L950. (2) P3-ApJS's immutable-release objection has DISSOLVED — Grok M2 §3.7 reads the release as live: 'No full per-object held-out re-inference of the released 22.5 M catalog exists (raw native scores reside on an exited pod)' — shifting from 'no immutable archive' (the pre-release DP3-20 hinge) to the OWN-disclosed pod-blocked re-inference residual (DP3-15 OPEN-COMPUTE); it no longer invokes the disqualifying-catalog bar. Grok M2 P4/P5 SOFTENED to MINOR (central claims 'supported'); Grok P3 MAJOR = all 6 standing DP3 re-flags. ChatGPT floor-crack RETURNED post-fix on P5 (M1 REJECT → M2 MAJOR on unchanged v0.1.125 content, all 11 MAJORs = identical standing DP5 battery) — recorded honestly as harsh-referee oscillation. Clean-wave streaks: P5 RESET 1→0 · P4 6→7 · P3 →1. Caps (Convex readinessComputed): P1A 62 · P2 74 · P3 56 · P4 74 · P5 80. No ACCEPT faked, no finding dismissed without a source-cited verdict, no math fabricated, ChatGPT FAILED leg recorded as a GAP not a zero. Raws + per-paper truth-audits: EXT_real/H17_2026-07-10/M2/ + M2b/.",
   },
+  {
+    roundId: "M3",
+    dateISO: "2026-07-12",
+    windowPT: "Jul 12 · confirm re-tests on the two just-touched papers — P5 M3 (first read of the v0.1.126 Eq.(4) term-count fix) · P3-ApJS M2c (recovered ChatGPT EXT, the M2 GAP, on release-live v3.1.158-apjs) · headed browser, raw verbatim READ before every verdict · P5 ChatGPT M3 FAILED-dead (M3b retry in flight = GAP) · P5 also ran the INT-API wave: the CAMPAIGN'S FIRST INT-API ACCEPT (Grok grok-4.3)",
+    verdicts: {
+      P1A: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P1B: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P2: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P3: ["REJECT", "NO_VERDICT", "NO_VERDICT"],
+      P4: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P5: ["NO_VERDICT", "MINOR", "NO_VERDICT"],
+    },
+    note: "M3/M2c — confirm re-tests. EXT verdict matrix [ChatGPT, Grok, Gemini] FROM RAW (verbatim VERDICT line READ before recording). P5 M3 EXT: Grok MINOR (5 source-cited standing DP5 re-flags — post-hoc primary DP5-13/-24, Paper-IV DP5-21, RSD/0.9pp DP5-11/-12, T-Web DP5-14, Rs=10 grid + 384³ convergence test BOTH already in tex), ChatGPT M3 FAILED-dead → NO_VERDICT/GAP (M3b retry in flight, never synthesized). P5 ALSO ran the internal native-PDF API wave (run.log 2026-07-12T18:32:51Z): OpenAI REJECT / **Grok ACCEPT** / Gemini MINOR / Claude MINOR — Grok grok-4.3 ACCEPT is the CAMPAIGN'S FIRST INT-API ACCEPT (verified from the raw referee body API_P5_grok.md, native-PDF /v1/files, PARSED VERDICT ACCEPT + explicit central-claim endorsement, AND the milestone log — not a laundered label; the 4 MINORs are non-blocking RE-FLAG-DISCLOSED strengthen-requests). P3-ApJS M2c EXT: the recovered ChatGPT REJECT (the M2 GAP) on release-live v3.1.158-apjs — its immutable-release hinge has DISSOLVED like Grok's: it no longer re-raises the 'described prospectively … disqualifying for an ApJS catalog submission' bar (closed by pinned p3-v3.1.157); its only Data-Availability MAJOR now cites the manuscript's OWN admission that the native score parquets / Planck checkpoint 'needed for full re-inference are unavailable' = DP3-15 OPEN-COMPUTE, plus the standing catalog-vs-PRD validated-purity venue judgment (DP3-16, Houston-gated). Truth-audit (ledger_match + one Opus per paper vs each .tex + DISPOSITIONS): 0 genuinely-new reader-visible editable findings on either paper. Clean-wave streaks REBUILD: P5 0→1 · P3 0→1. Caps HOLD: P5 80 · P3 56. No ACCEPT faked (the INT-API ACCEPT is real + verified), no finding dismissed without a source-cited verdict, no math fabricated, ChatGPT P5 M3 FAILED leg recorded as a GAP not a zero. Raws + per-paper truth-audits: EXT_real/H17_2026-07-10/M3/ + M2c/.",
+  },
 ];
 
 export interface GapPoint {
@@ -5950,6 +5992,14 @@ export const gapSeries: GapPoint[] = [
     perPaper: { P1A: 0, P1B: 0, P2: 0, P3: 0, P4: 0, P5: 1 },
     note: "M2 wave — targeted re-reads (P5 v0.1.125 fix · P4 first reads WITH the 8.47M e2e live · P3-ApJS first read with the immutable release live). 1 genuinely-new reader-visible finding total: P5's Eq.(4) prose 'the SEVEN … terms' vs the multline's EIGHT displayed/listed terms (arithmetic-label mismatch, NOT in the M1 ledger) → CLOSED-BY-EDIT one-word seven→eight in v0.1.126 (no number changed). P4: ChatGPT M2b REJECT engaged the new e2e section but re-frames the disclosed image-level injection = DP4-15 RE-FLAG; mask count 3,200,420+740=3,201,160 reconciled in tex L950 → 0 genuinely-new (streak 6→7). P3-ApJS: immutable-release objection DISSOLVED (Grok reads 'the released 22.5 M catalog … raw native scores reside on an exited pod' = pod-blocked residual DP3-15, not the missing-archive bar) → 0 genuinely-new (streak →1); ChatGPT FAILED-dead = M2c gap.",
     milestone: "P4 e2e engaged-but-reflag · P3 release objection dissolved",
+  },
+  {
+    roundId: "M3",
+    dateISO: "2026-07-12",
+    total: 0,
+    perPaper: { P1A: 0, P1B: 0, P2: 0, P3: 0, P4: 0, P5: 0 },
+    note: "M3/M2c confirm wave — re-tests on the two just-touched papers. P5 M3 (v0.1.126): EXT Grok MINOR + INT-API OpenAI REJECT / Grok ACCEPT / Gemini MINOR / Claude MINOR — Grok's is the CAMPAIGN'S FIRST INT-API ACCEPT (verified raw body + milestone log; 4 non-blocking MINORs, central-claim endorsement); ChatGPT EXT M3 FAILED-dead (M3b gap). 0 genuinely-new → P5 streak 0→1. P3-ApJS M2c (v3.1.158-apjs): recovered ChatGPT EXT REJECT completes the M2 wave — immutable-release hinge DISSOLVED (remaining basis = DP3-15 pod-blocked re-inference OPEN-COMPUTE + DP3-16 catalog-vs-PRD venue, both Houston-gated); 0 genuinely-new → P3 streak 0→1. Caps HOLD: P5 80 · P3 56.",
+    milestone: "first INT-API ACCEPT (Grok, P5) · P3 hinge dissolved",
   },
 ];
 
