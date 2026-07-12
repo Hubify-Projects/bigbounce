@@ -58,8 +58,48 @@ function computeCurrent(): Record<PaperId, { verdict: Verdict; roundId: string }
   return out;
 }
 
+/**
+ * All-A progress meter (directive M): counts ACCEPT cells in the CURRENT column
+ * over papers × reviewer legs. Honest counting — NO_VERDICT / FAILED / gap legs
+ * are NOT ACCEPT. Goal is 100%: every paper accepted by every reviewer.
+ */
+export function AllAMeter() {
+  const current = computeCurrent();
+  let accept = 0;
+  let total = 0;
+  for (const p of PAPER_IDS) {
+    for (const c of current[p]) {
+      total += 1;
+      if (c.verdict === "ACCEPT") accept += 1;
+    }
+  }
+  const pct = total === 0 ? 0 : Math.round((accept / total) * 100);
+  const done = accept === total && total > 0;
+  return (
+    <div className="alla-meter" role="group" aria-label="All-ACCEPT progress meter">
+      <div className="alla-meter-row">
+        <span className="alla-meter-count">
+          {accept} / {total} cells ACCEPT
+        </span>
+        <span className="alla-meter-pct" style={{ color: done ? "var(--success)" : "var(--text-secondary)" }}>
+          {pct}%
+        </span>
+      </div>
+      <div className="alla-meter-track" aria-hidden>
+        <div className="alla-meter-fill" style={{ width: `${pct}%` }} />
+      </div>
+      <p className="alla-meter-goal">
+        <strong>Directive&nbsp;M — goal: 100%</strong>: every paper accepted by every reviewer.
+        Counted from the CURRENT column (papers × reviewer legs); FAILED / not-yet-swept legs
+        count as not-ACCEPT.
+      </p>
+    </div>
+  );
+}
+
 export function VerdictTrajectory() {
-  const rounds = externalVerdictRounds;
+  // Order: CURRENT pinned far-LEFT, then rounds newest → oldest flowing right.
+  const rounds = [...externalVerdictRounds].reverse();
   const current = computeCurrent();
   const cellW = 30;
   const cellH = 20;
@@ -69,99 +109,25 @@ export function VerdictTrajectory() {
   const headerH = 46;
   const rowGap = 6;
   const groupW = REVIEWERS.length * cellW + (REVIEWERS.length - 1) * cellGap;
-  const currentGap = 40; // wider gap + divider before the CURRENT column
-  const roundsW = labelW + rounds.length * groupW + (rounds.length - 1) * groupGap;
-  const currentX0 = roundsW + currentGap;
-  const width = currentX0 + groupW + 8;
+  const currentGap = 40; // wider gap + divider after the CURRENT column
+  // CURRENT sits first (far left), after the row-label gutter.
+  const currentX0 = labelW;
+  const roundsX0 = currentX0 + groupW + currentGap;
+  const width = roundsX0 + rounds.length * groupW + (rounds.length - 1) * groupGap + 8;
   const height = headerH + PAPER_IDS.length * (cellH + rowGap);
 
-  const groupX = (gi: number) => labelW + gi * (groupW + groupGap);
+  const groupX = (gi: number) => roundsX0 + gi * (groupW + groupGap);
 
   return (
     <svg
       viewBox={`0 0 ${width} ${height}`}
       width={width}
       role="img"
-      aria-label="External referee verdicts per paper per round"
+      aria-label="External referee verdicts per paper — CURRENT column first, then rounds newest to oldest"
       className="progress-svg"
       style={{ maxWidth: "none" }}
     >
-      {/* round + reviewer headers */}
-      {rounds.map((round, gi) => (
-        <g key={round.roundId}>
-          <text x={groupX(gi) + groupW / 2} y={11} textAnchor="middle" fontFamily={MONO} fontSize={9.5} letterSpacing={1} fill="var(--text-tertiary)">
-            {round.roundId}
-          </text>
-          {round.windowPT ? (
-            <text x={groupX(gi) + groupW / 2} y={23} textAnchor="middle" fontFamily={MONO} fontSize={8} fill={AXIS}>
-              {round.windowPT.split("·")[0].trim()}
-              <title>{round.windowPT}</title>
-            </text>
-          ) : null}
-          {REVIEWERS.map((rv, ri) => (
-            <text key={rv} x={groupX(gi) + ri * (cellW + cellGap) + cellW / 2} y={36} textAnchor="middle" fontFamily={MONO} fontSize={7.5} fill={AXIS}>
-              {rv === "ChatGPT" ? "GPT" : rv === "Grok" ? "GRK" : "GEM"}
-            </text>
-          ))}
-        </g>
-      ))}
-      {/* arrows between round groups */}
-      {rounds.slice(0, -1).map((_, gi) => (
-        <text key={gi} x={groupX(gi) + groupW + groupGap / 2} y={headerH + (PAPER_IDS.length * (cellH + rowGap)) / 2} textAnchor="middle" fontFamily={MONO} fontSize={11} fill={AXIS}>
-          →
-        </text>
-      ))}
-      {/* rows */}
-      {PAPER_IDS.map((p, pi) => {
-        const y = headerH + pi * (cellH + rowGap);
-        return (
-          <g key={p}>
-            <text x={0} y={y + cellH / 2 + 3.5} fontFamily={MONO} fontSize={9.5} fill="var(--text-secondary)">
-              {p}
-            </text>
-            {rounds.map((round, gi) =>
-              round.verdicts[p as PaperId].map((v, ri) => (
-                <g key={`${round.roundId}-${ri}`}>
-                  <rect
-                    x={groupX(gi) + ri * (cellW + cellGap)}
-                    y={y}
-                    width={cellW}
-                    height={cellH}
-                    rx={3}
-                    fill={VERDICT_COLOR[v]}
-                    fillOpacity={v === "ACCEPT" ? 0.92 : 0.78}
-                    className="verdict-cell"
-                  >
-                    <title>{`${p} · ${round.roundId} · ${REVIEWERS[ri]}: ${v}`}</title>
-                  </rect>
-                  <text
-                    x={groupX(gi) + ri * (cellW + cellGap) + cellW / 2}
-                    y={y + cellH / 2 + 3.5}
-                    textAnchor="middle"
-                    fontFamily={MONO}
-                    fontSize={9}
-                    fontWeight={600}
-                    fill="var(--bg)"
-                    pointerEvents="none"
-                  >
-                    {VERDICT_SHORT[v]}
-                  </text>
-                </g>
-              )),
-            )}
-          </g>
-        );
-      })}
-      {/* ── CURRENT column: latest tested verdict per paper × reviewer ── */}
-      <line
-        x1={currentX0 - currentGap / 2}
-        y1={4}
-        x2={currentX0 - currentGap / 2}
-        y2={height - 4}
-        stroke={GRID}
-        strokeWidth={1}
-        strokeDasharray="2 3"
-      />
+      {/* ── CURRENT column (far left): latest tested verdict per paper × reviewer ── */}
       <text x={currentX0 + groupW / 2} y={11} textAnchor="middle" fontFamily={MONO} fontSize={9.5} letterSpacing={1} fill="var(--text-primary)" fontWeight={700}>
         CURRENT
       </text>
@@ -173,6 +139,15 @@ export function VerdictTrajectory() {
           {rv === "ChatGPT" ? "GPT" : rv === "Grok" ? "GRK" : "GEM"}
         </text>
       ))}
+      {/* row labels (paper ids) — drawn once, in the left gutter */}
+      {PAPER_IDS.map((p, pi) => {
+        const y = headerH + pi * (cellH + rowGap);
+        return (
+          <text key={`lbl-${p}`} x={0} y={y + cellH / 2 + 3.5} fontFamily={MONO} fontSize={9.5} fill="var(--text-secondary)">
+            {p}
+          </text>
+        );
+      })}
       {PAPER_IDS.map((p, pi) => {
         const y = headerH + pi * (cellH + rowGap);
         return (
@@ -208,6 +183,79 @@ export function VerdictTrajectory() {
                 </text>
               </g>
             ))}
+          </g>
+        );
+      })}
+      {/* divider between CURRENT and the round history */}
+      <line
+        x1={roundsX0 - currentGap / 2}
+        y1={4}
+        x2={roundsX0 - currentGap / 2}
+        y2={height - 4}
+        stroke={GRID}
+        strokeWidth={1}
+        strokeDasharray="2 3"
+      />
+      {/* round + reviewer headers (newest → oldest, left → right) */}
+      {rounds.map((round, gi) => (
+        <g key={round.roundId}>
+          <text x={groupX(gi) + groupW / 2} y={11} textAnchor="middle" fontFamily={MONO} fontSize={9.5} letterSpacing={1} fill="var(--text-tertiary)">
+            {round.roundId}
+          </text>
+          {round.windowPT ? (
+            <text x={groupX(gi) + groupW / 2} y={23} textAnchor="middle" fontFamily={MONO} fontSize={8} fill={AXIS}>
+              {round.windowPT.split("·")[0].trim()}
+              <title>{round.windowPT}</title>
+            </text>
+          ) : null}
+          {REVIEWERS.map((rv, ri) => (
+            <text key={rv} x={groupX(gi) + ri * (cellW + cellGap) + cellW / 2} y={36} textAnchor="middle" fontFamily={MONO} fontSize={7.5} fill={AXIS}>
+              {rv === "ChatGPT" ? "GPT" : rv === "Grok" ? "GRK" : "GEM"}
+            </text>
+          ))}
+        </g>
+      ))}
+      {/* arrows between round groups — point LEFT toward more-recent rounds (time flows right→left into CURRENT) */}
+      {rounds.slice(0, -1).map((_, gi) => (
+        <text key={gi} x={groupX(gi) + groupW + groupGap / 2} y={headerH + (PAPER_IDS.length * (cellH + rowGap)) / 2} textAnchor="middle" fontFamily={MONO} fontSize={11} fill={AXIS}>
+          ←
+        </text>
+      ))}
+      {/* round rows */}
+      {PAPER_IDS.map((p, pi) => {
+        const y = headerH + pi * (cellH + rowGap);
+        return (
+          <g key={p}>
+            {rounds.map((round, gi) =>
+              round.verdicts[p as PaperId].map((v, ri) => (
+                <g key={`${round.roundId}-${ri}`}>
+                  <rect
+                    x={groupX(gi) + ri * (cellW + cellGap)}
+                    y={y}
+                    width={cellW}
+                    height={cellH}
+                    rx={3}
+                    fill={VERDICT_COLOR[v]}
+                    fillOpacity={v === "ACCEPT" ? 0.92 : 0.78}
+                    className="verdict-cell"
+                  >
+                    <title>{`${p} · ${round.roundId} · ${REVIEWERS[ri]}: ${v}`}</title>
+                  </rect>
+                  <text
+                    x={groupX(gi) + ri * (cellW + cellGap) + cellW / 2}
+                    y={y + cellH / 2 + 3.5}
+                    textAnchor="middle"
+                    fontFamily={MONO}
+                    fontSize={9}
+                    fontWeight={600}
+                    fill="var(--bg)"
+                    pointerEvents="none"
+                  >
+                    {VERDICT_SHORT[v]}
+                  </text>
+                </g>
+              )),
+            )}
           </g>
         );
       })}

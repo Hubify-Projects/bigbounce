@@ -6,6 +6,7 @@ import ReviewsClient from "./ReviewsClient";
 import { ReviewEntry } from "./ReviewEntry";
 import {
   VerdictTrajectory,
+  AllAMeter,
   VerdictLegend,
   GapClosureChart,
   GapPerPaperDeltas,
@@ -137,6 +138,7 @@ export default async function ReviewsPage() {
               Fisher · P1A Fierz-lemma proof attempt · P3 eROSITA reproducibility fix · P1B→P1A
               merge prep).
             </p>
+            <AllAMeter />
             <ChartShell title="External referee verdicts — every paper × reviewer per round">
               <div className="verdict-carousel">
                 <VerdictTrajectory />

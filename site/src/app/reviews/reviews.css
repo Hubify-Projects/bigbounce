@@ -245,6 +245,59 @@
   fill-opacity: 1;
 }
 
+.alla-meter {
+  margin: 4px 0 16px;
+}
+
+.alla-meter-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  font-family: var(--font-mono-stack);
+}
+
+.alla-meter-count {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--text-primary);
+}
+
+.alla-meter-pct {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.alla-meter-track {
+  margin-top: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--text-muted) 22%, transparent);
+  overflow: hidden;
+}
+
+.alla-meter-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--success);
+  transition: width 0.4s ease;
+}
+
+.alla-meter-goal {
+  margin: 8px 0 0;
+  font-size: 0.72rem;
+  line-height: 1.5;
+  color: var(--text-tertiary);
+  max-width: 66ch;
+}
+
+.alla-meter-goal strong {
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
 .verdict-legend {
   display: flex;
   flex-wrap: wrap;
