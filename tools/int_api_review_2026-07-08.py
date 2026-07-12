@@ -9,7 +9,11 @@ import os, sys, json, time, warnings, datetime, pathlib
 warnings.filterwarnings("ignore")
 
 REPO = pathlib.Path("/Users/houstongolden/Desktop/CODE_YOU/bigbounce")
-OUTDIR = REPO / "project-context/peer-reviews/INT_v3/ROUND_2026-07-09"
+# Output dir is overridable (INT_OUTDIR env) so variant waves (e.g. the P3 ApJS
+# review-of-record) can write their raws to a clearly-labeled sibling round dir
+# without clobbering the canonical PRD round. Default = the canonical PRD round.
+OUTDIR = pathlib.Path(os.environ.get("INT_OUTDIR")
+                      or (REPO / "project-context/peer-reviews/INT_v3/ROUND_2026-07-09"))
 OUTDIR.mkdir(parents=True, exist_ok=True)
 MANIFEST = OUTDIR / "manifest.jsonl"
 
@@ -24,9 +28,13 @@ PAPERS = {
     "P4":  "pipelines/p2_chirality/chirality_catalog_paper.pdf",
     "P5":  "pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf",
     "P1U": "arxiv/paper1_unified.pdf",
+    # P3 ApJS-framed review-of-record variant (directive M, 2026-07-12). Same
+    # science as P3; reviewed against the ApJS venue with the ApJS referee prompt.
+    "P3APJS": "pipelines/p3_anomaly_engine/paper3_apjs.pdf",
 }
 
 TEX_FOR_PDF = {
+    "pipelines/p3_anomaly_engine/paper3_apjs.pdf": "pipelines/p3_anomaly_engine/paper3_apjs.tex",
     "arxiv/paper1a_ech_nogo.pdf": "arxiv/paper1a_ech_nogo.tex",
     "arxiv/paper1b_mcmc_companion.pdf": "arxiv/paper1b_mcmc_companion.tex",
     "research/focused_paper_source_integration/02_full_draft.pdf": "research/focused_paper_source_integration/02_full_draft.tex",
@@ -66,14 +74,20 @@ GEMINI_MODEL = "gemini-3.1-pro-preview"
 GEMINI_BASE = "https://generativelanguage.googleapis.com"
 REQ_TIMEOUT = 300
 
-PROMPT = (
-    "You are an expert referee for Physical Review D. Review this manuscript to the "
+# The referee venue is overridable so a variant wave (e.g. the P3 ApJS
+# review-of-record) can review to the correct journal's standard. INT_PROMPT /
+# INT_SYSTEM override the full strings; INT_VENUE just swaps the journal name in
+# the canonical templates. Default = Physical Review D (unchanged behavior).
+_VENUE = os.environ.get("INT_VENUE", "Physical Review D")
+PROMPT = os.environ.get("INT_PROMPT") or (
+    f"You are an expert referee for {_VENUE}. Review this manuscript to the "
     "standard of a real submission. Respond with exactly: "
     "(1) VERDICT: ACCEPT / MINOR REVISIONS / MAJOR REVISIONS / REJECT. "
     "(2) ISSUES: numbered, each prefixed [MAJOR] or [MINOR], naming the specific "
     "section/claim and concrete problem. "
     "(3) One sentence: is the central claim supported?"
 )
+SYSTEM_MSG = os.environ.get("INT_SYSTEM") or f"You are an expert {_VENUE} referee."
 
 
 def loadenv(p=REPO / ".env.local"):
@@ -133,7 +147,7 @@ def call_openai(pdf_path):
     payload = {
         "model": OPENAI_MODEL,
         "input": [
-            {"role": "system", "content": "You are an expert Physical Review D referee."},
+            {"role": "system", "content": SYSTEM_MSG},
             {"role": "user", "content": [
                 {"type": "input_file", "file_id": file_id},
                 {"type": "input_text", "text": PROMPT},
@@ -177,7 +191,7 @@ def call_xai(pdf_path):
     payload = {
         "model": XAI_MODEL,
         "input": [
-            {"role": "system", "content": "You are an expert Physical Review D referee."},
+            {"role": "system", "content": SYSTEM_MSG},
             {"role": "user", "content": [
                 {"type": "input_file", "file_id": file_id},
                 {"type": "input_text", "text": PROMPT},
@@ -279,7 +293,7 @@ def call_gemini(pdf_path):
         part = {"file_data": {"mime_type": "application/pdf", "file_uri": uri}}
         modality = "native-PDF (Files/media upload file_uri)"
     payload = {
-        "systemInstruction": {"parts": [{"text": "You are an expert Physical Review D referee."}]},
+        "systemInstruction": {"parts": [{"text": SYSTEM_MSG}]},
         "contents": [{"role": "user", "parts": [part, {"text": PROMPT}]}],
     }
     r = requests.post(
