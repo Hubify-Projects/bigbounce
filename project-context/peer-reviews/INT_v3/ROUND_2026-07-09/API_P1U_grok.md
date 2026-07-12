@@ -1,20 +1,21 @@
 # INT API Review — P1U v1U.0.17 — grok (grok-4.3)
 paper: P1U  version: v1U.0.17  model: grok-4.3
 modality: native-PDF (/v1/files file_id)
-UTC: 2026-07-12T10:17:58.252382Z  |  latency: 35.5s  |  attempt: 1
-usage: {"input_tokens": 35579, "input_tokens_details": {"cached_tokens": 192}, "output_tokens": 1030, "output_tokens_details": {"reasoning_tokens": 586}, "total_tokens": 36609, "num_sources_used": 0, "num_server_side_tools_used": 0, "cost_in_usd_ticks": 468471500, "context_details": {"input_tokens": 35579, "output_tokens": 1030}}
-PARSED VERDICT: MAJOR REVISIONS
+UTC: 2026-07-12T10:46:52.787442Z  |  latency: 21.8s  |  attempt: 1
+usage: {"input_tokens": 35580, "input_tokens_details": {"cached_tokens": 128}, "output_tokens": 1144, "output_tokens_details": {"reasoning_tokens": 663}, "total_tokens": 36724, "num_sources_used": 0, "num_server_side_tools_used": 0, "cost_in_usd_ticks": 472006000, "context_details": {"input_tokens": 35580, "output_tokens": 1145}}
+PARSED VERDICT: REJECT
 
 ======================================================================
 RAW RESPONSE (verbatim):
 ======================================================================
 
-(1) VERDICT: MAJOR REVISIONS
+(1) VERDICT: REJECT
 
 (2) ISSUES:
-[MAJOR] Abstract and Sec. IV (four-route no-go): repeatedly qualifies the result as a "channel-level assessment, not an operator-level theorem" whose four enumerated routes "are not proven to be a complete diffeomorphism-invariant operator basis," yet the title, abstract, and conclusion present the work as closing all "minimal-ECH dark-energy routes" under "stated assumptions" without an explicit completeness proof beyond the NDA/Fierz argument of App. B–C.
-[MAJOR] Sec. II A 2, App. B, and Sec. IV F (R4 naturalness closure and single-scale NDA): the central dark-energy mapping rests on an off-shell mass-dimension +1 ansatz whose on-shell promotion to (meV)^4 is explicitly called a "phenomenological dimensional ansatz beyond the minimal framework"; the resulting "naturalness/explanatory-deficit objection" therefore relocates rather than resolves the CC problem, but no quantitative bound on the required m_θ∼H_0 tuning is derived from the ECH action itself.
-[MINOR] Sec. I, Sec. XIII, and App. F–I: the manuscript states that "none of these imported numbers is load-bearing" for the closure theorems, yet the text, tables, and reproducibility claims repeatedly cite MCMC posteriors, NaMaster validation, and companion-paper forecasts whose underlying chains are archived externally rather than reproduced or self-contained.
-[MINOR] Sec. X (perturbation-transparency result): the proof is restricted to "canonical scalar matter" with explicit exclusions for fermions, propagating torsion, dynamical Immirzi, and non-minimal couplings; the claim that this "decouples the Holst sector from all scalar/tensor perturbation equations" therefore applies only inside a narrowly carved domain whose physical relevance to late-time cosmology is not quantified.
+[MAJOR] Sec. IV and App. B: the single-scale NDA “dimensional no-go” for parity-odd operators is presented as a novel channel closure, but reduces to the standard observation that any local operator of naive dimension +1 (or any higher) with coefficient built from M_Pl alone cannot yield (meV)^4 without an explicit new light scale or tuned cancellation; the paper never performs the required EFT matching or shows why the usual CC-problem caveats do not apply.
+[MAJOR] Sec. X and App. C: the “perturbation-transparency” and “Fierz-by-Fierz projection lemma” are asserted to close all minimal-ECH channels at the operator level, yet both proofs are restricted to canonical scalar matter and algebraic torsion elimination; the paper itself repeatedly flags fermion spin density, propagating torsion, dynamical Immirzi, and non-minimal couplings as outside scope, rendering the claimed basis-completeness circular.
+[MAJOR] Sec. IV F and XIV D: the R4 naturalness closure and the N_tot ≈ 92 vs. f_NL = −35/16 tension are both driven by the same ad-hoc phenomenological ansatz for the parity-odd coupling; no derivation from the ECH action is given, and the argument therefore relocates rather than resolves the CC problem exactly as the text admits.
+[MINOR] Throughout: the manuscript is not self-contained; repeated references to “companion papers,” archived chains, and external GitHub artifacts are required to interpret numerical claims even though the authors state those numbers are “non-load-bearing.”
+[MINOR] Sec. II A 2 and App. B 1: the off-shell vs. on-shell mass-dimension bookkeeping for the Holst dual contraction contains inconsistent statements (Eq. (6) is simultaneously called “shorthand” and “the operator”); the two tensor identities claimed to have been “verified symbolically” are not reproduced or cited to an archived script in the main text.
 
-(3) The central claim that the four enumerated minimal-ECH channels are each closed at the amplitude or naturalness level under the stated assumptions is supported by the dimensional, Fierz, and Bianchi arguments presented, but only inside the paper's explicitly narrow scope.
+(3) The central claim—that the four enumerated minimal-ECH dark-energy routes are closed at the channel-amplitude level—is not supported, as every closure ultimately rests on either standard dimensional analysis, an explicit list of excluded sectors, or an un-derived phenomenological ansatz rather than a controlled EFT argument.
