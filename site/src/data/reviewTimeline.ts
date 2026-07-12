@@ -57,6 +57,34 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "m7-ext-confirm-wave-2026-07-12",
+    dateISO: "2026-07-12",
+    kind: "external-browser",
+    title:
+      "M7-EXT confirm wave — MILESTONE: ChatGPT's FIRST non-REJECT on P4 (floor-crack). P4 (v1.0.239): Grok MINOR + ChatGPT MAJOR REVISIONS — every prior P4 ChatGPT read was REJECT; its Q3 close now CONCEDES the primary null ('the selected high-confidence hard-label sample is consistent with zero … is supported'); all 12 MAJOR + 3 MINOR source-cited standing DP4 re-flags; 0 genuinely-new; streak 1→2 crosses the directive-K bar; cap 74 HOLDS. P2 (v1.7.116): Grok MAJOR + ChatGPT REJECT — Grok MINOR→MAJOR SLIP on byte-unchanged v1.7.116 diagnosed as pattern-066 (both MAJORs quote the paper's own disclosed proxy-floor + App-A placement); all findings source-cited DP2 re-flags; 0 genuinely-new; streak 2→3; cap 74 HOLDS. No bumps; directive_g.sh not run.",
+    papers: ["P4", "P2"],
+    summary:
+      "M7-EXT: two papers, zero genuinely-new findings. P4 (v1.0.239): the ChatGPT FLOOR-CRACK — its first verdict above REJECT on Paper 4 (DP4-19/H17F/W1/FR1b/M5 all REJECT), now MAJOR REVISIONS, conceding the narrow permutation-null while disputing the disclosed classifier-dilution generalization (OPEN-COMPUTE); all 12 MAJOR + 3 MINOR map to DP4-01/-07/-08/-09/-10/-12/-13/-14/-15/-16/-17/-21 (#13 count 3,200,420 vs 3,201,160 reconciled verbatim tex L950); Grok MINOR affirms; streak 1→2; cap 74 HOLDS. P2 (v1.7.116): Grok MINOR→MAJOR on the same byte-unchanged file = pattern-066 slip (each MAJOR quotes the paper's own DP2-34 proxy-floor + DP2-01/-02 App-A disclosures); ChatGPT REJECT holds at the harsh-referee floor but concedes '−35/16 plausibly supported'; all findings → DP2-01/-02/-03/-04/-07/-13/-14/-15/-18/-19/-20/-21/-22/-30/-34; streak 2→3; cap 74 HOLDS.",
+    keyTakeaways: [
+      "P4 FLOOR-CRACK (verbatim, ChatGPT M7 raw Q3 l.145): 'The narrow statement that the selected high-confidence hard-label sample is consistent with zero under the authors' chosen permutation null is supported, but the manuscript's central physical claim of a robust sub-percent DESI chirality null and exclusion of Shamir-scale dipoles is not.' — REJECT→MAJOR on unchanged, honestly-scoped content; the reviewer concedes the primary null and disputes only the disclosed classifier-dilution generalization (DP4-09/-15 OPEN-COMPUTE frontier). First non-REJECT across every prior P4 ChatGPT read.",
+      "P4: 0 genuinely-new across ChatGPT(12 MAJOR/3 MINOR) + Grok(3 MINOR); every finding source-cited to DP4-01/-07/-08/-09/-10/-12/-13/-14/-15/-16/-17/-21. #13 alleged count inconsistency reconciled VERBATIM in tex L950 (3,200,420 in-mask + 740 sub-threshold = 3,201,160). Streak 1→2 → P4 re-crosses the directive-K two-clean-waves bar. Cap 74 HOLDS (ChatGPT REJ→MAJ +6 offset by the standing Gemini-MAJOR latest).",
+      "P2 Grok MINOR→MAJOR SLIP diagnosed (pattern-066): prior M4-EXT Grok = MINOR on the SAME byte-unchanged v1.7.116; M7 Grok = MAJOR on the IDENTICAL file → referee run-to-run variance, not a content regression. Both Grok MAJORs quote the paper's OWN disclosed limitations (DP2-34 channel-native proxy floor retained as conservative endpoint; DP2-01/-02 App-A placement). ChatGPT REJECT holds but concedes −35/16 'plausibly supported'. Streak 2→3.",
+      "Integrity: all four EXT raws read verbatim before disposition; the P4 floor-crack quote lifted verbatim from the ChatGPT raw (not inferred from the label); the P2 Grok slip diagnosed pattern-066 (each MAJOR quotes a paper disclosure); no ACCEPT faked; every finding source-cited to a D-id + tex line; #13 count re-derived correct; no math fabricated; no bump on either paper (directive_g.sh not run). Streaks: P1U 3 · P2 3 · P3 2 · P4 2 · P5 3. Caps: P1A 62 · P2 74 · P3 56 · P4 74 · P5 80.",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 0,
+      note: "0 genuinely-new reader-visible editable findings across P4 M7-EXT (Grok MINOR + ChatGPT MAJOR — FIRST non-REJECT/floor-crack, concedes the primary null) and P2 M7-EXT (Grok MAJOR + ChatGPT REJECT — Grok MINOR→MAJOR slip diagnosed pattern-066). P4 streak 1→2 (crosses directive-K bar); P2 streak 2→3. Caps hold P4 74 · P2 74.",
+    },
+    links: [
+      { label: "P4 Grok M7 EXT raw", href: `${PR}/EXT_real/H17_2026-07-10/M7/P4_grok_M7.md` },
+      { label: "P4 ChatGPT M7 EXT raw", href: `${PR}/EXT_real/H17_2026-07-10/M7/P4_chatgpt_M7.md` },
+      { label: "P4 M7-EXT truth-audit", href: `${PR}/EXT_real/H17_2026-07-10/M7/P4_truth_audit_M7.md` },
+      { label: "P2 Grok M7 EXT raw", href: `${PR}/EXT_real/H17_2026-07-10/M7/P2_grok_M7.md` },
+      { label: "P2 ChatGPT M7 EXT raw", href: `${PR}/EXT_real/H17_2026-07-10/M7/P2_chatgpt_M7.md` },
+      { label: "P2 M7-EXT truth-audit", href: `${PR}/EXT_real/H17_2026-07-10/M7/P2_truth_audit_M7.md` },
+    ],
+  },
+  {
     id: "m6-ext-confirm-wave-2026-07-12",
     dateISO: "2026-07-12",
     kind: "external-browser",
