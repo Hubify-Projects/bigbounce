@@ -1,0 +1,85 @@
+{
+  "purpose": "FULL-SCALE end-to-end image-level chirality transfer function via mirror-flip through the ACTUAL ViT classifier",
+  "stage": "A",
+  "shards_done": 192,
+  "shards_total": 192,
+  "status": "final",
+  "model": "bamfai/galaxy-chirality-v2 (ViT-Small/16 + 3-class head)",
+  "model_ckpt": "/workspace/hf_e2e_cache/hub/models--bamfai--galaxy-chirality-v2/snapshots/237d021c451d75cf86a875e86d4de498b74e2f12/chirality_model_v2_best.pt",
+  "model_val_acc": 0.9368777275085449,
+  "image_source": "Smith42/galaxies (192 shards) \u2014 same production source as run_eq_dataloader.py",
+  "preprocessing": "Resize(224,224)->ToTensor->Normalize(ImageNet) [matches run_v2_inference.py]",
+  "device": "NVIDIA A100 80GB PCIe",
+  "n_total_galaxies": 8474531,
+  "n_pairs_cw_ccw_original_raw": 3322550,
+  "n_flip_recovered_CWtoCCW_or_CCWtoCW_raw": 765074,
+  "transfer_function_T_raw": 0.23026711411415932,
+  "transfer_function_T_raw_stderr": 0.00023096715096484411,
+  "transfer_function_T_raw_by_orig_conf_bin": [
+    {
+      "orig_conf_range": [
+        0.0,
+        0.7
+      ],
+      "n": 371606,
+      "n_flip_recovered": 97116,
+      "T": 0.2613413131111984,
+      "T_stderr": 0.0007207498828833771
+    },
+    {
+      "orig_conf_range": [
+        0.7,
+        0.9
+      ],
+      "n": 472444,
+      "n_flip_recovered": 112968,
+      "T": 0.23911405372911923,
+      "T_stderr": 0.0006205648368864177
+    },
+    {
+      "orig_conf_range": [
+        0.9,
+        0.99
+      ],
+      "n": 808068,
+      "n_flip_recovered": 167372,
+      "T": 0.20712613294920723,
+      "T_stderr": 0.00045081208113048534
+    },
+    {
+      "orig_conf_range": [
+        0.99,
+        1.0
+      ],
+      "n": 1670432,
+      "n_flip_recovered": 387618,
+      "T": 0.2320465604107201,
+      "T_stderr": 0.0003266183737341744
+    }
+  ],
+  "image_level_a_img_spiral_spiral_pool": 0.2732924446413071,
+  "image_level_g_img_2a_img_minus_1": -0.4534151107173858,
+  "spiral_spiral_pool_n": 2799470,
+  "eq_mode_production_z2_tta": {
+    "n_pairs_eq_cw_ccw_original": 3201201,
+    "n_eq_flip_recovered": 3200361,
+    "T_eq": 0.9997375984825695,
+    "antisymmetry_max_abs_deviation": 0.0,
+    "note": "Production catalog uses Z2 mirror-equivariant TTA (class_eq/p_eq). T_eq=1 up to argmax ties BY CONSTRUCTION \u2014 verified numerically. RAW g_img is the informative image-level parity-odd measure; GZ1-derived g=0.398 is the ground-truth accuracy calibration."
+  },
+  "sky_region_strata_raw": {
+    "north_dec_ge_0": {
+      "n": 2071471,
+      "n_flip": 451070,
+      "T": 0.21775347084270066
+    },
+    "south_dec_lt_0": {
+      "n": 1251079,
+      "n_flip": 314004,
+      "T": 0.25098654841141127
+    }
+  },
+  "paper_assumed_hard_label_g": 0.398,
+  "paper_assumed_a": 0.6991,
+  "timestamp_utc": "2026-07-12T17:03:23Z"
+}

@@ -85,3 +85,4 @@ project-context/LOOP_HEARTBEAT.json
 # Watchdog log is now a best-effort runtime mirror; authoritative copy lives in
 # ~/Library/Application Support/bigbounce/ (launchd-writable). Don't track churn.
 project-context/LOOP_WATCHDOG_LOG.md
+pipelines/p2_chirality/outputs/canonical_provenance/e2e_fullrun/e2e_shards/
