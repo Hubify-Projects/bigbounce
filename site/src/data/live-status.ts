@@ -118,9 +118,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-5",
       number: "5",
       shortTitle: "DESI environmental chirality independence",
-      version: "v0.1.121-2026-07-11",
+      version: "v0.1.122-2026-07-12",
       readiness: 80,
-      pendingWork: "CROSSED the two-clean-waves bar (streak 2). W4-INT confirm wave (Jul 11): 0 genuinely-new reader-visible findings across INT Claude MINOR / OpenAI MAJOR / Grok MINOR. NEW — OpenAI moved REJECT → MAJOR on P5, its first non-REJECT (native-PDF v0.1.120, INT_v3/ROUND_2026-07-09/API_P5_openai.md). All 8 OpenAI real UNMATCHED = source-cited re-flags (footprint≠selection-mask DP5-06, 2a−1 under-powered void arm DP5-08/-09, duplicate-TARGETID/T-Web DP5-14, fragmented multiplicity DP5-04/-19, abstract-length/Fig-legibility/N_MC DP5-22, DOI-at-acceptance DP5-18/-21); Grok's 2 + Claude's residual all re-flags or parser noise. No bump (v0.1.120 stands, comment-only wave). First EXT ACCEPT of the program (Grok, v0.1.117) + Claude INT ACCEPT.",
+      pendingWork: "v0.1.122 (Jul 12): DP5-12 RSD MAJOR CLOSED-BY-COMPUTE (first-order). The recurring ChatGPT-M4/Grok-M3 'reconstruction deferred' caveat is now a computed consistent first-order Zel'dovich bound — galaxies AND the published DESIVAST holes displaced together by the same coherent void-outflow field (Hamaus, Sutter & Wandelt 2014), exact scripts/26 membership re-run (sample 678,987 vs ref 678,945; n_void 57,058 vs ref 57,081). Primary Δf_CW z-space −0.069pp → reconstructed −0.045pp; RSD systematic |shift|=0.024pp (MC +0.026±0.049pp), ~40× under the ~0.9pp envelope; null preserved (|z| 0.32→0.18). Integrated at §VIII/§XIII/abstract/systematics-budget; honest residual retained (NOT a full nonlinear void-catalog re-derivation). Re-test fired (INT triple + Grok/ChatGPT EXT).",
     },
   ],
   blockerTally: {

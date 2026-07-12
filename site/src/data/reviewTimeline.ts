@@ -48,6 +48,28 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p5-rsd-first-order-reconstruction-bound-directive-L-2026-07-12",
+    dateISO: "2026-07-12",
+    kind: "closure-wave",
+    title:
+      "P5 OPEN-COMPUTE (directive L): the recurring RSD 'reconstruction deferred' MAJOR closes by a computed consistent first-order Zel'dovich void-outflow bound — shift 0.024pp, ~40x under the 0.9pp envelope, null preserved.",
+    papers: ["P5"],
+    summary:
+      "The recurring DP5-12 MAJOR (ChatGPT-M4/Grok-M3) — 'all bounds are fixed-redshift-space; a reconstructed-position rerun is DEFERRED' — is closed for the PRIMARY DESIVAST path by a computed first-order Zel'dovich reconstruction that displaces galaxies AND the published DESIVAST holes together under one coherent void-outflow field (Hamaus, Sutter & Wandelt 2014 universal void velocity profile v_r=-(1/3)f(z)Delta(<r)r, keyed per-void to its own center + R_eff), then re-runs the EXACT scripts/26 primary any-hole membership test in the reconstructed frame (sample validated 678,987 matched CW/CCW spirals vs ref 678,945; n_void 57,058 vs ref 57,081). Primary footprint-restricted Delta f_CW moves -0.069pp (z-space) -> -0.045pp (reconstructed): computed RSD systematic |shift|=0.024pp (MC +0.026+/-0.049pp over 200 profile-depth realizations), ~40x under the ~0.9pp systematic envelope, null preserved (|z| 0.32 -> 0.18). Integrated at abstract RSD clause (deferred -> bounded), Sec.VIII DESIVAST-RSD discussion, Sec.XIII limitations (T-Web anisotropic-eigenvalue channel distinguished as the remaining residual), and the systematics-budget table (0.02pp row; quadrature envelope unchanged ~0.9pp, sqrt(0.886)). Honest scope retained: bounds the DOMINANT coherent void-outflow term the fixed-void-geometry MC cannot see; NOT a full nonlinear iterative re-derivation of the void catalog (VoidFinder not re-run on the reconstructed density field) — that residual stays disclosed. v0.1.122, directive-G hygiene clean (md5 5c7db6a8, 45pp, 0 undef-refs).",
+    keyTakeaways: [
+      "DP5-12 RSD MAJOR: RE-FLAG-DISCLOSED -> CLOSED-BY-COMPUTE (first-order) for the primary DESIVAST path",
+      "Consistency the reviewers required: galaxies AND published DESIVAST holes displaced together by ONE coherent void-outflow field; exact scripts/26 membership re-run",
+      "Computed RSD systematic |shift|=0.024pp (MC +0.026+/-0.049pp), ~40x under the ~0.9pp envelope; null preserved (|z| 0.32 -> 0.18)",
+      "Honest residual retained: NOT a full nonlinear void-catalog re-derivation; small-scale FoG stays MC-bounded — no claim of full RSD immunity, nothing fabricated",
+      "Re-test fired: INT triple (Claude-subagent + OpenAI + Grok) + Grok/ChatGPT EXT on v0.1.122",
+    ],
+    links: [
+      { label: "27_rsd_void_recon_bound.py", href: `${GH}/pipelines/p5_desi_chirality/scripts/27_rsd_void_recon_bound.py` },
+      { label: "27_rsd_void_recon_bound.json", href: `${GH}/pipelines/p5_desi_chirality/outputs/27_rsd_void_recon_bound.json` },
+      { label: "DP5 dispositions (DP5-12)", href: `${PR}/DISPOSITIONS/P5.md` },
+    ],
+  },
+  {
     id: "p2-channel-native-fisher-open-compute-2026-07-11",
     dateISO: "2026-07-11",
     kind: "closure-wave",
