@@ -57,6 +57,33 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "m1-wave-post-directive-m-overhaul-2026-07-12",
+    dateISO: "2026-07-12",
+    kind: "external-browser",
+    title:
+      "M1 wave — first full external measurement after the directive-M presentation overhauls (shorter abstract + de-duplication) on all five active papers. 10 EXT legs (ChatGPT + Grok × P1U/P2/P4/P5/P3-ApJS; Gemini + P1B not swept, carried) harvested in the headed browser with raw verbatim text + screenshot READ before every recorded verdict. Verdicts: Grok — P4 MINOR, P1U/P2/P5/P3-ApJS MAJOR; ChatGPT — REJECT across all five. Strict verdict-first truth-audit (ledger_match.py + one Opus sub-agent per paper, §3 vs each .tex + DISPOSITIONS/*.md): exactly ONE genuinely-new reader-visible editable finding across all five papers — P5's directive-M abstract rewrite (v0.1.124) over-tightened 'primary estimand' to 'primary, pre-declared estimand' (L778), which contradicts §V.B's honest 'post-hoc / exploratory primary' disclosure; git -S proves that word entered ONLY in the overhaul commit (overhaul REACTION, not referee oscillation), and BOTH Grok and ChatGPT flagged it as their MAJOR #1 — closed same-bundle in P5 v0.1.125 (one-word honesty fix, zero number change). Every other finding across all ten legs is a source-cited re-flag of a standing D-id, and the restructures introduced ZERO broken cross-refs or orphaned statements (verified per paper; the P3 revtex→AASTeX format conversion is bibitem-, label-, and figure-clean). Trend evidence: every referee on every paper now explicitly acknowledges the length/density/de-duplication as the residual concern (the disclosure-backfire venue floor), not any degradation of the science. P4's Grok softened to MINOR-only ('the declared analysis hierarchy and decision tree are exemplary') and the v1.0.238 image-level e2e injection closes the standing DP4-15 MAJOR. P3's ApJS-framed ChatGPT REJECT is venue-reasoned ('disqualifying for an ApJS catalog submission'), not new content.",
+    papers: ["P1U", "P2", "P3", "P4", "P5"],
+    summary:
+      "First full EXT read after the directive-M overhauls. 1 genuinely-new finding total — P5's overhaul-introduced abstract 'pre-declared' vs §V.B 'post-hoc' contradiction, caught by BOTH referees (git-proven overhaul-reaction, not oscillation) → closed v0.1.125. All other 10-leg findings are source-cited re-flags; 0 overhaul-introduced broken refs/orphans (incl P3 revtex→AASTeX). P4 Grok softened to MINOR + v1.0.238 closes DP4-15 (8.47M image-level e2e, artifact-verified). P3 ChatGPT REJECT is venue-reasoned ('disqualifying for an ApJS catalog submission'). Streaks P1U 3→4 · P2 4→5 · P4 5→6 · P3 0→1 · P5 RESET 3→0. Caps: P1A 62 · P2 74 · P3 62→56 · P4 68→74 · P5 80→74.",
+    keyTakeaways: [
+      "1 genuinely-new finding across all 5 papers — P5's directive-M abstract 'pre-declared' (L778) contradicting §V.B 'post-hoc/exploratory primary'; git -S proves it entered ONLY in the overhaul commit → overhaul-REACTION not oscillation → closed one-word in P5 v0.1.125 (no number change).",
+      "Overhaul health confirmed: 0 broken cross-refs / orphaned statements introduced by any abstract-shorten or de-dup; the P3 revtex→AASTeX format conversion is bibitem-, label- (62/62), and figure- (12/12) clean.",
+      "Trend evidence — every referee on every paper now acknowledges length/density/de-dup as the residual concern (P1U ChatGPT 'excessively long … repeated many times'; P1U Grok 'extremely dense, footnote-heavy … repeated hedging'; P5 ChatGPT 'excessively repetitive … inconsistent labels'): the disclosure-backfire venue floor, not degrading science.",
+      "P4 Grok softened to MINOR-only ('analysis hierarchy … exemplary') and v1.0.238 closes DP4-15 via the full 8.47M image-level e2e mirror-flip injection (T_raw=0.2303, T_eq=0.9997, artifact-verified).",
+      "P3's first ApJS-framed read: ChatGPT REJECT is VENUE-reasoned — 'described prospectively rather than supplied as an immutable reviewable release … disqualifying for an ApJS catalog submission' — 12/14 MAJORs standing re-flags; Grok never invokes the catalog bar ('a transparent process-volume catalog').",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 1,
+      note: "1 genuinely-new reader-visible editable finding (P5 overhaul-introduced abstract/Sec.V.B contradiction) across all five papers × 10 EXT legs — caught, source-cited, and closed same-bundle in v0.1.125. All other findings source-cited re-flags of standing D-ids.",
+    },
+    links: [
+      { label: "M1 raws + per-paper truth-audits", href: `${PR}/EXT_real/H17_2026-07-10/M1/` },
+      { label: "P5 truth-audit (Grok-slip diagnosis)", href: `${PR}/EXT_real/H17_2026-07-10/M1/P5_truth_audit_M1.md` },
+      { label: "P3-ApJS truth-audit (venue diagnosis)", href: `${PR}/EXT_real/H17_2026-07-10/M1/P3APJS_truth_audit_M1.md` },
+      { label: "P5 dispositions ledger", href: `${PR}/DISPOSITIONS/P5.md` },
+    ],
+  },
+  {
     id: "p4-image-level-e2e-injection-folded-2026-07-12",
     dateISO: "2026-07-12",
     kind: "closure-wave",
@@ -5609,6 +5636,20 @@ export const externalVerdictRounds: ExternalRoundVerdicts[] = [
     },
     note: "FR1b ChatGPT retry on the July-11 restamped versions — recovers the FR1-round EXT ChatGPT rate-limit GAP (Grok carried forward from FR1, Gemini still NO_VERDICT). Verdict matrix stored [ChatGPT, Grok, Gemini] FROM RAW (verbatim VERDICT line READ from each saved raw before recording). EXT ChatGPT: P1U REJECT · P2 REJECT · P3 REJECT (reviewed v3.1.153 pre-NANOGrav-fix) · P4 REJECT · P5 MAJOR-REVISIONS. *** P5 ChatGPT floor-crack HOLDS: MAJOR REVISIONS not REJECT *** — the honest tier-lift on unchanged reader-visible content persists on the restamp → P5 cap 74→80. Truth-audit (ledger_match.py + Opus §3 vs each .tex + DISPOSITIONS/*.md): 0 genuinely-new reader-visible editable findings on ANY paper; every finding a source-cited RE-FLAG of a standing D-id (P1U 6 UNMATCHED→DP1U-07/-12/-13/-14/-20/-22; P2 1→DP2-02/-19; P3 3→DP3-07/-09/-10; P4 4→DP4-17/-16/-09; P5 2→parser-noise + DP5-19/-10). P3's NANOGrav ChatGPT finding (§V A/App E) is a SCOPE re-flag → DP3-18/-10; it does NOT re-surface the +4.61σ arithmetic — that mis-round was already CLOSED-BY-EDIT in v3.1.154 (correct +4.63σ). NO resets, NO version bumps, no directive-G. Clean-wave streaks HOLD: P1U 3 · P2 4 · P3 0 · P4 5 · P5 3. Caps: P1A 62 · P2 74 · P3 62 · P4 74 · P5 80. Convex: 5 externalReviews 'ChatGPT (FR1b)' rows + FR1 readinessMetrics rows updated with recovered ChatGPT verdicts + P5 setReadinessCap 80. No ACCEPT faked, no finding dismissed without a source-cited verdict, no math fabricated. Raws: EXT_real/H17_2026-07-10/FR1b/.",
   },
+  {
+    roundId: "M1",
+    dateISO: "2026-07-12",
+    windowPT: "Jul 12 · first full EXT measurement after the directive-M presentation overhauls (shorter abstract + de-dup) on all 5 papers · headed browser, raw verbatim text + screenshot READ before every verdict · Gemini + P1B not swept (carried) · 10 EXT legs",
+    verdicts: {
+      P1A: ["REJECT", "MAJOR", "NO_VERDICT"],
+      P1B: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P2: ["REJECT", "MAJOR", "NO_VERDICT"],
+      P3: ["REJECT", "MAJOR", "NO_VERDICT"],
+      P4: ["REJECT", "MINOR", "NO_VERDICT"],
+      P5: ["REJECT", "MAJOR", "NO_VERDICT"],
+    },
+    note: "M1 — first read after the directive-M overhauls. Verdict matrix [ChatGPT, Grok, Gemini] FROM RAW (verbatim VERDICT line READ from each saved raw before recording). Truth-audit (ledger_match.py + Opus §3 vs each .tex + DISPOSITIONS/*.md): 1 genuinely-new reader-visible editable finding across all 5 papers — P5's directive-M abstract rewrite (v0.1.124) over-tightened 'primary estimand'→'primary, pre-declared estimand' (L778), CONTRADICTING §V.B's honest 'post-hoc/exploratory primary' disclosure; BOTH Grok+ChatGPT MAJOR#1 caught it (git -S proves it entered ONLY in the overhaul commit — overhaul-REACTION, NOT oscillation) → CLOSED v0.1.125 (one-word fix, no number). Every OTHER finding = source-cited re-flag of a standing D-id; 0 overhaul-introduced broken refs/orphans (P3 revtex→AASTeX FORMAT conversion clean: bibitem-diff empty, 62/62 labels, 12/12 figures resolve). P4: Grok SOFTENED to MINOR-only ('the declared analysis hierarchy and decision tree are exemplary') + v1.0.238 CLOSES DP4-15 via the full 8.47M image-level e2e mirror-flip injection (T_raw=0.2303±0.0002, T_eq=0.9997, artifact e2e_transfer_function_full.json 192/192 shards, VERIFIED). P3 = FIRST ApJS-framed read (paper3_apjs.tex v3.1.156-apjs): ChatGPT REJECT is VENUE-reasoned — 'the catalog and DOI are also described prospectively rather than supplied as an immutable reviewable release. This is … disqualifying for an ApJS catalog submission' — 12/14 MAJORs are standing DP3 re-flags weighed against the catalog-purity/immutable-release bar; Grok never invokes that bar ('substantiates sensitivity … supplies a transparent process-volume catalog'), exactly the gap between its MAJOR and ChatGPT's REJECT. TREND: both referees on EVERY paper ACK length/density/de-dup (P1U ChatGPT 'excessively long, claims and caveats are repeated many times'; P1U Grok 'extremely dense, footnote-heavy … repeated hedging'; P2 Claude-INT 'beyond PRD crispness even after the consolidation round'; P5 ChatGPT 'excessively repetitive … inconsistent labels'; P4 ChatGPT 'highly repetitive, repeatedly redefines which statistic is primary') — the disclosure-backfire venue floor, not degrading papers. Clean-wave streaks: P1U 3→4 · P2 4→5 · P4 5→6 · P3 0→1 · P5 RESET 3→0. Caps (Convex readinessComputed): P1A 62 · P2 74 · P3 62→56 · P4 68→74 · P5 80→74. No ACCEPT faked, no finding dismissed without a source-cited verdict, no math fabricated. Raws + per-paper truth-audits: EXT_real/H17_2026-07-10/M1/.",
+  },
 ];
 
 export interface GapPoint {
@@ -5800,6 +5841,14 @@ export const gapSeries: GapPoint[] = [
     perPaper: { P1A: 0, P1B: 0, P2: 0, P3: 0, P4: 0, P5: 0 },
     note: "Round C (3 of 3, FINAL) EXT: 0 genuinely-new external findings — neutral gate-discipline truth-audit of the harsh P1A+P3 3/3-MAJORs confirmed every one is a disclosed caveat, a structural submission feature (companion derivations, Zenodo DOI deferred), framing taste, or reviewer noise. 3-round grind: 23 real items closed across INT, 0 new surviving external findings.",
     milestone: "3-round grind: 0 new external findings",
+  },
+  {
+    roundId: "M1",
+    dateISO: "2026-07-12",
+    total: 1,
+    perPaper: { P1A: 0, P1B: 0, P2: 0, P3: 0, P4: 0, P5: 1 },
+    note: "M1 wave — first full EXT measurement after the directive-M presentation overhauls (shorter abstract + de-dup) on all 5 papers. 1 genuinely-new reader-visible finding total: P5's overhaul-introduced abstract 'pre-declared' vs §V.B 'post-hoc/exploratory primary' contradiction (both Grok+ChatGPT MAJOR#1; git-proven overhaul-reaction not oscillation) → CLOSED v0.1.125. All other findings source-cited re-flags; 0 broken refs from any overhaul (incl P3 revtex→AASTeX conversion). P4 v1.0.238 closes DP4-15 (8.47M image-level e2e injection, artifact-verified).",
+    milestone: "post-overhaul: 1 genuinely-new, all caught + closed",
   },
 ];
 

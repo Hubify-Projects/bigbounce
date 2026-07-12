@@ -931,19 +931,20 @@ export function VerdictSeverityTrend() {
 
 /* ── Readiness strip: sparse per-paper checkpoints (95-cap rule) ──────── */
 
-// Per-paper readiness — mirror of Convex papers:listAllPaperStates (SSOT). Keep in sync. (2026-07-07)
-// VERDICT-DERIVED, not ladder-derived (corrects the 2026-07-07 "99/complete" overstatement Houston caught).
-// readiness = 50 (error-clean/verified base, earned) + per-EXT-reviewer points from the latest verified
-// round (POSTPOLISH-2026-07-06 ChatGPT/Grok/Gemini): ACCEPT +16.7, MINOR +12, MAJOR +6, REJECT +0, summed
-// over the 3 reviewers. NO paper is reviewer-accepted — every one still draws a real ChatGPT REJECT.
-//   P4 REJ/MIN/MAJ=68 · P2 REJ/MIN/MIN=74 · P5 MAJ/MIN/MIN=80 · P3 REJ/MAJ/MAJ=62 · P1B REJ/MAJ/MAJ=62 · P1A REJ/MAJ/MAJ=62
+// Per-paper readiness — mirror of Convex papers:listAllPaperStates (readinessComputed). Keep in sync.
+// VERDICT-DERIVED: readiness = 50 (error-clean/verified base) + per-EXT-reviewer points from the latest
+// verified round (ACCEPT +16.7, MINOR +12, MAJOR +6, REJECT +0), summed over the 3 reviewers (Gemini
+// carried from last tested). NO paper is reviewer-accepted — every one still draws a real ChatGPT REJECT.
+// M1 wave (2026-07-12, post directive-M overhaul): P4 Grok softened REJ/MIN→cap 68→74; P3 ApJS-framed
+// ChatGPT REJECT + Grok MAJOR → 62→56; P5 Grok slipped ACCEPT→MAJOR (overhaul-reaction) → 80→74.
+//   P4 REJ/MIN/MIN=74 · P2 REJ/MAJ/(gem)=74 · P5 REJ/MAJ/MIN=74 · P3 REJ/MAJ/MAJ=56 · P1B(carried)=56 · P1A REJ/MAJ/MAJ=62
 const PER_PAPER_READINESS: Record<PaperId, number> = {
   P1A: 62,
-  P1B: 62,
+  P1B: 56,
   P2: 74,
-  P3: 62,
-  P4: 68,
-  P5: 80,
+  P3: 56,
+  P4: 74,
+  P5: 74,
 };
 
 export function ReadinessStrip() {
