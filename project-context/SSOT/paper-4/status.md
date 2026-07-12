@@ -2,6 +2,9 @@
 
 **Canonical status file. When in doubt about Paper 4, read this.**
 
+> ## M2 WAVE NOTE — 2026-07-12 · v1.0.238 · cap 74 · streak 6→7
+> **First external reads WITH the 8.47M image-level e2e integration live.** EXT verdicts ChatGPT REJECT (M2b) / Grok MINOR. **e2e-engagement check:** ChatGPT M2b DID read the new e2e section — MAJOR#1: "the injection begins in the final hard-label map, downstream of the image classifier, not-spiral triage, confidence cut … Thus these numbers are neither controlled-false-alarm thresholds nor end-to-end sensitivities to a physical chirality dipole" — but re-frames the disclosed image-level injection (§VI B) = standing **DP4-15 RE-FLAG**, not genuinely-new. The 3,200,420 in-mask + 740 sub-threshold vs Table XVI 3,201,160 "inconsistency" is reconciled verbatim in tex L950 (3,200,420+740=3,201,160) = re-flag misread. Grok M2 MINOR-only (softening; central claim "supported by the primary real-space HC estimator"). **0 genuinely-new editable findings → clean-wave streak 6→7.** Cap 74 (grok MINOR 12 + chatgpt REJECT 0 + gemini MINOR 12). No faked accept, no un-sourced dismissal, no fabrication.
+
 ## M1 WAVE NOTE — 2026-07-12 · v1.0.238 · cap 74 · streak 5→6
 
 **M1 adjudication (2026-07-12):** EXT verdicts ChatGPT REJECT / Grok MINOR (SOFTENED, 0 MAJOR) — Grok dropped to a pure MINOR after the directive-M presentation overhaul. **DP4-15 CLOSED-BY-ARTIFACT**: staged compute close via full 8.47M image-level e2e mirror-flip injection (T_raw=0.2303±0.0002, T_eq=0.9997, artifact `e2e_transfer_function_full.json` 192/192 shards, VERIFIED). All other findings source-cited re-flags of standing DP4 D-ids (DP4-01/-07/-10/-11/-12/-13/-14/-15/-16/-17/-19/-20/-21). **0 overhaul-introduced broken refs/orphans.** Readiness cap 68→74 (Grok SOFTENED). Clean-wave streak 5→6. No faked accept, no un-sourced dismissal, no fabrication.

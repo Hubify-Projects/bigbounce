@@ -57,6 +57,34 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "m2-wave-post-fix-external-2026-07-12",
+    dateISO: "2026-07-12",
+    kind: "external-browser",
+    title:
+      "M2 wave — targeted external re-reads after the M1 closures: P5 (first read of the v0.1.125 post-hoc fix), P4 (FIRST external reads WITH the v1.0.238 8.47M image-level e2e integration live), and P3-ApJS (FIRST read with the v3.1.157 immutable reviewable release live). Raws harvested in the headed browser with verbatim text READ before every recorded verdict. Verdicts: P5 — Grok MINOR, ChatGPT MAJOR (its floor-crack REJECT→MAJOR oscillation on unchanged content); P4 — Grok MINOR, ChatGPT REJECT (M2b); P3-ApJS — Grok MAJOR, ChatGPT FAILED-dead (M2c retry in flight). Strict verdict-first truth-audit (ledger_match + one Opus sub-agent per paper vs each .tex + DISPOSITIONS): exactly ONE genuinely-new reader-visible editable finding across all legs — P5's Eq.(4) prose said 'the SEVEN counting-plus-systematic terms' while the multline sums EIGHT and the ordered source-list names eight (an arithmetic-label mismatch NOT in the M1 ledger) → closed one-word same-bundle in P5 v0.1.126 (seven→eight, √0.898=0.94 pp unchanged). TWO task-critical engagement checks resolved: (1) P4 ChatGPT M2b DOES engage the new e2e section ('the injection begins in the final hard-label map, downstream of the image classifier … neither controlled-false-alarm thresholds nor end-to-end sensitivities') but re-frames the disclosed image-level injection — RE-FLAG, not new; the 3,200,420+740=3,201,160 mask-count 'inconsistency' is reconciled verbatim in tex L950. (2) P3-ApJS's immutable-release objection has DISSOLVED — Grok M2 now reads the release as live ('the released 22.5 M catalog … raw native scores reside on an exited pod'), shifting from 'no immutable archive' to the OWN-disclosed pod-blocked re-inference residual; it no longer invokes the disqualifying-catalog bar that drove the M1 REJECT.",
+    papers: ["P3", "P4", "P5"],
+    summary:
+      "Targeted M2 re-reads. 1 genuinely-new finding total — P5 Eq.(4) 'seven' vs eight displayed/listed terms (arithmetic-label mismatch) → closed one-word in v0.1.126 (no number changed). P4: ChatGPT M2b REJECT ENGAGES the new v1.0.238 8.47M e2e section but re-frames disclosed image-level injection ('injection begins in the final hard-label map, downstream of the image classifier … neither … end-to-end sensitivities') — RE-FLAG; mask count 3,200,420+740=3,201,160 reconciled in tex L950; Grok MINOR (softening) → 0 genuinely-new. P3-ApJS: immutable-release objection DISSOLVED — Grok M2 reads 'the released 22.5 M catalog … raw native scores reside on an exited pod' (pod-blocked re-inference, DP3-15 OPEN-COMPUTE), no longer the disqualifying-catalog bar → 0 genuinely-new; ChatGPT FAILED-dead (M2c gap). Streaks P5 RESET 1→0 · P4 6→7 · P3 →1. Caps: P5 80 · P4 74 · P3 56.",
+    keyTakeaways: [
+      "1 genuinely-new finding — P5 Eq.(4) prose said 'the seven … terms' while the multline (tex L2862-2865) sums EIGHT squared terms and the ordered source-list names eight; NOT in the M1 ledger (M1 flagged Eq.(4) only on statistical-coverage = DP5-11) → closed one-word in v0.1.126 (√0.898=0.94 pp unchanged, streak RESET 1→0).",
+      "P4 e2e-engagement check: ChatGPT M2b's first MAJOR DID read the new 8.47M section — 'the injection begins in the final hard-label map, downstream of the image classifier, not-spiral triage, confidence cut … Thus these numbers are neither controlled-false-alarm thresholds nor end-to-end sensitivities' — but re-frames the disclosed image-level injection (§VI B); standing DP4-15 RE-FLAG, not new. Streak 6→7.",
+      "P3-ApJS release-objection check: DISSOLVED. Grok M2 §3.7 reads the release as live — 'No full per-object held-out re-inference of the released 22.5 M catalog exists (raw native scores reside on an exited pod)' — the OWN-disclosed pod-blocked residual (DP3-15), NOT the missing/mutable archive that drove M1's disqualifying-catalog REJECT. Streak →1.",
+      "ChatGPT floor-crack RETURNED post-fix on P5: M1 REJECT → M2 MAJOR REVISIONS on unchanged v0.1.125 content; all 11 MAJORs map to the identical standing DP5 battery — recorded honestly as harsh-referee floor oscillation, not laundered.",
+      "Integrity: all raws READ verbatim before disposition; the e2e MAJOR + release objection quoted verbatim and checked against tex (L950, L1686/L1694); ChatGPT M2c FAILED recorded as a chart GAP, never a synthesized verdict; no ACCEPT faked, no math fabricated.",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 1,
+      note: "1 genuinely-new reader-visible editable finding (P5 Eq.(4) seven-vs-eight term-count mismatch) across the M2/M2b legs — caught, source-cited, closed same-bundle in v0.1.126. All other findings source-cited standing D-id re-flags; P4 e2e MAJOR engaged-but-re-framed; P3 release objection dissolved.",
+    },
+    links: [
+      { label: "M2 raws + per-paper truth-audits", href: `${PR}/EXT_real/H17_2026-07-10/M2/` },
+      { label: "P5 M2 truth-audit (seven→eight fix)", href: `${PR}/EXT_real/H17_2026-07-10/M2/P5_truth_audit_M2.md` },
+      { label: "P4 M2 truth-audit (e2e engagement)", href: `${PR}/EXT_real/H17_2026-07-10/M2/P4_truth_audit_M2.md` },
+      { label: "P3-ApJS M2 truth-audit (release dissolved)", href: `${PR}/EXT_real/H17_2026-07-10/M2/P3APJS_truth_audit_M2.md` },
+      { label: "P4 ChatGPT M2b raw (e2e MAJOR)", href: `${PR}/EXT_real/H17_2026-07-10/M2b/P4_chatgpt_M2b.md` },
+    ],
+  },
+  {
     id: "p3-immutable-reviewable-release-2026-07-12",
     dateISO: "2026-07-12",
     kind: "closure-wave",
@@ -5676,6 +5704,20 @@ export const externalVerdictRounds: ExternalRoundVerdicts[] = [
     },
     note: "M1 — first read after the directive-M overhauls. Verdict matrix [ChatGPT, Grok, Gemini] FROM RAW (verbatim VERDICT line READ from each saved raw before recording). Truth-audit (ledger_match.py + Opus §3 vs each .tex + DISPOSITIONS/*.md): 1 genuinely-new reader-visible editable finding across all 5 papers — P5's directive-M abstract rewrite (v0.1.124) over-tightened 'primary estimand'→'primary, pre-declared estimand' (L778), CONTRADICTING §V.B's honest 'post-hoc/exploratory primary' disclosure; BOTH Grok+ChatGPT MAJOR#1 caught it (git -S proves it entered ONLY in the overhaul commit — overhaul-REACTION, NOT oscillation) → CLOSED v0.1.125 (one-word fix, no number). Every OTHER finding = source-cited re-flag of a standing D-id; 0 overhaul-introduced broken refs/orphans (P3 revtex→AASTeX FORMAT conversion clean: bibitem-diff empty, 62/62 labels, 12/12 figures resolve). P4: Grok SOFTENED to MINOR-only ('the declared analysis hierarchy and decision tree are exemplary') + v1.0.238 CLOSES DP4-15 via the full 8.47M image-level e2e mirror-flip injection (T_raw=0.2303±0.0002, T_eq=0.9997, artifact e2e_transfer_function_full.json 192/192 shards, VERIFIED). P3 = FIRST ApJS-framed read (paper3_apjs.tex v3.1.156-apjs): ChatGPT REJECT is VENUE-reasoned — 'the catalog and DOI are also described prospectively rather than supplied as an immutable reviewable release. This is … disqualifying for an ApJS catalog submission' — 12/14 MAJORs are standing DP3 re-flags weighed against the catalog-purity/immutable-release bar; Grok never invokes that bar ('substantiates sensitivity … supplies a transparent process-volume catalog'), exactly the gap between its MAJOR and ChatGPT's REJECT. TREND: both referees on EVERY paper ACK length/density/de-dup (P1U ChatGPT 'excessively long, claims and caveats are repeated many times'; P1U Grok 'extremely dense, footnote-heavy … repeated hedging'; P2 Claude-INT 'beyond PRD crispness even after the consolidation round'; P5 ChatGPT 'excessively repetitive … inconsistent labels'; P4 ChatGPT 'highly repetitive, repeatedly redefines which statistic is primary') — the disclosure-backfire venue floor, not degrading papers. Clean-wave streaks: P1U 3→4 · P2 4→5 · P4 5→6 · P3 0→1 · P5 RESET 3→0. Caps (Convex readinessComputed): P1A 62 · P2 74 · P3 62→56 · P4 68→74 · P5 80→74. No ACCEPT faked, no finding dismissed without a source-cited verdict, no math fabricated. Raws + per-paper truth-audits: EXT_real/H17_2026-07-10/M1/.",
   },
+  {
+    roundId: "M2",
+    dateISO: "2026-07-12",
+    windowPT: "Jul 12 · targeted external re-reads — P5 (first read of the v0.1.125 fix) · P4 (FIRST reads WITH the 8.47M image-level e2e live) · P3-ApJS (FIRST read with the immutable release live) · headed browser, raw verbatim text READ before every verdict · Gemini + P1A/P1B/P2 not swept (carried) · ChatGPT P3 FAILED-dead (M2c retry in flight = GAP)",
+    verdicts: {
+      P1A: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P1B: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P2: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P3: ["NO_VERDICT", "MAJOR", "NO_VERDICT"],
+      P4: ["REJECT", "MINOR", "NO_VERDICT"],
+      P5: ["MAJOR", "MINOR", "NO_VERDICT"],
+    },
+    note: "M2 — targeted re-reads. Verdict matrix [ChatGPT, Grok, Gemini] FROM RAW (verbatim VERDICT line READ before recording; ChatGPT P3 leg produced no output → NO_VERDICT/GAP, M2c retry in flight, never synthesized). Truth-audit (ledger_match + one Opus per paper vs each .tex + DISPOSITIONS): 1 genuinely-new reader-visible editable finding total — P5's Eq.(4) prose said 'the SEVEN counting-plus-systematic terms' while the multline (tex L2862-2865) sums EIGHT squared terms and the ordered source-list names eight; NOT in the M1 ledger (M1 ChatGPT flagged Eq(4) only on statistical-coverage = DP5-11) → CLOSED-BY-EDIT one-word seven→eight in P5 v0.1.126 (√0.898=0.94 pp unchanged, no number changed). TWO task-critical engagement checks: (1) P4 ChatGPT M2b REJECT DID engage the new e2e section — 'the injection begins in the final hard-label map, downstream of the image classifier, not-spiral triage, confidence cut … Thus these numbers are neither controlled-false-alarm thresholds nor end-to-end sensitivities to a physical chirality dipole' — but re-frames the disclosed image-level injection (§VI B) = standing DP4-15 RE-FLAG, not new; the 3,200,420+740=3,201,160 mask-count 'inconsistency' is reconciled verbatim in tex L950. (2) P3-ApJS's immutable-release objection has DISSOLVED — Grok M2 §3.7 reads the release as live: 'No full per-object held-out re-inference of the released 22.5 M catalog exists (raw native scores reside on an exited pod)' — shifting from 'no immutable archive' (the pre-release DP3-20 hinge) to the OWN-disclosed pod-blocked re-inference residual (DP3-15 OPEN-COMPUTE); it no longer invokes the disqualifying-catalog bar. Grok M2 P4/P5 SOFTENED to MINOR (central claims 'supported'); Grok P3 MAJOR = all 6 standing DP3 re-flags. ChatGPT floor-crack RETURNED post-fix on P5 (M1 REJECT → M2 MAJOR on unchanged v0.1.125 content, all 11 MAJORs = identical standing DP5 battery) — recorded honestly as harsh-referee oscillation. Clean-wave streaks: P5 RESET 1→0 · P4 6→7 · P3 →1. Caps (Convex readinessComputed): P1A 62 · P2 74 · P3 56 · P4 74 · P5 80. No ACCEPT faked, no finding dismissed without a source-cited verdict, no math fabricated, ChatGPT FAILED leg recorded as a GAP not a zero. Raws + per-paper truth-audits: EXT_real/H17_2026-07-10/M2/ + M2b/.",
+  },
 ];
 
 export interface GapPoint {
@@ -5875,6 +5917,14 @@ export const gapSeries: GapPoint[] = [
     perPaper: { P1A: 0, P1B: 0, P2: 0, P3: 0, P4: 0, P5: 1 },
     note: "M1 wave — first full EXT measurement after the directive-M presentation overhauls (shorter abstract + de-dup) on all 5 papers. 1 genuinely-new reader-visible finding total: P5's overhaul-introduced abstract 'pre-declared' vs §V.B 'post-hoc/exploratory primary' contradiction (both Grok+ChatGPT MAJOR#1; git-proven overhaul-reaction not oscillation) → CLOSED v0.1.125. All other findings source-cited re-flags; 0 broken refs from any overhaul (incl P3 revtex→AASTeX conversion). P4 v1.0.238 closes DP4-15 (8.47M image-level e2e injection, artifact-verified).",
     milestone: "post-overhaul: 1 genuinely-new, all caught + closed",
+  },
+  {
+    roundId: "M2",
+    dateISO: "2026-07-12",
+    total: 1,
+    perPaper: { P1A: 0, P1B: 0, P2: 0, P3: 0, P4: 0, P5: 1 },
+    note: "M2 wave — targeted re-reads (P5 v0.1.125 fix · P4 first reads WITH the 8.47M e2e live · P3-ApJS first read with the immutable release live). 1 genuinely-new reader-visible finding total: P5's Eq.(4) prose 'the SEVEN … terms' vs the multline's EIGHT displayed/listed terms (arithmetic-label mismatch, NOT in the M1 ledger) → CLOSED-BY-EDIT one-word seven→eight in v0.1.126 (no number changed). P4: ChatGPT M2b REJECT engaged the new e2e section but re-frames the disclosed image-level injection = DP4-15 RE-FLAG; mask count 3,200,420+740=3,201,160 reconciled in tex L950 → 0 genuinely-new (streak 6→7). P3-ApJS: immutable-release objection DISSOLVED (Grok reads 'the released 22.5 M catalog … raw native scores reside on an exited pod' = pod-blocked residual DP3-15, not the missing-archive bar) → 0 genuinely-new (streak →1); ChatGPT FAILED-dead = M2c gap.",
+    milestone: "P4 e2e engaged-but-reflag · P3 release objection dissolved",
   },
 ];
 
