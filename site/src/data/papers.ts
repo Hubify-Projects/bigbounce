@@ -196,7 +196,7 @@ export const papers: Paper[] = [
     slug: "paper-2",
     number: "2",
     title: "Testing the Matter Bounce with Primordial Non-Gaussianity: A SPHEREx Sensitivity Recast with a MegaMapper Outlook",
-    version: "v1.7.113",
+    version: "v1.7.114",
     lastUpdated: "2026-07-11",
     tldr: "Resolves the long-standing Cai–Li factor-of-two: the matter-bounce squeezed local non-Gaussianity is f_NL = −35/16 = −2.1875 (not −35/8), and recasts published SPHEREx forecasting power onto it — ~2.6–2.75σ optimistic, ~1.3–2.75σ realistic — as a bounce-vs-inflation discriminator. An independent in-house tree-level multi-tracer bispectrum Fisher validates the recast (reproduces Heinrich σ≈0.7 to 2–11%, r_eff≈0.99 for the bounce template), now extended to the full redshift-space (RSD) tree bispectrum: σ tightens to 0.42–0.45 (+34.7% vs real-space), r_eff≈0.99 persists, and the unmarginalized −35/16 significance rises to 4.9–5.2σ — retiring the 'real-space monopole only' limitation.",
     path: publicationPath({}),
@@ -230,14 +230,14 @@ export const papers: Paper[] = [
       "arXiv endorsement + submission — gated behind a reviewer ACCEPT (packets are ready; reviews are not passed)",
     ],
     preprintId: "HUBIFY-2026-002",
-    pdfMeta: "PDF · 37 pp · v1.7.113 · updated Jul 11, 2026 · md5 de34d7ac — W12 EXT presentation-closure: closed the presentation majors. Grok MegaMapper Fig-2 headlining scoped as future/Stage-V (SPHEREx range headlined) + endpoint-language drift fixed (explicit tier→σ map: SPHEREx optimistic 2.6–2.75σ / post-budget 1.3–2.75σ) + Cai-correction tone calibrated to neutral 'one identified discrepancy' framing (removed 'arithmetic error'). ChatGPT claim-calibration aligned to the −35/16 formula: factor-of-2 forensic wording made exactly consistent with what App A proves (vertex-sum certification is the decisive evidence); stale −35/8-scaled MegaMapper ~3–7σ swept to the Sec V numbers; Table V relabeled scenario/scoping budget; GR-correlation bracket disclosed. Data/code-availability + notation + trimmed captions + Gemini cross-covariance caveat. −35/16 unchanged, nothing fabricated; items needing new calculations left open.",
+    pdfMeta: "PDF · 37 pp · v1.7.114 · updated Jul 11, 2026 · md5 fac2d652 — OPEN-COMPUTE (directive L): channel-native joint {f_NL,b_phi,A_GR} bispectrum Fisher (c15) closes the recurring proxy-floor MAJOR by ADOPTING the committed, Heinrich-validated c13 tree-level Gaussian multi-tracer covariance as the Cov_B surrogate (reproduces σ_local≈0.7 to 2–11%). Channel-native, nothing transferred: cross-Fisher α=F(local,bounce)/F(local,local)=0.992 (native Fisher cosine 1.000, corroborates r_eff≈0.99); ρ(f_NL,A_GR)=−0.001 (near-orthogonal — the −0.868 SDB proxy AND the |ρ|≈0.95 shape-cosine both OVERSTATED the GR degeneracy); ρ(f_NL,b_φ)=+0.99 (analytic f_NL·b_φ product degeneracy). b_φ-30%-prior σ_marg(f_NL^bounce)=0.88 → 2.48σ for −35/16 (local self-consistency σ_local=0.87, ~Heinrich 0.7 to ~25%). Channel-native floor 2.48σ is HIGHER than the 1.30σ proxy floor → the proxy was conservative; retained as a cross-check below the computed floor. −35/16 unchanged, nothing fabricated.",
     changelog: [
       "Per-vertex term-by-term derivation table (v1.7.105, R9 Grok+ChatGPT MAJOR): added Appendix A Table VII walking each of Cai's four cubic vertices through the squeezed AND equilateral limits (field-redef -25/16, L_zzdd -5/32, mixed 0, highest-order -15/32 squeezed), both columns summing exact-fraction to -35/16 and -255/128; transcribed verbatim from the committed sympy cert script, no new math. Plus a consolidated gauge-vs-physical-frame f_NL table (Gemini minor). -35/16 unchanged.",
       "Appendix A vertex-algebra display (v1.7.104, deep-Grok MAJOR): added the collapsed exact vertex-sum degree-9 polynomial + the epsilon-order-grouped squeezed contributions (fNL|eps^1=-5/2, |eps^2=+5/16, |eps^3=0 -> -35/16), both transcribed verbatim from the committed sympy certification script; no new math, -35/16 unchanged.",
     ],
     artifacts: [
-      { label: "Read PDF", href: "/papers/02_full_draft_v1.7.113.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/02_full_draft_v1.7.113.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/02_full_draft_v1.7.114.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/02_full_draft_v1.7.114.pdf", kind: "secondary", download: true },
       {
         label: "LaTeX source",
         href: "https://github.com/Hubify-Projects/bigbounce/blob/main/research/focused_paper_source_integration/02_full_draft.tex",

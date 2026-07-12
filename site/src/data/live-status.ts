@@ -94,9 +94,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-2",
       number: "2",
       shortTitle: "f_NL = -35/16 SPHEREx forecast + Cai-Li certification",
-      version: "v1.7.113",
+      version: "v1.7.114",
       readiness: 74,
-      pendingWork: "CROSSED the two-clean-waves bar (streak 3). Grok EXT: 'Accept with minor revisions' then MINOR after closures; Claude INT hand-verified every fraction ('no computational error, no fabrication'). ChatGPT REJECT = documented floor. -35/16 quadruple-certified.",
+      pendingWork: "v1.7.114 OPEN-COMPUTE (directive L): channel-native joint {f_NL,b_phi,A_GR} bispectrum Fisher (c15) closes the recurring proxy-floor MAJOR by adopting the c13 Gaussian MT covariance surrogate — channel-native rho(f_NL,A_GR)=-0.001 (near-orthogonal; the -0.868 SDB proxy overstated the degeneracy), sigma_marg=0.88 -> 2.48sigma floor, HIGHER than the 1.30sigma proxy floor (proxy was conservative); alpha=0.992 corroborates r_eff~0.99. Grok EXT MINOR; ChatGPT REJECT = documented floor. -35/16 quadruple-certified.",
     },
     {
       slug: "paper-3",
