@@ -1,0 +1,90 @@
+{
+  "coupling": {
+    "L_int_coeff_of_kappa_times_J5J5": "-3/16",
+    "fierz_SS_weight_of_J5J5": "1/4",
+    "G_scalar_over_kappa": "-3/64",
+    "G_scalar_over_kappa_float": -0.046875,
+    "kappa_definition": "8*pi*G = M_Pl^-2"
+  },
+  "G_crit": {
+    "derived": "pi**2/(Lambda**2*N_c*N_f)",
+    "textbook": "pi^2/(N_f N_c Lambda^2)",
+    "symbolic_match": true,
+    "derivation": "slope of gap-equation RHS/M at M->0 set to 1"
+  },
+  "scalar_channel_sign": {
+    "G_scalar_sign": "negative (repulsive)",
+    "condensation_possible_by_sign": false,
+    "note": "repulsive scalar channel => only trivial M=0 minimum, no condensate at any coupling"
+  },
+  "ratios": {
+    "Lambda_M_Pl__Nf=Nc=1": {
+      "Lambda_GeV": 1.22e+19,
+      "Nf_Nc": 1,
+      "G_crit_GeV^-2": 6.63101612542956e-38,
+      "G_eff_over_G_crit_EC_maximal": 0.004749430483234584,
+      "G_eff_over_G_crit_Holst_dressed": 0.0003316679406472842,
+      "subcritical_EC": true
+    },
+    "Lambda_M_Pl__Nf=1,Nc=3": {
+      "Lambda_GeV": 1.22e+19,
+      "Nf_Nc": 3,
+      "G_crit_GeV^-2": 2.21033870847652e-38,
+      "G_eff_over_G_crit_EC_maximal": 0.014248291449703753,
+      "G_eff_over_G_crit_Holst_dressed": 0.0009950038219418526,
+      "subcritical_EC": true
+    },
+    "Lambda_M_Pl__Nf=3,Nc=3": {
+      "Lambda_GeV": 1.22e+19,
+      "Nf_Nc": 9,
+      "G_crit_GeV^-2": 7.367795694921734e-39,
+      "G_eff_over_G_crit_EC_maximal": 0.042744874349111256,
+      "G_eff_over_G_crit_Holst_dressed": 0.002985011465825558,
+      "subcritical_EC": true
+    },
+    "Lambda_strong_EFT__Nf=Nc=1": {
+      "Lambda_GeV": 2.3306901956976538e+19,
+      "Nf_Nc": 1,
+      "G_crit_GeV^-2": 1.8168984183676997e-38,
+      "G_eff_over_G_crit_EC_maximal": 0.017333687895016728,
+      "G_eff_over_G_crit_Holst_dressed": 0.0012104669366689203,
+      "subcritical_EC": true
+    },
+    "Lambda_strong_EFT__Nf=1,Nc=3": {
+      "Lambda_GeV": 2.3306901956976538e+19,
+      "Nf_Nc": 3,
+      "G_crit_GeV^-2": 6.056328061225667e-39,
+      "G_eff_over_G_crit_EC_maximal": 0.052001063685050176,
+      "G_eff_over_G_crit_Holst_dressed": 0.0036314008100067604,
+      "subcritical_EC": true
+    },
+    "Lambda_strong_EFT__Nf=3,Nc=3": {
+      "Lambda_GeV": 2.3306901956976538e+19,
+      "Nf_Nc": 9,
+      "G_crit_GeV^-2": 2.0187760204085552e-39,
+      "G_eff_over_G_crit_EC_maximal": 0.15600319105515056,
+      "G_eff_over_G_crit_Holst_dressed": 0.010894202430020284,
+      "subcritical_EC": true
+    }
+  },
+  "inputs": {
+    "M_Pl_GeV": 1.22e+19,
+    "gamma_BI": 0.274,
+    "kappa_GeV^-2": 6.718624025799517e-39,
+    "holst_factor_gamma^2/(gamma^2+1)": 0.0698332024898705,
+    "Lambda_strong_EFT_GeV": 2.3306901956976538e+19
+  },
+  "closed_form_ratio_Lambda_MPl": {
+    "formula": "(3/64) * N_f N_c / pi^2  (M_Pl-independent)",
+    "Nf_Nc_1": 0.004749430483234583,
+    "Nf_Nc_3": 0.01424829144970375,
+    "Nf_Nc_9": 0.04274487434911125
+  },
+  "verdict": {
+    "text": "CONDENSATE EXCLUDED. Two independent reasons: (1) the scalar channel is REPULSIVE (G_scalar = -(3/64) kappa < 0), so the effective potential has only the trivial M=0 minimum at ANY coupling; (2) even taking |G_eff|, the coupling is FAR sub-critical (worst-case |G_eff|/G_crit = 1.560e-01 << 1 at the least-suppressed cutoff Lambda=M_Pl, Nf Nc=9). No dynamical chiral condensate forms; the Route-1 vacuum case is closed by explicit gap-equation + effective-potential analysis, not by scope concession.",
+    "sign_repulsive": true,
+    "magnitude_subcritical": true,
+    "worst_case_G_eff_over_G_crit": 0.15600319105515056,
+    "condensate_excluded": true
+  }
+}
