@@ -57,6 +57,32 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "m6-ext-confirm-wave-2026-07-12",
+    dateISO: "2026-07-12",
+    kind: "external-browser",
+    title:
+      "M6-EXT confirm wave — both papers post a clean wave (0 genuinely-new). P5 (v0.1.126): Grok MINOR + ChatGPT MAJOR REVISIONS — the ChatGPT floor-crack is now STABLE (MAJOR, not REJECT, on 5 of its 6 most-recent P5 reads: H17F/W4/M2/M3b/RS2b); all 18 findings map to the standing DP5 battery; streak 2→3; cap 80 HOLDS. P3 (v3.1.158-apjs): Grok MAJOR + ChatGPT REJECT on the FIRST EXT reads WITH the bounded DP3-15 disclosure — the impossible-re-inference demand is GONE: ChatGPT now cites the paper's own '~1.3% of released rows can be retrieved … raw-score files and input linkage were lost' (DP3-15 structural ceiling) instead of asking for a re-run, and the DP3-20 immutable-release bar stays dissolved; streak 1→2, P3 REJOINS the exit set; cap 56 HOLDS. No bumps; directive_g.sh not run.",
+    papers: ["P5", "P3"],
+    summary:
+      "M6-EXT: two papers, zero genuinely-new findings. P5 (v0.1.126): Grok MINOR + ChatGPT MAJOR REVISIONS; the floor-crack is stable — MAJOR is now the modal ChatGPT verdict on P5; all Grok(5) + ChatGPT(11 MAJOR/2 MINOR) findings map to the standing DP5 battery (DP5-01/-02/-03/-06/-09/-10/-11/-13/-14/-16/-17/-20/-21/-22); clean-wave streak 2→3; cap 80 HOLDS. P3 (v3.1.158-apjs): Grok MAJOR + ChatGPT REJECT — the FIRST EXT reads with the bounded DP3-15 disclosure. The special check answered: neither reviewer demands the impossible full 22.5M re-inference; ChatGPT cites the paper's own 13.4%/86.6%/~1.3%-recoverable held-out numbers, so the ask collapsed to a venue-acceptability judgment on the disclosed structural ceiling (DP3-15 OPEN-COMPUTE). DP3-20 immutable-release bar stays dissolved. Streak 1→2 → P3 rejoins the exit set; cap 56 HOLDS. No bumps.",
+    keyTakeaways: [
+      "P3 DP3-15 ACKNOWLEDGMENT (verbatim, ChatGPT M6 raw L11): 'The released identifier field contains real DESI TARGETIDs for only 13.4% of rows, with internal hashes for 86.6%; the manuscript estimates that only approximately 1.3% of released rows can be retrieved from SPARCL by identifier. The production raw-score files and input linkage were lost.' — the reviewer cites the paper's own held-out-re-inference bound rather than demanding a re-run; the DP3-15 ask is now a venue-acceptability judgment on the disclosed ~1.3% structural (not compute) ceiling.",
+      "P3: 0 genuinely-new across Grok(4 MAJOR/2 MINOR) + ChatGPT(15 MAJOR/5 MINOR); every finding source-cited to DP3-01/-03/-04/-06/-07/-08/-09/-10/-11/-12/-13/-14/-15/-16/-20. The DP3-20 immutable-release REJECT hinge stays DISSOLVED (not re-raised). ChatGPT REJECT→REJECT + Grok MAJOR→MAJOR on unchanged content = DP3-17 backfire floor. Streak 1→2, P3 REJOINS the exit set.",
+      "P5: 0 genuinely-new; Grok MINOR (post-hoc primary DP5-13, 2.26pp de-attenuation DP5-09/-11, T-Web sign-flip DP5-14, no-published-bounce-model lit-grounding DP5-17, DOI-deposit DP5-02/-03) + ChatGPT MAJOR (footprint≠selection DP5-06, Bonferroni-5 primary family DP5-01, 0.9pp envelope DP5-11, binomial-independence DP5-10, monopole-invariance/de-attenuation DP5-09, RSD DP5-22/-12, T-Web DP5-14, Paper-IV DP5-21, forward-model/EFT DP5-20, numeric-consistency DP5-02, QSO/length DP5-22). Floor-crack stable: MAJOR is now modal. Streak 2→3.",
+      "Integrity: all four EXT raws read verbatim before disposition; the DP3-15 acknowledgment quote lifted verbatim from the ChatGPT raw (not inferred from the label); no ACCEPT faked; every finding source-cited to a D-id; no math fabricated; no bump on either paper (directive_g.sh not run). Streaks: P1U 3 · P2 2 · P3 2 · P4 1 · P5 3. Caps: P1A 62 · P2 74 · P3 56 · P4 74 · P5 80.",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 0,
+      note: "0 genuinely-new reader-visible editable findings across P5 M6-EXT (Grok MINOR + ChatGPT MAJOR; floor-crack stable) and P3 M6-EXT (Grok MAJOR + ChatGPT REJECT; DP3-15 now cited at its ~1.3% structural ceiling, not a re-run demand; DP3-20 dissolved). P5 streak 2→3; P3 streak 1→2 (rejoins exit set). Caps hold P5 80 · P3 56.",
+    },
+    links: [
+      { label: "P5 Grok M6 EXT raw", href: `${PR}/EXT_real/H17_2026-07-10/M6/P5_grok_M6.md` },
+      { label: "P5 ChatGPT M6 EXT raw", href: `${PR}/EXT_real/H17_2026-07-10/M6/P5_chatgpt_M6.md` },
+      { label: "P3 Grok M6 EXT raw", href: `${PR}/EXT_real/H17_2026-07-10/M6/P3APJS_grok_M6.md` },
+      { label: "P3 ChatGPT M6 EXT raw", href: `${PR}/EXT_real/H17_2026-07-10/M6/P3APJS_chatgpt_M6.md` },
+    ],
+  },
+  {
     id: "m5-ext-confirm-wave-2026-07-12",
     dateISO: "2026-07-12",
     kind: "external-browser",
