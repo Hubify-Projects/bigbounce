@@ -57,6 +57,27 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p4-image-level-e2e-injection-folded-2026-07-12",
+    dateISO: "2026-07-12",
+    kind: "closure-wave",
+    title:
+      "P4 v1.0.238 — directive-L compute closer FOLDED: full image-level end-to-end mirror-flip injection performed on all 8.47M galaxies. The image-level pseudo-label-independence MAJOR (ChatGPT DP4-15 / Gemini) is the concern that a spatially-varying image-level classifier confusion could seed a spurious chirality dipole; §VI B previously flagged the definitive test — an image-plane chirality transform on the raw cutouts through the actual classifier at ~10^6-galaxy scale — as 'the operative next step and do not perform here'. That run is now DONE (A100, 192/192 shards, SUPERVISOR_DONE): every galaxy image AND its mirror reflection passed through the production ViT (bamfai/galaxy-chirality-v2, val_acc 0.9369) over the full 8,474,531-galaxy source. Real result (artifact e2e_fullrun/e2e_transfer_function_full.json): raw image-level transfer function T_raw=0.2303±0.0002 across 3.32M CW/CCW-classified spirals, STABLE across original-confidence bins (0.207–0.261) and the N/S hemisphere split (0.218 vs 0.251, ≤0.033 absolute); production Z2-TTA labeling exactly parity-antisymmetric at the image level (T_eq=0.9997, antisymmetry max-dev 0.0) verified image-by-image on all 8.47M. The net-handedness channel a spatially-varying confusion would need to organize into a dipole is thus absent by TTA construction AND now empirically confirmed. Honestly scoped: does NOT close the finer per-pixel depth/PSF/morphology conditional confusion model (hemisphere/leg strata bound but do not fully resolve it); the g=0.398 GZ1-accuracy dilution factor is unchanged (a distinct quantity). No external verdict changed by this fold — readiness cap unchanged (62) pending an external re-test.",
+    papers: ["P4"],
+    summary:
+      "The image-level end-to-end mirror-flip injection §VI B flagged as 'do not perform here' is now PERFORMED on all 8.47M galaxies through the production ViT: T_raw=0.2303±0.0002, stable across confidence bins + N/S strata; Z2-TTA labeling exactly parity-antisymmetric (T_eq=0.9997, antisym-maxdev 0). Real compute (A100, 192/192 shards), honestly scoped, g=0.398 unchanged. Answers ChatGPT DP4-15 / Gemini image-level MAJOR. v1.0.237→v1.0.238.",
+    keyTakeaways: [
+      "Full image-level end-to-end mirror-flip injection RUN on all 8,474,531 galaxies through the production ViT — the exact test §VI B previously deferred as 'the operative next step and do not perform here'.",
+      "T_raw = 0.2303 ± 0.0002 (raw image-level transfer, 3.32M CW/CCW spirals), STABLE across confidence bins (0.207–0.261) and N/S hemispheres (0.218 vs 0.251) — no strong sky-position-dependent image confusion.",
+      "Production Z2-TTA labeling exactly parity-antisymmetric at the image level (T_eq=0.9997, antisym max-dev 0.0), verified image-by-image on all 8.47M — the net-handedness channel a spatial confusion would need to seed a dipole is absent by construction + confirmed empirically.",
+      "Honestly scoped: does NOT close the finer per-pixel depth/PSF/morphology confusion model; g=0.398 GZ1-accuracy dilution factor unchanged; no external verdict changed by this fold (cap held at 62 pending external re-test).",
+    ],
+    links: [
+      { label: "Transfer-function artifact (JSON)", href: `${GH}/pipelines/p2_chirality/outputs/canonical_provenance/e2e_fullrun/e2e_transfer_function_full.json` },
+      { label: "Run log (192/192 shards)", href: `${GH}/pipelines/p2_chirality/outputs/canonical_provenance/e2e_fullrun/run.log` },
+      { label: "P4 dispositions ledger", href: `${PR}/DISPOSITIONS/P4.md` },
+    ],
+  },
+  {
     id: "p1u-dp1u-presentation-overhaul-2026-07-12",
     dateISO: "2026-07-12",
     kind: "internal-api",

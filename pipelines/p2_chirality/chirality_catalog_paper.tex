@@ -52,7 +52,20 @@
 \newcommand{\sigmaunit}{\sigma}
 \newcommand{\vit}{ViT-Small}
 \newcommand{\etal}{\textit{et~al.}}
-\newcommand{\paperVersion}{v1.0.237}
+\newcommand{\paperVersion}{v1.0.238}
+% v1.0.238 (2026-07-12 — directive-L compute closer FOLDED: the full image-level end-to-end
+%   mirror-flip injection flagged in Sec.~sensitivity as "the operative next step and do not
+%   perform here" is now PERFORMED on the full 8.47M-galaxy image source through the production
+%   ViT (bamfai/galaxy-chirality-v2, val_acc 0.9369). Real result (artifact e2e_fullrun/
+%   e2e_transfer_function_full.json, 192/192 shards, SUPERVISOR_DONE): raw image-level transfer
+%   T_raw=0.2303±0.0002, stable across confidence bins (0.207-0.261) + N/S strata (0.218 vs 0.251);
+%   production Z2-TTA labeling exactly parity-antisymmetric at image level (T_eq=0.9997, antisym
+%   maxdev 0.0) verified image-by-image on all 8.47M — the net-handedness channel a spatially-
+%   varying confusion would need for a dipole is absent by construction + now empirically confirmed.
+%   Honestly scoped: does NOT close the finer per-pixel depth/PSF/morphology confusion model; g=0.398
+%   dilution factor (GZ1-accuracy-based) unchanged. Directly answers ChatGPT DP4-15 / Gemini image-
+%   level pseudo-label-independence MAJOR. Directive-G: recompile 0 undef + mirror all served paths
+%   + Convex paperVersions:bump paper-4.)
 % v1.0.237 (2026-07-12 — directive-M presentation overhaul answering the recurring ChatGPT/OpenAI
 %   "excessively long, repetitive, internally self-justifying" MINOR (DP4-13) + PRD single-paragraph
 %   abstract ask. ZERO content/number change (byte-preserving relocation only): (1) abstract collapsed
@@ -1142,8 +1155,35 @@ confidence cut, and only then fitting the dipole, with a
 morphology, and imaging leg. That test is the one calibration that would
 convert the observed-label thresholds into a spatially-resolved physical
 transfer function; it requires per-cutout image transforms at
-$\sim\!10^{6}$-galaxy scale and a validated conditional confusion model,
-which we flag as the operative next step and do not perform here.
+$\sim\!10^{6}$-galaxy scale and a validated conditional confusion model.
+\emph{We now perform the image-level end-to-end mirror-flip injection
+directly.} Passing every galaxy image \emph{and} its mirror reflection
+through the production ViT (\texttt{bamfai/galaxy-chirality-v2}, validation
+accuracy $0.9369$) over the full $8.47\times10^{6}$-galaxy image source
+measures the raw image-level chirality transfer function --- the fraction of
+the $3.32\times10^{6}$ raw-head CW/CCW-classified spirals whose class flips
+under reflection --- at $T_{\rm raw}=0.2303\pm0.0002$, stable across
+original-confidence bins ($0.207$--$0.261$ from the $[0.9,0.99)$ to the
+$[0,0.7)$ bin) and across the North/South hemisphere split ($T_{\rm
+raw}^{N}\!=\!0.218$ vs.\ $T_{\rm raw}^{S}\!=\!0.251$, a $\lesssim\!0.033$
+absolute variation). Crucially, the production Z2-equivariant TTA labeling
+(\texttt{class\_eq}/$p_{\rm eq}$) is \emph{exactly parity-antisymmetric at
+the image level}: the mirror-flip transfer under TTA is $T_{\rm eq}=0.9997$
+with maximum antisymmetry deviation $0.0$, verified numerically image-by-image
+on all $8.47\times10^{6}$ galaxies (artifact
+\artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/e2e\_fullrun/e2e\_transfer\_function\_full.json}).
+The net image-level handedness preference that a spatially-varying confusion
+would have to organize into a coherent dipole is therefore \emph{absent by
+TTA construction and now confirmed empirically image-by-image}, and the raw
+transfer function itself carries no strong sky-position dependence (the
+$\lesssim\!0.033$ N/S variation is a dilution-\emph{magnitude} effect,
+symmetrized by the TTA, not a directional CW$\leftrightarrow$CCW asymmetry).
+This converts the previously-flagged ``operative next step'' into a performed,
+full-catalog measurement. What the image-level run does \emph{not} yet supply
+is the finer per-pixel confusion model jointly conditioned on depth, PSF, and
+morphology --- the hemisphere-level and imaging-leg stratifications bound but
+do not fully resolve it --- so we continue to hold the operative falsification
+claims to the observed hard-label field.
 A first, coarse instance of that spatially-varying confusion model
 \emph{now exists at imaging-leg granularity}: the GZ1-overlap confusion
 matrix stratified by the two P4 imaging legs and by confidence
