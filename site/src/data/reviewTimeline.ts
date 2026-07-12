@@ -57,6 +57,34 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "m4-ext-confirm-wave-2026-07-12",
+    dateISO: "2026-07-12",
+    kind: "external-browser",
+    title:
+      "M4-EXT confirm wave — external re-reads of the two just-adjudicated papers on byte-unchanged versions (P1U v1U.0.19, P2 v1.7.116). P1U: EXT ChatGPT REJECT (16 MAJOR / 2 MINOR) + Grok MAJOR (3 MAJOR / 2 MINOR). P2: EXT ChatGPT REJECT (11 MAJOR / 2 MINOR) + Grok MINOR (4 MINOR). Strict verdict-first ledger truth-audit (ledger_match.py pre-match + one Opus sub-agent per paper vs each .tex + DISPOSITIONS): 0 genuinely-new reader-visible editable findings on either paper — every finding a source-cited standing D-id re-flag on unchanged content, the documented LLM harsh-referee floor (pattern-066). Both papers' clean-wave streaks increment 1→2.",
+    papers: ["P1U", "P2"],
+    summary:
+      "M4-EXT external re-reads confirm both papers on byte-unchanged versions. P1U (v1U.0.19): ChatGPT REJECT + Grok MAJOR, 0 genuinely-new (fingerprint-UNMATCHED items resolved: #2→DP1U-14/-16, #7→DP1U-09, #12→DP1U-14, #14→DP1U-13, #15→DP1U-15, #17→DP1U-22/-06/-21; Grok mass-dim→DP1U-08). P2 (v1.7.116): ChatGPT REJECT + Grok MINOR, 0 genuinely-new (both UNMATCHED ChatGPT items→DP2-30: MegaMapper L1186 + scope/repro; ChatGPT Q3 concedes −35/16 plausible). Both streaks 1→2. Caps HOLD P1A 62 · P2 74. No bumps.",
+    keyTakeaways: [
+      "P1U 0 genuinely-new on byte-unchanged v1U.0.19: ChatGPT REJECT (16 MAJOR) + Grok MAJOR (3 MAJOR) all source-cited standing DP1U re-flags; the 6 fingerprint-UNMATCHED ChatGPT items each resolve to an existing D-id (no-single-model→DP1U-14/-16, Route-2 10^-60→DP1U-09, §XIV.D erasure→DP1U-14, barrier-catalog→DP1U-13, App-F CAMB→DP1U-15, radical-narrowing→DP1U-22/-06/-21). Streak 1→2.",
+      "P2 0 genuinely-new on byte-unchanged v1.7.116: ChatGPT REJECT (11 MAJOR) + Grok MINOR (4 MINOR) all standing DP2 re-flags; the 2 UNMATCHED ChatGPT items both = DP2-30 — MegaMapper 'uncalibrated' disclosure is verbatim in the paper (02_full_draft.tex L1186) and the scope/reproducibility narrowing is already disclosed. Streak 1→2.",
+      "Referee variance confirmed harmless (pattern-066): identical verdict words on unchanged content across INT (M4-INT) and EXT (M4-EXT) waves, 0 fresh findings either way — the harsh-referee floor is structural, not content-driven. ChatGPT P2 Q3 even concedes −35/16 is 'plausibly supported'.",
+      "Integrity: all four EXT raws (P1U + P2 × ChatGPT + Grok) read verbatim before any disposition; no ACCEPT faked; every finding source-cited to a D-id + .tex line; no math fabricated; no version bumped (no reader-visible edit warranted); directive_g.sh not run.",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 0,
+      note: "0 genuinely-new reader-visible editable findings across P1U M4-EXT (ChatGPT REJECT + Grok MAJOR) and P2 M4-EXT (ChatGPT REJECT + Grok MINOR) on byte-unchanged versions. Both clean-wave streaks 1→2; caps hold P1A 62 · P2 74.",
+    },
+    links: [
+      { label: "P1U M4-EXT truth-audit", href: `${PR}/EXT_real/H17_2026-07-10/M4/P1U_truth_audit_M4.md` },
+      { label: "P1U ChatGPT M4 EXT raw", href: `${PR}/EXT_real/H17_2026-07-10/M4/P1U_chatgpt_M4.md` },
+      { label: "P1U Grok M4 EXT raw", href: `${PR}/EXT_real/H17_2026-07-10/M4/P1U_grok_M4.md` },
+      { label: "P2 M4-EXT truth-audit", href: `${PR}/EXT_real/H17_2026-07-10/M4/P2_truth_audit_M4.md` },
+      { label: "P2 ChatGPT M4 EXT raw", href: `${PR}/EXT_real/H17_2026-07-10/M4/P2_chatgpt_M4.md` },
+      { label: "P2 Grok M4 EXT raw", href: `${PR}/EXT_real/H17_2026-07-10/M4/P2_grok_M4.md` },
+    ],
+  },
+  {
     id: "m3-m2c-confirm-wave-2026-07-12",
     dateISO: "2026-07-12",
     kind: "external-browser",

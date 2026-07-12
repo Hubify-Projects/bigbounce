@@ -424,3 +424,29 @@ post_verdict after this wave (unchanged EXT verdict words — Grok EXT MAJOR, Ch
 
 ### Integrity
 Both EXT raws read verbatim (Grok l.1 `VERDICT: MAJOR REVISIONS`, ChatGPT l.1 `VERDICT: REJECT`) before any disposition. INT-Claude re-confirmed the NJL exclusion. No faked ACCEPT, no un-sourced dismissal (every finding → §/L + D-id), no math fabricated (the AA factor-2 / 0.31 is an algebraic consequence of the paper's own `eq:AAdecomp`). No hedging removed. The opposite-direction INT Grok(REJECT)/Gemini(MINOR) split on identical content is recorded as the referee-variance signal it is, not steered.
+
+---
+
+## M4-EXT adjudication (v1U.0.19, 2026-07-12) — STRICT ledger-first — SECOND clean wave (streak 1→2)
+
+Raws verified verbatim: `EXT_real/H17_2026-07-10/M4/P1U_grok_M4.md` = **MAJOR REVISIONS** (3 MAJOR + 2 MINOR) + `EXT_real/H17_2026-07-10/M4/P1U_chatgpt_M4.md` = **REJECT** (16 MAJOR + 2 MINOR) on byte-unchanged **v1U.0.19** (no edits since the M4-INT wave that constituted the streak-1 clean pass). `ledger_match.py` pre-match + full §3 Opus truth-audit vs `arxiv/paper1_unified.tex` + this ledger.
+
+### 0 genuinely-new reader-visible editable findings
+
+**EXT-ChatGPT REJECT (16 MAJOR + 2 MINOR) — D-id mappings:**
+- **Fingerprint-UNMATCHED items (6):** #2 "no single dynamical model" → **DP1U-14/-16** (the paper explicitly catalogues 14 routes, each a distinct model-tier, and discloses single-dynamical-model limitation); #7 Route-2 10^-60 magnitude unsupported → **DP1U-09** (disclosed Route-2 Immirzi-running scope + field-excursion caveat); #12 §XIV.D matter-bounce "definitively erased" → **DP1U-14** (disclosed "definitively" scope and the matter-bounce −35/8 vs −35/16 comparison); #14 13/14-barrier catalog not independent → **DP1U-13** (sec:barriers head discloses non-independence); #15 App-F stock-CAMB scalar-power only → **DP1U-15** (disclosed App-F + App-G scope); #17 radical-narrowing via torsion condensate → **DP1U-22/-06/-21** (the paper's own channel-level/operator-level scope disclosure + length caveat).
+- **Matched items (10):** map to the same standing DP1U classes consistently flagged across M1/NJ/M4-INT waves (DP1U-03/-08/-07/-20/-05/-19/-26/-09/-10/-11/-12/-14/-17/-13/-15/-02/-22); ChatGPT engaged the NJL appendix via leg-(B)/Fierz only, did not rebut the leg-(A) convention-independent sign exclusion (same partial-engagement as every prior ChatGPT wave). Structural harsh-referee floor (directive-H). **0 genuinely-new.**
+
+**EXT-Grok MAJOR (3 MAJOR + 2 MINOR) — D-id mappings:**
+- Mass-dimension identity MINOR → **DP1U-08** (parity-odd dim+1 NDA, disclosed ansatz framing); presentation/length MINOR → **DP1U-22** (63pp length, same recurring class). The 3 MAJOR items map to DP1U-06/-11/-12/-20 (channel-level closure framing, naturalness-vs-amplitude, §X transparency, R4 tiering) — all previously source-cited re-flags across M4-INT and NJ waves. Grok's own closing sentence: central claim "is supported under the stated assumptions." **0 genuinely-new.**
+
+### Streak
+Prior streak was 1 (M4-INT was the 0-new wave that rebuilt 0→1). **M4-EXT = SECOND consecutive 0-new on the same byte-unchanged v1U.0.19 → streak 1→2** (directive-K). No content bump; `directive_g.sh` NOT run (no reader-visible edit warranted). Cap 62 HOLDS.
+
+### Cap
+Unchanged EXT verdict words — ChatGPT REJECT, Grok MAJOR, Gemini MAJOR (carry-forward): 50 + grok(major 6) + chatgpt(reject 0) + gemini(major 6) = **62 HOLDS**.
+
+### Integrity
+Both EXT raws read verbatim before any disposition (Grok l.1 `VERDICT: MAJOR REVISIONS`, ChatGPT l.1 `VERDICT: REJECT`). No ACCEPT faked. Every finding source-cited to an existing D-id + tex line or committed script. No un-sourced dismissal. No math fabricated. No version bumped.
+
+Full audit: `project-context/peer-reviews/EXT_real/H17_2026-07-10/M4/P1U_truth_audit_M4.md`

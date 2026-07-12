@@ -1,3 +1,4 @@
+<!-- M4-EXT (2026-07-12): 0 genuinely-new on byte-unchanged v1.7.116; EXT ChatGPT REJECT (11 MAJOR / 2 MINOR) + Grok MINOR (4 MINOR); all source-cited standing D-id re-flags (pattern-066 floor); clean-wave streak 1→2; no bump; cap 74 HOLDS. -->
 <!-- M1 wave note (2026-07-12): P2 0 genuinely-new (+Claude INT MAJOR = presentation-only re-flag); all findings re-flags of standing DP2 D-ids; clean-wave streak 4→5; cap 74 HOLDS. -->
 ---
 title: "Paper 2 SSOT — f_NL Forecast (SPHEREx / MegaMapper)"
