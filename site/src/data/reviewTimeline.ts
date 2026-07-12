@@ -48,6 +48,28 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "h17-nj3-rs2-adjudication-2026-07-12",
+    dateISO: "2026-07-12",
+    kind: "external-browser",
+    title:
+      "H17 NJ3/RS2 strict adjudication: P5 earns a SECOND Grok EXT ACCEPT — this time on the fully-corrected v0.1.123; 0 genuinely-new on either paper (P1U v1U.0.16 / P5 v0.1.123 stand). P5 best-ever INT board (no REJECT).",
+    papers: ["P1A", "P5"],
+    summary:
+      "Ledger-first strict adjudication of two waves on the corrected papers. RAW ACCEPT VERIFIED char-for-char: RS2/P5_grok_RS2.md line 1 = 'VERDICT: ACCEPT' — Grok's SECOND external ACCEPT on P5, now on the fully-corrected v0.1.123 (RSD-estimand relabel + sign + 0.898 quadrature done), so it is an ACCEPT on the fixed paper, not the pre-fix one. INT (run.log 2026-07-12T08:24Z): P5 v0.1.123 openai=MAJOR/grok=MINOR/gemini=MINOR/claude=MINOR — P5's BEST-EVER internal board (no INT REJECT). P1U v1U.0.16 openai=REJECT/grok=REJECT/gemini=MAJOR/claude=MINOR. ChatGPT EXT legs FAILED-dead both papers (RS2b/NJ3b retries in flight) — recorded as chart GAPs, never zeros. ADJUDICATION: 0 genuinely-new reader-visible editable findings on EITHER paper. P5 — all 4 Grok EXT minors are source-cited re-flags/open-venue: post-hoc disclosure (DP5-13), 2.1σ sign-flip leakage ~0.001pp ALREADY in the paper (DP5-14; Grok itself says 'calculation already performed in the text' = process-nit), ≈0.9pp quadrature envelope (DP5-11), Paper-IV/DOI submission logistics (DP5-21, open-venue). P1U — all 5 Grok EXT findings re-flag existing dispositions: four-route/channel-vs-operator framing (DP1U-06), Sec-X all-orders transparency (DP1U-12), 14-barrier tiering (DP1U-13), NJL mean-field caveat (DP1U-05, engaged the v1U.0.16 leg-A fix), length/self-reference (DP1U-18/-24). GEMINI-P1U OSCILLATION DIAGNOSED: Gemini INT flipped MIN(NJ2 v1U.0.15)→MAJ(NJ3 v1U.0.16) although the only content delta is the DP1U-26 NJL leg-A scoping fix — its 3 NJ3 MAJORs are #1 abstract-too-long/PRD-style, #2 meta-commentary/tier-labels, #3 Sec-X 'trivial corollary' framing, NONE touching the delta (all → DP1U-24 style-disclosure + DP1U-12); its 2 minors near the appendix are disclosed re-flags. Pure presentational-axis referee variance (pattern-066) on unchanged science; Gemini's own one-sentence: 'the central claim is robustly supported by the physics.' No bump on either paper; directive_g.sh not run (no edit). Streaks: P5 2→3, P1U 0→1. Caps: P5 74→79 (Grok EXT ACCEPT recompute), P1U 62 holds. No fabrication, no faked ACCEPT, every dismissal source-cited.",
+    keyTakeaways: [
+      "VERIFIED: P5 second Grok EXT ACCEPT (RS2/P5_grok_RS2.md line 1 literal 'VERDICT: ACCEPT') — on the fully-corrected v0.1.123, not the pre-fix version",
+      "0 genuinely-new reader-visible findings on either paper; all P5(4) + P1U(5) Grok findings source-cited re-flags / open-venue / process-nit — no reset, no bump",
+      "P5 best-ever INT board: openai MAJOR / grok MINOR / gemini MINOR / claude MINOR (no INT REJECT)",
+      "Gemini-P1U MIN→MAJ oscillation = presentational-axis referee variance (pattern-066): its 3 MAJORs are abstract-length/meta-text/Sec-X-framing, none touching the DP1U-26 delta; it still calls the central claim 'robustly supported'",
+      "Streaks P5 2→3, P1U 0→1; caps P5 74→79 (Grok EXT ACCEPT), P1U 62 holds",
+    ],
+    links: [
+      { label: "P5 truth-audit (RS2)", href: `${PR}/EXT_real/H17_2026-07-10/RS2/P5_RS2_truth_audit.md` },
+      { label: "P1U truth-audit (NJ3)", href: `${PR}/EXT_real/H17_2026-07-10/NJ3/P1U_NJ3_truth_audit.md` },
+      { label: "P5 Grok RS2 raw (ACCEPT)", href: `${PR}/EXT_real/H17_2026-07-10/RS2/P5_grok_RS2.md` },
+    ],
+  },
+  {
     id: "h17-nj2-cn2-rs1-full-adjudication-2026-07-12",
     dateISO: "2026-07-12",
     kind: "external-browser",
