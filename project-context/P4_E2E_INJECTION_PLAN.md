@@ -40,12 +40,20 @@ flip-invariant noise. That is exactly the quantity a referee wants when asking
 whether `g = 0.398` (human-ground-truth calibration) is an honest transfer factor,
 and it is measured **through the actual ViT on real survey images**.
 
-**Pilot smoke result (n=212 pairs, MPS, seed = stream order):**
-- RAW transfer function `T_raw = 0.571 ± 0.034` (P(argmax flips CW↔CCW))
-- RAW image-level `g_img = 2·a_img − 1 = 0.198` in the spiral↔spiral pool
-  vs paper's GZ1-derived `g = 0.398`
-- Full pilot (n=2500, confidence-stratified + EQ verification) running; final
-  numbers in the JSON artifact.
+**Pilot FINAL result (n=2,500 pairs, MPS, stream order; commit 6a09f8e1):**
+- RAW transfer function `T_raw = 0.6504 ± 0.0095` (P(argmax flips CW↔CCW))
+- RAW image-level `g_img = 2·a_img − 1 = 0.3578` (spiral↔spiral pool) vs the
+  paper's GZ1-derived `g = 0.398` — **consistent within ~10%**; the image-level
+  end-to-end measurement broadly supports the paper's assumed transfer factor.
+- **EQ-mode (production Z₂-TTA) verified EXACTLY antisymmetric through the real
+  weights: `T_eq = 1.0` over 2,472 pairs, max antisymmetry deviation 0.0** —
+  the production pipeline registers a physical chirality inversion with
+  probability 1 by construction, confirmed numerically end-to-end.
+- Confidence-stratified: `T_raw = 0.710` at conf ≥ 0.99 (n=1,882); 0.42–0.48
+  in lower bins (marginal spirals are noise-dominated, as expected).
+- Raw classifier shows a CW-prediction bias (CCW→CW flip 76% vs CW→CCW 57%) —
+  exactly the parity asymmetry the EQ postprocessing removes by construction.
+- (Earlier n=212 smoke gave T=0.571, g_img=0.198 — small-sample; superseded.)
 
 Interpretation guardrails (NEVER overclaim):
 - `T_raw`/`g_img` on unfiltered stream galaxies is dominated by low-confidence
