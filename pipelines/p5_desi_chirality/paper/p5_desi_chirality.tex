@@ -41,7 +41,23 @@
 % The divide-by-h claim (~1246 h⁻¹ Mpc) is INVERTED. No pipeline recompute required.
 % If any future reviewer re-raises this, cite env_finder/01_compute_vweb.py:106-108.
 
-\newcommand{\paperVersion}{v0.1.121-2026-07-11}
+\newcommand{\paperVersion}{v0.1.122-2026-07-12}
+% v0.1.122-2026-07-12 (directive-L closure DP5-12: RSD reconstruction bound INTEGRATED):
+%   - DP5-12 (recurring ChatGPT-M4/Grok-M3 RSD MAJOR) goes from RE-FLAG-DISCLOSED
+%     ("reconstruction deferred") to CLOSED-BY-COMPUTE (first-order). Consistent
+%     linear-theory Zel'dovich reconstruction (Hamaus, Sutter & Wandelt 2014 universal
+%     void velocity profile; galaxies AND published DESIVAST holes displaced together by
+%     the same coherent void-outflow field; exact scripts/26 any-hole membership re-run).
+%     Sample validated 678,987 vs ref 678,945; n_void 57,058 vs ref 57,081.
+%     Primary Δf_CW z-space −0.069pp → reconstructed −0.045pp; computed RSD systematic
+%     |shift|=0.024pp (MC +0.026±0.049pp); |z| 0.32→0.18; ≈40× under the ≈0.9pp envelope;
+%     null preserved. Artifact outputs/27_rsd_void_recon_bound.json [A33], script [A34].
+%   - Integrated at: §VIII DESIVAST-RSD discussion (computed bound + honest first-order
+%     scope), §XIII limitations (T-Web anisotropic-eigenvalue residual distinguished from
+%     the now-bounded primary DESIVAST path), abstract RSD clause (deferred → bounded),
+%     systematics-budget table (0.02pp row; quadrature envelope unchanged ≈0.9pp, √0.886),
+%     Hamaus2014 bibitem + [A33]/[A34] artifact index. Honest residual retained: NOT a full
+%     nonlinear iterative void-catalog re-derivation; small-scale FoG stays MC-bounded.
 % v0.1.121-2026-07-11 (restamp + recompile at program-exit state; no content change.)
 % v0.1.120-2026-07-10 (W3-INT confirm wave; changelog bookkeeping only, no reader-visible change, no invented number):
 %   - Added this dedicated changelog block of record for the void-stratum integration.
@@ -747,7 +763,7 @@
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{July 11, 2026}
+\date{July 12, 2026}
 
 \begin{abstract}
 \textbf{Headline result:} spiral galaxy chirality shows no void/non-void
@@ -810,14 +826,21 @@ The robustly-quotable headline is the \emph{family-wise} Bonferroni-5
 null across all five DESIVAST void definitions ($|z_\Delta|\!\le\!1.25$),
 not any single most-favorable row (see \S\ref{sec:primary_path}); the
 post-hoc primary designation and the few-dozen-trial analysis tree are
-explicitly disclosed. All bounds in this paper represent
-\emph{fixed-redshift-space} metrics: the T-Web classification,
-DESIVAST void cross-check, and all null tests are performed without
-real-space reconstruction and inherit redshift-space distortion (RSD)
+explicitly disclosed. All bounds in this paper are quoted at
+\emph{fixed-redshift-space} classification: the T-Web classification,
+DESIVAST void cross-check, and all null tests are performed in DESI DR1
+redshift coordinates and inherit redshift-space distortion (RSD)
 effects; model-builders should not interpret them as pure real-space
-environmental constraints (see \S\ref{sec:limitations}).
-The anisotropic tidal-tensor eigenvalue deformation channel is not
-quantified.
+environmental constraints (see \S\ref{sec:limitations}). For the
+\emph{primary} DESIVAST path the dominant coherent void-outflow RSD term
+is bounded by a consistent first-order Zel'dovich reconstruction that
+displaces galaxies and the DESIVAST holes together under one physical
+velocity field: the primary $\Delta f_{\rm CW}$ shifts by only
+$0.024$\,pp ($-0.069\!\to\!-0.045$\,pp), ${\approx}40\times$ under the
+${\approx}0.9$\,pp systematic envelope, with the null preserved. This
+first-order bound is not a full nonlinear re-derivation of the void
+catalog, and the anisotropic tidal-tensor eigenvalue deformation channel
+of the secondary T-Web path remains unquantified.
 
 \emph{Setup.} We cross-match the 8{,}474{,}531-galaxy chirality catalog of the
 companion catalog paper (Paper~IV)~\cite{golden_chirality_2026}
@@ -2883,11 +2906,37 @@ ${\gtrsim}1.3\times$ the maximum per-realization shift actually
 observed), corresponding to a systematic
 reconstruction error of order the void effective radius itself
 ($R_{\rm eff}\!\gtrsim\!10$\,Mpc/$h$), which is not supported by the
-fixed-void-geometry stress test. We do not claim full RSD immunity
-(a reconstructed-position rerun is deferred; see \S\ref{sec:limitations}),
+fixed-void-geometry stress test. We do not claim full RSD immunity,
 but the MC bound demonstrates that plausible fixed-geometry membership
 uncertainty does not destabilize the ${\approx}0.9$\,pp systematic
-envelope.
+envelope. \emph{Consistent first-order reconstruction bound.} Beyond the
+fixed-geometry MC, we now compute a directly consistent linear-theory
+bound in which galaxies \emph{and} the published DESIVAST holes are
+displaced together by the same coherent void-outflow velocity field
+(first-order Zel'dovich; the Hamaus, Sutter \& Wandelt~2014
+universal void velocity profile~\cite{Hamaus2014},
+$v_r = -\tfrac{1}{3}f(z)\,\Delta(<r)\,r$, keyed to each void's own
+center and $R_{\rm eff}$), and the exact primary VoidFinder any-hole
+membership test of \S\ref{sec:desivast_maximal_healpix} is re-run in the
+reconstructed frame (sample validated at $678{,}987$ matched CW/CCW
+spirals and $n_{\rm void}=57{,}058$ against the published rerun's
+$678{,}945$ and $57{,}081$). The primary footprint-restricted
+$\Delta f_{\rm CW}$ moves from $-0.069$\,pp in redshift space to
+$-0.045$\,pp reconstructed --- a computed RSD systematic
+$|\text{shift}| = 0.024$\,pp (Monte Carlo $+0.026 \pm 0.049$\,pp over
+$200$ scatter realizations of the profile depth), roughly $40\times$
+under the ${\approx}0.9$\,pp systematic envelope, with the null verdict
+preserved ($|z|$ moving from $0.32$ in redshift space to $0.18$ in the
+reconstructed frame;
+\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/27\_rsd\_void\_recon\_bound.json}{[A33]},
+\href{\repoBase/pipelines/p5\_desi\_chirality/scripts/27\_rsd\_void\_recon\_bound.py}{[A34]}).
+This bounds the \emph{dominant coherent void-outflow} RSD term that the
+fixed-void-geometry MC cannot see; it is a first-order linear/Zel'dovich
+reconstruction, \emph{not} a full nonlinear iterative re-derivation of
+the void catalog (VoidFinder is not re-run on the reconstructed density
+field), so the small-scale stochastic finger-of-god residual remains a
+disclosed limitation bounded by the fixed-geometry MC above, and both
+fold into the same ${\approx}0.9$\,pp envelope.
 \emph{Per-term systematics (consolidated in
 Table~\ref{tab:systematic_budget}).} The void-center/effective-radius
 \emph{geometry} choice moves $\Delta f_{\rm CW}$ by $\le 0.6$\,pp between
@@ -3155,12 +3204,16 @@ mislabeled it so). Combining the seven counting-plus-systematic terms in
 quadrature (treating them as approximately independent) gives an
 effective $2\sigma$ half-width of ${\approx}0.9$\,pp. Explicitly, the
 term-sum is
-$\sqrt{0.44^2 + 0.37^2 + 0.60^2 + 0.37^2 + 0.11^2 + 0.24^2 + 0.02^2}
-= \sqrt{0.885} = 0.94$\,pp $\approx 0.9$\,pp (rows of
+$\sqrt{0.44^2 + 0.37^2 + 0.60^2 + 0.37^2 + 0.11^2 + 0.24^2 + 0.02^2
++ 0.02^2}
+= \sqrt{0.886} = 0.94$\,pp $\approx 0.9$\,pp (rows of
 Table~\ref{tab:systematic_budget}, in order: counting CI, membership,
-geometry, sphere-PIS-vs-GALZONE, footprint, confidence, match-radius);
+geometry, sphere-PIS-vs-GALZONE, footprint, confidence, match-radius,
+first-order RSD reconstruction);
 the geometry ($0.60$) and counting ($0.44$) terms dominate the sum and
-the smaller four contribute $<0.1$\,pp each in quadrature. The maximum
+the smaller five contribute $<0.1$\,pp each in quadrature (the computed
+first-order RSD reconstruction shift, $0.024$\,pp, is ${\approx}40\times$
+under the envelope; \S\ref{sec:desivast_primary}). The maximum
 single absolute excursion across all accepted void definitions is the
 $0.60$\,pp geometry term. We therefore \emph{widen} the quoted primary
 environment-independence bound to ${\approx}0.9$\,pp (honest quadrature
@@ -3210,6 +3263,7 @@ Sphere-PIS vs.\ GALZONE          & $0.37$ & \S\ref{sec:desivast_catalog_native} 
 Footprint restriction            & $0.11$ & \S\ref{sec:desivast_maximal_healpix} \\
 Confidence cut ($\ge 0.7$)       & $0.24$ & \S\ref{sec:systematics} \\
 Match-radius ($0.5$--$5''$)      & $0.02$ & \S\ref{sec:systematics} \\
+RSD reconstruction (1st-order)   & $0.02$ & \S\ref{sec:desivast_primary} \\
 \hline
 \textbf{Quadrature envelope}     & $\approx 0.9$ & (this work) \\
 \textbf{Max single excursion}    & $0.60$ & (geometry) \\
@@ -4677,6 +4731,18 @@ anisotropic eigenvalue deformation — requires the proper
 Zel'dovich-reconstructed re-classification, which we defer to a
 companion follow-up. The headline null is reported at fixed-redshift-
 space classification, with this caveat explicitly carried.
+\emph{This T-Web anisotropic-eigenvalue deferral is distinct from the
+\emph{primary} DESIVAST path, for which the dominant coherent
+void-outflow RSD term is now bounded by a consistent first-order
+Zel'dovich reconstruction ($|\text{shift}| = 0.024$\,pp, ${\approx}40\times$
+under the systematic envelope, null preserved;
+\S\ref{sec:desivast_primary},
+\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/27\_rsd\_void\_recon\_bound.json}{[A33]}).
+That first-order DESIVAST bound displaces galaxies and voids together
+under one physical field but does not re-derive the void catalog on the
+reconstructed density field, so a full nonlinear iterative
+reconstruction of both the T-Web field and the DESIVAST catalog remains
+the disclosed residual here.}
 \end{itemize}
 
 \section{Future LSST extension}\label{sec:lsst}
@@ -5363,6 +5429,8 @@ Clicking any [AN] ID in the paper PDF opens the corresponding GitHub URL.%
 \href{\repoBase/pipelines/p5\_desi\_chirality/env\_finder/config.yaml}{[A30]} & \texttt{env\_finder/config.yaml} \\
 \href{\repoBase/pipelines/p2\_chirality/outputs/gz1\_stratified\_confusion.json}{[A31]} & \texttt{p2\_chirality/outputs/gz1\_stratified\_confusion.json} \\
 \href{\repoBase/pipelines/p2\_chirality/scripts/gz1\_stratified\_confusion.py}{[A32]} & \texttt{p2\_chirality/scripts/gz1\_stratified\_confusion.py} \\
+\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/27\_rsd\_void\_recon\_bound.json}{[A33]} & \texttt{outputs/27\_rsd\_void\_recon\_bound.json} \\
+\href{\repoBase/pipelines/p5\_desi\_chirality/scripts/27\_rsd\_void\_recon\_bound.py}{[A34]} & \texttt{scripts/27\_rsd\_void\_recon\_bound.py} \\
 \end{tabular}
 \end{ruledtabular}
 }% end \small
@@ -5420,6 +5488,13 @@ M.~Cautun, R.~van de Weygaert, B.~J.~T.~Jones, and C.~S.~Frenk,
 ``Evolution of the cosmic web,''
 Mon.\ Not.\ Roy.\ Astron.\ Soc.\ \textbf{441}, 2923 (2014),
 arXiv:1401.7866.
+
+\bibitem{Hamaus2014}
+N.~Hamaus, P.~M.~Sutter, and B.~D.~Wandelt,
+``Universal density profile for cosmic voids,''
+Phys.\ Rev.\ Lett.\ \textbf{112}, 041304 (2014),
+\href{https://doi.org/10.1103/PhysRevLett.112.041304}{doi:10.1103/PhysRevLett.112.041304},
+arXiv:1307.2523.
 
 \bibitem{Planck2018cosmoparams}
 Planck Collaboration,
