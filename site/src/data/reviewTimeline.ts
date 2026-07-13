@@ -57,6 +57,31 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "m24-ext-p3apjs-dasfix-held-p4-failed-2026-07-13",
+    dateISO: "2026-07-13",
+    kind: "external-browser",
+    title:
+      "M24-EXT — P3(ApJS) DP3-21 DAS-fix HELD (streak restart 0→1) + P4 EXT BOTH legs FAILED (GAP, no verdict). P3-ApJS (v3.1.159-apjs, FIRST read after the DAS self-consistency fix): Grok MAJOR + ChatGPT REJECT — neither leg re-flags the DP3-21 Gaia/LAMOST DAS contradiction, so the fix held; 0 genuinely-new; clean-wave streak restarts 0→1; cap 56 HOLDS. P4 (v1.0.239): both EXT legs produced empty/stub raws → verdict:failed per directive I4; streak HOLDS 9, cap HOLDS 85; re-sweep needed.",
+    papers: ["P3", "P4"],
+    summary:
+      "M24-EXT: P3(ApJS) DAS-fix verification wave + P4 failed sweep. P3-ApJS (v3.1.159-apjs) is the FIRST EXT read after the DP3-21 Data-Availability self-consistency fix (commit e24b42a9). CRITICAL CHECK — did the fix hold? YES. Verdict matrix [ChatGPT, Grok, Gemini] FROM RAW (verbatim VERDICT line READ before recording): Grok MAJOR REVISIONS (4 MAJOR/2 MINOR) + ChatGPT REJECT (16 MAJOR/2 MINOR). Signature-grep of BOTH raws for the DP3-21 contradiction ('Gaia block carries feature-space scores' / 'LAMOST excluded from every headline count' / DAS internal contradiction) = NONE re-flagged. Grok: no DAS-contradiction signature. ChatGPT: the only Data-Availability hit (item #4) is the DP3-15 reproducibility ceiling citing the paper's OWN 86.6%/~1.3% numbers — NOT the DP3-21 self-contradiction; ChatGPT #11's LAMOST mention is the failed-exploratory-tier disclosure, not the DAS wording. DP3-21 FIX HELD → P3 clean-wave streak RESTARTS 0→1 (directive-K clock on v3.1.159-apjs). Ledger-first Opus truth-audit against live paper3_apjs.tex: 0 genuinely-new reader-visible editable findings; every finding source-cited to a standing DP3 D-id (Grok→DP3-01/-07/-08/-09/-10/-12/-15/-16; ChatGPT→DP3-01/-06/-07/-09/-10/-11/-12/-13/-14/-15/-16/-19/-20). Maximally-harsh ApJS floor holds (DP3-17 backfire). cap 56 HOLDS (50 + Grok-MAJ 6 + ChatGPT-REJ 0 + Gemini-REJ 0; post_verdict.sh recomputed). P4 (v1.0.239): BOTH EXT legs FAILED to capture reviewer output — P4_grok_M24.md = 273-byte Grok project-landing sidebar stub (screenshot: empty 'Start a conversation' pane, no manuscript/verdict); P4_chatgpt_M24.md = 0 bytes (screenshot: empty Chat pane, no upload). Per directive I4 ('a leg that produced no output is FAILED, not a verdict') + the readinessMetrics HONESTY CONTRACT ('a leg with no output is verdict:failed, a GAP never a zero'), both recorded verdict:failed; NO verdict synthesized from the expected labels. P4 streak HOLDS 9, cap HOLDS 85 (M21 latest-per-reviewer verdicts carry forward; a failed sweep neither advances nor resets); P4 EXT re-sweep needed. No bumps; directive_g.sh not run.",
+    keyTakeaways: [
+      "DP3-21 DAS-fix verdict: HELD. Neither M24 leg (Grok MAJOR, ChatGPT REJECT) re-flags the Gaia-block/LAMOST Data-Availability self-contradiction fixed in v3.1.159-apjs — ChatGPT's only DAS-item is the disclosed DP3-15 ~1.3% reproducibility ceiling, not the DP3-21 wording. P3 clean-wave streak RESTARTS 0→1; cap 56 HOLDS.",
+      "P4 EXT integrity: BOTH legs FAILED (Grok 273-byte sidebar stub, ChatGPT 0 bytes) — recorded verdict:failed (a chart GAP) per directive I4, NOT the expected MINOR/REJECT. A leg that produced no output is never a verdict. P4 streak HOLDS 9, cap HOLDS 85; re-sweep needed.",
+      "Integrity: both P3 raws read verbatim before disposition; DP3-21 fix checked by signature-grep of both raws + Opus read; every P3 finding source-cited to a DP3 D-id; both P4 raws + screenshots inspected and confirmed empty/stub; no ACCEPT faked, no verdict synthesized from a label, no math fabricated, no version bumped, directive_g.sh NOT run. Streaks: P1U 10 · P2 10 · P3 1 · P4 9 · P5 9. Caps: P1A 62 · P2 68 · P3 56 · P4 85 · P5 74.",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 0,
+      note: "0 genuinely-new reader-visible editable findings on P3-ApJS M24-EXT (Grok MAJOR + ChatGPT REJECT — DP3-21 DAS-fix HELD, neither leg re-flags it, all findings source-cited DP3 re-flags). P3 streak restarts 0→1; cap 56 HOLDS. P4 M24-EXT BOTH legs FAILED (empty/stub raws → verdict:failed GAP per directive I4); P4 streak HOLDS 9, cap HOLDS 85. All-A grid fed via Convex readinessMetrics.",
+    },
+    links: [
+      { label: "P3 M24 truth audit", href: `${PR}/EXT_real/H17_2026-07-10/M24/P3APJS_truth_audit_M24.md` },
+      { label: "P4 M24 truth audit (FAILED legs)", href: `${PR}/EXT_real/H17_2026-07-10/M24/P4_truth_audit_M24.md` },
+      { label: "P3 disposition ledger", href: `${PR}/DISPOSITIONS/P3.md` },
+      { label: "P4 disposition ledger", href: `${PR}/DISPOSITIONS/P4.md` },
+    ],
+  },
+  {
     id: "m22-ext-p5-p3apjs-confirm-2026-07-13",
     dateISO: "2026-07-13",
     kind: "external-browser",
@@ -6400,6 +6425,20 @@ export const externalVerdictRounds: ExternalRoundVerdicts[] = [
       P5: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
     },
     note: "M23-EXT — byte-unchanged re-audit of P2 (v1.7.116) + P1U (v1U.0.20, P1A column). Verdict matrix [ChatGPT, Grok, Gemini] FROM RAW (verbatim VERDICT line READ before recording): P2 ChatGPT REJECT (9 MAJOR/2 MINOR) + Grok MAJOR (3 MAJOR/2 MINOR); P1U ChatGPT REJECT (12 MAJOR/1 MINOR) + Grok MAJOR (3 MAJOR/3 MINOR). Truth-audit (ledger_match.py + one Opus per paper vs each .tex + DISPOSITIONS): 0 genuinely-new reader-visible editable findings on either paper. P2 — every finding source-cited to a standing DP2 D-id (Grok→DP2-04/-17/-02/-16/-13/-14/-15/-18; ChatGPT→DP2-15/-03/-28/-14/-17/-22/-07/-26/-13/-16/-02/-19/-20/-18/-21/-30); ChatGPT #1's coefficient claim (vertex poly ⇒ (3,1,−9,5,−33,9) vs adopted (2,7,3,−12,−69,19)) is a DP2-15 amplitude-invariant null-space stress-band re-flag (ref vector present verbatim tex L1032, never enters σ_eff) + DP2-03 'not a naive additive shift' (verbatim L1556) + DP2-28 stale null-space generator (not \\includegraphics'd, no PDF corruption). ChatGPT #11 mutable-filenames/immutable-archive = PROCESS-NIT (no reset) → DP2-30; both closings AFFIRM −35/16. P1U — all findings source-cited to standing DP1U D-ids (Grok→DP1U-06/-22/-19/-05/-14/-07/-20/-13/-15/-12; ChatGPT→DP1U-03/-08/-11/-07/-20/-14/-09/-10/-05/-19/-04/-12/-13/-17/-15/-24/-22); ChatGPT #4 (J5²/M_Pl²∝a^-6 stiff not w=-1) disclosed verbatim (a^-6 L5292, 'no coherent w=-1 vacuum component' L2594, D_inf='mathematical scaffolding' L4172); #11 (no unified model / bounce-junction matching) = DP1U-14 'outside the scope' L4200; NJL = DP1U-05/-19 CLOSED-BY-COMPUTE v1U.0.14; Grok matches M21-MAJOR (pattern-066). DAS cross-check (per M22-P3 DP3-21): NO data-availability self-contradiction flagged in either leg. Clean-wave streaks: P2 9→10 · P1U 9→10. Caps HOLD: P2 68 · P1A 62 (recomputed via post_verdict.sh true _creationTime-latest: 50 + Grok-MAJ 6 + ChatGPT-REJ 0 + Gemini-MAJ). No bumps; directive_g.sh not run; no ACCEPT faked, no finding dismissed without a source-cited verdict, no math fabricated. Raws + per-paper truth-audits: EXT_real/H17_2026-07-10/M23/.",
+  },
+  {
+    roundId: "M24",
+    dateISO: "2026-07-13",
+    windowPT: "Jul 13 · P3-ApJS (v3.1.159-apjs) FIRST read after the DP3-21 DAS self-consistency fix — DAS-fix HELD · P4 (v1.0.239) EXT BOTH legs FAILED (empty/stub raws, verdict:failed = GAP per directive I4) · headed browser, raw verbatim VERDICT line READ before every verdict · Gemini + P1A/P1B/P2/P5 not swept (carried)",
+    verdicts: {
+      P1A: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P1B: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P2: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P3: ["REJECT", "MAJOR", "NO_VERDICT"],
+      P4: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P5: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+    },
+    note: "M24-EXT. P3-ApJS = FIRST EXT read of the DP3-21-fixed v3.1.159-apjs (commit e24b42a9). CRITICAL CHECK — did the DAS self-consistency fix hold? YES / HELD. Verdict matrix [ChatGPT, Grok, Gemini] FROM RAW (verbatim VERDICT line READ before recording): P3 ChatGPT REJECT (16 MAJOR/2 MINOR) + Grok MAJOR (4 MAJOR/2 MINOR). Signature-grep of BOTH raws for the DP3-21 contradiction (\"Gaia block carries feature-space scores\" / \"LAMOST excluded from every count\" / DAS internal contradiction) = NONE re-flagged. Grok: no DAS-contradiction signature. ChatGPT: the only Data-Availability hit (item #4) is the DP3-15 reproducibility ceiling citing the paper's OWN 86.6%/~1.3% numbers — NOT the DP3-21 self-contradiction; ChatGPT #11 LAMOST mention = failed-exploratory-tier disclosure, not the DAS wording. DP3-21 FIX HELD → P3 clean-wave streak RESTARTS 0→1 (directive-K clock on v3.1.159-apjs). Truth-audit (ledger_match.py + Opus vs live paper3_apjs.tex + DISPOSITIONS): 0 genuinely-new; every finding source-cited (Grok→DP3-01/-07/-08/-09/-10/-12/-15/-16; ChatGPT→DP3-01/-06/-07/-09/-10/-11/-12/-13/-14/-15/-16/-19/-20). Cap HOLDS 56 (50 + Grok-MAJ 6 + ChatGPT-REJ 0 + Gemini-REJ 0; post_verdict.sh recomputed). P4 (v1.0.239) EXT BOTH legs FAILED to capture reviewer output — P4_grok_M24.md = 273-byte Grok project-landing sidebar stub (screenshot: empty 'Start a conversation' pane), P4_chatgpt_M24.md = 0 bytes (screenshot: empty Chat pane). Per directive I4 + readinessMetrics HONESTY CONTRACT, both recorded verdict:failed (a GAP, never a zero); NO verdict synthesized from the expected labels. P4 streak HOLDS 9, cap HOLDS 85 (M21 latest-per-reviewer verdicts carry forward; a failed sweep neither advances nor resets); P4 EXT re-sweep needed. Maximally-harsh ApJS floor holds (DP3-17 pattern-066 backfire). No bumps; directive_g.sh not run; no ACCEPT faked, no finding dismissed without a source-cited verdict, no math fabricated. Raws + per-paper truth-audits: EXT_real/H17_2026-07-10/M24/.",
   },
 ];
 
