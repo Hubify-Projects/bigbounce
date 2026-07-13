@@ -940,9 +940,10 @@ export function VerdictSeverityTrend() {
 //   P4 REJ/MIN/MIN=74 · P2 REJ/MAJ/(gem)=74 · P5 REJ/MAJ/MIN=74 · P3 REJ/MAJ/MAJ=56 · P1B(carried)=56 · P1A REJ/MAJ/MAJ=62
 // M14 wave (2026-07-12): 2nd consecutive ZERO-REJECT harvest P4+P5; P4 74 · P5 80 HOLD.
 // M15 wave (2026-07-12): P2 + P3 confirm wave, 0 genuinely-new; P2 streak 5→6 cap 74 · P3 streak 5→6 cap 56 HOLD.
+// M16 wave (2026-07-13): P1U + P4 confirm wave, 0 genuinely-new; P1U streak 6→7 cap 62→68 (Grok MAJOR→MINOR +6) · P4 streak 5→6 cap 74 HOLD.
 // (P5 recovered to 80 post-M1-slip via the RS2/M-series waves; Convex + live-status = 80.)
 const PER_PAPER_READINESS: Record<PaperId, number> = {
-  P1A: 62,
+  P1A: 68,
   P1B: 56,
   P2: 74,
   P3: 56,

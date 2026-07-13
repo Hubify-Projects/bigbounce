@@ -39,6 +39,7 @@ pdf_for_paper() {
     P3)  echo "pipelines/p3_anomaly_engine/paper3_draft.pdf" ;;
     P4)  echo "pipelines/p2_chirality/chirality_catalog_paper.pdf" ;;
     P5)  echo "pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf" ;;
+    P3APJS) echo "pipelines/p3_anomaly_engine/paper3_apjs.pdf" ;;
     *)   echo "" ;;
   esac
 }
@@ -92,10 +93,17 @@ type_prompt() {
 }
 
 # ---- args ----
-[ $# -ge 3 ] || die "usage: tools/ext_submit.sh <P1U|P2|P3|P4|P5> <grok|chatgpt|gemini> <round-label> [pdf-path]"
+[ $# -ge 3 ] || die "usage: tools/ext_submit.sh <P1U|P2|P3|P4|P5|P3APJS> <grok|chatgpt|gemini> <round-label> [pdf-path]"
 PAPER="$1"; REVIEWER="$2"; ROUND="$3"; PDF_ARG="${4:-}"
 
-case "$PAPER" in P1U|P2|P3|P4|P5) ;; *) die "unknown paper '$PAPER'" ;; esac
+case "$PAPER" in P1U|P2|P3|P4|P5|P3APJS) ;; *) die "unknown paper '$PAPER'" ;; esac
+
+# P3APJS = the ApJS venue variant (review-of-record for P3): same science,
+# ApJS-framed referee prompt. Head/tail sentinels unchanged so
+# composer_has_prompt verification still holds.
+if [ "$PAPER" = "P3APJS" ]; then
+  PROMPT="${PROMPT/Physical Review D/The Astrophysical Journal Supplement Series (ApJS)}"
+fi
 case "$REVIEWER" in grok|chatgpt|gemini) ;; *) die "unknown reviewer '$REVIEWER'" ;; esac
 
 if [ -n "$PDF_ARG" ]; then
