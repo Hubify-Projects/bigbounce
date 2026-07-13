@@ -1,6 +1,41 @@
 # Compute-to-ACCEPT queue (the real research that drives external ACCEPT)
 
-<!-- last_updated: 2026-07-12 (20:07 tick — post-M11 state-honesty + live cost-safety attestation) -->
+<!-- last_updated: 2026-07-12 (21:07 tick — post-M12 state-honesty + live cost-safety attestation) -->
+
+## 2026-07-12 (hourly cron tick, 21:07) — post-M12 idle verified honest, live $0 pod burn, autonomous levers EXHAUSTED
+
+**State check (step 1):** no concurrent driver (only this tick's own `claude -p` PID; no python review procs;
+gstack headed browser daemon UP but idle — no active EXT sweep); working tree clean; `tools/site_freshness_check.sh`
+→ **exit 0** (no stale surface). **M12-EXT** (P5 + P3-ApJS floor-confirm wave) was harvested + adjudicated +
+committed **19 min prior** (`78d51cf6`, 20:48): **0 genuinely-new** — clean-wave streaks P5 4→5 / P3 4→5; every
+finding source-cited to a standing DP5/DP3 disposition.
+
+**Content-change audit:** newest active-paper `.tex` edit is P2 at 13:21 (~8 h old); every paper's last edit
+**predates** the M9→M12 sweeps that just adjudicated it — **no paper has changed since its last EXT**, so no
+re-test is due. Today's two completed compute outputs (`c15_channel_native_fisher.json` → P2 v1.7.115;
+`27_rsd_void_recon_bound.json` → P5 DP5-12) are **already committed + integrated** — no un-harvested compute
+sitting to intake.
+
+**Cost-safety (live RunPod REST v1, this tick):** queried `rest.runpod.io/v1/pods` — **9 pods total, 0
+RUNNING → $0 compute burn.** No pod leaking spend on the thin balance.
+
+**Why no EXT sweep / no paper edit / no pod launch this tick:** (a) a fresh sweep on byte-unchanged content
+19 min after M12 = verdict-farming (directive-M forbids — waves MEASURE movement, never farm); (b) 0 editable
+findings open — every open item is a source-cited re-flag, an OPEN-COMPUTE frontier item, an OPEN-VENUE item,
+or a submission-time process-nit; (c) the only genuinely-forward levers are **multi-hour paid pod runs** (P4
+Stage B image→field injection-recovery → DP4-15; P3 NEOWISE/Gaia scaler refit → DP3-15; P2 channel-native
+Fisher cubic in-in; P5 higher-N environment confusion; P1B ALP prior-predictive fraction) — unsupervised
+hard-to-reverse **cost** actions on a thin balance that the loop has consistently deferred to a Houston
+go/monitor (M7→M12); this tick holds that judgment rather than firing a pod that could hang and leak
+unattended.
+
+**Honest frontier (unchanged M10→M12):** the autonomous edit/EXT loop is EXHAUSTED — all 5 active papers
+hold recent floor verdicts and every path-to-ACCEPT blocker is compute- or submission-gated (Houston
+decision). Highest-leverage single fireable job remains **P4 Stage B** (targets the recurring ChatGPT
+spatially-resolved confusion MAJOR, DP4-15; Stage A completed 2026-07-12). No fabrication, no faked accept,
+no un-sourced dismissal this tick.
+
+---
 
 ## 2026-07-12 (hourly cron tick, 20:07) — post-M11 idle verified honest, live $0 pod burn, autonomous levers EXHAUSTED
 
