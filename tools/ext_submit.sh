@@ -167,14 +167,42 @@ submit_grok() {
   # upload into the file input
   bcall 90 upload 'input[type="file"]' "$STAGE" || die "grok upload failed: $BOUT"
   sleep 8
-  # chip check: innerText match on the staged filename (or an attachment chip)
-  local i chip=0 base; base="$(basename "$STAGE")"
+  # FILENAME-VERIFIED chip check (2026-07-13 M32/M34 parity fix): require a
+  # composer-area attachment chip whose visible text contains this leg's exact
+  # round token "ext_${PAPER}_${ROUND}" — not merely that SOME chip exists.
+  # Same wrong-PDF-attach failure class the chatgpt flow just closed; enforce it
+  # here too. On mismatch/absence after ~30s: clear wrong chip(s), re-upload
+  # once, re-verify; if still unmatched, DIE — never send an unverified file.
+  local base token; base="$(basename "$STAGE")"; token="ext_${PAPER}_${ROUND}"
+  local i chipok=0
   for i in 1 2 3 4 5 6; do
-    bcall 45 js 'document.body.innerText.includes("'"$base"'") || !!document.querySelector("[class*=attachment],[class*=file-chip],[class*=preview]")' || true
-    printf '%s' "$BOUT" | grep -qi true && { chip=1; break; }
+    bcall 45 js '(function(){var tok="'"$token"'";
+      var scope=document.querySelector("form")||document.body;
+      var chips=[].slice.call(scope.querySelectorAll("[class*=attachment],[class*=file-chip],[class*=file],[class*=preview],[class*=chip]"));
+      var names=chips.map(function(c){return (c.innerText||c.getAttribute("title")||c.getAttribute("aria-label")||"")});
+      var match=names.some(function(n){return n.indexOf(tok)!==-1});
+      return match?"MATCH":(chips.length?("MISMATCH names="+JSON.stringify(names.slice(0,4))):"NONE")})()' || true
+    printf '%s' "$BOUT" | grep -q MATCH && { chipok=1; break; }
+    echo "    grok chip poll $i: $BOUT"
     sleep 6
   done
-  [ "$chip" = 1 ] || echo "    WARN grok chip not confirmed — continuing"
+  if [ "$chipok" != 1 ]; then
+    echo "    grok chip: expected token '$token' not found — clearing wrong attachment(s) + re-upload"
+    bcall 30 js '(function(){var scope=document.querySelector("form")||document.body;
+      var btns=[].slice.call(scope.querySelectorAll("button[aria-label*=Remove i],button[aria-label*=Delete i],button[title*=Remove i],[data-testid*=remove],[class*=remove] button,button[class*=remove]"));
+      btns.forEach(function(b){try{b.click()}catch(e){}});return "removed="+btns.length})()' || true
+    sleep 3
+    bcall 90 upload 'input[type="file"]' "$STAGE" || die "grok re-upload failed: $BOUT"
+    for i in 1 2 3 4 5; do
+      sleep 6
+      bcall 45 js '(function(){var tok="'"$token"'";
+        var scope=document.querySelector("form")||document.body;
+        var chips=[].slice.call(scope.querySelectorAll("[class*=attachment],[class*=file-chip],[class*=file],[class*=preview],[class*=chip]"));
+        return chips.map(function(c){return (c.innerText||c.getAttribute("title")||c.getAttribute("aria-label")||"")}).some(function(n){return n.indexOf(tok)!==-1})?"MATCH":"NOMATCH"})()' || true
+      printf '%s' "$BOUT" | grep -q MATCH && { chipok=1; break; }
+    done
+  fi
+  [ "$chipok" = 1 ] || die "grok wrong/missing attachment (expected ${token}.pdf) — never send with an unverified attachment"
   # VERIFY Expert mode is active (read-only) — do NOT click. Just confirm a
   # button's innerText includes Expert (mode label present in the composer bar).
   bcall 45 js '(function(){var b=[...document.querySelectorAll("button,[role=button]")].find(function(e){return /Expert/i.test(e.textContent||e.getAttribute("aria-label")||"")});return b?"expert-present":"expert-not-visible"})()' || true
@@ -214,14 +242,54 @@ submit_chatgpt() {
   fi
   # Upload ONLY via the unique id — never a bare multi-match selector.
   bcall 90 upload "#$INPID" "$STAGE" || die "chatgpt upload failed: $BOUT"
-  # chip poll 6 x 6s
-  local i chip=0 base; base="$(basename "$STAGE")"
+  # FILENAME-VERIFIED chip poll (2026-07-13 M32/M34 wrong-PDF-attach fix):
+  # Twice a chatgpt leg following another chatgpt leg in a chain uploaded the
+  # WRONG pdf — a stale attachment chip from the prior leg was grabbed and the
+  # harvested raw reviewed a DIFFERENT paper (byte-identical P1U raw once, a
+  # P5-signature review once). The old poll only confirmed that SOME chip
+  # existed — never that its filename matched THIS leg's staged file. Now we
+  # require a composer-area attachment chip whose visible text contains the
+  # exact round token "ext_${PAPER}_${ROUND}" (== basename minus .pdf). Query
+  # the DOM chip text in the composer/form region, not the whole body (a prior
+  # message could echo the filename). If not present after ~30s, try to remove
+  # any wrong attachment; if a wrong/absent state persists, DIE — never send an
+  # unverified attachment.
+  local base token; base="$(basename "$STAGE")"; token="ext_${PAPER}_${ROUND}"
+  local i chipok=0
   for i in 1 2 3 4 5 6; do
-    bcall 45 js '!!document.querySelector("[class*=attachment],[class*=file],[data-testid*=attachment]") || document.body.innerText.includes("'"$base"'")' || true
-    printf '%s' "$BOUT" | grep -qi true && { chip=1; break; }
+    bcall 45 js '(function(){var tok="'"$token"'";
+      var scope=document.querySelector("form")||document.querySelector("[data-testid=composer],[class*=composer]")||document.body;
+      var chips=[].slice.call(scope.querySelectorAll("[class*=attachment],[class*=file],[data-testid*=attachment],[class*=chip],[class*=preview]"));
+      var names=chips.map(function(c){return (c.innerText||c.getAttribute("title")||c.getAttribute("aria-label")||"")});
+      var match=names.some(function(n){return n.indexOf(tok)!==-1});
+      var any=chips.length>0;
+      return match?"MATCH":(any?("MISMATCH names="+JSON.stringify(names.slice(0,4))):"NONE")})()' || true
+    printf '%s' "$BOUT" | grep -q MATCH && { chipok=1; break; }
+    echo "    chatgpt chip poll $i: $BOUT"
     sleep 6
   done
-  [ "$chip" = 1 ] || echo "    WARN chatgpt chip not confirmed — continuing"
+  if [ "$chipok" != 1 ]; then
+    echo "    chatgpt chip: expected token '$token' not found — attempting to clear wrong attachment(s)"
+    # Best-effort: click any chip remove/X button in the composer scope.
+    bcall 30 js '(function(){var scope=document.querySelector("form")||document.body;
+      var btns=[].slice.call(scope.querySelectorAll("button[aria-label*=Remove i],button[aria-label*=Delete i],button[title*=Remove i],[data-testid*=remove],[class*=remove] button,button[class*=remove]"));
+      btns.forEach(function(b){try{b.click()}catch(e){}});return "removed="+btns.length})()' || true
+    echo "    chatgpt chip clear: $BOUT"
+    sleep 3
+    # Re-upload the correct file once and re-verify.
+    bcall 45 js '(function(){var f=document.querySelector("input[type=file]");if(f){f.id="'"$INPID"'";return "retagged"}return "NO-INPUT"})()' || true
+    bcall 90 upload "#$INPID" "$STAGE" || die "chatgpt re-upload failed: $BOUT"
+    for i in 1 2 3 4 5; do
+      sleep 6
+      bcall 45 js '(function(){var tok="'"$token"'";
+        var scope=document.querySelector("form")||document.body;
+        var chips=[].slice.call(scope.querySelectorAll("[class*=attachment],[class*=file],[data-testid*=attachment],[class*=chip],[class*=preview]"));
+        var names=chips.map(function(c){return (c.innerText||c.getAttribute("title")||c.getAttribute("aria-label")||"")});
+        return names.some(function(n){return n.indexOf(tok)!==-1})?"MATCH":"NOMATCH"})()' || true
+      printf '%s' "$BOUT" | grep -q MATCH && { chipok=1; break; }
+    done
+  fi
+  [ "$chipok" = 1 ] || die "wrong/missing attachment (expected ${token}.pdf) — never send with an unverified attachment"
   # type (ChatGPT #prompt-textarea — atomic insertText, verify ordered)
   # Guard (2026-07-13 M25 lesson): record the tab URL BEFORE send. If the
   # fresh-chat navigation silently failed, the tab still shows the PREVIOUS
