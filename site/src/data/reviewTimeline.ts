@@ -57,6 +57,32 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "m9-ext-zero-reject-harvest-2026-07-12",
+    dateISO: "2026-07-12",
+    kind: "external-browser",
+    title:
+      "M9-EXT — MILESTONE: first ChatGPT-inclusive harvest with ZERO REJECTs across the sweep, both floor-cracks holding. P4 (v1.0.239): Grok MINOR + ChatGPT MAJOR (SECOND consecutive non-REJECT) + Gemini MAJOR — ChatGPT Q3 again concedes the primary null; all 12 MAJOR/3 MINOR (ChatGPT) + 5 MINOR (Grok) source-cited standing DP4 re-flags; 0 genuinely-new; streak 2→3; cap 74 HOLDS. P5 (v0.1.126): Grok MINOR + ChatGPT MAJOR (floor-crack HOLDS) + Gemini MINOR — ChatGPT Q3 concedes the unadjusted counts show no detected contrast; all 12 MAJOR/2 MINOR (ChatGPT) + 2 MAJOR/3 MINOR (Grok) source-cited standing DP5 re-flags; 0 genuinely-new; streak 3→4; cap 80 HOLDS. No bumps; directive_g.sh not run.",
+    papers: ["P4", "P5"],
+    summary:
+      "M9-EXT: the first ChatGPT-inclusive external harvest in the campaign to land with NO REJECT from any reviewer. P4 (v1.0.239): Grok MINOR REVISIONS (5 MINOR) + ChatGPT MAJOR REVISIONS (12 MAJOR/3 MINOR — its SECOND consecutive non-REJECT after the M7 floor-crack) + Gemini MAJOR; every finding maps to DP4-01/-07/-08/-09/-10/-11/-12/-13/-14/-15/-16/-17/-21 (ChatGPT #13 factor-of-2 A_p vs f_CW re-derived arithmetically CORRECT → DP4-01); clean-wave streak 2→3; cap 74 HOLDS. P5 (v0.1.126): Grok MINOR REVISIONS (2 MAJOR/3 MINOR) + ChatGPT MAJOR REVISIONS (12 MAJOR/2 MINOR — floor-crack holding) + Gemini MINOR; every finding maps to DP5-01/-06/-08/-09/-10/-11/-12/-13/-14/-20/-21/-22 (ChatGPT parity-even operator → DP5-20 speculative-App-B disclosed; Fig 6/9 counts 791,635/812,793 → DP5-22 already reconciled); clean-wave streak 3→4; cap 80 HOLDS. No bumps.",
+    keyTakeaways: [
+      "MILESTONE — ZERO REJECTs across a ChatGPT-inclusive harvest for the first time. P4 ChatGPT MAJOR (2nd consecutive non-REJECT, Q3 verbatim: 'the selected high-confidence hard-label map shows no significant real-space dipole') + P5 ChatGPT MAJOR (floor-crack holds, Q3 verbatim: 'the unadjusted counts are consistent with no detected contrast'). Both ChatGPTs concede the primary null and dispute only disclosed classifier-dilution / control-construction generalizations (OPEN-COMPUTE / disclosed-limitation frontier).",
+      "P4: 0 genuinely-new across Grok(5 MINOR) + ChatGPT(12 MAJOR/3 MINOR) on v1.0.239; every finding source-cited to DP4-01/-07/-08/-09/-10/-11/-12/-13/-14/-15/-16/-17/-21. ledger_match ChatGPT 8/17 auto-matched, 9 UNMATCHED Opus-adjudicated → all re-flags; #13 factor-of-2 A_p vs f_CW (1.5% f_CW-dev = 3×10⁻² A_p, A_p=2(f_CW−½)) re-derived CORRECT (conflated objects, not an error). Streak 2→3.",
+      "P5: 0 genuinely-new across Grok(2 MAJOR/3 MINOR) + ChatGPT(12 MAJOR/2 MINOR) on v0.1.126; every finding source-cited to DP5-01/-06/-08/-09/-10/-11/-12/-13/-14/-20/-21/-22. ChatGPT #12 parity-even-operator claim addresses App B already labeled 'speculative … not a derived constraint' (DP5-20); #14 Fig 6/9 count discrepancy (791,635 vs 812,793) already caught + reconciled in prior waves (DP5-22). Streak 3→4.",
+      "Integrity: all four EXT raws read verbatim before disposition (Grok l.1 'VERDICT: MINOR REVISIONS'; ChatGPT l.1 '(1) VERDICT: MAJOR REVISIONS'); every finding source-cited to a D-id; no ACCEPT faked; no dismissal without a source-cited verdict; no math fabricated; caps recomputed from the EXT formula (P4 74 = 50+grok-MIN12+chatgpt-MAJ6+gemini-MAJ6; P5 80 = 50+grok-MIN12+chatgpt-MAJ6+gemini-MIN12). Streaks: P1U 4 · P2 3 · P3 3 · P4 3 · P5 4. Caps: P1A 62 · P2 74 · P3 56 · P4 74 · P5 80.",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 0,
+      note: "0 genuinely-new reader-visible editable findings across P4 M9-EXT (Grok MINOR + ChatGPT MAJOR — 2nd consecutive non-REJECT) and P5 M9-EXT (Grok MINOR + ChatGPT MAJOR — floor-crack holds). First ChatGPT-inclusive harvest with ZERO REJECTs. P4 streak 2→3; P5 streak 3→4. Caps hold P4 74 · P5 80.",
+    },
+    links: [
+      { label: "P4 Grok M9 EXT raw", href: `${PR}/EXT_real/H17_2026-07-10/M9/P4_grok_M9.md` },
+      { label: "P4 ChatGPT M9 EXT raw", href: `${PR}/EXT_real/H17_2026-07-10/M9/P4_chatgpt_M9.md` },
+      { label: "P5 Grok M9 EXT raw", href: `${PR}/EXT_real/H17_2026-07-10/M9/P5_grok_M9.md` },
+      { label: "P5 ChatGPT M9 EXT raw", href: `${PR}/EXT_real/H17_2026-07-10/M9/P5_chatgpt_M9.md` },
+    ],
+  },
+  {
     id: "m8-ext-confirm-wave-2026-07-12",
     dateISO: "2026-07-12",
     kind: "external-browser",

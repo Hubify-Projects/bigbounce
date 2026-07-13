@@ -1,0 +1,44 @@
+(1) VERDICT: MAJOR REVISIONS
+
+(2) ISSUES:
+
+[MAJOR] Section VIII B/E, primary footprint-restricted contrast: the “DESIVAST usable footprint” is constructed from the union of projected hole-sphere discs and their radial span, not from the published BGS/DESIVAST completeness mask or DESI random catalogs. As the manuscript itself acknowledges, this does not match fiber completeness, imaging depth, vetoes, or radial selection, so the resulting non-void control is not demonstrably drawn from the same selection function as the void sample. The primary contrast must be repeated with the official mask/randoms or with controls matched or weighted in redshift, sky position, magnitude, size, morphology, classifier confidence, and imaging leg. 
+
+ext_P5_M9
+
+[MAJOR] Sections VIII B, XI, and Appendix A, interpretation of hard CW/CCW labels: the analysis conditions on being classified CW or CCW while ignoring environment-dependent contamination by the non-spiral class. The quoted 69.91% binary accuracy is evaluated on a true-spiral subset, whereas the three-class accuracy is only 58.7%; it therefore does not establish the purity or calibration of the analyzed hard-label sample. Since morphology, apparent size, surface brightness, inclination, and classifier confidence vary with environment, selection into the CW/CCW sample can itself generate or suppress a contrast. A full environment-stratified CW/CCW/NS confusion model, preferably using calibrated posterior probabilities rather than argmax labels, is required.
+
+[MAJOR] Sections V, VIII, and all quoted binomial intervals: galaxies are treated as independent Bernoulli trials and labels are shuffled individually. Galaxies are clustered within voids, survey regions, imaging-condition patches, and large-scale structures, while classifier errors can be spatially correlated. The galaxy-level binomial standard error and unrestricted label shuffle can therefore understate uncertainty. The primary inference should use void-level and spatial-block bootstrap or permutation procedures, or cluster-robust hierarchical modeling, with the non-void controls blocked in the same sky regions.
+
+[MAJOR] Section V B and Tables IV, X, and XIV, definition of the Bonferroni-5 family: the declared primary estimator is the exact, footprint-restricted VoidFinder contrast (57,081 versus 253,276), but Table XIV substitutes the approximate k=20, unrestricted contrast (56,981 versus 621,964). Section V B nevertheless quotes a simultaneous interval for the footprint-restricted row. Thus the five-member family, its parent samples, and its family-wise interval are not consistently defined. One immutable estimand and one comparable control construction must be specified for every family member and all adjusted statistics recomputed.
+
+[MAJOR] Section V B, post-hoc primary designation: DESIVAST was selected as the reporting primary after examining several classifiers, membership rules, control volumes, and dozens of stratifications. Bonferroni correction over five subsequently selected DESIVAST variants does not give the stated coverage for a post-selected upper bound. The nominal non-detection may be reported as exploratory, but the manuscript cannot present the resulting interval as a confirmatory exclusion without an independent, pre-specified validation sample.
+
+[MAJOR] Section VIII B and Table XI, “honest effective 2σ” systematic envelope: the 0.9-percentage-point number is not a valid confidence interval or systematic-error estimate. It combines a 95% statistical half-width with observed shifts between correlated analyses, several of which change both the environment definition and the parent population, and assumes independence without evidence. The geometry, membership, sphere-versus-GALZONE, and footprint terms are particularly correlated, while important selection, spatial-correlation, and calibration uncertainties are omitted. These sensitivity shifts should be reported separately or incorporated through an explicit nuisance-parameter or resampling model.
+
+[MAJOR] Abstract, Section V B, and Section XII B, contradictory quoted bounds: the manuscript derives a least-constraining family-wise bound of approximately 1.1 percentage points, but the abstract and discussion instead instruct model builders to use the smaller 0.9-percentage-point preferred-estimator envelope and its 2.26-percentage-point de-attenuation. These are different inferential objects, and the smaller number cannot supersede the simultaneous family bound. A single clearly defined confidence statement must be used consistently.
+
+[MAJOR] Sections II, XII B, and Appendix A, monopole cancellation and physical de-attenuation: cancellation of a catalog-wide monopole holds only for an environment-invariant confusion matrix. The void-specific human-versus-classifier validation has only 933 void objects and permits directional error asymmetries of several percentage points, far above the claimed sub-percent bound. Moreover, dividing by 2a−1 uses a point estimate from a different population, omits its uncertainty, ignores non-spiral contamination, and ignores attenuation from misclassified environments. Consequently the claimed 2.26-percentage-point physical-chirality bound is not established.
+
+[MAJOR] Sections VIII and XIII, RSD and membership robustness: perturbing or reconstructing memberships while applying the observed nearly null chirality labels will almost inevitably leave the measured contrast near zero; it does not show that a true real-space signal would survive the substantial 25–34% membership changes reported. The stated 0.024-percentage-point RSD “bound” therefore measures movement of the observed null, not signal attenuation. An injection–recovery calculation using an environment-confusion transfer matrix, ideally with the void finder rerun on reconstructed positions, is needed before this term can enter a physical bound.
+
+[MAJOR] Sections IV, VII, and IX A, secondary T-Web analysis: the random-catalog-weighted rebuild changes approximately 73% of matched-galaxy class assignments and reduces the void volume fraction by a factor of about 23. This demonstrates that the canonical T-Web labels are dominated by the survey selection function rather than being a stable physical environment classification. Obtaining a null under two largely incompatible and noisy labelings is not evidence of robustness, because label noise attenuates environmental signals. The randoms-weighted construction should be the baseline, and the present canonical T-Web claims should be removed or substantially demoted.
+
+[MAJOR] Section XII B and Appendix B, theoretical interpretation: the DESIVAST primary observable does not correspond to a single 25h
+−1
+Mpc T-Web smoothing scale, so it cannot directly constrain models at that scale without a forward model. In addition, for pseudoscalar ϕ, both ∇ϕ⋅∇ρ and 
+L
+^
+⋅
+∇ρ
+	​
+
+ are parity odd, making their product parity even; the proposed operator is therefore not parity violating as claimed. Appendix B should be removed or replaced by a correct covariant construction and a derived observable mapping.
+
+[MAJOR] Section XIII and Appendices A/D/E, companion-paper and reproducibility dependency: the core labels, calibration claims, and several validations depend on a concurrently submitted manuscript with an unresolved arXiv identifier, while the archival DOI is pending and many numerical claims are supported only through mutable repository artifacts. Review and publication should require the final companion paper, immutable commit hashes, archived catalog and weights, complete provenance, and scripts that regenerate every primary table from public inputs.
+
+[MINOR] Figures 6 and 9 and statistical terminology: Figure 6’s upper panel is labeled “maximal voids per pixel” with values incompatible with the later maximal-void map and appears to be a mislabeled galaxy-count map; Figure 9 states n=791,635 although its plotted class counts sum to 812,793; and Jeffreys Bayesian credible intervals are repeatedly called confidence intervals. These inconsistencies must be corrected.
+
+[MINOR] Organization and claims throughout: the manuscript is highly repetitive and repeatedly uses evaluative language such as “clean,” “honest,” “properly powered,” and “definitive.” It should be shortened substantially, separate the primary exploratory result from secondary diagnostics, and replace “environment independence” or “the null holds” with the more accurate “no statistically significant association was detected within the stated sample and analysis.”
+
+(3) No: the unadjusted counts are consistent with no detected contrast, but the claimed sub-percent classifier-label bound and 2.26-percentage-point physical bound are not supported by the present control construction, dependence model, multiplicity treatment, and classifier calibration.
