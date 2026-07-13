@@ -1,6 +1,34 @@
 # Compute-to-ACCEPT queue (the real research that drives external ACCEPT)
 
-<!-- last_updated: 2026-07-12 (17:07 tick — post-M8 state-honesty + live cost-safety attestation) -->
+<!-- last_updated: 2026-07-12 (18:07 tick — post-M9 state-honesty + live cost-safety attestation) -->
+
+## 2026-07-12 (hourly cron tick, 18:07) — post-M9 idle verified honest, live $0 pod burn, no fireable increment
+
+**State check (step 1):** no concurrent driver (only this tick's own `claude -p` PID; no python review
+procs; gstack headed browser daemon up but idle — no active EXT sweep); working tree clean;
+`tools/site_freshness_check.sh` → **exit 0** (no stale surface). **M9-EXT** (P4/P5) was harvested +
+adjudicated + committed 18 min prior (`1cceff2f`, 17:48): **0 genuinely-new**, clean-wave streaks
+P4 2→3 / P5 3→4, first ChatGPT-inclusive ZERO-REJECT harvest of the campaign. Every M9 ledger-match
+UNMATCHED item was source-cited to an existing disposition (P4 → DP4-01/07/08/09/10/11/12/13/15/16/17/21
+already-disclosed estimator-conditional / harmonic-battery / axis-ratio re-flags; P5 →
+DP5-06/08/09/10/11/12/13/14/19/20/21/22 already-disclosed control-construction / OPEN-VENUE / Fig-count
+re-flags). Today's EXT rotation M5→M9 has covered **all 5 active papers** (P1U, P2, P3-ApJS, P4, P5) — each
+holds a recent floor verdict; **no paper changed since its last EXT**, so no re-test is due.
+
+**Cost-safety (live RunPod REST v1, this tick):** all **9 pods EXITED**, 0 running → **$0 compute burn**
+(`bigbounce-p4-e2e-mirror` $1.19/hr, `-dr8morph` $0.17, `-gz1only` $0.17, `-p1b-snctrl` $0.25,
+`-c123-namaster` $0.17, `regular_green_pig{,-migration}`/`blonde_silver_eel`/`frail_tomato_koi` $4.39 each —
+all idle at $0). No pod leaking spend on the thin balance.
+
+**Why no paper edit / version bump / EXT sweep this tick:** (a) a fresh sweep on unchanged content 18 min
+after M9 = verdict-farming (directive-M forbids — waves MEASURE movement, never farm); (b) 0 genuinely-new
+editable findings open — every open item is a source-cited re-flag, an OPEN-COMPUTE frontier item, or an
+OPEN-VENUE item; both P4 and P5's remaining path-to-ACCEPT blockers are compute/venue-gated (P4 Stage B
+image→field spatial confusion + joint covariance likelihood; P5 Zel'dovich RSD reconstruction + higher-N
+environment confusion), NOT editable text; (c) the only genuinely-forward levers are multi-hour **paid** pod
+runs — Houston go/scope-gated + thin balance, **NOT fireable unsupervised in one atomic headless tick**.
+Correct honest increment = this post-M9 state + live-cost attestation. No fabrication, no gamed verdict, no
+false readiness change.
 
 ## 2026-07-12 (hourly cron tick, 17:07) — post-M8 idle verified honest, live $0 pod burn, no fireable increment
 
