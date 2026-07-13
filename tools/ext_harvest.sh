@@ -29,6 +29,22 @@ MANIFEST="$ROUND_DIR_BASE/manifest.jsonl"
 # like the extractor JS, treats the whole blob as one string (DOTALL).
 die() { echo "FAIL: $*" >&2; exit 1; }
 
+# ---- HEADED-BROWSER PREFLIGHT (2026-07-13, permanent) -----------------------
+# HARVEST is the DANGEROUS one on a launched/headless browser: every chat URL
+# renders a login/error wall, the extractor finds no verdict, and the dead-chat
+# detector marks LIVE legs FAILED-dead (all 6 M42 legs, 2026-07-13 — the reviews
+# were alive server-side). assert_headed requires the literal `Mode: headed`
+# line from `$B status` before ANY harvest work; NEVER proceed on `launched`.
+assert_headed() {
+  local out mode
+  out="$(timeout 30 "$B" status 2>&1 || true)"
+  mode="$(printf '%s\n' "$out" | grep -iE '^Mode:' | head -1 | awk '{print $2}')"
+  if [ "$mode" != "headed" ]; then
+    echo "FAIL: browser not headed (Mode: ${mode:-unknown}) — run: $B cleanup; kill port 34567 holders; $B connect; verify Mode: headed" >&2
+    exit 1
+  fi
+}
+
 # has_verdict: read text on stdin -> exit 0 if a verdict is present, else 1.
 has_verdict() {
   python3 -c '
@@ -185,6 +201,9 @@ bcall() {
   if printf '%s' "$out" | grep -qiE "Run '/open-gstack-browser'|not connected"; then
     echo "    [auto-recover] browser not connected — reconnecting headed" >&2
     timeout 90 "$B" connect >/dev/null 2>&1 || true
+    # After reconnect, re-verify headed — NEVER harvest on a launched/headless
+    # relaunch (login walls read as dead chats -> false FAILED-dead).
+    assert_headed
     out="$(timeout "$to" "$B" "$@" 2>&1)" && { BOUT="$out"; return 0; }
     rc=$?
   fi
@@ -197,6 +216,10 @@ ROUND="$1"
 OUTDIR="$ROUND_DIR_BASE/$ROUND"
 mkdir -p "$OUTDIR"
 [ -f "$MANIFEST" ] || die "manifest not found: $MANIFEST"
+
+# HEADED preflight BEFORE any harvest work (2026-07-13). This is the gate that
+# would have prevented the M42 false-FAILED-dead sweep on a headless browser.
+assert_headed
 
 # ---- collect rows for this round with a submitted* status + a url ----
 ROWS_FILE="$(mktemp)"

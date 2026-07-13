@@ -31,6 +31,24 @@ GEMINI_APP="https://gemini.google.com/u/1/app"
 
 die() { echo "FAIL: $*" >&2; exit 1; }
 
+# ---- HEADED-BROWSER PREFLIGHT (2026-07-13, permanent) -----------------------
+# The gstack browse server silently regresses headed -> `Mode: launched`
+# (chrome-headless-shell, temp profile, NO logins). On a launched/headless
+# browser SUBMIT fails visibly, but HARVEST fails silently-WRONG: every chat
+# renders a login/error wall and the dead-chat detector marks live legs
+# FAILED-dead (all 6 M42 legs, 2026-07-13). assert_headed gates ALL browser
+# work: require the literal `Mode: headed` line from `$B status` before any
+# submit/harvest step, and NEVER proceed on `launched` (or anything else).
+assert_headed() {
+  local out mode
+  out="$(timeout 30 "$B" status 2>&1 || true)"
+  mode="$(printf '%s\n' "$out" | grep -iE '^Mode:' | head -1 | awk '{print $2}')"
+  if [ "$mode" != "headed" ]; then
+    echo "FAIL: browser not headed (Mode: ${mode:-unknown}) — run: $B cleanup; kill port 34567 holders; $B connect; verify Mode: headed" >&2
+    exit 1
+  fi
+}
+
 # ---- paper -> pdf map (mirrors tools/int_api_review_2026-07-08.py) ----
 pdf_for_paper() {
   case "$1" in
@@ -58,6 +76,9 @@ bcall() {
   if printf '%s' "$out" | grep -qiE "Run '/open-gstack-browser'|not connected"; then
     echo "    [auto-recover] browser not connected — reconnecting headed" >&2
     timeout 90 "$B" connect >/dev/null 2>&1 || true
+    # After reconnect, re-verify headed — NEVER proceed on a launched/headless
+    # relaunch (the exact regression assert_headed exists to catch).
+    assert_headed
     out="$(timeout "$to" "$B" "$@" 2>&1)" && { BOUT="$out"; return 0; }
     rc=$?
   fi
@@ -147,6 +168,9 @@ with open(manifest, "a") as f:
     f.write(json.dumps(row) + "\n")
 PY
 }
+
+# HEADED preflight BEFORE any submission work (2026-07-13).
+assert_headed
 
 echo "=== ext_submit :: $PAPER $REVIEWER round=$ROUND ==="
 echo "    pdf: $STAGE"
