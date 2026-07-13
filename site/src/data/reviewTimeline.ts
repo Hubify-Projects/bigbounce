@@ -57,6 +57,27 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "post-verdict-bug1-root-fix-cap-recompute-2026-07-13",
+    dateISO: "2026-07-13",
+    kind: "skill-improvement",
+    title:
+      "post_verdict.sh BUG-1 root-fix — the cap recompute now reads the true _creationTime-latest per-reviewer verdict set instead of a same-datestamp list-order tie; P2's cap honestly corrects 74→68 (the 74 was itself a BUG-1 stale-order artifact that dropped the Gemini F14 MAJOR). BUG-2 record_wave clobber guard shipped in the same commit.",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary:
+      "Kill-the-class fix for a recurring stale-cap failure mode. BUG-1: when two verdict rows for the same reviewer shared a calendar datestamp, post_verdict.sh's cap recompute picked the row by list order rather than by true _creationTime, so a superseded verdict could win the 'latest-per-reviewer' slot and the EXT cap formula (50 + grok + chatgpt + gemini) computed off stale inputs. Root-fixed (commit cd02c991) to select each reviewer's latest verdict by _creationTime. Re-running the honest recompute on P2 gives cap 74→68: its true latest-per-reviewer set = Grok MINOR 12 + ChatGPT REJECT 0 + Gemini F14 MAJOR 6 → 50+18=68; the prior 74 was itself a BUG-1 stale-order artifact that had dropped the Gemini F14 MAJOR. Convex papers now holds P2 cap 68 (verified via read-back query). BUG-2 (same commit): a record_wave clobber guard so a re-run cannot overwrite an existing wave row. Static mirrors (live-status.ts banner/cronStatus/P2 readiness, SSOT/index.md) synced to the Convex truth in this bundle as a NEW dated correction — historical entries untouched. No content/version change; v1.7.116 stands. Integrity: honest recompute, no verdict fabricated, no faked accept.",
+    keyTakeaways: [
+      "Root cause: post_verdict.sh's cap recompute broke same-datestamp ties by list order, not by _creationTime — a superseded reviewer verdict could win the latest-per-reviewer slot and skew the EXT cap formula",
+      "P2 cap honestly corrects 74→68: true latest-per-reviewer = Grok MINOR 12 + ChatGPT REJECT 0 + Gemini F14 MAJOR 6 → 50+18=68; the prior 74 dropped the Gemini F14 MAJOR (itself a BUG-1 artifact)",
+      "Convex papers P2 cap read-back-verified = 68; static mirrors (live-status.ts, SSOT/index.md) synced this bundle as a NEW dated correction, no historical rewrite",
+      "BUG-2 record_wave clobber guard shipped same commit (cd02c991); caps now P1A 68 · P2 68 · P3 56 · P4 74 · P5 74",
+      "Surface-honesty tick, not a verdict move — no ACCEPT faked, no number fabricated, no paper version changed",
+    ],
+    links: [
+      { label: "post_verdict.sh root-fix (cd02c991)", href: `${GH_COMMIT}/cd02c991` },
+      { label: "post_verdict.sh (canonical source)", href: `${GH}/tools/post_verdict.sh` },
+    ],
+  },
+  {
     id: "m18-ext-p2-p1u-confirm-2026-07-13",
     dateISO: "2026-07-13",
     kind: "external-browser",
