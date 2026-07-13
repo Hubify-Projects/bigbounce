@@ -57,6 +57,31 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "m22-ext-p5-p3apjs-confirm-2026-07-13",
+    dateISO: "2026-07-13",
+    kind: "external-browser",
+    title:
+      "M22-EXT — P5 + P3(ApJS) confirm wave, 0 genuinely-new on either paper (both byte-unchanged). P5 (v0.1.126): Grok MINOR + ChatGPT REJECT — clean-wave streak 8→9; cap 74 HOLDS. ChatGPT's 3rd consecutive REJECT confirms its P5 floor shifted MAJOR-modal→REJECT-modal (pattern-066, unchanged content). P3-ApJS (v3.1.158-apjs): Grok MAJOR + ChatGPT REJECT — streak 8→9; cap 56 HOLDS. No bumps; directive_g.sh not run.",
+    papers: ["P5", "P3"],
+    summary:
+      "M22-EXT: two-paper byte-unchanged confirm wave — 0 genuinely-new reader-visible editable findings on either paper, ledger-first Opus truth-audit against the live .tex. P5 (v0.1.126, byte-unchanged): Grok MINOR REVISIONS (0 MAJOR/5 MINOR; closing 'the central claim of no detectable environment dependence of spiral chirality … is supported by the data, statistical framework, and robustness checks') + ChatGPT REJECT (12 MAJOR/1 MINOR). PATTERN-066 MODAL-FLOOR SHIFT: ChatGPT's P5 verdict floor moved from MAJOR-modal (M3b/M6/M9/M12/M14 all MAJOR) to REJECT-modal (H17H, M17, M19, M22 = 4 of last 5 reads REJECT) on byte-identical content and is now stable there — a maximal-harsh structural floor that dropped a tier, NOT new findings; the M22 item set is 1:1 with M17/M19. Every finding source-cited to a standing DP5 D-id (DP5-01/-02/-04/-06/-08/-09/-10/-11/-12/-13/-14/-16/-20/-21/-22); ledger_match Grok 5/6, ChatGPT 11/13, 2 UNMATCHED Opus-adjudicated RE-FLAG (ChatGPT #9 T-Web-field-not-validated → DP5-14 [T-Web secondary/diagnostic, the ~73%/~23× randoms disclosure is the paper's OWN demotion driver]; #11 parity-even-operator/App-B-remove → DP5-20 [speculative EFT already 'not a derived constraint']). cleanWaveStreak 8→9; cap 74 HOLDS (Grok MIN 12 + ChatGPT REJECT 0 + latest-Gemini MIN 12 = 50+24; ChatGPT contribution already 0 since M17). P3-ApJS (v3.1.158-apjs, byte-unchanged): Grok MAJOR REVISIONS (4 MAJOR/2 MINOR; closing central claim 'supported for the broad/continuum-dominated class on the four retained validated surveys') + ChatGPT REJECT (16 MAJOR/1 MINOR) — 8th EXT read with the bounded DP3-15 disclosure; same disclosed-content set as M8/M10/M12/M15/M17/M20. Every finding source-cited to a standing DP3 D-id (DP3-01/-04/-05/-06/-07/-08/-09/-10/-11/-12/-14/-15/-16/-20); ledger_match Grok 6/9, ChatGPT 11/20, the high UNMATCHED rate is verbose ApJS §-anchor restatement Opus-adjudicated to standing D-ids. DP3-20 immutable-release bar stays DISSOLVED (neither leg re-raises 'described prospectively/disqualifying'); ChatGPT #6 Data-Availability item again cites the paper's OWN 86.6%/~1.3% numbers = the disclosed DP3-15 structural ceiling (OPEN-COMPUTE, pod-gated, no reset). Maximally-harsh ApJS floor holds (DP3-17 backfire). cleanWaveStreak 8→9; cap 56 HOLDS. No bumps; directive_g.sh not run.",
+    keyTakeaways: [
+      "P5 ChatGPT modal-floor SHIFT: 3rd consecutive REJECT on byte-identical v0.1.126 (H17H→M17→M19→M22) confirms ChatGPT's P5 floor has moved from MAJOR-modal (M3b/M6/M9/M12/M14) to a stable REJECT-modal — a maximal-harsh structural floor one tier lower, NOT new findings. Cap contribution already 0 since M17, so no further cap effect. cleanWaveStreak 8→9; cap 74 HOLDS.",
+      "P3-ApJS: 8th EXT read of the immutable-released catalog — DP3-20 stays DISSOLVED, DP3-15 end-to-end re-inference cited at its disclosed ~1.3%/86.6%-hashed structural ceiling (OPEN-COMPUTE, pod-gated, no reset). Maximally-harsh ApJS floor holds (DP3-17). cleanWaveStreak 8→9; cap 56 HOLDS.",
+      "Integrity: all 4 raws read verbatim before disposition; Grok MINOR/MAJOR + ChatGPT REJECT recorded to Convex as-is (no softening); every finding source-cited to a DP5/DP3 D-id; 0 genuinely-new editable defects → no ACCEPT faked, no math fabricated, no version bumped, directive_g.sh NOT run. Streaks: P1U 9 · P2 9 · P3 9 · P4 9 · P5 9. Caps: P1A 62 · P2 68 · P3 56 · P4 85 · P5 74.",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 0,
+      note: "0 genuinely-new reader-visible editable findings across P5 M22-EXT (Grok MINOR + ChatGPT REJECT — all source-cited DP5 re-flags; ChatGPT modal-floor shift to REJECT on unchanged content) and P3-ApJS M22-EXT (Grok MAJOR + ChatGPT REJECT — all source-cited DP3 re-flags, DP3-15 compute-gated). P5 streak 8→9 cap 74 HOLDS; P3 streak 8→9 cap 56 HOLDS. All-A grid fed via Convex readinessMetrics.",
+    },
+    links: [
+      { label: "P5 M22 truth audit", href: `${PR}/EXT_real/H17_2026-07-10/M22/P5_truth_audit_M22.md` },
+      { label: "P3 M22 truth audit", href: `${PR}/EXT_real/H17_2026-07-10/M22/P3APJS_truth_audit_M22.md` },
+      { label: "P5 disposition ledger", href: `${PR}/DISPOSITIONS/P5.md` },
+      { label: "P3 disposition ledger", href: `${PR}/DISPOSITIONS/P3.md` },
+    ],
+  },
+  {
     id: "m21-ext-p1u-p4-confirm-2026-07-13",
     dateISO: "2026-07-13",
     kind: "external-browser",
