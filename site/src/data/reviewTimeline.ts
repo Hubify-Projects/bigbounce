@@ -6852,6 +6852,14 @@ export const gapSeries: GapPoint[] = [
     note: "M3/M2c confirm wave — re-tests on the two just-touched papers. P5 M3 (v0.1.126): EXT Grok MINOR + INT-API OpenAI REJECT / Grok ACCEPT / Gemini MINOR / Claude MINOR — Grok's is the CAMPAIGN'S FIRST INT-API ACCEPT (verified raw body + milestone log; 4 non-blocking MINORs, central-claim endorsement); ChatGPT EXT M3 FAILED-dead (M3b gap). 0 genuinely-new → P5 streak 0→1. P3-ApJS M2c (v3.1.158-apjs): recovered ChatGPT EXT REJECT completes the M2 wave — immutable-release hinge DISSOLVED (remaining basis = DP3-15 pod-blocked re-inference OPEN-COMPUTE + DP3-16 catalog-vs-PRD venue, both Houston-gated); 0 genuinely-new → P3 streak 0→1. Caps HOLD: P5 80 · P3 56.",
     milestone: "first INT-API ACCEPT (Grok, P5) · P3 hinge dissolved",
   },
+  {
+    roundId: "M34",
+    dateISO: "2026-07-13",
+    total: 0,
+    perPaper: { P1A: 0, P1B: 0, P2: 0, P3: 0, P4: 0, P5: 0 },
+    note: "M34-EXT confirm wave — recovered headed-browser Grok legs on P2 + P5, raw verbatim + screenshot READ before every recorded verdict. P2 Grok = MINOR REVISIONS (1 MAJOR-tag + 4 MINOR) all source-cited re-flags → DP2-04/-07/-26/-34/-35 (proxy ρ=−0.868 conservative-endpoint / channel-native surrogate 2.3σ HIGHER, computed c15), DP2-15 (null-space basis), DP2-13/-32.6 (cubic transmission OPEN-COMPUTE, Grok quotes the paper's own 'definitive-verification-would-require' sentence), DP2-18 (Bayes prior-width); Grok's close CREDITS the central claim → 0 genuinely-new → P2 clean-wave streak 12→13. P5 Grok = MINOR REVISIONS (0 MAJOR + 4 MINOR) all re-flags → DP5-13/-24 (post-hoc abstract-lead already 'designated-primary (exploratory, not pre-registered)'), DP5-12/-22 (RSD catalog-reconstruction caveat already in-text), DP5-02/-03 (reproducibility), DP5-22 (key-result box); Grok's close AFFIRMS the null → 0 genuinely-new → P5 clean-wave streak 1→2 (re-crosses directive-K bar). No content bump (v1.7.116 / v0.1.127 stand). Caps HOLD honestly below the 96 all-ACCEPT gate: P2 74 (Grok MIN + ChatGPT REJECT + Gemini MIN) · P5 68 (Grok MIN + ChatGPT REJECT + Gemini MAJ). Grok back at MINOR from its M28 MAJOR slip = pattern-066 verdict-word oscillation on byte-unchanged content.",
+    milestone: "P2 streak 12→13 · P5 streak 1→2 (0 genuinely-new both)",
+  },
 ];
 
 export interface ReadinessCheckpoint {
