@@ -333,3 +333,28 @@ Switched to Opus 4.7 + xhigh effort for this.
 > - P4 streak 1 — clean post-DP4-22 rebuild
 > - P5 streak 4 — M41 placing
 > - Houston-gated (the critical path): arXiv wave-1 clicks, P3 venue word, human referees, optional archive re-pull, Zenodo DOI, Cai email — plus the two-machine bootstrap acceptance test whenever you're ready
+
+## 2026-07-13 - cmux multi-agent orchestration architecture
+
+### Houston messages, verbatim
+
+**14:49 PT - Plan and bootstrap cmux with subscription-authenticated Codex and Claude plus You.md coordination**
+
+- `cwd`: /Users/houstongolden/Desktop/CODE_YOU/bigbounce
+- `session`: cmux multi-agent orchestration architecture
+- `agent`: Codex/GPT-5
+
+> Okay these are some notes that I was just thinking about. I'm working on another project called you.MD, as I'm sure you're aware. It's just that in that project we're working on a variety of different things: cross-computer agent collaboration, syncing in real time, etc. We have daemons and everything that's all within you.MD but we have also been testing a few other things: Tailscale with my BAMF site agent and just different desktop apps and that sort of thing.
+> What am I trying to say? I'm trying to get to this point, which is about C mux. It's also about using Codecs as well as C mux, even Claude and Claude coding in codecs and C mux, and maybe cursor, maybe grok, build, etc. C mux is what I'm talking about right now.
+> Basically, is there an easy way we can use C mux or as close to that as possible? It just seems like C mux is actually the perfect tool for this. If you can help me come up with the right plan for this and help me get C mux up and running using GPT 5.6 soul high as the main orchestrator model. Also be able to test that against Opus 4.8 as the orchestrator from Anthropic.
+> I think for now I want to use GPT 5.6 soul high. I want to use C mux for this and I want to, as much as possible, not rely on the API. I want to log in via codex login to use the CLI for codex inside the C mux terminal, as well as potentially use a Claude code terminal. I'm just not sure. The guy that I follow, Indie Dev, damn, looked like he actually had Claude code running in a terminal separately and that was the main orchestrator agent. That main orchestrator agent was then controlling the lead agent as kind of the main chat in C mux, with a grid of four agents working to the right of that as the worker agents. Orchestration in a terminal.
+> The agent lead that gets spun up via the terminal, whether it's Claude code or codex, is the lead in the main C mux chat. The workers are reporting back to the lead and the lead is reporting back to the main orchestrator. I watched this cool tutorial on it and it looked like, oh man, this is a perfect fit for what we're doing with big bounce, where we have:
+> - our lead
+> - our orchestrator agent
+> - our lead agent, ideally, which could use 5.6 on a medium mode or Terra model or something, or even Sol 5.6 high/medium
+> The workers are using the more efficient models and separate models via different CLI, Gemini CLI, Sonnet, GPT, Terra, Luna, grok, grok build, etc.
+>
+>
+> if I can get multiple claude code and codex sessions continuously checking what each other is working on to ensure we are not doing duplicate or overlapping code etc and basically are sharing plans and tasks in a streamlined way -- basically dogfooding this while working on this project itself - which will become a valuable feature of the You platform as well -- ie if I try to ask Codex or Claude/claude code et al to work on something and they detect it is currently being worked on on another machine so they will wait for that work to be committed and watch for the related PR etc or something and ensure the other agent doesnt have in their plans some similar work coming up etc or else to somehow ping the other agent via theyou md api/mcp/daemon i dunno how it works exactly if you can also better explain for me and even in our docs and ensure our docs also have all endpoints and everything documented -- i guess the levels of collaborating like this should also be on the local level i dunno exactly ... shit ... there are many scenarios actually especially in Cmux and other agentic engineering scenarios where we want to be running multiple agents with multiple models using Cmux or something actually so i dunno what the best approach here is but it should actually allow for agents to work on the same thing at the same time and they should be aware of each other ... i was just watching a tutorial actually on this from my favorite youtube agentic engineering channel indydevdan on how he uses cmux to do this and natively within cmux cross-compare the models outputs and results to see who comes up with results/fixes for bugs etc fastest and have our orchestrator agent analyze the results objectively etc ... remind me to share the tutorials and repos to pull down for reference on that please make sure you understand and think about this properly in the best way bc it is highly relevant to other work we have been doing in bigbounce and hubify as well in terms of the difference in how multi-model multi-agent combined ai/agent outputs can create closer to AGI level results that truly outperform and outcompete even the leading frontier models alone - etc but there are different approachs that are best or required for science research vs coding etc.
+>
+> please pull all of this and analyze and save in a local directory in my CODE_YOU directory and pull all useful agent scripts and setup tips and skill etc etc - [disler/learning-cmux-with-agents](https://github.com/disler/learning-cmux-with-agents)

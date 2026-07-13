@@ -57,6 +57,42 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "m42-ext-p1u-p4-p3-adjudication-2026-07-13",
+    dateISO: "2026-07-13",
+    kind: "external-browser",
+    title:
+      "M42-EXT — P1U (v1U.0.20) + P4 (v1.0.240) + P3-ApJS (v3.1.159-apjs) confirm wave, all byte-unchanged, 0 genuinely-new on all three (6 recovered legs after the false FAILED-dead incident, commit 285e26a4). P1U: Grok = MINOR REVISIONS (0M/5m, band-DOWN from M40 MAJOR) + ChatGPT = REJECT (14M/2m); streak 16→17; cap 62→68 (Grok leg MAJOR 6→MINOR 12 restores). P4: Grok = MINOR REVISIONS (0M/4m) + ChatGPT = REJECT (9M/2m, REJECT↔MAJOR band); DP4-22 edge-on fix STAYS HELD; streak 1→2 (2nd clean wave post-fix); cap 80→74 (ChatGPT MAJOR→REJECT). P3: Grok = MAJOR REVISIONS (3M/2m) + ChatGPT = REJECT (16M/1m); DP3-21 DAS fix STAYS HELD; streak 5→6; cap HOLDS 56.",
+    papers: ["P1A", "P4", "P3"],
+    summary:
+      "STRICT ledger-first adjudication (tools/ledger_match.py) of the six M42 raws — recovered after the false FAILED-dead incident (headed-browser assertion fix, commit 285e26a4) — against byte-unchanged P1U v1U.0.20 (served md5 c295beef) + P4 v1.0.240 + P3-ApJS v3.1.159-apjs (b7b8f8a5); every raw + screenshot READ verbatim before any verdict; PROVENANCE CONFIRMED all 6 legs by signature-grep (correct-paper content present, 0 cross-contamination — P3 P5-void-signature count = 0); post_verdict.sh EXT bare labels + record_wave.sh M42 rows (clobber-guard confirmed), caps recomputed from the EXT formula (_creationTime-latest per reviewer). P1U: Grok = MINOR REVISIONS (0M/5m) BAND-DOWN from M40 MAJOR on IDENTICAL byte-unchanged content = pattern-066 (M35 MINOR→M40 MAJOR→M42 MINOR); ChatGPT = REJECT (14M/2m) structural harsh-referee floor identical to H17G/W1/W2b/M40 set. 0 genuinely-new; all findings source-cited standing DP1U re-flags (Grok→DP1U-20/-07/-09/-10/-12/-17/-14/-06/-22; ChatGPT→DP1U-03/-08/-07/-20/-14/-11/-05/-19/-09/-10/-12/-16/-17/-15/-24/-02). streak 16→17; cap 62→68 (Grok MINOR 12 restores +6). P4: Grok = MINOR REVISIONS (0M/4m) + ChatGPT = REJECT (9M/2m, documented REJECT↔MAJOR band). DP4-22 HELD ABSENT (hard grep both raws for the edge-on sensitivity-PENALTY item 8.98/18.8/Cramér/Fisher-sqrt = only near-hit is ChatGPT's '15.8% edge-on contamination' = DP4-08/-15 classifier-validation, NOT the corrected penalty-scaling); 0 genuinely-new; all findings source-cited DP4 re-flags (Grok→DP4-03/-17/-09/-15/-07/-13; ChatGPT→DP4-07/-09/-10/-01/-14/-17/-08/-15/-16/-11/-12/-21/-13). streak 1→2 (2nd clean wave post DP4-22 fix → P4 re-crosses directive-K bar); cap 80→74 (ChatGPT MAJOR 6→REJECT 0). P3-ApJS: Grok = MAJOR REVISIONS (3M/2m) + ChatGPT = REJECT (16M/1m), maximally-harsh ApJS floor DP3-17 identical to M24/M27/M36/M39 set. DP3-21 DAS-fix HELD (grep both raws for the Gaia-block-released + LAMOST-excluded-from-every-count internal contradiction = 0). 0 genuinely-new; all findings source-cited DP3 re-flags (Grok→DP3-07/-11/-01/-08/-15/-09/-10/-16/-20; ChatGPT→DP3-07/-11/-12/-15/-01/-14/-06/-13/-09/-19/-20/-08/-10/-16). DP3-15 end-to-end re-inference at structural ceiling — P3 residual 100% Houston-gated (venue/archive), no compute lever. streak 5→6; cap HOLDS 56. No bumps (all byte-unchanged); directive_g.sh not run; no ACCEPT faked, no finding dismissed without a source-cited verdict, no math fabricated.",
+    keyTakeaways: [
+      "0 genuinely-new on all three papers on byte-unchanged content → P1U streak 16→17, P4 streak 1→2 (2nd clean wave post DP4-22 fix), P3 streak 5→6. Every finding fingerprint-matches a canonical DP1U/DP4/DP3 disposition.",
+      "All three earlier correctness fixes STAY HELD: DP4-22 edge-on sensitivity-penalty (sqrt→linear) absent; DP3-21 DAS internal contradiction absent. P1U Grok band-DOWN MAJOR(M40)→MINOR(M42) on identical content = textbook pattern-066.",
+      "Caps: P1U 62→68 (Grok MAJOR→MINOR restores +6), P4 80→74 (ChatGPT MAJOR→REJECT), P3 HOLDS 56. No bumps; directive_g.sh not run.",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 0,
+      note: "M42-EXT: 0 genuinely-new on P1U, P4, and P3. Every finding a source-cited standing DP1U/DP4/DP3 re-flag or disclosed-scope limitation; the ChatGPT REJECT + Grok MINOR/MAJOR verdict words are the documented maximal-harsh-referee floor on byte-unchanged content. No edits warranted; no bumps.",
+    },
+    links: [
+      {
+        label: "P1U M42 truth-audit",
+        href: `${PR}/EXT_real/H17_2026-07-10/M42/P1U_truth_audit_M42.md`,
+      },
+      {
+        label: "P4 M42 truth-audit",
+        href: `${PR}/EXT_real/H17_2026-07-10/M42/P4_truth_audit_M42.md`,
+      },
+      {
+        label: "P3 M42 truth-audit",
+        href: `${PR}/EXT_real/H17_2026-07-10/M42/P3APJS_truth_audit_M42.md`,
+      },
+      { label: "DISPOSITIONS/P1U.md", href: `${PR}/DISPOSITIONS/P1U.md` },
+      { label: "DISPOSITIONS/P4.md", href: `${PR}/DISPOSITIONS/P4.md` },
+      { label: "DISPOSITIONS/P3.md", href: `${PR}/DISPOSITIONS/P3.md` },
+    ],
+  },
+  {
     id: "m41-ext-p5-p2-adjudication-2026-07-13",
     dateISO: "2026-07-13",
     kind: "external-browser",
@@ -6915,6 +6951,20 @@ export const externalVerdictRounds: ExternalRoundVerdicts[] = [
       P5: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
     },
     note: "M27-EXT. P3-ApJS (v3.1.159-apjs) byte-unchanged since M24 (no .tex edit since e24b42a9) — a fresh Grok re-read of the same DP3-21-fixed content. Only the Grok leg ran: ChatGPT hit its daily rate-limit (~16 legs M20-M26; M26 P1U/P4 legs already DEFERRED-ratelimit) and Gemini stays browser-hard-throttled — both carried (REJECT/REJECT), recorded NO_VERDICT for M27, never zeros. Verdict FROM RAW (verbatim VERDICT line READ before recording): P3 Grok MAJOR REVISIONS (4 MAJOR/3 MINOR). CRITICAL CHECK — DP3-21 DAS self-consistency fix STAYS HELD: signature-grep of the M27 raw for the contradiction (\"feature-space score\" on Gaia block / \"excluded from every count\" for LAMOST / DAS internal contradiction) = NONE. Truth-audit (vs live paper3_apjs.tex + DISPOSITIONS): 0 genuinely-new; every Grok finding source-cited — G1 headline 268,519 vs process-volume/98.7%-sky-filler/2,468-science-target → DP3-07/-09 (paper's OWN disclosed numbers); G2 eROSITA-irreproducible + Gaia-synthetic 'remove entirely' → DP3-08/-15/-16 (both already excised from every count); G3 full per-object re-inference blocked (parquets on exited pod) → DP3-15 OPEN-COMPUTE (compute-gated held-out re-inference = a real RunPod run, Houston-gated per compute-to-accept-queue; NOT editable, not faked); G4 non-uniform validation (NEOWISE geometry-only vs injection-recovery) → DP3-07/-14 (four-tier structure disclosed); G5 Liang 0.92× like-for-like → DP3-13/-10; G6 fNL/NANOGrav secondary-sections move-to-appendix → OPINION (editorial placement, already labeled secondary); G7 internal-pipeline-paths not-self-contained → DP3-20-adjacent presentation nit. P3 clean-wave streak 1→2 (M24 0→1; M27 second 0-genuinely-new P3 read on the same v3.1.159-apjs). Cap HOLDS 56 (post_verdict.sh recomputed: 50 + Grok-MAJOR 6 + ChatGPT-REJECT 0 + Gemini-REJECT 0). No .tex edit due (byte-unchanged, nothing new to fix); no bump; directive_g.sh not run; no ACCEPT faked, no finding dismissed without a source-cited verdict, no math fabricated. Raw + truth-audit: EXT_real/H17_2026-07-10/M27/.",
+  },
+  {
+    roundId: "M42",
+    dateISO: "2026-07-13",
+    windowPT: "Jul 13 · P1U (v1U.0.20) + P4 (v1.0.240) + P3-ApJS (v3.1.159-apjs) all byte-unchanged — 6 legs recovered after the false FAILED-dead incident (commit 285e26a4); headed browser, raw verbatim VERDICT line READ before every verdict · Gemini carried",
+    verdicts: {
+      P1A: ["REJECT", "MINOR", "NO_VERDICT"],
+      P1B: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P2: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P3: ["REJECT", "MAJOR", "NO_VERDICT"],
+      P4: ["REJECT", "MINOR", "NO_VERDICT"],
+      P5: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+    },
+    note: "M42-EXT. Three-paper byte-unchanged confirm wave, 6 legs recovered after the false FAILED-dead incident (headed-browser assertion fix, commit 285e26a4). PROVENANCE CONFIRMED all 6 legs by signature-grep (correct-paper content present, 0 cross-contamination — P3 P5-void-signature count = 0). Verdict matrix [ChatGPT, Grok, Gemini] FROM RAW (verbatim VERDICT line READ before recording): P1U ChatGPT REJECT (14 MAJOR/2 MINOR) + Grok MINOR (0 MAJOR/5 MINOR, BAND-DOWN from M40 MAJOR = pattern-066 M35 MIN→M40 MAJ→M42 MIN); P4 ChatGPT REJECT (9 MAJOR/2 MINOR, documented REJECT↔MAJOR band) + Grok MINOR (0 MAJOR/4 MINOR); P3-ApJS ChatGPT REJECT (16 MAJOR/1 MINOR) + Grok MAJOR (3 MAJOR/2 MINOR). Gemini not swept (carried, NO_VERDICT). Truth-audit (ledger_match.py strict + Opus per paper vs each .tex + DISPOSITIONS): 0 genuinely-new on all three; every finding source-cited to a standing D-id (P1U→DP1U-03/-05/-06/-07/-08/-09/-10/-11/-12/-14/-15/-16/-17/-19/-20/-22/-24/-02; P4→DP4-01/-03/-07/-08/-09/-10/-11/-12/-13/-14/-15/-16/-17/-21; P3→DP3-01/-06/-07/-08/-09/-10/-11/-12/-13/-14/-15/-16/-19/-20). Fixes-held HARD CHECKS both PASS: DP4-22 edge-on sensitivity-penalty (sqrt→linear) ABSENT — only near-hit is ChatGPT's '15.8% edge-on contamination' = DP4-08/-15 classifier-validation, NOT the corrected penalty-scaling; DP3-21 DAS internal contradiction ABSENT. clean-wave streaks: P1U 16→17 · P4 1→2 (2nd clean wave post DP4-22 fix, re-crosses the directive-K bar) · P3 5→6. Caps (post_verdict.sh, _creationTime-latest per reviewer): P1A 62→68 (Grok leg MAJOR 6→MINOR 12 restores +6); P4 80→74 (ChatGPT MAJOR 6→REJECT 0); P3 HOLDS 56 (Grok MAJ 6 + ChatGPT REJ 0 + Gemini REJ 0). DP3-15 end-to-end re-inference at structural ceiling — P3 residual 100% Houston-gated (venue/archive), no compute lever. No bumps (all byte-unchanged); directive_g.sh not run; no ACCEPT faked, no finding dismissed without a source-cited verdict, no math fabricated. Raws + per-paper truth-audits: EXT_real/H17_2026-07-10/M42/.",
   },
 ];
 
