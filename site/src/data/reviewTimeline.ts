@@ -57,6 +57,37 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "m43-ext-p5-p2-adjudication-2026-07-13",
+    dateISO: "2026-07-13",
+    kind: "external-browser",
+    title:
+      "M43-EXT — P5 (v0.1.127) + P2 (v1.7.116) confirm wave, both byte-unchanged, 0 genuinely-new on either paper (4 recovered legs after the headless false FAILED-dead incident, commit f797cbde). P5: Grok = MINOR REVISIONS (2 in-MINOR MAJ-tag/2m; closing AFFIRMS the ≈0.9-pp null) + ChatGPT = MAJOR REVISIONS (10M/2m, 4th consecutive MAJOR M34/M37/M41/M43 = floor lifted and stable); DP5-26 artifact-range fix STAYS HELD; streak 5→6; cap HOLDS 74. P2: Grok = MINOR REVISIONS (2 in-MINOR MAJ-tag/3m; closing AFFIRMS −35/16) + ChatGPT = REJECT (11M/2m, maximal-harsh floor DP2-24; concedes the algebra supports −35/16); App-A crux = standing DP2-01/-15/-16 convention disposition, re-falsified by re-running committed p2_vertex_check.py; streak 16→17; cap HOLDS 74.",
+    papers: ["P5", "P2"],
+    summary:
+      "STRICT ledger-first adjudication (tools/ledger_match.py) of the four M43 raws — recovered after the headless false FAILED-dead incident (sticky-headed root fix + assert_headed into harvest, commit f797cbde) — against byte-unchanged P5 v0.1.127 (served md5-current) + P2 v1.7.116; every raw + screenshot READ verbatim before any verdict; PROVENANCE CONFIRMED all 4 legs (correct-paper content present, real assistant reviews, 0 cross-contamination); post_verdict.sh EXT bare labels + record_wave.sh M43 rows (clobber-guard confirmed), caps recomputed from the EXT formula (_creationTime-latest per reviewer). P5: Grok = MINOR REVISIONS (2 in-MINOR MAJ-tag/2 MINOR under a MINOR-REVISIONS header = in-MINOR emphasis pattern-066; closing AFFIRMS the ≈0.9-pp environment-independent null); ChatGPT = MAJOR REVISIONS (10M/2m), 4th consecutive MAJOR M34/M37/M41/M43 = floor lifted and stable above its former REJECT-modal tier. DP5-26 HELD ABSENT (grep both raws for [A1]/[A32]/[A34]/artifact-range = NONE; the v0.1.127 artifact-range fix stays held). 0 genuinely-new; all findings source-cited standing DP5 re-flags (Grok→DP5-13/-21/-11/-22/-08/-09; ChatGPT→DP5-06/-18/-13/-04/-01/-02/-11/-10/-08/-09/-22/-12/-14/-20); ledger_match UNMATCHED Grok-Paper-IV #3→DP5-21 (OPEN-VENUE), ChatGPT-T-Web #9→DP5-14 (RE-FLAG-DISCLOSED). streak 5→6; cap HOLDS 74 (50 + Grok MIN 12 + ChatGPT MAJ 6 + latest-Gemini MAJ 6). P2: Grok = MINOR REVISIONS (2 in-MINOR MAJ-tag/3 MINOR; closing AFFIRMS the corrected −35/16 + the 2.6–2.75σ recast); ChatGPT = REJECT (11M/2m), maximal-harsh floor DP2-24 — its point (3) CONCEDES 'the contraction-phase algebra provides some support for a squeezed-limit value f_NL=−35/16'. Task-crux: ChatGPT #1/#2 App-A coefficient/(5,2,2)-orbit-convention challenge = standing DP2-01/-15/-16 disposition, re-falsified by re-running the committed p2_vertex_check.py derivation + the convention-free Li c_s=1 formula; headline −35/16 unaffected. 0 genuinely-new; all findings source-cited standing DP2 re-flags (Grok→DP2-02/-01/-16/-34/-14/-22/-15/-04/-31; ChatGPT→DP2-01/-15/-16/-13/-19/-02/-14/-22/-07/-04/-18/-20/-21/-30); ledger_match UNMATCHED ChatGPT-b_φ #8→DP2-22/-04. streak 16→17; cap HOLDS 74 (50 + Grok MIN 12 + ChatGPT REJECT 0 + latest-Gemini MIN 12). No bumps (both byte-unchanged); directive_g.sh not run; no ACCEPT faked, no finding dismissed without a source-cited verdict, no math fabricated.",
+    keyTakeaways: [
+      "0 genuinely-new on both papers on byte-unchanged content → P5 streak 5→6 (sixth consecutive clean wave post-DP5-26), P2 streak 16→17 (seventeenth). Every finding fingerprint-matches a canonical DP5/DP2 disposition.",
+      "DP5-26 artifact-range fix STAYS HELD (absent from both P5 raws). P2's App-A convention crux re-falsified by re-running the committed p2_vertex_check.py + convention-free Li formula — the −35/16 headline is unaffected; ChatGPT's own algebra concedes −35/16.",
+      "Both ChatGPT verdicts (P5 4th-consecutive MAJOR, P2 REJECT floor) are the documented maximal-harsh-referee band on unchanged content. Caps HOLD 74/74; no bumps; directive_g.sh not run.",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 0,
+      note: "M43-EXT: 0 genuinely-new on P5 and P2. Every finding a source-cited standing DP5/DP2 re-flag, disclosed-scope limitation, or convention crux falsified against the committed derivation; the ChatGPT MAJOR/REJECT + Grok MINOR verdict words are the documented maximal-harsh-referee floor on byte-unchanged content. No edits warranted; no bumps.",
+    },
+    links: [
+      {
+        label: "P5 M43 truth-audit",
+        href: `${PR}/EXT_real/H17_2026-07-10/M43/P5_truth_audit_M43.md`,
+      },
+      {
+        label: "P2 M43 truth-audit",
+        href: `${PR}/EXT_real/H17_2026-07-10/M43/P2_truth_audit_M43.md`,
+      },
+      { label: "DISPOSITIONS/P5.md", href: `${PR}/DISPOSITIONS/P5.md` },
+      { label: "DISPOSITIONS/P2.md", href: `${PR}/DISPOSITIONS/P2.md` },
+    ],
+  },
+  {
     id: "m42-ext-p1u-p4-p3-adjudication-2026-07-13",
     dateISO: "2026-07-13",
     kind: "external-browser",
