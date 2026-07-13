@@ -219,6 +219,13 @@ submit_chatgpt() {
   done
   [ "$chip" = 1 ] || echo "    WARN chatgpt chip not confirmed — continuing"
   # type (ChatGPT #prompt-textarea — atomic insertText, verify ordered)
+  # Guard (2026-07-13 M25 lesson): record the tab URL BEFORE send. If the
+  # fresh-chat navigation silently failed, the tab still shows the PREVIOUS
+  # leg's /c/ chat — the poll below would accept that stale URL instantly and
+  # record the wrong chat (observed: P5+P2 M25 chatgpt legs both recorded the
+  # P4 M24 chat URL). A post-send /c/ URL must DIFFER from the pre-send one.
+  bcall 30 url || true
+  PRE_URL="$(printf '%s' "$BOUT" | tr -d '\r' | tail -1)"
   type_prompt '#prompt-textarea' || die "chatgpt type failed: $BOUT"
   # JS-click send: testid first, aria fallback
   bcall 45 js '(function(){var b=document.querySelector("button[data-testid=send-button]");if(b){b.click();return "sent-testid"}var a=document.querySelector("button[aria-label*=Send i]");if(a){a.click();return "sent-aria"}return "no-send-btn"})()' || die "chatgpt send failed: $BOUT"
@@ -231,11 +238,20 @@ submit_chatgpt() {
     sleep 5
     bcall 45 url || true
     SUBMIT_URL="$(printf '%s' "$BOUT" | tr -d '\r' | tail -1)"
-    case "$SUBMIT_URL" in */c/*) break ;; esac
+    case "$SUBMIT_URL" in
+      */c/*) [ "$SUBMIT_URL" != "$PRE_URL" ] && break ;;
+    esac
+    SUBMIT_URL=""
   done
   case "$SUBMIT_URL" in
-    */c/*) : ;;
-    *) echo "    WARN: no /c/ redirect after 30s — URL may be the project page" ;;
+    */c/*)
+      [ "$SUBMIT_URL" = "$PRE_URL" ] && die "chatgpt URL capture returned the pre-send chat URL (stale tab) — leg NOT confirmed, treat as FAILED"
+      ;;
+    *)
+      if [ -n "$PRE_URL" ] && case "$PRE_URL" in */c/*) true ;; *) false ;; esac; then
+        die "chatgpt: no NEW /c/ redirect after 30s and tab was on a prior chat ($PRE_URL) — leg NOT confirmed, treat as FAILED"
+      fi
+      echo "    WARN: no /c/ redirect after 30s — URL may be the project page" ;;
   esac
 }
 
