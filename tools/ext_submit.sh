@@ -384,10 +384,11 @@ case "$REVIEWER" in
   gemini)  submit_gemini ;;
 esac || true
 
-# sanity on captured URL
+# sanity on captured URL — an OK row without a harvestable URL is a lie
+# (2026-07-14: P1U M35 chatgpt recorded OK url=<none>, unharvestable).
 case "${SUBMIT_URL:-}" in
   http*) ;;
-  *) SUBMIT_URL="" ; echo "    WARN no http URL captured" ;;
+  *) die "no http URL captured after submit — leg NOT confirmed (message may have landed; recover via project sidebar)" ;;
 esac
 
 STATUS="submitted"
