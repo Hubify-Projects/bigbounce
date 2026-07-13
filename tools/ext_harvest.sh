@@ -38,6 +38,127 @@ sys.exit(0 if re.search(r"(VERDICT|Recommendation)[^A-Za-z]{0,40}(ACCEPT|MINOR|M
 '
 }
 
+# ---------------------------------------------------------------------------
+# HARVEST-TIME GATES (directive I4: a leg with no verifiable output is FAILED,
+# NOT a verdict). Four incidents drove these — a 273-byte prompt-echo stub
+# recorded MAJOR (P1U M30), a 0-byte raw recorded REJECT (P4 M24), two
+# wrong-paper misfiles recorded as P3APJS (M32 byte-identical to a P1U raw;
+# M34 a P5 review). Each gate runs AFTER the raw is on disk but BEFORE any
+# verdict reaches the manifest/matrix.
+# ---------------------------------------------------------------------------
+
+# gate_substance <rawfile> -> 0 pass, 1 fail (too small / no verdict line)
+gate_substance() {
+  local f="$1"
+  local n
+  n=$(wc -c < "$f" 2>/dev/null | tr -d ' ')
+  [ -n "$n" ] || n=0
+  if [ "$n" -lt 1500 ]; then
+    echo "    GATE substance: FAIL — raw is ${n} bytes (< 1500-byte floor)" >&2
+    return 1
+  fi
+  if ! grep -iqE "VERDICT|MAJOR REVISIONS|MINOR REVISIONS|ACCEPT|REJECT" "$f"; then
+    echo "    GATE substance: FAIL — no verdict line found in raw" >&2
+    return 1
+  fi
+  return 0
+}
+
+# gate_duplicate <rawfile> <paper> <round> -> 0 pass, 1 fail
+# Fails if this raw's md5 matches ANY OTHER paper's raw in the current round
+# dir or the previous 2 round dirs (M-numbered scan window).
+gate_duplicate() {
+  local f="$1" paper="$2" round="$3"
+  local mine
+  mine=$(md5 -q "$f" 2>/dev/null || md5sum "$f" 2>/dev/null | awk '{print $1}')
+  [ -n "$mine" ] || return 0
+  # build the scan window: current round + previous 2 M-numbered rounds
+  local dirs=("$ROUND_DIR_BASE/$round")
+  local num=""
+  case "$round" in
+    M[0-9]*) num="${round#M}" ;;
+  esac
+  if [ -n "$num" ] && printf '%s' "$num" | grep -qE '^[0-9]+$'; then
+    local p
+    for p in 1 2; do
+      dirs+=("$ROUND_DIR_BASE/M$((num - p))")
+    done
+  fi
+  local d other omd5
+  for d in "${dirs[@]}"; do
+    [ -d "$d" ] || continue
+    for other in "$d"/*.md; do
+      [ -e "$other" ] || continue
+      # skip our own file and same-paper files (a paper legitimately shares
+      # content across its own legs/rounds; a cross-PAPER match is the tell)
+      [ "$other" = "$f" ] && continue
+      case "$(basename "$other")" in
+        ${paper}_*) continue ;;   # same paper -> not a misfile signal
+      esac
+      omd5=$(md5 -q "$other" 2>/dev/null || md5sum "$other" 2>/dev/null | awk '{print $1}')
+      if [ "$omd5" = "$mine" ]; then
+        echo "    GATE duplicate: FAIL — md5 identical to another paper's raw: $other" >&2
+        return 1
+      fi
+    done
+  done
+  return 0
+}
+
+# gate_paper_signature <rawfile> <paper> -> 0 pass, 1 fail
+# Each paper has signature tokens that MUST appear (any-of within required
+# groups). If the expected paper's signature is ABSENT and another paper's
+# signature is strongly present, this is a wrong-paper misfile. Token lists
+# live in the case block below so they stay editable.
+gate_paper_signature() {
+  local f="$1" paper="$2"
+  python3 - "$f" "$paper" <<'PY'
+import sys, re
+f, paper = sys.argv[1], sys.argv[2]
+t = open(f, encoding="utf-8", errors="replace").read().lower()
+
+def has(tok):
+    return tok.lower() in t
+
+# signature(paper) -> True if the paper's own signature is present.
+# Each paper: a list of AND-groups; each group is an any-of list of tokens.
+SIGS = {
+    "P1U":     [["dark energy"], ["fierz", "ech", "channel"]],
+    "P2":      [["f_nl", "-35/16", "in-in"]],
+    "P3":      [["anomaly"], ["neowise", "erosita", "lamost", "catalog"]],
+    "P3APJS":  [["anomaly"], ["neowise", "erosita", "lamost", "catalog"]],
+    "P4":      [["chirality"], ["galaxy zoo", "gz1", "spiral"]],
+    "P5":      [["desi"], ["void", "chirality"]],
+}
+
+def sig_present(p):
+    groups = SIGS.get(p)
+    if not groups:
+        return None  # unknown paper -> can't judge, don't block
+    return all(any(has(tok) for tok in grp) for grp in groups)
+
+own = sig_present(paper)
+if own is None:
+    print("UNKNOWN-PAPER"); sys.exit(0)
+
+if own:
+    print("OK"); sys.exit(0)
+
+# own signature absent -> is another paper's signature strongly present?
+for other, groups in SIGS.items():
+    if other == paper:
+        continue
+    # skip the twin (P3 <-> P3APJS share a signature)
+    if {other, paper} == {"P3", "P3APJS"}:
+        continue
+    if all(any(has(tok) for tok in grp) for grp in groups):
+        print("WRONGPAPER:%s" % other); sys.exit(0)
+
+# own absent, no strong other -> ambiguous/weak, don't hard-fail on signature
+print("WEAK")
+PY
+}
+
 BOUT=""
 bcall() {
   local to="$1"; shift
@@ -234,10 +355,36 @@ while IFS=$'\t' read -r PAPER REVIEWER URL; do
   done
 
   if printf '%s' "$RESP" | has_verdict; then
-    # real verdict -> save
+    # real verdict candidate -> save raw first, THEN run harvest-time gates
+    # before any verdict is written to the manifest/matrix (directive I4).
     RAW="$OUTDIR/${PAPER}_${REVIEWER}_${ROUND}.md"
     PNG="$OUTDIR/${PAPER}_${REVIEWER}_${ROUND}.png"
     printf '%s\n' "$RESP" > "$RAW"
+
+    GATE_FAIL=""
+    if ! gate_substance "$RAW"; then
+      GATE_FAIL="FAILED-stub"
+    elif ! gate_duplicate "$RAW" "$PAPER" "$ROUND"; then
+      GATE_FAIL="FAILED-duplicate"
+    else
+      SIG="$(gate_paper_signature "$RAW" "$PAPER")"
+      case "$SIG" in
+        WRONGPAPER:*)
+          echo "    GATE paper-signature: FAIL — expected $PAPER signature absent, ${SIG#WRONGPAPER:} signature strongly present" >&2
+          GATE_FAIL="FAILED-wrongpaper" ;;
+        *) : ;;  # OK / WEAK / UNKNOWN-PAPER -> pass
+      esac
+    fi
+
+    if [ -n "$GATE_FAIL" ]; then
+      # a leg with no verifiable output is FAILED, not a verdict. Keep the raw
+      # on disk for inspection; record NO verdict.
+      update_manifest_status "$PAPER" "$REVIEWER" "$ROUND" "$URL" "$GATE_FAIL" ""
+      echo "    $GATE_FAIL — raw kept at $RAW, NO verdict recorded"
+      printf '%s\t%s\t%s\n' "$PAPER" "$REVIEWER" "$GATE_FAIL" >> "$MATRIX_FILE"
+      continue
+    fi
+
     bcall 45 screenshot "$PNG" || echo "    WARN screenshot failed"
     VERDICT="$(printf '%s' "$RESP" | parse_verdict)"
     update_manifest_status "$PAPER" "$REVIEWER" "$ROUND" "$URL" "harvested" "$VERDICT"
