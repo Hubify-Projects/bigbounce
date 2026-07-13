@@ -47,7 +47,7 @@
 | — ChatGPT project | `https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/project` | Extended Thinking Pro / Deep Research (every other round) | login: Houston's account in headed window. |
 | — Grok project | `https://grok.com/project/e6c9ce77-4f86-4d94-b440-1062a78171c1` | Grok Expert | fresh project chat per leg. |
 | — Gemini | `https://gemini.google.com/u/1/app` | Ultra plan via **houston@bamf.com**; Deep Research + Deep Think via `+` | in-place send-verify; never navigate away after send. |
-| **Codex concurrent driver** | separate agent (may run same papers) | may drive the same review loop | **coexistence: STATE CHECK each tick** — detect recent commits / files changing under you (not just `ps` grep); if a concurrent owner is detected, **YIELD** (don't drive browser, don't commit competing bundles, don't push). `harvest` + `post_verdict.sh` remain safe (directive: cron-tick-overlap-detection). |
+| **Codex concurrent driver** | separate agent (may run same papers) | may drive the same review loop | **remote lease first, STATE CHECK second** — only the fresh lease holder may drive browser/adjudication/verdict state. A non-holder stays INT/compute/tooling-only. Recent commits/files-changing remain defense in depth. Raw harvest is safe; `post_verdict.sh` is DRIVER-only. |
 
 ---
 

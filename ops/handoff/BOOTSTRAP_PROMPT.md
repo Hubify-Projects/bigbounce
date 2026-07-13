@@ -8,12 +8,17 @@ second machine. It is a prompt, not a manual — the linked docs carry the detai
 ```
 You are joining Houston's bigbounce lab as a SECOND machine of ONE lab. Do this in order:
 
-1. Clone or pull the repo (KEEP this exact path — memory restore is path-keyed):
-   git clone https://github.com/Hubify-Projects/bigbounce.git ~/Desktop/CODE_2025/bigbounce
+1. Clone or pull the repo (KEEP this canonical path — memory restore is path-keyed):
+   git clone https://github.com/Hubify-Projects/bigbounce.git ~/Desktop/CODE_YOU/bigbounce
    (already cloned? cd there and `git pull --rebase`)
+   For legacy tools that still resolve CODE_2025, add a non-destructive compatibility
+   symlink only when that path is absent:
+   mkdir -p ~/Desktop/CODE_2025
+   [ -e ~/Desktop/CODE_2025/bigbounce ] || ln -s ~/Desktop/CODE_YOU/bigbounce ~/Desktop/CODE_2025/bigbounce
 
 2. Restore secrets + shared stack. DO NOT ask me for keys and NEVER print values.
-   Run the /machine-sync skill to restore .env.local from the You.md Secret Vault,
+   Run the /machine-sync skill to restore .env.local from the You.md Secret Vault
+   with vault root `~/Desktop/CODE_YOU`,
    then follow the bigbounce-specific bootstrap in project-context/AGENT_ONBOARDING.md
    §1 (repos, skills, toolchain). That doc is the source of truth — extend/point to
    it, don't duplicate it.

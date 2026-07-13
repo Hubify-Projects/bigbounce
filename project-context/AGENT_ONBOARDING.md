@@ -36,14 +36,14 @@ perfectly in sync after every round.
 Run this, then begin the loop:
 ```bash
 # refresh everything that travels across machines
-git -C ~/Desktop/CODE_2025/bigbounce pull --ff-only
+git -C ~/Desktop/CODE_YOU/bigbounce pull --ff-only
 git -C ~/.claude/scistack pull --ff-only && ~/.claude/scistack/bin/sync-to-claude.sh
 git -C ~/.agent-shared pull --ff-only && ~/.agent-shared/bin/sync-agent-shared.sh
 ~/.agent-shared/bin/restore-claude-memory.sh        # rehydrate durable preferences
 # secrets: restore .env.local from the You.md Secret Vault (16 projects / 451 vars) — or password manager
-you env vault pull --restore --root ~/Desktop/CODE_2025 --map-existing --existing-only --skip-agent-auth || echo "⚠️ fill .env.local from .env.example manually"
+you env vault pull --restore --root ~/Desktop/CODE_YOU --map-existing --existing-only --skip-agent-auth || echo "⚠️ fill .env.local from .env.example manually"
 # (optional, interactive) register the repos in You.md projects — run once at a terminal, accept the 2 prompts:
-#   for d in ~/Desktop/CODE_2025/bigbounce ~/.claude/scistack ~/.agent-shared; do (cd "$d" && youmd project init); done
+#   for d in ~/Desktop/CODE_YOU/bigbounce ~/.claude/scistack ~/.agent-shared; do (cd "$d" && youmd project init); done
 ```
 Then: read `project-context/SSOT/index.md` (top banner = current state) → **intake Houston's latest external-review findings** (newest EXT round in `project-context/peer-reviews/` or he pastes them) → run the next R/D/P round (§4) → sync the site same-commit (§5) → `git push`. That's the loop. Keep going until it reconverges + Houston signs off. **At the end of a working session, run `~/.agent-shared/bin/backup-claude-memory.sh` + commit/push agent-shared** so any new memories travel.
 
@@ -59,7 +59,10 @@ Canonical paper status lives in **`project-context/SSOT/`** and **Convex** — n
 ## 1. New-machine bootstrap (one-time)
 ```bash
 # 1. Repos  (bigbounce is PUBLIC; scistack + agent-shared are PRIVATE — run `gh auth login` first)
-git clone https://github.com/Hubify-Projects/bigbounce.git ~/Desktop/CODE_2025/bigbounce  # KEEP THIS PATH (memory restore is path-keyed)
+git clone https://github.com/Hubify-Projects/bigbounce.git ~/Desktop/CODE_YOU/bigbounce  # canonical path (memory restore is path-keyed)
+# Legacy CODE_2025 compatibility (never overwrite an existing checkout):
+mkdir -p ~/Desktop/CODE_2025
+[ -e ~/Desktop/CODE_2025/bigbounce ] || ln -s ~/Desktop/CODE_YOU/bigbounce ~/Desktop/CODE_2025/bigbounce
 git clone https://github.com/Hubify-Projects/scistack.git ~/.claude/scistack               # the science SKILLS (hubstack + astrostack)
 git clone https://github.com/houstongolden/agent-shared.git ~/.agent-shared                # global CLAUDE.md (symlinked) + shared skills + your agent MEMORY
 # (gstack skills come with the Claude Code install; see ~/.claude/skills/)

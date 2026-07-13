@@ -29,10 +29,87 @@ row() { # row <STATUS> <check> <detail/fix>
 }
 have() { command -v "$1" >/dev/null 2>&1; }
 
+# Return a TeX executable without evaluating shell text or changing the caller's
+# PATH. TinyTeX can be installed outside the system PATH on macOS.
+find_tex_tool() { # find_tex_tool <name>
+  local tool="$1" found="" root=""
+  if have "$tool"; then
+    command -v "$tool"
+    return 0
+  fi
+  for root in \
+    "/Library/TeX/texbin" \
+    "$HOME/Library/TinyTeX/bin/universal-darwin" \
+    "$HOME/Library/TinyTeX/bin/arm64-darwin" \
+    "$HOME/Library/TinyTeX/bin/x86_64-darwin" \
+    "$HOME/.TinyTeX/bin/universal-darwin" \
+    "$HOME/.TinyTeX/bin/arm64-darwin" \
+    "$HOME/.TinyTeX/bin/x86_64-darwin"; do
+    [ -x "$root/$tool" ] && { printf '%s\n' "$root/$tool"; return 0; }
+  done
+  for root in "$HOME/Library/TinyTeX/bin" "$HOME/.TinyTeX/bin"; do
+    [ -d "$root" ] || continue
+    found="$(find "$root" -maxdepth 2 -type f -name "$tool" -perm -u+x -print -quit 2>/dev/null)"
+    [ -n "$found" ] && { printf '%s\n' "$found"; return 0; }
+  done
+  return 1
+}
+
+sanitized_origin() {
+  if ! have python3; then
+    printf '%s\n' '[configured; hidden until python3 is available]'
+    return 0
+  fi
+  git -C "$REPO_ROOT" remote get-url origin 2>/dev/null | python3 -c '
+import sys
+from urllib.parse import urlsplit, urlunsplit
+raw = sys.stdin.read().strip()
+try:
+    p = urlsplit(raw)
+    if p.scheme in {"http", "https", "ssh"}:
+        host = p.hostname or "unknown-host"
+        if p.port:
+            host += f":{p.port}"
+        print(urlunsplit((p.scheme, host, p.path, "", "")))
+    elif "@" in raw:
+        print("[credentials]@" + raw.rsplit("@", 1)[1])
+    else:
+        print(raw)
+except Exception:
+    print("[configured; display unavailable]")
+'
+}
+
+env_key_is_nonblank() { # env_key_is_nonblank <file> <key>; never prints values
+  python3 - "$1" "$2" <<'PY' >/dev/null 2>&1
+import re, shlex, sys
+path, wanted = sys.argv[1:3]
+assignment = re.compile(r"^\s*(?:export\s+)?([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*)$")
+with open(path, encoding="utf-8") as fh:
+    for line in fh:
+        match = assignment.match(line.rstrip("\r\n"))
+        if not match or match.group(1) != wanted:
+            continue
+        raw = match.group(2).strip()
+        if not raw or raw.startswith("#"):
+            continue
+        try:
+            lexer = shlex.shlex(raw, posix=True)
+            lexer.whitespace_split = True
+            lexer.commenters = "#"
+            value = " ".join(list(lexer)).strip()
+        except ValueError:
+            value = ""
+        if value:
+            raise SystemExit(0)
+raise SystemExit(1)
+PY
+}
+
 # 1. git remote reachable ----------------------------------------------------
 if git -C "$REPO_ROOT" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
   if git -C "$REPO_ROOT" ls-remote --exit-code origin >/dev/null 2>&1; then
-    row PASS "git remote reachable" "$(git -C "$REPO_ROOT" remote get-url origin 2>/dev/null)"
+    row PASS "git remote reachable" "$(sanitized_origin)"
   else
     row FAIL "git remote reachable" "origin unreachable — check network / 'gh auth login'"
   fi
@@ -41,22 +118,25 @@ else
 fi
 
 # 2. TinyTeX / pdflatex ------------------------------------------------------
-if have pdflatex; then
-  row PASS "pdflatex (LaTeX)" "$(pdflatex --version 2>/dev/null | head -1)"
+PDFLATEX_BIN="$(find_tex_tool pdflatex 2>/dev/null || true)"
+LATEXMK_BIN="$(find_tex_tool latexmk 2>/dev/null || true)"
+if [ -n "$PDFLATEX_BIN" ]; then
+  row PASS "pdflatex (LaTeX)" "$("$PDFLATEX_BIN" --version 2>/dev/null | head -1) [$PDFLATEX_BIN]"
 else
   row FAIL "pdflatex (LaTeX)" "install: brew install --cask mactex-no-gui  (or basictex/TinyTeX)"
 fi
-have latexmk && row PASS "latexmk" "present" || row WARN "latexmk" "brew install latexmk (used by /paper-compile-revtex)"
+[ -n "$LATEXMK_BIN" ] && row PASS "latexmk" "present [$LATEXMK_BIN]" || row WARN "latexmk" "install with TinyTeX/tlmgr or brew (used by /paper-compile-revtex)"
 have pdftoppm && row PASS "poppler (pdftoppm)" "present" || row FAIL "poppler (pdftoppm)" "brew install poppler (Grok raster + /latex-audit)"
 
 # 3. python3 + review SDKs ---------------------------------------------------
 if have python3; then
   row PASS "python3" "$(python3 --version 2>&1)"
-  for mod in openai google.generativeai anthropic; do
-    if python3 -c "import ${mod%%.*}" >/dev/null 2>&1; then
+  for spec in "openai:openai" "google.generativeai:google-generativeai" "anthropic:anthropic"; do
+    mod="${spec%%:*}"; package="${spec#*:}"
+    if python3 -c "import importlib; importlib.import_module('$mod')" >/dev/null 2>&1; then
       row PASS "py: $mod" "importable"
     else
-      row WARN "py: $mod" "pip install ${mod/./-} (review tooling vendor SDK)"
+      row WARN "py: $mod" "pip install $package (review tooling vendor SDK)"
     fi
   done
 else
@@ -74,6 +154,16 @@ fi
 BROWSE="$HOME/.claude/skills/gstack/browse/dist/browse"
 if [ -x "$BROWSE" ]; then
   row PASS "gstack browse tool" "$BROWSE"
+  # `status` is read-only: it reports the existing server and never connects,
+  # cleans up, opens a tab, or changes browser mode.
+  browse_status="$($BROWSE status 2>/dev/null || true)"
+  browse_health="$(printf '%s\n' "$browse_status" | awk -F': *' '/^Status:/{print $2; exit}')"
+  browse_mode="$(printf '%s\n' "$browse_status" | awk -F': *' '/^Mode:/{print $2; exit}')"
+  if [ -n "$browse_mode" ]; then
+    row PASS "gstack browser mode" "${browse_mode} (status: ${browse_health:-unknown}; read-only probe)"
+  else
+    row WARN "gstack browser mode" "no active mode reported (read-only status probe only; bootstrap did not connect)"
+  fi
 else
   row WARN "gstack browse tool" "not found at $BROWSE — needed for HEADED EXT sweeps (/connect-chrome)"
 fi
@@ -82,7 +172,11 @@ fi
 for plist in com.bigbounce.loopwatchdog com.bigbounce.cron-tick; do
   repo_copy="$REPO_ROOT/tools/launchd/$plist.plist"
   if [ -f "$LA_DIR/$plist.plist" ]; then
-    row PASS "launchd: $plist" "installed in ~/Library/LaunchAgents"
+    if launchctl print "gui/$(id -u)/$plist" >/dev/null 2>&1; then
+      row PASS "launchd: $plist" "installed + loaded"
+    else
+      row WARN "launchd: $plist" "installed but NOT loaded — load: launchctl load -w $LA_DIR/$plist.plist"
+    fi
   elif [ -f "$repo_copy" ]; then
     row WARN "launchd: $plist" "not installed — install: cp $repo_copy $LA_DIR/ && launchctl load -w $LA_DIR/$plist.plist"
   else
@@ -94,8 +188,9 @@ done
 if [ -f "$ENV_FILE" ]; then
   row PASS ".env.local present" "$ENV_FILE (gitignored)"
   for k in "${REQUIRED_KEYS[@]}"; do
-    # match a non-empty assignment; we read only the KEY column, never the value.
-    if grep -qE "^[[:space:]]*(export[[:space:]]+)?${k}=[^[:space:]]" "$ENV_FILE" 2>/dev/null; then
+    # Parse without evaluation. Empty, whitespace-only, quoted-empty, malformed,
+    # and comment-only assignments all fail; values are never printed.
+    if env_key_is_nonblank "$ENV_FILE" "$k"; then
       row PASS "key: $k" "set (value hidden)"
     else
       row FAIL "key: $k" "missing/blank — restore via /machine-sync (You.md Secret Vault); do NOT paste values here"
@@ -119,7 +214,18 @@ else
   row WARN "Convex reachable" "curl missing — cannot probe; install curl"
 fi
 
-# 9. lab lease tool + headed-browser note ------------------------------------
+# 9. Hubify CLI (optional to run the paper loop; required for Hubify status) --
+if have hubify; then
+  if hubify status >/dev/null 2>&1; then
+    row PASS "Hubify CLI auth" "authenticated (status query succeeded; output hidden)"
+  else
+    row WARN "Hubify CLI auth" "installed but unauthenticated — run 'hubify auth login' or restore HUBIFY_TOKEN; paper loop remains runnable"
+  fi
+else
+  row WARN "Hubify CLI" "not installed — Hubify lab/status checks unavailable; paper loop remains runnable"
+fi
+
+# 10. lab lease tool + headed-browser note -----------------------------------
 if [ -x "$REPO_ROOT/tools/lab_lease.sh" ]; then
   row PASS "lab_lease.sh" "present — acquire the lab lease BEFORE driving (see HANDOFF_SYNC.md)"
 else

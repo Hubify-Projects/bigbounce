@@ -292,9 +292,12 @@ Hard entry gates. Do not advance a phase until its gate is green. Honors
 ### Phase 0 — NOW: two machines, ONE lab
 - **State:** two machines, single Fable lab, the existing single-lab loop.
 - **Entry gate:** (this is where we are)
-- **Exit gate → phase 1:** two-machine single-lab loop runs unattended through a
-  full wave without hand-holding; launchd watchdog + heartbeat proven durable
-  (per `feedback_loop_never_dies`); no stale-surface regressions.
+- **Exit gate → phase 1:** every machine-checkable item in
+  `ops/handoff/HANDOFF_SYNC.md` §"Phase-0 acceptance test" passes: one lease
+  winner, failover, machine-attributed heartbeats, tracked cron/watchdog
+  deployment, one unattended full wave with single adjudication and
+  raw+screenshot capture, same-commit Convex/site/SSOT consistency, clean site
+  build/freshness check, and no duplicate browser/verdict work.
 
 ### Phase 1 — Second orchestrator (Codex), SAME lab, division of labor
 - **What:** Codex/GPT joins as a *second orchestrator inside the same lab* — no

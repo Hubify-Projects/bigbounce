@@ -22,10 +22,10 @@
 #   - if the heartbeat is STALE (>=45min), the loop is considered DOWN:
 #       (a) macOS notification: "bigbounce loop DOWN — last tick <age>"
 #       (b) POST a Convex activityFeed:add alert row so the live site shows it
-#       (c) RECOVERY: launch ONE headless recovery `claude -p` tick that writes a
-#           fresh heartbeat, runs site_freshness_check + fixes FAILs, harvests any
-#           submitted-unharvested EXT manifests, and appends a status line to
-#           LOOP_WATCHDOG_LOG.md so the interactive session knows what happened.
+#       (c) RECOVERY: launch ONE lease-free headless `claude -p` tick that writes
+#           a machine-attributed heartbeat, runs site_freshness_check read-only,
+#           harvests submitted-unharvested EXT raws (no verdict/adjudication), and
+#           appends a status line to LOOP_WATCHDOG_LOG.md.
 #       RECOVERY CAP: if a recovery ran <60min ago, only notify+alert (don't stack).
 #       => a closed session gets ~hourly headless recovery ticks.
 #   - every run logs exactly one line to project-context/LOOP_WATCHDOG_LOG.md.
@@ -59,6 +59,7 @@ RECOVERY_COOLDOWN_SECONDS=$((60 * 60))  # 60 minutes — a closed session gets ~
 # marker file records the epoch of the last recovery launch (recovery cap)
 RECOVERY_MARKER="/tmp/bigbounce_watchdog_last_recovery"
 CLAUDE_BIN="$(command -v claude || echo "$HOME/.claude/local/claude")"
+MACHINE_ID="${BIGBOUNCE_MACHINE_ID:-$(hostname -s 2>/dev/null | tr -d '\n' | tr -c 'A-Za-z0-9._-' '-')}"
 
 NOW_EPOCH="$(date -u +%s)"
 NOW_ISO="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
@@ -154,12 +155,12 @@ recovery_last_epoch() {
   cat "$RECOVERY_MARKER" 2>/dev/null | tr -dc '0-9' || echo 0
 }
 
-RECOVERY_PROMPT='You are the OS-level RECOVERY tick for the bigbounce drive-to-100 loop. The in-session cron died and the launchd watchdog spawned you. Do ONLY these steps, then stop:
-1. Write a fresh heartbeat to the AUTHORITATIVE runtime path "$HOME/Library/Application Support/bigbounce/LOOP_HEARTBEAT.json" (this always succeeds under launchd) AND best-effort to the repo mirror project-context/LOOP_HEARTBEAT.json, both with body {"lastTickUTC":"<current UTC ISO8601>","source":"watchdog-recovery","note":"recovery tick"}. If the repo write fails with EPERM that is expected — the runtime copy is what the watchdog reads.
-2. Run: tools/site_freshness_check.sh --report . For every surface reported STALE/FAIL, fix it in-repo (update the live-status.ts / reviewTimeline.ts / SSOT surface the report names) and re-run until it passes or you have made a real fix attempt for each.
-3. For any EXT round with a submitted-but-unharvested manifest, run tools/ext_harvest.sh <round-label> to harvest verdicts.
-4. Append ONE dated status line to project-context/LOOP_WATCHDOG_LOG.md prefixed "RECOVERY-TICK" summarizing what you did (heartbeat written, which surfaces fixed, which rounds harvested) so the interactive session knows what happened.
-Do not start new review sweeps. Do not open new work. Recovery only. Commit any file fixes with a chore(watchdog-recovery): message.'
+RECOVERY_PROMPT="You are the OS-level RECOVERY tick for the bigbounce loop on machine $MACHINE_ID. This is ALWAYS LEASE-FREE recovery: do not claim or renew the lab lease, drive a browser, adjudicate findings, write verdict/ledger/Convex review state, or commit/push review/site changes. Do ONLY these steps, then stop:
+1. Write a fresh heartbeat to the AUTHORITATIVE runtime path \"$HOME/Library/Application Support/bigbounce/LOOP_HEARTBEAT.json\" AND best-effort to project-context/LOOP_HEARTBEAT.json with body {\"lastTickUTC\":\"<current UTC ISO8601>\",\"source\":\"watchdog-recovery\",\"machineId\":\"$MACHINE_ID\",\"role\":\"lease-free\",\"note\":\"recovery tick\"}. Repo-write EPERM is expected; runtime is authoritative.
+2. Run tools/site_freshness_check.sh --report as a READ-ONLY diagnostic. Report stale surfaces; do not edit them in recovery mode.
+3. For submitted-but-unharvested EXT manifests, run tools/ext_harvest.sh <round-label> only to save raw text/screenshots. Do not truth-audit or record any verdict.
+4. Append one RECOVERY-TICK status line to project-context/LOOP_WATCHDOG_LOG.md summarizing heartbeat, diagnostics, and raw harvests (best effort; no commit).
+Do not start sweeps, open new work, edit paper/site state, commit, or push. Recovery only."
 
 launch_recovery() {
   # fire-and-forget headless recovery tick; the tick itself writes the heartbeat
@@ -186,7 +187,7 @@ if [ -z "$HB_EPOCH" ]; then
   convex_alert "bigbounce loop DOWN" "Watchdog found no parseable LOOP_HEARTBEAT.json at $NOW_ISO. Launching recovery tick."
   REC_LAST="$(recovery_last_epoch)"
   if [ "$((NOW_EPOCH - REC_LAST))" -lt "$RECOVERY_COOLDOWN_SECONDS" ]; then
-    log_line "RECOVERY skipped — last recovery <2h ago (notify-only)"
+    log_line "RECOVERY skipped — last recovery <1h ago (notify-only)"
   else
     launch_recovery
     log_line "RECOVERY launched (headless claude -p recovery tick)"
@@ -211,7 +212,7 @@ convex_alert "bigbounce loop DOWN — last tick ${AGE_H} ago" \
 REC_LAST="$(recovery_last_epoch)"
 if [ "$((NOW_EPOCH - REC_LAST))" -lt "$RECOVERY_COOLDOWN_SECONDS" ]; then
   REC_AGE="$(age_str $((NOW_EPOCH - REC_LAST)))"
-  log_line "DOWN   heartbeat stale (age ${AGE_H}) — notified+alerted; recovery SKIPPED (last recovery ${REC_AGE} ago, <2h cap)"
+  log_line "DOWN   heartbeat stale (age ${AGE_H}) — notified+alerted; recovery SKIPPED (last recovery ${REC_AGE} ago, <1h cap)"
 else
   launch_recovery
   log_line "DOWN   heartbeat stale (age ${AGE_H}) — notified+alerted; RECOVERY launched (headless claude -p)"

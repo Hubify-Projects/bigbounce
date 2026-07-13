@@ -12,7 +12,28 @@ day-to-day command sheet + recovery playbooks. All paths repo-relative to
 ```bash
 cd /Users/houstongolden/Desktop/CODE_YOU/bigbounce
 
-# 0. STATE-CHECK — is another owner (Codex / cron / agent) already driving?
+# 0. REMOTE LEASE GATE — never drives from local LEASE.json.
+MACHINE_ID="${BIGBOUNCE_MACHINE_ID:-$(hostname -s)}"
+if tools/lab_lease.sh holds "$MACHINE_ID"; then
+  tools/lab_lease.sh renew "$MACHINE_ID" 45
+  DRIVER=1
+elif tools/lab_lease.sh claim "$MACHINE_ID" 45; then
+  DRIVER=1
+else
+  DRIVER=0   # fail closed: INT/compute/docs only; no browser/adjudication/verdict writes
+fi
+
+# Heartbeat always attributes the tick and role to this machine.
+python3 - "$MACHINE_ID" "$DRIVER" <<'PY'
+import datetime, json, sys
+role = "driver" if sys.argv[2] == "1" else "lease-free"
+json.dump({"lastTickUTC": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+           "source": "orchestrator", "machineId": sys.argv[1], "role": role,
+           "note": "manual tick"}, open("project-context/LOOP_HEARTBEAT.json", "w"), indent=2)
+open("project-context/LOOP_HEARTBEAT.json", "a").write("\n")
+PY
+
+# 0a. STATE-CHECK — additional same-machine/agent overlap defense.
 git log --oneline -5                 # recent commits by another owner?
 git status                           # files changing underneath you?
 # If a concurrent driver is detected → YIELD (harvest + post_verdict still safe;
@@ -24,8 +45,11 @@ curl -s https://brilliant-panther-471.convex.cloud/api/query \
   -H 'content-type: application/json' \
   -d '{"path":"readinessMetrics:listWaves","args":{}}' | tail -c 2000
 
-# 2. Ensure the HEADED browser for EXT (headless CANNOT do EXT — mandatory).
-B=~/.claude/skills/gstack/browse/dist/browse; $B cleanup; $B connect   # Mode: headed
+# 2. DRIVER ONLY: ensure HEADED browser for EXT. Skip steps 2-7 when DRIVER=0;
+# run a bounded INT API / compute / reproducibility / disjoint-docs task instead.
+[ "$DRIVER" -eq 1 ] || { tools/int_wave.sh P3; exit $?; }
+B=~/.claude/skills/gstack/browse/dist/browse; $B cleanup; $B connect
+# Confirm Mode: headed. Renew the lease every ~20 min during a long driver phase.
 
 # 3. Place the wave (per-leg isolation — one leg failing never stops the chain).
 tools/wave_submit.sh M40 P4:grok P4:chatgpt P2:grok P2:chatgpt
@@ -51,6 +75,11 @@ tools/site_freshness_check.sh --report
 git add -A && git commit -m "feat(M40-EXT): adjudicate P4/P2 — 0 genuinely-new …"
 git pull --rebase && git push          # pre-push hook re-runs the freshness gate
 ```
+
+The lease commands fetch `origin/main`, validate the remote JSON, and use an
+isolated temporary git index plus `commit-tree`/`--force-with-lease` CAS. They
+never pull/rebase/stash, stage files, move `HEAD`, or alter the current worktree.
+Any fetch, parse, or CAS uncertainty fails closed into lease-free mode.
 
 INT battery (run alongside EXT on the other papers): `tools/int_wave.sh P3` —
 OpenAI + Grok native-PDF + Gemini(if key) + Claude subscription (ANTHROPIC_API_KEY
@@ -81,6 +110,7 @@ UNSET). Every leg saves its raw; a verdict matrix prints at the end.
 | **Freshness gate blocks a genuinely-non-surface commit** | `FRESHNESS_SKIP=1 git push` ONLY when the commit truly touches no surface (e.g. a docs-only/tooling commit). Never use it to push a real round bundle past a real staleness — fix the surface. |
 | **Watchdog fired (loop DOWN)** | `LOOP_HEARTBEAT.json` was stale >45m; the launchd watchdog ran a headless recovery tick (fresh heartbeat + freshness fix + harvest of submitted-unharvested manifests). Check `project-context/LOOP_WATCHDOG_LOG.md` for what it did, then resume. |
 | **Loop watchdog script edited** | Re-deploy the runtime copy: `cp tools/loop_watchdog.sh "$HOME/Library/Application Support/bigbounce/loop_watchdog.sh"` (launchd has no ~/Desktop TCC grant; the repo file is canonical source only). |
+| **Cron tick script edited** | Re-deploy the canonical source: `cp tools/bigbounce_cron_tick.sh "$HOME/Library/Application Support/bigbounce/bigbounce-cron-tick.sh"`. The canonical tick auto-claims/renews the remote lease, stamps `machineId`, and routes non-holders to lease-free work. |
 
 ---
 

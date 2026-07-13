@@ -14,7 +14,7 @@ second machine can run the loop under whatever agent is installed there.
 | OpenAI INT leg | OpenAI API via `tools/v3_native_pdf_review.py` | same script, or the Codex agent | same script |
 | Grok / Gemini INT legs | XAI / Gemini API via the same script (Gemini→browser when key throttled) | same | same |
 | Model routing tiers | Opus judgment / Sonnet execution / Haiku polling | `gpt-5.5` orchestrate / `codex-spark`/`mini` workers | host tiers per the global CLAUDE.md heuristic |
-| Durable loop (survives session close) | **external launchd** (`com.bigbounce.loopwatchdog`, `com.bigbounce.cron-tick`) — NOT the in-session cron | same launchd agents (host-independent) | same launchd agents |
+| Durable loop (survives session close) | macOS `launchd`; deploy canonical `tools/{bigbounce_cron_tick,loop_watchdog}.sh` copies to App Support | same only on macOS; non-macOS needs a systemd/Task Scheduler adapter | host scheduler adapter required; never describe launchd as host-independent |
 | Skill invocation (`/machine-sync`, `/connect-chrome`, `/bigbounce-r-round`) | Skill tool | equivalent command, or read the SKILL.md and execute its steps | read the SKILL.md and execute its steps |
 
 **Key rule (directive I1):** the Claude-equivalent INT leg is always **the running
@@ -23,16 +23,17 @@ Anthropic API key and NEVER fail an INT round because an API is disabled.
 
 ## Host-agnostic already (works identically everywhere)
 
-- **All `tools/` scripts** — `lab_lease.sh`, `post_verdict.sh`, `ext_harvest.sh`,
-  `site_freshness_check.sh`, `loop_watchdog.sh`, `v3_native_pdf_review.py`. Plain
-  bash/python; no Claude-specific calls.
+- **Core data/review scripts** — `lab_lease.sh`, `post_verdict.sh`,
+  `ext_harvest.sh`, `site_freshness_check.sh`, `v3_native_pdf_review.py` are
+  shell/Python. `lab_lease.sh` coordinates through remote git CAS without
+  touching the caller's worktree/index.
 - **Convex HTTP** — `POST brilliant-panther-471.convex.cloud/api/{mutation,query}`,
   no key, no deploy. Same from any host.
 - **The manifest / EXT_real raw-capture contract** — save raw reviewer text +
   screenshot before recording any verdict. Host-independent file convention.
-- **The headed browser** — `~/.claude/skills/gstack/browse/dist/browse connect`
-  (a standalone CLI + Chromium extension); usable from any agent that can run a
-  shell command.
+- **The headed browser protocol** is host-neutral, but the concrete
+  `~/.claude/skills/gstack/browse/dist/browse connect` path exists only where
+  gstack is installed. A host without that visible-browser stack is INT-only.
 - **The lab lease** — coordinates across hosts too: a Codex machine and a Claude
   Code machine claiming the same git-tracked `LEASE.json` interoperate cleanly.
 
@@ -42,14 +43,16 @@ Anthropic API key and NEVER fail an INT round because an API is disabled.
   `spawn_agent`); a host with no spawn runs the review legs sequentially.
 - **Skill invocation** — a non-Claude host reads the relevant `SKILL.md`
   (under `~/.claude/scistack/…`) and executes its steps manually instead of `/name`.
-- **Nothing else.** If a step isn't spawning or a skill call, it's a shell/HTTP
-  action that already runs anywhere.
+- **Durable scheduling is host-bound.** `tools/bigbounce_cron_tick.sh` and
+  `tools/loop_watchdog.sh` are the macOS/Claude Code adapter: launchd, App Support,
+  `osascript`, and `claude -p`. Codex/Cursor/Pi on another OS need an equivalent
+  scheduler + host-agent invocation while preserving the lease/heartbeat contract.
 
 ## Bottom line
 
 To move the orchestrator to another host: install that host's agent, run
 `ops/handoff/bootstrap.sh`, restore secrets via `/machine-sync`, acquire the lab
-lease, and drive the same scripts. The Claude INT leg becomes "the running agent
-on its subscription," sub-agent spawning maps to the host's spawn primitive (or
-goes sequential), and skills become read-the-SKILL.md-and-execute. Everything else
-is byte-identical.
+lease, and drive the same core scripts. The Claude INT leg becomes "the running
+agent on its subscription," and spawning maps to the host primitive. On macOS,
+deploy `tools/bigbounce_cron_tick.sh` + `tools/loop_watchdog.sh` to App Support;
+else implement the scheduler adapter before claiming durable-loop parity.

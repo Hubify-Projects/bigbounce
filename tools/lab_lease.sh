@@ -1,252 +1,263 @@
 #!/usr/bin/env bash
-# lab_lease.sh — single-driver LAB LEASE across machines (MVP).
+# lab_lease.sh — single-driver lease coordinated through an isolated git CAS.
 #
-# WHY: Houston runs ONE lab on two (or more) machines. Both machines pull/push
-# the same repo and write the same Convex live state. Without coordination, two
-# machines would drive the headed browser EXT sweeps and write competing
-# verdict/ledger bundles at the same time (the exact collision directive
-# "cron-tick-overlap-detection" warns about). The lease makes exactly ONE
-# machine the DRIVER at a time; the other(s) do lease-free work (INT API waves,
-# compute, site edits) and wait to claim the driver role.
+# The lease is stored at ops/handoff/LEASE.json on origin/main. Every command
+# reads a freshly fetched remote snapshot. Mutating commands build a commit with
+# a temporary index + git commit-tree, then push with --force-with-lease against
+# the fetched parent. They never checkout, pull, rebase, stash, stage, commit, or
+# otherwise modify the caller's worktree, index, or current branch.
 #
-# MECHANISM (MVP tradeoff — deliberately simple):
-#   The lease is a git-tracked file  ops/handoff/LEASE.json  claimed via a
-#   commit + push RACE with `git pull --rebase` conflict detection. Git is
-#   already the sync bus on both machines and already has the pre-push freshness
-#   gate, so the lease travels for free and needs NO Convex schema change / no
-#   `npx convex deploy`. The cost: claiming is O(seconds) (a pull+push round
-#   trip) and the race window is the push latency — acceptable for a 2-machine
-#   lab with a ~20-min cron cadence. If contention ever gets tight, promote the
-#   lease to a Convex mutation with an atomic compare-and-set; the CLI contract
-#   here (claim/status/release/renew/holds) stays identical.
+# Usage:
+#   lab_lease.sh claim   <machine-id> <ttl-minutes>
+#   lab_lease.sh renew   <machine-id> [<ttl-minutes>]
+#   lab_lease.sh release <machine-id>
+#   lab_lease.sh status
+#   lab_lease.sh holds   <machine-id>
 #
-# SEMANTICS:
-#   lab_lease.sh claim  <machine-id> <ttl-minutes>   # become the driver (fails if held & fresh by another)
-#   lab_lease.sh renew  <machine-id> [<ttl-minutes>] # extend your own hold (heartbeat)
-#   lab_lease.sh release <machine-id>                # give up the driver role
-#   lab_lease.sh status                              # print holder / expiry / freshness (exit 0 held-fresh, 3 expired, 4 free)
-#   lab_lease.sh holds  <machine-id>                 # exit 0 iff <machine-id> currently holds a FRESH lease (loop gate)
-#
-# The loop's browser-driving + ledger/verdict adjudication ONLY proceed while
-# `lab_lease.sh holds "$MACHINE_ID"` returns 0. Lease-free work needs no hold.
-#
-# A dark machine self-heals: its lease TTL expires, and the other machine's
-# `claim` succeeds against the expired holder (steal-on-expiry).
+# Exit codes: 0 success/fresh hold; 1 denied/not holder; 2 invalid invocation;
+# 3 expired; 4 free; 5 remote/parse/CAS failure (fail closed).
 
 set -uo pipefail
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-LEASE_FILE="$REPO_ROOT/ops/handoff/LEASE.json"
 LEASE_REL="ops/handoff/LEASE.json"
+REMOTE="${BIGBOUNCE_LEASE_REMOTE:-origin}"
+BRANCH="${BIGBOUNCE_LEASE_BRANCH:-main}"
+BRANCH_REF="refs/heads/$BRANCH"
+REMOTE_REF="refs/remotes/$REMOTE/$BRANCH"
 CONVEX_MUTATION_URL="https://brilliant-panther-471.convex.cloud/api/mutation"
 
-now_iso()   { date -u +%Y-%m-%dT%H:%M:%SZ; }
-now_epoch() { date -u +%s; }
+TMP_DIR="$(mktemp -d "${TMPDIR:-/tmp}/bigbounce-lease.XXXXXX")" || exit 5
+SNAPSHOT="$TMP_DIR/LEASE.remote.json"
+CANDIDATE="$TMP_DIR/LEASE.candidate.json"
+INDEX_FILE="$TMP_DIR/index"
+trap 'rm -rf "$TMP_DIR"' EXIT HUP INT TERM
 
-# --- read helpers (tolerate a missing/empty file) -------------------------
-_field() { # _field <key>  → prints value or empty
-  [ -f "$LEASE_FILE" ] || { echo ""; return; }
-  python3 - "$LEASE_FILE" "$1" <<'PY' 2>/dev/null || echo ""
-import sys, json
-try:
-    d = json.load(open(sys.argv[1]))
-    print(d.get(sys.argv[2], "") if d else "")
-except Exception:
-    print("")
+now_iso() { date -u +%Y-%m-%dT%H:%M:%SZ; }
+now_epoch() { date -u +%s; }
+_git() { git -C "$REPO_ROOT" "$@"; }
+_closed() { echo "ERROR: $* (lease state unknown; failing closed)." >&2; exit 5; }
+
+_validate_machine_id() {
+  case "${1:-}" in
+    ""|*[!A-Za-z0-9._-]*|-*|.*|_* )
+      echo "ERROR: machine-id must be 1-64 chars, start alphanumeric, and use only A-Z a-z 0-9 . _ -." >&2
+      return 1 ;;
+  esac
+  [ "${#1}" -le 64 ] || {
+    echo "ERROR: machine-id exceeds 64 characters." >&2
+    return 1
+  }
+}
+
+_validate_ttl() {
+  case "${1:-}" in
+    ""|*[!0-9]*) echo "ERROR: ttl-minutes must be an integer from 5 through 240." >&2; return 1 ;;
+  esac
+  [ "$1" -ge 5 ] 2>/dev/null && [ "$1" -le 240 ] 2>/dev/null || {
+    echo "ERROR: ttl-minutes must be from 5 through 240." >&2
+    return 1
+  }
+}
+
+_validate_snapshot() {
+  python3 - "$SNAPSHOT" <<'PY' >/dev/null 2>&1
+import datetime, json, re, sys
+d = json.load(open(sys.argv[1]))
+required = {"holder", "claimedUTC", "expiresUTC", "ttlMinutes", "lastAction", "seq"}
+assert isinstance(d, dict) and required <= set(d)
+holder = d["holder"]
+assert isinstance(holder, str)
+assert holder == "" or re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]{0,63}", holder)
+assert isinstance(d["claimedUTC"], str)
+assert isinstance(d["expiresUTC"], str) and d["expiresUTC"]
+datetime.datetime.fromisoformat(d["expiresUTC"].replace("Z", "+00:00"))
+assert isinstance(d["ttlMinutes"], int) and not isinstance(d["ttlMinutes"], bool)
+assert (holder == "" and d["ttlMinutes"] == 0) or (holder != "" and 5 <= d["ttlMinutes"] <= 240)
+assert isinstance(d["lastAction"], str)
+assert isinstance(d["seq"], int) and not isinstance(d["seq"], bool) and d["seq"] >= 0
+PY
+}
+
+_remote_snapshot() {
+  # Fetch only the lease branch. Updating a remote-tracking ref does not touch
+  # HEAD, the worktree, or the user's index.
+  _git fetch --quiet --no-tags "$REMOTE" "+$BRANCH_REF:$REMOTE_REF" || return 1
+  BASE_SHA="$(_git rev-parse --verify "$REMOTE_REF^{commit}" 2>/dev/null)" || return 1
+  _git cat-file -e "$BASE_SHA:$LEASE_REL" 2>/dev/null || return 1
+  _git show "$BASE_SHA:$LEASE_REL" > "$SNAPSHOT" 2>/dev/null || return 1
+  _validate_snapshot || return 1
+}
+
+_field() {
+  python3 - "$SNAPSHOT" "$1" <<'PY'
+import json, sys
+v = json.load(open(sys.argv[1]))[sys.argv[2]]
+print(v)
 PY
 }
 
 _expiry_epoch() {
-  local exp; exp="$(_field expiresUTC)"
-  [ -z "$exp" ] && { echo 0; return; }
-  python3 - "$exp" <<'PY' 2>/dev/null || echo 0
-import sys, datetime
-try:
-    s = sys.argv[1].replace("Z", "+00:00")
-    print(int(datetime.datetime.fromisoformat(s).timestamp()))
-except Exception:
-    print(0)
+  python3 - "$SNAPSHOT" <<'PY' 2>/dev/null
+import datetime, json, sys
+s = json.load(open(sys.argv[1]))["expiresUTC"].replace("Z", "+00:00")
+print(int(datetime.datetime.fromisoformat(s).timestamp()))
 PY
 }
 
-_is_fresh() { # 0 = a holder exists AND not expired
-  local holder exp_ep now
-  holder="$(_field holder)"; [ -z "$holder" ] && return 1
-  exp_ep="$(_expiry_epoch)"; now="$(now_epoch)"
-  [ "$exp_ep" -gt "$now" ] 2>/dev/null
+_is_fresh() {
+  local holder exp
+  holder="$(_field holder)" || return 1
+  [ -n "$holder" ] || return 1
+  exp="$(_expiry_epoch)" || return 1
+  [ "$exp" -gt "$(now_epoch)" ] 2>/dev/null
 }
 
-_write_lease() { # _write_lease <holder> <ttl-min> <action>
-  local holder="$1" ttl="$2" action="$3" now exp seq
-  now="$(now_iso)"
-  exp="$(python3 - "$ttl" <<'PY'
-import sys, datetime
-m = int(sys.argv[1])
-print((datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(minutes=m)).strftime("%Y-%m-%dT%H:%M:%SZ"))
-PY
-)"
-  seq="$(now_epoch)"
-  python3 - "$LEASE_FILE" "$holder" "$now" "$exp" "$ttl" "$action" "$seq" <<'PY'
-import sys, json
-path, holder, iso, exp, ttl, action, seq = sys.argv[1:8]
-json.dump({
+_render_candidate() { # holder ttl action
+  python3 - "$SNAPSHOT" "$CANDIDATE" "$1" "$2" "$3" "$(now_iso)" <<'PY'
+import datetime, json, sys
+src, out, holder, ttl, action, now = sys.argv[1:7]
+old = json.load(open(src))
+ttl = int(ttl)
+dt = datetime.datetime.fromisoformat(now.replace("Z", "+00:00"))
+if holder:
+    claimed = old["claimedUTC"] if action == "renew" and old["claimedUTC"] else now
+    expires = (dt + datetime.timedelta(minutes=ttl)).strftime("%Y-%m-%dT%H:%M:%SZ")
+else:
+    claimed, expires, ttl = "", now, 0
+doc = {
     "holder": holder,
-    "claimedUTC": iso,
-    "expiresUTC": exp,
-    "ttlMinutes": int(ttl),
+    "claimedUTC": claimed,
+    "expiresUTC": expires,
+    "ttlMinutes": ttl,
     "lastAction": action,
-    "seq": int(seq),
-}, open(path, "w"), indent=2)
-open(path, "a").write("\n")
+    "seq": int(old["seq"]) + 1,
+}
+with open(out, "w") as f:
+    json.dump(doc, f, indent=2)
+    f.write("\n")
 PY
 }
 
-# --- Convex mirror (best-effort; a network failure never blocks the lease) -
-_convex_note() { # _convex_note <title> <body>
+_publish_candidate() { # commit message; return 0 pushed, 1 CAS lost/error
+  local msg="$1" blob tree commit
+  rm -f "$INDEX_FILE"
+  GIT_INDEX_FILE="$INDEX_FILE" _git read-tree "$BASE_SHA" >/dev/null 2>&1 || return 1
+  blob="$(_git hash-object -w "$CANDIDATE")" || return 1
+  GIT_INDEX_FILE="$INDEX_FILE" _git update-index --add --cacheinfo "100644,$blob,$LEASE_REL" >/dev/null 2>&1 || return 1
+  tree="$(GIT_INDEX_FILE="$INDEX_FILE" _git write-tree)" || return 1
+  commit="$(printf '%s\n' "$msg" | \
+    GIT_AUTHOR_NAME="${GIT_AUTHOR_NAME:-bigbounce-lab-lease}" \
+    GIT_AUTHOR_EMAIL="${GIT_AUTHOR_EMAIL:-lab-lease@bigbounce.local}" \
+    GIT_COMMITTER_NAME="${GIT_COMMITTER_NAME:-bigbounce-lab-lease}" \
+    GIT_COMMITTER_EMAIL="${GIT_COMMITTER_EMAIL:-lab-lease@bigbounce.local}" \
+    _git commit-tree "$tree" -p "$BASE_SHA")" || return 1
+  _git push --quiet --no-verify \
+    --force-with-lease="$BRANCH_REF:$BASE_SHA" \
+    "$REMOTE" "$commit:$BRANCH_REF" >/dev/null 2>&1
+}
+
+_convex_note() {
+  [ "${BIGBOUNCE_LEASE_CONVEX_NOTE:-1}" = "1" ] || return 0
   command -v curl >/dev/null 2>&1 || return 0
   local payload
   payload="$(python3 - "$1" "$2" "$(now_iso)" <<'PY' 2>/dev/null
-import sys, json
+import json, sys
 title, body, iso = sys.argv[1:4]
-print(json.dumps({
-    "path": "activityFeed:add",
-    "args": {
-        "type": "ops",
-        "date": iso,
-        "title": title,
-        "body": body,
-        "tags": [{"label": "lab-lease", "kind": "info"}],
-    },
-    "format": "json",
-}))
+print(json.dumps({"path":"activityFeed:add","args":{"type":"ops","date":iso,
+  "title":title,"body":body,"tags":[{"label":"lab-lease","kind":"info"}]},
+  "format":"json"}))
 PY
 )"
-  [ -z "$payload" ] && return 0
+  [ -n "$payload" ] || return 0
   curl -sS -m 8 -X POST "$CONVEX_MUTATION_URL" \
     -H 'Content-Type: application/json' -d "$payload" >/dev/null 2>&1 || true
 }
 
-# --- git sync helpers ------------------------------------------------------
-_git() { git -C "$REPO_ROOT" "$@"; }
-
-_pull_rebase() {
-  # bring LEASE.json current; --autostash so an in-flight working tree is fine.
-  _git pull --rebase --autostash --no-edit >/dev/null 2>&1
-}
-
-_commit_push_lease() { # _commit_push_lease <msg>  → 0 pushed, 1 lost-race/failed
-  _git add "$LEASE_REL" >/dev/null 2>&1
-  _git commit -m "$1" --no-verify >/dev/null 2>&1 || return 1
-  # FRESHNESS_SKIP: the lease commit only touches LEASE.json — the site-freshness
-  # pre-push gate is about paper/site surfaces, irrelevant here.
-  if FRESHNESS_SKIP=1 _git push --no-verify >/dev/null 2>&1; then
-    return 0
-  fi
-  # rejected → someone else pushed first. Rebase and report lost race so the
-  # caller re-reads the (possibly now-held-by-other) lease.
-  _pull_rebase
-  return 1
-}
-
-# ==========================================================================
-cmd="${1:-status}"; shift || true
+cmd="${1:-status}"
+[ "$#" -gt 0 ] && shift
 
 case "$cmd" in
   claim)
-    MACHINE_ID="${1:?usage: lab_lease.sh claim <machine-id> <ttl-minutes>}"
-    TTL="${2:?usage: lab_lease.sh claim <machine-id> <ttl-minutes>}"
-    _pull_rebase
+    [ "$#" -eq 2 ] || { echo "usage: lab_lease.sh claim <machine-id> <ttl-minutes>" >&2; exit 2; }
+    MACHINE_ID="$1"; TTL="$2"
+    _validate_machine_id "$MACHINE_ID" && _validate_ttl "$TTL" || exit 2
+    _remote_snapshot || _closed "cannot fetch or validate $REMOTE/$BRANCH:$LEASE_REL"
     holder="$(_field holder)"
     if _is_fresh && [ "$holder" != "$MACHINE_ID" ]; then
       echo "DENIED: lease held by '$holder' until $(_field expiresUTC) (fresh)."
-      echo "  → run lease-free work, or wait for TTL expiry to steal it."
       exit 1
     fi
-    _write_lease "$MACHINE_ID" "$TTL" "claim"
-    if _commit_push_lease "chore(lab-lease): $MACHINE_ID claim ttl=${TTL}m"; then
-      echo "CLAIMED: $MACHINE_ID holds the lab lease until $(_field expiresUTC)."
+    _render_candidate "$MACHINE_ID" "$TTL" "claim" || _closed "cannot render lease candidate"
+    if _publish_candidate "chore(lab-lease): $MACHINE_ID claim ttl=${TTL}m"; then
+      echo "CLAIMED: $MACHINE_ID holds the lab lease for ${TTL}m."
       _convex_note "Lab lease claimed" "$MACHINE_ID is now the single lab driver (ttl ${TTL}m)."
       exit 0
     fi
-    # lost the push race — re-read who won.
-    holder="$(_field holder)"
-    echo "DENIED: lost the claim race to '$holder' (pushed first). Re-run to retry."
+    _remote_snapshot >/dev/null 2>&1 || _closed "claim CAS failed and the winning lease cannot be read"
+    echo "DENIED: claim lost the compare-and-swap race; current holder '$(_field holder)'."
     exit 1
     ;;
-
   renew)
-    MACHINE_ID="${1:?usage: lab_lease.sh renew <machine-id> [<ttl-minutes>]}"
-    _pull_rebase
+    [ "$#" -ge 1 ] && [ "$#" -le 2 ] || { echo "usage: lab_lease.sh renew <machine-id> [<ttl-minutes>]" >&2; exit 2; }
+    MACHINE_ID="$1"; _validate_machine_id "$MACHINE_ID" || exit 2
+    _remote_snapshot || _closed "cannot fetch or validate $REMOTE/$BRANCH:$LEASE_REL"
     holder="$(_field holder)"
-    if [ "$holder" != "$MACHINE_ID" ]; then
-      echo "REFUSED: you ('$MACHINE_ID') are not the holder ('$holder'). Not renewing."
+    if [ "$holder" != "$MACHINE_ID" ] || ! _is_fresh; then
+      echo "REFUSED: '$MACHINE_ID' does not hold the fresh lease (holder '$holder')."
       exit 1
     fi
-    TTL="${2:-$(_field ttlMinutes)}"; TTL="${TTL:-30}"
-    _write_lease "$MACHINE_ID" "$TTL" "renew"
-    if _commit_push_lease "chore(lab-lease): $MACHINE_ID renew ttl=${TTL}m"; then
-      echo "RENEWED: $MACHINE_ID lease extended to $(_field expiresUTC)."
+    TTL="${2:-$(_field ttlMinutes)}"; _validate_ttl "$TTL" || exit 2
+    _render_candidate "$MACHINE_ID" "$TTL" "renew" || _closed "cannot render lease candidate"
+    if _publish_candidate "chore(lab-lease): $MACHINE_ID renew ttl=${TTL}m"; then
+      echo "RENEWED: $MACHINE_ID lease extended for ${TTL}m."
       exit 0
     fi
-    echo "WARN: renew push lost a race; re-run. Current holder now '$(_field holder)'."
+    _remote_snapshot >/dev/null 2>&1 || _closed "renew CAS failed and the winning lease cannot be read"
+    echo "REFUSED: renew lost the compare-and-swap race; current holder '$(_field holder)'."
     exit 1
     ;;
-
   release)
-    MACHINE_ID="${1:?usage: lab_lease.sh release <machine-id>}"
-    _pull_rebase
+    [ "$#" -eq 1 ] || { echo "usage: lab_lease.sh release <machine-id>" >&2; exit 2; }
+    MACHINE_ID="$1"; _validate_machine_id "$MACHINE_ID" || exit 2
+    _remote_snapshot || _closed "cannot fetch or validate $REMOTE/$BRANCH:$LEASE_REL"
     holder="$(_field holder)"
-    if [ -n "$holder" ] && [ "$holder" != "$MACHINE_ID" ]; then
-      echo "REFUSED: lease held by '$holder', not you ('$MACHINE_ID')."
+    [ "$holder" = "$MACHINE_ID" ] || {
+      echo "REFUSED: lease held by '$holder', not '$MACHINE_ID'."
       exit 1
-    fi
-    # write a FREE lease (empty holder, expired) so the other machine can claim.
-    python3 - "$LEASE_FILE" "$(now_iso)" "$MACHINE_ID" <<'PY'
-import sys, json
-path, iso, who = sys.argv[1:4]
-json.dump({
-    "holder": "",
-    "claimedUTC": "",
-    "expiresUTC": iso,
-    "ttlMinutes": 0,
-    "lastAction": f"release by {who}",
-    "seq": 0,
-}, open(path, "w"), indent=2)
-open(path, "a").write("\n")
-PY
-    if _commit_push_lease "chore(lab-lease): $MACHINE_ID release"; then
-      echo "RELEASED: lab lease is now FREE — any machine may claim."
-      _convex_note "Lab lease released" "$MACHINE_ID released the lab lease; lease is free."
+    }
+    _render_candidate "" 0 "release by $MACHINE_ID" || _closed "cannot render release candidate"
+    if _publish_candidate "chore(lab-lease): $MACHINE_ID release"; then
+      echo "RELEASED: lab lease is FREE."
+      _convex_note "Lab lease released" "$MACHINE_ID released the lab lease."
       exit 0
     fi
-    echo "WARN: release push lost a race; re-run. Current holder now '$(_field holder)'."
+    _remote_snapshot >/dev/null 2>&1 || _closed "release CAS failed and the winning lease cannot be read"
+    echo "REFUSED: release lost the compare-and-swap race; current holder '$(_field holder)'."
     exit 1
     ;;
-
   status)
-    _pull_rebase
+    [ "$#" -eq 0 ] || { echo "usage: lab_lease.sh status" >&2; exit 2; }
+    _remote_snapshot || _closed "cannot fetch or validate $REMOTE/$BRANCH:$LEASE_REL"
     holder="$(_field holder)"
     if [ -z "$holder" ]; then
-      echo "LAB LEASE: FREE (no holder). Any machine may claim."
+      echo "LAB LEASE: FREE."
       exit 4
     fi
-    exp="$(_field expiresUTC)"
     if _is_fresh; then
-      echo "LAB LEASE: HELD by '$holder' until $exp (FRESH). This machine drives only if it IS '$holder'."
+      echo "LAB LEASE: HELD by '$holder' until $(_field expiresUTC) (FRESH)."
       exit 0
     fi
-    echo "LAB LEASE: EXPIRED — last holder '$holder' (expired $exp). Steal with: lab_lease.sh claim <me> <ttl>."
+    echo "LAB LEASE: EXPIRED — last holder '$holder' (expired $(_field expiresUTC))."
     exit 3
     ;;
-
   holds)
-    # loop gate — quiet; exit 0 iff this machine holds a FRESH lease.
-    MACHINE_ID="${1:?usage: lab_lease.sh holds <machine-id>}"
-    _pull_rebase
+    [ "$#" -eq 1 ] || { echo "usage: lab_lease.sh holds <machine-id>" >&2; exit 2; }
+    MACHINE_ID="$1"; _validate_machine_id "$MACHINE_ID" >/dev/null || exit 2
+    _remote_snapshot >/dev/null 2>&1 || exit 5
     [ "$(_field holder)" = "$MACHINE_ID" ] && _is_fresh
     exit $?
     ;;
-
   *)
     echo "usage: lab_lease.sh {claim|renew|release|status|holds} ..." >&2
     exit 2
