@@ -20,9 +20,20 @@ b/a convention (identical to scripts/systematic_l1_forward_model_dr8morph.py):
 METRIC
   f_edge  = fraction of the CLASSIFIED-SPIRAL catalog with b/a < 0.3
             (empirical replacement for the pending compute item).
-  From Appendix E the sensitivity dilution is a Fisher-floor argument:
-     sigma(A) propto N_eff^{-1/2},  N_eff dilution delta = f_edge,
-     floor inflation = (1-delta)^{-1/2} - 1 ~ delta/2.
+  From Appendix E the sensitivity dilution has TWO framings (M24/DP4-22 fix,
+  2026-07-13):
+     Fisher-optimal (Cramer-Rao) floor: (1-delta)^{-1/2} - 1  ~ delta/2
+        -- applies ONLY to an estimator that identifies + down-weights/excludes
+           the zero-Fisher-information edge-on population.
+     Naive-estimator linear penalty: (1-delta)^{-1} - 1  ~ delta
+        -- applies to the NAIVE per-pixel f_CW estimator ACTUALLY USED, which
+           RETAINS the edge-on systems in N_spiral. Flip-symmetric edge-on
+           contaminants carry zero mean CW-CCW asymmetry, so they split 50/50
+           under hard argmax and dilute the recovered amplitude LINEARLY:
+           E[A_p] = (1-delta) A_phys  =>  physical-amplitude floor inflates by
+           (1-delta)^{-1} - 1. The paper ADOPTS the larger conservative linear
+           value; neither changes the null verdict (injection-recovery floors
+           measured on the same edge-on-contaminated observed field).
   We report f_edge at b/a<0.3 (paper's edge-on definition) plus a sweep
   (b/a<0.2, 0.25, 0.3, 0.35, 0.4) so the number is robust to the threshold.
 
@@ -64,14 +75,18 @@ def main():
     for t in thresholds:
         n_edge = int((ba_f < t).sum())
         f_edge = n_edge / n_finite
-        # Fisher-floor sensitivity inflation for a delta=f_edge dilution of N_eff
-        floor_inflation = (1.0 - f_edge) ** -0.5 - 1.0
+        # Fisher-optimal (Cramer-Rao) floor for a delta=f_edge dilution of N_eff
+        floor_inflation_fisher = (1.0 - f_edge) ** -0.5 - 1.0
+        # Naive-estimator linear penalty (DP4-22): the primary per-pixel f_CW
+        # estimator RETAINS edge-on in N_spiral => linear (1-delta)^-1 dilution.
+        penalty_linear = (1.0 - f_edge) ** -1.0 - 1.0
         sweep[f"b_over_a_lt_{t:.2f}"] = {
             "n_edge": n_edge,
             "f_edge": f_edge,
             "f_edge_pct": 100.0 * f_edge,
             "neff_dilution_pct": 100.0 * f_edge,
-            "sensitivity_floor_inflation_pct": 100.0 * floor_inflation,
+            "sensitivity_floor_inflation_fisher_pct": 100.0 * floor_inflation_fisher,
+            "physical_amplitude_penalty_linear_pct": 100.0 * penalty_linear,
         }
 
     primary = sweep["b_over_a_lt_0.30"]
@@ -106,7 +121,7 @@ def main():
             "f_edge_pct": primary["f_edge_pct"],
             "n_edge_on_spirals": primary["n_edge"],
             "neff_dilution_pct": primary["neff_dilution_pct"],
-            "sensitivity_floor_inflation_pct": primary["sensitivity_floor_inflation_pct"],
+            "sensitivity_floor_inflation_pct": primary["sensitivity_floor_inflation_fisher_pct"],
             "note": (
                 "f_edge is the fraction of the CLASSIFIED-SPIRAL catalog (galaxies "
                 "assigned CW/CCW) that are edge-on by b/a<0.3. Because equivariant TTA "
@@ -116,6 +131,17 @@ def main():
                 "The empirical floor inflation supersedes the prior qualitative 5-8% estimate."),
         },
         "fabrication_disclaimer": "Every number computed from spiral_morphology_dr8.parquet on disk. No values fabricated.",
+        "penalty_note": (
+            "Correction (M24, 2026-07-13): the primary dipole uses the NAIVE per-pixel f_CW "
+            "estimator with edge-on systems RETAINED in N_spiral. Flip-symmetric edge-on "
+            "contaminants carry zero mean asymmetry and dilute the recovered amplitude LINEARLY "
+            "(E[A_p]=(1-delta)A_phys), so the physical-amplitude sensitivity-floor penalty is "
+            "(1-delta)^-1 - 1, NOT the Fisher-optimal (1-delta)^-1/2 - 1. The sqrt value is the "
+            "Cramer-Rao bound for an optimal estimator that excludes/down-weights the "
+            "zero-information edge-on population; the naive estimator incurs the full linear "
+            "dilution. Paper adopts the conservative linear value. Neither changes the null "
+            "verdict (injection-recovery floors are measured on the same contaminated observed "
+            "field); largely subsumed by the primary g=2a-1 GZ1-accuracy dilution."),
     }
 
     RESULT.write_text(json.dumps(result, indent=2))
@@ -124,10 +150,11 @@ def main():
     print(f"PRIMARY  f_edge(b/a<0.30) = {primary['f_edge_pct']:.3f}%  "
           f"({primary['n_edge']:,} edge-on spirals)")
     print(f"         N_eff dilution   = {primary['neff_dilution_pct']:.3f}%")
-    print(f"         floor inflation  = {primary['sensitivity_floor_inflation_pct']:.3f}%")
+    print(f"         Fisher floor infl= {primary['sensitivity_floor_inflation_fisher_pct']:.3f}%")
+    print(f"         LINEAR penalty   = {primary['physical_amplitude_penalty_linear_pct']:.3f}%  (adopted, DP4-22)")
     print("SWEEP:")
     for k, v in sweep.items():
-        print(f"  {k}: f_edge={v['f_edge_pct']:.3f}%  floor_infl={v['sensitivity_floor_inflation_pct']:.3f}%")
+        print(f"  {k}: f_edge={v['f_edge_pct']:.3f}%  fisher={v['sensitivity_floor_inflation_fisher_pct']:.3f}%  linear={v['physical_amplitude_penalty_linear_pct']:.3f}%")
     print(f"wrote {RESULT}  md5={md5}")
 
 
