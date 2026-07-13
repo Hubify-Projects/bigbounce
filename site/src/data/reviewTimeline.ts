@@ -57,6 +57,31 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "m14-ext-zero-reject-harvest-2026-07-12",
+    dateISO: "2026-07-12",
+    kind: "external-browser",
+    title:
+      "M14-EXT — P4 + P5 confirm wave, 2nd consecutive ZERO-REJECT harvest, 0 genuinely-new. P4 (v1.0.239 byte-unchanged): Grok MINOR affirms the null + ChatGPT MAJOR (FOURTH consecutive non-REJECT, Q3 concedes the HC null); source-cited standing DP4 re-flags (#14 A_p-vs-f_CW factor-of-2 re-derived CORRECT); streak 4→5; cap 74 HOLDS. P5 (v0.1.126 byte-unchanged): Grok MINOR affirms the qualitative null + ChatGPT MAJOR (floor-crack HOLDS); source-cited standing DP5 re-flags (#10 parity-even/fundamental-physics → DP5-20 speculative-App-B); streak 5→6; cap 80 HOLDS. No bumps; directive_g.sh not run.",
+    papers: ["P4", "P5"],
+    summary:
+      "M14-EXT: two-paper confirm wave — 2nd consecutive ChatGPT-inclusive harvest with ZERO REJECTs across P4+P5 — 0 genuinely-new reader-visible findings on either paper. P4 (v1.0.239, byte-unchanged): Grok MINOR REVISIONS (5 MINOR, closing affirms the null) + ChatGPT MAJOR REVISIONS (14 MAJOR/3 MINOR — its FOURTH consecutive non-REJECT, Q3 concedes the narrow HC null); every finding source-cited to DP4-01/-07/-08/-09/-10/-11/-12/-13/-14/-15/-16/-17/-21 (#14 A_p=2(f_CW−½) ⇒ 1.5% f_CW-dev = 3×10⁻² A_p re-derived arithmetically CORRECT — conflated objects, not a defect); clean-wave streak 4→5; cap 74 HOLDS. P5 (v0.1.126, byte-unchanged): Grok MINOR REVISIONS (1 in-MINOR MAJOR/3 MINOR, closing affirms the qualitative null) + ChatGPT MAJOR REVISIONS (11 MAJOR/2 MINOR — floor-crack HOLDS); every finding source-cited to DP5-02/-04/-06/-07/-08/-09/-10/-11/-12/-13/-14/-16/-19/-20/-22 + OPEN-VENUE DP5-21 (#10 fundamental-physics/parity-even operator → DP5-20 speculative-App-B, already disclosed); clean-wave streak 5→6; cap 80 HOLDS. No bumps.",
+    keyTakeaways: [
+      "P4: 0 genuinely-new across Grok(5 MINOR) + ChatGPT(14 MAJOR/3 MINOR) on byte-unchanged v1.0.239; every finding source-cited to a standing DP4 D-id. ChatGPT's FOURTH consecutive non-REJECT — Q3 again concedes the narrow HC null (raw l.133); the residual dispute is the disclosed classifier-dilution generalization (DP4-09/-15 OPEN-COMPUTE). ChatGPT #14 (A95 'f_CW units' factor-of-2) re-derived arithmetically correct (A_p=2(f_CW−½), tex L1104) — conflated objects, not a defect. Streak 4→5; cap 74 HOLDS.",
+      "P5: 0 genuinely-new across Grok(1 in-MINOR MAJOR/3 MINOR) + ChatGPT(11 MAJOR/2 MINOR) on byte-unchanged v0.1.126; every finding source-cited to a standing DP5 D-id. ChatGPT floor-crack HOLDS (MAJOR not REJECT); the fundamental-physics/parity-even-operator objection targets the explicitly-speculative App B (DP5-20, already relegated). Grok's lone MAJOR sits under a MINOR-REVISIONS header (in-MINOR emphasis), and its close affirms the qualitative null. Streak 5→6; cap 80 HOLDS.",
+      "Integrity: all four EXT raws read verbatim before disposition (Grok l.1 'VERDICT: MINOR REVISIONS'; ChatGPT l.1 '(1) VERDICT: MAJOR REVISIONS' / 'VERDICT: MAJOR REVISIONS'); Q3 concessions + Grok null-affirmations lifted verbatim; every finding source-cited to a D-id; no ACCEPT faked; no dismissal without a source-cited verdict; no math fabricated. Caps recomputed from the EXT formula (P4 74 = 50+grok-MIN12+chatgpt-MAJ6+gemini-latest6; P5 80 = 50+grok-MIN12+chatgpt-MAJ6+gemini-latest-MIN12). Streaks: P1U 6 · P2 5 · P3 5 · P4 5 · P5 6. Caps: P1A 62 · P2 74 · P3 56 · P4 74 · P5 80.",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 0,
+      note: "0 genuinely-new reader-visible editable findings across P4 M14-EXT (Grok MINOR + ChatGPT MAJOR — 4th consecutive non-REJECT) and P5 M14-EXT (Grok MINOR + ChatGPT MAJOR — floor-crack holds). 2nd consecutive ZERO-REJECT harvest for P4+P5. P4 streak 4→5; P5 streak 5→6. Caps P4 74 · P5 80 HOLD.",
+    },
+    links: [
+      { label: "P4 Grok M14 EXT raw", href: `${PR}/EXT_real/H17_2026-07-10/M14/P4_grok_M14.md` },
+      { label: "P4 ChatGPT M14 EXT raw", href: `${PR}/EXT_real/H17_2026-07-10/M14/P4_chatgpt_M14.md` },
+      { label: "P5 Grok M14 EXT raw", href: `${PR}/EXT_real/H17_2026-07-10/M14/P5_grok_M14.md` },
+      { label: "P5 ChatGPT M14 EXT raw", href: `${PR}/EXT_real/H17_2026-07-10/M14/P5_chatgpt_M14.md` },
+    ],
+  },
+  {
     id: "m11-ext-floor-crack-wave-2026-07-12",
     dateISO: "2026-07-12",
     kind: "external-browser",

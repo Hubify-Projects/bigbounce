@@ -938,13 +938,15 @@ export function VerdictSeverityTrend() {
 // M1 wave (2026-07-12, post directive-M overhaul): P4 Grok softened REJ/MIN→cap 68→74; P3 ApJS-framed
 // ChatGPT REJECT + Grok MAJOR → 62→56; P5 Grok slipped ACCEPT→MAJOR (overhaul-reaction) → 80→74.
 //   P4 REJ/MIN/MIN=74 · P2 REJ/MAJ/(gem)=74 · P5 REJ/MAJ/MIN=74 · P3 REJ/MAJ/MAJ=56 · P1B(carried)=56 · P1A REJ/MAJ/MAJ=62
+// M14 wave (2026-07-12): 2nd consecutive ZERO-REJECT harvest P4+P5; P4 74 · P5 80 HOLD.
+// (P5 recovered to 80 post-M1-slip via the RS2/M-series waves; Convex + live-status = 80.)
 const PER_PAPER_READINESS: Record<PaperId, number> = {
   P1A: 62,
   P1B: 56,
   P2: 74,
   P3: 56,
   P4: 74,
-  P5: 74,
+  P5: 80,
 };
 
 export function ReadinessStrip() {
