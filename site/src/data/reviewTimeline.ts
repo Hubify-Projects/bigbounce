@@ -57,6 +57,30 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "ops-center-2026-07-13",
+    dateISO: "2026-07-13",
+    kind: "skill-improvement",
+    title:
+      "Ops center created — new top-level ops/ directory becomes the canonical home for the program's architecture, plan, and runbooks (README + ARCHITECTURE + PLAN + RUNBOOK). Indexes + architects, does NOT duplicate: paper status stays canonical in SSOT/, round protocol in the scistack bigbounce-r-round/SKILL.md, dispositions in DISPOSITIONS/, live-site truth in Convex — every ops doc links to those roots.",
+    papers: ["P1A", "P2", "P3", "P4", "P5"],
+    summary:
+      "ops/ARCHITECTURE.md maps the full pipeline as one component diagram — scheduling (in-session cron + launchd cron-tick + loopwatchdog + caffeinate + LOOP_HEARTBEAT), submission (wave_submit per-leg isolation → ext_submit with the 5 sha-cited guards: stale-URL 3fb1ffd9, OK-or-FAIL a08dd750, 120s+sidebar 02d68a8f, OK-requires-URL 80914698, attachment-token 854acb99), harvest (ext_harvest substance/duplicate/paper-signature gates 2f5efb53), adjudication (ledger_match fingerprint pre-triage → Opus strict adjudicators reading every raw+png per I4), recording (post_verdict cd02c991 cap=50+Σ{ACCEPT16.7/MINOR12/MAJOR6/REJECT0} + record_wave clobber-guard + INT label <wave>-INT-<vendor> 029cb689), site (live-status/reviewTimeline/SSOT mirrors + All-A grid + freshness pre-push hook ccd593c1), science-closure (directive_g.sh hygiene chain + I6 figures), INT battery (int_wave 4 legs; Claude=subscription NEVER API), backup (backup-3plus/HF/B2) — plus a one-wave data-flow table with file paths at each step, the never-break invariants, and the concurrency model (Fable-5 orchestrator + Opus adjudicators + Codex driver coexistence, STATE-CHECK yield, fresh-agent-audits-Convex-first stall recovery). ops/PLAN.md stacks the terminal criteria J→K→L→M (M = all-A grid governs), snapshots current caps/streaks (links SSOT for live), gives the pattern-066 verdict-floor analysis (compute > venue > presentation ≫ text waves), the 4-phase plan (loop-as-regression-net → Houston-gated conversions → human referees → optional deep compute levers with effort tables), and the decision log (gate recalibrations, ApJS flip, DP3-15 structural ceiling e70e418e, DP4-22 closure 39b7aed1). ops/RUNBOOK.md is the per-tick command sheet + recovery playbooks + symptom→cause→play troubleshooting table. CLAUDE.md gains a 4-line Ops-center pointer (no restated content).",
+    keyTakeaways: [
+      "ops/ is the program's map: README (orientation + canon table) + ARCHITECTURE (component diagram, one-wave data-flow, invariants, concurrency) + PLAN (J→K→L→M criteria, floor analysis, 4-phase plan, decision log) + RUNBOOK (per-tick commands, recovery plays, troubleshooting).",
+      "DRY enforced: paper status → SSOT/, round protocol → scistack SKILL.md, dispositions → DISPOSITIONS/, readiness → Convex. ops/ links to each canonical root and duplicates none.",
+      "Encodes the sha-cited toolchain (3fb1ffd9/a08dd750/02d68a8f/80914698/854acb99/cd02c991/029cb689/2f5efb53/ccd593c1) + the never-break invariants + the pattern-066 verdict-floor as the single reference for how the machine works and where it's going.",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 0,
+      note: "Documentation/architecture round, not a review round: 0 new findings. Establishes ops/ as the canonical operations center indexing (not duplicating) SSOT / scistack SKILL.md / DISPOSITIONS / Convex.",
+    },
+    links: [
+      { label: "ops/ARCHITECTURE.md", href: `${GH}/ops/ARCHITECTURE.md` },
+      { label: "ops/PLAN.md", href: `${GH}/ops/PLAN.md` },
+      { label: "ops/RUNBOOK.md", href: `${GH}/ops/RUNBOOK.md` },
+    ],
+  },
+  {
     id: "m39-ext-p3-adjudication-2026-07-13",
     dateISO: "2026-07-13",
     kind: "external-browser",

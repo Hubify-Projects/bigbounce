@@ -1,5 +1,13 @@
 # CLAUDE.md — bigbounce
 
+## Ops center
+
+Program architecture, plan, and runbooks live in `ops/` (canonical home; indexes,
+does not duplicate). `ops/ARCHITECTURE.md` = system + data-flow + invariants;
+`ops/PLAN.md` = mission/terminal-criteria/phases/decision-log; `ops/RUNBOOK.md` =
+per-tick commands + recovery plays. Paper status stays canonical in
+`project-context/SSOT/`; round protocol in the scistack `bigbounce-r-round/SKILL.md`.
+
 ## Review-round site sync (STANDING, Houston 2026-06-11)
 
 EVERY review round — internal (R-round, conf sweep, patch wave) AND external
