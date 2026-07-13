@@ -1,8 +1,42 @@
 # Compute-to-ACCEPT queue (the real research that drives external ACCEPT)
 
-<!-- last_updated: 2026-07-12 (18:07 tick — post-M9 state-honesty + live cost-safety attestation) -->
+<!-- last_updated: 2026-07-12 (19:07 tick — post-M10 state-honesty + live cost-safety attestation) -->
 
-## 2026-07-12 (hourly cron tick, 18:07) — post-M9 idle verified honest, live $0 pod burn, no fireable increment
+## 2026-07-12 (hourly cron tick, 19:07) — post-M10 idle verified honest, live $0 pod burn, autonomous levers EXHAUSTED
+
+**State check (step 1):** no concurrent driver (no python review procs; gstack headed browser daemon UP but
+idle — no active EXT sweep); working tree clean; `tools/site_freshness_check.sh` → **exit 0** (no stale
+surface). **M10-EXT** (P2 + P3-ApJS) was harvested + adjudicated + committed 18 min prior (`c2e2ec06`,
+18:49): **0 genuinely-new**, clean-wave streaks P2 3→4 / P3 3→4; every finding source-cited to a standing
+DP2/DP3 disposition (P2 ChatGPT 'additive-not-multiplicative' = false premise pre-empted by L1025 amplitude-
+invariant-shape-ratio disclosure; code-release/DOI = process-nit; P3 DP3-15 end-to-end regeneration =
+OPEN-COMPUTE, DP3-20 release-integrity CLOSED-BY-RELEASE). Content-change audit: every paper's last `.tex`
+edit is **6–10 h old** (P1A 6h, P2 10h, P3 7h, P4 6h, P5 8h) — **all predate** the M9/M10 sweeps that just
+adjudicated them, so **no paper has changed since its last EXT** and no re-test is due.
+
+**Cost-safety (live RunPod REST v1, this tick):** all **9 pods EXITED**, 0 running → **$0 compute burn**
+(`bigbounce-p4-e2e-mirror` $1.19/hr, `-dr8morph`/`-gz1only` $0.17, `-p1b-snctrl` $0.25, `-c123-namaster`
+$0.17, `regular_green_pig{,-migration}`/`blonde_silver_eel`/`frail_tomato_koi` $4.39 each — all idle at $0).
+No pod leaking spend on the thin balance.
+
+**Why no EXT sweep / no paper edit / no pod launch this tick:** (a) browser is up but a fresh sweep on
+byte-unchanged content 18 min after M10 = verdict-farming (directive-M forbids — waves MEASURE movement,
+never farm); (b) 0 editable findings open — every open item is a source-cited re-flag, an OPEN-COMPUTE
+frontier item, an OPEN-VENUE item, or a submission-time process-nit; (c) the only genuinely-forward levers
+are **multi-hour paid pod runs** (P4 Stage B image→field injection-recovery consuming the 2026-07-12 e2e
+flip labels → DP4-15; P3 NEOWISE/Gaia train-split scaler refit → DP3-15; P2 channel-native Fisher; P5
+Zel'dovich RSD reconstruction; P1B ALP prior-predictive fraction) — these are unsupervised hard-to-reverse
+**cost** actions on a thin balance that the loop has consistently deferred to a Houston go/monitor (M7→M10),
+and this tick holds that judgment rather than firing a pod that could hang and leak $4.39/hr unattended.
+
+**Honest frontier:** the autonomous edit/EXT loop is EXHAUSTED — all 5 active papers hold recent floor
+verdicts and every path-to-ACCEPT blocker is compute- or submission-gated (Houston decision). The
+highest-leverage single fireable job is **P4 Stage B** (targets the recurring ChatGPT spatially-resolved
+confusion MAJOR, DP4-15; Stage A already completed today). No fabrication, no faked accept, no un-sourced
+dismissal this tick.
+
+---
+
 
 **State check (step 1):** no concurrent driver (only this tick's own `claude -p` PID; no python review
 procs; gstack headed browser daemon up but idle — no active EXT sweep); working tree clean;
