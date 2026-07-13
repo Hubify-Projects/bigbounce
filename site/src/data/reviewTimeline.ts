@@ -57,6 +57,31 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "m30-ext-p4-2026-07-13",
+    dateISO: "2026-07-13",
+    kind: "external-browser",
+    title:
+      "M30-EXT — P4 v1.0.239 (byte-unchanged): Grok MAJOR + ChatGPT MAJOR, 0 genuinely-new → clean-wave streak 10→11, cap 74. Pattern-066: Grok read the identical disclosed-content set as M21-ACCEPT→M24/M26-MINOR→M30-MAJOR = maximal-harsh-referee variance, not new findings. P1U M30 grok = FAILED (prompt-echo raw, no reviewer output; manifest MAJOR label unsupported → verdict:failed per directive I4); ChatGPT M30 P1U still generating (pending next harvest) → P1U streak HOLDS 12.",
+    papers: ["P4", "P1U"],
+    summary:
+      "M30-EXT adjudication (P4 v1.0.239 byte-unchanged; P1U grok-only-pending-chatgpt). Both P4 raws + screenshots READ before any verdict. P4: Grok = MAJOR REVISIONS (2 MAJOR / 3 MINOR; screenshot 'Thought for 24s / VERDICT: MAJOR REVISIONS') + ChatGPT = MAJOR REVISIONS (12 MAJOR / 2 MINOR; recovered orphan leg, SOFTER than its M26 REJECT — the documented ChatGPT REJECT↔MAJOR band). 0 genuinely-new; every finding a source-cited standing DP4 re-flag — Grok: ℓ=1 +3.64σ / 47%-unmodeled → DP4-17 (OPEN-COMPUTE, bounded a-fortiori below A50/A95); 66.5% pseudo-labels + coarser GZ1 null → DP4-08/-15 (disclosed §pseudolabel_independence); MINOR p_eq>0.6 blinding → DP4-07; MINOR block-bootstrap z≈−7.6 + matched-Ganalyzer-caveat-to-abstract → DP4-01/-11; MINOR density/artifact-paths → DP4-13. ChatGPT 14 findings 1:1 with the M26 set → DP4-07 (post-selection ×2), DP4-09 (injection-not-end-to-end / A50-A95 floors ×2), DP4-15 (image-level end-to-end / spatial confusion), DP4-16 (pixel-permutation exchangeability), DP4-10 (σ vs moment-z; z=7.31 vs p=6e-4), DP4-01/-14 (block-bootstrap not calibrated), DP4-17 (47% residual), DP4-08 (21.4% D4 flips), DP4-09 (GZ1-only under-powered), DP4-10 (+3.64 vs +7.93 harmonic), DP4-12 (MINOR birefringence), DP4-21 (MINOR DOI placeholder). ledger_match: Grok 3/6 + ChatGPT 9/16 auto-matched; all UNMATCHED Opus-adjudicated to the D-ids above. PATTERN-066 verdict on the Grok slip: Grok read this byte-identical v1.0.239 as M21-ACCEPT → M24/M26-MINOR → M30-MAJOR — the identical disclosed-content set oscillating ACCEPT↔MINOR↔MAJOR = textbook maximal-harsh-referee variance, NOT new findings. clean-wave streak 10→11. Cap 74 (50 + Grok MAJOR 6 + ChatGPT MAJOR 6 + Gemini-latest MINOR 12; ChatGPT +6 vs its M26 REJECT-0 — honest up-move, post_verdict.sh recomputed). P1U M30: the harvested grok raw is prompt-echo only (no reviewer response) with a still-generating-ChatGPT screenshot; the manifest 'MAJOR REVISIONS' label is UNSUPPORTED → recorded verdict:failed per directive I4 (a no-output leg is FAILED, never a verdict). ChatGPT M30 P1U leg still generating (pending next harvest). P1U streak HOLDS 12 (M28-INT); cap HOLDS. No bump (byte-unchanged); directive_g.sh not run; no ACCEPT faked, no un-sourced dismissal, no fabrication. Raws + audit: EXT_real/H17_2026-07-10/M30/.",
+    keyTakeaways: [
+      "P4 M30: Grok MAJOR + ChatGPT MAJOR (both raws + screenshots read verbatim) on byte-unchanged v1.0.239. ChatGPT SOFTER than its M26 REJECT. 0 genuinely-new; every finding a source-cited standing DP4 re-flag. clean-wave streak 10→11; cap 74 (Grok-MAJ 6 + ChatGPT-MAJ 6 + Gemini-latest-MIN 12).",
+      "Pattern-066 verdict on the P4 Grok slip: byte-identical v1.0.239 read as M21-ACCEPT→M24/M26-MINOR→M30-MAJOR on the identical disclosed-content set (47% residual + pseudo-labels/GZ1) = maximal-harsh-referee variance, NOT a content regression.",
+      "P1U M30 integrity gate: grok raw = prompt-echo only (no reviewer output) + still-generating-ChatGPT screenshot → the manifest MAJOR label is UNSUPPORTED and recorded verdict:failed per directive I4. ChatGPT M30 P1U pending next harvest. P1U streak HOLDS 12; no verdict synthesized from a label. Streaks: P1U 12 · P2 11 · P3 2 · P4 11 · P5 0. Caps: P1A 62 · P2 68 · P3 56 · P4 74 · P5 80.",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 0,
+      note: "M30-EXT: 0 genuinely-new on P4 (both legs MAJOR, byte-unchanged v1.0.239). Grok pattern-066 verdict-word slip (ACCEPT→MINOR→MAJOR on identical disclosed content). P4 streak 10→11, cap 74. P1U grok FAILED (no output, verdict:failed per I4), chatgpt pending → P1U streak HOLDS 12. Every finding a source-cited standing D-id re-flag; no edit warranted.",
+    },
+    links: [
+      {
+        label: "P4 M30 truth-audit",
+        href: `${PR}/EXT_real/H17_2026-07-10/M30/P4_truth_audit_M30.md`,
+      },
+    ],
+  },
+  {
     id: "m26-m27-ext-chatgpt-recovery-2026-07-13",
     dateISO: "2026-07-13",
     kind: "external-browser",
