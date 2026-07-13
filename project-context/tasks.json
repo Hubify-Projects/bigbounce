@@ -1,24 +1,121 @@
 {
   "schema": 1,
-  "updated_at": "2026-07-09 18:04 PT",
+  "updated_at": "2026-07-13T13:57:00-07:00",
   "project": "bigbounce",
-  "objective": "Reconcile recent prompt history into concrete tasks.",
+  "objective": "Prove the Phase 0 two-machine, one-lab handoff MVP before enabling multi-lab behavior.",
   "tasks": [
     {
-      "id": "T001",
-      "status": "active",
-      "title": "Reconcile recent prompts into project tasks",
-      "source_prompts": [
-        "recent project-context/prompts.md entries"
-      ],
+      "id": "HO-001",
+      "status": "done",
+      "title": "Run receiving-machine bootstrap to READY",
+      "source_prompts": ["2026-07-13 Codex handoff acceptance"],
       "completion_criteria": [
-        "Open asks are reflected in tasks.md",
-        "Open asks are reflected in tasks.json",
-        "Next steps are reflected in plan.md"
+        "Second machine follows BOOTSTRAP_PROMPT.md",
+        "bootstrap.sh reports READY",
+        "Every WARN or FAIL is resolved or documented without exposing secrets"
+      ],
+      "evidence": ["bootstrap READY: 21 PASS, 2 WARN, 0 FAIL", "TinyTeX pdflatex and latexmk detected", "Convex reachable", "gstack healthy headed"]
+    },
+    {
+      "id": "HO-002",
+      "status": "active",
+      "title": "Verify one-lab coordination on two machines",
+      "source_prompts": ["2026-07-13 Codex handoff acceptance"],
+      "depends_on": ["HO-B01"],
+      "completion_criteria": [
+        "Lease claim, renew, release, denial, and expiry behavior are verified during an idle or handed-off window",
+        "Heartbeat contains the active machineId",
+        "Git and Convex converge without browser, manifest, ledger, or site-state collisions"
       ]
+    },
+    {
+      "id": "HO-003",
+      "status": "done",
+      "title": "Verify Codex orchestrator portability",
+      "source_prompts": ["2026-07-13 Codex handoff acceptance"],
+      "completion_criteria": [
+        "Fresh Codex session resumes from repository instructions alone",
+        "Claude-only assumptions are absent or explicitly mapped",
+        "Host capability gaps are recorded honestly"
+      ],
+      "evidence": ["Codex receiving session followed AGENTS/onboarding/runbook", "macOS launchd and gstack browser dependencies made explicit", "Codex host is mapped as its own INT reviewer"]
+    },
+    {
+      "id": "HO-004",
+      "status": "done",
+      "title": "Close bootstrap prerequisite-detection gaps",
+      "source_prompts": ["2026-07-13 Claude handoff report"],
+      "completion_criteria": [
+        "TinyTeX pdflatex is detected or its degraded state is documented",
+        "No prerequisite check is weakened to force READY"
+      ],
+      "evidence": ["bootstrap exact-module checks pass", "BigBounce env-key audit has zero missing key names", "isolated lease CAS + cron routing test passes"]
+    }
+  ],
+  "blockers": [
+    {
+      "id": "HO-B01",
+      "status": "blocked",
+      "title": "Live M41 owns browser and manifest",
+      "clear_when": "M41 is idle or explicitly hands off browser and ledger ownership"
+    },
+    {
+      "id": "HO-B02",
+      "status": "blocked",
+      "title": "Hubify CLI unauthenticated",
+      "clear_when": "Hubify authentication succeeds and lab/status claims can be queried"
+    },
+    {
+      "id": "HO-B03",
+      "status": "blocked",
+      "title": "Machine-sync shared repo dirty or conflicted",
+      "clear_when": "Shared-repo ownership is reconciled and sync can run without overwriting work"
+    }
+  ],
+  "completed": [
+    {
+      "id": "HO-D01",
+      "status": "done",
+      "title": "Verify handoff commits are reachable and pushed",
+      "evidence": ["origin/main=df8d89a3", "HEAD divergence=0/0", "e730850b", "de4750f3", "27596c56", "df8d89a3"]
+    },
+    {
+      "id": "HO-D02",
+      "status": "done",
+      "title": "Verify lease and heartbeat files exist",
+      "evidence": ["lease free at seq 0", "heartbeat source=orchestrator", "heartbeat machineId=Houstons-MacBook-Air.local"]
+    }
+  ],
+  "mvp_completion_criteria": [
+    "Second machine reaches bootstrap READY without secret exposure",
+    "Lease and heartbeat behavior is verified during an explicit idle or handoff window",
+    "Both machines converge on the same git and Convex state without write collisions",
+    "Codex resumes from repository instructions alone",
+    "Houston accepts the two-machine one-lab workflow"
+  ],
+  "gated_phases": [
+    {
+      "phase": 1,
+      "status": "pending-gated",
+      "title": "Second orchestrator, same lab",
+      "entry_gate": "Phase 0 green and Houston approval"
+    },
+    {
+      "phase": 2,
+      "status": "pending-gated",
+      "title": "Two blind labs on bounded P4 mirror-flip reproduction",
+      "entry_gate": "Phase 1 green; seal/reveal tooling tested; Convex labId and site support landed"
+    },
+    {
+      "phase": 3,
+      "status": "pending-gated",
+      "title": "Open-source Lab C",
+      "entry_gate": "Phase 2 blind/reveal/corroboration cycle succeeds"
     }
   ],
   "watchpoints": [
-    "Keep raw prompts raw; put audit conclusions in task and plan files."
+    "Do not implement multi-lab schema, site, branches, or seal/reveal during Phase 0.",
+    "Only the lease holder may drive browser, verdict, or ledger writes.",
+    "Do not modify M41 manifest, prompts.md, SSOT, or generated .agents skills in this lane."
   ]
 }

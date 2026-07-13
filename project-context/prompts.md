@@ -220,3 +220,116 @@ Switched to Opus 4.7 + xhigh effort for this.
 > Execute the program's LAST major OPEN-COMPUTE item: P3's DP3-15 — the full per-object held-out re-inference of the released catalog ("raw native scores reside on an exited pod" is the reviewers' standing objection). Budget: hard cap $25 RunPod; backup-3plus; NEVER terminate (STOP only); never print secrets. NEVER fabricate — if the full 22.5M re-inference is genuinely larger than the cap allows, execute the largest defensible held-out subset and report honestly what it does/doesn't establish.
 > [Steps 1-4: SCOPE from repo → PLAN GPU-hours → EXECUTE defensible version + backup-3plus + HF manifest → commit+DP3-15 update+truth-audit+DAS note+bump pair.]
 > Return ≤150 words: scope decision, compute+cost, agreement stats, DP3-15 status, versions, commit shas.
+## 2026-07-13 - Codex handoff acceptance
+
+### Houston messages, verbatim
+
+**Current session - Claude Code handoff package and bootstrap context**
+
+- `cwd`: /Users/houstongolden/Desktop/CODE_YOU/bigbounce
+- `session`: Codex receiving-lab handoff
+- `agent`: Codex / GPT-5
+
+> PROMPT I GAVE CLAUDE CODE BELOW FOR THEM TO GENERATE THE AGENT-HANDOFF DOC AND INSTRUCTIONS ETC WHICH COME AFTER THE REFERENCE PROMPT BELOW:
+> "Okay, I need you to create an agent handoff script so that we can have it. I want you to fully audit the entire agentics of this whole Big Bounce project. Map everything: the full architecture for the whole research, into every API, every backend, every connected script, every connected API.
+>   I need a full reproducibility setup where I can run this Claude Code agent in this project for Big Bounce, any notes on Hubify as well. I want to run this agent in Codex, Cursor, Pi, or any other agent. I want to make sure that everything we've been doing in Claude Code is covered:
+>   - all of the internal CPU versus GPU mapping
+>   - run pod versus internal
+>   - how you decide whether to run different experiments or whether you need to run math, science, or data on the local CPU or local GPU
+>   Anyway, I want to run this research agent as its own multi-agent setup. Right now, we have a multi-model, multi-agent setup, but I think it's actually fully imperative to be running the orchestrator and reproducing the same research in different environments with different orchestrators. You basically run two parallel research labs in tandem, have them communicate with each other, and try to reproduce the same results together. That's super crucial, I think, for this whole project as well.
+>   Really lead with that so that I can run this whole Big Bounce research or any future science project with this exact setup and run them with multiple frontier-leading orchestrators (as well as some open-source leading orchestrators that are trying to reproduce the science). The orchestrators are basically fully cloned research labs running in parallel and also strategically sharing versus not sharing to most effectively not cross-contaminate results.
+>   We need to think of the most intelligent way to run them in parallel to get truly independent results and then corroborate in the right way so that they're helping each other but not overly influencing each other. Put all this in a full directory or something inside a project context so that I can actually run this on another machine. I will need to update the Big Bounce website as well so that it can support multiple labs running in parallel in this way. I don't know, we just need to think of the most intelligent way of doing this. I don't want to overcomplicate things that are already not fully working. I think MVP is just that I want to run this exact lab on multiple machines and keep them in sync, just as one lab, but utilizing two machines in the best way. Commit and push everything so that I can just run a simple prompt on my other machines to pull it down, try to get it running, and get it synced up. I just need to have the right way of tracking all that."
+>
+> -----
+>
+> ⏺ 3 background agents launched (↓ to manage)
+> Agentics audit + compute routing docs
+> Two-machine handoff MVP
+> Multi-lab independence design
+>
+> The full build is running — four Opus agents in parallel, all committing to a new ops/ directory so you can pull it down anywhere. What you'll have when they land:
+>
+> ops/ — the program's own management directory:
+> - ARCHITECTURE.md / PLAN.md / RUNBOOK.md — full system architecture (every layer with the guard shas), the program plan (directives J→M, verdict-floor analysis, phase plan), and operational playbooks for every recovery we've battle-tested
+>
+> ops/handoff/ — the reproducibility + portability layer (your ask, MVP-first):
+> - BOOTSTRAP_PROMPT.md — the simple prompt you paste on your other machine: pulls the repo, runs bootstrap.sh (verifies TinyTeX, claude CLI, gstack browser, launchd, .env.local key-names via /machine-sync + You.md vault), claims the lab lease, starts the loop
+> - tools/lab_lease.sh — the single-driver lock across machines, so two machines act as one lab without browser/ledger collisions; heartbeat gains a machineId
+> - HANDOFF_SYNC.md — the two-machine operating model: git = sync bus, Convex = shared live state, lease = who drives; recommended split (machine A: browser EXT + loop; machine B: INT API waves + compute)
+> - AGENTICS_MAP.md — the full audit: every API/backend/script/store (OpenAI, XAI, Gemini, Convex, RunPod, HF, B2, Vercel, gstack browser, launchd), every agent role, Hubify notes
+> - COMPUTE_ROUTING.md — the CPU/GPU/local/RunPod decision doctrine with real calibration points ($12.44 A100 full sweep; the DP3-15 "looked like GPU, was CPU-local" lesson; check compute-vs-data-vs-provenance before provisioning)
+> - ORCHESTRATOR_PORTABILITY.md — running the orchestrator in Codex/Cursor/Pi (host-equivalence table; the host agent IS the Claude-leg per directive I1)
+> - MULTI_LAB_DESIGN.md — your parallel-labs vision as a design-only blueprint: sealed-hash blind phases (cryptographic pre-registration before reveal), contamination classes and controls, corroboration protocol, site lab-dimension sketch, and a staged migration path (two machines → second orchestrator → true blind labs on one bounded target: the P4 e2e re-run)
+>
+> Everything commits and pushes as it lands. The review loop keeps running underneath (M40 generating). I'll report when all four land with the final commit list and the exact prompt to run on your other machine.
+>
+> ✻ Baked for 3m 1s · 1 shell still running
+>
+> ✻ Running scheduled task (Jul 13 1:08pm)
+>
+>   Ran 1 shell command
+>
+> The harvest gate fired in production for the first time — P1U's M40 raw failed the paper-signature check, no verdict recorded. Verifying whether it's a genuine misfire or a false positive of the signature tokens:
+>
+>   Ran 6 shell commands
+>
+> ⏺ Agent "Multi-lab independence design" came to rest · 2m 39s
+>
+> ⏺ Agent "Agentics audit + compute routing docs" came to rest · 3m 50s
+>
+> Harvest skips terminal-FAILED legs, so I'll test the fixed gate directly against the saved raw and correct the manifest:
+>
+>   Ran 7 shell commands
+>
+> ⏺ Agent "Build ops/ architecture + plan center" came to rest · 5m 54s
+>
+> ⏺ Agent "Two-machine handoff MVP" came to rest · 5m 7s
+>
+> ⏺ Agent(M40 adjudication) Opus 4.8 (1M context)
+> Backgrounded agent (↓ to manage · ctrl+o to expand)
+>
+> Your full handoff/reproducibility build is complete and pushed. Everything you asked for now lives in ops/ — pull the repo on any machine and it's all there:
+>
+> To get your other machine running, paste the contents of ops/handoff/BOOTSTRAP_PROMPT.md into a fresh Claude Code (or Codex) session there. It pulls the repo, runs ops/handoff/bootstrap.sh (18 checks PASSed on this machine; it verifies CLIs, browser stack, launchd, Convex, and .env.local key-names with restore via /machine-sync + You.md vault), claims the lab lease, and starts the loop per the runbook.
+>
+> What landed (4 commits):
+> - de4750f3 — ops center: ARCHITECTURE.md (every layer + guard shas + ASCII data-flow), PLAN.md (directives J→M, verdict-floor analysis, 4-phase plan, decision log), RUNBOOK.md (per-tick commands + every recovery playbook), README.md; CLAUDE.md pointer added
+> - e730850b — AGENTICS_MAP.md: 20 external services mapped (every API/backend/store, key names only), all agent roles, Hubify notes; COMPUTE_ROUTING.md: the CPU/GPU/RunPod doctrine — diagnose compute-vs-data-vs-provenance before provisioning, GPU only for streamable ≥5M-object jobs ($12.44 calibration), STOP-never-terminate, ≤$60 auto-proceed; MULTI_LAB_DESIGN.md: your parallel-labs vision as a staged blueprint — sealed SHA-256 commit-reveal pre-registration, contamination classes/controls, per-lab Convex labId (additive, zero migration), site lab-dimension sketch, phase-2 blind-reproduction target = the P4 e2e re-run
+> - 27596c56 — two-machine one-lab MVP: tools/lab_lease.sh (claim/renew/release/status; TTL steal for dark machines) so both machines act as one lab without collisions, HANDOFF_SYNC.md (git = sync bus, Convex = shared state, lease = who drives; suggested split: machine A browser+loop, machine B INT/compute), ORCHESTRATOR_PORTABILITY.md (Codex/Cursor/Pi equivalence table — the host agent is the Claude-leg per I1)
+>
+> One real gap bootstrap found on this machine: it flags pdflatex missing at the system path (compiles here go through TinyTeX via directive_g.sh — the check will be taught TinyTeX's path).
+>
+> Meanwhile the loop never stopped: the new signature gate had its first production firing, false-positived on a genuine P1U review, and got a count-based dominance fix with a 3-case regression battery (genuine→OK, misfile→WRONGPAPER, genuine→OK) — M40's adjudication is running now.
+>
+> Best Next Steps
+> - Paste ops/handoff/BOOTSTRAP_PROMPT.md on your other machine and tell me what breaks — that's the MVP acceptance test
+> - After two-machine sync proves out: phase-1 (Codex as second orchestrator, same lab) per MULTI_LAB_DESIGN.md
+> - Your gated queue is unchanged: arXiv wave-1 clicks, P3 venue word, human referees
+>
+> Say continue and I will take the next best scoped step.
+>
+> ✻ Cogitated for 5m 25s · 1 shell still running
+>
+> ⏺ Agent "M40 adjudication" came to rest · 6m 23s
+>
+> M40 adjudicated (df8d89a3) — P1U reaches streak 16 (the deepest of the campaign), 0 genuinely-new, with the cap honestly dipping 68→62 on Grok's MINOR→MAJOR band swing (pattern-066, same rules both directions).
+>
+> Board: streaks P1U 16 · P2 15 · P3 5 · P4 1 · P5 4 · caps P1A 62 · P2 74 · P3 56 · P4 80 · P5 74.
+>
+> Everything is landed and current: the ops/handoff build committed, the gate fix regression-proven, all adjudication threads reconciled, all surfaces fresh. The loop continues its rotation next tick — and the two-machine MVP is ready for your acceptance test whenever you paste the bootstrap prompt on the other machine.
+>
+> ✻ Cogitated for 15m 14s · 1 shell still running
+>
+> ✻ Running scheduled task (Jul 13 1:38pm)
+>
+>   Ran 1 shell command
+>
+> Tick running. Heartbeat now carries the machineId field (per the handoff MVP), gate check + M41 placement (P5 + P2, the stalest full batteries) going through the isolated runner. No harvests were pending — all prior rounds adjudicated and recorded.
+>
+> GAPS LEDGER
+> - P1U streak 16 — deepest of the campaign; Grok band-swing cap 62
+> - P2 streak 15 — M41 placing
+> - P3 streak 5 — venue word is the move
+> - P4 streak 1 — clean post-DP4-22 rebuild
+> - P5 streak 4 — M41 placing
+> - Houston-gated (the critical path): arXiv wave-1 clicks, P3 venue word, human referees, optional archive re-pull, Zenodo DOI, Cai email — plus the two-machine bootstrap acceptance test whenever you're ready
