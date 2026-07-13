@@ -1,45 +1,83 @@
-# P3-ApJS M22-EXT truth-audit (2026-07-13) — STRICT, ledger-first
+# P3 (ApJS variant) — M22-EXT truth-audit
 
-**Paper:** P3 (multi-survey anomaly catalog), ApJS variant v3.1.158-apjs — byte-UNCHANGED (no edit this wave).
-**Raws read verbatim before any verdict:** `M22/P3APJS_grok_M22.md` (MAJOR REVISIONS), `M22/P3APJS_chatgpt_M22.md` (REJECT).
-**Pre-triage:** `tools/ledger_match.py` — Grok 6/9 MATCHED, ChatGPT 11/20 MATCHED. The high UNMATCHED rate is verbose ApJS section-anchor restatement (same as M17: "ChatGPT 7/18 … high UNMATCHED rate is verbose ApJS §-anchor restatement"). All Opus-adjudicated source-cited re-flags below.
+**Date:** 2026-07-13
+**Paper:** P3 ApJS variant `pipelines/p3_anomaly_engine/paper3_apjs.tex`
+**Reviewed version:** v3.1.158-apjs (byte-unchanged since M6) → **CLOSED into v3.1.159-apjs this wave** (1 genuinely-new DAS internal contradiction found + fixed).
+**Raws (read verbatim before any verdict):**
+- `EXT_real/H17_2026-07-10/M22/P3APJS_grok_M22.md` — **VERDICT: MAJOR REVISIONS** (4 MAJOR + 2 MINOR)
+- `EXT_real/H17_2026-07-10/M22/P3APJS_chatgpt_M22.md` — **VERDICT: REJECT** (16 MAJOR + 1 MINOR)
 
-## Grok EXT = MAJOR REVISIONS (4 MAJOR + 2 MINOR)
-Closing sentence l.19: the central claim "is supported for the broad/continuum-dominated class on the four retained validated surveys (DESI, SDSS, Planck, NEOWISE), provided readers accept the heavy process-volume framing…". All source-cited re-flags:
-1. Abstract/§3 268,519 "validated catalog-grade" vs 98.7% sky-fiber / 2,468 like-for-like → **DP3-07** (process-volume framing disclosed abstract L984-986, §I reader's guide L1010).
-2. §3.5 eROSITA irreproducible score axis / §2.2 / §6.4(ii) → **DP3-08** (eROSITA + Gaia excised from every count, `tab:provenance`; disclosed).
-3. §2.4/§3.4/§3.7 Gaia synthetic + LAMOST failure-mode tier / only-four-surveys validated → **DP3-07 / DP3-08** (post-hoc excision/reclassification disclosed as prominent limitation).
-4. §2.2/§6.4(i) DESI single injection-recovery gate + correlated k-fold proxies fail val_loss≤0.30 + Planck top-200 training-patch leakage → **DP3-01 / DP3-06** (CLOSED-BY-EDIT v3.1.150: "one production gate + two correlated fold probes"; Planck denominators disclosed).
-5. [MINOR] §3.3 SDSS 77,905 continuity-slice vs top-1% 19,253 vs S>5 12 → **DP3-09** (footnote ♥ L1182 tabulates all three threshold families).
-6. [MINOR] §5 f_NL + NANOGrav secondary demos disproportionate space → **DP3-10** (§V "Cosmological Applications (Secondary Demonstrations)", null; CRITICAL RESEARCH DIRECTIVE retains the honest null; venue judgment Houston-gated DP3-16).
+## Verdict matrix (EXT, from raw VERDICT lines)
+| Reviewer | Verdict | MAJOR | MINOR |
+|----------|---------|-------|-------|
+| Grok EXT | MAJOR REVISIONS | 4 | 2 |
+| ChatGPT EXT | REJECT | 16 | 1 |
+| Gemini EXT | (carry — browser hard-throttled, no M22 leg) | — | — |
 
-**0 genuinely-new.** #1 "REVISIONS ISSUES:" = parser-header artifact.
+## ledger_match.py (DRAFT, conservative)
+| Raw | Findings parsed | MATCHED | UNMATCHED | Rate |
+|-----|-----------------|---------|-----------|------|
+| Grok | 9 | 6 | 3 | 67% |
+| ChatGPT | 20 | 11 | 9 | 55% |
 
-## ChatGPT EXT = REJECT (16 MAJOR + 1 MINOR)
-Same maximally-harsh ApJS-floor REJECT as M8/M10/M12/M15/M17/M20 (DP3-17 backfire). Every finding a verbose ApJS §-anchor restatement of already-closed/disclosed content. Mapping (all Opus-adjudicated, source-cited):
-- #1 validation≠purity/FDR, NEOWISE masking-gate → **DP3-07 / DP3-08** (candidate not confirmed-detection, abstract L984; NEOWISE geometry-QA gate disclosed).
-- #2 268,519 no coherent selection function / SDSS 77,905 continuity slice → **DP3-06 / DP3-09** (threshold families disclosed).
-- #3 DESI 98.7% sky/filler not sources → **DP3-07 / DP3-11** (ZWARN=0 secure fraction reported honestly).
-- #4 DESI target bookkeeping 37k vs 2,468 inconsistent, 98.8% Redrock GALAXY → **DP3-07 / DP3-11** (SPECTYPE composition not purity claim).
-- #5 like-for-like Liang comparison denominator mismatch → **DP3-07** (2,468 science-target benchmark disclosed).
-- #6 not object-level reproducible, 86.6% hashed ids, ~1.3% re-pullable → **DP3-15** (paper's OWN numbers = disclosed structural ceiling; OPEN-COMPUTE pod-gated, does NOT reset streak).
-- #7 5-fold not out-of-fold, val_loss 1.91 vs 0.30 → **DP3-01** (CLOSED-BY-EDIT: one production gate + correlated fold probes).
-- #8 injection-recovery not end-to-end / no negative control → **DP3-01 / DP3-05** (single production-ensemble sensitivity gate, disclosed; narrow-line ≥15σ floor stated).
-- #9/#10 Planck top-200 training-patch leakage, 10° patches ≠ point detections → **DP3-06** (denominators + patch-bookkeeping disclosed).
-- #11 5-arcsec FoF dedup inadequate → **DP3-11** (radius-sweep stability disclosed; cross-survey astrometry a disclosed cosmetic-robustness axis).
-- #12 NEOWISE masking-gate not sensitivity → **DP3-01 / DP3-08** (geometry-QA gate disclosed by design).
-- #13 17.8% novelty fraction = catalog-nonmatch only → **DP3-07 / DP3-09** (candidate framing; nonmatch not novelty claim).
-- #14 377,482 includes LAMOST failure-mode → **DP3-08 / DP3-20** (LAMOST relegated to exploratory tier, excised from validated count; disclosed).
-- #15 data-release contradictions (LAMOST/Gaia/Planck provenance) → **DP3-08** (exact excision arithmetic §III.F disclosed).
-- #16 f_NL forecast not supported / bias sample mismatch → **DP3-10** (secondary null demo, App C caveats).
-- #17 NANOGrav not catalog application → **DP3-10** (secondary demonstration, disclosed scope; venue DP3-16).
-- #18 SDSS Spearman 0.036 overinterpreted → **DP3-12** (small effect; §III.C reported honestly, not a purity claim).
-- #19 ApJS data-model schema/units/provenance not supplied → **DP3-08 / DP3-15 / DP3-20** (RELEASE_MANIFEST + pinned immutable tag p3-v3.1.157 CLOSED-BY-RELEASE; DP3-20 immutable-release bar stays DISSOLVED — neither leg re-raises "described prospectively/disqualifying").
-- [MINOR] #20 37.3M scale figure conflates conventions → **DP3-04** (footnote ⊗ reconciles 36.76/36.93/37.29M).
+High UNMATCHED = verbose ApJS §-anchor restatement + parser-split header/tail fragments. Every UNMATCHED item Opus-adjudicated below vs live `paper3_apjs.tex`.
 
-**0 genuinely-new real+editable.** DP3-20 immutable-release bar stays DISSOLVED (neither leg re-raises the prospective-release/disqualifying hinge); DP3-15 end-to-end regeneration = OPEN-COMPUTE (pod-gated, not an edit) — ChatGPT #6 again cites the paper's own 86.6%/~1.3% numbers = the disclosed DP3-15 structural ceiling, does NOT reset streak.
+## Per-finding adjudication
 
-## Net + integrity
-- **0 genuinely-new across both legs.** clean-wave streak 8→9. No bump; v3.1.158-apjs stands. `directive_g.sh` NOT run (no edit).
-- Cap HOLDS 56 (Grok MAJ 6 + ChatGPT REJECT 0 + Gemini REJECT 0 = 50+6; `post_verdict.sh` recomputed).
-- **Integrity:** Grok MAJOR + ChatGPT REJECT recorded as-is; no ACCEPT faked; no finding dismissed without a source-cited verdict; no math fabricated.
+### Grok (all source-cited re-flags — 0 genuinely-new)
+- **G1** 268,519 "validated catalog-grade" = process-volume, benchmark 2,468, 98.7% sky/filler → **DP3-07** (abstract L1027 first sentence discloses process-volume + 2,468 + not-confirmed-detections).
+- **G2** eROSITA axis irreproducible (0.259, 16 rescalings + 3 IF retrains), excised membership-only → **DP3-08** (§erosita + `tab:provenance` excised from every count).
+- **G3** two of six surveys excluded (synthetic Gaia) / relegated (LAMOST exploratory); "validated" rests on 4 surveys → **DP3-07/-08/-09/-14** (mixed-validation disclosed abstract L1027 "the 'validated' label is mixed-validation, not uniform").
+- **G4** DESI robustness = single production gate + 2 correlated fold probes; narrow ≥15σ floor; Planck train-patch over-rep → **DP3-01/-06/-12** (§II.F single-gate closure).
+- **G5 [MINOR]** SDSS 77,905 continuity-slice vs 19,253 top-1% / 12 @S>5 → **DP3-09/-14** (footnote ♡ tabulates all three thresholds, survey-specific).
+- **G6 [MINOR]** §5 f_NL/NANOGrav secondary/null, disproportionate space → **DP3-10** (titled "Secondary Demonstrations"; null retained per CRITICAL RESEARCH DIRECTIVE; venue DP3-16).
+
+### ChatGPT
+- **#1** injection-recovery ≠ purity/FDR; NEOWISE by-construction → DP3-07/-11/-12.
+- **#2** 268,519 no coherent selection function (mixed threshold families; SDSS 77,905 continuity) → DP3-06/-09/-14.
+- **#3** most DESI entries not shown astronomical (98.7% no science bit; 86% DESI_TARGET=0) → DP3-07/-11.
+- **#4** DESI target bookkeeping inconsistent (37k vs 2,468; 98.8% GALAXY ≠ purity) → DP3-07/-11 (§III.C SPECTYPE composition + ZWARN=0 0.10% both disclosed).
+- **#5** "like-for-like" Liang not like-for-like (20.3M vs 250k EDR; 0.012% vs 1.07%) → DP3-07 (denominators disclosed §III.C/§VI.E).
+- **#6** DESI not object-level reproducible (86.6% hashes, ~1.3% re-pullable, pod-lost) → **DP3-15** OPEN-COMPUTE pod-gated (paper's OWN §II.F numbers; does NOT reset).
+- **#7** CV mischaracterized out-of-sample (47k pool; folds fail val_loss gate mean 1.91) → DP3-01.
+- **#8** injection-recovery not end-to-end (cleanest 5% substrate; no full-stream failure modes / negative control) → DP3-01/-12 (curation caveat (b)).
+- **#9** Planck under-validated (train/val patches in bank; post-standardization bumps) → DP3-06.
+- **#10** 10° CMB patches not point-detections; 5″ dedup invalid → DP3-06/-11 (disclosed as sky regions).
+- **#11** 5″ FoF not catalog-grade unique count (no per-survey covariance / LR) → DP3-09/-11 (radius-sweep stability disclosed; no single-FDR claim).
+- **#12** NEOWISE not validated tier (mask-by-construction; full-sample scaler) → DP3-01/-13 (masking-geometry QA gate disclosed abstract L1027).
+- **#13** 17.8% novelty unsupported (catalog-nonmatch only) → DP3-07/-09/-11 (SIMBAD-unmatched framing; follow-up spectroscopy disclosed §DAS).
+- **#14** 377,482 includes ~113k LAMOST failed detector → DP3-07/-14 (LAMOST failed-exploratory tier disclosed abstract L1027 + §lamost). NOTE: the DAS-sentence portion of the LAMOST claim is the DP3-21 fix (see #15).
+- **#15 → GENUINELY-NEW → DP3-21 → FIXED v3.1.159-apjs.** See below.
+- **#16** provenance/audit gap too serious for archival (Gaia synthetic, eROSITA/DESI/Planck lost, LAMOST contradictory) → DP3-08/-15 (paper's OWN disclosures). The Gaia+LAMOST DAS-sentence internal contradiction it names IS the DP3-21 fix.
+- **f_NL #17** forecast not supported (angular ≠ absolute bias; incompatible F₀/α tables) → DP3-10/-19 (secondary null; App C disclosed).
+- **NANOGrav** "not an application / KDE not timing-likelihood" → DP3-10 (env-SMBHB caveat scopes "decisive").
+- **SDSS ρ=0.036** overinterpreted → DP3-12 (effect-size disclosed).
+- **catalog-documentation-not-ApJS-schema** → DP3-20 (RELEASE_MANIFEST schema-flag table, CLOSED-BY-RELEASE).
+- **[MINOR] 37.3M** conflation (36.76/36.93/37.29M) → DP3-03/-04 (footnote-⊗ reconciliation v3.1.152).
+
+## GENUINELY-NEW finding (1) — DP3-21
+
+**ChatGPT #15 (verbatim):** "The Data Availability section says LAMOST is excluded from the released per-object tables and 'every headline count,' although the 377,482 headline explicitly includes it; it also mentions a Gaia block carrying scores despite repeated statements that Gaia was removed from the catalog."
+
+**Verified against live `paper3_apjs.tex` (NOT assumed):**
+- DAS (L1700) literally said: *"the Gaia DR3 exploratory block carries per-object feature-space scores"* — a RELEASED scored block.
+- §III.G `\label{sec:gaia}` says: *"The Gaia DR3 tier has been removed from this catalog and from every count … its 500 synthetic entries are removed from the released catalog product."* → **DIRECT CONTRADICTION.**
+- DAS (L1700) also said LAMOST *"excluded from both the released per-object tables and every headline count."*
+- §lamost says the *"top-113,342 native slice … is the released LAMOST anomaly set"*; survey-summary (L1222) sum 195,829+77,905+**113,342**+200+419 = 387,695 → dedup **377,482** → LAMOST IS in the 377,482 inclusive headline. → **CONTRADICTION.**
+
+Internal DAS-vs-body inconsistency, NOT the disclosed-provenance class. M20 mapped ChatGPT #15 to provenance DP3-08/-15 only and MISSED the DAS sentence's own contradiction. Reader-visible + editable → **genuinely-new**.
+
+**Fix (minimal, no number changed) — BOTH variants:**
+- LAMOST: "the released LAMOST DR10 block carries per-object canonical-S scores but is a failed-exploratory tier (injection-recovery FAIL, §lamost) — it is included in the inclusive 377,482 total but *excluded* from the 268,519 validated catalog-grade headline."
+- Gaia: "the synthetic Gaia DR3 tier (500 objects) is *excised* — removed from the released catalog product and from every count (§sec:gaia), so no Gaia block is released."
+
+Every count identical (268,519 / 377,482 / 195,829 / 77,905 / 113,342 / 200 / 419 / 298 / 500).
+
+**Directive-G hygiene:** recompile TinyTeX latexmk, 0 undef-refs, 41pp; bump v3.1.158-apjs→**v3.1.159-apjs**, `\date` **July 13, 2026**; re-mirror byte-identical PDF **md5 `b7b8f8a56efa5b7096c13449e6110cf2`** to `public/papers/paper3_apjs_v3.1.159.pdf` + `site/public/papers/paper3_apjs_v3.1.159.pdf` (3-way md5 match). PDF-verified: page-1 "July 13, 2026"; "no Gaia block is released" + "Gaia DR3 tier (500 objects) is excised" PRESENT; old "feature-space scores" line GONE (grep count 0). Draft variant fixed lockstep (v3.1.159).
+
+## Streak + cap
+- **1 genuinely-new → clean-wave streak 8 → 0** (directive-K reset; fix actioned this wave; clock restarts on next clean re-test of v3.1.159-apjs).
+- **Cap HOLDS 56:** EXT verdict words unchanged vs M20 — Grok MAJOR (6) + ChatGPT REJECT (0) + Gemini REJECT/carry (0) = 50 + 6 = 56. The DP3-21 fix is a self-consistency correction, not a claim change.
+
+## Integrity attestation
+Both raws read verbatim before any disposition; no ACCEPT faked; the 1 genuinely-new finding VERIFIED against live `paper3_apjs.tex` before editing; every re-flag source-cited to a D-id + §-anchor + verified against live tex; DP3-15 OPEN-COMPUTE pod-gated (paper's own numbers → no reset); DP3-20 immutable-release DISSOLVED; no un-sourced dismissal; no math/number fabricated; the only edit is a wording correction removing a genuine internal contradiction — zero count changed.
