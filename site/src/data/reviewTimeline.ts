@@ -57,6 +57,33 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "m18-ext-p2-p1u-confirm-2026-07-13",
+    dateISO: "2026-07-13",
+    kind: "external-browser",
+    title:
+      "M18-EXT — P2 + P1U confirm wave, 0 genuinely-new on either paper. P2 (v1.7.116 byte-unchanged): Grok MINOR (6 MINOR, closing AFFIRMS −35/16 'is supported') + ChatGPT REJECT (11 MAJOR/2 MINOR, Q3 concedes −35/16 'appears algebraically plausible'); source-cited standing DP2 re-flags + 2 PROCESS-NITs; streak 6→7; cap 74 HOLDS. P1U (v1U.0.20 byte-unchanged): Grok MINOR (5 MINOR, Q3 AFFIRMS the central claim) + ChatGPT REJECT (13 MAJOR/2 MINOR, harsh floor); source-cited standing DP1U re-flags; streak 7→8; cap 68 HOLDS. No bumps; directive_g.sh not run.",
+    papers: ["P2", "P1U"],
+    summary:
+      "M18-EXT: two-paper byte-unchanged confirm wave — 0 genuinely-new reader-visible editable findings on either paper. P2 (v1.7.116, byte-unchanged): Grok MINOR REVISIONS (6 MINOR, closing AFFIRMS the corrected −35/16 is supported) + ChatGPT REJECT (11 MAJOR/2 MINOR, Q3 concedes −35/16 'appears algebraically plausible'). Every finding source-cited to a standing DP2 D-id (DP2-01/-02/-03/-04/-07/-13/-14/-15/-16/-17/-18/-19/-20/-21/-22/-25/-26/-34/-35); the nominally-novel ChatGPT exact-vertex-sum ⇒ null-space-non-existent claim is a DP2-15/-16 re-flag (its premise is exactly the orbit-dependent coefficient-transplant the paper documents FAILS at L1028, and it misprints the row −33 vs −66/−69); ChatGPT mutable-repo/DOI item + presentation item = PROCESS-NITs (DP2-11/-30/-27, no reset); harsh-referee floor holds (DP2-24). clean-wave streak 6→7; cap 74 HOLDS. P1U (v1U.0.20, byte-unchanged): Grok MINOR REVISIONS (5 MINOR; Q3 AFFIRMS the central claim 'supported by the explicit derivations, Fierz lemma, dimensional bookkeeping, and large suppression margins') + ChatGPT REJECT (13 MAJOR/2 MINOR, directive-H harsh-referee floor). All 20 findings source-cited to standing DP1U D-ids (DP1U-02/-03/-04/-05/-06/-07/-08/-09/-10/-11/-12/-13/-14/-15/-17/-19/-20/-22/-24); all 7 UNMATCHED ChatGPT items independently source-verified against live tex; the Grok MINOR is the M16 slip-back recurring (pattern-066: M11 MIN→M13 MAJ→M16 MIN→M18 MIN on identical byte-unchanged content). clean-wave streak 7→8; cap 68 HOLDS. No bumps; directive_g.sh not run.",
+    keyTakeaways: [
+      "P2: 0 genuinely-new across Grok(6 MINOR) + ChatGPT(11 MAJOR/2 MINOR) on byte-unchanged v1.7.116; every finding source-cited to a standing DP2 D-id. BOTH reviewers credit −35/16 (Grok 'is supported'; ChatGPT Q3 'appears algebraically plausible'). ChatGPT's nominally-novel exact-vertex-sum ⇒ null-space claim = DP2-15/-16 re-flag (premise is the documented-to-FAIL coefficient transplant, L1028; row misprinted). streak 6→7; cap 74 HOLDS.",
+      "P1U: 0 genuinely-new across Grok(5 MINOR) + ChatGPT(13 MAJOR/2 MINOR) on byte-unchanged v1U.0.20; every finding source-cited to a standing DP1U D-id, all 7 UNMATCHED ChatGPT items verified against live tex. Grok MINOR is the M16 slip-back recurring — MAJOR↔MINOR oscillation (M11 MIN→M13 MAJ→M16 MIN→M18 MIN) on byte-identical content is canonical pattern-066; Grok Q3 affirms the central claim. streak 7→8; cap 68 HOLDS.",
+      "Integrity: all four EXT raws read verbatim before disposition (Grok 'VERDICT: MINOR REVISIONS' both papers; ChatGPT 'VERDICT: REJECT' both papers); every finding source-cited to a D-id + tex line; no ACCEPT faked; no dismissal without a source-cited verdict; no math fabricated; no version bumped. Caps recomputed from the EXT formula via post_verdict.sh true _creationTime-latest (P2 74; P1U 68 = 50+grok-MIN12+chatgpt-REJ0+gemini-MAJ6). Streaks: P1U 8 · P2 7 · P3 7 · P4 7 · P5 7. Caps: P1A 68 · P2 74 · P3 56 · P4 74 · P5 74.",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 0,
+      note: "0 genuinely-new reader-visible editable findings across P2 M18-EXT (Grok MINOR + ChatGPT REJECT — both credit −35/16; ChatGPT vertex-sum claim = DP2-15/-16 re-flag) and P1U M18-EXT (Grok MINOR + ChatGPT REJECT — Grok M16 slip-back recurs, pattern-066). P2 streak 6→7 cap 74 HOLDS; P1U streak 7→8 cap 68 HOLDS.",
+    },
+    links: [
+      { label: "P2 Grok M18 EXT raw", href: `${PR}/EXT_real/H17_2026-07-10/M18/P2_grok_M18.md` },
+      { label: "P2 ChatGPT M18 EXT raw", href: `${PR}/EXT_real/H17_2026-07-10/M18/P2_chatgpt_M18.md` },
+      { label: "P2 M18 EXT truth audit", href: `${PR}/EXT_real/H17_2026-07-10/M18/P2_truth_audit_M18.md` },
+      { label: "P1U Grok M18 EXT raw", href: `${PR}/EXT_real/H17_2026-07-10/M18/P1U_grok_M18.md` },
+      { label: "P1U ChatGPT M18 EXT raw", href: `${PR}/EXT_real/H17_2026-07-10/M18/P1U_chatgpt_M18.md` },
+      { label: "P1U M18 EXT truth audit", href: `${PR}/EXT_real/H17_2026-07-10/M18/P1U_truth_audit_M18.md` },
+    ],
+  },
+  {
     id: "m18-int-p4-grok-accept-second-int-api-2026-07-13",
     dateISO: "2026-07-13",
     kind: "internal-api",
@@ -6200,6 +6227,20 @@ export const externalVerdictRounds: ExternalRoundVerdicts[] = [
       P5: ["NO_VERDICT", "MINOR", "NO_VERDICT"],
     },
     note: "M3/M2c — confirm re-tests. EXT verdict matrix [ChatGPT, Grok, Gemini] FROM RAW (verbatim VERDICT line READ before recording). P5 M3 EXT: Grok MINOR (5 source-cited standing DP5 re-flags — post-hoc primary DP5-13/-24, Paper-IV DP5-21, RSD/0.9pp DP5-11/-12, T-Web DP5-14, Rs=10 grid + 384³ convergence test BOTH already in tex), ChatGPT M3 FAILED-dead → NO_VERDICT/GAP (M3b retry in flight, never synthesized). P5 ALSO ran the internal native-PDF API wave (run.log 2026-07-12T18:32:51Z): OpenAI REJECT / **Grok ACCEPT** / Gemini MINOR / Claude MINOR — Grok grok-4.3 ACCEPT is the CAMPAIGN'S FIRST INT-API ACCEPT (verified from the raw referee body API_P5_grok.md, native-PDF /v1/files, PARSED VERDICT ACCEPT + explicit central-claim endorsement, AND the milestone log — not a laundered label; the 4 MINORs are non-blocking RE-FLAG-DISCLOSED strengthen-requests). P3-ApJS M2c EXT: the recovered ChatGPT REJECT (the M2 GAP) on release-live v3.1.158-apjs — its immutable-release hinge has DISSOLVED like Grok's: it no longer re-raises the 'described prospectively … disqualifying for an ApJS catalog submission' bar (closed by pinned p3-v3.1.157); its only Data-Availability MAJOR now cites the manuscript's OWN admission that the native score parquets / Planck checkpoint 'needed for full re-inference are unavailable' = DP3-15 OPEN-COMPUTE, plus the standing catalog-vs-PRD validated-purity venue judgment (DP3-16, Houston-gated). Truth-audit (ledger_match + one Opus per paper vs each .tex + DISPOSITIONS): 0 genuinely-new reader-visible editable findings on either paper. Clean-wave streaks REBUILD: P5 0→1 · P3 0→1. Caps HOLD: P5 80 · P3 56. No ACCEPT faked (the INT-API ACCEPT is real + verified), no finding dismissed without a source-cited verdict, no math fabricated, ChatGPT P5 M3 FAILED leg recorded as a GAP not a zero. Raws + per-paper truth-audits: EXT_real/H17_2026-07-10/M3/ + M2c/.",
+  },
+  {
+    roundId: "M18",
+    dateISO: "2026-07-13",
+    windowPT: "Jul 13 · byte-unchanged EXT confirm re-reads — P2 (v1.7.116) · P1U (v1U.0.20, P1A column) · headed browser, raw verbatim VERDICT line READ before every verdict · Gemini + P1B/P3/P4/P5 not swept (carried)",
+    verdicts: {
+      P1A: ["REJECT", "MINOR", "NO_VERDICT"],
+      P1B: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P2: ["REJECT", "MINOR", "NO_VERDICT"],
+      P3: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P4: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P5: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+    },
+    note: "M18-EXT — byte-unchanged confirm re-reads of P2 (v1.7.116) + P1U (v1U.0.20, rendered in the P1A column). Verdict matrix [ChatGPT, Grok, Gemini] FROM RAW (verbatim VERDICT line READ before recording): P2 ChatGPT REJECT (11 MAJOR/2 MINOR) + Grok MINOR (6 MINOR); P1U ChatGPT REJECT (13 MAJOR/2 MINOR) + Grok MINOR (5 MINOR). Truth-audit (ledger_match.py + one Opus per paper vs each .tex + DISPOSITIONS): 0 genuinely-new reader-visible editable findings on either paper. P2 — every finding source-cited to a standing DP2 D-id (DP2-01/-02/-03/-04/-07/-13/-14/-15/-16/-17/-18/-19/-20/-21/-22/-25/-26/-34/-35) + 2 PROCESS-NITs (mutable-repo/DOI → DP2-11/-30/-27; presentation → DP2-30, no reset); the nominally-novel ChatGPT exact-vertex-sum ⇒ null-space claim is a DP2-15/-16 re-flag (its premise is exactly the orbit-dependent coefficient-transplant the paper documents FAILS at L1028, and it misprints the row); BOTH reviewers credit −35/16 (Grok 'is supported'; ChatGPT Q3 'appears algebraically plausible'). P1U — all 20 findings source-cited to standing DP1U D-ids (DP1U-02/-03/-04/-05/-06/-07/-08/-09/-10/-11/-12/-13/-14/-15/-17/-19/-20/-22/-24), all 7 UNMATCHED ChatGPT items independently source-verified against live tex; the Grok MINOR is the M16 slip-back recurring (pattern-066: M11 MIN→M13 MAJ→M16 MIN→M18 MIN on identical byte-unchanged content), Grok Q3 affirms the central claim. Clean-wave streaks: P2 6→7 · P1U 7→8. Caps HOLD: P2 74 · P1A 68. No bumps; directive_g.sh not run; no ACCEPT faked, no finding dismissed without a source-cited verdict, no math fabricated; caps recomputed via post_verdict.sh true _creationTime-latest. Raws + per-paper truth-audits: EXT_real/H17_2026-07-10/M18/.",
   },
 ];
 
