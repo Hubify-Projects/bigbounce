@@ -90,6 +90,36 @@ export const reviewRounds: ReviewRound[] = [
     ],
   },
   {
+    id: "m35-m36-ext-adjudication-2026-07-13",
+    dateISO: "2026-07-13",
+    kind: "external-browser",
+    title:
+      "M35/M36-EXT — P1U + P3-ApJS confirm wave on byte-unchanged content. 0 genuinely-new on either paper → P1U streak 13→14 (Grok MINOR, steps DOWN from its M30 MAJOR band, cap 62→68 as the Grok leg restores MINOR 12), P3 streak 3→4 (ChatGPT REJECT, directive-H ApJS floor, cap 56 HOLDS). P3-ApJS M36 is the FIRST attachment-verified ChatGPT read after the M32/M34 wrong-paper misfiles — provenance confirmed, DP3-21 DAS fix HELD. P1U ChatGPT M35 = FAILED-dead GAP, re-ride queued in M37.",
+    papers: ["P1U", "P3"],
+    summary:
+      "STRICT ledger-first adjudication of the M35 (P1U Grok) + M36 (P3-ApJS ChatGPT) EXT raws, every raw + screenshot READ verbatim before any verdict, verdicts recorded to Convex (post_verdict.sh EXT bare labels + record_wave.sh wave rows; caps recomputed from the EXT formula, _creationTime-latest per reviewer). VERDICTS: P1U Grok=MINOR REVISIONS (0 MAJ/4 MIN) on byte-unchanged v1U.0.20; P3-ApJS ChatGPT=REJECT (13 MAJ/3 MIN) on byte-unchanged v3.1.159-apjs. 0 genuinely-new on either leg. P1U: Grok steps DOWN from its M30 MAJOR band (3M/3m) to 0 MAJOR on identical content — its §-summary AFFIRMS the central claim 'is supported by the analytic derivations, explicit lemmas (Fierz projection, gap equation, term-by-term expansion), and monotone single-scale NDA arguments' (pattern-066 verdict-word variance, NOT new findings); all 4 MINOR = presentation/placement/scoping nits source-cited (abstract strong-language scoping→DP1U-20; NJL sign-mapping clarifying line, numerical sub-criticality conceded robust→DP1U-19 CLOSED-BY-COMPUTE v1U.0.14; Holst perturbation-transparency compact table→DP1U-12; §IX/§XIV.D barrier-catalog consolidated table + N_tot≈92 vs −35/16 tension one-liner, tension itself 'correctly identified as mutually exclusive'→DP1U-06). ChatGPT M35 = FAILED-dead GAP (single retry consumed; recorded verdict:failed NOT a zero; re-ride placed in M37) → per M27/M26/M24 GAPped-leg precedent the missing leg neither advances nor resets; the Grok MINOR read carries the wave. P1U streak 13→14; cap 62→68 (Grok leg restores MINOR 12: 50 + Grok MINOR 12 + ChatGPT REJECT 0 [carried M33 floor] + Gemini MAJOR 6). P3-ApJS M36: the FIRST attachment-verified ChatGPT read of P3-ApJS after the M32 (P1U-under-P3) + M34 (P5-under-P3) wrong-paper misfiles — PROVENANCE CONFIRMED by signature-grep (P3 anomaly signatures 268,519/DESI/SPARCL/NEOWISE/NANOGrav/fNL present; P5 void-chirality signatures = 0). DP3-21 DAS FIX HELD vs ChatGPT too: signature-grep for the Gaia-block/LAMOST self-contradiction = NONE; the raw's only Data-Availability item (finding #1) cites the paper's OWN 86.6%/~1.3% numbers = disclosed DP3-15 reproducibility ceiling + DP3-08 provenance, NOT the DP3-21 wording. All 16 findings source-cited standing DP3 re-flags (#1→DP3-08/-15; #2 SPARCL-52.8%-vs-0.87%→DP3-12; #3 target-accounting→DP3-07; #4 195,829-not-sources→DP3-07/-11; #5 injection≠purity→DP3-11/-12; #6 268,519-tunable→DP3-06; #7 Planck-top-200→DP3-06/-11; #8 NEOWISE-mask→DP3-01/-13; #9 17.8%-novelty→DP3-07/-09; #10 637-coincidences→DP3-11; #11 cross-transfer-mix→DP3-14; #12 §5-fNL→DP3-10/-19; #13 §5.1-NANOGrav→DP3-19/-10; MINOR #14 58.8%-denominator→DP3-08; MINOR #15 Fig-10/obsolete→DP3-14/-16; MINOR #16 σ-conflation→DP3-07/-09); item set 1:1 with M24/M27 = directive-H maximally-harsh ApJS floor (DP3-17). P3 streak 3→4; cap 56 HOLDS (Grok MAJOR 6 + ChatGPT REJECT 0 + Gemini REJECT 0 + 50). P3 STRATEGIC: DP3-15 end-to-end re-inference already run to its structural ceiling (commit 2c52a1d2, plan e70e418e) — P3's residual is now 100% HOUSTON-GATED (venue word / archive re-pull), NO compute lever remains. No bumps (both byte-unchanged); directive_g.sh not run; ledger_match DRAFT run on each raw (P1U 4/6, P3 9/16), every UNMATCHED Opus-adjudicated to a standing D-id; no ACCEPT faked, no finding dismissed without a source-cited verdict, no math fabricated. Raws + per-leg audits: EXT_real/H17_2026-07-10/M35/P1U_grok_M35.md + P1U_grok_truth_audit_M35.md + M36/P3APJS_chatgpt_M36.md + P3APJS_truth_audit_M36.md.",
+    keyTakeaways: [
+      "0 genuinely-new on both M35/M36 legs. P1U streak 13→14 (Grok MINOR steps down from M30 MAJOR band; cap 62→68 as Grok leg restores MINOR 12). P3 streak 3→4 (ChatGPT REJECT = directive-H ApJS floor; cap 56 HOLDS).",
+      "P3-ApJS M36 is the FIRST attachment-verified ChatGPT read after the M32/M34 wrong-paper misfiles — provenance confirmed by signature-grep (P3 signatures present, P5 = 0); DP3-21 DAS fix HELD (self-contradiction wording absent).",
+      "P1U ChatGPT M35 = FAILED-dead GAP (single retry used). Recorded verdict:failed, not a zero; re-ride queued in M37 so it does not stand as a false quality signal.",
+      "P3 STRATEGIC: DP3-15 re-inference already run to structural ceiling — P3's residual is 100% Houston-gated (venue word / archive re-pull); no compute lever remains.",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 0,
+      note: "M35/M36-EXT: 0 genuinely-new on both real legs (P1U Grok, P3-ApJS ChatGPT). Every finding a source-cited standing D-id re-flag, OPEN-COMPUTE, or disclosed-scope limitation; P1U Grok = pattern-066 severity oscillation (MAJOR→MINOR on identical content), P3 ChatGPT = directive-H ApJS harsh-referee floor with the DP3-21 DAS fix HELD. No edits warranted; no bumps.",
+    },
+    links: [
+      {
+        label: "P1U M35 truth-audit",
+        href: `${PR}/EXT_real/H17_2026-07-10/M35/P1U_grok_truth_audit_M35.md`,
+      },
+      {
+        label: "P3-ApJS M36 truth-audit",
+        href: `${PR}/EXT_real/H17_2026-07-10/M36/P3APJS_truth_audit_M36.md`,
+      },
+    ],
+  },
+  {
     id: "m33-ext-adjudication-2026-07-13",
     dateISO: "2026-07-13",
     kind: "external-browser",
