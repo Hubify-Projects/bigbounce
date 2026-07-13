@@ -151,6 +151,10 @@ PY
 echo "=== ext_submit :: $PAPER $REVIEWER round=$ROUND ==="
 echo "    pdf: $STAGE"
 
+# Initialized so the post-dispatch `${SUBMIT_URL:-}` sanity block is robust even
+# if a submit_* function returned (via `|| true`) before assigning it.
+SUBMIT_URL=""
+
 # =====================================================================
 # GROK
 # =====================================================================
@@ -355,11 +359,30 @@ OSA
   fi
 }
 
+# Dispatch the submit function.
+#
+# CRITICAL (2026-07-13 silent-exit fix): a submit_* function signals a REAL
+# failure EXCLUSIVELY by calling die() (explicit non-zero exit + "FAIL:" line).
+# Any *return* from the function means "reached the end" — but its incidental
+# last-command status can be non-zero (e.g. the success arm's
+# `[ "$SUBMIT_URL" = "$PRE_URL" ] && die` short-circuits to rc 1 on the normal
+# path, or a fallback `case ... esac` returns 1). Because the dispatch below is
+# a top-level statement, that leaked non-zero status made `set -euo pipefail`
+# abort the script HERE — silently, BEFORE the manifest-append + OK/FAIL block
+# ran. Observed: chatgpt legs printed "chatgpt send: sent-testid" then vanished
+# with no poll WARN, no manifest row, no OK, no FAIL. The 02d68a8f patch made
+# this reachable on the ordinary success path.
+#
+# Fix: run the dispatch guarded so a benign trailing status can NEVER trip
+# set -e. A genuine failure still `die`s inside the function (subshell inherits
+# nothing to swallow the exit — die() calls `exit`, which terminates the whole
+# script regardless). This guarantees the flow ALWAYS terminates in exactly one
+# of: (a) die -> "FAIL:" + non-zero exit; (b) the OK + manifest block below.
 case "$REVIEWER" in
   grok)    submit_grok ;;
   chatgpt) submit_chatgpt ;;
   gemini)  submit_gemini ;;
-esac
+esac || true
 
 # sanity on captured URL
 case "${SUBMIT_URL:-}" in
