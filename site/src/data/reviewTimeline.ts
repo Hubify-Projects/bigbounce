@@ -57,6 +57,31 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "m15-ext-p2-p3-confirm-2026-07-12",
+    dateISO: "2026-07-12",
+    kind: "external-browser",
+    title:
+      "M15-EXT — P2 + P3 confirm wave, 0 genuinely-new. P2 (v1.7.116 byte-unchanged): Grok MINOR (closing AFFIRMS −35/16) + ChatGPT REJECT (closing concedes −35/16 plausible); source-cited standing DP2 re-flags; streak 5→6; cap 74 HOLDS. P3 (v3.1.158-apjs byte-unchanged): Grok MAJOR (closing AFFIRMS release of the gated set) + ChatGPT REJECT; source-cited standing DP3 re-flags; DP3-20 immutable-release bar stays dissolved, DP3-15 at disclosed ~1.3% ceiling; streak 5→6; cap 56 HOLDS. No bumps; directive_g.sh not run.",
+    papers: ["P2", "P3"],
+    summary:
+      "M15-EXT: two-paper confirm wave — 0 genuinely-new reader-visible editable findings on either paper. P2 (v1.7.116, byte-unchanged): Grok MINOR REVISIONS (5 MINOR, closing affirms the corrected −35/16 prediction) + ChatGPT REJECT (10 MAJOR/2 MINOR, closing concedes '−35/16 may be a plausible canonical-limit result'); every finding source-cited to DP2-01/-02/-03/-04/-07/-13/-14/-15/-17/-18/-19/-20/-21/-22/-25/-26/-30/-32.6/-33 (ChatGPT #12 mutable-filenames/DOI = PROCESS-NIT, no reset); harsh-referee floor holds (DP2-24); clean-wave streak 5→6; cap 74 HOLDS. P3 (v3.1.158-apjs, byte-unchanged): Grok MAJOR REVISIONS (3 MAJOR/3 MINOR, closing affirms release of the gated outlier set) + ChatGPT REJECT (14 MAJOR/2 MINOR); every finding source-cited to DP3-01/-03/-04/-05/-06/-07/-08/-09/-10/-11/-12/-13/-14/-15/-16/-20; DP3-20 immutable-release bar stays DISSOLVED (neither leg re-raises 'described prospectively/disqualifying'), ChatGPT #11 again cites the paper's OWN 86.6%/~1.3% numbers = the disclosed DP3-15 structural ceiling (no reset); floor holds (DP3-17); clean-wave streak 5→6; cap 56 HOLDS. No bumps.",
+    keyTakeaways: [
+      "P2: 0 genuinely-new across Grok(5 MINOR) + ChatGPT(10 MAJOR/2 MINOR) on byte-unchanged v1.7.116; every finding source-cited to a standing DP2 D-id. Grok's close AFFIRMS the central claim ('−35/16 … supported by the vertex-level re-derivation, independent Fisher validation … conditional on the listed assumptions'); ChatGPT REJECT concedes '−35/16 may be a plausible canonical-limit result' (no headline arithmetic defect) = the standing OpenAI/ChatGPT harsh-referee floor (DP2-24) on a single-source recast whose external per-triangle Cov_B is unavailable (venue, Houston-gated). Streak 5→6; cap 74 HOLDS.",
+      "P3: 0 genuinely-new across Grok(3 MAJOR/3 MINOR) + ChatGPT(14 MAJOR/2 MINOR) on byte-unchanged v3.1.158-apjs; every finding source-cited to a standing DP3 D-id. FIFTH-consecutive EXT read post immutable-release: DP3-20 bar stays dissolved (neither leg re-raises the 'prospectively described/disqualifying' hinge), ChatGPT #11 cites the paper's OWN 86.6%-hashed/~1.3%-re-pullable numbers = the disclosed DP3-15 structural ceiling (does NOT reset). Grok's close AFFIRMS 'release of a large, partially validated set … with explicit gates and a recomputable deduplicated count'. Streak 5→6; cap 56 HOLDS.",
+      "Integrity: all four EXT raws read verbatim before disposition (Grok 'VERDICT: MINOR/MAJOR REVISIONS'; ChatGPT 'VERDICT: REJECT'); Grok closing-affirmations + ChatGPT concessions lifted verbatim; every finding source-cited to a D-id; no ACCEPT faked; no dismissal without a source-cited verdict; no math fabricated. Caps recomputed from the EXT formula (P2 74 = 50+grok-MIN12+chatgpt-REJ0+gemini-latest12; P3 56 = 50+grok-MAJ6+chatgpt-REJ0+gemini-latest0). Streaks: P1U 6 · P2 6 · P3 6 · P4 5 · P5 6. Caps: P1A 62 · P2 74 · P3 56 · P4 74 · P5 80.",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 0,
+      note: "0 genuinely-new reader-visible editable findings across P2 M15-EXT (Grok MINOR closing-affirms + ChatGPT REJECT harsh floor) and P3 M15-EXT (Grok MAJOR closing-affirms release + ChatGPT REJECT). P2 streak 5→6; P3 streak 5→6. Caps P2 74 · P3 56 HOLD.",
+    },
+    links: [
+      { label: "P2 Grok M15 EXT raw", href: `${PR}/EXT_real/H17_2026-07-10/M15/P2_grok_M15.md` },
+      { label: "P2 ChatGPT M15 EXT raw", href: `${PR}/EXT_real/H17_2026-07-10/M15/P2_chatgpt_M15.md` },
+      { label: "P3 Grok M15 EXT raw", href: `${PR}/EXT_real/H17_2026-07-10/M15/P3APJS_grok_M15.md` },
+      { label: "P3 ChatGPT M15 EXT raw", href: `${PR}/EXT_real/H17_2026-07-10/M15/P3APJS_chatgpt_M15.md` },
+    ],
+  },
+  {
     id: "m14-ext-zero-reject-harvest-2026-07-12",
     dateISO: "2026-07-12",
     kind: "external-browser",
