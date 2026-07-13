@@ -41,7 +41,15 @@
 % The divide-by-h claim (~1246 h⁻¹ Mpc) is INVERTED. No pipeline recompute required.
 % If any future reviewer re-raises this, cite env_finder/01_compute_vweb.py:106-108.
 
-\newcommand{\paperVersion}{v0.1.126-2026-07-12}
+\newcommand{\paperVersion}{v0.1.127-2026-07-13}
+% v0.1.127 (2026-07-13 -- M28-INT genuinely-new (reader-visible artifact-ID range defect):
+%   INT-Claude M28 caught that the artifact-index range descriptors still read "[A1]--[A32]"
+%   at three in-PDF sites (acknowledgments AI-methodology para; Appendix C numbering note x2)
+%   while the artifact-map table now runs through [A34] -- rows [A33] outputs/27_rsd_void_recon_bound.json
+%   and [A34] scripts/27_rsd_void_recon_bound.py were appended in v0.1.122 without updating the range.
+%   The table caption's path-location enumeration also omitted A33/A34 (both within p5_desi_chirality/).
+%   Fix: three "[A1]--[A32]" -> "[A1]--[A34]"; caption "A2--A30" -> "A2--A30, A33, and A34 are within p5".
+%   ZERO number/claim change. Streak 10->0 (directive-K genuinely-new reader-visible).)
 % v0.1.126 (2026-07-12 -- M2 wave genuinely-new (reader-visible arithmetic-label defect):
 %   ChatGPT M2 MINOR caught "Eq. (4) says that seven terms are combined but displays eight."
 %   The systematic-budget multline (L2862-2865) sums EIGHT squared terms (counting, membership,
@@ -784,7 +792,7 @@
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{July 12, 2026}
+\date{July 13, 2026}
 
 \begin{abstract}
 We test whether spiral galaxy chirality depends on large-scale-structure
@@ -4538,7 +4546,7 @@ Appendix~\ref{app:toy_eft}).
 \begin{acknowledgments}
 This work used data from the Dark Energy Spectroscopic Instrument (DESI) Data Release~1 and the DESIVAST void value-added catalog. This research made use of the DESI DR1 data; DESI is supported by the U.S. Department of Energy and the U.S. National Science Foundation.
 
-\textit{AI-assisted methodology.} The analysis pipeline of this paper was executed with an agentic AI research pipeline operating under the author's direction: catalog cross-matching, the T-Web cosmic-web classification, the DESIVAST void membership test, the statistical null tests, and figure generation were orchestrated by AI coding agents, and every quantitative result reported here was verified by the author against the committed pipeline artifacts (the drivers and per-output provenance JSON referenced throughout via the [A1]--[A32] artifact links and \S\ref{sec:data_code}). The pipeline was built on Anthropic Claude (Opus~4 family, 2026 releases) for agent orchestration and manuscript preparation, with OpenAI GPT-5/o3, xAI Grok-4, and Google Gemini~2.5 used as cross-checking and adversarial internal-review models. The full audit trail --- code, configuration, deterministic seed \texttt{20260515}, and version history --- is public in the companion repository, so every number is independently recomputable. We regard this reproducibility-by-construction as a methodological strength: the pipeline that produced the result is the same one a reader runs to verify it. The author designed the study, made all scientific judgments, and takes full responsibility for the content, including any material produced with AI assistance; the AI pipeline is a reproducibility and verification instrument, not an author.
+\textit{AI-assisted methodology.} The analysis pipeline of this paper was executed with an agentic AI research pipeline operating under the author's direction: catalog cross-matching, the T-Web cosmic-web classification, the DESIVAST void membership test, the statistical null tests, and figure generation were orchestrated by AI coding agents, and every quantitative result reported here was verified by the author against the committed pipeline artifacts (the drivers and per-output provenance JSON referenced throughout via the [A1]--[A34] artifact links and \S\ref{sec:data_code}). The pipeline was built on Anthropic Claude (Opus~4 family, 2026 releases) for agent orchestration and manuscript preparation, with OpenAI GPT-5/o3, xAI Grok-4, and Google Gemini~2.5 used as cross-checking and adversarial internal-review models. The full audit trail --- code, configuration, deterministic seed \texttt{20260515}, and version history --- is public in the companion repository, so every number is independently recomputable. We regard this reproducibility-by-construction as a methodological strength: the pipeline that produced the result is the same one a reader runs to verify it. The author designed the study, made all scientific judgments, and takes full responsibility for the content, including any material produced with AI assistance; the AI pipeline is a reproducibility and verification instrument, not an author.
 \end{acknowledgments}
 
 \appendix
@@ -5040,11 +5048,11 @@ be inserted on same-day posting.
 \section{Data artifacts}\label{app:artifacts}
 
 \emph{Note on numbering:} the bracketed \emph{artifact} IDs
-[A1]--[A32] in this appendix are the committed-repository data/code
+[A1]--[A34] in this appendix are the committed-repository data/code
 artifacts and are \emph{distinct} from the bibliographic references
 [1]--[14], which appear in the separate References section; the ``A''
 prefix marks every artifact ID to avoid confusion at the
-references/artifact-map boundary. Artifact IDs [A1]--[A32] used
+references/artifact-map boundary. Artifact IDs [A1]--[A34] used
 throughout this paper hyperlink to the following paths in the companion
 repository
 \href{https://github.com/Hubify-Projects/bigbounce}{\texttt{Hubify-Projects/bigbounce}}
@@ -5053,7 +5061,7 @@ file or directory at the URL shown below.
 
 \begin{table*}[h!]
 {\small
-\caption{Artifact ID map. Paths A2--A30 are within
+\caption{Artifact ID map. Paths A2--A30, A33, and A34 are within
 \texttt{pipelines/p5\_desi\_chirality/}; the prefix is omitted in the
 short-name column. A1, A31, and A32 point to the companion catalog
 pipeline (\texttt{pipelines/p2\_chirality/}).
