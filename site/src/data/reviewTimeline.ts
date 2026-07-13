@@ -57,6 +57,32 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "m18-int-p4-grok-accept-second-int-api-2026-07-13",
+    dateISO: "2026-07-13",
+    kind: "internal-api",
+    title:
+      "M18-INT — P4 SECOND INT-API ACCEPT (Grok grok-4.3 ACCEPT), 0 genuinely-new, streak 6→7. OpenAI REJECT (14 MAJOR/6 MINOR) + Grok ACCEPT (3 MINOR, central claim supported) + Gemini MINOR (4 MINOR) + Claude MINOR (6 MINOR). Cap HOLDS 74 (INT verdict does not move EXT-derived cap). v1.0.239 byte-unchanged; directive_g.sh not run.",
+    papers: ["P4"],
+    summary:
+      "M18-INT: P4 4-leg INT adjudication vs v1.0.239 (byte-unchanged). MILESTONE — Grok grok-4.3 returns VERDICT: ACCEPT (raw line 1 verbatim: '(1) VERDICT: ACCEPT'; Q3 verbatim: 'The central claim of a null real-space chirality dipole at sub-percent sensitivity on the pre-specified HC subsample is supported.') — the second INT-API ACCEPT of the entire bigbounce campaign (first: Grok/P5 M3 wave). OpenAI gpt-5.5 REJECT (14 MAJOR + 6 MINOR; all 14 MAJORs map 1:1 to DP4-07/-08/-09/-10/-11/-12/-14/-15/-16/-17/-21 — same OpenAI 1:1 pattern as DP4-20); Gemini gemini-3.1-pro MINOR REVISIONS (4 MINOR: inline-filepath-artifacts DP4-13/PROCESS-NIT + Shamir-caveat-repetitive DP4-14/PROCESS-NIT + mixed-σ/rank/p DP4-13/-10 PROCESS-NIT + spatial-GP-likelihood/47%-remainder DP4-17 OPEN-COMPUTE); Claude opus-4-8 subscription MINOR REVISIONS (6 MINOR incl. 1 borderline-MAJOR: WLS-z-prominence DP4-14 + pseudo-label-independence DP4-09/-15 + mask-equivalence-documentation-detail DP4-03-family + T_eq wording DP4-E7 ALREADY-CLOSED-v1.0.239 + presentation DP4-13 + title-N DP4-13). 0 genuinely-new reader-visible editable findings across all 4 legs; every finding fingerprint-matches an existing DP4 D-id. cleanWaveStreak 6→7 (seventh consecutive clean wave after the M5-INT P4-E7 reset). Cap HOLDS 74 (EXT-derived formula; INT verdict does not move it).",
+    keyTakeaways: [
+      "MILESTONE: Grok grok-4.3 INT-API returns VERDICT: ACCEPT on P4 chirality catalog v1.0.239 — the second INT-API ACCEPT of the entire bigbounce campaign (first: Grok/P5). Raw line 1 verified character-for-character: '(1) VERDICT: ACCEPT'. Q3 endorsement: 'The central claim of a null real-space chirality dipole at sub-percent sensitivity on the pre-specified HC subsample is supported.' 3 non-blocking MINORs all map to standing re-flags (DP4-07/-17/-11).",
+      "0 genuinely-new reader-visible editable findings across all 4 INT legs. OpenAI's 14 MAJORs map 1:1 to existing D-ids (identical structural pattern to prior OpenAI reads); Gemini's 4 MINORs are PROCESS-NIT / DP4-17 OPEN-COMPUTE re-flags; Claude's 6 MINORs include 1 item (T_eq wording) already CLOSED-BY-EDIT at v1.0.239 (not genuinely-new). cleanWaveStreak 6→7. Cap HOLDS 74 (INT verdict does not score the EXT-derived cap).",
+      "Integrity: all 4 raws read verbatim before disposition (Grok '(1) VERDICT: ACCEPT' confirmed at line 1; OpenAI/Gemini/Claude verdicts recorded as-is without softening or upgrading). No ACCEPT faked, no finding dismissed without a source-cited D-id, no math fabricated, no version bumped, no severity-steering. directive_g.sh NOT run (no edit). post_verdict.sh NOT run (would mislabel INT legs as EXT-scored). Cap formula: 50+grok-EXT-MINOR12+chatgpt-EXT-MAJOR6+gemini-EXT-latest6=74. Streaks: P1U 7 · P2 6 · P3 7 · P4 7 · P5 7. Caps: P1A 68 · P2 74 · P3 56 · P4 74 · P5 74.",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 0,
+      note: "0 genuinely-new reader-visible editable findings across all 4 INT legs of M18-INT. P4 cleanWaveStreak 6→7; cap 74 HOLDS. Grok-INT ACCEPT = second INT-API ACCEPT of campaign; All-A grid Grok-INT P4 cell → A via Convex readinessMetrics.",
+    },
+    links: [
+      { label: "P4 OpenAI M18-INT raw", href: `${PR}/INT_v3/ROUND_2026-07-09/API_P4_openai.md` },
+      { label: "P4 Grok M18-INT raw (ACCEPT)", href: `${PR}/INT_v3/ROUND_2026-07-09/API_P4_grok.md` },
+      { label: "P4 Gemini M18-INT raw", href: `${PR}/INT_v3/ROUND_2026-07-09/API_P4_gemini.md` },
+      { label: "P4 Claude M18-INT raw", href: `${PR}/INT_api/H17_2026-07-10/intwave_P4_claude_0043.md` },
+      { label: "M18 P4 INT truth audit", href: `${PR}/INT_api/H17_2026-07-10/M18_P4_INT_truth_audit.md` },
+    ],
+  },
+  {
     id: "m17-ext-p5-p3-confirm-2026-07-13",
     dateISO: "2026-07-13",
     kind: "external-browser",
