@@ -57,6 +57,35 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "m39-ext-p3-adjudication-2026-07-13",
+    dateISO: "2026-07-13",
+    kind: "external-browser",
+    title:
+      "M39-EXT — P3-ApJS (v3.1.159-apjs byte-unchanged) confirm wave. Grok MAJOR REVISIONS (1 MAJOR/4 MINOR) + ChatGPT REJECT (13 MAJOR/1 MINOR); 0 genuinely-new. Provenance CONFIRMED both legs by signature-grep. DP3-21 DAS fix STAYS HELD — the live DAS matches the v3.1.159 wording exactly; ChatGPT #2's Gaia/LAMOST/pinned-commit claim is the HF release-manifest reproducibility class (DP3-15/-20/-08), NOT the DAS-vs-body self-contradiction that defined DP3-21. clean-wave streak 4→5; cap HOLDS 56.",
+    papers: ["P3"],
+    summary:
+      "Adjudicated the two M39 P3-ApJS raws (P3APJS_grok_M39.md MAJOR + P3APJS_chatgpt_M39.md REJECT) against byte-unchanged v3.1.159-apjs. Both raws + screenshots READ verbatim before any verdict; post_verdict.sh EXT bare labels; record_wave M39 row posted (clobber-guard confirmed). PROVENANCE CONFIRMED both legs — signature-grep for P3 anomaly signatures (268,519/DESI/SPARCL/NEOWISE/Planck-top-200/LAMOST/eROSITA/NANOGrav/fNL/77,905/195,829) = PRESENT throughout both; P5 void-chirality signatures (DESIVAST/VoidFinder/chirality/T-Web/2.26) = 0; both carry the ext_P3APJS_M39 tag → genuine P3-ApJS reads, not the M32/M34 wrong-paper misfile class. DP3-21 DAS SELF-CONTRADICTION STAYS ABSENT (fix HELD): the live DAS (paper3_apjs.tex L1710) matches the v3.1.159 DP3-21 fix EXACTLY — 'the released LAMOST DR10 block carries per-object canonical-S scores but is a failed-exploratory tier … included in the inclusive 377,482 total but excluded from the 268,519 validated catalog-grade headline' and 'the synthetic Gaia DR3 tier (500 objects) is excised … so no Gaia block is released'. ChatGPT #2 DOES contain Gaia/LAMOST/pinned-commit wording but is a DIFFERENT claim — it asserts the HuggingFace release manifest/files conflict with the manuscript ('a Gaia file remains present', 'manifest says no LAMOST per-object table', 'metadata inconsistent about the pinned commit') = the release-integrity/reproducibility class DP3-15 (bounded ~1.3% re-pull ceiling, pod-lost linkage) + DP3-20 (immutable-release CLOSED-BY-RELEASE at pinned tag p3-v3.1.157) + DP3-08 (Gaia excised from every count), NOT the DAS-vs-body internal contradiction. 0 genuinely-new BOTH legs; every finding a source-cited standing DP3 re-flag (Grok→DP3-07/-08/-09/-01/-11/-13/-15; ChatGPT→DP3-03/-04/-06/-07/-08/-09/-10/-11/-12/-13/-14/-15/-18/-19/-20); ledger_match Grok 5/7, ChatGPT 11/16 auto, the UNMATCHED = verbose ApJS §-anchor restatements Opus-adjudicated to standing D-ids, item set 1:1 with M24/M27/M36 ChatGPT REJECTs = directive-H maximally-harsh ApJS floor (DP3-17 pattern-066). clean-wave streak 4→5 (directive-K; M36 was 3→4). cap HOLDS 56 (Grok MAJOR 6 + ChatGPT REJECT 0 + Gemini REJECT 0 + 50; verdict words unchanged). STRATEGIC: DP3-15 end-to-end re-inference already run to its structural ceiling (commit 2c52a1d2) — P3's residual is 100% Houston-gated (venue word / archive re-pull), NO compute lever remains. No bump (byte-unchanged); directive_g.sh not run; no faked accept, no un-sourced dismissal, no fabrication.",
+    keyTakeaways: [
+      "0 genuinely-new both legs on byte-unchanged v3.1.159-apjs → P3 clean-wave streak 4→5, cap HOLDS 56. Grok MAJOR (1M/4m) + ChatGPT REJECT (13M/1m) = directive-H maximally-harsh ApJS floor (DP3-17 pattern-066).",
+      "DP3-21 DAS fix STAYS HELD: live DAS L1710 matches the v3.1.159 wording exactly. ChatGPT #2's Gaia/LAMOST/pinned-commit wording is the HF release-manifest reproducibility class (DP3-15/-20/-08), verified NOT the DAS-vs-body self-contradiction that defined DP3-21.",
+      "Provenance CONFIRMED both legs by signature-grep (P3 signatures present, P5 void-chirality = 0, ext_P3APJS_M39 tag) — genuine P3-ApJS reads, not the M32/M34 wrong-paper misfile class. P3's residual is 100% Houston-gated (venue / archive re-pull).",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 0,
+      note: "M39-EXT: 0 genuinely-new on P3-ApJS. Every Grok+ChatGPT finding a source-cited standing DP3 re-flag; DP3-21 DAS fix held; the reproducibility/release majors are the disclosed DP3-15/-20/-08 class. No edits warranted; no bump.",
+    },
+    links: [
+      {
+        label: "P3 M39 truth-audit",
+        href: `${PR}/EXT_real/H17_2026-07-10/M39/P3APJS_truth_audit_M39.md`,
+      },
+      {
+        label: "DISPOSITIONS/P3.md",
+        href: `${GH}/project-context/peer-reviews/DISPOSITIONS/P3.md`,
+      },
+    ],
+  },
+  {
     id: "m37-m38-ext-adjudication-2026-07-13",
     dateISO: "2026-07-13",
     kind: "external-browser",
