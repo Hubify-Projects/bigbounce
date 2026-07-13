@@ -122,14 +122,24 @@ def has(tok):
 
 # signature(paper) -> True if the paper's own signature is present.
 # Each paper: a list of AND-groups; each group is an any-of list of tokens.
+# 2026-07-15 fix (false positive on P1U M40): (a) P1U group-1 was the single
+# literal "dark energy" — a genuine P1U review used other phrasings, failing
+# the AND while its f_NL mention tripped P2's one-token signature. Broadened
+# token lists. (b) partial_own(): if ANY own token appears at all, never rule
+# WRONGPAPER — cross-paper mentions are common (P1U discusses f_NL; P4/P5
+# both discuss chirality).
 SIGS = {
-    "P1U":     [["dark energy"], ["fierz", "ech", "channel"]],
-    "P2":      [["f_nl", "-35/16", "in-in"]],
+    "P1U":     [["dark energy", "dark-energy", "no-go", "four-route", "vacuum energy", "cosmological constant"], ["fierz", "ech", "channel", "route"]],
+    "P2":      [["f_nl", "-35/16", "in-in"], ["forecast", "fisher", "bispectrum", "non-gaussian"]],
     "P3":      [["anomaly"], ["neowise", "erosita", "lamost", "catalog"]],
     "P3APJS":  [["anomaly"], ["neowise", "erosita", "lamost", "catalog"]],
     "P4":      [["chirality"], ["galaxy zoo", "gz1", "spiral"]],
-    "P5":      [["desi"], ["void", "chirality"]],
+    "P5":      [["desi"], ["void"]],
 }
+
+def hit_count(p):
+    groups = SIGS.get(p) or []
+    return sum(t.count(tok.lower()) for grp in groups for tok in grp)
 
 def sig_present(p):
     groups = SIGS.get(p)
@@ -145,6 +155,11 @@ if own:
     print("OK"); sys.exit(0)
 
 # own signature absent -> is another paper's signature strongly present?
+# Count-based dominance (2026-07-15): rule WRONGPAPER only when the other
+# paper's FULL signature is present AND its token hit-count clearly dominates
+# the expected paper's (>=3x, or own==0). Incidental cross-mentions (P1U
+# discussing f_NL; a P5 review saying "catalog") must not flip the ruling.
+own_hits = hit_count(paper)
 for other, groups in SIGS.items():
     if other == paper:
         continue
@@ -152,7 +167,9 @@ for other, groups in SIGS.items():
     if {other, paper} == {"P3", "P3APJS"}:
         continue
     if all(any(has(tok) for tok in grp) for grp in groups):
-        print("WRONGPAPER:%s" % other); sys.exit(0)
+        oh = hit_count(other)
+        if own_hits == 0 or oh >= 3 * max(own_hits, 1):
+            print("WRONGPAPER:%s" % other); sys.exit(0)
 
 # own absent, no strong other -> ambiguous/weak, don't hard-fail on signature
 print("WEAK")
