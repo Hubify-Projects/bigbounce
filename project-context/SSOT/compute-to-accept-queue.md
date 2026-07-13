@@ -1,6 +1,31 @@
 # Compute-to-ACCEPT queue (the real research that drives external ACCEPT)
 
-<!-- last_updated: 2026-07-12 (16:07 tick — state-honesty + cost-safety attestation) -->
+<!-- last_updated: 2026-07-12 (17:07 tick — post-M8 state-honesty + live cost-safety attestation) -->
+
+## 2026-07-12 (hourly cron tick, 17:07) — post-M8 idle verified honest, live $0 pod burn, no fireable increment
+
+**State check (step 1):** no concurrent driver (only my own `claude -p` tick PID; no python review procs,
+gstack browser daemon idle); working tree clean; `tools/site_freshness_check.sh` → **exit 0** (no stale
+surface). **M8-EXT** (P1U/P3) was harvested + adjudicated + committed 18 min prior (`ed894ccf`, 16:49):
+**0 genuinely-new**, clean-wave streaks P1U 3→4 / P3 2→3. Every M8 ledger-match UNMATCHED item was
+source-cited to an existing disposition (P1U DP1U-03/07/11/14 = already-disclosed channel-level/scope
+re-flags; P3 DP3-01/06/07/12 = already-closed DESI cross-val + selection-function + novelty-fraction
+re-flags). Today's EXT rotation M5→M8 covered **all 5 active papers** (P1U, P2, P3-ApJS, P4, P5) — each
+holds a recent floor verdict; **no paper changed since its last EXT**, so no re-test is due.
+
+**Cost-safety (live RunPod GraphQL, this tick):** all **9 pods EXITED**, `runtime=None` → **$0 compute
+burn** (incl. `bigbounce-p4-e2e-mirror`, `-dr8morph`, `-gz1only`, `-c123-namaster`, `-p1b-snctrl`,
+`frail_tomato_koi`, `regular_green_pig{,-migration}`, `blonde_silver_eel`). No pod leaking spend on the
+thin balance.
+
+**Why no paper edit / version bump / EXT sweep this tick:** (a) a fresh sweep on unchanged content 18 min
+after M8 = verdict-farming (directive-M forbids — waves MEASURE movement, never farm); (b) 0 genuinely-new
+editable findings open — every open item is a source-cited re-flag, an OPEN-COMPUTE frontier item, or an
+OPEN-VENUE item; (c) the only genuinely-forward levers are multi-hour **paid** pod runs (P4 Stage B
+image→field + spatially-resolved confusion + joint-covariance likelihood; P1B ALP prior-predictive) —
+Houston go/scope-gated + ~$15 balance, **NOT fireable unsupervised in one atomic headless tick**. Correct
+honest increment = this post-M8 state + live-cost attestation. No fabrication, no gamed verdict, no false
+readiness change.
 
 ## 2026-07-12 (hourly cron tick, 16:07) — state verified honest, $0 pod burn, no fireable atomic increment
 
