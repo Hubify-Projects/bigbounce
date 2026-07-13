@@ -57,6 +57,31 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "m19-ext-p4-p5-confirm-2026-07-13",
+    dateISO: "2026-07-13",
+    kind: "external-browser",
+    title:
+      "M19-EXT — P4 + P5 confirm wave, 0 genuinely-new on either paper (both byte-unchanged). P4: Grok MINOR + ChatGPT REJECT — FIRST P4 ChatGPT REJECT after FIVE consecutive non-REJECT reads on byte-identical v1.0.239 (pattern-066 floor oscillation); streak 7→8; cap →74. P5: Grok MINOR + ChatGPT REJECT — 2nd CONSECUTIVE REJECT on byte-identical v0.1.126 (M17 confirmed the first); streak 7→8; cap 74 HOLDS. No bumps; directive_g.sh not run.",
+    papers: ["P4", "P5"],
+    summary:
+      "M19-EXT: two-paper byte-unchanged confirm wave — 0 genuinely-new reader-visible editable findings on either paper. P4 (v1.0.239, byte-unchanged): Grok MINOR REVISIONS (0 MAJOR/4 MINOR — placement/emphasis asks; closing line 'the central claim … is supported') + ChatGPT REJECT (11 MAJOR/3 MINOR). PATTERN-066 documentation: this is the FIRST P4 ChatGPT REJECT after FIVE consecutive non-REJECT (all-MAJOR) reads on byte-identical v1.0.239 — M7 MAJOR, M9 MAJOR, M11 MAJOR, M14 MAJOR, M16 MAJOR — and the M19 item set is 1:1 with those M7–M16 MAJOR reads (physical-sensitivity transfer function, outcome-dependent p_eq cut, pseudo-label validation, 3-class error model, permutation covariance, z≈−7.6, 47% remainder, systematics-sign, D4 rotation, Shamir comparison, DOI/repro, sample-size, σ-notation, repetition): identical disclosed-content set, zero genuinely-new = textbook maximal-harsh-referee verdict-word floor oscillation. Every finding source-cited to a standing DP4 D-id (DP4-01/-03/-07/-08/-10/-12/-13/-16/-17/-19/-21); ledger_match Grok 3/5, ChatGPT 9/14, all mechanically-UNMATCHED items Opus-adjudicated RE-FLAG with fingerprints enriched (DP4-16 covariance-model, DP4-17 anti-align/conservative-bound, DP4-10 moment-ratio/p=0.030, DP4-13 8.47M/one-primary-estimator). cleanWaveStreak 7→8; cap →74 (Grok MIN 12 + ChatGPT REJECT 0 + latest-Gemini MIN 12 = 50+24; ChatGPT contribution drops 6→0 per formula). P5 (v0.1.126, byte-unchanged): Grok MINOR REVISIONS (0 MAJOR/3 MINOR; 'central null is supported') + ChatGPT REJECT (10 MAJOR/2 MINOR). PATTERN-066: this is the 2nd CONSECUTIVE ChatGPT REJECT on byte-identical v0.1.126 (M17 already confirmed pattern-066 on the first slip); the M19 item set is 1:1 with the M17 REJECT + the M3b/M6/M9/M12/M14 ChatGPT MAJOR reads = stable maximal-harsh-referee floor now settled at REJECT across two reads without any content change. Every finding source-cited to a standing DP5 D-id (DP5-01/-03/-04/-06/-08/-09/-10/-11/-12/-13/-14/-16/-19/-20/-21); ledger_match Grok 3/4, ChatGPT 10/12, UNMATCHED items Opus-adjudicated RE-FLAG with fingerprints enriched (DP5-01 hole-spheres/interior/edge/maximal-sphere, DP5-10 two-proportion/cluster-bootstrap). cleanWaveStreak 7→8; cap 74 HOLDS (ChatGPT contribution already 0 at M17). No bumps; directive_g.sh not run.",
+    keyTakeaways: [
+      "P4 pattern-066: FIRST P4 ChatGPT REJECT after FIVE consecutive non-REJECT (all-MAJOR) reads on byte-identical v1.0.239 (M7/M9/M11/M14/M16). The M19 item set is 1:1 with those MAJOR reads — identical disclosed-content set, 0 genuinely-new — confirming maximal-harsh-referee verdict-word floor oscillation. cleanWaveStreak 7→8; cap →74 (ChatGPT contribution 6→0 per the EXT formula, honest cap movement regardless of the pattern-066 diagnosis).",
+      "P5 pattern-066: 2nd CONSECUTIVE ChatGPT REJECT on byte-identical v0.1.126 (M17 confirmed the first). Item set 1:1 with the M17 REJECT + M3b–M14 MAJOR reads = stable floor. cleanWaveStreak 7→8; cap 74 HOLDS (ChatGPT contribution already 0 at M17). Both Grok legs MINOR with closing lines affirming the central null.",
+      "Integrity: all 4 raws read verbatim before disposition; every finding source-cited to a DP4/DP5 D-id; REJECT/MINOR verdict words recorded as-is (no softening, no upgrading); every mechanically-UNMATCHED ledger_match item Opus-adjudicated as a source-cited RE-FLAG and its fingerprint enriched so future waves match. No ACCEPT faked, no un-sourced dismissal, no math fabricated, no version bumped; directive_g.sh NOT run (0 genuinely-new). Streaks: P1U 8 · P2 8 · P3 6 · P4 8 · P5 8. Caps: P1A 68 · P2 74 · P3 56 · P4 74 · P5 74.",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 0,
+      note: "0 genuinely-new reader-visible editable findings across P4 M19-EXT (Grok MINOR + ChatGPT REJECT — 1st P4 REJECT after 5 non-REJECT reads, pattern-066) and P5 M19-EXT (Grok MINOR + ChatGPT REJECT — 2nd consecutive REJECT on byte-unchanged v0.1.126, pattern-066). P4 streak 7→8 cap →74; P5 streak 7→8 cap 74 HOLDS. All-A grid fed via Convex readinessMetrics.",
+    },
+    links: [
+      { label: "P4 M19 truth audit", href: `${PR}/EXT_real/H17_2026-07-10/M19/P4_truth_audit_M19.md` },
+      { label: "P5 M19 truth audit", href: `${PR}/EXT_real/H17_2026-07-10/M19/P5_truth_audit_M19.md` },
+      { label: "P4 disposition ledger", href: `${PR}/DISPOSITIONS/P4.md` },
+      { label: "P5 disposition ledger", href: `${PR}/DISPOSITIONS/P5.md` },
+    ],
+  },
+  {
     id: "m19-int-p2-confirm-cap-68-74-2026-07-13",
     dateISO: "2026-07-13",
     kind: "internal-api",
