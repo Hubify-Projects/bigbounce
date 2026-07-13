@@ -57,6 +57,31 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "m17-ext-p5-p3-confirm-2026-07-13",
+    dateISO: "2026-07-13",
+    kind: "external-browser",
+    title:
+      "M17-EXT — P5 + P3 byte-unchanged re-reads, 0 genuinely-new. P5 (v0.1.126): Grok MINOR + ChatGPT REJECT — the ChatGPT REJECT is a pattern-066 VERDICT-WORD REGRESSION (ChatGPT MAJOR-modal M3b-M14; item set 1:1 with the H17H REJECT); source-cited standing DP5 re-flags; streak 6→7; cap 80→74 (ChatGPT MAJOR→REJECT per formula). P3 (v3.1.158-apjs): Grok MAJOR + ChatGPT REJECT — DP3-20 immutable-release bar stays dissolved, DP3-15 at disclosed ~1.3% ceiling; source-cited standing DP3 re-flags; streak 6→7; cap 56 HOLDS. No bumps; directive_g.sh not run.",
+    papers: ["P5", "P3"],
+    summary:
+      "M17-EXT: two-paper byte-unchanged confirm wave — 0 genuinely-new reader-visible editable findings on either paper. P5 (v0.1.126, byte-unchanged, served md5 4458e760): Grok MINOR REVISIONS (1 in-MINOR MAJOR/3 MINOR, closing affirms the qualitative null) + ChatGPT REJECT (12 MAJOR/2 MINOR). The ChatGPT REJECT is a pattern-066 verdict-word regression on byte-identical content — ChatGPT was MAJOR-modal across M3b/M6/M9/M12/M14 and has now printed REJECT (H17H, M17) and MAJOR (M3b-M14) on the SAME paper; the M17 item set is 1:1 with the H17H ChatGPT REJECT + the M3b-M14 MAJOR reads (identical disclosed-content set). Every finding source-cited to DP5-02/-04/-06/-08/-09/-10/-11/-12/-13/-14/-16/-19/-20/-21/-22 (adjustment-in-lieu #6 → DP5-19/-06 quotes the paper's own §VIII B para title; non-rejection≠independence #12 → DP5-04/-19; SPECTYPE=QSO #13 → DP5-22 galaxy-only); clean-wave streak 6→7; cap 80→74 (ChatGPT MAJOR→REJECT −6 per formula). P3 (v3.1.158-apjs, byte-unchanged): Grok MAJOR REVISIONS (4 MAJOR/2 MINOR) + ChatGPT REJECT (16 MAJOR/1 MINOR); every finding source-cited to DP3-01/-02/-03/-04/-05/-06/-07/-08/-09/-10/-11/-12/-14/-15/-16/-20; DP3-20 immutable-release bar stays DISSOLVED (neither leg re-raises 'described prospectively/disqualifying'), ChatGPT #14 Data-Availability item again cites the paper's OWN 86.6%/~1.3% numbers = the disclosed DP3-15 structural ceiling (no reset); floor holds (DP3-17); clean-wave streak 6→7; cap 56 HOLDS. No bumps.",
+    keyTakeaways: [
+      "P5: 0 genuinely-new across Grok(1 in-MINOR MAJOR/3 MINOR) + ChatGPT(12 MAJOR/2 MINOR) on byte-unchanged v0.1.126; every finding source-cited to a standing DP5 D-id. pattern-066 verdict: the ChatGPT REJECT is a verdict-word regression, NOT new findings — ChatGPT was MAJOR-modal (M3b/M6/M9/M12/M14) and has now printed REJECT (H17H, M17) and MAJOR (M3b-M14) on the SAME byte-unchanged paper, textbook maximal-harsh-referee floor oscillation. Grok's lone MAJOR sits under a MINOR-REVISIONS header (in-MINOR emphasis); its close affirms the qualitative null. Streak 6→7; cap 80→74 (formula reads the latest ChatGPT verdict = REJECT).",
+      "P3: 0 genuinely-new across Grok(4 MAJOR/2 MINOR) + ChatGPT(16 MAJOR/1 MINOR) on byte-unchanged v3.1.158-apjs; every finding source-cited to a standing DP3 D-id. SIXTH-consecutive EXT read post immutable-release: DP3-20 bar stays dissolved (neither leg re-raises the 'prospectively described/disqualifying' hinge), ChatGPT #14 cites the paper's OWN 86.6%-hashed/~1.3%-re-pullable numbers = the disclosed DP3-15 structural ceiling (OPEN-COMPUTE, pod-gated, does NOT reset). Streak 6→7; cap 56 HOLDS.",
+      "Integrity: all four EXT raws read verbatim before disposition (Grok 'VERDICT: MINOR/MAJOR REVISIONS'; ChatGPT 'VERDICT: REJECT'); every finding source-cited to a D-id; no ACCEPT faked; no dismissal without a source-cited verdict; no math fabricated. Caps recomputed from the EXT formula via post_verdict.sh true _creationTime-latest (P5 74 = 50+grok-MIN12+chatgpt-REJ0+gemini-latest-MIN12; P3 56 = 50+grok-MAJ6+chatgpt-REJ0+gemini-latest0). Streaks: P1U 7 · P2 6 · P3 7 · P4 6 · P5 7. Caps: P1A 68 · P2 74 · P3 56 · P4 74 · P5 74.",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 0,
+      note: "0 genuinely-new reader-visible editable findings across P5 M17-EXT (Grok MINOR + ChatGPT REJECT — pattern-066 verdict-word regression on byte-identical content, MAJOR-modal M3b-M14) and P3 M17-EXT (Grok MAJOR + ChatGPT REJECT — DP3-20 dissolved, DP3-15 at disclosed ~1.3% ceiling). P5 streak 6→7 cap 80→74; P3 streak 6→7 cap 56 HOLDS.",
+    },
+    links: [
+      { label: "P5 Grok M17 EXT raw", href: `${PR}/EXT_real/H17_2026-07-10/M17/P5_grok_M17.md` },
+      { label: "P5 ChatGPT M17 EXT raw", href: `${PR}/EXT_real/H17_2026-07-10/M17/P5_chatgpt_M17.md` },
+      { label: "P3 Grok M17 EXT raw", href: `${PR}/EXT_real/H17_2026-07-10/M17/P3APJS_grok_M17.md` },
+      { label: "P3 ChatGPT M17 EXT raw", href: `${PR}/EXT_real/H17_2026-07-10/M17/P3APJS_chatgpt_M17.md` },
+    ],
+  },
+  {
     id: "m16-ext-p1u-p4-confirm-2026-07-13",
     dateISO: "2026-07-13",
     kind: "external-browser",
