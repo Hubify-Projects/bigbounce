@@ -233,8 +233,16 @@ submit_chatgpt() {
   # ChatGPT redirects the project page to /c/<uuid> AFTER send completes —
   # capturing too early records the project URL and orphans the leg
   # (2026-07-11: two legs lost this way). Poll for the /c/ URL.
+  # 2026-07-13 (M26/M27 lesson): project->chat redirects now regularly take
+  # longer than the old ~30s window, so real completed reviews were dying
+  # "FAILED" while landing server-side as orphaned chats. Extend the poll to
+  # 24x5s (~120s), keeping the stale-URL guard (accept only a /c/ URL that
+  # DIFFERS from PRE_URL). If the poll still yields no new /c/ URL, fall back
+  # to the project sidebar: find a chat created in the last ~3 min whose first
+  # user message starts with the referee prompt and adopt THAT chat's URL
+  # instead of dying.
   SUBMIT_URL=""
-  for _i in 1 2 3 4 5 6; do
+  for _i in $(seq 1 24); do
     sleep 5
     bcall 45 url || true
     SUBMIT_URL="$(printf '%s' "$BOUT" | tr -d '\r' | tail -1)"
@@ -248,10 +256,41 @@ submit_chatgpt() {
       [ "$SUBMIT_URL" = "$PRE_URL" ] && die "chatgpt URL capture returned the pre-send chat URL (stale tab) — leg NOT confirmed, treat as FAILED"
       ;;
     *)
-      if [ -n "$PRE_URL" ] && case "$PRE_URL" in */c/*) true ;; *) false ;; esac; then
-        die "chatgpt: no NEW /c/ redirect after 30s and tab was on a prior chat ($PRE_URL) — leg NOT confirmed, treat as FAILED"
-      fi
-      echo "    WARN: no /c/ redirect after 30s — URL may be the project page" ;;
+      # Fallback: no new /c/ URL after ~120s. The redirect may simply be slow
+      # or the tab never navigated even though the chat was created server-side.
+      # Snapshot the project sidebar for a recently-created chat whose first
+      # user message starts with the referee prompt and adopt its URL.
+      echo "    WARN: no /c/ redirect after ~120s — trying project sidebar fallback"
+      local RECOVER=""
+      # Collect candidate recent chat hrefs from the sidebar (newest first).
+      bcall 45 js '(function(){var seen={},out=[];[].slice.call(document.querySelectorAll("nav a[href*=\"/c/\"],a[href*=\"/c/\"]")).forEach(function(a){var h=a.getAttribute("href")||"";var m=h.match(/\/c\/[0-9a-f-]+/);if(m&&!seen[m[0]]){seen[m[0]]=1;out.push(m[0])}});return out.slice(0,8).join(",")})()' || true
+      local CANDS; CANDS="$(printf '%s' "$BOUT" | tr -d '\r' | tail -1)"
+      local origin; origin="$(printf '%s' "$PRE_URL" | sed -E 's#^(https?://[^/]+).*#\1#')"
+      [ -n "$origin" ] || origin="https://chatgpt.com"
+      local cand
+      for cand in $(printf '%s' "$CANDS" | tr ',' ' '); do
+        case "$cand" in /c/*) : ;; *) continue ;; esac
+        local curl="$origin$cand"
+        # Skip the pre-send chat outright.
+        [ "$curl" = "$PRE_URL" ] && continue
+        bcall 45 goto "$curl" || continue
+        sleep 4
+        # First user message text: first article/message-author=user block.
+        bcall 45 js '(function(){var el=document.querySelector("[data-message-author-role=user]");if(!el){var a=document.querySelector("article,[data-testid^=conversation-turn]");el=a}var t=(el&&el.innerText||"").trim();return t.slice(0,120)})()' || true
+        local FIRST; FIRST="$(printf '%s' "$BOUT" | tr -d '\r')"
+        case "$FIRST" in
+          "You are an expert referee"*)
+            RECOVER="$curl"; break ;;
+        esac
+      done
+      if [ -n "$RECOVER" ]; then
+        SUBMIT_URL="$RECOVER"
+        echo "    RECOVERED chatgpt leg from sidebar fallback: $SUBMIT_URL"
+      elif [ -n "$PRE_URL" ] && case "$PRE_URL" in */c/*) true ;; *) false ;; esac; then
+        die "chatgpt: no NEW /c/ redirect after ~120s, sidebar fallback found no matching recent chat, and tab was on a prior chat ($PRE_URL) — leg NOT confirmed, treat as FAILED"
+      else
+        echo "    WARN: no /c/ redirect after ~120s and no sidebar match — URL may be the project page"
+      fi ;;
   esac
 }
 
