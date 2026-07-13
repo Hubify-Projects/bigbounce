@@ -57,6 +57,36 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "m40-ext-p1u-adjudication-2026-07-13",
+    dateISO: "2026-07-13",
+    kind: "external-browser",
+    title:
+      "M40-EXT — P1U (v1U.0.20 byte-unchanged) confirm wave. Grok = MAJOR REVISIONS (3 MAJOR / 3 MINOR) — MINOR(M35)→MAJOR band swing UP on IDENTICAL content = pattern-066 (M18→M21, M30, M35→M40); 0 genuinely-new. Provenance verified P1U (Four-Route No-Go); the raw initially tripped the signature gate as a FALSE POSITIVE, corrected via the count-based dominance fix (b35f43c4). clean-wave streak 15→16; cap 68→62 (Grok leg MINOR 12→MAJOR 6).",
+    papers: ["P1A"],
+    summary:
+      "STRICT ledger-first adjudication of the M40 P1U Grok EXT raw against byte-unchanged v1U.0.20 (served md5 c295beef); raw + screenshot READ verbatim before any verdict; post_verdict.sh EXT bare label + record_wave.sh M40 row (clobber-guard confirmed), cap recomputed from the EXT formula (_creationTime-latest per reviewer). VERDICT: Grok = MAJOR REVISIONS (3 MAJOR / 3 MINOR). PROVENANCE VERIFIED P1U — the raw reviews the Four-Route No-Go content (Sec IV A–D Routes 1–3, App B/D regulated NJL gap-equation, Sec X Holst perturbation-transparency, Fierz-by-Fierz projection lemma App C, F1–F2 symmetry-counting, N_tot≈92 vs matter-bounce f_NL=−35/16 tension); NOTE the raw initially tripped the signature gate as a FALSE POSITIVE, corrected via the count-based dominance fix (commit b35f43c4). Grok swings MINOR (M35, 0M/4m) → MAJOR (M40, 3M/3m) on IDENTICAL byte-unchanged content = pattern-066 verdict-word band swing (documented: M18→M21, M16, M30, M35→M40), NOT new findings. 0 genuinely-new; all 6 findings source-cited standing DP1U re-flags: #1 REVISIONS-ISSUES scaffold header (non-finding); #2 MAJOR §I/IV/IX length/repetitiveness/streamline→DP1U-22 (OPINION/backfire-066); #3 MAJOR R1–R3 OOM/ansätze/one-loop coefficients + NJL-gap-eq-to-main-text→DP1U-10/-09 (+DP1U-05/-19 — the regulated NJL gap equation the reviewer asks for is ALREADY delivered in App app:njl_gap + arxiv/scripts/njl_gap_equation_route1.py, CLOSED-BY-COMPUTE v1U.0.14; placement-in-main-text = presentation nit); #4 MAJOR §X transparency proof 'only sketched'→DP1U-12 (standard on-shell scalar equivalence, disclosed narrow core for canonical scalar matter, Claude verified-correct); #5 MINOR N_tot≈92 vs −35/16 tension→DP1U-17 (+DP1U-14; Grok itself calls it 'correctly identified as mutually exclusive'); #6 MINOR basis-complete/Fierz-lemma/F1–F2 summarize-in-intro→DP1U-07 (+DP1U-20; F1–F2 + the completeness lemma already in-body since v107, the fully-explicit Fierz-by-Fierz lemma disclosed 'left to follow-up'); #7 MINOR observational App F–G + companion self-containment→DP1U-06 (+DP1U-15/-16, reproducible-now via BigBounceRepro). ledger_match DRAFT 4/7 auto; 3 UNMATCHED Opus-adjudicated to standing D-ids (#2→DP1U-22, #6→DP1U-07, #1 scaffold non-finding). clean-wave streak 15→16 (directive-K; M37 completed the M35 wave at 15). cap 68→62 (Grok MINOR 12 → MAJOR 6, −6 applied honestly per the EXT-cap formula: 50 + Grok MAJOR 6 + ChatGPT REJECT 0 [M37] + Gemini MAJOR 6 = 62; post_verdict.sh recomputed, verified in Convex). No bump (byte-unchanged, all re-flags/presentation nits); directive_g.sh not run; no ACCEPT faked, no finding dismissed without a source-cited verdict, no math fabricated.",
+    keyTakeaways: [
+      "0 genuinely-new on byte-unchanged v1U.0.20 → P1U clean-wave streak 15→16. Grok MINOR(M35)→MAJOR(M40) on IDENTICAL content = pattern-066 verdict-word band swing (M18→M21, M30, M35→M40), NOT a content regression.",
+      "Provenance verified P1U (Four-Route No-Go signatures present); the raw initially tripped the signature gate as a FALSE POSITIVE, corrected via the count-based dominance fix (b35f43c4). Every finding a source-cited standing DP1U re-flag.",
+      "cap 68→62 (Grok leg MINOR 12 → MAJOR 6, honest per the EXT formula). #3's regulated NJL gap-equation ask is already delivered in App app:njl_gap (CLOSED-BY-COMPUTE v1U.0.14); #6's F1–F2 completeness lemma is already in-body since v107 — both placement/presentation nits, no edit warranted.",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 0,
+      note: "M40-EXT: 0 genuinely-new on P1U. Every Grok finding a source-cited standing DP1U re-flag or disclosed-scope limitation; the MAJOR band swing on byte-unchanged content is pattern-066. No edits warranted; no bump.",
+    },
+    links: [
+      {
+        label: "P1U M40 truth-audit",
+        href: `${PR}/EXT_real/H17_2026-07-10/M40/P1U_grok_truth_audit_M40.md`,
+      },
+      {
+        label: "P1U M40 Grok raw",
+        href: `${PR}/EXT_real/H17_2026-07-10/M40/P1U_grok_M40.md`,
+      },
+      { label: "DISPOSITIONS/P1U.md", href: `${PR}/DISPOSITIONS/P1U.md` },
+    ],
+  },
+  {
     id: "ops-center-2026-07-13",
     dateISO: "2026-07-13",
     kind: "skill-improvement",
