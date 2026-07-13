@@ -57,6 +57,39 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p4-dp4-22-edgeon-penalty-2026-07-13",
+    dateISO: "2026-07-13",
+    kind: "ext-closure",
+    title:
+      "P4 v1.0.240 — DP4-22 edge-on sensitivity-penalty fix (sqrt→linear) integrated off a parked branch. The one genuinely-new M24-EXT correctness item: the edge-on Appendix-E penalty used the Fisher-CRB sqrt scaling (1−δ)^−1/2−1=8.98% for the naive per-pixel f_CW estimator that RETAINS edge-on in N_spiral, but that estimator actually incurs LINEAR (1−δ)^−1−1=18.8% amplitude dilution. VERIFIED REAL by independent Opus re-derivation; fixed at both call sites + b/a sweep + regenerated (script-reproducible) artifact JSON. Neither value changes the null verdict. clean-wave streak RESETS 12→0.",
+    papers: ["P4"],
+    summary:
+      "A parked branch (tick-p4-dp4-22-edgeon-2026-07-13) held a v1.0.240 attempt closing DP4-22 — the single genuinely-new correctness item M24-EXT ChatGPT #10 raised. The paper's Appendix-E edge-on contamination penalty applied the Fisher/Cramér-Rao sqrt scaling σ(A)∝N_eff^−1/2 ⇒ (1−δ)^−1/2−1=8.98% for δ=f_edge=15.8%. But the PRIMARY dipole uses the NAIVE per-pixel f_CW estimator, in which flip-symmetric edge-on contaminants are RETAINED in N_spiral (not excluded); carrying zero mean CW−CCW asymmetry they split 50/50 under hard argmax and dilute the recovered amplitude LINEARLY, E[A_p]=(1−δ)A_phys, so the physical-amplitude floor inflates by (1−δ)^−1−1=18.8% — roughly a factor of two larger. The sqrt value is the CRB for an OPTIMAL estimator that identifies and down-weights/excludes the zero-Fisher-information edge-on population, which the naive estimator does not do; the two values are individually valid but for different estimators, so quoting the sqrt penalty for the naive estimator was an internal inconsistency. VERIFIED REAL via an independent skeptical-referee Opus re-derivation (arithmetic + statistics checked; b/a sweep 6.2/11.7/18.8/27.4/37.9% verified). FIXED v1.0.240: adopted the conservative linear value at both call sites (body §data + App-E derivation) + the full b/a-threshold sweep; updated the generator scripts/edge_on_contamination_metric.py to emit both fisher + linear fields and REGENERATED outputs/edge_on_contamination_metric.json from the parquet on disk (505,889 edge-on of 3,201,160; script-reproducible, not hand-edited); confirmed no figure bakes in the penalty value (directive I6, every \\includegraphics checked). Added an explicit note that NEITHER value changes the null verdict — the injection-recovery floors are measured on the same edge-on-contaminated observed-label field, so the like-for-like null comparison is unaffected, and the penalty is largely subsumed by the primary g=2a−1 GZ1-accuracy dilution (69.91% human-label accuracy already reflects edge-on misclassification empirically). directive_g.sh HARD-GATE PASS: v1.0.240, 36pp, 0 undef / 0 overfull>50pt, md5 7dcf5eaf447d50f3bbbe30952f140981, 13 mirrors byte-identical, Convex bump k575c3pzrhd1cjneny3a1hrwfh8af0b4, 3-way md5 match, PDF p1 shows Jul 13 2026 + body shows 18.8%/9.0%. Per directive-K this genuinely-new found+fixed item RESETS P4's clean-wave streak 12→0 (P4 re-tests next wave); readiness cap HOLDS 80 (a content fix that closes an item neither advances nor drops the reviewer-verdict cap). The parked branch was fully integrated and deleted. Integrity absolute: never faked an accept, never dismissed a finding without a source-cited verdict, never fabricated.",
+    keyTakeaways: [
+      "DP4-22 VERIFIED REAL + CLOSED: the naive per-pixel f_CW estimator retains edge-on in N_spiral → LINEAR (1−δ)^−1−1=18.8% dilution, not the Fisher-CRB sqrt (1−δ)^−1/2−1=9.0%; the sqrt would only apply to an optimal down-weighting estimator. Paper adopts the larger conservative linear value.",
+      "Artifact integrity: the generator script was updated to emit both framings and the JSON REGENERATED from the parquet (script-reproducible), rather than hand-editing the artifact; directive I6 figure check confirmed no figure bakes in the penalty value.",
+      "Neither value changes the null verdict — injection-recovery floors measured on the same edge-on-contaminated observed field; largely subsumed by the g=2a−1 GZ1-accuracy dilution. clean-wave streak resets 12→0 per directive-K; cap HOLDS 80.",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 1,
+      note: "One genuinely-new correctness item (M24-EXT ChatGPT #10), external-tier caught, VERIFIED REAL by independent Opus re-derivation and CLOSED-BY-EDIT in v1.0.240. Integrated off a parked branch onto current-main; streak resets 12→0.",
+    },
+    links: [
+      {
+        label: "DISPOSITIONS/P4.md (DP4-22)",
+        href: `${GH}/project-context/peer-reviews/DISPOSITIONS/P4.md`,
+      },
+      {
+        label: "edge_on_contamination_metric.py (generator)",
+        href: `${GH}/pipelines/p2_chirality/scripts/edge_on_contamination_metric.py`,
+      },
+      {
+        label: "P4 v1.0.240 PDF",
+        href: "/papers/chirality_catalog_paper_v1.0.240.pdf",
+      },
+    ],
+  },
+  {
     id: "process-audit-2026-07-14",
     dateISO: "2026-07-14",
     kind: "skill-improvement",
