@@ -57,6 +57,43 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "m37-m38-ext-adjudication-2026-07-13",
+    dateISO: "2026-07-13",
+    kind: "external-browser",
+    title:
+      "M37/M38-EXT — P4 (M38) on CURRENT v1.0.240 + P5/P2/P1U (M37) confirm wave. 0 genuinely-new on all four papers. P4: DP4-22 HELD ABSENT — the first clean wave on the post-fix v1.0.240, streak 0→1, cap HOLDS 80. P5 streak 3→4 (DP5-26 held absent, cap 74). P2 streak 14→15 (ChatGPT REJECT floor, cap 74). P1U streak 14→15 (ChatGPT re-ride REJECT completes the M35 wave whose ChatGPT leg was FAILED-dead, cap 68).",
+    papers: ["P4", "P5", "P2", "P1U"],
+    summary:
+      "Resumed a stalled M37/M38 adjudication: the prior agent posted P4-M38 + P5-M37 verdicts + all four readinessMetrics wave rows to Convex but had NOT posted P2-M37 (Grok+ChatGPT) or P1U-M37 (ChatGPT) verdicts and committed nothing. Completed the missing legs: every raw READ verbatim before any verdict; post_verdict.sh EXT bare labels (record_wave clobber-guard confirmed the existing wave rows were NOT overwritten). VERDICTS — P4 M38 (v1.0.240): Grok MINOR (0M/4m) + ChatGPT MAJOR (10M/1m). P5 M37 (v0.1.127): Grok MINOR (0M/4m) + ChatGPT MAJOR (10M/3m). P2 M37 (v1.7.116): Grok MINOR (0M/5m) + ChatGPT REJECT (7M/2m). P1U M37 (v1U.0.20): ChatGPT REJECT (12M/2m) re-ride. 0 genuinely-new on all four → every finding a source-cited standing D-id re-flag (four Opus truth-audits, one per paper). P4 HARD CHECK: DP4-22 edge-on sensitivity-penalty item (8.98%→18.8% sqrt→linear, closed v1.0.240) HELD ABSENT — strict grep of both P4 raws for edge-on/f_edge/8.98/18.8/0.158/Cramér/Fisher/sqrt = 0 hits; Grok #4 (GZ1-human independence)=DP4-09/-15 and ChatGPT #3 (p_eq>0.6)/#2 (A50/A95)=DP4-07/-09 confirmed NOT DP4-22 — so M38 is the first clean directive-K wave on the post-fix v1.0.240 (streak restart 0→1). P5: DP5-26 artifact-range fix HELD ABSENT (grep [A1]/[A32]/artifact-range = NONE). P2 cruxes: ChatGPT #2 (A.1(d) Cai–Li 'internally inconsistent', ledger_match 1.00)=standing DP2-01 −35/16-vs-−35/8/+99/128-sign disposition (re-falsified by re-running committed p2_vertex_check.py + Li closed form), #4 (cubic δf_NL≲10⁻³)=DP2-13 disclosed OOM caveat. P1U: all 14 findings standing DP1U re-flags, item set 1:1 with M33/M30/M26/M23 REJECTs = directive-H harsh-referee floor; the two prompt-flagged 'dimensional errors' (#6 R2 [ϑ]=DP1U-09, #2 dim+1 Bianchi=DP1U-08) confirmed disposed re-flags, not new claims. No bumps (all byte-unchanged); directive_g.sh not run. Caps all recomputed by post_verdict.sh (_creationTime-latest per reviewer) + verified in Convex: P4 80, P5 74, P2 74, P1U 68. Integrity absolute: raws read before any verdict, no faked accept, no un-sourced dismissal, no fabrication.",
+    keyTakeaways: [
+      "P4 DP4-22 HELD ABSENT on CURRENT v1.0.240 (0 grep hits in both raws) → first clean wave on the post-fix version, streak 0→1, cap HOLDS 80. The edge-on sqrt→linear fix is not re-raised by either reviewer.",
+      "0 genuinely-new across all four papers → P5 3→4 (DP5-26 held), P2 14→15 (ChatGPT REJECT floor), P1U 14→15 (ChatGPT re-ride REJECT completes the M35 wave whose ChatGPT leg was FAILED-dead). Caps HOLD: P4 80, P5 74, P2 74, P1U 68.",
+      "Resumed a stalled run: prior agent had posted P4-M38 + P5-M37 verdicts + all four wave rows to Convex but not the P2-M37 / P1U-M37 verdicts, and committed nothing. Completed the missing post_verdict legs (clobber-guard confirmed wave rows untouched) + folded the four truth-audits + disposition-ledger entries.",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 0,
+      note: "M37/M38-EXT: 0 genuinely-new across P4/P5/P2/P1U. Every finding a source-cited standing D-id re-flag or disclosed-scope limitation; P4's DP4-22 fix HELD ABSENT on the current v1.0.240 (streak 0→1), P5 DP5-26 held, P2/P1U ChatGPT = directive-H harsh-referee REJECT floor. No edits warranted; no bumps.",
+    },
+    links: [
+      {
+        label: "P4 M38 truth-audit",
+        href: `${PR}/EXT_real/H17_2026-07-10/M38/P4_truth_audit_M38.md`,
+      },
+      {
+        label: "P5 M37 truth-audit",
+        href: `${PR}/EXT_real/H17_2026-07-10/M37/P5_truth_audit_M37.md`,
+      },
+      {
+        label: "P2 M37 truth-audit",
+        href: `${PR}/EXT_real/H17_2026-07-10/M37/P2_truth_audit_M37.md`,
+      },
+      {
+        label: "P1U M37 truth-audit",
+        href: `${PR}/EXT_real/H17_2026-07-10/M37/P1U_truth_audit_M37.md`,
+      },
+    ],
+  },
+  {
     id: "p4-dp4-22-edgeon-penalty-2026-07-13",
     dateISO: "2026-07-13",
     kind: "ext-closure",
@@ -92,7 +129,7 @@ export const reviewRounds: ReviewRound[] = [
   {
     id: "p4-m35-ext-informational-2026-07-13",
     dateISO: "2026-07-13",
-    kind: "external",
+    kind: "external-browser",
     title:
       "M35-EXT P4 (informational) — two raws that read the now-superseded v1.0.239. Grok MINOR REVISIONS (0 MAJOR/5 MINOR) + ChatGPT MAJOR REVISIONS (11 MAJOR/3 MINOR); 0 genuinely-new. Every finding a source-cited standing DP4 re-flag; the DP4-22 edge-on penalty inconsistency (now closed in v1.0.240) is NOT independently flagged by either reviewer, so M35 is pure pattern-066 verdict-word variance, not a pre-integration confirmation. Cap HOLDS 80; streak stays 0 (already reset by the DP4-22 fix).",
     papers: ["P4"],
