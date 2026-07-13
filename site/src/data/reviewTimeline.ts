@@ -57,6 +57,30 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "m19-int-p2-confirm-cap-68-74-2026-07-13",
+    dateISO: "2026-07-13",
+    kind: "internal-api",
+    title:
+      "M19-INT — P2 confirm wave, 0 genuinely-new, streak 7→8. OpenAI REJECT + Grok MAJOR (pattern-066 slip) + Gemini MINOR (FRESH read, replaces stale F14 MAJOR) + Claude MINOR (2 MAJOR/4 MINOR, Q3 AFFIRMS −35/16 'is supported'). Cap 68→74 — the fresh Gemini MINOR (12) supersedes the stale F14 Gemini MAJOR (6) as latest-per-reviewer, so the EXT formula recomputes honestly to 74 (closes the prior 74↔68 stale-order reconciliation). v1.7.116 byte-unchanged; directive_g.sh not run.",
+    papers: ["P2"],
+    summary:
+      "M19-INT: P2 4-leg INT adjudication vs v1.7.116 (byte-unchanged; identical file M1/M4/M7/M10/M13/M15/M18 audited). OpenAI gpt-5.5 REJECT (verdict-only re-test; recurring 14-item class maps 1:1 to standing DP2 D-ids per the M18 ledger section; structural harsh-referee floor, directive-H); Grok grok-4.3 MAJOR REVISIONS (verdict-only; documented pattern-066 MINOR↔MAJOR run-to-run variance on the identical file; MAJORs quote the paper's own disclosed proxy-floor → DP2-34/-07/-01/-02); Gemini gemini-3.1-pro MINOR REVISIONS (fresh read, replaces the stale F14 Gemini MAJOR as the latest Gemini row; presentation-nit / disclosed-caveat class DP2-30/-13/-18); Claude opus-4-8 subscription MINOR REVISIONS (full raw: 2 MAJOR + 4 MINOR — scope/novelty DP2-04/-17/-29, length/redundancy DP2-30/-14, 'resolution' framing DP2-01/-25/-32.3 already-reframed-v1.7.112, birefringence-appendix DP2-30/M1.2 OPINION, Heinrich-year DP2-32.5 VERIFIED-non-defect, abstract-density DP2-32.1). Claude independently re-verified every load-bearing number (−35/16 four-way vertex certification, c15 channel-native Fisher ρ=−0.425/−0.494 σ_marg=0.9417→2.32σ, all Bayes/significance arithmetic) with zero discrepancy; Q3 AFFIRMS the central claim supported. 0 genuinely-new reader-visible editable findings across all 4 legs → cleanWaveStreak 7→8. Cap 68→74: the fresh Gemini MINOR (12) replaces the stale F14 Gemini MAJOR (6) → 50 + Grok-EXT MINOR 12 + ChatGPT-EXT REJECT 0 + Gemini-latest MINOR 12 = 74 (post_verdict.sh formula-true, closing the prior 74↔68 stale-order reconciliation).",
+    keyTakeaways: [
+      "0 genuinely-new reader-visible editable findings across all 4 INT legs of M19-INT on byte-unchanged P2 v1.7.116. Claude full raw (2 MAJOR + 4 MINOR) maps 1:1 to standing DP2 D-ids (DP2-04/-17/-29/-30/-14/-01/-25/-32) with 2 VERIFIED non-defects (Heinrich year, 'resolution' framing already reframed v1.7.112); Q3 AFFIRMS −35/16 'is supported'. cleanWaveStreak 7→8.",
+      "Cap 68→74: the fresh Gemini MINOR (12) supersedes the stale F14 Gemini MAJOR (6) as the true _creationTime-latest Gemini row, so the EXT formula (50 + Grok-EXT MINOR 12 + ChatGPT-EXT REJECT 0 + Gemini-latest MINOR 12) recomputes honestly to 74 — closing the prior BUG-1-era 74↔68 stale-order reconciliation. INT-Grok/OpenAI labeled to avoid the EXT-formula reviewer-substring collision.",
+      "Integrity: all 4 raws read verbatim before disposition; Claude full-raw findings each source-cited to a DP2 D-id + tex line; OpenAI REJECT / Grok MAJOR / Gemini MINOR verdict words recorded as-is without softening or upgrading; Grok's MAJOR-on-unchanged diagnosed as pattern-066 (its MAJORs quote the paper's own disclosures). No ACCEPT faked, no un-sourced dismissal, no math fabricated, no version bumped. directive_g.sh NOT run (no edit). Streaks: P1U 8 · P2 8 · P3 6 · P4 6 · P5 6. Caps: P1A 68 · P2 74 · P3 56 · P4 74 · P5 80.",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 0,
+      note: "0 genuinely-new reader-visible editable findings across all 4 INT legs of M19-INT. P2 cleanWaveStreak 7→8; cap 68→74 (fresh Gemini MINOR supersedes stale F14 MAJOR, formula-true). All-A grid P2 INT cells fed via Convex readinessMetrics.",
+    },
+    links: [
+      { label: "P2 Claude M19-INT raw", href: `${PR}/INT_api/H17_2026-07-10/intwave_P2_claude_0127.md` },
+      { label: "M19 P2 INT truth audit", href: `${PR}/INT_api/H17_2026-07-10/M19_P2_INT_truth_audit.md` },
+      { label: "P2 disposition ledger", href: `${PR}/DISPOSITIONS/P2.md` },
+    ],
+  },
+  {
     id: "post-verdict-bug1-root-fix-cap-recompute-2026-07-13",
     dateISO: "2026-07-13",
     kind: "skill-improvement",
