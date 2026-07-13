@@ -20,6 +20,16 @@
 
 set -euo pipefail
 
+# ROOT FIX (2026-07-13, permanent): make the headed browser STICKY. The gstack
+# browse server auto-launches HEADLESS on any on-demand relaunch when
+# BROWSE_HEADED != 1 (server-node useHeadless defaults true). A headed server
+# that dies between ticks then relaunches headless -> login walls read as dead
+# chats -> false FAILED-dead harvests downstream. Exporting BROWSE_HEADED=1 here
+# makes every `$B ...` relaunch come back HEADED. This is the ROOT kill;
+# assert_headed is the safety net. Belt-and-suspenders: a persistent shell-profile
+# `export BROWSE_HEADED=1` (see ops/handoff/bootstrap.sh) covers non-tool paths.
+export BROWSE_HEADED=1
+
 REPO="/Users/houstongolden/Desktop/CODE_YOU/bigbounce"
 B="$HOME/.claude/skills/gstack/browse/dist/browse"
 ROUND_DIR_BASE="$REPO/project-context/peer-reviews/EXT_real/H17_2026-07-10"

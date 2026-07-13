@@ -28,6 +28,11 @@ You are joining Houston's bigbounce lab as a SECOND machine of ONE lab. Do this 
    Resolve every FAIL (WARN is degraded-but-runnable). Re-run until READY.
    First run: the HEADED browser needs my manual reviewer logins — run /connect-chrome
    and tell me to sign into ChatGPT/Grok/Gemini before any EXT sweep.
+   Machine-level sticky-headed: add `export BROWSE_HEADED=1` to your shell profile
+   (~/.zshrc). The browse server relaunches HEADLESS by default, which reads live
+   reviewer chats as dead (false FAILED-dead harvests). The EXT tools + cron tick
+   already export it; the profile line covers ad-hoc `browse` calls. bootstrap.sh
+   WARNs if it's missing.
 
 4. Read the two-machine operating model: ops/handoff/HANDOFF_SYNC.md
    (git = sync bus, Convex = shared live state, lease = who drives).

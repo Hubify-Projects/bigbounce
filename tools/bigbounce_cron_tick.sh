@@ -24,6 +24,11 @@ TS="$(date +%Y%m%d-%H%M%S)"
 mkdir -p "$LOGDIR" "$RUNTIME_DIR"
 LOG="$LOGDIR/tick-$TS.log"
 export PATH="/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/Library/TinyTeX/bin/universal-darwin:$PATH"
+# STICKY HEADED (2026-07-13, permanent): every browse relaunch this tick spawns
+# must come back HEADED, not the server-node headless default. The EXT tools
+# (ext_submit/ext_harvest/wave_submit) each re-export this, but exporting it at
+# the cron root is belt-and-suspenders so any agent-spawned browse inherits it.
+export BROWSE_HEADED=1
 
 # A local mutex prevents two launchd ticks on this machine from overlapping.
 if [ -d "$LOCK" ]; then

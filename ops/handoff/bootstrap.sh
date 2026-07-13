@@ -168,6 +168,22 @@ else
   row WARN "gstack browse tool" "not found at $BROWSE — needed for HEADED EXT sweeps (/connect-chrome)"
 fi
 
+# 5b. BROWSE_HEADED sticky-headed guard (2026-07-13, machine-level root fix) ---
+# The gstack browse server auto-launches HEADLESS on any on-demand relaunch when
+# BROWSE_HEADED != 1 (server-node useHeadless defaults true). A headed server
+# that dies between ticks then silently relaunches headless -> login walls read
+# as dead chats -> false FAILED-dead harvests. The EXT tools now each export
+# BROWSE_HEADED=1 and the cron tick exports it at the root, so the tools are
+# covered. This check is the MACHINE-LEVEL belt-and-suspenders: a persistent
+# `export BROWSE_HEADED=1` in the shell profile covers ad-hoc `browse` invocations
+# from an interactive shell too.
+if grep -qsE '^\s*export\s+BROWSE_HEADED=1' "$HOME/.zshrc" "$HOME/.zprofile" "$HOME/.profile" "$HOME/.bashrc" 2>/dev/null \
+   || [ "${BROWSE_HEADED:-}" = "1" ]; then
+  row PASS "BROWSE_HEADED sticky" "export BROWSE_HEADED=1 present (tools+cron already export it; this is the shell-profile belt-and-suspenders)"
+else
+  row WARN "BROWSE_HEADED sticky" "no 'export BROWSE_HEADED=1' in shell profile — tools+cron export it, but add it to ~/.zshrc so ad-hoc 'browse' calls also relaunch HEADED"
+fi
+
 # 6. launchd plists installed (durable loop guarantee) -----------------------
 for plist in com.bigbounce.loopwatchdog com.bigbounce.cron-tick; do
   repo_copy="$REPO_ROOT/tools/launchd/$plist.plist"

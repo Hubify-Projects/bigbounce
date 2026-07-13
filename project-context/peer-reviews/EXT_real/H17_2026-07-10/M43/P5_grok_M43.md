@@ -1,0 +1,10 @@
+VERDICT: MINOR REVISIONS
+
+ISSUES:
+
+[MAJOR] §V B (and abstract): The DESIVAST-anchored path is explicitly designated post-hoc as the “exploratory primary” after inspecting results (“no timestamped analysis plan predates the data”); while the uniform Bonferroni-5 null across all five estimators is reported, highlighting one path as primary for the “new empirical constraint” claim introduces garden-of-forking-paths exposure that a pre-registered or clearly a-priori justified choice would have avoided.
+[MAJOR] §II, §III A, Appendix A (referenced but not fully reproduced): The entire headline result (labels, monopole Δf_P4_CW = −0.0026, and GZ1 69.91 % accuracy floor used for de-attenuation) rests on the concurrent unpublished Paper IV catalog; the summary provided is insufficient for independent referee verification of parity-equivariance, test-time augmentation, and monopole provenance without access to the companion manuscript and its public catalog artifacts.
+[MINOR] §VIII (Table XI and surrounding text): The ≈0.9 pp “honest effective 2σ systematic envelope” is obtained by quadrature of counting CI + geometry (0.60 pp) + footprint + confidence + match-radius terms, but the text does not tabulate individual contributions, justify the independence assumption, or propagate covariances (e.g., between geometry and membership definitions); this makes the quoted bound difficult to reproduce or stress-test.
+[MINOR] §VIII and §XIII: The RSD discussion correctly bounds the dominant coherent outflow term at 0.024 pp via first-order Zel’dovich reconstruction and fixed-geometry MC, but the primary claim remains strictly in redshift space; a concise statement clarifying that the de-attenuated physical-chirality bound (≈2.26 pp) inherits the same fixed-redshift-space limitation (and that the anisotropic tidal channel is unquantified) would prevent over-interpretation by model-builders.
+
+The central claim of environment-independent spiral chirality (null Δf_CW at the ≈0.9 pp level after all robustness checks) is supported by the data and statistical framework presented.
