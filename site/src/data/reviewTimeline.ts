@@ -57,6 +57,31 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "m21-ext-p1u-p4-confirm-2026-07-13",
+    dateISO: "2026-07-13",
+    kind: "external-browser",
+    title:
+      "M21-EXT — P1U + P4 confirm wave, 0 genuinely-new on either paper (both byte-unchanged). P1U (v1U.0.20): Grok MAJOR + ChatGPT REJECT — clean-wave streak 8→9; cap 68→62 (Grok MINOR→MAJOR pattern-066 slip M18→M21). P4 (v1.0.239): Grok EXT ACCEPT (3rd verified P4 EXT ACCEPT) + ChatGPT MAJOR (back from its M19 one-round REJECT slip) — streak 8→9; cap 74→85. No bumps; directive_g.sh not run.",
+    papers: ["P1U", "P4"],
+    summary:
+      "M21-EXT: two-paper byte-unchanged confirm wave — 0 genuinely-new reader-visible editable findings on either paper, ledger-first Opus truth-audit against the live .tex. P1U (v1U.0.20, byte-unchanged): Grok MAJOR REVISIONS (3 MAJOR/3 MINOR; closing line 'is supported by the explicit operator reductions, dimensional power-counting, Fierz lemma, and one-loop estimates presented') + ChatGPT REJECT (11 MAJOR/2 MINOR; concedes 'the narrow classical statement that the Holst term decouples for canonical scalar matter is supported', raw l.215). PATTERN-066: Grok verdict-word history on byte-identical v1U.0.20 = M11 MINOR → M13 MAJOR → M16 MINOR → M18 MINOR → M21 MAJOR; the M21 item set is the same content class as M16/M18 (four-route framing, completeness lemma/14-catalog, §X transparency, R4 naturalness, Routes 2/3 amplitude budgets, D_inf/N_tot) — only the top-line verdict word flipped. Every finding source-cited to a standing DP1U D-id (DP1U-02/-03/-04/-05/-06/-07/-08/-09/-10/-11/-12/-13/-14/-15/-17/-19/-20); ledger_match Grok 5/7, ChatGPT 8/12, all mechanically-UNMATCHED items Opus-adjudicated RE-FLAG. cleanWaveStreak 8→9; cap 68→62 (Grok EXT MINOR→MAJOR drops its formula contribution 12→6: 50 + Grok MAJOR 6 + ChatGPT REJECT 0 + Gemini-latest MAJOR 6 = 62; honest cap movement, no streak reset). P4 (v1.0.239, byte-unchanged): Grok EXT ACCEPT (0 MAJOR/3 MINOR; raw l.1 literally 'VERDICT: ACCEPT', closing 'the central claim … is supported by the data, the declared estimator hierarchy, the injection-recovery calibration, the model-independent GZ1 human-label cross-check') + ChatGPT MAJOR REVISIONS (11 MAJOR/3 MINOR; Q3 concedes 'one data-selected high-confidence hard-label estimator is null-consistent'). PATTERN-066: ChatGPT returns to MAJOR after its M19 one-round REJECT slip (the first P4 ChatGPT REJECT after M7/M9/M11/M14/M16 all-MAJOR); the M21 item set is 1:1 with those reads. Grok's ACCEPT is the THIRD verified Grok-EXT P4 ACCEPT of the campaign (after W1-EXT + M18-INT). Every finding source-cited to a standing DP4 D-id (DP4-01/-07/-08/-09/-12/-13/-14/-15/-16/-17/-21); ledger_match Grok 3/3, ChatGPT 10/17, all UNMATCHED items Opus-adjudicated RE-FLAG. cleanWaveStreak 8→9; cap 74→85 (Grok MINOR→ACCEPT +4.7, ChatGPT REJECT→MAJOR +6: 50 + Grok ACCEPT 16.7 + ChatGPT MAJOR 6 + Gemini-latest MINOR 12 = 85). No bumps; directive_g.sh not run.",
+    keyTakeaways: [
+      "P4 Grok-EXT ACCEPT (raw-verified l.1 'VERDICT: ACCEPT') is the THIRD verified Grok-EXT P4 ACCEPT of the campaign — the All-A grid Grok-EXT P4 cell flips to A. All 3 Grok minors are disclosed presentation/re-flags (abstract σ-emphasis → DP4-14; 47% remainder paragraph → DP4-17; A50/A95 area-uniform label → DP4-09). cleanWaveStreak 8→9; cap 74→85 (honest formula lift from the ACCEPT + ChatGPT REJECT→MAJOR return).",
+      "P1U pattern-066: Grok MINOR→MAJOR slip (M18→M21) on byte-identical v1U.0.20 = referee run-to-run variance, NOT a content regression — the M21 item set matches M16/M18 and Grok's closing still supports the central claim. ChatGPT REJECT is the directive-H structural harsh-referee floor (concedes the narrow classical scalar-matter decoupling). cleanWaveStreak 8→9; cap 68→62 (honest formula move from the Grok slip, no reset).",
+      "Integrity: all 4 raws read verbatim before disposition; Grok ACCEPT confirmed at raw line 1 (not inferred from a label); ChatGPT MAJOR/REJECT recorded to Convex as-is (no softening); every finding source-cited to a DP1U/DP4 D-id; 0 genuinely-new editable defects → no ACCEPT faked, no math fabricated, no version bumped, directive_g.sh NOT run. Streaks: P1U 9 · P2 9 · P3 8 · P4 9 · P5 8. Caps: P1A 62 · P2 68 · P3 56 · P4 85 · P5 74.",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 0,
+      note: "0 genuinely-new reader-visible editable findings across P1U M21-EXT (Grok MAJOR + ChatGPT REJECT — all source-cited DP1U re-flags, Grok MINOR→MAJOR pattern-066 slip) and P4 M21-EXT (Grok EXT ACCEPT raw-verified l.1 + ChatGPT MAJOR — all source-cited DP4 re-flags). P1U streak 8→9 cap 68→62; P4 streak 8→9 cap 74→85 (Grok-EXT ACCEPT). All-A grid P4 Grok-EXT cell → A, fed via Convex readinessMetrics.",
+    },
+    links: [
+      { label: "P1U M21 truth audit", href: `${PR}/EXT_real/H17_2026-07-10/M21/P1U_truth_audit_M21.md` },
+      { label: "P4 M21 truth audit", href: `${PR}/EXT_real/H17_2026-07-10/M21/P4_truth_audit_M21.md` },
+      { label: "P1U disposition ledger", href: `${PR}/DISPOSITIONS/P1U.md` },
+      { label: "P4 disposition ledger", href: `${PR}/DISPOSITIONS/P4.md` },
+    ],
+  },
+  {
     id: "m20-ext-p2-p3apjs-confirm-2026-07-13",
     dateISO: "2026-07-13",
     kind: "external-browser",
