@@ -57,6 +57,72 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "m33-ext-adjudication-2026-07-13",
+    dateISO: "2026-07-13",
+    kind: "external-browser",
+    title:
+      "M33-EXT — P1U + P4 confirm wave on byte-unchanged content. 0 genuinely-new on either paper → P1U streak 12→13 (ChatGPT REJECT, directive-H floor), P4 streak 11→12 (Grok MINOR + ChatGPT MAJOR, pattern-066 Grok ACCEPT→MINOR→MAJOR→MINOR walk on byte-identical v1.0.239). P4 cap 74→80 (Grok MAJOR→MINOR restores +6). M32 P3-ApJS ChatGPT leg = FAILED-dead GAP, re-ride queued in M34.",
+    papers: ["P1U", "P4"],
+    summary:
+      "STRICT ledger-first adjudication of the M33 EXT raws (3 real legs), every raw + screenshot READ verbatim before any verdict, verdicts recorded to Convex (record_wave.sh M33 rows + post_verdict.sh real EXT legs; caps recomputed from the EXT formula, _creationTime-latest per reviewer). VERDICTS: P1U ChatGPT=REJECT (13 MAJ/2 MIN) on byte-unchanged v1U.0.20 (served md5 c295beef); P4 Grok=MINOR (0 MAJ/5 MIN) + ChatGPT=MAJOR (12 MAJ/2 MIN) on byte-unchanged v1.0.239 (served md5 15211f0f). 0 genuinely-new across all three legs. P1U ChatGPT = its documented directive-H structural harsh-referee floor: item set 1:1 with the M30/M26/M23/H17G REJECTs, every finding a source-cited standing DP1U re-flag (Eq(1)-(4) variational→DP1U-03; Eq(5)-(8) dim+1/Bianchi + O1=O6/Nieh-Yan→DP1U-08/-07; single-scale-NDA no-go→DP1U-08/-07/-11; Ξ stress-energy/J5²∝a^-6/w=-1→DP1U-14/-06; Route-1 NJL Fierz-exchange→DP1U-05/-19 CLOSED-BY-COMPUTE v1U.0.14; Route-2 ϑNY ansatz→DP1U-09; Route-3 RG-vs-time→DP1U-10; Route-4 ALP overshoot→DP1U-11; 13-constraint→DP1U-13; §X transparency novelty→DP1U-12; no single coherent model→DP1U-14; -35/16 vs Cai -35/8→DP1U-17 [P2 companion quadruple-certifies]; §XIV.D erasure→DP1U-14; App-F-H don't test ECH→DP1U-15; MINOR κ conventions→DP1U-02 CLOSED-BY-EDIT; MINOR Figs 3-7→DP1U-22/-24). P1U streak 12→13; cap 62 HOLDS (Grok MAJOR 6 + ChatGPT REJECT 0 + Gemini MAJOR 6 + 50). P4: PATTERN-066 confirmed — Grok read this byte-identical v1.0.239 as M21-ACCEPT → M24-MINOR/FAILED → M30-MAJOR → M33-MINOR on the identical disclosed-content set (p_eq>0.6, 47% residual, Shamir caveat, injection convention, DOI) = textbook maximal-harsh-referee severity oscillation, NOT new findings (DP4-18). Grok 5 minors → DP4-07/-17/-09/-11/-21/-13; ChatGPT 12M/2m 1:1 with M26/M30 → DP4-09/-01/-14/-07/-08/-15/-16/-17/-10/-11/-21/-13 (confusion-matrix/generative-null/joint-covariance stay OPEN-COMPUTE DP4-15/-16/-17; image-parity/WCS audit = same image-level-compute class, not editable now). P4 streak 11→12; cap 74→80 (Grok flips MAJOR→MINOR restoring +6: 50 + Grok MINOR 12 + ChatGPT MAJOR 6 + Gemini-EXT-latest MINOR 12). M32 P3-ApJS ChatGPT leg confirmed a FAILED-dead GAP (no reviewer output) — recorded as a leg GAP, re-ride submission queued in M34. No bumps (both papers byte-unchanged); directive_g.sh not run; ledger_match DRAFT run on each raw, every UNMATCHED Opus-adjudicated to a standing D-id; no ACCEPT faked, no finding dismissed without a source-cited verdict, no math fabricated. Raws + per-leg audits: EXT_real/H17_2026-07-10/M33/{P1U_chatgpt,P4_grok,P4_chatgpt}_M33.md + {P1U,P4}_truth_audit_M33.md.",
+    keyTakeaways: [
+      "0 genuinely-new across all 3 M33 legs. P1U streak 12→13 (ChatGPT REJECT = directive-H structural floor, 1:1 with M30/M26/M23/H17G). P4 streak 11→12.",
+      "P4 pattern-066 confirmed: Grok read byte-identical v1.0.239 as ACCEPT(M21)→MINOR(M24)→MAJOR(M30)→MINOR(M33) — severity oscillation on the identical disclosed-content set, NOT new findings (DP4-18). Cap 74→80 as Grok's MAJOR→MINOR restores +6.",
+      "M32 P3-ApJS ChatGPT leg was a FAILED-dead GAP (no output). Recorded as a leg GAP, not a P3 verdict; re-ride queued in M34 so it does not stand as a false quality signal.",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 0,
+      note: "M33-EXT: 0 genuinely-new on every real leg (P1U ChatGPT, P4 Grok + ChatGPT). Every finding a source-cited standing D-id re-flag, OPEN-COMPUTE, or disclosed-scope limitation; P1U ChatGPT = directive-H harsh-referee floor, P4 Grok = pattern-066 severity oscillation. No edits warranted; no bumps.",
+    },
+    links: [
+      {
+        label: "P1U M33 truth-audit",
+        href: `${PR}/EXT_real/H17_2026-07-10/M33/P1U_truth_audit_M33.md`,
+      },
+      {
+        label: "P4 M33 truth-audit",
+        href: `${PR}/EXT_real/H17_2026-07-10/M33/P4_truth_audit_M33.md`,
+      },
+    ],
+  },
+  {
+    id: "m31-m32-ext-harvest-2026-07-13",
+    dateISO: "2026-07-13",
+    kind: "external-browser",
+    title:
+      "M31/M32-EXT — harvest+adjudicate P5+P2 M31, P3-ApJS M32, P1U M30-grok. 0 genuinely-new on ALL legs → P5 streak 1→2 (crosses two-clean-waves bar on v0.1.127), P2 12→13, P3 2→3, P1U 12→13. P2 ChatGPT orbit-double-counting 'fix' FALSIFIED by re-running p2_vertex_check.py + the convention-free Li et al. cross-check (its convention fails both checks; the paper's passes both; headline −35/16 unaffected). P3-ApJS ChatGPT M32 = INVALID wrong-paper leg (P1U physics content misattached) → not counted, re-submission needed.",
+    papers: ["P5", "P2", "P3", "P1U"],
+    summary:
+      "STATE-CHECK tick: 7 un-harvested EXT legs (M31 P5+P2, M32 P3-ApJS, M30 P1U grok) harvested via ext_harvest.sh, every raw READ verbatim before any verdict, all 7 REAL verdicts recorded to Convex (externalReviews:upsertByLabelDate, source internal-stage3) + readiness re-capped from the EXT formula. VERDICTS: P5 M31 Grok=MINOR (0M/5m) · ChatGPT=REJECT (11M/3m); P2 M31 Grok=MINOR (0M/6m) · ChatGPT=REJECT (10M/2m); P3-ApJS M32 Grok=MAJOR (3M/3m, VALID) · ChatGPT=INVALID wrong-paper leg; P1U M30 Grok=MAJOR (3M/3m). Four parallel Opus paper-owner agents adjudicated every finding against the canonical DISPOSITIONS/*.md ledgers. 0 genuinely-new across all legs. P5: Grok 5 minors → DP5-17/-13/-11/-14/-09 (cross-run-stable with M28/M29); ChatGPT 14 → DP5-06/-10/-11/-01/-08/-09/-16/-12/-14/-21/-20/-22/-07 — harsh-referee floor oscillation on byte-unchanged v0.1.127, its own Q3 concedes the descriptive null; 2nd consecutive clean wave = crosses directive-K two-clean-waves bar on the DP5-26-fixed content. P2: all 18 findings → standing DP2 ids (Grok 6/6, ChatGPT 12/12); the crux ChatGPT claim that the paper's 6-permutation orbit convention double-counts the (5,2,2) orbit and 'generates exactly −99/128 Σkᵢ³' is FALSIFIED by directly re-running committed p2_vertex_check.py (6-perms → squeezed −35/16, equilateral −255/128 = Table I benchmark; ChatGPT's distinct-monomial convention → −285/128/−65/32) and the convention-FREE Li et al. closed form (−165/16+65/8c_s² → −35/16 at c_s=1) which agrees with the paper's 6-perms, NOT ChatGPT's 'fix' — ChatGPT's correction is the convention that fails both independent cross-checks; its −99/128 term lives only in the analysis of Cai's PRINTED erroneous polynomial (→ −305/64, DP2-01), and its own raw concedes −35/16 'may nevertheless be correct.' P3: Grok's 6 findings → DP3-01/-07/-08/-09/-10/-11/-13/-15/-16 (G4 NEOWISE scaler-refit = DP3-15 OPEN-COMPUTE, pod-gated, not editable); the ChatGPT leg raw is entirely P1U Einstein-Cartan-Holst content (fundamental action S[e,ω,ψ], four dark-energy routes, f_NL=−35/16, 'ext_P1U_M30' attachment marker; 11 physics signatures vs 2 incidental catalog mentions) = wrong-PDF harness error → recorded as a leg GAP, NOT counted against P3's streak, re-submission on the correct P3-ApJS PDF queued. P1U: Grok 3 MAJOR → DP1U-07/-20/-12/-09/-10 — all extend-beyond-disclosed-scope asks (non-minimal dim-6 completeness, transparency-theorem scalar-matter caveat L1248/L3333, illustrative EFT ansätze), Grok's own §(3) concedes the science is supported within the disclosed scope. Streaks: P1U 12→13 · P2 12→13 · P3 2→3 · P4 11 (untouched) · P5 1→2. Caps (post_verdict.sh recompute from real rows): P1A 62 · P2 74 · P3 56 · P4 74 · P5 68. No bumps (all byte-unchanged); directive_g.sh not run; no ACCEPT faked, no un-sourced dismissal, no fabrication (the one technical claim that could have been genuinely-new was checked by re-derivation and falsified). Raws + per-leg audits: EXT_real/H17_2026-07-10/M31|M32|M30/.",
+    keyTakeaways: [
+      "0 genuinely-new across all 7 harvested legs. P5 crosses the directive-K two-clean-waves bar (streak 1→2 on DP5-26-fixed v0.1.127); P2 12→13, P3 2→3, P1U 12→13.",
+      "P2 ChatGPT's orbit-double-counting 'correction' FALSIFIED by re-running the committed p2_vertex_check.py + the convention-free Li et al. closed form — ChatGPT's convention fails both independent cross-checks, the paper's 6-perms passes both, headline −35/16 unaffected. Falsified by computation, not hand-waving.",
+      "P3-ApJS ChatGPT M32 leg was INVALID (wrong-paper attachment — P1U physics content). Recorded as a leg GAP, not a P3 REJECT; re-submission on the correct P3-ApJS PDF queued so it does not stand as a false quality signal.",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 0,
+      note: "M31/M32-EXT: 0 genuinely-new on every harvested leg (P5+P2 M31, P3 M32-grok, P1U M30-grok). Every finding a source-cited standing D-id re-flag, OPEN-COMPUTE, or disclosed-scope limitation; the one technically-specific ChatGPT claim (P2 orbit double-counting) was checked by re-derivation and falsified. P3 ChatGPT leg invalid (wrong paper). No edits warranted; no bumps.",
+    },
+    links: [
+      {
+        label: "P5 M31 truth-audit",
+        href: `${PR}/EXT_real/H17_2026-07-10/M31/P5_truth_audit_M31.md`,
+      },
+      {
+        label: "P2 M31 truth-audit",
+        href: `${PR}/EXT_real/H17_2026-07-10/M31/P2_truth_audit_M31.md`,
+      },
+      {
+        label: "P3 M32 truth-audit",
+        href: `${PR}/EXT_real/H17_2026-07-10/M32/P3APJS_truth_audit_M32.md`,
+      },
+      {
+        label: "P1U M30 truth-audit",
+        href: `${PR}/EXT_real/H17_2026-07-10/M30/P1U_grok_truth_audit_M30.md`,
+      },
+    ],
+  },
+  {
     id: "m30-ext-p4-2026-07-13",
     dateISO: "2026-07-13",
     kind: "external-browser",
