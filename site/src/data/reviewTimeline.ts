@@ -57,6 +57,31 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "m10-ext-confirm-wave-2026-07-12",
+    dateISO: "2026-07-12",
+    kind: "external-browser",
+    title:
+      "M10-EXT — P2 + P3 confirm wave, 0 genuinely-new. P2 (v1.7.116, first EXT since M7): Grok MINOR + ChatGPT REJECT; 16 source-cited re-flags + 1 code-release process-nit; Grok M4-MINOR→M7-MAJOR→M10-MINOR = pattern-066 variance; streak 3→4; cap 74 HOLDS. P3 (v3.1.158-apjs, byte-unchanged since M8): Grok MAJOR + ChatGPT REJECT; 28 source-cited re-flags; DP3-20 release-integrity CLOSED-BY-RELEASE, DP3-15 end-to-end regeneration OPEN-COMPUTE (no reset); maximally-harsh floor holds; streak 3→4; cap 56 HOLDS. No bumps; directive_g.sh not run.",
+    papers: ["P2", "P3"],
+    summary:
+      "M10-EXT: two-paper confirm wave with 0 genuinely-new reader-visible findings on either paper. P2 (v1.7.116 — first EXT since M7's v1.7.112; v1.7.113–116 = directive-M presentation restructure, ZERO content change): Grok MINOR REVISIONS (4 MINOR) + ChatGPT REJECT (11 MAJOR/2 MINOR); every finding source-cited to standing DP2 D-ids (DP2-01/-02/-03/-04/-07/-13/-14/-15/-16/-18/-19/-20/-21/-22/-26/-30/-34); ChatGPT's 'additive-not-multiplicative' major is a false premise pre-empted by the L1025 amplitude-invariant-shape-ratio disclosure (DP2-01/-03); its code-release/DOI ask is a PROCESS-NIT (no reset); clean-wave streak 3→4; cap 74 HOLDS. P3 (v3.1.158-apjs, both raws substantively byte-identical to M8): Grok MAJOR REVISIONS (4 MAJOR/2 MINOR) + ChatGPT REJECT (15 MAJOR/3 MINOR); every finding source-cited to DP3-01/-04/-05/-06/-07/-08/-09/-10/-11/-12/-13/-14/-15/-16/-20; DP3-20 immutable-release bar CLOSED-BY-RELEASE, DP3-15 end-to-end regeneration OPEN-COMPUTE; clean-wave streak 3→4; cap 56 HOLDS. No bumps.",
+    keyTakeaways: [
+      "P2: 0 genuinely-new across Grok(4 MINOR) + ChatGPT(11 MAJOR/2 MINOR) on v1.7.116; every finding source-cited to standing DP2 D-ids. Grok's own run-to-run trace M4-MINOR→M7-MAJOR→M10-MINOR on unchanged content is textbook pattern-066 referee variance. ChatGPT held its structural REJECT floor. Streak 3→4; cap 74 HOLDS.",
+      "P3: 0 genuinely-new across Grok(4 MAJOR/2 MINOR) + ChatGPT(15 MAJOR/3 MINOR) on byte-unchanged v3.1.158-apjs; every finding source-cited to a standing DP3 D-id. The release-integrity majors are covered by DP3-20 CLOSED-BY-RELEASE (pinned immutable HF revision + git tag p3-v3.1.157); the end-to-end-regeneration ask rides DP3-15 OPEN-COMPUTE (pod-lost tid→spectrum join, ~1.3% structural ceiling MEASURED) and does NOT reset the streak. Streak 3→4; cap 56 HOLDS.",
+      "Integrity: all four EXT raws read verbatim before disposition (Grok l.1 'VERDICT: MINOR REVISIONS' / 'VERDICT: MAJOR REVISIONS'; ChatGPT l.1 '(1) VERDICT: REJECT'); every finding source-cited to a D-id; no ACCEPT faked; no dismissal without a source-cited verdict; no math fabricated. Caps recomputed from the EXT formula (P2 74 = 50+grok-MIN12+chatgpt-REJ0+gemini-MIN12; P3 56 = 50+grok-MAJ6+chatgpt-REJ0+gemini-REJ0). Streaks: P1U 4 · P2 4 · P3 4 · P4 3 · P5 4. Caps: P1A 62 · P2 74 · P3 56 · P4 74 · P5 80.",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 0,
+      note: "0 genuinely-new reader-visible editable findings across P2 M10-EXT (Grok MINOR + ChatGPT REJECT) and P3 M10-EXT (Grok MAJOR + ChatGPT REJECT, byte-unchanged since M8). P2 streak 3→4; P3 streak 3→4. Caps hold P2 74 · P3 56.",
+    },
+    links: [
+      { label: "P2 Grok M10 EXT raw", href: `${PR}/EXT_real/H17_2026-07-10/M10/P2_grok_M10.md` },
+      { label: "P2 ChatGPT M10 EXT raw", href: `${PR}/EXT_real/H17_2026-07-10/M10/P2_chatgpt_M10.md` },
+      { label: "P3 Grok M10 EXT raw", href: `${PR}/EXT_real/H17_2026-07-10/M10/P3APJS_grok_M10.md` },
+      { label: "P3 ChatGPT M10 EXT raw", href: `${PR}/EXT_real/H17_2026-07-10/M10/P3APJS_chatgpt_M10.md` },
+    ],
+  },
+  {
     id: "m9-ext-zero-reject-harvest-2026-07-12",
     dateISO: "2026-07-12",
     kind: "external-browser",

@@ -1,3 +1,5 @@
+<!-- M10-EXT (2026-07-12): 0 genuinely-new on byte-unchanged v3.1.158-apjs (both raws substantively identical to M8); EXT ChatGPT REJECT (15 MAJOR / 3 MINOR) + Grok MAJOR (4 MAJOR / 2 MINOR); all 28 source-cited standing DP3 re-flags (DP3-01/-04/-05/-06/-07/-08/-09/-10/-11/-12/-13/-14/-15/-16/-20); DP3-20 release-integrity CLOSED-BY-RELEASE, DP3-15 end-to-end regeneration OPEN-COMPUTE (no reset); maximally-harsh floor holds (DP3-17 backfire); clean-wave streak 3→4; no bump; cap 56 HOLDS. -->
+
 # Paper 3 — Multi-Survey Anomaly Catalog · Single Source of Truth
 
 **Canonical status file. When in doubt about Paper 3, read this.**

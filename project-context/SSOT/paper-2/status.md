@@ -1,3 +1,4 @@
+<!-- M10-EXT (2026-07-12): 0 genuinely-new on v1.7.116 (first EXT since M7's v1.7.112; v1.7.113-116 = directive-M presentation restructure, ZERO content change); EXT ChatGPT REJECT (11 MAJOR / 2 MINOR) + Grok MINOR (4 MINOR); all 16 source-cited standing DP2 re-flags + 1 code-release PROCESS-NIT (no reset); ChatGPT "additive-not-multiplicative" = false premise pre-empted by L1025 amplitude-invariant-shape-ratio disclosure; Grok M4-MINOR→M7-MAJOR→M10-MINOR = pattern-066 variance; clean-wave streak 3→4; no bump; cap 74 HOLDS. -->
 <!-- M4-EXT (2026-07-12): 0 genuinely-new on byte-unchanged v1.7.116; EXT ChatGPT REJECT (11 MAJOR / 2 MINOR) + Grok MINOR (4 MINOR); all source-cited standing D-id re-flags (pattern-066 floor); clean-wave streak 1→2; no bump; cap 74 HOLDS. -->
 <!-- M1 wave note (2026-07-12): P2 0 genuinely-new (+Claude INT MAJOR = presentation-only re-flag); all findings re-flags of standing DP2 D-ids; clean-wave streak 4→5; cap 74 HOLDS. -->
 ---
