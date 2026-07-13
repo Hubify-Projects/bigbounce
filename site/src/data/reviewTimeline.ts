@@ -57,6 +57,31 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "m11-ext-floor-crack-wave-2026-07-12",
+    dateISO: "2026-07-12",
+    kind: "external-browser",
+    title:
+      "M11-EXT — P1U + P4 floor-crack wave, 0 genuinely-new. P1U (v1U.0.20 byte-unchanged): FIRST M-series Grok MINOR — Grok credits the channel-level closure by name + ChatGPT REJECT (harsh floor); 17 source-cited standing DP1U re-flags; streak 4→5; cap 62→68 (grok MAJOR→MINOR +6). P4 (v1.0.239 byte-unchanged): Grok MINOR affirms the null + ChatGPT MAJOR (THIRD consecutive non-REJECT, Q3 concedes the HC null); 20 source-cited standing DP4 re-flags (#2 A_p-vs-f_CW + #13 mask-count re-derived CORRECT); streak 3→4; cap 74 HOLDS. No bumps; directive_g.sh not run.",
+    papers: ["P1U", "P4"],
+    summary:
+      "M11-EXT: two-paper floor-crack wave with 0 genuinely-new reader-visible findings on either paper. P1U (v1U.0.20, byte-unchanged): Grok MINOR REVISIONS (5 MINOR — its FIRST M-series MINOR on P1U) + ChatGPT REJECT (9 MAJOR/3 MINOR); Grok credits the closure verbatim ('the four enumerated minimal-ECH dark-energy routes are closed at the channel/amplitude-budget level … is supported by the dimensional bookkeeping, the completeness argument at M_Pl-power-counting level, and the logical structure of the barriers'); every finding source-cited to standing DP1U D-ids (DP1U-03/-04/-05/-06/-07/-08/-09/-10/-11/-12/-14/-15/-17/-19/-20/-21/-22/-24); clean-wave streak 4→5; cap 62→68 (grok MAJOR→MINOR +6). P4 (v1.0.239, byte-unchanged): Grok MINOR REVISIONS (4 MINOR, closing affirms the null) + ChatGPT MAJOR REVISIONS (12 MAJOR/2 MINOR — its THIRD consecutive non-REJECT, Q3 concedes the narrow HC null); every finding source-cited to DP4-01/-07/-08/-09/-10/-11/-12/-13/-14/-15/-16/-17/-21 (#2 A_p=2(f_CW−½) + #13 3,200,420+740=3,201,160 re-derived arithmetically CORRECT); clean-wave streak 3→4; cap 74 HOLDS. No bumps.",
+    keyTakeaways: [
+      "P1U: 0 genuinely-new across Grok(5 MINOR) + ChatGPT(9 MAJOR/3 MINOR) on byte-unchanged v1U.0.20; every finding source-cited to a standing DP1U D-id. MILESTONE — Grok's FIRST M-series MINOR on P1U, crediting the channel/amplitude-budget closure, single-scale NDA, Fierz+Bianchi operator closures, and perturbation-transparency decoupling by name (the P1U analogue of the P4/P5 harsh-referee floor-crack). Streak 4→5; cap 62→68.",
+      "P4: 0 genuinely-new across Grok(4 MINOR) + ChatGPT(12 MAJOR/2 MINOR) on byte-unchanged v1.0.239; every finding source-cited to a standing DP4 D-id. ChatGPT's THIRD consecutive non-REJECT — Q3 again concedes the narrow HC null; the residual dispute is the disclosed classifier-dilution generalization (DP4-09/-15 OPEN-COMPUTE). ChatGPT #2 (A_p vs f_CW factor-of-2) and #13 (mask counts 24,087 vs 24,297 / 740-out) re-derived arithmetically correct — conflated objects/reader-misread, not defects. Streak 3→4; cap 74 HOLDS.",
+      "Integrity: all four EXT raws read verbatim before disposition (Grok l.1 'VERDICT: MINOR REVISIONS'; ChatGPT l.1 'VERDICT: REJECT' / '(1) VERDICT: MAJOR REVISIONS'); both credit/concession quotes lifted verbatim (not inferred from the label); every finding source-cited to a D-id; no ACCEPT faked; no dismissal without a source-cited verdict; no math fabricated. Caps recomputed from the EXT formula (P1U 68 = 50+grok-MIN12+chatgpt-REJ0+gemini-MAJ6; P4 74 = 50+grok-MIN12+chatgpt-MAJ6+gemini-MAJ6). Streaks: P1U 5 · P2 4 · P3 4 · P4 4 · P5 4. Caps: P1A 68 · P2 74 · P3 56 · P4 74 · P5 80.",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 0,
+      note: "0 genuinely-new reader-visible editable findings across P1U M11-EXT (Grok MINOR — first M-series MINOR + ChatGPT REJECT) and P4 M11-EXT (Grok MINOR + ChatGPT MAJOR — 3rd consecutive non-REJECT). P1U streak 4→5; P4 streak 3→4. Caps P1A 62→68 (grok MAJOR→MINOR) · P4 74 HOLDS.",
+    },
+    links: [
+      { label: "P1U Grok M11 EXT raw", href: `${PR}/EXT_real/H17_2026-07-10/M11/P1U_grok_M11.md` },
+      { label: "P1U ChatGPT M11 EXT raw", href: `${PR}/EXT_real/H17_2026-07-10/M11/P1U_chatgpt_M11.md` },
+      { label: "P4 Grok M11 EXT raw", href: `${PR}/EXT_real/H17_2026-07-10/M11/P4_grok_M11.md` },
+      { label: "P4 ChatGPT M11 EXT raw", href: `${PR}/EXT_real/H17_2026-07-10/M11/P4_chatgpt_M11.md` },
+    ],
+  },
+  {
     id: "m10-ext-confirm-wave-2026-07-12",
     dateISO: "2026-07-12",
     kind: "external-browser",
