@@ -93,7 +93,7 @@ LIST_TMP="$(mktemp)"
 trap 'rm -f "$LIST_TMP"' EXIT
 printf '%s' "$LIST_RESP" > "$LIST_TMP"
 CAP="$(python3 - "$LIST_TMP" <<'PY'
-import sys, json, re
+import sys, json
 d=json.load(open(sys.argv[1]))
 rows=d.get("value") or []
 # score map per reviewer recommendation
@@ -104,26 +104,32 @@ def canon(label):
     if "grok" in l: return "grok"
     if "gemini" in l: return "gemini"
     return None
-# latest-per-reviewer by receivedAt (rows already sorted desc by list handler,
-# but re-sort to be safe: Date.parse-ish ordering not needed — take first seen).
-latest={}
-def key(r):
-    # sort newest first: rows come pre-sorted desc; keep stable
-    return 0
-seen=set()
-for r in rows:  # already desc by receivedAt
+# BUG-1 ROOT FIX (2026-07-13): latest-per-reviewer MUST be selected by
+# Convex `_creationTime` DESCENDING — never by list order and never by the
+# `receivedAt` datestamp string. The list handler is NOT reliably creationTime
+# sorted, and multiple rows for the same (paper,reviewer) frequently share a
+# datestamp, so "take first seen" / datestamp-string ties picked an OLDER
+# verdict and produced wrong caps (observed P5 80->74 x2, P1U 68->62, P4 80->74).
+# `_creationTime` is a float ms epoch returned on every Convex row and is the
+# only monotonic write-order signal — use it, tie-break nothing else.
+latest={}   # who -> (creationTime, recommendation)
+for r in rows:
     who=canon(r.get("reviewerLabel"))
-    if who and who not in latest:
-        latest[who]=r.get("recommendation","pending")
+    if not who:
+        continue
+    ct=r.get("_creationTime")
+    ct=float(ct) if ct is not None else -1.0
+    if who not in latest or ct > latest[who][0]:
+        latest[who]=(ct, r.get("recommendation","pending"))
 score=50.0
 for who in ("grok","chatgpt","gemini"):
-    rec=latest.get(who)
-    if rec is not None:
-        score+=SCORE.get(rec,0.0)
+    if who in latest:
+        score+=SCORE.get(latest[who][1],0.0)
 cap=int(round(score))
 if cap>100: cap=100
 if cap<0: cap=0
-sys.stderr.write("    latest-per-reviewer: %s\n" % json.dumps(latest))
+sys.stderr.write("    latest-per-reviewer (by _creationTime desc): %s\n"
+                 % json.dumps({k:v[1] for k,v in latest.items()}))
 print(cap)
 PY
 )"
@@ -159,9 +165,45 @@ WAVE_LABEL="$(printf '%s' "$RLABEL" | sed -E 's/[-_]?(chatgpt|gpt|grok|gemini)$/
 [ -n "$WAVE_LABEL" ] || WAVE_LABEL="$RLABEL"
 TODAY_ISO="$(date '+%Y-%m-%d')"
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-if [ -x "$SCRIPT_DIR/record_wave.sh" ]; then
-  # genuinelyNew/streak/open counts default to 0 here — the orchestrator posts a
-  # fuller row via record_wave.sh directly when it knows the audit outcome.
+
+# BUG-2 ROOT FIX (2026-07-13): the recordWave mutation is a FULL patch — it
+# replaces the whole row from its args. The auto-call below only knows ONE
+# reviewer verdict and defaults genuinelyNew/streak/open counts to 0, so if a
+# richer wave row already exists for this (paperSlug, waveLabel) — e.g. the
+# M18 adjudication rows P2 streak=7 / P1U streak=8 with multi-reviewer verdicts
+# — patching it clobbers verdicts + zeroes the streak, forcing a manual re-post.
+# NON-DESTRUCTIVE GUARD: skip the auto record_wave whenever a row for this
+# (paperSlug, waveLabel) already exists with a non-empty verdict list. The
+# orchestrator's own record_wave.sh call (with the full audit outcome) remains
+# the authoritative writer for the row; post_verdict only bootstraps a wave row
+# that does not exist yet.
+EXISTING_WAVE="$(python3 - "$SLUG" "$WAVE_LABEL" <<'PY' 2>/dev/null || echo "unknown"
+import sys, json, urllib.request
+slug, wave = sys.argv[1], sys.argv[2]
+req=urllib.request.Request(
+    "https://brilliant-panther-471.convex.cloud/api/query",
+    data=json.dumps({"path":"readinessMetrics:listWaves","args":{},"format":"json"}).encode(),
+    headers={"Content-Type":"application/json"})
+try:
+    d=json.load(urllib.request.urlopen(req, timeout=20))
+except Exception:
+    print("unknown"); sys.exit(0)
+rows=d.get("value") or []
+for r in rows:
+    if r.get("paperSlug")==slug and r.get("waveLabel")==wave:
+        # non-empty = has at least one recorded verdict
+        print("nonempty" if (r.get("verdicts") or []) else "empty")
+        sys.exit(0)
+print("absent")
+PY
+)"
+
+if [ "$EXISTING_WAVE" = "nonempty" ]; then
+  echo "    readinessMetrics: wave row $SLUG/$WAVE_LABEL already has verdicts — NOT clobbering (BUG-2 guard)"
+elif [ -x "$SCRIPT_DIR/record_wave.sh" ]; then
+  # No existing non-empty row: safe to bootstrap. genuinelyNew/streak/open
+  # default to 0 — the orchestrator posts a fuller row via record_wave.sh
+  # directly when it knows the audit outcome.
   "$SCRIPT_DIR/record_wave.sh" "$PAPER" "$WAVE_LABEL" "$TODAY_ISO" 0 0 0 0 \
     "$REVIEWER:EXT:$REC" "auto from post_verdict.sh ($RLABEL); raw: $RAW" \
     || echo "WARN: readinessMetrics record_wave failed (non-fatal)" >&2
