@@ -236,4 +236,5 @@
 {"paper": "P4", "reviewer": "grok", "round": "M26", "status": "harvested", "ts": "2026-07-13T04:21:19-07:00", "url": "https://grok.com/project/e6c9ce77-4f86-4d94-b440-1062a78171c1?chat=d47a5978-964a-4c01-927a-aeb9786e765a", "verdict": "MINOR REVISIONS"}
 {"paper": "P1U", "reviewer": "chatgpt", "round": "M26", "url": "", "status": "DEFERRED-ratelimit", "note": "Guard blocked stale-URL record; no new /c/ chat spawned = daily rate limit (~16 legs placed M20-M26). Re-place next window."}
 {"paper": "P4", "reviewer": "chatgpt", "round": "M26", "url": "", "status": "DEFERRED-ratelimit", "note": "Same; P4 retry for the M24 FAILED leg rolls to next window."}
-{"paper": "P3APJS", "reviewer": "grok", "round": "M27", "status": "submitted", "ts": "2026-07-13T04:41:55-07:00", "url": "https://grok.com/project/e6c9ce77-4f86-4d94-b440-1062a78171c1?chat=a26c7078-34af-4c6f-ab7e-a06423b115f5"}
+{"paper": "P3APJS", "reviewer": "grok", "round": "M27", "status": "harvested", "ts": "2026-07-13T04:41:55-07:00", "url": "https://grok.com/project/e6c9ce77-4f86-4d94-b440-1062a78171c1?chat=a26c7078-34af-4c6f-ab7e-a06423b115f5", "verdict": "MAJOR REVISIONS"}
+{"paper": "P3APJS", "reviewer": "chatgpt", "round": "M27", "url": "", "status": "DEFERRED-ratelimit", "note": "Probe leg: send delivered but no new /c/ chat spawned (guard blocked stale-URL record). Window not yet reset."}
