@@ -90,6 +90,39 @@ export const reviewRounds: ReviewRound[] = [
     ],
   },
   {
+    id: "p4-m35-ext-informational-2026-07-13",
+    dateISO: "2026-07-13",
+    kind: "external",
+    title:
+      "M35-EXT P4 (informational) — two raws that read the now-superseded v1.0.239. Grok MINOR REVISIONS (0 MAJOR/5 MINOR) + ChatGPT MAJOR REVISIONS (11 MAJOR/3 MINOR); 0 genuinely-new. Every finding a source-cited standing DP4 re-flag; the DP4-22 edge-on penalty inconsistency (now closed in v1.0.240) is NOT independently flagged by either reviewer, so M35 is pure pattern-066 verdict-word variance, not a pre-integration confirmation. Cap HOLDS 80; streak stays 0 (already reset by the DP4-22 fix).",
+    papers: ["P4"],
+    summary:
+      "Informational adjudication of two M35 P4 raws (P4_grok_M35.md + P4_chatgpt_M35.md) that both read the SUPERSEDED v1.0.239 — v1.0.240 is current, with the DP4-22 edge-on Fisher→linear penalty fix already integrated (39b7aed1/52deba02) and P4's clean-wave streak already honestly reset 12→0 by that commit. Verdicts recorded as-is (real reads of the immediately-prior version): Grok MINOR REVISIONS (0 MAJOR/5 MINOR), ChatGPT MAJOR REVISIONS (11 MAJOR/3 MINOR). Both raws READ verbatim before any verdict. 0 genuinely-new reader-visible editable findings across both legs — every finding fingerprint-matches a canonical DP4 disposition: Grok p_eq>0.6→DP4-07, ℓ=1 47%-residual→DP4-17, GZ1-null coarser-floor→DP4-09/-10, block-bootstrap z≈−7.6 + matched-Ganalyzer caveat→DP4-06/-01, presentation-flowchart→DP4-14; ChatGPT's 11 MAJOR + 3 MINOR are 1:1 with the M21/M24 set → DP4-07/-08/-09/-10/-06/-12/-13/-15/-16/-17/-21. SPECIAL CHECK — DP4-22 pre-echo NOT FOUND: a grep of both raws for edge-on/f_edge/8.98/18.8/0.158/Cramér/Fisher returns 0 hits, so neither reviewer independently surfaced the edge-on penalty internal inconsistency — M35 is NOT a pre-integration confirmation of DP4-22, it is pattern-066 verdict-word variance on disclosed standing content. Cap HOLDS 80 (50 + Grok MINOR 12 + ChatGPT MAJOR 6 + Gemini-latest MINOR 12; post_verdict.sh recomputed both legs). Streak stays 0 (an informational read of a superseded version neither advances nor resets the clock). No bump (both raws read superseded v1.0.239; v1.0.240 current); directive_g.sh not run. No faked accept, no un-sourced dismissal, no fabrication.",
+    keyTakeaways: [
+      "0 genuinely-new across both M35 P4 legs — every Grok MINOR + ChatGPT MAJOR finding is a source-cited standing DP4 re-flag (DP4-06/-07/-08/-09/-10/-12/-13/-14/-15/-16/-17/-21).",
+      "DP4-22 pre-echo NOT FOUND: neither raw independently flags the edge-on 8.98%-vs-18.8% Fisher-vs-linear penalty inconsistency (0 keyword hits) — M35 is pattern-066 verdict-word variance on the superseded v1.0.239, not confirmation of the (now-closed) DP4-22 item.",
+      "Cap HOLDS 80; streak stays 0 (already reset by the DP4-22 fix). Informational round on a superseded version; no bump, no edits warranted — all substantive items already carried in / superseded by v1.0.240.",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 0,
+      note: "Informational round on superseded v1.0.239: 0 genuinely-new. DP4-22 pre-echo absent from both raws; every finding a source-cited standing DP4 disposition. Cap HOLDS 80, streak stays 0.",
+    },
+    links: [
+      {
+        label: "P4 M35 truth-audit",
+        href: `${PR}/EXT_real/H17_2026-07-10/M35/P4_truth_audit_M35.md`,
+      },
+      {
+        label: "P4 Grok M35 raw",
+        href: `${PR}/EXT_real/H17_2026-07-10/M35/P4_grok_M35.md`,
+      },
+      {
+        label: "P4 ChatGPT M35 raw",
+        href: `${PR}/EXT_real/H17_2026-07-10/M35/P4_chatgpt_M35.md`,
+      },
+    ],
+  },
+  {
     id: "process-audit-2026-07-14",
     dateISO: "2026-07-14",
     kind: "skill-improvement",
