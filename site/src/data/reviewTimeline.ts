@@ -57,6 +57,31 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "m20-ext-p2-p3apjs-confirm-2026-07-13",
+    dateISO: "2026-07-13",
+    kind: "external-browser",
+    title:
+      "M20-EXT — P2 + P3(ApJS) confirm wave, 0 genuinely-new on either paper (both byte-unchanged). P2 (v1.7.116): Grok MAJOR + ChatGPT REJECT — clean-wave streak 8→9; cap 74→68 (Grok MINOR→MAJOR pattern-066 slip). P3-ApJS (v3.1.158-apjs): Grok MAJOR + ChatGPT REJECT — streak 7→8; cap 56 HOLDS. No bumps; directive_g.sh not run.",
+    papers: ["P2", "P3"],
+    summary:
+      "M20-EXT: two-paper byte-unchanged confirm wave — 0 genuinely-new reader-visible editable findings on either paper, independently re-audited by a skeptical Opus paper-owner per paper against the live .tex. P2 (v1.7.116, byte-unchanged): Grok MAJOR REVISIONS (2 MAJOR/3 MINOR; closing line credits the central claim as 'supported … conditional on the listed assumptions') + ChatGPT REJECT (10 MAJOR/2 MINOR; concedes '−35/16 may replace the published −35/8 is plausible', raw l.233). All ~12 findings source-cited to standing DP2 D-ids; the four sharpest ChatGPT technical claims independently verified against 02_full_draft.tex as already-dispositioned RE-FLAGs: (a) 'Eq.(A4) unique → null-space spurious' → L1028 scope note (the null-space is THIS paper's symmetrized in-in-doubled basis, not Cai's single-time form, DP2-15/-16); (b) '(2,7,3,−12,−69,19)→uncorrected values' → L1028 footnote (Cai Eq.37 coeffs (3,1,−9,5,−66,9), 'not directly transplantable', c9i_epsilon_ratio_check.json, DP2-15/-01); (c) '−(99/128)Σk³ additive not ×2' → L1527 the doubling claim was ALREADY retracted; −35/16 from direct vertex re-sum (DP2-01/-03); (d) 'c_s=1 vs c_s≪1 no-go incompatible' → closure conditioned on dressed-metric c_s²=1, no-go escape via Quintin's own gravitational-sector LQC exemption (DP2-19/-13/-32.6). Grok's proxy-vs-native Fisher ask (G2) is DP2-34/-35 (channel-native ρ≈−0.42/2.32σ already computed on the adopted surrogate). cleanWaveStreak 8→9; cap 74→68 (Grok EXT MINOR→MAJOR slip drops its formula contribution 12→6; honest cap movement, no streak reset). P3-ApJS (v3.1.158-apjs, byte-unchanged): Grok MAJOR REVISIONS (4 MAJOR/2 MINOR) + ChatGPT REJECT (16 MAJOR/2 MINOR) — 7th EXT read with the bounded DP3-15 disclosure; same disclosed-content set as M6/M8/M10/M12/M15/M17. ~19 findings RE-FLAG-disclosed (mixed-validation label, excised eROSITA/Gaia tiers, LAMOST training-bias lesson, 98.7% non-science-target DESI fraction, internal-hash reproducibility limit, candidates-not-detections framing), ~4 COMPUTE-GATED (DP3-15 uniform end-to-end held-out re-inference — structurally pod-gated, 86.6% hashed-tid rows irrecoverable by construction). Special-attention ChatGPT 'internal accounting contradictions' finding verified line-by-line NOT a defect: scan-volume 36.76/36.93/37.29M reconciled by footnote (L1226, 37,272,042=37,292,042−20,000); 98.7% vs 98.8% are two DISTINCT axes (TARGETTYPE fiber-target vs Redrock SPECTYPE, labeled 'distinct' L1307 + tab:recount); LAMOST exclusion (L1027) + Gaia excision (L1027) both disclosed — RE-FLAG (DP3-03/-08/-11/-20), not editable. cleanWaveStreak 7→8; cap 56 HOLDS. No bumps; directive_g.sh not run.",
+    keyTakeaways: [
+      "P2 pattern-066: Grok MINOR→MAJOR slip on byte-unchanged v1.7.116 (M18-EXT Grok = MINOR on the SAME file) = referee run-to-run variance, NOT a content regression. The four sharpest ChatGPT technical claims (null-space uniqueness, coefficient transplant, additive-vs-×2 shift, c_s=1/c_s≪1) were each independently re-verified against 02_full_draft.tex as already-present source-cited dispositions — none genuinely-new. cleanWaveStreak 8→9; cap 74→68 (honest formula move from the Grok slip, no reset).",
+      "P3-ApJS pattern-066/DP3-17 backfire: ChatGPT REJECT is a pure maximal-harsh-referee ApJS floor on disclosed + compute-gated content — the one substantive residual (full 22.5M end-to-end re-inference) is structurally pod-gated (DP3-15), and every 'contradiction' the reviewer flags is already footnoted/reconciled in the current .tex. cleanWaveStreak 7→8; cap 56 HOLDS.",
+      "Integrity: all 4 raws read verbatim before disposition; each paper independently truth-audited by a skeptical Opus owner NOT told a convergence conclusion; every finding source-cited to a DP2/DP3 D-id; REJECT/MAJOR verdict words recorded to Convex as-is (no softening); 0 class-(C) genuinely-new editable defects → no ACCEPT faked, no math fabricated, no version bumped, directive_g.sh NOT run. Streaks: P1U 8 · P2 9 · P3 8 · P4 8 · P5 8. Caps: P1A 68 · P2 68 · P3 56 · P4 74 · P5 74.",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 0,
+      note: "0 genuinely-new reader-visible editable findings across P2 M20-EXT (Grok MAJOR + ChatGPT REJECT — all ~12 source-cited DP2 re-flags, 4 sharpest technical claims independently re-verified vs .tex) and P3-ApJS M20-EXT (Grok MAJOR + ChatGPT REJECT — ~19 disclosed re-flags + ~4 DP3-15 compute-gated). P2 streak 8→9 cap 74→68 (Grok pattern-066 slip); P3 streak 7→8 cap 56 HOLDS. All-A grid fed via Convex readinessMetrics.",
+    },
+    links: [
+      { label: "P2 M20 truth audit", href: `${PR}/EXT_real/H17_2026-07-10/M20/P2_truth_audit_M20.md` },
+      { label: "P3-ApJS M20 truth audit", href: `${PR}/EXT_real/H17_2026-07-10/M20/P3APJS_truth_audit_M20.md` },
+      { label: "P2 disposition ledger", href: `${PR}/DISPOSITIONS/P2.md` },
+      { label: "P3 disposition ledger", href: `${PR}/DISPOSITIONS/P3.md` },
+    ],
+  },
+  {
     id: "m19-ext-p4-p5-confirm-2026-07-13",
     dateISO: "2026-07-13",
     kind: "external-browser",
