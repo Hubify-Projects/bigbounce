@@ -84,7 +84,7 @@ def read(path):
     except Exception:
         return ""
 
-def convex_query(path, args=None):
+def _convex_query_once(path, args=None):
     body = json.dumps({"path": path, "args": args or {}})
     try:
         p = subprocess.run(
@@ -97,6 +97,22 @@ def convex_query(path, args=None):
         return d.get("value")
     except Exception:
         return None
+
+def convex_query(path, args=None):
+    """Convex query with retry-once-3s-backoff on transient failure.
+
+    A single transient Convex failure (network blip, cold edge) used to declare
+    each paper version "Convex current unavailable" STALE and block a push
+    (gate FAIL ~2026-07-14, resolved on immediate re-run). Only a failure on
+    BOTH attempts is treated as unreachable, and callers distinguish that from
+    real staleness so the operator knows it is infra, not a data problem.
+    """
+    import time
+    v = _convex_query_once(path, args)
+    if v is not None:
+        return v
+    time.sleep(3)
+    return _convex_query_once(path, args)
 
 def git_last_commit_iso(cwd, path):
     try:
@@ -305,7 +321,11 @@ oks = []
 for slug in slugs:
     cur = convex_query("paperVersions:current", {"paperSlug": slug})
     if not isinstance(cur, dict):
-        mismatches.append("%s: Convex current unavailable" % slug)
+        # Both attempts (retry-once-3s-backoff) failed — this is infra, not a
+        # data-staleness problem. Say so plainly so the operator does not chase
+        # a nonexistent stale surface (a single transient failure used to block
+        # a push here; resolved on immediate re-run).
+        mismatches.append("%s: Convex unreachable x2 - infra, not staleness" % slug)
         continue
     ver = cur.get("version", "")
     if not ver:
