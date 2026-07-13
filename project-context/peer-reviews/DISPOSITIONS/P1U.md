@@ -550,3 +550,18 @@ Raws verified verbatim: `EXT_real/H17_2026-07-10/M21/P1U_grok_M21.md` = **MAJOR 
 - **Integrity:** both raws read verbatim before any disposition; Grok MINOR→MAJOR slip diagnosed pattern-066 (M21 item set = M16/M18; each item quotes the paper's own disclosure; Grok closing supports the central claim); no ACCEPT faked; every finding source-cited to a D-id + tex line; no un-sourced dismissal; no math fabricated; no hedging removed; no version bumped; cap lowered honestly to track the current verdict word.
 
 Full audit: `project-context/peer-reviews/EXT_real/H17_2026-07-10/M21/P1U_truth_audit_M21.md`
+
+## M26-EXT ADJUDICATION ADDENDUM (2026-07-13, EXT vs v1U.0.20)
+
+**Verdict:**
+- EXT-Grok M26 = **MAJOR REVISIONS** (3 MAJOR / 2 MINOR). Raw: `EXT_real/H17_2026-07-10/M26/P1U_grok_M26.md`
+- M26 ChatGPT: DEFERRED-ratelimit (GAP; not a verdict, not a zero; banked in manifest).
+
+**Per-finding disposition — EXT-Grok MAJOR (all source-cited re-flags, 0 genuinely-new):**
+- completeness-lemma → DP1U-20; §X perturbation-transparency → DP1U-12; R4 naturalness → DP1U-11; dim-bookkeeping 92-vs-94 → DP1U-08; mutual-exclusivity/matter-bounce erasure → DP1U-17. **0 genuinely-new.** (This is the documented pattern-066 MINOR↔MAJOR band on byte-identical v1U.0.20 — Grok oscillates across waves on unchanged content: M11 MIN→M13 MAJ→M16 MIN→M18 MIN→M21 MAJ→M23 MAJ. The 3 MAJOR + 2 MINOR item set re-flags standing DP1U D-ids with no new editable science items.)
+
+**Streak:** 10→11 (eleventh consecutive clean wave on byte-unchanged v1U.0.20).
+
+**Cap:** unchanged verdict words vs prior — Grok MAJOR (6) + ChatGPT REJECT carry-forward (0) + Gemini MAJOR carry-forward (6) = 62 HOLDS (recomputed by post_verdict.sh).
+
+**No ACCEPT faked, no finding dismissed without a source-cited verdict, no math fabricated. No bump; directive_g.sh not run (byte-unchanged paper, no EXT-triggered edit).**
