@@ -1,8 +1,8 @@
 # INT API Review — P1U v1U.0.20 — grok (grok-4.3)
 paper: P1U  version: v1U.0.20  model: grok-4.3
 modality: native-PDF (/v1/files file_id)
-UTC: 2026-07-12T19:55:20.526949Z  |  latency: 23.2s  |  attempt: 1
-usage: {"input_tokens": 35512, "input_tokens_details": {"cached_tokens": 192}, "output_tokens": 1313, "output_tokens_details": {"reasoning_tokens": 890}, "total_tokens": 36825, "num_sources_used": 0, "num_server_side_tools_used": 0, "cost_in_usd_ticks": 474709000, "context_details": {"input_tokens": 35512, "output_tokens": 1314}}
+UTC: 2026-07-13T12:39:41.093011Z  |  latency: 19.9s  |  attempt: 1
+usage: {"input_tokens": 35513, "input_tokens_details": {"cached_tokens": 192}, "output_tokens": 1253, "output_tokens_details": {"reasoning_tokens": 817}, "total_tokens": 36766, "num_sources_used": 0, "num_server_side_tools_used": 0, "cost_in_usd_ticks": 473221500, "context_details": {"input_tokens": 35513, "output_tokens": 1254}}
 PARSED VERDICT: MAJOR REVISIONS
 
 ======================================================================
@@ -11,10 +11,10 @@ RAW RESPONSE (verbatim):
 
 (1) VERDICT: MAJOR REVISIONS
 
-(2) ISSUES:
-[MAJOR] Sec. IV A–E and Scope paragraph: The four-route “channel-level closure” repeatedly invokes single-scale NDA power counting and an unproven “completeness lemma” (F1/F2 structural facts plus monotonicity) without a self-contained, operator-by-operator enumeration of the full dimension-6 parity-odd basis in the main text; the Fierz projection is deferred to Appendix C and the Jackiw–Pi term is only “closed explicitly” after the fact, rendering the basis-completeness claim circular within the stated minimal-ECH scope.
-[MAJOR] Sec. X and Sec. II C: The perturbation-transparency theorem is correctly restricted to canonical scalars, yet the dark-energy mapping in Eq. (12) and the Ntot≈92 bookkeeping rely on the same on-shell reduction of the dimension-+1 operator (Eq. (6)) whose off-shell status is simultaneously declared “not load-bearing”; this internal tension is never resolved by an explicit matching calculation between the two readings.
-[MINOR] Sec. I and repeated “what this paper does/does not establish” boxes: The manuscript is saturated with self-referential scoping language that obscures the logical flow and makes the central no-go appear hedged rather than derived; standard Phys. Rev. D practice requires a single, crisp statement of assumptions and limitations in the introduction, not distributed caveats.
-[MINOR] Sec. IV D and Eq. (18): The Route-2 one-loop estimate adopts an illustrative EFT ansatz (not taken from Shapiro–Teixeira) whose absolute normalization is left as a free O(1) factor; while the ∼60-order margin survives, the text must explicitly label the result as an upper-bound budget rather than a derived coefficient.
+(2) ISSUES:  
+[MAJOR] Sec. IV (Scope paragraph and completeness argument): The repeated assertion that the four routes are “basis-complete at the level of MPl-power-counting classes” (with explicit closure of the Jackiw–Pi term and VA partner) is not accompanied by a self-contained statement or citation of the single lemma that enumerates all admissible dimension-≤6 operators; the text instead defers to an external script and Appendix C without reproducing its output or proving monotonicity of the NDA bound under the single-scale assumption.  
+[MAJOR] Sec. X (perturbation-transparency theorem): The claim that the Holst sector decouples from all scalar/tensor equations for canonical scalar matter is stated as Tier-I but the proof sketch (Secs. X B–E) omits the explicit perturbed-tetrad expansion of the Nieh–Yan and four-fermion terms at linear order; without those terms shown to vanish identically, the transparency result cannot be verified from the manuscript alone.  
+[MINOR] Abstract and Sec. I: The phrasing “four enumerated minimal-ECH dark-energy routes … shown basis-complete” is repeated verbatim in multiple places while the surrounding text simultaneously disclaims an operator-level theorem; this internal tension must be resolved by a single, consistently worded scope statement.  
+[MINOR] Appendices D, F, G: The regulated NJL gap equation, the Cobaya chains, and the NaMaster validation are described as “non-load-bearing” yet occupy dozens of pages and contain quantitative results (e.g., |Geff|/Gcrit ratios, 309 189 samples); these should be moved to a reproducibility repository or companion note so the main text remains focused on the analytic no-go.  
 
-(3) The central claim of channel-level amplitude/naturalness closure for the four enumerated minimal-ECH routes (under the single-scale NDA and canonical-scalar assumptions) is supported by the dimensional counting and explicit operator reductions presented.
+(3) The central claim—that the four enumerated channels are amplitude- or naturalness-closed under the stated single-scale NDA and minimal-coupling assumptions—is supported by the power-counting and Fierz-projection arguments presented, provided the scope remains strictly channel-level and the omitted operators are accepted as closed by the cited lemmas.

@@ -1,20 +1,20 @@
 # INT API Review — P5 v0.1.126-2026-07-12 — grok (grok-4.3)
 paper: P5  version: v0.1.126-2026-07-12  model: grok-4.3
 modality: native-PDF (/v1/files file_id)
-UTC: 2026-07-12T18:30:10.345458Z  |  latency: 28.7s  |  attempt: 1
-usage: {"input_tokens": 34621, "input_tokens_details": {"cached_tokens": 192}, "output_tokens": 1178, "output_tokens_details": {"reasoning_tokens": 860}, "total_tokens": 35799, "num_sources_used": 0, "num_server_side_tools_used": 0, "cost_in_usd_ticks": 460196500, "context_details": {"input_tokens": 34621, "output_tokens": 1179}}
-PARSED VERDICT: ACCEPT
+UTC: 2026-07-13T12:43:34.841212Z  |  latency: 14.5s  |  attempt: 1
+usage: {"input_tokens": 34621, "input_tokens_details": {"cached_tokens": 192}, "output_tokens": 805, "output_tokens_details": {"reasoning_tokens": 505}, "total_tokens": 35426, "num_sources_used": 0, "num_server_side_tools_used": 0, "cost_in_usd_ticks": 450871500, "context_details": {"input_tokens": 34621, "output_tokens": 806}}
+PARSED VERDICT: MINOR REVISIONS
 
 ======================================================================
 RAW RESPONSE (verbatim):
 ======================================================================
 
-(1) VERDICT: ACCEPT
+(1) VERDICT: MINOR REVISIONS
 
-(2) ISSUES:  
-[MINOR] §V B (and Table IV): Post-hoc designation of the DESIVAST primary path is transparently declared, but the garden-of-forking-paths accounting would be strengthened by an explicit statement that the five correlated estimators were fixed before any contrast was computed (rather than after inspection of the T-Web results).  
-[MINOR] §VIII (and Table XI): The quadrature combination yielding the “honest effective 2σ systematic envelope of ≈0.9 pp” is clearly motivated, but the text does not tabulate the individual terms or their correlations, making independent verification of the envelope non-trivial.  
-[MINOR] §XIII (RSD discussion): The first-order Zel’dovich reconstruction bound (0.024 pp shift) is a valuable diagnostic, yet the paper correctly notes that the anisotropic tidal-tensor channel remains unquantified; a one-sentence caveat that this channel is sub-dominant to the scalar term at the quoted precision would remove any ambiguity.  
-[MINOR] Throughout: All references to the companion Paper IV carry the placeholder “arXiv:XXXX.XXXXX”; these should be replaced with the final arXiv identifier before production.
+(2) ISSUES:
+[MINOR] §V B (and Table IV): Post-hoc designation of DESIVAST as primary (explicitly exploratory, no pre-registered plan) is transparently disclosed but requires an explicit forward-looking statement that the DR2 analysis will be pre-registered with the exact same Bonferroni-5 family and estimand before unblinding.
+[MINOR] §VIII (RSD treatment): The first-order Zel’dovich reconstruction bound (0.024 pp shift) and fixed-geometry MC are appropriate but the text should state explicitly that the stochastic FoG residual remains unquantified beyond the 0.37 pp MC excursion and is folded into the Table XI envelope without further modeling.
+[MINOR] Abstract and §I: Placeholder arXiv numbers (arXiv:XXXX.XXXXX) and the concurrent-submission phrasing should be replaced with the actual coordinated arXiv identifiers before final publication.
+[MINOR] §XIII: The unquantified anisotropic tidal-tensor RSD channel is correctly flagged as a limitation; a one-sentence quantitative estimate (e.g., expected size relative to the scalar term) would strengthen the disclosure without new computation.
 
-(3) The central claim—that no statistically significant environment-dependent chirality signature is detected at the ≳25 Mpc/h scale, with a de-attenuated physical bound of ≈2.26 pp—is supported by the multi-algorithm null tests, systematic envelope, and permutation controls.
+(3) The central claim (environment-independent chirality at the ≳25 Mpc/h scale, with |Δf_CW| bounded by ≲0.9 pp on the labeled fraction) is supported.
