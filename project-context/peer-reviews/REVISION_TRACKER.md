@@ -20,6 +20,28 @@ This tracker logs each revision round and which issues have been addressed.
 
 ## Revision Rounds
 
+### P2 v1.7.120: Exact-PDF PRD confirmation panel (2026-07-14)
+
+**Input:** exact 10-page PDF at source commit `411c59e01673ede79bf4a93fa97af011d032a426`, source SHA-256 `e9df08c5e46aa91bde70dd8ccc72a7adb5af23b7d4e2099780401b1092f2fa5c`, PDF SHA-256 `2111e62f6eb2423dc1880fad5fa90c8da1feac75ff4b44891573f6d90762cc06`
+
+**Panel:** OpenAI GPT-5.5 **MAJOR REVISIONS** / Gemini 3.1 Pro Preview **MINOR REVISIONS** / Grok 4.3 **MAJOR REVISIONS**. All three successful native-PDF legs were concurrent. Grok required a second file-ingestion attempt; the failed first attempt was not scored. No Anthropic/Claude dispatch or fallback. Independent Codex `gpt-5.6-sol` high is a declared `NOT_RUN` gap because its weekly subscription allowance was exhausted.
+
+**Truth audit:** the central contraction-phase `-35/16` result is supported; the exact appendix already includes the four vertices, per-vertex limits, six-Wick convention, collapsed polynomial, epsilon-order grouping, in-in sign convention, and Li closed-form check. Real remaining gates are publication positioning and external evidence, not an invitation to invent missing calculations.
+
+| Finding | Status | Required action/evidence |
+|---|---|---|
+| `2.63 sigma` promoted as observational headline | **OPEN — POSITIONING MAJOR** | Demote to illustrative conditional mapping; no survey-level claim without external covariance and third-order transfer |
+| "UV-completion independence" | **OPEN — POSITIONING MAJOR** | Limit claim to the contraction-phase coefficient under the specified cubic action |
+| Cubic-order bounce transmission | **OPEN — EXTERNAL SCIENCE GATE** | Direct third-order calculation or keep every late-time statement explicitly conditional |
+| SPHEREx per-triangle covariance/likelihood | **OPEN — EXTERNAL DATA GATE** | Published covariance/likelihood and justified nuisance model; do not fabricate forecast precision |
+| Free-`b_phi` limit | **OPEN — INTERPRETIVE** | Center prior-sensitivity discussion on the evidenced `0.42 sigma` free limit |
+| Cai/Li expression provenance | **OPEN — BOUNDED CLARITY** | Compact trusted-expression summary; preserve disclosed printed-polynomial tension |
+| Prior-volume section | **OPEN — EDITORIAL** | Condense or move out of main narrative; no evidential language |
+| Rough FoG degradation percentage | **REJECTED — UNSAFE** | No paper-specific bound; keep omission explicit instead |
+| Immutable archive/DOI | **OPEN — WORKFLOW** | Verified citable bundle and final identifier before submission |
+
+The legacy manifest says `review_commit=worktree` because unrelated repository files were dirty; the reviewed P2 files were clean and exactly committed at `411c59e0`. The content-addressed packet migration is the closure for that harness ambiguity. No readiness uplift is inferred; P2 remains capped at 74. Full audit and typed gap record are in `INT_v3/ROUND_2026-07-14-P2-v1.7.120-EXACTPDF-2111e62f-PRD-NONANTHROPIC-CONFIRM/`.
+
 ### P1A v1A.0.120: Exact-PDF CQG Note and PRD venue-control panels (2026-07-14)
 
 **Input:** exact 8-page PDF at source commit `438ce8ec79cb13d7cfa5233671966a30f5b5e45c`, SHA-256 `6472db7741deebd4100fe3191d5ef23a9b0b7960c4284cf53e9e4761f62f535b`

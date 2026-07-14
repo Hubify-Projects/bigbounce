@@ -57,6 +57,41 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p2-v17120-prd-exact-panel-2026-07-14",
+    dateISO: "2026-07-14",
+    timePT: "11:39–11:40",
+    kind: "internal-api",
+    title:
+      "P2 v1.7.120 — exact-PDF PRD panel supports the contraction-phase algebra but confirms two positioning majors",
+    papers: ["P2"],
+    summary:
+      "Three concurrent non-Anthropic native-PDF legs reviewed the same clean 10-page artifact at source commit 411c59e0 and PDF SHA-256 2111e62f…c06. OpenAI returned MAJOR, Gemini MINOR, and Grok MAJOR. Truth audit finds the -35/16 contraction-phase result substantially self-contained and supported, while confirming that 2.63 sigma should not remain the observational headline without direct cubic transfer and the external SPHEREx covariance, and that UV-completion independence is too broad. Independent Codex is a typed NOT_RUN quota gap. No readiness uplift; the verified cap remains 74.",
+    keyTakeaways: [
+      "The exact appendix already prints the four vertices, per-vertex limits, six-Wick convention, collapsed polynomial, epsilon grouping, in-in sign, and Li closed-form check.",
+      "The safe fast closure is positioning: demote 2.63 sigma to an illustrative conditional map and restrict the robust claim to the contraction phase.",
+      "A rough FoG degradation percentage was rejected as unsafe; external covariance, direct cubic transfer, and immutable archive/DOI remain typed gates.",
+      "Concurrent dispatch reduced successful-leg critical-path time by 35.6%, while the failed first Grok ingestion was preserved as a retry rather than a verdict.",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 2,
+      note: "Two actionable manuscript-positioning classes survive: observational-headline demotion and UV-independence removal. External science/data/archive gates remain open separately.",
+    },
+    links: [
+      {
+        label: "Normalized truth audit",
+        href: `${PR}/INT_v3/ROUND_2026-07-14-P2-v1.7.120-EXACTPDF-2111e62f-PRD-NONANTHROPIC-CONFIRM/P2_v1.7.120_NORMALIZED_TRUTH_AUDIT.md`,
+      },
+      {
+        label: "Exact-PDF board",
+        href: `${PR}/INT_v3/ROUND_2026-07-14-P2-v1.7.120-EXACTPDF-2111e62f-PRD-NONANTHROPIC-CONFIRM/manifest.jsonl`,
+      },
+      {
+        label: "Declared panel gap",
+        href: `${PR}/INT_v3/ROUND_2026-07-14-P2-v1.7.120-EXACTPDF-2111e62f-PRD-NONANTHROPIC-CONFIRM/DECLARED_GAPS.json`,
+      },
+    ],
+  },
+  {
     id: "p1a-v1a0120-cqg-prd-exact-panel-2026-07-14",
     dateISO: "2026-07-14",
     timePT: "11:06–11:08",
