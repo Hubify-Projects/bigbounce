@@ -6,9 +6,10 @@ project-context/peer-reviews/R24CONF_COMPUTE_QUEUE.md:
 
   QUEUE-2  (OpenAI-E3): 10^4 pixel-permutation null array for the headline HC
            real-space dipole (exact run_dipole_catalog_c.py conventions:
-           NSIDE=64, winning-class conf>0.6, tot>10 mask, hp.fit_dipole,
+           NSIDE=64, winning-class conf>0.6, tot>=10 mask, hp.fit_dipole,
            rng seed 20260418); null quantiles {50,68,90,95,99}% and a
-           rank-based 95% CL upper limit on A_dip.
+           rank-based upper-tail p-value.  The 95th percentile is descriptive
+           only, not a signal-injection-calibrated upper limit on A_dip.
   QUEUE-3  (OpenAI-E4): documentation of the exact sigma convention of the
            injection-recovery scorer (read from
            scripts/injection_sweep_extended.py; no new compute).
@@ -31,6 +32,7 @@ Output: outputs/canonical_provenance/c12_r24conf_local_batch.json
 (saved incrementally after each item; a failed item leaves earlier blocks
 intact and is recorded as {"status": "FAILED", ...} — pattern-036).
 """
+import hashlib
 import json
 import time
 import traceback
@@ -44,6 +46,12 @@ from huggingface_hub import hf_hub_download
 NSIDE = 64
 NPIX = hp.nside2npix(NSIDE)
 OUT = Path(__file__).parent / "outputs" / "canonical_provenance" / "c12_r24conf_local_batch.json"
+DATASET_REPO_ID = "bamfai/galaxy-chirality-catalog"
+DATASET_REPO_TYPE = "dataset"
+DATASET_FILENAME = "catalog_production.parquet"
+DATASET_REVISION = "a21eb596fd10edb9af9e7a1bcefb04f87327a724"
+DATASET_SHA256 = "e8525ba5c98576f6361580e4a0aa7a86929ccc9f79b1423808774cfaaf313563"
+DATASET_BYTES = 952_115_239
 
 t0 = time.time()
 RESULTS = {
@@ -69,13 +77,42 @@ def rank_p(null, obs):
     return k, (k + 1) / (len(null) + 1)
 
 
+def sha256_file(path, chunk_size=8 * 1024 * 1024):
+    digest = hashlib.sha256()
+    with open(path, "rb") as fh:
+        while chunk := fh.read(chunk_size):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
 # ---------------------------------------------------------------- data load
-log("loading parquet (local_files_only)...")
+log("loading exact revision-pinned parquet...")
 PARQUET = hf_hub_download(
-    "bamfai/galaxy-chirality-catalog", "catalog_production.parquet",
-    repo_type="dataset", local_files_only=True)
+    DATASET_REPO_ID,
+    DATASET_FILENAME,
+    repo_type=DATASET_REPO_TYPE,
+    revision=DATASET_REVISION,
+)
+catalog_sha256 = sha256_file(PARQUET)
+if catalog_sha256 != DATASET_SHA256:
+    raise ValueError(
+        f"catalog hash mismatch: expected {DATASET_SHA256}, got {catalog_sha256}"
+    )
+if Path(PARQUET).stat().st_size != DATASET_BYTES:
+    raise ValueError(
+        f"catalog byte-count mismatch: expected {DATASET_BYTES}, "
+        f"got {Path(PARQUET).stat().st_size}"
+    )
 df = pd.read_parquet(PARQUET, columns=["ra", "dec", "class_eq", "p_cw_eq", "p_ccw_eq"])
-RESULTS["catalog_parquet"] = PARQUET
+RESULTS["catalog_source"] = {
+    "provider": "huggingface",
+    "repo_id": DATASET_REPO_ID,
+    "repo_type": DATASET_REPO_TYPE,
+    "filename": DATASET_FILENAME,
+    "revision": DATASET_REVISION,
+    "sha256": catalog_sha256,
+    "bytes": DATASET_BYTES,
+}
 n_total_rows = len(df)
 log(f"rows: {n_total_rows:,}")
 
@@ -259,7 +296,7 @@ try:
         "status": "CLOSED-LOCAL",
         "sample": "HC (winning-class p_eq > 0.6), NSIDE=64",
         "null": "2000 pixel-permutation realizations per cell (A_p permuted across in-mask pixels; weights stay attached to pixels), seed 20260610",
-        "note_mask_convention": "sweep uses N_spiral(p)>=thr; the headline generator mask is tot>10 (strict), which differs from >=10 by the N=10 pixels only",
+        "note_mask_convention": "sweep and canonical headline both use inclusive N_spiral(p)>=thr; the former >10 headline is retained only as historical sensitivity context",
         "panel": panel,
     }
 except Exception as e:
@@ -276,7 +313,9 @@ try:
     for cut in (0.0, 0.4, 0.5, 0.6, 0.7, 0.8):
         sel = max_eq_sp > cut if cut > 0 else np.ones(len(pix_sp), bool)
         cw_m, tot_m = maps_for(pix_sp[sel], is_cw_sp[sel])
-        mask = tot_m > 10  # headline generator convention
+        # Historical confidence-cut sensitivity panel.  Preserve its original
+        # strict >10 convention for numerical continuity; it is not primary.
+        mask = tot_m > 10
         midx = np.where(mask)[0]
         asym = (cw_m[mask] - (tot_m[mask] - cw_m[mask])) / tot_m[mask]
         amp = ls_dipole_amp(asym, midx)
@@ -291,7 +330,7 @@ try:
         log(f"  cut>{cut}: N={int(sel.sum()):,} amp={amp:.6f} z={z:+.2f} p={p:.4f}")
     RESULTS["items"]["queue10_openai_m4_confidence_sweep"] = {
         "status": "CLOSED-LOCAL",
-        "selection": "class_eq in {CW,CCW} and max(p_cw_eq,p_ccw_eq) > cut; mask tot>10; uniform-weight LS dipole",
+        "selection": "HISTORICAL/SENSITIVITY ONLY: class_eq in {CW,CCW} and max(p_cw_eq,p_ccw_eq) > cut; legacy strict mask tot>10; uniform-weight LS dipole",
         "null": "2000 pixel-permutation realizations per cut, seed 20260611",
         "sweep": sweep,
     }
@@ -350,7 +389,7 @@ try:
     z_l1 = [abs(r["z"]) for r in rows if r["coef"].startswith("l1") and r["z"] is not None]
     RESULTS["items"]["queue14_meta_m1_ylm_regression"] = {
         "status": "CLOSED-LOCAL",
-        "field": "headline HC A_p map (winning p_eq>0.6, tot>10 mask, NSIDE=64)",
+        "field": "historical strict-mask HC A_p harmonic diagnostic (winning p_eq>0.6, tot>10 mask, NSIDE=64); not the canonical v1.0.243 primary",
         "design": "real spherical harmonics ell<=3 (16 columns) evaluated on in-mask pixel centers; OLS via pseudo-inverse",
         "design_condition_number": cond_design,
         "null": "2000 pixel-permutation realizations, seed 20260612; per-coefficient z=(c_obs-mean)/std(ddof=1), two-sided rank p; the l0 coefficient is monopole-dominated and nearly permutation-invariant",
@@ -430,9 +469,10 @@ except Exception as e:
 save()
 
 # ================================================================ QUEUE-2
-log("QUEUE-2 (OpenAI-E3): 10^4 pixel-perm null + 95% CL UL (exact generator replication)...")
+log("QUEUE-2 (OpenAI-E3): 10^4 pixel-perm null + descriptive quantiles (exact generator replication)...")
 try:
-    # Exact run_dipole_catalog_c.py replication: HC selection, tot > 10 (strict),
+    # Exact run_dipole_catalog_c.py replication: HC selection, inclusive
+    # tot >= 10 canonical mask,
     # hp.fit_dipole, rng(20260418), in-place shuffle loop.
     conf = max_eq > 0.6
     sel = is_spiral & conf & df["ra"].notna().values
@@ -441,7 +481,7 @@ try:
     np.add.at(cw_map, pix_all[sel], is_cw_all[sel].astype(float))
     np.add.at(ccw_map, pix_all[sel], (~is_cw_all[sel]).astype(float))
     tot = cw_map + ccw_map
-    mask = tot > 10
+    mask = tot >= 10
     asym = np.zeros(NPIX)
     asym[mask] = (cw_map[mask] - ccw_map[mask]) / tot[mask]
 
@@ -449,7 +489,7 @@ try:
     asym_full[mask] = asym[mask]
     _, dip = hp.fit_dipole(asym_full, gal_cut=0)
     amp_obs = float(np.sqrt(np.sum(dip ** 2)))
-    log(f"  observed amp = {amp_obs:.6f} (expect 0.004423), n_pix={int(mask.sum())}")
+    log(f"  observed amp = {amp_obs:.6f} (expect 0.004597), n_pix={int(mask.sum())}")
 
     N_MC = 10_000
     valid = asym[mask].copy()
@@ -466,35 +506,29 @@ try:
 
     q = {f"q{p_}": float(np.percentile(boots, p_)) for p_ in (50, 68, 90, 95, 99)}
     k, p_rank = rank_p(boots, amp_obs)
-    z = float((amp_obs - boots.mean()) / boots.std(ddof=1))
+    z = float((amp_obs - boots.mean()) / boots.std(ddof=0))
     null95 = q["q95"]
     RESULTS["items"]["queue2_openai_e3_null_array_ul95"] = {
         "status": "CLOSED-LOCAL",
-        "replicates": "run_dipole_catalog_c.py null (i) exactly: HC winning-conf>0.6, tot>10 mask, hp.fit_dipole, N_MC=10^4, rng seed 20260418, in-place shuffle",
+        "replicates": "run_dipole_catalog_c.py null (i) exactly: HC winning-conf>0.6, inclusive tot>=10 canonical mask, hp.fit_dipole, N_MC=10^4, rng seed 20260418, in-place shuffle",
         "observed_amp": amp_obs,
         "n_pix": int(mask.sum()),
         "n_hc": int(sel.sum()),
         "null_mean": float(boots.mean()),
+        "null_std_ddof0": float(boots.std(ddof=0)),
         "null_std_ddof1": float(boots.std(ddof=1)),
-        "z_mom": z,
+        "z_mom_ddof0": z,
+        "rank_formula": "(k+1)/(N+1), one-sided upper tail; k=count(A_null>=A_data)",
+        "rank_N": N_MC,
         "rank_k": k,
         "rank_p_one_sided": float(p_rank),
         "null_quantiles": q,
-        "ul95_construction": (
-            "PRIMARY: A_95UL is defined as the 95th percentile of the "
-            "pixel-permutation null amplitude distribution, i.e. the smallest "
-            "amplitude with P(A_null >= A_95UL) = 0.05. Because the observed "
-            "amplitude (rank p = {:.3f}) is fully consistent with the null, "
-            "any true coherent dipole large enough to push the estimator "
-            "above this quantile with 95% null-exclusion probability is "
-            "disfavored; this is an estimator-level (not signal-injected) "
-            "limit and does not account for signal+noise amplitude addition. "
-            "CONSERVATIVE companion: UL_cons = max(A_obs, A_95UL), which here "
-            "equals A_95UL since A_obs < A_95UL. No obs+quantile sum "
-            "construction is used."
-        ).format(p_rank),
-        "A_95UL": null95,
-        "UL_conservative_max_obs_null95": float(max(amp_obs, null95)),
+        "q95_role": (
+            "Descriptive 95th percentile of the null-amplitude distribution "
+            "only; no signal-injection coverage and no physical or calibrated "
+            "upper-limit interpretation."
+        ),
+        "Q95_null_descriptive": null95,
         "null_array_saved": "outputs/canonical_provenance/c12_queue2_null_amps_10k.npy",
     }
     np.save(OUT.parent / "c12_queue2_null_amps_10k.npy", boots)

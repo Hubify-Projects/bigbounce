@@ -1,0 +1,61 @@
+{
+  "figure": "P4 Figure 7: raw versus equivariant CW-fraction sky maps",
+  "generator": "pipelines/p2_chirality/wave_14_fff_fig11_dpi_regen.py",
+  "catalog": {
+    "provider": "huggingface",
+    "repo_id": "bamfai/galaxy-chirality-catalog",
+    "repo_type": "dataset",
+    "filename": "catalog_production.parquet",
+    "revision": "a21eb596fd10edb9af9e7a1bcefb04f87327a724",
+    "sha256": "e8525ba5c98576f6361580e4a0aa7a86929ccc9f79b1423808774cfaaf313563",
+    "bytes": 952115239,
+    "rows": 8474531
+  },
+  "read_mode": {
+    "format": "pyarrow.parquet.ParquetFile.iter_batches",
+    "projected_columns": [
+      "ra",
+      "dec",
+      "class_raw_y",
+      "class_raw_x",
+      "class_eq"
+    ],
+    "batch_size": 262144
+  },
+  "raw_definition": {
+    "primary_column": "class_raw_y",
+    "fallback_column": "class_raw_x only when class_raw_y is missing",
+    "raw_spirals": 3321795,
+    "raw_spirals_from_class_raw_y": 3321795,
+    "raw_spirals_from_class_raw_x_fallback": 0,
+    "raw_cw": 1687069,
+    "raw_cw_fraction_galaxy_weighted": 0.5078787221968846
+  },
+  "equivariant_definition": {
+    "column": "class_eq",
+    "equivariant_spirals": 3201160,
+    "equivariant_cw": 1592107,
+    "equivariant_cw_fraction_galaxy_weighted": 0.49735314698421823
+  },
+  "pixel_support": {
+    "nside": 64,
+    "minimum_spirals_per_pixel": 5,
+    "operator": ">=",
+    "raw_native_valid_pixels": 24158,
+    "equivariant_native_valid_pixels": 24154,
+    "displayed_common_support_pixels": 24151,
+    "common_support_definition": "raw_total>=5 AND equivariant_total>=5; identical in both panels"
+  },
+  "render": {
+    "coordinate_frame": "equatorial RA/Dec",
+    "shared_color_scale": [
+      0.47,
+      0.53
+    ],
+    "dpi": 300,
+    "output": "pipelines/p2_chirality/figs/fig_raw_vs_eq.png",
+    "output_sha256": "7ca18de4109adb7334855c0e0255a8aa0a0ce600af40ce8df41024af839a6541",
+    "output_bytes": 425674
+  },
+  "wall_seconds": 10.893447875976562
+}

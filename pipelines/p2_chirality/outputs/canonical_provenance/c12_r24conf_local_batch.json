@@ -262,7 +262,7 @@
    "status": "CLOSED-LOCAL",
    "sample": "HC (winning-class p_eq > 0.6), NSIDE=64",
    "null": "2000 pixel-permutation realizations per cell (A_p permuted across in-mask pixels; weights stay attached to pixels), seed 20260610",
-   "note_mask_convention": "sweep uses N_spiral(p)>=thr; the headline generator mask is tot>10 (strict), which differs from >=10 by the N=10 pixels only",
+   "note_mask_convention": "sweep uses N_spiral(p)>=thr; the canonical headline generator uses the same inclusive >=10 convention",
    "panel": [
     {
      "mask_threshold_nspiral_ge": 10,
@@ -334,7 +334,7 @@
   },
   "queue10_openai_m4_confidence_sweep": {
    "status": "CLOSED-LOCAL",
-   "selection": "class_eq in {CW,CCW} and max(p_cw_eq,p_ccw_eq) > cut; mask tot>10; uniform-weight LS dipole",
+   "selection": "HISTORICAL/SENSITIVITY ONLY: class_eq in {CW,CCW} and max(p_cw_eq,p_ccw_eq) > cut; legacy strict mask tot>10; uniform-weight LS dipole",
    "null": "2000 pixel-permutation realizations per cut, seed 20260611",
    "sweep": [
     {
@@ -407,7 +407,7 @@
   },
   "queue14_meta_m1_ylm_regression": {
    "status": "CLOSED-LOCAL",
-   "field": "headline HC A_p map (winning p_eq>0.6, tot>10 mask, NSIDE=64)",
+   "field": "historical strict-mask HC A_p harmonic diagnostic (winning p_eq>0.6, tot>10 mask, NSIDE=64); not the canonical v1.0.243 primary",
    "design": "real spherical harmonics ell<=3 (16 columns) evaluated on in-mask pixel centers; OLS via pseudo-inverse",
    "design_condition_number": 7.032265832263088,
    "null": "2000 pixel-permutation realizations, seed 20260612; per-coefficient z=(c_obs-mean)/std(ddof=1), two-sided rank p; the l0 coefficient is monopole-dominated and nearly permutation-invariant",
@@ -618,29 +618,43 @@
    }
   },
   "queue2_openai_e3_null_array_ul95": {
-   "status": "CLOSED-LOCAL",
-   "replicates": "run_dipole_catalog_c.py null (i) exactly: HC winning-conf>0.6, tot>10 mask, hp.fit_dipole, N_MC=10^4, rng seed 20260418, in-place shuffle",
-   "observed_amp": 0.00442297186793267,
-   "n_pix": 23600,
+   "status": "REGENERATED-CANONICAL-v1.0.243",
+   "replicates": "run_dipole_catalog_c.py null (i) exactly: HC winning-conf>0.6, inclusive tot>=10 canonical mask, hp.fit_dipole, N_MC=10^4, rng seed 20260418, in-place shuffle",
+   "observed_amp": 0.004597074287780104,
+   "n_pix": 23682,
    "n_hc": 949584,
-   "null_mean": 0.0037367565963817,
-   "null_std_ddof1": 0.0016820733937407567,
-   "z_mom": 0.40795798453532284,
-   "rank_k": 3084,
-   "rank_p_one_sided": 0.3084691530846915,
+   "equatorial_ra_deg": 294.30537030397005,
+   "equatorial_dec_deg": 16.029115977736286,
+   "null_mean": 0.0036928318780248184,
+   "null_std_ddof0": 0.0016467112675757516,
+   "null_std_ddof1": 0.0016467936093148123,
+   "z_mom_ddof0": 0.549120193418297,
+   "rank_formula": "(k+1)/(N+1), one-sided upper tail; k=count(A_null>=A_data)",
+   "rank_k": 2651,
+   "rank_N": 10000,
+   "rank_p_one_sided": 0.26517348265173485,
    "null_quantiles": {
-    "q50": 0.0035485171648698835,
-    "q68": 0.0043646289666829825,
-    "q90": 0.006003800038426122,
-    "q95": 0.006793969873317402,
-    "q99": 0.008414083912973715
+    "q50": 0.0035111711119449017,
+    "q68": 0.00431058721370015,
+    "q90": 0.005906257337128364,
+    "q95": 0.006684350943291987,
+    "q99": 0.00825854564550591
    },
-   "ul95_construction": "PRIMARY: A_95UL is defined as the 95th percentile of the pixel-permutation null amplitude distribution, i.e. the smallest amplitude with P(A_null >= A_95UL) = 0.05. Because the observed amplitude (rank p = 0.308) is fully consistent with the null, any true coherent dipole large enough to push the estimator above this quantile with 95% null-exclusion probability is disfavored; this is an estimator-level (not signal-injected) limit and does not account for signal+noise amplitude addition. CONSERVATIVE companion: UL_cons = max(A_obs, A_95UL), which here equals A_95UL since A_obs < A_95UL. No obs+quantile sum construction is used.",
-   "A_95UL": 0.006793969873317402,
-   "UL_conservative_max_obs_null95": 0.006793969873317402,
-   "null_array_saved": "outputs/canonical_provenance/c12_queue2_null_amps_10k.npy"
+   "q95_role": "Descriptive 95th percentile of the null-amplitude distribution only; no signal-injection coverage and no physical or calibrated upper-limit interpretation.",
+   "Q95_null_descriptive": 0.006684350943291987,
+   "null_array_saved": "outputs/canonical_provenance/c12_queue2_null_amps_10k.npy",
+   "null_array_sha256": "62bb1c019231974c2a7ed5d5e43ceb77a5596e4675c82d7ff1c899e029a36492",
+   "historical_strict_gt10_context": "outputs/dipole/catalog_c_summary_strict_gt10_historical.json"
   }
  },
- "catalog_parquet": "/Users/houstongolden/.cache/huggingface/hub/datasets--bamfai--galaxy-chirality-catalog/snapshots/5df35642b355e630490cdbb983252620105b99fc/catalog_production.parquet",
+ "catalog_source": {
+  "provider": "huggingface",
+  "repo_id": "bamfai/galaxy-chirality-catalog",
+  "repo_type": "dataset",
+  "filename": "catalog_production.parquet",
+  "revision": "a21eb596fd10edb9af9e7a1bcefb04f87327a724",
+  "sha256": "e8525ba5c98576f6361580e4a0aa7a86929ccc9f79b1423808774cfaaf313563",
+  "bytes": 952115239
+ },
  "queue1_retry_date_utc": "2026-06-10T08:15:16Z"
 }

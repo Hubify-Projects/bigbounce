@@ -1,85 +1,90 @@
 {
   "experiment": "Paper 4 Catalog C Dipolar Analysis (post-TTA)",
   "generator": "pipelines/p2_chirality/run_dipole_catalog_c.py",
-  "regeneration_note_2026_06_09": "Anchor regenerated during R23conf after the selection-filter defect above was found; the values in dipole_fit/mc_null below supersede the previously printed 0.43-sigma/p=0.30 pair, whose generator could not be reproduced as committed.",
+  "regeneration_note_2026_06_09": "Anchor regenerated during R23conf after the selection-filter defect above was found; the values in dipole_fit/mc_null below supersede the previously printed 0.43-sigma/p=0.30 pair and the later strict-mask +0.41-sigma result, whose generator could not be reproduced as committed.",
   "paper_claim": {
-    "significance_sigma": 0.43,
-    "p_value": 0.33,
-    "note": "Paper text in chirality_catalog_paper.tex \u00a7V.B / Tables I-III / abstract L71 cites 0.43-sigma (p ~ 0.33). Reproduce by running this script against the Catalog C parquet.",
-    "locations_in_paper": [
-      71,
-      509,
-      716,
-      787,
-      801,
-      813,
-      972,
-      987
-    ]
+    "role": "single primary observed-label estimator",
+    "significance_sigma": 0.549120193418297,
+    "rank_p_one_sided_upper_tail": 0.26517348265173485,
+    "note": "Canonical inclusive-mask values for P4 v1.0.243. Reproduce by running this generator against the exact catalog release."
   },
   "catalog_c": {
-    "source": "/Users/houstongolden/.cache/huggingface/hub/datasets--bamfai--galaxy-chirality-catalog/snapshots/5df35642b355e630490cdbb983252620105b99fc/catalog_production.parquet",
+    "source": {
+      "provider": "huggingface",
+      "repo_id": "bamfai/galaxy-chirality-catalog",
+      "repo_type": "dataset",
+      "filename": "catalog_production.parquet",
+      "revision": "a21eb596fd10edb9af9e7a1bcefb04f87327a724",
+      "sha256": "e8525ba5c98576f6361580e4a0aa7a86929ccc9f79b1423808774cfaaf313563",
+      "bytes": 952115239
+    },
     "n_total": 8474531,
     "n_spirals_highconf": 949584,
     "cw_eq_fraction": 0.4960582739389038,
     "nside": 64,
     "npix": 49152,
     "min_pix_count": 10,
-    "n_valid_pixels": 23600,
-    "f_sky": 0.4801432291666667
+    "min_pix_count_operator": ">=",
+    "n_valid_pixels": 23682,
+    "f_sky": 0.4818115234375
   },
   "dipole": {
-    "amplitude": 0.00442297186793267,
-    "l_deg": 292.95442132918373,
-    "b_deg": 12.020619153881627,
-    "monopole": -0.00782067143919217,
-    "significance_sigma": 0.4079783839645196,
-    "p_value": 0.3084691530846915,
+    "amplitude": 0.004597074287780104,
+    "direction_frame": "equatorial (catalog RA/Dec basis)",
+    "equatorial_ra_deg": 294.30537030397005,
+    "equatorial_dec_deg": 16.029115977736286,
+    "monopole": -0.0077688924693038045,
+    "significance_sigma": 0.549120193418297,
+    "rank_p_one_sided_upper_tail": 0.26517348265173485,
+    "rank_formula": "(k+1)/(N+1), k = count(A_null >= A_data)",
+    "rank_k": 2651,
+    "rank_N": 10000,
     "mc_n_realizations": 10000,
-    "mc_mean": 0.0037367565963817,
-    "mc_std": 0.0016819892879683727,
+    "mc_seed": 20260418,
+    "mc_mean": 0.0036928318780248184,
+    "mc_std": 0.0016467112675757516,
+    "mc_std_ddof": 0,
+    "null_array": "pipelines/p2_chirality/outputs/canonical_provenance/c12_queue2_null_amps_10k.npy",
+    "null_array_sha256": "62bb1c019231974c2a7ed5d5e43ceb77a5596e4675c82d7ff1c899e029a36492",
     "consistent_with_null": true,
     "post_tta": true,
     "shuffle_null": {
-      "description": "per-galaxy label shuffle (binomial per pixel at the global CW rate)",
-      "significance_sigma": 0.5789206553376632,
-      "rank_p": 0.25717428257174285,
-      "mc_mean": 0.003506533431433355,
-      "mc_std": 0.0015830121590061249
+      "status": "not_run_in_v1.0.243_bounded_primary_regeneration",
+      "reason": "Secondary diagnostic; not part of the requested canonical pixel-permutation primary."
     }
   },
   "multipole_decomposition": {
-    "shot_noise_cl": 0.024933809188742596,
+    "shot_noise_cl": 0.02499878605675343,
     "lmax": 5,
     "multipoles": [
       {
         "l": 0,
-        "Cl": 0.00017851402817770779,
+        "Cl": 0.00017506177962219824,
         "excess_over_shot_noise": 0.0
       },
       {
         "l": 1,
-        "Cl": 8.331652389707923e-06,
+        "Cl": 8.159097255029994e-06,
         "excess_over_shot_noise": 0.0
       },
       {
         "l": 2,
-        "Cl": 1.9997486064130648e-05,
+        "Cl": 2.055217830642556e-05,
         "excess_over_shot_noise": 0.0
       },
       {
         "l": 3,
-        "Cl": 1.932550474887884e-05,
+        "Cl": 1.8443427713766778e-05,
         "excess_over_shot_noise": 0.0
       },
       {
         "l": 4,
-        "Cl": 1.0218376924425061e-05,
+        "Cl": 9.906814453755165e-06,
         "excess_over_shot_noise": 0.0
       },
       {
         "l": 5,
-        "Cl": 7.115026144756563e-06,
+        "Cl": 7.454166728100475e-06,
         "excess_over_shot_noise": 0.0
       }
     ]
@@ -87,9 +92,12 @@
   "methodology": {
     "healpix_nside": 64,
     "min_galaxies_per_pixel": 10,
+    "min_galaxies_per_pixel_operator": ">=",
     "dipole_estimator": "healpy.fit_dipole (gal_cut = 0)",
     "null_model": "Per-pixel label shuffle (preserves mask + footprint geometry); significance = (amp - mean(boots)) / std(boots)",
     "n_mc_realizations": 10000,
-    "n_mc_rationale": "Canonical per fire #49 / pipelines/p2_chirality/outputs/dipole/dipolar_analysis.log; tail-p precision ~ 1/sqrt(N_MC) ~ 3%, immaterial at non-3-sigma Catalog C significances."
+    "rng": "numpy.random.default_rng",
+    "rng_seed": 20260418,
+    "n_mc_rationale": "Exact 10,000-realization primary array retained for rank and moment reproducibility; the result is far from a discovery tail."
   }
 }
