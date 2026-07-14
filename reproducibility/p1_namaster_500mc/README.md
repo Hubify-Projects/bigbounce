@@ -1,107 +1,123 @@
-# Paper 1 §VI — NaMaster 500-MC Birefringence Pipeline
+# Paper 1B NaMaster 500-MC birefringence validation
 
-**Closes:** R42 finding `P1-OA-B1` (GPT-5 cross-model peer review,
-2026-05-01) — "No CMB polarization map analysis code is provided."
+This directory reproduces the foreground-free synthetic-CMB validation used
+in Paper 1B. It is a pipeline test, not a Planck/ACT map analysis, a real-sky
+systematics budget, or evidence for Einstein--Cartan--Holst gravity.
 
-## What this directory reproduces
+## Current canonical result
 
-The canonical Paper 1 §VI birefringence-pipeline numbers, headlined in the
-abstract:
+The current analysis contracts the complete rotated `[EE, EB, BE, BB]`
+theory through `NmtWorkspace.get_bandpower_windows()`. The older analysis
+evaluated the theory at effective-ell bin centres and is preserved only as
+superseded evidence under the top-level `results/` directory.
 
-| Quantity | Value | Source |
-|---|---:|---|
-| Paper 1 prediction recovered β | 0.238° (input 0.27°) | `results/summary.json` |
-| Recovery bias | 0.032° | `results/summary.json` |
-| SNR at ACT sensitivity (β = 0.27°) | 20.32σ | `results/summary.json` |
-| SNR (β = 0.342°, Planck+ACT joint observed) | 25.71σ | `results/summary.json` |
-| Consistency: P1 prediction vs observation | 0.77σ | `results/summary.json` |
+| Injection | Mean recovery | Exact-window template SNR |
+|---:|---:|---:|
+| `0.000 deg` | `-0.001 deg` | `0.00` |
+| `0.270 deg` | `0.269 deg` | `20.0095` |
+| `0.342 deg` | `0.341 deg` | `25.3190` |
 
-These values match Eq. (38) and the §VI "Independent verification (April 2026,
-production 500-realization run)" passages in `arxiv/main.tex`.
+For the canonical `0.270 deg` injection, the signed mean bias is
+`-0.0010 deg`, the per-realization scatter is `0.05140 deg`, and the standard
+error of the 500-realization mean is `0.00230 deg`. The mean residual is
+therefore unresolved. These template SNR values measure an injected synthetic
+signal against single-realization scatter; they are not sky-detection
+significances.
 
-## Files
+Canonical artifacts:
 
-```
-p1_namaster_500mc/
-├── README.md                       # this file
-├── requirements.txt                # pip install dependencies
-├── scripts/
-│   └── namaster_500mc.py           # production 500-MC pipeline (single file)
-└── results/
-    ├── summary.json                # canonical pod output, 2026-04-29 05:31 PDT
-    └── namaster_500mc.log          # stdout of the production pod run
-```
+- `results/exact_window_500mc/summary.json`
+- `results/exact_window_500mc/bandpowers.npz`
 
-The script is fully self-contained: it generates the synthetic ΛCDM E-mode
-spectrum, the ACT-like survey mask (Galactic |b| > 20°, dec ∈ [-65°, +25°],
-2° apodization), Q/U realizations, applies birefringence, adds white noise
-(10 µK·arcmin), and decouples pseudo-C_ℓ via NaMaster. No external CMB
-polarization data is read — Paper 1's birefringence claim is a
-literature-cited observation (Minami+ 2020, ACT 2025), and this script
-provides the **NaMaster pipeline-validation** of recoverability at ACT
-sensitivity, not a re-analysis of Planck/ACT maps.
-
-## How to reproduce
-
-```bash
-# 1. install
-pip install -r requirements.txt
-
-# 2. run (≈ 7 200 s = 2 h on a single H200; CPU-bound on healpy+pymaster)
-python scripts/namaster_500mc.py
-
-# 3. compare
-diff <(jq -S . results/summary.json) <(jq -S . NEW_OUTPUT/summary.json)
-```
-
-The script writes to `./results/namaster-birefringence/summary.json` by
-default (override with `NAMASTER_OUTPUT_DIR=...`).
-
-## Determinism
-
-- `seed_base = 42`; per-realization seeds are `42, 43, …, 541` for each of
-  the three β values (0.0°, 0.27°, 0.342°), giving 1 500 fixed seeds.
-- NaMaster's coupling-matrix computation is deterministic.
-- Re-running the script reproduces every digit of `summary.json` to machine
-  precision (modulo NumPy / NaMaster ABI changes — see `requirements.txt`).
-
-## Configuration (matches Paper 1 §VI)
+## Configuration
 
 | Parameter | Value |
 |---|---:|
-| `NSIDE` (HEALPix) | 512 |
-| `LMAX` | 1024 |
-| Mask `f_sky` | 0.323 (target 0.40) |
-| Noise level | 10 µK·arcmin (white) |
-| Bandpower bins | 20 linear from ℓ = 30 to 3·NSIDE |
-| MC realizations per β | 500 |
-| β values tested | 0.000°, 0.270°, 0.342° |
-| Beam | None (point-spread of 7 arcmin pixels only) |
+| `NSIDE` | 512 |
+| simulated `LMAX` | 1024 |
+| canonical apodized `f_sky` | 0.3226 |
+| polarization white noise | 10 uK-arcmin |
+| bins | 20 integer-edge bins from ell 30 to 1536 |
+| realizations per injection/configuration | 500 |
+| seed range per injection/configuration | 42--541 |
+| canonical `BB` model | `0.05 * EE` |
 
-## Caveats
+The canonical mask is the intersection of `|b| > 20 deg` and
+`-65 deg <= dec <= 25 deg`, Gaussian-smoothed at 2 degrees FWHM and clipped
+to `[0, 1]`. The sky model is a semi-analytic `EE` spectrum with a
+lensing-like `BB` proxy. No beam, foreground, anisotropic noise, or real CMB
+map enters the calculation.
 
-- The CMB EE template is a 4-Gaussian semi-analytic fit to Planck 2018 EE,
-  not a CAMB call. This is intentional: the test is *whether NaMaster
-  recovers β at the SNR claimed in §VI given ACT-like noise + mask*. A
-  CAMB-driven EE would change the 1-σ amplitude per bin by < 5% and the
-  recovered β by < 0.005°.
-- `cl_bb = 0.05 * cl_ee` is a lensing BB approximation; substituting a
-  proper CAMB lensing BB does not move the recovered β within sampling
-  variance.
-- The script does **not** read or write Planck or ACT maps — it generates
-  Gaussian random fields. The β = 0.342° comparison number is from
-  literature (Minami+Komatsu 2020 / ACT 2025) and is not re-derived here.
+## Files and execution
 
-## Provenance
+```text
+scripts/namaster_500mc.py              canonical three-injection run
+scripts/windowed_rotation.py           exact bandpower-window response
+scripts/test_windowed_rotation.py      algebra/operator regression
+scripts/c10_robustness_battery.py      six robustness configurations
+scripts/declared_fsky_sign_battery.py  two f_sky and one negative-sign check
+scripts/checkpoint_io.py               atomic result/receipt publication
+scripts/merge_c10_partials.py          strict nine-shard validator/merger
+scripts/plot_exact_window_results.py   paper figure generator
+```
 
-- Production output (`results/summary.json`) was generated on H200 pod
-  `pod1_namaster_umap_2026-04-29` at 2026-04-29 05:31 PDT.
-- Runtime: 7 322 s (~2.03 h) on a single H200 (workload is CPU-bound;
-  GPU not used).
-- Pod-side script lived at `/root/namaster_500mc.py`. The mirror in this
-  directory adds an env-var-configurable `OUTPUT_DIR` and
-  `NAMASTER_OUTPUT_DIR` defaulting to `results/namaster-birefringence/`,
-  making it portable; the algorithm is byte-identical to the pod-side
-  version (and to the 50-MC pilot at
-  `pipelines/h200_results/pod_final_backup_20260414/experiments/namaster_birefringence.py`,
-  which differs only in `N_REAL = 50` vs 500).
+Create an isolated Python 3.11 environment and install the dependencies in
+`requirements.txt`. The production environment used NumPy 1.26.4, healpy
+1.19.0, PyMaster 2.6, and CAMB 1.6.6 for the lensed-`BB` robustness row.
+
+Run the regression and canonical ensemble:
+
+```bash
+python scripts/test_windowed_rotation.py
+NAMASTER_OUTPUT_DIR=results/exact_window_500mc python scripts/namaster_500mc.py
+```
+
+Long robustness work is one configuration per atomic shard. For example:
+
+```bash
+C10_NREAL=500 python scripts/c10_robustness_battery.py \
+  --only-config apod_fwhm_0p5
+
+DECLARED_NREAL=500 python scripts/declared_fsky_sign_battery.py \
+  --only-config fsky_0p65
+```
+
+Each production shard records the exact configuration object, `N=500`, seed
+range, operator, equivalence residual, core software versions, byte count,
+and SHA-256 in a sidecar `*.json.receipt.json`. Restarting skips a shard only
+after all receipt fields and the result hash validate. When all six c10 and
+all three declared shards exist, validate and merge them with:
+
+```bash
+python scripts/merge_c10_partials.py
+python scripts/plot_exact_window_results.py
+```
+
+The merger rejects missing, duplicated, reordered, parameter-mismatched,
+mixed-operator, mixed-software, wrong-ensemble, or failed-equivalence inputs.
+Merged outputs record every child SHA-256 and are themselves written
+atomically.
+
+## Determinism and numerical checks
+
+- Every configuration uses exactly 500 seeds, `42, 43, ..., 541`.
+- The canonical three injections reuse the same noisy realization per seed;
+  uniform Q/U rotation is applied algebraically to the coupled spectra.
+- Direct rotated-field and algebraic-rotation paths agree to `8.67e-19` in
+  the committed regression.
+- Direct bandpower-window contraction and
+  `decouple_cell(couple_cell(theory))` agree to `3.19e-16` in the regression;
+  every production workspace separately enforces a `1e-10` ceiling.
+- Package/ABI changes may alter low-order floating-point digits; receipts and
+  the analysis manifest identify the frozen outputs exactly.
+
+## Superseded artifacts and scope
+
+See `results/SUPERSEDED.md` before using any top-level historical JSON. The
+pre-July-2026 outputs are retained for provenance but must not be cited as the
+current calibration result.
+
+The validation cannot break the cosmic-rotation/instrument-angle degeneracy
+because it contains no unrotated Galactic foreground. Its results must not be
+treated as a real-sky detection, foreground residual, beam/calibration bound,
+or systematic floor.
