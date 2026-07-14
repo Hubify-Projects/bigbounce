@@ -11,8 +11,9 @@ P1A uses the unreduced Planck mass M_Pl = G_N^(-1/2), hence
     kappa = 8*pi*G_N = 8*pi/M_Pl^2,
 
 not 1/M_Pl^2.  The script derives the gap threshold symbolically, evaluates
-all six declared cutoff/multiplicity rows, separates the scalar sign result
-from the coefficient-magnitude diagnostic, and recomputes the density bound.
+the three declared multiplicity rows at the sole retained bookkeeping ceiling
+Lambda=M_Pl, separates the scalar sign result from the coefficient-magnitude
+diagnostic, and recomputes the density bound.  No cutoff above M_Pl is evaluated.
 It writes a deterministic JSON artifact beside this file.
 """
 
@@ -87,41 +88,33 @@ def recompute() -> dict[str, object]:
     rows: list[dict[str, object]] = []
     expected_scalar = [
         0.238732414637843,
-        0.8712861848096462,
         0.716197243913529,
-        2.6138585544289384,
         2.148591731740587,
-        7.841575663286815,
     ]
 
-    # Interleave the two cutoff choices within each N_f N_c multiplicity.
+    # The manuscript evaluates only the retained EFT bookkeeping ceiling.
     for nfnc in (1, 3, 9):
-        for cutoff_label, lambda_over_mpl in (
-            ("M_Pl", 1.0),
-            ("M_Pl/sqrt(gamma_BI)", 1 / math.sqrt(gamma_bi)),
-        ):
-            # |G_scalar|/G_crit = 3 N_f N_c/(4 pi) * Lambda^2/M_Pl^2.
-            scalar_ratio = (
-                3 * nfnc * lambda_over_mpl**2 / (4 * math.pi)
-            )
-            axial_benchmark = scalar_ratio / 2
-            rows.append(
-                {
-                    "N_f_times_N_c": nfnc,
-                    "cutoff": cutoff_label,
-                    "Lambda_over_M_Pl": lambda_over_mpl,
-                    "scalar_abs_G_over_scalar_Gcrit": scalar_ratio,
-                    "axial_coefficient_over_scalar_Gcrit": axial_benchmark,
-                    "scalar_magnitude_subcritical": scalar_ratio < 1,
-                    "axial_benchmark_below_one": axial_benchmark < 1,
-                    "Holst_dressed_scalar_ratio_at_gamma_0.274": (
-                        scalar_ratio * holst_factor
-                    ),
-                    "Holst_dressed_axial_benchmark_at_gamma_0.274": (
-                        axial_benchmark * holst_factor
-                    ),
-                }
-            )
+        lambda_over_mpl = 1.0
+        # |G_scalar|/G_crit = 3 N_f N_c/(4 pi) * Lambda^2/M_Pl^2.
+        scalar_ratio = 3 * nfnc * lambda_over_mpl**2 / (4 * math.pi)
+        axial_benchmark = scalar_ratio / 2
+        rows.append(
+            {
+                "N_f_times_N_c": nfnc,
+                "cutoff": "M_Pl",
+                "Lambda_over_M_Pl": lambda_over_mpl,
+                "scalar_abs_G_over_scalar_Gcrit": scalar_ratio,
+                "axial_coefficient_over_scalar_Gcrit": axial_benchmark,
+                "scalar_magnitude_subcritical": scalar_ratio < 1,
+                "axial_benchmark_below_one": axial_benchmark < 1,
+                "Holst_dressed_scalar_ratio_at_gamma_0.274": (
+                    scalar_ratio * holst_factor
+                ),
+                "Holst_dressed_axial_benchmark_at_gamma_0.274": (
+                    axial_benchmark * holst_factor
+                ),
+            }
+        )
 
     assert len(rows) == len(expected_scalar)
     for row, expected in zip(rows, expected_scalar):
@@ -183,7 +176,7 @@ def recompute() -> dict[str, object]:
 
     return {
         "paper": "P1A",
-        "closure": "Fierz operator-convention correction v1A.0.119",
+        "closure": "cutoff-scope alignment for P1A v1A.0.123",
         "planck_convention": {
             "M_Pl_definition": "unreduced M_Pl=G_N^(-1/2)",
             "M_Pl_GeV": m_pl_gev,
@@ -204,7 +197,7 @@ def recompute() -> dict[str, object]:
         "scan_inputs": {
             "gamma_BI": gamma_bi,
             "N_f_times_N_c": [1, 3, 9],
-            "cutoffs": ["M_Pl", "M_Pl/sqrt(gamma_BI)"],
+            "cutoffs": ["M_Pl"],
             "Holst_factor_gamma2_over_1_plus_gamma2": holst_factor,
         },
         "ratios": rows,

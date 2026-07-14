@@ -1,6 +1,6 @@
 {
   "paper": "P1A",
-  "closure": "Fierz operator-convention correction v1A.0.119",
+  "closure": "cutoff-scope alignment for P1A v1A.0.123",
   "planck_convention": {
     "M_Pl_definition": "unreduced M_Pl=G_N^(-1/2)",
     "M_Pl_GeV": 1.22089e+19,
@@ -29,8 +29,7 @@
       9
     ],
     "cutoffs": [
-      "M_Pl",
-      "M_Pl/sqrt(gamma_BI)"
+      "M_Pl"
     ],
     "Holst_factor_gamma2_over_1_plus_gamma2": 0.0698332024898705
   },
@@ -47,17 +46,6 @@
       "Holst_dressed_axial_benchmark_at_gamma_0.274": 0.008335724526150107
     },
     {
-      "N_f_times_N_c": 1,
-      "cutoff": "M_Pl/sqrt(gamma_BI)",
-      "Lambda_over_M_Pl": 1.9104017997521754,
-      "scalar_abs_G_over_scalar_Gcrit": 0.8712861848096461,
-      "axial_coefficient_over_scalar_Gcrit": 0.4356430924048231,
-      "scalar_magnitude_subcritical": true,
-      "axial_benchmark_below_one": true,
-      "Holst_dressed_scalar_ratio_at_gamma_0.274": 0.06084470457043875,
-      "Holst_dressed_axial_benchmark_at_gamma_0.274": 0.030422352285219376
-    },
-    {
       "N_f_times_N_c": 3,
       "cutoff": "M_Pl",
       "Lambda_over_M_Pl": 1.0,
@@ -69,17 +57,6 @@
       "Holst_dressed_axial_benchmark_at_gamma_0.274": 0.025007173578450323
     },
     {
-      "N_f_times_N_c": 3,
-      "cutoff": "M_Pl/sqrt(gamma_BI)",
-      "Lambda_over_M_Pl": 1.9104017997521754,
-      "scalar_abs_G_over_scalar_Gcrit": 2.6138585544289383,
-      "axial_coefficient_over_scalar_Gcrit": 1.3069292772144692,
-      "scalar_magnitude_subcritical": false,
-      "axial_benchmark_below_one": false,
-      "Holst_dressed_scalar_ratio_at_gamma_0.274": 0.18253411371131625,
-      "Holst_dressed_axial_benchmark_at_gamma_0.274": 0.09126705685565813
-    },
-    {
       "N_f_times_N_c": 9,
       "cutoff": "M_Pl",
       "Lambda_over_M_Pl": 1.0,
@@ -89,17 +66,6 @@
       "axial_benchmark_below_one": false,
       "Holst_dressed_scalar_ratio_at_gamma_0.274": 0.15004304147070194,
       "Holst_dressed_axial_benchmark_at_gamma_0.274": 0.07502152073535097
-    },
-    {
-      "N_f_times_N_c": 9,
-      "cutoff": "M_Pl/sqrt(gamma_BI)",
-      "Lambda_over_M_Pl": 1.9104017997521754,
-      "scalar_abs_G_over_scalar_Gcrit": 7.8415756632868145,
-      "axial_coefficient_over_scalar_Gcrit": 3.9207878316434073,
-      "scalar_magnitude_subcritical": false,
-      "axial_benchmark_below_one": false,
-      "Holst_dressed_scalar_ratio_at_gamma_0.274": 0.5476023411339487,
-      "Holst_dressed_axial_benchmark_at_gamma_0.274": 0.27380117056697434
     }
   ],
   "scalar_sign_result": {
@@ -111,9 +77,9 @@
   },
   "magnitude_result": {
     "all_scalar_rows_subcritical": false,
-    "scalar_supercritical_rows": 3,
-    "maximum_scalar_ratio": 7.8415756632868145,
-    "maximum_axial_coefficient_benchmark": 3.9207878316434073,
+    "scalar_supercritical_rows": 1,
+    "maximum_scalar_ratio": 2.148591731740587,
+    "maximum_axial_coefficient_benchmark": 1.0742958658702935,
     "verdict": "blanket magnitude-subcritical claim is false; the scalar sign result remains independently valid in the declared model"
   },
   "density_bound": {
