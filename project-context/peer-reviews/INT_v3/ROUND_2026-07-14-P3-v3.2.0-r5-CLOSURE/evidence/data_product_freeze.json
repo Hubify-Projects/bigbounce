@@ -1,0 +1,46 @@
+{
+  "paper": "P3",
+  "manuscript_version": "v3.2.0-r5",
+  "freeze_timestamp": "2026-07-14T10:23:00-07:00",
+  "primary_release": {
+    "version": "v3.2.0-r2",
+    "rows": 181,
+    "parquet_sha256": "25f06752e0f1e9c0ddcde32e74fc0a82e8c2518a8fb24bf910c21e10ce988b03",
+    "release_manifest_sha256": "91a26eff72d056bbd9a411ef9b56362cb054befec3678b14c0eb1a191e6f7560",
+    "immutable_huggingface_revision": "1a9e85ee004894956665444b4f110111f1090b79"
+  },
+  "warning_bearing_auxiliary": {
+    "version": "v3.2.0-r5",
+    "status": "SECONDARY_WARNING_BEARING_NOT_PRIMARY_NOT_PHYSICALLY_VALIDATED",
+    "rows": 2267,
+    "columns": 47,
+    "candidate_id_first": "P3-DESI-WARNED-000001",
+    "candidate_id_last": "P3-DESI-WARNED-002267",
+    "exact_identity_set_digest": "2cc02e4b839073a3d2664c57614a6b20205a3d1d9d68d71851b72ccb4794ee78",
+    "parquet_sha256": "e370f0ae6ec3f4dc3e24b443e2f9ee53a35b105341ef838f15067b6faea1e57c",
+    "release_manifest_sha256": "8d0fc845116e5f273afa81d45fb876b5421972d5e190429766c608c7a10b472f",
+    "exact_set_replay_assertion_sha256": "d5187e0565c6f5ab9a03c1b2ddcfab953ea784b38a5f9c8b4818829cb88a89ac",
+    "builder_sha256": "a4b47f0eb4ba64d41c4ffd7b315b02c09b82f46f55fc75c4badc43fccd0b7ccc",
+    "validator_sha256": "4fb3ef7f4fb37d0ff130d3ba698d692c68ac2d209f53762f6b89f483deeb7133",
+    "data_commit": "39cd3e7c15ec7a4155cef67e2f04a5b3db22be01",
+    "validation": "PASS: exact 2267/2267 checkpoint-replay key/order set, exact carried-source fields, seven exact ZWARN masks, decoded bits, zero primary members"
+  },
+  "aas_primary_asset": {
+    "package_version": "v3.2.0-r4",
+    "rows": 181,
+    "columns": 43,
+    "tab3_tsv_sha256": "8d13592e8b9bb007b24c496c138e53787ad98df476f9ff487dabc851732faa45",
+    "manifest_sha256": "52a3d6ffbb57e3f0cf36f7d053673c7c13a5cdeac8a68f5fa35b099e7ecc2c92",
+    "journal_asset_doi": null,
+    "journal_asset_doi_status": "External publication-workflow gate; no DOI claimed."
+  },
+  "lineage_evidence": {
+    "immutable_dataset_commit": "cdaaa03a72c69d86f011be128d93f261dc5b39a8",
+    "hf_dataset_readme_sha256": "390fc66bd1322dce636f0369d9ca4660d38a7da542e133098a0e94676dbdfb48",
+    "positional_dedup_script_sha256": "c5ab3517a655c03f5b7b371e340b10dc289c27f6dacffed4862bf4f38ba0ab62",
+    "heldout_reinference_sha256": "63ef0c7f5004cbc615bb1fa04373a685af1334a6036b46cd35eb2d70c8b3b069",
+    "normalization_reconciliation_sha256": "dc277ca5bc1b8b5d88416a2eb440e4e750b78d3961dc964e2a7096b61ee70514",
+    "supported_lineage": "Eight-input 5-arcsec positional grouping with local friends-of-friends union-find executable lineage; 496-to-128 BigAE, five-seed mean-MSE.",
+    "unavailable_boundary": "Production absolute-scale normalization/resampling, original object-to-spectrum mapping, exact released per-object rescoring, and physical-feature sensitivity are unavailable and not claimed."
+  }
+}

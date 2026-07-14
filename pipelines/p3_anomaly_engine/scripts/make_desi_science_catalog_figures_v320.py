@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate manuscript figures directly from the P3 v3.2.0 release."""
+"""Generate manuscript figures directly from the immutable P3 v3.2.0-r2 release."""
 
 from pathlib import Path
 import json
@@ -10,9 +10,18 @@ import pandas as pd
 
 
 ROOT = Path(__file__).resolve().parents[3]
-RELEASE = ROOT / "pipelines/p3_anomaly_engine/desi_science_catalog_v3.2.0"
-CATALOG = RELEASE / "desi_dr1_science_anomaly_candidates_v3.2.0.parquet"
+RELEASE = ROOT / "pipelines/p3_anomaly_engine/desi_science_catalog_v3.2.0-r2"
+CATALOG = RELEASE / "desi_dr1_science_anomaly_candidates_v3.2.0-r2.parquet"
 FIGURES = ROOT / "pipelines/p3_anomaly_engine/figures"
+
+plt.rcParams.update({
+    "font.size": 10.0,
+    "axes.titlesize": 10.0,
+    "axes.labelsize": 9.5,
+    "xtick.labelsize": 8.5,
+    "ytick.labelsize": 8.5,
+    "legend.fontsize": 8.0,
+})
 
 
 def save(fig: plt.Figure, stem: str) -> None:
@@ -27,7 +36,7 @@ def main() -> None:
     audit = json.loads((RELEASE / "SELECTION_AUDIT.json").read_text())
     palette = {"GALAXY": "#2563eb", "QSO": "#dc2626", "STAR": "#ca8a04"}
 
-    fig, axes = plt.subplots(1, 3, figsize=(10.8, 3.35), constrained_layout=True)
+    fig, axes = plt.subplots(1, 3, figsize=(11.4, 3.6), constrained_layout=True)
     ax = axes[0]
     for kind in ("GALAXY", "QSO", "STAR"):
         group = data[data["spectype"] == kind]
@@ -40,7 +49,7 @@ def main() -> None:
                edgecolors="black", linewidths=0.8, label=">0.1 arcsec (11)")
     ax.set(xlabel="Right ascension (deg)", ylabel="Declination (deg)", title="(a) DESI-footprint coverage")
     ax.invert_xaxis()
-    ax.legend(fontsize=6.7, frameon=False, loc="lower left")
+    ax.legend(fontsize=8.0, frameon=False, loc="lower left")
 
     ax = axes[1]
     bins = np.linspace(-0.05, 6.15, 26)
@@ -50,7 +59,7 @@ def main() -> None:
                 color=palette[kind], label=kind)
     ax.set(xlabel="Redrock redshift $z$", ylabel="Candidates per bin", title="(b) Descriptive redshift distribution")
     ax.set_yscale("symlog", linthresh=1)
-    ax.legend(fontsize=7, frameon=False)
+    ax.legend(fontsize=8.0, frameon=False)
 
     ax = axes[2]
     for kind in ("GALAXY", "QSO", "STAR"):
@@ -62,7 +71,7 @@ def main() -> None:
     save(fig, "p3_v320_catalog_overview")
 
     waterfall = audit["waterfall"]
-    fig, axes = plt.subplots(1, 2, figsize=(7.2, 3.25), constrained_layout=True)
+    fig, axes = plt.subplots(1, 2, figsize=(7.8, 3.5), constrained_layout=True)
     ax = axes[0]
     labels = ["1 arcsec +\nscience bits", "+ global\nprimary", "+ ZWARN=0\nrelease"]
     values = [waterfall["existing_bitmask_1arcsec"], waterfall["remaining_zcat_primary"],
@@ -70,7 +79,7 @@ def main() -> None:
     bars = ax.bar(labels, values, color=["#94a3b8", "#64748b", "#2563eb"], width=0.68)
     for bar, value in zip(bars, values):
         ax.text(bar.get_x() + bar.get_width() / 2, value + 35, f"{value:,}",
-                ha="center", va="bottom", fontsize=8)
+                ha="center", va="bottom", fontsize=9)
     ax.set(ylabel="Rows", title="(a) Declared selection waterfall")
     ax.set_ylim(0, 2750)
 
@@ -82,7 +91,7 @@ def main() -> None:
     ax.axvline(1.0, color="#dc2626", linestyle=":", linewidth=1, label="join limit")
     ax.set(xscale="log", yscale="log", xlabel="Separation threshold (arcsec)",
            ylabel="Candidates at or above threshold", title="(b) Disclosed separation tail")
-    ax.legend(fontsize=6.7, frameon=False)
+    ax.legend(fontsize=8.0, frameon=False)
     save(fig, "p3_v320_selection_waterfall")
 
 
