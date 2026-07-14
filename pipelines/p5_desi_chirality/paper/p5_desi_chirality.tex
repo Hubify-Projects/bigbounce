@@ -41,7 +41,13 @@
 % The divide-by-h claim (~1246 h⁻¹ Mpc) is INVERTED. No pipeline recompute required.
 % If any future reviewer re-raises this, cite env_finder/01_compute_vweb.py:106-108.
 
-\newcommand{\paperVersion}{v0.1.127-2026-07-13}
+\newcommand{\paperVersion}{v0.1.128-2026-07-14}
+% v0.1.128 (2026-07-14 -- M44 non-Anthropic closure): integrated the
+%   DESIVAST region-cluster bootstrap (DP5-10 spatial-covariance sensitivity);
+%   relabeled the ~0.9 pp quadrature as a heterogeneous, non-probabilistic
+%   sensitivity summary; removed the noncovariant toy-EFT appendix and physical/
+%   real-space model-bound overreach; tightened exploratory classifier-labelled
+%   redshift-space scope; recorded the raw-FITS snapshot provenance residual.
 % v0.1.127 (2026-07-13 -- M28-INT genuinely-new (reader-visible artifact-ID range defect):
 %   INT-Claude M28 caught that the artifact-index range descriptors still read "[A1]--[A32]"
 %   at three in-PDF sites (acknowledgments AI-methodology para; Appendix C numbering note x2)
@@ -692,7 +698,7 @@
 %   cluster −54%) but the environmental-independence null HOLDS and
 %   TIGHTENS: cross-class f_CW range 1.98pp → 0.05pp, all classes
 %   |σ_mono| ≤ 0.39. Artifact: outputs/16_cosmic_web_zshell_corrected.json.
-\newcommand{\paperTimestamp}{July 2026}
+\newcommand{\paperTimestamp}{July 14, 2026}
 % timestamp label unchanged (still July 2026); \date bumped to July 6
 % v0.1.62-2026-06-10 (R29 post-EXT1 internal-round closure wave; truth audit at
 %   project-context/peer-reviews/R29_P5_TRUTH_AUDIT.md):
@@ -786,56 +792,38 @@
 
 \begin{document}
 
-\title{Redshift-Space Environmental Dependence of Spiral Chirality: A DESIVAST Three-Algorithm Void Null Test on 57{,}081 DESI DR1 Spirals\protect\footnote{``Redshift-space'': all environment classes are assigned in DESI DR1 redshift coordinates without real-space reconstruction (\S\ref{sec:limitations}); the bound is on fixed-redshift-space DESIVAST void membership. T-Web/V-Web nomenclature: see \S\ref{sec:vweb}.}}
+\title{An Exploratory Redshift-Space Environmental Null Test of Classifier-Labelled Spiral Chirality with DESI DR1 and DESIVAST\protect\footnote{All environment classes are assigned in DESI DR1 redshift coordinates without real-space reconstruction (\S\ref{sec:limitations}).}}
 
 \author{Houston Golden}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{July 13, 2026}
+\date{July 14, 2026}
 
 \begin{abstract}
-We test whether spiral galaxy chirality depends on large-scale-structure
-environment in DESI Data Release~1, cross-matching the
-$8{,}474{,}531$-galaxy chirality catalog of the companion catalog paper
-(Paper~IV)~\cite{golden_chirality_2026} (\paperIVarxiv, posted
-concurrently under coordinated submission) to the DESI DR1 redshift
-catalog. The designated-primary (exploratory, not pre-registered)
-estimand is the footprint-restricted
-DESIVAST~\cite{DESIVAST2025} void-vs-non-void CW-fraction contrast
-$\Delta f_{\rm CW} = +0.0018$ ($z_\Delta = +0.78$, $p_\Delta = 0.43$,
-$n_{\rm void} = 57{,}081$), consistent with parity; the void/non-void
-contrast is algebraically invariant to the catalog-wide classifier
-monopole, so the headline is independent of the Paper~IV monopole
-amplitude. The null holds across all five DESIVAST void definitions
-(the family-wise Bonferroni-5 null, $|\Delta f_{\rm CW}| \le 0.004$,
-$|z_\Delta| \le 1.25$, $p_\Delta \ge 0.21$), and agrees to within
-$0.11$\,pp with the broader $k=20$ VoidFinder membership contrast
-($\Delta f_{\rm CW} = +0.0007$ on $56{,}981$ void spirals). Folding the
-counting-statistics CI with the fixed-void-geometry membership,
-any-hole-vs-maximal-sphere geometry ($0.60$\,pp, co-dominant), footprint,
-confidence, and match-radius terms in quadrature gives an honest effective
-$2\sigma$ systematic envelope of ${\approx}0.9$\,pp on the
-classifier-labelled CW fraction (Table~\ref{tab:systematic_budget}). This
-is a bound on the classifier-labelled fraction, not on physical chirality:
-at the $69.91\%$ ($\kappa = 0.40$) GZ1 accuracy floor the label statistic
-is an attenuated proxy (attenuation factor $2a-1 \simeq 0.40$), so the
-de-attenuated physical-chirality bound is ${\approx}2.26$\,pp
-($0.9/0.3982$), the quantity model-builders should use. A secondary T-Web
-tidal-tensor classification of the full matched sample, and null tests in
-redshift, projected density, and sky position, are all consistent with
-this bound; the ${\sim}2.1\sigma$ T-Web filament bright-vs-dark sign-flip
-is flagged as a survey-selection diagnostic for DESI DR2, not a signal.
-All bounds are quoted in fixed redshift space: the dominant coherent
-void-outflow RSD term is bounded by a first-order Zel'dovich
-reconstruction that shifts the unrestricted contrast by only
-$0.024$\,pp ($\approx\!40\times$ under the envelope, null preserved),
-while the anisotropic tidal-tensor channel of the secondary T-Web path
-remains unquantified (\S\ref{sec:limitations}). No published bounce or
-inflation model currently predicts an environment-conditional chirality
-signature at this scale; the null therefore supplies a new empirical
-constraint that any such model must satisfy at the $\gtrsim\!25\,{\rm
-Mpc}/h$ smoothing scale probed here.
+We perform an exploratory, post-hoc test of whether
+\emph{classifier-labelled} spiral chirality depends on redshift-space
+large-scale-structure environment in DESI Data Release~1. We cross-match
+the $8{,}474{,}531$-galaxy companion catalog
+(Paper~IV)~\cite{golden_chirality_2026} (\paperIVarxiv, coordinated
+submission) to DESI DR1. The designated-primary, non-preregistered
+estimand is the footprint-restricted DESIVAST~\cite{DESIVAST2025}
+void-vs-non-void CW-label contrast,
+$\Delta f_{\rm CW}=+0.0018$ ($z_\Delta=+0.78$, $p_\Delta=0.43$,
+$n_{\rm void}=57{,}081$), consistent with null. The result remains null
+across all five DESIVAST definitions (Bonferroni-5:
+$|z_\Delta|\le1.25$, $p_\Delta\ge0.21$) and differs by only $0.11$\,pp
+from the broader VoidFinder control-volume sensitivity check. A
+region-cluster bootstrap over $3{,}756$ nonempty DESIVAST maximal-void
+neighbourhoods gives ${\rm SE}=0.002328$, only $0.5\%$ above the
+independent-binomial value, and preserves the null. Separately, combining
+heterogeneous counting and sensitivity excursions in quadrature gives
+${\approx}0.9$\,pp; this is a non-probabilistic sensitivity summary, not
+a confidence interval. A secondary T-Web analysis is retained only as a
+redshift-space diagnostic; its anisotropic RSD channel remains
+unquantified. The result is therefore limited to an exploratory,
+classifier-labelled, fixed-redshift-space non-detection. It is not a
+reconstructed real-space or physical-handedness constraint.
 \end{abstract}
 \maketitle
 
@@ -860,17 +848,13 @@ That dipole null is a \emph{global} statement; it
 does not constrain whether handedness is independent of
 \emph{environment}.
 
-The present paper is a focused, environment-conditional null test. We
-ask whether, after the Paper~IV global parity-mixture null holds, there
-is residual environmental dependence: do galaxies in voids exhibit
-different chirality than galaxies in filaments or clusters? No
-published bounce or inflation model currently predicts a specific
-environment-conditional chirality signature at this scale; the present
-null therefore supplies an empirical upper bound on any future model
-in the bounce-chirality coupling class (Sec.~\ref{sec:p4}) that would
-produce one at the $\gtrsim\!25\,\text{Mpc}/h$ smoothing scale of the
-T-Web classification used here, and complements the Paper~IV
-global-dipole bound at the catalog-monopole level.
+The present paper is a focused, exploratory environment-conditional null
+test. We ask whether classifier labels differ between galaxies assigned
+to void and non-void environments in DESI redshift space. No published
+bounce or inflation model currently predicts a specific signal for this
+estimand. Accordingly, the analysis measures dataset- and
+classifier-specific DR1 sensitivity; it is not a real-space or physical
+handedness constraint and does not discriminate cosmological models.
 
 We approach the test in three stages. First, we cross-match the
 canonical chirality catalog with DESI Data Release~1
@@ -891,13 +875,14 @@ DESIVAST-anchored primary path and its garden-of-forking-paths accounting
 radial-selection and shell-geometry sensitivity of the secondary T-Web
 classification (\S\ref{sec:zshell_robustness}, \S\ref{sec:systematics});
 the fixed-void-geometry redshift-space nature of the DESIVAST test and its
-${\approx}0.9$\,pp systematic envelope (\S\ref{sec:desivast_primary},
+${\approx}0.9$\,pp heterogeneous sensitivity summary (\S\ref{sec:desivast_primary},
 Table~\ref{tab:systematic_budget}); the anisotropic (non-scalar) channel of
 the classifier monopole (\S\ref{sec:desivast_p4_residual},
 \S\ref{sec:limitations}); and deterministic reproducibility from the
 committed pipeline (\S\ref{sec:data_code}, Appendix~\ref{app:artifacts}).
-Throughout, a null is reported as a controlled-sample non-detection and an
-upper bound, not as evidence for environment-independence.
+Throughout, the result is reported as an exploratory controlled-sample
+non-detection, not as evidence for environment-independence or as a
+physical or real-space exclusion.
 
 \section{Relation to Paper IV}\label{sec:p4}
 
@@ -1494,11 +1479,10 @@ V2-REVOLVER GALZONE $1.12$\,pp, and V2-VIDE GALZONE $0.86$\,pp. The
 interval $[-0.0112, +0.0038]$ --- gives the least-constraining
 simultaneous bound: no DESIVAST void definition admits
 $|\Delta f_{\rm CW}| \gtrsim 1.1$\,pp at family-wise $95\%$ confidence.
-This is the honest joint statement across five correlated, differently
-defined estimators; it is deliberately looser than the tightest single
-row and than the ${\approx}0.9$\,pp systematic-envelope quadrature, and
-it is the value model-builders should adopt when they need a single
-simultaneous constraint rather than a preferred-row bound. The secondary T-Web / Tempel / ASTRA
+This is the joint counting-statistics statement across five correlated,
+differently defined estimators; it is deliberately looser than the
+tightest single row. It is distinct from the non-probabilistic
+${\approx}0.9$\,pp sensitivity summary below. The secondary T-Web / Tempel / ASTRA
 / external T-Web~\cite{TWebDESI2026} / per-stratification estimators carry their own multiplicity
 budget but, per the primary/secondary separation above, do not enter
 the headline-result family. We caution that any single secondary-path
@@ -1533,8 +1517,8 @@ why we quote the family-wise Bonferroni-5 null across all five void
 definitions --- not the tightest single row --- as the strictly quotable
 result. We flag that the primary estimand was designated post-hoc (no
 timestamped plan predates the data), so the DR1 result is
-exploratory/post-hoc and the ${\sim}0.9$\,pp systematic bound should be
-read as the tightest of several correlated void-definition estimators;
+exploratory/post-hoc and the ${\sim}0.9$\,pp heterogeneous sensitivity
+summary must not be read as a confidence bound;
 the quotable family statement is the uniform Bonferroni-5 null,
 not any single most-favorable row. To remove the residual
 garden-of-forking-paths concern in the follow-up, we commit that the
@@ -2119,7 +2103,7 @@ bears only on the \emph{secondary} T-Web diagnostic, not on the headline
 DESIVAST primary path is constructed on the volume-limited $z\!\le\!0.24$
 BGS anchor where target-program mixing is far more constrained, a
 comparable leakage into the primary $\Delta f_{\rm CW}$ null
-is bounded well below the honest ${\approx}0.9$\,pp systematic envelope
+is numerically far below the ${\approx}0.9$\,pp heterogeneous sensitivity summary
 (Table~\ref{tab:systematic_budget}).
 \emph{Explicit propagation (from existing numbers):} the maximum leakage
 of the $0.81$\,pp bright/dark residual into the DESIVAST void/non-void
@@ -2560,8 +2544,8 @@ itself. \emph{Bound on how large a membership shift is needed to move the
 estimand appreciably:} the MC already reassigns ${\sim}34\%$ of
 void memberships under the maximum plausible RSD displacement
 ($\sigma_v/(aH)\!\lesssim\!5$\,Mpc/$h$) and shifts $\Delta f_{\rm CW}$
-by at most $0.37$\,pp --- comfortably within the honest
-${\approx}0.9$\,pp effective $2\sigma$ systematic envelope
+by at most $0.37$\,pp --- below the
+${\approx}0.9$\,pp heterogeneous sensitivity summary
 (Table~\ref{tab:systematic_budget}) and comparable to, not larger than,
 the counting CI. To move the estimand by $\gtrsim 0.5$\,pp would require a
 membership-reassignment far in excess of the RSD-scale MC (roughly
@@ -2570,9 +2554,9 @@ observed), corresponding to a systematic
 reconstruction error of order the void effective radius itself
 ($R_{\rm eff}\!\gtrsim\!10$\,Mpc/$h$), which is not supported by the
 fixed-void-geometry stress test. We do not claim full RSD immunity,
-but the MC bound demonstrates that plausible fixed-geometry membership
-uncertainty does not destabilize the ${\approx}0.9$\,pp systematic
-envelope. \emph{Consistent first-order reconstruction bound.} Beyond the
+but the MC check demonstrates that plausible fixed-geometry membership
+perturbations do not change the null. \emph{Consistent first-order
+reconstruction sensitivity.} Beyond the
 fixed-geometry MC, we now compute a directly consistent linear-theory
 bound in which galaxies \emph{and} the published DESIVAST holes are
 displaced together by the same coherent void-outflow velocity field
@@ -2592,7 +2576,7 @@ $\Delta f_{\rm CW}$ moves from $+0.069$\,pp in redshift space to
 $+0.045$\,pp reconstructed --- a computed RSD systematic
 $|\text{shift}| = 0.024$\,pp (Monte Carlo $+0.026 \pm 0.049$\,pp over
 $200$ scatter realizations of the profile depth), roughly $40\times$
-under the ${\approx}0.9$\,pp systematic envelope, with the null verdict
+below the ${\approx}0.9$\,pp sensitivity summary, with the null verdict
 preserved ($|z|$ moving from $0.32$ in redshift space to $0.18$ in the
 reconstructed frame;
 \href{\repoBase/pipelines/p5\_desi\_chirality/outputs/27\_rsd\_void\_recon\_bound.json}{[A33]},
@@ -2608,7 +2592,7 @@ reconstruction, \emph{not} a full nonlinear iterative re-derivation of
 the void catalog (VoidFinder is not re-run on the reconstructed density
 field), so the small-scale stochastic finger-of-god residual remains a
 disclosed limitation bounded by the fixed-geometry MC above, and both
-fold into the same ${\approx}0.9$\,pp envelope.
+are two entries in the same ${\approx}0.9$\,pp sensitivity summary.
 \emph{Per-term systematics (consolidated in
 Table~\ref{tab:systematic_budget}).} The void-center/effective-radius
 \emph{geometry} choice moves $\Delta f_{\rm CW}$ by $\le 0.6$\,pp between
@@ -2622,9 +2606,9 @@ $0.02$\,pp across $\{0.5,1,2,3,5\}''$ and the imaging-footprint split to
 $0.13$\,pp (Table~\ref{tab:systematics_splits}); and the
 classifier-confidence variation drifts by at most $0.24$\,pp under the
 $p_{\rm cls\_eq}^{\max}\!\ge\!0.7$ high-confidence cut. Folding these
-counting-plus-systematic terms honestly (quadrature; the geometry term is
+heterogeneous terms into a quadrature norm (the geometry term is
 \emph{co-dominant}, not sub-dominant) gives the ${\approx}0.9$\,pp
-effective $2\sigma$ envelope of Table~\ref{tab:systematic_budget}, with a
+heterogeneous sensitivity summary of Table~\ref{tab:systematic_budget}, with a
 $0.60$\,pp maximum single excursion; the one
 structured residual (the ${\sim}2\sigma$ BGS-bright/dark target-program
 split) is by construction suppressed in the volume-limited $z\!\le\!0.24$
@@ -2808,8 +2792,23 @@ angular-selection space), which we do not construct here. The
 footprint-restricted contrast should therefore be read as a
 \emph{same-survey-volume} estimand that removes the dominant
 outside-footprint monopole, not as a completeness-matched estimator;
-the residual selection mismatch is one of the systematic channels folded
-into the envelope of Table~\ref{tab:systematic_budget}.
+the residual selection mismatch is represented as one sensitivity channel
+in the heterogeneous, non-probabilistic summary in
+Table~\ref{tab:systematic_budget}.
+
+\emph{Cluster-aware sampling sensitivity (DP5-10).} To test the
+independent-binomial approximation directly, each primary-sample galaxy
+was assigned to its nearest three-dimensional DESIVAST maximal-void
+centre and the $3{,}756$ nonempty regions were resampled as whole
+clusters (20,000 pairs-bootstrap replicates; seed 20260714). The cluster
+SE is $0.002328$, compared with the independent-binomial $0.002317$
+(ratio $1.00496$; variance design effect $1.00994$), and the percentile
+$95\%$ interval is $[-0.002715,+0.006354]$. A delete-one-region
+jackknife gives ${\rm SE}=0.002328$ and the same inference. This closes
+the previously missing \emph{spatial-covariance sensitivity check} for
+the specified region clustering; it does not validate independence for
+all possible dependence structures and does not calibrate the
+heterogeneous sensitivity summary below.
 
 \emph{Sensitivity check: the all-$z\le0.24$-outside-hole contrast.}
 The broader control that admits every $z \le 0.24$ matched spiral
@@ -2824,8 +2823,8 @@ independent of the catalog-level monopole carried by the one-sample
 $\sigma_{\rm from\,half}$ column. The primary footprint-restricted and
 sensitivity-check unrestricted contrasts agree to within $0.11$\,pp,
 so the null verdict is invariant to the control-volume choice; we quote
-the footprint-restricted value as primary because it is the clean
-same-selection-function DESIVAST estimand.
+the footprint-restricted value as primary because it is the cleaner
+same-survey-volume DESIVAST estimand.
 
 \emph{Void membership definition caveat.}
 The primary DESIVAST VoidFinder void membership assignment uses the
@@ -2850,31 +2849,30 @@ by $0.0001$; and (iii) the three-algorithm DESIVAST robustness check
 (\S\ref{sec:desivast_three_algo}) returns $|\Delta f_{\rm CW}| \le 0.004$
 across \emph{all five} DESIVAST void definitions including the two
 catalog-native GALZONE contrasts (V2-REVOLVER: $\Delta = -0.0037$;
-V2-VIDE: $\Delta = +0.0019$). The precise bound does depend on the
+V2-VIDE: $\Delta = +0.0019$). The measured excursion does depend on the
 membership construction; the quotable family statement is the
 \emph{definition-family null} --- the Bonferroni-5 uniform null across
 all five void definitions ($|z_\Delta| \le 1.25$,
 \S\ref{sec:primary_path}, Table~\ref{tab:analysis_tree}) --- not the
-most-favorable single row, and the approximate DR1 sensitivity envelope
-(${\approx}0.5$--$0.6$\,pp folding counting statistics and the
-fixed-void-geometry membership systematic) should be read as the
-definition-family bound, not as a hard exclusion from the $k=20$
-VoidFinder row alone.
+most-favorable single row. The $0.5$--$0.6$\,pp excursions from individual
+geometry and membership variants are sensitivity checks, not a
+definition-family confidence bound or a hard exclusion from the $k=20$
+VoidFinder row.
 
-\emph{Scope of this CI and the consolidated systematic budget.} The
+\emph{Scope of the CI and the consolidated sensitivity table.} The
 quoted ${\rm SE}(\Delta)$ and $95\%$ interval are
 \emph{counting-statistics-only} (two-sample binomial); they do \emph{not}
-constitute a full systematic error budget. Table~\ref{tab:systematic_budget}
-consolidates every per-term systematic value already reported in this
-paper into a single budget for the primary DESIVAST estimand. The three
+constitute a full systematic error budget. The cluster bootstrap above
+tests the spatial-covariance component and yields nearly the same
+interval. Table~\ref{tab:systematic_budget} separately consolidates
+heterogeneous sensitivity excursions reported in this paper. The three
 leading terms --- counting CI ($0.44$\,pp), fixed-void-geometry
 \emph{membership perturbation} ($0.34$--$0.37$\,pp), and any-hole
 vs.\ maximal-sphere \emph{geometry} ($0.60$\,pp) --- are of
 \emph{comparable} magnitude, and the geometry term is
-\emph{not} sub-dominant to the membership term. Combining the eight
-counting-plus-systematic terms in quadrature (treating them as
-approximately independent) gives an effective $2\sigma$ half-width of
-${\approx}0.9$\,pp. Explicitly, the term-sum is
+\emph{not} sub-dominant to the membership term. For compact scale
+comparison only, the quadrature norm of the eight entries is
+${\approx}0.9$\,pp. Explicitly,
 \begin{multline}
 \big(0.44^2 + 0.37^2 + 0.60^2 + 0.37^2 \\
 + 0.11^2 + 0.24^2 + 0.02^2 + 0.02^2\big)^{1/2} \\
@@ -2884,18 +2882,17 @@ over the rows of
 Table~\ref{tab:systematic_budget} (in order: counting CI, membership,
 geometry, sphere-PIS-vs-GALZONE, footprint, confidence, match-radius,
 first-order RSD reconstruction);
-the geometry ($0.60$) and counting ($0.44$) terms dominate the sum and
+the geometry ($0.60$) and counting ($0.44$) entries dominate the norm and
 the smaller five contribute $<0.1$\,pp each in quadrature (the computed
 first-order RSD reconstruction shift, $0.024$\,pp, is ${\approx}40\times$
-under the envelope; \S\ref{sec:desivast_primary}). The maximum
+below this summary; \S\ref{sec:desivast_primary}). The maximum
 single absolute excursion across all accepted void definitions is the
-$0.60$\,pp geometry term. We therefore \emph{widen} the quoted primary
-environment-independence bound to ${\approx}0.9$\,pp (honest quadrature
-envelope), superseding the earlier ${\approx}0.5$--$0.6$\,pp figure,
-which understated the geometry contribution. Equivalently, the
-conservative max-excursion statement is that no accepted DESIVAST void
-definition moves $|\Delta f_{\rm CW}|$ above $\approx 0.6$\,pp about the
-null, and the family-wise Bonferroni-5 null holds uniformly regardless.
+$0.60$\,pp geometry term. Because these entries mix a counting interval,
+maximum excursions, definition changes, and correlated perturbations,
+the $0.9$\,pp quadrature is explicitly \emph{non-probabilistic}: it is
+neither a confidence interval nor a calibrated coverage statement and
+must not be used as an exclusion threshold. The family-wise
+Bonferroni-5 counting-statistics null is reported separately.
 The residual catalog-wide classifier-monopole (${\approx}0.28$\,pp,
 \S\ref{sec:desivast_p4_residual}) cancels to leading order in the
 void/non-void \emph{difference} and is carried as a second-order term;
@@ -2909,21 +2906,20 @@ respective sample sizes. \textbf{When the void class is defined by
 DESIVAST rather than T-Web, the chirality-in-voids constraint is a
 result consistent with null at full DESIVAST sample size.}
 
-\begin{table}[ht]
-\caption{Consolidated systematic-error budget for the primary DESIVAST
+\begin{table*}[ht]
+\caption{Consolidated sensitivity summary for the primary DESIVAST
 void/non-void $\Delta f_{\rm CW}$ estimand. Every entry is a
 $\Delta f_{\rm CW}$ excursion (percentage points) already reported
 elsewhere in this paper (source section in the last column); this table
 gathers them in one place with a common unit and sign-free magnitude.
 The counting-statistics term is the two-sample binomial $2\sigma$
 half-width; the systematic terms are the peak $|\Delta f_{\rm CW}|$
-excursions each channel induces. The effective envelope is quoted two
-ways: the honest quadrature combination of the counting-plus-systematic
-terms (approximately independent), and the maximum single absolute
-excursion. Label dilution enters multiplicatively as an attenuation of
-the classifier-labelled bound onto physical chirality
-(App~\ref{app:paper4_methods}), not as an additive pp term, and is
-listed separately.}
+excursions each channel induces. The quadrature row is only a
+heterogeneous, non-probabilistic scale summary: the entries are not
+demonstrated independent or drawn from a common probability model, so it
+is not a confidence interval. The maximum single absolute excursion is
+also shown. Label dilution is not converted into a physical-chirality
+bound here.}
 \label{tab:systematic_budget}
 {\small
 \begin{ruledtabular}
@@ -2939,14 +2935,12 @@ Confidence cut ($\ge 0.7$)       & $0.24$ & \S\ref{sec:systematics} \\
 Match-radius ($0.5$--$5''$)      & $0.02$ & \S\ref{sec:systematics} \\
 RSD reconstruction (1st-order)   & $0.02$ & \S\ref{sec:desivast_primary} \\
 \hline
-\textbf{Quadrature envelope}     & $\approx 0.9$ & (this work) \\
+\textbf{Quadrature scale (non-CI)} & $\approx 0.9$ & (this work) \\
 \textbf{Max single excursion}    & $0.60$ & (geometry) \\
-\hline
-Label dilution (mult.)           & att.\ $\approx 2a\!-\!1$ & App~\ref{app:paper4_methods} \\
 \end{tabular}
 \end{ruledtabular}
 }
-\end{table}
+\end{table*}
 
 
 This DESIVAST-anchored re-analysis is a large controlled-sample
@@ -4154,76 +4148,24 @@ the void volume fraction ($23\times$ radial-selection contamination;
 \S\ref{sec:results_vweb}). The T-Web run is carried forward as a
 multi-classifier consistency check and Phase~2 hyperparameter-stability
 test, not as a comparable constraint to the DESIVAST primary path.
-The primary environment-independence bound (honest systematic envelope
-${\approx}0.9$\,pp; Table~\ref{tab:systematic_budget}) rests
-entirely on the DESIVAST-anchored analysis (\S\ref{sec:desivast_primary}).
+The primary evidence rests entirely on the DESIVAST-anchored analysis
+(\S\ref{sec:desivast_primary}). Its counting interval, cluster-bootstrap
+interval, and heterogeneous sensitivity summary are reported separately.
 
-\subsection{Implications for bounce and inflation models}
+\subsection{Empirical scope}
 
-No published model in either class (matter-bounce or inflation)
-currently predicts an environment-dependent CW signature at the
-sensitivity reached here, so the present null does not directly
-discriminate between matter-bounce and inflation-class models. It
-instead establishes an observational upper bound that any future
-parity-violating model in the bounce-chirality coupling class
-(Sec.~\ref{sec:p4}), proposing an environment-dependent chirality
-signature at the $\gtrsim\!25\,\text{Mpc}/h$ T-Web smoothing scale,
-must respect. \emph{Approximate excluded range for model-builders (counting-statistics
-bound, not a full error budget).} The primary DESIVAST void-vs-non-void
-contrast constrains $|\Delta f_{\rm CW}| \lesssim 0.4$--$0.5$\,pp between
-void and non-void environments: the ${\approx}0.4$\,pp figure is the
-$2\sigma$ half-width of the two-sample binomial counting-statistics CI
-(${\rm SE}(\Delta) = 0.00219$, $95\%$ CI $[-0.36,+0.50]$\,pp,
-\S\ref{sec:desivast_anchored_void}). The counting-only CI omits at least
-(i) the fixed-void-geometry membership systematic, empirically bounded at
-$\pm 0.34$--$0.37$\,pp by the $\sigma_v/(aH)\!=\!5$\,Mpc/$h$
-finger-of-god Monte Carlo (\S\ref{sec:desivast_primary}); (ii) the
-residual catalog-wide classifier-monopole systematic (${\approx}0.28$\,pp,
-\S\ref{sec:desivast_p4_residual}), which cancels in the void/non-void
-difference to leading order; and (iii) cross-match / point-in-sphere
-void-membership purity, and (iv) the co-dominant
-any-hole-vs-maximal-sphere geometry term ($0.60$\,pp). Folding the
-counting-plus-systematic terms honestly in quadrature
-(Table~\ref{tab:systematic_budget}) widens the effective $2\sigma$ bound
-to ${\approx}0.9$\,pp (max single excursion $0.60$\,pp) --- so the
-primary path disfavors any void/non-void split in the
-\emph{classifier-labelled} CW fraction $\gtrsim {\sim}0.9$\,pp at DR1
-sensitivity. \emph{This is a bound on the classifier-labelled CW
-fraction, not on physical spiral chirality:} at the $69.91\%$
-($\kappa=0.40$) GZ1 accuracy floor the classifier-label statistic is an
-attenuated proxy for the physical-handedness contrast (attenuation
-factor $\approx 2a-1\simeq 0.40$; App~\ref{app:paper4_methods}). The
-symmetric-error premise of this de-attenuation now has direct empirical
-support \emph{on all measured strata, including the void axis this paper
-constrains}: a committed GZ1-overlap
-human-vs-classifier confusion matrix
-(App~\ref{app:paper4_methods}; \href{\repoBase/pipelines/p2\_chirality/outputs/gz1\_stratified\_confusion.json}{[A31]})
-finds the CW$\to$CCW and CCW$\to$CW mislabelling rates equal to within
-$\pm0.5$--$0.6$\,pp (95\%) overall and within every imaging-leg and
-confidence stratum, and the void axis itself is now directly measured with
-the paper's exact primary recipe (footprint-restricted: void $N=933$,
-error-asymmetry $-0.023\,[-0.060,+0.014]$; non-void $N=5{,}778$,
-$-0.005\,[-0.020,+0.010]$; two-proportion difference $-0.018$, $z=-0.89$,
-$p=0.37\,[-0.057,+0.022]$, with consistent nulls across all three DESIVAST
-void definitions --- all-low-$z$ $p=0.25$, REVOLVER $p=0.66$, VIDE $p=0.19$),
-so any environment-differential label error would have to
-arise from an environment-specific asymmetry \emph{not present} in those
-strata. Under
-the symmetric-error approximation, the ${\approx}0.9$\,pp classifier-label
-envelope de-attenuates to ${\approx}2.26$\,pp on the physical-chirality
-contrast ($0.9/0.3982$); model-builders should use this weaker physical
-bound, not the classifier-label figure, when constraining parity-violation
-amplitudes, and should apply the environment-dependent-relabeling caveat
-of \S\ref{sec:limitations}. The secondary T-Web
-void bin, power-limited at $n = 428$, constrains only
-$|\Delta f_{\rm CW}| \lesssim 4.8$\,pp ($2\sigma$ counting). The
-${\sim}0.9$--$4.8$\,pp window remains
-open pending the larger DR2 void samples and a full systematic budget.
-Paper~II~\cite{golden_fnl_2026} and Paper~III (both companion,
-not-yet-published works by the same author) provide independent
-discriminators (primordial $f_{\rm NL}$ and multi-survey anomaly
-statistics); this null adds a clean negative result on the
-spiral-chirality axis.
+No published bounce or inflation model predicts this specific
+classifier-labelled, redshift-space estimand. The result therefore does
+not discriminate those model classes and is not converted into a
+coupling or physical-chirality bound. The primary counting interval is a
+sampling statement for the declared contrast; the region-cluster
+bootstrap tests one spatial-covariance construction; and the
+${\approx}0.9$\,pp quadrature is only a heterogeneous,
+non-probabilistic sensitivity summary. These three quantities answer
+different questions and must not be conflated. Classifier accuracy and
+environment-stratified confusion checks are retained in
+Appendix~\ref{app:paper4_methods} to delimit label interpretation, not to
+de-attenuate the result into a physical exclusion.
 
 \subsection{Comparison to Shamir~2022 DESI Legacy}
 
@@ -4409,7 +4351,7 @@ space classification, with this caveat explicitly carried.
 \emph{primary} DESIVAST path, for which the dominant coherent
 void-outflow RSD term is now bounded by a consistent first-order
 Zel'dovich reconstruction ($|\text{shift}| = 0.024$\,pp, ${\approx}40\times$
-under the systematic envelope, null preserved;
+below the heterogeneous sensitivity summary, null preserved;
 \S\ref{sec:desivast_primary},
 \href{\repoBase/pipelines/p5\_desi\_chirality/outputs/27\_rsd\_void\_recon\_bound.json}{[A33]}).
 That first-order DESIVAST bound displaces galaxies and voids together
@@ -4437,15 +4379,16 @@ void catalog, which has not yet been released). Scaling the current
 ${\rm SE}(\Delta) = 0.0022$ as $\sqrt{n^{-1}}$ implies the
 \emph{counting-statistics} sensitivity on $\Delta f_{\rm CW}$ would
 improve to ${\sim}0.35$--$0.40$\,pp ($2\sigma$) at DR2 statistics.
-The \emph{systematic} envelope, however, does not scale with $n$: the
-current ${\approx}0.9$\,pp envelope is dominated by the geometry
+The heterogeneous sensitivity excursions do not automatically scale
+with $n$: the current ${\approx}0.9$\,pp non-probabilistic quadrature is
+dominated by the geometry
 ($0.60$\,pp) and membership ($0.34$--$0.37$\,pp) systematic terms
 (Table~\ref{tab:systematic_budget}), which improve only if the void
 membership definition and geometry are re-evaluated at DR2 depth, not
 from counting alone. A DR2 measurement would therefore be limited by
 these systematics near the ${\sim}0.6$--$0.7$\,pp level unless the
 membership/geometry systematics are reduced by an improved
-DESIVAST-successor catalog, and we flag the systematic budget --- not
+DESIVAST-successor catalog, and we flag the sensitivity table --- not
 the counting floor --- as the target for DR2 improvement. A Rubin/LSST
 overlap on the DESI footprint would further increase the parent chirality
 catalog by roughly an order of magnitude, enabling a void-galaxy sample
@@ -4458,18 +4401,18 @@ read (\S\ref{sec:primary_path}).
 
 \section{Conclusions}\label{sec:conclusions}
 
-Spiral galaxy chirality shows no detectable void/non-void environment
-dependence at current sensitivity within DESI Data Release~1.
+Classifier-labelled spiral chirality shows no detectable void/non-void
+environment dependence at current sensitivity in this exploratory DESI
+Data Release~1 redshift-space analysis.
 The strictly quotable result is the \emph{family-wise} Bonferroni-5 null
 across all five DESIVAST void definitions ($|z_\Delta|\!\le\!1.25$,
 $p_\Delta\!\ge\!0.21$; Table~\ref{tab:desivast_three_algo}); this is the
 headline, not any single most-favorable estimator.
-For a post-hoc upper bound a look-elsewhere correction can change
-the strength of the quoted bound, which is why the family-wise null
-is the quotable statement. The DESIVAST path is the
+Because the primary designation is post-hoc, the family-wise null---not
+a preferred-row exclusion---is the quotable statement. The DESIVAST path is the
 \emph{designated primary for reporting} (exploratory/post-hoc: no
 timestamped plan predates the data; see \S\ref{sec:primary_path}), so
-all quoted bounds are exploratory rather than pre-registered exclusions;
+all inferential statements are exploratory rather than pre-registered exclusions;
 the T-Web and other paths are explicitly secondary.
 The \emph{primary} DESIVAST estimand is the
 \emph{footprint-restricted} void-vs-non-void contrast --- both classes
@@ -4509,44 +4452,37 @@ monopole-subtracted residuals $\le 1.64\sigma$ in resolved cells; look-elsewhere
 $p \ge 0.13$), under grid resolutions $128^3$--$384^3$, and under six
 classes of systematics tests.
 
+The region-cluster bootstrap gives ${\rm SE}=0.002328$ and percentile
+$95\%$ CI $[-0.002715,+0.006354]$, nearly identical to the
+independent-binomial interval. This closes the specified
+spatial-covariance sensitivity check, not all possible dependence
+structures. The separate ${\approx}0.9$\,pp quadrature combines
+heterogeneous excursions and is explicitly non-probabilistic.
+
 \begin{center}\fbox{\parbox{0.95\columnwidth}{\emph{Real- vs.\ redshift-space,
-in one statement:} the quoted ${\approx}0.9$\,pp bound (honest systematic
-envelope, Table~\ref{tab:systematic_budget}) is a
-\emph{fixed-redshift-space} sensitivity envelope on the
-\emph{classifier-labelled} CW fraction, \emph{not} a pure real-space
-constraint on physical spiral chirality. All environment classes are
-assigned in DESI DR1 redshift coordinates without real-space
-deprojection and inherit redshift-space distortion effects.}}\end{center}
+in one statement:} the measured contrast and its counting/bootstrap
+intervals concern \emph{classifier labels under fixed redshift-space
+environment assignments}. The ${\approx}0.9$\,pp value is a
+heterogeneous, non-probabilistic sensitivity summary, not a confidence
+interval. None of these quantities is a real-space or physical-chirality
+bound.}}\end{center}
 This null is a \emph{fixed-redshift-space null, not a real-space
 environment null}: the T-Web classification, DESIVAST void cross-check,
 and all null tests are performed in DESI DR1 redshift coordinates without
 real-space deprojection, and inherit redshift-space distortion effects
-(\S\ref{sec:limitations}); model-builders should not interpret the
-${\approx}0.9$\,pp classifier-label sensitivity envelope as a constraint on
-real-space environmental chirality without accounting for the
-residual RSD on tidal-tensor eigenvalues and the classifier-label
-attenuation (App~\ref{app:paper4_methods}).
-This null is consistent with the Paper~IV global parity-mixture null
-and provides an observational upper bound that any future model in the
-bounce-chirality coupling class (Sec.~\ref{sec:p4}) proposing an
-environment-dependent parity signature at the $\gtrsim\!25\,\text{Mpc}/h$
-T-Web smoothing scale must satisfy; it does not constrain the
-bounce-vs.\
-inflation discrimination program: neither model predicts an
-environment-dependent chirality signature at DESI DR1 resolution at
-this smoothing scale, and the data agree.
-
-A schematic toy mapping of the observational bound to an
-effective-field-theory operator is summarized in
-Appendix~\ref{app:toy_eft} as a speculative guide for future
-model-building only --- it is outside the empirical scope of this paper
-and is not a derived constraint from the data (see scope disclosure in
-Appendix~\ref{app:toy_eft}).
+(\S\ref{sec:limitations}). It is consistent with the Paper~IV
+classifier-mixture result but does not constrain physical handedness,
+real-space environment dependence, or bounce-vs.-inflation models.
 
 \begin{acknowledgments}
 This work used data from the Dark Energy Spectroscopic Instrument (DESI) Data Release~1 and the DESIVAST void value-added catalog. This research made use of the DESI DR1 data; DESI is supported by the U.S. Department of Energy and the U.S. National Science Foundation.
 
-\textit{AI-assisted methodology.} The analysis pipeline of this paper was executed with an agentic AI research pipeline operating under the author's direction: catalog cross-matching, the T-Web cosmic-web classification, the DESIVAST void membership test, the statistical null tests, and figure generation were orchestrated by AI coding agents, and every quantitative result reported here was verified by the author against the committed pipeline artifacts (the drivers and per-output provenance JSON referenced throughout via the [A1]--[A34] artifact links and \S\ref{sec:data_code}). The pipeline was built on Anthropic Claude (Opus~4 family, 2026 releases) for agent orchestration and manuscript preparation, with OpenAI GPT-5/o3, xAI Grok-4, and Google Gemini~2.5 used as cross-checking and adversarial internal-review models. The full audit trail --- code, configuration, deterministic seed \texttt{20260515}, and version history --- is public in the companion repository, so every number is independently recomputable. We regard this reproducibility-by-construction as a methodological strength: the pipeline that produced the result is the same one a reader runs to verify it. The author designed the study, made all scientific judgments, and takes full responsibility for the content, including any material produced with AI assistance; the AI pipeline is a reproducibility and verification instrument, not an author.
+\textit{AI-assisted methodology.} AI coding and review tools assisted
+pipeline execution and manuscript preparation under the author's
+direction. The author verified the reported quantities against the
+versioned code and artifacts listed in \S\ref{sec:data_code} and
+Appendix~\ref{app:artifacts}, made all scientific judgments, and takes
+full responsibility for the content.
 \end{acknowledgments}
 
 \appendix
@@ -4631,21 +4567,16 @@ the labels this paper actually consumes. The corresponding label
 dilution is folded into the injection-recovery sensitivity floors used
 when interpreting the present null.
 
-\emph{The quoted ${\approx}0.9$\,pp environmental bound is a bound
-on the classifier-labelled CW fraction, not on physical spiral
-chirality.} The $69.91\%$ binary accuracy ($\kappa=0.40$) means the
+\emph{Classifier-label scope.} The $69.91\%$ binary accuracy
+($\kappa=0.40$) means the
 classifier-labelled CW fraction is an attenuated proxy for the true
 physical handedness fraction: for a symmetric binary error rate
 $a\simeq0.699$, a true environment-dependent contrast would be
 suppressed by a factor $\approx 2a-1 = 2(0.6991)-1 = 0.3982$ in the
-classifier-label statistic. Under this symmetric-error approximation,
-the ${\approx}0.9$\,pp classifier-label bound corresponds to a de-attenuated
-physical-chirality bound of ${\approx}0.9/0.3982 \approx 2.26$\,pp; the
-stale $0.5$--$0.6$\,pp figure would map to ${\approx}1.3$--$1.5$\,pp.
-The physical bound (${\approx}2.26$\,pp) is thus substantially
-\emph{weaker} (more conservative) than the classifier-label figure, and
-model-builders should use the de-attenuated value when constraining
-physical parity-violation amplitudes.
+classifier-label statistic. We report this factor only to explain why a
+classifier-label contrast cannot be read directly as physical
+handedness. We do not apply it to the non-probabilistic $0.9$\,pp
+sensitivity summary and do not quote a de-attenuated physical bound.
 We flag that the $0.3982$ factor is exact only under the
 symmetric-error assumption. That assumption now has \emph{direct empirical
 support at the tested strata}: a committed GZ1-overlap human-vs-classifier
@@ -4671,8 +4602,8 @@ strata by nearly a factor of ten, yet the errors stay
 $2a-1$ de-attenuation is empirically satisfied on all sky and confidence cuts
 tested. (The $0.912$--$0.961$ accuracy quoted here is measured on the
 confident-spiral GZ1 overlap; the more conservative floor accuracy
-$a\!\simeq\!0.699$ used for the de-attenuation \emph{magnitude} yields a
-weaker, deliberately conservative physical bound. We import only the
+$a\!\simeq\!0.699$ is used only as a conservative label-quality floor.
+We import only the
 \emph{symmetry} property --- not the accuracy value --- from the overlap
 sample, and the observed magnitude-independence of that symmetry across a
 ten-fold accuracy range is precisely why it is taken to transfer to the
@@ -4696,17 +4627,13 @@ parity-symmetric on the void axis as on every other stratum, so any
 environment-differential label error would have to arise from an
 environment-specific asymmetry \emph{absent} from every stratum measured
 here; but (b)~the void-arm $95\%$ CI half-width ($\pm3.7$\,pp) exceeds the
-paper's $\Delta f_{\rm CW}$ bounds ($0.2$--$0.6$\,pp), so this measurement
+paper's measured $\Delta f_{\rm CW}$ excursions ($0.2$--$0.6$\,pp), so this measurement
 \emph{corroborates but cannot by itself exclude} an environment-dependent
-label bias at the headline scale. A \emph{systematic environment-dependent
-re-labeling by a future classifier is therefore not fully excluded}, the
-de-attenuation caveat stands, and the de-attenuated number should
-still be read as an indicative order-of-magnitude guide, not a precision bound. Accordingly every environmental bound in this paper is
-stated as a bound on the classifier-labelled CW fraction under
-fixed-redshift-space DESIVAST void membership, and the reader should
-apply the attenuation factor (${\approx}0.40$; de-attenuated scale
-${\approx}2.26$\,pp for the $0.9$\,pp envelope) before mapping it onto
-a physical handedness contrast.
+label bias at the headline scale. A \emph{systematic
+environment-dependent re-labeling by a future classifier is therefore
+not fully excluded}. Accordingly, the empirical result remains a
+classifier-labelled, fixed-redshift-space non-detection and is not mapped
+onto a physical-handedness contrast.
 
 \textbf{Catalog.} The released catalog contains $8{,}474{,}531$
 galaxies (157 of $8{,}474{,}688$ failed QC), of which $3{,}201{,}160$
@@ -4768,117 +4695,9 @@ void-vs-non-void $\Delta f_{\rm CW}$ two-sample contrast is invariant
 under any catalog-wide monopole shift (\S\ref{sec:p4}), so it depends on
 the labels but not on the monopole amplitude; the monopole enters only
 the $\sigma_{\rm pred}$ diagnostics, where its uncertainty is propagated.
-This appendix therefore makes the environmental-independence result of
+This appendix therefore makes the classifier-label environmental result of
 the present paper independently assessable from public data alone, without
 the concurrently-posted companion Paper~IV manuscript in hand.
-
-\section{Toy EFT mapping of the environmental bound}\label{app:toy_eft}
-
-\emph{Scope disclosure (speculative guide; supplementary-tier; not a
-derived empirical result).} This appendix is \emph{supplementary
-material}: it provides a schematic toy mapping for future model-builders
-only and is not part of the observational result. The operator form below
-is not derived from the empirical chirality data reported in this paper
-and makes no empirical claim; it is a speculative order-of-magnitude
-illustration outside the scope of the observational results, retained as a
-single compact appendix rather than in the main text. Readers interested
-only in the empirical null result should disregard this appendix; it may
-be moved to online supplementary material at the journal's discretion.
-
-\emph{Theoretical scope of this appendix.}
-The operator introduced below is \emph{explicitly non-covariant and
-coordinate-dependent}: it is defined in a specific synchronous-comoving
-slicing at the T-Web smoothing scale $R_s = 25$\,Mpc/$h$, is not a
-manifestly gauge-invariant EFT operator in the sense of the
-EFT-of-inflation or EFT-of-LSS literature, and is provided solely as a
-heuristic order-of-magnitude parameterization for future model-building
-on the T-Web smoothing scale. It lies entirely outside the empirical
-scope of the paper; the gauge-invariance and rotational-invariance
-caveats are detailed in the paragraph below.
-
-\emph{Mapping to a physical operator (toy parametrization).}
-The observational bound from the main text can be cast in an
-effective-field-theory language as an order-of-magnitude guide for
-how a parity-violating coupling would map to T-Web class-to-class
-$\Delta f_{\rm CW}$. We emphasize that the operator form and scaling
-written below are a \emph{toy parametrization introduced in this
-work}, inspired by but not derived from the cited
-parity-violating-gravity literature: the specific operator
-\(\mathcal{L}_{\rm parity}\supset g_\phi\,(\nabla_i\phi)\,
-(\nabla^i\rho/\rho_{\rm bg})\,(\hat L\cdot\widehat{\nabla\rho})\),
-written here in manifestly rotationally-invariant form with the
-angular momentum contracted against the unit density-gradient
-direction $\widehat{\nabla\rho}\equiv\nabla\rho/|\nabla\rho|$
-(a parity-odd pseudoscalar, since $\hat L$ is a pseudovector and
-$\widehat{\nabla\rho}$ a polar vector), is not contained
-in either Alexander \& Yunes~\cite{AlexanderYunes2009} (Chern--Simons
-modified gravity review) or Lue--Wang--Kamionkowski~%
-\cite{LueWangKamionkowski1999} (cosmological parity-violating
-interactions); those works motivate the general class of
-parity-violating couplings but not this specific
-density-gradient form. We deliberately keep the parameterization
-schematic. Consider an axion-like (or generic pseudoscalar) field
-$\phi$ coupled to matter density via the above operator, where
-$\hat L$ is the local angular-momentum unit vector and $\rho$ is the
-total matter density. For $\nabla\phi$ aligned with the cosmic-web
-gradient $\nabla\rho$, the induced chirality asymmetry scales as
-$\Delta f_{\rm CW}^{\rm env}\!\propto\!g_\phi\,\nabla\phi\cdot
-\nabla\rho/\rho_{\rm bg}$. With per-class $|\Delta f_{\rm CW}|\!<\!0.01$
-on $n\!\gtrsim\!4\!\times\!10^5$ spirals, an order-of-magnitude bound
-on the coupling $g_\phi\,|\nabla\phi|$ in $H_0$ units is
-$|g_\phi\,(\nabla\phi)/H_0|\!\lesssim\!1\!\times\!10^{-2}/
-\langle|\Delta\rho/\rho_{\rm bg}|\rangle$, where the cosmic-web
-fractional contrast averages $\sim\!\mathcal O(1)$ across the
-classes. \emph{This is an order-of-magnitude estimate only, not a
-quantitative ALP-coupling exclusion}: a real exclusion would require
-(i) a full transfer-function calculation mapping the high-redshift
-$\phi$-field gradient to the low-redshift T-Web eigenvalue field
-(including projection of the scalar field onto the tidal-tensor
-eigenvalue spectrum at the $z\!\lesssim\!0.24$ void-anchor scale),
-and (ii) propagation of the per-class $\Delta f_{\rm CW}$ measurement
-uncertainties through that transfer function. We do not claim either
-calculation here; the parametrization is included as a guide for
-future model-building, not as a derived constraint.
-Furthermore, the notation connecting the polar density-gradient vector
-$\widehat{\nabla\rho}$ with the angular-momentum pseudovector $\hat L$
-in the operator above is explicitly a \emph{heuristic parameterization}
-within the chosen synchronous-comoving slicing at the $R_s = 25$\,Mpc/$h$
-smoothing scale; it does not constitute a manifestly covariant EFT
-operator (see the gauge-invariance caveat below).
-
-\emph{Rotational-invariance and gauge-invariance caveat.} Two distinct theoretical caveats apply to the toy
-operator. \emph{First (rotational invariance):} the parity-odd
-factor is written as $(\hat L\cdot\widehat{\nabla\rho})$, the
-contraction of the local angular-momentum unit vector with the unit
-density-gradient direction. This is manifestly invariant under
-global spatial rotations (both $\hat L$ and $\widehat{\nabla\rho}$
-co-rotate, so their inner product is unchanged) and is parity-odd as
-required for a chirality-sourcing term. We stress that an earlier
-schematic form contracting $\hat L$ with a \emph{fixed} coordinate
-axis $\hat z$ would \emph{not} have been rotationally invariant; the
-physical axis is set by the local cosmic-web density gradient, not by
-the observer's coordinate frame, and the operator above reflects
-that. (In the aligned limit $\nabla\phi\!\parallel\!\nabla\rho$
-adopted below, $\widehat{\nabla\rho}$ and $\widehat{\nabla\phi}$
-coincide.) \emph{Second (gauge invariance):}
-even with the rotational-invariance issue resolved, the
-density-gradient factor $\nabla^i\rho/\rho_{\rm bg}$ and the
-late-time angular-momentum direction $\hat L$ are quantities
-defined in a chosen synchronous-comoving slicing on the T-Web
-smoothing scale $R_s = 25$\,Mpc/$h$ and are not manifestly gauge
-invariant under general coordinate transformations. The toy
-operator above should therefore be read as a heuristic
-parametrization in this specific slicing, not as a covariant
-EFT operator in the sense of Weinberg's EFT-of-inflation or
-the EFT-of-LSS literature. A fully gauge-invariant formulation
-would require promoting $\nabla^i\rho/\rho_{\rm bg}$ to a
-properly defined density-fluctuation gauge invariant (e.g.\
-$\delta_{\rm com}$ on comoving slices) and $\hat L$ to a
-late-time observable angular-momentum direction expressed in
-the same slicing; we have not carried out that construction.
-We flag this as an open theoretical limitation of the toy
-mapping; it does not affect any of the empirical
-$\Delta f_{\rm CW}$ bounds in the main text.
 
 \section{Reference contingency tables for the T-Web $\chi^2$ tests}\label{app:contingency}
 
@@ -5035,6 +4854,20 @@ Paper~IV monopole scalar, which is independently re-measured here. The arXiv pre
 the coordinated-submission timing; Paper~IV's arXiv identifier will
 be inserted on same-day posting.
 
+\emph{Cluster-bootstrap provenance.} The DP5-10 result and driver are
+archived as [A35] and [A36]. The locally materialized DESI FITS used for
+that recomputation has SHA-256
+\texttt{2d95ad99361039b5}\allowbreak\texttt{56c402b49e0e7c84}\allowbreak
+\texttt{df5f00106dc5731d}\allowbreak\texttt{44476a58b128b49b}
+and reproduces every released parent and primary-arm integer. Its bytes
+do not match the May sidecar's recorded raw hash
+\texttt{50031c9b...}, and the current upstream object reports a later
+modification date. Because the historical per-row snapshot is not
+available, byte-identical row provenance to that May raw file cannot be
+independently attested; the compute closes the specified
+spatial-covariance sensitivity check, not this snapshot-provenance
+residual.
+
 \section*{Reproducibility checklist}
 \begin{itemize}
 \item Single config file:
@@ -5048,11 +4881,11 @@ be inserted on same-day posting.
 \section{Data artifacts}\label{app:artifacts}
 
 \emph{Note on numbering:} the bracketed \emph{artifact} IDs
-[A1]--[A34] in this appendix are the committed-repository data/code
+[A1]--[A36] in this appendix are the committed-repository data/code
 artifacts and are \emph{distinct} from the bibliographic references
-[1]--[14], which appear in the separate References section; the ``A''
+[1]--[13], which appear in the separate References section; the ``A''
 prefix marks every artifact ID to avoid confusion at the
-references/artifact-map boundary. Artifact IDs [A1]--[A34] used
+references/artifact-map boundary. Artifact IDs [A1]--[A36] used
 throughout this paper hyperlink to the following paths in the companion
 repository
 \href{https://github.com/Hubify-Projects/bigbounce}{\texttt{Hubify-Projects/bigbounce}}
@@ -5061,7 +4894,7 @@ file or directory at the URL shown below.
 
 \begin{table*}[h!]
 {\small
-\caption{Artifact ID map. Paths A2--A30, A33, and A34 are within
+\caption{Artifact ID map. Paths A2--A30 and A33--A36 are within
 \texttt{pipelines/p5\_desi\_chirality/}; the prefix is omitted in the
 short-name column. A1, A31, and A32 point to the companion catalog
 pipeline (\texttt{pipelines/p2\_chirality/}).
@@ -5105,30 +4938,19 @@ Clicking any [AN] ID in the paper PDF opens the corresponding GitHub URL.%
 \href{\repoBase/pipelines/p2\_chirality/scripts/gz1\_stratified\_confusion.py}{[A32]} & \texttt{p2\_chirality/scripts/gz1\_stratified\_confusion.py} \\
 \href{\repoBase/pipelines/p5\_desi\_chirality/outputs/27\_rsd\_void\_recon\_bound.json}{[A33]} & \texttt{outputs/27\_rsd\_void\_recon\_bound.json} \\
 \href{\repoBase/pipelines/p5\_desi\_chirality/scripts/27\_rsd\_void\_recon\_bound.py}{[A34]} & \texttt{scripts/27\_rsd\_void\_recon\_bound.py} \\
+\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/35\_desivast\_cluster\_bootstrap.json}{[A35]} & \texttt{outputs/35\_desivast\_cluster\_bootstrap.json} \\
+\href{\repoBase/pipelines/p5\_desi\_chirality/scripts/35\_desivast\_cluster\_bootstrap.py}{[A36]} & \texttt{scripts/35\_desivast\_cluster\_bootstrap.py} \\
 \end{tabular}
 \end{ruledtabular}
 }% end \small
 \end{table*}
+\clearpage
 
-Paths A2--A30 are all within \texttt{pipelines/p5\_desi\_chirality/} (the
+Paths A2--A30 and A33--A36 are within \texttt{pipelines/p5\_desi\_chirality/} (the
 short names in column 2 omit this prefix for readability; the hyperlinks
 resolve to the full path).
 
 \begin{thebibliography}{99}
-
-\bibitem{AlexanderYunes2009}
-S.~Alexander and N.~Yunes,
-\emph{Chern--Simons modified general relativity},
-Phys.\ Rep.\ \textbf{480}, 1 (2009),
-\href{https://doi.org/10.1016/j.physrep.2009.07.002}{doi:10.1016/j.physrep.2009.07.002},
-arXiv:0907.2562.
-
-\bibitem{LueWangKamionkowski1999}
-A.~Lue, L.~Wang, and M.~Kamionkowski,
-\emph{Cosmological signature of new parity-violating interactions},
-Phys.\ Rev.\ Lett.\ \textbf{83}, 1506 (1999),
-\href{https://doi.org/10.1103/PhysRevLett.83.1506}{doi:10.1103/PhysRevLett.83.1506},
-arXiv:astro-ph/9812088.
 
 \bibitem{golden_chirality_2026}
 H.~Golden,
