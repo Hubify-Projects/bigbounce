@@ -142,6 +142,8 @@ def run_config(cfg):
             Qr, Ur = cos2b * Q - sin2b * U, sin2b * Q + cos2b * U
             f = nmt.NmtField(mask, [Qr, Ur], purify_b=purify)
             all_eb.append(wsp.decouple_cell(nmt.compute_coupled_cell(f, f))[1])
+            if (i + 1) % 25 == 0 or i + 1 == N_REAL:
+                print(f"[{name}] realizations {i + 1}/{N_REAL}", flush=True)
 
     all_eb = np.array(all_eb)
     mean_eb, std_eb = all_eb.mean(axis=0), all_eb.std(axis=0)
