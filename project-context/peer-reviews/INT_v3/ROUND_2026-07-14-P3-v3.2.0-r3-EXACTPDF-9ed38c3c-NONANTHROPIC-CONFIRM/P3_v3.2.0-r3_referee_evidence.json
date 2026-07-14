@@ -1,0 +1,119 @@
+{
+  "paper": "P3APJS",
+  "version": "v3.2.0-r3",
+  "pdf_sha256": "9ed38c3c54fce23bafbcd9cbfcf783d535cf27a92fe06da8df16618e5513e929",
+  "manuscript_commit": "82fa4d26",
+  "purpose": "Independent local evidence used to adjudicate exact-PDF referee findings; this file does not alter the manuscript or release.",
+  "nearest_vs_all_neighbors": {
+    "method": "Build a spherical-unit-vector cKDTree for all 190015 DESI-containing frozen clusters; query k=2 for cluster nearest-neighbor distances and query_ball_point at 1 arcsec for every one of the 2468 checkpoint match-row public coordinates.",
+    "desi_containing_clusters": 190015,
+    "cluster_nearest_neighbor_arcsec": {
+      "minimum": 5.022937707894432,
+      "q01": 27.331424027528893,
+      "q05": 89.4721701116334,
+      "median": 264.3881835362639
+    },
+    "clusters_with_nearest_neighbor_le_1arcsec": 0,
+    "clusters_with_nearest_neighbor_le_2arcsec": 0,
+    "parent_match_rows": 2468,
+    "parent_rows_with_multiple_clusters_within_1arcsec": 0,
+    "parent_max_clusters_within_1arcsec": 1,
+    "all_pairs_within_1arcsec_for_parent_rows": 2468,
+    "strict_rows": 181,
+    "strict_rows_with_multiple_clusters_within_1arcsec": 0,
+    "all_pairs_within_1arcsec_for_strict_rows": 181,
+    "stored_nearest_cluster_present_in_all_neighbor_set": true,
+    "conclusion": "For these exact frozen clusters and checkpoint rows, nearest-only and all-neighbors-within-1-arcsec produce identical 2468 parent and 181 strict pair counts. The PDF does not report this cluster-separation proof, so the referee identified a real evidence omission even though the released identities are unaffected."
+  },
+  "primary_rejected_zwarn_distribution": {
+    "method": "Concatenate the 143 fresh-replay checkpoint parts, select ZCAT_PRIMARY=true, and count exact integer ZWARN values and set bits among ZWARN!=0 rows.",
+    "primary_rows": 2448,
+    "warning_free_rows": 181,
+    "warning_bearing_rows": 2267,
+    "distinct_zwarn_values": 7,
+    "zwarn_value_counts": {
+      "2": 787,
+      "4": 152,
+      "6": 1294,
+      "2048": 3,
+      "2050": 10,
+      "2052": 2,
+      "2054": 19
+    },
+    "set_bit_counts_nonexclusive": {
+      "bit_1": 2110,
+      "bit_2": 1467,
+      "bit_11": 34
+    },
+    "warning_bearing_spectype_counts": {
+      "GALAXY": 2194,
+      "QSO": 72,
+      "STAR": 1
+    },
+    "conclusion": "The 92.6-percent attrition is concentrated in three set bits and seven exact masks. The PDF reports the total but not this distribution, so the interpretability request is verified. Physical names for the bits require a cited DESI/Redrock definition and are not inferred here."
+  },
+  "checkpoint_portability": {
+    "checkpoint_parts": 143,
+    "release_payload_files": 11,
+    "checkpoint_parts_in_immutable_release": false,
+    "builder_behavior": "The builder writes transient parts to output_dir.parent/.<output_dir.name>.build/match_parts.",
+    "validator_behavior": "The validator consumes --parts-dir but its default is a repository-specific pipelines/p3_anomaly_engine/.desi_science_catalog_v3.2.0-r2.build/match_parts path.",
+    "documented_command_supplies_parts_dir": false,
+    "conclusion": "The completed local clean replay is real, but the published standalone validation command is not portable because it omits --parts-dir. A user can rebuild the 181-row release, but cannot execute the advertised exact checkpoint-derived set validation from the documented command without discovering and supplying the transient path."
+  },
+  "negative_redshift_rows": [
+    {
+      "candidate_id": "P3-DESI-000018",
+      "z": -0.00033818947145594245,
+      "spectype": "GALAXY",
+      "deltachi2": 31619.420349224252,
+      "science_target_class": "BGS_ANY",
+      "match_quality_tier": "coordinate_consistent_le_0p1arcsec",
+      "match_separation_arcsec": 0.0005525337389400136
+    },
+    {
+      "candidate_id": "P3-DESI-000163",
+      "z": -0.0003373298207093588,
+      "spectype": "GALAXY",
+      "deltachi2": 14278.0778709941,
+      "science_target_class": "BGS_ANY",
+      "match_quality_tier": "coordinate_consistent_le_0p1arcsec",
+      "match_separation_arcsec": 0.0017655274274304572
+    }
+  ],
+  "tail_candidate_ids": [
+    "P3-DESI-000003",
+    "P3-DESI-000005",
+    "P3-DESI-000017",
+    "P3-DESI-000022",
+    "P3-DESI-000030",
+    "P3-DESI-000032",
+    "P3-DESI-000039",
+    "P3-DESI-000045",
+    "P3-DESI-000053",
+    "P3-DESI-000140",
+    "P3-DESI-000141"
+  ],
+  "provenance_and_license": {
+    "historical_tag": "p3-v3.1.161",
+    "historical_immutable_commit": "cdaaa03a72c69d86f011be128d93f261dc5b39a8",
+    "cluster_sha256": "b14deb02ddc374cc30a54e6013c0695d1c35cbf18cef9144245e338d6138c643",
+    "anomaly_sha256": "0a36b8d6dfb8086c2c417885c99689d7a75b416dad1b030db56477baf103ec65",
+    "historical_dataset_readme_license": "CC-BY-4.0",
+    "aas_table_readme_license": "CC BY 4.0",
+    "r2_release_readme_declares_license": false,
+    "historical_repository_material": "The existing HF_DATASET_README.md and DATA_RELEASE_MANIFEST.md identify the DESI table as canonical-S output from a DESI-trained BigAE autoencoder and point to model weights/training code, but the r3 PDF does not cite or summarize that specific provenance.",
+    "journal_asset_doi": null,
+    "doi_policy": "AAS assigns a DOI to contributed digital assets during publication; no DOI is claimed pre-submission.",
+    "conclusion": "The frozen bytes and licenses exist outside the PDF. The PDF still needs a bounded upstream provenance citation/description and explicit license/archival wording; a journal asset DOI remains a publication-workflow gate, not a fact that may be fabricated now."
+  },
+  "already_closed_checks": {
+    "raw_parent_duplicate_clusters": 0,
+    "raw_parent_duplicate_targetids": 0,
+    "predicate_before_deduplication_is_explicit": true,
+    "viewer_audit_is_separate_and_nonphysical": true,
+    "release_scripts_are_byte_pinned_in_huggingface_commit_and_manifest": true,
+    "desi_dr1_and_nicolaou_dois_factually_verified": true,
+    "aas_table_exact_typed_roundtrip": true
+  }
+}
