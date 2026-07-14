@@ -117,6 +117,66 @@ def parse_verdict(text):
     return None
 
 
+def _request_id(response):
+    """Return only known provider request-id headers; never persist all headers."""
+    headers = getattr(response, "headers", {}) or {}
+    for name in ("x-request-id", "request-id", "x-goog-request-id"):
+        value = headers.get(name) or headers.get(name.title())
+        if value:
+            return str(value)
+    return "unavailable"
+
+
+def _provider_cost(payload):
+    """Preserve provider-reported cost only; never estimate or invent a charge."""
+    usage = payload.get("usage") or payload.get("usageMetadata") or {}
+    for source in (payload, usage):
+        if not isinstance(source, dict):
+            continue
+        for name in ("cost", "total_cost", "totalCost", "estimated_cost"):
+            if name in source and source[name] is not None:
+                return source[name]
+    return "unavailable"
+
+
+def _provider_meta(provider, requested_model, payload, response, modality):
+    """Build a strict allowlisted receipt fragment from a provider response."""
+    resolved = (
+        payload.get("model")
+        or payload.get("modelVersion")
+        or payload.get("model_version")
+        or "unavailable"
+    )
+    response_id = payload.get("id") or payload.get("responseId") or "unavailable"
+    usage = payload.get("usage") or payload.get("usageMetadata") or {}
+    return {
+        "provider": provider,
+        "requested_model": requested_model,
+        "resolved_model": resolved,
+        "response_id": response_id,
+        "request_id": _request_id(response),
+        "usage": usage,
+        "provider_reported_cost": _provider_cost(payload),
+        "modality": modality,
+    }
+
+
+def _complete_receipt(meta, latency_seconds, attempt):
+    """Add local timing fields while retaining only the receipt allowlist."""
+    return {
+        "provider": meta.get("provider", "unavailable"),
+        "requested_model": meta.get("requested_model", "unavailable"),
+        "resolved_model": meta.get("resolved_model", "unavailable"),
+        "response_id": meta.get("response_id", "unavailable"),
+        "request_id": meta.get("request_id", "unavailable"),
+        "usage": meta.get("usage") or {},
+        "provider_reported_cost": meta.get("provider_reported_cost", "unavailable"),
+        "modality": meta.get("modality", "unavailable"),
+        "latency_seconds": latency_seconds,
+        "attempt": attempt,
+    }
+
+
 # ---------- XAI/Grok: /v1/files upload + /v1/responses file_id ----------
 def call_xai(pdf_path):
     key = ENV["XAI_API_KEY"]
@@ -157,7 +217,8 @@ def call_xai(pdf_path):
                 if c.get("type") in ("output_text", "text") and c.get("text"):
                     parts.append(c["text"])
         txt = "\n".join(parts)
-    return txt, {"file_id": file_id, "usage": j.get("usage", {}), "modality": "native-PDF (/v1/files file_id)"}
+    modality = "native-PDF (/v1/files file_id)"
+    return txt, _provider_meta("xai", XAI_MODEL, j, r, modality)
 
 
 # ---------- Gemini: Google Generative Language API, native-PDF ----------
@@ -253,8 +314,7 @@ def call_gemini(pdf_path):
             if c.get("text"):
                 parts.append(c["text"])
     txt = "\n".join(parts)
-    usage = j.get("usageMetadata", {})
-    return txt, {"usage": usage, "modality": modality, "model": model}
+    return txt, _provider_meta("google", model, j, r, modality)
 
 
 VENDORS = {
@@ -317,18 +377,22 @@ def run_one(paper, vendor):
            "packet_key": packet["packet_key"], "review_profile": entry["review_profile"]}
     outfile = OUTDIR / f"API_{paper}_{vendor}.md"
     last_err = None
+    last_latency = None
+    last_attempt = 0
     for attempt in (1, 2):
+        last_attempt = attempt
+        t0 = time.time()
         try:
-            t0 = time.time()
             content, meta = fn(pdf_path)
             dt = round(time.time() - t0, 1)
-            # a vendor may resolve its actual model at call time (e.g. Gemini
-            # GEMINI_MODEL override) — record the real model in the header.
-            eff_model = meta.get("model", model)
+            resolved_model = meta.get("resolved_model", "unavailable")
+            eff_model = resolved_model if resolved_model != "unavailable" else model
+            receipt = _complete_receipt(meta, dt, attempt)
             verdict = parse_verdict(content)
             rec.update({"status": "ok", "verdict": verdict, "seconds": dt,
                         "model": eff_model,
-                        "modality": meta.get("modality"), "attempt": attempt})
+                        "modality": meta.get("modality"), "attempt": attempt,
+                        "provider_receipt": receipt})
             with open(outfile, "w") as f:
                 f.write(f"# INT API Review — {paper} {ver} — {vendor} ({eff_model})\n")
                 f.write(f"paper: {paper}  version: {ver}  model: {eff_model}\n")
@@ -336,7 +400,7 @@ def run_one(paper, vendor):
                 f.write(f"packet: key={packet['packet_key']}  profile={entry['review_profile']}\n")
                 f.write(f"modality: {meta.get('modality')}\n")
                 f.write(f"UTC: {ts}  |  latency: {dt}s  |  attempt: {attempt}\n")
-                f.write(f"usage: {json.dumps(meta.get('usage', {}))}\n")
+                f.write(f"provider_receipt: {json.dumps(receipt, sort_keys=True)}\n")
                 f.write(f"PARSED VERDICT: {verdict}\n\n")
                 f.write("=" * 70 + "\nRAW RESPONSE (verbatim):\n" + "=" * 70 + "\n\n")
                 f.write(content or "(empty response)")
@@ -345,15 +409,24 @@ def run_one(paper, vendor):
                 mf.write(json.dumps(rec) + "\n")
             return rec
         except Exception as e:
+            last_latency = round(time.time() - t0, 1)
             last_err = str(e)[:800]
             print(f"[retry {attempt}] {paper} {vendor}: {last_err[:160]}")
             time.sleep(3)
-    rec.update({"status": "FAILED", "verdict": None, "error": last_err})
+    failure_receipt = _complete_receipt(
+        {"provider": "xai" if vendor == "grok" else "google",
+         "requested_model": model},
+        last_latency,
+        last_attempt,
+    )
+    rec.update({"status": "FAILED", "verdict": None, "error": last_err,
+                "provider_receipt": failure_receipt})
     with open(outfile, "w") as f:
         f.write(f"# INT API Review — {paper} {ver} — {vendor} ({model}) — FAILED\n")
         f.write(f"paper: {paper}  version: {ver}  model: {model}\n")
         f.write(f"provenance: commit={review_commit}  pdf={rel}  sha256={pdf_sha256}\n")
         f.write(f"packet: key={packet['packet_key']}  profile={entry['review_profile']}\n")
+        f.write(f"provider_receipt: {json.dumps(failure_receipt, sort_keys=True)}\n")
         f.write(f"UTC: {ts}\nERROR: {last_err}\n")
     print(f"[FAIL] {paper:4s} {vendor:6s} -> {last_err[:160]}")
     with open(MANIFEST, "a") as mf:
