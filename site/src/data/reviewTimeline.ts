@@ -57,6 +57,41 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p4-v10243-apjs-exact-panel-2026-07-14",
+    dateISO: "2026-07-14",
+    timePT: "12:08–12:10",
+    kind: "internal-api",
+    title:
+      "P4 v1.0.243 — exact-PDF ApJS panel supports the observed-label null; catalog-release gates remain",
+    papers: ["P4"],
+    summary:
+      "Three concurrent non-Anthropic reviewers received immutable APJS-CATALOG-METHODS packets for the same clean 27-page PDF (manuscript commit 22818453; SHA-256 9e73fd88…7d19). OpenAI returned MAJOR, Gemini MINOR, and Grok MAJOR. All three support the narrow HC observed-label real-space null at +0.55 sigma and p=0.265 under the declared estimator/null. Truth audit retains catalog-integrity, release, catalog-utility, transfer, matched-estimator, covariance/selection, and blinding-history gates; none licenses a physical or primordial bound. No readiness uplift; the verified cap remains 80.",
+    keyTakeaways: [
+      "The inclusive-mask primary is frozen at N=949,584, 23,682 pixels, amplitude 0.0045970743, and a 10,000-draw null; no reviewer establishes a numerical contradiction.",
+      "The reconstructed raw/flip probability mismatch is a real catalog-release gate, but the hard-label primary remains stable when flagged rows are excluded.",
+      "Before ApJS submission, P4 needs an immutable bundle and DOI plus a machine-readable schema, filters, example query, and minimal reproduction contract.",
+      "Concurrent dispatch reduced wall time by 53.0% while preserving separate raw reports and hidden-severity counts.",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 4,
+      note: "Four major release classes remain: immutable release, probability-column integrity, catalog user contract, and disclosed physical/history limits. This is not a readiness score.",
+    },
+    links: [
+      {
+        label: "Normalized truth audit",
+        href: `${PR}/INT_v3/ROUND_2026-07-14-P4-v1.0.243-EXACTPDF-9e73fd88-APJS-NONANTHROPIC-CONFIRM/P4_v1.0.243_NORMALIZED_TRUTH_AUDIT.md`,
+      },
+      {
+        label: "Exact-PDF ApJS board",
+        href: `${PR}/INT_v3/ROUND_2026-07-14-P4-v1.0.243-EXACTPDF-9e73fd88-APJS-NONANTHROPIC-CONFIRM/manifest.jsonl`,
+      },
+      {
+        label: "Declared panel gap",
+        href: `${PR}/INT_v3/ROUND_2026-07-14-P4-v1.0.243-EXACTPDF-9e73fd88-APJS-NONANTHROPIC-CONFIRM/DECLARED_GAPS.json`,
+      },
+    ],
+  },
+  {
     id: "p2-v17121-prd-positioning-confirm-2026-07-14",
     dateISO: "2026-07-14",
     timePT: "12:06–12:08",

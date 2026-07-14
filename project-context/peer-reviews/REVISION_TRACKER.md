@@ -20,6 +20,27 @@ This tracker logs each revision round and which issues have been addressed.
 
 ## Revision Rounds
 
+### P4 v1.0.243: Exact-PDF ApJS confirmation panel (2026-07-14)
+
+**Input:** exact 27-page PDF from manuscript commit `22818453cbd9445b26f2e04de39aef03319a2609`, reviewed at repository commit `36badcbdf498123413031aa0a9504127d48f2054`; TeX SHA-256 `6affe4205a49a7954716f09ef11f31e1c17da1cbd778c195f8966c25c0127ed0`; PDF SHA-256 `9e73fd888699058d421043b0dd2de5d37d2aeb36fe37e8dd1c0bf5409e947d19`.
+
+**Panel:** OpenAI GPT-5.5 **MAJOR REVISIONS** (12 MAJOR / 6 MINOR tags) / Gemini 3.1 Pro Preview **MINOR REVISIONS** (0/4) / Grok 4.3 **MAJOR REVISIONS** (3/2). Immutable `APJS-CATALOG-METHODS` packets, all first-attempt concurrent native-PDF legs, no Anthropic/Claude.
+
+**Truth audit:** all three reviewers support the narrow HC observed-label null (`+0.55 sigma`, `p=0.265`) under the declared estimator and isotropic pixel-permutation null. The panel does not support a physical/primordial upper bound.
+
+| Finding | Status | Required action/evidence |
+|---|---|---|
+| Immutable release/DOI/commit links | **OPEN — WORKFLOW GATE** | Freeze catalog, code, artifacts, and PDF; verify checksums/routes; insert real identifiers |
+| Reconstructed raw/flip probabilities | **OPEN — CATALOG-INTEGRITY GATE** | Rebuild/remove or machine-quarantine unsafe columns; never call them calibrated probabilities |
+| Catalog user contract | **OPEN — APJS UTILITY GATE** | Machine-readable schema, units, flags, filters, example query, and minimal reproduction |
+| DP4-15/16/17/21 | **OPEN — DISCLOSED SCIENCE/HISTORY GATES** | Preserve transfer, matched-estimator, covariance/selection, and no-formal-preregistration limits |
+| Pixel-null exchangeability | **OPEN — BOUNDED METHODS CLARITY** | Print existing per-galaxy shuffle and weight/mask cross-null results compactly |
+| Mask-count/harmonic contradictions | **MOSTLY STALE** | Distinct supports/nulls are already mapped; normalize terminology only |
+| Injection/calibration overclaim | **STALE/CLOSED** | v1.0.243 repeatedly rejects physical thresholds and labels scores as rankings |
+| DP/path/WLS/MASTER density | **OPEN — EDITORIAL** | Compress project language while preserving reproducibility mapping |
+
+Critical-path wall time was 86 seconds versus 183.0 seconds summed (53.0% reduction). No readiness uplift; P4 remains capped at 80. Full audit/raws: `INT_v3/ROUND_2026-07-14-P4-v1.0.243-EXACTPDF-9e73fd88-APJS-NONANTHROPIC-CONFIRM/`.
+
 ### P2 v1.7.121: Exact-PDF PRD positioning confirmation (2026-07-14)
 
 **Input:** exact 10-page PDF from manuscript commit `86b38a0c2f31b1b4afae166c04f6658a5ed6d83f`, reviewed at repository commit `36badcbdf498123413031aa0a9504127d48f2054`; TeX SHA-256 `caf63ccd839e22935fd9737e243161e2fcf67a868b9f6a827e54e7b30f29169a`; PDF SHA-256 `d75d7bfa2f7b8b9ba006137ed7b3da3f099475ba60f1db4886168750866f127e`.
