@@ -1,6 +1,6 @@
 {
   "paper": "P1A",
-  "closure": "exact convention v1A.0.117",
+  "closure": "Fierz operator-convention correction v1A.0.119",
   "planck_convention": {
     "M_Pl_definition": "unreduced M_Pl=G_N^(-1/2)",
     "M_Pl_GeV": 1.22089e+19,
@@ -17,9 +17,9 @@
     "symbolic_check": true
   },
   "fierz_coefficients": {
-    "G_scalar_over_kappa": "-3/64",
-    "G_axial_over_kappa": "+3/32",
-    "axial_note": "axial column uses the scalar-channel G_crit only as a coefficient benchmark; it is not an axial critical threshold"
+    "G_scalar_over_kappa": "-3/16",
+    "G_axial_abs_over_kappa": "3/32",
+    "axial_note": "only |G_A| is reported because its sign depends on the declared operator ordering; the axial column uses the scalar-channel G_crit only as a coefficient benchmark and is not an axial critical threshold"
   },
   "scan_inputs": {
     "gamma_BI": 0.274,
@@ -39,79 +39,80 @@
       "N_f_times_N_c": 1,
       "cutoff": "M_Pl",
       "Lambda_over_M_Pl": 1.0,
-      "scalar_abs_G_over_scalar_Gcrit": 0.05968310365946075,
+      "scalar_abs_G_over_scalar_Gcrit": 0.238732414637843,
       "axial_coefficient_over_scalar_Gcrit": 0.1193662073189215,
       "scalar_magnitude_subcritical": true,
       "axial_benchmark_below_one": true,
-      "Holst_dressed_scalar_ratio_at_gamma_0.274": 0.0041678622630750535,
+      "Holst_dressed_scalar_ratio_at_gamma_0.274": 0.016671449052300214,
       "Holst_dressed_axial_benchmark_at_gamma_0.274": 0.008335724526150107
     },
     {
       "N_f_times_N_c": 1,
       "cutoff": "M_Pl/sqrt(gamma_BI)",
       "Lambda_over_M_Pl": 1.9104017997521754,
-      "scalar_abs_G_over_scalar_Gcrit": 0.21782154620241154,
+      "scalar_abs_G_over_scalar_Gcrit": 0.8712861848096461,
       "axial_coefficient_over_scalar_Gcrit": 0.4356430924048231,
       "scalar_magnitude_subcritical": true,
       "axial_benchmark_below_one": true,
-      "Holst_dressed_scalar_ratio_at_gamma_0.274": 0.015211176142609688,
+      "Holst_dressed_scalar_ratio_at_gamma_0.274": 0.06084470457043875,
       "Holst_dressed_axial_benchmark_at_gamma_0.274": 0.030422352285219376
     },
     {
       "N_f_times_N_c": 3,
       "cutoff": "M_Pl",
       "Lambda_over_M_Pl": 1.0,
-      "scalar_abs_G_over_scalar_Gcrit": 0.17904931097838225,
+      "scalar_abs_G_over_scalar_Gcrit": 0.716197243913529,
       "axial_coefficient_over_scalar_Gcrit": 0.3580986219567645,
       "scalar_magnitude_subcritical": true,
       "axial_benchmark_below_one": true,
-      "Holst_dressed_scalar_ratio_at_gamma_0.274": 0.012503586789225161,
+      "Holst_dressed_scalar_ratio_at_gamma_0.274": 0.050014347156900646,
       "Holst_dressed_axial_benchmark_at_gamma_0.274": 0.025007173578450323
     },
     {
       "N_f_times_N_c": 3,
       "cutoff": "M_Pl/sqrt(gamma_BI)",
       "Lambda_over_M_Pl": 1.9104017997521754,
-      "scalar_abs_G_over_scalar_Gcrit": 0.6534646386072346,
+      "scalar_abs_G_over_scalar_Gcrit": 2.6138585544289383,
       "axial_coefficient_over_scalar_Gcrit": 1.3069292772144692,
-      "scalar_magnitude_subcritical": true,
+      "scalar_magnitude_subcritical": false,
       "axial_benchmark_below_one": false,
-      "Holst_dressed_scalar_ratio_at_gamma_0.274": 0.04563352842782906,
+      "Holst_dressed_scalar_ratio_at_gamma_0.274": 0.18253411371131625,
       "Holst_dressed_axial_benchmark_at_gamma_0.274": 0.09126705685565813
     },
     {
       "N_f_times_N_c": 9,
       "cutoff": "M_Pl",
       "Lambda_over_M_Pl": 1.0,
-      "scalar_abs_G_over_scalar_Gcrit": 0.5371479329351467,
+      "scalar_abs_G_over_scalar_Gcrit": 2.148591731740587,
       "axial_coefficient_over_scalar_Gcrit": 1.0742958658702935,
-      "scalar_magnitude_subcritical": true,
+      "scalar_magnitude_subcritical": false,
       "axial_benchmark_below_one": false,
-      "Holst_dressed_scalar_ratio_at_gamma_0.274": 0.037510760367675484,
+      "Holst_dressed_scalar_ratio_at_gamma_0.274": 0.15004304147070194,
       "Holst_dressed_axial_benchmark_at_gamma_0.274": 0.07502152073535097
     },
     {
       "N_f_times_N_c": 9,
       "cutoff": "M_Pl/sqrt(gamma_BI)",
       "Lambda_over_M_Pl": 1.9104017997521754,
-      "scalar_abs_G_over_scalar_Gcrit": 1.9603939158217036,
+      "scalar_abs_G_over_scalar_Gcrit": 7.8415756632868145,
       "axial_coefficient_over_scalar_Gcrit": 3.9207878316434073,
       "scalar_magnitude_subcritical": false,
       "axial_benchmark_below_one": false,
-      "Holst_dressed_scalar_ratio_at_gamma_0.274": 0.13690058528348717,
+      "Holst_dressed_scalar_ratio_at_gamma_0.274": 0.5476023411339487,
       "Holst_dressed_axial_benchmark_at_gamma_0.274": 0.27380117056697434
     }
   ],
   "scalar_sign_result": {
-    "G_scalar_over_kappa": "-3/64",
-    "G_scalar_GeV^-2": -7.903656684774662e-39,
+    "G_scalar_over_kappa": "-3/16",
+    "G_scalar_GeV^-2": -3.161462673909865e-38,
     "sign": "negative (repulsive in the declared +G_s convention)",
     "derived_consequence": "no nonzero real homogeneous scalar-mass solution for G_s<0",
     "scope": "direct-channel standard mean field only; no global-potential, Fierz-independent, axial-condensation, or beyond-mean-field claim"
   },
   "magnitude_result": {
     "all_scalar_rows_subcritical": false,
-    "maximum_scalar_ratio": 1.9603939158217036,
+    "scalar_supercritical_rows": 3,
+    "maximum_scalar_ratio": 7.8415756632868145,
     "maximum_axial_coefficient_benchmark": 3.9207878316434073,
     "verdict": "blanket magnitude-subcritical claim is false; the scalar sign result remains independently valid in the declared model"
   },

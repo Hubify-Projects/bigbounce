@@ -76,18 +76,22 @@ def recompute() -> dict[str, object]:
     kappa_gev_m2 = 8 * math.pi / m_pl_gev**2
     holst_factor = gamma_bi**2 / (1 + gamma_bi**2)
 
-    # Minimal-EC Fierz coefficients in the paper's declared convention.
-    g_scalar_over_kappa = -3 / 64
-    g_axial_over_kappa = +3 / 32
+    # Minimal-EC exchange-channel Fierz coefficients in the paper's declared
+    # anticommuting-operator convention.  The axial sign depends on the stated
+    # operator ordering and is not used scientifically, so only its magnitude
+    # is propagated as a scalar-threshold benchmark.
+    g_scalar_over_kappa = -3 / 16
+    g_axial_abs_over_kappa = 3 / 32
+    assert math.isclose(abs(g_scalar_over_kappa), 2 * g_axial_abs_over_kappa)
 
     rows: list[dict[str, object]] = []
     expected_scalar = [
-        0.05968310365946075,
-        0.2178215462024115,
-        0.17904931097838225,
-        0.6534646386072346,
-        0.5371479329351468,
-        1.9603939158217038,
+        0.238732414637843,
+        0.8712861848096462,
+        0.716197243913529,
+        2.6138585544289384,
+        2.148591731740587,
+        7.841575663286815,
     ]
 
     # Interleave the two cutoff choices within each N_f N_c multiplicity.
@@ -96,11 +100,11 @@ def recompute() -> dict[str, object]:
             ("M_Pl", 1.0),
             ("M_Pl/sqrt(gamma_BI)", 1 / math.sqrt(gamma_bi)),
         ):
-            # |G_scalar|/G_crit = 3 N_f N_c/(16 pi) * Lambda^2/M_Pl^2.
+            # |G_scalar|/G_crit = 3 N_f N_c/(4 pi) * Lambda^2/M_Pl^2.
             scalar_ratio = (
-                3 * nfnc * lambda_over_mpl**2 / (16 * math.pi)
+                3 * nfnc * lambda_over_mpl**2 / (4 * math.pi)
             )
-            axial_benchmark = 2 * scalar_ratio
+            axial_benchmark = scalar_ratio / 2
             rows.append(
                 {
                     "N_f_times_N_c": nfnc,
@@ -132,7 +136,7 @@ def recompute() -> dict[str, object]:
     # the nonzero real scalar gap equation by M gives 1 = G_s * positive_factor;
     # therefore G_s < 0 cannot support a nonzero homogeneous scalar-mass root.
     scalar_sign = {
-        "G_scalar_over_kappa": "-3/64",
+        "G_scalar_over_kappa": "-3/16",
         "G_scalar_GeV^-2": g_scalar_over_kappa * kappa_gev_m2,
         "sign": "negative (repulsive in the declared +G_s convention)",
         "derived_consequence": (
@@ -179,7 +183,7 @@ def recompute() -> dict[str, object]:
 
     return {
         "paper": "P1A",
-        "closure": "exact convention v1A.0.117",
+        "closure": "Fierz operator-convention correction v1A.0.119",
         "planck_convention": {
             "M_Pl_definition": "unreduced M_Pl=G_N^(-1/2)",
             "M_Pl_GeV": m_pl_gev,
@@ -188,11 +192,13 @@ def recompute() -> dict[str, object]:
         },
         "gap_derivation": gap,
         "fierz_coefficients": {
-            "G_scalar_over_kappa": "-3/64",
-            "G_axial_over_kappa": "+3/32",
+            "G_scalar_over_kappa": "-3/16",
+            "G_axial_abs_over_kappa": "3/32",
             "axial_note": (
-                "axial column uses the scalar-channel G_crit only as a "
-                "coefficient benchmark; it is not an axial critical threshold"
+                "only |G_A| is reported because its sign depends on the "
+                "declared operator ordering; the axial column uses the "
+                "scalar-channel G_crit only as a coefficient benchmark and "
+                "is not an axial critical threshold"
             ),
         },
         "scan_inputs": {
@@ -206,6 +212,9 @@ def recompute() -> dict[str, object]:
         "magnitude_result": {
             "all_scalar_rows_subcritical": all(
                 row["scalar_magnitude_subcritical"] for row in rows
+            ),
+            "scalar_supercritical_rows": sum(
+                not row["scalar_magnitude_subcritical"] for row in rows
             ),
             "maximum_scalar_ratio": max(
                 row["scalar_abs_G_over_scalar_Gcrit"] for row in rows
