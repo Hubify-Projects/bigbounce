@@ -1,0 +1,85 @@
+{
+  "paper": "P1A",
+  "version": "v1A.0.118",
+  "manuscript_commit": "e2214288b70c8bafd87d9c0a7e5bb536fca3a070",
+  "pdf_sha256": "9a5d9216df983858acda1e993a4372fcb92822abebed05163ce1e51463e59844",
+  "source_sha256": "7cfe09cfb6cd136d6b1e8804be5ac7f7cfd181390ae6e9353c8b321287915dd2",
+  "api_runner": {
+    "path": "tools/int_api_review_2026-07-08.py",
+    "sha256": "8c0432d53fafa264fb6f3385480e0e19a2748dc204a389198b17b4eac88becd0",
+    "prompt_file": "dispatch_prompt.txt",
+    "timeout_seconds": 300,
+    "allowed_attempts": 2,
+    "expected_pdf_sha_enforced": true
+  },
+  "legs": {
+    "openai": {
+      "model": "gpt-5.5",
+      "access": "direct OpenAI API",
+      "endpoints": ["POST /v1/files", "POST /v1/responses"],
+      "modality": "native PDF by Files API input_file",
+      "attempt": 1,
+      "fallback": false,
+      "raw_verdict": "MINOR REVISIONS",
+      "raw_file": "API_P1A_openai.md",
+      "raw_sha256": "20a45c4f95ae79af5f3145974fd972ac7dfd1e23cda5811af62bd59637717013"
+    },
+    "gemini": {
+      "model": "gemini-3.1-pro-preview",
+      "access": "direct Google Generative Language API",
+      "endpoint": "POST /v1beta/models/gemini-3.1-pro-preview:generateContent",
+      "modality": "native PDF inline_data base64",
+      "attempt": 1,
+      "fallback": false,
+      "raw_verdict": "ACCEPT",
+      "raw_file": "API_P1A_gemini.md",
+      "raw_sha256": "c415dea23e57be42d2caa98dbc0706cf2af5c4977733413bb0f7f22c1ceefa19"
+    },
+    "grok": {
+      "model": "grok-4.3",
+      "access": "direct xAI API",
+      "endpoints": ["POST /v1/files", "POST /v1/responses"],
+      "modality": "native PDF by file_id",
+      "attempt": 1,
+      "fallback": false,
+      "raw_verdict": "ACCEPT",
+      "raw_file": "API_P1A_grok.md",
+      "raw_sha256": "b706bf537a7510e740ed5a5a213e1fd897c4c04979ee6d637dd3666a4d06c762"
+    },
+    "codex": {
+      "model": "model/reasoning identifier not exposed",
+      "access": "Codex in-app collaboration lane",
+      "modality": "exact frozen PDF plus rendered pages; blinded read-only review",
+      "attempt": 1,
+      "fallback": false,
+      "raw_verdict": "MAJOR REVISION",
+      "raw_file": "RAW_P1A_codex_in_app.md",
+      "raw_sha256": "15450fc2c480bb281b3d3bc42549a4bb28b10065874eaa2761b2b9eb20f9e287",
+      "note": "The independent reviewer did not perform the v1A.0.118 closure. Exact model/reasoning settings were not exposed and are not inferred."
+    }
+  },
+  "truth_audit": {
+    "file": "P1A_CONFIRMATION_TRUTH_AUDIT.md",
+    "sha256": "1b2720f3d9978e1353f5633072da97a845dc8ec93b8a9a491fe03e723f64a363",
+    "maximum_severity": "MAJOR",
+    "panel_status": "MAJOR REVISION",
+    "real_findings": ["CDEX-M1", "CDEX-m1", "OAI-m2"],
+    "subsumed_findings": ["OAI-m1"],
+    "non_defects": ["OAI-m3"]
+  },
+  "independent_recompute": {
+    "script": "fierz_trace_audit.py",
+    "script_sha256": "4759bbb7e84d5e006bcca7577be0f56c5c3dcee5ea69a46d82ba6e6a55d03ff8",
+    "output": "fierz_trace_audit.txt",
+    "output_sha256": "df81192e2c8426fc2278b0188c14174df8f558abde85e50462fec86c50236469"
+  },
+  "manifest_sha256": "39a0ae255a1eebc309de7d0d12296d1c889fd1ed2aefe34987e17e5ad0546dd8",
+  "prohibited_routes_used": {
+    "anthropic": false,
+    "claude": false,
+    "subscription_cli": false,
+    "vendor_fallback": false
+  },
+  "manuscript_edited_after_dispatch": false,
+  "shared_state_updated": false
+}

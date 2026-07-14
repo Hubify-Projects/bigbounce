@@ -1,0 +1,16 @@
+Eq. (A1) axial source row   : [1, 1/2, 0, -1/2, -1]
+Eq. (A1) axial source column: [1/4, 1/2, 0, -1/2, -1/4]
+Eq. (A2) uses column        : [1/4, 1/2, 0, -1/2, -1/4]
+explicit trace f_AS         : 4
+normalized C_AS             : 1
+numerical-spinor F_AS       : -1
+Grassmann exchange F_AS     : 1
+correct G_scalar/kappa      : -3/16
+axial |G_A|/kappa           : 3/32
+corrected six-row scan:
+  NfNc=1 cutoff=1               R_S=0.23873241 R_A=0.11936621
+  NfNc=1 cutoff=1/sqrt(0.274)   R_S=0.87128618 R_A=0.43564309
+  NfNc=3 cutoff=1               R_S=0.71619724 R_A=0.35809862
+  NfNc=3 cutoff=1/sqrt(0.274)   R_S=2.61385855 R_A=1.30692928
+  NfNc=9 cutoff=1               R_S=2.14859173 R_A=1.07429587
+  NfNc=9 cutoff=1/sqrt(0.274)   R_S=7.84157566 R_A=3.92078783
