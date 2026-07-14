@@ -17,13 +17,14 @@ Validate the pushed `ops/handoff/` package as a reproducible two-machine, one-la
 
 This parallel evaluation track does not advance the Phase 0 handoff gates or authorize BigBounce writes.
 
-1. **Done:** harden the local subscription-first mirrored launcher in `learning-cmux-with-agents` with project-trust bypass, atomic one-way seal/reveal, transactional four-workspace topology gating and scoped rollback, deadline/timeout adjudication, and 19 passing tests.
+1. **Done:** harden the local subscription-first mirrored launcher in `learning-cmux-with-agents` through commits `e2e2496` and `ec6f48e`: project-trust bypass; private capability-token files; atomic one-way seal/reveal; transactional four-workspace topology gating; caller-bound provider-auth/short-liveness receipts plus a bounded early-exit settle; process-enforced target-repository read-only boundaries for every run-owned surface; atomic abort invalidation before rollback; process-group shutdown; deadline/timeout adjudication; and **28 passing tests**.
 2. **Inconclusive evidence only:** the first diagnostic run did not establish a valid model comparison.
 3. **Latest clean attempt:** run `20260714T000136Z-024658000-bfee86cfcc83` launched from a clean snapshot, verified the complete topology, and bypassed every Codex trust gate. Codex submitted one sealed result; Claude reached its weekly subscription limit before submitting. No result was revealed and no winner exists. This legacy run predates deadline-aware contracts and has no deadline, so it cannot be retroactively expired.
 4. **Now:** wait for the Claude allowance reset at **2026-07-15 07:00 America/Los_Angeles**, then start a fresh clean envelope and run both GPT-5.6 Sol high and Claude Opus 4.8 high arms from the same bound snapshot.
 5. Capture both fresh sealed outputs, reveal only after dual submission, and compare quality, latency, and coordination behavior using the recorded run artifacts.
-6. Keep all mutation disabled until You.md atomic claims, heartbeats, overlap detection, and isolated worktrees are implemented and acceptance-tested.
-7. Keep the lab commits local until a Houston-owned fork is configured; the current `origin` is IndyDevDan's upstream repository.
+6. Treat readiness evidence precisely: it proves provider-auth preflight and short process liveness, not a completed model turn, successful quota-backed inference, or submission.
+7. Keep all mutation disabled until You.md atomic claims, heartbeats, overlap detection, and isolated worktrees are implemented and acceptance-tested. The per-surface process boundary is not hostile isolation against the same OS user or independently launched raw-CMUX processes; that requires a stronger broker/identity boundary.
+8. Keep the lab commits local until a Houston-owned fork is configured; the current `origin` is IndyDevDan's upstream repository.
 
 ## Gates
 
@@ -34,8 +35,8 @@ This parallel evaluation track does not advance the Phase 0 handoff gates or aut
 
 ## Recovery notes
 
-- Last prompt-history reconciliation: 2026-07-13 16:15 PT.
-- Source reviewed: 2026-07-13 handoff prompt/Claude report, Codex repository-state acceptance audit, and CMUX prompts at 14:49, 15:38, 15:56, and 16:14 PT.
-- Verified baseline: `main` and `origin/main` at `b93528b6`; handoff commits remain reachable and pushed. Lease/heartbeat evidence is retained from the earlier acceptance audit.
+- Last prompt-history reconciliation: 2026-07-13 17:31 PT.
+- Source reviewed: 2026-07-13 handoff prompt/Claude report, Codex repository-state acceptance audit, and CMUX prompts at 14:49, 15:38, 15:56, 16:14, and 17:31 PT.
+- Verified baseline before this context update: `main` and `origin/main` at `55e0b0ad`; handoff commits remain reachable and pushed. Lease/heartbeat evidence is retained from the earlier acceptance audit.
 - Active blockers: M41 browser/manifest ownership, unauthenticated Hubify CLI, dirty/conflicted machine-sync shared repo.
-- CMUX boundary: launcher hardening is locally green at 19 tests; the first diagnostic was inconclusive and the clean rerun has only an unrevealed Codex seal because Claude hit its weekly limit. Next action is a fresh post-reset read-only A/B; mutation remains gated on You.md atomic coordination; lab `origin` is upstream.
+- CMUX boundary: commits `e2e2496` and `ec6f48e` are locally green at 28 tests, with target-repository writes denied for every run-owned surface, caller-bound auth/liveness receipts plus settle, atomic abort invalidation before rollback, process-group shutdown, and private token files. These checks do not prove a completed model turn or available provider quota and do not provide hostile same-user/raw-CMUX isolation. The first diagnostic remains inconclusive and the clean rerun has only an unrevealed Codex seal because Claude hit its weekly limit. Next action is a fresh post-reset read-only A/B; mutation remains gated on You.md atomic coordination; lab `origin` is upstream.

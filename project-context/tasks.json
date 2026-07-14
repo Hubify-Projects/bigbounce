@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated_at": "2026-07-13T17:27:00-07:00",
+  "updated_at": "2026-07-13T18:06:00-07:00",
   "project": "bigbounce",
   "objective": "Prove the Phase 0 two-machine, one-lab handoff MVP before enabling multi-lab behavior.",
   "tasks": [
@@ -60,12 +60,16 @@
         "Launch equivalent Codex and Claude orchestrator teams from an immutable task and repository snapshot",
         "Use subscription-authenticated CLIs without injecting provider API keys",
         "Keep each result sealed until both teams submit",
-        "Reject mutation while atomic You.md coordination primitives are unavailable"
+        "Reject mutation while atomic You.md coordination primitives are unavailable",
+        "Deny target-repository writes for every run-owned surface and invalidate the seal before failure rollback"
       ],
       "evidence": [
-        "learning-cmux-with-agents contains mirrored launcher, sealed-results helper, trust bypass, transactional topology gate with scoped rollback, deadline/timeout adjudication, and protocol docs",
-        "all 19 local tests pass",
-        "the result seal is atomic and one-way; shared envelopes and receipts do not contain plaintext capability tokens",
+        "learning-cmux-with-agents commits e2e2496 and ec6f48e contain the hardened mirrored launcher and evaluation contract",
+        "all 28 local tests pass",
+        "every run-owned surface has process-enforced target-repository write denial; this is not hostile same-user or independently launched raw-CMUX isolation",
+        "caller-bound receipts plus bounded settle prove provider-auth preflight and short process liveness, not a completed model turn, quota availability, or submission",
+        "abort invalidation is atomically published before rollback and supervisors terminate the complete provider process group",
+        "the result seal is atomic and one-way; capabilities use private token files and shared envelopes and receipts do not contain plaintext capability tokens",
         "commits intentionally unpushed because configured origin is IndyDevDan's upstream repository"
       ]
     },
@@ -79,7 +83,8 @@
         "Both orchestrator teams receive the same task envelope and repository snapshot",
         "Neither team mutates BigBounce or sees the other team's result before dual submission",
         "Both sealed results reveal successfully and are compared for quality, latency, and coordination behavior",
-        "Run artifacts record the exact models, CLI authentication path, snapshot hash, and outcome"
+        "Run artifacts record the exact models, CLI authentication path, snapshot hash, and outcome",
+        "Provider-auth/liveness receipts are not treated as proof of a completed model turn or available quota"
       ],
       "latest_attempt": {
         "run_id": "20260714T000136Z-024658000-bfee86cfcc83",
@@ -174,7 +179,8 @@
     "Do not implement multi-lab schema, site, branches, or seal/reveal during Phase 0.",
     "Only the lease holder may drive browser, verdict, or ledger writes.",
     "Do not modify live review manifests, prompts.md, SSOT, site state, or generated .agents skills in this lane.",
-    "CMUX dogfood stays read-only until You.md atomic claims, heartbeats, overlap detection, and isolated worktrees pass acceptance.",
+    "CMUX dogfood stays read-only until You.md atomic claims, heartbeats, overlap detection, and isolated worktrees pass acceptance; per-surface process enforcement is not hostile same-user/raw-CMUX broker isolation.",
+    "CMUX provider-auth and short-liveness receipts do not prove a completed model turn, provider quota, or result submission.",
     "Do not reveal or declare a winner from a run with only one sealed result; a legacy deadline-free contract cannot be retroactively expired.",
     "The CMUX lab origin is upstream; do not push its local commits without a Houston-owned fork."
   ]
