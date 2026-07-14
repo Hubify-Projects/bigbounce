@@ -1,0 +1,27 @@
+{
+  "config_names": [
+    "lensing_bb_camb"
+  ],
+  "configs": [
+    {
+      "camb_bb": true,
+      "name": "lensing_bb_camb"
+    }
+  ],
+  "n_real": 500,
+  "result_bytes": 1084,
+  "result_file": "c10_lensing_bb_camb.json",
+  "result_sha256": "7972938691186fe549e51c1cf9cd632c8b197247e96f27aadf9c08da20a9d2b9",
+  "runtime_s": 11045.1,
+  "schema_version": 1,
+  "seed_end": 541,
+  "seed_start": 42,
+  "software": {
+    "healpy": "1.19.0",
+    "numpy": "1.26.4",
+    "pymaster": "2.6"
+  },
+  "suite": "c10",
+  "theory_operator": "NmtWorkspace.get_bandpower_windows exact tensor contraction",
+  "window_equivalence_max_abs": 2.842170943040401e-14
+}
