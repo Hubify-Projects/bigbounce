@@ -19,7 +19,7 @@ CONVEX_QUERY_URL="https://brilliant-panther-471.convex.cloud/api/query"
 LA_DIR="$HOME/Library/LaunchAgents"
 
 # required .env.local key NAMES (names only — values never printed / never read out)
-REQUIRED_KEYS=(HF_TOKEN OPENROUTER_API_KEY OPENAI_API_KEY XAI_API_KEY RUNPOD_API_KEY)
+REQUIRED_KEYS=(HF_TOKEN OPENROUTER_API_KEY XAI_API_KEY RUNPOD_API_KEY)
 
 pass=0; fail=0; warn=0
 ROWS=()
@@ -131,6 +131,8 @@ have pdftoppm && row PASS "poppler (pdftoppm)" "present" || row FAIL "poppler (p
 # 3. python3 + review SDKs ---------------------------------------------------
 if have python3; then
   row PASS "python3" "$(python3 --version 2>&1)"
+  # The openai Python package remains an SDK dependency for OpenAI-compatible
+  # xAI/Perplexity endpoints; no OPENAI_API_KEY is required or used for reviews.
   for spec in "openai:openai" "google.generativeai:google-generativeai" "anthropic:anthropic"; do
     mod="${spec%%:*}"; package="${spec#*:}"
     if python3 -c "import importlib; importlib.import_module('$mod')" >/dev/null 2>&1; then

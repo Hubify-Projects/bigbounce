@@ -77,10 +77,10 @@ SSOT / the scistack SKILL.md / DISPOSITIONS / Convex (see `README.md`).
         └────────────────────────────────────────────────────────────────────────────────────────────┘
 
         ┌──────────────────────────── INT BATTERY ────────────────┐   ┌──────────── BACKUP LAYER ───────────┐
-        │  int_wave.sh <P> — 4 legs in parallel:                   │   │  backup-3plus before any destructive │
-        │   OpenAI native-PDF · Grok native-PDF · Gemini (if key)  │   │  op; RunPod data ⇒ local + HF + B2    │
-        │   Claude = SUBSCRIPTION (ANTHROPIC_API_KEY UNSET) NEVER  │   │  (+Convex metadata). ALWAYS, not just │
-        │   the API. Every leg SAVES its raw. Verdict matrix out.  │   │  before-stop (directive E).           │
+        │  int_wave.sh <P> — subscription + API legs in parallel:  │   │  backup-3plus before any destructive │
+        │   OpenAI = Codex/ChatGPT SUBSCRIPTION, API keys unset;    │   │  op; RunPod data ⇒ local + HF + B2    │
+        │   Grok + Gemini use their APIs. Every leg saves its raw. │   │  (+Convex metadata). ALWAYS, not just │
+        │   OpenAI API review dispatch is permanently forbidden.  │   │  before-stop (directive E).           │
         └──────────────────────────────────────────────────────────┘   └──────────────────────────────────────┘
 ```
 

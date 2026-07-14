@@ -9,20 +9,20 @@ got pdftotext extraction which strips figures, tables, equations, and 2-column
 layout. Internal reviews missed what external (web-app) reviews catch because
 external reviewers see the rendered document.
 
-v3 fixes:
-  1. ALL major reviewers receive native PDF rendering:
-     - Anthropic Claude Opus 4.7   — document content block (NEW reviewer)
-     - OpenAI o3                   — Files API + Responses API input_file
+v3 current routing:
+  1. API reviewers receive the best available document rendering:
      - Gemini 2.5 Pro              — File API / inline PDF
      - Grok 4                      — rasterized to per-page PNG images
      - Perplexity sonar-pro        — text + web search (citation forensics only)
-  2. Max reasoning on every vendor:
-     - Anthropic: extended thinking 16K budget
-     - OpenAI: reasoning effort "high"
+     OpenAI review is intentionally absent: use Codex CLI with Houston's
+     ChatGPT subscription. Anthropic review likewise uses the host subscription
+     agent by default.
+  2. High-effort vendor settings:
      - Gemini: temperature 0.2, max thinking
      - Grok: temperature 0.1
   3. DeepSeek removed (always timed out — 2.75 hr on R9 P3).
-  4. Adds Claude as the "matches Houston's web Claude review" baseline.
+  4. Keeps the historical Claude config only for explicit legacy recovery;
+     it is excluded by default.
 
 Usage:
     python tools/v3_native_pdf_review.py <pdf_path> <round_label> <paper_tag> [round_context]
@@ -222,23 +222,6 @@ REVIEWERS = {
         ),
         "native_pdf": True,
     },
-    "OpenAI_methodology": {
-        "vendor": "openai",
-        "model": "gpt-5",
-        "fallback": "o3",
-        "persona": "Physical Review D methodology referee with full PDF access",
-        "focus": (
-            "Methodology rigor: statistical-method validity, derivation chains, "
-            "dimensional analysis, internal arithmetic consistency, error propagation. "
-            "Audit every scalar in the abstract and conclusions for a traceable source "
-            "in the body. Flag overclaims of statistical significance. Check sigma "
-            "values from different null procedures are kept distinct. Flag if the "
-            "primary estimator is not pre-declared. Check N_MC sample sizes against "
-            "claimed sub-sigma precision. Audit figure axes and tables for arithmetic "
-            "consistency. Recompute every quoted ratio and percentage."
-        ),
-        "native_pdf": True,
-    },
     "Gemini_cosmology": {
         "vendor": "gemini",
         "model": "gemini-2.5-pro",
@@ -393,74 +376,6 @@ def call_anthropic(keys: dict, model: str, prompt: str, pdf_path: Path) -> tuple
     return "".join(text_chunks), model_used
 
 
-def call_openai_responses(keys: dict, model: str, prompt: str, pdf_path: Path) -> tuple[str, str]:
-    """OpenAI Responses API with native PDF via Files API + reasoning effort high.
-    Handles both reasoning models (o3, o3-pro) and gpt-5 family."""
-    from openai import OpenAI
-    client = OpenAI(api_key=keys["OPENAI_API_KEY"], timeout=900.0)
-
-    with open(pdf_path, "rb") as f:
-        upload = client.files.create(file=f, purpose="user_data")
-
-    common_input = [
-        {
-            "role": "user",
-            "content": [
-                {"type": "input_file", "file_id": upload.id},
-                {"type": "input_text", "text": prompt},
-            ],
-        }
-    ]
-
-    # gpt-5 with reasoning_effort=high can consume tens of thousands of tokens
-    # before producing visible output. Cap output at 64000 (max), use medium
-    # reasoning for gpt-5 family to balance depth and output room.
-    is_gpt5 = "gpt-5" in model.lower()
-    effort = "medium" if is_gpt5 else "high"
-    max_out = 64000 if is_gpt5 else 32000
-
-    try:
-        # Try with reasoning param first (works for o3, o3-pro, gpt-5)
-        try:
-            resp = client.responses.create(
-                model=model,
-                reasoning={"effort": effort},
-                input=common_input,
-                max_output_tokens=max_out,
-            )
-        except Exception as e:
-            err_msg = str(e).lower()
-            # Some models don't accept reasoning param; retry without
-            if "reasoning" in err_msg or "unsupported parameter" in err_msg or "unknown parameter" in err_msg:
-                resp = client.responses.create(
-                    model=model,
-                    input=common_input,
-                    max_output_tokens=max_out,
-                )
-            else:
-                raise
-
-        # output_text is the convenience getter when present
-        text = getattr(resp, "output_text", "") or ""
-        if not text:
-            for item in (resp.output or []):
-                if getattr(item, "type", "") == "message":
-                    for c in (item.content or []):
-                        if hasattr(c, "text") and c.text:
-                            text += c.text
-        model_used = getattr(resp, "model", model)
-
-        # Detect silent downgrade only — gpt-5 → gpt-4o / gpt-3.5 / gpt-4.1 is a regression
-        if "gpt-4o" in model_used.lower() or "gpt-3.5" in model_used.lower():
-            raise RuntimeError(f"silent fallback: requested {model}, got {model_used}")
-        return text, model_used
-    finally:
-        try:
-            client.files.delete(upload.id)
-        except Exception:
-            pass
-
-
 def call_gemini(keys: dict, model: str, prompt: str, pdf_path: Path) -> tuple[str, str]:
     """Gemini 2.5 Pro with native PDF via inline data (or Files API for big PDFs)."""
     import google.generativeai as genai
@@ -561,7 +476,10 @@ def _dispatch_one_call(vendor: str, keys: dict, model: str, prompt: str, pdf_pat
     if vendor == "anthropic":
         return call_anthropic(keys, model, prompt, pdf_path)
     elif vendor == "openai":
-        return call_openai_responses(keys, model, prompt, pdf_path)
+        raise RuntimeError(
+            "OpenAI API review dispatch is disabled; use the Codex CLI with "
+            "ChatGPT subscription authentication"
+        )
     elif vendor == "gemini":
         return call_gemini(keys, model, prompt, pdf_path)
     elif vendor == "xai":
@@ -646,8 +564,6 @@ def run_reviewer(
 
     if vendor == "anthropic":
         input_note = "NATIVE PDF (document block) + extended thinking 16K"
-    elif vendor == "openai":
-        input_note = "NATIVE PDF (Files API + Responses) + reasoning_effort=high"
     elif vendor == "gemini":
         input_note = "NATIVE PDF (inline or Files API)"
     elif vendor == "xai":
@@ -725,7 +641,7 @@ def main() -> int:
         return 1
 
     keys = load_keys()
-    required = ["OPENAI_API_KEY", "GOOGLE_GEMINI_API_KEY", "XAI_API_KEY"]  # 2026-07-03: Claude leg=Claude Code subagent (NOT Anthropic API); Perplexity optional — never fail on these
+    required = ["GOOGLE_GEMINI_API_KEY", "XAI_API_KEY"]
     missing = [k for k in required if k not in keys]
     if missing:
         print(f"[warn] Missing keys: {missing}", file=sys.stderr)
@@ -737,7 +653,7 @@ def main() -> int:
     # The Anthropic/Claude reviewer leg is supplied by a Claude Code sub-agent
     # (the Opus subscription), NOT the pay-as-you-go ANTHROPIC_API_KEY. Houston
     # directive 2026-06-14: never burn the API key on reviews. This tool runs the
-    # 4 API vendors (OpenAI/Gemini/Grok/Perplexity); the orchestrator spawns an
+    # API vendors (Gemini/Grok/Perplexity); the orchestrator spawns an
     # Opus Agent to produce EXT{N}_P{X}_Claude_brutal.md. Set V3_USE_ANTHROPIC_API=1
     # to fall back to the API leg if ever needed.
     use_anthropic_api = os.environ.get("V3_USE_ANTHROPIC_API", "0") == "1"

@@ -11,15 +11,16 @@ second machine can run the loop under whatever agent is installed there.
 |---|---|---|---|
 | Spawn a sub-agent (per-paper owner, per-vendor reviewer) | `Agent` tool (parallel calls in one message) | `spawn_agent` | host's agent/task spawn; if none, run legs sequentially in-session |
 | **Claude/Anthropic INT leg** | the **running agent itself** on Houston's subscription — never the Anthropic API (directive I1) | the **running Codex agent** is the "Claude-equivalent" leg on ITS subscription | the running host agent IS that leg on its subscription |
-| OpenAI INT leg | OpenAI API via `tools/v3_native_pdf_review.py` | same script, or the Codex agent | same script |
+| OpenAI INT leg | authenticated Codex CLI on Houston's ChatGPT subscription, API keys unset | running Codex subscription agent | authenticated Codex CLI; never OpenAI API |
 | Grok / Gemini INT legs | XAI / Gemini API via the same script (Gemini→browser when key throttled) | same | same |
 | Model routing tiers | Opus judgment / Sonnet execution / Haiku polling | `gpt-5.5` orchestrate / `codex-spark`/`mini` workers | host tiers per the global CLAUDE.md heuristic |
 | Durable loop (survives session close) | macOS `launchd`; deploy canonical `tools/{bigbounce_cron_tick,loop_watchdog}.sh` copies to App Support | same only on macOS; non-macOS needs a systemd/Task Scheduler adapter | host scheduler adapter required; never describe launchd as host-independent |
 | Skill invocation (`/machine-sync`, `/connect-chrome`, `/bigbounce-r-round`) | Skill tool | equivalent command, or read the SKILL.md and execute its steps | read the SKILL.md and execute its steps |
 
-**Key rule (directive I1):** the Claude-equivalent INT leg is always **the running
-agent on its own subscription**, whichever host that is. NEVER ask Houston for an
-Anthropic API key and NEVER fail an INT round because an API is disabled.
+**Key rule (directive I1):** subscription-backed perspectives stay on their
+subscription surfaces. The Claude-equivalent leg is the running host agent;
+the OpenAI leg is Codex CLI authenticated by ChatGPT login. Never dispatch
+either through a separately billed API key.
 
 ## Host-agnostic already (works identically everywhere)
 

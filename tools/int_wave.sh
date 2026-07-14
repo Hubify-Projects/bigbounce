@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
-# int_wave.sh — run the INT legs (OpenAI API, Grok API, Codex subscription, and
+# int_wave.sh — run the INT legs (Grok API, Gemini API, and Codex subscription)
 # Gemini API when GEMINI_API_KEY is set) in parallel, block until all finish, then
 # print the verdict matrix.
 #
 # Legs:
-#   (a) OpenAI: native-PDF API via tools/int_api_review_2026-07-08.py <paper> openai
+#   (a) OpenAI: Codex CLI authenticated by the local ChatGPT subscription.
+#               OpenAI API dispatch is forbidden; OPENAI_API_KEY is always unset.
 #   (b) Grok:   native-PDF API via tools/int_api_review_2026-07-08.py <paper> grok
 #   (d) Gemini: native-PDF API via tools/int_api_review_2026-07-08.py <paper> gemini
 #               (7th reviewer leg, keyed 2026-07-11 — only runs when GEMINI_API_KEY
@@ -16,8 +17,8 @@
 #       every-leg-saves-its-raw rule) to
 #       INT_api/H17_2026-07-10/intwave_<paper>_codex_HHMM.md.
 #
-# At the end it prints the verdict triple parsed from:
-#   - the two newest API_<paper>_{openai,grok}.md PARSED VERDICT lines in
+# At the end it prints the verdict matrix parsed from:
+#   - the newest API_<paper>_{grok,gemini}.md PARSED VERDICT lines in
 #     INT_v3/ROUND_2026-07-09/
 #   - the VERDICT line of the just-written Codex file
 # and appends a run.log line to INT_api/H17_2026-07-10/run.log.
@@ -116,15 +117,8 @@ fi
 mkdir -p "$SUBSCRIPTION_OUTDIR"
 
 # ---------------------------------------------------------------------------
-# Launch the three legs in parallel subshells; capture PIDs; wait on all.
+# Launch the API and subscription legs in parallel; capture PIDs; wait on all.
 # ---------------------------------------------------------------------------
-
-# (a) OpenAI leg
-(
-  set -a; source "$REPO/.env.local"; set +a
-  INT_CONTEXT="$CONTEXT" python3 "$PY_REVIEW" "$PAPER" openai
-) >"$SUBSCRIPTION_OUTDIR/.intwave_${PAPER}_openai_${HHMM}.log" 2>&1 &
-PID_OPENAI=$!
 
 # (b) Grok leg
 (
@@ -196,12 +190,11 @@ PID_CODEX=$!
 fi
 
 if [ "$GEMINI_ON" = 1 ]; then
-  echo "    launched: openai(pid $PID_OPENAI) grok(pid $PID_GROK) gemini(pid $PID_GEMINI) codex=${CODEX_STATE}${PID_CODEX:+(pid $PID_CODEX)} — blocking until all done..."
+  echo "    launched: grok(pid $PID_GROK) gemini(pid $PID_GEMINI) codex-subscription=${CODEX_STATE}${PID_CODEX:+(pid $PID_CODEX)} — blocking until all done..."
 else
-  echo "    launched: openai(pid $PID_OPENAI) grok(pid $PID_GROK) codex=${CODEX_STATE}${PID_CODEX:+(pid $PID_CODEX)} [gemini: no key] — blocking until all done..."
+  echo "    launched: grok(pid $PID_GROK) codex-subscription=${CODEX_STATE}${PID_CODEX:+(pid $PID_CODEX)} [gemini: no key] — blocking until all done..."
 fi
 
-wait "$PID_OPENAI"; RC_OPENAI=$?
 wait "$PID_GROK";   RC_GROK=$?
 RC_CODEX=0
 if [ "$CODEX_ON" = 1 ]; then wait "$PID_CODEX"; RC_CODEX=$?; fi
@@ -212,7 +205,7 @@ if [ "$GEMINI_ON" = 1 ]; then wait "$PID_GEMINI"; RC_GEMINI=$?; fi
 # Parse the verdict triple.
 # ---------------------------------------------------------------------------
 parse_api_verdict() {
-  # $1 = vendor (openai|grok). The python script writes/overwrites
+  # $1 = vendor (grok|gemini). The python script writes/overwrites
   # API_<paper>_<vendor>.md with a "PARSED VERDICT:" line.
   local f="$API_OUTDIR/API_${PAPER}_$1.md"
   if [ -f "$f" ]; then
@@ -220,7 +213,6 @@ parse_api_verdict() {
   fi
 }
 
-V_OPENAI="$(parse_api_verdict openai)"; [ -n "$V_OPENAI" ] || V_OPENAI="ABSENT"
 V_GROK="$(parse_api_verdict grok)";     [ -n "$V_GROK" ]   || V_GROK="ABSENT"
 if [ "$GEMINI_ON" = 1 ]; then
   V_GEMINI="$(parse_api_verdict gemini)"; [ -n "$V_GEMINI" ] || V_GEMINI="ABSENT"
@@ -252,14 +244,13 @@ fi
 TS_UTC="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 echo ""
 echo "=== INT WAVE VERDICT MATRIX :: $PAPER $VER ==="
-echo "  OpenAI (gpt-5.5):          $V_OPENAI"
 echo "  Grok (grok-4.3):           $V_GROK"
 echo "  Gemini (gemini-3.1-pro):   $V_GEMINI"
-echo "  Codex ($CODEX_MODEL/$CODEX_EFFORT): $V_CODEX"
-echo "  (rc: openai=$RC_OPENAI grok=$RC_GROK gemini=$RC_GEMINI codex=$RC_CODEX)"
+echo "  OpenAI via Codex subscription ($CODEX_MODEL/$CODEX_EFFORT): $V_CODEX"
+echo "  (rc: grok=$RC_GROK gemini=$RC_GEMINI codex_subscription=$RC_CODEX)"
 
 # Append to run.log.
-LOGLINE="$TS_UTC | $PAPER $VER | openai=$V_OPENAI | grok=$V_GROK | gemini=$V_GEMINI | codex=$V_CODEX"
+LOGLINE="$TS_UTC | $PAPER $VER | grok=$V_GROK | gemini=$V_GEMINI | openai_subscription=$V_CODEX"
 [ "$CODEX_ON" = 1 ] && LOGLINE="$LOGLINE | codex_raw=${CODEX_OUT#$REPO/}"
 [ -n "$CONTEXT" ] && LOGLINE="$LOGLINE | ctx=\"$CONTEXT\""
 echo "$LOGLINE" >>"$RUNLOG"

@@ -12,9 +12,9 @@
 #   * with the ApJS referee prompt (INT_VENUE / INT_PROMPT / INT_SYSTEM)
 #   * writes raws to a clearly-labeled sibling dir (INT_OUTDIR .../INT_apjs/<date>)
 #     so the PRD round dir is never clobbered.
-# All four INT legs run: OpenAI API, Grok API, Gemini API, and a read-only Codex
-# CLI leg authenticated through the local ChatGPT subscription. Prints the
-# verdict quad + appends a run.log line.
+# Three INT legs run: Grok API, Gemini API, and a read-only Codex CLI leg
+# authenticated through the local ChatGPT subscription. OpenAI API review
+# dispatch is forbidden. Prints the verdict matrix + appends a run.log line.
 #
 # Usage: tools/int_wave_apjs.sh ["optional context-note"]
 set -uo pipefail
@@ -104,10 +104,10 @@ fi
 
 mkdir -p "$INT_OUTDIR"
 
-# ---- API legs (openai, grok, gemini) in parallel ----
+# ---- API legs (grok, gemini) in parallel ----
 PIDS_API=""
 if [ "$API_LEGS_ENABLED" = 1 ]; then
-  for vend in openai grok gemini; do
+  for vend in grok gemini; do
     ( set -a; source "$REPO/.env.local"; set +a; python3 "$PY_REVIEW" "$PAPER" "$vend" ) \
       >"$INT_OUTDIR/.intwave_P3apjs_${vend}_${HHMM}.log" 2>&1 &
   done
@@ -166,17 +166,16 @@ if [ "$CODEX_ON" = 1 ]; then
 PID_CODEX=$!
 fi
 
-echo "    launched: openai+grok+gemini (api) + codex=${CODEX_STATE}${PID_CODEX:+(pid $PID_CODEX)} — blocking..."
+echo "    launched: grok+gemini (api) + openai-via-codex-subscription=${CODEX_STATE}${PID_CODEX:+(pid $PID_CODEX)} — blocking..."
 for p in $PIDS_API; do wait "$p"; done
 RC_CODEX=0
 if [ "$CODEX_ON" = 1 ]; then wait "$PID_CODEX"; RC_CODEX=$?; fi
 
-# ---- parse the quad ----
+# ---- parse the matrix ----
 parse_api() {
   local f="$INT_OUTDIR/API_P3APJS_$1.md"
   [ -f "$f" ] && grep -m1 '^PARSED VERDICT:' "$f" | sed 's/^PARSED VERDICT:[[:space:]]*//' || true
 }
-V_OPENAI="$(parse_api openai)"; [ -n "$V_OPENAI" ] || V_OPENAI="ABSENT"
 V_GROK="$(parse_api grok)";     [ -n "$V_GROK" ]   || V_GROK="ABSENT"
 V_GEMINI="$(parse_api gemini)"; [ -n "$V_GEMINI" ] || V_GEMINI="ABSENT"
 V_CODEX="$(grep -m1 -iE 'VERDICT:' "$CODEX_OUT" 2>/dev/null | sed -E 's/.*VERDICT:[[:space:]]*//I' \
@@ -192,12 +191,11 @@ fi
 
 TS_UTC="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 echo ""
-echo "=== INT WAVE (ApJS) VERDICT QUAD :: P3APJS $VER ==="
-echo "  OpenAI (gpt-5.5):          $V_OPENAI"
+echo "=== INT WAVE (ApJS) VERDICT MATRIX :: P3APJS $VER ==="
 echo "  Grok (grok-4.3):           $V_GROK"
 echo "  Gemini (gemini-3.1-pro):   $V_GEMINI"
-echo "  Codex ($CODEX_MODEL/$CODEX_EFFORT): $V_CODEX"
-LOGLINE="$TS_UTC | P3APJS $VER (ApJS) | commit=$REVIEW_COMMIT | pdf_sha256=$PDF_SHA256 | openai=$V_OPENAI | grok=$V_GROK | gemini=$V_GEMINI | codex=$V_CODEX | codex_rc=$RC_CODEX"
+echo "  OpenAI via Codex subscription ($CODEX_MODEL/$CODEX_EFFORT): $V_CODEX"
+LOGLINE="$TS_UTC | P3APJS $VER (ApJS) | commit=$REVIEW_COMMIT | pdf_sha256=$PDF_SHA256 | grok=$V_GROK | gemini=$V_GEMINI | openai_subscription=$V_CODEX | codex_rc=$RC_CODEX"
 [ "$CODEX_ON" = 1 ] && LOGLINE="$LOGLINE | codex_raw=${CODEX_OUT#$REPO/}"
 echo "$LOGLINE" >>"$RUNLOG"
 echo "  logged -> ${RUNLOG#$REPO/}"

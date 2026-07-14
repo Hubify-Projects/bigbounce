@@ -13,7 +13,7 @@
 | Service | Purpose | Auth env-var NAME | Entry point (script / URL) | Failure mode |
 |---|---|---|---|---|
 | **Anthropic (Claude)** | INT review Claude leg — **but see §2: routed through the Claude Code SUBSCRIPTION, NOT this key** (directive I1). Key present for other tooling only. | `ANTHROPIC_API_KEY` | running Claude Code agent (`claude -p`, key unset) | Never fail an INT round on Anthropic API — the subscription agent IS the leg. |
-| **OpenAI** | INT review leg (o3 / gpt, **native-PDF via Files API**) | `OPENAI_API_KEY` | `tools/v3_native_pdf_review.py`, `tools/cross_model_review_openai.py` | quota/billing → leg labeled FAILED, round continues; EXT unaffected (I2). |
+| **OpenAI** | INT review through Codex CLI on Houston's ChatGPT subscription | none; `OPENAI_API_KEY` and `CODEX_API_KEY` are explicitly unset | `tools/int_wave.sh`, `tools/int_wave_apjs.sh` | unavailable subscription auth → leg visibly unavailable; never fall back to OpenAI API billing. |
 | **Google Gemini** | INT review leg (2.5 Pro, native/inline PDF) | `GOOGLE_GEMINI_API_KEY` / `GOOGLE_AI_API_KEY` | `tools/cross_model_review_gemini.py` | Stored keys historically 403/billing-blocked → Gemini INT covered via browser EXT; never fail the round on it. |
 | **xAI (Grok)** | INT review leg (Grok 4, image-rasterized PDF) | `XAI_API_KEY` | `tools/v3_native_pdf_review.py` | leg FAILED, round continues. |
 | **OpenRouter** | multi-model fallback routing | `OPENROUTER_API_KEY` | review tooling | optional; not a hard dependency. |
@@ -39,7 +39,7 @@
 | **Orchestrator** | session model (Fable 5, planning only — directive J) | plan, split lanes, synthesize, route; **never brute-force execution** | never idles while any verdict < ACCEPT; delegates all mechanical work. |
 | **Opus adjudicators** | `model: "opus"` subagents | strict ledger-first truth-audit of every finding (patterns 061-066); GENUINE vs ENGINEERED integrity audit (`/review-integrity-audit`) | verdict-first ordering; source-cited disposition; NEVER fake ACCEPT / fabricate. |
 | **Owner / closure agents** | Opus (one owner per paper) | close real items with real edits/science, recompile (0 undef-refs) + `/latex-audit`, directive-G PDF hygiene, Convex+site sync, commit | one owner per paper; ~30-min heartbeat. |
-| **INT battery — OpenAI leg** | OpenAI API, **native-PDF (Files API)** | full-repo-context internal review | native modality mandatory; pdftotext is a labeled degraded fallback. |
+| **INT battery — OpenAI leg** | Codex CLI / ChatGPT SUBSCRIPTION with API keys unset | full-repo-context internal review | NEVER OpenAI API; unavailable subscription auth is visible and fails closed. |
 | **INT battery — xAI leg** | XAI API (Grok, rasterized PDF) | internal review | per-finding source-cited truth-audit like EXT. |
 | **INT battery — Gemini leg** | Gemini API when key works; else browser EXT | internal review | never fail round on billing block. |
 | **INT battery — Claude leg** | **Claude Code SUBSCRIPTION via `claude -p` with `ANTHROPIC_API_KEY` UNSET** — the running agent itself, NEVER the API (directive I1) | internal review with full repo + source + context | NEVER ask Houston for an Anthropic API key; NEVER fail an INT leg on API-disabled. The subscription agent IS this leg. |

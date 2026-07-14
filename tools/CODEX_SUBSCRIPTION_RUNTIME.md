@@ -3,7 +3,8 @@
 ## Purpose
 
 The BigBounce runtime uses the installed Codex CLI with the user's ChatGPT
-login for repo-aware subscription work. It does not use an Anthropic runtime,
+login for every OpenAI review/orchestration task. OpenAI API billing is
+permanently disabled in active review dispatch. It does not use an Anthropic runtime,
 and the Codex subscription leg explicitly removes `OPENAI_API_KEY`,
 `CODEX_API_KEY`, and `ANTHROPIC_API_KEY` from its process environment so
 authentication cannot silently switch to an API-key path.
@@ -97,7 +98,7 @@ window.
 ## Rollback
 
 1. Set `BIGBOUNCE_CODEX_SUBSCRIPTION_ENABLED=0` in the LaunchAgent environment
-   to stop all subscription sessions while keeping API legs available.
+   to stop all OpenAI subscription sessions while keeping Grok/Gemini API legs available.
 2. Restore the four canonical scripts from the last known-good git revision,
    then redeploy and hash-compare them.
 3. Keep the LaunchAgent unloaded until deployed dry-runs pass.

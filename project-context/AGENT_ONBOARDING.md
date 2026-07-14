@@ -89,7 +89,7 @@ For the *generic* cross-machine skill/stack/env sync, the skill is **`/machine-s
 ---
 
 ## 2. The review tooling (the engine of the loop)
-- **`tools/v3_native_pdf_review.py <pdf> <round_label> <paper_tag> "<context>"`** — fires a TRUE native-PDF review at 4 vendors (OpenAI o3, Gemini 2.5 Pro, Grok 4 [rasterized], Perplexity [text+web]), 2-pass self-critique, writes `project-context/peer-reviews/<round>_<tag>_<vendor>.md`. The **Anthropic/Claude leg is skipped by default** (key often credit-exhausted) — supply it with a Claude Code **Opus sub-agent** reviewer instead (this is the standing pattern; see `feedback_claude_reviewer_via_subagent`).
+- **`tools/v3_native_pdf_review.py <pdf> <round_label> <paper_tag> "<context>"`** — fires API reviews at Gemini, Grok, and optional Perplexity, with 2-pass self-critique. The OpenAI perspective is supplied by the authenticated Codex CLI/ChatGPT subscription, **never the OpenAI API**; the Anthropic/Claude perspective likewise uses the running subscription agent, never its API.
 - **Vendor SDK deps** the tool needs (beyond `requirements.txt`): `pip install openai google-generativeai`. `anthropic` is in requirements. Grok uses `pdftoppm` (poppler). Keys come from `.env.local` (`source` it before running; never print values).
 - **Skills that wrap the loop** (all in `~/.claude/scistack/hubstack/`):
   `/cross-vendor-r-round` → `/peer-review-truth-audit` → `/bigbounce-truth-audit` → `/bigbounce-close` (R-round science);
@@ -115,17 +115,17 @@ Papers climb a phase ladder; the **readiness number is computed in `convex/paper
 ## 4. Run ONE round end-to-end (the core cycle)
 
 > **THE canonical, always-current spec for HOW to run an INT/EXT round is the
-> `/bigbounce-r-round` skill** (`~/.claude/scistack/astrostack/bigbounce-r-round/SKILL.md`).
-> It is the single source of truth for: INT vendor legs (Claude = a Claude Code
-> subagent on Houston's subscription, NEVER the Anthropic API; OpenAI native-PDF
-> API; Grok API; Gemini API-when-billed-else-browser) + the ALL-VENDOR INT verdict
+> `/bigbounce-r-round` skill** (`~/.claude/scistack/astrostack/bigbounce-r-round/SKILL.md`), subject to Houston's permanent override that OpenAI review uses Codex CLI/ChatGPT subscription only, never API billing.
+> It is the single source of truth for: INT vendor legs (the active host
+> subscription agent; OpenAI via Codex CLI/ChatGPT subscription with API keys
+> unset; Grok API; Gemini API-when-billed-else-browser) + the ALL-VENDOR INT verdict
 > matrix; EXT (headed browser ChatGPT+Grok+Gemini, raw text + screenshot
 > saved-then-verified per leg); per-finding source-cited truth-audit; directive-G
 > PDF hygiene; Convex/site/SSOT/timeline sync; and the directive-H convergence
 > gate. Read it before running a round; the summary below is orientation only.
 
 1. **Pick the paper(s) + the canonical PDF** (resolve via `SSOT/paper-N/status.md`; PDFs live in `arxiv/`, `pipelines/p2_chirality/`, `pipelines/p3_anomaly_engine/`, `pipelines/p5_desi_chirality/paper/`, `research/focused_paper_source_integration/`). Recompile+mirror FIRST if the served PDF lags the source.
-2. **INT** (§1 of `/bigbounce-r-round`): Claude subagent (full-source, recompute numbers) + OpenAI native-PDF API + Grok API + Gemini (API when billed, else the browser EXT leg covers it). Report the verdict matrix with ALL vendor columns — never as the Claude column alone.
+2. **INT** (§1 of `/bigbounce-r-round`): subscription host agent (full-source, recompute numbers) + OpenAI via authenticated Codex CLI/ChatGPT subscription + Grok API + Gemini API (when billed; otherwise browser EXT). OpenAI API billing is forbidden. Report every available vendor column.
 3. **EXT** (§2): headed browser (`$B cleanup && $B connect`, confirm `Mode: headed`) → ChatGPT + Grok + Gemini (houston@bamf.com Ultra); NEVER skip ChatGPT; save raw verbatim + screenshot per leg to `project-context/peer-reviews/EXT_real/` the instant each completes.
 4. **Truth-audit** every INT and EXT non-minor finding → source-cited disposition (patterns 061-066: disclosed-re-flag / scope / referee-variance / GENUINELY-NEW-REAL → close). One Opus agent per paper. NO fabricated derivations (`/never-fabricate-derivation`); verify every real computation before applying.
 5. **Close** VERIFIED-NEW-REAL items (Sonnet): edit `.tex`, directive-G hygiene (bump version+date, recompile `latexmk -pdf` 0 undef-refs, `/latex-audit`, mirror byte-identical to ALL served paths, three-way md5 check), Convex sync.

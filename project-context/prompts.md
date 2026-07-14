@@ -462,3 +462,11 @@ Switched to Opus 4.7 + xhigh effort for this.
 > Attachments:
 > - /var/folders/0m/_kn2kj3s67129bdt8g7cg7sr0000gn/T/codex-clipboard-9627810e-dfb5-44bc-bd60-deb65b82448d.png
 > - /var/folders/0m/_kn2kj3s67129bdt8g7cg7sr0000gn/T/codex-clipboard-5ceeb4b1-5719-487c-9af9-d59cea1e806e.png
+
+**12:42 PT - disable-openai-api-and-implement-tiering**
+
+- `cwd`: /Users/houstongolden/Desktop/CODE_YOU/bigbounce
+- `session`: openrouter-cmux-model-routing-audit
+- `agent`: codex/gpt-5.5
+
+> i DO NOT want to use openai via API since we are already using it via the cli/agents directly please just to confirm "Separately, BigBounce’s science-review pipeline genuinely uses Grok and Gemini. It makes direct native-PDF calls to OpenAI, xAI, and Google in [int_api_review_2026-07-08.py (line 119)](/Users/houstongolden/Desktop/CODE_YOU/bigbounce/tools/int_api_review_2026-07-08.py:119)" you said that so i wanna make sure we aren't using api billing separately in addition to our subscription billing etc... ... I like your recommended routing  - and ye scontinue the next steps you suggested as best

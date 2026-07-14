@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
-"""Hardened single-leg INT API review — native-PDF upload (OpenAI Files API / XAI /v1/files).
+"""Hardened single-leg INT API review for xAI/Grok and Google/Gemini.
 Runs EXACTLY ONE (paper, vendor) leg per invocation so a hang loses one leg, not the round.
 Keys from .env.local by NAME (first token before inline comments; never printed).
 Per-request timeout 300s. One retry, then FAILED with the error string.
-Usage: int_api_review_2026-07-08.py <P1A|P1B|P2|P3|P4|P5> <openai|grok|gemini>
+OpenAI is deliberately blocked here: OpenAI reviews run through the authenticated
+Codex CLI/ChatGPT subscription, never an API endpoint or OPENAI_API_KEY.
+Usage: int_api_review_2026-07-08.py <P1A|P1B|P2|P3|P4|P5> <grok|gemini>
 """
 import os, sys, json, time, warnings, datetime, pathlib
 warnings.filterwarnings("ignore")
@@ -46,7 +48,6 @@ def live_version(tex_rel: str) -> str:
         pass
     return "unknown-version"
 
-OPENAI_MODEL = "gpt-5.5"
 XAI_MODEL = "grok-4.3"
 # Gemini INT leg (keyed 2026-07-11). Newest pro-tier model with native-PDF input,
 # probed live from generativelanguage.googleapis.com/v1beta/models. The default
@@ -114,50 +115,6 @@ def parse_verdict(text):
         if v in up:
             return v
     return None
-
-
-# ---------- OpenAI: Files API (purpose user_data) + Responses input_file ----------
-def call_openai(pdf_path):
-    key = ENV["OPENAI_API_KEY"]
-    with open(pdf_path, "rb") as fh:
-        up = requests.post(
-            "https://api.openai.com/v1/files",
-            headers={"Authorization": f"Bearer {key}"},
-            files={"file": (os.path.basename(pdf_path), fh, "application/pdf")},
-            data={"purpose": "user_data"},
-            timeout=REQ_TIMEOUT,
-        )
-    if up.status_code != 200:
-        raise RuntimeError(f"upload HTTP {up.status_code}: {up.text[:400]}")
-    file_id = up.json()["id"]
-    payload = {
-        "model": OPENAI_MODEL,
-        "input": [
-            {"role": "system", "content": SYSTEM_MSG},
-            {"role": "user", "content": [
-                {"type": "input_file", "file_id": file_id},
-                {"type": "input_text", "text": PROMPT},
-            ]},
-        ],
-    }
-    r = requests.post(
-        "https://api.openai.com/v1/responses",
-        headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json"},
-        json=payload, timeout=REQ_TIMEOUT,
-    )
-    if r.status_code != 200:
-        raise RuntimeError(f"responses HTTP {r.status_code}: {r.text[:400]}")
-    j = r.json()
-    # extract text from responses output
-    txt = j.get("output_text")
-    if not txt:
-        parts = []
-        for item in j.get("output", []):
-            for c in item.get("content", []):
-                if c.get("type") in ("output_text", "text") and c.get("text"):
-                    parts.append(c["text"])
-        txt = "\n".join(parts)
-    return txt, {"file_id": file_id, "usage": j.get("usage", {}), "modality": "native-PDF (Files API input_file)"}
 
 
 # ---------- XAI/Grok: /v1/files upload + /v1/responses file_id ----------
@@ -301,14 +258,19 @@ def call_gemini(pdf_path):
 
 
 VENDORS = {
-    "openai": (OPENAI_MODEL, call_openai),
     "grok": (XAI_MODEL, call_xai),
     "gemini": (GEMINI_MODEL, call_gemini),
 }
+BLOCKED_VENDORS = {"openai"}
 
 
 def run_one(paper, vendor):
     global PROMPT, SYSTEM_MSG
+    if vendor in BLOCKED_VENDORS:
+        raise ValueError(
+            "vendor=openai is disabled: use the Codex CLI with ChatGPT subscription "
+            "authentication; OpenAI API billing is forbidden for reviews"
+        )
     if paper not in REGISTRY:
         raise ValueError(f"paper must be one of {CANONICAL_IDS}")
     if vendor not in VENDORS:
@@ -401,6 +363,10 @@ def run_one(paper, vendor):
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
-        print("usage: int_api_review_2026-07-08.py <P1A|P1B|P2|P3|P4|P5> <openai|grok|gemini>")
+        print("usage: int_api_review_2026-07-08.py <P1A|P1B|P2|P3|P4|P5> <grok|gemini>")
         sys.exit(2)
-    run_one(sys.argv[1], sys.argv[2])
+    try:
+        run_one(sys.argv[1], sys.argv[2])
+    except ValueError as exc:
+        print(f"FAIL: {exc}", file=sys.stderr)
+        sys.exit(2)

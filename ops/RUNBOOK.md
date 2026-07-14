@@ -82,8 +82,9 @@ never pull/rebase/stash, stage files, move `HEAD`, or alter the current worktree
 Any fetch, parse, or CAS uncertainty fails closed into lease-free mode.
 
 INT battery (run alongside EXT on the other papers): `tools/int_wave.sh P3` —
-OpenAI + Grok native-PDF + Gemini(if key) + Claude subscription (ANTHROPIC_API_KEY
-UNSET). Every leg saves its raw; a verdict matrix prints at the end.
+OpenAI via Codex CLI/ChatGPT subscription (API keys unset) + Grok API +
+Gemini API (if key). OpenAI API dispatch is forbidden. Every leg saves its raw;
+a verdict matrix prints at the end.
 
 ---
 
