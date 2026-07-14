@@ -20,6 +20,28 @@ This tracker logs each revision round and which issues have been addressed.
 
 ## Revision Rounds
 
+### P2 v1.7.121: Exact-PDF PRD positioning confirmation (2026-07-14)
+
+**Input:** exact 10-page PDF from manuscript commit `86b38a0c2f31b1b4afae166c04f6658a5ed6d83f`, reviewed at repository commit `36badcbdf498123413031aa0a9504127d48f2054`; TeX SHA-256 `caf63ccd839e22935fd9737e243161e2fcf67a868b9f6a827e54e7b30f29169a`; PDF SHA-256 `d75d7bfa2f7b8b9ba006137ed7b3da3f099475ba60f1db4886168750866f127e`.
+
+**Panel:** OpenAI GPT-5.5 **MAJOR REVISIONS** / Gemini 3.1 Pro Preview **MINOR REVISIONS** / Grok 4.3 **MINOR REVISIONS**. Immutable `PRD-RESEARCH` packets, three concurrent native-PDF legs, no Anthropic/Claude. Independent Codex is a typed `NOT_RUN` quota gap.
+
+**Truth audit:** v1.7.121 successfully demoted the survey arithmetic and removed UV-completion independence. All three reviewers support the central contraction-phase algebra in substance. OpenAI's MAJOR verdict retains real external gates but misreads several already printed appendix elements as absent.
+
+| Finding | Status | Required action/evidence |
+|---|---|---|
+| Central four-vertex derivation absent | **MOSTLY STALE** | Appendix already prints vertices, per-vertex limits, multiplicities, normalization, collapsed polynomial, epsilon grouping, and Li check |
+| Title/observational prominence | **OPEN — BOUNDED POSITIONING** | Remove `Testing`/SPHEREx prominence; retain conditional map as secondary material |
+| Ordered sums / product / epsilon scope | **OPEN — MINOR** | Define at first use and make the vertex-table caption internally consistent |
+| Polynomial `P` notation | **OPEN — MINOR** | Rename to a distinct degree-nine symbol |
+| Primordial-to-LSS convention | **OPEN — BOUNDED CLARITY** | Print the no-extra-factor convention bridge after checking the existing convention artifact |
+| UMF response versus free `b_phi` | **OPEN — BOUNDED CLARITY** | State `b_phi=2 delta_c(b_1-1)` as the specialization of the general response |
+| Cubic transfer / survey covariance | **OPEN — EXTERNAL SCIENCE/DATA GATES** | Direct third-order calculation and actual covariance/likelihood; text cannot substitute |
+| Fermion torsion / archive DOI | **OPEN — MODEL/WORKFLOW GATES** | Model-specific bound and verified immutable release before submission |
+| Future-date citation warning | **FALSIFIED** | Review date is 2026-07-14; 2025--2026 sources are not future-dated |
+
+Critical-path latency was 98.1 seconds versus 193.3 seconds summed (49.2% reduction). A first launch with an incorrect full commit id failed closed before any reviewer call. No readiness uplift; P2 remains capped at 74. Full audit/raws: `INT_v3/ROUND_2026-07-14-P2-v1.7.121-EXACTPDF-d75d7bfa-PRD-NONANTHROPIC-CONFIRM/`.
+
 ### P1A v1A.0.121: Exact-PDF CQG Note minor-only confirmation panel (2026-07-14)
 
 **Input:** exact 7-page PDF from manuscript commit `b587cb7bb8e075aa9d0245ba8257fcef7ff196b8`, reviewed at repository commit `15f2e6af98daec7f9634e50961c7c1f7375c87fe`; TeX SHA-256 `4bf3a979fa214a06c29c474fe7a49f3d032150769d505de16647b0854701a650`; PDF SHA-256 `adfaf5e9fec12dc89857ea947b06d2923d49a8a0b3e45880b278b79bd22dab77`.

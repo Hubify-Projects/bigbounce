@@ -57,6 +57,41 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p2-v17121-prd-positioning-confirm-2026-07-14",
+    dateISO: "2026-07-14",
+    timePT: "12:06–12:08",
+    kind: "internal-api",
+    title:
+      "P2 v1.7.121 — positioning closure confirmed by two MINOR verdicts; bounded clarity and external gates remain",
+    papers: ["P2"],
+    summary:
+      "Three concurrent non-Anthropic reviewers received immutable PRD-RESEARCH packets for the same clean 10-page PDF (manuscript commit 86b38a0c; SHA-256 d75d7bfa…127e). OpenAI returned MAJOR, while Gemini and Grok returned MINOR. Truth audit confirms that v1.7.121 removed UV-completion independence and made every survey number explicitly illustrative and conditional. All three support the central contraction-phase -35/16 algebra in substance; OpenAI's major verdict mixes real external gates with stale claims that the printed appendix omits its four vertices and conventions. No readiness uplift; the verified cap remains 74.",
+    keyTakeaways: [
+      "One bounded v1.7.122 wave remains: de-emphasize SPHEREx in the title, define sums/products at first use, distinguish the degree-nine polynomial symbol, and fix the epsilon caption scope.",
+      "The primordial-to-LSS convention and the universal-mass-function-to-free-b_phi bridge need one explicit checked statement each; no numerical result changes.",
+      "Direct cubic transfer, the actual SPHEREx covariance/likelihood, a model-specific fermion-torsion bound, and immutable archive/DOI remain evidence gates that prose cannot close.",
+      "Parallel dispatch reduced critical-path latency by 49.2%; a bad commit id failed closed before any model call.",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 0,
+      note: "This was an internal exact-PDF confirmation board. Independent Codex and the external science/data/archive gates remain typed gaps, so no public readiness uplift is inferred.",
+    },
+    links: [
+      {
+        label: "Normalized truth audit",
+        href: `${PR}/INT_v3/ROUND_2026-07-14-P2-v1.7.121-EXACTPDF-d75d7bfa-PRD-NONANTHROPIC-CONFIRM/P2_v1.7.121_NORMALIZED_TRUTH_AUDIT.md`,
+      },
+      {
+        label: "Exact-PDF PRD board",
+        href: `${PR}/INT_v3/ROUND_2026-07-14-P2-v1.7.121-EXACTPDF-d75d7bfa-PRD-NONANTHROPIC-CONFIRM/manifest.jsonl`,
+      },
+      {
+        label: "Declared panel gap",
+        href: `${PR}/INT_v3/ROUND_2026-07-14-P2-v1.7.121-EXACTPDF-d75d7bfa-PRD-NONANTHROPIC-CONFIRM/DECLARED_GAPS.json`,
+      },
+    ],
+  },
+  {
     id: "p1a-v1a0121-cqg-minor-only-2026-07-14",
     dateISO: "2026-07-14",
     timePT: "11:59–12:00",
