@@ -1,0 +1,572 @@
+{
+  "command": "nice -n 5 python3 pipelines/p5_desi_chirality/scripts/36_desivast_native_selection_control.py",
+  "efficient_inference_validation": {
+    "cluster_unit": "HEALPix NSIDE=4",
+    "columns": [
+      "Intercept",
+      "void",
+      "bs(desi_z, df=5, degree=3, include_intercept=False)[0]",
+      "bs(desi_z, df=5, degree=3, include_intercept=False)[1]",
+      "bs(desi_z, df=5, degree=3, include_intercept=False)[2]",
+      "bs(desi_z, df=5, degree=3, include_intercept=False)[3]",
+      "bs(desi_z, df=5, degree=3, include_intercept=False)[4]",
+      "bs(r_mag, df=4, degree=3, include_intercept=False)[0]",
+      "bs(r_mag, df=4, degree=3, include_intercept=False)[1]",
+      "bs(r_mag, df=4, degree=3, include_intercept=False)[2]",
+      "bs(r_mag, df=4, degree=3, include_intercept=False)[3]",
+      "bs(log_shape_r, df=4, degree=3, include_intercept=False)[0]",
+      "bs(log_shape_r, df=4, degree=3, include_intercept=False)[1]",
+      "bs(log_shape_r, df=4, degree=3, include_intercept=False)[2]",
+      "bs(log_shape_r, df=4, degree=3, include_intercept=False)[3]",
+      "bs(confidence_eq, df=4, degree=3, include_intercept=False)[0]",
+      "bs(confidence_eq, df=4, degree=3, include_intercept=False)[1]",
+      "bs(confidence_eq, df=4, degree=3, include_intercept=False)[2]",
+      "bs(confidence_eq, df=4, degree=3, include_intercept=False)[3]",
+      "bs(ebv, df=4, degree=3, include_intercept=False)[0]",
+      "bs(ebv, df=4, degree=3, include_intercept=False)[1]",
+      "bs(ebv, df=4, degree=3, include_intercept=False)[2]",
+      "bs(ebv, df=4, degree=3, include_intercept=False)[3]",
+      "galzone_edge"
+    ],
+    "explicit_sandwich": {
+      "bread_condition_number": 888810.9945013451,
+      "bread_inverse": "Moore-Penrose pseudoinverse, rcond=1e-11",
+      "bread_rank": 24,
+      "finite_sample_correction": 1.026461799245072,
+      "n_clusters": 47,
+      "n_design_columns": 24
+    },
+    "fast_solver": {
+      "coefficient_mapping": "optimizer basis centred/scaled; coefficients mapped back exactly",
+      "converged": true,
+      "convergence_warnings": [],
+      "design_rank": 24,
+      "iterations": 4,
+      "max_absolute_mean_score_original_basis": 2.7806867919366595e-15,
+      "n_design_columns": 24,
+      "scaled_gram_condition_number": 1847.8830946045825,
+      "solver": "scikit-learn unpenalized LogisticRegression/Newton-Cholesky"
+    },
+    "max_absolute_coefficient_difference": 2.5216984056442016e-10,
+    "max_absolute_prediction_difference": 3.8757885789664215e-12,
+    "max_absolute_standard_error_difference": 1.793782899994767e-10,
+    "max_relative_standard_error_difference": 1.822373378251832e-11,
+    "n_columns": 24,
+    "n_rows": 5000,
+    "purpose": "bounded numerical validation of unpenalized Newton-Cholesky MLE and explicit finite-sample cluster sandwich against statsmodels GLM IRLS",
+    "reference_converged": true
+  },
+  "estimand": "f_CW(non-void) - f_CW(void) within released DESIVAST GALZONE TARGET universe",
+  "official_provenance": {
+    "desi_lss_v1_5_context_only": "https://data.desi.lbl.gov/public/dr1/survey/catalogs/dr1/LSS/iron/LSScats/v1.5/",
+    "desivast_documentation": "https://data.desi.lbl.gov/doc/releases/dr1/vac/desivast/",
+    "desivast_public_code": "https://github.com/hbrincon/DESIVAST",
+    "desivast_public_code_commit": "11bebc66a5ba62e4f51c6afcc06bd3a62aa6c048",
+    "desivast_vac": "https://data.desi.lbl.gov/public/dr1/vac/dr1/desivast/"
+  },
+  "primary_out_zero": {
+    "adjusted_logistic": {
+      "cap_standardized_results": {
+        "NGC": {
+          "crude": {
+            "delta_nonvoid_minus_void": 0.0006506294141500057,
+            "independent_binomial_ci95": [
+              -0.006020617633328863,
+              0.007321876461628875
+            ],
+            "independent_binomial_se": 0.0034037600180925848,
+            "nonvoid": {
+              "f_cw": 0.4987006077472426,
+              "n": 97738,
+              "n_cw": 48742
+            },
+            "p_two_sided": 0.8484082928149601,
+            "pooled_z": 0.1911497225368503,
+            "void": {
+              "f_cw": 0.4980499783330926,
+              "n": 27692,
+              "n_cw": 13792
+            }
+          },
+          "n": 125430,
+          "standardized_with_shared_full_model_nearest_maximals_covariance": {
+            "average_marginal_delta_nonvoid_minus_void": 0.0012563466635378431,
+            "ci95": [
+              -0.004963795258713992,
+              0.007476488585789678
+            ],
+            "p_two_sided": 0.6921977749993169,
+            "se": 0.0031736001127140707,
+            "z": 0.3958742812318003
+          }
+        },
+        "SGC": {
+          "crude": {
+            "delta_nonvoid_minus_void": 0.006886393120868306,
+            "independent_binomial_ci95": [
+              -0.010020090447471222,
+              0.023792876689207834
+            ],
+            "independent_binomial_se": 0.00862591542584237,
+            "nonvoid": {
+              "f_cw": 0.49711018581815924,
+              "n": 16091,
+              "n_cw": 7999
+            },
+            "p_two_sided": 0.4247289000130344,
+            "pooled_z": 0.7982440143362736,
+            "void": {
+              "f_cw": 0.49022379269729094,
+              "n": 4245,
+              "n_cw": 2081
+            }
+          },
+          "n": 20336,
+          "standardized_with_shared_full_model_nearest_maximals_covariance": {
+            "average_marginal_delta_nonvoid_minus_void": 0.0012564536985649652,
+            "ci95": [
+              -0.004964158674282121,
+              0.007477066071412053
+            ],
+            "p_two_sided": 0.6921949825577208,
+            "se": 0.0031738401429385866,
+            "z": 0.3958780663104359
+          }
+        }
+      },
+      "coarse_healpix_nside4": {
+        "average_marginal_delta_nonvoid_minus_void": 0.001256361596130571,
+        "ci95": [
+          -0.005432494387353252,
+          0.007945217579614394
+        ],
+        "p_two_sided": 0.712770179721297,
+        "sandwich": {
+          "bread_condition_number": 4767929450718.535,
+          "bread_inverse": "Moore-Penrose pseudoinverse, rcond=1e-11",
+          "bread_rank": 78,
+          "finite_sample_correction": 1.0209474762394113,
+          "n_clusters": 50,
+          "n_design_columns": 78
+        },
+        "se": 0.0034127443342044377,
+        "z": 0.3681382116845409
+      },
+      "conservative_of_reported_cluster_sandwiches": {
+        "average_marginal_delta_nonvoid_minus_void": 0.001256361596130571,
+        "ci95": [
+          -0.005432494387353252,
+          0.007945217579614394
+        ],
+        "p_two_sided": 0.712770179721297,
+        "se": 0.0034127443342044377,
+        "selected": "coarse_healpix_nside4",
+        "z": 0.3681382116845409
+      },
+      "covariance": "explicit finite-sample one-way cluster sandwich; same fitted beta evaluated under nearest-MAXIMALS and coarse NSIDE=4 sky blocks",
+      "dropped_constant_columns": [
+        "r_mag_missing",
+        "log_shape_r_missing",
+        "ebv_missing",
+        "confidence_eq_missing"
+      ],
+      "formula": "void + bs(desi_z, df=5, degree=3, include_intercept=False) + bs(r_mag, df=4, degree=3, include_intercept=False) + bs(log_shape_r, df=4, degree=3, include_intercept=False) + bs(confidence_eq, df=4, degree=3, include_intercept=False) + bs(ebv, df=4, degree=3, include_intercept=False) + C(angular_block_nside4) + C(photsys) + C(morphtype) + galzone_edge + r_mag_missing + log_shape_r_missing + ebv_missing + confidence_eq_missing",
+      "model": "binomial GLM with logit link",
+      "n_design_columns": 78,
+      "n_rows": 145766,
+      "nearest_voidfinder_maximals": {
+        "average_marginal_delta_nonvoid_minus_void": 0.001256361596130571,
+        "ci95": [
+          -0.004963845955644663,
+          0.007476569147905805
+        ],
+        "p_two_sided": 0.6921973852258514,
+        "sandwich": {
+          "bread_condition_number": 4767929450718.535,
+          "bread_inverse": "Moore-Penrose pseudoinverse, rcond=1e-11",
+          "bread_rank": 78,
+          "finite_sample_correction": 1.0007954054894204,
+          "n_clusters": 3750,
+          "n_design_columns": 78
+        },
+        "se": 0.0031736335977800806,
+        "z": 0.3958748095587913
+      },
+      "solver": {
+        "coefficient_mapping": "optimizer basis centred/scaled; coefficients mapped back exactly",
+        "converged": true,
+        "convergence_warnings": [],
+        "design_rank": 78,
+        "iterations": 16,
+        "max_absolute_mean_score_original_basis": 2.318679803542342e-13,
+        "n_design_columns": 78,
+        "scaled_gram_condition_number": 1989.925559879432,
+        "solver": "scikit-learn unpenalized LogisticRegression/Newton-Cholesky"
+      },
+      "void_log_odds_coefficient": -0.005028796862453508,
+      "void_log_odds_se": {
+        "coarse_healpix_nside4": 0.013660190771837877,
+        "nearest_voidfinder_maximals": 0.01270308122353157
+      },
+      "void_odds_ratio": 0.9949838263677372
+    },
+    "crude": {
+      "delta_nonvoid_minus_void": 0.0014660459296824135,
+      "independent_binomial_ci95": [
+        -0.004739302711547585,
+        0.007671394570912412
+      ],
+      "independent_binomial_se": 0.0031660523816646616,
+      "nonvoid": {
+        "f_cw": 0.49847578385121544,
+        "n": 113829,
+        "n_cw": 56741
+      },
+      "p_two_sided": 0.6433300237787426,
+      "pooled_z": 0.46304791337156287,
+      "void": {
+        "f_cw": 0.497009737921533,
+        "n": 31937,
+        "n_cw": 15873
+      }
+    },
+    "overlap_weighted_sensitivity": {
+      "coarse_healpix_nside4": {
+        "ci95": [
+          -0.0054648023157425635,
+          0.007873197817984574
+        ],
+        "delta_nonvoid_minus_void": 0.0012041977511210052,
+        "p_two_sided": 0.7234110064783236,
+        "sandwich": {
+          "finite_sample_correction": 1.0204151636780505,
+          "n_clusters": 50
+        },
+        "se": 0.00340261357834521,
+        "z": 0.3539037635024785
+      },
+      "effective_n": {
+        "nonvoid": 104941.27191025908,
+        "void": 31748.213276650178
+      },
+      "max_absolute_design_smd_after": 0.00010563518972505481,
+      "max_absolute_design_smd_before": 0.2186232639737105,
+      "nearest_voidfinder_maximals": {
+        "ci95": [
+          -0.005029129403130997,
+          0.0074375249053730075
+        ],
+        "delta_nonvoid_minus_void": 0.0012041977511210052,
+        "p_two_sided": 0.7049555444888532,
+        "sandwich": {
+          "finite_sample_correction": 1.0002736000311643,
+          "n_clusters": 3750
+        },
+        "se": 0.0031803273955132295,
+        "z": 0.37863955541805977
+      },
+      "propensity_model": "L2 logistic regression on the same nuisance design matrix",
+      "propensity_quantiles": {
+        "0.0": 3.846217084587952e-06,
+        "0.01": 0.07178405507048846,
+        "0.05": 0.11829600477161357,
+        "0.5": 0.2185971372831887,
+        "0.95": 0.3224269871252021,
+        "0.99": 0.3582380771163385,
+        "1.0": 0.45504108570253404
+      },
+      "propensity_solver": {
+        "C": 10.0,
+        "converged": true,
+        "convergence_warnings": [],
+        "iterations": 13,
+        "scaled_design": true,
+        "solver": "scikit-learn LogisticRegression/Newton-Cholesky"
+      },
+      "role": "bounded overlap-weighted propensity sensitivity; fitted weights treated as fixed",
+      "weight_definition": "void: 1-e(x); nonvoid: e(x)",
+      "weight_quantiles": {
+        "0.0": 3.846217084587952e-06,
+        "0.01": 0.07293292820237403,
+        "0.05": 0.12113892434207246,
+        "0.5": 0.23640141053180547,
+        "0.95": 0.808458015237301,
+        "0.99": 0.8614986703867581,
+        "1.0": 0.9690365885161841
+      }
+    }
+  },
+  "release_state": "No immutable tag/DOI is asserted by this computation. Root integration must commit, tag, push, and archive the exact script/rows/result/PDF atomically.",
+  "row_archive": {
+    "cluster_assignment": "nearest namespaced DESIVAST VoidFinder MAXIMALS centre in comoving Mpc/h",
+    "construction_this_run": "reused previously frozen row archive",
+    "path": "pipelines/p5_desi_chirality/outputs/36_desivast_native_selection_rows.parquet",
+    "rows": 145789,
+    "sha256_canonical_scientific_content": "2391eb822b87dae7f529fc76e69e0fad0060af50f4647838dae3b7028616b494",
+    "sha256_file": "fe863dcd3d569d22a3792ac0f1ee273ee3148ef311302e2d7984ab714634e9fc"
+  },
+  "schema": "p5.desivast-native-selection-control.v1",
+  "selection_control": {
+    "definition": "intersection of frozen P5 chirality parent and unique TARGETIDs in the released DESIVAST V2/REVOLVER GALZONE tables",
+    "frozen_parent_overlap": 145789,
+    "honest_limitation": "The exact DESIVAST smoothed-mask FITS and its construction inputs are not in the public VAC; public repository code references internal NERSC paths. GALZONE membership is the strongest exact released selection proxy.",
+    "later_lss_v15_not_substituted": "The DR1 LSS v1.5 BGS_BRIGHT-21.5 clustering catalog is a later/different product with only 15,378 frozen-parent TARGETID overlaps and would change the estimand; it is provenance context, not an analysis input.",
+    "out_one_excluded_rows": 23,
+    "out_zero_primary_rows": 145766,
+    "released_galzone_target_count": 694642
+  },
+  "sensitivity_out_zero_and_edge_zero": {
+    "adjusted_logistic": {
+      "cap_standardized_results": {
+        "NGC": {
+          "crude": {
+            "delta_nonvoid_minus_void": 0.002771502423260408,
+            "independent_binomial_ci95": [
+              -0.004726923804999917,
+              0.010269928651520733
+            ],
+            "independent_binomial_se": 0.0038257979674151945,
+            "nonvoid": {
+              "f_cw": 0.4991354693353593,
+              "n": 76342,
+              "n_cw": 38105
+            },
+            "p_two_sided": 0.4688123748567192,
+            "pooled_z": 0.724412749572187,
+            "void": {
+              "f_cw": 0.4963639669120989,
+              "n": 22002,
+              "n_cw": 10921
+            }
+          },
+          "n": 98344,
+          "standardized_with_shared_full_model_nearest_maximals_covariance": {
+            "average_marginal_delta_nonvoid_minus_void": 0.0034972876308216254,
+            "ci95": [
+              -0.003527091401577836,
+              0.010521666663221086
+            ],
+            "p_two_sided": 0.32915167835141124,
+            "se": 0.003583932708869585,
+            "z": 0.9758240220767737
+          }
+        },
+        "SGC": {
+          "crude": {
+            "delta_nonvoid_minus_void": 0.010735145330775187,
+            "independent_binomial_ci95": [
+              -0.008992549888012107,
+              0.03046284054956248
+            ],
+            "independent_binomial_se": 0.010065335574733433,
+            "nonvoid": {
+              "f_cw": 0.4990924021090846,
+              "n": 11569,
+              "n_cw": 5774
+            },
+            "p_two_sided": 0.2862699360622383,
+            "pooled_z": 1.0663400835436632,
+            "void": {
+              "f_cw": 0.48835725677830943,
+              "n": 3135,
+              "n_cw": 1531
+            }
+          },
+          "n": 14704,
+          "standardized_with_shared_full_model_nearest_maximals_covariance": {
+            "average_marginal_delta_nonvoid_minus_void": 0.0034973410421825376,
+            "ci95": [
+              -0.0035269821218249825,
+              0.010521664206190058
+            ],
+            "p_two_sided": 0.32914044511754414,
+            "se": 0.0035839042040641997,
+            "z": 0.9758466864757439
+          }
+        }
+      },
+      "coarse_healpix_nside4": {
+        "average_marginal_delta_nonvoid_minus_void": 0.003497294577964881,
+        "ci95": [
+          -0.003826550990392538,
+          0.0108211401463223
+        ],
+        "p_two_sided": 0.34931171631304236,
+        "sandwich": {
+          "bread_condition_number": 4943002632392.531,
+          "bread_inverse": "Moore-Penrose pseudoinverse, rcond=1e-11",
+          "bread_rank": 75,
+          "finite_sample_correction": 1.0219455561873094,
+          "n_clusters": 48,
+          "n_design_columns": 75
+        },
+        "se": 0.003736724565413946,
+        "z": 0.9359251710267434
+      },
+      "conservative_of_reported_cluster_sandwiches": {
+        "average_marginal_delta_nonvoid_minus_void": 0.003497294577964881,
+        "ci95": [
+          -0.003826550990392538,
+          0.0108211401463223
+        ],
+        "p_two_sided": 0.34931171631304236,
+        "se": 0.003736724565413946,
+        "selected": "coarse_healpix_nside4",
+        "z": 0.9359251710267434
+      },
+      "covariance": "explicit finite-sample one-way cluster sandwich; same fitted beta evaluated under nearest-MAXIMALS and coarse NSIDE=4 sky blocks",
+      "dropped_constant_columns": [
+        "galzone_edge",
+        "r_mag_missing",
+        "log_shape_r_missing",
+        "ebv_missing",
+        "confidence_eq_missing"
+      ],
+      "formula": "void + bs(desi_z, df=5, degree=3, include_intercept=False) + bs(r_mag, df=4, degree=3, include_intercept=False) + bs(log_shape_r, df=4, degree=3, include_intercept=False) + bs(confidence_eq, df=4, degree=3, include_intercept=False) + bs(ebv, df=4, degree=3, include_intercept=False) + C(angular_block_nside4) + C(photsys) + C(morphtype) + galzone_edge + r_mag_missing + log_shape_r_missing + ebv_missing + confidence_eq_missing",
+      "model": "binomial GLM with logit link",
+      "n_design_columns": 75,
+      "n_rows": 113048,
+      "nearest_voidfinder_maximals": {
+        "average_marginal_delta_nonvoid_minus_void": 0.003497294577964881,
+        "ci95": [
+          -0.003527077146064515,
+          0.010521666301994278
+        ],
+        "p_two_sided": 0.3291502143886089,
+        "sandwich": {
+          "bread_condition_number": 4943002632392.531,
+          "bread_inverse": "Moore-Penrose pseudoinverse, rcond=1e-11",
+          "bread_rank": 75,
+          "finite_sample_correction": 1.0009251060943432,
+          "n_clusters": 3706,
+          "n_design_columns": 75
+        },
+        "se": 0.0035839289800408294,
+        "z": 0.9758269757692125
+      },
+      "solver": {
+        "coefficient_mapping": "optimizer basis centred/scaled; coefficients mapped back exactly",
+        "converged": true,
+        "convergence_warnings": [],
+        "design_rank": 75,
+        "iterations": 17,
+        "max_absolute_mean_score_original_basis": 2.199786146962952e-13,
+        "n_design_columns": 75,
+        "scaled_gram_condition_number": 2704.0519204823854,
+        "solver": "scikit-learn unpenalized LogisticRegression/Newton-Cholesky"
+      },
+      "void_log_odds_coefficient": -0.013998904523860534,
+      "void_log_odds_se": {
+        "coarse_healpix_nside4": 0.014957541502198713,
+        "nearest_voidfinder_maximals": 0.014346001211902139
+      },
+      "void_odds_ratio": 0.9860986245097845
+    },
+    "crude": {
+      "delta_nonvoid_minus_void": 0.0037644041102597448,
+      "independent_binomial_ci95": [
+        -0.0032446037852446735,
+        0.010773412005764163
+      ],
+      "independent_binomial_se": 0.003576090147977503,
+      "nonvoid": {
+        "f_cw": 0.49912980173129645,
+        "n": 87911,
+        "n_cw": 43879
+      },
+      "p_two_sided": 0.2925106976961672,
+      "pooled_z": 1.052629791548998,
+      "void": {
+        "f_cw": 0.4953653976210367,
+        "n": 25137,
+        "n_cw": 12452
+      }
+    },
+    "overlap_weighted_sensitivity": {
+      "coarse_healpix_nside4": {
+        "ci95": [
+          -0.0039166751141781544,
+          0.010766999242337795
+        ],
+        "delta_nonvoid_minus_void": 0.0034251620640798203,
+        "p_two_sided": 0.3605196964260873,
+        "sandwich": {
+          "finite_sample_correction": 1.0212856299130348,
+          "n_clusters": 48
+        },
+        "se": 0.0037459041268969482,
+        "z": 0.9143752610980928
+      },
+      "effective_n": {
+        "nonvoid": 82150.05821783049,
+        "void": 25006.11777039276
+      },
+      "max_absolute_design_smd_after": 4.570027021808337e-05,
+      "max_absolute_design_smd_before": 0.17822494585697155,
+      "nearest_voidfinder_maximals": {
+        "ci95": [
+          -0.0036089026644803516,
+          0.010459226792639992
+        ],
+        "delta_nonvoid_minus_void": 0.0034251620640798203,
+        "p_two_sided": 0.3398896291782245,
+        "sandwich": {
+          "finite_sample_correction": 1.0002787538771494,
+          "n_clusters": 3706
+        },
+        "se": 0.003588874481390463,
+        "z": 0.9543833538454612
+      },
+      "propensity_model": "L2 logistic regression on the same nuisance design matrix",
+      "propensity_quantiles": {
+        "0.0": 8.089882501835631e-06,
+        "0.01": 0.08917259416532652,
+        "0.05": 0.12867607588565602,
+        "0.5": 0.22219701812397474,
+        "0.95": 0.3175383818782841,
+        "0.99": 0.3490234463209867,
+        "1.0": 0.6040113457456494
+      },
+      "propensity_solver": {
+        "C": 10.0,
+        "converged": true,
+        "convergence_warnings": [],
+        "iterations": 13,
+        "scaled_design": true,
+        "solver": "scikit-learn LogisticRegression/Newton-Cholesky"
+      },
+      "role": "bounded overlap-weighted propensity sensitivity; fitted weights treated as fixed",
+      "weight_definition": "void: 1-e(x); nonvoid: e(x)",
+      "weight_quantiles": {
+        "0.0": 8.089882501835631e-06,
+        "0.01": 0.0907121144712372,
+        "0.05": 0.13161421417305566,
+        "0.5": 0.23974350864382024,
+        "0.95": 0.8052581655299452,
+        "0.99": 0.8564691816324744,
+        "1.0": 0.9825044546558465
+      }
+    }
+  },
+  "software": {
+    "numpy": "1.26.4",
+    "pandas": "2.1.4",
+    "patsy": "1.0.2",
+    "python": "3.9.6",
+    "scipy": "1.13.1",
+    "statsmodels": "0.14.6"
+  },
+  "source_hash_scope": "Hashes cover only the four DESIVAST FITS products actually read: two VoidFinder files for holes/MAXIMALS and two REVOLVER files for GALZONE. VIDE and other unused catalog files are intentionally not represented as inputs.",
+  "source_sha256": {
+    "pipelines/p5_desi_chirality/data/desi_zall.fits": "2d95ad99361039b556c402b49e0e7c84df5f00106dc5731d44476a58b128b49b",
+    "pipelines/p5_desi_chirality/data/desivast/DESIVAST_BGS_VOLLIM_V2_REVOLVER_NGC.fits": "08d94b3e1740e154bde865b470c1f1a8d05d6e30ea4800fae2df2f5adec317b8",
+    "pipelines/p5_desi_chirality/data/desivast/DESIVAST_BGS_VOLLIM_V2_REVOLVER_SGC.fits": "297e51d92b7955d81d68c674af78f43f2bc6c04247f7510c0224d1f81a984ad2",
+    "pipelines/p5_desi_chirality/data/desivast/DESIVAST_BGS_VOLLIM_VoidFinder_NGC.fits": "c69f2f7b2b1fed4554527475dd96584169b1ead5bbcd0c152164200e6a2f34c8",
+    "pipelines/p5_desi_chirality/data/desivast/DESIVAST_BGS_VOLLIM_VoidFinder_SGC.fits": "47c43b9b446f4bcb47cbc023115ac5297f9afb0045aea96d853649a80d7219c1",
+    "pipelines/p5_desi_chirality/data/p4_chirality.parquet": "e8525ba5c98576f6361580e4a0aa7a86929ccc9f79b1423808774cfaaf313563",
+    "pipelines/p5_desi_chirality/outputs/35_exact_primary_rows_cache.parquet": "902add75983efb47f694a3b8a0414ae4523d637ffab050676bf29dd9e1c6ca1f",
+    "pipelines/p5_desi_chirality/scripts/35_desivast_cluster_bootstrap.py": "4d5f878b328318cd8fccda2e74940b20db1835309510d602a9d22bbf51d6906d",
+    "pipelines/p5_desi_chirality/scripts/36_desivast_native_selection_control.py": "227ea5d3a8f623b595054729b0c54944b894674bd9c5bf9bddf4a74766bd1f75"
+  },
+  "void_definition": "exact point-in-union of 101,863 released VoidFinder hole spheres"
+}
