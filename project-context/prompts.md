@@ -374,3 +374,15 @@ Switched to Opus 4.7 + xhigh effort for this.
 - `agent`: Codex GPT-5.6
 
 > pull from remote main and resolve and then commit and push to main and then continue again on best next steps outlined already and now
+
+## 2026-07-13 - CMUX mirrored A/B dogfood
+
+### Houston messages, verbatim
+
+**16:14 PT - Continue with first bounded live mirrored CMUX comparison**
+
+- `cwd`: /Users/houstongolden/Desktop/CODE_YOU/bigbounce
+- `session`: CMUX mirrored A/B dogfood
+- `agent`: Codex GPT-5
+
+> continue
