@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Held-out / out-of-sample validation of the DESI + Planck top-lists — P3 OpenAI E2/E6
+Ranking-stability and held-out evidence for the DESI + Planck analyses
 ====================================================================================
 Reviewer demand (OpenAI EXT E2/E6, option-(a)): the Planck top-200 (and the DESI
 top-1%) were scored in-sample; reviewers want an out-of-sample / held-out
@@ -10,12 +10,12 @@ them during training.
 This script assembles the held-out re-score result from the committed,
 reproducible artifacts:
 
-DESI (criterion #4, real 5-fold cross-validation — already a genuine held-out
-re-score):
+DESI (criterion #4, five-model ranking stability):
   pathc_desi_kfold/results/kfold_stability_summary.json
-  Each of 5 folds is scored by an autoencoder trained on the OTHER 4 folds, so
-  every object's score is fully out-of-sample. We report the pairwise-Jaccard
-  agreement of the top-1% anomaly sets across folds and the consensus fraction.
+  Each model trains on four folds and then scores the FULL 47,000-row pool.
+  Consequently each training-pool object has one out-of-fold score and four
+  scores from models whose training sets include it. Pairwise Jaccard therefore
+  measures fold-model ranking stability, not a fully out-of-sample score vector.
 
 Planck (native CMB top-200 held-out membership test):
   ext3_fm2_planck_top200_train_overlap.json (committed)
@@ -70,9 +70,9 @@ def desi_block():
     src = HERE / "pathc_desi_kfold/results/kfold_stability_summary.json"
     d = json.loads(src.read_text())
     return {
-        "method": "5-fold cross-validation: each fold scored by a BigAE trained "
-                  "on the other 4 folds (fully out-of-sample), top-1% anomaly "
-                  "set compared across folds.",
+        "method": "Five proxy models: each trains on four folds and scores the "
+                  "full 47,000-row pool. Pairwise top-1% Jaccard measures "
+                  "fold-model ranking stability; it is not fully out-of-sample.",
         "source": str(src.relative_to(HERE.parents[1])),
         "n_folds": d["n_folds"],
         "rows_per_fold": d["fold_sizes"][0]["n_rows"],
@@ -85,12 +85,12 @@ def desi_block():
         "consensus_ge3": d["counts"]["consensus_ge3"],
         "all_5_folds": d["counts"]["all_5_folds"],
         "consensus_fraction_of_union": round(d["consensus_fraction_of_union"], 4),
-        "result": ("Held-out re-score PASSES: the DESI top-1% anomaly population "
-                   "reproduces out-of-sample (mean pairwise Jaccard "
+        "result": ("Model-ranking stability PASSES: the DESI proxy-model top-1% "
+                   "sets agree (mean pairwise Jaccard "
                    f"{d['mean_pairwise_jaccard']:.3f} >= {d['gate_jaccard_required']} gate; "
                    f"{d['counts']['consensus_ge3']}/{d['counts']['union_top']} "
-                   "objects in >=3 folds). The headline 195,829 DESI top-1% count "
-                   "is not a single-training-sample artifact."),
+                   "objects in >=3 model lists). This does not constitute a fully "
+                   "out-of-sample re-score of the released 195,829-row catalog."),
         "status": "DONE",
     }
 
@@ -150,11 +150,11 @@ def main():
     desi = desi_block()
     planck = planck_block()
     artifact = {
-        "task": "P3 held-out / out-of-sample validation of DESI + Planck top-lists (OpenAI E2/E6 option-a)",
+        "task": "P3 DESI ranking-stability and native-Planck held-out-membership evidence",
         "generated_by": "pipelines/p3_anomaly_engine/held_out_rescore.py",
         "desi": desi,
         "planck": planck,
-        "headline": ("DESI: out-of-sample 5-fold re-score PASSES (mean Jaccard "
+        "headline": ("DESI: five-model ranking stability PASSES (mean Jaccard "
                      f"{desi['mean_pairwise_jaccard']}, gate {desi['gate_required']}). "
                      "Planck: held-out membership test PASSES (top anomalies "
                      f"{planck['over_representation_factor']}x over-represented in "

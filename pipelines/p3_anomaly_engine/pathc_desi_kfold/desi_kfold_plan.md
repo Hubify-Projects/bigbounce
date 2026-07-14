@@ -13,7 +13,7 @@ The BigAE released with Paper 3 was trained on a single 47K-spectrum random samp
 
 Houston's Path-C novelty-integrity pushback (2026-04-19) raised the question: **is the anomaly population stable, or is it an overfit artifact of this particular 47K training sample?** A 5-fold out-of-sample validation is the cleanest answer — train 5 independent models on disjoint folds, score the full DR1 catalog with each, and measure how reproducible the top-1% anomaly set is across folds.
 
-If overlap is high (Jaccard ≥ 0.70 at top-1%), the DESI anomaly population is a stable feature of the spectra, not of the training sample. If overlap is low, the paper needs to reframe the DESI numbers as training-sample-conditioned rather than survey-level.
+If overlap is high (Jaccard ≥ 0.70 at top-1%), the proxy models produce stable rankings across fold-dependent training sets. Because every model scores the full pool, this is not by itself a fully out-of-sample catalog validation. If overlap is low, the paper needs to reframe the DESI numbers as strongly training-sample-conditioned.
 
 ## Concrete protocol
 

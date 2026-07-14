@@ -1,8 +1,8 @@
 {
-  "task": "P3 held-out / out-of-sample validation of DESI + Planck top-lists (OpenAI E2/E6 option-a)",
+  "task": "P3 DESI ranking-stability and native-Planck held-out-membership evidence",
   "generated_by": "pipelines/p3_anomaly_engine/held_out_rescore.py",
   "desi": {
-    "method": "5-fold cross-validation: each fold scored by a BigAE trained on the other 4 folds (fully out-of-sample), top-1% anomaly set compared across folds.",
+    "method": "Five proxy models: each trains on four folds and scores the full 47,000-row pool. Pairwise top-1% Jaccard measures fold-model ranking stability; it is not fully out-of-sample.",
     "source": "pipelines/p3_anomaly_engine/pathc_desi_kfold/results/kfold_stability_summary.json",
     "n_folds": 5,
     "rows_per_fold": 47000,
@@ -15,7 +15,7 @@
     "consensus_ge3": 464,
     "all_5_folds": 399,
     "consensus_fraction_of_union": 0.8498,
-    "result": "Held-out re-score PASSES: the DESI top-1% anomaly population reproduces out-of-sample (mean pairwise Jaccard 0.862 >= 0.7 gate; 464/546 objects in >=3 folds). The headline 195,829 DESI top-1% count is not a single-training-sample artifact.",
+    "result": "Model-ranking stability PASSES: the DESI proxy-model top-1% sets agree (mean pairwise Jaccard 0.862 >= 0.7 gate; 464/546 objects in >=3 model lists). This does not constitute a fully out-of-sample re-score of the released 195,829-row catalog.",
     "status": "DONE"
   },
   "planck": {
@@ -41,5 +41,5 @@
     },
     "status": "PARTIAL \u2014 held-out membership test DONE from committed data; full native re-inference pod-blocked"
   },
-  "headline": "DESI: out-of-sample 5-fold re-score PASSES (mean Jaccard 0.8625, gate 0.7). Planck: held-out membership test PASSES (top anomalies 1.6x over-represented in held-out, p=5.5e-04); full native re-inference pod-blocked."
+  "headline": "DESI: five-model ranking stability PASSES (mean Jaccard 0.8625, gate 0.7). Planck: held-out membership test PASSES (top anomalies 1.6x over-represented in held-out, p=5.5e-04); full native re-inference pod-blocked."
 }

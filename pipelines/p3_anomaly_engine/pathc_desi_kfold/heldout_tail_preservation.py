@@ -4,7 +4,7 @@ P3 held-out anomaly-tail preservation test (R9 ChatGPT/Grok "in-sample scoring" 
 
 Directly addresses the R9 external-reviewer criticism that the released DESI headline
 catalog is produced by scoring a dataset that contains the training examples ("in-sample
-scoring").  We already have (a) a 5-fold out-of-sample Jaccard-stability result and
+scoring").  We already have (a) a five-model Jaccard ranking-stability result and
 (b) a Planck held-out membership test.  This adds the missing *direct* out-of-sample
 statistic for DESI: the preservation of the anomaly-defining upper tail on rows the
 model provably never trained on.
@@ -101,10 +101,11 @@ out = {
         "This is a distributional (percentile-level) held-out test on committed summaries, not a "
         "per-object held-out re-score of the full 22.5M-spectrum released catalog — the raw per-object "
         "native score parquets live on an exited pod and are not in the committed tree or HF release. "
-        "It complements, and is consistent with, the committed 5-fold per-object Jaccard stability "
+        "It complements, and is consistent with, the committed five-model Jaccard ranking stability "
         "(mean J=0.862) and the Planck held-out membership test (1.6x over-representation, p=5.5e-4). "
-        "All three are out-of-sample and all three pass; a full per-object held-out re-inference of the "
-        "released headline catalog remains pod-blocked and is disclosed as such."
+        "Only this reserved-block tail statistic and the native Planck membership test are directly "
+        "held-out; the Jaccard uses full-pool scores and is a ranking-stability probe. A full per-object "
+        "held-out re-inference of the released headline catalog remains pod-blocked."
     ),
     "status": "DONE",
 }
