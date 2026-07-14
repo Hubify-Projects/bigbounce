@@ -5,6 +5,8 @@ The 14-page manuscript at source commit
 `024931a40e88124f75f2f6872549936e909db0a3b504dbd2e4e68e91878a39dc`
 received OpenAI **MAJOR REVISIONS**, Gemini **MINOR REVISIONS**, and Grok
 **MINOR REVISIONS** in a blind, concurrent, non-Anthropic native-PDF panel.
+The separately declared independent Codex subscription leg was not run because
+its weekly allowance was exhausted; no substitute verdict was created.
 
 Truth-audit result: the catalog remains **in revision**. The real scientific
 closures are a deterministic chance-association/random-shift control, a compact

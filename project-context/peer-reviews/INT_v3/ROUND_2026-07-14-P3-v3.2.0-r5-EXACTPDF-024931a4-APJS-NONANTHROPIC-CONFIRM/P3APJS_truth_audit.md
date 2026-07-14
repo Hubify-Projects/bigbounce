@@ -8,6 +8,10 @@
 - Version/page count: `v3.2.0-r5`, 14 pages
 - Venue/article type: *The Astrophysical Journal Supplement Series*, catalog article
 - Raw non-Anthropic verdicts: OpenAI **MAJOR REVISIONS**; Gemini **MINOR REVISIONS** (with one internally MAJOR-tagged item); Grok **MINOR REVISIONS**.
+- Declared panel gap: independent Codex subscription `gpt-5.6-sol` high was
+  **NOT RUN** because the local weekly allowance was exhausted. No API fallback,
+  alternate model, or synthesized verdict was substituted. The leg remains
+  required before the final board.
 
 The verdict labels do not change readiness by themselves. The dispositions
 below are based on direct inspection of the exact source, PDF text, release

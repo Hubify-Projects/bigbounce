@@ -98,9 +98,10 @@ export const reviewRounds: ReviewRound[] = [
       "P3 v3.2.0-r5 — venue-correct ApJS exact-PDF panel: OpenAI MAJOR, Gemini MINOR, Grok MINOR; substantive controls remain open",
     papers: ["P3"],
     summary:
-      "Three blind non-Anthropic native-PDF legs reviewed the same 14-page artifact at source commit 7cf60218 and SHA-256 024931a4…39dc concurrently. Truth audit confirms a real chance-association/random-shift control, an accepted-versus-warned comparison enabled by the existing 2,267-row auxiliary product, and an explicit original-member sensitivity. Final archive/DOI packaging remains a workflow gate. Grok's 20,299,153 mismatch is an OCR false positive—the exact source/PDF use 20,299,155 throughout—and 7.33% correctly rounds 181/2468. No readiness uplift.",
+      "Three blind non-Anthropic native-PDF legs reviewed the same 14-page artifact at source commit 7cf60218 and SHA-256 024931a4…39dc concurrently. The independent Codex subscription leg is a declared NOT_RUN gap because its weekly allowance was exhausted; no substitute verdict was created. Truth audit confirms a real chance-association/random-shift control, an accepted-versus-warned comparison enabled by the existing 2,267-row auxiliary product, and an explicit original-member sensitivity. Final archive/DOI packaging remains a workflow gate. Grok's 20,299,153 mismatch is an OCR false positive—the exact source/PDF use 20,299,155 throughout—and 7.33% correctly rounds 181/2468. No readiness uplift.",
     keyTakeaways: [
       "Artifact provenance is exact: v3.2.0-r5, 14 pages, source 7cf60218, PDF SHA-256 024931a4…39dc; no Anthropic leg was run.",
+      "Independent Codex remains a typed panel gap; quota exhaustion is not treated as a zero, pass, or substitute-vendor result.",
       "Real science work remains, so the paper stays in revision despite two MINOR verdict labels.",
       "Parallel blind dispatch completed all three vendor legs in the latency of the slowest reviewer while preserving separate raw reports.",
     ],

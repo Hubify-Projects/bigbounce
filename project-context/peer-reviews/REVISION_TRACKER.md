@@ -24,7 +24,7 @@ This tracker logs each revision round and which issues have been addressed.
 
 **Input:** exact 14-page PDF at source commit `7cf60218b521a8154f9ad6ed3b58c0bbc420ab59`, SHA-256 `024931a40e88124f75f2f6872549936e909db0a3b504dbd2e4e68e91878a39dc`
 
-**Panel:** OpenAI GPT-5.5 **MAJOR REVISIONS** / Gemini 3.1 Pro Preview **MINOR REVISIONS** (one internally MAJOR-tagged item) / Grok 4.3 **MINOR REVISIONS**. All three received the native PDF concurrently. No Anthropic/Claude dispatch or fallback.
+**Panel:** OpenAI GPT-5.5 **MAJOR REVISIONS** / Gemini 3.1 Pro Preview **MINOR REVISIONS** (one internally MAJOR-tagged item) / Grok 4.3 **MINOR REVISIONS**. All three received the native PDF concurrently. No Anthropic/Claude dispatch or fallback. Independent Codex `gpt-5.6-sol` high is a declared NOT_RUN gap because its weekly subscription allowance was exhausted; no substitute verdict was synthesized.
 
 **Truth audit:** three substantive closure classes survive: chance-association/random-shift control; accepted-versus-warning-bearing population comparison using the exact 2,267-row auxiliary product; original-member-separation sensitivity. Final immutable archive/DOI packaging is a workflow gate. Grok's claimed 20,299,153 denominator is an OCR false positive (source/PDF use 20,299,155 throughout), and 7.33% correctly rounds `181/2468`.
 
