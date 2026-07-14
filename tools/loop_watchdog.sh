@@ -10,10 +10,10 @@
 # Authoritative runtime heartbeat + log live in that same App Support dir (the
 # repo copies under project-context/ are best-effort human-visible mirrors only).
 #
-# THE PROBLEM this fixes: Claude Code's in-session cron is SESSION-ONLY. It dies
+# THE PROBLEM this fixes: an in-session cron is SESSION-ONLY. It dies
 # when the app closes, skips ticks while the session is busy, and expires after
 # 7 days. When it silently died, Houston had to NOTICE the loop was down. That is
-# unacceptable — the watchdog is the thing that notices, outside Claude, in
+# unacceptable — the watchdog is the thing that notices, outside any agent, in
 # launchd (~/Library/LaunchAgents/com.bigbounce.loopwatchdog.plist, every 15min).
 #
 # What it does each run:
@@ -22,10 +22,9 @@
 #   - if the heartbeat is STALE (>=45min), the loop is considered DOWN:
 #       (a) macOS notification: "bigbounce loop DOWN — last tick <age>"
 #       (b) POST a Convex activityFeed:add alert row so the live site shows it
-#       (c) RECOVERY: launch ONE lease-free headless `claude -p` tick that writes
-#           a machine-attributed heartbeat, runs site_freshness_check read-only,
-#           harvests submitted-unharvested EXT raws (no verdict/adjudication), and
-#           appends a status line to LOOP_WATCHDOG_LOG.md.
+#       (c) RECOVERY: launch ONE lease-free, read-only `codex exec` diagnostic.
+#           It runs site_freshness_check read-only and reports pending raw harvests
+#           without harvesting, adjudicating, editing, browsing, or writing state.
 #       RECOVERY CAP: if a recovery ran <60min ago, only notify+alert (don't stack).
 #       => a closed session gets ~hourly headless recovery ticks.
 #   - every run logs exactly one line to project-context/LOOP_WATCHDOG_LOG.md.
@@ -34,6 +33,8 @@
 #   §"Loop watchdog".
 
 set -uo pipefail
+
+export PATH="/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 
 # ---------------------------------------------------------------------------
 # Config
@@ -44,7 +45,6 @@ REPO="/Users/houstongolden/Desktop/CODE_YOU/bigbounce"
 # EXISTING git-tracked file (macOS App-Management/TCC). Repo paths are kept only
 # as best-effort human-visible mirrors.
 RUNTIME_DIR="$HOME/Library/Application Support/bigbounce"
-mkdir -p "$RUNTIME_DIR" 2>/dev/null || true
 HEARTBEAT_RUNTIME="$RUNTIME_DIR/LOOP_HEARTBEAT.json"
 HEARTBEAT="$REPO/project-context/LOOP_HEARTBEAT.json"          # repo mirror
 WATCHDOG_LOG_RUNTIME="$RUNTIME_DIR/LOOP_WATCHDOG_LOG.md"
@@ -58,11 +58,32 @@ RECOVERY_COOLDOWN_SECONDS=$((60 * 60))  # 60 minutes — a closed session gets ~
                                          # 2026-07-11 so the loop never idles >1h.
 # marker file records the epoch of the last recovery launch (recovery cap)
 RECOVERY_MARKER="/tmp/bigbounce_watchdog_last_recovery"
-CLAUDE_BIN="$(command -v claude || echo "$HOME/.claude/local/claude")"
+CODEX_ENABLED="${BIGBOUNCE_CODEX_SUBSCRIPTION_ENABLED:-1}"
+CODEX_BIN="${BIGBOUNCE_CODEX_BIN:-$(command -v codex 2>/dev/null || { [ -x /opt/homebrew/bin/codex ] && printf '%s' /opt/homebrew/bin/codex; })}"
+CODEX_MODEL="${BIGBOUNCE_CODEX_MODEL:-gpt-5.6-sol}"
+CODEX_EFFORT="${BIGBOUNCE_CODEX_EFFORT:-high}"
+CODEX_TIMEOUT_SECONDS="${BIGBOUNCE_WATCHDOG_CODEX_TIMEOUT_SECONDS:-900}"
+TIMEOUT_BIN="$(command -v timeout 2>/dev/null || command -v gtimeout 2>/dev/null || true)"
 MACHINE_ID="${BIGBOUNCE_MACHINE_ID:-$(hostname -s 2>/dev/null | tr -d '\n' | tr -c 'A-Za-z0-9._-' '-')}"
 
 NOW_EPOCH="$(date -u +%s)"
 NOW_ISO="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+
+case "$CODEX_ENABLED" in 0|1) ;; *) echo "FAIL: BIGBOUNCE_CODEX_SUBSCRIPTION_ENABLED must be 0 or 1" >&2; exit 1 ;; esac
+case "$CODEX_EFFORT" in minimal|low|medium|high|xhigh|max|ultra) ;; *) echo "FAIL: BIGBOUNCE_CODEX_EFFORT must be minimal|low|medium|high|xhigh|max|ultra" >&2; exit 1 ;; esac
+case "$CODEX_TIMEOUT_SECONDS" in ''|*[!0-9]*) echo "FAIL: BIGBOUNCE_WATCHDOG_CODEX_TIMEOUT_SECONDS must be a positive integer" >&2; exit 1 ;; 0) echo "FAIL: BIGBOUNCE_WATCHDOG_CODEX_TIMEOUT_SECONDS must be >0" >&2; exit 1 ;; esac
+
+# True no-launch/no-state validation path: no mkdir, log append, notification,
+# Convex mutation, marker write, heartbeat write, or agent session.
+if [ "${BIGBOUNCE_WATCHDOG_DRY_RUN:-0}" = "1" ]; then
+  LOGIN="unavailable"
+  if [ -n "$CODEX_BIN" ]; then LOGIN="$(env -u OPENAI_API_KEY -u CODEX_API_KEY -u ANTHROPIC_API_KEY "$CODEX_BIN" login status 2>&1 || true)"; fi
+  printf 'DRY_RUN codex_enabled=%s model=%s effort=%s sandbox=read-only timeout=%ss auth=%s no_state=1\n' \
+    "$CODEX_ENABLED" "$CODEX_MODEL" "$CODEX_EFFORT" "$CODEX_TIMEOUT_SECONDS" "$LOGIN"
+  exit 0
+fi
+
+mkdir -p "$RUNTIME_DIR" 2>/dev/null || true
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -155,24 +176,52 @@ recovery_last_epoch() {
   cat "$RECOVERY_MARKER" 2>/dev/null | tr -dc '0-9' || echo 0
 }
 
-RECOVERY_PROMPT="You are the OS-level RECOVERY tick for the bigbounce loop on machine $MACHINE_ID. This is ALWAYS LEASE-FREE recovery: do not claim or renew the lab lease, drive a browser, adjudicate findings, write verdict/ledger/Convex review state, or commit/push review/site changes. Do ONLY these steps, then stop:
-1. Write a fresh heartbeat to the AUTHORITATIVE runtime path \"$HOME/Library/Application Support/bigbounce/LOOP_HEARTBEAT.json\" AND best-effort to project-context/LOOP_HEARTBEAT.json with body {\"lastTickUTC\":\"<current UTC ISO8601>\",\"source\":\"watchdog-recovery\",\"machineId\":\"$MACHINE_ID\",\"role\":\"lease-free\",\"note\":\"recovery tick\"}. Repo-write EPERM is expected; runtime is authoritative.
-2. Run tools/site_freshness_check.sh --report as a READ-ONLY diagnostic. Report stale surfaces; do not edit them in recovery mode.
-3. For submitted-but-unharvested EXT manifests, run tools/ext_harvest.sh <round-label> only to save raw text/screenshots. Do not truth-audit or record any verdict.
-4. Append one RECOVERY-TICK status line to project-context/LOOP_WATCHDOG_LOG.md summarizing heartbeat, diagnostics, and raw harvests (best effort; no commit).
-Do not start sweeps, open new work, edit paper/site state, commit, or push. Recovery only."
+atomic_write() {
+  local path="$1" body="$2" dir tmp
+  dir="$(dirname "$path")"
+  tmp="$(mktemp "$dir/.heartbeat.XXXXXX")" || return 1
+  if ! printf '%s\n' "$body" > "$tmp"; then rm -f "$tmp"; return 1; fi
+  chmod 0644 "$tmp" 2>/dev/null || true
+  mv -f "$tmp" "$path"
+}
+
+RECOVERY_PROMPT="You are the OS-level RECOVERY diagnostic for the bigbounce loop on machine $MACHINE_ID. This is ALWAYS LEASE-FREE and strictly READ-ONLY. Do not claim or renew the lab lease, drive a browser, launch reviews or compute, harvest raws, adjudicate findings, inspect secrets, edit any file, write heartbeat/verdict/ledger/Convex/review/site state, or commit/push anything. Do ONLY these steps, then stop:
+1. Run tools/site_freshness_check.sh --report as a READ-ONLY diagnostic. Report stale surfaces; do not edit them.
+2. Inspect submitted EXT manifests read-only and list submitted-but-unharvested round labels. Do not run ext_harvest.sh and do not open a browser.
+3. Return one concise RECOVERY-DIAGNOSTIC status report in your final response.
+The watchdog wrapper, not you, records runtime health only after a successful diagnostic. Do not start sweeps or open new work."
 
 launch_recovery() {
-  # fire-and-forget headless recovery tick; the tick itself writes the heartbeat
-  # + appends its own RECOVERY-TICK line to the log.
+  # Fire-and-forget read-only recovery diagnostic. The wrapper records only an
+  # atomic runtime-health heartbeat after Codex exits successfully; the model is
+  # sandboxed from every repo/review/Convex/browser write.
+  [ "$CODEX_ENABLED" = 1 ] || return 1
+  [ -n "$CODEX_BIN" ] || return 1
+  [ -n "$TIMEOUT_BIN" ] || return 1
+  CODEX_LOGIN="$(env -u OPENAI_API_KEY -u CODEX_API_KEY -u ANTHROPIC_API_KEY "$CODEX_BIN" login status 2>&1 || true)"
+  printf '%s' "$CODEX_LOGIN" | grep -q 'Logged in using ChatGPT' || return 1
   echo "$NOW_EPOCH" > "$RECOVERY_MARKER"
-  ( unset ANTHROPIC_API_KEY
-    "$CLAUDE_BIN" -p "$RECOVERY_PROMPT" \
-      --model claude-opus-4-8 \
-      --dangerously-skip-permissions \
-      --add-dir "$REPO" \
-      >> /tmp/bigbounce_watchdog_recovery.log 2>&1
+  ( if printf '%s\n' "$RECOVERY_PROMPT" | env -u OPENAI_API_KEY -u CODEX_API_KEY -u ANTHROPIC_API_KEY \
+      "$TIMEOUT_BIN" "$CODEX_TIMEOUT_SECONDS" "$CODEX_BIN" \
+        --cd "$REPO" --sandbox read-only --ask-for-approval never \
+        --model "$CODEX_MODEL" -c "model_reasoning_effort=\"$CODEX_EFFORT\"" \
+        exec --ephemeral --ignore-user-config \
+        --color never - >> /tmp/bigbounce_watchdog_recovery.log 2>&1; then
+      RECOVERY_HB="$(python3 - "$MACHINE_ID" <<'PY'
+import datetime, json, sys
+print(json.dumps({
+  "lastTickUTC": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+  "source": "watchdog-recovery",
+  "machineId": sys.argv[1],
+  "role": "lease-free",
+  "note": "read-only Codex diagnostic completed; no science/review state written",
+}))
+PY
+)"
+      atomic_write "$HEARTBEAT_RUNTIME" "$RECOVERY_HB" 2>/dev/null || true
+    fi
   ) &
+  return 0
 }
 
 # ---------------------------------------------------------------------------
@@ -182,15 +231,18 @@ HB_EPOCH="$(heartbeat_epoch)"
 
 if [ -z "$HB_EPOCH" ]; then
   # No parseable heartbeat at all — treat as DOWN.
-  log_line "DOWN   heartbeat missing/unparseable — launching recovery"
+  log_line "DOWN   heartbeat missing/unparseable — recovery requested"
   notify "bigbounce loop DOWN — no heartbeat"
   convex_alert "bigbounce loop DOWN" "Watchdog found no parseable LOOP_HEARTBEAT.json at $NOW_ISO. Launching recovery tick."
   REC_LAST="$(recovery_last_epoch)"
   if [ "$((NOW_EPOCH - REC_LAST))" -lt "$RECOVERY_COOLDOWN_SECONDS" ]; then
     log_line "RECOVERY skipped — last recovery <1h ago (notify-only)"
   else
-    launch_recovery
-    log_line "RECOVERY launched (headless claude -p recovery tick)"
+    if launch_recovery; then
+      log_line "RECOVERY launched (read-only Codex ChatGPT-subscription diagnostic)"
+    else
+      log_line "RECOVERY unavailable (Codex disabled, CLI missing, or ChatGPT login unavailable)"
+    fi
   fi
   exit 0
 fi
@@ -214,7 +266,10 @@ if [ "$((NOW_EPOCH - REC_LAST))" -lt "$RECOVERY_COOLDOWN_SECONDS" ]; then
   REC_AGE="$(age_str $((NOW_EPOCH - REC_LAST)))"
   log_line "DOWN   heartbeat stale (age ${AGE_H}) — notified+alerted; recovery SKIPPED (last recovery ${REC_AGE} ago, <1h cap)"
 else
-  launch_recovery
-  log_line "DOWN   heartbeat stale (age ${AGE_H}) — notified+alerted; RECOVERY launched (headless claude -p)"
+  if launch_recovery; then
+    log_line "DOWN   heartbeat stale (age ${AGE_H}) — notified+alerted; RECOVERY launched (read-only Codex diagnostic)"
+  else
+    log_line "DOWN   heartbeat stale (age ${AGE_H}) — notified+alerted; RECOVERY unavailable (Codex disabled/CLI/auth)"
+  fi
 fi
 exit 0

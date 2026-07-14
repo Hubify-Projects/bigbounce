@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# int_wave.sh — run the INT legs (OpenAI API, Grok API, Claude subscription, and
+# int_wave.sh — run the INT legs (OpenAI API, Grok API, Codex subscription, and
 # Gemini API when GEMINI_API_KEY is set) in parallel, block until all finish, then
 # print the verdict matrix.
 #
@@ -10,17 +10,16 @@
 #               (7th reviewer leg, keyed 2026-07-11 — only runs when GEMINI_API_KEY
 #               is present in .env.local; skipped-as-ABSENT otherwise, never fails
 #               the wave on a missing key).
-#   (c) Claude subscription: `claude -p` with the canonical PRD-referee prompt,
-#       run with ANTHROPIC_API_KEY UNSET (2026-07-10 lesson: a sourced
-#       ANTHROPIC_API_KEY takes precedence over the claude.ai login and fails /
-#       silently bills the API). Its raw output is SAVED (mandatory, per the
+#   (c) Codex subscription: `codex exec` with the canonical PRD-referee prompt,
+#       authenticated by the local ChatGPT login (not OPENAI_API_KEY). Its raw
+#       output is SAVED (mandatory, per the
 #       every-leg-saves-its-raw rule) to
-#       INT_api/H17_2026-07-10/intwave_<paper>_claude_HHMM.md.
+#       INT_api/H17_2026-07-10/intwave_<paper>_codex_HHMM.md.
 #
 # At the end it prints the verdict triple parsed from:
 #   - the two newest API_<paper>_{openai,grok}.md PARSED VERDICT lines in
 #     INT_v3/ROUND_2026-07-09/
-#   - the VERDICT line of the just-written claude file
+#   - the VERDICT line of the just-written Codex file
 # and appends a run.log line to INT_api/H17_2026-07-10/run.log.
 #
 # Usage: tools/int_wave.sh <P1U|P1A|P1B|P2|P3|P4|P5> ["optional context-note"]
@@ -32,8 +31,12 @@ set -uo pipefail   # NOT -e: individual legs may fail; we want the triple regard
 REPO="/Users/houstongolden/Desktop/CODE_YOU/bigbounce"
 PY_REVIEW="$REPO/tools/int_api_review_2026-07-08.py"
 API_OUTDIR="$REPO/project-context/peer-reviews/INT_v3/ROUND_2026-07-09"
-CLAUDE_OUTDIR="$REPO/project-context/peer-reviews/INT_api/H17_2026-07-10"
-RUNLOG="$CLAUDE_OUTDIR/run.log"
+SUBSCRIPTION_OUTDIR="$REPO/project-context/peer-reviews/INT_api/H17_2026-07-10"
+RUNLOG="$SUBSCRIPTION_OUTDIR/run.log"
+CODEX_ENABLED="${BIGBOUNCE_CODEX_SUBSCRIPTION_ENABLED:-1}"
+CODEX_BIN="${BIGBOUNCE_CODEX_BIN:-$(command -v codex 2>/dev/null || { [ -x /opt/homebrew/bin/codex ] && printf '%s' /opt/homebrew/bin/codex; })}"
+CODEX_MODEL="${BIGBOUNCE_CODEX_MODEL:-gpt-5.6-sol}"
+CODEX_EFFORT="${BIGBOUNCE_CODEX_EFFORT:-high}"
 
 # tex path per paper (same map as the python script + directive_g.sh).
 tex_for_paper() {
@@ -60,11 +63,11 @@ TEX_REL="$(tex_for_paper "$PAPER")"
 TEX="$REPO/$TEX_REL"
 [ -f "$TEX" ] || die "tex not found: $TEX"
 
-mkdir -p "$CLAUDE_OUTDIR"
 cd "$REPO"
 
 HHMM="$(date +%H%M)"
-CLAUDE_OUT="$CLAUDE_OUTDIR/intwave_${PAPER}_claude_${HHMM}.md"
+CODEX_OUT="$SUBSCRIPTION_OUTDIR/intwave_${PAPER}_codex_${HHMM}.md"
+CODEX_CLI_LOG="$SUBSCRIPTION_OUTDIR/.intwave_${PAPER}_codex_${HHMM}.log"
 
 # Live version label (same logic as the python script: paperVersion macro, else
 # \date version comment, else changelog comment).
@@ -87,24 +90,38 @@ VER="$(live_version)"
 echo "=== int_wave :: $PAPER ($VER) ==="
 [ -n "$CONTEXT" ] && echo "    context-note: $CONTEXT"
 echo "    tex:    $TEX_REL"
-echo "    claude: ${CLAUDE_OUT#$REPO/}"
+echo "    codex:  ${CODEX_OUT#$REPO/}"
 
 # ---------------------------------------------------------------------------
-# Canonical PRD-referee prompt for the Claude subscription leg (full-file
-# referee format), plus the optional context-note. The Claude leg reads the
+# Canonical PRD-referee prompt for the Codex subscription leg (full-file
+# referee format), plus the optional context-note. The Codex leg reads the
 # full paper + source + context (never fabricate — verify against artifacts).
 # ---------------------------------------------------------------------------
-CLAUDE_PROMPT="You are an expert referee for Physical Review D reviewing the manuscript at $TEX_REL (version $VER) in this repository. Read the FULL .tex file (and any figures/source/data you need to verify claims — you have the full repo). Review to the standard of a real PRD submission. Do NOT fabricate: verify every number you check against the committed artifacts (recompute, don't just read).
+CODEX_PROMPT="You are an expert referee for Physical Review D reviewing the manuscript at $TEX_REL (version $VER) in this repository. This is a strictly READ-ONLY review: do not edit files, write state, use a browser, commit, push, or expose credentials. Never inspect .env.local or other secret-bearing files. Read the FULL .tex file (and non-secret figures/source/data you need to verify claims — you have the full repo). Review to the standard of a real PRD submission. Do NOT fabricate: verify every number you check against committed artifacts (recompute read-only, don't just read).
 
 Respond in EXACTLY this format:
 (1) VERDICT: ACCEPT / MINOR REVISIONS / MAJOR REVISIONS / REJECT
 (2) ISSUES: a numbered list, each item prefixed [MAJOR] or [MINOR], naming the specific section/claim with a file:line reference and the concrete problem.
 (3) One sentence: is the central claim supported?"
 if [ -n "$CONTEXT" ]; then
-  CLAUDE_PROMPT="$CLAUDE_PROMPT
+  CODEX_PROMPT="$CODEX_PROMPT
 
 CONTEXT NOTE for this review: $CONTEXT"
 fi
+
+case "$CODEX_ENABLED" in 0|1) ;; *) die "BIGBOUNCE_CODEX_SUBSCRIPTION_ENABLED must be 0 or 1" ;; esac
+case "$CODEX_EFFORT" in minimal|low|medium|high|xhigh|max|ultra) ;; *) die "BIGBOUNCE_CODEX_EFFORT must be minimal|low|medium|high|xhigh|max|ultra" ;; esac
+
+# No-launch validation path: no output directories, API calls, or agent sessions.
+if [ "${BIGBOUNCE_INT_WAVE_DRY_RUN:-0}" = "1" ]; then
+  LOGIN="unavailable"
+  if [ -n "$CODEX_BIN" ]; then LOGIN="$(env -u OPENAI_API_KEY -u CODEX_API_KEY -u ANTHROPIC_API_KEY "$CODEX_BIN" login status 2>&1 || true)"; fi
+  printf 'DRY_RUN paper=%s version=%s codex_enabled=%s model=%s effort=%s sandbox=read-only auth=%s\n' \
+    "$PAPER" "$VER" "$CODEX_ENABLED" "$CODEX_MODEL" "$CODEX_EFFORT" "$LOGIN"
+  exit 0
+fi
+
+mkdir -p "$SUBSCRIPTION_OUTDIR"
 
 # ---------------------------------------------------------------------------
 # Launch the three legs in parallel subshells; capture PIDs; wait on all.
@@ -114,14 +131,14 @@ fi
 (
   set -a; source "$REPO/.env.local"; set +a
   python3 "$PY_REVIEW" "$PAPER" openai
-) >"$CLAUDE_OUTDIR/.intwave_${PAPER}_openai_${HHMM}.log" 2>&1 &
+) >"$SUBSCRIPTION_OUTDIR/.intwave_${PAPER}_openai_${HHMM}.log" 2>&1 &
 PID_OPENAI=$!
 
 # (b) Grok leg
 (
   set -a; source "$REPO/.env.local"; set +a
   python3 "$PY_REVIEW" "$PAPER" grok
-) >"$CLAUDE_OUTDIR/.intwave_${PAPER}_grok_${HHMM}.log" 2>&1 &
+) >"$SUBSCRIPTION_OUTDIR/.intwave_${PAPER}_grok_${HHMM}.log" 2>&1 &
 PID_GROK=$!
 
 # (d) Gemini leg — 7th reviewer, only when GEMINI_API_KEY is present (keyed
@@ -133,18 +150,32 @@ if ( set -a; source "$REPO/.env.local" >/dev/null 2>&1; set +a; [ -n "${GEMINI_A
   (
     set -a; source "$REPO/.env.local"; set +a
     python3 "$PY_REVIEW" "$PAPER" gemini
-  ) >"$CLAUDE_OUTDIR/.intwave_${PAPER}_gemini_${HHMM}.log" 2>&1 &
+  ) >"$SUBSCRIPTION_OUTDIR/.intwave_${PAPER}_gemini_${HHMM}.log" 2>&1 &
   PID_GEMINI=$!
 fi
 
-# (c) Claude subscription leg — ANTHROPIC_API_KEY MUST be unset (never source
-#     .env.local in this subshell). Save raw to the mandated path.
+# (c) Codex ChatGPT-subscription leg. Never source .env.local here. The fixed
+#     read-only sandbox + never-approve policy makes this a referee, not an editor.
+CODEX_ON=0
+CODEX_STATE="DISABLED"
+if [ "$CODEX_ENABLED" = 1 ] && [ -n "$CODEX_BIN" ]; then
+  CODEX_LOGIN="$(env -u OPENAI_API_KEY -u CODEX_API_KEY -u ANTHROPIC_API_KEY "$CODEX_BIN" login status 2>&1 || true)"
+  if printf '%s' "$CODEX_LOGIN" | grep -q 'Logged in using ChatGPT'; then
+    CODEX_ON=1
+    CODEX_STATE="ENABLED"
+  else
+    CODEX_STATE="AUTH-UNAVAILABLE"
+  fi
+elif [ "$CODEX_ENABLED" = 1 ]; then
+  CODEX_STATE="CLI-UNAVAILABLE"
+fi
+
+if [ "$CODEX_ON" = 1 ]; then
 (
-  unset ANTHROPIC_API_KEY
   {
-    echo "# INT Claude-subscription Review — $PAPER $VER — claude-opus-4-8"
+    echo "# INT Codex-subscription Review — $PAPER $VER — $CODEX_MODEL ($CODEX_EFFORT)"
     echo "paper: $PAPER  version: $VER  tex: $TEX_REL"
-    echo "modality: full-repo Claude Code subscription subagent (claude -p)"
+    echo "modality: full-repo Codex CLI ChatGPT-subscription referee (read-only, ephemeral)"
     echo "UTC: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
     [ -n "$CONTEXT" ] && echo "context-note: $CONTEXT"
     echo ""
@@ -152,21 +183,36 @@ fi
     echo "RAW RESPONSE (verbatim):"
     echo "======================================================================"
     echo ""
-    claude -p "$CLAUDE_PROMPT" --model claude-opus-4-8 --allowedTools "Read,Glob,Grep" 2>&1 \
-      || echo "(claude -p leg errored — see above)"
-  } >"$CLAUDE_OUT"
+    RAW_TMP="$(mktemp "${TMPDIR:-/tmp}/bigbounce-codex-review.XXXXXX")"
+    if printf '%s\n' "$CODEX_PROMPT" | env -u OPENAI_API_KEY -u CODEX_API_KEY -u ANTHROPIC_API_KEY \
+      "$CODEX_BIN" --cd "$REPO" --sandbox read-only --ask-for-approval never \
+        --model "$CODEX_MODEL" -c "model_reasoning_effort=\"$CODEX_EFFORT\"" \
+        exec --ephemeral --ignore-user-config \
+        --color never --output-last-message "$RAW_TMP" - \
+        >"$CODEX_CLI_LOG" 2>&1; then
+      cat "$RAW_TMP"
+    else
+      echo "(Codex subscription leg errored; diagnostics: ${CODEX_CLI_LOG#$REPO/})"
+      cat "$RAW_TMP" 2>/dev/null || true
+      rm -f "$RAW_TMP"
+      exit 1
+    fi
+    rm -f "$RAW_TMP"
+  } >"$CODEX_OUT"
 ) &
-PID_CLAUDE=$!
+PID_CODEX=$!
+fi
 
 if [ "$GEMINI_ON" = 1 ]; then
-  echo "    launched: openai(pid $PID_OPENAI) grok(pid $PID_GROK) gemini(pid $PID_GEMINI) claude(pid $PID_CLAUDE) — blocking until all done..."
+  echo "    launched: openai(pid $PID_OPENAI) grok(pid $PID_GROK) gemini(pid $PID_GEMINI) codex=${CODEX_STATE}${PID_CODEX:+(pid $PID_CODEX)} — blocking until all done..."
 else
-  echo "    launched: openai(pid $PID_OPENAI) grok(pid $PID_GROK) claude(pid $PID_CLAUDE) [gemini: no key] — blocking until all done..."
+  echo "    launched: openai(pid $PID_OPENAI) grok(pid $PID_GROK) codex=${CODEX_STATE}${PID_CODEX:+(pid $PID_CODEX)} [gemini: no key] — blocking until all done..."
 fi
 
 wait "$PID_OPENAI"; RC_OPENAI=$?
 wait "$PID_GROK";   RC_GROK=$?
-wait "$PID_CLAUDE"; RC_CLAUDE=$?
+RC_CODEX=0
+if [ "$CODEX_ON" = 1 ]; then wait "$PID_CODEX"; RC_CODEX=$?; fi
 RC_GEMINI=0
 if [ "$GEMINI_ON" = 1 ]; then wait "$PID_GEMINI"; RC_GEMINI=$?; fi
 
@@ -190,12 +236,12 @@ else
   V_GEMINI="NO-KEY"
 fi
 
-# Claude verdict: pull the (1) VERDICT line from the just-written raw file, then
+# Codex verdict: pull the (1) VERDICT line from the just-written raw file, then
 # normalize to a bare verdict token (strip markdown **, trailing punctuation, and
 # any trailing prose after the verdict word).
-V_CLAUDE_RAW="$(grep -m1 -iE 'VERDICT:' "$CLAUDE_OUT" 2>/dev/null \
+V_CODEX_RAW="$(grep -m1 -iE 'VERDICT:' "$CODEX_OUT" 2>/dev/null \
   | sed -E 's/.*VERDICT:[[:space:]]*//I')"
-V_CLAUDE="$(printf '%s' "$V_CLAUDE_RAW" | python3 -c '
+V_CODEX="$(printf '%s' "$V_CODEX_RAW" | python3 -c '
 import sys, re
 s = sys.stdin.read().strip().strip("*").strip()
 u = s.upper()
@@ -205,7 +251,11 @@ for v in ("MAJOR REVISIONS","MINOR REVISIONS","ACCEPT","REJECT"):
 else:
     print(re.sub(r"[*_`]+"," ",s).strip() or "ABSENT")
 ')"
-[ -n "$V_CLAUDE" ] || V_CLAUDE="ABSENT"
+if [ "$CODEX_ON" = 1 ]; then
+  [ -n "$V_CODEX" ] || V_CODEX="ABSENT"
+else
+  V_CODEX="$CODEX_STATE"
+fi
 
 TS_UTC="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 echo ""
@@ -213,11 +263,12 @@ echo "=== INT WAVE VERDICT MATRIX :: $PAPER $VER ==="
 echo "  OpenAI (gpt-5.5):          $V_OPENAI"
 echo "  Grok (grok-4.3):           $V_GROK"
 echo "  Gemini (gemini-3.1-pro):   $V_GEMINI"
-echo "  Claude (opus-4-8):         $V_CLAUDE"
-echo "  (rc: openai=$RC_OPENAI grok=$RC_GROK gemini=$RC_GEMINI claude=$RC_CLAUDE)"
+echo "  Codex ($CODEX_MODEL/$CODEX_EFFORT): $V_CODEX"
+echo "  (rc: openai=$RC_OPENAI grok=$RC_GROK gemini=$RC_GEMINI codex=$RC_CODEX)"
 
 # Append to run.log.
-LOGLINE="$TS_UTC | $PAPER $VER | openai=$V_OPENAI | grok=$V_GROK | gemini=$V_GEMINI | claude=$V_CLAUDE | claude_raw=${CLAUDE_OUT#$REPO/}"
+LOGLINE="$TS_UTC | $PAPER $VER | openai=$V_OPENAI | grok=$V_GROK | gemini=$V_GEMINI | codex=$V_CODEX"
+[ "$CODEX_ON" = 1 ] && LOGLINE="$LOGLINE | codex_raw=${CODEX_OUT#$REPO/}"
 [ -n "$CONTEXT" ] && LOGLINE="$LOGLINE | ctx=\"$CONTEXT\""
 echo "$LOGLINE" >>"$RUNLOG"
 echo "  logged -> ${RUNLOG#$REPO/}"
