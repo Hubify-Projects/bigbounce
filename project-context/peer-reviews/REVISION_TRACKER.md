@@ -20,6 +20,27 @@ This tracker logs each revision round and which issues have been addressed.
 
 ## Revision Rounds
 
+### P2 v1.7.118: Fresh non-Anthropic editorial closure (2026-07-14)
+
+**Input:** exact 10-page v1.7.117 PDF, SHA-256 `be2a0ba90126feeb896b553f9f9be9128925f75f177260b5c74f829ab940f9cf`
+
+**Raw verdicts preserved:** Grok **REJECT** / Gemini **MAJOR REVISIONS** / OpenAI **MAJOR REVISIONS**
+
+**Truth-audit result:** 0 new scientific/numerical defects; 6 distinct non-scientific closures
+
+**Output:** v1.7.118 PDF, SHA-256 `01107b3d731b945b2aa9ea04ce4e8188282770a87b495c4a1f7ad5b71a4db71a`
+
+| Closure | Status | Scientific/numeric change |
+|---|---|---|
+| Define $A_{\rm GR}$ and $b_\phi$ | **DONE** | None |
+| Pin Cai source to arXiv:0903.0631v2 + retrieval provenance | **DONE** | None |
+| Remove Ref. 14 bibliography commentary | **DONE** | None |
+| Identify 34.7\% as bias-marginalized $0.687\to0.449$ | **DONE** | None |
+| Remove unused $r_t$ | **DONE** | None |
+| Clarify separate primordial-transfer-only run | **DONE** | None |
+
+Full BibTeX + three-pass compile and the mandatory 10-page PDF audit passed: zero compile errors, undefined references/citations, overfull boxes, raw `\texttt` paths, broken links, or visual collisions. Open gates remain direct cubic transfer, external Heinrich $\mathrm{Cov}_B$/likelihood, and the camera-ready DOI. No acceptance/minor verdict or readiness increase is inferred. Shared SSOT/site/Convex/version/mirror state and git integration were outside this scoped lane.
+
 ### Round 1: Comprehensive Audit (2026-03-02 19:17 PST)
 
 **Files:**
