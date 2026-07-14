@@ -24,7 +24,7 @@ import argparse
 import json
 import os
 import time
-from multiprocessing import Pool
+from multiprocessing import Pool, get_context
 from pathlib import Path
 
 import numpy as np
@@ -51,6 +51,7 @@ BETA = np.deg2rad(0.27)
 N_REAL = int(os.environ.get("C10_NREAL", "500"))
 SEED_BASE = 42
 NOISE_LEVEL_UKARMIN = 10.0
+_REALIZATION_STATE = None
 
 
 def cl_ee_fit(lmax):
@@ -78,13 +79,9 @@ def camb_lensed_bb(lmax):
     return bb
 
 
-def run_config(cfg):
+def _prepare_config_state(cfg):
     import healpy as hp
     import pymaster as nmt
-
-    name = cfg["name"]
-    t0 = time.time()
-    np.random.seed(SEED_BASE)
 
     cl_ee = cl_ee_fit(LMAX)
     cl_bb = camb_lensed_bb(LMAX) if cfg.get("camb_bb") else 0.05 * cl_ee
@@ -115,8 +112,80 @@ def run_config(cfg):
     equivalence_max_abs = validate_window_equivalence(wsp, response, BETA)
     if not np.isfinite(equivalence_max_abs) or equivalence_max_abs > 1e-10:
         raise RuntimeError(
-            f"{name}: exact-window equivalence failure {equivalence_max_abs:.6e}"
+            f"{cfg['name']}: exact-window equivalence failure {equivalence_max_abs:.6e}"
         )
+    return {
+        "cfg": cfg,
+        "cl_ee": cl_ee,
+        "cl_bb": cl_bb,
+        "npix": npix,
+        "noise_sigma": noise_sigma,
+        "mask": mask,
+        "fsky": fsky,
+        "bins": b,
+        "purify": purify,
+        "workspace": wsp,
+        "response": response,
+        "equivalence_max_abs": equivalence_max_abs,
+    }
+
+
+def _simulate_realization(index, state):
+    import healpy as hp
+    import pymaster as nmt
+
+    np.random.seed(SEED_BASE + index)
+    maps = hp.synfast(
+        [np.zeros(LMAX + 1), state["cl_ee"], state["cl_bb"], np.zeros(LMAX + 1)],
+        NSIDE,
+        lmax=LMAX,
+        new=True,
+    )
+    q, u = maps[1], maps[2]
+    q += np.random.normal(0, state["noise_sigma"], state["npix"])
+    u += np.random.normal(0, state["noise_sigma"], state["npix"])
+    cos2b, sin2b = np.cos(2 * BETA), np.sin(2 * BETA)
+    q_rot = cos2b * q - sin2b * u
+    u_rot = sin2b * q + cos2b * u
+    field = nmt.NmtField(state["mask"], [q_rot, u_rot], purify_b=state["purify"])
+    coupled = nmt.compute_coupled_cell(field, field)
+    return state["workspace"].decouple_cell(coupled)[1]
+
+
+def _initialize_realization_worker(cfg):
+    global _REALIZATION_STATE
+    _REALIZATION_STATE = _prepare_config_state(cfg)
+
+
+def _run_worker_realization(index):
+    if _REALIZATION_STATE is None:
+        raise RuntimeError("realization worker was not initialized")
+    return _simulate_realization(index, _REALIZATION_STATE)
+
+
+def _progress(name, completed):
+    if completed % 25 == 0 or completed == N_REAL:
+        print(f"[{name}] realizations {completed}/{N_REAL}", flush=True)
+
+
+def run_config(cfg, realization_workers=1):
+    import healpy as hp
+    import pymaster as nmt
+
+    name = cfg["name"]
+    t0 = time.time()
+    np.random.seed(SEED_BASE)
+    state = _prepare_config_state(cfg)
+    cl_ee = state["cl_ee"]
+    cl_bb = state["cl_bb"]
+    noise_sigma = state["noise_sigma"]
+    mask = state["mask"]
+    fsky = state["fsky"]
+    b = state["bins"]
+    purify = state["purify"]
+    wsp = state["workspace"]
+    response = state["response"]
+    equivalence_max_abs = state["equivalence_max_abs"]
 
     if cfg.get("canonical_artifact"):
         if not os.path.isfile(CANONICAL_BANDPOWERS):
@@ -129,21 +198,53 @@ def run_config(cfg):
             raise ValueError(
                 f"canonical artifact has {len(all_eb)} realizations, expected {N_REAL}"
             )
+        execution = {
+            "mode": "canonical_artifact_reuse",
+            "realization_workers": 0,
+            "result_order": (
+                f"saved seed order {SEED_BASE}--{SEED_BASE + N_REAL - 1}"
+            ),
+        }
     else:
-        cos2b, sin2b = np.cos(2 * BETA), np.sin(2 * BETA)
         all_eb = []
-        for i in range(N_REAL):
-            np.random.seed(SEED_BASE + i)
-            maps = hp.synfast([np.zeros(LMAX + 1), cl_ee, cl_bb, np.zeros(LMAX + 1)],
-                              NSIDE, lmax=LMAX, new=True)
-            Q, U = maps[1], maps[2]
-            Q += np.random.normal(0, noise_sigma, npix)
-            U += np.random.normal(0, noise_sigma, npix)
-            Qr, Ur = cos2b * Q - sin2b * U, sin2b * Q + cos2b * U
-            f = nmt.NmtField(mask, [Qr, Ur], purify_b=purify)
-            all_eb.append(wsp.decouple_cell(nmt.compute_coupled_cell(f, f))[1])
-            if (i + 1) % 25 == 0 or i + 1 == N_REAL:
-                print(f"[{name}] realizations {i + 1}/{N_REAL}", flush=True)
+        if realization_workers == 1:
+            for index in range(N_REAL):
+                all_eb.append(_simulate_realization(index, state))
+                _progress(name, index + 1)
+            execution = {
+                "mode": "serial",
+                "realization_workers": 1,
+                "result_order": (
+                    f"ordered indices 0..N-1; seeds {SEED_BASE}--"
+                    f"{SEED_BASE + N_REAL - 1}"
+                ),
+            }
+        else:
+            # Main-process workspace is not shared across processes. Each spawned
+            # worker constructs and caches its own exact workspace once.
+            state["workspace"] = None
+            del wsp
+            context = get_context("spawn")
+            with context.Pool(
+                processes=realization_workers,
+                initializer=_initialize_realization_worker,
+                initargs=(cfg,),
+            ) as pool:
+                for completed, value in enumerate(
+                    pool.imap(_run_worker_realization, range(N_REAL), chunksize=1),
+                    start=1,
+                ):
+                    all_eb.append(value)
+                    _progress(name, completed)
+            execution = {
+                "mode": "ordered_seed_parallel",
+                "realization_workers": realization_workers,
+                "result_order": (
+                    f"ordered imap indices 0..N-1; seeds {SEED_BASE}--"
+                    f"{SEED_BASE + N_REAL - 1}"
+                ),
+                "workspace_cache": "one exact NmtWorkspace per spawned worker",
+            }
 
     all_eb = np.array(all_eb)
     mean_eb, std_eb = all_eb.mean(axis=0), all_eb.std(axis=0)
@@ -172,6 +273,7 @@ def run_config(cfg):
            "theory_operator": "NmtWorkspace.get_bandpower_windows exact tensor contraction",
            "window_shape": list(response["window_shape"]),
            "window_equivalence_max_abs": equivalence_max_abs,
+           "execution": execution,
            "software": {"numpy": np.__version__, "healpy": hp.__version__,
                         "pymaster": nmt.__version__},
            "noise_sigma_pix_uK": round(float(noise_sigma), 4),
@@ -196,11 +298,14 @@ def parse_args():
     parser.add_argument("--only-config", choices=[item["name"] for item in CONFIGS])
     parser.add_argument("--output", type=Path)
     parser.add_argument("--force", action="store_true")
+    parser.add_argument("--realization-workers", type=int, default=1)
     return parser.parse_args()
 
 
 def main():
     args = parse_args()
+    if args.realization_workers < 1:
+        raise ValueError("--realization-workers must be at least 1")
     t0 = time.time()
     n_pool = int(os.environ.get("C10_POOL", "3"))
     requested = args.only_config or os.environ.get("C10_CONFIGS", "").strip()
@@ -218,6 +323,10 @@ def main():
     else:
         output = Path(OUT)
     names = [config["name"] for config in selected]
+    if args.realization_workers > 1 and len(selected) != 1:
+        raise ValueError(
+            "inner realization parallelism requires exactly one selected config"
+        )
     if not args.force and output.exists():
         try:
             validate_json_receipt(
@@ -235,7 +344,7 @@ def main():
             print(f"validated existing shard; skipping: {output}")
             return
     if len(selected) == 1:
-        results = [run_config(selected[0])]
+        results = [run_config(selected[0], args.realization_workers)]
     else:
         with Pool(processes=min(n_pool, len(selected))) as pool:
             results = pool.map(run_config, selected)
@@ -263,6 +372,7 @@ def main():
                 result["window_equivalence_max_abs"] for result in results
             ),
             "software": results[0]["software"],
+            "execution": [result["execution"] for result in results],
         },
     )
     print(json.dumps(out, indent=1))
