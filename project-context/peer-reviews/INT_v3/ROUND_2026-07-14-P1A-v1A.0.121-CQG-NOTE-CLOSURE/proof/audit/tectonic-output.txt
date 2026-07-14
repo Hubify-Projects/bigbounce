@@ -1,0 +1,80 @@
+note: "version 2" Tectonic command-line interface activated
+note: Running TeX ...
+warning: paper1a_ech_nogo.tex:3745: Underfull \hbox (badness 10000) in paragraph at lines 3740--3745
+warning: paper1a_ech_nogo.tex:3878: Underfull \hbox (badness 1019) in paragraph at lines 3877--3878
+warning: paper1a_ech_nogo.tex:3884: Underfull \hbox (badness 1014) in paragraph at lines 3879--3884
+warning: paper1a_ech_nogo.tex:3953: Underfull \hbox (badness 4096) in paragraph at lines 3945--3953
+warning: paper1a_ech_nogo.tex:3953: Underfull \hbox (badness 3758) in paragraph at lines 3945--3953
+warning: paper1a_ech_nogo.tex:3953: Underfull \hbox (badness 4872) in paragraph at lines 3945--3953
+warning: paper1a_ech_nogo.tex:4706: Underfull \hbox (badness 1092) in paragraph at lines 4697--4706
+note: Running BibTeX on paper1a_ech_nogo.aux ...
+note: warnings were issued by BibTeX; use --print and/or --keep-logs for details.
+note: Rerunning TeX because bibtex was run ...
+warning: paper1a_ech_nogo.toc:6: Overfull \hbox (10.89pt too wide) detected at line 6
+warning: paper1a_ech_nogo.toc:6: Overfull \hbox (5.0pt too wide) detected at line 6
+warning: paper1a_ech_nogo.toc:7: Overfull \hbox (14.78pt too wide) detected at line 7
+warning: paper1a_ech_nogo.toc:7: Overfull \hbox (5.0pt too wide) detected at line 7
+warning: paper1a_ech_nogo.toc:8: Overfull \hbox (18.67pt too wide) detected at line 8
+warning: paper1a_ech_nogo.toc:8: Overfull \hbox (5.0pt too wide) detected at line 8
+warning: paper1a_ech_nogo.toc:9: Overfull \hbox (14.78pt too wide) detected at line 9
+warning: paper1a_ech_nogo.toc:9: Overfull \hbox (5.0pt too wide) detected at line 9
+warning: paper1a_ech_nogo.toc:10: Overfull \hbox (14.36pt too wide) detected at line 10
+warning: paper1a_ech_nogo.toc:10: Overfull \hbox (5.0pt too wide) detected at line 10
+warning: paper1a_ech_nogo.toc:12: Overfull \hbox (18.39pt too wide) detected at line 12
+warning: paper1a_ech_nogo.toc:12: Overfull \hbox (5.0pt too wide) detected at line 12
+warning: paper1a_ech_nogo.toc:13: Overfull \hbox (14.78pt too wide) detected at line 13
+warning: paper1a_ech_nogo.toc:13: Overfull \hbox (5.0pt too wide) detected at line 13
+warning: paper1a_ech_nogo.toc:14: Overfull \hbox (14.36pt too wide) detected at line 14
+warning: paper1a_ech_nogo.toc:14: Overfull \hbox (5.0pt too wide) detected at line 14
+warning: paper1a_ech_nogo.toc:15: Overfull \hbox (14.5pt too wide) detected at line 15
+warning: paper1a_ech_nogo.toc:15: Overfull \hbox (5.0pt too wide) detected at line 15
+warning: paper1a_ech_nogo.toc:16: Overfull \hbox (14.92pt too wide) detected at line 16
+warning: paper1a_ech_nogo.toc:16: Overfull \hbox (5.0pt too wide) detected at line 16
+warning: paper1a_ech_nogo.toc:17: Overfull \hbox (14.09pt too wide) detected at line 17
+warning: paper1a_ech_nogo.toc:17: Overfull \hbox (5.0pt too wide) detected at line 17
+warning: paper1a_ech_nogo.toc:18: Overfull \hbox (13.81pt too wide) detected at line 18
+warning: paper1a_ech_nogo.toc:18: Overfull \hbox (5.0pt too wide) detected at line 18
+warning: paper1a_ech_nogo.toc:19: Overfull \hbox (14.78pt too wide) detected at line 19
+warning: paper1a_ech_nogo.toc:19: Overfull \hbox (5.0pt too wide) detected at line 19
+warning: paper1a_ech_nogo.toc:20: Overfull \hbox (18.39pt too wide) detected at line 20
+warning: paper1a_ech_nogo.toc:20: Overfull \hbox (5.0pt too wide) detected at line 20
+warning: paper1a_ech_nogo.toc:21: Overfull \hbox (5.0pt too wide) detected at line 21
+warning: paper1a_ech_nogo.toc:23: Overfull \hbox (14.78pt too wide) detected at line 23
+warning: paper1a_ech_nogo.toc:23: Overfull \hbox (5.0pt too wide) detected at line 23
+warning: paper1a_ech_nogo.toc:24: Overfull \hbox (14.36pt too wide) detected at line 24
+warning: paper1a_ech_nogo.toc:24: Overfull \hbox (5.0pt too wide) detected at line 24
+warning: paper1a_ech_nogo.tex:3745: Underfull \hbox (badness 10000) in paragraph at lines 3740--3745
+warning: paper1a_ech_nogo.tex:3878: Underfull \hbox (badness 1019) in paragraph at lines 3877--3878
+warning: paper1a_ech_nogo.tex:3884: Underfull \hbox (badness 1014) in paragraph at lines 3879--3884
+warning: paper1a_ech_nogo.tex:3953: Underfull \hbox (badness 4096) in paragraph at lines 3945--3953
+warning: paper1a_ech_nogo.tex:3953: Underfull \hbox (badness 3758) in paragraph at lines 3945--3953
+warning: paper1a_ech_nogo.tex:3953: Underfull \hbox (badness 4872) in paragraph at lines 3945--3953
+note: Rerunning TeX because "paper1a_ech_nogo.aux" changed ...
+warning: paper1a_ech_nogo.tex:3745: Underfull \hbox (badness 10000) in paragraph at lines 3740--3745
+warning: paper1a_ech_nogo.tex:3745: Underfull \hbox (badness 2894) in paragraph at lines 3740--3745
+warning: paper1a_ech_nogo.tex:3878: Underfull \hbox (badness 1019) in paragraph at lines 3877--3878
+warning: paper1a_ech_nogo.tex:3884: Underfull \hbox (badness 1014) in paragraph at lines 3879--3884
+warning: paper1a_ech_nogo.tex:3953: Underfull \hbox (badness 4096) in paragraph at lines 3945--3953
+warning: paper1a_ech_nogo.tex:3953: Underfull \hbox (badness 3758) in paragraph at lines 3945--3953
+warning: paper1a_ech_nogo.tex:3953: Underfull \hbox (badness 4872) in paragraph at lines 3945--3953
+warning: paper1a_ech_nogo.tex:4653: Underfull \hbox (badness 1490) in paragraph at lines 4648--4653
+note: Rerunning TeX because "paper1a_ech_nogo.aux" changed ...
+warning: paper1a_ech_nogo.tex:3745: Underfull \hbox (badness 10000) in paragraph at lines 3740--3745
+warning: paper1a_ech_nogo.tex:3745: Underfull \hbox (badness 2894) in paragraph at lines 3740--3745
+warning: paper1a_ech_nogo.tex:3878: Underfull \hbox (badness 1019) in paragraph at lines 3877--3878
+warning: paper1a_ech_nogo.tex:3884: Underfull \hbox (badness 1014) in paragraph at lines 3879--3884
+warning: paper1a_ech_nogo.tex:3953: Underfull \hbox (badness 4096) in paragraph at lines 3945--3953
+warning: paper1a_ech_nogo.tex:3953: Underfull \hbox (badness 3758) in paragraph at lines 3945--3953
+warning: paper1a_ech_nogo.tex:3953: Underfull \hbox (badness 4872) in paragraph at lines 3945--3953
+warning: paper1a_ech_nogo.tex:4653: Underfull \hbox (badness 1490) in paragraph at lines 4648--4653
+warning: warnings were issued by the TeX engine; use --print and/or --keep-logs for details.
+note: Running xdvipdfmx ...
+warning: Object @table.1 already defined.
+note: Writing `paper1a_ech_nogo.aux` (7.01953125 KiB)
+note: Writing `paper1a_ech_nogoNotes.bib` (104 B)
+note: Writing `paper1a_ech_nogo.out` (4.6005859375 KiB)
+note: Writing `paper1a_ech_nogo.pdf` (145.8916015625 KiB)
+note: Writing `paper1a_ech_nogo.bbl` (8.708984375 KiB)
+note: Writing `paper1a_ech_nogo.log` (25.3310546875 KiB)
+note: Writing `paper1a_ech_nogo.toc` (1.9619140625 KiB)
+note: Writing `paper1a_ech_nogo.blg` (964 B)
