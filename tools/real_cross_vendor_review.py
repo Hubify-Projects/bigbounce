@@ -6,7 +6,7 @@ v2.0 (2026-06-04): rewritten to fix the root cause of internal/external review
 gap. Previous version sent raw LaTeX source; this version:
   1. Extracts clean text from the compiled PDF via pdftotext
   2. Sends the PDF natively to Gemini (via Google Generative AI SDK)
-  3. Uses direct vendor SDKs (OpenAI, xAI, Perplexity, Gemini) instead of
+  3. Uses direct vendor SDKs (xAI, Perplexity, Gemini) instead of
      routing everything through OpenRouter (eliminates the gpt-4o silent
      fallback problem)
   4. Uses a demanding PRD/MNRAS referee-grade prompt with no findings cap
@@ -49,22 +49,6 @@ OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 # Reviewer definitions — using direct SDKs where possible
 # ---------------------------------------------------------------------------
 REVIEWERS = {
-    "OpenAI_methodology": {
-        "sdk": "openai",
-        "model": "o3",
-        "fallback_model": "gpt-4.1",
-        "or_model": "openai/gpt-4.1",
-        "persona": "Physical Review D methodology referee",
-        "focus": (
-            "Methodology rigor: statistical-method validity, derivation chains, "
-            "dimensional analysis, internal arithmetic consistency, error propagation "
-            "through the systematic budget. Audit every scalar reported in the abstract "
-            "and conclusions for a traceable source. Flag overclaims of statistical "
-            "significance. Check that null-model σ values are on comparable scales and "
-            "not mixing incommensurable procedures. Flag if the primary estimator is "
-            "not pre-declared before looking at data."
-        ),
-    },
     "Gemini_cosmology": {
         "sdk": "gemini_native_pdf",
         "model": "gemini-2.5-pro",
@@ -234,23 +218,6 @@ def get_page_count(pdf_path: Path) -> int:
 # ---------------------------------------------------------------------------
 # SDK call implementations
 # ---------------------------------------------------------------------------
-def call_openai_sdk(keys: dict, model: str, prompt: str) -> tuple[str, str]:
-    """Direct OpenAI SDK call. Returns (text, model_used)."""
-    from openai import OpenAI
-    client = OpenAI(api_key=keys["OPENAI_API_KEY"])
-    resp = client.chat.completions.create(
-        model=model,
-        messages=[{"role": "user", "content": prompt}],
-        max_completion_tokens=32000,
-    )
-    model_used = resp.model
-    content = resp.choices[0].message.content or ""
-    # Detect silent fallback to inferior model
-    if any(x in model_used.lower() for x in ["gpt-4o", "gpt-3.5", "gpt-4-turbo", "gpt-4-0"]):
-        raise RuntimeError(f"FALLBACK DETECTED: requested {model!r} but got {model_used!r}")
-    return content, model_used
-
-
 def call_gemini_native_pdf(keys: dict, model: str, prompt: str, pdf_path: Path) -> tuple[str, str]:
     """Gemini with native PDF document understanding — no text extraction needed."""
     import google.generativeai as genai
@@ -379,14 +346,7 @@ def run_reviewer(
 
     sdk = cfg["sdk"]
     try:
-        if sdk == "openai":
-            try:
-                content, model_used = call_openai_sdk(keys, cfg["model"], prompt)
-            except Exception as e:
-                print(f"[{name}] primary model failed ({e}), trying fallback {cfg['fallback_model']}", file=sys.stderr)
-                content, model_used = call_openai_sdk(keys, cfg["fallback_model"], prompt)
-                fallback_used = True
-        elif sdk == "gemini_native_pdf":
+        if sdk == "gemini_native_pdf":
             try:
                 content, model_used = call_gemini_native_pdf(keys, cfg["model"], prompt, pdf_path)
             except Exception as e:
@@ -465,7 +425,7 @@ def main() -> int:
         return 1
 
     keys = load_keys()
-    missing = [k for k in ["OPENAI_API_KEY", "GOOGLE_GEMINI_API_KEY", "XAI_API_KEY", "PERPLEXITY_API_KEY"] if k not in keys]
+    missing = [k for k in ["GOOGLE_GEMINI_API_KEY", "XAI_API_KEY", "PERPLEXITY_API_KEY"] if k not in keys]
     if missing:
         print(f"[warn] Missing direct SDK keys: {missing} — will fall back to OpenRouter for those reviewers", file=sys.stderr)
 

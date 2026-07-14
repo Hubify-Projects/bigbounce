@@ -204,24 +204,6 @@ of why your initial review was already complete.
 # Reviewers
 # ---------------------------------------------------------------------------
 REVIEWERS = {
-    "Claude_brutal": {
-        "vendor": "anthropic",
-        "model": "claude-opus-4-7",
-        "fallback": "claude-sonnet-4-6",
-        "persona": "Brutal-honesty PRD referee with full PDF access (figures, tables, equations)",
-        "focus": (
-            "BRUTAL HONESTY. Cut through narrative inflation. Is the central claim "
-            "actually new and significant? Are 'first', 'novel', 'survey-scale', "
-            "'unprecedented' framings honest given the literature? Is every headline "
-            "sigma value earned by the methodology? Does the abstract match what the "
-            "body proves? Audit every figure caption against the body claim. Audit every "
-            "table for arithmetic consistency — recompute the numbers. Flag overclaims, "
-            "false confidence, weak hedges presented as strong conclusions, internal "
-            "audit tags ('R7', 'superseded'), and duplicate phrases. Treat as a real "
-            "PRD submission you would reject on first pass."
-        ),
-        "native_pdf": True,
-    },
     "Gemini_cosmology": {
         "vendor": "gemini",
         "model": "gemini-2.5-pro",
@@ -340,42 +322,6 @@ def rasterize_pdf_to_images(pdf_path: Path, dpi: int = 150, max_pages: int = 25)
 # ---------------------------------------------------------------------------
 # Vendor SDK calls — ALL native-PDF where the vendor supports it
 # ---------------------------------------------------------------------------
-def call_anthropic(keys: dict, model: str, prompt: str, pdf_path: Path) -> tuple[str, str]:
-    """Claude with native PDF document block + extended thinking (streaming)."""
-    import anthropic
-    client = anthropic.Anthropic(api_key=keys["ANTHROPIC_API_KEY"], timeout=900.0)
-    pdf_b64 = base64.standard_b64encode(pdf_path.read_bytes()).decode("utf-8")
-
-    text_chunks: list[str] = []
-    model_used = model
-    with client.messages.stream(
-        model=model,
-        max_tokens=32000,
-        thinking={"type": "adaptive"},
-        output_config={"effort": "high"},
-        temperature=1.0,  # required when thinking enabled
-        messages=[{
-            "role": "user",
-            "content": [
-                {
-                    "type": "document",
-                    "source": {
-                        "type": "base64",
-                        "media_type": "application/pdf",
-                        "data": pdf_b64,
-                    },
-                },
-                {"type": "text", "text": prompt},
-            ],
-        }],
-    ) as stream:
-        for text_event in stream.text_stream:
-            text_chunks.append(text_event)
-        final_msg = stream.get_final_message()
-        model_used = getattr(final_msg, "model", model)
-    return "".join(text_chunks), model_used
-
-
 def call_gemini(keys: dict, model: str, prompt: str, pdf_path: Path) -> tuple[str, str]:
     """Gemini 2.5 Pro with native PDF via inline data (or Files API for big PDFs)."""
     import google.generativeai as genai
@@ -474,7 +420,10 @@ def call_perplexity(keys: dict, model: str, prompt: str, paper_text: str) -> tup
 # ---------------------------------------------------------------------------
 def _dispatch_one_call(vendor: str, keys: dict, model: str, prompt: str, pdf_path: Path, paper_text: str) -> tuple[str, str]:
     if vendor == "anthropic":
-        return call_anthropic(keys, model, prompt, pdf_path)
+        raise RuntimeError(
+            "Anthropic/Claude review dispatch is disabled for the active "
+            "BigBounce campaign"
+        )
     elif vendor == "openai":
         raise RuntimeError(
             "OpenAI API review dispatch is disabled; use the Codex CLI with "
@@ -562,9 +511,7 @@ def run_reviewer(
     dt = time.time() - t0
     fb = f" [FALLBACK from {cfg['model']}]" if fallback_used else ""
 
-    if vendor == "anthropic":
-        input_note = "NATIVE PDF (document block) + extended thinking 16K"
-    elif vendor == "gemini":
+    if vendor == "gemini":
         input_note = "NATIVE PDF (inline or Files API)"
     elif vendor == "xai":
         input_note = f"NATIVE PDF (rasterized to PNG images, 150 DPI)"
@@ -650,19 +597,10 @@ def main() -> int:
     paper_text = extract_pdf_text(pdf_path)  # only used by Perplexity
     print(f"[v3 native-PDF review] {pdf_path.name}: {page_count} pages, {len(paper_text):,} chars extracted (Perplexity only)", flush=True)
 
-    # The Anthropic/Claude reviewer leg is supplied by a Claude Code sub-agent
-    # (the Opus subscription), NOT the pay-as-you-go ANTHROPIC_API_KEY. Houston
-    # directive 2026-06-14: never burn the API key on reviews. This tool runs the
-    # API vendors (Gemini/Grok/Perplexity); the orchestrator spawns an
-    # Opus Agent to produce EXT{N}_P{X}_Claude_brutal.md. Set V3_USE_ANTHROPIC_API=1
-    # to fall back to the API leg if ever needed.
-    use_anthropic_api = os.environ.get("V3_USE_ANTHROPIC_API", "0") == "1"
-    active = {
-        n: c for n, c in REVIEWERS.items()
-        if use_anthropic_api or c["vendor"] != "anthropic"
-    }
-    if not use_anthropic_api:
-        print("[v3 native-PDF review] Anthropic API leg DISABLED (non-Anthropic campaign default).", flush=True)
+    # Active APIs are Gemini/Grok plus optional Perplexity. OpenAI-family review
+    # is supplied by Codex CLI/ChatGPT subscription; Anthropic/Claude is disabled.
+    active = REVIEWERS
+    print("[v3 native-PDF review] OpenAI API and Anthropic/Claude routes DISABLED.", flush=True)
     print(f"[v3 native-PDF review] Dispatching {len(active)} reviewers in parallel...", flush=True)
 
     cache_root = review_cache_root()

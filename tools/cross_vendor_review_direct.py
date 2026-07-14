@@ -7,9 +7,10 @@ the OpenRouter weekly cap as a blocker. All direct vendor keys live in the
 sibling repo .env.local at /Users/houstongolden/Desktop/CODE_2025/youmd/.env.local
 (also appended to bigbounce/.env.local on 2026-05-29).
 
-4 reviewers, each calling its native vendor's HTTP API directly:
+3 API reviewers, each calling its native vendor's HTTP API directly. The
+independent OpenAI perspective must be run through the authenticated Codex CLI
+subscription and is intentionally not dispatched by this utility:
 
-  - GPT5_methodology              → OpenAI            (api.openai.com)
   - Gemini31Pro_cosmology         → Google Gemini     (generativelanguage.googleapis.com)
   - Grok43_brutal                 → xAI               (api.x.ai/v1, OpenAI-compatible)
   - PerplexitySonarPro_citations  → Perplexity        (api.perplexity.ai, OpenAI-compatible)
@@ -64,25 +65,9 @@ ENV_LOCAL = REPO / ".env.local"
 #   model              — model ID (vendor-native, NOT OpenRouter slugs)
 #   fallback           — secondary model if primary 404s
 #   call_style         — "openai_chat" (most), "gemini_native" (Google)
-#   reasoning_effort   — for OpenAI o-series, Grok reasoning; None for others
+#   reasoning_effort   — provider-specific reasoning control; None for most
 
 REVIEWERS = {
-    "GPT5_methodology": {
-        "key_var": "OPENAI_API_KEY",
-        "url": "https://api.openai.com/v1/chat/completions",
-        "model": "gpt-5",
-        "fallback": "gpt-4o",
-        "call_style": "openai_chat",
-        "reasoning_effort": "high",
-        "persona": "GPT-5 methodology reviewer",
-        "focus": (
-            "Methodology rigor: derivations, dimensional analysis, statistical-method "
-            "scrutiny, internal arithmetic consistency. Flag overclaim of statistical "
-            "significance. Check that error bars propagate correctly through the "
-            "systematic budget. Audit any 'Bayes factor' / 'likelihood ratio' framing "
-            "for proper marginalization vs parameter-shift."
-        ),
-    },
     "Gemini25Pro_cosmology": {
         "key_var": "GOOGLE_GEMINI_API_KEY",
         # Gemini's HTTP API uses the model name in the URL path:
@@ -172,18 +157,17 @@ PAPER TEXT (LaTeX source follows):
 Return your full review as markdown."""
 
 
-def call_openai_chat(url: str, api_key: str, model: str, prompt: str,
-                     max_tokens: int = 16000, timeout: int = 480,
-                     reasoning_effort: str | None = None) -> dict:
-    """OpenAI-compatible /chat/completions call. Works for OpenAI, Grok (xAI), Perplexity."""
+def call_openai_compatible_chat(url: str, api_key: str, model: str, prompt: str,
+                                max_tokens: int = 16000, timeout: int = 480,
+                                reasoning_effort: str | None = None) -> dict:
+    """OpenAI-compatible call for non-OpenAI vendors (xAI and Perplexity)."""
     payload = {
         "model": model,
         "messages": [{"role": "user", "content": prompt}],
         "max_tokens": max_tokens,
         "temperature": 0.3,
     }
-    if reasoning_effort and "api.openai.com" in url:
-        # OpenAI o-series-style: top-level reasoning_effort field.
+    if reasoning_effort:
         payload["reasoning_effort"] = reasoning_effort
     body = json.dumps(payload).encode("utf-8")
     req = urllib.request.Request(
@@ -264,22 +248,20 @@ def call_with_fallback(cfg: dict, prompt: str, key: str) -> tuple[dict, str]:
     fallback = cfg.get("fallback", primary)
 
     if style == "openai_chat":
-        res = call_openai_chat(cfg["url"], key, primary, prompt,
-                               reasoning_effort=cfg.get("reasoning_effort"))
+        res = call_openai_compatible_chat(cfg["url"], key, primary, prompt,
+                                          reasoning_effort=cfg.get("reasoning_effort"))
         model_used = primary
         if "error" in res:
             status = res["error"].get("status")
             err_body = (res["error"].get("body") or "").lower()
             is_missing = status == 404 or "model" in err_body or "not found" in err_body
             if is_missing and fallback != primary:
-                # Fallback models (e.g. gpt-4o) typically don't accept reasoning_effort —
-                # retry without it.
-                res = call_openai_chat(cfg["url"], key, fallback, prompt, reasoning_effort=None)
+                res = call_openai_compatible_chat(cfg["url"], key, fallback, prompt, reasoning_effort=None)
                 model_used = fallback
             else:
                 # 400 "Unrecognized request argument: reasoning_effort" → retry primary without it
                 if status == 400 and "reasoning_effort" in err_body:
-                    res = call_openai_chat(cfg["url"], key, primary, prompt, reasoning_effort=None)
+                    res = call_openai_compatible_chat(cfg["url"], key, primary, prompt, reasoning_effort=None)
                     model_used = primary
         return res, model_used
     elif style == "gemini_native":

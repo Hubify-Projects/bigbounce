@@ -2,7 +2,6 @@
 """POST-POLISH INT API-vendor round (native-PDF) on all 6 POLISHED bigbounce papers.
 
 Per canonical spec §1.2-1.3:
-  - OpenAI  native-PDF: Files API purpose=user_data + Responses input_file  (gpt-5.5)
   - XAI/Grok native-PDF: /v1/files upload + /v1/responses input_file        (grok-4.3)
   - Gemini API = known 403 -> skip + note (NOT run here)
 
@@ -29,7 +28,6 @@ PAPERS = {
     "P1A": ("v1A.0.111", "/tmp/polished_P1A.pdf"),
 }
 
-OPENAI_MODEL = "gpt-5.5"
 XAI_MODEL = "grok-4.3"
 
 PROMPT = (
@@ -59,7 +57,6 @@ def loadenv(p=REPO / ".env.local"):
 ENV = loadenv()
 from openai import OpenAI
 
-oai = OpenAI(api_key=ENV["OPENAI_API_KEY"])
 xai = OpenAI(api_key=ENV["XAI_API_KEY"], base_url="https://api.x.ai/v1")
 
 
@@ -118,7 +115,6 @@ def review_native(client, model, pdf_path):
 
 
 VENDORS = {
-    "openai": (OPENAI_MODEL, oai, "native-pdf (Files API purpose=user_data + Responses input_file)"),
     "grok":   (XAI_MODEL,    xai, "native-pdf (/v1/files upload + /v1/responses input_file)"),
 }
 
@@ -166,14 +162,13 @@ def main():
     order = sys.argv[1:] if len(sys.argv) > 1 else list(PAPERS.keys())
     results = []
     for paper in order:
-        for vendor in ("openai", "grok"):
+        for vendor in ("grok",):
             results.append(run_one(paper, vendor))
     print("\n===== VERDICT TABLE (native-PDF) =====")
-    print(f"{'paper':5s} {'openai(gpt-5.5)':18s} {'grok(grok-4.3)':18s}")
+    print(f"{'paper':5s} {'grok(grok-4.3)':18s}")
     for paper in order:
-        o = next((r for r in results if r["paper"] == paper and r["vendor"] == "openai"), {})
         g = next((r for r in results if r["paper"] == paper and r["vendor"] == "grok"), {})
-        print(f"{paper:5s} {str(o.get('verdict') or o.get('status')):18s} {str(g.get('verdict') or g.get('status')):18s}")
+        print(f"{paper:5s} {str(g.get('verdict') or g.get('status')):18s}")
 
 
 if __name__ == "__main__":

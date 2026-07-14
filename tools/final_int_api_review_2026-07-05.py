@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-"""FINAL pre-sign-off INT API-vendor review (OpenAI + XAI/Grok) on 6 bigbounce papers.
+"""Legacy FINAL pre-sign-off XAI/Grok API review on 6 bigbounce papers.
+
+The OpenAI perspective is subscription-only and must be run via Codex CLI.
 Loads keys from .env.local by NAME (never prints values). Sends pdftotext text.
 Saves EVERY raw response. A failed call = FAILED leg (recorded with error), never invented.
 """
@@ -20,7 +22,6 @@ PAPERS = {
     "P1A": ("v1A.0.110", "/tmp/txt_P1A.txt"),
 }
 
-OPENAI_MODEL = "gpt-5.2"
 XAI_MODEL = "grok-4.3"
 
 PROMPT = (
@@ -71,25 +72,6 @@ def parse_verdict(text):
     return None
 
 
-def call_openai(text):
-    payload = {
-        "model": OPENAI_MODEL,
-        "messages": [
-            {"role": "system", "content": "You are an expert Physical Review D referee."},
-            {"role": "user", "content": PROMPT + "\n\n===== MANUSCRIPT (pdftotext) =====\n\n" + text},
-        ],
-    }
-    r = requests.post(
-        "https://api.openai.com/v1/chat/completions",
-        headers={"Authorization": f"Bearer {ENV['OPENAI_API_KEY']}", "Content-Type": "application/json"},
-        json=payload, timeout=1200,
-    )
-    if r.status_code != 200:
-        raise RuntimeError(f"HTTP {r.status_code}: {r.text[:500]}")
-    j = r.json()
-    return j["choices"][0]["message"]["content"], j.get("usage", {})
-
-
 def call_xai(text):
     payload = {
         "model": XAI_MODEL,
@@ -109,7 +91,7 @@ def call_xai(text):
     return j["choices"][0]["message"]["content"], j.get("usage", {})
 
 
-VENDORS = {"openai": (OPENAI_MODEL, call_openai), "grok": (XAI_MODEL, call_xai)}
+VENDORS = {"grok": (XAI_MODEL, call_xai)}
 
 
 def run_one(paper, vendor):
@@ -150,14 +132,13 @@ def main():
     order = sys.argv[1:] if len(sys.argv) > 1 else list(PAPERS.keys())
     results = []
     for paper in order:
-        for vendor in ("openai", "grok"):
+        for vendor in ("grok",):
             results.append(run_one(paper, vendor))
     print("\n===== VERDICT TABLE =====")
-    print(f"{'paper':5s} {'openai':16s} {'grok':16s}")
+    print(f"{'paper':5s} {'grok':16s}")
     for paper in order:
-        o = next((r for r in results if r["paper"] == paper and r["vendor"] == "openai"), {})
         g = next((r for r in results if r["paper"] == paper and r["vendor"] == "grok"), {})
-        print(f"{paper:5s} {str(o.get('verdict') or o.get('status')):16s} {str(g.get('verdict') or g.get('status')):16s}")
+        print(f"{paper:5s} {str(g.get('verdict') or g.get('status')):16s}")
 
 
 if __name__ == "__main__":
