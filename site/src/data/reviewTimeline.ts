@@ -57,6 +57,41 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p2-v17122-prd-exact-accept-confirm-2026-07-14",
+    dateISO: "2026-07-14",
+    timePT: "12:42–12:52",
+    kind: "internal-cc",
+    title:
+      "P2 v1.7.122 — routing-corrected exact-PDF board reaches three valid ACCEPT verdicts; external gates remain",
+    papers: ["P2"],
+    summary:
+      "Three valid non-Anthropic routes reviewed the same immutable 10-page PRD artifact (source commit 3e4a8cbf; SHA-256 4097bac5…5c9): ChatGPT-subscription Codex CLI gpt-5.6-sol high, Gemini 3.1 Pro Preview, and Grok 4.3 each returned ACCEPT with zero hidden MAJOR or MINOR tags. The OpenAI API leg launched before the routing correction is preserved as nonconforming diagnostic evidence and excluded from the board and readiness. All seven v1.7.121 clarity findings are closed, but direct cubic transfer, actual survey covariance/likelihood, a model-specific torsion bound, immutable archive/DOI, and human editorial review remain open. No readiness uplift; the verified cap remains 74.",
+    keyTakeaways: [
+      "The subscription reviewer independently recomputed the coefficient tuple (3,1,-9,5,-33,9), squeezed limit -35/16, first correction, and equilateral/folded values.",
+      "Title/notation, ordered-sum and product definitions, epsilon scope, primordial-to-LSS convention, and general-versus-UMF b_phi mapping are all confirmed closed.",
+      "Automated ACCEPT is evidence about this exact artifact, not journal acceptance; the external science, data, release, and human-decision gates remain explicit.",
+      "Gemini and Grok ran concurrently, saving 22.5 seconds (35.2%) versus serial dispatch; content-addressed packets failed closed on artifact mismatch.",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 0,
+      note: "No new manuscript finding remains from this valid automated board. Five typed external/workflow gates remain, so neither journal acceptance nor a readiness increase is inferred.",
+    },
+    links: [
+      {
+        label: "Normalized truth audit",
+        href: `${PR}/INT_v3/ROUND_2026-07-14-P2-v1.7.122-EXACTPDF-4097bac5-PRD-NONANTHROPIC-CONFIRM/P2_v1.7.122_NORMALIZED_TRUTH_AUDIT.md`,
+      },
+      {
+        label: "Exact-PDF routing ledger",
+        href: `${PR}/INT_v3/ROUND_2026-07-14-P2-v1.7.122-EXACTPDF-4097bac5-PRD-NONANTHROPIC-CONFIRM/manifest.jsonl`,
+      },
+      {
+        label: "Declared panel gaps",
+        href: `${PR}/INT_v3/ROUND_2026-07-14-P2-v1.7.122-EXACTPDF-4097bac5-PRD-NONANTHROPIC-CONFIRM/DECLARED_GAPS.json`,
+      },
+    ],
+  },
+  {
     id: "p3-v320-r6-apjs-exact-panel-2026-07-14",
     dateISO: "2026-07-14",
     timePT: "12:21–12:22",

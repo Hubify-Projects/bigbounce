@@ -1,0 +1,73 @@
+{
+  "schema": 1,
+  "paper": "P2",
+  "version": "v1.7.122",
+  "review_profile": "PRD-RESEARCH",
+  "dispatch_head": "3e4a8cbf206fa8f15f69eb350d3e4ad61568ab52",
+  "source_commit": "3e4a8cbf206fa8f15f69eb350d3e4ad61568ab52",
+  "source_sha256": "9144e1be05ba38e37271f8ffbb44bf9d52b73235b352f6672abbbcdaf56aaf1a",
+  "pdf_sha256": "4097bac5a9930df7fa73e4a4567a7c60156f6cadb4321e51146dd237e13225c9",
+  "page_count": 10,
+  "valid_confirmation_board": [
+    {
+      "route": "codex-chatgpt-subscription",
+      "model": "gpt-5.6-sol",
+      "effort": "high",
+      "verdict": "ACCEPT",
+      "major_tags": 0,
+      "minor_tags": 0,
+      "seconds": 351,
+      "raw": "CODEX_SUBSCRIPTION_P2_RAW.md",
+      "sha256": "e41f37b3059d0381b7fd2652f00dd9e4471f848ae2b4031e0360955d60c4b1dd"
+    },
+    {
+      "route": "gemini-api",
+      "model": "gemini-3.1-pro-preview",
+      "verdict": "ACCEPT",
+      "major_tags": 0,
+      "minor_tags": 0,
+      "seconds": 41.5,
+      "packet_key": "0cef2fddda8c1436b8ecd046445420730ca8ef191b7f42b17a6a9c8c34598242",
+      "raw": "API_P2_gemini.md",
+      "sha256": "82a12aa435baf626143643e8ac41d3f1daf1e206b94699ecbaa120075df71ad3"
+    },
+    {
+      "route": "grok-api",
+      "model": "grok-4.3",
+      "verdict": "ACCEPT",
+      "major_tags": 0,
+      "minor_tags": 0,
+      "seconds": 22.5,
+      "packet_key": "a71eceeff29f1be30ad5c5e7291d81e9af2d4a0e8a76a68e718068cbcb588a15",
+      "raw": "API_P2_grok.md",
+      "sha256": "34675c08c30ea57d7fdd9260be4638b0fdcb0b658697dec93c5085a5c384ae26"
+    }
+  ],
+  "excluded_diagnostic": {
+    "route": "openai-api",
+    "model": "gpt-5.5",
+    "verdict": "ACCEPT",
+    "major_tags": 0,
+    "minor_tags": 1,
+    "seconds": 55.5,
+    "packet_key": "fe1f00cf821832f215be417a119a46b43cdd519842e5f5866e074d5d9211d728",
+    "raw": "API_P2_openai.md",
+    "sha256": "6ea5762c44dd795cfe701acce27b7774e39c85a7c45f271c461c20024615eba4",
+    "status": "NONCONFORMING_DIAGNOSTIC_ONLY",
+    "reason": "Started before the 2026-07-14 routing correction that prohibits OpenAI API use for BigBounce; excluded from acceptance and readiness."
+  },
+  "prompts": [
+    {
+      "path": "REVIEW_PROMPT.md",
+      "sha256": "4e29b6f5aa828c2164c5190d58f15a5f4c18d0ddf039ba3ee213c05f3a3047ad"
+    },
+    {
+      "path": "CODEX_SUBSCRIPTION_PROMPT.md",
+      "sha256": "bf6948ac29edac8a1f5ac0cbdc08fecadfa250df3d722125b45c760360c51218"
+    }
+  ],
+  "dispatch_manifest": {
+    "path": "manifest.jsonl",
+    "sha256": "20cf1558becc1993c3591a4a647bd4b34d214cd01ee3fcde33a609660853f0dc"
+  }
+}

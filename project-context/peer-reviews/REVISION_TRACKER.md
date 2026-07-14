@@ -20,6 +20,27 @@ This tracker logs each revision round and which issues have been addressed.
 
 ## Revision Rounds
 
+### P2 v1.7.122: Exact-PDF PRD automated-ACCEPT confirmation (2026-07-14)
+
+**Input:** exact 10-page PDF from manuscript/source commit `3e4a8cbf206fa8f15f69eb350d3e4ad61568ab52`; TeX SHA-256 `9144e1be05ba38e37271f8ffbb44bf9d52b73235b352f6672abbbcdaf56aaf1a`; PDF SHA-256 `4097bac5a9930df7fa73e4a4567a7c60156f6cadb4321e51146dd237e13225c9`. Review evidence, this tracker entry, the P2 SSOT update, and the site board are frozen together in one commit.
+
+**Valid panel:** ChatGPT-subscription Codex CLI `gpt-5.6-sol` high **ACCEPT** (0 MAJOR / 0 MINOR) / Gemini 3.1 Pro Preview **ACCEPT** (0/0) / Grok 4.3 **ACCEPT** (0/0). No Anthropic/Claude. The OpenAI API `gpt-5.5` call started before the routing correction; its raw is retained as **NONCONFORMING / DIAGNOSTIC-ONLY** and excluded from the valid board, acceptance evidence, and readiness.
+
+**Truth audit:** all seven bounded v1.7.121 clarity findings are closed. The valid panel independently supports the exact four-vertex coefficient tuple `(3,1,-9,5,-33,9)`, squeezed limit `-35/16`, first squeezed correction `35 k_1^2/(64 k^2)`, equilateral value `-255/128`, and folded value `-9/8`.
+
+| Finding/gate | Status | Evidence or remaining requirement |
+|---|---|---|
+| Title, ordered sums/product, `K_9`, epsilon scope | **CLOSED** | Definitions and table scope are explicit in v1.7.122 |
+| Primordial-to-LSS convention bridge | **CLOSED** | The displayed `Phi=(3/5)zeta` conversion cancels exactly between the two local-template conventions |
+| General versus UMF `b_phi` response | **CLOSED** | General response and `b_phi^UMF=2 delta_c(b_1-1)` specialization are printed separately |
+| Exact four-vertex algebra | **CONFIRMED** | Three valid ACCEPT reports; subscription reviewer independently recomputed the central coefficients and limits |
+| Cubic bounce transfer | **OPEN — EXTERNAL SCIENCE GATE** | Direct third-order calculation through a specified nonsingular transition |
+| SPHEREx covariance/likelihood | **OPEN — EXTERNAL DATA GATE** | Actual per-triangle covariance, likelihood, and justified nuisance model |
+| Fermion/torsion applicability | **OPEN — MODEL GATE** | Model-specific bound for fermion-populated completions |
+| Archive/DOI and human PRD decision | **OPEN — WORKFLOW/HUMAN GATES** | Immutable release plus actual editor/referee decision; automated ACCEPT is not journal acceptance |
+
+Gemini and Grok concurrency saved 22.5 seconds (35.2%) versus serial dispatch. No readiness uplift; P2 remains capped at 74. Full audit/raws: `INT_v3/ROUND_2026-07-14-P2-v1.7.122-EXACTPDF-4097bac5-PRD-NONANTHROPIC-CONFIRM/`.
+
 ### P3 v3.2.0-r6: Exact-PDF ApJS control confirmation (2026-07-14)
 
 **Input:** exact 15-page PDF from closure commit `064b06bdbc2a5844837dbd92d5fafbc58c44328b`, reviewed at repository commit `c6277107cb8d705d6b2c1b675269f507fa54ab9a`; TeX SHA-256 `723d25080fa0e192c225105d42cf7ead233d5ec5cc3956b30630e5601268fc89`; PDF SHA-256 `a16c217930a31ba799b68a88b2477b020ad5e309ff79626e49b2b69a715fdd5a`.
