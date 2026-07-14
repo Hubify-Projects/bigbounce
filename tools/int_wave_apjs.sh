@@ -47,8 +47,17 @@ live_version() {
   python3 - "$REPO/$TEX_REL" <<'PY'
 import re, sys
 txt = open(sys.argv[1]).read()
-m = re.search(r"\\date\{[^}]*\}\s*%\s*(v[\w.\-]+)", txt)
-print(m.group(1) if m else "unknown-version")
+for pattern in (
+    r"\\newcommand\{\\paperVersion\}\{([^}]+)\}",
+    r"\\date\{[^}]*\}\s*%\s*(v[\w.\-]+)",
+    r"^%\s*(v[\w.\-]+)\s*\(",
+):
+    match = re.search(pattern, txt, re.MULTILINE)
+    if match:
+        print(match.group(1))
+        break
+else:
+    raise SystemExit("cannot determine P3 ApJS paper version")
 PY
 }
 VER="$(live_version)"
