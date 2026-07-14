@@ -1,0 +1,78 @@
+{
+  "paper": "P3 ApJS",
+  "version": "v3.2.0-r7",
+  "status": "PASS",
+  "scope_boundary": "P3 manuscript/PDF, catalog submission bundle, and this proof freeze only; no SSOT, tracker, site, Convex, review wave, or push",
+  "frozen_sources": {
+    "tex": {
+      "path": "P3_v3.2.0-r7.tex",
+      "sha256": "01cb68b1d52d411c1f4b181d6504f2f1344bc45d1f0ad3793d74b58a5d7e75d8"
+    },
+    "pdf": {
+      "path": "P3_v3.2.0-r7.pdf",
+      "sha256": "761e35ec840e93599163d68c6b4db9b8d75293545e49c45c978dc0be0f38cb2b",
+      "pages": 16,
+      "bytes": 468091
+    }
+  },
+  "primary_contract": {
+    "total_positional_associations": 181,
+    "high_coordinate_consistency_le_0p1arcsec": 170,
+    "lower_confidence_gt_0p1_le_1arcsec": 11,
+    "retain_all_181": true,
+    "secure_identity_claim": false,
+    "purity_claim": false
+  },
+  "coordinate_lineage": {
+    "status": "PASS",
+    "supported": "Historical DESI anomaly ra/dec were copied from coadd FIBERMAP TARGET_RA/TARGET_DEC before cluster member-coordinate means were computed.",
+    "explicit_gap": "The production object-to-spectrum mapping and historical score preprocessing/normalization remain unavailable.",
+    "source_sha256": {
+      "13_desi_dr1_gpu_inference.py": "0c8bb3f39d02816fc412ec0ff1eb7430a95fdb2ded1c4ab0e832c67758d8d23e",
+      "run_dr1_parallel.py": "4e400eb04968091516a6aaf145dab3b4e7e1ec6018f538653c75fa78820aa83a",
+      "enhanced_18M_inference.py": "f9aa536e976132d780cadcb0d319bd2f0dd9ee91d4b24a4fb1973802afd25595",
+      "pathc_positional_dedup.py": "c5ab3517a655c03f5b7b371e340b10dc289c27f6dacffed4862bf4f38ba0ab62",
+      "desi_dr1_anomalies.parquet": "0a36b8d6dfb8086c2c417885c99689d7a75b416dad1b030db56477baf103ec65"
+    }
+  },
+  "submission_bundle": {
+    "path": "pipelines/p3_anomaly_engine/apjs_submission_bundle_v3.2.0-r7",
+    "manifest_sha256": "e59710a1c4f88fc816257d1441ae3eb69d954828c180a8541a1aa8f1c855007a",
+    "sha256sums_sha256": "bb37501f1912cc9199903ba39844a19f7ff0da0272ba5448986eac496e2d4a4f",
+    "manifested_payloads": 38,
+    "total_files": 41,
+    "aas_digital_asset_doi": null,
+    "aas_digital_asset_doi_status": "pending AAS publication workflow; not claimed"
+  },
+  "validators": {
+    "bundle_contract": "PASS",
+    "in_place_guard_self_check": "PASS: four unsafe in-place destinations rejected; two temporary destinations accepted",
+    "primary_component": "PASS: exact 18-field source rejoin, 143-part replay, 8/8 remote byte ranges",
+    "primary_full_local_fits_hash": "PASS in first run; validator then hit a final packaging-only SameFileError after its science checks",
+    "primary_non_mutating_temp_replay": "PASS with full hash skipped because it had just been recomputed in the first run",
+    "warned_component": "PASS: exact 2,267-row checkpoint replay, carried-field equality, exact ZWARN accounting",
+    "warned_original_score_median": 5.841819763183594,
+    "aas_tsv": "PASS: exact typed 181 x 43 serialization"
+  },
+  "latex_audit": {
+    "compile_errors": 0,
+    "undefined_references_or_citations": 0,
+    "overfull_hboxes": 0,
+    "underfull_hboxes": 0,
+    "table_row_overflows": 0,
+    "raw_texttt_paths": 0,
+    "date_overflow_risks": 0,
+    "visual_pages_reviewed": 16,
+    "visual_status": "PASS",
+    "float_warning_disposition": "AASTeX reported deferred placement for the 11-row tail table; all eight tables and three figures are present, non-overlapping, and visually in bounds in the final PDF."
+  },
+  "url_audit": {
+    "unique_pdf_url_annotations": 26,
+    "repo_links_mapped_to_existing_local_paths": 11,
+    "broken_repo_links": 0,
+    "external_http_200": 14,
+    "external_doi_redirect_302": 1,
+    "broken_external_links": 0,
+    "note": "The MNRAS DOI resolves at doi.org with HTTP 302; the final Oxford Academic page returns 403 to automated clients."
+  }
+}

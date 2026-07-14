@@ -1,0 +1,37 @@
+{
+  "assertions": {
+    "all_global_primary": true,
+    "all_primary_catalog_member_false": true,
+    "all_status_labels_exact": true,
+    "all_zwarn_nonzero": true,
+    "candidate_ids_unique": true,
+    "cluster_ids_unique": true,
+    "pre_post_dedup_rows_equal": true,
+    "targetids_unique": true
+  },
+  "columns": 47,
+  "counts": {
+    "global_primary": 2448,
+    "raw_matches": 2468,
+    "warned_primary": 2267
+  },
+  "exact_set_sha256_cluster_target_fits_zwarn": "2cc02e4b839073a3d2664c57614a6b20205a3d1d9d68d71851b72ccb4794ee78",
+  "exact_zwarn_mask_counts": {
+    "2": 787,
+    "2048": 3,
+    "2050": 10,
+    "2052": 2,
+    "2054": 19,
+    "4": 152,
+    "6": 1294
+  },
+  "product_role": "SECONDARY_WARNING_BEARING_NOT_PRIMARY_NOT_PHYSICALLY_VALIDATED",
+  "rows": 2267,
+  "selection": "ZCAT_PRIMARY == true and ZWARN != 0 after the declared positional/main-science join; predicate before dedupe",
+  "status": "PASS",
+  "zwarn_set_bit_counts_nonexclusive": {
+    "LITTLE_COVERAGE": 2110,
+    "POORDATA": 34,
+    "SMALL_DELTA_CHI2": 1467
+  }
+}
