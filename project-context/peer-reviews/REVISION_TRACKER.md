@@ -20,6 +20,27 @@ This tracker logs each revision round and which issues have been addressed.
 
 ## Revision Rounds
 
+### P3 v3.2.0-r6: Exact-PDF ApJS control confirmation (2026-07-14)
+
+**Input:** exact 15-page PDF from closure commit `064b06bdbc2a5844837dbd92d5fafbc58c44328b`, reviewed at repository commit `c6277107cb8d705d6b2c1b675269f507fa54ab9a`; TeX SHA-256 `723d25080fa0e192c225105d42cf7ead233d5ec5cc3956b30630e5601268fc89`; PDF SHA-256 `a16c217930a31ba799b68a88b2477b020ad5e309ff79626e49b2b69a715fdd5a`.
+
+**Panel:** Grok 4.3 **ACCEPT** (4 hidden MINOR tags) / Gemini 3.1 Pro Preview **MINOR REVISIONS** (3 MINOR) / OpenAI GPT-5.5 **MAJOR REVISIONS** (5 MAJOR / 6 MINOR). Immutable `APJS-CATALOG` packets, all first-attempt concurrent native-PDF legs, no Anthropic/Claude. Evidence manifest 9/9 PASS.
+
+**Truth audit:** all three support the deterministic public-DESI positional-rejoin computation. The new chance, warned-population, and original-member controls are real and reproducible, but OpenAI identifies bounded catalog-contract and provenance work that prevents a minor-only board.
+
+| Finding | Status | Required action/evidence |
+|---|---|---|
+| 170 core versus 11 tail | **OPEN — ACCEPTANCE-RELEVANT CONTRACT** | Make the <0.1" core and chance-compatible 0.1–1" association tier explicit; preserve all 181 rows; infer no purity |
+| Shifted-position control | **CLOSED BY COMPUTE** | Parent 2,468 vs 86.69+/-14.42; strict 181 vs 76.19+/-13.30; tail 11 vs 75.56+/-13.01 |
+| Original-member sensitivity | **CLOSED BY COMPUTE** | 180/181 retained; only P3-DESI-000030 removed at 1.979009" |
+| Warning-population comparison | **CLOSED BY EXACT PRODUCT** | Exact warned original_score median is 5.841820; prior 6.211950 audit value corrected |
+| TARGET_RA/DEC coordinate lineage | **OPEN — BOUNDED PROVENANCE** | Recover immutable upstream semantics or explicitly bound the result to coordinate association |
+| Definitive submission bundle | **OPEN — WORKFLOW MAJOR** | One manifest-led checksum-bound primary/auxiliary/AAS-table bundle; DOI remains pending |
+| Legacy scores / warning-free / viewer hierarchy | **STALE/CLOSED** | Existing text already labels legacy metadata, ZWARN=0, and viewer evidence as subordinate |
+| Historical dataset name / example caption | **OPEN — PRESENTATION MINOR** | Name the prior catalog early and restate deterministic excerpt rule |
+
+Critical path was 59.7 seconds versus 100.6 seconds summed (40.7% reduction). No readiness uplift; P3 remains capped at 56. Full audit/raws: `INT_v3/ROUND_2026-07-14-P3-v3.2.0-r6-EXACTPDF-a16c2179-APJS-NONANTHROPIC-CONFIRM/`.
+
 ### P4 v1.0.243: Exact-PDF ApJS confirmation panel (2026-07-14)
 
 **Input:** exact 27-page PDF from manuscript commit `22818453cbd9445b26f2e04de39aef03319a2609`, reviewed at repository commit `36badcbdf498123413031aa0a9504127d48f2054`; TeX SHA-256 `6affe4205a49a7954716f09ef11f31e1c17da1cbd778c195f8966c25c0127ed0`; PDF SHA-256 `9e73fd888699058d421043b0dd2de5d37d2aeb36fe37e8dd1c0bf5409e947d19`.

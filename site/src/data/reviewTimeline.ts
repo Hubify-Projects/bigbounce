@@ -57,6 +57,41 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p3-v320-r6-apjs-exact-panel-2026-07-14",
+    dateISO: "2026-07-14",
+    timePT: "12:21–12:22",
+    kind: "internal-api",
+    title:
+      "P3 v3.2.0-r6 — Grok ACCEPT and Gemini MINOR after full-catalog controls; bounded contract gates remain",
+    papers: ["P3"],
+    summary:
+      "Three concurrent non-Anthropic reviewers received immutable APJS-CATALOG packets for the same clean 15-page PDF (closure commit 064b06bd; SHA-256 a16c2179…dd5a). Grok returned ACCEPT, Gemini MINOR, and OpenAI MAJOR. All three support the deterministic public-DESI positional-rejoin computation. Truth audit verifies the shifted-position, warned-population, and original-member controls, while retaining a 170-core/11-association catalog-contract gate, historical-to-public coordinate-lineage scope, and one definitive checksum-bound submission bundle. No readiness uplift; the verified cap remains 56.",
+    keyTakeaways: [
+      "At 0.1 arcsec the strict core is 170 versus 0.625 shifted; the 11-row 0.1–1 arcsec tail is chance-compatible and must remain a lower-confidence association tier.",
+      "The original-member rule retains 180/181 rows and removes only P3-DESI-000030 at 1.979009 arcsec.",
+      "The exact warned original_score median is 5.841820; the earlier 6.211950 audit value was erroneous and is not propagated.",
+      "Parallel dispatch reduced critical-path latency by 40.7%; the evidence manifest passed 9/9 checks.",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 3,
+      note: "Three bounded major classes remain: the 170/11 release contract, coordinate semantics, and unified submission bundle. This is not a readiness score.",
+    },
+    links: [
+      {
+        label: "Normalized truth audit",
+        href: `${PR}/INT_v3/ROUND_2026-07-14-P3-v3.2.0-r6-EXACTPDF-a16c2179-APJS-NONANTHROPIC-CONFIRM/P3_v3.2.0-r6_NORMALIZED_TRUTH_AUDIT.md`,
+      },
+      {
+        label: "Exact-PDF ApJS board",
+        href: `${PR}/INT_v3/ROUND_2026-07-14-P3-v3.2.0-r6-EXACTPDF-a16c2179-APJS-NONANTHROPIC-CONFIRM/manifest.jsonl`,
+      },
+      {
+        label: "Declared panel gap",
+        href: `${PR}/INT_v3/ROUND_2026-07-14-P3-v3.2.0-r6-EXACTPDF-a16c2179-APJS-NONANTHROPIC-CONFIRM/DECLARED_GAPS.json`,
+      },
+    ],
+  },
+  {
     id: "p4-v10243-apjs-exact-panel-2026-07-14",
     dateISO: "2026-07-14",
     timePT: "12:08–12:10",
