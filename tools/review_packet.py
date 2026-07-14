@@ -60,7 +60,33 @@ def page_count(pdf: Path) -> int:
 
 
 def packet_key(pdf_sha: str, profile: str, prompt_sha: str, model: str, effort: str) -> str:
-    return sha256_bytes(f"{pdf_sha}{profile}{prompt_sha}{model}{effort}".encode())
+    fields = {
+        "pdf_sha256": pdf_sha, "review_profile_id": profile,
+        "prompt_sha256": prompt_sha, "model": model, "effort": effort,
+    }
+    return sha256_bytes(json.dumps(fields, sort_keys=True, separators=(",", ":")).encode())
+
+
+def freeze_pdf(pdf: Path, cache_root: Path) -> tuple[str, Path]:
+    content = pdf.read_bytes()
+    digest = sha256_bytes(content)
+    path = cache_root / "pdf" / f"{digest}.pdf"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    if path.exists():
+        if sha256_file(path) != digest:
+            raise RuntimeError(f"corrupt cached PDF snapshot: {path}")
+    else:
+        fd, name = tempfile.mkstemp(prefix=f".{digest}.", dir=path.parent)
+        temporary = Path(name)
+        try:
+            with os.fdopen(fd, "wb") as handle:
+                handle.write(content); handle.flush(); os.fsync(handle.fileno())
+            os.replace(temporary, path)
+        finally:
+            if temporary.exists(): temporary.unlink()
+    if sha256_file(pdf) != digest:
+        raise RuntimeError("canonical PDF changed while snapshotting")
+    return digest, path
 
 
 def build_packet(
@@ -72,6 +98,7 @@ def build_packet(
     model: str,
     effort: str,
     expected_pdf_sha: str | None = None,
+    cache_root: Path | None = None,
 ) -> dict[str, Any]:
     root = root.resolve()
     tex_rel, pdf_rel = entry["tex_path"], entry["pdf_path"]
@@ -79,13 +106,14 @@ def build_packet(
     if not tex.is_file() or not pdf.is_file():
         raise FileNotFoundError(f"missing source/PDF for {paper_id}")
     ensure_clean(root, [tex_rel, pdf_rel])
-    pdf_sha = sha256_file(pdf)
+    cache_root = cache_root or Path(os.environ.get("BIGBOUNCE_REVIEW_CACHE", Path.home() / ".cache/bigbounce/review-packets"))
+    pdf_sha, snapshot = freeze_pdf(pdf, cache_root)
     if expected_pdf_sha is not None and pdf_sha != expected_pdf_sha:
         raise ValueError(f"PDF SHA mismatch: expected {expected_pdf_sha}, got {pdf_sha}")
     prompt_sha = sha256_bytes(prompt)
     context_sha = sha256_bytes(allowed_context)
-    source_commit = run_git(root, "log", "-1", "--format=%H", "--", tex_rel)
-    if not source_commit:
+    source_last_commit = run_git(root, "log", "-1", "--format=%H", "--", tex_rel)
+    if not source_last_commit:
         raise ValueError(f"source path has no commit: {tex_rel}")
     key = packet_key(pdf_sha, entry["review_profile"], prompt_sha, model, effort)
     return {
@@ -93,11 +121,14 @@ def build_packet(
         "packet_key": key,
         "paper_id": paper_id,
         "paper_version": live_version(tex),
-        "source_commit": source_commit,
+        "repository_head": run_git(root, "rev-parse", "HEAD"),
+        "source_commit": source_last_commit,
+        "source_last_commit": source_last_commit,
         "source_path": tex_rel,
         "source_sha256": sha256_file(tex),
         "pdf_path": pdf_rel,
         "pdf_sha256": pdf_sha,
+        "pdf_snapshot_path": str(snapshot),
         "page_count": page_count(pdf),
         "site_slug": entry["site_slug"],
         "target_journal": entry["target_journal"],
@@ -110,12 +141,16 @@ def build_packet(
     }
 
 
-def publish_packet(packet: dict[str, Any], output_root: Path) -> tuple[Path, bool]:
+def publish_packet(packet: dict[str, Any], output_root: Path, prompt: bytes, context: bytes) -> tuple[Path, bool]:
     path = output_root / packet["paper_id"] / f"{packet['packet_key']}.json"
     encoded = (json.dumps(packet, indent=2, sort_keys=True) + "\n").encode()
+    prompt_path = path.with_suffix(".prompt")
+    context_path = path.with_suffix(".context")
     if path.exists():
         if path.read_bytes() != encoded:
             raise RuntimeError(f"cache-key collision or mutated packet: {path}")
+        if prompt_path.read_bytes() != prompt or context_path.read_bytes() != context:
+            raise RuntimeError(f"cached packet blob mismatch: {path}")
         return path, True
     path.parent.mkdir(parents=True, exist_ok=True)
     fd, temporary_name = tempfile.mkstemp(prefix=f".{path.name}.", dir=path.parent)
@@ -129,6 +164,8 @@ def publish_packet(packet: dict[str, Any], output_root: Path) -> tuple[Path, boo
     finally:
         if temporary.exists():
             temporary.unlink()
+    prompt_path.write_bytes(prompt)
+    context_path.write_bytes(context)
     return path, False
 
 
@@ -150,7 +187,7 @@ def main() -> None:
         context, args.model, args.effort, args.expected_pdf_sha,
     )
     output = args.output_root or root / "project-context" / "review-packets"
-    path, reused = publish_packet(packet, output)
+    path, reused = publish_packet(packet, output, args.prompt_file.read_bytes(), context)
     print(json.dumps({"path": str(path), "reused": reused, "packet": packet}, indent=2))
 
 

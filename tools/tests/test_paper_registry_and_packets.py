@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "tools"))
 
 from paper_registry import CANONICAL_IDS, load_registry, repo_root  # noqa: E402
-from review_packet import build_packet, publish_packet, sha256_file  # noqa: E402
+from review_packet import build_packet, packet_key, publish_packet, sha256_file  # noqa: E402
 
 
 class RegistryTests(unittest.TestCase):
@@ -61,17 +61,24 @@ class PacketTests(unittest.TestCase):
     def packet(self, expected=None):
         return build_packet(
             self.root, "PTEST", self.entry, b"prompt", b"context",
-            "model-x", "high", expected,
+            "model-x", "high", expected, self.root / "cache",
         )
 
     def test_exact_key_reuse(self):
         packet = self.packet(sha256_file(self.root / "paper/test.pdf"))
-        path, reused = publish_packet(packet, self.root / "packets")
+        path, reused = publish_packet(packet, self.root / "packets", b"prompt", b"context")
         self.assertFalse(reused)
-        same, reused = publish_packet(packet, self.root / "packets")
+        same, reused = publish_packet(packet, self.root / "packets", b"prompt", b"context")
         self.assertEqual(path, same)
         self.assertTrue(reused)
         self.assertEqual(json.loads(path.read_text()), packet)
+        self.assertEqual(path.with_suffix(".prompt").read_bytes(), b"prompt")
+        self.assertEqual(path.with_suffix(".context").read_bytes(), b"context")
+
+    def test_labeled_key_has_no_concatenation_ambiguity(self):
+        left = packet_key("ab", "c", "d", "e", "f")
+        right = packet_key("a", "bc", "d", "e", "f")
+        self.assertNotEqual(left, right)
 
     def test_hash_mismatch_fails_closed(self):
         with self.assertRaisesRegex(ValueError, "PDF SHA mismatch"):
