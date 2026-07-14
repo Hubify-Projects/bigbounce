@@ -1,0 +1,37 @@
+{
+  "status": "SUPERSEDED-HISTORICAL-SENSITIVITY-ONLY",
+  "reason": "P4 versions through v1.0.242 declared N_spiral>=10 but executed the strict mask N_spiral>10. The v1.0.243 canonical primary uses the inclusive contract. These exact strict-mask values are retained only for provenance and mask-sensitivity comparison.",
+  "source_version": "v1.0.242",
+  "catalog_rows": 8474531,
+  "sample": {
+    "n_hc": 949584,
+    "n_cw": 471049,
+    "n_ccw": 478535
+  },
+  "mask": {
+    "nside": 64,
+    "operator": ">",
+    "minimum_spirals": 10,
+    "n_valid_pixels": 23600,
+    "f_sky": 0.4801432291666667
+  },
+  "dipole": {
+    "amplitude": 0.00442297186793267,
+    "monopole": -0.00782067143919217,
+    "direction_frame": "equatorial (catalog RA/Dec basis)",
+    "equatorial_ra_deg": 292.95442132918373,
+    "equatorial_dec_deg": 12.020619153881627
+  },
+  "pixel_permutation_null": {
+    "N": 10000,
+    "seed": 20260418,
+    "mean": 0.0037367565963817,
+    "std_ddof0": 0.0016819892879683727,
+    "std_ddof1": 0.0016820733937407567,
+    "z_moment_ddof0": 0.4079783839645196,
+    "k_upper_tail": 3084,
+    "rank_p_one_sided_upper_tail": 0.3084691530846915,
+    "rank_formula": "(k+1)/(N+1)",
+    "null_array": "pipelines/p2_chirality/outputs/canonical_provenance/c12_queue2_null_amps_10k_strict_gt10_historical.npy"
+  }
+}

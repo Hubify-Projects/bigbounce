@@ -1,0 +1,39 @@
+{
+  "_comment": "Compatibility provenance pointer. The only canonical P4 v1.0.243 primary numeric artifact is outputs/dipole/catalog_c_summary.json.",
+  "version": "v1.0.243",
+  "date_local": "2026-07-14",
+  "catalog": "Catalog C (equivariant, post-TTA)",
+  "canonical_primary": {
+    "artifact": "pipelines/p2_chirality/outputs/dipole/catalog_c_summary.json",
+    "mask_contract": "N_spiral >= 10 (inclusive)",
+    "n_hc": 949584,
+    "n_pix": 23682,
+    "f_sky": 0.4818115234375,
+    "amplitude": 0.004597074287780104,
+    "equatorial_ra_deg": 294.30537030397005,
+    "equatorial_dec_deg": 16.029115977736286,
+    "null_mean": 0.0036928318780248184,
+    "null_std_ddof0": 0.0016467112675757516,
+    "z_mom_ddof0": 0.549120193418297,
+    "rank_formula": "(k+1)/(N+1), one-sided upper tail; k=count(A_null>=A_data)",
+    "rank_k": 2651,
+    "rank_N": 10000,
+    "rank_p_one_sided_upper_tail": 0.26517348265173485,
+    "mc_seed": 20260418,
+    "null_array": "pipelines/p2_chirality/outputs/canonical_provenance/c12_queue2_null_amps_10k.npy",
+    "null_array_sha256": "62bb1c019231974c2a7ed5d5e43ceb77a5596e4675c82d7ff1c899e029a36492"
+  },
+  "historical_strict_mask_sensitivity": {
+    "status": "SUPERSEDED-HISTORICAL-SENSITIVITY-ONLY",
+    "artifact": "pipelines/p2_chirality/outputs/dipole/catalog_c_summary_strict_gt10_historical.json",
+    "mask_contract": "N_spiral > 10 (strict)",
+    "n_pix": 23600,
+    "amplitude": 0.00442297186793267,
+    "z_mom_ddof1": 0.407958,
+    "rank_k": 3084,
+    "rank_N": 10000,
+    "rank_p_one_sided_upper_tail": 0.3084691530846915,
+    "note": "Retained solely to document the prior mask mismatch and bounded sensitivity of the null verdict; it is not a primary result."
+  },
+  "supersedes_note": "The pre-TTA outputs/dipole/summary.json remains a historical Catalog A diagnostic and is not a P4 primary anchor."
+}
