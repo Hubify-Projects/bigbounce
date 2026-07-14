@@ -1,0 +1,29 @@
+# ledger_match DRAFT — P4 — API_P4_openai.md
+
+> DRAFT for the Opus truth-auditor, NOT a replacement. Conservative threshold (prefers UNMATCHED over a false match). Every UNMATCHED finding — and every low-score MATCHED — still needs a human/Opus source-cited disposition per §3.
+>
+> ledger: `project-context/peer-reviews/DISPOSITIONS/P4.md` (22 D-ids)  |  findings parsed: 17  |  threshold: 0.3
+
+| # | sev | finding (first 120 chars) | best match | score | status |
+|---|-----|---------------------------|-----------|-------|--------|
+| 1 | MAJOR | Title/Abstract/central claim: The paper advertises “a null chirality dipole in 8.5 million DESI galaxies,” but the state | DP4-13 | 0.47 | MATCHED |
+| 2 | MAJOR | Secs. III–IV, estimator hierarchy: The manuscript contains too many non-equivalent estimators, masks, weights, nulls, fi | DP4-16 | 0.12 | **UNMATCHED** |
+| 3 | MAJOR | Sec. IV C / Sec. III B, primary sample selection: The \(p_{\rm eq}>0.6\) “pre-registration” claim is not adequate for a  | DP4-07 | 0.58 | MATCHED |
+| 4 | MAJOR | Secs. IV C–D, treatment of significant harmonic residuals: The paper reports persistent MASTER \(\ell=1\) and low-\(\ell | DP4-17 | 0.15 | **UNMATCHED** |
+| 5 | MAJOR | Sec. IV D / Appendix D, systematics attribution: The “eight-anchor” systematic battery is suggestive but not a substitut | DP4-16 | 0.16 | **UNMATCHED** |
+| 6 | MAJOR | Sec. II / Appendix B, classifier independence and accuracy: Since 66.5% of the training labels come from CE-ResNet pseud | DP4-08 | 0.27 | **UNMATCHED** |
+| 7 | MAJOR | Sec. VI B, injection-recovery calibration: The main injection-recovery tests inject signals into the observed hard-label | DP4-07 | 0.18 | **UNMATCHED** |
+| 8 | MAJOR | Secs. V–VII, comparison with Shamir claims: The manuscript repeatedly states amplitude-level tension with Shamir’s repor | DP4-11 | 0.17 | **UNMATCHED** |
+| 9 | MAJOR | Sec. VI C, relation to parity violation: The discussion of parity-violating sectors is not sufficiently grounded. The pa | DP4-12 | 0.18 | **UNMATCHED** |
+| 10 | MAJOR | Secs. IV–VII, statistical language: The manuscript mixes moment-\(z\), empirical-rank \(p\), bootstrap \(z\), MASTER nul | DP4-06 | 0.47 | MATCHED |
+| 11 | MAJOR | Appendix D, WLS template fit: The 9-template WLS design is explicitly rank deficient because the leg templates are colli | DP4-14 | 0.38 | MATCHED |
+| 12 | MAJOR | Data availability/reproducibility: The manuscript relies heavily on repository artifacts and “committed” JSON outputs, b | DP4-21 | 0.42 | MATCHED |
+| 13 | MINOR | Manuscript structure: The paper is excessively long, repetitive, and internally defensive. Many caveats appear multiple  | DP4-21 | 0.08 | **UNMATCHED** |
+| 14 | MINOR | Figures and captions: Several captions are far too long and contain interpretive text that belongs in the main body. Som | DP4-03 | 0.12 | **UNMATCHED** |
+| 15 | MINOR | Terminology: Terms such as “pre-registration,” “falsification boundary,” “physical exclusion,” “diagnostic,” and “primar | DP4-14 | 0.15 | **UNMATCHED** |
+| 16 | MINOR | Catalog claims: The catalog may be useful, but the manuscript should clearly separate catalog release/ML methodology fro | — | 0.00 | **UNMATCHED** |
+| 17 | MINOR | AI-assisted methodology statement: The disclosure is welcome, but the manuscript should not rely on AI-adversarial-revie | DP4-13 | 0.24 | **UNMATCHED** |
+
+**Match rate: 5/17 = 29% MATCHED, 12 UNMATCHED.**
+
+Exit 2 — 12 finding(s) need a full §3 truth-audit (genuinely-new candidates or too-weak fingerprint overlap).

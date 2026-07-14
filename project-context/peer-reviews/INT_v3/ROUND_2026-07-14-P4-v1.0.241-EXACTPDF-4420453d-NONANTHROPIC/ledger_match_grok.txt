@@ -1,0 +1,18 @@
+# ledger_match DRAFT — P4 — API_P4_grok.md
+
+> DRAFT for the Opus truth-auditor, NOT a replacement. Conservative threshold (prefers UNMATCHED over a false match). Every UNMATCHED finding — and every low-score MATCHED — still needs a human/Opus source-cited disposition per §3.
+>
+> ledger: `project-context/peer-reviews/DISPOSITIONS/P4.md` (22 D-ids)  |  findings parsed: 6  |  threshold: 0.3
+
+| # | sev | finding (first 120 chars) | best match | score | status |
+|---|-----|---------------------------|-----------|-------|--------|
+| 1 | MINOR | REVISIONS ====================================================================== RAW RESPONSE (verbatim): ============== | — | 0.00 | **UNMATCHED** |
+| 2 | MINOR | REVISIONS (2) ISSUES: | — | 0.00 | **UNMATCHED** |
+| 3 | MINOR | Sec. II B and VI A: The 66.5% CE-ResNet pseudo-label fraction and resulting shuffle-null limitation are acknowledged, bu | DP4-10 | 0.06 | **UNMATCHED** |
+| 4 | MINOR | Sec. IV D and Appendix D: Multiple internal “artifact pipelines/...” paths and git-commit references render the text non | DP4-03 | 0.12 | **UNMATCHED** |
+| 5 | MINOR | Sec. IV C: The pre-registration claim for the p_eq > 0.6 cut is documented only via an internal commit hash; a frozen pu | DP4-07 | 0.49 | MATCHED |
+| 6 | MINOR | Table I and Sec. III B: The estimator hierarchy table is internally consistent but the distinction between “primary” rea | DP4-14 | 0.31 | MATCHED |
+
+**Match rate: 2/6 = 33% MATCHED, 4 UNMATCHED.**
+
+Exit 2 — 4 finding(s) need a full §3 truth-audit (genuinely-new candidates or too-weak fingerprint overlap).
