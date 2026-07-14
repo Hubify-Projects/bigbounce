@@ -1,0 +1,21 @@
+=== 6-perms ===
+  per-vertex fNL (squeezed, equilateral):
+    field_redefinition                     -25/16      -35/32
+    zeta_zeta_dot_squared                   -5/32       -5/32
+    zeta_dot_grad_zeta_grad_chi                 0        -5/8
+    zeta_hessian_chi_squared               -15/32     -15/128
+  squeezed leading (k1->0): -35/16
+  series in k1: -35/16 + 35*k1**2/(64*k**2)
+  equilateral fNL: -255/128
+
+=== distinct-monomial ===
+  per-vertex fNL (squeezed, equilateral):
+    field_redefinition                     -65/32      -25/16
+    zeta_zeta_dot_squared                   -5/32       -5/32
+    zeta_dot_grad_zeta_grad_chi              5/16       -5/16
+    zeta_hessian_chi_squared              -45/128           0
+  squeezed leading (k1->0): -285/128
+  series in k1: -285/128 + 35*k1**2/(64*k**2)
+  equilateral fNL: -65/32
+
+Li at c_s=1: -35/16
