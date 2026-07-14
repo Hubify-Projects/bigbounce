@@ -20,8 +20,9 @@
 set -uo pipefail
 
 REPO="/Users/houstongolden/Desktop/CODE_YOU/bigbounce"
-PY_REVIEW="$REPO/tools/int_api_review_2026-07-08.py"
+PY_REVIEW="${BIGBOUNCE_INT_API_REVIEW_BIN:-$REPO/tools/int_api_review_2026-07-08.py}"
 PAPER="P3APJS"
+API_PAPER="P3"
 TEX_REL="pipelines/p3_anomaly_engine/paper3_apjs.tex"
 PDF_REL="pipelines/p3_anomaly_engine/paper3_apjs.pdf"
 DATESTAMP="$(date +%Y-%m-%d)"
@@ -117,7 +118,7 @@ mkdir -p "$INT_OUTDIR"
 PIDS_API=""
 if [ "$API_LEGS_ENABLED" = 1 ]; then
   for vend in grok gemini; do
-    ( set -a; source "$REPO/.env.local"; set +a; python3 "$PY_REVIEW" "$PAPER" "$vend" ) \
+    ( set -a; source "$REPO/.env.local"; set +a; python3 "$PY_REVIEW" "$API_PAPER" "$vend" ) \
       >"$INT_OUTDIR/.intwave_P3apjs_${vend}_${HHMM}.log" 2>&1 &
   done
   PIDS_API="$(jobs -p)"
@@ -182,7 +183,7 @@ if [ "$CODEX_ON" = 1 ]; then wait "$PID_CODEX"; RC_CODEX=$?; fi
 
 # ---- parse the matrix ----
 parse_api() {
-  local f="$INT_OUTDIR/API_P3APJS_$1.md"
+  local f="$INT_OUTDIR/API_${API_PAPER}_$1.md"
   [ -f "$f" ] && grep -m1 '^PARSED VERDICT:' "$f" | sed 's/^PARSED VERDICT:[[:space:]]*//' || true
 }
 V_GROK="$(parse_api grok)";     [ -n "$V_GROK" ]   || V_GROK="ABSENT"

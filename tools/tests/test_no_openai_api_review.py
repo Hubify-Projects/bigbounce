@@ -184,6 +184,50 @@ class NoOpenAIAPIReviewTests(unittest.TestCase):
         source = (TOOLS / "int_wave_apjs.sh").read_text(encoding="utf-8")
         self.assertIn(r"\\newcommand\{\\paperVersion\}", source)
 
+    def test_apjs_live_api_dispatch_uses_canonical_p3_and_parses_raws(self):
+        """Exercise the real wrapper dispatch/parser seam without provider calls."""
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            outdir = root / "round"
+            stub = root / "stub_review.py"
+            stub.write_text(
+                """import os, pathlib, sys
+paper, vendor = sys.argv[1:]
+if paper != "P3":
+    raise SystemExit(f"expected canonical P3, got {paper}")
+outdir = pathlib.Path(os.environ["INT_OUTDIR"])
+outdir.mkdir(parents=True, exist_ok=True)
+(outdir / f"API_{paper}_{vendor}.md").write_text(
+    "PARSED VERDICT: ACCEPT\\n", encoding="utf-8"
+)
+""",
+                encoding="utf-8",
+            )
+            env = dict(os.environ)
+            env.update(
+                {
+                    "BIGBOUNCE_CODEX_SUBSCRIPTION_ENABLED": "0",
+                    "BIGBOUNCE_INT_API_LEGS_ENABLED": "1",
+                    "BIGBOUNCE_INT_API_REVIEW_BIN": str(stub),
+                    "INT_OUTDIR": str(outdir),
+                }
+            )
+            run = subprocess.run(
+                ["bash", str(TOOLS / "int_wave_apjs.sh")],
+                cwd=ROOT,
+                env=env,
+                capture_output=True,
+                text=True,
+                timeout=20,
+                check=False,
+            )
+            self.assertEqual(run.returncode, 0, run.stderr)
+            self.assertIn("Grok (grok-4.3):           ACCEPT", run.stdout)
+            self.assertIn("Gemini (gemini-3.1-pro):   ACCEPT", run.stdout)
+            self.assertTrue((outdir / "API_P3_grok.md").is_file())
+            self.assertTrue((outdir / "API_P3_gemini.md").is_file())
+            self.assertFalse((outdir / "API_P3APJS_grok.md").exists())
+
     def test_active_dispatch_files_do_not_contain_openai_api_endpoint(self):
         for path in discover_executable_review_surface():
             source = path.read_text(encoding="utf-8")
