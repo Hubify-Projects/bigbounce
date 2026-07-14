@@ -20,9 +20,9 @@ DESI anomaly member. The release stores this value in
 
 ## Immutable inputs
 
-- Path-C clusters: `https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog/resolve/p3-v3.1.161/pathc_unique_objects.parquet`  
+- Path-C clusters: `https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog/resolve/cdaaa03a72c69d86f011be128d93f261dc5b39a8/pathc_unique_objects.parquet`
   SHA-256: `b14deb02ddc374cc30a54e6013c0695d1c35cbf18cef9144245e338d6138c643`
-- Historical DESI anomaly rows: `https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog/resolve/p3-v3.1.161/desi_dr1_anomalies.parquet`  
+- Historical DESI anomaly rows: `https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog/resolve/cdaaa03a72c69d86f011be128d93f261dc5b39a8/desi_dr1_anomalies.parquet`
   SHA-256: `0a36b8d6dfb8086c2c417885c99689d7a75b416dad1b030db56477baf103ec65`
 - Public DESI DR1 zcatalog: `https://data.desi.lbl.gov/public/dr1/spectro/redux/iron/zcatalog/v1/zall-pix-iron.fits`  
   SHA-256: `2d95ad99361039b556c402b49e0e7c84df5f00106dc5731d44476a58b128b49b`
@@ -31,15 +31,32 @@ The two historical inputs are pinned at annotated tag `p3-v3.1.161`, which peels
 commit `cdaaa03a72c69d86f011be128d93f261dc5b39a8`. The DESI checksum was recomputed locally and matched the current
 official checksum file at `https://data.desi.lbl.gov/public/dr1/spectro/redux/iron/zcatalog/v1/redux_iron_zcatalog_v1.sha256sum`.
 
+The historical dataset and this candidate-catalog data/documentation are distributed under
+CC BY 4.0. The bundled Python scripts retain their repository license. The exact historical
+model is not reconstructed here: frozen upstream documentation identifies the DESI score as
+canonical-S output from a DESI-trained BigAE autoencoder, and this release carries that score
+only as uncalibrated ranking metadata.
+
 ## Reproduce and validate
 
 ```sh
-curl -fL -o pathc_unique_objects.parquet https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog/resolve/p3-v3.1.161/pathc_unique_objects.parquet
-curl -fL -o desi_dr1_anomalies.parquet https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog/resolve/p3-v3.1.161/desi_dr1_anomalies.parquet
+curl -fL -o pathc_unique_objects.parquet https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog/resolve/cdaaa03a72c69d86f011be128d93f261dc5b39a8/pathc_unique_objects.parquet
+curl -fL -o desi_dr1_anomalies.parquet https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog/resolve/cdaaa03a72c69d86f011be128d93f261dc5b39a8/desi_dr1_anomalies.parquet
 curl -fL -o zall-pix-iron.fits https://data.desi.lbl.gov/public/dr1/spectro/redux/iron/zcatalog/v1/zall-pix-iron.fits
 FITS_SHA256=2d95ad99361039b556c402b49e0e7c84df5f00106dc5731d44476a58b128b49b
 python3 build_desi_science_catalog_v320_r2.py   --clusters pathc_unique_objects.parquet   --anomalies desi_dr1_anomalies.parquet   --fits zall-pix-iron.fits   --output-dir desi_science_catalog_v3.2.0-r2   --chunk-rows 200000   --fits-sha256 "$FITS_SHA256"
-python3 validate_desi_science_catalog_v320_r2.py   --release-dir desi_science_catalog_v3.2.0-r2   --fits zall-pix-iron.fits   --clusters pathc_unique_objects.parquet
+python3 validate_desi_science_catalog_v320_r2.py   --release-dir desi_science_catalog_v3.2.0-r2   --fits zall-pix-iron.fits   --clusters pathc_unique_objects.parquet   --parts-dir .desi_science_catalog_v3.2.0-r2.build/match_parts
+```
+
+`--parts-dir` may be omitted when the checkpoint remains beside the release: the validator
+portably derives `.RELEASE_DIR.name.build/match_parts` from `--release-dir`. The explicit form
+also supports moved checkpoints. Verify the historical inputs with:
+
+```sh
+printf '%s  %s\n' \
+  b14deb02ddc374cc30a54e6013c0695d1c35cbf18cef9144245e338d6138c643 pathc_unique_objects.parquet \
+  0a36b8d6dfb8086c2c417885c99689d7a75b416dad1b030db56477baf103ec65 desi_dr1_anomalies.parquet \
+  | sha256sum -c -
 ```
 
 Files:

@@ -27,7 +27,7 @@
       "6": 1305
     }
   },
-  "created_utc": "2026-07-14T12:36:38Z",
+  "created_utc": "2026-07-14T14:10:16Z",
   "cross_checks": {
     "base_count_matches_builder": true,
     "exactly_one_multi_member_released_cluster": true,
@@ -40,6 +40,55 @@
     "strict_identifier_set_missing": [],
     "strict_identifier_set_released_rows": 181,
     "strict_identifier_set_unexpected": []
+  },
+  "nearest_vs_all_neighbors": {
+    "all_pairs_within_1arcsec_for_parent_rows": 2468,
+    "all_pairs_within_1arcsec_for_strict_rows": 181,
+    "cluster_nearest_neighbor_arcsec": {
+      "median": 264.3881835362639,
+      "minimum": 5.022937707894432,
+      "q01": 27.331424027528893,
+      "q05": 89.4721701116334
+    },
+    "clusters_with_nearest_neighbor_le_1arcsec": 0,
+    "clusters_with_nearest_neighbor_le_2arcsec": 0,
+    "desi_containing_clusters": 190015,
+    "parent_max_clusters_within_1arcsec": 1,
+    "parent_rows": 2468,
+    "parent_rows_with_multiple_clusters_within_1arcsec": 0,
+    "stored_nearest_cluster_present_in_all_neighbor_set": true,
+    "strict_rows": 181,
+    "strict_rows_with_multiple_clusters_within_1arcsec": 0
+  },
+  "primary_rejected_zwarn_distribution": {
+    "definitions": {
+      "bit_1": "LITTLE_COVERAGE: too little wavelength coverage",
+      "bit_11": "POORDATA: poor input data quality; fitting attempted",
+      "bit_2": "SMALL_DELTA_CHI2: best and second-best chi-squared are too close",
+      "source": "https://desidatamodel.readthedocs.io/en/25.3/bitmasks.html#zwarn"
+    },
+    "exact_mask_counts": {
+      "2": 787,
+      "2048": 3,
+      "2050": 10,
+      "2052": 2,
+      "2054": 19,
+      "4": 152,
+      "6": 1294
+    },
+    "primary_rows": 2448,
+    "set_bit_counts_nonexclusive": {
+      "bit_11_POORDATA": 34,
+      "bit_1_LITTLE_COVERAGE": 2110,
+      "bit_2_SMALL_DELTA_CHI2": 1467
+    },
+    "warning_bearing_rows": 2267,
+    "warning_bearing_spectype_counts": {
+      "GALAXY": 2194,
+      "QSO": 72,
+      "STAR": 1
+    },
+    "warning_free_rows": 181
   },
   "provenance": {
     "current_official_checksum": {

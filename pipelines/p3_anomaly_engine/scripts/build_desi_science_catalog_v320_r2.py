@@ -46,11 +46,11 @@ INPUT_RELEASE_TAG = "p3-v3.1.161"
 INPUT_RELEASE_COMMIT = "cdaaa03a72c69d86f011be128d93f261dc5b39a8"
 CLUSTERS_URL = (
     "https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog/resolve/"
-    f"{INPUT_RELEASE_TAG}/pathc_unique_objects.parquet"
+    f"{INPUT_RELEASE_COMMIT}/pathc_unique_objects.parquet"
 )
 ANOMALIES_URL = (
     "https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog/resolve/"
-    f"{INPUT_RELEASE_TAG}/desi_dr1_anomalies.parquet"
+    f"{INPUT_RELEASE_COMMIT}/desi_dr1_anomalies.parquet"
 )
 DESI_FITS_URL = (
     "https://data.desi.lbl.gov/public/dr1/spectro/redux/iron/zcatalog/v1/"
@@ -656,10 +656,12 @@ def build_release(
                 "python3 validate_desi_science_catalog_v320_r2.py "
                 "--release-dir desi_science_catalog_v3.2.0-r2 "
                 "--fits zall-pix-iron.fits "
-                "--clusters pathc_unique_objects.parquet"
+                "--clusters pathc_unique_objects.parquet "
+                "--parts-dir .desi_science_catalog_v3.2.0-r2.build/match_parts"
             ),
             "checkpoint_note": (
-                "The checkpointed .build directory is outside the immutable release."
+                "The checkpointed .build directory is outside the immutable release. The validator "
+                "derives it from --release-dir by default; --parts-dir is shown explicitly for clarity."
             ),
         },
     }
@@ -703,6 +705,12 @@ The two historical inputs are pinned at annotated tag `{INPUT_RELEASE_TAG}`, whi
 commit `{INPUT_RELEASE_COMMIT}`. The DESI checksum was recomputed locally and matched the current
 official checksum file at `{DESI_CHECKSUM_URL}`.
 
+The historical dataset and this candidate-catalog data/documentation are distributed under
+CC BY 4.0. The bundled Python scripts retain their repository license. The exact historical
+model is not reconstructed here: frozen upstream documentation identifies the DESI score as
+canonical-S output from a DESI-trained BigAE autoencoder, and this release carries that score
+only as uncalibrated ranking metadata.
+
 ## Reproduce and validate
 
 ```sh
@@ -720,7 +728,19 @@ python3 build_desi_science_catalog_v320_r2.py \
 python3 validate_desi_science_catalog_v320_r2.py \
   --release-dir desi_science_catalog_v3.2.0-r2 \
   --fits zall-pix-iron.fits \
-  --clusters pathc_unique_objects.parquet
+  --clusters pathc_unique_objects.parquet \
+  --parts-dir .desi_science_catalog_v3.2.0-r2.build/match_parts
+```
+
+`--parts-dir` may be omitted when the checkpoint remains beside the release: the validator
+portably derives `.RELEASE_DIR.name.build/match_parts` from `--release-dir`. The explicit form
+also supports moved checkpoints. Verify the historical inputs with:
+
+```sh
+printf '%s  %s\n' \
+  b14deb02ddc374cc30a54e6013c0695d1c35cbf18cef9144245e338d6138c643 pathc_unique_objects.parquet \
+  0a36b8d6dfb8086c2c417885c99689d7a75b416dad1b030db56477baf103ec65 desi_dr1_anomalies.parquet \
+  | sha256sum -c -
 ```
 
 Files:

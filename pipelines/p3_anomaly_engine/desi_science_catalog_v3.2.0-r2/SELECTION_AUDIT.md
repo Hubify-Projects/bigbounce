@@ -24,6 +24,16 @@ follow-up; it must not be used to infer anomaly occurrence rates without modelin
   rejoin exactly to their recorded rows in the local public DR1 FITS.
 - The released and strict checkpoint-derived `(cluster_id, targetid, fits_row)` sets are exactly
   equal (181/181); there are no missing or unexpected rows.
+- The 190,015 DESI-containing clusters have minimum nearest-neighbor separation
+  5.022938 arcsec. Direct
+  all-neighbor queries produce exactly 2,468
+  parent and 181 strict pairs,
+  with no public row within 1 arcsec of multiple clusters; nearest-only and all-neighbor identities
+  are therefore identical for these frozen inputs.
+- Among the 2,267 rejected primary rows, exact ZWARN
+  masks are {'6': 1294, '2': 787, '4': 152, '2054': 19, '2050': 10, '2048': 3, '2052': 2}; nonexclusive set-bit counts are
+  {'bit_1_LITTLE_COVERAGE': 2110, 'bit_2_SMALL_DELTA_CHI2': 1467, 'bit_11_POORDATA': 34}. Bit definitions are pinned to the official
+  DESI data-model URL recorded in `SELECTION_AUDIT.json`.
 - Candidate ID, cluster ID, and TARGETID are unique; there are no null cells.
 - Every row is main survey, carries a specified science bit, is `ZCAT_PRIMARY`, has `ZWARN=0`,
   and lies within 1 arcsec of its anomaly cluster.

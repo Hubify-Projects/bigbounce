@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-07-14T12:36:38Z",
+  "created_utc": "2026-07-14T14:10:16Z",
   "files": [
     {
       "name": "COHORT_COUNTS.json",
@@ -13,8 +13,8 @@
     },
     {
       "name": "PROVENANCE.json",
-      "sha256": "1e0959e7e5dcd39ee5e732a395f7db53f58edc99a09d43da70874043022e58bf",
-      "size_bytes": 5436
+      "sha256": "a63fb5c06574bb872d5a2a39c949c600728a15df86d66431fda8fcef0fee1aed",
+      "size_bytes": 5732
     },
     {
       "name": "QC_REPORT.json",
@@ -23,23 +23,23 @@
     },
     {
       "name": "README.md",
-      "sha256": "92311ead79ac7f83dda61dd95ec8eb7fd2902798b6279651dec65f664c6ba084",
-      "size_bytes": 4146
+      "sha256": "188cd6aac0334dcba4fcf10f6f4a9a3a4d5f32c9a18f6852c16320f2bf984e65",
+      "size_bytes": 5230
     },
     {
       "name": "SELECTION_AUDIT.json",
-      "sha256": "0ff57a7284ae6230f4133f67107ef43582339d0e551f7140c08fd113865e6dfa",
-      "size_bytes": 13219
+      "sha256": "52ca78be53430aa6a2a2e383a3ef097ab2af1bf1e1ecb5b47d9699f75218ea17",
+      "size_bytes": 14837
     },
     {
       "name": "SELECTION_AUDIT.md",
-      "sha256": "30ba48f98a54784828fabfb14dbe099834113b7bdecb72e18ba2b2717447477f",
-      "size_bytes": 2862
+      "sha256": "16bc7e91bcae35d1f439845d3862bad8cb5c2bc38c143cf073416258cf328b70",
+      "size_bytes": 3562
     },
     {
       "name": "build_desi_science_catalog_v320_r2.py",
-      "sha256": "5826efc4df8274ab1e2dd8962ccf373b730cf368851bce103c65b1a739eae658",
-      "size_bytes": 35688
+      "sha256": "0a62fa8019b0893b0e7d9f33654904660a3777671749b0d4b2ad8f7b9c98d969",
+      "size_bytes": 36869
     },
     {
       "name": "desi_dr1_science_anomaly_candidates_v3.2.0-r2.parquet",
@@ -48,8 +48,8 @@
     },
     {
       "name": "validate_desi_science_catalog_v320_r2.py",
-      "sha256": "ba04d75941f1388cc29c8277d8f496be8c6ed6b742f2e53d1ed9e83364004f1a",
-      "size_bytes": 27956
+      "sha256": "428958dfc99f9cb7f9bdcb38d52dc1673d0146e9969809dbc9dad858c4496f06",
+      "size_bytes": 34387
     }
   ],
   "manifest_self_hash": "excluded (self-referential)",

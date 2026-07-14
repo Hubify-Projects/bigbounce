@@ -29,7 +29,7 @@
   },
   "inputs": {
     "anomalies": {
-      "immutable_url": "https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog/resolve/p3-v3.1.161/desi_dr1_anomalies.parquet",
+      "immutable_url": "https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog/resolve/cdaaa03a72c69d86f011be128d93f261dc5b39a8/desi_dr1_anomalies.parquet",
       "input_label": "apjs_submission_v3.1.161/desi_dr1_anomalies.parquet",
       "sha256": "0a36b8d6dfb8086c2c417885c99689d7a75b416dad1b030db56477baf103ec65",
       "size_bytes": 10514503,
@@ -37,7 +37,7 @@
       "source_tag_commit": "cdaaa03a72c69d86f011be128d93f261dc5b39a8"
     },
     "clusters": {
-      "immutable_url": "https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog/resolve/p3-v3.1.161/pathc_unique_objects.parquet",
+      "immutable_url": "https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog/resolve/cdaaa03a72c69d86f011be128d93f261dc5b39a8/pathc_unique_objects.parquet",
       "input_label": "apjs_submission_v3.1.161/pathc_unique_objects.parquet",
       "sha256": "b14deb02ddc374cc30a54e6013c0695d1c35cbf18cef9144245e338d6138c643",
       "size_bytes": 12087824,
@@ -67,11 +67,11 @@
   "release": "p3-v3.2.0-r2",
   "reproduction": {
     "build": "python3 build_desi_science_catalog_v320_r2.py --clusters pathc_unique_objects.parquet --anomalies desi_dr1_anomalies.parquet --fits zall-pix-iron.fits --output-dir desi_science_catalog_v3.2.0-r2 --chunk-rows 200000 --fits-sha256 2d95ad99361039b556c402b49e0e7c84df5f00106dc5731d44476a58b128b49b",
-    "checkpoint_note": "The checkpointed .build directory is outside the immutable release.",
-    "download_anomalies": "curl -fL -o desi_dr1_anomalies.parquet https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog/resolve/p3-v3.1.161/desi_dr1_anomalies.parquet",
-    "download_clusters": "curl -fL -o pathc_unique_objects.parquet https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog/resolve/p3-v3.1.161/pathc_unique_objects.parquet",
+    "checkpoint_note": "The checkpointed .build directory is outside the immutable release. The validator derives it portably from --release-dir by default; pass --parts-dir only when the checkpoint was moved.",
+    "download_anomalies": "curl -fL -o desi_dr1_anomalies.parquet https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog/resolve/cdaaa03a72c69d86f011be128d93f261dc5b39a8/desi_dr1_anomalies.parquet",
+    "download_clusters": "curl -fL -o pathc_unique_objects.parquet https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog/resolve/cdaaa03a72c69d86f011be128d93f261dc5b39a8/pathc_unique_objects.parquet",
     "download_desi_fits": "curl -fL -o zall-pix-iron.fits https://data.desi.lbl.gov/public/dr1/spectro/redux/iron/zcatalog/v1/zall-pix-iron.fits",
-    "validate": "python3 validate_desi_science_catalog_v320_r2.py --release-dir desi_science_catalog_v3.2.0-r2 --fits zall-pix-iron.fits --clusters pathc_unique_objects.parquet"
+    "validate": "python3 validate_desi_science_catalog_v320_r2.py --release-dir desi_science_catalog_v3.2.0-r2 --fits zall-pix-iron.fits --clusters pathc_unique_objects.parquet --parts-dir .desi_science_catalog_v3.2.0-r2.build/match_parts"
   },
   "runtime": {
     "chunk_rows": 200000,

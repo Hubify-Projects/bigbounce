@@ -18,6 +18,7 @@ from typing import Any
 import fitsio
 import numpy as np
 import pandas as pd
+from scipy.spatial import cKDTree
 
 
 VERSION = "3.2.0"
@@ -25,6 +26,11 @@ REVISION = "r2"
 RELEASE = f"p3-v{VERSION}-{REVISION}"
 CATALOG_BASENAME = f"desi_dr1_science_anomaly_candidates_v{VERSION}-{REVISION}.parquet"
 SCIENCE_BITS = {"LRG": 0, "ELG": 1, "QSO": 2, "BGS_ANY": 60, "MWS_ANY": 61}
+ZWARN_BITS = {
+    1: "LITTLE_COVERAGE",
+    2: "SMALL_DELTA_CHI2",
+    11: "POORDATA",
+}
 OFFICIAL_CHECKSUM_URL = (
     "https://data.desi.lbl.gov/public/dr1/spectro/redux/iron/zcatalog/v1/"
     "redux_iron_zcatalog_v1.sha256sum"
@@ -221,6 +227,17 @@ def angular_separation_arcsec(
     return np.rad2deg(2 * np.arcsin(np.clip(chord / 2, 0, 1))) * 3600
 
 
+def sky_unit_vectors(ra_deg: np.ndarray, dec_deg: np.ndarray) -> np.ndarray:
+    ra = np.deg2rad(np.asarray(ra_deg, dtype=np.float64))
+    dec = np.deg2rad(np.asarray(dec_deg, dtype=np.float64))
+    cos_dec = np.cos(dec)
+    return np.column_stack((cos_dec * np.cos(ra), cos_dec * np.sin(ra), np.sin(dec)))
+
+
+def chord_to_arcsec(chord: np.ndarray) -> np.ndarray:
+    return np.rad2deg(2 * np.arcsin(np.clip(np.asarray(chord) / 2, 0, 1))) * 3600
+
+
 def counts(series: pd.Series) -> dict[str, int]:
     return {str(key): int(value) for key, value in series.value_counts(dropna=False).items()}
 
@@ -247,7 +264,11 @@ def main() -> None:
     )
     parser.add_argument(
         "--parts-dir", type=Path,
-        default=repo / "pipelines/p3_anomaly_engine/.desi_science_catalog_v3.2.0-r2.build/match_parts",
+        default=None,
+        help=(
+            "Checkpoint match-parts directory. By default this is derived portably as "
+            "RELEASE_DIR.parent/.RELEASE_DIR.name.build/match_parts, matching the builder."
+        ),
     )
     parser.add_argument(
         "--clusters", type=Path,
@@ -258,14 +279,18 @@ def main() -> None:
     args = parser.parse_args()
 
     release = args.release_dir
+    parts_dir = args.parts_dir or release.parent / f".{release.name}.build/match_parts"
     catalog_path = release / CATALOG_BASENAME
     final = pd.read_parquet(catalog_path)
     cohort_counts = json.loads((release / "COHORT_COUNTS.json").read_text())
     upstream = json.loads(args.upstream_provenance.read_text())
 
-    part_paths = sorted(args.parts_dir.glob("matches_*.parquet"))
+    part_paths = sorted(parts_dir.glob("matches_*.parquet"))
     if len(part_paths) != math.ceil(28_425_963 / 200_000):
-        raise RuntimeError(f"expected 143 checkpoint parts, found {len(part_paths)}")
+        raise RuntimeError(
+            f"expected 143 checkpoint parts in {parts_dir}, found {len(part_paths)}; "
+            "pass --parts-dir explicitly if the builder checkpoint was moved"
+        )
     base = pd.concat([pd.read_parquet(path) for path in part_paths], ignore_index=True)
     # Checkpoints intentionally retain only the stable zero-based source-row
     # key. Rejoin the independently committed cluster table before comparing
@@ -306,6 +331,81 @@ def main() -> None:
     primary = base["zcat_primary"].astype(bool)
     warning_free = base["zwarn"] == 0
     final_expected = base.loc[primary & warning_free]
+
+    # Prove that nearest-only and all-neighbors-within-radius definitions are
+    # identical for the exact frozen inputs. A >2-arcsec cluster separation is
+    # sufficient because no public coordinate can then fall within 1 arcsec of
+    # two clusters. We also perform the direct all-neighbor count check.
+    all_clusters = (
+        pd.read_parquet(
+            args.clusters,
+            columns=["cluster_id", "ra_mean", "dec_mean", "survey_list"],
+        )
+        .reset_index(names="cluster_table_row")
+    )
+    is_desi = all_clusters["survey_list"].astype(str).str.split(",").map(
+        lambda labels: "desi_dr1" in labels
+    )
+    desi_clusters = all_clusters.loc[is_desi].reset_index(drop=True)
+    cluster_vectors = sky_unit_vectors(desi_clusters["ra_mean"], desi_clusters["dec_mean"])
+    cluster_tree = cKDTree(cluster_vectors)
+    nearest_chords, _ = cluster_tree.query(cluster_vectors, k=2)
+    nearest_arcsec = chord_to_arcsec(nearest_chords[:, 1])
+    one_arcsec_chord = 2.0 * math.sin(math.radians(1.0 / 3600.0) / 2.0)
+    neighbor_sets = cluster_tree.query_ball_point(
+        sky_unit_vectors(base["target_ra"], base["target_dec"]),
+        one_arcsec_chord,
+    )
+    neighbor_counts = np.asarray([len(indices) for indices in neighbor_sets], dtype=np.int64)
+    local_cluster_index = {
+        int(row): index for index, row in enumerate(desi_clusters["cluster_table_row"])
+    }
+    stored_nearest_present = all(
+        local_cluster_index[int(row)] in indices
+        for row, indices in zip(base["cluster_table_row"], neighbor_sets)
+    )
+    strict_neighbor_counts = neighbor_counts[(primary & warning_free).to_numpy()]
+    nearest_all_neighbors = {
+        "desi_containing_clusters": int(len(desi_clusters)),
+        "cluster_nearest_neighbor_arcsec": {
+            "minimum": float(np.min(nearest_arcsec)),
+            "q01": float(np.quantile(nearest_arcsec, 0.01)),
+            "q05": float(np.quantile(nearest_arcsec, 0.05)),
+            "median": float(np.median(nearest_arcsec)),
+        },
+        "clusters_with_nearest_neighbor_le_1arcsec": int((nearest_arcsec <= 1).sum()),
+        "clusters_with_nearest_neighbor_le_2arcsec": int((nearest_arcsec <= 2).sum()),
+        "parent_rows": int(len(base)),
+        "parent_rows_with_multiple_clusters_within_1arcsec": int((neighbor_counts > 1).sum()),
+        "parent_max_clusters_within_1arcsec": int(neighbor_counts.max()),
+        "all_pairs_within_1arcsec_for_parent_rows": int(neighbor_counts.sum()),
+        "strict_rows": int(len(final_expected)),
+        "strict_rows_with_multiple_clusters_within_1arcsec": int((strict_neighbor_counts > 1).sum()),
+        "all_pairs_within_1arcsec_for_strict_rows": int(strict_neighbor_counts.sum()),
+        "stored_nearest_cluster_present_in_all_neighbor_set": bool(stored_nearest_present),
+    }
+
+    warning_bearing = base.loc[primary & ~warning_free]
+    warning_values = warning_bearing["zwarn"].to_numpy(dtype=np.uint64)
+    zwarn_distribution = {
+        "primary_rows": int(primary.sum()),
+        "warning_free_rows": int((primary & warning_free).sum()),
+        "warning_bearing_rows": int(len(warning_bearing)),
+        "exact_mask_counts": counts(warning_bearing["zwarn"]),
+        "set_bit_counts_nonexclusive": {
+            f"bit_{bit}_{name}": int(
+                ((warning_values & (np.uint64(1) << np.uint64(bit))) != 0).sum()
+            )
+            for bit, name in ZWARN_BITS.items()
+        },
+        "warning_bearing_spectype_counts": counts(warning_bearing["spectype"]),
+        "definitions": {
+            "source": "https://desidatamodel.readthedocs.io/en/25.3/bitmasks.html#zwarn",
+            "bit_1": "LITTLE_COVERAGE: too little wavelength coverage",
+            "bit_2": "SMALL_DELTA_CHI2: best and second-best chi-squared are too close",
+            "bit_11": "POORDATA: poor input data quality; fitting attempted",
+        },
+    }
     identity_columns = ["cluster_id", "targetid", "fits_row"]
     for frame_name, frame in (("checkpoint-derived expected cohort", final_expected), ("release", final)):
         missing_keys = sorted(set(identity_columns) - set(frame.columns))
@@ -376,6 +476,8 @@ def main() -> None:
             "candidate follow-up, not population-rate inference."
         ),
         "waterfall": waterfall,
+        "nearest_vs_all_neighbors": nearest_all_neighbors,
+        "primary_rejected_zwarn_distribution": zwarn_distribution,
         "base_cohort": {
             "rows": int(len(base)),
             "unique_fits_rows": int(base["fits_row"].nunique()),
@@ -490,6 +592,14 @@ def main() -> None:
         report["cross_checks"]["exactly_one_multi_member_released_cluster"],
         report["cross_checks"]["no_nulls"],
         report["cross_checks"]["no_duplicate_cluster_or_targetid"],
+        nearest_all_neighbors["desi_containing_clusters"] == 190_015,
+        nearest_all_neighbors["clusters_with_nearest_neighbor_le_2arcsec"] == 0,
+        nearest_all_neighbors["parent_rows_with_multiple_clusters_within_1arcsec"] == 0,
+        nearest_all_neighbors["all_pairs_within_1arcsec_for_parent_rows"] == 2_468,
+        nearest_all_neighbors["strict_rows_with_multiple_clusters_within_1arcsec"] == 0,
+        nearest_all_neighbors["all_pairs_within_1arcsec_for_strict_rows"] == 181,
+        nearest_all_neighbors["stored_nearest_cluster_present_in_all_neighbor_set"],
+        zwarn_distribution["warning_bearing_rows"] == 2_267,
         remote_ranges["status"] == "PASS",
     ]
     if sha_matches is not None:
@@ -523,6 +633,16 @@ follow-up; it must not be used to infer anomaly occurrence rates without modelin
   rejoin exactly to their recorded rows in the local public DR1 FITS.
 - The released and strict checkpoint-derived `(cluster_id, targetid, fits_row)` sets are exactly
   equal ({len(released_id_set):,}/{len(expected_id_set):,}); there are no missing or unexpected rows.
+- The 190,015 DESI-containing clusters have minimum nearest-neighbor separation
+  {nearest_all_neighbors['cluster_nearest_neighbor_arcsec']['minimum']:.6f} arcsec. Direct
+  all-neighbor queries produce exactly {nearest_all_neighbors['all_pairs_within_1arcsec_for_parent_rows']:,}
+  parent and {nearest_all_neighbors['all_pairs_within_1arcsec_for_strict_rows']:,} strict pairs,
+  with no public row within 1 arcsec of multiple clusters; nearest-only and all-neighbor identities
+  are therefore identical for these frozen inputs.
+- Among the {zwarn_distribution['warning_bearing_rows']:,} rejected primary rows, exact ZWARN
+  masks are {zwarn_distribution['exact_mask_counts']}; nonexclusive set-bit counts are
+  {zwarn_distribution['set_bit_counts_nonexclusive']}. Bit definitions are pinned to the official
+  DESI data-model URL recorded in `SELECTION_AUDIT.json`.
 - Candidate ID, cluster ID, and TARGETID are unique; there are no null cells.
 - Every row is main survey, carries a specified science bit, is `ZCAT_PRIMARY`, has `ZWARN=0`,
   and lies within 1 arcsec of its anomaly cluster.
