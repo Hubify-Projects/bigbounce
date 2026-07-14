@@ -73,7 +73,7 @@
         "readiness does not prove a completed turn for every interactive session, later quota availability, final submission, or hostile same-user isolation",
         "abort invalidation is atomically published before rollback and supervisors terminate the complete provider process group",
         "the result seal is atomic and one-way; capabilities use private token files and shared envelopes and receipts do not contain plaintext capability tokens",
-        "commits intentionally unpushed because configured origin is IndyDevDan's upstream repository"
+        "Houston-owned remote fork points to https://github.com/houstongolden/learning-cmux-with-agents, remote.pushDefault is fork, branch codex/youmd-cmux-lab is pushed, and draft PR https://github.com/houstongolden/learning-cmux-with-agents/pull/1 targets the fork's main; origin remains IndyDevDan's upstream repository"
       ]
     },
     {
@@ -185,6 +185,6 @@
     "CMUX dogfood stays read-only until You.md atomic claims, heartbeats, overlap detection, and isolated worktrees pass acceptance; per-surface process enforcement is not hostile same-user/raw-CMUX broker isolation.",
     "CMUX route receipts prove one completed subscription-authenticated launch-time turn per unique provider/model/effort route, while per-surface provider-auth and short-liveness receipts remain separate; neither proves completed turns for every interactive session, later quota, final submission, or hostile same-user isolation.",
     "Do not reveal or declare a winner from a run with only one sealed result; a legacy deadline-free contract cannot be retroactively expired.",
-    "The CMUX lab origin is upstream; do not push its local commits without a Houston-owned fork."
+    "Publish CMUX lab changes through Houston's fork remote with remote.pushDefault=fork, never directly to the upstream origin; draft PR https://github.com/houstongolden/learning-cmux-with-agents/pull/1 tracks codex/youmd-cmux-lab against the fork's main."
   ]
 }
