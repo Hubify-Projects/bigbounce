@@ -32,6 +32,7 @@ Keys read from bigbounce/.env.local then youmd/.env.local.
 from __future__ import annotations
 
 import base64
+import json
 import os
 import re
 import subprocess
@@ -42,11 +43,17 @@ import traceback
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-REPO = Path("/Users/houstongolden/Desktop/CODE_2025/bigbounce")
-ENV_PATHS = [
-    REPO / ".env.local",
-    Path("/Users/houstongolden/Desktop/CODE_2025/youmd/.env.local"),
-]
+from paper_registry import CANONICAL_IDS, load_registry, repo_root
+from review_packet import (
+    build_packet,
+    publish_packet,
+    resolve_pdf_snapshot,
+    review_cache_root,
+)
+
+REPO = repo_root()
+REGISTRY = load_registry(REPO)
+ENV_PATHS = [REPO / ".env.local"]
 
 # ---------------------------------------------------------------------------
 # THE REVIEW PROMPT — pass 1 (initial brutal review)
@@ -57,9 +64,9 @@ Paper tag: {paper_tag}  |  Round: {round_label}  |  Pages: {page_count}
 Round context (not in paper): {round_context}
 [END REVIEWER METADATA]
 
-You are a {persona} for a cosmology methods paper submitted to Physical Review D.
-This is one of the most rigorous physics journals in the world. The acceptance
-bar is HIGH. Reject anything that doesn't meet PRD standards.
+You are a {persona} for a {article_type} submitted to {target_journal}, using
+the canonical review profile {review_profile}. The acceptance bar is HIGH.
+Reject anything that does not meet that venue's standards.
 
 YOUR ROLE: {focus}
 
@@ -575,6 +582,9 @@ def run_reviewer(
     paper_tag: str,
     keys: dict,
     out_dir: Path,
+    entry: dict,
+    allowed_context: bytes,
+    cache_root: Path,
     enable_pass2: bool = True,
 ) -> dict:
     t0 = time.time()
@@ -584,16 +594,30 @@ def run_reviewer(
     fallback_used = False
     pass2_added = 0
     vendor = cfg["vendor"]
+    packet_keys: list[str] = []
+
+    def packetized_dispatch(model: str, dispatch_prompt: str) -> tuple[str, str]:
+        packet = build_packet(
+            REPO, paper_tag, entry, dispatch_prompt.encode(), allowed_context,
+            model, os.environ.get("V3_REVIEW_EFFORT", "high"),
+            os.environ.get("V3_EXPECTED_PDF_SHA256") or None, cache_root,
+        )
+        publish_packet(
+            packet, cache_root / "packets", dispatch_prompt.encode(), allowed_context,
+        )
+        packet_keys.append(packet["packet_key"])
+        snapshot = resolve_pdf_snapshot(packet, cache_root)
+        return _dispatch_one_call(vendor, keys, model, dispatch_prompt, snapshot, paper_text)
 
     try:
         primary_model = cfg["model"]
         fallback_model = cfg["fallback"]
         try:
-            content, model_used = _dispatch_one_call(vendor, keys, primary_model, prompt, pdf_path, paper_text)
+            content, model_used = packetized_dispatch(primary_model, prompt)
         except Exception as e:
             print(f"[{name}] primary {primary_model} failed: {e!r} — trying fallback {fallback_model}", file=sys.stderr)
             fallback_used = True
-            content, model_used = _dispatch_one_call(vendor, keys, fallback_model, prompt, pdf_path, paper_text)
+            content, model_used = packetized_dispatch(fallback_model, prompt)
 
         # PASS 2 — self-critique to catch what initial review missed
         if enable_pass2 and content and len(content) > 500 and "FAILED" not in content[:60]:
@@ -604,10 +628,9 @@ def run_reviewer(
                 )
                 # Perplexity gets paper text again since it's text-mode
                 # Others get the PDF again
-                p2_content, _ = _dispatch_one_call(
-                    vendor, keys,
+                p2_content, _ = packetized_dispatch(
                     primary_model if not fallback_used else fallback_model,
-                    p2_prompt, pdf_path, paper_text,
+                    p2_prompt,
                 )
                 if p2_content and "NO ADDITIONAL FINDINGS" not in p2_content[:200].upper():
                     content += "\n\n---\n\n## PASS 2 — self-critique findings (what initial review missed)\n\n" + p2_content
@@ -637,16 +660,17 @@ def run_reviewer(
     # input PDF identity into every reviewer artifact.
     try:
         import hashlib, subprocess as _sp
-        _md5 = hashlib.md5(pdf_path.read_bytes()).hexdigest()[:8]
+        _sha256 = hashlib.sha256(pdf_path.read_bytes()).hexdigest()
         _pages = _sp.check_output(["pdfinfo", str(pdf_path)]).decode()
         _pages = next((l.split()[1] for l in _pages.splitlines() if l.startswith("Pages")), "?")
     except Exception:
-        _md5, _pages = "?", "?"
+        _sha256, _pages = "?", "?"
     header = (
         f"# {paper_tag} {round_label} — {cfg['persona']}\n\n"
         f"**Reviewer**: `{name}`\n"
         f"**Model**: `{model_used}`{fb}\n"
-        f"**Input PDF**: `{pdf_path}` md5={_md5} pages={_pages}\n"
+        f"**Input PDF**: `{entry['pdf_path']}` sha256={_sha256} pages={_pages}\n"
+        f"**Review packet(s)**: `{', '.join(packet_keys) or 'packet-build-failed'}`\n"
         f"**Input format**: {input_note}{p2_note}\n"
         f"**Wall time**: {dt:.1f}s\n\n---\n\n"
     )
@@ -662,6 +686,7 @@ def run_reviewer(
         "out": str(out_path),
         "ok": ok,
         "fallback": fallback_used,
+        "packet_keys": packet_keys,
         "error": error_msg,
     }
 
@@ -677,13 +702,24 @@ def main() -> int:
         )
         return 1
 
-    pdf_path = Path(sys.argv[1]).resolve()
+    supplied_pdf = Path(sys.argv[1]).resolve()
     round_label = sys.argv[2]
     paper_tag = sys.argv[3]
     round_context = sys.argv[4] if len(sys.argv) >= 5 else (
         "Full adversarial peer review — treat this as a real PRD/MNRAS submission."
     )
 
+    if paper_tag not in REGISTRY:
+        print(f"ERROR: paper_tag must be one of {CANONICAL_IDS}", file=sys.stderr)
+        return 1
+    entry = REGISTRY[paper_tag]
+    pdf_path = (REPO / entry["pdf_path"]).resolve()
+    if supplied_pdf != pdf_path:
+        print(
+            f"ERROR: supplied PDF is not canonical for {paper_tag}: "
+            f"expected {pdf_path}, got {supplied_pdf}", file=sys.stderr,
+        )
+        return 1
     if not pdf_path.exists():
         print(f"ERROR: PDF not found: {pdf_path}", file=sys.stderr)
         return 1
@@ -710,8 +746,44 @@ def main() -> int:
         if use_anthropic_api or c["vendor"] != "anthropic"
     }
     if not use_anthropic_api:
-        print("[v3 native-PDF review] Anthropic API leg DISABLED — Claude review comes from a Claude Code sub-agent (subscription, not the API key).", flush=True)
+        print("[v3 native-PDF review] Anthropic API leg DISABLED (non-Anthropic campaign default).", flush=True)
     print(f"[v3 native-PDF review] Dispatching {len(active)} reviewers in parallel...", flush=True)
+
+    cache_root = review_cache_root()
+    allowed_context = round_context.encode()
+
+    if os.environ.get("V3_REVIEW_DRY_RUN", "0") == "1":
+        packets = []
+        for name, cfg in active.items():
+            prompt = REVIEW_PROMPT_TEMPLATE.format(
+                persona=cfg["persona"],
+                paper_tag=paper_tag,
+                round_label=round_label,
+                round_context=round_context,
+                page_count=page_count,
+                target_journal=entry["target_journal"],
+                article_type=entry["article_type"],
+                review_profile=entry["review_profile"],
+                focus=cfg["focus"],
+            )
+            packet = build_packet(
+                REPO, paper_tag, entry, prompt.encode(), allowed_context,
+                cfg["model"], os.environ.get("V3_REVIEW_EFFORT", "high"),
+                os.environ.get("V3_EXPECTED_PDF_SHA256") or None, cache_root,
+            )
+            path, reused = publish_packet(
+                packet, cache_root / "packets", prompt.encode(), allowed_context,
+            )
+            resolve_pdf_snapshot(packet, cache_root)
+            packets.append({
+                "reviewer": name, "packet_key": packet["packet_key"],
+                "packet_path": str(path), "reused": reused,
+            })
+        print(json.dumps({
+            "paper": paper_tag, "profile": entry["review_profile"],
+            "dispatch": False, "packets": packets,
+        }, indent=2))
+        return 0
 
     out_dir = REPO / "project-context" / "peer-reviews"
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -726,12 +798,16 @@ def main() -> int:
                 round_label=round_label,
                 round_context=round_context,
                 page_count=page_count,
+                target_journal=entry["target_journal"],
+                article_type=entry["article_type"],
+                review_profile=entry["review_profile"],
                 focus=cfg["focus"],
             )
             futures[pool.submit(
                 run_reviewer,
                 name, cfg, prompt, pdf_path, paper_text,
                 round_label, paper_tag, keys, out_dir,
+                entry, allowed_context, cache_root,
             )] = name
 
         for fut in as_completed(futures):

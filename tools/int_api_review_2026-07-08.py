@@ -3,50 +3,32 @@
 Runs EXACTLY ONE (paper, vendor) leg per invocation so a hang loses one leg, not the round.
 Keys from .env.local by NAME (first token before inline comments; never printed).
 Per-request timeout 300s. One retry, then FAILED with the error string.
-Usage: int_api_review_2026-07-08.py <PAPER> <openai|grok|gemini>
+Usage: int_api_review_2026-07-08.py <P1A|P1B|P2|P3|P4|P5> <openai|grok|gemini>
 """
-import os, sys, json, time, warnings, datetime, pathlib, hashlib
+import os, sys, json, time, warnings, datetime, pathlib
 warnings.filterwarnings("ignore")
 
-REPO = pathlib.Path("/Users/houstongolden/Desktop/CODE_YOU/bigbounce")
+from paper_registry import CANONICAL_IDS, load_registry, repo_root
+from review_packet import (
+    build_packet,
+    publish_packet,
+    resolve_pdf_snapshot,
+    review_cache_root,
+)
+
+REPO = repo_root()
+REGISTRY = load_registry(REPO)
 # Output dir is overridable (INT_OUTDIR env) so variant waves (e.g. the P3 ApJS
 # review-of-record) can write their raws to a clearly-labeled sibling round dir
 # without clobbering the canonical PRD round. Default = the canonical PRD round.
 OUTDIR = pathlib.Path(os.environ.get("INT_OUTDIR")
                       or (REPO / "project-context/peer-reviews/INT_v3/ROUND_2026-07-09"))
-OUTDIR.mkdir(parents=True, exist_ok=True)
 MANIFEST = OUTDIR / "manifest.jsonl"
 
-# paper -> pdf path relative to repo. Version is read LIVE from the sibling
-# .tex \paperVersion macro at run time (2026-07-10 fix: hard-coded labels went
-# stale and mislabeled review headers as reviewing old versions).
-PAPERS = {
-    "P1A": "arxiv/paper1a_ech_nogo.pdf",
-    "P1B": "arxiv/paper1b_mcmc_companion.pdf",
-    "P2":  "research/focused_paper_source_integration/02_full_draft.pdf",
-    "P3":  "pipelines/p3_anomaly_engine/paper3_draft.pdf",
-    "P4":  "pipelines/p2_chirality/chirality_catalog_paper.pdf",
-    "P5":  "pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf",
-    "P1U": "arxiv/paper1_unified.pdf",
-    # P3 ApJS-framed review-of-record variant (directive M, 2026-07-12). Same
-    # science as P3; reviewed against the ApJS venue with the ApJS referee prompt.
-    "P3APJS": "pipelines/p3_anomaly_engine/paper3_apjs.pdf",
-}
 
-TEX_FOR_PDF = {
-    "pipelines/p3_anomaly_engine/paper3_apjs.pdf": "pipelines/p3_anomaly_engine/paper3_apjs.tex",
-    "arxiv/paper1a_ech_nogo.pdf": "arxiv/paper1a_ech_nogo.tex",
-    "arxiv/paper1b_mcmc_companion.pdf": "arxiv/paper1b_mcmc_companion.tex",
-    "research/focused_paper_source_integration/02_full_draft.pdf": "research/focused_paper_source_integration/02_full_draft.tex",
-    "pipelines/p3_anomaly_engine/paper3_draft.pdf": "pipelines/p3_anomaly_engine/paper3_draft.tex",
-    "pipelines/p2_chirality/chirality_catalog_paper.pdf": "pipelines/p2_chirality/chirality_catalog_paper.tex",
-    "pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf": "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex",
-    "arxiv/paper1_unified.pdf": "arxiv/paper1_unified.tex",
-}
-
-def live_version(pdf_rel: str) -> str:
+def live_version(tex_rel: str) -> str:
     import re as _re
-    tex = REPO / TEX_FOR_PDF.get(pdf_rel, "")
+    tex = REPO / tex_rel
     try:
         txt = tex.read_text()
         m = _re.search(r"\\newcommand\{\\paperVersion\}\{([^}]+)\}", txt)
@@ -74,24 +56,28 @@ GEMINI_MODEL = "gemini-3.1-pro-preview"
 GEMINI_BASE = "https://generativelanguage.googleapis.com"
 REQ_TIMEOUT = 300
 
-# The referee venue is overridable so a variant wave (e.g. the P3 ApJS
-# review-of-record) can review to the correct journal's standard. INT_PROMPT /
-# INT_SYSTEM override the full strings; INT_VENUE just swaps the journal name in
-# the canonical templates. Default = Physical Review D (unchanged behavior).
-_VENUE = os.environ.get("INT_VENUE", "Physical Review D")
-PROMPT = os.environ.get("INT_PROMPT") or (
-    f"You are an expert referee for {_VENUE}. Review this manuscript to the "
-    "standard of a real submission. Respond with exactly: "
-    "(1) VERDICT: ACCEPT / MINOR REVISIONS / MAJOR REVISIONS / REJECT. "
-    "(2) ISSUES: numbered, each prefixed [MAJOR] or [MINOR], naming the specific "
-    "section/claim and concrete problem. "
-    "(3) One sentence: is the central claim supported?"
-)
-SYSTEM_MSG = os.environ.get("INT_SYSTEM") or f"You are an expert {_VENUE} referee."
+PROMPT = ""
+SYSTEM_MSG = ""
+
+
+def review_messages(entry):
+    venue = os.environ.get("INT_VENUE") or entry["target_journal"]
+    prompt = os.environ.get("INT_PROMPT") or (
+        f"You are an expert referee for {venue}. Review this {entry['article_type']} "
+        f"manuscript under profile {entry['review_profile']} to the standard of a real "
+        "submission. Respond with exactly: (1) VERDICT: ACCEPT / MINOR REVISIONS / "
+        "MAJOR REVISIONS / REJECT. (2) ISSUES: numbered, each prefixed [MAJOR] or "
+        "[MINOR], naming the specific section/claim and concrete problem. "
+        "(3) One sentence: is the central claim supported?"
+    )
+    system = os.environ.get("INT_SYSTEM") or f"You are an expert {venue} referee."
+    return system, prompt
 
 
 def loadenv(p=REPO / ".env.local"):
-    d = {}
+    d = dict(os.environ)
+    if not p.is_file():
+        return d
     for line in open(p):
         line = line.rstrip("\n")
         if not line or line.lstrip().startswith("#") or "=" not in line:
@@ -322,20 +308,51 @@ VENDORS = {
 
 
 def run_one(paper, vendor):
-    rel = PAPERS[paper]
-    ver = live_version(rel)
-    pdf_path = str(REPO / rel)
-    pdf_sha256 = hashlib.sha256(pathlib.Path(pdf_path).read_bytes()).hexdigest()
+    global PROMPT, SYSTEM_MSG
+    if paper not in REGISTRY:
+        raise ValueError(f"paper must be one of {CANONICAL_IDS}")
+    if vendor not in VENDORS:
+        raise ValueError(f"vendor must be one of {tuple(VENDORS)}")
+    entry = REGISTRY[paper]
+    rel = entry["pdf_path"]
+    ver = live_version(entry["tex_path"])
+    SYSTEM_MSG, PROMPT = review_messages(entry)
     expected_sha256 = os.environ.get("INT_EXPECTED_PDF_SHA256", "").strip().lower()
-    if expected_sha256 and pdf_sha256 != expected_sha256:
-        raise RuntimeError(
-            f"PDF provenance mismatch before {vendor}: expected {expected_sha256}, got {pdf_sha256}"
-        )
-    review_commit = os.environ.get("INT_REVIEW_COMMIT", "worktree")
     model, fn = VENDORS[vendor]
+    if vendor == "gemini":
+        model = _gemini_model()
+    context = os.environ.get("INT_CONTEXT", "").encode()
+    packet_prompt = f"SYSTEM:\n{SYSTEM_MSG}\n\nUSER:\n{PROMPT}\n".encode()
+    cache_root = review_cache_root()
+    packet = build_packet(
+        REPO, paper, entry, packet_prompt, context, model,
+        os.environ.get("INT_EFFORT", "high"), expected_sha256 or None, cache_root,
+    )
+    packet_path, packet_reused = publish_packet(
+        packet, cache_root / "packets", packet_prompt, context,
+    )
+    pdf_path = resolve_pdf_snapshot(packet, cache_root)
+    pdf_sha256 = packet["pdf_sha256"]
+    review_commit = packet["repository_head"]
+    expected_commit = os.environ.get("INT_REVIEW_COMMIT", "").strip()
+    if expected_commit and expected_commit != review_commit:
+        raise RuntimeError(
+            f"review commit mismatch: expected {expected_commit}, got {review_commit}"
+        )
+    if os.environ.get("BIGBOUNCE_REVIEW_DRY_RUN", "0") == "1":
+        result = {
+            "paper": paper, "vendor": vendor, "packet_key": packet["packet_key"],
+            "packet_path": str(packet_path), "packet_reused": packet_reused,
+            "pdf_sha256": pdf_sha256, "review_profile": entry["review_profile"],
+            "target_journal": entry["target_journal"], "dispatch": False,
+        }
+        print(json.dumps(result, indent=2))
+        return result
+    OUTDIR.mkdir(parents=True, exist_ok=True)
     ts = datetime.datetime.utcnow().isoformat() + "Z"
     rec = {"paper": paper, "version": ver, "vendor": vendor, "model": model, "ts": ts,
-           "pdf_path": rel, "pdf_sha256": pdf_sha256, "review_commit": review_commit}
+           "pdf_path": rel, "pdf_sha256": pdf_sha256, "review_commit": review_commit,
+           "packet_key": packet["packet_key"], "review_profile": entry["review_profile"]}
     outfile = OUTDIR / f"API_{paper}_{vendor}.md"
     last_err = None
     for attempt in (1, 2):
@@ -354,6 +371,7 @@ def run_one(paper, vendor):
                 f.write(f"# INT API Review — {paper} {ver} — {vendor} ({eff_model})\n")
                 f.write(f"paper: {paper}  version: {ver}  model: {eff_model}\n")
                 f.write(f"provenance: commit={review_commit}  pdf={rel}  sha256={pdf_sha256}\n")
+                f.write(f"packet: key={packet['packet_key']}  profile={entry['review_profile']}\n")
                 f.write(f"modality: {meta.get('modality')}\n")
                 f.write(f"UTC: {ts}  |  latency: {dt}s  |  attempt: {attempt}\n")
                 f.write(f"usage: {json.dumps(meta.get('usage', {}))}\n")
@@ -373,6 +391,7 @@ def run_one(paper, vendor):
         f.write(f"# INT API Review — {paper} {ver} — {vendor} ({model}) — FAILED\n")
         f.write(f"paper: {paper}  version: {ver}  model: {model}\n")
         f.write(f"provenance: commit={review_commit}  pdf={rel}  sha256={pdf_sha256}\n")
+        f.write(f"packet: key={packet['packet_key']}  profile={entry['review_profile']}\n")
         f.write(f"UTC: {ts}\nERROR: {last_err}\n")
     print(f"[FAIL] {paper:4s} {vendor:6s} -> {last_err[:160]}")
     with open(MANIFEST, "a") as mf:
@@ -382,6 +401,6 @@ def run_one(paper, vendor):
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
-        print("usage: int_api_review_2026-07-08.py <PAPER> <openai|grok|gemini>")
+        print("usage: int_api_review_2026-07-08.py <P1A|P1B|P2|P3|P4|P5> <openai|grok|gemini>")
         sys.exit(2)
     run_one(sys.argv[1], sys.argv[2])

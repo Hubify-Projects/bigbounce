@@ -22,13 +22,15 @@
 #   - the VERDICT line of the just-written Codex file
 # and appends a run.log line to INT_api/H17_2026-07-10/run.log.
 #
-# Usage: tools/int_wave.sh <P1U|P1A|P1B|P2|P3|P4|P5> ["optional context-note"]
+# Usage: tools/int_wave.sh <P1A|P1B|P2|P3|P4|P5> ["optional context-note"]
 #
 # See canonical spec: ~/.claude/scistack/astrostack/bigbounce-r-round/SKILL.md §1 (INT).
 
 set -uo pipefail   # NOT -e: individual legs may fail; we want the triple regardless.
 
-REPO="/Users/houstongolden/Desktop/CODE_YOU/bigbounce"
+SCRIPT_DIR="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)"
+REPO="$(cd "$SCRIPT_DIR/.." && pwd)"
+REGISTRY="$REPO/tools/paper_registry.py"
 PY_REVIEW="$REPO/tools/int_api_review_2026-07-08.py"
 API_OUTDIR="$REPO/project-context/peer-reviews/INT_v3/ROUND_2026-07-09"
 SUBSCRIPTION_OUTDIR="$REPO/project-context/peer-reviews/INT_api/H17_2026-07-10"
@@ -38,28 +40,17 @@ CODEX_BIN="${BIGBOUNCE_CODEX_BIN:-$(command -v codex 2>/dev/null || { [ -x /opt/
 CODEX_MODEL="${BIGBOUNCE_CODEX_MODEL:-gpt-5.6-sol}"
 CODEX_EFFORT="${BIGBOUNCE_CODEX_EFFORT:-high}"
 
-# tex path per paper (same map as the python script + directive_g.sh).
-tex_for_paper() {
-  case "$1" in
-    P1A) echo "arxiv/paper1a_ech_nogo.tex" ;;
-    P1B) echo "arxiv/paper1b_mcmc_companion.tex" ;;
-    P1U) echo "arxiv/paper1_unified.tex" ;;
-    P2)  echo "research/focused_paper_source_integration/02_full_draft.tex" ;;
-    P3)  echo "pipelines/p3_anomaly_engine/paper3_draft.tex" ;;
-    P4)  echo "pipelines/p2_chirality/chirality_catalog_paper.tex" ;;
-    P5)  echo "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex" ;;
-    *)   echo "" ;;
-  esac
-}
-
 die() { echo "FAIL: $*" >&2; exit 1; }
 
 [ $# -ge 1 ] || die "usage: tools/int_wave.sh <PAPER> [\"context-note\"]"
 PAPER="$1"
 CONTEXT="${2:-}"
 
-TEX_REL="$(tex_for_paper "$PAPER")"
-[ -n "$TEX_REL" ] || die "unknown paper key '$PAPER' (want P1A|P1B|P1U|P2|P3|P4|P5)"
+TEX_REL="$(python3 "$REGISTRY" "$PAPER" tex_path 2>/dev/null)"
+[ -n "$TEX_REL" ] || die "unknown paper key '$PAPER' (want P1A|P1B|P2|P3|P4|P5)"
+TARGET_JOURNAL="$(python3 "$REGISTRY" "$PAPER" target_journal)"
+ARTICLE_TYPE="$(python3 "$REGISTRY" "$PAPER" article_type)"
+REVIEW_PROFILE="$(python3 "$REGISTRY" "$PAPER" review_profile)"
 TEX="$REPO/$TEX_REL"
 [ -f "$TEX" ] || die "tex not found: $TEX"
 
@@ -90,6 +81,7 @@ VER="$(live_version)"
 echo "=== int_wave :: $PAPER ($VER) ==="
 [ -n "$CONTEXT" ] && echo "    context-note: $CONTEXT"
 echo "    tex:    $TEX_REL"
+echo "    venue:  $TARGET_JOURNAL ($ARTICLE_TYPE; profile=$REVIEW_PROFILE)"
 echo "    codex:  ${CODEX_OUT#$REPO/}"
 
 # ---------------------------------------------------------------------------
@@ -97,7 +89,7 @@ echo "    codex:  ${CODEX_OUT#$REPO/}"
 # referee format), plus the optional context-note. The Codex leg reads the
 # full paper + source + context (never fabricate — verify against artifacts).
 # ---------------------------------------------------------------------------
-CODEX_PROMPT="You are an expert referee for Physical Review D reviewing the manuscript at $TEX_REL (version $VER) in this repository. This is a strictly READ-ONLY review: do not edit files, write state, use a browser, commit, push, or expose credentials. Never inspect .env.local or other secret-bearing files. Read the FULL .tex file (and non-secret figures/source/data you need to verify claims — you have the full repo). Review to the standard of a real PRD submission. Do NOT fabricate: verify every number you check against committed artifacts (recompute read-only, don't just read).
+CODEX_PROMPT="You are an expert referee for $TARGET_JOURNAL reviewing this $ARTICLE_TYPE manuscript at $TEX_REL (version $VER; canonical review profile $REVIEW_PROFILE) in this repository. This is a strictly READ-ONLY review: do not edit files, write state, use a browser, commit, push, or expose credentials. Never inspect .env.local or other secret-bearing files. Read the FULL .tex file (and non-secret figures/source/data you need to verify claims — you have the full repo). Review to the standard of a real $TARGET_JOURNAL submission. Do NOT fabricate: verify every number you check against committed artifacts (recompute read-only, don't just read).
 
 Respond in EXACTLY this format:
 (1) VERDICT: ACCEPT / MINOR REVISIONS / MAJOR REVISIONS / REJECT
@@ -130,14 +122,14 @@ mkdir -p "$SUBSCRIPTION_OUTDIR"
 # (a) OpenAI leg
 (
   set -a; source "$REPO/.env.local"; set +a
-  python3 "$PY_REVIEW" "$PAPER" openai
+  INT_CONTEXT="$CONTEXT" python3 "$PY_REVIEW" "$PAPER" openai
 ) >"$SUBSCRIPTION_OUTDIR/.intwave_${PAPER}_openai_${HHMM}.log" 2>&1 &
 PID_OPENAI=$!
 
 # (b) Grok leg
 (
   set -a; source "$REPO/.env.local"; set +a
-  python3 "$PY_REVIEW" "$PAPER" grok
+  INT_CONTEXT="$CONTEXT" python3 "$PY_REVIEW" "$PAPER" grok
 ) >"$SUBSCRIPTION_OUTDIR/.intwave_${PAPER}_grok_${HHMM}.log" 2>&1 &
 PID_GROK=$!
 
@@ -149,7 +141,7 @@ if ( set -a; source "$REPO/.env.local" >/dev/null 2>&1; set +a; [ -n "${GEMINI_A
   GEMINI_ON=1
   (
     set -a; source "$REPO/.env.local"; set +a
-    python3 "$PY_REVIEW" "$PAPER" gemini
+    INT_CONTEXT="$CONTEXT" python3 "$PY_REVIEW" "$PAPER" gemini
   ) >"$SUBSCRIPTION_OUTDIR/.intwave_${PAPER}_gemini_${HHMM}.log" 2>&1 &
   PID_GEMINI=$!
 fi

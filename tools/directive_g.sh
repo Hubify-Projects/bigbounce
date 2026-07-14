@@ -15,7 +15,7 @@
 #   5. Convex paperVersions:bump + read-back verify
 #   6. one-line PASS summary
 #
-# Usage: tools/directive_g.sh [--verify-only] <P1U|P2|P3|P4|P5> <new-version> "<changelog>"
+# Usage: tools/directive_g.sh [--verify-only] <P1A|P1B|P2|P3|P4|P5> <new-version> "<changelog>"
 #
 #   --verify-only : run the step 1-2-3 checks (tex version+date, leak-gate,
 #                   compile) + md5 comparison of the already-served mirrors + the
@@ -33,36 +33,12 @@ set -euo pipefail
 # ---------------------------------------------------------------------------
 # Config
 # ---------------------------------------------------------------------------
-REPO="/Users/houstongolden/Desktop/CODE_YOU/bigbounce"
+SCRIPT_DIR="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)"
+REPO="$(cd "$SCRIPT_DIR/.." && pwd)"
+REGISTRY="$REPO/tools/paper_registry.py"
 TINYTEX_BIN="$HOME/Library/TinyTeX/bin/universal-darwin"
 CONVEX_URL="https://brilliant-panther-471.convex.cloud/api/mutation"
 CONVEX_QUERY_URL="https://brilliant-panther-471.convex.cloud/api/query"
-
-# paper -> tex path + canonical Convex slug. macOS ships bash 3.2 (no
-# associative arrays), so these are plain case lookups.
-# TEX paths are relative to $REPO; the PDF is the sibling <name>.pdf.
-# Slugs are the canonical site slugs (Lesson 2026-07-10: NEVER invent slugs;
-# note P1U -> paper-1a, where the unified P1 lives).
-tex_for_paper() {
-  case "$1" in
-    P1U) echo "arxiv/paper1_unified.tex" ;;
-    P2)  echo "research/focused_paper_source_integration/02_full_draft.tex" ;;
-    P3)  echo "pipelines/p3_anomaly_engine/paper3_draft.tex" ;;
-    P4)  echo "pipelines/p2_chirality/chirality_catalog_paper.tex" ;;
-    P5)  echo "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex" ;;
-    *)   echo "" ;;
-  esac
-}
-slug_for_paper() {
-  case "$1" in
-    P1U) echo "paper-1a" ;;
-    P2)  echo "paper-2" ;;
-    P3)  echo "paper-3" ;;
-    P4)  echo "paper-4" ;;
-    P5)  echo "paper-5" ;;
-    *)   echo "" ;;
-  esac
-}
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -99,12 +75,12 @@ if [ "${1:-}" = "--verify-only" ]; then
   VERIFY_ONLY=1
   shift
 fi
-[ $# -eq 3 ] || die "usage: tools/directive_g.sh [--verify-only] <P1U|P2|P3|P4|P5> <new-version> \"<changelog>\""
+[ $# -eq 3 ] || die "usage: tools/directive_g.sh [--verify-only] <P1A|P1B|P2|P3|P4|P5> <new-version> \"<changelog>\""
 PAPER="$1"; NEWVER="$2"; CHANGELOG="$3"
 
-TEX_REL="$(tex_for_paper "$PAPER")"
-SLUG="$(slug_for_paper "$PAPER")"
-[ -n "$TEX_REL" ] && [ -n "$SLUG" ] || die "unknown paper key '$PAPER' (want P1U|P2|P3|P4|P5)"
+TEX_REL="$(python3 "$REGISTRY" "$PAPER" tex_path 2>/dev/null)"
+SLUG="$(python3 "$REGISTRY" "$PAPER" site_slug 2>/dev/null)"
+[ -n "$TEX_REL" ] && [ -n "$SLUG" ] || die "unknown paper key '$PAPER' (want P1A|P1B|P2|P3|P4|P5)"
 
 cd "$REPO"
 TEX="$REPO/$TEX_REL"
