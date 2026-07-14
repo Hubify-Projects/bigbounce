@@ -57,6 +57,78 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p5-v01129-prd-aj-exactpdf-2026-07-14",
+    dateISO: "2026-07-14",
+    kind: "internal-api",
+    title:
+      "P5 v0.1.129 — exact-PDF PRD and AJ venue boards: AJ is the better fit, but structural revisions and external release gates remain",
+    papers: ["P5"],
+    summary:
+      "Two independent non-Anthropic panels reviewed the identical 42-page v0.1.129 artifact (PDF SHA-256 9f3c6c10…cdc8; source commit f4c26f81). The PRD board returned OpenAI REJECT / Gemini MAJOR / Grok ACCEPT. The AJ venue-fit board returned OpenAI MAJOR / Gemini MINOR / Grok MINOR, while Gemini's nominal MINOR report itself contains a [MAJOR] Paper-IV dependency. Truth audit supports AJ-oriented restructuring around the released DESIVAST GALZONE OUT=0 adjusted estimator, with the author-defined any-hole estimator demoted to sensitivity. No readiness uplift; readiness and cap hold at 74 and P5 remains in revision.",
+    keyTakeaways: [
+      "Both boards bind to the same v0.1.129 PDF SHA-256 9f3c6c10…cdc8; PRD and AJ verdicts remain separate rather than averaged.",
+      "AJ is the better venue fit, but Paper-IV co-review/acceptance and an immutable public archive remain unresolved external gates.",
+      "The next manuscript closure is structural and post-hoc: released GALZONE OUT=0 becomes the designated primary; any-hole, T-Web, Tempel, and ASTRA become sensitivities or secondary diagnostics.",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 0,
+      note: "This dual-board entry records exact-PDF venue evidence and a normalized truth audit; it does not claim closure or increase readiness.",
+    },
+    links: [
+      {
+        label: "Normalized truth audit",
+        href: `${PR}/INT_v3/ROUND_2026-07-14-P5-v0.1.129-EXACTPDF-9f3c6c10-VENUEFIT-AJ-NONANTHROPIC/P5_v0.1.129_NORMALIZED_TRUTH_AUDIT.md`,
+      },
+      {
+        label: "PRD board",
+        href: `${PR}/INT_v3/ROUND_2026-07-14-P5-v0.1.129-EXACTPDF-9f3c6c10-NONANTHROPIC-CONFIRM/manifest.jsonl`,
+      },
+      {
+        label: "AJ board",
+        href: `${PR}/INT_v3/ROUND_2026-07-14-P5-v0.1.129-EXACTPDF-9f3c6c10-VENUEFIT-AJ-NONANTHROPIC/manifest.jsonl`,
+      },
+    ],
+  },
+  {
+    id: "p3-v320-r5-apjs-exact-panel-2026-07-14",
+    dateISO: "2026-07-14",
+    timePT: "10:45–10:47",
+    kind: "internal-api",
+    title:
+      "P3 v3.2.0-r5 — venue-correct ApJS exact-PDF panel: OpenAI MAJOR, Gemini MINOR, Grok MINOR; substantive controls remain open",
+    papers: ["P3"],
+    summary:
+      "Three blind non-Anthropic native-PDF legs reviewed the same 14-page artifact at source commit 7cf60218 and SHA-256 024931a4…39dc concurrently. Truth audit confirms a real chance-association/random-shift control, an accepted-versus-warned comparison enabled by the existing 2,267-row auxiliary product, and an explicit original-member sensitivity. Final archive/DOI packaging remains a workflow gate. Grok's 20,299,153 mismatch is an OCR false positive—the exact source/PDF use 20,299,155 throughout—and 7.33% correctly rounds 181/2468. No readiness uplift.",
+    keyTakeaways: [
+      "Artifact provenance is exact: v3.2.0-r5, 14 pages, source 7cf60218, PDF SHA-256 024931a4…39dc; no Anthropic leg was run.",
+      "Real science work remains, so the paper stays in revision despite two MINOR verdict labels.",
+      "Parallel blind dispatch completed all three vendor legs in the latency of the slowest reviewer while preserving separate raw reports.",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 3,
+      note: "Three substantive closure classes survived truth audit: false-association control, warned-population comparison, and original-member sensitivity. This is a finding count, not a readiness score.",
+    },
+    links: [
+      {
+        label: "Truth audit",
+        href: `${PR}/INT_v3/ROUND_2026-07-14-P3-v3.2.0-r5-EXACTPDF-024931a4-APJS-NONANTHROPIC-CONFIRM/P3APJS_truth_audit.md`,
+      },
+      {
+        label: "OpenAI raw",
+        href: `${PR}/INT_v3/ROUND_2026-07-14-P3-v3.2.0-r5-EXACTPDF-024931a4-APJS-NONANTHROPIC-CONFIRM/API_P3APJS_openai.md`,
+      },
+      {
+        label: "Gemini raw",
+        href: `${PR}/INT_v3/ROUND_2026-07-14-P3-v3.2.0-r5-EXACTPDF-024931a4-APJS-NONANTHROPIC-CONFIRM/API_P3APJS_gemini.md`,
+      },
+      {
+        label: "Grok raw",
+        href: `${PR}/INT_v3/ROUND_2026-07-14-P3-v3.2.0-r5-EXACTPDF-024931a4-APJS-NONANTHROPIC-CONFIRM/API_P3APJS_grok.md`,
+      },
+    ],
+    reportSlug: "p3-v320-r5-apjs-exact-panel",
+  },
+  {
     id: "m43-ext-p5-p2-adjudication-2026-07-13",
     dateISO: "2026-07-13",
     kind: "external-browser",

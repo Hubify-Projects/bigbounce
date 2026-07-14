@@ -20,6 +20,24 @@ This tracker logs each revision round and which issues have been addressed.
 
 ## Revision Rounds
 
+### P3 v3.2.0-r5: Venue-correct exact-PDF ApJS panel (2026-07-14)
+
+**Input:** exact 14-page PDF at source commit `7cf60218b521a8154f9ad6ed3b58c0bbc420ab59`, SHA-256 `024931a40e88124f75f2f6872549936e909db0a3b504dbd2e4e68e91878a39dc`
+
+**Panel:** OpenAI GPT-5.5 **MAJOR REVISIONS** / Gemini 3.1 Pro Preview **MINOR REVISIONS** (one internally MAJOR-tagged item) / Grok 4.3 **MINOR REVISIONS**. All three received the native PDF concurrently. No Anthropic/Claude dispatch or fallback.
+
+**Truth audit:** three substantive closure classes survive: chance-association/random-shift control; accepted-versus-warning-bearing population comparison using the exact 2,267-row auxiliary product; original-member-separation sensitivity. Final immutable archive/DOI packaging is a workflow gate. Grok's claimed 20,299,153 denominator is an OCR false positive (source/PDF use 20,299,155 throughout), and 7.33% correctly rounds `181/2468`.
+
+| Finding | Status | Required evidence |
+|---|---|---|
+| Chance-association/random-shift control | **OPEN — MAJOR** | Deterministic script, artifact, radius curve, and tail-row interpretation |
+| Warned-versus-accepted comparison | **OPEN — MAJOR** | Script-generated descriptive table/figure; no bias-correction claim |
+| Original-member 1-arcsec sensitivity | **OPEN — BOUNDED** | Explicit one-row counterfactual and machine-readable tier/expression |
+| Final citable package/DOI | **OPEN — WORKFLOW** | Immutable primary/auxiliary assets, manifests, dictionaries, and final identifier |
+| Denominator/7.33% Grok flags | **FALSE / CLOSED** | Direct exact-source/PDF inspection and arithmetic |
+
+No readiness uplift is inferred. Raw reports, manifest, and full source-cited audit are in `INT_v3/ROUND_2026-07-14-P3-v3.2.0-r5-EXACTPDF-024931a4-APJS-NONANTHROPIC-CONFIRM/`; SSOT and the Next.js review timeline were updated with this round.
+
 ### P2 v1.7.119: Exact-PDF truth-audit scientific closure (2026-07-14)
 
 **Input:** exact v1.7.118 PDF at commit `9089d65c64752e3a2c69778b72d97ef7c45b4443`, SHA-256 `01107b3d731b945b2aa9ea04ce4e8188282770a87b495c4a1f7ad5b71a4db71a`
