@@ -1,0 +1,379 @@
+{
+  "base_cohort": {
+    "program": {
+      "bright": 53,
+      "dark": 2415
+    },
+    "rows": 2468,
+    "spectype": {
+      "GALAXY": 2371,
+      "QSO": 95,
+      "STAR": 2
+    },
+    "unique_fits_rows": 2468,
+    "unique_targetids": 2468,
+    "zcat_primary": {
+      "False": 20,
+      "True": 2448
+    },
+    "zwarn": {
+      "0": 181,
+      "2": 795,
+      "2048": 3,
+      "2050": 10,
+      "2052": 2,
+      "2054": 19,
+      "4": 153,
+      "6": 1305
+    }
+  },
+  "created_utc": "2026-07-14T12:36:38Z",
+  "cross_checks": {
+    "base_count_matches_builder": true,
+    "exactly_one_multi_member_released_cluster": true,
+    "no_duplicate_cluster_or_targetid": true,
+    "no_nulls": true,
+    "original_member_separation_recomputed_exact": true,
+    "strict_count_matches_builder": true,
+    "strict_identifier_set_exact": true,
+    "strict_identifier_set_expected_rows": 181,
+    "strict_identifier_set_missing": [],
+    "strict_identifier_set_released_rows": 181,
+    "strict_identifier_set_unexpected": []
+  },
+  "provenance": {
+    "current_official_checksum": {
+      "checksum_file_sha256": "718b95ed4b5e97887c2358bad30664c98b5f06c18f31de2ad95bf97a085c43bb",
+      "content_length": 4699,
+      "etag": "\"6a54b04a-125b\"",
+      "last_modified": "Mon, 13 Jul 2026 09:30:50 GMT",
+      "reachable": true,
+      "status": 200,
+      "url": "https://data.desi.lbl.gov/public/dr1/spectro/redux/iron/zcatalog/v1/redux_iron_zcatalog_v1.sha256sum",
+      "zall_pix_sha256": "2d95ad99361039b556c402b49e0e7c84df5f00106dc5731d44476a58b128b49b"
+    },
+    "local_input_label": "DESI DR1 public zall-pix-iron.fits",
+    "local_sha256": "2d95ad99361039b556c402b49e0e7c84df5f00106dc5731d44476a58b128b49b",
+    "local_sha_matches_current_official": true,
+    "local_size_bytes": 22371272640,
+    "public_url": "https://data.desi.lbl.gov/public/dr1/spectro/redux/iron/zcatalog/v1/zall-pix-iron.fits",
+    "remote_head": {
+      "content_length": 22371272640,
+      "etag": "\"6a516695-5356e87c0\"",
+      "last_modified": "Fri, 10 Jul 2026 21:39:33 GMT",
+      "reachable": true,
+      "status": 200
+    },
+    "remote_range_parity": {
+      "matching_samples": 8,
+      "method": "Eight live 1 MiB HTTP Range requests compared byte-for-byte to the local FITS.",
+      "range_size_bytes": 1048576,
+      "requested_samples": 8,
+      "samples": [
+        {
+          "bytes_received": 1048576,
+          "content_length": 1048576,
+          "content_range": "bytes 0-1048575/22371272640",
+          "digest_match": true,
+          "end": 1048575,
+          "expected_content_range": "bytes 0-1048575/22371272640",
+          "http_status": 206,
+          "local_sha256": "d4a38716a6d3332b0bba2b04854a55b1f54c1698b21d6711e348b8c108aeb518",
+          "protocol_valid": true,
+          "remote_sha256": "d4a38716a6d3332b0bba2b04854a55b1f54c1698b21d6711e348b8c108aeb518",
+          "size_bytes": 1048576,
+          "start": 0,
+          "status": "PASS"
+        },
+        {
+          "bytes_received": 1048576,
+          "content_length": 1048576,
+          "content_range": "bytes 104857600-105906175/22371272640",
+          "digest_match": true,
+          "end": 105906175,
+          "expected_content_range": "bytes 104857600-105906175/22371272640",
+          "http_status": 206,
+          "local_sha256": "17789a8c63f4adc0907a4fa10a3c59350bc552cdd382a2d2a203a45d6a255d66",
+          "protocol_valid": true,
+          "remote_sha256": "17789a8c63f4adc0907a4fa10a3c59350bc552cdd382a2d2a203a45d6a255d66",
+          "size_bytes": 1048576,
+          "start": 104857600,
+          "status": "PASS"
+        },
+        {
+          "bytes_received": 1048576,
+          "content_length": 1048576,
+          "content_range": "bytes 1073741824-1074790399/22371272640",
+          "digest_match": true,
+          "end": 1074790399,
+          "expected_content_range": "bytes 1073741824-1074790399/22371272640",
+          "http_status": 206,
+          "local_sha256": "91e687064ec76a90efb5c5d4b6f1c2b73540b0f52562d10b6ac6e85d7c4e9799",
+          "protocol_valid": true,
+          "remote_sha256": "91e687064ec76a90efb5c5d4b6f1c2b73540b0f52562d10b6ac6e85d7c4e9799",
+          "size_bytes": 1048576,
+          "start": 1073741824,
+          "status": "PASS"
+        },
+        {
+          "bytes_received": 1048576,
+          "content_length": 1048576,
+          "content_range": "bytes 5368709120-5369757695/22371272640",
+          "digest_match": true,
+          "end": 5369757695,
+          "expected_content_range": "bytes 5368709120-5369757695/22371272640",
+          "http_status": 206,
+          "local_sha256": "17a2d4222fb43de92c0e3833818e6f4a3f27a1245c9b91bab451a2ebf1c50936",
+          "protocol_valid": true,
+          "remote_sha256": "17a2d4222fb43de92c0e3833818e6f4a3f27a1245c9b91bab451a2ebf1c50936",
+          "size_bytes": 1048576,
+          "start": 5368709120,
+          "status": "PASS"
+        },
+        {
+          "bytes_received": 1048576,
+          "content_length": 1048576,
+          "content_range": "bytes 10737418240-10738466815/22371272640",
+          "digest_match": true,
+          "end": 10738466815,
+          "expected_content_range": "bytes 10737418240-10738466815/22371272640",
+          "http_status": 206,
+          "local_sha256": "2135a9098577aa0a175350fed7a3425c18328294fe4104bf9cbbfc20a7e8e02e",
+          "protocol_valid": true,
+          "remote_sha256": "2135a9098577aa0a175350fed7a3425c18328294fe4104bf9cbbfc20a7e8e02e",
+          "size_bytes": 1048576,
+          "start": 10737418240,
+          "status": "PASS"
+        },
+        {
+          "bytes_received": 1048576,
+          "content_length": 1048576,
+          "content_range": "bytes 17179869184-17180917759/22371272640",
+          "digest_match": true,
+          "end": 17180917759,
+          "expected_content_range": "bytes 17179869184-17180917759/22371272640",
+          "http_status": 206,
+          "local_sha256": "ee8e2e2c115c3fd9a973ff9f39d16fc79215bb1f560f86bbc8d3376fccde0f93",
+          "protocol_valid": true,
+          "remote_sha256": "ee8e2e2c115c3fd9a973ff9f39d16fc79215bb1f560f86bbc8d3376fccde0f93",
+          "size_bytes": 1048576,
+          "start": 17179869184,
+          "status": "PASS"
+        },
+        {
+          "bytes_received": 1048576,
+          "content_length": 1048576,
+          "content_range": "bytes 21474836480-21475885055/22371272640",
+          "digest_match": true,
+          "end": 21475885055,
+          "expected_content_range": "bytes 21474836480-21475885055/22371272640",
+          "http_status": 206,
+          "local_sha256": "dc907f38d0e45b713e97c629365a31bc43122c832189decde6d3a0219ecd6595",
+          "protocol_valid": true,
+          "remote_sha256": "dc907f38d0e45b713e97c629365a31bc43122c832189decde6d3a0219ecd6595",
+          "size_bytes": 1048576,
+          "start": 21474836480,
+          "status": "PASS"
+        },
+        {
+          "bytes_received": 1048576,
+          "content_length": 1048576,
+          "content_range": "bytes 22370224064-22371272639/22371272640",
+          "digest_match": true,
+          "end": 22371272639,
+          "expected_content_range": "bytes 22370224064-22371272639/22371272640",
+          "http_status": 206,
+          "local_sha256": "64692146b426b630dd380e1e4ce39b2056cce535f9c04ddb6f4450c804e64d12",
+          "protocol_valid": true,
+          "remote_sha256": "64692146b426b630dd380e1e4ce39b2056cce535f9c04ddb6f4450c804e64d12",
+          "size_bytes": 1048576,
+          "start": 22370224064,
+          "status": "PASS"
+        }
+      ],
+      "status": "PASS"
+    },
+    "stale_2026_05_sidecar_sha256": "50031c9ba35d0181c7bfc7ffba661941b9300aaff15ee725662ab796a22999eb",
+    "stale_sidecar_disposition": "Historical local sidecar predates the July 2026 DESI file replacement and is not used to validate v3.2.0. Preserved here so the change is explicit.",
+    "stale_sidecar_matches_current": false
+  },
+  "public_id_rejoin": {
+    "all_main": true,
+    "all_science_bit": true,
+    "all_source_fields_exact": true,
+    "all_within_1arcsec": true,
+    "all_zcat_primary": true,
+    "all_zwarn0": true,
+    "per_field_exact": {
+      "BGS_TARGET": true,
+      "COADD_FIBERSTATUS": true,
+      "DELTACHI2": true,
+      "DESI_TARGET": true,
+      "MAIN_NSPEC": true,
+      "MAIN_PRIMARY": true,
+      "MWS_TARGET": true,
+      "PROGRAM": true,
+      "SCND_TARGET": true,
+      "SPECTYPE": true,
+      "SURVEY": true,
+      "TARGETID": true,
+      "TARGET_DEC": true,
+      "TARGET_RA": true,
+      "Z": true,
+      "ZCAT_NSPEC": true,
+      "ZCAT_PRIMARY": true,
+      "ZWARN": true
+    },
+    "rows_checked": 181
+  },
+  "release": "p3-v3.2.0-r2",
+  "released_cohort": {
+    "multi_member_clusters": {
+      "cases": [
+        {
+          "candidate_id": "P3-DESI-000030",
+          "cluster_id": 71390,
+          "fits_row": 14112733,
+          "member_ids": "desi_dr1_75180|sdss_dr18_35458",
+          "n_detections": 2,
+          "target_to_cluster_arcsec": 0.9796558738331412,
+          "target_to_original_member_arcsec": 1.9790092139735906,
+          "targetid": 39632984881499105
+        }
+      ],
+      "expected_exactly_one": true,
+      "rows": 1
+    },
+    "null_counts": {
+      "best_survey": 0,
+      "bgs_target": 0,
+      "candidate_id": 0,
+      "cluster_best_score": 0,
+      "cluster_dec_deg": 0,
+      "cluster_id": 0,
+      "cluster_ra_deg": 0,
+      "cluster_table_row": 0,
+      "coadd_fiberstatus": 0,
+      "deltachi2": 0,
+      "desi_source_row": 0,
+      "desi_target": 0,
+      "fits_row": 0,
+      "main_nspec": 0,
+      "main_primary": 0,
+      "match_quality_tier": 0,
+      "match_separation_arcsec": 0,
+      "member_ids": 0,
+      "mws_target": 0,
+      "n_detections": 0,
+      "n_surveys": 0,
+      "original_dec_deg": 0,
+      "original_internal_tid": 0,
+      "original_member_separation_arcsec": 0,
+      "original_ra_deg": 0,
+      "original_residual_b": 0,
+      "original_residual_r": 0,
+      "original_residual_z": 0,
+      "original_score": 0,
+      "original_worst_band": 0,
+      "program": 0,
+      "science_target_class": 0,
+      "scnd_target": 0,
+      "spectype": 0,
+      "survey": 0,
+      "survey_list": 0,
+      "target_dec": 0,
+      "target_ra": 0,
+      "targetid": 0,
+      "z": 0,
+      "zcat_nspec": 0,
+      "zcat_primary": 0,
+      "zwarn": 0
+    },
+    "original_member_separation_arcsec_quantiles": {
+      "0.0": 0.0,
+      "0.25": 0.0,
+      "0.5": 0.0,
+      "0.75": 0.0,
+      "1.0": 1.9790092139735906
+    },
+    "original_score_quantiles": {
+      "0.0": 5.000642776489258,
+      "0.25": 5.15557336807251,
+      "0.5": 5.324423313140869,
+      "0.75": 5.640645503997803,
+      "1.0": 7.705714702606201
+    },
+    "program": {
+      "bright": 19,
+      "dark": 162
+    },
+    "redshift_bins": {
+      "[-inf, 0.0)": 2,
+      "[0.0, 0.5)": 36,
+      "[0.5, 1.0)": 36,
+      "[1.0, 1.5)": 76,
+      "[1.5, 2.0)": 8,
+      "[2.0, 3.0)": 13,
+      "[3.0, inf)": 10
+    },
+    "redshift_quantiles": {
+      "0.0": -0.00033818947145594245,
+      "0.25": 0.6163601297962787,
+      "0.5": 1.1084234751468667,
+      "0.75": 1.4010304052294291,
+      "1.0": 6.087791193358123
+    },
+    "rows": 181,
+    "science_target_class_nonexclusive": {
+      "BGS_ANY": 18,
+      "ELG": 157,
+      "LRG": 1,
+      "MWS_ANY": 1,
+      "QSO": 7
+    },
+    "separation_arcsec_quantiles": {
+      "0.0": 0.00012520823674900356,
+      "0.25": 0.0008332832309440818,
+      "0.5": 0.0012693997648472865,
+      "0.75": 0.0016680393488192852,
+      "1.0": 0.9905735599323949
+    },
+    "separation_tail": {
+      "gt_0p1_arcsec": 11,
+      "gt_0p5_arcsec": 8,
+      "gt_0p75_arcsec": 5,
+      "le_0p1_arcsec": 170,
+      "max_arcsec": 0.9905735599323949,
+      "policy": "Retain all predeclared <=1 arcsec matches; expose match_quality_tier so users can restrict to the 0.1 arcsec coordinate-consistent subset without changing the release."
+    },
+    "sky": {
+      "dec_max_deg": 75.49090799317867,
+      "dec_min_deg": -19.313331946297875,
+      "interpretation": "Coverage follows the DESI DR1 footprint and anomaly input selection; no all-sky uniformity is claimed.",
+      "north_count": 134,
+      "occupied_30deg_ra_bins": 12,
+      "occupied_equal_area_dec_bins": 4,
+      "ra_max_deg": 352.15044826532187,
+      "ra_min_deg": 3.732146389273567,
+      "south_count": 47
+    },
+    "spectype": {
+      "GALAXY": 157,
+      "QSO": 23,
+      "STAR": 1
+    },
+    "unique_candidate_id": 181,
+    "unique_cluster_id": 181,
+    "unique_targetid": 181
+  },
+  "selection_bias_statement": "The 181-row release is an explicitly conservative redshift-quality slice, not an unbiased or complete sample of the 2,468 positional science-bit matches. The ZWARN==0 gate removes objects whose spectral fits triggered any Redrock warning; anomaly-selected spectra are therefore expected to be removed disproportionately. Catalog utility is reproducible candidate follow-up, not population-rate inference.",
+  "status": "PASS",
+  "waterfall": {
+    "existing_bitmask_1arcsec": 2468,
+    "released_fraction_of_base": 0.0733387358184765,
+    "released_zcat_primary_zwarn0": 181,
+    "remaining_zcat_primary": 2448,
+    "removed_non_zcat_primary": 20,
+    "removed_nonzero_zwarn_from_primaries": 2267
+  }
+}

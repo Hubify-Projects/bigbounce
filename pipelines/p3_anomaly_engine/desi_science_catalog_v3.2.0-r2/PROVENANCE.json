@@ -1,0 +1,103 @@
+{
+  "command": "pipelines/p3_anomaly_engine/scripts/build_desi_science_catalog_v320_r2.py --clusters pipelines/p3_anomaly_engine/apjs_submission_v3.1.161/pathc_unique_objects.parquet --anomalies pipelines/p3_anomaly_engine/apjs_submission_v3.1.161/desi_dr1_anomalies.parquet --fits pipelines/p5_desi_chirality/data/desi_zall.fits --output-dir pipelines/p3_anomaly_engine/desi_science_catalog_v3.2.0-r2 --chunk-rows 200000 --fits-sha256 2d95ad99361039b556c402b49e0e7c84df5f00106dc5731d44476a58b128b49b",
+  "counts": {
+    "desi_containing_clusters": 190015,
+    "existing_bitmask_1arcsec": 2468,
+    "plus_both_primary_zwarn0": 181,
+    "plus_main_primary": 2468,
+    "plus_main_primary_zwarn0": 181,
+    "plus_zcat_primary": 2448,
+    "plus_zcat_primary_zwarn0": 181,
+    "plus_zcat_primary_zwarn0_fiberstatus0": 181,
+    "raw_match_rows_before_deduplication": 2468,
+    "scan_totals": {
+      "fits_rows_scanned": 28425963,
+      "main_science_rows": 20299155,
+      "one_arcsec_match_rows": 2468
+    },
+    "selected_release_cohort": "plus_zcat_primary_zwarn0",
+    "selected_release_rows": 181
+  },
+  "created_utc": "2026-07-14T12:27:40Z",
+  "independent_selection_audit": {
+    "all_source_fields_exact": true,
+    "file": "SELECTION_AUDIT.json",
+    "public_id_rows_rejoined": 181,
+    "remote_range_parity_status": "PASS",
+    "status": "PASS",
+    "strict_identifier_set_exact": true
+  },
+  "inputs": {
+    "anomalies": {
+      "immutable_url": "https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog/resolve/p3-v3.1.161/desi_dr1_anomalies.parquet",
+      "input_label": "apjs_submission_v3.1.161/desi_dr1_anomalies.parquet",
+      "sha256": "0a36b8d6dfb8086c2c417885c99689d7a75b416dad1b030db56477baf103ec65",
+      "size_bytes": 10514503,
+      "source_tag": "p3-v3.1.161",
+      "source_tag_commit": "cdaaa03a72c69d86f011be128d93f261dc5b39a8"
+    },
+    "clusters": {
+      "immutable_url": "https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog/resolve/p3-v3.1.161/pathc_unique_objects.parquet",
+      "input_label": "apjs_submission_v3.1.161/pathc_unique_objects.parquet",
+      "sha256": "b14deb02ddc374cc30a54e6013c0695d1c35cbf18cef9144245e338d6138c643",
+      "size_bytes": 12087824,
+      "source_tag": "p3-v3.1.161",
+      "source_tag_commit": "cdaaa03a72c69d86f011be128d93f261dc5b39a8"
+    },
+    "desi_zall_fits": {
+      "historical_sidecar_sha256_stale": "50031c9ba35d0181c7bfc7ffba661941b9300aaff15ee725662ab796a22999eb",
+      "input_label": "DESI DR1 public zall-pix-iron.fits",
+      "official_checksum": {
+        "checksum_file_sha256": "718b95ed4b5e97887c2358bad30664c98b5f06c18f31de2ad95bf97a085c43bb",
+        "content_length": 4699,
+        "etag": "\"6a54b04a-125b\"",
+        "last_modified": "Mon, 13 Jul 2026 09:30:50 GMT",
+        "reachable": true,
+        "status": 200,
+        "url": "https://data.desi.lbl.gov/public/dr1/spectro/redux/iron/zcatalog/v1/redux_iron_zcatalog_v1.sha256sum",
+        "zall_pix_sha256": "2d95ad99361039b556c402b49e0e7c84df5f00106dc5731d44476a58b128b49b"
+      },
+      "official_checksum_url": "https://data.desi.lbl.gov/public/dr1/spectro/redux/iron/zcatalog/v1/redux_iron_zcatalog_v1.sha256sum",
+      "public_url": "https://data.desi.lbl.gov/public/dr1/spectro/redux/iron/zcatalog/v1/zall-pix-iron.fits",
+      "sha256": "2d95ad99361039b556c402b49e0e7c84df5f00106dc5731d44476a58b128b49b",
+      "sha256_verification": "recomputed locally and matched the current official DESI checksum file",
+      "size_bytes": 22371272640
+    }
+  },
+  "release": "p3-v3.2.0-r2",
+  "reproduction": {
+    "build": "python3 build_desi_science_catalog_v320_r2.py --clusters pathc_unique_objects.parquet --anomalies desi_dr1_anomalies.parquet --fits zall-pix-iron.fits --output-dir desi_science_catalog_v3.2.0-r2 --chunk-rows 200000 --fits-sha256 2d95ad99361039b556c402b49e0e7c84df5f00106dc5731d44476a58b128b49b",
+    "checkpoint_note": "The checkpointed .build directory is outside the immutable release.",
+    "download_anomalies": "curl -fL -o desi_dr1_anomalies.parquet https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog/resolve/p3-v3.1.161/desi_dr1_anomalies.parquet",
+    "download_clusters": "curl -fL -o pathc_unique_objects.parquet https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog/resolve/p3-v3.1.161/pathc_unique_objects.parquet",
+    "download_desi_fits": "curl -fL -o zall-pix-iron.fits https://data.desi.lbl.gov/public/dr1/spectro/redux/iron/zcatalog/v1/zall-pix-iron.fits",
+    "validate": "python3 validate_desi_science_catalog_v320_r2.py --release-dir desi_science_catalog_v3.2.0-r2 --fits zall-pix-iron.fits --clusters pathc_unique_objects.parquet"
+  },
+  "runtime": {
+    "chunk_rows": 200000,
+    "fitsio": "1.3.0",
+    "numpy": "1.26.4",
+    "pandas": "2.1.4",
+    "platform": "macOS-26.5-arm64-arm-64bit",
+    "pyarrow": "21.0.0",
+    "python": "3.9.6",
+    "scipy": "1.13.1"
+  },
+  "selection_and_deduplication": {
+    "deduplication": "Nearest angular row per cluster; ties prefer higher DELTACHI2, smaller TARGETID, then lower FITS row. A second pass enforces unique TARGETID using the same ordering.",
+    "desi_target_any_bit": {
+      "BGS_ANY": 60,
+      "ELG": 1,
+      "LRG": 0,
+      "MWS_ANY": 61,
+      "QSO": 2
+    },
+    "positional_radius_arcsec": 1.0,
+    "redshift_cut": null,
+    "spectype_cut": null,
+    "survey": "main",
+    "zcat_primary": true,
+    "zwarn": 0
+  },
+  "version": "3.2.0-r2"
+}

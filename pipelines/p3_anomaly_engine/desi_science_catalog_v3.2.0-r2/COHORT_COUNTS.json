@@ -1,0 +1,18 @@
+{
+  "desi_containing_clusters": 190015,
+  "existing_bitmask_1arcsec": 2468,
+  "plus_both_primary_zwarn0": 181,
+  "plus_main_primary": 2468,
+  "plus_main_primary_zwarn0": 181,
+  "plus_zcat_primary": 2448,
+  "plus_zcat_primary_zwarn0": 181,
+  "plus_zcat_primary_zwarn0_fiberstatus0": 181,
+  "raw_match_rows_before_deduplication": 2468,
+  "scan_totals": {
+    "fits_rows_scanned": 28425963,
+    "main_science_rows": 20299155,
+    "one_arcsec_match_rows": 2468
+  },
+  "selected_release_cohort": "plus_zcat_primary_zwarn0",
+  "selected_release_rows": 181
+}
