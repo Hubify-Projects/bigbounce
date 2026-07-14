@@ -1,3 +1,13 @@
+## v0.1.130 EXACT-PDF AJ BOARD — 2026-07-14 · CENTRAL EXPLORATORY NULL SURVIVES · PUBLICATION/REPRODUCIBILITY GATES OPEN · READINESS/CAP 74 HOLD
+
+**Binding:** committed 38-page artifact at manuscript commit `0842dfc6`, TeX SHA-256 `ea561381...`, PDF SHA-256 `f5b7a1bb...`. Concurrent immutable-packet AJ board: OpenAI **REJECT** / Gemini **MINOR** (2 internally MAJOR) / Grok **MINOR** (2 internally MAJOR); independent Codex typed `NOT_RUN`, no Anthropic/Claude.
+
+- **Truth-audit result:** the narrow catalog-specific exploratory null is plausible/supported; no reviewer establishes a numerical contradiction.
+- **Real gates:** Paper IV/final labels and weights; immutable public tag/DOI and A1--A40 link verification; post-hoc "primary" positioning; exact GALZONE-parent/`OUT=0`/VoidFinder-membership clarity; model/covariance metadata already present in A37 but missing from the paper; unavailable exact DESIVAST selection products; underpowered environment-specific label-bias check; and AJ-length/secondary-analysis organization.
+- **No readiness uplift:** verified cap stays **74**.
+
+Evidence: `project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P5-v0.1.130-EXACTPDF-f5b7a1bb-AJ-NONANTHROPIC-CONFIRM/`.
+
 ## v0.1.129 EXACT-PDF DUAL VENUE BOARD — 2026-07-14 · AJ STRUCTURAL CLOSURE REQUIRED · READINESS/CAP 74 HOLD
 
 **Binding:** both non-Anthropic panels reviewed the same 42-page `v0.1.129-2026-07-14` PDF, SHA-256 `9f3c6c1043331d67463198ff9d1061f0fd4a90eb1a7235035c8801110669cdc8`, source commit `f4c26f81`.

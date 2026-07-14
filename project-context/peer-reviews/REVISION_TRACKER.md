@@ -20,6 +20,29 @@ This tracker logs each revision round and which issues have been addressed.
 
 ## Revision Rounds
 
+### P5 v0.1.130: Exact-PDF AJ confirmation panel (2026-07-14)
+
+**Input:** exact 38-page PDF from manuscript commit `0842dfc60dec137ee30c92e44af26600feaaf058`, reviewed at repository commit `b08f46b6d85cdf796d39b08c1e90d0cc58c4dee7`; TeX SHA-256 `ea5613818ad2f60386658acc76b3f60f108fee5237e68de9dafbf26dbf4981b4`; PDF SHA-256 `f5b7a1bb5e7bbd565baac6b21aeab4e18611aec03b18dbf8e298de04d719fe17`.
+
+**Panel:** OpenAI GPT-5.5 **REJECT** / Gemini 3.1 Pro Preview **MINOR REVISIONS** (two internally MAJOR-tagged findings) / Grok 4.3 **MINOR REVISIONS** (two internally MAJOR-tagged findings). Immutable `AJ-OBSERVATIONAL` packets, three concurrent native-PDF legs, no Anthropic/Claude. Independent Codex is a typed `NOT_RUN` quota gap.
+
+**Truth audit:** the narrow catalog-specific exploratory non-detection is plausible/supported, but P5 is not submission-ready.
+
+| Finding | Status | Required evidence/action |
+|---|---|---|
+| Paper IV labels/weights/provenance | **OPEN — EXTERNAL PUBLICATION GATE** | Coordinated review or accepted Paper IV; final independently reviewable release; rerun P5 on final labels |
+| Immutable P5 tag/archive/DOI | **OPEN — WORKFLOW BLOCKER** | Public frozen bundle; A1--A40 verification; final identifier |
+| Post-hoc "designated primary" | **OPEN — POSITIONING MAJOR** | Rename focal estimate as descriptive/exploratory; no confirmatory language |
+| GALZONE parent / `OUT=0` / VoidFinder arm | **OPEN — CLARITY MAJOR** | One exact flow explaining released quality parent versus hole-union void membership |
+| Covariance/model specification | **OPEN — REPRODUCIBILITY MAJOR** | Print A37 formula, 50 sky clusters, 78 columns, finite-sample correction, and 3,750-region sensitivity |
+| DESIVAST selection matching | **OPEN — EXTERNAL-DATA/SCOPE GATE** | Exact mask/random products or continued non-selection-matched scope; do not substitute nonidentical products |
+| Environment-dependent label bias | **OPEN — POWER GATE** | Void-arm CI is +/-3.7 pp, too wide to exclude the observed contrast scale |
+| Secondary-analysis length/order | **OPEN — EDITORIAL MAJOR** | Focal result first; detailed T-Web/Tempel/ASTRA diagnostics moved/condensed |
+| Uniform monopole objection | **MOSTLY STALE** | Two-sample contrast is invariant; keep separate from environment-dependent label bias |
+| Match-radius dedup objection | **STALE/CLOSED** | Caption already distinguishes pre-dedup radius rows from deduped rows |
+
+Parallel dispatch took 37.6 seconds on the critical path versus 96.0 seconds summed (60.8% reduction). An earlier short-SHA launch failed closed before dispatch. No readiness uplift; verified cap remains 74. Full audit and raw reports: `INT_v3/ROUND_2026-07-14-P5-v0.1.130-EXACTPDF-f5b7a1bb-AJ-NONANTHROPIC-CONFIRM/`.
+
 ### P2 v1.7.120: Exact-PDF PRD confirmation panel (2026-07-14)
 
 **Input:** exact 10-page PDF at source commit `411c59e01673ede79bf4a93fa97af011d032a426`, source SHA-256 `e9df08c5e46aa91bde70dd8ccc72a7adb5af23b7d4e2099780401b1092f2fa5c`, PDF SHA-256 `2111e62f6eb2423dc1880fad5fa90c8da1feac75ff4b44891573f6d90762cc06`

@@ -57,6 +57,41 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p5-v01130-aj-exact-panel-2026-07-14",
+    dateISO: "2026-07-14",
+    timePT: "11:52–11:53",
+    kind: "internal-api",
+    title:
+      "P5 v0.1.130 — exact-PDF AJ panel: central exploratory null survives, publication and reproducibility gates remain",
+    papers: ["P5"],
+    summary:
+      "Three concurrent non-Anthropic reviewers received immutable AJ-OBSERVATIONAL packets for the same 38-page PDF (manuscript commit 0842dfc6; SHA-256 f5b7a1bb…fe17). OpenAI returned REJECT, Gemini MINOR with two internally MAJOR findings, and Grok MINOR with two internally MAJOR findings. Truth audit supports the narrow catalog-specific exploratory non-detection, while confirming Paper IV/final-label, public archive/DOI, post-hoc framing, estimand clarity, covariance reporting, selection-scope, label-power, and organization gates. No readiness uplift; the verified cap remains 74.",
+    keyTakeaways: [
+      "The focal adjusted contrast remains +0.00125636 with SE 0.00341274 and p=0.71277; no reviewer establishes a numerical contradiction.",
+      "A37 already contains the exact model formula, 50 NSIDE=4 clusters, 78 design columns, finite-sample correction, and 3,750-region sensitivity, so the reproducibility closure is mostly editorial rather than new compute.",
+      "The environment-specific label-bias check is honestly underpowered, and the exact DESIVAST selection products remain unavailable; neither gate may be worded away.",
+      "Parallel review cut critical-path latency by 60.8%; the packet gate also rejected a short-SHA preflight before any reviewer call.",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 6,
+      note: "Six major closure classes survive: Paper IV, archive, post-hoc positioning, estimand clarity, covariance/model reporting, and selection/label-power scope. This count is not a readiness score.",
+    },
+    links: [
+      {
+        label: "Normalized truth audit",
+        href: `${PR}/INT_v3/ROUND_2026-07-14-P5-v0.1.130-EXACTPDF-f5b7a1bb-AJ-NONANTHROPIC-CONFIRM/P5_v0.1.130_NORMALIZED_TRUTH_AUDIT.md`,
+      },
+      {
+        label: "Exact-PDF AJ board",
+        href: `${PR}/INT_v3/ROUND_2026-07-14-P5-v0.1.130-EXACTPDF-f5b7a1bb-AJ-NONANTHROPIC-CONFIRM/manifest.jsonl`,
+      },
+      {
+        label: "Declared panel gap",
+        href: `${PR}/INT_v3/ROUND_2026-07-14-P5-v0.1.130-EXACTPDF-f5b7a1bb-AJ-NONANTHROPIC-CONFIRM/DECLARED_GAPS.json`,
+      },
+    ],
+  },
+  {
     id: "p2-v17120-prd-exact-panel-2026-07-14",
     dateISO: "2026-07-14",
     timePT: "11:39–11:40",

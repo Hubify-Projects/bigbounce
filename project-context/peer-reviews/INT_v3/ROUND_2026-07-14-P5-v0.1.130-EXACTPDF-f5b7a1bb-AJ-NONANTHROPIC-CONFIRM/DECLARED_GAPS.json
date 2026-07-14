@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "paper": "P5",
+  "version": "v0.1.130-2026-07-14",
+  "pdf_sha256": "f5b7a1bb5e7bbd565baac6b21aeab4e18611aec03b18dbf8e298de04d719fe17",
+  "source_commit": "0842dfc60dec137ee30c92e44af26600feaaf058",
+  "review_commit": "b08f46b6d85cdf796d39b08c1e90d0cc58c4dee7",
+  "gaps": [
+    {
+      "leg": "codex-subscription-independent",
+      "requested_model": "gpt-5.6-sol",
+      "requested_effort": "high",
+      "status": "NOT_RUN",
+      "reason": "Local Codex subscription weekly allowance was exhausted before this panel. No API fallback, alternate model, or synthesized verdict was substituted.",
+      "required_before_final_board": true
+    }
+  ]
+}

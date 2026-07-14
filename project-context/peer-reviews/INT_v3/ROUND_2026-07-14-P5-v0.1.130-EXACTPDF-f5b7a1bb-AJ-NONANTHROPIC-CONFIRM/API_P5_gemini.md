@@ -1,0 +1,22 @@
+# INT API Review — P5 v0.1.130-2026-07-14 — gemini (gemini-3.1-pro-preview)
+paper: P5  version: v0.1.130-2026-07-14  model: gemini-3.1-pro-preview
+provenance: commit=b08f46b6d85cdf796d39b08c1e90d0cc58c4dee7  pdf=pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf  sha256=f5b7a1bb5e7bbd565baac6b21aeab4e18611aec03b18dbf8e298de04d719fe17
+packet: key=f563fd5a438f10c17c57244f38d11f2d80895622231ad2ce3624e329f1903e17  profile=AJ-OBSERVATIONAL
+modality: native-PDF (inline_data base64)
+UTC: 2026-07-14T18:52:14.497765Z  |  latency: 33.8s  |  attempt: 1
+usage: {"promptTokenCount": 19865, "candidatesTokenCount": 697, "totalTokenCount": 22530, "promptTokensDetails": [{"modality": "TEXT", "tokenCount": 105}, {"modality": "IMAGE", "tokenCount": 19760}], "thoughtsTokenCount": 1968, "serviceTier": "standard"}
+PARSED VERDICT: MINOR REVISIONS
+
+======================================================================
+RAW RESPONSE (verbatim):
+======================================================================
+
+(1) VERDICT: MINOR REVISIONS
+
+(2) ISSUES:
+1. [MAJOR] Dependency on Unpublished Companion Paper (Paper IV): The entire observational premise of this manuscript—specifically the per-galaxy chirality labels (`class_eq`) and the global classifier monopole offset ($\Delta f_{CW} = -0.0026$) used as the baseline for all $\sigma_{\text{pred}}$ residual tests—relies on an unpublished companion manuscript ("Paper IV"). While the author transparently acknowledges this limitation (Section XIII) and requests coordinated review, AJ policy requires that foundational dependent datasets be rigorously vetted. Final acceptance of this manuscript must strictly remain contingent upon the acceptance of Paper IV, and the author must commit to propagating any label or monopole recalibrations that arise during Paper IV's peer review into the final version of this work.
+2. [MAJOR] Selection Function in DESIVAST Sensitivity Controls (Section VIII.B): The author explicitly notes that their "footprint-restricted" control sample relies on a purely geometric construction (the union of hole-sphere angular discs) and acknowledges that "Footprint $\neq$ selection function," opting not to construct a fully matched control using DESI BGS randoms. While the primary GALZONE analysis handles covariates, the lack of a randoms-weighted completeness mask in the explicit void/non-void sensitivity checks leaves residual radial/angular selection biases unquantified in those specific tests. The author should apply the same BGS-randoms stress-test methodology used for the T-Web analysis (Section IX.A) to the DESIVAST geometric control to quantify exactly how much selection-function mismatch is leaking into the $\Delta f_{CW}$ error budget.
+3. [MINOR] T-Web Edge Artifacts and Canonical Presentation: In Section IX.C, the author identifies a significant survey-shell density systematic that inflates the T-Web void fraction by +8–18 percentage points due to zero-padded FFT boundaries, which is only corrected later via a redshift-shell selection correction. Presenting the known-contaminated canonical T-Web run in the main results (Table V) and reserving the corrected version for Section IX makes the narrative unnecessarily convoluted. Consider elevating the interior-buffer/shell-corrected T-Web results to serve as the primary T-Web diagnostic in Section VI, or add a highly visible caveat to Table V pointing directly to the shell-corrected metrics.
+4. [MINOR] Inline Artifact Referencing and Readability: The manuscript's commitment to reproducibility is commendable, but the extreme density of inline bracketed artifact IDs (e.g., [A10], [A31], [A32]) severely disrupts the narrative flow. Furthermore, relying on GitHub URLs for these artifacts poses a long-term risk of link rot. The author should replace the inline alphanumeric brackets with standard superscripts or endnotes, and ensure that the final v0.1.130 release candidate is permanently archived with a Zenodo DOI (as proposed in Appendix C) prior to publication.
+
+(3) One sentence: The central claim—that there is no statistically significant, environment-dependent deviation in spiral galaxy chirality within the DESI DR1 catalog once the global classifier bias is removed—is rigorously supported by the comprehensive robustness checks, contingent entirely upon the validity of the classifier labels established in the companion Paper IV.
