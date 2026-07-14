@@ -67,6 +67,9 @@ def validate_json_receipt(
     expected_n_real: int | None = None,
     expected_seed_start: int | None = None,
     expected_seed_end: int | None = None,
+    expected_theory_operator: str | None = None,
+    expected_code_sha256: str | None = None,
+    expected_completed: int | None = None,
 ) -> tuple[dict[str, Any], dict[str, Any]]:
     receipt_file = receipt_path(path)
     if not path.is_file() or not receipt_file.is_file():
@@ -90,6 +93,12 @@ def validate_json_receipt(
         checks["seed_start"] = expected_seed_start
     if expected_seed_end is not None:
         checks["seed_end"] = expected_seed_end
+    if expected_theory_operator is not None:
+        checks["theory_operator"] = expected_theory_operator
+    if expected_code_sha256 is not None:
+        checks["code_sha256"] = expected_code_sha256
+    if expected_completed is not None:
+        checks["completed"] = expected_completed
     mismatches = {
         key: {"expected": value, "actual": receipt.get(key)}
         for key, value in checks.items()

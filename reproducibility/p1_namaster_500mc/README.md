@@ -55,6 +55,7 @@ scripts/namaster_500mc.py              canonical three-injection run
 scripts/windowed_rotation.py           exact bandpower-window response
 scripts/test_windowed_rotation.py      algebra/operator regression
 scripts/c10_robustness_battery.py      six robustness configurations
+scripts/test_c10_checkpoint_resume.py  crash/resume and receipt regression
 scripts/declared_fsky_sign_battery.py  two f_sky and one negative-sign check
 scripts/checkpoint_io.py               atomic result/receipt publication
 scripts/merge_c10_partials.py          strict nine-shard validator/merger
@@ -84,13 +85,21 @@ DECLARED_NREAL=500 python scripts/declared_fsky_sign_battery.py \
 
 Each production shard records the exact configuration object, `N=500`, seed
 range, operator, equivalence residual, core software versions, byte count,
-and SHA-256 in a sidecar `*.json.receipt.json`. Restarting skips a shard only
-after all receipt fields and the result hash validate. When all six c10 and
+and SHA-256 in a sidecar `*.json.receipt.json`. The c10 driver also atomically
+checkpoints ordered per-realization bandpowers every 25 realizations. Resume
+requires an exact config, seed range, theory operator, and combined source-code
+fingerprint match; a mismatch fails closed. The checkpoint is removed only
+after the final result and receipt publish successfully. Restarting skips a shard only
+after all receipt fields and the result hash validate. Historical final-shard
+receipts without a source fingerprint remain valid under their original strict
+config/N/seed/operator checks; only new resumable checkpoints require one.
+When all six c10 and
 all three declared shards exist, validate and merge them with:
 
 ```bash
 python scripts/merge_c10_partials.py
 python scripts/plot_exact_window_results.py
+python scripts/test_c10_checkpoint_resume.py
 ```
 
 The merger rejects missing, duplicated, reordered, parameter-mismatched,

@@ -21,6 +21,7 @@ operator that generated the decoupled estimator.
 Output: results/c10_robustness_battery.json
 """
 import argparse
+import hashlib
 import json
 import os
 import time
@@ -51,7 +52,109 @@ BETA = np.deg2rad(0.27)
 N_REAL = int(os.environ.get("C10_NREAL", "500"))
 SEED_BASE = 42
 NOISE_LEVEL_UKARMIN = 10.0
+CHECKPOINT_INTERVAL = 25
+THEORY_OPERATOR = "NmtWorkspace.get_bandpower_windows exact tensor contraction"
 _REALIZATION_STATE = None
+
+
+def code_sha256():
+    """Fingerprint every local module that defines the c10 scientific result."""
+    digest = hashlib.sha256()
+    for filename in (
+        "c10_robustness_battery.py",
+        "windowed_rotation.py",
+        "checkpoint_io.py",
+    ):
+        path = Path(BASE) / filename
+        digest.update(filename.encode("utf-8"))
+        digest.update(b"\0")
+        digest.update(path.read_bytes())
+        digest.update(b"\0")
+    return digest.hexdigest()
+
+
+def checkpoint_path(output, config_name):
+    output = Path(output)
+    return output.with_name(f".{output.name}.{config_name}.checkpoint.json")
+
+
+def _remove_checkpoint(path):
+    path = Path(path)
+    receipt = path.with_name(path.name + ".receipt.json")
+    for candidate in (path, receipt):
+        try:
+            candidate.unlink()
+        except FileNotFoundError:
+            pass
+
+
+def _publish_realization_checkpoint(path, cfg, all_eb):
+    completed = len(all_eb)
+    if completed <= 0 or completed > N_REAL:
+        raise ValueError(f"invalid checkpoint completion count: {completed}")
+    payload = {
+        "schema_version": 1,
+        "config_name": cfg["name"],
+        "completed": completed,
+        "seed_start": SEED_BASE,
+        "seed_end": SEED_BASE + completed - 1,
+        "realizations": [np.asarray(value, dtype=float).tolist() for value in all_eb],
+    }
+    publish_json(
+        Path(path),
+        payload,
+        {
+            "suite": "c10-realization-checkpoint",
+            "config_names": [cfg["name"]],
+            "configs": [cfg],
+            "n_real": N_REAL,
+            "seed_start": SEED_BASE,
+            "seed_end": SEED_BASE + N_REAL - 1,
+            "completed": completed,
+            "checkpoint_interval": CHECKPOINT_INTERVAL,
+            "theory_operator": THEORY_OPERATOR,
+            "code_sha256": code_sha256(),
+        },
+    )
+
+
+def _load_realization_checkpoint(path, cfg):
+    path = Path(path)
+    if not path.exists() and not path.with_name(path.name + ".receipt.json").exists():
+        return []
+    payload, receipt = validate_json_receipt(
+        path,
+        expected_suite="c10-realization-checkpoint",
+        expected_configs=[cfg["name"]],
+        expected_config_metadata=[cfg],
+        expected_n_real=N_REAL,
+        expected_seed_start=SEED_BASE,
+        expected_seed_end=SEED_BASE + N_REAL - 1,
+        expected_theory_operator=THEORY_OPERATOR,
+        expected_code_sha256=code_sha256(),
+    )
+    completed = payload.get("completed")
+    realizations = payload.get("realizations")
+    if not isinstance(completed, int) or not 0 < completed <= N_REAL:
+        raise ValueError(f"invalid checkpoint completed count in {path}: {completed!r}")
+    if receipt.get("completed") != completed:
+        raise ValueError(f"checkpoint payload/receipt completion mismatch in {path}")
+    if payload.get("config_name") != cfg["name"]:
+        raise ValueError(f"checkpoint payload config mismatch in {path}")
+    if payload.get("seed_start") != SEED_BASE:
+        raise ValueError(f"checkpoint payload seed start mismatch in {path}")
+    if payload.get("seed_end") != SEED_BASE + completed - 1:
+        raise ValueError(f"checkpoint payload seed end mismatch in {path}")
+    if not isinstance(realizations, list) or len(realizations) != completed:
+        raise ValueError(f"checkpoint realization count mismatch in {path}")
+    arrays = [np.asarray(value, dtype=float) for value in realizations]
+    if not arrays or any(value.ndim != 1 for value in arrays):
+        raise ValueError(f"checkpoint realization shape mismatch in {path}")
+    shape = arrays[0].shape
+    if any(value.shape != shape or not np.all(np.isfinite(value)) for value in arrays):
+        raise ValueError(f"checkpoint realization data invalid in {path}")
+    print(f"[{cfg['name']}] resumed {completed}/{N_REAL} realizations from {path}", flush=True)
+    return arrays
 
 
 def cl_ee_fit(lmax):
@@ -168,7 +271,23 @@ def _progress(name, completed):
         print(f"[{name}] realizations {completed}/{N_REAL}", flush=True)
 
 
-def run_config(cfg, realization_workers=1):
+def _collect_serial_realizations(cfg, state, realization_checkpoint=None):
+    all_eb = (
+        _load_realization_checkpoint(realization_checkpoint, cfg)
+        if realization_checkpoint is not None
+        else []
+    )
+    for index in range(len(all_eb), N_REAL):
+        all_eb.append(_simulate_realization(index, state))
+        _progress(cfg["name"], index + 1)
+        if realization_checkpoint is not None and (
+            len(all_eb) % CHECKPOINT_INTERVAL == 0 or len(all_eb) == N_REAL
+        ):
+            _publish_realization_checkpoint(realization_checkpoint, cfg, all_eb)
+    return all_eb
+
+
+def run_config(cfg, realization_workers=1, realization_checkpoint=None):
     import healpy as hp
     import pymaster as nmt
 
@@ -206,11 +325,10 @@ def run_config(cfg, realization_workers=1):
             ),
         }
     else:
-        all_eb = []
         if realization_workers == 1:
-            for index in range(N_REAL):
-                all_eb.append(_simulate_realization(index, state))
-                _progress(name, index + 1)
+            all_eb = _collect_serial_realizations(
+                cfg, state, realization_checkpoint
+            )
             execution = {
                 "mode": "serial",
                 "realization_workers": 1,
@@ -220,6 +338,12 @@ def run_config(cfg, realization_workers=1):
                 ),
             }
         else:
+            all_eb = (
+                _load_realization_checkpoint(realization_checkpoint, cfg)
+                if realization_checkpoint is not None
+                else []
+            )
+            start_index = len(all_eb)
             # Main-process workspace is not shared across processes. Each spawned
             # worker constructs and caches its own exact workspace once.
             state["workspace"] = None
@@ -231,11 +355,19 @@ def run_config(cfg, realization_workers=1):
                 initargs=(cfg,),
             ) as pool:
                 for completed, value in enumerate(
-                    pool.imap(_run_worker_realization, range(N_REAL), chunksize=1),
-                    start=1,
+                    pool.imap(
+                        _run_worker_realization,
+                        range(start_index, N_REAL),
+                        chunksize=1,
+                    ),
+                    start=start_index + 1,
                 ):
                     all_eb.append(value)
                     _progress(name, completed)
+                    if realization_checkpoint is not None and (
+                        len(all_eb) % CHECKPOINT_INTERVAL == 0 or len(all_eb) == N_REAL
+                    ):
+                        _publish_realization_checkpoint(realization_checkpoint, cfg, all_eb)
             execution = {
                 "mode": "ordered_seed_parallel",
                 "realization_workers": realization_workers,
@@ -270,7 +402,7 @@ def run_config(cfg, realization_workers=1):
            "purify_b": purify, "apod_fwhm_deg": cfg.get("apod_fwhm", 2.0),
            "gal_cut_deg": cfg.get("gal_cut", 20.0),
            "bb_model": "camb_lensed" if cfg.get("camb_bb") else "0.05*EE",
-           "theory_operator": "NmtWorkspace.get_bandpower_windows exact tensor contraction",
+           "theory_operator": THEORY_OPERATOR,
            "window_shape": list(response["window_shape"]),
            "window_equivalence_max_abs": equivalence_max_abs,
            "execution": execution,
@@ -337,6 +469,7 @@ def main():
                 expected_n_real=N_REAL,
                 expected_seed_start=SEED_BASE,
                 expected_seed_end=SEED_BASE + N_REAL - 1,
+                expected_theory_operator=THEORY_OPERATOR,
             )
         except (FileNotFoundError, ValueError, json.JSONDecodeError):
             pass
@@ -344,10 +477,21 @@ def main():
             print(f"validated existing shard; skipping: {output}")
             return
     if len(selected) == 1:
-        results = [run_config(selected[0], args.realization_workers)]
+        checkpoints = [checkpoint_path(output, selected[0]["name"])]
+        results = [
+            run_config(
+                selected[0],
+                args.realization_workers,
+                checkpoints[0],
+            )
+        ]
     else:
+        checkpoints = [checkpoint_path(output, config["name"]) for config in selected]
         with Pool(processes=min(n_pool, len(selected))) as pool:
-            results = pool.map(run_config, selected)
+            results = pool.starmap(
+                run_config,
+                [(config, 1, path) for config, path in zip(selected, checkpoints)],
+            )
     out = {"experiment": "c10 NaMaster robustness battery (R23conf META-M1/M2/M3/M5/M6)",
            "beta_injected_deg": 0.27, "n_real": N_REAL, "seed_base": SEED_BASE,
            "superseded_effective_ell_anchor": {
@@ -367,7 +511,8 @@ def main():
             "seed_start": SEED_BASE,
             "seed_end": SEED_BASE + N_REAL - 1,
             "runtime_s": out["total_runtime_s"],
-            "theory_operator": "NmtWorkspace.get_bandpower_windows exact tensor contraction",
+            "theory_operator": THEORY_OPERATOR,
+            "code_sha256": code_sha256(),
             "window_equivalence_max_abs": max(
                 result["window_equivalence_max_abs"] for result in results
             ),
@@ -377,6 +522,8 @@ def main():
     )
     print(json.dumps(out, indent=1))
     print(json.dumps(receipt, indent=2))
+    for path in checkpoints:
+        _remove_checkpoint(path)
 
 
 if __name__ == "__main__":
