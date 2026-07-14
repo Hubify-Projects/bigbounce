@@ -15,26 +15,34 @@ SEED_START = 42
 SEED_END = 541
 OPERATOR = "NmtWorkspace.get_bandpower_windows exact tensor contraction"
 
-C10_CONFIGS = [
-    "canonical_refit",
-    "lensing_bb_camb",
-    "apod_fwhm_0p5",
-    "apod_fwhm_3p0",
-    "mask_b30",
-    "purify_b",
+C10_CONFIG_DETAILS = [
+    {"name": "canonical_refit", "extra_fits": True, "canonical_artifact": True},
+    {"name": "lensing_bb_camb", "camb_bb": True},
+    {"name": "apod_fwhm_0p5", "apod_fwhm": 0.5},
+    {"name": "apod_fwhm_3p0", "apod_fwhm": 3.0},
+    {"name": "mask_b30", "gal_cut": 30.0},
+    {"name": "purify_b", "purify_b": True},
 ]
-DECLARED_CONFIGS = ["fsky_0p85", "fsky_0p65", "negative_beta_fsky_0p32"]
+DECLARED_CONFIG_DETAILS = [
+    {"name": "fsky_0p85", "fsky_target": 0.85, "gal_cut_deg": 8.62692655867864, "beta_deg": 0.27},
+    {"name": "fsky_0p65", "fsky_target": 0.65, "gal_cut_deg": 20.487315114722662, "beta_deg": 0.27},
+    {"name": "negative_beta_fsky_0p32", "fsky_target": 0.32, "gal_cut_deg": 42.84364304359634, "beta_deg": -0.27},
+]
+C10_CONFIGS = [item["name"] for item in C10_CONFIG_DETAILS]
+DECLARED_CONFIGS = [item["name"] for item in DECLARED_CONFIG_DETAILS]
 
 
-def load_suite(suite: str, prefix: str, names: list[str]):
+def load_suite(suite: str, prefix: str, configs: list[dict]):
     payloads = []
     receipts = []
-    for name in names:
+    for config in configs:
+        name = config["name"]
         path = SHARDS / f"{prefix}_{name}.json"
         payload, receipt = validate_json_receipt(
             path,
             expected_suite=suite,
             expected_configs=[name],
+            expected_config_metadata=[config],
             expected_n_real=N_REAL,
             expected_seed_start=SEED_START,
             expected_seed_end=SEED_END,
@@ -49,7 +57,7 @@ def load_suite(suite: str, prefix: str, names: list[str]):
 
 
 def merge_c10() -> dict:
-    payloads, receipts = load_suite("c10", "c10", C10_CONFIGS)
+    payloads, receipts = load_suite("c10", "c10", C10_CONFIG_DETAILS)
     software = receipts[0]["software"]
     if any(receipt.get("software") != software for receipt in receipts[1:]):
         raise ValueError("c10 shards used mixed software versions")
@@ -102,7 +110,7 @@ def merge_c10() -> dict:
 
 def merge_declared() -> dict:
     payloads, receipts = load_suite(
-        "declared_fsky_sign", "declared", DECLARED_CONFIGS
+        "declared_fsky_sign", "declared", DECLARED_CONFIG_DETAILS
     )
     configs = [item for payload in payloads for item in payload["results"]]
     names = [item["name"] for item in configs]

@@ -171,6 +171,7 @@ def main() -> None:
                 output,
                 expected_suite="declared_fsky_sign",
                 expected_configs=config_names,
+                expected_config_metadata=selected,
                 expected_n_real=N_REAL,
                 expected_seed_start=SEED_BASE,
                 expected_seed_end=SEED_BASE + N_REAL - 1,

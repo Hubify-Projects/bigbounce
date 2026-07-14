@@ -63,6 +63,7 @@ def validate_json_receipt(
     *,
     expected_suite: str | None = None,
     expected_configs: list[str] | None = None,
+    expected_config_metadata: list[dict[str, Any]] | None = None,
     expected_n_real: int | None = None,
     expected_seed_start: int | None = None,
     expected_seed_end: int | None = None,
@@ -81,6 +82,8 @@ def validate_json_receipt(
         checks["suite"] = expected_suite
     if expected_configs is not None:
         checks["config_names"] = expected_configs
+    if expected_config_metadata is not None:
+        checks["configs"] = expected_config_metadata
     if expected_n_real is not None:
         checks["n_real"] = expected_n_real
     if expected_seed_start is not None:

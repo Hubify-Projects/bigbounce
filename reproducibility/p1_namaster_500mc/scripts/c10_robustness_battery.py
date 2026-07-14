@@ -222,6 +222,7 @@ def main():
                 output,
                 expected_suite="c10",
                 expected_configs=names,
+                expected_config_metadata=selected,
                 expected_n_real=N_REAL,
                 expected_seed_start=SEED_BASE,
                 expected_seed_end=SEED_BASE + N_REAL - 1,
