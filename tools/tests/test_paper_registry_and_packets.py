@@ -8,13 +8,21 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "tools"))
 
 from paper_registry import CANONICAL_IDS, load_registry, repo_root  # noqa: E402
-from review_packet import build_packet, packet_key, publish_packet, sha256_file  # noqa: E402
+from review_packet import (  # noqa: E402
+    build_packet,
+    packet_key,
+    publish_packet,
+    resolve_pdf_snapshot,
+    sha256_bytes,
+    sha256_file,
+)
 
 
 class RegistryTests(unittest.TestCase):
@@ -72,13 +80,56 @@ class PacketTests(unittest.TestCase):
         self.assertEqual(path, same)
         self.assertTrue(reused)
         self.assertEqual(json.loads(path.read_text()), packet)
-        self.assertEqual(path.with_suffix(".prompt").read_bytes(), b"prompt")
-        self.assertEqual(path.with_suffix(".context").read_bytes(), b"context")
+        self.assertEqual((path.parent / "prompt.bin").read_bytes(), b"prompt")
+        self.assertEqual((path.parent / "allowed-context.bin").read_bytes(), b"context")
+        self.assertEqual(
+            resolve_pdf_snapshot(packet, self.root / "cache"),
+            self.root / "cache" / "pdf" / f"{packet['pdf_sha256']}.pdf",
+        )
+        self.assertEqual(
+            packet["pdf_snapshot_path"], f"pdf/{packet['pdf_sha256']}.pdf",
+        )
 
     def test_labeled_key_has_no_concatenation_ambiguity(self):
-        left = packet_key("ab", "c", "d", "e", "f")
-        right = packet_key("a", "bc", "d", "e", "f")
+        left = packet_key("ab", "c", "d", "ctx", "e", "f")
+        right = packet_key("a", "bc", "d", "ctx", "e", "f")
         self.assertNotEqual(left, right)
+
+    def test_context_hash_changes_packet_key(self):
+        common = ("pdf", "profile", "prompt")
+        left = packet_key(*common, sha256_bytes(b"left"), "model", "high")
+        right = packet_key(*common, sha256_bytes(b"right"), "model", "high")
+        self.assertNotEqual(left, right)
+
+    def test_incomplete_packet_is_not_reused(self):
+        packet = self.packet()
+        packet_dir = self.root / "packets" / "PTEST" / packet["packet_key"]
+        packet_dir.mkdir(parents=True)
+        (packet_dir / "packet.json").write_text("{}", encoding="utf-8")
+        with self.assertRaisesRegex(RuntimeError, "incomplete packet"):
+            publish_packet(packet, self.root / "packets", b"prompt", b"context")
+
+    def test_failed_publish_leaves_no_partial_packet(self):
+        packet = self.packet()
+        parent = self.root / "packets" / "PTEST"
+        with mock.patch("review_packet.os.fsync", side_effect=OSError("injected")):
+            with self.assertRaisesRegex(OSError, "injected"):
+                publish_packet(packet, self.root / "packets", b"prompt", b"context")
+        self.assertFalse((parent / packet["packet_key"]).exists())
+        self.assertEqual(list(parent.iterdir()), [])
+
+    def test_source_is_rechecked_after_pdf_snapshot(self):
+        from review_packet import freeze_pdf as real_freeze_pdf
+
+        def freeze_then_mutate(pdf, cache_root):
+            result = real_freeze_pdf(pdf, cache_root)
+            with (self.root / "paper/test.tex").open("a", encoding="utf-8") as handle:
+                handle.write("% changed during snapshot\n")
+            return result
+
+        with mock.patch("review_packet.freeze_pdf", side_effect=freeze_then_mutate):
+            with self.assertRaisesRegex(RuntimeError, "inputs are dirty"):
+                self.packet()
 
     def test_hash_mismatch_fails_closed(self):
         with self.assertRaisesRegex(ValueError, "PDF SHA mismatch"):
