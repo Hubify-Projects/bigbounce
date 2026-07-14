@@ -133,7 +133,7 @@ if have python3; then
   row PASS "python3" "$(python3 --version 2>&1)"
   # The openai Python package remains an SDK dependency for OpenAI-compatible
   # xAI/Perplexity endpoints; no OPENAI_API_KEY is required or used for reviews.
-  for spec in "openai:openai" "google.generativeai:google-generativeai" "anthropic:anthropic"; do
+  for spec in "openai:openai" "google.generativeai:google-generativeai"; do
     mod="${spec%%:*}"; package="${spec#*:}"
     if python3 -c "import importlib; importlib.import_module('$mod')" >/dev/null 2>&1; then
       row PASS "py: $mod" "importable"
@@ -145,7 +145,7 @@ else
   row FAIL "python3" "install python3 (review tooling + audits require it)"
 fi
 
-# 4. claude CLI --------------------------------------------------------------
+# 4. legacy claude CLI (not used by the active BigBounce campaign) -----------
 if have claude; then
   row PASS "claude CLI" "$(claude --version 2>/dev/null | head -1)"
 else

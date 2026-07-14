@@ -160,14 +160,19 @@ Five rules Houston kept having to re-state; encoded here as hard gates:
 Houston caught (2026-07-03) that recent "reviews" were EXT sub-agent reports with **no raw reviewer text captured** (unverifiable), that ChatGPT was silently dropped, and that INT was skipped entirely. Hard rules going forward:
 
 **I1 — INT reviewer routing (the big one):**
-- **Claude/Anthropic INT leg = the running Claude Code agent itself, on Houston's subscription — NEVER the Anthropic API.** You ARE Claude Code running on it. NEVER ask Houston for an Anthropic API key, NEVER "fail" an INT leg because the Anthropic API is disabled. Run the Claude leg as a Claude Code sub-agent (or the main loop) reading the full paper + source + context. If a round is instead being run inside Codex/another agent, that agent is the "Claude-equivalent" leg via its own subscription — use it, not the OpenAI API.
+- **Claude/Anthropic = DISABLED for the active BigBounce campaign.** Do not call
+  Anthropic APIs, spawn Claude Code subscription reviewers, or count historical
+  Claude outputs toward a current board. Preserve any legacy output only as
+  nonconforming diagnostic evidence.
 - **OpenAI INT leg = Codex CLI / ChatGPT subscription only — NEVER the OpenAI API.** Run it with `OPENAI_API_KEY` and `CODEX_API_KEY` unset so authentication cannot silently switch away from the subscription. This applies on every host, including Claude Code: use a Codex CLI worker for the independent OpenAI perspective.
 - **Grok/XAI INT leg = XAI API.** **Gemini INT leg = Gemini API** (2026-07-05 status: all stored Gemini API keys 403/billing-blocked — Gemini's INT perspective is covered via browser EXT until Houston supplies a billing-enabled key; never fail the round on it).
 - **The INT verdict matrix MUST always report ALL available vendor columns (host subscription agent + OpenAI-via-Codex-subscription + Grok [+ Gemini when key works]) — NEVER summarize INT as one column alone. API legs are xAI/Grok and Google/Gemini only; every API-vendor MAJOR gets the same per-finding source-cited truth-audit as EXT findings.**
 - **Perplexity is OPTIONAL** (not part of the core INT/EXT set; assess adding later). Do NOT make it a required key; do NOT fail the pipeline on its absence/quota.
-- `tools/v3_native_pdf_review.py` must NOT require ANTHROPIC_API_KEY or PERPLEXITY_API_KEY, and must route the Claude leg to a Claude Code sub-agent, not the API.
+- `tools/v3_native_pdf_review.py` must NOT require `ANTHROPIC_API_KEY`,
+  `OPENAI_API_KEY`, or `PERPLEXITY_API_KEY`; its active direct APIs are
+  Gemini/Grok plus optional Perplexity.
 
-**I2 — INT API failures NEVER stop EXT.** EXT (browser) reviews are independently valuable and must run regardless of any INT API billing/quota problem. Do EXT first if needed, then INT via Claude Code sub-agents. Never let an INT infra failure become an excuse to skip EXT.
+**I2 — INT API failures NEVER stop EXT.** EXT (browser) reviews are independently valuable and must run regardless of any INT API billing/quota problem. Do EXT first if needed, then continue policy-compliant INT work. Never let an INT infra failure become an excuse to skip EXT.
 
 **I3 — Why INT still matters:** EXT reviewers (browser ChatGPT/Grok/Gemini) do NOT get the full history, source code, data, and context. INT (with the full repo + context as source-of-truth) is the complement that catches what EXT can't. Run BOTH.
 

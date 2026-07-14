@@ -9,21 +9,16 @@ publication-ready through an iterative internal + external peer-review loop,
 fixing every finding, and keeping the public lab site (https://bigbounce.hubify.app)
 perfectly in sync after every round.
 
-> ✅ **CURRENT STATE (2026-07-05): ALL 6 PAPERS CLEARED FOR SUBMISSION — awaiting Houston's two-wave arXiv clicks.**
->
-> The 2026-07-05 real-science drive superseded the 07-04 "edit-loop exhausted" state:
-> every reviewer finding was closed with VERIFIED real computation (P2 Cai–Li factor-of-2
-> RESOLVED to −35/16, 3-way certified; P4 GZ1-human-only null N=46,017; residual excluded
-> as cosmological; edge-on isotropic; P3 real-object demonstration proven on SDSS AND DESI
-> — the DESI non-replication of score-vs-z is disclosed honestly; P1A R3 derived + ρ_Λ NDA
-> no-go + basis completeness + Route-2 one-loop-grounded; P1B ΔN_eff reduced-M_Pl box).
-> A FINAL full INT/EXT round (INT-Claude 6/6 ACCEPT recomputed; API vendors captured;
-> EXT 18/18 headed-browser raw legs) + FINAL_SIGNOFF_AUDIT_2026-07-05.md dispositioned
-> every non-minor verdict with source citations: **ZERO genuinely-new real findings.**
->
-> **Final versions:** P4 v1.0.218 · P1B v1B.0.101 · P3 v3.1.139 · P2 v1.7.97 ·
-> P5 v0.1.102 · P1A v1A.0.110. Plan + bundles: `submissions/SUBMIT-TODAY-CHECKLIST.md`
-> (wave 1: P4→P1B→P3→P2; wave 2 same-day: P5+P1A with wave-1 arXiv IDs inserted).
+> ⚠️ **CURRENT STATE (2026-07-14): IN REVISION — do not submit or claim
+> publication-ready.** A fresh exact-artifact campaign superseded the older
+> 2026-07-05 convergence claim. P2 v1.7.122 now has a valid Codex-subscription /
+> Gemini / Grok ACCEPT board, but its cubic-transfer, real survey-covariance,
+> model-specific torsion-bound, DOI/archive, and human-PRD gates remain. P1A has
+> a bounded v1A.0.122 closure in progress; P1B exact robustness compute is live;
+> P3 v3.2.0-r7 bundle/contract closure is in final proof; P4 and P5 retain
+> release/data-contract gates. Read `project-context/SSOT/` and the newest exact
+> round bundles for the current per-paper state; older “all cleared” prose is
+> historical only.
 >
 > **HOW to run any further round:** the canonical spec is
 > `~/.claude/scistack/astrostack/bigbounce-r-round/SKILL.md` (all-vendor INT matrix,
@@ -89,8 +84,8 @@ For the *generic* cross-machine skill/stack/env sync, the skill is **`/machine-s
 ---
 
 ## 2. The review tooling (the engine of the loop)
-- **`tools/v3_native_pdf_review.py <pdf> <round_label> <paper_tag> "<context>"`** — fires API reviews at Gemini, Grok, and optional Perplexity, with 2-pass self-critique. The OpenAI perspective is supplied by the authenticated Codex CLI/ChatGPT subscription, **never the OpenAI API**; the Anthropic/Claude perspective likewise uses the running subscription agent, never its API.
-- **Vendor SDK deps** the tool needs (beyond `requirements.txt`): `pip install openai google-generativeai`. `anthropic` is in requirements. Grok uses `pdftoppm` (poppler). Keys come from `.env.local` (`source` it before running; never print values).
+- **`tools/v3_native_pdf_review.py <pdf> <round_label> <paper_tag> "<context>"`** — fires API reviews at Gemini, Grok, and optional Perplexity, with 2-pass self-critique. The OpenAI perspective is supplied by the authenticated Codex CLI/ChatGPT subscription, **never the OpenAI API**. Anthropic/Claude is disabled for the active campaign.
+- **Vendor SDK deps** the active tool needs (beyond `requirements.txt`): `pip install openai google-generativeai`; the OpenAI SDK is used only as a protocol client pinned to xAI/Perplexity base URLs. Grok uses `pdftoppm` (poppler). Keys come from `.env.local` (`source` it before running; never print values).
 - **Skills that wrap the loop** (all in `~/.claude/scistack/hubstack/`):
   `/cross-vendor-r-round` → `/peer-review-truth-audit` → `/bigbounce-truth-audit` → `/bigbounce-close` (R-round science);
   `/paper-design-round` (D-round visual) → `/paper-packaging-round` + `/site-cohesion-sweep` (P-round);
@@ -116,8 +111,8 @@ Papers climb a phase ladder; the **readiness number is computed in `convex/paper
 
 > **THE canonical, always-current spec for HOW to run an INT/EXT round is the
 > `/bigbounce-r-round` skill** (`~/.claude/scistack/astrostack/bigbounce-r-round/SKILL.md`), subject to Houston's permanent override that OpenAI review uses Codex CLI/ChatGPT subscription only, never API billing.
-> It is the single source of truth for: INT vendor legs (the active host
-> subscription agent; OpenAI via Codex CLI/ChatGPT subscription with API keys
+> It is the single source of truth for: INT vendor legs (OpenAI via Codex
+> CLI/ChatGPT subscription with API keys
 > unset; Grok API; Gemini API-when-billed-else-browser) + the ALL-VENDOR INT verdict
 > matrix; EXT (headed browser ChatGPT+Grok+Gemini, raw text + screenshot
 > saved-then-verified per leg); per-finding source-cited truth-audit; directive-G
@@ -125,14 +120,16 @@ Papers climb a phase ladder; the **readiness number is computed in `convex/paper
 > gate. Read it before running a round; the summary below is orientation only.
 
 1. **Pick the paper(s) + the canonical PDF** (resolve via `SSOT/paper-N/status.md`; PDFs live in `arxiv/`, `pipelines/p2_chirality/`, `pipelines/p3_anomaly_engine/`, `pipelines/p5_desi_chirality/paper/`, `research/focused_paper_source_integration/`). Recompile+mirror FIRST if the served PDF lags the source.
-2. **INT** (§1 of `/bigbounce-r-round`): subscription host agent (full-source, recompute numbers) + OpenAI via authenticated Codex CLI/ChatGPT subscription + Grok API + Gemini API (when billed; otherwise browser EXT). OpenAI API billing is forbidden. Report every available vendor column.
+2. **INT** (§1 of `/bigbounce-r-round`): OpenAI via authenticated Codex CLI/ChatGPT subscription + Grok API + Gemini API (when billed; otherwise browser EXT). OpenAI API billing and Anthropic/Claude are disabled. Report every available active vendor column.
 3. **EXT** (§2): headed browser (`$B cleanup && $B connect`, confirm `Mode: headed`) → ChatGPT + Grok + Gemini (houston@bamf.com Ultra); NEVER skip ChatGPT; save raw verbatim + screenshot per leg to `project-context/peer-reviews/EXT_real/` the instant each completes.
-4. **Truth-audit** every INT and EXT non-minor finding → source-cited disposition (patterns 061-066: disclosed-re-flag / scope / referee-variance / GENUINELY-NEW-REAL → close). One Opus agent per paper. NO fabricated derivations (`/never-fabricate-derivation`); verify every real computation before applying.
-5. **Close** VERIFIED-NEW-REAL items (Sonnet): edit `.tex`, directive-G hygiene (bump version+date, recompile `latexmk -pdf` 0 undef-refs, `/latex-audit`, mirror byte-identical to ALL served paths, three-way md5 check), Convex sync.
+4. **Truth-audit** every INT and EXT non-minor finding → source-cited disposition (patterns 061-066: disclosed-re-flag / scope / referee-variance / GENUINELY-NEW-REAL → close). Use a fresh policy-compliant high-judgment agent per paper. NO fabricated derivations (`/never-fabricate-derivation`); verify every real computation before applying.
+5. **Close** VERIFIED-NEW-REAL items with bounded execution workers: edit `.tex`, directive-G hygiene (bump version+date, recompile `latexmk -pdf` 0 undef-refs, `/latex-audit`, mirror byte-identical to ALL served paths, three-way md5 check), Convex sync.
 6. **Re-review** (cascade) until the directive-H gate holds per `/cascaded-r-rounds`; run `/review-integrity-audit` (GENUINE not ENGINEERED) before declaring converged.
 7. **Archive + pattern-mine** (self-improving loop). **Sync the site SAME COMMIT** (§5).
 
-Model routing: **Opus** for truth-audits/judgment/closure-decisions; **Sonnet** for well-specified edits/recompiles/packaging; fan out one agent per paper in parallel.
+Model routing: use the active frontier Codex director for truth-audits/judgment,
+policy-compliant Codex workers for bounded edits/recompiles/packaging, and fan
+out one owner per non-overlapping paper. Anthropic/Claude is disabled.
 
 ---
 

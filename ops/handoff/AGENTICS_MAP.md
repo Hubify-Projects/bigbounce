@@ -12,7 +12,7 @@
 
 | Service | Purpose | Auth env-var NAME | Entry point (script / URL) | Failure mode |
 |---|---|---|---|---|
-| **Anthropic (Claude)** | INT review Claude leg — **but see §2: routed through the Claude Code SUBSCRIPTION, NOT this key** (directive I1). Key present for other tooling only. | `ANTHROPIC_API_KEY` | running Claude Code agent (`claude -p`, key unset) | Never fail an INT round on Anthropic API — the subscription agent IS the leg. |
+| **Anthropic (Claude)** | Disabled for the active BigBounce campaign | none | none | API and subscription routes are both forbidden; legacy outputs are diagnostic-only. |
 | **OpenAI** | INT review through Codex CLI on Houston's ChatGPT subscription | none; `OPENAI_API_KEY` and `CODEX_API_KEY` are explicitly unset | `tools/int_wave.sh`, `tools/int_wave_apjs.sh` | unavailable subscription auth → leg visibly unavailable; never fall back to OpenAI API billing. |
 | **Google Gemini** | INT review leg (2.5 Pro, native/inline PDF) | `GOOGLE_GEMINI_API_KEY` / `GOOGLE_AI_API_KEY` | `tools/cross_model_review_gemini.py` | Stored keys historically 403/billing-blocked → Gemini INT covered via browser EXT; never fail the round on it. |
 | **xAI (Grok)** | INT review leg (Grok 4, image-rasterized PDF) | `XAI_API_KEY` | `tools/v3_native_pdf_review.py` | leg FAILED, round continues. |
@@ -36,13 +36,13 @@
 
 | Role | Model / surface | Responsibility | Hard rules |
 |---|---|---|---|
-| **Orchestrator** | session model (Fable 5, planning only — directive J) | plan, split lanes, synthesize, route; **never brute-force execution** | never idles while any verdict < ACCEPT; delegates all mechanical work. |
-| **Opus adjudicators** | `model: "opus"` subagents | strict ledger-first truth-audit of every finding (patterns 061-066); GENUINE vs ENGINEERED integrity audit (`/review-integrity-audit`) | verdict-first ordering; source-cited disposition; NEVER fake ACCEPT / fabricate. |
-| **Owner / closure agents** | Opus (one owner per paper) | close real items with real edits/science, recompile (0 undef-refs) + `/latex-audit`, directive-G PDF hygiene, Convex+site sync, commit | one owner per paper; ~30-min heartbeat. |
+| **Orchestrator** | active frontier Codex director (planning/judgment only — directive J) | plan, split lanes, synthesize, route; **never brute-force execution** | never idles while any verdict < ACCEPT; delegates all mechanical work. |
+| **Independent adjudicators** | fresh blinded Codex/ChatGPT subscription agents at high effort | strict ledger-first truth-audit of every finding (patterns 061-066); GENUINE vs ENGINEERED integrity audit (`/review-integrity-audit`) | not the closure owner; verdict-first ordering; source-cited disposition; NEVER fake ACCEPT / fabricate. |
+| **Owner / closure agents** | policy-compliant worker, one owner per paper | close real items with real edits/science, recompile (0 undef-refs) + `/latex-audit`, directive-G PDF hygiene, Convex+site sync, commit | one owner per paper; ~30-min heartbeat. |
 | **INT battery — OpenAI leg** | Codex CLI / ChatGPT SUBSCRIPTION with API keys unset | full-repo-context internal review | NEVER OpenAI API; unavailable subscription auth is visible and fails closed. |
 | **INT battery — xAI leg** | XAI API (Grok, rasterized PDF) | internal review | per-finding source-cited truth-audit like EXT. |
 | **INT battery — Gemini leg** | Gemini API when key works; else browser EXT | internal review | never fail round on billing block. |
-| **INT battery — Claude leg** | **Claude Code SUBSCRIPTION via `claude -p` with `ANTHROPIC_API_KEY` UNSET** — the running agent itself, NEVER the API (directive I1) | internal review with full repo + source + context | NEVER ask Houston for an Anthropic API key; NEVER fail an INT leg on API-disabled. The subscription agent IS this leg. |
+| **INT battery — Claude leg** | DISABLED | none | Do not launch or count it during the active campaign. |
 | **EXT browser legs** | **HEADED gstack Chromium** (`~/.claude/skills/gstack/browse/dist/browse connect`, port 34567, real Chrome, `Mode: headed`) | ChatGPT + Grok + Gemini live-PDF referee reviews | headless CANNOT pass Cloudflare / OAuth — headed MANDATORY (`/connect-chrome`). Fresh chat per leg, capture chat URL immediately, save raw text + screenshot **then verify before recording any verdict**. |
 | — ChatGPT project | `https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/project` | Extended Thinking Pro / Deep Research (every other round) | login: Houston's account in headed window. |
 | — Grok project | `https://grok.com/project/e6c9ce77-4f86-4d94-b440-1062a78171c1` | Grok Expert | fresh project chat per leg. |

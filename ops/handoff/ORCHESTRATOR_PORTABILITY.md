@@ -10,17 +10,16 @@ second machine can run the loop under whatever agent is installed there.
 | Capability | Claude Code | Codex | Cursor / Pi |
 |---|---|---|---|
 | Spawn a sub-agent (per-paper owner, per-vendor reviewer) | `Agent` tool (parallel calls in one message) | `spawn_agent` | host's agent/task spawn; if none, run legs sequentially in-session |
-| **Claude/Anthropic INT leg** | the **running agent itself** on Houston's subscription — never the Anthropic API (directive I1) | the **running Codex agent** is the "Claude-equivalent" leg on ITS subscription | the running host agent IS that leg on its subscription |
+| **Claude/Anthropic INT leg** | disabled for the active campaign | disabled | disabled |
 | OpenAI INT leg | authenticated Codex CLI on Houston's ChatGPT subscription, API keys unset | running Codex subscription agent | authenticated Codex CLI; never OpenAI API |
 | Grok / Gemini INT legs | XAI / Gemini API via the same script (Gemini→browser when key throttled) | same | same |
-| Model routing tiers | Opus judgment / Sonnet execution / Haiku polling | `gpt-5.5` orchestrate / `codex-spark`/`mini` workers | host tiers per the global CLAUDE.md heuristic |
+| Model routing tiers | use policy-compliant Codex frontier/worker tiers | frontier orchestrator / `codex-spark` or mini workers | host tiers permitted by the active provider policy |
 | Durable loop (survives session close) | macOS `launchd`; deploy canonical `tools/{bigbounce_cron_tick,loop_watchdog}.sh` copies to App Support | same only on macOS; non-macOS needs a systemd/Task Scheduler adapter | host scheduler adapter required; never describe launchd as host-independent |
 | Skill invocation (`/machine-sync`, `/connect-chrome`, `/bigbounce-r-round`) | Skill tool | equivalent command, or read the SKILL.md and execute its steps | read the SKILL.md and execute its steps |
 
-**Key rule (directive I1):** subscription-backed perspectives stay on their
-subscription surfaces. The Claude-equivalent leg is the running host agent;
-the OpenAI leg is Codex CLI authenticated by ChatGPT login. Never dispatch
-either through a separately billed API key.
+**Key rule (directive I1):** the OpenAI-family leg is Codex CLI authenticated by
+ChatGPT login, never a separately billed API key. Anthropic/Claude is disabled
+for the active campaign on every host.
 
 ## Host-agnostic already (works identically everywhere)
 
