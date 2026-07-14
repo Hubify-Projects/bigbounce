@@ -29,6 +29,7 @@ ARTIFACTS = [
     "reproducibility/p1_namaster_500mc/scripts/checkpoint_io.py",
     "reproducibility/p1_namaster_500mc/scripts/merge_c10_partials.py",
     "reproducibility/p1_namaster_500mc/scripts/test_windowed_rotation.py",
+    "reproducibility/p1_namaster_500mc/scripts/test_realization_parallel.py",
     "reproducibility/p1_namaster_500mc/scripts/plot_exact_window_results.py",
     "arxiv/figures/fig_namaster_recovery.png",
     "reproducibility/p1_namaster_500mc/results/exact_window_500mc/summary.json",
