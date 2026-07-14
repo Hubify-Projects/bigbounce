@@ -35,6 +35,17 @@ JSON artifacts, not in this narrative file.
   provider response: account balance too low to rent a pod.
 - Production therefore runs locally with the isolated PyMaster 2.6 / healpy
   environment. Generated JSON records exact package versions and runtimes.
+- Ordered two-worker realization parallelism passed a bitwise scientific-JSON
+  regression against serial execution, but it was not beneficial on this
+  contended laptop. Concurrent two-worker apodization shards (parents `19814`
+  and `19771`) were each only at 100/500 after 20:25 wall time. At the declared
+  routing gate they were terminated by process group; all parents/workers exited
+  and no atomic result or temporary result had been published.
+- The same two apodization configurations were restarted unchanged at `N=500`,
+  seeds 42--541, as concurrent one-worker shards (parents `79244` and `79250`,
+  `OMP_NUM_THREADS=2`, BLAS threads fixed at one). Both reached 50/500 by 09:20.
+  The remaining local production pair therefore uses the serial-realization
+  route; the ordered parallel option remains available for a larger host.
 
 ## Interrupted-process evidence and recovery
 
