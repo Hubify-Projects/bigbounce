@@ -20,6 +20,28 @@ This tracker logs each revision round and which issues have been addressed.
 
 ## Revision Rounds
 
+### P2 v1.7.119: Exact-PDF truth-audit scientific closure (2026-07-14)
+
+**Input:** exact v1.7.118 PDF at commit `9089d65c64752e3a2c69778b72d97ef7c45b4443`, SHA-256 `01107b3d731b945b2aa9ea04ce4e8188282770a87b495c4a1f7ad5b71a4db71a`
+
+**Panel:** OpenAI GPT-5 **MAJOR** / Grok 4.3 **MINOR** / Gemini 2.5 Pro **MINOR** / Codex ChatGPT-subscription `gpt-5.6-sol` high **MAJOR**. No Anthropic/Claude dispatch or fallback.
+
+**Truth audit:** Codex's mixed-orbit counterexample is source-invalid: it breaks Cai's own equal vertex forms and the six-Wick multiplicity. Two genuine manuscript defects were verified (Hamiltonian in-in sign presentation; unsupported `1--8%` quasi-dust band), along with an overstatement, an orbit-wording imprecision, and a stale webform abstract.
+
+| Closure | Status | Result |
+|---|---|---|
+| Define Hamiltonian integral and use `+2 Im` consistently | **DONE** | Sign-correct; equivalent Lagrangian convention stated |
+| Remove unsupported quasi-dust numeric band | **DONE** | Correction explicitly unquantified pending four-vertex calculation |
+| Constrain orbit statement to six-Wick convention | **DONE** | Mixed 3-term/6-term convention identified as source-inconsistent |
+| Neutralize prior-dependent Bayesian-preference wording | **DONE** | Illustration no longer promoted as established preference |
+| Sync `abstract_for_webform.txt` | **DONE** | `-35/16`, conditional `2.63 sigma` recast, no stale `3--5 sigma` claim |
+
+**Output:** v1.7.119, 10 pages, PDF SHA-256 `4434dc8b26ed84324e3fdcf486a9205e49989e5e4dda5efd18436a68ccfd0590`.
+
+Four-pass REVTeX compile and mandatory PDF audit passed: zero errors, undefined references/citations, overfull boxes, raw path-like `\texttt{}` strings, broken HTTP(S) links, or visual collisions across pages 1--10. Full matrix and reproducible SymPy evidence are in `INT_v3/ROUND_2026-07-14-P2-v1.7.118-EXACTPDF-9089d65c-NONANTHROPIC/`.
+
+No verdict improvement is inferred until v1.7.119 receives a fresh exact-PDF panel. Shared site/SSOT/Convex/root-version/mirror updates and git integration were outside this lane.
+
 ### P2 v1.7.118: Fresh non-Anthropic editorial closure (2026-07-14)
 
 **Input:** exact 10-page v1.7.117 PDF, SHA-256 `be2a0ba90126feeb896b553f9f9be9128925f75f177260b5c74f829ab940f9cf`

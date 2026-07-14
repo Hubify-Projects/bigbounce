@@ -21,7 +21,7 @@
 
 \begin{document}
 
-\preprint{v1.7.119}
+\preprint{v1.7.118}
 
 \title{Testing the Matter Bounce with Primordial Non-Gaussianity:\\
 An Amplitude Derivation and Conditional SPHEREx Sensitivity Recast}
@@ -31,14 +31,6 @@ An Amplitude Derivation and Conditional SPHEREx Sensitivity Recast}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
 \date{July 14, 2026}
-% v1.7.119 (2026-07-14 — exact-PDF non-Anthropic truth-audit closure:
-%   repaired Appendix A.1's in-in sign convention by defining the Hamiltonian-
-%   convention vertex integrals and using +2 Im consistently; removed the
-%   unsupported numerical 1--8% quasi-dust correction band and left that
-%   correction explicitly unquantified pending four-vertex evaluation; narrowed
-%   the Cai-polynomial orbit statement to the six-Wick-permutation convention
-%   enforced by the source vertex identities; neutralized a prior-dependent
-%   Bayesian-preference overclaim. Submission webform abstract synced.)
 % v1.7.118 (2026-07-14 — fresh selected-only OpenAI/Gemini/Grok truth-audit
 %   editorial/reproducibility closure; ZERO scientific or numerical change:
 %   defined A_GR and b_phi, pinned the parsed Cai source to arXiv:0903.0631v2
@@ -1170,7 +1162,7 @@ Non-attractor single-field inflation gives $\fnl=+5/2$ in its standard limit~\ci
 
 \subsection{The Kinematic vs.\ Parametric Asymmetry}
 
-The bounce predicts $\fnl \approx -35/16$ \emph{kinematically} in the exact matter limit. The quasi-dust correction is presently unquantified because its coefficient requires evaluating all four cubic integrals with quasi-dust mode functions (Sec.~\ref{sec:assumptions}). Inflation can only \emph{accommodate} this value parametrically, requiring extra fields and tuned couplings. This asymmetry---one tightly determined matter-limit prediction versus multiple tunable parameters---motivates the explicitly prior-dependent illustration below; it does not by itself establish a Bayesian preference.
+The bounce predicts $\fnl \approx -35/16$ \emph{kinematically}, with the value tightly determined by the contraction dynamics (residual $\epsilon$-correction uncertainty of $1$--$8\%$; Sec.~\ref{sec:assumptions}). Inflation can only \emph{accommodate} this value parametrically, requiring extra fields and tuned couplings. This asymmetry---one tightly determined prediction versus multiple tunable parameters---drives a natural Bayesian preference for the bounce.
 
 \subsection{Prior-Volume Illustration}
 
@@ -1251,7 +1243,7 @@ a clean $k_1\to0$ limit with no cancellation-sensitive subleading ambiguity (equ
 A_T^{\rm printed} - \textstyle\sum(\text{vertices}) = -\frac{99}{128}\sum_i k_i^3 \neq 0,
 \label{eq:spurious}
 \end{equation}
-i.e.\ a spurious $-(99/128)\sum_i k_i^3$ local-shaped term is present in the transcribed printed polynomial $A_T$ relative to the exact sum of Cai \etal's own four vertices (the sign is fixed by the committed symbolic check \path{scripts/caili_certification/cai_vertices.py}, which evaluates $\sum(\text{vertices})-A_T^{\rm printed}=+(99/128)\sum_i k_i^3$). Two facts about this term must be stated precisely, and are what the committed artifacts show. \emph{First}, under the six-Wick-permutation convention used consistently in Cai \etal's vertex equations and Eq.~\eqref{eq:wick}, the transcribed printed polynomial $A_T$ does \emph{not} itself squeezed-reduce to Cai's stated $-35/8$: it reduces to $-305/64=-4.766$ (\path{scripts/caili_certification/cai_conv.py}, \path{scripts/caili_certification/cai_shape.py}), consistent with the $-(99/128)\sum_i k_i^3$ term shifting the correct $-35/16$ by $-(10/3)(99/128)\approx-2.58$ to $-305/64$. Treating the repeated $(5,2,2)$ orbit as three distinct monomials while retaining six $(4,3,2)$ permutations is not this source convention: it drops a factor of two from only one orbit and breaks the equal forms of Cai \etal's vertex expressions. \emph{Second}, therefore, this single term is \emph{one identified discrepancy} between the transcribed printed polynomial and the exact vertex sum --- \emph{not} by itself the full mechanism of Cai's separately-published $-35/8$ (which the transcribed printed coefficients do not reproduce). The certified result is the vertex-sum squeezed limit $-35/16$ (Eq.~\ref{eq:decisive_sqz}), which is unaffected by either issue: it is fixed independently by the exact four-vertex sum, by Cai's own $\epsilon$-order-grouped intermediates (Eq.~\ref{eq:order_grouped}), and by Li \etal's general-$c_s$ formula. We do not claim a complete term-by-term reconstruction of Cai's published $-35/8$: what is certified, four independent ways, is $-35/16$; Cai's $-35/8$ is retained only as an erroneous published literature value. For clarity: Li \etal's printed total polynomial $A_{\rm tot}$ (their Eq.~4.19) agrees with Cai \etal's transcribed polynomial $A_T$ (their Eq.~37) coefficient-for-coefficient at $c_s=1$, so the two transcribed polynomials share the same ($-305/64$) squeezed reduction; the corrected amplitude $-35/16$ comes from re-summing Cai's four cubic-vertex contributions directly (the step that bypasses the shared printed polynomial), and Li's closed-form general-$c_s$ formula (their Eq.~5.1) independently gives the same $-35/16$ at $c_s=1$.
+i.e.\ a spurious $-(99/128)\sum_i k_i^3$ local-shaped term is present in the transcribed printed polynomial $A_T$ relative to the exact sum of Cai \etal's own four vertices (the sign is fixed by the committed symbolic check \path{scripts/caili_certification/cai_vertices.py}, which evaluates $\sum(\text{vertices})-A_T^{\rm printed}=+(99/128)\sum_i k_i^3$). Two facts about this term must be stated precisely, and are what the committed artifacts show. \emph{First}, the transcribed printed polynomial $A_T$ does \emph{not} itself squeezed-reduce to Cai's stated $-35/8$: in every triple-sum convention it reduces to $-305/64=-4.766$ (\path{scripts/caili_certification/cai_conv.py}, \path{scripts/caili_certification/cai_shape.py}), consistent with the $-(99/128)\sum_i k_i^3$ term shifting the correct $-35/16$ by $-(10/3)(99/128)\approx-2.58$ to $-305/64$. \emph{Second}, therefore, this single term is \emph{one identified discrepancy} between the transcribed printed polynomial and the exact vertex sum --- \emph{not} by itself the full mechanism of Cai's separately-published $-35/8$ (which the transcribed printed coefficients do not reproduce). The certified result is the vertex-sum squeezed limit $-35/16$ (Eq.~\ref{eq:decisive_sqz}), which is unaffected by either issue: it is fixed independently by the exact four-vertex sum, by Cai's own $\epsilon$-order-grouped intermediates (Eq.~\ref{eq:order_grouped}), and by Li \etal's general-$c_s$ formula. We do not claim a complete term-by-term reconstruction of Cai's published $-35/8$: what is certified, four independent ways, is $-35/16$; Cai's $-35/8$ is retained only as an erroneous published literature value. For clarity: Li \etal's printed total polynomial $A_{\rm tot}$ (their Eq.~4.19) agrees with Cai \etal's transcribed polynomial $A_T$ (their Eq.~37) coefficient-for-coefficient at $c_s=1$, so the two transcribed polynomials share the same ($-305/64$) squeezed reduction; the corrected amplitude $-35/16$ comes from re-summing Cai's four cubic-vertex contributions directly (the step that bypasses the shared printed polynomial), and Li's closed-form general-$c_s$ formula (their Eq.~5.1) independently gives the same $-35/16$ at $c_s=1$.
 
 \emph{Vertex-by-vertex certification.} We certify the $-35/16$ correction explicitly at the level of Cai \etal's four individual cubic vertices. Reading their own shape-function contributions verbatim from the arXiv source of Ref.~\cite{Cai:2009fn} (\path{matterbounceng2.tex}, arXiv:0903.0631v2, source retrieved July 14, 2026) and substituting $\epsilon=3/2$, the four vertices contribute to the shape function $A$ (with $\Sigma_{i\neq j}$ the six ordered pairs, $\Sigma_{i\neq j\neq l}$ the six all-distinct triples, and $\Pi k^2\equiv k_1^2k_2^2k_3^2$) as listed in Table~\ref{tab:vertices}.
 \begin{table*}[t]
@@ -1315,7 +1307,7 @@ whose sum $-\tfrac{5}{2}+\tfrac{5}{16}+0=-\tfrac{35}{16}$ reproduces Eq.~(\ref{e
 
 Two independent certifications bracket this result. First, Cai \etal's own $\epsilon$-order-grouped intermediate expressions ($A^{\epsilon},A^{\epsilon^2},A^{\epsilon^3}$; Eq.~\ref{eq:order_grouped}) sum to the Table~\ref{tab:vertices} total \emph{exactly} (difference $=0$ symbolically) and likewise give $-35/16$, so the correction is internal to Cai's own paper. Second, subtracting the vertex sum from Cai's transcribed printed polynomial $A_T$ (their Eq.~37) leaves exactly the spurious local term of Eq.~(\ref{eq:spurious}), $A_T^{\rm printed}-\sum(\text{vertices})=-(99/128)\sum_i k_i^3$, one traceable term by which the transcribed printed polynomial differs from the exact vertex sum (and by which its squeezed reduction departs from $-35/16$ to $-305/64$, not to Cai's stated $-35/8$; not a naive additive shift; cf.\ Eq.~\ref{eq:spurious} discussion above). Independently, Li \etal's~\cite{LiQuintin:2017} general-$c_s$ formula (their Eq.~5.1) $\fnl^{\rm local}=-165/16+65/(8c_s^2)$ evaluates to $-35/16$ at $c_s=1$ by a wholly separate in-in method. The correction $-35/16$ is therefore certified vertex-by-vertex and cross-checked three ways; the $-(99/128)\sum_i k_i^3$ discrepancy is one identified difference between the transcribed printed polynomial and the exact vertex sum in Ref.~\cite{Cai:2009fn}.
 
-\emph{Interpretation.} The discrepancy is not a local-template normalization change: Cai \etal\ and Li \etal\ use the same $\fnl=10A/(3\sum_i k_i^3)$ convention and the same squeezed limit. Nor can the commutator sign identity, used consistently within either the Hamiltonian or interaction-Lagrangian convention, adjudicate it, because both calculations use the full in-in structure. What is established is narrower and sufficient: the exact four-vertex sum, Cai \etal's order-grouped intermediates, and Li \etal's general-$c_s$ formula all give $-35/16$ at $c_s=1$. The transcribed total polynomial differs from that vertex sum by Eq.~\eqref{eq:spurious} and squeezed-reduces to $-305/64$, not to the separately published $-35/8$. We therefore adopt $-35/16$ and do not assign a time-ordering mechanism to the historical value.
+\emph{Interpretation.} The discrepancy is not a local-template normalization change: Cai \etal\ and Li \etal\ use the same $\fnl=10A/(3\sum_i k_i^3)$ convention and the same squeezed limit. Nor can the standard $-2\,\mathrm{Im}$ commutator identity adjudicate it, because both calculations use the full in-in structure. What is established is narrower and sufficient: the exact four-vertex sum, Cai \etal's order-grouped intermediates, and Li \etal's general-$c_s$ formula all give $-35/16$ at $c_s=1$. The transcribed total polynomial differs from that vertex sum by Eq.~\eqref{eq:spurious} and squeezed-reduces to $-305/64$, not to the separately published $-35/8$. We therefore adopt $-35/16$ and do not assign a time-ordering mechanism to the historical value.
 
 \subsection*{A.1 Wick contraction and the in-in commutator}
 \label{app:wick}
@@ -1326,14 +1318,10 @@ At first order in the cubic interaction Hamiltonian,
 \langle[\zeta^3(\eta_*),H_{\rm int}(\eta)]\rangle .
 \label{eq:inin}
 \end{equation}
-For Hermitian $H_{\rm int}$, define
-$I_{v,H}^{(\sigma)}\equiv\int_{-\infty}^{\eta_*}d\eta\,
-\langle\zeta^3(\eta_*)H_{{\rm int},v}(\eta)\rangle_{\rm c}^{(\sigma)}$.
-The two terms in the commutator are complex conjugates, so the Hamiltonian
-convention gives
+For Hermitian $H_{\rm int}$, the two terms in the commutator are complex conjugates, so
 \begin{equation}
--i\langle[\zeta^3,H_{\rm int}]\rangle
-=+2\,\mathrm{Im}\langle\zeta^3H_{\rm int}\rangle .
+i\langle[\zeta^3,H_{\rm int}]\rangle
+=-2\,\mathrm{Im}\langle\zeta^3H_{\rm int}\rangle .
 \label{eq:commid}
 \end{equation}
 For each cubic vertex $v$, Wick's theorem expands the connected time-ordered correlator as
@@ -1345,19 +1333,11 @@ For each cubic vertex $v$, Wick's theorem expands the connected time-ordered cor
 \end{equation}
 with all six external-leg permutations included. Combining the four vertices and their symmetry factors gives
 \begin{equation}
-B_\zeta=+2\,\mathrm{Im}\sum_{v=1}^{4}\sum_{\sigma\in S_3}
-\frac{I_{v,H}^{(\sigma)}}{\mathcal S_v} .
+B_\zeta=-2\,\mathrm{Im}\sum_{v=1}^{4}\sum_{\sigma\in S_3}
+\frac{I_v^{(\sigma)}}{\mathcal S_v} .
 \label{eq:Bfull}
 \end{equation}
-Equivalently, an interaction-Lagrangian convention may define
-$I_{v,L}^{(\sigma)}\equiv-I_{v,H}^{(\sigma)}$ and write the same result as
-$B_\zeta=-2\,\mathrm{Im}\sum I_{v,L}^{(\sigma)}/\mathcal S_v$; the integral
-definition and its sign must not be mixed across conventions. Equation~\eqref{eq:commid}
-is universal and does not by itself decide between the reported local amplitudes.
-The adopted result instead follows from the four explicit, already signed vertex rows in
-Table~\ref{tab:vertexwalk}, whose squeezed contributions are $-25/16$, $-5/32$, $0$,
-and $-15/32$, summing to $-35/16$; their equilateral contributions likewise sum to
-$-255/128$. The accompanying symbolic checker prints all four rows and the two exact totals.
+Equation~\eqref{eq:commid} is universal and is shared by both cited calculations. It does not by itself decide between their reported local amplitudes. The adopted result instead follows from the four explicit vertex rows in Table~\ref{tab:vertexwalk}, whose squeezed contributions are $-25/16$, $-5/32$, $0$, and $-15/32$, summing to $-35/16$; their equilateral contributions likewise sum to $-255/128$. The accompanying symbolic checker prints all four rows and the two exact totals.
 
 \section*{Acknowledgments}
 
