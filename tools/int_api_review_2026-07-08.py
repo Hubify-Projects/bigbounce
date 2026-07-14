@@ -5,7 +5,7 @@ Keys from .env.local by NAME (first token before inline comments; never printed)
 Per-request timeout 300s. One retry, then FAILED with the error string.
 Usage: int_api_review_2026-07-08.py <PAPER> <openai|grok|gemini>
 """
-import os, sys, json, time, warnings, datetime, pathlib
+import os, sys, json, time, warnings, datetime, pathlib, hashlib
 warnings.filterwarnings("ignore")
 
 REPO = pathlib.Path("/Users/houstongolden/Desktop/CODE_YOU/bigbounce")
@@ -325,9 +325,17 @@ def run_one(paper, vendor):
     rel = PAPERS[paper]
     ver = live_version(rel)
     pdf_path = str(REPO / rel)
+    pdf_sha256 = hashlib.sha256(pathlib.Path(pdf_path).read_bytes()).hexdigest()
+    expected_sha256 = os.environ.get("INT_EXPECTED_PDF_SHA256", "").strip().lower()
+    if expected_sha256 and pdf_sha256 != expected_sha256:
+        raise RuntimeError(
+            f"PDF provenance mismatch before {vendor}: expected {expected_sha256}, got {pdf_sha256}"
+        )
+    review_commit = os.environ.get("INT_REVIEW_COMMIT", "worktree")
     model, fn = VENDORS[vendor]
     ts = datetime.datetime.utcnow().isoformat() + "Z"
-    rec = {"paper": paper, "version": ver, "vendor": vendor, "model": model, "ts": ts}
+    rec = {"paper": paper, "version": ver, "vendor": vendor, "model": model, "ts": ts,
+           "pdf_path": rel, "pdf_sha256": pdf_sha256, "review_commit": review_commit}
     outfile = OUTDIR / f"API_{paper}_{vendor}.md"
     last_err = None
     for attempt in (1, 2):
@@ -345,6 +353,7 @@ def run_one(paper, vendor):
             with open(outfile, "w") as f:
                 f.write(f"# INT API Review — {paper} {ver} — {vendor} ({eff_model})\n")
                 f.write(f"paper: {paper}  version: {ver}  model: {eff_model}\n")
+                f.write(f"provenance: commit={review_commit}  pdf={rel}  sha256={pdf_sha256}\n")
                 f.write(f"modality: {meta.get('modality')}\n")
                 f.write(f"UTC: {ts}  |  latency: {dt}s  |  attempt: {attempt}\n")
                 f.write(f"usage: {json.dumps(meta.get('usage', {}))}\n")
@@ -363,6 +372,7 @@ def run_one(paper, vendor):
     with open(outfile, "w") as f:
         f.write(f"# INT API Review — {paper} {ver} — {vendor} ({model}) — FAILED\n")
         f.write(f"paper: {paper}  version: {ver}  model: {model}\n")
+        f.write(f"provenance: commit={review_commit}  pdf={rel}  sha256={pdf_sha256}\n")
         f.write(f"UTC: {ts}\nERROR: {last_err}\n")
     print(f"[FAIL] {paper:4s} {vendor:6s} -> {last_err[:160]}")
     with open(MANIFEST, "a") as mf:
