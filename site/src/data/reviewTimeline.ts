@@ -57,6 +57,40 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p1a-v1a0120-cqg-prd-exact-panel-2026-07-14",
+    dateISO: "2026-07-14",
+    timePT: "11:06–11:08",
+    kind: "internal-api",
+    title:
+      "P1A v1A.0.120 — exact-PDF CQG Note and PRD venue-control boards: central algebra supported, real Note-level closures remain",
+    papers: ["P1A"],
+    summary:
+      "Two independent non-Anthropic panels reviewed the identical 8-page artifact at source commit 438ce8ec and PDF SHA-256 6472db77…535b concurrently. Both CQG Note and PRD boards returned OpenAI MAJOR / Gemini MINOR (with one internally MAJOR-tagged item) / Grok ACCEPT. The boards are preserved separately rather than averaged. Truth audit supports CQG Note as the primary route but confirms open focus/novelty, self-contained Cartan-kernel, above-Planck NJL-EFT, locally bounded all-orders, density-framing, and presentation closures. Independent Codex is a typed NOT_RUN gap due exhausted weekly allowance. No readiness uplift; the verified external cap remains 62.",
+    keyTakeaways: [
+      "Artifact provenance is exact: v1A.0.120, 8 pages, source 438ce8ec, PDF SHA-256 6472db77…535b; no Anthropic leg was run.",
+      "All six raw reports support the narrow axial-contact and torsion-free scalar-branch content in essence, but favorable labels do not erase confirmed open work.",
+      "The accelerated closure is one surgical CQG Note wave: remove uncontrolled/peripheral material, add the Cartan kernel and Fierz bridge, localize scope, compile/audit, then re-panel the exact PDF.",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 4,
+      note: "Four major closure classes survive truth audit: Note focus, explicit Cartan kernel, above-Planck NJL removal, and local all-orders conditions. This count is not a readiness score.",
+    },
+    links: [
+      {
+        label: "Normalized truth audit",
+        href: `${PR}/INT_v3/ROUND_2026-07-14-P1A-v1A.0.120-EXACTPDF-6472db77-CQG-NOTE-NONANTHROPIC/P1A_v1A.0.120_NORMALIZED_TRUTH_AUDIT.md`,
+      },
+      {
+        label: "CQG Note board",
+        href: `${PR}/INT_v3/ROUND_2026-07-14-P1A-v1A.0.120-EXACTPDF-6472db77-CQG-NOTE-NONANTHROPIC/manifest.jsonl`,
+      },
+      {
+        label: "PRD venue-control board",
+        href: `${PR}/INT_v3/ROUND_2026-07-14-P1A-v1A.0.120-EXACTPDF-6472db77-PRD-CONFIRM-NONANTHROPIC/manifest.jsonl`,
+      },
+    ],
+  },
+  {
     id: "p5-v01129-prd-aj-exactpdf-2026-07-14",
     dateISO: "2026-07-14",
     kind: "internal-api",

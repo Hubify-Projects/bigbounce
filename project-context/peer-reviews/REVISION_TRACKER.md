@@ -20,6 +20,30 @@ This tracker logs each revision round and which issues have been addressed.
 
 ## Revision Rounds
 
+### P1A v1A.0.120: Exact-PDF CQG Note and PRD venue-control panels (2026-07-14)
+
+**Input:** exact 8-page PDF at source commit `438ce8ec79cb13d7cfa5233671966a30f5b5e45c`, SHA-256 `6472db7741deebd4100fe3191d5ef23a9b0b7960c4284cf53e9e4761f62f535b`
+
+**CQG Note panel:** OpenAI GPT-5.5 **MAJOR REVISIONS** / Gemini 3.1 Pro Preview **MINOR REVISIONS** (one internally MAJOR-tagged item) / Grok 4.3 **ACCEPT**.
+
+**PRD venue-control panel:** OpenAI GPT-5.5 **MAJOR REVISIONS** / Gemini 3.1 Pro Preview **MINOR REVISIONS** (one internally MAJOR-tagged item) / Grok 4.3 **ACCEPT**.
+
+All six legs received the identical native PDF concurrently; the boards are not averaged. No Anthropic/Claude dispatch or fallback. Independent Codex `gpt-5.6-sol` high is a declared NOT_RUN gap because its weekly subscription allowance was exhausted; no substitute verdict was synthesized.
+
+**Truth audit:** the narrow central algebra is supported in essence by all six reports, but several real closures remain. CQG Note is the primary route; PRD's significance concern is an editorial venue-control result.
+
+| Finding | Status | Required evidence |
+|---|---|---|
+| Unify/focus the Note around algebraic Cartan elimination | **OPEN — STRUCTURAL MAJOR** | Shorter title/abstract/body; standard identities and actual contribution stated plainly |
+| Explicit zero-source connection and kernel step | **OPEN — MAJOR** | Display sourced Cartan equation and `e^[I]∧T^[J]=0 => T^I=0` proof for invertible tetrad |
+| Above-Planck NJL stress rows | **OPEN — MAJOR** | Delete uncontrolled rows and dependent prose; retain only controlled sub-Planck diagnostics |
+| Local all-orders/classical claim conditions | **OPEN — MAJOR** | Initial/boundary/global/quantum exclusions at each broad claim; reduced-vs-off-shell distinction |
+| Density motivation/precision | **OPEN — BOUNDED** | Parameterized scaling, illustrative normalization, honest rounding |
+| Fierz clarity bridge | **OPEN — BOUNDED** | One conventional-bilinear intermediate line; existing full matrix/sign audit retained |
+| Companion/running/NY material and notation | **OPEN — EDITORIAL** | Remove undefined Route-2/3 and pipeline detail; shorten; fix `R R e` artifacts |
+
+No readiness uplift is inferred; the verified external cap remains 62. Raw reports, manifests, declared-gap records, and the full audit are in the two `INT_v3/ROUND_2026-07-14-P1A-v1A.0.120-EXACTPDF-6472db77-*` directories.
+
 ### P3 v3.2.0-r5: Venue-correct exact-PDF ApJS panel (2026-07-14)
 
 **Input:** exact 14-page PDF at source commit `7cf60218b521a8154f9ad6ed3b58c0bbc420ab59`, SHA-256 `024931a40e88124f75f2f6872549936e909db0a3b504dbd2e4e68e91878a39dc`
