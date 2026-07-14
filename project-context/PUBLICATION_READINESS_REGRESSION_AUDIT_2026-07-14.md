@@ -36,10 +36,10 @@ from Codex/ChatGPT subscription CLI with API credentials unset.
 
 | Paper | EXT11 artifact and raw verdicts | Latest exact artifact and raw verdicts | Normalized interpretation |
 |---|---|---|---|
-| P1A | v1A.0.73: `m · A · m` | v1A.0.121: `m · m · m`; v1A.0.122 closure awaits review | Bounded CQG-note presentation/provenance closure, not a core-result collapse. |
+| P1A | v1A.0.73: `m · A · m` | v1A.0.122 exact board: `m · A · A` | The central claim remains supported. Codex found two bounded artifact/provenance minors: the pinned NJL artifact includes excluded `>M_Pl` legacy rows, and reader-facing artifact URLs still use mutable `blob/main` links. Human CQG editorial decision and immutable archival remain open gates. |
 | P1B | v1B.0.70: `m · A · A` | v1B.0.106 is canonical but dirty/in-flight and awaits a fresh board; last v1B.0.104 was `R · A · —` | No valid current three-provider comparison. Finish the in-flight artifact, freeze it, then review the proxy-scope rewrite and robustness evidence once on the exact v1B.0.106 PDF. |
 | P2 | v1.7.64: `m · A · A` | v1.7.122 valid board: `A · A · A`, with ChatGPT supplied by Codex subscription | Manuscript algebra is accepted by the valid panel; direct cubic transfer, real covariance/likelihood, model applicability, DOI, and human PRD gates remain separate. |
-| P3 | v3.1.107: `m · A · m` | v3.2.0-r7 is the current canonical closure artifact and awaits review; last reviewed r6 was historical diagnostic `M · A · m` | Lower word-verdict reflects full ApJS catalog-contract/provenance scrutiny plus real newly exposed controls; the deterministic positional-rejoin result remains supported. |
+| P3 | v3.1.107: `m · A · m` | Latest valid board remains r6: historical diagnostic `M · A · m`; the r7 attempt produced no valid verdict | Grok and Gemini failed closed on a commit mismatch, and the Codex output was marked failed/incomplete. Correct and freeze r7 before its first valid confirmation; do not count the failed attempt as a regression or review result. |
 | P4 | v1.0.187: `A · A · A` | v1.0.243: historical diagnostic `M · M · m` | Real catalog-contract and release gates remain. The narrow observed-label null is supported; no physical/primordial upper bound is licensed. |
 | P5 | v0.1.76: `m · A · m` | v0.1.130: historical diagnostic `R · m · m` | The exploratory catalog null remains plausible, but Paper-IV dependency, post-hoc positioning, covariance specification, archive, and label-bias power are real gates. |
 
@@ -170,10 +170,10 @@ release-blocking failure.
 
 | Paper | Current next gate |
 |---|---|
-| P1A | Freeze v1A.0.122, archive it immutably, then run one fresh CQG-Note board using Codex subscription + Grok + Gemini; no repeat if the truth audit finds zero new reader-visible defects. |
+| P1A | Close the two Codex minors without changing the scientific claims: repin or label the NJL artifact so `>M_Pl` rows are explicitly excluded legacy diagnostics, and replace mutable `blob/main` artifact links with commit-pinned URLs. Freeze and archive the corrected artifact. Do not rerun merely to chase ACCEPT; allow at most one hash-changed confirmation if policy requires it. Human CQG editorial decision remains open. |
 | P1B | Finish and verify the dirty/in-flight v1B.0.106 exact-window robustness artifact, freeze and archive it, then run its first fresh standalone exact-PDF board. |
 | P2 | Preserve the valid v1.7.122 ACCEPT board; do not chase more model verdicts. Track cubic transfer, real covariance/likelihood, fermion/torsion applicability, immutable archive, and human PRD decision as separate gates. |
-| P3 | Verify and freeze the current v3.2.0-r7 primary/auxiliary/AAS-table bundle and catalog contract, archive all PDFs, then run one exact ApJS confirmation. |
+| P3 | Correct the r7 commit mismatch, verify and freeze the v3.2.0-r7 primary/auxiliary/AAS-table bundle and catalog contract, archive all PDFs, then run its first valid exact ApJS confirmation. Keep r6 as the latest valid board until that succeeds. |
 | P4 | Close the catalog schema/filter/example contract and quarantine/reconstruct unsafe probability columns; freeze/archive the release and run one exact ApJS confirmation. |
 | P5 | Resolve exploratory positioning, Paper-IV label dependency, covariance specification, selection-matching scope, and release contract; freeze/archive and run one exact AJ confirmation. |
 
