@@ -12,8 +12,8 @@ pretty_name: BigBounce Multi-Survey Autoencoder Anomaly Catalog (Paper 3)
 
 **Corrected release description.** This dataset backs Golden (2026), Paper 3 —
 *A Multi-Survey Autoencoder Anomaly-Candidate Catalog*. It is released
-**CC-BY-4.0**. The reviewed frozen tag is `p3-v3.1.157`; its exact target is
-`573b5da7c75e4d33ab260bb5b0d57a2af0e15b23`. The frozen inventory is heterogeneous and
+**CC-BY-4.0**. The corrected submission release is frozen at the immutable tag
+`p3-v3.1.161`. The frozen inventory is heterogeneous and
 is not a complete six-survey, independently rerunnable per-object product.
 Consumers should verify downloaded files against
 [`RELEASE_MANIFEST.json`](./RELEASE_MANIFEST.json) (per-file SHA-256 + row
@@ -22,10 +22,10 @@ counts) and observe the provenance restrictions below.
 - **Paper versions:** v3.1.157 (deprecated PRD development variant) / v3.1.161-apjs (review-of-record)
 - **Author:** Houston Golden &lt;houston@hubify.com&gt;
 - **Code / model weights:** https://github.com/Hubify-Projects/bigbounce
-- **Release state:** no v3.1.161 HF tag has been created or uploaded. The
-  pinned `p3-v3.1.157` tag remains immutable but is not a complete six-survey
-  row-level submission package because native Planck and per-object LAMOST
-  products are absent.
+- **Release state:** the corrected manifest, README, machine-readable-table
+  manifest, and revised provenance audit files are published at
+  `p3-v3.1.161`. This is not a complete six-survey row-level submission package:
+  native Planck and per-object LAMOST products remain absent.
 
 ## Count interpretation
 

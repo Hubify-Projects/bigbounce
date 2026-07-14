@@ -9,23 +9,23 @@
   "license": "CC-BY-4.0",
   "hf_repo": "https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog",
   "hf_repo_type": "dataset",
-  "pinned_revision": "573b5da7c75e4d33ab260bb5b0d57a2af0e15b23",
-  "manifest_frozen_utc": "2026-07-12T17:45:58Z",
+  "pinned_revision": null,
+  "manifest_frozen_utc": "2026-07-14T09:24:29Z",
   "immutable_release": true,
-  "v3_1_161_hf_tag_created": false,
+  "v3_1_161_hf_tag_created": true,
   "sufficient_for_complete_six_survey_row_level_submission": false,
   "local_submission_bundle": {
     "directory": "apjs_submission_v3.1.161",
     "manifest": "apjs_submission_v3.1.161/SUBMISSION_BUNDLE_MANIFEST.json",
     "verified_utc": "2026-07-14T08:57:30Z",
-    "source_revision": "573b5da7c75e4d33ab260bb5b0d57a2af0e15b23",
+    "source_revision": null,
     "file_count": 6,
     "payload_bytes": 25835132,
     "hashes_rows_and_schemas_verified": true,
     "payloads_gitignored": true,
     "state": "VERIFIED_COMPLETE_FOR_SCOPED_APJS_TABLE_PACKAGE; NOT A COMPLETE SIX-SURVEY NATIVE-DATA PACKAGE"
   },
-  "submission_boundary": "The immutable p3-v3.1.157 tag lacks a per-object LAMOST table and the native Planck top-200/checkpoint/tensor/full-score bank. v3.1.161-apjs is scoped to the validated DESI+SDSS+geometry-gated-NEOWISE point-source product; released Planck rows are archival cross-transfer diagnostics, Gaia is quarantined synthetic output, and eROSITA is membership-only.",
+  "submission_boundary": "The immutable p3-v3.1.161 tag lacks a per-object LAMOST table and the native Planck top-200/checkpoint/tensor/full-score bank. v3.1.161-apjs is scoped to the validated DESI+SDSS+geometry-gated-NEOWISE point-source product; released Planck rows are archival cross-transfer diagnostics, Gaia is quarantined synthetic output, and eROSITA is membership-only.",
   "apjs_submission_package": [
     {
       "role": "validated DESI point sources",
@@ -82,7 +82,7 @@
   "files": [
     {
       "path": "README.md",
-      "sha256": "4f59d8211a22e47b40aef9c2e029d6420c49ae86549d97e63bc71758cec8a7dc",
+      "sha256": "390fc66bd1322dce636f0369d9ca4660d38a7da542e133098a0e94676dbdfb48",
       "size_bytes": 1339
     },
     {
@@ -122,12 +122,12 @@
     },
     {
       "path": "p3_compute_to_accept/SIXWAY_DEDUP_AND_HELDOUT_METHODS.md",
-      "sha256": "2dca262d10abef4c72190890193e1bb6598f942f3d99cd6002f113ac7265ec9a",
+      "sha256": "66802b37179852fec48e7b7810c8ca744a7c43658aee76fd7795ca6d05a6b838",
       "size_bytes": 4077
     },
     {
       "path": "p3_compute_to_accept/held_out_rescore.py",
-      "sha256": "668f0aa9ca3f27a3cf9e1c1594152bf639f54f3184a6a9e136fa185b1d2f70a0",
+      "sha256": "a658c15f84057f4a175085cb4cee6e1eca96d69da3db5f7a1a7ecfc959fa2bee",
       "size_bytes": 8577
     },
     {
@@ -144,7 +144,7 @@
     },
     {
       "path": "p3_compute_to_accept/held_out_rescore_result.json",
-      "sha256": "c218fe149d36fd7ca28254df72232a89589eea6878ef7e5a9a42bfde38bf35be",
+      "sha256": "70e1c453112c7f44703681e792316323bff903228d0cb5ca44a10870bcd78639",
       "size_bytes": 3228
     },
     {
@@ -236,9 +236,9 @@
       "description": "SDSS DR18 native-retrained continuity slice (77,905); per-object canonical-S scores."
     }
   ],
-  "pinned_revision_note": "IMMUTABLE POINTER. Git tag p3-v3.1.157 peels to commit 573b5da7c75e4d33ab260bb5b0d57a2af0e15b23. The previously cited f738267c6b62105af6012a645741ac8cceb265bf is a different commit and is not tag-equivalent. This locally corrected manifest post-dates the tag and is not byte-identical to the manifest inside that frozen revision.",
-  "tagged_file_count": 25,
+  "pinned_revision_note": "IMMUTABLE POINTER. Git tag p3-v3.1.161 is authoritative. The manifest intentionally does not embed its own commit SHA, avoiding an impossible self-referential hash; verify the tag target through the Hugging Face refs API and record it in the external release ledger.",
+  "tagged_file_count": 27,
   "local_manifest_file_count": 27,
-  "manifest_files_are_complete": "The local files[] array contains the 25 tagged inventory paths plus two post-tag DP3-15 audit artifacts. It is an audit record, not an assertion that all 27 paths are inside tag p3-v3.1.157. LAMOST DR10 contributes to aggregate/dedup accounting but has no released per-object table. The native Planck checkpoint, tensor, full scores, and top-200 table are also absent.",
-  "pinned_tag": "p3-v3.1.157"
+  "manifest_files_are_complete": "The files[] array contains the 27 scientific-inventory paths published at tag p3-v3.1.161. Auxiliary cutouts and legacy repository files outside that enumerated inventory remain available but are not part of the scoped submission package. LAMOST DR10 contributes to aggregate/dedup accounting but has no released per-object table. The native Planck checkpoint, tensor, full scores, and top-200 table are also absent.",
+  "pinned_tag": "p3-v3.1.161"
 }

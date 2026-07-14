@@ -4,7 +4,7 @@
 ## Review-of-record paper: v3.1.161-apjs (local venue-fit source; no new HF tag uploaded)
 ## Status: PUBLIC + IMMUTABLE. Released CC-BY-4.0 on HuggingFace and pinned by commit hash.
 ## HuggingFace: https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog
-## PINNED REVISION (immutable pointer cited in the paper): 573b5da7c75e4d33ab260bb5b0d57a2af0e15b23 (immutable git tag p3-v3.1.157)
+## PINNED RELEASE (immutable pointer cited in the paper): git tag `p3-v3.1.161`
 ## Inventory note: the frozen tag contains 25 files. The locally corrected RELEASE_MANIFEST.json has 27 entries because it also records two post-tag DP3-15 audit artifacts; it is not byte-identical to the tag's older manifest.
 ## Submission warning: the pinned tag is immutable but is not sufficient for a complete six-survey row-level package; native Planck and per-object LAMOST products are absent. The scoped ApJS table bundle was downloaded and verified locally on 2026-07-14; its exact audit record is `apjs_submission_v3.1.161/SUBMISSION_BUNDLE_MANIFEST.json`.
 
@@ -12,7 +12,7 @@
 
 ## Released Catalog Files — authoritative list is RELEASE_MANIFEST.json
 
-The 25-file manifest inside tag `p3-v3.1.157` is authoritative for byte-level inventory and checksums at that immutable revision. The local `RELEASE_MANIFEST.json` is a corrected audit record: it fixes interpretation and tag identity and adds two post-tag DP3-15 entries, so it must not be represented as byte-identical to the tagged file.
+The corrected `RELEASE_MANIFEST.json` inside tag `p3-v3.1.161` is authoritative for the 27-file scientific inventory and checksums. The repository also contains auxiliary cutouts and legacy artifacts outside that enumerated submission inventory.
 
 The released parquet catalog files (as verified against the pinned revision on 2026-07-12) and their row counts:
 
@@ -118,4 +118,4 @@ https://github.com/Hubify-Projects/bigbounce
 - All .parquet files use pandas/pyarrow schema; schema documented in companion-repo README.md.
 - The 7-way dedup was run with `pathc_positional_dedup.py` (deterministic, archived at same repo).
 - Legacy PTA chain remains in the frozen inventory for provenance but is outside the v3.1.161 paper and submission package.
-- Checksums (SHA-256) for the released files were recomputed against the pinned HuggingFace revision `573b5da7c75e4d33ab260bb5b0d57a2af0e15b23 (immutable git tag p3-v3.1.157)` on 2026-07-12 and frozen into `RELEASE_MANIFEST.json` (`manifest_frozen_utc`). The abbreviated hashes in the table above are drawn from that frozen JSON; use the JSON for full-length values.
+- Checksums (SHA-256) for the released files were recomputed and frozen into `RELEASE_MANIFEST.json`; the immutable public pointer is tag `p3-v3.1.161`. The abbreviated hashes in the table above are drawn from that JSON; use the JSON for full-length values.
