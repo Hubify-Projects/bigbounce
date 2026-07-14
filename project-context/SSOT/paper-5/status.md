@@ -1,3 +1,15 @@
+## v0.1.129 EXACT-PDF DUAL VENUE BOARD — 2026-07-14 · AJ STRUCTURAL CLOSURE REQUIRED · READINESS/CAP 74 HOLD
+
+**Binding:** both non-Anthropic panels reviewed the same 42-page `v0.1.129-2026-07-14` PDF, SHA-256 `9f3c6c1043331d67463198ff9d1061f0fd4a90eb1a7235035c8801110669cdc8`, source commit `f4c26f81`.
+
+- **PRD board:** OpenAI **REJECT** / Gemini **MAJOR REVISIONS** / Grok **ACCEPT**.
+- **AJ venue-fit board:** OpenAI **MAJOR REVISIONS** / Gemini **MINOR REVISIONS** / Grok **MINOR REVISIONS**. Gemini's nominal MINOR report contains an internal **[MAJOR]** Paper-IV dependency; it is not softened or averaged away.
+- **Truth-audited disposition:** AJ is the better venue fit, but the paper remains **IN REVISION**. Readiness and cap **HOLD at 74**; this evidence intake earns no uplift.
+- **Next bounded closure:** v0.1.130 will designate the released DESIVAST GALZONE `OUT=0` adjusted estimator as primary (`N=145,766`, `Delta f_CW=+0.00125636`, NSIDE=4 cluster `SE=0.003412744`, 95% CI `[-0.00543249,+0.00794522]`, `p=0.71277`), demote any-hole/T-Web/Tempel/ASTRA results, and remove physical/exclusion/bound claims. The hierarchy change is explicitly post-review, post-hoc, exploratory, and not preregistered.
+- **Unresolved external gates:** Paper-IV co-review/acceptance and a verified immutable public tag/DOI/archive. A local proof freeze is not a public release.
+
+Evidence: `project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P5-v0.1.129-EXACTPDF-9f3c6c10-{NONANTHROPIC-CONFIRM,VENUEFIT-AJ-NONANTHROPIC}/`.
+
 ## M43-EXT WAVE NOTE — 2026-07-13 · byte-unchanged v0.1.127 · cap 74 HOLDS · streak 5→6 · DP5-26 HELD ABSENT · Grok MINOR + ChatGPT MAJOR (4th consecutive), 0 genuinely-new
 **M43-EXT adjudication (2026-07-13) — CONFIRM WAVE on byte-unchanged v0.1.127; 4 legs recovered after the headless false FAILED-dead incident (commit f797cbde).** EXT **Grok MINOR REVISIONS** (2 in-MINOR MAJ-tag / 2 MINOR under a MINOR-REVISIONS header = in-MINOR emphasis pattern-066; closing AFFIRMS the ≈0.9-pp environment-independent null) + **ChatGPT MAJOR REVISIONS** (10 MAJOR / 2 MINOR, 4th consecutive MAJOR M34/M37/M41/M43 = floor lifted and stable above its former REJECT-modal tier); both recovered raws + screenshots READ verbatim before any verdict; PROVENANCE CONFIRMED (correct DESIVAST void/chirality paper, real assistant content). **0 genuinely-new** — every finding a source-cited standing DP5 re-flag. **DP5-26 HELD ABSENT:** grep both raws for [A1]/[A32]/[A34]/artifact-range → NONE; the v0.1.127 artifact-range fix STAYS HELD. Grok→DP5-13/-21/-11/-22/-08/-09; ChatGPT 10M/2m→DP5-06/-18/-13/-04/-01/-02/-11/-10/-08/-09/-22/-12/-14/-20. ledger_match Grok 3/5, ChatGPT 11/13; UNMATCHED Grok-Paper-IV #3→DP5-21 (OPEN-VENUE), ChatGPT-T-Web #9→DP5-14 (RE-FLAG-DISCLOSED). **Clean-wave streak 5→6** (sixth consecutive clean wave on post-DP5-26 v0.1.127). **Cap HOLDS 74** (Grok MIN 12 + ChatGPT MAJ 6 + latest-Gemini MAJ 6 = 50+24; post_verdict.sh recomputed, verified in Convex). No bump (v0.1.127 stands); directive_g.sh not run. No ACCEPT faked; no un-sourced dismissal; no fabrication. Audit: `EXT_real/H17_2026-07-10/M43/P5_truth_audit_M43.md`.
 
