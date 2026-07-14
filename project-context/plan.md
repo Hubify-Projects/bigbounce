@@ -37,6 +37,14 @@ and artifact-addressed review reuse without weakening scientific gates.
 The handoff/CMUX Phase 0 material below is retained for recovery but is paused
 while the publication campaign is the user-designated primary goal.
 
+## Model-routing audit — 2026-07-14
+
+- Keep GPT-5.6 Sol high as the primary director for architecture, novel science judgment, synthesis, and acceptance; use Fable 5 high as a blinded alternate/checkpoint director when the Claude subscription is available.
+- Move routine team leads to GPT-5.6 Terra medium/high. Reserve Sol workers for contested derivations or failure-sensitive merges.
+- Route bounded implementation, grep, formatting, QA, and polling to GPT-5.6 Luna, GPT-5.4 mini, or Codex Spark at low/medium effort; consider DeepSeek V4 Flash for isolated bulk triage where OpenRouter API use is appropriate and outputs are independently checked.
+- Keep Grok and Gemini as real direct-provider/native-PDF reviewer legs with raw response and usage receipts. A CMUX pane name or persona prompt never counts as a vendor leg.
+- Add response-resolved model IDs, request IDs, usage/cost fields, and provider-dispatch tests before treating model-routing telemetry as fully auditable.
+
 ## Execution order
 
 1. Preserve live ownership: do not touch the M41 browser/manifest, claim the lease, or mutate shared research state during its active run.

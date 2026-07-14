@@ -446,3 +446,19 @@ Switched to Opus 4.7 + xhigh effort for this.
 - `agent`: Codex/GPT-5.6
 
 > can you audit our whole approach and please tell me if you can find any ways we can truly significantly accelerate our progress in reaching our goal and then implement all those improvements and keep working on improving the speed without compromising the science as much as possible thank you
+
+## 2026-07-14 - openrouter-cmux-model-routing-audit
+
+### Houston messages, verbatim
+
+**12:10 PT - model-ranking-and-provider-verification**
+
+- `cwd`: /Users/houstongolden/Desktop/CODE_YOU/bigbounce
+- `session`: openrouter-cmux-model-routing-audit
+- `agent`: codex/gpt-5.5
+
+> im trying to understand the openrouter rankings -- it shows DeepSeek as #1 for "Academic"  .... I see the top frontier models like GPT 5.6 and fable 5 being ranked much lower than DeepSeek and some of these other much cheaper models .... in my efforts to maximize my token efficiency and costs/budget and speed of our scientific research multi-model multi-agent orchestration -- I want to make sure we are using the best frontier models like 5.6 sol high (and fable 5) for the main agent orchestrator while using the faster more affordable models etc for the Leads/Workers etc -- currently we have a new cmux setup which is running and I can see it is mostly just using 5.6 Sol on different effort levels like high, medium, light etc... but could probably be more efficient also using Terra and Luna - and i need to confirm we are properly also using Grok and Gemini and that the agent is not faking it currently - which you can review in cmux and in the other codex session running on this ... you can find all the api keys needed in the .env.local in bigbounce (you should be able to) ...
+>
+> Attachments:
+> - /var/folders/0m/_kn2kj3s67129bdt8g7cg7sr0000gn/T/codex-clipboard-9627810e-dfb5-44bc-bd60-deb65b82448d.png
+> - /var/folders/0m/_kn2kj3s67129bdt8g7cg7sr0000gn/T/codex-clipboard-5ceeb4b1-5719-487c-9af9-d59cea1e806e.png

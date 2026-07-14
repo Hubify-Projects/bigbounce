@@ -28,6 +28,7 @@ but are not the current scientific critical path.
 
 ## Done
 
+- [x] **CMUX-003 — Audit model-routing efficiency and provider authenticity:** OpenRouter category ranks were confirmed as usage/spend popularity, not capability scores; live cmux is GPT-5.6 Sol-only (high/medium/low), with no Terra/Luna/Grok/Gemini runtime evidence; the separate BigBounce INT pipeline has genuine direct OpenAI/xAI/Gemini native-PDF calls with raw usage artifacts and currently routes GPT-5.5/Grok-4.3/Gemini-3.1 Pro. Recommended routing is Sol/Fable for director checkpoints, Terra for leads, Luna/mini/spark for mechanical workers/pollers, and real Grok/Gemini calls as independent reviewers. (source: 2026-07-14 12:10 PT)
 - [x] **HO-001 — Receiving-machine bootstrap:** Codex acceptance run reached `READY` with 21 PASS / 2 WARN / 0 FAIL; warnings are Hubify authentication and per-machine reviewer-login confirmation. (source: 2026-07-13 handoff prompt)
 - [x] **HO-003 — Portability acceptance:** this Codex receiving session loaded the repository instructions, mapped host-specific gaps, and completed bootstrap/tool hardening without hidden Claude context. (source: 2026-07-13 handoff prompt)
 - [x] **HO-004 — Close bootstrap gaps:** TinyTeX and exact SDK detection fixed; `.env.example` now covers every BigBounce local key name; isolated lease/cron regression tests pass. (source: 2026-07-13 Claude report)

@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated_at": "2026-07-14T10:40:00-07:00",
+  "updated_at": "2026-07-14T12:20:00-07:00",
   "project": "bigbounce",
   "objective": "Drive all six canonical papers through exact-artifact, venue-correct, non-Anthropic multi-model review, truth-audited closure, and atomic public synchronization without overstating readiness.",
   "tasks": [
@@ -161,6 +161,25 @@
         ]
       },
       "next_action": "After the Claude reset at 2026-07-15 07:00 America/Los_Angeles, create a new clean envelope and rerun both arms; do not reuse the incomplete run as comparison evidence."
+    },
+    {
+      "id": "CMUX-003",
+      "status": "done",
+      "title": "Audit model-routing efficiency and provider authenticity",
+      "source_prompts": ["2026-07-14 12:10 PT OpenRouter and CMUX routing audit"],
+      "completion_criteria": [
+        "Explain OpenRouter category ranks using OpenRouter's published methodology",
+        "Inspect live CMUX processes and surfaces without changing focus or state",
+        "Verify Grok and Gemini through real endpoint code, raw provider-shaped usage artifacts, and live key/model-list checks",
+        "Recommend a cost- and judgment-calibrated director, lead, worker, poller, and independent-review routing matrix"
+      ],
+      "evidence": [
+        "OpenRouter top-by-task ranks are share-of-spend popularity over real usage, not quality benchmarks",
+        "Live CMUX fleet is GPT-5.6 Sol high/medium/low only; no Terra/Luna/Grok/Gemini process evidence",
+        "BigBounce INT pipeline calls api.openai.com, api.x.ai, and generativelanguage.googleapis.com directly with native PDFs",
+        "Recent Grok and Gemini raws preserve distinct token-usage schemas, latency, modality, exact model label, and verbatim response",
+        "Stored OpenRouter, xAI, and Gemini credentials passed secret-safe control-plane checks"
+      ]
     }
   ],
   "blockers": [
