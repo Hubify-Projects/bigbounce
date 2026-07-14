@@ -434,3 +434,15 @@ Switched to Opus 4.7 + xhigh effort for this.
 - `agent`: Codex GPT-5.6
 
 > need you to continue running the full research using all the skills and instructions and the full science stack and updating our site papers overview reviews pdfs version etc and research project and all apis and updating the site and show me for proof that you can run the whole next phase to get this whole science project from current state to ready to publish tonight - follow all our best practices and everything like we have been trying to do in claude that last few weeks and months - but i want you to show me how you are superior dont worry about using anthropic or claude at all for now do not fail me and your /goal is to get my papers ready to publish and accepted/minor revisions only from all internal and external multi-model agents across all papers ASAP that is you main goal and to be honest and not fake it or mislead me in any ways and use the multiple models to always review and check your statuses lets go dont stop until all papers are 95-99% ready to publish and if you find ways to accelerate this along the way please do and document every improvement and process acceleration every step of the way
+
+## 2026-07-14 - Full publication-readiness acceleration audit
+
+### Houston messages, verbatim
+
+**10:39 PT - Audit and implement significant process accelerations without weakening science**
+
+- `cwd`: /Users/houstongolden/Desktop/CODE_YOU/bigbounce
+- `session`: Full publication-readiness acceleration audit
+- `agent`: Codex/GPT-5.6
+
+> can you audit our whole approach and please tell me if you can find any ways we can truly significantly accelerate our progress in reaching our goal and then implement all those improvements and keep working on improving the speed without compromising the science as much as possible thank you

@@ -1,9 +1,67 @@
 {
   "schema": 1,
-  "updated_at": "2026-07-13T18:06:00-07:00",
+  "updated_at": "2026-07-14T10:40:00-07:00",
   "project": "bigbounce",
-  "objective": "Prove the Phase 0 two-machine, one-lab handoff MVP before enabling multi-lab behavior.",
+  "objective": "Drive all six canonical papers through exact-artifact, venue-correct, non-Anthropic multi-model review, truth-audited closure, and atomic public synchronization without overstating readiness.",
   "tasks": [
+    {
+      "id": "PUB-001",
+      "status": "active",
+      "title": "Close active science revisions across P1A, P1B, P3, P4, and P5",
+      "source_prompts": [
+        "2026-07-13 19:28 PT publication-readiness mandate",
+        "2026-07-14 10:39 PT acceleration mandate"
+      ],
+      "completion_criteria": [
+        "Every confirmed scientific finding has a source-backed closure or an explicit unresolved blocker",
+        "Every changed manuscript compiles and passes the full PDF visual audit",
+        "Compute-derived claims bind to reproducible immutable artifacts"
+      ]
+    },
+    {
+      "id": "PUB-002",
+      "status": "active",
+      "title": "Run fresh exact-PDF venue-correct non-Anthropic review boards",
+      "source_prompts": [
+        "2026-07-13 19:28 PT publication-readiness mandate"
+      ],
+      "completion_criteria": [
+        "Each review records the exact PDF SHA-256, version, source commit, venue, article type, prompt, and raw report",
+        "OpenAI, Gemini, Grok, and independent Codex results are truth-audited without fabricated or silently substituted legs",
+        "Acceptance or minor-only status is claimed only when the exact board supports it"
+      ]
+    },
+    {
+      "id": "PUB-003",
+      "status": "active",
+      "title": "Implement safe acceleration controls",
+      "source_prompts": [
+        "2026-07-14 10:39 PT acceleration mandate"
+      ],
+      "completion_criteria": [
+        "One canonical registry defines the six source/PDF/venue/site mappings",
+        "Content-addressed review packets fail closed on stale paths, hash mismatch, ambiguous commits, or output reuse",
+        "Science gates and workflow gates are represented separately",
+        "Any compute parallelism passes a deterministic serial-equivalence regression before production use"
+      ]
+    },
+    {
+      "id": "PUB-004",
+      "status": "pending",
+      "title": "Synchronize exact public state and push main",
+      "source_prompts": [
+        "2026-07-13 19:28 PT publication-readiness mandate"
+      ],
+      "depends_on": [
+        "PUB-001",
+        "PUB-002"
+      ],
+      "completion_criteria": [
+        "Paper mirrors, versions, claims tables, SSOT, Convex/API, site papers, and review timeline agree",
+        "Site build and governed browser QA pass",
+        "Bisected commits are pushed to main only after the public state is honest and atomic"
+      ]
+    },
     {
       "id": "HO-001",
       "status": "done",
@@ -179,6 +237,11 @@
     }
   ],
   "watchpoints": [
+    "Never claim 95-99% readiness, acceptance, or minor-only status until every exact-PDF board and residual gate supports it.",
+    "Reviewer venue and article type are immutable review metadata; keep venue-fit boards separate and never relabel verdicts after the fact.",
+    "Acceleration may remove duplicate work and stale-artifact risk, but may not remove truth audits, reproducibility checks, independent review, or all-page PDF inspection.",
+    "Do not call Anthropic or Claude in the current campaign; record unavailable legs honestly.",
+    "Do not publish partial readiness state; synchronize public surfaces only after their evidence packet is mutually consistent.",
     "Do not implement multi-lab schema, site, branches, or seal/reveal during Phase 0.",
     "Only the lease holder may drive browser, verdict, or ledger writes.",
     "Do not modify live review manifests, prompts.md, SSOT, site state, or generated .agents skills in this lane.",

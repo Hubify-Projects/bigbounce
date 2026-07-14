@@ -1,10 +1,19 @@
-# Tasks — handoff acceptance
+# Tasks — publication-readiness campaign
 
 ## Objective
 
-Prove the Phase 0 MVP: two machines operate one Big Bounce lab safely from the pushed `ops/handoff/` package before enabling any multi-lab behavior.
+Drive all six canonical papers through exact-artifact, venue-correct,
+non-Anthropic multi-model review; truth-audit and close every real finding;
+then synchronize PDFs, versions, SSOT, Convex, API, and the public site without
+overstating readiness. The previous handoff/CMUX tracks remain preserved below
+but are not the current scientific critical path.
 
 ## Active
+
+- [ ] **PUB-001 — Close active science revisions:** finish P1A v1A.0.120, P1B exact-window robustness, P3 r5, P4 portability/provenance closure, and P5 AJ-oriented structural closure with reproducible evidence and full PDF audits. (source: 2026-07-13 19:28 PT; 2026-07-14 10:39 PT)
+- [ ] **PUB-002 — Re-review exact immutable PDFs:** run fresh OpenAI, Gemini, Grok, and independent Codex boards against the correct journal/article type; retain raw reports, exact PDF SHA-256, source commit, and normalized truth-audit. No Anthropic/Claude leg in this campaign. (source: 2026-07-13 19:28 PT)
+- [ ] **PUB-003 — Implement safe acceleration controls:** centralize the six-paper registry, generate content-addressed review packets, fail closed on stale/wrong PDFs or ambiguous commits, separate science gates from workflow gates, and add deterministic bounded inner parallelism only where serial-equivalence tests pass. (source: 2026-07-14 10:39 PT)
+- [ ] **PUB-004 — Atomic release synchronization:** only after the exact boards close, update paper mirrors, version data, claims tables, SSOT, Convex/API, review timeline, and site in the same bisected release sequence; then perform browser QA and push `main`. (source: 2026-07-13 19:28 PT)
 
 - [ ] **HO-002 — One-lab coordination acceptance:** while the live review loop is idle or explicitly handed off, verify lease claim/renew/release, heartbeat `machineId`, git synchronization, and collision-free shared-state writes. (source: 2026-07-13 handoff prompt)
 - [ ] **CMUX-002 — Fresh post-reset mirrored read-only A/B:** after the Claude allowance resets, launch a new clean, bounded task envelope through the Codex GPT-5.6 Sol high and Claude Opus 4.8 high orchestrator teams; reveal only after both fresh-run results submit, then compare quality, latency, and coordination without allowing either team to mutate BigBounce. The first diagnostic run was inconclusive. Clean run `20260714T000136Z-024658000-bfee86cfcc83` launched from a clean snapshot with verified four-workspace topology and every Codex trust gate bypassed; Codex sealed its result, but Claude hit its weekly subscription limit before submission, so nothing was revealed and there is no winner. The next clean run must exercise the new pre-create route gate: one completed subscription-authenticated launch-time turn per unique provider/model/effort route, with typed invalidation and zero workspaces on failure. This is not completed-turn proof for every interactive session, later quota, or final submission. (source: 2026-07-13 CMUX continuation)
@@ -41,6 +50,12 @@ Prove the Phase 0 MVP: two machines operate one Big Bounce lab safely from the p
 - **Phase 3:** open-source Lab C; requires a successful two-lab blind/reveal/corroboration cycle.
 
 ## Watchpoints
+
+- Readiness is evidence, not a target to manufacture: never claim 95--99%, acceptance, or minor-only status until every exact-PDF board and residual gate supports it.
+- Reviewer venue/article type is part of the review artifact. Keep PRD, CQG Note, AJ, ApJS, JCAP, or MNRAS boards separate; never relabel a verdict after the fact.
+- Acceleration may remove duplicate compute, stale-path risk, and repeated review work; it may not remove truth audits, reproducibility checks, independent review, or all-page PDF visual inspection.
+- Current provider policy: no Anthropic or Claude calls. A missing vendor leg is recorded as absent, never silently replaced or fabricated.
+- Do not publish partial readiness state. Public PDF/version/SSOT/Convex/API/site changes land only after their exact evidence packet is complete and mutually consistent.
 
 - MVP first: do not implement `labId`, site lab views, lab branches, or seal/reveal tooling during Phase 0.
 - Git is the sync bus, Convex is shared live state, and only the lease holder may drive browser/verdict/ledger writes.
