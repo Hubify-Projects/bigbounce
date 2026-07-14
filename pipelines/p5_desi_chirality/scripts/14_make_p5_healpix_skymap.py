@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """P5 paper figure: HEALPix per-pixel chirality σ-residual sky map at NSIDE=32.
 
-Two-panel figure (D-round visual fix, v0.1.83):
-  (a) TOP panel  — pixel count map (maximal voids per pixel; sequential
+Two-panel figure (reader-label correction, v0.1.129):
+  (a) TOP panel  — matched-spiral count per pixel (sequential
       YlOrRd colormap; integer colorbar ticks)
   (b) BOTTOM panel — per-pixel signed σ_from_half (diverging RdBu_r;
       labeled "Chirality σ_from_half per pixel")
@@ -15,11 +15,10 @@ Input:
     pipelines/p5_desi_chirality/results/analysis_healpix/nside32_cw_per_pixel.csv
 
 Output:
-    pipelines/p5_desi_chirality/figures/fig_p5_healpix_skymap_nside32.png
+    pipelines/p5_desi_chirality/paper/fig_p5_healpix_skymap_nside32.png
 """
 from __future__ import annotations
 
-import io
 import tempfile
 from pathlib import Path
 
@@ -31,10 +30,10 @@ import numpy as np
 import pandas as pd
 import healpy as hp
 
-REPO = Path("/Users/houstongolden/Desktop/CODE_2025/bigbounce")
-P5 = REPO / "pipelines/p5_desi_chirality"
+P5 = Path(__file__).resolve().parents[1]
+REPO = P5.parents[1]
 SRC = P5 / "results/analysis_healpix/nside32_cw_per_pixel.csv"
-OUT = P5 / "figures/fig_p5_healpix_skymap_nside32.png"
+OUT = P5 / "paper/fig_p5_healpix_skymap_nside32.png"
 
 NSIDE = 32
 
@@ -90,13 +89,13 @@ def main() -> int:
         img_top = _render_panel(
             n_map,
             title=(
-                "(a)  Maximal voids per pixel  "
+                "(a)  Matched spirals per pixel  "
                 "(NSIDE=32,  $n_{\\rm pix}=3{,}303$ occupied)"
             ),
             cmap="YlOrRd",
             vmin=n_min,
             vmax=n_max,
-            cbar_label="Maximal voids per pixel",
+            cbar_label="Matched spirals per pixel",
             tmp_path=tmp1,
         )
 
