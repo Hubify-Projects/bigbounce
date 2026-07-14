@@ -1,4 +1,4 @@
-% P3 v3.2.0 structural recovery: focused DESI DR1 candidate-catalog paper.
+% P3 v3.2.0-r2 structural recovery: focused DESI DR1 candidate-catalog paper.
 % Canonical source for the ApJS submission track.
 % Compile: latexmk -pdf -interaction=nonstopmode -halt-on-error paper3_apjs.tex
 
@@ -13,8 +13,9 @@
 \setcitestyle{numbers,square,comma}
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\releaseTag}{p3-v3.2.0-r1}
-\newcommand{\releaseRevision}{983209ae606be311d9bda9f0258716d56386ee69}
+\newcommand{\paperVersion}{v3.2.0-r2}
+\newcommand{\releaseTag}{p3-v3.2.0-r2}
+\newcommand{\releaseRevision}{1a9e85ee004894956665444b4f110111f1090b79}
 \hypersetup{colorlinks=true,linkcolor=blue!60!black,citecolor=blue!60!black,urlcolor=blue!60!black}
 
 \begin{document}
@@ -25,7 +26,7 @@
 \author{Houston Golden}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 \email{houston@hubify.com}
-\date{July 14, 2026 --- v3.2.0-apjs}
+\date{July 14, 2026 --- \paperVersion}
 
 \begin{abstract}
 Anomaly searches become reusable catalogs only when rows trace public archive objects and the
@@ -37,7 +38,7 @@ columns, and query a spherical-coordinate $k$-d tree.  The predeclared parent se
 $1\arcsec$ match to a main-survey row carrying at least one LRG, ELG, QSO, BGS\_ANY, or MWS\_ANY
 \texttt{DESI\_TARGET} bit.  It reproduces exactly 20,299,155 eligible DESI rows and 2,468
 positional matches.  Requiring the global primary redshift row leaves 2,448; requiring
-\texttt{ZWARN}=0 leaves 181 unique public \texttt{TARGETID}s.  These 181 rows form the v3.2.0
+\texttt{ZWARN}=0 leaves 181 unique public \texttt{TARGETID}s.  These 181 rows form the \paperVersion{}
 release.  They comprise 157 Redrock GALAXY, 23 QSO, and one STAR classifications; spectral type
 was not a selection cut.  Of the released matches, 170 are within
 $0.1\arcsec$ and 11 lie between $0.1\arcsec$ and $1\arcsec$; a quality-tier column exposes this
@@ -82,7 +83,7 @@ The contributions are:
 \item an exact reproduction of the previously quoted 2,468-row main-survey science-bit cohort;
 \item a declared quality waterfall yielding 181 warning-free global-primary candidates;
 \item a public-ID release with exact field-by-field source-row validation; and
-\item a clean v3.2.0 bundle containing only this DESI product and the artifacts required to audit it.
+\item a clean \paperVersion{} bundle containing only this DESI product and the artifacts required to audit it.
 \end{enumerate}
 
 Section~\ref{sec:data} defines the two inputs.  Section~\ref{sec:method} specifies the join,
@@ -98,7 +99,7 @@ The starting cluster table contains 378,480 coordinate clusters produced by a pr
 deduplication.  Exactly 190,015 have a survey-membership string containing \texttt{desi\_dr1};
 190,005 are DESI-only clusters, eight also contain an SDSS member, and two also contain a LAMOST
 member.  Those historical cross-survey labels are retained only as provenance columns.  They do
-not enter the v3.2.0 selection and no non-DESI table is included in the new release.
+not enter the \paperVersion{} selection and no non-DESI table is included in the new release.
 
 The accompanying DESI anomaly table has 195,829 rows with an internal identifier, right
 ascension, declination, a scalar score $S$, the band producing the largest residual, and three
@@ -114,9 +115,17 @@ The score and residual fields are carried forward verbatim as ranking metadata. 
 recomputed in this work, and they are not interpreted as calibrated probabilities, physical
 significances, or novelty measures.
 
+Exactly one released cluster has more than one historical anomaly member:
+\texttt{P3-DESI-000030} (\texttt{cluster\_id}=71390, \texttt{n\_detections}=2).  Its recovered
+public target is $0.979656\arcsec$ from the cluster coordinate but $1.979009\arcsec$ from the
+canonical original DESI member.  The public $1\arcsec$ selection is explicitly the target-to-cluster
+separation, not a target-to-original-member cut.  The release stores both quantities as
+\texttt{match\_separation\_arcsec} and \texttt{original\_member\_separation\_arcsec}.
+
 \subsection{Public DESI DR1 redshift catalog}\label{sec:desi-input}
 
-The public identity substrate is \texttt{zall-pix-iron.fits} from DESI DR1.  The local file has
+The public identity substrate is the \texttt{ZCATALOG} binary-table HDU (extension 1) of
+\texttt{zall-pix-iron.fits} from DESI DR1.  The local file has
 28,425,963 rows and 22,371,272,640 bytes.  Its SHA-256 is
 \texttt{2d95ad99361039b556c402b49e0e7c84\allowbreak df5f00106dc5731d44476a58b128b49b}, equal to the
 value in DESI's current official checksum list.  The FITS table contains repeat observations,
@@ -272,7 +281,7 @@ redshift, score, and separation metadata without attaching a detection interpret
 \begin{figure*}
 \centering
 \includegraphics[width=\textwidth]{figures/p3_v320_catalog_overview.pdf}
-\caption{Released v3.2.0 candidates.  (a) DESI-footprint sky distribution colored by descriptive
+\caption{Released \paperVersion{} candidates.  (a) DESI-footprint sky distribution colored by descriptive
 Redrock \texttt{SPECTYPE}; open circles mark the 11 rows in the $0.1$--$1\arcsec$ separation tier.
 (b) Redshift metadata by spectral type.  (c) Historical anomaly score versus Redrock redshift.
 Neither \texttt{SPECTYPE} nor redshift was used to select the release, and the score is not a
@@ -283,7 +292,7 @@ calibrated physical significance.\label{fig:overview}}
 
 The released positions range from $3.73^\circ$ to $352.15^\circ$ in right ascension and
 $-19.31^\circ$ to $75.49^\circ$ in declination.  There are 134 candidates north and 47 south of
-the celestial equator.  All twelve 30-degree right-ascension bins are occupied, while five of
+the celestial equator.  All twelve 30-degree right-ascension bins are occupied, while four of
 six coarse equal-area declination bins are occupied.  These summaries demonstrate geographic
 coverage within the input, not isotropy.  The footprint is inherited from DESI DR1 and the
 historical anomaly sample; no all-sky uniformity correction is attempted.
@@ -354,7 +363,7 @@ The catalog is designed for:
 It is not designed for estimating an anomaly occurrence rate, claiming new object classes,
 measuring cosmological parameters, or comparing raw counts with a differently selected survey.
 No SIMBAD-based novelty fraction, process-volume multiplier, cross-survey total, or cosmological
-inference is part of v3.2.0.  Establishing novelty requires object-by-object literature and archive
+inference is part of \paperVersion{}.  Establishing novelty requires object-by-object literature and archive
 review beyond a coordinate database match.  Establishing a physical anomaly requires inspection
 of calibrated spectra, masks, observing conditions, and repeat observations.
 
@@ -363,7 +372,7 @@ of calibrated spectra, masks, observing conditions, and repeat observations.
 Prior DESI studies have demonstrated useful outlier-search strategies for particular target
 classes and data subsets \citep{Liang2023,Nicolaou2026}.  Direct candidate-count comparisons are
 not meaningful here because the parent populations, preprocessing, models, thresholds, and
-quality gates differ.  The contribution of v3.2.0 is orthogonal: it converts a historically
+quality gates differ.  The contribution of \paperVersion{} is orthogonal: it converts a historically
 unrejoinable coordinate-and-score product into a small public-key catalog with a fully enumerated
 waterfall.  Future model comparisons can use these 181 public spectra as a common follow-up set,
 but evaluation against a representative control sample would still be required.
@@ -376,7 +385,11 @@ The independent validator reads the released \texttt{fits\_row} values from the 
 reopens the public FITS file, and retrieves all 18 source fields listed in
 Table~\ref{tab:desi-fields}.  Integer, Boolean, and string fields are compared exactly; floating
 fields are also compared at zero tolerance because the Parquet values were copied directly.
-All 181 rows pass all 18 field comparisons.  The validator separately confirms unique candidate,
+All 181 rows pass all 18 field comparisons.  Independently of the released table, the validator
+reconstructs the strict cohort from the 143 scan checkpoints and compares the complete
+\texttt{(cluster\_id, targetid, fits\_row)} sets.  The sets are exactly equal (181 expected,
+181 released, zero missing, and zero unexpected), rather than merely having equal counts.
+The validator separately confirms unique candidate,
 cluster, \texttt{TARGETID}, and FITS-row keys; zero null cells; main-survey membership; at least one
 declared science bit; \texttt{ZCAT\_PRIMARY}=true; \texttt{ZWARN}=0; and separation at or below
 $1\arcsec$.
@@ -385,9 +398,11 @@ $1\arcsec$.
 
 The full local 22.37~GB FITS SHA-256 was recomputed.  A no-cache retrieval of DESI's current
 official checksum file reports the same value.  The live FITS endpoint reports the same byte size,
-an ETag of \texttt{6a516695-5356e87c0}, and a last-modified time of 2026-07-10 21:39:33 GMT.  Eight
-independently chosen 1~MiB byte ranges, including the first and last ranges, also match between the
-local file and live endpoint.  An older local provenance sidecar written in May 2026 records a
+an ETag of \texttt{6a516695-5356e87c0}, and a last-modified time of 2026-07-10 21:39:33 GMT.  The
+machine validator issued eight live 1~MiB HTTP Range requests, including the first and last
+ranges, and required for each response status 206, the exact \texttt{Content-Range}, the exact
+byte count, and a SHA-256 equal to the corresponding local bytes.  All eight passed.  An older
+local provenance sidecar written in May 2026 records a
 different pre-replacement SHA-256.  We preserve that stale value in \texttt{PROVENANCE.json} and
 explicitly exclude it from current validation rather than overwriting the history.
 
@@ -398,9 +413,9 @@ the release manifest and provenance file.
 
 \subsection{Release contents}\label{sec:release}
 
-The clean v3.2.0 directory contains one science table and its audit artifacts:
+The clean \paperVersion{} directory contains one science table and its audit artifacts:
 \begin{enumerate}
-\item \nolinkurl{desi_dr1_science_anomaly_candidates_v3.2.0.parquet};
+\item \nolinkurl{desi_dr1_science_anomaly_candidates_v3.2.0-r2.parquet};
 \item \texttt{DATA\_DICTIONARY.md} and \texttt{README.md};
 \item \texttt{COHORT\_COUNTS.json}, \texttt{QC\_REPORT.json}, and
 \texttt{SELECTION\_AUDIT.json/.md};
@@ -408,7 +423,8 @@ The clean v3.2.0 directory contains one science table and its audit artifacts:
 \item \texttt{PROVENANCE.json}; and
 \item \texttt{RELEASE\_MANIFEST.json} with SHA-256 and byte size for every payload file.
 \end{enumerate}
-The manifest excludes itself to avoid a self-referential hash.  An independent post-generation
+The manifest hashes ten payload files and excludes itself to avoid a self-referential hash;
+the directory therefore contains eleven files total.  An independent post-generation
 pass recomputes every listed hash and byte count.  The release contains no Gaia, eROSITA, LAMOST,
 SDSS, Planck, ACT, or heterogeneous aggregate table.  Earlier releases remain historical and are
 not moved or rewritten.
@@ -419,7 +435,7 @@ The catalog has six central limitations.
 
 \textit{First, historical score lineage.}  The original score and residual columns are preserved
 from the anomaly stream rather than recomputed from public spectra.  Public identifiers now make
-future rescoring possible, but v3.2.0 does not claim exact reproduction of the historical neural
+future rescoring possible, but \paperVersion{} does not claim exact reproduction of the historical neural
 network output.
 
 \textit{Second, quality-conditioned incompleteness.}  Requiring \texttt{ZWARN}=0 removes 92.6\%
@@ -462,14 +478,15 @@ classification is future work.
 
 \section*{Data Availability}
 
-The v3.2.0 release bundle is published under the immutable correction tag \releaseTag{} in the
+The \paperVersion{} release bundle is published under the correction tag \releaseTag{} in the
 public Hugging Face dataset
 \url{https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog}, path
-\texttt{releases/p3-v3.2.0/}.  The tag resolves to commit
-\texttt{\releaseRevision}.  All 11 remote files were downloaded from that tag and verified
-byte-for-byte against the local release.  The original \texttt{p3-v3.2.0} tag remains immutable
-at commit \texttt{f2df8c00284350a7fe84a4ba6eb064\allowbreak68408b1c49}; \releaseTag{} supersedes it only
-because the correction adds explicit immutable-input URLs and reproduction commands.
+\texttt{releases/p3-v3.2.0-r2/}.  At publication the tag resolves to commit
+\texttt{\releaseRevision}; that commit hash is the authoritative immutable identifier, and exact
+consumers should pin it rather than depend on a tag name alone.  All 11 remote files were
+downloaded from the tagged commit and verified byte-for-byte against the local release.  The
+historical \texttt{p3-v3.2.0} and \texttt{p3-v3.2.0-r1} tags and their artifacts are preserved;
+\releaseTag{} is an additive successor correction.
 
 The historical cluster and anomaly inputs are respectively
 \url{https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog/resolve/p3-v3.1.161/pathc_unique_objects.parquet}
@@ -480,19 +497,25 @@ Both are pinned by \texttt{p3-v3.1.161}, which resolves to commit
 \texttt{PROVENANCE.json}.  The public DESI input and official checksum list are available at
 \url{https://data.desi.lbl.gov/public/dr1/spectro/redux/iron/zcatalog/v1/}.  After downloading the
 three named inputs, the concrete build command is:
+\begin{widetext}
 \begin{verbatim}
-python3 build_desi_science_catalog_v320.py \
+FITS_SHA256=2d95ad99361039b556c402b49e0e7c84df5f00106dc5731d44476a58b128b49b
+python3 build_desi_science_catalog_v320_r2.py \
   --clusters pathc_unique_objects.parquet \
   --anomalies desi_dr1_anomalies.parquet \
   --fits zall-pix-iron.fits \
-  --output-dir desi_science_catalog_v3.2.0 \
+  --output-dir desi_science_catalog_v3.2.0-r2 \
   --chunk-rows 200000 \
-  --fits-sha256 \
-  2d95ad99361039b556c402b49e0e7c84\
-df5f00106dc5731d44476a58b128b49b
+  --fits-sha256 "$FITS_SHA256"
+python3 validate_desi_science_catalog_v320_r2.py \
+  --release-dir desi_science_catalog_v3.2.0-r2 \
+  --fits zall-pix-iron.fits \
+  --clusters pathc_unique_objects.parquet
 \end{verbatim}
-The shell joins the two physical hash lines because the first ends in a backslash.  The release
-README gives the same copy-paste download, build, and validation commands.  The source tree contains the same
+\end{widetext}
+The expected FITS digest is assigned on one shell line and passed through an environment
+variable, avoiding any copy-paste ambiguity.  The release README gives the same download, build,
+and validation commands.  The source tree contains the same
 scripts at \artifact{pipelines/p3\_anomaly\_engine/scripts/}.  No secret credentials or private
 data are required to validate the released catalog against the public DESI file.
 
@@ -504,18 +527,37 @@ the FITS standard \citep{Pence2010}.  Exact versions and the chunk size are reco
 \texttt{PROVENANCE.json}.
 
 \begin{acknowledgments}
-This work used public data from the Dark Energy Spectroscopic Instrument.  The author thanks the
-DESI collaboration and data-management teams for making DR1 redshift catalogs and checksums
-publicly accessible.  The analysis benefited from automated code and manuscript review; all
-catalog assertions reported here were checked against machine-readable artifacts, and no
-review-system output was accepted as evidence without a local or public-source verification.
+This research used data obtained with the Dark Energy Spectroscopic Instrument (DESI).  DESI
+construction and operations is managed by the Lawrence Berkeley National Laboratory.  This
+material is based upon work supported by the U.S. Department of Energy, Office of Science,
+Office of High-Energy Physics, under Contract No. DE--AC02--05CH11231, and by the National Energy
+Research Scientific Computing Center, a DOE Office of Science User Facility under the same
+contract.  Additional support for DESI was provided by the U.S. National Science Foundation
+(NSF), Division of Astronomical Sciences under Contract No. AST-0950945 to the NSF's National
+Optical-Infrared Astronomy Research Laboratory; the Science and Technology Facilities Council
+of the United Kingdom; the Gordon and Betty Moore Foundation; the Heising-Simons Foundation;
+the French Alternative Energies and Atomic Energy Commission (CEA); the National Council of
+Humanities, Science and Technology of Mexico (CONAHCYT); the Ministry of Science and Innovation
+of Spain (MICINN), and by the DESI Member Institutions:
+\url{https://www.desi.lbl.gov/collaborating-institutions}.  The DESI collaboration is honored to
+be permitted to conduct scientific research on I'oligam Du'ag (Kitt Peak), a mountain with
+particular significance to the Tohono O'odham Nation.  Any opinions, findings, and conclusions
+or recommendations expressed in this material are those of the author and do not necessarily
+reflect the views of the U.S. National Science Foundation, the U.S. Department of Energy, or
+any of the listed funding agencies.
+
+The analysis benefited from automated code and manuscript review; all catalog assertions
+reported here were checked against machine-readable artifacts, and no review-system output was
+accepted as evidence without a local or public-source verification.
 \end{acknowledgments}
 
 \begin{thebibliography}{20}
 
 \bibitem{DESI2025DR1}
 DESI Collaboration, ``Data Release 1 of the Dark Energy Spectroscopic Instrument,''
-Astron.\ J.\ (2025), arXiv:2503.14745.
+Astron.\ J.\ \textbf{171}, 285 (2026),
+\href{https://doi.org/10.3847/1538-3881/ae4c43}{doi:10.3847/1538-3881/ae4c43},
+arXiv:2503.14745.
 
 \bibitem{Baron2017}
 D.\ Baron and D.\ Poznanski, ``The weirdest SDSS galaxies: results from an outlier detection
@@ -527,7 +569,9 @@ Astrophys.\ J.\ Lett.\ \textbf{956}, L6 (2023), arXiv:2307.07664.
 
 \bibitem{Nicolaou2026}
 C.\ Nicolaou et al., ``Identifying Anomalous DESI Galaxy Spectra with a Variational Autoencoder,''
-Mon.\ Not.\ R.\ Astron.\ Soc.\ \textbf{547}, 2 (2026), arXiv:2506.17376.
+Mon.\ Not.\ R.\ Astron.\ Soc.\ \textbf{547}(2), stag010 (2026),
+\href{https://doi.org/10.1093/mnras/stag010}{doi:10.1093/mnras/stag010},
+arXiv:2506.17376.
 
 \bibitem{Virtanen2020}
 P.\ Virtanen et al., ``SciPy 1.0: Fundamental Algorithms for Scientific Computing in Python,''
@@ -568,7 +612,8 @@ without replaying completed chunks.
 
 \section{Column Groups}\label{app:columns}
 
-The release contains 42 columns after addition of the separation-quality tier.  The authoritative
+The release contains 43 columns after addition of the separation-quality tier and the explicit
+target-to-original-member separation.  The authoritative
 field-by-field descriptions and storage dtypes are in \texttt{DATA\_DICTIONARY.md}.  The two
 tables below define the public and historical field groups without duplicating them in a third
 summary table.
@@ -589,6 +634,7 @@ Column & Definition \\
 \texttt{cluster\_table\_row} & Zero-based row in the committed historical cluster table. \\
 \texttt{match\_separation\_arcsec} & Great-circle target-to-cluster separation in arcseconds. \\
 \texttt{match\_quality\_tier} & At most $0.1\arcsec$, or greater than $0.1\arcsec$ and at most $1\arcsec$. \\
+\texttt{original\_member\_separation\_arcsec} & Great-circle target-to-canonical-original-member separation; not used as a selection cut. \\
 \texttt{targetid} & Public DESI \texttt{TARGETID}; recommended archive key. \\
 \texttt{target\_ra}, \texttt{target\_dec} & Public DESI target coordinates in ICRS degrees. \\
 \texttt{survey}, \texttt{program} & DESI survey and observing-program labels. \\
@@ -649,7 +695,7 @@ validation.}\\
 
 \refstepcounter{table}\label{tab:audit}
 \begin{center}
-\textbf{Table \thetable.} Independent v3.2.0 integrity checks
+\textbf{Table \thetable.} Independent \paperVersion{} integrity checks
 
 \smallskip
 \scriptsize
@@ -659,15 +705,15 @@ Check & Result & Evidence \\
 \midrule
 Historical denominator & PASS: 20,299,155 & streamed cumulative counter \\
 Historical match count & PASS: 2,468 & checkpoint parts and cohort JSON \\
-Strict cohort count & PASS: 181 & independent recomputation from parts \\
+Strict cohort identity & PASS: exact 181/181 set & \texttt{(cluster\_id,targetid,fits\_row)}; zero missing/unexpected \\
 Public identity & PASS: 181/181 & direct FITS-row \texttt{TARGETID} comparison \\
 Carried DESI fields & PASS: 18/18 fields for 181 rows & zero-tolerance source-row comparison \\
 Uniqueness & PASS & candidate, cluster, TARGETID, and FITS row \\
 Null cells & PASS: none & full Parquet null scan \\
 Selection gates & PASS & main, science bit, primary, warning-free, radius \\
 FITS provenance & PASS & full local SHA equals current official checksum \\
-Remote parity & PASS & size plus eight sampled 1 MiB ranges \\
-Payload manifest & PASS: 10/10 files & independent SHA-256 and byte-size recomputation \\
+Remote parity & PASS: 8/8 & live 206/Content-Range/1 MiB/digest validation \\
+Payload manifest & PASS: 10 payloads & manifest self-excluded; 11 directory files total \\
 \bottomrule
 \multicolumn{3}{p{0.88\textwidth}}{\footnotesize Note---PASS describes integrity relative to the
 declared release contract. It is not a claim that the candidates are astrophysically anomalous
