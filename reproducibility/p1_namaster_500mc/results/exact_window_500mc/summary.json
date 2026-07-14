@@ -1,0 +1,50 @@
+{
+  "experiment": "NaMaster EB Birefringence Analysis",
+  "nside": 512,
+  "lmax": 1024,
+  "f_sky": 0.3226013233644999,
+  "noise_level_ukarmin": 10.0,
+  "n_mc_realizations": 500,
+  "seed_base": 42,
+  "theory_operator": "NmtWorkspace.get_bandpower_windows exact tensor contraction",
+  "window_shape": [
+    4,
+    20,
+    4,
+    1536
+  ],
+  "window_equivalence_max_abs": 1.4210854715202004e-14,
+  "software": {
+    "numpy": "1.26.4",
+    "healpy": "1.19.0",
+    "pymaster": "2.6"
+  },
+  "paper1_prediction_deg": 0.27,
+  "observed_value_deg": 0.342,
+  "observed_error_deg": 0.094,
+  "results": {
+    "beta_paper1": {
+      "input_beta_deg": 0.27,
+      "recovered_beta_deg": 0.26900000000000013,
+      "bias_deg": 0.0009999999999998899,
+      "signed_bias_deg": -0.0009999999999998899,
+      "per_realization_beta_std_deg": 0.05140118207821758,
+      "mc_mean_standard_error_deg": 0.0022987307450147683,
+      "snr_namaster": 20.00947780082446,
+      "snr_ratio_to_observed": 0.79
+    },
+    "beta_observed": {
+      "input_beta_deg": 0.342,
+      "recovered_beta_deg": 0.34099999999999997,
+      "snr_namaster": 25.319010442284945
+    },
+    "beta_null": {
+      "input_beta_deg": 0.0,
+      "recovered_beta_deg": -0.0010000000000000009,
+      "snr_namaster": 0.0
+    },
+    "consistency_sigma": 0.7659574468085107
+  },
+  "scientific_conclusion": "Paper 1 prediction beta=0.27 deg is 0.77sigma consistent with observed value 0.342+-0.094 deg. NaMaster analysis confirms SNR=20.01 for beta=0.27 at ACT sensitivity (f_sky=0.32). Beta recovery bias = 0.0010 deg.",
+  "runtime_seconds": 3875.8436391353607
+}
