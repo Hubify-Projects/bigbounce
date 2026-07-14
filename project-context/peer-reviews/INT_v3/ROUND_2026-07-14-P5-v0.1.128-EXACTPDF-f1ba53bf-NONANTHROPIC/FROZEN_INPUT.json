@@ -1,0 +1,22 @@
+{
+  "paper": "P5",
+  "version": "v0.1.128-2026-07-14",
+  "venue_bar": "Physical Review D",
+  "frozen_at_utc": "2026-07-14T11:02:15Z",
+  "repository_head": "44303fe32212489e9bc37aadf748d143fb5f9cac",
+  "repository_branch": "main",
+  "source_path": "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex",
+  "source_sha256": "2d233b96ddf869a7bafa6772ce978c487c17c0dcf9d1308fa1589ae15e2372bf",
+  "source_bytes": 309162,
+  "source_mtime_local": "2026-07-14T01:30:57-0700",
+  "pdf_path": "pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf",
+  "pdf_sha256": "f1ba53bf236cbaecbd7b8d3b76b46411d43bd90fb7907650a742a5b4739dcc22",
+  "pdf_md5": "35ec6ab7389a716a97d8ef878fd5e52a",
+  "pdf_bytes": 1491954,
+  "pdf_mtime_local": "2026-07-14T01:31:36-0700",
+  "pdf_pages": 41,
+  "review_driver_path": "tools/int_api_review_2026-07-08.py",
+  "review_driver_sha256": "8c0432d53fafa264fb6f3385480e0e19a2748dc204a389198b17b4eac88becd0",
+  "vendor_policy": "OpenAI, Gemini, Grok, and a separate Codex subscription leg only; no Anthropic/Claude and no cross-vendor fallback",
+  "mutation_policy": "review and truth-audit only; manuscript, shared SSOT, site, Convex, version.json, and disposition ledger are read-only"
+}

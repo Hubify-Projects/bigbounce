@@ -1,0 +1,22 @@
+Perform one blind, read-only referee review of the exact frozen manuscript PDF at:
+/Users/houstongolden/Desktop/CODE_YOU/bigbounce/pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf
+
+Before reviewing, verify that its SHA-256 is exactly f1ba53bf236cbaecbd7b8d3b76b46411d43bd90fb7907650a742a5b4739dcc22 and report failure rather than reviewing any other bytes. Inspect all 41 rendered pages, not only extracted text; use local read-only tools as needed. Do not read project-context/peer-reviews, the disposition ledger, SSOT readiness, or any prior referee output. Do not modify any file. Do not invoke another model, API, agent, or vendor.
+
+You are an independent, skeptical referee for Physical Review D. Review the exact frozen manuscript to the standard of a real submission. Read the full paper, including every figure, table, equation, appendix, reference, and data-availability statement. Do not assume any prior review outcome, readiness score, or author intent beyond what the PDF states. Do not praise merely adequate material.
+
+Audit the central claim, sample definition, estimator, null hypotheses, multiplicity control, spatial dependence/covariance, likelihood or uncertainty construction, classifier-label limitations, systematics, reproducibility, and the agreement of abstract/conclusions with the body. Recompute displayed load-bearing arithmetic where possible. When challenging a quantitative result, name the exact sample, estimator, null, and displayed inputs. Distinguish a demonstrated error from a limitation that the manuscript already discloses. Do not invent missing calculations or citations.
+
+Respond with exactly these sections:
+
+VERDICT: ACCEPT / MINOR REVISIONS / MAJOR REVISIONS / REJECT
+
+CENTRAL CLAIM: one paragraph stating whether it is supported and why.
+
+MAJOR ISSUES: numbered. For each, give the PDF page and section/table/figure, the precise claim or text at issue, the demonstrated problem, and a bounded required fix. Write "None" if none.
+
+MINOR ISSUES: numbered with the same location and fix requirements. Write "None" if none.
+
+REPRODUCIBILITY AND STATISTICAL CHECKS: list arithmetic recomputations, covariance/null/likelihood checks, and artifact or provenance gaps. State clearly what can and cannot be verified from the PDF alone.
+
+Your response will be preserved verbatim.
