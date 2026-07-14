@@ -42,7 +42,7 @@
       "G_eff_over_G_crit_Holst_dressed": 0.002985011465825558,
       "subcritical_EC": true
     },
-    "Lambda_strong_EFT__Nf=Nc=1": {
+    "Lambda_formal_above_MPl__Nf=Nc=1": {
       "Lambda_GeV": 2.3306901956976538e+19,
       "Nf_Nc": 1,
       "G_crit_GeV^-2": 1.8168984183676997e-38,
@@ -50,7 +50,7 @@
       "G_eff_over_G_crit_Holst_dressed": 0.0012104669366689203,
       "subcritical_EC": true
     },
-    "Lambda_strong_EFT__Nf=1,Nc=3": {
+    "Lambda_formal_above_MPl__Nf=1,Nc=3": {
       "Lambda_GeV": 2.3306901956976538e+19,
       "Nf_Nc": 3,
       "G_crit_GeV^-2": 6.056328061225667e-39,
@@ -58,7 +58,7 @@
       "G_eff_over_G_crit_Holst_dressed": 0.0036314008100067604,
       "subcritical_EC": true
     },
-    "Lambda_strong_EFT__Nf=3,Nc=3": {
+    "Lambda_formal_above_MPl__Nf=3,Nc=3": {
       "Lambda_GeV": 2.3306901956976538e+19,
       "Nf_Nc": 9,
       "G_crit_GeV^-2": 2.0187760204085552e-39,
@@ -72,7 +72,7 @@
     "gamma_BI": 0.274,
     "kappa_GeV^-2": 6.718624025799517e-39,
     "holst_factor_gamma^2/(gamma^2+1)": 0.0698332024898705,
-    "Lambda_strong_EFT_GeV": 2.3306901956976538e+19
+    "Lambda_formal_above_MPl_GeV": 2.3306901956976538e+19
   },
   "closed_form_ratio_Lambda_MPl": {
     "formula": "(3/64) * N_f N_c / pi^2  (M_Pl-independent)",
@@ -81,7 +81,7 @@
     "Nf_Nc_9": 0.04274487434911125
   },
   "verdict": {
-    "text": "CONDENSATE EXCLUDED. Two independent reasons: (1) the scalar channel is REPULSIVE (G_scalar = -(3/64) kappa < 0), so the effective potential has only the trivial M=0 minimum at ANY coupling; (2) even taking |G_eff|, the coupling is FAR sub-critical (worst-case |G_eff|/G_crit = 1.560e-01 << 1 at the least-suppressed cutoff Lambda=M_Pl, Nf Nc=9). No dynamical chiral condensate forms; the Route-1 vacuum case is closed by explicit gap-equation + effective-potential analysis, not by scope concession.",
+    "text": "STANDARD-MEAN-FIELD SCALAR CONDENSATE EXCLUDED IN THE DECLARED CHANNEL/REGULATOR CONVENTION. Two reasons: (1) the scalar channel is REPULSIVE (G_scalar = -(3/64) kappa < 0), so the effective potential has only the trivial M=0 minimum at ANY coupling; (2) even taking |G_eff|, the coupling is FAR sub-critical (worst scanned |G_eff|/G_crit = 1.560e-01 < 1 at the formal larger-cutoff point, Nf Nc=9). This does not remove Fierz ambiguity or exclude beyond-mean-field/non-minimal completions.",
     "sign_repulsive": true,
     "magnitude_subcritical": true,
     "worst_case_G_eff_over_G_crit": 0.15600319105515056,

@@ -3,8 +3,7 @@ r"""
 njl_gap_equation_route1.py
 ==========================
 
-REAL-SCIENCE closure of P1U (paper1_unified.tex, v1U.0.13) Route-1 open item
-"DP1U ledger, conceded at the Route-1 scope tightening":
+Reproducibility check for the standard mean-field NJL treatment used in P1A.
 
     "<J5>=0 does not imply <J5 J5>=0; a genuine closure requires a regulated
      gap equation, effective potential, and demonstration that no relevant
@@ -17,14 +16,14 @@ Conceded in-paper at sec:r1_njl (paper1_unified.tex, lines ~2643-2653):
      self-consistent strong-coupling analysis is beyond the present mean-field
      treatment and is noted as an out-of-scope open item."
 
-THIS SCRIPT closes that open item with the standard NJL-type gap-equation +
-effective-potential analysis for the ECH torsion-induced four-fermion
+THIS SCRIPT evaluates that question within a standard NJL-type gap-equation
+and hard-cutoff mean-field treatment of the ECH torsion-induced four-fermion
 interaction. It DERIVES (sympy) and NUMERICALLY EVALUATES the two things that
 decide whether a dynamical chiral condensate can form:
 
   (A) the ratio  G_eff / G_crit  at both physically-motivated cutoffs
-      (Lambda = M_Pl   and   Lambda = the paper's stated EFT-validity scale
-       Lambda_strong ~ M_Pl / sqrt(gamma_BI)); and
+      (Lambda = M_Pl and a formal larger-cutoff sensitivity point
+       Lambda_formal ~ M_Pl / sqrt(gamma_BI)); and
   (B) the SIGN of the four-fermion coupling in the SCALAR (sigma ~ <psi psi_bar>)
       channel after the paper's own Fierz projection (eq:AAdecomp) -- attractive
       (G>0, condensation possible) vs repulsive (G<0, condensation impossible).
@@ -39,8 +38,10 @@ INPUTS TAKEN FROM THE PAPER (not invented):
   * Fierz projection to the SS (scalar) channel (eq:AAdecomp, App app:fierz,
      verified by arxiv/scripts/fierz_lemma_check.py):
         (J5.J5)  -->  +1/4 SS + 1/2 VV - 1/2 AA - 1/4 PP.
-  * EFT validity scale (paper footnote at sec:dneff_proxy, line ~5375):
-        Lambda_strong ~ M_Pl / sqrt(gamma_BI),   gamma_BI = 0.274 (SU(2), eq:gamma).
+  * Formal cutoff-sensitivity point used in the historical scan:
+        Lambda_formal ~ M_Pl / sqrt(gamma_BI), gamma_BI = 0.274.
+    Because this lies above M_Pl, it is a sensitivity test, not a controlled
+    claim that the contact EFT remains valid to that scale.
   * M_Pl = 1.22e19 GeV (unreduced Planck mass, paper convention).
 
 STANDARD NJL FACTS USED (textbook, cited in docstring, machine-checked below):
@@ -181,7 +182,7 @@ G_eff_holst = G_eff_mag * holst_factor
 
 cutoffs = {
     'Lambda_M_Pl':        M_Pl,
-    'Lambda_strong_EFT':  M_Pl / math.sqrt(gamma_BI),   # paper EFT-validity scale
+    'Lambda_formal_above_MPl':  M_Pl / math.sqrt(gamma_BI),
 }
 print("\n[5] G_eff / G_crit magnitude test (|G_eff| vs G_crit = pi^2/(Nf Nc Lambda^2)):")
 RESULTS['ratios'] = {}
@@ -207,7 +208,7 @@ for label, Lam_val in cutoffs.items():
 RESULTS['inputs'] = {
     'M_Pl_GeV': M_Pl, 'gamma_BI': gamma_BI, 'kappa_GeV^-2': kappa_val,
     'holst_factor_gamma^2/(gamma^2+1)': holst_factor,
-    'Lambda_strong_EFT_GeV': cutoffs['Lambda_strong_EFT'],
+    'Lambda_formal_above_MPl_GeV': cutoffs['Lambda_formal_above_MPl'],
 }
 
 # ============================================================================
@@ -227,11 +228,11 @@ RESULTS['closed_form_ratio_Lambda_MPl'] = {
     'Nf_Nc_3': float(sp.Rational(3, 64) * 3 / sp.pi**2),
     'Nf_Nc_9': float(sp.Rational(3, 64) * 9 / sp.pi**2),
 }
-# At the EFT scale Lambda_strong = M_Pl/sqrt(gamma): G_crit larger by 1/gamma
-# => ratio SMALLER by factor gamma=0.274 => even more sub-critical.
-ratio_EFT_factor = gamma_BI
-print(f"      At Lambda_strong = M_Pl/sqrt(gamma): G_crit ~ 1/gamma larger =>")
-print(f"      ratio shrinks by gamma = {gamma_BI} => MORE sub-critical.")
+# At Lambda_formal = M_Pl/sqrt(gamma), Lambda^2 is larger by 1/gamma,
+# so G_crit is smaller by gamma and |G_eff|/G_crit is larger by 1/gamma.
+ratio_EFT_factor = 1.0 / gamma_BI
+print(f"      At Lambda_formal = M_Pl/sqrt(gamma): G_crit is gamma times smaller =>")
+print(f"      ratio grows by 1/gamma = {ratio_EFT_factor:.4f} (formal sensitivity point).")
 
 # ============================================================================
 # 5. VERDICT
@@ -242,15 +243,14 @@ sign_repulsive = G_scalar_over_kappa < 0
 magnitude_subcritical = worst_ratio < 1.0
 
 if sign_repulsive and magnitude_subcritical:
-    verdict = ("CONDENSATE EXCLUDED. Two independent reasons: (1) the scalar "
+    verdict = ("STANDARD-MEAN-FIELD SCALAR CONDENSATE EXCLUDED IN THE DECLARED "
+               "CHANNEL/REGULATOR CONVENTION. Two reasons: (1) the scalar "
                "channel is REPULSIVE (G_scalar = -(3/64) kappa < 0), so the "
                "effective potential has only the trivial M=0 minimum at ANY "
                "coupling; (2) even taking |G_eff|, the coupling is FAR "
-               f"sub-critical (worst-case |G_eff|/G_crit = {worst_ratio:.3e} << 1 "
-               "at the least-suppressed cutoff Lambda=M_Pl, Nf Nc=9). No "
-               "dynamical chiral condensate forms; the Route-1 vacuum case is "
-               "closed by explicit gap-equation + effective-potential analysis, "
-               "not by scope concession.")
+               f"sub-critical (worst scanned |G_eff|/G_crit = {worst_ratio:.3e} < 1 "
+               "at the formal larger-cutoff point, Nf Nc=9). This does not remove "
+               "Fierz ambiguity or exclude beyond-mean-field/non-minimal completions.")
 elif magnitude_subcritical:
     verdict = ("CONDENSATE EXCLUDED BY MAGNITUDE. Coupling far sub-critical "
                f"(|G_eff|/G_crit = {worst_ratio:.3e} << 1); sign not decisive.")

@@ -21,6 +21,7 @@
 \usepackage{bbold}
 \usepackage[utf8]{inputenc}
 \usepackage{float}
+\usepackage{comment}
 \usepackage{slashed}
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta,positioning,fit,calc}
@@ -47,8 +48,21 @@
 \newcommand{\etal}{\textit{et~al.}}
 \newcommand{\fnl}{f_{\rm NL}}
 \newcommand{\fcw}{f_{\rm CW}}
-\newcommand{\paperVersion}{v1A.0.115}
-\newcommand{\paperTimestamp}{July 8, 2026}
+\newcommand{\artifact}[1]{\href{https://github.com/Hubify-Projects/bigbounce/blob/main/#1}{repository artifact}}
+\newcommand{\paperVersion}{v1A.0.116}
+\newcommand{\paperTimestamp}{July 14, 2026}
+% v1A.0.115->116 (2026-07-14): M44 SPLIT-REVIVAL / CLAIM-SURGERY.
+%   Restored P1A and P1B as separate submissions without modifying the historical
+%   unified source. P1A is now a narrow theory paper: exact first-order minimal ECH
+%   action and algebraic torsion elimination; the induced axial four-fermion channel
+%   with a standard mean-field NJL check; and the classical canonical-scalar
+%   perturbation-transparency identity. Reader-visible R2/R3 dark-energy mappings,
+%   single-scale dark-energy ansatz, spectator-ALP/NaMaster/MCMC payload, barrier
+%   catalog, and unrestricted/basis-complete no-go rhetoric are retired from this
+%   submission. R2/R3 remain literature context only: their mapping to a cosmological
+%   stress tensor or observable is unresolved. No new observational or EFT-amplitude
+%   result is claimed. The retained Fierz and NJL statements are explicitly limited
+%   to the declared single-species, standard mean-field setup.
 % v1A.0.114->115 (2026-07-08): FULL8 closure edits. (1) Abstract + §IV opening: sharpened
 %   R4 framing to make unmissably clear that "amplitude closure" applies to R1–R3 only;
 %   R4 closes by naturalness/explanatory-deficit (CC relocation), NOT amplitude suppression.
@@ -1052,9 +1066,8 @@
 
 %\preprint{arXiv:XXXX.XXXXX}
 
-\title{Channel-Level Amplitude Closure of Four Enumerated Minimal\\
-Einstein--Cartan--Holst Dark-Energy Routes Under Stated Assumptions,\\
-and Perturbation Transparency for Scalar Matter}
+\title{Algebraic Torsion in Minimal Einstein--Cartan--Holst Gravity:\\
+Four-Fermion Contact Bounds and Classical Scalar-Sector Transparency}
 
 \author{Houston Golden}
 \email{houston@hubify.com}
@@ -1062,6 +1075,43 @@ and Perturbation Transparency for Scalar Matter}
 
 \date{\paperTimestamp}
 
+\begin{abstract}
+We isolate two consequences of the minimal Einstein--Cartan--Holst (ECH)
+action that can be established without a phenomenological dark-energy map.
+First, varying the tetrad, Lorentz connection, and minimally coupled Dirac
+field in first order and eliminating the non-propagating torsion gives the
+standard axial--axial four-fermion contact interaction with coefficient of
+order $M_{\rm Pl}^{-2}$.  At late-time fermion densities its contribution is
+negligible compared with the observed dark-energy density.  Within a
+single-species, hard-cutoff, standard mean-field Nambu--Jona-Lasinio (NJL)
+treatment, the scalar Fierz projection is repulsive,
+$G_{\rm scalar}=-3\kappa/64$, and the magnitude remains subcritical over the
+declared cutoff/flavor scan (largest scalar-channel ratio $0.156$; the larger
+axial-channel ratio remains $0.31$).  These statements constrain this
+specific contact channel; they do not exclude beyond-mean-field dynamics,
+non-minimal fermion couplings, additional species structure, propagating
+torsion, or the full gravitational effective field theory.
+
+Second, for minimally coupled canonical scalar matter the spin current
+vanishes, so the algebraic Cartan equation selects the torsion-free branch.
+On that branch the Holst contraction vanishes pointwise by the first
+algebraic Bianchi identity.  Consequently the constant-Immirzi Holst sector
+does not modify classical scalar or tensor perturbation equations at any
+order about that branch.  This is a narrow classical transparency statement,
+not a claim about fermion loops, anomalies, a dynamical Immirzi field,
+non-minimal matter, or propagating torsion.
+
+We deliberately make no ECH dark-energy or birefringence prediction.  The
+one-loop charge flow studied by Shapiro and Teixeira and the Immirzi running
+studied by Benedetti and Speziale do not by themselves supply a derived
+Lorentzian cosmological stress tensor or observable map; those Route-2/3
+identifications therefore remain unresolved literature context rather than
+closures in this paper.  Generic stock-CAMB, NaMaster, and spectator-ALP
+consistency studies are reported separately in Paper~I(b) and are not evidence
+for ECH.
+\end{abstract}
+
+\begin{comment}
 \begin{abstract}
 We assess four enumerated minimal-Einstein-Cartan-Holst (ECH) spin-torsion
 channels as candidate sources of late-time dark energy and find that each
@@ -1181,9 +1231,10 @@ verification, NaMaster pipeline validation, and ALP parameter fitting---is
 documented in companion papers~\cite{Golden2026P2,Golden2026P1b} whose
 reproducibility artifacts are archived with this submission.
 \end{abstract}
+\end{comment}
 
-\pacs{98.80.-k, 04.50.Kd, 04.60.Pp, 95.36.+x}
-\keywords{Einstein-Cartan theory, spin-torsion coupling, loop quantum gravity, perturbation transparency, primordial non-Gaussianity, channel-level closure}
+\pacs{04.50.Kd, 04.60.-m, 11.10.Lm}
+\keywords{Einstein--Cartan gravity, Holst action, algebraic torsion, four-fermion interaction, NJL model, perturbation transparency}
 
 \maketitle
 \tableofcontents
@@ -1193,6 +1244,45 @@ reproducibility artifacts are archived with this submission.
 %%  1. INTRODUCTION
 %% ============================================================
 \section{Introduction}\label{sec:intro}
+
+In Einstein--Cartan gravity the Lorentz connection is independent of the
+tetrad, and fermionic spin sources torsion.  For the minimal action the
+connection equation is algebraic: torsion does not propagate and may be
+eliminated exactly, leaving a local four-fermion interaction
+~\cite{Hehl1976,HehlDattaNJL1971,Freidel2005}.  The Holst extension introduces
+the dimensionless Barbero--Immirzi parameter but no new propagating degree of
+freedom when that parameter is constant.  These elementary facts permit two
+useful, auditable questions: how large can the induced contact channel be at
+late times, and can the constant-Immirzi Holst term affect classical
+perturbations sourced only by canonical scalars?
+
+This paper answers those two questions within an intentionally narrow domain.
+Section~\ref{sec:theory} states the first-order action and performs the
+algebraic torsion elimination.  Section~\ref{sec:r1_njl} evaluates the induced
+contact channel and a standard mean-field NJL gap equation.  The Fierz
+rearrangement used in that calculation is recorded in
+Appendix~\ref{app:fierz}, and the regulated gap-equation audit is in
+Appendix~\ref{app:njl_gap}.  Section~\ref{sec:transparency} gives the exact
+classical scalar-sector transparency argument.
+
+The claim boundary is as important as the calculation.  A Fierz identity for
+the contact interaction does not enumerate the gravitational EFT.  A
+mean-field NJL calculation does not eliminate Fierz ambiguity or
+beyond-mean-field strong-coupling completions.  Likewise, vanishing of the
+Holst density on the torsion-free scalar branch is not a theorem about
+fermionic, quantum, non-minimal, dynamical-Immirzi, or propagating-torsion
+sectors.  Earlier exploratory mappings from one-loop Holst/Immirzi running to
+late-time dark energy are not retained as results: the cited calculations do
+not derive the required cosmological stress tensor and observable matching
+~\cite{ShapiroTeixeira2014,BenedettiSpeziale2011run}.  No operator-complete or
+unrestricted no-go is claimed.
+
+Paper~I(b)~\cite{Golden2026P1b} is a separate computational companion.  Its
+stock-CAMB extra-radiation chains, synthetic NaMaster recovery test, and
+generic spectator-ALP fit are proxy, pipeline, and consistency studies.  They
+are not inputs to either result proved here and are not evidence for ECH.
+
+\begin{comment}
 
 The nature of dark energy remains one of the most profound challenges in modern
 physics. While the $\Lambda$CDM model successfully accounts for observed cosmic
@@ -1525,7 +1615,55 @@ Supplementary materials are at \url{https://github.com/Hubify-Projects/bigbounce
 %% ============================================================
 %%  2. THEORETICAL FRAMEWORK
 %% ============================================================
-\section{Theoretical Framework}\label{sec:theory}
+\end{comment}
+
+\section{Minimal ECH and Algebraic Torsion}\label{sec:theory}
+
+We use the first-order Einstein--Cartan--Holst action with a constant
+Barbero--Immirzi parameter $\gamma$ and a minimally coupled Dirac field,
+\begin{align}\label{eq:ECH}
+S[e,\omega,\psi] ={}& \frac{1}{4\kappa}\int
+\left(\epsilon_{IJKL}+\frac{2}{\gamma}\eta_{I[K}\eta_{L]J}\right)\nonumber\\
+&\hspace{1.0cm}\times e^I\wedge e^J\wedge R^{KL}(\omega)
++ S_{\rm D}[e,\omega,\psi],
+\end{align}
+where $\kappa=8\pi G$, $R^{IJ}(\omega)=d\omega^{IJ}+\omega^I{}_K\wedge
+\omega^{KJ}$, and $e^I$ and $\omega^{IJ}$ are varied independently.  There
+is no independent $T^2$ term in Eq.~\eqref{eq:ECH}; any torsion-square or
+four-fermion expression below is an on-shell result obtained only after the
+connection equation has been solved.  This ordering avoids double counting.
+
+For minimal fermion coupling the spin current is totally antisymmetric and
+dual to $J_5^I=\bar\psi\gamma^I\gamma^5\psi$.  The connection equation is
+algebraic.  In the Einstein--Cartan limit, with the spin-current convention
+$S^{IJK}=\tfrac14\epsilon^{IJKL}J_{5L}$ used here, it reads
+\begin{equation}\label{eq:torsion}
+T^{IJK}=\kappa S^{IJK}=\frac{\kappa}{4}\epsilon^{IJKL}J_{5L}.
+\end{equation}
+At finite $\gamma$ the algebraic solution acquires the standard Holst
+contorsion prefactor; solving it and substituting it back into the action gives
+the minimal axial--axial contact interaction
+~\cite{Freidel2005,Mercuri2009},
+\begin{equation}\label{eq:4fermi}
+\mathcal L_{4\psi}=-\frac{3\kappa}{16}
+\frac{\gamma^2}{1+\gamma^2}\,(J_5^I J_{5I}).
+\end{equation}
+The pure Einstein--Cartan coefficient is recovered for
+$\gamma\rightarrow\infty$.  A vector--axial term is not generated by the
+minimal coupling used here; it requires a non-minimal fermion coupling and is
+outside this paper's declared field content.
+
+For the conservative late-time and gap-equation bounds below we use the
+maximal Einstein--Cartan magnitude,
+\begin{equation}\label{eq:minimal_contact}
+\mathcal L^{\rm NJL}_{\rm tor}=-\frac{3\kappa}{16}(J_5^I J_{5I}),
+\end{equation}
+because $\gamma^2/(1+\gamma^2)<1$ can only reduce the coupling.  Equations
+\eqref{eq:ECH}--\eqref{eq:minimal_contact} are the complete action-level input to
+the results that follow.
+
+\begin{comment}
+\section{Theoretical Framework}\label{sec:theory-old}
 
 \subsection{Loop Quantum Cosmology and the Holst Action}\label{sec:holst}
 
@@ -2293,7 +2431,17 @@ statement that Route~2 lies below the observed birefringence amplitude by
 $\gtrsim 30$ orders of magnitude survives any reasonable dimensional
 reconciliation.
 
-\subsection{Route 1 (NJL four-fermion contact): closed by Planck suppression}
+\end{comment}
+
+\section{The Minimal Four-Fermion Contact Channel}\label{sec:fourfermion}
+
+The contact operator in Eq.~\eqref{eq:NJL_torsion} is a specific consequence
+of minimal algebraic torsion.  We test its finite-density amplitude and its
+standard mean-field scalar-condensate channel.  Neither test is promoted to a
+claim about every four-fermion completion or about the complete gravitational
+EFT.
+
+\subsection{Late-time amplitude and coherent mean field}
 \label{sec:r1_njl}
 On the standard Einstein--Cartan side---i.e.\ before the Holst term is
 added---the Cartan algebraic equation $T^{abc} = \kappa\,S^{abc}$
@@ -2347,23 +2495,33 @@ $\langle J^5 J^5\rangle$ of the four-fermion contact operator is zero
 but such an incoherent contribution does not carry a coherent
 $w=-1$ equation of state and is in any case bounded above by the
 amplitude estimate of leg (i).
-The combined conclusion is therefore: amplitude-suppressed (by ${\sim}70$
-orders relative to $\rho_\Lambda$) \emph{and} parity-even / mean-zero in
-the coherent dark-energy sense
-(the late-time dark-energy claim assessed here;
-thermal-era densities are addressed separately in Sec.~\ref{sec:dilution}).
-This is the familiar conclusion that the Hehl--Datta torsion-induced
-NJL contact term cannot drive late-time acceleration in any
-Einstein--Cartan model with Standard Model matter content alone, and is
-moreover parity-even and therefore unable to source the parity-odd
-$E\!B$ correlation reported in Sec.~\ref{sec:EB}. Adding the Holst term
-(see R2 below) does not relax this bound: with minimal fermion coupling
-the torsion-elimination map modifies the contact-term coefficient only
-through the bounded prefactor $\gamma^2/(\gamma^2+1)\in(0,1)$ of
-Eq.~\eqref{eq:4fermi}, which cannot enhance the amplitude above its
-pure-Einstein--Cartan ($\gamma\to\infty$) value.
-\emph{Closure: amplitude-suppressed and parity-even.}
+Thus the finite-density expectation is roughly $70$ orders below
+$\rho_\Lambda$ even under the deliberately high density choice, while the
+cosmic-mean density gives a stronger bound.  This is a constraint on the
+minimal Hehl--Datta contact channel, not a claim that arbitrary torsion or
+fermion sectors cannot contribute to late-time cosmology.  The finite-$\gamma$
+factor in Eq.~\eqref{eq:4fermi} is bounded by unity and cannot enhance this
+specific channel above the Einstein--Cartan limit used in the estimate.
 
+\subsection{Standard mean-field NJL check}
+
+The vanishing one-point axial current does not itself exclude a vacuum
+condensate.  We therefore Fierz-project the axial--axial operator and solve a
+hard-cutoff NJL gap equation in Appendix~\ref{app:njl_gap}.  In the declared
+single-species convention the scalar projection is
+$G_{\rm scalar}=-3\kappa/64<0$, hence repulsive.  Ignoring the sign and testing
+only its magnitude gives $|G_{\rm scalar}|/G_{\rm crit}=0.156$ at the most
+aggressive point of the stated scan; the axial projection is twice as large
+and remains subcritical at $0.31$.  The machine-checkable calculation is
+\artifact{arxiv/scripts/njl_gap_equation_route1.py}.
+
+This result is deliberately conditional.  It closes the scalar condensate in
+the standard mean-field NJL model with the stated regulator, field content,
+and projection convention.  It does not remove the known Fierz ambiguity of
+mean-field truncations and does not exclude beyond-mean-field strong coupling,
+additional flavor/color exchange structure, or non-minimal torsion couplings.
+
+\begin{comment}
 \subsection{Parity-odd four-fermion Holst partner of R1: closed by the same
 Planck suppression and vanishing mean field}
 \label{sec:r1_parityodd_partner}
@@ -3463,7 +3621,25 @@ perturbation orders is in Sec.~\ref{sec:transp_holst}.
 %% ============================================================
 %%  10. THE PERTURBATION-TRANSPARENCY RESULT
 %% ============================================================
-\section{The Perturbation-Transparency Result}\label{sec:transparency}
+\end{comment}
+
+\section{Relation to Earlier Running Calculations}\label{sec:running_context}
+
+Two primary-source results motivate, but do not complete, possible extensions
+of the minimal calculation.  Shapiro and Teixeira studied one-loop
+renormalization of Einstein--Cartan gravity with the Holst term and external
+currents; their coupled charge system has no finite-Immirzi fixed point and was
+not solved into a unique infrared normalization~\cite{ShapiroTeixeira2014}.
+Benedetti and Speziale derived an Immirzi beta function in a specified
+fermionic truncation, with explicit scheme and perturbative
+limitations~\cite{BenedettiSpeziale2011run,Benedetti2011}.  Neither
+calculation derives a Lorentzian cosmological stress tensor or an observable
+late-time amplitude from the running alone.  Consequently this paper does not
+identify either result with dark energy, birefringence, or a closed
+cosmological channel.  Such a claim would require an explicit matching
+calculation that is not presently available.
+
+\section{Classical Scalar-Sector Transparency}\label{sec:transparency}
 
 \subsection{Statement}
 
@@ -3623,6 +3799,57 @@ $\gamma_{\rm BI}$ only under a derived $\gamma_{\rm BI}$-dependent photon
 or tensor-parity coupling).
 \end{itemize}
 
+\section{Discussion and Limitations}\label{sec:discussion}
+
+The two results have different logical status.  Algebraic torsion elimination
+is an action-level calculation.  The finite-density estimate then follows
+from dimensional scaling of that derived contact operator, whereas the NJL
+statement additionally assumes a specific mean-field reduction and regulator.
+The transparency result is exact within its classical domain because both
+load-bearing steps---zero scalar spin current and the algebraic Bianchi
+identity---hold pointwise.  Its novelty is not a new curvature identity; its
+utility is to make the observational consequence and claim boundary explicit
+for the constant-Immirzi, canonical-scalar branch.
+
+Several stronger conclusions are not supported.  This paper does not
+enumerate all diffeomorphism-invariant operators, establish vacuum stability
+beyond the stated NJL truncation, or constrain non-minimal fermion couplings.
+It does not analyze propagating torsion, a dynamical Immirzi field, quantum
+loops or anomalies in the scalar sector, or boundary/topological sectors with
+nontrivial global data.  Most importantly, it does not derive a late-time
+vacuum energy, cosmic birefringence, or a bounce observable from ECH.  These
+are residual research problems, not closures hidden by terminology.
+
+\section{Conclusions}\label{sec:conclusions}
+
+Minimal ECH gravity supplies a definite, Planck-suppressed axial contact
+interaction after algebraic torsion is integrated out.  That interaction is
+irrelevant at late-time fermion densities, and its scalar projection does not
+condense in the declared standard mean-field NJL check.  Separately, canonical
+scalar matter sources no torsion, and the constant-Immirzi Holst term vanishes
+on the resulting torsion-free branch by the first Bianchi identity, leaving
+classical scalar and tensor perturbation equations unchanged.
+
+These are the complete claims of this paper.  They do not constitute an
+operator-complete no-go or an ECH explanation of dark energy.  The unresolved
+step in proposed running-based extensions is the derivation of a matched
+Lorentzian cosmological stress tensor and observable from the underlying
+one-loop/RG calculation.  Until that step exists, the honest conclusion is a
+specific contact-channel bound and a narrow classical transparency identity.
+
+\subsection*{Data and Code Availability}
+
+The algebraic checks used here are committed at
+\artifact{arxiv/scripts/fierz_lemma_check.py} and
+\artifact{arxiv/scripts/njl_gap_equation_route1.py}.  The repository and
+version history are available at
+\url{https://github.com/Hubify-Projects/bigbounce}.  Paper~I(b) is a separate
+submission with its own computational artifacts; none of them is required to
+reproduce the action-level results in this paper.
+
+\appendix
+
+\begin{comment}
 \subsection{Discrimination Among Bouncing Cosmologies}\label{sec:discrimination}
 
 \begin{table*}[tb]
@@ -4308,6 +4535,83 @@ factors in the coupling coefficient) remains left to a
 separate companion treatment.
 
 %% --- B2: Fierz-by-Fierz projection lemma ---
+\end{comment}
+
+\section{Fierz Rearrangement of the Minimal Axial Contact Operator}
+\label{app:fierz}
+
+On the $16$-dimensional Clifford basis, grouped into the five Lorentz classes
+$(S,V,T,A,P)=(\mathbf 1,\gamma^\mu,\sigma^{\mu\nu},
+\gamma^\mu\gamma^5,\gamma^5)$, the Fierz rearrangement used in this paper is
+the standard linear map~\cite{ItzyksonZuber,NievesPal2004}
+\begin{equation}\label{eq:fierzmatrix}
+F=\frac14\!\begin{pmatrix}
+1&1&1&1&1\\ 4&-2&0&2&-4\\ 6&0&-2&0&6\\
+4&2&0&-2&-4\\ 1&-1&1&-1&1
+\end{pmatrix},\qquad F^2=\mathbb 1.
+\end{equation}
+For the minimal axial--axial contact operator,
+\begin{equation}\label{eq:AAdecomp}
+(J^5\!\cdot J^5)\xrightarrow{\rm Fierz}
+\tfrac14 SS+\tfrac12 VV-\tfrac12 AA-\tfrac14 PP.
+\end{equation}
+The coefficients are dimensionless rationals, so rearrangement preserves the
+common $\kappa=M_{\rm Pl}^{-2}$ prefactor.  The matrix, involution, and channel
+coefficients are checked directly by
+\artifact{arxiv/scripts/fierz_lemma_check.py}.
+
+Equation~\eqref{eq:AAdecomp} is a Dirac-algebra identity, not an assertion
+that one mean-field factorization is basis-independent.  The gap-equation
+test below chooses the displayed direct-channel convention and reports that
+choice explicitly.  Nor does this identity enumerate derivative operators,
+curvature--current operators, independent flavor/color contractions,
+non-minimal torsion irreducible components, or the gravitational EFT.
+
+\section{Regulated Standard Mean-Field NJL Check}\label{app:njl_gap}
+
+For the maximal Einstein--Cartan contact coefficient in
+Eq.~\eqref{eq:NJL_torsion}, the scalar coefficient selected by
+Eq.~\eqref{eq:AAdecomp} is
+\begin{equation}\label{eq:gscalar}
+G_{\rm scalar}=\left(-\frac{3}{16}\right)\left(+\frac14\right)\kappa
+=-\frac{3}{64}\kappa.
+\end{equation}
+Consider the standard hard-Euclidean-four-momentum-cutoff NJL model with
+$N_f$ flavors, $N_c$ colors, and scalar contact term
+$G_s(\bar\psi\psi)^2$.  In the chiral limit the mean-field gap equation is
+\begin{align}
+M={}&2G_sN_fN_c\frac{M}{2\pi^2}
+\left[\Lambda^2-M^2\ln\!\left(1+\frac{\Lambda^2}{M^2}\right)\right],
+\end{align}
+which gives the bifurcation threshold
+\begin{equation}\label{eq:gcrit}
+G_{\rm crit}=\frac{\pi^2}{N_fN_c\Lambda^2}
+\end{equation}
+in this normalization~\cite{Klevansky1992,HatsudaKunihiro1994,Buballa2005}.
+The scalar coefficient in Eq.~\eqref{eq:gscalar} is negative and therefore
+repulsive in this convention.  Discarding that sign as a conservative
+magnitude test gives
+\begin{equation}\label{eq:ratio}
+\frac{|G_{\rm scalar}|}{G_{\rm crit}}
+=\frac{3N_fN_c}{64\pi^2}\,\frac{\Lambda^2}{M_{\rm Pl}^2}.
+\end{equation}
+The committed scan includes $\Lambda=M_{\rm Pl}$ and a formal above-Planck
+cutoff-sensitivity point $\Lambda=M_{\rm Pl}/\sqrt{\gamma}$, together with the
+declared flavor/color multiplicities.  The above-Planck point is a stress test,
+not a claim that the contact EFT remains controlled there.  Its largest
+scalar-channel value is $0.156$.
+The attractive axial projection has twice this magnitude and reaches $0.31$,
+still below unity; the pseudoscalar projection equals the scalar magnitude.
+
+The result is reproducible with
+\artifact{arxiv/scripts/njl_gap_equation_route1.py}.  Its interpretation is
+strictly standard mean field with this regulator and channel convention.  A
+different Fierz-complete truncation, exchange treatment, multi-species model,
+or nonperturbative completion can change the mean-field organization, so the
+calculation is not presented as a regulator- or basis-independent exclusion
+of every condensate mechanism.
+
+\begin{comment}
 \section{Fierz-by-Fierz Projection Lemma for the Minimal-ECH
 Four-Fermion Basis}\label{app:fierz}
 The torsion-elimination step (Sec.~\ref{sec:parityodd},
@@ -4496,6 +4800,8 @@ $\beta > 0$.
 %% ============================================================
 %%  BIBLIOGRAPHY
 %% ============================================================
+\end{comment}
+
 \bibliography{references}
 
 \end{document}

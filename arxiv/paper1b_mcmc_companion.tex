@@ -162,6 +162,7 @@
 \usepackage{bbold}
 \usepackage[utf8]{inputenc}
 \usepackage{float}
+\usepackage{comment}
 \usepackage{slashed}
 
 \hypersetup{
@@ -260,8 +261,15 @@
 %   FALSIFIED list (14 items) not acted on.)
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1B.0.104}
-\newcommand{\paperTimestamp}{July 8, 2026}
+\newcommand{\paperVersion}{v1B.0.105}
+\newcommand{\paperTimestamp}{July 14, 2026}
+% v1B.0.104->105 (2026-07-14): M44 SPLIT-REVIVAL / STANDALONE SCOPE.
+%   Preserved P1B as a separate reproducible computational submission. Retitled
+%   and replaced the executive abstract so stock-CAMB, synthetic NaMaster, and
+%   spectator-ALP results are described as generic proxy/pipeline/consistency
+%   studies, never as ECH verification or evidence. Removed the stale assertion
+%   that P1A closes the complete minimal-ECH dark-energy parameter space. P1A's
+%   retained action-level results are logically independent of every P1B result.
 % v1B.0.101->102 (2026-07-07): FINAL-POLISH D-ROUND (presentation + disclosure ONLY;
 %   NO scientific number/claim/derivation changed; verified 0 undef-refs, 0 large
 %   overfull hbox, 22pp). AI-METHODS disclosure upgraded to explicit agentic-pipeline-
@@ -1276,9 +1284,9 @@
 
 %\preprint{arXiv:XXXX.XXXXX}
 
-\title{Technical Reproducibility and Consistency-Check Companion to the ECH Spin-Torsion Program:\\
-$\Lambda$CDM$+\Delta N_{\rm eff}$ MCMC Proxy, NaMaster Pipeline Recovery,\\
-and a Birefringence Consistency Check with a Spectator-ALP Model}
+\title{Reproducible Cosmological Proxy and Pipeline Checks:\\
+Stock-CAMB $\Lambda$CDM$+\Delta N_{\rm eff}$ MCMC, Synthetic NaMaster Recovery,\\
+and a Generic Spectator-ALP Birefringence Fit}
 
 \author{Houston Golden}
 \email{houston@hubify.com}
@@ -1286,6 +1294,43 @@ and a Birefringence Consistency Check with a Spectator-ALP Model}
 
 \date{\paperTimestamp}
 
+\begin{abstract}
+We present three self-contained computational studies and state their limited
+interpretation at the outset.  None implements a torsion-modified Boltzmann
+solver, none measures torsion, and none is evidence for
+Einstein--Cartan--Holst (ECH) gravity or for a bounce cosmology.
+
+First, stock CAMB and Cobaya are used to sample a generic
+$\Lambda$CDM$+\Delta N_{\rm eff}$ extension.  Across $309{,}189$ frozen samples
+in two converged data combinations, $\Delta N_{\rm eff}$ is consistent with
+zero ($-0.020\pm0.169$ and $+0.058\pm0.179$), and the extension does not remove
+the residual Hubble tension.  This is an extra-radiation proxy, not an ECH
+theory run.  For scale context only, we also derive the parametric
+minimal-contact estimate $\rho_{\rm tor}/\rho_{\rm rad}\sim(T/M_{\rm Pl})^2$;
+at BBN it is of order $10^{-43}$--$10^{-44}$ up to the stated thermal and
+convention factors, far below the proxy sensitivity.
+
+Second, a 500-realization synthetic-CMB NaMaster test on an ACT-like mask
+recovers injected global polarization rotations with a pipeline bias of
+$-0.032^\circ$ at $\beta_{\rm inj}=0.27^\circ$ and a worst tested bias of
+$-0.040^\circ$ at $0.342^\circ$.  Because the skies omit Galactic foregrounds,
+the test does not break the cosmic-rotation/instrument-calibration degeneracy
+and is not a real-sky detection or systematic floor.
+
+Third, a generic spectator-axion-like-particle (ALP) model is fitted to a
+published birefringence summary likelihood.  The fit shows accommodation, not
+prediction: at fixed $C_{a\gamma}=8$ the posterior favors $m\gg H_0$, and only
+a conditional subset remains spectator-safe.  A prior-predictive calculation
+finds $11.6\%$ of fixed-coupling draws and $6.1\%$ of broad-coupling draws
+within the published $1\sigma$ band, quantifying the prior-volume cost.  The
+same model exists in standard GR and has no ECH-specific content.
+
+Frozen chains, configurations, synthetic-recovery outputs, and the
+prior-predictive script are publicly archived.  The companion's contribution
+is reproducibility and quantitative scope control for these three studies.
+\end{abstract}
+
+\begin{comment}
 \begin{abstract}
 We report the technical reproducibility and consistency-check material for the
 Einstein-Cartan-Holst (ECH) spin-torsion cosmology no-go program of
@@ -1396,6 +1441,7 @@ model-preference inference (Bayes factor, $\Delta$AIC/BIC, nested-sampling
 evidence) is deferred to follow-up nested-sampling work.
 A reproducibility manifest is included in Appendix~\ref{app:reproducibility}.
 \end{abstract}
+\end{comment}
 
 \pacs{98.80.-k, 95.36.+x, 04.50.Kd}
 \keywords{MCMC, Cobaya, cobaya, NaMaster, cosmic birefringence, axion-like particle, spin-torsion cosmology, reproducibility}
@@ -1437,31 +1483,25 @@ $\alpha$ & Instrumental polarization-miscalibration angle (deg), degenerate with
 %% ============================================================
 \section{Introduction}\label{sec:intro}
 
-This companion paper provides the technical reproducibility and
-consistency-check layer for the ECH structural-closure no-go result reported in
-Paper~I(a)~\cite{Golden2026P1a}. We use ``companion'' in the strict sense: the
-paper documents three limited numerical cross-checks and their reproducibility
-artifacts, and it does \emph{not} implement, test, or verify any torsion-modified
-component of the ECH theory itself. Its standing relative to Paper~I(a) is that
-of a null-consistency and reproducibility note, not of independent confirmation.
-That said, the present paper does contribute one genuinely new first-principles
-result of its own --- the derivation (Sec.~\ref{sec:torsion_neff}) that the
-minimal ECH spin-torsion sector's radiation-era $\Delta\Neff$ is
-Planck-suppressed to $\sim\!10^{-44}$ at BBN, some forty orders of magnitude
-below any foreseeable sensitivity --- alongside a validated $E\!\to\!B$ recovery
-pipeline, a quantified spectator-ALP accommodation cost, and a complete public
-reproducibility manifest, all self-contained within this manuscript.
-Paper~I(a) establishes channel-level closure of four independent minimal-ECH
-dark-energy routes (kinetic-coupling channel, potential-energy channel,
-perturbation-transparency channel, and spin-torsion propagator channel) and
-proves a perturbation-transparency theorem for the Holst sector; the
-combined structural analysis closes the minimal-ECH parameter space as a
-dark-energy scenario and motivates the numerical cross-checks of this companion.
-The present paper documents the three numerical analyses
-that support and contextualize those results.
-This is a coordinated concurrent submission: Paper~I(a) supplies the physical
-motivation and the structural no-go result, while the three numerical analyses
-below --- and their data products, chains, and pipeline code --- are
+This paper reports three limited numerical studies and their reproducibility
+artifacts: a stock-CAMB extra-radiation proxy, a synthetic NaMaster recovery
+test, and a generic spectator-ALP fit.  It does \emph{not} implement, test, or
+verify a torsion-modified cosmology.  Its relation to Paper~I(a) is bibliographic
+and programmatic, not evidentiary.  The present paper also records the
+dimensional scale estimate $\rho_{\rm tor}/\rho_{\rm rad}\sim
+(T/M_{\rm Pl})^2$ for the minimal algebraic-torsion contact operator; because
+the thermal prefactor is only parametric, we use it as scale context rather
+than as a precision prediction.
+Paper~I(a) derives the minimal algebraic-torsion contact interaction, evaluates
+that specific channel in a standard mean-field NJL model, and records the
+classical transparency of the constant-Immirzi Holst term on the canonical
+scalar torsion-free branch.  It does not claim a complete gravitational-EFT
+no-go or a derived ECH dark-energy observable.  The present paper is logically
+separate: its three numerical analyses are generic proxy, pipeline, and
+consistency studies.  They neither support nor test the action-level claims of
+Paper~I(a), and Paper~I(a) does not supply an ECH interpretation for them.
+The two papers are coordinated concurrent submissions, but the three numerical
+analyses below --- and their data products, chains, and pipeline code --- are
 self-contained and independently reproducible from this paper's own repository,
 so no quantitative claim here depends on unpublished companion numerics.
 Because the two papers are posted together, the companion Paper~I(a) arXiv
@@ -1470,6 +1510,7 @@ wherever Paper~I(a) is cited at coordinated submission (and, reciprocally, this
 paper's identifier is inserted into Paper~I(a)); until then the marker stands as
 a deliberate placeholder.
 
+\begin{comment}
 \textit{Imported theory results (summarized for standalone
 readability).}---So that the present companion can be read without Paper~I(a)
 in hand, we restate the load-bearing structural results that Paper~I(a)
@@ -1500,6 +1541,7 @@ test $\Delta\Neff$ and birefringence consistency. The companion's
 own contribution---the MCMC posteriors, pipeline-validation figures, and
 spectator-ALP consistency check reported below---is self-contained and
 independently reproducible from this paper's repository.
+\end{comment}
 
 \textit{Scope of this paper.}---Three numerical cross-check analyses are reported
 here, each a compatibility/consistency check rather than a verification of the
@@ -1536,17 +1578,10 @@ parameters; no ECH-specific derivation connects the Holst action to the
 photon-torsion coupling required.
 \end{enumerate}
 
-\textit{What is NOT in this paper.}---The \emph{full derivations} of the 13
-mechanism-class structural barriers, the
-perturbation-transparency theorem, the 14-barrier table, and the surviving
-matter-bounce-specific test predictions ($\fnl=-35/8$, valid strictly for the minimal scalar-only $w=0$ matter-dominated contraction class, not the broader bouncing-cosmology landscape which encompasses ekpyrotic, Cuscuton, string-gas, and quintom variants with different $\fnl$ signatures, and ALP birefringence)
-are in Paper~I(a)~\cite{Golden2026P1a} (those results are summarized for
-standalone context above). The SPHEREx multi-tracer Fisher
-forecast (in preparation, \cite{Golden2026P2}; results to be detailed
-separately) is the subject of Paper~II. The multi-survey anomaly catalog
-(in preparation, \cite{Golden2026P3}) is the subject of Paper~III.
-The galaxy chirality catalog (in preparation, \cite{Golden2026P4}) is
-the subject of Paper~IV.
+\textit{What is not in this paper.}---We do not derive an ECH dark-energy,
+birefringence, or bounce observable, and we do not use the numerical results
+below to support an ECH claim.  Paper~I(a)~\cite{Golden2026P1a} contains the
+separate minimal-action contact-channel and classical-transparency analysis.
 
 \textit{Cross-paper citations.}---When this companion reports MCMC values
 ($H_0$, $\sigma_8$, etc.) that are referenced in the main paper, those
@@ -1558,8 +1593,8 @@ values come from Secs.~\ref{sec:verification} and~\ref{sec:cosmo_fits} here.
 %% ============================================================
 \section{Cosmological Tensions: $H_0$ and $\sigma_8$}\label{sec:tensions}
 
-The bounce scenario motivates extending $\Lambda$CDM by $\Delta\Neff$ (particle
-production at the bounce) as a phenomenological proxy parameter; $(\omega/H)_0$
+We extend $\Lambda$CDM by $\Delta\Neff$ as a generic phenomenological
+extra-radiation parameter; $(\omega/H)_0$
 (angular momentum transfer) and $\Omega_k$ are fixed to zero in the actual
 sampled MCMC configuration of this paper (per the explicit
 parameter-scope clarification in Sec.~\ref{sec:fullcomp}; the
@@ -1578,8 +1613,8 @@ would emerge if SH0ES and Planck were equally weighted. We do not
 therefore claim that the SH0ES tension is resolved or even moved by
 adding $\Delta\Neff$ in stock CAMB; in this configuration the
 $\Delta\Neff$ posterior is consistent with zero and the
-$H_0$ posterior is dominated by Planck. The spin-torsion framework
-alone does not resolve cosmological tensions at the present data
+$H_0$ posterior is dominated by Planck. This generic extra-radiation
+extension does not resolve cosmological tensions at the present data
 precision.
 
 
@@ -1594,44 +1629,42 @@ CAMB run of $\Lambda$CDM extended by $\Delta\Neff$ as a free parameter.
 \emph{No custom CAMB modifications are used; no torsion-modified Boltzmann
 equations are solved.} The MCMC therefore tests whether the data prefer an
 extra radiation-like degree of freedom, treated as a generic phenomenological
-proxy for the spin-torsion sector's possible effective radiation contribution.
-It does \emph{not} verify the spin-torsion theory module itself; that would
-require a bespoke modified Boltzmann code. What the MCMC \emph{does} anchor,
-via the bespoke ECH-sector calculation in Sec.~\ref{sec:torsion_neff} below,
-is a conservative observational envelope on the actual radiation contribution
-of the minimal Einstein--Cartan--Holst spin-torsion sector, which that
-calculation shows is Planck-suppressed and therefore far smaller than the
-proxy prior permits.
+proxy with no theory-specific identification.  It does \emph{not} verify the
+spin-torsion theory module itself; that would require a derived stress tensor
+and a bespoke modified Boltzmann implementation.  The dimensional estimate in
+Sec.~\ref{sec:torsion_neff} is shown only to compare scales and is not used to
+reinterpret the stock-CAMB posterior as an ECH constraint.
 
-\subsection{Bespoke ECH-sector $\Delta\Neff$ from the torsion-induced
-four-fermion interaction}\label{sec:torsion_neff}
+\subsection{Parametric radiation-era scale of the minimal contact operator}
+\label{sec:torsion_neff}
 
-Rather than leave $\Delta\Neff$ as a purely generic radiation parameter, we
-compute the \emph{actual} contribution of the minimal Einstein--Cartan--Holst
-(ECH) spin-torsion sector to the early-universe effective number of
-relativistic species. In minimal ECH gravity the torsion tensor is
+For scale context, we estimate the parametric contribution of the minimal
+Einstein--Cartan--Holst (ECH) contact operator to the early-universe energy
+budget. In minimal ECH gravity the torsion tensor is
 \emph{algebraic} (non-propagating: it carries no kinetic term) and is sourced
 purely by the fermion axial current $A^\mu=\bar\psi\gamma^5\gamma^\mu\psi$
 through the Cartan constraint~\cite{Hehl1976}. Integrating torsion out of the
 action leaves an effective four-fermion contact interaction of
 Nambu--Jona-Lasinio type~\cite{Poplawski2011,Freidel2005},
-\begin{equation}
-\mathcal{L}_{4f}=-\frac{3\kappa^2}{16}\,\frac{\gamma^2}{\gamma^2+1}\,
-\big(\bar\psi\gamma^5\gamma^\mu\psi\big)^2 ,
-\qquad \kappa^2=8\pi G_N=\MPl^{-2} ,
+\begin{align}
+\mathcal{L}_{4f}&=-\frac{3\kappa^2}{16}\,
+\frac{\gamma^2}{\gamma^2+1}\,
+\big(\bar\psi\gamma^5\gamma^\mu\psi\big)^2 ,\nonumber\\
+\kappa^2&=8\pi G_N=\MPl^{-2} ,
 \label{eq:fourfermion}
-\end{equation}
+\end{align}
 where $\gamma$ is the Barbero--Immirzi parameter of the Holst
 term~\cite{Freidel2005,Mercuri2006}; in the pure Einstein--Cartan--Sciama--Kibble
 limit $\gamma\to\infty$ the bracket $\to 1$ and
 Eq.~(\ref{eq:fourfermion}) reduces to the canonical
 $-\tfrac{3}{2}\pi G_N (\bar\psi\gamma^5\gamma^\mu\psi)^2$~\cite{Poplawski2011}.
-The coefficient is fixed by the geometry, not fitted, so this is genuine
-ECH-sector physics rather than a generic parametrization.
+The coefficient follows from the declared minimal action; the thermal
+expectation value below is nevertheless an order-of-magnitude estimate rather
+than a precision finite-temperature calculation.
 
 The crucial feature of Eq.~(\ref{eq:fourfermion}) is that the coupling is
 $\propto\kappa^2=8\pi G_N\sim M_{\rm Pl}^{-2}$: the interaction is
-Planck-suppressed. In a thermal fermion gas the coherent spin-torsion energy
+Planck-suppressed. In a thermal fermion gas the parametric contact energy
 density is $\rho_{\rm tor}\sim\alpha\,n_f^2$ with $\alpha=\kappa^2(\hbar
 c)^2/32$ and number density $n_f\propto T^3$ for relativistic
 species~\cite{UngerPoplawski2019}. Explicitly, the energy density
@@ -1674,9 +1707,9 @@ at BBN and recombination respectively, evaluated with the reduced Planck
 mass $M_{\rm Pl}=(8\pi G_N)^{-1/2}\simeq 2.44\times10^{18}\ \mathrm{GeV}$
 used throughout (and in Eq.~\ref{eq:torsion_ratio}), so the boxed numbers are
 reproducible directly from $(T/M_{\rm Pl})^2$.
-This is the bespoke ECH-sector result: \emph{the minimal spin-torsion sector
-predicts a strictly negligible $\Delta\Neff$ in the radiation era}, some forty
-orders of magnitude below any foreseeable CMB or BBN sensitivity
+Within the parametric thermal treatment just stated, the minimal contact
+operator gives a negligible radiation-era scale, some forty orders of
+magnitude below foreseeable CMB or BBN sensitivity
 [e.g.\ CMB-S4 targets $\sigma(\Neff)\!\sim\!0.03$~\cite{CMBS4_ScienceBook}].
 No published analysis finds a measurable torsion contribution to $\Neff$ in the
 radiation era; the nearest dedicated BBN study
@@ -1686,19 +1719,14 @@ effect~\cite{Bruggen1999}. We therefore do \emph{not} claim a specific
 non-zero torsion $\Delta\Neff$; the honest, leading-parametric-order first-principles estimate yields the
 upper bound of Eq.~(\ref{eq:neff_bound}).
 
-This reframes the MCMC that follows. The stock-CAMB $\Lambda$CDM$+\Delta\Neff$
-run is \emph{not} a proxy standing in for an unknown ECH prediction; it is a
-\emph{conservative observational envelope} on the bespoke ECH contribution
-derived above. The data-driven $95\%$ bound $\Delta\Neff\!\lesssim\!0.31$--$0.40$
-(Sec.~\ref{sec:cosmo_fits}) exceeds the theoretical ECH value
-Eq.~(\ref{eq:neff_bound}) by more than forty orders of magnitude, so the ECH
-spin-torsion sector is trivially consistent with the data through this channel,
-and the null-consistency of the run is exactly what the ECH physics predicts.
-The one place the torsion four-fermion term is \emph{not} negligible---within a
-Hubble time of the bounce, where $T\!\to\!M_{\rm Pl}$ and the ratio in
-Eq.~(\ref{eq:torsion_ratio}) is $\mathcal{O}(1)$---is a genuinely
-non-perturbative regime outside the linear-perturbation reach of any Boltzmann
-code (stock or bespoke) and outside the scope of this companion.
+This estimate does not reframe the MCMC as a theory test. The stock-CAMB
+$\Lambda$CDM$+\Delta\Neff$ run remains a generic extra-radiation proxy. Its
+data-driven $95\%$ bound $\Delta\Neff\!\lesssim\!0.31$--$0.40$
+(Sec.~\ref{sec:cosmo_fits}) is simply many orders above the contact-operator
+scale estimate; agreement between two null-sized quantities is not evidence
+for the underlying theory. Near Planckian temperatures the contact-EFT and
+thermal approximations would themselves require a UV completion, a regime
+outside both a stock Boltzmann code and this paper.
 
 The proxy run (Cobaya~v3.6.1 with Planck NPIPE (PR4) CamSpec high-$\ell$
 TTTEEE + Planck 2018 low-$\ell$ TT/EE + Planck 2018 lensing likelihoods,
@@ -1795,7 +1823,7 @@ Table~\ref{tab:verification} (which contains only the two frozen
 combinations), and is \emph{not} aggregated into the
 $309{,}189$-sample headline anywhere in this paper.}
 
-\paragraph{Scope of the $\Delta\Neff$ proxy: bounce-class discrimination, not a direct test of the spin-torsion sector.}
+\paragraph{Scope of the $\Delta\Neff$ proxy: generic extra radiation, not a theory discriminator.}
 We emphasize that the stock-CAMB $\Lambda$CDM$+\Delta\Neff$ proxy run does
 \emph{not} test the ECH spin-torsion sector directly. The Hehl-Datta-Mercuri
 parity-even four-fermion contact interaction that survives torsion
@@ -1812,20 +1840,11 @@ in this paper sit at energies $E\!\ll\!\Lambda_{\rm strong}$, where the EFT
 treatment is controlled.}:
 its leading Boltzmann effect is a scattering-amplitude shift, not a
 relativistic species, and it does \emph{not} produce a $\Delta\Neff$ at
-recombination. The \emph{minimal} matter-bounce class~\cite{Cai:2009fn}
-(here ``minimal'' = the single-scalar $w\!=\!0$ matter-dominated contraction
-phase, distinguished from the broader matter-bounce family including
-ekpyrotic, cyclic, Cuscuton, string-gas, and quintom-bounce variants)
-predicts $\Delta\Neff\!\approx\!0$
-by construction (no light bounce-internal species are thermalized at
-recombination); the proxy run \emph{confirming} $\Delta\Neff = -0.020 \pm 0.169$
-(full-tension) and $+0.058\pm 0.179$ (Planck+BAO+SN) is therefore consistent
-with the minimal matter-bounce prediction, but the absence of a $\Delta\Neff$
-detection is not a discriminator between minimal-ECH and standard
-$\Lambda$CDM at the present data precision. We frame the proxy as a
-bounce-class \emph{compatibility check} (minimal matter-bounce-class scenarios
-without prolonged post-bounce inflation predict $\Delta\Neff\!\approx\!0$),
-not as a posterior-preference test against a competing model.
+recombination. The proxy run finds $\Delta\Neff = -0.020 \pm 0.169$
+(full-tension) and $+0.058\pm 0.179$ (Planck+BAO+SN), both consistent with zero.
+This constrains only the stock-CAMB extra-radiation parameter. It neither
+confirms nor discriminates an ECH or bounce model, because no such model is
+implemented in the likelihood calculation.
 
 \begin{table*}[t]
 \caption{\label{tab:verification} $\Lambda$CDM$+\Delta\Neff$ proxy MCMC results
@@ -1867,7 +1886,7 @@ DES-Y3 Gaussian prior is itself an active likelihood in the
 full-tension chain, so the full-tension $S_8$ is partially anchored
 to DES-Y3 and the number is not a measurement-vs-measurement tension
 but a within-stack posterior shift; overlay artifact
-\texttt{reproducibility/cosmology/} \texttt{c13\_s8\_desy3\_overlay.json}.}
+\artifact{reproducibility/cosmology/c13_s8_desy3_overlay.json}.}
 \begin{ruledtabular}
 \begin{tabular}{lcc}
 Parameter & Full-tension & Planck+BAO+SN \\
@@ -1934,11 +1953,12 @@ nuisance parameter sampled jointly by both \texttt{sn.pantheonplus} and
 zero and $H_0$ consistent with Planck $\Lambda$CDM at $0.3\sigma$, confirming
 that the $\Delta\Neff$ extension alone does not resolve the Hubble tension.
 Current data neither require nor exclude a small positive
-phenomenological $\Delta\Neff$ proxy for the bounce-class effective
-radiation contribution; CMB-S4 ($\sigma(\Neff)\sim 0.03$~\cite{CMBS4_ScienceBook})
+phenomenological $\Delta\Neff$ extra-radiation contribution; CMB-S4
+($\sigma(\Neff)\sim 0.03$~\cite{CMBS4_ScienceBook})
 will sharpen this constraint substantially relative to the current
 Planck+BAO+SN level.
 
+\begin{comment}
 \textit{Independent cross-validation.}---Liu~\etal~\cite{ECTorsionDESI2025}
 constrained an EC torsion model using DESI~DR2~\cite{DESI2025DR2} + Pantheon+~\cite{Brout2022PantheonPlus} +
 DES-SN5YR~\cite{DES2024SN5YR} + Planck~2018, finding torsion preferred by AIC ($\Delta\text{AIC}=-5.7$ to $-6.6$)
@@ -1955,6 +1975,7 @@ deliberately deferred to the nested-sampling follow-up
 (Sec.~\ref{sec:cosmo_fits}, \emph{Model-comparison statistics} paragraph),
 so no model-preference statement is made here that could agree or conflict
 with theirs.
+\end{comment}
 
 \begin{figure}
 \centering
@@ -2169,7 +2190,7 @@ magnitude identical to the $+0.27^\circ$ case.
 \emph{Reproducibility.}---The canonical driver script, deterministic seeds
 (\texttt{seed\_base}=42), and output summary are archived at
 \path{reproducibility/p1_namaster_500mc/} (mirroring the executed pod run
-\texttt{pipelines/h200\_results/\allowbreak pod1\_namaster\_umap\_2026-04-29/}).
+\href{https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/h200_results/pod1_namaster_umap_2026-04-29}{\nolinkurl{pipelines/h200_results/pod1_namaster_umap_2026-04-29/}}).
 
 \textit{Production 500-realization run (April 2026).}---We
 performed the NaMaster pseudo-$C_\ell$ Monte Carlo described above with
@@ -2949,11 +2970,10 @@ model-discrimination separation from the current WMAP+Planck central value
 forecast, \emph{not} a forecast of model discrimination between the spectator-ALP
 value and the published central value.
 
-\textit{Caveats.}---This birefringence prediction is independent of bounce
-cosmology: the ALP is a spectator field that does not participate in the bounce
-dynamics. The ECH framework provides heuristic motivation ($f_a\sim\MPl$ from
-the Holst sector pseudoscalar structure) but no derived photon-torsion coupling
-connects the Holst action to a specific ALP potential. The model can
+\textit{Caveats.}---This birefringence fit is independent of bounce
+cosmology: the ALP is a spectator field that does not participate in bounce
+dynamics. The benchmark $f_a\sim\MPl$ is a prior choice; no derived
+photon-torsion coupling connects the Holst action to this ALP potential. The model can
 \textit{accommodate} the observed $\beta$ within the scan-prior envelope
 but near its upper-displacement/coupling edge; the posterior-supported
 fixed-$C_{a\gamma}\!=\!8$ fit shifts to $m\!\gg\!H_0$ (median ${\simeq}\,36\,H_0$).
@@ -2969,9 +2989,9 @@ does not uniquely predict the signal.
 %% ============================================================
 \section{Conclusions}\label{sec:conclusions}
 
-This companion paper documents three technical reproducibility and
-consistency-check analyses for the ECH spin-torsion structural closure
-program~\cite{Golden2026P1a}. To restate the scope plainly before the
+This paper documents three standalone technical reproducibility and
+consistency-check analyses, with Paper~I(a) cited only for the separate
+minimal-action theory context~\cite{Golden2026P1a}. To restate the scope plainly before the
 per-analysis summaries: none of the three \emph{verifies} the ECH spin-torsion
 sector itself. The $\Delta\Neff$ run is a stock-CAMB generic-radiation null
 proxy (no torsion-modified Boltzmann equations); the NaMaster exercise is a
@@ -3003,8 +3023,8 @@ agreement in $\Delta\Neff$ provides an empirical bound on pairing-induced
 bias at the quoted precision (see Sec.~\ref{sec:cosmo_fits},
 \emph{Release-pairing note}).
 Current data
-neither require nor exclude a phenomenological $\Delta\Neff$ proxy
-contribution for the bounce class; CMB-S4
+neither require nor exclude a phenomenological $\Delta\Neff$
+extra-radiation contribution; CMB-S4
 ($\sigma(\Neff)\sim 0.03$~\cite{CMBS4_ScienceBook}) will sharpen this
 constraint substantially.
 Bayes factors and information criteria ($\Delta$AIC, $\Delta$BIC, $\ln B$) are deferred to a dedicated nested-sampling run (Sec.~\ref{sec:cosmo_fits}, \emph{Model-comparison statistics} paragraph); we report only the parameter posteriors ($\Delta N_{\rm eff}$, $H_0$, etc.) as load-bearing here and explicitly omit Bayes-factor or information-criterion comparisons in this Metropolis-Hastings-only analysis.
@@ -3033,8 +3053,8 @@ $\Delta\phi/f_a \in [0.064,1.19]$ over the natural box giving required
 $C_{a\gamma}$ from ${\approx}8.6$ up to ${\approx}160$ at the smallest
 displacements, and ${\approx}8$--$10$ in the posterior-preferred
 saturated-displacement regime; see \S\ref{sec:birefringence_check} for the
-explicit numerical derivation). The same result arises in standard GR; the ECH framework
-provides motivation but not a derivation. Under forecast foreground-cleaning
+explicit numerical derivation). The same result arises in standard GR; no ECH
+interpretation is required. Under forecast foreground-cleaning
 and calibration assumptions~\cite{LiteBIRD2023}, a $\beta\simeq 0.27^\circ$
 signal would be detected relative to $\beta=0$ (null-rejection) at ${\sim}9\sigma$
 by LiteBIRD in the early 2030s, while the model-discrimination separation from the
@@ -3150,8 +3170,8 @@ Table~\ref{tab:claims} claim-classification entries
 of this paper; the ALP $c5$ continuous chain backs Table~\ref{tab:alp_restricted_subsets} separately:
 \path{reproducibility/cosmology/frozen/full_tension_20260311_1728/} and
 \path{reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/}
-(each with \texttt{chains/chain\_0[1-6]/} and
-\texttt{diagnostics/}\allowbreak\texttt{parameter\_summary\_CORRECTED.json}). The
+(each with \path{chains/chain_0[1-6]/} and
+\path{diagnostics/parameter_summary_CORRECTED.json}). The
 ALP-MCMC chains are at
 \path{research/branch_R_alp_birefringence/phase2_mcmc/chains/}.
 Fresh $\Lambda$CDM$+\Delta\Neff$ proxy chains for independent
@@ -3169,7 +3189,7 @@ driver script; all published birefringence values are literature citations.
 this work (DOI assignment is pending; identifiers will be inserted at
 submission; no DOI is fabricated here. In the interim, the stable references
 are the frozen-chain git commits and repository SHAs pinned in
-\texttt{CHANGELOG.md} and \texttt{reproducibility/}; these are
+\path{CHANGELOG.md} and \path{reproducibility/}; these are
 version-locked and independently reproducible without a DOI.
 The URLs are also recorded in the repository
 \texttt{CHANGELOG.md} under the entry for \texttt{\paperVersion} and are
@@ -3286,7 +3306,7 @@ $\hat R - 1 = 0.0095$.
 
 \textit{Effective sample sizes (ESS).}---Per-parameter ESS computed from
 the integrated autocorrelation time of the weight-expanded chains
-(Sokal estimator; \texttt{tools/ess\_alp\_chains.py}):
+(Sokal estimator applied directly to the committed chain columns):
 \begin{center}
 \begin{tabular}{lccc}
 \hline
