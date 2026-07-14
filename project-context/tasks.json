@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated_at": "2026-07-14T12:20:00-07:00",
+  "updated_at": "2026-07-14T13:45:00-07:00",
   "project": "bigbounce",
   "objective": "Drive all six canonical papers through exact-artifact, venue-correct, non-Anthropic multi-model review, truth-audited closure, and atomic public synchronization without overstating readiness.",
   "tasks": [
@@ -21,13 +21,15 @@
     {
       "id": "PUB-002",
       "status": "active",
-      "title": "Run fresh exact-PDF venue-correct non-Anthropic review boards",
+      "title": "Run fresh exact-PDF venue-correct subscription/direct-provider review boards",
       "source_prompts": [
         "2026-07-13 19:28 PT publication-readiness mandate"
       ],
       "completion_criteria": [
         "Each review records the exact PDF SHA-256, version, source commit, venue, article type, prompt, and raw report",
-        "OpenAI, Gemini, Grok, and independent Codex results are truth-audited without fabricated or silently substituted legs",
+        "The OpenAI perspective is supplied only by Codex CLI authenticated through the ChatGPT subscription with OpenAI API credentials unset; OpenAI API billing is forbidden",
+        "Direct-provider Grok/xAI and Gemini legs are allowed; every result is truth-audited without fabricated or silently substituted legs",
+        "Re-review occurs only after a reader-visible PDF content-hash change, except one declared independent confirmation of a high-risk closure",
         "Acceptance or minor-only status is claimed only when the exact board supports it"
       ]
     },
@@ -60,6 +62,35 @@
         "Paper mirrors, versions, claims tables, SSOT, Convex/API, site papers, and review timeline agree",
         "Site build and governed browser QA pass",
         "Bisected commits are pushed to main only after the public state is honest and atomic"
+      ]
+    },
+    {
+      "id": "PUB-005",
+      "status": "active",
+      "title": "Retain an immutable complete PDF history",
+      "source_prompts": [
+        "2026-07-14 PDF-retention mandate"
+      ],
+      "completion_criteria": [
+        "Every compiled paper PDF is retained under a paper/version/PST-timestamped immutable name",
+        "An append-only manifest records source commit, PDF SHA-256, page count, build command, and review-round references",
+        "The canonical archive plus two independent mirrors are hash-verified before cleanup",
+        "No cleanup deletes the only copy of a historical PDF"
+      ]
+    },
+    {
+      "id": "PUB-006",
+      "status": "active",
+      "title": "Separate stable readiness gates from raw reviewer distributions",
+      "source_prompts": [
+        "2026-07-14 readiness-regression audit"
+      ],
+      "completion_criteria": [
+        "Scientific, reproducibility, venue-fit, release-integrity, and human/workflow gates are represented separately",
+        "Raw verdicts remain verbatim and are indexed by paper/PDF hash/commit/venue/prompt/provider/model/modality",
+        "Wrong-version, stale, missing, prompt-echo, and failed legs are gaps and never inferred verdicts",
+        "Historical EXT11/EXT17 arithmetic and relabeling inconsistencies are preserved and corrected in the normalized view without rewriting raw evidence",
+        "Two valid independent waves with zero genuinely new reader-visible findings on the same hash trigger the content-hash stop rule"
       ]
     },
     {
@@ -176,7 +207,8 @@
       "evidence": [
         "OpenRouter top-by-task ranks are share-of-spend popularity over real usage, not quality benchmarks",
         "Live CMUX fleet is GPT-5.6 Sol high/medium/low only; no Terra/Luna/Grok/Gemini process evidence",
-        "BigBounce INT pipeline calls api.openai.com, api.x.ai, and generativelanguage.googleapis.com directly with native PDFs",
+        "The audit found that the then-current BigBounce INT pipeline called api.openai.com, api.x.ai, and generativelanguage.googleapis.com directly with native PDFs; the OpenAI leg was separately billed and is historical nonconforming behavior",
+        "Corrected policy routes the OpenAI perspective through Codex CLI/ChatGPT subscription with API credentials unset while retaining allowed direct Grok/xAI and Gemini legs",
         "Recent Grok and Gemini raws preserve distinct token-usage schemas, latency, modality, exact model label, and verbatim response",
         "Stored OpenRouter, xAI, and Gemini credentials passed secret-safe control-plane checks"
       ]
@@ -258,6 +290,9 @@
   "watchpoints": [
     "Never claim 95-99% readiness, acceptance, or minor-only status until every exact-PDF board and residual gate supports it.",
     "Reviewer venue and article type are immutable review metadata; keep venue-fit boards separate and never relabel verdicts after the fact.",
+    "OpenAI perspective uses Codex CLI authenticated through the ChatGPT subscription with OpenAI API credentials unset; never incur OpenAI API billing. Direct-provider Grok/xAI and Gemini calls are allowed.",
+    "Stop repeated review after two valid independent zero-new waves on the same PDF hash; preserve the verdict spread and advance by stable gates rather than chasing a preferred verdict.",
+    "Retain every historical PDF immutably with version, PST timestamp, source commit, hash, build metadata, and review references; never delete the only copy.",
     "Acceleration may remove duplicate work and stale-artifact risk, but may not remove truth audits, reproducibility checks, independent review, or all-page PDF inspection.",
     "Do not call Anthropic or Claude in the current campaign; record unavailable legs honestly.",
     "Do not publish partial readiness state; synchronize public surfaces only after their evidence packet is mutually consistent.",

@@ -12,10 +12,11 @@ and artifact-addressed review reuse without weakening scientific gates.
 
 1. Finish the independent active closures: P1A conventions/Holst inverse and benchmark wording; P1B exact robustness shards and serial-equivalent inner parallelism; P3 r5 APJS proof; P4 portable provenance; P5 AJ-oriented primary-analysis restructuring.
 2. Freeze each compiled manuscript into a content-addressed packet containing paper ID, version, exact source/PDF paths, SHA-256, page count, source commit, target venue/article type, prompt ID, and allowed context.
-3. Run fresh non-Anthropic exact-PDF panels in parallel only after packet validation; preserve raw reports and normalize findings into a claim-by-claim truth ledger.
+3. Run fresh non-Anthropic exact-PDF panels in parallel only after packet validation: Codex CLI through ChatGPT subscription for the OpenAI perspective (OpenAI API credentials unset; never API billing), plus allowed direct-provider Grok/xAI and Gemini legs. Preserve raw reports and normalize findings into a claim-by-claim truth ledger.
 4. Close only confirmed findings. Reflag unsupported or already-closed items with evidence; keep archive/DOI/external-data requirements as explicit workflow gates rather than pretending they are manuscript defects.
-5. Repeat exact-PDF review until every paper is honestly ACCEPT or MINOR-only for its designated venue, or record the remaining blocker rather than inflating readiness.
-6. Run the atomic release chain: claims/version/PDF mirrors, SSOT, Convex/API, site data and review timeline, build/browser QA, then bisected commits and `main` push.
+5. Apply the content-hash stop rule: review each packet/provider/profile tuple once; re-review only after a reader-visible PDF hash change or one declared high-risk confirmation. After two valid independent waves on the same hash yield zero genuinely new reader-visible findings, stop, preserve the raw verdict distribution, and route remaining stable gates instead of chasing verdict words.
+6. Archive every compiled PDF immutably under a version-and-PST-timestamped name with source commit, hash, page count, build metadata, and review references; verify the canonical archive plus two mirrors before cleanup.
+7. Run the atomic release chain: claims/version/PDF mirrors, SSOT, Convex/API, site data and review timeline, build/browser QA, then bisected commits and `main` push.
 
 ## Implemented and queued accelerations
 
@@ -31,6 +32,7 @@ and artifact-addressed review reuse without weakening scientific gates.
 - Every PDF compile receives log, reference, URL/path, and all-page visual overflow inspection.
 - Deterministic parallel compute must match the serial scientific fields exactly before use.
 - Public readiness state is atomic and evidence-backed; absent credentials, DOI, archive, or external validation remain visible gates.
+- Stable gate readiness and the raw reviewer distribution are separate instruments. Provider verdicts remain verbatim; wrong/stale/missing legs are gaps, not inferred scores.
 
 ## Paused legacy track
 
