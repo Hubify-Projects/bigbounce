@@ -57,6 +57,41 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p1a-v1a0121-cqg-minor-only-2026-07-14",
+    dateISO: "2026-07-14",
+    timePT: "11:59–12:00",
+    kind: "internal-api",
+    title:
+      "P1A v1A.0.121 — exact-PDF CQG Note panel reaches three-vendor MINOR-only",
+    papers: ["P1A"],
+    summary:
+      "Three concurrent non-Anthropic reviewers received immutable CQG-NOTE packets for the same clean 7-page PDF (manuscript commit b587cb7b; SHA-256 adfaf5e9…ab77). OpenAI, Gemini, and Grok all returned MINOR REVISIONS, with no hidden MAJOR-tagged item, and all three support the narrow central algebra. Truth audit leaves only bounded convention, scope, wording, and submission-provenance edits. This is the first exact three-vendor minor-only board of the current campaign. Independent Codex and external confirmation remain gaps, so the public cap stays 62.",
+    keyTakeaways: [
+      "No new derivation or numerical result is required; the bounded v1A.0.122 wave is presentation and convention clarity only.",
+      "The main edit is to call the 100 cm^-3 result a dimensional coefficient benchmark, not an observational consequence or bound.",
+      "The Cartan coefficient, regulator scope, boundary assumptions, Fierz ordering, CMB terminology, PACS, and immutable code citation need small explicit fixes.",
+      "Parallel dispatch reduced critical-path latency by 38.6% while preserving three separate raw reports.",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 0,
+      note: "This internal exact-PDF board is minor-only; independent Codex and external confirmation remain typed gates, so no public readiness uplift is inferred.",
+    },
+    links: [
+      {
+        label: "Normalized truth audit",
+        href: `${PR}/INT_v3/ROUND_2026-07-14-P1A-v1A.0.121-EXACTPDF-adfaf5e9-CQG-NOTE-NONANTHROPIC-CONFIRM/P1A_v1A.0.121_NORMALIZED_TRUTH_AUDIT.md`,
+      },
+      {
+        label: "Exact-PDF CQG board",
+        href: `${PR}/INT_v3/ROUND_2026-07-14-P1A-v1A.0.121-EXACTPDF-adfaf5e9-CQG-NOTE-NONANTHROPIC-CONFIRM/manifest.jsonl`,
+      },
+      {
+        label: "Declared panel gap",
+        href: `${PR}/INT_v3/ROUND_2026-07-14-P1A-v1A.0.121-EXACTPDF-adfaf5e9-CQG-NOTE-NONANTHROPIC-CONFIRM/DECLARED_GAPS.json`,
+      },
+    ],
+  },
+  {
     id: "p5-v01130-aj-exact-panel-2026-07-14",
     dateISO: "2026-07-14",
     timePT: "11:52–11:53",

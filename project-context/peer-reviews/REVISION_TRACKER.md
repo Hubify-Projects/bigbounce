@@ -20,6 +20,26 @@ This tracker logs each revision round and which issues have been addressed.
 
 ## Revision Rounds
 
+### P1A v1A.0.121: Exact-PDF CQG Note minor-only confirmation panel (2026-07-14)
+
+**Input:** exact 7-page PDF from manuscript commit `b587cb7bb8e075aa9d0245ba8257fcef7ff196b8`, reviewed at repository commit `15f2e6af98daec7f9634e50961c7c1f7375c87fe`; TeX SHA-256 `4bf3a979fa214a06c29c474fe7a49f3d032150769d505de16647b0854701a650`; PDF SHA-256 `adfaf5e9fec12dc89857ea947b06d2923d49a8a0b3e45880b278b79bd22dab77`.
+
+**Panel:** OpenAI GPT-5.5 **MINOR REVISIONS** / Gemini 3.1 Pro Preview **MINOR REVISIONS** / Grok 4.3 **MINOR REVISIONS**. No report contains an internally MAJOR-tagged item. Immutable `CQG-NOTE` packets, three concurrent native-PDF legs, no Anthropic/Claude. Independent Codex is a typed `NOT_RUN` quota gap.
+
+**Truth audit:** all three reviewers support the central narrow result. Remaining work is bounded and does not require new science.
+
+| Finding | Status | Closure |
+|---|---|---|
+| "Observational consequence" density wording | **OPEN — MINOR** | Use dimensional coefficient benchmark and explicit non-constraint wording |
+| Cartan source/coefficient bridge | **OPEN — MINOR** | One convention-pinned intermediate line/cross-reference |
+| Coefficient-one vs contact/Holst/state factors | **OPEN — MINOR** | Tighten first benchmark statement; no numerical change |
+| Cutoff ceiling and `R_A` | **MOSTLY CLOSED — PRESENTATION** | Repeat existing non-threshold/regulator-bound caveat in table caption |
+| Boundary-data scope | **OPEN — MINOR** | Define matched background/initial/boundary data and boundary contribution assumption |
+| Fierz ordering reference | **OPEN — MINOR** | Cross-reference Appendix A at first scalar-coupling use |
+| Running/TB-EB/PACS/provenance | **OPEN — COPYEDIT/WORKFLOW** | Narrow Lorentzian barrier, expand cross-power terminology, remove PACS, bind immutable code version |
+
+This is the first exact three-vendor minor-only board of the current campaign. Critical-path latency was 63.5 seconds versus 103.4 seconds summed (38.6% reduction). Public readiness remains capped at 62 until the bounded v1A.0.122 closure, independent Codex gap, and external confirmation are resolved. Full audit/raws: `INT_v3/ROUND_2026-07-14-P1A-v1A.0.121-EXACTPDF-adfaf5e9-CQG-NOTE-NONANTHROPIC-CONFIRM/`.
+
 ### P5 v0.1.130: Exact-PDF AJ confirmation panel (2026-07-14)
 
 **Input:** exact 38-page PDF from manuscript commit `0842dfc60dec137ee30c92e44af26600feaaf058`, reviewed at repository commit `b08f46b6d85cdf796d39b08c1e90d0cc58c4dee7`; TeX SHA-256 `ea5613818ad2f60386658acc76b3f60f108fee5237e68de9dafbf26dbf4981b4`; PDF SHA-256 `f5b7a1bb5e7bbd565baac6b21aeab4e18611aec03b18dbf8e298de04d719fe17`.
