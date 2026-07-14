@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "papers": {
+    "P1A": {
+      "tex_path": "arxiv/paper1a_ech_nogo.tex",
+      "pdf_path": "arxiv/paper1a_ech_nogo.pdf",
+      "site_slug": "paper-1a",
+      "target_journal": "Classical and Quantum Gravity",
+      "article_type": "Note",
+      "review_profile": "CQG-NOTE"
+    },
+    "P1B": {
+      "tex_path": "arxiv/paper1b_mcmc_companion.tex",
+      "pdf_path": "arxiv/paper1b_mcmc_companion.pdf",
+      "site_slug": "paper-1b",
+      "target_journal": "Journal of Cosmology and Astroparticle Physics",
+      "article_type": "Research article / computational methods",
+      "review_profile": "JCAP-COMPUTATIONAL"
+    },
+    "P2": {
+      "tex_path": "research/focused_paper_source_integration/02_full_draft.tex",
+      "pdf_path": "research/focused_paper_source_integration/02_full_draft.pdf",
+      "site_slug": "paper-2",
+      "target_journal": "Physical Review D",
+      "article_type": "Research Article",
+      "review_profile": "PRD-RESEARCH"
+    },
+    "P3": {
+      "tex_path": "pipelines/p3_anomaly_engine/paper3_apjs.tex",
+      "pdf_path": "pipelines/p3_anomaly_engine/paper3_apjs.pdf",
+      "site_slug": "paper-3",
+      "target_journal": "The Astrophysical Journal Supplement Series",
+      "article_type": "Catalog article",
+      "review_profile": "APJS-CATALOG"
+    },
+    "P4": {
+      "tex_path": "pipelines/p2_chirality/chirality_catalog_paper.tex",
+      "pdf_path": "pipelines/p2_chirality/chirality_catalog_paper.pdf",
+      "site_slug": "paper-4",
+      "target_journal": "The Astrophysical Journal Supplement Series",
+      "article_type": "Catalog + methods article",
+      "review_profile": "APJS-CATALOG-METHODS"
+    },
+    "P5": {
+      "tex_path": "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex",
+      "pdf_path": "pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf",
+      "site_slug": "paper-5",
+      "target_journal": "The Astronomical Journal",
+      "article_type": "Observational research article",
+      "review_profile": "AJ-OBSERVATIONAL"
+    }
+  }
+}
