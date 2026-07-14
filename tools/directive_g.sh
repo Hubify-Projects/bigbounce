@@ -2,7 +2,7 @@
 # directive_g.sh — one-shot per-paper PDF hygiene chain (bigbounce directive-G).
 #
 # Runs the FULL directive-G HARD-GATE chain in one command so owner-agents never
-# hand-do (and never half-do) the 5-step chain again. Idempotent: rerunning with
+# hand-do (and never half-do) the 7-step chain again. Idempotent: rerunning with
 # the same version is a safe re-mirror + re-bump-verify (a duplicate Convex bump
 # row is acceptable — the site reads the newest matching row).
 #
@@ -11,15 +11,17 @@
 #   1. verify tex version + date
 #   2. leak-gate grep (reviewer/internal terms must not leak into served content)
 #   3. compile (TinyTeX pdflatex 2-pass + bibtex if bib present → 2 more passes)
-#   4. mirror byte-identical to every served path + create versioned aliases
-#   5. Convex paperVersions:bump + read-back verify
-#   6. one-line PASS summary
+#   4. append-only retention snapshot (normal mode only; fail closed)
+#   5. mirror byte-identical to every served path + create versioned aliases
+#   6. Convex paperVersions:bump + read-back verify
+#   7. one-line PASS summary
 #
 # Usage: tools/directive_g.sh [--verify-only] <P1A|P1B|P2|P3|P4|P5> <new-version> "<changelog>"
 #
 #   --verify-only : run the step 1-2-3 checks (tex version+date, leak-gate,
 #                   compile) + md5 comparison of the already-served mirrors + the
-#                   Convex read-back, WITHOUT re-mirroring or re-bumping. Use to
+#                   Convex read-back, WITHOUT writing retention state,
+#                   re-mirroring, or re-bumping. Use to
 #                   validate current state (2026-07-10 lesson: a full validation
 #                   re-run re-inserts the version with a newer createdAt and can
 #                   steal "current" under the same-datestamp tie-break — verify-only
@@ -36,6 +38,7 @@ set -euo pipefail
 SCRIPT_DIR="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)"
 REPO="$(cd "$SCRIPT_DIR/.." && pwd)"
 REGISTRY="$REPO/tools/paper_registry.py"
+RETENTION="$REPO/tools/pdf_version_retention.py"
 TINYTEX_BIN="$HOME/Library/TinyTeX/bin/universal-darwin"
 CONVEX_URL="https://brilliant-panther-471.convex.cloud/api/mutation"
 CONVEX_QUERY_URL="https://brilliant-panther-471.convex.cloud/api/query"
@@ -80,7 +83,9 @@ PAPER="$1"; NEWVER="$2"; CHANGELOG="$3"
 
 TEX_REL="$(python3 "$REGISTRY" "$PAPER" tex_path 2>/dev/null)"
 SLUG="$(python3 "$REGISTRY" "$PAPER" site_slug 2>/dev/null)"
-[ -n "$TEX_REL" ] && [ -n "$SLUG" ] || die "unknown paper key '$PAPER' (want P1A|P1B|P2|P3|P4|P5)"
+REVIEW_PROFILE="$(python3 "$REGISTRY" "$PAPER" review_profile 2>/dev/null)"
+[ -n "$TEX_REL" ] && [ -n "$SLUG" ] && [ -n "$REVIEW_PROFILE" ] \
+  || die "unknown paper key '$PAPER' (want P1A|P1B|P2|P3|P4|P5)"
 
 cd "$REPO"
 TEX="$REPO/$TEX_REL"
@@ -92,7 +97,9 @@ SRC_PDF="$TEX_DIR/$TEX_BASE.pdf"
 # Current human date "July D, YYYY" derived from `date` (no leading zero on day).
 TODAY_HUMAN="$(date '+%B %-d, %Y')"       # e.g. "July 10, 2026"
 
-echo "=== directive_g.sh :: $PAPER $NEWVER (slug=$SLUG)${VERIFY_ONLY:+ [VERIFY-ONLY]} ==="
+MODE_LABEL=""
+[ "$VERIFY_ONLY" -eq 1 ] && MODE_LABEL=" [VERIFY-ONLY]"
+echo "=== directive_g.sh :: $PAPER $NEWVER (slug=$SLUG)$MODE_LABEL ==="
 [ "$VERIFY_ONLY" -eq 1 ] && echo "    mode: VERIFY-ONLY (no re-mirror, no Convex bump)"
 echo "    tex:  $TEX_REL"
 echo "    date: $TODAY_HUMAN"
@@ -178,9 +185,54 @@ fi
 echo "    ok: 0 errors, 0 undefined refs"
 
 # ---------------------------------------------------------------------------
-# STEP 4 — mirror byte-identical to every served path + versioned aliases
+# STEP 4 — append-only PDF retention (normal mode only)
 # ---------------------------------------------------------------------------
-echo "--- step 4: mirror ---"
+if [ "$VERIFY_ONLY" -eq 1 ]; then
+  echo "--- step 4: append-only retention (verify-only — skipped, no archive writes) ---"
+else
+  echo "--- step 4: append-only retention ---"
+  [ -f "$RETENTION" ] || die "retention tool not found: $RETENTION"
+  LATEX_PASSES=2
+  [ "$USE_BIB" -eq 1 ] && LATEX_PASSES=4
+  RETENTION_BUILD_METADATA="tools/directive_g.sh paper=${PAPER} version=${NEWVER} source=${TEX_REL} pdflatex_passes=${LATEX_PASSES} bibtex=${USE_BIB}"
+  RETENTION_REVIEW_METADATA="directive-g/${REVIEW_PROFILE}/${PAPER}/${NEWVER}"
+  RETENTION_JSON=""
+  if ! RETENTION_JSON="$(python3 "$RETENTION" \
+      --paper "$PAPER" \
+      --build-command "$RETENTION_BUILD_METADATA" \
+      --review-round "$RETENTION_REVIEW_METADATA" 2>&1)"; then
+    [ -n "$RETENTION_JSON" ] && echo "$RETENTION_JSON" >&2
+    die "append-only retention failed; refusing to mirror or mutate Convex"
+  fi
+  RETENTION_MANIFEST="$(printf '%s' "$RETENTION_JSON" | python3 -c '
+import json, pathlib, sys
+paper, version, build, review = sys.argv[1:5]
+payload = json.load(sys.stdin)
+rows = payload.get("papers") or []
+if len(rows) != 1 or rows[0].get("paper_id") != paper or rows[0].get("paper_version") != version:
+    raise SystemExit("retention receipt paper/version mismatch")
+if payload.get("build_command") != build or payload.get("review_round") != review:
+    raise SystemExit("retention receipt metadata mismatch")
+manifest = payload.get("manifest_path")
+if not isinstance(manifest, str) or not manifest:
+    raise SystemExit("retention receipt missing manifest_path")
+print(manifest)
+' "$PAPER" "$NEWVER" "$RETENTION_BUILD_METADATA" "$RETENTION_REVIEW_METADATA")" \
+    || die "append-only retention returned an invalid receipt; refusing to mirror or mutate Convex"
+  case "$RETENTION_MANIFEST" in
+    /*) RETENTION_MANIFEST_ABS="$RETENTION_MANIFEST" ;;
+    *) RETENTION_MANIFEST_ABS="$REPO/$RETENTION_MANIFEST" ;;
+  esac
+  [ -f "$RETENTION_MANIFEST_ABS" ] \
+    || die "retention manifest not found after snapshot: $RETENTION_MANIFEST"
+  echo "    manifest: $RETENTION_MANIFEST"
+  echo "    ok: compiled PDF retained before any mirror or Convex mutation"
+fi
+
+# ---------------------------------------------------------------------------
+# STEP 5 — mirror byte-identical to every served path + versioned aliases
+# ---------------------------------------------------------------------------
+echo "--- step 5: mirror ---"
 NEWMD5="$(md5of "$SRC_PDF")"
 NEWSIZE="$(stat -f%z "$SRC_PDF")"
 NEWPAGES="$(pages_of "$SRC_PDF")"
@@ -271,6 +323,11 @@ if [ "$VERIFY_ONLY" -eq 1 ]; then
   REFMD5="$PREV_MD5"
   MISMATCH=0
   for tgt in "${MIRROR_TARGETS[@]}"; do
+    tgt_abs="$(cd "$(dirname "$tgt")" && pwd)/$(basename "$tgt")"
+    if [ "$tgt_abs" = "$SRC_ABS" ]; then
+      echo "    (skip freshly compiled canonical source in served compare: ${tgt#$REPO/})"
+      continue
+    fi
     if [ ! -f "$tgt" ]; then
       # versioned aliases for a not-yet-mirrored version are expected-absent;
       # only flag absence of the unversioned canonical copies.
@@ -308,13 +365,13 @@ else
 fi
 
 # ---------------------------------------------------------------------------
-# STEP 5 — Convex bump + read-back verify
+# STEP 6 — Convex bump + read-back verify
 # ---------------------------------------------------------------------------
 if [ "$VERIFY_ONLY" -eq 1 ]; then
-  echo "--- step 5: convex read-back (verify-only — no bump) ---"
+  echo "--- step 6: convex read-back (verify-only — no bump) ---"
   ROWID="(verify-only)"
 else
-  echo "--- step 5: convex bump ---"
+  echo "--- step 6: convex bump ---"
   TEXCOMMIT="$(git rev-parse --short HEAD)"
   SITE_PDF_PATH="/papers/${TEX_BASE}_${NEWVER}.pdf"
 
@@ -388,7 +445,7 @@ done
 echo "    ok: convex current == $NEWVER / $NEWMD5 (row $ROWID)"
 
 # ---------------------------------------------------------------------------
-# STEP 6 — PASS summary
+# STEP 7 — PASS summary
 # ---------------------------------------------------------------------------
 if [ "$VERIFY_ONLY" -eq 1 ]; then
   echo "PASS [verify-only]: $PAPER $NEWVER md5=$NEWMD5 pages=$NEWPAGES served=$NCOPIED convex=current-match (no writes)"

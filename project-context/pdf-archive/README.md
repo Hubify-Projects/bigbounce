@@ -6,8 +6,9 @@ replace either one.
 
 ## Snapshot all six papers
 
-Run this immediately before any compile/mirror operation that can replace a
-canonical or served PDF:
+Use the direct command for a complete six-paper baseline or an explicit manual
+snapshot. Normal per-paper publication runs are retained automatically by
+`tools/directive_g.sh` as described below.
 
 ```bash
 python3 tools/pdf_version_retention.py
@@ -34,11 +35,21 @@ The first contract-complete baseline is
 manifests are retained as an append-only implementation audit trail; they do
 not contain the final page-count plus human-readable-hard-link contract.
 
-## Current limitations / integration gate
+## Directive-G integration gate — CLOSED
 
-`tools/directive_g.sh` currently overwrites mutable mirrors with `cp -f`. The
-retention command must become its mandatory pre-compile/pre-mirror gate after
-active concurrent paper edits settle. Until then, operators must run the
-snapshot command explicitly. GitHub is not an independent immutable archive;
-the manifests and objects should also be mirrored to versioned object storage
-or a DOI archive without changing their paths or hashes.
+In normal mode, `tools/directive_g.sh` now calls
+`tools/pdf_version_retention.py --paper "$PAPER"` after the compile/log audit
+succeeds and before any served mirror or Convex mutation. The call records a
+deterministic build description and `directive-g/<review-profile>/<paper>/<version>`
+review identifier, validates the returned paper/version/metadata receipt,
+prints the immutable manifest path, and fails closed before mirror discovery if
+retention or receipt validation fails.
+
+`--verify-only` explicitly skips the retention call, so validation runs do not
+create archive objects, references, or manifests. They also retain the existing
+no-remirror/no-Convex-mutation behavior.
+
+The remaining release limitation is independent durability: GitHub is not an
+immutable archive. Manifests and objects should also be copied byte-for-byte to
+versioned object storage or a DOI archive without changing their paths or
+hashes.
