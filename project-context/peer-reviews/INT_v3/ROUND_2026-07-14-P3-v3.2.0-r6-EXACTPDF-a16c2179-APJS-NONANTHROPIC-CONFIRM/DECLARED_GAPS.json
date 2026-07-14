@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "paper": "P3",
+  "version": "v3.2.0-r6",
+  "pdf_sha256": "a16c217930a31ba799b68a88b2477b020ad5e309ff79626e49b2b69a715fdd5a",
+  "p3_closure_commit": "064b06bdbc2a5844837dbd92d5fafbc58c44328b",
+  "review_packet_commit": "c6277107cb8d705d6b2c1b675269f507fa54ab9a",
+  "panel_scope": "Exact-PDF APJS-CATALOG confirmation using OpenAI, Gemini, and xAI/Grok; no Anthropic vendor leg.",
+  "gaps": [
+    {
+      "leg": "anthropic-claude",
+      "status": "NOT_RUN_BY_SCOPE",
+      "reason": "The requested confirmation panel was explicitly non-Anthropic. No Claude result was synthesized or substituted.",
+      "required_for_this_panel": false
+    },
+    {
+      "leg": "codex-subscription-independent",
+      "requested_model": "gpt-5.6-sol",
+      "requested_effort": "high",
+      "status": "NOT_RUN",
+      "reason": "This task requested the three native-PDF vendor legs dispatched by int_api_review_2026-07-08.py. No independent Codex-subscription verdict was synthesized.",
+      "required_for_this_panel": false,
+      "required_before_final_board": true
+    }
+  ],
+  "workflow_gates": [
+    "AAS contributed-digital-asset DOI remains unassigned.",
+    "One definitive checksum-bound ApJS submission bundle has not yet replaced the multi-revision component story.",
+    "The 170-core/11-tail primary-contract wording remains acceptance-relevant.",
+    "Historical-to-public coordinate semantic lineage remains bounded but incomplete."
+  ]
+}
