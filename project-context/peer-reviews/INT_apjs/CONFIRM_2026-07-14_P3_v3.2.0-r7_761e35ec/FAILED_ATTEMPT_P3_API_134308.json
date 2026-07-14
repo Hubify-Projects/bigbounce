@@ -1,0 +1,17 @@
+{
+  "schema": "bigbounce.review-failed-attempt.v1",
+  "paper": "P3APJS",
+  "canonical_paper": "P3",
+  "providers": ["xai", "google"],
+  "status": "FAILED_PRE_DISPATCH_PROVENANCE_GATE",
+  "countable_reviews": false,
+  "provider_calls_made": false,
+  "requested_review_commit": "ba2f5b93a30de41122dc2ed31b543ac0da9a37c8",
+  "observed_repository_head": "029158b8d77c15fcea319c77e73d074343736091",
+  "pdf_sha256": "761e35ec840e93599163d68c6b4db9b8d75293545e49c45c978dc0be0f38cb2b",
+  "grok_diagnostic_log": ".intwave_P3apjs_grok_134308.log",
+  "gemini_diagnostic_log": ".intwave_P3apjs_gemini_134308.log",
+  "diagnostic_log_sha256": "a53043e184f784420de1e96f568c95a2498518188f104aebeda3a07fc3020f6f",
+  "failure_reason": "The immutable packet builder correctly rejected a repository-HEAD mismatch after the routing-fix commit advanced HEAD beyond the separately committed scientific artifact. The gate fired before either provider dispatch.",
+  "truth_audit_disposition": "INVALID_NONCOUNTABLE_PRE_DISPATCH_ATTEMPT"
+}

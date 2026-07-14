@@ -131,13 +131,17 @@ After 11 autoloop fires + v3.2 meta-reviewer + persistence tracker: **5 LOAD-BEA
 ## CURRENT CAMPAIGN NOTE — 2026-07-14
 
 The program is **IN REVISION**; the older convergence headers below are retained
-as history and must not be used as the current board. The latest frozen paper
-to receive a fresh venue-correct panel is P3 v3.2.0-r5 (ApJS), source commit
-`7cf60218`, PDF SHA-256 `024931a4...39dc`: OpenAI MAJOR / Gemini MINOR / Grok
-MINOR. Truth audit confirms open chance-association, warned-population, and
-original-member-sensitivity closures plus a final archive/DOI workflow gate.
-No readiness uplift was applied. Canonical evidence is the 2026-07-14 P3 exact-
-PDF round directory and `SSOT/paper-3/status.md`.
+as history and must not be used as the current board. P3 is now v3.2.0-r8
+(ApJS), closure commit `d155eb27`, exact 16-page PDF SHA-256
+`b5f254f9...08b0`. Its countable r7 board was Codex CLI through the ChatGPT
+subscription MAJOR / xAI direct API Grok ACCEPT / Google direct API Gemini
+MINOR; no OpenAI API review was counted. The real package and threshold-
+provenance findings are closed, and exact-r8 Codex subscription confirmation
+returned ACCEPT with zero in-scope blockers. Failed runs remain preserved as
+noncountable evidence. Automated ACCEPT is not human ApJS acceptance; the
+immutable archive/DOI and human editorial gates remain open. No readiness
+uplift was applied. Canonical evidence is under `INT_apjs/CONFIRM_2026-07-14_P3_...`
+and `SSOT/paper-3/status.md`.
 
 ## ✅ PROGRAM PAST THE CONVERGENCE BAR — 2026-07-11 (wave-1 kit verified, awaiting Houston submission clicks)
 
@@ -170,7 +174,7 @@ Verdicts FROM RAW [ChatGPT / Grok / Gemini]. Latest = W2-EXT wave, `EXT_real/H17
 | **P1U** | v1U.0.20 | REJECT | **MAJOR** | — | 62 | M26-EXT (2026-07-13): Grok MAJOR (3/2; pattern-066 band on byte-identical v1U.0.20); all findings DP1U re-flags; 0 genuinely-new; **streak 10→11**; cap 62 HOLDS (Grok already at MAJOR tier) |
 | **P1B** | folded into P1U (2026-07-08 merge) | — | — | — | — | folded into unified Paper 1 |
 | **P2**  | v1.7.116 | REJECT | MINOR | — | 74 | M25-EXT (2026-07-13): Grok MINOR (0/5) + ChatGPT REJECT (11/1); all findings DP2 re-flags; 0 genuinely-new; **streak 10→11**; cap 68→74 (Grok MINOR restores +6 after M20 slip) |
-| **P3**  | v3.1.156-apjs | REJECT | MAJOR | — | 56 | M1 wave (2026-07-12): first ApJS-framed read; ChatGPT REJECT venue-reasoned (immutable-release bar); 0 genuinely-new; all findings DP3 re-flags. cap 62→56. clean-wave streak 0→1 |
+| **P3**  | v3.2.0-r8 | ACCEPT (bounded subscription confirmation) | ACCEPT (r7 direct API) | MINOR (r7 direct API) | 56 | Exact r8 closes the real package and 0.1-arcsec provenance defects; 41/41 bundle PASS and `181=170+11`. Human ApJS/editorial and immutable DOI gates remain open; no readiness uplift. |
 | **P4**  | v1.0.239 | REJECT | MINOR | — | 80 | M26-EXT (2026-07-13): Grok MINOR (0/4); all findings DP4 re-flags; 0 genuinely-new; **streak 9→10**; cap 85→80 (Grok ACCEPT→MINOR pattern-066 slip: 50+12+6+12=80) |
 | **P5**  | v0.1.126 | MAJOR | MINOR | — | 80 | M25-EXT (2026-07-13): Grok MINOR (0/4) + ChatGPT MAJOR (11/3; valid retry raw only); all findings DP5 re-flags; 0 genuinely-new; **streak 9→10**; cap 74→80 (ChatGPT MAJOR tier-lift: 0→6; 50+12+6+12=80) |
 

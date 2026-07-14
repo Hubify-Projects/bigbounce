@@ -63,6 +63,27 @@ No readiness uplift; P1A remains capped at 62. Exact receipt, prompt, raw, norma
 
 Gemini and Grok concurrency saved 22.5 seconds (35.2%) versus serial dispatch. No readiness uplift; P2 remains capped at 74. Full audit/raws: `INT_v3/ROUND_2026-07-14-P2-v1.7.122-EXACTPDF-4097bac5-PRD-NONANTHROPIC-CONFIRM/`.
 
+### P3 v3.2.0-r7 → r8: Exact-PDF ApJS closure and subscription ACCEPT (2026-07-14)
+
+**r7 input:** exact 16-page PDF from commit `ba2f5b93a30de41122dc2ed31b543ac0da9a37c8`; TeX SHA-256 `01cb68b1d52d411c1f4b181d6504f2f1344bc45d1f0ad3793d74b58a5d7e75d8`; PDF SHA-256 `761e35ec840e93599163d68c6b4db9b8d75293545e49c45c978dc0be0f38cb2b`.
+
+**Valid r7 board:** ChatGPT-subscription-authenticated Codex CLI `gpt-5.6-sol` high **MAJOR REVISIONS** / xAI direct API Grok 4.3 **ACCEPT** / Google direct API Gemini 3.1 Pro Preview **MINOR REVISIONS**. Provider receipts are preserved. No OpenAI API review is counted and no Anthropic/Claude route was used. One Codex resource-budget failure and two pre-dispatch API failures are retained as typed, noncountable gaps rather than rewritten as zero-finding reviews.
+
+**r8 confirmation:** exact closure commit `d155eb27488b271be12942b1a1be8b3c39dd24f4`; TeX SHA-256 `2b9a5fd356e49ae7a9939cbf8e9197379bef71b1f66a0e364e0de41ae416d10b`; PDF SHA-256 `b5f254f92b10bda43b687f07c5f58b828a6f7dc70d98c08f9e9b609edbba08b0`; 16 pages. A read-only, ephemeral Codex CLI run authenticated through the ChatGPT subscription returned **ACCEPT** with zero in-scope blockers after inspecting all 16 pages and checking the package, threshold provenance, and catalog arithmetic. It used no API, no Anthropic/Claude route, no network, and did not rebuild the paper or catalog.
+
+| Finding/gate | Status | Evidence or remaining requirement |
+|---|---|---|
+| Three manifest-listed Parquet payloads absent from Git | **CLOSED IN r8** | All three are tracked at `d155eb27`; clean exact-tree validation passes 38/38 payloads and 41/41 bundle files |
+| 0.1-arcsec threshold provenance unstated | **CLOSED IN r8** | Source explicitly identifies it as a post-hoc descriptive tier; fixed 1-arcsec membership remains unchanged |
+| Candidate-only model testing overclaimed | **ALREADY CLOSED** | Text requires a representative control for model comparison and rejects rate/performance inference |
+| Recovery artifact could be mistaken for a validated detector/catalog | **ALREADY CLOSED** | Abstract and limitations consistently bound the work to public-ID recovery with no physical-anomaly, novelty, or purity claim |
+| Gemini requests physical-feature context and top-row classifications | **DECLINED — UNSUPPORTED/NEW SCIENCE** | Required production sensitivity and object-level physical review do not exist; inventing them would contradict the evidence |
+| Page whitespace and float flow | **OPTIONAL PRESENTATION** | All pages are legible, with no clipping, overlap, or obscured content |
+| Human ApJS/editorial decision | **OPEN — HUMAN GATE** | Automated ACCEPT is exact-artifact evidence, not journal acceptance |
+| Immutable public archive/DOI | **OPEN — RELEASE GATE** | Deposit the final source/data/PDF package and record the real identifier |
+
+No readiness uplift; P3 remains capped at 56. r7 evidence and normalized audit: `INT_apjs/CONFIRM_2026-07-14_P3_v3.2.0-r7_761e35ec/`. Exact r8 receipt/raw/render evidence: `INT_apjs/CONFIRM_2026-07-14_P3_v3.2.0-r8_b5f254f9/`.
+
 ### P3 v3.2.0-r6: Exact-PDF ApJS control confirmation (2026-07-14)
 
 **Input:** exact 15-page PDF from closure commit `064b06bdbc2a5844837dbd92d5fafbc58c44328b`, reviewed at repository commit `c6277107cb8d705d6b2c1b675269f507fa54ab9a`; TeX SHA-256 `723d25080fa0e192c225105d42cf7ead233d5ec5cc3956b30630e5601268fc89`; PDF SHA-256 `a16c217930a31ba799b68a88b2477b020ad5e309ff79626e49b2b69a715fdd5a`.

@@ -1,0 +1,31 @@
+{
+  "schema": "bigbounce.review-evidence-set.v1",
+  "paper": "P3 ApJS",
+  "version": "v3.2.0-r7",
+  "frozen_artifact": {
+    "commit": "ba2f5b93a30de41122dc2ed31b543ac0da9a37c8",
+    "source_sha256": "01cb68b1d52d411c1f4b181d6504f2f1344bc45d1f0ad3793d74b58a5d7e75d8",
+    "pdf_sha256": "761e35ec840e93599163d68c6b4db9b8d75293545e49c45c978dc0be0f38cb2b",
+    "pdf_pages": 16
+  },
+  "countable_board": [
+    {"route": "codex_cli_chatgpt_subscription", "model": "gpt-5.6-sol", "verdict": "MAJOR REVISIONS", "report": "API_P3APJS_codex_140430.md", "sha256": "1cfc6e8807da881a9e7f1550fdf9e1c8784d980f782c3128f0b5f22e957fa22b"},
+    {"route": "xai_direct_api", "model": "grok-4.3", "verdict": "ACCEPT", "report": "API_P3_grok.md", "sha256": "61d0a81648e217bb934d876562a139c646c825252204c80fbaa88204fcb9de74"},
+    {"route": "google_direct_api", "model": "gemini-3.1-pro-preview", "verdict": "MINOR REVISIONS", "report": "API_P3_gemini.md", "sha256": "8b83e23b403c1cd38bb8ccef11ff81a3ebb057178d1c91597738d3d5da63ebe6"}
+  ],
+  "routing_policy": {
+    "openai_api_counted_reviews": 0,
+    "codex_authentication": "ChatGPT subscription through codex login",
+    "direct_api_routes": ["xAI Grok", "Google Gemini"],
+    "anthropic_used": false
+  },
+  "failed_attempt_receipts": [
+    "FAILED_ATTEMPT_P3APJS_codex_132618.json",
+    "FAILED_ATTEMPT_P3_API_134308.json",
+    "FAILED_ATTEMPT_P3_API_135453.json"
+  ],
+  "failed_attempt_policy": "Preserved as noncountable gaps; never converted to zero-finding verdicts.",
+  "normalized_truth_audit": "P3_v3.2.0-r7_NORMALIZED_TRUTH_AUDIT.md",
+  "payload_file_count": 36,
+  "payload_checksums": "FILE_SHA256SUMS"
+}

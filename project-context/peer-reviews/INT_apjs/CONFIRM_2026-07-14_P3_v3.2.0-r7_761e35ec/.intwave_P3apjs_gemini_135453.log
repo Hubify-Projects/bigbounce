@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/tmp/bigbounce-p3-review-ba2/tools/int_api_review_2026-07-08.py", line 22, in <module>
+    REGISTRY = load_registry(REPO)
+  File "/private/tmp/bigbounce-p3-review-ba2/tools/paper_registry.py", line 43, in load_registry
+    raise FileNotFoundError(f"{paper_id} {field} not found: {path}")
+FileNotFoundError: P1A tex_path not found: /private/tmp/bigbounce-p3-review-ba2/arxiv/paper1a_ech_nogo.tex

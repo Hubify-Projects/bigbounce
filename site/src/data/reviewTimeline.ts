@@ -57,6 +57,46 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p3-v320-r8-apjs-subscription-accept-2026-07-14",
+    dateISO: "2026-07-14",
+    timePT: "13:59–14:52",
+    kind: "internal-cc",
+    title:
+      "P3 v3.2.0-r8 — exact-PDF subscription confirmation closes the package and threshold-provenance defects",
+    papers: ["P3"],
+    summary:
+      "The countable r7 board on the same 16-page ApJS recovery paper was xAI direct API Grok ACCEPT, Google direct API Gemini MINOR, and Codex CLI through the ChatGPT subscription MAJOR; no OpenAI API review was counted and no Anthropic/Claude route was used. Truth audit retained two real defects: three manifest payloads were absent from Git and the 0.1-arcsec tier provenance was unstated. Commit d155eb27 closes both. A read-only, ephemeral Codex CLI gpt-5.6-sol high confirmation through the ChatGPT subscription returned ACCEPT with zero in-scope blockers on exact PDF SHA-256 b5f254f9…08b0. Human ApJS/editorial and immutable archive/DOI gates remain open, so readiness stays 56.",
+    keyTakeaways: [
+      "The frozen release now passes exact clean-tree validation for 38/38 manifest payloads and all 41 tracked bundle files.",
+      "The 0.1-arcsec boundary is explicitly post hoc and descriptive; the predeclared 1-arcsec catalog membership remains unchanged.",
+      "The public-ID recovery contract is exactly 181 rows: 170 high-coordinate-consistency core plus 11 lower-confidence positional associations, with no purity or identity inference.",
+      "One resource-budget Codex run and two pre-dispatch API failures are preserved honestly as noncountable evidence, not rewritten as zero-finding votes.",
+      "Automated ACCEPT is bounded exact-artifact evidence, not human journal acceptance and not grounds for a readiness increase.",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 0,
+      note: "No in-scope manuscript or package blocker remains from the r7 board. Human editorial review and immutable public archive/DOI remain typed gates; readiness remains 56.",
+    },
+    links: [
+      {
+        label: "r7 normalized truth audit",
+        href: `${PR}/INT_apjs/CONFIRM_2026-07-14_P3_v3.2.0-r7_761e35ec/P3_v3.2.0-r7_NORMALIZED_TRUTH_AUDIT.md`,
+      },
+      {
+        label: "r7 evidence manifest",
+        href: `${PR}/INT_apjs/CONFIRM_2026-07-14_P3_v3.2.0-r7_761e35ec/EVIDENCE_MANIFEST.json`,
+      },
+      {
+        label: "r8 subscription receipt",
+        href: `${PR}/INT_apjs/CONFIRM_2026-07-14_P3_v3.2.0-r8_b5f254f9/RUN_RECEIPT.json`,
+      },
+      {
+        label: "r8 raw ACCEPT",
+        href: `${PR}/INT_apjs/CONFIRM_2026-07-14_P3_v3.2.0-r8_b5f254f9/RAW_RESPONSE.md`,
+      },
+    ],
+  },
+  {
     id: "p1a-v1a0123-cqg-subscription-accept-2026-07-14",
     dateISO: "2026-07-14",
     timePT: "14:17–14:22",

@@ -1,0 +1,28 @@
+{
+  "schema": "bigbounce.p3-exact-commit-clean-tree-validation.v1",
+  "status": "PASS",
+  "validated_utc": "2026-07-14T21:45:47Z",
+  "commit": "d155eb27488b271be12942b1a1be8b3c39dd24f4",
+  "method": "git archive the exact commit's bundle and two existing validation scripts into a fresh temporary tree, then run validate_p3_apjs_r7_submission_bundle.py with --bundle",
+  "network_used": false,
+  "fits_opened_or_hashed": false,
+  "component_replay": false,
+  "bundle_files": 41,
+  "validator": {
+    "status": "PASS",
+    "bundle": "p3-apjs-v3.2.0-r7",
+    "manifest_sha256": "e59710a1c4f88fc816257d1441ae3eb69d954828c180a8541a1aa8f1c855007a",
+    "primary_rows": 181,
+    "core_rows": 170,
+    "lower_confidence_rows": 11,
+    "warned_auxiliary_rows": 2267,
+    "aas_rows": 181,
+    "coordinate_lineage": "PASS",
+    "doi_status": "pending"
+  },
+  "component_wrapper_self_check": {
+    "status": "PASS",
+    "in_place_destinations_rejected": 4,
+    "temporary_destinations_accepted": 2
+  }
+}
