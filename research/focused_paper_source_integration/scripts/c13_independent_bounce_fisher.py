@@ -32,9 +32,9 @@ WHAT THIS SCRIPT DOES (real computation, every input sourced -- nothing fabricat
     * k_max = 0.2(1+z) h/Mpc per z-bin  (Heinrich Eq., linear regime),
       k_min = fundamental mode of the bin volume.
 
-  Then swaps the LOCAL template for the BOUNCE B_NL shape
-  (compute_BNL, coeffs [2,7,3,-12,-69,19], null_space_analysis.py; squeezed
-  limit -35/16 corrected central) and reports the INDEPENDENT
+  Then swaps the LOCAL template for the exact four-vertex BOUNCE B_NL shape
+  (ordered-basis coefficients [3,1,-9,5,-33,9]; squeezed limit -35/16) and
+  reports the INDEPENDENT
   sigma(f_NL^bounce) and the detection significance for f_NL = -35/16.
 
 NUISANCE TREATMENTS (both reported, per directive):
@@ -112,7 +112,6 @@ EPS_SQUEEZE = 1e-4
 REPO = Path(__file__).resolve().parents[3]
 HERE = Path(__file__).resolve().parent
 DATA_FILE = HERE / "data" / "galaxy_density_v28_base_cbe.txt"
-NULLSPACE = HERE.parent / "null_space_analysis.py"
 OUT_DIR = HERE.parent / "outputs"
 OUT_FILE = OUT_DIR / "c13_independent_bounce_fisher.json"
 
@@ -120,15 +119,15 @@ OUT_FILE = OUT_DIR / "c13_independent_bounce_fisher.json"
 HEINRICH_SIGMA_FNL_LOCAL = 0.7
 
 # ============================================================
-# Bounce bispectrum shape B_NL (from null_space_analysis.py, verbatim)
-# coeffs [2,7,3,-12,-69,19]; squeezed limit -> -35/8 (bare Cai),
-# corrected central -35/16 (one-half; App A spurious term).
+# Bounce bispectrum shape B_NL: unique exact four-vertex re-expansion.
+# In the ordered basis the (5,2,2) orbit double-counts each distinct monomial,
+# hence c5=-33 corresponds to an expanded distinct-monomial coefficient -66.
 # ============================================================
-BOUNCE_COEFFS = np.array([2, 7, 3, -12, -69, 19], dtype=float)
+BOUNCE_COEFFS = np.array([3, 1, -9, 5, -33, 9], dtype=float)
 
 
 def _monomials(k1, k2, k3):
-    """6 symmetric degree-9 monomials (matches null_space_analysis.eval_monomials_vectorized)."""
+    """Six ordered symmetric degree-9 orbit sums."""
     m1 = k1**9 + k2**9 + k3**9
     m2 = (k1**7 * (k2**2 + k3**2) + k2**7 * (k1**2 + k3**2) + k3**7 * (k1**2 + k2**2))
     m3 = (k1**6 * (k2**3 + k3**3) + k2**6 * (k1**3 + k3**3) + k3**6 * (k1**3 + k2**3))
@@ -141,9 +140,7 @@ def _monomials(k1, k2, k3):
 
 
 def bounce_BNL(k1, k2, k3, coeffs=BOUNCE_COEFFS):
-    """Reduced bounce bispectrum shape B_NL(k1,k2,k3) (null_space_analysis.compute_BNL).
-    Bare squeezed limit -35/8; multiply by 1/2 for the corrected -35/16 central.
-    """
+    """Reduced exact four-vertex bounce shape B_NL(k1,k2,k3)."""
     M = _monomials(k1, k2, k3)
     P = np.tensordot(M, coeffs, axes=([-1], [0]))
     pref = 10.0 / (256.0 * k1**2 * k2**2 * k3**2 * (k1**3 + k2**3 + k3**3))
@@ -275,7 +272,7 @@ def Bphi_local(k1, k2, k3):
 
 # bounce shape normalized to squeezed limit = 1 (so it shares local's
 # squeezed-limit amplitude; the mismatch is entirely the off-squeezed shape).
-BNL_SQUEEZE = float(bounce_BNL(EPS_SQUEEZE, 1.0, 1.0))  # ~ -35/8
+BNL_SQUEEZE = float(bounce_BNL(EPS_SQUEEZE, 1.0, 1.0))  # ~ -35/16
 
 
 def Bphi_bounce(k1, k2, k3):
@@ -608,7 +605,7 @@ def main():
     print("C13 — INDEPENDENT tree-level galaxy-bispectrum Fisher (SPHEREx)")
     print("=" * 74)
     print(f"Omega_m={OMEGA_M:.4f}, f_sky={F_SKY}, {N_ZBINS} z-bins (z={ZEDGES[0][0]}-{ZEDGES[-1][1]})")
-    print(f"bounce squeezed BNL = {BNL_SQUEEZE:.5f} (target -35/8 = {-35/8:.5f})")
+    print(f"bounce squeezed BNL = {BNL_SQUEEZE:.5f} (target -35/16 = {-35/16:.5f})")
 
     print("\n[1/2] Single-effective-tracer Fisher (conservative baseline)...")
     local = total_fisher("local")
@@ -719,7 +716,7 @@ def main():
                               "b1^3 M(k1)M(k2)M(k3) B_phi_template"),
                 "local_template": "B_phi^loc = 2 f_NL [P_phi P_phi + cyc]",
                 "bounce_template": ("B_phi^bnc = 2 f_NL (BNL(k)/BNL_squeeze) [P_phi P_phi + cyc], "
-                                    "BNL from null_space_analysis.py coeffs [2,7,3,-12,-69,19], "
+                                    "BNL from exact four-vertex ordered-basis coeffs [3,1,-9,5,-33,9], "
                                     "squeezed limit normalized to local's"),
                 "covariance": ("Gaussian: Var(B)=s_B V P_tot(k1)P_tot(k2)P_tot(k3)/N_tri, "
                                "P_tot=(b1 W)^2 P_m + 1/n_eff, N_tri=V^2 k1k2k3 dk1dk2dk3/(8pi^4) "
@@ -816,7 +813,7 @@ def main():
             "Every input sourced: SPHEREx n(z),b(z) from the committed Dore+2014 public table; "
             "cosmology Planck2018; matter P(k) and transfer from CAMB; SPT F2 kernel and "
             "Gaussian bispectrum covariance from Scoccimarro1998/Sefusatti2006; bounce BNL "
-            "shape from the committed null_space_analysis.py. No number tuned to match Heinrich; "
+            "shape from the exact four-vertex re-expansion. No number tuned to match Heinrich; "
             "the validation ratio is reported as-is with its physical cause."),
     }
 

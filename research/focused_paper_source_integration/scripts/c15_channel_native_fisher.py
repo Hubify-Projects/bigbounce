@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 r"""
 C15 — CHANNEL-NATIVE joint {f_NL^bounce, b_phi, A_GR} bispectrum Fisher for
-      SPHEREx, closing the recurring P2 "conservative-floor-rests-on-a-proxy"
+      SPHEREx, testing the recurring P2 "conservative-floor-rests-on-a-proxy"
       MAJOR (DP2 ledger) by ADOPTING a covariance surrogate.
 
 REVIEWER OBJECTION (every round, DP2; ChatGPT/OpenAI/Grok):
@@ -38,9 +38,8 @@ reviewers invited; assumptions stated explicitly):
          are subdominant at these scales / this f_sky). NG terms ADD covariance
          => a Gaussian surrogate is if anything OPTIMISTIC on the ABSOLUTE
          sigma, but the CROSS-correlation rho (which sets the marginalized
-         inflation) is far more robust to the NG terms than either absolute
-         sigma, because NG contributions largely factor out of the normalized
-         F_{f,A}/sqrt(F_ff F_AA) ratio.
+         inflation). Some common contributions may cancel in the normalized
+         correlation, but robustness to omitted NG covariance is not derived.
     (S2) tree-level SPT matter bispectrum + linear k_max = 0.2(1+z) h/Mpc.
     (S3) FULL 5-sample multi-tracer structure (the c13 machinery), i.e. the
          cosmic-variance cancellation Heinrich exploit -> the surrogate is
@@ -83,7 +82,7 @@ transferred, nothing fabricated):
       grid: S_GR^ABC = b_A b_B b_C W_A W_B W_C * gr_reduced(k1,k2,k3).
 
   OUTPUTS:
-    (1) channel-native rho(f_NL, A_GR)  -- REPLACES the transferred -0.868 proxy
+    (1) channel-native rho(f_NL, A_GR) under the adopted surrogate
     (2) channel-native rho(f_NL, b_phi)
     (3) channel-native marginalized sigma(f_NL^bounce)  = sqrt((F^-1)_ff)
         for the 3x3 joint, and for the {f_NL,A_GR} 2x2 sub-block (matches the
@@ -95,8 +94,8 @@ transferred, nothing fabricated):
         the channel-native analog of the paper's scalar r (Cauchy-Schwarz:
         the recovery factor of a local estimator applied to bounce signal).
 
-  Compared HONESTLY against the paper's current proxy envelope 1.3-2.75 sigma:
-  whatever the channel-native floor is, the paper takes it.
+  Reports the full nuisance ladder. The 30% b_phi result is conditional on a
+  theory prior; the free-b_phi case is the unconstrained nuisance limit.
 
 Runtime: a few min CPU (CAMB via c13 import + 3x3 Fisher over the multi-tracer
 grid). Output: outputs/c15_channel_native_fisher.json
@@ -269,11 +268,11 @@ def total_joint_fisher(template):
     sig_marg_GR = float(np.sqrt(F2inv[0, 0]))
     rho_f_GR_2x2 = float(F2inv[0, 1] / np.sqrt(F2inv[0, 0] * F2inv[1, 1]))
 
-    # b_phi-PRIOR-marginalized 3x3 (the HONEST analog of the paper's floor):
+    # b_phi-PRIOR-marginalized 3x3 (conditional theory-prior sensitivity):
     # the paper does NOT let b_phi float freely -- it adopts the universality
     # value 2 dc(b-1) with a modest 20-30% "b_phi widening" prior. A fully-free
     # A_SDB (= f_NL*b_phi) is degenerate with f_NL (rho~0.99) and is the
-    # pathological no-prior limit. We add a Gaussian prior on A_SDB of relative
+    # unconstrained no-prior limit. We add a Gaussian prior on A_SDB of relative
     # width sigma_ASDB/|A_SDB^fid| = FRAC (default 0.30, the paper's b_phi-30%
     # widening) as a Fisher prior F_prior[1,1] += 1/sigma_ASDB^2. A_SDB^fid =
     # f_NL0 * b_phi is dimensionless O(f_NL0); the parameter is normalized so
@@ -384,7 +383,7 @@ def main():
 
     # channel-native marginalized sigma(f_NL^bounce)
     sig_bnc_marg_free = bnc["sigma_fnl_marg_full_3x3_bphi_free"]
-    sig_bnc_marg = bnc["sigma_fnl_marg_bphi_prior30pct"]   # HONEST floor
+    sig_bnc_marg = bnc["sigma_fnl_marg_bphi_prior30pct"]
     sig_bnc_marg_GR = bnc["sigma_fnl_marg_fNL_AGR_2x2"]
     sig_bnc_fixed = bnc["sigma_fnl_all_fixed"]
 
@@ -406,40 +405,40 @@ def main():
     print(f"  {{f_NL,A_GR}} 2x2 marginalized  : sigma = {sig_bnc_marg_GR:.3f} "
           f"-> {signif(sig_bnc_marg_GR):.2f} sigma")
     print(f"  {{f_NL,b_phi,A_GR}} 3x3, b_phi 30% prior : sigma = {sig_bnc_marg:.3f} "
-          f"-> {signif(sig_bnc_marg):.2f} sigma  (HONEST floor)")
+          f"-> {signif(sig_bnc_marg):.2f} sigma  (conditional 30% theory prior)")
     print(f"  {{f_NL,b_phi,A_GR}} 3x3, b_phi FREE      : sigma = {sig_bnc_marg_free:.3f} "
           f"-> {signif(sig_bnc_marg_free):.2f} sigma  (no-prior limit)")
     print(f"\n  channel-native rho(f_NL,A_GR) 2x2 = {bnc['rho_fNL_AGR_2x2']:+.4f} "
-          f"(REPLACES transferred proxy {PAPER_RHO_PROXY})")
+          f"(compared with transferred proxy {PAPER_RHO_PROXY})")
     print(f"  channel-native rho(f_NL,A_GR) 3x3 = {bnc['rho_fNL_AGR_3x3']:+.4f}")
     print(f"  channel-native rho(f_NL,b_phi)    = {bnc['rho_fNL_ASDB']:+.4f}")
     print(f"\n  local-template 3x3 marg sigma = {sig_loc_marg:.3f} "
           f"(surrogate self-consistency vs Heinrich {HEINRICH_SIGMA_FNL_LOCAL})")
-    print("\n--- paper's current proxy floor (being replaced) ---")
+    print("\n--- superseded transferred-proxy comparison (not a floor) ---")
     print(f"  sigma_marg(proxy -0.868) = {paper_sig_marg_proxy:.3f} -> "
           f"{paper_floor_signif:.2f} sigma (paper's ~1.3sigma floor)")
-    print(f"  headline envelope: 1.3-2.75 sigma")
 
-    # honest verdict: channel-native floor higher or lower?
+    # Conditional comparison; the free-nuisance result remains the lower rung.
     native_floor_signif = signif(sig_bnc_marg)
-    verdict = ("HIGHER (channel-native floor is MORE significant than the proxy)"
+    verdict = ("HIGHER under the conditional 30% prior"
                if native_floor_signif > paper_floor_signif
-               else "LOWER (channel-native floor is LESS significant; paper takes it)")
-    print(f"\n  VERDICT: channel-native 3x3 floor {native_floor_signif:.2f}sigma "
+               else "LOWER under the conditional 30% prior")
+    print(f"\n  COMPARISON: conditional 3x3 result {native_floor_signif:.2f}sigma "
           f"vs proxy {paper_floor_signif:.2f}sigma -> {verdict}")
 
     out = {
         "experiment": ("C15: CHANNEL-NATIVE joint {f_NL^bounce, b_phi, A_GR} "
                        "bispectrum Fisher for SPHEREx, adopting the c13 tree-level "
                        "Gaussian multi-tracer covariance as the Cov_B surrogate. "
-                       "Replaces the transferred rho=-0.868 (c8 SDB) + shape-cosine "
-                       "(c12) proxy with a channel-native marginalized sigma(f_NL)."),
-        "reviewer_objection_closed": (
+                       "Compares the transferred rho=-0.868 proxy with a "
+                       "surrogate-covariance nuisance ladder."),
+        "reviewer_objection_status": (
             "The conservative ~1.3-sigma floor rests on a PROXY correlation "
             "(rho=-0.868 transferred from the c8 power-spectrum SDB channel), not a "
             "channel-native bispectrum-Fisher marginalization; the per-triangle Cov_B "
             "is external. Reviewers invited: compute the channel-native sigma_marg "
-            "once a covariance surrogate is adopted. DONE HERE."),
+            "once a covariance surrogate is adopted. This artifact supplies that "
+            "conditional test while retaining the free-nuisance limit."),
         "provenance": {
             "script": "research/focused_paper_source_integration/scripts/c15_channel_native_fisher.py",
             "imports": "c13_independent_bounce_fisher (validated MT covariance pipeline)",
@@ -458,8 +457,8 @@ def main():
                 "S1_gaussian_only": ("disconnected Gaussian covariance; connected "
                                      "NG (B*B,T,shot loops) neglected -- subdominant "
                                      "at squeezed large scales (Sefusatti+2006; "
-                                     "Chan&Blot2017); rho more robust to NG than "
-                                     "absolute sigma."),
+                                     "Chan&Blot2017); robustness of rho to those "
+                                     "omitted terms is not demonstrated."),
                 "S2_tree_level": "SPT tree-level matter bispectrum, linear k_max=0.2(1+z).",
                 "S3_full_multitracer": ("full 5-sample cosmic-variance-cancelling "
                                         "structure; REPRODUCES Heinrich sigma_local~0.7 "
@@ -468,19 +467,17 @@ def main():
                 "S4_window_shotnoise": ("survey window via finite bin volume V(z) "
                                         "(k_min=kF, k_max linear) + per-sample photo-z "
                                         "damping W_s(k) + shot noise 1/n_s."),
-                "conservatism": ("NG omission is if anything OPTIMISTIC on absolute "
-                                 "sigma; the marginalized-inflation rho ratio is the "
-                                 "robust, load-bearing output."),
+                "conservatism": ("NG omission is optimistic on absolute sigma. Any "
+                                 "cancellation in normalized rho is an expectation, "
+                                 "not a demonstrated robustness result."),
             },
             "bphi_treatment": ("f_NL and b_phi enter the SDB term ONLY as the product "
                                "f_NL*b_phi, so a FULLY-FREE b_phi is analytically "
                                "near-degenerate with f_NL (channel-native rho~0.99) and "
-                               "blows sigma up to ~4.5 -- the pathological no-prior "
-                               "limit, reported but NOT headlined. The paper (and "
-                               "Heinrich) adopt the universality b_phi=2 dc(b-1) with a "
-                               "20-30% widening prior; the HONEST channel-native floor "
-                               "applies that same Gaussian prior on A_SDB=f_NL*b_phi "
-                               "(default 30%)."),
+                               "substantially degrades sigma in the unconstrained "
+                               "no-prior limit. A 30% Gaussian prior on the common "
+                               "A_SDB=f_NL*b_phi amplitude is a declared theory-prior "
+                               "sensitivity choice, not a data-derived constraint."),
         },
         "channel_native_results": {
             "cross_fisher": alpha,
@@ -488,13 +485,13 @@ def main():
             "bounce_template_3x3": bnc,
             "sigma_fnl_bounce_all_fixed": sig_bnc_fixed,
             "sigma_fnl_bounce_marg_fNL_AGR_2x2": sig_bnc_marg_GR,
-            "sigma_fnl_bounce_marg_bphi_prior30pct_HONEST_FLOOR": sig_bnc_marg,
+            "sigma_fnl_bounce_marg_bphi_prior30pct_CONDITIONAL": sig_bnc_marg,
             "sigma_fnl_bounce_marg_bphi_prior20pct": bnc["sigma_fnl_marg_bphi_prior20pct"],
             "sigma_fnl_bounce_marg_bphi_prior50pct": bnc["sigma_fnl_marg_bphi_prior50pct"],
             "sigma_fnl_bounce_marg_bphi_FREE_noprior": sig_bnc_marg_free,
             "significance_all_fixed": signif(sig_bnc_fixed),
             "significance_marg_2x2_fNL_AGR": signif(sig_bnc_marg_GR),
-            "significance_marg_bphi_prior30pct_HONEST_FLOOR": signif(sig_bnc_marg),
+            "significance_marg_bphi_prior30pct_CONDITIONAL": signif(sig_bnc_marg),
             "significance_marg_bphi_FREE_noprior": signif(sig_bnc_marg_free),
             "rho_fNL_AGR_channel_native_2x2": bnc["rho_fNL_AGR_2x2"],
             "rho_fNL_AGR_channel_native_3x3": bnc["rho_fNL_AGR_3x3"],
@@ -505,22 +502,24 @@ def main():
                 "ratio": sig_loc_marg / HEINRICH_SIGMA_FNL_LOCAL,
             },
         },
-        "comparison_to_proxy_floor": {
+        "superseded_transferred_proxy_comparison": {
             "transferred_proxy_rho": PAPER_RHO_PROXY,
             "proxy_sigma_marg": float(paper_sig_marg_proxy),
-            "proxy_floor_significance": float(paper_floor_signif),
-            "paper_headline_envelope_sigma": "1.3-2.75",
-            "channel_native_3x3_floor_significance": float(native_floor_signif),
+            "legacy_proxy_significance_not_a_floor": float(paper_floor_signif),
+            "status": "retained only for reproducible comparison; superseded as a headline or lower bound",
+            "channel_native_3x3_30pct_prior_significance": float(native_floor_signif),
+            "channel_native_3x3_free_bphi_significance": float(signif(sig_bnc_marg_free)),
             "verdict": verdict,
-            "honest_note": ("Whatever the channel-native floor is, the paper takes it. "
-                            "The channel-native rho REPLACES the transferred proxy; the "
-                            "proxy is kept only as a cross-check."),
+            "honest_note": ("The 30% result is conditional on a common theory prior. "
+                            "The free-b_phi result is the unconstrained nuisance limit. "
+                            "Neither is silently substituted for the other."),
         },
         "nothing_fabricated": (
             "Covariance surrogate = the committed, Heinrich-validated c13 tree-level "
             "Gaussian multi-tracer covariance (reproduces sigma_local~0.7 to ~2-11%). "
             "GR-projection template = the committed c12 Verde-Matarrese/Bartolo-Bruni "
-            "squeezed kernel. Bounce shape = committed null_space_analysis coeffs. "
+            "squeezed kernel. Bounce shape = unique exact four-vertex ordered-basis "
+            "coefficients [3,1,-9,5,-33,9]. "
             "b_phi = universality 2 delta_c(b-1). Every number is a direct output of "
             "the joint Fisher run here; no value transferred or tuned."),
     }

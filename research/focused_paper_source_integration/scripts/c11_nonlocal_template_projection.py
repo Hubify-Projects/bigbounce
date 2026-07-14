@@ -6,16 +6,16 @@ INT-v3 P2 — closes the dominant reviewer MAJOR on the r=0.84 template-overlap
 recast: "the local-template amplitude recovery does not model the NON-LOCAL
 bounce-shape tails at non-squeezed configurations."
 
-The prior null_space_analysis.py only projects the bounce shape onto the LOCAL
-template. This script decomposes the SAME committed bounce bispectrum shape onto
+The exact shape analysis projects the bounce shape onto the LOCAL template.
+This script decomposes the same exact bounce bispectrum shape onto
 the standard template basis {LOCAL, EQUILATERAL, ORTHOGONAL} and quantifies:
 
   (1) how much of S_bounce is genuinely local vs equilateral/orthogonal/non-local;
   (2) whether the non-local residual (1 - r_cos^2) carries signal a local
       estimator misses -> a BOUNDED correction, or a material multi-template need.
 
-It reuses, verbatim, the committed shape machinery from null_space_analysis.py:
-  - the reference coefficient set c_known = (2, 7, 3, -12, -69, 19)
+It reuses the exact ordered-basis shape machinery:
+  - the unique coefficient set c_exact = (3, 1, -9, 5, -33, 9)
   - the symmetric degree-9 monomial basis
   - the compute_BNL prefactor 10/(256 k1^2 k2^2 k3^2 (k1^3+k2^3+k3^3))
   - the k1=1 triangle grid (triangle inequality, x3<=x2)
@@ -51,7 +51,7 @@ from itertools import permutations
 import json, os
 
 # ============================================================
-# 1. Committed bounce shape machinery (verbatim from null_space_analysis.py)
+# 1. Exact four-vertex bounce shape machinery
 # ============================================================
 
 def eval_monomials_vectorized(k1, k2, k3):
@@ -65,7 +65,7 @@ def eval_monomials_vectorized(k1, k2, k3):
           k3**4*k1**3*k2**2 + k3**4*k2**3*k1**2)
     return np.stack([m1, m2, m3, m4, m5, m6], axis=-1)
 
-c_known = np.array([2, 7, 3, -12, -69, 19], dtype=float)  # committed reference set
+c_known = np.array([3, 1, -9, 5, -33, 9], dtype=float)
 
 # ============================================================
 # 2. Triangle grid (verbatim conventions: k1=1, x3<=x2, x2+x3>=1)
@@ -88,7 +88,7 @@ BNL = BNL_prefactor * P_vals        # bounce amplitude ratio B_NL(k) (nearly fla
 
 # IMPORTANT: BNL(k) alone is the amplitude RATIO, NOT the bispectrum. The physical
 # bounce bispectrum shape is B_bounce = BNL(k) * S_local(k) (this is exactly the
-# `S_bounce` variable in the committed null_space_analysis.py). We must project the
+# `S_bounce` variable in the exact shape analysis). We must project the
 # PHYSICAL bispectrum, not the bare ratio, onto the standard templates. Projecting
 # the bare ratio would spuriously find the shape "equilateral-like" only because the
 # ratio is flat; the physical bispectrum carries the local 1/k^3 envelope.
@@ -141,7 +141,7 @@ templates = {"LOCAL": T_local, "EQUIL": T_equil, "ORTHO": T_ortho}
 
 print("="*70)
 print("PHYSICAL BOUNCE BISPECTRUM B=BNL*S_local -> {LOCAL,EQUIL,ORTHO} COSINES")
-print("committed shape, c=(2,7,3,-12,-69,19), grid N_tri =", N_tri)
+print("exact four-vertex shape, c=(3,1,-9,5,-33,9), grid N_tri =", N_tri)
 print("="*70)
 
 results = {}

@@ -3,8 +3,7 @@ r"""
 C14 — REDSHIFT-SPACE (RSD) tree-level galaxy-bispectrum Fisher forecast for
       SPHEREx, extending C13 from the real-space monopole to the redshift-space
       bispectrum. Closes the ONE remaining methodological limitation OpenAI names
-      every round ("real-space monopole only; ~18% conservative offset per
-      Heinrich").
+      every round ("real-space monopole only").
 
 WHAT THIS SCRIPT DOES (real computation; every input sourced; nothing fabricated):
   Takes the committed, validated C13 pipeline (same cosmology, same CAMB P(k)
@@ -48,14 +47,15 @@ LINE-OF-SIGHT / mu HANDLING (stated approximation level):
   (l=0,2,4 of SCF99) is contained in this (mu1,phi) integral automatically —
   we integrate the full angular dependence rather than truncating at a fixed
   multipole order, so no l-truncation approximation is made. The (mu1,phi)
-  grid is N_MU x N_PHI Gauss/uniform (chunked to bound memory).
+  grid is N_MU x N_PHI Gauss/uniform (chunked to bound memory). A targeted
+  8x8-versus-12x12 convergence probe is provided by --convergence-only.
 
 VALIDATION GATE (unchanged philosophy from C13 — NEVER tune to match):
   Run the LOCAL template in RSD; the multi-tracer RSD sigma(f_NL^local) MUST
   IMPROVE on the C13 real-space multi-tracer 0.63-0.69 in the direction and by
-  roughly the magnitude Heinrich reports (~18%-ish tighter). Report the RSD-vs-
-  real-space ratio and the RSD-vs-Heinrich ratio HONESTLY. If RSD does not
-  tighten, report that as-is with the likely cause. THEN run the BOUNCE
+  direction Heinrich reports. Report the RSD-vs-real-space ratio and the
+  RSD-vs-Heinrich ratio HONESTLY; a materially different gain is a discrepancy,
+  not validation. THEN run the BOUNCE
   template -> sigma_RSD(f_NL^bounce), r_eff_RSD, significance for -35/16.
 
 Runtime: minutes-to-hours CPU (mu x phi orientation integral x 2,330 triangles
@@ -100,7 +100,8 @@ EPS_SQUEEZE = 1e-4
 
 # RSD orientation integral grid (chunked). N_MU Gauss-Legendre nodes on mu1 in
 # [-1,1]; N_PHI uniform azimuth nodes on [0,2pi). 8x8 is the accuracy/runtime
-# knee for a tree-level bispectrum (verified converged vs 12x12 in-code note).
+# knee for the full tree-level run; --convergence-only measures 8x8 vs 12x12
+# on representative redshift bins using a reduced triangle grid.
 N_MU = 8
 N_PHI = 8
 
@@ -113,9 +114,9 @@ OUT_FILE = OUT_DIR / "c14_rsd_multipole_fisher.json"
 HEINRICH_SIGMA_FNL_LOCAL = 0.7
 # C13 committed real-space multi-tracer results (for the RSD-vs-real ratio)
 C13_MT_LOCAL_MARG = 0.6873943360999341
-C13_MT_BOUNCE_MARG = 0.6886927109752361
+C13_MT_BOUNCE_MARG = 0.6883505676284586
 
-BOUNCE_COEFFS = np.array([2, 7, 3, -12, -69, 19], dtype=float)
+BOUNCE_COEFFS = np.array([3, 1, -9, 5, -33, 9], dtype=float)
 
 
 def _monomials(k1, k2, k3):
@@ -312,14 +313,21 @@ def s_B(i1, i2, i3):
 # Returns arrays over the (mu1,phi) grid: mu1arr, mu2arr, mu3arr (mu of each
 # leg), plus the pair-resultant mu for each of the 3 cyclic Z2 pairings.
 # ============================================================
-_MU_NODES, _MU_W = roots_legendre(N_MU)      # nodes in [-1,1], sum(w)=2
-_PHI_NODES = (np.arange(N_PHI) + 0.5) * (2.0 * np.pi / N_PHI)
-_PHI_W = np.full(N_PHI, 2.0 * np.pi / N_PHI)  # uniform midpoint, sum=2pi
-# full (mu1,phi) mesh, flattened
-_MU1_G, _PHI_G = np.meshgrid(_MU_NODES, _PHI_NODES, indexing="ij")
-_MU1_G = _MU1_G.ravel()
-_PHI_G = _PHI_G.ravel()
-_W_G = np.outer(_MU_W, _PHI_W).ravel()        # combined weight; sum = 4pi
+def set_orientation_grid(n_mu, n_phi):
+    """Set the numerical angular quadrature used by the Fisher integrand."""
+    global N_MU, N_PHI, _MU_NODES, _MU_W, _PHI_NODES, _PHI_W
+    global _MU1_G, _PHI_G, _W_G
+    N_MU, N_PHI = int(n_mu), int(n_phi)
+    _MU_NODES, _MU_W = roots_legendre(N_MU)
+    _PHI_NODES = (np.arange(N_PHI) + 0.5) * (2.0 * np.pi / N_PHI)
+    _PHI_W = np.full(N_PHI, 2.0 * np.pi / N_PHI)
+    _MU1_G, _PHI_G = np.meshgrid(_MU_NODES, _PHI_NODES, indexing="ij")
+    _MU1_G = _MU1_G.ravel()
+    _PHI_G = _PHI_G.ravel()
+    _W_G = np.outer(_MU_W, _PHI_W).ravel()
+
+
+set_orientation_grid(N_MU, N_PHI)
 _NORM_ANG = 1.0 / (4.0 * np.pi)               # (1/4pi) int dmu dphi  average
 
 
@@ -550,6 +558,110 @@ def total_rsd_fisher(template, channel="full"):
     }
 
 
+def orientation_convergence_probe():
+    """Compare 8x8 and 12x12 quadrature on representative z bins.
+
+    The reduced 8-shell triangle grid makes this a targeted angular-resolution
+    test, not a replacement for the completed 20-shell full forecast.
+    """
+    global N_KBIN
+    t0 = time.time()
+    original_nk = N_KBIN
+    selected_bins = [1, 3, 5]  # z ~= 0.3, 0.7, 1.3
+    N_KBIN = 8
+    runs = {}
+    try:
+        for nmu, nphi in ((8, 8), (12, 12)):
+            set_orientation_grid(nmu, nphi)
+            key = f"{nmu}x{nphi}"
+            runs[key] = {}
+            for channel in ("full", "primordial_only"):
+                by_template = {}
+                for template in ("local", "bounce"):
+                    Fff = Fbb = Ffb = 0.0
+                    ntri = 0
+                    for iz in selected_bins:
+                        ff, bb, fb, nt = multitracer_rsd_fisher_zbin(
+                            iz, template, channel=channel)
+                        Fff += ff; Fbb += bb; Ffb += fb; ntri += nt
+                    Finv = np.linalg.inv(np.array([[Fff, Ffb], [Ffb, Fbb]]))
+                    by_template[template] = {
+                        "sigma_fixed": float(1 / np.sqrt(Fff)),
+                        "sigma_bias_marginalized": float(np.sqrt(Finv[0, 0])),
+                        "n_triangles": ntri,
+                    }
+                by_template["r_eff_bias_marginalized"] = (
+                    by_template["local"]["sigma_bias_marginalized"]
+                    / by_template["bounce"]["sigma_bias_marginalized"])
+                runs[key][channel] = by_template
+    finally:
+        N_KBIN = original_nk
+        set_orientation_grid(8, 8)
+
+    def rel(a, b):
+        return float((b - a) / a)
+
+    deltas = {}
+    for channel in ("full", "primordial_only"):
+        deltas[channel] = {
+            "local_sigma_marg_fractional_change_12x12_vs_8x8": rel(
+                runs["8x8"][channel]["local"]["sigma_bias_marginalized"],
+                runs["12x12"][channel]["local"]["sigma_bias_marginalized"]),
+            "bounce_sigma_marg_fractional_change_12x12_vs_8x8": rel(
+                runs["8x8"][channel]["bounce"]["sigma_bias_marginalized"],
+                runs["12x12"][channel]["bounce"]["sigma_bias_marginalized"]),
+            "r_eff_fractional_change_12x12_vs_8x8": rel(
+                runs["8x8"][channel]["r_eff_bias_marginalized"],
+                runs["12x12"][channel]["r_eff_bias_marginalized"]),
+        }
+    artifact = {
+        "description": "Targeted numerical orientation-quadrature convergence; not a full forecast rerun.",
+        "selected_z_bins": [float(Z_C[i]) for i in selected_bins],
+        "triangle_shells": 8,
+        "runs": runs,
+        "fractional_deltas": deltas,
+        "runtime_seconds": round(time.time() - t0, 2),
+        "date_utc": datetime.now(timezone.utc).isoformat(),
+    }
+    probe_path = OUT_DIR / "c14_orientation_quadrature_convergence.json"
+    probe_path.write_text(json.dumps(artifact, indent=2) + "\n")
+
+    if OUT_FILE.exists():
+        full = json.loads(OUT_FILE.read_text())
+        full["orientation_quadrature_convergence"] = artifact
+        full["reviewer_objection_closed"] = (
+            "C14 computes a tree-level orientation-resolved RSD Fisher. Its 34.7% "
+            "tightening is materially larger than Heinrich's ~18% and is reported "
+            "as an optimistic model-dependent discrepancy, not a validation.")
+        full["rsd_model"]["orientation_integral"] = (
+            "Numerical (1/4pi) angular average on an 8x8 Gauss-Legendre(mu) x "
+            "uniform(phi) grid; no explicit ell truncation. Targeted 12x12 "
+            "resolution convergence is attached separately.")
+        full["validation"]["interpretation"] = (
+            "The 34.7% RSD tightening is materially larger than Heinrich's ~18%. "
+            "The difference plausibly reflects this pipeline's tree-level Kaiser "
+            "model, fixed b2/bs2, Gaussian covariance, omitted FoG damping, and "
+            "different nuisance/multipole compression. It is a model discrepancy "
+            "and optimistic sensitivity estimate, not validation of the absolute gain.")
+        full["results"]["r_eff_interpretation"] = (
+            "r_eff_rsd_b_marg=0.9991 is for the FULL derivative dominated by the "
+            "scale-dependent-bias response; r_eff_rsd_primordial_only=0.9981 is the "
+            "separate primordial-transfer shape check. sigma=0.4491 is not a pure "
+            "primordial-bispectrum constraint.")
+        full["limitations"][2] = (
+            "Fingers-of-God/nonlinear velocity damping is omitted. Because damping "
+            "removes high-k information, the absolute RSD sensitivity and 34.7% gain "
+            "are optimistic and may be overstated, even with the nominal linear cut.")
+        full["limitations"][4] = (
+            "The full run uses numerical 8x8 angular quadrature. A targeted low/mid/high-z "
+            "8x8-versus-12x12 resolution test is attached; f->0 recovery is only a "
+            "physics-limit check and is not used as quadrature-convergence evidence.")
+        full["provenance"]["metadata_and_convergence_refresh_utc"] = artifact["date_utc"]
+        OUT_FILE.write_text(json.dumps(full, indent=2) + "\n")
+    print(json.dumps(artifact, indent=2))
+    print(f"Saved: {probe_path}")
+
+
 def main():
     t0 = time.time()
     os.makedirs(OUT_DIR, exist_ok=True)
@@ -639,8 +751,8 @@ def main():
                                             "(Karagiannis+2018 Eq.2.7 multi-tracer tree form)"),
             "orientation_integral": (f"(1/4pi) int_-1^1 dmu1 int_0^2pi dphi over an "
                                      f"{N_MU}x{N_PHI} Gauss-Legendre(mu) x uniform(phi) grid; "
-                                     "full angular dependence integrated — NO l-truncation "
-                                     "(contains l=0,2,4 SCF99 multipole content exactly)"),
+                                     "full angular dependence integrated numerically; no "
+                                     "explicit ell truncation"),
             "fNL_terms": ("SDB Delta b_X = 2 f_NL delta_c (b_X-1)/M(k) carried in Z1 legs + "
                           "Z2 F2-branch [Dalal+2008; Heinrich Eq.17-18] PLUS primordial-transfer "
                           "term 2 Z1^A Z1^B Z1^C M1M2M3 Bphi_template"),
@@ -670,8 +782,8 @@ def main():
                 "RSD ADDS the linear Kaiser velocity information (Z1=b+f mu^2) and the "
                 "velocity Z2/G2 mode-coupling. Both TIGHTEN sigma(f_NL) relative to the "
                 "real-space monopole. Heinrich report the redshift-space multipole "
-                "bispectrum is ~18% tighter than the real-space monopole. The reported "
-                "rsd_improvement_percent is the DIRECT independent check of that offset. "
+                "bispectrum is ~18% tighter than the real-space monopole. A materially "
+                "different result is a model/nuisance discrepancy, not validation. "
                 "Number reported as-is; NOT tuned."),
         },
         "results": {
@@ -697,15 +809,14 @@ def main():
             "for RSD).",
             "Fingers-of-God / nonlinear velocity dispersion NOT modeled (tree-level "
             "Kaiser only); at the linear k_max used this is a small correction and "
-            "would only DEGRADE high-k modes, i.e. the RSD gain reported is if anything "
-            "conservative at the top of the k-range.",
+            "would DEGRADE high-k modes; omitting it makes the RSD sensitivity and gain "
+            "optimistic and may overstate the improvement.",
             "SDB response through the Z2 shift-term's (b_X+f mu^2) factor is kept at "
             "leading order (its cross with SDB is O(f_NL*f) and subdominant); the "
             "dominant SDB response (Z1 legs + Z2 F2-branch) is carried exactly.",
-            "Orientation integral on an " + f"{N_MU}x{N_PHI}" + " grid (Gauss-Legendre mu x "
-            "uniform phi); convergence checked in-code by comparison philosophy to C13's "
-            "monopole limit (f->0 recovers C13). Full angular dependence integrated — no "
-            "multipole truncation.",
+            "Orientation integral on an " + f"{N_MU}x{N_PHI}" + " numerical grid. "
+            "Run --convergence-only for the targeted 8x8-versus-12x12 resolution test; "
+            "the f->0 recovery is a physics-limit check, not convergence evidence.",
         ],
         "nothing_fabricated": (
             "Extends the committed, validated C13 pipeline with the standard redshift-"
@@ -723,4 +834,7 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    if "--convergence-only" in sys.argv:
+        orientation_convergence_probe()
+    else:
+        main()

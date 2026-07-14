@@ -1,95 +1,35 @@
 {
-  "description": "Bispectrum shape overlap analysis for the matter-bounce polynomial. Companion artifact to Golden 2026, 'Testing the Matter Bounce with Primordial Non-Gaussianity: A SPHEREx Sensitivity Recast with a MegaMapper Outlook'. Contains the bispectrum-shape coefficient map, per-configuration overlap values, and null-space scan statistics enabling independent reproduction of the r = 0.84 +/- 0.02 noise-weighted central value.",
-  "paper_version": "v1.7.70",
-  "generator": "null_space_analysis.py",
+  "description": "Unique exact four-vertex shape; no benchmark-fit null-space sampling.",
+  "paper_version": "v1.7.117",
+  "generator": "scripts/exact_shape_analysis.py",
   "reference_coefficients": {
     "c": [
-      2.0,
-      7.0,
       3.0,
-      -12.0,
-      -69.0,
-      19.0
+      1.0,
+      -9.0,
+      5.0,
+      -33.0,
+      9.0
     ],
-    "labels": [
-      "c1",
-      "c2",
-      "c3",
-      "c4",
-      "c5",
-      "c6"
-    ],
-    "basis": "symmetric degree-9 monomials: sum(k^9), sum(k^7*k^2), sum(k^6*k^3), sum(k^5*k^4), sum(k^5*k^2*k^2), sum(k^4*k^3*k^2)",
-    "description": "Reference coefficient set satisfying all three Cai et al. (2009) benchmarks"
+    "basis": "ordered symmetric degree-9 orbit sums",
+    "ordered_5_2_2_note": "six ordered permutations duplicate three distinct monomials twice; c5=-33 corresponds to expanded distinct-monomial coefficient -66",
+    "derivation": "exact re-expansion of the sum of all four cubic vertices"
   },
   "benchmark_configurations": {
-    "equilateral": {
-      "k1": 1.0,
-      "k2": 1.0,
-      "k3": 1.0,
-      "BNL_computed": -3.984375,
-      "BNL_target": -3.984375,
-      "description": "Equilateral triangle: k1=k2=k3=1"
-    },
-    "folded": {
-      "k1": 2.0,
-      "k2": 1.0,
-      "k3": 1.0,
-      "BNL_computed": -2.25,
-      "BNL_target": -2.25,
-      "description": "Folded triangle: k1=2, k2=k3=1"
-    },
-    "squeezed": {
-      "k1": 0.0001,
-      "k2": 1.0,
-      "k3": 1.0,
-      "BNL_computed": -4.374914055698638,
-      "BNL_target": -4.375,
-      "description": "Squeezed triangle: k1=0.0001, k2=k3=1 (target -35/8 = -4.375)"
-    }
+    "squeezed": -2.187499999847382,
+    "equilateral": -1.9921875,
+    "folded": -1.125
   },
   "reference_coefficient_overlap": {
-    "r_amplitude": 0.846896871158403,
-    "r_cosine": 0.9849470135568208,
-    "weight": "Fisher weight w ~ S_local^2",
-    "triangle_configurations": 23098,
-    "description": "Amplitude recovery factor r and shape cosine for the reference coefficient set (2, 7, 3, -12, -69, 19)"
+    "r_amplitude": 0.8354229397420156,
+    "r_cosine": 0.9816782504055881,
+    "weight": "w proportional to S_local squared",
+    "triangle_configurations": 23098
   },
   "noise_weighted_r_values": {
-    "description": "Four noise-weighted overlap values spanning physically motivated weighting schemes, as quoted in the paper body (Section III.B). These values are the basis for r = 0.84 +/- 0.02 headline.",
-    "values": {
-      "scale_dependent_bias_1_over_k2": 0.829,
-      "spherex_like_noise_weighted": 0.83,
-      "flat_uniform": 0.835,
-      "cmb_fisher_signal_only_k2_weighted": 0.876
-    },
+    "status": "legacy weighting-scheme comparison retained as a recast convention; no coefficient uncertainty is assigned",
     "noise_weighted_central_r": 0.84,
-    "noise_weighted_uncertainty": 0.02,
-    "headline": "r = 0.84 +/- 0.02 (noise-weighted central value, Eq. eq:r_noise)"
-  },
-  "null_space_scan": {
-    "n_samples": 10000,
-    "null_space_dimension": 3,
-    "sampling_radius": 50.0,
-    "random_seed": 42,
-    "r_amplitude": {
-      "mean": 0.8465041166785456,
-      "std": 0.131026172302567,
-      "min": 0.5514757452366656,
-      "max": 1.1403644799557078,
-      "median": 0.8476282501834325,
-      "p5": 0.6322836301381375,
-      "p16": 0.7020108236541155,
-      "p84": 0.9891908434068234,
-      "p95": 1.0584437768780968
-    },
-    "r_cosine": {
-      "mean": 0.9850194003268874,
-      "std": 0.0066333957017866395,
-      "min": 0.9708565426782759,
-      "max": 0.9987926597706827
-    },
-    "paper_headline": "r = 0.85 +/- 0.13 (range 0.55--1.14)"
+    "noise_weighted_uncertainty": 0.02
   },
   "triangle_grid": {
     "N_grid": 300,
@@ -102,6 +42,6 @@
       0.01,
       1.0
     ],
-    "constraints": "triangle inequality (x3 <= x2) and (x2 + x3 >= 1), with k1=1"
+    "constraints": "x3 <= x2 and x2+x3 >= 1, k1=1"
   }
 }

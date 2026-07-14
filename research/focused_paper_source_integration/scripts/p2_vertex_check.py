@@ -32,7 +32,7 @@ def Sig_triple_distinct(a, b, c):
         total += ks[i]**a * ks[j]**b * ks[l]**c
     return total
 
-def build_A(Sig_triple):
+def build_vertices(Sig_triple):
     # vertex 1: field redef
     v1 = -sp.Rational(1,2)*eps*sumk3 - eps**2/(32*Pik2)*(
         Sig(7,2) + Sig(6,3) - 2*Sig(5,4)
@@ -45,7 +45,17 @@ def build_A(Sig_triple):
     v4 = eps**3/(96*Pik2)*(
         Sig_single(9) - 3*Sig(7,2) - Sig(6,3)
         + 3*Sig(5,4) - Sig_triple(5,2,2) + Sig_triple(4,3,2))
-    return v1 + v2 + v3 + v4
+    return {
+        "field_redefinition": sp.factor(v1),
+        "zeta_zeta_dot_squared": sp.factor(v2),
+        "zeta_dot_grad_zeta_grad_chi": sp.factor(v3),
+        "zeta_hessian_chi_squared": sp.factor(v4),
+    }
+
+
+def build_A(Sig_triple):
+    """Return the exact sum of the four Cai et al. cubic vertices."""
+    return sp.factor(sum(build_vertices(Sig_triple).values()))
 
 def squeezed(A):
     k = sp.symbols('k', positive=True)
@@ -58,9 +68,19 @@ def squeezed(A):
     return lead, sp.expand(ser)
 
 for name, trip in [("6-perms", Sig_triple_perms), ("distinct-monomial", Sig_triple_distinct)]:
-    A = build_A(trip)
+    vertices = build_vertices(trip)
+    A = sp.factor(sum(vertices.values()))
     lead, ser = squeezed(A)
     print(f"=== {name} ===")
+    print("  per-vertex fNL (squeezed, equilateral):")
+    for vertex_name, vertex_A in vertices.items():
+        vertex_sq, _ = squeezed(vertex_A)
+        vertex_eq = sp.simplify(
+            sp.Rational(10, 3)
+            * vertex_A.subs({k2: k1, k3: k1})
+            / (3 * k1**3)
+        )
+        print(f"    {vertex_name:34s} {str(vertex_sq):>10s}  {str(vertex_eq):>10s}")
     print("  squeezed leading (k1->0):", lead)
     print("  series in k1:", ser)
     # equilateral

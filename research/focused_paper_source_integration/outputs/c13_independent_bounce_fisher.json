@@ -3,11 +3,11 @@
   "reviewer_objection_closed": "the SPHEREx significance rests on a single scalar rescaling r~0.84 of Heinrich's local sigma(f_NL)~0.7; no independent bounce-template Fisher/covariance computed.",
   "provenance": {
     "script": "research/focused_paper_source_integration/scripts/c13_independent_bounce_fisher.py",
-    "git_hash_at_run": "7044c7569b5ab0b9a639bca476c9793a8cd443f5",
-    "date_utc": "2026-07-07T18:48:51.253341+00:00",
+    "git_hash_at_run": "45a11203c80742ad3289951dce1a76fb2dd94b78",
+    "date_utc": "2026-07-14T08:05:53.871804+00:00",
     "camb_version": "1.6.0",
     "python": "3.9.6",
-    "runtime_seconds": 34.61
+    "runtime_seconds": 49.17
   },
   "inputs": {
     "cosmology": {
@@ -60,10 +60,10 @@
       "matter": "SPT tree-level B_m = 2 F2(k1,k2)P(k1)P(k2)+cyc (Scoccimarro 1998)",
       "fNL_terms": "scale-dependent bias Delta b = 2 f_NL delta_c (b1-1)/M(k) [Dalal+2008; Heinrich Eq.17-18] PLUS primordial-transfer term b1^3 M(k1)M(k2)M(k3) B_phi_template",
       "local_template": "B_phi^loc = 2 f_NL [P_phi P_phi + cyc]",
-      "bounce_template": "B_phi^bnc = 2 f_NL (BNL(k)/BNL_squeeze) [P_phi P_phi + cyc], BNL from null_space_analysis.py coeffs [2,7,3,-12,-69,19], squeezed limit normalized to local's",
+      "bounce_template": "B_phi^bnc = 2 f_NL (BNL(k)/BNL_squeeze) [P_phi P_phi + cyc], BNL from exact four-vertex ordered-basis coeffs [3,1,-9,5,-33,9], squeezed limit normalized to local's",
       "covariance": "Gaussian: Var(B)=s_B V P_tot(k1)P_tot(k2)P_tot(k3)/N_tri, P_tot=(b1 W)^2 P_m + 1/n_eff, N_tri=V^2 k1k2k3 dk1dk2dk3/(8pi^4) (Scoccimarro 1998; Sefusatti+2006)",
       "s_B": "6 equilateral / 2 isoceles / 1 scalene",
-      "BNL_squeeze": -4.374914055698638
+      "BNL_squeeze": -2.1874999998473825
     }
   },
   "validation": {
@@ -81,12 +81,12 @@
     "mt_sigma_fnl_local_b_marginalized": 0.6873943360999341,
     "mt_ratio_to_heinrich_b_fixed": 0.8947894178655715,
     "mt_ratio_to_heinrich_b_marginalized": 0.9819919087141916,
-    "mt_sigma_fnl_bounce_b_fixed": 0.6315779672017902,
-    "mt_sigma_fnl_bounce_b_marginalized": 0.6886927109752361,
-    "mt_significance_bounce_-35/16_b_fixed": 3.4635470418509553,
-    "mt_significance_bounce_-35/16_b_marginalized": 3.1763077569128764,
-    "mt_r_eff_b_fixed": 0.9917264772249083,
-    "mt_r_eff_b_marginalized": 0.9981147253998617,
+    "mt_sigma_fnl_bounce_b_fixed": 0.6308443307022219,
+    "mt_sigma_fnl_bounce_b_marginalized": 0.6883505676284586,
+    "mt_significance_bounce_-35/16_b_fixed": 3.4675749523895902,
+    "mt_significance_bounce_-35/16_b_marginalized": 3.177886534671555,
+    "mt_r_eff_b_fixed": 0.9928797993772538,
+    "mt_r_eff_b_marginalized": 0.9986108364349593,
     "mt_local_full": {
       "template": "local",
       "channel": "full",
@@ -100,18 +100,18 @@
     "mt_bounce_full": {
       "template": "bounce",
       "channel": "full",
-      "sigma_fnl_b1_fixed": 0.6315779672017902,
-      "sigma_fnl_bias_marginalized": 0.6886927109752361,
-      "F_ff": 2.5069522256696435,
+      "sigma_fnl_b1_fixed": 0.6308443307022219,
+      "sigma_fnl_bias_marginalized": 0.6883505676284586,
+      "F_ff": 2.512786505234739,
       "F_bb": 5682808.878224448,
-      "F_fb": 1504.9936691089335,
+      "F_fb": 1512.0341568825836,
       "n_triangles_total": 2330
     },
     "primordial_only_channel": {
       "note": "Pure primordial-transfer term only (SDB term dropped). RESULT: r_eff_primordial ~ 0.99 as well \u2014 so r_eff~0.99 is NOT an SDB-dilution artifact. Both channels give ~0.99 because the SPHEREx bispectrum Fisher is squeezed-dominated (signal ~1/k^2 enhanced at low k, covariance smallest there), and in the squeezed limit the bounce and local templates coincide by construction. The paper's r=0.84 uses folded/intermediate-weighted shape metrics; the real survey-covariance weighting is even more squeezed-dominated than CMB-Fisher (paper's own r=0.876), so it recovers ~99% of the bounce amplitude. The paper's r=0.84 is therefore conservative.",
       "sigma_fnl_local_marg": 4.797815337560686,
-      "sigma_fnl_bounce_marg": 4.848004204610711,
-      "r_eff_primordial_marg": 0.9896475199006031,
+      "sigma_fnl_bounce_marg": 4.794607669287632,
+      "r_eff_primordial_marg": 1.0006690157973928,
       "mt_local_prim_full": {
         "template": "local",
         "channel": "primordial_only",
@@ -125,11 +125,11 @@
       "mt_bounce_prim_full": {
         "template": "bounce",
         "channel": "primordial_only",
-        "sigma_fnl_b1_fixed": 4.378328690180233,
-        "sigma_fnl_bias_marginalized": 4.848004204610711,
-        "F_ff": 0.052165488219362684,
+        "sigma_fnl_b1_fixed": 4.315059007798975,
+        "sigma_fnl_bias_marginalized": 4.794607669287632,
+        "F_ff": 0.05370645934405821,
         "F_bb": 5682808.878224448,
-        "F_fb": 233.7887966090118,
+        "F_fb": 240.82928438266168,
         "n_triangles_total": 2330
       }
     }
@@ -215,12 +215,12 @@
     },
     "bounce": {
       "template": "bounce",
-      "sigma_fnl_b1_fixed": 16.853712249315862,
-      "sigma_fnl_b1_marginalized": 19.998673144953845,
-      "rho_fnl_b1": -0.5383184249702948,
-      "F_ff": 0.003520536493249231,
+      "sigma_fnl_b1_fixed": 16.644609519522536,
+      "sigma_fnl_b1_marginalized": 19.770626023219677,
+      "rho_fnl_b1": -0.5396557065191478,
+      "F_ff": 0.0036095476368096105,
       "F_bb": 22852.06905983855,
-      "F_fb": 4.82843549419601,
+      "F_fb": 4.90123951922029,
       "n_triangles_total": 2330,
       "per_zbin": [
         {
@@ -232,7 +232,7 @@
           "sigz_eff": 0.0792828365319178,
           "V": 583087088.4819176,
           "n_tri": 521,
-          "sigma_fnl_zbin_bfixed": 133.12151849909355
+          "sigma_fnl_zbin_bfixed": 129.73180693645745
         },
         {
           "z": 0.30000000000000004,
@@ -243,7 +243,7 @@
           "sigz_eff": 0.07558881421027364,
           "V": 3389758515.6671643,
           "n_tri": 417,
-          "sigma_fnl_zbin_bfixed": 32.49318120996219
+          "sigma_fnl_zbin_bfixed": 32.051529690869
         },
         {
           "z": 0.5,
@@ -254,7 +254,7 @@
           "sigz_eff": 0.08529676755992546,
           "V": 7389777814.468676,
           "n_tri": 390,
-          "sigma_fnl_zbin_bfixed": 37.2565880963115
+          "sigma_fnl_zbin_bfixed": 36.799066181618535
         },
         {
           "z": 0.7,
@@ -265,7 +265,7 @@
           "sigz_eff": 0.09587905242377716,
           "V": 11448991153.240204,
           "n_tri": 360,
-          "sigma_fnl_zbin_bfixed": 38.47848632184889
+          "sigma_fnl_zbin_bfixed": 38.01908891377894
         },
         {
           "z": 0.9,
@@ -276,7 +276,7 @@
           "sigz_eff": 0.09981545934729297,
           "V": 15014878485.961075,
           "n_tri": 344,
-          "sigma_fnl_zbin_bfixed": 36.26570776386092
+          "sigma_fnl_zbin_bfixed": 35.87102292965399
         },
         {
           "z": 1.3,
@@ -287,19 +287,19 @@
           "sigz_eff": 0.12901415616014156,
           "V": 59754881701.52247,
           "n_tri": 298,
-          "sigma_fnl_zbin_bfixed": 52.64714094329305
+          "sigma_fnl_zbin_bfixed": 52.03973330213911
         }
       ]
     },
     "independent_r_eff_sigma_local_over_sigma_bounce": {
-      "b1_fixed": 0.9231327856519216,
-      "b1_marginalized": 0.9435296727638199,
+      "b1_fixed": 0.9347299087454449,
+      "b1_marginalized": 0.9544129511128143,
       "paper_asserted_r": 0.84,
       "note": "r_eff is the INDEPENDENT analog of the paper's scalar r: it is the ratio of the two independently-computed sigmas, computed with the SAME survey covariance so the conservative offsets cancel. This is the direct, no-Heinrich-import test of the r=0.84 rescaling."
     },
     "bounce_significance_for_fNL_-35/16": {
-      "b1_fixed": 0.1297933634822083,
-      "b1_marginalized": 0.10938225671996443
+      "b1_fixed": 0.13142393021802473,
+      "b1_marginalized": 0.11064394204972991
     },
     "paper_scalar_rescale_for_comparison": {
       "sigma_bounce": 0.8333333333333333,
@@ -313,5 +313,5 @@
     "Tree-level, linear k_max=0.2(1+z); no b2/bs2 nuisance marginalization (b2 enters the gravitational term, weakly degenerate with f_NL where the SDB term dominates).",
     "The RATIO sigma_bounce/sigma_local (= 1/r_eff) is far more robust than either absolute sigma: the conservative offsets (RSD, multi-tracer, tree-level) largely CANCEL in the ratio. The r_eff output is therefore the load-bearing, independent check of the paper's r=0.84 rescaling \u2014 the absolute sigma_local validation ratio quantifies the known offset from Heinrich's fuller machinery."
   ],
-  "nothing_fabricated": "Every input sourced: SPHEREx n(z),b(z) from the committed Dore+2014 public table; cosmology Planck2018; matter P(k) and transfer from CAMB; SPT F2 kernel and Gaussian bispectrum covariance from Scoccimarro1998/Sefusatti2006; bounce BNL shape from the committed null_space_analysis.py. No number tuned to match Heinrich; the validation ratio is reported as-is with its physical cause."
+  "nothing_fabricated": "Every input sourced: SPHEREx n(z),b(z) from the committed Dore+2014 public table; cosmology Planck2018; matter P(k) and transfer from CAMB; SPT F2 kernel and Gaussian bispectrum covariance from Scoccimarro1998/Sefusatti2006; bounce BNL shape from the exact four-vertex re-expansion. No number tuned to match Heinrich; the validation ratio is reported as-is with its physical cause."
 }

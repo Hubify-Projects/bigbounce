@@ -1,14 +1,15 @@
 {
   "experiment": "C14: REDSHIFT-SPACE (RSD) tree-level galaxy-bispectrum Fisher forecast for SPHEREx \u2014 extends C13 real-space monopole to the redshift-space bispectrum (Kaiser Z1 + SCF99/Sefusatti Z2, orientation-integrated) \u2014 closes the standing 'real-space monopole only' methodological limitation.",
-  "reviewer_objection_closed": "Every round OpenAI flags: 'real-space monopole bispectrum only; ~18% conservative offset per Heinrich because redshift-space multipoles add information.' C14 computes the full redshift-space tree bispectrum Fisher.",
+  "reviewer_objection_closed": "C14 computes a tree-level orientation-resolved RSD Fisher. Its 34.7% tightening is materially larger than Heinrich's ~18% and is reported as an optimistic model-dependent discrepancy, not a validation.",
   "provenance": {
     "script": "research/focused_paper_source_integration/scripts/c14_rsd_multipole_fisher.py",
     "extends": "c13_independent_bounce_fisher.py (committed, validated)",
-    "git_hash_at_run": "cee1924f3a67aa1408bc1163d260d922eecb10f4",
-    "date_utc": "2026-07-08T19:13:56.005796+00:00",
+    "git_hash_at_run": "45a11203c80742ad3289951dce1a76fb2dd94b78",
+    "date_utc": "2026-07-14T08:42:19.206373+00:00",
     "camb_version": "1.6.0",
     "python": "3.9.6",
-    "runtime_seconds": 1193.97
+    "runtime_seconds": 2120.15,
+    "metadata_and_convergence_refresh_utc": "2026-07-14T08:56:59.345848+00:00"
   },
   "rsd_model": {
     "kaiser_Z1": "Z1_X(k,mu) = b_X + f mu^2  (Kaiser 1987), per tracer X",
@@ -24,7 +25,7 @@
     "Z2_kernel": "Z2(k1,k2) = b1 F2 + f mu12^2 G2 + (f muK kK/2)[mu1/k1 (b1+f mu2^2) + mu2/k2 (b1+f mu1^2)]  (Scoccimarro-Couchman-Frieman 1999 Eq.13; Sefusatti 2006 Eq.15); b2=0 held CONSISTENT with the C13 base (no b2 in base pipeline)",
     "G2_kernel": "G2 = 3/7 + 1/2 cos12 (k1/k2+k2/k1) + 4/7 cos12^2 (SPT velocity divergence)",
     "multitracer_tree_assignment": "B_s^ABC = 2[ Z1^A(k1)Z1^B(k2)Z2^C(k1,k2) P1P2 + cyc ], Z2 carries the output(closure)-leg tracer (Karagiannis+2018 Eq.2.7 multi-tracer tree form)",
-    "orientation_integral": "(1/4pi) int_-1^1 dmu1 int_0^2pi dphi over an 8x8 Gauss-Legendre(mu) x uniform(phi) grid; full angular dependence integrated \u2014 NO l-truncation (contains l=0,2,4 SCF99 multipole content exactly)",
+    "orientation_integral": "Numerical (1/4pi) angular average on an 8x8 Gauss-Legendre(mu) x uniform(phi) grid; no explicit ell truncation. Targeted 12x12 resolution convergence is attached separately.",
     "fNL_terms": "SDB Delta b_X = 2 f_NL delta_c (b_X-1)/M(k) carried in Z1 legs + Z2 F2-branch [Dalal+2008; Heinrich Eq.17-18] PLUS primordial-transfer term 2 Z1^A Z1^B Z1^C M1M2M3 Bphi_template",
     "covariance": "Gaussian multi-tracer, orientation-dependent Kaiser power Pgg_s^XY(k,mu)=(b_X+f mu^2)(b_Y+f mu^2)W_X W_Y P_m + dXY/n_X; Kronecker-inverse per leg; N_modes=V^2 k1k2k3 dk^3/(8pi^4)"
   },
@@ -56,7 +57,7 @@
     "rsd_over_realspace_ratio_b_marg": 0.652755679930356,
     "rsd_improvement_percent": 34.7244320069644,
     "rsd_over_heinrich_ratio_b_marg": 0.6410007960588402,
-    "interpretation": "RSD ADDS the linear Kaiser velocity information (Z1=b+f mu^2) and the velocity Z2/G2 mode-coupling. Both TIGHTEN sigma(f_NL) relative to the real-space monopole. Heinrich report the redshift-space multipole bispectrum is ~18% tighter than the real-space monopole. The reported rsd_improvement_percent is the DIRECT independent check of that offset. Number reported as-is; NOT tuned."
+    "interpretation": "The 34.7% RSD tightening is materially larger than Heinrich's ~18%. The difference plausibly reflects this pipeline's tree-level Kaiser model, fixed b2/bs2, Gaussian covariance, omitted FoG damping, and different nuisance/multipole compression. It is a model discrepancy and optimistic sensitivity estimate, not validation of the absolute gain."
   },
   "results": {
     "rsd_local_full": {
@@ -72,11 +73,11 @@
     "rsd_bounce_full": {
       "template": "bounce",
       "channel": "full",
-      "sigma_fnl_b_fixed": 0.4168344662595231,
-      "sigma_fnl_bias_marginalized": 0.44925875145292926,
-      "F_ff": 5.755363477868152,
+      "sigma_fnl_b_fixed": 0.41652328671900246,
+      "sigma_fnl_bias_marginalized": 0.44912018536039106,
+      "F_ff": 5.763966215908574,
       "F_bb": 15104851.049551606,
-      "F_fb": 3477.8879041334844,
+      "F_fb": 3489.9084348945485,
       "n_triangles_total": 2330
     },
     "rsd_local_primordial_only": {
@@ -92,27 +93,109 @@
     "rsd_bounce_primordial_only": {
       "template": "bounce",
       "channel": "primordial_only",
-      "sigma_fnl_b_fixed": 3.8957151018293876,
-      "sigma_fnl_bias_marginalized": 4.2558574758403696,
-      "F_ff": 0.0658909277028816,
+      "sigma_fnl_b_fixed": 3.8413928381398383,
+      "sigma_fnl_bias_marginalized": 4.209306586726441,
+      "F_ff": 0.06776767021834702,
       "F_bb": 15104851.049551606,
-      "F_fb": 401.6444502820163,
+      "F_fb": 413.6649810430767,
       "n_triangles_total": 2330
     },
-    "sigma_fnl_bounce_rsd_b_marg": 0.44925875145292926,
-    "sigma_fnl_bounce_rsd_b_fixed": 0.4168344662595231,
-    "r_eff_rsd_b_marg": 0.9987575217846376,
-    "r_eff_rsd_b_fixed": 0.9945168027538827,
-    "r_eff_rsd_primordial_only": 0.9872291365594927,
-    "bounce_significance_-35/16_b_marg": 4.869131637225755,
-    "bounce_significance_-35/16_b_fixed": 5.247886576245958
+    "sigma_fnl_bounce_rsd_b_marg": 0.44912018536039106,
+    "sigma_fnl_bounce_rsd_b_fixed": 0.41652328671900246,
+    "r_eff_rsd_b_marg": 0.9990656663118664,
+    "r_eff_rsd_b_fixed": 0.9952597943022274,
+    "r_eff_rsd_primordial_only": 0.9981469428820205,
+    "bounce_significance_-35/16_b_marg": 4.87063390002092,
+    "bounce_significance_-35/16_b_fixed": 5.251807209222722,
+    "r_eff_interpretation": "r_eff_rsd_b_marg=0.9991 is for the FULL derivative dominated by the scale-dependent-bias response; r_eff_rsd_primordial_only=0.9981 is the separate primordial-transfer shape check. sigma=0.4491 is not a pure primordial-bispectrum constraint."
   },
   "limitations": [
     "Tree-level (no one-loop bispectrum); linear k_max=0.2(1+z) per z-bin \u2014 IDENTICAL scale cut to C13 and Heinrich's linear-regime forecast.",
     "b2=bs2=0 held consistent with the C13 base pipeline (no galaxy quadratic bias marginalization). b2 enters Z2 additively; marginalizing it would loosen sigma somewhat, so the b1-marginalized RSD sigma is an OPTIMISTIC-leaning bound on the bias-nuisance axis (same caveat as C13, now stated for RSD).",
-    "Fingers-of-God / nonlinear velocity dispersion NOT modeled (tree-level Kaiser only); at the linear k_max used this is a small correction and would only DEGRADE high-k modes, i.e. the RSD gain reported is if anything conservative at the top of the k-range.",
+    "Fingers-of-God/nonlinear velocity damping is omitted. Because damping removes high-k information, the absolute RSD sensitivity and 34.7% gain are optimistic and may be overstated, even with the nominal linear cut.",
     "SDB response through the Z2 shift-term's (b_X+f mu^2) factor is kept at leading order (its cross with SDB is O(f_NL*f) and subdominant); the dominant SDB response (Z1 legs + Z2 F2-branch) is carried exactly.",
-    "Orientation integral on an 8x8 grid (Gauss-Legendre mu x uniform phi); convergence checked in-code by comparison philosophy to C13's monopole limit (f->0 recovers C13). Full angular dependence integrated \u2014 no multipole truncation."
+    "The full run uses numerical 8x8 angular quadrature. A targeted low/mid/high-z 8x8-versus-12x12 resolution test is attached; f->0 recovery is only a physics-limit check and is not used as quadrature-convergence evidence."
   ],
-  "nothing_fabricated": "Extends the committed, validated C13 pipeline with the standard redshift-space tree bispectrum (Kaiser 1987; Scoccimarro-Couchman-Frieman 1999; Sefusatti 2006; Karagiannis+2018 multi-tracer tree form). Growth rate f(z) from the same CAMB Planck2018 cosmology (fsigma8/sigma8). Every survey input identical to C13. No number tuned; the RSD-vs-real-space improvement is reported as computed with its physical cause."
+  "nothing_fabricated": "Extends the committed, validated C13 pipeline with the standard redshift-space tree bispectrum (Kaiser 1987; Scoccimarro-Couchman-Frieman 1999; Sefusatti 2006; Karagiannis+2018 multi-tracer tree form). Growth rate f(z) from the same CAMB Planck2018 cosmology (fsigma8/sigma8). Every survey input identical to C13. No number tuned; the RSD-vs-real-space improvement is reported as computed with its physical cause.",
+  "orientation_quadrature_convergence": {
+    "description": "Targeted numerical orientation-quadrature convergence; not a full forecast rerun.",
+    "selected_z_bins": [
+      0.30000000000000004,
+      0.7,
+      1.3
+    ],
+    "triangle_shells": 8,
+    "runs": {
+      "8x8": {
+        "full": {
+          "local": {
+            "sigma_fixed": 0.5327266257884304,
+            "sigma_bias_marginalized": 0.562734720334715,
+            "n_triangles": 122
+          },
+          "bounce": {
+            "sigma_fixed": 0.533562173386329,
+            "sigma_bias_marginalized": 0.5628608619227866,
+            "n_triangles": 122
+          },
+          "r_eff_bias_marginalized": 0.9997758920603563
+        },
+        "primordial_only": {
+          "local": {
+            "sigma_fixed": 3.325991143948129,
+            "sigma_bias_marginalized": 3.663020976061878,
+            "n_triangles": 122
+          },
+          "bounce": {
+            "sigma_fixed": 3.3520713031705895,
+            "sigma_bias_marginalized": 3.6495727890421272,
+            "n_triangles": 122
+          },
+          "r_eff_bias_marginalized": 1.0036848660917599
+        }
+      },
+      "12x12": {
+        "full": {
+          "local": {
+            "sigma_fixed": 0.5327260346463425,
+            "sigma_bias_marginalized": 0.5627340582626128,
+            "n_triangles": 122
+          },
+          "bounce": {
+            "sigma_fixed": 0.5335615794873474,
+            "sigma_bias_marginalized": 0.5628601985664642,
+            "n_triangles": 122
+          },
+          "r_eff_bias_marginalized": 0.9997758940778321
+        },
+        "primordial_only": {
+          "local": {
+            "sigma_fixed": 3.325995060095032,
+            "sigma_bias_marginalized": 3.663026257736343,
+            "n_triangles": 122
+          },
+          "bounce": {
+            "sigma_fixed": 3.3520752756829184,
+            "sigma_bias_marginalized": 3.6495779402225623,
+            "n_triangles": 122
+          },
+          "r_eff_bias_marginalized": 1.0036848966466956
+        }
+      }
+    },
+    "fractional_deltas": {
+      "full": {
+        "local_sigma_marg_fractional_change_12x12_vs_8x8": -1.176526129149128e-06,
+        "bounce_sigma_marg_fractional_change_12x12_vs_8x8": -1.1785440546741467e-06,
+        "r_eff_fractional_change_12x12_vs_8x8": 2.017927975703141e-09
+      },
+      "primordial_only": {
+        "local_sigma_marg_fractional_change_12x12_vs_8x8": 1.4418903138727883e-06,
+        "bounce_sigma_marg_fractional_change_12x12_vs_8x8": 1.4114475125852512e-06,
+        "r_eff_fractional_change_12x12_vs_8x8": 3.044275820525576e-08
+      }
+    },
+    "runtime_seconds": 459.15,
+    "date_utc": "2026-07-14T08:56:59.345848+00:00"
+  }
 }
