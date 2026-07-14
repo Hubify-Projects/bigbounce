@@ -1,0 +1,15 @@
+start_utc=2026-07-14T21:17:09Z
+paper_commit=bdbb2242199a8eb50bdee825b98d42ea8a3de523
+artifact_commit=7befce143848b925998a3e6ecc850aa510ab3a94
+source_sha256=e08323215579b843a43d6288643f339442560da45bd3ffd91a762dcfb1702233
+pdf_sha256=4c450a6706b2f4e53faac5ffbc6ec720f21e45c7406aa7186ef830f3fef33f71
+page_count=7
+profile=CQG-NOTE
+route=codex-chatgpt-subscription-only
+model=gpt-5.6-sol
+effort=high
+prompt_sha256=c019de9e02b7ed4a1196ab9e4414a6e6fe98b050c498193ee58664f9d60749d3
+events_local=/Users/houstongolden/.cache/bigbounce/review-telemetry/P1A-v1A.0.123-codex-subscription-20260714T211709Z.jsonl
+end_utc=2026-07-14T21:22:31Z
+elapsed_seconds=322
+exit_code=0

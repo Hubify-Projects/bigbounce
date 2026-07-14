@@ -20,6 +20,28 @@ This tracker logs each revision round and which issues have been addressed.
 
 ## Revision Rounds
 
+### P1A v1A.0.123: Exact-PDF CQG Note subscription confirmation (2026-07-14)
+
+**Input:** exact 7-page PDF from paper commit `bdbb2242199a8eb50bdee825b98d42ea8a3de523`, with the bounded artifact correction at commit `7befce143848b925998a3e6ecc850aa510ab3a94`; TeX SHA-256 `e08323215579b843a43d6288643f339442560da45bd3ffd91a762dcfb1702233`; PDF SHA-256 `4c450a6706b2f4e53faac5ffbc6ec720f21e45c7406aa7186ef830f3fef33f71`.
+
+**Valid route:** ChatGPT-subscription-authenticated Codex CLI `gpt-5.6-sol` high **ACCEPT** (0 MAJOR / 0 MINOR) in 322 seconds. The receipt records `Logged in using ChatGPT`, scrubbed API environment variables, and `openai_api_used: false`; no Anthropic/Claude was used. This is exact-artifact automated review evidence, not a human CQG decision.
+
+**Truth audit:** both v1A.0.122 reproducibility minors are closed. The commit-pinned NJL product now contains exactly the three `M_Pl` rows described by the manuscript, every active/PDF artifact link pins the correction commit, and the reviewer found the central ECH contact/transparency claims preserved.
+
+| Finding/gate | Status | Evidence or remaining requirement |
+|---|---|---|
+| `M_Pl`-only three-row cutoff scope | **CLOSED** | Script/JSON SHA-256 `69681ea3…843c` / `a53d19e1…1d3f`; artifact and manuscript scopes agree |
+| Mutable active artifact links | **CLOSED** | Active/PDF links pin artifact commit `7befce14`; no `blob/main` artifact link remains in the exact PDF |
+| Exact seven-page visual/build proof | **CLOSED** | Two clean Tectonic builds; 0 errors, undefined references, or overfull boxes; all seven pages visually audited |
+| Human CQG/editorial decision | **OPEN — HUMAN GATE** | Automated ACCEPT cannot stand in for editor/referee acceptance |
+| Post-push route resolution | **OPEN — RELEASE GATE** | Verify public PDF and commit-pinned artifact URLs after the synchronization commit is pushed |
+| Immutable archive/DOI | **OPEN — RELEASE GATE** | Deposit the source/PDF/artifact bundle and record the real immutable identifier |
+| Alternate regulator | **OPEN — EXTERNAL SCIENCE GATE** | Demonstrate regulator robustness beyond the stated hard-cutoff convention |
+| Matched Lorentzian stress/observable | **OPEN — EXTERNAL SCIENCE GATE** | Evaluate a matched physical state and observable rather than infer one from the Euclidean benchmark |
+| Renormalized axial expectation | **OPEN — EXTERNAL SCIENCE GATE** | Supply a state-specific renormalized expectation value before making a phenomenological claim |
+
+No readiness uplift; P1A remains capped at 62. Exact receipt, prompt, raw, normalized result, auth record, dispatch log, and manifest: `INT_v3/ROUND_2026-07-14-P1A-v1A.0.123-EXACTPDF-4c450a67-CQG-NOTE-CODEX-SUBSCRIPTION-CONFIRM/`.
+
 ### P2 v1.7.122: Exact-PDF PRD automated-ACCEPT confirmation (2026-07-14)
 
 **Input:** exact 10-page PDF from manuscript/source commit `3e4a8cbf206fa8f15f69eb350d3e4ad61568ab52`; TeX SHA-256 `9144e1be05ba38e37271f8ffbb44bf9d52b73235b352f6672abbbcdaf56aaf1a`; PDF SHA-256 `4097bac5a9930df7fa73e4a4567a7c60156f6cadb4321e51146dd237e13225c9`. Review evidence, this tracker entry, the P2 SSOT update, and the site board are frozen together in one commit.

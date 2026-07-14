@@ -57,6 +57,41 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p1a-v1a0123-cqg-subscription-accept-2026-07-14",
+    dateISO: "2026-07-14",
+    timePT: "14:17–14:22",
+    kind: "internal-cc",
+    title:
+      "P1A v1A.0.123 — exact-PDF subscription confirmation closes both reproducibility minors",
+    papers: ["P1A"],
+    summary:
+      "A ChatGPT-subscription-authenticated Codex CLI gpt-5.6-sol high reviewer returned ACCEPT with 0 MAJOR and 0 MINOR tags on the exact seven-page CQG Note (paper commit bdbb2242; PDF SHA-256 4c450a67…33f71). No OpenAI API and no Anthropic/Claude were used. The three-row M_Pl-only cutoff scope now matches the pinned NJL product, all active/PDF artifact links pin correction commit 7befce14, and the central ECH contact/transparency claims are preserved. Human CQG review, post-push route verification, immutable archive/DOI, alternate-regulator work, matched Lorentzian analysis, and a state-specific renormalized axial expectation remain open. No readiness uplift; the verified cap remains 62.",
+    keyTakeaways: [
+      "The subscription receipt records ChatGPT login, gpt-5.6-sol high, scrubbed API credentials, no OpenAI API use, and a 322-second successful run.",
+      "Both bounded v1A.0.122 minors are closed on the exact artifact: the cutoff table has exactly the stated three M_Pl rows and active artifact links are commit-pinned.",
+      "Two clean builds and a seven-page visual audit remain part of the closure proof; the PDF/source hashes are frozen in the receipt and revision tracker.",
+      "Automated ACCEPT is not journal acceptance; all human, external-science, and immutable-release gates remain explicit.",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 0,
+      note: "No manuscript defect remains from this bounded subscription confirmation. Six typed human, release, and external-science gates remain, so readiness does not move.",
+    },
+    links: [
+      {
+        label: "Bounded confirmation result",
+        href: `${PR}/INT_v3/ROUND_2026-07-14-P1A-v1A.0.123-EXACTPDF-4c450a67-CQG-NOTE-CODEX-SUBSCRIPTION-CONFIRM/RESULT.md`,
+      },
+      {
+        label: "Subscription receipt",
+        href: `${PR}/INT_v3/ROUND_2026-07-14-P1A-v1A.0.123-EXACTPDF-4c450a67-CQG-NOTE-CODEX-SUBSCRIPTION-CONFIRM/CODEX_SUBSCRIPTION_RECEIPT.json`,
+      },
+      {
+        label: "Raw Codex report",
+        href: `${PR}/INT_v3/ROUND_2026-07-14-P1A-v1A.0.123-EXACTPDF-4c450a67-CQG-NOTE-CODEX-SUBSCRIPTION-CONFIRM/CODEX_SUBSCRIPTION_P1A_v1A.0.123_RAW.md`,
+      },
+    ],
+  },
+  {
     id: "p2-v17122-prd-exact-accept-confirm-2026-07-14",
     dateISO: "2026-07-14",
     timePT: "12:42–12:52",
