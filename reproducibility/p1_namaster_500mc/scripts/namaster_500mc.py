@@ -2,13 +2,10 @@
 NaMaster EB Birefringence Analysis — Production 500-MC Run
 ==========================================================
 
-Reproduces the canonical Paper 1 §VI birefringence numbers:
-  - β = 0.27° (Paper 1 prediction) recovered as 0.238° (bias 0.032°)
-  - SNR = 20.32σ at ACT sensitivity (f_sky = 0.32, n_side = 512, ℓ_max = 1024,
-    noise = 10 µK·arcmin)
-  - β = 0.342° (Planck+ACT observed) recovered as 0.302°, SNR = 25.71σ
-  - Null β = 0 returns SNR = 0.0
-  - Consistency P1-prediction vs observation = 0.77σ
+Recomputes the Paper 1 §VI birefringence validation using the exact
+NaMaster bandpower-window operator.  The pre-2026-07-14 result evaluated the
+theory at effective-ell bin centres; that approximation is retained only in
+the superseded-results directory and is not used here.
 
 Canonical ground-truth output:
   pipelines/h200_results/pod1_namaster_umap_2026-04-29/results/namaster-birefringence/summary.json
@@ -20,7 +17,8 @@ Method:
   4. Apply ACT-like survey mask (Galactic |b| > 20°, dec ∈ [-65°, +25°],
      2° apodization → f_sky ≈ 0.32).
   5. Decouple pseudo-Cℓ with NaMaster (binned, 30 ≤ ℓ ≤ 3·NSIDE).
-  6. Estimate β by χ² fit of C_ℓ^EB to sin(2β)cos(2β) C_ℓ^EE.
+  6. Estimate β by fitting the fully rotated [EE,EB,BE,BB] theory after
+     contraction through the identical NaMaster bandpower-window tensor.
   7. Aggregate across 500 Monte Carlo realizations per β.
 
 Provenance:
@@ -39,8 +37,7 @@ Reproducing on a fresh GPU pod:
   # Output: results/namaster-birefringence/summary.json
 
 Random seeds are deterministic: seed_base=42, seeds 42..541 across the 500 MC
-realizations. Re-running the script will reproduce the canonical numbers to
-machine precision.
+realizations. Set NAMASTER_NREAL for a bounded timing/diagnostic run.
 """
 
 import os
@@ -75,6 +72,14 @@ check_install("pymaster", "pymaster")
 import healpy as hp
 import pymaster as nmt
 
+from windowed_rotation import (
+    build_rotation_response,
+    recover_beta_deg,
+    rotate_eb_spectra,
+    validate_window_equivalence,
+    windowed_bandpowers,
+)
+
 print("=" * 70)
 print("NAMASTER EB BIREFRINGENCE ANALYSIS — PRODUCTION 500MC")
 print(f"  NaMaster version: {nmt.__version__}")
@@ -94,7 +99,7 @@ BETA_OBS_ERR = np.deg2rad(0.094)   # 1σ uncertainty
 
 T_CMB_UK = 2.725e6
 F_SKY = 0.40                       # ACT survey coverage target
-N_REAL = 500                       # Production: 500 MC realizations
+N_REAL = int(os.environ.get("NAMASTER_NREAL", "500"))
 SEED_BASE = 42                     # Deterministic for reproducibility
 
 NOISE_LEVEL_UKARMIN = 10.0
@@ -147,6 +152,30 @@ def make_survey_mask(nside, f_sky, galactic_cut_deg=20.0):
 mask = make_survey_mask(NSIDE, F_SKY)
 actual_fsky = mask.sum() / hp.nside2npix(NSIDE)
 
+n_ell_bins = 20
+ell_min, ell_max = 30, 3 * NSIDE
+ells_bins = np.linspace(ell_min, ell_max, n_ell_bins + 1, dtype=int)
+bandpower_bin = nmt.NmtBin.from_edges(ells_bins[:-1], ells_bins[1:])
+f_dummy = nmt.NmtField(
+    mask,
+    [np.zeros(hp.nside2npix(NSIDE)), np.zeros(hp.nside2npix(NSIDE))],
+)
+workspace = nmt.NmtWorkspace()
+workspace.compute_coupling_matrix(f_dummy, f_dummy, bandpower_bin)
+rotation_response = build_rotation_response(workspace, cl_ee, cl_bb)
+window_equivalence_max_abs = validate_window_equivalence(
+    workspace, rotation_response, BETA_PAPER1
+)
+if not np.isfinite(window_equivalence_max_abs) or window_equivalence_max_abs > 1e-10:
+    raise RuntimeError(
+        "NaMaster window contraction failed equivalence check: "
+        f"max_abs={window_equivalence_max_abs:.6e}"
+    )
+print(
+    "  Exact bandpower-window response verified against "
+    f"decouple(couple(theory)); max|delta|={window_equivalence_max_abs:.3e}"
+)
+
 # -------------------------------------------------------------------------
 # [3/6] Birefringence simulation + EB measurement
 # -------------------------------------------------------------------------
@@ -156,18 +185,17 @@ def apply_birefringence(Q, U, beta):
     cos2b, sin2b = np.cos(2 * beta), np.sin(2 * beta)
     return cos2b * Q - sin2b * U, sin2b * Q + cos2b * U
 
-def simulate_and_measure(beta, n_real=N_REAL, seed_base=SEED_BASE):
-    n_ell_bins = 20
-    ell_min, ell_max = 30, 3 * NSIDE
-    ells_bins = np.linspace(ell_min, ell_max, n_ell_bins + 1, dtype=int)
-    b = nmt.NmtBin.from_edges(ells_bins[:-1], ells_bins[1:])
+def simulate_and_measure_all(betas, n_real=N_REAL, seed_base=SEED_BASE):
+    """Measure all betas from one identical-seed noisy map per realization.
 
-    f_dummy = nmt.NmtField(mask, [np.zeros(hp.nside2npix(NSIDE)),
-                                  np.zeros(hp.nside2npix(NSIDE))])
-    wsp = nmt.NmtWorkspace()
-    wsp.compute_coupling_matrix(f_dummy, f_dummy, b)
-
-    all_cl_eb = []
+    Uniform Q/U rotation commutes with the scalar mask.  We therefore rotate
+    the four coupled spectra algebraically, which is numerically identical to
+    constructing a new rotated field but requires only one spherical harmonic
+    transform per realization.  ``windowed_rotation.rotate_eb_spectra`` is
+    regression-tested against the direct field route.
+    """
+    betas = [float(beta) for beta in betas]
+    all_cl_eb = {beta: [] for beta in betas}
     for i in range(n_real):
         np.random.seed(seed_base + i)
         maps = hp.synfast([np.zeros(LMAX + 1), cl_ee, cl_bb, np.zeros(LMAX + 1)],
@@ -175,38 +203,43 @@ def simulate_and_measure(beta, n_real=N_REAL, seed_base=SEED_BASE):
         Q, U = maps[1], maps[2]
         Q += np.random.normal(0, np.sqrt(NOISE_VAR), len(Q))
         U += np.random.normal(0, np.sqrt(NOISE_VAR), len(U))
-        Q_rot, U_rot = apply_birefringence(Q, U, beta)
-        f_pol = nmt.NmtField(mask, [Q_rot, U_rot])
+        f_pol = nmt.NmtField(mask, [Q, U])
         cl_coupled = nmt.compute_coupled_cell(f_pol, f_pol)
-        cl_decoupled = wsp.decouple_cell(cl_coupled)
-        all_cl_eb.append(cl_decoupled[1])
+        for beta in betas:
+            rotated_coupled = rotate_eb_spectra(cl_coupled, beta)
+            all_cl_eb[beta].append(workspace.decouple_cell(rotated_coupled)[1])
 
-    all_cl_eb = np.array(all_cl_eb)
-    mean_cl_eb = all_cl_eb.mean(axis=0)
-    std_cl_eb = all_cl_eb.std(axis=0)
-    ell_effs = b.get_effective_ells()
-    cl_ee_binned = np.array([cl_ee[int(l)] if int(l) < len(cl_ee) else 0
-                             for l in ell_effs])
-    cl_eb_theory = np.sin(2 * beta) * np.cos(2 * beta) * cl_ee_binned
-    snr_total = np.sqrt(np.sum((cl_eb_theory / (std_cl_eb + 1e-20)) ** 2))
-    return {
-        "ell_effs": ell_effs,
-        "cl_eb_mean": mean_cl_eb,
-        "cl_eb_std": std_cl_eb,
-        "cl_eb_theory": cl_eb_theory,
-        "snr_total": float(snr_total),
-        "beta_deg": float(np.rad2deg(beta)),
-    }
+    ell_effs = bandpower_bin.get_effective_ells()
+    cl_eb_null_theory = windowed_bandpowers(rotation_response, 0.0)[1]
+    results = {}
+    for beta in betas:
+        ensemble = np.asarray(all_cl_eb[beta])
+        mean_cl_eb = ensemble.mean(axis=0)
+        std_cl_eb = ensemble.std(axis=0)
+        cl_eb_theory = windowed_bandpowers(rotation_response, beta)[1]
+        snr_total = np.sqrt(
+            np.sum(((cl_eb_theory - cl_eb_null_theory) /
+                    (std_cl_eb + 1e-20)) ** 2)
+        )
+        results[beta] = {
+            "ell_effs": ell_effs,
+            "cl_eb_mean": mean_cl_eb,
+            "cl_eb_std": std_cl_eb,
+            "cl_eb_theory": cl_eb_theory,
+            "all_cl_eb": ensemble,
+            "snr_total": float(snr_total),
+            "beta_deg": float(np.rad2deg(beta)),
+        }
+    return results
 
 print(f"  Running {N_REAL} MC realizations per β value (seed_base={SEED_BASE})...")
-print("  β=0.00° (null hypothesis)...")
-result_null = simulate_and_measure(0.0)
+print("  Joint identical-seed ensemble: β=0.00°, 0.27°, 0.342°...")
+joint_results = simulate_and_measure_all([0.0, BETA_PAPER1, BETA_OBS])
+result_null = joint_results[0.0]
 print(f"    SNR = {result_null['snr_total']:.2f}")
-print("  β=0.27° (Paper 1 prediction)...")
-result_paper1 = simulate_and_measure(BETA_PAPER1)
+result_paper1 = joint_results[BETA_PAPER1]
 print(f"    SNR = {result_paper1['snr_total']:.2f}")
-print("  β=0.342° (Minami+Komatsu observed)...")
-result_obs = simulate_and_measure(BETA_OBS)
+result_obs = joint_results[BETA_OBS]
 print(f"    SNR = {result_obs['snr_total']:.2f}")
 
 # -------------------------------------------------------------------------
@@ -214,28 +247,35 @@ print(f"    SNR = {result_obs['snr_total']:.2f}")
 # -------------------------------------------------------------------------
 print("\n[4/6] β recovery test (bias check)...")
 
-def recover_beta(cl_eb_measured, cl_ee_binned, ell_effs):
-    beta_grid = np.linspace(-1.0, 1.0, 2001)  # degrees
-    chi2 = np.zeros_like(beta_grid)
-    for j, bg in enumerate(beta_grid):
-        bg_rad = np.deg2rad(bg)
-        cl_theory = np.sin(2 * bg_rad) * np.cos(2 * bg_rad) * cl_ee_binned
-        chi2[j] = np.sum((cl_eb_measured - cl_theory) ** 2)
-    return beta_grid[np.argmin(chi2)]
-
-ell_effs = result_paper1["ell_effs"]
-cl_ee_binned = np.array([cl_ee[int(l)] if int(l) < len(cl_ee) else 0 for l in ell_effs])
-
-beta_recovered_paper1 = recover_beta(result_paper1["cl_eb_mean"], cl_ee_binned, ell_effs)
-beta_recovered_obs = recover_beta(result_obs["cl_eb_mean"], cl_ee_binned, ell_effs)
-beta_recovered_null = recover_beta(result_null["cl_eb_mean"], cl_ee_binned, ell_effs)
+beta_recovered_paper1 = float(
+    recover_beta_deg(result_paper1["cl_eb_mean"], rotation_response)
+)
+beta_recovered_obs = float(
+    recover_beta_deg(result_obs["cl_eb_mean"], rotation_response)
+)
+beta_recovered_null = float(
+    recover_beta_deg(result_null["cl_eb_mean"], rotation_response)
+)
+beta_per_real_paper1 = recover_beta_deg(
+    result_paper1["all_cl_eb"], rotation_response
+)
 
 print(f"  Input β=0.270°, recovered β={beta_recovered_paper1:.3f}°")
 print(f"  Input β=0.342°, recovered β={beta_recovered_obs:.3f}°")
 print(f"  Input β=0.000°, recovered β={beta_recovered_null:.3f}°")
 
-bias_paper1 = abs(beta_recovered_paper1 - 0.270)
-print(f"  Bias on Paper 1 value: {bias_paper1:.4f}°")
+bias_paper1_signed = beta_recovered_paper1 - 0.270
+bias_paper1 = abs(bias_paper1_signed)
+beta_scatter_paper1 = float(np.std(beta_per_real_paper1, ddof=1)) if N_REAL > 1 else None
+beta_mean_se_paper1 = (
+    beta_scatter_paper1 / np.sqrt(N_REAL) if beta_scatter_paper1 is not None else None
+)
+print(f"  Bias on Paper 1 value: {bias_paper1_signed:+.4f}°")
+if beta_scatter_paper1 is not None:
+    print(
+        f"  Per-realization beta scatter: {beta_scatter_paper1:.4f}°; "
+        f"MC mean SE: {beta_mean_se_paper1:.4f}°"
+    )
 
 # -------------------------------------------------------------------------
 # [5/6] Detection significance
@@ -263,6 +303,14 @@ summary = {
     "noise_level_ukarmin": NOISE_LEVEL_UKARMIN,
     "n_mc_realizations": N_REAL,
     "seed_base": SEED_BASE,
+    "theory_operator": "NmtWorkspace.get_bandpower_windows exact tensor contraction",
+    "window_shape": list(rotation_response["window_shape"]),
+    "window_equivalence_max_abs": window_equivalence_max_abs,
+    "software": {
+        "numpy": np.__version__,
+        "healpy": hp.__version__,
+        "pymaster": nmt.__version__,
+    },
     "paper1_prediction_deg": 0.27,
     "observed_value_deg": 0.342,
     "observed_error_deg": 0.094,
@@ -271,6 +319,9 @@ summary = {
             "input_beta_deg": 0.27,
             "recovered_beta_deg": float(beta_recovered_paper1),
             "bias_deg": float(bias_paper1),
+            "signed_bias_deg": float(bias_paper1_signed),
+            "per_realization_beta_std_deg": beta_scatter_paper1,
+            "mc_mean_standard_error_deg": beta_mean_se_paper1,
             "snr_namaster": float(snr_paper1),
             "snr_ratio_to_observed": round(snr_paper1 / max(snr_obs, 0.001), 3),
         },
@@ -305,6 +356,17 @@ print(f"  β recovery bias: {bias_paper1:.4f}°")
 
 with open(os.path.join(OUTPUT_DIR, "summary.json"), "w") as f:
     json.dump(summary, f, indent=2)
+
+np.savez_compressed(
+    os.path.join(OUTPUT_DIR, "bandpowers.npz"),
+    ell_eff=result_paper1["ell_effs"],
+    null=result_null["all_cl_eb"],
+    beta_0p270=result_paper1["all_cl_eb"],
+    beta_0p342=result_obs["all_cl_eb"],
+    theory_null=result_null["cl_eb_theory"],
+    theory_0p270=result_paper1["cl_eb_theory"],
+    theory_0p342=result_obs["cl_eb_theory"],
+)
 
 print(json.dumps(summary, indent=2))
 print("\nCOMPLETE")
