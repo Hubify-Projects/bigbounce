@@ -15,19 +15,35 @@ One battery, six configs, all at beta = 0.27 deg, N_REAL = 500, seed_base = 42
   mask_b30         — Galactic cut |b| > 30 deg (META-M6)
   purify_b         — NmtField(..., purify_b=True) on canonical mask (META-M6)
 
-Canonical anchors (pod run 2026-04-29): recovered 0.238 deg, bias 0.032 deg.
+The pre-2026-07-14 effective-ell-template anchors are retained only as
+superseded evidence.  Every fit below uses the exact NaMaster bandpower-window
+operator that generated the decoupled estimator.
 Output: results/c10_robustness_battery.json
 """
+import argparse
 import json
 import os
-import sys
 import time
 from multiprocessing import Pool
+from pathlib import Path
 
 import numpy as np
 
+from windowed_rotation import (
+    build_rotation_response,
+    recover_beta_deg,
+    validate_window_equivalence,
+)
+from checkpoint_io import publish_json, validate_json_receipt
+
 BASE = os.path.dirname(os.path.abspath(__file__))
-OUT = os.path.join(BASE, "..", "results", "c10_robustness_battery.json")
+DEFAULT_OUT = os.path.join(
+    BASE, "..", "results", "exact_window_500mc", "c10_robustness_battery.json"
+)
+OUT = os.environ.get("C10_OUTPUT", DEFAULT_OUT)
+CANONICAL_BANDPOWERS = os.path.join(
+    BASE, "..", "results", "exact_window_500mc", "bandpowers.npz"
+)
 
 NSIDE = 512
 LMAX = 2 * NSIDE
@@ -95,33 +111,52 @@ def run_config(cfg):
     f_dummy = nmt.NmtField(mask, [zero, zero], purify_b=purify)
     wsp = nmt.NmtWorkspace()
     wsp.compute_coupling_matrix(f_dummy, f_dummy, b)
+    response = build_rotation_response(wsp, cl_ee, cl_bb)
+    equivalence_max_abs = validate_window_equivalence(wsp, response, BETA)
+    if not np.isfinite(equivalence_max_abs) or equivalence_max_abs > 1e-10:
+        raise RuntimeError(
+            f"{name}: exact-window equivalence failure {equivalence_max_abs:.6e}"
+        )
 
-    cos2b, sin2b = np.cos(2 * BETA), np.sin(2 * BETA)
-    all_eb = []
-    for i in range(N_REAL):
-        np.random.seed(SEED_BASE + i)
-        maps = hp.synfast([np.zeros(LMAX + 1), cl_ee, cl_bb, np.zeros(LMAX + 1)],
-                          NSIDE, lmax=LMAX, new=True)
-        Q, U = maps[1], maps[2]
-        Q += np.random.normal(0, noise_sigma, npix)
-        U += np.random.normal(0, noise_sigma, npix)
-        Qr, Ur = cos2b * Q - sin2b * U, sin2b * Q + cos2b * U
-        f = nmt.NmtField(mask, [Qr, Ur], purify_b=purify)
-        all_eb.append(wsp.decouple_cell(nmt.compute_coupled_cell(f, f))[1])
+    if cfg.get("canonical_artifact"):
+        if not os.path.isfile(CANONICAL_BANDPOWERS):
+            raise FileNotFoundError(
+                "canonical exact-window bandpowers must finish before robustness battery"
+            )
+        with np.load(CANONICAL_BANDPOWERS) as canonical:
+            all_eb = canonical["beta_0p270"]
+        if len(all_eb) != N_REAL:
+            raise ValueError(
+                f"canonical artifact has {len(all_eb)} realizations, expected {N_REAL}"
+            )
+    else:
+        cos2b, sin2b = np.cos(2 * BETA), np.sin(2 * BETA)
+        all_eb = []
+        for i in range(N_REAL):
+            np.random.seed(SEED_BASE + i)
+            maps = hp.synfast([np.zeros(LMAX + 1), cl_ee, cl_bb, np.zeros(LMAX + 1)],
+                              NSIDE, lmax=LMAX, new=True)
+            Q, U = maps[1], maps[2]
+            Q += np.random.normal(0, noise_sigma, npix)
+            U += np.random.normal(0, noise_sigma, npix)
+            Qr, Ur = cos2b * Q - sin2b * U, sin2b * Q + cos2b * U
+            f = nmt.NmtField(mask, [Qr, Ur], purify_b=purify)
+            all_eb.append(wsp.decouple_cell(nmt.compute_coupled_cell(f, f))[1])
 
     all_eb = np.array(all_eb)
     mean_eb, std_eb = all_eb.mean(axis=0), all_eb.std(axis=0)
     ell_effs = b.get_effective_ells()
-    ee_binned = np.array([cl_ee[int(l)] if int(l) < len(cl_ee) else 0 for l in ell_effs])
 
     def fit(weights=None, ell_max=None):
         sel = np.ones(len(ell_effs), bool) if ell_max is None else (ell_effs <= ell_max)
-        w = np.ones(sel.sum()) if weights is None else weights[sel]
-        grid = np.linspace(-1.0, 1.0, 2001)
-        chi2 = [np.sum(w * (mean_eb[sel] - np.sin(2 * np.deg2rad(g)) *
-                            np.cos(2 * np.deg2rad(g)) * ee_binned[sel]) ** 2)
-                for g in grid]
-        return float(grid[int(np.argmin(chi2))])
+        return float(
+            recover_beta_deg(
+                mean_eb,
+                response,
+                weights=weights,
+                selection=sel,
+            )
+        )
 
     fits = {"unweighted": fit()}
     if cfg.get("extra_fits"):
@@ -132,6 +167,11 @@ def run_config(cfg):
            "purify_b": purify, "apod_fwhm_deg": cfg.get("apod_fwhm", 2.0),
            "gal_cut_deg": cfg.get("gal_cut", 20.0),
            "bb_model": "camb_lensed" if cfg.get("camb_bb") else "0.05*EE",
+           "theory_operator": "NmtWorkspace.get_bandpower_windows exact tensor contraction",
+           "window_shape": list(response["window_shape"]),
+           "window_equivalence_max_abs": equivalence_max_abs,
+           "software": {"numpy": np.__version__, "healpy": hp.__version__,
+                        "pymaster": nmt.__version__},
            "noise_sigma_pix_uK": round(float(noise_sigma), 4),
            "recovered_beta_deg": {k: round(v, 4) for k, v in fits.items()},
            "bias_deg": {k: round(v - 0.27, 4) for k, v in fits.items()},
@@ -141,7 +181,7 @@ def run_config(cfg):
 
 
 CONFIGS = [
-    {"name": "canonical_refit", "extra_fits": True},
+    {"name": "canonical_refit", "extra_fits": True, "canonical_artifact": True},
     {"name": "lensing_bb_camb", "camb_bb": True},
     {"name": "apod_fwhm_0p5", "apod_fwhm": 0.5},
     {"name": "apod_fwhm_3p0", "apod_fwhm": 3.0},
@@ -149,16 +189,82 @@ CONFIGS = [
     {"name": "purify_b", "purify_b": True},
 ]
 
-if __name__ == "__main__":
+def parse_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--only-config", choices=[item["name"] for item in CONFIGS])
+    parser.add_argument("--output", type=Path)
+    parser.add_argument("--force", action="store_true")
+    return parser.parse_args()
+
+
+def main():
+    args = parse_args()
     t0 = time.time()
     n_pool = int(os.environ.get("C10_POOL", "3"))
-    with Pool(processes=min(n_pool, len(CONFIGS))) as pool:
-        results = pool.map(run_config, CONFIGS)
+    requested = args.only_config or os.environ.get("C10_CONFIGS", "").strip()
+    selected = CONFIGS
+    if requested:
+        names = {name.strip() for name in requested.split(",") if name.strip()}
+        selected = [config for config in CONFIGS if config["name"] in names]
+        missing = names - {config["name"] for config in selected}
+        if missing:
+            raise ValueError(f"unknown C10_CONFIGS names: {sorted(missing)}")
+    if args.output is not None:
+        output = args.output
+    elif args.only_config:
+        output = Path(DEFAULT_OUT).parent / "shards" / f"c10_{args.only_config}.json"
+    else:
+        output = Path(OUT)
+    names = [config["name"] for config in selected]
+    if not args.force and output.exists():
+        try:
+            validate_json_receipt(
+                output,
+                expected_suite="c10",
+                expected_configs=names,
+                expected_n_real=N_REAL,
+                expected_seed_start=SEED_BASE,
+                expected_seed_end=SEED_BASE + N_REAL - 1,
+            )
+        except (FileNotFoundError, ValueError, json.JSONDecodeError):
+            pass
+        else:
+            print(f"validated existing shard; skipping: {output}")
+            return
+    if len(selected) == 1:
+        results = [run_config(selected[0])]
+    else:
+        with Pool(processes=min(n_pool, len(selected))) as pool:
+            results = pool.map(run_config, selected)
     out = {"experiment": "c10 NaMaster robustness battery (R23conf META-M1/M2/M3/M5/M6)",
            "beta_injected_deg": 0.27, "n_real": N_REAL, "seed_base": SEED_BASE,
-           "canonical_anchor": {"recovered_beta_deg": 0.238, "bias_deg": -0.032},
+           "superseded_effective_ell_anchor": {
+               "recovered_beta_deg": 0.238,
+               "bias_deg": -0.032,
+               "status": "superseded_by_exact_bandpower_window_operator"
+           },
            "configs": results, "total_runtime_s": round(time.time() - t0, 1)}
-    os.makedirs(os.path.dirname(OUT), exist_ok=True)
-    with open(OUT, "w") as f:
-        json.dump(out, f, indent=1)
+    receipt = publish_json(
+        output,
+        out,
+        {
+            "suite": "c10",
+            "config_names": names,
+            "configs": selected,
+            "n_real": N_REAL,
+            "seed_start": SEED_BASE,
+            "seed_end": SEED_BASE + N_REAL - 1,
+            "runtime_s": out["total_runtime_s"],
+            "theory_operator": "NmtWorkspace.get_bandpower_windows exact tensor contraction",
+            "window_equivalence_max_abs": max(
+                result["window_equivalence_max_abs"] for result in results
+            ),
+            "software": results[0]["software"],
+        },
+    )
     print(json.dumps(out, indent=1))
+    print(json.dumps(receipt, indent=2))
+
+
+if __name__ == "__main__":
+    main()
