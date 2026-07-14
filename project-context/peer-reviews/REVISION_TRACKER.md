@@ -33,7 +33,7 @@ This tracker logs each revision round and which issues have been addressed.
 | 170 core versus 11 tail | **OPEN — ACCEPTANCE-RELEVANT CONTRACT** | Make the <0.1" core and chance-compatible 0.1–1" association tier explicit; preserve all 181 rows; infer no purity |
 | Shifted-position control | **CLOSED BY COMPUTE** | Parent 2,468 vs 86.69+/-14.42; strict 181 vs 76.19+/-13.30; tail 11 vs 75.56+/-13.01 |
 | Original-member sensitivity | **CLOSED BY COMPUTE** | 180/181 retained; only P3-DESI-000030 removed at 1.979009" |
-| Warning-population comparison | **CLOSED BY EXACT PRODUCT** | Exact warned original_score median is 5.841820; prior 6.211950 audit value corrected |
+| Warning-population comparison | **CLOSED BY EXACT PRODUCT** | Exact warned `original_score` median is 5.841820; the prior audit's different value is superseded |
 | TARGET_RA/DEC coordinate lineage | **OPEN — BOUNDED PROVENANCE** | Recover immutable upstream semantics or explicitly bound the result to coordinate association |
 | Definitive submission bundle | **OPEN — WORKFLOW MAJOR** | One manifest-led checksum-bound primary/auxiliary/AAS-table bundle; DOI remains pending |
 | Legacy scores / warning-free / viewer hierarchy | **STALE/CLOSED** | Existing text already labels legacy metadata, ZWARN=0, and viewer evidence as subordinate |

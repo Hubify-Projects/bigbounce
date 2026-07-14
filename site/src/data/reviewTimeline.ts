@@ -69,7 +69,7 @@ export const reviewRounds: ReviewRound[] = [
     keyTakeaways: [
       "At 0.1 arcsec the strict core is 170 versus 0.625 shifted; the 11-row 0.1–1 arcsec tail is chance-compatible and must remain a lower-confidence association tier.",
       "The original-member rule retains 180/181 rows and removes only P3-DESI-000030 at 1.979009 arcsec.",
-      "The exact warned original_score median is 5.841820; the earlier 6.211950 audit value was erroneous and is not propagated.",
+      "The exact warned original_score median is 5.841820; the prior audit's different value is superseded and is not propagated.",
       "Parallel dispatch reduced critical-path latency by 40.7%; the evidence manifest passed 9/9 checks.",
     ],
     gapMetric: {
