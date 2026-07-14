@@ -1,7 +1,13 @@
 {
   "status": "PASS",
   "scope": "P3 v3.2.0-r4 clean-room catalog rebuild and validator closure",
-  "source_revision": "14876eee97afc99215f8b36f22f10d2f5a699bb9",
+  "base_revision_before_closure": "14876eee97afc99215f8b36f22f10d2f5a699bb9",
+  "exact_closure_script_bytes": {
+    "committed_revision": "36fda4770669ed8c2dddf03ec9623aa77289ebf8",
+    "builder_sha256": "0a62fa8019b0893b0e7d9f33654904660a3777671749b0d4b2ad8f7b9c98d969",
+    "validator_sha256": "428958dfc99f9cb7f9bdcb38d52dc1673d0146e9969809dbc9dad858c4496f06",
+    "note": "The replay used these closure script bytes while they were uncommitted; they are frozen without byte changes in commit 36fda477."
+  },
   "command_contract": {
     "workspace": "fresh mktemp directory outside the repository",
     "build": "python3 pipelines/p3_anomaly_engine/scripts/build_desi_science_catalog_v320_r2.py --clusters <fresh>/pathc_unique_objects.parquet --anomalies <fresh>/desi_dr1_anomalies.parquet --fits pipelines/p5_desi_chirality/data/desi_zall.fits --output-dir <fresh>/desi_science_catalog_v3.2.0-r2 --chunk-rows 200000 --fits-sha256 2d95ad99361039b556c402b49e0e7c84df5f00106dc5731d44476a58b128b49b",

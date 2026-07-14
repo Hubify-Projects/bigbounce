@@ -58,6 +58,8 @@ def write_readme(path: Path, entries: list[dict[str, str]]) -> None:
         "Columns: 43 tab-separated columns",
         "Missing values: none",
         "License: CC BY 4.0",
+        "Manuscript relation: separate full-catalog digital asset; the printed",
+        "  12-row example table is illustrative and does not share this 43-column schema.",
         "",
         "Source release:",
         "  https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog",
@@ -88,7 +90,7 @@ def main() -> None:
     release = repo / "pipelines/p3_anomaly_engine/desi_science_catalog_v3.2.0-r2"
     source = release / "desi_dr1_science_anomaly_candidates_v3.2.0-r2.parquet"
     dictionary_path = release / "DATA_DICTIONARY.md"
-    output = repo / "pipelines/p3_anomaly_engine/aas_submission_v3.2.0-r3"
+    output = repo / "pipelines/p3_anomaly_engine/aas_submission_v3.2.0-r4"
     output.mkdir(parents=True, exist_ok=True)
 
     frame = pd.read_parquet(source)

@@ -1,0 +1,76 @@
+{
+  "status": "PASS_WITH_EXTERNAL_GATES_DISCLOSED",
+  "paper_version": "v3.2.0-r4",
+  "compile": {
+    "command": "PATH=$HOME/Library/TinyTeX/bin/universal-darwin:$PATH latexmk -pdf -interaction=nonstopmode -halt-on-error paper3_apjs.tex",
+    "pages": 13,
+    "page_size": "letter, 612 x 792 pt",
+    "pdf_bytes": 437494,
+    "fatal_errors": 0,
+    "undefined_references": 0,
+    "undefined_citations": 0,
+    "overfull_boxes": 0,
+    "underfull_boxes": 0,
+    "stuck_floats": 0,
+    "remaining_warning": "aastex/hyperref nameref compatibility notice only; no manuscript defect"
+  },
+  "visual_audit": {
+    "renderer": "pdftoppm -png -r 110",
+    "pages_inspected": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+    "overflow": 0,
+    "column_overlap": 0,
+    "clipped_tables_or_figures": 0,
+    "broken_glyphs": 0,
+    "verdict": "PASS"
+  },
+  "fonts": {
+    "pdffonts_rows": 30,
+    "all_embedded": true,
+    "note": "The matplotlib figure PDFs include embedded Type 3 DejaVu subsets; manuscript text fonts are embedded Type 1 subsets."
+  },
+  "links": {
+    "pdf_uri_annotations": 35,
+    "unique_uris": 18,
+    "live_http_200": 15,
+    "doi_bot_protected_403": [
+      "https://doi.org/10.1093/mnras/stag010"
+    ],
+    "local_git_paths_pending_origin_main_push": [
+      {
+        "uri": "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p3_anomaly_engine/audits/p3_v320_r3_public_viewer_audit.json",
+        "local_path": "pipelines/p3_anomaly_engine/audits/p3_v320_r3_public_viewer_audit.json",
+        "local_status": "PASS; tracked in local main, origin/main is behind"
+      },
+      {
+        "uri": "https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p3_anomaly_engine/aas_submission_v3.2.0-r4",
+        "local_path": "pipelines/p3_anomaly_engine/aas_submission_v3.2.0-r4",
+        "local_status": "PASS; included in this closure commit, origin/main push is outside this lane"
+      }
+    ],
+    "broken_local_paths": 0
+  },
+  "source_checks": {
+    "page_1_version_and_timestamp": "PASS: 2026-07-14 06:57 PT — v3.2.0-r4",
+    "raw_path_overflow": 0,
+    "future_work_deferrals": 0,
+    "broken_reference_markers": 0,
+    "aas_full_table": "PASS: 181 rows x 43 columns; exact typed TSV round-trip; zero nulls",
+    "aas_digital_asset_doi": null
+  },
+  "frozen_artifacts": {
+    "source": {
+      "path": "proof/paper3_apjs.v3.2.0-r4.tex",
+      "sha256": "8f61e26219b976514e19d4192ac75d7611e58882b1c04994a3160171cad76fdb",
+      "bytes": 56428
+    },
+    "pdf": {
+      "path": "proof/paper3_apjs.v3.2.0-r4.pdf",
+      "sha256": "a0cfe715667b54122566122e976a3c7fedbc2881a747698cc0d431e5e0f086e8",
+      "bytes": 437494
+    },
+    "aas_readme_sha256": "3ccef65389a96c6bb5f94332276113ac56b0c14f0e8dc3e4e205af7c6c12e3bd",
+    "aas_tab3_tsv_sha256": "8d13592e8b9bb007b24c496c138e53787ad98df476f9ff487dabc851732faa45",
+    "aas_manifest_sha256": "52a3d6ffbb57e3f0cf36f7d053673c7c13a5cdeac8a68f5fa35b099e7ecc2c92"
+  },
+  "readiness_boundary": "This closure passes reproducibility, manuscript, package, and visual integrity gates. Acceptance/minor-only status requires a fresh exact-PDF review panel; the AAS DOI and origin/main publication are external integration gates."
+}
