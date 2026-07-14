@@ -55,7 +55,7 @@
       "id": "CMUX-001",
       "status": "done",
       "title": "Build and harden the local mirrored launcher and evaluation contract",
-      "source_prompts": ["2026-07-13 14:49 PT cmux architecture", "2026-07-13 15:38 PT continue", "2026-07-13 15:56 PT sync and continue"],
+      "source_prompts": ["2026-07-13 14:49 PT cmux architecture", "2026-07-13 15:38 PT continue", "2026-07-13 15:56 PT sync and continue", "2026-07-13 18:10 PT continue"],
       "completion_criteria": [
         "Launch equivalent Codex and Claude orchestrator teams from an immutable task and repository snapshot",
         "Use subscription-authenticated CLIs without injecting provider API keys",
@@ -64,10 +64,13 @@
         "Deny target-repository writes for every run-owned surface and invalidate the seal before failure rollback"
       ],
       "evidence": [
-        "learning-cmux-with-agents commits e2e2496 and ec6f48e contain the hardened mirrored launcher and evaluation contract",
-        "all 28 local tests pass",
+        "learning-cmux-with-agents code commit fb815f8 and documentation commit be65a6f contain the completed provider-route readiness gate and contract",
+        "all 37 local tests pass",
+        "before any CMUX create, one subscription-authenticated completed turn runs per unique provider/model/effort route with alternate API/cloud environment variables scrubbed, an exact sentinel bound to the absolute executable digest, and hash-only 0444 receipts",
+        "a route failure publishes typed pre-release invalidation and creates zero workspaces",
         "every run-owned surface has process-enforced target-repository write denial; this is not hostile same-user or independently launched raw-CMUX isolation",
-        "caller-bound receipts plus bounded settle prove provider-auth preflight and short process liveness, not a completed model turn, quota availability, or submission",
+        "route receipts prove one completed subscription-authenticated turn per unique route at launch time; per-surface caller-bound receipts plus bounded settle prove provider-auth preflight and short process liveness",
+        "readiness does not prove a completed turn for every interactive session, later quota availability, final submission, or hostile same-user isolation",
         "abort invalidation is atomically published before rollback and supervisors terminate the complete provider process group",
         "the result seal is atomic and one-way; capabilities use private token files and shared envelopes and receipts do not contain plaintext capability tokens",
         "commits intentionally unpushed because configured origin is IndyDevDan's upstream repository"
@@ -84,7 +87,7 @@
         "Neither team mutates BigBounce or sees the other team's result before dual submission",
         "Both sealed results reveal successfully and are compared for quality, latency, and coordination behavior",
         "Run artifacts record the exact models, CLI authentication path, snapshot hash, and outcome",
-        "Provider-auth/liveness receipts are not treated as proof of a completed model turn or available quota"
+        "Route readiness is treated as launch-time proof for each unique provider/model/effort route, not completed-turn proof for every interactive session, later quota availability, or final submission"
       ],
       "latest_attempt": {
         "run_id": "20260714T000136Z-024658000-bfee86cfcc83",
@@ -180,7 +183,7 @@
     "Only the lease holder may drive browser, verdict, or ledger writes.",
     "Do not modify live review manifests, prompts.md, SSOT, site state, or generated .agents skills in this lane.",
     "CMUX dogfood stays read-only until You.md atomic claims, heartbeats, overlap detection, and isolated worktrees pass acceptance; per-surface process enforcement is not hostile same-user/raw-CMUX broker isolation.",
-    "CMUX provider-auth and short-liveness receipts do not prove a completed model turn, provider quota, or result submission.",
+    "CMUX route receipts prove one completed subscription-authenticated launch-time turn per unique provider/model/effort route, while per-surface provider-auth and short-liveness receipts remain separate; neither proves completed turns for every interactive session, later quota, final submission, or hostile same-user isolation.",
     "Do not reveal or declare a winner from a run with only one sealed result; a legacy deadline-free contract cannot be retroactively expired.",
     "The CMUX lab origin is upstream; do not push its local commits without a Houston-owned fork."
   ]
