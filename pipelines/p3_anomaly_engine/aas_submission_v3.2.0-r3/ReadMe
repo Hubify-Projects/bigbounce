@@ -1,0 +1,67 @@
+P3 DESI DR1 anomaly-candidate catalog: AAS digital-asset package
+================================================================
+
+File: tab3.tsv
+Rows: 181 data rows plus one header row
+Columns: 43 tab-separated columns
+Missing values: none
+License: CC BY 4.0
+
+Source release:
+  https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog
+  tag: p3-v3.2.0-r2
+  immutable commit: 1a9e85ee004894956665444b4f110111f1090b79
+  path: releases/p3-v3.2.0-r2/
+
+Journal DOI status:
+  No DOI is claimed before submission. This table is prepared for submission
+  as an AAS machine-readable digital asset; AAS assigns the asset DOI during
+  its publication workflow.
+  AAS data guide: https://journals.aas.org/data-guide/
+  AAS digital-asset DOI policy: https://journals.aas.org/news/digital_asset_doi_landingpage/
+
+Column descriptions:
+  No.  Name                                    Type       Unit    Description
+    1  candidate_id                            object     ---     Stable release-local identifier P3-DESI-000001, ordered by cluster_id.
+    2  fits_row                                int64      ---     Zero-based row number in the DESI DR1 zall-pix-iron ZCATALOG extension used for exact rejoin auditing.
+    3  cluster_table_row                       int64      ---     Zero-based row number in the committed Path-C cluster table; an internal reproducibility key.
+    4  match_separation_arcsec                 float64    arcsec  Great-circle separation between the DESI target coordinate and anomaly-cluster mean, in arcseconds.
+    5  match_quality_tier                      object     ---     Coordinate-consistent (<=0.1 arcsec) or within-1arcsec (>0.1 and <=1 arcsec); both satisfy the declared join.
+    6  original_member_separation_arcsec       float64    arcsec  Great-circle separation between the recovered public DESI target and the canonical original DESI anomaly-member coordinate, in arcseconds; distinct from target-to-cluster match_separation_arcsec.
+    7  targetid                                int64      ---     Public DESI TARGETID from DR1 zall-pix-iron; the primary public rejoin key.
+    8  target_ra                               float64    deg     Public DESI target right ascension (ICRS degrees).
+    9  target_dec                              float64    deg     Public DESI target declination (ICRS degrees).
+   10  survey                                  object     ---     DESI observing survey label; the final cohort requires main.
+   11  program                                 object     ---     DESI observing program label (bright or dark in this release).
+   12  desi_target                             int64      ---     Raw DESI_TARGET bitmask from the public zcatalog.
+   13  bgs_target                              int64      ---     Raw BGS_TARGET bitmask from the public zcatalog.
+   14  mws_target                              int64      ---     Raw MWS_TARGET bitmask from the public zcatalog.
+   15  scnd_target                             int64      ---     Raw SCND_TARGET bitmask from the public zcatalog.
+   16  z                                       float64    ---     Redrock redshift estimate; candidate metadata, not a validation label.
+   17  zwarn                                   int64      ---     Redrock warning bitmask; final cohort requires zero.
+   18  spectype                                object     ---     Redrock best-fit spectral type; descriptive only and not a selection cut.
+   19  deltachi2                               float64    ---     Redrock best-versus-next-best template chi-square separation.
+   20  coadd_fiberstatus                       int32      ---     Bitwise OR of DESI fiber-status flags contributing to the coadd; zero for all released rows.
+   21  main_nspec                              int16      ---     Number of main-survey spectra associated with the target in the zcatalog.
+   22  main_primary                            bool       ---     Primary-within-main-survey flag; true for all released rows but not an independent final gate.
+   23  zcat_nspec                              int16      ---     Number of spectra associated with the target across the zcatalog grouping.
+   24  zcat_primary                            bool       ---     DESI global primary redshift-row flag; final cohort requires true.
+   25  cluster_id                              int64      ---     Original Path-C positional cluster identifier.
+   26  n_detections                            int64      ---     Number of original anomaly-table members in the positional cluster.
+   27  n_surveys                               int64      ---     Number of distinct historical input surveys represented in the cluster.
+   28  survey_list                             object     ---     Comma-separated historical survey membership for the cluster; retained only as audit provenance.
+   29  cluster_ra_deg                          float64    deg     Mean right ascension of the original anomaly cluster (ICRS degrees).
+   30  cluster_dec_deg                         float64    deg     Mean declination of the original anomaly cluster (ICRS degrees).
+   31  cluster_best_score                      float64    ---     Maximum original anomaly score among all members of the cluster.
+   32  member_ids                              object     ---     Pipe-separated legacy row identifiers for original cluster members; not public archive identifiers.
+   33  best_survey                             object     ---     Historical survey supplying cluster_best_score.
+   34  desi_source_row                         int64      ---     Zero-based row in the committed DESI anomaly table selected as the canonical DESI cluster member.
+   35  original_internal_tid                   int64      ---     Legacy anomaly-stream identifier mixing public-looking values and internal hashes; negative values are expected for some hashes. Never use as a public DESI key; use targetid.
+   36  original_ra_deg                         float64    deg     Right ascension carried by the canonical original DESI anomaly member (ICRS degrees).
+   37  original_dec_deg                        float64    deg     Declination carried by the canonical original DESI anomaly member (ICRS degrees).
+   38  original_score                          float64    ---     Original robust multiband anomaly score.
+   39  original_worst_band                     object     ---     Band producing the largest original residual.
+   40  original_residual_b                     float64    ---     Original B-band residual summary.
+   41  original_residual_r                     float64    ---     Original R-band residual summary.
+   42  original_residual_z                     float64    ---     Original Z-band residual summary.
+   43  science_target_class                    object     ---     Decoded selected DESI science bits: LRG, ELG, QSO, BGS_ANY, MWS_ANY.

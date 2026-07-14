@@ -1,0 +1,1149 @@
+{
+  "cases": [
+    {
+      "candidate_id": "P3-DESI-000003",
+      "checks": {
+        "deltachi2": true,
+        "spectype": true,
+        "targetid": true,
+        "three_spectral_arms_served": true,
+        "z": true,
+        "zwarn": true
+      },
+      "http_status": 200,
+      "imaging_cutout": {
+        "label": "RA, Dec = 131.9484, +4.5138",
+        "url": "https://www.legacysurvey.org/viewer/jpeg-cutout?ra=131.948359&amp;dec=4.513767&amp;pixscale=0.262000"
+      },
+      "released": {
+        "deltachi2": 427.5092899799347,
+        "match_separation_arcsec": 0.27388803984266463,
+        "original_member_separation_arcsec": 0.2733791488395766,
+        "original_score": 7.298665523529053,
+        "spectype": "GALAXY",
+        "targetid": 39627895609492977,
+        "z": 0.8378242198184557,
+        "zwarn": 0
+      },
+      "roles": [
+        "separation_tail",
+        "representative_table"
+      ],
+      "spectral_arm_pixel_counts": {
+        "b": 2751,
+        "r": 2326,
+        "z": 2881
+      },
+      "status": "PASS",
+      "viewer_metadata": {
+        "COADD_EXPTIME": null,
+        "COADD_NUMEXP": null,
+        "COADD_NUMNIGHT": null,
+        "COADD_NUMTILE": null,
+        "DELTACHI2": 427.5092899799347,
+        "MORPHTYPE": "REX",
+        "SPECTYPE": "GALAXY",
+        "SUBTYPE": "nan",
+        "TARGETID": "39627895609492977",
+        "Z": 0.8378242198184557,
+        "ZERR": 3.059174778475599e-05,
+        "ZWARN": 0,
+        "mag_G": null,
+        "mag_R": null,
+        "mag_W1": null,
+        "mag_W2": null,
+        "mag_Z": null
+      },
+      "viewer_url": "https://www.legacysurvey.org/viewer/desi-spectrum/dr1/targetid39627895609492977"
+    },
+    {
+      "candidate_id": "P3-DESI-000005",
+      "checks": {
+        "deltachi2": true,
+        "spectype": true,
+        "targetid": true,
+        "three_spectral_arms_served": true,
+        "z": true,
+        "zwarn": true
+      },
+      "http_status": 200,
+      "imaging_cutout": {
+        "label": "RA, Dec = 132.9085, -6.3088",
+        "url": "https://www.legacysurvey.org/viewer/jpeg-cutout?ra=132.908466&amp;dec=-6.308829&amp;pixscale=0.262000"
+      },
+      "released": {
+        "deltachi2": 336.8764063715935,
+        "match_separation_arcsec": 0.9905735599323949,
+        "original_member_separation_arcsec": 0.9897008175883719,
+        "original_score": 7.083361625671387,
+        "spectype": "GALAXY",
+        "targetid": 39627636166626827,
+        "z": 1.032677557707932,
+        "zwarn": 0
+      },
+      "roles": [
+        "separation_tail",
+        "representative_table"
+      ],
+      "spectral_arm_pixel_counts": {
+        "b": 2751,
+        "r": 2326,
+        "z": 2881
+      },
+      "status": "PASS",
+      "viewer_metadata": {
+        "COADD_EXPTIME": null,
+        "COADD_NUMEXP": null,
+        "COADD_NUMNIGHT": null,
+        "COADD_NUMTILE": null,
+        "DELTACHI2": 336.8764063715935,
+        "MORPHTYPE": "REX",
+        "SPECTYPE": "GALAXY",
+        "SUBTYPE": "nan",
+        "TARGETID": "39627636166626827",
+        "Z": 1.032677557707932,
+        "ZERR": 2.8690153176347455e-05,
+        "ZWARN": 0,
+        "mag_G": null,
+        "mag_R": null,
+        "mag_W1": null,
+        "mag_W2": null,
+        "mag_Z": null
+      },
+      "viewer_url": "https://www.legacysurvey.org/viewer/desi-spectrum/dr1/targetid39627636166626827"
+    },
+    {
+      "candidate_id": "P3-DESI-000017",
+      "checks": {
+        "deltachi2": true,
+        "spectype": true,
+        "targetid": true,
+        "three_spectral_arms_served": true,
+        "z": true,
+        "zwarn": true
+      },
+      "http_status": 200,
+      "imaging_cutout": {
+        "label": "RA, Dec = 136.1092, -5.4736",
+        "url": "https://www.legacysurvey.org/viewer/jpeg-cutout?ra=136.109202&amp;dec=-5.473639&amp;pixscale=0.262000"
+      },
+      "released": {
+        "deltachi2": 51.485825061798096,
+        "match_separation_arcsec": 0.13050774257556594,
+        "original_member_separation_arcsec": 0.12893316207638927,
+        "original_score": 6.210281848907471,
+        "spectype": "GALAXY",
+        "targetid": 39627654260851470,
+        "z": 1.302031087913362,
+        "zwarn": 0
+      },
+      "roles": [
+        "separation_tail"
+      ],
+      "spectral_arm_pixel_counts": {
+        "b": 2751,
+        "r": 2326,
+        "z": 2881
+      },
+      "status": "PASS",
+      "viewer_metadata": {
+        "COADD_EXPTIME": null,
+        "COADD_NUMEXP": null,
+        "COADD_NUMNIGHT": null,
+        "COADD_NUMTILE": null,
+        "DELTACHI2": 51.485825061798096,
+        "MORPHTYPE": "REX",
+        "SPECTYPE": "GALAXY",
+        "SUBTYPE": "nan",
+        "TARGETID": "39627654260851470",
+        "Z": 1.302031087913362,
+        "ZERR": 3.7136654907807447e-05,
+        "ZWARN": 0,
+        "mag_G": null,
+        "mag_R": null,
+        "mag_W1": null,
+        "mag_W2": null,
+        "mag_Z": null
+      },
+      "viewer_url": "https://www.legacysurvey.org/viewer/desi-spectrum/dr1/targetid39627654260851470"
+    },
+    {
+      "candidate_id": "P3-DESI-000022",
+      "checks": {
+        "deltachi2": true,
+        "spectype": true,
+        "targetid": true,
+        "three_spectral_arms_served": true,
+        "z": true,
+        "zwarn": true
+      },
+      "http_status": 200,
+      "imaging_cutout": {
+        "label": "RA, Dec = 224.4213, +34.1097",
+        "url": "https://www.legacysurvey.org/viewer/jpeg-cutout?ra=224.421259&amp;dec=34.109727&amp;pixscale=0.262000"
+      },
+      "released": {
+        "deltachi2": 211.1726086139679,
+        "match_separation_arcsec": 0.7859821147932193,
+        "original_member_separation_arcsec": 0.7847000909391956,
+        "original_score": 5.956483840942383,
+        "spectype": "GALAXY",
+        "targetid": 39632961502447586,
+        "z": 1.2098677273553953,
+        "zwarn": 0
+      },
+      "roles": [
+        "separation_tail"
+      ],
+      "spectral_arm_pixel_counts": {
+        "b": 2751,
+        "r": 2326,
+        "z": 2881
+      },
+      "status": "PASS",
+      "viewer_metadata": {
+        "COADD_EXPTIME": null,
+        "COADD_NUMEXP": null,
+        "COADD_NUMNIGHT": null,
+        "COADD_NUMTILE": null,
+        "DELTACHI2": 211.1726086139679,
+        "MORPHTYPE": "PSF",
+        "SPECTYPE": "GALAXY",
+        "SUBTYPE": "nan",
+        "TARGETID": "39632961502447586",
+        "Z": 1.2098677273553953,
+        "ZERR": 2.461804558750574e-05,
+        "ZWARN": 0,
+        "mag_G": null,
+        "mag_R": null,
+        "mag_W1": null,
+        "mag_W2": null,
+        "mag_Z": null
+      },
+      "viewer_url": "https://www.legacysurvey.org/viewer/desi-spectrum/dr1/targetid39632961502447586"
+    },
+    {
+      "candidate_id": "P3-DESI-000030",
+      "checks": {
+        "deltachi2": true,
+        "spectype": true,
+        "targetid": true,
+        "three_spectral_arms_served": true,
+        "z": true,
+        "zwarn": true
+      },
+      "http_status": 200,
+      "imaging_cutout": {
+        "label": "RA, Dec = 113.5605, +35.2227",
+        "url": "https://www.legacysurvey.org/viewer/jpeg-cutout?ra=113.560486&amp;dec=35.222656&amp;pixscale=0.262000"
+      },
+      "released": {
+        "deltachi2": 8070.227813079953,
+        "match_separation_arcsec": 0.9796558738331412,
+        "original_member_separation_arcsec": 1.9790092139735906,
+        "original_score": 5.830589294433594,
+        "spectype": "QSO",
+        "targetid": 39632984881499105,
+        "z": 3.2817789785037634,
+        "zwarn": 0
+      },
+      "roles": [
+        "separation_tail"
+      ],
+      "spectral_arm_pixel_counts": {
+        "b": 2751,
+        "r": 2326,
+        "z": 2881
+      },
+      "status": "PASS",
+      "viewer_metadata": {
+        "COADD_EXPTIME": null,
+        "COADD_NUMEXP": null,
+        "COADD_NUMNIGHT": null,
+        "COADD_NUMTILE": null,
+        "DELTACHI2": 8070.227813079953,
+        "MORPHTYPE": "PSF",
+        "SPECTYPE": "QSO",
+        "SUBTYPE": "HIZ",
+        "TARGETID": "39632984881499105",
+        "Z": 3.2817789785037634,
+        "ZERR": 0.00022617400735164877,
+        "ZWARN": 0,
+        "mag_G": null,
+        "mag_R": null,
+        "mag_W1": null,
+        "mag_W2": null,
+        "mag_Z": null
+      },
+      "viewer_url": "https://www.legacysurvey.org/viewer/desi-spectrum/dr1/targetid39632984881499105"
+    },
+    {
+      "candidate_id": "P3-DESI-000032",
+      "checks": {
+        "deltachi2": true,
+        "spectype": true,
+        "targetid": true,
+        "three_spectral_arms_served": true,
+        "z": true,
+        "zwarn": true
+      },
+      "http_status": 200,
+      "imaging_cutout": {
+        "label": "RA, Dec = 27.4541, -2.7876",
+        "url": "https://www.legacysurvey.org/viewer/jpeg-cutout?ra=27.454078&amp;dec=-2.787579&amp;pixscale=0.262000"
+      },
+      "released": {
+        "deltachi2": 266.09070920944214,
+        "match_separation_arcsec": 0.7546712717412836,
+        "original_member_separation_arcsec": 0.754553783711048,
+        "original_score": 5.800520420074463,
+        "spectype": "GALAXY",
+        "targetid": 39627718748282041,
+        "z": 1.102033869549157,
+        "zwarn": 0
+      },
+      "roles": [
+        "separation_tail"
+      ],
+      "spectral_arm_pixel_counts": {
+        "b": 2751,
+        "r": 2326,
+        "z": 2881
+      },
+      "status": "PASS",
+      "viewer_metadata": {
+        "COADD_EXPTIME": null,
+        "COADD_NUMEXP": null,
+        "COADD_NUMNIGHT": null,
+        "COADD_NUMTILE": null,
+        "DELTACHI2": 266.09070920944214,
+        "MORPHTYPE": "DEV",
+        "SPECTYPE": "GALAXY",
+        "SUBTYPE": "nan",
+        "TARGETID": "39627718748282041",
+        "Z": 1.102033869549157,
+        "ZERR": 3.0813646025663355e-05,
+        "ZWARN": 0,
+        "mag_G": null,
+        "mag_R": null,
+        "mag_W1": null,
+        "mag_W2": null,
+        "mag_Z": null
+      },
+      "viewer_url": "https://www.legacysurvey.org/viewer/desi-spectrum/dr1/targetid39627718748282041"
+    },
+    {
+      "candidate_id": "P3-DESI-000039",
+      "checks": {
+        "deltachi2": true,
+        "spectype": true,
+        "targetid": true,
+        "three_spectral_arms_served": true,
+        "z": true,
+        "zwarn": true
+      },
+      "http_status": 200,
+      "imaging_cutout": {
+        "label": "RA, Dec = 127.4536, -0.2060",
+        "url": "https://www.legacysurvey.org/viewer/jpeg-cutout?ra=127.453557&amp;dec=-0.205956&amp;pixscale=0.262000"
+      },
+      "released": {
+        "deltachi2": 219212.9020337307,
+        "match_separation_arcsec": 0.22126394846232855,
+        "original_member_separation_arcsec": 0.22126394846232855,
+        "original_score": 5.7289204597473145,
+        "spectype": "STAR",
+        "targetid": 39627780823979311,
+        "z": 0.0001590698737326706,
+        "zwarn": 0
+      },
+      "roles": [
+        "separation_tail",
+        "representative_table"
+      ],
+      "spectral_arm_pixel_counts": {
+        "b": 2751,
+        "r": 2326,
+        "z": 2881
+      },
+      "status": "PASS",
+      "viewer_metadata": {
+        "COADD_EXPTIME": null,
+        "COADD_NUMEXP": null,
+        "COADD_NUMNIGHT": null,
+        "COADD_NUMTILE": null,
+        "DELTACHI2": 219212.9020337307,
+        "MORPHTYPE": "PSF",
+        "SPECTYPE": "STAR",
+        "SUBTYPE": "M",
+        "TARGETID": "39627780823979311",
+        "Z": 0.0001590698737326706,
+        "ZERR": 8.702074543633295e-07,
+        "ZWARN": 0,
+        "mag_G": null,
+        "mag_R": null,
+        "mag_W1": null,
+        "mag_W2": null,
+        "mag_Z": null
+      },
+      "viewer_url": "https://www.legacysurvey.org/viewer/desi-spectrum/dr1/targetid39627780823979311"
+    },
+    {
+      "candidate_id": "P3-DESI-000045",
+      "checks": {
+        "deltachi2": true,
+        "spectype": true,
+        "targetid": true,
+        "three_spectral_arms_served": true,
+        "z": true,
+        "zwarn": true
+      },
+      "http_status": 200,
+      "imaging_cutout": {
+        "label": "RA, Dec = 331.8456, +1.9876",
+        "url": "https://www.legacysurvey.org/viewer/jpeg-cutout?ra=331.845560&amp;dec=1.987631&amp;pixscale=0.262000"
+      },
+      "released": {
+        "deltachi2": 127.91261625289917,
+        "match_separation_arcsec": 0.6219583822874579,
+        "original_member_separation_arcsec": 0.6210438964629825,
+        "original_score": 5.643539905548096,
+        "spectype": "GALAXY",
+        "targetid": 39627838613097322,
+        "z": 1.378834661572262,
+        "zwarn": 0
+      },
+      "roles": [
+        "separation_tail"
+      ],
+      "spectral_arm_pixel_counts": {
+        "b": 2751,
+        "r": 2326,
+        "z": 2881
+      },
+      "status": "PASS",
+      "viewer_metadata": {
+        "COADD_EXPTIME": null,
+        "COADD_NUMEXP": null,
+        "COADD_NUMNIGHT": null,
+        "COADD_NUMTILE": null,
+        "DELTACHI2": 127.91261625289917,
+        "MORPHTYPE": "EXP",
+        "SPECTYPE": "GALAXY",
+        "SUBTYPE": "nan",
+        "TARGETID": "39627838613097322",
+        "Z": 1.378834661572262,
+        "ZERR": 4.960148981070207e-05,
+        "ZWARN": 0,
+        "mag_G": null,
+        "mag_R": null,
+        "mag_W1": null,
+        "mag_W2": null,
+        "mag_Z": null
+      },
+      "viewer_url": "https://www.legacysurvey.org/viewer/desi-spectrum/dr1/targetid39627838613097322"
+    },
+    {
+      "candidate_id": "P3-DESI-000053",
+      "checks": {
+        "deltachi2": true,
+        "spectype": true,
+        "targetid": true,
+        "three_spectral_arms_served": true,
+        "z": true,
+        "zwarn": true
+      },
+      "http_status": 200,
+      "imaging_cutout": {
+        "label": "RA, Dec = 129.2209, -1.0115",
+        "url": "https://www.legacysurvey.org/viewer/jpeg-cutout?ra=129.220884&amp;dec=-1.011531&amp;pixscale=0.262000"
+      },
+      "released": {
+        "deltachi2": 97.86013317108154,
+        "match_separation_arcsec": 0.6560958548530101,
+        "original_member_separation_arcsec": 0.6556175620348602,
+        "original_score": 5.5741729736328125,
+        "spectype": "GALAXY",
+        "targetid": 39627762733945457,
+        "z": 1.026236953847012,
+        "zwarn": 0
+      },
+      "roles": [
+        "separation_tail"
+      ],
+      "spectral_arm_pixel_counts": {
+        "b": 2751,
+        "r": 2326,
+        "z": 2881
+      },
+      "status": "PASS",
+      "viewer_metadata": {
+        "COADD_EXPTIME": null,
+        "COADD_NUMEXP": null,
+        "COADD_NUMNIGHT": null,
+        "COADD_NUMTILE": null,
+        "DELTACHI2": 97.86013317108154,
+        "MORPHTYPE": "REX",
+        "SPECTYPE": "GALAXY",
+        "SUBTYPE": "nan",
+        "TARGETID": "39627762733945457",
+        "Z": 1.026236953847012,
+        "ZERR": 6.394202750245902e-05,
+        "ZWARN": 0,
+        "mag_G": null,
+        "mag_R": null,
+        "mag_W1": null,
+        "mag_W2": null,
+        "mag_Z": null
+      },
+      "viewer_url": "https://www.legacysurvey.org/viewer/desi-spectrum/dr1/targetid39627762733945457"
+    },
+    {
+      "candidate_id": "P3-DESI-000140",
+      "checks": {
+        "deltachi2": true,
+        "spectype": true,
+        "targetid": true,
+        "three_spectral_arms_served": true,
+        "z": true,
+        "zwarn": true
+      },
+      "http_status": 200,
+      "imaging_cutout": {
+        "label": "RA, Dec = 40.3505, -0.3364",
+        "url": "https://www.legacysurvey.org/viewer/jpeg-cutout?ra=40.350485&amp;dec=-0.336410&amp;pixscale=0.262000"
+      },
+      "released": {
+        "deltachi2": 59.11138381483033,
+        "match_separation_arcsec": 0.9693437307456739,
+        "original_member_separation_arcsec": 0.9700258912401848,
+        "original_score": 5.138321876525879,
+        "spectype": "QSO",
+        "targetid": 39627779364359945,
+        "z": 2.1496144252395606,
+        "zwarn": 0
+      },
+      "roles": [
+        "separation_tail"
+      ],
+      "spectral_arm_pixel_counts": {
+        "b": 2751,
+        "r": 2326,
+        "z": 2881
+      },
+      "status": "PASS",
+      "viewer_metadata": {
+        "COADD_EXPTIME": null,
+        "COADD_NUMEXP": null,
+        "COADD_NUMNIGHT": null,
+        "COADD_NUMTILE": null,
+        "DELTACHI2": 59.11138381483033,
+        "MORPHTYPE": "PSF",
+        "SPECTYPE": "QSO",
+        "SUBTYPE": "HIZ",
+        "TARGETID": "39627779364359945",
+        "Z": 2.1496144252395606,
+        "ZERR": 0.001220173357725745,
+        "ZWARN": 0,
+        "mag_G": null,
+        "mag_R": null,
+        "mag_W1": null,
+        "mag_W2": null,
+        "mag_Z": null
+      },
+      "viewer_url": "https://www.legacysurvey.org/viewer/desi-spectrum/dr1/targetid39627779364359945"
+    },
+    {
+      "candidate_id": "P3-DESI-000141",
+      "checks": {
+        "deltachi2": true,
+        "spectype": true,
+        "targetid": true,
+        "three_spectral_arms_served": true,
+        "z": true,
+        "zwarn": true
+      },
+      "http_status": 200,
+      "imaging_cutout": {
+        "label": "RA, Dec = 236.5616, +36.2633",
+        "url": "https://www.legacysurvey.org/viewer/jpeg-cutout?ra=236.561560&amp;dec=36.263270&amp;pixscale=0.262000"
+      },
+      "released": {
+        "deltachi2": 1675.027106762398,
+        "match_separation_arcsec": 0.5123811851085306,
+        "original_member_separation_arcsec": 0.5118263771944772,
+        "original_score": 5.130519390106201,
+        "spectype": "QSO",
+        "targetid": 39633006217924348,
+        "z": 2.3630164109103218,
+        "zwarn": 0
+      },
+      "roles": [
+        "separation_tail"
+      ],
+      "spectral_arm_pixel_counts": {
+        "b": 2751,
+        "r": 2326,
+        "z": 2881
+      },
+      "status": "PASS",
+      "viewer_metadata": {
+        "COADD_EXPTIME": null,
+        "COADD_NUMEXP": null,
+        "COADD_NUMNIGHT": null,
+        "COADD_NUMTILE": null,
+        "DELTACHI2": 1675.027106762398,
+        "MORPHTYPE": "PSF",
+        "SPECTYPE": "QSO",
+        "SUBTYPE": "HIZ",
+        "TARGETID": "39633006217924348",
+        "Z": 2.3630164109103218,
+        "ZERR": 0.00048755745125802087,
+        "ZWARN": 0,
+        "mag_G": null,
+        "mag_R": null,
+        "mag_W1": null,
+        "mag_W2": null,
+        "mag_Z": null
+      },
+      "viewer_url": "https://www.legacysurvey.org/viewer/desi-spectrum/dr1/targetid39633006217924348"
+    },
+    {
+      "candidate_id": "P3-DESI-000001",
+      "checks": {
+        "deltachi2": true,
+        "spectype": true,
+        "targetid": true,
+        "three_spectral_arms_served": true,
+        "z": true,
+        "zwarn": true
+      },
+      "http_status": 200,
+      "imaging_cutout": {
+        "label": "RA, Dec = 272.8224, +57.1226",
+        "url": "https://www.legacysurvey.org/viewer/jpeg-cutout?ra=272.822364&amp;dec=57.122565&amp;pixscale=0.262000"
+      },
+      "released": {
+        "deltachi2": 15.082634449005127,
+        "match_separation_arcsec": 0.0009655696855716384,
+        "original_member_separation_arcsec": 0.0,
+        "original_score": 7.705714702606201,
+        "spectype": "GALAXY",
+        "targetid": 39633349869831142,
+        "z": 0.6681411684981781,
+        "zwarn": 0
+      },
+      "roles": [
+        "representative_table"
+      ],
+      "spectral_arm_pixel_counts": {
+        "b": 2751,
+        "r": 2326,
+        "z": 2881
+      },
+      "status": "PASS",
+      "viewer_metadata": {
+        "COADD_EXPTIME": null,
+        "COADD_NUMEXP": null,
+        "COADD_NUMNIGHT": null,
+        "COADD_NUMTILE": null,
+        "DELTACHI2": 15.082634449005127,
+        "MORPHTYPE": "PSF",
+        "SPECTYPE": "GALAXY",
+        "SUBTYPE": "nan",
+        "TARGETID": "39633349869831142",
+        "Z": 0.6681411684981781,
+        "ZERR": 2.7409884517362706e-05,
+        "ZWARN": 0,
+        "mag_G": null,
+        "mag_R": null,
+        "mag_W1": null,
+        "mag_W2": null,
+        "mag_Z": null
+      },
+      "viewer_url": "https://www.legacysurvey.org/viewer/desi-spectrum/dr1/targetid39633349869831142"
+    },
+    {
+      "candidate_id": "P3-DESI-000002",
+      "checks": {
+        "deltachi2": true,
+        "spectype": true,
+        "targetid": true,
+        "three_spectral_arms_served": true,
+        "z": true,
+        "zwarn": true
+      },
+      "http_status": 200,
+      "imaging_cutout": {
+        "label": "RA, Dec = 45.2805, -3.3124",
+        "url": "https://www.legacysurvey.org/viewer/jpeg-cutout?ra=45.280460&amp;dec=-3.312381&amp;pixscale=0.262000"
+      },
+      "released": {
+        "deltachi2": 9.128500252962112,
+        "match_separation_arcsec": 0.0016872696627478854,
+        "original_member_separation_arcsec": 0.0,
+        "original_score": 7.430091857910156,
+        "spectype": "GALAXY",
+        "targetid": 39627706974869534,
+        "z": 0.9856897745798805,
+        "zwarn": 0
+      },
+      "roles": [
+        "representative_table"
+      ],
+      "spectral_arm_pixel_counts": {
+        "b": 2751,
+        "r": 2326,
+        "z": 2881
+      },
+      "status": "PASS",
+      "viewer_metadata": {
+        "COADD_EXPTIME": null,
+        "COADD_NUMEXP": null,
+        "COADD_NUMNIGHT": null,
+        "COADD_NUMTILE": null,
+        "DELTACHI2": 9.128500252962112,
+        "MORPHTYPE": "DEV",
+        "SPECTYPE": "GALAXY",
+        "SUBTYPE": "nan",
+        "TARGETID": "39627706974869534",
+        "Z": 0.9856897745798805,
+        "ZERR": 8.876323668639159e-05,
+        "ZWARN": 0,
+        "mag_G": null,
+        "mag_R": null,
+        "mag_W1": null,
+        "mag_W2": null,
+        "mag_Z": null
+      },
+      "viewer_url": "https://www.legacysurvey.org/viewer/desi-spectrum/dr1/targetid39627706974869534"
+    },
+    {
+      "candidate_id": "P3-DESI-000004",
+      "checks": {
+        "deltachi2": true,
+        "spectype": true,
+        "targetid": true,
+        "three_spectral_arms_served": true,
+        "z": true,
+        "zwarn": true
+      },
+      "http_status": 200,
+      "imaging_cutout": {
+        "label": "RA, Dec = 97.4993, +61.6566",
+        "url": "https://www.legacysurvey.org/viewer/jpeg-cutout?ra=97.499304&amp;dec=61.656639&amp;pixscale=0.262000"
+      },
+      "released": {
+        "deltachi2": 44.20639458298683,
+        "match_separation_arcsec": 0.0008121379958767184,
+        "original_member_separation_arcsec": 0.0,
+        "original_score": 7.191997528076172,
+        "spectype": "GALAXY",
+        "targetid": 39633407088529181,
+        "z": 1.309763718521135,
+        "zwarn": 0
+      },
+      "roles": [
+        "representative_table"
+      ],
+      "spectral_arm_pixel_counts": {
+        "b": 2751,
+        "r": 2326,
+        "z": 2881
+      },
+      "status": "PASS",
+      "viewer_metadata": {
+        "COADD_EXPTIME": null,
+        "COADD_NUMEXP": null,
+        "COADD_NUMNIGHT": null,
+        "COADD_NUMTILE": null,
+        "DELTACHI2": 44.20639458298683,
+        "MORPHTYPE": "PSF",
+        "SPECTYPE": "GALAXY",
+        "SUBTYPE": "nan",
+        "TARGETID": "39633407088529181",
+        "Z": 1.309763718521135,
+        "ZERR": 5.428039535798128e-05,
+        "ZWARN": 0,
+        "mag_G": null,
+        "mag_R": null,
+        "mag_W1": null,
+        "mag_W2": null,
+        "mag_Z": null
+      },
+      "viewer_url": "https://www.legacysurvey.org/viewer/desi-spectrum/dr1/targetid39633407088529181"
+    },
+    {
+      "candidate_id": "P3-DESI-000006",
+      "checks": {
+        "deltachi2": true,
+        "spectype": true,
+        "targetid": true,
+        "three_spectral_arms_served": true,
+        "z": true,
+        "zwarn": true
+      },
+      "http_status": 200,
+      "imaging_cutout": {
+        "label": "RA, Dec = 95.1302, +62.7437",
+        "url": "https://www.legacysurvey.org/viewer/jpeg-cutout?ra=95.130188&amp;dec=62.743656&amp;pixscale=0.262000"
+      },
+      "released": {
+        "deltachi2": 111.29772555828094,
+        "match_separation_arcsec": 0.0004167496041028936,
+        "original_member_separation_arcsec": 0.0,
+        "original_score": 6.841301918029785,
+        "spectype": "GALAXY",
+        "targetid": 39633418404759790,
+        "z": 1.37649280168125,
+        "zwarn": 0
+      },
+      "roles": [
+        "representative_table"
+      ],
+      "spectral_arm_pixel_counts": {
+        "b": 2751,
+        "r": 2326,
+        "z": 2881
+      },
+      "status": "PASS",
+      "viewer_metadata": {
+        "COADD_EXPTIME": null,
+        "COADD_NUMEXP": null,
+        "COADD_NUMNIGHT": null,
+        "COADD_NUMTILE": null,
+        "DELTACHI2": 111.29772555828094,
+        "MORPHTYPE": "REX",
+        "SPECTYPE": "GALAXY",
+        "SUBTYPE": "nan",
+        "TARGETID": "39633418404759790",
+        "Z": 1.37649280168125,
+        "ZERR": 3.093914743512324e-05,
+        "ZWARN": 0,
+        "mag_G": null,
+        "mag_R": null,
+        "mag_W1": null,
+        "mag_W2": null,
+        "mag_Z": null
+      },
+      "viewer_url": "https://www.legacysurvey.org/viewer/desi-spectrum/dr1/targetid39633418404759790"
+    },
+    {
+      "candidate_id": "P3-DESI-000020",
+      "checks": {
+        "deltachi2": true,
+        "spectype": true,
+        "targetid": true,
+        "three_spectral_arms_served": true,
+        "z": true,
+        "zwarn": true
+      },
+      "http_status": 200,
+      "imaging_cutout": {
+        "label": "RA, Dec = 132.9327, +6.1148",
+        "url": "https://www.legacysurvey.org/viewer/jpeg-cutout?ra=132.932665&amp;dec=6.114824&amp;pixscale=0.262000"
+      },
+      "released": {
+        "deltachi2": 55.23821007460356,
+        "match_separation_arcsec": 0.0007558473472981535,
+        "original_member_separation_arcsec": 0.0,
+        "original_score": 6.0721869468688965,
+        "spectype": "QSO",
+        "targetid": 39627931743422578,
+        "z": 3.816080033423425,
+        "zwarn": 0
+      },
+      "roles": [
+        "representative_table"
+      ],
+      "spectral_arm_pixel_counts": {
+        "b": 2751,
+        "r": 2326,
+        "z": 2881
+      },
+      "status": "PASS",
+      "viewer_metadata": {
+        "COADD_EXPTIME": null,
+        "COADD_NUMEXP": null,
+        "COADD_NUMNIGHT": null,
+        "COADD_NUMTILE": null,
+        "DELTACHI2": 55.23821007460356,
+        "MORPHTYPE": "REX",
+        "SPECTYPE": "QSO",
+        "SUBTYPE": "HIZ",
+        "TARGETID": "39627931743422578",
+        "Z": 3.816080033423425,
+        "ZERR": 0.00036456396051696256,
+        "ZWARN": 0,
+        "mag_G": null,
+        "mag_R": null,
+        "mag_W1": null,
+        "mag_W2": null,
+        "mag_Z": null
+      },
+      "viewer_url": "https://www.legacysurvey.org/viewer/desi-spectrum/dr1/targetid39627931743422578"
+    },
+    {
+      "candidate_id": "P3-DESI-000047",
+      "checks": {
+        "deltachi2": true,
+        "spectype": true,
+        "targetid": true,
+        "three_spectral_arms_served": true,
+        "z": true,
+        "zwarn": true
+      },
+      "http_status": 200,
+      "imaging_cutout": {
+        "label": "RA, Dec = 247.8953, +4.6699",
+        "url": "https://www.legacysurvey.org/viewer/jpeg-cutout?ra=247.895286&amp;dec=4.669909&amp;pixscale=0.262000"
+      },
+      "released": {
+        "deltachi2": 23.410387009382248,
+        "match_separation_arcsec": 0.0015469384183053282,
+        "original_member_separation_arcsec": 0.0,
+        "original_score": 5.63381290435791,
+        "spectype": "QSO",
+        "targetid": 39627903570285763,
+        "z": 6.087791193358123,
+        "zwarn": 0
+      },
+      "roles": [
+        "representative_table"
+      ],
+      "spectral_arm_pixel_counts": {
+        "b": 2751,
+        "r": 2326,
+        "z": 2881
+      },
+      "status": "PASS",
+      "viewer_metadata": {
+        "COADD_EXPTIME": null,
+        "COADD_NUMEXP": null,
+        "COADD_NUMNIGHT": null,
+        "COADD_NUMTILE": null,
+        "DELTACHI2": 23.410387009382248,
+        "MORPHTYPE": "PSF",
+        "SPECTYPE": "QSO",
+        "SUBTYPE": "HIZ",
+        "TARGETID": "39627903570285763",
+        "Z": 6.087791193358123,
+        "ZERR": 0.0005221853037603782,
+        "ZWARN": 0,
+        "mag_G": null,
+        "mag_R": null,
+        "mag_W1": null,
+        "mag_W2": null,
+        "mag_Z": null
+      },
+      "viewer_url": "https://www.legacysurvey.org/viewer/desi-spectrum/dr1/targetid39627903570285763"
+    },
+    {
+      "candidate_id": "P3-DESI-000018",
+      "checks": {
+        "deltachi2": true,
+        "spectype": true,
+        "targetid": true,
+        "three_spectral_arms_served": true,
+        "z": true,
+        "zwarn": true
+      },
+      "http_status": 200,
+      "imaging_cutout": {
+        "label": "RA, Dec = 265.6589, +21.4504",
+        "url": "https://www.legacysurvey.org/viewer/jpeg-cutout?ra=265.658862&amp;dec=21.450370&amp;pixscale=0.262000"
+      },
+      "released": {
+        "deltachi2": 31619.420349224252,
+        "match_separation_arcsec": 0.0005525337389400136,
+        "original_member_separation_arcsec": 0.0,
+        "original_score": 6.15618896484375,
+        "spectype": "GALAXY",
+        "targetid": 39628296954055370,
+        "z": -0.00033818947145594245,
+        "zwarn": 0
+      },
+      "roles": [
+        "representative_table"
+      ],
+      "spectral_arm_pixel_counts": {
+        "b": 2751,
+        "r": 2326,
+        "z": 2881
+      },
+      "status": "PASS",
+      "viewer_metadata": {
+        "COADD_EXPTIME": null,
+        "COADD_NUMEXP": null,
+        "COADD_NUMNIGHT": null,
+        "COADD_NUMTILE": null,
+        "DELTACHI2": 31619.420349224252,
+        "MORPHTYPE": "EXP",
+        "SPECTYPE": "GALAXY",
+        "SUBTYPE": "nan",
+        "TARGETID": "39628296954055370",
+        "Z": -0.00033818947145594245,
+        "ZERR": 1.0167275324182548e-06,
+        "ZWARN": 0,
+        "mag_G": null,
+        "mag_R": null,
+        "mag_W1": null,
+        "mag_W2": null,
+        "mag_Z": null
+      },
+      "viewer_url": "https://www.legacysurvey.org/viewer/desi-spectrum/dr1/targetid39628296954055370"
+    },
+    {
+      "candidate_id": "P3-DESI-000163",
+      "checks": {
+        "deltachi2": true,
+        "spectype": true,
+        "targetid": true,
+        "three_spectral_arms_served": true,
+        "z": true,
+        "zwarn": true
+      },
+      "http_status": 200,
+      "imaging_cutout": {
+        "label": "RA, Dec = 265.6495, +21.4559",
+        "url": "https://www.legacysurvey.org/viewer/jpeg-cutout?ra=265.649500&amp;dec=21.455937&amp;pixscale=0.262000"
+      },
+      "released": {
+        "deltachi2": 14278.0778709941,
+        "match_separation_arcsec": 0.0017655274274304572,
+        "original_member_separation_arcsec": 0.0,
+        "original_score": 5.060984134674072,
+        "spectype": "GALAXY",
+        "targetid": 39628296954055072,
+        "z": -0.0003373298207093588,
+        "zwarn": 0
+      },
+      "roles": [
+        "representative_table"
+      ],
+      "spectral_arm_pixel_counts": {
+        "b": 2751,
+        "r": 2326,
+        "z": 2881
+      },
+      "status": "PASS",
+      "viewer_metadata": {
+        "COADD_EXPTIME": null,
+        "COADD_NUMEXP": null,
+        "COADD_NUMNIGHT": null,
+        "COADD_NUMTILE": null,
+        "DELTACHI2": 14278.0778709941,
+        "MORPHTYPE": "EXP",
+        "SPECTYPE": "GALAXY",
+        "SUBTYPE": "nan",
+        "TARGETID": "39628296954055072",
+        "Z": -0.0003373298207093588,
+        "ZERR": 1.4475737236332744e-06,
+        "ZWARN": 0,
+        "mag_G": null,
+        "mag_R": null,
+        "mag_W1": null,
+        "mag_W2": null,
+        "mag_Z": null
+      },
+      "viewer_url": "https://www.legacysurvey.org/viewer/desi-spectrum/dr1/targetid39628296954055072"
+    },
+    {
+      "candidate_id": "P3-DESI-000007",
+      "checks": {
+        "deltachi2": true,
+        "spectype": true,
+        "targetid": true,
+        "three_spectral_arms_served": true,
+        "z": true,
+        "zwarn": true
+      },
+      "http_status": 200,
+      "imaging_cutout": {
+        "label": "RA, Dec = 64.0518, -16.7409",
+        "url": "https://www.legacysurvey.org/viewer/jpeg-cutout?ra=64.051843&amp;dec=-16.740906&amp;pixscale=0.262000"
+      },
+      "released": {
+        "deltachi2": 18204.78943683207,
+        "match_separation_arcsec": 0.0015748779457187975,
+        "original_member_separation_arcsec": 0.0,
+        "original_score": 6.755760669708252,
+        "spectype": "GALAXY",
+        "targetid": 39636182677589446,
+        "z": 0.006263061894435663,
+        "zwarn": 0
+      },
+      "roles": [
+        "representative_table"
+      ],
+      "spectral_arm_pixel_counts": {
+        "b": 2751,
+        "r": 2326,
+        "z": 2881
+      },
+      "status": "PASS",
+      "viewer_metadata": {
+        "COADD_EXPTIME": null,
+        "COADD_NUMEXP": null,
+        "COADD_NUMNIGHT": null,
+        "COADD_NUMTILE": null,
+        "DELTACHI2": 18204.78943683207,
+        "MORPHTYPE": "SER",
+        "SPECTYPE": "GALAXY",
+        "SUBTYPE": "nan",
+        "TARGETID": "39636182677589446",
+        "Z": 0.006263061894435663,
+        "ZERR": 9.997273460213878e-07,
+        "ZWARN": 0,
+        "mag_G": null,
+        "mag_R": null,
+        "mag_W1": null,
+        "mag_W2": null,
+        "mag_Z": null
+      },
+      "viewer_url": "https://www.legacysurvey.org/viewer/desi-spectrum/dr1/targetid39636182677589446"
+    }
+  ],
+  "created_utc": "2026-07-14T13:08:55Z",
+  "input": {
+    "catalog": "/Users/houstongolden/Desktop/CODE_YOU/bigbounce/pipelines/p3_anomaly_engine/desi_science_catalog_v3.2.0-r2/desi_dr1_science_anomaly_candidates_v3.2.0-r2.parquet",
+    "catalog_sha256": "25f06752e0f1e9c0ddcde32e74fc0a82e8c2518a8fb24bf910c21e10ce988b03"
+  },
+  "interpretation": "PASS establishes that the public DR1 viewer served metadata, B/R/Z spectral arrays, and an imaging-cutout link for every audited TARGETID, and that the listed metadata agree with the release. It is not a visual classification, novelty claim, or proof that a historical anomaly score has an astrophysical origin.",
+  "scope": {
+    "audited_unique_candidates": 20,
+    "representative_table_candidates": [
+      "P3-DESI-000001",
+      "P3-DESI-000002",
+      "P3-DESI-000003",
+      "P3-DESI-000004",
+      "P3-DESI-000005",
+      "P3-DESI-000006",
+      "P3-DESI-000020",
+      "P3-DESI-000039",
+      "P3-DESI-000047",
+      "P3-DESI-000018",
+      "P3-DESI-000163",
+      "P3-DESI-000007"
+    ],
+    "separation_tail_threshold_arcsec": 0.1,
+    "tail_candidates": [
+      "P3-DESI-000003",
+      "P3-DESI-000005",
+      "P3-DESI-000017",
+      "P3-DESI-000022",
+      "P3-DESI-000030",
+      "P3-DESI-000032",
+      "P3-DESI-000039",
+      "P3-DESI-000045",
+      "P3-DESI-000053",
+      "P3-DESI-000140",
+      "P3-DESI-000141"
+    ]
+  },
+  "sources": {
+    "official_desi_access_documentation": "https://data.desi.lbl.gov/doc/access/",
+    "viewer_url_template": "https://www.legacysurvey.org/viewer/desi-spectrum/dr1/targetid{targetid}"
+  },
+  "status": "PASS"
+}
