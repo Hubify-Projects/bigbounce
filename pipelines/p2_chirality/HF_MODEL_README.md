@@ -27,7 +27,7 @@ model-index:
           type: image-classification
         metrics:
           - type: equivariance_suppression
-            value: 3.86
+            value: 2.98
             name: raw → equivariant asymmetry suppression factor
 ---
 
@@ -50,8 +50,8 @@ No immutable Paper IV v1.0.252 repository tag or DOI is claimed.
   Raw → calibrated → equivariant residuals reported in Paper IV
   Table V (raw +0.79% / 28.8σ → calibrated +0.4% / 14.6σ → equivariant
   −0.26% / 9.5σ).
-- Equivariance suppression factor **3.86×** (raw asymmetry +2.05% →
-  equivariant asymmetry −0.53%).
+- Equivariance suppression factor **2.98×** (raw asymmetry +1.576% →
+  equivariant asymmetry −0.529%).
 
 ## Catalog scale
 
@@ -61,8 +61,10 @@ Paper IV pipeline:
 - 8,474,531 galaxies in the science-facing catalog
 - 1,592,107 CW + 1,609,053 CCW = 3,201,160 chirality-relevant spirals
 - Catalog-wide CW fraction (post-TTA equivariant) **0.4974 ± 0.000279**,
-  consistent with parity at ~1σ; the residual −0.0026 monopole is a
-  classifier-residual bias, not a cosmological dipole.
+  a **−9.47σ classifier-residual monopole** relative to 0.5 in raw-count
+  binomial units, not a cosmological dipole. The distinct primary
+  fixed-occupancy dipole statistic is consistent with its null
+  (`z=+0.7053169638`; one-sided empirical-rank `p=0.2246775322`).
 
 ## Current Paper IV result (v1.0.252)
 
@@ -116,16 +118,41 @@ not a v1.0.252 review result.
 ```python
 from huggingface_hub import hf_hub_download
 import torch
+import torch.nn as nn
+import timm
 
 ckpt_path = hf_hub_download(
     repo_id="bamfai/galaxy-chirality-v2",
-    filename="model.safetensors",
+    filename="chirality_model_v2_best.pt",
     revision="237d021c451d75cf86a875e86d4de498b74e2f12",
 )
+
+class Head(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.h = nn.Sequential(
+            nn.LayerNorm(384), nn.Linear(384, 512), nn.GELU(), nn.Dropout(0.3),
+            nn.Linear(512, 256), nn.GELU(), nn.Dropout(0.2), nn.Linear(256, 3),
+        )
+    def forward(self, x):
+        return self.h(x)
+
 state = torch.load(ckpt_path, map_location="cpu", weights_only=True)
-# Then load into ViT-Small/16 + 3-class head as documented in
-# pipelines/p2_chirality/run_eq_dataloader.py
+encoder = timm.create_model("vit_small_patch16_224", pretrained=False,
+                            num_classes=0)
+head = Head()
+encoder.load_state_dict(state["enc"])
+head.load_state_dict(state["head"])
+encoder.eval()
+head.eval()
 ```
+
+The checkpoint is a PyTorch dictionary with `enc`, `head`, `val_acc`, `epoch`,
+and `n_classes` entries, not a standalone safetensors model. Exact production
+preprocessing and equivariant inference are documented in
+[`run_eq_dataloader.py`](https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/run_eq_dataloader.py).
+Because the historical environment and training realization are not fully
+pinned, this loading example does not claim standalone exact reproducibility.
 
 ## Companion catalog dataset
 
@@ -157,7 +184,7 @@ claimed here).
   5,323 validation rows. Conflicting total/non-spiral counts, absent retained
   object/split membership, and missing random-state/run receipts prevent either
   metric from being treated as a resolved, exactly replayable validation.
-- A residual catalog-wide CW-fraction offset of −0.0026 (a ~5σ deviation
+- A residual catalog-wide CW-fraction offset of −0.002647 (a −9.47σ deviation
   from 0.5 at N = 3.2M chirality-relevant spirals) is attributable to
   classifier-residual bias and is documented in Paper IV §VI.E.
 - For environment-dependent chirality, see the companion Paper V
