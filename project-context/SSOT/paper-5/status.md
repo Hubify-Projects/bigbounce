@@ -1,3 +1,15 @@
+## v0.1.133 STOP-RULE CLOSURE — 2026-07-14 · RAW v0.1.132 MINOR PRESERVED · ONE WORDING MINOR CLOSED · READINESS/CAP 74 HOLD
+
+**Binding:** final 39-page local candidate at manuscript commit `af1a6abe6b91e142a2eb981aef4a178c58b1391c`, PDF SHA-256 `db18dd937f5d45399636548aeb75c6f9e922ddef13895ff72dec7a4e9a668764`.
+
+- **Raw confirmation:** ChatGPT-subscription Codex CLI `gpt-5.6-sol` high returned **MINOR REVISIONS** on exact v0.1.132; no OpenAI API and no Anthropic/Claude. The verdict is not relabeled as ACCEPT.
+- **Verified closure:** its one real MINOR identified two residual environment-independence overclaims on pages 23--24. v0.1.133 replaces them with bounded classifier-label non-detection language. No number, sample, estimand, covariance, release claim, or layout changed.
+- **Stop rule:** v0.1.132 already passed the all-page arithmetic/A37/provenance/release/layout checks. The wording-only v0.1.133 closure is compiled, visually audited, retained, and packaged without another automated review.
+- **Typed gates remain open:** final Paper IV labels/weights/provenance and P5 reverification; immutable public tag/archive/DOI with A1--A40 resolution; unavailable exact DESIVAST selection products; environment-dependent label-bias power; and actual AJ editor/referee review. Automated review is not human acceptance.
+- **No readiness uplift:** verified readiness/cap stays **74**.
+
+Evidence: `project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P5-v0.1.132-EXACTPDF-4b04d2fc-AJ-CODEX-SUBSCRIPTION-CONFIRM/` and `project-context/peer-reviews/INT_v3/PROOF_2026-07-14_P5_v0.1.133_db18dd937f5d/`.
+
 ## v0.1.130 EXACT-PDF AJ BOARD — 2026-07-14 · CENTRAL EXPLORATORY NULL SURVIVES · PUBLICATION/REPRODUCIBILITY GATES OPEN · READINESS/CAP 74 HOLD
 
 **Binding:** committed 38-page artifact at manuscript commit `0842dfc6`, TeX SHA-256 `ea561381...`, PDF SHA-256 `f5b7a1bb...`. Concurrent immutable-packet AJ board: OpenAI **REJECT** / Gemini **MINOR** (2 internally MAJOR) / Grok **MINOR** (2 internally MAJOR); independent Codex typed `NOT_RUN`, no Anthropic/Claude.

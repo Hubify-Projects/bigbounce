@@ -20,6 +20,24 @@ This tracker logs each revision round and which issues have been addressed.
 
 ## Revision Rounds
 
+### P5 v0.1.133: Exact-PDF MINOR closure and anti-loop stop (2026-07-14)
+
+**Input:** ChatGPT-subscription Codex CLI reviewed exact 39-page v0.1.132 at commit `a745b6ac4d4f951462fc4e7e2135843d831be613`, PDF SHA-256 `4b04d2fc1152b911d85c9db8fa315f9c135af2f7cd6c4f54c932d22d5eff1c18`. The final local candidate is v0.1.133 at commit `af1a6abe6b91e142a2eb981aef4a178c58b1391c`, PDF SHA-256 `db18dd937f5d45399636548aeb75c6f9e922ddef13895ff72dec7a4e9a668764`.
+
+**Raw verdict:** **MINOR REVISIONS**, preserved verbatim; it is not converted to ACCEPT. The receipt proves ChatGPT subscription auth, `gpt-5.6-sol` high, no OpenAI API, and no Anthropic/Claude.
+
+| Finding/gate | Status | Evidence or remaining requirement |
+|---|---|---|
+| Two residual environment-independence statements | **CLOSED v0.1.133** | Replaced with classifier-label non-detection / “consistent with, but does not establish” wording; no numerical change |
+| Arithmetic, A37, provenance, release, layout | **PASS on v0.1.132** | Exact all-page review found no regression; focal `N=145,766`, `K=78`, `G=50`, `SE=0.00341274`, `p=0.71277` unchanged |
+| Further automated confirmation | **STOPPED — ANTI-LOOP RULE** | Wording-only closure compiled, visually audited, retained, and packaged; no automated ACCEPT claimed |
+| Paper IV labels/weights and P5 rerun | **OPEN — EXTERNAL SCIENCE GATE** | Verify the final Paper IV release and rerun P5 on those final labels |
+| Public tag/archive/DOI and A1--A40 links | **OPEN — RELEASE GATE** | Publish and resolve a real immutable release; local retention is not a public DOI |
+| DESIVAST selection products / label-bias power | **OPEN — EXTERNAL DATA/POWER GATES** | Exact products remain unavailable and the environment-specific label test remains underpowered |
+| AJ decision | **OPEN — HUMAN GATE** | Automated evidence is not editor/referee acceptance |
+
+No readiness uplift; P5 remains capped at 74. Evidence: `INT_v3/ROUND_2026-07-14-P5-v0.1.132-EXACTPDF-4b04d2fc-AJ-CODEX-SUBSCRIPTION-CONFIRM/` and `INT_v3/PROOF_2026-07-14_P5_v0.1.133_db18dd937f5d/`.
+
 ### P1A v1A.0.123: Exact-PDF CQG Note subscription confirmation (2026-07-14)
 
 **Input:** exact 7-page PDF from paper commit `bdbb2242199a8eb50bdee825b98d42ea8a3de523`, with the bounded artifact correction at commit `7befce143848b925998a3e6ecc850aa510ab3a94`; TeX SHA-256 `e08323215579b843a43d6288643f339442560da45bd3ffd91a762dcfb1702233`; PDF SHA-256 `4c450a6706b2f4e53faac5ffbc6ec720f21e45c7406aa7186ef830f3fef33f71`.

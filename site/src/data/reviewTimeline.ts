@@ -57,6 +57,41 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p5-v01133-aj-stop-rule-closure-2026-07-14",
+    dateISO: "2026-07-14",
+    timePT: "17:20–17:51",
+    kind: "closure-wave",
+    title:
+      "P5 v0.1.133 — exact-PDF MINOR closed under the anti-loop stop rule; external and human gates remain",
+    papers: ["P5"],
+    summary:
+      "A read-only Codex CLI gpt-5.6-sol high review through the ChatGPT subscription returned MINOR REVISIONS on exact 39-page v0.1.132, not ACCEPT. Its sole real finding was two residual environment-independence overclaims on pages 23–24. v0.1.133 replaces them with bounded classifier-label non-detection language without changing any sample, statistic, estimand, covariance, release claim, or layout. The prior exact review passed arithmetic, frozen A37, provenance, release, and all-page layout checks. The anti-loop stop rule therefore ends automated review after compile, visual audit, retention, and packaging. Readiness remains 74; no human acceptance is claimed.",
+    keyTakeaways: [
+      "Raw v0.1.132 verdict remains MINOR REVISIONS and is preserved verbatim; no automated ACCEPT is inferred.",
+      "The focal result is unchanged: N=145,766, K=78, 50 NSIDE=4 clusters, Δf_CW=+0.00125636, SE=0.00341274, p=0.71277.",
+      "The final local candidate is v0.1.133, 39 pages, SHA-256 db18dd937f5d…8764, bound to commit af1a6abe.",
+      "Final Paper IV labels/weights and P5 rerun, immutable public tag/archive/DOI with A1–A40 resolution, external-data/power limits, and actual AJ review remain open typed gates.",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 0,
+      note: "The sole bounded wording minor is closed. Remaining work consists of typed external science/data, release, and human editorial gates; readiness/cap remains 74.",
+    },
+    links: [
+      {
+        label: "Raw subscription review",
+        href: `${PR}/INT_v3/ROUND_2026-07-14-P5-v0.1.132-EXACTPDF-4b04d2fc-AJ-CODEX-SUBSCRIPTION-CONFIRM/CODEX_SUBSCRIPTION_RAW.md`,
+      },
+      {
+        label: "Normalized stop-rule disposition",
+        href: `${PR}/INT_v3/ROUND_2026-07-14-P5-v0.1.132-EXACTPDF-4b04d2fc-AJ-CODEX-SUBSCRIPTION-CONFIRM/P5_v0.1.132_NORMALIZED_STOP_RULE_DISPOSITION.md`,
+      },
+      {
+        label: "v0.1.133 closure proof",
+        href: `${PR}/INT_v3/PROOF_2026-07-14_P5_v0.1.133_db18dd937f5d/CLOSURE_PROOF.md`,
+      },
+    ],
+  },
+  {
     id: "p3-v320-r8-apjs-subscription-accept-2026-07-14",
     dateISO: "2026-07-14",
     timePT: "13:59–14:52",
