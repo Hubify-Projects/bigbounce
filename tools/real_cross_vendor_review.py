@@ -403,6 +403,12 @@ def run_reviewer(
 # Main
 # ---------------------------------------------------------------------------
 def main() -> int:
+    print(
+        "ERROR: real_cross_vendor_review.py is retired; use tools/int_wave.sh "
+        "with the canonical PDF packet and portfolio preflight",
+        file=sys.stderr,
+    )
+    return 2
     if len(sys.argv) < 4:
         print(
             f"Usage: {sys.argv[0]} <pdf_path> <round_label> <paper_tag> [round_context]\n"

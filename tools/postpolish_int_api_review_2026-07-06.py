@@ -157,6 +157,12 @@ def run_one(paper, vendor):
 
 
 def main():
+    print(
+        "ERROR: postpolish_int_api_review_2026-07-06.py is a retired dated launcher; "
+        "use tools/int_wave.sh with portfolio preflight",
+        file=sys.stderr,
+    )
+    return 2
     if MANIFEST.exists():
         MANIFEST.unlink()
     order = sys.argv[1:] if len(sys.argv) > 1 else list(PAPERS.keys())
@@ -172,4 +178,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

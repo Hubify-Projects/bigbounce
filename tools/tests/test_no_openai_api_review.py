@@ -26,6 +26,14 @@ RETIRED_OPENAI_API_LAUNCHERS = (
     "v3_meta_review.py",
 )
 
+RETIRED_DUPLICATE_REVIEW_LAUNCHERS = (
+    "real_cross_vendor_review.py",
+    "cross_vendor_review_direct.py",
+    "cross_model_review_gemini.py",
+    "final_int_api_review_2026-07-05.py",
+    "postpolish_int_api_review_2026-07-06.py",
+)
+
 
 def discover_executable_review_surface() -> tuple[Path, ...]:
     """Discover current/future review entry points instead of trusting a fixed list."""
@@ -283,10 +291,15 @@ UTC: 2026-07-15T09:06:44Z
             }
             with mock.patch.object(module, "live_version", return_value="v1"), \
                  mock.patch.object(module, "review_cache_root", return_value=root / "cache"), \
-                 mock.patch.object(module, "build_packet", return_value=packet), \
+                 mock.patch.object(module, "verify_receipt", return_value={"verdict": "PASS"}), \
+                 mock.patch.object(module, "build_packet", return_value=packet) as build, \
                  mock.patch.object(module, "publish_packet", return_value=(root / "packet.json", False)), \
-                 mock.patch.object(module, "resolve_pdf_snapshot", return_value=pdf):
+                 mock.patch.object(module, "resolve_pdf_snapshot", return_value=pdf), \
+                 mock.patch.dict(os.environ, {"BIGBOUNCE_PREFLIGHT_RECEIPT": str(root / "preflight.json")}):
                 rec = module.run_one("P1A", "grok")
+            self.assertEqual(
+                build.call_args.kwargs["preflight_receipt"], root / "preflight.json"
+            )
             manifest = json.loads(module.MANIFEST.read_text().strip())
             receipt = manifest["provider_receipt"]
             self.assertEqual(receipt["requested_model"], module.XAI_MODEL)
@@ -299,6 +312,36 @@ UTC: 2026-07-15T09:06:44Z
             self.assertIn("provider_receipt:", header)
             self.assertNotIn("Authorization", header)
             self.assertNotIn("test-secret", header)
+
+    def test_direct_api_leg_requires_preflight_before_network(self):
+        module = load_script("int_api_review_2026-07-08.py")
+        module.REGISTRY = {"P1A": {
+            "pdf_path": "paper.pdf", "tex_path": "paper.tex",
+            "target_journal": "PRD", "article_type": "article", "review_profile": "physics",
+        }}
+        with mock.patch.dict(os.environ, {}, clear=False), \
+             mock.patch.object(module.requests, "post") as post, \
+             mock.patch.object(module, "build_packet") as build:
+            os.environ.pop("BIGBOUNCE_PREFLIGHT_RECEIPT", None)
+            with self.assertRaisesRegex(ValueError, "BIGBOUNCE_PREFLIGHT_RECEIPT is required"):
+                module.run_one("P1A", "grok")
+        post.assert_not_called()
+        build.assert_not_called()
+
+    def test_invalid_preflight_fails_before_network_and_packet(self):
+        module = load_script("int_api_review_2026-07-08.py")
+        module.REGISTRY = {"P1A": {
+            "pdf_path": "paper.pdf", "tex_path": "paper.tex",
+            "target_journal": "PRD", "article_type": "article", "review_profile": "physics",
+        }}
+        with mock.patch.dict(os.environ, {"BIGBOUNCE_PREFLIGHT_RECEIPT": "/tmp/stale.json"}), \
+             mock.patch.object(module, "verify_receipt", side_effect=ValueError("stale preflight")), \
+             mock.patch.object(module.requests, "post") as post, \
+             mock.patch.object(module, "build_packet") as build:
+            with self.assertRaisesRegex(ValueError, "stale preflight"):
+                module.run_one("P1A", "gemini")
+        post.assert_not_called()
+        build.assert_not_called()
 
     def test_single_leg_dispatch_fails_closed_before_network(self):
         module = load_script("int_api_review_2026-07-08.py")
@@ -313,6 +356,31 @@ UTC: 2026-07-15T09:06:44Z
             source = (TOOLS / name).read_text(encoding="utf-8")
             self.assertNotRegex(source, r'\$PY_REVIEW[^\n]+["\']openai["\']')
             self.assertNotRegex(source, r"for\s+vend\s+in[^\n]*\bopenai\b")
+
+    def test_hourly_portfolio_rereview_loop_is_retired(self):
+        run = subprocess.run(
+            ["bash", str(TOOLS / "v3_review_autoloop.sh")],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+            timeout=10,
+            check=False,
+        )
+        self.assertEqual(run.returncode, 2)
+        self.assertIn("retired", run.stderr.lower())
+
+    def test_duplicate_direct_review_launchers_are_retired(self):
+        for name in RETIRED_DUPLICATE_REVIEW_LAUNCHERS:
+            run = subprocess.run(
+                [sys.executable, str(TOOLS / name)],
+                cwd=ROOT,
+                capture_output=True,
+                text=True,
+                timeout=15,
+                check=False,
+            )
+            self.assertEqual(run.returncode, 2, f"{name}: {run.stderr}")
+            self.assertIn("retired", run.stderr.lower(), name)
 
     def test_native_pdf_engine_has_no_openai_reviewer_and_blocks_dispatch(self):
         module = load_script("v3_native_pdf_review.py")
@@ -330,9 +398,34 @@ UTC: 2026-07-15T09:06:44Z
                 "anthropic", {}, "claude", "prompt", Path("x.pdf"), ""
             )
 
-    def test_apjs_dry_run_resolves_live_paper_version(self):
+    def test_native_pdf_engine_requires_preflight_before_loading_provider_keys(self):
+        module = load_script("v3_native_pdf_review.py")
+        pdf = module.REPO / module.REGISTRY["P1A"]["pdf_path"]
+        argv = [str(TOOLS / "v3_native_pdf_review.py"), str(pdf), "test", "P1A"]
+        with mock.patch.object(sys, "argv", argv), \
+             mock.patch.dict(os.environ, {}, clear=False), \
+             mock.patch.object(module, "load_keys") as load_keys:
+            os.environ.pop("BIGBOUNCE_PREFLIGHT_RECEIPT", None)
+            self.assertEqual(module.main(), 2)
+        load_keys.assert_not_called()
+
+    def test_native_pdf_engine_rejects_stale_preflight_before_provider_work(self):
+        module = load_script("v3_native_pdf_review.py")
+        pdf = module.REPO / module.REGISTRY["P1A"]["pdf_path"]
+        argv = [str(TOOLS / "v3_native_pdf_review.py"), str(pdf), "test", "P1A"]
+        with mock.patch.object(sys, "argv", argv), \
+             mock.patch.dict(os.environ, {"BIGBOUNCE_PREFLIGHT_RECEIPT": "/tmp/stale.json"}), \
+             mock.patch.object(module, "verify_receipt", side_effect=module.PortfolioError("stale")), \
+             mock.patch.object(module, "load_keys") as load_keys:
+            self.assertEqual(module.main(), 2)
+        load_keys.assert_not_called()
+
+    def test_apjs_wrapper_delegates_to_canonical_p3_registry_route(self):
         source = (TOOLS / "int_wave_apjs.sh").read_text(encoding="utf-8")
-        self.assertIn(r"\\newcommand\{\\paperVersion\}", source)
+        self.assertIn('exec "$REPO/tools/int_wave.sh" P3', source)
+        registry = json.loads((ROOT / "project-context/paper_registry.json").read_text())["papers"]["P3"]
+        self.assertEqual(registry["review_profile"], "APJS-CATALOG")
+        self.assertIn("Astrophysical Journal Supplement", registry["target_journal"])
 
     def test_apjs_live_api_dispatch_uses_canonical_p3_and_parses_raws(self):
         """Exercise the real wrapper dispatch/parser seam without provider calls."""

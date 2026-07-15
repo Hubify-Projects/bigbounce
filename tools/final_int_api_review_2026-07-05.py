@@ -126,6 +126,12 @@ def run_one(paper, vendor):
 
 
 def main():
+    print(
+        "ERROR: final_int_api_review_2026-07-05.py is a retired dated launcher; "
+        "use tools/int_wave.sh with portfolio preflight",
+        file=sys.stderr,
+    )
+    return 2
     # fresh manifest
     if MANIFEST.exists():
         MANIFEST.unlink()
@@ -142,4 +148,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

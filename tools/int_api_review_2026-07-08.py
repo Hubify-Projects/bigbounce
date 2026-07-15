@@ -11,6 +11,7 @@ import os, sys, json, time, warnings, datetime, pathlib
 warnings.filterwarnings("ignore")
 
 from paper_registry import CANONICAL_IDS, load_registry, repo_root
+from bigbounce_preflight import DEFAULT_RULES, verify_receipt
 from review_packet import (
     build_packet,
     publish_packet,
@@ -335,6 +336,15 @@ def run_one(paper, vendor):
         raise ValueError(f"paper must be one of {CANONICAL_IDS}")
     if vendor not in VENDORS:
         raise ValueError(f"vendor must be one of {tuple(VENDORS)}")
+    preflight_value = os.environ.get("BIGBOUNCE_PREFLIGHT_RECEIPT", "").strip()
+    if not preflight_value:
+        raise ValueError(
+            "BIGBOUNCE_PREFLIGHT_RECEIPT is required before any Grok/Gemini review dispatch"
+        )
+    preflight_path = pathlib.Path(preflight_value).expanduser()
+    # Verify explicitly before model/provider selection. build_packet verifies a
+    # second time while binding the same receipt into its immutable packet key.
+    verify_receipt(REPO, REPO / DEFAULT_RULES, preflight_path)
     entry = REGISTRY[paper]
     rel = entry["pdf_path"]
     ver = live_version(entry["tex_path"])
@@ -349,6 +359,7 @@ def run_one(paper, vendor):
     packet = build_packet(
         REPO, paper, entry, packet_prompt, context, model,
         os.environ.get("INT_EFFORT", "high"), expected_sha256 or None, cache_root,
+        preflight_receipt=preflight_path,
     )
     packet_path, packet_reused = publish_packet(
         packet, cache_root / "packets", packet_prompt, context,

@@ -17,10 +17,11 @@ project-context/peer-reviews/INT_api/H17_2026-07-10/API_P3apjs_gemini.md
 import os, sys, json, time, datetime, pathlib
 import importlib.util
 
+from bigbounce_preflight import DEFAULT_RULES, PortfolioError, verify_receipt
+
 REPO = pathlib.Path("/Users/houstongolden/Desktop/CODE_YOU/bigbounce")
 PDF = REPO / "submissions/P3_apjs/paper3_apjs_v3.1.155.pdf"
 OUTDIR = REPO / "project-context/peer-reviews/INT_api/H17_2026-07-10"
-OUTDIR.mkdir(parents=True, exist_ok=True)
 OUTFILE = OUTDIR / "API_P3apjs_gemini.md"
 
 # import the production script as a module to reuse its functions verbatim
@@ -85,9 +86,31 @@ def apjs_call_gemini(pdf_path):
     return txt, {"usage": j.get("usageMetadata", {}), "modality": modality, "model": model}
 
 
+def require_verified_preflight():
+    """Fail closed unless a current PASS receipt binds all six canonical papers."""
+    value = os.environ.get("BIGBOUNCE_PREFLIGHT_RECEIPT", "").strip()
+    if not value:
+        raise PortfolioError(
+            "BIGBOUNCE_PREFLIGHT_RECEIPT is required before Gemini review dispatch"
+        )
+    receipt = verify_receipt(
+        REPO, REPO / DEFAULT_RULES, pathlib.Path(value).expanduser()
+    )
+    if receipt.get("paper_count") != 6 or len(receipt.get("papers", [])) != 6:
+        raise PortfolioError("preflight receipt does not bind all six canonical papers")
+    return receipt
+
+
 def main():
+    try:
+        preflight = require_verified_preflight()
+    except (PortfolioError, OSError) as exc:
+        print(f"[FAIL] portfolio preflight: {exc}")
+        return 2
     if not PDF.exists():
-        print(f"[FAIL] PDF not found: {PDF}"); sys.exit(1)
+        print(f"[FAIL] PDF not found: {PDF}")
+        return 1
+    OUTDIR.mkdir(parents=True, exist_ok=True)
     ts = datetime.datetime.utcnow().isoformat() + "Z"
     model = int_api._gemini_model()
     last_err = None
@@ -106,13 +129,20 @@ def main():
                 f.write(f"modality: {meta.get('modality')}\n")
                 f.write(f"UTC: {ts}  |  latency: {dt}s  |  attempt: {attempt}\n")
                 f.write(f"usage: {json.dumps(meta.get('usage', {}))}\n")
+                f.write(
+                    "preflight: "
+                    f"schema={preflight['schema']} "
+                    f"core_sha256={preflight['core_sha256']} "
+                    f"receipt_sha256={preflight['receipt_sha256']} "
+                    f"paper_count={preflight['paper_count']}\n"
+                )
                 f.write(f"PARSED VERDICT: {verdict}\n\n")
                 f.write("PROMPT (verbatim):\n" + APJS_PROMPT + "\n\n")
                 f.write("=" * 70 + "\nRAW RESPONSE (verbatim):\n" + "=" * 70 + "\n\n")
                 f.write(content or "(empty response)")
             print(f"[OK] P3apjs gemini -> {verdict}  ({dt}s, attempt {attempt})  model={eff_model}")
             print(f"saved: {OUTFILE}")
-            return
+            return 0
         except Exception as e:
             last_err = str(e)[:800]
             print(f"[retry {attempt}] {last_err[:200]}")
@@ -121,8 +151,8 @@ def main():
         f.write(f"# INT API Review (ApJS-framed) — P3 ApJS variant v3.1.155 — gemini — FAILED\n")
         f.write(f"UTC: {ts}\nERROR: {last_err}\n")
     print(f"[FAIL] {last_err[:200]}")
-    sys.exit(1)
+    return 1
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

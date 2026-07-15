@@ -268,6 +268,12 @@ def write_review(paper: dict, model_name: str, result: dict) -> None:
 
 
 def main() -> int:
+    print(
+        "ERROR: cross_model_review_gemini.py is retired; use tools/int_wave.sh "
+        "with the canonical PDF packet and portfolio preflight",
+        file=sys.stderr,
+    )
+    return 2
     api_key = load_api_key()
     model_name = pick_model(api_key)
 

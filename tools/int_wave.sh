@@ -177,12 +177,13 @@ fi
 PACKET_PROMPT="$(mktemp "${TMPDIR:-/tmp}/bigbounce-int-prompt.XXXXXX")"
 PACKET_CONTEXT="$(mktemp "${TMPDIR:-/tmp}/bigbounce-int-context.XXXXXX")"
 PACKET_JSON="$(mktemp "${TMPDIR:-/tmp}/bigbounce-int-packet.XXXXXX")"
+PREFLIGHT_JSON="$(mktemp "${TMPDIR:-/tmp}/bigbounce-preflight.XXXXXX")"
 CODEX_TREE=""
 cleanup() {
   if [ -n "$CODEX_TREE" ] && [ -d "$CODEX_TREE" ]; then
     rm -rf "$CODEX_TREE"
   fi
-  rm -f "$PACKET_PROMPT" "$PACKET_CONTEXT" "$PACKET_JSON"
+  rm -f "$PACKET_PROMPT" "$PACKET_CONTEXT" "$PACKET_JSON" "$PREFLIGHT_JSON"
 }
 trap cleanup EXIT INT TERM
 printf '%s\n' "$CODEX_PROMPT" >"$PACKET_PROMPT"
@@ -191,8 +192,19 @@ printf '%s\n' "$CODEX_PROMPT" >"$PACKET_PROMPT"
 # survives across two HEADs even though packet provenance correctly differs.
 printf 'user_context=%s\nreview_commit=%s\n' "$CONTEXT" "$REVIEW_COMMIT" >"$PACKET_CONTEXT"
 
+# Compile the accumulated learning catalog into a content-addressed portfolio
+# receipt before any reviewer can launch. The receipt binds all six canonical
+# sources/PDFs plus HEAD, registry, rule catalog, and HubStack engine provenance.
+python3 "$REPO/tools/bigbounce_preflight.py" run \
+  --project-root "$REPO" --receipt "$PREFLIGHT_JSON" \
+  || die "portfolio preflight did not PASS"
+python3 "$REPO/tools/bigbounce_preflight.py" verify \
+  --project-root "$REPO" --receipt "$PREFLIGHT_JSON" \
+  || die "portfolio preflight receipt did not verify"
+export BIGBOUNCE_PREFLIGHT_RECEIPT="$PREFLIGHT_JSON"
+
 PACKET_ARGS=("$PAPER" --prompt-file "$PACKET_PROMPT" --context-file "$PACKET_CONTEXT" \
-  --model "$CODEX_MODEL" --effort "$CODEX_EFFORT")
+  --model "$CODEX_MODEL" --effort "$CODEX_EFFORT" --preflight-receipt "$PREFLIGHT_JSON")
 [ -n "${INT_EXPECTED_PDF_SHA256:-}" ] && PACKET_ARGS+=(--expected-pdf-sha "$INT_EXPECTED_PDF_SHA256")
 python3 "$REPO/tools/review_packet.py" "${PACKET_ARGS[@]}" >"$PACKET_JSON" \
   || die "could not build exact Codex review packet"

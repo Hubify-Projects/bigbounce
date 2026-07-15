@@ -30,10 +30,11 @@ set -euo pipefail
 # `export BROWSE_HEADED=1` (see ops/handoff/bootstrap.sh) covers non-tool paths.
 export BROWSE_HEADED=1
 
-REPO="/Users/houstongolden/Desktop/CODE_YOU/bigbounce"
-B="$HOME/.claude/skills/gstack/browse/dist/browse"
-ROUND_DIR_BASE="$REPO/project-context/peer-reviews/EXT_real/H17_2026-07-10"
+REPO="${BIGBOUNCE_REPO:-/Users/houstongolden/Desktop/CODE_YOU/bigbounce}"
+B="${BIGBOUNCE_BROWSER_BIN:-$HOME/.claude/skills/gstack/browse/dist/browse}"
+ROUND_DIR_BASE="${BIGBOUNCE_EXT_ROUND_DIR_BASE:-$REPO/project-context/peer-reviews/EXT_real/H17_2026-07-10}"
 MANIFEST="$ROUND_DIR_BASE/manifest.jsonl"
+PREFLIGHT_PY="${BIGBOUNCE_PREFLIGHT_BIN:-$REPO/tools/bigbounce_preflight.py}"
 
 GROK_PROJECT="https://grok.com/project/e6c9ce77-4f86-4d94-b440-1062a78171c1"
 CHATGPT_PROJECT="https://chatgpt.com/g/g-p-6881c7f354808191a36860ff4d29fa69-big-bounce-book/project"
@@ -145,6 +146,42 @@ else
 fi
 [ -f "$SRC_PDF" ] || die "pdf not found: $SRC_PDF"
 
+# ---- SIX-PAPER LEARNING PREFLIGHT (mandatory before any browser launch) ----
+# Review models are residual-novelty detectors, not first-line linters. Generate
+# and immediately re-verify the accumulated six-paper prevention receipt before
+# even querying/connecting the browser. The receipt binds HEAD, the canonical
+# registry, rule catalog, HubStack engine, and all six exact source/PDF hashes.
+# Persist it with this EXT wave and export its provenance so every subsequent
+# manifest row can identify the exact preflight that authorized submission.
+ROUND_SAFE="$(printf '%s' "$ROUND" | tr -c 'A-Za-z0-9._-' '_')"
+PREFLIGHT_DIR="$ROUND_DIR_BASE/preflight"
+PREFLIGHT_JSON="$PREFLIGHT_DIR/${PAPER}_${REVIEWER}_${ROUND_SAFE}.json"
+mkdir -p "$PREFLIGHT_DIR"
+[ -f "$PREFLIGHT_PY" ] || die "portfolio preflight adapter missing: $PREFLIGHT_PY"
+python3 "$PREFLIGHT_PY" run \
+  --project-root "$REPO" --receipt "$PREFLIGHT_JSON" \
+  || die "portfolio preflight did not PASS; browser launch denied"
+python3 "$PREFLIGHT_PY" verify \
+  --project-root "$REPO" --receipt "$PREFLIGHT_JSON" \
+  || die "portfolio preflight receipt did not verify; browser launch denied"
+read -r PREFLIGHT_CORE_SHA PREFLIGHT_RECEIPT_SHA <<EOF
+$(python3 - "$PREFLIGHT_JSON" <<'PY'
+import json, re, sys
+receipt = json.load(open(sys.argv[1], encoding="utf-8"))
+core = receipt.get("core_sha256", "")
+outer = receipt.get("receipt_sha256", "")
+if receipt.get("verdict") != "PASS" or not all(re.fullmatch(r"[0-9a-f]{64}", item) for item in (core, outer)):
+    raise SystemExit("invalid PASS receipt provenance")
+print(core, outer)
+PY
+)
+EOF
+[ -n "$PREFLIGHT_CORE_SHA" ] && [ -n "$PREFLIGHT_RECEIPT_SHA" ] \
+  || die "portfolio preflight provenance is empty; browser launch denied"
+export BIGBOUNCE_PREFLIGHT_RECEIPT="$PREFLIGHT_JSON"
+export BIGBOUNCE_PREFLIGHT_CORE_SHA256="$PREFLIGHT_CORE_SHA"
+export BIGBOUNCE_PREFLIGHT_RECEIPT_SHA256="$PREFLIGHT_RECEIPT_SHA"
+
 # ---- stage to /tmp with the round label; gs-compress if >8MB ----
 STAGE="/tmp/ext_${PAPER}_${ROUND}.pdf"
 SZ="$(stat -f%z "$SRC_PDF")"
@@ -167,11 +204,15 @@ mkdir -p "$ROUND_DIR_BASE"
 
 # ---- manifest append helper (single JSON line) ----
 append_manifest() {
-  python3 - "$MANIFEST" "$PAPER" "$REVIEWER" "$ROUND" "$1" "$2" "$3" <<'PY'
+  python3 - "$MANIFEST" "$PAPER" "$REVIEWER" "$ROUND" "$1" "$2" "$3" \
+    "$BIGBOUNCE_PREFLIGHT_RECEIPT" "$BIGBOUNCE_PREFLIGHT_CORE_SHA256" \
+    "$BIGBOUNCE_PREFLIGHT_RECEIPT_SHA256" <<'PY'
 import sys, json, datetime
-manifest, paper, reviewer, rnd, url, status, note = sys.argv[1:8]
+manifest, paper, reviewer, rnd, url, status, note, preflight_path, preflight_core, preflight_receipt = sys.argv[1:11]
 row = {"paper": paper, "reviewer": reviewer, "round": rnd,
-       "status": status, "ts": datetime.datetime.now().astimezone().isoformat(timespec="seconds")}
+       "status": status, "ts": datetime.datetime.now().astimezone().isoformat(timespec="seconds"),
+       "preflight": {"path": preflight_path, "core_sha256": preflight_core,
+                     "receipt_sha256": preflight_receipt, "verdict": "PASS"}}
 if url: row["url"] = url
 if note: row["note"] = note
 with open(manifest, "a") as f:

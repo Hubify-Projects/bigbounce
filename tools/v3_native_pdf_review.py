@@ -43,6 +43,7 @@ import traceback
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
+from bigbounce_preflight import DEFAULT_RULES, PortfolioError, verify_receipt
 from paper_registry import CANONICAL_IDS, load_registry, repo_root
 from review_packet import (
     build_packet,
@@ -586,6 +587,19 @@ def main() -> int:
     if not pdf_path.exists():
         print(f"ERROR: PDF not found: {pdf_path}", file=sys.stderr)
         return 1
+
+    preflight_value = os.environ.get("BIGBOUNCE_PREFLIGHT_RECEIPT", "").strip()
+    if not preflight_value:
+        print(
+            "ERROR: BIGBOUNCE_PREFLIGHT_RECEIPT is required before native-PDF review dispatch",
+            file=sys.stderr,
+        )
+        return 2
+    try:
+        verify_receipt(REPO, REPO / DEFAULT_RULES, Path(preflight_value).expanduser())
+    except (PortfolioError, FileNotFoundError, OSError, subprocess.CalledProcessError) as exc:
+        print(f"ERROR: portfolio preflight verification failed: {exc}", file=sys.stderr)
+        return 2
 
     keys = load_keys()
     required = ["GOOGLE_GEMINI_API_KEY", "XAI_API_KEY"]
