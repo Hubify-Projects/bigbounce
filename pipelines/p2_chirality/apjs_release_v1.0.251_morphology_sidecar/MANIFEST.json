@@ -1,0 +1,30 @@
+{
+  "manifest_version": "v1.0.251",
+  "paper_version": "v1.0.251",
+  "contract": {
+    "exact_spiral_rows": 3201160,
+    "join_key": "object_id == f'{BRICKID}_{OBJID}'",
+    "required_properties": [
+      "safe spiral object_id is non-null and unique",
+      "morphology BRICKID/OBJID is non-null and unique",
+      "both key sets are exactly equal with no misses or extras"
+    ]
+  },
+  "inputs": {
+    "safe_catalog": {
+      "path": "pipelines/p2_chirality/apjs_release_v1.0.244/p4_catalog_primary_safe_v1.0.244.parquet",
+      "bytes": 386712994,
+      "sha256": "139b761fbeafb34306a0cec60967226c18dc84295285f8317ce3d3af3d28bdf3"
+    },
+    "morphology_sidecar": {
+      "path": "pipelines/p2_chirality/outputs/spiral_morphology_dr8.parquet",
+      "bytes": 105317121,
+      "sha256": "d49090fce3033c5905df359f63036fd831c4b6378c271b95afd8d86a91bd5620",
+      "rows": 3201160
+    }
+  },
+  "schema": "SCHEMA.json",
+  "validator": "validate_p4_morphology_join_v1_0_251.py",
+  "large_files_created": false,
+  "publication_state": "public companion contract for the existing root spiral_morphology_dr8.parquet"
+}
