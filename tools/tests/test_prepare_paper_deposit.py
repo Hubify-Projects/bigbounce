@@ -245,6 +245,27 @@ def test_p2_config_tracks_exact_v17122_deposit_contract() -> None:
     assert "placeholder" not in json.dumps(p2["metadata"]).lower()
 
 
+def test_p1b_config_is_retention_only_and_fails_closed() -> None:
+    config = json.loads((REPO_ROOT / "tools/paper_deposit_config.json").read_text())
+    p1b = config["papers"]["P1B"]
+    assert p1b["tex"] == "arxiv/paper1b_mcmc_companion.tex"
+    assert p1b["pdf"] == "arxiv/paper1b_mcmc_companion.pdf"
+    assert p1b["arxiv_tarball"].endswith("_NON_RELEASE.tar.gz")
+    assert p1b["standalone_proof"].endswith("_NON_RELEASE.proof.json")
+    assert p1b["metadata_complete"] is False
+    blocker = p1b["metadata_blocker"]
+    assert "NON-RELEASE" in blocker
+    assert "physical-spectrum 500-MC" in blocker
+    assets = {item["archive_name"] for item in p1b["bundle_assets"]}
+    assert assets == {
+        "paper1b_mcmc_companion.tex",
+        "references.bib",
+        "figures/paper1_corner_full_tension.pdf",
+        "figures/fig_dneff_viability_two_frozen.pdf",
+        "figures/alp_triangle_plot.png",
+    }
+
+
 def test_verify_tarball_reads_generated_log_for_undefined_references(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:

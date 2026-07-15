@@ -49,6 +49,54 @@
         "access_right": "open"
       }
     },
+    "P1B": {
+      "tex": "arxiv/paper1b_mcmc_companion.tex",
+      "pdf": "arxiv/paper1b_mcmc_companion.pdf",
+      "arxiv_tarball": "project-context/SSOT/arxiv_tarballs/paper1b_arxiv_{version}_NON_RELEASE.tar.gz",
+      "standalone_proof": "project-context/SSOT/arxiv_tarballs/paper1b_arxiv_{version}_NON_RELEASE.proof.json",
+      "tarball_main_tex": "paper1b_mcmc_companion.tex",
+      "deposit_root": ".deposit-staging",
+      "bundle_assets": [
+        {
+          "source": "arxiv/paper1b_mcmc_companion.tex",
+          "archive_name": "paper1b_mcmc_companion.tex"
+        },
+        {
+          "source": "arxiv/references.bib",
+          "archive_name": "references.bib"
+        },
+        {
+          "source": "arxiv/figures/paper1_corner_full_tension.pdf",
+          "archive_name": "figures/paper1_corner_full_tension.pdf"
+        },
+        {
+          "source": "arxiv/figures/fig_dneff_viability_two_frozen.pdf",
+          "archive_name": "figures/fig_dneff_viability_two_frozen.pdf"
+        },
+        {
+          "source": "arxiv/figures/alp_triangle_plot.png",
+          "archive_name": "figures/alp_triangle_plot.png"
+        }
+      ],
+      "provenance_globs": [
+        "project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P1B-v1B.0.109-EXACTPDF-36b8fc98-NONANTHROPIC-CONFIRM/**/*"
+      ],
+      "provenance_archive": "P1B_v1B.0.109_NON_RELEASE_tracked_provenance.tar.gz",
+      "metadata_complete": false,
+      "metadata_blocker": "NON-RELEASE: v1B.0.109 is scientifically obsolete pending the corrected physical-spectrum 500-MC and robustness production, dependent artifact/prose regeneration, executed-provenance repair, and a new exact-PDF review",
+      "metadata": {
+        "title": "Confronting a Torsion-Driven Bounce with CMB and BBN Constraints",
+        "creators": [
+          {
+            "name": "Golden, Houston"
+          }
+        ],
+        "description": "Retention-only snapshot of the superseded v1B.0.109 manuscript. This configuration intentionally fails closed and is not a submission or deposit candidate.",
+        "upload_type": "publication",
+        "publication_type": "article",
+        "access_right": "open"
+      }
+    },
     "P2": {
       "tex": "research/focused_paper_source_integration/02_full_draft.tex",
       "pdf": "research/focused_paper_source_integration/02_full_draft.pdf",
