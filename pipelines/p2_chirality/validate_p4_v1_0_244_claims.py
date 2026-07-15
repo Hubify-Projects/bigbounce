@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail-closed source-to-claim and presentation audit for P4 v1.0.251."""
+"""Fail-closed source-to-claim and presentation audit for P4 v1.0.252."""
 
 from __future__ import annotations
 
@@ -26,6 +26,7 @@ EVIDENCE = {
     "stratified_confusion": P4 / "outputs/gz1_stratified_confusion.json",
     "gz1_dipole": P4 / "outputs/gz1only_fullN_dipole_result.json",
     "public_release_receipt": P4 / "outputs/canonical_provenance/p4_hf_public_release_receipt_v1_0_244.json",
+    "morphology_contract_receipt": P4 / "outputs/canonical_provenance/p4_hf_morphology_contract_receipt_v1_0_251.json",
     "multinull": P4 / "outputs/canonical_provenance/p4_multinull_battery.json",
     "leg_proxy": P4 / "outputs/canonical_provenance/morphology_template_l1_projection.json",
     "boundary": P4 / "outputs/canonical_provenance/boundary_distance_variance.json",
@@ -66,6 +67,7 @@ def audit() -> dict[str, Any]:
     stratified = load(EVIDENCE["stratified_confusion"])
     gz1 = load(EVIDENCE["gz1_dipole"])
     public_release = load(EVIDENCE["public_release_receipt"])
+    morphology_contract = load(EVIDENCE["morphology_contract_receipt"])
     multinull = load(EVIDENCE["multinull"])
     leg_proxy = load(EVIDENCE["leg_proxy"])
     boundary = load(EVIDENCE["boundary"])
@@ -118,6 +120,14 @@ def audit() -> dict[str, Any]:
             and public_release["provider_receipt_commit"] == "e535b26247c892971963be6029435544cf29d19b"
             and public_release["public_manifest_sha256"] == "c2e5404adcdcd2c395c03b0cc50e0e815fa9653643407dc0ac91e5afc35ed848"
         ),
+        "morphology_contract_receipt": (
+            morphology_contract["status"] == "published_and_byte_verified"
+            and morphology_contract["publication_commit"] == "245ad7c5f1e58c627be1390dc3125cd1ce1e3dc9"
+            and morphology_contract["morphology_sidecar"]["rows"] == 3_201_160
+            and morphology_contract["morphology_sidecar"]["missing_rows"] == 0
+            and morphology_contract["morphology_sidecar"]["extra_rows"] == 0
+            and morphology_contract["morphology_sidecar"]["exact_one_to_one_coverage"] is True
+        ),
         "apodized_and_multipole_share_baseline_c1": close(
             multinull["results"]["baseline_data_C1_l1"],
             multinull["results"]["multipole_spectrum"]["l_1"]["data"],
@@ -148,7 +158,7 @@ def audit() -> dict[str, Any]:
     schema = load(P4 / "apjs_release_schema_v1_0_244.json")
     gates.update(
         {
-            "paper_version": r"\newcommand{\paperVersion}{v1.0.251}" in tex,
+            "paper_version": r"\newcommand{\paperVersion}{v1.0.252}" in tex,
             "paper_uses_aastex_701": r"\documentclass[twocolumn,linenumbers]{aastex701}" in tex,
             "paper_has_no_internal_toc": r"\tableofcontents" not in tex,
             "paper_uses_numeric_citations": r"\setcitestyle{numbers,sort&compress}" in tex,
@@ -167,6 +177,7 @@ def audit() -> dict[str, Any]:
             "paper_doi_gate_open": "DOI-backed archive of the paper" in tex,
             "paper_no_false_public_qc_claim": "In the public HuggingFace Parquet release" not in tex,
             "paper_public_release_is_commit_pinned": all(token in tex for token in ("We publish an 8,474,531-object observed-label catalog release", "db11023306ab4eed1d7727670bd78e127b7af17a", "e535b26247c892971963be6029435544cf29d19b")),
+            "paper_morphology_contract_is_commit_pinned": all(token in tex for token in ("245ad7c5f1e58c627be1390dc3125cd1ce1e3dc9", "3,201,160-row", "d49090fc...5620", "Full-catalog redshift, imaging-leg, depth, seeing, and PSF fields remain unavailable")),
             "paper_distinguishes_selected_and_supported_n": all(token in tex for token in (r"N_{\rm selected}=949{,}584", r"N_{\rm support}=947{,}326", "2,258 excluded by the support rule")),
             "paper_has_full_spatial_confusion_transfer": all(token in tex for token in (r"q_{\rm obs}(\bm{x})", r"q_{\rm obs}=q+e(1-2q)", "0.00142", "0.00331")),
             "paper_no_stale_primary_055_anchor": all(token not in tex for token in ("dipole collapses to $0.55\\sigmaunit$", "dipole at $0.55\\sigmaunit$ anchors", "dipole from $2.31\\sigmaunit$ to $0.55\\sigmaunit$")),
@@ -179,9 +190,9 @@ def audit() -> dict[str, Any]:
     )
     failed = [name for name, passed in gates.items() if not passed]
     result = {
-        "schema": "p4-v1.0.251-source-to-claim-audit/v1",
+        "schema": "p4-v1.0.252-source-to-claim-audit/v1",
         "paper": "P4",
-        "paper_version": "v1.0.251",
+        "paper_version": "v1.0.252",
         "status": "PASS" if not failed else "FAIL",
         "gates": gates,
         "failed_gates": failed,
@@ -194,7 +205,7 @@ def audit() -> dict[str, Any]:
             "physical_or_primordial_bound": False,
             "matched_external_estimator_claim": False,
             "formal_preregistration_claim": False,
-            "public_catalog_release": "CLOSED_AT_HF_COMMIT_db110233",
+            "public_catalog_release": "CLOSED_AT_HF_COMMIT_db110233_WITH_MORPHOLOGY_CONTRACT_245ad7c5",
             "doi_backed_paper_source_archive": "OPEN",
         },
     }

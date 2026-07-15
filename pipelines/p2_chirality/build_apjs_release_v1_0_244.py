@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the v1.0.244 catalog payload bound to the P4 v1.0.251 paper closure.
+"""Build the v1.0.244 catalog payload bound to the P4 v1.0.252 paper closure.
 
 The science-facing Parquet deliberately excludes every raw-pass and reconstructed
 flip-pass score column.  A separate provenance-only quarantine contains every
@@ -29,7 +29,7 @@ from reproduce_p4_primary_null_v1_0_244 import reproduce
 
 ROOT = Path(__file__).resolve().parents[2]
 CATALOG_PAYLOAD_VERSION = "v1.0.244"
-PAPER_VERSION = "v1.0.251"
+PAPER_VERSION = "v1.0.252"
 SCHEMA_PATH = Path(__file__).with_name("apjs_release_schema_v1_0_244.json")
 DATA_DICTIONARY_PATH = Path(__file__).with_name("CATALOG_SCHEMA.md")
 REPRODUCTION_SCRIPT_PATH = Path(__file__).with_name(
@@ -344,7 +344,7 @@ def build_release(
     if schema.get("catalog_payload_version") != CATALOG_PAYLOAD_VERSION:
         raise ReleaseError("machine schema catalog payload is not pinned to v1.0.244")
     if schema.get("paper_version") != PAPER_VERSION:
-        raise ReleaseError("machine schema paper binding is not pinned to v1.0.251")
+        raise ReleaseError("machine schema paper binding is not pinned to v1.0.252")
     output_dir.mkdir(parents=True, exist_ok=True)
     final_primary = output_dir / schema["primary_product"]["filename"]
     final_quarantine = output_dir / schema["quarantine_product"]["filename"]

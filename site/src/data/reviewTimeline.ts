@@ -57,6 +57,26 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p4-v10252-release-integrity-2026-07-15",
+    dateISO: "2026-07-15",
+    timePT: "7:00 AM",
+    kind: "closure-wave",
+    title: "P4 v1.0.252 — public dataset card corrected and morphology join proven exact",
+    papers: ["P4"],
+    summary:
+      "The stale HF v1.0.123 card, nonexistent file, absent-column claims, and false DOI implication are removed. A versioned executable contract proves the public 3,201,160-row morphology companion joins one-to-one to every safe-catalog spiral with zero missing or extra rows. The primary result is unchanged; readiness holds 80.",
+    keyTakeaways: [
+      "HF publication commit 245ad7c5 is byte-verified; morphology SHA-256 d49090fc and both input identities are pinned",
+      "Full-catalog imaging-leg, depth, seeing, PSF, and redshift metadata remain unavailable and are not fabricated",
+      "Exact 28-page PDF SHA-256 a109f3d1; source-to-claim, compile, 73-link, overflow, and all-page visual audits pass",
+    ],
+    links: [
+      { label: "HF publication commit", href: "https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog/commit/245ad7c5f1e58c627be1390dc3125cd1ce1e3dc9" },
+      { label: "P4 canonical status", href: `${GH}/project-context/SSOT/paper-4/status.md` },
+      { label: "v1.0.252 source-to-claim audit", href: `${GH}/pipelines/p2_chirality/outputs/canonical_provenance/p4_v1_0_252_source_to_claim_audit.json` },
+    ],
+  },
+  {
     id: "p4-v10251-bounded-closure-2026-07-15",
     dateISO: "2026-07-15",
     timePT: "6:18 AM",

@@ -1,7 +1,7 @@
 {
   "schema": "p4-apjs-release/v1.0.244",
   "paper": "P4",
-  "paper_version": "v1.0.251",
+  "paper_version": "v1.0.252",
   "catalog_payload_version": "v1.0.244",
   "scientific_scope": "Observed-label catalog and descriptive null test only; no calibrated label probabilities, physical amplitude bound, primordial parity bound, matched-external-estimator claim, or formal preregistration claim.",
   "primary_product": {
