@@ -1,6 +1,6 @@
 {
-  "schema_version": "v1.0.251",
-  "paper_version": "v1.0.251",
+  "schema_version": "v1.0.252",
+  "paper_version": "v1.0.252",
   "product_role": "raw_morphology_sidecar",
   "join": {
     "catalog_key": "object_id",
@@ -27,5 +27,12 @@
     "PSF fields",
     "redshift"
   ],
-  "scope_note": "No derived values are published because the imaging-leg and shape-selection contracts are not yet frozen. Consumers must not infer that omitted fields are available."
+  "derived_on_demand": {
+    "name": "axial_ratio_ba",
+    "stored_column": false,
+    "shape_choice": "DEV for TYPE in {DEV,COMP,SER} or FRACDEV >= 0.5; EXP otherwise",
+    "ellipticity": "e = clip(hypot(selected_E1, selected_E2), 0, 0.999)",
+    "formula": "b/a = (1-e)/(1+e)"
+  },
+  "scope_note": "Axial ratio may be deterministically derived on demand by the declared contract, but is not stored. Consumers must not infer that other omitted fields are available."
 }
