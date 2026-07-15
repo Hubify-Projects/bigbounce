@@ -57,6 +57,26 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p1a-p3-exact-deposit-gates-2026-07-15",
+    dateISO: "2026-07-15",
+    timePT: "11:04 AM",
+    kind: "skill-improvement",
+    title: "P1A/P3 exact deposit gates — bibliography defect caught; P3 draft verified; P1A license held",
+    papers: ["P1A", "P3"],
+    summary:
+      "Standalone compilation caught and repaired a missing P1A bibliography input that the console-only verifier had missed; the verifier now scans generated logs. P1A's corrected bundle passes but metadata fails closed on an unauthorised license. P3's eight-asset reversible draft targets commit 05746dc5 and every remote digest matches. No DOI, submission, acceptance, or readiness increase is claimed.",
+    keyTakeaways: [
+      "P1A: 7/7 pages visually clean, zero errors/undefined/overfull; readiness 62 and license authorization remains Houston-controlled",
+      "P3: 16/16 pages visually clean, zero errors/undefined; one explicit 1.82327 pt minor hbox warning remains and readiness holds 56",
+      "Process acceleration: deterministic source bundles plus generated-log inspection prevent false standalone passes before any external draft is created",
+    ],
+    links: [
+      { label: "P3 draft-release receipt", href: `${GH}/project-context/SSOT/github-releases/P3_v3.2.0-r8_draft_release_receipt.json` },
+      { label: "P3 deposit specification", href: `${GH}/project-context/SSOT/zenodo/P3_zenodo_deposition.md` },
+      { label: "P1A deposit specification", href: `${GH}/project-context/SSOT/zenodo/P1A_zenodo_deposition.md` },
+    ],
+  },
+  {
     id: "p4-v10252-fail-closed-deposit-draft-2026-07-15",
     dateISO: "2026-07-15",
     timePT: "10:27 AM",
@@ -7746,6 +7766,20 @@ export const externalVerdictRounds: ExternalRoundVerdicts[] = [
       P5: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
     },
     note: "M42-EXT. Three-paper byte-unchanged confirm wave, 6 legs recovered after the false FAILED-dead incident (headed-browser assertion fix, commit 285e26a4). PROVENANCE CONFIRMED all 6 legs by signature-grep (correct-paper content present, 0 cross-contamination — P3 P5-void-signature count = 0). Verdict matrix [ChatGPT, Grok, Gemini] FROM RAW (verbatim VERDICT line READ before recording): P1U ChatGPT REJECT (14 MAJOR/2 MINOR) + Grok MINOR (0 MAJOR/5 MINOR, BAND-DOWN from M40 MAJOR = pattern-066 M35 MIN→M40 MAJ→M42 MIN); P4 ChatGPT REJECT (9 MAJOR/2 MINOR, documented REJECT↔MAJOR band) + Grok MINOR (0 MAJOR/4 MINOR); P3-ApJS ChatGPT REJECT (16 MAJOR/1 MINOR) + Grok MAJOR (3 MAJOR/2 MINOR). Gemini not swept (carried, NO_VERDICT). Truth-audit (ledger_match.py strict + Opus per paper vs each .tex + DISPOSITIONS): 0 genuinely-new on all three; every finding source-cited to a standing D-id (P1U→DP1U-03/-05/-06/-07/-08/-09/-10/-11/-12/-14/-15/-16/-17/-19/-20/-22/-24/-02; P4→DP4-01/-03/-07/-08/-09/-10/-11/-12/-13/-14/-15/-16/-17/-21; P3→DP3-01/-06/-07/-08/-09/-10/-11/-12/-13/-14/-15/-16/-19/-20). Fixes-held HARD CHECKS both PASS: DP4-22 edge-on sensitivity-penalty (sqrt→linear) ABSENT — only near-hit is ChatGPT's '15.8% edge-on contamination' = DP4-08/-15 classifier-validation, NOT the corrected penalty-scaling; DP3-21 DAS internal contradiction ABSENT. clean-wave streaks: P1U 16→17 · P4 1→2 (2nd clean wave post DP4-22 fix, re-crosses the directive-K bar) · P3 5→6. Caps (post_verdict.sh, _creationTime-latest per reviewer): P1A 62→68 (Grok leg MAJOR 6→MINOR 12 restores +6); P4 80→74 (ChatGPT MAJOR 6→REJECT 0); P3 HOLDS 56 (Grok MAJ 6 + ChatGPT REJ 0 + Gemini REJ 0). DP3-15 end-to-end re-inference at structural ceiling — P3 residual 100% Houston-gated (venue/archive), no compute lever. No bumps (all byte-unchanged); directive_g.sh not run; no ACCEPT faked, no finding dismissed without a source-cited verdict, no math fabricated. Raws + per-paper truth-audits: EXT_real/H17_2026-07-10/M42/.",
+  },
+  {
+    roundId: "M45",
+    dateISO: "2026-07-15",
+    windowPT: "Jul 15 · P2 (v1.7.116) + P5 (v0.1.127) both byte-unchanged — headed browser, raw verbatim VERDICT line + screenshot READ before every verdict · Gemini carried",
+    verdicts: {
+      P1A: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P1B: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P2: ["MAJOR", "MINOR", "NO_VERDICT"],
+      P3: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P4: ["NO_VERDICT", "NO_VERDICT", "NO_VERDICT"],
+      P5: ["MAJOR", "MINOR", "NO_VERDICT"],
+    },
+    note: "M45-EXT. Two-paper byte-unchanged confirm wave (P2 v1.7.116 + P5 v0.1.127); STRICT ledger-first adjudication (tools/ledger_match.py + skeptical Opus per paper vs each .tex + DISPOSITIONS). Every raw + screenshot READ verbatim before any verdict; provenance CONFIRMED both papers (P2: App-B vertex / −35/16 / −305/64 / r=0.84 SPHEREx / surrogate Fisher signatures present; P5: DESIVAST/VoidFinder/T-Web/Paper-IV/2a−1 present). Verdict matrix [ChatGPT, Grok, Gemini] FROM RAW: **P2 ChatGPT MAJOR REVISIONS (2 MAJOR/2 MINOR) — a genuine TIER-LIFT off P2's long-standing ChatGPT REJECT floor** (raw line 1 literally 'VERDICT: MAJOR REVISIONS', a REAL review of the f_NL forecast, not a mislabel; pattern-066 floor oscillation on byte-unchanged content, moves P2's grid cell off REJECT) + Grok MINOR (2 in-MINOR MAJOR-tag/3 MINOR; closing AFFIRMS −35/16). P5 ChatGPT MAJOR (7 MAJOR/6 MINOR, 5th consecutive MAJOR — stable floor) + Grok MINOR (0 MAJOR/3 MINOR; closing AFFIRMS the null). Gemini carried (NO_VERDICT). Truth-audit: 0 genuinely-new on BOTH papers; every finding source-cited to a standing D-id (P2→DP2-01/-02/-16/-25/-14/-12/-22/-04/-13/-31; P5→DP5-13/-10/-04/-14/-21/-08/-09/-20/-03/-22/-19/-11/-12/-07). DP5-26 artifact-range fix STAYS HELD (grep both P5 raws for [A1]/[A32]/[A34]/artifact-range = 0, ABSENT). clean-wave streaks: P2 17→18 · P5 6→7. Caps (post_verdict.sh, _creationTime-latest per reviewer): P2 74→80 (ChatGPT EXT contribution REJECT 0 → MAJOR 6 on the tier-lift: 50 + Grok MIN 12 + ChatGPT MAJ 6 + Gemini-latest MIN 12); P5 HOLDS 74 (Grok MIN 12 + ChatGPT MAJ 6 + Gemini MAJ 6). No bumps (both byte-unchanged); directive_g.sh not run; no ACCEPT faked, no finding dismissed without a source-cited verdict, no math fabricated. Raws + per-paper truth-audits: EXT_real/H17_2026-07-10/M45/.",
   },
 ];
 

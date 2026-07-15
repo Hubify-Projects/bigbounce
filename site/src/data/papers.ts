@@ -110,7 +110,8 @@ export const papers: Paper[] = [
     figures: ["Table I: hard-cutoff coefficient-to-threshold diagnostics"],
     remainingWork: [
       "Human CQG/editorial review — automated ACCEPT is not journal acceptance",
-      "Post-push public-route verification plus immutable source/PDF/artifact archive and real DOI",
+      "Authorize a manuscript/source license; exact bundle/proof pass but deposit metadata and any draft intentionally fail closed until then",
+      "After license authorization, verify a reversible draft before any immutable archive/DOI action",
       "Alternate-regulator robustness beyond the declared hard-cutoff convention",
       "Matched Lorentzian state/stress observable and a state-specific renormalized axial expectation value",
     ],
@@ -287,7 +288,8 @@ export const papers: Paper[] = [
     figures: ["Selection waterfall", "Separation distribution", "Shift-control radius curves", "Catalog sky distribution"],
     remainingWork: [
       "Human ApJS/editorial review and submission decision; automated ACCEPT is not journal acceptance",
-      "Deposit the final source, data, and PDF package in an immutable public archive and record the real DOI",
+      "Resolve the recorded 1.82327 pt minor hbox warning during the next versioned edit; the current 16-page raster audit shows no clipping or overlap",
+      "A reversible exact-commit draft is verified; Houston still controls immutable archive/DOI publication and arXiv/ApJS submission",
       "Object-level physical interpretation and any representative-control performance study remain separate new-science work",
     ],
     preprintId: "HUBIFY-2026-003",

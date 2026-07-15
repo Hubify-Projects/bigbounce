@@ -1,0 +1,33 @@
+{
+  "schema": "bigbounce-github-draft-release-receipt/v1",
+  "paper_id": "P3",
+  "paper_version": "v3.2.0-r8",
+  "release_database_id": 354618515,
+  "release_url": "https://github.com/houstongolden/bigbounce/releases/tag/untagged-298cade135e59f59f250",
+  "tag_name": "paper3-v3.2.0-r8",
+  "target_commitish": "05746dc56fb09f0800c13db56905af570eee2cfe",
+  "is_draft": true,
+  "is_prerelease": false,
+  "published": false,
+  "doi_reserved": false,
+  "zenodo_published": false,
+  "verified_at_utc": "2026-07-15T18:04:20Z",
+  "assets": [
+    {"name": "default.zenodo.json", "size": 1139, "sha256": "b5c0f8c99f25744d65588dca6d2f2ae0b397a04a6c83bb14905a6ec8755562af", "note": "GitHub CLI normalized the local hidden filename .zenodo.json on upload."},
+    {"name": "manifest.json", "size": 3537, "sha256": "d1f7645ed07e1dc4ffb02f775de7addf28ae376dc389a2bc024a78f2bf4a4e1a"},
+    {"name": "P3_v3.2.0-r8_tracked_provenance.tar.gz", "size": 14134548, "sha256": "293e2a0744562fa08ecf88499fa3a4218a4966b520234a5a2421b8193ac5e869", "tracked_files": 75},
+    {"name": "paper3_apjs.pdf", "size": 468413, "sha256": "b5f254f92b10bda43b687f07c5f58b828a6f7dc70d98c08f9e9b609edbba08b0"},
+    {"name": "paper3_apjs.tex", "size": 70278, "sha256": "2b9a5fd356e49ae7a9939cbf8e9197379bef71b1f66a0e364e0de41ae416d10b"},
+    {"name": "paper3_apjs_arxiv_v3.2.0-r8.proof.json", "size": 1379, "sha256": "03ae971c9005d1ff0b5b55377984a30558b8c514603ad6505ca09834b1170763"},
+    {"name": "paper3_apjs_arxiv_v3.2.0-r8.tar.gz", "size": 143673, "sha256": "8354213e1d674af9662ee438db1c2d00ad333d40cf7f007c997f8f0632f4ebd2"},
+    {"name": "SHA256SUMS", "size": 475, "sha256": "bc16242a2461d7ff0e9b2cd1a7e63fec70090358bcfd23d59ae835dbb3b0a04a"}
+  ],
+  "all_remote_digests_match": true,
+  "readiness_effect": "none; P3 remains 56",
+  "open_gates": [
+    "minor 1.82327 pt typesetting overflow",
+    "DOI reservation and immutable archive publication",
+    "arXiv and ApJS submission decisions",
+    "human journal review"
+  ]
+}
