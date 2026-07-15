@@ -27,7 +27,7 @@ configs:
 
 # DESI Legacy Galaxy Chirality Catalog
 
-This dataset accompanies Paper 4 v1.0.252, *An Observed-Label Chirality-Dipole Null in 949,584 High-Confidence DESI Spirals and an 8.5-Million-Galaxy Catalog*.
+This dataset accompanies the current Paper IV manuscript, *An Observed-Label Chirality-Dipole Null in 949,584 High-Confidence DESI Spirals and an 8.5-Million-Galaxy Catalog*.
 
 The primary high-confidence observed-label statistic is consistent with zero under fixed-occupancy label randomization (`z=0.7053169638`, one-sided empirical-rank `p=0.2246775322`). This is not a calibrated true-spin, physical-amplitude, or primordial-parity bound.
 
@@ -42,7 +42,7 @@ Use `apjs-release/v1.0.244/`, pinned by data commit `db11023306ab4eed1d7727670bd
 | `primary_label_shuffle_amps_10000.npy` | 10,000 draws | 80,128 | `f6360f4bec22669097cee3e2fad8b176291d3ecbfbfbb9a9290d0bce3d5152c0` | Retained primary fixed-occupancy null |
 | `pixel_permutation_amps_10000.npy` | 10,000 draws | 80,128 | `62bb1c019231974c2a7ed5d5e43ceb77a5596e4675c82d7ff1c899e029a36492` | Distinct robustness diagnostic |
 
-The folder also contains the schema, manifest, SHA-256 ledger, validation receipt, and executable primary-null reproducer. The older root `catalog_production.parquet` is retained for provenance and contains raw-pass columns that are not calibrated probabilities; it is not the authoritative ApJS science product.
+The folder also contains the schema, manifest, SHA-256 ledger, validation receipt, and executable primary-null reproducer. Catalog C is the only published science-facing release product. The historical Catalog A (raw) and Catalog B (Platt-calibrated) labels describe pipeline diagnostics, not released catalog tiers; no complete Catalog B payload or executable release contract is claimed. The older root `catalog_production.parquet` is retained for provenance and contains raw-pass columns that are not calibrated probabilities; it is not the authoritative ApJS science product.
 
 ### Safe-catalog schema
 
@@ -101,11 +101,12 @@ This release does **not** provide a full-catalog redshift, imaging-leg, depth, s
 ## Reproducibility and citation status
 
 - Paper source and pipeline: <https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p2_chirality>
-- Exact current PDF: <https://bigbounce.hubify.app/papers/chirality_catalog_paper_v1.0.252.pdf>
+- Current manuscript source: <https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/chirality_catalog_paper.tex>
 - Machine-readable release contract: `apjs-release/v1.0.244/SCHEMA.json`
+- Direct immutable machine-readable manifest: <https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog/resolve/db11023306ab4eed1d7727670bd78e127b7af17a/apjs-release/v1.0.244/MANIFEST.json>
 - Provider receipt: `apjs-release/v1.0.244/PROVIDER_RECEIPT.json`
 
-No arXiv identifier, Zenodo DOI, or immutable Paper IV v1.0.252 repository tag has been assigned. Cite the manuscript title, author, version v1.0.252, and the pinned data/provider commits above until those identifiers exist.
+No arXiv identifier, Zenodo DOI, or immutable repository tag for the current Paper IV manuscript has been assigned. Cite the manuscript title, author, and the pinned data/provider commits above until those identifiers exist.
 
 ## License
 

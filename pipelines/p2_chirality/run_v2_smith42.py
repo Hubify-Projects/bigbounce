@@ -7,9 +7,14 @@ results to /workspace, deletes shard, moves to next. Crash-recoverable
 via per-shard checkpoint files.
 
 Dataset: Smith42/galaxies (HuggingFace)
-  - 192 train shards x 44,139 images x 5GB each
+  - Historical runner assumption: 192 train shards x 44,139 images x ~5GB each
   - Columns: image (PIL), dr8_id (string)
-  - Total: 8,474,688 galaxies
+  - Immutable revision: bdd1b063a9a22874a79a4363aa9fb6a2b356a4c2
+  - Authoritative train-split count at that revision: 8,474,566 galaxies
+
+The older 8,474,688 total was the arithmetic product of the assumed uniform
+shard size, not the authoritative dataset-row count. This historical runner did
+not retain a per-object absent-row ledger or reason codes.
 
 Model: chirality_model_v2_best.pt (93.7% val, 8/8 bias tests pass)
 Output: per-shard parquets -> merged final catalog

@@ -57,6 +57,26 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p4-v10254-semantic-contract-2026-07-15",
+    dateISO: "2026-07-15",
+    timePT: "2:43 PM",
+    kind: "skill-improvement",
+    title: "P4 v1.0.254 — full Catalog C semantic validation made public",
+    papers: ["P4"],
+    summary:
+      "The 29-page v1.0.254 candidate passes source-to-claim audit at SHA-256 d8d4896d. Public HF revisions 85232df7 and 3b2db93e bind the current dataset/model contracts; the Catalog C validator streams all 8,474,531 rows with zero semantic violations, while Catalog B is explicitly historical/unreleased. Exact v1.0.254 review remains pending and readiness holds 80.",
+    keyTakeaways: [
+      "Process acceleration: a portable semantic contract replaces manual spot checks with one deterministic full-payload scan",
+      "Catalog C: 8,474,531 rows scanned; zero identifier, coordinate, class, score, simplex, argmax, or derived-field violations",
+      "Standing gates remain exact training realization, spatial transfer plus joint covariance, complete metadata, DOI archive, exact review, and human review",
+    ],
+    links: [
+      { label: "HF dataset contract", href: "https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog/commit/85232df765c7350803c026a4cbe3ca180b304d18" },
+      { label: "HF model card", href: "https://huggingface.co/bamfai/galaxy-chirality-v2/commit/3b2db93eda6e65e566755a171e677383a803a960" },
+      { label: "P4 canonical status", href: `${GH}/project-context/SSOT/paper-4/status.md` },
+    ],
+  },
+  {
     id: "p4-v10253-public-contract-closure-2026-07-15",
     dateISO: "2026-07-15",
     timePT: "1:43 PM",

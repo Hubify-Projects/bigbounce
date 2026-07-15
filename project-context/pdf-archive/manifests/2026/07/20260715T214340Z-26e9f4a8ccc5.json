@@ -1,0 +1,73 @@
+{
+  "build_command": "tools/directive_g.sh paper=P4 version=v1.0.254 source=pipelines/p2_chirality/chirality_catalog_paper.tex pdflatex_passes=2 bibtex=0",
+  "captured_at_local": "2026-07-15T14:43:40.865504-07:00",
+  "captured_at_utc": "2026-07-15T21:43:40.865504+00:00",
+  "complete_six_paper_snapshot": false,
+  "git_head": "5176856817eafef4d80fa3dffa9cc3c640a3c475",
+  "legacy_recovery": [
+    {
+      "head_blob": "676e828200a7f405523ca7b4eec4a869696c216e",
+      "historical_deletion_events": [
+        "a842cff7bdb7c47d204b4e378be2e6332ece10a0 2026-04-17T18:31:00-07:00"
+      ],
+      "index_dirty": false,
+      "overall_dirty": false,
+      "path": "arxiv/paper3_anomaly_catalog.pdf",
+      "present": true,
+      "tracked": true,
+      "worktree_dirty": false
+    },
+    {
+      "head_blob": "ff75f4f3adc9e2748ac6a7207f4a15d49d366bc8",
+      "historical_deletion_events": [
+        "a842cff7bdb7c47d204b4e378be2e6332ece10a0 2026-04-17T18:31:00-07:00"
+      ],
+      "index_dirty": false,
+      "overall_dirty": false,
+      "path": "arxiv/paper4_chirality_catalog.pdf",
+      "present": true,
+      "tracked": true,
+      "worktree_dirty": false
+    },
+    {
+      "head_blob": "b91b61ce68f9f9083bd1464f501781ef6a9dbce7",
+      "historical_deletion_events": [
+        "6fbc67eee76098ae6699ac7025f74cb93d2c7a62 2026-04-28T11:29:23-07:00"
+      ],
+      "index_dirty": false,
+      "overall_dirty": false,
+      "path": "public/papers/anomaly_catalog_paper.pdf",
+      "present": true,
+      "tracked": true,
+      "worktree_dirty": false
+    }
+  ],
+  "manifest_path": "project-context/pdf-archive/manifests/2026/07/20260715T214340Z-26e9f4a8ccc5.json",
+  "papers": [
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/d8/d8d4896d651f172a9fa407951cea12d96ac79e796ff0a88dad2dc2c7fd6533dd.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P4/P4__v1.0.254__2026-07-15T144340-0700-PDT__d8d4896d651f.pdf",
+      "git": {
+        "head_blob": "783bd3d8f7994aef4234ba4ded19e90a9766248d",
+        "index_dirty": false,
+        "overall_dirty": true,
+        "tracked": true,
+        "worktree_dirty": true
+      },
+      "md5": "3a4bb461752caaa4fbd16af999f2b1c6",
+      "object_created": true,
+      "page_count": 29,
+      "paper_id": "P4",
+      "paper_version": "v1.0.254",
+      "reference_created": true,
+      "sha256": "d8d4896d651f172a9fa407951cea12d96ac79e796ff0a88dad2dc2c7fd6533dd",
+      "size_bytes": 34065515,
+      "source_mtime_ns": 1784151820437175675,
+      "source_pdf": "pipelines/p2_chirality/chirality_catalog_paper.pdf",
+      "source_tex": "pipelines/p2_chirality/chirality_catalog_paper.tex"
+    }
+  ],
+  "review_round": "directive-g/APJS-CATALOG-METHODS/P4/v1.0.254",
+  "run_id": "26e9f4a8ccc5",
+  "schema": "bigbounce-pdf-retention/v3"
+}

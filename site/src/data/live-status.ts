@@ -147,12 +147,12 @@ const historicalLiveStatus: LiveStatus = {
 // summary reflect the canonical six-paper board rather than an older review wave.
 export const liveStatus: LiveStatus = {
   ...historicalLiveStatus,
-  lastUpdatedISO: "2026-07-15T20:43:00Z",
-  lastUpdatedDisplay: "July 15, 2026 · 1:43 PM PT",
+  lastUpdatedISO: "2026-07-15T21:43:00Z",
+  lastUpdatedDisplay: "July 15, 2026 · 2:43 PM PT",
   headline:
-    "All six manuscripts remain in revision. P4 v1.0.253 is compiled, audited, and mirrored with its public release contracts, but exact reviewer confirmation and standing science, DOI, and human-review gates remain open. No submission or acceptance is claimed.",
+    "All six manuscripts remain in revision. P4 v1.0.254 passes source-to-claim audit and records its public Catalog C semantic contract, but exact review and standing science, metadata, DOI, and human-review gates remain open. No submission or acceptance is claimed.",
   summary:
-    "P4 v1.0.253 is a 29-page audited and mirrored PDF (SHA-256 d9030a7b) recording the byte-verified HF dataset contract at 2fc392e2 and model card at 3baeab86. Exact reviewer confirmation is still pending, the prior board remains MAJOR/MINOR/MAJOR, and readiness holds 80.",
+    "P4 v1.0.254 is a 29-page source-to-claim-audited PDF (SHA-256 d8d4896d) recording byte-verified HF dataset/model revisions 85232df7/3b2db93e. Catalog C scans 8,474,531 rows with zero violations; Catalog B is historical/unreleased. Exact review is pending and readiness holds 80.",
   papers: historicalLiveStatus.papers.map((paper) => {
     if (paper.slug === "paper-1b") {
       return {
@@ -165,9 +165,9 @@ export const liveStatus: LiveStatus = {
     if (paper.slug === "paper-4") {
       return {
         ...paper,
-        version: "v1.0.253",
+        version: "v1.0.254",
         pendingWork:
-          "Three v1.0.252 release defects are closed at public HF revisions 2fc392e2 and 3baeab86, and the exact v1.0.253 PDF is audited. Exact review, training realization, spatial transfer/covariance, remaining metadata, DOI, and human review remain open. Readiness holds 80.",
+          "Public HF revisions 85232df7 and 3b2db93e bind the current contracts; Catalog C passes an 8,474,531-row zero-violation semantic scan and Catalog B is explicitly historical/unreleased. Exact v1.0.254 review, training realization, spatial transfer/joint covariance, complete metadata, DOI, and human review remain open. Readiness holds 80.",
       };
     }
     if (paper.slug === "paper-1a") {
@@ -199,10 +199,10 @@ export const liveStatus: LiveStatus = {
   }),
   currentlyRunning: [
     "P1B corrected production is queued but blocked by a negative RunPod balance; no paid pod launch is being attempted",
-    "P4 v1.0.253 exact reviewer confirmation is pending after the 29-page PDF passed compile, audit, and mirror gates",
+    "P4 v1.0.254 exact review is pending after the 29-page PDF passed source-to-claim audit and its Catalog C semantic contract passed all 8,474,531 rows",
   ],
   cronStatus:
-    "No review wave is running. The v1.0.252 board was MAJOR/MINOR/MAJOR; its three bounded release defects are public and the v1.0.253 PDF is audited, but exact v1.0.253 confirmation has not run.",
+    "No review wave is running. P4 v1.0.254 is source-to-claim audited with byte-verified HF contracts and a zero-violation Catalog C scan, but exact v1.0.254 review has not run.",
   etaToCompletion:
-    "After RunPod funding is restored, P1B's canonical plus parallel robustness run is estimated at roughly 2.5–5 hours wall-clock, followed by manuscript/PDF QA and exact review. P4 deposit preparation is complete, but DOI reservation/publication, training/covariance, remaining metadata, exact confirmation, and human review remain. A defensible all-six submission date remains conditional on those gates; journal acceptance is controlled by editors and referees.",
+    "After RunPod funding is restored, P1B's canonical plus parallel robustness run is estimated at roughly 2.5–5 hours wall-clock, followed by manuscript/PDF QA and exact review. P4 still requires exact review, training realization, spatial transfer/joint covariance, complete metadata, DOI publication, and human review. A defensible all-six submission date remains conditional on those gates; journal acceptance is controlled by editors and referees.",
 };

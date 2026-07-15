@@ -33,12 +33,12 @@ model-index:
 
 # Galaxy Chirality Classifier (bamfai/galaxy-chirality-v2)
 
-**Companion model for Paper IV `v1.0.252` —
+**Companion model for the current Paper IV manuscript —
 *An Observed-Label Chirality-Dipole Null in 949,584 High-Confidence DESI
 Spirals and an 8.5-Million-Galaxy Catalog*.**
 
 Current manuscript source: [`Hubify-Projects/bigbounce`](https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/chirality_catalog_paper.tex).
-No immutable Paper IV v1.0.252 repository tag or DOI is claimed.
+No immutable repository tag or DOI for the current Paper IV manuscript is claimed.
 
 ## Model overview
 
@@ -66,7 +66,7 @@ Paper IV pipeline:
   fixed-occupancy dipole statistic is consistent with its null
   (`z=+0.7053169638`; one-sided empirical-rank `p=0.2246775322`).
 
-## Current Paper IV result (v1.0.252)
+## Current Paper IV result
 
 The primary high-confidence observed-label statistic is consistent with zero
 under fixed-occupancy label randomization (`z=0.7053169638`, one-sided
@@ -78,7 +78,7 @@ than headline detection tests.
 ## Historical v1.0.123–v1.0.125 changelog
 
 The following entries document an older manuscript state. They are preserved
-for provenance and do not describe the current v1.0.252 release or establish a
+for provenance and do not describe the current manuscript or establish a
 current clean-review verdict.
 
 - **v1.0.123** closed the Houston-shared external review on v1.0.122 (ChatGPT
@@ -111,7 +111,7 @@ At the historical Paper IV `v1.0.125` state, the project recorded:
 **3 consecutive 5/5 clean R-rounds (R23 + R24 + R25)** across DeepSeek-V4-Pro
 + Gemini-3.1-Pro + GPT-5 + Grok-4.3 + Perplexity-Sonar-Pro
 (45 of 45 reviewers returned 0 BLOCKER / 0 MAJOR). This historical record is
-not a v1.0.252 review result.
+not a review result for the current manuscript.
 
 ## Usage
 
@@ -156,9 +156,9 @@ pinned, this loading example does not claim standalone exact reproducibility.
 
 ## Companion catalog dataset
 
-Per-galaxy CW/CCW/NS labels + per-class probabilities + leg provenance:
+Per-galaxy CW/CCW/NS labels + per-class equivariant ranking scores:
 [`bamfai/galaxy-chirality-catalog`](https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog)
-(see the dataset card for its pinned data/provider commits; no v1.0.252 tag is
+(see the dataset card for its pinned data/provider commits; no current manuscript tag is
 claimed here).
 
 ## Citation
@@ -170,7 +170,7 @@ claimed here).
             DESI Spirals and an 8.5-Million-Galaxy Catalog},
   year   = {2026},
   url    = {https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/chirality_catalog_paper.tex},
-  note   = {Paper IV, version v1.0.252; no DOI assigned}
+  note   = {Paper IV, current manuscript; no DOI assigned}
 }
 ```
 
@@ -192,9 +192,9 @@ claimed here).
 
 ## Provenance
 
-- **Current manuscript**: Paper IV v1.0.252.
+- **Current manuscript**: Paper IV source linked above.
 - **Audited model revision**: `237d021c451d75cf86a875e86d4de498b74e2f12`.
 - **Historical card state**: v1.0.125 framing is retained above only as a
   labeled changelog; it is superseded by the current manuscript framing.
-- **Publication identifiers**: no immutable v1.0.252 tag, arXiv identifier, or
+- **Publication identifiers**: no immutable tag for the current manuscript, arXiv identifier, or
   DOI is claimed.

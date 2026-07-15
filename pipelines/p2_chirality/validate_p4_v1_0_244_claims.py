@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail-closed source-to-claim and presentation audit for P4 v1.0.253."""
+"""Fail-closed source-to-claim and presentation audit for P4 v1.0.254."""
 
 from __future__ import annotations
 
@@ -34,13 +34,13 @@ EVIDENCE = {
     "training_benchmark": P4 / "BENCHMARK_REPORT.md",
     "model_readme": P4 / "HF_MODEL_README.md",
     "dataset_readme": P4 / "HF_DATASET_README.md",
-    "current_dataset_contract_receipt": P4 / "outputs/canonical_provenance/p4_hf_contract_dataset_receipt_v1_0_252.json",
-    "current_model_contract_receipt": P4 / "outputs/canonical_provenance/p4_hf_contract_model_receipt_v1_0_252.json",
+    "current_dataset_contract_receipt": P4 / "outputs/canonical_provenance/p4_hf_contract_dataset_receipt_v1_0_253.json",
+    "current_model_contract_receipt": P4 / "outputs/canonical_provenance/p4_hf_contract_model_receipt_v1_0_253.json",
     "catalog_c_semantic_validation": P4 / "outputs/canonical_provenance/p4_catalog_c_semantic_validation_v1_0_253.json",
 }
 
-CURRENT_DATASET_COMMIT = "2fc392e22b3155107f6f56a60aa8ac75f57c866b"
-CURRENT_MODEL_COMMIT = "3baeab8635a0c854166ecafaa03d83f9a94cea4b"
+CURRENT_DATASET_COMMIT = "85232df765c7350803c026a4cbe3ca180b304d18"
+CURRENT_MODEL_COMMIT = "3b2db93eda6e65e566755a171e677383a803a960"
 SEMANTIC_RECEIPT_SHA256 = "b4baa0bb2e2c3fb076e18065c26095465bd552b9dbee0ca48d51fda2331ab1db"
 
 
@@ -164,6 +164,10 @@ def audit() -> dict[str, Any]:
                 "apjs-release/v1.0.251-morphology-sidecar/MANIFEST.json",
                 "apjs-release/v1.0.251-morphology-sidecar/SCHEMA.json",
                 "apjs-release/v1.0.251-morphology-sidecar/validate_p4_morphology_join_v1_0_251.py",
+                "apjs-release/v1.0.253-semantic-contract/README.md",
+                "apjs-release/v1.0.253-semantic-contract/SEMANTIC_CONTRACT.json",
+                "apjs-release/v1.0.253-semantic-contract/SEMANTIC_VALIDATION_RECEIPT.json",
+                "apjs-release/v1.0.253-semantic-contract/validate_p4_catalog_c_semantics_v1_0_253.py",
             }
         ),
         "current_model_contract_receipt": (
@@ -178,9 +182,9 @@ def audit() -> dict[str, Any]:
             == "immutable downloads matched bytes and SHA-256"
             and model_contract["repositories"][0]["files"] == [
                 {
-                    "bytes": 8607,
+                    "bytes": 8675,
                     "path": "README.md",
-                    "sha256": "494e349b96be9aa7a0929d282aafcab19a36d7c9b23de2e6c490817e5e5088f9",
+                    "sha256": "7ec46dc0f9f9d55601bc459a2b42a5e43af1deea514730089b0c487aa8e09896",
                 }
             ]
         ),
@@ -243,7 +247,7 @@ def audit() -> dict[str, Any]:
     schema = load(P4 / "apjs_release_schema_v1_0_244.json")
     gates.update(
         {
-            "paper_version": r"\newcommand{\paperVersion}{v1.0.253}" in tex,
+            "paper_version": r"\newcommand{\paperVersion}{v1.0.254}" in tex,
             "paper_uses_aastex_701": r"\documentclass[twocolumn,linenumbers]{aastex701}" in tex,
             "paper_has_no_internal_toc": r"\tableofcontents" not in tex,
             "paper_uses_numeric_citations": r"\setcitestyle{numbers,sort&compress}" in tex,
@@ -285,9 +289,9 @@ def audit() -> dict[str, Any]:
     )
     failed = [name for name, passed in gates.items() if not passed]
     result = {
-        "schema": "p4-v1.0.253-source-to-claim-audit/v1",
+        "schema": "p4-v1.0.254-source-to-claim-audit/v1",
         "paper": "P4",
-        "paper_version": "v1.0.253",
+        "paper_version": "v1.0.254",
         "status": "PASS" if not failed else "FAIL",
         "gates": gates,
         "failed_gates": failed,
@@ -300,7 +304,7 @@ def audit() -> dict[str, Any]:
             "physical_or_primordial_bound": False,
             "matched_external_estimator_claim": False,
             "formal_preregistration_claim": False,
-            "public_catalog_release": "CATALOG_C_v1.0.244_AT_db110233; CURRENT_DATASET_CONTRACT_2fc392e2; CURRENT_MODEL_CARD_3baeab86; SEMANTIC_RECEIPT_b4baa0bb",
+            "public_catalog_release": "CATALOG_C_v1.0.244_AT_db110233; CURRENT_DATASET_CONTRACT_85232df7; CURRENT_MODEL_CARD_3b2db93e; SEMANTIC_RECEIPT_b4baa0bb",
             "doi_backed_paper_source_archive": "OPEN",
         },
     }
