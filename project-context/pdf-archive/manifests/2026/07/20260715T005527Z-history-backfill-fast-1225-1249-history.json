@@ -1,0 +1,524 @@
+{
+  "captured_at_local": "2026-07-14T17:55:27.262517-07:00",
+  "captured_at_utc": "2026-07-15T00:55:27.262517+00:00",
+  "classification_policy": {
+    "excluded": [
+      "figure PDFs",
+      "render artifacts",
+      "existing pdf-archive self-references",
+      "paths without a six-paper manuscript hint",
+      "ambiguous paper-hint matches"
+    ],
+    "scope": "reachable Git PDF object/path rows; only high-confidence six-paper manuscript paths are materialized",
+    "unknown_version_policy": "When no version token is present in the historical path, paper_version is recorded as unknown rather than inferred."
+  },
+  "coverage": {
+    "by_paper": {
+      "P1A": 13,
+      "P1B": 12,
+      "P2": 0,
+      "P3": 0,
+      "P4": 0,
+      "P5": 0
+    },
+    "classified_distinct_git_blobs": 25,
+    "classified_distinct_sha256": 25,
+    "classified_rows": 25,
+    "errors": 0,
+    "git_pdf_object_path_rows": 25,
+    "objects_created": 25,
+    "references_created": 25,
+    "unclassified_reasons": {},
+    "unclassified_rows": 0
+  },
+  "git_head": "af1a6abe6b91e142a2eb981aef4a178c58b1391c",
+  "manifest_path": "project-context/pdf-archive/manifests/2026/07/20260715T005527Z-history-backfill-fast-1225-1249-history.json",
+  "materialized": true,
+  "mode": "history-backfill",
+  "page_counts_recorded": false,
+  "row_selection": {
+    "limit": 25,
+    "offset": 1225,
+    "selected_rows": 25,
+    "total_git_pdf_object_path_rows": 1358
+  },
+  "rows": [
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/e1/e1fcbfde3d5146b0e53bd720fa1f2e25feee35c8f351931d763f713bdd5c59f0.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P1A/P1A__v1A.0.74__2026-06-13T173222-0700-PDT__e1fcbfde3d51.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "f056b496564cefb74a664384f1b0159bf3ab0344",
+        "timestamp": "2026-06-13T17:32:22-07:00"
+      },
+      "git_blob": "e3b95f29dd7376096d46b44780d3fd2cf67c400a",
+      "git_blob_size_bytes": 1683525,
+      "md5": null,
+      "object_created": true,
+      "page_count": null,
+      "paper_id": "P1A",
+      "paper_version": "v1A.0.74",
+      "path": "site/public/papers/paper1a_ech_nogo_v1A.0.74.pdf",
+      "reference_created": true,
+      "sha256": "e1fcbfde3d5146b0e53bd720fa1f2e25feee35c8f351931d763f713bdd5c59f0"
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/df/df57ea117762ac5e61341669da55f6fb18774aa841a7e8829c2d03eb0e42d892.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P1A/P1A__v1A.0.75__2026-06-13T190453-0700-PDT__df57ea117762.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "c1eb1182159811fd19ad91e33d799ed60fe5a4c8",
+        "timestamp": "2026-06-13T19:04:53-07:00"
+      },
+      "git_blob": "c45554034491a4f0a717c9624a4d0f3362010acf",
+      "git_blob_size_bytes": 1684664,
+      "md5": null,
+      "object_created": true,
+      "page_count": null,
+      "paper_id": "P1A",
+      "paper_version": "v1A.0.75",
+      "path": "site/public/papers/paper1a_ech_nogo_v1A.0.75.pdf",
+      "reference_created": true,
+      "sha256": "df57ea117762ac5e61341669da55f6fb18774aa841a7e8829c2d03eb0e42d892"
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/7a/7ac8a37451496ffcd89ae89dc748a1d4da90a1d8524e74872c619b04bd3846e5.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P1A/P1A__v1A.0.76__2026-06-13T200252-0700-PDT__7ac8a3745149.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "599170b3129317569e326d6b03fc565d0b848c75",
+        "timestamp": "2026-06-13T20:02:52-07:00"
+      },
+      "git_blob": "0adae1ad8d001cb127a7274645e092dd81e20233",
+      "git_blob_size_bytes": 1685736,
+      "md5": null,
+      "object_created": true,
+      "page_count": null,
+      "paper_id": "P1A",
+      "paper_version": "v1A.0.76",
+      "path": "site/public/papers/paper1a_ech_nogo_v1A.0.76.pdf",
+      "reference_created": true,
+      "sha256": "7ac8a37451496ffcd89ae89dc748a1d4da90a1d8524e74872c619b04bd3846e5"
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/38/38cafe8b3cb2162f2b8a6231af3eaad6c11c5bcd11e9e3b4e753348912161345.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P1A/P1A__v1A.0.77__2026-06-13T204047-0700-PDT__38cafe8b3cb2.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "9ee0aebff643353c019a70a39b5a11a69a769841",
+        "timestamp": "2026-06-13T20:40:47-07:00"
+      },
+      "git_blob": "8bed28815e23a4d527a985c8706ed17e2650bc42",
+      "git_blob_size_bytes": 1685789,
+      "md5": null,
+      "object_created": true,
+      "page_count": null,
+      "paper_id": "P1A",
+      "paper_version": "v1A.0.77",
+      "path": "site/public/papers/paper1a_ech_nogo_v1A.0.77.pdf",
+      "reference_created": true,
+      "sha256": "38cafe8b3cb2162f2b8a6231af3eaad6c11c5bcd11e9e3b4e753348912161345"
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/c2/c256878314b89be592975bfd16af7571c890ddb6c60b30c4905eec648e3ce7aa.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P1A/P1A__v1A.0.78__2026-06-18T193351-0700-PDT__c256878314b8.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "d4977d9f8801d363f61b7aabfadee87d86e0b7d8",
+        "timestamp": "2026-06-18T19:33:51-07:00"
+      },
+      "git_blob": "ae80a481e46c8ea00d0a6e250f54e1c63af38159",
+      "git_blob_size_bytes": 1685015,
+      "md5": null,
+      "object_created": true,
+      "page_count": null,
+      "paper_id": "P1A",
+      "paper_version": "v1A.0.78",
+      "path": "site/public/papers/paper1a_ech_nogo_v1A.0.78.pdf",
+      "reference_created": true,
+      "sha256": "c256878314b89be592975bfd16af7571c890ddb6c60b30c4905eec648e3ce7aa"
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/f7/f7f2d99e47c4abbaf583e40704b8a677baf4f600c3f6f3553fc63b8e473c60c3.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P1A/P1A__v1A.0.79__2026-06-26T054223-0700-PDT__f7f2d99e47c4.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "ba4376c49df91c97d5af098317a58bcb9e06abcc",
+        "timestamp": "2026-06-26T05:42:23-07:00"
+      },
+      "git_blob": "b641419b77d0f9db18762af5d33bce983f61f67e",
+      "git_blob_size_bytes": 1718539,
+      "md5": null,
+      "object_created": true,
+      "page_count": null,
+      "paper_id": "P1A",
+      "paper_version": "v1A.0.79",
+      "path": "site/public/papers/paper1a_ech_nogo_v1A.0.79.pdf",
+      "reference_created": true,
+      "sha256": "f7f2d99e47c4abbaf583e40704b8a677baf4f600c3f6f3553fc63b8e473c60c3"
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/b5/b5d60945c2393f2bdc02932967db18679c37e77fef9f6cd3a76a61dea17cf1e4.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P1A/P1A__v1A.0.83__2026-06-27T011504-0700-PDT__b5d60945c239.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "9c73d94279305d22c7edc26b631edaf817d93995",
+        "timestamp": "2026-06-27T01:15:04-07:00"
+      },
+      "git_blob": "79a9a8629169eb8b9bb3faf8f2621dd01d6de0f6",
+      "git_blob_size_bytes": 1720255,
+      "md5": null,
+      "object_created": true,
+      "page_count": null,
+      "paper_id": "P1A",
+      "paper_version": "v1A.0.83",
+      "path": "site/public/papers/paper1a_ech_nogo_v1A.0.83.pdf",
+      "reference_created": true,
+      "sha256": "b5d60945c2393f2bdc02932967db18679c37e77fef9f6cd3a76a61dea17cf1e4"
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/ed/ede1565e016b0fa06c60183021a7230d6bd8aa0ea0ee39431127049ae5c079a8.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P1A/P1A__v1A.0.84__2026-06-27T235857-0700-PDT__ede1565e016b.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "e81b990b2f98c39660eebd9fe4f3264d4d006c86",
+        "timestamp": "2026-06-27T23:58:57-07:00"
+      },
+      "git_blob": "7eb309e19f047dc8f46788104ade2b6ecd865108",
+      "git_blob_size_bytes": 1723391,
+      "md5": null,
+      "object_created": true,
+      "page_count": null,
+      "paper_id": "P1A",
+      "paper_version": "v1A.0.84",
+      "path": "site/public/papers/paper1a_ech_nogo_v1A.0.84.pdf",
+      "reference_created": true,
+      "sha256": "ede1565e016b0fa06c60183021a7230d6bd8aa0ea0ee39431127049ae5c079a8"
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/e3/e34293a981c3bdfaffd0f99abb5d3c7c5cf6c647e6b04820bbcf3318dc54c1bf.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P1A/P1A__v1A.0.85__2026-06-28T032358-0700-PDT__e34293a981c3.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "896a5e19613b7540e4a919aca9597d071f9a4545",
+        "timestamp": "2026-06-28T03:23:58-07:00"
+      },
+      "git_blob": "2d22787800eaf631676863ea4c6c0fed0442b3aa",
+      "git_blob_size_bytes": 1725433,
+      "md5": null,
+      "object_created": true,
+      "page_count": null,
+      "paper_id": "P1A",
+      "paper_version": "v1A.0.85",
+      "path": "site/public/papers/paper1a_ech_nogo_v1A.0.85.pdf",
+      "reference_created": true,
+      "sha256": "e34293a981c3bdfaffd0f99abb5d3c7c5cf6c647e6b04820bbcf3318dc54c1bf"
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/4c/4ca08e860b5ba899f5bca3ecb368caedc50b5aa67e86f530df9a08bcb21b2276.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P1A/P1A__v1A.0.86__2026-06-30T122507-0700-PDT__4ca08e860b5b.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "9510ff5ed095d53ff812cb4a5666604bfed2de2f",
+        "timestamp": "2026-06-30T12:25:07-07:00"
+      },
+      "git_blob": "7dbf370cc63d0c8610b2b18ccd71770eef234b01",
+      "git_blob_size_bytes": 1730563,
+      "md5": null,
+      "object_created": true,
+      "page_count": null,
+      "paper_id": "P1A",
+      "paper_version": "v1A.0.86",
+      "path": "site/public/papers/paper1a_ech_nogo_v1A.0.86.pdf",
+      "reference_created": true,
+      "sha256": "4ca08e860b5ba899f5bca3ecb368caedc50b5aa67e86f530df9a08bcb21b2276"
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/e1/e1051734d668ad3ac5aa85294cb1a59de3379690ed347e821021fc4109c5875d.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P1A/P1A__v1A.0.87__2026-06-28T060435-0700-PDT__e1051734d668.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "58f11fd581e9a826cb507cfc160b6d30b39ce695",
+        "timestamp": "2026-06-28T06:04:35-07:00"
+      },
+      "git_blob": "00bc1349303aea832ec12af068c85f44c3fb9feb",
+      "git_blob_size_bytes": 1734869,
+      "md5": null,
+      "object_created": true,
+      "page_count": null,
+      "paper_id": "P1A",
+      "paper_version": "v1A.0.87",
+      "path": "site/public/papers/paper1a_ech_nogo_v1A.0.87.pdf",
+      "reference_created": true,
+      "sha256": "e1051734d668ad3ac5aa85294cb1a59de3379690ed347e821021fc4109c5875d"
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/7a/7ae81daab9c141c88a1348c5cc1037d4634e8388d407be7456bb7b039f73ef04.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P1A/P1A__v1A.0.88__2026-06-29T101844-0700-PDT__7ae81daab9c1.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "92cbcc25e454f2a8e55a93bebaa5c16807808fd9",
+        "timestamp": "2026-06-29T10:18:44-07:00"
+      },
+      "git_blob": "24db6cde0a3b507dc63eec7b69c065d4eb55861d",
+      "git_blob_size_bytes": 1735296,
+      "md5": null,
+      "object_created": true,
+      "page_count": null,
+      "paper_id": "P1A",
+      "paper_version": "v1A.0.88",
+      "path": "site/public/papers/paper1a_ech_nogo_v1A.0.88.pdf",
+      "reference_created": true,
+      "sha256": "7ae81daab9c141c88a1348c5cc1037d4634e8388d407be7456bb7b039f73ef04"
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/bf/bf9af393a54675b2d2d5872cdb69472cfa5dce02036a285f40c45327c815abdb.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P1A/P1A__v1A.0.89__2026-06-29T120724-0700-PDT__bf9af393a546.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "a2edfe52a9dc18c990730becf4754f89f9652150",
+        "timestamp": "2026-06-29T12:07:24-07:00"
+      },
+      "git_blob": "944d4560cb251924796ca98f4eefb9b6bbca03b6",
+      "git_blob_size_bytes": 1735348,
+      "md5": null,
+      "object_created": true,
+      "page_count": null,
+      "paper_id": "P1A",
+      "paper_version": "v1A.0.89",
+      "path": "site/public/papers/paper1a_ech_nogo_v1A.0.89.pdf",
+      "reference_created": true,
+      "sha256": "bf9af393a54675b2d2d5872cdb69472cfa5dce02036a285f40c45327c815abdb"
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/7b/7b6c52db381210f9f156b007235e4653e44294d7ea9311758fda0c30b8de6561.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P1B/P1B__v1B.0.104__2026-07-08T003623-0700-PDT__7b6c52db3812.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "032458cee10099a0bab0395a758f23a18892089e",
+        "timestamp": "2026-07-08T00:36:23-07:00"
+      },
+      "git_blob": "85b51c09a4b719c4625eec2b473dc3e59f938e85",
+      "git_blob_size_bytes": 1185482,
+      "md5": null,
+      "object_created": true,
+      "page_count": null,
+      "paper_id": "P1B",
+      "paper_version": "v1B.0.104",
+      "path": "site/public/papers/paper1b_mcmc_companion_v1B.0.104.pdf",
+      "reference_created": true,
+      "sha256": "7b6c52db381210f9f156b007235e4653e44294d7ea9311758fda0c30b8de6561"
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/a2/a2824497d3244daa3af54dab596722871eb6c490afebcd3bb69cf9a01009e942.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P1B/P1B__v1B.0.30__2026-06-01T164315-0700-PDT__a2824497d324.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "9ba713ed6a650ca3b00c597256629cf7d68b1455",
+        "timestamp": "2026-06-01T16:43:15-07:00"
+      },
+      "git_blob": "da2d3f431c7c4e12eb50e5994a33cca0f87d34db",
+      "git_blob_size_bytes": 699400,
+      "md5": null,
+      "object_created": true,
+      "page_count": null,
+      "paper_id": "P1B",
+      "paper_version": "v1B.0.30",
+      "path": "site/public/papers/paper1b_mcmc_companion_v1B.0.30.pdf",
+      "reference_created": true,
+      "sha256": "a2824497d3244daa3af54dab596722871eb6c490afebcd3bb69cf9a01009e942"
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/25/2502e782a4d77708a80800991a147cf52c3012b584739a9441c140976e9c85e1.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P1B/P1B__v1B.0.31__2026-06-01T173335-0700-PDT__2502e782a4d7.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "40d0293d50c1bfa6d2fdb8a6266e79fd38775b9e",
+        "timestamp": "2026-06-01T17:33:35-07:00"
+      },
+      "git_blob": "38136261a5d2ebf09a01183ebabd8630bc58ede3",
+      "git_blob_size_bytes": 699400,
+      "md5": null,
+      "object_created": true,
+      "page_count": null,
+      "paper_id": "P1B",
+      "paper_version": "v1B.0.31",
+      "path": "site/public/papers/paper1b_mcmc_companion_v1B.0.31.pdf",
+      "reference_created": true,
+      "sha256": "2502e782a4d77708a80800991a147cf52c3012b584739a9441c140976e9c85e1"
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/f5/f53ff6f8db32be16d5168c247ba716f8c90ae37cf075a8ac67593d741deca207.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P1B/P1B__v1B.0.32__2026-06-01T174651-0700-PDT__f53ff6f8db32.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "7097d75ebd1bcee778500d5ee4f74e84ca5d5315",
+        "timestamp": "2026-06-01T17:46:51-07:00"
+      },
+      "git_blob": "c5ba47112b203c4b0d838dfa7ab0d697977b4461",
+      "git_blob_size_bytes": 700068,
+      "md5": null,
+      "object_created": true,
+      "page_count": null,
+      "paper_id": "P1B",
+      "paper_version": "v1B.0.32",
+      "path": "site/public/papers/paper1b_mcmc_companion_v1B.0.32.pdf",
+      "reference_created": true,
+      "sha256": "f53ff6f8db32be16d5168c247ba716f8c90ae37cf075a8ac67593d741deca207"
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/3e/3ed80cce07142f2c1ae7fdd301a4ff6c3b43201cc702b5f997704002bde81acb.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P1B/P1B__v1B.0.33__2026-06-01T175749-0700-PDT__3ed80cce0714.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "6120a9e44f5fb53e3d306a71267e7f7b20bb5e43",
+        "timestamp": "2026-06-01T17:57:49-07:00"
+      },
+      "git_blob": "a2bd349545f22b90a3e7f1803b1964565f093d53",
+      "git_blob_size_bytes": 700110,
+      "md5": null,
+      "object_created": true,
+      "page_count": null,
+      "paper_id": "P1B",
+      "paper_version": "v1B.0.33",
+      "path": "site/public/papers/paper1b_mcmc_companion_v1B.0.33.pdf",
+      "reference_created": true,
+      "sha256": "3ed80cce07142f2c1ae7fdd301a4ff6c3b43201cc702b5f997704002bde81acb"
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/c0/c06e019c316dad9a2295e799f4e675eb86081856152d2d67b811cd81bf42200d.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P1B/P1B__v1B.0.34__2026-06-01T180553-0700-PDT__c06e019c316d.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "0992bb1e6dd8126067f604c66da4d633e625f643",
+        "timestamp": "2026-06-01T18:05:53-07:00"
+      },
+      "git_blob": "c6f9e7f3b11823e3a4c4d48ddcab1bdd0a85544f",
+      "git_blob_size_bytes": 700113,
+      "md5": null,
+      "object_created": true,
+      "page_count": null,
+      "paper_id": "P1B",
+      "paper_version": "v1B.0.34",
+      "path": "site/public/papers/paper1b_mcmc_companion_v1B.0.34.pdf",
+      "reference_created": true,
+      "sha256": "c06e019c316dad9a2295e799f4e675eb86081856152d2d67b811cd81bf42200d"
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/d9/d95644dd9127a11d4fd5c23f82047019c0c04f19b492bf35226866afc8212b16.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P1B/P1B__v1B.0.35__2026-06-02T135147-0700-PDT__d95644dd9127.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "d7978489b9833bd2493c95c4ced9ce040afd8a11",
+        "timestamp": "2026-06-02T13:51:47-07:00"
+      },
+      "git_blob": "6f6514194e87b3e5851651a22cc08d9b051632a8",
+      "git_blob_size_bytes": 699125,
+      "md5": null,
+      "object_created": true,
+      "page_count": null,
+      "paper_id": "P1B",
+      "paper_version": "v1B.0.35",
+      "path": "site/public/papers/paper1b_mcmc_companion_v1B.0.35.pdf",
+      "reference_created": true,
+      "sha256": "d95644dd9127a11d4fd5c23f82047019c0c04f19b492bf35226866afc8212b16"
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/1a/1af312ec6922cca07224c2e4665a1b9130997aa6dd882170dec572b88386107f.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P1B/P1B__v1B.0.36__2026-06-02T145039-0700-PDT__1af312ec6922.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "f6decd3825577eb2a8bec44e76f873eaafa19d08",
+        "timestamp": "2026-06-02T14:50:39-07:00"
+      },
+      "git_blob": "b33fb5ace7f6f84057bc26838a4c0199e94c6a49",
+      "git_blob_size_bytes": 699433,
+      "md5": null,
+      "object_created": true,
+      "page_count": null,
+      "paper_id": "P1B",
+      "paper_version": "v1B.0.36",
+      "path": "site/public/papers/paper1b_mcmc_companion_v1B.0.36.pdf",
+      "reference_created": true,
+      "sha256": "1af312ec6922cca07224c2e4665a1b9130997aa6dd882170dec572b88386107f"
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/a1/a115914141392073474fe207e1e0e66a7b9502a5e4e5880da7fe93b434b78c66.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P1B/P1B__v1B.0.37__2026-06-02T150305-0700-PDT__a11591414139.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "4b1dbfcbbd204821b47341227bc986c999e7e530",
+        "timestamp": "2026-06-02T15:03:05-07:00"
+      },
+      "git_blob": "802d0d01dc85015634258cbda1a7dca73aa6d065",
+      "git_blob_size_bytes": 698670,
+      "md5": null,
+      "object_created": true,
+      "page_count": null,
+      "paper_id": "P1B",
+      "paper_version": "v1B.0.37",
+      "path": "site/public/papers/paper1b_mcmc_companion_v1B.0.37.pdf",
+      "reference_created": true,
+      "sha256": "a115914141392073474fe207e1e0e66a7b9502a5e4e5880da7fe93b434b78c66"
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/d3/d3678bbf8a5d23cfd75c995b872ec9f5c74c5ed25d8a31874d239a40f065434f.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P1B/P1B__v1B.0.38__2026-06-02T152630-0700-PDT__d3678bbf8a5d.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "c394232cb4619cfb9ed81881fed2320a9fb1708d",
+        "timestamp": "2026-06-02T15:26:30-07:00"
+      },
+      "git_blob": "eb435f2e216e752cd25935485b83b7de5af8a0e7",
+      "git_blob_size_bytes": 703438,
+      "md5": null,
+      "object_created": true,
+      "page_count": null,
+      "paper_id": "P1B",
+      "paper_version": "v1B.0.38",
+      "path": "site/public/papers/paper1b_mcmc_companion_v1B.0.38.pdf",
+      "reference_created": true,
+      "sha256": "d3678bbf8a5d23cfd75c995b872ec9f5c74c5ed25d8a31874d239a40f065434f"
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/7d/7d463d17816afd98916b521ae84c417b53b1cc132b5b6a9d94abb3152c70d81f.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P1B/P1B__v1B.0.39__2026-06-02T182020-0700-PDT__7d463d17816a.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "18d8ebb566d7da1587caff20445742e35ce7c6f0",
+        "timestamp": "2026-06-02T18:20:20-07:00"
+      },
+      "git_blob": "5cedc304a60a96c21bdf9e9b854e010a30b04532",
+      "git_blob_size_bytes": 705149,
+      "md5": null,
+      "object_created": true,
+      "page_count": null,
+      "paper_id": "P1B",
+      "paper_version": "v1B.0.39",
+      "path": "site/public/papers/paper1b_mcmc_companion_v1B.0.39.pdf",
+      "reference_created": true,
+      "sha256": "7d463d17816afd98916b521ae84c417b53b1cc132b5b6a9d94abb3152c70d81f"
+    },
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/1d/1df84c2458b947c7ab2e65aeac270c757a3e65537c26b43938aec6287b0726e7.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P1B/P1B__v1B.0.40__2026-06-02T183401-0700-PDT__1df84c2458b9.pdf",
+      "classification_reason": "matched.high-confidence-path",
+      "first_seen": {
+        "commit": "d8484eb5fe8b77ae8738899ac69fc8136f6cb12a",
+        "timestamp": "2026-06-02T18:34:01-07:00"
+      },
+      "git_blob": "7eb4b66c39b077a34597724c2e55dccec3b6e3a3",
+      "git_blob_size_bytes": 730105,
+      "md5": null,
+      "object_created": true,
+      "page_count": null,
+      "paper_id": "P1B",
+      "paper_version": "v1B.0.40",
+      "path": "site/public/papers/paper1b_mcmc_companion_v1B.0.40.pdf",
+      "reference_created": true,
+      "sha256": "1df84c2458b947c7ab2e65aeac270c757a3e65537c26b43938aec6287b0726e7"
+    }
+  ],
+  "run_id": "history-backfill-fast-1225-1249",
+  "schema": "bigbounce-pdf-retention-history/v1"
+}

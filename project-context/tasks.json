@@ -80,9 +80,11 @@
       "progress": [
         "Current/future six-paper PDF snapshots are retained through Directive-G before mirror/Convex mutation.",
         "Complete Git PDF inventory manifest project-context/pdf-archive/manifests/2026/07/20260714T235000Z-history-inventory-20260714-history.json records 1,356 reachable PDF object/path rows, 1,094 high-confidence manuscript rows, and 262 explicit unclassified rows.",
-        "First page-counted historical materialization proof project-context/pdf-archive/manifests/2026/07/20260715T004000Z-history-backfill-0104-0108-20260714-history.json verified five P4 manuscript rows with object/reference hardlink checks and page counts 22, 24, 25, 22, 21."
+        "Fast historical byte materialization covers row offsets 0-1357 with no gaps across 49 history-backfill-fast-* manifests: 1,095 classified manuscript rows processed, 837 new SHA-256 objects and 843 new refs created, zero row errors.",
+        "Archive verification after fast materialization: 1,097 objects, 1,106 refs, and 0 bad ref-to-object hardlinks.",
+        "First page-counted historical materialization proof project-context/pdf-archive/manifests/2026/07/20260715T004000Z-history-backfill-0104-0108-20260714-history.json verified five P4 manuscript rows with page counts 22, 24, 25, 22, 21."
       ],
-      "next_action": "Continue bounded page-counted history backfill tranches with tools/pdf_version_retention.py --history-backfill --history-offset <n> --history-limit <m>, then mirror the archive to two independent stores."
+      "next_action": "Run page-count completion tranches with tools/pdf_version_retention.py --history-backfill --history-offset <n> --history-limit <m> (without --history-skip-page-count), then mirror project-context/pdf-archive to two independent stores and hash-verify both mirrors."
     },
     {
       "id": "PUB-006",
@@ -103,20 +105,31 @@
       "id": "HO-001",
       "status": "done",
       "title": "Run receiving-machine bootstrap to READY",
-      "source_prompts": ["2026-07-13 Codex handoff acceptance"],
+      "source_prompts": [
+        "2026-07-13 Codex handoff acceptance"
+      ],
       "completion_criteria": [
         "Second machine follows BOOTSTRAP_PROMPT.md",
         "bootstrap.sh reports READY",
         "Every WARN or FAIL is resolved or documented without exposing secrets"
       ],
-      "evidence": ["bootstrap READY: 21 PASS, 2 WARN, 0 FAIL", "TinyTeX pdflatex and latexmk detected", "Convex reachable", "gstack healthy headed"]
+      "evidence": [
+        "bootstrap READY: 21 PASS, 2 WARN, 0 FAIL",
+        "TinyTeX pdflatex and latexmk detected",
+        "Convex reachable",
+        "gstack healthy headed"
+      ]
     },
     {
       "id": "HO-002",
       "status": "active",
       "title": "Verify one-lab coordination on two machines",
-      "source_prompts": ["2026-07-13 Codex handoff acceptance"],
-      "depends_on": ["HO-B01"],
+      "source_prompts": [
+        "2026-07-13 Codex handoff acceptance"
+      ],
+      "depends_on": [
+        "HO-B01"
+      ],
       "completion_criteria": [
         "Lease claim, renew, release, denial, and expiry behavior are verified during an idle or handed-off window",
         "Heartbeat contains the active machineId",
@@ -127,30 +140,47 @@
       "id": "HO-003",
       "status": "done",
       "title": "Verify Codex orchestrator portability",
-      "source_prompts": ["2026-07-13 Codex handoff acceptance"],
+      "source_prompts": [
+        "2026-07-13 Codex handoff acceptance"
+      ],
       "completion_criteria": [
         "Fresh Codex session resumes from repository instructions alone",
         "Claude-only assumptions are absent or explicitly mapped",
         "Host capability gaps are recorded honestly"
       ],
-      "evidence": ["Codex receiving session followed AGENTS/onboarding/runbook", "macOS launchd and gstack browser dependencies made explicit", "Codex host is mapped as its own INT reviewer"]
+      "evidence": [
+        "Codex receiving session followed AGENTS/onboarding/runbook",
+        "macOS launchd and gstack browser dependencies made explicit",
+        "Codex host is mapped as its own INT reviewer"
+      ]
     },
     {
       "id": "HO-004",
       "status": "done",
       "title": "Close bootstrap prerequisite-detection gaps",
-      "source_prompts": ["2026-07-13 Claude handoff report"],
+      "source_prompts": [
+        "2026-07-13 Claude handoff report"
+      ],
       "completion_criteria": [
         "TinyTeX pdflatex is detected or its degraded state is documented",
         "No prerequisite check is weakened to force READY"
       ],
-      "evidence": ["bootstrap exact-module checks pass", "BigBounce env-key audit has zero missing key names", "isolated lease CAS + cron routing test passes"]
+      "evidence": [
+        "bootstrap exact-module checks pass",
+        "BigBounce env-key audit has zero missing key names",
+        "isolated lease CAS + cron routing test passes"
+      ]
     },
     {
       "id": "CMUX-001",
       "status": "done",
       "title": "Build and harden the local mirrored launcher and evaluation contract",
-      "source_prompts": ["2026-07-13 14:49 PT cmux architecture", "2026-07-13 15:38 PT continue", "2026-07-13 15:56 PT sync and continue", "2026-07-13 18:10 PT continue"],
+      "source_prompts": [
+        "2026-07-13 14:49 PT cmux architecture",
+        "2026-07-13 15:38 PT continue",
+        "2026-07-13 15:56 PT sync and continue",
+        "2026-07-13 18:10 PT continue"
+      ],
       "completion_criteria": [
         "Launch equivalent Codex and Claude orchestrator teams from an immutable task and repository snapshot",
         "Use subscription-authenticated CLIs without injecting provider API keys",
@@ -175,8 +205,13 @@
       "id": "CMUX-002",
       "status": "active",
       "title": "Run a fresh clean post-reset mirrored read-only A/B",
-      "source_prompts": ["2026-07-13 16:14 PT continue", "2026-07-13 CMUX continuation"],
-      "depends_on": ["CMUX-001"],
+      "source_prompts": [
+        "2026-07-13 16:14 PT continue",
+        "2026-07-13 CMUX continuation"
+      ],
+      "depends_on": [
+        "CMUX-001"
+      ],
       "completion_criteria": [
         "Both orchestrator teams receive the same task envelope and repository snapshot",
         "Neither team mutates BigBounce or sees the other team's result before dual submission",
@@ -203,7 +238,9 @@
       "id": "CMUX-003",
       "status": "done",
       "title": "Audit model-routing efficiency and provider authenticity",
-      "source_prompts": ["2026-07-14 12:10 PT OpenRouter and CMUX routing audit"],
+      "source_prompts": [
+        "2026-07-14 12:10 PT OpenRouter and CMUX routing audit"
+      ],
       "completion_criteria": [
         "Explain OpenRouter category ranks using OpenRouter's published methodology",
         "Inspect live CMUX processes and surfaces without changing focus or state",
@@ -257,13 +294,25 @@
       "id": "HO-D01",
       "status": "done",
       "title": "Verify handoff commits are reachable and pushed",
-      "evidence": ["origin/main=b93528b6", "HEAD divergence=0/0", "e730850b", "de4750f3", "27596c56", "df8d89a3", "b93528b6"]
+      "evidence": [
+        "origin/main=b93528b6",
+        "HEAD divergence=0/0",
+        "e730850b",
+        "de4750f3",
+        "27596c56",
+        "df8d89a3",
+        "b93528b6"
+      ]
     },
     {
       "id": "HO-D02",
       "status": "done",
       "title": "Verify lease and heartbeat files exist",
-      "evidence": ["lease free at seq 0", "heartbeat source=orchestrator", "heartbeat machineId=Houstons-MacBook-Air.local"]
+      "evidence": [
+        "lease free at seq 0",
+        "heartbeat source=orchestrator",
+        "heartbeat machineId=Houstons-MacBook-Air.local"
+      ]
     }
   ],
   "mvp_completion_criteria": [

@@ -54,14 +54,15 @@ immutable archive. Manifests and objects should also be copied byte-for-byte to
 versioned object storage or a DOI archive without changing their paths or
 hashes.
 
-## Historical Git backfill — staged
+## Historical Git backfill
 
 Historical retention is intentionally split into inventory and materialized
 tranches:
 
 ```bash
 python3 tools/pdf_version_retention.py --history-inventory --history-skip-page-count
-python3 tools/pdf_version_retention.py --history-backfill --history-offset 104 --history-limit 5
+python3 tools/pdf_version_retention.py --history-backfill --history-skip-page-count --history-offset 500 --history-limit 25
+python3 tools/pdf_version_retention.py --history-backfill --history-offset 500 --history-limit 25
 ```
 
 The inventory ledger
@@ -73,16 +74,24 @@ and 262 visible but unclassified rows. The unclassified rows are not silently
 discarded; they are retained in the ledger with reasons such as figure/render
 artifact, archive self-reference, ambiguous paper hint, or no paper hint.
 
-The first page-counted materialization proof is
+The first page-counted materialization proof was
 `manifests/2026/07/20260715T004000Z-history-backfill-0104-0108-20260714-history.json`.
 It verifies five historical P4 manuscript rows with SHA-256, MD5, source Git
 blob, first-seen commit/timestamp, archive object path, hard-linked reference,
 and page counts. A separate verifier checked all five references point to the
 recorded object bytes and reported page counts 22, 24, 25, 22, and 21.
 
-Full page-counted history backfill remains a staged archive job. Use
-`--history-offset` and `--history-limit` in small chunks; non-dry-run
-`--history-backfill` is required to record page counts and fails if
-`--history-skip-page-count` is supplied. Fast inventory is acceptable for
-coverage planning, but it is not a substitute for the page-counted backfill
-manifests.
+The first full historical byte materialization was completed in chunked fast
+mode on 2026-07-14/15 with run IDs matching
+`history-backfill-fast-*`. Those manifests cover row offsets 0 through 1357
+with no gaps, processed 1,095 classified manuscript rows, created 837 new
+objects and 843 new references, and reported zero row errors. The archive then
+contained 1,097 SHA-256 objects and 1,106 human-readable refs, with all 1,106
+refs verified as hard links to matching objects.
+
+Fast materialization records SHA-256 identity and first-seen Git provenance but
+sets `page_counts_recorded=false`. Full page-count completion remains the next
+bounded archive job: rerun `--history-backfill` without
+`--history-skip-page-count` in small chunks to add page-counted manifests. The
+archive objects and refs are already content-addressed, so those page-count
+tranches should deduplicate existing bytes rather than create another copy.
