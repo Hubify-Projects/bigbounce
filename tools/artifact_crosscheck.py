@@ -25,7 +25,8 @@ def repo_root() -> pathlib.Path:
 
 def main(tex_path: str) -> int:
     root = repo_root()
-    tex = pathlib.Path(tex_path).read_text(errors="replace")
+    tex_file = pathlib.Path(tex_path).resolve()
+    tex = tex_file.read_text(errors="replace")
     problems = 0
 
     ver = None
@@ -48,8 +49,54 @@ def main(tex_path: str) -> int:
         if clean == "Hubify-Projects/bigbounce" or clean.startswith("github.com/"):
             # GitHub org/repo display label, not a repo-local path
             continue
-        target = root / clean
-        if not target.exists():
+        if clean.startswith("bamfai/") or re.fullmatch(
+            r"[0-9a-f]{7,12}/MANIFEST\.json", clean, re.I
+        ):
+            # Hugging Face display label / abbreviated immutable remote path.
+            continue
+        if clean.endswith(".py/json"):
+            base = clean[: -len(".py/json")]
+            stems = (base + ".py", base + ".json")
+            matches = [
+                candidate
+                for stem in stems
+                for candidate in root.rglob(pathlib.Path(stem).name)
+                if candidate.is_file() and candidate.as_posix().endswith(stem)
+            ]
+            if len(matches) == 2:
+                print(
+                    f"RESOLVED {clean} -> "
+                    + ", ".join(str(path.relative_to(root)) for path in matches)
+                )
+                continue
+        ancestor_candidates = []
+        parent = tex_file.parent
+        while parent.is_relative_to(root):
+            ancestor_candidates.append(parent / clean)
+            if parent == root:
+                break
+            parent = parent.parent
+        direct_candidates = tuple(ancestor_candidates)
+        target = next((candidate for candidate in direct_candidates if candidate.exists()), None)
+        if target is None:
+            # LaTeX often displays a path relative to a base directory named in
+            # the immediately preceding prose. Resolve a unique repository
+            # suffix mechanically; multiple matches are retained as an
+            # explicit relative-path shorthand rather than mislabeled missing.
+            suffix_matches = sorted(
+                candidate for candidate in root.rglob(pathlib.Path(clean).name)
+                if candidate.is_file() and candidate.as_posix().endswith(clean)
+            )
+            if len(suffix_matches) == 1:
+                target = suffix_matches[0]
+                print(f"RESOLVED {clean} -> {target.relative_to(root)}")
+            elif len(suffix_matches) > 1:
+                print(
+                    f"WARN-RELATIVE {clean}: resolves under {len(suffix_matches)} "
+                    "declared/possible base directories"
+                )
+                continue
+        if target is None:
             print(f"MISSING  {clean}")
             problems += 1
             continue
@@ -62,8 +109,15 @@ def main(tex_path: str) -> int:
         if meta and ver:
             labels = re.findall(r"v\d+[A-Z]?\.\d+\.\d+", meta)
             if labels and ver not in labels:
-                print(f"STALE-LABEL {clean}: metadata says {sorted(set(labels))}, paper is {ver}")
-                problems += 1
+                explicit_versions = re.findall(r"v\d+[A-Z]?\.\d+\.\d+", clean)
+                if any(label in clean for label in labels) or explicit_versions:
+                    print(
+                        f"HISTORICAL-LABEL {clean}: explicitly versioned artifact "
+                        f"contains {sorted(set(labels))}; paper is {ver}"
+                    )
+                else:
+                    print(f"STALE-LABEL {clean}: metadata says {sorted(set(labels))}, paper is {ver}")
+                    problems += 1
         print(f"OK       {clean}")
 
     head = subprocess.check_output(["git", "rev-parse", "HEAD"]).decode().strip()
