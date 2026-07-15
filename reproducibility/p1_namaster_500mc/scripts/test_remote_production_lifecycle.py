@@ -7,6 +7,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from unittest import mock
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -109,6 +110,49 @@ class RemoteLifecycleTests(unittest.TestCase):
         self.assertIn(hashlib.sha256(canonical).hexdigest(), argv[2])
         self.assertEqual(base64.b64decode(encoded), canonical)
         self.assertIn("bound-production-manifest.json", argv[2])
+
+    def test_generated_bootstrap_executes_fresh_local_clone(self):
+        source = Path(self.tmp.name) / "bootstrap-source"
+        runner_path = source / "reproducibility/p1_namaster_500mc/scripts/remote_production_runner.py"
+        runner_path.parent.mkdir(parents=True)
+        (source / "bound.txt").write_text("bootstrap-bound\n")
+        runner_path.write_text(
+            "#!/usr/bin/env python3\n"
+            "import argparse, pathlib\n"
+            "p=argparse.ArgumentParser(); p.add_argument('--manifest'); "
+            "p.add_argument('--repo'); p.add_argument('--state-dir'); a=p.parse_args()\n"
+            "pathlib.Path(a.state_dir).mkdir(parents=True, exist_ok=True)\n"
+            "pathlib.Path(a.state_dir, 'fake-runner.success').write_text('ok\\n')\n"
+        )
+        subprocess.run(["git", "init", "-q"], cwd=source, check=True)
+        subprocess.run(["git", "config", "user.email", "test@example.invalid"], cwd=source, check=True)
+        subprocess.run(["git", "config", "user.name", "Test"], cwd=source, check=True)
+        subprocess.run(["git", "add", "."], cwd=source, check=True)
+        subprocess.run(["git", "commit", "-qm", "bootstrap fixture"], cwd=source, check=True)
+        commit = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=source, text=True).strip()
+        manifest = {
+            "git_commit": commit,
+            "input_sha256": {
+                "bound.txt": digest(source / "bound.txt"),
+                "reproducibility/p1_namaster_500mc/scripts/remote_production_runner.py": digest(runner_path),
+            },
+            "container": {"install": ["true"]},
+        }
+        workspace = Path(self.tmp.name) / "fresh-workspace"
+        state = Path(self.tmp.name) / "remote-state"
+        with mock.patch.object(bootstrap, "REPO_URL", str(source)):
+            argv = bootstrap.generate(manifest, Path("/definitely/local/manifest.json"), workspace, state)
+        result = subprocess.run(argv, text=True, capture_output=True, check=False)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        cloned = workspace / "bigbounce"
+        cloned_head = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=cloned, text=True).strip()
+        self.assertEqual(cloned_head, commit)
+        branch = subprocess.run(["git", "symbolic-ref", "-q", "HEAD"], cwd=cloned, check=False)
+        self.assertNotEqual(branch.returncode, 0)
+        embedded = state / "bound-production-manifest.json"
+        self.assertEqual(embedded.read_bytes(), bootstrap.canonical_manifest_bytes(manifest))
+        self.assertEqual(digest(embedded), hashlib.sha256(bootstrap.canonical_manifest_bytes(manifest)).hexdigest())
+        self.assertEqual((state / "fake-runner.success").read_text(), "ok\n")
 
 
 if __name__ == "__main__":

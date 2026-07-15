@@ -46,7 +46,7 @@ git checkout --detach {shlex.quote(commit)}
 test "$(git rev-parse HEAD)" = {shlex.quote(commit)}
 {checks}
 {chr(10).join(install)}
-python reproducibility/p1_namaster_500mc/scripts/remote_production_runner.py --manifest {shlex.quote(str(remote_manifest))} --repo {shlex.quote(str(repo))} --state-dir {shlex.quote(str(state_dir))}
+python3 reproducibility/p1_namaster_500mc/scripts/remote_production_runner.py --manifest {shlex.quote(str(remote_manifest))} --repo {shlex.quote(str(repo))} --state-dir {shlex.quote(str(state_dir))}
 """
     return ["bash", "-lc", script]
 
