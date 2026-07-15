@@ -1,0 +1,33 @@
+{
+  "calibrated_probability_claim": false,
+  "counts": {
+    "catalog_rows": 8474531,
+    "primary_hc_rows": 949584,
+    "strict_primary_hc_rows": 890069,
+    "unsafe_catalog_rows": 249066,
+    "unsafe_primary_hc_rows": 59515
+  },
+  "primary_raw_score_columns_absent": true,
+  "quarantine_reason_code": "RAW_EQ_PIPELINE_PASS_MISMATCH_GT_1E3",
+  "schema": "p4-apjs-release-manifest/v1",
+  "semantic_counts": {
+    "primary_hc_rows": 949584,
+    "quarantine_bad_reason_rows": 0,
+    "quarantine_primary_hc_rows": 59515,
+    "quarantine_science_enabled_rows": 0,
+    "strict_primary_hc_rows": 890069,
+    "unsafe_catalog_rows": 249066,
+    "unsafe_primary_hc_rows": 59515
+  },
+  "semantic_gates": {
+    "primary_hc_rows": true,
+    "primary_raw_score_columns_absent": true,
+    "quarantine_do_not_use": true,
+    "quarantine_primary_hc_rows": true,
+    "quarantine_reason_codes": true,
+    "strict_primary_hc_rows": true,
+    "unsafe_catalog_rows": true,
+    "unsafe_primary_hc_rows": true
+  },
+  "status": "PASS"
+}

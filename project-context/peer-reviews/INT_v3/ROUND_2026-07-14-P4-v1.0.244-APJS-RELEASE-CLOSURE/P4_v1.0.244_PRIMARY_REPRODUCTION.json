@@ -1,0 +1,41 @@
+{
+  "amplitude": 0.004597074287780103,
+  "equatorial_dec_deg": 16.02911597773629,
+  "equatorial_ra_deg": 294.30537030397005,
+  "exclusions": [
+    "no calibrated-probability claim",
+    "no physical-amplitude or primordial bound",
+    "no matched-external-estimator claim",
+    "no formal-preregistration claim"
+  ],
+  "hard_gates": {
+    "amplitude": true,
+    "equatorial_dec_deg": true,
+    "equatorial_ra_deg": true,
+    "n_pixels_inclusive": true,
+    "n_primary_hc": true,
+    "null_sha256": true,
+    "rank_p": true,
+    "significance_sigma": true
+  },
+  "monopole": -0.0077688924693038045,
+  "n_pixels_inclusive": 23682,
+  "n_primary_hc": 949584,
+  "null": {
+    "array_sha256": "62bb1c019231974c2a7ed5d5e43ceb77a5596e4675c82d7ff1c899e029a36492",
+    "definition": "10,000 per-pixel asymmetry-value permutations on fixed HC_REALSPACE_INCLUSIVE support",
+    "mean": 0.0036928318780248184,
+    "n_realizations": 10000,
+    "rank_formula": "(k+1)/(N+1), k=count(A_null >= A_data)",
+    "rank_k": 2651,
+    "rank_p_one_sided_upper_tail": 0.26517348265173485,
+    "significance_sigma": 0.5491201934182964,
+    "std_ddof0": 0.0016467112675757516
+  },
+  "paper_version": "v1.0.244",
+  "schema": "p4-primary-null-reproduction/v1",
+  "scope": "observed equivariant hard labels; descriptive isotropy null only",
+  "selection": "primary_hc == True; HEALPix NSIDE=64; N_spiral(pixel) >= 10",
+  "status": "PASS",
+  "support": "HC_REALSPACE_INCLUSIVE"
+}
