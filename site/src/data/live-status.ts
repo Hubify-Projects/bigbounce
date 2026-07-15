@@ -147,12 +147,12 @@ const historicalLiveStatus: LiveStatus = {
 // summary reflect the canonical six-paper board rather than an older review wave.
 export const liveStatus: LiveStatus = {
   ...historicalLiveStatus,
-  lastUpdatedISO: "2026-07-15T12:03:13Z",
-  lastUpdatedDisplay: "July 15, 2026 · 5:03 AM PT",
+  lastUpdatedISO: "2026-07-15T12:36:00Z",
+  lastUpdatedDisplay: "July 15, 2026 · 5:36 AM PT",
   headline:
-    "All six manuscripts remain in revision. P4 v1.0.249 restricts the FS-C synthesis to two support-bound diagnostics after the exact-v1.0.248 board found a second mask-provenance regression; P1B's corrected production run remains blocked on compute funding.",
+    "All six manuscripts remain in revision. P4 v1.0.250 now passes AASTeX 7 presentation, link, source-to-claim, and all-page PDF audits; exact review and scientific release gates remain open. P1B's corrected production run remains blocked on compute funding.",
   summary:
-    "P1B's repaired CAMB spectrum generator and PRIMAT checks pass, but no corrected 500-MC artifact exists because the RunPod balance is negative. P4's exact-v1.0.248 board returned MAJOR/MINOR/MAJOR and found four more diagnostics were not bound to the 24,087-pixel FS-C support. v1.0.249 retains only apodization and multipole coherence in the strict synthesis; the primary HC result remains z=0.7053. Training realization, spatial covariance, DOI-backed archive, exact re-review, and human review remain open. Readiness holds at 56/80; no acceptance is claimed.",
+    "P1B's repaired CAMB spectrum generator and PRIMAT checks pass, but no corrected 500-MC artifact exists because the RunPod balance is negative. P4 v1.0.250 is a 29-page AASTeX 7 presentation release with unchanged HC z=0.7053 primary result and a clean PDF audit. Training realization, spatial covariance, DOI-backed archive, exact v1.0.250 review, and human review remain open. Readiness holds at 56/80; no acceptance is claimed.",
   papers: historicalLiveStatus.papers.map((paper) => {
     if (paper.slug === "paper-1b") {
       return {
@@ -165,16 +165,16 @@ export const liveStatus: LiveStatus = {
     if (paper.slug === "paper-4") {
       return {
         ...paper,
-        version: "v1.0.249",
+        version: "v1.0.250",
         pendingWork:
-          "The corrected safe/quarantine/null bundle is public. Only apodization robustness and multipole coherence remain in the strict FS-C synthesis; six other diagnostics are different-support or support-unproven provenance. Training realization, spatial covariance, DOI-backed archive, exact v1.0.249 confirmation, and human review remain open. Readiness holds 80.",
+          "The corrected safe/quarantine/null bundle is public and the AASTeX 7 PDF passes compile, link, source-to-claim, and all-page visual audits. Training realization, spatial covariance, DOI-backed archive, exact v1.0.250 confirmation, and human review remain open. Readiness holds 80.",
       };
     }
     return paper;
   }),
   currentlyRunning: [
     "P1B corrected production is queued but blocked by a negative RunPod balance; no paid pod launch is being attempted",
-    "P4 v1.0.249 support-audit closure is being compiled and verified before exact-PDF confirmation",
+    "P4 v1.0.250 is verified locally and queued for exact-PDF non-Anthropic confirmation",
   ],
   cronStatus:
     "No review wave is running. The anti-loop stop rule is active: verified defects are being closed before any exact-artifact confirmation rerun.",

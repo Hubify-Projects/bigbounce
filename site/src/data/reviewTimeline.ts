@@ -57,6 +57,25 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p4-v10250-aastex-presentation-2026-07-15",
+    dateISO: "2026-07-15",
+    timePT: "early morning",
+    kind: "closure-wave",
+    title: "P4 v1.0.250 — AASTeX 7 presentation and causal-language closure",
+    papers: ["P4"],
+    summary:
+      "P4 now compiles in AASTeX 7.0.1 with line numbers, a compressed abstract, corrected-release-first Data Availability, and no table, equation, float, or page overflow. The unsupported causal attribution of the 0.26% catalog monopole is replaced by three unresolved candidate mechanisms. The HC z=0.7053 primary null is unchanged; readiness holds 80 pending exact v1.0.250 review, archive/DOI, training replay, covariance, and human review.",
+    keyTakeaways: [
+      "29-page exact PDF SHA-256 1c8af85c; all-page visual, link, compile, and source-to-claim audits pass",
+      "AASTeX conversion changes presentation only; no quantitative scientific result changed",
+      "No OpenAI API or Anthropic was used; no automated or human acceptance is claimed",
+    ],
+    links: [
+      { label: "P4 canonical status", href: `${GH}/project-context/SSOT/paper-4/status.md` },
+      { label: "v1.0.250 source-to-claim audit", href: `${GH}/pipelines/p2_chirality/outputs/canonical_provenance/p4_v1_0_250_source_to_claim_audit.json` },
+    ],
+  },
+  {
     id: "p4-v10249-support-audit-2026-07-15",
     dateISO: "2026-07-15",
     timePT: "early morning",

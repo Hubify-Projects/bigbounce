@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail-closed source-to-claim audit for every new P4 v1.0.249 number."""
+"""Fail-closed source-to-claim and presentation audit for P4 v1.0.250."""
 
 from __future__ import annotations
 
@@ -148,7 +148,12 @@ def audit() -> dict[str, Any]:
     schema = load(P4 / "apjs_release_schema_v1_0_244.json")
     gates.update(
         {
-            "paper_version": r"\newcommand{\paperVersion}{v1.0.249}" in tex,
+            "paper_version": r"\newcommand{\paperVersion}{v1.0.250}" in tex,
+            "paper_uses_aastex_701": r"\documentclass[twocolumn,linenumbers]{aastex701}" in tex,
+            "paper_has_no_internal_toc": r"\tableofcontents" not in tex,
+            "paper_uses_numeric_citations": r"\setcitestyle{numbers,sort&compress}" in tex,
+            "paper_leads_with_corrected_release": tex.index("db11023306ab4eed1d7727670bd78e127b7af17a") < tex.index("58ecc795a0aa8dda566a28a5adda76a47f3c8942"),
+            "paper_does_not_claim_monopole_cause": "attributed to GZ1 human-handedness training bias" not in tex,
             "paper_limits_fsc_synthesis_to_two": "Two diagnostics are bound to the declared \\FSC{} base support" in tex,
             "paper_excludes_unproven_supports": all(token in tex for token in ("24,270 pixels", "35,438 latitude-mask pixels", "does not record enough mask provenance")),
             "paper_prints_catalog_and_hc_counts": "249,066 unsafe rows catalog-wide" in tex and "Exactly 59,515" in tex,
@@ -171,9 +176,9 @@ def audit() -> dict[str, Any]:
     )
     failed = [name for name, passed in gates.items() if not passed]
     result = {
-        "schema": "p4-v1.0.249-source-to-claim-audit/v1",
+        "schema": "p4-v1.0.250-source-to-claim-audit/v1",
         "paper": "P4",
-        "paper_version": "v1.0.249",
+        "paper_version": "v1.0.250",
         "status": "PASS" if not failed else "FAIL",
         "gates": gates,
         "failed_gates": failed,
