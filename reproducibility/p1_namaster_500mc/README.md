@@ -174,12 +174,32 @@ from the hash-verified exact-commit contract. Before rerunning an unverified job
 all of its declared outputs are removed so stale files cannot satisfy a no-op.
 The evidence set includes all eight scientific shard receipts and both merged
 result receipts, in addition to their result files. They do not contact RunPod
-or any other provider. The unresolved requirements are:
+or any other provider. The runner now requires an explicit absolute
+`--retention-root` intended for an attached RunPod network volume, separate
+from its repository, ephemeral workspace, and state directory. The recommended
+topology is retention at `/workspace/p1b-retention` (RunPod's persistent network
+volume mount), with the clone and state under separate ephemeral paths outside
+`/workspace`; this also keeps the retained tree addressable through RunPod's
+supported direct network-volume access. After strict merge it
+copies the bound manifest, final production receipt, every orchestration
+status/receipt/log, canonical outputs, all eight result/scientific-receipt
+pairs, and both merged result/scientific-receipt pairs into a commit-scoped
+staging directory. Every source and destination is size/hash checked, files
+and directories are fsynced, and the directory is atomically promoted only
+after `RETENTION_COMPLETE.json` is written last and the inventory re-verifies.
 
-1. durable upload plus hash verification of every output and receipt before deletion;
-2. automatic foreground supervision immediately after a successful create.
+```bash
+python scripts/retain_remote_production.py \
+  --validate /runpod-volume/p1b-retention/CONTRACT--COMMIT
+```
 
-Until all four exist and `provider_mutation_ready` is deliberately changed,
+Partial staging is preserved for inspection; a completed inconsistent set is
+never overwritten; an identical completed set is idempotent. This closes the
+durable off-pod retention contract, but does not authorize pod deletion by
+itself. The sole unresolved provider-mutation requirement is automatic
+foreground supervision immediately after a successful create.
+
+Until that exists and `provider_mutation_ready` is deliberately changed,
 even a fully confirmed command fails before provider HTTP:
 
 ```bash
