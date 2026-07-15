@@ -18,13 +18,16 @@ def canonical_manifest_bytes(manifest: dict) -> bytes:
     return (json.dumps(manifest, indent=2, sort_keys=True) + "\n").encode("utf-8")
 
 
-def generate(manifest: dict, manifest_path: Path, workspace: Path, state_dir: Path) -> list[str]:
+def generate(manifest: dict, manifest_path: Path, workspace: Path, state_dir: Path,
+             retention_root: Path) -> list[str]:
     commit = manifest.get("git_commit", "")
     if len(commit) != 40 or not manifest.get("input_sha256"):
         raise ValueError("manifest is not commit/hash bound")
     install = manifest.get("container", {}).get("install") or []
     if not install:
         raise ValueError("manifest has no dependency installation contract")
+    if not retention_root.is_absolute():
+        raise ValueError("retention root must be an explicit absolute attached-volume path")
     repo = workspace / "bigbounce"
     remote_manifest = state_dir / "bound-production-manifest.json"
     encoded_manifest = base64.b64encode(canonical_manifest_bytes(manifest)).decode("ascii")
@@ -46,7 +49,7 @@ git checkout --detach {shlex.quote(commit)}
 test "$(git rev-parse HEAD)" = {shlex.quote(commit)}
 {checks}
 {chr(10).join(install)}
-python3 reproducibility/p1_namaster_500mc/scripts/remote_production_runner.py --manifest {shlex.quote(str(remote_manifest))} --repo {shlex.quote(str(repo))} --state-dir {shlex.quote(str(state_dir))}
+python3 reproducibility/p1_namaster_500mc/scripts/remote_production_runner.py --manifest {shlex.quote(str(remote_manifest))} --repo {shlex.quote(str(repo))} --state-dir {shlex.quote(str(state_dir))} --retention-root {shlex.quote(str(retention_root))}
 """
     return ["bash", "-lc", script]
 
@@ -56,8 +59,10 @@ def main() -> int:
     p.add_argument("--manifest", type=Path, required=True)
     p.add_argument("--workspace", type=Path, required=True)
     p.add_argument("--state-dir", type=Path, required=True)
+    p.add_argument("--retention-root", type=Path, required=True)
     args = p.parse_args()
-    argv = generate(json.loads(args.manifest.read_text()), args.manifest, args.workspace, args.state_dir)
+    argv = generate(json.loads(args.manifest.read_text()), args.manifest, args.workspace,
+                    args.state_dir, args.retention_root)
     print(json.dumps(argv))
     return 0
 

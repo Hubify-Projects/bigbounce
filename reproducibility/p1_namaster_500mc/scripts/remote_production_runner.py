@@ -13,6 +13,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from prepare_runpod_production import build_execution
+from retain_remote_production import retain
 
 
 CONTRACT_RELATIVE = Path("reproducibility/p1_namaster_500mc/runpod_production_contract.json")
@@ -138,7 +139,7 @@ def execute_job(repo: Path, state_dir: Path, job: dict, commit: str) -> None:
         raise RuntimeError(f"job failed: {job['name']}: {exc}") from exc
 
 
-def run(repo: Path, manifest: dict, state_dir: Path) -> dict:
+def run(repo: Path, manifest: dict, state_dir: Path, retention_root: Path | None = None) -> dict:
     validate_binding(repo, manifest)
     # A prior success must never survive as apparent evidence for a new partial
     # or failed invocation. It is re-promoted only after every receipt verifies.
@@ -167,6 +168,8 @@ def run(repo: Path, manifest: dict, state_dir: Path) -> dict:
         "completed_at": datetime.now(timezone.utc).isoformat(),
     }
     atomic_json(state_dir / "production.complete.json", final)
+    if retention_root is not None:
+        retain(repo, state_dir, retention_root, manifest)
     return final
 
 
@@ -175,8 +178,11 @@ def main() -> int:
     p.add_argument("--manifest", type=Path, required=True)
     p.add_argument("--repo", type=Path, default=Path.cwd())
     p.add_argument("--state-dir", type=Path, required=True)
+    p.add_argument("--retention-root", type=Path, required=True,
+                   help="absolute attached-volume path outside repo/workspace/state")
     args = p.parse_args()
-    run(args.repo.resolve(), json.loads(args.manifest.read_text()), args.state_dir.resolve())
+    run(args.repo.resolve(), json.loads(args.manifest.read_text()), args.state_dir.resolve(),
+        args.retention_root)
     return 0
 
 

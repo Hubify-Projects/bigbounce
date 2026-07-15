@@ -14,6 +14,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import generate_remote_bootstrap as bootstrap
 import remote_production_runner as runner
+import retain_remote_production as retention
 
 
 def digest(path):
@@ -151,7 +152,8 @@ class RemoteLifecycleTests(unittest.TestCase):
         self.assertEqual(final["state"], "complete")
         self.assertEqual(final["job_count"], 9)
         argv = bootstrap.generate(self.manifest, Path("/tmp/manifest.json"),
-                                  Path("/tmp/clean-work"), Path("/tmp/state"))
+                                  Path("/tmp/clean-work"), Path("/tmp/state"),
+                                  Path("/runpod-volume/p1b-retention"))
         self.assertEqual(argv[:2], ["bash", "-lc"])
         self.assertIn("git checkout --detach", argv[2])
         self.assertIn(self.commit, argv[2])
@@ -174,7 +176,8 @@ class RemoteLifecycleTests(unittest.TestCase):
             "#!/usr/bin/env python3\n"
             "import argparse, pathlib\n"
             "p=argparse.ArgumentParser(); p.add_argument('--manifest'); "
-            "p.add_argument('--repo'); p.add_argument('--state-dir'); a=p.parse_args()\n"
+            "p.add_argument('--repo'); p.add_argument('--state-dir'); "
+            "p.add_argument('--retention-root'); a=p.parse_args()\n"
             "pathlib.Path(a.state_dir).mkdir(parents=True, exist_ok=True)\n"
             "pathlib.Path(a.state_dir, 'fake-runner.success').write_text('ok\\n')\n"
         )
@@ -195,7 +198,8 @@ class RemoteLifecycleTests(unittest.TestCase):
         workspace = Path(self.tmp.name) / "fresh-workspace"
         state = Path(self.tmp.name) / "remote-state"
         with mock.patch.object(bootstrap, "REPO_URL", str(source)):
-            argv = bootstrap.generate(manifest, Path("/definitely/local/manifest.json"), workspace, state)
+            argv = bootstrap.generate(manifest, Path("/definitely/local/manifest.json"), workspace,
+                                      state, Path(self.tmp.name) / "retention")
         result = subprocess.run(argv, text=True, capture_output=True, check=False)
         self.assertEqual(result.returncode, 0, result.stderr)
         cloned = workspace / "bigbounce"
@@ -207,6 +211,86 @@ class RemoteLifecycleTests(unittest.TestCase):
         self.assertEqual(embedded.read_bytes(), bootstrap.canonical_manifest_bytes(manifest))
         self.assertEqual(digest(embedded), hashlib.sha256(bootstrap.canonical_manifest_bytes(manifest)).hexdigest())
         self.assertEqual((state / "fake-runner.success").read_text(), "ok\n")
+
+
+class RetentionTests(unittest.TestCase):
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        root = Path(self.tmp.name)
+        self.repo, self.state, self.volume = root / "repo", root / "state", root / "volume"
+        self.repo.mkdir(); self.state.mkdir()
+        outputs = []
+        jobs = []
+        for index in range(9):
+            name = "canonical" if index == 0 else f"robustness-{index:02d}"
+            relative = f"results/{name}.json"
+            outputs.append(relative)
+            jobs.append({"name": name, "outputs": [relative]})
+        jobs.append({"name": "strict-merge", "outputs": ["results/merged.json"]})
+        self.manifest = {
+            "contract_id": "retention-test", "git_commit": "a" * 40,
+            "execution_jobs": jobs[:-1], "merge_job": jobs[-1],
+        }
+        for job in jobs:
+            for relative in job["outputs"]:
+                path = self.repo / relative; path.parent.mkdir(parents=True, exist_ok=True); path.write_text(relative)
+            for suffix in ("receipt.json", "status.json", "log"):
+                (self.state / f"{job['name']}.{suffix}").write_text(f"{job['name']}:{suffix}\n")
+        (self.state / "bound-production-manifest.json").write_text(json.dumps(self.manifest))
+        (self.state / "production.complete.json").write_text(json.dumps({
+            "state": "complete", "contract_id": "retention-test", "git_commit": "a" * 40,
+        }))
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def test_full_success_complete_inventory_marker_last_and_idempotence(self):
+        marker = retention.retain(self.repo, self.state, self.volume, self.manifest)
+        directory = self.volume / f"retention-test--{'a' * 40}"
+        self.assertEqual(marker, retention.validate_retention(directory))
+        self.assertEqual(len(marker["inventory"]), 2 + 10 * 4)
+        marker_mtime = (directory / retention.MARKER).stat().st_mtime_ns
+        self.assertGreaterEqual(marker_mtime, max(
+            p.stat().st_mtime_ns for p in directory.rglob("*") if p.is_file() and p.name != retention.MARKER))
+        self.assertEqual(marker, retention.retain(self.repo, self.state, self.volume, self.manifest))
+
+    def test_missing_and_tampered_inputs_fail(self):
+        (self.repo / "results/canonical.json").unlink()
+        with self.assertRaisesRegex(ValueError, "inputs missing"):
+            retention.retain(self.repo, self.state, self.volume, self.manifest)
+        (self.repo / "results/canonical.json").write_text("results/canonical.json")
+        bad = dict(self.manifest, git_commit="b" * 40)
+        with self.assertRaisesRegex(ValueError, "wrong state or commit"):
+            retention.retain(self.repo, self.state, self.volume, bad)
+        (self.state / "bound-production-manifest.json").write_text("{}")
+        with self.assertRaisesRegex(ValueError, "bound manifest"):
+            retention.retain(self.repo, self.state, self.volume, self.manifest)
+
+    def test_copy_tamper_is_detected_and_partial_staging_preserved(self):
+        original = retention.shutil.copyfile
+        def corrupt(source, target):
+            original(source, target)
+            Path(target).write_text("tampered")
+        with mock.patch.object(retention.shutil, "copyfile", side_effect=corrupt):
+            with self.assertRaisesRegex(ValueError, "copy verification failed"):
+                retention.retain(self.repo, self.state, self.volume, self.manifest)
+        with self.assertRaisesRegex(ValueError, "partial retention staging"):
+            retention.retain(self.repo, self.state, self.volume, self.manifest)
+
+    def test_completed_set_tamper_and_wrong_commit_rejected(self):
+        retention.retain(self.repo, self.state, self.volume, self.manifest)
+        directory = self.volume / f"retention-test--{'a' * 40}"
+        (directory / "repo/results/canonical.json").write_text("tampered")
+        with self.assertRaisesRegex(ValueError, "hash mismatch"):
+            retention.validate_retention(directory)
+        with self.assertRaisesRegex(ValueError, "commit mismatch"):
+            retention.validate_retention(directory, commit="b" * 40)
+
+    def test_requires_absolute_separate_volume(self):
+        with self.assertRaisesRegex(ValueError, "explicit absolute"):
+            retention.retain(self.repo, self.state, Path("relative"), self.manifest)
+        with self.assertRaisesRegex(ValueError, "must be distinct"):
+            retention.retain(self.repo, self.state, self.repo / "retention", self.manifest)
 
 
 if __name__ == "__main__":
