@@ -827,6 +827,37 @@ export const reviewRounds: ReviewRound[] = [
     reportSlug: "p3-v320-r5-apjs-exact-panel",
   },
   {
+    id: "m45-ext-p2-p5-adjudication-2026-07-15",
+    dateISO: "2026-07-15",
+    kind: "external-browser",
+    title:
+      "M45-EXT — P2 (v1.7.116) + P5 (v0.1.127) confirm wave, both byte-unchanged, 0 genuinely-new on either paper. **P2 ChatGPT = MAJOR REVISIONS — a genuine TIER-LIFT off P2's long-standing ChatGPT REJECT floor** (real review of the f_NL forecast, moves P2's grid cell off REJECT), + Grok = MINOR REVISIONS (closing AFFIRMS −35/16); streak 17→18; cap 74→80. P5: Grok = MINOR REVISIONS (closing AFFIRMS the null) + ChatGPT = MAJOR REVISIONS (5th consecutive MAJOR, stable floor); DP5-26 artifact-range fix STAYS HELD; streak 6→7; cap HOLDS 74.",
+    papers: ["P2", "P5"],
+    summary:
+      "STRICT ledger-first adjudication (tools/ledger_match.py + skeptical Opus per paper vs each .tex + DISPOSITIONS) of the four M45 raws against byte-unchanged P2 v1.7.116 + P5 v0.1.127; every raw + screenshot READ verbatim before any verdict; PROVENANCE CONFIRMED both papers (P2: App-B vertex / −35/16 / −305/64 / r=0.84 SPHEREx / surrogate-Fisher signatures present; P5: DESIVAST/VoidFinder/T-Web/Paper-IV/2a−1 present); post_verdict.sh EXT bare labels + record_wave.sh M45 rows (clobber-guard confirmed), caps recomputed from the EXT formula (_creationTime-latest per reviewer). P2: **ChatGPT = MAJOR REVISIONS (2M/2m) — a GENUINE TIER-LIFT off P2's long-standing ChatGPT REJECT floor.** The raw line 1 literally reads 'VERDICT: MAJOR REVISIONS' and reviews the correct f_NL forecast (App-B vertex-by-vertex certification, the −305/64-vs-−35/8-vs-−35/16 provenance, the r=0.84 SPHEREx mapping, and the surrogate Fisher) — a real, honestly-produced review, NOT a mislabel/wrong-paper; a pattern-066 harsh-referee floor oscillation on byte-unchanged content that moves P2's /reviews grid cell off REJECT. Its two MAJORs = App-B vertex-derivation self-containedness + amplitude provenance → standing DP2-01/-02/-16/-25; r=0.84 recast → DP2-14; surrogate-Fisher reproducibility → DP2-12/-22/-04. Grok = MINOR REVISIONS (2 in-MINOR MAJ-tag/3m; closing AFFIRMS the corrected −35/16 + the 2.63σ recast) → DP2-02/-13/-31/-22/-16. 0 genuinely-new; streak 17→18; cap 74→80 (ChatGPT EXT contribution REJECT 0 → MAJOR 6 on the lift: 50 + Grok MIN 12 + ChatGPT MAJ 6 + latest-Gemini MIN 12). P5: Grok = MINOR REVISIONS (0M/3m; closing AFFIRMS the environment-independent null) + ChatGPT = MAJOR REVISIONS (7M/6m), 5th consecutive MAJOR — stable above its former REJECT-modal tier. DP5-26 HELD ABSENT (grep both P5 raws for [A1]/[A32]/[A34]/artifact-range = 0). 0 genuinely-new; all findings source-cited standing DP5 re-flags (Grok→DP5-13/-10/-04/-14; ChatGPT→DP5-21/-04/-14/-10/-08/-09/-20/-03/-22/-19/-11/-12/-07). streak 6→7; cap HOLDS 74 (50 + Grok MIN 12 + ChatGPT MAJ 6 + latest-Gemini MAJ 6). No bumps (both byte-unchanged); directive_g.sh not run; no ACCEPT faked, no finding dismissed without a source-cited verdict, no math fabricated.",
+    keyTakeaways: [
+      "P2 ChatGPT REJECT→MAJOR is a GENUINE tier-lift — verified real (line-1 'VERDICT: MAJOR REVISIONS' + f_NL-forecast signatures present, not a mislabel). It moves P2's /reviews grid cell off REJECT and raises its cap 74→80. Still a pattern-066 floor oscillation on byte-unchanged content, not new findings.",
+      "0 genuinely-new on both papers → P2 streak 17→18 (eighteenth clean wave), P5 streak 6→7 (seventh). Every finding fingerprint-matches a canonical DP2/DP5 disposition; nothing forced.",
+      "DP5-26 artifact-range fix STAYS HELD (absent from both P5 raws). Both papers byte-unchanged; no bumps; directive_g.sh not run. Caps: P2 80, P5 74.",
+    ],
+    gapMetric: {
+      externalOnlyFindings: 0,
+      note: "M45-EXT: 0 genuinely-new on P2 and P5. Every finding a source-cited standing DP2/DP5 re-flag or disclosed-scope limitation; the P2 ChatGPT MAJOR (tier-lift) + P5 ChatGPT MAJOR + Grok MINORs are the documented harsh-referee band on byte-unchanged content. No edits warranted; no bumps.",
+    },
+    links: [
+      {
+        label: "P2 M45 truth-audit",
+        href: `${PR}/EXT_real/H17_2026-07-10/M45/P2_truth_audit_M45.md`,
+      },
+      {
+        label: "P5 M45 truth-audit",
+        href: `${PR}/EXT_real/H17_2026-07-10/M45/P5_truth_audit_M45.md`,
+      },
+      { label: "DISPOSITIONS/P2.md", href: `${PR}/DISPOSITIONS/P2.md` },
+      { label: "DISPOSITIONS/P5.md", href: `${PR}/DISPOSITIONS/P5.md` },
+    ],
+  },
+  {
     id: "m43-ext-p5-p2-adjudication-2026-07-13",
     dateISO: "2026-07-13",
     kind: "external-browser",
