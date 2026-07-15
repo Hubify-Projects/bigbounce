@@ -1,0 +1,239 @@
+{
+  "schema_version": 1,
+  "paper_version": "v1B.0.106",
+  "status": "pre-release analysis-artifact provenance; not a paper-release commit",
+  "base_repository_commit": "9e847a3264224aa6dc15b5f0e567dabeb7c0e554",
+  "hash_algorithm": "sha256",
+  "artifacts": [
+    {
+      "path": "reproducibility/p1_namaster_500mc/CHECKPOINT_RESUME_DESIGN.md",
+      "bytes": 2198,
+      "sha256": "bbabbd96e3c4800e47ecdabcfcba480d6718f6722785b794910556685abaa2e4"
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/README.md",
+      "bytes": 5702,
+      "sha256": "969b1154b8df1dfa75247339c8ecaeeb316e4becc822327c6d7a4b45abdf43ca"
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/requirements.txt",
+      "bytes": 419,
+      "sha256": "09004169135b8f0457f99d1220986dfea417bc289ada1f984ccd0d2ee06939e7"
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/scripts/windowed_rotation.py",
+      "bytes": 4587,
+      "sha256": "0c0509376a9b658259fe270a7e3d63c10804d2a9f095a2e740ca03acd899a04a"
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/scripts/namaster_500mc.py",
+      "bytes": 14922,
+      "sha256": "cfc92f8802711af74fb9a3cf023bad539599ba999035e9fad09747312f132ce8"
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/scripts/c10_robustness_battery.py",
+      "bytes": 19865,
+      "sha256": "f81bd0c7d6cc9026051a1f52743421871d46a8877200f171f0950c8cdef7bfa1"
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/scripts/declared_fsky_sign_battery.py",
+      "bytes": 8106,
+      "sha256": "64a83f7373772f1df74ebc05099b7735a1306225f2e767103d769f8e016048d8"
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/scripts/checkpoint_io.py",
+      "bytes": 3727,
+      "sha256": "bab42f8d109d51b609c8925b983c6c1335f01c4bc12e9293d8f8fefbe6dfe08a"
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/scripts/merge_c10_partials.py",
+      "bytes": 6523,
+      "sha256": "e4719c4ce996df3be5b77844aae745a23a7e889a0cbba881f27db3d0d7404f70"
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/scripts/test_windowed_rotation.py",
+      "bytes": 1917,
+      "sha256": "ddb312d1c13389d4b8b39ef71d8a5daf6d4bc55a049e1c6f98272de74c1a1b72"
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/scripts/test_realization_parallel.py",
+      "bytes": 2626,
+      "sha256": "2a0edc9503d5670769623386222690d4e3e81615b4415922c5987c484ccc804e"
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/scripts/plot_exact_window_results.py",
+      "bytes": 4176,
+      "sha256": "9332e2114ba26ee2c4a45e9e3fe03c2a2cf55414988d489c7dad87c5e9e131cd"
+    },
+    {
+      "path": "arxiv/figures/fig_namaster_recovery.png",
+      "bytes": 161857,
+      "sha256": "b46f7a5635fc994d396409ce33c59c13d5d1002fe9dd6627dbd5ac35991c1510"
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/exact_window_500mc/summary.json",
+      "bytes": 1601,
+      "sha256": "d5c7e68809492b64d1b088d91f04d42354707fcb17fc94f634b2c9cb5d334941"
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/exact_window_500mc/RUN_NOTES.md",
+      "bytes": 3966,
+      "sha256": "0bf67b15e615bbc5a91be7733eac8f2b033e039b9fe7d402f24f11857552e35f"
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/exact_window_500mc/bandpowers.npz",
+      "bytes": 233586,
+      "sha256": "d6c527e3c33362d3e4bca562935b4362428a01e0bf934da2e09e25ebfa98651a"
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/SUPERSEDED.md",
+      "bytes": 759,
+      "sha256": "9d3cdf6b14b874a74296b9c59e380aacec9f3998464e12ccb942f69c7aedc41b"
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/exact_window_500mc/shards/c10_canonical_refit.json",
+      "bytes": 1211,
+      "sha256": "932fb5b33fa57a0bd17272f82deab1a7ea89c41898bfb0bbe7c72384f73104da"
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/exact_window_500mc/shards/c10_canonical_refit.json.receipt.json",
+      "bytes": 679,
+      "sha256": "fd41fde75b14824e411dfc53cc4bf56668f5b66853dfe8e46ee426044be9fcd8"
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/exact_window_500mc/shards/c10_lensing_bb_camb.json",
+      "bytes": 1084,
+      "sha256": "7972938691186fe549e51c1cf9cd632c8b197247e96f27aadf9c08da20a9d2b9"
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/exact_window_500mc/shards/c10_lensing_bb_camb.json.receipt.json",
+      "bytes": 643,
+      "sha256": "13183078303477d72abbaa36f1835e5bd3ec2b1ca54b40ab519cad4445fea5ee"
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/exact_window_500mc/shards/c10_apod_fwhm_0p5.json",
+      "bytes": 1234,
+      "sha256": "fbbc9ac59cd38944176bea99fc71b9ee6b2ccaa1a59a2618b2ef942299c48b32"
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/exact_window_500mc/shards/c10_apod_fwhm_0p5.json.receipt.json",
+      "bytes": 789,
+      "sha256": "2fd5d5281da3a7ede96924aaac476dda10ed7e4937830171ede6be6671f19ad4"
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/exact_window_500mc/shards/c10_apod_fwhm_3p0.json",
+      "bytes": 1235,
+      "sha256": "949af8489e8e68eebce79890ac01f7fcfa4c518288aaebc59f9358f315c9e478"
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/exact_window_500mc/shards/c10_apod_fwhm_3p0.json.receipt.json",
+      "bytes": 790,
+      "sha256": "31cddc11fbd4bcf85009a2c45630f6ff9adef9a7037f9ef7a986b14c36626a55"
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/exact_window_500mc/shards/c10_mask_b30.json",
+      "bytes": 1229,
+      "sha256": "83b42830dedc74ca4bbe0078eb6115ce86332c3b55e765b9932b8b5b4c36a8a1"
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/exact_window_500mc/shards/c10_mask_b30.json.receipt.json",
+      "bytes": 773,
+      "sha256": "fe03b9f3697425f3ba74df00e4b2ca5c074c229a7b03dba391255faddc9ed7d6"
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/exact_window_500mc/shards/c10_purify_b.json",
+      "bytes": 1230,
+      "sha256": "208d168546c73f5521e96ead1c2be211534a21f2096fac45647f6d5999f02e7f"
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/exact_window_500mc/shards/c10_purify_b.json.receipt.json",
+      "bytes": 860,
+      "sha256": "d75bbd6f2f9e94565c58cfa0ad5a7449efd4480e6747fded95aa9e280a6296f5"
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/exact_window_500mc/shards/declared_fsky_0p85.json",
+      "bytes": 1021,
+      "sha256": "d1f87ebc580bd2b9acbe3509cff5aa6449a9910db7b2967c24a0e466ee3ff456"
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/exact_window_500mc/shards/declared_fsky_0p85.json.receipt.json",
+      "bytes": 723,
+      "sha256": "db39304fdfefab26237ad280ebafe62a3a1ea1d35b439c07838414e4c5ff7be2"
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/exact_window_500mc/shards/declared_fsky_0p65.json",
+      "bytes": 1042,
+      "sha256": "ff549f997d27ee64ec1b475069a5bf9fc50b81eb91af16a3488063299eaa443f"
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/exact_window_500mc/shards/declared_fsky_0p65.json.receipt.json",
+      "bytes": 724,
+      "sha256": "360fcf7044bb786021b822561e6004a1aace14f86397a10d5f6aff108b6d8cfb"
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/exact_window_500mc/shards/declared_negative_beta_fsky_0p32.json",
+      "bytes": 1037,
+      "sha256": "626199121860c4bbb0fe6a172a0a728861bdd7560ad3d957034d78eddfde3870"
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/exact_window_500mc/shards/declared_negative_beta_fsky_0p32.json.receipt.json",
+      "bytes": 767,
+      "sha256": "0de1dce200fd63bb8bb210ac22c8d737556c1b5f860e8440da0420939976e5ca"
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/exact_window_500mc/c10_robustness_battery.json",
+      "bytes": 7019,
+      "sha256": "400bbd3454a491882007a514dee118e7fe806f83c5c2850cabad4e478037feb7"
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/exact_window_500mc/c10_robustness_battery.json.receipt.json",
+      "bytes": 950,
+      "sha256": "a9c3ca688eef9661a2f77084790d1e1e4dc41ed877ba1eba2445dc4c64e0501f"
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/exact_window_500mc/declared_fsky_sign_battery.json",
+      "bytes": 3063,
+      "sha256": "ff16398c72c6414c3bd83984729051bf7b09c02091283cf24486034ef4613000"
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/exact_window_500mc/declared_fsky_sign_battery.json.receipt.json",
+      "bytes": 698,
+      "sha256": "2ee5f536f507805f87b3f20703bb4801c15c30cb9a6f9debc6d84edb4a92dd69"
+    },
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/c5_table_iv_recompute.py",
+      "bytes": 6245,
+      "sha256": "90e94c59179f73374ef6aee05a01610055293402a6b1c7e21712969ebc343bca"
+    },
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/c5_table_iv_recompute.json",
+      "bytes": 7170,
+      "sha256": "0903cdd37ce75a2bf0065e8d4acff3391d252b1221568c1b30c36343c7663cb0"
+    },
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/chains/c5_continuous/c5.1.txt",
+      "bytes": 559680,
+      "sha256": "56bfee710e3866ba14661fcaa7ce39278e08f621a0854812c068ea7b95cc9f39"
+    },
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/chains/c5_continuous/c5.2.txt",
+      "bytes": 489840,
+      "sha256": "97daa32fafdaf31e387d91b4da648429f4fef7df452dc04791a4a6080eb6e7b9"
+    },
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/chains/c5_continuous/c5.3.txt",
+      "bytes": 500400,
+      "sha256": "50ec649d3fa2157d8e0abdaf88305016244189585a4a156e4f66d350232932b8"
+    },
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/chains/c5_continuous/c5.4.txt",
+      "bytes": 600240,
+      "sha256": "d489e88f50b9636712481e5712d395493d3506a30e546168bf3a9251cbd601e4"
+    },
+    {
+      "path": "reproducibility/cosmology/chains/w0wa_quintom_desi_dr2/c15_converged/c15_summary.json",
+      "bytes": 2258,
+      "sha256": "69df51edfdc526b94a4fccf5b1cd895fa1ac781d26b321915e2606c8436a19cc"
+    }
+  ]
+}

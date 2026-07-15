@@ -1,0 +1,259 @@
+{
+  "schema_version": 1,
+  "source": "c5_continuous fixed-background surrogate chain",
+  "interpretation": "subset fractions are likelihood-weighted selection frequencies in the fixed-background surrogate chain, not physical posterior probabilities",
+  "h0_eV_for_m_over_H0": 1.44e-33,
+  "ess": {
+    "marker": "beta_deg",
+    "method": "integer-weight expansion; per-chain FFT ACF; Sokal automatic window c=5; sum per-chain N/tau",
+    "subset_ordering": "filter rows first, preserve within-chain order, then expand integer weights"
+  },
+  "inputs": [
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/chains/c5_continuous/c5.1.txt",
+      "sha256": "56bfee710e3866ba14661fcaa7ce39278e08f621a0854812c068ea7b95cc9f39"
+    },
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/chains/c5_continuous/c5.2.txt",
+      "sha256": "97daa32fafdaf31e387d91b4da648429f4fef7df452dc04791a4a6080eb6e7b9"
+    },
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/chains/c5_continuous/c5.3.txt",
+      "sha256": "50ec649d3fa2157d8e0abdaf88305016244189585a4a156e4f66d350232932b8"
+    },
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/chains/c5_continuous/c5.4.txt",
+      "sha256": "d489e88f50b9636712481e5712d395493d3506a30e546168bf3a9251cbd601e4"
+    }
+  ],
+  "subsets": {
+    "full": {
+      "raw_samples": 8955,
+      "expanded_weight": 82754,
+      "raw_fraction": 1.0,
+      "surrogate_chain_weight_fraction": 1.0,
+      "beta_deg": {
+        "mean": 0.3262879182496852,
+        "std": 0.09898529737534624,
+        "q16_q50_q84": [
+          0.23045045614285717,
+          0.330281121,
+          0.4220990286909091
+        ]
+      },
+      "m_over_H0_q16_q50_q84": [
+        1.707989664353074,
+        13.174152893636265,
+        196.65465167876607
+      ],
+      "theta_i_q16_q50_q84": [
+        0.32146888871304347,
+        0.9670291734615385,
+        2.164947502
+      ],
+      "C_agamma_q16_q50_q84": [
+        7.341836658322581,
+        20.74295088888889,
+        45.632084645423724
+      ],
+      "ess_beta_deg": 2948.8209738668816,
+      "ess_per_chain": [
+        {
+          "expanded_samples": 21684,
+          "tau": 26.407046114798444,
+          "window_lag": 133,
+          "ess": 821.1444743093905
+        },
+        {
+          "expanded_samples": 19274,
+          "tau": 24.705937183528842,
+          "window_lag": 124,
+          "ess": 780.1363638554764
+        },
+        {
+          "expanded_samples": 19809,
+          "tau": 37.67132237205889,
+          "window_lag": 189,
+          "ess": 525.8376598611916
+        },
+        {
+          "expanded_samples": 21987,
+          "tau": 26.757860230981265,
+          "window_lag": 134,
+          "ess": 821.7024758408229
+        }
+      ]
+    },
+    "omega_a_lt_0p1": {
+      "raw_samples": 4286,
+      "expanded_weight": 36451,
+      "raw_fraction": 0.4786152987158012,
+      "surrogate_chain_weight_fraction": 0.44047417647485315,
+      "beta_deg": {
+        "mean": 0.3147104949158445,
+        "std": 0.10257813550733053,
+        "q16_q50_q84": [
+          0.2193258135857143,
+          0.3190921551515151,
+          0.4143527382666667
+        ]
+      },
+      "m_over_H0_q16_q50_q84": [
+        4.7035026748466855,
+        37.777189874372546,
+        264.4762541334488
+      ],
+      "theta_i_q16_q50_q84": [
+        0.21542573666046513,
+        0.40927896424242427,
+        0.6986850475157895
+      ],
+      "C_agamma_q16_q50_q84": [
+        14.227853626666668,
+        26.208199636363638,
+        46.412911959999995
+      ],
+      "ess_beta_deg": 1596.8380841380538,
+      "ess_per_chain": [
+        {
+          "expanded_samples": 8764,
+          "tau": 27.299899340163247,
+          "window_lag": 137,
+          "ess": 321.02682470724426
+        },
+        {
+          "expanded_samples": 8799,
+          "tau": 18.90705758929854,
+          "window_lag": 95,
+          "ess": 465.38177389274284
+        },
+        {
+          "expanded_samples": 8945,
+          "tau": 26.41131418211073,
+          "window_lag": 133,
+          "ess": 338.68061007198
+        },
+        {
+          "expanded_samples": 9943,
+          "tau": 21.07689178946392,
+          "window_lag": 106,
+          "ess": 471.74887546608664
+        }
+      ]
+    },
+    "omega_a_lt_0p01": {
+      "raw_samples": 1099,
+      "expanded_weight": 11074,
+      "raw_fraction": 0.12272473478503629,
+      "surrogate_chain_weight_fraction": 0.13381830485535443,
+      "beta_deg": {
+        "mean": 0.2759481887101075,
+        "std": 0.09879893024939179,
+        "q16_q50_q84": [
+          0.18638218035,
+          0.28408746,
+          0.3652032011111111
+        ]
+      },
+      "m_over_H0_q16_q50_q84": [
+        5.987044313325559,
+        40.73891965802864,
+        239.01107318693604
+      ],
+      "theta_i_q16_q50_q84": [
+        0.148854058,
+        0.21086190157894735,
+        0.2671880740756757
+      ],
+      "C_agamma_q16_q50_q84": [
+        29.88654827259259,
+        43.305460124999996,
+        54.139044012
+      ],
+      "ess_beta_deg": 485.0439427138306,
+      "ess_per_chain": [
+        {
+          "expanded_samples": 2863,
+          "tau": 32.774512140680926,
+          "window_lag": 164,
+          "ess": 87.3544658029048
+        },
+        {
+          "expanded_samples": 2466,
+          "tau": 22.17918028671579,
+          "window_lag": 112,
+          "ess": 111.18535347661201
+        },
+        {
+          "expanded_samples": 2787,
+          "tau": 19.576098811414976,
+          "window_lag": 99,
+          "ess": 142.36748735528852
+        },
+        {
+          "expanded_samples": 2958,
+          "tau": 20.522193943656543,
+          "window_lag": 103,
+          "ess": 144.1366360790253
+        }
+      ]
+    },
+    "theta_i_le_0p1": {
+      "raw_samples": 42,
+      "expanded_weight": 271,
+      "raw_fraction": 0.004690117252931323,
+      "surrogate_chain_weight_fraction": 0.00327476617444474,
+      "beta_deg": {
+        "mean": 0.11723081419408264,
+        "std": 0.04658238693354931,
+        "q16_q50_q84": [
+          0.074882957008,
+          0.13068271777777776,
+          0.163071490488
+        ]
+      },
+      "m_over_H0_q16_q50_q84": [
+        4.706647665422399,
+        41.53165820331163,
+        194.138601834764
+      ],
+      "theta_i_q16_q50_q84": [
+        0.060995728024,
+        0.08258277631034482,
+        0.096069546864
+      ],
+      "C_agamma_q16_q50_q84": [
+        36.81975698,
+        47.17803128205128,
+        55.63576284
+      ],
+      "ess_beta_deg": 95.36607069058161,
+      "ess_per_chain": [
+        {
+          "expanded_samples": 24,
+          "tau": 2.113073320013063,
+          "window_lag": 12,
+          "ess": 11.35786428833034
+        },
+        {
+          "expanded_samples": 64,
+          "tau": 2.991828521866241,
+          "window_lag": 15,
+          "ess": 21.391600331451524
+        },
+        {
+          "expanded_samples": 48,
+          "tau": 1.0,
+          "window_lag": 7,
+          "ess": 48.0
+        },
+        {
+          "expanded_samples": 135,
+          "tau": 9.236070216717104,
+          "window_lag": 47,
+          "ess": 14.616606070799751
+        }
+      ]
+    }
+  }
+}
