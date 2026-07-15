@@ -43,6 +43,7 @@ CODEX_ENABLED="${BIGBOUNCE_CODEX_SUBSCRIPTION_ENABLED:-1}"
 CODEX_BIN="${BIGBOUNCE_CODEX_BIN:-$(command -v codex 2>/dev/null || { [ -x /opt/homebrew/bin/codex ] && printf '%s' /opt/homebrew/bin/codex; })}"
 CODEX_MODEL="${BIGBOUNCE_CODEX_MODEL:-gpt-5.6-sol}"
 CODEX_EFFORT="${BIGBOUNCE_CODEX_EFFORT:-high}"
+REVIEW_COMMIT="${INT_REVIEW_COMMIT:-$(git -C "$REPO" rev-parse HEAD)}"
 
 die() { echo "FAIL: $*" >&2; exit 1; }
 
@@ -105,19 +106,113 @@ if [ -n "$CONTEXT" ]; then
 CONTEXT NOTE for this review: $CONTEXT"
 fi
 
+# Freeze one content-addressed packet before any provider can launch. The API
+# legs independently rebuild the same binding; the Codex subscription leg gets
+# this packet's immutable PDF snapshot and a clean detached source tree at the
+# packet HEAD. The packet hashes the canonical prompt above plus its allowed
+# context; the binding appendix added below is metadata, not unhashed review
+# instruction.
+PACKET_PROMPT="$(mktemp "${TMPDIR:-/tmp}/bigbounce-int-prompt.XXXXXX")"
+PACKET_CONTEXT="$(mktemp "${TMPDIR:-/tmp}/bigbounce-int-context.XXXXXX")"
+PACKET_JSON="$(mktemp "${TMPDIR:-/tmp}/bigbounce-int-packet.XXXXXX")"
+CODEX_TREE=""
+cleanup() {
+  if [ -n "$CODEX_TREE" ] && [ -d "$CODEX_TREE" ]; then
+    git -C "$REPO" worktree remove --force "$CODEX_TREE" >/dev/null 2>&1 || true
+  fi
+  rm -f "$PACKET_PROMPT" "$PACKET_CONTEXT" "$PACKET_JSON"
+}
+trap cleanup EXIT INT TERM
+printf '%s\n' "$CODEX_PROMPT" >"$PACKET_PROMPT"
+printf '%s' "$CONTEXT" >"$PACKET_CONTEXT"
+
+PACKET_ARGS=("$PAPER" --prompt-file "$PACKET_PROMPT" --context-file "$PACKET_CONTEXT" \
+  --model "$CODEX_MODEL" --effort "$CODEX_EFFORT")
+[ -n "${INT_EXPECTED_PDF_SHA256:-}" ] && PACKET_ARGS+=(--expected-pdf-sha "$INT_EXPECTED_PDF_SHA256")
+python3 "$REPO/tools/review_packet.py" "${PACKET_ARGS[@]}" >"$PACKET_JSON" \
+  || die "could not build exact Codex review packet"
+
+IFS=$'\t' read -r PACKET_KEY PROMPT_SHA PDF_SHA PDF_PAGES PACKET_HEAD SOURCE_SHA SNAPSHOT_REL \
+  < <(python3 - "$PACKET_JSON" <<'PY'
+import json, sys
+p = json.load(open(sys.argv[1], encoding="utf-8"))["packet"]
+print("\t".join(str(p[k]) for k in (
+    "packet_key", "prompt_sha256", "pdf_sha256", "page_count",
+    "repository_head", "source_sha256", "pdf_snapshot_path",
+)))
+PY
+)
+[ -n "$PACKET_KEY" ] || die "empty review packet binding"
+[ "$PACKET_HEAD" = "$REVIEW_COMMIT" ] \
+  || die "review commit mismatch: expected $REVIEW_COMMIT, packet binds $PACKET_HEAD"
+SNAPSHOT_ABS="$(python3 - "${BIGBOUNCE_REVIEW_CACHE:-$HOME/.cache/bigbounce/review-packets}" "$SNAPSHOT_REL" <<'PY'
+import pathlib, sys
+print((pathlib.Path(sys.argv[1]).expanduser() / sys.argv[2]).resolve())
+PY
+)"
+
+CODEX_PROMPT="$CODEX_PROMPT
+
+IMMUTABLE REVIEW BINDING (mandatory):
+- packet_key: $PACKET_KEY
+- prompt_sha256: $PROMPT_SHA
+- repository_head: $PACKET_HEAD
+- source_sha256: $SOURCE_SHA
+- exact_pdf_snapshot: $SNAPSHOT_ABS
+- pdf_sha256: $PDF_SHA
+- pdf_pages: $PDF_PAGES
+- target_journal: $TARGET_JOURNAL
+- article_type: $ARTICLE_TYPE
+Treat the exact PDF snapshot above as the manuscript of record. Use the clean
+detached source tree only to inspect source and committed supporting artifacts.
+Do not substitute a working-tree PDF or any differently hashed manuscript."
+
 case "$CODEX_ENABLED" in 0|1) ;; *) die "BIGBOUNCE_CODEX_SUBSCRIPTION_ENABLED must be 0 or 1" ;; esac
 case "$CODEX_EFFORT" in minimal|low|medium|high|xhigh|max|ultra) ;; *) die "BIGBOUNCE_CODEX_EFFORT must be minimal|low|medium|high|xhigh|max|ultra" ;; esac
 
-# No-launch validation path: no output directories, API calls, or agent sessions.
+# No-launch validation path: packet creation/hash verification is allowed, but
+# there are no API calls, agent sessions, output reviews, or detached worktrees.
 if [ "${BIGBOUNCE_INT_WAVE_DRY_RUN:-0}" = "1" ]; then
   LOGIN="unavailable"
   if [ -n "$CODEX_BIN" ]; then LOGIN="$(env -u OPENAI_API_KEY -u CODEX_API_KEY -u ANTHROPIC_API_KEY "$CODEX_BIN" login status 2>&1 || true)"; fi
-  printf 'DRY_RUN paper=%s version=%s codex_enabled=%s model=%s effort=%s sandbox=read-only auth=%s\n' \
+  printf 'DRY_RUN paper=%s version=%s dispatch=false codex_enabled=%s model=%s effort=%s sandbox=read-only auth=%s\n' \
     "$PAPER" "$VER" "$CODEX_ENABLED" "$CODEX_MODEL" "$CODEX_EFFORT" "$LOGIN"
+  printf 'BINDING packet_key=%s prompt_sha256=%s commit=%s source_sha256=%s pdf_sha256=%s pages=%s venue=%s article_type=%s source_tree=detached-clean\n' \
+    "$PACKET_KEY" "$PROMPT_SHA" "$PACKET_HEAD" "$SOURCE_SHA" "$PDF_SHA" "$PDF_PAGES" \
+    "$TARGET_JOURNAL" "$ARTICLE_TYPE"
   exit 0
 fi
 
 mkdir -p "$SUBSCRIPTION_OUTDIR"
+
+# ---------------------------------------------------------------------------
+# Validate subscription auth and prepare the clean tree before any provider
+# launches. This prevents an API leg from escaping if Codex provenance setup
+# fails closed.
+# ---------------------------------------------------------------------------
+
+CODEX_ON=0
+CODEX_STATE="DISABLED"
+if [ "$CODEX_ENABLED" = 1 ] && [ -n "$CODEX_BIN" ]; then
+  CODEX_LOGIN="$(env -u OPENAI_API_KEY -u CODEX_API_KEY -u ANTHROPIC_API_KEY "$CODEX_BIN" login status 2>&1 || true)"
+  if printf '%s' "$CODEX_LOGIN" | grep -q 'Logged in using ChatGPT'; then
+    CODEX_ON=1
+    CODEX_STATE="ENABLED"
+  else
+    CODEX_STATE="AUTH-UNAVAILABLE"
+  fi
+elif [ "$CODEX_ENABLED" = 1 ]; then
+  CODEX_STATE="CLI-UNAVAILABLE"
+fi
+
+if [ "$CODEX_ON" = 1 ]; then
+  CODEX_TREE="$(mktemp -d "${TMPDIR:-/tmp}/bigbounce-codex-tree.XXXXXX")"
+  rmdir "$CODEX_TREE"
+  git -C "$REPO" worktree add --quiet --detach "$CODEX_TREE" "$PACKET_HEAD" \
+    || die "could not create clean detached Codex source tree at $PACKET_HEAD"
+  [ -z "$(git -C "$CODEX_TREE" status --porcelain)" ] \
+    || die "detached Codex source tree is unexpectedly dirty"
+fi
 
 # ---------------------------------------------------------------------------
 # Launch the API and subscription legs in parallel; capture PIDs; wait on all.
@@ -145,26 +240,17 @@ fi
 
 # (c) Codex ChatGPT-subscription leg. Never source .env.local here. The fixed
 #     read-only sandbox + never-approve policy makes this a referee, not an editor.
-CODEX_ON=0
-CODEX_STATE="DISABLED"
-if [ "$CODEX_ENABLED" = 1 ] && [ -n "$CODEX_BIN" ]; then
-  CODEX_LOGIN="$(env -u OPENAI_API_KEY -u CODEX_API_KEY -u ANTHROPIC_API_KEY "$CODEX_BIN" login status 2>&1 || true)"
-  if printf '%s' "$CODEX_LOGIN" | grep -q 'Logged in using ChatGPT'; then
-    CODEX_ON=1
-    CODEX_STATE="ENABLED"
-  else
-    CODEX_STATE="AUTH-UNAVAILABLE"
-  fi
-elif [ "$CODEX_ENABLED" = 1 ]; then
-  CODEX_STATE="CLI-UNAVAILABLE"
-fi
-
 if [ "$CODEX_ON" = 1 ]; then
 (
   {
     echo "# INT Codex-subscription Review — $PAPER $VER — $CODEX_MODEL ($CODEX_EFFORT)"
     echo "paper: $PAPER  version: $VER  tex: $TEX_REL"
     echo "modality: full-repo Codex CLI ChatGPT-subscription referee (read-only, ephemeral)"
+    echo "binding: packet_key=$PACKET_KEY  prompt_sha256=$PROMPT_SHA"
+    echo "provenance: commit=$PACKET_HEAD  source_sha256=$SOURCE_SHA"
+    echo "pdf: snapshot=$SNAPSHOT_ABS  sha256=$PDF_SHA  pages=$PDF_PAGES"
+    echo "venue: $TARGET_JOURNAL  article_type: $ARTICLE_TYPE  profile: $REVIEW_PROFILE"
+    echo "source_tree: clean detached worktree at $PACKET_HEAD"
     echo "UTC: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
     [ -n "$CONTEXT" ] && echo "context-note: $CONTEXT"
     echo ""
@@ -174,7 +260,7 @@ if [ "$CODEX_ON" = 1 ]; then
     echo ""
     RAW_TMP="$(mktemp "${TMPDIR:-/tmp}/bigbounce-codex-review.XXXXXX")"
     if printf '%s\n' "$CODEX_PROMPT" | env -u OPENAI_API_KEY -u CODEX_API_KEY -u ANTHROPIC_API_KEY \
-      "$CODEX_BIN" --cd "$REPO" --sandbox read-only --ask-for-approval never \
+      "$CODEX_BIN" --cd "$CODEX_TREE" --sandbox read-only --ask-for-approval never \
         --model "$CODEX_MODEL" -c "model_reasoning_effort=\"$CODEX_EFFORT\"" \
         exec --ephemeral --ignore-user-config \
         --color never --output-last-message "$RAW_TMP" - \

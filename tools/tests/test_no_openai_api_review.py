@@ -50,6 +50,50 @@ def load_script(name: str):
 
 
 class NoOpenAIAPIReviewTests(unittest.TestCase):
+    def test_int_wave_codex_subscription_is_exact_packet_bound(self):
+        source = (TOOLS / "int_wave.sh").read_text(encoding="utf-8")
+        for binding in (
+            "packet_key=$PACKET_KEY", "prompt_sha256=$PROMPT_SHA",
+            "commit=$PACKET_HEAD", "source_sha256=$SOURCE_SHA",
+            "sha256=$PDF_SHA", "pages=$PDF_PAGES", "$TARGET_JOURNAL",
+            "$ARTICLE_TYPE", "source_tree: clean detached worktree",
+        ):
+            self.assertIn(binding, source)
+        self.assertIn('worktree add --quiet --detach "$CODEX_TREE" "$PACKET_HEAD"', source)
+        self.assertIn('"$CODEX_BIN" --cd "$CODEX_TREE" --sandbox read-only', source)
+        self.assertIn("dispatch=false", source)
+
+    def test_int_wave_dry_run_prints_exact_bindings_without_dispatch(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            codex = root / "codex"
+            codex.write_text("#!/bin/sh\necho 'Logged in using ChatGPT'\n", encoding="utf-8")
+            codex.chmod(0o755)
+            pdf = ROOT / "arxiv/paper1b_mcmc_companion.pdf"
+            import hashlib
+            expected = hashlib.sha256(pdf.read_bytes()).hexdigest()
+            env = dict(os.environ)
+            env.update({
+                "BIGBOUNCE_INT_WAVE_DRY_RUN": "1",
+                "BIGBOUNCE_CODEX_BIN": str(codex),
+                "BIGBOUNCE_REVIEW_CACHE": str(root / "cache"),
+                "INT_EXPECTED_PDF_SHA256": expected,
+                "INT_REVIEW_COMMIT": subprocess.check_output(
+                    ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True,
+                ).strip(),
+            })
+            run = subprocess.run(
+                ["bash", str(TOOLS / "int_wave.sh"), "P1B"], cwd=ROOT,
+                env=env, capture_output=True, text=True, timeout=30, check=False,
+            )
+            self.assertEqual(run.returncode, 0, run.stderr)
+            self.assertIn("dispatch=false", run.stdout)
+            self.assertIn(f"pdf_sha256={expected}", run.stdout)
+            self.assertRegex(run.stdout, r"packet_key=[0-9a-f]{64}")
+            self.assertRegex(run.stdout, r"prompt_sha256=[0-9a-f]{64}")
+            self.assertIn("source_tree=detached-clean", run.stdout)
+            self.assertNotIn("launched:", run.stdout)
+
     def test_xai_response_parsing_builds_allowlisted_receipt(self):
         module = load_script("int_api_review_2026-07-08.py")
         upload = mock.Mock(status_code=200, text="")
