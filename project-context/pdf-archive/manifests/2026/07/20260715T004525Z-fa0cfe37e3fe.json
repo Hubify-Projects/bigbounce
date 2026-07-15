@@ -1,0 +1,73 @@
+{
+  "build_command": "TinyTeX pdflatex x4; anti-loop stop-rule bounded pp23-24 wording closure",
+  "captured_at_local": "2026-07-14T17:45:25.399439-07:00",
+  "captured_at_utc": "2026-07-15T00:45:25.399439+00:00",
+  "complete_six_paper_snapshot": false,
+  "git_head": "a745b6ac4d4f951462fc4e7e2135843d831be613",
+  "legacy_recovery": [
+    {
+      "head_blob": "676e828200a7f405523ca7b4eec4a869696c216e",
+      "historical_deletion_events": [
+        "a842cff7bdb7c47d204b4e378be2e6332ece10a0 2026-04-17T18:31:00-07:00"
+      ],
+      "index_dirty": false,
+      "overall_dirty": false,
+      "path": "arxiv/paper3_anomaly_catalog.pdf",
+      "present": true,
+      "tracked": true,
+      "worktree_dirty": false
+    },
+    {
+      "head_blob": "9df9499de26d0fe2428e7b546be93fa93d60eae4",
+      "historical_deletion_events": [
+        "a842cff7bdb7c47d204b4e378be2e6332ece10a0 2026-04-17T18:31:00-07:00"
+      ],
+      "index_dirty": false,
+      "overall_dirty": false,
+      "path": "arxiv/paper4_chirality_catalog.pdf",
+      "present": true,
+      "tracked": true,
+      "worktree_dirty": false
+    },
+    {
+      "head_blob": "b91b61ce68f9f9083bd1464f501781ef6a9dbce7",
+      "historical_deletion_events": [
+        "6fbc67eee76098ae6699ac7025f74cb93d2c7a62 2026-04-28T11:29:23-07:00"
+      ],
+      "index_dirty": false,
+      "overall_dirty": false,
+      "path": "public/papers/anomaly_catalog_paper.pdf",
+      "present": true,
+      "tracked": true,
+      "worktree_dirty": false
+    }
+  ],
+  "manifest_path": "project-context/pdf-archive/manifests/2026/07/20260715T004525Z-fa0cfe37e3fe.json",
+  "papers": [
+    {
+      "archive_object": "project-context/pdf-archive/objects/sha256/db/db18dd937f5d45399636548aeb75c6f9e922ddef13895ff72dec7a4e9a668764.pdf",
+      "archive_reference": "project-context/pdf-archive/refs/P5/P5__v0.1.133-2026-07-14__2026-07-14T174525-0700-PDT__db18dd937f5d.pdf",
+      "git": {
+        "head_blob": "63b8f9a079befe6dc3401d121be936a3e82b969d",
+        "index_dirty": false,
+        "overall_dirty": true,
+        "tracked": true,
+        "worktree_dirty": true
+      },
+      "md5": "bc0073a6baf681cdbe4a463ac1b6faf8",
+      "object_created": true,
+      "page_count": 39,
+      "paper_id": "P5",
+      "paper_version": "v0.1.133-2026-07-14",
+      "reference_created": true,
+      "sha256": "db18dd937f5d45399636548aeb75c6f9e922ddef13895ff72dec7a4e9a668764",
+      "size_bytes": 1510732,
+      "source_mtime_ns": 1784075998617142956,
+      "source_pdf": "pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf",
+      "source_tex": "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex"
+    }
+  ],
+  "review_round": "ROUND_2026-07-14-P5-v0.1.132-EXACTPDF-4b04d2fc-AJ-CODEX-SUBSCRIPTION-CONFIRM/v0.1.133-stop-rule-closure",
+  "run_id": "fa0cfe37e3fe",
+  "schema": "bigbounce-pdf-retention/v3"
+}
