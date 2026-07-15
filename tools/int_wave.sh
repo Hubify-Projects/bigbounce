@@ -33,7 +33,10 @@ SCRIPT_DIR="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)"
 REPO="$(cd "$SCRIPT_DIR/.." && pwd)"
 REGISTRY="$REPO/tools/paper_registry.py"
 PY_REVIEW="$REPO/tools/int_api_review_2026-07-08.py"
-API_OUTDIR="$REPO/project-context/peer-reviews/INT_v3/ROUND_2026-07-09"
+# Match the Python review dispatcher's INT_OUTDIR override.  Exact-PDF
+# confirmation waves must be able to write to a content-addressed round
+# directory instead of overwriting the legacy rolling files.
+API_OUTDIR="${INT_OUTDIR:-$REPO/project-context/peer-reviews/INT_v3/ROUND_2026-07-09}"
 SUBSCRIPTION_OUTDIR="$REPO/project-context/peer-reviews/INT_api/H17_2026-07-10"
 RUNLOG="$SUBSCRIPTION_OUTDIR/run.log"
 CODEX_ENABLED="${BIGBOUNCE_CODEX_SUBSCRIPTION_ENABLED:-1}"
