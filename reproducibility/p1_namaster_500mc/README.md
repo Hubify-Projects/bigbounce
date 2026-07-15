@@ -123,6 +123,25 @@ mixed-operator, mixed-software, wrong-ensemble, or failed-equivalence inputs.
 Merged outputs record every child SHA-256 and are themselves written
 atomically.
 
+## Zero-spend RunPod production preflight
+
+`runpod_production_contract.json` freezes the container, PyMaster build recipe,
+one canonical command, eight independently receipted robustness commands,
+output paths, and merge acceptance gates. Generate a manifest against an exact
+clean commit (the API key is checked but never printed or stored):
+
+```bash
+RUNPOD_API_KEY=... python scripts/prepare_runpod_production.py \
+  --expected-commit "$(git rev-parse HEAD)" --manifest /tmp/p1b-runpod-manifest.json
+```
+
+This is deliberately a **manifest-only, zero-spend** operation. The default
+never launches anything. Even `--launch` fails closed after requiring both a
+positive `--max-budget-usd` and the literal confirmation
+`LAUNCH-P1B-500MC`, because provider mutation is not implemented in this
+contract. A separate budget-enforcing launcher must be independently reviewed
+before use. Tests never contact RunPod.
+
 ## Determinism and numerical checks
 
 - Every configuration uses exactly 500 seeds, `42, 43, ..., 541`.

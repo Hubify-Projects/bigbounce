@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "contract_id": "p1b-physical-spectrum-500mc-v2",
+  "provider": "runpod",
+  "mutation_policy": "manifest-only; this repository contract does not create pods",
+  "container": {
+    "image": "runpod/pytorch:2.8.0-py3.11-cuda12.8.1-cudnn-devel-ubuntu22.04",
+    "runtime": "Ubuntu 22.04, Python 3.11, CUDA 12.8; CPU-bound healpy/NaMaster workload",
+    "install": [
+      "apt-get update",
+      "DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends build-essential git autoconf automake libtool pkg-config libgsl-dev libfftw3-dev libcfitsio-dev",
+      "python -m pip install --upgrade pip setuptools wheel",
+      "python -m pip install -r reproducibility/p1_namaster_500mc/requirements.txt",
+      "python -c 'import camb, healpy, pymaster; assert camb.__version__ == \"1.6.6\"; print(\"scientific runtime imports verified\")'"
+    ]
+  },
+  "required_tracked_inputs": [
+    "reproducibility/p1_namaster_500mc/runpod_production_contract.json",
+    "reproducibility/p1_namaster_500mc/requirements.txt",
+    "reproducibility/p1_namaster_500mc/scripts/checkpoint_io.py",
+    "reproducibility/p1_namaster_500mc/scripts/physical_spectra.py",
+    "reproducibility/p1_namaster_500mc/scripts/windowed_rotation.py",
+    "reproducibility/p1_namaster_500mc/scripts/namaster_500mc.py",
+    "reproducibility/p1_namaster_500mc/scripts/c10_robustness_battery.py",
+    "reproducibility/p1_namaster_500mc/scripts/declared_fsky_sign_battery.py",
+    "reproducibility/p1_namaster_500mc/scripts/merge_c10_partials.py",
+    "reproducibility/p1_namaster_500mc/scripts/prepare_runpod_production.py"
+  ],
+  "output_root": "reproducibility/p1_namaster_500mc/results/physical_spectrum_v2",
+  "canonical_command": "NAMASTER_NREAL=500 NAMASTER_OUTPUT_DIR=reproducibility/p1_namaster_500mc/results/physical_spectrum_v2 python reproducibility/p1_namaster_500mc/scripts/namaster_500mc.py",
+  "robustness_commands": [
+    "C10_NREAL=500 python reproducibility/p1_namaster_500mc/scripts/c10_robustness_battery.py --only-config canonical_refit",
+    "C10_NREAL=500 python reproducibility/p1_namaster_500mc/scripts/c10_robustness_battery.py --only-config apod_fwhm_0p5",
+    "C10_NREAL=500 python reproducibility/p1_namaster_500mc/scripts/c10_robustness_battery.py --only-config apod_fwhm_3p0",
+    "C10_NREAL=500 python reproducibility/p1_namaster_500mc/scripts/c10_robustness_battery.py --only-config mask_b30",
+    "C10_NREAL=500 python reproducibility/p1_namaster_500mc/scripts/c10_robustness_battery.py --only-config purify_b",
+    "DECLARED_NREAL=500 python reproducibility/p1_namaster_500mc/scripts/declared_fsky_sign_battery.py --only-config fsky_0p85",
+    "DECLARED_NREAL=500 python reproducibility/p1_namaster_500mc/scripts/declared_fsky_sign_battery.py --only-config fsky_0p65",
+    "DECLARED_NREAL=500 python reproducibility/p1_namaster_500mc/scripts/declared_fsky_sign_battery.py --only-config negative_beta_fsky_0p32"
+  ],
+  "merge_command": "python reproducibility/p1_namaster_500mc/scripts/merge_c10_partials.py",
+  "acceptance": {
+    "canonical_outputs": ["summary.json", "bandpowers.npz"],
+    "robustness_shards": 8,
+    "receipt_suffix": ".json.receipt.json",
+    "n_real": 500,
+    "seed_start": 42,
+    "seed_end": 541,
+    "theory_operator": "NmtWorkspace.get_bandpower_windows exact tensor contraction",
+    "window_equivalence_max_abs": 1e-10,
+    "merged_outputs": ["c10_robustness_battery.json", "declared_fsky_sign_battery.json"],
+    "rule": "Accept only after the strict merger validates all eight result/receipt pairs, exact configuration order, N/seeds/operator, software consistency, child SHA-256 values, and window-equivalence tolerance."
+  }
+}
