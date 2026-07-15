@@ -1,6 +1,20 @@
 import { mutation, query } from "./_generated/server";
 import { v } from "convex/values";
 
+/** Sort mixed human-readable and ISO datestamps newest-first. */
+function sortVersions<T extends { datestamp: string; createdAt?: number }>(vs: T[]): T[] {
+  return vs.sort((a, b) => {
+    const ta = Date.parse(a.datestamp);
+    const tb = Date.parse(b.datestamp);
+    if (!Number.isNaN(ta) && !Number.isNaN(tb) && ta !== tb) return tb - ta;
+    if (Number.isNaN(ta) || Number.isNaN(tb)) {
+      const d = b.datestamp.localeCompare(a.datestamp);
+      if (d !== 0) return d;
+    }
+    return (b.createdAt ?? 0) - (a.createdAt ?? 0);
+  });
+}
+
 // ──────────────────────────────────────────────────────────────────────
 // Paper-level CRUD
 // ──────────────────────────────────────────────────────────────────────
@@ -174,11 +188,7 @@ export const getPaperState = query({
       .query("paper_versions")
       .withIndex("by_paper", (q) => q.eq("paperSlug", args.slug))
       .collect();
-    versions.sort((a, b) => {
-      const d = b.datestamp.localeCompare(a.datestamp);
-      if (d !== 0) return d;
-      return (b.createdAt ?? 0) - (a.createdAt ?? 0);
-    });
+    sortVersions(versions);
     const currentVersion = versions[0] ?? null;
 
     const findings = await ctx.db
@@ -290,11 +300,7 @@ export const listAllPaperStates = query({
         .query("paper_versions")
         .withIndex("by_paper", (q) => q.eq("paperSlug", paper.slug))
         .collect();
-      versions.sort((a, b) => {
-        const d = b.datestamp.localeCompare(a.datestamp);
-        if (d !== 0) return d;
-        return (b.createdAt ?? 0) - (a.createdAt ?? 0);
-      });
+      sortVersions(versions);
       const currentVersion = versions[0] ?? null;
 
       const findings = await ctx.db
