@@ -219,11 +219,27 @@ has deleted the pod or stopped billing; the independent deletion watchdog and
 bounded live recovery drill below are still required.
 
 This closes the in-process implementation gap prospectively, but does not
-authorize any provider mutation. A process cannot protect itself from SIGKILL,
-host loss, or a prolonged network partition. An independently hosted crash-safe
-watchdog must consume the durable recovery ledger and enforce deletion before
-mutation can be enabled. `provider_mutation_ready` therefore remains false and
-launch still fails before any RunPod HTTP request.
+authorize any provider mutation. Before RunPod creation, the launcher now
+publishes a strict non-secret `P1B_RUNPOD_INTENT` repository variable through
+the GitHub API and reads the exact value back. The intent binds the full commit,
+deterministic pod name, conservative start time, deadline, hourly ceiling, and
+total budget outside the launching host. If publication or read-back fails,
+creation is refused. The launcher token is supplied only as
+`P1B_WATCHDOG_GITHUB_TOKEN`; it is never persisted or printed.
+
+`.github/workflows/p1b-runpod-watchdog.yml` runs independently every five
+minutes (and on manual dispatch). It reads the durable intent, finds the exact
+deterministic pod name, rejects conflicting commit metadata, and confirmed-
+deletes live pods at the deadline/budget ceiling or when live price is absent,
+invalid, or excessive. Duplicate live matches are also deleted fail-closed.
+Scheduled GitHub workflows can be delayed or dropped, so the container-local
+hard timeout remains a separate defense.
+
+The independent path is implemented but not operationally proven: this
+repository currently has no configured `RUNPOD_API_KEY` Actions secret, and no
+bounded live drill has demonstrated recovery after launcher SIGKILL. Therefore
+`provider_mutation_ready` remains false and launch still fails before RunPod
+HTTP. Static/mocked tests do not satisfy this gate.
 
 Until that exists and `provider_mutation_ready` is deliberately changed,
 even a fully confirmed command fails before provider HTTP:

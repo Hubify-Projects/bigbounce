@@ -21,6 +21,9 @@ import retain_remote_production as retention
 
 
 API_BASE = "https://rest.runpod.io/v1"
+GITHUB_API_BASE = "https://api.github.com"
+GITHUB_REPOSITORY = "Hubify-Projects/bigbounce"
+WATCHDOG_INTENT_VARIABLE = "P1B_RUNPOD_INTENT"
 CONFIRMATION = "LAUNCH-P1B-500MC-WITH-BUDGET-GUARD"
 POD_NAME_PREFIX = "p1b-physical-spectrum-500mc"
 CONTAINER_TIMEOUT_KILL_AFTER_SECONDS = 60
@@ -72,6 +75,56 @@ class RunPodREST:
 
     def stop_pod(self, pod_id: str):
         return self.request("POST", f"/pods/{pod_id}/stop", {})
+
+
+class GitHubActionsVariables:
+    """Publish non-secret durable watchdog intent outside the launching host."""
+
+    def __init__(self, token: str, repository: str = GITHUB_REPOSITORY,
+                 base: str = GITHUB_API_BASE):
+        if repository.count("/") != 1:
+            raise ValueError("GitHub repository must be OWNER/REPO")
+        self.token = token
+        self.repository = repository
+        self.base = base.rstrip("/")
+
+    def request(self, method: str, path: str, payload: dict | None = None):
+        body = None if payload is None else json.dumps(payload).encode()
+        request = urllib.request.Request(
+            self.base + path, data=body, method=method,
+            headers={
+                "Authorization": f"Bearer {self.token}",
+                "Accept": "application/vnd.github+json",
+                "X-GitHub-Api-Version": "2022-11-28",
+                "Content-Type": "application/json",
+            },
+        )
+        try:
+            with urllib.request.urlopen(request, timeout=30) as response:
+                raw = response.read()
+        except urllib.error.HTTPError as error:
+            raise ValueError(f"GitHub REST {method} {path} failed with HTTP {error.code}") from None
+        return json.loads(raw) if raw else {}
+
+    @property
+    def variable_path(self) -> str:
+        return f"/repos/{self.repository}/actions/variables/{WATCHDOG_INTENT_VARIABLE}"
+
+    def publish_and_verify(self, intent: dict) -> None:
+        encoded = json.dumps(intent, sort_keys=True, separators=(",", ":"))
+        try:
+            self.request("GET", self.variable_path)
+        except ValueError as error:
+            if "HTTP 404" not in str(error):
+                raise
+            self.request("POST", f"/repos/{self.repository}/actions/variables", {
+                "name": WATCHDOG_INTENT_VARIABLE, "value": encoded,
+            })
+        else:
+            self.request("PATCH", self.variable_path, {"name": WATCHDOG_INTENT_VARIABLE, "value": encoded})
+        observed = self.request("GET", self.variable_path)
+        if observed.get("name") != WATCHDOG_INTENT_VARIABLE or observed.get("value") != encoded:
+            raise ValueError("durable GitHub watchdog intent read-back mismatch")
 
 
 def pod_rows(response) -> list[dict]:
@@ -133,6 +186,28 @@ def append_receipt(path: Path, event: dict) -> None:
 
 def pod_name(commit: str) -> str:
     return f"{POD_NAME_PREFIX}-{commit[:12]}"
+
+
+def watchdog_intent(*, commit: str, created_not_before: dt.datetime,
+                    max_runtime_minutes: int, max_hourly_rate: float,
+                    max_total_budget: float) -> dict:
+    if len(commit) != 40 or any(character not in "0123456789abcdef" for character in commit):
+        raise ValueError("watchdog intent requires a lowercase full commit SHA")
+    if created_not_before.tzinfo is None:
+        raise ValueError("watchdog intent creation time must include a timezone")
+    if min(max_runtime_minutes, max_hourly_rate, max_total_budget) <= 0:
+        raise ValueError("watchdog intent ceilings must be positive")
+    started = created_not_before.astimezone(dt.timezone.utc)
+    return {
+        "schema": "p1b-runpod-watchdog-intent/v1",
+        "active": True,
+        "git_commit": commit,
+        "pod_name": pod_name(commit),
+        "created_not_before": started.isoformat(),
+        "deadline": (started + dt.timedelta(minutes=max_runtime_minutes)).isoformat(),
+        "max_hourly_rate_usd": max_hourly_rate,
+        "max_total_budget_usd": max_total_budget,
+    }
 
 
 def container_timeout_command(remote_argv: list[str], *, runtime_seconds: int,
@@ -221,7 +296,8 @@ def launch(*, client, manifest: dict, expected_commit: str, contract: dict, bala
            network_volume_id: str | None = None, datacenter_id: str | None = None,
            s3_client=None, retention_staging: Path | None = None,
            retention_receipt: Path | None = None, poll_seconds: int = 30,
-           recovery_path: Path | None = None, now_fn=utcnow, sleep_fn=time.sleep) -> dict:
+           recovery_path: Path | None = None, github_variables=None,
+           now_fn=utcnow, sleep_fn=time.sleep) -> dict:
     validate_manifest(manifest, expected_commit, contract)
     if contract.get("provider_mutation_ready") is not True:
         raise ValueError("contract provider_mutation_ready is false; refusing before RunPod HTTP")
@@ -240,6 +316,14 @@ def launch(*, client, manifest: dict, expected_commit: str, contract: dict, bala
     name = pod_name(expected_commit)
     if any(field(pod, "name") == name for pod in pod_rows(client.list_pods())):
         raise ValueError(f"refusing duplicate deterministic pod name: {name}")
+    if github_variables is None:
+        raise ValueError("independent GitHub watchdog intent publisher is required before RunPod HTTP")
+    intent_started = now_fn()
+    github_variables.publish_and_verify(watchdog_intent(
+        commit=expected_commit, created_not_before=intent_started,
+        max_runtime_minutes=max_runtime_minutes, max_hourly_rate=max_hourly_rate,
+        max_total_budget=max_total_budget,
+    ))
     image = manifest["container"]["image"]
     remote_argv = bootstrap.generate(
         manifest, Path("/tmp/bound-production-manifest.json"), Path("/tmp/p1b-work"),
@@ -489,6 +573,9 @@ def main() -> int:
         raise ValueError(f"--launch requires --confirm {CONFIRMATION}")
     if contract.get("provider_mutation_ready") is not True:
         raise ValueError("contract provider_mutation_ready is false; refusing before RunPod HTTP")
+    github_token = os.environ.get("P1B_WATCHDOG_GITHUB_TOKEN")
+    if not github_token:
+        raise ValueError("P1B_WATCHDOG_GITHUB_TOKEN is required for durable pre-create intent")
     required = (args.balance_receipt, args.max_hourly_rate_usd, args.max_total_budget_usd,
                 args.max_runtime_minutes, args.gpu_type_id, args.network_volume_id,
                 args.datacenter_id, args.retention_staging, args.retention_verification_receipt)
@@ -501,7 +588,8 @@ def main() -> int:
            receipt_path=args.receipt, network_volume_id=args.network_volume_id,
            datacenter_id=args.datacenter_id, s3_client=s3verify.s3_client(args.datacenter_id),
            retention_staging=args.retention_staging,
-           retention_receipt=args.retention_verification_receipt)
+           retention_receipt=args.retention_verification_receipt,
+           github_variables=GitHubActionsVariables(github_token))
     return 0
 
 

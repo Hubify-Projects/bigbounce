@@ -2,10 +2,10 @@
   "schema_version": 1,
   "contract_id": "p1b-physical-spectrum-500mc-v2",
   "provider": "runpod",
-  "mutation_policy": "manifest-only; this repository contract does not create pods",
+  "mutation_policy": "fail-closed prospective launcher; pod creation remains disabled until every provider_mutation_blocker is evidenced closed",
   "provider_mutation_ready": false,
   "provider_mutation_blockers": [
-    "No independently hosted crash-safe watchdog owns the atomic recovery ledger and can terminate a live pod after launcher SIGKILL, host loss, or network partition."
+    "The independently hosted GitHub Actions watchdog is implemented but has no configured RUNPOD_API_KEY repository secret and has not passed a bounded live launcher-SIGKILL recovery/deletion drill."
   ],
   "retention": {
     "schema": "p1b-runpod-retention/v1",
@@ -41,7 +41,9 @@
     "reproducibility/p1_namaster_500mc/scripts/generate_remote_bootstrap.py",
     "reproducibility/p1_namaster_500mc/scripts/remote_production_runner.py",
     "reproducibility/p1_namaster_500mc/scripts/retain_remote_production.py",
-    "reproducibility/p1_namaster_500mc/scripts/verify_runpod_s3_retention.py"
+    "reproducibility/p1_namaster_500mc/scripts/verify_runpod_s3_retention.py",
+    "reproducibility/p1_namaster_500mc/scripts/runpod_budget_launcher.py",
+    "reproducibility/p1_namaster_500mc/scripts/runpod_external_watchdog.py"
   ],
   "output_root": "reproducibility/p1_namaster_500mc/results/physical_spectrum_v2",
   "canonical_command": "NAMASTER_NREAL=500 NAMASTER_OUTPUT_DIR=reproducibility/p1_namaster_500mc/results/physical_spectrum_v2 python reproducibility/p1_namaster_500mc/scripts/namaster_500mc.py",

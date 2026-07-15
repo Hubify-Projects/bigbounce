@@ -47,6 +47,11 @@ class Client:
     def stop_pod(self, pod_id): pass
 
 
+class GitHubVariables:
+    def __init__(self): self.intents = []
+    def publish_and_verify(self, intent): self.intents.append(intent)
+
+
 class LauncherTest(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
@@ -62,6 +67,7 @@ class LauncherTest(unittest.TestCase):
         self.manifest = {"git_commit": self.commit, "contract_id": "contract-v1",
                          "input_sha256": {"contract.json": "b" * 64},
                          "container": {"image": self.image, "install": ["true"]}}
+        self.github = GitHubVariables()
 
     def tearDown(self): self.temp.cleanup()
 
@@ -73,6 +79,7 @@ class LauncherTest(unittest.TestCase):
             gpu_type_id="NVIDIA RTX A4000", receipt_path=self.receipt,
             network_volume_id="vol-1", datacenter_id="US-KS-2", s3_client=object(),
             retention_staging=self.root / "download", retention_receipt=self.root / "verified.json",
+            github_variables=self.github,
             now_fn=lambda: NOW,
         )
         values.update(updates)
@@ -109,6 +116,7 @@ class LauncherTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "duplicate"):
             self.launch(client)
         self.assertEqual(client.create_calls, [])
+        self.assertEqual(self.github.intents, [])
 
     def test_overprice_response_is_immediately_deleted_and_receipted(self):
         client = Client(created={"id": "pod-over", "costPerHr": 0.75,
@@ -153,6 +161,66 @@ class LauncherTest(unittest.TestCase):
         self.assertIn(self.commit, payload["dockerStartCmd"][0])
         self.assertIn("timeout --foreground --signal=TERM --kill-after=60s 3600s", payload["dockerStartCmd"][0])
         self.assertIn("/workspace/p1b-container-status/", payload["dockerStartCmd"][0])
+        self.assertEqual(len(self.github.intents), 1)
+        intent = self.github.intents[0]
+        self.assertEqual(intent["pod_name"], MODULE.pod_name(self.commit))
+        self.assertEqual(intent["deadline"], (NOW + dt.timedelta(minutes=60)).isoformat())
+
+    def test_durable_intent_is_verified_after_duplicate_check_and_before_create(self):
+        events = []
+        class OrderedClient(Client):
+            def list_pods(self):
+                events.append("runpod-list")
+                return super().list_pods()
+            def create_pod(self, payload):
+                events.append("runpod-create")
+                return super().create_pod(payload)
+        class OrderedGitHub:
+            def publish_and_verify(self, intent): events.append("intent-verified")
+        self.launch(OrderedClient(), github_variables=OrderedGitHub())
+        self.assertEqual(events[:3], ["runpod-list", "intent-verified", "runpod-create"])
+
+    def test_github_variable_upsert_is_read_back_verified(self):
+        class Variables(MODULE.GitHubActionsVariables):
+            def __init__(self):
+                super().__init__("secret")
+                self.calls = []
+                self.value = None
+            def request(self, method, path, payload=None):
+                self.calls.append((method, path, payload))
+                if method == "GET" and self.value is None:
+                    raise ValueError("GitHub REST GET failed with HTTP 404")
+                if method == "POST":
+                    self.value = payload["value"]
+                    return {}
+                if method == "GET":
+                    return {"name": MODULE.WATCHDOG_INTENT_VARIABLE, "value": self.value}
+                raise AssertionError(method)
+        variables = Variables()
+        value = MODULE.watchdog_intent(
+            commit=self.commit, created_not_before=NOW, max_runtime_minutes=60,
+            max_hourly_rate=0.5, max_total_budget=1,
+        )
+        variables.publish_and_verify(value)
+        self.assertEqual([call[0] for call in variables.calls], ["GET", "POST", "GET"])
+
+    def test_github_variable_read_back_mismatch_fails(self):
+        class Variables(MODULE.GitHubActionsVariables):
+            def __init__(self): super().__init__("secret")
+            def request(self, method, path, payload=None):
+                if method == "PATCH": return {}
+                return {"name": MODULE.WATCHDOG_INTENT_VARIABLE, "value": "stale"}
+        with self.assertRaisesRegex(ValueError, "read-back mismatch"):
+            Variables().publish_and_verify(MODULE.watchdog_intent(
+                commit=self.commit, created_not_before=NOW, max_runtime_minutes=60,
+                max_hourly_rate=0.5, max_total_budget=1,
+            ))
+
+    def test_missing_intent_publisher_fails_before_runpod_http(self):
+        client = Client()
+        with self.assertRaisesRegex(ValueError, "intent publisher"):
+            self.launch(client, github_variables=None)
+        self.assertEqual(client.create_calls, [])
 
     def test_container_timeout_preserves_success_and_writes_atomic_status(self):
         status = self.root / "container-status.json"
@@ -215,7 +283,8 @@ class LauncherTest(unittest.TestCase):
                 max_runtime_minutes=60, gpu_type_id="NVIDIA RTX A4000",
                 receipt_path=self.receipt, network_volume_id="vol-1", datacenter_id="US-KS-2",
                 s3_client=object(), retention_staging=self.root / "stage",
-                retention_receipt=self.root / "verified.json", now_fn=lambda: NOW,
+                retention_receipt=self.root / "verified.json", github_variables=self.github,
+                now_fn=lambda: NOW,
             )
         supervisor.assert_called_once()
 
@@ -303,7 +372,8 @@ class LauncherTest(unittest.TestCase):
                     max_runtime_minutes=60, gpu_type_id="NVIDIA RTX A4000",
                     receipt_path=self.receipt, network_volume_id="vol-1", datacenter_id="US-KS-2",
                     s3_client=object(), retention_staging=self.root / "stage",
-                    retention_receipt=self.root / "verified.json", now_fn=lambda: NOW,
+                    retention_receipt=self.root / "verified.json", github_variables=self.github,
+                    now_fn=lambda: NOW,
                     sleep_fn=lambda _: None)
         self.assertIn("pod-safe", client.deleted)
 
@@ -326,7 +396,8 @@ class LauncherTest(unittest.TestCase):
                 max_runtime_minutes=60, gpu_type_id="NVIDIA RTX A4000",
                 receipt_path=self.receipt, network_volume_id="vol-1", datacenter_id="US-KS-2",
                 s3_client=object(), retention_staging=self.root / "stage",
-                retention_receipt=self.root / "verified.json", now_fn=lambda: NOW,
+                retention_receipt=self.root / "verified.json", github_variables=self.github,
+                now_fn=lambda: NOW,
                 sleep_fn=lambda _: None)
         self.assertEqual(result["supervision_result"], "terminal_unverified")
         self.assertEqual(client.deleted, [])
