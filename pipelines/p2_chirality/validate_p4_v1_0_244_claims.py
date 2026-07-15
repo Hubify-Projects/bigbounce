@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail-closed source-to-claim and presentation audit for P4 v1.0.254."""
+"""Fail-closed source-to-claim and presentation audit for P4 v1.0.255."""
 
 from __future__ import annotations
 
@@ -34,14 +34,14 @@ EVIDENCE = {
     "training_benchmark": P4 / "BENCHMARK_REPORT.md",
     "model_readme": P4 / "HF_MODEL_README.md",
     "dataset_readme": P4 / "HF_DATASET_README.md",
-    "current_dataset_contract_receipt": P4 / "outputs/canonical_provenance/p4_hf_contract_dataset_receipt_v1_0_253.json",
-    "current_model_contract_receipt": P4 / "outputs/canonical_provenance/p4_hf_contract_model_receipt_v1_0_253.json",
-    "catalog_c_semantic_validation": P4 / "outputs/canonical_provenance/p4_catalog_c_semantic_validation_v1_0_253.json",
+    "current_dataset_contract_receipt": P4 / "outputs/canonical_provenance/p4_hf_contract_dataset_receipt_v1_0_255.json",
+    "current_model_contract_receipt": P4 / "outputs/canonical_provenance/p4_hf_contract_model_receipt_v1_0_255.json",
+    "catalog_c_semantic_validation": P4 / "outputs/canonical_provenance/p4_catalog_c_semantic_validation_v1_0_255.json",
 }
 
-CURRENT_DATASET_COMMIT = "85232df765c7350803c026a4cbe3ca180b304d18"
-CURRENT_MODEL_COMMIT = "3b2db93eda6e65e566755a171e677383a803a960"
-SEMANTIC_RECEIPT_SHA256 = "b4baa0bb2e2c3fb076e18065c26095465bd552b9dbee0ca48d51fda2331ab1db"
+CURRENT_DATASET_COMMIT = "43fc8a5bad40c98cd172093f97f3792b6345745e"
+CURRENT_MODEL_COMMIT = "6f1130973a7bb319323bb08c6199288fe338e908"
+SEMANTIC_RECEIPT_SHA256 = "81741ca551e7c1eecf42d7bef5da3dbf3b9e117956a045a2da519250f8b7cb8b"
 
 
 class ClaimAuditError(RuntimeError):
@@ -182,9 +182,9 @@ def audit() -> dict[str, Any]:
             == "immutable downloads matched bytes and SHA-256"
             and model_contract["repositories"][0]["files"] == [
                 {
-                    "bytes": 8675,
+                    "bytes": 8713,
                     "path": "README.md",
-                    "sha256": "7ec46dc0f9f9d55601bc459a2b42a5e43af1deea514730089b0c487aa8e09896",
+                    "sha256": "9e674f214aa23a332ec1193842e6bcbf33562406ef3836c18baf42ed2be4be63",
                 }
             ]
         ),
@@ -205,6 +205,16 @@ def audit() -> dict[str, Any]:
             and all(
                 value == 0
                 for value in semantic_validation["validation_result"]["primary_semantics"]["violation_counts"].values()
+            )
+            and semantic_validation["validation_result"]["quarantine_equivalence"]["status"] == "PASS"
+            and all(
+                semantic_validation["validation_result"]["quarantine_equivalence"]["gates"].values()
+            )
+            and semantic_validation["validation_result"]["quarantine_equivalence"]["rows_scanned"]["quarantine_rows"] == 249_066
+            and all(
+                value == 0
+                for name, value in semantic_validation["validation_result"]["quarantine_equivalence"]["rows_scanned"].items()
+                if name not in {"primary_unsafe_rows", "quarantine_rows"}
             )
             and semantic_validation["provenance"]["primary_parquet"]["sha256"]
             == "139b761fbeafb34306a0cec60967226c18dc84295285f8317ce3d3af3d28bdf3"
@@ -247,7 +257,7 @@ def audit() -> dict[str, Any]:
     schema = load(P4 / "apjs_release_schema_v1_0_244.json")
     gates.update(
         {
-            "paper_version": r"\newcommand{\paperVersion}{v1.0.254}" in tex,
+            "paper_version": r"\newcommand{\paperVersion}{v1.0.255}" in tex,
             "paper_uses_aastex_701": r"\documentclass[twocolumn,linenumbers]{aastex701}" in tex,
             "paper_has_no_internal_toc": r"\tableofcontents" not in tex,
             "paper_uses_numeric_citations": r"\setcitestyle{numbers,sort&compress}" in tex,
@@ -289,9 +299,9 @@ def audit() -> dict[str, Any]:
     )
     failed = [name for name, passed in gates.items() if not passed]
     result = {
-        "schema": "p4-v1.0.254-source-to-claim-audit/v1",
+        "schema": "p4-v1.0.255-source-to-claim-audit/v1",
         "paper": "P4",
-        "paper_version": "v1.0.254",
+        "paper_version": "v1.0.255",
         "status": "PASS" if not failed else "FAIL",
         "gates": gates,
         "failed_gates": failed,
@@ -304,7 +314,7 @@ def audit() -> dict[str, Any]:
             "physical_or_primordial_bound": False,
             "matched_external_estimator_claim": False,
             "formal_preregistration_claim": False,
-            "public_catalog_release": "CATALOG_C_v1.0.244_AT_db110233; CURRENT_DATASET_CONTRACT_85232df7; CURRENT_MODEL_CARD_3b2db93e; SEMANTIC_RECEIPT_b4baa0bb",
+            "public_catalog_release": "CATALOG_C_v1.0.244_AT_db110233; CURRENT_DATASET_CONTRACT_43fc8a5b; CURRENT_MODEL_CARD_6f113097; SEMANTIC_RECEIPT_81741ca5",
             "doi_backed_paper_source_archive": "OPEN",
         },
     }

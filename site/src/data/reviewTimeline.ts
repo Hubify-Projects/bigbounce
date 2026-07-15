@@ -57,6 +57,26 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p4-v10255-release-integrity-closure-2026-07-15",
+    dateISO: "2026-07-15",
+    timePT: "3:28 PM",
+    kind: "closure-wave",
+    title: "P4 v1.0.255 — exact release-integrity majors closed; rereview pending",
+    papers: ["P4"],
+    summary:
+      "The 29-page v1.0.255 candidate (SHA-256 f9b011a8) closes the three real v1.0.254 release-integrity majors: clean-directory bootstrap dependencies, exact disk-backed quarantine/unsafe-primary identity and HC-flag equivalence, and production-accurate immutable model documentation. HF revisions 43fc8a5b/6f113097 are byte-verified. The central observed-label null is unchanged; exact v1.0.255 rereview and standing training, covariance, metadata, DOI, and human gates remain open. Readiness holds 80.",
+    keyTakeaways: [
+      "All 8,474,531 primary and 249,066 quarantine rows are covered by exact object-ID and HC-flag equivalence gates",
+      "The portable bootstrap now retrieves and hash-verifies every import-time dependency and passes from a clean directory",
+      "This is verified closure evidence, not a reviewer verdict; exact v1.0.255 review remains pending",
+    ],
+    links: [
+      { label: "HF dataset contract", href: "https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog/commit/43fc8a5bad40c98cd172093f97f3792b6345745e" },
+      { label: "HF model card", href: "https://huggingface.co/bamfai/galaxy-chirality-v2/commit/6f1130973a7bb319323bb08c6199288fe338e908" },
+      { label: "P4 canonical status", href: `${GH}/project-context/SSOT/paper-4/status.md` },
+    ],
+  },
+  {
     id: "p4-v10254-semantic-contract-2026-07-15",
     dateISO: "2026-07-15",
     timePT: "2:43 PM",
