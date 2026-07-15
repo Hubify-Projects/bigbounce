@@ -30,6 +30,7 @@ CONFIG_PATH = Path(__file__).with_name("paper_deposit_config.json")
 VERSION_RE = re.compile(
     r"\\(?:newcommand|renewcommand)\s*\{\\paperVersion\}\s*\{([^}]+)\}"
 )
+PREPRINT_VERSION_RE = re.compile(r"^\s*\\preprint\s*\{(v[^}]+)\}\s*$", re.MULTILINE)
 FULL_COMMIT_RE = re.compile(r"[0-9a-f]{40}")
 DOI_RE = re.compile(r"10\.\d{4,9}/[-._;()/:A-Z0-9]+", re.IGNORECASE)
 ARXIV_RE = re.compile(r"(?:arXiv:)?\d{4}\.\d{4,5}(?:v\d+)?", re.IGNORECASE)
@@ -89,9 +90,9 @@ def paper_version(tex_path: Path) -> str:
         text = tex_path.read_text(encoding="utf-8")
     except OSError as exc:
         raise DepositError(f"missing TeX source: {tex_path}") from exc
-    match = VERSION_RE.search(text)
+    match = VERSION_RE.search(text) or PREPRINT_VERSION_RE.search(text)
     if not match or not match.group(1).strip():
-        raise DepositError(f"no \\paperVersion declaration found in {tex_path}")
+        raise DepositError(f"no active \\paperVersion or versioned \\preprint declaration found in {tex_path}")
     return match.group(1).strip()
 
 

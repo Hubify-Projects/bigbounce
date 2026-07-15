@@ -10,10 +10,20 @@ from pathlib import Path
 
 import pytest
 
-from tools.prepare_paper_deposit import DepositError, prepare, verify_tarball
+from tools.prepare_paper_deposit import DepositError, paper_version, prepare, verify_tarball
 
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
+
+
+def test_paper_version_accepts_active_versioned_preprint_but_not_comment(tmp_path: Path) -> None:
+    tex = tmp_path / "paper.tex"
+    tex.write_text("% \\preprint{v0.0.1}\n\\preprint{v1.7.122}\n")
+    assert paper_version(tex) == "v1.7.122"
+
+    tex.write_text("% \\preprint{v0.0.1}\n")
+    with pytest.raises(DepositError, match="versioned"):
+        paper_version(tex)
 
 
 def _run(root: Path, *args: str) -> str:
