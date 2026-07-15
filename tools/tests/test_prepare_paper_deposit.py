@@ -212,8 +212,22 @@ def test_explicitly_incomplete_metadata_fails_closed(tmp_path: Path) -> None:
     config.write_text(json.dumps(payload))
     _run(root, "git", "add", "config.json")
     _run(root, "git", "commit", "-qm", "block metadata")
+    staging = root / ".deposit-staging" / "P4" / "v1.2.3"
     with pytest.raises(DepositError, match="license decision required"):
-        prepare(_args(root, config, commit))
+        prepare(_args(root, config, commit, write=True))
+    assert not staging.exists()
+
+
+def test_p5_config_is_explicitly_non_release_and_fails_closed() -> None:
+    config = json.loads((REPO_ROOT / "tools/paper_deposit_config.json").read_text())
+    p5 = config["papers"]["P5"]
+    blocker = p5["metadata_blocker"]
+
+    assert p5["metadata_complete"] is False
+    assert "Houston manuscript/source license authorization is absent" in blocker
+    assert "Paper-IV provenance/completeness gates remain open" in blocker
+    assert "license" not in p5["metadata"]
+    assert p5["deposit_root"] == ".deposit-staging"
 
 
 def test_p2_config_tracks_exact_v17122_deposit_contract() -> None:

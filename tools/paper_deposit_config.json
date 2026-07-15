@@ -264,6 +264,28 @@
           "astronomical catalogs"
         ]
       }
+    },
+    "P5": {
+      "tex": "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex",
+      "pdf": "pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf",
+      "arxiv_tarball": "project-context/SSOT/arxiv_tarballs/paper5_arxiv_{version}.tar.gz",
+      "standalone_proof": "project-context/SSOT/arxiv_tarballs/paper5_arxiv_{version}.proof.json",
+      "tarball_main_tex": "p5_desi_chirality.tex",
+      "deposit_root": ".deposit-staging",
+      "metadata_complete": false,
+      "metadata_blocker": "Houston manuscript/source license authorization is absent, and the Paper-IV provenance/completeness gates remain open",
+      "metadata": {
+        "title": "A Catalog-Native DESIVAST Test of Classifier-Labelled Spiral Chirality in DESI DR1",
+        "creators": [
+          {
+            "name": "Golden, Houston"
+          }
+        ],
+        "description": "Non-release configuration record. Deposit staging remains intentionally disabled until Houston authorizes the manuscript/source license and the Paper-IV provenance/completeness gates close.",
+        "upload_type": "publication",
+        "publication_type": "article",
+        "access_right": "open"
+      }
     }
   }
 }
