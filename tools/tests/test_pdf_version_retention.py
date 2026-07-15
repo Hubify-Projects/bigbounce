@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import os
 import subprocess
 import tempfile
 import unittest
@@ -141,6 +142,66 @@ class PdfVersionRetentionTests(unittest.TestCase):
         self.assertFalse(unstaged["index_dirty"])
         self.assertTrue(unstaged["worktree_dirty"])
         self.assertTrue(unstaged["overall_dirty"])
+
+    def test_history_backfill_classifies_manuscripts_and_keeps_unclassified_rows_visible(self) -> None:
+        subprocess.run(["git", "init", "-q", str(self.root)], check=True)
+        subprocess.run(["git", "-C", str(self.root), "config", "user.name", "Retention Test"], check=True)
+        subprocess.run(
+            ["git", "-C", str(self.root), "config", "user.email", "retention@example.invalid"],
+            check=True,
+        )
+        manuscript = self.root / "public/papers/paper1a_ech_nogo_v1A.0.123.pdf"
+        figure = self.root / "arxiv/figures/paper1_corner_full_tension.pdf"
+        manuscript.parent.mkdir(parents=True, exist_ok=True)
+        figure.parent.mkdir(parents=True, exist_ok=True)
+        manuscript.write_bytes(b"%PDF-1.4\nP1A historical manuscript\n%%EOF\n")
+        figure.write_bytes(b"%PDF-1.4\nfigure artifact\n%%EOF\n")
+        subprocess.run(
+            [
+                "git",
+                "-C",
+                str(self.root),
+                "add",
+                str(manuscript.relative_to(self.root)),
+                str(figure.relative_to(self.root)),
+            ],
+            check=True,
+        )
+        subprocess.run(
+            [
+                "git",
+                "-C",
+                str(self.root),
+                "commit",
+                "-qm",
+                "history fixture",
+                "--date",
+                "2026-07-14T12:00:00-07:00",
+            ],
+            env={**os.environ, "GIT_COMMITTER_DATE": "2026-07-14T12:00:00-07:00"},
+            check=True,
+        )
+
+        with mock.patch.object(retention, "pdf_page_count", return_value=1):
+            result = retention.history_inventory(
+                self.root,
+                Path("archive"),
+                captured_at=self.when,
+                run_id="history",
+                materialize=True,
+            )
+
+        self.assertEqual(result["coverage"]["git_pdf_object_path_rows"], 2)
+        self.assertEqual(result["coverage"]["classified_rows"], 1)
+        self.assertEqual(result["coverage"]["unclassified_rows"], 1)
+        self.assertEqual(result["coverage"]["by_paper"]["P1A"], 1)
+        classified = [row for row in result["rows"] if row["paper_id"] == "P1A"]
+        self.assertEqual(len(classified), 1)
+        self.assertEqual(classified[0]["paper_version"], "v1A.0.123")
+        self.assertTrue((self.root / classified[0]["archive_object"]).is_file())
+        self.assertTrue((self.root / classified[0]["archive_reference"]).is_file())
+        unclassified = [row for row in result["rows"] if row["paper_id"] is None]
+        self.assertEqual(unclassified[0]["classification_reason"], "excluded.figure-or-render-artifact")
 
 
 if __name__ == "__main__":

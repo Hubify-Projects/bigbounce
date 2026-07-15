@@ -18,6 +18,13 @@ and artifact-addressed review reuse without weakening scientific gates.
 6. Archive every compiled PDF immutably under a version-and-PST-timestamped name with source commit, hash, page count, build metadata, and review references; verify the canonical archive plus two mirrors before cleanup.
 7. Run the atomic release chain: claims/version/PDF mirrors, SSOT, Convex/API, site data and review timeline, build/browser QA, then bisected commits and `main` push.
 
+## PDF History Backfill Status — 2026-07-14
+
+- Complete Git PDF inventory is written at `project-context/pdf-archive/manifests/2026/07/20260714T235000Z-history-inventory-20260714-history.json`: 1,356 reachable PDF object/path rows, 1,094 high-confidence six-paper manuscript rows, and 262 explicit unclassified rows.
+- Page-counted backfill is staged because the full 1,094-row pass is expensive. Use `tools/pdf_version_retention.py --history-backfill --history-offset <n> --history-limit <m>` in bounded chunks.
+- First page-counted proof tranche is `project-context/pdf-archive/manifests/2026/07/20260715T004000Z-history-backfill-0104-0108-20260714-history.json`: five P4 manuscript rows, zero errors, verified object/reference hardlinks, page counts 22, 24, 25, 22, 21.
+- Do not treat fast history inventory or interrupted fast chunks as complete page-counted retention. Full completion requires chunked page-counted manifests plus offsite mirror verification.
+
 ## Implemented and queued accelerations
 
 - **Implemented:** parallel non-overlapping paper lanes; exact-PDF SHA binding; P3 checkpoint-product reuse; P1B bounded two-job compute cap; venue-fit boards kept separate from correctness boards.

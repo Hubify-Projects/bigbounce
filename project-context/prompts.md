@@ -482,3 +482,33 @@ Switched to Opus 4.7 + xhigh effort for this.
 - `agent`: codex/gpt-5.5
 
 > the other agent and even previous claude code agent have recently in last few days done some work on trying to accelerate our progress/reduce redundancies/and just find gaps and inefficiencies etc that are really slowing us down on this final push to get the papers really 100% ready for publishing and I feel like there are still a lot of inefficiencies and potentially larger problems with our whole approach even -- bc our papers have only been getting worse it seems like at least when compared to a few weeks ago when they were all in the 90-95%+ ready for publishing but it is hard to tell whether or not that was accurate or if our new prompts/reviewers are being fairly more critical or what hence the lower ratings and i don't understand why we feel like we are going backwards as I felt we were very close to final publishable papers a few weeks ago even a month or two ago and then we have been on this endless loop stalling in this final phase where I thought we were really just polishing our papers for publication .... I don't know what to think at this point - and I also really want to make sure we are not deleting PDF versions and keep a full history of ALL PDFs for all papers date-time stamped with version numbers etc in our archives/storage etc too... as a log ... and also to compare the current papers and the latest reviews [reject, major, minor, accept] ratings on each paper currently objectively with a set of the papers from a previous round where the average was much higher on the mostly minors/accept - which we especially had mostly on the other models whereas the chatgpt external model was always hard to get anything better than "minor" on very hard to get an "accept" on but still please help 
+
+## 2026-07-14 - publication-pdf-history-backfill
+
+### Houston messages, verbatim
+
+**16:33 PT - continue with retroactive PDF archive backfill**
+
+- `cwd`: /Users/houstongolden/Desktop/CODE_YOU/bigbounce
+- `session`: publication-pdf-history-backfill
+- `agent`: codex/gpt-5.5
+
+> continue
+
+## 2026-07-14 - bigbounce-pdf-history-backfill
+
+### Houston messages, verbatim
+
+**16:41 PT - continue best next steps for real**
+
+- `cwd`: /Users/houstongolden/Desktop/CODE_YOU/bigbounce
+- `session`: bigbounce-pdf-history-backfill
+- `agent`: codex-gpt-5
+
+> hows it going?
+>
+> continue
+>
+> continue
+>
+> continue best next steps for real 

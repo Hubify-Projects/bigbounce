@@ -76,7 +76,13 @@
         "An append-only manifest records source commit, PDF SHA-256, page count, build command, and review-round references",
         "The canonical archive plus two independent mirrors are hash-verified before cleanup",
         "No cleanup deletes the only copy of a historical PDF"
-      ]
+      ],
+      "progress": [
+        "Current/future six-paper PDF snapshots are retained through Directive-G before mirror/Convex mutation.",
+        "Complete Git PDF inventory manifest project-context/pdf-archive/manifests/2026/07/20260714T235000Z-history-inventory-20260714-history.json records 1,356 reachable PDF object/path rows, 1,094 high-confidence manuscript rows, and 262 explicit unclassified rows.",
+        "First page-counted historical materialization proof project-context/pdf-archive/manifests/2026/07/20260715T004000Z-history-backfill-0104-0108-20260714-history.json verified five P4 manuscript rows with object/reference hardlink checks and page counts 22, 24, 25, 22, 21."
+      ],
+      "next_action": "Continue bounded page-counted history backfill tranches with tools/pdf_version_retention.py --history-backfill --history-offset <n> --history-limit <m>, then mirror the archive to two independent stores."
     },
     {
       "id": "PUB-006",

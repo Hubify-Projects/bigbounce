@@ -1,0 +1,226 @@
+{
+  "captured_at_local": "2026-07-14T17:38:52.122879-07:00",
+  "captured_at_utc": "2026-07-15T00:38:52.122879+00:00",
+  "classification_policy": {
+    "excluded": [
+      "figure PDFs",
+      "render artifacts",
+      "existing pdf-archive self-references",
+      "paths without a six-paper manuscript hint",
+      "ambiguous paper-hint matches"
+    ],
+    "scope": "reachable Git PDF object/path rows; only high-confidence six-paper manuscript paths are materialized",
+    "unknown_version_policy": "When no version token is present in the historical path, paper_version is recorded as unknown rather than inferred."
+  },
+  "coverage": {
+    "by_paper": {
+      "P1A": 0,
+      "P1B": 0,
+      "P2": 0,
+      "P3": 0,
+      "P4": 0,
+      "P5": 0
+    },
+    "classified_distinct_git_blobs": 0,
+    "classified_distinct_sha256": 0,
+    "classified_rows": 0,
+    "errors": 0,
+    "git_pdf_object_path_rows": 25,
+    "objects_created": 0,
+    "references_created": 0,
+    "unclassified_reasons": {
+      "excluded.figure-or-render-artifact": 25
+    },
+    "unclassified_rows": 25
+  },
+  "git_head": "a745b6ac4d4f951462fc4e7e2135843d831be613",
+  "manifest_path": "project-context/pdf-archive/manifests/2026/07/20260715T003852Z-history-backfill-fast-0450-0474-history.json",
+  "materialized": true,
+  "mode": "history-backfill",
+  "page_counts_recorded": false,
+  "row_selection": {
+    "limit": 25,
+    "offset": 450,
+    "selected_rows": 25,
+    "total_git_pdf_object_path_rows": 1357
+  },
+  "rows": [
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "d36162780bb47f8653a70c0f7c035766664f211a",
+      "git_blob_size_bytes": 2044598,
+      "paper_id": null,
+      "path": "pipelines/p3_anomaly_engine/figures/fig_gallery_a7_post_starburst.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "080f7bd564fc1cf6e5533ddedebe2c90d4b66aae",
+      "git_blob_size_bytes": 187852,
+      "paper_id": null,
+      "path": "pipelines/p3_anomaly_engine/figures/fig_gallery_a8_blue_compact.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "9c15ec3e38c0b123ff18e2d901f113b1e99b6555",
+      "git_blob_size_bytes": 2542322,
+      "paper_id": null,
+      "path": "pipelines/p3_anomaly_engine/figures/fig_gallery_a8_blue_compact.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "a3e7dc9f0cc6d3b222eaaddcb8e49c640a9e81f2",
+      "git_blob_size_bytes": 2057459,
+      "paper_id": null,
+      "path": "pipelines/p3_anomaly_engine/figures/fig_gallery_a8_blue_compact.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "c4c9174f610f2e2182ccb8599f6f18fa9edad5a6",
+      "git_blob_size_bytes": 2057459,
+      "paper_id": null,
+      "path": "pipelines/p3_anomaly_engine/figures/fig_gallery_a8_blue_compact.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "026dc4361004fce65f217d5ff4df41073cb36006",
+      "git_blob_size_bytes": 341834,
+      "paper_id": null,
+      "path": "pipelines/p3_anomaly_engine/figures/fig_gallery_a9_star.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "4466fb374d8e9a110173fe58ba90e007cf33db1e",
+      "git_blob_size_bytes": 2308127,
+      "paper_id": null,
+      "path": "pipelines/p3_anomaly_engine/figures/fig_gallery_a9_star.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "7bb1b89bbbd1104d1c9591813a2dd343035a8cda",
+      "git_blob_size_bytes": 2308127,
+      "paper_id": null,
+      "path": "pipelines/p3_anomaly_engine/figures/fig_gallery_a9_star.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "d2cbd3314684ee449fa84958ba68f48c5cf3a50e",
+      "git_blob_size_bytes": 2461177,
+      "paper_id": null,
+      "path": "pipelines/p3_anomaly_engine/figures/fig_gallery_a9_star.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "1244ee891572a4d40d8aa2379c9154412b20f8d7",
+      "git_blob_size_bytes": 1382097,
+      "paper_id": null,
+      "path": "pipelines/p3_anomaly_engine/figures/fig_gallery_top10.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "311d75fc3b82b3b58da41c2e96a30d32e16cacc4",
+      "git_blob_size_bytes": 1383989,
+      "paper_id": null,
+      "path": "pipelines/p3_anomaly_engine/figures/fig_gallery_top10.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "3e61d88d4143ca312714a29cb4c523f60c6ac032",
+      "git_blob_size_bytes": 1522729,
+      "paper_id": null,
+      "path": "pipelines/p3_anomaly_engine/figures/fig_gallery_top10.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "c5bf422a4af419969c9ac03cb717fc83c702d244",
+      "git_blob_size_bytes": 1383989,
+      "paper_id": null,
+      "path": "pipelines/p3_anomaly_engine/figures/fig_gallery_top10.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "ebbb0a43b94e0c04c5b90959189416314302c33a",
+      "git_blob_size_bytes": 1525004,
+      "paper_id": null,
+      "path": "pipelines/p3_anomaly_engine/figures/fig_gallery_top10.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "ee45e72dcc77dfd752cffb2408ab87972fbe096d",
+      "git_blob_size_bytes": 35083,
+      "paper_id": null,
+      "path": "pipelines/p3_anomaly_engine/figures/fig_lamost_blue_excess.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "656b53993610268889f6636dabbaf97ca05c856f",
+      "git_blob_size_bytes": 46259,
+      "paper_id": null,
+      "path": "pipelines/p3_anomaly_engine/figures/fig_nanograv_fit.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "3b39ab8d253b9376d9d95c357eb1370c5c245236",
+      "git_blob_size_bytes": 248248,
+      "paper_id": null,
+      "path": "pipelines/p3_anomaly_engine/figures/fig_neowise_top_anomaly.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "6e9b2fb2de77b9c9b5ced98b6ae46ceb88c20630",
+      "git_blob_size_bytes": 1020665,
+      "paper_id": null,
+      "path": "pipelines/p3_anomaly_engine/figures/fig_neowise_top_anomaly.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "c835c0e04ee0509e714051be480afabf9dc3b869",
+      "git_blob_size_bytes": 1020665,
+      "paper_id": null,
+      "path": "pipelines/p3_anomaly_engine/figures/fig_neowise_top_anomaly.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "3c4953bbff842718cecd6a0552717c029c7f68e1",
+      "git_blob_size_bytes": 25721,
+      "paper_id": null,
+      "path": "pipelines/p3_anomaly_engine/figures/fig_novelty_fractions.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "42c6fbd32c73c61fd533dc8914cfb41d241ba0a5",
+      "git_blob_size_bytes": 26841,
+      "paper_id": null,
+      "path": "pipelines/p3_anomaly_engine/figures/fig_novelty_fractions.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "c5b63144b66dfefdc73aff4437382c169e4681d9",
+      "git_blob_size_bytes": 24588,
+      "paper_id": null,
+      "path": "pipelines/p3_anomaly_engine/figures/fig_pathc_neowise_ecliptic.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "3cee4bc2c07104772628e861a2116cf7b783e97f",
+      "git_blob_size_bytes": 35168,
+      "paper_id": null,
+      "path": "pipelines/p3_anomaly_engine/figures/fig_score_distributions.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "4f94ce9720f6dc583185edf89b4646565f288bc1",
+      "git_blob_size_bytes": 65575,
+      "paper_id": null,
+      "path": "pipelines/p3_anomaly_engine/figures/fig_skymap_all_surveys.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "db7c0f942a7d0c11fce9916d0602c5dec8d768df",
+      "git_blob_size_bytes": 65943,
+      "paper_id": null,
+      "path": "pipelines/p3_anomaly_engine/figures/fig_skymap_all_surveys.pdf"
+    }
+  ],
+  "run_id": "history-backfill-fast-0450-0474",
+  "schema": "bigbounce-pdf-retention-history/v1"
+}

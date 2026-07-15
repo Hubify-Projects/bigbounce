@@ -1,0 +1,226 @@
+{
+  "captured_at_local": "2026-07-14T17:38:54.560039-07:00",
+  "captured_at_utc": "2026-07-15T00:38:54.560039+00:00",
+  "classification_policy": {
+    "excluded": [
+      "figure PDFs",
+      "render artifacts",
+      "existing pdf-archive self-references",
+      "paths without a six-paper manuscript hint",
+      "ambiguous paper-hint matches"
+    ],
+    "scope": "reachable Git PDF object/path rows; only high-confidence six-paper manuscript paths are materialized",
+    "unknown_version_policy": "When no version token is present in the historical path, paper_version is recorded as unknown rather than inferred."
+  },
+  "coverage": {
+    "by_paper": {
+      "P1A": 0,
+      "P1B": 0,
+      "P2": 0,
+      "P3": 0,
+      "P4": 0,
+      "P5": 0
+    },
+    "classified_distinct_git_blobs": 0,
+    "classified_distinct_sha256": 0,
+    "classified_rows": 0,
+    "errors": 0,
+    "git_pdf_object_path_rows": 25,
+    "objects_created": 0,
+    "references_created": 0,
+    "unclassified_reasons": {
+      "excluded.figure-or-render-artifact": 25
+    },
+    "unclassified_rows": 25
+  },
+  "git_head": "a745b6ac4d4f951462fc4e7e2135843d831be613",
+  "manifest_path": "project-context/pdf-archive/manifests/2026/07/20260715T003854Z-history-backfill-fast-0425-0449-history.json",
+  "materialized": true,
+  "mode": "history-backfill",
+  "page_counts_recorded": false,
+  "row_selection": {
+    "limit": 25,
+    "offset": 425,
+    "selected_rows": 25,
+    "total_git_pdf_object_path_rows": 1357
+  },
+  "rows": [
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "84faeae7e6e4ee5cf9d0dfda17bbdc0084832288",
+      "git_blob_size_bytes": 2438060,
+      "paper_id": null,
+      "path": "pipelines/p3_anomaly_engine/figures/fig_gallery_a10_unknown.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "f26ec7fb08fcbcd7af5ef324b0eeb2ec52b95d4d",
+      "git_blob_size_bytes": 338491,
+      "paper_id": null,
+      "path": "pipelines/p3_anomaly_engine/figures/fig_gallery_a10_unknown.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "07e7f8c7c3712c45b927a7666fb991eb5c313b54",
+      "git_blob_size_bytes": 2121168,
+      "paper_id": null,
+      "path": "pipelines/p3_anomaly_engine/figures/fig_gallery_a2_qso.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "5f4545b7ec960ce2549d269a2dcda42e7bae5b1d",
+      "git_blob_size_bytes": 807436,
+      "paper_id": null,
+      "path": "pipelines/p3_anomaly_engine/figures/fig_gallery_a2_qso.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "797853df1c8c8fe2147bb88d08485aba9f7d24a8",
+      "git_blob_size_bytes": 2121168,
+      "paper_id": null,
+      "path": "pipelines/p3_anomaly_engine/figures/fig_gallery_a2_qso.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "9f31eb16f7fc41b0a509de32bd5867016de3044a",
+      "git_blob_size_bytes": 2567518,
+      "paper_id": null,
+      "path": "pipelines/p3_anomaly_engine/figures/fig_gallery_a2_qso.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "5244b5ff2b59cfe9d1f8f4bd2a12eec76f8c307b",
+      "git_blob_size_bytes": 332048,
+      "paper_id": null,
+      "path": "pipelines/p3_anomaly_engine/figures/fig_gallery_a3_agn.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "573910229e06d3953fa465b2dad39851b33c6560",
+      "git_blob_size_bytes": 2483162,
+      "paper_id": null,
+      "path": "pipelines/p3_anomaly_engine/figures/fig_gallery_a3_agn.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "999b9b869d8d49523945b75fa25281e7401b58fa",
+      "git_blob_size_bytes": 2314841,
+      "paper_id": null,
+      "path": "pipelines/p3_anomaly_engine/figures/fig_gallery_a3_agn.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "d6b2354c86d4fd8b995433990e72e4209f80515b",
+      "git_blob_size_bytes": 2314841,
+      "paper_id": null,
+      "path": "pipelines/p3_anomaly_engine/figures/fig_gallery_a3_agn.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "212dbf3f93310a9f9d95e735947b91bfcd89a673",
+      "git_blob_size_bytes": 2586176,
+      "paper_id": null,
+      "path": "pipelines/p3_anomaly_engine/figures/fig_gallery_a4_bal_qso.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "94a8a1a64e29409103f83ff8876aca2cbc5a7293",
+      "git_blob_size_bytes": 336850,
+      "paper_id": null,
+      "path": "pipelines/p3_anomaly_engine/figures/fig_gallery_a4_bal_qso.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "b40fd4eca4e0c089ce4e6b47ae4ba0c7f97990f5",
+      "git_blob_size_bytes": 2281714,
+      "paper_id": null,
+      "path": "pipelines/p3_anomaly_engine/figures/fig_gallery_a4_bal_qso.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "db326f6ab06e70dfc81b040115439dce231d3beb",
+      "git_blob_size_bytes": 2281714,
+      "paper_id": null,
+      "path": "pipelines/p3_anomaly_engine/figures/fig_gallery_a4_bal_qso.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "8a661a9d2408d8ccb9a0b776bb1160f8c25e57e5",
+      "git_blob_size_bytes": 2538823,
+      "paper_id": null,
+      "path": "pipelines/p3_anomaly_engine/figures/fig_gallery_a5_elg.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "8ba96b2a2e84f38a33f5faad6ecd446a55f4c8cb",
+      "git_blob_size_bytes": 2394471,
+      "paper_id": null,
+      "path": "pipelines/p3_anomaly_engine/figures/fig_gallery_a5_elg.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "99f1564fed43bafaffc64e94987fd9981186fdf4",
+      "git_blob_size_bytes": 345249,
+      "paper_id": null,
+      "path": "pipelines/p3_anomaly_engine/figures/fig_gallery_a5_elg.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "d167bda1c9caf3a887a7bbe7143e151d2123a323",
+      "git_blob_size_bytes": 2394471,
+      "paper_id": null,
+      "path": "pipelines/p3_anomaly_engine/figures/fig_gallery_a5_elg.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "4f15491be64cae8a3da9a1a2d45a3d1d9c0fbe96",
+      "git_blob_size_bytes": 2582300,
+      "paper_id": null,
+      "path": "pipelines/p3_anomaly_engine/figures/fig_gallery_a6_lrg.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "8983ce9f01ce7a62cc76078dc561b83558ce74d6",
+      "git_blob_size_bytes": 336815,
+      "paper_id": null,
+      "path": "pipelines/p3_anomaly_engine/figures/fig_gallery_a6_lrg.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "a63be3d7ba491b054ce239682e8a98a348c5c061",
+      "git_blob_size_bytes": 2256824,
+      "paper_id": null,
+      "path": "pipelines/p3_anomaly_engine/figures/fig_gallery_a6_lrg.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "f714e185ebbae4a4699fa2f2bd389a46f0a42072",
+      "git_blob_size_bytes": 2256824,
+      "paper_id": null,
+      "path": "pipelines/p3_anomaly_engine/figures/fig_gallery_a6_lrg.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "076b991ca4cf56cb0093894bc0579fc4f717fb4f",
+      "git_blob_size_bytes": 352208,
+      "paper_id": null,
+      "path": "pipelines/p3_anomaly_engine/figures/fig_gallery_a7_post_starburst.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "5814d1636c5d6e9a3f942457fafdd603dd201cf6",
+      "git_blob_size_bytes": 2485954,
+      "paper_id": null,
+      "path": "pipelines/p3_anomaly_engine/figures/fig_gallery_a7_post_starburst.pdf"
+    },
+    {
+      "classification_reason": "excluded.figure-or-render-artifact",
+      "git_blob": "c5c0c299a8a2e3a4bbfdad8a4b8c0d9cb32d149c",
+      "git_blob_size_bytes": 2044598,
+      "paper_id": null,
+      "path": "pipelines/p3_anomaly_engine/figures/fig_gallery_a7_post_starburst.pdf"
+    }
+  ],
+  "run_id": "history-backfill-fast-0425-0449",
+  "schema": "bigbounce-pdf-retention-history/v1"
+}
