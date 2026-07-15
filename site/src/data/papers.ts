@@ -354,7 +354,7 @@ export const papers: Paper[] = [
     figures: ["Chirality sky map", "Hemisphere null", "Bias audit results", "Class pie (canonical text counts)"],
     remainingWork: [
       "Freeze and validate full-catalog imaging-leg, depth, seeing, PSF, and redshift metadata; the exact morphology join is now public but these fields remain unavailable",
-      "Mint a DOI-backed immutable paper/source/figure archive and bind it to the public HF catalog release before submission",
+      "A verified exact-SHA deposit candidate and reversible GitHub draft now exist; reserve and publish the DOI-backed immutable archive only after authentication, DOI insertion, recompile, and confirmation",
       "Prove the exact training split/seed/realization and propagate spatially varying confusion with covariance",
       "Author arXiv endorsement and journal-submission decision",
     ],

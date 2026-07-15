@@ -57,6 +57,26 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p4-v10252-fail-closed-deposit-draft-2026-07-15",
+    dateISO: "2026-07-15",
+    timePT: "10:27 AM",
+    kind: "skill-improvement",
+    title: "P4 v1.0.252 — exact-commit deposit candidate prepared without claiming publication",
+    papers: ["P4"],
+    summary:
+      "A reusable fail-closed builder verifies the exact TeX, 28-page PDF, standalone arXiv bundle, proof receipt, and 90 tracked provenance files before producing checksums and placeholder-free Zenodo metadata. The assets are retained in a reversible GitHub draft targeted at science commit 8cb975c3. No DOI, arXiv submission, journal acceptance, or readiness increase is claimed.",
+    keyTakeaways: [
+      "All five content assets pass local SHA256SUMS and the remote GitHub asset digests match byte-for-byte",
+      "Ignored and untracked large shards are excluded; the provenance archive is generated only from Git-tracked exact-commit inputs",
+      "P4 readiness remains 80; DOI publication, exact v1.0.252 confirmation, training, covariance, metadata, and human-review gates remain open",
+    ],
+    links: [
+      { label: "Draft-release receipt", href: `${GH}/project-context/SSOT/github-releases/P4_v1.0.252_draft_release_receipt.json` },
+      { label: "Deposit specification", href: `${GH}/project-context/SSOT/zenodo/P4_zenodo_deposition.md` },
+      { label: "Fail-closed builder", href: `${GH}/tools/prepare_paper_deposit.py` },
+    ],
+  },
+  {
     id: "p4-v10252-release-integrity-2026-07-15",
     dateISO: "2026-07-15",
     timePT: "7:00 AM",
