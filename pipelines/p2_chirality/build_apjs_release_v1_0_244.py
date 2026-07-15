@@ -281,6 +281,7 @@ def validate_release(output_dir: Path, manifest: dict[str, Any] | None = None) -
     if pq.ParquetFile(quarantine).metadata.num_rows != EXPECTED["unsafe_catalog_rows"]:
         raise ReleaseError("quarantine Parquet row count mismatch")
     primary_semantics = validate_primary_semantics(primary)
+    quarantine_equivalence = validate_quarantine_equivalence(primary, quarantine)
     observed = {
         "primary_hc_rows": 0,
         "unsafe_catalog_rows": 0,
@@ -338,10 +339,63 @@ def validate_release(output_dir: Path, manifest: dict[str, Any] | None = None) -
         "semantic_counts": observed,
         "semantic_gates": gates,
         "primary_semantics": primary_semantics,
+        "quarantine_equivalence": quarantine_equivalence,
         "primary_raw_score_columns_absent": gates["primary_raw_score_columns_absent"],
         "quarantine_reason_code": REASON,
         "calibrated_probability_claim": False,
     }
+
+
+def validate_quarantine_equivalence(primary: Path, quarantine: Path, *, batch_size: int = 250_000) -> dict[str, Any]:
+    """Prove quarantine IDs equal exactly the primary unsafe-row IDs."""
+    counts = {
+        "primary_unsafe_rows": 0, "quarantine_rows": 0,
+        "quarantine_null_object_id": 0, "quarantine_duplicate_object_id": 0,
+        "quarantine_null_primary_hc": 0,
+        "quarantine_missing_unsafe_object_id": 0, "quarantine_extra_object_id": 0,
+        "quarantine_primary_hc_mismatch": 0,
+    }
+    with tempfile.TemporaryDirectory(prefix="p4-quarantine-equivalence-") as directory:
+        with sqlite3.connect(Path(directory) / "quarantine_ids.sqlite3") as connection:
+            connection.execute("PRAGMA journal_mode=OFF")
+            connection.execute("PRAGMA synchronous=OFF")
+            connection.execute("CREATE TABLE unsafe_primary (object_id TEXT PRIMARY KEY, primary_hc INTEGER NOT NULL) WITHOUT ROWID")
+            connection.execute("CREATE TABLE quarantine (object_id TEXT PRIMARY KEY, primary_hc INTEGER NOT NULL) WITHOUT ROWID")
+            for batch in pq.ParquetFile(primary).iter_batches(columns=["object_id", "primary_hc", "raw_flip_qc_unsafe"], batch_size=batch_size):
+                ids = _strings(batch, "object_id")
+                hc = _numpy(batch, "primary_hc").astype(bool, copy=False)
+                unsafe = _numpy(batch, "raw_flip_qc_unsafe").astype(bool, copy=False)
+                rows = [(str(object_id), int(is_hc)) for object_id, is_hc in zip(ids[unsafe], hc[unsafe])]
+                counts["primary_unsafe_rows"] += len(rows)
+                try:
+                    connection.executemany("INSERT INTO unsafe_primary VALUES (?, ?)", rows)
+                except sqlite3.IntegrityError as exc:
+                    raise ReleaseError("duplicate unsafe object_id in primary product") from exc
+            for batch in pq.ParquetFile(quarantine).iter_batches(columns=["object_id", "is_primary_hc"], batch_size=batch_size):
+                ids = batch.column(batch.schema.get_field_index("object_id")).to_pylist()
+                hc = batch.column(batch.schema.get_field_index("is_primary_hc")).to_pylist()
+                counts["quarantine_rows"] += batch.num_rows
+                counts["quarantine_null_object_id"] += sum(value is None for value in ids)
+                counts["quarantine_null_primary_hc"] += sum(value is None for value in hc)
+                rows = [
+                    (str(object_id), int(bool(is_hc)))
+                    for object_id, is_hc in zip(ids, hc)
+                    if object_id is not None and is_hc is not None
+                ]
+                before = connection.total_changes
+                connection.executemany("INSERT OR IGNORE INTO quarantine VALUES (?, ?)", rows)
+                counts["quarantine_duplicate_object_id"] += len(rows) - (connection.total_changes - before)
+            counts["quarantine_missing_unsafe_object_id"] = connection.execute("SELECT COUNT(*) FROM unsafe_primary p LEFT JOIN quarantine q USING(object_id) WHERE q.object_id IS NULL").fetchone()[0]
+            counts["quarantine_extra_object_id"] = connection.execute("SELECT COUNT(*) FROM quarantine q LEFT JOIN unsafe_primary p USING(object_id) WHERE p.object_id IS NULL").fetchone()[0]
+            counts["quarantine_primary_hc_mismatch"] = connection.execute("SELECT COUNT(*) FROM quarantine q JOIN unsafe_primary p USING(object_id) WHERE q.primary_hc != p.primary_hc").fetchone()[0]
+    gates = {
+        "quarantine_rows_equal_primary_unsafe_rows": counts["quarantine_rows"] == counts["primary_unsafe_rows"],
+        **{name: value == 0 for name, value in counts.items() if name not in {"primary_unsafe_rows", "quarantine_rows"}},
+    }
+    if not all(gates.values()):
+        failed = [name for name, passed in gates.items() if not passed]
+        raise ReleaseError(f"quarantine equivalence gates failed: {failed}; counts={counts}")
+    return {"status": "PASS", "rows_scanned": counts, "uniqueness_backend": "temporary SQLite PRIMARY KEY (disk-backed)", "gates": gates}
 
 
 def validate_primary_semantics(
@@ -515,6 +569,7 @@ def write_validation_receipt(
     manifest_path = output_dir / "MANIFEST.json"
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     primary_path = output_dir / manifest["products"]["primary"]["filename"]
+    quarantine_path = output_dir / manifest["products"]["quarantine"]["filename"]
     release_schema_path = output_dir / manifest["products"]["schema"]["filename"]
     validator_path = Path(__file__).resolve()
     receipt = {
@@ -551,6 +606,13 @@ def write_validation_receipt(
                 "sha256": sha256_file(primary_path),
                 "manifest_bytes": manifest["products"]["primary"]["bytes"],
                 "manifest_sha256": manifest["products"]["primary"]["sha256"],
+            },
+            "quarantine_parquet": {
+                "path": repo_relative(quarantine_path),
+                "bytes": quarantine_path.stat().st_size,
+                "sha256": sha256_file(quarantine_path),
+                "manifest_bytes": manifest["products"]["quarantine"]["bytes"],
+                "manifest_sha256": manifest["products"]["quarantine"]["sha256"],
             },
         },
         "validation_result": validation_result,

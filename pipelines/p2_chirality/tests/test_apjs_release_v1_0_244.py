@@ -142,6 +142,7 @@ class ReleaseContractTests(unittest.TestCase):
                 self.assertEqual(validation["status"], "PASS")
                 self.assertTrue(validation["primary_raw_score_columns_absent"])
                 self.assertTrue(all(validation["semantic_gates"].values()))
+                self.assertTrue(all(validation["quarantine_equivalence"]["gates"].values()))
                 validation_receipt_path = tmp_path / "validation-receipt.json"
                 receipt = release.write_validation_receipt(
                     good, validation, validation_receipt_path
@@ -251,6 +252,26 @@ class ReleaseContractTests(unittest.TestCase):
                     pq.write_table(table, path)
                     with self.assertRaisesRegex(release.ReleaseError, gate):
                         release.validate_primary_semantics(path, batch_size=2)
+
+    def test_quarantine_equivalence_fails_on_id_or_hc_mismatch(self) -> None:
+        primary, quarantine, _ = release.split_batch(fixture_table().to_batches()[0])
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            primary_path = root / "primary.parquet"
+            pq.write_table(primary, primary_path)
+            cases = {
+                "quarantine_extra_object_id": ("object_id", 0, "not-unsafe"),
+                "quarantine_duplicate_object_id": ("object_id", 1, "unsafe-hc"),
+                "quarantine_primary_hc_mismatch": ("is_primary_hc", 0, False),
+                "quarantine_null_primary_hc": ("is_primary_hc", 0, None),
+            }
+            for index, (gate, (column, row, value)) in enumerate(cases.items()):
+                payload = quarantine.to_pydict()
+                payload[column][row] = value
+                path = root / f"quarantine-{index}.parquet"
+                pq.write_table(pa.table(payload, schema=quarantine.schema), path)
+                with self.subTest(gate=gate), self.assertRaisesRegex(release.ReleaseError, gate):
+                    release.validate_quarantine_equivalence(primary_path, path, batch_size=2)
 
 
 if __name__ == "__main__":

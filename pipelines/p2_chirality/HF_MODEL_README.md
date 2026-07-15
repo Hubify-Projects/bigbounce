@@ -46,10 +46,10 @@ No immutable repository tag or DOI for the current Paper IV manuscript is claime
   augmentation. Z₂ 2-fold flip is the production TTA mode (D₄ 8-fold
   tested on hold-outs only; see Paper IV §sec:tta).
 - Output classes: **CW**, **CCW**, **NS** (not-spiral).
-- Calibration: per-class Platt scaling (L-BFGS on a held-out 20% split).
-  Raw → calibrated → equivariant residuals reported in Paper IV
-  Table V (raw +0.79% / 28.8σ → calibrated +0.4% / 14.6σ → equivariant
-  −0.26% / 9.5σ).
+- Production Catalog C uses raw softmax ranking scores with flip-swap averaging;
+  these scores are explicitly uncalibrated. Per-class Platt scaling and
+  Catalog B are retained only as a historical diagnostic and are not part of
+  the released production Catalog C transform.
 - Equivariance suppression factor **2.98×** (raw asymmetry +1.576% →
   equivariant asymmetry −0.529%).
 
