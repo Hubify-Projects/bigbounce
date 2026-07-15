@@ -1,0 +1,38 @@
+{
+  "published": true,
+  "published_at_utc": "2026-07-15T20:41:06.363283+00:00",
+  "repositories": [
+    {
+      "commit_oid": "2fc392e22b3155107f6f56a60aa8ac75f57c866b",
+      "files": [
+        {
+          "bytes": 5954,
+          "path": "README.md",
+          "sha256": "58e6bac01648537409ca2a7e73105fbe06e7188141606458be90f777648fc293"
+        },
+        {
+          "bytes": 1897,
+          "path": "apjs-release/v1.0.251-morphology-sidecar/MANIFEST.json",
+          "sha256": "4d999fd9cb33bbb7ee0f9f95134569cbbb1eaf6589255e5beeab8208f8ab862c"
+        },
+        {
+          "bytes": 1998,
+          "path": "apjs-release/v1.0.251-morphology-sidecar/SCHEMA.json",
+          "sha256": "91026accb2515d098ad5f41936bcd00d31833ff7b138693b300f6e65d12bfeb7"
+        },
+        {
+          "bytes": 10733,
+          "path": "apjs-release/v1.0.251-morphology-sidecar/validate_p4_morphology_join_v1_0_251.py",
+          "sha256": "31c663b274308f72e19bd694c7e401630cf44d7d2a1d02ac261525998d89347f"
+        }
+      ],
+      "parent_commit": "245ad7c5f1e58c627be1390dc3125cd1ce1e3dc9",
+      "repo_id": "bamfai/galaxy-chirality-catalog",
+      "repo_type": "dataset",
+      "target": "dataset",
+      "verification": "immutable downloads matched bytes and SHA-256"
+    }
+  ],
+  "schema": "p4-hf-contract-update-receipt/v1",
+  "status": "published"
+}

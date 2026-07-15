@@ -1,0 +1,23 @@
+{
+  "published": true,
+  "published_at_utc": "2026-07-15T20:41:18.689654+00:00",
+  "repositories": [
+    {
+      "commit_oid": "3baeab8635a0c854166ecafaa03d83f9a94cea4b",
+      "files": [
+        {
+          "bytes": 8607,
+          "path": "README.md",
+          "sha256": "494e349b96be9aa7a0929d282aafcab19a36d7c9b23de2e6c490817e5e5088f9"
+        }
+      ],
+      "parent_commit": "237d021c451d75cf86a875e86d4de498b74e2f12",
+      "repo_id": "bamfai/galaxy-chirality-v2",
+      "repo_type": "model",
+      "target": "model",
+      "verification": "immutable downloads matched bytes and SHA-256"
+    }
+  ],
+  "schema": "p4-hf-contract-update-receipt/v1",
+  "status": "published"
+}
