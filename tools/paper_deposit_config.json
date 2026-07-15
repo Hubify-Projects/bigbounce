@@ -1,6 +1,116 @@
 {
   "schema": "bigbounce-paper-deposit-config/v1",
   "papers": {
+    "P1A": {
+      "tex": "arxiv/paper1a_ech_nogo.tex",
+      "pdf": "arxiv/paper1a_ech_nogo.pdf",
+      "arxiv_tarball": "project-context/SSOT/arxiv_tarballs/paper1a_arxiv_{version}.tar.gz",
+      "standalone_proof": "project-context/SSOT/arxiv_tarballs/paper1a_arxiv_{version}.proof.json",
+      "tarball_main_tex": "paper1a_ech_nogo.tex",
+      "deposit_root": ".deposit-staging",
+      "bundle_assets": [
+        {
+          "source": "arxiv/paper1a_ech_nogo.tex",
+          "archive_name": "paper1a_ech_nogo.tex"
+        },
+        {
+          "source": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P1A-v1A.0.123-CQG-NOTE-MINOR-CLOSURE/closure/P1A_v1A.0.123.bbl",
+          "archive_name": "paper1a_ech_nogo.bbl"
+        }
+      ],
+      "provenance_globs": [
+        "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P1A-v1A.0.123-CQG-NOTE-MINOR-CLOSURE/**/*",
+        "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P1A-v1A.0.123-EXACTPDF-4c450a67-CQG-NOTE-CODEX-SUBSCRIPTION-CONFIRM/**/*"
+      ],
+      "extra_assets": [
+        "arxiv/scripts/fierz_lemma_check.py",
+        "arxiv/scripts/njl_gap_equation_route1.py",
+        "arxiv/scripts/njl_gap_equation_route1_results.json",
+        "project-context/pdf-archive/manifests/2026/07/20260714T210548Z-p1a-v1A.0.123-cqg-minor-closure-20260714T140548-0700.json",
+        "project-context/peer-reviews/never-fabricate-derivation/p1a_v1A.0.123_2026-07-14_1408.md"
+      ],
+      "provenance_archive": "P1A_v1A.0.123_tracked_provenance.tar.gz",
+      "metadata_complete": false,
+      "metadata_blocker": "Houston must choose and authorize the P1A manuscript/source license; the live paper declares no license",
+      "metadata": {
+        "title": "Algebraic Cartan Elimination in Minimal Einstein--Cartan--Holst Gravity: Spin-Sourced Contact and Zero-Spin Scalar Branches",
+        "creators": [
+          {
+            "name": "Golden, Houston"
+          }
+        ],
+        "description": "Current seven-page CQG Note deposit candidate. License selection remains unresolved, so Zenodo-ready metadata generation fails closed.",
+        "upload_type": "publication",
+        "publication_type": "article",
+        "access_right": "open"
+      }
+    },
+    "P3": {
+      "tex": "pipelines/p3_anomaly_engine/paper3_apjs.tex",
+      "pdf": "pipelines/p3_anomaly_engine/paper3_apjs.pdf",
+      "arxiv_tarball": "project-context/SSOT/arxiv_tarballs/paper3_apjs_arxiv_{version}.tar.gz",
+      "standalone_proof": "project-context/SSOT/arxiv_tarballs/paper3_apjs_arxiv_{version}.proof.json",
+      "tarball_main_tex": "paper3_apjs.tex",
+      "deposit_root": ".deposit-staging",
+      "bundle_assets": [
+        {
+          "source": "pipelines/p3_anomaly_engine/paper3_apjs.tex",
+          "archive_name": "paper3_apjs.tex"
+        },
+        {
+          "source": "pipelines/p3_anomaly_engine/figures/p3_v320_r6_chance_control.pdf",
+          "archive_name": "figures/p3_v320_r6_chance_control.pdf"
+        },
+        {
+          "source": "pipelines/p3_anomaly_engine/figures/p3_v320_selection_waterfall.pdf",
+          "archive_name": "figures/p3_v320_selection_waterfall.pdf"
+        },
+        {
+          "source": "pipelines/p3_anomaly_engine/figures/p3_v320_catalog_overview.pdf",
+          "archive_name": "figures/p3_v320_catalog_overview.pdf"
+        }
+      ],
+      "bundle_tar_members": [
+        {
+          "source_tarball": "project-context/SSOT/arxiv_tarballs/paper4_arxiv_v1.0.252.tar.gz",
+          "member": "./aastex701.cls",
+          "archive_name": "aastex701.cls",
+          "expected_sha256": "c1bb436807f8bb37eb5203056db5a5a60e1c9ae6a3feb6501d7c414b9b08b062"
+        }
+      ],
+      "provenance_globs": [
+        "pipelines/p3_anomaly_engine/apjs_submission_bundle_v3.2.0-r7/**/*",
+        "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P3-v3.2.0-r8-CLOSURE-PROOF/**/*",
+        "project-context/peer-reviews/INT_apjs/CONFIRM_2026-07-14_P3_v3.2.0-r8_b5f254f9/**/*"
+      ],
+      "extra_assets": [
+        "pipelines/p3_anomaly_engine/figures/p3_v320_r6_chance_control.pdf",
+        "pipelines/p3_anomaly_engine/figures/p3_v320_selection_waterfall.pdf",
+        "pipelines/p3_anomaly_engine/figures/p3_v320_catalog_overview.pdf",
+        "project-context/pdf-archive/manifests/2026/07/20260714T215214Z-p3-v3.2.0-r8-apjs-accept-20260714T145214-0700.json"
+      ],
+      "provenance_archive": "P3_v3.2.0-r8_tracked_provenance.tar.gz",
+      "metadata": {
+        "title": "Public-ID Recovery for a Historical DESI DR1 Anomaly List: 170 High-Coordinate-Consistency Core and 11 Lower-Confidence Positional Associations",
+        "creators": [
+          {
+            "name": "Golden, Houston"
+          }
+        ],
+        "description": "Anomaly searches become reusable catalogs only when rows trace public archive objects and the recovery from a declared input list is reconstructable. This record releases the exact v3.2.0-r8 ApJS manuscript candidate and its auditable DESI DR1 public-identifier recovery bundle. The 181 warning-free global-primary associations comprise 170 high-coordinate-consistency core and 11 lower-confidence positional associations; they are reproducible follow-up lists, not validated detections or unbiased anomaly-rate samples. Data and documentation are CC BY 4.0; bundled code retains the repository license.",
+        "upload_type": "publication",
+        "publication_type": "article",
+        "access_right": "open",
+        "license": "cc-by-4.0",
+        "keywords": [
+          "DESI DR1",
+          "astronomical catalogs",
+          "anomaly detection",
+          "public identifier recovery",
+          "reproducibility"
+        ]
+      }
+    },
     "P4": {
       "tex": "pipelines/p2_chirality/chirality_catalog_paper.tex",
       "pdf": "pipelines/p2_chirality/chirality_catalog_paper.pdf",

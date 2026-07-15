@@ -189,3 +189,15 @@ def test_short_or_unknown_commit_fails_closed(tmp_path: Path) -> None:
         prepare(_args(root, config, commit[:12]))
     with pytest.raises(DepositError, match="git rev-parse"):
         prepare(_args(root, config, "0" * 40))
+
+
+def test_explicitly_incomplete_metadata_fails_closed(tmp_path: Path) -> None:
+    root, config, commit = _fixture(tmp_path)
+    payload = json.loads(config.read_text())
+    payload["papers"]["P4"]["metadata_complete"] = False
+    payload["papers"]["P4"]["metadata_blocker"] = "license decision required"
+    config.write_text(json.dumps(payload))
+    _run(root, "git", "add", "config.json")
+    _run(root, "git", "commit", "-qm", "block metadata")
+    with pytest.raises(DepositError, match="license decision required"):
+        prepare(_args(root, config, commit))

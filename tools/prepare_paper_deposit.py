@@ -363,6 +363,9 @@ def prepare(args: argparse.Namespace) -> dict[str, Any]:
     if args.verify_tarball:
         require_clean_commit_inputs(root, args.git_commit, tracked_inputs)
 
+    if config.get("metadata_complete") is False:
+        reason = str(config.get("metadata_blocker", "required deposit metadata is unresolved"))
+        raise DepositError(f"deposit metadata intentionally incomplete: {reason}")
     metadata = validate_metadata(dict(config["metadata"]))
     metadata["version"] = version.removeprefix("v")
     output = root / config["deposit_root"] / args.paper / version
