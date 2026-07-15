@@ -147,18 +147,37 @@ const historicalLiveStatus: LiveStatus = {
 // summary reflect the canonical six-paper board rather than an older review wave.
 export const liveStatus: LiveStatus = {
   ...historicalLiveStatus,
-  lastUpdatedISO: "2026-07-15T10:30:00Z",
-  lastUpdatedDisplay: "July 15, 2026 · 3:30 AM PT",
+  lastUpdatedISO: "2026-07-15T11:00:00Z",
+  lastUpdatedDisplay: "July 15, 2026 · 4:00 AM PT",
   headline:
-    "All six manuscripts remain in revision. Exact three-leg boards completed for P1B v1B.0.109 (MAJOR/MINOR/ACCEPT) and P4 v1.0.245 (MAJOR/MINOR/MINOR); truth audits verified real major defects while supporting both narrow central null claims.",
+    "All six manuscripts remain in revision. P4 v1.0.246 closes bounded defects from its exact v1.0.245 board; P1B's physical-spectrum and BBN execution contracts are repaired, but its corrected production run is still outstanding.",
   summary:
-    "P1B's physical NaMaster sensitivity claims require a full rerun with raw CAMB EE/BB spectra, and its frozen BBN provenance must be corrected. P4 requires an exact public release, reconciled training provenance, and symmetric-error propagation. Readiness holds at 56/80; no human or journal acceptance is claimed.",
+    "P1B's repaired CAMB spectrum generator and PRIMAT provenance checks pass, but no 500-MC rerun, regenerated figure, or new PDF exists. P4 v1.0.246 corrects primary anchors, sample accounting, and confusion-transfer wording; exact release, training realization, spatial covariance, and exact re-review remain open. Readiness holds at 56/80; no human or journal acceptance is claimed.",
+  papers: historicalLiveStatus.papers.map((paper) => {
+    if (paper.slug === "paper-1b") {
+      return {
+        ...paper,
+        version: "v1B.0.109",
+        pendingWork:
+          "Physical-spectrum and executed-PRIMAT contracts are repaired and tested, but no corrected 500-MC/robustness production run or new PDF exists. Run production, regenerate affected claims/figures, correct manuscript provenance, close release gates, and obtain exact plus human review. Readiness holds 56.",
+      };
+    }
+    if (paper.slug === "paper-4") {
+      return {
+        ...paper,
+        version: "v1.0.246",
+        pendingWork:
+          "Bounded v1.0.245 board defects are closed in the 27-page v1.0.246 artifact. Exact safe/quarantine/null publication, exact training realization, covariance-aware spatial confusion propagation, supported-N GZ1 rerun, DOI, exact v1.0.246 confirmation, and human review remain open. Readiness holds 80.",
+      };
+    }
+    return paper;
+  }),
   currentlyRunning: [
-    "Truth-audit records and public status are being synchronized to the exact P1B/P4 boards",
-    "Next closure lane: P4 stale-null/accounting wording plus P1B physical-spectrum rerun preparation",
+    "P1B corrected production is queued but blocked locally on PyMaster and remotely on authenticated compute access",
+    "P4 v1.0.246 is retained and mirrored; public release/provenance/calibration gates are being held open honestly",
   ],
   cronStatus:
     "No review wave is running. The anti-loop stop rule is active: verified defects are being closed before any exact-artifact confirmation rerun.",
   etaToCompletion:
-    "P4's bounded text/artifact closures can be attempted today; P1B depends on a full corrected Monte Carlo rerun and validation. A defensible all-six submission-ready date cannot be set until that compute finishes. Journal acceptance remains controlled by editors and referees.",
+    "After compute access is restored, P1B's canonical plus parallel robustness run is estimated at roughly 2.5–5 hours wall-clock, followed by manuscript/PDF QA and exact review. P4 also needs authenticated release publication and a confirmation board. A defensible all-six date remains conditional on those gates; journal acceptance is controlled by editors and referees.",
 };

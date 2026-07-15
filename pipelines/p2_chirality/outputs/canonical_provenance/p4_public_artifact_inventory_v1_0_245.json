@@ -1,0 +1,50 @@
+{
+  "schema": "p4-public-artifact-inventory/v1",
+  "paper": "P4",
+  "paper_version_audited": "v1.0.245",
+  "queried_at_utc": "2026-07-15T10:38:00Z",
+  "query_method": "huggingface_hub.HfApi dataset_info/model_info with files_metadata=True; public unauthenticated read",
+  "dataset": {
+    "repo_id": "bamfai/galaxy-chirality-catalog",
+    "revision": "a21eb596fd10edb9af9e7a1bcefb04f87327a724",
+    "catalog_production_parquet": {
+      "bytes": 952115239,
+      "sha256": "e8525ba5c98576f6361580e4a0aa7a86929ccc9f79b1423808774cfaaf313563"
+    },
+    "v1_0_244_release_products_present": false,
+    "missing_release_products": [
+      "p4_catalog_primary_safe_v1.0.244.parquet",
+      "p4_catalog_raw_flip_quarantine_v1.0.244.parquet",
+      "primary_null_amps_10000.npy",
+      "MANIFEST.json",
+      "VALIDATION.json",
+      "PRIMARY_REPRODUCTION.json"
+    ]
+  },
+  "model": {
+    "repo_id": "bamfai/galaxy-chirality-v2",
+    "revision": "237d021c451d75cf86a875e86d4de498b74e2f12",
+    "checkpoint": {
+      "filename": "chirality_model_v2_best.pt",
+      "bytes": 88046038,
+      "sha256": "618d170fa73cd7b31bf95bac49e7222e0dc47111a2f639c91a4b1ab9b2a297bf"
+    },
+    "v2_bias_audit": {
+      "filename": "v2_bias_audit.json",
+      "bytes": 426,
+      "sha256": "57278e4e83d5a1ca2ae1b3759a0f14c3854538449a846eefc6f089a8e56ee847",
+      "val_accuracy": 0.9368777275085449,
+      "n_train": 21293,
+      "n_val": 5323,
+      "training_data": {
+        "gz1": 6637,
+        "ce_spiral": 17153,
+        "not_spiral": 2826
+      }
+    }
+  },
+  "disposition": {
+    "release_gate": "OPEN: the exact v1.0.244 safe/quarantine/null/manifest products are local only and absent from the public dataset revision",
+    "training_provenance": "PARTIAL: the immutable public model revision supports 26,616 total rows, a 21,293/5,323 split, and 93.6878% validation accuracy, but it does not retain split membership, random seed, or a run-to-checkpoint receipt; conflicting committed legacy records remain to be reconciled"
+  }
+}

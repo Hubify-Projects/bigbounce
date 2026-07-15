@@ -57,6 +57,28 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p1b-pipeline-p4-v10246-bounded-closure-2026-07-15",
+    dateISO: "2026-07-15",
+    timePT: "early morning",
+    kind: "closure-wave",
+    title: "P1B execution contracts repaired + P4 v1.0.246 bounded closure retained",
+    papers: ["P1B", "P4"],
+    summary:
+      "P1B now fails closed unless it receives pinned CAMB 1.6.6 raw lensed EE/BB spectra and its frozen-run YAMLs identify the executed PRIMAT BBN table; focused checks pass, but production has not run. P4 v1.0.246 closes the bounded primary-anchor, sample-accounting, confusion-transfer, GZ1-provenance, and public-training-receipt defects from the v1.0.245 board. Readiness holds at 56/80 because the science/release gates remain open.",
+    keyTakeaways: [
+      "P1B infrastructure closure is not a science rerun: no corrected 500-MC result, figure, sensitivity number, or new PDF is claimed",
+      "P4 v1.0.246: 27 pages, SHA-256 0c3fd8422c67d0df8bc34a7a13bd089f65488cdc8fc6e2c2fcd61c7c55d7fa9a",
+      "P4 exact safe/quarantine/null release, exact training realization, spatial covariance, supported-N GZ1 rerun, DOI, and v1.0.246 confirmation remain open",
+      "No OpenAI API or Anthropic was used; no ACCEPT or human acceptance is claimed",
+    ],
+    links: [
+      { label: "P1B physical-spectrum implementation", href: `${GH_COMMIT}/690b9a51` },
+      { label: "P1B BBN provenance implementation", href: `${GH_COMMIT}/f0af6902` },
+      { label: "P4 manuscript", href: `${GH}/pipelines/p2_chirality/chirality_catalog_paper.tex` },
+      { label: "P4 canonical status", href: `${GH}/project-context/SSOT/paper-4/status.md` },
+    ],
+  },
+  {
     id: "p1b-v109-p4-v10245-exact-truth-audit-2026-07-15",
     dateISO: "2026-07-15",
     timePT: "early morning",
