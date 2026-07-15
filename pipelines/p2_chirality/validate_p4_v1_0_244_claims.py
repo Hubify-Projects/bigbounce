@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail-closed source-to-claim audit for every new P4 v1.0.248 number."""
+"""Fail-closed source-to-claim audit for every new P4 v1.0.249 number."""
 
 from __future__ import annotations
 
@@ -26,6 +26,10 @@ EVIDENCE = {
     "stratified_confusion": P4 / "outputs/gz1_stratified_confusion.json",
     "gz1_dipole": P4 / "outputs/gz1only_fullN_dipole_result.json",
     "public_release_receipt": P4 / "outputs/canonical_provenance/p4_hf_public_release_receipt_v1_0_244.json",
+    "multinull": P4 / "outputs/canonical_provenance/p4_multinull_battery.json",
+    "leg_proxy": P4 / "outputs/canonical_provenance/morphology_template_l1_projection.json",
+    "boundary": P4 / "outputs/canonical_provenance/boundary_distance_variance.json",
+    "cross_spectrum": P4 / "outputs/canonical_provenance/p4_cross_spectrum_A_n.json",
     "training_benchmark": P4 / "BENCHMARK_REPORT.md",
     "model_readme": P4 / "HF_MODEL_README.md",
 }
@@ -62,6 +66,10 @@ def audit() -> dict[str, Any]:
     stratified = load(EVIDENCE["stratified_confusion"])
     gz1 = load(EVIDENCE["gz1_dipole"])
     public_release = load(EVIDENCE["public_release_receipt"])
+    multinull = load(EVIDENCE["multinull"])
+    leg_proxy = load(EVIDENCE["leg_proxy"])
+    boundary = load(EVIDENCE["boundary"])
+    cross_spectrum = load(EVIDENCE["cross_spectrum"])
     panel = r24["items"]["queue8_openai_m1_robustness_panel"]
     cells = panel["panel"]
 
@@ -110,6 +118,13 @@ def audit() -> dict[str, Any]:
             and public_release["provider_receipt_commit"] == "e535b26247c892971963be6029435544cf29d19b"
             and public_release["public_manifest_sha256"] == "c2e5404adcdcd2c395c03b0cc50e0e815fa9653643407dc0ac91e5afc35ed848"
         ),
+        "apodized_and_multipole_share_baseline_c1": close(
+            multinull["results"]["baseline_data_C1_l1"],
+            multinull["results"]["multipole_spectrum"]["l_1"]["data"],
+        ),
+        "leg_proxy_not_fsc": close(leg_proxy["config"]["f_sky_canonical"] * 49_152, 24_270),
+        "boundary_not_fsc": sum(row["n_pix"] for row in boundary["shells"]) == 35_438,
+        "cross_spectrum_mask_unrecorded": "mask" not in cross_spectrum["config"] and "n_pix" not in cross_spectrum["config"],
     }
     expected_cells = [
         (10, "uniform", 23_682, 0.535620732327616, 0.2698650674662669),
@@ -133,7 +148,9 @@ def audit() -> dict[str, Any]:
     schema = load(P4 / "apjs_release_schema_v1_0_244.json")
     gates.update(
         {
-            "paper_version": r"\newcommand{\paperVersion}{v1.0.248}" in tex,
+            "paper_version": r"\newcommand{\paperVersion}{v1.0.249}" in tex,
+            "paper_limits_fsc_synthesis_to_two": "Two diagnostics are bound to the declared \\FSC{} base support" in tex,
+            "paper_excludes_unproven_supports": all(token in tex for token in ("24,270 pixels", "35,438 latitude-mask pixels", "does not record enough mask provenance")),
             "paper_prints_catalog_and_hc_counts": "249,066 unsafe rows catalog-wide" in tex and "Exactly 59,515" in tex,
             "paper_prints_primary_null": "population standard deviation are $0.00348994$ and $0.00156969$" in tex and "$p=(2246+1)/(10000+1)=0.22468$" in tex,
             "paper_prints_all_panel_cells": all(token in tex for token in ("(+0.536,0.270)", "(+0.794,0.203)", "(-0.141,0.505)")),
@@ -154,9 +171,9 @@ def audit() -> dict[str, Any]:
     )
     failed = [name for name, passed in gates.items() if not passed]
     result = {
-        "schema": "p4-v1.0.248-source-to-claim-audit/v1",
+        "schema": "p4-v1.0.249-source-to-claim-audit/v1",
         "paper": "P4",
-        "paper_version": "v1.0.248",
+        "paper_version": "v1.0.249",
         "status": "PASS" if not failed else "FAIL",
         "gates": gates,
         "failed_gates": failed,

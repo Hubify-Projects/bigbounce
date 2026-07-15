@@ -56,7 +56,11 @@
 \newcommand{\HCRI}{\textsc{HC-RI}}
 \newcommand{\FSC}{\textsc{FS-C}}
 \newcommand{\MAGF}{\textsc{MASTER-AGF}}
-\newcommand{\paperVersion}{v1.0.248}
+\newcommand{\paperVersion}{v1.0.249}
+% v1.0.249 (2026-07-15 05:17 PDT — exact-v1.0.248 support audit closure:
+%   retains only apodized-mask robustness and multipole coherence as diagnostics
+%   bound to the FSC base support; all other mask-unproven diagnostics are
+%   provenance only; central HC +0.71-sigma result unchanged.)
 % v1.0.248 (2026-07-15 04:45 PDT — exact-PDF non-Anthropic truth-audit closure:
 %   corrects the public primary-null bundle; withdraws two FSC diagnostic claims
 %   whose generators used a different latitude mask; narrows TTA, training, GZ1
@@ -675,7 +679,7 @@
 %   the established two-step provenance gate.)
 % v1.0.171->172 (2026-06-10 — EXT1 closure wave restamp: recompile + mirror bundle;
 %   Data Availability hash pinned to the v1.0.172 stamp commit per provenance gate.)
-\newcommand{\paperTimestamp}{July 15, 2026, 04:45 PDT}
+\newcommand{\paperTimestamp}{July 15, 2026, 05:17 PDT}
 % v1.0.217->218 (2026-07-05 — DATA-UNLOCK: edge-on-ISOLATED argmax tie-break coherence
 %   now COMPUTED (was pod/data-lab-deferred). Join catalog_production (class_eq/RA/Dec) to
 %   committed spiral_morphology_dr8 b/a on dr8_id; edge-on (b/a<0.30) borderline population
@@ -1125,28 +1129,28 @@ Hemisphere max$|A|$ (NSIDE${}_{\rm dir}\!=\!8$, 768 directions) & $3.484{\times}
 
 \textbf{The monopole-only null reproduces $\mathbf{99.32\%}$ of the observed pre-MASTER pseudo-$C_\ell^{(\ell=1)}$ power} ($\pm 0.40$~pp per-realization null scatter, $N\!=\!500$; the residual is $+1.69\sigmaunit$, Table~\ref{tab:monopole_mask_null}). The reproduction statistic is the ratio of means, $\langle C_1^{\rm null}\rangle_{N=500}/C_1^{\rm data}$; because the observed $C_1^{\rm data}$ is a fixed scalar, the per-realization mean of the ratios $C_1^{{\rm null},k}/C_1^{\rm data}$ is identical, so the mean-of-ratios/ratio-of-means distinction does not arise for this statistic. The standard error on the mean reproduction fraction is $0.40/\sqrt{500}\approx0.018$~pp (the $\pm0.40$~pp quoted above is the per-realization scatter, not the uncertainty on the mean; artifact \artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/monopole\_mask\_null\_results.json}). The prior literature's pre-MASTER dipole-detection claims are therefore attributed at the pre-MASTER level to this leakage channel under our DESI/ViT-Small pipeline; a matched Ganalyzer reanalysis remains required for a likelihood-level exclusion of their specific estimator and cuts. \textbf{The $99.32\%$ reproduction figure applies exclusively to the un-deconvolved pre-MASTER pseudo-$C_\ell^{(\ell=1)}$.} The post-MASTER behavior is qualitatively different: a MASTER-decoupled monopole-only null ($N\!=\!500$ realizations; artifact \artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/master\_decoupled\_monopole\_null.json}) gives $\sigma\!=\!+4.84$ relative to the data, with the monopole-only null mean reproducing only $\sim\!12\%$ of the post-MASTER decoupled $C_1$; the $10^4$-realization diagnostic recompute yields $\sigma\!=\!+5.14$ (artifact \artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/master\_decoupled\_monopole\_null\_10k.json}). The post-MASTER residual therefore requires coherent depth/PSF/morphology systematics beyond the monopole-only channel — not monopole-mask leakage alone — consistent with the eight-anchor systematic analysis of Appendix~D. MASTER decoupling substantially reduces, but does not remove, the \FSC{} pseudo-$C_\ell$ leakage; the post-MASTER residuals ($+3.64\sigmaunit$ canonical unapodized; $+7.28\sigmaunit$ on the apodized weighted footprint, unchanged at $+7.13\sigmaunit$ under a depth-stratified null) are non-primary, systematics-attributed values consistent with coherent low-$\ell$ structure that MASTER does not remove on the patchy weighted footprint (Appendix~D). The primary null-dipole conclusion rests on the HC real-space dipole ($p_{\rm eq}>0.6$, $N_{\rm selected}=949{,}584$, $N_{\rm support}=947{,}326$) at $+0.71\sigmaunit$. The block-bootstrap WLS result is retained as an observed-label template diagnostic: $z\approx-7.6$ at $A_p=1.7\%$, but only $1.36\sigma_{\rm boot}$ for a physical $1.7\%$ signal after $g=0.398$ dilution.
 
-The six-support-consistent diagnostic analysis of the $+3.64\sigmaunit$ \FSC{} residual (apodized-mask robustness, multipole-spectrum coherence, quality-quartile stratification, leg-proxy cross-power, boundary-distance variance, and direct cross-spectrum) is in Appendix~D. Three discriminators disfavor interpretation~(i) (real cosmological dipole at $\sim\!1.7\%$): (a)~$\ell\!=\!2 > \ell\!=\!1$ broadband structure incompatible with a clean dipole; (b)~$p_{\rm eq}$ quality-quartile washout (all four quartiles $|\sigma|<1$); (c)~suggestive cross-spectrum evidence at $\ell\!=\!2$ ($r_{\ell=2}\!=\!-0.65$, $z\!=\!-2.89$ against a 200-realization permutation null). Historical density-null and WLS/bootstrap calculations used a different latitude-cut support and are excluded from this synthesis.
+Two diagnostics are bound to the declared \FSC{} base support: apodized-mask robustness and the multipole spectrum. They show that the $+3.64\sigmaunit$ residual persists after apodization and is broadband, with $\ell\!=\!2>\ell\!=\!1$, rather than a clean dipole. Quality-quartile, leg-proxy, boundary-distance, density-null, WLS/bootstrap, and direct cross-spectrum calculations either redefine the support, use a different mask, or do not record enough mask provenance to prove identity with \FSC{}; Appendix~D retains their results only as out-of-scope provenance. They are not used in the \FSC{} synthesis or as a physical constraint.
 
 \emph{Support correction.} The historical $+3.80\sigma$ density-null and WLS/block-bootstrap numbers summarized in older audit language below were generated on broader latitude-cut supports, not \FSC{}. They are excluded from the support-consistent synthesis and provide no \FSC{} or physical constraint; Appendix~D records the exact discrepancy.
 
 \emph{Quantitative forward model and cross-estimator stress test.} The imaging+DR8-morphology forward model reproduces 53.0\% of the full-sample $\ell=1$ amplitude by scalar ratio, while direct vector subtraction leaves 62.3\%; these definitions are not interchangeable. The residual amplitude is $6.95\times10^{-3}$ in $A_p$. Deterministic map injections change the HC fitted amplitude from $0.4597\%$ to $0.6710\%$ for the full template, $0.5533\%$ for the scalar remainder, and $0.5694\%$ for the vector remainder. Thus the residual is not automatically irrelevant, but these shared-catalog injections neither identify its origin nor supply the missing joint covariance, which remains open.
 
 \begin{table*}[tbp]
-\caption{Compact support audit of diagnostics associated with the $+3.64\sigmaunit$ \FSC{} $\ell\!=\!1$ residual. Rows marked out-of-scope used a different latitude-cut support and are not part of the \FSC{} synthesis.\label{tab:eightanchor_summary}}
+\caption{Support audit of diagnostics associated with the $+3.64\sigmaunit$ \FSC{} $\ell\!=\!1$ residual. Only rows explicitly bound to the \FSC{} base support enter the synthesis.\label{tab:eightanchor_summary}}
 \begin{ruledtabular}
 \begin{tabular}{llc}
 \textbf{Anchor} & \textbf{Key result} & \textbf{Verdict} \\
 \hline
 (a) Apodized-mask robustness & $+3.57\sigmaunit$ ($\approx$ binary-mask $+3.64\sigmaunit$) & rules out sharp-edge NaMaster artifact \\
 (b) Multipole spectrum & $\sigma_{\ell=2}\!=\!+4.73\!>\!\sigma_{\ell=1}\!=\!+3.63$ (not $\ell\!=\!1$-dominant) & \textsc{sys} \\
-(c) Quality-quartile stratification & all 4 quartiles $|\sigma|\!<\!1$, no monotone trend & \textsc{sys} \\
-(d) Leg-proxy cross-power & imaging legs source $\sim\!25\%$ of $\ell\!=\!1$ amplitude & \textsc{sys} \\
+(c) Quality-quartile stratification & quartile-specific masks, not fixed \FSC{} & out of scope \\
+(d) Leg-proxy cross-power & 24,270 pixels, not 24,087-pixel \FSC{} & out of scope \\
 (e) Density-stratified null & $+3.80\sigmaunit$ on broader latitude mask & out of scope \\
-(f) Boundary-distance variance & per-shell $\langle A_p^2\rangle$ uniform ($<\!11\%$ spread) & rules out edge-concentrated variance \\
+(f) Boundary-distance variance & 35,438-pixel latitude mask, not \FSC{} & out of scope \\
 (g) WLS template fit & $z_{\rm boot}\!\approx\!-7.6$ on broader latitude mask & out of scope \\
-(h) Direct cross-spectrum & $r_{\ell=2}\!=\!-0.65$, $\sigma\!=\!-2.89$ (depth anti-alignment) & \textsc{sys} \\
+(h) Direct cross-spectrum & exact mask not recorded in artifact & out of scope \\
 \hline
-\multicolumn{3}{p{0.95\textwidth}}{\emph{Synthesis: the six \FSC{}-consistent diagnostics favor a survey-correlated systematic; the two different-support rows are excluded rather than harmonized post hoc.}} \\
+\multicolumn{3}{p{0.95\textwidth}}{\emph{Synthesis: the two support-bound rows show apodization robustness and broadband low-$\ell$ structure; the other six rows are excluded.}} \\
 \end{tabular}
 \end{ruledtabular}
 \end{table*}
@@ -1537,7 +1541,7 @@ The full-catalog $[0.5,0.6)$ confidence bin $+3.29\sigmaunit$ decomposes as BASS
 \section{\FSC{} Systematic Analysis}
 \label{sec:app_systematic}
 
-This appendix documents six diagnostics evaluated on the declared \FSC{} support: (a)~apodized-mask robustness, (b)~multipole-spectrum coherence, (c)~quality-quartile stratification, (d)~leg-proxy cross-power, (e)~boundary-distance variance, and (f)~direct cross-spectrum. Two historical calculations---a density-stratified null and a joint WLS/block-bootstrap fit---used the broader $|b_{\rm gal}|>15^\circ$ support with $N_{\rm total}>0$ (24,187 pixels), not \FSC{} (24,087 pixels), and are retained below only as explicitly out-of-scope provenance. They do not support the \FSC{} synthesis.
+This appendix audits eight diagnostics historically associated with the \FSC{} residual. Only apodized-mask robustness and multipole-spectrum coherence are bound to the declared 24,087-pixel \FSC{} base support. Quality-quartile stratification constructs separate per-quartile masks; the leg proxy uses 24,270 pixels; boundary-distance variance uses 35,438 latitude-mask pixels; the density null and WLS/bootstrap use broader latitude-cut supports; and the direct cross-spectrum artifact does not record enough mask provenance to establish identity. Those six calculations are retained only as explicitly out-of-scope provenance and do not support the strict \FSC{} synthesis.
 
 \paragraph{Apodized-mask robustness.}
 $C^2$ $2^\circ$ apodization gives $+3.57\sigmaunit$ at $f_{\rm sky}\!=\!0.482$, essentially unchanged from the binary-mask $+3.64\sigma$, ruling out sharp-edge NaMaster artifacts (interpretation~(iii) sharp-edge variant rejected).
@@ -1546,16 +1550,16 @@ $C^2$ $2^\circ$ apodization gives $+3.57\sigmaunit$ at $f_{\rm sky}\!=\!0.482$, 
 The signal is broadband low-$\ell$: $\sigma_{\ell=1}\!=\!+3.63$, $\sigma_{\ell=2}\!=\!+4.73$ ($\ell=3,4,5$ at $-0.96,+0.13,-0.63$). A real dipole at $A\!\sim\!1.7\%$ should be $\ell\!=\!1$-dominant; the $\ell\!=\!2\!>\!\ell\!=\!1$ broadband structure is incompatible with interpretation~(i).
 
 \paragraph{Quality-quartile stratification.}
-Stratifying the spiral sample into four $p_{\rm eq}$ quartiles ($N\!\approx\!800{,}290$ each; $N_{\rm MC}\!=\!50$ per quartile) gives per-quartile \FSC{} $\ell\!=\!1$ significances of $+0.20$, $-0.42$, $+0.44$, $+0.43$ --- all $|\sigma|\!<\!1$ with no monotonic trend in label quality. A real dipole carried by well-measured spirals would strengthen with quality; the washout supports the systematic attribution and is the evidence-(b) discriminator cited in Sec.~\ref{sec:monopole_mask_null}.
+Stratifying the spiral sample into four $p_{\rm eq}$ quartiles ($N\!\approx\!800{,}290$ each; $N_{\rm MC}\!=\!50$ per quartile) gives $\ell\!=\!1$ significances of $+0.20$, $-0.42$, $+0.44$, $+0.43$. Each quartile constructs its own $N_{\rm spiral}\ge10$ mask ($f_{\rm sky}=0.4909$--$0.4924$), so these are different-support diagnostics rather than tests on the fixed \FSC{} mask and are excluded from the strict synthesis.
 
 \paragraph{Leg-proxy $\ell\!=\!1$ partial closure.}
-Computing the $\ell\!=\!1$ spherical-harmonic amplitude and cross-power for each imaging-leg fraction indicator field against the demonopole-subtracted $A_p$: $r_{\ell=1}(\text{BASS+MzLS}\!\times\!A_p)\!=\!+0.65$, $r_{\ell=1}(\text{DES}\!\times\!A_p)\!=\!-0.73$. The summed leg-induced $\ell\!=\!1$ amplitude is $\sim\!25\%$ of the observed \FSC{} $\ell\!=\!1$ amplitude, a direct quantitative anchor for interpretation~(ii).
+The historical calculation gives $r_{\ell=1}(\text{BASS+MzLS}\!\times\!A_p)\!=\!+0.65$, $r_{\ell=1}(\text{DES}\!\times\!A_p)\!=\!-0.73$, and a summed leg-induced amplitude of $\sim\!25\%$ of its observed $\ell\!=\!1$ amplitude. Its recorded $f_{\rm sky}=0.493774$ corresponds to 24,270 pixels, not the 24,087-pixel \FSC{} mask, so it is excluded from the strict synthesis.
 
 \paragraph{Density-stratified null.}
 The historical generator permuted $A_p$ within ten pixel-density deciles and reported null mean $C_1\!=\!3.44\!\times\!10^{-6}$, std $3.07\!\times\!10^{-6}$, and $z=+3.80$. Its mask is $|b_{\rm gal}|>15^\circ$ with $N_{\rm total}>0$ ($f_{\rm sky}=0.740926$), not \FSC{} ($f_{\rm sky}=0.490051$), so this number is not evidence about the \FSC{} residual and is excluded from the synthesis.
 
 \paragraph{Boundary-distance variance check.}
-Stratifying in-mask pixels into five boundary-distance shells: the per-shell weighted variance $\langle A_p^2\rangle$ is statistically uniform (range $<\!11\%$ of the mean). The chirality asymmetry-map variance is NOT concentrated near the \FSC{} boundary, disfavoring the sharp-edge NaMaster artifact variant.
+The historical five-shell calculation reports a per-shell weighted-variance range below 11\%, but its artifact records $f_{\rm sky}=0.740926$ and 35,438 shell pixels. It is therefore a latitude-mask result, not an \FSC{} boundary test, and is excluded from the strict synthesis.
 
 \paragraph{Joint nuisance-marginalized WLS fit.}
 The historical 9-template WLS fit used $(|b_{\rm gal}|>15^\circ)\land(N_{\rm total}>0)$ (24,187 pixels), not \FSC{} (24,087 pixels). On that broader support it gives $A_{\rm dipole}^{\rm best}=4.55\times10^{-3}$ and an NSIDE$=8$ block-bootstrap width $\sigma_{\rm boot}=1.63\times10^{-3}$. These values are retained for provenance only: the bootstrap covariance has not been recomputed on \FSC{}, so neither $z\approx-7.6$ against $A_{\rm ref}=0.017$ nor the illustrative $1.36\,\sigma_{\rm boot}$ transfer comparison is used as an \FSC{} or physical constraint.
@@ -1595,10 +1599,10 @@ $z$ vs.\ $A_{\rm ref}=0.017$ & \multicolumn{3}{r}{$-7.6$ (block-boot., diagnosti
 The committed bootstrap artifact explicitly records 24,187 pixels under $(|b_{\rm gal}|>15^\circ)\land(N_{\rm total}>0)$, whereas \FSC{} contains 24,087 pixels under $N_{\rm spiral}\geq10$. The former mask-equivalence assertion is therefore withdrawn; a new \FSC{} bootstrap would be required before this diagnostic could re-enter the synthesis.
 
 \paragraph{Direct cross-spectrum $A_p\times n_{\rm total}$.}
-The cross-correlation coefficient is defined per multipole as $r_\ell \equiv C_\ell^{A\times n}/\sqrt{C_\ell^{AA}\,C_\ell^{nn}}$, computed from the deconvolved spectra of the chirality field $A_p$ and the pixel-density field $n_{\rm total}(p)$. Because deconvolved auto-power estimates can scatter negative on a cut sky, $r_\ell$ is ill-defined at multipoles where an auto-power is negative (here: out of range at $\ell\!=\!3$, undefined at $\ell\!=\!4$); we therefore quote $r_\ell$ only where both auto-powers are positive, and base significance statements on the cross-power directly. The quoted significance is the \emph{signed} $z = (C_\ell^{A\times n,{\rm data}} - \langle C_\ell^{A\times n}\rangle_{\rm null})/\sigma_{\rm null}$ against a 200-realization permutation null (two-sided exceedance convention); at $\ell\!=\!2$, $r_{\ell=2}\!=\!-0.65$ with $z\!=\!-2.89$, the depth-correlated anti-alignment cited as discriminator~(c) in Sec.~\ref{sec:monopole_mask_null}.
+The cross-correlation coefficient is defined per multipole as $r_\ell \equiv C_\ell^{A\times n}/\sqrt{C_\ell^{AA}\,C_\ell^{nn}}$. At $\ell\!=\!2$, the historical result is $r_{\ell=2}\!=\!-0.65$ with signed $z\!=\!-2.89$ against a 200-realization permutation null. The artifact does not record the exact mask or pixel count, so this value is retained as provenance but excluded from the strict \FSC{} synthesis.
 
 \paragraph{Operational conclusion.}
-The \FSC{} $+3.64\sigmaunit$ residual is \emph{not} a positive detection of a primordial chirality dipole. The retained \FSC{} diagnostics favor a per-pixel-correlated low-$\ell$ systematic (depth/PSF/morphology): the $\ell=2$ cross-spectrum anti-alignment is suggestive ($r_{\ell=2}=-0.65$, $z=-2.89$; 200-MC null), imaging-leg templates account for about 25\% of the $\ell=1$ amplitude, quality quartiles wash out, and boundary-distance variance is uniform. The historical $+3.80$ density-null and WLS/bootstrap numbers are not on \FSC{} and are excluded. The primary scientific result remains the HC real-space $+0.71\sigma$ observed-label null.
+The \FSC{} $+3.64\sigmaunit$ residual is \emph{not} a positive detection of a primordial chirality dipole. On the exact base support, persistence under apodization and $\ell=2>\ell=1$ broadband structure disfavor a clean dipole. The other six historical diagnostics are different-support or support-unproven and do not strengthen that synthesis. The primary scientific result remains the HC real-space $+0.71\sigma$ observed-label null.
 
 \section{Morphology Systematics}
 \label{sec:app_morphology}

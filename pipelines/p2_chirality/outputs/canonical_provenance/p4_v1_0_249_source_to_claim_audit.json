@@ -1,0 +1,145 @@
+{
+  "evidence": {
+    "boundary": {
+      "path": "pipelines/p2_chirality/outputs/canonical_provenance/boundary_distance_variance.json",
+      "sha256": "e07135c8cc33ae0253e47ee9457ef6c83802bbc530f251bc6ddd62d161ddc4fb"
+    },
+    "catalog_qc": {
+      "path": "pipelines/p2_chirality/outputs/canonical_provenance/ext4_fb1_flip_identity_qc_catalogwide.json",
+      "sha256": "c9b0b4c610ca9d829d31561cff1eaae8ed47569f172d49aadf832e8e14bc98be"
+    },
+    "cross_spectrum": {
+      "path": "pipelines/p2_chirality/outputs/canonical_provenance/p4_cross_spectrum_A_n.json",
+      "sha256": "27ef6dd2b0c0d2030a35f4a5744f60e05cd880bc27e4bd70468f48b0b2392113"
+    },
+    "gz1_dipole": {
+      "path": "pipelines/p2_chirality/outputs/gz1only_fullN_dipole_result.json",
+      "sha256": "2afb0e1e468e1b84668abdbb324475b04005e1921260a28fa1e4e5cc34c588a9"
+    },
+    "hc_qc": {
+      "path": "pipelines/p2_chirality/outputs/canonical_provenance/ext3_nfm1_hc_dipole_qc_rerun.json",
+      "sha256": "62d1888ba66a1fcae061a351d70b8d4aa5cfab00030a4116a8b4ece7a6042e7b"
+    },
+    "leg_proxy": {
+      "path": "pipelines/p2_chirality/outputs/canonical_provenance/morphology_template_l1_projection.json",
+      "sha256": "c460346a5e2e39d0213f2fa50b21a23e638a6dfec0b176a625ba047165be4f7e"
+    },
+    "master_support": {
+      "path": "pipelines/p2_chirality/outputs/canonical_provenance/c6_depth_stratified_null.json",
+      "sha256": "b16b3f806b94aa53780422516546653d41008e1729e188b39a0ba618710764c5"
+    },
+    "model_readme": {
+      "path": "pipelines/p2_chirality/HF_MODEL_README.md",
+      "sha256": "4f6e61a13ea904fdba7c9fef2ab977e07948ceb047a233fe63f7ec2c31c8126d"
+    },
+    "multinull": {
+      "path": "pipelines/p2_chirality/outputs/canonical_provenance/p4_multinull_battery.json",
+      "sha256": "4519a6197b3297a0fd95c6a636e180fd8e661253c450905116cef8b8abbd6d59"
+    },
+    "primary_label_shuffle": {
+      "path": "pipelines/p2_chirality/outputs/canonical_provenance/p4_primary_hc_label_shuffle_10k.json",
+      "sha256": "273287da1de497c281852fa78c251717ca1f848ced4a2eb978c2dd164cceca59"
+    },
+    "primary_label_shuffle_array": {
+      "path": "pipelines/p2_chirality/outputs/canonical_provenance/p4_primary_hc_label_shuffle_10k.npy",
+      "sha256": "f6360f4bec22669097cee3e2fad8b176291d3ecbfbfbb9a9290d0bce3d5152c0"
+    },
+    "primary_result": {
+      "path": "pipelines/p2_chirality/outputs/dipole/catalog_c_summary.json",
+      "sha256": "84c2d1f97e8575780119db08e14293c32b4fa474a82030ef3f9841fff772658e"
+    },
+    "public_release_receipt": {
+      "path": "pipelines/p2_chirality/outputs/canonical_provenance/p4_hf_public_release_receipt_v1_0_244.json",
+      "sha256": "de45a0c9f6743f14ae3f86b2f4fcce2cbcc0032fb9be38f8367bd51a0e514541"
+    },
+    "robustness_panel": {
+      "path": "pipelines/p2_chirality/outputs/canonical_provenance/c12_r24conf_local_batch.json",
+      "sha256": "357d36b59506b111950c1deae3855d3452cf12589fd1d60e5cced0fe9ba76799"
+    },
+    "source_receipt": {
+      "path": "pipelines/p2_chirality/outputs/canonical_provenance/fig7_raw_vs_eq_manifest.json",
+      "sha256": "1421d4041e4c8d280cfaf97c7782996547d767f3e7c1ee73a79686ffe4d02685"
+    },
+    "stratified_confusion": {
+      "path": "pipelines/p2_chirality/outputs/gz1_stratified_confusion.json",
+      "sha256": "755c9d657a9e0827168d04133d9c6afd3245951dc37a9ad3406e232e46e22f9d"
+    },
+    "training_benchmark": {
+      "path": "pipelines/p2_chirality/BENCHMARK_REPORT.md",
+      "sha256": "4360de93f213c69e0e15dbe8eead2728301de2e64f0518cc05af67cd25e6a9f5"
+    }
+  },
+  "failed_gates": [],
+  "gates": {
+    "apodized_and_multipole_share_baseline_c1": true,
+    "boundary_not_fsc": true,
+    "catalog_rows": true,
+    "cross_spectrum_mask_unrecorded": true,
+    "full_spiral_support_pixels": true,
+    "gz1_exact_supported_n": true,
+    "hc_support_pixels": true,
+    "leg_proxy_not_fsc": true,
+    "master_support_pixels": true,
+    "max_bound_excursion": true,
+    "panel_cell_1": true,
+    "panel_cell_2": true,
+    "panel_cell_3": true,
+    "panel_cell_4": true,
+    "panel_cell_5": true,
+    "panel_cell_6": true,
+    "panel_cells": true,
+    "panel_contract": true,
+    "paper_discloses_training_conflicts": true,
+    "paper_distinguishes_selected_and_supported_n": true,
+    "paper_doi_gate_open": true,
+    "paper_excludes_unproven_supports": true,
+    "paper_gz1_effective_n_exact": true,
+    "paper_has_full_spatial_confusion_transfer": true,
+    "paper_limits_fsc_synthesis_to_two": true,
+    "paper_names_three_supports": true,
+    "paper_no_false_public_qc_claim": true,
+    "paper_no_stale_primary_055_anchor": true,
+    "paper_prints_all_panel_cells": true,
+    "paper_prints_catalog_and_hc_counts": true,
+    "paper_prints_primary_null": true,
+    "paper_public_release_is_commit_pinned": true,
+    "paper_support_table_cross_reference": true,
+    "paper_uncertainty_scales_one_over_g": true,
+    "paper_version": true,
+    "primary_amplitude": true,
+    "primary_hc_rows": true,
+    "primary_null_array_sha256": true,
+    "primary_null_draws": true,
+    "primary_null_mean": true,
+    "primary_null_retained_array_sha256": true,
+    "primary_null_seed": true,
+    "primary_null_std": true,
+    "primary_rank_p": true,
+    "primary_supported_rows": true,
+    "primary_z": true,
+    "public_release_receipt": true,
+    "schema_archive_gate_open": true,
+    "schema_uncalibrated_scope": true,
+    "source_bytes": true,
+    "source_rows": true,
+    "source_sha256": true,
+    "stratified_induced_fraction_bass": true,
+    "stratified_induced_fraction_decals": true,
+    "strict_primary_hc_rows": true,
+    "unsafe_catalog_fraction": true,
+    "unsafe_catalog_rows": true,
+    "unsafe_primary_hc_rows": true
+  },
+  "paper": "P4",
+  "paper_version": "v1.0.249",
+  "schema": "p4-v1.0.249-source-to-claim-audit/v1",
+  "scope_guard": {
+    "calibrated_probability_claim": false,
+    "doi_backed_paper_source_archive": "OPEN",
+    "formal_preregistration_claim": false,
+    "matched_external_estimator_claim": false,
+    "physical_or_primordial_bound": false,
+    "public_catalog_release": "CLOSED_AT_HF_COMMIT_db110233"
+  },
+  "status": "PASS"
+}

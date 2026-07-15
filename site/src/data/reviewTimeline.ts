@@ -57,6 +57,25 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p4-v10249-support-audit-2026-07-15",
+    dateISO: "2026-07-15",
+    timePT: "early morning",
+    kind: "closure-wave",
+    title: "P4 v1.0.249 — exact board found and closed a second support-audit regression",
+    papers: ["P4"],
+    summary:
+      "The exact v1.0.248 board returned Grok MAJOR, Gemini MINOR, and ChatGPT-subscription Codex MAJOR. Truth audit verified that four more diagnostics were not bound to the 24,087-pixel FS-C support. v1.0.249 retains only apodization robustness and multipole coherence in the strict synthesis; the HC z=0.7053 primary null is unchanged. Readiness holds 80.",
+    keyTakeaways: [
+      "Quartile masks differ; leg proxy uses 24,270 pixels; boundary variance uses 35,438; cross-spectrum mask provenance is incomplete",
+      "Six calculations are now explicitly different-support or support-unproven provenance, not FS-C evidence",
+      "OpenAI API and Anthropic were not used; exact training, DOI, AASTeX, covariance, exact review, and human gates remain open",
+    ],
+    links: [
+      { label: "Exact v1.0.248 board truth audit", href: `${PR}/INT_v3/ROUND_2026-07-15-P4-v1.0.248-EXACTPDF-1b1e2497-APJS-NONANTHROPIC-CONFIRM/P4_v1.0.248_truth_audit.md` },
+      { label: "P4 canonical status", href: `${GH}/project-context/SSOT/paper-4/status.md` },
+    ],
+  },
+  {
     id: "p4-v10248-exact-board-truth-audit-2026-07-15",
     dateISO: "2026-07-15",
     timePT: "early morning",

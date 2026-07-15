@@ -150,9 +150,9 @@ export const liveStatus: LiveStatus = {
   lastUpdatedISO: "2026-07-15T12:03:13Z",
   lastUpdatedDisplay: "July 15, 2026 · 5:03 AM PT",
   headline:
-    "All six manuscripts remain in revision. P4 v1.0.248 corrects the public null bundle and removes diagnostics whose support did not match the declared primary sample; P1B's corrected production run remains blocked on compute funding.",
+    "All six manuscripts remain in revision. P4 v1.0.249 restricts the FS-C synthesis to two support-bound diagnostics after the exact-v1.0.248 board found a second mask-provenance regression; P1B's corrected production run remains blocked on compute funding.",
   summary:
-    "P1B's repaired CAMB spectrum generator and PRIMAT provenance checks pass, but no corrected 500-MC artifact exists because the RunPod balance is negative. P4 v1.0.248 truth-audits a MAJOR/MINOR/MINOR exact-v1.0.247 board: the primary HC result remains z=0.7053, while a wrong-role public null file was corrected and two mismatched-support diagnostics were excluded from the FS-C synthesis. Corrected HF commits db110233/e535b262 are public. Training realization, spatial covariance, DOI-backed paper archive, exact v1.0.248 re-review, and human review remain open. Readiness holds at 56/80; no human or journal acceptance is claimed.",
+    "P1B's repaired CAMB spectrum generator and PRIMAT checks pass, but no corrected 500-MC artifact exists because the RunPod balance is negative. P4's exact-v1.0.248 board returned MAJOR/MINOR/MAJOR and found four more diagnostics were not bound to the 24,087-pixel FS-C support. v1.0.249 retains only apodization and multipole coherence in the strict synthesis; the primary HC result remains z=0.7053. Training realization, spatial covariance, DOI-backed archive, exact re-review, and human review remain open. Readiness holds at 56/80; no acceptance is claimed.",
   papers: historicalLiveStatus.papers.map((paper) => {
     if (paper.slug === "paper-1b") {
       return {
@@ -165,16 +165,16 @@ export const liveStatus: LiveStatus = {
     if (paper.slug === "paper-4") {
       return {
         ...paper,
-        version: "v1.0.248",
+        version: "v1.0.249",
         pendingWork:
-          "The corrected safe/quarantine/null bundle is public at immutable HF commits, and the six remaining synthesis diagnostics now use the declared FS-C support. Exact training realization, covariance-aware spatial confusion propagation, DOI-backed paper/source archive, exact v1.0.248 confirmation, and human review remain open. Readiness holds 80.",
+          "The corrected safe/quarantine/null bundle is public. Only apodization robustness and multipole coherence remain in the strict FS-C synthesis; six other diagnostics are different-support or support-unproven provenance. Training realization, spatial covariance, DOI-backed archive, exact v1.0.249 confirmation, and human review remain open. Readiness holds 80.",
       };
     }
     return paper;
   }),
   currentlyRunning: [
     "P1B corrected production is queued but blocked by a negative RunPod balance; no paid pod launch is being attempted",
-    "P4 v1.0.248 has passed source-to-claim, compile, link, overflow, and all-page visual audits; exact-PDF confirmation is next",
+    "P4 v1.0.249 support-audit closure is being compiled and verified before exact-PDF confirmation",
   ],
   cronStatus:
     "No review wave is running. The anti-loop stop rule is active: verified defects are being closed before any exact-artifact confirmation rerun.",
