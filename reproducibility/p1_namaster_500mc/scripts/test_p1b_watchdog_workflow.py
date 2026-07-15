@@ -37,6 +37,8 @@ class WatchdogWorkflowTests(unittest.TestCase):
         self.assertRegex(self.text, r"actions/checkout@[0-9a-f]{40}")
         self.assertRegex(self.text, r"actions/setup-python@[0-9a-f]{40}")
         self.assertIn('python-version: "3.11"', self.text)
+        self.assertIn("filter: blob:none", self.text)
+        self.assertIn("sparse-checkout: reproducibility/p1_namaster_500mc/scripts", self.text)
 
     def test_configuration_fails_closed(self) -> None:
         self.assertIn("if: ${{ vars.P1B_RUNPOD_INTENT != '' }}", self.text)

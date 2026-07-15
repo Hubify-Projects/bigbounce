@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 import datetime as dt
+import sys
 import unittest
+from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 import runpod_external_watchdog as watchdog
 
 

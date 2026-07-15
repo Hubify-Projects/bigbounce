@@ -235,11 +235,13 @@ invalid, or excessive. Duplicate live matches are also deleted fail-closed.
 Scheduled GitHub workflows can be delayed or dropped, so the container-local
 hard timeout remains a separate defense.
 
-The independent path is implemented but not operationally proven: this
-repository currently has no configured `RUNPOD_API_KEY` Actions secret, and no
-bounded live drill has demonstrated recovery after launcher SIGKILL. Therefore
-`provider_mutation_ready` remains false and launch still fails before RunPod
-HTTP. Static/mocked tests do not satisfy this gate.
+The independent path is implemented and its encrypted `RUNPOD_API_KEY` Actions
+secret is configured. A valid `active:false` baseline intent exercises the
+workflow without listing or mutating pods. It is still not operationally proven:
+no bounded live drill has demonstrated confirmed provider deletion after
+launcher SIGKILL. Therefore `provider_mutation_ready` remains false and launch
+still fails before RunPod HTTP. Static/mocked/inactive tests do not satisfy this
+last gate.
 
 Until that exists and `provider_mutation_ready` is deliberately changed,
 even a fully confirmed command fails before provider HTTP:

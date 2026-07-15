@@ -5,7 +5,7 @@
   "mutation_policy": "fail-closed prospective launcher; pod creation remains disabled until every provider_mutation_blocker is evidenced closed",
   "provider_mutation_ready": false,
   "provider_mutation_blockers": [
-    "The independently hosted GitHub Actions watchdog is implemented but has no configured RUNPOD_API_KEY repository secret and has not passed a bounded live launcher-SIGKILL recovery/deletion drill."
+    "The independently hosted GitHub Actions watchdog and encrypted RUNPOD_API_KEY secret are configured, but no bounded live launcher-SIGKILL recovery/deletion drill has proved confirmed provider deletion."
   ],
   "retention": {
     "schema": "p1b-runpod-retention/v1",
