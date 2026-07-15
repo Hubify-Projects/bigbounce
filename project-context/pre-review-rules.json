@@ -8,6 +8,9 @@
     "pipelines/p2_chirality/chirality_catalog_paper.tex",
     "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex"
   ],
+  "portfolio_validators": [
+    "p1b-analysis-manifest"
+  ],
   "rules": [
     {
       "id": "latex-document-begin",

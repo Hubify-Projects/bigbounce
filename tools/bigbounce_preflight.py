@@ -15,11 +15,13 @@ from pathlib import Path
 from typing import Any
 
 from paper_registry import CANONICAL_IDS, load_registry, registry_path, repo_root
+from verify_analysis_artifact_manifest import verify_manifest
 
 SCHEMA = "bigbounce.pre-review-portfolio-receipt/v1"
 ENGINE = Path.home() / ".claude/scistack/hubstack/learning-loop/paper-pre-review-check/scripts/pre_review_check.py"
 DEFAULT_RULES = "project-context/pre-review-rules.json"
 EXPECTED_ENGINE_COMMIT = "79a436e"
+P1B_ANALYSIS_MANIFEST = "reproducibility/p1b_analysis_artifact_manifest_v1B.0.108.json"
 
 
 class PortfolioError(ValueError):
@@ -60,13 +62,18 @@ def git_head(root: Path) -> str:
     return subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=root, text=True).strip()
 
 
-def ensure_clean_inputs(root: Path, registry: dict[str, dict[str, Any]]) -> None:
+def ensure_clean_inputs(
+    root: Path,
+    registry: dict[str, dict[str, Any]],
+    extra_paths: tuple[str, ...] = (),
+) -> None:
     paths = [
         entry[field]
         for paper_id in CANONICAL_IDS
         for entry in (registry[paper_id],)
         for field in ("tex_path", "pdf_path")
     ]
+    paths.extend(extra_paths)
     status = subprocess.check_output(
         ["git", "status", "--porcelain", "--", *paths], cwd=root, text=True,
     ).strip()
@@ -108,12 +115,31 @@ def pdf_pages(path: Path) -> int:
 def evaluate(root: Path, rules_path: Path) -> dict[str, Any]:
     root = root.resolve(strict=True)
     registry = load_registry(root)
-    ensure_clean_inputs(root, registry)
+    try:
+        rule_catalog = json.loads(rules_path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise PortfolioError(f"cannot read portfolio validator catalog: {exc}") from exc
+    validator_ids = rule_catalog.get("portfolio_validators", [])
+    if not isinstance(validator_ids, list) or not all(isinstance(item, str) for item in validator_ids):
+        raise PortfolioError("portfolio_validators must be a string list")
+    validator_inputs = tuple(
+        P1B_ANALYSIS_MANIFEST for item in validator_ids if item == "p1b-analysis-manifest"
+    )
+    ensure_clean_inputs(root, registry, validator_inputs)
     registry_raw = registry_path(root).read_bytes()
     engine = load_engine()
     generic = engine.evaluate(root, rules_path)
     if generic.get("verdict") != "PASS":
         raise PortfolioError("generic pre-review verdict is not PASS")
+    portfolio_validators = []
+    for validator_id in validator_ids:
+        if validator_id == "p1b-analysis-manifest":
+            portfolio_validators.append({
+                "id": validator_id,
+                **verify_manifest(root, root / P1B_ANALYSIS_MANIFEST),
+            })
+        else:
+            raise PortfolioError(f"unknown portfolio validator: {validator_id}")
     papers = []
     for paper_id in CANONICAL_IDS:
         entry = registry[paper_id]
@@ -138,6 +164,7 @@ def evaluate(root: Path, rules_path: Path) -> dict[str, Any]:
         },
         "generic_rule_receipt": generic,
         "generic_rule_receipt_sha256": sha256(canonical_bytes(generic)),
+        "portfolio_validators": portfolio_validators,
         "papers": papers,
         "paper_count": len(papers),
         "verdict": "PASS",

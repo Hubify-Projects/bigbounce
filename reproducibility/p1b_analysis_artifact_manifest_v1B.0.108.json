@@ -2,7 +2,7 @@
   "schema_version": 2,
   "paper_version": "v1B.0.108",
   "status": "pre-release analysis-artifact provenance; not a paper-release commit",
-  "base_repository_commit": "75477aa4dde12c553fcfa37276686e40f96169c9",
+  "base_repository_commit": "97ceca7f524044427b991d27244e35585a5b2a58",
   "hash_algorithm": "sha256",
   "storage_semantics": {
     "git-blob": "local blob is the scientific payload",

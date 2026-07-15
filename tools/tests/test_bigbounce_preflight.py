@@ -125,6 +125,15 @@ class PortfolioPreflightTests(unittest.TestCase):
             write_receipt(self.root, self.rules, self.receipt)
         self.assertFalse(self.receipt.exists())
 
+    def test_unknown_portfolio_validator_fails_closed(self):
+        payload = json.loads(self.rules.read_text(encoding="utf-8"))
+        payload["portfolio_validators"] = ["not-allowlisted"]
+        self.rules.write_text(json.dumps(payload), encoding="utf-8")
+        with self.registry_patch(), self.assertRaisesRegex(
+            PortfolioError, "unknown portfolio validator"
+        ):
+            write_receipt(self.root, self.rules, self.receipt)
+
     def test_dirty_canonical_input_fails_closed(self):
         source = self.root / self.registry["P1A"]["tex_path"]
         source.write_text(source.read_text(encoding="utf-8") + "% dirty\n", encoding="utf-8")
