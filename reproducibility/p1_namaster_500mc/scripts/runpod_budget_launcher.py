@@ -262,8 +262,13 @@ def launch(*, client, manifest: dict, expected_commit: str, contract: dict, bala
             cost_per_hour=cost, poll_seconds=poll_seconds, now_fn=now_fn, sleep_fn=sleep_fn,
         )
         cleanup_required = False  # supervisor owns every normal terminal outcome
-        write_recovery(recovery_path, {"schema": "p1b-runpod-recovery/v1", "state": result,
-                                       "at": now_fn().isoformat(), "pod_id": pod_id})
+        try:
+            write_recovery(recovery_path, {"schema": "p1b-runpod-recovery/v1", "state": result,
+                                           "at": now_fn().isoformat(), "pod_id": pod_id})
+        except Exception:
+            # Never turn a terminal-unverified/manual-review outcome into an
+            # automatic deletion merely because the final ledger update failed.
+            pass
         return {**event, "supervision_result": result}
     except Exception as error:
         confirmed = terminate_confirmed(client, pod_id, sleep_fn=sleep_fn)

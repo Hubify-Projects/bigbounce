@@ -254,6 +254,30 @@ class LauncherTest(unittest.TestCase):
                     sleep_fn=lambda _: None)
         self.assertIn("pod-safe", client.deleted)
 
+    def test_terminal_unverified_is_not_deleted_if_final_ledger_update_fails(self):
+        client = Client()
+        writes = {"count": 0}
+        real_write = MODULE.write_recovery
+        def fail_second(path, value):
+            writes["count"] += 1
+            if writes["count"] == 2:
+                raise OSError("disk full")
+            return real_write(path, value)
+        with mock.patch.object(MODULE, "validate_manifest"), \
+             mock.patch.object(MODULE, "supervise", return_value="terminal_unverified"), \
+             mock.patch.object(MODULE, "write_recovery", side_effect=fail_second):
+            result = MODULE.launch(
+                client=client, manifest=self.manifest, expected_commit=self.commit,
+                contract={"provider_mutation_ready": True}, balance_path=self.balance,
+                balance_max_age_minutes=15, max_hourly_rate=0.5, max_total_budget=1,
+                max_runtime_minutes=60, gpu_type_id="NVIDIA RTX A4000",
+                receipt_path=self.receipt, network_volume_id="vol-1", datacenter_id="US-KS-2",
+                s3_client=object(), retention_staging=self.root / "stage",
+                retention_receipt=self.root / "verified.json", now_fn=lambda: NOW,
+                sleep_fn=lambda _: None)
+        self.assertEqual(result["supervision_result"], "terminal_unverified")
+        self.assertEqual(client.deleted, [])
+
     def test_missing_live_price_is_cost_safely_deleted(self):
         client = Client()
         client.get_result = {"status": "RUNNING"}
