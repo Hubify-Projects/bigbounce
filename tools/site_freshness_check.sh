@@ -315,7 +315,7 @@ else:
 # ---------------------------------------------------------------------------
 # 4. VERSIONS (Convex paperVersions:current must appear in live-status.ts)
 # ---------------------------------------------------------------------------
-slugs = ["paper-1a", "paper-2", "paper-3", "paper-4", "paper-5"]
+slugs = ["paper-1a", "paper-1b", "paper-2", "paper-3", "paper-4", "paper-5"]
 mismatches = []
 oks = []
 for slug in slugs:
@@ -344,11 +344,17 @@ else:
 
 # ---------------------------------------------------------------------------
 # 5. HEARTBEAT (loop liveness — report-level; the launchd watchdog is the actor)
-#    STALE if LOOP_HEARTBEAT.json lastTickUTC is >45min old (or missing).
+#    STALE if LOOP_HEARTBEAT.json lastTickUTC is >45min old (or missing), unless
+#    live-status.ts explicitly records that no autonomous review wave is running.
 #    This is a REPORT signal only: tools/loop_watchdog.sh (launchd, ~15min) is
 #    what actually notifies + posts a Convex alert + fires recovery.
 # ---------------------------------------------------------------------------
-try:
+loop_intentionally_paused = "No autonomous review wave is running" in ls_text
+if loop_intentionally_paused:
+    results.append(("FRESH", "heartbeat",
+        "autonomous review loop intentionally paused by anti-loop stop rule"))
+else:
+  try:
     hb = json.load(open(heartbeat))
     last = parse_iso(hb.get("lastTickUTC", ""))
     if last is None:
@@ -362,11 +368,11 @@ try:
             overall_fail = True
         else:
             results.append(("FRESH", "heartbeat", "loop heartbeat %.0fmin old" % age_min))
-except FileNotFoundError:
-    results.append(("STALE", "heartbeat", "LOOP_HEARTBEAT.json missing — loop never started / watchdog down"))
-    overall_fail = True
-except Exception as e:
-    results.append(("WARN", "heartbeat", "could not read heartbeat: %s" % e))
+  except FileNotFoundError:
+      results.append(("STALE", "heartbeat", "LOOP_HEARTBEAT.json missing — loop never started / watchdog down"))
+      overall_fail = True
+  except Exception as e:
+      results.append(("WARN", "heartbeat", "could not read heartbeat: %s" % e))
 
 # ---------------------------------------------------------------------------
 # 6. PAPERS.TS LINK CONSISTENCY (kills the stale-download-link split-brain:
@@ -393,6 +399,8 @@ else:
     for b in blocks:
         sm = re.match(r'"([^"]+)"', b.strip())
         slug = sm.group(1) if sm else "?"
+        if not slug.startswith("paper-"):
+            continue
         vm = re.search(r'version:\s*"([^"]+)"', b)
         pm = re.search(r'pdfMeta:\s*"([^"]+)"', b)
         hm = re.search(r'href:\s*"(/papers/[^"]+\.pdf)"', b)
