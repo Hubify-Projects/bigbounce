@@ -125,7 +125,8 @@ atomically.
 
 ## Zero-spend RunPod production preflight
 
-`runpod_production_contract.json` freezes the container, PyMaster build recipe,
+`runpod_production_contract.json` freezes the container by immutable registry
+digest (while retaining its human-readable source tag), the PyMaster build recipe,
 one canonical command, eight independently receipted robustness commands,
 output paths, and merge acceptance gates. Generate a manifest against an exact
 clean commit (the API key is checked but never printed or stored):

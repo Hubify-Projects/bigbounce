@@ -4,7 +4,9 @@
   "provider": "runpod",
   "mutation_policy": "manifest-only; this repository contract does not create pods",
   "container": {
-    "image": "runpod/pytorch:2.8.0-py3.11-cuda12.8.1-cudnn-devel-ubuntu22.04",
+    "image": "runpod/pytorch@sha256:cb154fcca15d1d6ce858cfa672b76505e30861ef981d28ec94bd44168767d853",
+    "source_tag": "runpod/pytorch:2.8.0-py3.11-cuda12.8.1-cudnn-devel-ubuntu22.04",
+    "digest_verified": "Docker Registry manifest endpoint returned HTTP 200 on 2026-07-15",
     "runtime": "Ubuntu 22.04, Python 3.11, CUDA 12.8; CPU-bound healpy/NaMaster workload",
     "install": [
       "apt-get update",

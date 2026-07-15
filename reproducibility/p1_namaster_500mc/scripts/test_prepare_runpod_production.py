@@ -30,6 +30,11 @@ class RunPodProductionContractTest(unittest.TestCase):
         self.assertIn("NAMASTER_NREAL=500", result["canonical_command"])
         self.assertNotIn("test-only", repr(result))
 
+    def test_container_image_is_digest_pinned(self):
+        image = self.contract["container"]["image"]
+        self.assertRegex(image, r"^[^:@]+/[^:@]+@sha256:[0-9a-f]{64}$")
+        self.assertIn(":", self.contract["container"]["source_tag"])
+
     def test_missing_key_fails_closed(self):
         with mock.patch.dict(os.environ, {}, clear=True):
             with self.assertRaisesRegex(ValueError, "RUNPOD_API_KEY is required"):
