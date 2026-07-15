@@ -131,8 +131,8 @@ export const figureSections: FigureSection[] = [
         "alt": "NaMaster pipeline-recovery validation on synthetic polarization skies (N_ side=512, _P=10 white noise, N=500…",
         "number": "Figure 3 (fig:namaster_recovery)",
         "title": "NaMaster pipeline-recovery validation on synthetic polarization skies (N_ side=512, _P=10 white noise, N=500…",
-        "desc": "NaMaster pipeline-recovery validation on synthetic polarization skies (N_ side=512, _P=10 white noise, N=500 MC realizations per point; Sec. ). Panel (a): 500-MC mean recovered β vs.\\ injected _ inj\\0,0.27^,0.342^\\ at the canonical apodized f_ sky=0.32 ACT-like mask, annotated with the pipeline-recovery bias β-_ inj (0.000^, -0.032^, -0.040^). Panel (b): th…",
-        "source": "Paper 1B · v1B.0.51"
+        "desc": "Exact-bandpower-window NaMaster validation on synthetic polarization skies (N=500 per configuration). The canonical +0.270° injection recovers +0.269° (bias −0.001°); sign, sky-fraction, apodization, mask, lensing-BB, and B-purification controls show no resolved multiplicative under-recovery. This is estimator calibration, not a sky measurement.",
+        "source": "Paper 1B · v1B.0.106"
       },
       {
         "src": "/images/alp_triangle_plot.png",
@@ -147,8 +147,8 @@ export const figureSections: FigureSection[] = [
         "alt": "NaMaster β recovery vs HEALPix NSIDE",
         "number": "Figure 101",
         "title": "NaMaster β recovery vs NSIDE",
-        "desc": "Pipeline-recovery test of injected birefringence β across NSIDE = {256, 512, 1024} at f_sky = 0.32 on synthetic ΛCDM polarization skies. Demonstrates the recovery floor (bias −0.032°, sign-symmetric) — a pipeline-validation figure, not a sky-detection significance.",
-        "source": "Paper 1B · v1B.0.51"
+        "desc": "Historical effective-ell NSIDE diagnostic retained for provenance. Its apparent −0.032° recovery floor is superseded by the v1B.0.106 exact-bandpower-window operator, which recovers +0.269° from +0.270° (bias −0.001°). Neither result is a sky-detection significance.",
+        "source": "Paper 1B · historical diagnostic; superseded by v1B.0.106"
       },
       {
         "src": "/images/dneff_viability.png",

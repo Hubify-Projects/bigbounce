@@ -57,6 +57,28 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p1b-v1b0106-exact-window-state-2026-07-14",
+    dateISO: "2026-07-14",
+    timePT: "evening",
+    kind: "closure-wave",
+    title: "P1B v1B.0.106 — standalone state restored after exact-window robustness completion",
+    papers: ["P1B"],
+    summary:
+      "P1B is again tracked as a standalone companion while the P1U merge remains preserved as history. The exact NaMaster bandpower-window battery recovers +0.269° from +0.270° (bias −0.001°), including the B-purified control, and the f_sky/sign controls show no resolved multiplicative under-recovery. The compiled 20-page PDF has SHA-256 7cb825572d6474e5d0fb88fa61157df31cf5b88730243f11cf39fc25e2512013. This is a bounded science/state closure, not a review verdict: readiness holds at 56 pending exact review, human review, and release packaging.",
+    keyTakeaways: [
+      "Canonical and B-purified exact-window recovery: +0.270° → +0.269° (bias −0.001°)",
+      "f_sky=0.85: 0.270° (SE 0.001412°); f_sky=0.65: 0.268° (SE 0.001582°); negative injection: −0.270° (SE 0.002200°)",
+      "No resolved multiplicative under-recovery; synthetic-sky calibration only, not a sky measurement",
+      "Readiness HOLD 56 — no ACCEPT or human acceptance claimed",
+    ],
+    links: [
+      { label: "manuscript", href: `${GH}/arxiv/paper1b_mcmc_companion.tex` },
+      { label: "exact robustness battery", href: `${GH}/reproducibility/p1_namaster_500mc/results/exact_window_500mc/c10_robustness_battery.json` },
+      { label: "artifact manifest", href: `${GH}/reproducibility/p1b_analysis_artifact_manifest_v1B.0.106.json` },
+      { label: "science bundle commit", href: `${GH_COMMIT}/d4924987` },
+    ],
+  },
+  {
     id: "p5-v01133-aj-stop-rule-closure-2026-07-14",
     dateISO: "2026-07-14",
     timePT: "17:20–17:51",

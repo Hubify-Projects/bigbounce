@@ -141,7 +141,7 @@ const contributions: Contribution[] = [
     paper: "Paper 1A / Paper 2",
     oneLine:
       "ECH parity structure motivates a Planck-scale ALP. Predicted β = 0.27° matches the 3.6σ Planck+ACT observation at 0.5σ.",
-    what: "Numerical ΛCDM ALP field evolution gives Δφ/f_a = 0.65-1.07 across the natural mass range m/H₀ ∈ [1, 3]. Fiducial β = 0.27° (at m ≈ 1.8H₀) is consistent with the published joint WMAP+Planck β = 0.342° ± 0.094° (3.6σ). NaMaster validation (synthetic ΛCDM skies, 500 MC): β = 0.27° recovered as 0.238° — a pipeline-validation figure, not a sky measurement.",
+    what: "Numerical ΛCDM ALP field evolution gives Δφ/f_a = 0.65-1.07 across the natural mass range m/H₀ ∈ [1, 3]. Fiducial β = 0.27° (at m ≈ 1.8H₀) is consistent with the published joint WMAP+Planck β = 0.342° ± 0.094° (3.6σ). Exact-window NaMaster validation (synthetic ΛCDM skies, 500 MC): β = 0.270° recovered as 0.269° (bias −0.001°) — a pipeline-validation figure, not a sky measurement.",
     why: "Our benchmark value sits within 1σ of an actual published observation. LiteBIRD tests at 9σ in early 2030s. Bounce-mechanism independent — falsification target separate from f_NL.",
     equation:
       "β = 0.27°  ·  consistent with Eskilt+ β = 0.342° ± 0.094° (3.6σ published detection)",
@@ -289,11 +289,11 @@ const contributions: Contribution[] = [
     oneLine:
       "End-to-end pseudo-C_ℓ validation harness: 500-MC birefringence recovery on synthetic ΛCDM skies (P1B) plus MASTER-deconvolved chirality-field nulls with harmonic completeness anchors (P4).",
     what:
-      "P1B leg: synthetic ΛCDM polarization skies, ACT-like f_sky = 0.32 mask, 10 μK·arcmin noise, 500 MC — injected β = 0.27° recovered as 0.238° (bias −0.032°, sign-symmetric; σ_β(0.32) = 0.046° measured directly). Scope honestly declared: validates the E→B MASTER deconvolution, not the β–α foreground degeneracy. P4 leg: monopole-only generative nulls (99.3% of pre-MASTER ℓ=1 power), label-shuffle backgrounds, and injection completeness — a Shamir-class 1.7% dipole would recover at z ≈ 68–218 vs the observed +7.3.",
+      "P1B leg: synthetic ΛCDM polarization skies with the exact NaMaster bandpower-window operator, 500 MC per configuration — injected β = +0.270° recovered as +0.269° (bias −0.001°); B purification gives the same recovery, and the sign/f_sky controls show no resolved multiplicative under-recovery. Scope honestly declared: estimator calibration only, not a sky measurement or a β–foreground-degeneracy test. P4 leg: monopole-only generative nulls (99.3% of pre-MASTER ℓ=1 power), label-shuffle backgrounds, and injection completeness — a Shamir-class 1.7% dipole would recover at z ≈ 68–218 vs the observed +7.3.",
     why:
       "Mask-coupled pseudo-C_ℓ pipelines silently manufacture or destroy low-ℓ signals; a committed, rerunnable validation suite is what separates a believable null from an artifact.",
     equation:
-      "β bias = −0.032° (500 MC, synthetic skies)  ·  monopole-only null reproduces 99.3% of pre-MASTER ℓ=1 power",
+      "β bias = −0.001° (exact-window, 500 MC, synthetic skies)  ·  monopole-only null reproduces 99.3% of pre-MASTER ℓ=1 power",
   },
   {
     id: "provenance-audit",
