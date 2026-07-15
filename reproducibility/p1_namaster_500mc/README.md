@@ -168,7 +168,13 @@ manifest-bound commit and every required input hash, install and import-check th
 pinned scientific runtime, run one canonical plus exactly eight robustness jobs,
 write atomic log/output-hash receipts, run the strict merger, and promote a final
 completion receipt only after every receipt and merged output verifies. They do
-not contact RunPod or any other provider. The unresolved requirements are:
+not trust executable fields in the transported manifest: commands, dependency
+installation, outputs, acceptance rules, and merge semantics are re-derived
+from the hash-verified exact-commit contract. Before rerunning an unverified job,
+all of its declared outputs are removed so stale files cannot satisfy a no-op.
+The evidence set includes all eight scientific shard receipts and both merged
+result receipts, in addition to their result files. They do not contact RunPod
+or any other provider. The unresolved requirements are:
 
 1. durable upload plus hash verification of every output and receipt before deletion;
 2. automatic foreground supervision immediately after a successful create.

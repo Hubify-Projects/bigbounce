@@ -60,7 +60,18 @@
       "shards/declared_fsky_0p65.json",
       "shards/declared_negative_beta_fsky_0p32.json"
     ],
-    "merged": ["c10_robustness_battery.json", "declared_fsky_sign_battery.json"]
+    "robustness_receipts": [
+      "shards/c10_canonical_refit.json.receipt.json",
+      "shards/c10_apod_fwhm_0p5.json.receipt.json",
+      "shards/c10_apod_fwhm_3p0.json.receipt.json",
+      "shards/c10_mask_b30.json.receipt.json",
+      "shards/c10_purify_b.json.receipt.json",
+      "shards/declared_fsky_0p85.json.receipt.json",
+      "shards/declared_fsky_0p65.json.receipt.json",
+      "shards/declared_negative_beta_fsky_0p32.json.receipt.json"
+    ],
+    "merged": ["c10_robustness_battery.json", "declared_fsky_sign_battery.json"],
+    "merged_receipts": ["c10_robustness_battery.json.receipt.json", "declared_fsky_sign_battery.json.receipt.json"]
   },
   "acceptance": {
     "canonical_outputs": ["summary.json", "bandpowers.npz"],

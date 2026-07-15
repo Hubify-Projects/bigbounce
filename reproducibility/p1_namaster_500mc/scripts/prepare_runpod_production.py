@@ -17,6 +17,44 @@ DEFAULT_CONTRACT = ROOT / "reproducibility/p1_namaster_500mc/runpod_production_c
 CONFIRMATION = "LAUNCH-P1B-500MC"
 
 
+def build_execution(contract: dict) -> dict:
+    """Derive all executable semantics solely from the checked-out contract."""
+    if len(contract.get("robustness_commands", [])) != 8:
+        raise ValueError("contract must define exactly eight robustness commands")
+    output_root = contract["output_root"]
+    outputs = contract.get("execution_outputs", {})
+    robustness_outputs = outputs.get("robustness", [])
+    robustness_receipts = outputs.get("robustness_receipts", [])
+    if len(robustness_outputs) != 8 or len(robustness_receipts) != 8:
+        raise ValueError("contract must define exactly eight robustness output/receipt pairs")
+
+    def rooted(paths: list[str]) -> list[str]:
+        return [str(Path(output_root) / path) for path in paths]
+
+    jobs = [{
+        "name": "canonical", "kind": "canonical",
+        "command": contract["canonical_command"],
+        "outputs": rooted(outputs.get("canonical", [])),
+    }]
+    jobs.extend({
+        "name": f"robustness-{index + 1:02d}", "kind": "robustness",
+        "command": command,
+        "outputs": rooted([robustness_outputs[index], robustness_receipts[index]]),
+    } for index, command in enumerate(contract["robustness_commands"]))
+    return {
+        "contract_id": contract["contract_id"],
+        "container": contract["container"],
+        "output_root": output_root,
+        "acceptance": contract["acceptance"],
+        "execution_jobs": jobs,
+        "merge_job": {
+            "name": "strict-merge", "kind": "merge",
+            "command": contract["merge_command"],
+            "outputs": rooted(outputs.get("merged", []) + outputs.get("merged_receipts", [])),
+        },
+    }
+
+
 def git(*args: str) -> str:
     result = subprocess.run(
         ["git", *args], cwd=ROOT, text=True, capture_output=True, check=False
@@ -52,25 +90,7 @@ def preflight(contract: dict, expected_commit: str) -> dict:
     dirty = git("status", "--porcelain", "--untracked-files=all", "--", *inputs)
     if dirty:
         raise ValueError(f"required tracked inputs are not clean:\n{dirty}")
-    if len(contract.get("robustness_commands", [])) != 8:
-        raise ValueError("contract must define exactly eight robustness commands")
-
-    output_root = contract["output_root"]
-    outputs = contract.get("execution_outputs", {})
-    robustness_outputs = outputs.get("robustness", [])
-    if len(robustness_outputs) != 8:
-        raise ValueError("contract must define exactly eight robustness outputs")
-    def rooted(paths: list[str]) -> list[str]:
-        return [str(Path(output_root) / path) for path in paths]
-    execution_jobs = [{
-        "name": "canonical", "kind": "canonical",
-        "command": contract["canonical_command"],
-        "outputs": rooted(outputs.get("canonical", [])),
-    }]
-    execution_jobs.extend({
-        "name": f"robustness-{index + 1:02d}", "kind": "robustness",
-        "command": command, "outputs": rooted([robustness_outputs[index]]),
-    } for index, command in enumerate(contract["robustness_commands"]))
+    execution = build_execution(contract)
 
     return {
         "contract_id": contract["contract_id"],
@@ -85,12 +105,8 @@ def preflight(contract: dict, expected_commit: str) -> dict:
         "robustness_commands": contract["robustness_commands"],
         "merge_command": contract["merge_command"],
         "acceptance": contract["acceptance"],
-        "execution_jobs": execution_jobs,
-        "merge_job": {
-            "name": "strict-merge", "kind": "merge",
-            "command": contract["merge_command"],
-            "outputs": rooted(outputs.get("merged", [])),
-        },
+        "execution_jobs": execution["execution_jobs"],
+        "merge_job": execution["merge_job"],
     }
 
 

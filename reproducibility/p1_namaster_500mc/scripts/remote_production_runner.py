@@ -12,6 +12,11 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
+from prepare_runpod_production import build_execution
+
+
+CONTRACT_RELATIVE = Path("reproducibility/p1_namaster_500mc/runpod_production_contract.json")
+
 
 def sha256(path: Path) -> str:
     h = hashlib.sha256()
@@ -55,6 +60,17 @@ def validate_binding(repo: Path, manifest: dict) -> None:
         path = repo / relative
         if not path.is_file() or sha256(path) != expected:
             raise ValueError(f"manifest input hash mismatch: {relative}")
+        committed = subprocess.run(
+            ["git", "show", f"HEAD:{relative}"], cwd=repo,
+            stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=False,
+        )
+        if committed.returncode or hashlib.sha256(committed.stdout).hexdigest() != expected:
+            raise ValueError(f"manifest input is not the exact committed blob: {relative}")
+    contract = json.loads((repo / CONTRACT_RELATIVE).read_text())
+    expected = build_execution(contract)
+    for key, value in expected.items():
+        if manifest.get(key) != value:
+            raise ValueError(f"manifest executable semantics mismatch checked-out contract: {key}")
 
 
 def verified_receipt(receipt: Path, repo: Path, job: dict, commit: str) -> bool:
@@ -78,6 +94,10 @@ def execute_job(repo: Path, state_dir: Path, job: dict, commit: str) -> None:
     if verified_receipt(receipt, repo, job, commit):
         return
     receipt.unlink(missing_ok=True)
+    # An unverified invocation must prove it created every declared artifact;
+    # stale files can never satisfy a no-op or failed command.
+    for relative in job["outputs"]:
+        (repo / relative).unlink(missing_ok=True)
     log = state_dir / f"{job['name']}.log"
     log.parent.mkdir(parents=True, exist_ok=True)
     started = datetime.now(timezone.utc).isoformat()
