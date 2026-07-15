@@ -64,8 +64,9 @@ export default async function PaperPage() {
           Papers
         </h1>
         <p className="subtitle">
-          Pre-print research papers ready for arXiv submission. Click any paper
-          for full details, connected surveys, predictions tested, and remaining work.
+          Six in-revision manuscripts with current PDFs, evidence-capped readiness,
+          and explicit publication gates. Click any paper for full details, connected
+          surveys, predictions tested, and remaining work.
         </p>
         <div className="insight-strip">
           <div className="insight">

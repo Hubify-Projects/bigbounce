@@ -59,9 +59,9 @@ function computeCurrent(): Record<PaperId, { verdict: Verdict; roundId: string }
 }
 
 /**
- * All-A progress meter (directive M): counts ACCEPT cells in the CURRENT column
- * over papers × reviewer legs. Honest counting — NO_VERDICT / FAILED / gap legs
- * are NOT ACCEPT. Goal is 100%: every paper accepted by every reviewer.
+ * Historical automated-verdict diagnostic: counts ACCEPT cells in the CURRENT
+ * column over papers × reviewer legs. NO_VERDICT / FAILED / gap legs are not
+ * ACCEPT. These labels are not journal decisions or a publication gate.
  */
 export function AllAMeter() {
   const current = computeCurrent();
@@ -76,7 +76,7 @@ export function AllAMeter() {
   const pct = total === 0 ? 0 : Math.round((accept / total) * 100);
   const done = accept === total && total > 0;
   return (
-    <div className="alla-meter" role="group" aria-label="All-ACCEPT progress meter">
+    <div className="alla-meter" role="group" aria-label="Automated review ACCEPT-label diagnostic">
       <div className="alla-meter-row">
         <span className="alla-meter-count">
           {accept} / {total} cells ACCEPT
@@ -89,9 +89,9 @@ export function AllAMeter() {
         <div className="alla-meter-fill" style={{ width: `${pct}%` }} />
       </div>
       <p className="alla-meter-goal">
-        <strong>Directive&nbsp;M — goal: 100%</strong>: every paper accepted by every reviewer.
-        Counted from the CURRENT column (papers × reviewer legs); FAILED / not-yet-swept legs
-        count as not-ACCEPT.
+        <strong>Automated-review diagnostic only.</strong> Counted from the CURRENT column
+        (papers × reviewer legs); FAILED / not-yet-swept legs count as not-ACCEPT. An ACCEPT
+        here is not journal acceptance, and 100% is not required to submit a paper.
       </p>
     </div>
   );
@@ -932,23 +932,16 @@ export function VerdictSeverityTrend() {
 /* ── Readiness strip: sparse per-paper checkpoints (95-cap rule) ──────── */
 
 // Per-paper readiness — mirror of Convex papers:listAllPaperStates (readinessComputed). Keep in sync.
-// VERDICT-DERIVED: readiness = 50 (error-clean/verified base) + per-EXT-reviewer points from the latest
-// verified round (ACCEPT +16.7, MINOR +12, MAJOR +6, REJECT +0), summed over the 3 reviewers (Gemini
-// carried from last tested). NO paper is reviewer-accepted — every one still draws a real ChatGPT REJECT.
-// M1 wave (2026-07-12, post directive-M overhaul): P4 Grok softened REJ/MIN→cap 68→74; P3 ApJS-framed
-// ChatGPT REJECT + Grok MAJOR → 62→56; P5 Grok slipped ACCEPT→MAJOR (overhaul-reaction) → 80→74.
-//   P4 REJ/MIN/MIN=74 · P2 REJ/MAJ/(gem)=74 · P5 REJ/MAJ/MIN=74 · P3 REJ/MAJ/MAJ=56 · P1B(carried)=56 · P1A REJ/MAJ/MAJ=62
-// M14 wave (2026-07-12): 2nd consecutive ZERO-REJECT harvest P4+P5; P4 74 · P5 80 HOLD.
-// M15 wave (2026-07-12): P2 + P3 confirm wave, 0 genuinely-new; P2 streak 5→6 cap 74 · P3 streak 5→6 cap 56 HOLD.
-// M16 wave (2026-07-13): P1U + P4 confirm wave, 0 genuinely-new; P1U streak 6→7 cap 62→68 (Grok MAJOR→MINOR +6) · P4 streak 5→6 cap 74 HOLD.
-// (P5 recovered to 80 post-M1-slip via the RS2/M-series waves; Convex + live-status = 80.)
+// Canonical evidence caps as of 2026-07-15. All six papers remain IN REVISION.
+// Automated verdict labels inform the record but are not journal acceptance.
+// P1B v1B.0.108 and P4 v1.0.244 have not been re-reviewed after their latest closures.
 const PER_PAPER_READINESS: Record<PaperId, number> = {
-  P1A: 68,
+  P1A: 62,
   P1B: 56,
   P2: 74,
   P3: 56,
-  P4: 74,
-  P5: 80,
+  P4: 80,
+  P5: 74,
 };
 
 export function ReadinessStrip() {
@@ -959,8 +952,8 @@ export function ReadinessStrip() {
       Object.keys(PER_PAPER_READINESS).length,
   );
   return (
-    <div className="readiness-strip" title="Program readiness (2026-07-07). VERDICT-DERIVED: readiness = 50 (error-clean/verified base) + per-EXT-reviewer points (ACCEPT +16.7, MINOR +12, MAJOR +6, REJECT 0). NO paper is reviewer-accepted — every one still draws a real ChatGPT REJECT. The bar is a reviewer ACCEPT.">
-      <span className="readiness-strip-label">Program readiness · verdict-derived, avg {avg} (error-clean + verified, NOT reviewer-accepted)</span>
+    <div className="readiness-strip" title="Canonical evidence-capped readiness as of 2026-07-15. All papers remain IN REVISION; automated verdict labels are not journal acceptance.">
+      <span className="readiness-strip-label">Program readiness · evidence-capped, avg {avg}% · all papers IN REVISION</span>
       {PAPER_IDS.map((p) => {
         const r = PER_PAPER_READINESS[p as PaperId];
         const trail = cps
@@ -969,7 +962,7 @@ export function ReadinessStrip() {
           .join(" → ");
         void last;
         return (
-          <span key={p} className="readiness-chip" title={`${p}: ${trail} → ${r}% (verdict-derived; NOT reviewer-accepted, 2026-07-07)`}>
+          <span key={p} className="readiness-chip" title={`${p}: ${trail} → ${r}% (canonical evidence cap, 2026-07-15; IN REVISION)`}>
             <span className="gap-delta-paper">{p}</span> {r}%
           </span>
         );

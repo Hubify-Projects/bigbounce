@@ -62,20 +62,14 @@ export default async function ReviewsPage() {
           margin: "10px 0 6px 0",
         }}
       >
-        Every paper cycled through internal multi-vendor review rounds, then external
-        browser-tier rounds against frontier web models, then a per-finding truth-audit,
-        same-day fixes, and process upgrades mined from whatever only the external tier
-        caught. <strong>Honest correction (2026-07-04):</strong> earlier summaries here
-        claimed the papers were "MINOR-dominant / converged / publishable-strong." That was
-        built on unverified sub-agent sweeps that had dropped ChatGPT and saved no raw
-        reviewer text. A fully-verified external board (raw responses + screenshots + chat
-        URLs, all committed to git) corrected the record: <strong>none of the six papers is
-        converged</strong> — every one draws a real ChatGPT REJECT, and the verdicts are
-        REJECT/MAJOR-dominant, not MINOR. The content is now error-clean (every concrete
-        error fixed and reviewer-confirmed lifted; a fabricated derivation in P2 was caught
-        and retracted), but the remaining barrier is uniformly a <strong>venue/scope
-        judgment</strong> — a call for human referees, not more edits. This feed is a
-        permanent, honest record of the program, corrections included.
+        This feed preserves internal and external automated-review rounds, raw evidence,
+        per-finding truth audits, and subsequent closures. It is a review history, not a
+        journal decision. <strong>Current status (2026-07-15): all six papers remain IN
+        REVISION.</strong> The canonical readiness caps are P1A 62, P1B 56, P2 74, P3 56,
+        P4 80, and P5 74. P1B v1B.0.108 and P4 v1.0.244 include closure changes that have
+        not yet been re-reviewed. Automated ACCEPT labels are retained exactly as returned,
+        but they are not journal acceptance. Independent human review, immutable
+        archive/DOI work, and venue-specific checks remain open gates.
       </p>
       <div
         style={{
@@ -109,34 +103,26 @@ export default async function ReviewsPage() {
         <div className="progress-body">
           <ReadinessStrip />
           <div className="progress-block">
-            <h3 className="progress-block-title">Verdict trajectory — every paper × reviewer per round, driving REJECT/MAJOR → MINOR/ACCEPT</h3>
+            <h3 className="progress-block-title">Automated-verdict trajectory — every recorded paper × reviewer leg</h3>
             <p className="progress-block-sub">
               Each review wave (internal API + external browser) plotted on the verdict scale
               (REJECT → MAJOR → MINOR → ACCEPT; higher is better). Thin lines are per-paper
               averages (toggle by paper); the bold line is the program average. FAILED reviewer
               legs are shown as gaps, never zeros. Vertical ⚑ markers flag documented changes in
-              review rigor (de-biased prompt, integrity gate, verified-review reset, directive J)
-              so any dip in the average is attributable, not mysterious. Every point is a real
-              recorded verdict — nothing synthesized.
+              review rigor (de-biased prompt, integrity gate, verified-review reset, directive J).
+              Every point is a recorded automated verdict; none is presented as a journal decision.
             </p>
             <VerdictTrajectoryChart rows={waveRows} rigorEvents={rigorEvents} />
           </div>
           <div className="progress-block">
-            <h3 className="progress-block-title">External referee verdicts — driving toward a reviewer ACCEPT</h3>
+            <h3 className="progress-block-title">External automated-review evidence</h3>
             <p className="progress-block-sub">
-              Six papers × frontier referees (ChatGPT, Grok, Gemini) in the visible browser,
-              now with every reviewer's raw response + screenshot + chat URL saved to git. The
-              verified board is the readiness truth. <strong>Verified profile
-              (POSTPOLISH-2026-07-06): NO paper is reviewer-accepted</strong> — every one still
-              draws a real ChatGPT REJECT, with Grok/Gemini MINOR-to-MAJOR (P4 REJ/MIN/MAJ ·
-              P2 REJ/MIN/MIN · P5 MAJ/MIN/MIN · P3 REJ/MAJ/MAJ · P1B REJ/MAJ/MAJ · P1A
-              REJ/MAJ/MAJ). Readiness is <strong>verdict-derived</strong>, not ladder-derived:
-              50 (error-clean/verified base) + per-reviewer points (ACCEPT +16.7, MINOR +12,
-              MAJOR +6, REJECT 0), avg 68. The papers are error-clean, fully verified, and
-              packet-ready, but the bar is a reviewer ACCEPT — which no paper has yet. The loop
-              is now closing the remaining reviewer findings with real science (P2 independent
-              Fisher · P1A Fierz-lemma proof attempt · P3 eROSITA reproducibility fix · P1B→P1A
-              merge prep).
+              The matrices below preserve the historical automated-model labels and their raw
+              provenance. They are useful diagnostics, not an acceptance scoreboard. The current
+              canonical board is P1A v1A.0.123/62, P1B v1B.0.108/56, P2 v1.7.122/74,
+              P3 v3.2.0-r8/56, P4 v1.0.244/80, and P5 v0.1.133-2026-07-14/74; all are IN
+              REVISION. P1B v108 and P4 v244 have not been re-reviewed, so older verdict cells
+              must not be read as verdicts on those PDFs.
             </p>
             <AllAMeter />
             <ChartShell title="External referee verdicts — every paper × reviewer per round">
@@ -154,9 +140,9 @@ export default async function ReviewsPage() {
                 unverified mid-2026 sweeps reported the gap "closed to zero" — but the 2026-07
                 verified board (with ChatGPT restored and raw text captured) caught genuinely-new
                 real items those sweeps had missed: a fabricated P2 derivation and a P1B dimensional
-                bug. All were fixed or honestly disclosed. The content is now error-clean, but the
-                verified board still shows a real ChatGPT REJECT on every paper — the strongest
-                evidence that verifiable, full-context review catches what label-only sweeps cannot.
+                bug. Both were truth-audited and corrected. The lesson is procedural: full-context,
+                receipt-backed review is more reliable than label-only sweeps, while any remaining
+                scientific adequacy still requires independent human judgment.
               </p>
               <ChartShell title="Internal/external gap — externally-caught findings per round">
                 <GapClosureChart />
@@ -176,7 +162,7 @@ export default async function ReviewsPage() {
                 }}
               >
                 <span style={{ color: "var(--success)", fontWeight: 700 }}>⚑ 2026-06-26 — integrity gate.</span>{" "}
-                An independent audit of the review loop verified convergence GENUINE on substance (HIGH ~90%); identified a mild self-favoring bias
+                An independent audit of the review loop found substantial closure evidence while also identifying a mild self-favoring bias
                 (5/19 sampled dismissals rated OPINION when MINOR was more accurate); closed all 5 by making the papers
                 <em> more conservative</em> — zero scientific conclusions changed. External referee prompt de-biased.
                 R-round skills hardened: standing integrity-audit pre-check + PDF-hygiene md5 gate (pattern-062) now mandatory
@@ -212,7 +198,11 @@ export default async function ReviewsPage() {
       <div className="campaign-obs-panel">
         <h2 className="campaign-obs-heading">Campaign observations</h2>
         <p className="campaign-obs-lede">
-          The program ran 20+ internal + external rounds through mid-2026. In 2026-07 a fully-verified external board (raw reviewer text + screenshots + chat URLs committed to git) replaced the prior unverified sub-agent sweeps — which had dropped ChatGPT and overstated convergence. The verified result: none of the six papers is converged; every one draws a real ChatGPT REJECT. The verified reviews immediately earned their keep — catching a fabricated derivation in P2 (retracted), a dimensional bug in P1B (fixed), and confirming P4's null is robust against an adversarial data audit.
+          The program ran 20+ internal and external automated-review rounds through mid-2026.
+          Receipt-backed reviews replaced earlier label-only sweeps and exposed material issues,
+          including a fabricated P2 derivation (retracted) and a P1B dimensional bug (fixed).
+          Historical model labels vary substantially between runs; they are evidence for triage,
+          not stable quality measurements or substitutes for human referees.
         </p>
         <ul className="campaign-obs-list">
           <li>
@@ -222,7 +212,7 @@ export default async function ReviewsPage() {
             <strong>Grok — harsh outlier (pattern-064):</strong> its REJECT/MAJOR verdicts truth-audit as false positives (future-date FPs, companion-reliance, disclosed-caveat-as-defect); it softened to MINOR on several papers after the round fixes landed.
           </li>
           <li>
-            <strong>Gemini — most ACCEPTs:</strong> returned real ACCEPTs (P1A at Round A, P5 at Round C) but also swings to MAJOR run-to-run — high variance rather than a fixed bias.
+            <strong>Gemini — highest automated ACCEPT-label count:</strong> returned ACCEPT labels for P1A at Round A and P5 at Round C, but also swung to MAJOR on later runs. These are model outputs, not journal decisions.
           </li>
           <li>
             <strong>ChatGPT — caught real items + re-flags:</strong> surfaced a genuine P4 self-favoring overstatement (the abstract's "robust across the full confidence-cut sweep") which was corrected, alongside re-flags of already-disclosed caveats.
@@ -258,20 +248,20 @@ export default async function ReviewsPage() {
             </thead>
             <tbody>
               <tr>
-                <td className="eta-td eta-td-label">Verified external board (raw text + screenshots + chat URLs in git)</td>
-                <td className="eta-td">✓ Complete (2026-07-03 → 07). All 6 papers × ChatGPT/Grok/Gemini, every leg verified from raw. The board is the readiness truth: NO paper is reviewer-accepted — every one draws a real ChatGPT REJECT, with Grok/Gemini MINOR-to-MAJOR. Replaces the prior unverified, ChatGPT-skipping sweeps.</td>
+                <td className="eta-td eta-td-label">Automated-review evidence</td>
+                <td className="eta-td">Historical raw responses and provider receipts are retained. Coverage is version-specific: P1B v1B.0.108 and P4 v1.0.244 have not been re-reviewed. Automated labels do not establish journal acceptance.</td>
               </tr>
               <tr>
                 <td className="eta-td eta-td-label">Content integrity</td>
-                <td className="eta-td">✓ Error-clean. Every concrete error fixed + reviewer-confirmed lifted; a fabricated P2 derivation was caught and retracted; P4's null verified robust against an adversarial data audit. No fabrication survives.</td>
+                <td className="eta-td">Known material findings were truth-audited and addressed, including retraction of the fabricated P2 derivation. This is not a claim that no undiscovered error remains; independent human review is still required.</td>
               </tr>
               <tr>
-                <td className="eta-td eta-td-label">Readiness (verdict-derived, 2026-07-07)</td>
-                <td className="eta-td">Verdict-derived, avg 68 — NOT the ladder. readiness = 50 (error-clean/verified base) + per-EXT-reviewer points (ACCEPT +16.7, MINOR +12, MAJOR +6, REJECT 0): P5 80 · P2 74 · P4 68 · P1A/P1B/P3 62. This corrects the earlier "99 / program complete" build (Houston caught it), which had conflated "verification rounds complete" with "reviews passed." No paper is reviewer-accepted; a reviewer ACCEPT is the bar.</td>
+                <td className="eta-td eta-td-label">Canonical readiness (2026-07-15)</td>
+                <td className="eta-td">Evidence-capped average 67%: P1A 62 · P1B 56 · P2 74 · P3 56 · P4 80 · P5 74. All six remain IN REVISION; no automated score converts into journal acceptance.</td>
               </tr>
               <tr>
-                <td className="eta-td eta-td-label">Remaining barrier → human referees (Houston-gated)</td>
-                <td className="eta-td">Uniformly a venue/scope judgment LLM referees flag but cannot adjudicate (companion-vs-standalone, conditional-forecast, ansatz-tier). Drop-ready packets (cover letter + standalone-verified bundle) prepared per paper. Editing scope items is proven counterproductive.</td>
+                <td className="eta-td eta-td-label">Remaining publication gates</td>
+                <td className="eta-td">Independent human scientific review, venue-specific formatting and scope checks, immutable archive/DOI completion, and author submission decisions. Any paper-specific open item remains governed by its SSOT record.</td>
               </tr>
             </tbody>
           </table>

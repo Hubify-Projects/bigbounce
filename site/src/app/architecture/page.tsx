@@ -149,12 +149,12 @@ export default function ApiDocsPage() {
           The load-bearing query is{" "}
           <code>papers.getPaperState(slug)</code> — it computes readiness as{" "}
           <code>ceiling − 2·openBlockers − 1·openMajors − 0.2·openMinors − 1·openCaveats</code>.
-          The ceiling is the data-driven <code>readinessCap</code>, and as of 2026-07-07 that
-          cap is <strong>verdict-derived</strong>, not ladder-derived: 50 (error-clean/verified
-          base) + per-EXT-reviewer points from the latest verified round (ACCEPT +16.7, MINOR
-          +12, MAJOR +6, REJECT 0). No paper is reviewer-accepted yet — every one still draws a
-          real ChatGPT REJECT — so the caps sit at 62–80 (avg 68), not 99. A reviewer ACCEPT is
-          the bar; the system never auto-awards 100.
+          The ceiling is the evidence-backed <code>readinessCap</code>. As of 2026-07-15 the
+          canonical caps are P1A 62, P1B 56, P2 74, P3 56, P4 80, and P5 74 (average 67%).
+          Every paper remains <strong>IN REVISION</strong>. P1B v1B.0.108 and P4 v1.0.244 have
+          not been re-reviewed after their latest closure changes. Automated-model verdicts
+          are retained as evidence, but an ACCEPT label is not journal acceptance and does not
+          replace independent human review, archive/DOI completion, or venue-specific checks.
         </p>
       </section>
 
@@ -233,11 +233,11 @@ export default function ApiDocsPage() {
             <code>feedback_peer_review_truth_audit_protocol</code>).
           </li>
           <li>
-            <strong>No OpenRouter excuse.</strong> Direct vendor keys
-            (Anthropic/OpenAI/Gemini/Grok/Perplexity) live in{" "}
-            <code>youmd/.env.local</code>; <code>tools/cross_vendor_review_direct.py</code>{" "}
-            calls them directly. OpenRouter weekly cap is no longer a blocker (per{" "}
-            <code>feedback_no_openrouter_excuse</code>).
+            <strong>Provider routes are explicit and auditable.</strong> OpenAI-family review
+            uses subscription-backed Codex/ChatGPT CLI sessions, never the OpenAI API.
+            Direct Gemini and Grok API legs retain sanitized raw receipts. Anthropic is not
+            part of the active review route. Provider failures remain failures rather than
+            being silently replaced or relabeled.
           </li>
           <li>
             <strong>No hand-set readiness.</strong>{" "}

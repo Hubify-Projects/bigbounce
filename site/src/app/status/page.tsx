@@ -45,7 +45,7 @@ function statusLabel(state: LivePaperState): string {
   if (state.openBlockers > 0) return `${state.openBlockers} BLOCKER${state.openBlockers === 1 ? "" : "s"}`;
   if (state.openMajors > 0) return `${state.openMajors} MAJOR${state.openMajors === 1 ? "" : "s"}`;
   if (state.openMinors > 0) return `${state.openMinors} MINOR${state.openMinors === 1 ? "" : "s"}`;
-  return "clean";
+  return "no recorded open findings";
 }
 
 const stats: Array<{ value: string; label: string }> = [
@@ -92,7 +92,7 @@ export default async function StatusPage() {
 
   const totalOpenBlockers = livePapers.reduce((s, p) => s + p.openBlockers, 0);
   const totalOpenMajors = livePapers.reduce((s, p) => s + p.openMajors, 0);
-  const cleanCount = livePapers.filter(
+  const noMajorFindingCount = livePapers.filter(
     (p) => p.openBlockers === 0 && p.openMajors === 0,
   ).length;
   const totalReadiness =
@@ -136,7 +136,7 @@ export default async function StatusPage() {
         <CardContent className="space-y-3 text-sm">
           <div className="flex items-center gap-4 flex-wrap">
             <span>
-              <strong>{cleanCount}</strong>/{livePapers.length} papers clean
+              <strong>{noMajorFindingCount}</strong>/{livePapers.length} with no recorded open BLOCKER/MAJOR
             </span>
             <span className="text-muted-foreground">avg readiness {totalReadiness}%</span>
             <span className="text-muted-foreground">
@@ -210,12 +210,12 @@ export default async function StatusPage() {
           </Table>
           </div>
           <p className="text-xs text-muted-foreground">
-            Verification complete; review closure in progress. Papers are error-clean, fully
-            verified, and packet-ready — but NOT past external review. The verified EXT board
-            (POSTPOLISH-2026-07-06) shows no paper reviewer-accepted: every one draws a real
-            ChatGPT REJECT, with Grok/Gemini MINOR-to-MAJOR. Readiness is verdict-derived
-            (50 base + per-reviewer points; avg 68), NOT ladder-derived. The bar is a reviewer
-            ACCEPT — the loop is now closing the remaining findings with real science.
+            All six papers remain <strong>IN REVISION</strong>. Zero recorded open findings is
+            an inventory state, not proof of scientific closure or publication readiness.
+            Readiness values are evidence caps: P1B v1B.0.108 and P4 v1.0.244 have closure
+            changes that have not yet been re-reviewed. Remaining gates include independent
+            human scientific review, venue-specific checks, and immutable archive/DOI work.
+            Automated-model ACCEPT labels are review evidence, not journal acceptance.
           </p>
         </CardContent>
       </Card>
