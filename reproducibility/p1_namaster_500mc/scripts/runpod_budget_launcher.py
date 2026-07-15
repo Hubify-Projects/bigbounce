@@ -142,6 +142,8 @@ def launch(*, client, manifest: dict, expected_commit: str, contract: dict, bala
            max_runtime_minutes: int, gpu_type_id: str, receipt_path: Path,
            now_fn=utcnow) -> dict:
     validate_manifest(manifest, expected_commit, contract)
+    if contract.get("provider_mutation_ready") is not True:
+        raise ValueError("contract provider_mutation_ready is false; refusing before RunPod HTTP")
     if min(max_hourly_rate, max_total_budget, max_runtime_minutes) <= 0:
         raise ValueError("hourly rate, total budget, and runtime ceilings must be positive")
     runtime_budget = max_hourly_rate * max_runtime_minutes / 60
@@ -194,12 +196,13 @@ def launch(*, client, manifest: dict, expected_commit: str, contract: dict, bala
     return event
 
 
-def watchdog(client, pod_id: str, deadline: dt.datetime, max_total_budget: float,
+def watchdog(client, pod_id: str, created_at: dt.datetime, deadline: dt.datetime, max_total_budget: float,
              cost_per_hour: float, receipt_path: Path, *, poll_seconds=30, now_fn=utcnow, sleep_fn=time.sleep):
-    started = now_fn()
+    if created_at > deadline:
+        raise ValueError("watchdog created_at must not be later than deadline")
     while True:
         now = now_fn()
-        accrued = cost_per_hour * max(0, (now - started).total_seconds()) / 3600
+        accrued = cost_per_hour * max(0, (now - created_at).total_seconds()) / 3600
         if now >= deadline or accrued >= max_total_budget:
             client.delete_pod(pod_id)
             reason = "deadline" if now >= deadline else "budget"
@@ -230,6 +233,7 @@ def parse_args():
     parser.add_argument("--watchdog", action="store_true")
     parser.add_argument("--pod-id")
     parser.add_argument("--deadline")
+    parser.add_argument("--created-at")
     parser.add_argument("--cost-per-hour-usd", type=float)
     parser.add_argument("--terminate", action="store_true")
     parser.add_argument("--stop", action="store_true")
@@ -255,9 +259,9 @@ def main() -> int:
         append_receipt(args.receipt, {"at": utcnow().isoformat(), "event": "operator_deleted", "pod_id": args.pod_id})
         return 0
     if args.watchdog:
-        if not all((args.pod_id, args.deadline, args.cost_per_hour_usd, args.max_total_budget_usd)):
-            raise ValueError("watchdog requires pod id, deadline, hourly cost, and total budget")
-        watchdog(client, args.pod_id, parse_instant(args.deadline), args.max_total_budget_usd,
+        if not all((args.pod_id, args.created_at, args.deadline, args.cost_per_hour_usd, args.max_total_budget_usd)):
+            raise ValueError("watchdog requires pod id, created-at, deadline, hourly cost, and total budget")
+        watchdog(client, args.pod_id, parse_instant(args.created_at), parse_instant(args.deadline), args.max_total_budget_usd,
                  args.cost_per_hour_usd, args.receipt)
         return 0
     manifest = json.loads(args.manifest.read_text())
@@ -268,6 +272,8 @@ def main() -> int:
         return 0
     if args.confirm != CONFIRMATION:
         raise ValueError(f"--launch requires --confirm {CONFIRMATION}")
+    if contract.get("provider_mutation_ready") is not True:
+        raise ValueError("contract provider_mutation_ready is false; refusing before RunPod HTTP")
     required = (args.balance_receipt, args.max_hourly_rate_usd, args.max_total_budget_usd,
                 args.max_runtime_minutes, args.gpu_type_id)
     if any(value is None for value in required):

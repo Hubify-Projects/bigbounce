@@ -60,7 +60,7 @@ class LauncherTest(unittest.TestCase):
     def launch(self, client, **updates):
         values = dict(
             client=client, manifest=self.manifest, expected_commit=self.commit,
-            contract={}, balance_path=self.balance, balance_max_age_minutes=15,
+            contract={"provider_mutation_ready": True}, balance_path=self.balance, balance_max_age_minutes=15,
             max_hourly_rate=0.5, max_total_budget=1, max_runtime_minutes=60,
             gpu_type_id="NVIDIA RTX A4000", receipt_path=self.receipt,
             now_fn=lambda: NOW,
@@ -109,7 +109,7 @@ class LauncherTest(unittest.TestCase):
 
     def test_deadline_watchdog_deletes(self):
         client = Client()
-        result = MODULE.watchdog(client, "pod-1", NOW, 1, 0.25, self.receipt,
+        result = MODULE.watchdog(client, "pod-1", NOW - dt.timedelta(hours=1), NOW, 1, 0.25, self.receipt,
                                  now_fn=lambda: NOW, sleep_fn=lambda _: None)
         self.assertEqual(result, "deadline")
         self.assertEqual(client.deleted, ["pod-1"])
@@ -131,6 +131,47 @@ class LauncherTest(unittest.TestCase):
         self.assertEqual(payload["gpuCount"], 1)
         self.assertEqual(payload["gpuTypeIds"], ["NVIDIA RTX A4000"])
         self.assertEqual(payload["imageName"], self.image)
+
+    def test_contract_refuses_launch_before_any_provider_http(self):
+        client = Client()
+        with mock.patch.object(MODULE, "validate_manifest"):
+            with self.assertRaisesRegex(ValueError, "provider_mutation_ready is false"):
+                MODULE.launch(
+                    client=client, manifest=self.manifest, expected_commit=self.commit,
+                    contract={"provider_mutation_ready": False}, balance_path=self.balance,
+                    balance_max_age_minutes=15, max_hourly_rate=0.5,
+                    max_total_budget=1, max_runtime_minutes=60,
+                    gpu_type_id="NVIDIA RTX A4000", receipt_path=self.receipt,
+                    now_fn=lambda: NOW,
+                )
+        self.assertEqual(client.create_calls, [])
+        self.assertEqual(client.deleted, [])
+
+    def test_launch_cli_refuses_before_list_or_create(self):
+        manifest_path = self.root / "manifest.json"
+        manifest_path.write_text(json.dumps(self.manifest))
+        argv = [
+            str(SCRIPT), "--manifest", str(manifest_path),
+            "--expected-commit", self.commit, "--receipt", str(self.receipt),
+            "--launch", "--confirm", MODULE.CONFIRMATION,
+        ]
+        with mock.patch.dict(os.environ, {"RUNPOD_API_KEY": "secret"}), \
+             mock.patch.object(MODULE, "validate_manifest"), \
+             mock.patch.object(MODULE, "RunPodREST") as rest, \
+             mock.patch("sys.argv", argv):
+            with self.assertRaisesRegex(ValueError, "provider_mutation_ready is false"):
+                MODULE.main()
+        rest.return_value.list_pods.assert_not_called()
+        rest.return_value.create_pod.assert_not_called()
+
+    def test_restarted_watchdog_accrues_from_original_creation_time(self):
+        client = Client()
+        result = MODULE.watchdog(
+            client, "pod-old", NOW - dt.timedelta(hours=5), NOW + dt.timedelta(hours=1),
+            1, 0.25, self.receipt, now_fn=lambda: NOW, sleep_fn=lambda _: None,
+        )
+        self.assertEqual(result, "budget")
+        self.assertEqual(client.deleted, ["pod-old"])
 
 
 if __name__ == "__main__":

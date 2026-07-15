@@ -3,6 +3,13 @@
   "contract_id": "p1b-physical-spectrum-500mc-v2",
   "provider": "runpod",
   "mutation_policy": "manifest-only; this repository contract does not create pods",
+  "provider_mutation_ready": false,
+  "provider_mutation_blockers": [
+    "No reviewed dockerStartCmd/bootstrap performs the exact commit checkout and dependency installation.",
+    "No reviewed remote execution lifecycle runs the canonical and eight robustness commands.",
+    "No reviewed durable output upload verifies retained result and receipt hashes before deletion.",
+    "No reviewed launch path automatically enters foreground supervision immediately after create."
+  ],
   "container": {
     "image": "runpod/pytorch@sha256:cb154fcca15d1d6ce858cfa672b76505e30861ef981d28ec94bd44168767d853",
     "source_tag": "runpod/pytorch:2.8.0-py3.11-cuda12.8.1-cudnn-devel-ubuntu22.04",

@@ -142,11 +142,14 @@ positive `--max-budget-usd` and the literal confirmation
 `LAUNCH-P1B-500MC`, because provider mutation is not implemented in this
 contract. Tests never contact RunPod.
 
-### Budget-enforcing launcher (separate, fail-closed)
+### Prospective RunPod lifecycle primitives (launch disabled)
 
 `scripts/runpod_budget_launcher.py` uses RunPod's official REST v1 pod routes
-(`GET/POST /v1/pods`, `GET/DELETE /v1/pods/{id}`). Its default remains a
-non-mutating dry run. RunPod's documented REST v1 pod API does not expose the
+(`GET/POST /v1/pods`, `GET/DELETE /v1/pods/{id}`). Its default is a
+non-mutating dry run. **Actual launch is disabled** by the contract's
+`provider_mutation_ready: false` gate and refuses before listing or creating a
+pod. The retained REST methods and mocked tests are prospective primitives, not
+an approved production launcher. RunPod's documented REST v1 pod API does not expose the
 account's console credit balance, so launch requires a recent, user-supplied
 JSON receipt copied from the RunPod console:
 
@@ -154,32 +157,38 @@ JSON receipt copied from the RunPod console:
 {"source":"runpod-console","amount_usd":10.0,"observed_at":"2026-07-15T20:00:00Z"}
 ```
 
-The launcher rejects stale/future/insufficient receipts, dirty or hash-mismatched
-manifest inputs, duplicate deterministic pod names, mutable images, more than
-one GPU, and inconsistent rate/runtime/budget ceilings. The receipt output must
-be outside the repository or at a git-ignored caller-selected path. A launch is
-only possible with every explicit guard:
+The prospective code rejects stale/future/insufficient receipts, dirty or
+hash-mismatched manifest inputs, duplicate deterministic pod names, mutable
+images, more than one GPU, and inconsistent rate/runtime/budget ceilings. Those
+guards are not sufficient for useful production. Before mutation can be enabled,
+an independently reviewed lifecycle must add all four contract blockers:
+
+1. exact-commit checkout, dependency bootstrap, and `dockerStartCmd`;
+2. execution of the canonical job and all eight robustness jobs;
+3. durable upload plus hash verification of every output and receipt before deletion;
+4. automatic foreground supervision immediately after a successful create.
+
+Until all four exist and `provider_mutation_ready` is deliberately changed,
+even a fully confirmed command fails before provider HTTP:
 
 ```bash
 RUNPOD_API_KEY=... python scripts/runpod_budget_launcher.py \
   --manifest /tmp/p1b-runpod-manifest.json \
   --expected-commit "$(git rev-parse HEAD)" \
   --receipt /tmp/p1b-runpod-events.jsonl \
-  --balance-receipt /tmp/runpod-console-balance.json \
-  --balance-max-age-minutes 15 \
-  --max-hourly-rate-usd 0.50 --max-total-budget-usd 1.00 \
-  --max-runtime-minutes 60 --gpu-type-id 'NVIDIA RTX A4000' \
   --launch --confirm LAUNCH-P1B-500MC-WITH-BUDGET-GUARD
 ```
 
-Keep the watchdog in the foreground after a successful create, using the exact
-pod ID, deadline, and returned hourly rate recorded in the append-only receipt:
+For an independently created existing pod, the prospective watchdog requires
+the immutable original creation time. Restarting it accrues budget from that
+time, not from watchdog invocation:
 
 ```bash
 RUNPOD_API_KEY=... python scripts/runpod_budget_launcher.py \
   --manifest /tmp/p1b-runpod-manifest.json --expected-commit "$(git rev-parse HEAD)" \
   --receipt /tmp/p1b-runpod-events.jsonl --watchdog --pod-id POD_ID \
-  --deadline ISO_TIMESTAMP --cost-per-hour-usd RETURNED_RATE \
+  --created-at ORIGINAL_ISO_TIMESTAMP --deadline ISO_TIMESTAMP \
+  --cost-per-hour-usd RETURNED_RATE \
   --max-total-budget-usd 1.00
 ```
 
