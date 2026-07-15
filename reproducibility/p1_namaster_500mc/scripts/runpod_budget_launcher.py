@@ -16,6 +16,7 @@ from pathlib import Path
 import prepare_runpod_production as prep
 import generate_remote_bootstrap as bootstrap
 import verify_runpod_s3_retention as s3verify
+import retain_remote_production as retention
 
 
 API_BASE = "https://rest.runpod.io/v1"
@@ -139,13 +140,46 @@ def field(pod: dict, *names):
     return None
 
 
+def write_recovery(path: Path, value: dict) -> None:
+    safe = {key: val for key, val in value.items()
+            if "key" not in key.lower() and "authorization" not in key.lower()}
+    path.parent.mkdir(parents=True, exist_ok=True)
+    retention.atomic_json(path, safe)
+
+
+def terminate_confirmed(client, pod_id: str, *, attempts: int = 3,
+                        sleep_fn=time.sleep) -> bool:
+    """Best-effort delete with retry, stop fallback, and terminal confirmation."""
+    for attempt in range(attempts):
+        try:
+            client.delete_pod(pod_id)
+        except Exception:
+            if attempt == 0:
+                try:
+                    client.stop_pod(pod_id)
+                except Exception:
+                    pass
+        try:
+            pod = client.get_pod(pod_id)
+        except Exception as error:
+            # REST 404 is represented without response secrets by RunPodREST.
+            if "HTTP 404" in str(error):
+                return True
+        else:
+            if str(field(pod, "status", "desiredStatus") or "").upper() in {"TERMINATED", "DELETED"}:
+                return True
+        if attempt + 1 < attempts:
+            sleep_fn(1)
+    return False
+
+
 def launch(*, client, manifest: dict, expected_commit: str, contract: dict, balance_path: Path,
            balance_max_age_minutes: int, max_hourly_rate: float, max_total_budget: float,
            max_runtime_minutes: int, gpu_type_id: str, receipt_path: Path,
            network_volume_id: str | None = None, datacenter_id: str | None = None,
            s3_client=None, retention_staging: Path | None = None,
            retention_receipt: Path | None = None, poll_seconds: int = 30,
-           now_fn=utcnow, sleep_fn=time.sleep) -> dict:
+           recovery_path: Path | None = None, now_fn=utcnow, sleep_fn=time.sleep) -> dict:
     validate_manifest(manifest, expected_commit, contract)
     if contract.get("provider_mutation_ready") is not True:
         raise ValueError("contract provider_mutation_ready is false; refusing before RunPod HTTP")
@@ -179,51 +213,82 @@ def launch(*, client, manifest: dict, expected_commit: str, contract: dict, bala
         "containerDiskInGb": 40,
         "networkVolumeId": network_volume_id,
         "dataCenterIds": [datacenter_id],
+        "cloudType": "SECURE",
+        "volumeMountPath": "/workspace",
         "dockerEntrypoint": remote_argv[:2],
         "dockerStartCmd": [remote_argv[2]],
         "env": {"P1B_GIT_COMMIT": expected_commit, "P1B_MAX_RUNTIME_MINUTES": str(max_runtime_minutes)},
     }
     pod = client.create_pod(payload)
     pod_id = str(field(pod, "id", "podId") or "")
-    cleanup_reason = None
+    if not pod_id:
+        raise ValueError("create response omitted pod id")
+    recovery_path = recovery_path or receipt_path.with_suffix(".recovery.json")
+    cleanup_required = True
     try:
-        if not pod_id:
-            raise ValueError("create response omitted pod id")
+        # First post-create write is an atomic recovery ledger. If it fails,
+        # the enclosing exception path immediately attempts confirmed cleanup.
+        write_recovery(recovery_path, {
+            "schema": "p1b-runpod-recovery/v1", "state": "owns_live_pod",
+            "at": now_fn().isoformat(), "pod_id": pod_id, "git_commit": expected_commit,
+            "network_volume_id": network_volume_id, "datacenter_id": datacenter_id,
+        })
         cost = field(pod, "costPerHr", "desiredCostPerHr", "costPerHour")
         returned_image = field(pod, "imageName", "image")
         gpu_count = field(pod, "gpuCount")
         returned_gpu = field(pod, "gpuTypeId", "gpuType")
+        returned_volume = field(pod, "networkVolume") or {}
         status = str(field(pod, "status", "desiredStatus") or "").upper()
         if not isinstance(cost, (int, float)) or cost > max_hourly_rate:
             raise ValueError("create response exceeds hourly-rate ceiling")
         if (returned_image != image or gpu_count != 1 or returned_gpu != gpu_type_id
+                or returned_volume.get("id") != network_volume_id
+                or returned_volume.get("dataCenterId") != datacenter_id
                 or status not in {"CREATED", "RUNNING", "STARTING", "PENDING"}):
-            raise ValueError("create response image/GPU/status mismatch")
+            raise ValueError("create response image/GPU/volume/status mismatch")
+        deadline = now_fn() + dt.timedelta(minutes=max_runtime_minutes)
+        event = {"at": now_fn().isoformat(), "event": "created", "pod_id": pod_id, "pod_name": name,
+                 "git_commit": expected_commit, "image": image, "gpu_count": 1,
+                 "gpu_type_id": gpu_type_id, "network_volume_id": network_volume_id,
+                 "cost_per_hour_usd": cost, "max_total_budget_usd": max_total_budget,
+                 "deadline": deadline.isoformat(), "balance_receipt": balance}
+        append_receipt(receipt_path, event)
+        result = supervise(
+            client=client, s3_client=s3_client, pod_id=pod_id, manifest=manifest,
+            network_volume_id=network_volume_id, datacenter_id=datacenter_id,
+            retention_staging=retention_staging, retention_receipt=retention_receipt,
+            receipt_path=receipt_path, created_at=now_fn(), deadline=deadline,
+            max_total_budget=max_total_budget, max_hourly_rate=max_hourly_rate,
+            cost_per_hour=cost, poll_seconds=poll_seconds, now_fn=now_fn, sleep_fn=sleep_fn,
+        )
+        cleanup_required = False  # supervisor owns every normal terminal outcome
+        write_recovery(recovery_path, {"schema": "p1b-runpod-recovery/v1", "state": result,
+                                       "at": now_fn().isoformat(), "pod_id": pod_id})
+        return {**event, "supervision_result": result}
     except Exception as error:
-        cleanup_reason = str(error)
-        if pod_id:
-            client.delete_pod(pod_id)
-        append_receipt(receipt_path, {"at": now_fn().isoformat(), "event": "create_mismatch_deleted",
-                                     "pod_id": pod_id, "reason": cleanup_reason})
+        confirmed = terminate_confirmed(client, pod_id, sleep_fn=sleep_fn)
+        cleanup_required = False
+        try:
+            append_receipt(receipt_path, {
+                "at": now_fn().isoformat(), "event": "post_create_exception_cleanup",
+                "pod_id": pod_id, "error_class": type(error).__name__,
+                "delete_confirmed": confirmed,
+            })
+        except Exception:
+            pass
+        try:
+            write_recovery(recovery_path, {
+                "schema": "p1b-runpod-recovery/v1",
+                "state": "exception_cleanup_confirmed" if confirmed else "manual_cleanup_required",
+                "at": now_fn().isoformat(), "pod_id": pod_id,
+                "error_class": type(error).__name__,
+            })
+        except Exception:
+            pass
         raise
-    deadline = now_fn() + dt.timedelta(minutes=max_runtime_minutes)
-    event = {"at": now_fn().isoformat(), "event": "created", "pod_id": pod_id, "pod_name": name,
-             "git_commit": expected_commit, "image": image, "gpu_count": 1,
-             "gpu_type_id": gpu_type_id,
-             "cost_per_hour_usd": cost, "max_total_budget_usd": max_total_budget,
-             "deadline": deadline.isoformat(), "balance_receipt": balance}
-    append_receipt(receipt_path, event)
-    # There is deliberately no return-to-caller gap after create: supervision
-    # starts in the same stack frame and owns deletion decisions.
-    result = supervise(
-        client=client, s3_client=s3_client, pod_id=pod_id, manifest=manifest,
-        network_volume_id=network_volume_id, datacenter_id=datacenter_id,
-        retention_staging=retention_staging, retention_receipt=retention_receipt,
-        receipt_path=receipt_path, created_at=now_fn(), deadline=deadline,
-        max_total_budget=max_total_budget, max_hourly_rate=max_hourly_rate,
-        cost_per_hour=cost, poll_seconds=poll_seconds, now_fn=now_fn, sleep_fn=sleep_fn,
-    )
-    return {**event, "supervision_result": result}
+    finally:
+        if cleanup_required:
+            terminate_confirmed(client, pod_id, sleep_fn=sleep_fn)
 
 
 def retention_prefix(manifest: dict) -> str:
@@ -241,18 +306,26 @@ def supervise(*, client, s3_client, pod_id: str, manifest: dict,
         now = now_fn()
         accrued = cost_per_hour * max(0, (now - created_at).total_seconds()) / 3600
         if now >= deadline or accrued >= max_total_budget:
-            client.delete_pod(pod_id)
+            confirmed = terminate_confirmed(client, pod_id, sleep_fn=sleep_fn)
             reason = "deadline" if now >= deadline else "budget"
             append_receipt(receipt_path, {"at": now.isoformat(), "event": "supervisor_cost_deleted_unverified",
-                                         "pod_id": pod_id, "reason": reason})
+                                         "pod_id": pod_id, "reason": reason,
+                                         "delete_confirmed": confirmed})
             return reason
 
-        pod = client.get_pod(pod_id)
+        try:
+            pod = client.get_pod(pod_id)
+        except Exception:
+            append_receipt(receipt_path, {"at": now.isoformat(), "event": "supervisor_get_ambiguous",
+                                         "pod_id": pod_id})
+            sleep_fn(poll_seconds)
+            continue
         live_cost = field(pod, "costPerHr", "desiredCostPerHr", "costPerHour")
-        if isinstance(live_cost, (int, float)) and live_cost > max_hourly_rate:
-            client.delete_pod(pod_id)
+        if not isinstance(live_cost, (int, float)) or live_cost > max_hourly_rate:
+            confirmed = terminate_confirmed(client, pod_id, sleep_fn=sleep_fn)
             append_receipt(receipt_path, {"at": now.isoformat(), "event": "supervisor_price_deleted_unverified",
-                                         "pod_id": pod_id, "reason": "hourly_rate"})
+                                         "pod_id": pod_id, "reason": "hourly_rate_ambiguous_or_exceeded",
+                                         "delete_confirmed": confirmed})
             return "hourly_rate"
 
         ambiguity = None
@@ -268,9 +341,12 @@ def supervise(*, client, s3_client, pod_id: str, manifest: dict,
             # non-sensitive classification, never exception text or credentials.
             ambiguity = type(error).__name__
         else:
-            client.delete_pod(pod_id)
+            confirmed = terminate_confirmed(client, pod_id, sleep_fn=sleep_fn)
             append_receipt(receipt_path, {"at": now.isoformat(), "event": "verified_retention_then_deleted",
-                                         "pod_id": pod_id, "verification_receipt": str(retention_receipt)})
+                                         "pod_id": pod_id, "verification_receipt": str(retention_receipt),
+                                         "delete_confirmed": confirmed})
+            if not confirmed:
+                raise ValueError("verified retention but pod deletion could not be confirmed")
             return "verified"
 
         status = str(field(pod, "status", "desiredStatus") or "").upper()

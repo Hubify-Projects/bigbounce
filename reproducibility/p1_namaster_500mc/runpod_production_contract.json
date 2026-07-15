@@ -5,7 +5,7 @@
   "mutation_policy": "manifest-only; this repository contract does not create pods",
   "provider_mutation_ready": false,
   "provider_mutation_blockers": [
-    "The integrated S3-retention supervisor and deletion policy require independent truth-audit before provider mutation may be enabled."
+    "No independently hosted crash-safe watchdog owns the atomic recovery ledger and can terminate a live pod after launcher SIGKILL, host loss, or network partition."
   ],
   "retention": {
     "schema": "p1b-runpod-retention/v1",

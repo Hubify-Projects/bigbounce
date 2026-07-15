@@ -195,8 +195,9 @@ python scripts/retain_remote_production.py \
 
 Partial staging is preserved for inspection; a completed inconsistent set is
 never overwritten; an identical completed set is idempotent. A prospective
-foreground supervisor now begins in the same call frame immediately after pod
-creation. It requires a RunPod network volume mounted at `/workspace`, uses only
+in-process supervisor begins in the same call frame immediately after pod
+creation and first writes an atomic recovery ledger. It requires a RunPod
+network volume mounted at `/workspace`, uses only
 an allowlisted direct-S3 endpoint for the chosen datacenter, and receives S3
 credentials solely through boto3's standard environment/provider chain. It
 polls the exact commit-scoped `RETENTION_COMPLETE.json`, downloads the marker
@@ -208,11 +209,12 @@ manual review; active pods crossing a price, budget, or deadline ceiling are
 deleted for cost safety and explicitly recorded as unverified. Pod status alone
 is never treated as scientific success.
 
-This closes the implementation gap prospectively, but does not authorize any
-provider mutation. The integrated network-volume payload, foreground
-supervisor, S3 verifier, and deletion policy still require independent audit;
-`provider_mutation_ready` therefore remains false and launch still fails before
-any RunPod HTTP request.
+This closes the in-process implementation gap prospectively, but does not
+authorize any provider mutation. A process cannot protect itself from SIGKILL,
+host loss, or a prolonged network partition. An independently hosted crash-safe
+watchdog must consume the durable recovery ledger and enforce deletion before
+mutation can be enabled. `provider_mutation_ready` therefore remains false and
+launch still fails before any RunPod HTTP request.
 
 Until that exists and `provider_mutation_ready` is deliberately changed,
 even a fully confirmed command fails before provider HTTP:
