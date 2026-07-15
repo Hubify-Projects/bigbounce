@@ -127,3 +127,19 @@ def test_overwrite_refused(tmp_path: Path) -> None:
     with pytest.raises(DepositError, match="refusing to overwrite"):
         build(_args(root, config, commit, "existing.tar.gz", True))
     assert output.read_bytes() == b"keep me"
+
+
+def test_direct_cli_execution_loads_sibling_module(tmp_path: Path) -> None:
+    root, config, commit, _ = _fixture(tmp_path)
+    script = Path(__file__).resolve().parents[1] / "build_exact_arxiv_bundle.py"
+    result = subprocess.run(
+        [
+            "python3", str(script), "--paper", "P4", "--git-commit", commit,
+            "--repo", str(root), "--config", str(config), "--output", "cli.tar.gz",
+        ],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    assert result.returncode == 0, result.stderr
+    assert json.loads(result.stdout)["dry_run"] is True

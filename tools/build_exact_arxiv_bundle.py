@@ -17,15 +17,26 @@ import tarfile
 from pathlib import Path, PurePosixPath
 from typing import Any
 
-from tools.prepare_paper_deposit import (
-    CONFIG_PATH,
-    DepositError,
-    digest,
-    load_config,
-    paper_version,
-    require_clean_commit_inputs,
-    require_exact_commit,
-)
+try:
+    from tools.prepare_paper_deposit import (
+        CONFIG_PATH,
+        DepositError,
+        digest,
+        load_config,
+        paper_version,
+        require_clean_commit_inputs,
+        require_exact_commit,
+    )
+except ModuleNotFoundError:  # Direct execution: python3 tools/build_exact_arxiv_bundle.py
+    from prepare_paper_deposit import (
+        CONFIG_PATH,
+        DepositError,
+        digest,
+        load_config,
+        paper_version,
+        require_clean_commit_inputs,
+        require_exact_commit,
+    )
 
 
 def _inside(root: Path, raw: str | Path, label: str) -> Path:
