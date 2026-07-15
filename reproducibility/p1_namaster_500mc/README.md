@@ -243,6 +243,27 @@ launcher SIGKILL. Therefore `provider_mutation_ready` remains false and launch
 still fails before RunPod HTTP. Static/mocked/inactive tests do not satisfy this
 last gate.
 
+### Independent deletion drill (not production)
+
+`scripts/runpod_watchdog_deletion_drill.py` is the only approved path for the
+remaining live safety proof. It is separate from the production mutation gate
+and never changes `provider_mutation_ready`. The crash mode requires a fresh
+human-observed RunPod console-balance receipt, one exact GPU type, a pinned
+image, a runtime of at most 10 minutes, a total ceiling of at most $0.10, and
+the literal confirmation `CRASH-P1B-WATCHDOG-DELETION-DRILL`. It publishes and
+reads back the active commit-bound intent, creates one inert sleeping pod, then
+SIGKILLs itself before writing a local pod-id ledger.
+
+The drill passes only when a later **scheduled** watchdog run records confirmed
+deletion after the intent deadline, within the documented ten-minute schedule
+allowance. Verification additionally requires the scheduled-run receipt, zero
+remaining matching pods, fresh before/after console-balance receipts whose
+delta stays within the declared budget, and the durable intent restored to
+`active:false`. A manual workflow dispatch, an ambiguous/late deletion, a
+terminal pod still returned by inventory, or mocked/inactive evidence cannot
+close the blocker. The resulting evidence must be audited and committed before
+production enablement is considered.
+
 Until that exists and `provider_mutation_ready` is deliberately changed,
 even a fully confirmed command fails before provider HTTP:
 
