@@ -140,8 +140,65 @@ This is deliberately a **manifest-only, zero-spend** operation. The default
 never launches anything. Even `--launch` fails closed after requiring both a
 positive `--max-budget-usd` and the literal confirmation
 `LAUNCH-P1B-500MC`, because provider mutation is not implemented in this
-contract. A separate budget-enforcing launcher must be independently reviewed
-before use. Tests never contact RunPod.
+contract. Tests never contact RunPod.
+
+### Budget-enforcing launcher (separate, fail-closed)
+
+`scripts/runpod_budget_launcher.py` uses RunPod's official REST v1 pod routes
+(`GET/POST /v1/pods`, `GET/DELETE /v1/pods/{id}`). Its default remains a
+non-mutating dry run. RunPod's documented REST v1 pod API does not expose the
+account's console credit balance, so launch requires a recent, user-supplied
+JSON receipt copied from the RunPod console:
+
+```json
+{"source":"runpod-console","amount_usd":10.0,"observed_at":"2026-07-15T20:00:00Z"}
+```
+
+The launcher rejects stale/future/insufficient receipts, dirty or hash-mismatched
+manifest inputs, duplicate deterministic pod names, mutable images, more than
+one GPU, and inconsistent rate/runtime/budget ceilings. The receipt output must
+be outside the repository or at a git-ignored caller-selected path. A launch is
+only possible with every explicit guard:
+
+```bash
+RUNPOD_API_KEY=... python scripts/runpod_budget_launcher.py \
+  --manifest /tmp/p1b-runpod-manifest.json \
+  --expected-commit "$(git rev-parse HEAD)" \
+  --receipt /tmp/p1b-runpod-events.jsonl \
+  --balance-receipt /tmp/runpod-console-balance.json \
+  --balance-max-age-minutes 15 \
+  --max-hourly-rate-usd 0.50 --max-total-budget-usd 1.00 \
+  --max-runtime-minutes 60 --gpu-type-id 'NVIDIA RTX A4000' \
+  --launch --confirm LAUNCH-P1B-500MC-WITH-BUDGET-GUARD
+```
+
+Keep the watchdog in the foreground after a successful create, using the exact
+pod ID, deadline, and returned hourly rate recorded in the append-only receipt:
+
+```bash
+RUNPOD_API_KEY=... python scripts/runpod_budget_launcher.py \
+  --manifest /tmp/p1b-runpod-manifest.json --expected-commit "$(git rev-parse HEAD)" \
+  --receipt /tmp/p1b-runpod-events.jsonl --watchdog --pod-id POD_ID \
+  --deadline ISO_TIMESTAMP --cost-per-hour-usd RETURNED_RATE \
+  --max-total-budget-usd 1.00
+```
+
+Emergency termination is explicit and receipted:
+
+```bash
+RUNPOD_API_KEY=... python scripts/runpod_budget_launcher.py \
+  --manifest /tmp/p1b-runpod-manifest.json --expected-commit "$(git rev-parse HEAD)" \
+  --receipt /tmp/p1b-runpod-events.jsonl --terminate --pod-id POD_ID \
+  --confirm TERMINATE-P1B-POD
+```
+
+To stop without deleting, replace `--terminate` with `--stop` and confirm with
+`STOP-P1B-POD`. Stopping is not a substitute for deletion at the watchdog's
+hard deadline; the watchdog always calls `DELETE /v1/pods/{id}`.
+
+After creation, any returned price, image, GPU-count, or status mismatch causes
+an immediate `DELETE` and a sanitized receipt. The API key is used only in the
+Authorization header and is never printed or stored. All launcher tests mock HTTP.
 
 ## Determinism and numerical checks
 
