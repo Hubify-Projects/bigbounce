@@ -1,0 +1,29 @@
+{
+  "schema": "bigbounce-standalone-arxiv-proof/v1",
+  "paper_id": "P1A",
+  "paper_version": "v1A.0.123",
+  "git_commit": "05746dc56fb09f0800c13db56905af570eee2cfe",
+  "tarball": "project-context/SSOT/arxiv_tarballs/paper1a_arxiv_v1A.0.123.tar.gz",
+  "tarball_sha256": "c147269c37359247bd5cbb34648783b6056f81a5c7cd4f66f55b291a4b0d1662",
+  "source_pdf": "arxiv/paper1a_ech_nogo.pdf",
+  "source_pdf_sha256": "4c450a6706b2f4e53faac5ffbc6ec720f21e45c7406aa7186ef830f3fef33f71",
+  "source_pdf_md5": "d533498c1db18534651215df94acb5db",
+  "page_count": 7,
+  "status": "pass",
+  "engine": "tectonic 0.16.9",
+  "errors": 0,
+  "undefined_references": 0,
+  "overfull_hboxes": 0,
+  "overfull_vboxes": 0,
+  "compiled_pdf_size_bytes": 149546,
+  "compiled_pdf_sha256": "1cb5c5e92f0e6969a88028d4af242674cb023e39004af8473689ccaefa1c0c9c",
+  "compiled_pdf_md5": "b6ad8bccd1e02c105b7171ca6155d238",
+  "verification_mode": "isolated safe extraction; Tectonic reruns; generated-log scan; all-page raster audit",
+  "visual_audit": {
+    "pages_rendered": 7,
+    "pages_inspected": 7,
+    "clipping_or_overlap": false,
+    "result": "pass"
+  },
+  "verified_at_utc": "2026-07-15T18:01:59Z"
+}
