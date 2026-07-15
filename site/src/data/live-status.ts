@@ -147,16 +147,18 @@ const historicalLiveStatus: LiveStatus = {
 // summary reflect the canonical six-paper board rather than an older review wave.
 export const liveStatus: LiveStatus = {
   ...historicalLiveStatus,
+  lastUpdatedISO: "2026-07-15T10:30:00Z",
+  lastUpdatedDisplay: "July 15, 2026 · 3:30 AM PT",
   headline:
-    "All six manuscripts remain in revision on their exact current artifacts: P1A v1A.0.123 (62), P1B v1B.0.109 (56), P2 v1.7.122 (74), P3 v3.2.0-r8 (56), P4 v1.0.245 (80), and P5 v0.1.133-2026-07-14 (74). Automated verdicts are evidence, not journal acceptance; exact v1B.0.109 and v1.0.245 confirmation reviews are pending.",
+    "All six manuscripts remain in revision. Exact three-leg boards completed for P1B v1B.0.109 (MAJOR/MINOR/ACCEPT) and P4 v1.0.245 (MAJOR/MINOR/MINOR); truth audits verified real major defects while supporting both narrow central null claims.",
   summary:
-    "The latest bounded closures condition P1B's spectator-ALP diagnostic on its physical spectator requirement and make P4's fixed-occupancy label shuffle the primary real-space null. Readiness holds at 56/80. Exact confirmation, independent human review, immutable release tags/archives/DOIs, venue decisions, and submission packaging remain open.",
+    "P1B's physical NaMaster sensitivity claims require a full rerun with raw CAMB EE/BB spectra, and its frozen BBN provenance must be corrected. P4 requires an exact public release, reconciled training provenance, and symmetric-error propagation. Readiness holds at 56/80; no human or journal acceptance is claimed.",
   currentlyRunning: [
-    "Exact v1B.0.109 and v1.0.245 confirmation reviews remain pending",
-    "Immutable release/archive/DOI and human venue-review gates remain open",
+    "Truth-audit records and public status are being synchronized to the exact P1B/P4 boards",
+    "Next closure lane: P4 stale-null/accounting wording plus P1B physical-spectrum rerun preparation",
   ],
   cronStatus:
-    "No autonomous review wave is running. The anti-loop stop rule is active: latest closure versions are not being repeatedly re-reviewed without a new scientific change or explicit confirmation need.",
+    "No review wave is running. The anti-loop stop rule is active: verified defects are being closed before any exact-artifact confirmation rerun.",
   etaToCompletion:
-    "Internal submission-ready synchronization is a bounded same-day integration task. Official journal acceptance is controlled by editors and referees and cannot be promised on an internal clock.",
+    "P4's bounded text/artifact closures can be attempted today; P1B depends on a full corrected Monte Carlo rerun and validation. A defensible all-six submission-ready date cannot be set until that compute finishes. Journal acceptance remains controlled by editors and referees.",
 };

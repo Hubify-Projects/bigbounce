@@ -57,6 +57,26 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p1b-v109-p4-v10245-exact-truth-audit-2026-07-15",
+    dateISO: "2026-07-15",
+    timePT: "early morning",
+    kind: "internal-cc",
+    title: "P1B v1B.0.109 + P4 v1.0.245 — exact boards truth-audited; major gates verified",
+    papers: ["P1B", "P4"],
+    summary:
+      "Exact non-Anthropic boards completed using Codex via ChatGPT subscription plus direct Grok and Gemini legs. P1B returned MAJOR/MINOR/ACCEPT; P4 returned MAJOR/MINOR/MINOR. Truth audit verified real reproducibility/calibration defects while retaining support for the narrow algebraic-window and fixed-occupancy-null results. Readiness holds at 56/80.",
+    keyTakeaways: [
+      "P1B: nonphysical polarization spectra invalidate the current physical sensitivity interpretation; corrected 500-MC and robustness reruns are required",
+      "P1B: frozen metadata used CAMB 1.6.5 default BBN behavior, not the post-hoc PArthENoPE YAML pin",
+      "P4: exact release availability, training provenance, and spatially varying symmetric-error propagation are verified major gates",
+      "No OpenAI API or Anthropic was used; direct-provider and subscription-backed receipts are retained",
+    ],
+    links: [
+      { label: "P1B exact board", href: `${PR}/INT_v3/ROUND_2026-07-15-P1B-v1B.0.109-EXACTPDF-36b8fc98-NONANTHROPIC-CONFIRM` },
+      { label: "P4 exact board", href: `${PR}/INT_v3/ROUND_2026-07-15-P4-v1.0.245-EXACTPDF-e37d0af7-APJS-NONANTHROPIC-CONFIRM` },
+    ],
+  },
+  {
     id: "p1b-v109-p4-v10245-bounded-closures-2026-07-15",
     dateISO: "2026-07-15",
     timePT: "early morning",
