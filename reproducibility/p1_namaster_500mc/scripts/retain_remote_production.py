@@ -139,6 +139,9 @@ def retain(repo: Path, state: Path, retention_root: Path, manifest: dict) -> dic
         marker = {
             "schema": "p1b-runpod-retention/v1", "state": "complete",
             "contract_id": manifest["contract_id"], "git_commit": manifest["git_commit"],
+            "contract_sha256": (manifest.get("input_sha256") or {}).get(
+                "reproducibility/p1_namaster_500mc/runpod_production_contract.json"),
+            "bound_manifest_sha256": sha256(state / "bound-production-manifest.json"),
             "inventory": source_inventory,
         }
         atomic_json(staging / MARKER, marker)  # Always written after every payload file.

@@ -43,6 +43,7 @@ def build_execution(contract: dict) -> dict:
     } for index, command in enumerate(contract["robustness_commands"]))
     return {
         "contract_id": contract["contract_id"],
+        "retention": contract.get("retention", {}),
         "container": contract["container"],
         "output_root": output_root,
         "acceptance": contract["acceptance"],

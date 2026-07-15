@@ -7,6 +7,13 @@
   "provider_mutation_blockers": [
     "No reviewed launch path automatically enters foreground supervision immediately after create."
   ],
+  "retention": {
+    "schema": "p1b-runpod-retention/v1",
+    "recommended_root": "/workspace/p1b-retention",
+    "volume_semantics": "RunPod network volume mounted at /workspace; clone and orchestration state must be outside /workspace",
+    "promotion": "fsync payloads and directories, write RETENTION_COMPLETE.json last, re-verify, then atomic directory rename",
+    "deletion_gate": "validate the promoted RETENTION_COMPLETE.json inventory before pod deletion"
+  },
   "container": {
     "image": "runpod/pytorch@sha256:cb154fcca15d1d6ce858cfa672b76505e30861ef981d28ec94bd44168767d853",
     "source_tag": "runpod/pytorch:2.8.0-py3.11-cuda12.8.1-cudnn-devel-ubuntu22.04",
