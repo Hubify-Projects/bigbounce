@@ -1,0 +1,437 @@
+# Science-Stack Recursive Improvement Audit — 2026-07-15
+
+## Executive finding
+
+The project has the right conceptual loop—archive findings, mine recurring causes,
+promote them into prevention, preflight papers, review exact PDFs, truth-audit, close,
+and re-review—but the loop is not presently an enforced system. Its most important
+learning components are prose-only skills, their data feed is stale, their checks are
+not mandatory in active dispatch, and their effectiveness is not measured. This is
+why the campaign feels incremental: reviewers remain the first reliable executors of
+many checks that the accumulated catalog should already perform before dispatch.
+
+The fix is not another broad skill collection. Per `/skill-governor`, it is one
+canonical HubStack learning-loop engine, one BigBounce adapter, one machine-readable
+pattern schema, and fail-closed integration into the immutable review-packet gate.
+That converts review rounds from the primary defect-discovery mechanism into a
+residual-novelty test.
+
+This audit is read-only except for this report. It does not alter any paper, tool, or
+skill and does not claim that any paper's readiness has increased.
+
+## Scope and evidence inspected
+
+- Canonical stack rules: `~/.claude/scistack/CLAUDE.md` and
+  `~/.agent-shared/claude-skills/skill-governor/SKILL.md`.
+- HubStack learning loop: `cascaded-r-rounds`, `cross-vendor-r-round`,
+  `paper-pre-review-check`, `peer-review-truth-audit`,
+  `r-round-finding-archive`, `r-round-pattern-mine`,
+  `review-integrity-audit`, and `revision-tracker-update`.
+- HubStack infra: `scistack-self-update`, `qc-gate`, `loop-model-routing`, and
+  `readiness-cap-99`.
+- AstroStack campaign layer: `bigbounce-r-round`, `bigbounce-ready`,
+  `bigbounce-truth-audit`, `bigbounce-close`, `drive-to-100-fire`, and
+  `houston-method-v2`.
+- BigBounce review and packet tools, tests, onboarding, SSOT, pattern catalog,
+  findings archive, and readiness instrumentation.
+
+Observed state:
+
+- 93 catalog markdown files exist: 69 `pattern-*` (14 drafts), eight design,
+  six packaging, and eight site patterns.
+- `INDEX.md` says its last pattern-mine run was 2026-06-26.
+- The most recent per-round structured finding archives are dated 2026-06-10,
+  despite extensive July INT/EXT review activity.
+- `ALL-FINDINGS.json` uses several historical aggregate schemas rather than the
+  row schema promised by `r-round-finding-archive`; there is no top-level
+  `findings` array to query uniformly.
+- No executable scripts live with any HubStack learning-loop skill.
+- The repo has no test that executes archive -> mine -> preflight -> dispatch.
+- `paper-pre-review-check` is mentioned in runbooks but no canonical repo tool
+  implements its advertised runtime behavior.
+- `tools/check_new_patterns.sh` implements only a small fixed subset, hardcodes
+  the retired `CODE_2025` root, and skips missing papers instead of failing.
+- Multiple legacy review/metrics tools hardcode `CODE_2025`; the active repo is
+  under `CODE_YOU`.
+- `bigbounce-ready` still requires Anthropic/OpenAI SDKs and describes obsolete
+  vendor policy, conflicting with the current Codex-subscription + direct
+  Grok/Gemini contract.
+- The immutable `review_packet.py` gate verifies source/PDF identity, but does
+  not bind a preflight receipt, catalog version, prior-closure regression scan,
+  or portfolio consistency scan.
+
+## Root-cause architecture audit
+
+### 1. The learning loop is descriptive, not executable
+
+`r-round-finding-archive`, `r-round-pattern-mine`, and
+`paper-pre-review-check` describe detailed workflows but ship no canonical
+scripts. Agents must reinterpret long markdown instructions on every round.
+The result is nondeterministic coverage, no stable output schema, no idempotency,
+and no regression suite. A mandatory prose step is not a gate.
+
+**Consequence:** July findings are not feeding the archive; promoted prevention
+rules do not automatically run; a clean external round cannot prove that known
+failure modes were preempted.
+
+### 2. The feedback data plane is broken at archive ingestion
+
+The catalog is richer than the executable prevention layer, while the archive
+lags the actual review corpus by more than a month. `ALL-FINDINGS.json` has
+schema drift: the documented per-finding row model is not its queryable top-level
+shape. Mining thresholds such as “three findings across two papers” and
+“six consecutive rounds” therefore cannot be reproduced mechanically from the
+current canonical aggregate.
+
+**Consequence:** pattern promotion is based on remembered/manual observations,
+not a complete append-only event stream. Review lessons exist, but are not
+guaranteed to become prevention.
+
+### 3. Prevention is paper-local and regex-heavy, not portfolio-wide
+
+The catalog correctly records cross-paper drift, abstract/body drift, artifact
+contradictions, numeric pairing errors, and closure regressions. Yet there is no
+single all-paper preflight that builds a claim graph and checks:
+
+- the same named quantity across all six papers, abstracts, tables, captions,
+  site data, SSOT, and artifacts;
+- cross-paper citations, version pins, submission order, and “in preparation”
+  status;
+- every changed claim against its generating artifact;
+- every prior closure against the current source/PDF;
+- every abstract/conclusion statement against its body evidence anchor;
+- changed regions plus semantic dependents after closure edits.
+
+`tools/v3_pattern040_all_papers.sh` and `v3_pattern041_audit.py` are useful
+point solutions, but there is no canonical portfolio gate composing them.
+
+**Consequence:** defects are fixed at one call site while downstream and sibling
+paper sites escape, producing the repeated N+1 closure-regression pattern.
+
+### 4. Dispatch does not require proof of prevention
+
+`review_packet.py` provides strong exact-PDF content addressing, but the packet
+schema lacks:
+
+- preflight receipt SHA;
+- catalog snapshot SHA;
+- source commit on which preflight ran;
+- exact list/version of checks executed;
+- closure-regression ledger result;
+- cross-paper claim-coherence result;
+- machine-readable waiver records.
+
+The active `int_wave*.sh` and EXT submission flow therefore can launch a review
+without cryptographic evidence that the prevention layer ran against the same
+source and PDF.
+
+**Consequence:** “mandatory pre-review” remains an instruction, not a fail-closed
+property.
+
+### 5. Skills overlap and policy drift undermine DRY/MECE
+
+The generic `cross-vendor-r-round` contains obsolete BigBounce API routes and
+vendor requirements while disclaiming them in warnings. `cascaded-r-rounds`,
+`drive-to-100-fire`, and `bigbounce-r-round` each restate convergence semantics.
+`bigbounce-ready` tests old dependencies. Historical details remain mixed with
+active contracts in operative skill bodies.
+
+Canonical ownership should be:
+
+- **HubStack learning-loop:** generic event schema, mining, prevention compiler,
+  truth-audit semantics, convergence metrics.
+- **HubStack publishing:** compile/PDF/artifact/package/site gates.
+- **AstroStack BigBounce adapter:** six-paper registry, provider policy,
+  readiness gate, paper-specific checks, SSOT/Convex binding.
+- **BigBounce repo tools:** project-ephemeral implementations/config and receipts.
+
+Anything else should route to those owners rather than restating their logic.
+
+### 6. Metrics reward rounds, not learning efficiency
+
+The existing `readinessMetrics` tracks verdicts, genuinely-new counts, clean
+streaks, open compute, and open venue items. It does not measure whether the
+system is learning faster. Missing metrics include:
+
+- known-pattern escape rate (known issues first found by reviewers);
+- preflight precision/recall after truth audit;
+- defects prevented before dispatch;
+- closure-regression rate;
+- novel-valid findings per reviewer and per dollar/minute;
+- re-flag rate for already-disclosed or falsified items;
+- median finding-to-truth-audit and finding-to-closure latency;
+- rounds and wall-clock time to minor-only convergence;
+- catalog freshness and archive completeness;
+- percentage of quantitative claims with executable evidence anchors;
+- cross-paper consistency failures per release.
+
+Without these, “more rounds” can look like progress even when prevention has
+stalled.
+
+### 7. Automation safety and portability are inconsistent
+
+Several tools hardcode `/Users/houstongolden/Desktop/CODE_2025/bigbounce` and
+some legacy scripts continue to import or describe forbidden OpenAI/Anthropic
+API routes. A script that silently skips a missing file can report apparent
+success while running against the wrong checkout. This directly weakens the
+reproducibility of the learning loop.
+
+## Minimal canonical target architecture
+
+Do not add dozens of new skills. Extend the existing HubStack learning-loop
+pack with one executable engine and expose one AstroStack adapter.
+
+```text
+raw INT/EXT receipts + exact review packet
+                 |
+                 v
+        normalize_findings (append-only events)
+                 |
+        truth-audit + closure ledger
+                 |
+                 v
+       pattern miner / promotion queue
+                 |
+         machine-readable rule catalog
+                 |
+                 v
+  all-paper preflight + changed-claim dependency sweep
+                 |
+       signed/content-addressed receipt
+                 |
+                 v
+     immutable packet gate -> residual review
+                 |
+                 +---- metrics compare prevention vs escapes
+                 |
+                 `---- every valid novel escape becomes a regression fixture
+```
+
+### Canonical components
+
+1. **`hubstack/learning-loop/scripts/learning_loop.py`**
+   One CLI with subcommands `ingest`, `audit-schema`, `mine`, `compile-rules`,
+   `preflight`, `metrics`, and `verify-receipt`. It owns generic schemas and
+   deterministic behavior. Existing skills become short routers/workflows around
+   these subcommands.
+
+2. **Machine-readable pattern sidecars**
+   Keep human markdown, but require validated YAML/JSON fields for ID, category,
+   severity, applicability, detector, evidence requirements, auto-fix policy,
+   promotion state, tests, and provenance. Never execute arbitrary shell copied
+   from markdown. Complex detectors reference named, tested plugins.
+
+3. **Append-only finding events**
+   A versioned JSONL event ledger with stable IDs and fields for packet SHA,
+   paper/version/source/PDF SHA, reviewer/channel/model, raw receipt, claimed
+   severity, truth verdict/evidence, pattern IDs, closure commit/artifact,
+   first-seen/prior occurrence, and supersession. `ALL-FINDINGS.json` becomes a
+   generated view, never a hand-evolved source.
+
+4. **`tools/bigbounce_preflight.py` adapter**
+   Reads `paper_registry.json`, invokes the generic engine for all papers, adds
+   BigBounce-specific claim/artifact/SSOT/site/Convex checks, and emits one
+   content-addressed portfolio receipt plus per-paper receipts.
+
+5. **Packet-bound fail-closed gate**
+   `review_packet.py` accepts only a PASS receipt whose source commit, source
+   SHA, PDF SHA, catalog SHA, and registry SHA match the packet. Any edit after
+   preflight invalidates the receipt. Waivers require structured owner, reason,
+   evidence, expiry, and allowed gate; BLOCKER/MAJOR science checks cannot be
+   waived by an agent.
+
+6. **Changed-claim dependency graph**
+   Store claim IDs in a registry mapping each headline quantity/statement to
+   source spans, artifact generators, artifact files, figures, tables, abstracts,
+   conclusions, sibling papers, SSOT, Convex, and site surfaces. On a diff, test
+   the transitive dependency set rather than re-running only local grep.
+
+## End-to-end implementation sequence
+
+### P0 — Stop known-pattern escapes before the next review wave
+
+1. Freeze an `finding-event-v1` JSON Schema and migrate all historical archives
+   without deleting originals. Emit parse-error events for every unparsed source.
+2. Ingest every review round after 2026-06-10, including exact-PDF July boards,
+   and reconcile event counts against raw receipts/manifests.
+3. Implement the generic `preflight` engine and convert the highest-value current
+   checks first: patterns 008/030/036/040/041/045/046/047/048/051 plus citation,
+   artifact-link, PDF freshness, version, and overclaim checks.
+4. Add `tools/bigbounce_preflight.py --all --strict --changed-since <sha>`.
+5. Require matching PASS receipts in `review_packet.py`, `int_wave.sh`,
+   `int_wave_apjs.sh`, and `ext_submit.sh`.
+
+**Exit proof:** attempting dispatch with a missing, stale, partial, wrong-paper,
+or mismatched-SHA receipt fails; a fixture for each high-value pattern fails
+preflight; a clean fixture passes.
+
+### P1 — Make every review round improve prevention automatically
+
+1. After truth audit, automatically ingest every finding.
+2. For every VERIFIED novel finding, require either:
+   - a deterministic detector regression fixture; or
+   - a documented `not_mechanically_detectable` reason plus a prompt/rubric rule.
+3. Mine clusters after each completed wave; generate a promotion proposal, never
+   an unreviewed auto-commit.
+4. Compile approved patterns into the next preflight catalog snapshot.
+5. Re-run the new detector over all six papers immediately, not only the paper
+   where it was found.
+
+**Exit proof:** one synthetic novel finding flows from receipt to event, cluster,
+approved rule, failing fixture, all-paper sweep, and packet-bound PASS receipt in
+an integration test.
+
+### P2 — Add proactive scientific perfection sweeps
+
+Run these before residual external review:
+
+- claim-to-artifact reproducibility and non-circularity;
+- equation dimensional and quoted-value recomputation;
+- parameter/value pairing scans;
+- abstract/body/conclusion entailment;
+- table/figure/caption/prose numeric consistency;
+- assumption, estimator, null, mask, sample, and uncertainty consistency;
+- literature/novelty/citation verification from primary sources;
+- cross-paper shared-quantity and cross-citation consistency;
+- data/code/release-card/DOI/URL reproducibility;
+- adversarial scope/overclaim and alternative-explanation review;
+- changed-regions-first regression review followed by whole-paper review;
+- visual PDF, accessibility, journal format, and submission-package checks.
+
+Each check must emit evidence and explicit coverage. “No issue found” without a
+coverage manifest is not a pass.
+
+### P3 — Measure and optimize the loop
+
+Record per wave and per paper:
+
+| Metric | Definition | Initial target |
+|---|---|---|
+| Known-pattern escape rate | VERIFIED findings matching an existing approved pattern / all VERIFIED findings | <5%, then 0% for two waves |
+| Prevention yield | valid defects fixed by preflight before dispatch | Report count; trend upward initially |
+| Closure-regression rate | VERIFIED findings caused by last closure / closure edits | <2% |
+| Novel-valid yield | VERIFIED genuinely-new findings / reviewer legs | Use to route reviewers, never reward noise |
+| Truth-audit precision | VERIFIED / all raised findings, by model/pattern | Calibrate prompts and reviewer weighting |
+| Re-flag noise | prior-disclosed/falsified repeats / all findings | Trend downward; separate from readiness |
+| Archive completeness | ingested raw receipts / expected receipts | 100% before wave close |
+| Catalog latency | truth-audited novel finding to approved prevention rule | <1 wave |
+| Evidence coverage | quantitative/headline claims with executable anchors / total | 100% for submission claims |
+| Cycle time | immutable packet creation to truth-audited closure | Median and p90; trend downward |
+
+Readiness must depend on scientific and publishing gates, not on raw round count.
+The dashboard should show escape rate and closure-regression rate beside verdicts.
+
+### P4 — Remove drift and duplicated authority
+
+1. Shorten `cross-vendor-r-round` to generic mechanics and move historical vendor
+   policy into a dated reference; BigBounce provider policy lives only in
+   `bigbounce-r-round` plus tested config.
+2. Make `cascaded-r-rounds` consume a convergence-policy object instead of
+   restating BigBounce exit semantics.
+3. Update `bigbounce-ready` to test current subscription/direct-provider routes,
+   receipt validation, archive freshness, catalog compilation, and the all-paper
+   preflight—not obsolete Anthropic/OpenAI SDK presence.
+4. Replace hardcoded roots with repo discovery (`git rev-parse --show-toplevel` or
+   `paper_registry.repo_root`) and fail closed on missing canonical inputs.
+5. Retire/redirect obsolete scripts after tests prove the active route. Preserve
+   historical receipts; do not rewrite history.
+
+## Required test matrix
+
+### Unit tests
+
+- event-schema validation, stable ID generation, idempotent re-ingestion;
+- parser fixtures for every active provider/receipt format and malformed output;
+- pattern schema validation and duplicate/unknown ID rejection;
+- detector positive, negative, boundary, and extraction-artifact fixtures;
+- prior-closure regression and changed-dependency traversal;
+- metric calculations, including failed legs as gaps rather than zero findings;
+- provider-policy denial for OpenAI API and Anthropic routes.
+
+### Integration tests
+
+- raw receipt -> truth verdict -> event ledger -> mine -> compiled rule ->
+  preflight -> immutable packet;
+- all six registry entries; wrong paper/version/PDF/commit/catalog must fail;
+- preflight after source edit must invalidate the old receipt;
+- cross-paper shared-quantity drift must fail every affected packet;
+- a valid structured waiver must be narrow and expire; invalid waivers fail;
+- archive count must equal manifest/raw-receipt accounting.
+
+### Golden regression corpus
+
+Create minimal fixtures from each truth-audited real pattern, with sensitive or
+large artifacts reduced to deterministic examples. Every VERIFIED novel finding
+adds a failing-before/passing-after fixture in the same closure unit. This is the
+most important recursive-improvement invariant.
+
+## Process rules to promote into hard gates
+
+1. **No review without prevention proof.** Exact PDF identity is necessary but
+   insufficient; exact preflight identity is also mandatory.
+2. **No finding closure without a regression fixture** when the failure is
+   mechanically detectable.
+3. **No single-paper closure.** Every approved new rule sweeps all six papers and
+   all public/SSOT surfaces before the next dispatch.
+4. **No manual aggregate as SSOT.** Events are append-only; indexes, summaries,
+   dashboards, and pattern frequencies are generated.
+5. **No readiness credit for repetition.** Re-flags and verdict variance remain
+   visible but do not masquerade as novel science progress.
+6. **No auto-falsification by model reputation.** Historical false-positive rate
+   informs triage priority only; every claim still gets evidence-bound audit.
+7. **No detector without coverage evidence.** Each pass records inputs, checks,
+   versions, exclusions, and output digest.
+8. **No skill proliferation.** Extend the canonical learning-loop pack; add a new
+   skill only for a genuinely distinct responsibility under the ownership table.
+
+## Honest ETA implications
+
+“100% ready” cannot honestly be promised by an internal system: journal acceptance,
+editor/referee response, author sign-off, licenses, DOI/archive publication, and
+venue choices include external or Houston-controlled gates. A defensible 99%
+means submission-ready with only documented external gates remaining, not accepted.
+
+The current canonical board is 56–80, so all-six 99% is not supportable tonight
+from current evidence. Before the architecture changes, ETA estimates are weak
+because archive completeness, known-pattern escape rate, and cycle-time metrics are
+not trustworthy. A realistic planning range after P0 instrumentation is:
+
+- P0 learning-loop engine + migration + packet gate: roughly 6–12 agent-hours
+  (about 2–4 human-team weeks).
+- First proactive all-paper perfection sweep and closures: roughly 12–30
+  agent-hours, depending on real compute/science findings (about 2–6 human-team
+  months).
+- Exact-PDF residual multi-model re-review, truth audit, repackaging, and sync:
+  roughly 6–18 agent-hours if no new major science result is required.
+
+Therefore the earliest evidence-based all-six submission-ready window is about
+24–60 elapsed hours with parallel, non-overlapping lanes and no external/compute
+blocker. A safer range is 3–7 days. Actual journal acceptance is not schedulable
+by this stack. These ranges must be replaced with measured p50/p90 ETAs after two
+instrumented waves.
+
+## Acceptance checklist for the improvement program
+
+- [ ] All raw review receipts since 2026-06-10 are represented in the event ledger.
+- [ ] Event/manifest reconciliation is 100%; parse failures are explicit.
+- [ ] All approved patterns have validated machine-readable rules or explicit
+      non-mechanical status.
+- [ ] Every high-severity recurring pattern has a regression fixture.
+- [ ] Strict all-paper preflight passes on current committed sources and PDFs.
+- [ ] Review packets bind the matching preflight/catalog/registry receipts.
+- [ ] Active INT/EXT dispatch cannot bypass the gate.
+- [ ] Cross-paper claim graph covers every headline quantitative claim.
+- [ ] Known-pattern escape and closure-regression metrics are live.
+- [ ] Two consecutive exact-PDF waves show zero known-pattern escapes and no
+      genuinely-new BLOCKER/MAJOR issues after truth audit.
+- [ ] PDF/version/SSOT/Convex/API/site/package gates pass for all six papers.
+- [ ] Remaining readiness deductions are explicit human/venue/external gates.
+
+## Immediate next action
+
+Implement P0 as one isolated, test-first lane: freeze the event schema, migrate
+and reconcile the archive, compile the ten highest-value prevention patterns,
+produce an all-paper receipt, and make immutable packet creation fail closed
+without it. Do not launch another expensive review wave until this gate runs on
+all six current paper candidates. That is the highest-leverage way to stop paying
+reviewers to rediscover lessons the system already learned.
