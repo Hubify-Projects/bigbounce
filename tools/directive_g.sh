@@ -84,6 +84,7 @@ PAPER="$1"; NEWVER="$2"; CHANGELOG="$3"
 TEX_REL="$(python3 "$REGISTRY" "$PAPER" tex_path 2>/dev/null)"
 SLUG="$(python3 "$REGISTRY" "$PAPER" site_slug 2>/dev/null)"
 REVIEW_PROFILE="$(python3 "$REGISTRY" "$PAPER" review_profile 2>/dev/null)"
+SERVED_ALIASES="$(python3 "$REGISTRY" "$PAPER" served_aliases 2>/dev/null)"
 [ -n "$TEX_REL" ] && [ -n "$SLUG" ] && [ -n "$REVIEW_PROFILE" ] \
   || die "unknown paper key '$PAPER' (want P1A|P1B|P2|P3|P4|P5)"
 
@@ -272,26 +273,17 @@ for root in "${SERVED_ROOTS[@]}"; do
   fi
 done
 
-# (b) short aliases that currently md5-match the previous base copy (e.g.
-#     p5-chirality.pdf). Only in roots holding the base copy; only if md5==PREV.
-if [ -n "$PREV_MD5" ]; then
+# (b) registry-owned legacy aliases. Explicit ownership is both faster and safer
+# than hashing every PDF in every served directory, and it still repairs an alias
+# whose bytes have already drifted from the canonical copy.
+while IFS= read -r alias; do
+  [ -n "$alias" ] || continue
   for root in "${SERVED_ROOTS[@]}"; do
-    [ -d "$root" ] || continue
-    while IFS= read -r f; do
-      [ -f "$f" ] || continue
-      bn="$(basename "$f")"
-      # skip the canonical base + any versioned <base>_v...pdf (handled elsewhere)
-      case "$bn" in
-        "$BASE_PDF_NAME") continue ;;
-        "$TEX_BASE"_v*) continue ;;
-      esac
-      # only adopt a short alias if it was the previous byte-identical mirror
-      if [ "$(md5of "$f")" = "$PREV_MD5" ]; then
-        MIRROR_TARGETS+=("$f")
-      fi
-    done < <(find "$root" -maxdepth 1 -type f -name '*.pdf' 2>/dev/null)
+    [ -f "$root/$alias" ] && MIRROR_TARGETS+=("$root/$alias")
   done
-fi
+done <<EOF
+$SERVED_ALIASES
+EOF
 
 # (c) versioned aliases: create/refresh <base>_<version>.pdf in the two papers/
 #     dirs that hold versioned aliases (site/public/papers + public/papers),

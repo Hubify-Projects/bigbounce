@@ -14,6 +14,7 @@ REQUIRED_FIELDS = (
     "tex_path", "pdf_path", "site_slug", "target_journal",
     "article_type", "review_profile",
 )
+LIST_FIELDS = ("served_aliases",)
 
 
 def repo_root() -> Path:
@@ -41,6 +42,15 @@ def load_registry(root: Path | None = None, *, require_paths: bool = True) -> di
                 path = root / entry[field]
                 if not path.is_file():
                     raise FileNotFoundError(f"{paper_id} {field} not found: {path}")
+        aliases = entry.get("served_aliases")
+        if not isinstance(aliases, list) or any(
+            not isinstance(alias, str)
+            or not alias
+            or Path(alias).name != alias
+            or not alias.endswith(".pdf")
+            for alias in aliases
+        ):
+            raise ValueError(f"{paper_id} served_aliases must be PDF basenames")
     if len(slugs) != len(set(slugs)):
         raise ValueError("registry site slugs must be unique")
     if papers["P3"]["tex_path"] != "pipelines/p3_anomaly_engine/paper3_apjs.tex":
@@ -53,14 +63,17 @@ def load_registry(root: Path | None = None, *, require_paths: bool = True) -> di
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("paper", choices=CANONICAL_IDS)
-    parser.add_argument("field", choices=REQUIRED_FIELDS)
+    parser.add_argument("field", choices=REQUIRED_FIELDS + LIST_FIELDS)
     parser.add_argument("--absolute", action="store_true")
     args = parser.parse_args()
     root = repo_root()
     value = load_registry(root)[args.paper][args.field]
     if args.absolute and args.field in ("tex_path", "pdf_path"):
         value = str(root / value)
-    print(value)
+    if isinstance(value, list):
+        print("\n".join(value))
+    else:
+        print(value)
 
 
 if __name__ == "__main__":

@@ -7,7 +7,8 @@
       "site_slug": "paper-1a",
       "target_journal": "Classical and Quantum Gravity",
       "article_type": "Note",
-      "review_profile": "CQG-NOTE"
+      "review_profile": "CQG-NOTE",
+      "served_aliases": []
     },
     "P1B": {
       "tex_path": "arxiv/paper1b_mcmc_companion.tex",
@@ -15,7 +16,8 @@
       "site_slug": "paper-1b",
       "target_journal": "Journal of Cosmology and Astroparticle Physics",
       "article_type": "Research article / computational methods",
-      "review_profile": "JCAP-COMPUTATIONAL"
+      "review_profile": "JCAP-COMPUTATIONAL",
+      "served_aliases": []
     },
     "P2": {
       "tex_path": "research/focused_paper_source_integration/02_full_draft.tex",
@@ -23,7 +25,12 @@
       "site_slug": "paper-2",
       "target_journal": "Physical Review D",
       "article_type": "Research Article",
-      "review_profile": "PRD-RESEARCH"
+      "review_profile": "PRD-RESEARCH",
+      "served_aliases": [
+        "fnl-forecast-paper.pdf",
+        "focused_paper_bounce_fnl_forecast.pdf",
+        "paper2_fnl_forecast.pdf"
+      ]
     },
     "P3": {
       "tex_path": "pipelines/p3_anomaly_engine/paper3_apjs.tex",
@@ -31,7 +38,8 @@
       "site_slug": "paper-3",
       "target_journal": "The Astrophysical Journal Supplement Series",
       "article_type": "Catalog article",
-      "review_profile": "APJS-CATALOG"
+      "review_profile": "APJS-CATALOG",
+      "served_aliases": []
     },
     "P4": {
       "tex_path": "pipelines/p2_chirality/chirality_catalog_paper.tex",
@@ -39,7 +47,11 @@
       "site_slug": "paper-4",
       "target_journal": "The Astrophysical Journal Supplement Series",
       "article_type": "Catalog + methods article",
-      "review_profile": "APJS-CATALOG-METHODS"
+      "review_profile": "APJS-CATALOG-METHODS",
+      "served_aliases": [
+        "p4-chirality.pdf",
+        "paper4_chirality_catalog.pdf"
+      ]
     },
     "P5": {
       "tex_path": "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex",
@@ -47,7 +59,10 @@
       "site_slug": "paper-5",
       "target_journal": "The Astronomical Journal",
       "article_type": "Observational research article",
-      "review_profile": "AJ-OBSERVATIONAL"
+      "review_profile": "AJ-OBSERVATIONAL",
+      "served_aliases": [
+        "p5-chirality.pdf"
+      ]
     }
   }
 }

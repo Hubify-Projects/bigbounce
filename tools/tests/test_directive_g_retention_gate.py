@@ -63,6 +63,7 @@ class DirectiveGRetentionGateTests(unittest.TestCase):
                 "tex_path": "paper/paper.tex",
                 "site_slug": "paper-1a",
                 "review_profile": "CQG-NOTE",
+                "served_aliases": "",
             }
             print(values[sys.argv[2]])
             """,
