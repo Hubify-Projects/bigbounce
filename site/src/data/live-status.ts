@@ -147,12 +147,12 @@ const historicalLiveStatus: LiveStatus = {
 // summary reflect the canonical six-paper board rather than an older review wave.
 export const liveStatus: LiveStatus = {
   ...historicalLiveStatus,
-  lastUpdatedISO: "2026-07-15T13:12:00Z",
-  lastUpdatedDisplay: "July 15, 2026 · 6:12 AM PT",
+  lastUpdatedISO: "2026-07-15T13:18:00Z",
+  lastUpdatedDisplay: "July 15, 2026 · 6:18 AM PT",
   headline:
-    "All six manuscripts remain in revision. P4 v1.0.250's exact board is MINOR/MAJOR/MAJOR and verifies open training, spatial-covariance, archive, and bounded presentation gates. P1B's corrected production run remains blocked on compute funding.",
+    "All six manuscripts remain in revision. P4 v1.0.251 closes its bounded exact-board defects, while training realization, spatial covariance, immutable archive, exact confirmation, and human review remain open. P1B's corrected production run remains blocked on compute funding.",
   summary:
-    "P1B's repaired CAMB spectrum generator and PRIMAT checks pass, but no corrected 500-MC artifact exists because the RunPod balance is negative. P4 v1.0.250's exact Grok/Gemini/Codex-subscription board returned MINOR/MAJOR/MAJOR: the narrow HC z=0.7053 result survives, but training realization, spatial transfer/covariance, DOI-backed archive, bounded manuscript defects, and human review remain open. Readiness holds at 56/80; no acceptance is claimed.",
+    "P1B's repaired CAMB spectrum generator and PRIMAT checks pass, but no corrected 500-MC artifact exists because the RunPod balance is negative. P4 v1.0.251 closes the truth-audited WLS-support, transfer-wording, MC-tail, schema, bibliography, and presentation defects; its narrow HC z=0.7053 result is unchanged. Training realization, spatial transfer/covariance, DOI-backed archive, exact confirmation, and human review remain open. Readiness holds at 56/80; no acceptance is claimed.",
   papers: historicalLiveStatus.papers.map((paper) => {
     if (paper.slug === "paper-1b") {
       return {
@@ -165,19 +165,19 @@ export const liveStatus: LiveStatus = {
     if (paper.slug === "paper-4") {
       return {
         ...paper,
-        version: "v1.0.250",
+        version: "v1.0.251",
         pendingWork:
-          "The exact v1.0.250 board is Grok MINOR / Gemini MAJOR / Codex-subscription MAJOR. The HC observed-label null survives, but training realization, spatial transfer/covariance, DOI-backed archive, bounded table/schema/presentation defects, and human review remain open. Readiness holds 80.",
+          "v1.0.251 closes the bounded defects verified by the exact v1.0.250 board. The HC observed-label null is unchanged; training realization, spatial transfer/covariance, a fail-closed metadata sidecar, DOI-backed archive, exact confirmation, and human review remain open. Readiness holds 80.",
       };
     }
     return paper;
   }),
   currentlyRunning: [
     "P1B corrected production is queued but blocked by a negative RunPod balance; no paid pod launch is being attempted",
-    "P4 v1.0.250 exact board is complete; truth-audited v1.0.251 bounded closure is next",
+    "P4 v1.0.251 bounded closure is complete; release-sidecar integrity work is next before exact confirmation",
   ],
   cronStatus:
-    "No review wave is running. The anti-loop stop rule is active: verified v1.0.250 defects are being closed before any exact-artifact confirmation rerun.",
+    "No review wave is running. The anti-loop stop rule is active: close the public metadata-sidecar and README integrity defect before an exact v1.0.251 confirmation rerun.",
   etaToCompletion:
-    "After RunPod funding is restored, P1B's canonical plus parallel robustness run is estimated at roughly 2.5–5 hours wall-clock, followed by manuscript/PDF QA and exact review. P4 needs a bounded v1.0.251 closure plus training/covariance and immutable-archive work before re-review. A defensible all-six submission date remains conditional on those gates; journal acceptance is controlled by editors and referees.",
+    "After RunPod funding is restored, P1B's canonical plus parallel robustness run is estimated at roughly 2.5–5 hours wall-clock, followed by manuscript/PDF QA and exact review. P4's bounded v1.0.251 closure is complete, but training/covariance, release-sidecar, immutable-archive, exact-confirmation, and human-review gates remain. A defensible all-six submission date remains conditional on those gates; journal acceptance is controlled by editors and referees.",
 };

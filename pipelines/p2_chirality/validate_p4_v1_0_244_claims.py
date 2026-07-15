@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail-closed source-to-claim and presentation audit for P4 v1.0.250."""
+"""Fail-closed source-to-claim and presentation audit for P4 v1.0.251."""
 
 from __future__ import annotations
 
@@ -148,12 +148,15 @@ def audit() -> dict[str, Any]:
     schema = load(P4 / "apjs_release_schema_v1_0_244.json")
     gates.update(
         {
-            "paper_version": r"\newcommand{\paperVersion}{v1.0.250}" in tex,
+            "paper_version": r"\newcommand{\paperVersion}{v1.0.251}" in tex,
             "paper_uses_aastex_701": r"\documentclass[twocolumn,linenumbers]{aastex701}" in tex,
             "paper_has_no_internal_toc": r"\tableofcontents" not in tex,
             "paper_uses_numeric_citations": r"\setcitestyle{numbers,sort&compress}" in tex,
-            "paper_leads_with_corrected_release": tex.index("db11023306ab4eed1d7727670bd78e127b7af17a") < tex.index("58ecc795a0aa8dda566a28a5adda76a47f3c8942"),
+            "paper_uses_only_corrected_release": "db11023306ab4eed1d7727670bd78e127b7af17a" in tex and "superseded initial binding" not in tex,
             "paper_does_not_claim_monopole_cause": "attributed to GZ1 human-handedness training bias" not in tex,
+            "paper_corrects_wls_support": "latitude cut (24,187 px)" in tex and "WLS template excl." not in tex,
+            "paper_corrects_transfer_identity": r"g_{\rm eff}=0.397616" in tex and "not algebraically identical" in tex,
+            "paper_uses_add_one_diagnostic_tails": r"p_{\rm MC}=(15+1)/(500+1)=0.03194" in tex and "p=(43+1)/(5000+1)=0.00880" in tex,
             "paper_limits_fsc_synthesis_to_two": "Two diagnostics are bound to the declared \\FSC{} base support" in tex,
             "paper_excludes_unproven_supports": all(token in tex for token in ("24,270 pixels", "35,438 latitude-mask pixels", "does not record enough mask provenance")),
             "paper_prints_catalog_and_hc_counts": "249,066 unsafe rows catalog-wide" in tex and "Exactly 59,515" in tex,
@@ -161,7 +164,7 @@ def audit() -> dict[str, Any]:
             "paper_prints_all_panel_cells": all(token in tex for token in ("(+0.536,0.270)", "(+0.794,0.203)", "(-0.141,0.505)")),
             "paper_names_three_supports": all(token in tex for token in ("HC-REALSPACE-INCLUSIVE", "FULL-SPIRAL-CANONICAL", "MASTER-ALL-GALAXY-FOOTPRINT")),
             "paper_uncertainty_scales_one_over_g": r"\sigma(A_{\rm phys})=\sigma(A_{\rm obs})/g" in tex,
-            "paper_doi_gate_open": "A DOI-backed immutable archive of the paper" in tex,
+            "paper_doi_gate_open": "DOI-backed archive of the paper" in tex,
             "paper_no_false_public_qc_claim": "In the public HuggingFace Parquet release" not in tex,
             "paper_public_release_is_commit_pinned": all(token in tex for token in ("We publish an 8,474,531-object observed-label catalog release", "db11023306ab4eed1d7727670bd78e127b7af17a", "e535b26247c892971963be6029435544cf29d19b")),
             "paper_distinguishes_selected_and_supported_n": all(token in tex for token in (r"N_{\rm selected}=949{,}584", r"N_{\rm support}=947{,}326", "2,258 excluded by the support rule")),
@@ -176,9 +179,9 @@ def audit() -> dict[str, Any]:
     )
     failed = [name for name, passed in gates.items() if not passed]
     result = {
-        "schema": "p4-v1.0.250-source-to-claim-audit/v1",
+        "schema": "p4-v1.0.251-source-to-claim-audit/v1",
         "paper": "P4",
-        "paper_version": "v1.0.250",
+        "paper_version": "v1.0.251",
         "status": "PASS" if not failed else "FAIL",
         "gates": gates,
         "failed_gates": failed,

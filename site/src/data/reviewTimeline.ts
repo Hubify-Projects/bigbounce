@@ -57,6 +57,25 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p4-v10251-bounded-closure-2026-07-15",
+    dateISO: "2026-07-15",
+    timePT: "6:18 AM",
+    kind: "closure-wave",
+    title: "P4 v1.0.251 — bounded exact-board defects closed without changing the primary result",
+    papers: ["P4"],
+    summary:
+      "v1.0.251 corrects the WLS support row, confusion-transfer wording, finite-Monte-Carlo tail conventions, schema paper binding, bibliography order, and audit-heavy presentation identified by the exact v1.0.250 board. The HC fixed-occupancy result remains z=0.7053 and p=0.22468. Readiness holds 80; no acceptance is claimed.",
+    keyTakeaways: [
+      "Exact 28-page PDF SHA-256 4f8046df; focused tests, source-to-claim, compile, links, overflow, and all-page visual audits pass",
+      "Training realization, spatial transfer plus joint covariance, release-sidecar integrity, DOI-backed archive, exact confirmation, and human review remain open",
+      "No Anthropic or OpenAI API leg ran; the next review wave is deliberately held until release-integrity work is closed",
+    ],
+    links: [
+      { label: "P4 canonical status", href: `${GH}/project-context/SSOT/paper-4/status.md` },
+      { label: "v1.0.251 source-to-claim audit", href: `${GH}/pipelines/p2_chirality/outputs/canonical_provenance/p4_v1_0_251_source_to_claim_audit.json` },
+    ],
+  },
+  {
     id: "p4-v10250-exact-board-truth-audit-2026-07-15",
     dateISO: "2026-07-15",
     timePT: "6:02–6:12 AM",
