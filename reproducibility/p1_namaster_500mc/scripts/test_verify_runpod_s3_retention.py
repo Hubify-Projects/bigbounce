@@ -38,14 +38,18 @@ class S3RetentionTest(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.root = Path(self.temp.name)
-        self.manifest = {"git_commit": "1" * 40, "contract_id": "contract-v1"}
+        self.manifest = {"git_commit": "1" * 40, "contract_id": "contract-v1",
+                         "input_sha256": {
+                             "reproducibility/p1_namaster_500mc/runpod_production_contract.json": "c" * 64}}
         self.prefix = "p1b-retention/contract-v1--" + "1" * 40
         data = b"scientific evidence\n"
         item = {"path": "state/evidence.json", "bytes": len(data),
                 "sha256": hashlib.sha256(data).hexdigest()}
+        bound = hashlib.sha256(MODULE.bootstrap.canonical_manifest_bytes(self.manifest)).hexdigest()
         marker = {"schema": "p1b-runpod-retention/v1", "state": "complete",
                   "git_commit": self.manifest["git_commit"],
-                  "contract_id": self.manifest["contract_id"], "inventory": [item]}
+                  "contract_id": self.manifest["contract_id"], "inventory": [item],
+                  "contract_sha256": "c" * 64, "bound_manifest_sha256": bound}
         self.objects = {
             f"{self.prefix}/RETENTION_COMPLETE.json": (json.dumps(marker) + "\n").encode(),
             f"{self.prefix}/state/evidence.json": data,
@@ -92,6 +96,49 @@ class S3RetentionTest(unittest.TestCase):
                 prefix=self.prefix, staging_root=self.root / "stage", manifest=self.manifest,
                 receipt_path=self.root / "receipt.json",
             )
+
+    def test_exact_verified_local_copy_is_idempotently_reused(self):
+        _, receipt, first = self.verify()
+        client = FakeS3({})
+        second = MODULE.download_and_verify(
+            client=client, network_volume_id="vol-1", datacenter_id="US-KS-2",
+            prefix=self.prefix, staging_root=self.root / "stage", manifest=self.manifest,
+            receipt_path=receipt,
+        )
+        self.assertEqual(first, second)
+        self.assertEqual(client.downloads, [])
+
+    def test_prefix_traversal_and_wrong_marker_hashes_fail(self):
+        with self.assertRaisesRegex(ValueError, "unsafe"):
+            MODULE.download_and_verify(
+                client=FakeS3(self.objects), network_volume_id="vol-1", datacenter_id="US-KS-2",
+                prefix="../escape", staging_root=self.root / "stage", manifest=self.manifest,
+                receipt_path=self.root / "receipt.json")
+        objects = dict(self.objects)
+        marker_key = f"{self.prefix}/RETENTION_COMPLETE.json"
+        marker = json.loads(objects[marker_key])
+        marker["contract_sha256"] = "0" * 64
+        objects[marker_key] = json.dumps(marker).encode()
+        with self.assertRaisesRegex(ValueError, "contract hash"):
+            self.verify(objects)
+
+    def test_marker_snapshot_mutation_is_rejected(self):
+        client = FakeS3(self.objects)
+        original = client.download_file
+        count = {"marker": 0}
+        marker_key = f"{self.prefix}/RETENTION_COMPLETE.json"
+        def mutate(bucket, key, filename):
+            original(bucket, key, filename)
+            if key == marker_key:
+                count["marker"] += 1
+                if count["marker"] == 2:
+                    Path(filename).write_bytes(Path(filename).read_bytes() + b" ")
+        client.download_file = mutate
+        with self.assertRaisesRegex(ValueError, "changed during"):
+            MODULE.download_and_verify(
+                client=client, network_volume_id="vol-1", datacenter_id="US-KS-2",
+                prefix=self.prefix, staging_root=self.root / "stage", manifest=self.manifest,
+                receipt_path=self.root / "receipt.json")
 
 
 if __name__ == "__main__":

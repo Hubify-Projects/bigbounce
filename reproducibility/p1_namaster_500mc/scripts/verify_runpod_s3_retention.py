@@ -6,10 +6,13 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import shutil
+import hashlib
 from pathlib import Path
 
 import retain_remote_production as retention
+import generate_remote_bootstrap as bootstrap
 
 try:  # Optional for offline tests and zero-spend preflight.
     import boto3  # type: ignore
@@ -33,7 +36,8 @@ def s3_client(datacenter_id: str):
         raise ValueError("boto3 is required for RunPod S3 retention verification")
     # Credentials are intentionally obtained only through boto3's standard
     # environment/provider chain and are never accepted as arguments.
-    return boto3.client("s3", endpoint_url=RUNPOD_S3_ENDPOINTS[datacenter_id])
+    return boto3.client("s3", endpoint_url=RUNPOD_S3_ENDPOINTS[datacenter_id],
+                        region_name=datacenter_id)
 
 
 def _listed_keys(client, bucket: str, prefix: str) -> set[str]:
@@ -60,11 +64,31 @@ def download_and_verify(*, client, network_volume_id: str, datacenter_id: str,
     if datacenter_id not in RUNPOD_S3_ENDPOINTS:
         raise ValueError("unsupported RunPod S3 datacenter")
     normalized = prefix.strip("/")
+    expected_prefix = f"p1b-retention/{manifest['contract_id']}--{manifest['git_commit']}"
+    if normalized != expected_prefix or not re.fullmatch(
+            r"p1b-retention/[A-Za-z0-9._-]+--[0-9a-f]{40}", normalized):
+        raise ValueError("unsafe or manifest-mismatched S3 retention prefix")
+    final_dir = staging_root / normalized
+    if final_dir.exists():
+        verified = retention.validate_retention(
+            final_dir, commit=manifest["git_commit"], contract_id=manifest["contract_id"]
+        )
+        receipt = _verification_receipt(network_volume_id, datacenter_id, normalized,
+                                        manifest, verified)
+        retention.atomic_json(receipt_path, receipt)
+        return receipt
     marker_key = f"{normalized}/{retention.MARKER}"
     marker_tmp = staging_root / f".{normalized.replace('/', '_')}.marker.tmp"
     marker_tmp.parent.mkdir(parents=True, exist_ok=True)
     client.download_file(network_volume_id, marker_key, str(marker_tmp))
     marker = json.loads(marker_tmp.read_text())
+    marker_snapshot = marker_tmp.read_bytes()
+    contract_path = "reproducibility/p1_namaster_500mc/runpod_production_contract.json"
+    if marker.get("contract_sha256") != (manifest.get("input_sha256") or {}).get(contract_path):
+        raise ValueError("S3 retention marker contract hash mismatch")
+    bound_hash = hashlib.sha256(bootstrap.canonical_manifest_bytes(manifest)).hexdigest()
+    if marker.get("bound_manifest_sha256") != bound_hash:
+        raise ValueError("S3 retention marker bound-manifest hash mismatch")
     declared = marker.get("inventory")
     if not isinstance(declared, list) or not declared:
         raise ValueError("S3 retention marker has no declared inventory")
@@ -77,7 +101,6 @@ def download_and_verify(*, client, network_volume_id: str, datacenter_id: str,
     if actual != expected:
         raise ValueError("S3 retention prefix has missing or extra objects")
 
-    final_dir = staging_root / normalized
     partial = staging_root / f".{normalized.replace('/', '_')}.download"
     if partial.exists():
         shutil.rmtree(partial)
@@ -87,6 +110,13 @@ def download_and_verify(*, client, network_volume_id: str, datacenter_id: str,
             target = partial / name
             target.parent.mkdir(parents=True, exist_ok=True)
             client.download_file(network_volume_id, f"{normalized}/{name}", str(target))
+        marker_second = partial / ".marker-second"
+        client.download_file(network_volume_id, marker_key, str(marker_second))
+        if marker_second.read_bytes() != marker_snapshot:
+            raise ValueError("S3 retention marker changed during download")
+        marker_second.unlink()
+        if _listed_keys(client, network_volume_id, normalized + "/") != actual:
+            raise ValueError("S3 retention inventory changed during download")
         shutil.move(str(marker_tmp), partial / retention.MARKER)
         verified = retention.validate_retention(
             partial, commit=manifest["git_commit"], contract_id=manifest["contract_id"]
@@ -96,17 +126,23 @@ def download_and_verify(*, client, network_volume_id: str, datacenter_id: str,
             raise ValueError("verified local retention destination already exists")
         final_dir.parent.mkdir(parents=True, exist_ok=True)
         os.replace(partial, final_dir)
-        receipt = {
-            "schema": "p1b-runpod-s3-verification/v1", "state": "verified",
-            "network_volume_id": network_volume_id, "datacenter_id": datacenter_id,
-            "prefix": normalized, "git_commit": manifest["git_commit"],
-            "contract_id": manifest["contract_id"], "inventory": verified["inventory"],
-        }
+        receipt = _verification_receipt(network_volume_id, datacenter_id, normalized,
+                                        manifest, verified)
         retention.atomic_json(receipt_path, receipt)
         return receipt
     except Exception:
         # Preserve downloaded evidence for forensic inspection.
         raise
+
+
+def _verification_receipt(network_volume_id: str, datacenter_id: str, prefix: str,
+                          manifest: dict, verified: dict) -> dict:
+    return {
+        "schema": "p1b-runpod-s3-verification/v1", "state": "verified",
+        "network_volume_id": network_volume_id, "datacenter_id": datacenter_id,
+        "prefix": prefix, "git_commit": manifest["git_commit"],
+        "contract_id": manifest["contract_id"], "inventory": verified["inventory"],
+    }
 
 
 def main() -> int:
