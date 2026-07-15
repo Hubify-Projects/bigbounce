@@ -94,9 +94,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-1b",
       number: "1B",
       shortTitle: "Standalone technical verification companion",
-      version: "v1B.0.106",
+      version: "v1B.0.108",
       readiness: 56,
-      pendingWork: "Exact-window science bundle is complete (20 pp; SHA-256 7cb82557…12013), but no final exact-review verdict exists yet. HOLD 56 pending exact-artifact review, human review, immutable release packaging, and submission metadata; no ACCEPT or human acceptance claimed.",
+      pendingWork: "v1B.0.107 confirmation was Grok ACCEPT / Gemini MAJOR / Codex-subscription MAJOR. v1B.0.108 closes the two truth-audited bounded majors (native-coordinate synthetic window + unconditional prior-predictive/provenance methods), 19 pp, SHA-256 a85f43f9…a9fb. No v1B.0.108 re-review or human ACCEPT; HOLD 56 pending human review, immutable release, venue disposition, and submission metadata.",
     },
     {
       slug: "paper-2",

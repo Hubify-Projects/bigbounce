@@ -131,8 +131,8 @@ export const figureSections: FigureSection[] = [
         "alt": "NaMaster pipeline-recovery validation on synthetic polarization skies (N_ side=512, _P=10 white noise, N=500…",
         "number": "Figure 3 (fig:namaster_recovery)",
         "title": "NaMaster pipeline-recovery validation on synthetic polarization skies (N_ side=512, _P=10 white noise, N=500…",
-        "desc": "Exact-bandpower-window NaMaster validation on synthetic polarization skies (N=500 per configuration). The canonical +0.270° injection recovers +0.269° (bias −0.001°); sign, sky-fraction, apodization, mask, lensing-BB, and B-purification controls show no resolved multiplicative under-recovery. This is estimator calibration, not a sky measurement.",
-        "source": "Paper 1B · v1B.0.106"
+        "desc": "Exact-bandpower-window NaMaster validation on synthetic polarization skies (N=500 per configuration) using the executed native-coordinate latitude window. The canonical +0.270° injection recovers +0.269° (bias −0.001°); sign, sky-fraction, apodization, window, lensing-BB, and B-purification controls show no resolved multiplicative under-recovery. This is estimator calibration, not a sky measurement.",
+        "source": "Paper 1B · v1B.0.108"
       },
       {
         "src": "/images/alp_triangle_plot.png",
@@ -147,8 +147,8 @@ export const figureSections: FigureSection[] = [
         "alt": "NaMaster β recovery vs HEALPix NSIDE",
         "number": "Figure 101",
         "title": "NaMaster β recovery vs NSIDE",
-        "desc": "Historical effective-ell NSIDE diagnostic retained for provenance. Its apparent −0.032° recovery floor is superseded by the v1B.0.106 exact-bandpower-window operator, which recovers +0.269° from +0.270° (bias −0.001°). Neither result is a sky-detection significance.",
-        "source": "Paper 1B · historical diagnostic; superseded by v1B.0.106"
+        "desc": "Historical effective-ell NSIDE diagnostic retained for provenance. Its apparent −0.032° recovery floor is superseded by the v1B.0.108 exact-bandpower-window operator, which recovers +0.269° from +0.270° (bias −0.001°) on a synthetic native-coordinate latitude window. Neither result is a sky-detection significance.",
+        "source": "Paper 1B · historical diagnostic; superseded by v1B.0.108"
       },
       {
         "src": "/images/dneff_viability.png",

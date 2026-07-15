@@ -57,6 +57,28 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p1b-v1b0108-bounded-confirmation-closure-2026-07-15",
+    dateISO: "2026-07-15",
+    timePT: "early morning",
+    kind: "closure-wave",
+    title: "P1B v1B.0.108 — bounded closure of the v1B.0.107 exact-PDF confirmation findings",
+    papers: ["P1B"],
+    summary:
+      "The v1B.0.107 exact-PDF board was Grok ACCEPT / Gemini MAJOR / Codex through the ChatGPT subscription MAJOR. Truth audit retained two bounded real majors: coordinate wording for the synthetic NaMaster window and incomplete rendering of the ALP prior-predictive/provenance methods. v1B.0.108 names the executed native-coordinate latitude window, reports the unconditional N=100,000 seed-1234 prior-predictive method and Monte-Carlo errors, and inventories 195 artifacts as 171 ordinary Git blobs plus 24 validated LFS pointers. No v1B.0.108 review was run under the anti-loop stop rule; readiness holds at 56 and no human acceptance is claimed.",
+    keyTakeaways: [
+      "v1B.0.107 raw verdicts preserved: Grok ACCEPT / Gemini MAJOR / Codex-subscription MAJOR",
+      "Two bounded majors closed without rerunning Monte Carlo or MCMC: synthetic-window coordinates and prior-predictive/provenance methods",
+      "v1B.0.108 PDF: 19 pages, SHA-256 a85f43f93ed7bb53e73304cd21fb0fe68ed0d6627103ccbcf970036d31d9a9fb",
+      "Readiness HOLD 56 — no v1B.0.108 re-review, automated ACCEPT, or human acceptance claimed",
+    ],
+    links: [
+      { label: "manuscript", href: `${GH}/arxiv/paper1b_mcmc_companion.tex` },
+      { label: "v1B.0.107 truth audit", href: `${PR}/INT_v3/ROUND_2026-07-15-P1B-v1B.0.107-EXACTPDF-c7156aa2-NONANTHROPIC-CONFIRM/P1B_v1B.0.107_truth_audit.md` },
+      { label: "v1B.0.108 manifest", href: `${GH}/reproducibility/p1b_analysis_artifact_manifest_v1B.0.108.json` },
+      { label: "science commit", href: `${GH_COMMIT}/97ceca7f` },
+    ],
+  },
+  {
     id: "p1b-v1b0106-exact-window-state-2026-07-14",
     dateISO: "2026-07-14",
     timePT: "evening",
@@ -3797,7 +3819,7 @@ export const reviewRounds: ReviewRound[] = [
     title: "P1B v1B.0.101 — publication-readiness finalization for coordinated submission: standalone-value framing + [arXiv:XXXX.XXXXX] cross-ref placeholder; content error-clean per INT v3",
     papers: ["P1B"],
     summary:
-      "Closure on the 2026-07-05 verified EXT+INT round (INT Claude full-source MINOR REVISIONS — all three data-backed results reproduce from committed chains/JSON, §III.A dimensional fix verified; EXT ChatGPT REJECT + Gemini/Grok MAJOR, all on standalone-vs-appendix venue/scope grounds). The single concrete external quantitative item — a reduced-vs-non-reduced Planck-mass inconsistency in the boxed ΔN_eff^(ECH) numbers, caught by BOTH INT and ChatGPT — was fixed in v1B.0.100 (numbers switched to reduced-M_Pl 1.7e-43 / 1.1e-56, self-consistent with (T/M_Pl)^2). This v1B.0.101 pass surfaces P1B's genuine standalone contributions in the abstract + intro (first-principles bespoke ECH-sector ΔN_eff ~1e-44 at BBN derived HERE not imported; validated NaMaster E→B pipeline; quantified ALP prior-predictive accommodation cost; public reproducibility manifest) so it reads as a legitimate short companion, no honest scope hedge removed. Coordinated-submission cross-ref wired: clearly-marked [arXiv:XXXX.XXXXX] placeholder in the intro + Golden2026P1a bib note; P1A's real ID inserted at coordinated submission (reciprocal for P1A), procedure in submissions/P1B/SUBMISSION_NOTE.md. readinessCap held at 76 (venue barrier, Houston-gated — not hand-bumped). Directive-G hygiene complete.",
+      "Closure on the 2026-07-05 verified EXT+INT round (INT Claude full-source MINOR REVISIONS — all three data-backed results reproduce from committed chains/JSON, §III.A dimensional fix verified; EXT ChatGPT REJECT + Gemini/Grok MAJOR, all on standalone-vs-appendix venue/scope grounds). The single concrete external quantitative item — a reduced-vs-non-reduced Planck-mass inconsistency in the boxed ΔN_eff^(ECH) numbers, caught by BOTH INT and ChatGPT — was fixed in v1B.0.100 (numbers switched to reduced-M_Pl 1.7e-43 / 1.1e-56, self-consistent with (T/M_Pl)^2). This v1B.0.101 pass surfaces P1B's genuine standalone contributions in the abstract + intro (first-principles bespoke ECH-sector ΔN_eff ~1e-44 at BBN derived HERE not imported; validated NaMaster E→B pipeline; ALP prior-sensitivity calculation; public reproducibility manifest) so it reads as a legitimate short companion, no honest scope hedge removed. Coordinated-submission cross-ref wired: clearly-marked [arXiv:XXXX.XXXXX] placeholder in the intro + Golden2026P1a bib note; P1A's real ID inserted at coordinated submission (reciprocal for P1A), procedure in submissions/P1B/SUBMISSION_NOTE.md. readinessCap held at 76 (venue barrier, Houston-gated — not hand-bumped). Directive-G hygiene complete.",
     keyTakeaways: [
       "Content error-clean per INT full-source review; the one concrete external item (reduced-M_Pl ΔN_eff convention) was real and is fixed (v1B.0.100)",
       "The genuine standalone result — first-principles bespoke ECH-sector ΔN_eff ~1e-44 at BBN, derived in this paper — is now foregrounded in abstract + intro so P1B reads as a legitimate companion, not an appendix",
