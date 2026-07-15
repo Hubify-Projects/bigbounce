@@ -10,13 +10,13 @@ and artifact-addressed review reuse without weakening scientific gates.
 
 ## Current execution order
 
-1. Finish the independent active closures: P1A conventions/Holst inverse and benchmark wording; P1B exact robustness shards and serial-equivalent inner parallelism; P3 r5 APJS proof; P4 portable provenance; P5 AJ-oriented primary-analysis restructuring.
-2. Freeze each compiled manuscript into a content-addressed packet containing paper ID, version, exact source/PDF paths, SHA-256, page count, source commit, target venue/article type, prompt ID, and allowed context.
-3. Run fresh non-Anthropic exact-PDF panels in parallel only after packet validation: Codex CLI through ChatGPT subscription for the OpenAI perspective (OpenAI API credentials unset; never API billing), plus allowed direct-provider Grok/xAI and Gemini legs. Preserve raw reports and normalize findings into a claim-by-claim truth ledger.
-4. Close only confirmed findings. Reflag unsupported or already-closed items with evidence; keep archive/DOI/external-data requirements as explicit workflow gates rather than pretending they are manuscript defects.
-5. Apply the content-hash stop rule: review each packet/provider/profile tuple once; re-review only after a reader-visible PDF hash change or one declared high-risk confirmation. After two valid independent waves on the same hash yield zero genuinely new reader-visible findings, stop, preserve the raw verdict distribution, and route remaining stable gates instead of chasing verdict words.
-6. Archive every compiled PDF immutably under a version-and-PST-timestamped name with source commit, hash, page count, build metadata, and review references; verify the canonical archive plus two mirrors before cleanup.
-7. Run the atomic release chain: claims/version/PDF mirrors, SSOT, Convex/API, site data and review timeline, build/browser QA, then bisected commits and `main` push.
+1. Compile the accumulated review taxonomy into a canonical machine-readable HubStack preflight engine and a BigBounce all-six-paper adapter. Bind every PASS receipt to source commit, source/PDF hashes, registry hash, and rule-catalog hash.
+2. Run the proactive portfolio sweep before any new review dispatch. Close latent known-pattern defects in independent paper lanes and rerun the transitive claim/artifact/cross-paper dependency gates after every closure.
+3. Execute the true scientific critical path in parallel: corrected P1B physical-spectrum production; P2 transfer/covariance or explicit venue-scope decision; P1A/P3 archives; P4/P5 dependency freeze and release closure.
+4. Freeze each passing manuscript into a content-addressed packet containing paper ID, version, exact source/PDF paths, SHA-256, page count, source commit, target venue/article type, prompt ID, allowed context, and the exact portfolio-preflight receipt.
+5. Run fresh non-Anthropic exact-PDF panels only as residual-novelty confirmation: Codex CLI through ChatGPT subscription (OpenAI API credentials unset; never API billing), plus allowed direct-provider Grok/xAI and Gemini legs. Preserve raw reports and normalize findings into the append-only truth ledger.
+6. For every truth-audited NEW-REAL blocker/major or recurrent minor, add or strengthen an executable regression fixture, sweep all six papers, close confirmed defects, and apply the content-hash stop rule instead of chasing favorable verdict words.
+7. Archive every compiled PDF immutably, then run the atomic claims/version/PDF/SSOT/Convex/API/site release chain and governed browser QA.
 
 ## PDF History Backfill Status — 2026-07-14
 
@@ -30,6 +30,7 @@ and artifact-addressed review reuse without weakening scientific gates.
 - **Implemented:** parallel non-overlapping paper lanes; exact-PDF SHA binding; P3 checkpoint-product reuse; P1B bounded two-job compute cap; venue-fit boards kept separate from correctness boards.
 - **In progress:** P1B deterministic inner parallelism with serial scientific-field equality; P1A/P3/P4/P5 closures.
 - **Next tooling lane:** one canonical six-paper registry plus content-addressed review-packet generator and fail-closed tests; migrate stale path/venue maps in `int_wave.sh`, `int_api_review_2026-07-08.py`, and `directive_g.sh` incrementally.
+- **Immediate architecture correction:** the 2026-07-15 audit found 70+ documented review patterns but only a handful enforced by `tools/check_new_patterns.sh`. Implement one executable HubStack learning-loop engine, one BigBounce adapter, packet-bound preflight receipts, and measured known-pattern escape/closure-regression rates before another review wave.
 - **Deliberately deferred:** Snakemake/DVC migration and broad workflow rewrites during the submission push; they add churn without shortening the present critical path.
 
 ## Scientific gates that acceleration cannot bypass
@@ -85,8 +86,8 @@ This parallel evaluation track does not advance the Phase 0 handoff gates or aut
 
 ## Recovery notes
 
-- Last prompt-history reconciliation: 2026-07-14 10:40 PT.
-- Current source prompts reviewed: the 2026-07-13 19:28 PT publication mandate and 2026-07-14 10:39 PT acceleration mandate.
+- Last prompt-history reconciliation: 2026-07-15 15:35 PT.
+- Current source prompts reviewed: the 2026-07-13 publication mandate, 2026-07-14 acceleration mandate, and 2026-07-15 recursive-prevention correction.
 - Current hard boundary: no Anthropic/Claude calls; no public sync or readiness uplift until exact boards and truth audits close.
 
 - Last prompt-history reconciliation: 2026-07-13 17:31 PT.

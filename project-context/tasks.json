@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "updated_at": "2026-07-14T13:45:00-07:00",
+  "updated_at": "2026-07-15T15:35:00-07:00",
   "project": "bigbounce",
   "objective": "Drive all six canonical papers through exact-artifact, venue-correct, non-Anthropic multi-model review, truth-audited closure, and atomic public synchronization without overstating readiness.",
   "tasks": [
@@ -99,6 +99,21 @@
         "Wrong-version, stale, missing, prompt-echo, and failed legs are gaps and never inferred verdicts",
         "Historical EXT11/EXT17 arithmetic and relabeling inconsistencies are preserved and corrected in the normalized view without rewriting raw evidence",
         "Two valid independent waves with zero genuinely new reader-visible findings on the same hash trigger the content-hash stop rule"
+      ]
+    },
+    {
+      "id": "PUB-007",
+      "status": "active",
+      "title": "Compile review learning into mandatory all-paper prevention gates",
+      "source_prompts": [
+        "2026-07-15 15:24 PT recursive-improvement mandate"
+      ],
+      "completion_criteria": [
+        "One canonical HubStack engine ingests machine-readable safe rules and emits content-addressed PASS/FAIL receipts",
+        "A BigBounce adapter runs the accumulated high-impact gate suite across all six current paper sources and exact PDFs",
+        "Review packets fail closed unless source commit, source/PDF hashes, rule-catalog hash, and preflight receipt all agree",
+        "Every truth-audited NEW-REAL blocker/major and recurrent minor adds or strengthens an executable regression fixture before the next review",
+        "Learning metrics report known-pattern escapes, preflight interception, closure regressions, claim-evidence coverage, and archive/catalog freshness"
       ]
     },
     {
