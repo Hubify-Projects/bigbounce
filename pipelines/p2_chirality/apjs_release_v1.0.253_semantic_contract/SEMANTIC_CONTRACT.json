@@ -17,17 +17,24 @@
   },
   "validator_source": {
     "repository": "Hubify-Projects/bigbounce",
-    "git_commit": "c546a102484a953ec289fd63c3e3332ff09a47fc",
+    "git_commit": "5ec77d8b2f348f1b939627b8d24b20784ae93bee",
     "path": "pipelines/p2_chirality/build_apjs_release_v1_0_244.py",
-    "bytes": 34107,
-    "sha256": "eb5041f0f5b1b5a2988b97dca36818c4044db85a335cafe1669ef977fbe5c9d0"
+    "bytes": 38777,
+    "sha256": "157e0a1ad822760a550adbc83ec6320f36b0d4cc8e17689445bfd666a418636a"
   },
   "validator_schema_source": {
     "repository": "Hubify-Projects/bigbounce",
-    "git_commit": "c546a102484a953ec289fd63c3e3332ff09a47fc",
+    "git_commit": "5ec77d8b2f348f1b939627b8d24b20784ae93bee",
     "path": "pipelines/p2_chirality/apjs_release_schema_v1_0_244.json",
     "bytes": 5662,
     "sha256": "2bf5a5314361a9cfbf20ef67a17e37276401c307de68d3925039fa2eb28a2830"
+  },
+  "validator_reproducer_source": {
+    "repository": "Hubify-Projects/bigbounce",
+    "git_commit": "5ec77d8b2f348f1b939627b8d24b20784ae93bee",
+    "path": "pipelines/p2_chirality/reproduce_p4_primary_null_v1_0_244.py",
+    "bytes": 8333,
+    "sha256": "784f89ed89ed70f676666ad7eed3b12263a15564faa3dd1c0f802cc787246baa"
   },
   "execution": {
     "entrypoint": "validate_p4_catalog_c_semantics_v1_0_253.py",

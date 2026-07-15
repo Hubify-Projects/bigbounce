@@ -4,6 +4,11 @@
 from __future__ import annotations
 
 import importlib.util
+import hashlib
+import json
+import subprocess
+import sys
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -32,6 +37,30 @@ class SafeRelativePathTests(unittest.TestCase):
             with self.subTest(raw=raw):
                 with self.assertRaises(bootstrap.ContractError):
                     bootstrap.safe_relative_path(raw)
+
+    def test_contract_pinned_sources_support_clean_tree_help(self):
+        contract = json.loads(bootstrap.CONTRACT_PATH.read_text(encoding="utf-8"))
+        keys = ("validator_source", "validator_schema_source", "validator_reproducer_source")
+        with tempfile.TemporaryDirectory() as directory:
+            checkout = Path(directory) / "pinned-source"
+            for key in keys:
+                record = contract[key]
+                content = subprocess.run(
+                    ["git", "show", f"{record['git_commit']}:{record['path']}"],
+                    cwd=ROOT, check=True, capture_output=True,
+                ).stdout
+                self.assertEqual(len(content), record["bytes"])
+                self.assertEqual(hashlib.sha256(content).hexdigest(), record["sha256"])
+                destination = checkout / record["path"]
+                destination.parent.mkdir(parents=True, exist_ok=True)
+                destination.write_bytes(content)
+            validator = checkout / contract["validator_source"]["path"]
+            completed = subprocess.run(
+                [sys.executable, str(validator), "--help"],
+                cwd=checkout, capture_output=True, text=True,
+            )
+            self.assertEqual(completed.returncode, 0, completed.stderr)
+            self.assertIn("--validate-only", completed.stdout)
 
 
 if __name__ == "__main__":

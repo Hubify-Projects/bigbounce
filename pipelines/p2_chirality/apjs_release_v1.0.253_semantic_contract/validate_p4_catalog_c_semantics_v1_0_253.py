@@ -81,7 +81,7 @@ def run(work_dir: Path, receipt_path: Path, *, force: bool = False) -> None:
     checkout = work_dir / "pinned-source"
     release = work_dir / "release"
 
-    for key in ("validator_source", "validator_schema_source"):
+    for key in ("validator_source", "validator_schema_source", "validator_reproducer_source"):
         record = contract[key]
         destination = checkout / record["path"]
         url = GH_RAW.format(

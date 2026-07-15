@@ -4,7 +4,7 @@
   "paper": "P4",
   "paper_version": "v1.0.253",
   "schema": "p4-catalog-c-semantic-validation-receipt/v1",
-  "status": "PASS",
+  "status": "SUPERSEDED_REVALIDATION_REQUIRED",
   "source_receipt": "pipelines/p2_chirality/outputs/canonical_provenance/p4_catalog_c_semantic_validation_v1_0_253.json",
   "source_receipt_bytes": 3925,
   "source_receipt_sha256": "b4baa0bb2e2c3fb076e18065c26095465bd552b9dbee0ca48d51fda2331ab1db",
@@ -15,5 +15,5 @@
     "aggregate_and_quarantine_gates_passed": 8,
     "uniqueness_backend": "temporary SQLite PRIMARY KEY (disk-backed)"
   },
-  "note": "Portable summary of the full repository receipt; no provider publication is claimed by this file."
+  "note": "Portable summary of the preceding full repository receipt. It predates the strengthened quarantine row-equivalence gates and cannot establish that closure; rerun before provider publication."
 }
