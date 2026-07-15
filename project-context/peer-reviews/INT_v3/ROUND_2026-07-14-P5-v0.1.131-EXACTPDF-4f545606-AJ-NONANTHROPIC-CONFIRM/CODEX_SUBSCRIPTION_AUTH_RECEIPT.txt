@@ -1,0 +1,12 @@
+timestamp_utc: 2026-07-14T23:41:25Z
+cli: codex-cli 0.144.3
+auth_status: Logged in using ChatGPT
+auth_route: ChatGPT subscription
+model_requested: gpt-5.6-sol
+reasoning_effort: high
+execution_mode: ephemeral, read-only
+environment: clean env allowlist (HOME, USER, PATH, SHELL, TERM); no API variables inherited
+openai_api_used: false
+anthropic_used: false
+source_commit: e2e842d07c4f5e322729a0009740d018f927d216
+pdf_sha256: 4f545606e290e0295b4284e8ba441f04155aa601100b213c1e3cfdb894d803a0
