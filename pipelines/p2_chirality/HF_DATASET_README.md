@@ -27,7 +27,7 @@ configs:
 
 # DESI Legacy Galaxy Chirality Catalog
 
-This dataset accompanies Paper 4 v1.0.251, *An Observed-Label Chirality-Dipole Null in 949,584 High-Confidence DESI Spirals and an 8.5-Million-Galaxy Catalog*.
+This dataset accompanies Paper 4 v1.0.252, *An Observed-Label Chirality-Dipole Null in 949,584 High-Confidence DESI Spirals and an 8.5-Million-Galaxy Catalog*.
 
 The primary high-confidence observed-label statistic is consistent with zero under fixed-occupancy label randomization (`z=0.7053169638`, one-sided empirical-rank `p=0.2246775322`). This is not a calibrated true-spin, physical-amplitude, or primordial-parity bound.
 
@@ -61,6 +61,8 @@ The folder also contains the schema, manifest, SHA-256 ledger, validation receip
 
 `spiral_morphology_dr8.parquet` is the existing public morphology companion for every one of the 3,201,160 released CW/CCW rows. It is 105,317,121 bytes with SHA-256 `d49090fce3033c5905df359f63036fd831c4b6378c271b95afd8d86a91bd5620`. Its `BRICKID_OBJID` keys are unique, non-null, and exactly cover the safe catalog's `is_spiral == True` object IDs.
 
+The current DR8 class totals are 1,592,107 CW and 1,609,053 CCW, totaling 3,201,160 chirality-relevant spirals.
+
 The companion exposes raw DR8 morphology fields only: `BRICKID`, `OBJID`, `TYPE`, `FRACDEV`, `SHAPEDEV_R`, `SHAPEDEV_E1`, `SHAPEDEV_E2`, `SHAPEEXP_R`, `SHAPEEXP_E1`, and `SHAPEEXP_E2`. It does not contain a precomputed axial ratio.
 
 The versioned machine-readable join contract, schema, and validator are under `apjs-release/v1.0.251-morphology-sidecar/`.
@@ -74,9 +76,13 @@ safe = pd.read_parquet(hf_hub_download(
     repo,
     "apjs-release/v1.0.244/p4_catalog_primary_safe_v1.0.244.parquet",
     repo_type="dataset",
+    revision="db11023306ab4eed1d7727670bd78e127b7af17a",
 ))
 morph = pd.read_parquet(hf_hub_download(
-    repo, "spiral_morphology_dr8.parquet", repo_type="dataset"
+    repo,
+    "spiral_morphology_dr8.parquet",
+    repo_type="dataset",
+    revision="245ad7c5f1e58c627be1390dc3125cd1ce1e3dc9",
 ))
 morph["object_id"] = morph["BRICKID"].astype(str) + "_" + morph["OBJID"].astype(str)
 
@@ -95,11 +101,11 @@ This release does **not** provide a full-catalog redshift, imaging-leg, depth, s
 ## Reproducibility and citation status
 
 - Paper source and pipeline: <https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p2_chirality>
-- Exact current PDF: <https://bigbounce.hubify.app/papers/chirality_catalog_paper_v1.0.251.pdf>
+- Exact current PDF: <https://bigbounce.hubify.app/papers/chirality_catalog_paper_v1.0.252.pdf>
 - Machine-readable release contract: `apjs-release/v1.0.244/SCHEMA.json`
 - Provider receipt: `apjs-release/v1.0.244/PROVIDER_RECEIPT.json`
 
-No arXiv identifier or Zenodo DOI has been assigned yet. Cite the manuscript title, author, version v1.0.251, and the pinned data/provider commits above until those identifiers exist.
+No arXiv identifier, Zenodo DOI, or immutable Paper IV v1.0.252 repository tag has been assigned. Cite the manuscript title, author, version v1.0.252, and the pinned data/provider commits above until those identifiers exist.
 
 ## License
 
