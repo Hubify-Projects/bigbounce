@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import hashlib
+import base64
 import json
 import subprocess
 import sys
@@ -79,6 +80,11 @@ class RemoteLifecycleTests(unittest.TestCase):
         with self.assertRaisesRegex(RuntimeError, "missing outputs"):
             runner.run(self.repo, self.manifest, self.state)
         self.assertFalse((self.state / "production.complete.json").exists())
+        failed_status = json.loads((self.state / "job8.status.json").read_text())
+        self.assertEqual(failed_status["state"], "failed")
+        self.assertIn("missing outputs", failed_status["reason"])
+        self.assertIn("log_sha256", failed_status)
+        self.assertFalse((self.state / "job8.receipt.json").exists())
         self.manifest["execution_jobs"][8]["command"] = "mkdir -p out; printf job8 > out/job8.txt"
         self.manifest["merge_job"]["command"] = "exit 9"
         with self.assertRaisesRegex(RuntimeError, "strict-merge"):
@@ -96,6 +102,13 @@ class RemoteLifecycleTests(unittest.TestCase):
         self.assertIn(self.commit, argv[2])
         self.assertIn("sha256sum -c -", argv[2])
         self.assertIn("remote_production_runner.py", argv[2])
+        self.assertNotIn("/tmp/manifest.json", argv[2])
+        canonical = bootstrap.canonical_manifest_bytes(self.manifest)
+        encoded = base64.b64encode(canonical).decode("ascii")
+        self.assertIn(encoded, argv[2])
+        self.assertIn(hashlib.sha256(canonical).hexdigest(), argv[2])
+        self.assertEqual(base64.b64decode(encoded), canonical)
+        self.assertIn("bound-production-manifest.json", argv[2])
 
 
 if __name__ == "__main__":

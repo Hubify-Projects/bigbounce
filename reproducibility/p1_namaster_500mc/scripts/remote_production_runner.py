@@ -24,8 +24,17 @@ def sha256(path: Path) -> str:
 def atomic_json(path: Path, value: dict) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     tmp = path.with_name(f".{path.name}.{os.getpid()}.tmp")
-    tmp.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n")
+    payload = (json.dumps(value, indent=2, sort_keys=True) + "\n").encode("utf-8")
+    with tmp.open("wb") as handle:
+        handle.write(payload)
+        handle.flush()
+        os.fsync(handle.fileno())
     os.replace(tmp, path)
+    directory_fd = os.open(path.parent, os.O_RDONLY)
+    try:
+        os.fsync(directory_fd)
+    finally:
+        os.close(directory_fd)
 
 
 def git_head(repo: Path) -> str:
@@ -76,29 +85,37 @@ def execute_job(repo: Path, state_dir: Path, job: dict, commit: str) -> None:
         "job": job["name"], "state": "running", "git_commit": commit,
         "command": job["command"], "started_at": started,
     })
-    with log.open("wb") as stream:
-        result = subprocess.run(["bash", "-lc", job["command"]], cwd=repo,
-                                stdout=stream, stderr=subprocess.STDOUT, check=False)
-    if result.returncode:
-        failure = {
-            "job": job["name"], "state": "failed", "returncode": result.returncode,
-            "started_at": started, "log_sha256": sha256(log),
+    try:
+        with log.open("wb") as stream:
+            result = subprocess.run(["bash", "-lc", job["command"]], cwd=repo,
+                                    stdout=stream, stderr=subprocess.STDOUT, check=False)
+            stream.flush()
+            os.fsync(stream.fileno())
+        if result.returncode:
+            raise RuntimeError(f"command exited {result.returncode}")
+        missing = [p for p in job["outputs"] if not (repo / p).is_file()]
+        if missing:
+            raise RuntimeError(f"missing outputs: {missing}")
+        completed = {
+            "job": job["name"], "state": "complete", "git_commit": commit,
+            "command": job["command"], "started_at": started,
+            "finished_at": datetime.now(timezone.utc).isoformat(),
+            "log_sha256": sha256(log),
+            "output_sha256": {p: sha256(repo / p) for p in job["outputs"]},
         }
+        atomic_json(receipt, completed)
+        atomic_json(status, completed)
+    except Exception as exc:
+        receipt.unlink(missing_ok=True)
+        failure = {
+            "job": job["name"], "state": "failed", "started_at": started,
+            "reason": str(exc),
+        }
+        if log.is_file():
+            failure["log_sha256"] = sha256(log)
         atomic_json(status, failure)
         atomic_json(state_dir / f"{job['name']}.failed.json", failure)
-        raise RuntimeError(f"job failed: {job['name']}")
-    missing = [p for p in job["outputs"] if not (repo / p).is_file()]
-    if missing:
-        raise RuntimeError(f"job {job['name']} missing outputs: {missing}")
-    completed = {
-        "job": job["name"], "state": "complete", "git_commit": commit,
-        "command": job["command"], "started_at": started,
-        "finished_at": datetime.now(timezone.utc).isoformat(),
-        "log_sha256": sha256(log),
-        "output_sha256": {p: sha256(repo / p) for p in job["outputs"]},
-    }
-    atomic_json(receipt, completed)
-    atomic_json(status, completed)
+        raise RuntimeError(f"job failed: {job['name']}: {exc}") from exc
 
 
 def run(repo: Path, manifest: dict, state_dir: Path) -> dict:
