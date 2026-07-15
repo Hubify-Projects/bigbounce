@@ -39,6 +39,7 @@ PY_REVIEW="${BIGBOUNCE_INT_API_REVIEW_BIN:-$REPO/tools/int_api_review_2026-07-08
 API_OUTDIR="${INT_OUTDIR:-$REPO/project-context/peer-reviews/INT_v3/ROUND_2026-07-09}"
 SUBSCRIPTION_OUTDIR="${INT_SUBSCRIPTION_OUTDIR:-${BIGBOUNCE_INT_SUBSCRIPTION_OUTDIR:-$REPO/project-context/peer-reviews/INT_api/H17_2026-07-10}}"
 RUNLOG="$SUBSCRIPTION_OUTDIR/run.log"
+SUBSCRIPTION_MANIFEST="$SUBSCRIPTION_OUTDIR/manifest.jsonl"
 CODEX_ENABLED="${BIGBOUNCE_CODEX_SUBSCRIPTION_ENABLED:-1}"
 API_LEGS_ENABLED="${BIGBOUNCE_INT_API_LEGS_ENABLED:-1}"
 CODEX_BIN="${BIGBOUNCE_CODEX_BIN:-$(command -v codex 2>/dev/null || { [ -x /opt/homebrew/bin/codex ] && printf '%s' /opt/homebrew/bin/codex; })}"
@@ -47,6 +48,66 @@ CODEX_EFFORT="${BIGBOUNCE_CODEX_EFFORT:-high}"
 REVIEW_COMMIT="${INT_REVIEW_COMMIT:-$(git -C "$REPO" rev-parse HEAD)}"
 
 die() { echo "FAIL: $*" >&2; exit 1; }
+
+# Append one allowlisted, content-addressed Codex-subscription receipt. The raw
+# header is the sole provenance input, making this a bounded backfill helper.
+append_codex_receipt() {
+  local raw="$1" manifest="$2" forced_status="${3:-auto}" forced_verdict="${4:-auto}"
+  python3 - "$raw" "$manifest" "$forced_status" "$forced_verdict" <<'PY'
+import fcntl, hashlib, json, pathlib, re, sys
+raw_path, manifest_path = map(pathlib.Path, sys.argv[1:3])
+forced_status, forced_verdict = sys.argv[3:5]
+data = raw_path.read_bytes(); text = data.decode("utf-8")
+def match(pattern, label):
+    found = re.search(pattern, text, re.MULTILINE)
+    if not found: raise SystemExit(f"FAIL: Codex receipt missing {label}: {raw_path}")
+    return found.groups()
+paper, version, model, effort = match(r"^# INT Codex-subscription Review \u2014 (\S+) (\S+) \u2014 (\S+) \(([^)]+)\)$", "title binding")
+packet_key, prompt_sha = match(r"^binding: packet_key=([0-9a-f]{64})  prompt_sha256=([0-9a-f]{64})$", "packet/prompt binding")
+review_commit, source_sha = match(r"^provenance: commit=([0-9a-f]{40})  source_sha256=([0-9a-f]{64})$", "commit/source binding")
+pdf_sha, pages = match(r"^pdf: .*  sha256=([0-9a-f]{64})  pages=([1-9][0-9]*)$", "PDF binding")
+(utc,) = match(r"^UTC: (\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z)$", "UTC")
+status = forced_status if forced_status != "auto" else ("failed" if "Codex subscription leg errored" in text else "ok")
+if status not in {"ok", "failed"}: raise SystemExit(f"FAIL: invalid Codex receipt status: {status}")
+verdict = None
+if status == "ok":
+    candidate = forced_verdict
+    if candidate == "auto": (candidate,) = match(r"(?im)^\(?1\)?\s*VERDICT:\s*([^\n]+)$", "verdict")
+    upper = candidate.upper()
+    verdict = next((v for v in ("MAJOR REVISIONS", "MINOR REVISIONS", "ACCEPT", "REJECT") if v in upper), None)
+    if verdict is None: raise SystemExit(f"FAIL: successful Codex receipt has no canonical verdict: {raw_path}")
+receipt = {
+    "schema_version": 1, "paper": paper, "version": version,
+    "vendor": "codex-subscription", "provider": "chatgpt-subscription-via-codex-cli",
+    "requested_model": model, "reasoning_effort": effort,
+    "pdf_sha256": pdf_sha, "pdf_pages": int(pages), "source_sha256": source_sha,
+    "review_commit": review_commit, "packet_key": packet_key, "prompt_sha256": prompt_sha,
+    "utc": utc, "status": status, "verdict": verdict,
+    "raw_response_sha256": hashlib.sha256(data).hexdigest(),
+    "openai_api_used": False, "anthropic_used": False,
+}
+canonical = json.dumps(receipt, sort_keys=True, separators=(",", ":")).encode()
+receipt["receipt_sha256"] = hashlib.sha256(canonical).hexdigest()
+for forbidden in ("token", "secret", "session", "authorization", "credential"):
+    if any(forbidden in field.lower() for field in receipt): raise SystemExit(f"FAIL: forbidden receipt field: {forbidden}")
+manifest_path.parent.mkdir(parents=True, exist_ok=True)
+with manifest_path.open("a+", encoding="utf-8") as handle:
+    fcntl.flock(handle, fcntl.LOCK_EX); handle.seek(0)
+    existing = {row.get("receipt_sha256") for line in handle if line.strip() for row in [json.loads(line)] if isinstance(row, dict)}
+    if receipt["receipt_sha256"] not in existing:
+        handle.seek(0, 2); handle.write(json.dumps(receipt, sort_keys=True) + "\n"); handle.flush()
+    fcntl.flock(handle, fcntl.LOCK_UN)
+print(receipt["receipt_sha256"])
+PY
+}
+
+if [ "${1:-}" = "--backfill-codex-receipt" ]; then
+  [ $# -ge 2 ] || die "usage: tools/int_wave.sh --backfill-codex-receipt RAW [MANIFEST]"
+  RAW_BACKFILL="$2"; [ -f "$RAW_BACKFILL" ] || die "raw Codex review not found: $RAW_BACKFILL"
+  MANIFEST_BACKFILL="${3:-$(dirname "$RAW_BACKFILL")/manifest.jsonl}"
+  append_codex_receipt "$RAW_BACKFILL" "$MANIFEST_BACKFILL"
+  exit 0
+fi
 
 [ $# -ge 1 ] || die "usage: tools/int_wave.sh <PAPER> [\"context-note\"]"
 PAPER="$1"
@@ -349,6 +410,13 @@ else:
 ')"
 if [ "$CODEX_ON" = 1 ]; then
   [ -n "$V_CODEX" ] || V_CODEX="ABSENT"
+  if [ "$RC_CODEX" = 0 ]; then
+    append_codex_receipt "$CODEX_OUT" "$SUBSCRIPTION_MANIFEST" ok "$V_CODEX" >/dev/null \
+      || die "could not append Codex subscription receipt"
+  else
+    append_codex_receipt "$CODEX_OUT" "$SUBSCRIPTION_MANIFEST" failed auto >/dev/null \
+      || die "could not append failed Codex subscription receipt"
+  fi
 else
   V_CODEX="$CODEX_STATE"
 fi

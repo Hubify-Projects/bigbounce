@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import importlib.util
 import ast
+import hashlib
 import json
 import os
 import subprocess
@@ -131,6 +132,8 @@ printf '(1) VERDICT: MINOR REVISIONS\\n(2) ISSUES: none in stub\\n(3) supported\
                 "BIGBOUNCE_CODEX_BIN": str(codex),
                 "BIGBOUNCE_REVIEW_CACHE": str(root / "cache"),
                 "INT_SUBSCRIPTION_OUTDIR": str(outdir),
+                "OPENAI_API_KEY": "forbidden-openai-secret",
+                "ANTHROPIC_API_KEY": "forbidden-anthropic-secret",
                 "INT_REVIEW_COMMIT": subprocess.check_output(
                     ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True,
                 ).strip(),
@@ -148,6 +151,54 @@ printf '(1) VERDICT: MINOR REVISIONS\\n(2) ISSUES: none in stub\\n(3) supported\
             raw = raws[0].read_text(encoding="utf-8")
             self.assertIn("binding: packet_key=", raw)
             self.assertIn("source_tree: clean detached sparse tree", raw)
+            receipt = json.loads((outdir / "manifest.jsonl").read_text().strip())
+            self.assertEqual(receipt["paper"], "P1B")
+            self.assertEqual(receipt["vendor"], "codex-subscription")
+            self.assertEqual(receipt["provider"], "chatgpt-subscription-via-codex-cli")
+            self.assertEqual(receipt["status"], "ok")
+            self.assertEqual(receipt["verdict"], "MINOR REVISIONS")
+            self.assertFalse(receipt["openai_api_used"])
+            self.assertFalse(receipt["anthropic_used"])
+            self.assertRegex(receipt["packet_key"], r"^[0-9a-f]{64}$")
+            self.assertRegex(receipt["prompt_sha256"], r"^[0-9a-f]{64}$")
+            self.assertEqual(
+                receipt["raw_response_sha256"],
+                hashlib.sha256(raws[0].read_bytes()).hexdigest(),
+            )
+            serialized = json.dumps(receipt).lower()
+            for forbidden in ("forbidden-openai-secret", "forbidden-anthropic-secret", "session_id", "api_key"):
+                self.assertNotIn(forbidden, serialized)
+
+    def test_codex_receipt_backfill_records_failure_and_is_idempotent(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            raw = root / "failed.md"
+            raw.write_text(
+                """# INT Codex-subscription Review — P4 v1.0.244 — gpt-5.6-sol (high)
+paper: P4  version: v1.0.244  tex: paper.tex
+binding: packet_key=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa  prompt_sha256=bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+provenance: commit=cccccccccccccccccccccccccccccccccccccccc  source_sha256=dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+pdf: snapshot=/safe/snapshot.pdf  sha256=eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee  pages=26
+UTC: 2026-07-15T09:06:44Z
+(Codex subscription leg errored; diagnostics: sanitized.log)
+""",
+                encoding="utf-8",
+            )
+            manifest = root / "manifest.jsonl"
+            for _ in range(2):
+                run = subprocess.run(
+                    ["bash", str(TOOLS / "int_wave.sh"), "--backfill-codex-receipt", str(raw), str(manifest)],
+                    cwd=ROOT, capture_output=True, text=True, timeout=15, check=False,
+                )
+                self.assertEqual(run.returncode, 0, run.stderr)
+            lines = manifest.read_text().splitlines()
+            self.assertEqual(len(lines), 1)
+            receipt = json.loads(lines[0])
+            self.assertEqual(receipt["status"], "failed")
+            self.assertIsNone(receipt["verdict"])
+            self.assertEqual(receipt["pdf_pages"], 26)
+            self.assertFalse(receipt["openai_api_used"])
+            self.assertFalse(receipt["anthropic_used"])
 
     def test_xai_response_parsing_builds_allowlisted_receipt(self):
         module = load_script("int_api_review_2026-07-08.py")
