@@ -77,10 +77,24 @@ class PublisherTests(unittest.TestCase):
         self.assertEqual(len(api.calls), 2)
         self.assertEqual(api.calls[0]["parent_commit"], "dataset-parent")
         self.assertEqual(api.calls[1]["parent_commit"], "model-parent")
-        self.assertEqual(len(api.calls[0]["operations"]), 4)
+        self.assertEqual(len(api.calls[0]["operations"]), 8)
         self.assertEqual(len(api.calls[1]["operations"]), 1)
         self.assertNotIn("secret-never-render", json.dumps(receipt))
         self.assertTrue(all("commit_oid" in item for item in receipt["repositories"]))
+
+    def test_dataset_plan_preserves_morphology_and_adds_semantic_bundle(self):
+        files = publisher.TARGETS["dataset"]["files"]
+        self.assertTrue(any(path.startswith(publisher.MORPH_PREFIX + "/") for path in files))
+        semantic = {path for path in files if path.startswith(publisher.SEMANTIC_PREFIX + "/")}
+        self.assertEqual(
+            semantic,
+            {
+                f"{publisher.SEMANTIC_PREFIX}/README.md",
+                f"{publisher.SEMANTIC_PREFIX}/SEMANTIC_CONTRACT.json",
+                f"{publisher.SEMANTIC_PREFIX}/SEMANTIC_VALIDATION_RECEIPT.json",
+                f"{publisher.SEMANTIC_PREFIX}/validate_p4_catalog_c_semantics_v1_0_253.py",
+            },
+        )
 
     def test_dataset_only_and_model_only(self):
         for target in ("dataset", "model"):

@@ -21,6 +21,8 @@ ROOT = Path(__file__).resolve().parents[1]
 DATASET_REPO = "bamfai/galaxy-chirality-catalog"
 MODEL_REPO = "bamfai/galaxy-chirality-v2"
 MORPH_PREFIX = "apjs-release/v1.0.251-morphology-sidecar"
+SEMANTIC_PREFIX = "apjs-release/v1.0.253-semantic-contract"
+SEMANTIC_DIR = ROOT / "pipelines/p2_chirality/apjs_release_v1.0.253_semantic_contract"
 
 TARGETS: dict[str, dict[str, Any]] = {
     "dataset": {
@@ -31,6 +33,10 @@ TARGETS: dict[str, dict[str, Any]] = {
             f"{MORPH_PREFIX}/MANIFEST.json": ROOT / "pipelines/p2_chirality/apjs_release_v1.0.251_morphology_sidecar/MANIFEST.json",
             f"{MORPH_PREFIX}/SCHEMA.json": ROOT / "pipelines/p2_chirality/apjs_release_v1.0.251_morphology_sidecar/SCHEMA.json",
             f"{MORPH_PREFIX}/validate_p4_morphology_join_v1_0_251.py": ROOT / "pipelines/p2_chirality/apjs_release_v1.0.251_morphology_sidecar/validate_p4_morphology_join_v1_0_251.py",
+            f"{SEMANTIC_PREFIX}/README.md": SEMANTIC_DIR / "README.md",
+            f"{SEMANTIC_PREFIX}/SEMANTIC_CONTRACT.json": SEMANTIC_DIR / "SEMANTIC_CONTRACT.json",
+            f"{SEMANTIC_PREFIX}/SEMANTIC_VALIDATION_RECEIPT.json": SEMANTIC_DIR / "SEMANTIC_VALIDATION_RECEIPT.json",
+            f"{SEMANTIC_PREFIX}/validate_p4_catalog_c_semantics_v1_0_253.py": SEMANTIC_DIR / "validate_p4_catalog_c_semantics_v1_0_253.py",
         },
     },
     "model": {
@@ -164,7 +170,7 @@ def publish_updates(
                 repo_type=plan["repo_type"],
                 operations=operations,
                 parent_commit=parent,
-                commit_message=f"Publish P4 v1.0.252 {name} contract updates",
+                commit_message=f"Publish P4 v1.0.253 {name} contract updates",
             )
             oid = getattr(commit, "oid", None) or getattr(commit, "commit_id", None)
             if not isinstance(oid, str) or not oid:
