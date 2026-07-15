@@ -261,8 +261,15 @@
 %   FALSIFIED list (14 items) not acted on.)
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1B.0.106}
+\newcommand{\paperVersion}{v1B.0.107}
 \newcommand{\paperTimestamp}{July 14, 2026}
+% v1B.0.106->107 (2026-07-14): truth-audited exact-PDF review closure.
+%   Fixed the cosmology launcher path/version contract and expanded the SHA
+%   manifest to the frozen chains and ALP implementation/results. Relabeled the
+%   auxiliary f_sky battery as synthetic pure-latitude masks; replaced the
+%   onset approximation with the executed nonlinear ODE-to-today abundance;
+%   separated the Omega_a<0.01 subset from the theta_i<=0.1 sliver; and scoped
+%   torsion, diagonal-SNR, and non-converged c15 quantities as estimates only.
 % v1B.0.105->106 (2026-07-14): exact-operator / surrogate-validity closure.
 %   Replaced effective-ell NaMaster templates with the identical bandpower-window
 %   operator and a 500-MC rerun; retained old results as superseded evidence.
@@ -1299,7 +1306,7 @@ and a Generic Spectator-ALP Birefringence Fit}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{\paperTimestamp}
+\date{\paperTimestamp\enspace|\enspace\paperVersion}
 
 \begin{abstract}
 We present three self-contained computational studies and state their limited
@@ -1317,7 +1324,7 @@ minimal-contact estimate $\rho_{\rm tor}/\rho_{\rm rad}\sim(T/M_{\rm Pl})^2$;
 at BBN it is of order $10^{-43}$--$10^{-44}$ up to the stated thermal and
 convention factors, far below the proxy sensitivity.
 
-Second, a 500-realization synthetic-CMB NaMaster test on an ACT-like mask
+Second, a 500-realization synthetic-CMB NaMaster test on a synthetic mask
 recovers injected global polarization rotations after applying the exact
 NaMaster bandpower-window operator: $0.270^\circ\mapsto0.269^\circ$ and
 $0.342^\circ\mapsto0.341^\circ$, with a canonical MC-mean bias
@@ -1328,9 +1335,10 @@ and is not a real-sky detection or systematic floor.
 Third, a generic spectator-axion-like-particle (ALP) model is fitted to a
 published birefringence summary likelihood.  The fit shows accommodation, not
 prediction: at fixed $C_{a\gamma}=8$ the posterior favors $m\gg H_0$, and only
-a conditional subset remains spectator-safe.  A prior-predictive calculation
+a conditional subset remains spectator-safe.  A separate prior-predictive calculation
 finds $11.6\%$ of fixed-coupling draws and $6.1\%$ of broad-coupling draws
-within the published $1\sigma$ band, quantifying the prior-volume cost.  The
+within the published $1\sigma$ band; these are unconditional prior-sensitivity
+fractions, not the cost or probability of the spectator subset.  The
 same model exists in standard GR and has no ECH-specific content.
 
 Frozen chains, configurations, synthetic-recovery outputs, and the
@@ -1353,9 +1361,9 @@ independent evidence for (or verification of) the spin-torsion theory.
 What this companion nonetheless establishes on its own is concrete and
 self-contained: (i)~a \emph{first-principles} derivation
 (Sec.~\ref{sec:torsion_neff}) that the minimal ECH spin-torsion sector's
-radiation-era contribution is Planck-suppressed to
-$\Delta\Neff^{\rm(ECH)}\!\sim\!10^{-44}$ at BBN --- some forty orders of
-magnitude below any foreseeable sensitivity, and a genuine result of \emph{this}
+radiation-era energy-density ratio is Planck-suppressed to
+$\rho_{\rm tor}/\rho_{\rm rad}\!\sim\!10^{-43}$ at BBN, as a parametric
+scaling estimate rather than $\Delta N_{\rm eff}$, and is a result of \emph{this}
 paper rather than one imported from Paper~I(a); (ii)~a validated NaMaster
 $E\!\to\!B$ pseudo-$C_\ell$ recovery pipeline with a quantified synthetic-sky
 bias budget; (iii)~a quantified prior-predictive accommodation cost for the
@@ -1375,10 +1383,11 @@ the $\Delta\Neff$ extension does \emph{not} reduce the residual
 ${\sim}\,3.6\sigma$ tension with the SH0ES local-distance-ladder
 $H_0=73.04\pm 1.04~\text{km\,s}^{-1}\,\text{Mpc}^{-1}$).
 We additionally derive, from first principles, the bespoke ECH-sector
-contribution to $\Delta\Neff$: integrating out the algebraic torsion yields a
+contact-energy scale: integrating out the algebraic torsion yields a
 Planck-suppressed four-fermion interaction whose radiation-era energy density
-scales as $(T/M_{\rm Pl})^2$, giving $\Delta\Neff^{\rm(ECH)}\!\sim\!10^{-44}$
-at BBN --- a strictly negligible value. The stock-CAMB run is thus not a proxy
+ratio scales as $(T/M_{\rm Pl})^2$, giving
+$\rho_{\rm tor}/\rho_{\rm rad}\!\sim\!10^{-43}$ at BBN as a parametric estimate.
+The stock-CAMB run is thus not a proxy
 for an unknown prediction but a $\sim\!40$-orders-of-magnitude-conservative
 observational envelope on this bespoke ECH result (Sec.~\ref{sec:torsion_neff}).
 \emph{(2)~NaMaster pseudo-$C_\ell$ pipeline validation} on synthetic
@@ -1564,10 +1573,10 @@ an extra radiation-like degree of freedom in standard cosmology.
 \item \textit{NaMaster CMB E-B analysis} (Sec.~\ref{sec:data_cmb}): a
 bias-injection Monte Carlo validation of the pseudo-$C_\ell$ deconvolution
 pipeline on synthetic $\Lambda$CDM polarization skies.
-\textbf{Not a competitive sky detection.} The high pipeline
-template-fit SNR figures (e.g., $20.01$) refer to recovery of injected MC
-signals,
-not to the significance of the CMB sky measurement, which remains the published
+\textbf{Not a competitive sky detection.} The diagonal-covariance template
+score (e.g., $20.01$) is a heuristic recovery diagnostic for injected MC
+signals and omits inter-bin covariance; it is not the significance of the CMB
+sky measurement, which remains the published
 $2.7$--$2.9\sigma$ from Planck/ACT.
 
 \item \textit{Spectator-ALP consistency check} (Sec.~\ref{sec:birefringence_check}):
@@ -1575,11 +1584,9 @@ a standard GR+ALP computation showing that the observed signal is consistent
 with an ALP within the scan-prior envelope but near its upper-displacement/coupling
 edge; the posterior-supported fixed-$C_{a\gamma}\!=\!8$ fit shifts to
 $m\!\gg\!H_0$ (median ${\simeq}\,36\,H_0$), well above the prior midpoint.
-A spectator-safe
-interpretation requires a tuned misalignment subspace (the $\sim 25\times$
-misalignment tuning required to reconcile the observed signal with the
-spectator-consistent corner is disclosed in
-Sec.~\ref{sec:birefringence_check} and fn.~\ref{fn:theta_backreaction}).
+A spectator-safe interpretation is reported conditionally at $\Omega_a<0.01$;
+that subset has median $\theta_i=0.211$ and is distinct from the indicative
+$\theta_i\le0.1$ sliver (Sec.~\ref{sec:birefringence_check}).
 \textbf{Not a distinctive ECH prediction.}
 The same $\beta\approx 0.27^\circ$ arises in any GR+ALP setup with the same
 parameters; no ECH-specific derivation connects the Holst action to the
@@ -1687,10 +1694,8 @@ finite-temperature scaling of a four-fermion (Fermi-type) contact operator in
 the early-universe plasma~\cite{KapustaGale2006}, with $\mathcal{O}(1)$
 coefficients dropped rather than a rigorous NJL finite-$T$ computation;
 \emph{a full finite-temperature NJL computation of the exact prefactor is outside the scope
-of this companion, but is observationally moot: the $10^{-44}$ BBN suppression
-of $\Delta\Neff^{\rm(ECH)}$ renders any $\mathcal{O}(1)$ correction factor
-physically irrelevant at the $\gtrsim$forty-orders-of-magnitude margin from
-CMB-S4 sensitivity}), so that
+of this companion; the omitted prefactor prevents identifying this ratio with
+an effective-neutrino count}), so that
 \begin{equation}
 \rho_{\rm tor}\;\sim\;G_N\,T^6 ,\qquad
 \frac{\rho_{\rm tor}}{\rho_{\rm rad}}\;\sim\;G_N\,T^2\;=\;
@@ -1700,10 +1705,10 @@ CMB-S4 sensitivity}), so that
 since $\rho_{\rm rad}\sim T^4$. The spin-torsion energy density thus redshifts
 as $a^{-6}$ (stiff-fluid-like), faster than radiation ($a^{-4}$), and becomes
 dynamically relevant only at densities approaching the Planck/bounce
-scale~\cite{UngerPoplawski2019}. Its contribution to the effective radiation
-budget at the epochs probed by the data is
+scale~\cite{UngerPoplawski2019}. For scale comparison, the same parametric
+ratio at the epochs probed by the data is
 \begin{equation}
-\Delta\Neff^{\rm(ECH)}\;\sim\;\left(\frac{T}{M_{\rm Pl}}\right)^{\!2}
+\frac{\rho_{\rm tor}}{\rho_{\rm rad}}\;\sim\;\left(\frac{T}{M_{\rm Pl}}\right)^{\!2}
 \;\sim\;
 \begin{cases}
 1.7\times 10^{-43}, & T\!\sim\!1\ \mathrm{MeV},\\[2pt]
@@ -1715,17 +1720,15 @@ at BBN and recombination respectively, evaluated with the reduced Planck
 mass $M_{\rm Pl}=(8\pi G_N)^{-1/2}\simeq 2.44\times10^{18}\ \mathrm{GeV}$
 used throughout (and in Eq.~\ref{eq:torsion_ratio}), so the boxed numbers are
 reproducible directly from $(T/M_{\rm Pl})^2$.
-Within the parametric thermal treatment just stated, the minimal contact
-operator gives a negligible radiation-era scale, some forty orders of
-magnitude below foreseeable CMB or BBN sensitivity
-[e.g.\ CMB-S4 targets $\sigma(\Neff)\!\sim\!0.03$~\cite{CMBS4_ScienceBook}].
-No published analysis finds a measurable torsion contribution to $\Neff$ in the
-radiation era; the nearest dedicated BBN study
+These numbers estimate $\rho_{\rm tor}/\rho_{\rm rad}$, not $\Delta N_{\rm eff}$:
+the latter conversion would require a specified thermal spin ensemble and its
+numerical prefactor. Within the parametric treatment just stated, the minimal
+contact operator gives a negligible radiation-era scale. The nearest dedicated BBN study
 constrains a distinct torsion-induced neutrino spin-flip channel, not the
 four-fermion energy density, and likewise reports no detectable
 effect~\cite{Bruggen1999}. We therefore do \emph{not} claim a specific
-non-zero torsion $\Delta\Neff$; the honest, leading-parametric-order first-principles estimate yields the
-upper bound of Eq.~(\ref{eq:neff_bound}).
+non-zero torsion $\Delta\Neff$; Eq.~(\ref{eq:neff_bound}) reports only the
+leading parametric energy-density ratio.
 
 This estimate does not reframe the MCMC as a theory test. The stock-CAMB
 $\Lambda$CDM$+\Delta\Neff$ run remains a generic extra-radiation proxy. Its
@@ -1747,9 +1750,9 @@ low-$\ell$/lensing mixture is the standard Cobaya pairing; the c15
 verification re-run uses \texttt{planck\_2020\_lollipop.lowlE} and
 \texttt{planckpr4lensing} in place of the frozen-chain
 \texttt{planck\_2018\_lowl.EE} and \texttt{planck\_2018\_lensing.clik},
-making c15 a release-pairing robustness rerun; the $0.04\sigma$ agreement
-in $\Delta\Neff$ across this likelihood substitution provides an empirical
-bound on pairing-induced bias at the quoted precision; see
+making c15 a release-pairing sensitivity rerun; because it does not meet the
+stated convergence threshold, its $0.04\sigma$ central-value agreement is
+corroborative only and does not bound pairing-induced bias; see
 Sec.~\ref{sec:cosmo_fits} \emph{Release-pairing note}), plus a third Planck-only run currently at sub-convergence
 sample count and not aggregated into any frozen-posterior summary statistic
 in this paper. Frozen MCMC program: $\mathbf{309{,}189}$ raw samples
@@ -1911,8 +1914,8 @@ $n_s$ & $0.965 \pm 0.006$ & $0.967 \pm 0.006$ \\
 \hline
 Chains & 6 & 6 \\
 Total samples & 176{,}240 & 132{,}949 \\
-Worst $\hat{R}-1$\footnote{\label{fn:rhat_csv}Worst row is $n_s$ in the full-tension combination at $\hat{R}-1 = 9.74\times 10^{-4}$; all sampled parameters across both frozen combinations satisfy $\hat{R}-1 \le 3\times 10^{-3}$. The full-tension chain samples 17 parameters: 7 cosmological + 9 Planck likelihood nuisance ($A_{\rm planck}$, amp$_{143}$, amp$_{217}$, amp$_{143\times 217}$, $n_{143}$, $n_{217}$, $n_{143\times 217}$, calTE, calEE) + 1 supernova absolute magnitude ($M_b$, entering via the Pantheon+~SN and SH0ES \texttt{H0.riess2020Mb} likelihoods rather than the Planck likelihood stack). The Planck+BAO+SN chain samples 16 parameters (7 cosmological + the same 9 Planck nuisance; $M_b$ is not explicitly sampled there because \texttt{sn.pantheonplus} runs with \texttt{use\_abs\_mag: false}, analytically marginalizing the absolute magnitude in the absence of the SH0ES $M_b$ likelihood; verified by direct chain-header / \texttt{.updated.yaml} blocking-list inspection). Full per-parameter convergence tables ($\hat R$, ESS, drift, per dataset) are archived at \path{reproducibility/cosmology/convergence_latest.csv} and mirrored in the HuggingFace chain-diagnostics dataset (Appendix~\ref{app:reproducibility}).
-} & 0.001 & 0.003 \\
+Worst $\hat{R}-1$\footnote{\label{fn:rhat_csv}The archived Planck+BAO+SN $\Delta N_{\rm eff}$ row has $\hat{R}-1 = 9.71\times 10^{-4}$; all sampled parameters across both frozen combinations satisfy $\hat{R}-1 \le 3\times 10^{-3}$. The full-tension chain samples 17 parameters: 7 cosmological + 9 Planck likelihood nuisance ($A_{\rm planck}$, amp$_{143}$, amp$_{217}$, amp$_{143\times 217}$, $n_{143}$, $n_{217}$, $n_{143\times 217}$, calTE, calEE) + 1 supernova absolute magnitude ($M_b$, entering via the Pantheon+~SN and SH0ES \texttt{H0.riess2020Mb} likelihoods rather than the Planck likelihood stack). The Planck+BAO+SN chain samples 16 parameters (7 cosmological + the same 9 Planck nuisance; $M_b$ is not explicitly sampled there because \texttt{sn.pantheonplus} runs with \texttt{use\_abs\_mag: false}, analytically marginalizing the absolute magnitude in the absence of the SH0ES $M_b$ likelihood; verified by direct chain-header / \texttt{.updated.yaml} blocking-list inspection). Full per-parameter convergence tables ($\hat R$, ESS, drift, per dataset) are archived at \path{reproducibility/cosmology/convergence_latest.csv} and mirrored in the HuggingFace chain-diagnostics dataset (Appendix~\ref{app:reproducibility}).
+} & 0.000974 & 0.000971 \\
 Min ESS & 4{,}744 & 4{,}692 \\
 \end{tabular}
 \end{ruledtabular}
@@ -2079,9 +2082,9 @@ foreground-free synthetic skies; it does \textbf{not} establish a real-sky
 systematic budget (the $\beta$--$\alpha$ calibration degeneracy, galactic
 foregrounds, instrumental beams, and anisotropic noise are all absent by
 construction and explicitly out of scope).
-The high pipeline template-fit SNR figures
-(e.g., $20.01$, $25.32$; fn.~\ref{fn:snr_definition}) refer to recovery of
-injected MC signals and
+The high diagonal-covariance template scores
+(e.g., $20.01$, $25.32$; fn.~\ref{fn:snr_definition}) are heuristic recovery
+diagnostics that omit inter-bin covariance and
 \emph{must not} be conflated with the published Planck/ACT~DR6 $2.7$--$2.9\sigma$
 sky detection. The $\beta$--$\alpha$ degeneracy that dominates real-sky
 birefringence measurements is broken only by unrotated galactic foregrounds,
@@ -2222,15 +2225,15 @@ it is not carried forward as a pipeline systematic.  The validation remains
 foreground-free and supplies \emph{no} systematic floor for real-sky
 $\beta$ measurements.\footnote{\label{fn:snr_definition}The
 ``pipeline-recovery SNR$=20.01$'' figure (and analogously $25.32$ for the
-$\beta=0.342^\circ$ injection below) is the \emph{template-fit} SNR of the
+$\beta=0.342^\circ$ injection below) is the diagonal-covariance template score of the
 driver script,
 $\mathrm{SNR}^{\rm tmpl}\equiv\bigl[\sum_b
 \bigl(C_b^{EB,\rm th}/\sigma_b^{\rm MC}\bigr)^2\bigr]^{1/2}$, where
 $C_b^{EB,\rm th}$ is the full exact-window template relative to its null
 value and $\sigma_b^{\rm MC}$ is the per-bin scatter across the 500
-realizations. It is the matched-template significance of the injected signal
-against single-realization noise, not the significance of the recovered
-angle itself. The canonical per-realization angle scatter is
+realizations. Because inter-bin covariance is omitted, it is a heuristic
+diagnostic rather than a matched-template significance, and is not the
+significance of the recovered angle itself. The canonical per-realization angle scatter is
 $\sigma_\beta=0.0514^\circ$, whereas the MC-mean standard error is smaller
 by $\sqrt{N}=22.4$.}
 For $\beta=0.342^\circ$ (the published joint
@@ -2243,19 +2246,15 @@ The exact-window test therefore finds no resolved multiplicative
 under-recovery. This remains a methodology cross-check, not a competitive
 sky measurement.
 
-\textit{Sky-fraction sweep.}---Because published birefringence analyses use
-larger sky fractions than our canonical $f_{\rm sky}=0.32$ validation mask, we
-repeat the $\beta=0.27^\circ$ injection-recovery exercise at
-$f_{\rm sky}\approx 0.850$ (Planck-like Galactic-cut mask: $|b|>5^\circ$,
-all declinations, apodized at $2^\circ$ FWHM, giving $f_{\rm sky}\approx 0.850$;
-the Planck 2018 likelihood mask achieves approximately this fraction
-with a similar latitude threshold plus point-source excisions not included here)
-and $f_{\rm sky}\approx 0.650$ (ACT-DR6-like Galactic-cut mask: $|b|>15^\circ$,
-declination cut ${\rm dec}\in[-60^\circ,+25^\circ]$ by design --- this differs from
-the canonical $[-65^\circ,+25^\circ]$ mask used in the primary validation, which
-matches the ACT pipeline footprint; the $-60^\circ$ lower edge approximates the
-ACT~DR6 survey boundary in the sky-fraction sweep; apodized at $2^\circ$ FWHM)
-galactic-cut masks with the same apodization recipe, noise level, and
+\textit{Synthetic sky-fraction sweep.}---To test sky-fraction sensitivity
+without representing survey geometry, we repeat the $\beta=0.27^\circ$
+injection-recovery exercise with pure-latitude binary cuts
+$|b|>8.6269^\circ$ and $|b|>20.4873^\circ$, each smoothed at $2^\circ$ FWHM.
+They yield apodized $f_{\rm sky}\approx0.850$ and $0.650$, respectively;
+there is no declination or point-source cut, so neither mask represents Planck,
+ACT, or any other survey footprint. The negative-sign $f_{\rm sky}\approx0.32$
+row analogously uses the pure-latitude cut $|b|>42.8436^\circ$. All use the same
+apodization recipe, noise level, and
 $N\!=\!500$ MC realizations ($N_{\rm side}=512$). The recovered values are
 $\hat\beta=0.270^\circ$ at $f_{\rm sky}=0.85$ (SE $0.001412^\circ$)
 and $\hat\beta=0.268^\circ$ at $f_{\rm sky}=0.65$
@@ -2375,10 +2374,10 @@ does not override the numerical threshold statement above.
 paired with \texttt{planck\_2018\_lowl.EE} and \texttt{planck\_2018\_lensing.clik} (Planck~2018 releases).
 The c15 verification re-run instead uses \texttt{planck\_2020\_lollipop.lowlE} and
 \texttt{planckpr4lensing} for the low-$\ell$ EE and lensing components, making c15 a
-release-pairing robustness rerun (PR4-consistent low-$\ell$/lensing) rather than an
-identical-likelihood rerun of the frozen chains. The $0.04\sigma$ agreement in $\Delta\Neff$
-across this likelihood substitution provides an empirical bound on pairing-induced bias
-at the quoted precision (see Sec.~\ref{sec:verification}, limitation note).
+release-pairing sensitivity rerun (PR4-consistent low-$\ell$/lensing) rather than an
+identical-likelihood rerun of the frozen chains. Its $0.04\sigma$ central-value
+agreement is corroborative only: the chain did not meet $R-1<0.01$, so it cannot
+bound pairing-induced bias (see Sec.~\ref{sec:verification}, limitation note).
 
 \section{Cosmic Birefringence: Spectator ALP Consistency Check}\label{sec:birefringence_check}
 
@@ -2400,23 +2399,20 @@ median $m\simeq 36\,H_0$ well above the scan-prior midpoint --- and
 (ii)~the location of the controlled spectator-validity region: $13.3818\%$
 of the likelihood-weighted samples in this fixed-background surrogate chain
 satisfy $\Omega_a<0.01$. This is a chain-selection frequency, not a physical
-posterior probability or a prior-volume cost. The separate ${\gtrsim}100\times$
-misalignment fine-tuning statement follows from the stated $\cos\theta_i$-flat
-prior and the required small-angle region. Read this way, the result is
+posterior probability or a prior-volume cost. Within this controlled subset,
+the conditional median is $\theta_i=0.211$ (16--84\%: $0.149$--$0.267$).
+The much smaller $\theta_i\le0.1$ sliver is a separate, low-sample diagnostic,
+not a description of the $\Omega_a<0.01$ subset. Read this way, the result is
 that the model \emph{can} accommodate the signal but only off the minimal,
 natural region of its own parameter space, and that the same birefringence
 arises identically in standard GR --- it is not a distinctive ECH prediction.
 
-\textit{Note (spectator-status caveat, main text).}---The headline
-$\beta\approx 0.27^\circ$ benchmark of this subsection requires a
-${\gtrsim}100\times$ fine-tuning of the misalignment initial condition
-under a $\cos\theta_i$-flat prior (equivalently ${\sim}25\times$ relative
-to the ad-hoc $\theta_i\!\approx\!0.5$ midpoint;
-$\theta_i\sim 0.1$ versus the natural-prior midpoint $\theta_i\sim 0.5$;
-quantitative derivation in fn.~\ref{fn:theta_backreaction}) to keep the
-ALP an actual spectator field; this caveat is load-bearing for the
-``consistency-not-prediction'' framing and is stated here, in the main
-text, rather than in a footnote only.
+\textit{Note (spectator-status caveat, main text).}---Spectator validity is
+defined by the derived energy-density cut $\Omega_a<0.01$, not by an imposed
+small-angle threshold. The conditional median $\theta_i=0.211$ is distinct
+from the sparsely sampled $\theta_i\le0.1$ sliver. The often-quoted factor
+$[0.5/0.1]^2=25$ is only an energy-density scaling ratio at fixed mass, not a
+tuning probability or prior-volume cost.
 The operational criterion for spectator status throughout this section is
 $\Omega_a < 0.01$: $13.3818\%$ of the likelihood-weighted samples in the
 fixed-$\Lambda$CDM-background surrogate chain satisfy this cut
@@ -2445,9 +2441,7 @@ spectator ALP model. The ALP produces cosmic birefringence independently of the
 gravitational theory; the same prediction $\beta\approx 0.27^\circ$ arises in
 standard GR with an identical ALP Lagrangian within the scan-prior envelope
 but near its upper-displacement/coupling edge; the posterior-supported
-fixed-$C_{a\gamma}\!=\!8$ fit shifts to $m\!\gg\!H_0$ (median ${\simeq}\,36\,H_0$),
-with the same $\sim 25\times$ misalignment tuning required to recover
-the birefringence signal disclosed below and in fn.~\ref{fn:theta_backreaction}.
+fixed-$C_{a\gamma}\!=\!8$ fit shifts to $m\!\gg\!H_0$ (median ${\simeq}\,36\,H_0$).
 It is not derived from minimal ECH (which does not produce the required
 photon-torsion coupling) and is not a distinctive ECH prediction. The model class was previously
 studied by Fujita~\etal~\cite{Fujita2021}.
@@ -2483,19 +2477,14 @@ representative corner $m = 2H_0$, $\theta_i = 1$ of the natural-parameter box:
 Across the natural parameter range $m/H_0\in[1,3]$, $\theta_i\in[0.5,2]$
 the committed EOM grid gives
 $\Delta\phi/f_a \in [0.064, 1.19]$
-(\path{research/branch_R_alp_birefringence/phase2_mcmc/c10b_alp_envelope_scan.json}).\footnote{\label{fn:theta_backreaction}Backreaction
-disclosure: the ALP backreaction fraction scales as $\Omega_a \sim
-\rho_a/\rho_{\rm crit} \sim (m^2 f_a^2/H_0^2 \MPl^2)\,\theta_i^2$, so the
-abstract's spectator-status restriction $\theta_i\ll 1$ (see the
-\emph{Spectator-status caveat} in the abstract) implies $\Omega_a \ll 1$ only in the sub-natural sliver $\theta_i\sim 0.1$.
-The numerical scan range $\theta_i\in[0.5,2]$ is RETAINED here for completeness
-of the parameter envelope, but the natural-prior-anchored spectator-consistent
-result sits at $\theta_i\sim 0.1$: at $\theta_i=0.1$ vs the scan-midpoint
-$\theta_i=0.5$ the backreaction is $\Omega_a(0.1)/\Omega_a(0.5)\sim 1/25$
-(i.e., a $\sim 25\times$ fine-tuning of the misalignment initial condition is
-required to keep the ALP a true spectator). The $\Omega_a\sim 1$ regime at
-$\theta_i\sim 1$ is the dark-energy-ALP regime explicitly excluded from this
-spectator-consistency companion check.}
+(\path{research/branch_R_alp_birefringence/phase2_mcmc/c10b_alp_envelope_scan.json}).\footnote{\label{fn:theta_backreaction}At fixed
+mass and in the small-angle limit, $\Omega_a$ scales approximately as
+$\theta_i^2$, so changing $\theta_i$ from $0.5$ to $0.1$ lowers the
+energy-density estimate by a factor $25$. This is an energy-density ratio,
+not a tuning probability. The executed chain classifies spectator status
+directly through the nonlinear-ODE value $\Omega_a<0.01$; that subset has
+median $\theta_i=0.211$, while $\theta_i\le0.1$ is a separate indicative
+sliver containing only 42 raw samples.}
 
 \textit{Birefringence value.}---For $C_{a\gamma}=8$, $\theta_i=1$,
 $m\approx 3.9\,H_0$ (the committed EOM integration gives
@@ -2517,10 +2506,8 @@ $\Delta\phi/f_a = 1.0601$ to four significant figures):
 \end{equation}
 The product of the three factors is $5.81\times 10^{-4} \times 8 \times
 1.06 = 4.93\times 10^{-3}\,\text{rad}$ (with $\alpha_{\rm EM}=1/137.036$;
-rounding to two significant figures on $\Delta\phi/f_a$ would give
-$4.65\times 10^{-3}$, so the third significant figure is sensitive to
-the precision of the EOM integration --- here we use the four-figure
-$\Delta\phi/f_a=1.0601$ from the committed Runge--Kutta re-integration).
+the four-figure committed Runge--Kutta value $\Delta\phi/f_a=1.0601$
+changes only the displayed higher precision, not this rounded result).
 The $\alpha_{\rm EM}/(4\pi)$ prefactor is convention-dependent
 ($\alpha_{\rm EM}/(2\pi)$ appears in some Lagrangian normalizations); here
 it corresponds to the normalization
@@ -2549,11 +2536,10 @@ peaks at $0.32^\circ$ at $\theta_i=2$, $m=3H_0$; the observed
 $0.342^\circ$ at $C_{a\gamma}=8$ requires $m\gtrsim 4H_0$ or larger
 coupling). See Appendix~\ref{app:alp_priors}
 for the full ALP-MCMC sampled-parameter list, priors, and dataset-likelihood
-configuration. The spectator-consistent corner of this envelope
-($\theta_i\sim 0.1$, per fn.~\ref{fn:theta_backreaction}) does require a
-$\sim 25\times$ tuning of the misalignment initial condition relative to the
-natural prior midpoint $\theta_i\sim 0.5$, so the model
-\textit{accommodates} the observed signal but is not free of misalignment-prior tuning.
+configuration. Spectator status is assigned from the ODE-derived
+$\Omega_a<0.01$ cut (conditional median $\theta_i=0.211$), not from an imposed
+$\theta_i=0.1$ threshold. The model \textit{accommodates} the observed signal;
+the reported selection frequency is not a tuning probability.
 The $[0.01,0.48]^\circ$ span quoted above is computed point-by-point on
 physical EOM trajectories ($\Delta\phi/f_a$ is a derived function of
 $(m/H_0, \theta_i)$, not an independent variable);
@@ -2638,22 +2624,16 @@ is ${\approx}8$--$10$. Even the lower end exceeds the standard KSVZ/DFSZ
 benchmark range, which predicts $|C_{a\gamma}|\sim\mathcal{O}(1)$; the
 entire required range therefore lies outside minimal ALP photon-coupling
 benchmarks and requires non-minimal model building. We emphasize that
-this coupling burden and the misalignment burden are \emph{two
-independent} fine-tunings: a non-minimal photon coupling
-($C_{a\gamma}\gtrsim 9$) is required regardless of $\theta_i$, while the
-spectator-consistency restriction additionally fine-tunes the
-misalignment initial condition to $\theta_i\sim 0.1$
-(fn.~\ref{fn:theta_backreaction}); neither tuning substitutes for the
-other. The lower end
+the non-minimal photon-coupling burden is independent of the ODE-derived
+spectator cut: $C_{a\gamma}\gtrsim9$ is required across the reported region.
+The lower end
 ($\sim 9$) can be accommodated in extended models with modest
 photon-coupling enhancement (e.g.\ chiral-fermion-loop enhancement,
 clockwork constructions), while light-mass / small-displacement corners
 of the box demand couplings ($\gtrsim 50$--$160$) requiring substantial
 UV-completion enhancement. The signal is therefore accommodated
 across the considered parameter space rather than fine-tuned only at one
-benchmark, but the upper-coupling end is not generic. We emphasize that the
-spectator-consistent corner $\theta_i\sim 0.1$ (fn.~\ref{fn:theta_backreaction})
-inflates the required photon-coupling further: at fixed $\beta=0.342^\circ$,
+benchmark, but the upper-coupling end is not generic. At fixed $\beta=0.342^\circ$,
 $\Delta\phi/f_a\propto\theta_i$ along the underdamped trajectory, so a
 $5\times$ reduction in $\theta_i$ from the scan midpoint demands a
 correspondingly higher $C_{a\gamma}$ to hold the
@@ -2694,21 +2674,14 @@ $C_{a\gamma}=17.1$, $16$--$84\%$ $[6.8,43.4]$;
 $\beta=0.328^\circ\pm 0.100^\circ$) while the $\theta_i\le 0.1$
 spectator-sliver mass drops from $0.33\%$ to $0.068\%$
 (\path{research/branch_R_alp_birefringence/phase2_mcmc/chains/c14_costheta/c14_summary.json}). The recovered
-$\beta=0.326^\circ\pm0.099^\circ$ posterior matches the observed
+$\beta=0.328^\circ\pm0.100^\circ$ posterior matches the observed
 $0.342^\circ\pm0.094^\circ$, confirming the consistency-check verdict over
 the posterior-supported coupling range rather than at fixed benchmarks.
 \emph{Spectator-subset readout} (same chain, no additional sampling): the
 chain's derived ALP energy fraction $\Omega_a$ (defined in the subsection
-below; computed under the small-angle quadratic approximation, valid for $\theta_i\ll 1$;
-the leading anharmonic correction is $\mathcal{O}(\theta_i^2/12)$, i.e.\
-$\lesssim 8\%$ at $\theta_i\sim 1$ and $\lesssim 1\%$ over the posterior-supported
-$\Omega_a\le 0.01$ spectator-safe subset ($\theta_i\lesssim 0.3$;
-Table~\ref{tab:alp_restricted_subsets}), sub-dominant to the prior width;
-the $\Omega_a<0.01$ cut is applied post-sampling under this approximation,
-so this $\lesssim1\%$ figure bounds the only residual model-dependence of
-Table~\ref{tab:alp_restricted_subsets}, which a per-sample EOM-integrated
-$\rho_a$ re-derivation --- already validated against the approximation for
-the committed chain parameters --- would remove entirely)
+below) is computed by integrating the nonlinear cosine-potential equation of
+motion to today and evaluating the final kinetic plus potential energy. These
+per-sample ODE values
 satisfies $\Omega_a < 0.1$
 for $44.0474\%$ and $\Omega_a < 0.01$ for $13.3818\%$ of the
 fixed-background surrogate-chain weight;
@@ -2732,7 +2705,8 @@ the upper prior edge, with weighted $C_{a\gamma}$ $16/50/84$ percentiles
 of $36.8/47.2/55.6$ (flat prior $C_{a\gamma}\in[4,60]$), well above the
 KSVZ/DFSZ $\mathcal{O}(1)$ benchmarks
 (\path{research/branch_R_alp_birefringence/phase2_mcmc/c10a_spectator_slice.json}).
-This quantifies the misalignment tuning of the spectator-consistent corner.
+This describes a separate extreme small-angle sliver; it is not the
+$\Omega_a<0.01$ subset, whose conditional median is $\theta_i=0.211$.
 Convergence:
 $\hat{R}-1 < 0.01$ for all runs. The joint posterior structure of this
 continuous-prior configuration is shown in Fig.~\ref{fig:alp_triangle}.
@@ -2759,56 +2733,33 @@ For $\theta_i \ll 1$ the potential is approximately quadratic,
 $V \approx \tfrac{1}{2}m_a^2\phi^2$; for $\theta_i\sim\mathcal{O}(1)$
 anharmonic corrections enter at $\mathcal{O}(\theta_i^2/12)$.
 
-\textit{Onset of oscillations.}---The ALP is frozen by Hubble friction and begins
-coherent oscillations when
+\textit{Nonlinear evolution and energy density today.}---At each MCMC step,
+the implemented module receives $(m_a,\theta_i)$ with $f_a=\MPl$ fixed and
+integrates the full cosine-potential equation
 \begin{equation}
-3H(z_{\rm osc}) = m_a,
-\label{eq:alp_onset}
+\ddot\theta+3H\dot\theta+m_a^2\sin\theta=0
+\label{eq:alp_full_eom}
 \end{equation}
-where $H(z)$ is evaluated on the $\Lambda$CDM background
-(with $H_0 = 67.68~\mathrm{km\,s^{-1}\,Mpc^{-1}}$, fixed at the
-Cobaya posterior mean; see the H$_0$ marginalization note in the
-spectator-subset readout above). For ALP masses in the scan prior
-$m/H_0 \in [7\times10^{-3}, 7\times10^2]$, the onset redshift ranges from
-$z_{\rm osc} \lesssim 0$ (lightest masses, ALP still frozen; behaves as a
-cosmological-constant contribution during the survey epoch)
-to $z_{\rm osc} \gg 1$ (heaviest masses, early dark matter).
-Equation~(\ref{eq:alp_onset}) is solved numerically at each MCMC step in
-\path{research/branch_R_alp_birefringence/phase2_mcmc/alp_ode.py}.
-
-\textit{Energy density today.}---Once oscillating ($z \ll z_{\rm osc}$),
-the ALP cycle-averaged energy density redshifts as matter:
+from $z=3000$ to $z=0$ on a fixed $\Lambda$CDM background. The solver uses
+$\ln a$ as the independent variable, DOP853 with relative tolerance
+$10^{-10}$, absolute tolerance $10^{-12}$, and initial conditions
+$\theta(z=3000)=\theta_i$, $d\theta/d\ln a=0$; see
+\artifact{research/branch_R_alp_birefringence/phase2_mcmc/alp_ode.py}.
+From the final state it evaluates
 \begin{equation}
-\rho_a(z) = \rho_a(z_{\rm osc})\!\left(\frac{1+z}{1+z_{\rm osc}}\right)^3, \quad z \ll z_{\rm osc}.
-\label{eq:rho_a_evol}
-\end{equation}
-At onset the potential dominates: $\rho_a(z_{\rm osc}) \approx V(\phi_i)
-= m_a^2 f_a^2[1-\cos(\theta_i)]$. The dark-energy fraction today is therefore
-\begin{equation}
-\Omega_a \equiv \frac{\rho_a(z=0)}{\rho_{\rm crit,0}}
-\approx \frac{m_a^2 f_a^2[1-\cos(\theta_i)]}{\rho_{\rm crit,0}\,(1+z_{\rm osc})^3},
+\Omega_a \equiv \frac{\rho_a(0)}{\rho_{\rm crit,0}},\qquad
+\rho_a(0)=\frac12 f_a^2\dot\theta_0^2
++m_a^2f_a^2\bigl(1-\cos\theta_0\bigr),
 \label{eq:omega_a_def}
 \end{equation}
-with $\rho_{\rm crit,0} = 3H_0^2\MPl^2 \approx 3.7\times10^{-11}$\,eV$^4$
-and $\MPl \approx 2.44\times10^{18}$\,GeV. For $f_a = \MPl$ and small $\theta_i$
-this gives $\Omega_a \approx m_a^2\theta_i^2/(6H_0^2(1+z_{\rm osc})^3)$,
-confirming the $\Omega_a \propto \theta_i^2$ scaling of fn.~\ref{fn:theta_backreaction}.
-
-\textit{Computation from sampled parameters.}---At each MCMC step the ALP module
-receives $(m_a, \theta_i)$ (with $f_a = \MPl$ fixed), solves
-Eq.~(\ref{eq:alp_onset}) for $z_{\rm osc}$, and evaluates
-Eq.~(\ref{eq:omega_a_def}) using the potential-dominated approximation,
-verified against full EOM integration for committed chain parameters.
-For the lightest masses with $z_{\rm osc}\le 0$ the ALP remains Hubble-frozen
-through the survey epoch and is held at $\rho_a = V(\theta_i)$ (a
-cosmological-constant--like contribution, as noted in the onset discussion
-above) rather than diluted by the $(1+z_{\rm osc})^{-3}$ factor of
-Eq.~(\ref{eq:omega_a_def}).
+with $\rho_{\rm crit,0}=3H_0^2\MPl^2$. Thus the chain's $\Omega_a$ column
+is an ODE-to-today kinetic-plus-potential result; no $3H=m_a$ onset rule or
+matter-dilution approximation is implemented in the load-bearing calculation.
 The per-step $\Omega_a$ values are stored in
 \path{research/branch_R_alp_birefringence/phase2_mcmc/chains/c5_continuous/}
 and define the spectator-status cuts in Table~\ref{tab:alp_restricted_subsets} below.
 The $44.0474\%/13.3818\%$ figures are direct weighted selection frequencies
-over these per-step values. Because the likelihood calculation held the
+over these ODE-derived per-step values. Because the likelihood calculation held the
 $\Lambda$CDM background fixed even when the derived $\Omega_a$ was appreciable,
 they are neither physical posterior probabilities nor prior costs. They are
 conditional on the stated priors and surrogate likelihood. Only the
@@ -2911,10 +2862,8 @@ photon-torsion coupling connects the Holst action to this ALP potential. The mod
 \textit{accommodate} the observed $\beta$ within the scan-prior envelope
 but near its upper-displacement/coupling edge; the posterior-supported
 fixed-$C_{a\gamma}\!=\!8$ fit shifts to $m\!\gg\!H_0$ (median ${\simeq}\,36\,H_0$).
-The spectator-safe interpretation requires a tuned misalignment
-subspace (the $\sim 25\times$ misalignment tuning required for
-the birefringence signal is disclosed in Sec.~\ref{sec:birefringence_check} and
-fn.~\ref{fn:theta_backreaction}) and a non-minimal photon coupling; it
+The spectator-safe interpretation is conditional on the ODE-derived
+$\Omega_a<0.01$ subset and requires a non-minimal photon coupling; it
 does not uniquely predict the signal.
 
 
@@ -2952,9 +2901,9 @@ CamSpec high-$\ell$ TTTEEE paired with Planck~2018 low-$\ell$ TT/EE +
 lensing (\texttt{planck\_2018\_lowl.EE} + \texttt{planck\_2018\_lensing.clik});
 the c15 verification re-run uses the PR4-consistent counterparts
 \texttt{planck\_2020\_lollipop.lowlE} and \texttt{planckpr4lensing},
-making it a release-pairing robustness rerun; the resulting $0.04\sigma$
-agreement in $\Delta\Neff$ provides an empirical bound on pairing-induced
-bias at the quoted precision (see Sec.~\ref{sec:cosmo_fits},
+making it a release-pairing sensitivity rerun; its non-converged $0.04\sigma$
+central-value agreement is corroborative only and does not bound
+pairing-induced bias (see Sec.~\ref{sec:cosmo_fits},
 \emph{Release-pairing note}).
 Current data
 neither require nor exclude a phenomenological $\Delta\Neff$
@@ -2967,8 +2916,8 @@ Bayes factors and information criteria ($\Delta$AIC, $\Delta$BIC, $\ln B$) are d
 synthetic $\Lambda$CDM polarization skies confirms that the deconvolution pipeline recovers
 injected birefringence angles with a canonical MC-mean bias
 $\hat\beta-\beta_{\rm inj}=-0.0010^\circ\pm0.0023^\circ$ (standard error;
-Sec.~\ref{sec:data_cmb}) at template-fit SNR consistent
-with the ACT-noise floor. This is a methods validation, not a competitive sky
+Sec.~\ref{sec:data_cmb}). The diagonal-covariance template score is a heuristic
+that omits inter-bin covariance. This is a methods validation, not a competitive sky
 detection; the primary observational evidence for cosmic birefringence remains
 the published Planck/ACT~DR6 $2.7$--$2.9\sigma$ measurements.
 
@@ -2986,9 +2935,9 @@ $f_a\sim\MPl$ and conditional median $m=40.74\,H_0$ (not $m\sim H_0$;
 the scan-prior envelope spans $m\sim H_0$ but the conditional fit shifts
 well above the prior midpoint)
 is consistent with the published $3.6\sigma$ joint signal, with the caveat
-that this spectator-safe subset
-($\theta_i\sim 0.1$, a ${\sim}25\times$ fine-tuning relative to the natural
-midpoint; fn.~\ref{fn:theta_backreaction}) satisfies spectator status
+that this spectator-safe subset has conditional median $\theta_i=0.211$
+(16--84\%: $0.149$--$0.267$); the separate $\theta_i\le0.1$ sliver is
+indicative only (fn.~\ref{fn:theta_backreaction}). It satisfies spectator status
 ($C_{a\gamma}\,\Delta\phi/f_a \approx 10.3$ for $\beta=0.342^\circ$, with
 $\Delta\phi/f_a \in [0.064,1.19]$ over the natural box giving required
 $C_{a\gamma}$ from ${\approx}8.6$ up to ${\approx}160$ at the smallest
@@ -3014,7 +2963,7 @@ This pre-release revision is identified by the in-tex
 It does \emph{not} claim that an earlier repository commit freezes the new
 paper. Exact analysis-artifact provenance is instead recorded by per-file
 SHA-256 values in
-\artifact{reproducibility/p1b_analysis_artifact_manifest_v1B.0.106.json}.
+\artifact{reproducibility/p1b_analysis_artifact_manifest_v1B.0.107.json}.
 That manifest records the base repository commit only as context and explicitly
 marks itself pre-release; the eventual submission commit/tag will freeze the
 paper source, manifest, and compiled PDF together.
@@ -3057,12 +3006,12 @@ itself has been removed.
 \begin{acknowledgments}
 We thank the Planck, ACT, LiteBIRD, and Cobaya collaborations for providing
 the data, code, and observational infrastructure used in these analyses.
-\emph{AI-assisted methods.}---This work was carried out with an agentic
-AI research pipeline built on Anthropic Claude (Opus~4 family, 2026
-releases), operated under the author's direction, with OpenAI GPT-5/o3,
-xAI Grok-4, and Google Gemini~2.5 used as cross-checking and adversarial
-internal-review models, used for MCMC configuration and convergence checking, pipeline
-scripting, symbolic and dimensional cross-checking, and manuscript preparation.
+\emph{AI-assisted methods.}---AI-assisted coding and language tools were used,
+under the author's direction, for MCMC configuration checks, pipeline scripting,
+symbolic and dimensional cross-checking, and manuscript preparation. Vendor and
+model-version names are omitted because they are not scientific dependencies;
+the executable environments and load-bearing results are fixed by the committed
+code, data, and SHA-256 manifest.
 All scientific claims, derivations, and numerical results were verified by the
 author against the committed computational artifacts---Cobaya configurations,
 frozen chains, the NaMaster recovery suite, and the ALP prior-predictive
@@ -3202,10 +3151,9 @@ the headline posteriors are verified directly against the committed chains.
 \item $\theta_i$: uniform prior on $[0.01, \pi]$.\footnote{Backreaction /
 spectator-status disclosure: see fn.~\ref{fn:theta_backreaction} in
 Sec.~\ref{sec:birefringence_check}. The wide prior is an
-envelope-completeness choice, not the spectator-consistent sub-range
-($\theta_i\sim 0.1$, a $\sim 25\times$ tuning relative to the natural
-midpoint); posterior samples at $\theta_i\gtrsim 0.5$ belong to the
-dark-energy-ALP regime excluded from the spectator-consistency claim.}
+envelope-completeness choice. Spectator status is classified from the
+ODE-derived $\Omega_a<0.01$ cut, whose conditional median is
+$\theta_i=0.211$; the separate $\theta_i\le0.1$ row is indicative only.}
 \item $\log_{10}(m_a/\text{eV})$: uniform prior on $[-35, -30]$
 ($m/H_0 \approx 7\times 10^{-3}$ to $7\times 10^{2}$).
 \item $f_a$: fixed at $\MPl$ (spectator-class theoretical input from the
