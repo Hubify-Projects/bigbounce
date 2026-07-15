@@ -16,8 +16,32 @@ pattern schema, and fail-closed integration into the immutable review-packet gat
 That converts review rounds from the primary defect-discovery mechanism into a
 residual-novelty test.
 
-This audit is read-only except for this report. It does not alter any paper, tool, or
-skill and does not claim that any paper's readiness has increased.
+The initial audit phase was read-only. The implementation update below records the
+subsequent gated-tool, regression-test, and paper-release closures. None of those
+process improvements by itself increases a paper's readiness.
+
+## Implementation update — 2026-07-15
+
+The P0 architecture described below is now materially enforced rather than
+read-only guidance:
+
+- the canonical HubStack pre-review engine and finding-event ledger are live;
+- `tools/bigbounce_preflight.py` emits and verifies a six-paper receipt binding
+  HEAD, registry, rule catalog, engines, source/PDF hashes, versions, pages, and
+  paper-specific artifact validators;
+- internal, direct-provider, external-browser, and native-PDF dispatch routes
+  require the matching receipt before provider work;
+- P1B artifact-manifest verification and six-paper artifact crosscheck are hard
+  gates;
+- the first enforced proactive sweep found P1B manifest-base drift and P5's
+  nonexistent frozen-join claim before rereview, and both became regression
+  fixtures;
+- `directive_g.sh` now uses registry-owned served aliases rather than an
+  O(all-served-PDFs) hash scan that could miss already-drifted aliases.
+
+Evidence and exact outcomes are recorded in
+`project-context/audits/PROACTIVE_PORTFOLIO_SWEEP_2026-07-15.md`. Readiness was
+not increased by these process or release-integrity closures.
 
 ## Scope and evidence inspected
 
@@ -391,24 +415,27 @@ editor/referee response, author sign-off, licenses, DOI/archive publication, and
 venue choices include external or Houston-controlled gates. A defensible 99%
 means submission-ready with only documented external gates remaining, not accepted.
 
-The current canonical board is 56–80, so all-six 99% is not supportable tonight
-from current evidence. Before the architecture changes, ETA estimates are weak
-because archive completeness, known-pattern escape rate, and cycle-time metrics are
-not trustworthy. A realistic planning range after P0 instrumentation is:
+The current canonical board is P1A 62, P1B 56, P2 80, P3 56, P4 80, and P5 74,
+so all-six 99% is not supportable tonight from current evidence. P0 enforcement
+has reduced wasted review cycles, but it has also exposed real science, compute,
+release, archive, and human-review gates that cannot honestly be compressed into
+one automated evening.
 
-- P0 learning-loop engine + migration + packet gate: roughly 6–12 agent-hours
-  (about 2–4 human-team weeks).
-- First proactive all-paper perfection sweep and closures: roughly 12–30
-  agent-hours, depending on real compute/science findings (about 2–6 human-team
-  months).
-- Exact-PDF residual multi-model re-review, truth audit, repackaging, and sync:
-  roughly 6–18 agent-hours if no new major science result is required.
+Current planning ranges are:
 
-Therefore the earliest evidence-based all-six submission-ready window is about
-24–60 elapsed hours with parallel, non-overlapping lanes and no external/compute
-blocker. A safer range is 3–7 days. Actual journal acceptance is not schedulable
-by this stack. These ranges must be replaced with measured p50/p90 ETAs after two
-instrumented waves.
+- **Optimistic submission-candidate range:** 10–20 focused CC+SciStack working
+  days if compute, release, and human decisions are continuously available
+  (roughly 3–6 human-team months).
+- **Realistic all-six submission-ready range:** 4–8 weeks, including residual
+  truth-audited closure, exact-PDF confirmation, packaging/DOI work, and author
+  review (roughly 6–12 human-team months).
+- **Full-ambition range:** 6–12+ weeks if P1B production recomputation, new
+  science analyses, or fresh major findings are required.
+
+Actual journal acceptance is not schedulable by this stack; it depends on editors
+and external referees. These ranges should be replaced with measured p50/p90 ETAs
+after two complete instrumented waves rather than shortened merely because more
+models are available.
 
 ## Acceptance checklist for the improvement program
 
@@ -418,8 +445,8 @@ instrumented waves.
       non-mechanical status.
 - [ ] Every high-severity recurring pattern has a regression fixture.
 - [ ] Strict all-paper preflight passes on current committed sources and PDFs.
-- [ ] Review packets bind the matching preflight/catalog/registry receipts.
-- [ ] Active INT/EXT dispatch cannot bypass the gate.
+- [x] Review packets bind the matching preflight/catalog/registry receipts.
+- [x] Active INT/direct-provider/external-browser dispatch routes require the gate.
 - [ ] Cross-paper claim graph covers every headline quantitative claim.
 - [ ] Known-pattern escape and closure-regression metrics are live.
 - [ ] Two consecutive exact-PDF waves show zero known-pattern escapes and no
@@ -429,9 +456,10 @@ instrumented waves.
 
 ## Immediate next action
 
-Implement P0 as one isolated, test-first lane: freeze the event schema, migrate
-and reconcile the archive, compile the ten highest-value prevention patterns,
-produce an all-paper receipt, and make immutable packet creation fail closed
-without it. Do not launch another expensive review wave until this gate runs on
-all six current paper candidates. That is the highest-leverage way to stop paying
-reviewers to rediscover lessons the system already learned.
+P0 dispatch enforcement is implemented. Generate a fresh receipt on the committed
+P5 v0.1.134/P4 v1.0.255 state, close any remaining portfolio-gate failure, then
+build and standalone-verify exact current source bundles. Only after that proof
+passes should the residual P4/P5 non-Anthropic review run. In parallel, continue
+the event-ledger migration and measured known-pattern-escape instrumentation; those
+remain the highest-leverage P1 work for proving that the loop is learning rather
+than merely accumulating prose.
