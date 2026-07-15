@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail-closed source-to-claim audit for every new P4 v1.0.246 number."""
+"""Fail-closed source-to-claim audit for every new P4 v1.0.247 number."""
 
 from __future__ import annotations
 
@@ -25,6 +25,7 @@ EVIDENCE = {
     "primary_result": P4 / "outputs/dipole/catalog_c_summary.json",
     "stratified_confusion": P4 / "outputs/gz1_stratified_confusion.json",
     "gz1_dipole": P4 / "outputs/gz1only_fullN_dipole_result.json",
+    "public_release_receipt": P4 / "outputs/canonical_provenance/p4_hf_public_release_receipt_v1_0_244.json",
     "training_benchmark": P4 / "BENCHMARK_REPORT.md",
     "model_readme": P4 / "HF_MODEL_README.md",
 }
@@ -60,6 +61,7 @@ def audit() -> dict[str, Any]:
     primary = load(EVIDENCE["primary_result"])
     stratified = load(EVIDENCE["stratified_confusion"])
     gz1 = load(EVIDENCE["gz1_dipole"])
+    public_release = load(EVIDENCE["public_release_receipt"])
     panel = r24["items"]["queue8_openai_m1_robustness_panel"]
     cells = panel["panel"]
 
@@ -91,7 +93,23 @@ def audit() -> dict[str, Any]:
         "panel_cells": len(cells) == 6,
         "stratified_induced_fraction_bass": close(stratified["stratified_by_imaging_leg"]["BASS_MzLS_dec_gt_+32"]["induced_delta_fCW"], 0.0014191442560136237),
         "stratified_induced_fraction_decals": close(stratified["stratified_by_imaging_leg"]["DECaLS_dec_lt_+32"]["induced_delta_fCW"], 0.0033092883170967504),
-        "gz1_matched_is_not_supported_n": gz1["selection"]["n_matched_to_desi"] == 46_017 and "n_galaxies_in_support" not in gz1["selection"],
+        "gz1_exact_supported_n": (
+            gz1["selection"]["n_matched_to_desi"] == 46_017
+            and gz1["selection"]["n_support_galaxies"] == 4_963
+            and gz1["selection"]["n_excluded_matched_by_pixel_cut"] == 41_054
+            and gz1["selection"]["n_support_galaxies"]
+            + gz1["selection"]["n_excluded_matched_by_pixel_cut"]
+            == gz1["selection"]["n_matched_to_desi"]
+        ),
+        "public_release_receipt": (
+            public_release["status"] == "published"
+            and public_release["published"] is True
+            and public_release["repo_id"] == "bamfai/galaxy-chirality-catalog"
+            and public_release["path_prefix"] == "apjs-release/v1.0.244"
+            and public_release["data_commit"] == "58ecc795a0aa8dda566a28a5adda76a47f3c8942"
+            and public_release["provider_receipt_commit"] == "5a322faaed865ae35dae181fc0ff3560ee56383e"
+            and public_release["public_manifest_sha256"] == "17ba8a65d36d80cc478875667332dbb47fdc407197985959e523cdd1a30d1ef3"
+        ),
     }
     expected_cells = [
         (10, "uniform", 23_682, 0.535620732327616, 0.2698650674662669),
@@ -115,20 +133,20 @@ def audit() -> dict[str, Any]:
     schema = load(P4 / "apjs_release_schema_v1_0_244.json")
     gates.update(
         {
-            "paper_version": r"\newcommand{\paperVersion}{v1.0.246}" in tex,
+            "paper_version": r"\newcommand{\paperVersion}{v1.0.247}" in tex,
             "paper_prints_catalog_and_hc_counts": "249,066 unsafe rows catalog-wide" in tex and "Exactly 59,515" in tex,
             "paper_prints_primary_null": "population standard deviation are $0.00348994$ and $0.00156969$" in tex and "$p=(2246+1)/(10000+1)=0.22468$" in tex,
             "paper_prints_all_panel_cells": all(token in tex for token in ("(+0.536,0.270)", "(+0.794,0.203)", "(-0.141,0.505)")),
             "paper_names_three_supports": all(token in tex for token in ("HC-REALSPACE-INCLUSIVE", "FULL-SPIRAL-CANONICAL", "MASTER-ALL-GALAXY-FOOTPRINT")),
             "paper_uncertainty_scales_one_over_g": r"\sigma(A_{\rm phys})=\sigma(A_{\rm obs})/g" in tex,
-            "paper_doi_gate_open": "No immutable archive or DOI exists yet" in tex,
+            "paper_doi_gate_open": "A DOI-backed immutable archive of the paper" in tex,
             "paper_no_false_public_qc_claim": "In the public HuggingFace Parquet release" not in tex,
-            "paper_no_premature_release_claim": "We release a catalog" not in tex and "We release an 8,474,531-object" not in tex,
+            "paper_public_release_is_commit_pinned": all(token in tex for token in ("We publish an 8,474,531-object observed-label catalog release", "58ecc795a0aa8dda566a28a5adda76a47f3c8942", "5a322faaed865ae35dae181fc0ff3560ee56383e")),
             "paper_distinguishes_selected_and_supported_n": all(token in tex for token in (r"N_{\rm selected}=949{,}584", r"N_{\rm support}=947{,}326", "2,258 excluded by the support rule")),
             "paper_has_full_spatial_confusion_transfer": all(token in tex for token in (r"q_{\rm obs}(\bm{x})", r"q_{\rm obs}=q+e(1-2q)", "0.00142", "0.00331")),
             "paper_no_stale_primary_055_anchor": all(token not in tex for token in ("dipole collapses to $0.55\\sigmaunit$", "dipole at $0.55\\sigmaunit$ anchors", "dipole from $2.31\\sigmaunit$ to $0.55\\sigmaunit$")),
             "paper_support_table_cross_reference": r"Table~\ref{tab:fsky_summary} consolidates their mask" in tex,
-            "paper_gz1_effective_n_caveat": "does not record the number of matched galaxies surviving that support" in tex and "about 21 times smaller" not in tex,
+            "paper_gz1_effective_n_exact": all(token in tex for token in ("exactly 4,963 enter its 394-pixel support", "41,054 are excluded", "4,963 galaxies in 394 pixels")) and "does not record the number of matched galaxies surviving that support" not in tex,
             "paper_discloses_training_conflicts": all(token in tex for token in ("26,626", "846 CE non-spirals", "92.10", "does not resolve the conflicting committed records")),
             "schema_uncalibrated_scope": "no calibrated label probabilities" in schema["scientific_scope"],
             "schema_archive_gate_open": schema["release_gates"]["immutable_archive_or_doi"] == "OPEN",
@@ -136,9 +154,9 @@ def audit() -> dict[str, Any]:
     )
     failed = [name for name, passed in gates.items() if not passed]
     result = {
-        "schema": "p4-v1.0.246-source-to-claim-audit/v1",
+        "schema": "p4-v1.0.247-source-to-claim-audit/v1",
         "paper": "P4",
-        "paper_version": "v1.0.246",
+        "paper_version": "v1.0.247",
         "status": "PASS" if not failed else "FAIL",
         "gates": gates,
         "failed_gates": failed,
@@ -151,7 +169,8 @@ def audit() -> dict[str, Any]:
             "physical_or_primordial_bound": False,
             "matched_external_estimator_claim": False,
             "formal_preregistration_claim": False,
-            "immutable_archive_or_doi": "OPEN",
+            "public_catalog_release": "CLOSED_AT_HF_COMMIT_58ecc795",
+            "doi_backed_paper_source_archive": "OPEN",
         },
     }
     if failed:

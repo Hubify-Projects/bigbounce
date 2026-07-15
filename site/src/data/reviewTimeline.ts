@@ -57,6 +57,27 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p4-v10247-public-release-gz1-support-2026-07-15",
+    dateISO: "2026-07-15",
+    timePT: "early morning",
+    kind: "closure-wave",
+    title: "P4 v1.0.247 — public catalog bundle + exact GZ1 supported-N closure",
+    papers: ["P4"],
+    summary:
+      "The exact ApJS safe catalog, unsafe-row quarantine, retained 10,000-draw primary-null array, schema, checksums, validation, and reproducer are now public at immutable Hugging Face commits. The exact GZ1 human-vote rerun records 4,963 supported galaxies from 46,017 matches. Readiness holds at 80 pending artifact QA, exact re-review, training provenance, covariance, DOI-backed paper archive, and human review.",
+    keyTakeaways: [
+      "HF data commit 58ecc795; provider-receipt commit 5a322faa; public-manifest SHA-256 17ba8a65",
+      "GZ1 accounting: 46,017 matched = 4,963 supported on 394 pixels + 41,054 excluded by N_pixel>10",
+      "GZ1 legacy pixel-permutation null remains z=−0.5392269822, p=0.6659334067; no tighter amplitude bound is claimed",
+      "No OpenAI API or Anthropic was used; no exact-board or human ACCEPT is claimed",
+    ],
+    links: [
+      { label: "Public ApJS catalog bundle", href: "https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog/tree/58ecc795a0aa8dda566a28a5adda76a47f3c8942/apjs-release/v1.0.244" },
+      { label: "Provider receipt", href: "https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog/blob/5a322faaed865ae35dae181fc0ff3560ee56383e/apjs-release/v1.0.244/PROVIDER_RECEIPT.json" },
+      { label: "P4 canonical status", href: `${GH}/project-context/SSOT/paper-4/status.md` },
+    ],
+  },
+  {
     id: "p1b-pipeline-p4-v10246-bounded-closure-2026-07-15",
     dateISO: "2026-07-15",
     timePT: "early morning",

@@ -1,0 +1,74 @@
+{
+  "data_commit": "58ecc795a0aa8dda566a28a5adda76a47f3c8942",
+  "files": [
+    {
+      "bytes": 5205,
+      "path": "CATALOG_SCHEMA.md",
+      "sha256": "88ec41873ddfb8fdf41ea3ff335c70e5104377b0c0a08840a77e4a0097d71b73"
+    },
+    {
+      "bytes": 3043,
+      "path": "MANIFEST.json",
+      "sha256": "17ba8a65d36d80cc478875667332dbb47fdc407197985959e523cdd1a30d1ef3"
+    },
+    {
+      "bytes": 1449,
+      "path": "PRIMARY_REPRODUCTION.json",
+      "sha256": "a1df09ac77c98f17ec76de752b1612d98aa2efff1e8ff372979eddb733dfcde9"
+    },
+    {
+      "bytes": 4639,
+      "path": "SCHEMA.json",
+      "sha256": "e432f944768ad1e1504f7548991502644b59346eb0a02ecd31970a1861adeb98"
+    },
+    {
+      "bytes": 678,
+      "path": "SHA256SUMS",
+      "sha256": "0027377d24a719e1f2402c45ee74aea967f6e03270b62d85d9bbfa633a8f0b0b"
+    },
+    {
+      "bytes": 1013,
+      "path": "VALIDATION.json",
+      "sha256": "62714541b532cc9b80f03577d1e009e531fd8bbb436c6e921c903f395e9f163b"
+    },
+    {
+      "bytes": 386712994,
+      "path": "p4_catalog_primary_safe_v1.0.244.parquet",
+      "sha256": "139b761fbeafb34306a0cec60967226c18dc84295285f8317ce3d3af3d28bdf3"
+    },
+    {
+      "bytes": 16665663,
+      "path": "p4_catalog_raw_flip_quarantine_v1.0.244.parquet",
+      "sha256": "fb98787dd4c5d1a7a0fdb64fcdacd1b02bc2080ab3716c0a803e0ccdfec03fbe"
+    },
+    {
+      "bytes": 80128,
+      "path": "primary_null_amps_10000.npy",
+      "sha256": "62bb1c019231974c2a7ed5d5e43ceb77a5596e4675c82d7ff1c899e029a36492"
+    },
+    {
+      "bytes": 6517,
+      "path": "reproduce_p4_primary_null_v1_0_244.py",
+      "sha256": "218ccc263c3c3f68e5f7560857b3d58408e652d1c78c24518573120170f8b269"
+    },
+    {
+      "bytes": 7693,
+      "path": "validate_p4_v1_0_244_claims.py",
+      "sha256": "551efdbd16c365301492766e28fae0e27c44d1d1f2000688b2bbbb2ae7a10399"
+    }
+  ],
+  "paper": "P4",
+  "path_prefix": "apjs-release/v1.0.244",
+  "provider_receipt_commit": "5a322faaed865ae35dae181fc0ff3560ee56383e",
+  "public_manifest_sha256": "17ba8a65d36d80cc478875667332dbb47fdc407197985959e523cdd1a30d1ef3",
+  "published": true,
+  "published_at_utc": "2026-07-15T11:13:17.417927+00:00",
+  "release": "v1.0.244",
+  "repo_id": "bamfai/galaxy-chirality-catalog",
+  "repo_type": "dataset",
+  "schema": "p4-hf-provider-receipt/v1",
+  "source_manifest_sha256": "9d2eb94eda21080d5dcc2310e81bbec0ff473866e3f03b19e77e941206404cd1",
+  "status": "published",
+  "verification": "remote paths and byte sizes matched",
+  "verification_revision": "58ecc795a0aa8dda566a28a5adda76a47f3c8942"
+}

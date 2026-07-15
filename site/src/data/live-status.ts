@@ -147,12 +147,12 @@ const historicalLiveStatus: LiveStatus = {
 // summary reflect the canonical six-paper board rather than an older review wave.
 export const liveStatus: LiveStatus = {
   ...historicalLiveStatus,
-  lastUpdatedISO: "2026-07-15T11:00:00Z",
-  lastUpdatedDisplay: "July 15, 2026 · 4:00 AM PT",
+  lastUpdatedISO: "2026-07-15T11:14:00Z",
+  lastUpdatedDisplay: "July 15, 2026 · 4:14 AM PT",
   headline:
-    "All six manuscripts remain in revision. P4 v1.0.246 closes bounded defects from its exact v1.0.245 board; P1B's physical-spectrum and BBN execution contracts are repaired, but its corrected production run is still outstanding.",
+    "All six manuscripts remain in revision. P4 v1.0.247 now has a real commit-pinned public catalog bundle and an exact supported-N GZ1 rerun; P1B's corrected production run remains blocked on compute funding.",
   summary:
-    "P1B's repaired CAMB spectrum generator and PRIMAT provenance checks pass, but no 500-MC rerun, regenerated figure, or new PDF exists. P4 v1.0.246 corrects primary anchors, sample accounting, and confusion-transfer wording; exact release, training realization, spatial covariance, and exact re-review remain open. Readiness holds at 56/80; no human or journal acceptance is claimed.",
+    "P1B's repaired CAMB spectrum generator and PRIMAT provenance checks pass, but no corrected 500-MC artifact exists because the RunPod balance is negative. P4 v1.0.247 closes the exact catalog-publication and GZ1-supported-N gates: HF data commit 58ecc795 and provider receipt 5a322faa are public, and 4,963 of 46,017 GZ1 matches enter the 394-pixel support. Training realization, spatial covariance, DOI-backed paper archive, and exact re-review remain open. Readiness holds at 56/80; no human or journal acceptance is claimed.",
   papers: historicalLiveStatus.papers.map((paper) => {
     if (paper.slug === "paper-1b") {
       return {
@@ -165,19 +165,19 @@ export const liveStatus: LiveStatus = {
     if (paper.slug === "paper-4") {
       return {
         ...paper,
-        version: "v1.0.246",
+        version: "v1.0.247",
         pendingWork:
-          "Bounded v1.0.245 board defects are closed in the 27-page v1.0.246 artifact. Exact safe/quarantine/null publication, exact training realization, covariance-aware spatial confusion propagation, supported-N GZ1 rerun, DOI, exact v1.0.246 confirmation, and human review remain open. Readiness holds 80.",
+          "The exact safe/quarantine/null bundle is public at immutable HF commits and the GZ1 rerun now records 4,963 supported galaxies from 46,017 matches. Exact training realization, covariance-aware spatial confusion propagation, DOI-backed paper/source archive, exact v1.0.247 confirmation, and human review remain open. Readiness holds 80.",
       };
     }
     return paper;
   }),
   currentlyRunning: [
-    "P1B corrected production is queued but blocked locally on PyMaster and remotely on authenticated compute access",
-    "P4 v1.0.246 is retained and mirrored; public release/provenance/calibration gates are being held open honestly",
+    "P1B corrected production is queued but blocked by a negative RunPod balance; no paid pod launch is being attempted",
+    "P4 v1.0.247 has passed source-to-claim, compile, link, overflow, and all-page visual audits; release synchronization is completing",
   ],
   cronStatus:
     "No review wave is running. The anti-loop stop rule is active: verified defects are being closed before any exact-artifact confirmation rerun.",
   etaToCompletion:
-    "After compute access is restored, P1B's canonical plus parallel robustness run is estimated at roughly 2.5–5 hours wall-clock, followed by manuscript/PDF QA and exact review. P4 also needs authenticated release publication and a confirmation board. A defensible all-six date remains conditional on those gates; journal acceptance is controlled by editors and referees.",
+    "After RunPod funding is restored, P1B's canonical plus parallel robustness run is estimated at roughly 2.5–5 hours wall-clock, followed by manuscript/PDF QA and exact review. P4's public release is complete but its training/covariance gates and confirmation board remain. A defensible all-six submission date remains conditional on those gates; journal acceptance is controlled by editors and referees.",
 };

@@ -182,8 +182,15 @@ def main():
     asym = np.zeros(npix)
     asym[mask] = (cw_map[mask] - ccw_map[mask]) / tot[mask]
     n_pix = int(mask.sum())
+    n_support_galaxies = int(tot[mask].sum())
+    n_excluded_matched = n_match - n_support_galaxies
     f_sky = n_pix / npix
     print(f"  Pixels used: {n_pix}/{npix} (f_sky={f_sky:.6f})", flush=True)
+    print(
+        f"  Galaxies in retained pixels: {n_support_galaxies:,}; "
+        f"matched galaxies excluded by pixel cut: {n_excluded_matched:,}",
+        flush=True,
+    )
 
     asym_full = np.full(npix, hp.UNSEEN)
     asym_full[mask] = asym[mask]
@@ -259,6 +266,8 @@ def main():
             "n_matched_to_desi": n_match,
             "cw_fraction_human_matched": cw_frac_matched,
             "n_pix": n_pix,
+            "n_support_galaxies": n_support_galaxies,
+            "n_excluded_matched_by_pixel_cut": n_excluded_matched,
             "f_sky": f_sky,
         },
         "dipole": {
