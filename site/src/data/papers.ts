@@ -212,7 +212,7 @@ export const papers: Paper[] = [
     path: publicationPath({}),
     pages: "10",
     refs: "39",
-    readiness: 74,
+    readiness: 80,
     statusVariant: "amber",
     target: "Physical Review D",
     description: "A four-vertex derivation of the matter-contraction non-Gaussian amplitude under the manuscript's stated assumptions, followed by conditional large-scale-structure mappings. Published SPHEREx sensitivities and an in-house Fisher calculation are used as bounded forecasting diagnostics; they are not treated as mechanism-independent predictions or detections.",
@@ -237,11 +237,12 @@ export const papers: Paper[] = [
     figures: ["Fisher forecast contours", "Template overlap matrix", "σ(f_NL) sensitivity curves"],
     remainingWork: [
       "Independent human scientific review and venue-specific scope/format check",
-      "Immutable source/PDF/artifact archive with a real DOI",
+      "Exact reversible draft is remotely digest-verified; Houston still controls immutable archive/DOI publication",
+      "Direct cubic bounce transfer, survey-native SPHEREx covariance/likelihood, and any model-specific torsion bound remain open",
       "Author arXiv endorsement and journal-submission decision",
     ],
     preprintId: "HUBIFY-2026-002",
-    pdfMeta: "PDF · 10 pp · v1.7.122 · updated Jul 14, 2026 · sha256 4097bac5 — routing-corrected exact-PDF board: Codex via ChatGPT subscription ACCEPT · Gemini direct ACCEPT · Grok direct ACCEPT. No Anthropic; a pre-correction OpenAI API leg is retained as nonconforming diagnostic-only. Automated verdicts are not journal acceptance; readiness holds 74.",
+    pdfMeta: "PDF · 10 pp · v1.7.122 · updated Jul 14, 2026 · sha256 4097bac5 — routing-corrected exact-PDF board: Codex via ChatGPT subscription ACCEPT · Gemini direct ACCEPT · Grok direct ACCEPT. M45 lifted the external cap to 80; no Anthropic, DOI, submission, or journal acceptance is claimed.",
     changelog: [
       "directive-M presentation restructure (v1.7.116, ZERO content change): consolidated the repeated scope/caveat/proxy/illustrative statements the REJECT/minor raws named (DP2-30 presentation-scope) to canonical homes + cross-refs, relegated the cosmic-birefringence auxiliary paragraph to a new Appendix (app:birefringence), tightened the Caveats→Scope-and-limitations register. Freeze held: every number byte-identical, −35/16 quadruple-certification untouched. INT re-test: OpenAI REJECT / Grok MAJOR / Gemini MAJOR / Claude ABSENT; 0 genuinely-new editable findings, 0 regressions — residual verdicts are the documented LLM harsh-referee floor. Nothing fabricated.",
       "c15 GR-leg basis-mismatch fix (v1.7.115, INT-Claude genuinely-new MAJOR): the channel-native Fisher built ∂B/∂A_GR = b·b·b·S_GR without the M123 transfer product the f_NL primordial leg carries, leaving the GR template in potential space vs the f_NL density basis — collapsing F[2,2]~1e-18 and faking ρ(f_NL,A_GR)≈−0.001 orthogonality. Fixed (M123 promotion) + re-ran: corrected ρ=−0.42 (2×2)/−0.49 (3×3), σ_marg=0.94→2.32σ. Channel-native floor still > proxy 1.30σ floor, so the retained proxy conclusion holds. −35/16 unchanged, nothing fabricated.",

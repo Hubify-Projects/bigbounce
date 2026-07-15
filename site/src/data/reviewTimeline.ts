@@ -57,6 +57,26 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p2-v17122-exact-deposit-draft-2026-07-15",
+    dateISO: "2026-07-15",
+    timePT: "11:27 AM",
+    kind: "skill-improvement",
+    title: "P2 v1.7.122 — exact standalone package and reversible draft verified",
+    papers: ["P2"],
+    summary:
+      "A deterministic five-input source bundle and 46-file tracked-provenance archive compile in isolation to the exact 10-page P2 candidate with zero errors, undefined references, or overflows. All ten pages pass visual inspection, and all eight remote GitHub draft digests match local bytes. No DOI, submission, acceptance, or packaging-based readiness increase is claimed; the M45 cap remains 80.",
+    keyTakeaways: [
+      "Draft target 4599a405 binds exact TeX SHA-256 9144e1be, PDF SHA-256 4097bac5, and source-bundle SHA-256 dcf10d9f",
+      "The shared version parser now accepts active versioned preprint declarations, eliminating a P2-specific manual bypass",
+      "Direct cubic transfer, survey-native SPHEREx covariance/likelihood, torsion-bound, DOI/archive, and human PRD gates remain open",
+    ],
+    links: [
+      { label: "P2 draft-release receipt", href: `${GH}/project-context/SSOT/github-releases/P2_v1.7.122_draft_release_receipt.json` },
+      { label: "P2 deposit specification", href: `${GH}/project-context/SSOT/zenodo/P2_zenodo_deposition.md` },
+      { label: "Standalone proof", href: `${GH}/project-context/SSOT/arxiv_tarballs/paper2_arxiv_v1.7.122.proof.json` },
+    ],
+  },
+  {
     id: "p1a-p3-exact-deposit-gates-2026-07-15",
     dateISO: "2026-07-15",
     timePT: "11:04 AM",
