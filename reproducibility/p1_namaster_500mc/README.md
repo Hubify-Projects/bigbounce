@@ -209,6 +209,15 @@ manual review; active pods crossing a price, budget, or deadline ceiling are
 deleted for cost safety and explicitly recorded as unverified. Pod status alone
 is never treated as scientific success.
 
+The pod command also wraps the complete clone/install/production/retention
+lifecycle in a container-local GNU `timeout` using the same operator-supplied
+runtime ceiling. At the deadline it sends `TERM`, escalates to `KILL` after 60
+seconds, and atomically writes a commit-bound status record under
+`/workspace/p1b-container-status/`. This guard survives loss of the launching
+computer and limits the running container, but it is not evidence that RunPod
+has deleted the pod or stopped billing; the independent deletion watchdog and
+bounded live recovery drill below are still required.
+
 This closes the in-process implementation gap prospectively, but does not
 authorize any provider mutation. A process cannot protect itself from SIGKILL,
 host loss, or a prolonged network partition. An independently hosted crash-safe

@@ -5,6 +5,7 @@ import importlib.util
 import io
 import json
 import os
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -150,6 +151,58 @@ class LauncherTest(unittest.TestCase):
         self.assertEqual(payload["dockerEntrypoint"], ["bash", "-lc"])
         self.assertEqual(len(payload["dockerStartCmd"]), 1)
         self.assertIn(self.commit, payload["dockerStartCmd"][0])
+        self.assertIn("timeout --foreground --signal=TERM --kill-after=60s 3600s", payload["dockerStartCmd"][0])
+        self.assertIn("/workspace/p1b-container-status/", payload["dockerStartCmd"][0])
+
+    def test_container_timeout_preserves_success_and_writes_atomic_status(self):
+        status = self.root / "container-status.json"
+        command = MODULE.container_timeout_command(
+            ["bash", "-lc", "true"], runtime_seconds=5,
+            status_path=status, commit=self.commit,
+        )
+        completed = subprocess.run(["bash", "-lc", command], check=False)
+        self.assertEqual(completed.returncode, 0)
+        receipt = json.loads(status.read_text())
+        self.assertEqual(receipt["state"], "completed")
+        self.assertEqual(receipt["exit_code"], 0)
+        self.assertEqual(receipt["runtime_ceiling_seconds"], 5)
+        self.assertEqual(list(status.parent.glob("container-status.json.tmp.*")), [])
+
+    def test_container_timeout_returns_124_and_records_timeout(self):
+        status = self.root / "timed-out.json"
+        command = MODULE.container_timeout_command(
+            ["bash", "-lc", "sleep 30"], runtime_seconds=1,
+            status_path=status, commit=self.commit,
+        )
+        completed = subprocess.run(["bash", "-lc", command], check=False, timeout=5)
+        self.assertEqual(completed.returncode, 124)
+        receipt = json.loads(status.read_text())
+        self.assertEqual(receipt["state"], "timed_out")
+        self.assertEqual(receipt["exit_code"], 124)
+
+    def test_container_timeout_preserves_non_timeout_failure(self):
+        status = self.root / "failed.json"
+        command = MODULE.container_timeout_command(
+            ["bash", "-lc", "exit 23"], runtime_seconds=5,
+            status_path=status, commit=self.commit,
+        )
+        completed = subprocess.run(["bash", "-lc", command], check=False)
+        self.assertEqual(completed.returncode, 23)
+        receipt = json.loads(status.read_text())
+        self.assertEqual(receipt["state"], "failed")
+        self.assertEqual(receipt["exit_code"], 23)
+
+    def test_container_timeout_rejects_invalid_contract(self):
+        with self.assertRaisesRegex(ValueError, "positive integer"):
+            MODULE.container_timeout_command(
+                ["bash", "-lc", "true"], runtime_seconds=0,
+                status_path=self.root / "status.json", commit=self.commit,
+            )
+        with self.assertRaisesRegex(ValueError, "exact bash"):
+            MODULE.container_timeout_command(
+                ["bash", "true"], runtime_seconds=1,
+                status_path=self.root / "status.json", commit=self.commit,
+            )
 
     def test_launch_enters_supervisor_immediately(self):
         client = Client()

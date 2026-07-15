@@ -7,6 +7,7 @@ import argparse
 import datetime as dt
 import json
 import os
+import shlex
 import sys
 import time
 import urllib.error
@@ -22,6 +23,7 @@ import retain_remote_production as retention
 API_BASE = "https://rest.runpod.io/v1"
 CONFIRMATION = "LAUNCH-P1B-500MC-WITH-BUDGET-GUARD"
 POD_NAME_PREFIX = "p1b-physical-spectrum-500mc"
+CONTAINER_TIMEOUT_KILL_AFTER_SECONDS = 60
 
 
 def utcnow() -> dt.datetime:
@@ -133,6 +135,46 @@ def pod_name(commit: str) -> str:
     return f"{POD_NAME_PREFIX}-{commit[:12]}"
 
 
+def container_timeout_command(remote_argv: list[str], *, runtime_seconds: int,
+                              status_path: Path, commit: str) -> str:
+    """Wrap the complete bootstrap in a hard deadline with an atomic status record."""
+    if remote_argv[:2] != ["bash", "-lc"] or len(remote_argv) != 3:
+        raise ValueError("bound bootstrap did not produce exact bash entrypoint/start command")
+    if not isinstance(runtime_seconds, int) or isinstance(runtime_seconds, bool) or runtime_seconds <= 0:
+        raise ValueError("container runtime ceiling must be a positive integer number of seconds")
+    if len(commit) != 40 or any(character not in "0123456789abcdef" for character in commit):
+        raise ValueError("container timeout status requires a lowercase full commit SHA")
+    if not status_path.is_absolute():
+        raise ValueError("container timeout status path must be absolute")
+    status_dir = status_path.parent
+    inner = shlex.join(remote_argv)
+    # GNU timeout returns 124 when its deadline fires, including when the TERM
+    # grace period escalates to KILL. Preserve every other bootstrap exit code.
+    return f"""set -euo pipefail
+mkdir -p {shlex.quote(str(status_dir))}
+status_path={shlex.quote(str(status_path))}
+status_tmp="$status_path.tmp.$$"
+started_at="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+set +e
+timeout --foreground --signal=TERM --kill-after={CONTAINER_TIMEOUT_KILL_AFTER_SECONDS}s {runtime_seconds}s {inner}
+exit_code=$?
+set -e
+if [ "$exit_code" -eq 0 ]; then
+  state=completed
+elif [ "$exit_code" -eq 124 ]; then
+  state=timed_out
+else
+  state=failed
+fi
+finished_at="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+printf '{{"schema":"p1b-container-runtime/v1","git_commit":"%s","state":"%s","exit_code":%s,"runtime_ceiling_seconds":%s,"term_grace_seconds":%s,"started_at":"%s","finished_at":"%s"}}\n' {shlex.quote(commit)} "$state" "$exit_code" {runtime_seconds} {CONTAINER_TIMEOUT_KILL_AFTER_SECONDS} "$started_at" "$finished_at" > "$status_tmp"
+sync "$status_tmp"
+mv "$status_tmp" "$status_path"
+sync {shlex.quote(str(status_dir))}
+exit "$exit_code"
+"""
+
+
 def field(pod: dict, *names):
     for name in names:
         if name in pod:
@@ -203,8 +245,11 @@ def launch(*, client, manifest: dict, expected_commit: str, contract: dict, bala
         manifest, Path("/tmp/bound-production-manifest.json"), Path("/tmp/p1b-work"),
         Path("/tmp/p1b-state"), Path("/workspace/p1b-retention"),
     )
-    if remote_argv[:2] != ["bash", "-lc"] or len(remote_argv) != 3:
-        raise ValueError("bound bootstrap did not produce exact bash entrypoint/start command")
+    container_command = container_timeout_command(
+        remote_argv, runtime_seconds=max_runtime_minutes * 60,
+        status_path=Path("/workspace/p1b-container-status") / f"{expected_commit}.json",
+        commit=expected_commit,
+    )
     payload = {
         "name": name,
         "imageName": image,
@@ -216,7 +261,7 @@ def launch(*, client, manifest: dict, expected_commit: str, contract: dict, bala
         "cloudType": "SECURE",
         "volumeMountPath": "/workspace",
         "dockerEntrypoint": remote_argv[:2],
-        "dockerStartCmd": [remote_argv[2]],
+        "dockerStartCmd": [container_command],
         "env": {"P1B_GIT_COMMIT": expected_commit, "P1B_MAX_RUNTIME_MINUTES": str(max_runtime_minutes)},
     }
     pod = client.create_pod(payload)
