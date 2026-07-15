@@ -57,6 +57,27 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p4-v10253-public-contract-closure-2026-07-15",
+    dateISO: "2026-07-15",
+    timePT: "1:43 PM",
+    kind: "closure-wave",
+    title: "P4 v1.0.253 — release defects closed and exact PDF audited; confirmation pending",
+    papers: ["P4"],
+    summary:
+      "The exact v1.0.252 board returned Grok MAJOR, Gemini MINOR, and ChatGPT-subscription Codex MAJOR. Three bounded release defects are closed at byte-verified HF revisions 2fc392e2 and 3baeab86, and the 29-page v1.0.253 PDF is compiled, audited, and mirrored at SHA-256 d9030a7b. Codex reviewed before remote publication, so its MAJOR verdict still stands; exact v1.0.253 confirmation has not run, and readiness holds 80.",
+    keyTakeaways: [
+      "Dataset revision 2fc392e2 retrieves immutable inputs, verifies bytes and SHA-256, and publishes the deterministic derived-b/a contract",
+      "Model revision 3baeab86 removes stale DR/version/count claims without pretending the unresolved historical validation conflict is solved",
+      "Exact v1.0.253 PDF: 29 pages, SHA-256 d9030a7b, MD5 fc6f13e5; compile, audit, and mirror gates pass",
+      "Training realization, spatial transfer plus joint covariance, complete metadata, DOI archive, exact v1.0.253 confirmation, and human review remain open",
+    ],
+    links: [
+      { label: "HF dataset contract", href: "https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog/commit/2fc392e22b3155107f6f56a60aa8ac75f57c866b" },
+      { label: "HF model card", href: "https://huggingface.co/bamfai/galaxy-chirality-v2/commit/3baeab8635a0c854166ecafaa03d83f9a94cea4b" },
+      { label: "P4 canonical status", href: `${GH}/project-context/SSOT/paper-4/status.md` },
+    ],
+  },
+  {
     id: "p2-v17122-exact-deposit-draft-2026-07-15",
     dateISO: "2026-07-15",
     timePT: "11:27 AM",

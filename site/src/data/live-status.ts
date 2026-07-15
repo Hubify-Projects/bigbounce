@@ -147,12 +147,12 @@ const historicalLiveStatus: LiveStatus = {
 // summary reflect the canonical six-paper board rather than an older review wave.
 export const liveStatus: LiveStatus = {
   ...historicalLiveStatus,
-  lastUpdatedISO: "2026-07-15T18:27:00Z",
-  lastUpdatedDisplay: "July 15, 2026 · 11:27 AM PT",
+  lastUpdatedISO: "2026-07-15T20:43:00Z",
+  lastUpdatedDisplay: "July 15, 2026 · 1:43 PM PT",
   headline:
-    "All six manuscripts remain in revision. P2, P3, and P4 now have exact-commit deposit candidates in reversible GitHub drafts; P1A's exact bundle passes but its deposit is intentionally blocked on license authorization. No DOI, immutable archive, submission, or acceptance is claimed.",
+    "All six manuscripts remain in revision. P4 v1.0.253 is compiled, audited, and mirrored with its public release contracts, but exact reviewer confirmation and standing science, DOI, and human-review gates remain open. No submission or acceptance is claimed.",
   summary:
-    "P2 v1.7.122 now has a deterministic exact source bundle, standalone 10-page compile/visual proof, 46-file tracked-provenance archive, and an eight-asset reversible draft with all remote digests matching. Packaging adds no score; M45 independently set P2 readiness to 80. P1B compute, P1A/P5 license, and the remaining science/human gates stay open.",
+    "P4 v1.0.253 is a 29-page audited and mirrored PDF (SHA-256 d9030a7b) recording the byte-verified HF dataset contract at 2fc392e2 and model card at 3baeab86. Exact reviewer confirmation is still pending, the prior board remains MAJOR/MINOR/MAJOR, and readiness holds 80.",
   papers: historicalLiveStatus.papers.map((paper) => {
     if (paper.slug === "paper-1b") {
       return {
@@ -165,9 +165,9 @@ export const liveStatus: LiveStatus = {
     if (paper.slug === "paper-4") {
       return {
         ...paper,
-        version: "v1.0.252",
+        version: "v1.0.253",
         pendingWork:
-          "v1.0.252 has a verified exact-SHA deposit candidate in a reversible GitHub draft. No DOI is reserved or published; training realization, spatial transfer/covariance, remaining imaging/depth/PSF/redshift metadata, exact confirmation, and human review remain open. Readiness holds 80.",
+          "Three v1.0.252 release defects are closed at public HF revisions 2fc392e2 and 3baeab86, and the exact v1.0.253 PDF is audited. Exact review, training realization, spatial transfer/covariance, remaining metadata, DOI, and human review remain open. Readiness holds 80.",
       };
     }
     if (paper.slug === "paper-1a") {
@@ -199,10 +199,10 @@ export const liveStatus: LiveStatus = {
   }),
   currentlyRunning: [
     "P1B corrected production is queued but blocked by a negative RunPod balance; no paid pod launch is being attempted",
-    "P2, P3, and P4 exact deposit candidates are verified in reversible drafts; P1A is package-ready but license-blocked before draft creation",
+    "P4 v1.0.253 exact reviewer confirmation is pending after the 29-page PDF passed compile, audit, and mirror gates",
   ],
   cronStatus:
-    "No review wave is running. The anti-loop stop rule is active: do not launch exact v1.0.252 confirmation until the next substantive training/spatial-covariance or archive gate is closed.",
+    "No review wave is running. The v1.0.252 board was MAJOR/MINOR/MAJOR; its three bounded release defects are public and the v1.0.253 PDF is audited, but exact v1.0.253 confirmation has not run.",
   etaToCompletion:
     "After RunPod funding is restored, P1B's canonical plus parallel robustness run is estimated at roughly 2.5–5 hours wall-clock, followed by manuscript/PDF QA and exact review. P4 deposit preparation is complete, but DOI reservation/publication, training/covariance, remaining metadata, exact confirmation, and human review remain. A defensible all-six submission date remains conditional on those gates; journal acceptance is controlled by editors and referees.",
 };
