@@ -14,8 +14,10 @@ Method:
   1. Generate synthetic ΛCDM CMB Q/U maps (analytic EE fit + lensing BB).
   2. Apply uniform birefringence rotation by angle β (E ↔ B mixing).
   3. Add ACT-like white noise (10 μK·arcmin).
-  4. Apply ACT-like survey mask (Galactic |b| > 20°, dec ∈ [-65°, +25°],
-     2° apodization → f_sky ≈ 0.32).
+  4. Apply a synthetic HEALPix native-coordinate latitude window
+     (|lat| > 20° and -65° < lat < +25° in the same native frame,
+     2° apodization → f_sky ≈ 0.32). This is not a Galactic/equatorial
+     or survey-footprint mask.
   5. Decouple pseudo-Cℓ with NaMaster (binned, 30 ≤ ℓ ≤ 3·NSIDE).
   6. Estimate β by fitting the fully rotated [EE,EB,BE,BB] theory after
      contraction through the identical NaMaster bandpower-window tensor.
@@ -135,21 +137,27 @@ cl_bb = 0.05 * cl_ee  # lensing BB only
 # -------------------------------------------------------------------------
 print("\n[2/6] Generating sky mask...")
 
-def make_survey_mask(nside, f_sky, galactic_cut_deg=20.0):
+def make_native_latitude_window(nside, f_sky, latitude_cut_deg=20.0):
+    """Synthetic window in one HEALPix native coordinate frame.
+
+    ``hp.pix2ang(..., lonlat=True)`` supplies one native longitude/latitude
+    pair. No coordinate rotation is applied, so the two latitude conditions
+    below must not be interpreted as Galactic latitude plus equatorial
+    declination or as an ACT/other survey footprint.
+    """
     npix = hp.nside2npix(nside)
     mask = np.ones(npix, dtype=float)
     _, lat = hp.pix2ang(nside, np.arange(npix), lonlat=True)
-    mask[np.abs(lat) < galactic_cut_deg] = 0.0
-    ra, dec = hp.pix2ang(nside, np.arange(npix), lonlat=True)
-    mask[dec > 25.0] = 0.0
-    mask[dec < -65.0] = 0.0
+    mask[np.abs(lat) < latitude_cut_deg] = 0.0
+    mask[lat > 25.0] = 0.0
+    mask[lat < -65.0] = 0.0
     mask = hp.smoothing(mask, fwhm=np.deg2rad(2.0), verbose=False)
     mask = np.clip(mask, 0, 1)
     actual_fsky = mask.sum() / len(mask)
     print(f"  Mask f_sky = {actual_fsky:.3f} (target {f_sky:.2f})")
     return mask
 
-mask = make_survey_mask(NSIDE, F_SKY)
+mask = make_native_latitude_window(NSIDE, F_SKY)
 actual_fsky = mask.sum() / hp.nside2npix(NSIDE)
 
 n_ell_bins = 20

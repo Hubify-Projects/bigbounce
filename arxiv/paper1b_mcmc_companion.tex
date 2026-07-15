@@ -261,8 +261,14 @@
 %   FALSIFIED list (14 items) not acted on.)
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1B.0.107}
-\newcommand{\paperTimestamp}{July 14, 2026}
+\newcommand{\paperVersion}{v1B.0.108}
+\newcommand{\paperTimestamp}{July 15, 2026}
+% v1B.0.107->108 (2026-07-15): one-pass exact-PDF confirmation closure.
+%   Relabeled the canonical NaMaster mask as a synthetic native-coordinate
+%   latitude window; rendered the complete prior-predictive method and MC
+%   errors; distinguished Git LFS pointers from scientific payload mirrors;
+%   pinned the integrated-autocorrelation ESS artifacts; and removed the
+%   naive cross-dataset 3.9-sigma combination. No science rerun.
 % v1B.0.106->107 (2026-07-14): truth-audited exact-PDF review closure.
 %   Fixed the cosmology launcher path/version contract and expanded the SHA
 %   manifest to the frozen chains and ALP implementation/results. Relabeled the
@@ -1914,9 +1920,9 @@ $n_s$ & $0.965 \pm 0.006$ & $0.967 \pm 0.006$ \\
 \hline
 Chains & 6 & 6 \\
 Total samples & 176{,}240 & 132{,}949 \\
-Worst $\hat{R}-1$\footnote{\label{fn:rhat_csv}The archived Planck+BAO+SN $\Delta N_{\rm eff}$ row has $\hat{R}-1 = 9.71\times 10^{-4}$; all sampled parameters across both frozen combinations satisfy $\hat{R}-1 \le 3\times 10^{-3}$. The full-tension chain samples 17 parameters: 7 cosmological + 9 Planck likelihood nuisance ($A_{\rm planck}$, amp$_{143}$, amp$_{217}$, amp$_{143\times 217}$, $n_{143}$, $n_{217}$, $n_{143\times 217}$, calTE, calEE) + 1 supernova absolute magnitude ($M_b$, entering via the Pantheon+~SN and SH0ES \texttt{H0.riess2020Mb} likelihoods rather than the Planck likelihood stack). The Planck+BAO+SN chain samples 16 parameters (7 cosmological + the same 9 Planck nuisance; $M_b$ is not explicitly sampled there because \texttt{sn.pantheonplus} runs with \texttt{use\_abs\_mag: false}, analytically marginalizing the absolute magnitude in the absence of the SH0ES $M_b$ likelihood; verified by direct chain-header / \texttt{.updated.yaml} blocking-list inspection). Full per-parameter convergence tables ($\hat R$, ESS, drift, per dataset) are archived at \path{reproducibility/cosmology/convergence_latest.csv} and mirrored in the HuggingFace chain-diagnostics dataset (Appendix~\ref{app:reproducibility}).
+Worst $\hat{R}-1$\footnote{\label{fn:rhat_csv}The archived Planck+BAO+SN $\Delta N_{\rm eff}$ row has $\hat{R}-1 = 9.71\times 10^{-4}$; all sampled parameters across both frozen combinations satisfy $\hat{R}-1 \le 3\times 10^{-3}$. The full-tension chain samples 17 parameters: 7 cosmological + 9 Planck likelihood nuisance ($A_{\rm planck}$, amp$_{143}$, amp$_{217}$, amp$_{143\times 217}$, $n_{143}$, $n_{217}$, $n_{143\times 217}$, calTE, calEE) + 1 supernova absolute magnitude ($M_b$, entering via the Pantheon+~SN and SH0ES \texttt{H0.riess2020Mb} likelihoods rather than the Planck likelihood stack). The Planck+BAO+SN chain samples 16 parameters (7 cosmological + the same 9 Planck nuisance; $M_b$ is not explicitly sampled there because \texttt{sn.pantheonplus} runs with \texttt{use\_abs\_mag: false}, analytically marginalizing the absolute magnitude in the absence of the SH0ES $M_b$ likelihood; verified by direct chain-header / \texttt{.updated.yaml} blocking-list inspection). The ESS row uses the integrated-autocorrelation estimator in the frozen diagnostics: \path{reproducibility/cosmology/frozen/full_tension_20260311_1728/diagnostics/freeze_diagnostics_CORRECTED.json} reports 5,089.94 ($H_0$), 4,761.37 ($\Delta N_{\rm eff}$), and 6,535.81 ($\tau$), hence the reported minimum 4,761.37 at $\Delta N_{\rm eff}$; \path{reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/diagnostics/convergence_report.txt} reports a minimum 4,692 at $\sigma_8$. The row-expanded \path{reproducibility/cosmology/convergence_latest.csv} is retained as a separate monitoring export with a weight/count-based ESS convention of order $3\times10^5$ and is not the source of the Table~I ESS values.
 } & 0.000974 & 0.000971 \\
-Min ESS & 4{,}744 & 4{,}692 \\
+Min integrated-autocorrelation ESS & 4{,}761.37 ($\Delta N_{\rm eff}$) & 4{,}692 ($\sigma_8$) \\
 \end{tabular}
 \end{ruledtabular}
 \end{table*}
@@ -2031,12 +2037,12 @@ Monte Carlo mean. These are pipeline checks, not real-sky systematic bounds.
 \begin{tabular}{lcccc}
 Configuration & $\beta_{\rm inj}$ & $\hat\beta$ & Signed bias & SE \\
 \hline
-Canonical $f_{\rm sky}=0.32$ & $+0.270^\circ$ & $+0.269^\circ$ & $-0.001^\circ$ & $0.002299^\circ$ \\
+Canonical native-coordinate window, $f_{\rm sky}=0.32$ & $+0.270^\circ$ & $+0.269^\circ$ & $-0.001^\circ$ & $0.002299^\circ$ \\
 Negative sign, $f_{\rm sky}=0.32$ & $-0.270^\circ$ & $-0.270^\circ$ & $0.000^\circ$ & $0.002200^\circ$ \\
 Large sky, $f_{\rm sky}=0.85$ & $+0.270^\circ$ & $+0.270^\circ$ & $0.000^\circ$ & $0.001412^\circ$ \\
 Intermediate sky, $f_{\rm sky}=0.65$ & $+0.270^\circ$ & $+0.268^\circ$ & $-0.002^\circ$ & $0.001582^\circ$ \\
 Apodization $0.5^\circ$ / $3.0^\circ$ & $+0.270^\circ$ & $+0.269^\circ$ / $+0.269^\circ$ & $-0.001^\circ$ / $-0.001^\circ$ & --- \\
-Galactic cut $|b|>30^\circ$ & $+0.270^\circ$ & $+0.269^\circ$ & $-0.001^\circ$ & --- \\
+Native-latitude cut $|\mathrm{lat}|>30^\circ$ & $+0.270^\circ$ & $+0.269^\circ$ & $-0.001^\circ$ & --- \\
 CAMB-lensed $BB$ injection & $+0.270^\circ$ & $+0.270^\circ$ & $0.000^\circ$ & --- \\
 $B$-purified field & $+0.270^\circ$ & $+0.269^\circ$ & $-0.001^\circ$ & --- \\
 \end{tabular}
@@ -2070,8 +2076,8 @@ $\beta=0.342^\circ\pm 0.094^\circ$
 The repository README is the authoritative source for the dataset
 attribution in the executed pipeline.} as its primary
 constraint; the Planck NPIPE and ACT~DR6 values above are quoted only for
-context and for the auxiliary inverse-variance cross-check of
-Eq.~(\ref{eq:beta_combined}). (The quoted $3.6\sigma$ is the ratio
+context, without combining their differently constructed summaries into a
+new significance. (The quoted $3.6\sigma$ is the ratio
 $\beta/\sigma = 0.342/0.094 \approx 3.6$; our likelihood is a Gaussian
 summary in the published mean and width, not a refit of the
 Eskilt--Komatsu posterior shape.)
@@ -2109,10 +2115,15 @@ simulated maps and the spectra entering the template fit --- the decoupled
 spectra are not pixel-window-deconvolved, and no pixel-window mismatch
 enters the $\beta$ estimate).
 
-\emph{Mask.}---An ACT-like footprint (Galactic cut $|b|>20^\circ$ plus
-declination cut ${\rm dec}\in[-65^\circ, +25^\circ]$), apodized by Gaussian
-smoothing of the binary mask at $2^\circ$ FWHM, giving
-$f_{\rm sky}=0.32$. No $E$/$B$ purification is applied
+\emph{Mask.}---The canonical check uses a synthetic HEALPix
+native-coordinate latitude window. The same native latitude returned by
+\texttt{healpy.pix2ang(..., lonlat=True)} is required to satisfy both
+$|\mathrm{lat}|>20^\circ$ and
+$-65^\circ<\mathrm{lat}<+25^\circ$; no coordinate rotation is applied.
+The binary window is Gaussian-smoothed at $2^\circ$ FWHM, giving
+$f_{\rm sky}=0.32260$ (analytic unapodized area $0.32244$). It is not a
+Galactic-plus-equatorial mask and does not represent the ACT or any other
+survey footprint. No $E$/$B$ purification is applied
 (\texttt{purify\_b=False}); residual $E\!\to\!B$ leakage from the apodized
 mask is absorbed into the measured pipeline-recovery bias, which is the
 quantity this validation is designed to characterize.
@@ -2268,8 +2279,8 @@ bandpower-window contraction as the canonical estimator ($N=500$ and seeds
 42--541 per row; shard artifacts under
 \path{reproducibility/p1_namaster_500mc/results/exact_window_500mc/shards/}).
 The canonical refit gives $0.269^\circ$; changing the apodization FWHM to
-$0.5^\circ$ or $3.0^\circ$, or enlarging the Galactic cut to
-$|b|>30^\circ$, also gives $0.269^\circ$. Restricting the canonical fit to
+$0.5^\circ$ or $3.0^\circ$, or enlarging the synthetic native-latitude cut to
+$|\mathrm{lat}|>30^\circ$, also gives $0.269^\circ$. Restricting the canonical fit to
 $\ell\le1024$ gives $0.269^\circ$, while inverse-variance weighting gives
 $0.270^\circ$. Replacing the proxy $BB$ injection with a CAMB-lensed
 $\Lambda$CDM $BB$ spectrum gives $0.270^\circ$. Enabling NaMaster
@@ -2407,6 +2418,24 @@ that the model \emph{can} accommodate the signal but only off the minimal,
 natural region of its own parameter space, and that the same birefringence
 arises identically in standard GR --- it is not a distinctive ECH prediction.
 
+\textit{Prior-predictive method.}---The reported $11.6\%$ and $6.1\%$
+fractions come from $N=100{,}000$ independent draws per configuration with
+NumPy seed 1234 and no likelihood weighting
+(\artifact{reproducibility/cosmology/alp_prior_predictive.py}). In both
+configurations $\theta_i\sim\mathcal U[0.01,\pi]$,
+$\log_{10}(m_a/\mathrm{eV})\sim\mathcal U[-35,-30]$, and $f_a=M_{\rm Pl}$;
+the fixed-coupling run sets $C_{a\gamma}=8$, while the broad-coupling run
+draws $C_{a\gamma}\sim\mathcal U[4,60]$. Each draw is propagated through the
+committed nonlinear equation of motion using an adaptive DOP853 estimator
+whose maximum discrepancy from the reference integrator over the validation
+sample is $2.49\times10^{-8}$ degrees. Counting uses the signed band
+$|\beta-0.342^\circ|<0.094^\circ$ (not an unsigned-tail statistic):
+$11.597\%$ of fixed-coupling draws and $6.137\%$ of broad-coupling draws
+fall inside it. Their binomial Monte Carlo standard errors are respectively
+$0.101$ and $0.076$ percentage points. The complete result, including the
+$2\sigma$ counts, is archived at
+\artifact{reproducibility/cosmology/alp_prior_predictive_result.json}.
+
 \textit{Note (spectator-status caveat, main text).}---Spectator validity is
 defined by the derived energy-density cut $\Omega_a<0.01$, not by an imposed
 small-angle threshold. The conditional median $\theta_i=0.211$ is distinct
@@ -2452,11 +2481,10 @@ $\beta = 0.342^\circ\pm 0.094^\circ$ ($3.6\sigma$)~\cite{Eskilt2022} (the
 joint WMAP9 + Planck PR3 analysis as published; the PR4/NPIPE label refers
 to the repository rerun discussed in the disambiguation footnote earlier in
 this paper; ACT~DR6 enters only via the separate
-$\beta=0.215^\circ\pm 0.074^\circ$ measurement~\cite{DiegoPalazuelos2025}, used
-below only in the auxiliary inverse-variance combination), which
-accounts for shared calibration systematics. The simplified inverse-variance
-combination below ($3.9\sigma$) is retained as an auxiliary cross-check only
-and is explicitly \emph{not} used as the headline number anywhere in this paper.
+$\beta=0.215^\circ\pm 0.074^\circ$ measurement~\cite{DiegoPalazuelos2025}, quoted
+as an independent literature cross-check), which accounts for shared
+calibration systematics. We do not form a naive cross-dataset significance
+from these differently constructed summaries.
 
 \textit{ALP field evolution.}---Numerical integration of the ALP equation of
 motion $\ddot\phi + 3H\dot\phi + m^2 f_a\sin(\phi/f_a) = 0$ in a $\Lambda$CDM
@@ -2545,32 +2573,6 @@ physical EOM trajectories ($\Delta\phi/f_a$ is a derived function of
 $(m/H_0, \theta_i)$, not an independent variable);
 the committed grid scan gives $\beta_{\rm ALP}\in[0.01,0.48]^\circ$
 across the full scan-prior box (the benchmark EOM grid, not the spectator-consistent subset).
-
-\textit{Summary-likelihood combination (auxiliary cross-check).}---Combining
-$\beta = 0.30^\circ\pm 0.11^\circ$ (Planck NPIPE~\cite{DiegoPalazuelos2022}) and
-$\beta = 0.215^\circ\pm 0.074^\circ$ (ACT~DR6~\cite{DiegoPalazuelos2025}) via
-inverse-variance weighting:
-\begin{equation}
-\beta_{\rm combined} = 0.241^\circ\pm 0.061^\circ \quad (\text{naive } 3.9\sigmaunit\text{ upper bound})
-\label{eq:beta_combined}
-\end{equation}
-\emph{Note: this $3.9\sigmaunit$ is a deliberately-optimistic upper
-bound assuming zero Planck--ACT correlation; see Eskilt~\&~Komatsu
-$3.6\sigmaunit$ for the properly-correlated headline.}
-(Auxiliary cross-check only; the $3.9\sigmaunit$ is the significance of
-$\beta_{\rm combined}$ relative to the null $\beta=0$, i.e.\ $0.241/0.061$,
-under the deliberately-optimistic zero-correlation assumption only.)
-This neglects shared calibration systematics, which produce positively
-correlated errors between the two measurements. Positively correlated errors
-\emph{underestimate} the inverse-variance-combined $\sigma$, and therefore
-\emph{overestimate} the significance: the naive $3.9\sigmaunit$ figure is an
-upper bound on the true significance, not a lower bound. The published joint
-analysis at $3.6\sigmaunit$~\cite{Eskilt2022}, which properly accounts for the
-shared polarization-angle calibration systematics via a joint covariance
-matrix with the Tau~A self-calibration nuisance parameters, is the headline;
-the $3.9\sigmaunit$ figure here is retained only as an internal cross-check
-demonstrating that the uncorrelated-errors approximation is qualitatively
-consistent with the published result.
 
 \textit{MCMC parameter estimation.}---Dedicated MCMC sampling of the ALP parameter
 space (three committed configurations totaling 9{,}720 accepted samples:
@@ -2961,20 +2963,29 @@ This pre-release revision is identified by the in-tex
 \texttt{\paperVersion} stamp (defined in
 \texttt{paper1b\_mcmc\_companion.tex} \texttt{\textbackslash newcommand\{\textbackslash paperVersion\}}).
 It does \emph{not} claim that an earlier repository commit freezes the new
-paper. Exact analysis-artifact provenance is instead recorded by per-file
-SHA-256 values in
-\artifact{reproducibility/p1b_analysis_artifact_manifest_v1B.0.107.json}.
+paper. Exact analysis-artifact provenance is instead recorded in
+\artifact{reproducibility/p1b_analysis_artifact_manifest_v1B.0.108.json}.
 That manifest records the base repository commit only as context and explicitly
 marks itself pre-release; the eventual submission commit/tag will freeze the
 paper source, manifest, and compiled PDF together.
+For ordinary Git blobs the manifest records the SHA-256 and byte size of the
+scientific file present in the repository. For frozen-chain
+\texttt{spin\_torsion.1.txt} entries, however, the local 133-byte Git blob is
+a Git LFS pointer: its local SHA-256 authenticates only that pointer record.
+The manifest therefore records separately the pointer SHA-256 and the
+scientific payload's Git LFS \texttt{oid sha256:...} and declared byte size.
+The payload bytes are served by the MCMC-diagnostics HuggingFace mirror listed
+in Appendix~\ref{app:reproducibility}; payload verification means matching that
+LFS OID and size after retrieval, not equating the pointer hash with the chain.
 The repository is program-wide: it includes the four Cobaya YAML
 configurations (one per dataset
 combination, stock CAMB, no custom modifications),
 NaMaster driver scripts, and the implementation map
 (\texttt{IMPLEMENTATION\_MAP.md}), alongside galaxy-spin pipeline code used
 by Paper~IV~\cite{Golden2026P4} but not by any analysis of this paper.
-Frozen MCMC chains are committed (HuggingFace datasets listed in
-Appendix~A); fresh re-verification chains can be regenerated via
+Frozen MCMC chain pointer records, payload OIDs, and declared payload sizes are
+committed; the scientific payloads are mirrored on HuggingFace (Appendix~A).
+Fresh re-verification chains can be regenerated via
 \texttt{reproduce\_cosmology.sh} ($\sim$4--12\,h per configuration on
 4 CPU cores).
 HuggingFace dataset URLs for the three accompanying datasets (MCMC chain
@@ -3056,8 +3067,11 @@ be reproduced.
 \end{itemize}
 
 \textit{What is included vs.\ regenerable.}---The two frozen
-$\Lambda$CDM$+\Delta\Neff$ chain directories are committed
-in-repo and contain the chains and diagnostics that back
+$\Lambda$CDM$+\Delta\Neff$ directories are committed in-repo. Their small
+diagnostics are ordinary Git payloads; each large chain file is represented
+locally by a Git LFS pointer whose scientific payload OID and byte size are
+recorded in the v1B.0.108 manifest, with the scientific bytes mirrored in the
+MCMC-diagnostics HuggingFace dataset. Together these artifacts back
 Table~\ref{tab:verification}, Table~\ref{tab:chain_datasets}, and the relevant
 Table~\ref{tab:claims} claim-classification entries
 of this paper; the ALP $c5$ continuous chain backs Table~\ref{tab:alp_restricted_subsets} separately:
@@ -3081,9 +3095,9 @@ driver script; all published birefringence values are literature citations.
 \textit{HuggingFace datasets.}---The following HuggingFace datasets accompany
 this work (DOI assignment is pending; identifiers will be inserted at
 submission; no DOI is fabricated here. In the interim, the stable references
-are the frozen-chain git commits and repository SHAs pinned in
-\path{CHANGELOG.md} and \path{reproducibility/}; these are
-version-locked and independently reproducible without a DOI.
+are the frozen-chain Git LFS payload OIDs/sizes, HuggingFace payload mirrors,
+and ordinary-file repository SHAs pinned in \path{CHANGELOG.md} and
+\path{reproducibility/}; these are version-locked without fabricating a DOI.
 The URLs are also recorded in the repository
 \texttt{CHANGELOG.md} under the entry for \texttt{\paperVersion} and are
 preserved against future README changes via the version-stamp commit
@@ -3110,8 +3124,9 @@ Appendix~\ref{app:reproducibility}.
 \caption{\label{tab:claims} Claims classification for this companion paper.
 The ``Reference value'' column identifies the public source or internal
 verification anchor for each claim; ``Int.\ verified'' means the quoted value
-has been reproduced from the chain/artifact files identified by the SHA-256
-manifest for \texttt{\paperVersion}; a paper-freezing public commit/tag is
+has been reproduced from ordinary Git artifacts or from scientific Git LFS
+payloads identified by payload OID and size in the manifest for
+\texttt{\paperVersion}; a paper-freezing public commit/tag is
 pending (see Data and Code Availability).}
 \begin{ruledtabular}
 \begin{tabular}{p{0.31\textwidth}p{0.10\textwidth}p{0.25\textwidth}p{0.24\textwidth}}

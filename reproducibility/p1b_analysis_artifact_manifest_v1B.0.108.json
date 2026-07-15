@@ -1,0 +1,1616 @@
+{
+  "schema_version": 2,
+  "paper_version": "v1B.0.108",
+  "status": "pre-release analysis-artifact provenance; not a paper-release commit",
+  "base_repository_commit": "75477aa4dde12c553fcfa37276686e40f96169c9",
+  "hash_algorithm": "sha256",
+  "storage_semantics": {
+    "git-blob": "local blob is the scientific payload",
+    "git-lfs-pointer": "local blob hash authenticates only the pointer; lfs_oid_sha256 and lfs_declared_bytes identify the scientific payload"
+  },
+  "scientific_payload_mirrors": {
+    "frozen_cosmology_chains": "https://huggingface.co/datasets/bamfai/p1b-mcmc-diagnostics",
+    "namaster_artifacts": "https://huggingface.co/datasets/bamfai/p1b-namaster-artifacts",
+    "alp_chains": "https://huggingface.co/datasets/bamfai/p1b-alp-chains"
+  },
+  "authoritative_ess": {
+    "estimator": "integrated autocorrelation time in frozen diagnostics",
+    "full_tension": {
+      "artifact": "reproducibility/cosmology/frozen/full_tension_20260311_1728/diagnostics/freeze_diagnostics_CORRECTED.json",
+      "limiting_parameter": "delta_neff",
+      "minimum_ess": 4761.371228048536
+    },
+    "planck_bao_sn": {
+      "artifact": "reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/diagnostics/convergence_report.txt",
+      "limiting_parameter": "sigma8",
+      "minimum_ess": 4692
+    },
+    "excluded_as_table_source": "reproducibility/cosmology/convergence_latest.csv uses a distinct weight/count-based monitoring convention"
+  },
+  "artifacts": [
+    {
+      "path": "reproducibility/p1_namaster_500mc/CHECKPOINT_RESUME_DESIGN.md",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 2198,
+      "local_git_blob_sha256": "bbabbd96e3c4800e47ecdabcfcba480d6718f6722785b794910556685abaa2e4",
+      "scientific_payload_sha256": "bbabbd96e3c4800e47ecdabcfcba480d6718f6722785b794910556685abaa2e4",
+      "scientific_payload_bytes": 2198
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/README.md",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 5702,
+      "local_git_blob_sha256": "969b1154b8df1dfa75247339c8ecaeeb316e4becc822327c6d7a4b45abdf43ca",
+      "scientific_payload_sha256": "969b1154b8df1dfa75247339c8ecaeeb316e4becc822327c6d7a4b45abdf43ca",
+      "scientific_payload_bytes": 5702
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/requirements.txt",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 419,
+      "local_git_blob_sha256": "09004169135b8f0457f99d1220986dfea417bc289ada1f984ccd0d2ee06939e7",
+      "scientific_payload_sha256": "09004169135b8f0457f99d1220986dfea417bc289ada1f984ccd0d2ee06939e7",
+      "scientific_payload_bytes": 419
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/scripts/windowed_rotation.py",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 4587,
+      "local_git_blob_sha256": "0c0509376a9b658259fe270a7e3d63c10804d2a9f095a2e740ca03acd899a04a",
+      "scientific_payload_sha256": "0c0509376a9b658259fe270a7e3d63c10804d2a9f095a2e740ca03acd899a04a",
+      "scientific_payload_bytes": 4587
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/scripts/namaster_500mc.py",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 15352,
+      "local_git_blob_sha256": "ac4d143a77b2ec398da2fad2f1785960789b2a967646d3dcb5a5c7466e555ce7",
+      "scientific_payload_sha256": "ac4d143a77b2ec398da2fad2f1785960789b2a967646d3dcb5a5c7466e555ce7",
+      "scientific_payload_bytes": 15352
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/scripts/c10_robustness_battery.py",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 19865,
+      "local_git_blob_sha256": "f81bd0c7d6cc9026051a1f52743421871d46a8877200f171f0950c8cdef7bfa1",
+      "scientific_payload_sha256": "f81bd0c7d6cc9026051a1f52743421871d46a8877200f171f0950c8cdef7bfa1",
+      "scientific_payload_bytes": 19865
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/scripts/declared_fsky_sign_battery.py",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 8106,
+      "local_git_blob_sha256": "64a83f7373772f1df74ebc05099b7735a1306225f2e767103d769f8e016048d8",
+      "scientific_payload_sha256": "64a83f7373772f1df74ebc05099b7735a1306225f2e767103d769f8e016048d8",
+      "scientific_payload_bytes": 8106
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/scripts/checkpoint_io.py",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 3727,
+      "local_git_blob_sha256": "bab42f8d109d51b609c8925b983c6c1335f01c4bc12e9293d8f8fefbe6dfe08a",
+      "scientific_payload_sha256": "bab42f8d109d51b609c8925b983c6c1335f01c4bc12e9293d8f8fefbe6dfe08a",
+      "scientific_payload_bytes": 3727
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/scripts/merge_c10_partials.py",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 6523,
+      "local_git_blob_sha256": "e4719c4ce996df3be5b77844aae745a23a7e889a0cbba881f27db3d0d7404f70",
+      "scientific_payload_sha256": "e4719c4ce996df3be5b77844aae745a23a7e889a0cbba881f27db3d0d7404f70",
+      "scientific_payload_bytes": 6523
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/scripts/test_windowed_rotation.py",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 1917,
+      "local_git_blob_sha256": "ddb312d1c13389d4b8b39ef71d8a5daf6d4bc55a049e1c6f98272de74c1a1b72",
+      "scientific_payload_sha256": "ddb312d1c13389d4b8b39ef71d8a5daf6d4bc55a049e1c6f98272de74c1a1b72",
+      "scientific_payload_bytes": 1917
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/scripts/test_realization_parallel.py",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 2626,
+      "local_git_blob_sha256": "2a0edc9503d5670769623386222690d4e3e81615b4415922c5987c484ccc804e",
+      "scientific_payload_sha256": "2a0edc9503d5670769623386222690d4e3e81615b4415922c5987c484ccc804e",
+      "scientific_payload_bytes": 2626
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/scripts/plot_exact_window_results.py",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 4176,
+      "local_git_blob_sha256": "9332e2114ba26ee2c4a45e9e3fe03c2a2cf55414988d489c7dad87c5e9e131cd",
+      "scientific_payload_sha256": "9332e2114ba26ee2c4a45e9e3fe03c2a2cf55414988d489c7dad87c5e9e131cd",
+      "scientific_payload_bytes": 4176
+    },
+    {
+      "path": "arxiv/figures/fig_namaster_recovery.png",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 161857,
+      "local_git_blob_sha256": "b46f7a5635fc994d396409ce33c59c13d5d1002fe9dd6627dbd5ac35991c1510",
+      "scientific_payload_sha256": "b46f7a5635fc994d396409ce33c59c13d5d1002fe9dd6627dbd5ac35991c1510",
+      "scientific_payload_bytes": 161857
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/exact_window_500mc/summary.json",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 1601,
+      "local_git_blob_sha256": "d5c7e68809492b64d1b088d91f04d42354707fcb17fc94f634b2c9cb5d334941",
+      "scientific_payload_sha256": "d5c7e68809492b64d1b088d91f04d42354707fcb17fc94f634b2c9cb5d334941",
+      "scientific_payload_bytes": 1601
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/exact_window_500mc/RUN_NOTES.md",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 3966,
+      "local_git_blob_sha256": "0bf67b15e615bbc5a91be7733eac8f2b033e039b9fe7d402f24f11857552e35f",
+      "scientific_payload_sha256": "0bf67b15e615bbc5a91be7733eac8f2b033e039b9fe7d402f24f11857552e35f",
+      "scientific_payload_bytes": 3966
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/exact_window_500mc/bandpowers.npz",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 233586,
+      "local_git_blob_sha256": "d6c527e3c33362d3e4bca562935b4362428a01e0bf934da2e09e25ebfa98651a",
+      "scientific_payload_sha256": "d6c527e3c33362d3e4bca562935b4362428a01e0bf934da2e09e25ebfa98651a",
+      "scientific_payload_bytes": 233586
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/SUPERSEDED.md",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 759,
+      "local_git_blob_sha256": "9d3cdf6b14b874a74296b9c59e380aacec9f3998464e12ccb942f69c7aedc41b",
+      "scientific_payload_sha256": "9d3cdf6b14b874a74296b9c59e380aacec9f3998464e12ccb942f69c7aedc41b",
+      "scientific_payload_bytes": 759
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/exact_window_500mc/shards/c10_canonical_refit.json",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 1211,
+      "local_git_blob_sha256": "932fb5b33fa57a0bd17272f82deab1a7ea89c41898bfb0bbe7c72384f73104da",
+      "scientific_payload_sha256": "932fb5b33fa57a0bd17272f82deab1a7ea89c41898bfb0bbe7c72384f73104da",
+      "scientific_payload_bytes": 1211
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/exact_window_500mc/shards/c10_canonical_refit.json.receipt.json",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 679,
+      "local_git_blob_sha256": "fd41fde75b14824e411dfc53cc4bf56668f5b66853dfe8e46ee426044be9fcd8",
+      "scientific_payload_sha256": "fd41fde75b14824e411dfc53cc4bf56668f5b66853dfe8e46ee426044be9fcd8",
+      "scientific_payload_bytes": 679
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/exact_window_500mc/shards/c10_lensing_bb_camb.json",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 1084,
+      "local_git_blob_sha256": "7972938691186fe549e51c1cf9cd632c8b197247e96f27aadf9c08da20a9d2b9",
+      "scientific_payload_sha256": "7972938691186fe549e51c1cf9cd632c8b197247e96f27aadf9c08da20a9d2b9",
+      "scientific_payload_bytes": 1084
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/exact_window_500mc/shards/c10_lensing_bb_camb.json.receipt.json",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 643,
+      "local_git_blob_sha256": "13183078303477d72abbaa36f1835e5bd3ec2b1ca54b40ab519cad4445fea5ee",
+      "scientific_payload_sha256": "13183078303477d72abbaa36f1835e5bd3ec2b1ca54b40ab519cad4445fea5ee",
+      "scientific_payload_bytes": 643
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/exact_window_500mc/shards/c10_apod_fwhm_0p5.json",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 1234,
+      "local_git_blob_sha256": "fbbc9ac59cd38944176bea99fc71b9ee6b2ccaa1a59a2618b2ef942299c48b32",
+      "scientific_payload_sha256": "fbbc9ac59cd38944176bea99fc71b9ee6b2ccaa1a59a2618b2ef942299c48b32",
+      "scientific_payload_bytes": 1234
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/exact_window_500mc/shards/c10_apod_fwhm_0p5.json.receipt.json",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 789,
+      "local_git_blob_sha256": "2fd5d5281da3a7ede96924aaac476dda10ed7e4937830171ede6be6671f19ad4",
+      "scientific_payload_sha256": "2fd5d5281da3a7ede96924aaac476dda10ed7e4937830171ede6be6671f19ad4",
+      "scientific_payload_bytes": 789
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/exact_window_500mc/shards/c10_apod_fwhm_3p0.json",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 1235,
+      "local_git_blob_sha256": "949af8489e8e68eebce79890ac01f7fcfa4c518288aaebc59f9358f315c9e478",
+      "scientific_payload_sha256": "949af8489e8e68eebce79890ac01f7fcfa4c518288aaebc59f9358f315c9e478",
+      "scientific_payload_bytes": 1235
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/exact_window_500mc/shards/c10_apod_fwhm_3p0.json.receipt.json",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 790,
+      "local_git_blob_sha256": "31cddc11fbd4bcf85009a2c45630f6ff9adef9a7037f9ef7a986b14c36626a55",
+      "scientific_payload_sha256": "31cddc11fbd4bcf85009a2c45630f6ff9adef9a7037f9ef7a986b14c36626a55",
+      "scientific_payload_bytes": 790
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/exact_window_500mc/shards/c10_mask_b30.json",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 1229,
+      "local_git_blob_sha256": "83b42830dedc74ca4bbe0078eb6115ce86332c3b55e765b9932b8b5b4c36a8a1",
+      "scientific_payload_sha256": "83b42830dedc74ca4bbe0078eb6115ce86332c3b55e765b9932b8b5b4c36a8a1",
+      "scientific_payload_bytes": 1229
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/exact_window_500mc/shards/c10_mask_b30.json.receipt.json",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 773,
+      "local_git_blob_sha256": "fe03b9f3697425f3ba74df00e4b2ca5c074c229a7b03dba391255faddc9ed7d6",
+      "scientific_payload_sha256": "fe03b9f3697425f3ba74df00e4b2ca5c074c229a7b03dba391255faddc9ed7d6",
+      "scientific_payload_bytes": 773
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/exact_window_500mc/shards/c10_purify_b.json",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 1230,
+      "local_git_blob_sha256": "208d168546c73f5521e96ead1c2be211534a21f2096fac45647f6d5999f02e7f",
+      "scientific_payload_sha256": "208d168546c73f5521e96ead1c2be211534a21f2096fac45647f6d5999f02e7f",
+      "scientific_payload_bytes": 1230
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/exact_window_500mc/shards/c10_purify_b.json.receipt.json",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 860,
+      "local_git_blob_sha256": "d75bbd6f2f9e94565c58cfa0ad5a7449efd4480e6747fded95aa9e280a6296f5",
+      "scientific_payload_sha256": "d75bbd6f2f9e94565c58cfa0ad5a7449efd4480e6747fded95aa9e280a6296f5",
+      "scientific_payload_bytes": 860
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/exact_window_500mc/shards/declared_fsky_0p85.json",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 1021,
+      "local_git_blob_sha256": "d1f87ebc580bd2b9acbe3509cff5aa6449a9910db7b2967c24a0e466ee3ff456",
+      "scientific_payload_sha256": "d1f87ebc580bd2b9acbe3509cff5aa6449a9910db7b2967c24a0e466ee3ff456",
+      "scientific_payload_bytes": 1021
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/exact_window_500mc/shards/declared_fsky_0p85.json.receipt.json",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 723,
+      "local_git_blob_sha256": "db39304fdfefab26237ad280ebafe62a3a1ea1d35b439c07838414e4c5ff7be2",
+      "scientific_payload_sha256": "db39304fdfefab26237ad280ebafe62a3a1ea1d35b439c07838414e4c5ff7be2",
+      "scientific_payload_bytes": 723
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/exact_window_500mc/shards/declared_fsky_0p65.json",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 1042,
+      "local_git_blob_sha256": "ff549f997d27ee64ec1b475069a5bf9fc50b81eb91af16a3488063299eaa443f",
+      "scientific_payload_sha256": "ff549f997d27ee64ec1b475069a5bf9fc50b81eb91af16a3488063299eaa443f",
+      "scientific_payload_bytes": 1042
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/exact_window_500mc/shards/declared_fsky_0p65.json.receipt.json",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 724,
+      "local_git_blob_sha256": "360fcf7044bb786021b822561e6004a1aace14f86397a10d5f6aff108b6d8cfb",
+      "scientific_payload_sha256": "360fcf7044bb786021b822561e6004a1aace14f86397a10d5f6aff108b6d8cfb",
+      "scientific_payload_bytes": 724
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/exact_window_500mc/shards/declared_negative_beta_fsky_0p32.json",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 1037,
+      "local_git_blob_sha256": "626199121860c4bbb0fe6a172a0a728861bdd7560ad3d957034d78eddfde3870",
+      "scientific_payload_sha256": "626199121860c4bbb0fe6a172a0a728861bdd7560ad3d957034d78eddfde3870",
+      "scientific_payload_bytes": 1037
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/exact_window_500mc/shards/declared_negative_beta_fsky_0p32.json.receipt.json",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 767,
+      "local_git_blob_sha256": "0de1dce200fd63bb8bb210ac22c8d737556c1b5f860e8440da0420939976e5ca",
+      "scientific_payload_sha256": "0de1dce200fd63bb8bb210ac22c8d737556c1b5f860e8440da0420939976e5ca",
+      "scientific_payload_bytes": 767
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/exact_window_500mc/c10_robustness_battery.json",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 7019,
+      "local_git_blob_sha256": "400bbd3454a491882007a514dee118e7fe806f83c5c2850cabad4e478037feb7",
+      "scientific_payload_sha256": "400bbd3454a491882007a514dee118e7fe806f83c5c2850cabad4e478037feb7",
+      "scientific_payload_bytes": 7019
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/exact_window_500mc/c10_robustness_battery.json.receipt.json",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 950,
+      "local_git_blob_sha256": "a9c3ca688eef9661a2f77084790d1e1e4dc41ed877ba1eba2445dc4c64e0501f",
+      "scientific_payload_sha256": "a9c3ca688eef9661a2f77084790d1e1e4dc41ed877ba1eba2445dc4c64e0501f",
+      "scientific_payload_bytes": 950
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/exact_window_500mc/declared_fsky_sign_battery.json",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 3063,
+      "local_git_blob_sha256": "ff16398c72c6414c3bd83984729051bf7b09c02091283cf24486034ef4613000",
+      "scientific_payload_sha256": "ff16398c72c6414c3bd83984729051bf7b09c02091283cf24486034ef4613000",
+      "scientific_payload_bytes": 3063
+    },
+    {
+      "path": "reproducibility/p1_namaster_500mc/results/exact_window_500mc/declared_fsky_sign_battery.json.receipt.json",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 698,
+      "local_git_blob_sha256": "2ee5f536f507805f87b3f20703bb4801c15c30cb9a6f9debc6d84edb4a92dd69",
+      "scientific_payload_sha256": "2ee5f536f507805f87b3f20703bb4801c15c30cb9a6f9debc6d84edb4a92dd69",
+      "scientific_payload_bytes": 698
+    },
+    {
+      "path": "reproducibility/cosmology/reproduce_cosmology.sh",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 3335,
+      "local_git_blob_sha256": "2bc801a44c99a5e1d48295b33210d10fbb420ec6b4eff55e47c91223a18f0171",
+      "scientific_payload_sha256": "2bc801a44c99a5e1d48295b33210d10fbb420ec6b4eff55e47c91223a18f0171",
+      "scientific_payload_bytes": 3335
+    },
+    {
+      "path": "reproducibility/cosmology/cobaya_planck.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 2753,
+      "local_git_blob_sha256": "5e1c23bb684da9fe87f70ba6596de1df06c52abfee9787197dbf227fba146e02",
+      "scientific_payload_sha256": "5e1c23bb684da9fe87f70ba6596de1df06c52abfee9787197dbf227fba146e02",
+      "scientific_payload_bytes": 2753
+    },
+    {
+      "path": "reproducibility/cosmology/cobaya_planck_bao.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 2632,
+      "local_git_blob_sha256": "4b1e978734cd4981f64b801a15276260b6a6528ed2c755d349f107ae8e229af7",
+      "scientific_payload_sha256": "4b1e978734cd4981f64b801a15276260b6a6528ed2c755d349f107ae8e229af7",
+      "scientific_payload_bytes": 2632
+    },
+    {
+      "path": "reproducibility/cosmology/cobaya_planck_bao_sn.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 2669,
+      "local_git_blob_sha256": "82ed89020afe2245e8266b66eecba450e1b9e7b2f6cb336ef6d8c53d04e8b5cc",
+      "scientific_payload_sha256": "82ed89020afe2245e8266b66eecba450e1b9e7b2f6cb336ef6d8c53d04e8b5cc",
+      "scientific_payload_bytes": 2669
+    },
+    {
+      "path": "reproducibility/cosmology/cobaya_full_tension.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 3277,
+      "local_git_blob_sha256": "1f23908b0b0347f472fb5d06c26b13f24c0717b44b1772a6add4507af773ec04",
+      "scientific_payload_sha256": "1f23908b0b0347f472fb5d06c26b13f24c0717b44b1772a6add4507af773ec04",
+      "scientific_payload_bytes": 3277
+    },
+    {
+      "path": "reproducibility/cosmology/convergence_latest.csv",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 1344,
+      "local_git_blob_sha256": "7bd84c4aeea365abbccf1db1906308ee4c092fb7bbbe2137387214a3485863fd",
+      "scientific_payload_sha256": "7bd84c4aeea365abbccf1db1906308ee4c092fb7bbbe2137387214a3485863fd",
+      "scientific_payload_bytes": 1344
+    },
+    {
+      "path": "reproducibility/cosmology/dataset_chain_map.csv",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 2124,
+      "local_git_blob_sha256": "283557e89f4bdd46ecb8c5eb2b608d1fef42fb33ec9357fea871c77d6347a161",
+      "scientific_payload_sha256": "283557e89f4bdd46ecb8c5eb2b608d1fef42fb33ec9357fea871c77d6347a161",
+      "scientific_payload_bytes": 2124
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/MANIFEST.md",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 5817,
+      "local_git_blob_sha256": "eacc5eae472708f7135a3bf63fb4ad5698ea9255f27920f31bb042f7c92177b9",
+      "scientific_payload_sha256": "eacc5eae472708f7135a3bf63fb4ad5698ea9255f27920f31bb042f7c92177b9",
+      "scientific_payload_bytes": 5817
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/SHA256SUMS.txt",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 7065,
+      "local_git_blob_sha256": "540e3e5b521b849af9ab1db6b04213cfdb3ca3f856f0aaada9fdb6d14a3bee3f",
+      "scientific_payload_sha256": "540e3e5b521b849af9ab1db6b04213cfdb3ca3f856f0aaada9fdb6d14a3bee3f",
+      "scientific_payload_bytes": 7065
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/diagnostics/convergence_summary.json",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 308,
+      "local_git_blob_sha256": "70ce46e4528bd5d7ec01e600110997316d218813e3920fd0b645794cd62eac39",
+      "scientific_payload_sha256": "70ce46e4528bd5d7ec01e600110997316d218813e3920fd0b645794cd62eac39",
+      "scientific_payload_bytes": 308
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/diagnostics/freeze_diagnostics_CORRECTED.json",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 2266,
+      "local_git_blob_sha256": "036aa92a7764e99893c01f9ab9d97a352c851dfe26f1ac9e8bb8f9ee0e44316c",
+      "scientific_payload_sha256": "036aa92a7764e99893c01f9ab9d97a352c851dfe26f1ac9e8bb8f9ee0e44316c",
+      "scientific_payload_bytes": 2266
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/diagnostics/parameter_summary_CORRECTED.json",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 1238,
+      "local_git_blob_sha256": "3df367202cff2cb9aeb0b874f42827ad696308ff3901a32e88ce945b0fd43e57",
+      "scientific_payload_sha256": "3df367202cff2cb9aeb0b874f42827ad696308ff3901a32e88ce945b0fd43e57",
+      "scientific_payload_bytes": 1238
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/MANIFEST.md",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 1725,
+      "local_git_blob_sha256": "c40a20167742de536b9474bbec45050846451731e051cf674f2a6c038231587d",
+      "scientific_payload_sha256": "c40a20167742de536b9474bbec45050846451731e051cf674f2a6c038231587d",
+      "scientific_payload_bytes": 1725
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/SHA256SUMS.txt",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 4555,
+      "local_git_blob_sha256": "51d1e06806a4902ecb3ec678351941bf3a5025a29dd6e1b2b47d04fde711b249",
+      "scientific_payload_sha256": "51d1e06806a4902ecb3ec678351941bf3a5025a29dd6e1b2b47d04fde711b249",
+      "scientific_payload_bytes": 4555
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/diagnostics/convergence_report.txt",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 4364,
+      "local_git_blob_sha256": "8dfb6e13d849c27b03fb5d0063064fbccaa8d30f0c8ae72a7530a08414d26b23",
+      "scientific_payload_sha256": "8dfb6e13d849c27b03fb5d0063064fbccaa8d30f0c8ae72a7530a08414d26b23",
+      "scientific_payload_bytes": 4364
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/diagnostics/parameter_summary_CORRECTED.json",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 1173,
+      "local_git_blob_sha256": "603decd312bb3f8e2d7e85b6c80278a7bd87c3c139d6fc138aac667898563be9",
+      "scientific_payload_sha256": "603decd312bb3f8e2d7e85b6c80278a7bd87c3c139d6fc138aac667898563be9",
+      "scientific_payload_bytes": 1173
+    },
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/alp_ode.py",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 7069,
+      "local_git_blob_sha256": "7ca8a746ff2c8ad872eff46aff05c306e3ae0f53f51063743876a85f33c6a02e",
+      "scientific_payload_sha256": "7ca8a746ff2c8ad872eff46aff05c306e3ae0f53f51063743876a85f33c6a02e",
+      "scientific_payload_bytes": 7069
+    },
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/alp_theory.py",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 3053,
+      "local_git_blob_sha256": "bbff2ac9964db17261dbecb831c34d957af7f855a3d50a3a6941818059f12f44",
+      "scientific_payload_sha256": "bbff2ac9964db17261dbecb831c34d957af7f855a3d50a3a6941818059f12f44",
+      "scientific_payload_bytes": 3053
+    },
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/birefringence_lk.py",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 1135,
+      "local_git_blob_sha256": "2f23a848e9e00461324bba5ab9ee4dd345afbb57633b4b510005e2fd7117b24b",
+      "scientific_payload_sha256": "2f23a848e9e00461324bba5ab9ee4dd345afbb57633b4b510005e2fd7117b24b",
+      "scientific_payload_bytes": 1135
+    },
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/run1_full.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 1019,
+      "local_git_blob_sha256": "7cf2c0ec50c130b92d43c4b4ea2387244fd6e1a8b4512ea35ef9d2c12032ce93",
+      "scientific_payload_sha256": "7cf2c0ec50c130b92d43c4b4ea2387244fd6e1a8b4512ea35ef9d2c12032ce93",
+      "scientific_payload_bytes": 1019
+    },
+    {
+      "path": "reproducibility/cosmology/alp_prior_predictive.py",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 9399,
+      "local_git_blob_sha256": "9761acd352f6de4ce26f96fa495c05476afabbe978e78fe0d2ea3252140e97ba",
+      "scientific_payload_sha256": "9761acd352f6de4ce26f96fa495c05476afabbe978e78fe0d2ea3252140e97ba",
+      "scientific_payload_bytes": 9399
+    },
+    {
+      "path": "reproducibility/cosmology/alp_prior_predictive_result.json",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 1372,
+      "local_git_blob_sha256": "177d24e4e7ed1a12585daf62dc76249047ba1631b01954da6dd2137c77f7264d",
+      "scientific_payload_sha256": "177d24e4e7ed1a12585daf62dc76249047ba1631b01954da6dd2137c77f7264d",
+      "scientific_payload_bytes": 1372
+    },
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/c10a_spectator_slice.py",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 3077,
+      "local_git_blob_sha256": "6cffb5136b3775ea5672d13e6f5697bd6e4b48f4e072efd1b29fdc5405c7c7ad",
+      "scientific_payload_sha256": "6cffb5136b3775ea5672d13e6f5697bd6e4b48f4e072efd1b29fdc5405c7c7ad",
+      "scientific_payload_bytes": 3077
+    },
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/c10a_spectator_slice.json",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 534,
+      "local_git_blob_sha256": "484ef5d82f2757f1686091d7ee38e0b076d2d83a97823845a88435d84a3bf125",
+      "scientific_payload_sha256": "484ef5d82f2757f1686091d7ee38e0b076d2d83a97823845a88435d84a3bf125",
+      "scientific_payload_bytes": 534
+    },
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/c10b_alp_envelope_scan.json",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 1292,
+      "local_git_blob_sha256": "c6adeea4c2c7054f073ea89718f620753eaa3ede5a9e0a7064d5484bc89f0f6d",
+      "scientific_payload_sha256": "c6adeea4c2c7054f073ea89718f620753eaa3ede5a9e0a7064d5484bc89f0f6d",
+      "scientific_payload_bytes": 1292
+    },
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/c14_costheta_summary.py",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 2417,
+      "local_git_blob_sha256": "4065ba38ca8df56f7a5912eee1c6271d479750d7597359dd223780ca8dc3412c",
+      "scientific_payload_sha256": "4065ba38ca8df56f7a5912eee1c6271d479750d7597359dd223780ca8dc3412c",
+      "scientific_payload_bytes": 2417
+    },
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/chains/c14_costheta/c14_summary.json",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 739,
+      "local_git_blob_sha256": "c6b4e23dbac50eb254f35855ff87d1e4e8b27dc6371bab23df215a85f8687821",
+      "scientific_payload_sha256": "c6b4e23dbac50eb254f35855ff87d1e4e8b27dc6371bab23df215a85f8687821",
+      "scientific_payload_bytes": 739
+    },
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/c5_table_iv_recompute.py",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 6245,
+      "local_git_blob_sha256": "90e94c59179f73374ef6aee05a01610055293402a6b1c7e21712969ebc343bca",
+      "scientific_payload_sha256": "90e94c59179f73374ef6aee05a01610055293402a6b1c7e21712969ebc343bca",
+      "scientific_payload_bytes": 6245
+    },
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/c5_table_iv_recompute.json",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 7170,
+      "local_git_blob_sha256": "0903cdd37ce75a2bf0065e8d4acff3391d252b1221568c1b30c36343c7663cb0",
+      "scientific_payload_sha256": "0903cdd37ce75a2bf0065e8d4acff3391d252b1221568c1b30c36343c7663cb0",
+      "scientific_payload_bytes": 7170
+    },
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/chains/c5_continuous/c5.1.txt",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 559680,
+      "local_git_blob_sha256": "56bfee710e3866ba14661fcaa7ce39278e08f621a0854812c068ea7b95cc9f39",
+      "scientific_payload_sha256": "56bfee710e3866ba14661fcaa7ce39278e08f621a0854812c068ea7b95cc9f39",
+      "scientific_payload_bytes": 559680
+    },
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/chains/c5_continuous/c5.2.txt",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 489840,
+      "local_git_blob_sha256": "97daa32fafdaf31e387d91b4da648429f4fef7df452dc04791a4a6080eb6e7b9",
+      "scientific_payload_sha256": "97daa32fafdaf31e387d91b4da648429f4fef7df452dc04791a4a6080eb6e7b9",
+      "scientific_payload_bytes": 489840
+    },
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/chains/c5_continuous/c5.3.txt",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 500400,
+      "local_git_blob_sha256": "50ec649d3fa2157d8e0abdaf88305016244189585a4a156e4f66d350232932b8",
+      "scientific_payload_sha256": "50ec649d3fa2157d8e0abdaf88305016244189585a4a156e4f66d350232932b8",
+      "scientific_payload_bytes": 500400
+    },
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/chains/c5_continuous/c5.4.txt",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 600240,
+      "local_git_blob_sha256": "d489e88f50b9636712481e5712d395493d3506a30e546168bf3a9251cbd601e4",
+      "scientific_payload_sha256": "d489e88f50b9636712481e5712d395493d3506a30e546168bf3a9251cbd601e4",
+      "scientific_payload_bytes": 600240
+    },
+    {
+      "path": "reproducibility/cosmology/chains/w0wa_quintom_desi_dr2/c15_converged/c15_summary.json",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 2258,
+      "local_git_blob_sha256": "69df51edfdc526b94a4fccf5b1cd895fa1ac781d26b321915e2606c8436a19cc",
+      "scientific_payload_sha256": "69df51edfdc526b94a4fccf5b1cd895fa1ac781d26b321915e2606c8436a19cc",
+      "scientific_payload_bytes": 2258
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_01/cobaya.pid",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 5,
+      "local_git_blob_sha256": "7da50e50f1b77e0607376cbdf98341f7d9b99dd943dc73475773b2eadd3e99cd",
+      "scientific_payload_sha256": "7da50e50f1b77e0607376cbdf98341f7d9b99dd943dc73475773b2eadd3e99cd",
+      "scientific_payload_bytes": 5
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_01/cobaya_config.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 2766,
+      "local_git_blob_sha256": "3f1431775770c5ffb0de1b4d8b754b3c9e4afcdb1cf4e87d3fcc3b8c2973bb6a",
+      "scientific_payload_sha256": "3f1431775770c5ffb0de1b4d8b754b3c9e4afcdb1cf4e87d3fcc3b8c2973bb6a",
+      "scientific_payload_bytes": 2766
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_01/spin_torsion.1.txt",
+      "storage": "git-lfs-pointer",
+      "local_git_blob_bytes": 133,
+      "local_git_blob_sha256": "b7dc6286eaf0d69697effbaf3a9ad6b85f9ae8f5e731db5270320bb8acd1b83c",
+      "lfs_oid_sha256": "fd1f8078fbaf28e4eeb1399f1664406d4f9d02e8e93fb45b91e46ba2962baef5",
+      "lfs_declared_bytes": 13444115,
+      "scientific_payload_mirror": "https://huggingface.co/datasets/bamfai/p1b-mcmc-diagnostics"
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_01/spin_torsion.checkpoint",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 106,
+      "local_git_blob_sha256": "2c1e0936cff116caf6922e02523d96596fa0720d4fab20b5a0117f718c2e202e",
+      "scientific_payload_sha256": "2c1e0936cff116caf6922e02523d96596fa0720d4fab20b5a0117f718c2e202e",
+      "scientific_payload_bytes": 106
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_01/spin_torsion.covmat",
+      "storage": "git-lfs-pointer",
+      "local_git_blob_bytes": 129,
+      "local_git_blob_sha256": "3ea18807a8b79debe7126be4546d31a82bb1b725d36561142a2edbf8946eb9fe",
+      "lfs_oid_sha256": "e8a91a0fb1e0df0ee918e013f0c90cf3dabffc4cef5b99dda9b63a7c71caf61d",
+      "lfs_declared_bytes": 7470,
+      "scientific_payload_mirror": "https://huggingface.co/datasets/bamfai/p1b-mcmc-diagnostics"
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_01/spin_torsion.input.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 2710,
+      "local_git_blob_sha256": "91afe4f7cb5ab1ea2b36b17c535a1b0ca521ab805661f7833b62aba2406e7061",
+      "scientific_payload_sha256": "91afe4f7cb5ab1ea2b36b17c535a1b0ca521ab805661f7833b62aba2406e7061",
+      "scientific_payload_bytes": 2710
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_01/spin_torsion.input.yaml.locked",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 0,
+      "local_git_blob_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scientific_payload_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scientific_payload_bytes": 0
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_01/spin_torsion.progress",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 3208,
+      "local_git_blob_sha256": "56da04fcbd617f0ab407970b35010731a9420566a501ed618c91b3315efb0d59",
+      "scientific_payload_sha256": "56da04fcbd617f0ab407970b35010731a9420566a501ed618c91b3315efb0d59",
+      "scientific_payload_bytes": 3208
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_01/spin_torsion.updated.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 10671,
+      "local_git_blob_sha256": "fd99ff55a1acb58a3ff50cc963fd4a945a93c6181973c6f0878307373222118a",
+      "scientific_payload_sha256": "fd99ff55a1acb58a3ff50cc963fd4a945a93c6181973c6f0878307373222118a",
+      "scientific_payload_bytes": 10671
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_02/cobaya.pid",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 5,
+      "local_git_blob_sha256": "e16def8abd1b5f6ec10af08ee1a02ed7561a0af2572ca29ad96fcb40cdc97763",
+      "scientific_payload_sha256": "e16def8abd1b5f6ec10af08ee1a02ed7561a0af2572ca29ad96fcb40cdc97763",
+      "scientific_payload_bytes": 5
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_02/cobaya_config.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 2767,
+      "local_git_blob_sha256": "d5c68f9657fbdd16af8bfedc7f25c26a3b16369b016985edb0146c6b33f01e50",
+      "scientific_payload_sha256": "d5c68f9657fbdd16af8bfedc7f25c26a3b16369b016985edb0146c6b33f01e50",
+      "scientific_payload_bytes": 2767
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_02/spin_torsion.1.txt",
+      "storage": "git-lfs-pointer",
+      "local_git_blob_bytes": 133,
+      "local_git_blob_sha256": "947ba306eb444af4714522c5e5ccf7267a3c43b09c059e650af038a3fe95f7e0",
+      "lfs_oid_sha256": "f95170a1830c41ab910b8cab9e73d8cd1827bdb0e2c0d6e1a664a34505d9b127",
+      "lfs_declared_bytes": 13232474,
+      "scientific_payload_mirror": "https://huggingface.co/datasets/bamfai/p1b-mcmc-diagnostics"
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_02/spin_torsion.checkpoint",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 108,
+      "local_git_blob_sha256": "61cc0b2101f32d8c14d44ad7481c4d36e8f78f1a8142ab2dffe7b0347ac5ad81",
+      "scientific_payload_sha256": "61cc0b2101f32d8c14d44ad7481c4d36e8f78f1a8142ab2dffe7b0347ac5ad81",
+      "scientific_payload_bytes": 108
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_02/spin_torsion.covmat",
+      "storage": "git-lfs-pointer",
+      "local_git_blob_bytes": 129,
+      "local_git_blob_sha256": "e7ba8844492250e8e333691fc210c53f62eb60f6e6c8794a951937d624962b62",
+      "lfs_oid_sha256": "f33df9545e399ab332ee87c139d871707c2dd1a94ae0d3e54115fb1bcd00df29",
+      "lfs_declared_bytes": 7462,
+      "scientific_payload_mirror": "https://huggingface.co/datasets/bamfai/p1b-mcmc-diagnostics"
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_02/spin_torsion.input.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 2711,
+      "local_git_blob_sha256": "97a45608b24e89cc20dad053bf5e42c9a38e2a8416d0a8c393291e384a0abc38",
+      "scientific_payload_sha256": "97a45608b24e89cc20dad053bf5e42c9a38e2a8416d0a8c393291e384a0abc38",
+      "scientific_payload_bytes": 2711
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_02/spin_torsion.input.yaml.locked",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 0,
+      "local_git_blob_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scientific_payload_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scientific_payload_bytes": 0
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_02/spin_torsion.progress",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 3145,
+      "local_git_blob_sha256": "08ec7bce834419fc98599be5e397c240e8503a519e6438108b073cec4f0bdd21",
+      "scientific_payload_sha256": "08ec7bce834419fc98599be5e397c240e8503a519e6438108b073cec4f0bdd21",
+      "scientific_payload_bytes": 3145
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_02/spin_torsion.updated.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 10672,
+      "local_git_blob_sha256": "15d7ad7f98dde078ca04871d7cb2d84df229cead8848e64e6d0f394215558efb",
+      "scientific_payload_sha256": "15d7ad7f98dde078ca04871d7cb2d84df229cead8848e64e6d0f394215558efb",
+      "scientific_payload_bytes": 10672
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_03/cobaya.pid",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 5,
+      "local_git_blob_sha256": "6d3aeb0df42864c8d8fe01d03aaab1429dfecd2b6e74dc8b3672e3868b81bad0",
+      "scientific_payload_sha256": "6d3aeb0df42864c8d8fe01d03aaab1429dfecd2b6e74dc8b3672e3868b81bad0",
+      "scientific_payload_bytes": 5
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_03/cobaya_config.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 2767,
+      "local_git_blob_sha256": "a0c4f07101c456a23c21760e7c83abda666e7d852cfae9a57febbd887c6fa98e",
+      "scientific_payload_sha256": "a0c4f07101c456a23c21760e7c83abda666e7d852cfae9a57febbd887c6fa98e",
+      "scientific_payload_bytes": 2767
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_03/spin_torsion.1.txt",
+      "storage": "git-lfs-pointer",
+      "local_git_blob_bytes": 133,
+      "local_git_blob_sha256": "5be6775b78c67be4947bdd00fd2c238a2a759066f84b7958d0657b4e1e304775",
+      "lfs_oid_sha256": "9ce1cbd19d1b1972e5f7f6eb80bfabb99d942e36fd004ff9a537807440dd4ae6",
+      "lfs_declared_bytes": 13127993,
+      "scientific_payload_mirror": "https://huggingface.co/datasets/bamfai/p1b-mcmc-diagnostics"
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_03/spin_torsion.checkpoint",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 108,
+      "local_git_blob_sha256": "687df9a3aaf0285db923bdea0fbeb8728fd5a011cb1901feaba1e1ca370fe434",
+      "scientific_payload_sha256": "687df9a3aaf0285db923bdea0fbeb8728fd5a011cb1901feaba1e1ca370fe434",
+      "scientific_payload_bytes": 108
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_03/spin_torsion.covmat",
+      "storage": "git-lfs-pointer",
+      "local_git_blob_bytes": 129,
+      "local_git_blob_sha256": "a6bfee8abf6e4e089ea4ec4065b399ce5a2f97bb4ecf10d39caf8b58d278ad5a",
+      "lfs_oid_sha256": "aa72ad6b5563c0e44416bd0f1feec29c6bbddf2d34ca67a75a3056f3a0ed75c8",
+      "lfs_declared_bytes": 7460,
+      "scientific_payload_mirror": "https://huggingface.co/datasets/bamfai/p1b-mcmc-diagnostics"
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_03/spin_torsion.input.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 2711,
+      "local_git_blob_sha256": "4152828ec437033186bcdd8ef710d58ce33d32d330115df13e16a0798d33ba8a",
+      "scientific_payload_sha256": "4152828ec437033186bcdd8ef710d58ce33d32d330115df13e16a0798d33ba8a",
+      "scientific_payload_bytes": 2711
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_03/spin_torsion.input.yaml.locked",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 0,
+      "local_git_blob_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scientific_payload_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scientific_payload_bytes": 0
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_03/spin_torsion.progress",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 3146,
+      "local_git_blob_sha256": "fbd94fbabcd5f6adfd88841bc1a010bb7a9e61181c3c686580112d38e7e8230f",
+      "scientific_payload_sha256": "fbd94fbabcd5f6adfd88841bc1a010bb7a9e61181c3c686580112d38e7e8230f",
+      "scientific_payload_bytes": 3146
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_03/spin_torsion.updated.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 10672,
+      "local_git_blob_sha256": "57cf1410b4d575ca906f25b6f7f469c1b704bd6270e3256e206dcd04c8deb235",
+      "scientific_payload_sha256": "57cf1410b4d575ca906f25b6f7f469c1b704bd6270e3256e206dcd04c8deb235",
+      "scientific_payload_bytes": 10672
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_04/cobaya.pid",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 5,
+      "local_git_blob_sha256": "0fceb1dd19c18e35f8d0695200c28e08912280ca914b916270133748799b0aea",
+      "scientific_payload_sha256": "0fceb1dd19c18e35f8d0695200c28e08912280ca914b916270133748799b0aea",
+      "scientific_payload_bytes": 5
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_04/cobaya_config.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 2767,
+      "local_git_blob_sha256": "45126a47f9ade671cd95f0fd3ddbfe0acebc308b2ce365e9b4a92a9a301d626b",
+      "scientific_payload_sha256": "45126a47f9ade671cd95f0fd3ddbfe0acebc308b2ce365e9b4a92a9a301d626b",
+      "scientific_payload_bytes": 2767
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_04/spin_torsion.1.txt",
+      "storage": "git-lfs-pointer",
+      "local_git_blob_bytes": 133,
+      "local_git_blob_sha256": "0e13136592eceb4e59b5ecc50e1219fbdc80a940fd0b935ad8f48d6d1f654586",
+      "lfs_oid_sha256": "ba62df1656dd2ab85abcf7b15e232e5696a0a066c537659ea501b9921f5300aa",
+      "lfs_declared_bytes": 13101203,
+      "scientific_payload_mirror": "https://huggingface.co/datasets/bamfai/p1b-mcmc-diagnostics"
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_04/spin_torsion.checkpoint",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 107,
+      "local_git_blob_sha256": "43df1b4850789a416106d866d2777e929f504c94227b315eb2cfb04359fa8a11",
+      "scientific_payload_sha256": "43df1b4850789a416106d866d2777e929f504c94227b315eb2cfb04359fa8a11",
+      "scientific_payload_bytes": 107
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_04/spin_torsion.covmat",
+      "storage": "git-lfs-pointer",
+      "local_git_blob_bytes": 129,
+      "local_git_blob_sha256": "168abc89c6aa6dbb8fc0405c98952ad55ea411b339a1b578bfcb72a02802c690",
+      "lfs_oid_sha256": "c98cb0db057685f119bd96850cf49b092e8dc52de5d71290ef0ed8d83becb1c1",
+      "lfs_declared_bytes": 7470,
+      "scientific_payload_mirror": "https://huggingface.co/datasets/bamfai/p1b-mcmc-diagnostics"
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_04/spin_torsion.input.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 2711,
+      "local_git_blob_sha256": "6118531239d0a1d28423cd419772bcf2c3e1b9ad16c16b57ec27beed51d993f8",
+      "scientific_payload_sha256": "6118531239d0a1d28423cd419772bcf2c3e1b9ad16c16b57ec27beed51d993f8",
+      "scientific_payload_bytes": 2711
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_04/spin_torsion.input.yaml.locked",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 0,
+      "local_git_blob_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scientific_payload_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scientific_payload_bytes": 0
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_04/spin_torsion.progress",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 3146,
+      "local_git_blob_sha256": "b3384828d5e5bd5ac5b50e7c31e3e223359493c4be55aaf431ebcd11d6799fef",
+      "scientific_payload_sha256": "b3384828d5e5bd5ac5b50e7c31e3e223359493c4be55aaf431ebcd11d6799fef",
+      "scientific_payload_bytes": 3146
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_04/spin_torsion.updated.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 10672,
+      "local_git_blob_sha256": "7e7132fce21dd5e06fd41fbde6c2b3cc0af9e868746e17006cf31c12cfe6c518",
+      "scientific_payload_sha256": "7e7132fce21dd5e06fd41fbde6c2b3cc0af9e868746e17006cf31c12cfe6c518",
+      "scientific_payload_bytes": 10672
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_05/cobaya.pid",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 5,
+      "local_git_blob_sha256": "6aa68b9553e54ff2939af9627ef303beb9f6f459357c826bc8b94dbedfef14da",
+      "scientific_payload_sha256": "6aa68b9553e54ff2939af9627ef303beb9f6f459357c826bc8b94dbedfef14da",
+      "scientific_payload_bytes": 5
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_05/cobaya_config.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 2766,
+      "local_git_blob_sha256": "be3bf35b55fedfd64ccce222ecf30dac0909d54d35f96ef7dfe16283dbdd1dc0",
+      "scientific_payload_sha256": "be3bf35b55fedfd64ccce222ecf30dac0909d54d35f96ef7dfe16283dbdd1dc0",
+      "scientific_payload_bytes": 2766
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_05/spin_torsion.1.txt",
+      "storage": "git-lfs-pointer",
+      "local_git_blob_bytes": 133,
+      "local_git_blob_sha256": "2811c7db173487a42af3342ab9aa7c91fcd18921c1ea0468fab6302cd845771b",
+      "lfs_oid_sha256": "745da72ebb34e000631cb21a840644077bf3e486d4366a598dd25125d0e12e8f",
+      "lfs_declared_bytes": 12977969,
+      "scientific_payload_mirror": "https://huggingface.co/datasets/bamfai/p1b-mcmc-diagnostics"
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_05/spin_torsion.checkpoint",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 108,
+      "local_git_blob_sha256": "45b16b18737fed6aac1d734bcebd03f19ea36907d2015fe12e2de8e10118d1a0",
+      "scientific_payload_sha256": "45b16b18737fed6aac1d734bcebd03f19ea36907d2015fe12e2de8e10118d1a0",
+      "scientific_payload_bytes": 108
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_05/spin_torsion.covmat",
+      "storage": "git-lfs-pointer",
+      "local_git_blob_bytes": 129,
+      "local_git_blob_sha256": "9f6aab06f82b33a2bc9d0387cab2ac5387e1ea3412fe09c9a90fa33727211fcd",
+      "lfs_oid_sha256": "06602bb6f613cba3d4474fa0578c3d76fc9ce16942a4690d18be94748593aab9",
+      "lfs_declared_bytes": 7456,
+      "scientific_payload_mirror": "https://huggingface.co/datasets/bamfai/p1b-mcmc-diagnostics"
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_05/spin_torsion.input.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 2710,
+      "local_git_blob_sha256": "72f7546fdb52b903ff3d9d0613fb552dee32f0bd09216cbc870bcda1b51edfd1",
+      "scientific_payload_sha256": "72f7546fdb52b903ff3d9d0613fb552dee32f0bd09216cbc870bcda1b51edfd1",
+      "scientific_payload_bytes": 2710
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_05/spin_torsion.input.yaml.locked",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 0,
+      "local_git_blob_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scientific_payload_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scientific_payload_bytes": 0
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_05/spin_torsion.progress",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 3090,
+      "local_git_blob_sha256": "a70715e5e66cc2d4a45419814cf0de9433278a2b765a7d5810422d0ba6f4bd0c",
+      "scientific_payload_sha256": "a70715e5e66cc2d4a45419814cf0de9433278a2b765a7d5810422d0ba6f4bd0c",
+      "scientific_payload_bytes": 3090
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_05/spin_torsion.updated.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 10671,
+      "local_git_blob_sha256": "08f6f600f8ed00f501618507351cf96a9d1bbe5635fe629f0b3d0663d889c46b",
+      "scientific_payload_sha256": "08f6f600f8ed00f501618507351cf96a9d1bbe5635fe629f0b3d0663d889c46b",
+      "scientific_payload_bytes": 10671
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_06/cobaya.pid",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 5,
+      "local_git_blob_sha256": "718594a1612a6fe298a5119609573840798c362c30116de9aa0964f731687f7f",
+      "scientific_payload_sha256": "718594a1612a6fe298a5119609573840798c362c30116de9aa0964f731687f7f",
+      "scientific_payload_bytes": 5
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_06/cobaya_config.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 2766,
+      "local_git_blob_sha256": "1b2929798f8f7f42c4e0f8e5c9ba0fb297c073b7d80183e01b28dbb722a24dab",
+      "scientific_payload_sha256": "1b2929798f8f7f42c4e0f8e5c9ba0fb297c073b7d80183e01b28dbb722a24dab",
+      "scientific_payload_bytes": 2766
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_06/spin_torsion.1.txt",
+      "storage": "git-lfs-pointer",
+      "local_git_blob_bytes": 133,
+      "local_git_blob_sha256": "0c2030835ee2ba4bd5ea1bf334d4f67d85adc99767ed07298e1a9ac1fe9f1761",
+      "lfs_oid_sha256": "114db51e4775ed2af9dbf5cf3549ec9356dbae67431e6718a4d4999cf0235e4e",
+      "lfs_declared_bytes": 91503924,
+      "scientific_payload_mirror": "https://huggingface.co/datasets/bamfai/p1b-mcmc-diagnostics"
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_06/spin_torsion.checkpoint",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 107,
+      "local_git_blob_sha256": "d3d482ec6f6f89df73190e09f6f263fc2f856297e7c47e835ac4d787e4a22bce",
+      "scientific_payload_sha256": "d3d482ec6f6f89df73190e09f6f263fc2f856297e7c47e835ac4d787e4a22bce",
+      "scientific_payload_bytes": 107
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_06/spin_torsion.covmat",
+      "storage": "git-lfs-pointer",
+      "local_git_blob_bytes": 129,
+      "local_git_blob_sha256": "53bbc26e7d09dc071ebefd9c8ac93421fd86b2fd9be7817604177deb6920b866",
+      "lfs_oid_sha256": "c7869158752861a01d7741589733f0c0546eea308daeb4d2875aba7deae2202d",
+      "lfs_declared_bytes": 7464,
+      "scientific_payload_mirror": "https://huggingface.co/datasets/bamfai/p1b-mcmc-diagnostics"
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_06/spin_torsion.input.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 2710,
+      "local_git_blob_sha256": "04c3d3db223adcef002c604f900df68293a9c03ead4fd328390a38b617cea02b",
+      "scientific_payload_sha256": "04c3d3db223adcef002c604f900df68293a9c03ead4fd328390a38b617cea02b",
+      "scientific_payload_bytes": 2710
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_06/spin_torsion.input.yaml.locked",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 0,
+      "local_git_blob_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scientific_payload_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scientific_payload_bytes": 0
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_06/spin_torsion.progress",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 8078,
+      "local_git_blob_sha256": "b1963c608840bfa53e2871620edbbb1528711f83fe67abdca753bfe770b4299c",
+      "scientific_payload_sha256": "b1963c608840bfa53e2871620edbbb1528711f83fe67abdca753bfe770b4299c",
+      "scientific_payload_bytes": 8078
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/full_tension_20260311_1728/chains/chain_06/spin_torsion.updated.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 10672,
+      "local_git_blob_sha256": "94d4d8000384316da2da1ea93f6e4b4d8d13e26d7088aaae8ec95d9962024349",
+      "scientific_payload_sha256": "94d4d8000384316da2da1ea93f6e4b4d8d13e26d7088aaae8ec95d9962024349",
+      "scientific_payload_bytes": 10672
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/chains/chain_01/cobaya_config.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 2621,
+      "local_git_blob_sha256": "2fe33ebfa8fc0cc4f97ab999df5101a67633fb87d3aac3d7dcd388de84b65d36",
+      "scientific_payload_sha256": "2fe33ebfa8fc0cc4f97ab999df5101a67633fb87d3aac3d7dcd388de84b65d36",
+      "scientific_payload_bytes": 2621
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/chains/chain_01/spin_torsion.1.txt",
+      "storage": "git-lfs-pointer",
+      "local_git_blob_bytes": 133,
+      "local_git_blob_sha256": "4e666733511873822acee64ffe360e073f42452ac4a2ae5fab0b13e6c4cbaae5",
+      "lfs_oid_sha256": "9808c591557d35b869049dd9e33f55fe009550f4f6cb72fe8bccc8a4e49bdf95",
+      "lfs_declared_bytes": 17936832,
+      "scientific_payload_mirror": "https://huggingface.co/datasets/bamfai/p1b-mcmc-diagnostics"
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/chains/chain_01/spin_torsion.checkpoint",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 107,
+      "local_git_blob_sha256": "68335b7d8c815440a5ffe819d947ba40a68a667b88e7440ddd2f142842078ecc",
+      "scientific_payload_sha256": "68335b7d8c815440a5ffe819d947ba40a68a667b88e7440ddd2f142842078ecc",
+      "scientific_payload_bytes": 107
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/chains/chain_01/spin_torsion.covmat",
+      "storage": "git-lfs-pointer",
+      "local_git_blob_bytes": 129,
+      "local_git_blob_sha256": "9d8f4d3e5a0379860527f9b76023cbce6ec2f6748222abfa02b06c9d43d9f577",
+      "lfs_oid_sha256": "4a09486fa92235e953921bfd5f91cf474a0bcf703e2f7d4f1205de1df89cb949",
+      "lfs_declared_bytes": 6624,
+      "scientific_payload_mirror": "https://huggingface.co/datasets/bamfai/p1b-mcmc-diagnostics"
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/chains/chain_01/spin_torsion.input.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 2564,
+      "local_git_blob_sha256": "37e8e383e18d81e1180028a168d2436872b86ee7ef7db6b4a05dba17909a8ac3",
+      "scientific_payload_sha256": "37e8e383e18d81e1180028a168d2436872b86ee7ef7db6b4a05dba17909a8ac3",
+      "scientific_payload_bytes": 2564
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/chains/chain_01/spin_torsion.progress",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 4647,
+      "local_git_blob_sha256": "ac9e6ccef74bb1667e8affb0069d46874b5dd081341f2104458718ce9cc3b0be",
+      "scientific_payload_sha256": "ac9e6ccef74bb1667e8affb0069d46874b5dd081341f2104458718ce9cc3b0be",
+      "scientific_payload_bytes": 4647
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/chains/chain_01/spin_torsion.updated.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 10083,
+      "local_git_blob_sha256": "df2c8089b1fe89802ee82a791bd163a92cfdb277e21aff9e24070921c004791d",
+      "scientific_payload_sha256": "df2c8089b1fe89802ee82a791bd163a92cfdb277e21aff9e24070921c004791d",
+      "scientific_payload_bytes": 10083
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/chains/chain_02/cobaya_config.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 2620,
+      "local_git_blob_sha256": "ea8762d4ca915b8c86113eb956a0261e4c01c325a39d9f1303b94aa646fd2f3a",
+      "scientific_payload_sha256": "ea8762d4ca915b8c86113eb956a0261e4c01c325a39d9f1303b94aa646fd2f3a",
+      "scientific_payload_bytes": 2620
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/chains/chain_02/spin_torsion.1.txt",
+      "storage": "git-lfs-pointer",
+      "local_git_blob_bytes": 133,
+      "local_git_blob_sha256": "c1aac58e29ff655c856e32fef0564c7284aefc06b7f58e838cd05bc7daac7d38",
+      "lfs_oid_sha256": "ccfaa464ef4dce6c67cc5b2192ec4555eb817f7cad8d8f280a4555a9c850cb5a",
+      "lfs_declared_bytes": 18321640,
+      "scientific_payload_mirror": "https://huggingface.co/datasets/bamfai/p1b-mcmc-diagnostics"
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/chains/chain_02/spin_torsion.checkpoint",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 107,
+      "local_git_blob_sha256": "a12d2cf56d8703c56773455a338c05290eec560fcdf7078c1f25870c9f32ec94",
+      "scientific_payload_sha256": "a12d2cf56d8703c56773455a338c05290eec560fcdf7078c1f25870c9f32ec94",
+      "scientific_payload_bytes": 107
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/chains/chain_02/spin_torsion.covmat",
+      "storage": "git-lfs-pointer",
+      "local_git_blob_bytes": 129,
+      "local_git_blob_sha256": "ae9d8be5d98fb1e560e54b81a4c32be22cadca24adae4bd64be3cdec1d5c4356",
+      "lfs_oid_sha256": "b0ce06d059491314585f43ef519c7524a207c135f18c9e805ff3043a750245a0",
+      "lfs_declared_bytes": 6624,
+      "scientific_payload_mirror": "https://huggingface.co/datasets/bamfai/p1b-mcmc-diagnostics"
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/chains/chain_02/spin_torsion.input.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 2563,
+      "local_git_blob_sha256": "95cda9d0d05fa3592b8c8971f6d5e71c3b6cefcd4bcf76c93c3f143b5009e00f",
+      "scientific_payload_sha256": "95cda9d0d05fa3592b8c8971f6d5e71c3b6cefcd4bcf76c93c3f143b5009e00f",
+      "scientific_payload_bytes": 2563
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/chains/chain_02/spin_torsion.progress",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 4763,
+      "local_git_blob_sha256": "1fab1099c9360f821c70e9362d91339baece1e3a75196b73aeb051860fb45785",
+      "scientific_payload_sha256": "1fab1099c9360f821c70e9362d91339baece1e3a75196b73aeb051860fb45785",
+      "scientific_payload_bytes": 4763
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/chains/chain_02/spin_torsion.updated.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 10082,
+      "local_git_blob_sha256": "a1a5738802417e011a7dd489099884076d376eebe9d216f16d61af65ea305091",
+      "scientific_payload_sha256": "a1a5738802417e011a7dd489099884076d376eebe9d216f16d61af65ea305091",
+      "scientific_payload_bytes": 10082
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/chains/chain_03/cobaya_config.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 2621,
+      "local_git_blob_sha256": "58cc5af187e6fbb2c28377349c5ea8cf5b7aa72622f8e3972af9fdf2047c519c",
+      "scientific_payload_sha256": "58cc5af187e6fbb2c28377349c5ea8cf5b7aa72622f8e3972af9fdf2047c519c",
+      "scientific_payload_bytes": 2621
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/chains/chain_03/spin_torsion.1.txt",
+      "storage": "git-lfs-pointer",
+      "local_git_blob_bytes": 133,
+      "local_git_blob_sha256": "56ec587045fe4a4fe492d19c046f3e1b8cab89f29fbbfeaa82413ccc8bcb812f",
+      "lfs_oid_sha256": "31674507b9ccb383acc473ebfb2385811271becace3336ec0d1124359cba2a52",
+      "lfs_declared_bytes": 18643824,
+      "scientific_payload_mirror": "https://huggingface.co/datasets/bamfai/p1b-mcmc-diagnostics"
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/chains/chain_03/spin_torsion.checkpoint",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 106,
+      "local_git_blob_sha256": "2d576815f74c337e930796261cf7009143dc124ed65e458e3743e87b9d3addc3",
+      "scientific_payload_sha256": "2d576815f74c337e930796261cf7009143dc124ed65e458e3743e87b9d3addc3",
+      "scientific_payload_bytes": 106
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/chains/chain_03/spin_torsion.covmat",
+      "storage": "git-lfs-pointer",
+      "local_git_blob_bytes": 129,
+      "local_git_blob_sha256": "a85fe33b297bab1ae2ea0f7a8b8dab6e8c46747a325df8bef7b4016974c07978",
+      "lfs_oid_sha256": "44f5e3be86d10eb5b784bf616eb11175aff8ca08bf6d5f1be554ac7b381593fe",
+      "lfs_declared_bytes": 6624,
+      "scientific_payload_mirror": "https://huggingface.co/datasets/bamfai/p1b-mcmc-diagnostics"
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/chains/chain_03/spin_torsion.input.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 2564,
+      "local_git_blob_sha256": "6e349feb20cb71b210dcc10f9a38d69eae99328c935d8f215ca21d4e1be8cdba",
+      "scientific_payload_sha256": "6e349feb20cb71b210dcc10f9a38d69eae99328c935d8f215ca21d4e1be8cdba",
+      "scientific_payload_bytes": 2564
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/chains/chain_03/spin_torsion.progress",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 4824,
+      "local_git_blob_sha256": "99d51d444241b94a7d15de30a0a16e51f30e91df54250a139c8111f71383c502",
+      "scientific_payload_sha256": "99d51d444241b94a7d15de30a0a16e51f30e91df54250a139c8111f71383c502",
+      "scientific_payload_bytes": 4824
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/chains/chain_03/spin_torsion.updated.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 10083,
+      "local_git_blob_sha256": "8996609d1aead6e5770933c13888d78e224d834e590766c7b192cc0a06207e11",
+      "scientific_payload_sha256": "8996609d1aead6e5770933c13888d78e224d834e590766c7b192cc0a06207e11",
+      "scientific_payload_bytes": 10083
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/chains/chain_04/cobaya_config.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 2620,
+      "local_git_blob_sha256": "38c0836218db6277053383eacdce7808e7aa37639b82c48bd773983856b2250d",
+      "scientific_payload_sha256": "38c0836218db6277053383eacdce7808e7aa37639b82c48bd773983856b2250d",
+      "scientific_payload_bytes": 2620
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/chains/chain_04/spin_torsion.1.txt",
+      "storage": "git-lfs-pointer",
+      "local_git_blob_bytes": 133,
+      "local_git_blob_sha256": "9c6862ec1c405a9fe8faf98213e028e0b1cdf5a367bdffb6a5deabfe2bb31fa3",
+      "lfs_oid_sha256": "58115ed1b750ff500fd68764148d96767dfb32e8d3a727a21d13715aaccc37e0",
+      "lfs_declared_bytes": 17790984,
+      "scientific_payload_mirror": "https://huggingface.co/datasets/bamfai/p1b-mcmc-diagnostics"
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/chains/chain_04/spin_torsion.checkpoint",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 108,
+      "local_git_blob_sha256": "d56b2c6c74299d809ec99377e2aeabead1b4141ae609089a5f6ee07b37c865dc",
+      "scientific_payload_sha256": "d56b2c6c74299d809ec99377e2aeabead1b4141ae609089a5f6ee07b37c865dc",
+      "scientific_payload_bytes": 108
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/chains/chain_04/spin_torsion.covmat",
+      "storage": "git-lfs-pointer",
+      "local_git_blob_bytes": 129,
+      "local_git_blob_sha256": "3d825edcebf98bc58c61825fda2256594c0fac2f9590ed3865bab27deeb93c98",
+      "lfs_oid_sha256": "69b64db40ceffe04f218f09f70817fc0750a659e76e873f669cbef1322eadada",
+      "lfs_declared_bytes": 6618,
+      "scientific_payload_mirror": "https://huggingface.co/datasets/bamfai/p1b-mcmc-diagnostics"
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/chains/chain_04/spin_torsion.input.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 2563,
+      "local_git_blob_sha256": "d1c1bddb3965bca9a53e8a3762efc49e0c50caaa0b73985970242ef4e8d01adf",
+      "scientific_payload_sha256": "d1c1bddb3965bca9a53e8a3762efc49e0c50caaa0b73985970242ef4e8d01adf",
+      "scientific_payload_bytes": 2563
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/chains/chain_04/spin_torsion.progress",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 4643,
+      "local_git_blob_sha256": "9458ad5f4c9452ca5576184c25f68406c3567a5be916131f22894c885b775786",
+      "scientific_payload_sha256": "9458ad5f4c9452ca5576184c25f68406c3567a5be916131f22894c885b775786",
+      "scientific_payload_bytes": 4643
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/chains/chain_04/spin_torsion.updated.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 10082,
+      "local_git_blob_sha256": "2e57fabc651c530b3a2ffe83e04dc0c356d767b64541c74319c873a914da18d5",
+      "scientific_payload_sha256": "2e57fabc651c530b3a2ffe83e04dc0c356d767b64541c74319c873a914da18d5",
+      "scientific_payload_bytes": 10082
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/chains/chain_05/cobaya_config.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 2620,
+      "local_git_blob_sha256": "07befcf97b7bd4dedbfcef69b4331a0ca94789488fff875130248d8672ba86b4",
+      "scientific_payload_sha256": "07befcf97b7bd4dedbfcef69b4331a0ca94789488fff875130248d8672ba86b4",
+      "scientific_payload_bytes": 2620
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/chains/chain_05/spin_torsion.1.txt",
+      "storage": "git-lfs-pointer",
+      "local_git_blob_bytes": 133,
+      "local_git_blob_sha256": "13e39e328f1eb76b8e3703e7c1c4c206c31548264472613e7ff4eb9f3e999c0a",
+      "lfs_oid_sha256": "2e8b0dc277f510e175a103fe49dd53e76026e4780ceab717b891d13e51ee1083",
+      "lfs_declared_bytes": 17970616,
+      "scientific_payload_mirror": "https://huggingface.co/datasets/bamfai/p1b-mcmc-diagnostics"
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/chains/chain_05/spin_torsion.checkpoint",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 108,
+      "local_git_blob_sha256": "76526b9577252390833accf163b142789d146b358275fa62d97e37dbc39bf9c5",
+      "scientific_payload_sha256": "76526b9577252390833accf163b142789d146b358275fa62d97e37dbc39bf9c5",
+      "scientific_payload_bytes": 108
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/chains/chain_05/spin_torsion.covmat",
+      "storage": "git-lfs-pointer",
+      "local_git_blob_bytes": 129,
+      "local_git_blob_sha256": "db5f0adcc62ccd9307fff9139eb263df58d575b5aceb050b5d44ef1adb941882",
+      "lfs_oid_sha256": "7e87fc9a0ef3c31bfaf415c6b14b3c9a6e4f22ff516d76b2c25b95f70603b541",
+      "lfs_declared_bytes": 6614,
+      "scientific_payload_mirror": "https://huggingface.co/datasets/bamfai/p1b-mcmc-diagnostics"
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/chains/chain_05/spin_torsion.input.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 2563,
+      "local_git_blob_sha256": "48449c9700a71592456abb822fbb4862f3aa4f4fb1fbe66cd557d9c05442a21d",
+      "scientific_payload_sha256": "48449c9700a71592456abb822fbb4862f3aa4f4fb1fbe66cd557d9c05442a21d",
+      "scientific_payload_bytes": 2563
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/chains/chain_05/spin_torsion.progress",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 4638,
+      "local_git_blob_sha256": "a75e26bdb5efaeefe1378b63e3e333a6840b8614ffcf6ea09537f13500d4d492",
+      "scientific_payload_sha256": "a75e26bdb5efaeefe1378b63e3e333a6840b8614ffcf6ea09537f13500d4d492",
+      "scientific_payload_bytes": 4638
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/chains/chain_05/spin_torsion.updated.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 10082,
+      "local_git_blob_sha256": "b5915d5654ebdc6fa312738a51f9fc101de8c8effc623ae56f06e159779ed3d3",
+      "scientific_payload_sha256": "b5915d5654ebdc6fa312738a51f9fc101de8c8effc623ae56f06e159779ed3d3",
+      "scientific_payload_bytes": 10082
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/chains/chain_06/cobaya_config.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 2620,
+      "local_git_blob_sha256": "a1da8be74e4134bde9fe0acb627900feafa48204dcf4cfa18e908331f2549ee7",
+      "scientific_payload_sha256": "a1da8be74e4134bde9fe0acb627900feafa48204dcf4cfa18e908331f2549ee7",
+      "scientific_payload_bytes": 2620
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/chains/chain_06/spin_torsion.1.txt",
+      "storage": "git-lfs-pointer",
+      "local_git_blob_bytes": 133,
+      "local_git_blob_sha256": "bf67432d61606efe86aedcf814d14a2db345f4e56982cacab654759c540c0863",
+      "lfs_oid_sha256": "e4276c91273b3f832bb6c98ebe2f869044bce3b2ff2767ac89bdf19cf5dd8f2e",
+      "lfs_declared_bytes": 18891024,
+      "scientific_payload_mirror": "https://huggingface.co/datasets/bamfai/p1b-mcmc-diagnostics"
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/chains/chain_06/spin_torsion.checkpoint",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 108,
+      "local_git_blob_sha256": "f8b7112cd731b493992acdb6e03e9eb8831ba8c2a0221f9f06a312728c167ff5",
+      "scientific_payload_sha256": "f8b7112cd731b493992acdb6e03e9eb8831ba8c2a0221f9f06a312728c167ff5",
+      "scientific_payload_bytes": 108
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/chains/chain_06/spin_torsion.covmat",
+      "storage": "git-lfs-pointer",
+      "local_git_blob_bytes": 129,
+      "local_git_blob_sha256": "dfda30733fe751c5822cd83340aef0a31980f1ee09f4a34347f89fccf36ecb4a",
+      "lfs_oid_sha256": "426cdc7a62fdebfd1acd266bafad4aa56e9df0f980745d145a65c1d0b282c9bd",
+      "lfs_declared_bytes": 6614,
+      "scientific_payload_mirror": "https://huggingface.co/datasets/bamfai/p1b-mcmc-diagnostics"
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/chains/chain_06/spin_torsion.input.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 2563,
+      "local_git_blob_sha256": "83676be3fcc9400488077af3d3329bd38d46bb6f7c8b3a0816cfb813cd8cb649",
+      "scientific_payload_sha256": "83676be3fcc9400488077af3d3329bd38d46bb6f7c8b3a0816cfb813cd8cb649",
+      "scientific_payload_bytes": 2563
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/chains/chain_06/spin_torsion.progress",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 4874,
+      "local_git_blob_sha256": "96a20fa0188c7292dc5a0fe7be850f1ab4df017d820073e7039f10703a7a9cb3",
+      "scientific_payload_sha256": "96a20fa0188c7292dc5a0fe7be850f1ab4df017d820073e7039f10703a7a9cb3",
+      "scientific_payload_bytes": 4874
+    },
+    {
+      "path": "reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954/chains/chain_06/spin_torsion.updated.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 10082,
+      "local_git_blob_sha256": "78e774ecc9b008de2a74d6df992fc27175536e2ac4ba5ab76f5bc155a2ab5b2c",
+      "scientific_payload_sha256": "78e774ecc9b008de2a74d6df992fc27175536e2ac4ba5ab76f5bc155a2ab5b2c",
+      "scientific_payload_bytes": 10082
+    },
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/chains/run1_full/alp.1.txt",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 484064,
+      "local_git_blob_sha256": "e91effaf747e5015ea6190c6a5deda690428d04125f4a5eec9cfcd4bb3386460",
+      "scientific_payload_sha256": "e91effaf747e5015ea6190c6a5deda690428d04125f4a5eec9cfcd4bb3386460",
+      "scientific_payload_bytes": 484064
+    },
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/chains/run1_full/alp.covmat",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 123,
+      "local_git_blob_sha256": "c890e436f95b6d2c3310e767adfe2072119abd285f3f80696832cecb3b6974b5",
+      "scientific_payload_sha256": "c890e436f95b6d2c3310e767adfe2072119abd285f3f80696832cecb3b6974b5",
+      "scientific_payload_bytes": 123
+    },
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/chains/run1_full/alp.input.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 856,
+      "local_git_blob_sha256": "eeabee86302737e1304f5c023526431caaec31822ff7ae236c6f660345d4020c",
+      "scientific_payload_sha256": "eeabee86302737e1304f5c023526431caaec31822ff7ae236c6f660345d4020c",
+      "scientific_payload_bytes": 856
+    },
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/chains/run1_full/alp.updated.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 1996,
+      "local_git_blob_sha256": "11fb334b3389753f4a05134c9e94d26a307ace60cc42ec4296561864a696393a",
+      "scientific_payload_sha256": "11fb334b3389753f4a05134c9e94d26a307ace60cc42ec4296561864a696393a",
+      "scientific_payload_bytes": 1996
+    },
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/chains/run1_full/beta_vs_theta.png",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 69692,
+      "local_git_blob_sha256": "d728d47370d3853b7177be2bd9c9bb90b1b079f223a89eacb394d45221e01a77",
+      "scientific_payload_sha256": "d728d47370d3853b7177be2bd9c9bb90b1b079f223a89eacb394d45221e01a77",
+      "scientific_payload_bytes": 69692
+    },
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/chains/run1_full/eta_vs_mass.png",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 52979,
+      "local_git_blob_sha256": "8ce03d782d7d2f0a51f47e487395a82481e00c77bd166b3ad4ac80862e8cdc7f",
+      "scientific_payload_sha256": "8ce03d782d7d2f0a51f47e487395a82481e00c77bd166b3ad4ac80862e8cdc7f",
+      "scientific_payload_bytes": 52979
+    },
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/chains/run1_full/triangle_plot.png",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 124163,
+      "local_git_blob_sha256": "8cf8824deb2a090d123af2e33963b182c4fdb8a448fb5d4cdac70b0c3e2448f3",
+      "scientific_payload_sha256": "8cf8824deb2a090d123af2e33963b182c4fdb8a448fb5d4cdac70b0c3e2448f3",
+      "scientific_payload_bytes": 124163
+    },
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/chains/run2_extended/C_vs_theta_degeneracy.png",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 433900,
+      "local_git_blob_sha256": "d6a5520cc4ad241143f5d9633299d1e35cd639bd3f3f1c940218975d45faeb9c",
+      "scientific_payload_sha256": "d6a5520cc4ad241143f5d9633299d1e35cd639bd3f3f1c940218975d45faeb9c",
+      "scientific_payload_bytes": 433900
+    },
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/chains/run2_extended/alp.1.txt",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 1641840,
+      "local_git_blob_sha256": "3b394478b6ff63d2f8196e0da38a8e4552372202aab53f3a054a8d934e2eb114",
+      "scientific_payload_sha256": "3b394478b6ff63d2f8196e0da38a8e4552372202aab53f3a054a8d934e2eb114",
+      "scientific_payload_bytes": 1641840
+    },
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/chains/run2_extended/alp.covmat",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 261,
+      "local_git_blob_sha256": "b855ab260065d7965e331c01fa912fcc9dfdb99e5639c13bf28e86bf8b9c052e",
+      "scientific_payload_sha256": "b855ab260065d7965e331c01fa912fcc9dfdb99e5639c13bf28e86bf8b9c052e",
+      "scientific_payload_bytes": 261
+    },
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/chains/run2_extended/alp.input.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 1001,
+      "local_git_blob_sha256": "9c5fa37f979c16724f9a05b8f8423cc63bfed93a3e34c93475f887a957f925af",
+      "scientific_payload_sha256": "9c5fa37f979c16724f9a05b8f8423cc63bfed93a3e34c93475f887a957f925af",
+      "scientific_payload_bytes": 1001
+    },
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/chains/run2_extended/alp.updated.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 2175,
+      "local_git_blob_sha256": "ef9d786a9193c7678d595d1661106256347822ef8daf8fde3e45f8905f2cc7e2",
+      "scientific_payload_sha256": "ef9d786a9193c7678d595d1661106256347822ef8daf8fde3e45f8905f2cc7e2",
+      "scientific_payload_bytes": 2175
+    },
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/chains/run2_extended/beta_comparison_all_models.png",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 80781,
+      "local_git_blob_sha256": "1755765b65fd8051a95c041dbea0aec22e803705e5083cbd50a2f55cd4324a3c",
+      "scientific_payload_sha256": "1755765b65fd8051a95c041dbea0aec22e803705e5083cbd50a2f55cd4324a3c",
+      "scientific_payload_bytes": 80781
+    },
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/chains/run2_extended/triangle_plot.png",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 96663,
+      "local_git_blob_sha256": "13a457122d7585ac5ff3b31a53dba5c1a50f490f77ab2f8db409e2cba3c8b7dc",
+      "scientific_payload_sha256": "13a457122d7585ac5ff3b31a53dba5c1a50f490f77ab2f8db409e2cba3c8b7dc",
+      "scientific_payload_bytes": 96663
+    },
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/chains/run3_baseline/beta.1.txt",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 103824,
+      "local_git_blob_sha256": "188b001f607246d0645f96f97078164a6de209ad8697d03cc8428d49c556f858",
+      "scientific_payload_sha256": "188b001f607246d0645f96f97078164a6de209ad8697d03cc8428d49c556f858",
+      "scientific_payload_bytes": 103824
+    },
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/chains/run3_baseline/beta.covmat",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 36,
+      "local_git_blob_sha256": "f72cd3888b5a41d83e0c7fe64bf4e7bb2b67299607effaa243506626d826e963",
+      "scientific_payload_sha256": "f72cd3888b5a41d83e0c7fe64bf4e7bb2b67299607effaa243506626d826e963",
+      "scientific_payload_bytes": 36
+    },
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/chains/run3_baseline/beta.input.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 575,
+      "local_git_blob_sha256": "8951735c20d6ffd338dd04f76e32c788e06b89cadbb955e8255e1423f730aa8a",
+      "scientific_payload_sha256": "8951735c20d6ffd338dd04f76e32c788e06b89cadbb955e8255e1423f730aa8a",
+      "scientific_payload_bytes": 575
+    },
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/chains/run3_baseline/beta.updated.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 1490,
+      "local_git_blob_sha256": "d9857c23fdfb623ec9790151aec7061c5de0fec46d17d107355f7228bfddee27",
+      "scientific_payload_sha256": "d9857c23fdfb623ec9790151aec7061c5de0fec46d17d107355f7228bfddee27",
+      "scientific_payload_bytes": 1490
+    },
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/chains/c5_continuous/c5.covmat",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 261,
+      "local_git_blob_sha256": "49af76d236b9921e1fc368892ce73e26d3543e21247c730e3e1dce07e86640e5",
+      "scientific_payload_sha256": "49af76d236b9921e1fc368892ce73e26d3543e21247c730e3e1dce07e86640e5",
+      "scientific_payload_bytes": 261
+    },
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/chains/c5_continuous/c5.input.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 1024,
+      "local_git_blob_sha256": "6e387545234818604a721ee3b61cf5fbb5b2e6a17cd712a2f32f96b7ddf26ed7",
+      "scientific_payload_sha256": "6e387545234818604a721ee3b61cf5fbb5b2e6a17cd712a2f32f96b7ddf26ed7",
+      "scientific_payload_bytes": 1024
+    },
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/chains/c5_continuous/c5.updated.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 2198,
+      "local_git_blob_sha256": "eb9535f094303d7f4e0d8a5cc0bbe8533f2a8e33961412c3867d89a6491039d6",
+      "scientific_payload_sha256": "eb9535f094303d7f4e0d8a5cc0bbe8533f2a8e33961412c3867d89a6491039d6",
+      "scientific_payload_bytes": 2198
+    },
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/chains/c14_costheta/c14.1.txt",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 2905469,
+      "local_git_blob_sha256": "58f227bc2e5e90d9c2f17396be121943a9ceac4b6c1edb7f544fc5b6ef91d241",
+      "scientific_payload_sha256": "58f227bc2e5e90d9c2f17396be121943a9ceac4b6c1edb7f544fc5b6ef91d241",
+      "scientific_payload_bytes": 2905469
+    },
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/chains/c14_costheta/c14.covmat",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 261,
+      "local_git_blob_sha256": "658d609b789053e36f13dcae7dd3565b29190a815afe782b5cd8954b7ff8bbab",
+      "scientific_payload_sha256": "658d609b789053e36f13dcae7dd3565b29190a815afe782b5cd8954b7ff8bbab",
+      "scientific_payload_bytes": 261
+    },
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/chains/c14_costheta/c14.input.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 1257,
+      "local_git_blob_sha256": "200762036f22c866999d7ca6141b4158b738dc4730b6a5f75d7c7ecccf15615e",
+      "scientific_payload_sha256": "200762036f22c866999d7ca6141b4158b738dc4730b6a5f75d7c7ecccf15615e",
+      "scientific_payload_bytes": 1257
+    },
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/chains/c14_costheta/c14.updated.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 2431,
+      "local_git_blob_sha256": "ab9bb39da7c6746197ac5c3b86cba7c68cafe90a2f73b6c2dea8fe222408b83f",
+      "scientific_payload_sha256": "ab9bb39da7c6746197ac5c3b86cba7c68cafe90a2f73b6c2dea8fe222408b83f",
+      "scientific_payload_bytes": 2431
+    },
+    {
+      "path": "research/branch_R_alp_birefringence/phase2_mcmc/chains/c14_costheta/c14_costheta.yaml",
+      "storage": "git-blob",
+      "local_git_blob_bytes": 1794,
+      "local_git_blob_sha256": "33ee791f9b64846fcc2c637aa424660ea417e6ee3186aa173fc893ce5337c2ad",
+      "scientific_payload_sha256": "33ee791f9b64846fcc2c637aa424660ea417e6ee3186aa173fc893ce5337c2ad",
+      "scientific_payload_bytes": 1794
+    }
+  ]
+}
