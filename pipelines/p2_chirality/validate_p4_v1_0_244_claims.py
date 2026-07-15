@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail-closed source-to-claim and presentation audit for P4 v1.0.252."""
+"""Fail-closed source-to-claim and presentation audit for P4 v1.0.253."""
 
 from __future__ import annotations
 
@@ -33,7 +33,15 @@ EVIDENCE = {
     "cross_spectrum": P4 / "outputs/canonical_provenance/p4_cross_spectrum_A_n.json",
     "training_benchmark": P4 / "BENCHMARK_REPORT.md",
     "model_readme": P4 / "HF_MODEL_README.md",
+    "dataset_readme": P4 / "HF_DATASET_README.md",
+    "current_dataset_contract_receipt": P4 / "outputs/canonical_provenance/p4_hf_contract_dataset_receipt_v1_0_252.json",
+    "current_model_contract_receipt": P4 / "outputs/canonical_provenance/p4_hf_contract_model_receipt_v1_0_252.json",
+    "catalog_c_semantic_validation": P4 / "outputs/canonical_provenance/p4_catalog_c_semantic_validation_v1_0_253.json",
 }
+
+CURRENT_DATASET_COMMIT = "2fc392e22b3155107f6f56a60aa8ac75f57c866b"
+CURRENT_MODEL_COMMIT = "3baeab8635a0c854166ecafaa03d83f9a94cea4b"
+SEMANTIC_RECEIPT_SHA256 = "b4baa0bb2e2c3fb076e18065c26095465bd552b9dbee0ca48d51fda2331ab1db"
 
 
 class ClaimAuditError(RuntimeError):
@@ -72,6 +80,11 @@ def audit() -> dict[str, Any]:
     leg_proxy = load(EVIDENCE["leg_proxy"])
     boundary = load(EVIDENCE["boundary"])
     cross_spectrum = load(EVIDENCE["cross_spectrum"])
+    dataset_contract = load(EVIDENCE["current_dataset_contract_receipt"])
+    model_contract = load(EVIDENCE["current_model_contract_receipt"])
+    semantic_validation = load(EVIDENCE["catalog_c_semantic_validation"])
+    dataset_card = EVIDENCE["dataset_readme"].read_text(encoding="utf-8")
+    model_card = EVIDENCE["model_readme"].read_text(encoding="utf-8")
     panel = r24["items"]["queue8_openai_m1_robustness_panel"]
     cells = panel["panel"]
 
@@ -135,6 +148,78 @@ def audit() -> dict[str, Any]:
         "leg_proxy_not_fsc": close(leg_proxy["config"]["f_sky_canonical"] * 49_152, 24_270),
         "boundary_not_fsc": sum(row["n_pix"] for row in boundary["shells"]) == 35_438,
         "cross_spectrum_mask_unrecorded": "mask" not in cross_spectrum["config"] and "n_pix" not in cross_spectrum["config"],
+        "current_dataset_contract_receipt": (
+            dataset_contract["status"] == "published"
+            and dataset_contract["published"] is True
+            and len(dataset_contract["repositories"]) == 1
+            and dataset_contract["repositories"][0]["repo_id"]
+            == "bamfai/galaxy-chirality-catalog"
+            and dataset_contract["repositories"][0]["commit_oid"]
+            == CURRENT_DATASET_COMMIT
+            and dataset_contract["repositories"][0]["verification"]
+            == "immutable downloads matched bytes and SHA-256"
+            and {item["path"] for item in dataset_contract["repositories"][0]["files"]}
+            == {
+                "README.md",
+                "apjs-release/v1.0.251-morphology-sidecar/MANIFEST.json",
+                "apjs-release/v1.0.251-morphology-sidecar/SCHEMA.json",
+                "apjs-release/v1.0.251-morphology-sidecar/validate_p4_morphology_join_v1_0_251.py",
+            }
+        ),
+        "current_model_contract_receipt": (
+            model_contract["status"] == "published"
+            and model_contract["published"] is True
+            and len(model_contract["repositories"]) == 1
+            and model_contract["repositories"][0]["repo_id"]
+            == "bamfai/galaxy-chirality-v2"
+            and model_contract["repositories"][0]["commit_oid"]
+            == CURRENT_MODEL_COMMIT
+            and model_contract["repositories"][0]["verification"]
+            == "immutable downloads matched bytes and SHA-256"
+            and model_contract["repositories"][0]["files"] == [
+                {
+                    "bytes": 8607,
+                    "path": "README.md",
+                    "sha256": "494e349b96be9aa7a0929d282aafcab19a36d7c9b23de2e6c490817e5e5088f9",
+                }
+            ]
+        ),
+        "catalog_c_semantic_receipt_sha256": (
+            sha256_file(EVIDENCE["catalog_c_semantic_validation"])
+            == SEMANTIC_RECEIPT_SHA256
+        ),
+        "catalog_c_semantic_validation": (
+            semantic_validation["paper_version"] == "v1.0.253"
+            and semantic_validation["catalog_payload_version"] == "v1.0.244"
+            and semantic_validation["command_mode"] == "validate-only"
+            and semantic_validation["validation_result"]["status"] == "PASS"
+            and semantic_validation["validation_result"]["primary_semantics"]["rows_scanned"]
+            == 8_474_531
+            and all(
+                semantic_validation["validation_result"]["primary_semantics"]["gates"].values()
+            )
+            and all(
+                value == 0
+                for value in semantic_validation["validation_result"]["primary_semantics"]["violation_counts"].values()
+            )
+            and semantic_validation["provenance"]["primary_parquet"]["sha256"]
+            == "139b761fbeafb34306a0cec60967226c18dc84295285f8317ce3d3af3d28bdf3"
+            and semantic_validation["provenance"]["primary_parquet"]["sha256"]
+            == semantic_validation["provenance"]["primary_parquet"]["manifest_sha256"]
+        ),
+        "dataset_card_catalog_c_release_scope": (
+            "Catalog C is the only published science-facing release product."
+            in dataset_card
+            and "no complete Catalog B payload or executable release contract is claimed."
+            in dataset_card
+            and "8,474,531" in dataset_card
+            and "139b761fbeafb34306a0cec60967226c18dc84295285f8317ce3d3af3d28bdf3"
+            in dataset_card
+        ),
+        "model_card_current_catalog_counts": all(
+            token in model_card
+            for token in ("8,474,531", "1,592,107 CW", "1,609,053 CCW", "3,201,160")
+        ),
     }
     expected_cells = [
         (10, "uniform", 23_682, 0.535620732327616, 0.2698650674662669),
@@ -158,7 +243,7 @@ def audit() -> dict[str, Any]:
     schema = load(P4 / "apjs_release_schema_v1_0_244.json")
     gates.update(
         {
-            "paper_version": r"\newcommand{\paperVersion}{v1.0.252}" in tex,
+            "paper_version": r"\newcommand{\paperVersion}{v1.0.253}" in tex,
             "paper_uses_aastex_701": r"\documentclass[twocolumn,linenumbers]{aastex701}" in tex,
             "paper_has_no_internal_toc": r"\tableofcontents" not in tex,
             "paper_uses_numeric_citations": r"\setcitestyle{numbers,sort&compress}" in tex,
@@ -178,6 +263,16 @@ def audit() -> dict[str, Any]:
             "paper_no_false_public_qc_claim": "In the public HuggingFace Parquet release" not in tex,
             "paper_public_release_is_commit_pinned": all(token in tex for token in ("We publish an 8,474,531-object observed-label catalog release", "db11023306ab4eed1d7727670bd78e127b7af17a", "e535b26247c892971963be6029435544cf29d19b")),
             "paper_morphology_contract_is_commit_pinned": all(token in tex for token in ("245ad7c5f1e58c627be1390dc3125cd1ce1e3dc9", "3,201,160-row", "d49090fc...5620", "Full-catalog redshift, imaging-leg, depth, seeing, and PSF fields remain unavailable")),
+            "paper_current_dataset_contract_is_commit_pinned": CURRENT_DATASET_COMMIT in tex,
+            "paper_current_model_contract_is_commit_pinned": CURRENT_MODEL_COMMIT in tex,
+            "paper_catalog_c_semantic_contract_is_claimed_narrowly": all(
+                token in tex
+                for token in (
+                    "The science-facing Parquet includes the hard-label primary selection",
+                    "a separate quarantine contains all 249,066 catalog-wide violators",
+                    "Full-catalog redshift, imaging-leg, depth, seeing, and PSF fields remain unavailable",
+                )
+            ),
             "paper_distinguishes_selected_and_supported_n": all(token in tex for token in (r"N_{\rm selected}=949{,}584", r"N_{\rm support}=947{,}326", "2,258 excluded by the support rule")),
             "paper_has_full_spatial_confusion_transfer": all(token in tex for token in (r"q_{\rm obs}(\bm{x})", r"q_{\rm obs}=q+e(1-2q)", "0.00142", "0.00331")),
             "paper_no_stale_primary_055_anchor": all(token not in tex for token in ("dipole collapses to $0.55\\sigmaunit$", "dipole at $0.55\\sigmaunit$ anchors", "dipole from $2.31\\sigmaunit$ to $0.55\\sigmaunit$")),
@@ -190,9 +285,9 @@ def audit() -> dict[str, Any]:
     )
     failed = [name for name, passed in gates.items() if not passed]
     result = {
-        "schema": "p4-v1.0.252-source-to-claim-audit/v1",
+        "schema": "p4-v1.0.253-source-to-claim-audit/v1",
         "paper": "P4",
-        "paper_version": "v1.0.252",
+        "paper_version": "v1.0.253",
         "status": "PASS" if not failed else "FAIL",
         "gates": gates,
         "failed_gates": failed,
@@ -205,7 +300,7 @@ def audit() -> dict[str, Any]:
             "physical_or_primordial_bound": False,
             "matched_external_estimator_claim": False,
             "formal_preregistration_claim": False,
-            "public_catalog_release": "CLOSED_AT_HF_COMMIT_db110233_WITH_MORPHOLOGY_CONTRACT_245ad7c5",
+            "public_catalog_release": "CATALOG_C_v1.0.244_AT_db110233; CURRENT_DATASET_CONTRACT_2fc392e2; CURRENT_MODEL_CARD_3baeab86; SEMANTIC_RECEIPT_b4baa0bb",
             "doi_backed_paper_source_archive": "OPEN",
         },
     }

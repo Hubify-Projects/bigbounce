@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the v1.0.244 catalog payload bound to the P4 v1.0.252 paper closure.
+"""Build the v1.0.244 catalog payload bound to the P4 v1.0.253 paper closure.
 
 The science-facing Parquet deliberately excludes every raw-pass and reconstructed
 flip-pass score column.  A separate provenance-only quarantine contains every
@@ -14,7 +14,9 @@ import hashlib
 import json
 import os
 import shutil
+import sqlite3
 import sys
+import tempfile
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -29,7 +31,7 @@ from reproduce_p4_primary_null_v1_0_244 import reproduce
 
 ROOT = Path(__file__).resolve().parents[2]
 CATALOG_PAYLOAD_VERSION = "v1.0.244"
-PAPER_VERSION = "v1.0.252"
+PAPER_VERSION = "v1.0.253"
 SCHEMA_PATH = Path(__file__).with_name("apjs_release_schema_v1_0_244.json")
 DATA_DICTIONARY_PATH = Path(__file__).with_name("CATALOG_SCHEMA.md")
 REPRODUCTION_SCRIPT_PATH = Path(__file__).with_name(
@@ -80,6 +82,14 @@ QUARANTINE_COLUMNS = (
     "unsafe_max_bound_excursion", "unsafe_reason_code", "do_not_use_for_science",
 )
 REASON = "RAW_EQ_PIPELINE_PASS_MISMATCH_GT_1E3"
+ALLOWED_CLASSES = ("CW", "CCW", "NOT_SPIRAL")
+SCORE_COLUMNS = ("score_cw_eq", "score_ccw_eq", "score_ns_eq")
+# The three outputs are uncalibrated ranking scores.  They are nevertheless the
+# output of one softmax and therefore have the structural (not probabilistic-
+# calibration) contract that they are finite, bounded, and sum to one.  The
+# released float64 values originated in float32 inference, hence this tolerance.
+SCORE_SIMPLEX_ATOL = 2.0e-6
+SCORE_EQUALITY_ATOL = 1.0e-12
 
 
 class ReleaseError(RuntimeError):
@@ -270,6 +280,7 @@ def validate_release(output_dir: Path, manifest: dict[str, Any] | None = None) -
         raise ReleaseError("primary Parquet row count mismatch")
     if pq.ParquetFile(quarantine).metadata.num_rows != EXPECTED["unsafe_catalog_rows"]:
         raise ReleaseError("quarantine Parquet row count mismatch")
+    primary_semantics = validate_primary_semantics(primary)
     observed = {
         "primary_hc_rows": 0,
         "unsafe_catalog_rows": 0,
@@ -326,10 +337,231 @@ def validate_release(output_dir: Path, manifest: dict[str, Any] | None = None) -
         "counts": payload["counts"],
         "semantic_counts": observed,
         "semantic_gates": gates,
+        "primary_semantics": primary_semantics,
         "primary_raw_score_columns_absent": gates["primary_raw_score_columns_absent"],
         "quarantine_reason_code": REASON,
         "calibrated_probability_claim": False,
     }
+
+
+def validate_primary_semantics(
+    primary: Path,
+    *,
+    batch_size: int = 250_000,
+) -> dict[str, Any]:
+    """Stream every Catalog-C row through the declared machine contract.
+
+    Uniqueness is tracked in a temporary disk-backed SQLite primary-key table,
+    avoiding an 8.5-million-element in-memory Python set.  Scores are validated
+    only as uncalibrated softmax ranking outputs; this function makes no claim
+    that they are calibrated probabilities or likelihood weights.
+    """
+    columns = (
+        "object_id", "ra_deg", "dec_deg", "class_eq", *SCORE_COLUMNS,
+        "score_eq_max", "is_spiral", "primary_hc",
+    )
+    counts = {
+        "rows": 0,
+        "null_object_id": 0,
+        "duplicate_object_id": 0,
+        "null_semantic_value": 0,
+        "coordinate_out_of_range": 0,
+        "class_not_allowed": 0,
+        "score_nonfinite": 0,
+        "score_out_of_bounds": 0,
+        "score_simplex_mismatch": 0,
+        "score_eq_max_mismatch": 0,
+        "class_argmax_mismatch": 0,
+        "is_spiral_mismatch": 0,
+        "primary_hc_mismatch": 0,
+    }
+    class_order = np.asarray(ALLOWED_CLASSES, dtype=object)
+    with tempfile.TemporaryDirectory(prefix="p4-catalog-id-audit-") as directory:
+        database = Path(directory) / "object_ids.sqlite3"
+        with sqlite3.connect(database) as connection:
+            connection.execute("PRAGMA journal_mode=OFF")
+            connection.execute("PRAGMA synchronous=OFF")
+            connection.execute(
+                "CREATE TABLE object_ids (object_id TEXT PRIMARY KEY) WITHOUT ROWID"
+            )
+            parquet = pq.ParquetFile(primary)
+            for batch in parquet.iter_batches(columns=list(columns), batch_size=batch_size):
+                counts["rows"] += batch.num_rows
+                nulls = {
+                    name: batch.column(batch.schema.get_field_index(name)).null_count
+                    for name in columns
+                }
+                counts["null_object_id"] += nulls["object_id"]
+                counts["null_semantic_value"] += sum(
+                    value for name, value in nulls.items() if name != "object_id"
+                )
+
+                object_ids = batch.column(
+                    batch.schema.get_field_index("object_id")
+                ).to_pylist()
+                nonnull_ids = [(value,) for value in object_ids if value is not None]
+                before = connection.total_changes
+                connection.executemany(
+                    "INSERT OR IGNORE INTO object_ids(object_id) VALUES (?)", nonnull_ids
+                )
+                counts["duplicate_object_id"] += len(nonnull_ids) - (
+                    connection.total_changes - before
+                )
+
+                # Substitute values only to keep the vectorized audit running;
+                # nulls remain independently fatal through null_semantic_value.
+                ra = np.asarray(
+                    batch.column(batch.schema.get_field_index("ra_deg")).to_pylist(),
+                    dtype=np.float64,
+                )
+                dec = np.asarray(
+                    batch.column(batch.schema.get_field_index("dec_deg")).to_pylist(),
+                    dtype=np.float64,
+                )
+                classes = np.asarray(
+                    batch.column(batch.schema.get_field_index("class_eq")).to_pylist(),
+                    dtype=object,
+                )
+                scores = np.column_stack([
+                    np.asarray(
+                        batch.column(batch.schema.get_field_index(name)).to_pylist(),
+                        dtype=np.float64,
+                    )
+                    for name in SCORE_COLUMNS
+                ])
+                score_max = np.asarray(
+                    batch.column(batch.schema.get_field_index("score_eq_max")).to_pylist(),
+                    dtype=np.float64,
+                )
+                is_spiral = np.asarray(
+                    batch.column(batch.schema.get_field_index("is_spiral")).to_pylist(),
+                    dtype=object,
+                )
+                primary_hc = np.asarray(
+                    batch.column(batch.schema.get_field_index("primary_hc")).to_pylist(),
+                    dtype=object,
+                )
+
+                coordinate_ok = (
+                    np.isfinite(ra) & np.isfinite(dec)
+                    & (ra >= 0.0) & (ra < 360.0)
+                    & (dec >= -90.0) & (dec <= 90.0)
+                )
+                counts["coordinate_out_of_range"] += int((~coordinate_ok).sum())
+                allowed = np.isin(classes, ALLOWED_CLASSES)
+                counts["class_not_allowed"] += int((~allowed).sum())
+                finite = np.isfinite(scores).all(axis=1) & np.isfinite(score_max)
+                counts["score_nonfinite"] += int((~finite).sum())
+                bounded = (
+                    ((scores >= 0.0) & (scores <= 1.0)).all(axis=1)
+                    & (score_max >= 0.0) & (score_max <= 1.0)
+                )
+                counts["score_out_of_bounds"] += int((finite & ~bounded).sum())
+                simplex = np.isclose(
+                    scores.sum(axis=1), 1.0, rtol=0.0, atol=SCORE_SIMPLEX_ATOL
+                )
+                counts["score_simplex_mismatch"] += int((finite & ~simplex).sum())
+                derived_max = np.max(scores, axis=1)
+                max_matches = np.isclose(
+                    score_max, derived_max, rtol=0.0, atol=SCORE_EQUALITY_ATOL
+                )
+                counts["score_eq_max_mismatch"] += int((finite & ~max_matches).sum())
+
+                # np.argmax selects the first maximum.  The release tie order is
+                # therefore CW, then CCW, then NOT_SPIRAL.
+                derived_class = class_order[np.argmax(scores, axis=1)]
+                counts["class_argmax_mismatch"] += int(
+                    (finite & allowed & (classes != derived_class)).sum()
+                )
+                derived_spiral = np.isin(classes, ("CW", "CCW"))
+                bool_spiral = np.asarray([bool(v) if v is not None else False for v in is_spiral])
+                bool_hc = np.asarray([bool(v) if v is not None else False for v in primary_hc])
+                counts["is_spiral_mismatch"] += int((bool_spiral != derived_spiral).sum())
+                derived_hc = (
+                    derived_spiral & coordinate_ok
+                    & (np.maximum(scores[:, 0], scores[:, 1]) > 0.6)
+                )
+                counts["primary_hc_mismatch"] += int((bool_hc != derived_hc).sum())
+            connection.commit()
+
+    gates = {name: value == 0 for name, value in counts.items() if name != "rows"}
+    if not all(gates.values()):
+        failed = [name for name, passed in gates.items() if not passed]
+        raise ReleaseError(
+            f"primary semantic gates failed: {failed}; counts={counts}"
+        )
+    return {
+        "status": "PASS",
+        "rows_scanned": counts["rows"],
+        "batch_size": batch_size,
+        "uniqueness_backend": "temporary SQLite PRIMARY KEY (disk-backed)",
+        "score_contract": {
+            "calibrated_probability_claim": False,
+            "structural_softmax_simplex": True,
+            "simplex_atol": SCORE_SIMPLEX_ATOL,
+            "argmax_tie_order": list(ALLOWED_CLASSES),
+        },
+        "violation_counts": {name: value for name, value in counts.items() if name != "rows"},
+        "gates": gates,
+    }
+
+
+def write_validation_receipt(
+    output_dir: Path,
+    validation_result: dict[str, Any],
+    receipt_path: Path,
+) -> dict[str, Any]:
+    """Atomically write a portable receipt for one exact validate-only run."""
+    manifest_path = output_dir / "MANIFEST.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    primary_path = output_dir / manifest["products"]["primary"]["filename"]
+    release_schema_path = output_dir / manifest["products"]["schema"]["filename"]
+    validator_path = Path(__file__).resolve()
+    receipt = {
+        "schema": "p4-catalog-c-semantic-validation-receipt/v1",
+        "paper": "P4",
+        "paper_version": PAPER_VERSION,
+        "catalog_payload_version": CATALOG_PAYLOAD_VERSION,
+        "created_at_utc": datetime.now(timezone.utc).isoformat(),
+        "command_mode": "validate-only",
+        "provenance": {
+            "validator": {
+                "path": repo_relative(validator_path),
+                "bytes": validator_path.stat().st_size,
+                "sha256": sha256_file(validator_path),
+            },
+            "validator_schema_source": {
+                "path": repo_relative(SCHEMA_PATH),
+                "bytes": SCHEMA_PATH.stat().st_size,
+                "sha256": sha256_file(SCHEMA_PATH),
+            },
+            "release_schema": {
+                "path": repo_relative(release_schema_path),
+                "bytes": release_schema_path.stat().st_size,
+                "sha256": sha256_file(release_schema_path),
+            },
+            "manifest": {
+                "path": repo_relative(manifest_path),
+                "bytes": manifest_path.stat().st_size,
+                "sha256": sha256_file(manifest_path),
+            },
+            "primary_parquet": {
+                "path": repo_relative(primary_path),
+                "bytes": primary_path.stat().st_size,
+                "sha256": sha256_file(primary_path),
+                "manifest_bytes": manifest["products"]["primary"]["bytes"],
+                "manifest_sha256": manifest["products"]["primary"]["sha256"],
+            },
+        },
+        "validation_result": validation_result,
+    }
+    receipt_path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = receipt_path.with_name(f".{receipt_path.name}.tmp")
+    temporary.write_text(
+        json.dumps(receipt, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+    )
+    os.replace(temporary, receipt_path)
+    return receipt
 
 
 def build_release(
@@ -344,7 +576,7 @@ def build_release(
     if schema.get("catalog_payload_version") != CATALOG_PAYLOAD_VERSION:
         raise ReleaseError("machine schema catalog payload is not pinned to v1.0.244")
     if schema.get("paper_version") != PAPER_VERSION:
-        raise ReleaseError("machine schema paper binding is not pinned to v1.0.252")
+        raise ReleaseError("machine schema paper binding is not pinned to v1.0.253")
     output_dir.mkdir(parents=True, exist_ok=True)
     final_primary = output_dir / schema["primary_product"]["filename"]
     final_quarantine = output_dir / schema["quarantine_product"]["filename"]
@@ -499,10 +731,19 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--null-array", type=Path, default=NULL_PATH)
     parser.add_argument("--source-sha-receipt", type=Path, default=SOURCE_RECEIPT_PATH)
     parser.add_argument("--validate-only", action="store_true")
+    parser.add_argument(
+        "--validation-receipt",
+        type=Path,
+        help="Atomically write a provenance-bound JSON receipt (requires --validate-only).",
+    )
     args = parser.parse_args(argv)
+    if args.validation_receipt is not None and not args.validate_only:
+        parser.error("--validation-receipt requires --validate-only")
     try:
         if args.validate_only:
             result = validate_release(args.output_dir)
+            if args.validation_receipt is not None:
+                write_validation_receipt(args.output_dir, result, args.validation_receipt)
         else:
             result = build_release(
                 args.source,

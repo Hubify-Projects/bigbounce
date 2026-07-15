@@ -93,7 +93,7 @@ class ReleaseContractTests(unittest.TestCase):
 
     def test_machine_schema_calls_scores_uncalibrated_and_keeps_archive_gate_open(self) -> None:
         schema = json.loads(release.SCHEMA_PATH.read_text(encoding="utf-8"))
-        self.assertEqual(schema["paper_version"], "v1.0.252")
+        self.assertEqual(schema["paper_version"], "v1.0.253")
         self.assertEqual(schema["catalog_payload_version"], "v1.0.244")
         self.assertIn("no calibrated label probabilities", schema["scientific_scope"])
         self.assertEqual(schema["release_gates"]["immutable_archive_or_doi"], "OPEN")
@@ -142,6 +142,24 @@ class ReleaseContractTests(unittest.TestCase):
                 self.assertEqual(validation["status"], "PASS")
                 self.assertTrue(validation["primary_raw_score_columns_absent"])
                 self.assertTrue(all(validation["semantic_gates"].values()))
+                validation_receipt_path = tmp_path / "validation-receipt.json"
+                receipt = release.write_validation_receipt(
+                    good, validation, validation_receipt_path
+                )
+                persisted = json.loads(
+                    validation_receipt_path.read_text(encoding="utf-8")
+                )
+                self.assertEqual(persisted, receipt)
+                self.assertEqual(receipt["command_mode"], "validate-only")
+                self.assertEqual(receipt["validation_result"], validation)
+                self.assertEqual(
+                    receipt["provenance"]["primary_parquet"]["sha256"],
+                    manifest["products"]["primary"]["sha256"],
+                )
+                self.assertNotIn(
+                    str(tmp_path),
+                    validation_receipt_path.read_text(encoding="utf-8"),
+                )
                 primary = pq.read_table(good / schema["primary_product"]["filename"])
                 self.assertEqual(primary["raw_flip_qc_unsafe"].to_pylist().count(True), 2)
 
@@ -191,6 +209,48 @@ class ReleaseContractTests(unittest.TestCase):
                 self.assertRaisesRegex(release.ReleaseError, "current source SHA-256 mismatch"),
             ):
                 release.validate_source_identity(source, receipt_path)
+
+    def test_primary_semantic_validator_accepts_declared_contract(self) -> None:
+        primary, _, _ = release.split_batch(fixture_table().to_batches()[0])
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "primary.parquet"
+            pq.write_table(primary, path)
+            result = release.validate_primary_semantics(path, batch_size=2)
+        self.assertEqual(result["status"], "PASS")
+        self.assertEqual(result["rows_scanned"], 4)
+        self.assertFalse(result["score_contract"]["calibrated_probability_claim"])
+        self.assertTrue(result["score_contract"]["structural_softmax_simplex"])
+        self.assertTrue(all(result["gates"].values()))
+
+    def test_primary_semantic_validator_fails_closed_per_invariant(self) -> None:
+        primary, _, _ = release.split_batch(fixture_table().to_batches()[0])
+        base = primary.to_pydict()
+
+        def changed(column: str, row: int, value: object) -> pa.Table:
+            payload = {name: list(values) for name, values in base.items()}
+            payload[column][row] = value
+            return pa.table(payload, schema=primary.schema)
+
+        cases = (
+            ("null_object_id", changed("object_id", 0, None)),
+            ("duplicate_object_id", changed("object_id", 1, base["object_id"][0])),
+            ("coordinate_out_of_range", changed("ra_deg", 0, 360.0)),
+            ("class_not_allowed", changed("class_eq", 0, "UNKNOWN")),
+            ("score_nonfinite", changed("score_cw_eq", 0, float("nan"))),
+            ("score_out_of_bounds", changed("score_cw_eq", 0, 1.1)),
+            ("score_simplex_mismatch", changed("score_cw_eq", 0, 0.7)),
+            ("score_eq_max_mismatch", changed("score_eq_max", 0, 0.7)),
+            ("class_argmax_mismatch", changed("class_eq", 0, "CCW")),
+            ("is_spiral_mismatch", changed("is_spiral", 0, False)),
+            ("primary_hc_mismatch", changed("primary_hc", 0, False)),
+        )
+        with tempfile.TemporaryDirectory() as directory:
+            for index, (gate, table) in enumerate(cases):
+                with self.subTest(gate=gate):
+                    path = Path(directory) / f"negative-{index}.parquet"
+                    pq.write_table(table, path)
+                    with self.assertRaisesRegex(release.ReleaseError, gate):
+                        release.validate_primary_semantics(path, batch_size=2)
 
 
 if __name__ == "__main__":
