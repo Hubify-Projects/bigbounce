@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail-closed source-to-claim audit for every new P4 v1.0.247 number."""
+"""Fail-closed source-to-claim audit for every new P4 v1.0.248 number."""
 
 from __future__ import annotations
 
@@ -106,9 +106,9 @@ def audit() -> dict[str, Any]:
             and public_release["published"] is True
             and public_release["repo_id"] == "bamfai/galaxy-chirality-catalog"
             and public_release["path_prefix"] == "apjs-release/v1.0.244"
-            and public_release["data_commit"] == "58ecc795a0aa8dda566a28a5adda76a47f3c8942"
-            and public_release["provider_receipt_commit"] == "5a322faaed865ae35dae181fc0ff3560ee56383e"
-            and public_release["public_manifest_sha256"] == "17ba8a65d36d80cc478875667332dbb47fdc407197985959e523cdd1a30d1ef3"
+            and public_release["data_commit"] == "db11023306ab4eed1d7727670bd78e127b7af17a"
+            and public_release["provider_receipt_commit"] == "e535b26247c892971963be6029435544cf29d19b"
+            and public_release["public_manifest_sha256"] == "c2e5404adcdcd2c395c03b0cc50e0e815fa9653643407dc0ac91e5afc35ed848"
         ),
     }
     expected_cells = [
@@ -133,7 +133,7 @@ def audit() -> dict[str, Any]:
     schema = load(P4 / "apjs_release_schema_v1_0_244.json")
     gates.update(
         {
-            "paper_version": r"\newcommand{\paperVersion}{v1.0.247}" in tex,
+            "paper_version": r"\newcommand{\paperVersion}{v1.0.248}" in tex,
             "paper_prints_catalog_and_hc_counts": "249,066 unsafe rows catalog-wide" in tex and "Exactly 59,515" in tex,
             "paper_prints_primary_null": "population standard deviation are $0.00348994$ and $0.00156969$" in tex and "$p=(2246+1)/(10000+1)=0.22468$" in tex,
             "paper_prints_all_panel_cells": all(token in tex for token in ("(+0.536,0.270)", "(+0.794,0.203)", "(-0.141,0.505)")),
@@ -141,7 +141,7 @@ def audit() -> dict[str, Any]:
             "paper_uncertainty_scales_one_over_g": r"\sigma(A_{\rm phys})=\sigma(A_{\rm obs})/g" in tex,
             "paper_doi_gate_open": "A DOI-backed immutable archive of the paper" in tex,
             "paper_no_false_public_qc_claim": "In the public HuggingFace Parquet release" not in tex,
-            "paper_public_release_is_commit_pinned": all(token in tex for token in ("We publish an 8,474,531-object observed-label catalog release", "58ecc795a0aa8dda566a28a5adda76a47f3c8942", "5a322faaed865ae35dae181fc0ff3560ee56383e")),
+            "paper_public_release_is_commit_pinned": all(token in tex for token in ("We publish an 8,474,531-object observed-label catalog release", "db11023306ab4eed1d7727670bd78e127b7af17a", "e535b26247c892971963be6029435544cf29d19b")),
             "paper_distinguishes_selected_and_supported_n": all(token in tex for token in (r"N_{\rm selected}=949{,}584", r"N_{\rm support}=947{,}326", "2,258 excluded by the support rule")),
             "paper_has_full_spatial_confusion_transfer": all(token in tex for token in (r"q_{\rm obs}(\bm{x})", r"q_{\rm obs}=q+e(1-2q)", "0.00142", "0.00331")),
             "paper_no_stale_primary_055_anchor": all(token not in tex for token in ("dipole collapses to $0.55\\sigmaunit$", "dipole at $0.55\\sigmaunit$ anchors", "dipole from $2.31\\sigmaunit$ to $0.55\\sigmaunit$")),
@@ -154,9 +154,9 @@ def audit() -> dict[str, Any]:
     )
     failed = [name for name, passed in gates.items() if not passed]
     result = {
-        "schema": "p4-v1.0.247-source-to-claim-audit/v1",
+        "schema": "p4-v1.0.248-source-to-claim-audit/v1",
         "paper": "P4",
-        "paper_version": "v1.0.247",
+        "paper_version": "v1.0.248",
         "status": "PASS" if not failed else "FAIL",
         "gates": gates,
         "failed_gates": failed,
@@ -169,7 +169,7 @@ def audit() -> dict[str, Any]:
             "physical_or_primordial_bound": False,
             "matched_external_estimator_claim": False,
             "formal_preregistration_claim": False,
-            "public_catalog_release": "CLOSED_AT_HF_COMMIT_58ecc795",
+            "public_catalog_release": "CLOSED_AT_HF_COMMIT_db110233",
             "doi_backed_paper_source_archive": "OPEN",
         },
     }

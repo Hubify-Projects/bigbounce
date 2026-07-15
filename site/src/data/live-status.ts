@@ -147,12 +147,12 @@ const historicalLiveStatus: LiveStatus = {
 // summary reflect the canonical six-paper board rather than an older review wave.
 export const liveStatus: LiveStatus = {
   ...historicalLiveStatus,
-  lastUpdatedISO: "2026-07-15T11:14:00Z",
-  lastUpdatedDisplay: "July 15, 2026 · 4:14 AM PT",
+  lastUpdatedISO: "2026-07-15T12:03:13Z",
+  lastUpdatedDisplay: "July 15, 2026 · 5:03 AM PT",
   headline:
-    "All six manuscripts remain in revision. P4 v1.0.247 now has a real commit-pinned public catalog bundle and an exact supported-N GZ1 rerun; P1B's corrected production run remains blocked on compute funding.",
+    "All six manuscripts remain in revision. P4 v1.0.248 corrects the public null bundle and removes diagnostics whose support did not match the declared primary sample; P1B's corrected production run remains blocked on compute funding.",
   summary:
-    "P1B's repaired CAMB spectrum generator and PRIMAT provenance checks pass, but no corrected 500-MC artifact exists because the RunPod balance is negative. P4 v1.0.247 closes the exact catalog-publication and GZ1-supported-N gates: HF data commit 58ecc795 and provider receipt 5a322faa are public, and 4,963 of 46,017 GZ1 matches enter the 394-pixel support. Training realization, spatial covariance, DOI-backed paper archive, and exact re-review remain open. Readiness holds at 56/80; no human or journal acceptance is claimed.",
+    "P1B's repaired CAMB spectrum generator and PRIMAT provenance checks pass, but no corrected 500-MC artifact exists because the RunPod balance is negative. P4 v1.0.248 truth-audits a MAJOR/MINOR/MINOR exact-v1.0.247 board: the primary HC result remains z=0.7053, while a wrong-role public null file was corrected and two mismatched-support diagnostics were excluded from the FS-C synthesis. Corrected HF commits db110233/e535b262 are public. Training realization, spatial covariance, DOI-backed paper archive, exact v1.0.248 re-review, and human review remain open. Readiness holds at 56/80; no human or journal acceptance is claimed.",
   papers: historicalLiveStatus.papers.map((paper) => {
     if (paper.slug === "paper-1b") {
       return {
@@ -165,16 +165,16 @@ export const liveStatus: LiveStatus = {
     if (paper.slug === "paper-4") {
       return {
         ...paper,
-        version: "v1.0.247",
+        version: "v1.0.248",
         pendingWork:
-          "The exact safe/quarantine/null bundle is public at immutable HF commits and the GZ1 rerun now records 4,963 supported galaxies from 46,017 matches. Exact training realization, covariance-aware spatial confusion propagation, DOI-backed paper/source archive, exact v1.0.247 confirmation, and human review remain open. Readiness holds 80.",
+          "The corrected safe/quarantine/null bundle is public at immutable HF commits, and the six remaining synthesis diagnostics now use the declared FS-C support. Exact training realization, covariance-aware spatial confusion propagation, DOI-backed paper/source archive, exact v1.0.248 confirmation, and human review remain open. Readiness holds 80.",
       };
     }
     return paper;
   }),
   currentlyRunning: [
     "P1B corrected production is queued but blocked by a negative RunPod balance; no paid pod launch is being attempted",
-    "P4 v1.0.247 has passed source-to-claim, compile, link, overflow, and all-page visual audits; release synchronization is completing",
+    "P4 v1.0.248 has passed source-to-claim, compile, link, overflow, and all-page visual audits; exact-PDF confirmation is next",
   ],
   cronStatus:
     "No review wave is running. The anti-loop stop rule is active: verified defects are being closed before any exact-artifact confirmation rerun.",

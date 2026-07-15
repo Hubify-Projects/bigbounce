@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Minimally reproduce the P4 v1.0.245 observed-label primary null.
+"""Minimally reproduce the P4 v1.0.248 observed-label primary null.
 
 This script consumes only the science-facing release Parquet and the retained
 10,000-realization fixed-occupancy galaxy-label-shuffle null array.  The former
@@ -98,7 +98,7 @@ def reproduce(
 
     result = {
         "schema": "p4-primary-null-reproduction/v1",
-        "paper_version": "v1.0.245",
+        "paper_version": "v1.0.248",
         "status": "PASS",
         "scope": "observed equivariant hard labels; descriptive isotropy null only",
         "support": "HC_REALSPACE_INCLUSIVE",

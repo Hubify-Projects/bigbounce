@@ -36,6 +36,8 @@ REQUIRED_PRODUCTS = frozenset(
         "p4_catalog_primary_safe_v1.0.244.parquet",
         "p4_catalog_raw_flip_quarantine_v1.0.244.parquet",
         "primary_null_amps_10000.npy",
+        "primary_label_shuffle_amps_10000.npy",
+        "pixel_permutation_amps_10000.npy",
         "MANIFEST.json",
         "VALIDATION.json",
         "PRIMARY_REPRODUCTION.json",

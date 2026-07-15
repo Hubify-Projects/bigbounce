@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the v1.0.244 catalog payload bound to the P4 v1.0.245 paper closure.
+"""Build the v1.0.244 catalog payload bound to the P4 v1.0.248 paper closure.
 
 The science-facing Parquet deliberately excludes every raw-pass and reconstructed
 flip-pass score column.  A separate provenance-only quarantine contains every
@@ -23,10 +23,13 @@ import numpy as np
 import pyarrow as pa
 import pyarrow.parquet as pq
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from reproduce_p4_primary_null_v1_0_244 import reproduce
+
 
 ROOT = Path(__file__).resolve().parents[2]
 CATALOG_PAYLOAD_VERSION = "v1.0.244"
-PAPER_VERSION = "v1.0.245"
+PAPER_VERSION = "v1.0.248"
 SCHEMA_PATH = Path(__file__).with_name("apjs_release_schema_v1_0_244.json")
 DATA_DICTIONARY_PATH = Path(__file__).with_name("CATALOG_SCHEMA.md")
 REPRODUCTION_SCRIPT_PATH = Path(__file__).with_name(
@@ -341,7 +344,7 @@ def build_release(
     if schema.get("catalog_payload_version") != CATALOG_PAYLOAD_VERSION:
         raise ReleaseError("machine schema catalog payload is not pinned to v1.0.244")
     if schema.get("paper_version") != PAPER_VERSION:
-        raise ReleaseError("machine schema paper binding is not pinned to v1.0.245")
+        raise ReleaseError("machine schema paper binding is not pinned to v1.0.248")
     output_dir.mkdir(parents=True, exist_ok=True)
     final_primary = output_dir / schema["primary_product"]["filename"]
     final_quarantine = output_dir / schema["quarantine_product"]["filename"]
@@ -391,9 +394,36 @@ def build_release(
     shutil.copy2(schema_path, schema_copy)
     null_copy = output_dir / "primary_label_shuffle_amps_10000.npy"
     shutil.copy2(null_path, null_copy)
+    # Retain the original public filename as a backward-compatible alias, but
+    # bind it to the declared fixed-occupancy primary null.  The first public
+    # upload accidentally placed the pixel-permutation diagnostic at this
+    # ambiguous path; keeping the alias with the correct bytes makes old links
+    # safe while the explicit filenames below remove the ambiguity.
+    legacy_null_alias = output_dir / "primary_null_amps_10000.npy"
+    shutil.copy2(null_path, legacy_null_alias)
     pixel_null_copy = output_dir / "pixel_permutation_amps_10000.npy"
     if PIXEL_NULL_PATH.exists():
         shutil.copy2(PIXEL_NULL_PATH, pixel_null_copy)
+    if EXPECTED["catalog_rows"] == 8_474_531:
+        reproduction_result = reproduce(
+            final_primary,
+            null_copy,
+            pixel_null_copy if pixel_null_copy.exists() else None,
+            enforce_expected=True,
+        )
+    else:
+        # Unit fixtures exercise release splitting with too few supported sky
+        # pixels for a non-singular dipole fit.
+        reproduction_result = {
+            "schema": "p4-primary-null-reproduction/v1",
+            "paper_version": PAPER_VERSION,
+            "status": "NOT_EVALUATED_TEST_FIXTURE",
+        }
+    reproduction_result_path = output_dir / "PRIMARY_REPRODUCTION.json"
+    reproduction_result_path.write_text(
+        json.dumps(reproduction_result, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
     dictionary_copy = output_dir / "CATALOG_SCHEMA.md"
     shutil.copy2(DATA_DICTIONARY_PATH, dictionary_copy)
     reproduction_copy = output_dir / REPRODUCTION_SCRIPT_PATH.name
@@ -409,10 +439,12 @@ def build_release(
         ("quarantine", final_quarantine),
         ("schema", schema_copy),
         ("primary_label_shuffle_null", null_copy),
+        ("primary_null_legacy_alias", legacy_null_alias),
         ("data_dictionary", dictionary_copy),
         ("reproduction_script", reproduction_copy),
         ("claim_audit_script", claim_audit_copy),
         ("primary_null_generator", null_generator_copy),
+        ("primary_reproduction_result", reproduction_result_path),
     ):
         products[role] = {
             "filename": path.name,

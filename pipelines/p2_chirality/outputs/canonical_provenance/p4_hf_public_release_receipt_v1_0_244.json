@@ -1,35 +1,40 @@
 {
-  "data_commit": "58ecc795a0aa8dda566a28a5adda76a47f3c8942",
+  "data_commit": "db11023306ab4eed1d7727670bd78e127b7af17a",
   "files": [
     {
-      "bytes": 5205,
+      "bytes": 5710,
       "path": "CATALOG_SCHEMA.md",
-      "sha256": "88ec41873ddfb8fdf41ea3ff335c70e5104377b0c0a08840a77e4a0097d71b73"
+      "sha256": "c0b47b280d4d88d1227cdcea995200ae8586b5b8014256a3dfbd1f256ec09f8a"
     },
     {
-      "bytes": 3043,
+      "bytes": 3998,
       "path": "MANIFEST.json",
-      "sha256": "17ba8a65d36d80cc478875667332dbb47fdc407197985959e523cdd1a30d1ef3"
+      "sha256": "c2e5404adcdcd2c395c03b0cc50e0e815fa9653643407dc0ac91e5afc35ed848"
     },
     {
-      "bytes": 1449,
+      "bytes": 1909,
       "path": "PRIMARY_REPRODUCTION.json",
-      "sha256": "a1df09ac77c98f17ec76de752b1612d98aa2efff1e8ff372979eddb733dfcde9"
+      "sha256": "39e97174a70fb87bbf442cdadc518dbbe414ae1b0c0f59af45b4b64469357d51"
     },
     {
-      "bytes": 4639,
+      "bytes": 4680,
       "path": "SCHEMA.json",
-      "sha256": "e432f944768ad1e1504f7548991502644b59346eb0a02ecd31970a1861adeb98"
+      "sha256": "e59c3a8a3447600c514dbc4870a0568494dfe9f171d7e90a0eace04f08700ea0"
     },
     {
-      "bytes": 678,
+      "bytes": 1084,
       "path": "SHA256SUMS",
-      "sha256": "0027377d24a719e1f2402c45ee74aea967f6e03270b62d85d9bbfa633a8f0b0b"
+      "sha256": "6eb6a8fd1cb84cf73eb2c6c9a9d3e64276fb1ed7f45b0925ee18bdc6fd89dfd4"
     },
     {
       "bytes": 1013,
       "path": "VALIDATION.json",
       "sha256": "62714541b532cc9b80f03577d1e009e531fd8bbb436c6e921c903f395e9f163b"
+    },
+    {
+      "bytes": 7291,
+      "path": "generate_p4_primary_label_shuffle_v1_0_244.py",
+      "sha256": "d72488d11479a5f17dd85ab6a995777ec85da5204577038e5bedfdd85314d33f"
     },
     {
       "bytes": 386712994,
@@ -43,32 +48,42 @@
     },
     {
       "bytes": 80128,
-      "path": "primary_null_amps_10000.npy",
+      "path": "pixel_permutation_amps_10000.npy",
       "sha256": "62bb1c019231974c2a7ed5d5e43ceb77a5596e4675c82d7ff1c899e029a36492"
     },
     {
-      "bytes": 6517,
-      "path": "reproduce_p4_primary_null_v1_0_244.py",
-      "sha256": "218ccc263c3c3f68e5f7560857b3d58408e652d1c78c24518573120170f8b269"
+      "bytes": 80128,
+      "path": "primary_label_shuffle_amps_10000.npy",
+      "sha256": "f6360f4bec22669097cee3e2fad8b176291d3ecbfbfbb9a9290d0bce3d5152c0"
     },
     {
-      "bytes": 7693,
+      "bytes": 80128,
+      "path": "primary_null_amps_10000.npy",
+      "sha256": "f6360f4bec22669097cee3e2fad8b176291d3ecbfbfbb9a9290d0bce3d5152c0"
+    },
+    {
+      "bytes": 8333,
+      "path": "reproduce_p4_primary_null_v1_0_244.py",
+      "sha256": "784f89ed89ed70f676666ad7eed3b12263a15564faa3dd1c0f802cc787246baa"
+    },
+    {
+      "bytes": 11523,
       "path": "validate_p4_v1_0_244_claims.py",
-      "sha256": "551efdbd16c365301492766e28fae0e27c44d1d1f2000688b2bbbb2ae7a10399"
+      "sha256": "0849887ad00bc790db2f7d142707e615a520fdfb337ea91ed5a0dac83bbdb7c2"
     }
   ],
   "paper": "P4",
   "path_prefix": "apjs-release/v1.0.244",
-  "provider_receipt_commit": "5a322faaed865ae35dae181fc0ff3560ee56383e",
-  "public_manifest_sha256": "17ba8a65d36d80cc478875667332dbb47fdc407197985959e523cdd1a30d1ef3",
+  "provider_receipt_commit": "e535b26247c892971963be6029435544cf29d19b",
+  "public_manifest_sha256": "c2e5404adcdcd2c395c03b0cc50e0e815fa9653643407dc0ac91e5afc35ed848",
   "published": true,
-  "published_at_utc": "2026-07-15T11:13:17.417927+00:00",
+  "published_at_utc": "2026-07-15T11:54:46.500928+00:00",
   "release": "v1.0.244",
   "repo_id": "bamfai/galaxy-chirality-catalog",
   "repo_type": "dataset",
   "schema": "p4-hf-provider-receipt/v1",
-  "source_manifest_sha256": "9d2eb94eda21080d5dcc2310e81bbec0ff473866e3f03b19e77e941206404cd1",
+  "source_manifest_sha256": "04e841bb6a9dbfea9cf4f6f932a0ccff6364ebd217cdf76fbef1847f87010beb",
   "status": "published",
   "verification": "remote paths and byte sizes matched",
-  "verification_revision": "58ecc795a0aa8dda566a28a5adda76a47f3c8942"
+  "verification_revision": "db11023306ab4eed1d7727670bd78e127b7af17a"
 }

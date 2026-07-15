@@ -28,7 +28,9 @@ def make_release(root: Path) -> Path:
     payloads = {
         "p4_catalog_primary_safe_v1.0.244.parquet": b"safe-catalog",
         "p4_catalog_raw_flip_quarantine_v1.0.244.parquet": b"quarantine",
-        "primary_null_amps_10000.npy": b"null-array",
+        "primary_null_amps_10000.npy": b"primary-null-array",
+        "primary_label_shuffle_amps_10000.npy": b"primary-null-array",
+        "pixel_permutation_amps_10000.npy": b"pixel-permutation-array",
         "SCHEMA.json": b'{"schema":"test"}\n',
         "CATALOG_SCHEMA.md": b"# schema\n",
         "reproduce_p4_primary_null_v1_0_244.py": b"print('ok')\n",

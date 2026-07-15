@@ -57,6 +57,27 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p4-v10248-exact-board-truth-audit-2026-07-15",
+    dateISO: "2026-07-15",
+    timePT: "early morning",
+    kind: "closure-wave",
+    title: "P4 v1.0.248 — exact-board truth audit corrected the public null and support claims",
+    papers: ["P4"],
+    summary:
+      "The exact v1.0.247 board returned Grok MINOR, Gemini MINOR, and ChatGPT-subscription Codex MAJOR. Truth audit found a wrong-role public null file plus two diagnostics generated on masks different from FS-C. v1.0.248 republishes the corrected bundle and excludes the mismatched-support diagnostics; the HC z=0.7053 primary null is unchanged. Readiness holds at 80 pending v1.0.248 confirmation, DOI, training replay, spatial covariance, and human review.",
+    keyTakeaways: [
+      "Corrected HF data commit db110233; provider receipt e535b262; primary-null SHA f6360f4b",
+      "WLS/bootstrap and +3.80σ density-null are explicitly excluded from the FS-C synthesis because their generators used broader latitude masks",
+      "v1.0.248 PDF: 26 pages, SHA-256 1b1e2497; no automated or human ACCEPT is claimed",
+      "Codex used ChatGPT subscription only; OpenAI API and Anthropic were not used",
+    ],
+    links: [
+      { label: "Exact v1.0.247 board and truth audit", href: `${PR}/INT_v3/ROUND_2026-07-15-P4-v1.0.247-EXACTPDF-a4d91511-APJS-NONANTHROPIC-CONFIRM/P4_v1.0.247_truth_audit.md` },
+      { label: "Corrected public bundle", href: "https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog/tree/db11023306ab4eed1d7727670bd78e127b7af17a/apjs-release/v1.0.244" },
+      { label: "P4 canonical status", href: `${GH}/project-context/SSOT/paper-4/status.md` },
+    ],
+  },
+  {
     id: "p4-v10247-public-release-gz1-support-2026-07-15",
     dateISO: "2026-07-15",
     timePT: "early morning",
