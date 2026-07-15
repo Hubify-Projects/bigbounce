@@ -57,6 +57,28 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p1b-v109-p4-v10245-bounded-closures-2026-07-15",
+    dateISO: "2026-07-15",
+    timePT: "early morning",
+    kind: "closure-wave",
+    title: "P1B v1B.0.109 + P4 v1.0.245 — bounded closure candidates; confirmation pending",
+    papers: ["P1B", "P4"],
+    summary:
+      "P1B now conditions the spectator-ALP prior-predictive accounting on its physical spectator requirement. P4 promotes the fixed-occupancy galaxy-label shuffle to the primary HC real-space null (z=0.7053169638, p=0.2246775322) and retains the old pixel permutation only as robustness (z=0.5491201934, p=0.2651734827). Both PDFs passed their bounded verification, but exact v1B.0.109/v1.0.245 confirmation reviews remain pending. Readiness holds at 56/80; no automated ACCEPT or human acceptance is claimed.",
+    keyTakeaways: [
+      "P1B v1B.0.109: 20 pages, SHA-256 36b8fc984b5be164f5ece1e2f0c3f661dfb49c9f99faa76e2b050e2bd0674a78",
+      "P4 v1.0.245: 26 pages, SHA-256 e37d0af72c9d132af6324ddfa80c71d7d78bc14a2f153a7ca7b9a156cc4a2dca",
+      "P4 primary label shuffle z=0.7053169638, p=0.2246775322; pixel permutation robustness z=0.5491201934, p=0.2651734827",
+      "Immutable tags/archives/DOIs, exact confirmation, human review, and venue gates remain open",
+    ],
+    links: [
+      { label: "P1B manuscript", href: `${GH}/arxiv/paper1b_mcmc_companion.tex` },
+      { label: "P4 manuscript", href: `${GH}/pipelines/p2_chirality/chirality_catalog_paper.tex` },
+      { label: "P1B canonical status", href: `${GH}/project-context/SSOT/paper-1/status.md` },
+      { label: "P4 canonical status", href: `${GH}/project-context/SSOT/paper-4/status.md` },
+    ],
+  },
+  {
     id: "p4-v10244-bounded-release-transform-2026-07-14",
     dateISO: "2026-07-14",
     timePT: "afternoon",

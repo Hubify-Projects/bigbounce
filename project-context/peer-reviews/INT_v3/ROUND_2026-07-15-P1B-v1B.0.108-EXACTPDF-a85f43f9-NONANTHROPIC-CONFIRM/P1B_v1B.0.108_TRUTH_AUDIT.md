@@ -200,31 +200,43 @@ spectator-safe inference requires `Omega_a < 0.01` (`:2439-2452`). Thus the
 published percentages are correct for the unrestricted fixed-background ALP
 prior, but they are not spectator-conditioned accommodation fractions.
 
-A read-only deterministic audit diagnostic propagated 10,000 seed-1234 draws
-per arm through the same DOP853 equations while also evaluating the committed
-today-energy formula. The fast/reference cross-check over 20 random draws gave
-maximum discrepancies `2.54e-8 deg` in `beta` and `1.05e-6` in `Omega_a`.
-Results were:
+A retained deterministic calculation has now propagated 100,000 seed-1234
+draws per arm through the same committed fixed-background DOP853 equations and
+evaluated the committed today-energy formula. It produced 100,000 valid
+trajectories and zero failed solves. The independent 40-point comparison to
+`alp_ode.compute_alp_birefringence` gave maximum discrepancies `1.524e-8 deg`
+in `beta` and `2.782e-6` in `Omega_a`, with zero spectator-classification
+mismatches. Results are:
 
-- broad `C_agamma ~ U[4,60]`: unconditional 1-sigma fraction 5.73%;
-  `Omega_a<0.01` prior fraction 35.65%; joint band-and-spectator fraction 0.68%;
-  conditional band fraction 1.907% (68/3,565; binomial SE 0.229 percentage
-  points);
-- fixed `C_agamma=8`: unconditional 1-sigma fraction 11.80%;
-  `Omega_a<0.01` prior fraction 35.65%; joint and conditional band fractions
-  0/10,000 and 0/3,565 in this diagnostic (the zero is not asserted as an exact
-  population probability).
+- both arms: `34,947/100,000` draws satisfy `Omega_a<0.01`, or
+  `34.947% +/- 0.151` percentage points;
+- broad `C_agamma ~ U[4,60]`: unrestricted 1-sigma fraction `6.137%`
+  (`6,137/100,000`), joint band-and-spectator fraction `0.863%`, and
+  spectator-conditioned band fraction `2.469%` (`863/34,947`; binomial SE
+  `0.083` percentage points; Wilson 95% interval `2.312%--2.637%`);
+- fixed `C_agamma=8`: unrestricted 1-sigma fraction `11.597%`
+  (`11,597/100,000`), with `0/34,947` spectator-safe trajectories in band;
+  the zero is accompanied by a Wilson 95% upper bound of `0.011%` and is not
+  asserted as an exact population probability.
 
-The 10,000-draw values are an audit diagnostic, not a replacement publication
-artifact; their unconditional values agree with the committed 100,000-draw
-values at Monte Carlo scale. They establish that spectator conditioning changes
-the scientific interpretation materially. Closure requires either (a) rename
-the reported values everywhere as **unrestricted fixed-background ALP**
-prior-predictive fractions and never use them to characterize the spectator
-model, or (b) run and archive the full pre-specified 100,000-draw
-spectator-conditioned calculation (and, ultimately, a self-consistent
-background for draws outside the spectator regime). This is the board's only
-new MAJOR scientific-interpretation finding.
+The retained result exactly reproduces the committed unrestricted counts and
+shows that spectator conditioning changes the interpretation materially. The
+generator, result, and execution receipt are
+`reproducibility/cosmology/alp_spectator_conditioned_prior_predictive.py`,
+`reproducibility/cosmology/alp_spectator_conditioned_prior_predictive_result.json`,
+and
+`reproducibility/cosmology/alp_spectator_conditioned_prior_predictive_receipt.json`.
+The result SHA-256 is
+`4caad79ef53a7453f354cee1c5c7880025c166223b81f5c880fc227e396e59be`;
+the receipt also binds generator SHA-256
+`ce4795e4770b2d443113606a27e5480c5f9df44b5f53feaf6df10123d2fb4ade`
+and equation-source SHA-256
+`7ca8a746ff2c8ad872eff46aff05c306e3ae0f53f51063743876a85f33c6a02e`.
+The manuscript closure distinguishes unrestricted fixed-background fractions
+from spectator-conditioned prior frequencies and explicitly states that
+neither is evidence, a posterior probability, or a physical prior cost. This
+closes the numerical/interpretive MAJOR in the working source; it does not
+retroactively change the reviewed v1B.0.108 exact PDF.
 
 ### Codex 3 — NaMaster recovery grid
 
@@ -281,6 +293,75 @@ Acceptance requires an immutable public release binding source, PDF, code,
 manifest, and LFS payload identifiers. Closure is release engineering, not a
 manuscript-number correction.
 
+## Working-source claim-sync closure
+
+The quantitative old-to-new claim map applied to
+`arxiv/paper1b_mcmc_companion.tex` is:
+
+- `11.597%` fixed and `6.137%` broad: numerical values unchanged; label changed
+  from potentially generic accommodation fractions to **unrestricted
+  fixed-background ALP prior-predictive fractions**;
+- no prior spectator-conditioned publication value -> `0/34,947` fixed
+  (Wilson 95% upper `0.011%`) and `863/34,947 = 2.469% +/- 0.083` percentage
+  points broad, with explicit no-evidence/no-posterior/no-prior-cost language;
+- NaMaster `[-2,+2] deg` -> executed `[-1,+1] deg`, 2,001 points at
+  `0.001 deg`;
+- S8 `[0.70,0.90]`, nominal `1e-4` -> executed `[0.70,0.92]`, 4,001 points,
+  exact spacing `5.5e-5`;
+- `theta_i = 1.32 +/- 0.41` -> named weighted median/16--84 summary
+  `1.317^{+0.439}_{-0.369}`;
+- mass median approximately `36 H0` -> weighted median `37.2 H0`;
+- forecast that full-EB use would mainly change width/tails and not move
+  medians outside 16--84 -> no directional/size forecast without the full
+  joint-EB refit.
+
+Targeted re-grep of the active P1B source finds zero remaining old grid,
+theta-summary, or `36 H0` strings. The unrestricted `11.6%` / `6.1%` strings
+remain intentionally because the counts are exactly reproduced, and their
+active occurrences are now qualified. Disabled historical material inside
+`comment` environments is not publication text. The related
+`arxiv/paper1_unified.tex` still contains pre-closure copies; it is recorded as
+a deferred dependent artifact rather than edited in this P1B-only lane to
+avoid overlapping the unified-paper work. A prior exact-review `frozen/`
+source snapshot also retains the reviewed text by design and must not be
+rewritten. No matching current HTML/TSX/Python claim copy was found. Per the
+lane instruction, SSOT and site were not edited before a final versioned
+exact-PDF review commit.
+
+### v1B.0.109 closure-build verification
+
+The working closure source was patch-bumped to `v1B.0.109` with visible
+timestamp `July 15, 2026, 02:53 PT`; the P1B row of `version.json` matches.
+Because `latexmk`/`pdflatex` are unavailable on this shell, the installed
+Tectonic engine compiled the canonical PDF with retained logs/intermediates
+and two explicit reruns. Verification found:
+
+- canonical PDF SHA-256
+  `36b8fc984b5be164f5ece1e2f0c3f661dfb49c9f99faa76e2b050e2bd0674a78`,
+  714,149 bytes, 20 pages, mode `0644`;
+- zero LaTeX errors, undefined references/citations, overfull hboxes, or fatal
+  engine errors; only pre-existing underfull-box/BibTeX metadata warnings;
+- `pypdf` page 1 contains both `v1B.0.109` and
+  `July 15, 2026, 02:53 PT`;
+- all 20 pages rendered at 110 DPI and passed visual inspection for clipping,
+  gutter collision, overlap, missing floats, and malformed title/date layout;
+- 65 unique PDF URL annotations and zero broken local BigBounce file/directory
+  mappings. The audit corrected one pre-existing directory URL from a
+  file-style `/blob/` target to `/tree/`; the post-fix recompile was
+  pixel-identical on all 20 rendered pages;
+- five generator regression checks pass, including fast/reference agreement,
+  separation of unrestricted/joint/conditioned estimands, a finite Wilson
+  upper limit for zero observed events, deterministic draw ordering, and
+  portable `0644` atomic JSON output;
+- the regenerated result is byte-identical to the first retained run; result,
+  generator, and equation-source hashes match the regenerated receipt, and
+  both result/receipt files are mode `0644`.
+
+This establishes a compile- and layout-clean v1B.0.109 closure candidate. It
+does not satisfy the still-open immutable tag/DOI gate or decide the standalone
+JCAP venue-fit question, and it has not yet been mirrored or synced to
+SSOT/site.
+
 ## Complete three-leg board disposition
 
 - Grok: **ACCEPT**, with no surviving new correction after audit.
@@ -293,6 +374,8 @@ manuscript-number correction.
   one venue judgment, and one immutable-release gate.
 
 The limited stock-CAMB and exact-window NaMaster numerical results remain
-supported. P1B v1B.0.108 is not yet acceptance-ready: close the one MAJOR and
-four MINOR source issues, then build the immutable release; standalone JCAP fit
-still requires a human/editorial decision.
+supported. The working source now closes the one MAJOR and four MINOR content
+issues identified by this board, subject to compilation and a new exact-PDF
+confirmation review. The reviewed P1B v1B.0.108 PDF itself remains not
+acceptance-ready: an immutable release is still required, and standalone JCAP
+fit still requires a human/editorial decision.

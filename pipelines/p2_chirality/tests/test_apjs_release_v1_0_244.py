@@ -93,6 +93,8 @@ class ReleaseContractTests(unittest.TestCase):
 
     def test_machine_schema_calls_scores_uncalibrated_and_keeps_archive_gate_open(self) -> None:
         schema = json.loads(release.SCHEMA_PATH.read_text(encoding="utf-8"))
+        self.assertEqual(schema["paper_version"], "v1.0.245")
+        self.assertEqual(schema["catalog_payload_version"], "v1.0.244")
         self.assertIn("no calibrated label probabilities", schema["scientific_scope"])
         self.assertEqual(schema["release_gates"]["immutable_archive_or_doi"], "OPEN")
         for column in schema["quarantine_product"]["columns"]:

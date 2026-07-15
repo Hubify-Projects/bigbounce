@@ -15,17 +15,17 @@ the input catalog and the class column differ):
   3. Pixelize to HEALPix NSIDE = 64 (49,152 pixels, 0.92 deg^2 each);
      retain pixels with N_spiral >= 10 (inclusive, matching the paper contract).
   4. Fit dipole via healpy.fit_dipole on the per-pixel CW asymmetry.
-  5. Monte Carlo null: 10,000 shuffled realizations of the per-pixel labels,
-     with the exact array retained for rank and moment reproducibility.
+  5. Monte Carlo null: 10,000 fixed-occupancy galaxy-label randomizations,
+     conditioning on support-pixel occupancies and the support-sample CW total.
   6. Angular power spectrum C_ell for ell = 1..5, reported as excess
      over the shot-noise floor.
-  7. Save the primary JSON and exact 10,000-element pixel-permutation null
+  7. Save the primary JSON and exact 10,000-element label-randomization null
      array to `outputs/dipole/catalog_c_summary.json` and
-     `outputs/canonical_provenance/c12_queue2_null_amps_10k.npy`.
+     `outputs/canonical_provenance/p4_primary_hc_label_shuffle_10k.npy`.
 
 Expected result:
   - dipole amplitude ~ 10x smaller than Catalog A (raw)
-  - significance = +0.549 sigma; one-sided upper-tail rank p = 0.26517
+  - significance = +0.705 sigma; one-sided upper-tail rank p = 0.22468
   - consistent with equivariant-TTA residual bias ~ 0.005% per pixel,
     far below the ~1% classifier CW bias that produced Catalog A's
     2.31-sigma pre-TTA signal.
@@ -64,6 +64,10 @@ DATASET_SHA256 = "e8525ba5c98576f6361580e4a0aa7a86929ccc9f79b1423808774cfaaf3135
 DATASET_BYTES = 952_115_239
 NULL_ARTIFACT = (
     "pipelines/p2_chirality/outputs/canonical_provenance/"
+    "p4_primary_hc_label_shuffle_10k.npy"
+)
+PIXEL_NULL_ARTIFACT = (
+    "pipelines/p2_chirality/outputs/canonical_provenance/"
     "c12_queue2_null_amps_10k.npy"
 )
 
@@ -97,14 +101,13 @@ NULL_PATH = os.environ.get(
         Path(__file__).parent
         / "outputs"
         / "canonical_provenance"
-        / "c12_queue2_null_amps_10k.npy"
+        / "p4_primary_hc_label_shuffle_10k.npy"
     ),
 )
 NSIDE = 64
 MIN_PIX_COUNT = 10
 N_MC = 10000  # upgraded from 1,000 at the 2026-06-09 regeneration (R23conf)
-MC_SEED = 20260418
-SECONDARY_N_MC = int(os.environ.get("SECONDARY_N_MC", "0"))
+MC_SEED = 20260715
 
 
 def sha256_file(path: str | Path, chunk_size: int = 8 * 1024 * 1024) -> str:
@@ -211,12 +214,24 @@ def main() -> int:
     )
 
     # MC null (shuffle per-pixel labels, re-fit dipole)
+    # Primary null: uniformly randomize CW/CCW labels among support galaxies
+    # while preserving every support-pixel occupancy and the support CW total.
     reuse_primary_null = os.environ.get("REUSE_PRIMARY_NULL", "0") == "1"
-    print(f"  Running {N_MC:,} MC null realizations...", flush=True)
+    print(f"  Running {N_MC:,} fixed-occupancy label randomizations...", flush=True)
     t0 = time.time()
-    valid = asym[mask].copy()
+    capacities = tot[mask].astype(np.int64)
+    n_cw_support = int(cw_map[mask].sum())
+    mask_idx = np.flatnonzero(mask)
+    theta_pix, phi_pix = hp.pix2ang(NSIDE, mask_idx)
+    design = np.column_stack([
+        np.ones(mask_idx.size),
+        np.sin(theta_pix) * np.cos(phi_pix),
+        np.sin(theta_pix) * np.sin(phi_pix),
+        np.cos(theta_pix),
+    ])
+    projector = np.linalg.inv(design.T @ design) @ design.T
     if reuse_primary_null:
-        boots = np.load(NULL_PATH)
+        boots = np.load(NULL_PATH, allow_pickle=False)
         if boots.shape != (N_MC,):
             raise ValueError(
                 f"Reusable primary null has shape {boots.shape}; expected {(N_MC,)}"
@@ -226,11 +241,12 @@ def main() -> int:
         boots = np.empty(N_MC)
         rng = np.random.default_rng(MC_SEED)
         for i in range(N_MC):
-            rng.shuffle(valid)
-            asym_shuf = np.full(npix, hp.UNSEEN)
-            asym_shuf[mask] = valid
-            _, d = hp.fit_dipole(asym_shuf, gal_cut=0)
-            boots[i] = np.sqrt(np.sum(d ** 2))
+            shuffled_cw = rng.multivariate_hypergeometric(
+                capacities, n_cw_support, method="marginals"
+            )
+            asym_shuf = (2.0 * shuffled_cw - capacities) / capacities
+            coefficients = projector @ asym_shuf
+            boots[i] = np.linalg.norm(coefficients[1:])
     mc_mean = float(np.mean(boots))
     mc_std = float(np.std(boots))
     sigma = (amp - mc_mean) / mc_std if mc_std > 0 else 0.0
@@ -241,52 +257,27 @@ def main() -> int:
     np.save(NULL_PATH, boots)
     null_sha256 = sha256_file(NULL_PATH)
 
-    # Second null (R23conf META-E1): per-galaxy label shuffle — binomial draw
-    # of per-pixel CW counts at the global CW rate, preserving N_spiral(p).
-    shuffle_null = {
-        "status": "not_run_in_v1.0.243_bounded_primary_regeneration",
-        "reason": "Secondary diagnostic; not part of the requested canonical pixel-permutation primary.",
-    }
-    if SECONDARY_N_MC > 0:
-        print(
-            f"  Running {SECONDARY_N_MC:,} per-galaxy label-shuffle nulls...",
-            flush=True,
-        )
-        rng2 = np.random.default_rng(MC_SEED)
-        p_glob = cw_map[mask].sum() / tot[mask].sum()
-        n_tot_pix = tot[mask].astype(int)
-        boots2 = np.empty(SECONDARY_N_MC)
-        for i in range(SECONDARY_N_MC):
-            cws = rng2.binomial(n_tot_pix, p_glob)
-            asym_shuf = np.full(npix, hp.UNSEEN)
-            asym_shuf[mask] = (2.0 * cws - n_tot_pix) / n_tot_pix
-            _, d = hp.fit_dipole(asym_shuf, gal_cut=0)
-            boots2[i] = np.sqrt(np.sum(d ** 2))
-        mc2_mean = float(np.mean(boots2)); mc2_std = float(np.std(boots2))
-        sigma2 = (amp - mc2_mean) / mc2_std if mc2_std > 0 else 0.0
-        pval2 = float(
-            ((boots2 >= amp).sum() + 1) / (SECONDARY_N_MC + 1)
-        )
-        shuffle_null = {
-            "status": "diagnostic",
-            "description": "per-galaxy label shuffle (binomial per pixel at the global CW rate)",
-            "n_realizations": SECONDARY_N_MC,
-            "seed": MC_SEED,
-            "significance_sigma": float(sigma2),
-            "rank_p": pval2,
-            "mc_mean": mc2_mean,
-            "mc_std": mc2_std,
+    pixel_path = Path(__file__).parent / "outputs/canonical_provenance/c12_queue2_null_amps_10k.npy"
+    pixel_robustness = {"status": "array_unavailable", "role": "robustness_only"}
+    if pixel_path.exists():
+        pixel_boots = np.load(pixel_path, allow_pickle=False)
+        pixel_k = int((pixel_boots >= amp).sum())
+        pixel_robustness = {
+            "status": "retained",
+            "role": "robustness_only; not primary",
+            "null_array": PIXEL_NULL_ARTIFACT,
+            "null_array_sha256": sha256_file(pixel_path),
+            "n_realizations": int(pixel_boots.size),
+            "significance_sigma": float(
+                (amp - pixel_boots.mean()) / pixel_boots.std(ddof=0)
+            ),
+            "rank_p": float((pixel_k + 1) / (pixel_boots.size + 1)),
         }
-        print(
-            f"  shuffle null: {sigma2:.2f}sigma (rank-p = {pval2:.4f})",
-            flush=True,
-        )
     print(
-        f"  MC null ({time.time()-t0:.0f}s): {sigma:.2f}sigma "
+        f"  primary null ({time.time()-t0:.0f}s): {sigma:.2f}sigma "
         f"(p = {pval:.4f}, mean = {mc_mean:.6f}, std = {mc_std:.6f})",
         flush=True,
     )
-
     # Angular power spectrum C_ell for ell = 1..5
     print("  Computing C_ell (lmax = 5)...", flush=True)
     cl = hp.anafast(asym_full, lmax=5)
@@ -316,7 +307,7 @@ def main() -> int:
             "significance_sigma": float(sigma),
             "rank_p_one_sided_upper_tail": pval,
             "note": (
-                "Canonical inclusive-mask values for P4 v1.0.243. Reproduce "
+                "Canonical inclusive-mask values for the post-v1.0.244 closure. Reproduce "
                 "by running this generator against the exact catalog release."
             ),
         },
@@ -360,7 +351,7 @@ def main() -> int:
             "null_array_sha256": null_sha256,
             "consistent_with_null": bool(sigma < 2.0),
             "post_tta": True,
-            "shuffle_null": shuffle_null,
+            "pixel_permutation_robustness": pixel_robustness,
         },
         "multipole_decomposition": {
             "shot_noise_cl": float(shot_noise),
@@ -373,7 +364,8 @@ def main() -> int:
             "min_galaxies_per_pixel_operator": ">=",
             "dipole_estimator": "healpy.fit_dipole (gal_cut = 0)",
             "null_model": (
-                "Per-pixel label shuffle (preserves mask + footprint geometry); "
+                "Fixed-occupancy galaxy-label randomization preserving support-pixel "
+                "capacities and the observed support-sample CW total; "
                 "significance = (amp - mean(boots)) / std(boots)"
             ),
             "n_mc_realizations": N_MC,

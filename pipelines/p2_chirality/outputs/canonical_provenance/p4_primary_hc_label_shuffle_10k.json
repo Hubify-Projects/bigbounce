@@ -1,0 +1,47 @@
+{
+  "array": {
+    "dtype": "float64",
+    "path": "pipelines/p2_chirality/outputs/canonical_provenance/p4_primary_hc_label_shuffle_10k.npy",
+    "sha256": "f6360f4bec22669097cee3e2fad8b176291d3ecbfbfbb9a9290d0bce3d5152c0",
+    "shape": [
+      10000
+    ]
+  },
+  "catalog": {
+    "path": "pipelines/p2_chirality/apjs_release_v1.0.244/p4_catalog_primary_safe_v1.0.244.parquet",
+    "sha256": "139b761fbeafb34306a0cec60967226c18dc84295285f8317ce3d3af3d28bdf3"
+  },
+  "exclusions": [
+    "no calibrated-probability claim",
+    "no physical-amplitude or primordial bound",
+    "no matched-external-estimator claim",
+    "no formal-preregistration claim"
+  ],
+  "n_cw_in_support": 469947,
+  "n_draws": 10000,
+  "n_galaxies_in_support": 947326,
+  "n_pixels_inclusive": 23682,
+  "n_primary_hc": 949584,
+  "null_definition": "fixed-occupancy galaxy-label randomization: multivariate-hypergeometric allocation of the observed CW count among support galaxies across observed support-pixel capacities",
+  "null_mean": 0.003489942041063312,
+  "null_std_ddof0": 0.0015696946246071318,
+  "null_std_ddof1": 0.0015697731152252074,
+  "numpy_bit_generator": "PCG64",
+  "observed_amplitude": 0.004597074287780103,
+  "paper_version_basis": "v1.0.245 paper closure; catalog payload v1.0.244",
+  "pixel_permutation_policy": "retained as a robustness diagnostic; not primary",
+  "rank_formula": "(k+1)/(N+1), k=count(A_null >= A_data)",
+  "rank_k": 2246,
+  "rank_p_one_sided_upper_tail": 0.22467753224677534,
+  "runtime_versions": {
+    "healpy": "1.17.3",
+    "numpy": "1.26.4",
+    "pyarrow": "21.0.0",
+    "python": "3.9.6"
+  },
+  "schema": "p4-primary-hc-label-shuffle/v1",
+  "scope": "observed equivariant hard labels; descriptive isotropy null only",
+  "seed": 20260715,
+  "selection": "primary_hc == True; HEALPix NSIDE=64; N_spiral(pixel) >= 10",
+  "significance_sigma_ddof0": 0.7053169637972659
+}

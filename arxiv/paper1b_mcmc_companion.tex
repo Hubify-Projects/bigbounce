@@ -261,8 +261,8 @@
 %   FALSIFIED list (14 items) not acted on.)
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1B.0.108}
-\newcommand{\paperTimestamp}{July 15, 2026}
+\newcommand{\paperVersion}{v1B.0.109}
+\newcommand{\paperTimestamp}{July 15, 2026, 02:53 PT}
 % v1B.0.107->108 (2026-07-15): one-pass exact-PDF confirmation closure.
 %   Relabeled the canonical NaMaster mask as a synthetic native-coordinate
 %   latitude window; rendered the complete prior-predictive method and MC
@@ -1344,7 +1344,13 @@ prediction: at fixed $C_{a\gamma}=8$ the posterior favors $m\gg H_0$, and only
 a conditional subset remains spectator-safe.  A separate prior-predictive calculation
 finds $11.6\%$ of fixed-coupling draws and $6.1\%$ of broad-coupling draws
 within the published $1\sigma$ band; these are unconditional prior-sensitivity
-fractions, not the cost or probability of the spectator subset.  The
+fractions, not the cost or probability of the spectator subset. Of the
+$34{,}947$ trajectories satisfying $\Omega_a<0.01$, the corresponding
+conditional counts include zero observed fixed-coupling draws (95\% Wilson upper bound
+$0.011\%$) and $863$ ($2.469\%$; MC standard error $0.083$ percentage
+points) for the broad
+coupling prior. These are Monte Carlo frequencies, not evidence or posterior
+probabilities. The
 same model exists in standard GR and has no ECH-specific content.
 
 Frozen chains, configurations, synthetic-recovery outputs, and the
@@ -1420,7 +1426,7 @@ the pipeline SNR figures refer to recovery of injected MC signals and are
 the published joint WMAP+Planck signal
 $\beta=0.342^\circ\pm 0.094^\circ$ ($3.6\sigma$)~\cite{Eskilt2022}, but the
 posterior-supported fixed-coupling ($C_{a\gamma}=8$) accommodation shifts
-to $m\gg H_0$ (median $m\simeq 36\,H_0$ at fixed $C_{a\gamma}=8$), and the
+to $m\gg H_0$ (weighted median $m=37.2\,H_0$ at fixed $C_{a\gamma}=8$), and the
 spectator-safe ($\Omega_a<0.01$) subset is tuned (see
 Table~\ref{tab:alp_restricted_subsets} for the per-subset readout).
 \emph{Prior-predictive accommodation cost}: to test directly whether this
@@ -1589,7 +1595,7 @@ $2.7$--$2.9\sigma$ from Planck/ACT.
 a standard GR+ALP computation showing that the observed signal is consistent
 with an ALP within the scan-prior envelope but near its upper-displacement/coupling
 edge; the posterior-supported fixed-$C_{a\gamma}\!=\!8$ fit shifts to
-$m\!\gg\!H_0$ (median ${\simeq}\,36\,H_0$), well above the prior midpoint.
+$m\!\gg\!H_0$ (weighted median $37.2\,H_0$), well above the prior midpoint.
 A spectator-safe interpretation is reported conditionally at $\Omega_a<0.01$;
 that subset has median $\theta_i=0.211$ and is distinct from the indicative
 $\theta_i\le0.1$ sliver (Sec.~\ref{sec:birefringence_check}).
@@ -1897,8 +1903,8 @@ the $0.01\sigma$ level). The Planck+BAO+SN marginal sits in $2.6\sigma$
 two-Gaussian tension with DES-Y3 (posterior-overlap integral
 $\int\!\min(p_1,p_2)\,dS_8 = 0.05$, where $p_1$ and $p_2$ are the two
 one-dimensional $S_8$ marginal densities evaluated on a common
-$\Delta S_8 = 10^{-4}$ trapezoidal grid spanning
-$S_8 \in [0.70, 0.90]$); the full-tension posterior sits at
+$\Delta S_8 = 5.5\times10^{-5}$ trapezoidal grid with 4{,}001 points spanning
+$S_8 \in [0.70, 0.92]$); the full-tension posterior sits at
 $2.0\sigma$ from the DES-Y3 prior (overlap $0.12$ on the same grid);
 this $2.0\sigma$ residual is a within-stack readout because the
 DES-Y3 Gaussian prior is itself an active likelihood in the
@@ -2172,7 +2178,7 @@ $\beta=0.342^\circ$, and $\beta=0$ injections rotate $Q+iU$ via
 $e^{2i\beta}(Q+iU)$. The angle is recovered per configuration by an
 unweighted $\chi^2$ template fit of the decoupled $C_b^{EB}$ bandpowers
 to the exact windowed rotated theory on a $\beta$ grid
-(a uniform grid of angles spanning $\beta\in[-2^\circ,+2^\circ]$ at $0.001^\circ$ step,
+(a uniform 2{,}001-point grid of angles spanning $\beta\in[-1^\circ,+1^\circ]$ at $0.001^\circ$ step,
 with $\beta$ converted to radians when evaluating $\sin$ and $\cos$;
 \path{namaster\_500mc.py}).
 Explicitly, the estimator minimises
@@ -2378,7 +2384,8 @@ values within $<\!0.1\sigma$. The ``consistent with zero / no
 Hubble-tension resolution'' conclusion above is therefore corroborated at
 the present diagnostic precision, while the frozen chains remain the
 headline result; full chain artifacts and posterior summary
-are committed at \artifact{reproducibility/cosmology/chains/w0wa_quintom_desi_dr2/c15_converged/}.
+are committed at
+\href{https://github.com/Hubify-Projects/bigbounce/tree/main/reproducibility/cosmology/chains/w0wa_quintom_desi_dr2/c15_converged/}{\path{reproducibility/cosmology/chains/w0wa_quintom_desi_dr2/c15_converged/}}.
 The \texttt{c15\_converged} directory name is a legacy artifact label; it
 does not override the numerical threshold statement above.
 \emph{Release-pairing note:} the primary frozen chains use Planck NPIPE (PR4) CamSpec high-$\ell$ TTTEEE
@@ -2406,7 +2413,7 @@ by the same measurement. The scientifically load-bearing outputs are therefore
 not the agreement itself but (i)~\emph{where} in parameter space the
 accommodation lives --- a non-minimal photon coupling $C_{a\gamma}\gtrsim 8$
 (above the standard KSVZ/DFSZ $\mathcal{O}(1)$ benchmark) and a posterior
-median $m\simeq 36\,H_0$ well above the scan-prior midpoint --- and
+weighted median $m=37.2\,H_0$ well above the scan-prior midpoint --- and
 (ii)~the location of the controlled spectator-validity region: $13.3818\%$
 of the likelihood-weighted samples in this fixed-background surrogate chain
 satisfy $\Omega_a<0.01$. This is a chain-selection frequency, not a physical
@@ -2435,6 +2442,23 @@ fall inside it. Their binomial Monte Carlo standard errors are respectively
 $0.101$ and $0.076$ percentage points. The complete result, including the
 $2\sigma$ counts, is archived at
 \artifact{reproducibility/cosmology/alp_prior_predictive_result.json}.
+
+Applying the ODE-derived spectator criterion $\Omega_a<0.01$ to the same
+seed-1234 trajectories retains $34{,}947/100{,}000$
+($34.947\%$; MC standard error $0.151$ percentage points). Within this retained subset, the
+fixed-coupling arm has zero observed draws ($0/34{,}947$) in the signed $1\sigma$ band
+(95\% Wilson upper bound $0.011\%$), while the broad-coupling arm has
+$863/34{,}947=2.469\%$ (MC standard error $0.083$ percentage points). The unrestricted values
+above are therefore fixed-background ALP prior-predictive fractions, whereas
+these latter values are explicitly conditioned on spectator validity. Neither
+is Bayesian evidence, a posterior probability, or a physical prior cost; the
+conditioned calculation remains a prior-frequency diagnostic under the same
+fixed-background equations. Its deterministic generator, result, and
+execution receipt are archived at
+\artifact{reproducibility/cosmology/alp_spectator_conditioned_prior_predictive.py},
+\artifact{reproducibility/cosmology/alp_spectator_conditioned_prior_predictive_result.json},
+and
+\artifact{reproducibility/cosmology/alp_spectator_conditioned_prior_predictive_receipt.json}.
 
 \textit{Note (spectator-status caveat, main text).}---Spectator validity is
 defined by the derived energy-density cut $\Omega_a<0.01$, not by an imposed
@@ -2470,7 +2494,7 @@ spectator ALP model. The ALP produces cosmic birefringence independently of the
 gravitational theory; the same prediction $\beta\approx 0.27^\circ$ arises in
 standard GR with an identical ALP Lagrangian within the scan-prior envelope
 but near its upper-displacement/coupling edge; the posterior-supported
-fixed-$C_{a\gamma}\!=\!8$ fit shifts to $m\!\gg\!H_0$ (median ${\simeq}\,36\,H_0$).
+fixed-$C_{a\gamma}\!=\!8$ fit shifts to $m\!\gg\!H_0$ (weighted median $37.2\,H_0$).
 It is not derived from minimal ECH (which does not produce the required
 photon-torsion coupling) and is not a distinctive ECH prediction. The model class was previously
 studied by Fujita~\etal~\cite{Fujita2021}.
@@ -2590,8 +2614,9 @@ spectra themselves; the uniform-rotation observable is periodic,
 $\beta \equiv \beta + n\times 90^\circ$ for $E/B$, and the Gaussian
 summary ignores wrapping --- harmless here because the posterior support
 is confined to $|\beta| \lesssim 0.7^\circ \ll 90^\circ$, so wrapped
-images carry negligible likelihood), settles at $\theta_i = 1.32 \pm 0.41$ and
-$m \sim 10$--$10^2\,H_0$ (posterior median $m \approx 36\,H_0$) --- i.e.\
+images carry negligible likelihood), has weighted median and 16--84\% interval
+$\theta_i=1.317^{+0.439}_{-0.369}$ and
+$m \sim 10$--$10^2\,H_0$ (weighted posterior median $m=37.2\,H_0$) --- i.e.\
 \emph{outside} the natural envelope box $\theta_i\in[0.5,2]$,
 $m/H_0\in[1,3]$ in mass --- where the data-preferred joint product is
 $C_{a\gamma}\,(\Delta\phi/f_a)\approx 10.3$, corresponding at the fixed
@@ -2863,7 +2888,7 @@ dynamics. The benchmark $f_a\sim\MPl$ is a prior choice; no derived
 photon-torsion coupling connects the Holst action to this ALP potential. The model can
 \textit{accommodate} the observed $\beta$ within the scan-prior envelope
 but near its upper-displacement/coupling edge; the posterior-supported
-fixed-$C_{a\gamma}\!=\!8$ fit shifts to $m\!\gg\!H_0$ (median ${\simeq}\,36\,H_0$).
+fixed-$C_{a\gamma}\!=\!8$ fit shifts to $m\!\gg\!H_0$ (weighted median $37.2\,H_0$).
 The spectator-safe interpretation is conditional on the ODE-derived
 $\Omega_a<0.01$ subset and requires a non-minimal photon coupling; it
 does not uniquely predict the signal.
@@ -2930,6 +2955,15 @@ $\Omega_a < 0.01$ subset ($13.3818\%$ of the fixed-background
 surrogate-chain weight), not on the extreme $\theta_i\le 0.1$ sliver
 ($0.3275\%$, indicative only). These are selection frequencies, not physical
 posterior probabilities.
+An independent unweighted prior-predictive calculation gives a different,
+prior-space question: $34{,}947/100{,}000$ trajectories satisfy
+$\Omega_a<0.01$, of which zero are observed at fixed $C_{a\gamma}=8$
+($0/34{,}947$; 95\% Wilson upper
+bound $0.011\%$) and $863$ for $C_{a\gamma}\sim\mathcal U[4,60]$
+($2.469\%$; MC standard error $0.083$ percentage points) also lie in the published signed
+$1\sigma$ band. These conditional Monte Carlo frequencies are neither
+evidence nor posterior probabilities and are distinct from the
+likelihood-weighted surrogate-chain selection frequency above.
 Within that $\Omega_a < 0.01$ spectator-safe
 subset ($13.3818\%$ surrogate-chain weight; median
 $m=40.74\,H_0$, $\Omega_a < 0.01$, ESS$_\beta=485$), an ALP with
@@ -3064,6 +3098,10 @@ downloading Galaxy Zoo DECaLS~\cite{Walmsley2022} from Zenodo
 code artifact.
 \item \artifact{reproducibility/docs/KNOWN\_GAPS.md}---honest disclosure of what cannot currently
 be reproduced.
+\item \artifact{reproducibility/cosmology/alp_spectator_conditioned_prior_predictive.py}
+and its adjacent result and execution-receipt JSON files---the deterministic
+$100{,}000$-draw-per-arm unrestricted and $\Omega_a<0.01$-conditioned ALP
+prior-predictive calculation.
 \end{itemize}
 
 \textit{What is included vs.\ regenerable.}---The two frozen
@@ -3175,7 +3213,8 @@ $\theta_i=0.211$; the separate $\theta_i\le0.1$ row is indicative only.}
 Holst-sector pseudoscalar structure; not sampled).
 \end{itemize}
 This configuration yields $\beta_{\rm ALP} = 0.336^\circ\pm 0.10^\circ$
-with posterior $\theta_i = 1.32\pm 0.41$ and median $m\approx 36\,H_0$.
+with weighted posterior median and 16--84\% interval
+$\theta_i=1.317^{+0.439}_{-0.369}$ and weighted median $m=37.2\,H_0$.
 
 \textit{Configuration (ii) --- sampled-coupling fit
 (\texttt{run2\_extended}; 6{,}840 accepted samples).}---As configuration
@@ -3246,17 +3285,18 @@ $\beta$ posterior, not as a direct re-analysis of the $EB$ spectra.
 Gaussian datum $(\beta_{\rm obs},\sigma_\beta)$ constrains only the
 combination $C_{a\gamma}\,\Delta\phi/f_a\propto\beta$ that fixes the ALP
 birefringence amplitude, replacing it with the full joint $EB$ likelihood
-would principally re-weight the \emph{width} and tails of the amplitude
-posterior rather than translate its central location: the accommodation
-fraction ($11.6\%$ within $1\sigma$ at fixed $C_{a\gamma}=8$) and the
+could change the location, width, and tails of the amplitude posterior: the
+unrestricted fixed-background fraction ($11.6\%$ within $1\sigma$ at fixed
+$C_{a\gamma}=8$), its spectator-conditioned counterpart (zero observed,
+$0/34{,}947$;
+95\% Wilson upper bound $0.011\%$), and the
 $\Omega_a<0.01$ fixed-background surrogate-chain selection frequency
 therefore inherit this approximation. The latter is not a physical posterior
 probability or prior cost. The reported
-posterior medians ($m\simeq36\,H_0$, $C_{a\gamma}\,\Delta\phi/f_a\approx10.3$)
-are set by the mean of the same Eskilt--Komatsu datum and are comparatively
-insensitive to it. A full joint-$EB$ re-fit to quantify the residual
-median shift is left as a dedicated follow-up; it is not expected to move
-the medians beyond their quoted $16$--$84\%$ ranges. The
+posterior medians ($m=37.2\,H_0$, $C_{a\gamma}\,\Delta\phi/f_a\approx10.3$)
+are conditioned on that summary likelihood. A full joint-$EB$ re-fit is
+required to determine the direction and size of any shifts; no robustness
+forecast for those shifts is made here. The
 separate ACT~DR6 measurement
 $\beta=0.215^\circ\pm0.074^\circ$~\cite{DiegoPalazuelos2025} is an
 independent cross-check quoted in Sec.~\ref{sec:birefringence_check} and

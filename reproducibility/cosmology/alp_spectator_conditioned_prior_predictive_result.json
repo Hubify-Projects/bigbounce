@@ -1,0 +1,98 @@
+{
+  "description": "Unconditional and Omega_a<0.01-conditioned prior-predictive frequencies from the committed fixed-background ALP equations",
+  "draw_order": [
+    "theta_i",
+    "log10_m_eV",
+    "C_agamma_broad"
+  ],
+  "interpretation": {
+    "conditioned": "Monte Carlo conditional frequency among draws satisfying Omega_a<0.01 under the same fixed-background equations; not Bayesian evidence or a self-consistent-background posterior",
+    "unrestricted": "fixed-background ALP prior-predictive fraction; not a spectator-model probability, Bayesian evidence, posterior probability, or prior cost"
+  },
+  "n_draws_per_arm": 100000,
+  "priors": {
+    "broad_coupling": {
+      "distribution": "uniform",
+      "range": [
+        4.0,
+        60.0
+      ]
+    },
+    "f_a": "reduced M_Pl",
+    "fixed_coupling": 8.0,
+    "log10_m_eV": {
+      "distribution": "uniform",
+      "range": [
+        -35.0,
+        -30.0
+      ]
+    },
+    "theta_i": {
+      "distribution": "uniform",
+      "range": [
+        0.01,
+        3.141592653589793
+      ]
+    }
+  },
+  "results": {
+    "broad_C_agamma_uniform_4_60": {
+      "fraction_joint_within_1sigma_and_spectator": 0.00863,
+      "fraction_spectator_in_prior": 0.34947,
+      "fraction_within_1sigma_given_spectator": 0.024694537442412796,
+      "fraction_within_1sigma_unrestricted": 0.06137,
+      "mc_se_conditioned": 0.0008301676890448196,
+      "mc_se_joint": 0.0002924982581144715,
+      "mc_se_spectator_in_prior": 0.0015077822094055893,
+      "mc_se_unrestricted": 0.0007589711661189771,
+      "n_failed": 0,
+      "n_joint_within_1sigma_and_spectator": 863,
+      "n_spectator_omega_a_lt_0p01": 34947,
+      "n_valid": 100000,
+      "n_within_1sigma_unrestricted": 6137,
+      "wilson95_conditioned": [
+        0.02311893059880052,
+        0.026374626254724857
+      ]
+    },
+    "fixed_C_agamma_8": {
+      "fraction_joint_within_1sigma_and_spectator": 0.0,
+      "fraction_spectator_in_prior": 0.34947,
+      "fraction_within_1sigma_given_spectator": 0.0,
+      "fraction_within_1sigma_unrestricted": 0.11597,
+      "mc_se_conditioned": 0.0,
+      "mc_se_joint": 0.0,
+      "mc_se_spectator_in_prior": 0.0015077822094055893,
+      "mc_se_unrestricted": 0.0010125263408919296,
+      "n_failed": 0,
+      "n_joint_within_1sigma_and_spectator": 0,
+      "n_spectator_omega_a_lt_0p01": 34947,
+      "n_valid": 100000,
+      "n_within_1sigma_unrestricted": 11597,
+      "wilson95_conditioned": [
+        6.776263578034403e-21,
+        0.00010991033864578501
+      ]
+    }
+  },
+  "schema_version": 1,
+  "seed": 1234,
+  "selection": {
+    "beta_obs_deg": 0.342,
+    "likelihood_weighting": false,
+    "sigma_beta_deg": 0.094,
+    "signed_band": "abs(beta-beta_obs) < sigma_beta",
+    "spectator": "Omega_a(z=0) < 0.01"
+  },
+  "shared_trajectories_across_arms": true,
+  "status": "pre-release scientific artifact; immutable release tag/DOI pending",
+  "validation": {
+    "fast": "same _ode_rhs_lna with DOP853 rtol=1e-7, atol=1e-10",
+    "max_abs_beta_deg": 1.5237778150378745e-08,
+    "max_abs_omega_a": 2.782438374815399e-06,
+    "n": 40,
+    "reference": "alp_ode.compute_alp_birefringence (rtol=1e-10, max_step=0.05)",
+    "seed": 20260715,
+    "spectator_classification_mismatches": 0
+  }
+}

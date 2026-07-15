@@ -1,5 +1,9 @@
 # P4 ApJS release-candidate schema (v1.0.244)
 
+This is the immutable **catalog payload v1.0.244** contract bound to the
+**P4 paper v1.0.245** closure. The payload filenames remain v1.0.244 because
+the paper-only closure does not alter any catalog row or column.
+
 This document is the human-readable data dictionary for the local P4 ApJS
 release candidate. The executable contract is
 `apjs_release_schema_v1_0_244.json`; the builder and validation tests are
@@ -18,7 +22,8 @@ comparison, or formal-preregistration claim.
 |---|---:|---|---|
 | `p4_catalog_primary_safe_v1.0.244.parquet` | 8,474,531 | Science-facing observed-label catalog | Raw-pass and reconstructed flip-pass columns absent by construction |
 | `p4_catalog_raw_flip_quarantine_v1.0.244.parquet` | 249,066 | Provenance-only quarantine of every catalog-wide bound violator | `do_not_use_for_science=True`; scores are uncalibrated |
-| `primary_null_amps_10000.npy` | 10,000 draws | Exact retained primary pixel-permutation null | Descriptive observed-label null only |
+| `primary_label_shuffle_amps_10000.npy` | 10,000 draws | Exact fixed-occupancy galaxy-label randomization; global CW total preserved | Primary descriptive observed-label null |
+| `pixel_permutation_amps_10000.npy` | 10,000 draws | Exact retained pixel-asymmetry permutation | Robustness diagnostic only; not primary |
 
 Exactly 59,515 of the 249,066 catalog-wide quarantined rows fall inside the
 949,584-row primary HC selection. Thus the strict HC diagnostic contains
@@ -99,9 +104,10 @@ python3 pipelines/p2_chirality/reproduce_p4_primary_null_v1_0_244.py \
 ```
 
 The hard gates are `N=949,584`, 23,682 inclusive pixels,
-`A_dip=0.0045970743`, `z=+0.5491202`, and one-sided upper-tail rank
-`p=0.2651735`. The null array is pinned by SHA-256. The script makes no physical
-or primordial inference.
+`A_dip=0.0045970743`, `z=+0.7053170`, and one-sided upper-tail rank
+`p=0.2246775`. The fixed-occupancy array is pinned by SHA-256; the former
+pixel-permutation result remains separately checksummed as a robustness
+diagnostic. The script makes no physical or primordial inference.
 
 ## Provenance
 

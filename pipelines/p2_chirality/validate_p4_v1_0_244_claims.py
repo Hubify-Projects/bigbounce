@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail-closed source-to-claim audit for every new P4 v1.0.244 number."""
+"""Fail-closed source-to-claim audit for every new P4 v1.0.245 number."""
 
 from __future__ import annotations
 
@@ -17,7 +17,8 @@ P4 = ROOT / "pipelines/p2_chirality"
 EVIDENCE = {
     "catalog_qc": P4 / "outputs/canonical_provenance/ext4_fb1_flip_identity_qc_catalogwide.json",
     "hc_qc": P4 / "outputs/canonical_provenance/ext3_nfm1_hc_dipole_qc_rerun.json",
-    "secondary_null": P4 / "outputs/canonical_provenance/c11b_hc_dipole_nulls.json",
+    "primary_label_shuffle": P4 / "outputs/canonical_provenance/p4_primary_hc_label_shuffle_10k.json",
+    "primary_label_shuffle_array": P4 / "outputs/canonical_provenance/p4_primary_hc_label_shuffle_10k.npy",
     "robustness_panel": P4 / "outputs/canonical_provenance/c12_r24conf_local_batch.json",
     "master_support": P4 / "outputs/canonical_provenance/c6_depth_stratified_null.json",
     "source_receipt": P4 / "outputs/canonical_provenance/fig7_raw_vs_eq_manifest.json",
@@ -48,7 +49,7 @@ def close(observed: float, expected: float, atol: float = 1e-12) -> bool:
 def audit() -> dict[str, Any]:
     qc = load(EVIDENCE["catalog_qc"])
     hc = load(EVIDENCE["hc_qc"])
-    secondary = load(EVIDENCE["secondary_null"])
+    label_shuffle = load(EVIDENCE["primary_label_shuffle"])
     r24 = load(EVIDENCE["robustness_panel"])
     master = load(EVIDENCE["master_support"])
     receipt = load(EVIDENCE["source_receipt"])
@@ -71,12 +72,14 @@ def audit() -> dict[str, Any]:
         "source_rows": receipt["catalog"]["rows"] == 8_474_531,
         "source_sha256": receipt["catalog"]["sha256"] == "e8525ba5c98576f6361580e4a0aa7a86929ccc9f79b1423808774cfaaf313563",
         "primary_amplitude": close(primary["dipole"]["amplitude"], 0.004597074287780104, 1e-15),
-        "primary_z": close(primary["dipole"]["significance_sigma"], 0.549120193418297, 1e-14),
-        "primary_rank_p": close(primary["dipole"]["rank_p_one_sided_upper_tail"], 0.26517348265173485, 1e-15),
-        "secondary_null_mean": close(secondary["null_per_galaxy_shuffle"]["mean"], 0.003488, 1e-12),
-        "secondary_null_std": close(secondary["null_per_galaxy_shuffle"]["std"], 0.001593, 1e-12),
-        "secondary_null_z": close(secondary["null_per_galaxy_shuffle"]["z"], 0.696, 1e-12),
-        "secondary_null_rank_p": close(secondary["null_per_galaxy_shuffle"]["rank_p"], 0.2298, 1e-12),
+        "primary_null_draws": label_shuffle["n_draws"] == 10_000,
+        "primary_null_seed": label_shuffle["seed"] == 20_260_715,
+        "primary_null_array_sha256": label_shuffle["array"]["sha256"] == "f6360f4bec22669097cee3e2fad8b176291d3ecbfbfbb9a9290d0bce3d5152c0",
+        "primary_null_retained_array_sha256": sha256_file(EVIDENCE["primary_label_shuffle_array"]) == "f6360f4bec22669097cee3e2fad8b176291d3ecbfbfbb9a9290d0bce3d5152c0",
+        "primary_null_mean": close(label_shuffle["null_mean"], 0.003489942041063312, 1e-15),
+        "primary_null_std": close(label_shuffle["null_std_ddof0"], 0.0015696946246071318, 1e-15),
+        "primary_z": close(label_shuffle["significance_sigma_ddof0"], 0.7053169637972659, 1e-14),
+        "primary_rank_p": close(label_shuffle["rank_p_one_sided_upper_tail"], 0.22467753224677534, 1e-15),
         "panel_contract": panel["null"] == "2000 pixel-permutation realizations per cell (A_p permuted across in-mask pixels; weights stay attached to pixels), seed 20260610",
         "panel_cells": len(cells) == 6,
     }
@@ -102,9 +105,9 @@ def audit() -> dict[str, Any]:
     schema = load(P4 / "apjs_release_schema_v1_0_244.json")
     gates.update(
         {
-            "paper_version": r"\newcommand{\paperVersion}{v1.0.244}" in tex,
+            "paper_version": r"\newcommand{\paperVersion}{v1.0.245}" in tex,
             "paper_prints_catalog_and_hc_counts": "249,066 unsafe rows catalog-wide" in tex and "Exactly 59,515" in tex,
-            "paper_prints_secondary_null": "standard deviation $0.001593$, $z=+0.696$, and rank $p=0.2298$" in tex,
+            "paper_prints_primary_null": "population standard deviation are $0.00348994$ and $0.00156969$" in tex and "$p=(2246+1)/(10000+1)=0.22468$" in tex,
             "paper_prints_all_panel_cells": all(token in tex for token in ("(+0.536,0.270)", "(+0.794,0.203)", "(-0.141,0.505)")),
             "paper_names_three_supports": all(token in tex for token in ("HC-REALSPACE-INCLUSIVE", "FULL-SPIRAL-CANONICAL", "MASTER-ALL-GALAXY-FOOTPRINT")),
             "paper_uncertainty_scales_one_over_g": r"\sigma(A_{\rm phys})=\sigma(A_{\rm obs})/g" in tex,
@@ -116,9 +119,9 @@ def audit() -> dict[str, Any]:
     )
     failed = [name for name, passed in gates.items() if not passed]
     result = {
-        "schema": "p4-v1.0.244-source-to-claim-audit/v1",
+        "schema": "p4-v1.0.245-source-to-claim-audit/v1",
         "paper": "P4",
-        "paper_version": "v1.0.244",
+        "paper_version": "v1.0.245",
         "status": "PASS" if not failed else "FAIL",
         "gates": gates,
         "failed_gates": failed,

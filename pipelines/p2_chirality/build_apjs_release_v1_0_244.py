@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the P4 v1.0.244 ApJS release candidate with fail-closed quarantine.
+"""Build the v1.0.244 catalog payload bound to the P4 v1.0.245 paper closure.
 
 The science-facing Parquet deliberately excludes every raw-pass and reconstructed
 flip-pass score column.  A separate provenance-only quarantine contains every
@@ -25,7 +25,8 @@ import pyarrow.parquet as pq
 
 
 ROOT = Path(__file__).resolve().parents[2]
-VERSION = "v1.0.244"
+CATALOG_PAYLOAD_VERSION = "v1.0.244"
+PAPER_VERSION = "v1.0.245"
 SCHEMA_PATH = Path(__file__).with_name("apjs_release_schema_v1_0_244.json")
 DATA_DICTIONARY_PATH = Path(__file__).with_name("CATALOG_SCHEMA.md")
 REPRODUCTION_SCRIPT_PATH = Path(__file__).with_name(
@@ -34,9 +35,13 @@ REPRODUCTION_SCRIPT_PATH = Path(__file__).with_name(
 CLAIM_AUDIT_SCRIPT_PATH = Path(__file__).with_name(
     "validate_p4_v1_0_244_claims.py"
 )
+NULL_GENERATOR_SCRIPT_PATH = Path(__file__).with_name(
+    "generate_p4_primary_label_shuffle_v1_0_244.py"
+)
 SOURCE_PATH = ROOT / "pipelines/p5_desi_chirality/data/p4_chirality.parquet"
 DEFAULT_OUT = Path(__file__).with_name("apjs_release_v1.0.244")
-NULL_PATH = Path(__file__).parent / "outputs/canonical_provenance/c12_queue2_null_amps_10k.npy"
+NULL_PATH = Path(__file__).parent / "outputs/canonical_provenance/p4_primary_hc_label_shuffle_10k.npy"
+PIXEL_NULL_PATH = Path(__file__).parent / "outputs/canonical_provenance/c12_queue2_null_amps_10k.npy"
 SOURCE_RECEIPT_PATH = (
     Path(__file__).parent
     / "outputs/canonical_provenance/fig7_raw_vs_eq_manifest.json"
@@ -84,6 +89,17 @@ def sha256_file(path: Path, chunk_size: int = 8 * 1024 * 1024) -> str:
         while chunk := handle.read(chunk_size):
             digest.update(chunk)
     return digest.hexdigest()
+
+
+def repo_relative(path: Path) -> str:
+    """Return a portable repository-relative path for release receipts."""
+    resolved = path.resolve()
+    try:
+        return str(resolved.relative_to(ROOT.resolve()))
+    except ValueError:
+        # Tests and external verification may supply a temporary fixture. Keep
+        # the receipt portable without leaking a machine-absolute path.
+        return resolved.name
 
 
 def _numpy(batch: pa.RecordBatch, name: str) -> np.ndarray:
@@ -227,7 +243,7 @@ def validate_source_identity(source: Path, receipt_path: Path) -> dict[str, Any]
             f"source Parquet row count mismatch: {parquet_rows} != {EXPECTED['catalog_rows']}"
         )
     return {
-        "receipt_path": str(receipt_path),
+        "receipt_path": repo_relative(receipt_path),
         "receipt_sha256": sha256_file(receipt_path),
         "upstream_revision": catalog.get("revision"),
         "content_sha256": current_sha256,
@@ -322,8 +338,10 @@ def build_release(
 ) -> dict[str, Any]:
     source_identity = validate_source_identity(source, source_receipt_path)
     schema = json.loads(schema_path.read_text(encoding="utf-8"))
-    if schema.get("paper_version") != VERSION:
-        raise ReleaseError("machine schema is not pinned to v1.0.244")
+    if schema.get("catalog_payload_version") != CATALOG_PAYLOAD_VERSION:
+        raise ReleaseError("machine schema catalog payload is not pinned to v1.0.244")
+    if schema.get("paper_version") != PAPER_VERSION:
+        raise ReleaseError("machine schema paper binding is not pinned to v1.0.245")
     output_dir.mkdir(parents=True, exist_ok=True)
     final_primary = output_dir / schema["primary_product"]["filename"]
     final_quarantine = output_dir / schema["quarantine_product"]["filename"]
@@ -371,37 +389,50 @@ def build_release(
     os.replace(temp_quarantine, final_quarantine)
     schema_copy = output_dir / "SCHEMA.json"
     shutil.copy2(schema_path, schema_copy)
-    null_copy = output_dir / "primary_null_amps_10000.npy"
+    null_copy = output_dir / "primary_label_shuffle_amps_10000.npy"
     shutil.copy2(null_path, null_copy)
+    pixel_null_copy = output_dir / "pixel_permutation_amps_10000.npy"
+    if PIXEL_NULL_PATH.exists():
+        shutil.copy2(PIXEL_NULL_PATH, pixel_null_copy)
     dictionary_copy = output_dir / "CATALOG_SCHEMA.md"
     shutil.copy2(DATA_DICTIONARY_PATH, dictionary_copy)
     reproduction_copy = output_dir / REPRODUCTION_SCRIPT_PATH.name
     shutil.copy2(REPRODUCTION_SCRIPT_PATH, reproduction_copy)
     claim_audit_copy = output_dir / CLAIM_AUDIT_SCRIPT_PATH.name
     shutil.copy2(CLAIM_AUDIT_SCRIPT_PATH, claim_audit_copy)
+    null_generator_copy = output_dir / NULL_GENERATOR_SCRIPT_PATH.name
+    shutil.copy2(NULL_GENERATOR_SCRIPT_PATH, null_generator_copy)
 
     products = {}
     for role, path in (
         ("primary", final_primary),
         ("quarantine", final_quarantine),
         ("schema", schema_copy),
-        ("primary_null", null_copy),
+        ("primary_label_shuffle_null", null_copy),
         ("data_dictionary", dictionary_copy),
         ("reproduction_script", reproduction_copy),
         ("claim_audit_script", claim_audit_copy),
+        ("primary_null_generator", null_generator_copy),
     ):
         products[role] = {
             "filename": path.name,
             "bytes": path.stat().st_size,
             "sha256": sha256_file(path),
         }
+    if pixel_null_copy.exists():
+        products["pixel_permutation_robustness"] = {
+            "filename": pixel_null_copy.name,
+            "bytes": pixel_null_copy.stat().st_size,
+            "sha256": sha256_file(pixel_null_copy),
+        }
     manifest = {
         "schema": "p4-apjs-release-manifest/v1",
         "paper": "P4",
-        "paper_version": VERSION,
+        "paper_version": PAPER_VERSION,
+        "catalog_payload_version": CATALOG_PAYLOAD_VERSION,
         "created_at_utc": datetime.now(timezone.utc).isoformat(),
         "source": {
-            "path": str(source),
+            "path": repo_relative(source),
             "bytes": SOURCE_BYTES,
             "sha256": SOURCE_SHA256,
             "identity_validation": source_identity,

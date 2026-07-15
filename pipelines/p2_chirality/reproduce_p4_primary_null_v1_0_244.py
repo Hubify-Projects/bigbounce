@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
-"""Minimally reproduce the P4 v1.0.244 observed-label primary null.
+"""Minimally reproduce the P4 v1.0.245 observed-label primary null.
 
 This script consumes only the science-facing release Parquet and the retained
-10,000-realization null array.  It does not use raw-pass or reconstructed
-flip-pass scores, and it does not infer a physical or primordial amplitude.
+10,000-realization fixed-occupancy galaxy-label-shuffle null array.  The former
+pixel-permutation array is retained and reported as a robustness diagnostic.
+The script does not use raw-pass or reconstructed flip-pass scores, and it does
+not infer a physical or primordial amplitude.
 """
 
 from __future__ import annotations
@@ -23,8 +25,10 @@ import pyarrow.parquet as pq
 HERE = Path(__file__).resolve().parent
 DEFAULT_RELEASE = HERE / "apjs_release_v1.0.244"
 DEFAULT_CATALOG = DEFAULT_RELEASE / "p4_catalog_primary_safe_v1.0.244.parquet"
-DEFAULT_NULL = DEFAULT_RELEASE / "primary_null_amps_10000.npy"
-NULL_SHA256 = "62bb1c019231974c2a7ed5d5e43ceb77a5596e4675c82d7ff1c899e029a36492"
+DEFAULT_NULL = DEFAULT_RELEASE / "primary_label_shuffle_amps_10000.npy"
+DEFAULT_PIXEL_NULL = DEFAULT_RELEASE / "pixel_permutation_amps_10000.npy"
+NULL_SHA256 = "f6360f4bec22669097cee3e2fad8b176291d3ecbfbfbb9a9290d0bce3d5152c0"
+PIXEL_NULL_SHA256 = "62bb1c019231974c2a7ed5d5e43ceb77a5596e4675c82d7ff1c899e029a36492"
 NSIDE = 64
 MIN_PIXEL_COUNT = 10
 EXPECTED = {
@@ -33,8 +37,8 @@ EXPECTED = {
     "amplitude": 0.004597074287780104,
     "equatorial_ra_deg": 294.30537030397005,
     "equatorial_dec_deg": 16.029115977736286,
-    "significance_sigma": 0.549120193418297,
-    "rank_p_one_sided_upper_tail": 0.26517348265173485,
+    "significance_sigma": 0.7053169637972659,
+    "rank_p_one_sided_upper_tail": 0.22467753224677534,
 }
 
 
@@ -50,7 +54,12 @@ def sha256_file(path: Path) -> str:
     return digest.hexdigest()
 
 
-def reproduce(catalog_path: Path, null_path: Path, enforce_expected: bool = True) -> dict:
+def reproduce(
+    catalog_path: Path,
+    null_path: Path,
+    pixel_null_path: Path | None = None,
+    enforce_expected: bool = True,
+) -> dict:
     table = pq.read_table(
         catalog_path,
         columns=["ra_deg", "dec_deg", "class_eq", "primary_hc"],
@@ -89,7 +98,7 @@ def reproduce(catalog_path: Path, null_path: Path, enforce_expected: bool = True
 
     result = {
         "schema": "p4-primary-null-reproduction/v1",
-        "paper_version": "v1.0.244",
+        "paper_version": "v1.0.245",
         "status": "PASS",
         "scope": "observed equivariant hard labels; descriptive isotropy null only",
         "support": "HC_REALSPACE_INCLUSIVE",
@@ -101,7 +110,10 @@ def reproduce(catalog_path: Path, null_path: Path, enforce_expected: bool = True
         "equatorial_dec_deg": dec_dipole,
         "monopole": float(monopole),
         "null": {
-            "definition": "10,000 per-pixel asymmetry-value permutations on fixed HC_REALSPACE_INCLUSIVE support",
+            "definition": (
+                "10,000 fixed-occupancy galaxy-label randomizations on "
+                "HC_REALSPACE_INCLUSIVE; global CW total preserved exactly"
+            ),
             "n_realizations": int(null.size),
             "array_sha256": null_sha256,
             "mean": null_mean,
@@ -119,6 +131,29 @@ def reproduce(catalog_path: Path, null_path: Path, enforce_expected: bool = True
         ],
     }
 
+    if pixel_null_path is not None and pixel_null_path.exists():
+        pixel_sha256 = sha256_file(pixel_null_path)
+        pixel_null = np.load(pixel_null_path, allow_pickle=False)
+        if pixel_null.shape != (10_000,):
+            raise ReproductionError(
+                f"pixel robustness null shape {pixel_null.shape}; expected (10000,)"
+            )
+        pixel_rank_k = int(np.count_nonzero(pixel_null >= amplitude))
+        result["pixel_permutation_robustness"] = {
+            "role": "robustness diagnostic; not primary",
+            "array_sha256": pixel_sha256,
+            "n_realizations": int(pixel_null.size),
+            "mean": float(pixel_null.mean()),
+            "std_ddof0": float(pixel_null.std(ddof=0)),
+            "significance_sigma": float(
+                (amplitude - pixel_null.mean()) / pixel_null.std(ddof=0)
+            ),
+            "rank_k": pixel_rank_k,
+            "rank_p_one_sided_upper_tail": float(
+                (pixel_rank_k + 1) / (pixel_null.size + 1)
+            ),
+        }
+
     if enforce_expected:
         checks = {
             "n_primary_hc": result["n_primary_hc"] == EXPECTED["n_primary_hc"],
@@ -130,6 +165,11 @@ def reproduce(catalog_path: Path, null_path: Path, enforce_expected: bool = True
             "significance_sigma": bool(np.isclose(sigma, EXPECTED["significance_sigma"], rtol=0, atol=1e-12)),
             "rank_p": bool(np.isclose(rank_p, EXPECTED["rank_p_one_sided_upper_tail"], rtol=0, atol=1e-15)),
         }
+        if pixel_null_path is not None and pixel_null_path.exists():
+            checks["pixel_null_sha256"] = (
+                result["pixel_permutation_robustness"]["array_sha256"]
+                == PIXEL_NULL_SHA256
+            )
         result["hard_gates"] = checks
         if not all(checks.values()):
             result["status"] = "FAIL"
@@ -141,10 +181,11 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--catalog", type=Path, default=DEFAULT_CATALOG)
     parser.add_argument("--null-array", type=Path, default=DEFAULT_NULL)
+    parser.add_argument("--pixel-null-array", type=Path, default=DEFAULT_PIXEL_NULL)
     parser.add_argument("--output", type=Path)
     args = parser.parse_args(argv)
     try:
-        result = reproduce(args.catalog, args.null_array)
+        result = reproduce(args.catalog, args.null_array, args.pixel_null_array)
     except (OSError, ValueError, ReproductionError) as exc:
         print(f"FAIL: {exc}", file=sys.stderr)
         return 1

@@ -18,7 +18,7 @@ finding CG-G-6 (raw vs canonical output disambiguation).
 | Fisher Poisson floor: 0.29% (full-amp, 3σ) | §VI.C | `outputs/canonical_provenance/fisher_sensitivity_floor.json` |
 | MC seed manifest (all randomized analyses) | §IV.C / §IV.D / §VI.B | `outputs/canonical_provenance/mc_seed_manifest.json` |
 | Validation accuracy: 93.7% internal three-class | §II.B / Table I | `r42_results/B20_B21_results.json` |
-| Independent GZ1 CW/CCW agreement: 69.91%, κ = 0.40 | Abstract, §II.B, §III.F | `r42_results/B20_B21_results.json` |
+| Full-overlap GZ1 CW/CCW agreement: 69.91%, κ = 0.40 (overlap-contaminated) | Abstract, §II.B, §III.F | `r42_results/B20_B21_results.json` |
 | Per-imaging-leg systematics (BASS+MzLS / DECaLS / DES) | §IV.E (new in v1.0.69), Table | `outputs/canonical_provenance/per_imaging_leg_systematics.json` (v1.0.69) |
 | Face-on (HC-spiral) robustness rerun | §VI.D | `outputs/canonical_provenance/face_on_robustness_results.json` (v1.0.69) |
 | Monopole+mask leakage null simulation | §VI.B (new in v1.0.69) | `outputs/canonical_provenance/monopole_mask_null_results.json` + `*.npy` distributions (v1.0.69) |
@@ -66,7 +66,10 @@ of 0.26% (9.5σ) attributed to GZ1 human-handedness training bias
 propagating through CE-ResNet pseudo-labels. The catalog labels are
 **not** ground-truth chirality and should not be used for precision
 parity tests below the empirical >0.5% amplitude floor without local
-re-normalization of the per-region monopole. The independent GZ1
-CW/CCW agreement on the 234,282-galaxy disjoint cross-match is 69.91%
-(Cohen's κ = 0.40); per-galaxy labels are probabilistic classifier
+re-normalization of the per-region monopole. The full $1''$ GZ1 cross-match
+contains 240,919 rows; 117,205 are chirality-evaluable GZ1 spirals that the
+classifier labels CW or CCW. Agreement on that subset is 69.91% (Cohen's
+κ = 0.40). Because no retained object-level anti-join excludes the 6,637 GZ1
+training rows, this result is overlap-contaminated and descriptive rather than
+an independent validation. Per-galaxy labels are probabilistic classifier
 outputs, not deterministic visual classifications.
