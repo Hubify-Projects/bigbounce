@@ -14,6 +14,7 @@ import tempfile
 from pathlib import Path
 from typing import Any
 
+from bigbounce_preflight import DEFAULT_RULES, verify_receipt
 from paper_registry import CANONICAL_IDS, load_registry, repo_root
 
 
@@ -76,12 +77,14 @@ def packet_key(
     context_sha: str,
     model: str,
     effort: str,
+    preflight_core_sha: str,
 ) -> str:
     fields = {
         "pdf_sha256": pdf_sha, "review_profile_id": profile,
         "prompt_sha256": prompt_sha,
         "allowed_context_sha256": context_sha,
         "model": model, "effort": effort,
+        "preflight_core_sha256": preflight_core_sha,
     }
     return sha256_bytes(json.dumps(fields, sort_keys=True, separators=(",", ":")).encode())
 
@@ -129,8 +132,18 @@ def build_packet(
     effort: str,
     expected_pdf_sha: str | None = None,
     cache_root: Path | None = None,
+    preflight_receipt: Path | None = None,
 ) -> dict[str, Any]:
     root = root.resolve()
+    preflight_receipt = preflight_receipt or (
+        Path(os.environ["BIGBOUNCE_PREFLIGHT_RECEIPT"])
+        if os.environ.get("BIGBOUNCE_PREFLIGHT_RECEIPT") else None
+    )
+    if preflight_receipt is None:
+        raise ValueError("a matching PASS portfolio preflight receipt is required")
+    preflight = verify_receipt(
+        root, root / DEFAULT_RULES, Path(preflight_receipt),
+    )
     tex_rel, pdf_rel = entry["tex_path"], entry["pdf_path"]
     tex, pdf = root / tex_rel, root / pdf_rel
     if not tex.is_file() or not pdf.is_file():
@@ -146,21 +159,48 @@ def build_packet(
         raise ValueError(f"PDF SHA mismatch: expected {expected_pdf_sha}, got {pdf_sha}")
     prompt_sha = sha256_bytes(prompt)
     context_sha = sha256_bytes(allowed_context)
+    preflight_paper = next(
+        (item for item in preflight["papers"] if item["paper_id"] == paper_id), None,
+    )
+    if preflight_paper is None:
+        raise ValueError(f"portfolio preflight has no record for {paper_id}")
+    live_pages = page_count(resolve_pdf_snapshot(
+        {"pdf_snapshot_path": snapshot, "pdf_sha256": pdf_sha}, cache_root,
+    ))
+    binding = {
+        "source_path": tex_rel,
+        "source_sha256": source_sha,
+        "pdf_path": pdf_rel,
+        "pdf_sha256": pdf_sha,
+        "version": live_version(tex),
+        "pages": live_pages,
+    }
+    expected_binding = {
+        "source_path": preflight_paper["source"]["path"],
+        "source_sha256": preflight_paper["source"]["sha256"],
+        "pdf_path": preflight_paper["pdf"]["path"],
+        "pdf_sha256": preflight_paper["pdf"]["sha256"],
+        "version": preflight_paper["version"],
+        "pages": preflight_paper["pages"],
+    }
+    if binding != expected_binding:
+        raise ValueError(f"review packet inputs do not match PASS portfolio preflight for {paper_id}")
+    current_head = run_git(root, "rev-parse", "HEAD")
+    if current_head != preflight["repository_head"]:
+        raise ValueError("repository HEAD changed after portfolio preflight verification")
     source_last_commit = run_git(root, "log", "-1", "--format=%H", "--", tex_rel)
     if not source_last_commit:
         raise ValueError(f"source path has no commit: {tex_rel}")
     key = packet_key(
         pdf_sha, entry["review_profile"], prompt_sha, context_sha, model, effort,
-    )
-    snapshot_path = resolve_pdf_snapshot(
-        {"pdf_snapshot_path": snapshot, "pdf_sha256": pdf_sha}, cache_root,
+        preflight["core_sha256"],
     )
     return {
-        "schema_version": 2,
+        "schema_version": 3,
         "packet_key": key,
         "paper_id": paper_id,
-        "paper_version": live_version(tex),
-        "repository_head": run_git(root, "rev-parse", "HEAD"),
+        "paper_version": binding["version"],
+        "repository_head": current_head,
         "source_commit": source_last_commit,
         "source_last_commit": source_last_commit,
         "source_path": tex_rel,
@@ -168,7 +208,7 @@ def build_packet(
         "pdf_path": pdf_rel,
         "pdf_sha256": pdf_sha,
         "pdf_snapshot_path": str(snapshot),
-        "page_count": page_count(snapshot_path),
+        "page_count": live_pages,
         "site_slug": entry["site_slug"],
         "target_journal": entry["target_journal"],
         "article_type": entry["article_type"],
@@ -177,6 +217,15 @@ def build_packet(
         "allowed_context_sha256": context_sha,
         "model": model,
         "effort": effort,
+        "preflight": {
+            "schema": preflight["schema"],
+            "verdict": preflight["verdict"],
+            "repository_head": preflight["repository_head"],
+            "core_sha256": preflight["core_sha256"],
+            "receipt_sha256": preflight["receipt_sha256"],
+            "generic_rule_receipt_sha256": preflight["generic_rule_receipt_sha256"],
+            "paper": preflight_paper,
+        },
     }
 
 
@@ -228,6 +277,7 @@ def main() -> None:
     parser.add_argument("--model", required=True)
     parser.add_argument("--effort", required=True)
     parser.add_argument("--expected-pdf-sha")
+    parser.add_argument("--preflight-receipt", required=True, type=Path)
     parser.add_argument("--output-root", type=Path)
     args = parser.parse_args()
     root = repo_root()
@@ -237,7 +287,7 @@ def main() -> None:
     packet = build_packet(
         root, args.paper, registry[args.paper], args.prompt_file.read_bytes(),
         context, args.model, args.effort, args.expected_pdf_sha,
-        cache_root,
+        cache_root, preflight_receipt=args.preflight_receipt,
     )
     output = args.output_root or cache_root / "packets"
     path, reused = publish_packet(packet, output, args.prompt_file.read_bytes(), context)

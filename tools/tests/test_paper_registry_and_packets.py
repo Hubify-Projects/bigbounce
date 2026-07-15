@@ -15,8 +15,14 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "tools"))
 
 from paper_registry import CANONICAL_IDS, load_registry, repo_root  # noqa: E402
+from bigbounce_preflight import (  # noqa: E402
+    PortfolioError,
+    canonical_bytes,
+    sha256 as preflight_sha256,
+)
 from review_packet import (  # noqa: E402
     build_packet,
+    page_count,
     packet_key,
     publish_packet,
     resolve_pdf_snapshot,
@@ -62,14 +68,44 @@ class PacketTests(unittest.TestCase):
             "site_slug": "paper-test", "target_journal": "Test Journal",
             "article_type": "Research Article", "review_profile": "TEST-PROFILE",
         }
+        self.preflight_path = self.root / "preflight.json"
+        self.write_preflight()
 
     def tearDown(self):
         self.tmp.cleanup()
 
+    def write_preflight(self, *, verdict="PASS"):
+        source = self.root / "paper/test.tex"
+        pdf = self.root / "paper/test.pdf"
+        head = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=self.root, text=True).strip()
+        paper = {
+            "paper_id": "PTEST", "verdict": "PASS",
+            "version": "vTEST.1", "pages": page_count(pdf),
+            "source": {"path": "paper/test.tex", "bytes": source.stat().st_size, "sha256": sha256_file(source)},
+            "pdf": {"path": "paper/test.pdf", "bytes": pdf.stat().st_size, "sha256": sha256_file(pdf)},
+        }
+        receipt = {
+            "schema": "bigbounce.pre-review-portfolio-receipt/v1",
+            "repository_head": head,
+            "registry": {}, "generic_engine": {}, "generic_rule_receipt": {"verdict": "PASS"},
+            "generic_rule_receipt_sha256": "g" * 64,
+            "papers": [paper], "paper_count": 1, "verdict": verdict,
+        }
+        receipt["core_sha256"] = preflight_sha256(canonical_bytes(receipt))
+        receipt["generated_at"] = "2026-01-01T00:00:00Z"
+        receipt["receipt_sha256"] = preflight_sha256(canonical_bytes(receipt))
+        self.preflight_path.write_text(json.dumps(receipt), encoding="utf-8")
+
     def packet(self, expected=None):
+        patch = mock.patch("review_packet.verify_receipt", return_value=json.loads(self.preflight_path.read_text()))
+        with patch:
+            return self._packet(expected)
+
+    def _packet(self, expected=None, receipt=None):
         return build_packet(
             self.root, "PTEST", self.entry, b"prompt", b"context",
             "model-x", "high", expected, self.root / "cache",
+            preflight_receipt=receipt or self.preflight_path,
         )
 
     def test_exact_key_reuse(self):
@@ -91,15 +127,46 @@ class PacketTests(unittest.TestCase):
         )
 
     def test_labeled_key_has_no_concatenation_ambiguity(self):
-        left = packet_key("ab", "c", "d", "ctx", "e", "f")
-        right = packet_key("a", "bc", "d", "ctx", "e", "f")
+        left = packet_key("ab", "c", "d", "ctx", "e", "f", "preflight")
+        right = packet_key("a", "bc", "d", "ctx", "e", "f", "preflight")
         self.assertNotEqual(left, right)
 
     def test_context_hash_changes_packet_key(self):
         common = ("pdf", "profile", "prompt")
-        left = packet_key(*common, sha256_bytes(b"left"), "model", "high")
-        right = packet_key(*common, sha256_bytes(b"right"), "model", "high")
+        left = packet_key(*common, sha256_bytes(b"left"), "model", "high", "preflight")
+        right = packet_key(*common, sha256_bytes(b"right"), "model", "high", "preflight")
         self.assertNotEqual(left, right)
+
+    def test_preflight_hash_changes_packet_key(self):
+        common = ("pdf", "profile", "prompt", "context", "model", "high")
+        self.assertNotEqual(packet_key(*common, "left"), packet_key(*common, "right"))
+
+    def test_missing_preflight_fails_closed(self):
+        with mock.patch.dict("os.environ", {}, clear=True):
+            with self.assertRaisesRegex(ValueError, "preflight receipt is required"):
+                build_packet(self.root, "PTEST", self.entry, b"p", b"c", "m", "high")
+
+    def test_preflight_can_be_supplied_by_environment(self):
+        preflight = json.loads(self.preflight_path.read_text())
+        with mock.patch.dict("os.environ", {"BIGBOUNCE_PREFLIGHT_RECEIPT": str(self.preflight_path)}), \
+             mock.patch("review_packet.verify_receipt", return_value=preflight):
+            packet = build_packet(
+                self.root, "PTEST", self.entry, b"prompt", b"context",
+                "model-x", "high", cache_root=self.root / "cache",
+            )
+        self.assertEqual(packet["preflight"]["core_sha256"], preflight["core_sha256"])
+
+    def test_non_pass_preflight_fails_closed(self):
+        with mock.patch("review_packet.verify_receipt", side_effect=PortfolioError("not a PASS receipt")):
+            with self.assertRaisesRegex(PortfolioError, "not a PASS"):
+                self._packet()
+
+    def test_wrong_preflight_paper_binding_fails_closed(self):
+        preflight = json.loads(self.preflight_path.read_text())
+        preflight["papers"][0]["source"]["sha256"] = "0" * 64
+        with mock.patch("review_packet.verify_receipt", return_value=preflight):
+            with self.assertRaisesRegex(ValueError, "do not match PASS portfolio"):
+                self._packet()
 
     def test_incomplete_packet_is_not_reused(self):
         packet = self.packet()
