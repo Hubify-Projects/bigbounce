@@ -16,6 +16,10 @@
         {
           "source": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P1A-v1A.0.123-CQG-NOTE-MINOR-CLOSURE/closure/P1A_v1A.0.123.bbl",
           "archive_name": "paper1a_ech_nogo.bbl"
+        },
+        {
+          "source": "arxiv/references.bib",
+          "archive_name": "references.bib"
         }
       ],
       "provenance_globs": [

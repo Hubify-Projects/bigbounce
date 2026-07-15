@@ -242,9 +242,20 @@ def verify_tarball(root: Path, tarball: Path, main_tex: str, expected_pages: int
                 raise DepositError(f"standalone compile failed with {Path(engine).name}")
         compiled = tex.with_suffix(".pdf")
         pages = pdf_page_count(root, compiled)
-        log = combined.decode(errors="replace")
-        undefined = len(re.findall(r"(?:Reference|Citation).*undefined", log, re.IGNORECASE))
+        console = combined.decode(errors="replace")
+        log_path = tex.with_suffix(".log")
+        file_log = log_path.read_text(encoding="utf-8", errors="replace") if log_path.is_file() else ""
+        log = console + "\n" + file_log
+        undefined = len(
+            re.findall(
+                r"(?:Reference|Citation).*?undefined|There were undefined (?:references|citations)",
+                log,
+                re.IGNORECASE | re.DOTALL,
+            )
+        )
         errors = len(re.findall(r"^!", log, re.MULTILINE))
+        overfull_hboxes = len(re.findall(r"Overfull \\hbox", file_log))
+        overfull_vboxes = len(re.findall(r"Overfull \\vbox", file_log))
         if pages != expected_pages or errors or undefined:
             raise DepositError(
                 f"standalone compile mismatch: pages={pages}, errors={errors}, undefined={undefined}"
@@ -258,6 +269,8 @@ def verify_tarball(root: Path, tarball: Path, main_tex: str, expected_pages: int
             "compiled_pdf_md5": digest(compiled, "md5"),
             "errors": errors,
             "undefined_references": undefined,
+            "overfull_hboxes": overfull_hboxes,
+            "overfull_vboxes": overfull_vboxes,
             "mode": "isolated-safe-extraction",
         }
 
