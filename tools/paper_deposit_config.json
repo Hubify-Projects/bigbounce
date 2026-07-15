@@ -1,0 +1,39 @@
+{
+  "schema": "bigbounce-paper-deposit-config/v1",
+  "papers": {
+    "P4": {
+      "tex": "pipelines/p2_chirality/chirality_catalog_paper.tex",
+      "pdf": "pipelines/p2_chirality/chirality_catalog_paper.pdf",
+      "arxiv_tarball": "project-context/SSOT/arxiv_tarballs/paper4_arxiv_{version}.tar.gz",
+      "standalone_proof": "project-context/SSOT/arxiv_tarballs/paper4_arxiv_{version}.proof.json",
+      "tarball_main_tex": "chirality_catalog_paper.tex",
+      "deposit_root": ".deposit-staging",
+      "provenance_globs": [
+        "pipelines/p2_chirality/outputs/canonical_provenance/**/*"
+      ],
+      "extra_assets": [
+        "project-context/pdf-archive/manifests/2026/07/20260715T140000Z-p4-v1.0.252-1ebd0cc4.json"
+      ],
+      "provenance_archive": "P4_v1.0.252_tracked_provenance.tar.gz",
+      "metadata": {
+        "title": "An Observed-Label Chirality-Dipole Null in 949,584 High-Confidence DESI Spirals and an 8.5-Million-Galaxy Catalog",
+        "creators": [
+          {
+            "name": "Golden, Houston"
+          }
+        ],
+        "description": "Version-matched manuscript PDF and self-contained arXiv source bundle for the BigBounce galaxy-chirality catalog paper.",
+        "upload_type": "publication",
+        "publication_type": "article",
+        "access_right": "open",
+        "license": "cc-by-4.0",
+        "keywords": [
+          "galaxy morphology",
+          "galaxy chirality",
+          "parity violation",
+          "astronomical catalogs"
+        ]
+      }
+    }
+  }
+}
