@@ -29,8 +29,8 @@ consistency, deterministic argmax label semantics, derived spiral and primary
 selection flags, all declared aggregate counts, quarantine reason codes, the
 quarantine do-not-use invariant, and exact row-level equality between quarantine
 IDs and primary rows marked `raw_flip_qc_unsafe=True`, including per-row HC-flag
-agreement. `SEMANTIC_VALIDATION_RECEIPT.json` records the preceding full scan;
-the strengthened row-equivalence gates require a fresh full scan before publication.
+agreement. `SEMANTIC_VALIDATION_RECEIPT.json` records the successful strengthened
+full scan executed for the Paper IV v1.0.255 closure.
 
 `SEMANTIC_CONTRACT.json` is the authoritative machine-readable binding. The
 provider receipt is pinned at `e535b26247c892971963be6029435544cf29d19b` and

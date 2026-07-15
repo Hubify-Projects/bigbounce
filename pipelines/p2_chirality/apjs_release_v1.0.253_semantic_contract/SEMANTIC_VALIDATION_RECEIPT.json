@@ -4,16 +4,18 @@
   "paper": "P4",
   "paper_version": "v1.0.253",
   "schema": "p4-catalog-c-semantic-validation-receipt/v1",
-  "status": "SUPERSEDED_REVALIDATION_REQUIRED",
-  "source_receipt": "pipelines/p2_chirality/outputs/canonical_provenance/p4_catalog_c_semantic_validation_v1_0_253.json",
-  "source_receipt_bytes": 3925,
-  "source_receipt_sha256": "b4baa0bb2e2c3fb076e18065c26095465bd552b9dbee0ca48d51fda2331ab1db",
+  "status": "PASS",
+  "source_receipt": "pipelines/p2_chirality/outputs/canonical_provenance/p4_catalog_c_semantic_validation_v1_0_255.json",
+  "source_receipt_bytes": 5173,
+  "source_receipt_sha256": "81741ca551e7c1eecf42d7bef5da3dbf3b9e117956a045a2da519250f8b7cb8b",
   "validation_summary": {
     "rows_scanned": 8474531,
     "semantic_violation_count": 0,
     "semantic_gates_passed": 12,
-    "aggregate_and_quarantine_gates_passed": 8,
+    "aggregate_and_quarantine_gates_passed": 15,
+    "quarantine_rows_scanned": 249066,
+    "quarantine_identity_violation_count": 0,
     "uniqueness_backend": "temporary SQLite PRIMARY KEY (disk-backed)"
   },
-  "note": "Portable summary of the preceding full repository receipt. It predates the strengthened quarantine row-equivalence gates and cannot establish that closure; rerun before provider publication."
+  "note": "Portable summary of the full strengthened repository scan. The catalog contract remains v1.0.253 and the immutable payload remains v1.0.244; this revalidation was executed for the P4 v1.0.255 closure."
 }
