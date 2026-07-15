@@ -14,6 +14,8 @@ import urllib.request
 from pathlib import Path
 
 import prepare_runpod_production as prep
+import generate_remote_bootstrap as bootstrap
+import verify_runpod_s3_retention as s3verify
 
 
 API_BASE = "https://rest.runpod.io/v1"
@@ -140,10 +142,19 @@ def field(pod: dict, *names):
 def launch(*, client, manifest: dict, expected_commit: str, contract: dict, balance_path: Path,
            balance_max_age_minutes: int, max_hourly_rate: float, max_total_budget: float,
            max_runtime_minutes: int, gpu_type_id: str, receipt_path: Path,
-           now_fn=utcnow) -> dict:
+           network_volume_id: str | None = None, datacenter_id: str | None = None,
+           s3_client=None, retention_staging: Path | None = None,
+           retention_receipt: Path | None = None, poll_seconds: int = 30,
+           now_fn=utcnow, sleep_fn=time.sleep) -> dict:
     validate_manifest(manifest, expected_commit, contract)
     if contract.get("provider_mutation_ready") is not True:
         raise ValueError("contract provider_mutation_ready is false; refusing before RunPod HTTP")
+    if not network_volume_id:
+        raise ValueError("networkVolumeId is required before RunPod HTTP")
+    if datacenter_id not in s3verify.RUNPOD_S3_ENDPOINTS:
+        raise ValueError("supported network-volume datacenter is required before RunPod HTTP")
+    if retention_staging is None or retention_receipt is None or s3_client is None:
+        raise ValueError("S3 client, local staging, and verification receipt are required before RunPod HTTP")
     if min(max_hourly_rate, max_total_budget, max_runtime_minutes) <= 0:
         raise ValueError("hourly rate, total budget, and runtime ceilings must be positive")
     runtime_budget = max_hourly_rate * max_runtime_minutes / 60
@@ -154,13 +165,22 @@ def launch(*, client, manifest: dict, expected_commit: str, contract: dict, bala
     if any(field(pod, "name") == name for pod in pod_rows(client.list_pods())):
         raise ValueError(f"refusing duplicate deterministic pod name: {name}")
     image = manifest["container"]["image"]
+    remote_argv = bootstrap.generate(
+        manifest, Path("/tmp/bound-production-manifest.json"), Path("/tmp/p1b-work"),
+        Path("/tmp/p1b-state"), Path("/workspace/p1b-retention"),
+    )
+    if remote_argv[:2] != ["bash", "-lc"] or len(remote_argv) != 3:
+        raise ValueError("bound bootstrap did not produce exact bash entrypoint/start command")
     payload = {
         "name": name,
         "imageName": image,
         "gpuTypeIds": [gpu_type_id],
         "gpuCount": 1,
         "containerDiskInGb": 40,
-        "volumeInGb": 40,
+        "networkVolumeId": network_volume_id,
+        "dataCenterIds": [datacenter_id],
+        "dockerEntrypoint": remote_argv[:2],
+        "dockerStartCmd": [remote_argv[2]],
         "env": {"P1B_GIT_COMMIT": expected_commit, "P1B_MAX_RUNTIME_MINUTES": str(max_runtime_minutes)},
     }
     pod = client.create_pod(payload)
@@ -193,7 +213,72 @@ def launch(*, client, manifest: dict, expected_commit: str, contract: dict, bala
              "cost_per_hour_usd": cost, "max_total_budget_usd": max_total_budget,
              "deadline": deadline.isoformat(), "balance_receipt": balance}
     append_receipt(receipt_path, event)
-    return event
+    # There is deliberately no return-to-caller gap after create: supervision
+    # starts in the same stack frame and owns deletion decisions.
+    result = supervise(
+        client=client, s3_client=s3_client, pod_id=pod_id, manifest=manifest,
+        network_volume_id=network_volume_id, datacenter_id=datacenter_id,
+        retention_staging=retention_staging, retention_receipt=retention_receipt,
+        receipt_path=receipt_path, created_at=now_fn(), deadline=deadline,
+        max_total_budget=max_total_budget, max_hourly_rate=max_hourly_rate,
+        cost_per_hour=cost, poll_seconds=poll_seconds, now_fn=now_fn, sleep_fn=sleep_fn,
+    )
+    return {**event, "supervision_result": result}
+
+
+def retention_prefix(manifest: dict) -> str:
+    return f"p1b-retention/{manifest['contract_id']}--{manifest['git_commit']}"
+
+
+def supervise(*, client, s3_client, pod_id: str, manifest: dict,
+              network_volume_id: str, datacenter_id: str,
+              retention_staging: Path, retention_receipt: Path, receipt_path: Path,
+              created_at: dt.datetime, deadline: dt.datetime, max_total_budget: float,
+              max_hourly_rate: float, cost_per_hour: float, poll_seconds=30,
+              now_fn=utcnow, sleep_fn=time.sleep) -> str:
+    """Continuously supervise cost and independently verify S3 before deletion."""
+    while True:
+        now = now_fn()
+        accrued = cost_per_hour * max(0, (now - created_at).total_seconds()) / 3600
+        if now >= deadline or accrued >= max_total_budget:
+            client.delete_pod(pod_id)
+            reason = "deadline" if now >= deadline else "budget"
+            append_receipt(receipt_path, {"at": now.isoformat(), "event": "supervisor_cost_deleted_unverified",
+                                         "pod_id": pod_id, "reason": reason})
+            return reason
+
+        pod = client.get_pod(pod_id)
+        live_cost = field(pod, "costPerHr", "desiredCostPerHr", "costPerHour")
+        if isinstance(live_cost, (int, float)) and live_cost > max_hourly_rate:
+            client.delete_pod(pod_id)
+            append_receipt(receipt_path, {"at": now.isoformat(), "event": "supervisor_price_deleted_unverified",
+                                         "pod_id": pod_id, "reason": "hourly_rate"})
+            return "hourly_rate"
+
+        ambiguity = None
+        try:
+            s3verify.download_and_verify(
+                client=s3_client, network_volume_id=network_volume_id,
+                datacenter_id=datacenter_id, prefix=retention_prefix(manifest),
+                staging_root=retention_staging, manifest=manifest,
+                receipt_path=retention_receipt,
+            )
+        except Exception as error:
+            # Provider exceptions can contain request metadata; persist only a
+            # non-sensitive classification, never exception text or credentials.
+            ambiguity = type(error).__name__
+        else:
+            client.delete_pod(pod_id)
+            append_receipt(receipt_path, {"at": now.isoformat(), "event": "verified_retention_then_deleted",
+                                         "pod_id": pod_id, "verification_receipt": str(retention_receipt)})
+            return "verified"
+
+        status = str(field(pod, "status", "desiredStatus") or "").upper()
+        if status in {"EXITED", "TERMINATED", "STOPPED"}:
+            append_receipt(receipt_path, {"at": now.isoformat(), "event": "terminal_retained_for_manual_review",
+                                         "pod_id": pod_id, "s3_ambiguity": ambiguity})
+            return "terminal_unverified"
+        sleep_fn(poll_seconds)
 
 
 def watchdog(client, pod_id: str, created_at: dt.datetime, deadline: dt.datetime, max_total_budget: float,
@@ -228,6 +313,10 @@ def parse_args():
     parser.add_argument("--max-total-budget-usd", type=float)
     parser.add_argument("--max-runtime-minutes", type=int)
     parser.add_argument("--gpu-type-id")
+    parser.add_argument("--network-volume-id")
+    parser.add_argument("--datacenter-id", choices=sorted(s3verify.RUNPOD_S3_ENDPOINTS))
+    parser.add_argument("--retention-staging", type=Path)
+    parser.add_argument("--retention-verification-receipt", type=Path)
     parser.add_argument("--launch", action="store_true")
     parser.add_argument("--confirm")
     parser.add_argument("--watchdog", action="store_true")
@@ -275,14 +364,18 @@ def main() -> int:
     if contract.get("provider_mutation_ready") is not True:
         raise ValueError("contract provider_mutation_ready is false; refusing before RunPod HTTP")
     required = (args.balance_receipt, args.max_hourly_rate_usd, args.max_total_budget_usd,
-                args.max_runtime_minutes, args.gpu_type_id)
+                args.max_runtime_minutes, args.gpu_type_id, args.network_volume_id,
+                args.datacenter_id, args.retention_staging, args.retention_verification_receipt)
     if any(value is None for value in required):
         raise ValueError("launch requires balance, rate, budget, runtime, and GPU type ceilings")
     launch(client=client, manifest=manifest, expected_commit=args.expected_commit, contract=contract,
            balance_path=args.balance_receipt, balance_max_age_minutes=args.balance_max_age_minutes,
            max_hourly_rate=args.max_hourly_rate_usd, max_total_budget=args.max_total_budget_usd,
            max_runtime_minutes=args.max_runtime_minutes, gpu_type_id=args.gpu_type_id,
-           receipt_path=args.receipt)
+           receipt_path=args.receipt, network_volume_id=args.network_volume_id,
+           datacenter_id=args.datacenter_id, s3_client=s3verify.s3_client(args.datacenter_id),
+           retention_staging=args.retention_staging,
+           retention_receipt=args.retention_verification_receipt)
     return 0
 
 

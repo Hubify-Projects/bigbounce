@@ -53,7 +53,9 @@ class LauncherTest(unittest.TestCase):
         }))
         self.commit = "1" * 40
         self.image = "repo/image@sha256:" + "a" * 64
-        self.manifest = {"git_commit": self.commit, "container": {"image": self.image}}
+        self.manifest = {"git_commit": self.commit, "contract_id": "contract-v1",
+                         "input_sha256": {"contract.json": "b" * 64},
+                         "container": {"image": self.image, "install": ["true"]}}
 
     def tearDown(self): self.temp.cleanup()
 
@@ -63,10 +65,13 @@ class LauncherTest(unittest.TestCase):
             contract={"provider_mutation_ready": True}, balance_path=self.balance, balance_max_age_minutes=15,
             max_hourly_rate=0.5, max_total_budget=1, max_runtime_minutes=60,
             gpu_type_id="NVIDIA RTX A4000", receipt_path=self.receipt,
+            network_volume_id="vol-1", datacenter_id="US-KS-2", s3_client=object(),
+            retention_staging=self.root / "download", retention_receipt=self.root / "verified.json",
             now_fn=lambda: NOW,
         )
         values.update(updates)
-        with mock.patch.object(MODULE, "validate_manifest"):
+        with mock.patch.object(MODULE, "validate_manifest"), \
+             mock.patch.object(MODULE, "supervise", return_value="verified"):
             return MODULE.launch(**values)
 
     def test_default_cli_dry_run_does_not_construct_or_mutate_client(self):
@@ -131,6 +136,89 @@ class LauncherTest(unittest.TestCase):
         self.assertEqual(payload["gpuCount"], 1)
         self.assertEqual(payload["gpuTypeIds"], ["NVIDIA RTX A4000"])
         self.assertEqual(payload["imageName"], self.image)
+        self.assertEqual(payload["networkVolumeId"], "vol-1")
+        self.assertEqual(payload["dataCenterIds"], ["US-KS-2"])
+        self.assertEqual(payload["dockerEntrypoint"], ["bash", "-lc"])
+        self.assertEqual(len(payload["dockerStartCmd"]), 1)
+        self.assertIn(self.commit, payload["dockerStartCmd"][0])
+
+    def test_launch_enters_supervisor_immediately(self):
+        client = Client()
+        with mock.patch.object(MODULE, "validate_manifest"), \
+             mock.patch.object(MODULE, "supervise", return_value="verified") as supervisor:
+            MODULE.launch(
+                client=client, manifest=self.manifest, expected_commit=self.commit,
+                contract={"provider_mutation_ready": True}, balance_path=self.balance,
+                balance_max_age_minutes=15, max_hourly_rate=0.5, max_total_budget=1,
+                max_runtime_minutes=60, gpu_type_id="NVIDIA RTX A4000",
+                receipt_path=self.receipt, network_volume_id="vol-1", datacenter_id="US-KS-2",
+                s3_client=object(), retention_staging=self.root / "stage",
+                retention_receipt=self.root / "verified.json", now_fn=lambda: NOW,
+            )
+        supervisor.assert_called_once()
+
+    def test_supervisor_verifies_retention_before_delete(self):
+        client = Client()
+        client.get_result = {"status": "RUNNING", "costPerHr": 0.25}
+        with mock.patch.object(MODULE.s3verify, "download_and_verify", return_value={"state": "verified"}):
+            result = MODULE.supervise(
+                client=client, s3_client=object(), pod_id="pod-1", manifest=self.manifest,
+                network_volume_id="vol-1", datacenter_id="US-KS-2",
+                retention_staging=self.root / "stage", retention_receipt=self.root / "verified.json",
+                receipt_path=self.receipt, created_at=NOW, deadline=NOW + dt.timedelta(hours=1),
+                max_total_budget=1, max_hourly_rate=0.5, cost_per_hour=0.25,
+                now_fn=lambda: NOW, sleep_fn=lambda _: None,
+            )
+        self.assertEqual(result, "verified")
+        self.assertEqual(client.deleted, ["pod-1"])
+
+    def test_terminal_with_corrupt_or_missing_s3_is_retained(self):
+        client = Client()
+        client.get_result = {"status": "EXITED", "costPerHr": 0.25}
+        with mock.patch.object(MODULE.s3verify, "download_and_verify", side_effect=ValueError("missing marker")):
+            result = MODULE.supervise(
+                client=client, s3_client=object(), pod_id="pod-1", manifest=self.manifest,
+                network_volume_id="vol-1", datacenter_id="US-KS-2",
+                retention_staging=self.root / "stage", retention_receipt=self.root / "verified.json",
+                receipt_path=self.receipt, created_at=NOW, deadline=NOW + dt.timedelta(hours=1),
+                max_total_budget=1, max_hourly_rate=0.5, cost_per_hour=0.25,
+                now_fn=lambda: NOW, sleep_fn=lambda _: None,
+            )
+        self.assertEqual(result, "terminal_unverified")
+        self.assertEqual(client.deleted, [])
+
+    def test_supervisor_deadline_deletes_unverified_for_cost_safety(self):
+        client = Client()
+        with mock.patch.object(MODULE.s3verify, "download_and_verify") as verifier:
+            result = MODULE.supervise(
+                client=client, s3_client=object(), pod_id="pod-1", manifest=self.manifest,
+                network_volume_id="vol-1", datacenter_id="US-KS-2",
+                retention_staging=self.root / "stage", retention_receipt=self.root / "verified.json",
+                receipt_path=self.receipt, created_at=NOW - dt.timedelta(hours=1), deadline=NOW,
+                max_total_budget=1, max_hourly_rate=0.5, cost_per_hour=0.25,
+                now_fn=lambda: NOW, sleep_fn=lambda _: None,
+            )
+        self.assertEqual(result, "deadline")
+        self.assertEqual(client.deleted, ["pod-1"])
+        verifier.assert_not_called()
+        self.assertIn("unverified", self.receipt.read_text())
+
+    def test_s3_exception_and_credentials_never_leak(self):
+        secret = "secret-s3-credential-value"
+        client = Client()
+        client.get_result = {"status": "EXITED", "costPerHr": 0.25}
+        with mock.patch.dict(os.environ, {"AWS_SECRET_ACCESS_KEY": secret}), \
+             mock.patch.object(MODULE.s3verify, "download_and_verify",
+                               side_effect=ValueError(f"request included {secret}")):
+            MODULE.supervise(
+                client=client, s3_client=object(), pod_id="pod-1", manifest=self.manifest,
+                network_volume_id="vol-1", datacenter_id="US-KS-2",
+                retention_staging=self.root / "stage", retention_receipt=self.root / "verified.json",
+                receipt_path=self.receipt, created_at=NOW, deadline=NOW + dt.timedelta(hours=1),
+                max_total_budget=1, max_hourly_rate=0.5, cost_per_hour=0.25,
+                now_fn=lambda: NOW, sleep_fn=lambda _: None,
+            )
+        self.assertNotIn(secret, self.receipt.read_text())
 
     def test_contract_refuses_launch_before_any_provider_http(self):
         client = Client()
