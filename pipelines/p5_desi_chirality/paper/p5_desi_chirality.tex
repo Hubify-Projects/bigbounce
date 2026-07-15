@@ -36,7 +36,11 @@
 % The divide-by-h claim (~1246 h⁻¹ Mpc) is INVERTED. No pipeline recompute required.
 % If any future reviewer re-raises this, cite env_finder/01_compute_vweb.py:106-108.
 
-\newcommand{\paperVersion}{v0.1.133-2026-07-14}
+\newcommand{\paperVersion}{v0.1.134-2026-07-15}
+% v0.1.134 (2026-07-15 -- proactive release-contract closure): removed the
+%   false statement that a historical full DESIVAST-join parquet is retained;
+%   bounded the exact 145,789-row A39/A40 archive to the released-GALZONE/
+%   VoidFinder control it actually supports; no number or estimand changed.
 % v0.1.133 (2026-07-14 -- anti-loop stop-rule closure): bounded the two
 %   residual page-23/24 environment-origin sentences identified by the exact
 %   v0.1.132 subscription confirmation; no number, estimand, or gate changed.
@@ -717,7 +721,7 @@
 %   cluster −54%) but the environmental-independence null HOLDS and
 %   TIGHTENS: cross-class f_CW range 1.98pp → 0.05pp, all classes
 %   |σ_mono| ≤ 0.39. Artifact: outputs/16_cosmic_web_zshell_corrected.json.
-\newcommand{\paperTimestamp}{July 14, 2026, 17:37 PT}
+\newcommand{\paperTimestamp}{July 15, 2026, 16:26 PT}
 % timestamp label unchanged (still July 2026); \date bumped to July 6
 % v0.1.62-2026-06-10 (R29 post-EXT1 internal-round closure wave; truth audit at
 %   project-context/peer-reviews/R29_P5_TRUTH_AUDIT.md):
@@ -817,7 +821,7 @@
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{July 14, 2026}
+\date{July 15, 2026 (\paperVersion)}
 
 \begin{abstract}
 We test whether \emph{classifier-labelled} spiral chirality differs
@@ -5050,23 +5054,24 @@ per-cell statistics are in
 (declared-parent recompute).
 
 \emph{Explicit artifact-availability statement.}
-The following pipeline-intermediate files are frozen in the local
-\texttt{\paperVersion} release candidate and are intended for a verified
-public tag and archival snapshot before submission:
-(i) the DESIVAST-join parquet
-(\texttt{data/desivast\_matched\_spirals.parquet} under
-\texttt{pipelines/p5\_desi\_chirality/}),
-which is the per-galaxy void/non-void membership table used for the
-Table~\ref{tab:desivast_canonical} and
-\S\ref{sec:desivast_three_algo}--\ref{sec:desivast_catalog_native}
-sensitivity contrasts;
+The historical full DESIVAST-join parquet previously cited for the broader
+sensitivity paths is not present in the current release tree; byte-identical
+historical provenance for that intermediate is therefore not claimed. Those
+sensitivity paths are regenerable from the public inputs and committed drivers,
+but not from a frozen copy of that absent file. The current local
+\texttt{\paperVersion} candidate directly retains:
+(i) the independently reconstructed 145,789-row catalog-native archive [A39]
+and its input/hash manifest [A40], which are sufficient to reproduce the
+released-GALZONE/VoidFinder selection-control analysis (145,766 rows after the
+declared \texttt{OUT}$=0$ cut), but do not encode every DESIVAST algorithm or
+the unavailable historical full join;
 (ii) the T-Web grid outputs
 (\texttt{env\_finder/} eigenvector/eigenvalue arrays at the
 canonical $R_s\!=\!25$\,Mpc/$h$, $\lambda_{\rm th}\!=\!0$, $256^3$
 configuration, referenced by [A3]/[A7]/[A28]);
 and (iii) the per-cell Phase~2 sweep configurations
 (\texttt{data/desi\_env/phase2\_sweep/}, [A12]).
-All three were produced deterministically from the public DESI~DR1
+These retained artifacts were produced deterministically from the public DESI~DR1
 spectro catalog and the published DESIVAST void catalog using the
 committed pipeline at seed \texttt{20260515}.
 No immutable public \texttt{\paperVersion} tag or Zenodo DOI is claimed to
@@ -5098,7 +5103,6 @@ v0.1.132 as [A39], with file SHA-256
 DESIVAST source commit. This closes current-row provenance without
 retroactively asserting the unavailable May bytes.
 
-\clearpage
 \section*{Reproducibility checklist}
 \begin{itemize}
 \item Single config file:

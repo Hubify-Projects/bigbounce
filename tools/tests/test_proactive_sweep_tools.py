@@ -26,12 +26,19 @@ class ProactiveSweepToolTests(unittest.TestCase):
             result = self.artifact_check(relative)
             self.assertEqual(result.returncode, 0, f"{relative}:\n{result.stdout}\n{result.stderr}")
 
-    def test_missing_p5_desivast_join_is_a_real_failure(self):
+    def test_p5_release_contract_no_longer_claims_the_missing_historical_join(self):
         result = self.artifact_check(
             "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex"
         )
-        self.assertEqual(result.returncode, 1)
-        self.assertIn("MISSING  data/desivast_matched_spirals.parquet", result.stdout)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertNotIn("data/desivast_matched_spirals.parquet", result.stdout)
+        self.assertIn("OK       outputs/36_desivast_native_selection_rows.parquet", result.stdout)
+        source = (
+            ROOT
+            / "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex"
+        ).read_text(encoding="utf-8")
+        self.assertNotIn("data/desivast\\_matched\\_spirals.parquet", source)
+        self.assertIn("historical full DESIVAST-join parquet", source)
 
     def test_pattern040_does_not_confuse_explicit_einstein_cartan_limit(self):
         result = subprocess.run(

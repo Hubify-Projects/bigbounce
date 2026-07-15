@@ -9,7 +9,7 @@
 | P2 | v1.7.122 | 80 | 10 pp; SHA-256 `4097bac5…25c9` | **Verified exact-commit candidate in reversible GitHub draft; all 8 remote digests match; no DOI or archive publication** |
 | P3 | v3.2.0-r8 | 56 | 16 pp; MD5 `8faac098b5f4cde3133937460b8df4c5` | **Verified exact-commit candidate in reversible GitHub draft; all 8 remote digests match; no DOI or archive publication** |
 | P4 | v1.0.252 | 80 | 28 pp; SHA-256 `a109f3d1…3292` | **Verified exact-commit candidate in reversible GitHub draft; no DOI reserved or archive published** |
-| P5 | v0.1.133-2026-07-14 | 74 | 39 pp; SHA-256 `db18dd93…764` | Current-version package not prepared; Paper-IV provenance, selection products, DOI, and human AJ gates open |
+| P5 | v0.1.134-2026-07-15 | 74 | 39 pp; SHA-256 `c2ecb845…afc6` | Exact PDF retained and mirrored; commit-bound deposit package still pending; Paper-IV provenance, public tag/DOI, exact review, and human AJ gates open |
 
 ## P2 evidence
 

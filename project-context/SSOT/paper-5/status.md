@@ -1,3 +1,10 @@
+## v0.1.134 PROACTIVE RELEASE-CONTRACT CLOSURE — 2026-07-15 · FALSE FROZEN-ARTIFACT CLAIM REMOVED · READINESS/CAP 74 HOLD
+
+- **Pre-review finding:** the portfolio artifact gate proved that the manuscript's claimed frozen `data/desivast_matched_spirals.parquet` does not exist in the worktree or reachable Git history. Review dispatch correctly failed closed.
+- **Truth-audited correction:** the retained 145,789-row A39/A40 archive is a distinct catalog-native GALZONE/VoidFinder control artifact. It supports the 145,766-row `OUT=0` estimator, but is not the unavailable historical full join and does not encode every DESIVAST contrast.
+- **Scientific scope:** no count, model, estimand, interval, or conclusion changes. The manuscript now distinguishes reproducibility by public-input recomputation from byte-identical retention of an intermediate.
+- **No readiness uplift:** this closes a real integrity defect discovered proactively, but exact-PDF QA, Paper IV re-verification, immutable public release/DOI, external review, and human AJ review remain open. Readiness/cap stays **74**.
+
 <!-- M45-EXT (2026-07-15): 0 genuinely-new on byte-unchanged v0.1.127; EXT Grok MINOR (0 MAJOR / 3 MINOR; closing AFFIRMS the environment-independent null) + ChatGPT MAJOR REVISIONS (7 MAJOR / 6 MINOR), 5th consecutive MAJOR = stable above its former REJECT-modal floor; both raws + screenshots READ verbatim before any verdict. DP5-26 artifact-range fix STAYS HELD (grep both raws for [A1]/[A32]/[A34]/artifact-range = NONE). Every finding a source-cited standing DP5 re-flag: Grok->DP5-13/-10/-04/-14; ChatGPT->DP5-21/-04/-14/-10/-08/-09/-20/-03/-22/-19/-11/-12/-07. clean-wave streak 6->7; no bump (byte-unchanged); cap HOLDS 74 (Grok MIN 12 + ChatGPT MAJ 6 + latest-Gemini MAJ 6 = 50+24; post_verdict.sh recomputed, verified in Convex). Audit: project-context/peer-reviews/EXT_real/H17_2026-07-10/M45/P5_truth_audit_M45.md. -->
 ## v0.1.133 STOP-RULE CLOSURE — 2026-07-14 · RAW v0.1.132 MINOR PRESERVED · ONE WORDING MINOR CLOSED · READINESS/CAP 74 HOLD
 

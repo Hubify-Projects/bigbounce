@@ -57,6 +57,25 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p5-v01134-proactive-release-contract-2026-07-15",
+    dateISO: "2026-07-15",
+    timePT: "4:43 PM",
+    kind: "closure-wave",
+    title: "P5 v0.1.134 — proactive gate removes false frozen-artifact claim; exact review pending",
+    papers: ["P5"],
+    summary:
+      "The portfolio preflight failed closed because v0.1.133 claimed a frozen historical full DESIVAST join that does not exist in the worktree or reachable Git history. v0.1.134 states that absence explicitly and bounds the retained 145,789-row A39/A40 archive to the 145,766-row OUT=0 GALZONE/VoidFinder control it actually supports. The 39-page exact PDF passes all-page visual QA, append-only retention, all mirror aliases, and Convex readback. No number or estimand changed; readiness holds 74 and exact review remains pending.",
+    keyTakeaways: [
+      "The pre-review gate found a real integrity defect before spending another review round",
+      "A39/A40 support the catalog-native control, not the unavailable historical full join or every DESIVAST contrast",
+      "This is a verified release-contract closure, not a reviewer verdict or readiness uplift",
+    ],
+    links: [
+      { label: "P5 canonical status", href: `${GH}/project-context/SSOT/paper-5/status.md` },
+      { label: "Retention manifest", href: `${GH}/project-context/pdf-archive/manifests/2026/07/20260715T233910Z-21dea42f4654.json` },
+    ],
+  },
+  {
     id: "p4-v10255-release-integrity-closure-2026-07-15",
     dateISO: "2026-07-15",
     timePT: "3:28 PM",
