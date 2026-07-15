@@ -1,0 +1,27 @@
+{
+  "child_sha256": [
+    "932fb5b33fa57a0bd17272f82deab1a7ea89c41898bfb0bbe7c72384f73104da",
+    "7972938691186fe549e51c1cf9cd632c8b197247e96f27aadf9c08da20a9d2b9",
+    "fbbc9ac59cd38944176bea99fc71b9ee6b2ccaa1a59a2618b2ef942299c48b32",
+    "949af8489e8e68eebce79890ac01f7fcfa4c518288aaebc59f9358f315c9e478",
+    "83b42830dedc74ca4bbe0078eb6115ce86332c3b55e765b9932b8b5b4c36a8a1",
+    "208d168546c73f5521e96ead1c2be211534a21f2096fac45647f6d5999f02e7f"
+  ],
+  "config_names": [
+    "canonical_refit",
+    "lensing_bb_camb",
+    "apod_fwhm_0p5",
+    "apod_fwhm_3p0",
+    "mask_b30",
+    "purify_b"
+  ],
+  "n_real": 500,
+  "result_bytes": 7019,
+  "result_file": "c10_robustness_battery.json",
+  "result_sha256": "400bbd3454a491882007a514dee118e7fe806f83c5c2850cabad4e478037feb7",
+  "schema_version": 1,
+  "seed_end": 541,
+  "seed_start": 42,
+  "suite": "c10_merged",
+  "theory_operator": "NmtWorkspace.get_bandpower_windows exact tensor contraction"
+}

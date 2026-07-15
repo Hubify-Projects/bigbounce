@@ -1,0 +1,104 @@
+{
+  "child_shards": [
+    {
+      "bytes": 1021,
+      "path": "shards/declared_fsky_0p85.json",
+      "sha256": "d1f87ebc580bd2b9acbe3509cff5aa6449a9910db7b2967c24a0e466ee3ff456"
+    },
+    {
+      "bytes": 1042,
+      "path": "shards/declared_fsky_0p65.json",
+      "sha256": "ff549f997d27ee64ec1b475069a5bf9fc50b81eb91af16a3488063299eaa443f"
+    },
+    {
+      "bytes": 1037,
+      "path": "shards/declared_negative_beta_fsky_0p32.json",
+      "sha256": "626199121860c4bbb0fe6a172a0a728861bdd7560ad3d957034d78eddfde3870"
+    }
+  ],
+  "experiment": "declared NaMaster f_sky and sign checks with exact bandpower windows",
+  "n_real": 500,
+  "results": [
+    {
+      "beta_deg": 0.27,
+      "fsky_actual_apodized": 0.8496093575899238,
+      "fsky_target": 0.85,
+      "gal_cut_deg": 8.62692655867864,
+      "lmax": 1024,
+      "mc_mean_standard_error_deg": 0.0014116201723629635,
+      "n_real": 500,
+      "name": "fsky_0p85",
+      "nside": 512,
+      "per_realization_beta_std_deg": 0.03156478663813556,
+      "recovered_beta_deg": 0.27,
+      "runtime_s": 11167.592946767807,
+      "seed_base": 42,
+      "signed_bias_deg": 0.0,
+      "snr_exact_window": 33.472857594693345,
+      "window_equivalence_max_abs": 4.973799150320701e-14,
+      "window_shape": [
+        4,
+        20,
+        4,
+        1536
+      ]
+    },
+    {
+      "beta_deg": 0.27,
+      "fsky_actual_apodized": 0.6503906222283445,
+      "fsky_target": 0.65,
+      "gal_cut_deg": 20.487315114722662,
+      "lmax": 1024,
+      "mc_mean_standard_error_deg": 0.0015816318682719648,
+      "n_real": 500,
+      "name": "fsky_0p65",
+      "nside": 512,
+      "per_realization_beta_std_deg": 0.035366363728361064,
+      "recovered_beta_deg": 0.268,
+      "runtime_s": 4269.383631944656,
+      "seed_base": 42,
+      "signed_bias_deg": -0.0020000000000000018,
+      "snr_exact_window": 29.096974628007512,
+      "window_equivalence_max_abs": 6.394884621840902e-14,
+      "window_shape": [
+        4,
+        20,
+        4,
+        1536
+      ]
+    },
+    {
+      "beta_deg": -0.27,
+      "fsky_actual_apodized": 0.319801337445615,
+      "fsky_target": 0.32,
+      "gal_cut_deg": 42.84364304359634,
+      "lmax": 1024,
+      "mc_mean_standard_error_deg": 0.0021996121556471133,
+      "n_real": 500,
+      "name": "negative_beta_fsky_0p32",
+      "nside": 512,
+      "per_realization_beta_std_deg": 0.049184823041617934,
+      "recovered_beta_deg": -0.27,
+      "runtime_s": 4261.938851118088,
+      "seed_base": 42,
+      "signed_bias_deg": 0.0,
+      "snr_exact_window": 20.239323880737004,
+      "window_equivalence_max_abs": 3.552713678800501e-14,
+      "window_shape": [
+        4,
+        20,
+        4,
+        1536
+      ]
+    }
+  ],
+  "seed_base": 42,
+  "software": {
+    "healpy": "1.19.0",
+    "numpy": "1.26.4",
+    "pymaster": "2.6"
+  },
+  "status_of_historical_outputs": "superseded effective-ell-template evidence preserved at top-level results",
+  "theory_operator": "NmtWorkspace.get_bandpower_windows exact tensor contraction",
+  "total_runtime_s_sum_of_shards": 19699.34093284607
+}
