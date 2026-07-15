@@ -1,15 +1,13 @@
 """
 c10 — NaMaster validation robustness battery (R23conf META-M1/M2/M3/M5/M6).
 
-One battery, six configs, all at beta = 0.27 deg, N_REAL = 500, seed_base = 42
+One battery, five configs, all at beta = 0.27 deg, N_REAL = 500, seed_base = 42
 (identical seeds to the canonical run for paired comparison):
 
   canonical_refit  — canonical sky; THREE fits on the same MC ensemble:
                      (a) unweighted (canonical anchor),
                      (b) inverse-variance weighted (META-M1),
                      (c) unweighted restricted to ell_eff <= 1024 (META-M3)
-  lensing_bb_camb  — BB = CAMB lensed-LCDM BB (Planck 2018 params) instead of
-                     the 0.05*EE proxy (META-M2)
   apod_fwhm_0p5    — mask apodization 0.5 deg FWHM (META-M5)
   apod_fwhm_3p0    — mask apodization 3.0 deg FWHM (META-M5)
   mask_b30         — Galactic cut |b| > 30 deg (META-M6)
@@ -36,14 +34,15 @@ from windowed_rotation import (
     validate_window_equivalence,
 )
 from checkpoint_io import publish_json, validate_json_receipt
+from physical_spectra import load_camb_lensed_spectra
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 DEFAULT_OUT = os.path.join(
-    BASE, "..", "results", "exact_window_500mc", "c10_robustness_battery.json"
+    BASE, "..", "results", "physical_spectrum_v2", "c10_robustness_battery.json"
 )
 OUT = os.environ.get("C10_OUTPUT", DEFAULT_OUT)
 CANONICAL_BANDPOWERS = os.path.join(
-    BASE, "..", "results", "exact_window_500mc", "bandpowers.npz"
+    BASE, "..", "results", "physical_spectrum_v2", "bandpowers.npz"
 )
 
 NSIDE = 512
@@ -64,6 +63,7 @@ def code_sha256():
         "c10_robustness_battery.py",
         "windowed_rotation.py",
         "checkpoint_io.py",
+        "physical_spectra.py",
     ):
         path = Path(BASE) / filename
         digest.update(filename.encode("utf-8"))
@@ -157,37 +157,11 @@ def _load_realization_checkpoint(path, cfg):
     return arrays
 
 
-def cl_ee_fit(lmax):
-    ells = np.arange(lmax + 1, dtype=float)
-    ells[0] = 1
-    cl = np.zeros(lmax + 1)
-    for amp, lc, sig in [(15.0, 5.0, 3.0), (40.0, 140.0, 40.0),
-                         (20.0, 400.0, 60.0), (8.0, 700.0, 80.0)]:
-        cl += amp * np.exp(-0.5 * ((ells - lc) / sig) ** 2)
-    cl *= np.exp(-ells * (ells + 1) / (2 * 2000 ** 2))
-    cl[0:2] = 0
-    return cl
-
-
-def camb_lensed_bb(lmax):
-    import camb
-    pars = camb.CAMBparams()
-    pars.set_cosmology(H0=67.36, ombh2=0.02237, omch2=0.12, tau=0.0544)
-    pars.InitPower.set_params(As=2.1e-9, ns=0.9649)
-    pars.set_for_lmax(lmax, lens_potential_accuracy=1)
-    res = camb.get_results(pars)
-    cl = res.get_cmb_power_spectra(pars, CMB_unit="muK", raw_cl=True)["lensed_scalar"]
-    bb = cl[: lmax + 1, 2].copy()
-    bb[0:2] = 0
-    return bb
-
-
 def _prepare_config_state(cfg):
     import healpy as hp
     import pymaster as nmt
 
-    cl_ee = cl_ee_fit(LMAX)
-    cl_bb = camb_lensed_bb(LMAX) if cfg.get("camb_bb") else 0.05 * cl_ee
+    cl_ee, cl_bb, spectrum_metadata = load_camb_lensed_spectra(LMAX)
 
     npix = hp.nside2npix(NSIDE)
     pix_area_arcmin2 = hp.nside2pixarea(NSIDE, degrees=True) * 3600
@@ -221,6 +195,7 @@ def _prepare_config_state(cfg):
         "cfg": cfg,
         "cl_ee": cl_ee,
         "cl_bb": cl_bb,
+        "spectrum_metadata": spectrum_metadata,
         "npix": npix,
         "noise_sigma": noise_sigma,
         "mask": mask,
@@ -304,6 +279,7 @@ def run_config(cfg, realization_workers=1, realization_checkpoint=None):
     purify = state["purify"]
     wsp = state["workspace"]
     response = state["response"]
+    spectrum_metadata = state["spectrum_metadata"]
     equivalence_max_abs = state["equivalence_max_abs"]
 
     if cfg.get("canonical_artifact"):
@@ -401,7 +377,8 @@ def run_config(cfg, realization_workers=1, realization_checkpoint=None):
     res = {"name": name, "fsky": round(float(fsky), 4), "n_real": N_REAL,
            "purify_b": purify, "apod_fwhm_deg": cfg.get("apod_fwhm", 2.0),
            "gal_cut_deg": cfg.get("gal_cut", 20.0),
-           "bb_model": "camb_lensed" if cfg.get("camb_bb") else "0.05*EE",
+           "sky_spectrum": "CAMB lensed_scalar raw C_ell EE/BB",
+           "physical_spectra": spectrum_metadata,
            "theory_operator": THEORY_OPERATOR,
            "window_shape": list(response["window_shape"]),
            "window_equivalence_max_abs": equivalence_max_abs,
@@ -418,7 +395,6 @@ def run_config(cfg, realization_workers=1, realization_checkpoint=None):
 
 CONFIGS = [
     {"name": "canonical_refit", "extra_fits": True, "canonical_artifact": True},
-    {"name": "lensing_bb_camb", "camb_bb": True},
     {"name": "apod_fwhm_0p5", "apod_fwhm": 0.5},
     {"name": "apod_fwhm_3p0", "apod_fwhm": 3.0},
     {"name": "mask_b30", "gal_cut": 30.0},
@@ -494,6 +470,7 @@ def main():
             )
     out = {"experiment": "c10 NaMaster robustness battery (R23conf META-M1/M2/M3/M5/M6)",
            "beta_injected_deg": 0.27, "n_real": N_REAL, "seed_base": SEED_BASE,
+           "spectrum_policy": "all configurations use pinned raw CAMB lensed EE/BB",
            "superseded_effective_ell_anchor": {
                "recovered_beta_deg": 0.238,
                "bias_deg": -0.032,

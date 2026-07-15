@@ -8,7 +8,15 @@ at effective-ell bin centres rather than applying the NaMaster bandpower-window
 operator used by the estimator. They must not be cited as current calibration
 results.
 
-Corrected results are generated under `exact_window_500mc/`. The replacement
-scripts contract the complete rotated `[EE, EB, BE, BB]` theory through
-`NmtWorkspace.get_bandpower_windows()` and verify numerical equivalence to
-`decouple_cell(couple_cell(theory))` before running an ensemble.
+The July 14 exact-window outputs under `exact_window_500mc/` are also retained
+but superseded: their operator contraction is correct, while their synthetic
+sky passed a D-ell-like semi-analytic EE amplitude to `healpy.synfast` as raw
+C-ell and used `BB=0.05*EE`. They must not be cited as a physical-noise,
+scatter, SNR, or bias calibration.
+
+The replacement code writes new results under `physical_spectrum_v2/`. It
+contracts the complete rotated `[EE, EB, BE, BB]` theory through
+`NmtWorkspace.get_bandpower_windows()`, uses pinned raw CAMB lensed EE/BB, and
+verifies both the spectrum-unit contract and numerical operator equivalence
+before running an ensemble. No production result is current until that rerun
+finishes and passes review.

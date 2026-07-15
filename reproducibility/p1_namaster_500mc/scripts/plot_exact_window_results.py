@@ -16,7 +16,7 @@ import numpy as np
 
 
 ROOT = Path(__file__).resolve().parents[3]
-RESULTS = ROOT / "reproducibility/p1_namaster_500mc/results/exact_window_500mc"
+RESULTS = ROOT / "reproducibility/p1_namaster_500mc/results/physical_spectrum_v2"
 SUMMARY = RESULTS / "summary.json"
 DECLARED = RESULTS / "declared_fsky_sign_battery.json"
 OUTPUT = ROOT / "arxiv/figures/fig_namaster_recovery.png"

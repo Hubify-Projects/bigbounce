@@ -3,16 +3,17 @@ c10 battery extension (R24conf QUEUE-30 / META-M2 matched config).
 
 ONE new config appended to results/c10_robustness_battery.json:
 
-  camb_bb_template — CAMB lensed-LCDM BB in the injected synthetic skies
-                     (same as the existing lensing_bb_camb config) AND a
+  camb_bb_template — legacy extension in which the injected synthetic skies
+                     and template both use the physical CAMB EE/BB spectra,
+                     including a
                      template that carries the -C_ell^BB term:
                          sin(2*beta)*cos(2*beta)*(C_ell^EE - C_ell^BB)
                      binned at the effective ells (existing configs use an
                      EE-only template). N=500 MC, seeds 42.. (identical to
                      the canonical battery for paired comparison).
 
-Expected: bias shrinks further vs the 0.251 deg camb-BB / EE-only-template
-config (lensing_bb_camb: bias -0.019 deg).
+This extension is retained for provenance but is no longer a distinct BB-model
+check: the corrected canonical suite now uses physical CAMB BB throughout.
 
 Parallelized over MC realizations (Pool); per-realization seeds preserved.
 Appends to the existing JSON (load -> append -> save), never overwrites.
@@ -25,8 +26,8 @@ from multiprocessing import Pool
 import numpy as np
 
 from c10_robustness_battery import (BASE, OUT, NSIDE, LMAX, BETA, N_REAL,
-                                    SEED_BASE, NOISE_LEVEL_UKARMIN,
-                                    cl_ee_fit, camb_lensed_bb)
+                                    SEED_BASE, NOISE_LEVEL_UKARMIN)
+from physical_spectra import load_camb_lensed_spectra
 
 N_POOL = int(os.environ.get("C10_POOL", "10"))
 
@@ -38,8 +39,7 @@ def _init_worker():
     import healpy as hp
     import pymaster as nmt
 
-    cl_ee = cl_ee_fit(LMAX)
-    cl_bb = camb_lensed_bb(LMAX)
+    cl_ee, cl_bb, _ = load_camb_lensed_spectra(LMAX)
 
     npix = hp.nside2npix(NSIDE)
     pix_area_arcmin2 = hp.nside2pixarea(NSIDE, degrees=True) * 3600
@@ -93,8 +93,7 @@ if __name__ == "__main__":
     edges = np.linspace(30, 3 * NSIDE, n_bins + 1, dtype=int)
     b = nmt.NmtBin.from_edges(edges[:-1], edges[1:])
     ell_effs = b.get_effective_ells()
-    cl_ee = cl_ee_fit(LMAX)
-    cl_bb = camb_lensed_bb(LMAX)
+    cl_ee, cl_bb, spectrum_metadata = load_camb_lensed_spectra(LMAX)
     ee_binned = np.array([cl_ee[int(l)] if int(l) < len(cl_ee) else 0
                           for l in ell_effs])
     bb_binned = np.array([cl_bb[int(l)] if int(l) < len(cl_bb) else 0
@@ -125,6 +124,7 @@ if __name__ == "__main__":
            "fsky": round(fsky, 4), "n_real": N_REAL, "purify_b": False,
            "apod_fwhm_deg": 2.0, "gal_cut_deg": 20.0,
            "bb_model": "camb_lensed",
+           "physical_spectra": spectrum_metadata,
            "template": "sin(2b)cos(2b)*(C_ell^EE - C_ell^BB) binned",
            "noise_sigma_pix_uK": round(float(noise_sigma), 4),
            "recovered_beta_deg": {"unweighted": round(beta_hat, 4)},

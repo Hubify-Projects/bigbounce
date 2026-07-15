@@ -28,6 +28,7 @@ from windowed_rotation import (
     windowed_bandpowers,
 )
 from checkpoint_io import publish_json, validate_json_receipt
+from physical_spectra import load_camb_lensed_spectra
 
 
 NSIDE = 512
@@ -38,7 +39,7 @@ NOISE_LEVEL_UKARMIN = 10.0
 OUTPUT = (
     Path(__file__).resolve().parent.parent
     / "results"
-    / "exact_window_500mc"
+    / "physical_spectrum_v2"
     / "declared_fsky_sign_battery.json"
 )
 
@@ -47,22 +48,6 @@ CONFIGS = [
     {"name": "fsky_0p65", "fsky_target": 0.65, "gal_cut_deg": 20.487315114722662, "beta_deg": 0.27},
     {"name": "negative_beta_fsky_0p32", "fsky_target": 0.32, "gal_cut_deg": 42.84364304359634, "beta_deg": -0.27},
 ]
-
-
-def cl_ee_fit(lmax: int) -> np.ndarray:
-    ell = np.arange(lmax + 1, dtype=float)
-    ell[0] = 1
-    spectrum = np.zeros(lmax + 1)
-    for amplitude, centre, width in [
-        (15.0, 5.0, 3.0),
-        (40.0, 140.0, 40.0),
-        (20.0, 400.0, 60.0),
-        (8.0, 700.0, 80.0),
-    ]:
-        spectrum += amplitude * np.exp(-0.5 * ((ell - centre) / width) ** 2)
-    spectrum *= np.exp(-ell * (ell + 1) / (2 * 2000**2))
-    spectrum[:2] = 0
-    return spectrum
 
 
 def run_config(config: dict) -> dict:
@@ -75,8 +60,7 @@ def run_config(config: dict) -> dict:
     mask = np.clip(hp.smoothing(mask, fwhm=np.deg2rad(2.0)), 0, 1)
     fsky = float(np.mean(mask))
 
-    cl_ee = cl_ee_fit(LMAX)
-    cl_bb = 0.05 * cl_ee
+    cl_ee, cl_bb, spectrum_metadata = load_camb_lensed_spectra(LMAX)
     edges = np.linspace(30, 3 * NSIDE, 21, dtype=int)
     bins = nmt.NmtBin.from_edges(edges[:-1], edges[1:])
     zero = np.zeros(npix)
@@ -124,6 +108,7 @@ def run_config(config: dict) -> dict:
         "lmax": LMAX,
         "n_real": N_REAL,
         "seed_base": SEED_BASE,
+        "physical_spectra": spectrum_metadata,
         "recovered_beta_deg": recovered,
         "signed_bias_deg": recovered - beta_deg,
         "per_realization_beta_std_deg": beta_std,

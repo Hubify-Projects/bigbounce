@@ -8,7 +8,7 @@ from pathlib import Path
 from checkpoint_io import publish_json, validate_json_receipt
 
 
-RESULTS = Path(__file__).resolve().parent.parent / "results" / "exact_window_500mc"
+RESULTS = Path(__file__).resolve().parent.parent / "results" / "physical_spectrum_v2"
 SHARDS = RESULTS / "shards"
 N_REAL = 500
 SEED_START = 42
@@ -17,7 +17,6 @@ OPERATOR = "NmtWorkspace.get_bandpower_windows exact tensor contraction"
 
 C10_CONFIG_DETAILS = [
     {"name": "canonical_refit", "extra_fits": True, "canonical_artifact": True},
-    {"name": "lensing_bb_camb", "camb_bb": True},
     {"name": "apod_fwhm_0p5", "apod_fwhm": 0.5},
     {"name": "apod_fwhm_3p0", "apod_fwhm": 3.0},
     {"name": "mask_b30", "gal_cut": 30.0},

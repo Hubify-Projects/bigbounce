@@ -7,11 +7,12 @@ NaMaster bandpower-window operator.  The pre-2026-07-14 result evaluated the
 theory at effective-ell bin centres; that approximation is retained only in
 the superseded-results directory and is not used here.
 
-Canonical ground-truth output:
+Historical output (superseded by the physical-spectrum audit):
   pipelines/h200_results/pod1_namaster_umap_2026-04-29/results/namaster-birefringence/summary.json
 
 Method:
-  1. Generate synthetic ΛCDM CMB Q/U maps (analytic EE fit + lensing BB).
+  1. Generate synthetic ΛCDM CMB Q/U maps from pinned raw CAMB lensed
+     EE/BB spectra (microkelvin-squared C_ell, never D_ell).
   2. Apply uniform birefringence rotation by angle β (E ↔ B mixing).
   3. Add ACT-like white noise (10 μK·arcmin).
   4. Apply a synthetic HEALPix native-coordinate latitude window
@@ -39,7 +40,8 @@ Reproducing on a fresh GPU pod:
   # Output: results/namaster-birefringence/summary.json
 
 Random seeds are deterministic: seed_base=42, seeds 42..541 across the 500 MC
-realizations. Set NAMASTER_NREAL for a bounded timing/diagnostic run.
+realizations. Set NAMASTER_SMOKE=1 for a bounded NSIDE=128, LMAX=256,
+N_REAL=1 diagnostic run that writes to a caller-selected output directory.
 """
 
 import os
@@ -49,10 +51,19 @@ import time
 import numpy as np
 import subprocess
 
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 OUTPUT_DIR = os.environ.get(
     "NAMASTER_OUTPUT_DIR",
-    "results/namaster-birefringence",
+    os.path.join(SCRIPT_DIR, "..", "results", "physical_spectrum_v2"),
 )
+if (
+    os.path.exists(os.path.join(OUTPUT_DIR, "summary.json"))
+    and os.environ.get("NAMASTER_OVERWRITE") != "1"
+):
+    raise FileExistsError(
+        f"refusing to overwrite existing result at {OUTPUT_DIR}; choose a new "
+        "NAMASTER_OUTPUT_DIR (preferred) or set NAMASTER_OVERWRITE=1 explicitly"
+    )
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # -------------------------------------------------------------------------
@@ -70,6 +81,7 @@ def check_install(pkg, import_name=None):
 
 check_install("healpy")
 check_install("pymaster", "pymaster")
+check_install("camb==1.6.6", "camb")
 
 import healpy as hp
 import pymaster as nmt
@@ -81,6 +93,7 @@ from windowed_rotation import (
     validate_window_equivalence,
     windowed_bandpowers,
 )
+from physical_spectra import load_camb_lensed_spectra
 
 print("=" * 70)
 print("NAMASTER EB BIREFRINGENCE ANALYSIS — PRODUCTION 500MC")
@@ -92,8 +105,9 @@ t0 = time.time()
 # -------------------------------------------------------------------------
 # Parameters (canonical Paper 1 §VI configuration)
 # -------------------------------------------------------------------------
-NSIDE = 512        # HEALPix resolution (≈7 arcmin pixels, ACT-level)
-LMAX = 2 * NSIDE   # Max multipole = 1024
+SMOKE_MODE = os.environ.get("NAMASTER_SMOKE") == "1"
+NSIDE = int(os.environ.get("NAMASTER_NSIDE", "128" if SMOKE_MODE else "512"))
+LMAX = int(os.environ.get("NAMASTER_LMAX", str(2 * NSIDE)))
 
 BETA_PAPER1 = np.deg2rad(0.27)     # Paper 1 prediction
 BETA_OBS = np.deg2rad(0.342)       # Minami+Komatsu 2020 / ACT measurement
@@ -101,7 +115,7 @@ BETA_OBS_ERR = np.deg2rad(0.094)   # 1σ uncertainty
 
 T_CMB_UK = 2.725e6
 F_SKY = 0.40                       # ACT survey coverage target
-N_REAL = int(os.environ.get("NAMASTER_NREAL", "500"))
+N_REAL = int(os.environ.get("NAMASTER_NREAL", "1" if SMOKE_MODE else "500"))
 SEED_BASE = 42                     # Deterministic for reproducibility
 
 NOISE_LEVEL_UKARMIN = 10.0
@@ -113,24 +127,14 @@ NOISE_VAR = (NOISE_LEVEL_UKARMIN / np.sqrt(PIXEL_AREA_ARCMIN2)) ** 2
 # -------------------------------------------------------------------------
 print("\n[1/6] Generating ΛCDM CMB power spectrum...")
 
-def lcdm_cl_ee(lmax):
-    """Approximate ΛCDM EE power spectrum in μK². Semi-analytic fit to Planck 2018."""
-    ells = np.arange(lmax + 1, dtype=float)
-    ells[0] = 1
-    cl_ee = np.zeros(lmax + 1)
-    for amp, lc, sig in [(15.0, 5.0, 3.0),
-                         (40.0, 140.0, 40.0),
-                         (20.0, 400.0, 60.0),
-                         (8.0, 700.0, 80.0)]:
-        cl_ee += amp * np.exp(-0.5 * ((ells - lc) / sig) ** 2)
-    cl_ee *= np.exp(-ells * (ells + 1) / (2 * 2000 ** 2))
-    cl_ee[0:2] = 0
-    return cl_ee
-
-cl_ee = lcdm_cl_ee(LMAX)
-print(f"  EE power: ell_peak ~ {np.argmax(cl_ee)}, max = {cl_ee.max():.2f} μK²")
-
-cl_bb = 0.05 * cl_ee  # lensing BB only
+cl_ee, cl_bb, spectrum_metadata = load_camb_lensed_spectra(LMAX)
+print(
+    "  Raw CAMB lensed spectra: "
+    f"C_140^EE={cl_ee[140]:.6e} μK², "
+    f"D_140^EE={spectrum_metadata['validation']['d_ell_ee_at_ell_check_uK2']:.6f} μK²"
+)
+print(f"  EE SHA-256: {spectrum_metadata['sha256']['cl_ee_raw_uK2']}")
+print(f"  BB SHA-256: {spectrum_metadata['sha256']['cl_bb_raw_uK2']}")
 
 # -------------------------------------------------------------------------
 # [2/6] Sky mask
@@ -160,8 +164,10 @@ def make_native_latitude_window(nside, f_sky, latitude_cut_deg=20.0):
 mask = make_native_latitude_window(NSIDE, F_SKY)
 actual_fsky = mask.sum() / hp.nside2npix(NSIDE)
 
-n_ell_bins = 20
+n_ell_bins = int(os.environ.get("NAMASTER_NBINS", "6" if SMOKE_MODE else "20"))
 ell_min, ell_max = 30, 3 * NSIDE
+if SMOKE_MODE:
+    ell_max = min(ell_max, LMAX)
 ells_bins = np.linspace(ell_min, ell_max, n_ell_bins + 1, dtype=int)
 bandpower_bin = nmt.NmtBin.from_edges(ells_bins[:-1], ells_bins[1:])
 f_dummy = nmt.NmtField(
@@ -311,6 +317,8 @@ summary = {
     "noise_level_ukarmin": NOISE_LEVEL_UKARMIN,
     "n_mc_realizations": N_REAL,
     "seed_base": SEED_BASE,
+    "run_mode": "bounded_smoke" if SMOKE_MODE else "production",
+    "physical_spectra": spectrum_metadata,
     "theory_operator": "NmtWorkspace.get_bandpower_windows exact tensor contraction",
     "window_shape": list(rotation_response["window_shape"]),
     "window_equivalence_max_abs": window_equivalence_max_abs,
@@ -368,6 +376,8 @@ with open(os.path.join(OUTPUT_DIR, "summary.json"), "w") as f:
 np.savez_compressed(
     os.path.join(OUTPUT_DIR, "bandpowers.npz"),
     ell_eff=result_paper1["ell_effs"],
+    input_cl_ee_raw_uK2=cl_ee,
+    input_cl_bb_raw_uK2=cl_bb,
     null=result_null["all_cl_eb"],
     beta_0p270=result_paper1["all_cl_eb"],
     beta_0p342=result_obs["all_cl_eb"],
