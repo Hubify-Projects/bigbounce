@@ -57,6 +57,25 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p4-v10250-exact-board-truth-audit-2026-07-15",
+    dateISO: "2026-07-15",
+    timePT: "6:02–6:12 AM",
+    kind: "internal-api",
+    title: "P4 v1.0.250 — exact AASTeX board finds real release and provenance gates",
+    papers: ["P4"],
+    summary:
+      "The exact 29-page v1.0.250 board returned Grok MINOR, Gemini MAJOR, and GPT-5.6 Sol/high via ChatGPT-subscription Codex MAJOR. All three support the narrow HC observed-label fixed-occupancy null, but truth audit verifies major training, spatial-transfer/covariance, and immutable-archive gates plus bounded table, arithmetic-wording, MC-tail, schema, metadata, bibliography, and presentation defects. Readiness holds 80; no acceptance is claimed.",
+    keyTakeaways: [
+      "All three successful receipts bind commit 155166aa and PDF SHA-256 1c8af85c; no Anthropic or OpenAI API leg ran",
+      "Unsafe-row impact is already quantified and released; formal preregistration cannot be retroactively fabricated",
+      "Next bounded closure is v1.0.251, while training replay, spatial covariance, DOI archive, and human review remain major gates",
+    ],
+    links: [
+      { label: "Exact v1.0.250 truth audit", href: `${PR}/INT_v3/ROUND_2026-07-15-P4-v1.0.250-EXACTPDF-1c8af85c-NONANTHROPIC-CONFIRM/P4_v1.0.250_truth_audit.md` },
+      { label: "P4 canonical status", href: `${GH}/project-context/SSOT/paper-4/status.md` },
+    ],
+  },
+  {
     id: "p4-v10250-aastex-presentation-2026-07-15",
     dateISO: "2026-07-15",
     timePT: "early morning",

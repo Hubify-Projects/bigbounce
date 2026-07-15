@@ -1,0 +1,28 @@
+# INT Codex-subscription Review — P4 v1.0.250 — gpt-5.6-sol (high)
+paper: P4  version: v1.0.250  tex: pipelines/p2_chirality/chirality_catalog_paper.tex
+modality: full-repo Codex CLI ChatGPT-subscription referee (read-only, ephemeral)
+binding: packet_key=522dcc4463ef27ee6e0a85622dbe8291088322176bbc6107d037ef0e2f58cabd  prompt_sha256=cc42d8d7d91ff7824d01acb17a65f223c29d36532dd8599772edfaaebc9dc4f9
+provenance: commit=155166aa7f6ed5bfef91df8c63b3239ecdd817ae  source_sha256=5a9768170c35eb96bfb28856f025ae3f1d21c0781db1fbad32c41f74475944f6
+pdf: snapshot=/Users/houstongolden/.cache/bigbounce/review-packets/pdf/1c8af85c038a50d59dc31d5db991eb5768cbe8f0dd1c91b411a54ebba68647df.pdf  sha256=1c8af85c038a50d59dc31d5db991eb5768cbe8f0dd1c91b411a54ebba68647df  pages=29
+venue: The Astrophysical Journal Supplement Series  article_type: Catalog + methods article  profile: APJS-CATALOG-METHODS
+source_tree: clean detached sparse tree at 155166aa7f6ed5bfef91df8c63b3239ecdd817ae (scope=pipelines/p2_chirality)
+UTC: 2026-07-15T13:02:52Z
+context-note: Exact v1.0.250 AASTeX 7.0.1 confirmation; judge support and publication readiness; no Anthropic; OpenAI subscription only.
+
+======================================================================
+RAW RESPONSE (verbatim):
+======================================================================
+
+(1) VERDICT: MAJOR REVISIONS
+
+(2) ISSUES:
+1. [MAJOR] Classifier provenance and validation are not reproducible (pipelines/p2_chirality/chirality_catalog_paper.tex:769; pipelines/p2_chirality/chirality_catalog_paper.tex:1433-1452; pipelines/p2_chirality/chirality_catalog_paper.tex:1645): the training totals and validation accuracies conflict, object/split membership and random states are missing, and GZ1 validation may overlap training data. An ApJS methods article requires a frozen training manifest and independent validation, or a fully provenance-controlled retraining and catalog regeneration.
+2. [MAJOR] The astrophysical interpretation remains conditional on an inadequate null model (pipelines/p2_chirality/chirality_catalog_paper.tex:825; pipelines/p2_chirality/chirality_catalog_paper.tex:1193-1196; pipelines/p2_chirality/chirality_catalog_paper.tex:1314-1326): fixed-occupancy label randomization cannot test spatially varying classifier transfer, the manuscript measures imaging-leg-dependent induced fractions, and the per-pixel confusion model and joint real-space–harmonic covariance remain absent. The significant harmonic residuals therefore cannot yet be conclusively attributed to systematics, nor can the result be described as a calibrated sub-percent astrophysical null.
+3. [MAJOR] The archival release is incomplete for publication (pipelines/p2_chirality/chirality_catalog_paper.tex:34-36; pipelines/p2_chirality/chirality_catalog_paper.tex:1626-1631; pipelines/p2_chirality/apjs_release_schema_v1_0_244.json:55-58): the catalog has an immutable Hugging Face commit, but paper-source, figure, and canonical-artifact links target moving `main`, the DOI-backed snapshot is still promised rather than deposited, and the release schema remains bound to paper v1.0.248 instead of v1.0.250. Freeze and cite the exact complete publication package.
+4. [MINOR] The headline summary assigns the WLS diagnostic the wrong support (pipelines/p2_chirality/chirality_catalog_paper.tex:835), contradicting the correct disclosure at pipelines/p2_chirality/chirality_catalog_paper.tex:1563-1564 and pipelines/p2_chirality/chirality_catalog_paper.tex:1597-1598. The artifact contains 24,187 latitude-cut pixels, giving \(f_{\rm sky}=24187/49152=0.492086\), not the 24,087-pixel FSC value 0.490051.
+5. [MINOR] The released catalog schema is too sparse for reproducing the systematics analysis (pipelines/p2_chirality/chirality_catalog_paper.tex:1631; pipelines/p2_chirality/apjs_release_schema_v1_0_244.json:10-21): it omits imaging-leg, depth, PSF, morphology, and redshift/selection metadata used to interpret spatial biases. Supply these fields or a versioned companion table and executable join.
+6. [MINOR] The transfer-factor derivation incorrectly claims an exact identity (pipelines/p2_chirality/chirality_catalog_paper.tex:1231-1237). Recomputing from Table B3 gives \(g_{\rm eff}=0.397616\), whereas \(2a-1=0.398217\); they agree only approximately because the true CW and CCW class counts are not exactly balanced.
+7. [MINOR] Monte Carlo tail conventions are inconsistent (pipelines/p2_chirality/chirality_catalog_paper.tex:783; pipelines/p2_chirality/chirality_catalog_paper.tex:1386; pipelines/p2_chirality/chirality_catalog_paper.tex:1538): the add-one convention gives \(16/501=0.03194\) and \(44/5001=0.008798\), rather than \(15/500=0.030\) and \(43/5000=0.0086\). State and apply one convention consistently.
+8. [MINOR] The bound PDF correctly identifies itself as v1.0.250 typeset in AASTeX 7.0.1, but its numerical bibliography is not ordered by first citation: Shamir (2012) is cited first at pipelines/p2_chirality/chirality_catalog_paper.tex:723, while the bibliography begins with Shamir (2020) at pipelines/p2_chirality/chirality_catalog_paper.tex:1653, contrary to pipelines/p2_chirality/chirality_catalog_paper.tex:1651.
+
+(3) Yes—the narrow central claim that the HC observed-label map is null-consistent under the declared fixed-occupancy randomization is numerically supported, but it does not establish a calibrated physical or primordial chirality-dipole null.

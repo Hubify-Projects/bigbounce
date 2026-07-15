@@ -147,12 +147,12 @@ const historicalLiveStatus: LiveStatus = {
 // summary reflect the canonical six-paper board rather than an older review wave.
 export const liveStatus: LiveStatus = {
   ...historicalLiveStatus,
-  lastUpdatedISO: "2026-07-15T12:36:00Z",
-  lastUpdatedDisplay: "July 15, 2026 · 5:36 AM PT",
+  lastUpdatedISO: "2026-07-15T13:12:00Z",
+  lastUpdatedDisplay: "July 15, 2026 · 6:12 AM PT",
   headline:
-    "All six manuscripts remain in revision. P4 v1.0.250 now passes AASTeX 7 presentation, link, source-to-claim, and all-page PDF audits; exact review and scientific release gates remain open. P1B's corrected production run remains blocked on compute funding.",
+    "All six manuscripts remain in revision. P4 v1.0.250's exact board is MINOR/MAJOR/MAJOR and verifies open training, spatial-covariance, archive, and bounded presentation gates. P1B's corrected production run remains blocked on compute funding.",
   summary:
-    "P1B's repaired CAMB spectrum generator and PRIMAT checks pass, but no corrected 500-MC artifact exists because the RunPod balance is negative. P4 v1.0.250 is a 29-page AASTeX 7 presentation release with unchanged HC z=0.7053 primary result and a clean PDF audit. Training realization, spatial covariance, DOI-backed archive, exact v1.0.250 review, and human review remain open. Readiness holds at 56/80; no acceptance is claimed.",
+    "P1B's repaired CAMB spectrum generator and PRIMAT checks pass, but no corrected 500-MC artifact exists because the RunPod balance is negative. P4 v1.0.250's exact Grok/Gemini/Codex-subscription board returned MINOR/MAJOR/MAJOR: the narrow HC z=0.7053 result survives, but training realization, spatial transfer/covariance, DOI-backed archive, bounded manuscript defects, and human review remain open. Readiness holds at 56/80; no acceptance is claimed.",
   papers: historicalLiveStatus.papers.map((paper) => {
     if (paper.slug === "paper-1b") {
       return {
@@ -167,17 +167,17 @@ export const liveStatus: LiveStatus = {
         ...paper,
         version: "v1.0.250",
         pendingWork:
-          "The corrected safe/quarantine/null bundle is public and the AASTeX 7 PDF passes compile, link, source-to-claim, and all-page visual audits. Training realization, spatial covariance, DOI-backed archive, exact v1.0.250 confirmation, and human review remain open. Readiness holds 80.",
+          "The exact v1.0.250 board is Grok MINOR / Gemini MAJOR / Codex-subscription MAJOR. The HC observed-label null survives, but training realization, spatial transfer/covariance, DOI-backed archive, bounded table/schema/presentation defects, and human review remain open. Readiness holds 80.",
       };
     }
     return paper;
   }),
   currentlyRunning: [
     "P1B corrected production is queued but blocked by a negative RunPod balance; no paid pod launch is being attempted",
-    "P4 v1.0.250 is verified locally and queued for exact-PDF non-Anthropic confirmation",
+    "P4 v1.0.250 exact board is complete; truth-audited v1.0.251 bounded closure is next",
   ],
   cronStatus:
-    "No review wave is running. The anti-loop stop rule is active: verified defects are being closed before any exact-artifact confirmation rerun.",
+    "No review wave is running. The anti-loop stop rule is active: verified v1.0.250 defects are being closed before any exact-artifact confirmation rerun.",
   etaToCompletion:
-    "After RunPod funding is restored, P1B's canonical plus parallel robustness run is estimated at roughly 2.5–5 hours wall-clock, followed by manuscript/PDF QA and exact review. P4's public release is complete but its training/covariance gates and confirmation board remain. A defensible all-six submission date remains conditional on those gates; journal acceptance is controlled by editors and referees.",
+    "After RunPod funding is restored, P1B's canonical plus parallel robustness run is estimated at roughly 2.5–5 hours wall-clock, followed by manuscript/PDF QA and exact review. P4 needs a bounded v1.0.251 closure plus training/covariance and immutable-archive work before re-review. A defensible all-six submission date remains conditional on those gates; journal acceptance is controlled by editors and referees.",
 };
