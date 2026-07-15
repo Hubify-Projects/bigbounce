@@ -13,6 +13,9 @@ import pytest
 from tools.prepare_paper_deposit import DepositError, prepare, verify_tarball
 
 
+REPO_ROOT = Path(__file__).resolve().parents[2]
+
+
 def _run(root: Path, *args: str) -> str:
     result = subprocess.run(args, cwd=root, check=True, capture_output=True, text=True)
     return result.stdout.strip()
@@ -201,6 +204,35 @@ def test_explicitly_incomplete_metadata_fails_closed(tmp_path: Path) -> None:
     _run(root, "git", "commit", "-qm", "block metadata")
     with pytest.raises(DepositError, match="license decision required"):
         prepare(_args(root, config, commit))
+
+
+def test_p2_config_tracks_exact_v17122_deposit_contract() -> None:
+    config = json.loads((REPO_ROOT / "tools/paper_deposit_config.json").read_text())
+    p2 = config["papers"]["P2"]
+    assert p2["tex"] == "research/focused_paper_source_integration/02_full_draft.tex"
+    assert p2["pdf"] == "research/focused_paper_source_integration/02_full_draft.pdf"
+    assert p2["standalone_proof"] == (
+        "project-context/SSOT/arxiv_tarballs/paper2_arxiv_{version}.proof.json"
+    )
+    assert p2["tarball_main_tex"] == "02_full_draft.tex"
+    assets = {item["archive_name"]: item["source"] for item in p2["bundle_assets"]}
+    assert set(assets) == {
+        "02_full_draft.tex",
+        "focused_paper_refs.bib",
+        "fig1_shape_function.png",
+        "fig5_inflation_comparison.png",
+        "02_full_draft.bbl",
+    }
+    assert assets["02_full_draft.bbl"].endswith(
+        "P2-v1.7.122-CONVENTION-CLARITY-CLOSURE/P2_v1.7.122.bbl"
+    )
+    assert p2["metadata"]["license"] == "cc-by-4.0"
+    assert p2["metadata"]["title"] == (
+        "The Exact Matter-Contraction Non-Gaussian Amplitude: Four-Vertex Derivation "
+        "and Conditional Large-Scale-Structure Mapping"
+    )
+    assert "MegaMapper" not in p2["metadata"]["title"]
+    assert "placeholder" not in json.dumps(p2["metadata"]).lower()
 
 
 def test_verify_tarball_reads_generated_log_for_undefined_references(

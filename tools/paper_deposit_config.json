@@ -49,6 +49,74 @@
         "access_right": "open"
       }
     },
+    "P2": {
+      "tex": "research/focused_paper_source_integration/02_full_draft.tex",
+      "pdf": "research/focused_paper_source_integration/02_full_draft.pdf",
+      "arxiv_tarball": "project-context/SSOT/arxiv_tarballs/paper2_arxiv_{version}.tar.gz",
+      "standalone_proof": "project-context/SSOT/arxiv_tarballs/paper2_arxiv_{version}.proof.json",
+      "tarball_main_tex": "02_full_draft.tex",
+      "deposit_root": ".deposit-staging",
+      "bundle_assets": [
+        {
+          "source": "research/focused_paper_source_integration/02_full_draft.tex",
+          "archive_name": "02_full_draft.tex"
+        },
+        {
+          "source": "research/focused_paper_source_integration/focused_paper_refs.bib",
+          "archive_name": "focused_paper_refs.bib"
+        },
+        {
+          "source": "research/focused_paper_source_integration/fig1_shape_function.png",
+          "archive_name": "fig1_shape_function.png"
+        },
+        {
+          "source": "research/focused_paper_source_integration/fig5_inflation_comparison.png",
+          "archive_name": "fig5_inflation_comparison.png"
+        },
+        {
+          "source": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P2-v1.7.122-CONVENTION-CLARITY-CLOSURE/P2_v1.7.122.bbl",
+          "archive_name": "02_full_draft.bbl"
+        }
+      ],
+      "provenance_globs": [
+        "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P2-v1.7.122-CONVENTION-CLARITY-CLOSURE/**/*",
+        "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P2-v1.7.122-EXACTPDF-4097bac5-PRD-NONANTHROPIC-CONFIRM/**/*"
+      ],
+      "extra_assets": [
+        "research/focused_paper_source_integration/scripts/p2_vertex_check.py",
+        "research/focused_paper_source_integration/scripts/exact_shape_analysis.py",
+        "research/focused_paper_source_integration/phase3_bispectrum_shape_overlap.json",
+        "research/focused_paper_source_integration/scripts/c13_independent_bounce_fisher.py",
+        "research/focused_paper_source_integration/outputs/c13_independent_bounce_fisher.json",
+        "research/focused_paper_source_integration/scripts/c14_rsd_multipole_fisher.py",
+        "research/focused_paper_source_integration/outputs/c14_rsd_multipole_fisher.json",
+        "research/focused_paper_source_integration/outputs/c14_orientation_quadrature_convergence.json",
+        "research/focused_paper_source_integration/scripts/c15_channel_native_fisher.py",
+        "research/focused_paper_source_integration/outputs/c15_channel_native_fisher.json",
+        "project-context/pdf-archive/manifests/2026/07/20260714T204234Z-baseline-v3-20260714.json"
+      ],
+      "provenance_archive": "P2_v1.7.122_tracked_provenance.tar.gz",
+      "metadata": {
+        "title": "The Exact Matter-Contraction Non-Gaussian Amplitude: Four-Vertex Derivation and Conditional Large-Scale-Structure Mapping",
+        "creators": [
+          {
+            "name": "Golden, Houston"
+          }
+        ],
+        "description": "Exact v1.7.122 manuscript candidate and reproducibility record for a four-vertex derivation of the matter-contraction non-Gaussian amplitude f_NL = -35/16 and its explicitly conditional large-scale-structure mapping. The archive retains the symbolic certification, shape-overlap artifact, and Fisher sensitivity checks; it does not claim completed cubic transfer through a specified bounce, a survey-native SPHEREx likelihood, journal acceptance, or an observational detection.",
+        "upload_type": "publication",
+        "publication_type": "article",
+        "access_right": "open",
+        "license": "cc-by-4.0",
+        "keywords": [
+          "primordial non-Gaussianity",
+          "matter contraction",
+          "bouncing cosmology",
+          "large-scale structure",
+          "bispectrum"
+        ]
+      }
+    },
     "P3": {
       "tex": "pipelines/p3_anomaly_engine/paper3_apjs.tex",
       "pdf": "pipelines/p3_anomaly_engine/paper3_apjs.pdf",
