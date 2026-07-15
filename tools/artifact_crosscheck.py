@@ -11,20 +11,24 @@ Data Availability, then verify each against the working tree:
 Usage: python3 tools/artifact_crosscheck.py <paper.tex>
 Exit 1 if any MISSING/STALE found (CI-gateable).
 """
+from __future__ import annotations
+
 import pathlib
 import re
 import subprocess
 import sys
 
 
-def repo_root() -> pathlib.Path:
+def repo_root(root_override: pathlib.Path | None = None) -> pathlib.Path:
+    if root_override is not None:
+        return root_override.resolve(strict=True)
     return pathlib.Path(
         subprocess.check_output(["git", "rev-parse", "--show-toplevel"]).decode().strip()
     )
 
 
-def main(tex_path: str) -> int:
-    root = repo_root()
+def main(tex_path: str, root_override: pathlib.Path | None = None) -> int:
+    root = repo_root(root_override)
     tex_file = pathlib.Path(tex_path).resolve()
     tex = tex_file.read_text(errors="replace")
     problems = 0

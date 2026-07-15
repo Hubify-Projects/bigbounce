@@ -9,7 +9,14 @@
     "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex"
   ],
   "portfolio_validators": [
-    "p1b-analysis-manifest"
+    "p1b-analysis-manifest",
+    "artifact-crosscheck-six"
+  ],
+  "portfolio_engine_paths": [
+    "project-context/pre-review-rules.json",
+    "tools/bigbounce_preflight.py",
+    "tools/artifact_crosscheck.py",
+    "tools/verify_analysis_artifact_manifest.py"
   ],
   "rules": [
     {

@@ -4,9 +4,11 @@
 from __future__ import annotations
 
 import argparse
+import contextlib
 import datetime as dt
 import hashlib
 import importlib.util
+import io
 import json
 import re
 import subprocess
@@ -15,6 +17,7 @@ from pathlib import Path
 from typing import Any
 
 from paper_registry import CANONICAL_IDS, load_registry, registry_path, repo_root
+import artifact_crosscheck
 from verify_analysis_artifact_manifest import verify_manifest
 
 SCHEMA = "bigbounce.pre-review-portfolio-receipt/v1"
@@ -22,6 +25,12 @@ ENGINE = Path.home() / ".claude/scistack/hubstack/learning-loop/paper-pre-review
 DEFAULT_RULES = "project-context/pre-review-rules.json"
 EXPECTED_ENGINE_COMMIT = "79a436e"
 P1B_ANALYSIS_MANIFEST = "reproducibility/p1b_analysis_artifact_manifest_v1B.0.108.json"
+ALLOWED_LOCAL_ENGINE_PATHS = (
+    "project-context/pre-review-rules.json",
+    "tools/bigbounce_preflight.py",
+    "tools/artifact_crosscheck.py",
+    "tools/verify_analysis_artifact_manifest.py",
+)
 
 
 class PortfolioError(ValueError):
@@ -122,9 +131,14 @@ def evaluate(root: Path, rules_path: Path) -> dict[str, Any]:
     validator_ids = rule_catalog.get("portfolio_validators", [])
     if not isinstance(validator_ids, list) or not all(isinstance(item, str) for item in validator_ids):
         raise PortfolioError("portfolio_validators must be a string list")
+    local_engine_paths = rule_catalog.get("portfolio_engine_paths", [])
+    if not isinstance(local_engine_paths, list) or any(
+        item not in ALLOWED_LOCAL_ENGINE_PATHS for item in local_engine_paths
+    ):
+        raise PortfolioError("portfolio_engine_paths contains an unsafe or unknown path")
     validator_inputs = tuple(
         P1B_ANALYSIS_MANIFEST for item in validator_ids if item == "p1b-analysis-manifest"
-    )
+    ) + tuple(local_engine_paths)
     ensure_clean_inputs(root, registry, validator_inputs)
     registry_raw = registry_path(root).read_bytes()
     engine = load_engine()
@@ -137,6 +151,35 @@ def evaluate(root: Path, rules_path: Path) -> dict[str, Any]:
             portfolio_validators.append({
                 "id": validator_id,
                 **verify_manifest(root, root / P1B_ANALYSIS_MANIFEST),
+            })
+        elif validator_id == "artifact-crosscheck-six":
+            per_paper = []
+            failed = []
+            for paper_id in CANONICAL_IDS:
+                output = io.StringIO()
+                with contextlib.redirect_stdout(output):
+                    rc = artifact_crosscheck.main(
+                        str(root / registry[paper_id]["tex_path"]), root,
+                    )
+                rendered = output.getvalue()
+                per_paper.append({
+                    "paper_id": paper_id,
+                    "verdict": "PASS" if rc == 0 else "FAIL",
+                    "output_sha256": sha256(rendered.encode()),
+                    "output": rendered,
+                })
+                if rc:
+                    failed.append(paper_id)
+            if failed:
+                raise PortfolioError(
+                    "artifact crosscheck failed for canonical papers: " + ", ".join(failed)
+                )
+            portfolio_validators.append({
+                "id": validator_id,
+                "schema": "bigbounce.artifact-crosscheck-six/v1",
+                "papers": per_paper,
+                "paper_count": len(per_paper),
+                "verdict": "PASS",
             })
         else:
             raise PortfolioError(f"unknown portfolio validator: {validator_id}")
@@ -162,6 +205,7 @@ def evaluate(root: Path, rules_path: Path) -> dict[str, Any]:
             "path": str(ENGINE), "git_commit": engine_commit(),
             "bytes": len(engine_raw), "sha256": sha256(engine_raw),
         },
+        "portfolio_engine": [file_record(root, path) for path in local_engine_paths],
         "generic_rule_receipt": generic,
         "generic_rule_receipt_sha256": sha256(canonical_bytes(generic)),
         "portfolio_validators": portfolio_validators,
