@@ -1,0 +1,34 @@
+{
+  "config_names": [
+    "mask_b30"
+  ],
+  "configs": [
+    {
+      "gal_cut": 30.0,
+      "name": "mask_b30"
+    }
+  ],
+  "execution": [
+    {
+      "mode": "serial",
+      "realization_workers": 1,
+      "result_order": "ordered indices 0..N-1; seeds 42--541"
+    }
+  ],
+  "n_real": 500,
+  "result_bytes": 1229,
+  "result_file": "c10_mask_b30.json",
+  "result_sha256": "83b42830dedc74ca4bbe0078eb6115ce86332c3b55e765b9932b8b5b4c36a8a1",
+  "runtime_s": 5811.9,
+  "schema_version": 1,
+  "seed_end": 541,
+  "seed_start": 42,
+  "software": {
+    "healpy": "1.19.0",
+    "numpy": "1.26.4",
+    "pymaster": "2.6"
+  },
+  "suite": "c10",
+  "theory_operator": "NmtWorkspace.get_bandpower_windows exact tensor contraction",
+  "window_equivalence_max_abs": 4.973799150320701e-14
+}
