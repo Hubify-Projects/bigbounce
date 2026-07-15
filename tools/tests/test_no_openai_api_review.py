@@ -56,12 +56,14 @@ class NoOpenAIAPIReviewTests(unittest.TestCase):
             "packet_key=$PACKET_KEY", "prompt_sha256=$PROMPT_SHA",
             "commit=$PACKET_HEAD", "source_sha256=$SOURCE_SHA",
             "sha256=$PDF_SHA", "pages=$PDF_PAGES", "$TARGET_JOURNAL",
-            "$ARTICLE_TYPE", "source_tree: clean detached worktree",
+            "$ARTICLE_TYPE", "source_tree: clean detached sparse tree",
         ):
             self.assertIn(binding, source)
-        self.assertIn('worktree add --quiet --detach "$CODEX_TREE" "$PACKET_HEAD"', source)
+        self.assertIn('git clone --quiet --shared --no-checkout "$REPO" "$CODEX_TREE"', source)
+        self.assertIn('checkout --quiet --detach "$PACKET_HEAD"', source)
         self.assertIn('"$CODEX_BIN" --cd "$CODEX_TREE" --sandbox read-only', source)
         self.assertIn("dispatch=false", source)
+        self.assertIn("INT_SUBSCRIPTION_OUTDIR", source)
 
     def test_int_wave_dry_run_prints_exact_bindings_without_dispatch(self):
         with tempfile.TemporaryDirectory() as td:
@@ -93,6 +95,59 @@ class NoOpenAIAPIReviewTests(unittest.TestCase):
             self.assertRegex(run.stdout, r"prompt_sha256=[0-9a-f]{64}")
             self.assertIn("source_tree=detached-clean", run.stdout)
             self.assertNotIn("launched:", run.stdout)
+
+    def test_int_wave_codex_only_mode_launches_no_api_subprocess(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            marker = root / "api-launched"
+            api_stub = root / "api-review"
+            api_stub.write_text(
+                f"#!/bin/sh\ntouch {marker!s}\nexit 99\n", encoding="utf-8",
+            )
+            api_stub.chmod(0o755)
+            codex = root / "codex"
+            codex.write_text(
+                """#!/bin/sh
+if [ "${1:-}" = login ]; then
+  echo 'Logged in using ChatGPT'
+  exit 0
+fi
+out=''
+while [ "$#" -gt 0 ]; do
+  if [ "$1" = '--output-last-message' ]; then shift; out="$1"; fi
+  shift
+done
+[ -n "$out" ] || exit 3
+printf '(1) VERDICT: MINOR REVISIONS\\n(2) ISSUES: none in stub\\n(3) supported\\n' >"$out"
+""",
+                encoding="utf-8",
+            )
+            codex.chmod(0o755)
+            outdir = root / "subscription"
+            env = dict(os.environ)
+            env.update({
+                "BIGBOUNCE_INT_API_LEGS_ENABLED": "0",
+                "BIGBOUNCE_INT_API_REVIEW_BIN": str(api_stub),
+                "BIGBOUNCE_CODEX_BIN": str(codex),
+                "BIGBOUNCE_REVIEW_CACHE": str(root / "cache"),
+                "INT_SUBSCRIPTION_OUTDIR": str(outdir),
+                "INT_REVIEW_COMMIT": subprocess.check_output(
+                    ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True,
+                ).strip(),
+            })
+            run = subprocess.run(
+                ["bash", str(TOOLS / "int_wave.sh"), "P1B"], cwd=ROOT,
+                env=env, capture_output=True, text=True, timeout=45, check=False,
+            )
+            self.assertEqual(run.returncode, 0, run.stderr)
+            self.assertFalse(marker.exists(), "API dispatcher ran in Codex-only mode")
+            self.assertIn("Grok (grok-4.3):           NOT_RUN", run.stdout)
+            self.assertIn("Gemini (gemini-3.1-pro):   NOT_RUN", run.stdout)
+            raws = list(outdir.glob("intwave_P1B_codex_*.md"))
+            self.assertEqual(len(raws), 1)
+            raw = raws[0].read_text(encoding="utf-8")
+            self.assertIn("binding: packet_key=", raw)
+            self.assertIn("source_tree: clean detached sparse tree", raw)
 
     def test_xai_response_parsing_builds_allowlisted_receipt(self):
         module = load_script("int_api_review_2026-07-08.py")

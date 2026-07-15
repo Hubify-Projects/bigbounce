@@ -32,14 +32,15 @@ set -uo pipefail   # NOT -e: individual legs may fail; we want the triple regard
 SCRIPT_DIR="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)"
 REPO="$(cd "$SCRIPT_DIR/.." && pwd)"
 REGISTRY="$REPO/tools/paper_registry.py"
-PY_REVIEW="$REPO/tools/int_api_review_2026-07-08.py"
+PY_REVIEW="${BIGBOUNCE_INT_API_REVIEW_BIN:-$REPO/tools/int_api_review_2026-07-08.py}"
 # Match the Python review dispatcher's INT_OUTDIR override.  Exact-PDF
 # confirmation waves must be able to write to a content-addressed round
 # directory instead of overwriting the legacy rolling files.
 API_OUTDIR="${INT_OUTDIR:-$REPO/project-context/peer-reviews/INT_v3/ROUND_2026-07-09}"
-SUBSCRIPTION_OUTDIR="$REPO/project-context/peer-reviews/INT_api/H17_2026-07-10"
+SUBSCRIPTION_OUTDIR="${INT_SUBSCRIPTION_OUTDIR:-${BIGBOUNCE_INT_SUBSCRIPTION_OUTDIR:-$REPO/project-context/peer-reviews/INT_api/H17_2026-07-10}}"
 RUNLOG="$SUBSCRIPTION_OUTDIR/run.log"
 CODEX_ENABLED="${BIGBOUNCE_CODEX_SUBSCRIPTION_ENABLED:-1}"
+API_LEGS_ENABLED="${BIGBOUNCE_INT_API_LEGS_ENABLED:-1}"
 CODEX_BIN="${BIGBOUNCE_CODEX_BIN:-$(command -v codex 2>/dev/null || { [ -x /opt/homebrew/bin/codex ] && printf '%s' /opt/homebrew/bin/codex; })}"
 CODEX_MODEL="${BIGBOUNCE_CODEX_MODEL:-gpt-5.6-sol}"
 CODEX_EFFORT="${BIGBOUNCE_CODEX_EFFORT:-high}"
@@ -118,13 +119,16 @@ PACKET_JSON="$(mktemp "${TMPDIR:-/tmp}/bigbounce-int-packet.XXXXXX")"
 CODEX_TREE=""
 cleanup() {
   if [ -n "$CODEX_TREE" ] && [ -d "$CODEX_TREE" ]; then
-    git -C "$REPO" worktree remove --force "$CODEX_TREE" >/dev/null 2>&1 || true
+    rm -rf "$CODEX_TREE"
   fi
   rm -f "$PACKET_PROMPT" "$PACKET_CONTEXT" "$PACKET_JSON"
 }
 trap cleanup EXIT INT TERM
 printf '%s\n' "$CODEX_PROMPT" >"$PACKET_PROMPT"
-printf '%s' "$CONTEXT" >"$PACKET_CONTEXT"
+# Include the selected commit in the hashed allowed context. review_packet's
+# generic key is otherwise commit-agnostic, which can collide when the same PDF
+# survives across two HEADs even though packet provenance correctly differs.
+printf 'user_context=%s\nreview_commit=%s\n' "$CONTEXT" "$REVIEW_COMMIT" >"$PACKET_CONTEXT"
 
 PACKET_ARGS=("$PAPER" --prompt-file "$PACKET_PROMPT" --context-file "$PACKET_CONTEXT" \
   --model "$CODEX_MODEL" --effort "$CODEX_EFFORT")
@@ -168,6 +172,7 @@ detached source tree only to inspect source and committed supporting artifacts.
 Do not substitute a working-tree PDF or any differently hashed manuscript."
 
 case "$CODEX_ENABLED" in 0|1) ;; *) die "BIGBOUNCE_CODEX_SUBSCRIPTION_ENABLED must be 0 or 1" ;; esac
+case "$API_LEGS_ENABLED" in 0|1) ;; *) die "BIGBOUNCE_INT_API_LEGS_ENABLED must be 0 or 1" ;; esac
 case "$CODEX_EFFORT" in minimal|low|medium|high|xhigh|max|ultra) ;; *) die "BIGBOUNCE_CODEX_EFFORT must be minimal|low|medium|high|xhigh|max|ultra" ;; esac
 
 # No-launch validation path: packet creation/hash verification is allowed, but
@@ -175,8 +180,8 @@ case "$CODEX_EFFORT" in minimal|low|medium|high|xhigh|max|ultra) ;; *) die "BIGB
 if [ "${BIGBOUNCE_INT_WAVE_DRY_RUN:-0}" = "1" ]; then
   LOGIN="unavailable"
   if [ -n "$CODEX_BIN" ]; then LOGIN="$(env -u OPENAI_API_KEY -u CODEX_API_KEY -u ANTHROPIC_API_KEY "$CODEX_BIN" login status 2>&1 || true)"; fi
-  printf 'DRY_RUN paper=%s version=%s dispatch=false codex_enabled=%s model=%s effort=%s sandbox=read-only auth=%s\n' \
-    "$PAPER" "$VER" "$CODEX_ENABLED" "$CODEX_MODEL" "$CODEX_EFFORT" "$LOGIN"
+  printf 'DRY_RUN paper=%s version=%s dispatch=false codex_enabled=%s api_legs_enabled=%s model=%s effort=%s sandbox=read-only auth=%s\n' \
+    "$PAPER" "$VER" "$CODEX_ENABLED" "$API_LEGS_ENABLED" "$CODEX_MODEL" "$CODEX_EFFORT" "$LOGIN"
   printf 'BINDING packet_key=%s prompt_sha256=%s commit=%s source_sha256=%s pdf_sha256=%s pages=%s venue=%s article_type=%s source_tree=detached-clean\n' \
     "$PACKET_KEY" "$PROMPT_SHA" "$PACKET_HEAD" "$SOURCE_SHA" "$PDF_SHA" "$PDF_PAGES" \
     "$TARGET_JOURNAL" "$ARTICLE_TYPE"
@@ -208,8 +213,15 @@ fi
 if [ "$CODEX_ON" = 1 ]; then
   CODEX_TREE="$(mktemp -d "${TMPDIR:-/tmp}/bigbounce-codex-tree.XXXXXX")"
   rmdir "$CODEX_TREE"
-  git -C "$REPO" worktree add --quiet --detach "$CODEX_TREE" "$PACKET_HEAD" \
-    || die "could not create clean detached Codex source tree at $PACKET_HEAD"
+  SOURCE_SCOPE="$(dirname "$TEX_REL")"
+  git clone --quiet --shared --no-checkout "$REPO" "$CODEX_TREE" \
+    || die "could not create isolated Codex source repository"
+  git -C "$CODEX_TREE" sparse-checkout init --cone \
+    || die "could not initialize Codex sparse source tree"
+  git -C "$CODEX_TREE" sparse-checkout set "$SOURCE_SCOPE" \
+    || die "could not select Codex source scope $SOURCE_SCOPE"
+  git -C "$CODEX_TREE" checkout --quiet --detach "$PACKET_HEAD" \
+    || die "could not detach Codex source tree at $PACKET_HEAD"
   [ -z "$(git -C "$CODEX_TREE" status --porcelain)" ] \
     || die "detached Codex source tree is unexpectedly dirty"
 fi
@@ -218,24 +230,27 @@ fi
 # Launch the API and subscription legs in parallel; capture PIDs; wait on all.
 # ---------------------------------------------------------------------------
 
-# (b) Grok leg
-(
-  set -a; source "$REPO/.env.local"; set +a
-  INT_CONTEXT="$CONTEXT" python3 "$PY_REVIEW" "$PAPER" grok
-) >"$SUBSCRIPTION_OUTDIR/.intwave_${PAPER}_grok_${HHMM}.log" 2>&1 &
-PID_GROK=$!
-
-# (d) Gemini leg — 7th reviewer, only when GEMINI_API_KEY is present (keyed
-#     2026-07-11). We source .env.local in a subshell to test the key without
-#     leaking it into this shell's env or any log line.
 GEMINI_ON=0
-if ( set -a; source "$REPO/.env.local" >/dev/null 2>&1; set +a; [ -n "${GEMINI_API_KEY:-}" ] ); then
-  GEMINI_ON=1
+# API legs are an explicit spend switch. When disabled, this block must not
+# source .env.local, inspect API keys, or create provider subprocesses.
+if [ "$API_LEGS_ENABLED" = 1 ]; then
+  # (b) Grok leg
   (
     set -a; source "$REPO/.env.local"; set +a
-    INT_CONTEXT="$CONTEXT" python3 "$PY_REVIEW" "$PAPER" gemini
-  ) >"$SUBSCRIPTION_OUTDIR/.intwave_${PAPER}_gemini_${HHMM}.log" 2>&1 &
-  PID_GEMINI=$!
+    INT_CONTEXT="$CONTEXT" python3 "$PY_REVIEW" "$PAPER" grok
+  ) >"$SUBSCRIPTION_OUTDIR/.intwave_${PAPER}_grok_${HHMM}.log" 2>&1 &
+  PID_GROK=$!
+
+  # (d) Gemini leg — only when GEMINI_API_KEY is present. Key inspection and
+  # .env.local sourcing stay wholly inside the enabled branch.
+  if ( set -a; source "$REPO/.env.local" >/dev/null 2>&1; set +a; [ -n "${GEMINI_API_KEY:-}" ] ); then
+    GEMINI_ON=1
+    (
+      set -a; source "$REPO/.env.local"; set +a
+      INT_CONTEXT="$CONTEXT" python3 "$PY_REVIEW" "$PAPER" gemini
+    ) >"$SUBSCRIPTION_OUTDIR/.intwave_${PAPER}_gemini_${HHMM}.log" 2>&1 &
+    PID_GEMINI=$!
+  fi
 fi
 
 # (c) Codex ChatGPT-subscription leg. Never source .env.local here. The fixed
@@ -250,7 +265,7 @@ if [ "$CODEX_ON" = 1 ]; then
     echo "provenance: commit=$PACKET_HEAD  source_sha256=$SOURCE_SHA"
     echo "pdf: snapshot=$SNAPSHOT_ABS  sha256=$PDF_SHA  pages=$PDF_PAGES"
     echo "venue: $TARGET_JOURNAL  article_type: $ARTICLE_TYPE  profile: $REVIEW_PROFILE"
-    echo "source_tree: clean detached worktree at $PACKET_HEAD"
+    echo "source_tree: clean detached sparse tree at $PACKET_HEAD (scope=$SOURCE_SCOPE)"
     echo "UTC: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
     [ -n "$CONTEXT" ] && echo "context-note: $CONTEXT"
     echo ""
@@ -278,16 +293,19 @@ if [ "$CODEX_ON" = 1 ]; then
 PID_CODEX=$!
 fi
 
-if [ "$GEMINI_ON" = 1 ]; then
+if [ "$API_LEGS_ENABLED" = 0 ]; then
+  echo "    launched: codex-subscription=${CODEX_STATE}${PID_CODEX:+(pid $PID_CODEX)} [grok/gemini: NOT_RUN; API legs disabled] — blocking until done..."
+elif [ "$GEMINI_ON" = 1 ]; then
   echo "    launched: grok(pid $PID_GROK) gemini(pid $PID_GEMINI) codex-subscription=${CODEX_STATE}${PID_CODEX:+(pid $PID_CODEX)} — blocking until all done..."
 else
   echo "    launched: grok(pid $PID_GROK) codex-subscription=${CODEX_STATE}${PID_CODEX:+(pid $PID_CODEX)} [gemini: no key] — blocking until all done..."
 fi
 
-wait "$PID_GROK";   RC_GROK=$?
+RC_GROK="disabled"
+if [ "$API_LEGS_ENABLED" = 1 ]; then wait "$PID_GROK"; RC_GROK=$?; fi
 RC_CODEX=0
 if [ "$CODEX_ON" = 1 ]; then wait "$PID_CODEX"; RC_CODEX=$?; fi
-RC_GEMINI=0
+RC_GEMINI="disabled"
 if [ "$GEMINI_ON" = 1 ]; then wait "$PID_GEMINI"; RC_GEMINI=$?; fi
 
 # ---------------------------------------------------------------------------
@@ -302,10 +320,15 @@ parse_api_verdict() {
   fi
 }
 
-V_GROK="$(parse_api_verdict grok)";     [ -n "$V_GROK" ]   || V_GROK="ABSENT"
-if [ "$GEMINI_ON" = 1 ]; then
-  V_GEMINI="$(parse_api_verdict gemini)"; [ -n "$V_GEMINI" ] || V_GEMINI="ABSENT"
+if [ "$API_LEGS_ENABLED" = 0 ]; then
+  V_GROK="NOT_RUN"
+  V_GEMINI="NOT_RUN"
 else
+  V_GROK="$(parse_api_verdict grok)"; [ -n "$V_GROK" ] || V_GROK="ABSENT"
+fi
+if [ "$API_LEGS_ENABLED" = 1 ] && [ "$GEMINI_ON" = 1 ]; then
+  V_GEMINI="$(parse_api_verdict gemini)"; [ -n "$V_GEMINI" ] || V_GEMINI="ABSENT"
+elif [ "$API_LEGS_ENABLED" = 1 ]; then
   V_GEMINI="NO-KEY"
 fi
 
