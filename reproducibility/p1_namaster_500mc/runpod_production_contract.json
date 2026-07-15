@@ -5,8 +5,6 @@
   "mutation_policy": "manifest-only; this repository contract does not create pods",
   "provider_mutation_ready": false,
   "provider_mutation_blockers": [
-    "No reviewed dockerStartCmd/bootstrap performs the exact commit checkout and dependency installation.",
-    "No reviewed remote execution lifecycle runs the canonical and eight robustness commands.",
     "No reviewed durable output upload verifies retained result and receipt hashes before deletion.",
     "No reviewed launch path automatically enters foreground supervision immediately after create."
   ],
@@ -33,7 +31,9 @@
     "reproducibility/p1_namaster_500mc/scripts/c10_robustness_battery.py",
     "reproducibility/p1_namaster_500mc/scripts/declared_fsky_sign_battery.py",
     "reproducibility/p1_namaster_500mc/scripts/merge_c10_partials.py",
-    "reproducibility/p1_namaster_500mc/scripts/prepare_runpod_production.py"
+    "reproducibility/p1_namaster_500mc/scripts/prepare_runpod_production.py",
+    "reproducibility/p1_namaster_500mc/scripts/generate_remote_bootstrap.py",
+    "reproducibility/p1_namaster_500mc/scripts/remote_production_runner.py"
   ],
   "output_root": "reproducibility/p1_namaster_500mc/results/physical_spectrum_v2",
   "canonical_command": "NAMASTER_NREAL=500 NAMASTER_OUTPUT_DIR=reproducibility/p1_namaster_500mc/results/physical_spectrum_v2 python reproducibility/p1_namaster_500mc/scripts/namaster_500mc.py",
@@ -48,6 +48,20 @@
     "DECLARED_NREAL=500 python reproducibility/p1_namaster_500mc/scripts/declared_fsky_sign_battery.py --only-config negative_beta_fsky_0p32"
   ],
   "merge_command": "python reproducibility/p1_namaster_500mc/scripts/merge_c10_partials.py",
+  "execution_outputs": {
+    "canonical": ["summary.json", "bandpowers.npz"],
+    "robustness": [
+      "shards/c10_canonical_refit.json",
+      "shards/c10_apod_fwhm_0p5.json",
+      "shards/c10_apod_fwhm_3p0.json",
+      "shards/c10_mask_b30.json",
+      "shards/c10_purify_b.json",
+      "shards/declared_fsky_0p85.json",
+      "shards/declared_fsky_0p65.json",
+      "shards/declared_negative_beta_fsky_0p32.json"
+    ],
+    "merged": ["c10_robustness_battery.json", "declared_fsky_sign_battery.json"]
+  },
   "acceptance": {
     "canonical_outputs": ["summary.json", "bandpowers.npz"],
     "robustness_shards": 8,

@@ -55,6 +55,23 @@ def preflight(contract: dict, expected_commit: str) -> dict:
     if len(contract.get("robustness_commands", [])) != 8:
         raise ValueError("contract must define exactly eight robustness commands")
 
+    output_root = contract["output_root"]
+    outputs = contract.get("execution_outputs", {})
+    robustness_outputs = outputs.get("robustness", [])
+    if len(robustness_outputs) != 8:
+        raise ValueError("contract must define exactly eight robustness outputs")
+    def rooted(paths: list[str]) -> list[str]:
+        return [str(Path(output_root) / path) for path in paths]
+    execution_jobs = [{
+        "name": "canonical", "kind": "canonical",
+        "command": contract["canonical_command"],
+        "outputs": rooted(outputs.get("canonical", [])),
+    }]
+    execution_jobs.extend({
+        "name": f"robustness-{index + 1:02d}", "kind": "robustness",
+        "command": command, "outputs": rooted([robustness_outputs[index]]),
+    } for index, command in enumerate(contract["robustness_commands"]))
+
     return {
         "contract_id": contract["contract_id"],
         "git_commit": head,
@@ -68,6 +85,12 @@ def preflight(contract: dict, expected_commit: str) -> dict:
         "robustness_commands": contract["robustness_commands"],
         "merge_command": contract["merge_command"],
         "acceptance": contract["acceptance"],
+        "execution_jobs": execution_jobs,
+        "merge_job": {
+            "name": "strict-merge", "kind": "merge",
+            "command": contract["merge_command"],
+            "outputs": rooted(outputs.get("merged", [])),
+        },
     }
 
 

@@ -161,12 +161,17 @@ The prospective code rejects stale/future/insufficient receipts, dirty or
 hash-mismatched manifest inputs, duplicate deterministic pod names, mutable
 images, more than one GPU, and inconsistent rate/runtime/budget ceilings. Those
 guards are not sufficient for useful production. Before mutation can be enabled,
-an independently reviewed lifecycle must add all four contract blockers:
+an independently reviewed lifecycle must add the remaining contract blockers.
+The exact-commit bootstrap generator and resumable offline production runner now
+close the former checkout/bootstrap and nine-job execution gaps: they verify the
+manifest-bound commit and every required input hash, install and import-check the
+pinned scientific runtime, run one canonical plus exactly eight robustness jobs,
+write atomic log/output-hash receipts, run the strict merger, and promote a final
+completion receipt only after every receipt and merged output verifies. They do
+not contact RunPod or any other provider. The unresolved requirements are:
 
-1. exact-commit checkout, dependency bootstrap, and `dockerStartCmd`;
-2. execution of the canonical job and all eight robustness jobs;
-3. durable upload plus hash verification of every output and receipt before deletion;
-4. automatic foreground supervision immediately after a successful create.
+1. durable upload plus hash verification of every output and receipt before deletion;
+2. automatic foreground supervision immediately after a successful create.
 
 Until all four exist and `provider_mutation_ready` is deliberately changed,
 even a fully confirmed command fails before provider HTTP:
