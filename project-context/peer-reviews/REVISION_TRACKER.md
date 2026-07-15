@@ -20,6 +20,23 @@ This tracker logs each revision round and which issues have been addressed.
 
 ## Revision Rounds
 
+### P4 v1.0.252 → v1.0.253: Exact-PDF release-contract closure (2026-07-15)
+
+**v1.0.252 input:** exact 28-page PDF SHA-256 `a109f3d150ff02107bc10bc7dec576ad28b0157081b3e521da86e7c06ade3292`. The valid non-Anthropic board was direct-API Grok 4.3 **MAJOR REVISIONS** / direct-API Gemini 3.1 Pro Preview **MINOR REVISIONS** / ChatGPT-subscription Codex CLI `gpt-5.6-sol` high **MAJOR REVISIONS**. The Codex leg used no OpenAI API.
+
+**Truth audit and bounded closure:** three release defects were verified as real: stale/internally inconsistent Hugging Face cards, a morphology-sidecar contract that was not independently retrievable/executable, and a broken public model-loading contract. Local closure commits are `88217bdf`, `69226adb`, and `359c9105`. Public immutable Hugging Face receipts bind dataset commit `2fc392e2` and model commit `3baeab86`. The release-confirmation Codex review remained **MAJOR REVISIONS** because it correctly observed those defects before the public mutations; its verdict is preserved and is not rewritten as acceptance.
+
+| Finding/gate | Status | Evidence or remaining requirement |
+|---|---|---|
+| Current release-card counts, version, and validation claims | **CLOSED** | Local card correction `88217bdf`; public immutable dataset receipt `2fc392e2` |
+| Morphology-sidecar retrieval and derived-`b/a` contract | **CLOSED** | Independently executable contract and tests at `69226adb`; public dataset receipt binds the immutable payload |
+| Public model loading and metadata | **CLOSED** | Local repair `359c9105`; public immutable model receipt `3baeab86` |
+| Exact v1.0.253 publication candidate | **COMPILED / MIRRORED; REVIEW PENDING** | Exact PDF SHA-256 `d9030a7bb41daa52a18928372bdcd60d7be91335d4a25bc4d7117083c4f02e43`; no v1.0.253 reviewer verdict is inferred |
+| Training realization/replay and spatially varying confusion transfer with joint covariance | **OPEN — SCIENCE GATES** | Exact reproducible training realization and the declared transfer/covariance analyses remain required |
+| Complete systematics metadata, immutable DOI archive, and human ApJS decision | **OPEN — RELEASE/HUMAN GATES** | Public provider commits are not a DOI, and automated review is not editor/referee acceptance |
+
+No readiness uplift; P4 remains capped at 80. The next valid acceptance evidence must review the exact v1.0.253 PDF, not the superseded v1.0.252 artifact. Evidence: `INT_v3/ROUND_2026-07-15-P4-v1.0.252-EXACTPDF-a109f3d1-NONANTHROPIC-CONFIRM/` and `INT_v3/ROUND_2026-07-15-P4-v1.0.252-RELEASE-CONTRACT-CONFIRM/`.
+
 ### P5 v0.1.133: Exact-PDF MINOR closure and anti-loop stop (2026-07-14)
 
 **Input:** ChatGPT-subscription Codex CLI reviewed exact 39-page v0.1.132 at commit `a745b6ac4d4f951462fc4e7e2135843d831be613`, PDF SHA-256 `4b04d2fc1152b911d85c9db8fa315f9c135af2f7cd6c4f54c932d22d5eff1c18`. The final local candidate is v0.1.133 at commit `af1a6abe6b91e142a2eb981aef4a178c58b1391c`, PDF SHA-256 `db18dd937f5d45399636548aeb75c6f9e922ddef13895ff72dec7a4e9a668764`.
