@@ -57,6 +57,28 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p1b-v2b004-publisher-race-closure-2026-07-16",
+    dateISO: "2026-07-16",
+    timePT: "11:55 AM",
+    kind: "closure-wave",
+    title: "P1B v2B.0.4 — concurrent publisher cross-binding closed",
+    papers: ["P1B"],
+    summary:
+      "The exact v2B.0.3 JORS board again returned Grok REJECT, Gemini MAJOR, and Codex-subscription MAJOR. The verifier-side closure held, but truth audit verified a distinct publisher race: a publisher re-read the shared destination after replacement, allowing another publisher's bytes to inherit the first publisher's metadata. namaster-proof 0.1.3 derives receipt fields from its immutable serialized snapshot and regression-tests the interleaving. Readiness holds 56.",
+    keyTakeaways: [
+      "A second genuinely new concurrency defect became a deterministic regression fixture",
+      "Package suite passes 26/26 with separate verifier- and publisher-side race coverage",
+      "Exact-window and real-PyMaster numerical claims were not contradicted",
+      "Archive/DOI and correspondence metadata remain explicit external/human gates; no OpenAI API or Anthropic route was used",
+    ],
+    links: [
+      { label: "Truth audit", href: `${PR}/INT_v3/ROUND_2026-07-16-P1B-v2B.0.3-EXACTPDF-05f28b19-JORS-NONANTHROPIC-CONFIRM/P1B_v2B.0.3_truth_audit.md` },
+      { label: "Codex raw", href: `${PR}/INT_v3/ROUND_2026-07-16-P1B-v2B.0.3-EXACTPDF-05f28b19-JORS-NONANTHROPIC-CONFIRM/intwave_P1B_codex_1145.md` },
+      { label: "Grok raw", href: `${PR}/INT_v3/ROUND_2026-07-16-P1B-v2B.0.3-EXACTPDF-05f28b19-JORS-NONANTHROPIC-CONFIRM/API_P1B_grok.md` },
+      { label: "Gemini raw", href: `${PR}/INT_v3/ROUND_2026-07-16-P1B-v2B.0.3-EXACTPDF-05f28b19-JORS-NONANTHROPIC-CONFIRM/API_P1B_gemini.md` },
+    ],
+  },
+  {
     id: "p1b-v2b003-receipt-race-closure-2026-07-16",
     dateISO: "2026-07-16",
     timePT: "11:36 AM",

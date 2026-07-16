@@ -10,6 +10,9 @@
 \usepackage{hyperref}
 \usepackage{microtype}
 \usepackage{seqsplit}
+\usepackage{titlesec}
+
+\titlespacing*{\section}{0pt}{2.0ex plus 0.5ex minus 0.2ex}{0.8ex}
 
 \hypersetup{
   colorlinks=true,
@@ -20,8 +23,8 @@
 
 \newcommand{\software}{\texttt{namaster-proof}}
 \newcommand{\Cl}{C_\ell}
-\newcommand{\paperVersion}{v2B.0.3}
-\newcommand{\paperTimestamp}{2026-07-16 11:31 PT}
+\newcommand{\paperVersion}{v2B.0.4}
+\newcommand{\paperTimestamp}{2026-07-16 11:55 PT}
 
 \title{\software: Exact pseudo-\(\Cl\) window inference and
 content-bound validation for reproducible spin-2 analyses}
@@ -146,7 +149,8 @@ points spanning \(-1^\circ\) to \(+1^\circ\).
 
 \section{Content Validation}
 
-\texttt{publish\_json} serializes a mapping with sorted keys, writes and
+\texttt{publish\_json} serializes a mapping with sorted keys, derives the
+receipt digest and byte count from that immutable serialized snapshot, writes and
 flushes a process-specific temporary file, atomically replaces the result,
 and synchronizes the containing directory.  It then separately publishes a sidecar receipt
 containing schema version, result filename, byte count, SHA-256 digest, and
@@ -168,7 +172,7 @@ failure.
 
 \section{Quality Control}
 
-Version 0.1.2 contains 25 automated tests covering numerical behavior, invalid
+Version 0.1.3 contains 26 automated tests covering numerical behavior, invalid
 inputs, the CLI, receipt mutation, protected fields, and compatibility with
 the original production helpers.  The window suite uses an exactly represented
 synthetic linear workspace to compare the precontracted response with the
@@ -197,6 +201,10 @@ The documentation constructs an identity-like workspace, builds a response
 from synthetic \(EE\) and \(BB\) arrays, evaluates a known rotation, and checks
 operator equivalence.  This example has no dependency on a paper-specific
 dataset and is suitable for installation tests.
+The minimal call sequence is
+\texttt{response = build\_rotation\_response(workspace, ee, bb)} followed by
+\texttt{windowed\_bandpowers(response, beta\_deg=0.25)}; the complete executable
+example also calls \texttt{validate\_window\_equivalence}.
 
 \paragraph{Real PyMaster integration.}
 The optional \nolinkurl{examples/pymaster_integration.py} example constructs a
@@ -245,7 +253,7 @@ CI covers Linux with Python 3.10--3.13 and Windows with Python 3.12. Directory
 metadata are synchronized on POSIX systems after atomic replacement.
 
 \paragraph{Programming language and dependencies.}
-Version 0.1.2 requires Python 3.10 or later and NumPy 1.24 or later. PyMaster
+Version 0.1.3 requires Python 3.10 or later and NumPy 1.24 or later. PyMaster
 is optional and is supplied by the user for physical NaMaster workspaces;
 the retained physical validation used PyMaster 2.6.
 
@@ -263,7 +271,7 @@ The software is released under the MIT License.
 \paragraph{Archive.}
 A persistent archival identifier is not yet available. This is an explicit
 submission blocker, not a completed release claim. The submission candidate
-must bind version 0.1.2 to an immutable archive before journal submission.
+must bind version 0.1.3 to an immutable archive before journal submission.
 
 \paragraph{Validation artifacts.}
 The corrected physical example is bound to the

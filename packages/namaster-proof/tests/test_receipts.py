@@ -84,3 +84,31 @@ def test_concurrent_pair_replacement_cannot_mix_payload_generations(
     monkeypatch.setattr(receipts_module, "_read_bytes", racing_read)
     with pytest.raises(ValueError, match="invalid receipt"):
         verify_json_receipt(result)
+
+
+def test_concurrent_publishers_cannot_cross_bind_metadata_and_bytes(
+    tmp_path, monkeypatch
+):
+    result = tmp_path / "shard.json"
+    original_write = receipts_module._atomic_write
+    interleaved = False
+
+    def racing_write(path, data):
+        nonlocal interleaved
+        original_write(path, data)
+        if path == result and not interleaved:
+            interleaved = True
+            competing = b'{\n  "generation": 2\n}\n'
+            original_write(result, competing)
+
+    monkeypatch.setattr(receipts_module, "_atomic_write", racing_write)
+    publish_json(
+        result,
+        {"generation": 1},
+        {"suite": "test", "generation": 1},
+    )
+    with pytest.raises(ValueError, match="invalid receipt"):
+        validate_json_receipt(
+            result,
+            expected={"suite": "test", "generation": 1},
+        )

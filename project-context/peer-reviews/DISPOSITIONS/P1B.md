@@ -1,7 +1,7 @@
 # P1B disposition ledger
 
 **Canonical source:** `arxiv/paper1b_namaster_proof.tex`
-**Current paper-local version:** `v2B.0.3` (2026-07-16 software-metapaper closure)
+**Current paper-local version:** `v2B.0.4` (2026-07-16 software-metapaper closure)
 **Claim policy:** exact-window and receipt software validation; no sky measurement,
 foreground model, cosmological inference, or ECH/bounce evidence. The legacy
 v1B computational-companion dispositions remain below as retained history.
@@ -22,4 +22,5 @@ v1B computational-companion dispositions remain below as retained history.
 | DP1B-12 | Real PyMaster integration was absent. | **CLOSED-BY-ARTIFACT v2B.0.2** | The retained PyMaster 2.6 example recovers 0.250°, records the 0.315° shortcut result, and verifies operator agreement at 6.78e-21; its JSON/receipt are regression-tested. |
 | DP1B-13 | Receipt verification mixed payload and receipt generations during concurrent publication. | **CLOSED-BY-CODE v2B.0.3 / package 0.1.2** | Verification now hashes and parses the same immutable result-byte snapshot it returns; a race regression fails before the fix and passes after it. |
 | DP1B-14 | Portability, receipt terminology, stale canonical documentation, malformed prose, and reference-page collision. | **CLOSED-BY-EDIT v2B.0.3** | Windows CI and POSIX-specific durability wording replace unsupported OS independence; “content-bound” replaces filename-inaccurate “content-addressed”; superseded recovery values are removed from the canonical README; grammar and rendered references are corrected. |
-| DP1B-15 | Persistent archive identifier and final correspondence metadata. | **OPEN-SUBMISSION / HUMAN** | Package 0.1.2 must be bound to an immutable public archive before JORS submission; author-supplied contact metadata remains a human gate. |
+| DP1B-15 | Persistent archive identifier and final correspondence metadata. | **OPEN-SUBMISSION / HUMAN** | Package 0.1.3 must be bound to an immutable public archive before JORS submission; author-supplied contact metadata remains a human gate. |
+| DP1B-16 | Concurrent same-path publishers could cross-bind one execution's metadata to another execution's bytes. | **CLOSED-BY-CODE v2B.0.4 / package 0.1.3** | Each publisher now derives byte count and SHA-256 from its own immutable serialized snapshot rather than re-reading the shared destination path; a deterministic publisher-interleaving regression requires the mismatched pair to fail validation. |

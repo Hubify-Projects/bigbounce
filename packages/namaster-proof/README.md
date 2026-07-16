@@ -61,6 +61,9 @@ The result and receipt are two sequential atomic file replacements, not one
 filesystem transaction and not a cryptographic signature. A coordinated
 replacement of both files is detectable only when the caller supplies trusted
 expected metadata or anchors the receipt digest externally.
+Each publisher derives its receipt from its own serialized byte snapshot rather
+than re-reading the shared destination path, so concurrent same-path publishers
+cannot cross-bind one execution's metadata to another execution's result bytes.
 
 ## CLI
 

@@ -72,8 +72,8 @@ def publish_json(
     receipt = {
         "schema_version": 1,
         "result_file": path.name,
-        "result_bytes": path.stat().st_size,
-        "result_sha256": sha256(path),
+        "result_bytes": len(encoded),
+        "result_sha256": hashlib.sha256(encoded).hexdigest(),
         **metadata,
     }
     _atomic_write(

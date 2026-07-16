@@ -147,19 +147,19 @@ const historicalLiveStatus: LiveStatus = {
 // summary reflect the canonical six-paper board rather than an older review wave.
 export const liveStatus: LiveStatus = {
   ...historicalLiveStatus,
-  lastUpdatedISO: "2026-07-16T18:31:00Z",
-  lastUpdatedDisplay: "July 16, 2026 · 11:31 AM PT",
+  lastUpdatedISO: "2026-07-16T18:55:00Z",
+  lastUpdatedDisplay: "July 16, 2026 · 11:55 AM PT",
   headline:
-    "All six manuscripts remain in revision. P1B v2B.0.3 closes a verified concurrent receipt-validation race found by the exact v2B.0.2 board. Readiness holds 56 pending confirmation, archive, and human review.",
+    "All six manuscripts remain in revision. P1B v2B.0.4 closes a second verified concurrency race, preventing publishers from cross-binding one execution's metadata to another execution's bytes. Readiness holds 56 pending confirmation, archive, and human review.",
   summary:
-    "namaster-proof 0.1.2 now authenticates the exact byte snapshot it returns, adds a deterministic race regression and Windows CI, and passes 25/25 tests. Exact-window and real-PyMaster numerical claims remain intact. No readiness credit is inferred before a clean exact board.",
+    "namaster-proof 0.1.3 derives receipt fields from each publisher's immutable serialized snapshot and passes 26/26 tests, including verifier- and publisher-side race regressions. Exact-window and real-PyMaster numerical claims remain intact. No readiness credit is inferred before a clean exact board.",
   papers: historicalLiveStatus.papers.map((paper) => {
     if (paper.slug === "paper-1b") {
       return {
         ...paper,
-        version: "v2B.0.3",
+        version: "v2B.0.4",
         pendingWork:
-          "v2B.0.3 closes the verified receipt-validation race and related portability/presentation defects. Persistent archive identifier, author-supplied correspondence metadata, exact confirmation, and human review remain. Readiness holds 56.",
+          "v2B.0.4 closes the verified publisher metadata/byte cross-binding race. Persistent archive identifier, author-supplied correspondence metadata, exact confirmation, and human review remain. Readiness holds 56.",
       };
     }
     if (paper.slug === "paper-4") {
@@ -207,13 +207,13 @@ export const liveStatus: LiveStatus = {
     return paper;
   }),
   currentlyRunning: [
-    "P1B v2B.0.3 receipt-race closure compilation, synchronization, and confirmation packet",
+    "P1B v2B.0.4 publisher-race closure compilation, synchronization, and confirmation packet",
     "P1B immutable archive identifier remains a real submission blocker",
     "P4 v1.0.260 and P5 v0.1.139 PDFs are built, retained, mirrored, and synchronized; P4 provider-overlay publication remains open",
     "Exact non-Anthropic re-review and standing external release/provenance gates are next",
   ],
   cronStatus:
-    "P1B v2B.0.2 exact review is truth-audited and its verified defects are being closed in v2B.0.3; readiness remains 56.",
+    "P1B v2B.0.3 exact review is truth-audited and its verified publisher-side race is being closed in v2B.0.4; readiness remains 56.",
   etaToCompletion:
-    "P1B v2B.0.3 next requires exact-PDF confirmation plus archive and human gates. A defensible all-six submission date remains conditional on those gates and human decisions; journal acceptance is controlled by editors and referees.",
+    "P1B v2B.0.4 next requires exact-PDF confirmation plus archive and human gates. A defensible all-six submission date remains conditional on those gates and human decisions; journal acceptance is controlled by editors and referees.",
 };

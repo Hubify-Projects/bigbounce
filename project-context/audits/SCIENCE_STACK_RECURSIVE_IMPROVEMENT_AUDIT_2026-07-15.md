@@ -197,6 +197,19 @@ invariant—novel valid feedback becomes executable prevention in the same
 closure unit—but it also proves that the two-clean-wave acceptance gate remains
 open. Readiness is not increased.
 
+The immediate v2B.0.3 confirmation then found a second concurrency class rather
+than merely re-flagging the first. Verifier-side snapshot coherence held, but a
+publisher still wrote its result and subsequently re-read the shared pathname
+to construct the receipt. A competing publisher could replace that pathname in
+between, causing the first execution's metadata to authenticate the second
+execution's bytes. v2B.0.4 / package 0.1.3 derives byte count and digest directly
+from each publisher's immutable serialized snapshot and adds a deterministic
+publisher-interleaving regression; the suite is now 26/26. This is another
+valid novel finding promoted immediately into prevention. It also demonstrates
+why readiness cannot be raised from activity volume: two successive rounds each
+found a real major concurrency defect, so clean residual-wave evidence remains
+absent.
+
 The full audit plan is **not complete**. The defensible acceptance accounting is
 against the 12 checklist gates below:
 
