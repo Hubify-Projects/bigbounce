@@ -179,9 +179,11 @@ and six failed legs. A full-worktree recovery view also exposes 11 untracked raw
 receipts rather than allowing a committed inventory to reference absent files.
 
 This is a substantial archive-ingestion acceleration, but it does not close the
-historical learning gate. Only two finding events are in the ledger; canonical
-reconciliation remains incomplete at **17/259 receipts (6.56%)**, with 242
-count mismatches, zero hash mismatches, and zero orphaned event receipts.
+historical learning gate. The partially migrated P4 v1.0.254 Codex receipt has
+now been completed from its one-to-one truth audit, bringing the ledger to eight
+events and that receipt to **8/8 RECONCILED**. Canonical reconciliation remains
+incomplete at **18/259 receipts (6.95%)**, with 241 count mismatches, zero hash
+mismatches, and zero orphaned event receipts.
 Campaign-wide escape and closure-regression rates therefore remain unavailable
 as complete-history metrics.
 

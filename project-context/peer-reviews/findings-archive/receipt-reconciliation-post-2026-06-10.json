@@ -1,7 +1,7 @@
 {
-  "archive_completeness_rate": 0.065637,
+  "archive_completeness_rate": 0.069498,
   "complete": false,
-  "count_mismatches": 242,
+  "count_mismatches": 241,
   "failed_leg_gaps": 6,
   "hash_mismatches": 0,
   "inventory_receipts": 271,
@@ -2223,14 +2223,14 @@
       "status": "ok"
     },
     {
-      "event_count": 2,
+      "event_count": 8,
       "event_hashes": [
         "08837f05492e1b02c5323e544e116341d18f394009a45de8f15774271f72bd31"
       ],
       "expected_findings": 8,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P4-v1.0.254-EXACTPDF-d8d4896d-NONANTHROPIC/intwave_P4_codex_1454.md",
       "receipt_id": "receipt_e9cdfc68c8f1e6c03d03",
-      "state": "COUNT_MISMATCH",
+      "state": "RECONCILED",
       "status": "ok"
     },
     {
@@ -2450,7 +2450,7 @@
       "status": "ok"
     }
   ],
-  "reconciled_receipts": 17,
+  "reconciled_receipts": 18,
   "schema_version": "finding-receipt-reconciliation/v1",
   "unresolved_finding_counts": 0
 }

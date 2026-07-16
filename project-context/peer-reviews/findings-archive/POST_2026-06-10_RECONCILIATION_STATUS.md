@@ -37,37 +37,45 @@ gaps.
 The canonical engine reports:
 
 - archive complete: **false**
-- reconciled parseable receipts: **17 / 259 (6.5637%)**
-- receipt count mismatches: **242**
+- reconciled parseable receipts: **18 / 259 (6.9498%)**
+- receipt count mismatches: **241**
 - receipt hash mismatches: **0**
 - orphaned event receipts: **0**
 - failed-leg gaps: **6**
 
-The 17 reconciled receipts are predominantly explicit zero-finding receipts.
-They do not imply that the 1,574 findings have been truth-audited into the
-event ledger.
+The 18 reconciled receipts are predominantly explicit zero-finding receipts,
+plus the completed eight-finding P4 v1.0.254 Codex receipt. They do not imply
+that the remaining campaign findings have been truth-audited into the event
+ledger.
 
 Every unresolved row remains visible rather than being silently converted into
 zero findings.
 
 ## Event migration result
 
-Two findings were appended to the canonical JSONL ledger. Both are the
-unambiguous Codex-subscription findings C-M1 and C-M2 from the P4 v1.0.254
-receipt, with one-to-one dispositions and independent evidence in
-`P4_v1.0.254_truth_audit.md`:
+All eight Codex-subscription findings from the P4 v1.0.254 receipt are now in
+the canonical JSONL ledger, with one-to-one dispositions and independent
+evidence in `P4_v1.0.254_truth_audit.md`. The original bounded migration added:
 
 - `fev1_2fff0f9560874be03fcd0818` — non-portable semantic validator
 - `fev1_f6f3906e33e1072eedfa78cd` — aggregate-only quarantine validation
 
-This is **2 / 1,574 explicit findings (0.1271%)**. The P4 receipt correctly remains a
-`COUNT_MISMATCH` because six other findings in that receipt have not yet been
-migrated. No historical event was inferred from a synthesis, closure note, or
-provider verdict alone.
+The evidence-bound completion adds:
+
+- `fev1_98dd561423b02b0e6577ca08` — false production-calibration model card
+- `fev1_fe8359a1960052dbf95e3d77` — unreconstructable historical classifier
+- `fev1_28a69ad2e1877ff28789421f` — overclaimed definitive bias mitigation
+- `fev1_9aaf329e7053abacae099172` — unavailable full-catalog metadata
+- `fev1_b58ecc058c557326730d3aed` — unsupported Figure 3 causation
+- `fev1_3a094efca7be1d4ad3cf623c` — prospective DOI/archive gate
+
+The exact receipt now reconciles **8 / 8**. The ledger represents
+**8 / 1,574 explicit findings (0.5083%)** overall. No historical event was
+inferred from a synthesis, closure note, or provider verdict alone.
 
 ## Remaining work
 
-1. Normalize the remaining 1,572 explicit findings against truth-audit rows,
+1. Normalize the remaining 1,566 explicit findings against truth-audit rows,
    preserving falsified, stale, opinion, standing, and unresolved dispositions.
 2. Recover the five incomplete historical summaries and one empty Codex receipt
    from preserved raw transcripts if available; otherwise retain them as
