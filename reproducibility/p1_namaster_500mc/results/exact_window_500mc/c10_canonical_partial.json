@@ -1,0 +1,48 @@
+{
+ "experiment": "c10 NaMaster robustness battery (R23conf META-M1/M2/M3/M5/M6)",
+ "beta_injected_deg": 0.27,
+ "n_real": 500,
+ "seed_base": 42,
+ "superseded_effective_ell_anchor": {
+  "recovered_beta_deg": 0.238,
+  "bias_deg": -0.032,
+  "status": "superseded_by_exact_bandpower_window_operator"
+ },
+ "configs": [
+  {
+   "name": "canonical_refit",
+   "fsky": 0.3226,
+   "n_real": 500,
+   "purify_b": false,
+   "apod_fwhm_deg": 2.0,
+   "gal_cut_deg": 20.0,
+   "bb_model": "0.05*EE",
+   "theory_operator": "NmtWorkspace.get_bandpower_windows exact tensor contraction",
+   "window_shape": [
+    4,
+    20,
+    4,
+    1536
+   ],
+   "window_equivalence_max_abs": 1.4210854715202004e-14,
+   "software": {
+    "numpy": "1.26.4",
+    "healpy": "1.19.0",
+    "pymaster": "2.6"
+   },
+   "noise_sigma_pix_uK": 1.4554,
+   "recovered_beta_deg": {
+    "unweighted": 0.269,
+    "invvar_weighted": 0.27,
+    "lmax1024_only": 0.269
+   },
+   "bias_deg": {
+    "unweighted": -0.001,
+    "invvar_weighted": 0.0,
+    "lmax1024_only": -0.001
+   },
+   "runtime_s": 201.3
+  }
+ ],
+ "total_runtime_s": 205.7
+}
