@@ -58,3 +58,13 @@ independent-replication evidence for the venue critique.
 
 Until you decide, the Claude lane holds its verified state, keeps the heartbeat
 alive, and does NOT fabricate activity or fight superseded/contended tooling.
+
+## Integrity spot-check addendum (2026-07-16T00:17Z)
+Read-only Convex scan of the latest recorded wave per paper: **0 fabricated
+ACCEPTs.** All verdicts honest (major/minor-revisions, reject, or failed-GAP).
+P1A Grok-major · P2 Grok-minor+ChatGPT-failed(honest GAP, streak 19) ·
+P4 Grok-minor+ChatGPT-major(streak 3) · P5 both non-reject(streak 9) ·
+P3 honest streak-0 reset. The fast Codex commit cadence maintains the integrity
+bar — no all-ACCEPT rows, no faked accepts. Independent second-lane verification
+verdict: **GENUINE.** (Data-hygiene nit: 2 legacy orphan-keyed `k97b…` rows
+from an old paperId scheme — cosmetic, worth a cleanup, not an integrity issue.)
