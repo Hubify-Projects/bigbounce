@@ -32,6 +32,7 @@
     "reproducibility/p1_namaster_500mc/requirements.txt",
     "reproducibility/p1_namaster_500mc/scripts/checkpoint_io.py",
     "reproducibility/p1_namaster_500mc/scripts/physical_spectra.py",
+    "reproducibility/p1_namaster_500mc/scripts/multipole_contract.py",
     "reproducibility/p1_namaster_500mc/scripts/windowed_rotation.py",
     "reproducibility/p1_namaster_500mc/scripts/namaster_500mc.py",
     "reproducibility/p1_namaster_500mc/scripts/c10_robustness_battery.py",

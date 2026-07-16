@@ -29,6 +29,7 @@ from windowed_rotation import (
 )
 from checkpoint_io import publish_json, validate_json_receipt
 from physical_spectra import load_camb_lensed_spectra
+from multipole_contract import bandpower_edges
 
 
 NSIDE = 512
@@ -61,10 +62,10 @@ def run_config(config: dict) -> dict:
     fsky = float(np.mean(mask))
 
     cl_ee, cl_bb, spectrum_metadata = load_camb_lensed_spectra(LMAX)
-    edges = np.linspace(30, 3 * NSIDE, 21, dtype=int)
+    edges = bandpower_edges(nside=NSIDE, lmax=LMAX, n_bins=20)
     bins = nmt.NmtBin.from_edges(edges[:-1], edges[1:])
     zero = np.zeros(npix)
-    dummy = nmt.NmtField(mask, [zero, zero])
+    dummy = nmt.NmtField(mask, [zero, zero], lmax=LMAX)
     workspace = nmt.NmtWorkspace()
     workspace.compute_coupling_matrix(dummy, dummy, bins)
     response = build_rotation_response(workspace, cl_ee, cl_bb)
@@ -87,7 +88,9 @@ def run_config(config: dict) -> dict:
         q, u = maps[1], maps[2]
         q += np.random.normal(0, noise_sigma, npix)
         u += np.random.normal(0, noise_sigma, npix)
-        field = nmt.NmtField(mask, [c * q - s * u, s * q + c * u])
+        field = nmt.NmtField(
+            mask, [c * q - s * u, s * q + c * u], lmax=LMAX
+        )
         ensemble.append(
             workspace.decouple_cell(nmt.compute_coupled_cell(field, field))[1]
         )

@@ -94,6 +94,7 @@ from windowed_rotation import (
     windowed_bandpowers,
 )
 from physical_spectra import load_camb_lensed_spectra
+from multipole_contract import bandpower_edges
 
 print("=" * 70)
 print("NAMASTER EB BIREFRINGENCE ANALYSIS — PRODUCTION 500MC")
@@ -165,14 +166,14 @@ mask = make_native_latitude_window(NSIDE, F_SKY)
 actual_fsky = mask.sum() / hp.nside2npix(NSIDE)
 
 n_ell_bins = int(os.environ.get("NAMASTER_NBINS", "6" if SMOKE_MODE else "20"))
-ell_min, ell_max = 30, 3 * NSIDE
-if SMOKE_MODE:
-    ell_max = min(ell_max, LMAX)
-ells_bins = np.linspace(ell_min, ell_max, n_ell_bins + 1, dtype=int)
+ells_bins = bandpower_edges(
+    nside=NSIDE, lmax=LMAX, n_bins=n_ell_bins, ell_min=30
+)
 bandpower_bin = nmt.NmtBin.from_edges(ells_bins[:-1], ells_bins[1:])
 f_dummy = nmt.NmtField(
     mask,
     [np.zeros(hp.nside2npix(NSIDE)), np.zeros(hp.nside2npix(NSIDE))],
+    lmax=LMAX,
 )
 workspace = nmt.NmtWorkspace()
 workspace.compute_coupling_matrix(f_dummy, f_dummy, bandpower_bin)
@@ -217,7 +218,7 @@ def simulate_and_measure_all(betas, n_real=N_REAL, seed_base=SEED_BASE):
         Q, U = maps[1], maps[2]
         Q += np.random.normal(0, np.sqrt(NOISE_VAR), len(Q))
         U += np.random.normal(0, np.sqrt(NOISE_VAR), len(U))
-        f_pol = nmt.NmtField(mask, [Q, U])
+        f_pol = nmt.NmtField(mask, [Q, U], lmax=LMAX)
         cl_coupled = nmt.compute_coupled_cell(f_pol, f_pol)
         for beta in betas:
             rotated_coupled = rotate_eb_spectra(cl_coupled, beta)

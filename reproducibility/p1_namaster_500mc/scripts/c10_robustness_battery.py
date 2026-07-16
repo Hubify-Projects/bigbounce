@@ -35,6 +35,7 @@ from windowed_rotation import (
 )
 from checkpoint_io import publish_json, validate_json_receipt
 from physical_spectra import load_camb_lensed_spectra
+from multipole_contract import bandpower_edges
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 DEFAULT_OUT = os.path.join(
@@ -178,11 +179,13 @@ def _prepare_config_state(cfg):
     fsky = mask.sum() / npix
 
     n_bins = 20
-    edges = np.linspace(30, 3 * NSIDE, n_bins + 1, dtype=int)
+    edges = bandpower_edges(nside=NSIDE, lmax=LMAX, n_bins=n_bins)
     b = nmt.NmtBin.from_edges(edges[:-1], edges[1:])
     purify = bool(cfg.get("purify_b", False))
     zero = np.zeros(npix)
-    f_dummy = nmt.NmtField(mask, [zero, zero], purify_b=purify)
+    f_dummy = nmt.NmtField(
+        mask, [zero, zero], purify_b=purify, lmax=LMAX
+    )
     wsp = nmt.NmtWorkspace()
     wsp.compute_coupling_matrix(f_dummy, f_dummy, b)
     response = build_rotation_response(wsp, cl_ee, cl_bb)
@@ -225,7 +228,10 @@ def _simulate_realization(index, state):
     cos2b, sin2b = np.cos(2 * BETA), np.sin(2 * BETA)
     q_rot = cos2b * q - sin2b * u
     u_rot = sin2b * q + cos2b * u
-    field = nmt.NmtField(state["mask"], [q_rot, u_rot], purify_b=state["purify"])
+    field = nmt.NmtField(
+        state["mask"], [q_rot, u_rot],
+        purify_b=state["purify"], lmax=LMAX,
+    )
     coupled = nmt.compute_coupled_cell(field, field)
     return state["workspace"].decouple_cell(coupled)[1]
 
