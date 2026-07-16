@@ -3,9 +3,11 @@
 
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
 from checkpoint_io import publish_json, validate_json_receipt
+from c10_source_correction import OUTPUT as SOURCE_CORRECTION, verify_payload
 
 
 RESULTS = Path(__file__).resolve().parent.parent / "results" / "physical_spectrum_v2"
@@ -56,6 +58,8 @@ def load_suite(suite: str, prefix: str, configs: list[dict]):
 
 
 def merge_c10() -> dict:
+    correction = json.loads(SOURCE_CORRECTION.read_text(encoding="utf-8"))
+    verify_payload(correction)
     payloads, receipts = load_suite("c10", "c10", C10_CONFIG_DETAILS)
     software = receipts[0]["software"]
     if any(receipt.get("software") != software for receipt in receipts[1:]):
@@ -80,6 +84,11 @@ def merge_c10() -> dict:
         },
         "superseded_effective_ell_anchor": payloads[0]["superseded_effective_ell_anchor"],
         "execution": "independently checkpointed production shards; exact canonical bandpowers reused without resimulation",
+        "source_provenance_correction": {
+            "path": SOURCE_CORRECTION.relative_to(RESULTS).as_posix(),
+            "schema": correction["schema"],
+            "affected_configs": correction["affected_configs"],
+        },
         "configs": configs,
         "total_runtime_s_sum_of_shards": sum(payload["total_runtime_s"] for payload in payloads),
         "child_shards": [
