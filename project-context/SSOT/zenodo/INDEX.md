@@ -21,7 +21,7 @@
 ## P4 evidence
 
 - Current bundle source/config target: `678e93febd505d37768e554f337bdbd4f838a514`.
-- Current standalone source proof: [`../arxiv_tarballs/paper4_arxiv_v1.0.255.proof.json`](../arxiv_tarballs/paper4_arxiv_v1.0.255.proof.json).
+- Current standalone source proof: [`../arxiv_tarballs/paper4_arxiv_v1.0.260.proof.json`](../arxiv_tarballs/paper4_arxiv_v1.0.260.proof.json).
 - Historical reversible draft receipt (v1.0.252 only): [`../github-releases/P4_v1.0.252_draft_release_receipt.json`](../github-releases/P4_v1.0.252_draft_release_receipt.json).
 - Deposit specification and supersession note: [`P4_zenodo_deposition.md`](P4_zenodo_deposition.md).
 
