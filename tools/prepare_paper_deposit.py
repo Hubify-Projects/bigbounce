@@ -249,9 +249,11 @@ def verify_tarball(root: Path, tarball: Path, main_tex: str, expected_pages: int
         log = console + "\n" + file_log
         undefined = len(
             re.findall(
-                r"(?:Reference|Citation).*?undefined|There were undefined (?:references|citations)",
+                r"^(?:(?:LaTeX|Package [^\n]+) Warning:\s*)?"
+                r"(?:Reference|Citation)[^\n]*\bundefined\b"
+                r"|^LaTeX Warning:\s*There were undefined (?:references|citations)",
                 log,
-                re.IGNORECASE | re.DOTALL,
+                re.IGNORECASE | re.MULTILINE,
             )
         )
         errors = len(re.findall(r"^!", log, re.MULTILINE))

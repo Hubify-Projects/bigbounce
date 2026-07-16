@@ -351,3 +351,36 @@ def test_verify_tarball_reads_generated_log_for_undefined_references(
     monkeypatch.setattr("tools.prepare_paper_deposit.pdf_page_count", lambda _root, _pdf: 1)
     with pytest.raises(DepositError, match="undefined="):
         verify_tarball(root, tarball, "main.tex", 1)
+
+
+def test_verify_tarball_does_not_join_reference_text_to_font_undefined(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    root = tmp_path / "repo"
+    root.mkdir()
+    tex = b"\\documentclass{article}\\begin{document}x\\end{document}\n"
+    tarball = root / "source.tar.gz"
+    with tarfile.open(tarball, "w:gz") as archive:
+        info = tarfile.TarInfo("main.tex")
+        info.size = len(tex)
+        archive.addfile(info, BytesIO(tex))
+
+    monkeypatch.setattr("tools.prepare_paper_deposit.shutil.which", lambda _: "/usr/bin/tectonic")
+
+    class Result:
+        returncode = 0
+        stdout = b""
+        stderr = b""
+
+    def fake_run(cwd: Path, *command: str) -> Result:
+        (cwd / "main.pdf").write_bytes(_minimal_pdf())
+        (cwd / "main.log").write_text(
+            "Package refcount Info: Data extraction from label references.\n"
+            "LaTeX Font Warning: Font shape `TU/lmr/bx/sc' undefined.\n"
+        )
+        return Result()
+
+    monkeypatch.setattr("tools.prepare_paper_deposit.run", fake_run)
+    monkeypatch.setattr("tools.prepare_paper_deposit.pdf_page_count", lambda _root, _pdf: 1)
+    proof = verify_tarball(root, tarball, "main.tex", 1)
+    assert proof["undefined_references"] == 0
