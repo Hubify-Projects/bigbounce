@@ -1,0 +1,158 @@
+{
+  "schema_version": "truth-audit-event-batch/v1",
+  "paper": {"id": "P1B", "version": "v1B.0.109"},
+  "source": {
+    "round_id": "ROUND_2026-07-15-P1B-v1B.0.109-EXACTPDF-36b8fc98-NONANTHROPIC-CONFIRM",
+    "round_type": "internal"
+  },
+  "pdf": {
+    "sha256": "36b8fc984b5be164f5ece1e2f0c3f661dfb49c9f99faa76e2b050e2bd0674a78",
+    "pages": 20
+  },
+  "truth_audit": {
+    "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P1B-v1B.0.109-EXACTPDF-36b8fc98-NONANTHROPIC-CONFIRM/P1B_v1B.0.109_TRUTH_AUDIT.md",
+    "sha256": "dabc0f7cfa4dfa70b12a341bd0f3b0b301ac6a5725a159795ac564e6fbb66435",
+    "audited_at": "2026-07-15T10:32:29Z"
+  },
+  "catalog": {"version": "34-patterns", "updated_at": "2026-06-02T00:00:00Z"},
+  "receipts": [
+    {
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P1B-v1B.0.109-EXACTPDF-36b8fc98-NONANTHROPIC-CONFIRM/API_P1B_grok.md",
+      "sha256": "b398a57ed360ba990ae6064f5c760a40090e0075b4cadb990ca5e9643847209a",
+      "occurred_at": "2026-07-15T10:13:19.287166Z",
+      "reviewer": {"provider": "xai-direct", "model": "grok-4.3", "reviewer_id": "grok-api"},
+      "findings": [
+        {
+          "finding_id": "G-m1", "severity": "MINOR",
+          "summary": "The multi-page burn-in and weighted-count footnote is fragmented and risks reader confusion.",
+          "truth_verdict": "OPINION",
+          "truth_evidence": "The audit found the raw, post-burn, and weighted distinctions internally documented; shortening the explanation is editorial.",
+          "classification": "UNMATCHED", "pattern_ids": [],
+          "preflight_checked": false, "preflight_intercepted": false,
+          "closure": {"status": "REJECTED", "action": "Consider concise venue-focused editing after the numerical burn-in artifact is corrected.", "closed_in_version": null, "evidence": "Editorial disposition in the bound truth audit.", "regression_of_event_id": null}
+        },
+        {
+          "finding_id": "G-m2", "severity": "MINOR",
+          "summary": "Prior-volume and conditional ALP counts need an explicit reminder that they are Monte Carlo frequencies rather than posterior probabilities.",
+          "truth_verdict": "STALE",
+          "truth_evidence": "The audit verified that the manuscript already labels these quantities as Monte Carlo frequencies repeatedly.",
+          "classification": "UNMATCHED", "pattern_ids": [],
+          "preflight_checked": false, "preflight_intercepted": false,
+          "closure": {"status": "REJECTED", "action": "Retain the existing frequency-versus-probability disclosures.", "closed_in_version": null, "evidence": "The audited source already contains the requested qualification.", "regression_of_event_id": null}
+        },
+        {
+          "finding_id": "G-m3", "severity": "MINOR",
+          "summary": "The v1B.0.109 paper cites a v1B.0.108 analysis-artifact manifest.",
+          "truth_verdict": "VERIFIED",
+          "truth_evidence": "The cited pre-release manifest cannot bind the current source, PDF, conditioned-ALP artifacts, or final archive state.",
+          "classification": "KNOWN",
+          "pattern_ids": ["pattern-047-version-pin-staleness-on-bump"],
+          "preflight_checked": true, "preflight_intercepted": false,
+          "closure": {"status": "OPEN", "action": "Generate and verify a version-matched immutable manifest only after the numerical closures are complete.", "closed_in_version": null, "evidence": "Verified release-manifest gate in the bound truth audit.", "regression_of_event_id": null}
+        }
+      ]
+    },
+    {
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P1B-v1B.0.109-EXACTPDF-36b8fc98-NONANTHROPIC-CONFIRM/API_P1B_gemini.md",
+      "sha256": "1db3c02e92c0c66e688cedbcc001ac78cab2c3c2d3f17f83fb4916d7d40197d3",
+      "occurred_at": "2026-07-15T10:13:19.282436Z",
+      "reviewer": {"provider": "google-direct", "model": "gemini-3.1-pro-preview", "reviewer_id": "gemini-api"},
+      "findings": [
+        {
+          "finding_id": "Ge-m1", "severity": "MINOR",
+          "summary": "The introduction should better connect the three disparate computational studies.",
+          "truth_verdict": "OPINION",
+          "truth_evidence": "The audit classified this as a reasonable editorial cohesion request that cannot itself establish standalone venue novelty.",
+          "classification": "UNMATCHED", "pattern_ids": [],
+          "preflight_checked": false, "preflight_intercepted": false,
+          "closure": {"status": "DEFERRED", "action": "Resolve the intended paper format and venue scope before final cohesion editing.", "closed_in_version": null, "evidence": "Editorial and venue disposition in the bound truth audit.", "regression_of_event_id": null}
+        },
+        {
+          "finding_id": "Ge-m2", "severity": "MINOR",
+          "summary": "The manuscript should discuss PArthENoPE behavior below standard Neff and possible interpolation artifacts.",
+          "truth_verdict": "VERIFIED",
+          "truth_evidence": "The audit found a deeper provenance defect: the frozen chains used the CAMB 1.6.5 default predictor, while the later public YAML setting PArthENoPE is not a runnable generic alias.",
+          "classification": "KNOWN",
+          "pattern_ids": ["pattern-046-artifact-paper-cross-check"],
+          "preflight_checked": true, "preflight_intercepted": false,
+          "closure": {"status": "OPEN", "action": "Recover the exact executed CAMB default table, hash and domain; repair the public YAML and manuscript provenance; compare predictors over the sampled domain.", "closed_in_version": null, "evidence": "Confirmed executed-provenance defect in the bound truth audit.", "regression_of_event_id": null}
+        },
+        {
+          "finding_id": "Ge-m3", "severity": "MINOR",
+          "summary": "The c15 sensitivity chain stopped at R-hat minus one 0.0147 and should quantify the expected posterior-mean impact.",
+          "truth_verdict": "OPINION",
+          "truth_evidence": "The audit confirmed the chain is explicitly corroborative and non-load-bearing; R-hat alone cannot justify the suggested numerical shift bound.",
+          "classification": "UNMATCHED", "pattern_ids": [],
+          "preflight_checked": false, "preflight_intercepted": false,
+          "closure": {"status": "DEFERRED", "action": "Keep the chain non-load-bearing or extend it to the declared convergence threshold; do not invent a shift bound from R-hat alone.", "closed_in_version": null, "evidence": "Convergence disposition in the bound truth audit.", "regression_of_event_id": null}
+        }
+      ]
+    },
+    {
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P1B-v1B.0.109-EXACTPDF-36b8fc98-NONANTHROPIC-CONFIRM/intwave_P1B_codex_0313.md",
+      "sha256": "fa9e77db870c8a96878b5cb6d6ba2953b079a5923a673608972011bc7807bea7",
+      "occurred_at": "2026-07-15T10:13:18Z",
+      "reviewer": {"provider": "openai-subscription", "model": "gpt-5.6-sol (high)", "reviewer_id": "codex-cli"},
+      "findings": [
+        {
+          "finding_id": "C-M1", "severity": "MAJOR",
+          "summary": "The NaMaster synthetic sky passes a D-ell-like Gaussian template to synfast as raw C-ell, invalidating the claimed physical validation regime.",
+          "truth_verdict": "VERIFIED",
+          "truth_evidence": "At ell 140 the executed EE input is about 1.11e5 times the independently computed raw CAMB C-ell; the algebraic operator identity survives but the physical scatter, SNR, and bias validation do not.",
+          "classification": "KNOWN",
+          "pattern_ids": ["pattern-025-mathematically-impossible-attribution", "pattern-046-artifact-paper-cross-check"],
+          "preflight_checked": true, "preflight_intercepted": false,
+          "closure": {"status": "OPEN", "action": "Replace the surrogate with hashed raw CAMB EE and physical lensed BB spectra, add a unit-contract regression, and rerun the complete 500-realization and robustness suite.", "closed_in_version": null, "evidence": "Confirmed production-rerun major in the bound truth audit.", "regression_of_event_id": null}
+        },
+        {
+          "finding_id": "C-M2", "severity": "MAJOR",
+          "summary": "The ALP leg uses a one-amplitude Gaussian summary rather than a full EB likelihood.",
+          "truth_verdict": "VERIFIED",
+          "truth_evidence": "The arithmetic is reproducible and the limitation is disclosed, but calibration, foreground, covariance, and likelihood structure are absent.",
+          "classification": "UNMATCHED", "pattern_ids": [],
+          "preflight_checked": false, "preflight_intercepted": false,
+          "closure": {"status": "DEFERRED", "action": "Complete a full EB analysis before presenting robust JCAP parameter inference, or retain the explicitly surrogate technical-companion scope.", "closed_in_version": null, "evidence": "Standing scientific-scope gate in the bound truth audit.", "regression_of_event_id": null}
+        },
+        {
+          "finding_id": "C-M3", "severity": "MAJOR",
+          "summary": "The three studies do not yet establish a unified scientific question or standalone JCAP novelty.",
+          "truth_verdict": "OPINION",
+          "truth_evidence": "The audit classified standalone venue cohesion as an editorial and strategic judgment rather than a falsifiable numerical defect.",
+          "classification": "UNMATCHED", "pattern_ids": [],
+          "preflight_checked": false, "preflight_intercepted": false,
+          "closure": {"status": "DEFERRED", "action": "Choose a technical companion, methods note, merged supplement, or substantively unified standalone format after scientific closure.", "closed_in_version": null, "evidence": "Venue disposition in the bound truth audit.", "regression_of_event_id": null}
+        },
+        {
+          "finding_id": "C-m4", "severity": "MINOR",
+          "summary": "The S8 overlay generator uses zero burn-in despite the manuscript's uniform 30 percent burn-in contract.",
+          "truth_verdict": "VERIFIED",
+          "truth_evidence": "The source loads every row with ignore_rows zero, so the exact KDE overlaps and tensions were not computed under the declared cut.",
+          "classification": "KNOWN",
+          "pattern_ids": ["pattern-046-artifact-paper-cross-check"],
+          "preflight_checked": true, "preflight_intercepted": false,
+          "closure": {"status": "OPEN", "action": "Apply per-chain 30 percent burn-in, regenerate JSON and figure, and update exact overlaps, tensions, and sample counts.", "closed_in_version": null, "evidence": "Confirmed bounded numerical inconsistency in the bound truth audit.", "regression_of_event_id": null}
+        },
+        {
+          "finding_id": "C-m5", "severity": "MINOR",
+          "summary": "The ALP mass marginal is incorrectly described as piling toward the upper prior edge and mixed with a fixed-coupling mass estimate.",
+          "truth_verdict": "VERIFIED",
+          "truth_evidence": "Only 4.9363 percent of weighted mass lies in the uppermost 0.2 dex; 37.2 H0 is fixed-coupling while the continuous-coupling median is 13.17 H0.",
+          "classification": "KNOWN",
+          "pattern_ids": ["pattern-005-overclaim-language", "pattern-040-cross-section-internal-contradiction-DRAFT"],
+          "preflight_checked": false, "preflight_intercepted": false,
+          "closure": {"status": "OPEN", "action": "Use broad-high-mass-tail or exact-quantile language and label fixed- versus continuous-coupling estimands wherever they coexist.", "closed_in_version": null, "evidence": "Confirmed wording and estimand defect in the bound truth audit.", "regression_of_event_id": null}
+        },
+        {
+          "finding_id": "C-m6", "severity": "MINOR",
+          "summary": "The paper lacks a final immutable source, PDF, manifest, LFS payload, and DOI binding.",
+          "truth_verdict": "VERIFIED",
+          "truth_evidence": "The cited manifest predates the paper and the final tag and persistent archive remain pending.",
+          "classification": "KNOWN",
+          "pattern_ids": ["pattern-047-version-pin-staleness-on-bump", "ppattern-unminted-doi-placeholder"],
+          "preflight_checked": true, "preflight_intercepted": false,
+          "closure": {"status": "DEFERRED", "action": "After scientific closure, freeze all load-bearing bytes under one public commit or tag and persistent archive identifier.", "closed_in_version": null, "evidence": "Standing immutable-release gate in the bound truth audit.", "regression_of_event_id": null}
+        }
+      ]
+    }
+  ]
+}

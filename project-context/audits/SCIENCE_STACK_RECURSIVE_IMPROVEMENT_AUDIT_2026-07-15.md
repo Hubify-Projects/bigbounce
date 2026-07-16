@@ -112,11 +112,13 @@ waves, or all-six external/human release gates.
 The full audit plan is **not complete**. The defensible acceptance accounting is
 against the 12 checklist gates below:
 
-- **3/12 acceptance gates complete:** strict all-paper preflight; packet binding
-  to preflight/catalog/registry evidence; and fail-closed enforcement on active
+- **2/12 acceptance gates complete:** packet binding to
+  preflight/catalog/registry evidence; and fail-closed enforcement on active
   INT, direct-provider, and external-browser dispatch.
-- **4/12 materially partial:** machine-readable pattern coverage; deterministic
-  regression fixtures for high-severity patterns; executable learning metrics
+- **5/12 materially partial:** strict all-paper preflight, which now correctly
+  fails on newly enforced unresolved P1B science contracts; machine-readable
+  pattern coverage; deterministic regression fixtures for high-severity
+  patterns; executable learning metrics
   whose campaign-wide interpretation remains inventory-gated; and exact
   PDF/version/SSOT/Convex/site/package synchronization for recent P4/P5
   increments rather than all six papers at submission-ready state.
@@ -239,6 +241,20 @@ The ledger now contains 73 events, canonical reconciliation is **32/259
 contains 30 findings. The closure tool now supports fail-before-write,
 idempotent array append, removing a repeated manual command per finding while
 preserving commit- and byte-level evidence validation.
+
+The complete P1B v1B.0.109 three-provider board is now ingested at 12/12.
+Its NaMaster raw-spectrum error, executed-BBN provenance mismatch, inconsistent
+S8 burn-in, ALP estimand wording, full-EB limitation, and immutable-release
+gate remain open rather than receiving paper-only closures. The ledger now
+contains 85 events and canonical reconciliation is **35/259 (13.51%)** with
+224 count mismatches. A new fail-closed P1B science-contract validator requires
+hashed raw-$C_\ell$ CAMB EE and physical lensed-BB inputs with a 500-realization
+production receipt, exact CAMB 1.6.5 BBN table provenance, a 30%-burn S8
+receipt, corrected estimand language, and a version-matched manifest. Because
+those evidence artifacts do not yet exist, current all-paper preflight now
+correctly fails rather than certifying P1B for another review wave. This honest
+gate regression reduces the currently complete acceptance gates from 3/12 to
+2/12 until the P1B production closures are executed.
 
 Evidence and exact outcomes are recorded in
 `project-context/audits/PROACTIVE_PORTFOLIO_SWEEP_2026-07-15.md`. Readiness was
@@ -653,7 +669,7 @@ models are available.
 - [ ] All approved patterns have validated machine-readable rules or explicit
       non-mechanical status.
 - [ ] Every high-severity recurring pattern has a regression fixture.
-- [x] Strict all-paper preflight passes on current committed sources and PDFs.
+- [ ] Strict all-paper preflight passes on current committed sources and PDFs.
 - [x] Review packets bind the matching preflight/catalog/registry receipts.
 - [x] Active INT/direct-provider/external-browser dispatch routes require the gate.
 - [ ] Cross-paper claim graph covers every headline quantitative claim.

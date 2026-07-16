@@ -37,19 +37,19 @@ gaps.
 The canonical engine reports:
 
 - archive complete: **false**
-- reconciled parseable receipts: **32 / 259 (12.3552%)**
-- receipt count mismatches: **227**
+- reconciled parseable receipts: **35 / 259 (13.5135%)**
+- receipt count mismatches: **224**
 - receipt hash mismatches: **0**
 - orphaned event receipts: **0**
 - failed-leg gaps: **6**
 
-The 32 reconciled receipts are predominantly explicit zero-finding receipts,
+The 35 reconciled receipts are predominantly explicit zero-finding receipts,
 plus the complete P4 v1.0.253 board, the P4 v1.0.254 Codex receipt, and the
-complete P5 v0.1.138, P4 v1.0.255, and P4 v1.0.258 boards, plus the successful
-Gemini and Codex legs of the P4 v1.0.256 confirmation board. Its failed Grok
-leg remains an explicit failed gap and contributes no invented events. They do
-not imply that the remaining campaign findings have been truth-audited into
-the event ledger.
+complete P5 v0.1.138, P4 v1.0.255, P4 v1.0.258, and P1B v1B.0.109 boards,
+plus the successful Gemini and Codex legs of the P4 v1.0.256 confirmation
+board. Its failed Grok leg remains an explicit failed gap and contributes no
+invented events. They do not imply that the remaining campaign findings have
+been truth-audited into the event ledger.
 
 Every unresolved row remains visible rather than being silently converted into
 zero findings.
@@ -136,6 +136,18 @@ editorial. Grok, Gemini, and Codex-subscription reconcile at **4/4**, **5/5**,
 and **4/4**. The ledger now represents **73 / 1,574 explicit findings
 (4.6380%)**.
 
+The fifth importer-driven batch,
+`batches/P1B_v1B.0.109_truth_audit_events.json`, adds all 12 findings from its
+complete three-provider confirmation board. It preserves the production-rerun
+major for invalid NaMaster physical-spectrum normalization, the standing
+full-EB scope gate, the executed-BBN-provenance defect exposed by the audit,
+bounded numerical and estimand defects, immutable-release defects, and stale,
+editorial, convergence, or venue dispositions. Grok, Gemini, and
+Codex-subscription reconcile at **3/3**, **3/3**, and **6/6**. The ledger now
+represents **85 / 1,574 explicit findings (5.4003%)**. No P1B closure events
+were created because v1B.0.109 remains canonical and its required production
+rerun and provenance repairs are incomplete.
+
 Because finding events are immutable, later closures are now recorded in the
 separate append-only `finding-closure-events-v1.jsonl` ledger rather than
 rewriting event identity. `tools/finding_closure_event.py` verifies that the
@@ -159,7 +171,7 @@ remain open.
 
 ## Remaining work
 
-1. Normalize the remaining 1,501 explicit findings against truth-audit rows,
+1. Normalize the remaining 1,489 explicit findings against truth-audit rows,
    preserving falsified, stale, opinion, standing, and unresolved dispositions.
 2. Recover the five incomplete historical summaries and one empty Codex receipt
    from preserved raw transcripts if available; otherwise retain them as
