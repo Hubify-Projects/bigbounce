@@ -106,13 +106,30 @@ authentication, not the project’s provider receipts or scientific evidence.
 
 ## Next scientific actions
 
-1. Resolve the P1B archive/editorial gate and retain the corresponding evidence.
-2. Run the next exact-PDF direct Grok/Gemini residual board for the highest-value
-   unclosed paper (P4/P5/P3 according to current SSOT), with strict preflight.
-3. Truth-audit findings; for every real blocker/major or recurrent minor, add a
+1. **P4 first:** v1.0.260 is the current strict-primary release-contract
+   candidate. Its PDF SHA-256 is
+   `2a747d6af763879f404fca4a4a1305f0b37b8a1f7d883de980095d876fc596b5`.
+   The prior v1.0.258 board found real stale-primary/release-contract defects;
+   v1.0.259/260 closes the textual and local-overlay portions. The remaining
+   critical gate is publishing and hash-verifying the immutable provider overlay,
+   then an exact-PDF residual confirmation and human ApJS review. Readiness
+   honestly holds at 80.
+2. **P5 second:** v0.1.139-2026-07-16 closes the four verified minor defects
+   from the unanimous-minor v0.1.138 board. Its PDF SHA-256 is
+   `948e0412a5f4052747037f38ab2e43f2d888c61c74fbdfe95d29241ef806d2a9`.
+   It next needs an exact confirmation, independently reviewable Paper IV
+   labels/provenance, immutable public archive/DOI, narrative/editorial closure,
+   and human AJ review. Readiness honestly holds at 74.
+3. **P3 is not the next compute/edit loop:** v3.2.0-r8 closed the package and
+   threshold-provenance defects and received a bounded Codex CLI ACCEPT. Its
+   remaining gates are immutable archive/DOI plus human/editorial ApJS/venue
+   decisions; readiness holds at 56. Do not repeat unchanged-content review
+   waves merely to chase a verdict word.
+4. Resolve the P1B archive/editorial gate and retain the corresponding evidence.
+5. Truth-audit findings; for every real blocker/major or recurrent minor, add a
    regression rule and sweep all six papers before re-review.
-4. Complete page-counted historical PDF retention and two-mirror verification.
-5. Only after all exact boards and gates close, perform the atomic PDF/version/
+6. Complete page-counted historical PDF retention and two-mirror verification.
+7. Only after all exact boards and gates close, perform the atomic PDF/version/
    claims/SSOT/Convex/API/site release and governed browser QA.
 
 ## Non-negotiable honesty gates
