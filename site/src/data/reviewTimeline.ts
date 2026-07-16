@@ -57,6 +57,28 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p1b-v2b006-confirmation-regression-closure-2026-07-16",
+    dateISO: "2026-07-16",
+    timePT: "12:45 PM",
+    kind: "closure-wave",
+    title: "P1B v2B.0.6 — confirmation regressions closed",
+    papers: ["P1B"],
+    summary:
+      "The v2B.0.5 confirmation returned Grok, Gemini, and Codex-subscription MAJOR, primarily because archive/contact remain open. Truth audit verified two minor closure regressions: a technical paragraph was stranded beneath Author Contributions, and the printed minimal API call used nonexistent beta_deg. v2B.0.6 restores the section boundary and prints the executable beta_rad call; readiness holds 56.",
+    keyTakeaways: [
+      "The archive/DOI and correspondence items remain explicit external/human gates",
+      "A layout regression introduced by the prior closure was caught on the very next exact PDF",
+      "The printed API call now matches the package interface exactly",
+      "Package 0.1.4 remains 28/28; another exact confirmation is required",
+    ],
+    links: [
+      { label: "Truth audit", href: `${PR}/INT_v3/ROUND_2026-07-16-P1B-v2B.0.5-EXACTPDF-f9dcbd7e-JORS-NONANTHROPIC-CONFIRM/P1B_v2B.0.5_truth_audit.md` },
+      { label: "Codex raw", href: `${PR}/INT_v3/ROUND_2026-07-16-P1B-v2B.0.5-EXACTPDF-f9dcbd7e-JORS-NONANTHROPIC-CONFIRM/intwave_P1B_codex_1237.md` },
+      { label: "Grok raw", href: `${PR}/INT_v3/ROUND_2026-07-16-P1B-v2B.0.5-EXACTPDF-f9dcbd7e-JORS-NONANTHROPIC-CONFIRM/API_P1B_grok.md` },
+      { label: "Gemini raw", href: `${PR}/INT_v3/ROUND_2026-07-16-P1B-v2B.0.5-EXACTPDF-f9dcbd7e-JORS-NONANTHROPIC-CONFIRM/API_P1B_gemini.md` },
+    ],
+  },
+  {
     id: "p1b-v2b005-exact-board-closure-2026-07-16",
     dateISO: "2026-07-16",
     timePT: "12:30 PM",

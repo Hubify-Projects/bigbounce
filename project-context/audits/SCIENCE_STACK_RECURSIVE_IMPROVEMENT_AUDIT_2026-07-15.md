@@ -239,6 +239,15 @@ compact P1B table is executable. This is a concrete acceleration from truthful
 review scope to valid novel finding to regression and all-surface closure in
 one cycle. It is not a clean wave and does not increase readiness.
 
+The immediate v2B.0.5 confirmation then caught two closure regressions:
+Author Contributions had stranded the sharded-validation paragraph under the
+wrong section, and a printed minimal call used nonexistent `beta_deg` rather
+than `beta_rad`. v2B.0.6 restores the section dependency and prints the actual
+executable interface; the package README also explains how to isolate the
+package from an archived monorepo snapshot. This demonstrates that exact-PDF
+visual/semantic dependents must be included in the changed-region closure gate;
+the wave is not clean and readiness remains unchanged.
+
 The full audit plan is **not complete**. The defensible acceptance accounting is
 against the 12 checklist gates below:
 

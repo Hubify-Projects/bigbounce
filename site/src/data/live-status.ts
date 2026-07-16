@@ -147,19 +147,19 @@ const historicalLiveStatus: LiveStatus = {
 // summary reflect the canonical six-paper board rather than an older review wave.
 export const liveStatus: LiveStatus = {
   ...historicalLiveStatus,
-  lastUpdatedISO: "2026-07-16T19:30:00Z",
-  lastUpdatedDisplay: "July 16, 2026 · 12:30 PM PT",
+  lastUpdatedISO: "2026-07-16T19:45:00Z",
+  lastUpdatedDisplay: "July 16, 2026 · 12:45 PM PT",
   headline:
-    "All six manuscripts remain in revision. P1B v2B.0.5 closes three valid exact-board minors in JSON strictness, CI coverage, and coordinate documentation. Readiness holds 56 pending confirmation, archive, and human review.",
+    "All six manuscripts remain in revision. P1B v2B.0.6 closes two confirmation regressions in section placement and the printed API call. Readiness holds 56 pending confirmation, archive, and human review.",
   summary:
-    "namaster-proof 0.1.4 rejects non-finite JSON before publication and during validation, expands compatibility CI triggers, corrects the mask coordinate contract, and passes 28/28 tests. Exact-window and real-PyMaster numerical claims remain intact. No readiness credit is inferred before a clean exact board.",
+    "namaster-proof 0.1.4 passes 28/28 tests; v2B.0.6 prints the executable beta_rad interface, restores technical content to the correct section, and documents package isolation from an archived monorepo. No readiness credit is inferred before a clean exact board.",
   papers: historicalLiveStatus.papers.map((paper) => {
     if (paper.slug === "paper-1b") {
       return {
         ...paper,
-        version: "v2B.0.5",
+        version: "v2B.0.6",
         pendingWork:
-          "v2B.0.5 closes strict-JSON, compatibility-CI, and native-coordinate documentation findings. Persistent archive identifier, author-supplied correspondence metadata, exact confirmation, and human review remain. Readiness holds 56.",
+          "v2B.0.6 closes the printed API keyword and section-placement regressions. Persistent archive identifier, author-supplied correspondence metadata, exact confirmation, and human review remain. Readiness holds 56.",
       };
     }
     if (paper.slug === "paper-4") {
@@ -207,13 +207,13 @@ export const liveStatus: LiveStatus = {
     return paper;
   }),
   currentlyRunning: [
-    "P1B v2B.0.5 exact-board closure is compiled, retained, mirrored, and awaiting a fresh exact confirmation",
+    "P1B v2B.0.6 confirmation closure is compiled, retained, mirrored, and awaiting a fresh exact confirmation",
     "P1B immutable archive identifier remains a real submission blocker",
     "P4 v1.0.260 and P5 v0.1.139 PDFs are built, retained, mirrored, and synchronized; P4 provider-overlay publication remains open",
     "Exact non-Anthropic re-review and standing external release/provenance gates are next",
   ],
   cronStatus:
-    "P1B v2B.0.4 exact review is truth-audited; three novel minors are closed in v2B.0.5 and readiness remains 56.",
+    "P1B v2B.0.5 confirmation is truth-audited; two closure regressions are closed in v2B.0.6 and readiness remains 56.",
   etaToCompletion:
-    "P1B v2B.0.5 next requires exact-PDF confirmation plus archive and human gates. A defensible all-six submission date remains conditional on those gates and human decisions; journal acceptance is controlled by editors and referees.",
+    "P1B v2B.0.6 next requires exact-PDF confirmation plus archive and human gates. A defensible all-six submission date remains conditional on those gates and human decisions; journal acceptance is controlled by editors and referees.",
 };

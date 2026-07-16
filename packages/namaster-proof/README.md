@@ -20,6 +20,10 @@ foreground model, or make a gravity-model inference.
 python -m pip install ./packages/namaster-proof
 ```
 
+In an archived snapshot of the BigBounce monorepo, the package is isolated at
+`packages/namaster-proof`; either run the command above from the archive root or
+copy that directory intact and install from the copied directory.
+
 PyMaster is not required to install the package. The exact-window functions
 accept a workspace implementing `get_bandpower_windows()`, `couple_cell()`,
 and `decouple_cell()`. They require the input spectra to have exactly the

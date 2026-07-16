@@ -1,7 +1,7 @@
 # P1B disposition ledger
 
 **Canonical source:** `arxiv/paper1b_namaster_proof.tex`
-**Current paper-local version:** `v2B.0.5` (2026-07-16 exact-board closure)
+**Current paper-local version:** `v2B.0.6` (2026-07-16 confirmation closure)
 **Claim policy:** exact-window and receipt software validation; no sky measurement,
 foreground model, cosmological inference, or ECH/bounce evidence. The legacy
 v1B computational-companion dispositions remain below as retained history.
@@ -27,3 +27,5 @@ v1B computational-companion dispositions remain below as retained history.
 | DP1B-17 | JSON publication and verification accepted non-standard `NaN`/`Infinity` constants. | **CLOSED-BY-CODE v2B.0.5 / package 0.1.4** | Publication uses `allow_nan=False` for payload and receipt before either file is written; verification rejects non-standard constants; two deterministic regressions cover payload, metadata, and retained-file parsing. |
 | DP1B-18 | Compatibility-helper edits could bypass package CI because workflow path filters covered only the package tree. | **CLOSED-BY-CI v2B.0.5** | The workflow now triggers on both imported production helpers as well as package and workflow changes. |
 | DP1B-19 | The production README described two cuts as Galactic latitude plus declination although the executable applies both in one native HEALPix latitude frame. | **CLOSED-BY-DOC v2B.0.5** | The configuration now states the single-coordinate-frame window contract and explicitly disclaims a Galactic/equatorial or survey-footprint interpretation. |
+| DP1B-20 | Adding Author Contributions stranded the sharded-validation paragraph under the wrong section. | **CLOSED-BY-LAYOUT v2B.0.6** | Sharded validation is restored to Worked Examples before the Author Contributions section; the closure regression is visually audited. |
+| DP1B-21 | The printed minimal API call used nonexistent keyword `beta_deg` instead of `beta_rad`. | **CLOSED-BY-DOC v2B.0.6** | The manuscript now prints the executable `beta_rad=np.deg2rad(0.25)` call, matching `windows.py` and the retained example. |

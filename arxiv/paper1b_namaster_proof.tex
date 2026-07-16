@@ -23,8 +23,8 @@
 
 \newcommand{\software}{\texttt{namaster-proof}}
 \newcommand{\Cl}{C_\ell}
-\newcommand{\paperVersion}{v2B.0.5}
-\newcommand{\paperTimestamp}{2026-07-16 12:28 PT}
+\newcommand{\paperVersion}{v2B.0.6}
+\newcommand{\paperTimestamp}{2026-07-16 12:43 PT}
 
 \title{\software: Exact pseudo-\(\Cl\) window inference and
 content-bound validation for reproducible spin-2 analyses}
@@ -203,7 +203,7 @@ operator equivalence.  This example has no dependency on a paper-specific
 dataset and is suitable for installation tests.
 The minimal call sequence is
 \texttt{response = build\_rotation\_response(workspace, ee, bb)} followed by
-\texttt{windowed\_bandpowers(response, beta\_deg=0.25)}; the complete executable
+\texttt{windowed\_bandpowers(response, beta\_rad=np.deg2rad(0.25))}; the complete executable
 example also calls \texttt{validate\_window\_equivalence}.
 
 \paragraph{Real PyMaster integration.}
@@ -223,6 +223,12 @@ synthetic run recovered the injection from the mean bandpowers on the declared
 simulation contract, not measurements, detection significances, or evidence
 for a physical birefringence model.
 
+\paragraph{Sharded result validation.}
+Production shards record fields such as suite, realization count, and seed
+range alongside the content digest.  Aggregation can therefore reject a shard
+whose bytes were altered or whose declared range does not match the requested
+campaign, rather than silently combining it with valid results.
+
 \section{Author Contributions}
 
 Houston Golden: conceptualization, methodology, software, validation, formal
@@ -230,12 +236,6 @@ analysis, investigation, data curation, writing---original draft,
 writing---review and editing, visualization, project administration, and
 funding acquisition. Correspondence metadata remain author-supplied submission
 metadata and are not inferred by the software release process.
-
-\paragraph{Sharded result validation.}
-Production shards record fields such as suite, realization count, and seed
-range alongside the content digest.  Aggregation can therefore reject a shard
-whose bytes were altered or whose declared range does not match the requested
-campaign, rather than silently combining it with valid results.
 
 \section{Limitations}
 
