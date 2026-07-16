@@ -37,16 +37,16 @@ gaps.
 The canonical engine reports:
 
 - archive complete: **false**
-- reconciled parseable receipts: **21 / 259 (8.1081%)**
-- receipt count mismatches: **238**
+- reconciled parseable receipts: **24 / 259 (9.2664%)**
+- receipt count mismatches: **235**
 - receipt hash mismatches: **0**
 - orphaned event receipts: **0**
 - failed-leg gaps: **6**
 
-The 21 reconciled receipts are predominantly explicit zero-finding receipts,
-plus all three P4 v1.0.253 receipts and the P4 v1.0.254 Codex receipt. They do
-not imply that the remaining campaign findings have been truth-audited into the
-event ledger.
+The 24 reconciled receipts are predominantly explicit zero-finding receipts,
+plus the complete P4 v1.0.253 board, the P4 v1.0.254 Codex receipt, and the
+complete P5 v0.1.138 board. They do not imply that the remaining campaign
+findings have been truth-audited into the event ledger.
 
 Every unresolved row remains visible rather than being silently converted into
 zero findings.
@@ -85,9 +85,25 @@ All three v1.0.253 receipts now reconcile exactly at **4/4**, **3/3**, and
 **6/6**. No historical event was inferred from a synthesis, closure note, or
 provider verdict alone.
 
+The declarative, hash-validating importer
+`tools/import_truth_audit_events.py` now removes the repeated manual event
+construction step. A batch must bind the exact truth-audit bytes, every raw
+receipt's bytes, the canonical inventory row and expected finding count, paper
+and PDF identity, timestamps, reviewer route, finding-level truth disposition,
+pattern state, and closure state. It validates every canonical event before an
+explicit `--append`; exact replay is idempotent. Focused importer tests cover
+valid construction, audit/receipt mutation, count mismatch, and replay.
+
+The first importer-driven batch,
+`batches/P5_v0.1.138_truth_audit_events.json`, adds all 11 findings from the
+unanimous minor-only P5 board: four verified manuscript minors, four standing
+release/scope gates, and three editorial requests. Its Grok, Gemini, and Codex
+receipts reconcile at **3/3**, **4/4**, and **4/4**. The ledger now represents
+**32 / 1,574 explicit findings (2.0330%)**.
+
 ## Remaining work
 
-1. Normalize the remaining 1,553 explicit findings against truth-audit rows,
+1. Normalize the remaining 1,542 explicit findings against truth-audit rows,
    preserving falsified, stale, opinion, standing, and unresolved dispositions.
 2. Recover the five incomplete historical summaries and one empty Codex receipt
    from preserved raw transcripts if available; otherwise retain them as

@@ -1,7 +1,7 @@
 {
-  "archive_completeness_rate": 0.081081,
+  "archive_completeness_rate": 0.092664,
   "complete": false,
-  "count_mismatches": 238,
+  "count_mismatches": 235,
   "failed_leg_gaps": 6,
   "hash_mismatches": 0,
   "inventory_receipts": 271,
@@ -2429,34 +2429,40 @@
       "status": "ok"
     },
     {
-      "event_count": 0,
-      "event_hashes": [],
+      "event_count": 4,
+      "event_hashes": [
+        "8e119932e02c751f088d77b7fda74b77f09c025c9010ecb0063dcea5fda66d29"
+      ],
       "expected_findings": 4,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P5-v0.1.138-EXACTPDF-3c47ccf7-NONANTHROPIC-CONFIRM/API_P5_gemini.md",
       "receipt_id": "receipt_6bf2b83cfd1db02abe6f",
-      "state": "COUNT_MISMATCH",
+      "state": "RECONCILED",
       "status": "ok"
     },
     {
-      "event_count": 0,
-      "event_hashes": [],
+      "event_count": 3,
+      "event_hashes": [
+        "2ccf60607f3c763b54ade7e575eb790085457fb64c58f4306ba85f776c19cbfb"
+      ],
       "expected_findings": 3,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P5-v0.1.138-EXACTPDF-3c47ccf7-NONANTHROPIC-CONFIRM/API_P5_grok.md",
       "receipt_id": "receipt_b9df7a0f197231de58e3",
-      "state": "COUNT_MISMATCH",
+      "state": "RECONCILED",
       "status": "ok"
     },
     {
-      "event_count": 0,
-      "event_hashes": [],
+      "event_count": 4,
+      "event_hashes": [
+        "a259086e7852a0889eca3018dfa522c1123245912427026c2766709f0511b227"
+      ],
       "expected_findings": 4,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P5-v0.1.138-EXACTPDF-3c47ccf7-NONANTHROPIC-CONFIRM/intwave_P5_codex_0128.md",
       "receipt_id": "receipt_8a0d9248e5d2695c24c9",
-      "state": "COUNT_MISMATCH",
+      "state": "RECONCILED",
       "status": "ok"
     }
   ],
-  "reconciled_receipts": 21,
+  "reconciled_receipts": 24,
   "schema_version": "finding-receipt-reconciliation/v1",
   "unresolved_finding_counts": 0
 }

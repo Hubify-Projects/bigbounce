@@ -183,9 +183,15 @@ historical learning gate. The partially migrated P4 v1.0.254 Codex receipt has
 now been completed from its one-to-one truth audit, and the complete P4
 v1.0.253 three-provider board has also been migrated. The ledger now contains
 21 events; the four affected receipts reconcile at 8/8, 4/4, 3/3, and 6/6.
-Canonical reconciliation remains incomplete at **21/259 receipts (8.11%)**,
-with 238 count mismatches, zero hash mismatches, and zero orphaned event
-receipts.
+
+A declarative batch importer now verifies truth-audit and raw-receipt hashes,
+canonical inventory membership/counts, event schema and identity, and
+idempotent append behavior. Its first retained batch migrated all 11 P5
+v0.1.138 findings, separating four verified manuscript minors, four standing
+release/scope gates, and three editorial opinions. The ledger now contains 32
+events. Canonical reconciliation remains incomplete at **24/259 receipts
+(9.27%)**, with 235 count mismatches, zero hash mismatches, and zero orphaned
+event receipts.
 Campaign-wide escape and closure-regression rates therefore remain unavailable
 as complete-history metrics.
 
