@@ -147,8 +147,8 @@ const historicalLiveStatus: LiveStatus = {
 // summary reflect the canonical six-paper board rather than an older review wave.
 export const liveStatus: LiveStatus = {
   ...historicalLiveStatus,
-  lastUpdatedISO: "2026-07-16T10:43:00Z",
-  lastUpdatedDisplay: "July 16, 2026 · 3:43 AM PT",
+  lastUpdatedISO: "2026-07-16T10:53:00Z",
+  lastUpdatedDisplay: "July 16, 2026 · 3:53 AM PT",
   headline:
     "All six manuscripts remain in revision. P4 v1.0.260 now binds the strict-primary local overlay to the unchanged immutable public catalog; provider publication remains open. P5 remains v0.1.139. Readiness holds 80/74; no submission or acceptance is claimed.",
   summary:
@@ -159,7 +159,7 @@ export const liveStatus: LiveStatus = {
         ...paper,
         version: "v1B.0.110",
         pendingWork:
-          "The S8 burn-in contract is closed with 93,064 post-burn samples from 132,949 raw and a hash-bound receipt. Corrected 500-MC NaMaster production, exact CAMB/PRIMAT BBN execution evidence, a version-matched manifest, immutable release, exact re-review, and human review remain. Readiness holds 56.",
+          "The S8 burn-in contract and exact CAMB 1.6.5/PRIMAT execution receipt are closed. Corrected 500-MC NaMaster production, a version-matched manifest, immutable release, exact re-review, and human review remain. Readiness holds 56.",
       };
     }
     if (paper.slug === "paper-4") {

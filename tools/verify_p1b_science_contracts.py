@@ -6,6 +6,7 @@ from __future__ import annotations
 import json
 import re
 import sys
+import hashlib
 from pathlib import Path
 from typing import Any
 
@@ -91,8 +92,8 @@ def verify(root: Path, paths: dict[str, str]) -> dict[str, Any]:
     _require(bbn.get("status") == "PASS", "P1B BBN execution receipt is not PASS")
     _require(bbn.get("camb_version") == "1.6.5", "P1B BBN receipt must bind CAMB 1.6.5")
     _require(
-        isinstance(bbn.get("executed_table"), str) and bbn["executed_table"],
-        "P1B executed BBN table is unnamed",
+        bbn.get("executed_table") == "PRIMAT_Yp_DH_ErrorMC_2021.dat",
+        "P1B executed BBN table is not the frozen CAMB 1.6.5 default",
     )
     _require(
         isinstance(bbn.get("executed_table_sha256"), str)
@@ -103,6 +104,24 @@ def verify(root: Path, paths: dict[str, str]) -> dict[str, Any]:
         bbn.get("public_yaml_setting") == bbn.get("executed_table"),
         "P1B public YAML does not reproduce the executed BBN predictor",
     )
+    configs = bbn.get("validated_configs")
+    _require(
+        isinstance(configs, list) and len(configs) == 4,
+        "P1B BBN receipt must bind all four public reproduction YAMLs",
+    )
+    for config in configs:
+        _require(isinstance(config, dict), "P1B BBN config receipt is malformed")
+        config_path = root / str(config.get("path", ""))
+        _require(config_path.is_file(), f"P1B BBN config is missing: {config_path}")
+        _require(
+            hashlib.sha256(config_path.read_bytes()).hexdigest()
+            == config.get("sha256"),
+            f"P1B BBN config hash mismatch: {config_path}",
+        )
+        _require(
+            config.get("bbn_predictor") == bbn.get("executed_table"),
+            f"P1B BBN config predictor mismatch: {config_path}",
+        )
 
     s8 = _load_json(resolved["s8_overlay_receipt"], "S8 overlay receipt")
     _require(s8.get("status") == "PASS", "P1B S8 overlay receipt is not PASS")
@@ -117,7 +136,6 @@ def verify(root: Path, paths: dict[str, str]) -> dict[str, Any]:
         s8.get("result_file", "")
     )
     _require(result_path.is_file(), "P1B S8 result bound by the receipt is missing")
-    import hashlib
     _require(
         hashlib.sha256(result_path.read_bytes()).hexdigest()
         == s8.get("result_sha256"),

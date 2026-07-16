@@ -57,10 +57,20 @@ def fixture(root: Path) -> dict[str, str]:
     (root / "bbn.json").write_text(json.dumps({
         "status": "PASS",
         "camb_version": "1.6.5",
-        "executed_table": "PRIMAT_Yp_DH_Error.dat",
+        "executed_table": "PRIMAT_Yp_DH_ErrorMC_2021.dat",
         "executed_table_sha256": "c" * 64,
-        "public_yaml_setting": "PRIMAT_Yp_DH_Error.dat",
+        "public_yaml_setting": "PRIMAT_Yp_DH_ErrorMC_2021.dat",
+        "validated_configs": [
+            {
+                "path": f"config-{index}.yaml",
+                "sha256": hashlib.sha256(f"config-{index}".encode()).hexdigest(),
+                "bbn_predictor": "PRIMAT_Yp_DH_ErrorMC_2021.dat",
+            }
+            for index in range(4)
+        ],
     }))
+    for index in range(4):
+        (root / f"config-{index}.yaml").write_text(f"config-{index}")
     s8_result = root / "s8-result.json"
     s8_result.write_text("{}")
     (root / "s8.json").write_text(json.dumps({

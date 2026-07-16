@@ -1,0 +1,40 @@
+{
+  "camb_version": "1.6.5",
+  "command": "python reproducibility/cosmology/write_bbn_execution_receipt.py",
+  "executed_at_utc": "2026-07-16T10:52:43.052409+00:00",
+  "executed_table": "PRIMAT_Yp_DH_ErrorMC_2021.dat",
+  "executed_table_sha256": "ea5adce061720b937d8abda3a04a384aedaab3168dbf17414ff600cc91a7160c",
+  "numpy_version": "1.26.4",
+  "predictor_class": "BBN_table_interpolator",
+  "public_yaml_setting": "PRIMAT_Yp_DH_ErrorMC_2021.dat",
+  "python_version": "3.12.13",
+  "schema": "bigbounce.p1b-bbn-execution-receipt/v1",
+  "scipy_version": "1.13.1",
+  "status": "PASS",
+  "validated_configs": [
+    {
+      "bbn_predictor": "PRIMAT_Yp_DH_ErrorMC_2021.dat",
+      "path": "reproducibility/cosmology/cobaya_planck.yaml",
+      "sha256": "340d0290262accbce5f75ffc3b388ad1485d90f148eaa7fe2a695abcb2c5ffa9"
+    },
+    {
+      "bbn_predictor": "PRIMAT_Yp_DH_ErrorMC_2021.dat",
+      "path": "reproducibility/cosmology/cobaya_planck_bao.yaml",
+      "sha256": "82bba201972d27300b4647aead552ed85b631a7345a6699c6c689736680dba10"
+    },
+    {
+      "bbn_predictor": "PRIMAT_Yp_DH_ErrorMC_2021.dat",
+      "path": "reproducibility/cosmology/cobaya_planck_bao_sn.yaml",
+      "sha256": "fd6da74fe75bb2fde79868ed02ceaad9787555d17dff728b919b7ec503be1dfa"
+    },
+    {
+      "bbn_predictor": "PRIMAT_Yp_DH_ErrorMC_2021.dat",
+      "path": "reproducibility/cosmology/cobaya_full_tension.yaml",
+      "sha256": "f9eb1519c153e4445f3d01cfc94f6d0167d35ae78c83663ae67fcea3b1b01bbc"
+    }
+  ],
+  "validation_script": {
+    "path": "reproducibility/cosmology/test_bbn_provenance.py",
+    "sha256": "db126994661d5dbbd094a07ddaab07c1c53bf794ed415844c60b97561a4826f9"
+  }
+}

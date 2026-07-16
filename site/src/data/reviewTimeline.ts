@@ -57,6 +57,27 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p1b-bbn-execution-contract-2026-07-16",
+    dateISO: "2026-07-16",
+    timePT: "3:53 AM",
+    kind: "closure-wave",
+    title: "P1B — exact CAMB 1.6.5 BBN execution contract retained",
+    papers: ["P1B"],
+    summary:
+      "An isolated Python 3.12 environment executed the public P1B BBN configuration under CAMB 1.6.5. All four reproduction YAMLs loaded the same stock PRIMAT table used by the frozen chains; the receipt binds the runtime versions, table hash, YAML hashes, and validation-script hash. This closes the BBN provenance gate without changing any posterior or readiness score.",
+    keyTakeaways: [
+      "Executed table: PRIMAT_Yp_DH_ErrorMC_2021.dat",
+      "Table SHA-256: ea5adce061720b937d8abda3a04a384aedaab3168dbf17414ff600cc91a7160c",
+      "Validated stack: Python 3.12.13, CAMB 1.6.5, NumPy 1.26.4, SciPy 1.13.1",
+      "Corrected NaMaster production, version-matched release, exact re-review, and human review remain open; readiness holds 56",
+    ],
+    links: [
+      { label: "Execution receipt", href: `${GH}/reproducibility/cosmology/frozen/bbn_execution_receipt.json` },
+      { label: "Validation script", href: `${GH}/reproducibility/cosmology/test_bbn_provenance.py` },
+      { label: "P1B canonical status", href: `${GH}/project-context/SSOT/paper-1/status.md` },
+    ],
+  },
+  {
     id: "p1b-s8-burnin-contract-2026-07-16",
     dateISO: "2026-07-16",
     timePT: "3:43 AM",
