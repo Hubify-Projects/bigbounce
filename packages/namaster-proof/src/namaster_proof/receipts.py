@@ -1,4 +1,4 @@
-"""Atomic JSON publication and fail-closed content receipt validation."""
+"""Atomic per-file JSON writes and fail-closed content receipt validation."""
 
 from __future__ import annotations
 
@@ -48,7 +48,12 @@ def _atomic_write(path: Path, data: bytes) -> None:
 def publish_json(
     path: Path, payload: Mapping[str, Any], metadata: Mapping[str, Any]
 ) -> dict[str, Any]:
-    """Atomically publish a JSON result and content-addressed receipt."""
+    """Publish a result and sidecar with atomic replacement of each file.
+
+    The two files are replaced sequentially rather than as one filesystem
+    transaction. The receipt detects uncoordinated result mutation; callers
+    must assert trusted execution metadata with ``validate_json_receipt``.
+    """
     overlap = PROTECTED_RECEIPT_FIELDS.intersection(metadata)
     if overlap:
         raise ValueError(

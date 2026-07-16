@@ -9,6 +9,7 @@
 \usepackage{xcolor}
 \usepackage{hyperref}
 \usepackage{microtype}
+\usepackage{seqsplit}
 
 \hypersetup{
   colorlinks=true,
@@ -19,12 +20,12 @@
 
 \newcommand{\software}{\texttt{namaster-proof}}
 \newcommand{\Cl}{C_\ell}
-\newcommand{\paperVersion}{v2B.0.0}
-\newcommand{\paperTimestamp}{2026-07-16 10:25 PT}
+\newcommand{\paperVersion}{v2B.0.1}
+\newcommand{\paperTimestamp}{2026-07-16 10:52 PT}
 
 \title{\software: Exact pseudo-\(\Cl\) window inference and
-tamper-evident provenance for reproducible spin-2 analyses}
-\author{Houston Golden}
+content-bound validation for reproducible spin-2 analyses}
+\author{Houston Golden\\Independent researcher}
 \date{July 16, 2026 --- \paperVersion}
 
 \begin{document}
@@ -35,9 +36,9 @@ tamper-evident provenance for reproducible spin-2 analyses}
 in cut-sky spin-2 analyses.  First, it evaluates a uniformly rotated
 \(EE,EB,BE,BB\) spectrum through the complete NaMaster bandpower-window
 operator, avoiding replacement of the operator by bin-centre or
-effective-multipole templates.  Second, it publishes JSON results atomically
-with content-addressed sidecar receipts and fails closed when either the result
-or a declared execution contract changes.  The package also supplies explicit
+effective-multipole templates.  Second, it writes JSON results and
+content-addressed sidecar receipts with atomic per-file replacement and fails
+closed when result bytes or caller-asserted execution metadata change.  The package also supplies explicit
 multipole-support contracts, fixed-grid rotation-angle recovery, command-line
 receipt verification, and compatibility tests against the production helpers
 from which it was extracted.  The software is intended for method validation
@@ -45,7 +46,12 @@ and reproducibility checks; it is not a sky-analysis pipeline, foreground
 model, or cosmological inference engine.
 \end{abstract}
 
-\section{Summary}
+\section{Overview}
+
+\paragraph{Keywords.}
+Python; cosmology; pseudo-\(\Cl\); NaMaster; reproducibility; provenance.
+
+\section{Introduction}
 
 Pseudo-\(\Cl\) estimators make masked spin-2 analyses computationally
 practical by relating full-sky spectra to coupled and decoupled
@@ -59,8 +65,9 @@ metadata.
 module constructs exact windowed responses for uniform polarization rotation,
 evaluates them at one or many angles, recovers an angle on a declared grid,
 and compares the window contraction with NaMaster's couple--decouple operator.
-Its provenance module atomically publishes a JSON result and a SHA-256-bound
-receipt, then verifies the pair and optional metadata.  A third module defines
+Its provenance module publishes a JSON result and a SHA-256-bound receipt using
+atomic replacement for each file, then verifies the pair and caller-asserted
+metadata.  A third module defines
 deterministic multipole and binning contracts.  NumPy is the only required
 dependency; a NaMaster workspace is supplied by the user when exercising the
 physical window operator.
@@ -82,7 +89,7 @@ incomplete artifact.  These problems are usually addressed with analysis-local
 helpers.  \software{} provides a reusable, tested implementation with explicit
 failure behavior, while remaining narrow enough to audit.
 
-\section{Software Architecture}
+\section{Implementation and Architecture}
 
 The package is divided into three modules:
 
@@ -137,27 +144,29 @@ inexpensive.  The recovery function minimizes a declared weighted or
 unweighted squared residual over a user-provided grid; its default is 2001
 points spanning \(-1^\circ\) to \(+1^\circ\).
 
-\section{Deterministic Execution and Provenance}
+\section{Content Validation}
 
 \texttt{publish\_json} serializes a mapping with sorted keys, writes and
-flushes a process-specific temporary file, atomically replaces the destination,
-and synchronizes the containing directory.  It then publishes a sidecar receipt
+flushes a process-specific temporary file, atomically replaces the result,
+and synchronizes the containing directory.  It then separately publishes a sidecar receipt
 containing schema version, result filename, byte count, SHA-256 digest, and
 caller-supplied execution metadata.  The content-binding fields are protected
 from metadata override.
 
 \texttt{verify\_json\_receipt} requires both files, parses both as JSON
 objects, and recomputes every protected field.  \texttt{validate\_json\_receipt}
-additionally checks declared metadata such as a suite identifier, seed range,
+additionally checks caller-asserted metadata such as a suite identifier, seed range,
 or realization count.  Missing files, malformed objects, changed bytes,
-changed receipts, or contract mismatches raise an exception.  The
+changed receipts, or asserted-contract mismatches raise an exception.  The two
+files are not one filesystem transaction, and coordinated replacement of both
+requires an external receipt anchor or trusted expected metadata to detect. The
 \texttt{namaster-proof verify} and \texttt{namaster-proof validate} commands
 expose the same behavior to shell workflows and return a nonzero status on
 failure.
 
-\section{Validation and Tests}
+\section{Quality Control}
 
-Version 0.1.0 contains 19 automated tests covering numerical behavior, invalid
+Version 0.1.1 contains 23 automated tests covering numerical behavior, invalid
 inputs, the CLI, receipt mutation, protected fields, and compatibility with
 the original production helpers.  The window suite uses an exactly represented
 synthetic linear workspace to compare the precontracted response with the
@@ -172,8 +181,10 @@ bandpower edges, and harmonic keyword contracts.  In the associated physical
 production artifact, a workspace of shape
 \([4,20,4,1025]\) gave a maximum absolute difference of
 \(1.41\times10^{-18}\) between direct window contraction and the
-couple--decouple operator.  This number validates that recorded configuration;
-it is not a universal error bound.
+couple--decouple operator. This recorded execution check used IEEE-754
+double-precision arrays and the package's zero-tolerance compatibility test;
+the original workspace tensor was not retained, so the scalar is not a
+self-contained reproducibility claim or a universal error bound.
 
 \section{Worked Examples}
 
@@ -209,30 +220,73 @@ rotation and initially vanishing \(EB\) are assumptions of the optimized
 three-component response; the general algebraic rotation helper accepts all
 four input spectra, but spatially varying rotation requires another model.
 Fixed-grid recovery inherits the range and resolution selected by the caller.
-Receipt validation establishes file integrity and agreement with declared
-metadata, not the scientific correctness of that metadata.  SHA-256 sidecars
-are tamper-evident bindings, not digital signatures or an authorization system.
+Receipt validation establishes file integrity and agreement with caller-asserted
+metadata, not the scientific correctness of that metadata. SHA-256 sidecars
+are content bindings, not digital signatures, an authorization system, or
+protection against coordinated replacement without an external anchor.
 Schema version 1 has no migration requirement yet; a future incompatible
 schema will require an explicit reader or conversion path.
 
 \section{Availability}
 
-Version 0.1.0 is distributed under the MIT License in the
-\href{https://github.com/Hubify-Projects/bigbounce}{BigBounce repository}.
-Its source is the \software{} package directory.  The package requires Python 3.10 or later
-and NumPy 1.24 or later.  Installation, API, CLI, and development commands are
-documented in the package README; citation metadata are supplied in
-\texttt{CITATION.cff}.  A persistent archival DOI and an independent package
-index release are not yet available and must not be inferred from the source
-repository.  The complete synthetic-production artifacts used in the worked
-example are retained in the same repository's \texttt{reproducibility}
-directory, under the \nolinkurl{p1_namaster_500mc} subdirectory.
+\paragraph{Operating system.}
+The package is operating-system independent where Python and NumPy are
+available; CI covers Linux with Python 3.10--3.13.
+
+\paragraph{Programming language and dependencies.}
+Version 0.1.1 requires Python 3.10 or later and NumPy 1.24 or later. PyMaster
+is optional and is supplied by the user for physical NaMaster workspaces;
+the retained physical validation used PyMaster 2.6.
+
+\paragraph{Code repository.}
+The MIT-licensed source, issue tracker, installation instructions, API
+documentation, tests, and examples are available directly at
+\href{https://github.com/Hubify-Projects/bigbounce/tree/main/packages/namaster-proof}
+{the \software{} package directory}. Citation metadata are supplied in
+\texttt{CITATION.cff}.
+
+\paragraph{Archive.}
+A persistent archival identifier is not yet available. This is an explicit
+submission blocker, not a completed release claim. The submission candidate
+must bind version 0.1.1 to an immutable archive before journal submission.
+
+\paragraph{Validation artifacts.}
+The corrected physical example is bound to
+\nolinkurl{results/physical_spectrum_v2/summary.json} (SHA-256
+\texttt{\seqsplit{745b0a2f060773ce69c005ea84b74b305ec26a85f6aaafe58f0b3244b7f39914}})
+and \nolinkurl{bandpowers.npz} (SHA-256
+\texttt{\seqsplit{b00f850e338007caea6af76f4e9305ab6b54a68e6799efd450bc76f1c325f331}}).
+
+\section{Reuse Potential}
+
+Researchers can reuse the window layer to test uniform spin-2 rotation models
+against any workspace exposing the small NaMaster protocol, reuse the multipole
+contracts to prevent field/bin support drift, or use the receipt layer for
+sharded JSON calculations outside cosmology. Extensions can add other
+angle-dependent spectrum bases, signed receipt anchors, or schema migrations.
+Questions, bug reports, and contributions are handled through the public
+repository issue tracker and pull-request workflow.
+
+\section{AI Usage Disclosure}
+
+AI coding and review agents assisted with implementation review, test
+generation, documentation, and manuscript editing. Their outputs were checked
+against committed source and retained numerical artifacts; executable claims
+were accepted only after local tests or direct recomputation.
 
 \section*{Acknowledgements}
 
 The exact-window operations build on NaMaster~\cite{Alonso2019} and the MASTER
 pseudo-\(\Cl\) method~\cite{Hivon2002}.  The production example used
 CAMB~\cite{Lewis2000} and HEALPix~\cite{Gorski2005}.
+
+\section*{Funding Statement}
+
+No external funding supported this software release.
+
+\section*{Competing Interests}
+
+The author declares no competing interests.
 
 \begin{thebibliography}{9}
 

@@ -151,6 +151,19 @@ inspection; five release copies are byte-identical; retention and Convex
 synchronization pass. Readiness remains 56 because the new architecture has
 not yet earned an exact-PDF review board.
 
+The first exact v2B.0.0 board then demonstrated the intended recursive loop:
+Grok returned MINOR, while Gemini and subscription-backed Codex returned
+MAJOR. Truth audit rejected two false or overstated findings but retained real
+software defects that surface-only paper review missed: silent spectrum
+padding/truncation, invalid statistical inputs, overbroad two-file provenance
+guarantees, stale retained documentation, incomplete JORS structure, and
+insufficient artifact binding. v2B.0.1 / package 0.1.1 converts these into
+fail-closed code and regression coverage, increasing the package suite from
+19 to 23 tests. This is a concrete example of review feedback becoming a
+preventive rule rather than a one-off prose patch. The archive identifier and
+independent real-PyMaster benchmark remain open, so no readiness increase is
+taken.
+
 The full audit plan is **not complete**. The defensible acceptance accounting is
 against the 12 checklist gates below:
 

@@ -6,8 +6,9 @@ pseudo-\(C_\ell\) validation:
 1. contracting a uniformly rotated spin-2 spectrum through the complete
    NaMaster bandpower-window operator without an effective-\(\ell\) or
    bin-centre approximation; and
-2. publishing JSON results atomically with content-addressed sidecar receipts,
-   then failing closed when the result or declared execution contract changes.
+2. publishing JSON results and content-addressed sidecar receipts with atomic
+   replacement of each file, then failing closed when result bytes or
+   caller-asserted execution metadata change.
 
 The package extracts the reusable operators validated in the BigBounce P1B
 synthetic-CMB campaign. It does not perform a real-sky analysis, supply a
@@ -21,8 +22,10 @@ python -m pip install ./packages/namaster-proof
 
 PyMaster is not required to install the package. The exact-window functions
 accept a workspace implementing `get_bandpower_windows()`, `couple_cell()`,
-and `decouple_cell()`. Install PyMaster separately when using a real
-`pymaster.NmtWorkspace`.
+and `decouple_cell()`. They require the input spectra to have exactly the
+workspace's harmonic support; short or long spectra are rejected rather than
+silently padded or truncated. Install PyMaster separately when using a real
+`pymaster.NmtWorkspace`. Physical validation used PyMaster 2.6.
 
 ## Python API
 
@@ -37,12 +40,6 @@ from namaster_proof import (
     validate_window_equivalence,
 )
 
-edges = bandpower_edges(nside=256, lmax=512, n_bins=10)
-field_options = field_harmonic_kwargs(lmax=512, purify_b=True)
-response = build_rotation_response(workspace, cl_ee, cl_bb)
-error = validate_window_equivalence(workspace, response, beta_rad=0.01)
-assert error <= 1e-10
-
 result = Path("shard.json")
 publish_json(
     result,
@@ -55,8 +52,15 @@ payload, receipt = validate_json_receipt(
 )
 ```
 
+The complete executable window example, including a deterministic workspace
+and spectra, is in `examples/synthetic_window.py` and is exercised below.
+
 Receipt metadata cannot override the content-addressed fields
 `schema_version`, `result_file`, `result_bytes`, or `result_sha256`.
+The result and receipt are two sequential atomic file replacements, not one
+filesystem transaction and not a cryptographic signature. A coordinated
+replacement of both files is detectable only when the caller supplies trusted
+expected metadata or anchors the receipt digest externally.
 
 ## CLI
 

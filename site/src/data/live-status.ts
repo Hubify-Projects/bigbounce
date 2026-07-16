@@ -157,9 +157,9 @@ export const liveStatus: LiveStatus = {
     if (paper.slug === "paper-1b") {
       return {
         ...paper,
-        version: "v2B.0.0",
+        version: "v2B.0.1",
         pendingWork:
-          "The software package, CI matrix, independent synthetic example, and physical NaMaster validation are complete. Exact non-Anthropic software-paper review, human review, archive/DOI, and submission gates remain. Readiness holds 56.",
+          "The first v2B.0.0 exact board was Grok MINOR / Gemini MAJOR / Codex-subscription MAJOR. v2B.0.1 closes the verified code, documentation, provenance-wording, and JORS-structure defects with 23 tests. Exact confirmation, archive identifier, and human review remain. Readiness holds 56.",
       };
     }
     if (paper.slug === "paper-4") {
@@ -207,8 +207,8 @@ export const liveStatus: LiveStatus = {
     return paper;
   }),
   currentlyRunning: [
-    "P1B v2B.0.0 software-metapaper release synchronization and exact-PDF packet preparation",
-    "P1B exact non-Anthropic software-paper review is next; failed legacy transports remain retained as history",
+    "P1B v2B.0.1 exact-PDF closure compilation, synchronization, and confirmation packet",
+    "P1B immutable archive identifier remains a real submission blocker",
     "P4 v1.0.260 and P5 v0.1.139 PDFs are built, retained, mirrored, and synchronized; P4 provider-overlay publication remains open",
     "Exact non-Anthropic re-review and standing external release/provenance gates are next",
   ],

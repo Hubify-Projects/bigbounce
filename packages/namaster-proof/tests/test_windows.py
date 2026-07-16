@@ -72,3 +72,34 @@ def test_invalid_window_and_spectrum_shapes_fail_closed():
         build_rotation_response(BadWorkspace(), [1.0], [0.0])
     with pytest.raises(ValueError, match=r"\[EE, EB, BE, BB\]"):
         rotate_eb_spectra(np.zeros((3, 4)), 0.0)
+    with pytest.raises(ValueError, match="does not match workspace support"):
+        build_rotation_response(IdentityWorkspace(), np.ones(5), np.ones(6))
+    with pytest.raises(ValueError, match="finite"):
+        build_rotation_response(
+            IdentityWorkspace(), np.array([1, 2, 3, 4, 5, np.nan]), np.ones(6)
+        )
+
+
+@pytest.mark.parametrize(
+    ("kwargs", "message"),
+    [
+        ({"grid_deg": [0.0, np.nan]}, "grid_deg"),
+        ({"weights": [1.0, -1.0, 1.0, 1.0, 1.0, 1.0]}, "non-negative"),
+        ({"weights": [1.0]}, "measured band count"),
+    ],
+)
+def test_recovery_rejects_invalid_statistical_inputs(kwargs, message):
+    workspace = IdentityWorkspace()
+    response = build_rotation_response(workspace, np.ones(6), np.zeros(6))
+    measured = windowed_bandpowers(response, 0.0)[1]
+    with pytest.raises(ValueError, match=message):
+        recover_beta_deg(measured, response, **kwargs)
+
+
+def test_recovery_rejects_nonfinite_data_and_mismatched_bands():
+    workspace = IdentityWorkspace()
+    response = build_rotation_response(workspace, np.ones(6), np.zeros(6))
+    with pytest.raises(ValueError, match="finite"):
+        recover_beta_deg(np.array([0, 0, 0, 0, 0, np.nan]), response)
+    with pytest.raises(ValueError, match="band count"):
+        recover_beta_deg(np.zeros(5), response)

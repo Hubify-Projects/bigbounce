@@ -4,12 +4,17 @@ This directory reproduces the foreground-free synthetic-CMB validation used
 in Paper 1B. It is a pipeline test, not a Planck/ACT map analysis, a real-sky
 systematics budget, or evidence for Einstein--Cartan--Holst gravity.
 
-## Current status: physical-spectrum rerun required
+## Current status: corrected physical-spectrum production complete
 
-The complete bandpower-window operator is validated, but the July 14 ensemble
-used a D-ell-like semi-analytic EE amplitude as raw C-ell and a `0.05*EE` BB
-proxy. Its numerical values below are historical only and are not a physical
-noise/scatter/SNR calibration. `results/SUPERSEDED.md` records the disposition.
+The canonical corrected production is
+`results/physical_spectrum_v2/summary.json` (SHA-256
+`745b0a2f060773ce69c005ea84b74b305ec26a85f6aaafe58f0b3244b7f39914`)
+with bandpowers in `results/physical_spectrum_v2/bandpowers.npz` (SHA-256
+`b00f850e338007caea6af76f4e9305ab6b54a68e6799efd450bc76f1c325f331`).
+It uses CAMB 1.6.6 raw lensed EE/BB spectra and recovers the declared
+0.000, 0.270, and 0.342 degree injections at the 0.001 degree grid
+resolution. The July 14 semi-analytic run below is retained only as superseded
+history; `results/SUPERSEDED.md` records its disposition.
 
 | Injection | Mean recovery | Exact-window template SNR |
 |---:|---:|---:|
