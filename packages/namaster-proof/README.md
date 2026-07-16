@@ -111,3 +111,18 @@ namaster-proof validate /tmp/namaster-proof-example.json \
 
 It recovers the injected grid value, checks direct window contraction against
 the linear operator, and emits a content-addressed receipt.
+
+## Real PyMaster integration
+
+An independent optional example constructs a real `pymaster.NmtWorkspace`,
+checks package window contraction against `decouple_cell(couple_cell(...))`,
+recovers a declared rotation, and compares it with an effective-multipole
+shortcut:
+
+```bash
+python packages/namaster-proof/examples/pymaster_integration.py \
+  --output packages/namaster-proof/examples/pymaster_integration_result.json
+```
+
+This requires separately installed PyMaster and healpy. The retained result and
+receipt record the resolved PyMaster version and deterministic configuration.

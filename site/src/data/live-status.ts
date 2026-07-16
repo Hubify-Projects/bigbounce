@@ -147,19 +147,19 @@ const historicalLiveStatus: LiveStatus = {
 // summary reflect the canonical six-paper board rather than an older review wave.
 export const liveStatus: LiveStatus = {
   ...historicalLiveStatus,
-  lastUpdatedISO: "2026-07-16T17:25:00Z",
-  lastUpdatedDisplay: "July 16, 2026 · 10:25 AM PT",
+  lastUpdatedISO: "2026-07-16T18:09:00Z",
+  lastUpdatedDisplay: "July 16, 2026 · 11:09 AM PT",
   headline:
-    "All six manuscripts remain in revision. P1B has been re-architected as the v2B.0.0 namaster-proof software metapaper, directly addressing the repeated standalone-JCAP novelty and fragmentation objection. Readiness holds 56 pending exact-PDF review.",
+    "All six manuscripts remain in revision. P1B v2B.0.2 adds a real-PyMaster integration benchmark and closes the truth-audited v2B.0.1 confirmation residuals. Readiness holds 56 pending confirmation, archive, and human review.",
   summary:
-    "The installable package, 19-test suite, independent example, four-page manuscript, and retained physical validation artifact are complete. This is a scope correction, not review acceptance; no readiness credit is inferred before a new exact-PDF board.",
+    "namaster-proof 0.1.1 now has 24 tests. The real workspace benchmark recovers 0.250° exactly while an effective-ell shortcut returns 0.315°, with operator residual 6.78×10⁻²¹. No readiness credit is inferred before a clean exact board.",
   papers: historicalLiveStatus.papers.map((paper) => {
     if (paper.slug === "paper-1b") {
       return {
         ...paper,
-        version: "v2B.0.1",
+        version: "v2B.0.2",
         pendingWork:
-          "The first v2B.0.0 exact board was Grok MINOR / Gemini MAJOR / Codex-subscription MAJOR. v2B.0.1 closes the verified code, documentation, provenance-wording, and JORS-structure defects with 23 tests. Exact confirmation, archive identifier, and human review remain. Readiness holds 56.",
+          "v2B.0.2 closes the verified v2B.0.1 residuals and adds a real-PyMaster shortcut benchmark. Persistent archive identifier, author-supplied correspondence metadata, exact confirmation, and human review remain. Readiness holds 56.",
       };
     }
     if (paper.slug === "paper-4") {
@@ -207,7 +207,7 @@ export const liveStatus: LiveStatus = {
     return paper;
   }),
   currentlyRunning: [
-    "P1B v2B.0.1 exact-PDF closure compilation, synchronization, and confirmation packet",
+    "P1B v2B.0.2 exact-PDF closure compilation, synchronization, and confirmation packet",
     "P1B immutable archive identifier remains a real submission blocker",
     "P4 v1.0.260 and P5 v0.1.139 PDFs are built, retained, mirrored, and synchronized; P4 provider-overlay publication remains open",
     "Exact non-Anthropic re-review and standing external release/provenance gates are next",

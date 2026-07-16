@@ -18,5 +18,6 @@ The replacement code writes new results under `physical_spectrum_v2/`. It
 contracts the complete rotated `[EE, EB, BE, BB]` theory through
 `NmtWorkspace.get_bandpower_windows()`, uses pinned raw CAMB lensed EE/BB, and
 verifies both the spectrum-unit contract and numerical operator equivalence
-before running an ensemble. No production result is current until that rerun
-finishes and passes review.
+before running an ensemble. That corrected rerun is now complete under
+`physical_spectrum_v2/`; its `summary.json` and `bandpowers.npz` are the
+current production artifacts. The files described above remain superseded.

@@ -159,10 +159,25 @@ padding/truncation, invalid statistical inputs, overbroad two-file provenance
 guarantees, stale retained documentation, incomplete JORS structure, and
 insufficient artifact binding. v2B.0.1 / package 0.1.1 converts these into
 fail-closed code and regression coverage, increasing the package suite from
-19 to 23 tests. This is a concrete example of review feedback becoming a
+19 to 24 tests. This is a concrete example of review feedback becoming a
 preventive rule rather than a one-off prose patch. The archive identifier and
-independent real-PyMaster benchmark remain open, so no readiness increase is
-taken.
+The archive identifier remains open, so no readiness increase is taken.
+
+The v2B.0.1 confirmation board then found one additional reusable distinction:
+paper-level exact-window agreement is not a substitute for a real library
+integration test. v2B.0.2 / package 0.1.1 now retains an executable PyMaster
+2.6 integration benchmark with its result and receipt, verifies exact recovery
+of the injected \(0.25^\circ\) rotation, records the \(0.315^\circ\)
+effective-\(\ell\) shortcut bias, and regression-tests operator agreement at
+\(6.78\times10^{-21}\). It also distinguishes the production \(10^{-10}\)
+scientific tolerance from a separate zero-tolerance malformed-input test,
+narrows receipt language to protected fields and asserted metadata, converts
+artifact citations to direct repository links, and removes stale retained
+documentation. The package suite passes 24/24. The final five-page PDF has no
+logged box warnings and passed visual inspection; its SHA-256 is
+`18b97ac5ffc48d03a60d84822b74562ccd10202430a13054ef2dabf3f267d46c`.
+This closes the real-PyMaster benchmark gap but does not complete the persistent
+archive, human metadata, confirmation-review, or campaign-wide learning gates.
 
 The full audit plan is **not complete**. The defensible acceptance accounting is
 against the 12 checklist gates below:

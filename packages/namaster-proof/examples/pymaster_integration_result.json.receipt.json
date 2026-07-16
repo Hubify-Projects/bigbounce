@@ -1,0 +1,9 @@
+{
+  "deterministic": true,
+  "pymaster_version": "2.6",
+  "result_bytes": 363,
+  "result_file": "pymaster_integration_result.json",
+  "result_sha256": "4a560651d55c0a7b9358e7b1063a02b0a96da421f0a8c4ad72c0e30c8906d6a2",
+  "schema_version": 1,
+  "suite": "namaster-proof-pymaster-integration-v1"
+}

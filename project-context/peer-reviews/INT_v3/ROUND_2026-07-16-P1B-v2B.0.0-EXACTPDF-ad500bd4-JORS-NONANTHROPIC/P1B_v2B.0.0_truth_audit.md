@@ -25,7 +25,7 @@
    are now required.
 3. **Recovery accepted invalid statistical inputs.** Non-finite grids/data,
    malformed weights, negative weights, and band-count mismatch now fail
-   closed. Regression coverage increases the suite from 19 to 23 tests.
+   closed. Regression coverage increases the suite from 19 to 24 tests.
 4. **Physical-run documentation was stale.** The retained README now leads
    with the completed CAMB 1.6.6 physical production and the exact summary and
    bandpower SHA-256 values.

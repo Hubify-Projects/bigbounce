@@ -20,8 +20,8 @@
 
 \newcommand{\software}{\texttt{namaster-proof}}
 \newcommand{\Cl}{C_\ell}
-\newcommand{\paperVersion}{v2B.0.1}
-\newcommand{\paperTimestamp}{2026-07-16 10:52 PT}
+\newcommand{\paperVersion}{v2B.0.2}
+\newcommand{\paperTimestamp}{2026-07-16 11:09 PT}
 
 \title{\software: Exact pseudo-\(\Cl\) window inference and
 content-bound validation for reproducible spin-2 analyses}
@@ -157,7 +157,7 @@ from metadata override.
 objects, and recomputes every protected field.  \texttt{validate\_json\_receipt}
 additionally checks caller-asserted metadata such as a suite identifier, seed range,
 or realization count.  Missing files, malformed objects, changed bytes,
-changed receipts, or asserted-contract mismatches raise an exception.  The two
+changes to protected receipt fields, or asserted-contract mismatches raise an exception. The two
 files are not one filesystem transaction, and coordinated replacement of both
 requires an external receipt anchor or trusted expected metadata to detect. The
 \texttt{namaster-proof verify} and \texttt{namaster-proof validate} commands
@@ -166,7 +166,7 @@ failure.
 
 \section{Quality Control}
 
-Version 0.1.1 contains 23 automated tests covering numerical behavior, invalid
+Version 0.1.1 contains 24 automated tests covering numerical behavior, invalid
 inputs, the CLI, receipt mutation, protected fields, and compatibility with
 the original production helpers.  The window suite uses an exactly represented
 synthetic linear workspace to compare the precontracted response with the
@@ -182,7 +182,9 @@ production artifact, a workspace of shape
 \([4,20,4,1025]\) gave a maximum absolute difference of
 \(1.41\times10^{-18}\) between direct window contraction and the
 couple--decouple operator. This recorded execution check used IEEE-754
-double-precision arrays and the package's zero-tolerance compatibility test;
+double-precision arrays and the production driver's \(10^{-10}\) acceptance
+threshold; the package's separate synthetic legacy-helper comparison uses
+zero requested absolute and relative tolerance. Because
 the original workspace tensor was not retained, so the scalar is not a
 self-contained reproducibility claim or a universal error bound.
 
@@ -193,6 +195,12 @@ The documentation constructs an identity-like workspace, builds a response
 from synthetic \(EE\) and \(BB\) arrays, evaluates a known rotation, and checks
 operator equivalence.  This example has no dependency on a paper-specific
 dataset and is suitable for installation tests.
+
+\paragraph{Real PyMaster integration.}
+The optional \nolinkurl{examples/pymaster_integration.py} example constructs a
+real PyMaster workspace, verifies the exact operator equivalence, recovers a
+declared grid injection, and records the result beside an effective-multipole
+shortcut comparison. It requires separately installed PyMaster and healpy.
 
 \paragraph{Synthetic CMB recovery campaign.}
 The production use case employed CAMB 1.6.6 raw \(EE/BB\) spectra, PyMaster
@@ -251,10 +259,13 @@ submission blocker, not a completed release claim. The submission candidate
 must bind version 0.1.1 to an immutable archive before journal submission.
 
 \paragraph{Validation artifacts.}
-The corrected physical example is bound to
-\nolinkurl{results/physical_spectrum_v2/summary.json} (SHA-256
+The corrected physical example is bound to the
+\href{https://github.com/Hubify-Projects/bigbounce/blob/main/reproducibility/p1_namaster_500mc/results/physical_spectrum_v2/summary.json}
+{repository summary artifact} (SHA-256
 \texttt{\seqsplit{745b0a2f060773ce69c005ea84b74b305ec26a85f6aaafe58f0b3244b7f39914}})
-and \nolinkurl{bandpowers.npz} (SHA-256
+and the
+\href{https://github.com/Hubify-Projects/bigbounce/blob/main/reproducibility/p1_namaster_500mc/results/physical_spectrum_v2/bandpowers.npz}
+{repository bandpower artifact} (SHA-256
 \texttt{\seqsplit{b00f850e338007caea6af76f4e9305ab6b54a68e6799efd450bc76f1c325f331}}).
 
 \section{Reuse Potential}
@@ -288,6 +299,7 @@ No external funding supported this software release.
 
 The author declares no competing interests.
 
+\enlargethispage{4\baselineskip}
 \begin{thebibliography}{9}
 
 \bibitem{Hivon2002}
