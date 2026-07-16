@@ -150,7 +150,7 @@ export const liveStatus: LiveStatus = {
   lastUpdatedISO: "2026-07-16T08:02:00Z",
   lastUpdatedDisplay: "July 16, 2026 · 1:02 AM PT",
   headline:
-    "All six manuscripts remain in revision. P4 v1.0.258 and P5 v0.1.137 close the latest verified computational defects; readiness remains 80/74 and exact re-review is still pending. No submission or acceptance is claimed.",
+    "All six manuscripts remain in revision. P4 v1.0.258 and P5 v0.1.138 close the latest verified computational defects; readiness remains 80/74 and exact re-review is still pending. No submission or acceptance is claimed.",
   summary:
     "P4 now uses the strict 890,069-row safe sample and one checksummed 24,087-pixel FSC support. P5's K=13 null is stable across angular and 3-D clustering, while sparse program interactions remain weakly bounded. External provenance/release, exact re-review, and human gates remain.",
   papers: historicalLiveStatus.papers.map((paper) => {
@@ -198,7 +198,7 @@ export const liveStatus: LiveStatus = {
     if (paper.slug === "paper-5") {
       return {
         ...paper,
-        version: "v0.1.137-2026-07-16",
+        version: "v0.1.138-2026-07-16",
         readiness: 74,
         pendingWork:
           "K=13 clustering robustness is complete across NSIDE 2/4/8 and 3-D clustering; sparse program interactions remain weakly bounded with no robust evidence. Publish independently reviewable Paper IV/P5 releases, complete editorial closure, exact re-review, and human review. Readiness holds 74.",
@@ -208,7 +208,7 @@ export const liveStatus: LiveStatus = {
   }),
   currentlyRunning: [
     "P1B corrected production is queued but blocked by a negative RunPod balance; no paid pod launch is being attempted",
-    "P4 v1.0.258 and P5 v0.1.137 computational-closure PDFs are built, retained, mirrored, and synchronized",
+    "P4 v1.0.258 and P5 v0.1.138 computational-closure PDFs are built, retained, mirrored, and synchronized",
     "Exact non-Anthropic re-review and standing external release/provenance gates are next",
   ],
   cronStatus:

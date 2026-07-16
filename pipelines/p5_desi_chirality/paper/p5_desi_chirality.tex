@@ -36,7 +36,7 @@
 % The divide-by-h claim (~1246 h⁻¹ Mpc) is INVERTED. No pipeline recompute required.
 % If any future reviewer re-raises this, cite env_finder/01_compute_vweb.py:106-108.
 
-\newcommand{\paperVersion}{v0.1.137-2026-07-16}
+\newcommand{\paperVersion}{v0.1.138-2026-07-16}
 % v0.1.136 (2026-07-15 -- exact-PDF confirmation truth-audit closure):
 %   promotes the rank-defensible K=13/G=50 CR1 + wild-cluster result to the
 %   focal estimator; demotes K=78; repairs classifier/release provenance and
@@ -730,7 +730,7 @@
 %   cluster −54%) but the environmental-independence null HOLDS and
 %   TIGHTENS: cross-class f_CW range 1.98pp → 0.05pp, all classes
 %   |σ_mono| ≤ 0.39. Artifact: outputs/16_cosmic_web_zshell_corrected.json.
-\newcommand{\paperTimestamp}{July 16, 2026, 01:00 PT}
+\newcommand{\paperTimestamp}{July 16, 2026, 01:21 PT}
 % timestamp label unchanged (still July 2026); \date bumped to July 6
 % v0.1.62-2026-06-10 (R29 post-EXT1 internal-round closure wave; truth audit at
 %   project-context/peer-reviews/R29_P5_TRUTH_AUDIT.md):
@@ -1698,9 +1698,9 @@ hole-union membership, artifacts [A41--A44] fit the focal unpenalized
 logistic model
 \begin{align}
 \operatorname{logit}\Pr(Y_i=1)={}&\beta_0+\beta_V V_i+\beta_z z_i
- +\beta_r r_i+\beta_R\log R_i \nonumber\\
- &+\beta_q q_i+\beta_E E_i+\alpha_{P(i)}
- +\gamma_{M(i)}+\beta_e e_i,
+ +\beta_r r_i \nonumber\\
+ &+\beta_R\log R_i+\beta_q q_i+\beta_E E_i \nonumber\\
+ &+\alpha_{P(i)}+\gamma_{M(i)}+\beta_e e_i,
 \label{eq:focal_logit}
 \end{align}
 where $q_i$ is classifier confidence, $E_i$ is Galactic extinction,

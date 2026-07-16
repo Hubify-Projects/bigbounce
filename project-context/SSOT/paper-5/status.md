@@ -1,9 +1,9 @@
-## v0.1.137-2026-07-16 COMPUTATIONAL-CLOSURE RELEASE — 2026-07-16 · READINESS/CAP 74 HOLD
+## v0.1.138-2026-07-16 COMPUTATIONAL-CLOSURE RELEASE — 2026-07-16 · READINESS/CAP 74 HOLD
 
-- The exact 41-page PDF is bound to SHA-256 `0468d8a690fb16f64a316eb24693a421d1fc0d5202db02b461cef3f9ac07363c` / MD5 `42c9d08719428f0582dcb825571f9cd2`; Convex row `k571e2qmn5njbqkdnq8js42een8amxyq` is synchronized.
+- The exact 41-page PDF is bound to SHA-256 `3c47ccf75da20653c463557fc54fff50da01e1e6bde43a225f61c46cd50baaf0` / MD5 `83566c8d5c3c059e744ec1c595401734`; Convex row `k578gs6qddzfac7m4y6pmq6aq58an8tr` is synchronized.
 - The focal K=13 adjusted contrast is `+0.00145442`. Like-for-like cluster-sandwich checks at NSIDE=2, 4, and 8 and with 3-D nearest-VoidFinder clustering all have 95% confidence intervals spanning zero.
 - The program-by-void interaction analysis is sparse and not tightly bounded; it supplies no robust evidence for an interaction and is not represented as proving no leakage or physical environment independence.
-- Final independently reviewable Paper IV labels/provenance, immutable public P5 archive/DOI and artifact resolution, exact v0.1.137 re-review, narrative/editorial closure, and human AJ review remain open. Readiness **74 HOLDS**; no submission or acceptance is claimed.
+- Final independently reviewable Paper IV labels/provenance, immutable public P5 archive/DOI and artifact resolution, exact v0.1.138 re-review, narrative/editorial closure, and human AJ review remain open. Readiness **74 HOLDS**; no submission or acceptance is claimed.
 
 ## v0.1.136 EXACT CONFIRMATION BOARD TRUTH-AUDITED — 2026-07-16 · READINESS/CAP 74 HOLD
 

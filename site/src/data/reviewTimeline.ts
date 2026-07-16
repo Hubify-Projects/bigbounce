@@ -59,9 +59,9 @@ export const reviewRounds: ReviewRound[] = [
   {
     id: "p4-p5-computational-closure-release-2026-07-16",
     dateISO: "2026-07-16",
-    timePT: "1:02 AM",
+    timePT: "1:22 AM",
     kind: "closure-wave",
-    title: "P4 v1.0.258 / P5 v0.1.137 — verified computational defects closed; readiness holds",
+    title: "P4 v1.0.258 / P5 v0.1.138 — verified computational defects closed; readiness holds",
     papers: ["P4", "P5"],
     summary:
       "P4 now reruns the primary statistic on the strict release-safe sample and binds every FSC harmonic diagnostic to one checksummed 24,087-pixel support. P5 now reports like-for-like K=13 clustering robustness across three angular resolutions and 3-D regions, while explicitly retaining the weakly bounded sparse-interaction limitation. Exact re-review and external release/human gates remain open.",
@@ -69,7 +69,7 @@ export const reviewRounds: ReviewRound[] = [
       "P4 strict primary: N_selected=890,069, N_support=887,472, z_mom=+0.63465, p=0.23768",
       "P4 exact FSC support: harmonic z=6.923, p=0.001996; apodized z=7.033; binomial-10k z=7.207, p=0.00059994; systematics only",
       "P5 K=13=+0.00145442 with NSIDE=2/4/8 and 3-D cluster-robust intervals spanning zero; sparse interaction remains weakly bounded",
-      "Exact PDFs: P4 25 pp / e9b69665 / 412d3036; P5 41 pp / 0468d8a6 / 42c9d087. Readiness remains 80/74; no acceptance claimed",
+      "Exact PDFs: P4 25 pp / e9b69665 / 412d3036; P5 41 pp / 3c47ccf7 / 83566c8d. Readiness remains 80/74; no acceptance claimed",
     ],
     links: [
       { label: "P4 canonical status", href: `${GH}/project-context/SSOT/paper-4/status.md` },
