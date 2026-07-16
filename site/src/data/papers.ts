@@ -390,7 +390,7 @@ export const papers: Paper[] = [
     slug: "paper-5",
     number: "5",
     title: "Environmental Dependence of Spiral Chirality: A DESIVAST Catalog-Native Void Non-Detection with Secondary Cosmic-Web Cross-Checks",
-    version: "v0.1.139-2026-07-16",
+    version: "v0.1.140-2026-07-16",
     lastUpdated: "2026-07-16",
     tldr: "On the released DESIVAST GALZONE parent, the focal exploratory analysis detects no void/non-void difference in classifier-labelled CW fraction; this bounded non-detection does not establish physical environment independence.",
     path: publicationPath({}),
@@ -417,14 +417,14 @@ export const papers: Paper[] = [
     remainingWork: [
       "Finalize Paper IV labels, weights, and provenance, then reverify P5 against that independently reviewable release",
       "Publish an immutable P5 tag/archive/DOI and verify every A1–A44 link; local retention is not a public release",
-      "Run exact-PDF confirmation review on v0.1.139 and keep the sparse interaction and secondary T-Web limitations explicit",
+      "Run exact-PDF confirmation review on v0.1.140 and keep the sparse interaction and secondary T-Web limitations explicit",
       "Resolve the human/editorial gate through actual AJ review; automated evidence is not journal acceptance",
     ],
     preprintId: "HUBIFY-2026-005",
-    pdfMeta: "PDF · 41 pp · v0.1.139-2026-07-16 · sha256 948e0412 · md5 21a4a79f — unanimous-minor residual defects closed; release, exact re-review, editorial, and human AJ gates remain. Readiness holds 74.",
+    pdfMeta: "PDF · 41 pp · v0.1.140-2026-07-16 · sha256 287c6494 · md5 6313acdc — whole-tree family-wise multiplicity closure (p_global≤0.822, non-significant); release, exact re-review, editorial, and human AJ gates remain. Readiness holds 74.",
     artifacts: [
-      { label: "Read PDF", href: "/papers/p5_desi_chirality_v0.1.139-2026-07-16.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/p5_desi_chirality_v0.1.139-2026-07-16.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "/papers/p5_desi_chirality_v0.1.140-2026-07-16.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "/papers/p5_desi_chirality_v0.1.140-2026-07-16.pdf", kind: "secondary", download: true },
       {
         label: "Pipeline + scripts",
         href: "https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p5_desi_chirality",

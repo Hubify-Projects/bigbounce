@@ -57,6 +57,50 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p5-v0-1-140-whole-tree-multiplicity-closure-2026-07-16",
+    dateISO: "2026-07-16",
+    timePT: "3:52 PM",
+    kind: "closure-wave",
+    title: "P5 v0.1.140 — whole-tree family-wise multiplicity closure",
+    papers: ["P5"],
+    summary:
+      "The exact v0.1.139 confirmation board's one genuinely-new-real finding is closed with a real computation: a new §V.B paragraph reports the family-wise-corrected significance of the most extreme deviation across the entire declared N=23-path analysis tree (p_min=0.0357 two-sided from the bright-vs-dark tracer-program filament sign-flip |z|~2.1; conservative Bonferroni p_global<=0.822, non-significant; sensitivity N=13 -> 0.46, N=48 -> saturates at 1). Committed as artifacts [A45]/[A46]; no science number or claim changed. Readiness holds 74.",
+    keyTakeaways: [
+      "Real computation, not a wording fix: pipelines/p5_desi_chirality/analysis/global_multiplicity_bound_v0_1_140.{py,json} (artifacts [A45]/[A46])",
+      "Bonferroni-corrected whole-tree p_global<=0.822 — the family-wise-extreme deviation remains non-significant",
+      "41 pp, PDF SHA-256 287c6494a07a0c394517adc62d80b9c5cf53950a304221494ac4d46ddab38773, MD5 6313acdc01fbd6511a5aae0d0190d145, timestamp 2026-07-16 15:52 PT",
+      "directive-G PASS, 13 mirrors byte-identical, retention manifest 20260716T225442Z-6997c4229e1f.json, Convex row k57b8zfzmsg24ykmt8810r8k458anbqf",
+      "No readiness uplift: exact v0.1.140 confirmation, Paper IV labels/provenance, immutable archive/DOI, editorial and human AJ review remain open",
+    ],
+    links: [
+      { label: "P5 canonical status", href: `${GH}/project-context/SSOT/paper-5/status.md` },
+      { label: "Multiplicity bound script", href: `${GH}/pipelines/p5_desi_chirality/analysis/global_multiplicity_bound_v0_1_140.py` },
+      { label: "Multiplicity bound artifact", href: `${GH}/pipelines/p5_desi_chirality/analysis/global_multiplicity_bound_v0_1_140.json` },
+    ],
+  },
+  {
+    id: "p5-v0-1-139-exact-confirmation-board-2026-07-16",
+    dateISO: "2026-07-16",
+    timePT: "3:42 PM",
+    kind: "closure-wave",
+    title: "P5 v0.1.139 — exact confirmation board and truth audit",
+    papers: ["P5"],
+    summary:
+      "The exact 41-page v0.1.139 PDF (SHA-256 948e0412) was reviewed by Grok 4.3 direct API (MINOR REVISIONS), Gemini 3.1 Pro direct API (MINOR REVISIONS), and a Claude Opus subagent (MAJOR REVISIONS); Codex remained absent, paused per CLAUDE.md directive N. Truth audit dispositioned all 18 findings: 4 already-tracked gates, 7 disclosed re-flags, 7 venue/style opinions, 0 falsified, and 1 genuinely-new-real item — a missing whole-tree family-wise multiplicity bound, closed same-day in v0.1.140.",
+    keyTakeaways: [
+      "Board: Grok MINOR / Gemini MINOR / Claude Opus subagent MAJOR; Codex absent per directive N",
+      "18 findings truth-audited: 4 already-tracked gates, 7 disclosed re-flags, 7 opinions, 0 falsified, 1 genuinely-new-real",
+      "The 1 genuinely-new-real finding (missing whole-tree family-wise significance) is closed in v0.1.140",
+      "Readiness/cap 74 HOLDS; no submission or acceptance is claimed",
+    ],
+    links: [
+      { label: "Truth audit", href: `${PR}/INT_v3/ROUND_2026-07-16-P5-v0.1.139-EXACTPDF-948e0412-CLAUDESTACK-CONFIRM/P5_v0.1.139_truth_audit.md` },
+      { label: "Claude raw", href: `${PR}/INT_v3/ROUND_2026-07-16-P5-v0.1.139-EXACTPDF-948e0412-CLAUDESTACK-CONFIRM/API_P5_claude.md` },
+      { label: "Grok raw", href: `${PR}/INT_v3/ROUND_2026-07-16-P5-v0.1.139-EXACTPDF-948e0412-CLAUDESTACK-CONFIRM/API_P5_grok.md` },
+      { label: "Gemini raw", href: `${PR}/INT_v3/ROUND_2026-07-16-P5-v0.1.139-EXACTPDF-948e0412-CLAUDESTACK-CONFIRM/API_P5_gemini.md` },
+    ],
+  },
+  {
     id: "p4-v1-0-261-provider-overlay-published-2026-07-16",
     dateISO: "2026-07-16",
     timePT: "3:36 PM",

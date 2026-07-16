@@ -36,7 +36,24 @@
 % The divide-by-h claim (~1246 h⁻¹ Mpc) is INVERTED. No pipeline recompute required.
 % If any future reviewer re-raises this, cite env_finder/01_compute_vweb.py:106-108.
 
-\newcommand{\paperVersion}{v0.1.139-2026-07-16}
+\newcommand{\paperVersion}{v0.1.140-2026-07-16}
+% v0.1.140 (2026-07-16 -- whole-tree global-multiplicity closure): closes the
+%   single GENUINELY-NEW-REAL item of the v0.1.139 exact-PDF truth audit
+%   (INT_v3/ROUND_2026-07-16-P5-v0.1.139-EXACTPDF-948e0412-CLAUDESTACK-CONFIRM,
+%   disposition 11): the paper corrected look-elsewhere WITHIN each K=4 family
+%   and gave a global max-stat p only across the nine Phase-2 cells, but never
+%   reported ONE family-wise-corrected significance for the most-extreme |sigma|
+%   across the ENTIRE analysis tree. Added one paragraph to sec:primary_path
+%   stating it: the largest deviation referenced against its own null is the
+%   bright-vs-dark tracer-program filament sign-flip (two-sample |z|~2.1,
+%   per-test two-sided p_min=0.036); a conservative Bonferroni bound over the
+%   N=23 declared analysis-tree paths gives p_global<=0.82 (NON-significant;
+%   finer counts only loosen it). Raw |sigma_from_half| excursions (-5.28,
+%   -4.75) are the single catalog-wide classifier monopole, not per-environment
+%   tests, and are scored monopole-subtracted (residuals <=1.55). New artifacts
+%   [A45] analysis/global_multiplicity_bound_v0_1_140.py + [A46] its .json;
+%   [A1]--[A44] range refs -> [A1]--[A46]. NO science number or claim changes;
+%   result stays a non-detection. Computed, not asserted (/never-fabricate).
 % v0.1.136 (2026-07-15 -- exact-PDF confirmation truth-audit closure):
 %   promotes the rank-defensible K=13/G=50 CR1 + wild-cluster result to the
 %   focal estimator; demotes K=78; repairs classifier/release provenance and
@@ -730,7 +747,7 @@
 %   cluster −54%) but the environmental-independence null HOLDS and
 %   TIGHTENS: cross-class f_CW range 1.98pp → 0.05pp, all classes
 %   |σ_mono| ≤ 0.39. Artifact: outputs/16_cosmic_web_zshell_corrected.json.
-\newcommand{\paperTimestamp}{July 16, 2026, 01:43 PT}
+\newcommand{\paperTimestamp}{July 16, 2026, 15:52 PT}
 % timestamp label unchanged (still July 2026); \date bumped to July 6
 % v0.1.62-2026-06-10 (R29 post-EXT1 internal-round closure wave; truth audit at
 %   project-context/peer-reviews/R29_P5_TRUTH_AUDIT.md):
@@ -1447,6 +1464,38 @@ overlay are sensitivities or secondary diagnostics. Their multiplicity
 and method dependence are disclosed, but they are not pooled into a
 family-wide constraint. In particular, a null in this exploratory tree
 does not establish environment-independence or an exclusion limit.
+
+\emph{Whole-tree family-wise significance.} The look-elsewhere
+corrections above operate \emph{within} each scan family: every Phase~2
+cell is corrected within its own $K\!=\!4$ class family
+(Table~\ref{tab:phase2}), and a global max-statistic correction is
+reported across the nine Phase~2 cells ($p_{\rm global}=0.36$, or
+$0.27$ over the six resolved cells). For completeness we also state a
+single family-wise-corrected significance for the most extreme
+deviation \emph{anywhere} in the declared analysis tree of
+Table~\ref{tab:analysis_tree}. Referenced against its own null, that
+largest deviation is the bright-vs-dark tracer-program filament
+sign-flip of \S\ref{sec:results_vweb}, a two-sample contrast at
+$|z|\!\approx\!2.1$ (row-level; $|z|=1.95$ on the de-duplicated
+unique-\texttt{TARGETID} sample), with per-test two-sided
+$p_{\min}=0.036$. We do \emph{not} treat the larger raw
+$|\sigma_{\rm from\,half}|$ excursions (the bright-program $-5.28$, the
+no-void-coverage sky region $-4.75$) as candidate signals: those
+measure the single catalog-wide classifier monopole
+$f_{\rm CW}^{\rm P5}=0.49719$ against $p=0.5$, which is not the
+environmental null this paper tests; monopole-subtracted, the same
+regions return residuals $|\sigma_{\rm obs}-\sigma_{\rm pred}|\le1.55$.
+A conservative Bonferroni bound over the $N=23$ paths enumerated in
+Table~\ref{tab:analysis_tree},
+$p_{\rm global}\le\min(1,\,N\,p_{\min})=0.82$, leaves that most extreme
+deviation non-significant; because $23$ is the smallest defensible
+whole-tree trials count, any finer per-bin enumeration only raises
+$p_{\rm global}$ further from significance (e.g.\ the narrative
+few-dozen budget saturates the bound at $1$). No test in the tree
+survives whole-tree multiplicity correction, and no reported number or
+claim changes: the whole-tree result is a non-detection
+(\href{\repoBase/pipelines/p5\_desi\_chirality/analysis/global\_multiplicity\_bound\_v0\_1\_140.py}{[A45]},
+\href{\repoBase/pipelines/p5\_desi\_chirality/analysis/global\_multiplicity\_bound\_v0\_1\_140.json}{[A46]}).
 
 \iffalse
 The paper reports environment-stratified chirality results from
@@ -5204,11 +5253,11 @@ retroactively asserting the unavailable May bytes.
 \section{Data artifacts}\label{app:artifacts}
 
 \emph{Note on numbering:} the bracketed \emph{artifact} IDs
-[A1]--[A44] in this appendix are the release-candidate data/code
+[A1]--[A46] in this appendix are the release-candidate data/code
 artifacts and are \emph{distinct} from the bibliographic references
 [1]--[13], which appear in the separate References section; the ``A''
 prefix marks every artifact ID to avoid confusion at the
-references/artifact-map boundary. Artifact IDs [A1]--[A44] used
+references/artifact-map boundary. Artifact IDs [A1]--[A46] used
 throughout this paper hyperlink to the following paths in the companion
 repository
 \href{https://github.com/Hubify-Projects/bigbounce}{\texttt{Hubify-Projects/bigbounce}}
@@ -5254,7 +5303,7 @@ Clicking any [AN] ID in the paper PDF opens the corresponding GitHub URL.%
 \end{table*}
 \begin{table*}[p]
 {\small
-\caption{Artifact ID map (continued). Paths A21--A30 and A33--A44 are
+\caption{Artifact ID map (continued). Paths A21--A30 and A33--A46 are
 within \texttt{pipelines/p5\_desi\_chirality/}; A31--A32 are in the
 companion catalog pipeline.}
 \begin{ruledtabular}
@@ -5285,6 +5334,8 @@ companion catalog pipeline.}
 \href{\repoBase/pipelines/p5\_desi\_chirality/outputs/38\_focal\_cluster\_inference\_sensitivity.json}{[A42]} & \texttt{outputs/38\_focal\_cluster\_inference\_sensitivity.json} \\
 \href{\repoBase/pipelines/p5\_desi\_chirality/scripts/39\_focal\_interaction\_clustering\_robustness.py}{[A43]} & \texttt{scripts/39\_focal\_interaction\_clustering\_robustness.py} \\
 \href{\repoBase/pipelines/p5\_desi\_chirality/outputs/39\_focal\_interaction\_clustering\_robustness.json}{[A44]} & \texttt{outputs/39\_focal\_interaction\_clustering\_robustness.json} \\
+\href{\repoBase/pipelines/p5\_desi\_chirality/analysis/global\_multiplicity\_bound\_v0\_1\_140.py}{[A45]} & \texttt{analysis/global\_multiplicity\_bound\_v0\_1\_140.py} \\
+\href{\repoBase/pipelines/p5\_desi\_chirality/analysis/global\_multiplicity\_bound\_v0\_1\_140.json}{[A46]} & \texttt{analysis/global\_multiplicity\_bound\_v0\_1\_140.json} \\
 \end{tabular}
 \end{ruledtabular}
 }% end \small
