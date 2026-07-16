@@ -37,16 +37,16 @@ gaps.
 The canonical engine reports:
 
 - archive complete: **false**
-- reconciled parseable receipts: **18 / 259 (6.9498%)**
-- receipt count mismatches: **241**
+- reconciled parseable receipts: **21 / 259 (8.1081%)**
+- receipt count mismatches: **238**
 - receipt hash mismatches: **0**
 - orphaned event receipts: **0**
 - failed-leg gaps: **6**
 
-The 18 reconciled receipts are predominantly explicit zero-finding receipts,
-plus the completed eight-finding P4 v1.0.254 Codex receipt. They do not imply
-that the remaining campaign findings have been truth-audited into the event
-ledger.
+The 21 reconciled receipts are predominantly explicit zero-finding receipts,
+plus all three P4 v1.0.253 receipts and the P4 v1.0.254 Codex receipt. They do
+not imply that the remaining campaign findings have been truth-audited into the
+event ledger.
 
 Every unresolved row remains visible rather than being silently converted into
 zero findings.
@@ -70,12 +70,24 @@ The evidence-bound completion adds:
 - `fev1_3a094efca7be1d4ad3cf623c` — prospective DOI/archive gate
 
 The exact receipt now reconciles **8 / 8**. The ledger represents
-**8 / 1,574 explicit findings (0.5083%)** overall. No historical event was
-inferred from a synthesis, closure note, or provider verdict alone.
+**21 / 1,574 explicit findings (1.3342%)** overall after the next bounded batch.
+
+The P4 v1.0.253 board contributes 13 additional one-to-one events:
+
+- Grok: four findings, including two standing disclosed gates, one verified
+  direct-manifest defect, and one falsified re-flag;
+- Gemini: three findings, preserving two editorial opinions and one falsified
+  missing-disclosure claim;
+- Codex subscription: six verified release and presentation defects, including
+  the unreproducible Catalog B tier and missing row-semantic validation.
+
+All three v1.0.253 receipts now reconcile exactly at **4/4**, **3/3**, and
+**6/6**. No historical event was inferred from a synthesis, closure note, or
+provider verdict alone.
 
 ## Remaining work
 
-1. Normalize the remaining 1,566 explicit findings against truth-audit rows,
+1. Normalize the remaining 1,553 explicit findings against truth-audit rows,
    preserving falsified, stale, opinion, standing, and unresolved dispositions.
 2. Recover the five incomplete historical summaries and one empty Codex receipt
    from preserved raw transcripts if available; otherwise retain them as

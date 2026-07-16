@@ -180,10 +180,12 @@ receipts rather than allowing a committed inventory to reference absent files.
 
 This is a substantial archive-ingestion acceleration, but it does not close the
 historical learning gate. The partially migrated P4 v1.0.254 Codex receipt has
-now been completed from its one-to-one truth audit, bringing the ledger to eight
-events and that receipt to **8/8 RECONCILED**. Canonical reconciliation remains
-incomplete at **18/259 receipts (6.95%)**, with 241 count mismatches, zero hash
-mismatches, and zero orphaned event receipts.
+now been completed from its one-to-one truth audit, and the complete P4
+v1.0.253 three-provider board has also been migrated. The ledger now contains
+21 events; the four affected receipts reconcile at 8/8, 4/4, 3/3, and 6/6.
+Canonical reconciliation remains incomplete at **21/259 receipts (8.11%)**,
+with 238 count mismatches, zero hash mismatches, and zero orphaned event
+receipts.
 Campaign-wide escape and closure-regression rates therefore remain unavailable
 as complete-history metrics.
 
