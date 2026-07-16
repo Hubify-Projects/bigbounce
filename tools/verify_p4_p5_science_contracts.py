@@ -191,7 +191,10 @@ def verify_manuscript_contracts(p4_text: str, p5_text: str) -> None:
         "$(0.57796{\\pm}0.89263){\\times}10^{-6}$",
         "same exact 24,087-pixel \\FSC{} base mask",
         "not preregistered or fixed before unblinding",
-        "currently identified public dataset release still documents the earlier unsafe-inclusive",
+        # 2026-07-16: the strict-primary overlay is PUBLISHED and byte-verified;
+        # the manuscript must cite the immutable provider revision.
+        "911316f31c21f2c4b933a2f3a761274cfe85c6d6",
+        "apjs-release/v1.0.259-strict-primary",
     ):
         _require(required in p4_compact, f"P4 manuscript science contract missing: {required}")
     for forbidden in (
@@ -199,6 +202,10 @@ def verify_manuscript_contracts(p4_text: str, p5_text: str) -> None:
         "$949{,}584$ / $947{,}326$",
         "$(5.2420{\\pm}0.9257){\\times}10^{-6}$",
         "$(5.1242{\\pm}0.2618){\\times}10^{-6}$",
+        # Stale pre-publication disclosures (false after the 2026-07-16
+        # overlay publication at revision 911316f3...):
+        "still documents the earlier unsafe-inclusive",
+        "does not claim that publication has occurred",
     ):
         _require(forbidden not in p4_compact, f"P4 superseded manuscript value recurred: {forbidden}")
 
