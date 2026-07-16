@@ -114,6 +114,13 @@ authentication, not the project’s provider receipts or scientific evidence.
    critical gate is publishing and hash-verifying the immutable provider overlay,
    then an exact-PDF residual confirmation and human ApJS review. Readiness
    honestly holds at 80.
+   Local release evidence at handoff: `tools/tests/test_p4_strict_release_v1_0_259.py`
+   passes 3/3; `tools/p4_publish_hf_strict_release.py` completes its fail-closed
+   dry run over seven required files (93,150 bytes) at
+   `apjs-release/v1.0.259-strict-primary`. Do not pass `--publish` until the
+   Hugging Face account/token and intended public release are explicitly
+   confirmed; publish performs an external, irreversible-in-practice release
+   mutation and must be followed by remote byte verification.
 2. **P5 second:** v0.1.139-2026-07-16 closes the four verified minor defects
    from the unanimous-minor v0.1.138 board. Its PDF SHA-256 is
    `948e0412a5f4052747037f38ab2e43f2d888c61c74fbdfe95d29241ef806d2a9`.
