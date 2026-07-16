@@ -88,3 +88,22 @@ python -m pytest packages/namaster-proof/tests
 The exact-window implementation follows NaMaster's two-spin ordering
 `[EE, EB, BE, BB]` and expected window shape
 `[4, n_band, 4, lmax+1]`.
+
+## Independent synthetic example
+
+The example below uses a deterministic linear workspace and synthetic spectra.
+It requires neither PyMaster, BigBounce data, nor repository production
+artifacts:
+
+```bash
+python packages/namaster-proof/examples/synthetic_window.py \
+  --output /tmp/namaster-proof-example.json \
+  --beta-deg 0.25
+
+namaster-proof validate /tmp/namaster-proof-example.json \
+  --expect suite=namaster-proof-synthetic-window-v1 \
+  --expect deterministic=true
+```
+
+It recovers the injected grid value, checks direct window contraction against
+the linear operator, and emits a content-addressed receipt.
