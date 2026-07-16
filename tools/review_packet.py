@@ -80,6 +80,7 @@ def packet_key(
     preflight_core_sha: str,
 ) -> str:
     fields = {
+        "schema_version": 4,
         "pdf_sha256": pdf_sha, "review_profile_id": profile,
         "prompt_sha256": prompt_sha,
         "allowed_context_sha256": context_sha,
@@ -196,7 +197,7 @@ def build_packet(
         preflight["core_sha256"],
     )
     return {
-        "schema_version": 3,
+        "schema_version": 4,
         "packet_key": key,
         "paper_id": paper_id,
         "paper_version": binding["version"],
@@ -222,7 +223,6 @@ def build_packet(
             "verdict": preflight["verdict"],
             "repository_head": preflight["repository_head"],
             "core_sha256": preflight["core_sha256"],
-            "receipt_sha256": preflight["receipt_sha256"],
             "generic_rule_receipt_sha256": preflight["generic_rule_receipt_sha256"],
             "paper": preflight_paper,
         },

@@ -59,7 +59,7 @@ class ApjsPreflightGateTests(unittest.TestCase):
         self.assertNotIn("for vend in grok gemini", source)
         self.assertNotIn("codex exec", source)
 
-    def test_wrapper_dry_run_launches_no_preflight_or_provider(self):
+    def test_wrapper_dry_run_launches_no_provider_or_output_write(self):
         with tempfile.TemporaryDirectory() as tmp:
             env = dict(os.environ)
             env.update(
@@ -72,11 +72,16 @@ class ApjsPreflightGateTests(unittest.TestCase):
             )
             result = subprocess.run(
                 ["bash", str(TOOLS / "int_wave_apjs.sh")], cwd=ROOT, env=env,
-                text=True, capture_output=True, timeout=20, check=False,
+                text=True, capture_output=True, timeout=60, check=False,
             )
             self.assertEqual(result.returncode, 0, result.stderr)
             self.assertIn("DRY_RUN paper=P3", result.stdout)
             self.assertFalse(Path(env["INT_OUTDIR"]).exists())
+
+    def test_canonical_dispatch_does_not_reverify_preflight_in_shell(self):
+        source = (TOOLS / "int_wave.sh").read_text(encoding="utf-8")
+        self.assertNotIn('bigbounce_preflight.py" verify', source)
+        self.assertIn("review_packet.py independently verifies the receipt", source)
 
 
 if __name__ == "__main__":

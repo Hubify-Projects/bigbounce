@@ -49,6 +49,12 @@ REVIEW_COMMIT="${INT_REVIEW_COMMIT:-$(git -C "$REPO" rev-parse HEAD)}"
 
 die() { echo "FAIL: $*" >&2; exit 1; }
 
+# Reject invalid dispatch configuration before the comparatively expensive
+# six-paper preflight and packet build.
+case "$CODEX_ENABLED" in 0|1) ;; *) die "BIGBOUNCE_CODEX_SUBSCRIPTION_ENABLED must be 0 or 1" ;; esac
+case "$API_LEGS_ENABLED" in 0|1) ;; *) die "BIGBOUNCE_INT_API_LEGS_ENABLED must be 0 or 1" ;; esac
+case "$CODEX_EFFORT" in minimal|low|medium|high|xhigh|max|ultra) ;; *) die "BIGBOUNCE_CODEX_EFFORT must be minimal|low|medium|high|xhigh|max|ultra" ;; esac
+
 # Append one allowlisted, content-addressed Codex-subscription receipt. The raw
 # header is the sole provenance input, making this a bounded backfill helper.
 append_codex_receipt() {
@@ -198,11 +204,11 @@ printf 'user_context=%s\nreview_commit=%s\n' "$CONTEXT" "$REVIEW_COMMIT" >"$PACK
 python3 "$REPO/tools/bigbounce_preflight.py" run \
   --project-root "$REPO" --receipt "$PREFLIGHT_JSON" \
   || die "portfolio preflight did not PASS"
-python3 "$REPO/tools/bigbounce_preflight.py" verify \
-  --project-root "$REPO" --receipt "$PREFLIGHT_JSON" \
-  || die "portfolio preflight receipt did not verify"
 export BIGBOUNCE_PREFLIGHT_RECEIPT="$PREFLIGHT_JSON"
 
+# review_packet.py independently verifies the receipt against current HEAD,
+# registry, rules, sources, PDFs, and artifact validators before binding it.
+# A second shell-level verify here duplicated that full six-paper evaluation.
 PACKET_ARGS=("$PAPER" --prompt-file "$PACKET_PROMPT" --context-file "$PACKET_CONTEXT" \
   --model "$CODEX_MODEL" --effort "$CODEX_EFFORT" --preflight-receipt "$PREFLIGHT_JSON")
 [ -n "${INT_EXPECTED_PDF_SHA256:-}" ] && PACKET_ARGS+=(--expected-pdf-sha "$INT_EXPECTED_PDF_SHA256")
@@ -244,15 +250,14 @@ Treat the exact PDF snapshot above as the manuscript of record. Use the clean
 detached source tree only to inspect source and committed supporting artifacts.
 Do not substitute a working-tree PDF or any differently hashed manuscript."
 
-case "$CODEX_ENABLED" in 0|1) ;; *) die "BIGBOUNCE_CODEX_SUBSCRIPTION_ENABLED must be 0 or 1" ;; esac
-case "$API_LEGS_ENABLED" in 0|1) ;; *) die "BIGBOUNCE_INT_API_LEGS_ENABLED must be 0 or 1" ;; esac
-case "$CODEX_EFFORT" in minimal|low|medium|high|xhigh|max|ultra) ;; *) die "BIGBOUNCE_CODEX_EFFORT must be minimal|low|medium|high|xhigh|max|ultra" ;; esac
-
 # No-launch validation path: packet creation/hash verification is allowed, but
 # there are no API calls, agent sessions, output reviews, or detached worktrees.
 if [ "${BIGBOUNCE_INT_WAVE_DRY_RUN:-0}" = "1" ]; then
-  LOGIN="unavailable"
-  if [ -n "$CODEX_BIN" ]; then LOGIN="$(env -u OPENAI_API_KEY -u CODEX_API_KEY -u ANTHROPIC_API_KEY "$CODEX_BIN" login status 2>&1 || true)"; fi
+  LOGIN="disabled"
+  if [ "$CODEX_ENABLED" = 1 ]; then
+    LOGIN="unavailable"
+    if [ -n "$CODEX_BIN" ]; then LOGIN="$(env -u OPENAI_API_KEY -u CODEX_API_KEY -u ANTHROPIC_API_KEY "$CODEX_BIN" login status 2>&1 || true)"; fi
+  fi
   printf 'DRY_RUN paper=%s version=%s dispatch=false codex_enabled=%s api_legs_enabled=%s model=%s effort=%s sandbox=read-only auth=%s\n' \
     "$PAPER" "$VER" "$CODEX_ENABLED" "$API_LEGS_ENABLED" "$CODEX_MODEL" "$CODEX_EFFORT" "$LOGIN"
   printf 'BINDING packet_key=%s prompt_sha256=%s commit=%s source_sha256=%s pdf_sha256=%s pages=%s venue=%s article_type=%s source_tree=detached-clean\n' \

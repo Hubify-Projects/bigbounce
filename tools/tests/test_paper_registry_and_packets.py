@@ -141,6 +141,22 @@ class PacketTests(unittest.TestCase):
         common = ("pdf", "profile", "prompt", "context", "model", "high")
         self.assertNotEqual(packet_key(*common, "left"), packet_key(*common, "right"))
 
+    def test_equivalent_regenerated_preflight_reuses_packet(self):
+        first_preflight = json.loads(self.preflight_path.read_text())
+        second_preflight = dict(first_preflight)
+        second_preflight["generated_at"] = "2026-01-02T00:00:00Z"
+        second_preflight["receipt_sha256"] = "f" * 64
+        with mock.patch("review_packet.verify_receipt", return_value=first_preflight):
+            first = self._packet()
+        with mock.patch("review_packet.verify_receipt", return_value=second_preflight):
+            second = self._packet()
+        self.assertEqual(first, second)
+        self.assertEqual(first["schema_version"], 4)
+        self.assertNotIn("receipt_sha256", first["preflight"])
+        _, reused = publish_packet(first, self.root / "packets", b"prompt", b"context")
+        _, reused = publish_packet(second, self.root / "packets", b"prompt", b"context")
+        self.assertTrue(reused)
+
     def test_missing_preflight_fails_closed(self):
         with mock.patch.dict("os.environ", {}, clear=True):
             with self.assertRaisesRegex(ValueError, "preflight receipt is required"):
