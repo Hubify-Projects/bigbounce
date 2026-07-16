@@ -261,8 +261,8 @@
 %   FALSIFIED list (14 items) not acted on.)
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1B.0.109}
-\newcommand{\paperTimestamp}{July 15, 2026, 02:53 PT}
+\newcommand{\paperVersion}{v1B.0.110}
+\newcommand{\paperTimestamp}{July 16, 2026, 03:37 PT}
 % v1B.0.107->108 (2026-07-15): one-pass exact-PDF confirmation closure.
 %   Relabeled the canonical NaMaster mask as a synthetic native-coordinate
 %   latitude window; rendered the complete prior-predictive method and MC
@@ -1894,24 +1894,25 @@ parameter with exactly this definition. The full-tension column includes
 the DES-Y3 $S_8$ Gaussian prior $0.776 \pm 0.017$
 (\texttt{cobaya\_full\_tension.yaml}).
 The Planck+BAO+SN $S_8$ marginal is $0.827\pm 0.010$ from a direct GetDist
-pass over the frozen chains ($132{,}949$ samples). With the
+pass over the frozen chains after the declared 30\% per-chain burn-in
+($93{,}064$ retained samples from $132{,}949$ raw samples). With the
 chain-recomputed marginal, the full-tension posterior
 $S_8 = 0.814\pm 0.008$ is consistent with the naive inverse-variance-weighted
 combination (denoted $\otimes$) of the Planck+BAO+SN marginal and the DES-Y3 prior
 ($0.827\pm 0.010 \otimes 0.776\pm 0.017 = 0.814\pm 0.009$; agreement at
-the $0.01\sigma$ level). The Planck+BAO+SN marginal sits in $2.6\sigma$
+the $0.00\sigma$ level at the reported precision). The Planck+BAO+SN marginal sits in $2.60\sigma$
 two-Gaussian tension with DES-Y3 (posterior-overlap integral
-$\int\!\min(p_1,p_2)\,dS_8 = 0.05$, where $p_1$ and $p_2$ are the two
+$\int\!\min(p_1,p_2)\,dS_8 = 0.0539$, where $p_1$ and $p_2$ are the two
 one-dimensional $S_8$ marginal densities evaluated on a common
 $\Delta S_8 = 5.5\times10^{-5}$ trapezoidal grid with 4{,}001 points spanning
 $S_8 \in [0.70, 0.92]$); the full-tension posterior sits at
-$2.0\sigma$ from the DES-Y3 prior (overlap $0.12$ on the same grid);
-this $2.0\sigma$ residual is a within-stack readout because the
+$2.01\sigma$ from the DES-Y3 prior (overlap $0.1270$ on the same grid);
+this $2.01\sigma$ residual is a within-stack readout because the
 DES-Y3 Gaussian prior is itself an active likelihood in the
 full-tension chain, so the full-tension $S_8$ is partially anchored
 to DES-Y3 and the number is not a measurement-vs-measurement tension
 but a within-stack posterior shift; overlay artifact
-\artifact{reproducibility/cosmology/c13_s8_desy3_overlay.json}.}
+\artifact{reproducibility/cosmology/c13_s8_desy3_overlay_postburn.json}.}
 \begin{ruledtabular}
 \begin{tabular}{lcc}
 Parameter & Full-tension & Planck+BAO+SN \\
@@ -3166,22 +3167,57 @@ has been reproduced from ordinary Git artifacts or from scientific Git LFS
 payloads identified by payload OID and size in the manifest for
 \texttt{\paperVersion}; a paper-freezing public commit/tag is
 pending (see Data and Code Availability).}
-\begin{ruledtabular}
-\begin{tabular}{p{0.31\textwidth}p{0.10\textwidth}p{0.25\textwidth}p{0.24\textwidth}}
-Claim & Type & Reference value & Notes \\
-\hline
-$\Delta\Neff = -0.020\pm 0.169$ (full-tension)         & MCMC      & Int.\ verified (frozen chains) & Stock CAMB proxy \\
-$\Delta\Neff = +0.058\pm 0.179$ (Planck+BAO+SN)         & MCMC      & Int.\ verified (frozen chains) & Stock CAMB proxy \\
-$H_0 = 67.68\pm 1.06$ (full-tension)                   & MCMC      & Int.\ verified; Planck-consistent & Recovers $\Lambda$CDM \\
-$H_0 = 67.78\pm 1.09$ (Planck+BAO+SN)                  & MCMC      & Int.\ verified; Planck-consistent & Recovers $\Lambda$CDM \\
-Model-comparison $\Delta$AIC/BIC/$\ln B$               & Numerical & Not reported & Nested-sampling follow-up \\
-$\hat\beta_{\rm NaMaster} = 0.269^\circ$ (500-MC)       & Numerical & Int.\ verified (pipeline) & Exact-window bias consistent with zero \\
-$\beta_{\rm ALP} = 0.336^\circ\pm 0.10^\circ$         & MCMC      & Int.\ verified (ALP chains) & ALP MCMC \\
-Published $3.6\sigma$ ($\beta=0.342\pm 0.094^\circ$)   & Lit.\     & \cite{Eskilt2022} & Eskilt~et~al. \\
-Stock CAMB proxy $\neq$ ECH theory module              & Scope     & Definition   & §\ref{sec:verification} \\
-ALP birefringence not distinctive ECH prediction        & Scope     & Definition   & §\ref{sec:birefringence_check} \\
-\end{tabular}
-\end{ruledtabular}
+\newcommand{\claimcell}[2]{\parbox[t]{#1}{\raggedright #2\strut}}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}llll}
+\toprule
+\claimcell{0.29\textwidth}{Claim} &
+\claimcell{0.09\textwidth}{Type} &
+\claimcell{0.24\textwidth}{Reference value} &
+\claimcell{0.23\textwidth}{Notes} \\
+\midrule
+\claimcell{0.29\textwidth}{$\Delta\Neff = -0.020\pm 0.169$ (full-tension)} &
+\claimcell{0.09\textwidth}{MCMC} &
+\claimcell{0.24\textwidth}{Int.\ verified (frozen chains)} &
+\claimcell{0.23\textwidth}{Stock CAMB proxy} \\
+\claimcell{0.29\textwidth}{$\Delta\Neff = +0.058\pm 0.179$ (Planck+BAO+SN)} &
+\claimcell{0.09\textwidth}{MCMC} &
+\claimcell{0.24\textwidth}{Int.\ verified (frozen chains)} &
+\claimcell{0.23\textwidth}{Stock CAMB proxy} \\
+\claimcell{0.29\textwidth}{$H_0 = 67.68\pm 1.06$ (full-tension)} &
+\claimcell{0.09\textwidth}{MCMC} &
+\claimcell{0.24\textwidth}{Int.\ verified; Planck-consistent} &
+\claimcell{0.23\textwidth}{Recovers $\Lambda$CDM} \\
+\claimcell{0.29\textwidth}{$H_0 = 67.78\pm 1.09$ (Planck+BAO+SN)} &
+\claimcell{0.09\textwidth}{MCMC} &
+\claimcell{0.24\textwidth}{Int.\ verified; Planck-consistent} &
+\claimcell{0.23\textwidth}{Recovers $\Lambda$CDM} \\
+\claimcell{0.29\textwidth}{Model-comparison $\Delta$AIC/BIC/$\ln B$} &
+\claimcell{0.09\textwidth}{Numerical} &
+\claimcell{0.24\textwidth}{Not reported} &
+\claimcell{0.23\textwidth}{Nested-sampling follow-up} \\
+\claimcell{0.29\textwidth}{$\hat\beta_{\rm NaMaster} = 0.269^\circ$ (500-MC)} &
+\claimcell{0.09\textwidth}{Numerical} &
+\claimcell{0.24\textwidth}{Int.\ verified (pipeline)} &
+\claimcell{0.23\textwidth}{Exact-window bias consistent with zero} \\
+\claimcell{0.29\textwidth}{$\beta_{\rm ALP} = 0.336^\circ\pm 0.10^\circ$} &
+\claimcell{0.09\textwidth}{MCMC} &
+\claimcell{0.24\textwidth}{Int.\ verified (ALP chains)} &
+\claimcell{0.23\textwidth}{ALP MCMC} \\
+\claimcell{0.29\textwidth}{Published $3.6\sigma$ ($\beta=0.342\pm 0.094^\circ$)} &
+\claimcell{0.09\textwidth}{Lit.} &
+\claimcell{0.24\textwidth}{\cite{Eskilt2022}} &
+\claimcell{0.23\textwidth}{Eskilt~et~al.} \\
+\claimcell{0.29\textwidth}{Stock CAMB proxy $\neq$ ECH theory module} &
+\claimcell{0.09\textwidth}{Scope} &
+\claimcell{0.24\textwidth}{Definition} &
+\claimcell{0.23\textwidth}{§\ref{sec:verification}} \\
+\claimcell{0.29\textwidth}{ALP birefringence not distinctive ECH prediction} &
+\claimcell{0.09\textwidth}{Scope} &
+\claimcell{0.24\textwidth}{Definition} &
+\claimcell{0.23\textwidth}{§\ref{sec:birefringence_check}} \\
+\bottomrule
+\end{tabular*}
+\let\claimcell\relax
 \end{table*}
 
 

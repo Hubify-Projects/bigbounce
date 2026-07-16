@@ -8,6 +8,7 @@ Outputs:
   reproducibility/cosmology/c13_s8_desy3_overlay.png
 """
 import glob
+import hashlib
 import json
 import os
 
@@ -20,6 +21,8 @@ import matplotlib.pyplot as plt
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 DESY3_MU, DESY3_SIG = 0.776, 0.017
+BURN_IN_FRACTION = 0.30
+OUTPUT_STEM = os.environ.get("S8_OUTPUT_STEM", "c13_s8_desy3_overlay_postburn")
 
 
 def load_dataset(frozen_dir, root="spin_torsion"):
@@ -27,9 +30,14 @@ def load_dataset(frozen_dir, root="spin_torsion"):
     chain_files = sorted(glob.glob(
         os.path.join(frozen_dir, "chains", "chain_*", f"{root}.1.txt")))
     samples, weights = [], []
+    raw_samples = 0
     names = None
     for cf in chain_files:
-        s = loadMCSamples(cf[:-6], settings={"ignore_rows": 0})
+        raw = loadMCSamples(cf[:-6], settings={"ignore_rows": 0})
+        raw_samples += len(raw.samples)
+        s = loadMCSamples(
+            cf[:-6], settings={"ignore_rows": BURN_IN_FRACTION}
+        )
         if names is None:
             names = [p.name for p in s.getParamNames().names]
         idx = names.index("S8")
@@ -37,7 +45,7 @@ def load_dataset(frozen_dir, root="spin_torsion"):
         weights.append(s.weights)
     s8 = np.concatenate(samples)
     w = np.concatenate(weights)
-    return s8, w, len(chain_files)
+    return s8, w, len(chain_files), raw_samples
 
 
 def wstats(x, w):
@@ -68,8 +76,8 @@ def gauss(grid, mu, sig):
 pbs_dir = os.path.join(BASE, "frozen", "planck_bao_sn_20260312_1954")
 ft_dir = os.path.join(BASE, "frozen", "full_tension_20260311_1728")
 
-s8_pbs, w_pbs, n_pbs = load_dataset(pbs_dir)
-s8_ft, w_ft, n_ft = load_dataset(ft_dir)
+s8_pbs, w_pbs, n_pbs, raw_pbs = load_dataset(pbs_dir)
+s8_ft, w_ft, n_ft, raw_ft = load_dataset(ft_dir)
 
 mu_pbs, sig_pbs = wstats(s8_pbs, w_pbs)
 mu_ft, sig_ft = wstats(s8_ft, w_ft)
@@ -99,9 +107,13 @@ out = {
                    "Gaussian 0.776+/-0.017 (R24conf QUEUE-28 / META-E1)"),
     "chains": {
         "planck_bao_sn": {"dir": "reproducibility/cosmology/frozen/planck_bao_sn_20260312_1954",
-                          "n_chains": n_pbs, "n_samples": int(len(s8_pbs))},
+                          "n_chains": n_pbs, "raw_samples": raw_pbs,
+                          "post_burn_samples": int(len(s8_pbs))},
         "full_tension": {"dir": "reproducibility/cosmology/frozen/full_tension_20260311_1728",
-                         "n_chains": n_ft, "n_samples": int(len(s8_ft))}},
+                         "n_chains": n_ft, "raw_samples": raw_ft,
+                         "post_burn_samples": int(len(s8_ft))}},
+    "status": "PASS",
+    "burn_in_fraction": BURN_IN_FRACTION,
     "S8_definition": "sigma8*(Omega_m/0.3)^0.5 (chain derived column 'S8')",
     "planck_bao_sn_S8": {"mean": round(mu_pbs, 4), "sigma": round(sig_pbs, 4)},
     "full_tension_S8": {"mean": round(mu_ft, 4), "sigma": round(sig_ft, 4)},
@@ -118,7 +130,9 @@ out = {
               "|mu1-mu2|/sqrt(s1^2+s2^2)."),
 }
 
-with open(os.path.join(BASE, "c13_s8_desy3_overlay.json"), "w") as f:
+json_path = os.path.join(BASE, OUTPUT_STEM + ".json")
+png_path = os.path.join(BASE, OUTPUT_STEM + ".png")
+with open(json_path, "w") as f:
     json.dump(out, f, indent=1)
 
 fig, ax = plt.subplots(figsize=(6, 4))
@@ -137,5 +151,19 @@ ax.legend(fontsize=8, frameon=False)
 ax.set_title(f"$S_8$: Planck+BAO+SN vs DES-Y3 "
              f"({tension_gauss:.1f}$\\sigma$ two-Gaussian)", fontsize=10)
 fig.tight_layout()
-fig.savefig(os.path.join(BASE, "c13_s8_desy3_overlay.png"), dpi=160)
+fig.savefig(png_path, dpi=160)
+with open(json_path, "rb") as handle:
+    result_sha256 = hashlib.sha256(handle.read()).hexdigest()
+receipt = {
+    "schema_version": 1,
+    "status": "PASS",
+    "result_file": os.path.basename(json_path),
+    "result_sha256": result_sha256,
+    "burn_in_fraction": BURN_IN_FRACTION,
+    "raw_samples": raw_pbs + raw_ft,
+    "post_burn_samples": len(s8_pbs) + len(s8_ft),
+}
+with open(json_path + ".receipt.json", "w") as f:
+    json.dump(receipt, f, indent=2, sort_keys=True)
+    f.write("\n")
 print(json.dumps(out, indent=1))

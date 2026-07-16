@@ -16,10 +16,12 @@
   ],
   "p1b_science_contract_paths": {
     "manuscript": "arxiv/paper1b_mcmc_companion.tex",
-    "namaster_physical_spectrum_receipt": "reproducibility/p1_namaster_500mc/results/physical_spectrum_500mc/contract.json",
+    "namaster_summary": "reproducibility/p1_namaster_500mc/results/physical_spectrum_v2/summary.json",
+    "namaster_c10_receipt": "reproducibility/p1_namaster_500mc/results/physical_spectrum_v2/c10_robustness_battery.json.receipt.json",
+    "namaster_declared_receipt": "reproducibility/p1_namaster_500mc/results/physical_spectrum_v2/declared_fsky_sign_battery.json.receipt.json",
     "bbn_execution_receipt": "reproducibility/cosmology/frozen/bbn_execution_receipt.json",
-    "s8_overlay_receipt": "reproducibility/cosmology/c13_s8_desy3_overlay_postburn.json",
-    "analysis_manifest": "reproducibility/p1b_analysis_artifact_manifest_v1B.0.109.json"
+    "s8_overlay_receipt": "reproducibility/cosmology/c13_s8_desy3_overlay_postburn.json.receipt.json",
+    "analysis_manifest": "reproducibility/p1b_analysis_artifact_manifest_v1B.0.110.json"
   },
   "p4_p5_science_contract_paths": {
     "p4_primary": "pipelines/p2_chirality/outputs/canonical_provenance/p4_primary_hc_safe_label_shuffle_10k_v1_0_257.json",

@@ -167,7 +167,9 @@ class PortfolioPreflightTests(unittest.TestCase):
             key: f"receipts/{key}.json"
             for key in (
                 "manuscript",
-                "namaster_physical_spectrum_receipt",
+                "namaster_summary",
+                "namaster_c10_receipt",
+                "namaster_declared_receipt",
                 "bbn_execution_receipt",
                 "s8_overlay_receipt",
                 "analysis_manifest",

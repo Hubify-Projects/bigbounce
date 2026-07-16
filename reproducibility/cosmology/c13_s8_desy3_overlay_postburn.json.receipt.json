@@ -1,0 +1,9 @@
+{
+  "burn_in_fraction": 0.3,
+  "post_burn_samples": 216432,
+  "raw_samples": 309189,
+  "result_file": "c13_s8_desy3_overlay_postburn.json",
+  "result_sha256": "e82b334af90ee1de7334291be03711c4fbe7014be73dddd0d08fdf50bf4f1e1c",
+  "schema_version": 1,
+  "status": "PASS"
+}

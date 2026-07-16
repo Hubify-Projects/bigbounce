@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import hashlib
 import tempfile
 from pathlib import Path
 
@@ -12,7 +13,9 @@ from tools.verify_p1b_science_contracts import verify
 def fixture(root: Path) -> dict[str, str]:
     paths = {
         "manuscript": "paper.tex",
-        "namaster_physical_spectrum_receipt": "namaster.json",
+        "namaster_summary": "namaster.json",
+        "namaster_c10_receipt": "c10.json",
+        "namaster_declared_receipt": "declared.json",
         "bbn_execution_receipt": "bbn.json",
         "s8_overlay_receipt": "s8.json",
         "analysis_manifest": "manifest.json",
@@ -21,13 +24,36 @@ def fixture(root: Path) -> dict[str, str]:
         "\\newcommand{\\paperVersion}{v2}\nThe full-$EB$ limitation is retained.\n"
     )
     (root / "namaster.json").write_text(json.dumps({
-        "status": "PASS",
-        "spectrum_convention": "raw_C_ell",
-        "ee_source": "CAMB",
-        "bb_source": "CAMB_lensed",
-        "production_realizations": 500,
-        "spectrum_sha256": {"EE": "a" * 64, "BB": "b" * 64},
+        "run_mode": "production",
+        "n_mc_realizations": 500,
+        "physical_spectra": {
+            "generator": "CAMB",
+            "expected_camb_version": "1.6.6",
+            "resolved_camb_version": "1.6.6",
+            "production_version_match": True,
+            "contract": {"raw_cl": True},
+            "sha256": {
+                "cl_ee_raw_uK2": "a" * 64,
+                "cl_bb_raw_uK2": "b" * 64,
+            },
+            "validation": {
+                "status": "pass",
+                "raw_cl_ee_at_ell_check_uK2": 0.0003,
+            },
+        },
+        "window_equivalence_max_abs": 1e-12,
     }))
+    for filename, suite in (
+        ("c10.json", "c10_merged"),
+        ("declared.json", "declared_fsky_sign_merged"),
+    ):
+        (root / filename).write_text(json.dumps({
+            "suite": suite,
+            "n_real": 500,
+            "seed_start": 42,
+            "seed_end": 541,
+            "result_sha256": "d" * 64,
+        }))
     (root / "bbn.json").write_text(json.dumps({
         "status": "PASS",
         "camb_version": "1.6.5",
@@ -35,11 +61,15 @@ def fixture(root: Path) -> dict[str, str]:
         "executed_table_sha256": "c" * 64,
         "public_yaml_setting": "PRIMAT_Yp_DH_Error.dat",
     }))
+    s8_result = root / "s8-result.json"
+    s8_result.write_text("{}")
     (root / "s8.json").write_text(json.dumps({
         "status": "PASS",
         "burn_in_fraction": 0.30,
         "raw_samples": 1000,
         "post_burn_samples": 700,
+        "result_file": s8_result.name,
+        "result_sha256": hashlib.sha256(s8_result.read_bytes()).hexdigest(),
     }))
     (root / "manifest.json").write_text(json.dumps({"paper_version": "v2"}))
     return paths
@@ -56,7 +86,6 @@ def test_accepts_complete_contract():
 @pytest.mark.parametrize(
     ("filename", "field", "value", "message"),
     [
-        ("namaster.json", "spectrum_convention", "D_ell", "raw C_ell"),
         ("bbn.json", "public_yaml_setting", "PArthENoPE", "public YAML"),
         ("s8.json", "burn_in_fraction", 0.0, "30 percent"),
         ("manifest.json", "paper_version", "v1", "does not match"),
@@ -83,4 +112,30 @@ def test_rejects_unsupported_prior_edge_wording():
             "The full-$EB$ limitation is retained and the mass piles toward the upper edge.\n"
         )
         with pytest.raises(ValueError, match="prior-edge"):
+            verify(root, paths)
+
+
+def test_rejects_manifest_matching_only_historical_version_text():
+    with tempfile.TemporaryDirectory() as tmp:
+        root = Path(tmp)
+        paths = fixture(root)
+        (root / "paper.tex").write_text(
+            "% prior release v1\n"
+            "\\newcommand{\\paperVersion}{v2}\n"
+            "The full-$EB$ limitation is retained.\n"
+        )
+        (root / "manifest.json").write_text(json.dumps({"paper_version": "v1"}))
+        with pytest.raises(ValueError, match="does not match"):
+            verify(root, paths)
+
+
+def test_rejects_d_ell_like_namaster_summary():
+    with tempfile.TemporaryDirectory() as tmp:
+        root = Path(tmp)
+        paths = fixture(root)
+        path = root / "namaster.json"
+        payload = json.loads(path.read_text())
+        payload["physical_spectra"]["contract"]["raw_cl"] = False
+        path.write_text(json.dumps(payload))
+        with pytest.raises(ValueError, match="raw C_ell"):
             verify(root, paths)

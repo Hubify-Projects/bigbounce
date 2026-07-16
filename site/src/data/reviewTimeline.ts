@@ -57,6 +57,27 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p1b-s8-burnin-contract-2026-07-16",
+    dateISO: "2026-07-16",
+    timePT: "3:43 AM",
+    kind: "closure-wave",
+    title: "P1B v1B.0.110 — S8 burn-in contract closed with retained evidence",
+    papers: ["P1B"],
+    summary:
+      "The DES-Y3 auxiliary overlay was regenerated directly from the frozen chains using the manuscript's declared 30% GetDist burn-in. The release binds raw and post-burn counts, result and figure hashes, exact numerical comparisons, a visually audited PDF, append-only retention, eight mirrors, and Convex read-back. Readiness remains 56 because the NaMaster production and exact BBN execution gates remain open.",
+    keyTakeaways: [
+      "Planck+BAO+SN: 132,949 raw samples -> 93,064 post-burn samples",
+      "S8=0.8273+/-0.0100; DES-Y3 tension 2.60 sigma; posterior overlap 0.0539",
+      "Exact PDF: 20 pp / SHA-256 a06777841125b8576f0acbdee1f4c3147cec913dc8f3dfc091bd286b457f98f0",
+      "No corrected NaMaster production, complete BBN execution receipt, confirmation verdict, readiness uplift, or acceptance is claimed",
+    ],
+    links: [
+      { label: "P1B canonical status", href: `${GH}/project-context/SSOT/paper-1/status.md` },
+      { label: "S8 evidence receipt", href: `${GH}/reproducibility/cosmology/c13_s8_desy3_overlay_postburn.json.receipt.json` },
+      { label: "P1B manuscript", href: `${GH}/arxiv/paper1b_mcmc_companion.tex` },
+    ],
+  },
+  {
     id: "p4-strict-primary-release-contract-2026-07-16",
     dateISO: "2026-07-16",
     timePT: "2:07 AM",
