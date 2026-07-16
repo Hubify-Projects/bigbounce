@@ -22,7 +22,8 @@ comparison, or formal-preregistration claim.
 |---|---:|---|---|
 | `p4_catalog_primary_safe_v1.0.244.parquet` | 8,474,531 | Science-facing observed-label catalog | Raw-pass and reconstructed flip-pass columns absent by construction |
 | `p4_catalog_raw_flip_quarantine_v1.0.244.parquet` | 249,066 | Provenance-only quarantine of every catalog-wide bound violator | `do_not_use_for_science=True`; scores are uncalibrated |
-| `primary_label_shuffle_amps_10000.npy` | 10,000 draws | Exact fixed-occupancy galaxy-label randomization; global CW total preserved | Primary descriptive observed-label null |
+| `primary_label_shuffle_amps_10000.npy` | 10,000 draws | Historical unsafe-inclusive fixed-occupancy galaxy-label randomization | Superseded primary contract; provenance only |
+| `apjs_release_v1.0.259_strict/primary_strict_fixed_occupancy_amps_10000.npy` | 10,000 draws | Exact strict fixed-occupancy galaxy-label randomization; global strict-sample CW total preserved | Current primary descriptive observed-label null |
 | `pixel_permutation_amps_10000.npy` | 10,000 draws | Exact retained pixel-asymmetry permutation | Robustness diagnostic only; not primary |
 
 Exactly 59,515 of the 249,066 catalog-wide quarantined rows fall inside the
@@ -66,28 +67,29 @@ be used as probabilities, likelihood weights, or calibrated classifier outputs.
 
 ## Safe filters
 
-Primary observed-label reproduction:
+Current primary observed-label reproduction:
 
 ```python
-primary = catalog[catalog.primary_hc]
+primary = catalog[catalog.primary_hc & ~catalog.raw_flip_qc_unsafe]
 ```
 
-Strict raw/flip-QC sensitivity diagnostic:
+Historical unsafe-inclusive selection:
 
 ```python
-strict = catalog[catalog.primary_hc & ~catalog.raw_flip_qc_unsafe]
+historical_inclusive = catalog[catalog.primary_hc]
 ```
 
-The declared primary result uses the first filter because the estimator consumes
-hard equivariant labels and does not consume the quarantined raw/reconstructed
-scores. The strict filter is a robustness diagnostic, not a replacement primary
-analysis unless its null is regenerated under that exact selection.
+The declared primary result uses the first filter. Its exact null was regenerated
+under that selection and is retained in `apjs_release_v1.0.259_strict/`. The
+second filter is preserved only to reproduce the earlier public release history;
+it must not be described as the current primary analysis.
 
 ## Named HEALPix supports
 
 | Stable name | Exact support | Pixels | Role |
 |---|---|---:|---|
-| `HC_REALSPACE_INCLUSIVE` | Primary HC rows; `N_spiral(pixel) >= 10` | 23,682 | Primary real-space observed-label null |
+| `HC_REALSPACE_STRICT` | Primary HC rows excluding every `raw_flip_qc_unsafe` row; `N_spiral(pixel) >= 10` | 23,633 | Current primary real-space observed-label null |
+| `HC_REALSPACE_INCLUSIVE` | Historical primary HC rows; `N_spiral(pixel) >= 10` | 23,682 | Superseded unsafe-inclusive provenance |
 | `FULL_SPIRAL_CANONICAL` | All equivariant spiral labels; `N_spiral(pixel) >= 10` | 24,087 | Full-sample WLS and canonical harmonic diagnostics |
 | `MASTER_ALL_GALAXY_FOOTPRINT` | `N_all(pixel) >= 1` | 24,297 | Apodized, weighted MASTER diagnostic |
 
@@ -103,11 +105,14 @@ python3 pipelines/p2_chirality/reproduce_p4_primary_null_v1_0_244.py \
   --output pipelines/p2_chirality/apjs_release_v1.0.244/PRIMARY_REPRODUCTION.json
 ```
 
-The hard gates are `N=949,584`, 23,682 inclusive pixels,
-`A_dip=0.0045970743`, `z=+0.7053170`, and one-sided upper-tail rank
-`p=0.2246775`. The fixed-occupancy array is pinned by SHA-256; the former
-pixel-permutation result remains separately checksummed as a robustness
-diagnostic. The script makes no physical or primordial inference.
+The current hard gates are `N_selected=890,069`, `N_support=887,472`,
+23,633 strict pixels, `A_dip=0.0046651988`, `z_moment=+0.6346509`, and
+one-sided add-one upper-tail rank `p=0.2376762`. The strict fixed-occupancy
+array is pinned by SHA-256
+`3a03ca4b008844fd8bf16be4e1e7e918ceaf580992d9462d54233f417e32ce7d`.
+The unsafe-inclusive fixed-occupancy and pixel-permutation arrays remain
+separately checksummed as historical and robustness diagnostics. The script
+makes no physical or primordial inference.
 
 ## Provenance
 

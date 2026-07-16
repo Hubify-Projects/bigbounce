@@ -27,22 +27,23 @@ configs:
 
 # DESI Legacy Galaxy Chirality Catalog
 
-This dataset accompanies the current Paper IV manuscript, *An Observed-Label Chirality-Dipole Null in 949,584 High-Confidence DESI Spirals and an 8.5-Million-Galaxy Catalog*.
+This dataset accompanies the current Paper IV manuscript, *An Observed-Label Chirality-Dipole Null in 890,069 Quality-Controlled High-Confidence DESI Spirals and an 8.5-Million-Galaxy Catalog*.
 
-The primary high-confidence observed-label statistic is consistent with zero under fixed-occupancy label randomization (`z=0.7053169638`, one-sided empirical-rank `p=0.2246775322`). This is not a calibrated true-spin, physical-amplitude, or primordial-parity bound.
+The declared primary high-confidence observed-label statistic excludes every row marked `raw_flip_qc_unsafe` and is consistent with zero under fixed-occupancy label randomization (`N_selected=890069`, `N_support=887472`, `z_moment=0.6346508534`, one-sided add-one rank `p=0.2376762324`). This is not a calibrated true-spin, physical-amplitude, or primordial-parity bound.
 
 ## Authoritative release
 
-Use `apjs-release/v1.0.244/`, pinned by data commit `db11023306ab4eed1d7727670bd78e127b7af17a` and provider-receipt commit `e535b26247c892971963be6029435544cf29d19b`.
+The immutable catalog bytes remain `apjs-release/v1.0.244/`, pinned by data commit `db11023306ab4eed1d7727670bd78e127b7af17a` and provider-receipt commit `e535b26247c892971963be6029435544cf29d19b`. The synchronized strict-primary analysis contract is the repository release candidate `apjs_release_v1.0.259_strict/`; its intended provider path is `apjs-release/v1.0.259-strict-primary/`. Until that overlay is published and pinned by an immutable provider revision, the public provider release is incomplete for reproducing the manuscript's declared primary result.
 
 | Product | Rows | Bytes | SHA-256 | Role |
 |---|---:|---:|---|---|
 | `p4_catalog_primary_safe_v1.0.244.parquet` | 8,474,531 | 386,712,994 | `139b761fbeafb34306a0cec60967226c18dc84295285f8317ce3d3af3d28bdf3` | Science-facing observed-label catalog |
 | `p4_catalog_raw_flip_quarantine_v1.0.244.parquet` | 249,066 | 16,665,663 | `fb98787dd4c5d1a7a0fdb64fcdacd1b02bc2080ab3716c0a803e0ccdfec03fbe` | Unsafe raw/flip reconstruction quarantine; do not use for science weights |
-| `primary_label_shuffle_amps_10000.npy` | 10,000 draws | 80,128 | `f6360f4bec22669097cee3e2fad8b176291d3ecbfbfbb9a9290d0bce3d5152c0` | Retained primary fixed-occupancy null |
+| `primary_label_shuffle_amps_10000.npy` | 10,000 draws | 80,128 | `f6360f4bec22669097cee3e2fad8b176291d3ecbfbfbb9a9290d0bce3d5152c0` | Historical unsafe-inclusive fixed-occupancy null; not the current primary |
+| `primary_strict_fixed_occupancy_amps_10000.npy` | 10,000 draws | 80,128 | `3a03ca4b008844fd8bf16be4e1e7e918ceaf580992d9462d54233f417e32ce7d` | Current strict-primary fixed-occupancy null; local release candidate pending immutable provider publication |
 | `pixel_permutation_amps_10000.npy` | 10,000 draws | 80,128 | `62bb1c019231974c2a7ed5d5e43ceb77a5596e4675c82d7ff1c899e029a36492` | Distinct robustness diagnostic |
 
-The folder also contains the schema, manifest, SHA-256 ledger, validation receipt, and executable primary-null reproducer. Catalog C is the only published science-facing release product. The historical Catalog A (raw) and Catalog B (Platt-calibrated) labels describe pipeline diagnostics, not released catalog tiers; no complete Catalog B payload or executable release contract is claimed. The older root `catalog_production.parquet` is retained for provenance and contains raw-pass columns that are not calibrated probabilities; it is not the authoritative ApJS science product.
+The v1.0.244 folder also contains the historical schema, manifest, SHA-256 ledger, validation receipt, and unsafe-inclusive reproducer. Catalog C remains the only published science-facing catalog product, but its current science-use predicate is `primary_hc & ~raw_flip_qc_unsafe`. The strict overlay supplies the synchronized schema, exact strict null array, and executable reproducer without duplicating the 386,712,994-byte catalog. The historical Catalog A (raw) and Catalog B (Platt-calibrated) labels describe pipeline diagnostics, not released catalog tiers; no complete Catalog B payload or executable release contract is claimed. The older root `catalog_production.parquet` is retained for provenance and contains raw-pass columns that are not calibrated probabilities; it is not the authoritative ApJS science product.
 
 ### Safe-catalog schema
 

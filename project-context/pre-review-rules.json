@@ -16,6 +16,7 @@
   "p4_p5_science_contract_paths": {
     "p4_primary": "pipelines/p2_chirality/outputs/canonical_provenance/p4_primary_hc_safe_label_shuffle_10k_v1_0_257.json",
     "p4_harmonics": "pipelines/p2_chirality/outputs/canonical_provenance/p4_fsc_exact_support_harmonics_v1_0_257.json",
+    "p4_strict_release": "pipelines/p2_chirality/apjs_release_v1.0.259_strict/MANIFEST.json",
     "p5_robustness": "pipelines/p5_desi_chirality/outputs/39_focal_interaction_clustering_robustness.json"
   },
   "portfolio_engine_paths": [

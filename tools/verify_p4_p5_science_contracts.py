@@ -220,7 +220,7 @@ def verify_manuscript_contracts(p4_text: str, p5_text: str) -> None:
 
 def verify(root: Path, paths: dict[str, str]) -> dict[str, Any]:
     root = root.resolve(strict=True)
-    required = ("p4_primary", "p4_harmonics", "p5_robustness")
+    required = ("p4_primary", "p4_harmonics", "p4_strict_release", "p5_robustness")
     _require(set(paths) == set(required), "science-contract paths must name exactly p4_primary, p4_harmonics, p5_robustness")
     resolved: dict[str, Path] = {}
     for key in required:
@@ -231,10 +231,28 @@ def verify(root: Path, paths: dict[str, str]) -> dict[str, Any]:
         resolved[key] = candidate
     p4_primary = _load(resolved["p4_primary"])
     p4_harmonics = _load(resolved["p4_harmonics"])
+    p4_release = _load(resolved["p4_strict_release"])
     p5 = _load(resolved["p5_robustness"])
     verify_p4_primary(p4_primary)
     verify_p4_harmonics(p4_harmonics)
     verify_p5(p5)
+    _require(
+        p4_release.get("schema") == "p4-apjs-strict-primary-manifest/v1",
+        "P4 strict release manifest schema mismatch",
+    )
+    _require(p4_release.get("paper_version") == "v1.0.259", "P4 strict release version mismatch")
+    _require(
+        p4_release.get("base_catalog", {}).get("sha256") == P4_CATALOG_SHA256,
+        "P4 strict release base catalog mismatch",
+    )
+    reproduction = p4_release.get("primary_reproduction", {})
+    _require(reproduction.get("status") == "PASS", "P4 strict release reproduction failed")
+    _require(
+        all(reproduction.get("hard_gates", {}).values()),
+        "P4 strict release reproduction gates failed",
+    )
+    _require(reproduction.get("n_selected") == 890_069, "P4 strict release selected count mismatch")
+    _require(reproduction.get("n_support") == 887_472, "P4 strict release support count mismatch")
     p4_tex = root / P4_TEX
     p5_tex = root / P5_TEX
     _require(p4_tex.is_file() and p5_tex.is_file(), "P4/P5 manuscript source is missing")
@@ -254,12 +272,14 @@ def main() -> int:
     parser.add_argument("--project-root", type=Path, default=Path(__file__).resolve().parents[1])
     parser.add_argument("--p4-primary", required=True)
     parser.add_argument("--p4-harmonics", required=True)
+    parser.add_argument("--p4-strict-release", required=True)
     parser.add_argument("--p5-robustness", required=True)
     args = parser.parse_args()
     try:
         result = verify(args.project_root, {
             "p4_primary": args.p4_primary,
             "p4_harmonics": args.p4_harmonics,
+            "p4_strict_release": args.p4_strict_release,
             "p5_robustness": args.p5_robustness,
         })
     except ContractError as exc:
