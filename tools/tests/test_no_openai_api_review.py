@@ -135,7 +135,9 @@ printf '(1) VERDICT: MINOR REVISIONS\\n(2) ISSUES: none in stub\\n(3) supported\
             outdir = root / "subscription"
             env = dict(os.environ)
             env.update({
-                "BIGBOUNCE_INT_API_LEGS_ENABLED": "0",
+                # The explicit CLI mode must override even an inherited
+                # API-enabled environment during a subscription-only retry.
+                "BIGBOUNCE_INT_API_LEGS_ENABLED": "1",
                 "BIGBOUNCE_INT_API_REVIEW_BIN": str(api_stub),
                 "BIGBOUNCE_CODEX_BIN": str(codex),
                 "BIGBOUNCE_REVIEW_CACHE": str(root / "cache"),
@@ -147,7 +149,7 @@ printf '(1) VERDICT: MINOR REVISIONS\\n(2) ISSUES: none in stub\\n(3) supported\
                 ).strip(),
             })
             run = subprocess.run(
-                ["bash", str(TOOLS / "int_wave.sh"), "P1B"], cwd=ROOT,
+                ["bash", str(TOOLS / "int_wave.sh"), "--codex-only", "P1B"], cwd=ROOT,
                 env=env, capture_output=True, text=True, timeout=45, check=False,
             )
             self.assertEqual(run.returncode, 0, run.stderr)

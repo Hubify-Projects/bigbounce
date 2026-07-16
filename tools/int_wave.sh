@@ -23,7 +23,7 @@
 #   - the VERDICT line of the just-written Codex file
 # and appends a run.log line to INT_api/H17_2026-07-10/run.log.
 #
-# Usage: tools/int_wave.sh <P1A|P1B|P2|P3|P4|P5> ["optional context-note"]
+# Usage: tools/int_wave.sh [--codex-only] <P1A|P1B|P2|P3|P4|P5> ["optional context-note"]
 #
 # See canonical spec: ~/.claude/scistack/astrostack/bigbounce-r-round/SKILL.md §1 (INT).
 
@@ -48,6 +48,14 @@ CODEX_EFFORT="${BIGBOUNCE_CODEX_EFFORT:-high}"
 REVIEW_COMMIT="${INT_REVIEW_COMMIT:-$(git -C "$REPO" rev-parse HEAD)}"
 
 die() { echo "FAIL: $*" >&2; exit 1; }
+
+# Make subscription-only retries an explicit, typo-resistant command mode.
+# This is parsed before validation so it cannot be accidentally overridden by
+# a misspelled environment variable or inherited API-spend setting.
+if [ "${1:-}" = "--codex-only" ]; then
+  API_LEGS_ENABLED=0
+  shift
+fi
 
 # Reject invalid dispatch configuration before the comparatively expensive
 # six-paper preflight and packet build.
@@ -115,7 +123,7 @@ if [ "${1:-}" = "--backfill-codex-receipt" ]; then
   exit 0
 fi
 
-[ $# -ge 1 ] || die "usage: tools/int_wave.sh <PAPER> [\"context-note\"]"
+[ $# -ge 1 ] || die "usage: tools/int_wave.sh [--codex-only] <PAPER> [\"context-note\"]"
 PAPER="$1"
 CONTEXT="${2:-}"
 
