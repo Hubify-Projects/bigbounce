@@ -21,6 +21,7 @@ import artifact_crosscheck
 from verify_analysis_artifact_manifest import verify_manifest
 from verify_p1b_science_contracts import verify as verify_p1b_science_contracts
 from verify_p4_p5_science_contracts import verify as verify_p4_p5_science_contracts
+from verify_claim_dependency_graph import verify as verify_claim_dependency_graph
 
 SCHEMA = "bigbounce.pre-review-portfolio-receipt/v1"
 ENGINE = Path.home() / ".claude/scistack/hubstack/learning-loop/paper-pre-review-check/scripts/pre_review_check.py"
@@ -33,6 +34,8 @@ ALLOWED_LOCAL_ENGINE_PATHS = (
     "tools/verify_analysis_artifact_manifest.py",
     "tools/verify_p1b_science_contracts.py",
     "tools/verify_p4_p5_science_contracts.py",
+    "tools/verify_claim_dependency_graph.py",
+    "project-context/claim-dependency-graph.json",
 )
 
 
@@ -152,6 +155,11 @@ def evaluate(root: Path, rules_path: Path) -> dict[str, Any]:
     ):
         raise PortfolioError("p1b_science_contract_paths must be a string map")
     p1b_analysis_manifest = p1b_contract_paths.get("analysis_manifest")
+    claim_graph_path = rule_catalog.get("claim_dependency_graph")
+    if "claim-dependency-graph" in validator_ids and not isinstance(claim_graph_path, str):
+        raise PortfolioError(
+            "claim-dependency-graph requires a claim_dependency_graph path"
+        )
     if "p1b-analysis-manifest" in validator_ids and not p1b_analysis_manifest:
         raise PortfolioError(
             "p1b-analysis-manifest requires p1b_science_contract_paths.analysis_manifest"
@@ -164,6 +172,9 @@ def evaluate(root: Path, rules_path: Path) -> dict[str, Any]:
     ) + tuple(
         science_contract_paths.values()
         if "p4-p5-science-contracts" in validator_ids else ()
+    ) + tuple(
+        (claim_graph_path,)
+        if "claim-dependency-graph" in validator_ids else ()
     ) + tuple(local_engine_paths)
     ensure_clean_inputs(root, registry, validator_inputs)
     registry_raw = registry_path(root).read_bytes()
@@ -218,6 +229,12 @@ def evaluate(root: Path, rules_path: Path) -> dict[str, Any]:
                 result = verify_p4_p5_science_contracts(root, science_contract_paths)
             except ValueError as exc:
                 raise PortfolioError(f"P4/P5 science-contract validation failed: {exc}") from exc
+            portfolio_validators.append({"id": validator_id, **result})
+        elif validator_id == "claim-dependency-graph":
+            try:
+                result = verify_claim_dependency_graph(root, root / claim_graph_path)
+            except (OSError, UnicodeDecodeError, ValueError) as exc:
+                raise PortfolioError(f"claim-dependency validation failed: {exc}") from exc
             portfolio_validators.append({"id": validator_id, **result})
         else:
             raise PortfolioError(f"unknown portfolio validator: {validator_id}")

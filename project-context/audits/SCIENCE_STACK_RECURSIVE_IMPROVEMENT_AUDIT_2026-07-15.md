@@ -133,6 +133,33 @@ waves, or all-six external/human release gates.
 The full audit plan is **not complete**. The defensible acceptance accounting is
 against the 12 checklist gates below:
 
+### Current recursive-improvement increment — 2026-07-16
+
+The previously absent cross-paper claim graph now has a fail-closed executable
+foundation:
+
+- `project-context/claim-dependency-graph.json` defines the first five
+  content-bound headline claims and ten dependency anchors;
+- `tools/verify_claim_dependency_graph.py` validates safe repository paths,
+  unique claim IDs, multi-surface coverage, literal and JSON-pointer evidence,
+  and emits a content-addressed receipt;
+- the graph currently binds the P4 catalog row count across P4/P5, the imported
+  P4 Catalog-C monopole across P4/P5, and the P4 strict-primary sample,
+  exact harmonic support, and P5 focal robustness sample against retained
+  science receipts;
+- `tools/bigbounce_preflight.py` now requires this graph as a portfolio
+  validator, so a covered dependency drift invalidates the next immutable
+  review packet;
+- the focused claim-graph and portfolio-preflight suites pass **21/21**,
+  including positive, literal-drift, JSON-drift, duplicate-ID, and
+  single-surface failure fixtures.
+
+This moves the headline-claim dependency-graph gate from **open** to
+**materially partial**. It is not complete: P1A, P1B, P2, and P3 headline
+claims; site, SSOT, Convex, figures, tables, and release artifacts; transitive
+changed-claim traversal; and complete quantitative-claim coverage still need
+to be added. No readiness credit is taken for this process increment.
+
 - **2/12 acceptance gates complete:** packet binding to
   preflight/catalog/registry evidence; and fail-closed enforcement on active
   INT, direct-provider, and external-browser dispatch.
