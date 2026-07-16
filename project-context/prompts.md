@@ -574,3 +574,34 @@ Switched to Opus 4.7 + xhigh effort for this.
 - `agent`: Codex
 
 > commit and push all work to github too please - you can use some credits or whatever to finish things up properly here to get to ideal stopping point before official handoff  - and also give me a prompt to use in the next codex session etc - also ensure it will continue and it will properly spawn the other codex orchestrators or whatver as needed to manage cmux etc too and reference all the necessary docs and handoff doc and everything to resume exactly as is with new account in new codex project etc
+
+## 2026-07-16 - bigbounce-resume-claude-desktop-2026-07-16
+
+### Houston messages, verbatim
+
+**15:18 PT - Resume six-paper publication drive in Claude Code desktop instead of Codex subscription**
+
+- `cwd`: /Users/houstongolden/Desktop/CODE_YOU/bigbounce
+- `session`: bigbounce-resume-claude-desktop-2026-07-16
+- `agent`: Claude Code desktop / claude-fable-5
+
+> Resume BigBounce from /Users/houstongolden/Desktop/CODE_YOU/bigbounce on main. Preserve the active six-paper publication-readiness goal; do not narrow it. Read AGENTS.md, project-context/AGENT_ONBOARDING.md, CLAUDE.md, AGENT_RULES.md, project-context/BIGBOUNCE_CODEX_ACCOUNT_HANDOFF_2026-07-16.md, project-context/NEW_CODEX_SESSION_PROMPT_2026-07-16.md, tasks.md, and plan.md before acting. Verify git state and no-OpenAI-API review tests. Log into the dedicated Codex subscription normally, then restore Codex review participation with BIGBOUNCE_CODEX_SUBSCRIPTION_ENABLED=1. Prioritize P4 v1.0.260's immutable provider overlay and exact confirmation, then P5 v0.1.139 and its archive/provenance gates. Use bounded non-overlapping subagents where useful; keep CMUX read-only for BigBounce until You.md atomic claims, heartbeats, overlap detection, and isolated worktrees are acceptance-tested. Do not claim readiness or acceptance without current exact-artifact evidence.
+>
+> --
+> note, instead of resuming this research in a new codex subscription session, I am resuming it here in claude code via the claude desktop app, which I have not yet even tried although 90%+ of this whole research project etc has been done via the claude code CLI so not sure how this will go differently from there but let's see please resume the research with the proper goal of as quickly as possible getting ALL of the scientific research papers ready for official publication and following and utilizing all local skills and everything the whole proper setup and system as it should be done end  ensure you do everything 100% right and use all the research and planning and the improvements we've already made to accelerate things and even good to analyze everything and do a deep audit to find further ways to accelerate and improve everything and ensure it is self-improving on every step and loop ideally please go through the latest docs in the project-context etc where you might see ways we've attempted to improve results and efficiencies to get closer to publishing etc etc and ensure you have access to the full prompt-history and all apis/skills/stacks/resources everything locally and connected etc to make everything work fully end to end please im ready and i want to publish these papers and have them be amazing so i can win or be awarded a scientific research grant from anthropic etc please -- to lets go
+
+**15:22 PT - Provider routing correction: do NOT use Codex at all; Claude session replaces it to save Codex quota**
+
+- `cwd`: /Users/houstongolden/Desktop/CODE_YOU/bigbounce
+- `session`: bigbounce-resume-claude-desktop-2026-07-16
+- `agent`: Claude Code desktop / claude-fable-5
+
+> i was trying to say you don't have to use codex at all i don't want you using codex that is why i resumed this here in claude instead bc i was burning too much usage on codex and needed fresh prespective and usage window here in claude
+
+**15:23 PT - Routing directive: Claude/Claude Code/CMUX orchestration (Fable 5 / Opus 4.8) + cheaper Claude workers; covers INT and EXT api/cli reviews; document it**
+
+- `cwd`: /Users/houstongolden/Desktop/CODE_YOU/bigbounce
+- `session`: bigbounce-resume-claude-desktop-2026-07-16
+- `agent`: Claude Code desktop / claude-fable-5
+
+> you should use claude and claude code/cmux per the rules etc use fable 5 or opus-4-8 for the orchestrator and the other smaller/faster/cheaper models for workers/leads via terminal/cmux etc which should be documented and cover both our internal reviews and external api/cli reviews etc etc

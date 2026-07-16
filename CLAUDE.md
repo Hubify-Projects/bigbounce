@@ -188,6 +188,41 @@ Houston caught (2026-07-03) that recent "reviews" were EXT sub-agent reports wit
 
 ---
 
+## Standing directive (2026-07-16 — Houston explicit): N — CLAUDE-STACK ROUTING, CODEX PAUSED
+
+Houston (verbatim): "i don't want you using codex that is why i resumed this
+here in claude instead bc i was burning too much usage on codex and needed
+fresh prespective and usage window here in claude" and "use claude and claude
+code/cmux per the rules etc use fable 5 or opus-4-8 for the orchestrator and
+the other smaller/faster/cheaper models for workers/leads via terminal/cmux etc
+which should be documented and cover both our internal reviews and external
+api/cli reviews etc etc".
+
+This SUPERSEDES directive I1's "Claude/Anthropic = DISABLED" and every
+"OpenAI-perspective-via-Codex-CLI" routing rule, for as long as it stands:
+
+- **Codex/OpenAI = PAUSED entirely** (quota protection). Never invoke the
+  `codex` CLI, never pass `--with-codex` to `tools/int_wave.sh`, never set
+  `BIGBOUNCE_CODEX_SUBSCRIPTION_ENABLED=1`. OpenAI API remains forbidden. A
+  missing Codex leg is recorded as **absent**, never faked or back-filled.
+- **Orchestrator** = Claude Fable 5 (or Opus 4.8): planning, truth-audits,
+  scientific judgment, integration, acceptance.
+- **Workers/leads** = smaller/faster/cheaper Claude models via Claude Code
+  subagents / terminal / CMUX: Sonnet for bounded execution (edits, recompiles,
+  mirrors, packaging), Haiku for polling/watchers, per `/loop-model-routing`.
+  CMUX stays READ-ONLY for BigBounce until You.md atomic claims, heartbeats,
+  overlap detection, and isolated worktrees are acceptance-tested.
+- **INT review board legs** = (1) Claude reviewer subagent — Opus-tier,
+  exact-PDF-bound, de-biased referee prompt, full raw report saved to
+  `project-context/peer-reviews/INT_v3/...` before any verdict is recorded —
+  plus (2) direct Grok/xAI API and (3) direct Gemini API legs, each with raw
+  receipts. Verdict matrix reports every attempted leg; failed legs stay FAILED.
+- **EXT** (headed-browser ChatGPT/Grok/Gemini) is unchanged in principle but
+  ChatGPT-subscription EXT legs should not be burned without Houston's go.
+- All integrity rules unchanged and absolute: exact SHA-256 binding, venue
+  binding, truth-audit before closure, never fake an ACCEPT, never fabricate,
+  no readiness uplift without current exact-artifact evidence.
+
 ## Drive-to-100 loop (if active)
 
 Cron `*/20 * * * *` fires `/drive-to-100-fire`. Each fire does ONE atomic step. See `project-context/SSOT/drive-to-100.md` for the plan + loop log.

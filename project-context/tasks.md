@@ -10,17 +10,14 @@ but are not the current scientific critical path.
 
 ## Active
 
-- [ ] **HO-005 — Dedicated Codex account handoff:** resume this objective from
-  `project-context/BIGBOUNCE_CODEX_ACCOUNT_HANDOFF_2026-07-16.md`; authenticate
-  the research-only subscription without exposing secrets, verify the CLI route,
-  and preserve all provider/evidence policy. (source: 2026-07-16 account-switch
-  request)
-- [ ] **HO-006 — Restore normal Codex participation after verification:** once
-  the research-only account passes a bounded CLI check, set
-  `BIGBOUNCE_CODEX_SUBSCRIPTION_ENABLED=1` (or use `--with-codex`) and confirm
-  the full review matrix still records direct-provider receipts. The current
-  Codex-off default is temporary quota protection, not a permanent restriction.
-  (source: 2026-07-16 routing correction)
+- [ ] **HO-007 — Claude-stack routing (supersedes HO-005/HO-006):** Codex is
+  PAUSED entirely (Houston 2026-07-16: burning too much Codex usage; resumed in
+  Claude Code desktop). Orchestrator = Fable 5/Opus 4.8; workers/leads =
+  cheaper Claude models via subagents/terminal/CMUX (CMUX read-only). INT
+  review legs = Claude reviewer subagent + direct Grok/xAI API + direct Gemini
+  API, all with raw receipts; missing Codex legs recorded absent, never faked.
+  Documented as CLAUDE.md standing directive N. (source: 2026-07-16 15:18 +
+  routing corrections)
 
 - [ ] **PUB-001 — Close active science revisions:** finish P1A v1A.0.120, P1B exact-window robustness, P3 r5, P4 portability/provenance closure, and P5 AJ-oriented structural closure with reproducible evidence and full PDF audits. (source: 2026-07-13 19:28 PT; 2026-07-14 10:39 PT)
 - [ ] **PUB-002 — Re-review exact immutable PDFs:** run fresh Codex/ChatGPT-subscription, Grok, and Gemini boards against the correct journal/article type; retain raw reports, exact PDF SHA-256, source commit, prompt hash, provider/model, and normalized truth-audit. The OpenAI perspective is Codex CLI authenticated by ChatGPT subscription with OpenAI API credentials unset — never separately billed OpenAI API. Grok/xAI and Gemini direct-provider API legs are allowed. No Anthropic/Claude leg in this campaign. Re-review only after a reader-visible content-hash change, except one declared independent confirmation of a high-risk closure. (source: 2026-07-13 19:28 PT; 2026-07-14 readiness-regression audit)
@@ -74,7 +71,7 @@ but are not the current scientific critical path.
 - Acceleration may remove duplicate compute, stale-path risk, and repeated review work; it may not remove truth audits, reproducibility checks, independent review, or all-page PDF visual inspection.
 - Review models are residual-novelty detectors, not the first-line linter. No new review packet may dispatch unless its exact source/PDF hash is bound to a current strict portfolio-preflight PASS receipt.
 - Measure known-pattern escape rate, preflight interception precision/recall, closure-regression rate, claim-evidence coverage, and archive/catalog freshness; round count and favorable verdict volume are not convergence metrics.
-- Current provider policy: OpenAI perspective via Codex CLI/ChatGPT subscription only, with API credentials unset — never OpenAI API billing. Grok/xAI and Gemini direct-provider calls are allowed. No Anthropic or Claude calls. A missing vendor leg is recorded as absent, never silently replaced or fabricated.
+- Current provider policy (2026-07-16, CLAUDE.md directive N): Codex/OpenAI PAUSED entirely — never invoke Codex CLI, never OpenAI API billing. Claude Code orchestrates (Fable 5/Opus 4.8) with cheaper Claude workers; INT review legs = Claude reviewer subagent + Grok/xAI + Gemini direct APIs, all raw-receipted. A missing vendor leg is recorded as absent, never silently replaced or fabricated.
 - Historical PDFs are append-only evidence. Alias paths may advance, but immutable versioned/timestamped PDFs and their manifests must remain retained.
 - Do not publish partial readiness state. Public PDF/version/SSOT/Convex/API/site changes land only after their exact evidence packet is complete and mutually consistent.
 
