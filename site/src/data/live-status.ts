@@ -147,10 +147,10 @@ const historicalLiveStatus: LiveStatus = {
 // summary reflect the canonical six-paper board rather than an older review wave.
 export const liveStatus: LiveStatus = {
   ...historicalLiveStatus,
-  lastUpdatedISO: "2026-07-16T08:02:00Z",
-  lastUpdatedDisplay: "July 16, 2026 · 1:02 AM PT",
+  lastUpdatedISO: "2026-07-16T09:07:00Z",
+  lastUpdatedDisplay: "July 16, 2026 · 2:07 AM PT",
   headline:
-    "All six manuscripts remain in revision. P4 v1.0.259 and P5 v0.1.139 close the latest verified residual-confirmation defects; readiness remains 80/74 and another exact confirmation is pending. No submission or acceptance is claimed.",
+    "All six manuscripts remain in revision. P4 v1.0.260 now binds the strict-primary local overlay to the unchanged immutable public catalog; provider publication remains open. P5 remains v0.1.139. Readiness holds 80/74; no submission or acceptance is claimed.",
   summary:
     "P4 now uses the strict 890,069-row safe sample and one checksummed 24,087-pixel FSC support. P5's K=13 null is stable across angular and 3-D clustering, while sparse program interactions remain weakly bounded. External provenance/release, exact re-review, and human gates remain.",
   papers: historicalLiveStatus.papers.map((paper) => {
@@ -165,9 +165,9 @@ export const liveStatus: LiveStatus = {
     if (paper.slug === "paper-4") {
       return {
         ...paper,
-        version: "v1.0.259",
+        version: "v1.0.260",
         pendingWork:
-          "Residual manuscript/artifact synchronization defects are closed in v1.0.259. Training independence, spatial transfer/covariance, synchronized public release, complete metadata, archive/DOI, exact non-Anthropic re-review, and human review remain. Readiness holds 80.",
+          "The strict-primary overlay is locally content-addressed and bound to v1.0.260, but immutable provider publication is still open. Training independence, spatial transfer/covariance, complete metadata, archive/DOI, exact non-Anthropic re-review, and human review remain. Readiness holds 80.",
       };
     }
     if (paper.slug === "paper-1a") {
@@ -208,7 +208,7 @@ export const liveStatus: LiveStatus = {
   }),
   currentlyRunning: [
     "P1B corrected production is queued but blocked by a negative RunPod balance; no paid pod launch is being attempted",
-    "P4 v1.0.259 and P5 v0.1.139 residual-closure PDFs are built, retained, mirrored, and synchronized",
+    "P4 v1.0.260 and P5 v0.1.139 PDFs are built, retained, mirrored, and synchronized; P4 provider-overlay publication remains open",
     "Exact non-Anthropic re-review and standing external release/provenance gates are next",
   ],
   cronStatus:

@@ -947,6 +947,11 @@ _Six parallel peer reviews on disk at `project-context/peer-reviews/autonomous-2
 4. If blocked, flip to `[!]` with a one-line reason.
 5. When adding new tasks: insert them at the correct priority; ID them `P{paper}-{slug}` or `P-{program-slug}` for cross-paper.
 6. Never delete a completed task row from the history. That's the record.
+- **2026-07-16 — P4 v1.0.260 STRICT-PRIMARY RELEASE-CONTRACT SYNCHRONIZATION — cap holds 80**
+  - Local overlay `apjs_release_v1.0.259_strict/` binds the unchanged immutable catalog revision/hash to the exact strict selection, 10,000-draw null, schema, checksums, and reproducer; focused regression/preflight suite passes 22/22.
+  - Exact PDF: 25 pp, SHA-256 `2a747d6a…96b5`, MD5 `2e2e1fa4`; 16 mirrors, retention, visual audit, and Convex row `k57e6e8dbp747r7n16vnc084r58antdv` pass.
+  - OPEN: publish `apjs-release/v1.0.259-strict-primary/` to HF and record/verify its immutable provider revision. No token was available, so the local dry-run receipt is not represented as publication.
+
 - **2026-07-16 — P4 v1.0.259 / P5 v0.1.139 RESIDUAL-CONFIRMATION CLOSURES — caps hold 80/74**
   - Board: P4 Grok MINOR / Gemini MINOR / Codex-subscription MAJOR; P5 unanimous MINOR. All six legs support the central catalog-specific nulls.
   - Truth audit verified P4 table/release synchronization defects and P5 interaction/covariance/count/determinism defects; all manuscript-level findings are closed in the new candidates and protected by the P4/P5 science-contract preflight.

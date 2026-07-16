@@ -57,6 +57,26 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p4-strict-primary-release-contract-2026-07-16",
+    dateISO: "2026-07-16",
+    timePT: "2:07 AM",
+    kind: "closure-wave",
+    title: "P4 v1.0.260 — strict-primary release contract synchronized locally",
+    papers: ["P4"],
+    summary:
+      "The unchanged 8.47M-row catalog remains pinned to immutable HF revision db110233. A content-addressed local overlay now binds the strict 890,069-row predicate, exact 10,000-draw null, schema, checksums, and reproducer; manuscript and dataset/schema documentation no longer present the historical unsafe-inclusive null as current. Immutable provider publication remains open.",
+    keyTakeaways: [
+      "Strict reproduction: N_selected=890,069, N_support=887,472, z_mom=+0.6346509, p=0.2376762",
+      "22 focused release/preflight tests pass; publisher dry run inventories seven required files",
+      "Exact PDF: 25 pp / sha256 2a747d6a / md5 2e2e1fa4; 16 mirrors, retention, visual audit, and Convex sync pass",
+      "No HF publication, DOI, readiness uplift, submission, or acceptance is claimed",
+    ],
+    links: [
+      { label: "P4 canonical status", href: `${GH}/project-context/SSOT/paper-4/status.md` },
+      { label: "Strict overlay manifest", href: `${GH}/pipelines/p2_chirality/apjs_release_v1.0.259_strict/MANIFEST.json` },
+    ],
+  },
+  {
     id: "p4-p5-residual-confirmation-closure-2026-07-16",
     dateISO: "2026-07-16",
     timePT: "1:45 AM",
