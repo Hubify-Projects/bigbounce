@@ -47,6 +47,7 @@ jobs:
       - name: Run package tests
         run: python -m pytest packages/namaster-proof/tests
       - name: Run independent example
+        shell: bash
         run: |
           python packages/namaster-proof/examples/synthetic_window.py \
             --output "${RUNNER_TEMP}/synthetic_result.json"
