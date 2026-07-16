@@ -48,7 +48,7 @@
     "reproducibility/p1_namaster_500mc/scripts/runpod_watchdog_deletion_drill.py"
   ],
   "output_root": "reproducibility/p1_namaster_500mc/results/physical_spectrum_v2",
-  "canonical_command": "NAMASTER_NREAL=500 NAMASTER_OUTPUT_DIR=reproducibility/p1_namaster_500mc/results/physical_spectrum_v2 python reproducibility/p1_namaster_500mc/scripts/namaster_500mc.py",
+  "canonical_command": "OMP_NUM_THREADS=1 NAMASTER_REALIZATION_WORKERS=8 NAMASTER_NREAL=500 NAMASTER_OUTPUT_DIR=reproducibility/p1_namaster_500mc/results/physical_spectrum_v2 python reproducibility/p1_namaster_500mc/scripts/namaster_500mc.py",
   "robustness_commands": [
     "C10_NREAL=500 python reproducibility/p1_namaster_500mc/scripts/c10_robustness_battery.py --only-config canonical_refit",
     "C10_NREAL=500 python reproducibility/p1_namaster_500mc/scripts/c10_robustness_battery.py --only-config apod_fwhm_0p5",

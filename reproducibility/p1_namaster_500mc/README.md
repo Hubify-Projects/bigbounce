@@ -37,7 +37,7 @@ Superseded exact-window artifacts:
 | simulated `LMAX` | 1024 |
 | canonical apodized `f_sky` | 0.3226 |
 | polarization white noise | 10 uK-arcmin |
-| bins | 20 integer-edge bins from ell 30 to 1536 |
+| bins | 20 integer-edge bins from ell 30 through the simulated `LMAX=1024` |
 | realizations per injection/configuration | 500 |
 | seed range per injection/configuration | 42--541 |
 | corrected sky spectra | CAMB 1.6.6 `lensed_scalar`, raw C-ell in microkelvin-squared |
@@ -56,8 +56,11 @@ CMB map enters the calculation.
 scripts/namaster_500mc.py              canonical three-injection run
 scripts/physical_spectra.py            pinned raw CAMB EE/BB + fail-closed contract
 scripts/test_physical_spectra.py       D-ell/C-ell and physical-BB regressions
+scripts/multipole_contract.py          shared field/bin harmonic support
+scripts/test_multipole_contract.py     off-by-one and support regressions
 scripts/windowed_rotation.py           exact bandpower-window response
 scripts/test_windowed_rotation.py      algebra/operator regression
+scripts/test_canonical_parallel.py     serial/parallel science equivalence
 scripts/c10_robustness_battery.py      five robustness configurations
 scripts/test_c10_checkpoint_resume.py  crash/resume and receipt regression
 scripts/declared_fsky_sign_battery.py  two f_sky and one negative-sign check
@@ -75,8 +78,36 @@ Run the regression and canonical ensemble:
 ```bash
 python scripts/test_windowed_rotation.py
 python scripts/test_physical_spectra.py
-NAMASTER_OUTPUT_DIR=results/physical_spectrum_v2 python scripts/namaster_500mc.py
+OMP_NUM_THREADS=1 NAMASTER_REALIZATION_WORKERS=8 \
+  NAMASTER_OUTPUT_DIR=results/physical_spectrum_v2 \
+  python scripts/namaster_500mc.py
 ```
+
+The canonical realization loop preserves seed order under process-level
+parallelism. A bounded `NSIDE=256`, `N=8` benchmark on Apple Silicon measured
+23.11 s serial versus 17.20 s with four workers (25.6% lower wall time), with
+identical scientific JSON after removing runtime/execution metadata. The
+production contract uses eight workers and one OpenMP thread per worker.
+
+### Apple Silicon local runtime
+
+NaMaster requires OpenMP. Apple Clang does not accept the package's required
+`-fopenmp` build flag, so use Homebrew GCC:
+
+```bash
+brew install gcc gsl fftw cfitsio
+python3.12 -m venv /tmp/p1b-namaster-local
+export CC=/opt/homebrew/bin/gcc-16
+export CXX=/opt/homebrew/bin/g++-16
+export CPPFLAGS=-I/opt/homebrew/include
+export LDFLAGS=-L/opt/homebrew/lib
+export PKG_CONFIG_PATH=/opt/homebrew/lib/pkgconfig
+/tmp/p1b-namaster-local/bin/pip install -r requirements.txt 'astropy<7'
+```
+
+Run `scripts/test_canonical_parallel.py` in that environment before production.
+This local route avoids provider mutation and is the preferred fallback while
+the RunPod watchdog-deletion and network-volume retention gates remain open.
 
 For a deterministic bounded route (one realization at NSIDE 128/LMAX 256):
 

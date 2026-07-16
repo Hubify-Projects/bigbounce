@@ -73,6 +73,27 @@ inventory reconciliation must fail closed on.
 
 ## Evidence update — 2026-07-16
 
+The P1B physical-spectrum closure lane produced two additional process
+accelerations before production:
+
+- a local Apple-Silicon NaMaster 2.6 runtime was built with Homebrew GCC after
+  Apple Clang correctly failed on the required OpenMP flag, providing a
+  no-provider-mutation execution route while the RunPod live-deletion and
+  retention gates remain closed;
+- the first bounded smoke run exposed a previously latent multipole-contract
+  error: spectra stopped at `LMAX=2*NSIDE`, bins extended to `3*NSIDE`, and
+  `NmtField` silently defaulted to `3*NSIDE-1`. The suite now uses one tested
+  field/bin contract whose final exclusive edge is `LMAX+1`, and the corrected
+  smoke run passes the exact-window equivalence check at `1.626e-19`;
+- canonical realization-level process parallelism preserves ordered seeds and
+  produces scientific JSON identical to the serial route. At `NSIDE=256`,
+  `N=8`, four workers reduced measured wall time from 23.11 s to 17.20 s
+  (25.6%). The frozen production command uses eight workers with one OpenMP
+  thread each.
+
+These changes accelerate and de-risk the missing production run; they do not
+constitute the 500-realization result and do not increase readiness.
+
 The next computational-closure increment is now committed and packaged:
 
 - commit `6bb2bc1e` closes the verified P4/P5 computational confirmation

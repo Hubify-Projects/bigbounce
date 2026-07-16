@@ -50,6 +50,7 @@ import json
 import time
 import numpy as np
 import subprocess
+from multiprocessing import get_context
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 OUTPUT_DIR = os.environ.get(
@@ -117,6 +118,7 @@ BETA_OBS_ERR = np.deg2rad(0.094)   # 1σ uncertainty
 T_CMB_UK = 2.725e6
 F_SKY = 0.40                       # ACT survey coverage target
 N_REAL = int(os.environ.get("NAMASTER_NREAL", "1" if SMOKE_MODE else "500"))
+REALIZATION_WORKERS = int(os.environ.get("NAMASTER_REALIZATION_WORKERS", "1"))
 SEED_BASE = 42                     # Deterministic for reproducibility
 
 NOISE_LEVEL_UKARMIN = 10.0
@@ -200,6 +202,25 @@ def apply_birefringence(Q, U, beta):
     cos2b, sin2b = np.cos(2 * beta), np.sin(2 * beta)
     return cos2b * Q - sin2b * U, sin2b * Q + cos2b * U
 
+
+def _measure_realization(index):
+    """Return ordered EB bandpowers for one deterministic seed."""
+    np.random.seed(SEED_BASE + index)
+    maps = hp.synfast(
+        [np.zeros(LMAX + 1), cl_ee, cl_bb, np.zeros(LMAX + 1)],
+        NSIDE, lmax=LMAX, new=True, verbose=False,
+    )
+    q, u = maps[1], maps[2]
+    q += np.random.normal(0, np.sqrt(NOISE_VAR), len(q))
+    u += np.random.normal(0, np.sqrt(NOISE_VAR), len(u))
+    field = nmt.NmtField(mask, [q, u], lmax=LMAX)
+    coupled = nmt.compute_coupled_cell(field, field)
+    return [
+        workspace.decouple_cell(rotate_eb_spectra(coupled, beta))[1]
+        for beta in _WORKER_BETAS
+    ]
+
+
 def simulate_and_measure_all(betas, n_real=N_REAL, seed_base=SEED_BASE):
     """Measure all betas from one identical-seed noisy map per realization.
 
@@ -210,19 +231,30 @@ def simulate_and_measure_all(betas, n_real=N_REAL, seed_base=SEED_BASE):
     regression-tested against the direct field route.
     """
     betas = [float(beta) for beta in betas]
+    if seed_base != SEED_BASE:
+        raise ValueError("canonical seed base must remain fixed")
+    if REALIZATION_WORKERS <= 0:
+        raise ValueError("NAMASTER_REALIZATION_WORKERS must be positive")
+    global _WORKER_BETAS
+    _WORKER_BETAS = tuple(betas)
     all_cl_eb = {beta: [] for beta in betas}
-    for i in range(n_real):
-        np.random.seed(seed_base + i)
-        maps = hp.synfast([np.zeros(LMAX + 1), cl_ee, cl_bb, np.zeros(LMAX + 1)],
-                          NSIDE, lmax=LMAX, new=True, verbose=False)
-        Q, U = maps[1], maps[2]
-        Q += np.random.normal(0, np.sqrt(NOISE_VAR), len(Q))
-        U += np.random.normal(0, np.sqrt(NOISE_VAR), len(U))
-        f_pol = nmt.NmtField(mask, [Q, U], lmax=LMAX)
-        cl_coupled = nmt.compute_coupled_cell(f_pol, f_pol)
-        for beta in betas:
-            rotated_coupled = rotate_eb_spectra(cl_coupled, beta)
-            all_cl_eb[beta].append(workspace.decouple_cell(rotated_coupled)[1])
+    indices = range(n_real)
+    pool = None
+    if REALIZATION_WORKERS == 1:
+        measured = map(_measure_realization, indices)
+    else:
+        pool = get_context("fork").Pool(processes=REALIZATION_WORKERS)
+        measured = pool.imap(_measure_realization, indices)
+    try:
+        for index, realization in enumerate(measured, start=1):
+            for beta, values in zip(betas, realization):
+                all_cl_eb[beta].append(values)
+            if index % 25 == 0 or index == n_real:
+                print(f"    completed {index}/{n_real} realizations")
+    finally:
+        if pool is not None:
+            pool.close()
+            pool.join()
 
     ell_effs = bandpower_bin.get_effective_ells()
     cl_eb_null_theory = windowed_bandpowers(rotation_response, 0.0)[1]
@@ -327,6 +359,10 @@ summary = {
         "numpy": np.__version__,
         "healpy": hp.__version__,
         "pymaster": nmt.__version__,
+    },
+    "execution": {
+        "realization_workers": REALIZATION_WORKERS,
+        "ordered_seed_aggregation": True,
     },
     "paper1_prediction_deg": 0.27,
     "observed_value_deg": 0.342,
