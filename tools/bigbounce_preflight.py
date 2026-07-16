@@ -26,7 +26,6 @@ SCHEMA = "bigbounce.pre-review-portfolio-receipt/v1"
 ENGINE = Path.home() / ".claude/scistack/hubstack/learning-loop/paper-pre-review-check/scripts/pre_review_check.py"
 DEFAULT_RULES = "project-context/pre-review-rules.json"
 EXPECTED_ENGINE_COMMIT = "79a436e"
-P1B_ANALYSIS_MANIFEST = "reproducibility/p1b_analysis_artifact_manifest_v1B.0.108.json"
 ALLOWED_LOCAL_ENGINE_PATHS = (
     "project-context/pre-review-rules.json",
     "tools/bigbounce_preflight.py",
@@ -152,8 +151,13 @@ def evaluate(root: Path, rules_path: Path) -> dict[str, Any]:
         for key, value in p1b_contract_paths.items()
     ):
         raise PortfolioError("p1b_science_contract_paths must be a string map")
+    p1b_analysis_manifest = p1b_contract_paths.get("analysis_manifest")
+    if "p1b-analysis-manifest" in validator_ids and not p1b_analysis_manifest:
+        raise PortfolioError(
+            "p1b-analysis-manifest requires p1b_science_contract_paths.analysis_manifest"
+        )
     validator_inputs = tuple(
-        P1B_ANALYSIS_MANIFEST for item in validator_ids if item == "p1b-analysis-manifest"
+        p1b_analysis_manifest for item in validator_ids if item == "p1b-analysis-manifest"
     ) + tuple(
         p1b_contract_paths.values()
         if "p1b-science-contracts" in validator_ids else ()
@@ -172,7 +176,7 @@ def evaluate(root: Path, rules_path: Path) -> dict[str, Any]:
         if validator_id == "p1b-analysis-manifest":
             portfolio_validators.append({
                 "id": validator_id,
-                **verify_manifest(root, root / P1B_ANALYSIS_MANIFEST),
+                **verify_manifest(root, root / p1b_analysis_manifest),
             })
         elif validator_id == "p1b-science-contracts":
             try:

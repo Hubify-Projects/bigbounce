@@ -198,6 +198,37 @@ class PortfolioPreflightTests(unittest.TestCase):
         verifier.assert_called_once_with(self.root.resolve(), paths)
         self.assertEqual(receipt["portfolio_validators"][0]["id"], "p1b-science-contracts")
 
+    def test_p1b_analysis_manifest_uses_catalog_path(self):
+        relative = "receipts/current-p1b-manifest.json"
+        path = self.root / relative
+        path.parent.mkdir(exist_ok=True)
+        path.write_text("{}\n", encoding="utf-8")
+        subprocess.run(["git", "add", "receipts"], cwd=self.root, check=True)
+        subprocess.run(["git", "commit", "-qm", "add current manifest"], cwd=self.root, check=True)
+        payload = json.loads(self.rules.read_text(encoding="utf-8"))
+        payload["portfolio_validators"] = ["p1b-analysis-manifest"]
+        payload["p1b_science_contract_paths"] = {"analysis_manifest": relative}
+        self.rules.write_text(json.dumps(payload), encoding="utf-8")
+        expected = {"schema": "test-manifest/v1", "verdict": "PASS"}
+        with (
+            self.registry_patch(),
+            mock.patch("bigbounce_preflight.verify_manifest", return_value=expected) as verifier,
+        ):
+            receipt = write_receipt(self.root, self.rules, self.receipt)
+        verifier.assert_called_once_with(
+            self.root.resolve(), self.root.resolve() / relative
+        )
+        self.assertEqual(receipt["portfolio_validators"][0]["verdict"], "PASS")
+
+    def test_p1b_analysis_manifest_requires_catalog_path(self):
+        payload = json.loads(self.rules.read_text(encoding="utf-8"))
+        payload["portfolio_validators"] = ["p1b-analysis-manifest"]
+        self.rules.write_text(json.dumps(payload), encoding="utf-8")
+        with self.registry_patch(), self.assertRaisesRegex(
+            PortfolioError, "requires .*analysis_manifest"
+        ):
+            write_receipt(self.root, self.rules, self.receipt)
+
     def test_unsafe_portfolio_engine_path_fails_closed(self):
         payload = json.loads(self.rules.read_text(encoding="utf-8"))
         payload["portfolio_engine_paths"] = ["../../outside.py"]
