@@ -57,6 +57,27 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "recursive-preflight-packaging-acceleration-2026-07-16",
+    dateISO: "2026-07-16",
+    kind: "skill-improvement",
+    title: "Recursive review loop — deterministic preflight, packet, alias, and P4/P5 package gates accelerated",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary:
+      "The first enforced proactive portfolio sweep converted real P1B/P5 provenance defects into executable regressions before another review. Release aliases are registry-owned, dispatch no longer repeats an identical six-paper verification, equivalent regenerated receipts map to one deterministic packet, and P4/P5 now have exact commit-bound source contracts with isolated standalone proofs. The P3 no-launch path fell from 36.20s to 13.05s (64%) without weakening any gate. No reviewer verdict or readiness score changed.",
+    keyTakeaways: [
+      "Measured dispatch acceleration: 36.20s to 13.05s while retaining six-paper receipt plus immutable-packet verification",
+      "P4 v1.0.255 and P5 v0.1.134 source bundles independently compile to 29/39 pages with zero errors, undefined references, or overfull boxes",
+      "Two detector/infrastructure false positives were fixed with positive/negative regressions rather than waived",
+      "OpenAI-family review remains Codex/ChatGPT subscription-only; no OpenAI API or Anthropic leg ran in this closure",
+    ],
+    links: [
+      { label: "Proactive portfolio audit", href: `${GH}/project-context/audits/PROACTIVE_PORTFOLIO_SWEEP_2026-07-15.md` },
+      { label: "Dispatch acceleration", href: `${GH_COMMIT}/349e33dc` },
+      { label: "P4/P5 bundle contracts", href: `${GH_COMMIT}/678e93fe` },
+      { label: "P4/P5 standalone proofs", href: `${GH_COMMIT}/aaf33368` },
+    ],
+  },
+  {
     id: "p5-v01134-proactive-release-contract-2026-07-15",
     dateISO: "2026-07-15",
     timePT: "4:43 PM",
@@ -8290,6 +8311,7 @@ export const skillsSeries: SkillsPoint[] = [
    { id: "ext-submit ApJS-variant support", dateISO: "2026-07-13", patterns: 71, promptRules: 38, tooling: 17, note: "ApJS-variant reviewer-submission support (tooling 16→17). tools/ext_submit.sh gained a P3APJS paper key routing to pipelines/p3_anomaly_engine/paper3_apjs.pdf, and the ApJS-variant INT review lane (int_wave_apjs.sh) was wired in — so the P3 ApJS venue-variant (the PROVEN venue-flip whose ApJS-framed reviews are legitimate reviews of the same science, directive-M) can be submitted to the headed-browser EXT reviewers and the native-PDF INT API legs from the same harvest tooling as the PRD papers, instead of a hand-built one-off. Shipped alongside the M16-EXT P1U+P4 adjudication bundle (0 genuinely-new; streaks P1U 6→7 · P4 5→6; cap P1A 62→68 · P4 74 HOLDS). patterns/promptRules unchanged — pure review-harness tooling." },
   { id: "process-audit + M20-M36 harvest hardening", dateISO: "2026-07-14", patterns: 71, promptRules: 38, tooling: 18, note: "Process audit 2026-07-14 (project-context/PROCESS_AUDIT_2026-07-14.md) cataloging 12 recurring EXT-harvest failure classes across the M20→M36 wave block, 8 of them ROOT-FIXED in committed tools this block (tooling 17→18 counts the harvest raw-sanity + paper-signature provenance gate now landing this cycle): (a) ChatGPT stale pre-send URL captured as the leg chat → PRE_URL-differs guard 3fb1ffd9; (b) submit_* trailing rc leaking through the set -e dispatch → orphaned leg with no OK/FAIL → esac||true dispatch guard a08dd750; (c) three ChatGPT 'rate-limit' failures were REDIRECT LATENCY not quota (sends landed server-side) → 120s poll + sidebar content-liveness fallback 02d68a8f + standing headed-diagnostic-before-accepting-a-cause rule; (d) OK recorded with an empty URL → die guard 80914698; (e) wrong-PDF-attach ×2 (M32/M34: a stale composer chip from the prior chatgpt leg) → composer-scoped attachment-token (ext_${PAPER}_${ROUND}) verification before send, both chatgpt AND grok, 854acb99; (f) harvest trusting labels (prompt-echo stub / 0-byte / misfiled other-paper raw) → adjudicator-layer directive-I4 catches today, harvest-layer raw-sanity + paper-signature provenance gate lands this cycle; (g) post_verdict cap picked list-order not _creationTime + record_wave full-patch clobbered rich wave rows (~8 rounds hand-corrected) → _creationTime-DESC selection + non-destructive listWaves skip-guard cd02c991; (h) an INT API leg posted under a bare EXT reviewerLabel displaced the EXT cap row → <wave>-INT-<vendor> convention 029cb689. Plus wave_submit.sh per-leg subshell isolation (compound chains can't orphan a sibling) + freshness-check Convex read retry (transient blip no longer blocks a push). Cross-refs ACCELERATION_LOG_2026-07-10 + REPEATED_ASKS_AUDIT_2026-07-11, not duplicating them. patterns/promptRules unchanged — pure review-harness durability." },
   { id: "autolog-2026-07-15", dateISO: "2026-07-15", patterns: 71, promptRules: 38, tooling: 27, note: "Auto-logged 19 skill/process/tooling commits since 2026-07-14. The durable gains are: checkpoint recovery (7d3ed7fd); append-only PDF retention and archive inventory (18a8d50e, cb6262e3, 2000eef2); exact canonical paper/version routing and immutable packets (029158b8, 2bc0e985, 1f942478, be591f45, 6a3908a1, 0f268268, 35bbe3ec, 9f898efd, bfeb2813); sanitized direct-provider receipts (1fd28b3f); subscription-only OpenAI-family review enforcement with legacy API routes failing closed (4f7be06d, 51e9c24f, 1d1f1d03, scistack 66e7ec7); isolated exact-confirmation outputs (902cb712); a freshness-gate repair that distinguishes an intentionally paused anti-loop state from a dead loop while counting exactly six paper blocks (8c1cfe7b); and safe paper-scoped Convex figure reseeding so one caption repair cannot prune every paper (1b89827b). Nine new tools increased tooling 18→27; the final two repairs change existing tooling only. No new review pattern or prompt-rule number is claimed." },
+  { id: "recursive-preflight-packaging-2026-07-16", dateISO: "2026-07-16", patterns: 71, promptRules: 38, tooling: 27, note: "Recursive-loop enforcement and acceleration: registry-owned release aliases (dcf84a73); proactive P5 artifact-contract regression (f3bf8398); duplicate six-paper verification removed and volatile receipt hashes excluded from deterministic packet contents (349e33dc), cutting measured P3 dry-run wall time 36.20s to 13.05s; explicit P4/P5 bundle contracts (678e93fe); line-bounded standalone undefined-reference detection with positive/negative fixtures (fb98bc03); and exact P4/P5 isolated package proofs (aaf33368). No new pattern, prompt rule, or production tool count is claimed; existing gates became faster, deterministic, and executable." },
 ];
 
 export function getReviewRoundByReportSlug(slug: string): ReviewRound | undefined {
