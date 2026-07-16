@@ -2,11 +2,23 @@
   "experiment": "Paper 4 Catalog C Dipolar Analysis (post-TTA)",
   "generator": "pipelines/p2_chirality/run_dipole_catalog_c.py",
   "regeneration_note_2026_06_09": "Anchor regenerated during R23conf after the selection-filter defect above was found; the values in dipole_fit/mc_null below supersede the previously printed 0.43-sigma/p=0.30 pair and the later strict-mask +0.41-sigma result, whose generator could not be reproduced as committed.",
-  "paper_claim": {
+  "primary_fixed_occupancy": {
     "role": "single primary observed-label estimator",
+    "artifact": "pipelines/p2_chirality/outputs/canonical_provenance/p4_primary_hc_label_shuffle_10k.json",
+    "null_array": "pipelines/p2_chirality/apjs_release_v1.0.244/primary_null_amps_10000.npy",
+    "null_array_sha256": "f6360f4bec22669097cee3e2fad8b176291d3ecbfbfbb9a9290d0bce3d5152c0",
+    "significance_sigma": 0.7053170,
+    "rank_p_one_sided_upper_tail": 0.2246775322467753,
+    "rank_k": 2246,
+    "rank_N": 10000,
+    "mc_seed": 20260715,
+    "note": "Canonical P4 v1.0.256 primary: fixed-occupancy galaxy-label randomization on 947,326 supported HC galaxies."
+  },
+  "paper_claim": {
+    "role": "historical pixel-permutation diagnostic; not the primary estimator",
     "significance_sigma": 0.549120193418297,
     "rank_p_one_sided_upper_tail": 0.26517348265173485,
-    "note": "Canonical inclusive-mask values for P4 v1.0.243. Reproduce by running this generator against the exact catalog release."
+    "note": "Retained without deletion as the v1.0.243 pixel-permutation diagnostic. The fixed-occupancy primary is primary_fixed_occupancy above."
   },
   "catalog_c": {
     "source": {
@@ -98,6 +110,6 @@
     "n_mc_realizations": 10000,
     "rng": "numpy.random.default_rng",
     "rng_seed": 20260418,
-    "n_mc_rationale": "Exact 10,000-realization primary array retained for rank and moment reproducibility; the result is far from a discovery tail."
+    "n_mc_rationale": "Exact 10,000-realization historical pixel-permutation diagnostic array retained for rank and moment reproducibility; it is not the fixed-occupancy primary."
   }
 }

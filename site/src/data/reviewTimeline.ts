@@ -78,6 +78,26 @@ export const reviewRounds: ReviewRound[] = [
     ],
   },
   {
+    id: "p4-v10256-exact-board-closure-2026-07-15",
+    dateISO: "2026-07-15",
+    timePT: "11:02 PM",
+    kind: "closure-wave",
+    title: "P4 v1.0.256 — exact-board findings truth-audited and closed; readiness holds",
+    papers: ["P4"],
+    summary:
+      "The exact v1.0.255 non-Anthropic board returned Grok MAJOR, Gemini MINOR, and ChatGPT-subscription Codex MAJOR. Truth audit verified a stale primary artifact, finite-Monte-Carlo/null-generator wording, bias-metric conflicts, and overextended causal/spatial/D4 language. v1.0.256 closes those bounded defects without changing the primary observed-label null or the 80 readiness cap; exact v1.0.256 confirmation and standing training, covariance, metadata, DOI, and human gates remain.",
+    keyTakeaways: [
+      "Exact v1.0.255 board: Grok direct MAJOR, Gemini direct MINOR, Codex subscription MAJOR; no OpenAI API or Anthropic leg",
+      "v1.0.256 reconciles the retained fixed-occupancy artifact, finite-MC tail/null generator, committed bias metrics, and interpretation scope",
+      "Exact PDF: 29 pages, SHA-256 6dfccf7c, MD5 31057aad; directive-G, 16 mirrors, and Convex synchronization pass",
+      "Readiness holds 80; exact confirmation and standing scientific/release/human gates remain open",
+    ],
+    links: [
+      { label: "P4 canonical status", href: `${GH}/project-context/SSOT/paper-4/status.md` },
+      { label: "Exact v1.0.255 review evidence", href: `${PR}/INT_v3/ROUND_2026-07-15-P4-v1.0.255-EXACTPDF-f9b011a8-NONANTHROPIC-RECURSIVE` },
+    ],
+  },
+  {
     id: "p5-v01134-proactive-release-contract-2026-07-15",
     dateISO: "2026-07-15",
     timePT: "4:43 PM",
