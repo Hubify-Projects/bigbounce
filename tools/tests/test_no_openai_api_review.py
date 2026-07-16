@@ -315,6 +315,18 @@ UTC: 2026-07-15T09:06:44Z
             self.assertNotIn("Authorization", header)
             self.assertNotIn("test-secret", header)
 
+    def test_direct_provider_retry_archives_existing_raw_before_overwrite(self):
+        module = load_script("int_api_review_2026-07-08.py")
+        with tempfile.TemporaryDirectory() as td:
+            outfile = Path(td) / "API_P4_grok.md"
+            original = b"first failed provider body\n"
+            outfile.write_bytes(original)
+            archived = module.archive_existing_raw(outfile)
+            self.assertIsNotNone(archived)
+            self.assertEqual(archived.read_bytes(), original)
+            self.assertIn("provider-raw-archive", archived.parts)
+            self.assertIn(hashlib.sha256(original).hexdigest()[:12], archived.name)
+
     def test_direct_api_leg_requires_preflight_before_network(self):
         module = load_script("int_api_review_2026-07-08.py")
         module.REGISTRY = {"P1A": {

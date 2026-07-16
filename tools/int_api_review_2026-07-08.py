@@ -7,7 +7,9 @@ OpenAI is deliberately blocked here: OpenAI reviews run through the authenticate
 Codex CLI/ChatGPT subscription, never an API endpoint or OPENAI_API_KEY.
 Usage: int_api_review_2026-07-08.py <P1A|P1B|P2|P3|P4|P5> <grok|gemini>
 """
-import os, sys, json, time, warnings, datetime, pathlib
+from __future__ import annotations
+
+import os, sys, json, time, warnings, datetime, pathlib, hashlib
 warnings.filterwarnings("ignore")
 
 from paper_registry import CANONICAL_IDS, load_registry, repo_root
@@ -27,6 +29,27 @@ REGISTRY = load_registry(REPO)
 OUTDIR = pathlib.Path(os.environ.get("INT_OUTDIR")
                       or (REPO / "project-context/peer-reviews/INT_v3/ROUND_2026-07-09"))
 MANIFEST = OUTDIR / "manifest.jsonl"
+
+
+def archive_existing_raw(outfile: pathlib.Path) -> pathlib.Path | None:
+    """Preserve a rolling provider raw before a retry overwrites it.
+
+    The manifest is append-only, so every manifest row must be able to retain
+    a distinct raw body.  The stable API_<paper>_<vendor>.md path remains the
+    newest result for existing parsers, while earlier bodies move into a
+    content-addressed sibling archive.
+    """
+    if not outfile.exists():
+        return None
+    data = outfile.read_bytes()
+    digest = hashlib.sha256(data).hexdigest()
+    archive_dir = outfile.parent / "provider-raw-archive"
+    archive_dir.mkdir(parents=True, exist_ok=True)
+    stamp = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    archived = archive_dir / f"{outfile.stem}__{stamp}__{digest[:12]}{outfile.suffix}"
+    if not archived.exists():
+        archived.write_bytes(data)
+    return archived
 
 
 def live_version(tex_rel: str) -> str:
@@ -387,6 +410,10 @@ def run_one(paper, vendor):
            "pdf_path": rel, "pdf_sha256": pdf_sha256, "review_commit": review_commit,
            "packet_key": packet["packet_key"], "review_profile": entry["review_profile"]}
     outfile = OUTDIR / f"API_{paper}_{vendor}.md"
+    archived_raw = archive_existing_raw(outfile)
+    if archived_raw is not None:
+        rec["superseded_raw_archive"] = str(archived_raw.relative_to(OUTDIR))
+        rec["superseded_raw_sha256"] = hashlib.sha256(archived_raw.read_bytes()).hexdigest()
     last_err = None
     last_latency = None
     last_attempt = 0
