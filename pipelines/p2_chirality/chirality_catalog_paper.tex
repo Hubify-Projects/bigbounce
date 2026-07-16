@@ -55,7 +55,13 @@
 \newcommand{\HCRI}{\textsc{HC-RI}}
 \newcommand{\FSC}{\textsc{FS-C}}
 \newcommand{\MAGF}{\textsc{MASTER-AGF}}
-\newcommand{\paperVersion}{v1.0.262}
+\newcommand{\paperVersion}{v1.0.263}
+% v1.0.263 (2026-07-16 16:24 PDT — closes the single genuinely-new-real item
+%   from the exact v1.0.262 board truth audit (C3): the App-B quarantine
+%   stability value (z=+0.48 excluded vs +0.52 baseline, c11b 10^4-perm) is
+%   now surfaced in the main-Results post-hoc-disclosure paragraph with an
+%   Appendix pointer. One sentence; no number changed. Directive-G: recompile
+%   0 undef + mirror all served paths + Convex paperVersions:bump paper-4.)
 % v1.0.262 (2026-07-16 16:03 PDT — INT_v3 R-round truth-audit closure
 %   (ROUND_2026-07-16-P4-v1.0.261-EXACTPDF-60d96cde-CLAUDESTACK-CONFIRM,
 %   P4_v1.0.261_truth_audit.md). Closes the two GENUINELY-NEW-REAL findings:
@@ -739,7 +745,7 @@
 %   the established two-step provenance gate.)
 % v1.0.171->172 (2026-06-10 — EXT1 closure wave restamp: recompile + mirror bundle;
 %   Data Availability hash pinned to the v1.0.172 stamp commit per provenance gate.)
-\newcommand{\paperTimestamp}{July 16, 2026, 16:03 PDT}
+\newcommand{\paperTimestamp}{July 16, 2026, 16:24 PDT}
 % v1.0.217->218 (2026-07-05 — DATA-UNLOCK: edge-on-ISOLATED argmax tie-break coherence
 %   now COMPUTED (was pod/data-lab-deferred). Join catalog_production (class_eq/RA/Dec) to
 %   committed spiral_morphology_dr8 b/a on dr8_id; edge-on (b/a<0.30) borderline population
@@ -1088,7 +1094,10 @@ Thus all six cells have $|z|<0.8$. These are robustness diagnostics on \HCRI{} t
 The unsafe-row quarantine predicate was introduced and finalized during
 post-review closure after inspection of the earlier unsafe-inclusive result; it
 was not preregistered or fixed before unblinding. The strict rerun is therefore a
-transparent corrective analysis, not a blinded confirmatory test.
+transparent corrective analysis, not a blinded confirmatory test. Its effect on
+the dipole is small: excluding the flagged rows leaves the real-space result
+essentially unchanged ($z=+0.48$ excluded vs.\ $+0.52$ baseline under the c11b
+$10^{4}$-permutation convention; Appendix~\ref{sec:app_classifier}).
 
 \begin{table}[tbp]
 \caption{Primary HC estimator audit. The empirical rank value is the one-sided upper tail. The exact strict-sample fixed-occupancy null-array SHA-256 is \texttt{3a03ca4b008844fd...e32ce7d}; full precision and the complete hash are in the computational-closure receipt.\label{tab:primary_audit}}

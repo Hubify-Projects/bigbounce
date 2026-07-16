@@ -165,9 +165,9 @@ export const liveStatus: LiveStatus = {
     if (paper.slug === "paper-4") {
       return {
         ...paper,
-        version: "v1.0.262",
+        version: "v1.0.263",
         pendingWork:
-          "v1.0.262 closes both genuinely-new-real findings from the exact v1.0.261 board truth audit (Grok MAJOR / Gemini MINOR / Claude MAJOR, 14 findings -> 0 falsified): an editorial plain-English gloss of raw_flip_qc_unsafe at its first main-text declaration, and a delivered per-region CW-fraction monopole correction map (HEALPix NSIDE=8 and NSIDE=64) reproducing the canonical Table-4 monopole bit-for-bit. Training independence, spatial transfer/covariance, complete metadata, archive/DOI, exact v1.0.262 non-Anthropic re-review, and human review remain. Readiness holds 80.",
+          "The exact v1.0.262 board (Grok MINOR / Gemini MINOR / Claude Opus subagent MAJOR, 18 findings -> 6 already-tracked, 3 disclosed re-flags, 7 opinions, 1 falsified, 1 genuinely-new-real) is truth-audited. v1.0.263 closes the one genuinely-new-real item with a single main-Results sentence surfacing the Appendix-B quarantine stability value (z=+0.48 excluded vs +0.52 baseline, c11b 10^4-permutation) via an Appendix pointer; no number changed. Training independence, spatial transfer/covariance, complete metadata, archive/DOI, exact v1.0.263 non-Anthropic re-review, and human review remain. Readiness holds 80.",
       };
     }
     if (paper.slug === "paper-1a") {
@@ -201,7 +201,7 @@ export const liveStatus: LiveStatus = {
         version: "v0.1.140-2026-07-16",
         readiness: 74,
         pendingWork:
-          "v0.1.140 closes the one genuinely-new-real finding from the exact v0.1.139 board with a real whole-tree family-wise significance computation (p_global<=0.822, non-significant). Publish independently reviewable Paper IV/P5 releases, complete editorial closure, exact v0.1.140 re-review, and human review. Readiness holds 74.",
+          "v0.1.140 closes the one genuinely-new-real finding from the exact v0.1.139 board with a real whole-tree family-wise significance computation (p_global<=0.822, non-significant). The exact v0.1.140 board (Grok MAJOR, flipped from MINOR / Gemini MINOR / Claude Opus subagent MAJOR, 18 findings -> 2 already-tracked, 7 disclosed re-flags, 8 opinions, 0 falsified, 1 genuinely-new-real) is truth-audited; Grok's missing-RSD-rerun claim was FALSIFIED. Closure of the one genuinely-new-real item (a bounded semi-analytic forward-leakage injection) is tracked as v0.1.141 and is IN PROGRESS, not yet complete. Publish independently reviewable Paper IV/P5 releases, complete editorial closure, exact v0.1.140 re-review, and human review. Readiness holds 74.",
       };
     }
     return paper;
@@ -209,7 +209,7 @@ export const liveStatus: LiveStatus = {
   currentlyRunning: [
     "P1B v2B.0.8 exact confirmation is truth-audited (no new executable defect); the archive/editorial gate is the next P1B action",
     "P1B immutable archive identifier remains a real submission blocker",
-    "P4 v1.0.262 and P5 v0.1.140 PDFs are built, retained, mirrored, and synchronized; P4 closes the v1.0.261 board's gloss + delivered monopole correction map findings",
+    "P4 v1.0.263 and P5 v0.1.140 PDFs are built, retained, mirrored, and synchronized; P4 closes the v1.0.262 board's Appendix-B stability-value main-Results pointer finding; P5's v0.1.141 forward-leakage-injection closure is in progress",
     "Exact non-Anthropic re-review and standing external release/provenance gates are next",
   ],
   cronStatus:

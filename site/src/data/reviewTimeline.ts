@@ -57,6 +57,72 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p4-v1-0-263-appendix-b-stability-closure-2026-07-16",
+    dateISO: "2026-07-16",
+    timePT: "4:24 PM",
+    kind: "closure-wave",
+    title: "P4 v1.0.263 — Appendix-B quarantine stability value surfaced in main Results",
+    papers: ["P4"],
+    summary:
+      "v1.0.263 closes the one genuinely-new-real finding from the exact v1.0.262 board truth audit: the strict-vs-baseline quarantine stability delta (z=+0.48 excluded vs +0.52 baseline, c11b 10^4-permutation convention) lived only in Appendix B. A single main-Results sentence in the post-hoc-disclosure paragraph now points to that Appendix-B value. No number changed. Readiness holds 80.",
+    keyTakeaways: [
+      "One-sentence editorial closure, not a science change: main Results now points readers to the Appendix-B strict-vs-baseline stability delta instead of leaving it appendix-only",
+      "26 pp, PDF SHA-256 de12ac783b0581f35ad024b2314283726a123b3c5a83db5dd1c833021aa9da10, MD5 f2a6122b1c00ec41b2cd6192d300cc6f, timestamp 2026-07-16 16:24 PT",
+      "directive-G PASS, 16 mirrors byte-identical, retention manifest 20260716T232537Z-5e2b2f258190.json, Convex row k57epq3e37135t5dfmad85eqcd8anv2m",
+      "No readiness uplift: exact v1.0.263 confirmation, training provenance, spatial transfer/joint covariance, complete metadata, DOI-backed archive, and human ApJS review remain open",
+    ],
+    links: [
+      { label: "P4 canonical status", href: `${GH}/project-context/SSOT/paper-4/status.md` },
+      { label: "Truth audit", href: `${PR}/INT_v3/ROUND_2026-07-16-P4-v1.0.262-EXACTPDF-f59fc937-CLAUDESTACK-CONFIRM/P4_v1.0.262_truth_audit.md` },
+    ],
+  },
+  {
+    id: "p4-v1-0-262-exact-confirmation-board-2026-07-16",
+    dateISO: "2026-07-16",
+    timePT: "4:10 PM",
+    kind: "closure-wave",
+    title: "P4 v1.0.262 — exact confirmation board and truth audit",
+    papers: ["P4"],
+    summary:
+      "The exact 26-page v1.0.262 PDF (SHA-256 f59fc937) was reviewed by Grok 4.3 direct API (MINOR REVISIONS), Gemini 3.1 Pro direct API (MINOR REVISIONS), and a Claude Opus subagent (MAJOR REVISIONS); Codex remained absent, paused per CLAUDE.md directive N. Truth audit dispositioned all 18 findings: 6 already-tracked gates, 3 disclosed re-flags, 7 venue/style opinions, 1 FALSIFIED (the claim that the delivered per-region monopole correction map appears only in Data Availability — it is prominently carried in main Results and Conclusions), and 1 genuinely-new-real item — the strict-vs-baseline quarantine stability delta lived only in Appendix B — closed same-day in v1.0.263.",
+    keyTakeaways: [
+      "Board: Grok MINOR / Gemini MINOR / Claude Opus subagent MAJOR; Codex absent per directive N",
+      "18 findings truth-audited: 6 already-tracked gates, 3 disclosed re-flags, 7 opinions, 1 falsified, 1 genuinely-new-real",
+      "The falsified claim: the monopole correction map is NOT buried in Data Availability — it is in main Results §4.2 and Conclusions",
+      "The 1 genuinely-new-real finding (Appendix-B-only stability value) is closed in v1.0.263",
+      "Readiness/cap 80 HOLDS; no submission or acceptance is claimed",
+    ],
+    links: [
+      { label: "Truth audit", href: `${PR}/INT_v3/ROUND_2026-07-16-P4-v1.0.262-EXACTPDF-f59fc937-CLAUDESTACK-CONFIRM/P4_v1.0.262_truth_audit.md` },
+      { label: "Claude raw", href: `${PR}/INT_v3/ROUND_2026-07-16-P4-v1.0.262-EXACTPDF-f59fc937-CLAUDESTACK-CONFIRM/API_P4_claude.md` },
+      { label: "Grok raw", href: `${PR}/INT_v3/ROUND_2026-07-16-P4-v1.0.262-EXACTPDF-f59fc937-CLAUDESTACK-CONFIRM/API_P4_grok.md` },
+      { label: "Gemini raw", href: `${PR}/INT_v3/ROUND_2026-07-16-P4-v1.0.262-EXACTPDF-f59fc937-CLAUDESTACK-CONFIRM/API_P4_gemini.md` },
+    ],
+  },
+  {
+    id: "p5-v0-1-140-exact-confirmation-board-2026-07-16",
+    dateISO: "2026-07-16",
+    timePT: "4:15 PM",
+    kind: "closure-wave",
+    title: "P5 v0.1.140 — exact confirmation board and truth audit (closure v0.1.141 in progress)",
+    papers: ["P5"],
+    summary:
+      "The exact 41-page v0.1.140 PDF (SHA-256 287c6494) was reviewed by Grok 4.3 direct API (MAJOR REVISIONS, flipped from MINOR on v0.1.139), Gemini 3.1 Pro direct API (MINOR REVISIONS), and a Claude Opus subagent (MAJOR REVISIONS); Codex remained absent, paused per CLAUDE.md directive N. Truth audit dispositioned all 18 findings: 2 already-tracked gates, 7 disclosed re-flags, 8 venue/style opinions, 0 falsified, and 1 genuinely-new-real item — a bounded semi-analytic forward-leakage injection. Grok's MINOR-to-MAJOR flip on byte-unchanged/improved content is pattern-066 referee variance; its claim of a missing RSD reconstructed-position rerun was FALSIFIED (tex 2839-2856 reports a computed Zel'dovich-style reconstruction). Closure of the one genuinely-new-real item is tracked as v0.1.141 and is IN PROGRESS, not yet complete.",
+    keyTakeaways: [
+      "Board: Grok MAJOR (flip from MINOR) / Gemini MINOR / Claude Opus subagent MAJOR; Codex absent per directive N",
+      "18 findings truth-audited: 2 already-tracked gates, 7 disclosed re-flags, 8 opinions, 0 falsified, 1 genuinely-new-real",
+      "Grok's missing-RSD-reconstructed-position-rerun claim is FALSIFIED — a Zel'dovich-style reconstruction rerun is already applied and reported (tex 2839-2856)",
+      "The 1 genuinely-new-real finding (bounded semi-analytic forward-leakage injection) is being closed in v0.1.141 — IN PROGRESS, not yet complete",
+      "Readiness/cap 74 HOLDS; no submission or acceptance is claimed",
+    ],
+    links: [
+      { label: "Truth audit", href: `${PR}/INT_v3/ROUND_2026-07-16-P5-v0.1.140-EXACTPDF-287c6494-CLAUDESTACK-CONFIRM/P5_v0.1.140_truth_audit.md` },
+      { label: "Claude raw", href: `${PR}/INT_v3/ROUND_2026-07-16-P5-v0.1.140-EXACTPDF-287c6494-CLAUDESTACK-CONFIRM/API_P5_claude.md` },
+      { label: "Grok raw", href: `${PR}/INT_v3/ROUND_2026-07-16-P5-v0.1.140-EXACTPDF-287c6494-CLAUDESTACK-CONFIRM/API_P5_grok.md` },
+      { label: "Gemini raw", href: `${PR}/INT_v3/ROUND_2026-07-16-P5-v0.1.140-EXACTPDF-287c6494-CLAUDESTACK-CONFIRM/API_P5_gemini.md` },
+    ],
+  },
+  {
     id: "p4-v1-0-262-gloss-monopole-correction-closure-2026-07-16",
     dateISO: "2026-07-16",
     timePT: "4:03 PM",

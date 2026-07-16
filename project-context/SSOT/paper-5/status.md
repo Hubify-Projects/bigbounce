@@ -1,3 +1,12 @@
+## v0.1.140 EXACT CONFIRMATION BOARD TRUTH-AUDITED — 2026-07-16 · READINESS/CAP 74 HOLD · closure v0.1.141 IN PROGRESS
+
+- **Board:** Grok 4.3 direct API **MAJOR REVISIONS** (flipped from MINOR on v0.1.139) / Gemini 3.1 Pro direct API **MINOR REVISIONS** / Claude Opus subagent **MAJOR REVISIONS**; Codex absent (paused per directive N). Round dir `project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P5-v0.1.140-EXACTPDF-287c6494-CLAUDESTACK-CONFIRM/`.
+- **Truth audit:** all 18 findings dispositioned — 2 already-tracked gates, 7 disclosed re-flags, 8 venue/style opinions, 0 falsified, 1 genuinely-new-real (a bounded semi-analytic forward-leakage injection: forward-propagate the measured per-imaging-leg and per-target-program classifier biases through the measured env-class × tracer-program contingency to predict the large raw single-arm σ deviations and the filament bright-vs-dark Δf_CW, reporting the fraction each known systematic reproduces). Closure tracked as **v0.1.141 — IN PROGRESS, not yet complete.**
+- **Grok's MINOR→MAJOR flip** on byte-unchanged/improved content is pattern-066 referee variance, not a new finding; its claim of "no reconstructed-position rerun" for the RSD sensitivity is **FALSIFIED** — a Zel'dovich-style reconstruction rerun is applied and reported on the 678,987-row matched sample (+0.045 pp reconstructed, null preserved; `tex:2839–2856`).
+- **No readiness uplift:** exact v0.1.140 confirmation, Paper IV labels/provenance, immutable archive/DOI, editorial closure, and human AJ review remain open. Readiness/cap **74 HOLDS**; no submission or acceptance is claimed.
+
+Evidence: `project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P5-v0.1.140-EXACTPDF-287c6494-CLAUDESTACK-CONFIRM/P5_v0.1.140_truth_audit.md`.
+
 ## v0.1.140-2026-07-16 WHOLE-TREE MULTIPLICITY CLOSURE — 2026-07-16 · READINESS/CAP 74 HOLD
 
 - **Binding:** 41-page candidate, PDF SHA-256 `287c6494a07a0c394517adc62d80b9c5cf53950a304221494ac4d46ddab38773` / MD5 `6313acdc01fbd6511a5aae0d0190d145`, timestamp 2026-07-16 15:52 PT; Convex version row `k57b8zfzmsg24ykmt8810r8k458anbqf` (bump + read-back verified); directive-G PASS, 13 mirrors byte-identical, retention manifest `20260716T225442Z-6997c4229e1f.json`.
