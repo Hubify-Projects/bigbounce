@@ -1,0 +1,221 @@
+{
+  "header": {
+    "script": "analysis/forward_leakage_injection_v0_1_141.py",
+    "paper_version_closed": "v0.1.141-2026-07-16",
+    "truth_audit_round": "INT_v3/ROUND_2026-07-16-P5-v0.1.140-EXACTPDF-287c6494-CLAUDESTACK-CONFIRM (disposition 13, Claude MAJOR 5)",
+    "written_utc": "2026-07-16T23:34:21Z",
+    "model": "H0: chirality environment-independent; all per-class/per-region f_CW structure produced by committed per-program classifier bias distributed via the measured env x program contingency. Forward PREDICTION (predict-then-compare), distinct from the paper's existing monopole SUBTRACTION (sigma_pred). Semi-analytic bounded surrogate; NOT the DR2-grade end-to-end injection-recovery mock.",
+    "inputs": {
+      "A10_17_v0151_closure_recomputes.json": {
+        "path": "pipelines/p5_desi_chirality/outputs/17_v0151_closure_recomputes.json",
+        "sha256": "910e42e0645adc7ac00826b644f761299270c8c52d95e1fb49841eedf6fb4364"
+      },
+      "maximal_voids_healpix_stratified.json": {
+        "path": "pipelines/p5_desi_chirality/results/analysis_cosmic_web/maximal_voids_healpix_stratified.json",
+        "sha256": "b15b214727b5d182b80eed11a7189a0d9837b8bb71a628366b9f5fce17c05783"
+      }
+    },
+    "committed_leakage_amplitudes": {
+      "per_program_monopoles_f_cw": {
+        "backup": 0.5142857142857142,
+        "bright": 0.49701840775497574,
+        "dark": 0.5051413881748072,
+        "other": 0.4954128440366973
+      },
+      "per_program_n": {
+        "backup": 875,
+        "bright": 775760,
+        "dark": 14782,
+        "other": 218
+      },
+      "bright_minus_dark_residual_pp": 0.8122980419831505,
+      "env_x_program_contingency_chi2": 4932.513628655468,
+      "env_x_program_cramers_v": 0.07795800555657854,
+      "per_class_bright_fraction": {
+        "void": 0.9813084112149533,
+        "wall": 0.9621905476369093,
+        "filament": 0.9662720007844291,
+        "cluster": 0.9893236101024772
+      },
+      "imaging_leg_dipole_pct_paperIV": 0.455,
+      "per_leg_sigma_bound_paperIV": "<3",
+      "note_imaging_leg": "0.455% dipole and per-leg |sigma|<3 are Paper IV summary stats of the same classifier bias whose per-program projection (bright monopole) is injected here; provenance of the bright-program monopole."
+    }
+  },
+  "results": {
+    "single_arm": [
+      {
+        "label": "T-Web cluster class",
+        "n": 397505,
+        "f_cw_obs": 0.49630570684645475,
+        "sigma_obs": -4.658355716765813,
+        "f_cw_pred_leakage": 0.49713422176510547,
+        "sigma_pred_leakage": -3.6136315848927167,
+        "residual_sigma": -1.0447241318730964,
+        "fraction_reproduced": 0.7757311387550232
+      },
+      {
+        "label": "T-Web filament class",
+        "n": 408187,
+        "f_cw_obs": 0.4979604935972973,
+        "sigma_obs": -2.606061457640616,
+        "f_cw_pred_leakage": 0.49729683683443726,
+        "sigma_pred_leakage": -3.4540756185671113,
+        "residual_sigma": 0.8480141609264953,
+        "fraction_reproduced": 1.3254006763502195
+      },
+      {
+        "label": "T-Web wall class",
+        "n": 6673,
+        "f_cw_obs": 0.5033717967930466,
+        "sigma_obs": 0.5508735892872288,
+        "f_cw_pred_leakage": 0.4973430378535513,
+        "sigma_pred_leakage": -0.43408614577037447,
+        "residual_sigma": 0.9849597350576034,
+        "fraction_reproduced": -0.7879959290334381
+      },
+      {
+        "label": "T-Web void class",
+        "n": 428,
+        "f_cw_obs": 0.48364485981308414,
+        "sigma_obs": -0.6767155423319645,
+        "f_cw_pred_leakage": 0.4971702391646922,
+        "sigma_pred_leakage": -0.11708509474391501,
+        "residual_sigma": -0.5596304475880495,
+        "fraction_reproduced": 0.1730196625016758
+      },
+      {
+        "label": "cluster class, bright-program arm",
+        "n": 392342,
+        "f_cw_obs": 0.4962175856778015,
+        "sigma_obs": -4.738397557884969,
+        "f_cw_pred_leakage": 0.49701840775497574,
+        "sigma_pred_leakage": -3.735172355264337,
+        "residual_sigma": -1.0032252026206323,
+        "fraction_reproduced": 0.7882775367906377
+      },
+      {
+        "label": "no-void-coverage sky region (0 maximal voids / NSIDE-16 pixel)",
+        "n": 378511,
+        "f_cw_obs": 0.4961414595612809,
+        "sigma_obs": -4.747798778697014,
+        "f_cw_pred_leakage": 0.49701840775497574,
+        "sigma_pred_leakage": -3.66874476095889,
+        "sigma_pred_flat_P4_monopole": -3.1992088772069884,
+        "residual_sigma": -1.079054017738124,
+        "fraction_reproduced": 0.7727254106514051,
+        "fraction_reproduced_flat_P4": 0.6738299212598432,
+        "note": "per-bin program composition not committed; bright-program monopole injected because the z<=0.24 no-coverage bin is BGS-bright-dominated. Residual beyond leakage is consistent with the imaging-leg dipole (0.455%) spatial systematic in the no-coverage legs (tex ~3653-3666)."
+      }
+    ],
+    "contrast": [
+      {
+        "label": "filament bright-vs-dark contrast",
+        "n_bright": 394181,
+        "n_dark": 13759,
+        "f_bright_obs": 0.4976267247787184,
+        "f_dark_obs": 0.5068682317028854,
+        "delta_f_obs_pp": -0.9241506924167031,
+        "z_obs": -2.131177456383509,
+        "delta_f_pred_leakage_pp": -0.8122980419831505,
+        "z_pred_leakage": -1.8732463841057325,
+        "residual_z": -0.25793107227777634,
+        "fraction_reproduced_delta_f": 0.8789670869140919,
+        "fraction_reproduced_z": 0.8789725034369165
+      },
+      {
+        "label": "cluster bright-vs-dark contrast",
+        "n_bright": 392342,
+        "n_dark": 4234,
+        "f_bright_obs": 0.4962175856778015,
+        "f_dark_obs": 0.500236183278224,
+        "delta_f_obs_pp": -0.40185976004224466,
+        "z_obs": -0.5201891344157716,
+        "delta_f_pred_leakage_pp": -0.8122980419831505,
+        "z_pred_leakage": -1.0514709894488266,
+        "residual_z": 0.5312818550330549,
+        "fraction_reproduced_delta_f": 2.0213470537526805,
+        "fraction_reproduced_z": 2.0213243989222143
+      }
+    ],
+    "input_leakage": [
+      {
+        "label": "bright-program monopole (injected leakage amplitude)",
+        "n": 775760,
+        "f_cw": 0.49701840775497574,
+        "sigma_obs": -5.252208245201652,
+        "role": "this IS the known classifier bias the model injects; it is identified as bias (not signal) because the dark program flips sign (+1.25 sigma) -- an astrophysical parity signal cannot reverse under a target-selection relabel.",
+        "fraction_reproduced": 1.0
+      },
+      {
+        "label": "dark-program arm (opposite-sign null)",
+        "n": 14782,
+        "f_cw": 0.5051413881748072,
+        "sigma_obs": 1.250192787189795,
+        "role": "opposite sign to bright -> classifier bias, not parity signal."
+      }
+    ]
+  },
+  "summary_table": [
+    {
+      "deviation": "T-Web cluster class",
+      "observed_sigma": -4.658,
+      "predicted_sigma_leakage": -3.614,
+      "fraction_reproduced_pct": 77.6,
+      "residual_sigma": -1.045
+    },
+    {
+      "deviation": "T-Web filament class",
+      "observed_sigma": -2.606,
+      "predicted_sigma_leakage": -3.454,
+      "fraction_reproduced_pct": 132.5,
+      "residual_sigma": 0.848
+    },
+    {
+      "deviation": "T-Web wall class",
+      "observed_sigma": 0.551,
+      "predicted_sigma_leakage": -0.434,
+      "fraction_reproduced_pct": -78.8,
+      "residual_sigma": 0.985
+    },
+    {
+      "deviation": "T-Web void class",
+      "observed_sigma": -0.677,
+      "predicted_sigma_leakage": -0.117,
+      "fraction_reproduced_pct": 17.3,
+      "residual_sigma": -0.56
+    },
+    {
+      "deviation": "cluster class, bright-program arm",
+      "observed_sigma": -4.738,
+      "predicted_sigma_leakage": -3.735,
+      "fraction_reproduced_pct": 78.8,
+      "residual_sigma": -1.003
+    },
+    {
+      "deviation": "no-void-coverage sky region (0 maximal voids / NSIDE-16 pixel)",
+      "observed_sigma": -4.748,
+      "predicted_sigma_leakage": -3.669,
+      "fraction_reproduced_pct": 77.3,
+      "residual_sigma": -1.079
+    },
+    {
+      "deviation": "filament bright-vs-dark contrast (two-sample z)",
+      "observed_z": -2.131,
+      "predicted_z_leakage": -1.873,
+      "fraction_reproduced_pct": 87.9,
+      "residual_z": -0.258,
+      "observed_delta_f_pp": -0.924,
+      "predicted_delta_f_pp": -0.812
+    },
+    {
+      "deviation": "cluster bright-vs-dark contrast (two-sample z)",
+      "observed_z": -0.52,
+      "predicted_z_leakage": -1.051,
+      "fraction_reproduced_pct": 202.1,
+      "residual_z": 0.531,
+      "observed_delta_f_pp": -0.402,
+      "predicted_delta_f_pp": -0.812
+    }
+  ]
+}

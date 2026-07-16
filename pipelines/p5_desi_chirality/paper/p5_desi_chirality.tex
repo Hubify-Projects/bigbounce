@@ -36,7 +36,32 @@
 % The divide-by-h claim (~1246 h⁻¹ Mpc) is INVERTED. No pipeline recompute required.
 % If any future reviewer re-raises this, cite env_finder/01_compute_vweb.py:106-108.
 
-\newcommand{\paperVersion}{v0.1.140-2026-07-16}
+\newcommand{\paperVersion}{v0.1.141-2026-07-16}
+% v0.1.141 (2026-07-16 -- forward-leakage injection closure): closes the single
+%   GENUINELY-NEW-REAL item of the v0.1.140 exact-PDF truth audit
+%   (INT_v3/ROUND_2026-07-16-P5-v0.1.140-EXACTPDF-287c6494-CLAUDESTACK-CONFIRM,
+%   disposition 13 / Claude MAJOR 5): the leakage interpretation of the large raw
+%   single-arm deviations was supported by monopole SUBTRACTION (sigma_pred) +
+%   the mechanistic narrative, but no committed artifact FORWARD-PREDICTED each
+%   raw sigma from the per-program/per-imaging-leg classifier bias. Added one
+%   paragraph + Table tab:forward_leakage in sec:systematics (after the
+%   residual-ambiguity disclosure, tex ~2354): a semi-analytic forward-leakage
+%   injection that PREDICTS each large deviation ab initio from the committed
+%   per-program monopoles (bright 0.49702 / dark 0.50514; diff = 0.81pp) carried
+%   through the measured env x program contingency (chi2=4933). Known leakage
+%   reproduces 77-79% of every large single-arm excursion (cluster -4.66, cluster
+%   bright arm -4.74, no-void sky -4.75), over-predicts the filament-class -2.61
+%   (fully accounts, +0.85 residual toward parity), and reproduces 88% of the
+%   filament bright-vs-dark sign-flip (pred z -1.87 / Df -0.81pp vs obs z -2.13 /
+%   Df -0.92pp; residual z -0.26, non-significant). All residuals |sigma|<=1.1,
+%   |z|<=0.3: none a candidate signal. CONFIRMS + strengthens the leakage
+%   attribution; does NOT replace the deferred DR2 mock; focal void-vs-non-void
+%   contrast untouched (algebraically monopole-invariant, sec:p4). New artifacts
+%   [A47] analysis/forward_leakage_injection_v0_1_141.py + [A48] its .json;
+%   [A1]--[A46] range refs -> [A1]--[A48]. NO science number/estimand/interval/
+%   claim changes; result stays a non-detection. Computed from committed
+%   SHA-256-hashed inputs [A10]+maximal_voids_healpix_stratified.json
+%   (/never-fabricate-derivation).
 % v0.1.140 (2026-07-16 -- whole-tree global-multiplicity closure): closes the
 %   single GENUINELY-NEW-REAL item of the v0.1.139 exact-PDF truth audit
 %   (INT_v3/ROUND_2026-07-16-P5-v0.1.139-EXACTPDF-948e0412-CLAUDESTACK-CONFIRM,
@@ -747,7 +772,7 @@
 %   cluster −54%) but the environmental-independence null HOLDS and
 %   TIGHTENS: cross-class f_CW range 1.98pp → 0.05pp, all classes
 %   |σ_mono| ≤ 0.39. Artifact: outputs/16_cosmic_web_zshell_corrected.json.
-\newcommand{\paperTimestamp}{July 16, 2026, 15:52 PT}
+\newcommand{\paperTimestamp}{July 16, 2026, 16:36 PT}
 % timestamp label unchanged (still July 2026); \date bumped to July 6
 % v0.1.62-2026-06-10 (R29 post-EXT1 internal-round closure wave; truth audit at
 %   project-context/peer-reviews/R29_P5_TRUTH_AUDIT.md):
@@ -2351,6 +2376,66 @@ DESIVAST sensitivity path is constructed on the volume-limited $z\!\le\!0.24$
 BGS anchor where target-program mixing is more constrained, the
 corresponding propagated leakage is reported as a secondary diagnostic
 in Table~\ref{tab:systematic_budget}.
+
+\emph{Semi-analytic forward-leakage injection (bounded surrogate for the
+declined mock).} While the definitive DR2-grade end-to-end mock is deferred
+above, the committed numbers already permit a bounded \emph{forward} test that
+is distinct from the monopole \emph{subtraction} of \S\ref{sec:stats}: rather
+than subtracting a single fitted catalog-wide monopole, we \emph{predict} each
+large raw deviation \emph{ab initio} from the committed per-target-program
+classifier monopoles --- \texttt{bright} $f_{\rm CW}=0.49702$, \texttt{dark}
+$0.50514$ (their difference is exactly the $0.81$\,pp residual), which carry the
+imaging-leg systematics (per-leg $|\sigma|<3$, dipole $0.455\%$) --- propagated
+into each subsample through its committed \texttt{bright}/\texttt{dark}
+composition (the measured env-class $\times$ program contingency,
+$\chi^2=4933$). The null injected is environment-\emph{independence}: every arm
+is assigned its program-mixture-weighted monopole, and the predicted
+$\sigma_{\rm from\,half}$ (or two-sample $z$) is compared to the observed value.
+Table~\ref{tab:forward_leakage} reports the result. The known leakage reproduces
+$77$--$79\%$ of every large single-arm excursion (cluster class, cluster
+\texttt{bright} arm, and the no-void-coverage sky region), over-predicts the
+smaller filament-class deviation (it fully accounts for it, leaving a
+$+0.85\sigma$ residual \emph{toward} parity), and --- most directly relevant to
+the ambiguity flagged above --- reproduces $88\%$ of the filament
+\texttt{bright}-vs-\texttt{dark} sign-flip: the predicted contrast is
+$-0.81$\,pp ($z_{\rm pred}=-1.87$) against the observed $-0.92$\,pp
+($z_{\rm obs}=-2.13$), a non-significant residual $z=-0.26$. Every deviation the
+paper attributes to imaging/target-program leakage is thus forward-reproduced to
+$\gtrsim3/4$ of its amplitude by the committed systematics alone, with all
+residuals $|\sigma_{\rm res}|\le1.1$ and $|z_{\rm res}|\le0.3$ --- none a
+candidate signal. This is a semi-analytic bounded surrogate and does \emph{not}
+replace the deferred DR2 selection-function mock; it does not use the focal
+void-vs-non-void contrast (which is algebraically monopole-invariant,
+\S\ref{sec:p4}) and changes no reported number
+(\href{\repoBase/pipelines/p5\_desi\_chirality/analysis/forward\_leakage\_injection\_v0\_1\_141.py}{[A47]},
+\href{\repoBase/pipelines/p5\_desi\_chirality/analysis/forward\_leakage\_injection\_v0\_1\_141.json}{[A48]}).
+
+\begin{table}[ht]
+\caption{Semi-analytic forward-leakage injection: each large raw deviation
+\emph{predicted} from the committed per-program classifier monopoles propagated
+through the measured env-class $\times$ program contingency (the null is
+environment-independence), versus the observed value. Single-arm rows are
+$\sigma_{\rm from\,half}$; the last row is the filament \texttt{bright}-vs-\texttt{dark}
+two-sample $z$. ``Reproduced'' is predicted/observed; $>100\%$ means the leakage
+over-predicts (fully accounts for) the deviation. All residuals are
+non-significant. Distinct from the monopole \emph{subtraction} of
+Table~\ref{tab:p4_monopole_residual}, which removes one scalar monopole; this
+forward injection carries the program-\emph{dependent} bias and is the only test
+that predicts the sign-flip contrast (\href{\repoBase/pipelines/p5\_desi\_chirality/analysis/forward\_leakage\_injection\_v0\_1\_141.json}{[A48]}).}
+\label{tab:forward_leakage}
+\begin{ruledtabular}
+\begin{tabular}{lrrr}
+Large raw deviation & Obs. & Pred. & Repro. \\
+\hline
+Cluster class ($\sigma$) & $-4.66$ & $-3.61$ & $78\%$ \\
+Cluster \texttt{bright} arm ($\sigma$) & $-4.74$ & $-3.74$ & $79\%$ \\
+No-void-coverage sky ($\sigma$) & $-4.75$ & $-3.67$ & $77\%$ \\
+Filament class ($\sigma$) & $-2.61$ & $-3.45$ & $133\%$ \\
+Filament \texttt{br.}-vs-\texttt{dk.} ($z$) & $-2.13$ & $-1.87$ & $88\%$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
 \emph{Explicit marginal-mixture diagnostic (from existing numbers):} we
 multiply the $0.81$\,pp bright/dark residual by the \emph{difference} in dark
 fraction between the void and non-void classes. From
@@ -5253,11 +5338,11 @@ retroactively asserting the unavailable May bytes.
 \section{Data artifacts}\label{app:artifacts}
 
 \emph{Note on numbering:} the bracketed \emph{artifact} IDs
-[A1]--[A46] in this appendix are the release-candidate data/code
+[A1]--[A48] in this appendix are the release-candidate data/code
 artifacts and are \emph{distinct} from the bibliographic references
 [1]--[13], which appear in the separate References section; the ``A''
 prefix marks every artifact ID to avoid confusion at the
-references/artifact-map boundary. Artifact IDs [A1]--[A46] used
+references/artifact-map boundary. Artifact IDs [A1]--[A48] used
 throughout this paper hyperlink to the following paths in the companion
 repository
 \href{https://github.com/Hubify-Projects/bigbounce}{\texttt{Hubify-Projects/bigbounce}}
@@ -5303,7 +5388,7 @@ Clicking any [AN] ID in the paper PDF opens the corresponding GitHub URL.%
 \end{table*}
 \begin{table*}[p]
 {\small
-\caption{Artifact ID map (continued). Paths A21--A30 and A33--A46 are
+\caption{Artifact ID map (continued). Paths A21--A30 and A33--A48 are
 within \texttt{pipelines/p5\_desi\_chirality/}; A31--A32 are in the
 companion catalog pipeline.}
 \begin{ruledtabular}
@@ -5336,6 +5421,8 @@ companion catalog pipeline.}
 \href{\repoBase/pipelines/p5\_desi\_chirality/outputs/39\_focal\_interaction\_clustering\_robustness.json}{[A44]} & \texttt{outputs/39\_focal\_interaction\_clustering\_robustness.json} \\
 \href{\repoBase/pipelines/p5\_desi\_chirality/analysis/global\_multiplicity\_bound\_v0\_1\_140.py}{[A45]} & \texttt{analysis/global\_multiplicity\_bound\_v0\_1\_140.py} \\
 \href{\repoBase/pipelines/p5\_desi\_chirality/analysis/global\_multiplicity\_bound\_v0\_1\_140.json}{[A46]} & \texttt{analysis/global\_multiplicity\_bound\_v0\_1\_140.json} \\
+\href{\repoBase/pipelines/p5\_desi\_chirality/analysis/forward\_leakage\_injection\_v0\_1\_141.py}{[A47]} & \texttt{analysis/forward\_leakage\_injection\_v0\_1\_141.py} \\
+\href{\repoBase/pipelines/p5\_desi\_chirality/analysis/forward\_leakage\_injection\_v0\_1\_141.json}{[A48]} & \texttt{analysis/forward\_leakage\_injection\_v0\_1\_141.json} \\
 \end{tabular}
 \end{ruledtabular}
 }% end \small

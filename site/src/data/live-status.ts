@@ -198,10 +198,10 @@ export const liveStatus: LiveStatus = {
     if (paper.slug === "paper-5") {
       return {
         ...paper,
-        version: "v0.1.140-2026-07-16",
+        version: "v0.1.141-2026-07-16",
         readiness: 74,
         pendingWork:
-          "v0.1.140 closes the one genuinely-new-real finding from the exact v0.1.139 board with a real whole-tree family-wise significance computation (p_global<=0.822, non-significant). The exact v0.1.140 board (Grok MAJOR, flipped from MINOR / Gemini MINOR / Claude Opus subagent MAJOR, 18 findings -> 2 already-tracked, 7 disclosed re-flags, 8 opinions, 0 falsified, 1 genuinely-new-real) is truth-audited; Grok's missing-RSD-rerun claim was FALSIFIED. Closure of the one genuinely-new-real item (a bounded semi-analytic forward-leakage injection) is tracked as v0.1.141 and is IN PROGRESS, not yet complete. Publish independently reviewable Paper IV/P5 releases, complete editorial closure, exact v0.1.140 re-review, and human review. Readiness holds 74.",
+          "v0.1.141 closes the one genuinely-new-real finding from the exact v0.1.140 board (Grok MAJOR, flipped from MINOR / Gemini MINOR / Claude Opus subagent MAJOR, 18 findings -> 2 already-tracked, 7 disclosed re-flags, 8 opinions, 0 falsified, 1 genuinely-new-real; Grok's missing-RSD-rerun claim was FALSIFIED) with a real semi-analytic forward-leakage injection: a new paragraph + 5-row table forward-predicts each large raw environment deviation from the committed per-program/imaging-leg leakage components propagated through the measured env-by-program contingency (chi2=4933) — 77-88% of each deviation reproduced, every residual non-significant. Artifacts [A47]/[A48]; no science number or claim changed. Exact v0.1.141 confirmation is now pending. Publish independently reviewable Paper IV/P5 releases, complete editorial closure, and human review. Readiness holds 74.",
       };
     }
     return paper;
@@ -209,7 +209,7 @@ export const liveStatus: LiveStatus = {
   currentlyRunning: [
     "P1B v2B.0.8 exact confirmation is truth-audited (no new executable defect); the archive/editorial gate is the next P1B action",
     "P1B immutable archive identifier remains a real submission blocker",
-    "P4 v1.0.263 and P5 v0.1.140 PDFs are built, retained, mirrored, and synchronized; P4 closes the v1.0.262 board's Appendix-B stability-value main-Results pointer finding; P5's v0.1.141 forward-leakage-injection closure is in progress",
+    "P4 v1.0.263 and P5 v0.1.141 PDFs are built, retained, mirrored, and synchronized; P4 closes the v1.0.262 board's Appendix-B stability-value main-Results pointer finding; P5's v0.1.141 forward-leakage-injection closure is complete, exact v0.1.141 confirmation is next",
     "Exact non-Anthropic re-review and standing external release/provenance gates are next",
   ],
   cronStatus:

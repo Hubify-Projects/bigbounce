@@ -1,3 +1,10 @@
+## v0.1.141-2026-07-16 FORWARD-LEAKAGE INJECTION CLOSURE — 2026-07-16 · READINESS/CAP 74 HOLD
+
+- **Binding:** 42-page candidate, PDF SHA-256 `4cca09d0aa963ae18b908bc17f57e9b1bf8f91e4ec8555f4c18d2e413a7580ac`, MD5 `6a4e79b4df61bf37b25a801d19d61b62`, timestamp 2026-07-16 16:36 PT; Convex version row `k57bt28p2b4hyhx4g5495a1cfh8amkej`; directive-G PASS, 13 mirrors byte-identical, retention manifest `20260716T234008Z-01500bd1503d.json`.
+- **Closes the one genuinely-new-real finding** from the exact v0.1.140 truth audit with a real computation: a new "Semi-analytic forward-leakage injection" paragraph and 5-row table (`tab:forward_leakage`) forward-predicts each large raw environment deviation from the committed per-program/imaging-leg leakage components propagated through the measured env-by-program contingency (`chi2=4933`) — cluster −4.66σ obs vs −3.61σ predicted (78% reproduced), cluster-bright −4.74 vs −3.74 (79%), no-void-coverage −4.75 vs −3.67 (77%), filament −2.61 vs −3.45 (fully accounted), filament bright-vs-dark z −2.13 vs −1.87 (88%); every residual non-significant (`|σ|<=1.1`). Committed as artifacts [A47]/[A48] (`pipelines/p5_desi_chirality/analysis/forward_leakage_injection_v0_1_141.{py,json}`) with SHA-256-hashed committed inputs.
+- **No science number, estimand, or claim changed**; the focal contrast is untouched, and the residual-ambiguity disclosure is retained intact.
+- **No readiness uplift:** exact v0.1.141 confirmation, Paper IV provenance, immutable archive/DOI, editorial closure, and human AJ review remain open. Readiness/cap **74 HOLDS**; no submission or acceptance is claimed.
+
 ## v0.1.140 EXACT CONFIRMATION BOARD TRUTH-AUDITED — 2026-07-16 · READINESS/CAP 74 HOLD · closure v0.1.141 IN PROGRESS
 
 - **Board:** Grok 4.3 direct API **MAJOR REVISIONS** (flipped from MINOR on v0.1.139) / Gemini 3.1 Pro direct API **MINOR REVISIONS** / Claude Opus subagent **MAJOR REVISIONS**; Codex absent (paused per directive N). Round dir `project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P5-v0.1.140-EXACTPDF-287c6494-CLAUDESTACK-CONFIRM/`.

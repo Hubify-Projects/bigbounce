@@ -57,6 +57,28 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p5-v0-1-141-forward-leakage-injection-closure-2026-07-16",
+    dateISO: "2026-07-16",
+    timePT: "4:36 PM",
+    kind: "closure-wave",
+    title: "P5 v0.1.141 — semi-analytic forward-leakage injection closure",
+    papers: ["P5"],
+    summary:
+      "v0.1.141 closes the one genuinely-new-real finding from the exact v0.1.140 board truth audit with a real computation: a new 'Semi-analytic forward-leakage injection' paragraph and 5-row table (tab:forward_leakage) forward-predicts each large raw environment deviation from the committed per-program/imaging-leg leakage components propagated through the measured env-by-program contingency (chi2=4933) — cluster -4.66 sigma obs vs -3.61 sigma predicted (78% reproduced), cluster-bright -4.74 vs -3.74 (79%), no-void-coverage -4.75 vs -3.67 (77%), filament -2.61 vs -3.45 (fully accounted), filament bright-vs-dark z -2.13 vs -1.87 (88%); every residual non-significant (|sigma|<=1.1). Committed as artifacts [A47]/[A48]; no science number, estimand, or claim changed, and the residual-ambiguity disclosure is retained intact. Readiness holds 74.",
+    keyTakeaways: [
+      "Real computation, not a wording fix: pipelines/p5_desi_chirality/analysis/forward_leakage_injection_v0_1_141.{py,json} (artifacts [A47]/[A48]) with SHA-256-hashed committed inputs",
+      "77-88% of each large raw single-arm deviation is reproduced by forward-propagating the committed per-program/imaging-leg leakage components; every residual is non-significant (|sigma|<=1.1)",
+      "42 pp, PDF SHA-256 4cca09d0aa963ae18b908bc17f57e9b1bf8f91e4ec8555f4c18d2e413a7580ac, MD5 6a4e79b4df61bf37b25a801d19d61b62, timestamp 2026-07-16 16:36 PT",
+      "directive-G PASS, 13 mirrors byte-identical, retention manifest 20260716T234008Z-01500bd1503d.json, Convex row k57bt28p2b4hyhx4g5495a1cfh8amkej",
+      "No readiness uplift: exact v0.1.141 confirmation, Paper IV provenance, immutable archive/DOI, editorial closure, and human AJ review remain open",
+    ],
+    links: [
+      { label: "P5 canonical status", href: `${GH}/project-context/SSOT/paper-5/status.md` },
+      { label: "Forward-leakage injection script", href: `${GH}/pipelines/p5_desi_chirality/analysis/forward_leakage_injection_v0_1_141.py` },
+      { label: "Forward-leakage injection artifact", href: `${GH}/pipelines/p5_desi_chirality/analysis/forward_leakage_injection_v0_1_141.json` },
+    ],
+  },
+  {
     id: "p4-v1-0-263-appendix-b-stability-closure-2026-07-16",
     dateISO: "2026-07-16",
     timePT: "4:24 PM",
