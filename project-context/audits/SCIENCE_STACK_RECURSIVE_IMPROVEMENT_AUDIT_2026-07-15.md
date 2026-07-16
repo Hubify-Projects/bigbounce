@@ -189,9 +189,12 @@ canonical inventory membership/counts, event schema and identity, and
 idempotent append behavior. Its first retained batch migrated all 11 P5
 v0.1.138 findings, separating four verified manuscript minors, four standing
 release/scope gates, and three editorial opinions. The ledger now contains 32
-events. Canonical reconciliation remains incomplete at **24/259 receipts
-(9.27%)**, with 235 count mismatches, zero hash mismatches, and zero orphaned
-event receipts.
+events. A second declarative batch then ingested the complete P4 v1.0.255
+three-provider board: 19 findings separated into seven verified correctable
+defects, six standing limitations, and six stale, falsified, or editorial
+items. The ledger now contains 51 events. Canonical reconciliation remains
+incomplete at **27/259 receipts (10.42%)**, with 232 count mismatches, zero hash
+mismatches, and zero orphaned event receipts.
 Campaign-wide escape and closure-regression rates therefore remain unavailable
 as complete-history metrics.
 
@@ -210,6 +213,13 @@ Provider-publication findings additionally cite retained receipts whose remote
 bytes and SHA-256 values were verified. The generated effective-status
 projection now contains 16 closures total. Standing DOI, release, scope, and
 human-review gates were not relabeled as closed.
+
+The complete P4 v1.0.255 board is now also ingested and reconciled at 19/19.
+Seven verified correctable findings are linked to the exact v1.0.256 correction
+commit and evidence bytes, increasing the effective closure projection to 23
+findings. Standing training-replay, transfer-calibration, joint-covariance,
+metadata, DOI, and human-review gates remain deferred rather than being
+misrepresented as manuscript closures.
 
 Evidence and exact outcomes are recorded in
 `project-context/audits/PROACTIVE_PORTFOLIO_SWEEP_2026-07-15.md`. Readiness was

@@ -1,7 +1,7 @@
 {
-  "archive_completeness_rate": 0.092664,
+  "archive_completeness_rate": 0.104247,
   "complete": false,
-  "count_mismatches": 235,
+  "count_mismatches": 232,
   "failed_leg_gaps": 6,
   "hash_mismatches": 0,
   "inventory_receipts": 271,
@@ -2240,30 +2240,36 @@
       "status": "ok"
     },
     {
-      "event_count": 0,
-      "event_hashes": [],
+      "event_count": 5,
+      "event_hashes": [
+        "cde9f29756571ca2defca27339fbae332f6c86843c3a0e93ba6db29cedb10bbf"
+      ],
       "expected_findings": 5,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P4-v1.0.255-EXACTPDF-f9b011a8-NONANTHROPIC-RECURSIVE/API_P4_gemini.md",
       "receipt_id": "receipt_74489a93dcb53a91445e",
-      "state": "COUNT_MISMATCH",
+      "state": "RECONCILED",
       "status": "ok"
     },
     {
-      "event_count": 0,
-      "event_hashes": [],
+      "event_count": 4,
+      "event_hashes": [
+        "88fc47096c1ae993744aab7625e441b72bf36e1707bc5577aeddccbe72ff9ca1"
+      ],
       "expected_findings": 4,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P4-v1.0.255-EXACTPDF-f9b011a8-NONANTHROPIC-RECURSIVE/API_P4_grok.md",
       "receipt_id": "receipt_f4853998e686de8d4851",
-      "state": "COUNT_MISMATCH",
+      "state": "RECONCILED",
       "status": "ok"
     },
     {
-      "event_count": 0,
-      "event_hashes": [],
+      "event_count": 10,
+      "event_hashes": [
+        "c19960725297f28f51e9c834c54b79aca71e975507b335f7e75dc10db1665363"
+      ],
       "expected_findings": 10,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P4-v1.0.255-EXACTPDF-f9b011a8-NONANTHROPIC-RECURSIVE/intwave_P4_codex_1733.md",
       "receipt_id": "receipt_6acbfe7facb96968a859",
-      "state": "COUNT_MISMATCH",
+      "state": "RECONCILED",
       "status": "ok"
     },
     {
@@ -2462,7 +2468,7 @@
       "status": "ok"
     }
   ],
-  "reconciled_receipts": 24,
+  "reconciled_receipts": 27,
   "schema_version": "finding-receipt-reconciliation/v1",
   "unresolved_finding_counts": 0
 }
