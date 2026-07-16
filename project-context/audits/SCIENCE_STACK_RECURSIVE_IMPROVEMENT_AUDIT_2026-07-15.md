@@ -195,6 +195,14 @@ event receipts.
 Campaign-wide escape and closure-regression rates therefore remain unavailable
 as complete-history metrics.
 
+Later closure state no longer requires mutating immutable finding events. A
+linked append-only closure ledger verifies the original finding ID, exact
+closure commit, version, and evidence-file bytes and emits a generated effective
+status projection. Its first four entries bind the verified P5 v0.1.138
+manuscript minors to the v0.1.139 closure commit. This closes the archival
+finding-to-fix traceability gap while preserving standing publication gates and
+without inventing a confirmation review.
+
 Evidence and exact outcomes are recorded in
 `project-context/audits/PROACTIVE_PORTFOLIO_SWEEP_2026-07-15.md`. Readiness was
 not increased by these process or release-integrity closures.

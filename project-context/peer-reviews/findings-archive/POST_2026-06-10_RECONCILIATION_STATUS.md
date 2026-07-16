@@ -101,6 +101,20 @@ release/scope gates, and three editorial requests. Its Grok, Gemini, and Codex
 receipts reconcile at **3/3**, **4/4**, and **4/4**. The ledger now represents
 **32 / 1,574 explicit findings (2.0330%)**.
 
+Because finding events are immutable, later closures are now recorded in the
+separate append-only `finding-closure-events-v1.jsonl` ledger rather than
+rewriting event identity. `tools/finding_closure_event.py` verifies that the
+referenced finding exists and that every evidence path has the declared bytes
+at the exact closure commit, then produces
+`finding-closure-projection.json`.
+
+The first four closure events bind P5's verified v0.1.138 manuscript minors to
+commit `81b7bd56` and version `v0.1.139-2026-07-16`: interaction prose,
+shared-reference covariance, the T-Web parent/subset explanation, and stable
+tie-breaking. These are source closures, not a claim that standing release,
+companion-paper, human, or venue gates are closed, and no later confirmation
+board is inferred.
+
 ## Remaining work
 
 1. Normalize the remaining 1,542 explicit findings against truth-audit rows,
