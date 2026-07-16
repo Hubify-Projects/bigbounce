@@ -41,6 +41,35 @@ read-only guidance:
 - dispatch no longer evaluates the same six-paper receipt three times, and
   immutable packet contents no longer include a volatile receipt hash excluded
   from their key; measured P3 dry-run wall time fell 36.20 s -> 13.05 s (64%).
+- SciStack commit `ba36b4c` adds the versioned
+  `finding-receipt-inventory/v1` schema, fail-closed receipt/event count and
+  SHA reconciliation, and `metrics --inventory`; the finding-event suite is
+  **11/11 passing**. Known-pattern escape and closure-regression metrics are now
+  executable, but are reported as live campaign metrics only when the explicit
+  receipt inventory reconciles completely. BigBounce's historical receipt
+  inventory is still incomplete, so no complete-history rate is claimed.
+- the exact P4 v1.0.255 and P5 v0.1.134 non-Anthropic boards were truth-audited
+  and closed as P4 v1.0.256 and P5 v0.1.135, with exact PDF/version/SSOT,
+  Convex, mirror, retention, and site synchronization. P4 remains readiness 80
+  and P5 remains 74; closure and synchronization do not erase standing science,
+  release, confirmation-review, or human-review gates.
+- P5's focal low-cluster-count inference now has a deterministic, retained
+  sensitivity using the identical 145,766-row estimand and 50-cluster unit: a
+  reduced `K=13` nuisance model with CR1 inference plus a seeded 99,999-draw
+  Rademacher wild-cluster efficient-score test. It is explicitly a post-review
+  corroborating sensitivity, not a preregistered replacement for the focal model.
+- `tools/int_wave.sh --codex-only` now makes subscription-only retry routing
+  explicit and overrides an inherited API-enabled setting; its regression test
+  proves the direct-provider stub is not invoked.
+
+One retry incident remains deliberately visible. The first P5 Codex transport
+ended before a verdict. During the later subscription-backed retry, a mistyped
+API-disable switch caused an unnecessary second Grok/Gemini direct-provider pass.
+Both policy-authorized receipt pairs remain in the six-row manifest, but the
+rolling `API_P5_*` paths were overwritten by the second pass, leaving the first
+pair without distinct on-disk raw bodies. This is an archive-completeness gap,
+not evidence of a complete wave, and is exactly the class of loss that the new
+inventory reconciliation must fail closed on.
 
 Evidence and exact outcomes are recorded in
 `project-context/audits/PROACTIVE_PORTFOLIO_SWEEP_2026-07-15.md`. Readiness was
@@ -62,7 +91,7 @@ not increased by these process or release-integrity closures.
 - BigBounce review and packet tools, tests, onboarding, SSOT, pattern catalog,
   findings archive, and readiness instrumentation.
 
-Observed state:
+Observed state at the initial audit, with subsequent changes called out:
 
 - 93 catalog markdown files exist: 69 `pattern-*` (14 drafts), eight design,
   six packaging, and eight site patterns.
@@ -72,7 +101,10 @@ Observed state:
 - `ALL-FINDINGS.json` uses several historical aggregate schemas rather than the
   row schema promised by `r-round-finding-archive`; there is no top-level
   `findings` array to query uniformly.
-- No executable scripts live with any HubStack learning-loop skill.
+- At initial audit, no executable scripts lived with any HubStack learning-loop
+  skill. The canonical finding-event CLI, receipt inventory schema,
+  reconciliation, and metrics now exist at `ba36b4c`; the broader
+  ingest -> mine -> compile-rules -> preflight engine remains incomplete.
 - The repo has no test that executes archive -> mine -> preflight -> dispatch.
 - `paper-pre-review-check` is mentioned in runbooks but no canonical repo tool
   implements its advertised runtime behavior.
@@ -174,7 +206,7 @@ Canonical ownership should be:
 
 Anything else should route to those owners rather than restating their logic.
 
-### 6. Metrics reward rounds, not learning efficiency
+### 6. Metrics rewarded rounds, not learning efficiency
 
 The existing `readinessMetrics` tracks verdicts, genuinely-new counts, clean
 streaks, open compute, and open venue items. It does not measure whether the
@@ -192,8 +224,13 @@ system is learning faster. Missing metrics include:
 - percentage of quantitative claims with executable evidence anchors;
 - cross-paper consistency failures per release.
 
-Without these, “more rounds” can look like progress even when prevention has
-stalled.
+Commit `ba36b4c` now computes known-pattern escape and closure-regression metrics
+from finding events and binds their campaign interpretation to explicit receipt
+inventory reconciliation. That closes the metric-calculation primitive, not the
+historical-data gap: until BigBounce inventories and reconciles all expected raw
+receipts, a complete-history rate must remain unavailable rather than silently
+treating missing or overwritten legs as zero findings. The other routing,
+latency, evidence-coverage, and cycle-time metrics above remain to be completed.
 
 ### 7. Automation safety and portability are inconsistent
 
@@ -451,7 +488,10 @@ models are available.
 - [x] Review packets bind the matching preflight/catalog/registry receipts.
 - [x] Active INT/direct-provider/external-browser dispatch routes require the gate.
 - [ ] Cross-paper claim graph covers every headline quantitative claim.
-- [ ] Known-pattern escape and closure-regression metrics are live.
+- [ ] Known-pattern escape and closure-regression metrics are live for the
+      complete BigBounce campaign. (The executable metrics and fail-closed
+      inventory reconciliation are implemented and 11/11 tested at SciStack
+      `ba36b4c`; the historical receipt inventory is not yet complete.)
 - [ ] Two consecutive exact-PDF waves show zero known-pattern escapes and no
       genuinely-new BLOCKER/MAJOR issues after truth audit.
 - [ ] PDF/version/SSOT/Convex/API/site/package gates pass for all six papers.
@@ -459,10 +499,15 @@ models are available.
 
 ## Immediate next action
 
-P0 dispatch enforcement is implemented. Generate a fresh receipt on the committed
-P5 v0.1.134/P4 v1.0.255 state, close any remaining portfolio-gate failure, then
-build and standalone-verify exact current source bundles. Only after that proof
-passes should the residual P4/P5 non-Anthropic review run. In parallel, continue
-the event-ledger migration and measured known-pattern-escape instrumentation; those
-remain the highest-leverage P1 work for proving that the loop is learning rather
-than merely accumulating prose.
+P0 dispatch enforcement and the P4 v1.0.256/P5 v0.1.135 truth-audited closure
+releases are implemented. The next science gate is an authorized exact-PDF
+confirmation board on those two closure PDFs, followed by finding-level truth
+audit without relabeling the prior MAJOR/MINOR verdicts. In parallel, create the
+complete BigBounce receipt inventory, preserve the P5 overwritten-first-pass gap
+as an explicit reconciliation failure, ingest the missing historical events, and
+drive reconciliation to 100%. Only then may the now-executable known-pattern
+escape and closure-regression metrics be treated as campaign-wide learning
+evidence. The remaining unchecked acceptance items—especially the cross-paper
+claim graph, machine-readable rule coverage, two clean confirmation waves, and
+all-six release gates—remain the governing work rather than being inferred from
+the P4/P5 closures.
