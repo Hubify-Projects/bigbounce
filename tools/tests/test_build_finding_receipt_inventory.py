@@ -163,6 +163,24 @@ REPRODUCIBILITY AND STATISTICAL CHECKS:
             result, _ = inventory.build(root, inventory.DEFAULT_CUTOFF)
             self.assertEqual(result["receipts"], [])
 
+    def test_allowed_paths_excludes_out_of_scope_receipts(self):
+        body = "# INT API Review — P2\nRAW RESPONSE\n[MINOR] x\n"
+        with tempfile.TemporaryDirectory() as tmp:
+            base = pathlib.Path(tmp)
+            root = base / "project-context" / "peer-reviews"
+            kept = self.write(root, "INT_v3/ROUND_2026-07-11/API_P2_grok.md", body)
+            self.write(root, "INT_v3/ROUND_2026-07-12/API_P2_gemini.md", body)
+            result, report = inventory.build(
+                root,
+                inventory.DEFAULT_CUTOFF,
+                allowed_paths={kept.resolve()},
+            )
+            self.assertEqual(report["candidate_receipts"], 1)
+            self.assertEqual(
+                result["receipts"][0]["path"],
+                kept.relative_to(base).as_posix(),
+            )
+
 
 if __name__ == "__main__":
     unittest.main()

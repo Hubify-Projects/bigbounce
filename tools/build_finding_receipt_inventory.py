@@ -14,6 +14,7 @@ import hashlib
 import json
 import pathlib
 import re
+import subprocess
 from typing import Any
 
 SCHEMA_VERSION = "finding-receipt-inventory/v1"
@@ -157,11 +158,32 @@ def generated_at(rows: list[dict[str, Any]], texts: dict[str, str], cutoff: dt.d
     return dt.datetime.combine(cutoff, dt.time.min, tzinfo=dt.timezone.utc).isoformat().replace("+00:00", "Z")
 
 
-def build(root: pathlib.Path, cutoff: dt.date) -> tuple[dict[str, Any], dict[str, Any]]:
+def tracked_paths(repo_root: pathlib.Path) -> set[pathlib.Path]:
+    result = subprocess.run(
+        ["git", "ls-files", "-z"],
+        cwd=repo_root,
+        check=True,
+        capture_output=True,
+    )
+    return {
+        (repo_root / item.decode("utf-8")).resolve()
+        for item in result.stdout.split(b"\0")
+        if item
+    }
+
+
+def build(
+    root: pathlib.Path,
+    cutoff: dt.date,
+    *,
+    allowed_paths: set[pathlib.Path] | None = None,
+) -> tuple[dict[str, Any], dict[str, Any]]:
     rows: list[dict[str, Any]] = []
     gaps: list[dict[str, Any]] = []
     texts: dict[str, str] = {}
     for path in sorted(root.rglob("*.md")):
+        if allowed_paths is not None and path.resolve() not in allowed_paths:
+            continue
         relative = pathlib.PurePosixPath(path.relative_to(root.parent.parent).as_posix())
         date = path_date(relative)
         if date is None or date <= cutoff:
@@ -210,8 +232,14 @@ def main() -> int:
     parser.add_argument("--cutoff", type=dt.date.fromisoformat, default=DEFAULT_CUTOFF)
     parser.add_argument("--inventory", type=pathlib.Path, required=True)
     parser.add_argument("--report", type=pathlib.Path, required=True)
+    parser.add_argument(
+        "--tracked-only",
+        action="store_true",
+        help="inventory only git-tracked receipts so committed evidence is reproducible",
+    )
     args = parser.parse_args()
-    inventory, report = build(args.root, args.cutoff)
+    allowed_paths = tracked_paths(pathlib.Path.cwd()) if args.tracked_only else None
+    inventory, report = build(args.root, args.cutoff, allowed_paths=allowed_paths)
     args.inventory.parent.mkdir(parents=True, exist_ok=True)
     args.inventory.write_text(json.dumps(inventory, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     args.report.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8")
