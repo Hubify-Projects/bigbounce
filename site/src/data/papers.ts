@@ -371,8 +371,8 @@ export const papers: Paper[] = [
       "Deep-tier Gemini MAJOR closure (v1.0.224): added self-contained training-data provenance table + a probabilistic-calibration paragraph quantifying a real top-label ECE lower bound from the committed GZ1 confusion matrix (mean-conf 0.951 vs 3-class acc 0.5871 -> ECE>=0.36; chirality 0.6991 -> >=0.25), proven invariant to any monotone recalibration; surfaced existing committed data, no number changed.",
     ],
     artifacts: [
-      { label: "Read PDF", href: "/papers/chirality_catalog_paper_v1.0.260.pdf", kind: "primary", external: true },
-      { label: "Download PDF", href: "/papers/chirality_catalog_paper_v1.0.260.pdf", kind: "secondary", download: true },
+      { label: "Read PDF", href: "https://raw.githubusercontent.com/Hubify-Projects/bigbounce/b4593563591a0eb7aac4e68eafe302715377a439/site/public/papers/chirality_catalog_paper_v1.0.260.pdf", kind: "primary", external: true },
+      { label: "Download PDF", href: "https://raw.githubusercontent.com/Hubify-Projects/bigbounce/b4593563591a0eb7aac4e68eafe302715377a439/site/public/papers/chirality_catalog_paper_v1.0.260.pdf", kind: "secondary", download: true },
       {
         label: "LaTeX source",
         href: "https://github.com/Hubify-Projects/bigbounce/blob/main/pipelines/p2_chirality/chirality_catalog_paper.tex",

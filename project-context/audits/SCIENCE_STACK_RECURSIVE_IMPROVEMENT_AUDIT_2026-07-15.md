@@ -156,6 +156,17 @@ safe extraction with zero errors, undefined references, or overfull boxes.
 Immutable provider publication of the strict overlay remains open because no HF
 token was available; the dry-run receipt is not represented as publication.
 
+Deployment verification also caught a public-mirror regression that a successful
+site build did not expose: Vercel updated the status page but retained the
+v1.0.259 bytes at the canonical PDF alias and routed the new v1.0.260 filename
+to HTML. A direct CLI repair was rejected because the 75-GB worktree exposed
+53,027 files, above Vercel's 15,000-file request limit. The CLI attempt was
+stopped; no successful redeploy is claimed. The public P4 read/download links
+now use the immutable GitHub commit artifact, independently verified as
+33,925,512 bytes with the canonical SHA-256, while local and repository mirrors
+remain intact. A future deployment-surface cleanup must build from a bounded
+source set instead of uploading the full research worktree.
+
 Evidence and exact outcomes are recorded in
 `project-context/audits/PROACTIVE_PORTFOLIO_SWEEP_2026-07-15.md`. Readiness was
 not increased by these process or release-integrity closures.
