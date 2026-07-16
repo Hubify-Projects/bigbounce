@@ -6,7 +6,7 @@ pseudo-\(C_\ell\) validation:
 1. contracting a uniformly rotated spin-2 spectrum through the complete
    NaMaster bandpower-window operator without an effective-\(\ell\) or
    bin-centre approximation; and
-2. publishing JSON results and content-addressed sidecar receipts with atomic
+2. publishing JSON results and content-bound sidecar receipts with atomic
    replacement of each file, then failing closed when result bytes or
    caller-asserted execution metadata change.
 
@@ -55,7 +55,7 @@ payload, receipt = validate_json_receipt(
 The complete executable window example, including a deterministic workspace
 and spectra, is in `examples/synthetic_window.py` and is exercised below.
 
-Receipt metadata cannot override the content-addressed fields
+Receipt metadata cannot override the content-binding fields
 `schema_version`, `result_file`, `result_bytes`, or `result_sha256`.
 The result and receipt are two sequential atomic file replacements, not one
 filesystem transaction and not a cryptographic signature. A coordinated
@@ -110,7 +110,7 @@ namaster-proof validate /tmp/namaster-proof-example.json \
 ```
 
 It recovers the injected grid value, checks direct window contraction against
-the linear operator, and emits a content-addressed receipt.
+the linear operator, and emits a digest-bound receipt.
 
 ## Real PyMaster integration
 

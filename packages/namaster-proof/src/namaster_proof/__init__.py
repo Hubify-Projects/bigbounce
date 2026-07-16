@@ -1,4 +1,4 @@
-"""Reusable exact-window and content-addressed receipt primitives."""
+"""Reusable exact-window and content-bound receipt primitives."""
 
 from .receipts import (
     PROTECTED_RECEIPT_FIELDS,
@@ -33,4 +33,4 @@ __all__ = [
     "windowed_bandpowers",
 ]
 
-__version__ = "0.1.1"
+__version__ = "0.1.2"

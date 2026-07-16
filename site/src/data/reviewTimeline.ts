@@ -57,6 +57,28 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p1b-v2b003-receipt-race-closure-2026-07-16",
+    dateISO: "2026-07-16",
+    timePT: "11:36 AM",
+    kind: "closure-wave",
+    title: "P1B v2B.0.3 — concurrent receipt-validation race closed",
+    papers: ["P1B"],
+    summary:
+      "The exact v2B.0.2 JORS board returned Grok REJECT, Gemini MAJOR, and Codex-subscription MAJOR. Truth audit falsified repeated repository/version objections, retained the disclosed archive gate, and verified one major software defect: validation could return an old parsed payload while authenticating a concurrently published new generation. namaster-proof 0.1.2 now authenticates the immutable bytes it returns and regression-tests the race. Readiness holds 56.",
+    keyTakeaways: [
+      "One genuinely new major software-integrity defect became a deterministic regression fixture",
+      "Package suite passes 25/25; Linux Python 3.10–3.13 and Windows 3.12 CI are declared",
+      "Content-bound terminology, canonical documentation, portability scope, grammar, URL/license scanability, and reference layout are corrected",
+      "OpenAI review used Codex/ChatGPT subscription only; no OpenAI API or Anthropic route was used",
+    ],
+    links: [
+      { label: "Truth audit", href: `${PR}/INT_v3/ROUND_2026-07-16-P1B-v2B.0.2-EXACTPDF-18b97ac5-JORS-NONANTHROPIC-CONFIRM/P1B_v2B.0.2_truth_audit.md` },
+      { label: "Codex raw", href: `${PR}/INT_v3/ROUND_2026-07-16-P1B-v2B.0.2-EXACTPDF-18b97ac5-JORS-NONANTHROPIC-CONFIRM/intwave_P1B_codex_1119.md` },
+      { label: "Grok raw", href: `${PR}/INT_v3/ROUND_2026-07-16-P1B-v2B.0.2-EXACTPDF-18b97ac5-JORS-NONANTHROPIC-CONFIRM/API_P1B_grok.md` },
+      { label: "Gemini raw", href: `${PR}/INT_v3/ROUND_2026-07-16-P1B-v2B.0.2-EXACTPDF-18b97ac5-JORS-NONANTHROPIC-CONFIRM/API_P1B_gemini.md` },
+    ],
+  },
+  {
     id: "p1b-v112-partial-confirmation-2026-07-16",
     dateISO: "2026-07-16",
     timePT: "9:57 AM",

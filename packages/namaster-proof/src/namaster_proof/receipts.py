@@ -22,6 +22,12 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
+def _read_bytes(path: Path) -> bytes:
+    """Read one immutable file-handle snapshot."""
+    with path.open("rb") as handle:
+        return handle.read()
+
+
 def receipt_path(path: Path) -> Path:
     """Return the canonical sidecar receipt path for a JSON result."""
     return path.with_name(path.name + ".receipt.json")
@@ -36,11 +42,12 @@ def _atomic_write(path: Path, data: bytes) -> None:
             handle.flush()
             os.fsync(handle.fileno())
         os.replace(temporary, path)
-        directory_fd = os.open(path.parent, os.O_RDONLY)
-        try:
-            os.fsync(directory_fd)
-        finally:
-            os.close(directory_fd)
+        if os.name == "posix":
+            directory_fd = os.open(path.parent, os.O_RDONLY)
+            try:
+                os.fsync(directory_fd)
+            finally:
+                os.close(directory_fd)
     finally:
         temporary.unlink(missing_ok=True)
 
@@ -77,19 +84,21 @@ def publish_json(
 
 
 def verify_json_receipt(path: Path) -> tuple[dict[str, Any], dict[str, Any]]:
-    """Verify result existence, JSON shape, schema, byte count, and digest."""
+    """Verify one coherent result snapshot against one receipt snapshot."""
     sidecar = receipt_path(path)
     if not path.is_file() or not sidecar.is_file():
         raise FileNotFoundError(f"missing result/receipt pair for {path}")
-    payload = json.loads(path.read_text(encoding="utf-8"))
-    receipt = json.loads(sidecar.read_text(encoding="utf-8"))
+    result_bytes = _read_bytes(path)
+    receipt_bytes = _read_bytes(sidecar)
+    payload = json.loads(result_bytes.decode("utf-8"))
+    receipt = json.loads(receipt_bytes.decode("utf-8"))
     if not isinstance(payload, dict) or not isinstance(receipt, dict):
         raise ValueError("result and receipt must both be JSON objects")
     expected = {
         "schema_version": 1,
         "result_file": path.name,
-        "result_bytes": path.stat().st_size,
-        "result_sha256": sha256(path),
+        "result_bytes": len(result_bytes),
+        "result_sha256": hashlib.sha256(result_bytes).hexdigest(),
     }
     mismatches = {
         key: {"expected": value, "actual": receipt.get(key)}

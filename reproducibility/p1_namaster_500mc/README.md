@@ -13,21 +13,9 @@ with bandpowers in `results/physical_spectrum_v2/bandpowers.npz` (SHA-256
 `b00f850e338007caea6af76f4e9305ab6b54a68e6799efd450bc76f1c325f331`).
 It uses CAMB 1.6.6 raw lensed EE/BB spectra and recovers the declared
 0.000, 0.270, and 0.342 degree injections at the 0.001 degree grid
-resolution. The July 14 semi-analytic run below is retained only as superseded
-history; `results/SUPERSEDED.md` records its disposition.
-
-| Injection | Mean recovery | Exact-window template SNR |
-|---:|---:|---:|
-| `0.000 deg` | `-0.001 deg` | `0.00` |
-| `0.270 deg` | `0.269 deg` | `20.0095` |
-| `0.342 deg` | `0.341 deg` | `25.3190` |
-
-For the canonical `0.270 deg` injection, the signed mean bias is
-`-0.0010 deg`, the per-realization scatter is `0.05140 deg`, and the standard
-error of the 500-realization mean is `0.00230 deg`. The mean residual is
-therefore unresolved. These template SNR values measure an injected synthetic
-signal against single-realization scatter; they are not sky-detection
-significances.
+resolution. The older recovery table and template-SNR values belong only to the
+superseded July 14 semi-analytic run and are intentionally not repeated here;
+`results/SUPERSEDED.md` records their disposition.
 
 Superseded exact-window artifacts:
 

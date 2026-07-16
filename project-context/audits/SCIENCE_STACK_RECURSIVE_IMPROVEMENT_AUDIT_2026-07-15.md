@@ -179,6 +179,24 @@ logged box warnings and passed visual inspection; its SHA-256 is
 This closes the real-PyMaster benchmark gap but does not complete the persistent
 archive, human metadata, confirmation-review, or campaign-wide learning gates.
 
+The next exact v2B.0.2 board produced the strongest example yet of why residual
+review must remain adversarial even after broad preflight passes. Grok returned
+REJECT, Gemini MAJOR, and subscription-backed Codex MAJOR. Truth audit rejected
+the repeated PDF-modality repository-access and manuscript/package-version
+claims, retained the disclosed archive identifier as an external gate, and
+verified one genuinely new major software defect: receipt validation parsed a
+result and later re-opened its path for size/hash checks, so concurrent
+publication could return an old payload while authenticating a new
+file/receipt generation. v2B.0.3 / package 0.1.2 converts that finding into a
+deterministic race regression and authenticates the exact immutable result-byte
+snapshot returned to the caller. The same closure adds Windows CI, narrows
+durability claims to POSIX directory synchronization, corrects filename-derived
+“content-addressed” terminology, removes superseded canonical values, and fixes
+the rendered reference/footer collision. This is the intended recursive
+invariant—novel valid feedback becomes executable prevention in the same
+closure unit—but it also proves that the two-clean-wave acceptance gate remains
+open. Readiness is not increased.
+
 The full audit plan is **not complete**. The defensible acceptance accounting is
 against the 12 checklist gates below:
 

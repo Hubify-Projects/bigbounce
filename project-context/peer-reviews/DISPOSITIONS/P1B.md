@@ -1,8 +1,10 @@
 # P1B disposition ledger
 
-**Canonical source:** `arxiv/paper1b_mcmc_companion.tex`  
-**Current paper-local version:** `v1B.0.105` (2026-07-14 split revival)  
-**Claim policy:** reproducible proxy, pipeline, and consistency studies; no ECH or bounce evidence.
+**Canonical source:** `arxiv/paper1b_namaster_proof.tex`
+**Current paper-local version:** `v2B.0.3` (2026-07-16 software-metapaper closure)
+**Claim policy:** exact-window and receipt software validation; no sky measurement,
+foreground model, cosmological inference, or ECH/bounce evidence. The legacy
+v1B computational-companion dispositions remain below as retained history.
 
 | ID | Issue | Status | Evidence / residual scope |
 |---|---|---|---|
@@ -14,4 +16,10 @@
 | DP1B-06 | Model comparison is absent; Planck-only chain is not converged; ALP likelihood is a summary likelihood. | **OPEN / DISCLOSED** | No Bayes-factor claim is made; the nonconverged chain is excluded from headlines; full EB likelihood and calibration/foreground treatment remain outside this paper. |
 | DP1B-07 | Submission metadata and archive immutability. | **OPEN-SUBMISSION** | Coordinated arXiv IDs and final DOI/archive identifiers remain placeholders. No upload/tag was performed in this paper-local closure. |
 | DP1B-08 | Fresh referee verdict on the standalone v1B.0.105 artifact. | **OPEN-REVIEW** | Compile/layout QA does not replace a fresh scientific review. |
-
+| DP1B-09 | JORS software-metapaper architecture and package release. | **CLOSED-BY-SPLIT v2B.0.0** | The active manuscript is the focused `namaster-proof` software paper; the legacy computational dossier remains retained rather than presented as a standalone novelty claim. |
+| DP1B-10 | Silent spectrum padding/truncation and invalid recovery inputs. | **CLOSED-BY-CODE v2B.0.1 / package 0.1.1** | Exact harmonic support, finite inputs, non-negative weights, and band-count identity fail closed with regression coverage. |
+| DP1B-11 | Overbroad result/receipt transaction and tamper guarantees. | **CLOSED-BY-EDIT v2B.0.1** | The manuscript and README state that the files are sequential per-file atomic replacements and coordinated replacement requires trusted expected metadata or an external anchor. |
+| DP1B-12 | Real PyMaster integration was absent. | **CLOSED-BY-ARTIFACT v2B.0.2** | The retained PyMaster 2.6 example recovers 0.250°, records the 0.315° shortcut result, and verifies operator agreement at 6.78e-21; its JSON/receipt are regression-tested. |
+| DP1B-13 | Receipt verification mixed payload and receipt generations during concurrent publication. | **CLOSED-BY-CODE v2B.0.3 / package 0.1.2** | Verification now hashes and parses the same immutable result-byte snapshot it returns; a race regression fails before the fix and passes after it. |
+| DP1B-14 | Portability, receipt terminology, stale canonical documentation, malformed prose, and reference-page collision. | **CLOSED-BY-EDIT v2B.0.3** | Windows CI and POSIX-specific durability wording replace unsupported OS independence; “content-bound” replaces filename-inaccurate “content-addressed”; superseded recovery values are removed from the canonical README; grammar and rendered references are corrected. |
+| DP1B-15 | Persistent archive identifier and final correspondence metadata. | **OPEN-SUBMISSION / HUMAN** | Package 0.1.2 must be bound to an immutable public archive before JORS submission; author-supplied contact metadata remains a human gate. |

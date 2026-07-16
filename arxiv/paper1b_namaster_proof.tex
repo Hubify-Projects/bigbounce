@@ -20,8 +20,8 @@
 
 \newcommand{\software}{\texttt{namaster-proof}}
 \newcommand{\Cl}{C_\ell}
-\newcommand{\paperVersion}{v2B.0.2}
-\newcommand{\paperTimestamp}{2026-07-16 11:09 PT}
+\newcommand{\paperVersion}{v2B.0.3}
+\newcommand{\paperTimestamp}{2026-07-16 11:31 PT}
 
 \title{\software: Exact pseudo-\(\Cl\) window inference and
 content-bound validation for reproducible spin-2 analyses}
@@ -37,7 +37,7 @@ in cut-sky spin-2 analyses.  First, it evaluates a uniformly rotated
 \(EE,EB,BE,BB\) spectrum through the complete NaMaster bandpower-window
 operator, avoiding replacement of the operator by bin-centre or
 effective-multipole templates.  Second, it writes JSON results and
-content-addressed sidecar receipts with atomic per-file replacement and fails
+content-bound sidecar receipts with atomic per-file replacement and fails
 closed when result bytes or caller-asserted execution metadata change.  The package also supplies explicit
 multipole-support contracts, fixed-grid rotation-angle recovery, command-line
 receipt verification, and compatibility tests against the production helpers
@@ -153,8 +153,10 @@ containing schema version, result filename, byte count, SHA-256 digest, and
 caller-supplied execution metadata.  The content-binding fields are protected
 from metadata override.
 
-\texttt{verify\_json\_receipt} requires both files, parses both as JSON
-objects, and recomputes every protected field.  \texttt{validate\_json\_receipt}
+\texttt{verify\_json\_receipt} requires both files, reads each through one file
+handle, parses those immutable byte snapshots as JSON objects, and recomputes
+every protected field from the same result bytes it returns.
+\texttt{validate\_json\_receipt}
 additionally checks caller-asserted metadata such as a suite identifier, seed range,
 or realization count.  Missing files, malformed objects, changed bytes,
 changes to protected receipt fields, or asserted-contract mismatches raise an exception. The two
@@ -166,7 +168,7 @@ failure.
 
 \section{Quality Control}
 
-Version 0.1.1 contains 24 automated tests covering numerical behavior, invalid
+Version 0.1.2 contains 25 automated tests covering numerical behavior, invalid
 inputs, the CLI, receipt mutation, protected fields, and compatibility with
 the original production helpers.  The window suite uses an exactly represented
 synthetic linear workspace to compare the precontracted response with the
@@ -185,7 +187,7 @@ couple--decouple operator. This recorded execution check used IEEE-754
 double-precision arrays and the production driver's \(10^{-10}\) acceptance
 threshold; the package's separate synthetic legacy-helper comparison uses
 zero requested absolute and relative tolerance. Because
-the original workspace tensor was not retained, so the scalar is not a
+the original workspace tensor was not retained, the scalar is not a
 self-contained reproducibility claim or a universal error bound.
 
 \section{Worked Examples}
@@ -238,25 +240,30 @@ schema will require an explicit reader or conversion path.
 \section{Availability}
 
 \paragraph{Operating system.}
-The package is operating-system independent where Python and NumPy are
-available; CI covers Linux with Python 3.10--3.13.
+The package supports Linux and Windows where Python and NumPy are available;
+CI covers Linux with Python 3.10--3.13 and Windows with Python 3.12. Directory
+metadata are synchronized on POSIX systems after atomic replacement.
 
 \paragraph{Programming language and dependencies.}
-Version 0.1.1 requires Python 3.10 or later and NumPy 1.24 or later. PyMaster
+Version 0.1.2 requires Python 3.10 or later and NumPy 1.24 or later. PyMaster
 is optional and is supplied by the user for physical NaMaster workspaces;
 the retained physical validation used PyMaster 2.6.
 
 \paragraph{Code repository.}
-The MIT-licensed source, issue tracker, installation instructions, API
-documentation, tests, and examples are available directly at
-\href{https://github.com/Hubify-Projects/bigbounce/tree/main/packages/namaster-proof}
-{the \software{} package directory}. Citation metadata are supplied in
-\texttt{CITATION.cff}.
+\begingroup\sloppy
+The source, issue tracker, installation instructions, API documentation, tests,
+and examples are available at
+\url{https://github.com/Hubify-Projects/bigbounce/tree/main/packages/namaster-proof}.
+Citation metadata are supplied in \texttt{CITATION.cff}.
+\par\endgroup
+
+\paragraph{License.}
+The software is released under the MIT License.
 
 \paragraph{Archive.}
 A persistent archival identifier is not yet available. This is an explicit
 submission blocker, not a completed release claim. The submission candidate
-must bind version 0.1.1 to an immutable archive before journal submission.
+must bind version 0.1.2 to an immutable archive before journal submission.
 
 \paragraph{Validation artifacts.}
 The corrected physical example is bound to the
@@ -291,15 +298,13 @@ The exact-window operations build on NaMaster~\cite{Alonso2019} and the MASTER
 pseudo-\(\Cl\) method~\cite{Hivon2002}.  The production example used
 CAMB~\cite{Lewis2000} and HEALPix~\cite{Gorski2005}.
 
-\section*{Funding Statement}
-
+\paragraph{Funding Statement.}
 No external funding supported this software release.
 
-\section*{Competing Interests}
-
+\paragraph{Competing Interests.}
 The author declares no competing interests.
 
-\enlargethispage{4\baselineskip}
+\footnotesize
 \begin{thebibliography}{9}
 
 \bibitem{Hivon2002}

@@ -4,6 +4,7 @@ import json
 
 import pytest
 
+import namaster_proof.receipts as receipts_module
 from namaster_proof.receipts import (
     publish_json,
     receipt_path,
@@ -58,3 +59,28 @@ def test_metadata_cannot_override_content_binding(tmp_path):
             {"values": [1]},
             {"result_sha256": "attacker-controlled"},
         )
+
+
+def test_concurrent_pair_replacement_cannot_mix_payload_generations(
+    tmp_path, monkeypatch
+):
+    result = tmp_path / "shard.json"
+    publish_json(result, {"generation": 1}, {"suite": "test", "generation": 1})
+    original_read = receipts_module._read_bytes
+    switched = False
+
+    def racing_read(path):
+        nonlocal switched
+        snapshot = original_read(path)
+        if path == result and not switched:
+            switched = True
+            publish_json(
+                result,
+                {"generation": 2},
+                {"suite": "test", "generation": 2},
+            )
+        return snapshot
+
+    monkeypatch.setattr(receipts_module, "_read_bytes", racing_read)
+    with pytest.raises(ValueError, match="invalid receipt"):
+        verify_json_receipt(result)
