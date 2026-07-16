@@ -137,6 +137,25 @@ release overlay is being built as the next release-contract gate; until an
 immutable provider revision is actually published and verified, it must remain
 reported as in progress rather than complete.
 
+The next release-contract increment is now complete locally as P4 `v1.0.260`.
+The unchanged public catalog remains pinned to immutable HF revision
+`db11023306ab4eed1d7727670bd78e127b7af17a`; a content-addressed strict overlay
+binds the current selection, exact null, schema, checksums, and reproducer.
+Twenty-two focused release/preflight tests and the complete 140-test repository
+suite pass. The 25-page PDF passes directive-G, all-page visual audit, retention,
+16 byte-identical mirrors, Convex synchronization, and isolated source-bundle
+proof. The all-paper preflight at commit `13cd7e85` passes with core SHA-256
+`3662fefcc9c91da1a3bcfcb1fb2265241a3cf6aeebf3ae0aaf1a3f151814893a`.
+
+This increment also removed an avoidable packaging delay: the generic arXiv
+builder previously assumed `pdflatex` was globally discoverable even though the
+canonical paper compiler uses TinyTeX by absolute path. The builder now reuses a
+PATH executable when available and otherwise resolves the canonical TinyTeX
+binary fail-closed. P4's commit-bound v1.0.260 bundle then compiled in isolated
+safe extraction with zero errors, undefined references, or overfull boxes.
+Immutable provider publication of the strict overlay remains open because no HF
+token was available; the dry-run receipt is not represented as publication.
+
 Evidence and exact outcomes are recorded in
 `project-context/audits/PROACTIVE_PORTFOLIO_SWEEP_2026-07-15.md`. Readiness was
 not increased by these process or release-integrity closures.
