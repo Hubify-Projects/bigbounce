@@ -80,14 +80,22 @@ found this regression.
    prevent equivalent receipts from colliding. The P3 no-launch path fell from
    36.20 s to 13.05 s (64% wall-clock reduction) while retaining the same
    six-paper and packet gates.
+8. **P4/P5 packaging is now executable rather than implied.** Both papers gained
+   explicit, commit-bound source/figure/bibliography/class contracts. Their exact
+   current bundles independently compile to the canonical 29/39 pages with zero
+   errors, undefined references, or overfull boxes.
+9. **The standalone verifier no longer joins unrelated log lines.** Its former
+   DOTALL regex could pair the word “Reference” in package documentation with a
+   later “font shape ... undefined” warning. The detector is now line-bounded and
+   has positive/negative regression fixtures; P4's initially failed proof then
+   passed without waiving a real warning.
 
 ## Remaining critical path
 
-1. Create and verify a clean six-paper receipt at the committed P5 v0.1.134 release.
-2. Build and standalone-verify the exact P5 and P4 current-version source bundles.
-3. Run exact P4 v1.0.255 and P5 v0.1.134 non-Anthropic reviews; truth-audit before
+1. Create and verify a fresh six-paper receipt at the committed bundle/proof state.
+2. Run exact P4 v1.0.255 and P5 v0.1.134 non-Anthropic reviews; truth-audit before
    any closure or readiness change.
-4. Execute P1B corrected production when compute funding is available; do not
+3. Execute P1B corrected production when compute funding is available; do not
    substitute prose for the missing result.
-5. Complete public archive/DOI and human editorial/referee gates. Automated
+4. Complete public archive/DOI and human editorial/referee gates. Automated
    review cannot prove journal acceptance.

@@ -1,5 +1,12 @@
 # P4 deposit record — v1.0.252
 
+> **SUPERSEDED DRAFT — DO NOT PUBLISH AS CURRENT.** The reversible GitHub draft
+> below remains bound to v1.0.252. The current v1.0.255 source bundle and isolated
+> 29-page proof are recorded in
+> [`../arxiv_tarballs/paper4_arxiv_v1.0.255.proof.json`](../arxiv_tarballs/paper4_arxiv_v1.0.255.proof.json).
+> No current-version Zenodo draft, DOI, arXiv submission, or journal submission
+> exists.
+
 **State:** verified deposit candidate in a reversible GitHub draft. **No DOI has been reserved, no Zenodo record has been published, and no arXiv or journal submission has occurred.** Publication readiness remains 80.
 
 ## Exact release identity

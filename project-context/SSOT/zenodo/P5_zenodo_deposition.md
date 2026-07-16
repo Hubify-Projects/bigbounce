@@ -1,4 +1,14 @@
 # Zenodo Deposition Record — P5
+
+> **SUPERSEDED / UNAUTHORIZED METADATA — DO NOT UPLOAD OR PUBLISH.** This June
+> document contains obsolete version/count language, placeholder identifiers, and
+> a CC-BY assertion that is not currently authorized. The current manuscript is
+> v0.1.134-2026-07-15. Its exact source bundle passes isolated 39-page compilation
+> ([proof](../arxiv_tarballs/paper5_arxiv_v0.1.134-2026-07-15.proof.json)), but
+> deposit metadata intentionally fails closed pending Houston's license decision
+> and the Paper-IV provenance/completeness gates. No public tag, DOI, Zenodo draft,
+> arXiv submission, journal submission, or acceptance is claimed.
+
 ## Paper: Environmental Dependence of Spiral Chirality (DESI + DESIVAST)
 
 **Version:** v0.1.77-2026-06-13 (EXT11-closure submission version | PDF md5: e5a3999a | 32pp)

@@ -1,3 +1,9 @@
+## v0.1.134 EXACT SOURCE-BUNDLE PROOF — 2026-07-15 · READINESS/CAP 74 HOLD
+
+- The deterministic arXiv source bundle `paper5_arxiv_v0.1.134-2026-07-15.tar.gz` is bound to source/config commit `678e93febd505d37768e554f337bdbd4f838a514` and SHA-256 `88b791cd571ddc2d98f5b367f11f8f49fbd5bb0f24715913bf964b50d404f714`.
+- Safe isolated extraction plus Tectonic compilation reproduces 39 pages with zero errors, undefined references, or overfull boxes.
+- This is source-bundle proof, not a public tag, DOI, deposit, review verdict, submission, or acceptance. P5 metadata still fails closed pending Houston license authorization and Paper-IV provenance/completeness gates. Readiness/cap remains **74**.
+
 ## v0.1.134 PROACTIVE RELEASE-CONTRACT CLOSURE — 2026-07-15 · FALSE FROZEN-ARTIFACT CLAIM REMOVED · READINESS/CAP 74 HOLD
 
 - **Pre-review finding:** the portfolio artifact gate proved that the manuscript's claimed frozen `data/desivast_matched_spirals.parquet` does not exist in the worktree or reachable Git history. Review dispatch correctly failed closed.

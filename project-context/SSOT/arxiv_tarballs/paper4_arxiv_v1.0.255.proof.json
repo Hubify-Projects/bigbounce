@@ -1,0 +1,23 @@
+{
+  "compiled_pdf_md5": "62eef476c7a1be91116a347f488732fe",
+  "compiled_pdf_sha256": "e22eb8b23875dedc456d1a352c656f1b4e820445de018e2a219e7fdda7e81ed6",
+  "compiled_pdf_size_bytes": 25347410,
+  "engine": "tectonic",
+  "errors": 0,
+  "git_commit": "678e93febd505d37768e554f337bdbd4f838a514",
+  "mode": "isolated-safe-extraction",
+  "overfull_hboxes": 0,
+  "overfull_vboxes": 0,
+  "page_count": 29,
+  "paper_id": "P4",
+  "paper_version": "v1.0.255",
+  "schema": "bigbounce-standalone-arxiv-proof/v1",
+  "source_pdf": "pipelines/p2_chirality/chirality_catalog_paper.pdf",
+  "source_pdf_md5": "bf487faff829eddcab98c3c5066682ba",
+  "source_pdf_sha256": "f9b011a84351781b0b0e48e02e811a60ba1666296fa1f80413c918fe131c7dce",
+  "status": "pass",
+  "tarball": "project-context/SSOT/arxiv_tarballs/paper4_arxiv_v1.0.255.tar.gz",
+  "tarball_sha256": "69ca2c1c164fc981166074458855c47438323ab521f86c067b877bf0aa485775",
+  "undefined_references": 0,
+  "verified_at_utc": "2026-07-16T00:21:15Z"
+}
