@@ -36,7 +36,7 @@
 % The divide-by-h claim (~1246 h⁻¹ Mpc) is INVERTED. No pipeline recompute required.
 % If any future reviewer re-raises this, cite env_finder/01_compute_vweb.py:106-108.
 
-\newcommand{\paperVersion}{v0.1.138-2026-07-16}
+\newcommand{\paperVersion}{v0.1.139-2026-07-16}
 % v0.1.136 (2026-07-15 -- exact-PDF confirmation truth-audit closure):
 %   promotes the rank-defensible K=13/G=50 CR1 + wild-cluster result to the
 %   focal estimator; demotes K=78; repairs classifier/release provenance and
@@ -730,7 +730,7 @@
 %   cluster −54%) but the environmental-independence null HOLDS and
 %   TIGHTENS: cross-class f_CW range 1.98pp → 0.05pp, all classes
 %   |σ_mono| ≤ 0.39. Artifact: outputs/16_cosmic_web_zshell_corrected.json.
-\newcommand{\paperTimestamp}{July 16, 2026, 01:21 PT}
+\newcommand{\paperTimestamp}{July 16, 2026, 01:43 PT}
 % timestamp label unchanged (still July 2026); \date bumped to July 6
 % v0.1.62-2026-06-10 (R29 post-EXT1 internal-round closure wave; truth audit at
 %   project-context/peer-reviews/R29_P5_TRUTH_AUDIT.md):
@@ -1331,13 +1331,15 @@ with $\Delta f_{\rm CW}\!=\!-0.0026$ (the monopole offset expressed as
 a fractional deviation from $0.5$, i.e.\
 $\Delta f_{\rm CW} \equiv \bar f_{\rm CW} - 0.5$) to flag whether a
 deviation is attributable to the global bias rather than
-environment-correlated chirality. Where a residual is computed against
-a non-half reference $p_0$ (e.g.\ $f_{\rm CW}^{\rm P5} = 0.4972$ in
-$\sigma_{\rm vs\,monopole}$), we retain the $0.5/\sqrt{N}$ denominator
-for cross-table comparability; the exact $\sqrt{p_0(1-p_0)/N}$
-denominator differs from it by a factor
-$\sqrt{4 p_0 (1-p_0)} = 0.99998$ at $p_0 = 0.4972$, i.e.\
-${<}0.01\%$ in $\sigma$, far below the quoted precision. The monopole reference itself carries finite counting
+environment-correlated chirality. Where a residual is computed against the
+same-sample non-half reference $p_0=f_{\rm CW}^{\rm P5}=0.4972$, $p_0$
+is estimated rather than independent. The pooled class-versus-rest covariance
+is therefore required; the corrected filament and cluster residuals are
+approximately $+1.40$ and $-1.56$, respectively, and do not alter the
+omnibus null conclusion. The exact $\sqrt{p_0(1-p_0)/N}$ single-bin
+denominator differs from $0.5/\sqrt{N}$ by a factor
+$\sqrt{4p_0(1-p_0)}=0.99998$, but that near-equality does not remove
+the shared-reference covariance. The monopole reference itself carries finite counting
 uncertainty, which we propagate explicitly: where $\sigma_{\rm pred}$
 uses the Paper~IV catalog-wide $\Delta f_{\rm CW}$
 ($N\!=\!3.2\times10^6$, ${\rm se}\!\approx\!\sqrt{0.25/(3.2\times10^6)}
@@ -1900,7 +1902,7 @@ as the global monopole leaking through the larger-sample bins, not as
 environment-dependent chirality.
 
 \textbf{Void-bin smallness.} The void bin has only $n\!=\!428$
-galaxies. Two distinct void volume fractions appear in this paper and refer to different denominators: (i)~the T-Web tidal-classifier void class occupies ${\approx}24.4\%$ of in-footprint cell volume (\S\ref{sec:vweb_algo}, \href{\repoBase/pipelines/p5\_desi\_chirality/env\_finder/reports/01\_volume\_fractions.json}{[A7]}), while (ii)~only ${\approx}0.1\%$ of in-footprint grid cells fall inside a DESIVAST VoidFinder sphere (the point-in-sphere membership criterion on the $25.9\,{\rm Mpc}/h$ grid used for the sky-stratification analysis of \S\ref{sec:desivast_maximal_healpix}). The small T-Web void-bin count ($n\!=\!428$) arises because despite the T-Web void class covering $24.4\%$ of volume, the sparse $r \le 17.8$ DESI Legacy spiral selection combined with the $z \leq 0.24$ depth cut samples only a thin galaxy population within those cells. The $\sigma\!=\!-0.68$ on the void
+galaxies. Two distinct void volume fractions appear in this paper and refer to different denominators: (i)~the T-Web tidal-classifier void class occupies ${\approx}24.4\%$ of in-footprint cell volume (\S\ref{sec:vweb_algo}, \href{\repoBase/pipelines/p5\_desi\_chirality/env\_finder/reports/01\_volume\_fractions.json}{[A7]}), while (ii)~only ${\approx}0.1\%$ of in-footprint grid cells fall inside a DESIVAST VoidFinder sphere (the point-in-sphere membership criterion on the $25.9\,{\rm Mpc}/h$ grid used for the sky-stratification analysis of \S\ref{sec:desivast_maximal_healpix}). The full T-Web void parent already contains only $n\!=\!428$ galaxies; applying the separate $z\leq0.24$ cut leaves six and is not the cause of the quoted 428-object count. The small full-parent count instead reflects the sparse $r\leq17.8$ DESI Legacy spiral selection within T-Web void cells. The $\sigma\!=\!-0.68$ on the void
 class is statistical noise at this $N$; the $95\%$ Jeffreys credible
 interval is $f_{\rm CW}^{\rm void} \in [0.435, 0.530]$, which brackets
 parity.
@@ -4365,8 +4367,10 @@ that drives the filament bright/dark sign-flip is minimized by
 construction; the separate footprint-restricted
 $\Delta f_{\rm CW} = +0.0018$ (and its same-verdict $k\!=\!20$
 sensitivity control $+0.0007$) is a secondary sensitivity rather than
-the focal estimate, and no existing calculation bounds the
-program-by-environment interaction. No test produces a
+the focal estimate, and the A43--A44 interaction calculation finds no robust
+interaction evidence. Its sparse DARK and other-program strata provide only
+weak bounds, however, so substantial program-by-environment interaction effects
+are not excluded. No test produces a
 $>3\sigma$ residual after
 Paper~IV-monopole correction.
 
@@ -5153,9 +5157,11 @@ are not retained in the tracked release and must be regenerated from the
 public inputs and committed pipeline;
 and (iii) the per-cell Phase~2 sweep configurations
 (\texttt{data/desi\_env/phase2\_sweep/}, [A12]).
-These retained artifacts were produced deterministically from the public DESI~DR1
-spectro catalog and the published DESIVAST void catalog using the
-committed pipeline at seed \texttt{20260515}.
+These frozen retained artifacts are deterministically reproducible byte for
+byte. Reconstruction from public inputs additionally requires the committed
+stable ordering and tie-breaking contract: the audit shows that an unstable
+sort changes 22 parent rows and shifts the focal contrast by
+$3.09\times10^{-5}$. A seed alone is therefore insufficient.
 No immutable public \texttt{\paperVersion} tag or Zenodo DOI is claimed to
 exist yet; both are explicit pre-submission release tasks. For clarity on the
 companion-paper dependency: the focal DESIVAST void/non-void

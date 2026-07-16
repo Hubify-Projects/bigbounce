@@ -57,6 +57,27 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p4-p5-residual-confirmation-closure-2026-07-16",
+    dateISO: "2026-07-16",
+    timePT: "1:45 AM",
+    kind: "closure-wave",
+    title: "P4 v1.0.259 / P5 v0.1.139 — residual findings truth-audited and closed",
+    papers: ["P4", "P5"],
+    summary:
+      "A preflight-bound non-Anthropic residual board reviewed the exact P4 v1.0.258 and P5 v0.1.138 PDFs. P4 returned MINOR/MINOR/MAJOR but every leg supported the strict central null; four manuscript/release synchronization defects were verified. P5 returned unanimous MINOR with four verified manuscript defects. The new candidates close those defects while holding readiness at 80/74.",
+    keyTakeaways: [
+      "P4: strict audit table, binomial-null moments, exact-support caption, unblinding disclosure, and public-release scope synchronized",
+      "P5: interaction wording, pooled-reference covariance, T-Web parent-count provenance, and stable ordering corrected",
+      "New deterministic preflight assertions prevent these reviewed manuscript/artifact mismatches from recurring",
+      "Exact PDFs: P4 25 pp / 55098cfb / fd43e0aa; P5 41 pp / 948e0412 / 21a4a79f; no acceptance claimed",
+    ],
+    links: [
+      { label: "P4 canonical status", href: `${GH}/project-context/SSOT/paper-4/status.md` },
+      { label: "P5 canonical status", href: `${GH}/project-context/SSOT/paper-5/status.md` },
+      { label: "Revision tracker", href: `${GH}/project-context/peer-reviews/REVISION_TRACKER.md` },
+    ],
+  },
+  {
     id: "p4-p5-computational-closure-release-2026-07-16",
     dateISO: "2026-07-16",
     timePT: "1:22 AM",

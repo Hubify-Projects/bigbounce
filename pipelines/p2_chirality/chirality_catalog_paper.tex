@@ -55,7 +55,7 @@
 \newcommand{\HCRI}{\textsc{HC-RI}}
 \newcommand{\FSC}{\textsc{FS-C}}
 \newcommand{\MAGF}{\textsc{MASTER-AGF}}
-\newcommand{\paperVersion}{v1.0.258}
+\newcommand{\paperVersion}{v1.0.259}
 % v1.0.257 (2026-07-15 23:48 PDT — exact-PDF confirmation truth-audit
 %   closure: relabels the GZ1 spatial check as two declination proxies rather
 %   than three imaging legs and removes the residual causal TTA overclaim.)
@@ -713,7 +713,7 @@
 %   the established two-step provenance gate.)
 % v1.0.171->172 (2026-06-10 — EXT1 closure wave restamp: recompile + mirror bundle;
 %   Data Availability hash pinned to the v1.0.172 stamp commit per provenance gate.)
-\newcommand{\paperTimestamp}{July 16, 2026, 01:00 PDT}
+\newcommand{\paperTimestamp}{July 16, 2026, 01:43 PDT}
 % v1.0.217->218 (2026-07-05 — DATA-UNLOCK: edge-on-ISOLATED argmax tie-break coherence
 %   now COMPUTED (was pod/data-lab-deferred). Join catalog_production (class_eq/RA/Dec) to
 %   committed spiral_morphology_dr8 b/a on dr8_id; edge-on (b/a<0.30) borderline population
@@ -856,7 +856,7 @@ To make the mapping from estimator to scientific claim explicit, Table~\ref{tab:
 Table~\ref{tab:headline_summary} consolidates the distinct estimators and nulls. Their statistics are not commensurable, and no joint likelihood is defined. The scientific verdict rests solely on the HC observed-label real-space row; WLS and all harmonic rows remain systematics diagnostics. The missing joint covariance remains an open methodological gate.
 
 \begin{table*}[t]
-\caption{\label{tab:headline_summary}Primary-estimator summary. $N_{\rm catalog\,spiral}$ is the underlying Catalog~C spiral count (CW+CCW only). $N_{\rm map\,weighted} = \sum_{p\in\rm mask} W_p$ where $W_p = N_{\rm all}^{(p)}$ is the total classified-galaxy count in pixel~$p$ (CW+CCW+NS), used as a survey-depth weight in the NaMaster field object. $N_{\rm map\,weighted}$ exceeds $N_{\rm catalog\,spiral}$ because $W_p$ includes non-spiral galaxies (${\sim}62\%$ of the catalog); each galaxy is counted once. Row~(iv) is the apodized-footprint MASTER diagnostic ($N_{\rm all}\!\geq\!1$ mask, $C^2$ $2^\circ$ apodization); its two $\sigma$ values are against the global per-galaxy label-shuffle and depth-stratified nulls respectively (both systematics-attributed; Appendices~A, D). \emph{The $\sigma$ values in different rows are computed against different null procedures (column ``Null'') and are not directly comparable across rows as detection significances.} Row~(v) reports the post-look-elsewhere-corrected significance; the raw direct-MC value is $p_{\rm LEE}=1/10001; 95\% upper limit \simeq3.0\times10^{-4}$ against the random-label max-statistic null, which \emph{already incorporates} the look-elsewhere scan and is the principled directional look-elsewhere control (Appendix~C); the rejection is systematics-attributed. Row~(vii) uses the HC-broad subsample ($p_{\rm eq}\!>\!0.6$; Sec.~\ref{sec:sensitivity}). A ``---'' in $N_{\rm map\,weighted}$ marks rows where the NaMaster weight construction is not invoked.}
+\caption{\label{tab:headline_summary}Primary-estimator summary. $N_{\rm catalog\,spiral}$ is the underlying Catalog~C spiral count (CW+CCW only). $N_{\rm map\,weighted} = \sum_{p\in\rm mask} W_p$ where $W_p = N_{\rm all}^{(p)}$ is the total classified-galaxy count in pixel~$p$ (CW+CCW+NS), used as a survey-depth weight in the NaMaster field object. $N_{\rm map\,weighted}$ exceeds $N_{\rm catalog\,spiral}$ because $W_p$ includes non-spiral galaxies (${\sim}62\%$ of the catalog); each galaxy is counted once. Row~(iv) applies a $C^2$, $2^\circ$ apodization to the same exact 24,087-pixel \FSC{} base mask as row~(iii), with the same 500-draw fixed-occupancy null. \emph{The $\sigma$ values in different rows are computed against different null procedures (column ``Null'') and are not directly comparable across rows as detection significances.} Row~(v) reports the post-look-elsewhere-corrected significance; the raw direct-MC value is $p_{\rm LEE}=1/10001; 95\% upper limit \simeq3.0\times10^{-4}$ against the random-label max-statistic null, which \emph{already incorporates} the look-elsewhere scan and is the principled directional look-elsewhere control (Appendix~C); the rejection is systematics-attributed. Row~(vii) uses the HC-broad subsample ($p_{\rm eq}\!>\!0.6$; Sec.~\ref{sec:sensitivity}). A ``---'' in $N_{\rm map\,weighted}$ marks rows where the NaMaster weight construction is not invoked.}
 \scriptsize
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{lrrcccr}
@@ -1059,20 +1059,25 @@ and the $N_{\rm spiral}$-weighted pairs are
 \end{equation}
 Thus all six cells have $|z|<0.8$. These are robustness diagnostics on \HCRI{} threshold variants, not additional primary tests. The unthresholded full-sample excess is reported only as a depth-correlated systematics diagnostic, not a competing primary result.
 
+The unsafe-row quarantine predicate was introduced and finalized during
+post-review closure after inspection of the earlier unsafe-inclusive result; it
+was not preregistered or fixed before unblinding. The strict rerun is therefore a
+transparent corrective analysis, not a blinded confirmatory test.
+
 \begin{table}[tbp]
-\caption{Primary HC estimator audit. The empirical rank value is the one-sided upper tail. The exact fixed-occupancy null-array SHA-256 is \texttt{f6360f4bec226690...152c0}; full precision and the complete hash are in the release manifest.\label{tab:primary_audit}}
+\caption{Primary HC estimator audit. The empirical rank value is the one-sided upper tail. The exact strict-sample fixed-occupancy null-array SHA-256 is \texttt{3a03ca4b008844fd...e32ce7d}; full precision and the complete hash are in the computational-closure receipt.\label{tab:primary_audit}}
 \scriptsize
 \begin{tabular}{lc}
 Quantity & Exact or reported value \\
 \hline
-$N_{\rm selected}$ / $N_{\rm support}$ & $949{,}584$ / $947{,}326$ \\
-Excluded / valid pixels & $2{,}258$ / $23{,}682$ \\
+$N_{\rm selected}$ / $N_{\rm support}$ & $890{,}069$ / $887{,}472$ \\
+Excluded / valid pixels & $2{,}597$ / $23{,}633$ \\
 Support / seed / null draws & \HCRI{} / $20260715$ / $10{,}000$ \\
-$A_{\rm dip}$ / monopole & $0.0045970743$ / $-0.0077688925$ \\
-Equatorial direction & $(294.3054^\circ,16.0291^\circ)$ \\
-Null mean / std. (ddof $=0$) & $0.0034899420$ / $0.0015696946$ \\
-$z_{\rm mom}$ & $+0.7053170$ \\
-Upper-tail $k/N$ / rank $p$ & $2246/10000$ / $0.2246775$ \\
+$A_{\rm dip}$ / monopole & $0.0046651988$ / $0.0255064554$ \\
+Equatorial direction & $(195.4820^\circ,-57.1615^\circ)$ \\
+Null mean / std. (ddof $=0$) & $0.0036202914$ / $0.0016464287$ \\
+$z_{\rm mom}$ & $+0.6346509$ \\
+Upper-tail $k/N$ / rank $p$ & $2376/10000$ / $0.2376762$ \\
 \end{tabular}
 \end{table}
 
@@ -1129,8 +1134,8 @@ The exact-support harmonic diagnostic is evaluated on the persisted 24,087-pixel
 \begin{tabular}{lccc}
 \textbf{Statistic} & \textbf{Data} & \textbf{Null} & \textbf{$z$} \\
 \hline
-$C_1$, 500 draws & $7.0113{\times}10^{-6}$ & $(5.2420{\pm}0.9257){\times}10^{-6}$ & $+6.983$ \\
-$C_1$, 10,000 draws & $7.0113{\times}10^{-6}$ & $(5.1242{\pm}0.2618){\times}10^{-6}$ & $+7.207$ \\
+$C_1$, 500 draws & $7.0113{\times}10^{-6}$ & $(0.60414{\pm}0.91749){\times}10^{-6}$ & $+6.983$ \\
+$C_1$, 10,000 draws & $7.0113{\times}10^{-6}$ & $(0.57796{\pm}0.89263){\times}10^{-6}$ & $+7.207$ \\
 \end{tabular}
 \end{table*}
 
@@ -1350,7 +1355,7 @@ Four scientific gates remain open: a physical morphology transfer function, a ma
 \label{sec:conclusions}
 % ============================================================
 
-We publish an 8,474,531-object observed-label catalog release and report one primary result: the release-safe HC real-space dipole is null-consistent ($N_{\rm selected}=890{,}069$, $N_{\rm support}=887{,}472$, $z_{\rm mom}=+0.635$, one-sided add-one rank $p=0.23768$). The exact safe catalog, quarantine, retained null array, manifest, schema, and reproducer are public at the commit-pinned release identified in Data Availability. All harmonic, WLS, injection, and transfer calculations are diagnostics. Our main conclusions are:
+We report one primary result from the 8,474,531-object observed-label catalog: the strict release-safe HC real-space dipole is null-consistent ($N_{\rm selected}=890{,}069$, $N_{\rm support}=887{,}472$, $z_{\rm mom}=+0.635$, one-sided add-one rank $p=0.23768$). The repository candidate retains the safe catalog, quarantine, exact strict null array, receipt, and generator. The currently identified public dataset release still documents the earlier unsafe-inclusive primary realization; rebuilding and publishing a synchronized immutable release is therefore an explicit pre-submission gate. All harmonic, WLS, injection, and transfer calculations are diagnostics. Our main conclusions are:
 
 \paragraph{Harmonic-channel response diagnostic.}
 The apodized-footprint MASTER $\ell=1$ injection pilot reports its observed-label score fractions and median injected scores in Table~\ref{tab:harmonic_completeness}. Because this channel has a different field, mask, weights, and null from the primary estimator, these values diagnose pipeline response only; they do not establish completeness, a physical exclusion, or an ``unmissable'' amplitude.

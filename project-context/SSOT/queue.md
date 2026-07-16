@@ -947,6 +947,12 @@ _Six parallel peer reviews on disk at `project-context/peer-reviews/autonomous-2
 4. If blocked, flip to `[!]` with a one-line reason.
 5. When adding new tasks: insert them at the correct priority; ID them `P{paper}-{slug}` or `P-{program-slug}` for cross-paper.
 6. Never delete a completed task row from the history. That's the record.
+- **2026-07-16 — P4 v1.0.259 / P5 v0.1.139 RESIDUAL-CONFIRMATION CLOSURES — caps hold 80/74**
+  - Board: P4 Grok MINOR / Gemini MINOR / Codex-subscription MAJOR; P5 unanimous MINOR. All six legs support the central catalog-specific nulls.
+  - Truth audit verified P4 table/release synchronization defects and P5 interaction/covariance/count/determinism defects; all manuscript-level findings are closed in the new candidates and protected by the P4/P5 science-contract preflight.
+  - Exact PDFs: P4 v1.0.259, 25 pp, SHA-256 `55098cfb…c4c50`, MD5 `fd43e0aa`; P5 v0.1.139-2026-07-16, 41 pp, SHA-256 `948e0412…d2a9`, MD5 `21a4a79f`. Convex rows `k57bvrg7492tgrw2nfh0amkkzd8anka3` / `k57e5x0n089m3q8kwqzwef6kad8am7ry`.
+  - Remaining: synchronized immutable P4 catalog release; public P5 archive/DOI; another exact confirmation; standing science/editorial and human venue gates.
+
 - **2026-07-16 — P4 v1.0.258 / P5 v0.1.138 COMPUTATIONAL CLOSURES RELEASED — caps hold 80/74**
   - P4 strict primary rerun excludes release-unsafe rows (`N_selected=890,069`, `N_support=887,472`, `z_mom=+0.63465`, `p=0.23768`) and all FSC harmonic diagnostics now share the exact checksummed 24,087-pixel support (fixed-occupancy `z=6.923`, `p=0.001996`; apodized `z=7.033`; 10,000-draw binomial `z=7.207`, `p=0.00059994`). These are systematics diagnostics only.
   - P5 K=13 gives `+0.00145442`; NSIDE=2/4/8 and 3-D nearest-VoidFinder cluster-robust intervals all span zero. Program-interaction strata are sparse and not tightly bounded, with no robust interaction evidence.

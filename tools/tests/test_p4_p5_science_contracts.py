@@ -14,6 +14,7 @@ from verify_p4_p5_science_contracts import (  # noqa: E402
     P5_PARENT_SHA256,
     verify_p4_harmonics,
     verify_p4_primary,
+    verify_manuscript_contracts,
     verify_p5,
 )
 
@@ -173,6 +174,25 @@ class ScienceContractTests(unittest.TestCase):
         value["void_by_program_interaction"]["interpretation_guardrail"] = "use caution"
         with self.assertRaisesRegex(ContractError, "guardrail"):
             verify_p5(value)
+
+    def test_manuscript_sync_contract_rejects_reviewed_regressions(self):
+        p4_text = (ROOT / "pipelines/p2_chirality/chirality_catalog_paper.tex").read_text()
+        p5_text = (
+            ROOT / "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex"
+        ).read_text()
+        verify_manuscript_contracts(p4_text, p5_text)
+        with self.assertRaisesRegex(ContractError, "superseded"):
+            verify_manuscript_contracts(
+                p4_text + "\n$949{,}584$ / $947{,}326$\n",
+                p5_text,
+            )
+        with self.assertRaisesRegex(ContractError, "stale"):
+            verify_manuscript_contracts(
+                p4_text,
+                p5_text
+                + "\nno existing calculation bounds the\n"
+                "program-by-environment interaction\n",
+            )
 
 
 if __name__ == "__main__":

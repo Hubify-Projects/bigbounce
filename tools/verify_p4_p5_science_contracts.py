@@ -28,6 +28,8 @@ P5_CLUSTER_KEYS = (
     "healpix_nside8",
     "voidfinder_nearest_maximal_3d",
 )
+P4_TEX = Path("pipelines/p2_chirality/chirality_catalog_paper.tex")
+P5_TEX = Path("pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex")
 
 
 class ContractError(ValueError):
@@ -178,6 +180,44 @@ def verify_p5(payload: dict[str, Any]) -> None:
                     )
 
 
+def verify_manuscript_contracts(p4_text: str, p5_text: str) -> None:
+    """Prevent reviewed artifact/manuscript synchronization defects recurring."""
+    p4_compact = " ".join(p4_text.split())
+    p5_compact = " ".join(p5_text.split())
+    for required in (
+        "3a03ca4b008844fd...e32ce7d",
+        "$890{,}069$ / $887{,}472$",
+        "$(0.60414{\\pm}0.91749){\\times}10^{-6}$",
+        "$(0.57796{\\pm}0.89263){\\times}10^{-6}$",
+        "same exact 24,087-pixel \\FSC{} base mask",
+        "not preregistered or fixed before unblinding",
+        "currently identified public dataset release still documents the earlier unsafe-inclusive",
+    ):
+        _require(required in p4_compact, f"P4 manuscript science contract missing: {required}")
+    for forbidden in (
+        "f6360f4bec226690...152c0",
+        "$949{,}584$ / $947{,}326$",
+        "$(5.2420{\\pm}0.9257){\\times}10^{-6}$",
+        "$(5.1242{\\pm}0.2618){\\times}10^{-6}$",
+    ):
+        _require(forbidden not in p4_compact, f"P4 superseded manuscript value recurred: {forbidden}")
+
+    for required in (
+        "corrected filament and cluster residuals are",
+        "approximately $+1.40$ and $-1.56$",
+        "applying the separate $z\\leq0.24$ cut leaves six",
+        "A43--A44 interaction calculation finds no robust",
+        "substantial program-by-environment interaction effects",
+        "unstable sort changes 22 parent rows",
+        "$3.09\\times10^{-5}$",
+    ):
+        _require(required in p5_compact, f"P5 manuscript science contract missing: {required}")
+    _require(
+        "no existing calculation bounds the program-by-environment interaction" not in p5_compact,
+        "P5 stale no-interaction-calculation statement recurred",
+    )
+
+
 def verify(root: Path, paths: dict[str, str]) -> dict[str, Any]:
     root = root.resolve(strict=True)
     required = ("p4_primary", "p4_harmonics", "p5_robustness")
@@ -195,6 +235,13 @@ def verify(root: Path, paths: dict[str, str]) -> dict[str, Any]:
     verify_p4_primary(p4_primary)
     verify_p4_harmonics(p4_harmonics)
     verify_p5(p5)
+    p4_tex = root / P4_TEX
+    p5_tex = root / P5_TEX
+    _require(p4_tex.is_file() and p5_tex.is_file(), "P4/P5 manuscript source is missing")
+    verify_manuscript_contracts(
+        p4_tex.read_text(encoding="utf-8"),
+        p5_tex.read_text(encoding="utf-8"),
+    )
     return {
         "schema": SCHEMA,
         "verdict": "PASS",

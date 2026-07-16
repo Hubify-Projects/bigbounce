@@ -1,9 +1,9 @@
-## v0.1.138-2026-07-16 COMPUTATIONAL-CLOSURE RELEASE — 2026-07-16 · READINESS/CAP 74 HOLD
+## v0.1.139-2026-07-16 RESIDUAL-CONFIRMATION CLOSURE — 2026-07-16 · READINESS/CAP 74 HOLD
 
-- The exact 41-page PDF is bound to SHA-256 `3c47ccf75da20653c463557fc54fff50da01e1e6bde43a225f61c46cd50baaf0` / MD5 `83566c8d5c3c059e744ec1c595401734`; Convex row `k578gs6qddzfac7m4y6pmq6aq58an8tr` is synchronized.
+- The exact 41-page PDF is bound to SHA-256 `948e0412a5f4052747037f38ab2e43f2d888c61c74fbdfe95d29241ef806d2a9` / MD5 `21a4a79fe55c151b5e8cecfe48fa81d2`; Convex row `k57e5x0n089m3q8kwqzwef6kad8am7ry` is synchronized.
 - The focal K=13 adjusted contrast is `+0.00145442`. Like-for-like cluster-sandwich checks at NSIDE=2, 4, and 8 and with 3-D nearest-VoidFinder clustering all have 95% confidence intervals spanning zero.
 - The program-by-void interaction analysis is sparse and not tightly bounded; it supplies no robust evidence for an interaction and is not represented as proving no leakage or physical environment independence.
-- Final independently reviewable Paper IV labels/provenance, immutable public P5 archive/DOI and artifact resolution, exact v0.1.138 re-review, narrative/editorial closure, and human AJ review remain open. Readiness **74 HOLDS**; no submission or acceptance is claimed.
+- The unanimous-minor v0.1.138 board's four verified defects are closed: interaction wording, pooled-reference covariance, T-Web parent-count provenance, and stable-ordering determinism. Final independently reviewable Paper IV labels/provenance, immutable public P5 archive/DOI and artifact resolution, exact v0.1.139 confirmation, narrative/editorial closure, and human AJ review remain open. Readiness **74 HOLDS**; no submission or acceptance is claimed.
 
 ## v0.1.136 EXACT CONFIRMATION BOARD TRUTH-AUDITED — 2026-07-16 · READINESS/CAP 74 HOLD
 

@@ -20,6 +20,10 @@ This tracker logs each revision round and which issues have been addressed.
 
 ## Revision Rounds
 
+### P4 v1.0.259 / P5 v0.1.139: Residual-confirmation closures (2026-07-16)
+
+The exact v1.0.258/v0.1.138 residual board used direct Grok/Gemini APIs plus subscription-backed Codex only. P4 returned MINOR/MINOR/MAJOR, with every reviewer supporting the strict central null; truth audit verified four manuscript/release synchronization defects and one unblinding disclosure gap. P5 returned unanimous MINOR, with four verified manuscript defects. P4 v1.0.259 closes the strict primary-audit table, binomial-null moments, apodized support/null caption, and public-release overclaim; its synchronized immutable catalog release remains open. P5 v0.1.139 closes interaction wording, pooled-reference covariance, T-Web parent-count provenance, and stable-ordering determinism. Exact PDFs: P4 25 pages, SHA-256 `55098cfb07897f4ae68ee469fd593f75fb204f57b7404ee8a7b33afe6b6c4c50`, MD5 `fd43e0aac408aa2b4719334cbce5f060`, Convex row `k57bvrg7492tgrw2nfh0amkkzd8anka3`; P5 41 pages, SHA-256 `948e0412a5f4052747037f38ab2e43f2d888c61c74fbdfe95d29241ef806d2a9`, MD5 `21a4a79fe55c151b5e8cecfe48fa81d2`, Convex row `k57e5x0n089m3q8kwqzwef6kad8am7ry`. Readiness holds P4 80 / P5 74.
+
 ### P4 v1.0.258 / P5 v0.1.138: Computational closure releases (2026-07-16)
 
 P4 v1.0.258 closes the exact-board sample-contract and harmonic-support defects. Its strict primary rerun uses `N_selected=890,069`, `N_support=887,472`, with `z_mom=+0.63465` and one-sided empirical-rank `p=0.23768`. Its fixed-occupancy, apodized, and binomial harmonic diagnostics now use the exact checksummed 24,087-pixel FSC support (`z=6.923`, `p=0.001996`; `z=7.033`; and `z=7.207`, `p=0.00059994`, respectively). They remain systematics diagnostics rather than evidence of a physical signal. Exact PDF: 25 pages, SHA-256 `e9b69665efdf757de69f27a0474d30ac4bc48bc7559424e077f41c7bcacbe061`, MD5 `412d30361dbc17b04f618c28fa65f443`; Convex row `k575wenst372vbpg4xcwzkbcc58ams1p`.
