@@ -248,6 +248,18 @@ package from an archived monorepo snapshot. This demonstrates that exact-PDF
 visual/semantic dependents must be included in the changed-region closure gate;
 the wave is not clean and readiness remains unchanged.
 
+The v2B.0.6 confirmation then validated the broader-source review architecture
+again: direct Grok and Gemini repeated the disclosed archive gate, while the
+registry-scoped Codex leg found a genuinely new executable defect outside the
+PDF. The Windows matrix ran a POSIX multiline example under runner-default
+PowerShell. Commit `be218ed7` selects Bash explicitly and adds a regression
+test. The closure is now promoted beyond the one workflow into the
+packet-bound portfolio gate: `verify_ci_shell_portability.py` rejects
+POSIX-only run syntax in any declared Windows-capable workflow unless the step
+selects Bash. This converts DP1B-22 from a reviewer-first escape into reusable
+prevention and provides an exact regression fixture reproducing the failure
+shape. The round is still not clean and readiness remains 56.
+
 The full audit plan is **not complete**. The defensible acceptance accounting is
 against the 12 checklist gates below:
 

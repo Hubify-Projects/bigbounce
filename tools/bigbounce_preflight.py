@@ -22,6 +22,7 @@ from verify_analysis_artifact_manifest import verify_manifest
 from verify_p1b_science_contracts import verify as verify_p1b_science_contracts
 from verify_p4_p5_science_contracts import verify as verify_p4_p5_science_contracts
 from verify_claim_dependency_graph import verify as verify_claim_dependency_graph
+from verify_ci_shell_portability import verify as verify_ci_shell_portability
 
 SCHEMA = "bigbounce.pre-review-portfolio-receipt/v1"
 ENGINE = Path.home() / ".claude/scistack/hubstack/learning-loop/paper-pre-review-check/scripts/pre_review_check.py"
@@ -35,6 +36,7 @@ ALLOWED_LOCAL_ENGINE_PATHS = (
     "tools/verify_p1b_science_contracts.py",
     "tools/verify_p4_p5_science_contracts.py",
     "tools/verify_claim_dependency_graph.py",
+    "tools/verify_ci_shell_portability.py",
     "project-context/claim-dependency-graph.json",
 )
 
@@ -156,6 +158,11 @@ def evaluate(root: Path, rules_path: Path) -> dict[str, Any]:
         raise PortfolioError("p1b_science_contract_paths must be a string map")
     p1b_analysis_manifest = p1b_contract_paths.get("analysis_manifest")
     claim_graph_path = rule_catalog.get("claim_dependency_graph")
+    ci_shell_paths = rule_catalog.get("ci_shell_portability_paths", [])
+    if not isinstance(ci_shell_paths, list) or not all(
+        isinstance(item, str) for item in ci_shell_paths
+    ):
+        raise PortfolioError("ci_shell_portability_paths must be a string list")
     if "claim-dependency-graph" in validator_ids and not isinstance(claim_graph_path, str):
         raise PortfolioError(
             "claim-dependency-graph requires a claim_dependency_graph path"
@@ -175,6 +182,9 @@ def evaluate(root: Path, rules_path: Path) -> dict[str, Any]:
     ) + tuple(
         (claim_graph_path,)
         if "claim-dependency-graph" in validator_ids else ()
+    ) + tuple(
+        ci_shell_paths
+        if "ci-shell-portability" in validator_ids else ()
     ) + tuple(local_engine_paths)
     ensure_clean_inputs(root, registry, validator_inputs)
     registry_raw = registry_path(root).read_bytes()
@@ -235,6 +245,17 @@ def evaluate(root: Path, rules_path: Path) -> dict[str, Any]:
                 result = verify_claim_dependency_graph(root, root / claim_graph_path)
             except (OSError, UnicodeDecodeError, ValueError) as exc:
                 raise PortfolioError(f"claim-dependency validation failed: {exc}") from exc
+            portfolio_validators.append({"id": validator_id, **result})
+        elif validator_id == "ci-shell-portability":
+            try:
+                result = verify_ci_shell_portability(root, ci_shell_paths)
+            except (OSError, UnicodeDecodeError, ValueError) as exc:
+                raise PortfolioError(f"CI shell-portability validation failed: {exc}") from exc
+            if result.get("verdict") != "PASS":
+                raise PortfolioError(
+                    "CI shell-portability validation failed: "
+                    + json.dumps(result.get("findings", []), sort_keys=True)
+                )
             portfolio_validators.append({"id": validator_id, **result})
         else:
             raise PortfolioError(f"unknown portfolio validator: {validator_id}")

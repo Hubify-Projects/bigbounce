@@ -229,6 +229,63 @@ class PortfolioPreflightTests(unittest.TestCase):
         ):
             write_receipt(self.root, self.rules, self.receipt)
 
+    def test_ci_shell_portability_validator_is_wired(self):
+        relative = ".github/workflows/test.yml"
+        path = self.root / relative
+        path.parent.mkdir(parents=True)
+        path.write_text("jobs: {}\n", encoding="utf-8")
+        subprocess.run(["git", "add", relative], cwd=self.root, check=True)
+        subprocess.run(["git", "commit", "-qm", "add workflow"], cwd=self.root, check=True)
+        payload = json.loads(self.rules.read_text(encoding="utf-8"))
+        payload["portfolio_validators"] = ["ci-shell-portability"]
+        payload["ci_shell_portability_paths"] = [relative]
+        self.rules.write_text(json.dumps(payload), encoding="utf-8")
+        expected = {
+            "schema": "bigbounce.ci-shell-portability/v1",
+            "verdict": "PASS",
+            "workflows": [],
+            "workflow_count": 1,
+            "findings": [],
+            "finding_count": 0,
+            "receipt_sha256": "0" * 64,
+        }
+        with (
+            self.registry_patch(),
+            mock.patch(
+                "bigbounce_preflight.verify_ci_shell_portability",
+                return_value=expected,
+            ) as verifier,
+        ):
+            receipt = write_receipt(self.root, self.rules, self.receipt)
+        verifier.assert_called_once_with(self.root.resolve(), [relative])
+        self.assertEqual(receipt["portfolio_validators"][0]["id"], "ci-shell-portability")
+
+    def test_ci_shell_portability_failure_fails_closed(self):
+        relative = ".github/workflows/test.yml"
+        path = self.root / relative
+        path.parent.mkdir(parents=True)
+        path.write_text("jobs: {}\n", encoding="utf-8")
+        subprocess.run(["git", "add", relative], cwd=self.root, check=True)
+        subprocess.run(["git", "commit", "-qm", "add workflow"], cwd=self.root, check=True)
+        payload = json.loads(self.rules.read_text(encoding="utf-8"))
+        payload["portfolio_validators"] = ["ci-shell-portability"]
+        payload["ci_shell_portability_paths"] = [relative]
+        self.rules.write_text(json.dumps(payload), encoding="utf-8")
+        failed = {
+            "schema": "bigbounce.ci-shell-portability/v1",
+            "verdict": "FAIL",
+            "findings": [{"path": relative, "step": "Example"}],
+        }
+        with (
+            self.registry_patch(),
+            mock.patch(
+                "bigbounce_preflight.verify_ci_shell_portability",
+                return_value=failed,
+            ),
+            self.assertRaisesRegex(PortfolioError, "shell-portability"),
+        ):
+            write_receipt(self.root, self.rules, self.receipt)
+
     def test_unsafe_portfolio_engine_path_fails_closed(self):
         payload = json.loads(self.rules.read_text(encoding="utf-8"))
         payload["portfolio_engine_paths"] = ["../../outside.py"]

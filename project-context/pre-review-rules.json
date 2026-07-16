@@ -13,7 +13,11 @@
     "p1b-science-contracts",
     "artifact-crosscheck-six",
     "p4-p5-science-contracts",
-    "claim-dependency-graph"
+    "claim-dependency-graph",
+    "ci-shell-portability"
+  ],
+  "ci_shell_portability_paths": [
+    ".github/workflows/namaster-proof.yml"
   ],
   "claim_dependency_graph": "project-context/claim-dependency-graph.json",
   "p1b_science_contract_paths": {
@@ -39,6 +43,7 @@
     "tools/verify_p1b_science_contracts.py",
     "tools/verify_p4_p5_science_contracts.py",
     "tools/verify_claim_dependency_graph.py",
+    "tools/verify_ci_shell_portability.py",
     "project-context/claim-dependency-graph.json"
   ],
   "rules": [
