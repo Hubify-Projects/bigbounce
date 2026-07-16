@@ -25,13 +25,13 @@ import re
 import sys
 import pathlib
 
-REPO = pathlib.Path("/Users/houstongolden/Desktop/CODE_YOU/bigbounce")
+REPO = pathlib.Path(__file__).resolve().parents[1]
 DISP_DIR = REPO / "project-context/peer-reviews/DISPOSITIONS"
 
-# Paper key -> disposition-ledger filename. P1A/P1B/P1U all live in the unified
-# P1U ledger on the site side; the ledger dir keys are P1U/P2/P3/P4/P5.
+# Paper key -> disposition-ledger filename. P1A, P1B, and P1U are distinct
+# manuscripts with distinct ledgers; never collapse their review taxonomies.
 LEDGER_FILE = {
-    "P1U": "P1U.md", "P1A": "P1U.md", "P1B": "P1U.md",
+    "P1U": "P1U.md", "P1A": "P1A.md", "P1B": "P1B.md",
     "P2": "P2.md", "P3": "P3.md", "P4": "P4.md", "P5": "P5.md",
 }
 
@@ -133,6 +133,18 @@ def parse_ledger(path: pathlib.Path):
                 dist |= distinctive(k)
             entries.append((cur_id, toks, dist, raw))
             cur_id = None
+    if entries:
+        return entries
+
+    # Newer ledgers use one compact Markdown table rather than heading blocks.
+    # Treat the issue and evidence cells as the conservative fingerprint source.
+    for line in path.read_text().splitlines():
+        cells = [cell.strip() for cell in line.strip().strip("|").split("|")]
+        if len(cells) < 4 or not re.fullmatch(r"D[A-Z0-9]+-\d+", cells[0]):
+            continue
+        d_id = cells[0]
+        raw = f"{cells[1]} {cells[3]}"
+        entries.append((d_id, tokenize(raw), distinctive(raw), raw))
     return entries
 
 
