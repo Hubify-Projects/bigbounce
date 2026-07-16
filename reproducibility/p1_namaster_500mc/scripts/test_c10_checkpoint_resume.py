@@ -36,6 +36,12 @@ def scientific_bytes(realizations):
 
 
 class CheckpointResumeTest(unittest.TestCase):
+    def test_code_fingerprint_is_immutable_after_process_import(self):
+        startup = c10.code_sha256()
+        with mock.patch.object(c10.Path, "read_bytes", return_value=b"changed"):
+            self.assertEqual(c10.code_sha256(), startup)
+            self.assertNotEqual(c10._compute_code_sha256(), startup)
+
     def test_interrupted_resume_is_bitwise_scientifically_identical(self):
         with tempfile.TemporaryDirectory(prefix="c10_checkpoint_test_") as tmp:
             checkpoint = Path(tmp) / "purify.checkpoint.json"

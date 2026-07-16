@@ -57,7 +57,7 @@ THEORY_OPERATOR = "NmtWorkspace.get_bandpower_windows exact tensor contraction"
 _REALIZATION_STATE = None
 
 
-def code_sha256():
+def _compute_code_sha256():
     """Fingerprint every local module that defines the c10 scientific result."""
     digest = hashlib.sha256()
     for filename in (
@@ -72,6 +72,14 @@ def code_sha256():
         digest.update(path.read_bytes())
         digest.update(b"\0")
     return digest.hexdigest()
+
+
+STARTUP_CODE_SHA256 = _compute_code_sha256()
+
+
+def code_sha256():
+    """Return the immutable fingerprint captured when this process imported."""
+    return STARTUP_CODE_SHA256
 
 
 def checkpoint_path(output, config_name):
