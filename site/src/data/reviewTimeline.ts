@@ -57,6 +57,27 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p1b-v112-partial-confirmation-2026-07-16",
+    dateISO: "2026-07-16",
+    timePT: "9:57 AM",
+    kind: "internal-api",
+    title: "P1B v1B.0.112 — technical closures hold; venue objection remains",
+    papers: ["P1B"],
+    summary:
+      "Exact Grok and Gemini confirmation found no new numerical, provenance, estimator, prior, artifact, or consistency defect and affirmed the bounded reproducibility claim. Both nevertheless returned REJECT on the standing standalone-JCAP novelty/fragmentation objection. Two Codex-subscription attempts failed at the transport layer and are retained as failed receipts, so the three-leg board is incomplete. Readiness holds 56.",
+    keyTakeaways: [
+      "Zero new verified scientific defects on the two successful exact-PDF legs",
+      "The three v1B.0.111 technical defects remain closed in v1B.0.112",
+      "Grok and Gemini REJECT is driven by venue scope, novelty, and article fragmentation",
+      "Two Codex-subscription transports failed honestly; no OpenAI API or Anthropic fallback was used",
+    ],
+    links: [
+      { label: "Confirmation truth audit", href: `${GH}/project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P1B-v1B.0.112-EXACTPDF-d420a7f5-NONANTHROPIC-CONFIRM/P1B_v1B.0.112_TRUTH_AUDIT.md` },
+      { label: "Grok raw", href: `${GH}/project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P1B-v1B.0.112-EXACTPDF-d420a7f5-NONANTHROPIC-CONFIRM/API_P1B_grok.md` },
+      { label: "Gemini raw", href: `${GH}/project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P1B-v1B.0.112-EXACTPDF-d420a7f5-NONANTHROPIC-CONFIRM/API_P1B_gemini.md` },
+    ],
+  },
+  {
     id: "p1b-v112-truth-audited-closure-2026-07-16",
     dateISO: "2026-07-16",
     timePT: "6:51 AM",

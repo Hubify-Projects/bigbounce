@@ -147,12 +147,12 @@ const historicalLiveStatus: LiveStatus = {
 // summary reflect the canonical six-paper board rather than an older review wave.
 export const liveStatus: LiveStatus = {
   ...historicalLiveStatus,
-  lastUpdatedISO: "2026-07-16T13:51:26Z",
-  lastUpdatedDisplay: "July 16, 2026 · 6:51 AM PT",
+  lastUpdatedISO: "2026-07-16T16:57:00Z",
+  lastUpdatedDisplay: "July 16, 2026 · 9:57 AM PT",
   headline:
-    "All six manuscripts remain in revision. P1B v1B.0.112 closes the three verified defects from its exact v1B.0.111 board and promotes them into fail-closed regression checks. Confirmation and human review remain open; readiness holds 56.",
+    "All six manuscripts remain in revision. P1B v1B.0.112 has two successful exact confirmation legs with zero new verified scientific defects, but both return standing venue/scope REJECT judgments and two Codex-subscription transports failed. Readiness holds 56.",
   summary:
-    "P1B now names the executed PRIMAT BBN table, distinguishes the mean-bandpower fit from the mean of realization-level NaMaster estimates, and correctly states the cosine-flat angular-prior median. No readiness credit is inferred before confirmation.",
+    "Grok and Gemini confirm the three v1B.0.112 technical closures and the bounded reproducibility claim, but judge the standalone JCAP contribution insufficient. The incomplete Codex leg and venue architecture remain open; no readiness credit is inferred.",
   papers: historicalLiveStatus.papers.map((paper) => {
     if (paper.slug === "paper-1b") {
       return {
@@ -207,7 +207,8 @@ export const liveStatus: LiveStatus = {
     return paper;
   }),
   currentlyRunning: [
-    "P1B v1B.0.112 exact-PDF non-Anthropic confirmation review is the active next gate",
+    "P1B v1B.0.112 Codex-subscription confirmation awaits a healthy CLI transport; two failed attempts are retained",
+    "P1B venue/article architecture must address the repeated standalone-JCAP novelty and fragmentation objection",
     "P4 v1.0.260 and P5 v0.1.139 PDFs are built, retained, mirrored, and synchronized; P4 provider-overlay publication remains open",
     "Exact non-Anthropic re-review and standing external release/provenance gates are next",
   ],
