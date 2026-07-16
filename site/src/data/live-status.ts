@@ -147,12 +147,12 @@ const historicalLiveStatus: LiveStatus = {
 // summary reflect the canonical six-paper board rather than an older review wave.
 export const liveStatus: LiveStatus = {
   ...historicalLiveStatus,
-  lastUpdatedISO: "2026-07-15T23:43:00Z",
-  lastUpdatedDisplay: "July 15, 2026 · 4:43 PM PT",
+  lastUpdatedISO: "2026-07-16T06:12:00Z",
+  lastUpdatedDisplay: "July 15, 2026 · 11:12 PM PT",
   headline:
-    "All six manuscripts remain in revision. P5 v0.1.134 proactively closes a false frozen-artifact claim before rereview; P4 v1.0.255 closes its release-integrity majors. Both still require exact review and external publication gates. No submission or acceptance is claimed.",
+    "All six manuscripts remain in revision. P4 v1.0.256 and P5 v0.1.135 close verified exact-review defects with fully synchronized PDFs and public metadata; both still require exact confirmation and external publication gates. No submission or acceptance is claimed.",
   summary:
-    "P5 v0.1.134 is a 39-page, fully rendered and retained PDF (SHA-256 c2ecb845). The manuscript now states that the historical full DESIVAST join is unavailable and bounds A39/A40 to the 145,766-row OUT=0 GALZONE/VoidFinder control. No scientific result changed; readiness holds 74.",
+    "P5 v0.1.135 adds a deterministic reduced-rank CR1 and 99,999-draw wild-cluster sensitivity on the focal hybrid estimand; both remain null (p=0.66085/0.67345). P4 v1.0.256 repairs primary-artifact and null-description drift. Readiness holds 74/80.",
   papers: historicalLiveStatus.papers.map((paper) => {
     if (paper.slug === "paper-1b") {
       return {
@@ -165,9 +165,9 @@ export const liveStatus: LiveStatus = {
     if (paper.slug === "paper-4") {
       return {
         ...paper,
-        version: "v1.0.255",
+        version: "v1.0.256",
         pendingWork:
-          "Public HF revisions 43fc8a5b and 6f113097 bind the repaired contracts; Catalog C proves exact identity and HC-flag equivalence across 8,474,531 primary plus 249,066 quarantine rows. Exact v1.0.255 review, training realization, spatial transfer/joint covariance, complete metadata, DOI, and human review remain open. Readiness holds 80.",
+          "The v1.0.255 MAJOR/MINOR/MAJOR board is truth-audited and its verified manuscript/artifact defects are closed in v1.0.256. Exact v1.0.256 confirmation, training realization, spatial transfer/joint covariance, complete metadata, DOI, and human review remain open. Readiness holds 80.",
       };
     }
     if (paper.slug === "paper-1a") {
@@ -198,21 +198,21 @@ export const liveStatus: LiveStatus = {
     if (paper.slug === "paper-5") {
       return {
         ...paper,
-        version: "v0.1.134-2026-07-15",
+        version: "v0.1.135-2026-07-15",
         readiness: 74,
         pendingWork:
-          "The false frozen-full-join claim is removed and A39/A40 are correctly bounded. Run exact v0.1.134 review after a clean portfolio receipt; then reverify against final Paper IV, publish a public tag/archive/DOI, and obtain human AJ review. Readiness holds 74.",
+          "The v0.1.134 MINOR/MAJOR/MAJOR board is truth-audited; v0.1.135 closes its hybrid-estimand, covariance-rank, multiplicity, and target-program wording defects. Exact v0.1.135 confirmation, final Paper IV re-verification, public archive/DOI, T-Web RSD, and human AJ review remain. Readiness holds 74.",
       };
     }
     return paper;
   }),
   currentlyRunning: [
     "P1B corrected production is queued but blocked by a negative RunPod balance; no paid pod launch is being attempted",
-    "The six-paper preflight is being regenerated after P5 v0.1.134 release-contract closure",
-    "P4 v1.0.255 and P5 v0.1.134 exact reviews remain gated on a clean portfolio receipt",
+    "P4 v1.0.256 and P5 v0.1.135 source-bundle proofs are being finalized",
+    "Exact non-Anthropic confirmation boards are next after a fresh committed six-paper receipt",
   ],
   cronStatus:
-    "No review wave is running. P5 v0.1.134 release integrity and P4 v1.0.255 source contracts are closed; exact rereview remains gated on the six-paper preflight.",
+    "No review wave is running. P4 v1.0.256 and P5 v0.1.135 closures are synchronized; exact confirmation remains gated on the fresh committed six-paper preflight.",
   etaToCompletion:
-    "After RunPod funding is restored, P1B's canonical plus parallel robustness run is estimated at roughly 2.5–5 hours wall-clock, followed by manuscript/PDF QA and exact review. P4 still requires exact v1.0.255 review, training realization, spatial transfer/joint covariance, complete metadata, DOI publication, and human review. A defensible all-six submission date remains conditional on those gates; journal acceptance is controlled by editors and referees.",
+    "After RunPod funding is restored, P1B's canonical plus parallel robustness run is estimated at roughly 2.5–5 hours wall-clock, followed by manuscript/PDF QA and exact review. P4/P5 still require exact confirmation plus their disclosed scientific, archive, and human gates. A defensible all-six submission date remains conditional on those gates; journal acceptance is controlled by editors and referees.",
 };
