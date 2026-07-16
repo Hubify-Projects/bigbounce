@@ -107,6 +107,36 @@ campaign-wide archive reconciliation, machine-readable coverage for every
 approved pattern, the cross-paper claim graph, two consecutive clean residual
 waves, or all-six external/human release gates.
 
+## Implementation checkpoint — 2026-07-16
+
+The full audit plan is **not complete**. The defensible acceptance accounting is:
+
+- **3/11 acceptance gates complete:** strict all-paper preflight; packet binding
+  to preflight/catalog/registry evidence; and fail-closed enforcement on active
+  INT, direct-provider, and external-browser dispatch.
+- **3/11 materially partial:** the finding-event/receipt-inventory primitives
+  and metrics exist but historical reconciliation is incomplete; several
+  high-severity patterns now have deterministic regression fixtures but not
+  every approved pattern does; and exact PDF/version/SSOT/Convex/site/package
+  synchronization is proven for the latest P4/P5 increments but not all six
+  papers at submission-ready state.
+- **5/11 still open:** complete historical event ingestion and reconciliation;
+  machine-readable disposition for every approved pattern; a headline-claim
+  dependency graph spanning all six papers and public surfaces; two consecutive
+  exact-PDF residual waves with zero known-pattern escapes and zero genuinely
+  new BLOCKER/MAJOR findings; and a final board whose only deductions are
+  explicit human, venue, or external-publication gates.
+
+Additional work after the first evidence update closed the truth-audited
+P4/P5 residual confirmation findings as P4 `v1.0.259` and P5 `v0.1.139`.
+Both exact PDFs passed all-page visual audit, isolated source-bundle proof,
+six-paper preflight, site build, retention, mirrors, and Convex synchronization.
+These closures strengthen the proactive science-contract layer but do not
+complete the unchecked campaign-wide gates above. P4's strict-primary public
+release overlay is being built as the next release-contract gate; until an
+immutable provider revision is actually published and verified, it must remain
+reported as in progress rather than complete.
+
 Evidence and exact outcomes are recorded in
 `project-context/audits/PROACTIVE_PORTFOLIO_SWEEP_2026-07-15.md`. Readiness was
 not increased by these process or release-integrity closures.
