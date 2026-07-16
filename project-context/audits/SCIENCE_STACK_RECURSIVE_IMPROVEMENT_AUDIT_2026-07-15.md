@@ -109,23 +109,23 @@ waves, or all-six external/human release gates.
 
 ## Implementation checkpoint — 2026-07-16
 
-The full audit plan is **not complete**. The defensible acceptance accounting is:
+The full audit plan is **not complete**. The defensible acceptance accounting is
+against the 12 checklist gates below:
 
-- **3/11 acceptance gates complete:** strict all-paper preflight; packet binding
+- **3/12 acceptance gates complete:** strict all-paper preflight; packet binding
   to preflight/catalog/registry evidence; and fail-closed enforcement on active
   INT, direct-provider, and external-browser dispatch.
-- **3/11 materially partial:** the finding-event/receipt-inventory primitives
-  and metrics exist but historical reconciliation is incomplete; several
-  high-severity patterns now have deterministic regression fixtures but not
-  every approved pattern does; and exact PDF/version/SSOT/Convex/site/package
-  synchronization is proven for the latest P4/P5 increments but not all six
-  papers at submission-ready state.
-- **5/11 still open:** complete historical event ingestion and reconciliation;
-  machine-readable disposition for every approved pattern; a headline-claim
-  dependency graph spanning all six papers and public surfaces; two consecutive
-  exact-PDF residual waves with zero known-pattern escapes and zero genuinely
-  new BLOCKER/MAJOR findings; and a final board whose only deductions are
-  explicit human, venue, or external-publication gates.
+- **4/12 materially partial:** machine-readable pattern coverage; deterministic
+  regression fixtures for high-severity patterns; executable learning metrics
+  whose campaign-wide interpretation remains inventory-gated; and exact
+  PDF/version/SSOT/Convex/site/package synchronization for recent P4/P5
+  increments rather than all six papers at submission-ready state.
+- **5/12 still open:** complete historical receipt representation; 100%
+  event/manifest reconciliation; a headline-claim dependency graph spanning all
+  six papers and public surfaces; two consecutive exact-PDF residual waves with
+  zero known-pattern escapes and zero genuinely new BLOCKER/MAJOR findings; and
+  a final board whose only deductions are explicit human, venue, or
+  external-publication gates.
 
 Additional work after the first evidence update closed the truth-audited
 P4/P5 residual confirmation findings as P4 `v1.0.259` and P5 `v0.1.139`.
@@ -202,6 +202,14 @@ status projection. Its first four entries bind the verified P5 v0.1.138
 manuscript minors to the v0.1.139 closure commit. This closes the archival
 finding-to-fix traceability gap while preserving standing publication gates and
 without inventing a confirmation review.
+
+The next closure-ledger increment binds 12 verified P4 defects to their exact
+historical correction commits and immutable evidence bytes: seven v1.0.253
+findings closed in v1.0.254 and five v1.0.254 findings closed in v1.0.255.
+Provider-publication findings additionally cite retained receipts whose remote
+bytes and SHA-256 values were verified. The generated effective-status
+projection now contains 16 closures total. Standing DOI, release, scope, and
+human-review gates were not relabeled as closed.
 
 Evidence and exact outcomes are recorded in
 `project-context/audits/PROACTIVE_PORTFOLIO_SWEEP_2026-07-15.md`. Readiness was
