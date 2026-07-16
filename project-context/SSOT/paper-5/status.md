@@ -1,3 +1,14 @@
+## v0.1.135 EXACT-BOARD TRUTH-AUDIT CLOSURE — 2026-07-15 · READINESS/CAP 74 HOLD
+
+**Binding:** 39-page exact local candidate, PDF SHA-256 `7223afcce95bd735ddbd0efc05745738ba699949aa8f6536271a97aca394bdc8`, MD5 `6a59b841695c9e1bdbc5bcd21e2b380b`; 13 mirrors synchronized; Convex version row `k578yn7865cz6tsdntttfazyvx8ammyw`.
+
+- **Raw v0.1.134 board preserved:** Grok direct API **MINOR REVISIONS**, Gemini direct API **MAJOR REVISIONS**, and ChatGPT-subscription Codex CLI **MAJOR REVISIONS**. No OpenAI API or Anthropic/Claude leg was used. The first Codex transport failure remains recorded as failed; the completed subscription raw is `project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P5_codex_2227.md`.
+- **Verified closures:** v0.1.135 accurately labels the focal sample as a GALZONE-eligibility/VoidFinder-exposure hybrid; adds a declared post-review reduced-rank (`K=13`) sensitivity and 99,999-draw null-imposed wild-cluster test; distinguishes the raw Z3 multiplicity crossing from the monopole-subtracted and empirical-scan results; removes the unsupported target-program independence claim; and bounds universal literature language to the literature reviewed for this analysis. These changes do not convert the exploratory result into a preregistered or confirmatory claim.
+- **Typed gates remain open:** final independently reviewable Paper IV release and P5 re-verification; immutable public P5 tag/archive/DOI and artifact-link resolution; the secondary T-Web RSD gate; exact v0.1.135 confirmation review; and actual human/editorial AJ review.
+- **No readiness uplift:** local closure, compilation, mirroring, and database synchronization do not establish reviewer acceptance. Verified readiness/cap remains **74**.
+
+Evidence: `project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P5-v0.1.134-EXACTPDF-c2ecb845-NONANTHROPIC-RECURSIVE/P5_v0.1.134_truth_audit.md`.
+
 ## v0.1.134 EXACT SOURCE-BUNDLE PROOF — 2026-07-15 · READINESS/CAP 74 HOLD
 
 - The deterministic arXiv source bundle `paper5_arxiv_v0.1.134-2026-07-15.tar.gz` is bound to source/config commit `678e93febd505d37768e554f337bdbd4f838a514` and SHA-256 `88b791cd571ddc2d98f5b367f11f8f49fbd5bb0f24715913bf964b50d404f714`.

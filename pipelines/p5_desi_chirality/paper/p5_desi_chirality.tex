@@ -36,7 +36,12 @@
 % The divide-by-h claim (~1246 h⁻¹ Mpc) is INVERTED. No pipeline recompute required.
 % If any future reviewer re-raises this, cite env_finder/01_compute_vweb.py:106-108.
 
-\newcommand{\paperVersion}{v0.1.134-2026-07-15}
+\newcommand{\paperVersion}{v0.1.135-2026-07-15}
+% v0.1.135 (2026-07-15 -- exact-PDF recursive truth-audit closure): relabeled
+%   the focal released-parent estimand as the disclosed GALZONE-selection/
+%   VoidFinder-exposure hybrid; added deterministic K=13/G=50 CR1 and
+%   99,999-draw wild-cluster sensitivities; corrected multiplicity,
+%   target-program, and literature-scope language. Release/Paper-IV/RSD gates remain.
 % v0.1.134 (2026-07-15 -- proactive release-contract closure): removed the
 %   false statement that a historical full DESIVAST-join parquet is retained;
 %   bounded the exact 145,789-row A39/A40 archive to the released-GALZONE/
@@ -721,7 +726,7 @@
 %   cluster −54%) but the environmental-independence null HOLDS and
 %   TIGHTENS: cross-class f_CW range 1.98pp → 0.05pp, all classes
 %   |σ_mono| ≤ 0.39. Artifact: outputs/16_cosmic_web_zshell_corrected.json.
-\newcommand{\paperTimestamp}{July 15, 2026, 16:26 PT}
+\newcommand{\paperTimestamp}{July 15, 2026, 22:55 PT}
 % timestamp label unchanged (still July 2026); \date bumped to July 6
 % v0.1.62-2026-06-10 (R29 post-EXT1 internal-round closure wave; truth audit at
 %   project-context/peer-reviews/R29_P5_TRUTH_AUDIT.md):
@@ -821,12 +826,12 @@
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{July 15, 2026 (\paperVersion)}
+\date{\paperTimestamp\ (\paperVersion)}
 
 \begin{abstract}
 We test whether \emph{classifier-labelled} spiral chirality differs
 between released DESIVAST~\cite{DESIVAST2025} void and non-void
-environments in DESI Data Release~1. The focal descriptive estimate
+environments in DESI Data Release~1. The focal hybrid released-parent descriptive estimate
 intersects the companion Paper~IV catalog~\cite{golden_chirality_2026}
 with the released DESIVAST GALZONE TARGET universe ($694{,}642$ unique
 TARGETIDs), yielding $145{,}789$ joined rows. We retain the $145{,}766$
@@ -875,13 +880,14 @@ does not constrain whether handedness is independent of
 
 The present paper is a focused, exploratory environment-conditional null
 test. We ask whether classifier labels differ between galaxies assigned
-to void and non-void environments in DESI redshift space. No published
-bounce or inflation model currently predicts a specific signal for this
-estimand. Accordingly, the analysis measures dataset- and
+to void and non-void environments in DESI redshift space. In the published
+literature reviewed for this analysis, we identify no bounce or inflation
+model that predicts a specific signal for this classifier-labelled,
+redshift-space estimand. Accordingly, the analysis measures dataset- and
 classifier-specific DR1 sensitivity; it is not a real-space or physical
 handedness constraint and does not discriminate cosmological models.
 
-The paper is organized around one focal catalog-native descriptive estimate:
+The paper is organized around one focal hybrid released-parent descriptive estimate:
 the released DESIVAST GALZONE parent with \texttt{OUT}$=0$, analyzed by
 covariate standardization and coarse-sky cluster-sandwich inference
 (Section~\ref{sec:desivast_primary}). The author-defined VoidFinder
@@ -1393,10 +1399,12 @@ p_{\rm LEE} \;=\; \frac{1 + \#\{k : |\sigma|_{\max}^{(k)} \ge |\sigma|_{\max}^{\
 which preserves any sample-correlation structure that
 Eq.~\eqref{eq:bonferroni} ignores. We use the empirical max-stat
 null for the secondary scans and report the parametric Bonferroni threshold as a
-cross-check; on every scan in this paper the two return the same
-verdict (no scan crosses either the empirical max-stat $p < 0.05$
-criterion or the parametric Bonferroni threshold at
-$\alpha\!=\!0.01$). All $N_{\rm MC}\!=\!1{,}000$ permutation
+cross-check. The raw parity-null cluster-redshift Z3 value
+($-3.14\sigma$) crosses its Bonferroni-4 $\alpha=0.05$ threshold, whereas
+the monopole-subtracted Z3 residual ($-1.50\sigma$) and the empirical
+max-stat scan remain null (Sec.~\ref{sec:results_within_class_density});
+we do not conflate those different null hypotheses. All
+$N_{\rm MC}\!=\!1{,}000$ permutation
 $p$-values in this paper carry a Monte-Carlo standard error
 ${\rm se}_{\rm MC} = \sqrt{p(1-p)/N_{\rm MC}}$, i.e.\
 ${\approx}0.010$ at $p \approx 0.13$ and ${\approx}0.015$ at
@@ -1645,7 +1653,7 @@ T-Web concurrent-lit & volume-fraction comparison & --- & descriptive \\
 
 \section{Results}\label{sec:results}
 
-\subsection{Focal released-parent descriptive estimate}\label{sec:focal_result_first}
+\subsection{Focal hybrid released-parent descriptive estimate}\label{sec:focal_result_first}
 
 The focal estimand is
 $f_{\rm CW}(\mathrm{non\mbox{-}void})-f_{\rm CW}(\mathrm{void})$ within a
@@ -1708,7 +1716,10 @@ $c_{G,N,K}=[G/(G-1)][(N-1)/(N-K)]$:
 \end{aligned}
 \label{eq:focal_sandwich}
 \end{equation}
-with the average-marginal-contrast variance obtained by the delta method.
+The reported coefficient covariance is this complete finite-sample-corrected
+sandwich (bread, cluster-score meat, and bread); the reported contrast SE is
+the square root of the delta-method propagation of that full covariance, not
+the finite-sample factor or a model-based SE alone.
 Table~\ref{tab:focal_model_contract} freezes the remaining A37 model and
 covariance metadata; no model refit is introduced in this revision.
 
@@ -1726,9 +1737,21 @@ Fit & Unpenalized Newton--Cholesky logistic MLE; 16 iterations; 78-column, rank-
 Spline/categorical terms & One cubic spline basis $s_5(z)$ plus four separate univariate cubic spline bases $s_4(r)$, $s_4(\log R)$, $s_4(q)$, and $s_4(E)$; NSIDE$=4$ block, \texttt{PHOTSYS}, morphology, and GALZONE edge; all four candidate missingness indicators are constant and dropped \\
 Reported covariance & 50 occupied NSIDE$=4$ clusters; $N=145{,}766$, $K=78$; finite-sample correction $[G/(G-1)][(N-1)/(N-K)]=1.020947$; ${\rm SE}=0.00341274$, $p=0.71277$ \\
 Scale sensitivity & 3,750 nearest-VoidFinder-MAXIMALS clusters on the same fit and contrast; ${\rm SE}=0.003174$, $p=0.692$ \\
+Rank-robustness sensitivity [A41--A42] & Declared post-review linear nuisance basis, $K=13$, $G=50$ NSIDE$=4$ CR1: $\Delta f_{\rm CW}=+0.00145442$, ${\rm SE}=0.00331502$, 95\% CI $[-0.00504290,+0.00795174]$, normal $p=0.66085$; null-imposed 99,999-draw Rademacher wild-cluster efficient-score $p=0.67345$ (seed 20260715) \\
 \end{tabular}
 \end{ruledtabular}
 \end{table*}
+
+Because the focal spline/fixed-effect specification has $K=78$ fitted
+columns but only $G=50$ coarse sky clusters, its ordinary CR1 normal
+approximation can be rank-fragile even though the scalar calculation is
+exactly reproducible. The lower-dimensional $K=13$ sensitivity preserves
+the same hybrid sample, exposure, outcome, measured covariates, and NSIDE$=4$
+cluster unit while replacing splines and sky-block fixed effects with a
+declared post-review linear nuisance basis. Its CR1 interval and the null-imposed
+wild-cluster score result are both null and numerically close to the focal
+interval. This is a robustness check, not a replacement estimand or a claim
+that $G=50$ asymptotics are exact.
 
 The standardized non-void-minus-void contrast is
 $\Delta f_{\rm CW}=+0.00125636$. With the reported coarse-sky covariance,
@@ -3171,8 +3194,8 @@ $98.8\%$ of the $z \leq 0.24$ spirals are in the bright program
 void-assigned spirals; $n_{\rm dark} = 469$).
 Table~\ref{tab:desivast_program_split} shows the bright/dark
 program split of the DESIVAST void and non-void classes explicitly.
-Both bright and dark sub-samples return null
-chirality fractions within their respective void classes
+Both bright and dark sub-samples have chirality fractions within their
+respective void classes that are individually consistent with one half
 ($|\sigma| \leq 1.80$ for all cells). For completeness, the
 within-program void-vs-non-void contrasts are: dark, void
 $f_{\rm CW}=0.4584$ ($n=469$) vs.\ non-void $0.5056$ ($n=5{,}845$), so
@@ -3182,9 +3205,10 @@ $|z|\approx1.97$ and nominal two-sided $p\approx0.049$ before the declared
 multiplicity correction. This is suggestive per-stratum but not significant
 after multiplicity and is not promoted to an environment signal; bright, void
 $0.4967$ ($n=56{,}477$) vs.\ non-void $0.4970$ ($n=615{,}078$),
-${\approx}0.1\sigma$. Neither constitutes a sign of a
-program-conditioned environment signal. This DESIVAST sensitivity is
-not detectably driven by target-program mixing: with
+${\approx}0.1\sigma$. These one-sample and within-program contrasts do
+not test a program-by-environment interaction, so they neither prove
+independence nor exclude interaction. As a bounded sensitivity, the
+aggregate result is not detectably driven by target-program mixing: with
 $99.1\%$ of void-assigned spirals in the bright program, the bright
 sub-sample dominates and itself returns a null at $\sigma = -1.56$,
 while the dark sub-sample ($n = 469$, $\sigma = -1.80$) is consistent
@@ -3197,9 +3221,9 @@ Artifact:
 \begin{table}[ht]
 \caption{DESIVAST VoidFinder bright/dark target-program split of
 the void and non-void classes on the $z \leq 0.24$ matched-spiral
-subsample ($n_{\rm lz} = 678{,}945$). Both programs return null
-chirality fractions within the void class, confirming DESIVAST
-independence from target-program residuals. Only the two dominant
+subsample ($n_{\rm lz} = 678{,}945$). The within-cell and within-program
+contrasts are descriptive sensitivities, not a test of the
+program-by-environment interaction. Only the two dominant
 programs are tabulated: bright~$+$~dark sum to $56{,}946$ (void) and
 $620{,}923$ (non-void), $1{,}076$ short ($35$ void, $1{,}041$
 non-void; $0.16\%$) of the class totals $56{,}981$ and $621{,}964$,
@@ -4358,8 +4382,9 @@ perturbations are reported separately as sensitivities.
 
 \subsection{Empirical scope}
 
-No published bounce or inflation model predicts this specific
-classifier-labelled, redshift-space estimand. The result therefore does
+Within the published literature reviewed for this analysis, we identify no
+bounce or inflation model predicting this specific classifier-labelled,
+redshift-space estimand. The result therefore does
 not discriminate those model classes. The released-parent
 cluster-sandwich interval is a sampling statement for the focal
 contrast; the other perturbations answer different sensitivity
@@ -5116,11 +5141,11 @@ retroactively asserting the unavailable May bytes.
 \section{Data artifacts}\label{app:artifacts}
 
 \emph{Note on numbering:} the bracketed \emph{artifact} IDs
-[A1]--[A40] in this appendix are the release-candidate data/code
+[A1]--[A42] in this appendix are the release-candidate data/code
 artifacts and are \emph{distinct} from the bibliographic references
 [1]--[13], which appear in the separate References section; the ``A''
 prefix marks every artifact ID to avoid confusion at the
-references/artifact-map boundary. Artifact IDs [A1]--[A40] used
+references/artifact-map boundary. Artifact IDs [A1]--[A42] used
 throughout this paper hyperlink to the following paths in the companion
 repository
 \href{https://github.com/Hubify-Projects/bigbounce}{\texttt{Hubify-Projects/bigbounce}}
@@ -5166,7 +5191,7 @@ Clicking any [AN] ID in the paper PDF opens the corresponding GitHub URL.%
 \end{table*}
 \begin{table*}[p]
 {\small
-\caption{Artifact ID map (continued). Paths A21--A30 and A33--A40 are
+\caption{Artifact ID map (continued). Paths A21--A30 and A33--A42 are
 within \texttt{pipelines/p5\_desi\_chirality/}; A31--A32 are in the
 companion catalog pipeline.}
 \begin{ruledtabular}
@@ -5193,6 +5218,8 @@ companion catalog pipeline.}
 \href{\repoBase/pipelines/p5\_desi\_chirality/scripts/36\_desivast\_native\_selection\_control.py}{[A38]} & \texttt{scripts/36\_desivast\_native\_selection\_control.py} \\
 \href{\repoBase/pipelines/p5\_desi\_chirality/outputs/36\_desivast\_native\_selection\_rows.parquet}{[A39]} & \texttt{outputs/36\_desivast\_native\_selection\_rows.parquet} \\
 \href{\repoBase/pipelines/p5\_desi\_chirality/outputs/36\_desivast\_native\_selection\_manifest.json}{[A40]} & \texttt{outputs/36\_desivast\_native\_selection\_manifest.json} \\
+\href{\repoBase/pipelines/p5\_desi\_chirality/scripts/38\_focal\_cluster\_inference\_sensitivity.py}{[A41]} & \texttt{scripts/38\_focal\_cluster\_inference\_sensitivity.py} \\
+\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/38\_focal\_cluster\_inference\_sensitivity.json}{[A42]} & \texttt{outputs/38\_focal\_cluster\_inference\_sensitivity.json} \\
 \end{tabular}
 \end{ruledtabular}
 }% end \small

@@ -1,0 +1,23 @@
+# INT API Review — P5 v0.1.134-2026-07-15 — gemini (gemini-3.1-pro-preview)
+paper: P5  version: v0.1.134-2026-07-15  model: gemini-3.1-pro-preview
+provenance: commit=770121acc77f9f40b730863d2bfdbddfdf62c3f8  pdf=pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf  sha256=c2ecb845b28ef890a1b1b4105723f52faf41dca8307e3322aaae9f676763afc6
+packet: key=54d9edf917bc6d1831d823a2b3715749dab2c3d80508fa83909e2482a5fb683c  profile=AJ-OBSERVATIONAL
+modality: native-PDF (inline_data base64)
+UTC: 2026-07-16T05:27:44.917593Z  |  latency: 31.3s  |  attempt: 1
+provider_receipt: {"attempt": 1, "latency_seconds": 31.3, "modality": "native-PDF (inline_data base64)", "provider": "google", "provider_reported_cost": "unavailable", "request_id": "unavailable", "requested_model": "gemini-3.1-pro-preview", "resolved_model": "gemini-3.1-pro-preview", "response_id": "0mtYavzAKafOz7IPpdWH0AM", "usage": {"candidatesTokenCount": 647, "promptTokenCount": 20385, "promptTokensDetails": [{"modality": "IMAGE", "tokenCount": 20280}, {"modality": "TEXT", "tokenCount": 105}], "serviceTier": "standard", "thoughtsTokenCount": 2104, "totalTokenCount": 23136}}
+PARSED VERDICT: MAJOR REVISIONS
+
+======================================================================
+RAW RESPONSE (verbatim):
+======================================================================
+
+VERDICT: MAJOR REVISIONS
+
+ISSUES:
+1. [MAJOR] Section II & Appendix A (Dependency on unpublished companion paper): The manuscript relies entirely on the per-galaxy classifications and catalog-wide monopole calibration of "Paper IV" to define the sample and interpret the null results. However, Paper IV is listed as "in preparation" without an arXiv ID or published manuscript. While Appendix A attempts to summarize the validation, AJ policy generally prohibits accepting a manuscript that crucially depends on an unavailable companion paper for its foundational data processing and validation. Paper IV must be made available to the reviewers, or the publication of this manuscript must be coordinated/delayed until Paper IV is public.
+2. [MAJOR] Section V.B & General Narrative (Convoluted meta-narrative regarding post-hoc choices): The author explicitly states that the "narrative hierarchy" and the focal estimand were changed post-hoc after inspecting the data and a previous "venue review". While this level of transparency is highly commendable and the consistent null results across all paths alleviate concerns of p-hacking, the resulting prose is excessively defensive and structurally confusing. The manuscript should be streamlined to simply present the optimal (DESIVAST catalog-native) measurement as the primary analysis and the others as robustness checks, removing the distracting meta-narrative about the review history of the text itself.
+3. [MINOR] Throughout (Future-dated text and citations): The manuscript date is listed as "July 15, 2026", and several references are cited with 2025/2026 publication dates (e.g., DESI Collaboration 2026, Rincón et al. 2025). If these are placeholders for embargoed data releases, they must be updated or clarified prior to final typesetting.
+4. [MINOR] Throughout (Intrusive reproducibility formatting): The commitment to reproducibility is excellent, but injecting bracketed "artifact IDs" (e.g., [A37], [A10]) and exact GitHub commit hashes directly into the narrative flow of the results sections makes the paper read like a software manifest. To improve readability, the author should relegate these specific artifact pointers to footnotes, endnotes, or a consolidated table in Appendix D, keeping the main text focused on the astrophysical results.
+5. [MINOR] Section IX.C (Volume fraction comparisons): Comparing the T-Web volume fractions (which are sensitive to the survey boundary and thin-shell geometry) to the periodic 800 Mpc box of the concurrent Ullah et al. (2026) paper is inherently flawed, as the author correctly notes. The text should better emphasize that the edge-density artifacts dominating the void class are a known geometric limitation of applying T-Web to a thin survey slice, which justifies the pivot to the DESIVAST maximal-void analysis.
+
+One sentence: The central claim—that there is no statistically significant evidence for environment-dependent spiral chirality in DESI DR1—is robustly supported by exceptionally thorough statistical cross-checks, though its final acceptance hinges on the publication of the foundational input catalog (Paper IV).

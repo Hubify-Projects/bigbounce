@@ -57,6 +57,26 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p5-v01135-exact-board-closure-2026-07-15",
+    dateISO: "2026-07-15",
+    timePT: "11:07 PM",
+    kind: "closure-wave",
+    title: "P5 v0.1.135 — exact-board findings truth-audited and closed; readiness holds",
+    papers: ["P5"],
+    summary:
+      "The exact v0.1.134 non-Anthropic board returned Grok MINOR, Gemini MAJOR, and ChatGPT-subscription Codex MAJOR. Truth audit verified hybrid-estimand labeling, covariance-rank inference fragility, a multiplicity-summary inconsistency, unsupported target-program independence wording, and overbroad literature language. v0.1.135 closes those bounded defects without changing the exploratory classifier-label non-detection or the 74 readiness cap; exact v0.1.135 confirmation and standing Paper IV, release, T-Web RSD, and human gates remain open.",
+    keyTakeaways: [
+      "Exact v0.1.134 board: Grok direct MINOR, Gemini direct MAJOR, Codex subscription MAJOR; no OpenAI API or Anthropic leg",
+      "v0.1.135 relabels the hybrid estimand and adds a declared post-review K=13 sensitivity plus 99,999-draw null-imposed wild-cluster test",
+      "Exact PDF: 39 pages, SHA-256 7223afcc, MD5 6a59b841; 13 mirrors and Convex row k578yn7865cz6tsdntttfazyvx8ammyw synchronized",
+      "Readiness holds 74; Paper IV/reverification, public archive/DOI, T-Web RSD, exact confirmation, and human AJ review remain open",
+    ],
+    links: [
+      { label: "P5 canonical status", href: `${GH}/project-context/SSOT/paper-5/status.md` },
+      { label: "Exact v0.1.134 review evidence", href: `${PR}/INT_v3/ROUND_2026-07-15-P5-v0.1.134-EXACTPDF-c2ecb845-NONANTHROPIC-RECURSIVE` },
+    ],
+  },
+  {
     id: "recursive-preflight-packaging-acceleration-2026-07-16",
     dateISO: "2026-07-16",
     kind: "skill-improvement",

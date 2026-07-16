@@ -1,0 +1,76 @@
+{
+  "command": "python3 pipelines/p5_desi_chirality/scripts/38_focal_cluster_inference_sensitivity.py",
+  "input_sha256": {
+    "pipelines/p5_desi_chirality/outputs/36_desivast_native_selection_control.json": "64c3fad65c35c168caac60166399be9bd43d441a0a68963d17e3c1c9e00e91bd",
+    "pipelines/p5_desi_chirality/outputs/36_desivast_native_selection_rows.parquet": "fe863dcd3d569d22a3792ac0f1ee273ee3148ef311302e2d7984ab714634e9fc",
+    "pipelines/p5_desi_chirality/scripts/36_desivast_native_selection_control.py": "227ea5d3a8f623b595054729b0c54944b894674bd9c5bf9bddf4a74766bd1f75",
+    "pipelines/p5_desi_chirality/scripts/38_focal_cluster_inference_sensitivity.py": "bf1cf5e7d278d1fea99b46f99f57b790b6f7bd9b66cc72f617dcbceff830ec82"
+  },
+  "null_imposed_rademacher_wild_cluster_score": {
+    "cluster_unit": "HEALPix NSIDE=4",
+    "draws": 99999,
+    "null_solver": {
+      "coefficient_mapping": "optimizer basis centred/scaled; coefficients mapped back exactly",
+      "converged": true,
+      "convergence_warnings": [],
+      "design_rank": 12,
+      "iterations": 2,
+      "max_absolute_mean_score_original_basis": 1.4972062587300744e-12,
+      "n_design_columns": 12,
+      "scaled_gram_condition_number": 16.50844792699186,
+      "solver": "scikit-learn unpenalized LogisticRegression/Newton-Cholesky"
+    },
+    "observed_score_t": -0.4417164306161477,
+    "p_two_sided": 0.67345,
+    "seed": 20260715
+  },
+  "original_focal_model_caution": {
+    "clusters": 50,
+    "k": 78,
+    "n": 145766,
+    "note": "K=78 exceeds G=50; ordinary CR1 normal inference can be fragile even though the scalar result is reproducible."
+  },
+  "purpose": "rank-robustness sensitivity for the focal hybrid released-parent estimand; does not replace the prespecified focal 78-column estimate",
+  "reduced_cr1": {
+    "ci95": [
+      -0.0050428981166549276,
+      0.007951740588909935
+    ],
+    "clusters": 50,
+    "delta_nonvoid_minus_void": 0.0014544212361275038,
+    "design_rank": 13,
+    "formula": "void + desi_z + r_mag + log_shape_r + confidence_eq + ebv + C(photsys) + C(morphtype) + galzone_edge",
+    "k": 13,
+    "n": 145766,
+    "normal_p_two_sided": 0.6608522433594928,
+    "sandwich": {
+      "bread_condition_number": 1387712.0771475248,
+      "bread_inverse": "Moore-Penrose pseudoinverse, rcond=1e-11",
+      "bread_rank": 13,
+      "finite_sample_correction": 1.0204921745581041,
+      "n_clusters": 50,
+      "n_design_columns": 13
+    },
+    "se": 0.0033150197677265796,
+    "solver": {
+      "coefficient_mapping": "optimizer basis centred/scaled; coefficients mapped back exactly",
+      "converged": true,
+      "convergence_warnings": [],
+      "design_rank": 13,
+      "iterations": 2,
+      "max_absolute_mean_score_original_basis": 1.5153352934725651e-12,
+      "n_design_columns": 13,
+      "scaled_gram_condition_number": 16.654762202327223,
+      "solver": "scikit-learn unpenalized LogisticRegression/Newton-Cholesky"
+    }
+  },
+  "schema": "p5.focal-cluster-inference-sensitivity/v1",
+  "seed": 20260715,
+  "software": {
+    "numpy": "1.26.4",
+    "pandas": "2.1.4",
+    "patsy": "1.0.2",
+    "python": "3.9.6",
+    "scipy": "1.13.1"
+  }
+}
