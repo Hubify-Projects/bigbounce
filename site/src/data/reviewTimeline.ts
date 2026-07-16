@@ -57,6 +57,26 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p4-v1-0-261-provider-overlay-published-2026-07-16",
+    dateISO: "2026-07-16",
+    timePT: "3:36 PM",
+    kind: "closure-wave",
+    title: "P4 v1.0.261 — immutable provider overlay published and byte-verified",
+    papers: ["P4"],
+    summary:
+      "The v1.0.259 strict-primary provider overlay is now published at immutable HF dataset revision 911316f3 under apjs-release/v1.0.259-strict-primary/ in bamfai/galaxy-chirality-catalog; all seven files were re-downloaded at the pinned revision and SHA-256 byte-verified. Manuscript data-availability, manifest, and conclusions text now describe the overlay as published and verified rather than an open pre-submission gate. No scientific number changed; readiness holds 80.",
+    keyTakeaways: [
+      "Immutable HF publish revision 911316f31c21f2c4b933a2f3a761274cfe85c6d6 pinned; all 7 files byte-verified against the local overlay",
+      "Publish receipt retained at pipelines/p2_chirality/apjs_release_v1.0.259_strict/PUBLISH_RECEIPT_2026-07-16.json; 3/3 release-contract tests pass",
+      "Exact PDF: 25 pp / sha256 60d96cde / md5 ddeaf2e0; directive-G PASS, 16 mirrors byte-identical, retention manifest 20260716T224016Z-8bb150e38c19.json",
+      "Exact v1.0.261 re-review, training/covariance/metadata/DOI, and human ApJS review remain open; no readiness uplift, no acceptance claimed",
+    ],
+    links: [
+      { label: "P4 canonical status", href: `${GH}/project-context/SSOT/paper-4/status.md` },
+      { label: "Publish receipt", href: `${GH}/pipelines/p2_chirality/apjs_release_v1.0.259_strict/PUBLISH_RECEIPT_2026-07-16.json` },
+    ],
+  },
+  {
     id: "p1b-v2b008-strict-validation-closure-2026-07-16",
     dateISO: "2026-07-16",
     timePT: "1:31 PM",

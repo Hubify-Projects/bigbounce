@@ -319,7 +319,7 @@ export const papers: Paper[] = [
     slug: "paper-4",
     number: "4",
     title: "An Observed-Label Chirality-Dipole Null in 890,069 Quality-Controlled High-Confidence DESI Spirals and an 8.5-Million-Galaxy Catalog",
-    version: "v1.0.260",
+    version: "v1.0.261",
     lastUpdated: "2026-07-16",
     tldr: "Classifies 8.47M galaxies. The strict safe-sample observed-label statistic remains null-consistent (z=0.63465, p=0.23768), while exact-support harmonic results remain systematics diagnostics. Training, covariance, archive, exact re-review, and human gates remain; readiness holds 80.",
     path: publicationPath({}),
@@ -328,7 +328,7 @@ export const papers: Paper[] = [
     readiness: 80,
     statusVariant: "amber",
     target: "The Astrophysical Journal Supplement Series",
-    description: "The galaxy chirality catalog: 8.47M galaxies classified CW/CCW by a ViT-Small ensemble with flip-equivariant TTA. v1.0.260 binds the manuscript to a content-addressed strict-primary overlay while retaining the unchanged immutable public catalog revision. The primary is null-consistent; harmonic results are systematics diagnostics only. Publishing and verifying the immutable provider overlay, training replay, spatial covariance, complete metadata, a DOI-backed archive, exact re-review, and human review remain open.",
+    description: "The galaxy chirality catalog: 8.47M galaxies classified CW/CCW by a ViT-Small ensemble with flip-equivariant TTA. v1.0.261 records the strict-primary overlay as PUBLISHED at immutable HF revision 911316f3 (apjs-release/v1.0.259-strict-primary), all 7 files remote-byte-verified. The primary is null-consistent; harmonic results are systematics diagnostics only. Training replay, spatial covariance, complete metadata, a DOI-backed archive, exact v1.0.261 re-review, and human review remain open.",
     keyResults: [
       "8.47M galaxies classified (1,592,107 CW / 1,609,053 CCW / 5,273,371 NOT_SPIRAL)",
       "Strict release-safe primary: N_selected=890,069, N_support=887,472, z_mom=+0.63465, one-sided empirical-rank p=0.23768",
@@ -356,12 +356,12 @@ export const papers: Paper[] = [
     figures: ["Chirality sky map", "Hemisphere null", "Bias audit results", "Class pie (canonical text counts)"],
     remainingWork: [
       "Freeze and validate full-catalog imaging-leg, depth, seeing, PSF, and redshift metadata; the exact morphology join is now public but these fields remain unavailable",
-      "Publish and byte-verify the strict-primary overlay at an immutable provider revision, then run and truth-audit exact non-Anthropic confirmation on v1.0.260 before any DOI publication",
+      "Run and truth-audit the exact v1.0.261 confirmation board (overlay published + byte-verified at HF revision 911316f3 on 2026-07-16) before any DOI publication",
       "Prove the exact training split/seed/realization and propagate spatially varying confusion with covariance",
       "Author arXiv endorsement and journal-submission decision",
     ],
     preprintId: "HUBIFY-2026-004",
-    pdfMeta: "PDF · 25 pp · v1.0.260 · sha256 2a747d6a · md5 2e2e1fa4 — strict-primary overlay locally synchronized; immutable provider publication, exact re-review, and external/human gates remain. Readiness holds 80.",
+    pdfMeta: "PDF · 25 pp · v1.0.261 · sha256 60d96cde · md5 ddeaf2e0 — strict-primary overlay published and byte-verified at immutable HF revision 911316f3; exact re-review and external/human gates remain. Readiness holds 80.",
     changelog: [
       "End-to-end transfer-calibration scope statement (v1.0.229): the injection-recovery section now delineates which links of the classify→dipole chain the sweep traverses (map-making + dipole estimator + null calibration) versus which it does not (ViT classifier, NS triage, confidence cut, spatially-varying confusion), shows from the committed GZ1 confusion numbers that the asymmetric-confusion transfer slope g_eff = s_CW + s_CCW − 1 = 0.398 equals the symmetric g = 2a − 1 = 0.398 for the near-balanced parent (so CW/CCW asymmetry does not degrade the physical-amplitude conversion), and honest-flags the full image-level end-to-end injection through the classifier as requiring new simulation — operative claims held to the observed hard-label field. No number changed, nothing fabricated.",
       "R9 ACCEPT-track minor closure (v1.0.225): Grok = minor-revisions, Gemini = 'Accept with minor revisions'; both referees' concrete minors closed with real edits (no number changed). Abstract z≈−18 now explicitly labeled a model-dependent template-disfavor statistic (not a frequentist exclusion) with the injection-recovery A95∈(1.0,1.5]% cross-referenced as the primary real-space falsification; added a main-text downstream-user warning that raw p_eq scores are not frequentist likelihoods (cite Appendix-B ECE ≥0.25–0.36); abstract real-space p now names its isotropic-pixel-permutation null. ChatGPT major = presentation/consolidation of already-disclosed content.",

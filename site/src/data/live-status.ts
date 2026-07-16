@@ -165,9 +165,9 @@ export const liveStatus: LiveStatus = {
     if (paper.slug === "paper-4") {
       return {
         ...paper,
-        version: "v1.0.260",
+        version: "v1.0.261",
         pendingWork:
-          "The strict-primary overlay is locally content-addressed and bound to v1.0.260, but immutable provider publication is still open. Training independence, spatial transfer/covariance, complete metadata, archive/DOI, exact non-Anthropic re-review, and human review remain. Readiness holds 80.",
+          "The v1.0.259 strict-primary overlay is published and byte-verified at immutable HF revision 911316f3 (apjs-release/v1.0.259-strict-primary/); the provider-publication gate is closed. Training independence, spatial transfer/covariance, complete metadata, archive/DOI, exact v1.0.261 non-Anthropic re-review, and human review remain. Readiness holds 80.",
       };
     }
     if (paper.slug === "paper-1a") {
@@ -209,7 +209,7 @@ export const liveStatus: LiveStatus = {
   currentlyRunning: [
     "P1B v2B.0.6 confirmation closure is compiled, retained, mirrored, and awaiting a fresh exact confirmation",
     "P1B immutable archive identifier remains a real submission blocker",
-    "P4 v1.0.260 and P5 v0.1.139 PDFs are built, retained, mirrored, and synchronized; P4 provider-overlay publication remains open",
+    "P4 v1.0.261 and P5 v0.1.139 PDFs are built, retained, mirrored, and synchronized; P4 provider-overlay publication is closed",
     "Exact non-Anthropic re-review and standing external release/provenance gates are next",
   ],
   cronStatus:
