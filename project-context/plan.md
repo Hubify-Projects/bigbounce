@@ -8,6 +8,16 @@ venues, and synchronizing public state only after the evidence agrees. Optimize
 wall-clock time through independent lanes, deterministic compute parallelism,
 and artifact-addressed review reuse without weakening scientific gates.
 
+## Account handoff checkpoint
+
+The dedicated Codex subscription handoff is documented in
+`project-context/BIGBOUNCE_CODEX_ACCOUNT_HANDOFF_2026-07-16.md`. On resume,
+verify authentication and the no-OpenAI-API routing regression before any new
+wave. The current direct-provider default is temporary quota protection. Once
+the new account passes verification, set
+`BIGBOUNCE_CODEX_SUBSCRIPTION_ENABLED=1` to restore Codex as a normal review
+leg; no scientific gates or evidence contracts change.
+
 ## Current execution order
 
 1. Compile the accumulated review taxonomy into a canonical machine-readable HubStack preflight engine and a BigBounce all-six-paper adapter. Bind every PASS receipt to source commit, source/PDF hashes, registry hash, and rule-catalog hash.

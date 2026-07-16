@@ -10,6 +10,18 @@ but are not the current scientific critical path.
 
 ## Active
 
+- [ ] **HO-005 — Dedicated Codex account handoff:** resume this objective from
+  `project-context/BIGBOUNCE_CODEX_ACCOUNT_HANDOFF_2026-07-16.md`; authenticate
+  the research-only subscription without exposing secrets, verify the CLI route,
+  and preserve all provider/evidence policy. (source: 2026-07-16 account-switch
+  request)
+- [ ] **HO-006 — Restore normal Codex participation after verification:** once
+  the research-only account passes a bounded CLI check, set
+  `BIGBOUNCE_CODEX_SUBSCRIPTION_ENABLED=1` (or use `--with-codex`) and confirm
+  the full review matrix still records direct-provider receipts. The current
+  Codex-off default is temporary quota protection, not a permanent restriction.
+  (source: 2026-07-16 routing correction)
+
 - [ ] **PUB-001 — Close active science revisions:** finish P1A v1A.0.120, P1B exact-window robustness, P3 r5, P4 portability/provenance closure, and P5 AJ-oriented structural closure with reproducible evidence and full PDF audits. (source: 2026-07-13 19:28 PT; 2026-07-14 10:39 PT)
 - [ ] **PUB-002 — Re-review exact immutable PDFs:** run fresh Codex/ChatGPT-subscription, Grok, and Gemini boards against the correct journal/article type; retain raw reports, exact PDF SHA-256, source commit, prompt hash, provider/model, and normalized truth-audit. The OpenAI perspective is Codex CLI authenticated by ChatGPT subscription with OpenAI API credentials unset — never separately billed OpenAI API. Grok/xAI and Gemini direct-provider API legs are allowed. No Anthropic/Claude leg in this campaign. Re-review only after a reader-visible content-hash change, except one declared independent confirmation of a high-risk closure. (source: 2026-07-13 19:28 PT; 2026-07-14 readiness-regression audit)
 - [ ] **PUB-003 — Implement safe acceleration controls:** centralize the six-paper registry, generate content-addressed review packets, fail closed on stale/wrong PDFs or ambiguous commits, separate science gates from workflow gates, and add deterministic bounded inner parallelism only where serial-equivalence tests pass. (source: 2026-07-14 10:39 PT)

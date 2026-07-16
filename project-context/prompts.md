@@ -548,3 +548,17 @@ Switched to Opus 4.7 + xhigh effort for this.
 - `agent`: Codex GPT-5
 
 > did you also implement everything from this recent audit plan etc as well? SCIENCE_STACK_RECURSIVE_IMPROVEMENT_AUDIT_2026.md
+
+## 2026-07-16 - BigBounce account handoff
+
+### Houston messages, verbatim
+
+**13:47 PT - Prepare durable research handoff for dedicated Codex subscription account switch**
+
+- `cwd`: /Users/houstongolden/Desktop/CODE_YOU/bigbounce
+- `session`: BigBounce account handoff
+- `agent`: Codex
+
+> i just reset my weekly usage yesterday and it is already at 65% -- can you tell me what % of that 35% already used was by this bigbounce project and the other agents it spawns via cmux etc using the codex cli on my subscription etc? i want the percentage
+>
+> ok I also want you to prepare all the plans and docs internally etc so I can pick up the research exactly where we are leaving off without losing any context or the goal "Drive all six BigBounce papers through honest internal and external non-Anthropic multi-model review, truth-audited closure, re-review, PDF/version/SSOT/Convex/API/site synchronization, and evidence-backed 95–99% publication readiness (accepted or minor-revisions-only), documenting every process acceleration without fabricating or overstating results). --- so I can logout and log back into Codex on this computer with a new ChatGPT subscription account that I will use exclusively for this research project going forward to prevent it from bottlenecking my other projects and coding etc in my business etc since this research is really a separate endeavor/venture anyways it makes sense to bill/track/use separately -- also ensure all my local global youmd you agent you synced stuff will help ensure this is seamless as well thanks
