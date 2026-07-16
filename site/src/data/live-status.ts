@@ -165,9 +165,9 @@ export const liveStatus: LiveStatus = {
     if (paper.slug === "paper-4") {
       return {
         ...paper,
-        version: "v1.0.261",
+        version: "v1.0.262",
         pendingWork:
-          "The v1.0.259 strict-primary overlay is published and byte-verified at immutable HF revision 911316f3 (apjs-release/v1.0.259-strict-primary/); the provider-publication gate is closed. Training independence, spatial transfer/covariance, complete metadata, archive/DOI, exact v1.0.261 non-Anthropic re-review, and human review remain. Readiness holds 80.",
+          "v1.0.262 closes both genuinely-new-real findings from the exact v1.0.261 board truth audit (Grok MAJOR / Gemini MINOR / Claude MAJOR, 14 findings -> 0 falsified): an editorial plain-English gloss of raw_flip_qc_unsafe at its first main-text declaration, and a delivered per-region CW-fraction monopole correction map (HEALPix NSIDE=8 and NSIDE=64) reproducing the canonical Table-4 monopole bit-for-bit. Training independence, spatial transfer/covariance, complete metadata, archive/DOI, exact v1.0.262 non-Anthropic re-review, and human review remain. Readiness holds 80.",
       };
     }
     if (paper.slug === "paper-1a") {
@@ -209,7 +209,7 @@ export const liveStatus: LiveStatus = {
   currentlyRunning: [
     "P1B v2B.0.8 exact confirmation is truth-audited (no new executable defect); the archive/editorial gate is the next P1B action",
     "P1B immutable archive identifier remains a real submission blocker",
-    "P4 v1.0.261 and P5 v0.1.140 PDFs are built, retained, mirrored, and synchronized; P4 provider-overlay publication is closed",
+    "P4 v1.0.262 and P5 v0.1.140 PDFs are built, retained, mirrored, and synchronized; P4 closes the v1.0.261 board's gloss + delivered monopole correction map findings",
     "Exact non-Anthropic re-review and standing external release/provenance gates are next",
   ],
   cronStatus:

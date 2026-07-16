@@ -605,3 +605,11 @@ Switched to Opus 4.7 + xhigh effort for this.
 - `agent`: Claude Code desktop / claude-fable-5
 
 > you should use claude and claude code/cmux per the rules etc use fable 5 or opus-4-8 for the orchestrator and the other smaller/faster/cheaper models for workers/leads via terminal/cmux etc which should be documented and cover both our internal reviews and external api/cli reviews etc etc
+
+**15:59 PT - Continue: proceed with best next scoped step (P5 finalization, P4 v1.0.262 closure)**
+
+- `cwd`: /Users/houstongolden/Desktop/CODE_YOU/bigbounce
+- `session`: bigbounce-resume-claude-desktop-2026-07-16
+- `agent`: Claude Code desktop / claude-fable-5
+
+> continue

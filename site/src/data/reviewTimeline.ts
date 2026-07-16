@@ -57,6 +57,50 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p4-v1-0-262-gloss-monopole-correction-closure-2026-07-16",
+    dateISO: "2026-07-16",
+    timePT: "4:03 PM",
+    kind: "closure-wave",
+    title: "P4 v1.0.262 — editorial gloss + delivered monopole correction map closure",
+    papers: ["P4"],
+    summary:
+      "v1.0.262 closes both genuinely-new-real findings from the exact v1.0.261 board truth audit: an editorial plain-English gloss of raw_flip_qc_unsafe is now given at its first main-text declaration (Sec 3.2), and a DELIVERED per-region CW-fraction monopole correction map with per-region binomial uncertainty at HEALPix NSIDE=8 and NSIDE=64 is shipped, computed from the committed 8,474,531-row public catalog and bit-for-bit reproducing the canonical Table-4 monopole (f_CW=0.49735, -9.47 sigma) asserted before writing. No science number changed; the primary dipole is unaffected (constant-monopole absorption). Readiness holds 80.",
+    keyTakeaways: [
+      "Real deliverable, not a wording fix: pipelines/p2_chirality/analysis/monopole_correction_map_v1_0_262.{py,json,_nside64.npz}",
+      "Bit-for-bit reproduction of the canonical Table-4 monopole (f_CW=0.49735, -9.47 sigma) asserted before writing the correction map",
+      "26 pp, PDF SHA-256 f59fc937597efe749894eca426e623b21b918bd8e977c9edd85a75732b494cb2, MD5 4cd027943c7e777a4e55bb408f0e9bb7, timestamp 2026-07-16 16:03 PT (previously 25 pp)",
+      "directive-G PASS, 16 mirrors byte-identical, retention manifest 20260716T230855Z-07339d4a2786.json, Convex row k5718hsx0sg41pzjb7fx663xg98am3jw",
+      "No readiness uplift: exact v1.0.262 confirmation, training provenance, spatial transfer/joint covariance, complete metadata, DOI-backed archive, and human ApJS review remain open",
+    ],
+    links: [
+      { label: "P4 canonical status", href: `${GH}/project-context/SSOT/paper-4/status.md` },
+      { label: "Monopole correction map script", href: `${GH}/pipelines/p2_chirality/analysis/monopole_correction_map_v1_0_262.py` },
+      { label: "Monopole correction map artifact", href: `${GH}/pipelines/p2_chirality/analysis/monopole_correction_map_v1_0_262.json` },
+    ],
+  },
+  {
+    id: "p4-v1-0-261-exact-confirmation-board-2026-07-16",
+    dateISO: "2026-07-16",
+    timePT: "3:50 PM",
+    kind: "closure-wave",
+    title: "P4 v1.0.261 — exact confirmation board and truth audit",
+    papers: ["P4"],
+    summary:
+      "The exact 25-page v1.0.261 PDF (SHA-256 60d96cde) was reviewed by Grok 4.3 direct API (MAJOR REVISIONS), Gemini 3.1 Pro direct API (MINOR REVISIONS), and a Claude Opus subagent (MAJOR REVISIONS); Codex remained absent, paused per CLAUDE.md directive N. Truth audit dispositioned all 14 findings: 0 falsified, and 2 genuinely-new-real items — a missing plain-English gloss of raw_flip_qc_unsafe at its first main-text declaration and a missing per-region CW-fraction monopole correction map — both closed same-day in v1.0.262.",
+    keyTakeaways: [
+      "Board: Grok MAJOR / Gemini MINOR / Claude Opus subagent MAJOR; Codex absent per directive N",
+      "14 findings truth-audited: 0 falsified, 2 genuinely-new-real",
+      "The 2 genuinely-new-real findings (raw_flip_qc_unsafe gloss + per-region monopole correction map) are closed in v1.0.262",
+      "Readiness/cap 80 HOLDS; no submission or acceptance is claimed",
+    ],
+    links: [
+      { label: "Truth audit", href: `${PR}/INT_v3/ROUND_2026-07-16-P4-v1.0.261-EXACTPDF-60d96cde-CLAUDESTACK-CONFIRM/P4_v1.0.261_truth_audit.md` },
+      { label: "Claude raw", href: `${PR}/INT_v3/ROUND_2026-07-16-P4-v1.0.261-EXACTPDF-60d96cde-CLAUDESTACK-CONFIRM/API_P4_claude.md` },
+      { label: "Grok raw", href: `${PR}/INT_v3/ROUND_2026-07-16-P4-v1.0.261-EXACTPDF-60d96cde-CLAUDESTACK-CONFIRM/API_P4_grok.md` },
+      { label: "Gemini raw", href: `${PR}/INT_v3/ROUND_2026-07-16-P4-v1.0.261-EXACTPDF-60d96cde-CLAUDESTACK-CONFIRM/API_P4_gemini.md` },
+    ],
+  },
+  {
     id: "p5-v0-1-140-whole-tree-multiplicity-closure-2026-07-16",
     dateISO: "2026-07-16",
     timePT: "3:52 PM",
