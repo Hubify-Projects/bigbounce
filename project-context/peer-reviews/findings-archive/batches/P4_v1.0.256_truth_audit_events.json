@@ -1,0 +1,137 @@
+{
+  "schema_version": "truth-audit-event-batch/v1",
+  "paper": {"id": "P4", "version": "v1.0.256"},
+  "source": {
+    "round_id": "ROUND_2026-07-15-P4-v1.0.256-EXACTPDF-6dfccf7c-NONANTHROPIC-CONFIRM",
+    "round_type": "internal"
+  },
+  "pdf": {
+    "sha256": "6dfccf7c26d698599c3512bd91f0f73f714f967604f42f73aeaf4e9a59573110",
+    "pages": 29
+  },
+  "truth_audit": {
+    "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P4-v1.0.256-EXACTPDF-6dfccf7c-NONANTHROPIC-CONFIRM/P4_v1.0.256_confirmation_truth_audit.md",
+    "sha256": "87f8f592486953e06ba688388d3f694b113ad9e1769e00ce1419b3088d30974f",
+    "audited_at": "2026-07-16T06:58:52Z"
+  },
+  "catalog": {"version": "34-patterns", "updated_at": "2026-06-02T00:00:00Z"},
+  "receipts": [
+    {
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P4-v1.0.256-EXACTPDF-6dfccf7c-NONANTHROPIC-CONFIRM/API_P4_gemini.md",
+      "sha256": "f01754cff7419b64ef13ae3154007ffb5786fb9aa8d71219d8c4bd609912003d",
+      "occurred_at": "2026-07-16T06:27:42.251851Z",
+      "reviewer": {"provider": "google-direct", "model": "gemini-3.1-pro-preview", "reviewer_id": "gemini-api"},
+      "findings": [
+        {
+          "finding_id": "Ge-M1", "severity": "MAJOR",
+          "summary": "Unknown historical training membership contaminates the GZ1 overlap and prevents independent transfer validation.",
+          "truth_verdict": "VERIFIED",
+          "truth_evidence": "The audit confirmed that exact training membership and an independent GZ1 anti-join are unavailable; a numerical worst-case bias or candidate-pool flag cannot be constructed without speculative identities.",
+          "classification": "UNMATCHED", "pattern_ids": [], "preflight_checked": false, "preflight_intercepted": false,
+          "closure": {
+            "status": "DEFERRED",
+            "action": "Recover provable candidate identities and a training-disjoint validation set, or retain the overlap-contamination limitation without inventing a numerical bound.",
+            "closed_in_version": null, "evidence": "Standing training-overlap gate in the bound truth audit.", "regression_of_event_id": null
+          }
+        },
+        {
+          "finding_id": "Ge-M2", "severity": "MAJOR",
+          "summary": "A calibrated physical confusion model and continuous physical sensitivity ceiling remain absent.",
+          "truth_verdict": "VERIFIED",
+          "truth_evidence": "The audit confirmed the scientific limitation while finding the claimed disclosure defect stale because the abstract and main analysis already state that no primordial-parity bound is supported.",
+          "classification": "UNMATCHED", "pattern_ids": [], "preflight_checked": false, "preflight_intercepted": false,
+          "closure": {
+            "status": "DEFERRED",
+            "action": "Run calibrated physical transfer and continuous injection-recovery analysis before making a physical-chirality upper-limit claim.",
+            "closed_in_version": null, "evidence": "Standing physical-transfer gate in the bound truth audit.", "regression_of_event_id": null
+          }
+        },
+        {
+          "finding_id": "Ge-m3", "severity": "MINOR",
+          "summary": "The support acronyms and audit terminology should be consolidated and softened.",
+          "truth_verdict": "OPINION",
+          "truth_evidence": "The audit verified that support names and the estimator hierarchy are explicitly defined; additional consolidation is editorial polish.",
+          "classification": "UNMATCHED", "pattern_ids": [], "preflight_checked": false, "preflight_intercepted": false,
+          "closure": {
+            "status": "REJECTED", "action": "Consider only during venue-focused readability editing.",
+            "closed_in_version": null, "evidence": "Editorial disposition in the bound truth audit.", "regression_of_event_id": null
+          }
+        },
+        {
+          "finding_id": "Ge-m4", "severity": "MINOR",
+          "summary": "A local-significance map should be added as a complementary figure.",
+          "truth_verdict": "OPINION",
+          "truth_evidence": "The audit found that such a map could aid presentation but its absence does not contradict the global fixed-occupancy result or omit required numerical evidence.",
+          "classification": "UNMATCHED", "pattern_ids": [], "preflight_checked": false, "preflight_intercepted": false,
+          "closure": {
+            "status": "REJECTED", "action": "Treat as an optional figure enhancement rather than a scientific closure gate.",
+            "closed_in_version": null, "evidence": "Editorial disposition in the bound truth audit.", "regression_of_event_id": null
+          }
+        }
+      ]
+    },
+    {
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P4-v1.0.256-EXACTPDF-6dfccf7c-NONANTHROPIC-CONFIRM/intwave_P4_codex_2326.md",
+      "sha256": "5773fc43b0807ffcf0bed65379722879b44d713ca98c0f479c2aef456221f75a",
+      "occurred_at": "2026-07-16T06:27:21Z",
+      "reviewer": {"provider": "openai-subscription", "model": "gpt-5.6-sol (high)", "reviewer_id": "codex-cli"},
+      "findings": [
+        {
+          "finding_id": "C-M1", "severity": "MAJOR",
+          "summary": "Exact split membership, random state, retraining, and object-disjoint classifier validation remain unavailable.",
+          "truth_verdict": "VERIFIED",
+          "truth_evidence": "The audit confirmed that historical and overlap-contaminated agreement values are descriptive rather than independent catalog validation.",
+          "classification": "UNMATCHED", "pattern_ids": [], "preflight_checked": false, "preflight_intercepted": false,
+          "closure": {
+            "status": "DEFERRED", "action": "Recover or regenerate immutable training and object-disjoint validation evidence.",
+            "closed_in_version": null, "evidence": "Standing classifier-validation gate in the bound truth audit.", "regression_of_event_id": null
+          }
+        },
+        {
+          "finding_id": "C-M2", "severity": "MAJOR",
+          "summary": "Full-catalog systematics metadata and joint propagation into the primary estimator remain unavailable.",
+          "truth_verdict": "VERIFIED",
+          "truth_evidence": "The audit confirmed missing imaging-leg, depth, seeing, PSF, and redshift metadata and noted that the limitation is disclosed in Data Availability.",
+          "classification": "UNMATCHED", "pattern_ids": [], "preflight_checked": false, "preflight_intercepted": false,
+          "closure": {
+            "status": "DEFERRED", "action": "Publish complete systematics metadata and propagate its joint effect into the primary estimator.",
+            "closed_in_version": null, "evidence": "Standing systematics-metadata gate in the bound truth audit.", "regression_of_event_id": null
+          }
+        },
+        {
+          "finding_id": "C-M3", "severity": "MAJOR",
+          "summary": "Two declination bins were incorrectly described as validation in every one of the three DR8 imaging campaigns.",
+          "truth_verdict": "VERIFIED",
+          "truth_evidence": "The audit confirmed that DES was folded into the southern bin and was not separately validated.",
+          "classification": "NEW_REAL", "pattern_ids": [], "preflight_checked": false, "preflight_intercepted": false,
+          "closure": {
+            "status": "OPEN", "action": "Call the bins declination-defined proxies, identify DECaLS plus DES explicitly, and state that DES was not separately validated.",
+            "closed_in_version": null, "evidence": "Verified wording defect in the bound truth audit.", "regression_of_event_id": null
+          }
+        },
+        {
+          "finding_id": "C-m4", "severity": "MINOR",
+          "summary": "Figure 7 regressed to unique causal TTA language despite differing inference passes, memberships, and null conventions.",
+          "truth_verdict": "VERIFIED",
+          "truth_evidence": "The audit confirmed this as a closure regression and required association and bounded-mitigation wording.",
+          "classification": "NEW_REAL", "pattern_ids": [], "preflight_checked": false, "preflight_intercepted": false,
+          "closure": {
+            "status": "OPEN", "action": "Describe association and bounded mitigation rather than unique TTA causation or a universal must-adopt conclusion.",
+            "closed_in_version": null, "evidence": "Verified closure regression in the bound truth audit.", "regression_of_event_id": "fev1_ba4b77f4f644c28483c413bc"
+          }
+        },
+        {
+          "finding_id": "C-m5", "severity": "MINOR",
+          "summary": "Mutable-main links, final immutable tag binding, and Zenodo DOI remain provisional.",
+          "truth_verdict": "VERIFIED",
+          "truth_evidence": "The audit confirmed these as standing submission-deposit gates rather than a defect closable in manuscript prose.",
+          "classification": "UNMATCHED", "pattern_ids": [], "preflight_checked": false, "preflight_intercepted": false,
+          "closure": {
+            "status": "DEFERRED", "action": "Bind the final immutable commit or tag and DOI-backed archive at submission deposit.",
+            "closed_in_version": null, "evidence": "Standing archival release gate in the bound truth audit.", "regression_of_event_id": null
+          }
+        }
+      ]
+    }
+  ]
+}

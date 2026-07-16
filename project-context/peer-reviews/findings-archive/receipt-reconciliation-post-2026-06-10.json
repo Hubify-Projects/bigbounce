@@ -1,7 +1,7 @@
 {
-  "archive_completeness_rate": 0.104247,
+  "archive_completeness_rate": 0.111969,
   "complete": false,
-  "count_mismatches": 232,
+  "count_mismatches": 230,
   "failed_leg_gaps": 6,
   "hash_mismatches": 0,
   "inventory_receipts": 271,
@@ -2273,12 +2273,14 @@
       "status": "ok"
     },
     {
-      "event_count": 0,
-      "event_hashes": [],
+      "event_count": 4,
+      "event_hashes": [
+        "f01754cff7419b64ef13ae3154007ffb5786fb9aa8d71219d8c4bd609912003d"
+      ],
       "expected_findings": 4,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P4-v1.0.256-EXACTPDF-6dfccf7c-NONANTHROPIC-CONFIRM/API_P4_gemini.md",
       "receipt_id": "receipt_47d4410d9bf5a17e1444",
-      "state": "COUNT_MISMATCH",
+      "state": "RECONCILED",
       "status": "ok"
     },
     {
@@ -2291,12 +2293,14 @@
       "status": "failed"
     },
     {
-      "event_count": 0,
-      "event_hashes": [],
+      "event_count": 5,
+      "event_hashes": [
+        "5773fc43b0807ffcf0bed65379722879b44d713ca98c0f479c2aef456221f75a"
+      ],
       "expected_findings": 5,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P4-v1.0.256-EXACTPDF-6dfccf7c-NONANTHROPIC-CONFIRM/intwave_P4_codex_2326.md",
       "receipt_id": "receipt_882e229def993a5efe1b",
-      "state": "COUNT_MISMATCH",
+      "state": "RECONCILED",
       "status": "ok"
     },
     {
@@ -2468,7 +2472,7 @@
       "status": "ok"
     }
   ],
-  "reconciled_receipts": 27,
+  "reconciled_receipts": 29,
   "schema_version": "finding-receipt-reconciliation/v1",
   "unresolved_finding_counts": 0
 }

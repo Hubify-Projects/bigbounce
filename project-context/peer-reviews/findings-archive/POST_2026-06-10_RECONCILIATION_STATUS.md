@@ -37,16 +37,19 @@ gaps.
 The canonical engine reports:
 
 - archive complete: **false**
-- reconciled parseable receipts: **27 / 259 (10.4247%)**
-- receipt count mismatches: **232**
+- reconciled parseable receipts: **29 / 259 (11.1969%)**
+- receipt count mismatches: **230**
 - receipt hash mismatches: **0**
 - orphaned event receipts: **0**
 - failed-leg gaps: **6**
 
-The 27 reconciled receipts are predominantly explicit zero-finding receipts,
+The 29 reconciled receipts are predominantly explicit zero-finding receipts,
 plus the complete P4 v1.0.253 board, the P4 v1.0.254 Codex receipt, and the
-complete P5 v0.1.138 and P4 v1.0.255 boards. They do not imply that the
-remaining campaign findings have been truth-audited into the event ledger.
+complete P5 v0.1.138 and P4 v1.0.255 boards, plus the successful Gemini and
+Codex legs of the P4 v1.0.256 confirmation board. Its failed Grok leg remains
+an explicit failed gap and contributes no invented events. They do not imply
+that the remaining campaign findings have been truth-audited into the event
+ledger.
 
 Every unresolved row remains visible rather than being silently converted into
 zero findings.
@@ -112,6 +115,16 @@ in the immutable event records, while seven linked closure events bind them to
 the exact v1.0.256 correction commit and evidence bytes. This preserves original
 event identity while making their effective status CLOSED.
 
+The third importer-driven batch,
+`batches/P4_v1.0.256_truth_audit_events.json`, adds all nine findings from the
+successful Gemini and Codex-subscription legs of the confirmation board: five
+standing science, metadata, release, or archival gates; two editorial opinions;
+and two verified manuscript defects. The receipts reconcile at **4/4** and
+**5/5**. The failed Grok leg remains an explicit failed gap with no event
+records. The ledger now represents **60 / 1,574 explicit findings (3.8119%)**.
+Two linked closure events bind the correctable findings to the exact v1.0.257
+correction commit and evidence bytes.
+
 Because finding events are immutable, later closures are now recorded in the
 separate append-only `finding-closure-events-v1.jsonl` ledger rather than
 rewriting event identity. `tools/finding_closure_event.py` verifies that the
@@ -119,20 +132,20 @@ referenced finding exists and that every evidence path has the declared bytes
 at the exact closure commit, then produces
 `finding-closure-projection.json`.
 
-The closure ledger now contains 23 entries. Its first four entries bind P5's
+The closure ledger now contains 25 entries. Its first four entries bind P5's
 verified v0.1.138 manuscript minors to
 commit `81b7bd56` and version `v0.1.139-2026-07-16`: interaction prose,
 shared-reference covariance, the T-Web parent/subset explanation, and stable
 tie-breaking. These are source closures, not a claim that standing release,
 companion-paper, human, or venue gates are closed, and no later confirmation
-board is inferred. Nineteen P4 entries bind the verified correctable defects
-from v1.0.253 through v1.0.255 to exact v1.0.254, v1.0.255, and v1.0.256
-correction commits. Standing training, transfer, covariance, metadata, DOI,
-scope, and human-review gates remain open.
+board is inferred. Twenty-one P4 entries bind the verified correctable defects
+from v1.0.253 through v1.0.256 to exact v1.0.254, v1.0.255, v1.0.256, and
+v1.0.257 correction commits. Standing training, transfer, covariance, metadata,
+DOI, scope, archival, and human-review gates remain open.
 
 ## Remaining work
 
-1. Normalize the remaining 1,523 explicit findings against truth-audit rows,
+1. Normalize the remaining 1,514 explicit findings against truth-audit rows,
    preserving falsified, stale, opinion, standing, and unresolved dispositions.
 2. Recover the five incomplete historical summaries and one empty Codex receipt
    from preserved raw transcripts if available; otherwise retain them as

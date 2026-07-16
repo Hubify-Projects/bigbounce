@@ -221,6 +221,15 @@ findings. Standing training-replay, transfer-calibration, joint-covariance,
 metadata, DOI, and human-review gates remain deferred rather than being
 misrepresented as manuscript closures.
 
+The successful Gemini and Codex-subscription legs of the P4 v1.0.256
+confirmation board are now ingested and reconciled at 4/4 and 5/5. Its failed
+Grok leg remains an explicit failed gap and produced no invented events. The
+ledger now contains 60 events, canonical receipt reconciliation is **29/259
+(11.20%)** with 230 count mismatches, and two verified manuscript regressions
+are bound to their exact v1.0.257 correction commit. The effective closure
+projection now contains 25 findings. Standing science, metadata, archive, DOI,
+and human-review gates remain deferred.
+
 Evidence and exact outcomes are recorded in
 `project-context/audits/PROACTIVE_PORTFOLIO_SWEEP_2026-07-15.md`. Readiness was
 not increased by these process or release-integrity closures.
