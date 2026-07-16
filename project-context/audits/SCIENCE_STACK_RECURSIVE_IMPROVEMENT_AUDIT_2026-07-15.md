@@ -71,6 +71,42 @@ pair without distinct on-disk raw bodies. This is an archive-completeness gap,
 not evidence of a complete wave, and is exactly the class of loss that the new
 inventory reconciliation must fail closed on.
 
+## Evidence update — 2026-07-16
+
+The next computational-closure increment is now committed and packaged:
+
+- commit `6bb2bc1e` closes the verified P4/P5 computational confirmation
+  findings and adds deterministic science-contract validators. P4's primary
+  shuffle is bound to the strict release-safe sample (`890,069` selected,
+  explicitly zero unsafe rows), and every FSC harmonic leg is bound to the same
+  checksummed `24,087`-pixel support. P5's focal `K=13` estimate is exercised
+  under NSIDE `2/4/8` and 3-D clustering, while sparse strata fail closed rather
+  than emitting unsupported clustered inference;
+- the new P4/P5 contract checks are integrated into
+  `tools/bigbounce_preflight.py`, with regression fixtures for support identity,
+  draw counts, harmonic coverage, clustering intervals, sparse-cluster
+  suppression, and the corrected interaction counterfactual;
+- the complete `tools/tests` suite passes **136/136** on the committed
+  computational release. The focused science/preflight suite passes **28/28**;
+- commit `d9b5d42d` bumps P5 to `v0.1.138-2026-07-16` solely to remove an
+  isolated arXiv-build equation overflow. The exact 41-page PDF is
+  SHA-256 `3c47ccf75da20653c463557fc54fff50da01e1e6bde43a225f61c46cd50baaf0`;
+  readiness remains 74 and no science result changes;
+- commit `ad55a7bd` adds commit-bound P4 `v1.0.258` and P5 `v0.1.138` source
+  bundles plus standalone proofs. Both compile under isolated safe extraction
+  with zero errors, zero undefined references, zero overfull boxes, and the
+  expected 25/41 pages;
+- six-paper preflight receipt
+  `project-context/peer-reviews/pre-review-checks/portfolio_20260716T082655Z.json`
+  passes with core SHA-256
+  `22c87743968363b8248bf299af5b0d17a940b844ae0c87742f06ee25d2d5c70c`.
+
+This evidence completes the current strict all-paper preflight and P4/P5
+packaging increment. It does **not** complete historical receipt ingestion,
+campaign-wide archive reconciliation, machine-readable coverage for every
+approved pattern, the cross-paper claim graph, two consecutive clean residual
+waves, or all-six external/human release gates.
+
 Evidence and exact outcomes are recorded in
 `project-context/audits/PROACTIVE_PORTFOLIO_SWEEP_2026-07-15.md`. Readiness was
 not increased by these process or release-integrity closures.
@@ -484,7 +520,7 @@ models are available.
 - [ ] All approved patterns have validated machine-readable rules or explicit
       non-mechanical status.
 - [ ] Every high-severity recurring pattern has a regression fixture.
-- [ ] Strict all-paper preflight passes on current committed sources and PDFs.
+- [x] Strict all-paper preflight passes on current committed sources and PDFs.
 - [x] Review packets bind the matching preflight/catalog/registry receipts.
 - [x] Active INT/direct-provider/external-browser dispatch routes require the gate.
 - [ ] Cross-paper claim graph covers every headline quantitative claim.
@@ -499,15 +535,15 @@ models are available.
 
 ## Immediate next action
 
-P0 dispatch enforcement and the P4 v1.0.256/P5 v0.1.135 truth-audited closure
-releases are implemented. The next science gate is an authorized exact-PDF
-confirmation board on those two closure PDFs, followed by finding-level truth
-audit without relabeling the prior MAJOR/MINOR verdicts. In parallel, create the
-complete BigBounce receipt inventory, preserve the P5 overwritten-first-pass gap
-as an explicit reconciliation failure, ingest the missing historical events, and
-drive reconciliation to 100%. Only then may the now-executable known-pattern
-escape and closure-regression metrics be treated as campaign-wide learning
-evidence. The remaining unchecked acceptance items—especially the cross-paper
-claim graph, machine-readable rule coverage, two clean confirmation waves, and
-all-six release gates—remain the governing work rather than being inferred from
-the P4/P5 closures.
+P0 dispatch enforcement, strict six-paper preflight, and the P4 v1.0.258 /
+P5 v0.1.138 computational-closure packages are implemented. The next science
+gate is an authorized exact-PDF residual confirmation board on those two exact
+PDFs, followed by finding-level truth audit without relabeling prior verdicts.
+In parallel, create the complete BigBounce receipt inventory, preserve the P5
+overwritten-first-pass gap as an explicit reconciliation failure, ingest the
+missing historical events, and drive reconciliation to 100%. Only then may the
+now-executable known-pattern escape and closure-regression metrics be treated as
+campaign-wide learning evidence. The remaining unchecked acceptance items—
+especially the cross-paper claim graph, machine-readable rule coverage, two
+clean confirmation waves, and all-six release gates—remain governing work
+rather than being inferred from the P4/P5 closures.
