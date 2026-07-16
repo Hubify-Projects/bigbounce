@@ -19,6 +19,7 @@ from typing import Any
 from paper_registry import CANONICAL_IDS, load_registry, registry_path, repo_root
 import artifact_crosscheck
 from verify_analysis_artifact_manifest import verify_manifest
+from verify_p4_p5_science_contracts import verify as verify_p4_p5_science_contracts
 
 SCHEMA = "bigbounce.pre-review-portfolio-receipt/v1"
 ENGINE = Path.home() / ".claude/scistack/hubstack/learning-loop/paper-pre-review-check/scripts/pre_review_check.py"
@@ -30,6 +31,7 @@ ALLOWED_LOCAL_ENGINE_PATHS = (
     "tools/bigbounce_preflight.py",
     "tools/artifact_crosscheck.py",
     "tools/verify_analysis_artifact_manifest.py",
+    "tools/verify_p4_p5_science_contracts.py",
 )
 
 
@@ -136,8 +138,17 @@ def evaluate(root: Path, rules_path: Path) -> dict[str, Any]:
         item not in ALLOWED_LOCAL_ENGINE_PATHS for item in local_engine_paths
     ):
         raise PortfolioError("portfolio_engine_paths contains an unsafe or unknown path")
+    science_contract_paths = rule_catalog.get("p4_p5_science_contract_paths", {})
+    if not isinstance(science_contract_paths, dict) or not all(
+        isinstance(key, str) and isinstance(value, str)
+        for key, value in science_contract_paths.items()
+    ):
+        raise PortfolioError("p4_p5_science_contract_paths must be a string map")
     validator_inputs = tuple(
         P1B_ANALYSIS_MANIFEST for item in validator_ids if item == "p1b-analysis-manifest"
+    ) + tuple(
+        science_contract_paths.values()
+        if "p4-p5-science-contracts" in validator_ids else ()
     ) + tuple(local_engine_paths)
     ensure_clean_inputs(root, registry, validator_inputs)
     registry_raw = registry_path(root).read_bytes()
@@ -181,6 +192,12 @@ def evaluate(root: Path, rules_path: Path) -> dict[str, Any]:
                 "paper_count": len(per_paper),
                 "verdict": "PASS",
             })
+        elif validator_id == "p4-p5-science-contracts":
+            try:
+                result = verify_p4_p5_science_contracts(root, science_contract_paths)
+            except ValueError as exc:
+                raise PortfolioError(f"P4/P5 science-contract validation failed: {exc}") from exc
+            portfolio_validators.append({"id": validator_id, **result})
         else:
             raise PortfolioError(f"unknown portfolio validator: {validator_id}")
     papers = []

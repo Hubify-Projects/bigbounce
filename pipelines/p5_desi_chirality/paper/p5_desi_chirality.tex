@@ -36,7 +36,7 @@
 % The divide-by-h claim (~1246 h⁻¹ Mpc) is INVERTED. No pipeline recompute required.
 % If any future reviewer re-raises this, cite env_finder/01_compute_vweb.py:106-108.
 
-\newcommand{\paperVersion}{v0.1.136-2026-07-15}
+\newcommand{\paperVersion}{v0.1.137-2026-07-16}
 % v0.1.136 (2026-07-15 -- exact-PDF confirmation truth-audit closure):
 %   promotes the rank-defensible K=13/G=50 CR1 + wild-cluster result to the
 %   focal estimator; demotes K=78; repairs classifier/release provenance and
@@ -730,7 +730,7 @@
 %   cluster −54%) but the environmental-independence null HOLDS and
 %   TIGHTENS: cross-class f_CW range 1.98pp → 0.05pp, all classes
 %   |σ_mono| ≤ 0.39. Artifact: outputs/16_cosmic_web_zshell_corrected.json.
-\newcommand{\paperTimestamp}{July 15, 2026, 23:48 PT}
+\newcommand{\paperTimestamp}{July 16, 2026, 01:00 PT}
 % timestamp label unchanged (still July 2026); \date bumped to July 6
 % v0.1.62-2026-06-10 (R29 post-EXT1 internal-round closure wave; truth audit at
 %   project-context/peer-reviews/R29_P5_TRUTH_AUDIT.md):
@@ -1694,23 +1694,24 @@ Quality parent: \texttt{OUT}$=0$ & $145{,}766$ \\
 \end{table}
 
 For $Y_i=1$ denoting a CW classifier label and $V_i=1$ denoting
-hole-union membership, artifact [A37] fits the unpenalized logistic model
+hole-union membership, artifacts [A41--A44] fit the focal unpenalized
+logistic model
 \begin{align}
-\operatorname{logit}\Pr(Y_i=1)={}&\beta_0+\beta_V V_i+s_5(z_i)
- +s_4(r_i) \nonumber\\
- &+s_4(\log R_i)+s_4(q_i)+s_4(E_i) \nonumber\\
- &+\alpha_{b(i)}+\gamma_{P(i)}+\eta_{M(i)}+\beta_e e_i,
+\operatorname{logit}\Pr(Y_i=1)={}&\beta_0+\beta_V V_i+\beta_z z_i
+ +\beta_r r_i+\beta_R\log R_i \nonumber\\
+ &+\beta_q q_i+\beta_E E_i+\alpha_{P(i)}
+ +\gamma_{M(i)}+\beta_e e_i,
 \label{eq:focal_logit}
 \end{align}
-where $s_d$ is a cubic B-spline with $d$ columns; $q_i$ is classifier
-confidence, $E_i$ is Galactic extinction, $b(i)$ is the NSIDE$=4$ sky
-block, $P(i)$ is \texttt{PHOTSYS}, $M(i)$ is morphology, and $e_i$ is
-the GALZONE edge flag. The candidate design included
-\texttt{r\_mag\_missing}, \texttt{log\_shape\_r\_missing},
-\texttt{ebv\_missing}, and \texttt{confidence\_eq\_missing}; A37 records
-all four as constant and drops them before fitting. They therefore do not
-appear in Eq.~\eqref{eq:focal_logit}. The fitted design has 78 columns and
-full rank.
+where $q_i$ is classifier confidence, $E_i$ is Galactic extinction,
+$P(i)$ is \texttt{PHOTSYS}, $M(i)$ is morphology, and $e_i$ is the
+GALZONE edge flag. The fitted design has 13 columns and full rank.
+Sky position enters the covariance rather than the mean model: the focal
+CR1 calculation clusters by occupied NSIDE$=4$ block, and [A43--A44]
+repeat the identical mean model at NSIDE$=2,4,8$ and with 3-D
+nearest-MAXIMALS clusters. The older A37 spline/sky-fixed-effect model
+is retained only as the flexible sensitivity in
+Table~\ref{tab:focal_model_contract}.
 
 For cluster $g$, let
 $U_g=\sum_{i\in g}x_i(Y_i-\widehat p_i)$. The explicit finite-sample
@@ -1730,8 +1731,12 @@ sandwich (bread, cluster-score meat, and bread); the reported contrast SE is
 the square root of the delta-method propagation of that full covariance, not
 the finite-sample factor or a model-based SE alone.
 Table~\ref{tab:focal_model_contract} freezes the A41--A42 focal model and
-inference metadata and separately identifies the older A37 flexible-model
-sensitivity.
+inference metadata, with the like-for-like clustering and interaction
+closures in [A43--A44], and separately identifies the older A37 flexible-model
+sensitivity. A42's original statement that the 13-column fit ``does not
+replace'' the 78-column estimate is superseded by A44: the full-rank
+13-column specification is focal, whereas the 78-column fit is a
+rank-fragile sensitivity.
 
 \begin{table*}[!t]
 \caption{Model and covariance contract for the focal descriptive
@@ -1746,6 +1751,7 @@ Component & Frozen specification \\
 \hline
 Focal fit [A41--A42] & Unpenalized Newton--Cholesky logistic MLE with declared post-review linear nuisance basis: void indicator, linear redshift, magnitude, log-size, confidence, extinction, \texttt{PHOTSYS}, morphology, and GALZONE edge; $N=145{,}766$, $K=13$, design rank 13 \\
 Focal inference & $G=50$ occupied NSIDE$=4$ clusters; CR1 $\Delta f_{\rm CW}=+0.00145442$, ${\rm SE}=0.00331502$, 95\% CI $[-0.00504290,+0.00795174]$, normal $p=0.66085$; null-imposed 99,999-draw Rademacher wild-cluster efficient-score $p=0.67345$ (seed 20260715) \\
+Focal clustering robustness [A43--A44] & Identical $N=145{,}766$, $K=13$ fit and contrast: NSIDE$=2$, 95\% CI $[-0.00621591,+0.00912475]$; NSIDE$=4$, $[-0.00504290,+0.00795174]$; NSIDE$=8$, $[-0.00496400,+0.00787285]$; and 3,750 nearest VoidFinder-MAXIMALS 3-D clusters, $[-0.00475998,+0.00766882]$. The point estimate is $+0.00145442$ throughout; all intervals include zero. \\
 Flexible sensitivity [A37] & 78-column spline/fixed-effect model with Moore--Penrose bread inverse, $G=50$ NSIDE$=4$ clusters: $\Delta f_{\rm CW}=+0.00125636$, ${\rm SE}=0.00341274$, 95\% CI $[-0.00543249,+0.00794522]$, normal $p=0.71277$; rank-fragile because $K=78>G=50$ \\
 Flexible-fit scale sensitivity & 3,750 nearest-VoidFinder-MAXIMALS clusters on the same 78-column fit and contrast; ${\rm SE}=0.003174$, $p=0.692$ \\
 \end{tabular}
@@ -1769,7 +1775,9 @@ This focal estimate is
 consistent with zero and is explicitly descriptive/exploratory: the
 hierarchy was chosen after review and after inspecting the data. It is
 not an exclusion, a physical-handedness measurement, or evidence for
-environment independence. Detailed construction and sensitivity results
+environment independence. The identical $K=13$ estimate remains consistent
+with zero at NSIDE$=2,4,8$ and under nearest-MAXIMALS 3-D clustering
+(Table~\ref{tab:focal_model_contract}; [A43--A44]). Detailed construction and sensitivity results
 follow in Section~\ref{sec:desivast_primary}.
 
 \subsection{Secondary T-Web diagnostic}\label{sec:results_vweb}
@@ -1808,7 +1816,7 @@ excluding the $79$ \texttt{TARGETID}s with conflicting duplicate env
 labels), so the duplicates have negligible impact on the null verdict
 (\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/21\_r23conf\_meta\_closures.json}{[A5]}). The
 label-shuffle look-elsewhere $p$ on the max-class
-$|\sigma_{\rm from\,half}|$ statistic is likewise null and insensitive
+$|\sigma_{\rm from\,half}|$ statistic is likewise null and remains similar
 to stratification of the shuffle by imaging leg and DESI program
 ($p = 0.12$ free vs $0.12$ stratified;
 \href{\repoBase/pipelines/p5\_desi\_chirality/outputs/18\_v0151\_stratified\_and\_density.json}{[A6]}).
@@ -1833,6 +1841,11 @@ cluster & $397{,}505$ & $197{,}284$ & $0.4963$ & $-4.66$ \\
 \end{tabular}
 \end{ruledtabular}
 \end{table}
+The small T-Web void count ($n=428$), versus more than 56,000 galaxies
+in the later DESIVAST void sensitivity, is artificially depressed by the
+T-Web survey-shell and selection-field construction; the randoms-weighted
+diagnosis and the like-for-like DESIVAST comparison are given in
+\S\ref{sec:desivast_anchored_void} and \S\ref{sec:discussion}.
 
 Figure~\ref{fig:cw_by_env} visualizes the per-class CW fractions with
 $95\%$ Jeffreys binomial credible intervals; all four classes bracket
@@ -2287,25 +2300,39 @@ DESIVAST sensitivity path is constructed on the volume-limited $z\!\le\!0.24$
 BGS anchor where target-program mixing is more constrained, the
 corresponding propagated leakage is reported as a secondary diagnostic
 in Table~\ref{tab:systematic_budget}.
-\emph{Explicit propagation (from existing numbers):} the maximum leakage
-of the $0.81$\,pp bright/dark residual into the DESIVAST void/non-void
-contrast is the residual amplitude times the \emph{difference} in dark
+\emph{Explicit marginal-mixture diagnostic (from existing numbers):} we
+multiply the $0.81$\,pp bright/dark residual by the \emph{difference} in dark
 fraction between the void and non-void classes. From
 Table~\ref{tab:desivast_program_split} the DESIVAST void class is
 $n_{\rm dark}/n = 469/56{,}981 = 0.82\%$ dark and the non-void class is
 $5{,}845/621{,}964 = 0.94\%$ dark, a difference of only $0.12$\,pp, so the
-propagated leakage into $\Delta f_{\rm CW}$ is
+associated marginal-mixture scale in $\Delta f_{\rm CW}$ is
 $0.81\,{\rm pp}\times 0.0012 \approx 0.001$\,pp --- three orders of
 magnitude below the focal interval scale, because the void and non-void classes
 carry near-identical (mostly-bright) program mixtures. The $1.95\sigma$
-bright/dark residual therefore does not affect the focal DESIVAST
-result.
+bright/dark residual is small under this marginal-mixture calculation, but
+this is not a maximum leakage bound and does not constrain a
+program-by-environment interaction.
+The explicit released-parent interaction fit [A43--A44] confirms that the
+existing mixture arithmetic cannot tightly bound interaction leakage. The
+cluster-adjusted within-program non-void-minus-void contrasts are
+$+0.00131$ for \texttt{bright} ($n=145{,}441$), $+0.09907$ for
+\texttt{dark} ($n=237$), and $-0.04173$ for \texttt{other} ($n=88$).
+For \texttt{dark}, the contrast relative to \texttt{bright} is
+$+0.09776$, with 95\% CIs $[-0.06637,+0.26190]$ under NSIDE$=4$
+clustering and $[-0.05743,+0.25296]$ under 3-D VoidFinder clustering.
+The \texttt{other} stratum occupies only one NSIDE$=4$ block, so its
+angular cluster inference is unavailable rather than assigned a nominal
+$p$-value; its 40-cluster 3-D interval is
+$[-0.28253,+0.19907]$. These sparse-stratum sensitivities provide no
+robust evidence of a void-by-program interaction, but they also do not
+rule one out or establish that program leakage is negligible.
 Together with the catalog-level bright-vs-dark difference
 ($0.81$\,pp, $|z| = 1.95$ unique-galaxy; \S\ref{sec:systematics}), this is the
 most notable residual structure in the paper after
 the catalog-monopole subtraction; the focal DESIVAST-anchored
-analysis (\S\ref{sec:desivast_primary}) is constructed to be
-independent of this residual, because the DESIVAST void definition
+analysis (\S\ref{sec:desivast_primary}) is concentrated in
+the bright-program population because the DESIVAST void definition
 restricts to the volume-limited $z \leq 0.24$ BGS sample where
 target-program mixing is far more constrained. Contingency-test reproduction is a $\chi^{2}$ on the env-class
 $\times$ tracer-program cross-tab derivable from the
@@ -2521,10 +2548,12 @@ $1\sigma$ binomial floor $1.7$--$2.6$\,pp): range is therefore not a
 significance statistic at these class populations. The two
 significance columns carry the result: the maximum per-class
 monopole-subtracted residual among the six resolved cells ($R_s \in
-\{25, 50\}$) never exceeds $1.64\sigma$ (far below the
-Bonferroni-9 threshold $|\sigma|^{\rm Bonf}_{0.05,9} \approx 2.77$
-from Eq.~\eqref{eq:bonferroni}),
-and no cell's label-shuffle look-elsewhere $p$ falls below $0.13$.
+\{25, 50\}$) never exceeds $1.64\sigma$, and the committed empirical
+max-statistic permutation calibration is the controlling multiplicity
+result: no cell's label-shuffle look-elsewhere $p$ falls below $0.13$.
+The historical Bonferroni-9 threshold is retained only as a conservative,
+non-matching cross-check because each reported cell already maximizes over
+four environment classes.
 The secondary T-Web sign-pattern (filament and
 cluster carrying the catalog monopole; void and wall uninformative) is
 invariant under all nine choices. Figure~\ref{fig:phase2} visualizes
@@ -3217,9 +3246,10 @@ multiplicity correction. This is suggestive per-stratum but not significant
 after multiplicity and is not promoted to an environment signal; bright, void
 $0.4967$ ($n=56{,}477$) vs.\ non-void $0.4970$ ($n=615{,}078$),
 ${\approx}0.1\sigma$. These one-sample and within-program contrasts do
-not test a program-by-environment interaction, so they neither prove
-independence nor exclude interaction. As a bounded sensitivity, the
-aggregate result is not detectably driven by target-program mixing: with
+not themselves test a program-by-environment interaction. The explicit
+interaction fit on the focal released parent is reported above and in
+[A43--A44]: its sparse-stratum intervals include zero, providing no robust
+interaction evidence while not tightly bounding interaction leakage. With
 $99.1\%$ of void-assigned spirals in the bright program, the bright
 sub-sample dominates and itself returns a null at $\sigma = -1.56$,
 while the dark sub-sample ($n = 469$, $\sigma = -1.80$) is consistent
@@ -3801,8 +3831,9 @@ the denser wall/filament classes --- which is why the void volume
 fraction shrinks by an order of magnitude while the chirality verdict,
 being a per-class parity test, is unchanged. Class volume fractions shift by up to $21$~pp,
 and only $44\%$ of common-mask cells and $26.6\%$ of matched spirals
-retain their class label. The secondary T-Web diagnostic is nonetheless
-\emph{classification-robust}: every class is individually consistent
+retain their class label; equivalently, $73.4\%$ of matched spirals change
+T-Web class overall. The secondary T-Web diagnostic yields the same
+parity-null verdict under both definitions: every class is individually consistent
 with parity in \emph{both} builds --- unweighted: void
 $f_{\rm CW} = 0.475 \pm 0.023$ ($n=478$, $-1.1\sigma$), wall $0.500$,
 filament $0.498$, cluster $0.496$; weighted: void $0.502 \pm 0.003$
@@ -4325,16 +4356,17 @@ residual: BGS-bright $f_{\rm CW} = 0.4970$ vs LRG/ELG/QSO-dark
 $0.5051$, a $0.81$\,pp difference ($|z| = 1.95$ unique-galaxy two-sample) with
 opposite-signed deviations from half. The bright/dark
 difference is the $\sim\!2\sigma$ residual structure analyzed at the
-per-class level in \S\ref{sec:results_vweb}. This residual does
-\emph{not} affect the focal DESIVAST result: the DESIVAST-anchored
+per-class level in \S\ref{sec:results_vweb}. This residual has not been
+shown to leave the focal DESIVAST result unaffected: the DESIVAST-anchored
 void/non-void contrast (\S\ref{sec:desivast_primary}) is constructed
 on the volume-limited BGS low-$z$ parent ($z \leq 0.24$), where the
 bright BGS path is separately tabulated and the target-program mixing
 that drives the filament bright/dark sign-flip is minimized by
-construction; the focal footprint-restricted
+construction; the separate footprint-restricted
 $\Delta f_{\rm CW} = +0.0018$ (and its same-verdict $k\!=\!20$
-sensitivity control $+0.0007$) is therefore
-insensitive to this residual. No test produces a
+sensitivity control $+0.0007$) is a secondary sensitivity rather than
+the focal estimate, and no existing calculation bounds the
+program-by-environment interaction. No test produces a
 $>3\sigma$ residual after
 Paper~IV-monopole correction.
 
@@ -4373,8 +4405,9 @@ Program & bright (BGS) & $775{,}760$ & $0.4970$ & $-5.28$ \\
 The secondary cosmic-web diagnostic is most cleanly read as a non-detection: the
 per-environment CW fractions cluster at the catalog-wide $f_{\rm CW}
 \!\approx\! 0.4974$ value, with signed $\sigma$ deviations driven by
-sample size, not by environment. The Phase~2 sweep confirms the result
-is invariant to T-Web hyperparameter choices over the ranges probed.
+sample size, not by environment. The Phase~2 sweep gives the same null
+verdict across the probed T-Web hyperparameter choices; it does not
+establish numerical invariance.
 The redshift, density, and HEALPix tests also produce no $3\sigma$
 deviations after look-elsewhere correction.
 
@@ -4385,8 +4418,8 @@ evidence. The T-Web
 secondary's void bin ($n=428$) is sample-size limited, contaminated by
 the DESIVAST-vs-T-Web void-fraction discrepancy ($+8$--$18$\,pp excess;
 \S\ref{sec:tweb_concurrent}), and the randoms-weighted completeness
-rebuild reassigns ${\sim}73\%$ of T-Web ``void'' galaxies, collapsing
-the void volume fraction ($23\times$ radial-selection contamination;
+rebuild changes the T-Web class of $73.4\%$ of matched spirals overall,
+while collapsing the void volume fraction ($23\times$ radial-selection contamination;
 \S\ref{sec:results_vweb}). The T-Web run is carried forward as a
 multi-classifier consistency check and Phase~2 hyperparameter-stability
 test, not as a comparable inference to the focal released-parent estimate.
@@ -5114,10 +5147,10 @@ and its input/hash manifest [A40], which are sufficient to reproduce the
 released-GALZONE/VoidFinder selection-control analysis (145,766 rows after the
 declared \texttt{OUT}$=0$ cut), but do not encode every DESIVAST algorithm or
 the unavailable historical full join;
-(ii) the T-Web grid outputs
-(\texttt{env\_finder/} eigenvector/eigenvalue arrays at the
-canonical $R_s\!=\!25$\,Mpc/$h$, $\lambda_{\rm th}\!=\!0$, $256^3$
-configuration, referenced by [A3]/[A7]/[A28]);
+(ii) committed T-Web configurations and summary reports referenced by
+[A3]/[A7]/[A28]; the canonical eigenvector/eigenvalue arrays themselves
+are not retained in the tracked release and must be regenerated from the
+public inputs and committed pipeline;
 and (iii) the per-cell Phase~2 sweep configurations
 (\texttt{data/desi\_env/phase2\_sweep/}, [A12]).
 These retained artifacts were produced deterministically from the public DESI~DR1
@@ -5165,11 +5198,11 @@ retroactively asserting the unavailable May bytes.
 \section{Data artifacts}\label{app:artifacts}
 
 \emph{Note on numbering:} the bracketed \emph{artifact} IDs
-[A1]--[A42] in this appendix are the release-candidate data/code
+[A1]--[A44] in this appendix are the release-candidate data/code
 artifacts and are \emph{distinct} from the bibliographic references
 [1]--[13], which appear in the separate References section; the ``A''
 prefix marks every artifact ID to avoid confusion at the
-references/artifact-map boundary. Artifact IDs [A1]--[A42] used
+references/artifact-map boundary. Artifact IDs [A1]--[A44] used
 throughout this paper hyperlink to the following paths in the companion
 repository
 \href{https://github.com/Hubify-Projects/bigbounce}{\texttt{Hubify-Projects/bigbounce}}
@@ -5215,7 +5248,7 @@ Clicking any [AN] ID in the paper PDF opens the corresponding GitHub URL.%
 \end{table*}
 \begin{table*}[p]
 {\small
-\caption{Artifact ID map (continued). Paths A21--A30 and A33--A42 are
+\caption{Artifact ID map (continued). Paths A21--A30 and A33--A44 are
 within \texttt{pipelines/p5\_desi\_chirality/}; A31--A32 are in the
 companion catalog pipeline.}
 \begin{ruledtabular}
@@ -5244,6 +5277,8 @@ companion catalog pipeline.}
 \href{\repoBase/pipelines/p5\_desi\_chirality/outputs/36\_desivast\_native\_selection\_manifest.json}{[A40]} & \texttt{outputs/36\_desivast\_native\_selection\_manifest.json} \\
 \href{\repoBase/pipelines/p5\_desi\_chirality/scripts/38\_focal\_cluster\_inference\_sensitivity.py}{[A41]} & \texttt{scripts/38\_focal\_cluster\_inference\_sensitivity.py} \\
 \href{\repoBase/pipelines/p5\_desi\_chirality/outputs/38\_focal\_cluster\_inference\_sensitivity.json}{[A42]} & \texttt{outputs/38\_focal\_cluster\_inference\_sensitivity.json} \\
+\href{\repoBase/pipelines/p5\_desi\_chirality/scripts/39\_focal\_interaction\_clustering\_robustness.py}{[A43]} & \texttt{scripts/39\_focal\_interaction\_clustering\_robustness.py} \\
+\href{\repoBase/pipelines/p5\_desi\_chirality/outputs/39\_focal\_interaction\_clustering\_robustness.json}{[A44]} & \texttt{outputs/39\_focal\_interaction\_clustering\_robustness.json} \\
 \end{tabular}
 \end{ruledtabular}
 }% end \small

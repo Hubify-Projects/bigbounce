@@ -134,6 +134,34 @@ class PortfolioPreflightTests(unittest.TestCase):
         ):
             write_receipt(self.root, self.rules, self.receipt)
 
+    def test_p4_p5_science_contract_validator_is_wired(self):
+        paths = {}
+        for key in ("p4_primary", "p4_harmonics", "p5_robustness"):
+            relative = f"receipts/{key}.json"
+            path = self.root / relative
+            path.parent.mkdir(exist_ok=True)
+            path.write_text("{}\n", encoding="utf-8")
+            paths[key] = relative
+        subprocess.run(["git", "add", "receipts"], cwd=self.root, check=True)
+        subprocess.run(["git", "commit", "-qm", "add science receipts"], cwd=self.root, check=True)
+        payload = json.loads(self.rules.read_text(encoding="utf-8"))
+        payload["portfolio_validators"] = ["p4-p5-science-contracts"]
+        payload["p4_p5_science_contract_paths"] = paths
+        self.rules.write_text(json.dumps(payload), encoding="utf-8")
+        expected = {
+            "schema": "bigbounce.p4-p5-science-contracts/v1",
+            "verdict": "PASS",
+            "receipts": {},
+        }
+        with (
+            self.registry_patch(),
+            mock.patch("bigbounce_preflight.verify_p4_p5_science_contracts", return_value=expected) as verifier,
+        ):
+            receipt = write_receipt(self.root, self.rules, self.receipt)
+        verifier.assert_called_once_with(self.root.resolve(), paths)
+        self.assertEqual(receipt["portfolio_validators"][0]["id"], "p4-p5-science-contracts")
+        self.assertEqual(receipt["portfolio_validators"][0]["verdict"], "PASS")
+
     def test_unsafe_portfolio_engine_path_fails_closed(self):
         payload = json.loads(self.rules.read_text(encoding="utf-8"))
         payload["portfolio_engine_paths"] = ["../../outside.py"]

@@ -20,6 +20,14 @@ This tracker logs each revision round and which issues have been addressed.
 
 ## Revision Rounds
 
+### P4 v1.0.258 / P5 v0.1.137: Computational closure releases (2026-07-16)
+
+P4 v1.0.258 closes the exact-board sample-contract and harmonic-support defects. Its strict primary rerun uses `N_selected=890,069`, `N_support=887,472`, with `z_mom=+0.63465` and one-sided empirical-rank `p=0.23768`. Its fixed-occupancy, apodized, and binomial harmonic diagnostics now use the exact checksummed 24,087-pixel FSC support (`z=6.923`, `p=0.001996`; `z=7.033`; and `z=7.207`, `p=0.00059994`, respectively). They remain systematics diagnostics rather than evidence of a physical signal. Exact PDF: 25 pages, SHA-256 `e9b69665efdf757de69f27a0474d30ac4bc48bc7559424e077f41c7bcacbe061`, MD5 `412d30361dbc17b04f618c28fa65f443`; Convex row `k575wenst372vbpg4xcwzkbcc58ams1p`.
+
+P5 v0.1.137 reports the focal K=13 adjusted contrast `+0.00145442`; cluster-robust 95% intervals at NSIDE=2, 4, and 8 and using 3-D nearest-VoidFinder clustering all span zero. The program-by-void interaction strata are sparse and not tightly bounded, so the analysis is reported as no robust interaction evidence—not proof of no leakage or physical environment independence. Exact PDF: 41 pages, SHA-256 `0468d8a690fb16f64a316eb24693a421d1fc0d5202db02b461cef3f9ac07363c`, MD5 `42c9d08719428f0582dcb825571f9cd2`; Convex row `k571e2qmn5njbqkdnq8js42een8amxyq`.
+
+No readiness uplift: P4 remains 80 and P5 remains 74. Exact non-Anthropic re-review, immutable public releases, standing external science/provenance gates, and human editorial decisions remain open.
+
 ### P4 v1.0.252 → v1.0.253: Exact-PDF release-contract closure (2026-07-15)
 
 **v1.0.252 input:** exact 28-page PDF SHA-256 `a109f3d150ff02107bc10bc7dec576ad28b0157081b3e521da86e7c06ade3292`. The valid non-Anthropic board was direct-API Grok 4.3 **MAJOR REVISIONS** / direct-API Gemini 3.1 Pro Preview **MINOR REVISIONS** / ChatGPT-subscription Codex CLI `gpt-5.6-sol` high **MAJOR REVISIONS**. The Codex leg used no OpenAI API.

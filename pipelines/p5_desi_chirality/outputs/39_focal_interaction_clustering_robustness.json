@@ -1,0 +1,367 @@
+{
+  "a42_hierarchy_reconciliation": {
+    "focal_estimand": "K=13 reduced adjusted marginal contrast on the exact 145,766-row parent",
+    "reason": "The K=13 point estimate is exactly invariant and its interval includes zero under every requested angular and 3D clustering scheme.",
+    "status": "supported",
+    "superseded_metadata": "rank-robustness sensitivity for the focal hybrid released-parent estimand; does not replace the prespecified focal 78-column estimate"
+  },
+  "command": "python3 pipelines/p5_desi_chirality/scripts/39_focal_interaction_clustering_robustness.py",
+  "input_sha256": {
+    "pipelines/p5_desi_chirality/outputs/36_desivast_native_selection_rows.parquet": "fe863dcd3d569d22a3792ac0f1ee273ee3148ef311302e2d7984ab714634e9fc",
+    "pipelines/p5_desi_chirality/outputs/38_focal_cluster_inference_sensitivity.json": "e1f9fc43f34e08efda7413a27c5d8ef597cc756ca2be77d18c5037d00afaf01a",
+    "pipelines/p5_desi_chirality/scripts/36_desivast_native_selection_control.py": "227ea5d3a8f623b595054729b0c54944b894674bd9c5bf9bddf4a74766bd1f75",
+    "pipelines/p5_desi_chirality/scripts/39_focal_interaction_clustering_robustness.py": "ca548c116fa1dd80169c5dd12c1f86cbc2bff0ffbc959f66859397cb34b5af43"
+  },
+  "k13_identical_estimand_clustering_robustness": {
+    "design_rank": 13,
+    "formula": "void + desi_z + r_mag + log_shape_r + confidence_eq + ebv + C(photsys) + C(morphtype) + galzone_edge",
+    "k": 13,
+    "point_estimate_invariant_across_covariance_estimators": true,
+    "results": {
+      "healpix_nside2": {
+        "ci95": [
+          -0.00621590581289339,
+          0.009124748285148396
+        ],
+        "cluster_unit": "HEALPix NSIDE=2",
+        "clusters": 25,
+        "delta_nonvoid_minus_void": 0.0014544212361275038,
+        "normal_p_two_sided": 0.710159651104675,
+        "sandwich": {
+          "bread_condition_number": 1387712.0771475248,
+          "bread_inverse": "Moore-Penrose pseudoinverse, rcond=1e-11",
+          "bread_rank": 13,
+          "finite_sample_correction": 1.0417524281947312,
+          "n_clusters": 25,
+          "n_design_columns": 13
+        },
+        "se": 0.00391350407942363
+      },
+      "healpix_nside4": {
+        "ci95": [
+          -0.0050428981166549276,
+          0.007951740588909935
+        ],
+        "cluster_unit": "HEALPix NSIDE=4",
+        "clusters": 50,
+        "delta_nonvoid_minus_void": 0.0014544212361275038,
+        "normal_p_two_sided": 0.6608522433594928,
+        "sandwich": {
+          "bread_condition_number": 1387712.0771475248,
+          "bread_inverse": "Moore-Penrose pseudoinverse, rcond=1e-11",
+          "bread_rank": 13,
+          "finite_sample_correction": 1.0204921745581041,
+          "n_clusters": 50,
+          "n_design_columns": 13
+        },
+        "se": 0.0033150197677265796
+      },
+      "healpix_nside8": {
+        "ci95": [
+          -0.004964003226207535,
+          0.007872845698462543
+        ],
+        "cluster_unit": "HEALPix NSIDE=8",
+        "clusters": 128,
+        "delta_nonvoid_minus_void": 0.0014544212361275038,
+        "normal_p_two_sided": 0.6569487798155019,
+        "sandwich": {
+          "bread_condition_number": 1387712.0771475248,
+          "bread_inverse": "Moore-Penrose pseudoinverse, rcond=1e-11",
+          "bread_rank": 13,
+          "finite_sample_correction": 1.0079569950910912,
+          "n_clusters": 128,
+          "n_design_columns": 13
+        },
+        "se": 0.0032747665329377236
+      },
+      "voidfinder_nearest_maximal_3d": {
+        "ci95": [
+          -0.004759979340774488,
+          0.0076688218130294954
+        ],
+        "cluster_unit": "nearest namespaced DESIVAST VoidFinder MAXIMALS centre in comoving Mpc/h",
+        "clusters": 3750,
+        "delta_nonvoid_minus_void": 0.0014544212361275038,
+        "normal_p_two_sided": 0.6464417902618476,
+        "sandwich": {
+          "bread_condition_number": 1387712.0771475248,
+          "bread_inverse": "Moore-Penrose pseudoinverse, rcond=1e-11",
+          "bread_rank": 13,
+          "finite_sample_correction": 1.0003490908244952,
+          "n_clusters": 3750,
+          "n_design_columns": 13
+        },
+        "se": 0.003170670801055729
+      }
+    },
+    "solver": {
+      "coefficient_mapping": "optimizer basis centred/scaled; coefficients mapped back exactly",
+      "converged": true,
+      "convergence_warnings": [],
+      "design_rank": 13,
+      "iterations": 2,
+      "max_absolute_mean_score_original_basis": 1.5153352934725651e-12,
+      "n_design_columns": 13,
+      "scaled_gram_condition_number": 16.654762202327223,
+      "solver": "scikit-learn unpenalized LogisticRegression/Newton-Cholesky"
+    }
+  },
+  "parent_contract": {
+    "canonical_rows_sha256": "3ff5afbb34eb7a1675b16e1ed895316de495d8b941c773ce750dd39d7f6e4ecb",
+    "n": 145766,
+    "program_by_void_counts": {
+      "bright": {
+        "nonvoid": 113573,
+        "void": 31868
+      },
+      "dark": {
+        "nonvoid": 187,
+        "void": 50
+      },
+      "other": {
+        "nonvoid": 69,
+        "void": 19
+      }
+    },
+    "selection": "A39 frozen DESIVAST-native parent with GALZONE OUT=0"
+  },
+  "purpose": "exact-parent closure of the void-by-program interaction and like-for-like K=13 clustering sensitivity requested by the P5 v0.1.136 truth audit",
+  "schema": "p5.focal-interaction-clustering-robustness/v1",
+  "software": {
+    "healpy": "1.17.3",
+    "numpy": "1.26.4",
+    "pandas": "2.1.4",
+    "patsy": "1.0.2",
+    "python": "3.9.6",
+    "scipy": "1.13.1"
+  },
+  "void_by_program_interaction": {
+    "cluster_robust_difference_in_differences": {
+      "healpix_nside4": {
+        "dark_minus_bright": {
+          "ci95": [
+            -0.06637282546467413,
+            0.2618987099315122
+          ],
+          "estimate": 0.09776294223341903,
+          "inferential_status": "available_sparse_sensitivity",
+          "normal_p_two_sided": 0.24304948450068264,
+          "se": 0.08374427744222605
+        },
+        "other_minus_bright": {
+          "ci95": null,
+          "estimate": -0.04304030415381456,
+          "inferential_status": "unavailable",
+          "normal_p_two_sided": null,
+          "reason": "only 1 represented cluster(s); minimum fail-closed threshold is 20",
+          "se": null
+        }
+      },
+      "voidfinder_nearest_maximal_3d": {
+        "dark_minus_bright": {
+          "ci95": [
+            -0.05743334848481785,
+            0.2529592329516559
+          ],
+          "estimate": 0.09776294223341903,
+          "inferential_status": "available_sparse_sensitivity",
+          "normal_p_two_sided": 0.21696380165076534,
+          "se": 0.07918323598923523
+        },
+        "other_minus_bright": {
+          "ci95": [
+            -0.2837806965287709,
+            0.19770008822114182
+          ],
+          "estimate": -0.04304030415381456,
+          "inferential_status": "available_sparse_sensitivity",
+          "normal_p_two_sided": 0.7260322534254856,
+          "se": 0.12282898781502409
+        }
+      }
+    },
+    "cluster_robust_marginal_results": {
+      "healpix_nside4": {
+        "cluster_unit": "HEALPix NSIDE=4",
+        "log_odds_interaction_coefficients": {
+          "dark": {
+            "ci95": [
+              -1.0547480881336113,
+              0.2697972883649367
+            ],
+            "column": "void:C(program, Treatment(reference='bright'))[T.dark]",
+            "estimate": -0.3924753998843373,
+            "inferential_status": "available_sparse_sensitivity",
+            "normal_p_two_sided": 0.24543376200627143,
+            "se": 0.33790043769844574
+          },
+          "other": {
+            "ci95": null,
+            "column": "void:C(program, Treatment(reference='bright'))[T.other]",
+            "estimate": 0.17363535818331982,
+            "inferential_status": "unavailable",
+            "normal_p_two_sided": null,
+            "reason": "only 1 represented cluster(s); minimum fail-closed threshold is 20",
+            "se": null
+          }
+        },
+        "sandwich": {
+          "bread_condition_number": 3349033.736646869,
+          "bread_inverse": "Moore-Penrose pseudoinverse, rcond=1e-11",
+          "bread_rank": 17,
+          "finite_sample_correction": 1.020520181396561,
+          "n_clusters": 50,
+          "n_design_columns": 17
+        },
+        "within_program_marginal_contrasts": {
+          "bright": {
+            "ci95": [
+              -0.00510363176618803,
+              0.007727102969468228
+            ],
+            "estimate": 0.0013117356016400991,
+            "inferential_status": "available_sparse_sensitivity",
+            "n": 145441,
+            "n_nonvoid": 113573,
+            "n_void": 31868,
+            "normal_p_two_sided": 0.688604646248137,
+            "represented_clusters": 50,
+            "se": 0.0032732067621812078
+          },
+          "dark": {
+            "ci95": [
+              -0.0672545008307771,
+              0.2654038565008953
+            ],
+            "estimate": 0.09907467783505912,
+            "inferential_status": "available_sparse_sensitivity",
+            "n": 237,
+            "n_nonvoid": 187,
+            "n_void": 50,
+            "normal_p_two_sided": 0.24302431942804115,
+            "represented_clusters": 32,
+            "se": 0.0848633852345347
+          },
+          "other": {
+            "ci95": null,
+            "estimate": -0.04172856855217446,
+            "inferential_status": "unavailable",
+            "n": 88,
+            "n_nonvoid": 69,
+            "n_void": 19,
+            "normal_p_two_sided": null,
+            "reason": "only 1 represented cluster(s); minimum fail-closed threshold is 20",
+            "represented_clusters": 1,
+            "se": null
+          }
+        }
+      },
+      "voidfinder_nearest_maximal_3d": {
+        "cluster_unit": "nearest namespaced DESIVAST VoidFinder MAXIMALS centre in comoving Mpc/h",
+        "log_odds_interaction_coefficients": {
+          "dark": {
+            "ci95": [
+              -1.018545197711981,
+              0.23359439794330644
+            ],
+            "column": "void:C(program, Treatment(reference='bright'))[T.dark]",
+            "estimate": -0.3924753998843373,
+            "inferential_status": "available_sparse_sensitivity",
+            "normal_p_two_sided": 0.2191928804570168,
+            "se": 0.3194292358257613
+          },
+          "other": {
+            "ci95": [
+              -0.7956171722912249,
+              1.1428878886578646
+            ],
+            "column": "void:C(program, Treatment(reference='bright'))[T.other]",
+            "estimate": 0.17363535818331982,
+            "inferential_status": "available_sparse_sensitivity",
+            "normal_p_two_sided": 0.7255021167111149,
+            "se": 0.494525684206386
+          }
+        },
+        "sandwich": {
+          "bread_condition_number": 3349033.736646869,
+          "bread_inverse": "Moore-Penrose pseudoinverse, rcond=1e-11",
+          "bread_rank": 17,
+          "finite_sample_correction": 1.0003765448472555,
+          "n_clusters": 3750,
+          "n_design_columns": 17
+        },
+        "within_program_marginal_contrasts": {
+          "bright": {
+            "ci95": [
+              -0.004903126798910016,
+              0.007526598002190215
+            ],
+            "estimate": 0.0013117356016400991,
+            "inferential_status": "available_sparse_sensitivity",
+            "n": 145441,
+            "n_nonvoid": 113573,
+            "n_void": 31868,
+            "normal_p_two_sided": 0.6791096241574235,
+            "represented_clusters": 3750,
+            "se": 0.003170906429695728
+          },
+          "dark": {
+            "ci95": [
+              -0.05605633991012239,
+              0.25420569558024064
+            ],
+            "estimate": 0.09907467783505912,
+            "inferential_status": "available_sparse_sensitivity",
+            "n": 237,
+            "n_nonvoid": 187,
+            "n_void": 50,
+            "normal_p_two_sided": 0.21066673383316592,
+            "represented_clusters": 224,
+            "se": 0.07914993284000889
+          },
+          "other": {
+            "ci95": [
+              -0.28252814251720254,
+              0.1990710054128536
+            ],
+            "estimate": -0.04172856855217446,
+            "inferential_status": "available_sparse_sensitivity",
+            "n": 88,
+            "n_nonvoid": 69,
+            "n_void": 19,
+            "normal_p_two_sided": 0.7341235095176641,
+            "represented_clusters": 40,
+            "se": 0.12285918305868088
+          }
+        }
+      }
+    },
+    "design_rank": 17,
+    "formula": "void * C(program, Treatment(reference='bright')) + desi_z + r_mag + log_shape_r + confidence_eq + ebv + C(photsys) + C(morphtype) + galzone_edge",
+    "interpretation_guardrail": "DARK and OTHER contain only 237 and 88 rows. Their interaction intervals are therefore sparse-stratum sensitivities, not evidence that program-by-environment leakage is tightly bounded. OTHER occupies only one HEALPix NSIDE=4 block, so its angular-cluster p-value is non-identifying and must not be interpreted; the 40-cluster 3D VoidFinder interval is the defensible sensitivity and includes zero.",
+    "k": 17,
+    "log_odds_interaction_coefficients": {
+      "dark": {
+        "coefficient": -0.3924753998843373,
+        "column": "void:C(program, Treatment(reference='bright'))[T.dark]"
+      },
+      "other": {
+        "coefficient": 0.17363535818331982,
+        "column": "void:C(program, Treatment(reference='bright'))[T.other]"
+      }
+    },
+    "reference_program": "bright",
+    "solver": {
+      "coefficient_mapping": "optimizer basis centred/scaled; coefficients mapped back exactly",
+      "converged": true,
+      "convergence_warnings": [],
+      "design_rank": 17,
+      "iterations": 3,
+      "max_absolute_mean_score_original_basis": 1.253071320023564e-16,
+      "n_design_columns": 17,
+      "scaled_gram_condition_number": 16.672872560480425,
+      "solver": "scikit-learn unpenalized LogisticRegression/Newton-Cholesky"
+    }
+  }
+}

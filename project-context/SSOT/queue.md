@@ -947,3 +947,8 @@ _Six parallel peer reviews on disk at `project-context/peer-reviews/autonomous-2
 4. If blocked, flip to `[!]` with a one-line reason.
 5. When adding new tasks: insert them at the correct priority; ID them `P{paper}-{slug}` or `P-{program-slug}` for cross-paper.
 6. Never delete a completed task row from the history. That's the record.
+- **2026-07-16 — P4 v1.0.258 / P5 v0.1.137 COMPUTATIONAL CLOSURES RELEASED — caps hold 80/74**
+  - P4 strict primary rerun excludes release-unsafe rows (`N_selected=890,069`, `N_support=887,472`, `z_mom=+0.63465`, `p=0.23768`) and all FSC harmonic diagnostics now share the exact checksummed 24,087-pixel support (fixed-occupancy `z=6.923`, `p=0.001996`; apodized `z=7.033`; 10,000-draw binomial `z=7.207`, `p=0.00059994`). These are systematics diagnostics only.
+  - P5 K=13 gives `+0.00145442`; NSIDE=2/4/8 and 3-D nearest-VoidFinder cluster-robust intervals all span zero. Program-interaction strata are sparse and not tightly bounded, with no robust interaction evidence.
+  - Exact PDFs: P4 v1.0.258, 25 pp, SHA-256 `e9b69665…be061`, MD5 `412d3036`; P5 v0.1.137-2026-07-16, 41 pp, SHA-256 `0468d8a6…363c`, MD5 `42c9d087`. Convex rows `k575wenst372vbpg4xcwzkbcc58ams1p` / `k571e2qmn5njbqkdnq8js42een8amxyq`.
+  - Exact non-Anthropic re-review, external release/provenance, and human editorial gates remain open. No acceptance or readiness uplift is claimed.
