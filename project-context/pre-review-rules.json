@@ -10,9 +10,17 @@
   ],
   "portfolio_validators": [
     "p1b-analysis-manifest",
+    "p1b-science-contracts",
     "artifact-crosscheck-six",
     "p4-p5-science-contracts"
   ],
+  "p1b_science_contract_paths": {
+    "manuscript": "arxiv/paper1b_mcmc_companion.tex",
+    "namaster_physical_spectrum_receipt": "reproducibility/p1_namaster_500mc/results/physical_spectrum_500mc/contract.json",
+    "bbn_execution_receipt": "reproducibility/cosmology/frozen/bbn_execution_receipt.json",
+    "s8_overlay_receipt": "reproducibility/cosmology/c13_s8_desy3_overlay_postburn.json",
+    "analysis_manifest": "reproducibility/p1b_analysis_artifact_manifest_v1B.0.109.json"
+  },
   "p4_p5_science_contract_paths": {
     "p4_primary": "pipelines/p2_chirality/outputs/canonical_provenance/p4_primary_hc_safe_label_shuffle_10k_v1_0_257.json",
     "p4_harmonics": "pipelines/p2_chirality/outputs/canonical_provenance/p4_fsc_exact_support_harmonics_v1_0_257.json",
@@ -24,6 +32,7 @@
     "tools/bigbounce_preflight.py",
     "tools/artifact_crosscheck.py",
     "tools/verify_analysis_artifact_manifest.py",
+    "tools/verify_p1b_science_contracts.py",
     "tools/verify_p4_p5_science_contracts.py"
   ],
   "rules": [

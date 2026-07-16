@@ -19,6 +19,7 @@ from typing import Any
 from paper_registry import CANONICAL_IDS, load_registry, registry_path, repo_root
 import artifact_crosscheck
 from verify_analysis_artifact_manifest import verify_manifest
+from verify_p1b_science_contracts import verify as verify_p1b_science_contracts
 from verify_p4_p5_science_contracts import verify as verify_p4_p5_science_contracts
 
 SCHEMA = "bigbounce.pre-review-portfolio-receipt/v1"
@@ -31,6 +32,7 @@ ALLOWED_LOCAL_ENGINE_PATHS = (
     "tools/bigbounce_preflight.py",
     "tools/artifact_crosscheck.py",
     "tools/verify_analysis_artifact_manifest.py",
+    "tools/verify_p1b_science_contracts.py",
     "tools/verify_p4_p5_science_contracts.py",
 )
 
@@ -144,8 +146,17 @@ def evaluate(root: Path, rules_path: Path) -> dict[str, Any]:
         for key, value in science_contract_paths.items()
     ):
         raise PortfolioError("p4_p5_science_contract_paths must be a string map")
+    p1b_contract_paths = rule_catalog.get("p1b_science_contract_paths", {})
+    if not isinstance(p1b_contract_paths, dict) or not all(
+        isinstance(key, str) and isinstance(value, str)
+        for key, value in p1b_contract_paths.items()
+    ):
+        raise PortfolioError("p1b_science_contract_paths must be a string map")
     validator_inputs = tuple(
         P1B_ANALYSIS_MANIFEST for item in validator_ids if item == "p1b-analysis-manifest"
+    ) + tuple(
+        p1b_contract_paths.values()
+        if "p1b-science-contracts" in validator_ids else ()
     ) + tuple(
         science_contract_paths.values()
         if "p4-p5-science-contracts" in validator_ids else ()
@@ -163,6 +174,12 @@ def evaluate(root: Path, rules_path: Path) -> dict[str, Any]:
                 "id": validator_id,
                 **verify_manifest(root, root / P1B_ANALYSIS_MANIFEST),
             })
+        elif validator_id == "p1b-science-contracts":
+            try:
+                result = verify_p1b_science_contracts(root, p1b_contract_paths)
+            except (OSError, UnicodeDecodeError, ValueError) as exc:
+                raise PortfolioError(f"P1B science-contract validation failed: {exc}") from exc
+            portfolio_validators.append({"id": validator_id, **result})
         elif validator_id == "artifact-crosscheck-six":
             per_paper = []
             failed = []
