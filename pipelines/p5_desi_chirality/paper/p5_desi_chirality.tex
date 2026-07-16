@@ -36,7 +36,11 @@
 % The divide-by-h claim (~1246 h⁻¹ Mpc) is INVERTED. No pipeline recompute required.
 % If any future reviewer re-raises this, cite env_finder/01_compute_vweb.py:106-108.
 
-\newcommand{\paperVersion}{v0.1.135-2026-07-15}
+\newcommand{\paperVersion}{v0.1.136-2026-07-15}
+% v0.1.136 (2026-07-15 -- exact-PDF confirmation truth-audit closure):
+%   promotes the rank-defensible K=13/G=50 CR1 + wild-cluster result to the
+%   focal estimator; demotes K=78; repairs classifier/release provenance and
+%   the density/T-Web figure labels. Paper-IV/archive gates remain open.
 % v0.1.135 (2026-07-15 -- exact-PDF recursive truth-audit closure): relabeled
 %   the focal released-parent estimand as the disclosed GALZONE-selection/
 %   VoidFinder-exposure hybrid; added deterministic K=13/G=50 CR1 and
@@ -726,7 +730,7 @@
 %   cluster −54%) but the environmental-independence null HOLDS and
 %   TIGHTENS: cross-class f_CW range 1.98pp → 0.05pp, all classes
 %   |σ_mono| ≤ 0.39. Artifact: outputs/16_cosmic_web_zshell_corrected.json.
-\newcommand{\paperTimestamp}{July 15, 2026, 22:55 PT}
+\newcommand{\paperTimestamp}{July 15, 2026, 23:48 PT}
 % timestamp label unchanged (still July 2026); \date bumped to July 6
 % v0.1.62-2026-06-10 (R29 post-EXT1 internal-round closure wave; truth audit at
 %   project-context/peer-reviews/R29_P5_TRUTH_AUDIT.md):
@@ -838,12 +842,15 @@ TARGETIDs), yielding $145{,}789$ joined rows. We retain the $145{,}766$
 rows with \texttt{OUT}$=0$ as the quality parent and define the two arms
 by exact membership in the union of released VoidFinder holes:
 $31{,}937$ void and $113{,}829$ non-void. We standardize for redshift,
-coarse sky block, imaging leg, magnitude, size, morphology, extinction,
-classifier confidence, and the GALZONE edge flag. The adjusted
-non-void-minus-void contrast is
-$\Delta f_{\rm CW}=+0.00125636$; a coarse HEALPix NSIDE$=4$
-cluster-sandwich calculation gives ${\rm SE}=0.00341274$, 95\% CI
-$[-0.00543249,+0.00794522]$, and two-sided $p=0.71277$. Overlap
+imaging leg, magnitude, size, morphology, extinction, classifier
+confidence, and the GALZONE edge flag, with coarse sky blocks used as
+clusters. The focal adjusted
+non-void-minus-void contrast from a 13-column linear nuisance model is
+$\Delta f_{\rm CW}=+0.00145442$; a coarse HEALPix NSIDE$=4$
+cluster-sandwich calculation gives ${\rm SE}=0.00331502$, 95\% CI
+$[-0.00504290,+0.00795174]$, and two-sided normal $p=0.66085$.
+A null-imposed 99,999-draw Rademacher wild-cluster efficient-score test
+gives $p=0.67345$. Overlap
 weighting gives the same qualitative result. The author-constructed
 VoidFinder any-hole sample ($N_{\rm void}=57{,}081$) and the T-Web,
 Tempel, and ASTRA analyses are sensitivity or secondary diagnostic
@@ -1424,10 +1431,12 @@ The focal released-parent descriptive estimate uses the released DESIVAST
 GALZONE TARGET universe, retains \texttt{OUT}$=0$ as its quality parent,
 assigns the void arm by exact VoidFinder hole-union membership, and applies
 covariate standardization
-on $N=145{,}766$ rows. Its non-void-minus-void average marginal contrast
-is $+0.00125636$, with coarse HEALPix NSIDE$=4$ cluster-sandwich
-${\rm SE}=0.00341274$, 95\% CI $[-0.00543249,+0.00794522]$, and
-$p=0.71277$. This is the headline exploratory observational result, not a
+on $N=145{,}766$ rows. Its focal 13-column linear-nuisance
+non-void-minus-void average marginal contrast is $+0.00145442$, with
+coarse HEALPix NSIDE$=4$ cluster-sandwich ${\rm SE}=0.00331502$, 95\% CI
+$[-0.00504290,+0.00795174]$, and normal $p=0.66085$; the null-imposed
+99,999-draw wild-cluster efficient-score test gives $p=0.67345$.
+This is the headline exploratory observational result, not a
 confirmatory analysis.
 
 The VoidFinder any-hole/sphere-PIS analyses, the other DESIVAST
@@ -1720,42 +1729,43 @@ The reported coefficient covariance is this complete finite-sample-corrected
 sandwich (bread, cluster-score meat, and bread); the reported contrast SE is
 the square root of the delta-method propagation of that full covariance, not
 the finite-sample factor or a model-based SE alone.
-Table~\ref{tab:focal_model_contract} freezes the remaining A37 model and
-covariance metadata; no model refit is introduced in this revision.
+Table~\ref{tab:focal_model_contract} freezes the A41--A42 focal model and
+inference metadata and separately identifies the older A37 flexible-model
+sensitivity.
 
 \begin{table*}[!t]
-\caption{Compact A37 model and covariance contract for the focal
-descriptive estimate. Both covariance rows evaluate the same fitted
-coefficients and average marginal contrast; only the clustering scale
-changes.}
+\caption{Model and covariance contract for the focal descriptive
+estimate and flexible sensitivity. The focal 13-column specification is
+paired with CR1 and null-imposed wild-cluster inference. The older
+78-column spline/fixed-effect fit is retained as a rank-fragile
+flexible-model sensitivity.}
 \label{tab:focal_model_contract}
 \begin{ruledtabular}
 \begin{tabular}{p{0.20\textwidth}p{0.72\textwidth}}
 Component & Frozen specification \\
 \hline
-Fit & Unpenalized Newton--Cholesky logistic MLE; 16 iterations; 78-column, rank-78 design; Moore--Penrose bread inverse with \texttt{rcond}$=10^{-11}$ \\
-Spline/categorical terms & One cubic spline basis $s_5(z)$ plus four separate univariate cubic spline bases $s_4(r)$, $s_4(\log R)$, $s_4(q)$, and $s_4(E)$; NSIDE$=4$ block, \texttt{PHOTSYS}, morphology, and GALZONE edge; all four candidate missingness indicators are constant and dropped \\
-Reported covariance & 50 occupied NSIDE$=4$ clusters; $N=145{,}766$, $K=78$; finite-sample correction $[G/(G-1)][(N-1)/(N-K)]=1.020947$; ${\rm SE}=0.00341274$, $p=0.71277$ \\
-Scale sensitivity & 3,750 nearest-VoidFinder-MAXIMALS clusters on the same fit and contrast; ${\rm SE}=0.003174$, $p=0.692$ \\
-Rank-robustness sensitivity [A41--A42] & Declared post-review linear nuisance basis, $K=13$, $G=50$ NSIDE$=4$ CR1: $\Delta f_{\rm CW}=+0.00145442$, ${\rm SE}=0.00331502$, 95\% CI $[-0.00504290,+0.00795174]$, normal $p=0.66085$; null-imposed 99,999-draw Rademacher wild-cluster efficient-score $p=0.67345$ (seed 20260715) \\
+Focal fit [A41--A42] & Unpenalized Newton--Cholesky logistic MLE with declared post-review linear nuisance basis: void indicator, linear redshift, magnitude, log-size, confidence, extinction, \texttt{PHOTSYS}, morphology, and GALZONE edge; $N=145{,}766$, $K=13$, design rank 13 \\
+Focal inference & $G=50$ occupied NSIDE$=4$ clusters; CR1 $\Delta f_{\rm CW}=+0.00145442$, ${\rm SE}=0.00331502$, 95\% CI $[-0.00504290,+0.00795174]$, normal $p=0.66085$; null-imposed 99,999-draw Rademacher wild-cluster efficient-score $p=0.67345$ (seed 20260715) \\
+Flexible sensitivity [A37] & 78-column spline/fixed-effect model with Moore--Penrose bread inverse, $G=50$ NSIDE$=4$ clusters: $\Delta f_{\rm CW}=+0.00125636$, ${\rm SE}=0.00341274$, 95\% CI $[-0.00543249,+0.00794522]$, normal $p=0.71277$; rank-fragile because $K=78>G=50$ \\
+Flexible-fit scale sensitivity & 3,750 nearest-VoidFinder-MAXIMALS clusters on the same 78-column fit and contrast; ${\rm SE}=0.003174$, $p=0.692$ \\
 \end{tabular}
 \end{ruledtabular}
 \end{table*}
 
-Because the focal spline/fixed-effect specification has $K=78$ fitted
-columns but only $G=50$ coarse sky clusters, its ordinary CR1 normal
-approximation can be rank-fragile even though the scalar calculation is
-exactly reproducible. The lower-dimensional $K=13$ sensitivity preserves
-the same hybrid sample, exposure, outcome, measured covariates, and NSIDE$=4$
-cluster unit while replacing splines and sky-block fixed effects with a
-declared post-review linear nuisance basis. Its CR1 interval and the null-imposed
-wild-cluster score result are both null and numerically close to the focal
-interval. This is a robustness check, not a replacement estimand or a claim
-that $G=50$ asymptotics are exact.
+The 13-column specification is focal because it preserves the same hybrid
+sample, exposure, outcome, measured covariates, and NSIDE$=4$ cluster unit
+while permitting both CR1 and null-imposed wild-cluster inference without
+having more fitted columns than clusters. It was declared after review and
+inspection of the data and is therefore exploratory, not preregistered.
+The older spline/fixed-effect specification has $K=78$ fitted columns but
+only $G=50$ coarse sky clusters; its ordinary CR1 normal approximation is
+rank-fragile even though the scalar calculation is reproducible. It is
+retained only as a flexible-model sensitivity, not as the headline interval.
 
-The standardized non-void-minus-void contrast is
-$\Delta f_{\rm CW}=+0.00125636$. With the reported coarse-sky covariance,
-the 95\% interval is $[-0.00543249,+0.00794522]$. This focal estimate is
+The focal standardized non-void-minus-void contrast is
+$\Delta f_{\rm CW}=+0.00145442$. Its coarse-sky CR1 95\% interval is
+$[-0.00504290,+0.00795174]$, and the wild-cluster score $p=0.67345$.
+This focal estimate is
 consistent with zero and is explicitly descriptive/exploratory: the
 hierarchy was chosen after review and after inspecting the data. It is
 not an exclusion, a physical-handedness measurement, or evidence for
@@ -2652,11 +2662,12 @@ The focal descriptive estimate summarized in
 covariate-standardized analysis detailed below: the released GALZONE
 \texttt{TARGET} universe is intersected with the frozen chirality parent,
 \texttt{OUT}$=0$ defines the $N=145{,}766$ quality parent, and exact
-VoidFinder hole-union membership defines its void arm. Its
-$\Delta f_{\rm CW}=+0.00125636$,
-${\rm SE}=0.00341274$, 95\% CI
-$[-0.00543249,+0.00794522]$, and $p=0.71277$. The sign convention is
-non-void minus void. The exact values come from frozen artifact [A37].
+VoidFinder hole-union membership defines its void arm. Its focal
+linear-nuisance result is $\Delta f_{\rm CW}=+0.00145442$,
+${\rm SE}=0.00331502$, 95\% CI
+$[-0.00504290,+0.00795174]$, normal $p=0.66085$, and null-imposed
+wild-cluster score $p=0.67345$. The sign convention is non-void minus
+void. The exact values come from frozen artifacts [A41--A42].
 All sphere-PIS, any-hole, and alternate-algorithm results in this
 section are sensitivity analyses. This hierarchy was changed after
 review and after inspecting the results; it remains exploratory and
@@ -3254,14 +3265,17 @@ TARGET universe: $604{,}032$ unique NGC plus $90{,}610$ unique SGC TARGETIDs
 $145{,}766$ quality-parent rows after the catalog-native $\mathtt{OUT}=0$ cut.
 Exact VoidFinder hole-union membership gives $31{,}937$ void rows
 ($15{,}873$ CW) and $113{,}829$ non-void rows ($56{,}741$ CW), for the crude
-non-void-minus-void contrast $+0.001466$. A full-rank converged logistic
-standardization adjusts for a redshift spline, NSIDE$=4$ sky block,
-PHOTSYS/imaging leg, $r$ magnitude, shape radius, morphology, Galactic
-extinction, classifier confidence, and GALZONE edge flag. The adjusted
-average marginal contrast is $+0.00125636$; the conservative coarse-sky
-cluster sandwich gives ${\rm SE}=0.00341274$, $95\%$ CI
-$[-0.00543249,+0.00794522]$, and $p=0.71277$ (nearest-MAXIMALS clustering:
-${\rm SE}=0.003174$, $p=0.692$). Overlap weighting agrees
+non-void-minus-void contrast $+0.001466$. The focal full-rank converged
+logistic standardization uses a 13-column linear nuisance basis spanning
+redshift, PHOTSYS/imaging leg, $r$ magnitude, shape radius, morphology,
+Galactic extinction, classifier confidence, and GALZONE edge flag. Its
+adjusted average marginal contrast is $+0.00145442$; the coarse-sky CR1
+cluster sandwich gives ${\rm SE}=0.00331502$, $95\%$ CI
+$[-0.00504290,+0.00795174]$, and normal $p=0.66085$, while the
+null-imposed 99,999-draw wild-cluster score gives $p=0.67345$.
+The older 78-column spline/fixed-effect fit is a rank-fragile sensitivity
+($\Delta=+0.00125636$, ${\rm SE}=0.00341274$, $p=0.71277$; nearest-MAXIMALS
+clustering ${\rm SE}=0.003174$, $p=0.692$). Overlap weighting agrees
 ($\Delta=+0.001204$, coarse-sky ${\rm SE}=0.003403$, $p=0.723$) and reduces
 the maximum absolute standardized mean difference from $0.2186$ to
 $0.000106$. Restricting further to $\mathtt{EDGE}=0$ gives adjusted
@@ -4608,10 +4622,11 @@ spatial covariance appropriate to the released footprint.
 
 The released-parent DESIVAST analysis finds no detectable difference in
 classifier-labelled CW fraction between its void and non-void arms. For
-$N=145{,}766$ GALZONE rows with \texttt{OUT}$=0$, the adjusted
-non-void-minus-void contrast is $+0.00125636$ with coarse HEALPix
-NSIDE$=4$ cluster-sandwich ${\rm SE}=0.00341274$, 95\% CI
-$[-0.00543249,+0.00794522]$, and $p=0.71277$. Overlap weighting gives a
+$N=145{,}766$ GALZONE rows with \texttt{OUT}$=0$, the focal
+linear-nuisance non-void-minus-void contrast is $+0.00145442$ with coarse
+HEALPix NSIDE$=4$ CR1 cluster-sandwich ${\rm SE}=0.00331502$, 95\% CI
+$[-0.00504290,+0.00795174]$, and normal $p=0.66085$; the null-imposed
+wild-cluster score gives $p=0.67345$. Overlap weighting gives a
 consistent sensitivity result.
 
 This estimator became the focal descriptive estimate after review and after
@@ -4787,15 +4802,22 @@ its mirror image and the CW/CCW posteriors are symmetrized, so a galaxy
 and its reflection receive exactly swapped probabilities by
 construction.
 
-\textbf{Training data.} The supervised training set comprises
-$25{,}790$ labeled source images drawn from three provenances:
-$6{,}637$ Galaxy~Zoo~1 (GZ1) human-vote spirals above a $70\%$
-vote-agreement threshold; $17{,}153$ pseudo-labels transferred from a
-prior CE-ResNet chirality model; and $2{,}000$ synthetic
-non-spiral (NS) negatives. Flip augmentation expands this to
-$26{,}616$ images, split $21{,}293$ train / $5{,}323$ validation
-(the validation fold is never flip-augmented). The parent imaging is
-the Smith42/galaxies DESI Legacy DR8 sample.
+\textbf{Training data and provenance limits.} The exact historical
+training realization is not fully recoverable. The production-script
+reconstruction and immutable model-repository receipt support 26,616
+labeled rows: 6,637 GZ1 high-confidence CW/CCW, 17,153 CE-ResNet
+high-confidence spirals, and 2,826 not-spiral rows, of which the script
+account assigns 826 to CE selection and 2,000 to synthetic examples,
+with a 21,293/5,323 train/validation split. Horizontal flips are generated
+on the fly for a training-only consistency loss and do not add dataset
+rows. Conflicting committed records report 26,626 total rows, 846 CE
+non-spirals, or 92.10\% rather than 93.6878\% validation accuracy. No
+retained object/split manifest, random-state record, or run receipt binds
+the named objects and stochastic realization to the checkpoint. No
+retained object-ID manifest establishes exclusion of the 6,637 GZ1
+training rows from later overlap validation. These limitations follow
+the canonical Paper~IV account and remain open provenance gates. The
+parent imaging is the Smith42/galaxies DESI Legacy DR8 sample.
 
 \textbf{Parity-equivariance validation.} The $Z_2$ TTA enforces an
 exact flip-swap posterior correlation of $1.000$ on held-out objects.
@@ -4938,7 +4960,8 @@ systematics split of \S\ref{sec:systematics}.
 \textbf{Public availability.} The per-galaxy labels are served as the
 \texttt{class\_eq} column of
 \href{https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog}{bamfai/galaxy-chirality-catalog}
-(CC-BY-4.0, release tag \texttt{v2026.04}); the trained weights are at
+(CC-BY-4.0; the acquisition configuration pins catalog revision
+\texttt{1ba76bc7}, without asserting a named release tag); the trained weights are at
 \href{https://huggingface.co/bamfai/galaxy-chirality-v2}{bamfai/galaxy-chirality-v2}.
 Paper~IV remains a companion manuscript in preparation; no arXiv identifier
 or Zenodo DOI is asserted here. The catalog and weights named above are the
@@ -5040,10 +5063,11 @@ FITS files, NGC$+$SGC caps)~\cite{DESIVAST2025}.
 (iii)~Chirality catalog (Paper~IV): the CC-BY-4.0 per-galaxy
 \texttt{class\_eq} label catalog mirrored on HuggingFace at
 \href{https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog}%
-{\texttt{bamfai/galaxy-chirality-catalog}} (public release tag
-\texttt{v2026.04}).
-(iv)~The v0.1.132 analysis code, derived row archive, and provenance JSON
-form the current local release candidate. This manuscript does not assert that a
+{\texttt{bamfai/galaxy-chirality-catalog}} (catalog revision
+\texttt{1ba76bc7}, as pinned by the acquisition configuration).
+(iv)~The analysis code, derived row archive, and provenance JSON form the
+current local release candidate identified by \texttt{\paperVersion}.
+This manuscript does not assert that a
 matching public Git tag or DOI snapshot already exists; both must be
 created and verified before submission.
 
@@ -5054,10 +5078,10 @@ versioned GitHub repository
 \href{\repoBase/pipelines/p5\_desi\_chirality/}{[A26]}; results quoted here
 correspond to release candidate \texttt{\paperVersion}. The analysis
 tree is frozen for this candidate; all numeric results, tables,
-figures, and per-class counts quoted above can be regenerated
-deterministically from source commit
-\texttt{e2e842d07c4f5e322729a0009740d018f927d216}; that commit is not a
-public immutable tag. All analysis
+figures, and per-class counts quoted above are bound to the current
+release-candidate source bundle and its checksummed artifacts. No single
+older commit is claimed to regenerate additions made in later revisions,
+and no public immutable Git tag or DOI exists yet. All analysis
 drivers are committed under
 \href{\repoBase/pipelines/p5\_desi\_chirality/scripts/}{[A27]} (catalog fetch,
 cross-match, per-analysis drivers \texttt{05}--\texttt{09}, z-shell
@@ -5121,8 +5145,8 @@ do not match the May sidecar's recorded raw hash
 modification date. Because the historical per-row snapshot is not
 available, byte-identical row provenance to that May raw file cannot be
 independently attested. The exact 145,789-row catalog-native control
-archive first frozen for v0.1.130 remains unchanged and was reverified for
-v0.1.132 as [A39], with file SHA-256
+archive first frozen for v0.1.130 remains unchanged and is reverified for
+the current release candidate as [A39], with file SHA-256
 \texttt{fe863dcd3d569d22a3792ac0f1ee273e}
 \texttt{e3148ef311302e2d7984ab714634e9fc}; [A40] records its inputs and the
 DESIVAST source commit. This closes current-row provenance without

@@ -25,7 +25,7 @@ import numpy as np
 import pandas as pd
 from scipy.stats import beta as beta_dist
 
-REPO = Path("/Users/houstongolden/Desktop/CODE_2025/bigbounce")
+REPO = Path(__file__).resolve().parents[3]
 P5 = REPO / "pipelines/p5_desi_chirality"
 FIG_DIR = P5 / "figures"
 FIG_DIR.mkdir(parents=True, exist_ok=True)
@@ -91,7 +91,7 @@ def main() -> int:
              linewidth=0.7, alpha=0.85, label="observed $\\sigma$")
     ax_s.plot(xs, sigma_pred, marker="D", linestyle="-",
               color="#dc2626", linewidth=1.5, markersize=8,
-              label="Paper IV monopole prediction\n($\\sigma_{\\rm pred}=-2 \\Delta f_{\\rm CW} \\sqrt{N}$)")
+              label="Paper IV monopole prediction\n($\\sigma_{\\rm pred}=2 \\Delta f_{\\rm CW} \\sqrt{N}$)")
     ax_s.axhline(0.0, linestyle="-", color="black", linewidth=0.5)
     ax_s.axhline(-3.29, linestyle=":", color="#0369a1", linewidth=0.8,
                  label="Bonferroni-5 $\\alpha\\!=\\!0.01$")

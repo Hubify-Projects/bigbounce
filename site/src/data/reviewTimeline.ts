@@ -57,6 +57,46 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p5-v01136-confirmation-board-closure-2026-07-15",
+    dateISO: "2026-07-15",
+    timePT: "11:52 PM",
+    kind: "closure-wave",
+    title: "P5 v0.1.136 — confirmation-board defects truth-audited and closed; readiness holds",
+    papers: ["P5"],
+    summary:
+      "The exact v0.1.135 confirmation board returned Gemini MINOR and ChatGPT-subscription Codex MAJOR; Grok failed twice with provider-capacity errors and produced no scientific verdict. Truth audit verified focal-model rank fragility, Paper IV training-provenance drift, stale release identifiers, and two figure-generator label defects. v0.1.136 closes them without converting the exploratory classifier-label non-detection into a physical-independence claim. Exact v0.1.136 confirmation and standing Paper IV, archive/DOI, editorial, and human gates remain open.",
+    keyTakeaways: [
+      "Exact v0.1.135 board: Gemini direct MINOR and Codex subscription MAJOR; Grok capacity failure retained honestly",
+      "The reduced K=13 model is focal; the 78-column fit is a flexible sensitivity and the wild-cluster result remains p=0.67345",
+      "Exact PDF: 40 pages, SHA-256 cd3c8e81, MD5 501740e8; Convex row k570jkw6zm30syyzvkx41ezxqh8amcge synchronized",
+      "Readiness holds 74; exact v0.1.136 confirmation and external release/human gates remain open",
+    ],
+    links: [
+      { label: "P5 canonical status", href: `${GH}/project-context/SSOT/paper-5/status.md` },
+      { label: "Exact v0.1.135 review evidence", href: `${PR}/INT_v3/ROUND_2026-07-15-P5-v0.1.135-EXACTPDF-7223afcc-NONANTHROPIC-CONFIRM` },
+    ],
+  },
+  {
+    id: "p4-v10257-confirmation-board-closure-2026-07-15",
+    dateISO: "2026-07-15",
+    timePT: "11:50 PM",
+    kind: "closure-wave",
+    title: "P4 v1.0.257 — confirmation-board wording defects truth-audited and closed; readiness holds",
+    papers: ["P4"],
+    summary:
+      "The exact v1.0.256 confirmation board returned Gemini MINOR and ChatGPT-subscription Codex MAJOR; Grok failed twice with provider-capacity errors and produced no scientific verdict. Truth audit retained the standing scientific and release gates and verified two wording defects: the two-bin GZ1 check overstated campaign coverage, and the raw/equivariant comparison over-attributed causation to TTA. v1.0.257 closes both without changing the narrow observed-label null or readiness.",
+    keyTakeaways: [
+      "Exact v1.0.256 board: Gemini direct MINOR and Codex subscription MAJOR; Grok capacity failure retained honestly",
+      "v1.0.257 labels the GZ1 bins as declination proxies and bounds the raw/equivariant comparison to association and mitigation",
+      "Exact PDF: 29 pages, SHA-256 726acd8b, MD5 1fc1140e; Convex row k57ef9rvv6m5c3vv4bz0j82r658anf9r synchronized",
+      "Readiness holds 80; exact v1.0.257 confirmation and standing training/covariance/metadata/archive/human gates remain open",
+    ],
+    links: [
+      { label: "P4 canonical status", href: `${GH}/project-context/SSOT/paper-4/status.md` },
+      { label: "Exact v1.0.256 review evidence", href: `${PR}/INT_v3/ROUND_2026-07-15-P4-v1.0.256-EXACTPDF-6dfccf7c-NONANTHROPIC-CONFIRM` },
+    ],
+  },
+  {
     id: "p5-v01135-exact-board-closure-2026-07-15",
     dateISO: "2026-07-15",
     timePT: "11:07 PM",

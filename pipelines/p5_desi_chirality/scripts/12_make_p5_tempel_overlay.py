@@ -28,7 +28,7 @@ import numpy as np
 import pandas as pd
 from scipy.stats import beta as beta_dist
 
-REPO = Path("/Users/houstongolden/Desktop/CODE_2025/bigbounce")
+REPO = Path(__file__).resolve().parents[3]
 P5 = REPO / "pipelines/p5_desi_chirality"
 FIG_DIR = P5 / "figures"
 FIG_DIR.mkdir(parents=True, exist_ok=True)
@@ -96,7 +96,7 @@ def main() -> int:
     ylim = (0.43, 0.53)
     _draw(ax1, vweb, VWEB_ORDER, VWEB_COLORS,
           "(a) T-Web (canonical $R_s=25$ Mpc/$h$, $\\lambda_{\\rm th}=0$)\n"
-          "$n=791{,}635$ chirality-relevant matched spirals", ylim)
+          "$n=812{,}793$ environment-labelled rows", ylim)
     _draw(ax2, tempel.rename(columns={"tempel_class": "env_class"}),
           TEMPEL_ORDER, TEMPEL_COLORS,
           "(b) Tempel+2014 FoF cross-validation\n"

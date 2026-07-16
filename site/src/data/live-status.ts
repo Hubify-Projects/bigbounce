@@ -147,12 +147,12 @@ const historicalLiveStatus: LiveStatus = {
 // summary reflect the canonical six-paper board rather than an older review wave.
 export const liveStatus: LiveStatus = {
   ...historicalLiveStatus,
-  lastUpdatedISO: "2026-07-16T06:12:00Z",
-  lastUpdatedDisplay: "July 15, 2026 · 11:12 PM PT",
+  lastUpdatedISO: "2026-07-16T06:52:00Z",
+  lastUpdatedDisplay: "July 15, 2026 · 11:52 PM PT",
   headline:
-    "All six manuscripts remain in revision. P4 v1.0.256 and P5 v0.1.135 close verified exact-review defects with fully synchronized PDFs and public metadata; both still require exact confirmation and external publication gates. No submission or acceptance is claimed.",
+    "All six manuscripts remain in revision. P4 v1.0.257 and P5 v0.1.136 close truth-audited defects from their exact confirmation boards; both new PDFs still require exact confirmation and external publication gates. No submission or acceptance is claimed.",
   summary:
-    "P5 v0.1.135 adds a deterministic reduced-rank CR1 and 99,999-draw wild-cluster sensitivity on the focal hybrid estimand; both remain null (p=0.66085/0.67345). P4 v1.0.256 repairs primary-artifact and null-description drift. Readiness holds 74/80.",
+    "The confirmation boards returned Gemini MINOR and Codex-subscription MAJOR for both papers; Grok failed with provider-capacity errors and produced no scientific verdict. Verified defects are closed in P4 v1.0.257 and P5 v0.1.136. Readiness holds 80/74.",
   papers: historicalLiveStatus.papers.map((paper) => {
     if (paper.slug === "paper-1b") {
       return {
@@ -165,9 +165,9 @@ export const liveStatus: LiveStatus = {
     if (paper.slug === "paper-4") {
       return {
         ...paper,
-        version: "v1.0.256",
+        version: "v1.0.257",
         pendingWork:
-          "The v1.0.255 MAJOR/MINOR/MAJOR board is truth-audited and its verified manuscript/artifact defects are closed in v1.0.256. Exact v1.0.256 confirmation, training realization, spatial transfer/joint covariance, complete metadata, DOI, and human review remain open. Readiness holds 80.",
+          "The v1.0.256 Gemini MINOR/Codex MAJOR confirmation board is truth-audited; Grok failed capacity. Two verified wording defects are closed in v1.0.257. Exact v1.0.257 confirmation, training realization, spatial transfer/joint covariance, complete metadata, DOI, and human review remain open. Readiness holds 80.",
       };
     }
     if (paper.slug === "paper-1a") {
@@ -198,21 +198,21 @@ export const liveStatus: LiveStatus = {
     if (paper.slug === "paper-5") {
       return {
         ...paper,
-        version: "v0.1.135-2026-07-15",
+        version: "v0.1.136-2026-07-15",
         readiness: 74,
         pendingWork:
-          "The v0.1.134 MINOR/MAJOR/MAJOR board is truth-audited; v0.1.135 closes its hybrid-estimand, covariance-rank, multiplicity, and target-program wording defects. Exact v0.1.135 confirmation, final Paper IV re-verification, public archive/DOI, T-Web RSD, and human AJ review remain. Readiness holds 74.",
+          "The v0.1.135 Gemini MINOR/Codex MAJOR confirmation board is truth-audited; Grok failed capacity. Verified inference, provenance, release-label, and figure defects are closed in v0.1.136. Exact v0.1.136 confirmation, final Paper IV re-verification, public archive/DOI, and human AJ review remain. Readiness holds 74.",
       };
     }
     return paper;
   }),
   currentlyRunning: [
     "P1B corrected production is queued but blocked by a negative RunPod balance; no paid pod launch is being attempted",
-    "P4 v1.0.256 and P5 v0.1.135 source-bundle proofs are being finalized",
-    "Exact non-Anthropic confirmation boards are next after a fresh committed six-paper receipt",
+    "P4 v1.0.257 and P5 v0.1.136 PDFs, retention artifacts, mirrors, and Convex rows are synchronized",
+    "Exact non-Anthropic confirmation boards for the new versions are pending",
   ],
   cronStatus:
-    "No review wave is running. P4 v1.0.256 and P5 v0.1.135 closures are synchronized; exact confirmation remains gated on the fresh committed six-paper preflight.",
+    "No review wave is running. P4 v1.0.257 and P5 v0.1.136 closures are synchronized; exact new-version confirmation remains pending.",
   etaToCompletion:
     "After RunPod funding is restored, P1B's canonical plus parallel robustness run is estimated at roughly 2.5–5 hours wall-clock, followed by manuscript/PDF QA and exact review. P4/P5 still require exact confirmation plus their disclosed scientific, archive, and human gates. A defensible all-six submission date remains conditional on those gates; journal acceptance is controlled by editors and referees.",
 };

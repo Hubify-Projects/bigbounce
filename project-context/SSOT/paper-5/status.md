@@ -1,3 +1,14 @@
+## v0.1.136 CONFIRMATION-BOARD TRUTH-AUDIT CLOSURE — 2026-07-15 · READINESS/CAP 74 HOLD
+
+**Binding:** 40-page exact local candidate, PDF SHA-256 `cd3c8e81fc6811438d8db7059631feb2d9ccf324f2996370ee555e68def91fc4`, MD5 `501740e8e6a337dbd180e81ba16eec21`; Convex version row `k570jkw6zm30syyzvkx41ezxqh8amcge`.
+
+- **Raw v0.1.135 confirmation preserved:** Gemini direct API **MINOR REVISIONS** and ChatGPT-subscription Codex CLI **MAJOR REVISIONS**; Grok failed on the original and isolated retry with provider-capacity errors, so no Grok finding or verdict is inferred.
+- **Verified closures:** the reduced 13-column model is now the focal fit on the unchanged sample and cluster unit, with the 78-column fit retained as a flexible sensitivity; Paper IV training-set provenance is described consistently; unsupported/stale release identifiers are removed; and the Figure 5 prediction convention and Figure 9 T-Web row count are corrected in their generators.
+- **Typed gates remain open:** final independently reviewable Paper IV release and P5 re-verification; immutable public P5 tag/archive/DOI and artifact-link resolution; venue-level narrative consolidation; exact v0.1.136 confirmation; and actual human/editorial AJ review.
+- **No readiness uplift:** these truth-audited closures and synchronized candidate artifacts do not establish reviewer acceptance. Verified readiness/cap remains **74**; no submission or acceptance is claimed.
+
+Evidence: `project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P5-v0.1.135-EXACTPDF-7223afcc-NONANTHROPIC-CONFIRM/P5_v0.1.135_truth_audit.md`.
+
 ## v0.1.135 EXACT-BOARD TRUTH-AUDIT CLOSURE — 2026-07-15 · READINESS/CAP 74 HOLD
 
 **Binding:** 39-page exact local candidate, PDF SHA-256 `7223afcce95bd735ddbd0efc05745738ba699949aa8f6536271a97aca394bdc8`, MD5 `6a59b841695c9e1bdbc5bcd21e2b380b`; 13 mirrors synchronized; Convex version row `k578yn7865cz6tsdntttfazyvx8ammyw`.

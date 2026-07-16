@@ -55,7 +55,10 @@
 \newcommand{\HCRI}{\textsc{HC-RI}}
 \newcommand{\FSC}{\textsc{FS-C}}
 \newcommand{\MAGF}{\textsc{MASTER-AGF}}
-\newcommand{\paperVersion}{v1.0.256}
+\newcommand{\paperVersion}{v1.0.257}
+% v1.0.257 (2026-07-15 23:48 PDT — exact-PDF confirmation truth-audit
+%   closure: relabels the GZ1 spatial check as two declination proxies rather
+%   than three imaging legs and removes the residual causal TTA overclaim.)
 % v1.0.256 (2026-07-15 22:28 PDT — exact-PDF truth-audit closure:
 %   synchronizes primary provenance and corrects statistical descriptions,
 %   historical bias-test metrics, and unsupported causal language.)
@@ -170,7 +173,7 @@
 % v1.0.233 (2026-07-10 — H17 science upgrade: new Appendix-B subsection "Sky- and confidence-stratified
 %   human-label confusion analysis" + Table tab:gz1_stratified (5 strata, N/acc/CW->CCW/CCW->CW/asymmetry+-95%CI)
 %   from committed artifact gz1_stratified_confusion.{py,json} (post-84d53b75). Licensed claim: CW<->CCW error
-%   ASYMMETRY (only dipole-biasing channel) consistent with zero in every leg+confidence stratum (bounded
+%   ASYMMETRY consistent with zero in both tested declination proxies and confidence strata (bounded
 %   <=0.6-1.4pp), so parity-symmetric spatially-varying error cannot manufacture a dipole at the A_p null scale;
 %   error MAGNITUDE varies by leg (z=4.2) + confidence (acc 0.72->0.96) = dilution-only, carried by g=2a-1.
 %   Updated Sec.sensitivity limitation (leg-granular confusion model now EXISTS; per-pixel gap honestly noted)
@@ -710,7 +713,7 @@
 %   the established two-step provenance gate.)
 % v1.0.171->172 (2026-06-10 — EXT1 closure wave restamp: recompile + mirror bundle;
 %   Data Availability hash pinned to the v1.0.172 stamp commit per provenance gate.)
-\newcommand{\paperTimestamp}{July 15, 2026, 22:28 PDT}
+\newcommand{\paperTimestamp}{July 15, 2026, 23:48 PDT}
 % v1.0.217->218 (2026-07-05 — DATA-UNLOCK: edge-on-ISOLATED argmax tie-break coherence
 %   now COMPUTED (was pod/data-lab-deferred). Join catalog_production (class_eq/RA/Dec) to
 %   committed spiral_morphology_dr8 b/a on dr8_id; edge-on (b/a<0.30) borderline population
@@ -1093,12 +1096,7 @@ spatially-structured $\sim\!0.79\%$ classifier CW excess, modulated
 by non-uniform survey depth, produces the $2.31\sigmaunit$ real-space
 dipole + $+6.48\sigmaunit$ pre-MASTER $\ell\!=\!1$ artifact. Right:
 2-fold flip-equivariant TTA; flip-equivariance is enforced by construction and the measured directional bias is strongly reduced, while training-, selection-, and depth-coupled biases are not guaranteed to vanish, and
-the HC ($p_{\rm eq}\!>\!0.6$) real-space dipole is reduced to $+0.71\sigmaunit$ under the current fixed-occupancy primary null. Generation counts and the projected streaming read are recorded in \artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/fig7\_raw\_vs\_eq\_manifest.json}. This visual
-diagnostic is the methodology cornerstone — the difference between
-Catalog~A and Catalog~C is the difference between a $2\sigma$
-``detection'' and a clean null, demonstrating that future chirality
-studies must adopt equivariant post-processing to avoid spurious
-dipoles.\label{fig:raw_vs_eq}}
+the HC ($p_{\rm eq}\!>\!0.6$) real-space dipole is reduced to $+0.71\sigmaunit$ under the current fixed-occupancy primary null. Generation counts and the projected streaming read are recorded in \artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/fig7\_raw\_vs\_eq\_manifest.json}. This visual diagnostic shows that the equivariant pipeline is associated with a strong reduction of the measured directional bias and illustrates why equivariant post-processing is an important mitigation in future chirality studies. Because the two products have different inference-pass provenance, memberships, and quoted null conventions, the comparison does not by itself isolate TTA as the unique causal explanation.\label{fig:raw_vs_eq}}
 \end{figure*}
 
 \paragraph{Angular power spectrum.}
@@ -1317,11 +1315,11 @@ Accordingly the spatially resolved physical confusion model remains
 open and all physical falsification claims remain tied to the observed
 hard-label field.
 A first, coarse instance of that spatially varying confusion model
-\emph{now exists at imaging-leg granularity}: the GZ1-overlap confusion
-matrix stratified by the two P4 imaging legs and by confidence
+\emph{now exists at coarse declination-stratum granularity}: the GZ1-overlap confusion
+matrix stratified by the two P4 declination proxies and by confidence
 (Appendix~B, Table~\ref{tab:gz1_stratified}) shows the directional
-CW$\leftrightarrow$CCW error asymmetry consistent with zero in every leg
-and confidence stratum (leg asymmetries bounded to $\lesssim\!1.4$~pp,
+CW$\leftrightarrow$CCW error asymmetry consistent with zero in both tested
+declination strata and confidence strata (declination-stratum asymmetries bounded to $\lesssim\!1.4$~pp,
 science-cut to $\lesssim\!0.6$~pp). Directional asymmetry is not, however,
 the only spatial bias channel. For local true CW fraction $q(\bm{x})$ and
 misclassification rates $e_{\rm CW\to CCW}(\bm{x})$ and
@@ -1524,24 +1522,24 @@ Table~\ref{tab:gz1_confusion} reports the three-class confusion matrix of the eq
 \paragraph{Probabilistic calibration scope.}
 The catalog-wide mean winning-class score is $0.951$, while the full GZ1 overlap has lower descriptive accuracies (58.7\% three-class and 69.91\% on the chirality-evaluable subset). These quantities are computed on different object sets and therefore cannot be combined into an Expected Calibration Error or a Jensen lower bound. No same-object binned reliability artifact is retained, so we make no numerical ECE claim. The scores remain explicitly uncalibrated ranking outputs. This does not alter the hard-label null: the primary estimator consumes hard argmax CW/CCW counts, and a monotone recalibration preserves the argmax. Recalibration of the selection score would require restating the numerical threshold that selects a fixed ranked subset; it would not by itself provide the missing spatial confusion/transfer model.
 \paragraph{Sky- and confidence-stratified human-label confusion analysis.}
-The single global confusion matrix above (Table~\ref{tab:gz1_confusion}) does not by itself establish the spatial transfer needed by the dipole analysis. A spatially varying differential mislabelling rate can inject a spurious $A_p$ dipole, but it is not the only channel: Eq.~\eqref{eq:spatial_confusion_transfer} shows that a spatially varying symmetric rate also changes the observed fraction wherever the local selected CW fraction differs from one half. We therefore stratify the GZ1-overlap confusion matrix by the two P4 imaging legs (BASS+MzLS, $\mathrm{dec}\!>\!+32^\circ$; DECaLS, $\mathrm{dec}\!<\!+32^\circ$) and by the primary confidence cut, and in each stratum measure the CW$\leftrightarrow$CCW error asymmetry with its two-proportion $95\%$ CI (Table~\ref{tab:gz1_stratified}) as well as the net induced $\Delta f_{\rm CW}$. The analysis restricts to the $N\!=\!40{,}987$ GZ1-confident spirals ($\max(P_{\rm CW},P_{\rm ACW})\!>\!0.6$) that the classifier also labels CW or CCW, drawn from the $N\!=\!46{,}017$ GZ1--catalog cross-matches reproduced byte-identically ($1''$ KDTree match) from Table~\ref{tab:gz1_confusion}'s parent match; the $5{,}030$ GZ1-confident spirals assigned to \NS{} are reported separately as an unquantified completeness/selection channel, not as chirality error. The generator script and full stratified JSON are committed (\artifact{pipelines/p2\_chirality/scripts/gz1\_stratified\_confusion.py}, \artifact{pipelines/p2\_chirality/outputs/gz1\_stratified\_confusion.json}).
+The single global confusion matrix above (Table~\ref{tab:gz1_confusion}) does not by itself establish the spatial transfer needed by the dipole analysis. A spatially varying differential mislabelling rate can inject a spurious $A_p$ dipole, but it is not the only channel: Eq.~\eqref{eq:spatial_confusion_transfer} shows that a spatially varying symmetric rate also changes the observed fraction wherever the local selected CW fraction differs from one half. We therefore stratify the GZ1-overlap confusion matrix by two declination-defined imaging proxies (BASS+MzLS proxy, $\mathrm{dec}\!>\!+32^\circ$; DECaLS+DES proxy, $\mathrm{dec}\!<\!+32^\circ$) and by the primary confidence cut, and in each stratum measure the CW$\leftrightarrow$CCW error asymmetry with its two-proportion $95\%$ CI (Table~\ref{tab:gz1_stratified}) as well as the net induced $\Delta f_{\rm CW}$. These are not the three actual DR8 campaign memberships: the southern proxy includes the DES overlap region, so this analysis does not separately validate DES. The analysis restricts to the $N\!=\!40{,}987$ GZ1-confident spirals ($\max(P_{\rm CW},P_{\rm ACW})\!>\!0.6$) that the classifier also labels CW or CCW, drawn from the $N\!=\!46{,}017$ GZ1--catalog cross-matches reproduced byte-identically ($1''$ KDTree match) from Table~\ref{tab:gz1_confusion}'s parent match; the $5{,}030$ GZ1-confident spirals assigned to \NS{} are reported separately as an unquantified completeness/selection channel, not as chirality error. The generator script and full stratified JSON are committed (\artifact{pipelines/p2\_chirality/scripts/gz1\_stratified\_confusion.py}, \artifact{pipelines/p2\_chirality/outputs/gz1\_stratified\_confusion.json}).
 
 The 5,030 GZ1-confirmed spirals assigned to \NS{} have not been composition- and position-characterized here; no chirality-neutral assumption is made for them, and their exclusion is an unquantified completeness/selection channel. All confusion-matrix conclusions are restricted to the 40,987 objects classified CW or CCW.
 
 \begin{table*}[t]
-\caption{\label{tab:gz1_stratified}GZ1-overlap human-vs-classifier CW/CCW confusion stratified by imaging leg and confidence cut ($N=40{,}987$ GZ1-confident spirals classified CW or CCW; $1''$ cross-match, $N=46{,}017$). ``Asymmetry'' is the difference between the two directional error rates, with an unpooled two-proportion 95\% interval. A value consistent with zero means no dipole-producing parity error was detected in that tested stratum; it does not exclude finer spatial variation. Full arrays: \artifact{pipelines/p2\_chirality/outputs/gz1\_stratified\_confusion.json}.}
+\caption{\label{tab:gz1_stratified}GZ1-overlap human-vs-classifier CW/CCW confusion stratified by two declination-defined imaging proxies and confidence cut ($N=40{,}987$ GZ1-confident spirals classified CW or CCW; $1''$ cross-match, $N=46{,}017$). The southern proxy includes DES and is not a separate DES validation. ``Asymmetry'' is the difference between the two directional error rates, with an unpooled two-proportion 95\% interval. A value consistent with zero means no dipole-producing parity error was detected in that tested stratum; it does not exclude finer spatial variation. Full arrays: \artifact{pipelines/p2\_chirality/outputs/gz1\_stratified\_confusion.json}.}
 \begin{tabular}{lrccc}
 \textbf{Stratum} & \textbf{$N$} & \textbf{acc} & \textbf{$\mathrm{CW}\!\to\!\mathrm{CCW}$ / $\mathrm{CCW}\!\to\!\mathrm{CW}$} & \textbf{asymmetry ($95\%$ CI)} \\
 \hline
 Overall & $40{,}987$ & $0.912$ & $0.0878$ / $0.0877$ & $+0.0001\ [-0.0054,+0.0056]$ \\
-BASS+MzLS ($\mathrm{dec}\!>\!+32^\circ$) & $14{,}093$ & $0.903$ & $0.0994$ / $0.0952$ & $+0.0042\ [-0.0056,+0.0140]$ \\
-DECaLS ($\mathrm{dec}\!<\!+32^\circ$) & $26{,}894$ & $0.917$ & $0.0818$ / $0.0838$ & $-0.0020\ [-0.0086,+0.0046]$ \\
+BASS+MzLS proxy ($\mathrm{dec}\!>\!+32^\circ$) & $14{,}093$ & $0.903$ & $0.0994$ / $0.0952$ & $+0.0042\ [-0.0056,+0.0140]$ \\
+DECaLS+DES proxy ($\mathrm{dec}\!<\!+32^\circ$) & $26{,}894$ & $0.917$ & $0.0818$ / $0.0838$ & $-0.0020\ [-0.0086,+0.0046]$ \\
 Science cut ($p_{\rm eq}\!>\!0.6$) & $32{,}550$ & $0.961$ & $0.0379$ / $0.0399$ & $-0.0019\ [-0.0061,+0.0023]$ \\
 Low conf.\ ($p_{\rm eq}\!\le\!0.6$) & $8{,}437$ & $0.724$ & $0.2795$ / $0.2730$ & $+0.0065\ [-0.0126,+0.0256]$ \\
 \end{tabular}
 \end{table*}
 
-\emph{Conclusion this licenses (stated precisely).} CW$\leftrightarrow$CCW error asymmetry is consistent with zero in every tested stratum: overall $+0.0001\,[-0.0054,+0.0056]$, BASS+MzLS $+0.0042\,[-0.0056,+0.0140]$, DECaLS $-0.0020\,[-0.0086,+0.0046]$, and science cut $-0.0019\,[-0.0061,+0.0023]$. Thus no directional error asymmetry is detected at the tested two-leg resolution, with sensitivity bounded by these intervals. The net induced-fraction point estimates are nevertheless 0.00142 (BASS+MzLS) and 0.00331 (DECaLS); their difference has no retained covariance-aware interval. The test does not resolve RA variation within a leg or joint depth/PSF/morphology dependence, so it cannot exclude every sub-percent spatially varying differential or symmetric-error pattern. The finer conditional model remains open. Stratified accuracies apply to a nested confident-spiral subset and do not validate the illustrative scalar transfer, especially because the historical training overlap was not removed from the GZ1 agreement calculation.
+\emph{Conclusion this licenses (stated precisely).} CW$\leftrightarrow$CCW error asymmetry is consistent with zero in every tested stratum: overall $+0.0001\,[-0.0054,+0.0056]$, BASS+MzLS proxy $+0.0042\,[-0.0056,+0.0140]$, DECaLS+DES proxy $-0.0020\,[-0.0086,+0.0046]$, and science cut $-0.0019\,[-0.0061,+0.0023]$. Thus no directional error asymmetry is detected at the tested two-declination-stratum resolution, with sensitivity bounded by these intervals; DES is not tested separately. The net induced-fraction point estimates are nevertheless 0.00142 (northern proxy) and 0.00331 (southern proxy); their difference has no retained covariance-aware interval. The test does not resolve RA variation within a stratum, actual three-campaign membership, or joint depth/PSF/morphology dependence, so it cannot exclude every sub-percent spatially varying differential or symmetric-error pattern. The finer conditional model remains open. Stratified accuracies apply to a nested confident-spiral subset and do not validate the illustrative scalar transfer, especially because the historical training overlap was not removed from the GZ1 agreement calculation.
 
 \section{Auxiliary Dipole Diagnostics}
 \label{sec:app_aux}
