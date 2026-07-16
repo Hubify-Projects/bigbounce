@@ -1,0 +1,25 @@
+# INT API Review — P5 v0.1.136-2026-07-15 — gemini (gemini-3.1-pro-preview)
+paper: P5  version: v0.1.136-2026-07-15  model: gemini-3.1-pro-preview
+provenance: commit=e97f0b7365267355d06e5a979738ea5d6675950f  pdf=pipelines/p5_desi_chirality/paper/p5_desi_chirality.pdf  sha256=cd3c8e81fc6811438d8db7059631feb2d9ccf324f2996370ee555e68def91fc4
+packet: key=4ea2c1dd008c4d5ae98d69a9e9405dfe29f1a380d2c3f305c006bb5e25a40225  profile=AJ-OBSERVATIONAL
+modality: native-PDF (inline_data base64)
+UTC: 2026-07-16T07:04:57.305682Z  |  latency: 31.6s  |  attempt: 1
+provider_receipt: {"attempt": 1, "latency_seconds": 31.6, "modality": "native-PDF (inline_data base64)", "provider": "google", "provider_reported_cost": "unavailable", "request_id": "unavailable", "requested_model": "gemini-3.1-pro-preview", "resolved_model": "gemini-3.1-pro-preview", "response_id": "moJYasC7IZvUz7IP35m_iQ8", "usage": {"candidatesTokenCount": 733, "promptTokenCount": 20905, "promptTokensDetails": [{"modality": "IMAGE", "tokenCount": 20800}, {"modality": "TEXT", "tokenCount": 105}], "serviceTier": "standard", "thoughtsTokenCount": 1570, "totalTokenCount": 23208}}
+PARSED VERDICT: MAJOR REVISIONS
+
+======================================================================
+RAW RESPONSE (verbatim):
+======================================================================
+
+**VERDICT:** MAJOR REVISIONS
+
+**ISSUES:**
+
+1. [MAJOR] **Dependency on an unpublished companion manuscript.** The central input data for this study—the spiral chirality labels and the global monopole offset—are derived entirely from "Paper IV" [3], which is cited as "in preparation" and explicitly lacks an arXiv identifier. While the author states the catalog is available on HuggingFace, standard *Astronomical Journal* policy dictates that foundational methodologies and primary catalogs essential to a paper's conclusions must be accessible in a peer-reviewed or publicly available preprint form for proper refereeing. The manuscript cannot be accepted until Paper IV is available for concurrent review or public scrutiny.
+2. [MAJOR] **Manuscript structure and narrative hierarchy.** The title, abstract, and methodological declarations explicitly state that the DESIVAST void catalog cross-match is the "focal released-parent descriptive estimate." However, the manuscript spends Sections IV through VII (nearly half the paper) detailing the "secondary" T-Web tidal-tensor analysis and its Phase 2 sensitivity sweep before introducing the DESIVAST results in Section VIII. The manuscript must be restructured to present the primary, focal DESIVAST results first, relegating the secondary/diagnostic T-Web and Tempel cross-validations to later sections or appendices. 
+3. [MAJOR] **Intrusive reproducibility formatting.** The author’s commitment to reproducibility is highly commendable, but the inline citation of repository artifacts (e.g., [A1], [A37], [A40]) severely disrupts the scientific narrative and readability of the text. These artifact tags read like a software audit rather than an astrophysics paper. These specific code/commit pointers should be moved to footnotes, an expanded Data Availability section, or a dedicated reproducibility appendix, allowing the main text to focus on the astrophysics and statistical methodology.
+4. [MINOR] **Caption length and density.** The captions for several figures (particularly Figures 3, 5, and 9) are excessively long and contain detailed methodological caveats, sample size justifications, and statistical derivations that belong in the main text. Captions should be streamlined to describe the visual elements of the plots.
+5. [MINOR] **Overcrowding of in-line statistics.** The text is frequently overwhelmed by dense blocks of in-line statistical reporting (e.g., listing exact $n$, $f_{CW}$, standard errors, $Z$-scores, and 95% CIs sequentially for multiple parameters in a single paragraph). The author should synthesize these findings in the text and rely more heavily on the already-provided tables (e.g., Table XV) to carry the exact numerical precision. 
+6. [MINOR] **Clarification of T-Web vs. DESIVAST void counts.** In Section VI B, the T-Web void sample contains only 428 galaxies, while the DESIVAST sample in Section VIII contains over 56,000. While the author correctly attributes this to a survey-shell selection artifact impacting the T-Web density grid (Section IX C), this massive discrepancy is jarring upon first read. A brief, one-sentence forward-reference explaining *why* the T-Web void count is artificially depressed compared to the DESIVAST catalog should be added to Section VI B to orient the reader.
+
+**One sentence:** The central claim—that there is no statistically significant evidence for environment-dependent spiral galaxy chirality in the DESI DR1 dataset once catalog-wide classifier systematics are removed—is thoroughly and rigorously supported by the data.

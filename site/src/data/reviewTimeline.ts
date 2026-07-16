@@ -57,6 +57,44 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p5-v01136-exact-confirmation-board-2026-07-16",
+    dateISO: "2026-07-16",
+    kind: "internal-api",
+    title: "P5 v0.1.136 — exact confirmation board verifies new science, release, and presentation gates",
+    papers: ["P5"],
+    summary:
+      "The exact 40-page v0.1.136 board returned Gemini MAJOR and ChatGPT-subscription Codex MAJOR; Grok failed twice with HTTP 503 before inference and supplied no verdict. Truth audit verifies that the existing program-mixture calculation does not bound interaction leakage, the focal K=13 model lacks like-for-like clustering robustness, claimed retained T-Web arrays are unavailable, and the scientific narrative still needs substantial restructuring. Readiness holds 74.",
+    keyTakeaways: [
+      "Exact board: Gemini direct MAJOR and Codex subscription MAJOR; Grok 503 is retained as a failed leg, not a clean verdict",
+      "Fit or explicitly leave unbounded the program-by-environment interaction; the marginal mixture product is not a maximum leakage bound",
+      "Repeat the focal K=13 inference across angular resolutions and defensible 3-D or multiway clustering schemes",
+      "Correct unavailable-array claims, publish immutable release evidence, and restructure/edit before exact re-review; readiness holds 74",
+    ],
+    links: [
+      { label: "P5 canonical status", href: `${GH}/project-context/SSOT/paper-5/status.md` },
+      { label: "Exact v0.1.136 review evidence", href: `${PR}/INT_v3/ROUND_2026-07-16-P5-v0.1.136-EXACTPDF-cd3c8e81-NONANTHROPIC-CONFIRM` },
+    ],
+  },
+  {
+    id: "p4-v10257-exact-confirmation-board-2026-07-16",
+    dateISO: "2026-07-16",
+    kind: "internal-api",
+    title: "P4 v1.0.257 — exact confirmation board verifies two new computational gates",
+    papers: ["P4"],
+    summary:
+      "The exact 29-page v1.0.257 board returned Gemini MINOR and ChatGPT-subscription Codex MAJOR; Grok failed twice with HTTP 503 before inference and supplied no verdict. Truth audit verifies that four FSC diagnostics were generated on a 24,270-pixel support while attributed to the 24,087-pixel FSC, and that the focal estimator includes 59,515 rows the release labels unsafe. Readiness holds 80 pending convention-matched recomputation and standing external gates.",
+    keyTakeaways: [
+      "Exact board: Gemini direct MINOR and Codex subscription MAJOR; Grok 503 is retained as a failed leg, not a clean verdict",
+      "Rerun direct-MC, MASTER monopole, apodization, and multipole diagnostics on one checksummed 24,087-pixel FSC mask",
+      "Rerun the current fixed-occupancy exact null on the 890,069-row strict sample or defensibly reconcile the release semantics",
+      "Training validation, immutable archive/DOI, editorial closure, exact re-review, and human review remain; readiness holds 80",
+    ],
+    links: [
+      { label: "P4 canonical status", href: `${GH}/project-context/SSOT/paper-4/status.md` },
+      { label: "Exact v1.0.257 review evidence", href: `${PR}/INT_v3/ROUND_2026-07-16-P4-v1.0.257-EXACTPDF-726acd8b-NONANTHROPIC-CONFIRM` },
+    ],
+  },
+  {
     id: "p5-v01136-confirmation-board-closure-2026-07-15",
     dateISO: "2026-07-15",
     timePT: "11:52 PM",

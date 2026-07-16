@@ -1,3 +1,14 @@
+## v0.1.136 EXACT CONFIRMATION BOARD TRUTH-AUDITED — 2026-07-16 · READINESS/CAP 74 HOLD
+
+**Binding:** 40-page exact local candidate, PDF SHA-256 `cd3c8e81fc6811438d8db7059631feb2d9ccf324f2996370ee555e68def91fc4`, reviewed at commit `e97f0b7365267355d06e5a979738ea5d6675950f`.
+
+- **Board:** Gemini direct API **MAJOR REVISIONS** and GPT-5.6 Sol/high through ChatGPT-subscription Codex CLI **MAJOR REVISIONS**. Grok failed twice with HTTP 503 before inference and supplied no verdict or findings; no OpenAI API or Anthropic route was used.
+- **Verified scientific/statistical gates:** the program-mixture calculation does not bound an untested program-by-environment interaction; the K=13 focal estimator lacks like-for-like angular and 3-D/multiway clustering robustness; classifier validation remains non-independent at the focal scale; Phase-2 multiplicity and the claimed void-specific 73% reassignment require correction; and the K=13 focal hierarchy conflicts with its generating artifact.
+- **Verified release/presentation gates:** claimed retained T-Web eigen arrays are absent from the tracked release, and no immutable public tag/DOI exists. Paper IV must be public and independently reviewable. The manuscript also needs a DESIVAST-first structure, restrained artifact tags, shorter captions and inline statistical passages, and earlier orientation to the T-Web/DESIVAST count difference.
+- **No readiness uplift:** the exact board is not closed. Interaction analysis, like-for-like K=13 robustness, release correction/archive, Paper IV availability, structural editing, exact re-review, and human/editorial AJ review remain open. Readiness/cap remains **74**; no submission or acceptance is claimed.
+
+Evidence: `project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P5-v0.1.136-EXACTPDF-cd3c8e81-NONANTHROPIC-CONFIRM/P5_v0.1.136_truth_audit.md`.
+
 ## v0.1.136 CONFIRMATION-BOARD TRUTH-AUDIT CLOSURE — 2026-07-15 · READINESS/CAP 74 HOLD
 
 **Binding:** 40-page exact local candidate, PDF SHA-256 `cd3c8e81fc6811438d8db7059631feb2d9ccf324f2996370ee555e68def91fc4`, MD5 `501740e8e6a337dbd180e81ba16eec21`; Convex version row `k570jkw6zm30syyzvkx41ezxqh8amcge`.
