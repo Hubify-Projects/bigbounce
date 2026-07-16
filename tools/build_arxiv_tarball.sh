@@ -7,6 +7,15 @@
 set -euo pipefail
 
 TEX="$1"; OUT="$2"
+TINYTEX_BIN="${TINYTEX_BIN:-$HOME/Library/TinyTeX/bin/universal-darwin}"
+if command -v pdflatex >/dev/null 2>&1; then
+  PDFLATEX="$(command -v pdflatex)"
+elif [[ -x "$TINYTEX_BIN/pdflatex" ]]; then
+  PDFLATEX="$TINYTEX_BIN/pdflatex"
+else
+  echo "FAIL: pdflatex not found on PATH or at $TINYTEX_BIN" >&2
+  exit 127
+fi
 TEXDIR="$(cd "$(dirname "$TEX")" && pwd)"
 BASE="$(basename "$TEX" .tex)"
 STAGE="$(mktemp -d /tmp/arxiv_${OUT}_XXXX)"
@@ -34,8 +43,8 @@ for f in "$TEXDIR"/*.sty "$TEXDIR"/*.cls; do [[ -f "$f" ]] && cp "$f" "$STAGE/";
 
 # standalone compile test (uses .bbl; no bibtex run)
 ( cd "$STAGE" \
-  && pdflatex -interaction=nonstopmode "$BASE.tex" > compile1.log 2>&1 \
-  && pdflatex -interaction=nonstopmode "$BASE.tex" > compile2.log 2>&1 )
+  && "$PDFLATEX" -interaction=nonstopmode "$BASE.tex" > compile1.log 2>&1 \
+  && "$PDFLATEX" -interaction=nonstopmode "$BASE.tex" > compile2.log 2>&1 )
 ERRS=$(grep -c '^!' "$STAGE/$BASE.log" || true)
 UNDEF=$(grep -c 'LaTeX Warning: Reference.*undefined\|LaTeX Warning: Citation.*undefined' "$STAGE/$BASE.log" || true)
 PAGES=$(pdfinfo "$STAGE/$BASE.pdf" | awk '/^Pages/{print $2}')
