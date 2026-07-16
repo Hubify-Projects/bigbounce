@@ -1,0 +1,93 @@
+{
+  "beta_injected_deg": 0.27,
+  "configs": [
+    {
+      "apod_fwhm_deg": 2.0,
+      "bias_deg": {
+        "unweighted": 0.0
+      },
+      "execution": {
+        "mode": "ordered_seed_parallel",
+        "realization_workers": 8,
+        "result_order": "ordered imap indices 0..N-1; seeds 42--541",
+        "workspace_cache": "one exact NmtWorkspace per spawned worker"
+      },
+      "fsky": 0.3226,
+      "gal_cut_deg": 20.0,
+      "n_real": 500,
+      "name": "purify_b",
+      "noise_sigma_pix_uK": 1.4554,
+      "physical_spectra": {
+        "contract": {
+          "array_dtype_for_hash": "little-endian float64",
+          "camb_collection": "lensed_scalar",
+          "camb_unit": "muK",
+          "healpy_synfast_order": [
+            "TT",
+            "EE",
+            "BB",
+            "TE"
+          ],
+          "raw_cl": true
+        },
+        "expected_camb_version": "1.6.6",
+        "generator": "CAMB",
+        "lmax": 1024,
+        "parameters": {
+          "As": 2.1e-09,
+          "H0_km_s_Mpc": 67.36,
+          "lens_potential_accuracy": 1,
+          "mnu_eV": 0.06,
+          "ns": 0.9649,
+          "ombh2": 0.02237,
+          "omch2": 0.12,
+          "omk": 0.0,
+          "tau": 0.0544
+        },
+        "production_version_match": true,
+        "resolved_camb_version": "1.6.6",
+        "sha256": {
+          "cl_bb_raw_uK2": "c1d4b730565ffb8eaa87663f6fe90bc0114c1596ca828065f3454c98ba92d528",
+          "cl_ee_raw_uK2": "7735597b158c8e4fe2643ef8196f3e597d5db353eebbebdf2c62768797101c19"
+        },
+        "validation": {
+          "bb_to_ee_ratio_max_ell30_200": 0.02021944809757193,
+          "bb_to_ee_ratio_min_ell30_200": 0.004077789674372945,
+          "d_ell_ee_at_ell_check_uK2": 1.1246800830962447,
+          "ell_scale_check": 140,
+          "raw_cl_ee_at_ell_check_uK2": 0.0003579824403945208,
+          "status": "pass"
+        }
+      },
+      "purify_b": true,
+      "recovered_beta_deg": {
+        "unweighted": 0.27
+      },
+      "runtime_s": 2275.5,
+      "sky_spectrum": "CAMB lensed_scalar raw C_ell EE/BB",
+      "software": {
+        "healpy": "1.19.0",
+        "numpy": "1.26.4",
+        "pymaster": "2.6"
+      },
+      "theory_operator": "NmtWorkspace.get_bandpower_windows exact tensor contraction",
+      "window_equivalence_max_abs": 1.3010426069826053e-18,
+      "window_shape": [
+        4,
+        20,
+        4,
+        1025
+      ]
+    }
+  ],
+  "experiment": "c10 NaMaster robustness battery (R23conf META-M1/M2/M3/M5/M6)",
+  "n_real": 500,
+  "seed_base": 42,
+  "spectrum_policy": "all configurations use pinned raw CAMB lensed EE/BB",
+  "superseded_effective_ell_anchor": {
+    "bias_deg": -0.032,
+    "recovered_beta_deg": 0.238,
+    "status": "superseded_by_exact_bandpower_window_operator"
+  },
+  "total_runtime_s": 2276.3
+}

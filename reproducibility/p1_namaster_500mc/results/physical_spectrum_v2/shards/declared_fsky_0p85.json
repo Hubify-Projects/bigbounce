@@ -1,0 +1,78 @@
+{
+  "experiment": "declared NaMaster f_sky and sign checks with exact bandpower windows",
+  "results": [
+    {
+      "beta_deg": 0.27,
+      "fsky_actual_apodized": 0.8496093575899238,
+      "fsky_target": 0.85,
+      "gal_cut_deg": 8.62692655867864,
+      "lmax": 1024,
+      "mc_mean_standard_error_deg": 0.00034850248199965454,
+      "n_real": 500,
+      "name": "fsky_0p85",
+      "nside": 512,
+      "per_realization_beta_std_deg": 0.007792752400786244,
+      "physical_spectra": {
+        "contract": {
+          "array_dtype_for_hash": "little-endian float64",
+          "camb_collection": "lensed_scalar",
+          "camb_unit": "muK",
+          "healpy_synfast_order": [
+            "TT",
+            "EE",
+            "BB",
+            "TE"
+          ],
+          "raw_cl": true
+        },
+        "expected_camb_version": "1.6.6",
+        "generator": "CAMB",
+        "lmax": 1024,
+        "parameters": {
+          "As": 2.1e-09,
+          "H0_km_s_Mpc": 67.36,
+          "lens_potential_accuracy": 1,
+          "mnu_eV": 0.06,
+          "ns": 0.9649,
+          "ombh2": 0.02237,
+          "omch2": 0.12,
+          "omk": 0.0,
+          "tau": 0.0544
+        },
+        "production_version_match": true,
+        "resolved_camb_version": "1.6.6",
+        "sha256": {
+          "cl_bb_raw_uK2": "c1d4b730565ffb8eaa87663f6fe90bc0114c1596ca828065f3454c98ba92d528",
+          "cl_ee_raw_uK2": "7735597b158c8e4fe2643ef8196f3e597d5db353eebbebdf2c62768797101c19"
+        },
+        "validation": {
+          "bb_to_ee_ratio_max_ell30_200": 0.02021944809757193,
+          "bb_to_ee_ratio_min_ell30_200": 0.004077789674372945,
+          "d_ell_ee_at_ell_check_uK2": 1.1246800830962447,
+          "ell_scale_check": 140,
+          "raw_cl_ee_at_ell_check_uK2": 0.0003579824403945208,
+          "status": "pass"
+        }
+      },
+      "recovered_beta_deg": 0.27,
+      "runtime_s": 5093.768035173416,
+      "seed_base": 42,
+      "signed_bias_deg": 0.0,
+      "snr_exact_window": 50.00573486480307,
+      "window_equivalence_max_abs": 2.6020852139652106e-18,
+      "window_shape": [
+        4,
+        20,
+        4,
+        1025
+      ]
+    }
+  ],
+  "software": {
+    "healpy": "1.19.0",
+    "numpy": "1.26.4",
+    "pymaster": "2.6"
+  },
+  "status_of_historical_outputs": "superseded effective-ell-template evidence preserved at top-level results",
+  "total_runtime_s": 5093.769232273102
+}

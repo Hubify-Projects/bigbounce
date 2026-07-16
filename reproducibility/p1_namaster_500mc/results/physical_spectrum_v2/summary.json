@@ -1,0 +1,97 @@
+{
+  "experiment": "NaMaster EB Birefringence Analysis",
+  "nside": 512,
+  "lmax": 1024,
+  "f_sky": 0.3226013233644999,
+  "noise_level_ukarmin": 10.0,
+  "n_mc_realizations": 500,
+  "seed_base": 42,
+  "run_mode": "production",
+  "physical_spectra": {
+    "generator": "CAMB",
+    "expected_camb_version": "1.6.6",
+    "resolved_camb_version": "1.6.6",
+    "production_version_match": true,
+    "parameters": {
+      "H0_km_s_Mpc": 67.36,
+      "ombh2": 0.02237,
+      "omch2": 0.12,
+      "omk": 0.0,
+      "mnu_eV": 0.06,
+      "tau": 0.0544,
+      "As": 2.1e-09,
+      "ns": 0.9649,
+      "lens_potential_accuracy": 1
+    },
+    "contract": {
+      "camb_collection": "lensed_scalar",
+      "camb_unit": "muK",
+      "raw_cl": true,
+      "healpy_synfast_order": [
+        "TT",
+        "EE",
+        "BB",
+        "TE"
+      ],
+      "array_dtype_for_hash": "little-endian float64"
+    },
+    "lmax": 1024,
+    "sha256": {
+      "cl_ee_raw_uK2": "7735597b158c8e4fe2643ef8196f3e597d5db353eebbebdf2c62768797101c19",
+      "cl_bb_raw_uK2": "c1d4b730565ffb8eaa87663f6fe90bc0114c1596ca828065f3454c98ba92d528"
+    },
+    "validation": {
+      "ell_scale_check": 140,
+      "raw_cl_ee_at_ell_check_uK2": 0.0003579824403945208,
+      "d_ell_ee_at_ell_check_uK2": 1.1246800830962447,
+      "bb_to_ee_ratio_min_ell30_200": 0.004077789674372945,
+      "bb_to_ee_ratio_max_ell30_200": 0.02021944809757193,
+      "status": "pass"
+    }
+  },
+  "theory_operator": "NmtWorkspace.get_bandpower_windows exact tensor contraction",
+  "window_shape": [
+    4,
+    20,
+    4,
+    1025
+  ],
+  "window_equivalence_max_abs": 1.4094628242311558e-18,
+  "software": {
+    "numpy": "1.26.4",
+    "healpy": "1.19.0",
+    "pymaster": "2.6"
+  },
+  "execution": {
+    "realization_workers": 8,
+    "ordered_seed_aggregation": true
+  },
+  "paper1_prediction_deg": 0.27,
+  "observed_value_deg": 0.342,
+  "observed_error_deg": 0.094,
+  "results": {
+    "beta_paper1": {
+      "input_beta_deg": 0.27,
+      "recovered_beta_deg": 0.27,
+      "bias_deg": 0.0,
+      "signed_bias_deg": 0.0,
+      "per_realization_beta_std_deg": 0.012815892407335206,
+      "mc_mean_standard_error_deg": 0.0005731441323024989,
+      "snr_namaster": 30.41269538415394,
+      "snr_ratio_to_observed": 0.791
+    },
+    "beta_observed": {
+      "input_beta_deg": 0.342,
+      "recovered_beta_deg": 0.3420000000000001,
+      "snr_namaster": 38.43607935700041
+    },
+    "beta_null": {
+      "input_beta_deg": 0.0,
+      "recovered_beta_deg": 0.0,
+      "snr_namaster": 0.0
+    },
+    "consistency_sigma": 0.7659574468085107
+  },
+  "scientific_conclusion": "Paper 1 prediction beta=0.27 deg is 0.77sigma consistent with observed value 0.342+-0.094 deg. NaMaster analysis confirms SNR=30.41 for beta=0.27 at ACT sensitivity (f_sky=0.32). Beta recovery bias = 0.0000 deg.",
+  "runtime_seconds": 701.5474569797516
+}

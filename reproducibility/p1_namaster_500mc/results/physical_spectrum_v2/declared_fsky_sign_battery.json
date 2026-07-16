@@ -1,0 +1,230 @@
+{
+  "child_shards": [
+    {
+      "bytes": 2393,
+      "path": "shards/declared_fsky_0p85.json",
+      "sha256": "3ffc34ef91db093dc6d935e35e1a29eb4856d77ab68d9205d1273929c540f511"
+    },
+    {
+      "bytes": 2396,
+      "path": "shards/declared_fsky_0p65.json",
+      "sha256": "3bc4f500163bb5b35c344fe425f9487d8d6848836f15d1c7566d283786212a13"
+    },
+    {
+      "bytes": 2409,
+      "path": "shards/declared_negative_beta_fsky_0p32.json",
+      "sha256": "700df5feb0679c34f0c85935146031e7db3887c1dd7b3059453f191a002f6806"
+    }
+  ],
+  "experiment": "declared NaMaster f_sky and sign checks with exact bandpower windows",
+  "n_real": 500,
+  "results": [
+    {
+      "beta_deg": 0.27,
+      "fsky_actual_apodized": 0.8496093575899238,
+      "fsky_target": 0.85,
+      "gal_cut_deg": 8.62692655867864,
+      "lmax": 1024,
+      "mc_mean_standard_error_deg": 0.00034850248199965454,
+      "n_real": 500,
+      "name": "fsky_0p85",
+      "nside": 512,
+      "per_realization_beta_std_deg": 0.007792752400786244,
+      "physical_spectra": {
+        "contract": {
+          "array_dtype_for_hash": "little-endian float64",
+          "camb_collection": "lensed_scalar",
+          "camb_unit": "muK",
+          "healpy_synfast_order": [
+            "TT",
+            "EE",
+            "BB",
+            "TE"
+          ],
+          "raw_cl": true
+        },
+        "expected_camb_version": "1.6.6",
+        "generator": "CAMB",
+        "lmax": 1024,
+        "parameters": {
+          "As": 2.1e-09,
+          "H0_km_s_Mpc": 67.36,
+          "lens_potential_accuracy": 1,
+          "mnu_eV": 0.06,
+          "ns": 0.9649,
+          "ombh2": 0.02237,
+          "omch2": 0.12,
+          "omk": 0.0,
+          "tau": 0.0544
+        },
+        "production_version_match": true,
+        "resolved_camb_version": "1.6.6",
+        "sha256": {
+          "cl_bb_raw_uK2": "c1d4b730565ffb8eaa87663f6fe90bc0114c1596ca828065f3454c98ba92d528",
+          "cl_ee_raw_uK2": "7735597b158c8e4fe2643ef8196f3e597d5db353eebbebdf2c62768797101c19"
+        },
+        "validation": {
+          "bb_to_ee_ratio_max_ell30_200": 0.02021944809757193,
+          "bb_to_ee_ratio_min_ell30_200": 0.004077789674372945,
+          "d_ell_ee_at_ell_check_uK2": 1.1246800830962447,
+          "ell_scale_check": 140,
+          "raw_cl_ee_at_ell_check_uK2": 0.0003579824403945208,
+          "status": "pass"
+        }
+      },
+      "recovered_beta_deg": 0.27,
+      "runtime_s": 5093.768035173416,
+      "seed_base": 42,
+      "signed_bias_deg": 0.0,
+      "snr_exact_window": 50.00573486480307,
+      "window_equivalence_max_abs": 2.6020852139652106e-18,
+      "window_shape": [
+        4,
+        20,
+        4,
+        1025
+      ]
+    },
+    {
+      "beta_deg": 0.27,
+      "fsky_actual_apodized": 0.6503906222283445,
+      "fsky_target": 0.65,
+      "gal_cut_deg": 20.487315114722662,
+      "lmax": 1024,
+      "mc_mean_standard_error_deg": 0.00039725320416131613,
+      "n_real": 500,
+      "name": "fsky_0p65",
+      "nside": 512,
+      "per_realization_beta_std_deg": 0.008882851687843052,
+      "physical_spectra": {
+        "contract": {
+          "array_dtype_for_hash": "little-endian float64",
+          "camb_collection": "lensed_scalar",
+          "camb_unit": "muK",
+          "healpy_synfast_order": [
+            "TT",
+            "EE",
+            "BB",
+            "TE"
+          ],
+          "raw_cl": true
+        },
+        "expected_camb_version": "1.6.6",
+        "generator": "CAMB",
+        "lmax": 1024,
+        "parameters": {
+          "As": 2.1e-09,
+          "H0_km_s_Mpc": 67.36,
+          "lens_potential_accuracy": 1,
+          "mnu_eV": 0.06,
+          "ns": 0.9649,
+          "ombh2": 0.02237,
+          "omch2": 0.12,
+          "omk": 0.0,
+          "tau": 0.0544
+        },
+        "production_version_match": true,
+        "resolved_camb_version": "1.6.6",
+        "sha256": {
+          "cl_bb_raw_uK2": "c1d4b730565ffb8eaa87663f6fe90bc0114c1596ca828065f3454c98ba92d528",
+          "cl_ee_raw_uK2": "7735597b158c8e4fe2643ef8196f3e597d5db353eebbebdf2c62768797101c19"
+        },
+        "validation": {
+          "bb_to_ee_ratio_max_ell30_200": 0.02021944809757193,
+          "bb_to_ee_ratio_min_ell30_200": 0.004077789674372945,
+          "d_ell_ee_at_ell_check_uK2": 1.1246800830962447,
+          "ell_scale_check": 140,
+          "raw_cl_ee_at_ell_check_uK2": 0.0003579824403945208,
+          "status": "pass"
+        }
+      },
+      "recovered_beta_deg": 0.27,
+      "runtime_s": 5089.987853050232,
+      "seed_base": 42,
+      "signed_bias_deg": 0.0,
+      "snr_exact_window": 43.466497196652924,
+      "window_equivalence_max_abs": 3.957337929572091e-18,
+      "window_shape": [
+        4,
+        20,
+        4,
+        1025
+      ]
+    },
+    {
+      "beta_deg": -0.27,
+      "fsky_actual_apodized": 0.319801337445615,
+      "fsky_target": 0.32,
+      "gal_cut_deg": 42.84364304359634,
+      "lmax": 1024,
+      "mc_mean_standard_error_deg": 0.0005153425694893213,
+      "n_real": 500,
+      "name": "negative_beta_fsky_0p32",
+      "nside": 512,
+      "per_realization_beta_std_deg": 0.011523410170775315,
+      "physical_spectra": {
+        "contract": {
+          "array_dtype_for_hash": "little-endian float64",
+          "camb_collection": "lensed_scalar",
+          "camb_unit": "muK",
+          "healpy_synfast_order": [
+            "TT",
+            "EE",
+            "BB",
+            "TE"
+          ],
+          "raw_cl": true
+        },
+        "expected_camb_version": "1.6.6",
+        "generator": "CAMB",
+        "lmax": 1024,
+        "parameters": {
+          "As": 2.1e-09,
+          "H0_km_s_Mpc": 67.36,
+          "lens_potential_accuracy": 1,
+          "mnu_eV": 0.06,
+          "ns": 0.9649,
+          "ombh2": 0.02237,
+          "omch2": 0.12,
+          "omk": 0.0,
+          "tau": 0.0544
+        },
+        "production_version_match": true,
+        "resolved_camb_version": "1.6.6",
+        "sha256": {
+          "cl_bb_raw_uK2": "c1d4b730565ffb8eaa87663f6fe90bc0114c1596ca828065f3454c98ba92d528",
+          "cl_ee_raw_uK2": "7735597b158c8e4fe2643ef8196f3e597d5db353eebbebdf2c62768797101c19"
+        },
+        "validation": {
+          "bb_to_ee_ratio_max_ell30_200": 0.02021944809757193,
+          "bb_to_ee_ratio_min_ell30_200": 0.004077789674372945,
+          "d_ell_ee_at_ell_check_uK2": 1.1246800830962447,
+          "ell_scale_check": 140,
+          "raw_cl_ee_at_ell_check_uK2": 0.0003579824403945208,
+          "status": "pass"
+        }
+      },
+      "recovered_beta_deg": -0.27,
+      "runtime_s": 5092.350563049316,
+      "seed_base": 42,
+      "signed_bias_deg": 0.0,
+      "snr_exact_window": 30.430851531617492,
+      "window_equivalence_max_abs": 1.1926223897340549e-18,
+      "window_shape": [
+        4,
+        20,
+        4,
+        1025
+      ]
+    }
+  ],
+  "seed_base": 42,
+  "software": {
+    "healpy": "1.19.0",
+    "numpy": "1.26.4",
+    "pymaster": "2.6"
+  },
+  "status_of_historical_outputs": "superseded effective-ell-template evidence preserved at top-level results",
+  "theory_operator": "NmtWorkspace.get_bandpower_windows exact tensor contraction",
+  "total_runtime_s_sum_of_shards": 15276.111427545547
+}

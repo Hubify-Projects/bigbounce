@@ -1,0 +1,21 @@
+{
+  "child_sha256": [
+    "3ffc34ef91db093dc6d935e35e1a29eb4856d77ab68d9205d1273929c540f511",
+    "3bc4f500163bb5b35c344fe425f9487d8d6848836f15d1c7566d283786212a13",
+    "700df5feb0679c34f0c85935146031e7db3887c1dd7b3059453f191a002f6806"
+  ],
+  "config_names": [
+    "fsky_0p85",
+    "fsky_0p65",
+    "negative_beta_fsky_0p32"
+  ],
+  "n_real": 500,
+  "result_bytes": 7163,
+  "result_file": "declared_fsky_sign_battery.json",
+  "result_sha256": "13fc8f0b99bcd0bff3307a36b2753f6f375449a4e3edc41dc8c50298e277e2be",
+  "schema_version": 1,
+  "seed_end": 541,
+  "seed_start": 42,
+  "suite": "declared_fsky_sign_merged",
+  "theory_operator": "NmtWorkspace.get_bandpower_windows exact tensor contraction"
+}

@@ -1,0 +1,36 @@
+{
+  "code_sha256": "cadc84a772b3ff5e6b525f6420bfdb29d77ccf74ed702f7e71905a136df9baa3",
+  "config_names": [
+    "canonical_refit"
+  ],
+  "configs": [
+    {
+      "canonical_artifact": true,
+      "extra_fits": true,
+      "name": "canonical_refit"
+    }
+  ],
+  "execution": [
+    {
+      "mode": "canonical_artifact_reuse",
+      "realization_workers": 0,
+      "result_order": "saved seed order 42--541"
+    }
+  ],
+  "n_real": 500,
+  "result_bytes": 2839,
+  "result_file": "c10_canonical_refit.json",
+  "result_sha256": "3e142c528978fcc61201ff1f0b53244de52217126063d1724a2e6b7ebc727c04",
+  "runtime_s": 60.5,
+  "schema_version": 1,
+  "seed_end": 541,
+  "seed_start": 42,
+  "software": {
+    "healpy": "1.19.0",
+    "numpy": "1.26.4",
+    "pymaster": "2.6"
+  },
+  "suite": "c10",
+  "theory_operator": "NmtWorkspace.get_bandpower_windows exact tensor contraction",
+  "window_equivalence_max_abs": 1.4094628242311558e-18
+}
