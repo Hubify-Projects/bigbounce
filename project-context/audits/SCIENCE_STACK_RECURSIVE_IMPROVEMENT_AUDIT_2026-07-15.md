@@ -705,15 +705,25 @@ models are available.
 
 ## Immediate next action
 
-P0 dispatch enforcement, strict six-paper preflight, and the P4 v1.0.258 /
-P5 v0.1.138 computational-closure packages are implemented. The next science
-gate is an authorized exact-PDF residual confirmation board on those two exact
-PDFs, followed by finding-level truth audit without relabeling prior verdicts.
-In parallel, create the complete BigBounce receipt inventory, preserve the P5
-overwritten-first-pass gap as an explicit reconciliation failure, ingest the
-missing historical events, and drive reconciliation to 100%. Only then may the
-now-executable known-pattern escape and closure-regression metrics be treated as
-campaign-wide learning evidence. The remaining unchecked acceptance items—
-especially the cross-paper claim graph, machine-readable rule coverage, two
-clean confirmation waves, and all-six release gates—remain governing work
-rather than being inferred from the P4/P5 closures.
+P0 dispatch enforcement, strict six-paper preflight, and the P4/P5 computational
+closure packages are implemented. P1B is now the active science critical path:
+its corrected 500-realization CAMB/NaMaster canonical production is complete,
+the six non-purification robustness configurations are running with durable
+checkpoints, and the purification mask/field harmonic mismatch discovered by a
+real smoke run is fixed and regression-tested at commit `f2564cf4`. Canonical
+realization parallelism reduced the measured bounded benchmark wall time by
+25.6% without changing the scientific JSON.
+
+The preflight also no longer hard-codes historical manifest v1B.0.108. Commit
+`23582538` makes the analysis-manifest validator consume the cataloged current
+path and fail closed when that binding is absent. This converts version-matched
+manifest selection from agent convention into an executable gate.
+
+The next gate is to finish the P1B robustness battery, run the corrected
+purification configuration, merge and verify the receipts, and produce a
+version-matched immutable P1B release for exact-PDF non-Anthropic review. In
+parallel only where it does not contend with that compute, the remaining
+campaign-wide work is still to complete receipt/event reconciliation and the
+cross-paper claim graph. The unchecked acceptance items above remain governing
+work; neither the P1B compute progress nor prior P4/P5 closures imply that the
+recursive-improvement program is fully implemented.
