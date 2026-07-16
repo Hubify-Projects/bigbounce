@@ -21,6 +21,28 @@ def test_purification_binds_mask_limit() -> None:
     assert field_harmonic_kwargs(lmax=512, purify_b=False) == {"lmax": 512}
 
 
+@pytest.mark.parametrize("value", [512.5, np.float64(512.0), True])
+def test_field_limit_rejects_non_integer_inputs(value: object) -> None:
+    with pytest.raises(ValueError, match="lmax must be an integer"):
+        field_harmonic_kwargs(lmax=value, purify_b=True)  # type: ignore[arg-type]
+
+
+@pytest.mark.parametrize(
+    ("name", "kwargs"),
+    [
+        ("nside", {"nside": 8.0, "lmax": 10, "n_bins": 2}),
+        ("lmax", {"nside": 8, "lmax": 10.5, "n_bins": 2}),
+        ("n_bins", {"nside": 8, "lmax": 10, "n_bins": 2.0}),
+        ("ell_min", {"nside": 8, "lmax": 10, "n_bins": 2, "ell_min": 3.5}),
+    ],
+)
+def test_edges_reject_non_integer_inputs(
+    name: str, kwargs: dict[str, object]
+) -> None:
+    with pytest.raises(ValueError, match=rf"{name} must be an integer"):
+        bandpower_edges(**kwargs)  # type: ignore[arg-type]
+
+
 @pytest.mark.parametrize(
     "kwargs",
     [

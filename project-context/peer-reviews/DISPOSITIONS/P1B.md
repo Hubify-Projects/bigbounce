@@ -1,7 +1,7 @@
 # P1B disposition ledger
 
 **Canonical source:** `arxiv/paper1b_namaster_proof.tex`
-**Current paper-local version:** `v2B.0.6` (2026-07-16 confirmation closure)
+**Current paper-local version:** `v2B.0.7` (2026-07-16 integer-contract closure)
 **Claim policy:** exact-window and receipt software validation; no sky measurement,
 foreground model, cosmological inference, or ECH/bounce evidence. The legacy
 v1B computational-companion dispositions remain below as retained history.
@@ -30,3 +30,4 @@ v1B computational-companion dispositions remain below as retained history.
 | DP1B-20 | Adding Author Contributions stranded the sharded-validation paragraph under the wrong section. | **CLOSED-BY-LAYOUT v2B.0.6** | Sharded validation is restored to Worked Examples before the Author Contributions section; the closure regression is visually audited. |
 | DP1B-21 | The printed minimal API call used nonexistent keyword `beta_deg` instead of `beta_rad`. | **CLOSED-BY-DOC v2B.0.6** | The manuscript now prints the executable `beta_rad=np.deg2rad(0.25)` call, matching `windows.py` and the retained example. |
 | DP1B-22 | The Windows CI matrix executed a POSIX multiline example under the runner-default PowerShell shell. | **CLOSED-BY-CI be218ed7** | The independent-example step explicitly selects Bash; `verify_ci_shell_portability.py` and regression fixtures now fail future packet preflight on the same cross-platform escape. |
+| DP1B-23 | Public multipole helpers accepted fractional harmonic limits and silently truncated integer bin edges. | **CLOSED-BY-CODE v2B.0.7 / package 0.1.5** | All integer-valued public multipole arguments now reject floats and booleans without coercion; seven boundary regressions cover field limits and bin construction. |

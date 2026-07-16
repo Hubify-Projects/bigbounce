@@ -57,6 +57,25 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p1b-v2b007-integer-contract-closure-2026-07-16",
+    dateISO: "2026-07-16",
+    timePT: "1:15 PM",
+    kind: "closure-wave",
+    title: "P1B v2B.0.7 — multipole input contract closed",
+    papers: ["P1B"],
+    summary:
+      "A focused Codex-subscription confirmation verified the Windows Bash closure and found one new minor: fractional public harmonic limits were accepted and silently truncated. Package 0.1.5 now validates every integer-valued multipole argument without coercion and adds seven boundary regressions; readiness holds 56.",
+    keyTakeaways: [
+      "Windows CI execution under Bash was independently confirmed",
+      "Fractional and boolean harmonic inputs now fail closed",
+      "The package suite increases from 28 to 35 tests",
+      "Archive/DOI, exact v2B.0.7 confirmation, and human review remain open",
+    ],
+    links: [
+      { label: "Codex confirmation", href: `${PR}/INT_v3/ROUND_2026-07-16-P1B-v2B.0.6-CI-CLOSURE-CODEX-CONFIRM/intwave_P1B_codex_1307.md` },
+    ],
+  },
+  {
     id: "p1b-v2b006-confirmation-regression-closure-2026-07-16",
     dateISO: "2026-07-16",
     timePT: "12:45 PM",

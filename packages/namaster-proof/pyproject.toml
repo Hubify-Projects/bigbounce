@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "namaster-proof"
-version = "0.1.4"
+version = "0.1.5"
 description = "Exact NaMaster window operators and content-bound checkpoint receipts"
 readme = "README.md"
 requires-python = ">=3.10"
