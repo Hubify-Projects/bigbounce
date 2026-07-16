@@ -1,7 +1,7 @@
 # P1B disposition ledger
 
 **Canonical source:** `arxiv/paper1b_namaster_proof.tex`
-**Current paper-local version:** `v2B.0.7` (2026-07-16 integer-contract closure)
+**Current paper-local version:** `v2B.0.8` (2026-07-16 strict-validation closure)
 **Claim policy:** exact-window and receipt software validation; no sky measurement,
 foreground model, cosmological inference, or ECH/bounce evidence. The legacy
 v1B computational-companion dispositions remain below as retained history.
@@ -31,3 +31,5 @@ v1B computational-companion dispositions remain below as retained history.
 | DP1B-21 | The printed minimal API call used nonexistent keyword `beta_deg` instead of `beta_rad`. | **CLOSED-BY-DOC v2B.0.6** | The manuscript now prints the executable `beta_rad=np.deg2rad(0.25)` call, matching `windows.py` and the retained example. |
 | DP1B-22 | The Windows CI matrix executed a POSIX multiline example under the runner-default PowerShell shell. | **CLOSED-BY-CI be218ed7** | The independent-example step explicitly selects Bash; `verify_ci_shell_portability.py` and regression fixtures now fail future packet preflight on the same cross-platform escape. |
 | DP1B-23 | Public multipole helpers accepted fractional harmonic limits and silently truncated integer bin edges. | **CLOSED-BY-CODE v2B.0.7 / package 0.1.5** | All integer-valued public multipole arguments now reject floats and booleans without coercion; seven boundary regressions cover field limits and bin construction. |
+| DP1B-24 | Receipt metadata comparison used Python equality, allowing JSON boolean/integer and integer/float type substitutions. | **CLOSED-BY-CODE v2B.0.8 / package 0.1.6** | Metadata validation now uses recursive type-strict JSON equality; four regressions cover scalar and nested substitutions. |
+| DP1B-25 | Window equivalence allowed a broadcastable malformed `decouple_cell()` result to produce a false zero residual. | **CLOSED-BY-CODE v2B.0.8 / package 0.1.6** | The operator result must exactly match the finite `[4,n_band]` window result before subtraction; shape and non-finite regressions fail closed. |

@@ -52,6 +52,24 @@ def test_receipt_mutation_and_wrong_expectation_are_rejected(tmp_path):
         validate_json_receipt(result, expected={"suite": "other"})
 
 
+@pytest.mark.parametrize(
+    ("stored", "expected"),
+    [
+        (True, 1),
+        (1, True),
+        (1, 1.0),
+        ([1, {"enabled": True}], [1.0, {"enabled": 1}]),
+    ],
+)
+def test_metadata_validation_is_recursively_type_strict(
+    tmp_path, stored, expected
+):
+    result = tmp_path / "shard.json"
+    publish_json(result, {"values": [1]}, {"contract": stored})
+    with pytest.raises(ValueError, match="contract"):
+        validate_json_receipt(result, expected={"contract": expected})
+
+
 def test_metadata_cannot_override_content_binding(tmp_path):
     with pytest.raises(ValueError, match="protected receipt fields"):
         publish_json(

@@ -43,6 +43,21 @@ def receipt_path(path: Path) -> Path:
     return path.with_name(path.name + ".receipt.json")
 
 
+def _json_equal_strict(actual: Any, expected: Any) -> bool:
+    """Compare JSON values recursively without Python bool/number coercion."""
+    if type(actual) is not type(expected):
+        return False
+    if isinstance(expected, dict):
+        return actual.keys() == expected.keys() and all(
+            _json_equal_strict(actual[key], value) for key, value in expected.items()
+        )
+    if isinstance(expected, list):
+        return len(actual) == len(expected) and all(
+            _json_equal_strict(left, right) for left, right in zip(actual, expected)
+        )
+    return actual == expected
+
+
 def _atomic_write(path: Path, data: bytes) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     temporary = path.with_name(f".{path.name}.tmp.{os.getpid()}")
@@ -118,7 +133,7 @@ def verify_json_receipt(path: Path) -> tuple[dict[str, Any], dict[str, Any]]:
     mismatches = {
         key: {"expected": value, "actual": receipt.get(key)}
         for key, value in expected.items()
-        if receipt.get(key) != value
+        if not _json_equal_strict(receipt.get(key), value)
     }
     if mismatches:
         raise ValueError(f"invalid receipt for {path}: {mismatches}")
@@ -143,7 +158,7 @@ def validate_json_receipt(
     mismatches = {
         key: {"expected": value, "actual": receipt.get(key)}
         for key, value in checks.items()
-        if receipt.get(key) != value
+        if not _json_equal_strict(receipt.get(key), value)
     }
     if mismatches:
         raise ValueError(f"invalid receipt for {path}: {mismatches}")

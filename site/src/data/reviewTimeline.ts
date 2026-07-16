@@ -57,6 +57,27 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p1b-v2b008-strict-validation-closure-2026-07-16",
+    dateISO: "2026-07-16",
+    timePT: "1:31 PM",
+    kind: "closure-wave",
+    title: "P1B v2B.0.8 — strict receipt and operator validation",
+    papers: ["P1B"],
+    summary:
+      "The v2B.0.7 exact board repeated the disclosed archive gate and found two valid software minors: Python equality accepted JSON type substitutions, and a malformed decoupled operator shape could broadcast to a false zero residual. Package 0.1.6 closes both with recursive type-strict comparison, exact shape/finite checks, and six regressions; readiness holds 56.",
+    keyTakeaways: [
+      "Boolean, integer, and floating-point metadata are no longer interchangeable",
+      "Exact-window equivalence requires an exact finite [4,n_band] operator result",
+      "Package coverage increases to 41 tests",
+      "Archive/DOI, exact v2B.0.8 confirmation, and human review remain open",
+    ],
+    links: [
+      { label: "Codex raw", href: `${PR}/INT_v3/ROUND_2026-07-16-P1B-v2B.0.7-EXACTPDF-77a79089-JORS-NONANTHROPIC-CONFIRM/intwave_P1B_codex_1322.md` },
+      { label: "Grok raw", href: `${PR}/INT_v3/ROUND_2026-07-16-P1B-v2B.0.7-EXACTPDF-77a79089-JORS-NONANTHROPIC-CONFIRM/API_P1B_grok.md` },
+      { label: "Gemini raw", href: `${PR}/INT_v3/ROUND_2026-07-16-P1B-v2B.0.7-EXACTPDF-77a79089-JORS-NONANTHROPIC-CONFIRM/API_P1B_gemini.md` },
+    ],
+  },
+  {
     id: "p1b-v2b007-integer-contract-closure-2026-07-16",
     dateISO: "2026-07-16",
     timePT: "1:15 PM",

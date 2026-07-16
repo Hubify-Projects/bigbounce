@@ -23,8 +23,8 @@
 
 \newcommand{\software}{\texttt{namaster-proof}}
 \newcommand{\Cl}{C_\ell}
-\newcommand{\paperVersion}{v2B.0.7}
-\newcommand{\paperTimestamp}{2026-07-16 13:14 PT}
+\newcommand{\paperVersion}{v2B.0.8}
+\newcommand{\paperTimestamp}{2026-07-16 13:31 PT}
 
 \title{\software: Exact pseudo-\(\Cl\) window inference and
 content-bound validation for reproducible spin-2 analyses}
@@ -112,9 +112,12 @@ The package is divided into three modules:
 
 The functions accept array-like inputs and return NumPy arrays or plain Python
 dictionaries.  NaMaster is deliberately not an installation dependency:
-window functions use the small workspace protocol described above, which makes
-the algebra testable with synthetic linear operators and permits users to pin
-PyMaster independently.
+window functions require a workspace exposing
+\nolinkurl{get_bandpower_windows()}, \nolinkurl{couple_cell(cls)}, and
+\nolinkurl{decouple_cell(coupled)}. The first must return a finite
+\([4,n_b,4,n_\ell]\) tensor and the couple--decouple route must return a finite
+\([4,n_b]\) array. This small protocol makes the algebra testable with synthetic
+linear operators and permits users to pin PyMaster independently.
 
 \section{Exact-Window Inference}
 
@@ -162,7 +165,9 @@ handle, parses those immutable byte snapshots as JSON objects, and recomputes
 every protected field from the same result bytes it returns.
 \texttt{validate\_json\_receipt}
 additionally checks caller-asserted metadata such as a suite identifier, seed range,
-or realization count.  Missing files, malformed objects, changed bytes,
+or realization count using recursive JSON-type-strict equality, so booleans,
+integers, and floating-point numbers are not interchangeable. Missing files,
+malformed objects, changed bytes,
 changes to protected receipt fields, or asserted-contract mismatches raise an exception. The two
 files are not one filesystem transaction, and coordinated replacement of both
 requires an external receipt anchor or trusted expected metadata to detect. The
@@ -172,7 +177,7 @@ failure.
 
 \section{Quality Control}
 
-Version 0.1.5 contains 35 automated tests covering numerical behavior, invalid
+Version 0.1.6 contains 41 automated tests covering numerical behavior, invalid
 inputs, the CLI, receipt mutation, protected fields, and compatibility with
 the original production helpers.  The window suite uses an exactly represented
 synthetic linear workspace to compare the precontracted response with the
@@ -261,7 +266,7 @@ CI covers Linux with Python 3.10--3.13 and Windows with Python 3.12. Directory
 metadata are synchronized on POSIX systems after atomic replacement.
 
 \paragraph{Programming language and dependencies.}
-Version 0.1.5 requires Python 3.10 or later and NumPy 1.24 or later. PyMaster
+Version 0.1.6 requires Python 3.10 or later and NumPy 1.24 or later. PyMaster
 is optional and is supplied by the user for physical NaMaster workspaces;
 the retained physical validation used PyMaster 2.6 and healpy 1.19.0.
 
@@ -279,7 +284,7 @@ The software is released under the MIT License.
 \paragraph{Archive.}
 A persistent archival identifier is not yet available. This is an explicit
 submission blocker, not a completed release claim. The submission candidate
-must bind version 0.1.5 to an immutable archive before journal submission.
+must bind version 0.1.6 to an immutable archive before journal submission.
 
 \paragraph{Validation artifacts.}
 The corrected physical example is bound to the
@@ -296,7 +301,10 @@ and the
 Researchers can reuse the window layer to test uniform spin-2 rotation models
 against any workspace exposing the small NaMaster protocol, reuse the multipole
 contracts to prevent field/bin support drift, or use the receipt layer for
-sharded JSON calculations outside cosmology. Extensions can add other
+sharded JSON calculations outside cosmology. The receipt primitive remains in
+the same package because it authenticates the exact validation artifacts
+produced by the window workflows; it is a small reusable module rather than a
+claim that the package is a general provenance framework. Extensions can add other
 angle-dependent spectrum bases, signed receipt anchors, or schema migrations.
 Questions, bug reports, and contributions are handled through the public
 repository issue tracker and pull-request workflow.

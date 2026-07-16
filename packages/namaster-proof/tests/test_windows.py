@@ -39,6 +39,34 @@ def test_window_response_matches_linear_operator():
     assert validate_window_equivalence(workspace, response, 0.27) < 1e-14
 
 
+def test_window_equivalence_rejects_broadcastable_operator_shape():
+    class BroadcastWorkspace(IdentityWorkspace):
+        def decouple_cell(self, coupled):
+            return np.asarray(coupled)[0]
+
+    workspace = BroadcastWorkspace()
+    response = build_rotation_response(
+        workspace, np.linspace(1.0, 2.0, 6), np.linspace(0.1, 0.2, 6)
+    )
+    with pytest.raises(ValueError, match="output shape"):
+        validate_window_equivalence(workspace, response, 0.27)
+
+
+def test_window_equivalence_rejects_nonfinite_operator_output():
+    class NonfiniteWorkspace(IdentityWorkspace):
+        def decouple_cell(self, coupled):
+            result = np.asarray(coupled, dtype=float).copy()
+            result[0, 0] = np.nan
+            return result
+
+    workspace = NonfiniteWorkspace()
+    response = build_rotation_response(
+        workspace, np.linspace(1.0, 2.0, 6), np.linspace(0.1, 0.2, 6)
+    )
+    with pytest.raises(ValueError, match="finite"):
+        validate_window_equivalence(workspace, response, 0.27)
+
+
 def test_recover_beta_on_exact_grid():
     workspace = IdentityWorkspace()
     response = build_rotation_response(

@@ -5,7 +5,7 @@ type: software
 authors:
   - family-names: Golden
     given-names: Houston
-version: 0.1.5
+version: 0.1.6
 date-released: 2026-07-16
 repository-code: "https://github.com/Hubify-Projects/bigbounce/tree/main/packages/namaster-proof"
 license: MIT

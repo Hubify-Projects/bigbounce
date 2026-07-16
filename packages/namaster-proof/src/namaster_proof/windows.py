@@ -147,7 +147,15 @@ def validate_window_equivalence(
         + np.sin(4.0 * beta) * response["_sin4_cls"]
     )
     via_windows = windowed_bandpowers(response, beta)
-    via_operator = workspace.decouple_cell(workspace.couple_cell(cls))
+    via_operator = np.asarray(
+        workspace.decouple_cell(workspace.couple_cell(cls)), dtype=float
+    )
+    if via_operator.shape != via_windows.shape:
+        raise ValueError(
+            "decouple_cell output shape does not match the exact window result"
+        )
+    if not np.all(np.isfinite(via_operator)):
+        raise ValueError("decouple_cell output must contain only finite values")
     return float(np.max(np.abs(via_windows - via_operator)))
 
 
