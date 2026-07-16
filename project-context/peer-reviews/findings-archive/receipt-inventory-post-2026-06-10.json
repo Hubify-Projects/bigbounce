@@ -1,131 +1,131 @@
 {
-  "generated_at": "2026-07-16T05:27:44Z",
+  "generated_at": "2026-07-16T08:29:14Z",
   "receipts": [
     {
-      "finding_count": null,
+      "finding_count": 14,
       "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P1A_chatgpt.md",
       "receipt_id": "receipt_51cd2f7abe145610073a",
       "sha256": "bfdeab7e96d36db39e504ebd7b8b523c6c09fef180d49509ea2e1122b104af54",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 4,
       "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P1A_gemini.md",
       "receipt_id": "receipt_9ec434d1f07ee8ad3988",
       "sha256": "88cf57ce00b440f1cd5f27ed8d211ff0b572d17c11bcb20cf35fa71185e25172",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 8,
       "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P1A_grok.md",
       "receipt_id": "receipt_899ed3df70391101b3b0",
       "sha256": "727a6345ace8156271feab4596880f061b94a9cb3ffe1c3890ca299aaf6ea1fd",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 13,
       "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P1B_chatgpt.md",
       "receipt_id": "receipt_c65f908d0cadc1cbd5ba",
       "sha256": "8778aa4af3eb41c3315185db71dbba5c5a9819dc46cb6245b78b1ba35c6d2b37",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 4,
       "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P1B_gemini.md",
       "receipt_id": "receipt_d292234dc7ef080b7996",
       "sha256": "e84ba3fe9a9937495b634f8f18ffd0256df3ea79cfc4f5c98e13c0f44f3141c4",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 5,
       "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P1B_grok.md",
       "receipt_id": "receipt_a6432d1534bc41e13e10",
       "sha256": "21fd96a73c324726c4caa0ce6011517d79f0741340de3e7aeadbc309ea13530d",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 14,
       "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P2_chatgpt.md",
       "receipt_id": "receipt_d892d43017ea01fed112",
       "sha256": "495d1ef484ec2863b053205f0dfcb142ee7d7236d9668d0f269ecedbeedd253f",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 4,
       "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P2_gemini.md",
       "receipt_id": "receipt_9f5da457957f4c847066",
       "sha256": "0dc508870c17f39612939dd80f8dbc9b89fb855beeefc5de2e4bee172b3d9780",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 5,
       "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P2_grok.md",
       "receipt_id": "receipt_33ca170577485f89642b",
       "sha256": "f3007a37159496d572af52d22889f7556dc002237ee2bddac62a68ead4dfa9a8",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 17,
       "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P3_chatgpt.md",
       "receipt_id": "receipt_850321e99288da88effb",
       "sha256": "04b85840fd37aeebea3d1499c6e17dff02e8ebf03dfe6e5ee68944bac2b61112",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 5,
       "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P3_gemini.md",
       "receipt_id": "receipt_b7213ceed9922311f46a",
       "sha256": "d477c1ee6a571fd161b01fd50b021929bc5e04b38f0e4fcd9010aff062521170",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 7,
       "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P3_grok.md",
       "receipt_id": "receipt_0021a1abe726d2b1068a",
       "sha256": "d752ddee4bf78b6a7ce23cf6acf4c3970c2887b1a3bcaf604156898e427c8f6d",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 15,
       "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P4_chatgpt.md",
       "receipt_id": "receipt_65712f90603dd4ab2911",
       "sha256": "592dc3181acdd70c386c4a88abc2215b6a3c5e8ef6e1974b51587581be79619f",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 4,
       "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P4_gemini.md",
       "receipt_id": "receipt_12af09a95d88af06369b",
       "sha256": "6ae1b92588e49dd604604fcdfbe10d3c27985c0f53f028a8aee3412f352009b2",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 5,
       "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P4_grok.md",
       "receipt_id": "receipt_e905c7332f14aa8b7d39",
       "sha256": "89fb1f8a495247199fb8cb024a69f240bb28ba5c1f2d7b1fd2365408d6f2ebbd",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 16,
       "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P5_chatgpt.md",
       "receipt_id": "receipt_febeed50114bca70085b",
       "sha256": "c63a927f0c2598888b00678eac6922a7ecc36046783ae1ac0fc0cc109052e601",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 5,
       "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P5_gemini.md",
       "receipt_id": "receipt_634d179151ca4c2dda31",
       "sha256": "230b16b7bde8b31f9a101333329174ff1a51d09e2cf1496e8e3ff1da2046dd4c",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 4,
       "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P5_grok.md",
       "receipt_id": "receipt_b4bde8de904104a7c6ca",
       "sha256": "faee25d794772deacfd61e5f6297f6af066f8c860186d5f0f0bc690a7c461bf5",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
       "finding_count": 5,
@@ -226,67 +226,67 @@
       "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 3,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P1U_claude_0032.md",
       "receipt_id": "receipt_20586fb29cebdc0c152a",
       "sha256": "fc74971dc2ffd80939a004a44b45a4eb754e5cd0f321224f18aa60097bcab5c0",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 2,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P1U_claude_0124.md",
       "receipt_id": "receipt_5b68113678d51a8c71e5",
       "sha256": "5c471b2c5e5351ab25214f97754f602217529c8d1cd305c691b22af51d84147a",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 3,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P1U_claude_0239.md",
       "receipt_id": "receipt_7e0b01cac22646afb68d",
       "sha256": "25bcbe9a6d75223f85304cb8956e144791c8add35cdd35b4f02e11186aae1c81",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 3,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P1U_claude_0317.md",
       "receipt_id": "receipt_5127eb734d97ac6688d4",
       "sha256": "10d6d7dc411a44a01193e741b918e25c00e81d2bc79dbaa356a62318539546eb",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 1,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P1U_claude_0346.md",
       "receipt_id": "receipt_122b5776101e6bca0939",
       "sha256": "6a0c574cae7456e9bc359f086057f35b8c08a592eb432b25a27f33d164b3a925",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 6,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P1U_claude_0539.md",
       "receipt_id": "receipt_a0d816c232aae37f63c0",
       "sha256": "30e9b055d94d063a9085d586a43b02aaa070ba7157a31df8a368754ba827efb6",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 4,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P1U_claude_0803.md",
       "receipt_id": "receipt_f007aed982f432f47882",
       "sha256": "291089c94fc4ced66b1e068b9f64bfcd1ec4f096777b178789f31abf32372d5c",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 6,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P1U_claude_0929.md",
       "receipt_id": "receipt_3a61d486886a117b5a74",
       "sha256": "a7324695335b55ccec35cd24d913e01062684de02da4de01a87e19ad8c0706c9",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 5,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P1U_claude_1209.md",
       "receipt_id": "receipt_7ee8e1f5e2bc060435d8",
       "sha256": "d8ab52637d11e2a17e50a49039ff2bffd77936389551092f9610d56d1ac55abf",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
       "finding_count": null,
@@ -296,25 +296,25 @@
       "status": "parse_error"
     },
     {
-      "finding_count": null,
+      "finding_count": 3,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P1U_claude_1931.md",
       "receipt_id": "receipt_9a5ed6458530176f44de",
       "sha256": "38ecf5f3880e92bd4a0de465de655ad92dd903eea151ab40598584d6226d08ea",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 2,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P1U_claude_2044.md",
       "receipt_id": "receipt_381ad45ef0a30c86dea0",
       "sha256": "bacbd80a591854999fd4f31aecb7dacebc1e1dbb5aed962210b9f2a4821108b9",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 2,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P1U_claude_2344.md",
       "receipt_id": "receipt_521416982838a9cdd496",
       "sha256": "be0b4611f100f9724637536194ef231637fe79755ba309d17fbd94c7572f687e",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
       "finding_count": null,
@@ -324,18 +324,18 @@
       "status": "parse_error"
     },
     {
-      "finding_count": null,
+      "finding_count": 6,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P2_claude_0127.md",
       "receipt_id": "receipt_d7c1cedffbab03e1124d",
       "sha256": "0d1b1e1cab24c7de8af11322050e17e032536f3abf77813364d0518c081bde5d",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 6,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P2_claude_0803.md",
       "receipt_id": "receipt_56fd6422fa9e0ad08e7c",
       "sha256": "0fe3caa5122481022358165aaa6771eb9e327bf4242062949287c558cb1a1d3e",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
       "finding_count": null,
@@ -345,18 +345,18 @@
       "status": "parse_error"
     },
     {
-      "finding_count": null,
+      "finding_count": 6,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P2_claude_1209.md",
       "receipt_id": "receipt_3e5e7e99ab042e292150",
       "sha256": "e5d1c860fd1ef81cfec1524f4eb9432c8ed5d48e91c8aeb47c27e9274fdf25d8",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 5,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P2_claude_1931.md",
       "receipt_id": "receipt_6103e75747db087a4c3c",
       "sha256": "5b8f6ec7055573e39c257df89cffdc15cc9a78f217aa75c994b76bedc88505c5",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
       "finding_count": null,
@@ -366,81 +366,81 @@
       "status": "parse_error"
     },
     {
-      "finding_count": null,
+      "finding_count": 6,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P3_claude_0803.md",
       "receipt_id": "receipt_b4756cd34263d3dc65c0",
       "sha256": "cd777b49f093e7dcd677e094920ab893ca358532d5f64d1c7d3f7ec46187defd",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 4,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P3_claude_0830.md",
       "receipt_id": "receipt_84275650b883b4dd2db5",
       "sha256": "ef1b2b4ae641779da807a81505eb93fdf344922df8e90192fead603077b007de",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 4,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P3_claude_0852.md",
       "receipt_id": "receipt_fba253551e75c108d78e",
       "sha256": "15b901e8cdf391941eb27e0472aa5d2a5224b1aee2884292d5c31d5252470ec9",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 4,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P3_claude_0922.md",
       "receipt_id": "receipt_4421743fd84f40cee653",
       "sha256": "e5d441e8de8071cec79091b7b7917b6f35eff1176dff05221b07d08d4c589bd6",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 4,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P3_claude_0950.md",
       "receipt_id": "receipt_f5ca45d6155d92bcccc9",
       "sha256": "768e1e7dda95dc33e5f033f6fde3b6f5e0d77869c2fe6094ead5cda573401aa0",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 5,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P3_claude_1919.md",
       "receipt_id": "receipt_158b808698024df54840",
       "sha256": "ce10cca805c31bf8cbc0d2f3829321825645761d66c4ddff291c92fc958feeb6",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 5,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P4_claude_0043.md",
       "receipt_id": "receipt_e5ac81e0148c6e9c9fc2",
       "sha256": "f36a3d86c5e2cebeaf033568090c65d02f2549fc02119c731dfbbf60d232684d",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 5,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P4_claude_0803.md",
       "receipt_id": "receipt_2e69d3f453e392a52278",
       "sha256": "dbabca52ed9f48192a81f48bfdc2e0ffafcbf053ccd8176b748d10ac7a28166e",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 3,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P4_claude_0921.md",
       "receipt_id": "receipt_cd39ae80bb4126bbb121",
       "sha256": "1f5b9b095f412ed3910be5c998dbfc333395fa5ad95223e0f1d4b57a7d475b04",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 4,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P4_claude_1931.md",
       "receipt_id": "receipt_c1e217206e0b62cc6ac3",
       "sha256": "4770270c8d54c4be9462d8287f5a854de8a43e3edb5b64fd20077b980c388e2b",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 4,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P5_claude_0008.md",
       "receipt_id": "receipt_700f9bff1748170c10dd",
       "sha256": "97c254a8767dc96aba99187b54da31f0fa1f37022bd39b152e3000cf439b18bb",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
       "finding_count": null,
@@ -450,60 +450,60 @@
       "status": "parse_error"
     },
     {
-      "finding_count": null,
+      "finding_count": 3,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P5_claude_0124.md",
       "receipt_id": "receipt_a89a445e13fdf357882d",
       "sha256": "966645f9599be2819b76582622ef074cf179945ca2e72dbf33d2254c24014d73",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 3,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P5_claude_0543.md",
       "receipt_id": "receipt_b62f730d72d020cb9b7a",
       "sha256": "8018ca17d01d48b1ac22ca5bea98961b79d8e0ddba6ceabbc2cb0fd76130cee2",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 4,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P5_claude_0803.md",
       "receipt_id": "receipt_af0f0348d7c098e91782",
       "sha256": "59f0ca8f0c7ab0e5ca29406f03c6403a0ca4067351c7694e90c9e1d28a3ac702",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 4,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P5_claude_0923.md",
       "receipt_id": "receipt_b84068e609e73180f75b",
       "sha256": "7dab4065efeee9f18f0795a50ac85c508f1576df685f9115d8e0db4815b68003",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 4,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P5_claude_1043.md",
       "receipt_id": "receipt_0f2f10c68f8890f91445",
       "sha256": "40d2b4dc3ddd306aa7cd095fd7460bce408ae76740add1ed3062bcfcd9395efc",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 4,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P5_claude_1130.md",
       "receipt_id": "receipt_5055fe841db69e1318a2",
       "sha256": "a58254bc951c593cc73806cb59e4e01a2810d564830841663ef1be193ffa0f85",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 2,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P5_claude_2044.md",
       "receipt_id": "receipt_d9af778aa822825c1f25",
       "sha256": "cbe03a0b525b568000b8298e492d5765202b0f109f44832c99794a673dc7caef",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 3,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P5_claude_2348.md",
       "receipt_id": "receipt_f679bd5208e8bb457b64",
       "sha256": "31b57ccb6deaa647cbaee3b145f24a8721974cfe4b8076e3a13bfdb68a862e8d",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
       "finding_count": 5,
@@ -513,11 +513,11 @@
       "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 5,
       "path": "project-context/peer-reviews/INT_apjs/2026-07-12/API_P3APJS_gemini.md",
       "receipt_id": "receipt_b77399fe8fed9afcb835",
       "sha256": "dac9edb49339f2d651f329d17e0c5654d16cf11932175c137f5a999fd1f7c94c",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
       "finding_count": 5,
@@ -534,18 +534,18 @@
       "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 6,
       "path": "project-context/peer-reviews/INT_apjs/2026-07-12/API_P3apjs_claude_0924.md",
       "receipt_id": "receipt_6b16cbb50d54120fa8e3",
       "sha256": "740924496714e0f1716cf786a01b165fbcebf298941c76eac98e3d201b120340",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 4,
       "path": "project-context/peer-reviews/INT_apjs/2026-07-12/API_P3apjs_claude_1052.md",
       "receipt_id": "receipt_49c1fdfa6a7c96a10ec5",
       "sha256": "b432231b2eeba66dc9b6d49b0e5d5fb5e663e6ac7460f1dd16d48012108c1ec4",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
       "finding_count": 2,
@@ -555,18 +555,18 @@
       "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 0,
       "path": "project-context/peer-reviews/INT_apjs/CONFIRM_2026-07-14_P3_v3.1.162_b864b2c4/API_P3APJS_gemini.md",
       "receipt_id": "receipt_cba15db10d4e263ede34",
       "sha256": "a9af8465e08e743ece5fbe6420ca02489e144bd8c87e6b3f8def9131f294e04e",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 0,
       "path": "project-context/peer-reviews/INT_apjs/CONFIRM_2026-07-14_P3_v3.1.162_b864b2c4/API_P3APJS_grok.md",
       "receipt_id": "receipt_70846a7d38323834e432",
       "sha256": "7b6e989fa32a8d51d90183859a6f45eb6a6172dafda752fed4baa92423524dd3",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
       "finding_count": 1,
@@ -597,18 +597,18 @@
       "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 0,
       "path": "project-context/peer-reviews/INT_apjs/CONFIRM_2026-07-14_P3_v3.2.0-r7_761e35ec/API_P3_grok.md",
       "receipt_id": "receipt_17edd21114fb8f1e2465",
       "sha256": "61d0a81648e217bb934d876562a139c646c825252204c80fbaa88204fcb9de74",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
       "finding_count": null,
       "path": "project-context/peer-reviews/INT_apjs/PROOF_2026-07-14_P3_v3.1.161_913f5033/API_P3APJS_codex_022451.md",
       "receipt_id": "receipt_01013ffa10f884e0546f",
       "sha256": "73fb5d1a8fcd404947a7965efa14cd7f2d16accd39ad62fde90f2d4f31e613ee",
-      "status": "parse_error"
+      "status": "failed"
     },
     {
       "finding_count": 10,
@@ -807,25 +807,11 @@
       "status": "ok"
     },
     {
-      "finding_count": 2,
-      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-09/API_P1A_gemini.md",
-      "receipt_id": "receipt_e2c513e871af40acd746",
-      "sha256": "3a90bfe0f60b8118d9e40c012502253c7ff45cc2e4c281a3fa4446e3a9bedfb7",
-      "status": "ok"
-    },
-    {
-      "finding_count": 3,
-      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-09/API_P1A_grok.md",
-      "receipt_id": "receipt_82c3e8d7703a7b5edd7f",
-      "sha256": "4a5f5c09e93b4bf310f9aa3d5b4de017f3084d98e3e239a4bf5cbce6e9d794a6",
-      "status": "ok"
-    },
-    {
-      "finding_count": null,
+      "finding_count": 6,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-09/API_P1B_gemini.md",
       "receipt_id": "receipt_3215d61620f582af8270",
       "sha256": "2ce81ce3ff49c84f7ea2cb2f75e097252963a18324ba1f246cd59bd08815c62c",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
       "finding_count": 3,
@@ -940,32 +926,11 @@
       "status": "ok"
     },
     {
-      "finding_count": 4,
-      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-13-M44-NONANTHROPIC/API_P1U_gemini.md",
-      "receipt_id": "receipt_0dfe02cf1923bd3f8996",
-      "sha256": "2c38568ab1efef86cda9d5e2161ce753cffcc05b9ceff217371618cd0abbbeb6",
-      "status": "ok"
-    },
-    {
       "finding_count": 5,
-      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-13-M44-NONANTHROPIC/API_P1U_grok.md",
-      "receipt_id": "receipt_561d15c7e481fbe19dc0",
-      "sha256": "26b7139a879a943f66dec525645092494a8f4d4a648a9d90a6838bf2c6561c34",
-      "status": "ok"
-    },
-    {
-      "finding_count": 19,
-      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-13-M44-NONANTHROPIC/API_P1U_openai.md",
-      "receipt_id": "receipt_1ba74b974bd021deb043",
-      "sha256": "c632e34d51e83014be1eceeff130d4e6a28301e6aab3fb6b5bb1358c326b8d84",
-      "status": "ok"
-    },
-    {
-      "finding_count": null,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-13-M44-NONANTHROPIC/API_P2_gemini.md",
       "receipt_id": "receipt_10633676ee3c3d33387d",
       "sha256": "017b2809b51a623cc795b59565eabf14d9e097b32d2dc8653736d4dc2d40c1a8",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
       "finding_count": 5,
@@ -1045,18 +1010,18 @@
       "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 0,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P1A-v1A.0.118-EXACTPDF-9a5d9216-NONANTHROPIC-CONFIRM/API_P1A_gemini.md",
       "receipt_id": "receipt_1b8b23c6d16253ad424a",
       "sha256": "c415dea23e57be42d2caa98dbc0706cf2af5c4977733413bb0f7f22c1ceefa19",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 0,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P1A-v1A.0.118-EXACTPDF-9a5d9216-NONANTHROPIC-CONFIRM/API_P1A_grok.md",
       "receipt_id": "receipt_dac99f53c3b5b6a785cf",
       "sha256": "b706bf537a7510e740ed5a5a213e1fd897c4c04979ee6d637dd3666a4d06c762",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
       "finding_count": 3,
@@ -1150,18 +1115,18 @@
       "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 0,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P1A-v1A.0.122-EXACTPDF-e2607d1a-CQG-NOTE-CODEX-GEMINI-GROK-CONFIRM/API_P1A_gemini.md",
       "receipt_id": "receipt_3e3b289a0b4388f5c0e4",
       "sha256": "cdfc066e74da6b7c962c478065ef1cb9c01ddb58de0ea82dbe6cb0c6ca7feaea",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 0,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P1A-v1A.0.122-EXACTPDF-e2607d1a-CQG-NOTE-CODEX-GEMINI-GROK-CONFIRM/API_P1A_grok.md",
       "receipt_id": "receipt_54d831dd93e574650d89",
       "sha256": "7760e7e615405c6269941201b93f62c537972a44ae4e2739ade16502cf882fbd",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
       "finding_count": 5,
@@ -1185,18 +1150,18 @@
       "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 0,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P2-v1.7.119-EXACTPDF-4434dc8b-NONANTHROPIC-CONFIRM/API_P2_gemini.md",
       "receipt_id": "receipt_713d9377d9267d5de62d",
       "sha256": "0f198a4efd8221681a160e289d2ccbfac55619d6f3b2759c42797b57572bf64b",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 0,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P2-v1.7.119-EXACTPDF-4434dc8b-NONANTHROPIC-CONFIRM/API_P2_grok.md",
       "receipt_id": "receipt_2eb6deba74574f3efa50",
       "sha256": "08398d1693e6ba329d46a624ab34a61fc8a75b8100027b110c9bb7c1761ec5fe",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
       "finding_count": 3,
@@ -1206,25 +1171,25 @@
       "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 0,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P2-v1.7.120-EXACTPDF-2111e62f-NONANTHROPIC-CONFIRM/API_P2_gemini.md",
       "receipt_id": "receipt_93475ec660650843c6c0",
       "sha256": "a7ed17c861ada8bd5387d00ac700fb428e6e6a076732885d3bb21beaeb09a88e",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 0,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P2-v1.7.120-EXACTPDF-2111e62f-NONANTHROPIC-CONFIRM/API_P2_grok.md",
       "receipt_id": "receipt_890f1823e2fc88edc1bf",
       "sha256": "aeaad8f86ffddc3b9471c5b2e82554e90e03716b745e81395e2d11bd937e27e9",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 0,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P2-v1.7.120-EXACTPDF-2111e62f-NONANTHROPIC-CONFIRM/API_P2_openai.md",
       "receipt_id": "receipt_f29af487fad6043174e0",
       "sha256": "b4b5af95aa9a35093516d0ac5e748afc3cba838f68759200584684a5fcded656",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
       "finding_count": 3,
@@ -1269,18 +1234,18 @@
       "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 0,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P2-v1.7.122-EXACTPDF-4097bac5-PRD-NONANTHROPIC-CONFIRM/API_P2_gemini.md",
       "receipt_id": "receipt_ee92d4cde19bcaf91910",
       "sha256": "82a12aa435baf626143643e8ac41d3f1daf1e206b94699ecbaa120075df71ad3",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 0,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P2-v1.7.122-EXACTPDF-4097bac5-PRD-NONANTHROPIC-CONFIRM/API_P2_grok.md",
       "receipt_id": "receipt_6a5f72825ecc93e97bd3",
       "sha256": "34675c08c30ea57d7fdd9260be4638b0fdcb0b658697dec93c5085a5c384ae26",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
       "finding_count": 1,
@@ -1290,27 +1255,6 @@
       "status": "ok"
     },
     {
-      "finding_count": null,
-      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P3-v3.2.0-r1-EXACTPDF-3dc9d458-NONANTHROPIC/API_P3APJS_gemini.md",
-      "receipt_id": "receipt_95270fe79f589a1fcc5a",
-      "sha256": "1bbcb39aea27be06db13563d7427cd238f42a5aab8a2829af47ed0f1f73724c9",
-      "status": "parse_error"
-    },
-    {
-      "finding_count": null,
-      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P3-v3.2.0-r1-EXACTPDF-3dc9d458-NONANTHROPIC/API_P3APJS_grok.md",
-      "receipt_id": "receipt_4d76acf97d4ea6ffd6ba",
-      "sha256": "f833ced00cb49efef3985b77d306a86b7f540d11c3e2ea15576d2c98917c1fed",
-      "status": "parse_error"
-    },
-    {
-      "finding_count": null,
-      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P3-v3.2.0-r1-EXACTPDF-3dc9d458-NONANTHROPIC/API_P3APJS_openai.md",
-      "receipt_id": "receipt_1697086b16e784a2ee64",
-      "sha256": "22bc8a0c55acceceed33f447a9f3e736b0cd03c373dff3dbd9fe687915d9e9ab",
-      "status": "parse_error"
-    },
-    {
       "finding_count": 3,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P3-v3.2.0-r2-EXACTPDF-4786a544-NONANTHROPIC-CONFIRM/API_P3APJS_gemini.md",
       "receipt_id": "receipt_0fb96c6797595bed1e50",
@@ -1318,11 +1262,11 @@
       "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 0,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P3-v3.2.0-r2-EXACTPDF-4786a544-NONANTHROPIC-CONFIRM/API_P3APJS_grok.md",
       "receipt_id": "receipt_5d8cfa3a741d6ffa217a",
       "sha256": "f982bb8d1b047aec3a8d880034dede9fbf0a780270069deb9ca97a91cecc5102",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
       "finding_count": 9,
@@ -1437,27 +1381,6 @@
       "status": "ok"
     },
     {
-      "finding_count": null,
-      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P4-v1.0.242-EXACTPDF-8c9df3da-NONANTHROPIC-CONFIRM/API_P4_gemini.md",
-      "receipt_id": "receipt_48031757784102bccd4c",
-      "sha256": "55ab59c183028daeabe94b3f53d6bc6da60e5bd4db8c125a1056429284a85189",
-      "status": "parse_error"
-    },
-    {
-      "finding_count": null,
-      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P4-v1.0.242-EXACTPDF-8c9df3da-NONANTHROPIC-CONFIRM/API_P4_grok.md",
-      "receipt_id": "receipt_74809900fca2480fe712",
-      "sha256": "835ff3c863814947171246ba6d41536ee09ef1911780919df8747125780a990d",
-      "status": "parse_error"
-    },
-    {
-      "finding_count": null,
-      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P4-v1.0.242-EXACTPDF-8c9df3da-NONANTHROPIC-CONFIRM/API_P4_openai.md",
-      "receipt_id": "receipt_a1f2cf4c6ab65b2de8d0",
-      "sha256": "300599f6a607431f9bbf55124202af0c20af80fbffa41c5c54a2e5d857e73338",
-      "status": "parse_error"
-    },
-    {
       "finding_count": 4,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P4-v1.0.243-EXACTPDF-9e73fd88-APJS-NONANTHROPIC-CONFIRM/API_P4_gemini.md",
       "receipt_id": "receipt_a4a4f9ed22c33f5b96a7",
@@ -1479,25 +1402,25 @@
       "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 5,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P5-v0.1.128-EXACTPDF-f1ba53bf-NONANTHROPIC/API_P5_gemini.md",
       "receipt_id": "receipt_3185f89b9e1bcda95974",
       "sha256": "7dc4e7305ee3c8e728f1014e7a6f8f0bd7a32890ae6c2c0f903d109936c0358e",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 3,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P5-v0.1.128-EXACTPDF-f1ba53bf-NONANTHROPIC/API_P5_grok.md",
       "receipt_id": "receipt_d4f0e367e9b85a4d9688",
       "sha256": "2f7abadb8eccf5f8355cc16337c6aa88357e71e1e69667dd0adf6db2ec87289b",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 11,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P5-v0.1.128-EXACTPDF-f1ba53bf-NONANTHROPIC/API_P5_openai.md",
       "receipt_id": "receipt_68e0e5579ef2d699780a",
       "sha256": "013132c20d26722c48cb2d80d346305f829bc226ed7478d4a771bd2897af7858",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
       "finding_count": 4,
@@ -1563,18 +1486,18 @@
       "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 0,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P5-v0.1.131-EXACTPDF-4f545606-AJ-NONANTHROPIC-CONFIRM/API_P5_gemini.md",
       "receipt_id": "receipt_3bc845a696c4eb998a7c",
       "sha256": "cda8d398dafaade7c9693ed603814e8952a66a7fb73357b4a7d9631c70037c02",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 0,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P5-v0.1.131-EXACTPDF-4f545606-AJ-NONANTHROPIC-CONFIRM/API_P5_grok.md",
       "receipt_id": "receipt_93fc9d358799bdd0c7e6",
       "sha256": "d1e8c741e4ba26643331dae7dea7546cbad5ebdb0ba1ebcec6c7966d1d1931f3",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
       "finding_count": 6,
@@ -1633,11 +1556,11 @@
       "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 5,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P4-v1.0.244-EXACTPDF-1b1a536d-APJS-NONANTHROPIC-CONFIRM/API_P4_gemini.md",
       "receipt_id": "receipt_7e9f8be30cfaec9048ae",
       "sha256": "0a93e416927d226b6c7e9c58a863d0ade90dc58530f2f7e016219a7acc9c8f80",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
       "finding_count": 5,
@@ -1717,11 +1640,11 @@
       "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 4,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P4-v1.0.250-EXACTPDF-1c8af85c-NONANTHROPIC-CONFIRM/API_P4_gemini.md",
       "receipt_id": "receipt_cd2c4b9240a70b808965",
       "sha256": "a7c51cde56d7764cfbba318888be2fe9f6984a3211f81cbe28d8f1999c2ed6ec",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
       "finding_count": 3,
@@ -1738,11 +1661,11 @@
       "status": "ok"
     },
     {
-      "finding_count": null,
+      "finding_count": 3,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P4-v1.0.252-EXACTPDF-a109f3d1-NONANTHROPIC-CONFIRM/API_P4_gemini.md",
       "receipt_id": "receipt_ad7795062f891d7d5acc",
       "sha256": "79018e1185be8a7b5af38adaca4da874f2d1182708c6c62e16e2f1ac1473ac9b",
-      "status": "parse_error"
+      "status": "ok"
     },
     {
       "finding_count": 3,
@@ -1829,6 +1752,27 @@
       "status": "ok"
     },
     {
+      "finding_count": 4,
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P4-v1.0.256-EXACTPDF-6dfccf7c-NONANTHROPIC-CONFIRM/API_P4_gemini.md",
+      "receipt_id": "receipt_47d4410d9bf5a17e1444",
+      "sha256": "f01754cff7419b64ef13ae3154007ffb5786fb9aa8d71219d8c4bd609912003d",
+      "status": "ok"
+    },
+    {
+      "finding_count": null,
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P4-v1.0.256-EXACTPDF-6dfccf7c-NONANTHROPIC-CONFIRM/API_P4_grok.md",
+      "receipt_id": "receipt_7d70fa7c41b50dd44ec9",
+      "sha256": "4c697179ce31fc7ea1727ff4623a3b6db607e2c95acccb3ad09f1e3d4cb8c768",
+      "status": "failed"
+    },
+    {
+      "finding_count": 5,
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P4-v1.0.256-EXACTPDF-6dfccf7c-NONANTHROPIC-CONFIRM/intwave_P4_codex_2326.md",
+      "receipt_id": "receipt_882e229def993a5efe1b",
+      "sha256": "5773fc43b0807ffcf0bed65379722879b44d713ca98c0f479c2aef456221f75a",
+      "status": "ok"
+    },
+    {
       "finding_count": 5,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P5-v0.1.134-EXACTPDF-c2ecb845-NONANTHROPIC-RECURSIVE/API_P5_gemini.md",
       "receipt_id": "receipt_0a3eb9300a1cde2cb44e",
@@ -1847,7 +1791,112 @@
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P5-v0.1.134-EXACTPDF-c2ecb845-NONANTHROPIC-RECURSIVE/intwave_P5_codex_1733.md",
       "receipt_id": "receipt_fc8e6d681bfb393bef67",
       "sha256": "fb459a40af2cc43c9012dd9042505e0fb7cdead3a3dcf5c3aaa1f5dd37350cf1",
-      "status": "parse_error"
+      "status": "failed"
+    },
+    {
+      "finding_count": 4,
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P5-v0.1.135-EXACTPDF-7223afcc-NONANTHROPIC-CONFIRM/API_P5_gemini.md",
+      "receipt_id": "receipt_38df16259c44ae5442fc",
+      "sha256": "bb170616ad426eec9eab2e9ec5c414d8a7188d58fd6d2f707dbfd2ceaec361ea",
+      "status": "ok"
+    },
+    {
+      "finding_count": null,
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P5-v0.1.135-EXACTPDF-7223afcc-NONANTHROPIC-CONFIRM/API_P5_grok.md",
+      "receipt_id": "receipt_54d233f11473dc64d47a",
+      "sha256": "b58fb9d5d7132073d37855bf7eb25468c5bb40e84bc7061ac58a410456ea03d0",
+      "status": "failed"
+    },
+    {
+      "finding_count": 5,
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P5-v0.1.135-EXACTPDF-7223afcc-NONANTHROPIC-CONFIRM/intwave_P5_codex_2326.md",
+      "receipt_id": "receipt_bd0ef79b35c38dffdf58",
+      "sha256": "98627e1c3ff771df7833145882c48f15303e39871fccf908cc1f7597c7bfc729",
+      "status": "ok"
+    },
+    {
+      "finding_count": 4,
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P4-v1.0.257-EXACTPDF-726acd8b-NONANTHROPIC-CONFIRM/API_P4_gemini.md",
+      "receipt_id": "receipt_b7d965933814245efd78",
+      "sha256": "32179d44e9528261ff37b469a717e1001c0e06a850a516de13c0f55e319f8a39",
+      "status": "ok"
+    },
+    {
+      "finding_count": null,
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P4-v1.0.257-EXACTPDF-726acd8b-NONANTHROPIC-CONFIRM/API_P4_grok.md",
+      "receipt_id": "receipt_cfabd09f3af43d6b9b53",
+      "sha256": "c1057d8c172eccb03b49b1abf37fe99573681fc4d498083b9a71d73c78efeb0d",
+      "status": "failed"
+    },
+    {
+      "finding_count": 6,
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P4-v1.0.257-EXACTPDF-726acd8b-NONANTHROPIC-CONFIRM/intwave_P4_codex_0004.md",
+      "receipt_id": "receipt_75686af69876da5ffca3",
+      "sha256": "13b9ff0efcbba8701330a899ca014712c651d7a017efad2b38e1a01cfce2e397",
+      "status": "ok"
+    },
+    {
+      "finding_count": 5,
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P4-v1.0.258-EXACTPDF-e9b69665-NONANTHROPIC-CONFIRM/API_P4_gemini.md",
+      "receipt_id": "receipt_3f16336f1457045bac62",
+      "sha256": "1284aed74833653303c65f543b68ee59a0e335ac2072ff087536188411129c2c",
+      "status": "ok"
+    },
+    {
+      "finding_count": 4,
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P4-v1.0.258-EXACTPDF-e9b69665-NONANTHROPIC-CONFIRM/API_P4_grok.md",
+      "receipt_id": "receipt_71a8990814ccf605eb6e",
+      "sha256": "51c639da7f866ec009f512c7268f3e8b464323ea14e506105ef084b30d5113ae",
+      "status": "ok"
+    },
+    {
+      "finding_count": 4,
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P4-v1.0.258-EXACTPDF-e9b69665-NONANTHROPIC-CONFIRM/intwave_P4_codex_0128.md",
+      "receipt_id": "receipt_a1e6b045c6ce18bedf92",
+      "sha256": "97041c15486497af53f125b58846a4e69d756463acfa4eb1110bee4637412545",
+      "status": "ok"
+    },
+    {
+      "finding_count": 6,
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P5-v0.1.136-EXACTPDF-cd3c8e81-NONANTHROPIC-CONFIRM/API_P5_gemini.md",
+      "receipt_id": "receipt_faa9db1b9b1f6afab440",
+      "sha256": "5e4de6dbab226e284e0bac774e423541fa7294704d2a9c48cefc03a3e22ed760",
+      "status": "ok"
+    },
+    {
+      "finding_count": null,
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P5-v0.1.136-EXACTPDF-cd3c8e81-NONANTHROPIC-CONFIRM/API_P5_grok.md",
+      "receipt_id": "receipt_f807998abae091b0bb25",
+      "sha256": "4043a130a4d8a1581cd271ee2cab9359f2e7ea2a9a18d5cfd475adff69070852",
+      "status": "failed"
+    },
+    {
+      "finding_count": 7,
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P5-v0.1.136-EXACTPDF-cd3c8e81-NONANTHROPIC-CONFIRM/intwave_P5_codex_0004.md",
+      "receipt_id": "receipt_0129e3ab7261e992f935",
+      "sha256": "3f8c71ea5c341a84c2ba7d945cbf02a4ebde3f9c17f2a19e258459007d135c9a",
+      "status": "ok"
+    },
+    {
+      "finding_count": 4,
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P5-v0.1.138-EXACTPDF-3c47ccf7-NONANTHROPIC-CONFIRM/API_P5_gemini.md",
+      "receipt_id": "receipt_6bf2b83cfd1db02abe6f",
+      "sha256": "8e119932e02c751f088d77b7fda74b77f09c025c9010ecb0063dcea5fda66d29",
+      "status": "ok"
+    },
+    {
+      "finding_count": 3,
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P5-v0.1.138-EXACTPDF-3c47ccf7-NONANTHROPIC-CONFIRM/API_P5_grok.md",
+      "receipt_id": "receipt_b9df7a0f197231de58e3",
+      "sha256": "2ccf60607f3c763b54ade7e575eb790085457fb64c58f4306ba85f776c19cbfb",
+      "status": "ok"
+    },
+    {
+      "finding_count": 4,
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P5-v0.1.138-EXACTPDF-3c47ccf7-NONANTHROPIC-CONFIRM/intwave_P5_codex_0128.md",
+      "receipt_id": "receipt_8a0d9248e5d2695c24c9",
+      "sha256": "a259086e7852a0889eca3018dfa522c1123245912427026c2766709f0511b227",
+      "status": "ok"
     }
   ],
   "schema_version": "finding-receipt-inventory/v1"

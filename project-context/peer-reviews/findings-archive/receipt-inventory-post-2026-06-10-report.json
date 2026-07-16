@@ -1,162 +1,12 @@
 {
-  "candidate_receipts": 264,
-  "completed_fraction": 0.640152,
+  "candidate_receipts": 271,
+  "completed_fraction": 0.95572,
   "cutoff_exclusive": "2026-06-10",
-  "explicit_findings": 1198,
-  "failed_receipts": 0,
+  "explicit_findings": 1574,
+  "failed_receipts": 6,
   "gaps": [
     {
-      "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P1A_chatgpt.md",
-      "reason": "missing explicit RAW RESPONSE boundary",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P1A_gemini.md",
-      "reason": "missing explicit RAW RESPONSE boundary",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P1A_grok.md",
-      "reason": "missing explicit RAW RESPONSE boundary",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P1B_chatgpt.md",
-      "reason": "missing explicit RAW RESPONSE boundary",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P1B_gemini.md",
-      "reason": "missing explicit RAW RESPONSE boundary",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P1B_grok.md",
-      "reason": "missing explicit RAW RESPONSE boundary",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P2_chatgpt.md",
-      "reason": "missing explicit RAW RESPONSE boundary",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P2_gemini.md",
-      "reason": "missing explicit RAW RESPONSE boundary",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P2_grok.md",
-      "reason": "missing explicit RAW RESPONSE boundary",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P3_chatgpt.md",
-      "reason": "missing explicit RAW RESPONSE boundary",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P3_gemini.md",
-      "reason": "missing explicit RAW RESPONSE boundary",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P3_grok.md",
-      "reason": "missing explicit RAW RESPONSE boundary",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P4_chatgpt.md",
-      "reason": "missing explicit RAW RESPONSE boundary",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P4_gemini.md",
-      "reason": "missing explicit RAW RESPONSE boundary",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P4_grok.md",
-      "reason": "missing explicit RAW RESPONSE boundary",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P5_chatgpt.md",
-      "reason": "missing explicit RAW RESPONSE boundary",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P5_gemini.md",
-      "reason": "missing explicit RAW RESPONSE boundary",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P5_grok.md",
-      "reason": "missing explicit RAW RESPONSE boundary",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P1U_claude_0032.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P1U_claude_0124.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P1U_claude_0239.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P1U_claude_0317.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P1U_claude_0346.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P1U_claude_0539.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P1U_claude_0803.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P1U_claude_0929.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P1U_claude_1209.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P1U_claude_1255.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P1U_claude_1931.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P1U_claude_2044.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P1U_claude_2344.md",
       "reason": "no explicit tagged findings or clean-review statement",
       "status": "parse_error"
     },
@@ -166,27 +16,7 @@
       "status": "parse_error"
     },
     {
-      "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P2_claude_0127.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P2_claude_0803.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P2_claude_0927.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P2_claude_1209.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P2_claude_1931.md",
       "reason": "no explicit tagged findings or clean-review statement",
       "status": "parse_error"
     },
@@ -196,127 +26,7 @@
       "status": "parse_error"
     },
     {
-      "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P3_claude_0803.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P3_claude_0830.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P3_claude_0852.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P3_claude_0922.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P3_claude_0950.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P3_claude_1919.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P4_claude_0043.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P4_claude_0803.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P4_claude_0921.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P4_claude_1931.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P5_claude_0008.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P5_claude_0022.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P5_claude_0124.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P5_claude_0543.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P5_claude_0803.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P5_claude_0923.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P5_claude_1043.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P5_claude_1130.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P5_claude_2044.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P5_claude_2348.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_apjs/2026-07-12/API_P3APJS_gemini.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_apjs/2026-07-12/API_P3apjs_claude_0924.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_apjs/2026-07-12/API_P3apjs_claude_1052.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_apjs/CONFIRM_2026-07-14_P3_v3.1.162_b864b2c4/API_P3APJS_gemini.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_apjs/CONFIRM_2026-07-14_P3_v3.1.162_b864b2c4/API_P3APJS_grok.md",
       "reason": "no explicit tagged findings or clean-review statement",
       "status": "parse_error"
     },
@@ -326,162 +36,37 @@
       "status": "parse_error"
     },
     {
-      "path": "project-context/peer-reviews/INT_apjs/CONFIRM_2026-07-14_P3_v3.2.0-r7_761e35ec/API_P3_grok.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
       "path": "project-context/peer-reviews/INT_apjs/PROOF_2026-07-14_P3_v3.1.161_913f5033/API_P3APJS_codex_022451.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
+      "reason": "explicit provider failure in raw response",
+      "status": "failed"
     },
     {
-      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-09/API_P1B_gemini.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-13-M44-NONANTHROPIC/API_P2_gemini.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P1A-v1A.0.118-EXACTPDF-9a5d9216-NONANTHROPIC-CONFIRM/API_P1A_gemini.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P1A-v1A.0.118-EXACTPDF-9a5d9216-NONANTHROPIC-CONFIRM/API_P1A_grok.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P1A-v1A.0.122-EXACTPDF-e2607d1a-CQG-NOTE-CODEX-GEMINI-GROK-CONFIRM/API_P1A_gemini.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P1A-v1A.0.122-EXACTPDF-e2607d1a-CQG-NOTE-CODEX-GEMINI-GROK-CONFIRM/API_P1A_grok.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P2-v1.7.119-EXACTPDF-4434dc8b-NONANTHROPIC-CONFIRM/API_P2_gemini.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P2-v1.7.119-EXACTPDF-4434dc8b-NONANTHROPIC-CONFIRM/API_P2_grok.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P2-v1.7.120-EXACTPDF-2111e62f-NONANTHROPIC-CONFIRM/API_P2_gemini.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P2-v1.7.120-EXACTPDF-2111e62f-NONANTHROPIC-CONFIRM/API_P2_grok.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P2-v1.7.120-EXACTPDF-2111e62f-NONANTHROPIC-CONFIRM/API_P2_openai.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P2-v1.7.122-EXACTPDF-4097bac5-PRD-NONANTHROPIC-CONFIRM/API_P2_gemini.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P2-v1.7.122-EXACTPDF-4097bac5-PRD-NONANTHROPIC-CONFIRM/API_P2_grok.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P3-v3.2.0-r1-EXACTPDF-3dc9d458-NONANTHROPIC/API_P3APJS_gemini.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P3-v3.2.0-r1-EXACTPDF-3dc9d458-NONANTHROPIC/API_P3APJS_grok.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P3-v3.2.0-r1-EXACTPDF-3dc9d458-NONANTHROPIC/API_P3APJS_openai.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P3-v3.2.0-r2-EXACTPDF-4786a544-NONANTHROPIC-CONFIRM/API_P3APJS_grok.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P4-v1.0.242-EXACTPDF-8c9df3da-NONANTHROPIC-CONFIRM/API_P4_gemini.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P4-v1.0.242-EXACTPDF-8c9df3da-NONANTHROPIC-CONFIRM/API_P4_grok.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P4-v1.0.242-EXACTPDF-8c9df3da-NONANTHROPIC-CONFIRM/API_P4_openai.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P5-v0.1.128-EXACTPDF-f1ba53bf-NONANTHROPIC/API_P5_gemini.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P5-v0.1.128-EXACTPDF-f1ba53bf-NONANTHROPIC/API_P5_grok.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P5-v0.1.128-EXACTPDF-f1ba53bf-NONANTHROPIC/API_P5_openai.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P5-v0.1.131-EXACTPDF-4f545606-AJ-NONANTHROPIC-CONFIRM/API_P5_gemini.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P5-v0.1.131-EXACTPDF-4f545606-AJ-NONANTHROPIC-CONFIRM/API_P5_grok.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P4-v1.0.244-EXACTPDF-1b1a536d-APJS-NONANTHROPIC-CONFIRM/API_P4_gemini.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P4-v1.0.250-EXACTPDF-1c8af85c-NONANTHROPIC-CONFIRM/API_P4_gemini.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
-    },
-    {
-      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P4-v1.0.252-EXACTPDF-a109f3d1-NONANTHROPIC-CONFIRM/API_P4_gemini.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P4-v1.0.256-EXACTPDF-6dfccf7c-NONANTHROPIC-CONFIRM/API_P4_grok.md",
+      "reason": "explicit provider failure without a raw response",
+      "status": "failed"
     },
     {
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P5-v0.1.134-EXACTPDF-c2ecb845-NONANTHROPIC-RECURSIVE/intwave_P5_codex_1733.md",
-      "reason": "no explicit tagged findings or clean-review statement",
-      "status": "parse_error"
+      "reason": "explicit provider failure in raw response",
+      "status": "failed"
+    },
+    {
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P5-v0.1.135-EXACTPDF-7223afcc-NONANTHROPIC-CONFIRM/API_P5_grok.md",
+      "reason": "explicit provider failure without a raw response",
+      "status": "failed"
+    },
+    {
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P4-v1.0.257-EXACTPDF-726acd8b-NONANTHROPIC-CONFIRM/API_P4_grok.md",
+      "reason": "explicit provider failure without a raw response",
+      "status": "failed"
+    },
+    {
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P5-v0.1.136-EXACTPDF-cd3c8e81-NONANTHROPIC-CONFIRM/API_P5_grok.md",
+      "reason": "explicit provider failure without a raw response",
+      "status": "failed"
     }
   ],
-  "parse_gap_receipts": 95,
-  "parseable_receipts": 169,
+  "parse_gap_receipts": 6,
+  "parseable_receipts": 259,
   "schema_version": "finding-receipt-inventory-report/v1"
 }

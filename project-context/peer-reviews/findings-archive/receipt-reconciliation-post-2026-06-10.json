@@ -1,174 +1,174 @@
 {
-  "archive_completeness_rate": 0.0,
+  "archive_completeness_rate": 0.065637,
   "complete": false,
-  "count_mismatches": 169,
-  "failed_leg_gaps": 0,
+  "count_mismatches": 242,
+  "failed_leg_gaps": 6,
   "hash_mismatches": 0,
-  "inventory_receipts": 264,
+  "inventory_receipts": 271,
   "orphaned_event_receipts": [],
-  "parseable_receipts": 169,
+  "parseable_receipts": 259,
   "receipts": [
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 14,
       "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P1A_chatgpt.md",
       "receipt_id": "receipt_51cd2f7abe145610073a",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 4,
       "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P1A_gemini.md",
       "receipt_id": "receipt_9ec434d1f07ee8ad3988",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 8,
       "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P1A_grok.md",
       "receipt_id": "receipt_899ed3df70391101b3b0",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 13,
       "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P1B_chatgpt.md",
       "receipt_id": "receipt_c65f908d0cadc1cbd5ba",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 4,
       "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P1B_gemini.md",
       "receipt_id": "receipt_d292234dc7ef080b7996",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 5,
       "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P1B_grok.md",
       "receipt_id": "receipt_a6432d1534bc41e13e10",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 14,
       "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P2_chatgpt.md",
       "receipt_id": "receipt_d892d43017ea01fed112",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 4,
       "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P2_gemini.md",
       "receipt_id": "receipt_9f5da457957f4c847066",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 5,
       "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P2_grok.md",
       "receipt_id": "receipt_33ca170577485f89642b",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 17,
       "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P3_chatgpt.md",
       "receipt_id": "receipt_850321e99288da88effb",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 5,
       "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P3_gemini.md",
       "receipt_id": "receipt_b7213ceed9922311f46a",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 7,
       "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P3_grok.md",
       "receipt_id": "receipt_0021a1abe726d2b1068a",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 15,
       "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P4_chatgpt.md",
       "receipt_id": "receipt_65712f90603dd4ab2911",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 4,
       "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P4_gemini.md",
       "receipt_id": "receipt_12af09a95d88af06369b",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 5,
       "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P4_grok.md",
       "receipt_id": "receipt_e905c7332f14aa8b7d39",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 16,
       "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P5_chatgpt.md",
       "receipt_id": "receipt_febeed50114bca70085b",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 5,
       "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P5_gemini.md",
       "receipt_id": "receipt_634d179151ca4c2dda31",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 4,
       "path": "project-context/peer-reviews/EXT_real/ROUND_2026-07-05/P5_grok.md",
       "receipt_id": "receipt_b4bde8de904104a7c6ca",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
@@ -299,83 +299,83 @@
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 3,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P1U_claude_0032.md",
       "receipt_id": "receipt_20586fb29cebdc0c152a",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 2,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P1U_claude_0124.md",
       "receipt_id": "receipt_5b68113678d51a8c71e5",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 3,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P1U_claude_0239.md",
       "receipt_id": "receipt_7e0b01cac22646afb68d",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 3,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P1U_claude_0317.md",
       "receipt_id": "receipt_5127eb734d97ac6688d4",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 1,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P1U_claude_0346.md",
       "receipt_id": "receipt_122b5776101e6bca0939",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 6,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P1U_claude_0539.md",
       "receipt_id": "receipt_a0d816c232aae37f63c0",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 4,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P1U_claude_0803.md",
       "receipt_id": "receipt_f007aed982f432f47882",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 6,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P1U_claude_0929.md",
       "receipt_id": "receipt_3a61d486886a117b5a74",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 5,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P1U_claude_1209.md",
       "receipt_id": "receipt_7ee8e1f5e2bc060435d8",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
@@ -389,29 +389,29 @@
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 3,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P1U_claude_1931.md",
       "receipt_id": "receipt_9a5ed6458530176f44de",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 2,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P1U_claude_2044.md",
       "receipt_id": "receipt_381ad45ef0a30c86dea0",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 2,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P1U_claude_2344.md",
       "receipt_id": "receipt_521416982838a9cdd496",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
@@ -425,20 +425,20 @@
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 6,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P2_claude_0127.md",
       "receipt_id": "receipt_d7c1cedffbab03e1124d",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 6,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P2_claude_0803.md",
       "receipt_id": "receipt_56fd6422fa9e0ad08e7c",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
@@ -452,20 +452,20 @@
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 6,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P2_claude_1209.md",
       "receipt_id": "receipt_3e5e7e99ab042e292150",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 5,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P2_claude_1931.md",
       "receipt_id": "receipt_6103e75747db087a4c3c",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
@@ -479,101 +479,101 @@
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 6,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P3_claude_0803.md",
       "receipt_id": "receipt_b4756cd34263d3dc65c0",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 4,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P3_claude_0830.md",
       "receipt_id": "receipt_84275650b883b4dd2db5",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 4,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P3_claude_0852.md",
       "receipt_id": "receipt_fba253551e75c108d78e",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 4,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P3_claude_0922.md",
       "receipt_id": "receipt_4421743fd84f40cee653",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 4,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P3_claude_0950.md",
       "receipt_id": "receipt_f5ca45d6155d92bcccc9",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 5,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P3_claude_1919.md",
       "receipt_id": "receipt_158b808698024df54840",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 5,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P4_claude_0043.md",
       "receipt_id": "receipt_e5ac81e0148c6e9c9fc2",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 5,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P4_claude_0803.md",
       "receipt_id": "receipt_2e69d3f453e392a52278",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 3,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P4_claude_0921.md",
       "receipt_id": "receipt_cd39ae80bb4126bbb121",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 4,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P4_claude_1931.md",
       "receipt_id": "receipt_c1e217206e0b62cc6ac3",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 4,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P5_claude_0008.md",
       "receipt_id": "receipt_700f9bff1748170c10dd",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
@@ -587,74 +587,74 @@
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 3,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P5_claude_0124.md",
       "receipt_id": "receipt_a89a445e13fdf357882d",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 3,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P5_claude_0543.md",
       "receipt_id": "receipt_b62f730d72d020cb9b7a",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 4,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P5_claude_0803.md",
       "receipt_id": "receipt_af0f0348d7c098e91782",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 4,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P5_claude_0923.md",
       "receipt_id": "receipt_b84068e609e73180f75b",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 4,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P5_claude_1043.md",
       "receipt_id": "receipt_0f2f10c68f8890f91445",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 4,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P5_claude_1130.md",
       "receipt_id": "receipt_5055fe841db69e1318a2",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 2,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P5_claude_2044.md",
       "receipt_id": "receipt_d9af778aa822825c1f25",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 3,
       "path": "project-context/peer-reviews/INT_api/H17_2026-07-10/intwave_P5_claude_2348.md",
       "receipt_id": "receipt_f679bd5208e8bb457b64",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
@@ -668,11 +668,11 @@
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 5,
       "path": "project-context/peer-reviews/INT_apjs/2026-07-12/API_P3APJS_gemini.md",
       "receipt_id": "receipt_b77399fe8fed9afcb835",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
@@ -695,20 +695,20 @@
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 6,
       "path": "project-context/peer-reviews/INT_apjs/2026-07-12/API_P3apjs_claude_0924.md",
       "receipt_id": "receipt_6b16cbb50d54120fa8e3",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 4,
       "path": "project-context/peer-reviews/INT_apjs/2026-07-12/API_P3apjs_claude_1052.md",
       "receipt_id": "receipt_49c1fdfa6a7c96a10ec5",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
@@ -722,20 +722,20 @@
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 0,
       "path": "project-context/peer-reviews/INT_apjs/CONFIRM_2026-07-14_P3_v3.1.162_b864b2c4/API_P3APJS_gemini.md",
       "receipt_id": "receipt_cba15db10d4e263ede34",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "RECONCILED",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 0,
       "path": "project-context/peer-reviews/INT_apjs/CONFIRM_2026-07-14_P3_v3.1.162_b864b2c4/API_P3APJS_grok.md",
       "receipt_id": "receipt_70846a7d38323834e432",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "RECONCILED",
+      "status": "ok"
     },
     {
       "event_count": 0,
@@ -776,11 +776,11 @@
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 0,
       "path": "project-context/peer-reviews/INT_apjs/CONFIRM_2026-07-14_P3_v3.2.0-r7_761e35ec/API_P3_grok.md",
       "receipt_id": "receipt_17edd21114fb8f1e2465",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "RECONCILED",
+      "status": "ok"
     },
     {
       "event_count": 0,
@@ -788,8 +788,8 @@
       "expected_findings": null,
       "path": "project-context/peer-reviews/INT_apjs/PROOF_2026-07-14_P3_v3.1.161_913f5033/API_P3APJS_codex_022451.md",
       "receipt_id": "receipt_01013ffa10f884e0546f",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "FAILED_LEG_GAP",
+      "status": "failed"
     },
     {
       "event_count": 0,
@@ -1046,29 +1046,11 @@
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": 2,
-      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-09/API_P1A_gemini.md",
-      "receipt_id": "receipt_e2c513e871af40acd746",
-      "state": "COUNT_MISMATCH",
-      "status": "ok"
-    },
-    {
-      "event_count": 0,
-      "event_hashes": [],
-      "expected_findings": 3,
-      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-09/API_P1A_grok.md",
-      "receipt_id": "receipt_82c3e8d7703a7b5edd7f",
-      "state": "COUNT_MISMATCH",
-      "status": "ok"
-    },
-    {
-      "event_count": 0,
-      "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 6,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-09/API_P1B_gemini.md",
       "receipt_id": "receipt_3215d61620f582af8270",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
@@ -1217,38 +1199,11 @@
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": 4,
-      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-13-M44-NONANTHROPIC/API_P1U_gemini.md",
-      "receipt_id": "receipt_0dfe02cf1923bd3f8996",
-      "state": "COUNT_MISMATCH",
-      "status": "ok"
-    },
-    {
-      "event_count": 0,
-      "event_hashes": [],
       "expected_findings": 5,
-      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-13-M44-NONANTHROPIC/API_P1U_grok.md",
-      "receipt_id": "receipt_561d15c7e481fbe19dc0",
-      "state": "COUNT_MISMATCH",
-      "status": "ok"
-    },
-    {
-      "event_count": 0,
-      "event_hashes": [],
-      "expected_findings": 19,
-      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-13-M44-NONANTHROPIC/API_P1U_openai.md",
-      "receipt_id": "receipt_1ba74b974bd021deb043",
-      "state": "COUNT_MISMATCH",
-      "status": "ok"
-    },
-    {
-      "event_count": 0,
-      "event_hashes": [],
-      "expected_findings": null,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-13-M44-NONANTHROPIC/API_P2_gemini.md",
       "receipt_id": "receipt_10633676ee3c3d33387d",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
@@ -1352,20 +1307,20 @@
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 0,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P1A-v1A.0.118-EXACTPDF-9a5d9216-NONANTHROPIC-CONFIRM/API_P1A_gemini.md",
       "receipt_id": "receipt_1b8b23c6d16253ad424a",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "RECONCILED",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 0,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P1A-v1A.0.118-EXACTPDF-9a5d9216-NONANTHROPIC-CONFIRM/API_P1A_grok.md",
       "receipt_id": "receipt_dac99f53c3b5b6a785cf",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "RECONCILED",
+      "status": "ok"
     },
     {
       "event_count": 0,
@@ -1487,20 +1442,20 @@
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 0,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P1A-v1A.0.122-EXACTPDF-e2607d1a-CQG-NOTE-CODEX-GEMINI-GROK-CONFIRM/API_P1A_gemini.md",
       "receipt_id": "receipt_3e3b289a0b4388f5c0e4",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "RECONCILED",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 0,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P1A-v1A.0.122-EXACTPDF-e2607d1a-CQG-NOTE-CODEX-GEMINI-GROK-CONFIRM/API_P1A_grok.md",
       "receipt_id": "receipt_54d831dd93e574650d89",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "RECONCILED",
+      "status": "ok"
     },
     {
       "event_count": 0,
@@ -1532,20 +1487,20 @@
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 0,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P2-v1.7.119-EXACTPDF-4434dc8b-NONANTHROPIC-CONFIRM/API_P2_gemini.md",
       "receipt_id": "receipt_713d9377d9267d5de62d",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "RECONCILED",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 0,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P2-v1.7.119-EXACTPDF-4434dc8b-NONANTHROPIC-CONFIRM/API_P2_grok.md",
       "receipt_id": "receipt_2eb6deba74574f3efa50",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "RECONCILED",
+      "status": "ok"
     },
     {
       "event_count": 0,
@@ -1559,29 +1514,29 @@
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 0,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P2-v1.7.120-EXACTPDF-2111e62f-NONANTHROPIC-CONFIRM/API_P2_gemini.md",
       "receipt_id": "receipt_93475ec660650843c6c0",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "RECONCILED",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 0,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P2-v1.7.120-EXACTPDF-2111e62f-NONANTHROPIC-CONFIRM/API_P2_grok.md",
       "receipt_id": "receipt_890f1823e2fc88edc1bf",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "RECONCILED",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 0,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P2-v1.7.120-EXACTPDF-2111e62f-NONANTHROPIC-CONFIRM/API_P2_openai.md",
       "receipt_id": "receipt_f29af487fad6043174e0",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "RECONCILED",
+      "status": "ok"
     },
     {
       "event_count": 0,
@@ -1640,20 +1595,20 @@
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 0,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P2-v1.7.122-EXACTPDF-4097bac5-PRD-NONANTHROPIC-CONFIRM/API_P2_gemini.md",
       "receipt_id": "receipt_ee92d4cde19bcaf91910",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "RECONCILED",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 0,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P2-v1.7.122-EXACTPDF-4097bac5-PRD-NONANTHROPIC-CONFIRM/API_P2_grok.md",
       "receipt_id": "receipt_6a5f72825ecc93e97bd3",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "RECONCILED",
+      "status": "ok"
     },
     {
       "event_count": 0,
@@ -1667,33 +1622,6 @@
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
-      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P3-v3.2.0-r1-EXACTPDF-3dc9d458-NONANTHROPIC/API_P3APJS_gemini.md",
-      "receipt_id": "receipt_95270fe79f589a1fcc5a",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
-    },
-    {
-      "event_count": 0,
-      "event_hashes": [],
-      "expected_findings": null,
-      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P3-v3.2.0-r1-EXACTPDF-3dc9d458-NONANTHROPIC/API_P3APJS_grok.md",
-      "receipt_id": "receipt_4d76acf97d4ea6ffd6ba",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
-    },
-    {
-      "event_count": 0,
-      "event_hashes": [],
-      "expected_findings": null,
-      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P3-v3.2.0-r1-EXACTPDF-3dc9d458-NONANTHROPIC/API_P3APJS_openai.md",
-      "receipt_id": "receipt_1697086b16e784a2ee64",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
-    },
-    {
-      "event_count": 0,
-      "event_hashes": [],
       "expected_findings": 3,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P3-v3.2.0-r2-EXACTPDF-4786a544-NONANTHROPIC-CONFIRM/API_P3APJS_gemini.md",
       "receipt_id": "receipt_0fb96c6797595bed1e50",
@@ -1703,11 +1631,11 @@
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 0,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P3-v3.2.0-r2-EXACTPDF-4786a544-NONANTHROPIC-CONFIRM/API_P3APJS_grok.md",
       "receipt_id": "receipt_5d8cfa3a741d6ffa217a",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "RECONCILED",
+      "status": "ok"
     },
     {
       "event_count": 0,
@@ -1856,33 +1784,6 @@
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
-      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P4-v1.0.242-EXACTPDF-8c9df3da-NONANTHROPIC-CONFIRM/API_P4_gemini.md",
-      "receipt_id": "receipt_48031757784102bccd4c",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
-    },
-    {
-      "event_count": 0,
-      "event_hashes": [],
-      "expected_findings": null,
-      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P4-v1.0.242-EXACTPDF-8c9df3da-NONANTHROPIC-CONFIRM/API_P4_grok.md",
-      "receipt_id": "receipt_74809900fca2480fe712",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
-    },
-    {
-      "event_count": 0,
-      "event_hashes": [],
-      "expected_findings": null,
-      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P4-v1.0.242-EXACTPDF-8c9df3da-NONANTHROPIC-CONFIRM/API_P4_openai.md",
-      "receipt_id": "receipt_a1f2cf4c6ab65b2de8d0",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
-    },
-    {
-      "event_count": 0,
-      "event_hashes": [],
       "expected_findings": 4,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P4-v1.0.243-EXACTPDF-9e73fd88-APJS-NONANTHROPIC-CONFIRM/API_P4_gemini.md",
       "receipt_id": "receipt_a4a4f9ed22c33f5b96a7",
@@ -1910,29 +1811,29 @@
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 5,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P5-v0.1.128-EXACTPDF-f1ba53bf-NONANTHROPIC/API_P5_gemini.md",
       "receipt_id": "receipt_3185f89b9e1bcda95974",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 3,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P5-v0.1.128-EXACTPDF-f1ba53bf-NONANTHROPIC/API_P5_grok.md",
       "receipt_id": "receipt_d4f0e367e9b85a4d9688",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 11,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P5-v0.1.128-EXACTPDF-f1ba53bf-NONANTHROPIC/API_P5_openai.md",
       "receipt_id": "receipt_68e0e5579ef2d699780a",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
@@ -2018,20 +1919,20 @@
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 0,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P5-v0.1.131-EXACTPDF-4f545606-AJ-NONANTHROPIC-CONFIRM/API_P5_gemini.md",
       "receipt_id": "receipt_3bc845a696c4eb998a7c",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "RECONCILED",
+      "status": "ok"
     },
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 0,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P5-v0.1.131-EXACTPDF-4f545606-AJ-NONANTHROPIC-CONFIRM/API_P5_grok.md",
       "receipt_id": "receipt_93fc9d358799bdd0c7e6",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "RECONCILED",
+      "status": "ok"
     },
     {
       "event_count": 0,
@@ -2108,11 +2009,11 @@
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 5,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P4-v1.0.244-EXACTPDF-1b1a536d-APJS-NONANTHROPIC-CONFIRM/API_P4_gemini.md",
       "receipt_id": "receipt_7e9f8be30cfaec9048ae",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
@@ -2216,11 +2117,11 @@
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 4,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P4-v1.0.250-EXACTPDF-1c8af85c-NONANTHROPIC-CONFIRM/API_P4_gemini.md",
       "receipt_id": "receipt_cd2c4b9240a70b808965",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
@@ -2243,11 +2144,11 @@
     {
       "event_count": 0,
       "event_hashes": [],
-      "expected_findings": null,
+      "expected_findings": 3,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P4-v1.0.252-EXACTPDF-a109f3d1-NONANTHROPIC-CONFIRM/API_P4_gemini.md",
       "receipt_id": "receipt_ad7795062f891d7d5acc",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     },
     {
       "event_count": 0,
@@ -2362,6 +2263,33 @@
     {
       "event_count": 0,
       "event_hashes": [],
+      "expected_findings": 4,
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P4-v1.0.256-EXACTPDF-6dfccf7c-NONANTHROPIC-CONFIRM/API_P4_gemini.md",
+      "receipt_id": "receipt_47d4410d9bf5a17e1444",
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
+    },
+    {
+      "event_count": 0,
+      "event_hashes": [],
+      "expected_findings": null,
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P4-v1.0.256-EXACTPDF-6dfccf7c-NONANTHROPIC-CONFIRM/API_P4_grok.md",
+      "receipt_id": "receipt_7d70fa7c41b50dd44ec9",
+      "state": "FAILED_LEG_GAP",
+      "status": "failed"
+    },
+    {
+      "event_count": 0,
+      "event_hashes": [],
+      "expected_findings": 5,
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P4-v1.0.256-EXACTPDF-6dfccf7c-NONANTHROPIC-CONFIRM/intwave_P4_codex_2326.md",
+      "receipt_id": "receipt_882e229def993a5efe1b",
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
+    },
+    {
+      "event_count": 0,
+      "event_hashes": [],
       "expected_findings": 5,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P5-v0.1.134-EXACTPDF-c2ecb845-NONANTHROPIC-RECURSIVE/API_P5_gemini.md",
       "receipt_id": "receipt_0a3eb9300a1cde2cb44e",
@@ -2383,11 +2311,146 @@
       "expected_findings": null,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P5-v0.1.134-EXACTPDF-c2ecb845-NONANTHROPIC-RECURSIVE/intwave_P5_codex_1733.md",
       "receipt_id": "receipt_fc8e6d681bfb393bef67",
-      "state": "PARSE_ERROR",
-      "status": "parse_error"
+      "state": "FAILED_LEG_GAP",
+      "status": "failed"
+    },
+    {
+      "event_count": 0,
+      "event_hashes": [],
+      "expected_findings": 4,
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P5-v0.1.135-EXACTPDF-7223afcc-NONANTHROPIC-CONFIRM/API_P5_gemini.md",
+      "receipt_id": "receipt_38df16259c44ae5442fc",
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
+    },
+    {
+      "event_count": 0,
+      "event_hashes": [],
+      "expected_findings": null,
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P5-v0.1.135-EXACTPDF-7223afcc-NONANTHROPIC-CONFIRM/API_P5_grok.md",
+      "receipt_id": "receipt_54d233f11473dc64d47a",
+      "state": "FAILED_LEG_GAP",
+      "status": "failed"
+    },
+    {
+      "event_count": 0,
+      "event_hashes": [],
+      "expected_findings": 5,
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P5-v0.1.135-EXACTPDF-7223afcc-NONANTHROPIC-CONFIRM/intwave_P5_codex_2326.md",
+      "receipt_id": "receipt_bd0ef79b35c38dffdf58",
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
+    },
+    {
+      "event_count": 0,
+      "event_hashes": [],
+      "expected_findings": 4,
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P4-v1.0.257-EXACTPDF-726acd8b-NONANTHROPIC-CONFIRM/API_P4_gemini.md",
+      "receipt_id": "receipt_b7d965933814245efd78",
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
+    },
+    {
+      "event_count": 0,
+      "event_hashes": [],
+      "expected_findings": null,
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P4-v1.0.257-EXACTPDF-726acd8b-NONANTHROPIC-CONFIRM/API_P4_grok.md",
+      "receipt_id": "receipt_cfabd09f3af43d6b9b53",
+      "state": "FAILED_LEG_GAP",
+      "status": "failed"
+    },
+    {
+      "event_count": 0,
+      "event_hashes": [],
+      "expected_findings": 6,
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P4-v1.0.257-EXACTPDF-726acd8b-NONANTHROPIC-CONFIRM/intwave_P4_codex_0004.md",
+      "receipt_id": "receipt_75686af69876da5ffca3",
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
+    },
+    {
+      "event_count": 0,
+      "event_hashes": [],
+      "expected_findings": 5,
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P4-v1.0.258-EXACTPDF-e9b69665-NONANTHROPIC-CONFIRM/API_P4_gemini.md",
+      "receipt_id": "receipt_3f16336f1457045bac62",
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
+    },
+    {
+      "event_count": 0,
+      "event_hashes": [],
+      "expected_findings": 4,
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P4-v1.0.258-EXACTPDF-e9b69665-NONANTHROPIC-CONFIRM/API_P4_grok.md",
+      "receipt_id": "receipt_71a8990814ccf605eb6e",
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
+    },
+    {
+      "event_count": 0,
+      "event_hashes": [],
+      "expected_findings": 4,
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P4-v1.0.258-EXACTPDF-e9b69665-NONANTHROPIC-CONFIRM/intwave_P4_codex_0128.md",
+      "receipt_id": "receipt_a1e6b045c6ce18bedf92",
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
+    },
+    {
+      "event_count": 0,
+      "event_hashes": [],
+      "expected_findings": 6,
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P5-v0.1.136-EXACTPDF-cd3c8e81-NONANTHROPIC-CONFIRM/API_P5_gemini.md",
+      "receipt_id": "receipt_faa9db1b9b1f6afab440",
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
+    },
+    {
+      "event_count": 0,
+      "event_hashes": [],
+      "expected_findings": null,
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P5-v0.1.136-EXACTPDF-cd3c8e81-NONANTHROPIC-CONFIRM/API_P5_grok.md",
+      "receipt_id": "receipt_f807998abae091b0bb25",
+      "state": "FAILED_LEG_GAP",
+      "status": "failed"
+    },
+    {
+      "event_count": 0,
+      "event_hashes": [],
+      "expected_findings": 7,
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P5-v0.1.136-EXACTPDF-cd3c8e81-NONANTHROPIC-CONFIRM/intwave_P5_codex_0004.md",
+      "receipt_id": "receipt_0129e3ab7261e992f935",
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
+    },
+    {
+      "event_count": 0,
+      "event_hashes": [],
+      "expected_findings": 4,
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P5-v0.1.138-EXACTPDF-3c47ccf7-NONANTHROPIC-CONFIRM/API_P5_gemini.md",
+      "receipt_id": "receipt_6bf2b83cfd1db02abe6f",
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
+    },
+    {
+      "event_count": 0,
+      "event_hashes": [],
+      "expected_findings": 3,
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P5-v0.1.138-EXACTPDF-3c47ccf7-NONANTHROPIC-CONFIRM/API_P5_grok.md",
+      "receipt_id": "receipt_b9df7a0f197231de58e3",
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
+    },
+    {
+      "event_count": 0,
+      "event_hashes": [],
+      "expected_findings": 4,
+      "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P5-v0.1.138-EXACTPDF-3c47ccf7-NONANTHROPIC-CONFIRM/intwave_P5_codex_0128.md",
+      "receipt_id": "receipt_8a0d9248e5d2695c24c9",
+      "state": "COUNT_MISMATCH",
+      "status": "ok"
     }
   ],
-  "reconciled_receipts": 0,
+  "reconciled_receipts": 17,
   "schema_version": "finding-receipt-reconciliation/v1",
   "unresolved_finding_counts": 0
 }

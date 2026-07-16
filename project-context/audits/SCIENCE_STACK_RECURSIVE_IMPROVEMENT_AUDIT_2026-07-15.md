@@ -167,6 +167,24 @@ now use the immutable GitHub commit artifact, independently verified as
 remain intact. A future deployment-surface cleanup must build from a bounded
 source set instead of uploading the full research worktree.
 
+The receipt-inventory parser has now been expanded with regression fixtures for
+the explicit formats actually present in the campaign: Markdown-wrapped
+severity tags, numbered severity sections, exact severity-summary counts,
+explicit clean-review variants, matching parsed/raw ACCEPT verdicts, alternate
+verbatim-response boundaries, and explicit provider failures. The focused suite
+passes **14/14**. On the reproducible git-tracked corpus, parseable coverage
+improved from **169/264 (64.0%)** at the initial bounded migration to
+**259/271 (95.6%)**, with **1,574** explicit findings, six honest parse gaps,
+and six failed legs. A full-worktree recovery view also exposes 11 untracked raw
+receipts rather than allowing a committed inventory to reference absent files.
+
+This is a substantial archive-ingestion acceleration, but it does not close the
+historical learning gate. Only two finding events are in the ledger; canonical
+reconciliation remains incomplete at **17/259 receipts (6.56%)**, with 242
+count mismatches, zero hash mismatches, and zero orphaned event receipts.
+Campaign-wide escape and closure-regression rates therefore remain unavailable
+as complete-history metrics.
+
 Evidence and exact outcomes are recorded in
 `project-context/audits/PROACTIVE_PORTFOLIO_SWEEP_2026-07-15.md`. Readiness was
 not increased by these process or release-integrity closures.
