@@ -63,6 +63,61 @@ class FindingClosureEventTests(unittest.TestCase):
             with self.assertRaisesRegex(closure_event.ClosureError, "absent"):
                 closure_event.validate(event, repo=root, finding_event_ids=set())
 
+    def test_appends_batch_atomically_and_idempotently(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = pathlib.Path(tmp)
+            first = self.fixture(root)
+            second = closure_event.stamp({
+                **{
+                    key: value
+                    for key, value in first.items()
+                    if key not in {"closure_event_id", "content_hash"}
+                },
+                "finding_event_id": "fev1_" + "b" * 24,
+                "action": "fixed second",
+            })
+            ids = {first["finding_event_id"], second["finding_event_id"]}
+            ledger = root / "closures.jsonl"
+            result = closure_event.append_many(
+                ledger, [first, second], repo=root, finding_event_ids=ids
+            )
+            self.assertEqual([row["status"] for row in result], ["appended", "appended"])
+            self.assertEqual(len(ledger.read_text().splitlines()), 2)
+            replay = closure_event.append_many(
+                ledger, [first, second], repo=root, finding_event_ids=ids
+            )
+            self.assertEqual(
+                [row["status"] for row in replay],
+                ["idempotent", "idempotent"],
+            )
+            self.assertEqual(len(ledger.read_text().splitlines()), 2)
+
+    def test_rejects_entire_batch_before_writing(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = pathlib.Path(tmp)
+            first = self.fixture(root)
+            invalid = closure_event.stamp({
+                **{
+                    key: value
+                    for key, value in first.items()
+                    if key not in {"closure_event_id", "content_hash"}
+                },
+                "finding_event_id": "fev1_" + "b" * 24,
+                "evidence": [{"path": "evidence.txt", "sha256": "0" * 64}],
+            })
+            ledger = root / "closures.jsonl"
+            with self.assertRaisesRegex(closure_event.ClosureError, "sha256"):
+                closure_event.append_many(
+                    ledger,
+                    [first, invalid],
+                    repo=root,
+                    finding_event_ids={
+                        first["finding_event_id"],
+                        invalid["finding_event_id"],
+                    },
+                )
+            self.assertFalse(ledger.exists())
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -135,6 +135,52 @@ def append(
     return "appended"
 
 
+def append_many(
+    ledger: pathlib.Path,
+    events: list[dict[str, Any]],
+    *,
+    repo: pathlib.Path,
+    finding_event_ids: set[str],
+) -> list[dict[str, str]]:
+    stamped = [stamp(event) for event in events]
+    for event in stamped:
+        validate(event, repo=repo, finding_event_ids=finding_event_ids)
+
+    existing = read_closures(
+        ledger, repo=repo, finding_event_ids=finding_event_ids
+    )
+    by_closure = {row["closure_event_id"]: row for row in existing}
+    by_finding = {row["finding_event_id"]: row for row in existing}
+    seen_findings: set[str] = set()
+    results = []
+    to_append = []
+    for event in stamped:
+        finding_id = event["finding_event_id"]
+        if finding_id in seen_findings:
+            raise ClosureError("closure batch repeats a finding_event_id")
+        seen_findings.add(finding_id)
+        if event["closure_event_id"] in by_closure:
+            results.append({
+                "status": "idempotent",
+                "closure_event_id": event["closure_event_id"],
+            })
+            continue
+        if finding_id in by_finding:
+            raise ClosureError("finding already has a different closure event")
+        to_append.append(event)
+        results.append({
+            "status": "appended",
+            "closure_event_id": event["closure_event_id"],
+        })
+
+    if to_append:
+        ledger.parent.mkdir(parents=True, exist_ok=True)
+        with ledger.open("a", encoding="utf-8") as handle:
+            for event in to_append:
+                handle.write(canonical(event).decode() + "\n")
+    return results
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("command", choices=("append", "validate", "project"))
@@ -149,11 +195,33 @@ def main() -> int:
             if args.event is None:
                 raise ClosureError("--event is required for append")
             raw = json.loads(args.event.read_text())
-            event = stamp(raw)
-            status = append(
-                args.closure_ledger, event, repo=repo, finding_event_ids=ids
-            )
-            print(json.dumps({"status": status, "closure_event_id": event["closure_event_id"]}))
+            if isinstance(raw, list):
+                results = append_many(
+                    args.closure_ledger,
+                    raw,
+                    repo=repo,
+                    finding_event_ids=ids,
+                )
+                print(json.dumps({
+                    "events": len(results),
+                    "appended": sum(row["status"] == "appended" for row in results),
+                    "idempotent": sum(
+                        row["status"] == "idempotent" for row in results
+                    ),
+                    "results": results,
+                }))
+            else:
+                event = stamp(raw)
+                status = append(
+                    args.closure_ledger,
+                    event,
+                    repo=repo,
+                    finding_event_ids=ids,
+                )
+                print(json.dumps({
+                    "status": status,
+                    "closure_event_id": event["closure_event_id"],
+                }))
         else:
             events = read_closures(
                 args.closure_ledger, repo=repo, finding_event_ids=ids
