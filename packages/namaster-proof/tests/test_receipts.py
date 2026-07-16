@@ -1,0 +1,60 @@
+from __future__ import annotations
+
+import json
+
+import pytest
+
+from namaster_proof.receipts import (
+    publish_json,
+    receipt_path,
+    validate_json_receipt,
+    verify_json_receipt,
+)
+
+
+def test_publish_and_validate_round_trip(tmp_path):
+    result = tmp_path / "shard.json"
+    receipt = publish_json(
+        result,
+        {"values": [1.0, 2.0]},
+        {"suite": "c10", "n_real": 2, "seed_start": 42, "seed_end": 43},
+    )
+    payload, validated = validate_json_receipt(
+        result,
+        expected={"suite": "c10", "n_real": 2},
+        expected_seed_start=42,
+    )
+    assert payload == {"values": [1.0, 2.0]}
+    assert validated == receipt
+
+
+def test_result_mutation_is_rejected(tmp_path):
+    result = tmp_path / "shard.json"
+    publish_json(result, {"values": [1]}, {"suite": "test"})
+    result.write_text('{"values":[2]}\n', encoding="utf-8")
+    with pytest.raises(ValueError, match="invalid receipt"):
+        verify_json_receipt(result)
+
+
+def test_receipt_mutation_and_wrong_expectation_are_rejected(tmp_path):
+    result = tmp_path / "shard.json"
+    publish_json(result, {"values": [1]}, {"suite": "test"})
+    sidecar = receipt_path(result)
+    receipt = json.loads(sidecar.read_text(encoding="utf-8"))
+    receipt["result_sha256"] = "0" * 64
+    sidecar.write_text(json.dumps(receipt), encoding="utf-8")
+    with pytest.raises(ValueError, match="result_sha256"):
+        verify_json_receipt(result)
+
+    publish_json(result, {"values": [1]}, {"suite": "test"})
+    with pytest.raises(ValueError, match="suite"):
+        validate_json_receipt(result, expected={"suite": "other"})
+
+
+def test_metadata_cannot_override_content_binding(tmp_path):
+    with pytest.raises(ValueError, match="protected receipt fields"):
+        publish_json(
+            tmp_path / "shard.json",
+            {"values": [1]},
+            {"result_sha256": "attacker-controlled"},
+        )
