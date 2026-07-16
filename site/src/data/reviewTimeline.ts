@@ -57,6 +57,28 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p1b-physical-namaster-v111-2026-07-16",
+    dateISO: "2026-07-16",
+    timePT: "6:32 AM",
+    kind: "closure-wave",
+    title: "P1B v1B.0.111 — physical CAMB NaMaster production retained",
+    papers: ["P1B"],
+    summary:
+      "The corrected local production suite completed 500 deterministic realizations for the canonical recovery and seven robustness configurations using pinned CAMB 1.6.6 raw lensed EE/BB spectra. All result/receipt pairs, the narrow in-flight source correction, merged batteries, BBN/S8 contracts, and the 230-artifact version-matched manifest validate. The 20-page PDF passed visual audit, retention, eight mirrors, and Convex read-back. Readiness holds 56 pending exact and human review.",
+    keyTakeaways: [
+      "Canonical +0.270 degree injection recovered +0.270 degree; MC-mean SE 0.000573 degree",
+      "Negative sign, f_sky, apodization, latitude-cut, weighting, lmax, and B-purification controls have zero grid-resolved bias",
+      "Exact PDF: 20 pp / SHA-256 defc8cafd0f71688838fd9bae8ee7a5f9e9d11b94f01a58b2787007bb5139533",
+      "No exact-PDF reviewer verdict, readiness uplift, submission, or acceptance is claimed",
+    ],
+    links: [
+      { label: "Production summary", href: `${GH}/reproducibility/p1_namaster_500mc/results/physical_spectrum_v2/summary.json` },
+      { label: "Robustness receipt", href: `${GH}/reproducibility/p1_namaster_500mc/results/physical_spectrum_v2/c10_robustness_battery.json.receipt.json` },
+      { label: "v1B.0.111 manifest", href: `${GH}/reproducibility/p1b_analysis_artifact_manifest_v1B.0.111.json` },
+      { label: "P1B canonical status", href: `${GH}/project-context/SSOT/paper-1/status.md` },
+    ],
+  },
+  {
     id: "p1b-bbn-execution-contract-2026-07-16",
     dateISO: "2026-07-16",
     timePT: "3:53 AM",

@@ -5,7 +5,7 @@
 | Paper | Current version | Readiness | Current PDF | Deposit state |
 |---|---:|---:|---|---|
 | P1A | v1A.0.123 | 62 | 7 pp; SHA-256 `4c450a67…3f71` | Exact source bundle and standalone proof pass; metadata intentionally fails closed until Houston authorizes a license; no draft or DOI |
-| P1B | v1B.0.110 | 56 | 20 pp; SHA-256 `a0677784…8f0` | S8 and exact CAMB/PRIMAT BBN execution contracts closed; corrected 500-MC physical-spectrum result and current-version deposit package remain absent |
+| P1B | v1B.0.111 | 56 | 20 pp; SHA-256 `defc8caf…9533` | Physical CAMB 500-MC suite, robustness receipts, S8/BBN contracts, and version-matched manifest pass; exact/human review and current-version archive/DOI package remain open |
 | P2 | v1.7.122 | 80 | 10 pp; SHA-256 `4097bac5…25c9` | **Verified exact-commit candidate in reversible GitHub draft; all 8 remote digests match; no DOI or archive publication** |
 | P3 | v3.2.0-r8 | 56 | 16 pp; MD5 `8faac098b5f4cde3133937460b8df4c5` | **Verified exact-commit candidate in reversible GitHub draft; all 8 remote digests match; no DOI or archive publication** |
 | P4 | v1.0.255 | 80 | 29 pp; SHA-256 `f9b011a8…7dce` | Exact commit-bound source bundle and isolated 29-page proof pass; the reversible GitHub draft is still the superseded v1.0.252 candidate; no DOI reserved or archive published |

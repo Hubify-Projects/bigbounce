@@ -210,7 +210,8 @@
 %      (reproducibility/p1_namaster_500mc/scripts/namaster_500mc.py) generates
 %      SYNTHETIC ΛCDM Q/U skies (semi-analytic EE fit + 5% lensing BB) + 10 µK·arcmin
 %      noise on an ACT-like |b|>20°, dec∈[−65°,+25°] Gaussian-apodized (2° FWHM) mask;
-%      NO Commander/SMICA map, NO beam, NO B-purification, 20 linear bins 30≤ℓ≤1536.
+%      NO Commander/SMICA map, NO beam, canonical run has no B-purification,
+%      20 linear bins spanning 30≤ℓ≤1024.
 %      Abstract/§IV/Conclusions prose rewritten to the executed pipeline; stale
 %      fig_namaster_beta_vs_nside.png (old exploratory run: 512-pt at ~0.15°, SMICA
 %      title, Planck+ACT legend, contradicting every §IV number) REPLACED by
@@ -261,8 +262,8 @@
 %   FALSIFIED list (14 items) not acted on.)
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1B.0.110}
-\newcommand{\paperTimestamp}{July 16, 2026, 03:37 PT}
+\newcommand{\paperVersion}{v1B.0.111}
+\newcommand{\paperTimestamp}{July 16, 2026, 06:28 PT}
 % v1B.0.107->108 (2026-07-15): one-pass exact-PDF confirmation closure.
 %   Relabeled the canonical NaMaster mask as a synthetic native-coordinate
 %   latitude window; rendered the complete prior-predictive method and MC
@@ -1332,9 +1333,9 @@ convention factors, far below the proxy sensitivity.
 
 Second, a 500-realization synthetic-CMB NaMaster test on a synthetic mask
 recovers injected global polarization rotations after applying the exact
-NaMaster bandpower-window operator: $0.270^\circ\mapsto0.269^\circ$ and
-$0.342^\circ\mapsto0.341^\circ$, with a canonical MC-mean bias
-$-0.0010^\circ\pm0.0023^\circ$ (standard error). Because the skies omit Galactic foregrounds,
+NaMaster bandpower-window operator: $0.270^\circ\mapsto0.270^\circ$ and
+$0.342^\circ\mapsto0.342^\circ$, with a canonical MC-mean bias
+$0.0000^\circ\pm0.000573^\circ$ (standard error). Because the skies omit Galactic foregrounds,
 the test does not break the cosmic-rotation/instrument-calibration degeneracy
 and is not a real-sky detection or systematic floor.
 
@@ -1407,10 +1408,10 @@ $\Lambda$CDM CMB polarization skies with an ACT-like footprint mask
 ($N_{\rm side}=512$, $\ell_{\rm max}=1024$, $f_{\rm sky}=0.32$,
 $10\,\mu\text{K}\cdot\text{arcmin}$ white noise,
 500 Monte Carlo realizations): injecting the spectator-ALP fiducial value
-$\beta=0.27^\circ$ recovers $\hat\beta=0.269^\circ$ (pipeline-recovery bias
-$\hat\beta-\beta_{\rm inj}=-0.0010^\circ\pm0.0023^\circ$, where the uncertainty
+$\beta=0.27^\circ$ recovers $\hat\beta=0.270^\circ$ (pipeline-recovery bias
+$\hat\beta-\beta_{\rm inj}=0.0000^\circ\pm0.000573^\circ$, where the uncertainty
 is the standard error of the 500-MC mean); $0.342^\circ$ recovers
-$0.341^\circ$. These are foreground-free MC
+$0.342^\circ$. These are foreground-free MC
 pipeline-recovery figures, not sky-measurement systematics, and are not
 directly comparable to each other's published sky significances. \emph{Scope of the validation}: the test confirms the algebraic pseudo-$C_\ell$ $E\!\to\!B$ deconvolution under MASTER~\cite{Hivon2002} mode coupling, NOT the physical separation of the cosmic-rotation angle $\beta$ from the instrumental-miscalibration angle $\alpha$ which strictly requires unrotated galactic foregrounds (the synthetic CMB-only skies contain no galactic foregrounds, so the very component that breaks the $\beta$--$\alpha$ degeneracy in published Planck/ACT~DR6 measurements is absent by construction). The MC recovery is therefore a pipeline-validation figure, not a sky-detection significance claim. The primary sky detection significance is the
 published Planck/ACT DR6 $2.7$--$2.9\sigma$~\cite{DiegoPalazuelos2022,DiegoPalazuelos2025}
@@ -1586,7 +1587,7 @@ an extra radiation-like degree of freedom in standard cosmology.
 bias-injection Monte Carlo validation of the pseudo-$C_\ell$ deconvolution
 pipeline on synthetic $\Lambda$CDM polarization skies.
 \textbf{Not a competitive sky detection.} The diagonal-covariance template
-score (e.g., $20.01$) is a heuristic recovery diagnostic for injected MC
+score (e.g., $30.41$) is a heuristic recovery diagnostic for injected MC
 signals and omits inter-bin covariance; it is not the significance of the CMB
 sky measurement, which remains the published
 $2.7$--$2.9\sigma$ from Planck/ACT.
@@ -2044,14 +2045,13 @@ Monte Carlo mean. These are pipeline checks, not real-sky systematic bounds.
 \begin{tabular}{lcccc}
 Configuration & $\beta_{\rm inj}$ & $\hat\beta$ & Signed bias & SE \\
 \hline
-Canonical native-coordinate window, $f_{\rm sky}=0.32$ & $+0.270^\circ$ & $+0.269^\circ$ & $-0.001^\circ$ & $0.002299^\circ$ \\
-Negative sign, $f_{\rm sky}=0.32$ & $-0.270^\circ$ & $-0.270^\circ$ & $0.000^\circ$ & $0.002200^\circ$ \\
-Large sky, $f_{\rm sky}=0.85$ & $+0.270^\circ$ & $+0.270^\circ$ & $0.000^\circ$ & $0.001412^\circ$ \\
-Intermediate sky, $f_{\rm sky}=0.65$ & $+0.270^\circ$ & $+0.268^\circ$ & $-0.002^\circ$ & $0.001582^\circ$ \\
-Apodization $0.5^\circ$ / $3.0^\circ$ & $+0.270^\circ$ & $+0.269^\circ$ / $+0.269^\circ$ & $-0.001^\circ$ / $-0.001^\circ$ & --- \\
-Native-latitude cut $|\mathrm{lat}|>30^\circ$ & $+0.270^\circ$ & $+0.269^\circ$ & $-0.001^\circ$ & --- \\
-CAMB-lensed $BB$ injection & $+0.270^\circ$ & $+0.270^\circ$ & $0.000^\circ$ & --- \\
-$B$-purified field & $+0.270^\circ$ & $+0.269^\circ$ & $-0.001^\circ$ & --- \\
+Canonical native-coordinate window, $f_{\rm sky}=0.32$ & $+0.270^\circ$ & $+0.270^\circ$ & $0.000^\circ$ & $0.000573^\circ$ \\
+Negative sign, $f_{\rm sky}=0.32$ & $-0.270^\circ$ & $-0.270^\circ$ & $0.000^\circ$ & $0.000515^\circ$ \\
+Large sky, $f_{\rm sky}=0.85$ & $+0.270^\circ$ & $+0.270^\circ$ & $0.000^\circ$ & $0.000349^\circ$ \\
+Intermediate sky, $f_{\rm sky}=0.65$ & $+0.270^\circ$ & $+0.270^\circ$ & $0.000^\circ$ & $0.000397^\circ$ \\
+Apodization $0.5^\circ$ / $3.0^\circ$ & $+0.270^\circ$ & $+0.270^\circ$ / $+0.270^\circ$ & $0.000^\circ$ / $0.000^\circ$ & --- \\
+Native-latitude cut $|\mathrm{lat}|>30^\circ$ & $+0.270^\circ$ & $+0.270^\circ$ & $0.000^\circ$ & --- \\
+$B$-purified field & $+0.270^\circ$ & $+0.270^\circ$ & $0.000^\circ$ & --- \\
 \end{tabular}
 \end{ruledtabular}
 \end{table*}
@@ -2096,7 +2096,7 @@ systematic budget (the $\beta$--$\alpha$ calibration degeneracy, galactic
 foregrounds, instrumental beams, and anisotropic noise are all absent by
 construction and explicitly out of scope).
 The high diagonal-covariance template scores
-(e.g., $20.01$, $25.32$; fn.~\ref{fn:snr_definition}) are heuristic recovery
+(e.g., $30.41$, $38.44$; fn.~\ref{fn:snr_definition}) are heuristic recovery
 diagnostics that omit inter-bin covariance and
 \emph{must not} be conflated with the published Planck/ACT~DR6 $2.7$--$2.9\sigma$
 sky detection. The $\beta$--$\alpha$ degeneracy that dominates real-sky
@@ -2107,9 +2107,12 @@ which are absent from these synthetic skies by construction (cf.\ abstract).}
 \emph{Simulated skies.}---Each Monte Carlo realization is a synthetic
 $\Lambda$CDM CMB $Q$/$U$ sky generated directly at $N_{\rm side}=512$
 (\texttt{healpy.synfast}, harmonic content to
-$\ell_{\rm max}=2N_{\rm side}=1024$) from a semi-analytic fit to the
-Planck-2018 $EE$ spectrum plus a lensing-like $BB$ component
-($C_\ell^{BB} = 0.05\,C_\ell^{EE}$). No real Planck map enters the
+$\ell_{\rm max}=2N_{\rm side}=1024$) from pinned CAMB~1.6.6 raw
+\texttt{lensed\_scalar} $C_\ell^{EE}$ and $C_\ell^{BB}$ spectra using
+$H_0=67.36\,{\rm km\,s^{-1}\,Mpc^{-1}}$, $\omega_b=0.02237$,
+$\omega_c=0.1200$, $\tau=0.0544$, $A_s=2.1\times10^{-9}$, and
+$n_s=0.9649$. The exact spectrum-array hashes and scale checks are retained
+in the production summary and version-matched analysis manifest. No real Planck map enters the
 Monte Carlo, and no instrumental beam is applied (the synthetic skies and
 the recovery template share the same spectra, so a common beam would
 \emph{largely cancel} in the $\beta$ estimate provided the beam-deconvolution
@@ -2145,10 +2148,11 @@ the full $EE/EB/BB$ block structure.
 beam, and all other \texttt{NmtField}/\texttt{NmtWorkspace} options at
 NaMaster library defaults --- in particular no \texttt{n\_iter} override;
 binning uses \texttt{NmtBin.from\_edges} with 20 linear integer-edge bins
-from \texttt{np.linspace(30, 1536, 21)};
+from $\ell=30$ through the inclusive field limit $\ell=1024$;
 \path{reproducibility/p1_namaster_500mc/scripts/namaster_500mc.py}.) Spectra are band-power-binned into
-20 linear bins spanning $30 \le \ell \le 3N_{\rm side}=1536$ (bins above
-the map band limit $\ell=1024$ carry noise only). The recovery model uses
+20 linear bins spanning $30 \le \ell \le 1024$. The field, mask-harmonic
+limit for purification, theory arrays, and final bin all share this same
+explicit limit. The recovery model uses
 the workspace's exact four-spectrum bandpower-window tensor
 \texttt{NmtWorkspace.get\_bandpower\_windows}: the rotated
 $[EE,EB,BE,BB]$ theory is contracted through the same window operator as
@@ -2202,16 +2206,16 @@ divisor---while an inverse-variance-weighted fit is reported as a robustness
 cross-check. Spectra above the simulated map band limit are zero-padded
 before window contraction; no pixel-window deconvolution or effective-$\ell$
 evaluation is applied.
-The production suite used non-negative injections; a dedicated 500-realization
+The canonical production suite used non-negative injections; a dedicated 500-realization
 $\beta=-0.27^\circ$ rerun at $f_{\rm sky}=0.32$
-(\path{reproducibility/p1_namaster_500mc/results/exact_window_500mc/shards/declared_negative_beta_fsky_0p32.json})
-recovers $-0.270^\circ$ with SE $0.002200^\circ$, consistent with zero
+(\path{reproducibility/p1_namaster_500mc/results/physical_spectrum_v2/shards/declared_negative_beta_fsky_0p32.json})
+recovers $-0.270^\circ$ with SE $0.000515^\circ$, consistent with zero
 signed bias and confirming sign-symmetric recovery.
 
 \emph{Reproducibility.}---The exact-window driver, deterministic seeds
 (\texttt{seed\_base}=42), output summary, per-realization bandpowers, and
 robustness batteries are archived under
-\path{reproducibility/p1_namaster_500mc/results/exact_window_500mc/}.
+\path{reproducibility/p1_namaster_500mc/results/physical_spectrum_v2/}.
 The April pod output mirrored at
 \href{https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/h200_results/pod1_namaster_umap_2026-04-29}{\nolinkurl{pipelines/h200_results/pod1_namaster_umap_2026-04-29/}}
 is retained for provenance but superseded because its fit used an
@@ -2222,27 +2226,28 @@ performed the NaMaster pseudo-$C_\ell$ Monte Carlo described above with
 500 realizations per injection. Injecting the spectator-ALP fiducial $\beta=0.27^\circ$
 (consistent with, but not derived from, the ECH action) recovers:
 \begin{equation}
-  \hat\beta_{\rm NaMaster} = 0.269^\circ \quad (\text{500-MC sample mean of }\hat\beta).
+  \hat\beta_{\rm NaMaster} = 0.270^\circ \quad (\text{500-MC sample mean of }\hat\beta).
   \label{eq:beta_namaster}
 \end{equation}
-This MC-recovery value $0.269^\circ$ is a pipeline-validation figure on
+This MC-recovery value $0.270^\circ$ is a pipeline-validation figure on
 synthetic skies and is \emph{not directly comparable} to the
 WMAP+Planck $3.6\sigma$ sky-detection significance of
 $\beta_{\rm obs}=0.342^\circ\pm 0.094^\circ$~\cite{Eskilt2022}: the
 significance figure is a sky-measurement null-rejection statistic,
-whereas $0.269^\circ$ is the converged MC sample mean for an
+whereas $0.270^\circ$ is the converged MC sample mean for an
 \emph{injected} signal on noise-only synthetic skies.
 The pipeline-recovery bias, defined throughout as
 $\Delta\hat\beta \equiv \hat\beta - \beta_{\rm inj}$, is
-$-0.0010^\circ$ for the canonical injection.  The per-realization angle
-scatter is $0.0514^\circ$, so the standard error of the 500-MC mean is
-$0.0023^\circ$: the residual is statistically consistent with zero.
+$0.0000^\circ$ at the $0.001^\circ$ fit-grid precision for the canonical
+injection. The per-realization angle scatter is $0.01282^\circ$, so the
+standard error of the 500-MC mean is $0.000573^\circ$: no residual bias is
+resolved.
 The earlier claimed multiplicative under-recovery came from evaluating the theory at
 effective-$\ell$ bin centres and is superseded by the exact-window result;
 it is not carried forward as a pipeline systematic.  The validation remains
 foreground-free and supplies \emph{no} systematic floor for real-sky
 $\beta$ measurements.\footnote{\label{fn:snr_definition}The
-``pipeline-recovery SNR$=20.01$'' figure (and analogously $25.32$ for the
+``pipeline-recovery SNR$=30.41$'' figure (and analogously $38.44$ for the
 $\beta=0.342^\circ$ injection below) is the diagonal-covariance template score of the
 driver script,
 $\mathrm{SNR}^{\rm tmpl}\equiv\bigl[\sum_b
@@ -2252,14 +2257,14 @@ value and $\sigma_b^{\rm MC}$ is the per-bin scatter across the 500
 realizations. Because inter-bin covariance is omitted, it is a heuristic
 diagnostic rather than a matched-template significance, and is not the
 significance of the recovered angle itself. The canonical per-realization angle scatter is
-$\sigma_\beta=0.0514^\circ$, whereas the MC-mean standard error is smaller
+$\sigma_\beta=0.01282^\circ$, whereas the MC-mean standard error is smaller
 by $\sqrt{N}=22.4$.}
 For $\beta=0.342^\circ$ (the published joint
-WMAP+Planck value~\cite{Eskilt2022}), the pipeline recovers $0.341^\circ$ at
-template-fit $\mathrm{SNR}=25.32$; for
-$\beta=0$, the recovered angle is $-0.001^\circ$ with template-fit SNR $0$
-(null check; \path{reproducibility/p1_namaster_500mc/results/exact_window_500mc/summary.json}). All three recovered
-means are displaced by $-0.001^\circ$ on the fixed $0.001^\circ$ fit grid.
+WMAP+Planck value~\cite{Eskilt2022}), the pipeline recovers $0.342^\circ$ at
+template-fit $\mathrm{SNR}=38.44$; for
+$\beta=0$, the recovered angle is $0.000^\circ$ with template-fit SNR $0$
+(null check; \path{reproducibility/p1_namaster_500mc/results/physical_spectrum_v2/summary.json}). All three recovered
+means match their injections at the fixed $0.001^\circ$ fit-grid precision.
 The exact-window test therefore finds no resolved multiplicative
 under-recovery. This remains a methodology cross-check, not a competitive
 sky measurement.
@@ -2274,31 +2279,30 @@ ACT, or any other survey footprint. The negative-sign $f_{\rm sky}\approx0.32$
 row analogously uses the pure-latitude cut $|b|>42.8436^\circ$. All use the same
 apodization recipe, noise level, and
 $N\!=\!500$ MC realizations ($N_{\rm side}=512$). The recovered values are
-$\hat\beta=0.270^\circ$ at $f_{\rm sky}=0.85$ (SE $0.001412^\circ$)
-and $\hat\beta=0.268^\circ$ at $f_{\rm sky}=0.65$
-(SE $0.001582^\circ$). Their signed biases are respectively
-$0.000^\circ$ and $-0.002^\circ$, consistent with the exact-window
+$\hat\beta=0.270^\circ$ at $f_{\rm sky}=0.85$ (SE $0.000349^\circ$)
+and $\hat\beta=0.270^\circ$ at $f_{\rm sky}=0.65$
+(SE $0.000397^\circ$). Both signed biases are
+$0.000^\circ$ at the fit-grid precision, consistent with the exact-window
 canonical result at the precision of the fit grid. The sweep therefore
 provides no evidence for a resolved multiplicative recovery bias.
 
 \emph{Robustness battery.}---All completed battery rows use the same exact
 bandpower-window contraction as the canonical estimator ($N=500$ and seeds
 42--541 per row; shard artifacts under
-\path{reproducibility/p1_namaster_500mc/results/exact_window_500mc/shards/}).
-The canonical refit gives $0.269^\circ$; changing the apodization FWHM to
+\path{reproducibility/p1_namaster_500mc/results/physical_spectrum_v2/shards/}).
+The canonical refit gives $0.270^\circ$; changing the apodization FWHM to
 $0.5^\circ$ or $3.0^\circ$, or enlarging the synthetic native-latitude cut to
-$|\mathrm{lat}|>30^\circ$, also gives $0.269^\circ$. Restricting the canonical fit to
-$\ell\le1024$ gives $0.269^\circ$, while inverse-variance weighting gives
-$0.270^\circ$. Replacing the proxy $BB$ injection with a CAMB-lensed
-$\Lambda$CDM $BB$ spectrum gives $0.270^\circ$. Enabling NaMaster
-$B$-mode purification gives $0.269^\circ$, a signed bias of
-$-0.001^\circ$, for the same $N=500$ realizations and seeds 42--541. This
+$|\mathrm{lat}|>30^\circ$, also gives $0.270^\circ$. Restricting the canonical fit to
+$\ell\le1024$ and inverse-variance weighting both give $0.270^\circ$.
+Every row uses the same pinned CAMB raw $EE/BB$ spectra. Enabling NaMaster
+$B$-mode purification gives $0.270^\circ$, a signed bias of
+$0.000^\circ$, for the same $N=500$ realizations and seeds 42--541. This
 row uses the same exact
 \texttt{NmtWorkspace.get\_bandpower\_windows} tensor contraction; its result
 artifact has SHA-256
-\texttt{208d168546c73f55\allowbreak{}21e96ead1c2be2115\allowbreak{}
-34a21f2096fac456\allowbreak{}47f6d5999f02e7f}.
-Thus every completed exact-window row lies within $0.002^\circ$ of the
+\texttt{9e9217dc35e1e887\allowbreak{}cb571d81a04b3072\allowbreak{}
+9a13a622a7fd2f69\allowbreak{}6a981d143426089a}.
+Thus every completed physical-spectrum exact-window row matches the
 injected value; the old effective-$\ell$ attribution to estimator weighting
 or injected-$BB$ shape is not carried forward.
 
@@ -2943,7 +2947,7 @@ Bayes factors and information criteria ($\Delta$AIC, $\Delta$BIC, $\ln B$) are d
 \textit{NaMaster pipeline validation.}---The 500-MC pseudo-$C_\ell$ analysis on
 synthetic $\Lambda$CDM polarization skies confirms that the deconvolution pipeline recovers
 injected birefringence angles with a canonical MC-mean bias
-$\hat\beta-\beta_{\rm inj}=-0.0010^\circ\pm0.0023^\circ$ (standard error;
+$\hat\beta-\beta_{\rm inj}=0.0000^\circ\pm0.000573^\circ$ (standard error;
 Sec.~\ref{sec:data_cmb}). The diagonal-covariance template score is a heuristic
 that omits inter-bin covariance. This is a methods validation, not a competitive sky
 detection; the primary observational evidence for cosmic birefringence remains
@@ -2999,10 +3003,10 @@ This pre-release revision is identified by the in-tex
 \texttt{paper1b\_mcmc\_companion.tex} \texttt{\textbackslash newcommand\{\textbackslash paperVersion\}}).
 It does \emph{not} claim that an earlier repository commit freezes the new
 paper. Exact analysis-artifact provenance is instead recorded in
-\artifact{reproducibility/p1b_analysis_artifact_manifest_v1B.0.108.json}.
-That manifest records the base repository commit only as context and explicitly
-marks itself pre-release; the eventual submission commit/tag will freeze the
-paper source, manifest, and compiled PDF together.
+\artifact{reproducibility/p1b_analysis_artifact_manifest_v1B.0.111.json}.
+That manifest binds the analysis artifacts to its exact base repository commit;
+the submission release commit/tag will additionally freeze the paper source,
+manifest, and compiled PDF together.
 For ordinary Git blobs the manifest records the SHA-256 and byte size of the
 scientific file present in the repository. For frozen-chain
 \texttt{spin\_torsion.1.txt} entries, however, the local 133-byte Git blob is
@@ -3109,7 +3113,7 @@ prior-predictive calculation.
 $\Lambda$CDM$+\Delta\Neff$ directories are committed in-repo. Their small
 diagnostics are ordinary Git payloads; each large chain file is represented
 locally by a Git LFS pointer whose scientific payload OID and byte size are
-recorded in the v1B.0.108 manifest, with the scientific bytes mirrored in the
+recorded in the version-matched manifest, with the scientific bytes mirrored in the
 MCMC-diagnostics HuggingFace dataset. Together these artifacts back
 Table~\ref{tab:verification}, Table~\ref{tab:chain_datasets}, and the relevant
 Table~\ref{tab:claims} claim-classification entries
@@ -3195,7 +3199,7 @@ pending (see Data and Code Availability).}
 \claimcell{0.09\textwidth}{Numerical} &
 \claimcell{0.24\textwidth}{Not reported} &
 \claimcell{0.23\textwidth}{Nested-sampling follow-up} \\
-\claimcell{0.29\textwidth}{$\hat\beta_{\rm NaMaster} = 0.269^\circ$ (500-MC)} &
+\claimcell{0.29\textwidth}{$\hat\beta_{\rm NaMaster} = 0.270^\circ$ (500-MC)} &
 \claimcell{0.09\textwidth}{Numerical} &
 \claimcell{0.24\textwidth}{Int.\ verified (pipeline)} &
 \claimcell{0.23\textwidth}{Exact-window bias consistent with zero} \\

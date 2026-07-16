@@ -147,19 +147,19 @@ const historicalLiveStatus: LiveStatus = {
 // summary reflect the canonical six-paper board rather than an older review wave.
 export const liveStatus: LiveStatus = {
   ...historicalLiveStatus,
-  lastUpdatedISO: "2026-07-16T10:53:00Z",
-  lastUpdatedDisplay: "July 16, 2026 · 3:53 AM PT",
+  lastUpdatedISO: "2026-07-16T13:32:32Z",
+  lastUpdatedDisplay: "July 16, 2026 · 6:32 AM PT",
   headline:
-    "All six manuscripts remain in revision. P4 v1.0.260 now binds the strict-primary local overlay to the unchanged immutable public catalog; provider publication remains open. P5 remains v0.1.139. Readiness holds 80/74; no submission or acceptance is claimed.",
+    "All six manuscripts remain in revision. P1B v1B.0.111 now has corrected physical CAMB 500-MC production, eight validated recovery configurations, and a version-matched immutable analysis manifest. Exact re-review and human review remain open; readiness holds 56.",
   summary:
-    "P4 now uses the strict 890,069-row safe sample and one checksummed 24,087-pixel FSC support. P5's K=13 null is stable across angular and 3-D clustering, while sparse program interactions remain weakly bounded. External provenance/release, exact re-review, and human gates remain.",
+    "P1B's canonical and seven robustness rows recover their injected rotation at 0.001° grid precision using pinned raw CAMB spectra. S8, BBN execution, physical-spectrum, receipt, and manifest contracts all pass. No reviewer verdict or readiness credit is inferred from compute completion.",
   papers: historicalLiveStatus.papers.map((paper) => {
     if (paper.slug === "paper-1b") {
       return {
         ...paper,
-        version: "v1B.0.110",
+        version: "v1B.0.111",
         pendingWork:
-          "The S8 burn-in contract and exact CAMB 1.6.5/PRIMAT execution receipt are closed. Corrected 500-MC NaMaster production, a version-matched manifest, immutable release, exact re-review, and human review remain. Readiness holds 56.",
+          "Physical 500-MC NaMaster production, all robustness receipts, S8 burn-in, exact CAMB/PRIMAT execution, and the version-matched manifest are closed. Exact non-Anthropic re-review, human review, archive/DOI, venue, and submission gates remain. Readiness holds 56.",
       };
     }
     if (paper.slug === "paper-4") {
@@ -207,12 +207,12 @@ export const liveStatus: LiveStatus = {
     return paper;
   }),
   currentlyRunning: [
-    "P1B corrected production is queued but blocked by a negative RunPod balance; no paid pod launch is being attempted",
+    "P1B v1B.0.111 exact-PDF non-Anthropic confirmation review is the active next gate",
     "P4 v1.0.260 and P5 v0.1.139 PDFs are built, retained, mirrored, and synchronized; P4 provider-overlay publication remains open",
     "Exact non-Anthropic re-review and standing external release/provenance gates are next",
   ],
   cronStatus:
     "No review wave is running. The latest verified computational findings are closed in new exact PDFs; exact re-review is pending and readiness remains 80/74.",
   etaToCompletion:
-    "After RunPod funding is restored, P1B's canonical plus parallel robustness run is estimated at roughly 2.5–5 hours wall-clock. P4/P5 now require exact re-review, immutable external releases, remaining provenance/editorial closure, and human review. A defensible all-six submission date remains conditional on those gates; journal acceptance is controlled by editors and referees.",
+    "P1B compute is complete; its next timing dependency is exact-PDF review and truth-audited closure. P4/P5 require exact re-review and immutable external releases. A defensible all-six submission date remains conditional on those gates and human decisions; journal acceptance is controlled by editors and referees.",
 };

@@ -19,7 +19,7 @@ SPEC.loader.exec_module(manifest)
 
 class GenerateP1BAnalysisManifestTests(unittest.TestCase):
     def test_version_is_derived_from_manuscript(self):
-        self.assertEqual(manifest.manuscript_version(), "v1B.0.110")
+        self.assertEqual(manifest.manuscript_version(), "v1B.0.111")
 
     def test_transient_checkpoints_are_excluded(self):
         with tempfile.TemporaryDirectory(dir=ROOT) as tmp:

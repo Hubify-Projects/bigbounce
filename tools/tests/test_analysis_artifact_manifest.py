@@ -14,13 +14,13 @@ from verify_analysis_artifact_manifest import ManifestError, verify_manifest  # 
 
 
 class AnalysisArtifactManifestTests(unittest.TestCase):
-    manifest = ROOT / "reproducibility/p1b_analysis_artifact_manifest_v1B.0.108.json"
+    manifest = ROOT / "reproducibility/p1b_analysis_artifact_manifest_v1B.0.111.json"
 
     def test_canonical_p1b_manifest_matches_every_base_commit_blob(self):
         result = verify_manifest(ROOT, self.manifest)
         self.assertEqual(result["verdict"], "PASS")
-        self.assertEqual(result["artifact_count"], 195)
-        self.assertEqual(result["storage_counts"], {"git-blob": 171, "git-lfs-pointer": 24})
+        self.assertEqual(result["artifact_count"], 230)
+        self.assertEqual(result["storage_counts"], {"git-blob": 206, "git-lfs-pointer": 24})
 
     def test_one_recorded_byte_mutation_fails_closed(self):
         payload = json.loads(self.manifest.read_text(encoding="utf-8"))
