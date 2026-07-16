@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import importlib.util
+import subprocess
 import tempfile
 import unittest
 from pathlib import Path
@@ -38,6 +39,19 @@ class GenerateP1BAnalysisManifestTests(unittest.TestCase):
             "reproducibility/p1_namaster_500mc/scripts/physical_spectra.py",
         }
         self.assertTrue(required.issubset(set(manifest.CURRENT_FIXED_ARTIFACTS)))
+
+    def test_commit_blob_record_preserves_lfs_pointer_semantics(self):
+        commit = subprocess.check_output(
+            ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True
+        ).strip()
+        relative = (
+            "reproducibility/cosmology/frozen/full_tension_20260311_1728/"
+            "chains/chain_01/spin_torsion.1.txt"
+        )
+        record = manifest.artifact_record_at_commit(relative, commit)
+        self.assertEqual(record["storage"], "git-lfs-pointer")
+        self.assertEqual(record["local_git_blob_bytes"], 133)
+        self.assertEqual(len(record["lfs_oid_sha256"]), 64)
 
 
 if __name__ == "__main__":

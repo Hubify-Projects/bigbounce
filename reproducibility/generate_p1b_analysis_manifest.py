@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import importlib.util
 import json
 import re
@@ -100,6 +101,45 @@ def require_head_bound(paths: list[str], commit: str) -> None:
         raise ValueError("manifest artifacts are absent from base commit: " + ", ".join(absent))
 
 
+def artifact_record_at_commit(relative: str, commit: str) -> dict[str, Any]:
+    data = subprocess.check_output(
+        ["git", "show", f"{commit}:{relative}"],
+        cwd=ROOT,
+    )
+    blob_sha256 = hashlib.sha256(data).hexdigest()
+    record: dict[str, Any] = {
+        "path": relative,
+        "local_git_blob_bytes": len(data),
+        "local_git_blob_sha256": blob_sha256,
+    }
+    pointer = re.fullmatch(
+        rb"version https://git-lfs.github.com/spec/v1\n"
+        rb"oid sha256:([0-9a-f]{64})\n"
+        rb"size ([1-9][0-9]*)\n?",
+        data,
+    )
+    if pointer:
+        record.update(
+            {
+                "storage": "git-lfs-pointer",
+                "lfs_oid_sha256": pointer.group(1).decode("ascii"),
+                "lfs_declared_bytes": int(pointer.group(2)),
+                "scientific_payload_mirror": (
+                    "https://huggingface.co/datasets/bamfai/p1b-mcmc-diagnostics"
+                ),
+            }
+        )
+    else:
+        record.update(
+            {
+                "storage": "git-blob",
+                "scientific_payload_sha256": blob_sha256,
+                "scientific_payload_bytes": len(data),
+            }
+        )
+    return record
+
+
 def build_payload(*, paper_version: str, base_commit: str) -> dict[str, Any]:
     legacy = load_legacy_generator()
     artifacts = list(
@@ -141,7 +181,9 @@ def build_payload(*, paper_version: str, base_commit: str) -> dict[str, Any]:
                 "minimum_ess": 4692,
             },
         },
-        "artifacts": [legacy.artifact_record(path) for path in artifacts],
+        "artifacts": [
+            artifact_record_at_commit(path, base_commit) for path in artifacts
+        ],
     }
     if not any(item["storage"] == "git-lfs-pointer" for item in payload["artifacts"]):
         raise RuntimeError("expected frozen-chain Git LFS pointers, found none")
