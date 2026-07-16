@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "papers": {
     "P1A": {
       "tex_path": "arxiv/paper1a_ech_nogo.tex",
@@ -8,7 +8,10 @@
       "target_journal": "Classical and Quantum Gravity",
       "article_type": "Note",
       "review_profile": "CQG-NOTE",
-      "served_aliases": []
+      "served_aliases": [],
+      "review_paths": [
+        "arxiv"
+      ]
     },
     "P1B": {
       "tex_path": "arxiv/paper1b_namaster_proof.tex",
@@ -19,6 +22,12 @@
       "review_profile": "JORS-SOFTWARE",
       "served_aliases": [
         "paper1b_namaster_proof.pdf"
+      ],
+      "review_paths": [
+        "arxiv",
+        "packages/namaster-proof",
+        "reproducibility/p1_namaster_500mc",
+        ".github/workflows"
       ]
     },
     "P2": {
@@ -32,6 +41,9 @@
         "fnl-forecast-paper.pdf",
         "focused_paper_bounce_fnl_forecast.pdf",
         "paper2_fnl_forecast.pdf"
+      ],
+      "review_paths": [
+        "research/focused_paper_source_integration"
       ]
     },
     "P3": {
@@ -41,7 +53,10 @@
       "target_journal": "The Astrophysical Journal Supplement Series",
       "article_type": "Catalog article",
       "review_profile": "APJS-CATALOG",
-      "served_aliases": []
+      "served_aliases": [],
+      "review_paths": [
+        "pipelines/p3_anomaly_engine"
+      ]
     },
     "P4": {
       "tex_path": "pipelines/p2_chirality/chirality_catalog_paper.tex",
@@ -53,6 +68,9 @@
       "served_aliases": [
         "p4-chirality.pdf",
         "paper4_chirality_catalog.pdf"
+      ],
+      "review_paths": [
+        "pipelines/p2_chirality"
       ]
     },
     "P5": {
@@ -64,6 +82,9 @@
       "review_profile": "AJ-OBSERVATIONAL",
       "served_aliases": [
         "p5-chirality.pdf"
+      ],
+      "review_paths": [
+        "pipelines/p5_desi_chirality"
       ]
     }
   }

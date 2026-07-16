@@ -14,7 +14,7 @@ REQUIRED_FIELDS = (
     "tex_path", "pdf_path", "site_slug", "target_journal",
     "article_type", "review_profile",
 )
-LIST_FIELDS = ("served_aliases",)
+LIST_FIELDS = ("served_aliases", "review_paths")
 
 
 def repo_root() -> Path:
@@ -51,6 +51,35 @@ def load_registry(root: Path | None = None, *, require_paths: bool = True) -> di
             for alias in aliases
         ):
             raise ValueError(f"{paper_id} served_aliases must be PDF basenames")
+        review_paths = entry.get("review_paths")
+        if not isinstance(review_paths, list) or not review_paths:
+            raise ValueError(f"{paper_id} review_paths must be a non-empty list")
+        for review_path in review_paths:
+            path = Path(review_path)
+            if (
+                not isinstance(review_path, str)
+                or not review_path
+                or path.is_absolute()
+                or ".." in path.parts
+                or str(path) != review_path
+            ):
+                raise ValueError(
+                    f"{paper_id} review_paths must be safe normalized repository paths"
+                )
+            if require_paths and not (root / path).exists():
+                raise FileNotFoundError(
+                    f"{paper_id} review_path not found: {root / path}"
+                )
+        source_parent = str(Path(entry["tex_path"]).parent)
+        if not any(
+            source_parent == review_path
+            or source_parent.startswith(f"{review_path}/")
+            for review_path in review_paths
+        ):
+            raise ValueError(
+                f"{paper_id} review_paths must include or contain manuscript "
+                f"directory {source_parent}"
+            )
     if len(slugs) != len(set(slugs)):
         raise ValueError("registry site slugs must be unique")
     if papers["P3"]["tex_path"] != "pipelines/p3_anomaly_engine/paper3_apjs.tex":

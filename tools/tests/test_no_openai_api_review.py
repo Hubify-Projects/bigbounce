@@ -80,7 +80,10 @@ class NoOpenAIAPIReviewTests(unittest.TestCase):
             codex = root / "codex"
             codex.write_text("#!/bin/sh\necho 'Logged in using ChatGPT'\n", encoding="utf-8")
             codex.chmod(0o755)
-            pdf = ROOT / "arxiv/paper1b_mcmc_companion.pdf"
+            registry = json.loads(
+                (ROOT / "project-context/paper_registry.json").read_text()
+            )["papers"]["P1B"]
+            pdf = ROOT / registry["pdf_path"]
             import hashlib
             expected = hashlib.sha256(pdf.read_bytes()).hexdigest()
             env = dict(os.environ)
@@ -161,6 +164,11 @@ printf '(1) VERDICT: MINOR REVISIONS\\n(2) ISSUES: none in stub\\n(3) supported\
             raw = raws[0].read_text(encoding="utf-8")
             self.assertIn("binding: packet_key=", raw)
             self.assertIn("source_tree: clean detached sparse tree", raw)
+            self.assertIn(
+                "review_paths=arxiv,packages/namaster-proof,"
+                "reproducibility/p1_namaster_500mc,.github/workflows",
+                raw,
+            )
             receipt = json.loads((outdir / "manifest.jsonl").read_text().strip())
             self.assertEqual(receipt["paper"], "P1B")
             self.assertEqual(receipt["vendor"], "codex-subscription")
@@ -370,6 +378,20 @@ UTC: 2026-07-15T09:06:44Z
             source = (TOOLS / name).read_text(encoding="utf-8")
             self.assertNotRegex(source, r'\$PY_REVIEW[^\n]+["\']openai["\']')
             self.assertNotRegex(source, r"for\s+vend\s+in[^\n]*\bopenai\b")
+
+    def test_codex_review_tree_uses_registry_owned_review_paths(self):
+        source = (TOOLS / "int_wave.sh").read_text(encoding="utf-8")
+        self.assertIn('REVIEW_PATHS_TEXT="$(python3 "$REGISTRY" "$PAPER" review_paths)"', source)
+        self.assertIn(
+            'git -C "$CODEX_TREE" sparse-checkout set "${REVIEW_PATHS[@]}"',
+            source,
+        )
+        self.assertIn(
+            "modality: registry-scoped Codex CLI ChatGPT-subscription referee",
+            source,
+        )
+        self.assertNotIn("you have the full repo", source)
+        self.assertNotIn('SOURCE_SCOPE="$(dirname "$TEX_REL")"', source)
 
     def test_hourly_portfolio_rereview_loop_is_retired(self):
         run = subprocess.run(

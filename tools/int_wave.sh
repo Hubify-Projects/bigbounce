@@ -132,6 +132,14 @@ TEX_REL="$(python3 "$REGISTRY" "$PAPER" tex_path 2>/dev/null)"
 TARGET_JOURNAL="$(python3 "$REGISTRY" "$PAPER" target_journal)"
 ARTICLE_TYPE="$(python3 "$REGISTRY" "$PAPER" article_type)"
 REVIEW_PROFILE="$(python3 "$REGISTRY" "$PAPER" review_profile)"
+REVIEW_PATHS_TEXT="$(python3 "$REGISTRY" "$PAPER" review_paths)"
+[ -n "$REVIEW_PATHS_TEXT" ] || die "registry has no review_paths for $PAPER"
+REVIEW_PATHS=()
+while IFS= read -r review_path; do
+  [ -n "$review_path" ] && REVIEW_PATHS+=("$review_path")
+done <<<"$REVIEW_PATHS_TEXT"
+[ "${#REVIEW_PATHS[@]}" -gt 0 ] || die "registry has no usable review_paths for $PAPER"
+REVIEW_SCOPE_CSV="$(IFS=,; printf '%s' "${REVIEW_PATHS[*]}")"
 TEX="$REPO/$TEX_REL"
 [ -f "$TEX" ] || die "tex not found: $TEX"
 
@@ -170,7 +178,7 @@ echo "    codex:  ${CODEX_OUT#$REPO/}"
 # referee format), plus the optional context-note. The Codex leg reads the
 # full paper + source + context (never fabricate — verify against artifacts).
 # ---------------------------------------------------------------------------
-CODEX_PROMPT="You are an expert referee for $TARGET_JOURNAL reviewing this $ARTICLE_TYPE manuscript at $TEX_REL (version $VER; canonical review profile $REVIEW_PROFILE) in this repository. This is a strictly READ-ONLY review: do not edit files, write state, use a browser, commit, push, or expose credentials. Never inspect .env.local or other secret-bearing files. Read the FULL .tex file (and non-secret figures/source/data you need to verify claims — you have the full repo). Review to the standard of a real $TARGET_JOURNAL submission. Do NOT fabricate: verify every number you check against committed artifacts (recompute read-only, don't just read).
+CODEX_PROMPT="You are an expert referee for $TARGET_JOURNAL reviewing this $ARTICLE_TYPE manuscript at $TEX_REL (version $VER; canonical review profile $REVIEW_PROFILE) in this repository. This is a strictly READ-ONLY review: do not edit files, write state, use a browser, commit, push, or expose credentials. Never inspect .env.local or other secret-bearing files. Read the FULL .tex file and the committed supporting material in the registry-owned review scope: $REVIEW_SCOPE_CSV. Review to the standard of a real $TARGET_JOURNAL submission. Do NOT fabricate: verify every number you check against the available committed artifacts (recompute read-only, don't just read). Do not claim that an artifact is absent unless it belongs in this declared review scope and is actually absent there.
 
 Respond in EXACTLY this format:
 (1) VERDICT: ACCEPT / MINOR REVISIONS / MAJOR REVISIONS / REJECT
@@ -254,8 +262,10 @@ IMMUTABLE REVIEW BINDING (mandatory):
 - pdf_pages: $PDF_PAGES
 - target_journal: $TARGET_JOURNAL
 - article_type: $ARTICLE_TYPE
+- review_paths: $REVIEW_SCOPE_CSV
 Treat the exact PDF snapshot above as the manuscript of record. Use the clean
-detached source tree only to inspect source and committed supporting artifacts.
+detached review-scoped source tree only to inspect source and committed
+supporting artifacts.
 Do not substitute a working-tree PDF or any differently hashed manuscript."
 
 # No-launch validation path: packet creation/hash verification is allowed, but
@@ -271,6 +281,7 @@ if [ "${BIGBOUNCE_INT_WAVE_DRY_RUN:-0}" = "1" ]; then
   printf 'BINDING packet_key=%s prompt_sha256=%s commit=%s source_sha256=%s pdf_sha256=%s pages=%s venue=%s article_type=%s source_tree=detached-clean\n' \
     "$PACKET_KEY" "$PROMPT_SHA" "$PACKET_HEAD" "$SOURCE_SHA" "$PDF_SHA" "$PDF_PAGES" \
     "$TARGET_JOURNAL" "$ARTICLE_TYPE"
+  printf 'REVIEW_PATHS %s\n' "$REVIEW_SCOPE_CSV"
   exit 0
 fi
 
@@ -299,15 +310,20 @@ fi
 if [ "$CODEX_ON" = 1 ]; then
   CODEX_TREE="$(mktemp -d "${TMPDIR:-/tmp}/bigbounce-codex-tree.XXXXXX")"
   rmdir "$CODEX_TREE"
-  SOURCE_SCOPE="$(dirname "$TEX_REL")"
   git clone --quiet --shared --no-checkout "$REPO" "$CODEX_TREE" \
     || die "could not create isolated Codex source repository"
   git -C "$CODEX_TREE" sparse-checkout init --cone \
     || die "could not initialize Codex sparse source tree"
-  git -C "$CODEX_TREE" sparse-checkout set "$SOURCE_SCOPE" \
-    || die "could not select Codex source scope $SOURCE_SCOPE"
+  git -C "$CODEX_TREE" sparse-checkout set "${REVIEW_PATHS[@]}" \
+    || die "could not select Codex review paths: $REVIEW_SCOPE_CSV"
   git -C "$CODEX_TREE" checkout --quiet --detach "$PACKET_HEAD" \
     || die "could not detach Codex source tree at $PACKET_HEAD"
+  for review_path in "${REVIEW_PATHS[@]}"; do
+    [ -e "$CODEX_TREE/$review_path" ] \
+      || die "declared Codex review path absent after checkout: $review_path"
+  done
+  [ -f "$CODEX_TREE/$TEX_REL" ] \
+    || die "manuscript absent from detached Codex review tree: $TEX_REL"
   [ -z "$(git -C "$CODEX_TREE" status --porcelain)" ] \
     || die "detached Codex source tree is unexpectedly dirty"
 fi
@@ -346,12 +362,12 @@ if [ "$CODEX_ON" = 1 ]; then
   {
     echo "# INT Codex-subscription Review — $PAPER $VER — $CODEX_MODEL ($CODEX_EFFORT)"
     echo "paper: $PAPER  version: $VER  tex: $TEX_REL"
-    echo "modality: full-repo Codex CLI ChatGPT-subscription referee (read-only, ephemeral)"
+    echo "modality: registry-scoped Codex CLI ChatGPT-subscription referee (read-only, ephemeral)"
     echo "binding: packet_key=$PACKET_KEY  prompt_sha256=$PROMPT_SHA"
     echo "provenance: commit=$PACKET_HEAD  source_sha256=$SOURCE_SHA"
     echo "pdf: snapshot=$SNAPSHOT_ABS  sha256=$PDF_SHA  pages=$PDF_PAGES"
     echo "venue: $TARGET_JOURNAL  article_type: $ARTICLE_TYPE  profile: $REVIEW_PROFILE"
-    echo "source_tree: clean detached sparse tree at $PACKET_HEAD (scope=$SOURCE_SCOPE)"
+    echo "source_tree: clean detached sparse tree at $PACKET_HEAD (review_paths=$REVIEW_SCOPE_CSV)"
     echo "UTC: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
     [ -n "$CONTEXT" ] && echo "context-note: $CONTEXT"
     echo ""

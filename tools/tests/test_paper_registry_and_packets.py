@@ -42,6 +42,22 @@ class RegistryTests(unittest.TestCase):
             self.assertTrue(entry["target_journal"])
             self.assertTrue(entry["article_type"])
             self.assertTrue(entry["review_profile"])
+            self.assertTrue(entry["review_paths"])
+            source_parent = str(Path(entry["tex_path"]).parent)
+            self.assertTrue(
+                any(
+                    source_parent == review_path
+                    or source_parent.startswith(f"{review_path}/")
+                    for review_path in entry["review_paths"]
+                )
+            )
+            for review_path in entry["review_paths"]:
+                self.assertTrue((ROOT / review_path).exists(), review_path)
+        self.assertIn("packages/namaster-proof", papers["P1B"]["review_paths"])
+        self.assertIn(
+            "reproducibility/p1_namaster_500mc", papers["P1B"]["review_paths"]
+        )
+        self.assertIn(".github/workflows", papers["P1B"]["review_paths"])
 
     def test_dynamic_root(self):
         self.assertEqual(repo_root(), ROOT)

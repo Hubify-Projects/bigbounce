@@ -210,6 +210,19 @@ why readiness cannot be raised from activity volume: two successive rounds each
 found a real major concurrency defect, so clean residual-wave evidence remains
 absent.
 
+The next review-integrity audit found that Codex's receipt claimed a
+`full-repo` review while its detached sparse checkout selected only the
+manuscript directory. For P1B this excluded the installable package, its tests,
+the physical-production artifacts, and CI even though the prompt asked the
+reviewer to verify them. The six-paper registry now owns validated
+`review_paths`; the registry schema and preflight hash bind those paths into the
+immutable packet; dispatch fails if a declared path or manuscript is absent
+after checkout; and receipts accurately say `registry-scoped`. A real detached
+P1B proof at commit `09bceb69` exposed `namaster-proof` 0.1.3, its tests,
+`reproducibility/p1_namaster_500mc`, `.github/workflows`, and the manuscript.
+The focused registry/provider-policy suite passes 44/44. No new review wave is
+allowed to rely on the previously misleading source-scope claim.
+
 The full audit plan is **not complete**. The defensible acceptance accounting is
 against the 12 checklist gates below:
 
