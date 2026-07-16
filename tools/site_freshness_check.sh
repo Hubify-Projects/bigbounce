@@ -189,8 +189,12 @@ for mf in glob.glob(os.path.join(ext_real, "**", "manifest.jsonl"), recursive=Tr
 # ---------------------------------------------------------------------------
 # 1. BANNER
 # ---------------------------------------------------------------------------
-m = re.search(r'lastUpdatedISO:\s*"([^"]+)"', ls_text)
-banner = parse_iso(m.group(1)) if m else None
+# The exported liveStatus overrides historicalLiveStatus, so the LIVE banner
+# is the newest lastUpdatedISO in the file — not the first match (2026-07-16
+# fix: first-match parsing false-flagged a fresh banner as stale).
+banner_matches = re.findall(r'lastUpdatedISO:\s*"([^"]+)"', ls_text)
+banner_values = [b for b in (parse_iso(x) for x in banner_matches) if b is not None]
+banner = max(banner_values) if banner_values else None
 newest_activity = None
 na_src = ""
 for cand, src in ((newest_wave, "Convex wave %s" % newest_wave_label),
