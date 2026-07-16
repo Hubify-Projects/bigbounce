@@ -187,6 +187,15 @@ printf '(1) VERDICT: MINOR REVISIONS\\n(2) ISSUES: none in stub\\n(3) supported\
             for forbidden in ("forbidden-openai-secret", "forbidden-anthropic-secret", "session_id", "api_key"):
                 self.assertNotIn(forbidden, serialized)
 
+    def test_routine_int_wave_defaults_codex_subscription_off(self):
+        source = (TOOLS / "int_wave.sh").read_text(encoding="utf-8")
+        self.assertIn(
+            'CODEX_ENABLED="${BIGBOUNCE_CODEX_SUBSCRIPTION_ENABLED:-0}"',
+            source,
+        )
+        self.assertIn('elif [ "${1:-}" = "--with-codex" ]; then', source)
+        self.assertRegex(source, r'--with-codex" \]; then\s+CODEX_ENABLED=1')
+
     def test_codex_receipt_backfill_records_failure_and_is_idempotent(self):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)

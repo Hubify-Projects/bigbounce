@@ -260,6 +260,19 @@ selects Bash. This converts DP1B-22 from a reviewer-first escape into reusable
 prevention and provides an exact regression fixture reproducing the failure
 shape. The round is still not clean and readiness remains 56.
 
+### Cost-conservation routing update — 2026-07-16
+
+Routine exact-PDF residual waves now default to direct Grok and Gemini with
+subscription-backed Codex disabled. Codex requires explicit `--with-codex`
+arbitration or a focused `--codex-only` audit. This preserves the frontier
+reasoning route for novel science, derivations, architecture, and genuine
+cross-model disagreement without consuming OpenAI weekly capacity on every
+mechanical confirmation. Houston stopped the in-flight v2B.0.8 Codex leg; it is
+recorded honestly as absent/exit 130 while the completed Grok/Gemini receipts
+remain retained. Delegated execution should prefer Terra/Luna when those models
+are exposed by the active cmux worker runtime. No cmux delegation was active in
+this increment.
+
 The full audit plan is **not complete**. The defensible acceptance accounting is
 against the 12 checklist gates below:
 

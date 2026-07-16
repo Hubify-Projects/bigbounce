@@ -23,7 +23,7 @@
 #   - the VERDICT line of the just-written Codex file
 # and appends a run.log line to INT_api/H17_2026-07-10/run.log.
 #
-# Usage: tools/int_wave.sh [--codex-only] <P1A|P1B|P2|P3|P4|P5> ["optional context-note"]
+# Usage: tools/int_wave.sh [--with-codex|--codex-only] <P1A|P1B|P2|P3|P4|P5> ["optional context-note"]
 #
 # See canonical spec: ~/.claude/scistack/astrostack/bigbounce-r-round/SKILL.md §1 (INT).
 
@@ -40,7 +40,9 @@ API_OUTDIR="${INT_OUTDIR:-$REPO/project-context/peer-reviews/INT_v3/ROUND_2026-0
 SUBSCRIPTION_OUTDIR="${INT_SUBSCRIPTION_OUTDIR:-${BIGBOUNCE_INT_SUBSCRIPTION_OUTDIR:-$REPO/project-context/peer-reviews/INT_api/H17_2026-07-10}}"
 RUNLOG="$SUBSCRIPTION_OUTDIR/run.log"
 SUBSCRIPTION_MANIFEST="$SUBSCRIPTION_OUTDIR/manifest.jsonl"
-CODEX_ENABLED="${BIGBOUNCE_CODEX_SUBSCRIPTION_ENABLED:-1}"
+# Routine residual waves conserve subscription usage by defaulting to the
+# direct Grok/Gemini legs. Codex is an explicit high-risk audit/arbitration leg.
+CODEX_ENABLED="${BIGBOUNCE_CODEX_SUBSCRIPTION_ENABLED:-0}"
 API_LEGS_ENABLED="${BIGBOUNCE_INT_API_LEGS_ENABLED:-1}"
 CODEX_BIN="${BIGBOUNCE_CODEX_BIN:-$(command -v codex 2>/dev/null || { [ -x /opt/homebrew/bin/codex ] && printf '%s' /opt/homebrew/bin/codex; })}"
 CODEX_MODEL="${BIGBOUNCE_CODEX_MODEL:-gpt-5.6-sol}"
@@ -53,7 +55,11 @@ die() { echo "FAIL: $*" >&2; exit 1; }
 # This is parsed before validation so it cannot be accidentally overridden by
 # a misspelled environment variable or inherited API-spend setting.
 if [ "${1:-}" = "--codex-only" ]; then
+  CODEX_ENABLED=1
   API_LEGS_ENABLED=0
+  shift
+elif [ "${1:-}" = "--with-codex" ]; then
+  CODEX_ENABLED=1
   shift
 fi
 
@@ -123,7 +129,7 @@ if [ "${1:-}" = "--backfill-codex-receipt" ]; then
   exit 0
 fi
 
-[ $# -ge 1 ] || die "usage: tools/int_wave.sh [--codex-only] <PAPER> [\"context-note\"]"
+[ $# -ge 1 ] || die "usage: tools/int_wave.sh [--with-codex|--codex-only] <PAPER> [\"context-note\"]"
 PAPER="$1"
 CONTEXT="${2:-}"
 
