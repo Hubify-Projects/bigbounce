@@ -72,6 +72,14 @@ found this regression.
 6. **OpenAI routing remains subscription-only.** No OpenAI API call was made.
    No Anthropic/Claude leg was used. Direct-provider review is still allowed only
    for Grok and Gemini with raw receipts, after preflight passes.
+7. **Equivalent preflight work is no longer repeated.** The dispatch wrapper now
+   generates the receipt once and lets the immutable packet builder perform the
+   required independent verification; it no longer performs an extra identical
+   shell-level evaluation. Volatile receipt timestamps/hashes were also removed
+   from deterministic packet contents, and the packet schema/key was bumped to
+   prevent equivalent receipts from colliding. The P3 no-launch path fell from
+   36.20 s to 13.05 s (64% wall-clock reduction) while retaining the same
+   six-paper and packet gates.
 
 ## Remaining critical path
 

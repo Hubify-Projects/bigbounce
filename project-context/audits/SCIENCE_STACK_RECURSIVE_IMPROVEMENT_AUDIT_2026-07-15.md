@@ -38,6 +38,9 @@ read-only guidance:
   fixtures;
 - `directive_g.sh` now uses registry-owned served aliases rather than an
   O(all-served-PDFs) hash scan that could miss already-drifted aliases.
+- dispatch no longer evaluates the same six-paper receipt three times, and
+  immutable packet contents no longer include a volatile receipt hash excluded
+  from their key; measured P3 dry-run wall time fell 36.20 s -> 13.05 s (64%).
 
 Evidence and exact outcomes are recorded in
 `project-context/audits/PROACTIVE_PORTFOLIO_SWEEP_2026-07-15.md`. Readiness was
