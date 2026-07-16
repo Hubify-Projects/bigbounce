@@ -228,6 +228,46 @@ def test_p5_config_is_explicitly_non_release_and_fails_closed() -> None:
     assert "Paper-IV provenance/completeness gates remain open" in blocker
     assert "license" not in p5["metadata"]
     assert p5["deposit_root"] == ".deposit-staging"
+    assert {item["archive_name"] for item in p5["bundle_assets"]} == {
+        "p5_desi_chirality.tex",
+        "p5_desi_chiralityNotes.bib",
+        "fig_p5_vweb_vs_tempel_overlay.png",
+        "fig_cw_vs_z.png",
+        "fig_z_histogram.png",
+        "fig_p5_voids_vs_chirality_skymap.png",
+        "fig_p5_cw_vs_density.png",
+        "fig_p5_volume_fractions_pie.png",
+        "fig_p5_phase2_sensitivity_heatmap.png",
+        "fig_p5_cw_by_env_bar.png",
+        "fig_p5_healpix_skymap_nside32.png",
+    }
+
+
+def test_p4_config_has_complete_current_standalone_bundle_contract() -> None:
+    config = json.loads((REPO_ROOT / "tools/paper_deposit_config.json").read_text())
+    p4 = config["papers"]["P4"]
+    names = {item["archive_name"] for item in p4["bundle_assets"]}
+    names.update(item["archive_name"] for item in p4["bundle_tar_members"])
+    assert names == {
+        "chirality_catalog_paper.tex",
+        "chirality_catalog_paper.bbl",
+        "aastex701.cls",
+        "fig_raw_vs_eq.png",
+        "fig_harmonic_completeness.pdf",
+        "fig_class_pie.png",
+        "fig_spiral_density.png",
+        "fig_confidence_dist.png",
+        "fig_sky_map.png",
+        "fig_bootstrap_null.png",
+        "fig_gallery_cw.png",
+        "fig_equivariance_demo.png",
+        "fig_gallery_ccw.png",
+        "fig_gallery_notspi.png",
+        "fig_multipoles.png",
+    }
+    member = p4["bundle_tar_members"][0]
+    assert member["member"] == "./aastex701.cls"
+    assert len(member["expected_sha256"]) == 64
 
 
 def test_p2_config_tracks_exact_v17122_deposit_contract() -> None:

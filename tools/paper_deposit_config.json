@@ -238,6 +238,72 @@
       "standalone_proof": "project-context/SSOT/arxiv_tarballs/paper4_arxiv_{version}.proof.json",
       "tarball_main_tex": "chirality_catalog_paper.tex",
       "deposit_root": ".deposit-staging",
+      "bundle_assets": [
+        {
+          "source": "pipelines/p2_chirality/chirality_catalog_paper.tex",
+          "archive_name": "chirality_catalog_paper.tex"
+        },
+        {
+          "source": "pipelines/p2_chirality/chirality_catalog_paper.bbl",
+          "archive_name": "chirality_catalog_paper.bbl"
+        },
+        {
+          "source": "arxiv/figures_p4/fig_raw_vs_eq.png",
+          "archive_name": "fig_raw_vs_eq.png"
+        },
+        {
+          "source": "pipelines/p2_chirality/fig_harmonic_completeness.pdf",
+          "archive_name": "fig_harmonic_completeness.pdf"
+        },
+        {
+          "source": "arxiv/figures_p4/fig_class_pie.png",
+          "archive_name": "fig_class_pie.png"
+        },
+        {
+          "source": "arxiv/figures_p4/fig_spiral_density.png",
+          "archive_name": "fig_spiral_density.png"
+        },
+        {
+          "source": "arxiv/figures_p4/fig_confidence_dist.png",
+          "archive_name": "fig_confidence_dist.png"
+        },
+        {
+          "source": "arxiv/figures_p4/fig_sky_map.png",
+          "archive_name": "fig_sky_map.png"
+        },
+        {
+          "source": "pipelines/p2_chirality/fig_bootstrap_null.png",
+          "archive_name": "fig_bootstrap_null.png"
+        },
+        {
+          "source": "arxiv/figures_p4/fig_gallery_cw.png",
+          "archive_name": "fig_gallery_cw.png"
+        },
+        {
+          "source": "arxiv/figures_p4/fig_equivariance_demo.png",
+          "archive_name": "fig_equivariance_demo.png"
+        },
+        {
+          "source": "arxiv/figures_p4/fig_gallery_ccw.png",
+          "archive_name": "fig_gallery_ccw.png"
+        },
+        {
+          "source": "arxiv/figures_p4/fig_gallery_notspi.png",
+          "archive_name": "fig_gallery_notspi.png"
+        },
+        {
+          "source": "arxiv/figures_p4/fig_multipoles.png",
+          "archive_name": "fig_multipoles.png"
+        }
+      ],
+      "bundle_tar_members": [
+        {
+          "source_tarball": "project-context/SSOT/arxiv_tarballs/paper4_arxiv_v1.0.252.tar.gz",
+          "member": "./aastex701.cls",
+          "archive_name": "aastex701.cls",
+          "expected_sha256": "c1bb436807f8bb37eb5203056db5a5a60e1c9ae6a3feb6501d7c414b9b08b062"
+        }
+      ],
       "provenance_globs": [
         "pipelines/p2_chirality/outputs/canonical_provenance/**/*"
       ],
@@ -272,6 +338,52 @@
       "standalone_proof": "project-context/SSOT/arxiv_tarballs/paper5_arxiv_{version}.proof.json",
       "tarball_main_tex": "p5_desi_chirality.tex",
       "deposit_root": ".deposit-staging",
+      "bundle_assets": [
+        {
+          "source": "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex",
+          "archive_name": "p5_desi_chirality.tex"
+        },
+        {
+          "source": "pipelines/p5_desi_chirality/paper/p5_desi_chiralityNotes.bib",
+          "archive_name": "p5_desi_chiralityNotes.bib"
+        },
+        {
+          "source": "pipelines/p5_desi_chirality/paper/fig_p5_vweb_vs_tempel_overlay.png",
+          "archive_name": "fig_p5_vweb_vs_tempel_overlay.png"
+        },
+        {
+          "source": "pipelines/p5_desi_chirality/paper/fig_cw_vs_z.png",
+          "archive_name": "fig_cw_vs_z.png"
+        },
+        {
+          "source": "pipelines/p5_desi_chirality/paper/fig_z_histogram.png",
+          "archive_name": "fig_z_histogram.png"
+        },
+        {
+          "source": "pipelines/p5_desi_chirality/paper/fig_p5_voids_vs_chirality_skymap.png",
+          "archive_name": "fig_p5_voids_vs_chirality_skymap.png"
+        },
+        {
+          "source": "pipelines/p5_desi_chirality/paper/fig_p5_cw_vs_density.png",
+          "archive_name": "fig_p5_cw_vs_density.png"
+        },
+        {
+          "source": "pipelines/p5_desi_chirality/paper/fig_p5_volume_fractions_pie.png",
+          "archive_name": "fig_p5_volume_fractions_pie.png"
+        },
+        {
+          "source": "pipelines/p5_desi_chirality/paper/fig_p5_phase2_sensitivity_heatmap.png",
+          "archive_name": "fig_p5_phase2_sensitivity_heatmap.png"
+        },
+        {
+          "source": "pipelines/p5_desi_chirality/paper/fig_p5_cw_by_env_bar.png",
+          "archive_name": "fig_p5_cw_by_env_bar.png"
+        },
+        {
+          "source": "pipelines/p5_desi_chirality/paper/fig_p5_healpix_skymap_nside32.png",
+          "archive_name": "fig_p5_healpix_skymap_nside32.png"
+        }
+      ],
       "metadata_complete": false,
       "metadata_blocker": "Houston manuscript/source license authorization is absent, and the Paper-IV provenance/completeness gates remain open",
       "metadata": {
