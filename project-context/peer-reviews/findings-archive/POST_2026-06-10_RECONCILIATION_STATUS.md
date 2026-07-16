@@ -37,19 +37,19 @@ gaps.
 The canonical engine reports:
 
 - archive complete: **false**
-- reconciled parseable receipts: **29 / 259 (11.1969%)**
-- receipt count mismatches: **230**
+- reconciled parseable receipts: **32 / 259 (12.3552%)**
+- receipt count mismatches: **227**
 - receipt hash mismatches: **0**
 - orphaned event receipts: **0**
 - failed-leg gaps: **6**
 
-The 29 reconciled receipts are predominantly explicit zero-finding receipts,
+The 32 reconciled receipts are predominantly explicit zero-finding receipts,
 plus the complete P4 v1.0.253 board, the P4 v1.0.254 Codex receipt, and the
-complete P5 v0.1.138 and P4 v1.0.255 boards, plus the successful Gemini and
-Codex legs of the P4 v1.0.256 confirmation board. Its failed Grok leg remains
-an explicit failed gap and contributes no invented events. They do not imply
-that the remaining campaign findings have been truth-audited into the event
-ledger.
+complete P5 v0.1.138, P4 v1.0.255, and P4 v1.0.258 boards, plus the successful
+Gemini and Codex legs of the P4 v1.0.256 confirmation board. Its failed Grok
+leg remains an explicit failed gap and contributes no invented events. They do
+not imply that the remaining campaign findings have been truth-audited into
+the event ledger.
 
 Every unresolved row remains visible rather than being silently converted into
 zero findings.
@@ -125,6 +125,17 @@ records. The ledger now represents **60 / 1,574 explicit findings (3.8119%)**.
 Two linked closure events bind the correctable findings to the exact v1.0.257
 correction commit and evidence bytes.
 
+The fourth importer-driven batch,
+`batches/P4_v1.0.258_truth_audit_events.json`, adds all 13 findings from the
+complete three-provider residual-confirmation board. Five verified defects
+capture a recurring artifact-to-manuscript synchronization failure: a stale
+primary table, an overclaimed public release, incompatible null moments, an
+incorrect mask/null caption, and an unblinding disclosure gap. Two findings
+remain standing training/overlap gates; the other six are stale, falsified, or
+editorial. Grok, Gemini, and Codex-subscription reconcile at **4/4**, **5/5**,
+and **4/4**. The ledger now represents **73 / 1,574 explicit findings
+(4.6380%)**.
+
 Because finding events are immutable, later closures are now recorded in the
 separate append-only `finding-closure-events-v1.jsonl` ledger rather than
 rewriting event identity. `tools/finding_closure_event.py` verifies that the
@@ -132,20 +143,23 @@ referenced finding exists and that every evidence path has the declared bytes
 at the exact closure commit, then produces
 `finding-closure-projection.json`.
 
-The closure ledger now contains 25 entries. Its first four entries bind P5's
+The closure ledger now contains 30 entries. Its first four entries bind P5's
 verified v0.1.138 manuscript minors to
 commit `81b7bd56` and version `v0.1.139-2026-07-16`: interaction prose,
 shared-reference covariance, the T-Web parent/subset explanation, and stable
 tie-breaking. These are source closures, not a claim that standing release,
 companion-paper, human, or venue gates are closed, and no later confirmation
-board is inferred. Twenty-one P4 entries bind the verified correctable defects
-from v1.0.253 through v1.0.256 to exact v1.0.254, v1.0.255, v1.0.256, and
-v1.0.257 correction commits. Standing training, transfer, covariance, metadata,
-DOI, scope, archival, and human-review gates remain open.
+board is inferred. Twenty-six P4 entries bind the verified correctable defects
+from v1.0.253 through v1.0.258 to exact v1.0.254, v1.0.255, v1.0.256,
+v1.0.257, and v1.0.259 correction commits. The closure CLI now accepts an
+array and validates the complete batch before writing, eliminating repetitive
+one-event commands and preventing partial closure batches. Standing training,
+transfer, covariance, metadata, DOI, scope, archival, and human-review gates
+remain open.
 
 ## Remaining work
 
-1. Normalize the remaining 1,514 explicit findings against truth-audit rows,
+1. Normalize the remaining 1,501 explicit findings against truth-audit rows,
    preserving falsified, stale, opinion, standing, and unresolved dispositions.
 2. Recover the five incomplete historical summaries and one empty Codex receipt
    from preserved raw transcripts if available; otherwise retain them as

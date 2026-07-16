@@ -230,6 +230,16 @@ are bound to their exact v1.0.257 correction commit. The effective closure
 projection now contains 25 findings. Standing science, metadata, archive, DOI,
 and human-review gates remain deferred.
 
+The complete P4 v1.0.258 three-provider board is now ingested at 13/13. It adds
+five verified artifact-to-manuscript or disclosure defects, two standing
+training/overlap gates, and six stale, falsified, or editorial dispositions.
+All five correctable defects are bound to the exact v1.0.259 source bytes.
+The ledger now contains 73 events, canonical reconciliation is **32/259
+(12.36%)** with 227 count mismatches, and the effective closure projection
+contains 30 findings. The closure tool now supports fail-before-write,
+idempotent array append, removing a repeated manual command per finding while
+preserving commit- and byte-level evidence validation.
+
 Evidence and exact outcomes are recorded in
 `project-context/audits/PROACTIVE_PORTFOLIO_SWEEP_2026-07-15.md`. Readiness was
 not increased by these process or release-integrity closures.

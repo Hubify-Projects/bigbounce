@@ -1,7 +1,7 @@
 {
-  "archive_completeness_rate": 0.111969,
+  "archive_completeness_rate": 0.123552,
   "complete": false,
-  "count_mismatches": 230,
+  "count_mismatches": 227,
   "failed_leg_gaps": 6,
   "hash_mismatches": 0,
   "inventory_receipts": 271,
@@ -2385,30 +2385,36 @@
       "status": "ok"
     },
     {
-      "event_count": 0,
-      "event_hashes": [],
+      "event_count": 5,
+      "event_hashes": [
+        "1284aed74833653303c65f543b68ee59a0e335ac2072ff087536188411129c2c"
+      ],
       "expected_findings": 5,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P4-v1.0.258-EXACTPDF-e9b69665-NONANTHROPIC-CONFIRM/API_P4_gemini.md",
       "receipt_id": "receipt_3f16336f1457045bac62",
-      "state": "COUNT_MISMATCH",
+      "state": "RECONCILED",
       "status": "ok"
     },
     {
-      "event_count": 0,
-      "event_hashes": [],
+      "event_count": 4,
+      "event_hashes": [
+        "51c639da7f866ec009f512c7268f3e8b464323ea14e506105ef084b30d5113ae"
+      ],
       "expected_findings": 4,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P4-v1.0.258-EXACTPDF-e9b69665-NONANTHROPIC-CONFIRM/API_P4_grok.md",
       "receipt_id": "receipt_71a8990814ccf605eb6e",
-      "state": "COUNT_MISMATCH",
+      "state": "RECONCILED",
       "status": "ok"
     },
     {
-      "event_count": 0,
-      "event_hashes": [],
+      "event_count": 4,
+      "event_hashes": [
+        "97041c15486497af53f125b58846a4e69d756463acfa4eb1110bee4637412545"
+      ],
       "expected_findings": 4,
       "path": "project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P4-v1.0.258-EXACTPDF-e9b69665-NONANTHROPIC-CONFIRM/intwave_P4_codex_0128.md",
       "receipt_id": "receipt_a1e6b045c6ce18bedf92",
-      "state": "COUNT_MISMATCH",
+      "state": "RECONCILED",
       "status": "ok"
     },
     {
@@ -2472,7 +2478,7 @@
       "status": "ok"
     }
   ],
-  "reconciled_receipts": 29,
+  "reconciled_receipts": 32,
   "schema_version": "finding-receipt-reconciliation/v1",
   "unresolved_finding_counts": 0
 }
