@@ -147,17 +147,17 @@ const historicalLiveStatus: LiveStatus = {
 // summary reflect the canonical six-paper board rather than an older review wave.
 export const liveStatus: LiveStatus = {
   ...historicalLiveStatus,
-  lastUpdatedISO: "2026-07-16T13:32:32Z",
-  lastUpdatedDisplay: "July 16, 2026 · 6:32 AM PT",
+  lastUpdatedISO: "2026-07-16T13:51:26Z",
+  lastUpdatedDisplay: "July 16, 2026 · 6:51 AM PT",
   headline:
-    "All six manuscripts remain in revision. P1B v1B.0.111 now has corrected physical CAMB 500-MC production, eight validated recovery configurations, and a version-matched immutable analysis manifest. Exact re-review and human review remain open; readiness holds 56.",
+    "All six manuscripts remain in revision. P1B v1B.0.112 closes the three verified defects from its exact v1B.0.111 board and promotes them into fail-closed regression checks. Confirmation and human review remain open; readiness holds 56.",
   summary:
-    "P1B's canonical and seven robustness rows recover their injected rotation at 0.001° grid precision using pinned raw CAMB spectra. S8, BBN execution, physical-spectrum, receipt, and manifest contracts all pass. No reviewer verdict or readiness credit is inferred from compute completion.",
+    "P1B now names the executed PRIMAT BBN table, distinguishes the mean-bandpower fit from the mean of realization-level NaMaster estimates, and correctly states the cosine-flat angular-prior median. No readiness credit is inferred before confirmation.",
   papers: historicalLiveStatus.papers.map((paper) => {
     if (paper.slug === "paper-1b") {
       return {
         ...paper,
-        version: "v1B.0.111",
+        version: "v1B.0.112",
         pendingWork:
           "Physical 500-MC NaMaster production, all robustness receipts, S8 burn-in, exact CAMB/PRIMAT execution, and the version-matched manifest are closed. Exact non-Anthropic re-review, human review, archive/DOI, venue, and submission gates remain. Readiness holds 56.",
       };
@@ -207,7 +207,7 @@ export const liveStatus: LiveStatus = {
     return paper;
   }),
   currentlyRunning: [
-    "P1B v1B.0.111 exact-PDF non-Anthropic confirmation review is the active next gate",
+    "P1B v1B.0.112 exact-PDF non-Anthropic confirmation review is the active next gate",
     "P4 v1.0.260 and P5 v0.1.139 PDFs are built, retained, mirrored, and synchronized; P4 provider-overlay publication remains open",
     "Exact non-Anthropic re-review and standing external release/provenance gates are next",
   ],

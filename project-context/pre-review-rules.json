@@ -21,7 +21,7 @@
     "namaster_declared_receipt": "reproducibility/p1_namaster_500mc/results/physical_spectrum_v2/declared_fsky_sign_battery.json.receipt.json",
     "bbn_execution_receipt": "reproducibility/cosmology/frozen/bbn_execution_receipt.json",
     "s8_overlay_receipt": "reproducibility/cosmology/c13_s8_desy3_overlay_postburn.json.receipt.json",
-    "analysis_manifest": "reproducibility/p1b_analysis_artifact_manifest_v1B.0.111.json"
+    "analysis_manifest": "reproducibility/p1b_analysis_artifact_manifest_v1B.0.112.json"
   },
   "p4_p5_science_contract_paths": {
     "p4_primary": "pipelines/p2_chirality/outputs/canonical_provenance/p4_primary_hc_safe_label_shuffle_10k_v1_0_257.json",

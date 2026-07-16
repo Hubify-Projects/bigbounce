@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail-closed P1B contracts learned from the v1B.0.109 exact-PDF board."""
+"""Fail-closed P1B contracts learned from exact-PDF review boards."""
 
 from __future__ import annotations
 
@@ -42,6 +42,10 @@ def verify(root: Path, paths: dict[str, str]) -> dict[str, Any]:
     _require(set(paths) == required, "P1B science-contract path map differs")
     resolved = {key: root / value for key, value in paths.items()}
     manuscript = resolved["manuscript"].read_text(encoding="utf-8")
+    active_manuscript = "\n".join(
+        line for line in manuscript.splitlines() if not line.lstrip().startswith("%")
+    )
+    active_prose = re.sub(r"\s+", " ", active_manuscript)
 
     namaster = _load_json(resolved["namaster_summary"], "physical-spectrum summary")
     _require(namaster.get("run_mode") == "production", "P1B NaMaster result is not a production run")
@@ -104,6 +108,15 @@ def verify(root: Path, paths: dict[str, str]) -> dict[str, Any]:
         bbn.get("public_yaml_setting") == bbn.get("executed_table"),
         "P1B public YAML does not reproduce the executed BBN predictor",
     )
+    _require(
+        "PArthENoPE-derived" not in active_prose
+        and "bbn\\_predictor: 'PArthENoPE'" not in active_prose,
+        "P1B manuscript reverted to stale PArthENoPE BBN provenance",
+    )
+    _require(
+        "PRIMAT\\_Yp\\_DH\\_ErrorMC\\_2021.dat" in active_prose,
+        "P1B manuscript does not name the executed PRIMAT BBN table",
+    )
     configs = bbn.get("validated_configs")
     _require(
         isinstance(configs, list) and len(configs) == 4,
@@ -155,6 +168,15 @@ def verify(root: Path, paths: dict[str, str]) -> dict[str, Any]:
     for forbidden in ("piles toward the upper edge", "data-driven pull to the edge"):
         _require(forbidden not in manuscript, f"P1B unsupported ALP prior-edge wording recurred: {forbidden}")
     _require(
+        "cosine-flat angular prior has median $\\theta_i=\\pi/2$" in active_prose,
+        "P1B cosine-flat angular-prior median is absent or mischaracterized",
+    )
+    _require(
+        "mean of the 500 per-realization fits is $0.269914^\\circ$" in active_prose
+        and "$-0.000086^\\circ\\pm0.000573^\\circ$" in active_prose,
+        "P1B NaMaster mean-bandpower and per-realization estimators are not distinguished",
+    )
+    _require(
         "full-$EB$" in manuscript or "full $EB$" in manuscript,
         "P1B full-EB likelihood limitation is absent",
     )
@@ -167,6 +189,7 @@ def verify(root: Path, paths: dict[str, str]) -> dict[str, Any]:
             "bbn_executed_provenance": True,
             "s8_uniform_burn_in": True,
             "alp_estimand_language": True,
+            "reviewed_manuscript_semantics": True,
             "version_matched_manifest": True,
         },
     }

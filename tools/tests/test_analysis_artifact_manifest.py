@@ -14,7 +14,7 @@ from verify_analysis_artifact_manifest import ManifestError, verify_manifest  # 
 
 
 class AnalysisArtifactManifestTests(unittest.TestCase):
-    manifest = ROOT / "reproducibility/p1b_analysis_artifact_manifest_v1B.0.111.json"
+    manifest = ROOT / "reproducibility/p1b_analysis_artifact_manifest_v1B.0.112.json"
 
     def test_canonical_p1b_manifest_matches_every_base_commit_blob(self):
         result = verify_manifest(ROOT, self.manifest)

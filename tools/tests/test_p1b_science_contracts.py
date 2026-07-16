@@ -21,7 +21,12 @@ def fixture(root: Path) -> dict[str, str]:
         "analysis_manifest": "manifest.json",
     }
     (root / "paper.tex").write_text(
-        "\\newcommand{\\paperVersion}{v2}\nThe full-$EB$ limitation is retained.\n"
+        "\\newcommand{\\paperVersion}{v2}\n"
+        "The full-$EB$ limitation is retained. "
+        "The executed table is PRIMAT\\_Yp\\_DH\\_ErrorMC\\_2021.dat. "
+        "The cosine-flat angular prior has median $\\theta_i=\\pi/2$. "
+        "The mean of the 500 per-realization fits is $0.269914^\\circ$, "
+        "with bias $-0.000086^\\circ\\pm0.000573^\\circ$.\n"
     )
     (root / "namaster.json").write_text(json.dumps({
         "run_mode": "production",
@@ -119,7 +124,11 @@ def test_rejects_unsupported_prior_edge_wording():
         paths = fixture(root)
         (root / "paper.tex").write_text(
             "\\newcommand{\\paperVersion}{v2}\n"
-            "The full-$EB$ limitation is retained and the mass piles toward the upper edge.\n"
+            "The full-$EB$ limitation is retained and the mass piles toward the upper edge. "
+            "The executed table is PRIMAT\\_Yp\\_DH\\_ErrorMC\\_2021.dat. "
+            "The cosine-flat angular prior has median $\\theta_i=\\pi/2$. "
+            "The mean of the 500 per-realization fits is $0.269914^\\circ$, "
+            "with bias $-0.000086^\\circ\\pm0.000573^\\circ$.\n"
         )
         with pytest.raises(ValueError, match="prior-edge"):
             verify(root, paths)
@@ -132,7 +141,11 @@ def test_rejects_manifest_matching_only_historical_version_text():
         (root / "paper.tex").write_text(
             "% prior release v1\n"
             "\\newcommand{\\paperVersion}{v2}\n"
-            "The full-$EB$ limitation is retained.\n"
+            "The full-$EB$ limitation is retained. "
+            "The executed table is PRIMAT\\_Yp\\_DH\\_ErrorMC\\_2021.dat. "
+            "The cosine-flat angular prior has median $\\theta_i=\\pi/2$. "
+            "The mean of the 500 per-realization fits is $0.269914^\\circ$, "
+            "with bias $-0.000086^\\circ\\pm0.000573^\\circ$.\n"
         )
         (root / "manifest.json").write_text(json.dumps({"paper_version": "v1"}))
         with pytest.raises(ValueError, match="does not match"):
@@ -148,4 +161,26 @@ def test_rejects_d_ell_like_namaster_summary():
         payload["physical_spectra"]["contract"]["raw_cl"] = False
         path.write_text(json.dumps(payload))
         with pytest.raises(ValueError, match="raw C_ell"):
+            verify(root, paths)
+
+
+@pytest.mark.parametrize(
+    ("old", "new", "message"),
+    [
+        ("PRIMAT\\_Yp\\_DH\\_ErrorMC\\_2021.dat", "PArthENoPE-derived", "PArthENoPE"),
+        ("median $\\theta_i=\\pi/2$", "midpoint $\\theta_i\\approx0.5$", "angular-prior"),
+        (
+            "mean of the 500 per-realization fits is $0.269914^\\circ$",
+            "500-MC sample mean is $0.270^\\circ$",
+            "per-realization",
+        ),
+    ],
+)
+def test_rejects_v111_manuscript_semantic_regressions(old, new, message):
+    with tempfile.TemporaryDirectory() as tmp:
+        root = Path(tmp)
+        paths = fixture(root)
+        manuscript = root / "paper.tex"
+        manuscript.write_text(manuscript.read_text().replace(old, new))
+        with pytest.raises(ValueError, match=message):
             verify(root, paths)

@@ -262,8 +262,8 @@
 %   FALSIFIED list (14 items) not acted on.)
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v1B.0.111}
-\newcommand{\paperTimestamp}{July 16, 2026, 06:28 PT}
+\newcommand{\paperVersion}{v1B.0.112}
+\newcommand{\paperTimestamp}{July 16, 2026, 06:47 PT}
 % v1B.0.107->108 (2026-07-15): one-pass exact-PDF confirmation closure.
 %   Relabeled the canonical NaMaster mask as a synthetic native-coordinate
 %   latitude window; rendered the complete prior-predictive method and MC
@@ -1334,8 +1334,9 @@ convention factors, far below the proxy sensitivity.
 Second, a 500-realization synthetic-CMB NaMaster test on a synthetic mask
 recovers injected global polarization rotations after applying the exact
 NaMaster bandpower-window operator: $0.270^\circ\mapsto0.270^\circ$ and
-$0.342^\circ\mapsto0.342^\circ$, with a canonical MC-mean bias
-$0.0000^\circ\pm0.000573^\circ$ (standard error). Because the skies omit Galactic foregrounds,
+$0.342^\circ\mapsto0.342^\circ$. The mean of the 500 per-realization fits for
+the canonical injection is $0.269914^\circ$, a bias
+$-0.000086^\circ\pm0.000573^\circ$ (standard error). Because the skies omit Galactic foregrounds,
 the test does not break the cosmic-rotation/instrument-calibration degeneracy
 and is not a real-sky detection or systematic floor.
 
@@ -1408,9 +1409,10 @@ $\Lambda$CDM CMB polarization skies with an ACT-like footprint mask
 ($N_{\rm side}=512$, $\ell_{\rm max}=1024$, $f_{\rm sky}=0.32$,
 $10\,\mu\text{K}\cdot\text{arcmin}$ white noise,
 500 Monte Carlo realizations): injecting the spectator-ALP fiducial value
-$\beta=0.27^\circ$ recovers $\hat\beta=0.270^\circ$ (pipeline-recovery bias
-$\hat\beta-\beta_{\rm inj}=0.0000^\circ\pm0.000573^\circ$, where the uncertainty
-is the standard error of the 500-MC mean); $0.342^\circ$ recovers
+$\beta=0.27^\circ$ gives a mean-bandpower fit
+$\hat\beta=0.270^\circ$; the mean of the 500 per-realization fits is
+$0.269914^\circ$ (bias $-0.000086^\circ\pm0.000573^\circ$, where the uncertainty
+is the standard error of that mean). The $0.342^\circ$ injection recovers
 $0.342^\circ$. These are foreground-free MC
 pipeline-recovery figures, not sky-measurement systematics, and are not
 directly comparable to each other's published sky significances. \emph{Scope of the validation}: the test confirms the algebraic pseudo-$C_\ell$ $E\!\to\!B$ deconvolution under MASTER~\cite{Hivon2002} mode coupling, NOT the physical separation of the cosmic-rotation angle $\beta$ from the instrumental-miscalibration angle $\alpha$ which strictly requires unrotated galactic foregrounds (the synthetic CMB-only skies contain no galactic foregrounds, so the very component that breaks the $\beta$--$\alpha$ degeneracy in published Planck/ACT~DR6 measurements is absent by construction). The MC recovery is therefore a pipeline-validation figure, not a sky-detection significance claim. The primary sky detection significance is the
@@ -1496,7 +1498,7 @@ Symbol & Meaning \\
 \colrule
 $C_{a\gamma}$ & Dimensionless axion--photon coupling constant (KSVZ/DFSZ benchmark $\mathcal{O}(1)$; posterior-supported value $8$) \\
 $\beta$ & Cosmic-birefringence rotation angle (deg); $\beta_{\rm obs}$ published datum, $\beta_{\rm ALP}$ the ALP-model posterior value \\
-$\theta_i$ & ALP misalignment initial condition (dimensionless); natural $\cos\theta_i$-flat prior, midpoint $\theta_i\!\approx\!0.5$ \\
+$\theta_i$ & ALP misalignment initial condition (dimensionless); a cosine-flat angular prior has median $\theta_i=\pi/2$ \\
 $\Omega_a$ & Present-day ALP energy-density fraction of critical density, $\rho_a(z{=}0)/\rho_{\rm crit,0}$; spectator cut $\Omega_a<0.01$ \\
 $f_a$ & ALP decay constant (GeV); fiducial $f_a\sim\MPl$ \\
 $m$ & ALP mass, quoted in units of $H_0$; scan-prior region $m\sim H_0$ \\
@@ -1778,15 +1780,14 @@ as \texttt{nnu} with a flat prior $\Neff\in[2.046, 5.046]$
 default $\Sigma m_\nu = 0.06$\,eV with one massive eigenstate
 (\texttt{num\_massive\_neutrinos}=1), and $Y_{\rm He}$ follows the CAMB
 BBN-consistent default (no explicit override in any of the four YAMLs).
-Specifically, CAMB uses its PArthENoPE-derived BBN-consistency module
-by default (explicit Cobaya/CAMB flag: \texttt{bbn\_predictor:
-'PArthENoPE'}, declared at the \texttt{theory.camb.extra\_args}
-block of each \texttt{cobaya\_*.yaml}, pinning the BBN predictor for
-absolute reproducibility): $Y_{\rm He}$ is set self-consistently with
-$\Neff$ at each MCMC sample. The prior range $\Neff\in[2.046, 5.046]$ remains within the
-calibrated domain of the CAMB BBN module; no free-$Y_{\rm He}$ control run
-was performed, as the default BBN-consistent track is the standard choice
-for this type of proxy analysis.
+Specifically, the executed Python~3.12/CAMB~1.6.5 environment and all four
+hash-bound public reproduction YAMLs use
+\texttt{PRIMAT\_Yp\_DH\_ErrorMC\_2021.dat}. The retained execution receipt
+records the exact table SHA-256 and verifies the same predictor in every
+configuration. CAMB therefore sets $Y_{\rm He}$ self-consistently with
+$\Neff$ at each MCMC sample on the executed PRIMAT interpolation table.
+The prior range $\Neff\in[2.046, 5.046]$ remains within the calibrated
+domain of that table; no free-$Y_{\rm He}$ control run was performed.
 The prior allows negative $\Delta\Neff$ (down to $-1$), so the results are
 two-sided posterior means, not physical ``extra-species'' limits.
 A physical extra-radiation degree of freedom cannot contribute
@@ -2226,7 +2227,10 @@ performed the NaMaster pseudo-$C_\ell$ Monte Carlo described above with
 500 realizations per injection. Injecting the spectator-ALP fiducial $\beta=0.27^\circ$
 (consistent with, but not derived from, the ECH action) recovers:
 \begin{equation}
-  \hat\beta_{\rm NaMaster} = 0.270^\circ \quad (\text{500-MC sample mean of }\hat\beta).
+  \begin{aligned}
+  \hat\beta_{\rm NaMaster} &= 0.270^\circ,\\
+  &\text{from the fit to the 500-realization mean bandpowers}.
+  \end{aligned}
   \label{eq:beta_namaster}
 \end{equation}
 This MC-recovery value $0.270^\circ$ is a pipeline-validation figure on
@@ -2234,14 +2238,16 @@ synthetic skies and is \emph{not directly comparable} to the
 WMAP+Planck $3.6\sigma$ sky-detection significance of
 $\beta_{\rm obs}=0.342^\circ\pm 0.094^\circ$~\cite{Eskilt2022}: the
 significance figure is a sky-measurement null-rejection statistic,
-whereas $0.270^\circ$ is the converged MC sample mean for an
+whereas $0.270^\circ$ is the fit to the mean bandpowers for an
 \emph{injected} signal on noise-only synthetic skies.
 The pipeline-recovery bias, defined throughout as
 $\Delta\hat\beta \equiv \hat\beta - \beta_{\rm inj}$, is
 $0.0000^\circ$ at the $0.001^\circ$ fit-grid precision for the canonical
-injection. The per-realization angle scatter is $0.01282^\circ$, so the
-standard error of the 500-MC mean is $0.000573^\circ$: no residual bias is
-resolved.
+injection for that estimator. Separately, the mean of the 500
+per-realization fits is $0.269914^\circ$, giving
+$-0.000086^\circ\pm0.000573^\circ$ (standard error), with
+per-realization scatter $0.01282^\circ$. Thus neither estimator resolves a
+recovery bias.
 The earlier claimed multiplicative under-recovery came from evaluating the theory at
 effective-$\ell$ bin centres and is superseded by the exact-window result;
 it is not carried forward as a pipeline systematic.  The validation remains
@@ -2946,8 +2952,9 @@ Bayes factors and information criteria ($\Delta$AIC, $\Delta$BIC, $\ln B$) are d
 
 \textit{NaMaster pipeline validation.}---The 500-MC pseudo-$C_\ell$ analysis on
 synthetic $\Lambda$CDM polarization skies confirms that the deconvolution pipeline recovers
-injected birefringence angles with a canonical MC-mean bias
-$\hat\beta-\beta_{\rm inj}=0.0000^\circ\pm0.000573^\circ$ (standard error;
+injected birefringence angles: the canonical mean-bandpower fit has zero
+grid-resolved bias, while the mean of the per-realization fits has
+$\hat\beta-\beta_{\rm inj}=-0.000086^\circ\pm0.000573^\circ$ (standard error;
 Sec.~\ref{sec:data_cmb}). The diagonal-covariance template score is a heuristic
 that omits inter-bin covariance. This is a methods validation, not a competitive sky
 detection; the primary observational evidence for cosmic birefringence remains
@@ -3003,7 +3010,7 @@ This pre-release revision is identified by the in-tex
 \texttt{paper1b\_mcmc\_companion.tex} \texttt{\textbackslash newcommand\{\textbackslash paperVersion\}}).
 It does \emph{not} claim that an earlier repository commit freezes the new
 paper. Exact analysis-artifact provenance is instead recorded in
-\artifact{reproducibility/p1b_analysis_artifact_manifest_v1B.0.111.json}.
+\artifact{reproducibility/p1b_analysis_artifact_manifest_v1B.0.112.json}.
 That manifest binds the analysis artifacts to its exact base repository commit;
 the submission release commit/tag will additionally freeze the paper source,
 manifest, and compiled PDF together.

@@ -57,6 +57,27 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p1b-v112-truth-audited-closure-2026-07-16",
+    dateISO: "2026-07-16",
+    timePT: "6:51 AM",
+    kind: "closure-wave",
+    title: "P1B v1B.0.112 — exact-board defects closed and learned",
+    papers: ["P1B"],
+    summary:
+      "The exact v1B.0.111 board returned Grok MINOR, Gemini MAJOR, and Codex-subscription MAJOR. Truth audit verified three bounded defects: stale BBN provenance prose, ambiguity between two NaMaster estimators, and a false cosine-flat-prior midpoint. v1B.0.112 closes all three and adds fail-closed regression fixtures. Readiness holds 56 pending exact confirmation and human/release gates.",
+    keyTakeaways: [
+      "Active BBN methods now bind CAMB 1.6.5 PRIMAT_Yp_DH_ErrorMC_2021.dat and its execution receipt",
+      "Mean-bandpower fit 0.270 degree is separated from realization-level mean 0.269914 degree (bias -0.000086 +/- 0.000573 degree SE)",
+      "Cosine-flat angular prior now correctly reports median theta_i = pi/2",
+      "Exact PDF: 20 pp / SHA-256 d420a7f5be48f1fa5f9fc1b2cf57206708881ffe29c782ea6cdf4d65eb20331c",
+    ],
+    links: [
+      { label: "Truth audit", href: `${GH}/project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P1B-v1B.0.111-EXACTPDF-defc8caf-NONANTHROPIC-CONFIRM/P1B_v1B.0.111_TRUTH_AUDIT.md` },
+      { label: "Regression gate", href: `${GH}/tools/verify_p1b_science_contracts.py` },
+      { label: "v1B.0.112 manifest", href: `${GH}/reproducibility/p1b_analysis_artifact_manifest_v1B.0.112.json` },
+    ],
+  },
+  {
     id: "p1b-physical-namaster-v111-2026-07-16",
     dateISO: "2026-07-16",
     timePT: "6:32 AM",
