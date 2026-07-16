@@ -32,6 +32,15 @@ class DirectiveGAliasRegistryTest(unittest.TestCase):
         self.assertIn('served_aliases', script)
         self.assertNotIn("find \"$root\" -maxdepth 1 -type f -name '*.pdf'", script)
 
+    def test_new_pdf_basename_gets_both_unversioned_public_mirrors(self) -> None:
+        script = (ROOT / "tools" / "directive_g.sh").read_text(encoding="utf-8")
+        mandatory_loop = (
+            'for root in "site/public/papers" "public/papers"; do\n'
+            '  [ -d "$root" ] || continue\n'
+            '  MIRROR_TARGETS+=("$root/$BASE_PDF_NAME")'
+        )
+        self.assertIn(mandatory_loop, script)
+
 
 if __name__ == "__main__":
     unittest.main()

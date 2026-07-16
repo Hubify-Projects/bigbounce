@@ -11,13 +11,15 @@
       "served_aliases": []
     },
     "P1B": {
-      "tex_path": "arxiv/paper1b_mcmc_companion.tex",
-      "pdf_path": "arxiv/paper1b_mcmc_companion.pdf",
+      "tex_path": "arxiv/paper1b_namaster_proof.tex",
+      "pdf_path": "arxiv/paper1b_namaster_proof.pdf",
       "site_slug": "paper-1b",
-      "target_journal": "Journal of Cosmology and Astroparticle Physics",
-      "article_type": "Research article / computational methods",
-      "review_profile": "JCAP-COMPUTATIONAL",
-      "served_aliases": []
+      "target_journal": "Journal of Open Research Software",
+      "article_type": "Software metapaper",
+      "review_profile": "JORS-SOFTWARE",
+      "served_aliases": [
+        "paper1b_namaster_proof.pdf"
+      ]
     },
     "P2": {
       "tex_path": "research/focused_paper_source_integration/02_full_draft.tex",

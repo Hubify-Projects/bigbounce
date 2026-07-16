@@ -2,7 +2,7 @@
   "schema": "hubstack.paper-pre-review-rules/v1",
   "sources": [
     "arxiv/paper1a_ech_nogo.tex",
-    "arxiv/paper1b_mcmc_companion.tex",
+    "arxiv/paper1b_namaster_proof.tex",
     "research/focused_paper_source_integration/02_full_draft.tex",
     "pipelines/p3_anomaly_engine/paper3_apjs.tex",
     "pipelines/p2_chirality/chirality_catalog_paper.tex",
@@ -47,7 +47,7 @@
       "detector": "literal_require",
       "paths": [
         "arxiv/paper1a_ech_nogo.tex",
-        "arxiv/paper1b_mcmc_companion.tex",
+        "arxiv/paper1b_namaster_proof.tex",
         "research/focused_paper_source_integration/02_full_draft.tex",
         "pipelines/p3_anomaly_engine/paper3_apjs.tex",
         "pipelines/p2_chirality/chirality_catalog_paper.tex",
@@ -62,7 +62,7 @@
       "detector": "literal_require",
       "paths": [
         "arxiv/paper1a_ech_nogo.tex",
-        "arxiv/paper1b_mcmc_companion.tex",
+        "arxiv/paper1b_namaster_proof.tex",
         "research/focused_paper_source_integration/02_full_draft.tex",
         "pipelines/p3_anomaly_engine/paper3_apjs.tex",
         "pipelines/p2_chirality/chirality_catalog_paper.tex",
@@ -77,7 +77,7 @@
       "detector": "regex_forbid",
       "paths": [
         "arxiv/paper1a_ech_nogo.tex",
-        "arxiv/paper1b_mcmc_companion.tex",
+        "arxiv/paper1b_namaster_proof.tex",
         "research/focused_paper_source_integration/02_full_draft.tex",
         "pipelines/p3_anomaly_engine/paper3_apjs.tex",
         "pipelines/p2_chirality/chirality_catalog_paper.tex",
@@ -93,7 +93,7 @@
       "detector": "regex_forbid",
       "paths": [
         "arxiv/paper1a_ech_nogo.tex",
-        "arxiv/paper1b_mcmc_companion.tex",
+        "arxiv/paper1b_namaster_proof.tex",
         "research/focused_paper_source_integration/02_full_draft.tex",
         "pipelines/p3_anomaly_engine/paper3_apjs.tex",
         "pipelines/p2_chirality/chirality_catalog_paper.tex",
@@ -109,7 +109,7 @@
       "detector": "regex_forbid",
       "paths": [
         "arxiv/paper1a_ech_nogo.tex",
-        "arxiv/paper1b_mcmc_companion.tex",
+        "arxiv/paper1b_namaster_proof.tex",
         "research/focused_paper_source_integration/02_full_draft.tex",
         "pipelines/p3_anomaly_engine/paper3_apjs.tex",
         "pipelines/p2_chirality/chirality_catalog_paper.tex",
@@ -124,7 +124,7 @@
       "detector": "regex_forbid",
       "paths": [
         "arxiv/paper1a_ech_nogo.tex",
-        "arxiv/paper1b_mcmc_companion.tex",
+        "arxiv/paper1b_namaster_proof.tex",
         "research/focused_paper_source_integration/02_full_draft.tex",
         "pipelines/p3_anomaly_engine/paper3_apjs.tex",
         "pipelines/p2_chirality/chirality_catalog_paper.tex",
@@ -140,7 +140,7 @@
       "detector": "regex_forbid",
       "paths": [
         "arxiv/paper1a_ech_nogo.tex",
-        "arxiv/paper1b_mcmc_companion.tex",
+        "arxiv/paper1b_namaster_proof.tex",
         "research/focused_paper_source_integration/02_full_draft.tex",
         "pipelines/p3_anomaly_engine/paper3_apjs.tex",
         "pipelines/p2_chirality/chirality_catalog_paper.tex",
@@ -156,7 +156,7 @@
       "detector": "regex_forbid",
       "paths": [
         "arxiv/paper1a_ech_nogo.tex",
-        "arxiv/paper1b_mcmc_companion.tex",
+        "arxiv/paper1b_namaster_proof.tex",
         "research/focused_paper_source_integration/02_full_draft.tex",
         "pipelines/p3_anomaly_engine/paper3_apjs.tex",
         "pipelines/p2_chirality/chirality_catalog_paper.tex",
@@ -172,7 +172,7 @@
       "detector": "regex_forbid",
       "paths": [
         "arxiv/paper1a_ech_nogo.tex",
-        "arxiv/paper1b_mcmc_companion.tex",
+        "arxiv/paper1b_namaster_proof.tex",
         "research/focused_paper_source_integration/02_full_draft.tex",
         "pipelines/p3_anomaly_engine/paper3_apjs.tex",
         "pipelines/p2_chirality/chirality_catalog_paper.tex",

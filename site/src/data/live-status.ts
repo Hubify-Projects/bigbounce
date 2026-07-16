@@ -147,19 +147,19 @@ const historicalLiveStatus: LiveStatus = {
 // summary reflect the canonical six-paper board rather than an older review wave.
 export const liveStatus: LiveStatus = {
   ...historicalLiveStatus,
-  lastUpdatedISO: "2026-07-16T16:57:00Z",
-  lastUpdatedDisplay: "July 16, 2026 · 9:57 AM PT",
+  lastUpdatedISO: "2026-07-16T17:25:00Z",
+  lastUpdatedDisplay: "July 16, 2026 · 10:25 AM PT",
   headline:
-    "All six manuscripts remain in revision. P1B v1B.0.112 has two successful exact confirmation legs with zero new verified scientific defects, but both return standing venue/scope REJECT judgments and two Codex-subscription transports failed. Readiness holds 56.",
+    "All six manuscripts remain in revision. P1B has been re-architected as the v2B.0.0 namaster-proof software metapaper, directly addressing the repeated standalone-JCAP novelty and fragmentation objection. Readiness holds 56 pending exact-PDF review.",
   summary:
-    "Grok and Gemini confirm the three v1B.0.112 technical closures and the bounded reproducibility claim, but judge the standalone JCAP contribution insufficient. The incomplete Codex leg and venue architecture remain open; no readiness credit is inferred.",
+    "The installable package, 19-test suite, independent example, four-page manuscript, and retained physical validation artifact are complete. This is a scope correction, not review acceptance; no readiness credit is inferred before a new exact-PDF board.",
   papers: historicalLiveStatus.papers.map((paper) => {
     if (paper.slug === "paper-1b") {
       return {
         ...paper,
-        version: "v1B.0.112",
+        version: "v2B.0.0",
         pendingWork:
-          "Physical 500-MC NaMaster production, all robustness receipts, S8 burn-in, exact CAMB/PRIMAT execution, and the version-matched manifest are closed. Exact non-Anthropic re-review, human review, archive/DOI, venue, and submission gates remain. Readiness holds 56.",
+          "The software package, CI matrix, independent synthetic example, and physical NaMaster validation are complete. Exact non-Anthropic software-paper review, human review, archive/DOI, and submission gates remain. Readiness holds 56.",
       };
     }
     if (paper.slug === "paper-4") {
@@ -207,13 +207,13 @@ export const liveStatus: LiveStatus = {
     return paper;
   }),
   currentlyRunning: [
-    "P1B v1B.0.112 Codex-subscription confirmation awaits a healthy CLI transport; two failed attempts are retained",
-    "P1B venue/article architecture must address the repeated standalone-JCAP novelty and fragmentation objection",
+    "P1B v2B.0.0 software-metapaper release synchronization and exact-PDF packet preparation",
+    "P1B exact non-Anthropic software-paper review is next; failed legacy transports remain retained as history",
     "P4 v1.0.260 and P5 v0.1.139 PDFs are built, retained, mirrored, and synchronized; P4 provider-overlay publication remains open",
     "Exact non-Anthropic re-review and standing external release/provenance gates are next",
   ],
   cronStatus:
-    "No review wave is running. The latest verified computational findings are closed in new exact PDFs; exact re-review is pending and readiness remains 80/74.",
+    "No review wave is running. P1B has moved to a focused software-paper architecture; exact review is pending and readiness remains 56.",
   etaToCompletion:
-    "P1B compute is complete; its next timing dependency is exact-PDF review and truth-audited closure. P4/P5 require exact re-review and immutable external releases. A defensible all-six submission date remains conditional on those gates and human decisions; journal acceptance is controlled by editors and referees.",
+    "P1B package and manuscript construction are complete; its next timing dependency is exact-PDF review and truth-audited closure. A defensible all-six submission date remains conditional on those gates and human decisions; journal acceptance is controlled by editors and referees.",
 };

@@ -1,0 +1,266 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{microtype}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!55!black,
+  citecolor=blue!55!black,
+  urlcolor=blue!55!black
+}
+
+\newcommand{\software}{\texttt{namaster-proof}}
+\newcommand{\Cl}{C_\ell}
+\newcommand{\paperVersion}{v2B.0.0}
+\newcommand{\paperTimestamp}{2026-07-16 10:25 PT}
+
+\title{\software: Exact pseudo-\(\Cl\) window inference and
+tamper-evident provenance for reproducible spin-2 analyses}
+\author{Houston Golden}
+\date{July 16, 2026 --- \paperVersion}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\software{} is a focused Python verification layer for two error-prone steps
+in cut-sky spin-2 analyses.  First, it evaluates a uniformly rotated
+\(EE,EB,BE,BB\) spectrum through the complete NaMaster bandpower-window
+operator, avoiding replacement of the operator by bin-centre or
+effective-multipole templates.  Second, it publishes JSON results atomically
+with content-addressed sidecar receipts and fails closed when either the result
+or a declared execution contract changes.  The package also supplies explicit
+multipole-support contracts, fixed-grid rotation-angle recovery, command-line
+receipt verification, and compatibility tests against the production helpers
+from which it was extracted.  The software is intended for method validation
+and reproducibility checks; it is not a sky-analysis pipeline, foreground
+model, or cosmological inference engine.
+\end{abstract}
+
+\section{Summary}
+
+Pseudo-\(\Cl\) estimators make masked spin-2 analyses computationally
+practical by relating full-sky spectra to coupled and decoupled
+bandpowers~\cite{Hivon2002,Alonso2019}.  Reproducible use of these estimators
+requires more than recording a best-fit number: the same window operator must
+be used in simulation and inference, harmonic limits must agree across fields
+and bins, and intermediate results must remain bound to their execution
+metadata.
+
+\software{} packages these checks behind a small public API.  Its numerical
+module constructs exact windowed responses for uniform polarization rotation,
+evaluates them at one or many angles, recovers an angle on a declared grid,
+and compares the window contraction with NaMaster's couple--decouple operator.
+Its provenance module atomically publishes a JSON result and a SHA-256-bound
+receipt, then verifies the pair and optional metadata.  A third module defines
+deterministic multipole and binning contracts.  NumPy is the only required
+dependency; a NaMaster workspace is supplied by the user when exercising the
+physical window operator.
+
+\section{Statement of Need}
+
+For two spin-2 fields, NaMaster exposes a bandpower-window tensor with spectrum
+ordering \([EE,EB,BE,BB]\).  A common shortcut is to evaluate a theory
+spectrum at a representative multipole for each bin.  That shortcut is not
+generally identical to applying the complete mode-coupling and binning
+operator, and a mismatch between the simulation and fitting operators can
+appear as a parameter-recovery bias.
+
+A separate reproducibility risk arises in long or sharded calculations.
+Ordinary filenames do not prove that a summary corresponds to the intended
+seeds, realization count, configuration, or result bytes.  A process can also
+terminate between writing a result and its metadata, leaving a plausible but
+incomplete artifact.  These problems are usually addressed with analysis-local
+helpers.  \software{} provides a reusable, tested implementation with explicit
+failure behavior, while remaining narrow enough to audit.
+
+\section{Software Architecture}
+
+The package is divided into three modules:
+
+\begin{description}[leftmargin=2.8cm,style=nextline]
+\item[\texttt{windows}]
+  Rotation of \(EE,EB,BE,BB\) spectra, exact contraction with a
+  \nolinkurl{get_bandpower_windows()} tensor, fixed-grid angle recovery, and
+  an equivalence check against \nolinkurl{couple_cell()} followed by
+  \nolinkurl{decouple_cell()}.
+\item[Multipoles]
+  Validation of a common harmonic cutoff and construction of integer
+  bandpower edges whose final exclusive edge is \(\ell_{\max}+1\).
+\item[\texttt{receipts}]
+  Atomic JSON publication, streaming SHA-256 calculation, sidecar-receipt
+  construction, and fail-closed content and metadata validation.
+\end{description}
+
+The functions accept array-like inputs and return NumPy arrays or plain Python
+dictionaries.  NaMaster is deliberately not an installation dependency:
+window functions use the small workspace protocol described above, which makes
+the algebra testable with synthetic linear operators and permits users to pin
+PyMaster independently.
+
+\section{Exact-Window Inference}
+
+For an initially vanishing \(EB\) spectrum and a uniform rotation angle
+\(\beta\), the rotated spectra can be decomposed into angle-independent,
+\(\cos(4\beta)\), and \(\sin(4\beta)\) components.  In particular,
+\begin{align}
+ C_\ell^{EE}(\beta)
+   &= \tfrac12(C_\ell^{EE}+C_\ell^{BB})
+    + \tfrac12(C_\ell^{EE}-C_\ell^{BB})\cos(4\beta),\\
+ C_\ell^{BB}(\beta)
+   &= \tfrac12(C_\ell^{EE}+C_\ell^{BB})
+    - \tfrac12(C_\ell^{EE}-C_\ell^{BB})\cos(4\beta),\\
+ C_\ell^{EB}(\beta)=C_\ell^{BE}(\beta)
+   &= \tfrac12(C_\ell^{EE}-C_\ell^{BB})\sin(4\beta).
+\end{align}
+Let \(W_{b\ell}^{ij}\) be the workspace tensor mapping input spectrum \(j\)
+to output spectrum \(i\) in band \(b\).  The package precontracts each of the
+three components,
+\begin{equation}
+ R_{b}^{i,k}=\sum_{j,\ell}W_{b\ell}^{ij}C_\ell^{j,k},
+\end{equation}
+and subsequently evaluates
+\begin{equation}
+ C_b^i(\beta)=R_b^{i,0}
+ +\cos(4\beta)R_b^{i,c}+\sin(4\beta)R_b^{i,s}.
+\end{equation}
+This retains the full window tensor while making repeated grid evaluation
+inexpensive.  The recovery function minimizes a declared weighted or
+unweighted squared residual over a user-provided grid; its default is 2001
+points spanning \(-1^\circ\) to \(+1^\circ\).
+
+\section{Deterministic Execution and Provenance}
+
+\texttt{publish\_json} serializes a mapping with sorted keys, writes and
+flushes a process-specific temporary file, atomically replaces the destination,
+and synchronizes the containing directory.  It then publishes a sidecar receipt
+containing schema version, result filename, byte count, SHA-256 digest, and
+caller-supplied execution metadata.  The content-binding fields are protected
+from metadata override.
+
+\texttt{verify\_json\_receipt} requires both files, parses both as JSON
+objects, and recomputes every protected field.  \texttt{validate\_json\_receipt}
+additionally checks declared metadata such as a suite identifier, seed range,
+or realization count.  Missing files, malformed objects, changed bytes,
+changed receipts, or contract mismatches raise an exception.  The
+\texttt{namaster-proof verify} and \texttt{namaster-proof validate} commands
+expose the same behavior to shell workflows and return a nonzero status on
+failure.
+
+\section{Validation and Tests}
+
+Version 0.1.0 contains 19 automated tests covering numerical behavior, invalid
+inputs, the CLI, receipt mutation, protected fields, and compatibility with
+the original production helpers.  The window suite uses an exactly represented
+synthetic linear workspace to compare the precontracted response with the
+couple--decouple route and to recover an injected grid angle.  Rotation tests
+check conservation of total \(EE+BB\) auto-power.  Receipt tests mutate result
+bytes and receipt digests independently and require rejection.
+
+Compatibility tests load the pre-package production modules and compare
+windowed bandpowers at negative, zero, and positive angles with zero requested
+absolute or relative tolerance.  They also compare algebraic spectrum rotation,
+bandpower edges, and harmonic keyword contracts.  In the associated physical
+production artifact, a workspace of shape
+\([4,20,4,1025]\) gave a maximum absolute difference of
+\(1.41\times10^{-18}\) between direct window contraction and the
+couple--decouple operator.  This number validates that recorded configuration;
+it is not a universal error bound.
+
+\section{Worked Examples}
+
+\paragraph{Minimal synthetic operator.}
+The documentation constructs an identity-like workspace, builds a response
+from synthetic \(EE\) and \(BB\) arrays, evaluates a known rotation, and checks
+operator equivalence.  This example has no dependency on a paper-specific
+dataset and is suitable for installation tests.
+
+\paragraph{Synthetic CMB recovery campaign.}
+The production use case employed CAMB 1.6.6 raw \(EE/BB\) spectra, PyMaster
+2.6, \(N_{\rm side}=512\), \(\ell_{\max}=1024\), and deterministic seeds.
+For each of two nonzero injected angles, a 500-realization, foreground-free
+synthetic run recovered the injection from the mean bandpowers on the declared
+\(0.001^\circ\) grid: \(0.270^\circ\mapsto0.270^\circ\) and
+\(0.342^\circ\mapsto0.342^\circ\).  The null injection recovered
+\(0.000^\circ\).  These are software-recovery checks under the stated
+simulation contract, not measurements, detection significances, or evidence
+for a physical birefringence model.
+
+\paragraph{Sharded result validation.}
+Production shards record fields such as suite, realization count, and seed
+range alongside the content digest.  Aggregation can therefore reject a shard
+whose bytes were altered or whose declared range does not match the requested
+campaign, rather than silently combining it with valid results.
+
+\section{Limitations}
+
+\software{} does not create masks or maps, estimate covariance matrices,
+separate cosmic rotation from instrumental polarization calibration, model
+foregrounds, choose a likelihood, or infer cosmological parameters.  Uniform
+rotation and initially vanishing \(EB\) are assumptions of the optimized
+three-component response; the general algebraic rotation helper accepts all
+four input spectra, but spatially varying rotation requires another model.
+Fixed-grid recovery inherits the range and resolution selected by the caller.
+Receipt validation establishes file integrity and agreement with declared
+metadata, not the scientific correctness of that metadata.  SHA-256 sidecars
+are tamper-evident bindings, not digital signatures or an authorization system.
+Schema version 1 has no migration requirement yet; a future incompatible
+schema will require an explicit reader or conversion path.
+
+\section{Availability}
+
+Version 0.1.0 is distributed under the MIT License in the
+\href{https://github.com/Hubify-Projects/bigbounce}{BigBounce repository}.
+Its source is the \software{} package directory.  The package requires Python 3.10 or later
+and NumPy 1.24 or later.  Installation, API, CLI, and development commands are
+documented in the package README; citation metadata are supplied in
+\texttt{CITATION.cff}.  A persistent archival DOI and an independent package
+index release are not yet available and must not be inferred from the source
+repository.  The complete synthetic-production artifacts used in the worked
+example are retained in the same repository's \texttt{reproducibility}
+directory, under the \nolinkurl{p1_namaster_500mc} subdirectory.
+
+\section*{Acknowledgements}
+
+The exact-window operations build on NaMaster~\cite{Alonso2019} and the MASTER
+pseudo-\(\Cl\) method~\cite{Hivon2002}.  The production example used
+CAMB~\cite{Lewis2000} and HEALPix~\cite{Gorski2005}.
+
+\begin{thebibliography}{9}
+
+\bibitem{Hivon2002}
+E.~Hivon, K.~M. G\'orski, C.~B. Netterfield, B.~P. Crill, S.~Prunet, and
+F.~Hansen, ``MASTER of the CMB anisotropy power spectrum:
+A fast method for statistical analysis of large and complex cosmic microwave
+background data sets,'' \emph{Astrophysical Journal} 567, 2 (2002),
+\href{https://doi.org/10.1086/338126}{doi:10.1086/338126}.
+
+\bibitem{Alonso2019}
+D.~Alonso, J.~Sanchez, and A.~Slosar, ``A unified pseudo-\(C_\ell\) framework,''
+\emph{Monthly Notices of the Royal Astronomical Society} 484, 4127--4151
+(2019), \href{https://doi.org/10.1093/mnras/stz093}{doi:10.1093/mnras/stz093}.
+
+\bibitem{Lewis2000}
+A.~Lewis, A.~Challinor, and A.~Lasenby, ``Efficient computation of cosmic
+microwave background anisotropies in closed Friedmann--Robertson--Walker
+models,'' \emph{Astrophysical Journal} 538, 473--476 (2000),
+\href{https://doi.org/10.1086/309179}{doi:10.1086/309179}.
+
+\bibitem{Gorski2005}
+K.~M. G\'orski, E.~Hivon, A.~J. Banday, B.~D. Wandelt, F.~K. Hansen,
+M.~Reinecke, and M.~Bartelmann, ``HEALPix: A framework for high-resolution
+discretization and fast analysis of data distributed on the sphere,''
+\emph{Astrophysical Journal} 622, 759--771 (2005),
+\href{https://doi.org/10.1086/427976}{doi:10.1086/427976}.
+
+\end{thebibliography}
+
+\end{document}

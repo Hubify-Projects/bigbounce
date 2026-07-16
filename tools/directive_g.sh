@@ -266,7 +266,15 @@ SERVED_ROOTS=(
 
 declare -a MIRROR_TARGETS=()
 
-# (a) canonical unversioned base copies in each served root that already has one
+# (a) canonical unversioned base copies. The two public papers roots are
+# mandatory even when a major restructure introduces a brand-new PDF basename;
+# otherwise discovery from pre-existing files creates only versioned aliases.
+for root in "site/public/papers" "public/papers"; do
+  [ -d "$root" ] || continue
+  MIRROR_TARGETS+=("$root/$BASE_PDF_NAME")
+done
+
+# Preserve any additional canonical unversioned locations already in use.
 for root in "${SERVED_ROOTS[@]}"; do
   if [ -f "$root/$BASE_PDF_NAME" ]; then
     MIRROR_TARGETS+=("$root/$BASE_PDF_NAME")

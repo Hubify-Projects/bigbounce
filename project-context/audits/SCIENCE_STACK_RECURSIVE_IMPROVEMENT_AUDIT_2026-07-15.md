@@ -130,6 +130,27 @@ waves, or all-six external/human release gates.
 
 ## Implementation checkpoint — 2026-07-16
 
+### P1B architecture-escape increment — 2026-07-16
+
+The review loop’s repeated standalone-JCAP novelty and fragmentation finding
+has been treated as an architecture signal rather than another prose-edit
+request. P1B is now a focused `v2B.0.0` software metapaper targeting the
+Journal of Open Research Software, backed by the installable
+`namaster-proof` 0.1.0 package, 19 automated tests, Python 3.10–3.13 CI, an
+independent synthetic example, and the retained 500-realization physical
+validation campaign. The legacy `v1B.0.112` computational companion and all
+of its review evidence remain retained rather than overwritten.
+
+The release also exposed and closed a reusable process defect:
+`tools/directive_g.sh` previously discovered unversioned PDF mirrors only from
+paths that already existed, so a major manuscript rename could publish only
+versioned aliases. Both public paper roots are now mandatory mirror targets,
+with a regression test. The final four-page PDF has zero LaTeX errors,
+undefined references, or logged box warnings; all four pages pass visual
+inspection; five release copies are byte-identical; retention and Convex
+synchronization pass. Readiness remains 56 because the new architecture has
+not yet earned an exact-PDF review board.
+
 The full audit plan is **not complete**. The defensible acceptance accounting is
 against the 12 checklist gates below:
 
