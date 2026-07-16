@@ -5,6 +5,18 @@ from __future__ import annotations
 import numpy as np
 
 
+def field_harmonic_kwargs(*, lmax: int, purify_b: bool) -> dict[str, int]:
+    """Return NaMaster field limits consistent with the production spectrum.
+
+    Purification internally transforms the mask. Its harmonic limit must
+    therefore match the field limit instead of using NaMaster's default.
+    """
+    kwargs = {"lmax": lmax}
+    if purify_b:
+        kwargs["lmax_mask"] = lmax
+    return kwargs
+
+
 def bandpower_edges(*, nside: int, lmax: int, n_bins: int, ell_min: int = 30):
     """Return bin edges whose inclusive maximum is exactly ``lmax``.
 

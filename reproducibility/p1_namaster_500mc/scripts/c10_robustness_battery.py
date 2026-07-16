@@ -35,7 +35,7 @@ from windowed_rotation import (
 )
 from checkpoint_io import publish_json, validate_json_receipt
 from physical_spectra import load_camb_lensed_spectra
-from multipole_contract import bandpower_edges
+from multipole_contract import bandpower_edges, field_harmonic_kwargs
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 DEFAULT_OUT = os.path.join(
@@ -184,7 +184,8 @@ def _prepare_config_state(cfg):
     purify = bool(cfg.get("purify_b", False))
     zero = np.zeros(npix)
     f_dummy = nmt.NmtField(
-        mask, [zero, zero], purify_b=purify, lmax=LMAX
+        mask, [zero, zero], purify_b=purify,
+        **field_harmonic_kwargs(lmax=LMAX, purify_b=purify),
     )
     wsp = nmt.NmtWorkspace()
     wsp.compute_coupling_matrix(f_dummy, f_dummy, b)
@@ -230,7 +231,8 @@ def _simulate_realization(index, state):
     u_rot = sin2b * q + cos2b * u
     field = nmt.NmtField(
         state["mask"], [q_rot, u_rot],
-        purify_b=state["purify"], lmax=LMAX,
+        purify_b=state["purify"],
+        **field_harmonic_kwargs(lmax=LMAX, purify_b=state["purify"]),
     )
     coupled = nmt.compute_coupled_cell(field, field)
     return state["workspace"].decouple_cell(coupled)[1]

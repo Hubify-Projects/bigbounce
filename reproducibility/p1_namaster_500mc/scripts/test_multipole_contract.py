@@ -5,10 +5,20 @@ from __future__ import annotations
 
 import unittest
 
-from multipole_contract import bandpower_edges
+from multipole_contract import bandpower_edges, field_harmonic_kwargs
 
 
 class MultipoleContractTest(unittest.TestCase):
+    def test_mask_limit_matches_field_limit_for_purification(self):
+        self.assertEqual(
+            field_harmonic_kwargs(lmax=1024, purify_b=False),
+            {"lmax": 1024},
+        )
+        self.assertEqual(
+            field_harmonic_kwargs(lmax=1024, purify_b=True),
+            {"lmax": 1024, "lmax_mask": 1024},
+        )
+
     def test_last_bin_includes_exact_lmax(self):
         edges = bandpower_edges(nside=512, lmax=1024, n_bins=20)
         self.assertEqual(edges[0], 30)
