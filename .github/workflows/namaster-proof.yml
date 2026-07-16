@@ -4,10 +4,14 @@ on:
   push:
     paths:
       - "packages/namaster-proof/**"
+      - "reproducibility/p1_namaster_500mc/scripts/windowed_rotation.py"
+      - "reproducibility/p1_namaster_500mc/scripts/multipole_contract.py"
       - ".github/workflows/namaster-proof.yml"
   pull_request:
     paths:
       - "packages/namaster-proof/**"
+      - "reproducibility/p1_namaster_500mc/scripts/windowed_rotation.py"
+      - "reproducibility/p1_namaster_500mc/scripts/multipole_contract.py"
       - ".github/workflows/namaster-proof.yml"
   workflow_dispatch:
 

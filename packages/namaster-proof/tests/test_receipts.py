@@ -61,6 +61,27 @@ def test_metadata_cannot_override_content_binding(tmp_path):
         )
 
 
+def test_publish_rejects_nonfinite_payload_and_metadata_before_writing(tmp_path):
+    result = tmp_path / "shard.json"
+    with pytest.raises(ValueError, match="Out of range float values"):
+        publish_json(result, {"value": float("nan")}, {"suite": "test"})
+    assert not result.exists()
+    assert not receipt_path(result).exists()
+
+    with pytest.raises(ValueError, match="Out of range float values"):
+        publish_json(result, {"value": 1.0}, {"suite": "test", "metric": float("inf")})
+    assert not result.exists()
+    assert not receipt_path(result).exists()
+
+
+def test_verify_rejects_nonstandard_json_constants(tmp_path):
+    result = tmp_path / "shard.json"
+    result.write_text('{"value": NaN}\n', encoding="utf-8")
+    receipt_path(result).write_text("{}\n", encoding="utf-8")
+    with pytest.raises(ValueError, match="non-standard JSON constant"):
+        verify_json_receipt(result)
+
+
 def test_concurrent_pair_replacement_cannot_mix_payload_generations(
     tmp_path, monkeypatch
 ):

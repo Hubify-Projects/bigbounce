@@ -28,6 +28,16 @@ def _read_bytes(path: Path) -> bytes:
         return handle.read()
 
 
+def _strict_loads(data: bytes) -> Any:
+    """Decode standards-compliant JSON and reject non-finite extensions."""
+    return json.loads(
+        data.decode("utf-8"),
+        parse_constant=lambda value: (_ for _ in ()).throw(
+            ValueError(f"non-standard JSON constant is forbidden: {value}")
+        ),
+    )
+
+
 def receipt_path(path: Path) -> Path:
     """Return the canonical sidecar receipt path for a JSON result."""
     return path.with_name(path.name + ".receipt.json")
@@ -67,8 +77,9 @@ def publish_json(
             "metadata cannot override protected receipt fields: "
             + ", ".join(sorted(overlap))
         )
-    encoded = (json.dumps(payload, indent=2, sort_keys=True) + "\n").encode("utf-8")
-    _atomic_write(path, encoded)
+    encoded = (
+        json.dumps(payload, allow_nan=False, indent=2, sort_keys=True) + "\n"
+    ).encode("utf-8")
     receipt = {
         "schema_version": 1,
         "result_file": path.name,
@@ -76,9 +87,13 @@ def publish_json(
         "result_sha256": hashlib.sha256(encoded).hexdigest(),
         **metadata,
     }
+    receipt_encoded = (
+        json.dumps(receipt, allow_nan=False, indent=2, sort_keys=True) + "\n"
+    ).encode("utf-8")
+    _atomic_write(path, encoded)
     _atomic_write(
         receipt_path(path),
-        (json.dumps(receipt, indent=2, sort_keys=True) + "\n").encode("utf-8"),
+        receipt_encoded,
     )
     return receipt
 
@@ -90,8 +105,8 @@ def verify_json_receipt(path: Path) -> tuple[dict[str, Any], dict[str, Any]]:
         raise FileNotFoundError(f"missing result/receipt pair for {path}")
     result_bytes = _read_bytes(path)
     receipt_bytes = _read_bytes(sidecar)
-    payload = json.loads(result_bytes.decode("utf-8"))
-    receipt = json.loads(receipt_bytes.decode("utf-8"))
+    payload = _strict_loads(result_bytes)
+    receipt = _strict_loads(receipt_bytes)
     if not isinstance(payload, dict) or not isinstance(receipt, dict):
         raise ValueError("result and receipt must both be JSON objects")
     expected = {

@@ -57,6 +57,28 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p1b-v2b005-exact-board-closure-2026-07-16",
+    dateISO: "2026-07-16",
+    timePT: "12:30 PM",
+    kind: "closure-wave",
+    title: "P1B v2B.0.5 — exact-board software-contract minors closed",
+    papers: ["P1B"],
+    summary:
+      "The first truthful registry-scoped v2B.0.4 JORS board returned Grok MAJOR, Gemini MAJOR, and Codex-subscription MINOR. Truth audit retained the disclosed archive/contact gates, rejected overstated artifact claims, and verified three novel minors: non-standard JSON floats, incomplete CI triggers for imported helpers, and incorrect mask-coordinate documentation. namaster-proof 0.1.4 closes all three with two regressions; readiness holds 56.",
+    keyTakeaways: [
+      "Reviewer source scope exposed package and production-helper defects that the prior manuscript-only sparse tree could miss",
+      "Strict JSON rejects NaN/Infinity before writing and during verification",
+      "Compatibility helper changes now trigger CI; the native-coordinate mask contract is documented accurately",
+      "Package suite passes 28/28; archive/DOI, correspondence metadata, fresh confirmation, and human review remain open",
+    ],
+    links: [
+      { label: "Truth audit", href: `${PR}/INT_v3/ROUND_2026-07-16-P1B-v2B.0.4-EXACTPDF-dfe16983-JORS-NONANTHROPIC-CONFIRM/P1B_v2B.0.4_truth_audit.md` },
+      { label: "Codex raw", href: `${PR}/INT_v3/ROUND_2026-07-16-P1B-v2B.0.4-EXACTPDF-dfe16983-JORS-NONANTHROPIC-CONFIRM/intwave_P1B_codex_1216.md` },
+      { label: "Grok raw", href: `${PR}/INT_v3/ROUND_2026-07-16-P1B-v2B.0.4-EXACTPDF-dfe16983-JORS-NONANTHROPIC-CONFIRM/API_P1B_grok.md` },
+      { label: "Gemini raw", href: `${PR}/INT_v3/ROUND_2026-07-16-P1B-v2B.0.4-EXACTPDF-dfe16983-JORS-NONANTHROPIC-CONFIRM/API_P1B_gemini.md` },
+    ],
+  },
+  {
     id: "p1b-v2b004-publisher-race-closure-2026-07-16",
     dateISO: "2026-07-16",
     timePT: "11:55 AM",

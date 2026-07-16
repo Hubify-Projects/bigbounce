@@ -223,6 +223,22 @@ P1B proof at commit `09bceb69` exposed `namaster-proof` 0.1.3, its tests,
 The focused registry/provider-policy suite passes 44/44. No new review wave is
 allowed to rely on the previously misleading source-scope claim.
 
+That corrected scope immediately produced useful residual evidence. The
+v2B.0.4 board returned Grok MAJOR, Gemini MAJOR, and subscription-backed Codex
+MINOR. Truth audit retained the disclosed archive/contact gates, rejected
+overstated unretained-artifact claims, and verified three novel mechanical
+minors that manuscript-only review could miss: Python JSON accepted
+`NaN`/`Infinity`, CI path filters omitted two imported production helpers, and
+the reproduction guide described two coordinate systems while the executable
+used one native HEALPix latitude. v2B.0.5/package 0.1.4 turns all three into
+prevention: strict JSON encoding/decoding with two regressions, complete CI
+triggers, and corrected coordinate-contract documentation. The package suite
+passes 28/28. The adjudication also exposed and fixed `ledger_match.py`
+collapsing P1B into P1U; P1A, P1B, and P1U now retain distinct ledgers and the
+compact P1B table is executable. This is a concrete acceleration from truthful
+review scope to valid novel finding to regression and all-surface closure in
+one cycle. It is not a clean wave and does not increase readiness.
+
 The full audit plan is **not complete**. The defensible acceptance accounting is
 against the 12 checklist gates below:
 

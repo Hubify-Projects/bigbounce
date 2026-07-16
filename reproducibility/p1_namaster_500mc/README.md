@@ -36,9 +36,12 @@ Superseded exact-window artifacts:
 | corrected sky spectra | CAMB 1.6.6 `lensed_scalar`, raw C-ell in microkelvin-squared |
 | corrected `BB` model | physical CAMB lensed BB |
 
-The canonical mask is the intersection of `|b| > 20 deg` and
-`-65 deg <= dec <= 25 deg`, Gaussian-smoothed at 2 degrees FWHM and clipped
-to `[0, 1]`. The corrected sky model uses raw CAMB lensed EE and BB with the
+The canonical synthetic window applies both cuts to the single native HEALPix
+latitude returned by `hp.pix2ang(..., lonlat=True)`: absolute latitude greater
+than 20 degrees and native latitude between -65 and +25 degrees. It does not
+combine Galactic latitude with equatorial declination and is not an ACT or
+other survey footprint. The window is Gaussian-smoothed at 2 degrees FWHM and
+clipped to `[0, 1]`. The corrected sky model uses raw CAMB lensed EE and BB with the
 parameters, units, resolved version, validation readout, and array SHA-256
 recorded in every new result. No beam, foreground, anisotropic noise, or real
 CMB map enters the calculation.

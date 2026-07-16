@@ -1,7 +1,7 @@
 # P1B disposition ledger
 
 **Canonical source:** `arxiv/paper1b_namaster_proof.tex`
-**Current paper-local version:** `v2B.0.4` (2026-07-16 software-metapaper closure)
+**Current paper-local version:** `v2B.0.5` (2026-07-16 exact-board closure)
 **Claim policy:** exact-window and receipt software validation; no sky measurement,
 foreground model, cosmological inference, or ECH/bounce evidence. The legacy
 v1B computational-companion dispositions remain below as retained history.
@@ -24,3 +24,6 @@ v1B computational-companion dispositions remain below as retained history.
 | DP1B-14 | Portability, receipt terminology, stale canonical documentation, malformed prose, and reference-page collision. | **CLOSED-BY-EDIT v2B.0.3** | Windows CI and POSIX-specific durability wording replace unsupported OS independence; “content-bound” replaces filename-inaccurate “content-addressed”; superseded recovery values are removed from the canonical README; grammar and rendered references are corrected. |
 | DP1B-15 | Persistent archive identifier and final correspondence metadata. | **OPEN-SUBMISSION / HUMAN** | Package 0.1.3 must be bound to an immutable public archive before JORS submission; author-supplied contact metadata remains a human gate. |
 | DP1B-16 | Concurrent same-path publishers could cross-bind one execution's metadata to another execution's bytes. | **CLOSED-BY-CODE v2B.0.4 / package 0.1.3** | Each publisher now derives byte count and SHA-256 from its own immutable serialized snapshot rather than re-reading the shared destination path; a deterministic publisher-interleaving regression requires the mismatched pair to fail validation. |
+| DP1B-17 | JSON publication and verification accepted non-standard `NaN`/`Infinity` constants. | **CLOSED-BY-CODE v2B.0.5 / package 0.1.4** | Publication uses `allow_nan=False` for payload and receipt before either file is written; verification rejects non-standard constants; two deterministic regressions cover payload, metadata, and retained-file parsing. |
+| DP1B-18 | Compatibility-helper edits could bypass package CI because workflow path filters covered only the package tree. | **CLOSED-BY-CI v2B.0.5** | The workflow now triggers on both imported production helpers as well as package and workflow changes. |
+| DP1B-19 | The production README described two cuts as Galactic latitude plus declination although the executable applies both in one native HEALPix latitude frame. | **CLOSED-BY-DOC v2B.0.5** | The configuration now states the single-coordinate-frame window contract and explicitly disclaims a Galactic/equatorial or survey-footprint interpretation. |
