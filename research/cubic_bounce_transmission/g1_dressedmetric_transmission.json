@@ -1,0 +1,113 @@
+{
+  "gate": "G1 -- direct cubic bounce transfer (DP2-13), dressed-metric bounded potential",
+  "phase": "campaign 2026-07-17 Task B (verified intermediate + leading finite coeff; no paper edit)",
+  "meta": {
+    "date_utc": "2026-07-17T22:53:59.992938+00:00",
+    "runtime_s": 72.14,
+    "numpy": "1.26.4",
+    "sympy": "1.14.0"
+  },
+  "B_dressed_geometric_potential_VERIFIED": {
+    "app_over_a_symbolic": "x**(1/3)*(2*x + 1)/6",
+    "closed_form_x13_1o6_plus_xo3": "x**(1/3)*(x/3 + 1/6)",
+    "matches_closed_form": true,
+    "value_at_bounce_x1": "1/2",
+    "limit_deep_contraction_x0": "0",
+    "bounded": true,
+    "note": "a''/a bounded on (0,1]; max = rho_c/2 at bounce; no 1/(eta-eta_b)^2 pole"
+  },
+  "A_classical_divergence_reconfirmed": {
+    "z_bounce_max": 1732.0513848946284,
+    "zpp_over_z_samples_toward_bounce": {
+      "eta=0.5614": 5.422474204689128,
+      "eta=0.3791": 12.84771363554382,
+      "eta=0.2622": 27.820931272412103,
+      "eta=0.1635": 72.8378475115732
+    },
+    "diverges": true,
+    "note": "classical MS potential z''/z ~ 1/(eta-eta_b)^2 blows up at H=0"
+  },
+  "C_transmission_geometric_prescription": {
+    "C1_regulator_sweep": [
+      {
+        "dcut": 1e-05,
+        "app_over_a_max": 0.4999950000055556,
+        "coeff_c_in_kEtaB2": 688.7027882211723,
+        "T_values": {
+          "0.005": 0.9875952853539631,
+          "0.01": 0.929300767838044,
+          "0.02": 0.6976390090833098
+        }
+      },
+      {
+        "dcut": 1e-06,
+        "app_over_a_max": 0.49999950000005555,
+        "coeff_c_in_kEtaB2": 691.3210582166644,
+        "T_values": {
+          "0.005": 0.992210131737916,
+          "0.01": 0.9336939414214475,
+          "0.02": 0.7011514992776536
+        }
+      },
+      {
+        "dcut": 1e-07,
+        "app_over_a_max": 0.4999999500000006,
+        "coeff_c_in_kEtaB2": 693.2598895276369,
+        "T_values": {
+          "0.005": 0.9956253532355956,
+          "0.01": 0.9369450138063431,
+          "0.02": 0.7037504249476676
+        }
+      }
+    ],
+    "C1_coeff_c_final": 693.2598895276369,
+    "C1_regulator_independent": true,
+    "C1_note": "Phase-1 fluid-z gave c ~ 1/dcut (8.6e2,2.7e3,3.9e4); bounded a''/a gives c stable to <1% across dcut. This regulator-independence is the VERIFIED qualitative upgrade.",
+    "C2_x0_IC_sensitivity": [
+      {
+        "dcut": 1e-06,
+        "app_over_a_max": 0.49999950000005555,
+        "coeff_c_in_kEtaB2": 99.52879973426768,
+        "T_values": {
+          "0.005": 0.995861242635383,
+          "0.01": 0.9874656647110737,
+          "0.02": 0.9539674695380768
+        },
+        "x0": 0.01
+      },
+      {
+        "dcut": 1e-06,
+        "app_over_a_max": 0.49999950000005555,
+        "coeff_c_in_kEtaB2": 691.3210582166644,
+        "T_values": {
+          "0.005": 0.992210131737916,
+          "0.01": 0.9336939414214475,
+          "0.02": 0.7011514992776536
+        },
+        "x0": 0.001
+      },
+      {
+        "dcut": 1e-06,
+        "app_over_a_max": 0.49999950000005555,
+        "coeff_c_in_kEtaB2": 4723.754089021986,
+        "T_values": {
+          "0.005": 1.315018290731984,
+          "0.01": 0.9121569855085049,
+          "0.02": -0.6747752970662235
+        },
+        "x0": 0.0001
+      }
+    ],
+    "C2_absolute_coeff_x0_sensitive": true,
+    "C2_note": "absolute c depends on the IC epoch x0: a fixed comoving k evolved from deep contraction (small x0, large |eta|) is SUB-horizon there, so the R=1 super-horizon IC is misplaced. The absolute coefficient / delta f_NL is therefore NOT yet physical -- proper superhorizon-at-crossing IC placement is required.",
+    "f_NL_scalar": 2.1875
+  },
+  "status": {
+    "VERIFIED_final": "classical MS z''/z diverges (1/(eta-eta_b)^2 pole); dressed geometric potential a''/a = x^{1/3}(1/6+x/3) is analytically BOUNDED, max rho_c/2 at bounce. The bounded effective potential through the bounce -- the campaign doc's named real result -- is DELIVERED.",
+    "VERIFIED_regulator_independence": "with the bounded a''/a the transmission coefficient c is dcut-INDEPENDENT (<1% across 1e-5..1e-7), curing the Phase-1 c ~ 1/dcut pathology. The H=0 singularity no longer controls the coefficient.",
+    "REMAINS_1_IC_placement": "the ABSOLUTE coefficient / delta f_NL requires superhorizon-at-horizon-crossing IC placement (mode-by-mode), not the fixed deep-contraction start used here; the x0-sweep shows the absolute value is IC-sensitive, so no physical delta f_NL is quoted.",
+    "REMAINS_2_AAN_mass": "the exact Agullo-Ashtekar-Nelson dressed-metric quantum-corrected effective-mass term U(eta) (scalar sector) on top of a''/a; subleading for k etaB << 1 but shifts c at O(1) and carries the disclosed scheme-dependent subleading sign (deformed-algebra differs).",
+    "gate_status": "NOT closed; verified intermediate (bounded potential + regulator-independence) committed with honest status."
+  },
+  "finding": "On the committed LQC quasi-dust background, the dressed-metric leading geometric MS potential a''/a is analytically BOUNDED (x^{1/3}(1/6+x/3), max rho_c/2 at the bounce), curing the Phase-1 fluid-z''/z 1/(eta-eta_b)^2 pole. With this bounded potential the super-horizon transmission coefficient c in T = 1 - c (k eta_B)^2 becomes REGULATOR(dcut)-INDEPENDENT -- the qualitative upgrade over Phase-1's c ~ 1/dcut. The remaining inputs to a physical scheme-specific delta f_NL are (1) superhorizon-at-crossing IC placement (the absolute coefficient is IC-sensitive here) and (2) the exact AAN quantum-mass term. This upgrades DP2-13 from 'no scheme-independent limit' to 'bounded potential -> regulator-independent coefficient'; G1 not yet closed. NO paper edit."
+}
