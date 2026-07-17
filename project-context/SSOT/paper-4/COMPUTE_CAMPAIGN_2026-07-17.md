@@ -77,7 +77,28 @@ version is a precision upgrade, not a correctness fix.
 - pid: see `pipelines/p2_chirality/logs/g3_joint_covariance.pid`
 - log: `pipelines/p2_chirality/logs/g3_joint_covariance_20260717T204134Z.log`
 - checkpoint: `outputs/canonical_provenance/g3_joint_estimator_covariance.partial.json`
-  (rewritten every 100 iters with completed/n_valid)
+
+**COMPLETED this session (N=2000, all valid, ~573s):** artifact
+`outputs/canonical_provenance/g3_joint_estimator_covariance.json` (smoke=False).
+Headline joint result (block-bootstrap σ, z=full/σ):
+
+| Estimator | full | bootstrap σ | z |
+|-----------|------|-------------|---|
+| A_dipole_realspace | +0.004386 | 0.001987 | **+2.21** |
+| A_dipole_WLS | +0.004669 | 0.003436 | **+1.36** |
+| monopole (f_CW−0.5) | −0.003949 | 0.000601 | **−6.57** |
+| Cl1_pseudo (anafast ℓ=1) | +3.99e−6 | 2.04e−6 | +1.96 |
+
+Joint correlation: dipole↔WLS +0.277 · dipole↔monopole −0.037 · dipole↔Cl1 **+0.846** ·
+WLS↔monopole −0.093 · WLS↔Cl1 +0.260 · monopole↔Cl1 −0.067.
+
+**Readout (not a closure claim):** under the joint framework the monopole is the only
+|z|>3 mode (−6.57; consistent with, but more conservative than, the per-pixel-independent
+binomial −9.47σ) and is **nearly uncorrelated with the dipole (−0.037) and WLS (−0.093)** —
+i.e. a distinct mode, supporting the paper's separate systematics treatment. The real-space
+and WLS dipoles are non-significant (z=+2.21, +1.36), consistent with the primary null.
+dipole↔Cl1 +0.846 confirms both capture the same ℓ=1 content (validity check). Integration
+into the manuscript + MASTER-decoupled refinement + 3-location backup is the next-session step.
 
 ---
 
