@@ -57,6 +57,46 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p1b-v2b0-10-board-v2b0-11-closure-2026-07-16",
+    dateISO: "2026-07-16",
+    timePT: "6:40 PM",
+    kind: "internal-cc",
+    title: "P1B v2B.0.10 exact board — science EXHAUSTED to the DOI gate; v2B.0.11 closes the last two sentences",
+    papers: ["P1B"],
+    summary:
+      "Exact v2B.0.10 confirmation board: Grok REJECT (its standing archive-gate floor) / Gemini MAJOR REVISIONS / Claude MAJOR REVISIONS with exactly ONE major — the Zenodo DOI itself, which the referee calls 'a submission gate rather than a software defect'. The truth audit dispositioned every finding: zero scientific or executable defects survive; Gemini's 'future date' major was FALSIFIED (2026-07-16 is the review date); Grok's atomic-replacement and index-ordering claims were falsified against the text. Two one-sentence editorial survivors (an explicit pytest invocation command; a non-affiliation sentence) were closed same-day in v2B.0.11. Per the content-hash stop rule, no further board is dispatched on the two-sentence diff — three same-day boards agree the sole remaining pre-submission actions are the Houston-gated immutable archive DOI, correspondence metadata, and human software review. Readiness 56 holds.",
+    keyTakeaways: [
+      "Claude major count trajectory across the day: 3 -> 2 -> 1, with the last major being the DOI gate itself",
+      "v2B.0.11: 6 pp, MD5 7c14c2a1d4fb58ed652a2231bbd7e17a, directive-G PASS 6 mirrors, Convex row k5736xnxj5snq44sp86kv7je618aqt4d",
+      "Content-hash stop rule applied: no verdict-chasing board on a two-sentence editorial diff",
+      "P1B in-paper/in-package iteration is exhausted; DOI + metadata + human review are the only open actions",
+    ],
+    links: [
+      { label: "v2B.0.10 truth audit", href: `${PR}/INT_v3/ROUND_2026-07-16-P1B-v2B.0.10-EXACTPDF-c7883afc-CLAUDESTACK-CONFIRM/P1B_v2B.0.10_truth_audit.md` },
+      { label: "P1B canonical status", href: `${GH}/project-context/SSOT/paper-1/status.md` },
+    ],
+  },
+  {
+    id: "p3-v320-r10-confirmation-converged-2026-07-16",
+    dateISO: "2026-07-16",
+    timePT: "6:35 PM",
+    kind: "internal-cc",
+    title: "P3 v3.2.0-r10 exact board — Grok ACCEPT holds through the integrity reframe; P3 CONVERGED",
+    papers: ["P3"],
+    summary:
+      "Exact v3.2.0-r10 confirmation board: Grok ACCEPT (held from r9, through the circularity reframe) / Gemini MINOR REVISIONS / Claude MAJOR REVISIONS (2 majors, both framing/venue). The truth audit found 0 genuinely-new required findings: the 'single-instance generality' major reduces to design-level scoping the paper already carries verbatim ('first instance', 'designed to be re-run', 'not the endpoint'), and a second worked instance was verified NOT cleanly computable from committed artifacts (the join builder is hardwired to DESI DR1); the venue-significance major is the tracked DP3-16 gate. One Grok minor was FALSIFIED (the common-test-set statement it claims is missing exists verbatim at L651-652). P3 joins P1A/P2/P4/P5 as converged under directive H-refined; the only substantive open gates are human ApJS acceptance and the AAS/immutable DOI. Readiness 56 holds.",
+    keyTakeaways: [
+      "Grok ACCEPT held through the honesty-increasing reframe — integrity and verdicts moved together",
+      "Second-instance feasibility adjudicated honestly: builder hardwired to DESI DR1, no committed second input; scoping already in-paper",
+      "0 genuinely-new required findings; 3 optional editorial items noted, none blocking",
+      "P3 status: CONVERGED — deposit staged at r10, awaiting human ApJS + DOI",
+    ],
+    links: [
+      { label: "r10 truth audit", href: `${PR}/INT_v3/ROUND_2026-07-16-P3-v3.2.0-r10-EXACTPDF-627899f1-CLAUDESTACK-CONFIRM/P3_v3.2.0-r10_truth_audit.md` },
+      { label: "P3 canonical status", href: `${GH}/project-context/SSOT/paper-3/status.md` },
+    ],
+  },
+  {
     id: "p1b-v2b0-10-polish-closure-2026-07-16",
     dateISO: "2026-07-16",
     timePT: "6:00 PM",
