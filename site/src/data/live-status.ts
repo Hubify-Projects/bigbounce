@@ -94,9 +94,9 @@ const historicalLiveStatus: LiveStatus = {
       slug: "paper-1b",
       number: "1B",
       shortTitle: "Standalone technical verification companion",
-      version: "v2B.0.10",
+      version: "v2B.0.11",
       readiness: 56,
-      pendingWork: "v2B.0.10 closure (Jul 16): the P1B software metapaper is now namaster-proof 0.1.7. Exact v2B.0.9 confirmation board Grok REJECT (standing DOI floor) / Gemini MINOR / Claude MAJOR; truth audit found no new executable defect and FALSIFIED the 'workspace tensor not reproducible' premise (deterministically regenerable from committed RNG-free code, verified). v2B.0.10 (6 pp, MD5 cfd341642610b50fc2852980a9f034e5) closes 4 optional polish items: new examples/rebuild_workspace_check.py recheck script, real committed execution costs (701.5 s / 8 workers), pip-install one-liner, macOS-untested label retained; 41/41 tests. HOLD 56 pending exact v2B.0.10 confirmation, human software review, immutable archive/DOI, and correspondence metadata. Legacy (superseded): v1B.0.107 confirmation was Grok ACCEPT / Gemini MAJOR / Codex-subscription MAJOR on the earlier mcmc_companion companion; v1B.0.108 closed the two truth-audited bounded majors (native-coordinate synthetic window + unconditional prior-predictive/provenance methods), 19 pp, SHA-256 a85f43f9…a9fb.",
+      pendingWork: "v2B.0.11 (Jul 16): exact v2B.0.10 board (Grok REJECT DOI-floor / Gemini MAJOR with its future-date claim falsified / Claude MAJOR whose ONLY major is the Zenodo DOI) truth-audited: P1B science iteration exhausted; v2B.0.11 adds the pytest command + non-affiliation sentences; only the Houston-gated DOI, correspondence metadata, and human review remain. Earlier same day — v2B.0.10 closure (Jul 16): the P1B software metapaper is now namaster-proof 0.1.7. Exact v2B.0.9 confirmation board Grok REJECT (standing DOI floor) / Gemini MINOR / Claude MAJOR; truth audit found no new executable defect and FALSIFIED the 'workspace tensor not reproducible' premise (deterministically regenerable from committed RNG-free code, verified). v2B.0.10 (6 pp, MD5 cfd341642610b50fc2852980a9f034e5) closes 4 optional polish items: new examples/rebuild_workspace_check.py recheck script, real committed execution costs (701.5 s / 8 workers), pip-install one-liner, macOS-untested label retained; 41/41 tests. HOLD 56 pending exact v2B.0.10 confirmation, human software review, immutable archive/DOI, and correspondence metadata. Legacy (superseded): v1B.0.107 confirmation was Grok ACCEPT / Gemini MAJOR / Codex-subscription MAJOR on the earlier mcmc_companion companion; v1B.0.108 closed the two truth-audited bounded majors (native-coordinate synthetic window + unconditional prior-predictive/provenance methods), 19 pp, SHA-256 a85f43f9…a9fb.",
     },
     {
       slug: "paper-2",
@@ -157,7 +157,7 @@ export const liveStatus: LiveStatus = {
     if (paper.slug === "paper-1b") {
       return {
         ...paper,
-        version: "v2B.0.10",
+        version: "v2B.0.11",
         pendingWork:
           "The exact v2B.0.9 confirmation board (Grok REJECT / Gemini MINOR / Claude MAJOR) found no new executable defect and FALSIFIED the 'workspace tensor not reproducible' premise (deterministically regenerable from committed RNG-free code, verified). v2B.0.10 closes 4 optional polish items: a new examples/rebuild_workspace_check.py recheck script (skip-safe without PyMaster), real committed execution costs (701.5 s / 8 workers), a pip-install one-liner in Sec 11, and the retained macOS-untested label; 41/41 tests. Persistent archive identifier, author-supplied correspondence metadata, exact v2B.0.10 confirmation, and human review remain; a PyPI token would let the loop publish 0.1.7 (Houston gate). Readiness holds 56.",
       };
