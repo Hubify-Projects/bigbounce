@@ -1,0 +1,313 @@
+{
+  "artifact": "A_95^obs \u2014 coverage-calibrated observed-label 95% upper limit on the primary HC real-space chirality dipole amplitude",
+  "closes": "P4 v1.0.264 truth-audit finding M3-(a) (GENUINELY-NEW-REAL)",
+  "audit_ref": "project-context/peer-reviews/INT_v3/ROUND_2026-07-17-P4-v1.0.264-EXACTPDF-325b7ced-CLAUDESTACK-CONFIRM/P4_v1.0.264_truth_audit.md",
+  "status": "complete",
+  "date_utc": "2026-07-17T21:38:49Z",
+  "generator": "pipelines/p2_chirality/analysis/a95_observed_label_upper_limit_v1_0_265.py",
+  "label_class": "OBSERVED-LABEL (NOT a physical parity-amplitude bound)",
+  "A95_obs_full_amplitude": 0.0098,
+  "A95_obs_pct": 0.98,
+  "A95_obs_linear_interp": 0.0098,
+  "A95_obs_logistic_fit": 0.009547800890589523,
+  "coverage_bracket": [
+    0.0096,
+    0.0098,
+    0.9465,
+    0.95
+  ],
+  "detection_definition": "one-sided add-one empirical rank p<0.05 of the primary uniform-pixel fit_dipole amplitude against the committed fixed-occupancy 10^4-draw null (p=(#null>=A_rec + 1)/(N_null+1))",
+  "injection_model": "observed-label: p_pix = p_CW_global + (A/2)(n_hat.u); n_cw ~ Binomial(capacity, p_pix) at fixed pixel occupancy; A is the A_p full-amplitude dipole (same convention as A_obs)",
+  "estimator": "EXACT committed primary uniform-pixel healpy.fit_dipole amplitude (imported from generate_p4_primary_label_shuffle_strict_v1_0_257.py)",
+  "null_reference": "EXACT committed fixed-occupancy multivariate-hypergeometric 10^4-draw null array (label-randomization)",
+  "headline_reproduction_gate": {
+    "A_obs_committed": 0.004665198792857314,
+    "A_obs_recomputed": 0.004665198792857314,
+    "z_mom_committed": 0.6346508534484177,
+    "z_mom_recomputed": 0.6346508534484177,
+    "rank_p_committed": 0.23767623237676233,
+    "rank_p_recomputed": 0.23767623237676233,
+    "passed": true
+  },
+  "sample": {
+    "selection": "primary_hc && !raw_flip_qc_unsafe",
+    "n_selected_rows": 890069,
+    "n_galaxies_in_support": 887472,
+    "n_pixels_support": 23633,
+    "n_cw_in_support": 454968,
+    "p_cw_global": 0.5126561739412624,
+    "nside": 64,
+    "min_pixel_count": 10,
+    "observed_amplitude_A_obs": 0.004665198792857314
+  },
+  "config": {
+    "n_axes_per_amplitude": 2000,
+    "detection_alpha": 0.05,
+    "injection_seed": 20260717,
+    "axis_rule": "random isotropic (unit-normalized Gaussian)",
+    "amplitude_grid_full_amp": [
+      0.004,
+      0.005,
+      0.006,
+      0.007,
+      0.008,
+      0.009,
+      0.0092,
+      0.0094,
+      0.0096,
+      0.0098,
+      0.01,
+      0.011,
+      0.012,
+      0.013,
+      0.014,
+      0.015,
+      0.0175,
+      0.02
+    ],
+    "smoke": false
+  },
+  "per_amplitude": [
+    {
+      "phase": "coarse",
+      "A_injected_full_amp": 0.004,
+      "A_injected_pct": 0.4,
+      "n_axes": 2000,
+      "detection_fraction": 0.236,
+      "recovered_amp_p16_p50_p84": [
+        0.003367014142717433,
+        0.005173446756766273,
+        0.007261103496428273
+      ]
+    },
+    {
+      "phase": "coarse",
+      "A_injected_full_amp": 0.005,
+      "A_injected_pct": 0.5,
+      "n_axes": 2000,
+      "detection_fraction": 0.348,
+      "recovered_amp_p16_p50_p84": [
+        0.0038376097043043246,
+        0.005882824962721257,
+        0.008053466556025336
+      ]
+    },
+    {
+      "phase": "coarse",
+      "A_injected_full_amp": 0.006,
+      "A_injected_pct": 0.6,
+      "n_axes": 2000,
+      "detection_fraction": 0.5325,
+      "recovered_amp_p16_p50_p84": [
+        0.0048562324802307955,
+        0.006889422890470447,
+        0.00900298913723348
+      ]
+    },
+    {
+      "phase": "coarse",
+      "A_injected_full_amp": 0.007,
+      "A_injected_pct": 0.7000000000000001,
+      "n_axes": 2000,
+      "detection_fraction": 0.6745,
+      "recovered_amp_p16_p50_p84": [
+        0.005630774302455306,
+        0.007644445224089722,
+        0.009804451882469978
+      ]
+    },
+    {
+      "phase": "coarse",
+      "A_injected_full_amp": 0.008,
+      "A_injected_pct": 0.8,
+      "n_axes": 2000,
+      "detection_fraction": 0.8175,
+      "recovered_amp_p16_p50_p84": [
+        0.006481381984762454,
+        0.008649021880930011,
+        0.01074061074048383
+      ]
+    },
+    {
+      "phase": "coarse",
+      "A_injected_full_amp": 0.009,
+      "A_injected_pct": 0.8999999999999999,
+      "n_axes": 2000,
+      "detection_fraction": 0.9105,
+      "recovered_amp_p16_p50_p84": [
+        0.0075012910194220605,
+        0.009568976095568643,
+        0.011706186795499965
+      ]
+    },
+    {
+      "phase": "refine",
+      "A_injected_full_amp": 0.0092,
+      "A_injected_pct": 0.9199999999999999,
+      "n_axes": 2000,
+      "detection_fraction": 0.921,
+      "recovered_amp_p16_p50_p84": [
+        0.007624648492033594,
+        0.009690137439561207,
+        0.011806220614878826
+      ]
+    },
+    {
+      "phase": "refine",
+      "A_injected_full_amp": 0.0094,
+      "A_injected_pct": 0.9400000000000001,
+      "n_axes": 2000,
+      "detection_fraction": 0.934,
+      "recovered_amp_p16_p50_p84": [
+        0.007767073685041258,
+        0.009919322874927108,
+        0.012223129881977502
+      ]
+    },
+    {
+      "phase": "refine",
+      "A_injected_full_amp": 0.0096,
+      "A_injected_pct": 0.96,
+      "n_axes": 2000,
+      "detection_fraction": 0.9465,
+      "recovered_amp_p16_p50_p84": [
+        0.008021146616168458,
+        0.010054655504913012,
+        0.012316903208664765
+      ]
+    },
+    {
+      "phase": "refine",
+      "A_injected_full_amp": 0.0098,
+      "A_injected_pct": 0.98,
+      "n_axes": 2000,
+      "detection_fraction": 0.95,
+      "recovered_amp_p16_p50_p84": [
+        0.00813983463902092,
+        0.010226980987494048,
+        0.012485011727595797
+      ]
+    },
+    {
+      "phase": "coarse",
+      "A_injected_full_amp": 0.01,
+      "A_injected_pct": 1.0,
+      "n_axes": 2000,
+      "detection_fraction": 0.954,
+      "recovered_amp_p16_p50_p84": [
+        0.008357545941790456,
+        0.010433618971479555,
+        0.012602861753290558
+      ]
+    },
+    {
+      "phase": "coarse",
+      "A_injected_full_amp": 0.011,
+      "A_injected_pct": 1.0999999999999999,
+      "n_axes": 2000,
+      "detection_fraction": 0.9815,
+      "recovered_amp_p16_p50_p84": [
+        0.009249374600208585,
+        0.011404620453492133,
+        0.013738988011820098
+      ]
+    },
+    {
+      "phase": "coarse",
+      "A_injected_full_amp": 0.012,
+      "A_injected_pct": 1.2,
+      "n_axes": 2000,
+      "detection_fraction": 0.9975,
+      "recovered_amp_p16_p50_p84": [
+        0.010251331571032838,
+        0.012476531075159364,
+        0.014664152490812203
+      ]
+    },
+    {
+      "phase": "coarse",
+      "A_injected_full_amp": 0.013,
+      "A_injected_pct": 1.3,
+      "n_axes": 2000,
+      "detection_fraction": 0.9995,
+      "recovered_amp_p16_p50_p84": [
+        0.011170391378537379,
+        0.013301464329488652,
+        0.015571978055230135
+      ]
+    },
+    {
+      "phase": "coarse",
+      "A_injected_full_amp": 0.014,
+      "A_injected_pct": 1.4000000000000001,
+      "n_axes": 2000,
+      "detection_fraction": 0.9995,
+      "recovered_amp_p16_p50_p84": [
+        0.012158116415316405,
+        0.014396511523494422,
+        0.016602357158269868
+      ]
+    },
+    {
+      "phase": "coarse",
+      "A_injected_full_amp": 0.015,
+      "A_injected_pct": 1.5,
+      "n_axes": 2000,
+      "detection_fraction": 1.0,
+      "recovered_amp_p16_p50_p84": [
+        0.01304428407893469,
+        0.015387664807067799,
+        0.017588521720482704
+      ]
+    },
+    {
+      "phase": "coarse",
+      "A_injected_full_amp": 0.0175,
+      "A_injected_pct": 1.7500000000000002,
+      "n_axes": 2000,
+      "detection_fraction": 1.0,
+      "recovered_amp_p16_p50_p84": [
+        0.015617990671758673,
+        0.017854538263700405,
+        0.019992292407399366
+      ]
+    },
+    {
+      "phase": "coarse",
+      "A_injected_full_amp": 0.02,
+      "A_injected_pct": 2.0,
+      "n_axes": 2000,
+      "detection_fraction": 1.0,
+      "recovered_amp_p16_p50_p84": [
+        0.018086595188013522,
+        0.020269832114034124,
+        0.022416701055934272
+      ]
+    }
+  ],
+  "inputs_hashed": {
+    "catalog": {
+      "path": "pipelines/p2_chirality/apjs_release_v1.0.244/p4_catalog_primary_safe_v1.0.244.parquet",
+      "sha256": "139b761fbeafb34306a0cec60967226c18dc84295285f8317ce3d3af3d28bdf3"
+    },
+    "committed_null_array": {
+      "path": "pipelines/p2_chirality/outputs/canonical_provenance/p4_primary_hc_safe_label_shuffle_10k_v1_0_257.npy",
+      "sha256": "3a03ca4b008844fd8bf16be4e1e7e918ceaf580992d9462d54233f417e32ce7d"
+    },
+    "committed_generator": {
+      "path": "pipelines/p2_chirality/generate_p4_primary_label_shuffle_strict_v1_0_257.py",
+      "sha256": "5fd29348633ba3b42adc0eba969c731695b2c315f2d458f23fd6a1fe4faf5b57"
+    }
+  },
+  "runtime_versions": {
+    "python": "3.9.6",
+    "numpy": "1.26.4",
+    "healpy": "1.17.3"
+  },
+  "interpretation_limits": [
+    "OBSERVED-LABEL coverage floor only; not a physical/primordial amplitude bound",
+    "A_obs->A_phys requires the spatially resolved morphology transfer function (tracked transfer-function gate; scalar g=0.398 is illustrative only)",
+    "detection null is the committed fixed-occupancy label randomization; it is not a joint spatial-nuisance likelihood",
+    "changes no existing science number; the primary null (z_mom=+0.635, p=0.23768) is unchanged and additive"
+  ]
+}
