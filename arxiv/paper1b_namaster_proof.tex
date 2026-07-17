@@ -29,8 +29,16 @@
 % install now runs 39 + skips 2 cleanly), honest test contract, JORS
 % Availability template completion (system requirements / macOS / repo date),
 % and codemeta.json added to the package.
-\newcommand{\paperVersion}{v2B.0.9}
-\newcommand{\paperTimestamp}{2026-07-16 17:22 PT}
+% v2B.0.10 (2026-07-16): closes the 4 optional GENUINELY-NEW-REAL items from
+% truth-audit round INT_v3/ROUND_2026-07-16-P1B-v2B.0.9-EXACTPDF-e2f3301f-
+% CLAUDESTACK-CONFIRM — adds examples/rebuild_workspace_check.py + a Sec 7
+% sentence stating the workspace tensor is deterministically regenerable and
+% the recheck script verifies the <1e-10 gate; adds approximate per-example
+% and 500-realization campaign wall-times (Availability); lifts the local
+% pip-install one-liner into the Code-repository prose; macOS stays honestly
+% untested (no CI change).
+\newcommand{\paperVersion}{v2B.0.10}
+\newcommand{\paperTimestamp}{2026-07-16 18:00 PT}
 
 \title{\software: Exact pseudo-\(\Cl\) window inference and
 content-bound validation for reproducible spin-2 analyses}
@@ -207,6 +215,13 @@ threshold; the package's separate synthetic legacy-helper comparison uses
 zero requested absolute and relative tolerance. Because
 the original workspace tensor was not retained, the scalar is not a
 self-contained reproducibility claim or a universal error bound.
+The tensor is nonetheless deterministically regenerable from committed,
+RNG-free code---the mask is a pure function of \(N_{\rm side}\) and fixed
+latitude cuts and the \(10^{-10}\)-gated equivalence check is committed---so
+the \nolinkurl{examples/rebuild_workspace_check.py} script rebuilds the
+\([4,20,4,1025]\) workspace and re-verifies \(\max|\Delta|<10^{-10}\) whenever
+PyMaster is installed (only the last digits of the \(\sim10^{-18}\) value are
+platform-dependent).
 
 \section{Worked Examples}
 
@@ -281,10 +296,15 @@ listed as untested.
 The package has no special hardware requirements: it is pure Python with a
 single NumPy runtime dependency, requires no GPU, and its full test suite
 completes in under one second with a negligible memory footprint on a commodity
-CPU. The optional PyMaster integration example and the retained physical
-validation campaign (\(N_{\rm side}=512\), \(\ell_{\max}=1024\)) depend on the
-user-supplied PyMaster and healpy stacks and correspondingly more memory, but
-those workloads lie outside the self-contained packaged code path.
+CPU. The optional PyMaster integration example (\(N_{\rm side}=16\)) completes
+in a few seconds, whereas the retained physical validation campaign
+(\(N_{\rm side}=512\), \(\ell_{\max}=1024\); 500 realizations at each of three
+injected angles) recorded a wall time of order \(7\times10^{2}\,\mathrm{s}\)
+with eight parallel realization workers on a commodity multi-core CPU
+(correspondingly of order a couple of hours single-worker). These campaign
+timings are environment-dependent; both workloads depend on the user-supplied
+PyMaster and healpy stacks and correspondingly more memory, but lie outside the
+self-contained packaged code path.
 
 \paragraph{Programming language and dependencies.}
 Version 0.1.7 requires Python 3.10 or later and NumPy 1.24 or later. PyMaster
@@ -296,6 +316,9 @@ the retained physical validation used PyMaster 2.6 and healpy 1.19.0.
 The source, issue tracker, installation instructions, API documentation, tests,
 and examples are available at
 \url{https://github.com/Hubify-Projects/bigbounce/tree/main/packages/namaster-proof}.
+From a checkout of that repository the package installs locally with
+\texttt{python -m pip install ./packages/namaster-proof} (append
+\texttt{-e '.[test]'} from within the package directory for the test extra).
 Citation metadata are supplied in \texttt{CITATION.cff} and machine-readable
 metadata in \texttt{codemeta.json}. The package directory was first published
 to the repository on 2026-07-16.
