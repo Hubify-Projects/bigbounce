@@ -52,8 +52,26 @@
 \newcommand{\artifact}[1]{\href{https://github.com/Hubify-Projects/bigbounce/blob/7befce143848b925998a3e6ecc850aa510ab3a94/#1}{repository artifact}}
 \newcommand{\artifactnamed}[2]{\href{https://github.com/Hubify-Projects/bigbounce/blob/7befce143848b925998a3e6ecc850aa510ab3a94/#1}{\nolinkurl{#2}}}
 \newcommand{\artifactpinned}[2]{\href{https://github.com/Hubify-Projects/bigbounce/blob/7befce143848b925998a3e6ecc850aa510ab3a94/#1}{\nolinkurl{#2}}}
-\newcommand{\paperVersion}{v1A.0.123}
-\newcommand{\paperTimestamp}{July 14, 2026, 1:59 PDT}
+\newcommand{\paperVersion}{v1A.0.124}
+\newcommand{\paperTimestamp}{July 16, 2026, 17:22 PDT}
+% v1A.0.123->124 (2026-07-16): CQG NOTE EDITORIAL-CLARITY CLOSURE (truth audit
+%   ROUND_2026-07-16-P1A-v1A.0.123-EXACTPDF-4c450a67-CLAUDESTACK).  Closed the 3
+%   genuinely-new editorial items; NO science/number/coefficient/readiness change.
+%   (m4) Torsion-vanishing lemma (sec:theory): made the 4D contraction coefficients
+%   explicit -- shown, not asserted -- from iota_{E_I}e^I=delta^I_I=4 and the
+%   p-form number identity e^I ^ iota_{E_I} alpha_(p) = p alpha_(p) (so the first
+%   contraction gives T^J+e^J^t=0 and the second gives iota_{E_J}(e^J^t)=(4-1)t=3t
+%   => iota_{E_J}T^J=-3t => 4t=0 => t=0); coefficients verified by hand from the
+%   manuscript's own e^{[I}^T^{J]}=0, no fabrication.  (M2) sec:r1_njl subsection
+%   header "Standard mean-field NJL check" -> "...diagnostic"; softened "has no
+%   nonzero solution" -> "admits no nonzero scalar gap solution in this single
+%   mean-field convention" and "closes the scalar condensate ..." -> "As a
+%   mean-field diagnostic, it finds no nonzero scalar gap solution ...; we make no
+%   claim beyond this convention" to match App B's existing diagnostic/no-claim
+%   framing.  Every number unchanged.  (M1) Added one consolidated "Relation to
+%   prior work" sentence at the intro's end collecting the already-inline
+%   attributions (Freidel-Minic-Takeuchi Eqs.6/17/23; Hehl-Datta EC contact; first
+%   Bianchi identity) -- consolidation only, no new claim.  0 undef-refs.
 % v1A.0.122->123 (2026-07-14): CQG NOTE REPRODUCIBILITY CLOSURE.
 %   Aligned the active NJL script/JSON with the paper's M_Pl-only three-row
 %   cutoff scope and pinned every reader-facing reproducibility link to the
@@ -1323,7 +1341,15 @@ This Note answers those two questions within an intentionally narrow domain.
 The underlying Cartan elimination, axial contact interaction, and torsion-free
 Bianchi identity are standard.  Our contribution is to place their
 normalizations, operator ordering, logical branches, and observable scope in
-one convention-audited derivation.  Section~\ref{sec:theory} states the
+one convention-audited derivation.  In relation to prior work, the
+finite-$\gamma$ bivector inverse and axial contact coefficient follow Freidel,
+Minic, and Takeuchi (their Eqs.~6, 17, 23~\cite{Freidel2005}), the
+Einstein--Cartan axial--axial contact is the Hehl--Datta
+result~\cite{Hehl1976,HehlDattaNJL1971}, and the vanishing of the Holst density
+on the torsion-free scalar branch is the first (algebraic) Bianchi identity;
+the element assembled here is their convention-audited consolidation into the
+two Cartan branches plus the bounded dimensional benchmark, with no new
+dark-energy or birefringence prediction.  Section~\ref{sec:theory} states the
 first-order action and the sourced connection equation.
 Section~\ref{sec:r1_njl} gives a finite-density scale illustration and a
 conditional standard mean-field NJL check.  Appendix~\ref{app:fierz} records
@@ -1745,12 +1771,17 @@ The normalization of $\mathcal J^{IJ}$ is fixed by this equation and will not
 be needed below.  A canonical scalar action is independent of
 $\omega_{IJ}$, so $\mathcal J^{IJ}=0$ and invertibility of
 $\mathcal Q_\gamma$ gives $e^{[I}\wedge T^{J]}=0$.
-For completeness, let $E_I$ be the frame dual to $e^I$ and define the one-form
+For completeness, let $E_I$ be the frame dual to $e^I$
+($\iota_{E_J}e^I=\delta^I_J$) and define the one-form
 $t\equiv\iota_{E_I}T^I$ (summed over $I$).  Contracting the last equation with
-$\iota_{E_I}$ in four dimensions gives
-$T^J+e^J\wedge t=0$.  A second contraction yields
-$t=\iota_{E_J}T^J=-3t$, hence $t=0$ and therefore $T^I=0$.  Thus the kernel is
-trivial for an invertible tetrad.  The Einstein--Cartan limit
+$\iota_{E_I}$ in four dimensions, using $\iota_{E_I}e^I=\delta^I_I=4$ together
+with the number identity $e^I\wedge\iota_{E_I}\alpha_{(p)}=p\,\alpha_{(p)}$
+(so $e^I\wedge\iota_{E_I}T^J=2T^J$), gives
+$\iota_{E_I}(e^{[I}\wedge T^{J]})=\tfrac12(T^J+e^J\wedge t)=0$, i.e.\
+$T^J+e^J\wedge t=0$.  A second contraction with $\iota_{E_J}$, using
+$\iota_{E_J}(e^J\wedge t)=(4-1)\,t=3t$, yields
+$t=\iota_{E_J}T^J=-3t$, hence $4t=0$, so $t=0$ and therefore $T^I=0$.  Thus the
+kernel is trivial for an invertible tetrad.  The Einstein--Cartan limit
 $\gamma\to\infty$ is nonsingular as well.
 
 For minimal fermion coupling the spin current is totally antisymmetric and
@@ -2639,7 +2670,7 @@ $\gamma^2/(1+\gamma^2)$ in Eq.~\eqref{eq:4fermi} has magnitude below unity for
 real finite $\gamma$, so it does not increase this coefficient benchmark above
 the Einstein--Cartan limit used in the calculation.
 
-\subsection{Standard mean-field NJL check}
+\subsection{Standard mean-field NJL diagnostic}
 
 The finite-density benchmark does not decide whether a vacuum condensate
 exists.  As a logically separate conditional check, we Fierz-project the
@@ -2648,8 +2679,9 @@ Appendix~\ref{app:fierz}, and solve a
 hard-cutoff NJL gap equation in Appendix~\ref{app:njl_gap}.  In the declared
 direct-channel convention the scalar projection is
 $G_{\rm scalar}=-3\kappa/16<0$, hence repulsive.  Substitution in the real
-homogeneous scalar gap equation shows that this negative coupling has no
-nonzero solution.  The sign conclusion is logically separate from the
+homogeneous scalar gap equation shows that this negative coupling admits no
+nonzero scalar gap solution in this single mean-field convention.  The sign
+conclusion is logically separate from the
 coefficient-magnitude diagnostic: at the retained EFT bookkeeping ceiling
 $\Lambda=M_{\rm Pl}$, the three displayed scalar ratios run from $0.239$ to
 $2.15$ and therefore are not uniformly subcritical.  We do not evaluate the
@@ -2660,9 +2692,10 @@ reported in Appendix~\ref{app:njl_gap}.
 The machine-checkable calculation is
 \artifactnamed{arxiv/scripts/njl_gap_equation_route1.py}{njl_gap_equation_route1.py}.
 
-This result is deliberately conditional.  It closes the scalar condensate in
-the standard mean-field NJL model with the stated regulator, field content,
-and projection convention.  It does not remove the known Fierz ambiguity of
+This result is deliberately conditional.  As a mean-field diagnostic, it finds
+no nonzero scalar gap solution in the standard mean-field NJL model with the
+stated regulator, field content, and projection convention; we make no claim
+beyond this convention.  It does not remove the known Fierz ambiguity of
 mean-field truncations and does not exclude beyond-mean-field strong coupling,
 additional flavor/color exchange structure, or non-minimal torsion couplings.
 
