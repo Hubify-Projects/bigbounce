@@ -165,9 +165,9 @@ export const liveStatus: LiveStatus = {
     if (paper.slug === "paper-4") {
       return {
         ...paper,
-        version: "v1.0.264",
+        version: "v1.0.265",
         pendingWork:
-          "Real compute closure (Jul 17): new Sec 4.5 'Joint Estimator Covariance' + Table 9 present a COMPUTED G3 result — N=2000 shared block bootstrap over NSIDE=8 superpixels on the canonical 949,584-row HC sample (immutable HF snapshot cc326f74) gives correlations real-space<->WLS +0.277, real-space<->monopole -0.037, WLS<->monopole -0.093 (z=+2.21/+1.36/-6.57); the monopole is the ONLY |z|>3 mode and is nearly uncorrelated with both dipole estimators, quantitatively supporting separate-systematic treatment. Six caveat sites narrowed from 'no joint covariance' to 'computed 3x3 block; MASTER-decoupled leg + full joint likelihood remain open.' No science number changed. Training independence (G1 pipeline smoke test + manifest-retained retrain, A4000 pod), the MASTER-decoupled/full-likelihood covariance legs, the G4 monopole-mechanism injection (H200, after G1), complete metadata, archive/DOI, exact v1.0.264 non-Anthropic re-review, and human review remain. Readiness holds 80.",
+          "Real compute closure (Jul 17): the exact v1.0.264 confirmation board (Claude MAJOR / Grok MAJOR / Gemini MINOR) truth-audited to 2 genuinely-new-real findings. v1.0.265 closes M3 with a coverage-calibrated OBSERVED-LABEL 95% upper limit on the primary real-space dipole, A_95^obs~=0.98% (linear-interp; logistic cross-check 0.955%), computed via 2,000 random-axis injections per amplitude through the EXACT committed primary estimator (uniform-pixel healpy.fit_dipole) and the EXACT committed 10^4-draw fixed-occupancy null; the headline (A_obs=0.00466520, z=+0.63465, p=0.23768) was reproduced exactly as a hard gate before any injection. Integrated at 7 manuscript sites (abstract, Table 1 rows vii/viii, Table 2 row viii, new Sec 4.2 + Eq 7, disclaimer, injection caption, Conclusions), plus the Ge1 review-narration editorial fix in Sec 4.5. Explicitly an OBSERVED-LABEL bound — the physical parity bound remains gated on the morphology transfer function. No science number changed. Training independence (G1 pipeline smoke test + manifest-retained retrain, A4000 pod), the MASTER-decoupled/full-likelihood covariance legs, the G4 monopole-mechanism injection (H200, after G1), complete metadata, archive/DOI, exact v1.0.265 non-Anthropic re-review, and human review remain. Readiness holds 80.",
       };
     }
     if (paper.slug === "paper-1a") {
@@ -211,7 +211,7 @@ export const liveStatus: LiveStatus = {
     "Exact non-Anthropic confirmation reviews are next for v2B.0.10 and v3.2.0-r10",
     "P1B immutable archive identifier remains a real submission blocker; a PyPI token would let the loop publish package 0.1.7",
     "P3 Zenodo deposit needs re-staging at r10 (r8/r9 staging does not cover it)",
-    "P4 v1.0.264 and P5 v0.1.141 PDFs are built, retained, mirrored, and synchronized; P4 computes the G3 joint estimator covariance (Sec 4.5, Table 9); P5's v0.1.141 forward-leakage-injection closure is complete, exact v0.1.141 confirmation is next",
+    "P4 v1.0.265 and P5 v0.1.141 PDFs are built, retained, mirrored, and synchronized; P4 closes the v1.0.264 board's M3 finding with a coverage-calibrated observed-label A_95^obs~=0.98% upper limit (2,000 random-axis injections through the exact primary estimator + null); P5's v0.1.141 forward-leakage-injection closure is complete, exact v0.1.141 confirmation is next",
     "Exact non-Anthropic re-review and standing external release/provenance gates are next",
   ],
   cronStatus:

@@ -55,7 +55,29 @@
 \newcommand{\HCRI}{\textsc{HC-RI}}
 \newcommand{\FSC}{\textsc{FS-C}}
 \newcommand{\MAGF}{\textsc{MASTER-AGF}}
-\newcommand{\paperVersion}{v1.0.264}
+\newcommand{\paperVersion}{v1.0.265}
+% v1.0.265 (2026-07-17 14:39 PDT — closes the science GENUINELY-NEW-REAL item
+%   (M3-a) from the exact-PDF v1.0.264 board truth audit
+%   (project-context/peer-reviews/INT_v3/ROUND_2026-07-17-P4-v1.0.264-EXACTPDF-
+%   325b7ced-CLAUDESTACK-CONFIRM/P4_v1.0.264_truth_audit.md). Adds a
+%   coverage-calibrated OBSERVED-LABEL 95% sensitivity upper limit on the
+%   primary HC real-space dipole amplitude, A_95^obs = 0.0098 (0.98% full-
+%   amplitude; logistic cross-check 0.96%). Computed via the EXACT committed
+%   primary uniform-pixel healpy.fit_dipole estimator + the EXACT committed
+%   10^4-draw fixed-occupancy multivariate-hypergeometric null (imported
+%   verbatim from generate_p4_primary_label_shuffle_strict_v1_0_257.py; null
+%   array SHA-256 3a03ca4b...); 2000 random isotropic axes/amplitude, add-one
+%   rank p<0.05 detection, adaptive grid 0.40-2.0%; headline reproduction gate
+%   PASS (A_obs=0.00466520, z_mom=+0.63465, p=0.23768). Artifact
+%   analysis/a95_observed_label_upper_limit_v1_0_265.{py,json}. Reported in the
+%   abstract, Table 1 headline-summary row (viii), the sensitivity section, the
+%   injection-recovery caption, and Conclusions, EXPLICITLY as an observed-label
+%   sensitivity floor and NOT a physical parity-amplitude bound (the A_obs->A_phys
+%   transfer function remains the tracked open gate; scalar g=0.398 illustrative
+%   only). Changes NO existing science number; the primary null is unchanged and
+%   the bound is additive. Also applies the Ge1 one-clause editorial fix (removes
+%   the 'a reviewer gate asked' review-process narration from Sec 4.5, tex L1225).
+%   Directive-G: recompile 0 undef + mirror all served paths + Convex bump.)
 % v1.0.264 (2026-07-17 13:56 PDT — integrates the NEW real joint block-bootstrap
 %   estimator covariance (G3) per project-context/SSOT/paper-4/
 %   COMPUTE_CAMPAIGN_2026-07-17.md. Adds Sec. Joint Estimator Covariance
@@ -762,7 +784,7 @@
 %   the established two-step provenance gate.)
 % v1.0.171->172 (2026-06-10 — EXT1 closure wave restamp: recompile + mirror bundle;
 %   Data Availability hash pinned to the v1.0.172 stamp commit per provenance gate.)
-\newcommand{\paperTimestamp}{July 17, 2026, 13:56 PDT}
+\newcommand{\paperTimestamp}{July 17, 2026, 14:39 PDT}
 % v1.0.217->218 (2026-07-05 — DATA-UNLOCK: edge-on-ISOLATED argmax tie-break coherence
 %   now COMPUTED (was pod/data-lab-deferred). Join catalog_production (class_eq/RA/Dec) to
 %   committed spiral_morphology_dr8 b/a on dr8_id; edge-on (b/a<0.30) borderline population
@@ -788,7 +810,7 @@ and an 8.5-Million-Galaxy Catalog}
 \date{\paperTimestamp; Version \paperVersion}
 
 \begin{abstract}
-We release observed chirality labels for $8{,}474{,}531$ DESI Legacy DR8 galaxies and test one primary high-confidence observed-label dipole. Starting from 949,584 high-confidence spirals, we exclude 59,515 rows marked \texttt{raw\_flip\_qc\_unsafe}, leaving 890,069 quality-controlled rows; 887,472 enter the supported-pixel fit and fixed-occupancy label-randomization null. The result is consistent with zero ($z_{\rm mom}=+0.635$, one-sided rank $p=0.23768$). The content-addressed release includes the science catalog, unsafe-row quarantine, retained primary-null array, schema, checksums, and reproducer. WLS and harmonic analyses use different supports or nulls and are retained only as systematics diagnostics. A shared block-bootstrap covariance of the three primary estimators shows the monopole to be a statistically distinct mode nearly uncorrelated with the dipole; spatial transfer calibration, a full joint likelihood, an independent matched-footprint estimator, a complete systematics-metadata sidecar, and a DOI-backed archive remain open. The parity-even morphology observable supports no primordial-parity bound.
+We release observed chirality labels for $8{,}474{,}531$ DESI Legacy DR8 galaxies and test one primary high-confidence observed-label dipole. Starting from 949,584 high-confidence spirals, we exclude 59,515 rows marked \texttt{raw\_flip\_qc\_unsafe}, leaving 890,069 quality-controlled rows; 887,472 enter the supported-pixel fit and fixed-occupancy label-randomization null. The result is consistent with zero ($z_{\rm mom}=+0.635$, one-sided rank $p=0.23768$). A coverage-calibrated observed-label injection--recovery on this primary channel places a $95\%$ sensitivity upper limit $A_{95}^{\rm obs}\simeq0.98\%$ (full-amplitude); this is an observed-label sensitivity floor, not a physical parity-amplitude bound, which remains gated on the morphology transfer function. The content-addressed release includes the science catalog, unsafe-row quarantine, retained primary-null array, schema, checksums, and reproducer. WLS and harmonic analyses use different supports or nulls and are retained only as systematics diagnostics. A shared block-bootstrap covariance of the three primary estimators shows the monopole to be a statistically distinct mode nearly uncorrelated with the dipole; spatial transfer calibration, a full joint likelihood, an independent matched-footprint estimator, a complete systematics-metadata sidecar, and a DOI-backed archive remain open. The parity-even morphology observable supports no primordial-parity bound.
 \end{abstract}
 
 \keywords{galaxies: spiral, galaxies: statistics, methods: data analysis, cosmology: observations, large-scale structure of universe}
@@ -896,7 +918,8 @@ To make the mapping from estimator to scientific claim explicit, Table~\ref{tab:
 \dtc{A clean observed-label $1.7\%$ template is disfavored under the WLS model} & \dte{(ii) block-bootstrap WLS template fit} & \dts{full Catalog~C ($3{,}201{,}160$)} & \dtn{block-bootstrap ($10^3$)} & \textsc{diagnostic} \\
 \dtc{Harmonic $\ell\!=\!1$ residuals are systematics (monopole--mask leakage $+$ coherent depth/morphology), \emph{not} a cosmological signal} & \dte{(iii,iv) canonical/apodized MASTER; (vi) monopole-only generative null} & \dts{full Catalog~C ($3{,}201{,}160$)} & \dtn{label-shuffle / depth-stratified / monopole-only} & \textsc{diagnostic} \\
 \dtc{The hemisphere max-statistic rejects the random-label null after look-elsewhere correction, but the excess is attributed to survey/classifier systematics and is not interpreted cosmologically} & \dte{(v) hemisphere max-asymmetry} & \dts{full Catalog~C ($3{,}201{,}160$)} & \dtn{max-statistic MC ($p_{\rm LEE}$)} & \textsc{diagnostic} \\
-\dtc{Finite-grid sensitivity of the primary real-space estimator; not calibrated coverage or an upper limit} & \dte{(vii) injection--recovery} & \dts{HC, $p_{\rm eq}\!>\!0.6$ ($949{,}584$)} & \dtn{per-pixel shuffle} & \textsc{pilot} \\
+\dtc{Finite-grid sensitivity of the primary real-space estimator; pilot fractions (a calibrated coverage bound is row viii)} & \dte{(vii) injection--recovery} & \dts{HC, $p_{\rm eq}\!>\!0.6$ ($949{,}584$)} & \dtn{per-pixel shuffle} & \textsc{pilot} \\
+\dtc{Coverage-calibrated \emph{observed-label} $95\%$ sensitivity upper limit on the primary dipole amplitude, $A_{95}^{\rm obs}\!\simeq\!0.98\%$ (\emph{not} a physical parity bound)} & \dte{(viii) random-axis injection--recovery} & \dts{$p_{\rm eq}\!>\!0.6$, unsafe excluded ($890{,}069$)} & \dtn{fixed-occupancy label randomization ($10^4$)} & \textsc{primary sens.} \\
 \hline\hline
 \end{tabular}
 \end{center}
@@ -918,6 +941,7 @@ Table~\ref{tab:headline_summary} consolidates the distinct estimators and nulls.
 (v)~hemisphere LEE (MC) & $3{,}201{,}160$ & --- & $0.49005$ & \FSC{} & max-stat MC & $p_{\rm LEE}=1/10001; 95\% upper limit \simeq3.0\times10^{-4}$ (syst.-attr.) \\
 (vi)~post-MASTER monopole null & $3{,}201{,}160$ & --- & $0.49005$ & exact \FSC{} & binomial-monopole & $+6.983/+7.207$ ($500/10^4$) \\
 (vii)~finite injection grid & $949{,}584$ HC & --- & --- & --- & pp-shuffle & $P_{3\sigma}=0.55/0.59$ at $A\!=\!0.75\%$ \\
+(viii)~random-axis coverage (obs.-label) & $890{,}069$ & --- & $0.4808$ & \HCRI{} & fixed-occ.\ label rand.\ ($10^4$) & $A_{95}^{\rm obs}\!\simeq\!0.98\%$ (rank $p\!<\!0.05$, $95\%$ cov.) \\
 \end{tabular}
 }
 \end{table*}
@@ -1222,7 +1246,7 @@ The exact-support binary and apodized diagnostics give $z_{\rm mom}=+6.923$ and 
 \subsection{Joint Estimator Covariance}
 \label{sec:joint_cov}
 
-The estimators above are reported against separate, non-interchangeable nulls; a reviewer gate asked whether they instead share a single sampling covariance, so that their correlation structure can be read directly rather than inferred across heterogeneous supports. We compute that object by evaluating the paper's committed estimators on one shared block bootstrap. On the primary high-confidence spiral sample ($N=949{,}584$; \texttt{class\_eq}$\in\{$\CW{}, \CCW{}$\}$ and $p_{\rm eq}>0.6$; immutable catalog snapshot \texttt{cc326f74}) under the canonical $|b_{\rm gal}|>15^\circ$ mask, we draw $N_{\rm boot}=2{,}000$ resamples over \nside{}$=8$ HEALPix superpixels (the same block-bootstrap unit as \artifact{pipelines/p2\_chirality/scripts/joint\_nuisance\_bootstrap\_sigma.py}; \nside{}$=64$ data map, seed 42, all 2,000 resamples valid) and recompute, on each resample, the uniform-pixel-weight real-space dipole amplitude, the nuisance-marginalized WLS dipole amplitude, and the global CW-fraction monopole $f_{\rm CW}-\tfrac12$. Because the three estimators are evaluated on the \emph{same} resamples, their joint sampling covariance and correlation are defined directly (artifact \artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/g3\_joint\_estimator\_covariance.json}).
+The estimators above are reported against separate, non-interchangeable nulls. To test whether they instead share a single sampling covariance---so that their correlation structure can be read directly rather than inferred across heterogeneous supports---we evaluate the paper's committed estimators on one shared block bootstrap. On the primary high-confidence spiral sample ($N=949{,}584$; \texttt{class\_eq}$\in\{$\CW{}, \CCW{}$\}$ and $p_{\rm eq}>0.6$; immutable catalog snapshot \texttt{cc326f74}) under the canonical $|b_{\rm gal}|>15^\circ$ mask, we draw $N_{\rm boot}=2{,}000$ resamples over \nside{}$=8$ HEALPix superpixels (the same block-bootstrap unit as \artifact{pipelines/p2\_chirality/scripts/joint\_nuisance\_bootstrap\_sigma.py}; \nside{}$=64$ data map, seed 42, all 2,000 resamples valid) and recompute, on each resample, the uniform-pixel-weight real-space dipole amplitude, the nuisance-marginalized WLS dipole amplitude, and the global CW-fraction monopole $f_{\rm CW}-\tfrac12$. Because the three estimators are evaluated on the \emph{same} resamples, their joint sampling covariance and correlation are defined directly (artifact \artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/g3\_joint\_estimator\_covariance.json}).
 
 Table~\ref{tab:joint_cov} reports the resulting $3\times3$ block-bootstrap correlation matrix and the per-estimator significance $z=\hat\theta/\sigma_{\rm boot}$ of each full-sample value against its own bootstrap spread. Two features matter. First, the monopole is the only $|z|>3$ mode ($z=-6.57$; consistent with, but appropriately more conservative than, the per-pixel-independent binomial $-9.47\sigmaunit$ of Sec.~\ref{sec:cw_frac}, because the block bootstrap propagates spatial coherence), while both dipole amplitudes are non-significant ($z=+2.21$ real-space, $+1.36$ WLS), consistent with the primary null. Second, the monopole is nearly uncorrelated with either dipole estimator ($\rho=-0.037$ with the real-space dipole, $\rho=-0.093$ with the WLS dipole), whereas the two dipole amplitudes are mutually correlated ($\rho=+0.277$). Within one shared resampling the monopole and the dipole estimators therefore move essentially independently: the joint covariance quantitatively supports treating the large monopole deviation as a statistically \emph{distinct} mode rather than as a contamination channel of the primary dipole null. A harmonic $\ell=1$ pseudo-power proxy (mask-coupled \texttt{anafast} $C_1$) carried through the same bootstrap correlates at $\rho=+0.846$ with the real-space dipole, confirming that both capture the same $\ell=1$ content (a validity check on the harmonic channel); the MASTER-decoupled $\ell=1$ leg (mode-coupling-matrix inverse, which requires NaMaster) is a pod-bound refinement and is not included here. This block establishes the joint sampling covariance of the three computed estimators; it does not identify the monopole's causal mechanism, which remains a separate open gate (Sec.~\ref{sec:cw_frac}, Sec.~\ref{sec:conclusions}).
 
@@ -1289,7 +1313,15 @@ For the full-amplitude dipole convention $p_{\rm CW}(\hat n)=\tfrac12(1+A\cos\th
 at $N_{\rm spiral}=3{,}201{,}160$ (i.e.\ $\sigma(A/2)\approx0.048\%$), giving a $3\sigma$ ideal floor of $3\,\sigma(A)\approx0.29\%$ full-amplitude. This full-sky idealization omits the realized footprint, classifier transfer, and orientation dependence and is therefore a scale reference only. At the HC sample size $N=949{,}584$, the same idealization gives $\sigma(A)=1.78\times10^{-3}$ and a nominal $3\sigma$ scale of $0.53\%$; it is not a calibrated detection threshold. Under a purely illustrative scalar transfer $A_{\rm obs}=gA_{\rm phys}$ with fixed known $g$, uncertainty would scale as $\sigma(A_{\rm phys})=\sigma(A_{\rm obs})/g$. Here $g=0.398$ is an aggregate GZ1-accuracy dilution, not a spatially resolved physical transfer, so applying $1/g$ does not create a calibrated physical uncertainty, threshold, or bound.
 
 \paragraph{Finite-grid injection scores.}
-The earlier Monte Carlo injection sweep on the HC sample ($N=949{,}584$; 100 injections per amplitude) is retained as descriptive tested-grid evidence. Under the area-uniform axis draw, the score fractions are $0.59$, $0.91$, and $1.00$ at full amplitudes $A=A_p=0.75\%$, $1.0\%$, and $1.5\%$; the originally tabulated polar-angle-uniform sweep gives $0.55$, $0.91$, and $1.00$. Each amplitude uses only 100 injections and a fixed per-pixel binomial label-shuffle calibration. We report these fractions directly rather than defining calibrated 50\% or 95\% recovery amplitudes. In every injection section, $A=A_p$ is the full asymmetry amplitude and the peak deviation of $f_{\rm CW}$ is $A/2$. The scalar transfer $g=0.398$ is illustrative only because the spatial transfer model remains open.
+The earlier Monte Carlo injection sweep on the HC sample ($N=949{,}584$; 100 injections per amplitude) is retained as descriptive tested-grid evidence. Under the area-uniform axis draw, the score fractions are $0.59$, $0.91$, and $1.00$ at full amplitudes $A=A_p=0.75\%$, $1.0\%$, and $1.5\%$; the originally tabulated polar-angle-uniform sweep gives $0.55$, $0.91$, and $1.00$. Each amplitude uses only 100 injections and a fixed per-pixel binomial label-shuffle calibration. We report these fractions directly. In every injection section, $A=A_p$ is the full asymmetry amplitude and the peak deviation of $f_{\rm CW}$ is $A/2$. The scalar transfer $g=0.398$ is illustrative only because the spatial transfer model remains open.
+
+\paragraph{Coverage-calibrated observed-label upper limit.}
+Scaling the same observed-label injection--recovery up to the primary channel with random-axis coverage counting now yields a \emph{coverage-calibrated} 95\% sensitivity upper limit on the primary real-space dipole amplitude. Injections use the observed-label convention $p_{\rm CW}(\hat n)=p_{\rm CW}^{\rm global}+(A/2)(\hat n\!\cdot\!\bm{u})$ at fixed pixel occupancy, drawn on $2{,}000$ isotropically random axes $\bm{u}$ per amplitude, and are passed through the \emph{exact committed primary estimator}---the uniform-pixel \texttt{healpy.fit\_dipole} amplitude on the strict release-safe support (the same estimator that yields $z_{\rm mom}=+0.635$)---with detection defined as a one-sided add-one empirical rank $p<0.05$ against the \emph{exact committed} $10^4$-draw fixed-occupancy label-randomization null (Sec.~\ref{sec:cw_frac}; null-array SHA-256 \texttt{3a03ca4b008844fd\ldots}). The recovered detection probability rises monotonically from $0.24$ at $A=0.40\%$ through $0.91$ at $0.90\%$ and crosses $95\%$ coverage at
+\begin{equation}
+A_{95}^{\rm obs}\simeq0.98\%\quad(\text{full-amplitude, observed-label}),
+\label{eq:a95_obs}
+\end{equation}
+saturating to unit coverage by $A=1.5\%$ (a logistic fit gives $0.96\%$). This calibration reproduces the committed headline exactly before running ($A_{\rm dip}=0.00466520$, $z_{\rm mom}=+0.63465$, $p=0.23768$) and requires no ViT re-inference, no confidence-cut re-run, and no transfer function. It states the amplitude the primary channel is demonstrably sensitive to at $95\%$ coverage under the paper's own estimator and null; the observed amplitude $A_{\rm dip}=0.467\%$ lies below this floor, so the observed null does not exclude sub-$1\%$ observed-label dipoles. $A_{95}^{\rm obs}$ is an \emph{observed-label} sensitivity floor and explicitly \emph{not} a physical parity-amplitude bound: the physical limit $A_{95}^{\rm phys}$ additionally requires the spatially resolved morphology transfer function (the scalar $g=0.398$ is illustrative only) and remains the tracked open gate. The generator, hashed inputs, per-amplitude coverage curve, and full provenance are in \artifact{pipelines/p2\_chirality/analysis/a95\_observed\_label\_upper\_limit\_v1\_0\_265.json}.
 
 \emph{What the injection-recovery chain does and does not traverse.}
 For clarity about the scope of the sensitivity calibration we state
@@ -1298,9 +1330,12 @@ injection-recovery sweep passes a signal through, and which it does not.
 The sweep injects a dipole in the \emph{observed hard-label} CW/CCW
 field and propagates it through per-pixel map-making, the real-space
 dipole estimator, and the per-pixel-shuffle score. It does not traverse
-the ViT, \NS{} triage, confidence cut, or spatially varying confusion,
-and the small deterministic-axis grids are insufficient for calibrated
-coverage. We therefore report direct tested-grid fractions only. The
+the ViT, \NS{} triage, confidence cut, or spatially varying confusion.
+The small deterministic-axis pilot grids of this subsection are reported
+as direct tested-grid fractions only; the separate random-axis,
+$2{,}000$-injection scaling of this same chain on the primary estimator
+(Eq.~\ref{eq:a95_obs}) is what supplies the coverage-calibrated
+observed-label limit $A_{95}^{\rm obs}\simeq0.98\%$. The
 illustrative bridge from observed-label to physical amplitude uses a
 single dilution factor $g$; it does not close the spatial transfer gap. For reference, its
 value is robust to the asymmetric-confusion arithmetic rather than assume
@@ -1407,7 +1442,7 @@ illustrative spatially averaged mapping, not a spatially resolved physical
 bound.
 
 \begin{table*}[t]
-\caption{Descriptive score fractions $P(\sigma>3)$ versus injected full amplitude $A=A_p$ on the HC sample ($N=949{,}584$; 100 injections per amplitude; per-pixel-shuffle null). The finite grid gives $P=0.55$, $0.91$, and $1.00$ at $A=0.75\%$, $1.0\%$, and $1.5\%$ under the tabulated polar-angle-uniform convention; binomial standard errors are at most $0.05$. These values are not calibrated recovery thresholds or physical limits.\label{tab:injection_recovery}}
+\caption{Descriptive score fractions $P(\sigma>3)$ versus injected full amplitude $A=A_p$ on the HC sample ($N=949{,}584$; 100 injections per amplitude; per-pixel-shuffle null). The finite grid gives $P=0.55$, $0.91$, and $1.00$ at $A=0.75\%$, $1.0\%$, and $1.5\%$ under the tabulated polar-angle-uniform convention; binomial standard errors are at most $0.05$. These pilot values are not calibrated recovery thresholds. The coverage-calibrated observed-label $95\%$ sensitivity limit on the primary estimator, $A_{95}^{\rm obs}\!\simeq\!0.98\%$ (Eq.~\ref{eq:a95_obs}, $2{,}000$ random axes/amplitude against the committed fixed-occupancy null), is reported separately and is an observed-label floor, not a physical limit.\label{tab:injection_recovery}}
 \begin{tabular}{lccccccccc}
 $A$ (\%) & 0.05 & 0.1 & 0.2 & 0.3 & 0.5 & 0.75 & 1.0 & 1.5 & 2.0 \\
 \hline
@@ -1434,7 +1469,7 @@ A shared block-bootstrap covariance of the three primary estimators (real-space 
 \label{sec:conclusions}
 % ============================================================
 
-We report one primary result from the 8,474,531-object observed-label catalog: the strict release-safe HC real-space dipole is null-consistent ($N_{\rm selected}=890{,}069$, $N_{\rm support}=887{,}472$, $z_{\rm mom}=+0.635$, one-sided add-one rank $p=0.23768$). The repository candidate retains the safe catalog, quarantine, exact strict null array, receipt, and generator. The synchronized strict-primary contract is public at immutable HF dataset revision \texttt{911316f31c21f2c4b933a2f3a761274cfe85c6d6} (path \texttt{apjs-release/v1.0.259-strict-primary/}), byte-verified against the committed overlay; the historical public release documenting the earlier unsafe-inclusive realization remains retained at its own immutable revision and is superseded for the primary contract. All harmonic, WLS, injection, and transfer calculations are diagnostics. Our main conclusions are:
+We report one primary result from the 8,474,531-object observed-label catalog: the strict release-safe HC real-space dipole is null-consistent ($N_{\rm selected}=890{,}069$, $N_{\rm support}=887{,}472$, $z_{\rm mom}=+0.635$, one-sided add-one rank $p=0.23768$). Computed on the same estimator and the same fixed-occupancy null, this channel's coverage-calibrated observed-label sensitivity reaches $95\%$ detection coverage at $A_{95}^{\rm obs}\simeq0.98\%$ (full-amplitude; Eq.~\ref{eq:a95_obs}, Sec.~\ref{sec:sensitivity})---an observed-label sensitivity floor, not a physical parity-amplitude bound, whose physical counterpart remains gated on the morphology transfer function. The repository candidate retains the safe catalog, quarantine, exact strict null array, receipt, and generator. The synchronized strict-primary contract is public at immutable HF dataset revision \texttt{911316f31c21f2c4b933a2f3a761274cfe85c6d6} (path \texttt{apjs-release/v1.0.259-strict-primary/}), byte-verified against the committed overlay; the historical public release documenting the earlier unsafe-inclusive realization remains retained at its own immutable revision and is superseded for the primary contract. All harmonic, WLS, injection, and transfer calculations are diagnostics. Our main conclusions are:
 
 \paragraph{Harmonic-channel response diagnostic.}
 The apodized-footprint MASTER $\ell=1$ injection pilot reports its observed-label score fractions and median injected scores in Table~\ref{tab:harmonic_completeness}. Because this channel has a different field, mask, weights, and null from the primary estimator, these values diagnose pipeline response only; they do not establish completeness, a physical exclusion, or an ``unmissable'' amplitude.

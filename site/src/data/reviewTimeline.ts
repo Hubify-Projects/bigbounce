@@ -57,6 +57,47 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p4-v1-0-265-a95-observed-label-closure-2026-07-17",
+    dateISO: "2026-07-17",
+    timePT: "2:39 PM",
+    kind: "closure-wave",
+    title: "P4 v1.0.265 — A_95^obs coverage-calibrated observed-label upper limit COMPUTED (M3 closed)",
+    papers: ["P4"],
+    summary:
+      "v1.0.265 closes the exact v1.0.264 confirmation board's M3 finding: the paper explicitly declined any calibrated coverage/amplitude upper limit, yet a coverage-calibrated OBSERVED-LABEL limit was computable now, entirely through the committed primary estimator and null. A_95^obs ~=0.98% (linear-interp; logistic cross-check 0.955%) was computed via 2,000 random-axis injections per amplitude through the EXACT committed primary estimator (uniform-pixel healpy.fit_dipole) and the EXACT committed 10^4-draw fixed-occupancy null; the headline (A_obs=0.00466520, z=+0.63465, p=0.23768) was reproduced exactly as a hard gate before any injection ran. Coverage curve monotone (0.40%->0.236, 0.98%->0.950, 1.10%->0.982). Integrated at 7 manuscript sites plus the Ge1 review-narration editorial fix in Sec 4.5. This is explicitly an OBSERVED-LABEL bound -- the physical parity-amplitude bound remains the tracked transfer-function gate, unchanged. No science number changed; readiness cap 80 HOLDS pending exact v1.0.265 confirmation.",
+    keyTakeaways: [
+      "Real compute: 2,000 random-axis injections per amplitude through the exact committed primary estimator + exact fixed-occupancy null (10^4 draws), headline reproduced exactly as a hard gate before any injection",
+      "A_95^obs ~=0.98% (linear-interp; logistic cross-check 0.955%); coverage curve monotone 0.40%->0.236, 0.98%->0.950, 1.10%->0.982",
+      "Integrated at 7 manuscript sites: abstract clause, Table 1 rows vii/viii, Table 2 row viii, new Sec 4.2 paragraph + Eq 7 + artifact link, softened disclaimer, injection caption, Conclusions clause; plus the Ge1 editorial fix",
+      "Explicitly OBSERVED-LABEL, not physical -- the transfer-function-gated physical parity bound is unchanged and unclosed",
+      "v1.0.265: 28 pp, MD5 dec7176eb1138779db5b727e3ccc6054, Convex row k575e5nva9twxpnk41x0gy66yh8ap02g, directive-G PASS 16 mirrors",
+    ],
+    links: [
+      { label: "A_95^obs upper-limit script", href: `${GH}/pipelines/p2_chirality/analysis/a95_observed_label_upper_limit_v1_0_265.py` },
+      { label: "A_95^obs upper-limit JSON", href: `${GH}/pipelines/p2_chirality/analysis/a95_observed_label_upper_limit_v1_0_265.json` },
+      { label: "P4 canonical status", href: `${GH}/project-context/SSOT/paper-4/status.md` },
+    ],
+  },
+  {
+    id: "p4-v1-0-264-exact-confirmation-board-2026-07-17",
+    dateISO: "2026-07-17",
+    kind: "internal-cc",
+    title: "P4 v1.0.264 exact confirmation board — Grok MAJOR / Gemini MINOR / Claude MAJOR -> 2 genuinely-new-real",
+    papers: ["P4"],
+    summary:
+      "The exact v1.0.264 confirmation board (round dir ROUND_2026-07-17-P4-v1.0.264-EXACTPDF-325b7ced-CLAUDESTACK-CONFIRM) reviewed the new Sec 4.5 G3 joint-estimator-covariance content: Claude Opus subagent MAJOR REVISIONS (7 MAJOR / 5 MINOR), Grok direct API MAJOR REVISIONS (3 MAJOR / 2 MINOR), Gemini direct API MINOR REVISIONS (4 MINOR); Codex absent, paused per directive N. All three legs affirm the narrow central null (z_mom=+0.635, one-sided rank p=0.23768). Truth audit dispositioned 21 findings: 8 already-tracked gates, 6 disclosed re-flags, 8 venue/style opinions, 0 falsified, and 2 genuinely-new-real -- M3 (a coverage-calibrated observed-label upper limit was computable now from committed artifacts, not on any tracked gate list) and Ge1 (a review-process narration clause introduced by the new Sec 4.5). Both closed same-day in v1.0.265.",
+    keyTakeaways: [
+      "Board: Claude Opus subagent MAJOR (7M/5m) / Grok direct API MAJOR (3M/2m) / Gemini direct API MINOR (4m); Codex absent per directive N",
+      "All three legs affirm the narrow central null: z_mom=+0.635, one-sided rank p=0.23768",
+      "21 findings dispositioned: 8 already-tracked gates, 6 disclosed re-flags, 8 venue/style opinions, 0 falsified, 2 genuinely-new-real",
+      "M3 (coverage-calibrated observed-label upper limit, science-bounded, computable from committed artifacts) and Ge1 (review-process narration clause in new Sec 4.5, editorial) both closed same-day in v1.0.265",
+    ],
+    links: [
+      { label: "v1.0.264 truth audit", href: `${PR}/INT_v3/ROUND_2026-07-17-P4-v1.0.264-EXACTPDF-325b7ced-CLAUDESTACK-CONFIRM/P4_v1.0.264_truth_audit.md` },
+      { label: "P4 canonical status", href: `${GH}/project-context/SSOT/paper-4/status.md` },
+    ],
+  },
+  {
     id: "p4-v1-0-264-g3-joint-covariance-2026-07-17",
     dateISO: "2026-07-17",
     timePT: "1:56 PM",
