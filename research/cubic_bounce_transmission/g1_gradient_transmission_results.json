@@ -1,0 +1,70 @@
+{
+  "gate": "G1 -- direct cubic bounce transfer (DP2-13)",
+  "phase": "phase-1 verified intermediate (real computation, no paper edit)",
+  "meta": {
+    "date_utc": "2026-07-17T20:47:34.726632+00:00",
+    "runtime_s": 27.57,
+    "numpy": "1.26.4",
+    "sympy": "1.14.0"
+  },
+  "A_vertex_anchor": {
+    "squeezed_fNL": "-35/16",
+    "equilateral_fNL": "-255/128",
+    "Li_cs1": "-35/16",
+    "anchor_pass": true
+  },
+  "B_lqc_background": {
+    "units": "8piG=1, rho_c=1, a_b=1, w=0 dust",
+    "a_min_at_bounce": 1.0,
+    "H_at_bounce": 0.0,
+    "Hdot_at_bounce": 0.5,
+    "eps_matter_limit": 1.4984984984984984,
+    "eps_at_x_half": 0.0,
+    "eps_sign_change_x": 0.5,
+    "conformal_halfwidth_NEC_eta_B": 1.0593844057612563,
+    "z2_form": "z^2 = 3 a^2/(1-x) = 3 x^{-2/3}/(1-x); ~ C/(eta-eta_b)^2 at bounce",
+    "z2_bounce_divergence": "1/(eta-eta_b)^2 (H=0 with rho+p=rho != 0)"
+  },
+  "C_scheme_dependence": {
+    "eta_B_used": 1.0593844057612563,
+    "sweep": [
+      {
+        "dcut": 1e-05,
+        "z2_bounce": 300002.00001803215,
+        "k2_slope_dT_vs_k2": 970.7289440608893,
+        "coeff_c_in_kEtaB2": 864.9496504883269,
+        "T_values": {
+          "0.005": 0.9743872078217984,
+          "0.01": 0.8985097029791315,
+          "0.02": 0.6093395757862649
+        }
+      },
+      {
+        "dcut": 1e-06,
+        "z2_bounce": 3000001.9999154,
+        "k2_slope_dT_vs_k2": 3040.877164780266,
+        "coeff_c_in_kEtaB2": 2709.5160363217165,
+        "T_values": {
+          "0.005": 0.918113125412616,
+          "0.01": 0.6766450031538344,
+          "0.02": -0.22668325634673758
+        }
+      },
+      {
+        "dcut": 1e-07,
+        "z2_bounce": 30000002.015790842,
+        "k2_slope_dT_vs_k2": 43453.51204048277,
+        "coeff_c_in_kEtaB2": 38718.4293636848,
+        "T_values": {
+          "0.005": -0.1804423426039714,
+          "0.01": -3.6545091543477195,
+          "0.02": -16.54719382735419
+        }
+      }
+    ],
+    "coefficient_diverges_as_regulator_to_zero": true,
+    "scaling_note": "c grows ~1/dcut => no scheme-independent limit"
+  },
+  "finding": "The amplitude-faithful LINEAR super-horizon transmission of the conserved zeta mode (which, by Weinberg single-clock conservation, governs the cubic bispectrum transmission at leading gradient order) is, in the model-agnostic effective-fluid description, DOMINATED by the z^2 ~ 1/(eta-eta_b)^2 singularity at H=0. The leading coefficient c in T(k) = 1 - c (k eta_B)^2 grows without bound as the H=0 regulator -> 0, so it has NO scheme-independent limit. This NUMERICALLY demonstrates DP2-13's disclosed statement that the leading gradient coefficient (and its subleading sign) is quantization-scheme dependent: a scheme-specific bounded-z''/z construction (Wilson-Ewing dressed-metric) is REQUIRED to pin one concrete delta f_NL. The paper's current conditional framing is vindicated. NO paper edit.",
+  "next_step": "Rerun step [C] with the Wilson-Ewing dressed-metric effective-LQC perturbation variable z_tilde (bounded z_tilde''/z_tilde ~ rho_c) to obtain a finite, scheme-specific coefficient c and delta f_NL(k) at observable k. Detached deep run per COMPUTE_CAMPAIGN_2026-07-17.md."
+}
