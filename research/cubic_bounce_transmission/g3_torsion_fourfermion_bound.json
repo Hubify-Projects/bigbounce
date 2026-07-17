@@ -1,0 +1,98 @@
+{
+  "gate": "G3 -- model-specific Einstein-Cartan four-fermion torsion bound (P2 assumption f)",
+  "phase": "campaign 2026-07-17 Task A (real computation, bounded result, no paper edit)",
+  "meta": {
+    "date_utc": "2026-07-17T22:47:45.824724+00:00",
+    "runtime_s": 0.35,
+    "sympy": "1.14.0"
+  },
+  "P1A_conventions_reused": {
+    "contact_term": "-(3 kappa/16)[gamma^2/(1+gamma^2)] J_5^2  (P1A tex L1161-1162, L856, L1172)",
+    "kappa": "8 pi G, unreduced M_Pl (P1A L737)",
+    "benchmark": "kappa n_psi^2/rho_Lambda ~= 3.6e-69 (n/100cm^-3)^2 (P1A L1163-1165)",
+    "J5_squared_proxy": "<J_5^2> <~ n_psi^2 (P1A: n_psi does not fix <J5 J5>; n^2 is the conservative spin-coherent upper bound)"
+  },
+  "P2_background_reused": "quasi-dust rho = rho_c (a_b/a)^3, n_psi \u221d a^-3 \u221d rho (g1_gradient_transmission_scheme.py [B])",
+  "A_symbolic_bound": {
+    "symbols": "gamma=Immirzi, kappa=8piG, n_psi_c=bounce-epoch fermion number density, rho_c=LQC critical density",
+    "frac_tor_general_epoch": "3*gamma**2*kappa*n_psi_c**2*rho/(16*rho_c**2*(gamma**2 + 1))",
+    "frac_tor_at_bounce": "3*gamma**2*kappa*n_psi_c**2/(16*rho_c*(gamma**2 + 1))",
+    "dfNL_bound_full": "105*gamma**2*kappa*n_psi_c**2/(256*rho_c*(gamma**2 + 1))",
+    "dfNL_bound_reduced": "|delta_fNL_tor| <~ (105*gamma**2/(256*(gamma**2 + 1))) * x_psi,  x_psi = kappa*n_psi_c^2/rho_c",
+    "prefactor_symbolic": "105*gamma**2/(256*(gamma**2 + 1))",
+    "epoch_scaling": "n_psi \u221d a^-3 \u221d rho (committed P2 quasi-dust); frac_tor \u221d rho, maximal at bounce"
+  },
+  "B_numeric_by_gamma": {
+    "BH_entropy_0.2375": {
+      "gamma": "0.2375",
+      "holst_factor_gamma2_over_1plusgamma2": "0.0533945",
+      "prefactor_35o16_3o16_holst": "0.0219001",
+      "rho_c_LQC_eV4": "9.069e+111",
+      "rho_c_over_MPl4": "0.409374",
+      "dfNL_bound_coeff_times_nu2": "1.34451",
+      "dfNL_bound_formula": "|delta f_NL^tor| <~ 1.34451 * (n_psi,c / M_Pl^3)^2",
+      "n_c_crit_EFT_breakdown_x_psi_eq_1": {
+        "n_psi_c_eV3": "2.3175e+83",
+        "n_psi_c_over_MPl3": "0.127626"
+      },
+      "n_c_crit_for_dfNL_eq_1": {
+        "n_psi_c_eV3": "1.56602e+84",
+        "n_psi_c_over_MPl3": "0.862417"
+      },
+      "n_c_crit_for_dfNL_eq_1e-3_disclosed_residual": {
+        "n_psi_c_eV3": "4.95218e+82",
+        "n_psi_c_over_MPl3": "0.027272"
+      }
+    },
+    "O(1)_gamma=1": {
+      "gamma": "1.0",
+      "holst_factor_gamma2_over_1plusgamma2": "0.5",
+      "prefactor_35o16_3o16_holst": "0.205078",
+      "rho_c_LQC_eV4": "1.21493e+110",
+      "rho_c_over_MPl4": "0.00548417",
+      "dfNL_bound_coeff_times_nu2": "939.828",
+      "dfNL_bound_formula": "|delta f_NL^tor| <~ 939.828 * (n_psi,c / M_Pl^3)^2",
+      "n_c_crit_EFT_breakdown_x_psi_eq_1": {
+        "n_psi_c_eV3": "2.68235e+82",
+        "n_psi_c_over_MPl3": "0.0147719"
+      },
+      "n_c_crit_for_dfNL_eq_1": {
+        "n_psi_c_eV3": "5.92319e+82",
+        "n_psi_c_over_MPl3": "0.0326194"
+      },
+      "n_c_crit_for_dfNL_eq_1e-3_disclosed_residual": {
+        "n_psi_c_eV3": "1.87308e+81",
+        "n_psi_c_over_MPl3": "0.00103152"
+      }
+    }
+  },
+  "B_illustrative_fiducials": {
+    "note": "illustrative only; n_psi,c remains the free model parameter",
+    "gamma_used": "0.2375",
+    "ISM_100cm-3_present_day_context_only": {
+      "n_psi_eV3": "7.68035e-13",
+      "n_psi_over_MPl3": "4.22962e-97",
+      "dfNL_bound": "2.4053e-193"
+    },
+    "GUT_thermal_T1e16GeV": {
+      "n_psi_eV3_approx_T3": "1.0e+75",
+      "n_psi_over_MPl3": "5.50707e-10",
+      "dfNL_bound": "4.07762e-19",
+      "caveat": "T^3 is a RELATIVISTIC estimate; the matter-bounce is w=0 (non-relativistic) so this is an upper-context figure, not the model value"
+    }
+  },
+  "provenance": {
+    "hbar_c_eV_cm": "1.973e-5 (P1A tex L735)",
+    "one_cm_inv3_in_eV3": "7.68035e-15 (P1A L735-736)",
+    "M_Pl_unreduced_eV": "1.22e28 (P1A L737)",
+    "kappa_8piG_eV-2": "1.68857e-55",
+    "P1A_benchmark_crosscheck": {
+      "kappa_n_psi2_at_100cm-3_eV4": "9.96054e-80",
+      "P1A_target_9.9542e-80": "reproduced",
+      "rho_Lambda_eV4_implied": "2.798e-11",
+      "kappa_n2_over_rhoLambda": "3.55988e-69",
+      "P1A_target_3.5571e-69": "reproduced"
+    }
+  },
+  "conclusion": "The Einstein-Cartan four-fermion torsion contribution to the P2 matter-bounce f_NL is |delta f_NL^tor| <~ (35/16)(3/16)[gamma^2/(1+gamma^2)] kappa n_psi,c^2/rho_c, with n_psi,c the (free) bounce-epoch fermion number density. Using the committed P2 quasi-dust dilution n_psi \u221d rho, the fraction is maximal AT the bounce. The contribution reaches the disclosed 1e-3 linear-transmission residual only for n_psi,c ~ 3e-2 M_Pl^3 and becomes comparable to the -35/16 amplitude only for n_psi,c ~ 1 M_Pl^3 (gamma=0.2375) -- i.e. only at Planck-density fermion populations, where the effective LQC bounce itself breaks down (x_psi = kappa n_psi,c^2/rho_c >~ 1 is the EFT-breakdown line). SHARPEST STATEMENT: within the EFT's own validity domain x_psi < 1, the bound saturates at |delta f_NL^tor| <~ the prefactor (35/16)(3/16)[gamma^2/(1+gamma^2)] = 0.022 (gamma=0.2375) to 0.21 (gamma=1), so torsion can never exceed ~1-10% of the -35/16 amplitude anywhere the effective bounce description holds, and is <<1e-3 for realistic sub-Planckian abundances. For ANY sub-Planckian fermion abundance (n_psi,c << M_Pl^3, required for a semiclassical bounce), torsion is negligible and assumption (f) holds. This converts assumption (f) from asserted to BOUNDED, with n_psi,c the explicit free parameter. NO value of n_psi,c is fabricated; NO paper edit; NO version bump."
+}
