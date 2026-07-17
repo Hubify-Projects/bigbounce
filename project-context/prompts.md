@@ -621,3 +621,11 @@ Switched to Opus 4.7 + xhigh effort for this.
 - `agent`: Claude Code desktop / claude-fable-5
 
 > continue until you achieve the /goal goal of as quickly as possible getting ALL of the scientific research papers ready for official publication and following and utilizing all local skills and everything the whole proper setup and system as it should be done end  ensure you do everything 100% right and use all the research and planning and the improvements we've already made to accelerate things and even good to analyze everything and do a deep audit to find further ways to accelerate and improve everything and ensure it is self-improving on every step and loop ideally please go through the latest docs in the project-context etc where you might see ways we've attempted to improve results and efficiencies to get closer to publishing etc etc and ensure you have access to the full prompt-history and all apis/skills/stacks/resources everything locally and connected etc to make everything work fully end to end please im ready and i want to publish these papers and have them be amazing so i can win or be awarded a scientific research grant from anthropic etc please -- to lets go
+
+**17:43 PT - Keep looping until all papers officially publication-ready, fully accepted, site updated, PDFs compiled**
+
+- `cwd`: /Users/houstongolden/Desktop/CODE_YOU/bigbounce
+- `session`: bigbounce-resume-claude-desktop-2026-07-16
+- `agent`: Claude Code desktop / claude-fable-5
+
+> i do not know why you stopped you must continue looping until all papers are officially ready for publishing ... website updated and papers pdfs compiled fully and all accepted fully

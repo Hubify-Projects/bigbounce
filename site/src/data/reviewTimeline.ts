@@ -57,6 +57,111 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p1b-v2b0-10-polish-closure-2026-07-16",
+    dateISO: "2026-07-16",
+    timePT: "6:00 PM",
+    kind: "closure-wave",
+    title: "P1B v2B.0.10 — workspace-tensor premise FALSIFIED; 4 optional polish items closed",
+    papers: ["P1B"],
+    summary:
+      "The exact v2B.0.9 confirmation board (Grok REJECT on the standing DOI floor / Gemini MINOR / Claude MAJOR) truth-audited to no new executable defect, and FALSIFIED the 'workspace tensor not reproducible' premise raised in the majors — the workspace tensor is deterministically regenerable from committed RNG-free code, verified directly. v2B.0.10 closes 4 optional polish items: a new examples/rebuild_workspace_check.py recheck script (skip-safe without PyMaster), real committed execution costs (701.5 s / 8 workers), a pip-install one-liner in Sec 11, and the retained macOS-untested label. 41/41 tests pass. Readiness 56 holds.",
+    keyTakeaways: [
+      "6 pp, MD5 cfd341642610b50fc2852980a9f034e5, SHA-256 c7883afc5050600998b612d7c8a894c7352b5b3770e442befd2b30f78b502673, timestamp 2026-07-16 18:00 PT",
+      "directive-G PASS, 6 mirrors byte-identical, Convex row k57btw0yjfezcdpy78jhass1k58apf1h",
+      "'Workspace tensor not reproducible' premise FALSIFIED, not just disputed — deterministically regenerable from committed RNG-free code, re-verified with a new recheck script",
+      "No readiness uplift: exact v2B.0.10 confirmation, persistent archive DOI, correspondence metadata, and human software review remain open",
+    ],
+    links: [
+      { label: "P1B canonical status", href: `${GH}/project-context/SSOT/paper-1/status.md` },
+      { label: "v2B.0.9 confirmation-board truth audit", href: `${PR}/INT_v3/ROUND_2026-07-16-P1B-v2B.0.9-EXACTPDF-e2f3301f-CLAUDESTACK-CONFIRM/P1B_v2B.0.9_truth_audit.md` },
+    ],
+  },
+  {
+    id: "p3-v320-r10-integrity-reframe-closure-2026-07-16",
+    dateISO: "2026-07-16",
+    timePT: "5:57 PM",
+    kind: "skill-improvement",
+    title: "P3 v3.2.0-r10 — integrity reframe: the loop catches and closes its own over-interpretation",
+    papers: ["P3"],
+    summary:
+      "The exact v3.2.0-r9 confirmation board (Grok ACCEPT, its first on P3 / Gemini MINOR / Claude MAJOR) truth-audited the Claude leg's circularity finding as GENUINELY-NEW-REAL, overturning the prior r8 disposition of the same finding class as too lenient: the sub-0.1-arcsec core excess is by-construction seed self-recovery — these are single-member clusters whose centroid equals the seed DESI member's own coordinates, so the near-zero separation is expected, not evidence of an independent astrophysical association (median match separation 0.00127 arcsec, target-to-member separation exactly zero). v3.2.0-r10 closes this with an integrity reframe at every claim site — abstract, Sec 3.5, Fig 1 caption, Sec 7, Sec 8 — restating the core as expected seed self-recovery / end-to-end recovery verification, NOT independent association evidence. The shift control is rescoped to the 0.1-1 arcsec tail (where it is actually informative), the annulus deficit is explained as nearest-neighbor shielding, and the reproduction-machine spec is stated honestly (Apple M5 10-core 24GB; the original audit machine is not pinned in committed logs). Additional references were SKIPPED rather than risk fabrication. Zero data changed; a grep sweep confirmed zero stale 'association excess' claims remain. This is the self-improving review loop doing its job: a harsher truth-audit standard caught a genuine over-interpretation the paper's own prior round let stand, and the fix corrects the record rather than defending the original framing.",
+    keyTakeaways: [
+      "17 pp (was 16), MD5 9fb6e882068a4613132792633a9d7a60, SHA-256 627899f1bfa030b56502150224b174b66186b3d0beb3e608a68b2aab68ae0cd6, timestamp 2026-07-16 17:57 PT",
+      "directive-G PASS, 6 mirrors byte-identical, Convex row k575m29x0rzc2z4mh8zt654v9h8aqzpm",
+      "Genuinely-new-real finding: sub-0.1-arcsec core excess is expected seed self-recovery (centroid = seed member's own coordinates), not independent association evidence — the paper's own numbers prove it",
+      "Reframed at every claim site (abstract, Sec 3.5, Fig 1 caption, Sec 7, Sec 8); shift control scoped to the 0.1-1 arcsec tail; annulus deficit explained as nearest-neighbor shielding",
+      "Zero data change, zero stale claims (grep-verified); this SUPERSEDES any prior site/SSOT text describing the sub-0.1-arcsec excess as association evidence",
+      "No readiness uplift: exact v3.2.0-r10 confirmation, Zenodo deposit re-staging at r10, immutable archive/DOI, and human ApJS review remain open",
+    ],
+    links: [
+      { label: "P3 canonical status", href: `${GH}/project-context/SSOT/paper-3/status.md` },
+      { label: "v3.2.0-r9 confirmation-board truth audit", href: `${PR}/INT_v3/ROUND_2026-07-16-P3-v3.2.0-r9-EXACTPDF-7526e685-CLAUDESTACK-CONFIRM/P3_v3.2.0-r9_truth_audit.md` },
+    ],
+  },
+  {
+    id: "p1b-v2b0-9-exact-confirmation-board-2026-07-16",
+    dateISO: "2026-07-16",
+    kind: "closure-wave",
+    title: "P1B v2B.0.9 — exact confirmation board and truth audit",
+    papers: ["P1B"],
+    summary:
+      "The exact 6-page v2B.0.9 PDF (SHA-256 e2f3301f) was reviewed by Grok 4.3 direct API (REJECT, the standing DOI/archive floor), Gemini 3.1 Pro direct API (MINOR REVISIONS), and a Claude Opus subagent (MAJOR REVISIONS); Codex remained absent, paused per CLAUDE.md directive N. Truth audit found no new executable defect and FALSIFIED the majors' central 'workspace tensor not reproducible' premise — the workspace tensor is deterministically regenerable from the committed RNG-free code, confirmed by direct re-execution. 4 optional polish items were identified and closed same-day in v2B.0.10.",
+    keyTakeaways: [
+      "Board: Grok REJECT (standing DOI floor) / Gemini MINOR / Claude Opus subagent MAJOR; Codex absent per directive N",
+      "Truth audit: no new executable defect; 'workspace tensor not reproducible' premise FALSIFIED by direct re-execution of committed RNG-free code",
+      "4 optional polish items (recheck script, execution costs, pip one-liner, macOS-untested label) closed same-day in v2B.0.10",
+      "Readiness/cap 56 HOLDS; no submission or acceptance is claimed",
+    ],
+    links: [
+      { label: "Truth audit", href: `${PR}/INT_v3/ROUND_2026-07-16-P1B-v2B.0.9-EXACTPDF-e2f3301f-CLAUDESTACK-CONFIRM/P1B_v2B.0.9_truth_audit.md` },
+      { label: "Claude raw", href: `${PR}/INT_v3/ROUND_2026-07-16-P1B-v2B.0.9-EXACTPDF-e2f3301f-CLAUDESTACK-CONFIRM/API_P1B_claude.md` },
+      { label: "Grok raw", href: `${PR}/INT_v3/ROUND_2026-07-16-P1B-v2B.0.9-EXACTPDF-e2f3301f-CLAUDESTACK-CONFIRM/API_P1B_grok.md` },
+      { label: "Gemini raw", href: `${PR}/INT_v3/ROUND_2026-07-16-P1B-v2B.0.9-EXACTPDF-e2f3301f-CLAUDESTACK-CONFIRM/API_P1B_gemini.md` },
+    ],
+  },
+  {
+    id: "p3-v320-r9-exact-confirmation-board-2026-07-16",
+    dateISO: "2026-07-16",
+    kind: "closure-wave",
+    title: "P3 v3.2.0-r9 — exact confirmation board and truth audit (circularity finding confirmed genuinely-new-real)",
+    papers: ["P3"],
+    summary:
+      "The exact 16-page v3.2.0-r9 PDF (SHA-256 7526e685) was reviewed by Grok 4.3 direct API (ACCEPT — its first on P3, the machinery-first framing closed the venue-fit concern), Gemini 3.1 Pro direct API (MINOR REVISIONS), and a Claude Opus subagent (MAJOR REVISIONS); Codex remained absent, paused per CLAUDE.md directive N. Truth audit CONFIRMED the Claude leg's circularity finding as genuinely-new-real: the sub-0.1-arcsec core excess is by-construction seed self-recovery (single-member clusters, centroid = seed member's own coordinates), not independent association evidence — the prior r8 disposition of this finding class was too lenient. Closed same-day in v3.2.0-r10 with an integrity reframe at every claim site.",
+    keyTakeaways: [
+      "Board: Grok ACCEPT (its first on P3) / Gemini MINOR / Claude Opus subagent MAJOR; Codex absent per directive N",
+      "Truth audit CONFIRMED the Claude circularity finding as genuinely-new-real, correcting the r8 board's overly lenient disposition of the same finding class",
+      "Median match separation 0.00127 arcsec, target-to-member separation exactly zero — the paper's own numbers demonstrate by-construction seed self-recovery, not association",
+      "Closed same-day in v3.2.0-r10 with an integrity reframe at every claim site; readiness/cap 56 HOLDS",
+    ],
+    links: [
+      { label: "Truth audit", href: `${PR}/INT_v3/ROUND_2026-07-16-P3-v3.2.0-r9-EXACTPDF-7526e685-CLAUDESTACK-CONFIRM/P3_v3.2.0-r9_truth_audit.md` },
+      { label: "Claude raw", href: `${PR}/INT_v3/ROUND_2026-07-16-P3-v3.2.0-r9-EXACTPDF-7526e685-CLAUDESTACK-CONFIRM/API_P3_claude.md` },
+      { label: "Grok raw", href: `${PR}/INT_v3/ROUND_2026-07-16-P3-v3.2.0-r9-EXACTPDF-7526e685-CLAUDESTACK-CONFIRM/API_P3_grok.md` },
+      { label: "Gemini raw", href: `${PR}/INT_v3/ROUND_2026-07-16-P3-v3.2.0-r9-EXACTPDF-7526e685-CLAUDESTACK-CONFIRM/API_P3_gemini.md` },
+    ],
+  },
+  {
+    id: "p1a-v1a0-124-exact-confirmation-board-2026-07-16",
+    dateISO: "2026-07-16",
+    kind: "closure-wave",
+    title: "P1A v1A.0.124 — exact confirmation board and truth audit (CONVERGED to human gates)",
+    papers: ["P1A"],
+    summary:
+      "The exact 7-page v1A.0.124 PDF (SHA-256 5689a5f8) was reviewed by Grok 4.3 direct API (MINOR REVISIONS), Gemini 3.1 Pro direct API (MINOR REVISIONS), and a Claude Opus subagent (MAJOR REVISIONS); Codex remained absent, paused per CLAUDE.md directive N. Truth audit dispositioned all 13 findings to 0 genuinely-new-real — the central algebra was hand-verified a third time and every major is a disclosed re-flag or a Houston-gated venue item. P1A is CONVERGED to human gates: no editable science or presentation item remains open. No version change.",
+    keyTakeaways: [
+      "Board: Grok MINOR / Gemini MINOR / Claude Opus subagent MAJOR; Codex absent per directive N",
+      "13 findings truth-audited to 0 genuinely-new-real; algebra hand-verified a third time",
+      "P1A is CONVERGED to human gates — CQG significance disposition, license/deposit authorization, alternate-regulator robustness",
+      "No version change; readiness/cap 62 HOLDS; no submission or acceptance is claimed",
+    ],
+    links: [
+      { label: "Truth audit", href: `${PR}/INT_v3/ROUND_2026-07-16-P1A-v1A.0.124-EXACTPDF-5689a5f8-CLAUDESTACK-CONFIRM/P1A_v1A.0.124_truth_audit.md` },
+      { label: "Claude raw", href: `${PR}/INT_v3/ROUND_2026-07-16-P1A-v1A.0.124-EXACTPDF-5689a5f8-CLAUDESTACK-CONFIRM/API_P1A_claude.md` },
+      { label: "Grok raw", href: `${PR}/INT_v3/ROUND_2026-07-16-P1A-v1A.0.124-EXACTPDF-5689a5f8-CLAUDESTACK-CONFIRM/API_P1A_grok.md` },
+      { label: "Gemini raw", href: `${PR}/INT_v3/ROUND_2026-07-16-P1A-v1A.0.124-EXACTPDF-5689a5f8-CLAUDESTACK-CONFIRM/API_P1A_gemini.md` },
+    ],
+  },
+  {
     id: "p3-v320-r9-claude-leg-closure-2026-07-16",
     dateISO: "2026-07-16",
     timePT: "5:20 PM",
