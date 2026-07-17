@@ -1,4 +1,11 @@
-% P3 v3.2.0-r8 referee closure: focused DESI DR1 candidate-catalog paper.
+% P3 v3.2.0-r9 editorial closure: focused DESI DR1 candidate-catalog paper.
+% r9 lands the 4 genuinely-new-real editorial items from the INT_v3 CLAUDESTACK
+% truth audit (ROUND_2026-07-16-P3-v3.2.0-r8-EXACTPDF-b5f254f9): (1) abstract+intro
+% sentences foregrounding the reusable join/provenance/validation machinery as the
+% primary deliverable with the 181-row list as its first instance; (2) an early
+% version-tag key footnote explaining the r2/r5/r7/r8 frozen-component lineage
+% (no tag deleted); (3) tab:examples -0.000 redshifts pointed to full-precision
+% body values; (4) "BigAE autoencoder stream" -> "BigAE stream". Zero science change.
 % Canonical source for the ApJS submission track.
 % Compile: latexmk -pdf -interaction=nonstopmode -halt-on-error paper3_apjs.tex
 
@@ -14,8 +21,8 @@
 \setcitestyle{numbers,square,comma}
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v3.2.0-r8}
-\newcommand{\paperTimestamp}{2026-07-14 14:18 PT}
+\newcommand{\paperVersion}{v3.2.0-r9}
+\newcommand{\paperTimestamp}{July 16, 2026, 17:20 PDT}
 \newcommand{\releaseVersion}{v3.2.0-r2}
 \newcommand{\warnedAuxVersion}{v3.2.0-r5}
 \newcommand{\bundleVersion}{v3.2.0-r7}
@@ -35,7 +42,10 @@
 
 \begin{abstract}
 Anomaly searches become reusable catalogs only when rows trace public archive objects and the
-recovery from a declared input list is reconstructable.  We recover public identifiers for a
+recovery from a declared input list is reconstructable.  The primary deliverable of this work is
+that reusable, memory-bounded join and provenance/validation machinery itself; the 181-row DESI
+DR1 catalog reported here is its first instance, produced by applying the machinery to one frozen
+historical input list.  We recover public identifiers for a
 frozen historical DESI anomaly list whose legacy identifiers mixed public-looking values with
 internal hashes.  We document the available immutable clustering and BigAE lineage but do not
 reconstruct the unavailable production normalization or physical-feature sensitivity.  Starting
@@ -106,6 +116,12 @@ The contributions are:
 AAS-table, science-control, and coordinate-lineage relationships without relabeling their frozen component versions.
 \end{enumerate}
 
+The primary, reusable deliverable is this machinery itself --- the memory-bounded checkpointed
+join together with the declared quality waterfall, field-by-field validation, and checksum-bound
+provenance framework --- and it is designed to be re-run on any future frozen anomaly or
+coordinate list.  The 181-row DESI DR1 catalog reported below is the first instance produced by
+applying that framework to a single historical input list, not the endpoint of the contribution.
+
 Section~\ref{sec:data} defines the two inputs.  Section~\ref{sec:method} specifies the join,
 selection, and duplicate rules.  Section~\ref{sec:results} describes the released cohort without
 interpreting it as a population measurement.  Sections~\ref{sec:selection} and
@@ -124,12 +140,18 @@ pairs and union--find
 survey-membership string containing \texttt{desi\_dr1};
 190,005 are DESI-only clusters, eight also contain an SDSS member, and two also contain a LAMOST
 member.  Those historical cross-survey labels are retained only as provenance columns.  They do
-not enter the \releaseVersion{} recovery and no non-DESI table is included in the new release.
+not enter the \releaseVersion{} recovery and no non-DESI table is included in the new
+release.\footnote{Version-tag key: the internal release-candidate tags label distinct frozen
+components of one program and are retained for provenance rather than deleted or relabeled.
+\releaseVersion{} is the audited primary data release; \warnedAuxVersion{} the secondary
+warned-primary auxiliary table; \bundleVersion{} the checksum-bound submission bundle; and
+\paperVersion{} this manuscript.  A later stage does not relabel the earlier component versions it
+supersedes, so a single published identifier can carry several component tags.}
 
 The accompanying DESI anomaly table has 195,829 rows with an internal identifier, right
 ascension, declination, a scalar score $S$, the band producing the largest residual, and three
 residual summaries.  It is the frozen $S>5$ canonical-S selection from the DESI-trained BigAE
-autoencoder stream, published under CC BY 4.0 at immutable dataset commit
+stream, published under CC BY 4.0 at immutable dataset commit
 \href{https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog/tree/cdaaa03a72c69d86f011be128d93f261dc5b39a8}{\texttt{cdaaa03a...5b39a8}} \citep{Golden2026Data}.  The original
 training lineage preserved locally identifies a 496-to-128 BigAE evaluated as the five-seed mean
 reconstruction MSE.  That evidence does not recover the production absolute-scale normalization,
@@ -539,7 +561,10 @@ P3-DESI-000007 & 39636182677589446 & 64.05184 & -16.74091 & GALAXY & 0.006 & 6.7
 \enddata
 \tablecomments{R.A. and declination are ICRS degrees.  Type and $z$ are public Redrock metadata.
 $S$ is preserved historical anomaly-score metadata.  Values are rounded for display only; the
-full 181-row, 43-column table is supplied at submission as an AAS machine-readable digital asset.}
+full 181-row, 43-column table is supplied at submission as an AAS machine-readable digital asset.
+The two rows shown as $z=-0.000$ (\texttt{P3-DESI-000018}, \texttt{P3-DESI-000163}) are the small
+negative redshifts $z=-0.00033819$ and $z=-0.00033733$, reported to full precision in
+Section~\ref{sec:composition}; they are distinct from exact zero.}
 \end{deluxetable*}
 
 \section{Recovery Scope and Appropriate Use}\label{sec:selection}

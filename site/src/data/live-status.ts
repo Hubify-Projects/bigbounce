@@ -147,19 +147,19 @@ const historicalLiveStatus: LiveStatus = {
 // summary reflect the canonical six-paper board rather than an older review wave.
 export const liveStatus: LiveStatus = {
   ...historicalLiveStatus,
-  lastUpdatedISO: "2026-07-16T19:45:00Z",
-  lastUpdatedDisplay: "July 16, 2026 · 12:45 PM PT",
+  lastUpdatedISO: "2026-07-17T00:30:00Z",
+  lastUpdatedDisplay: "July 16, 2026 · 5:30 PM PT",
   headline:
-    "All six manuscripts remain in revision. P1B v2B.0.8 (package 0.1.6, 41/41 tests) closes the DP1B-24/25 receipt- and operator-validation defects; the exact v2B.0.8 direct-provider board found no new executable defect. Readiness holds 56 pending archive, correspondence metadata, and human review.",
+    "All six manuscripts remain in revision. A four-paper Claude-leg exact-PDF referee wave (P1A/P1B/P2/P3) truth-audited to 0 correctness errors program-wide: P1A closed in v1A.0.124, P1B closed in v2B.0.9 (package 0.1.7), P3 closed in v3.2.0-r9; P2 held at v1.7.122 with 0 genuinely-new-real findings and no bump. Readiness caps hold at 62/56/80/56 pending human review, license/deposit authorization, and archive/DOI gates.",
   summary:
-    "namaster-proof 0.1.6 passes 41/41 tests; v2B.0.8 makes receipt metadata comparison recursively JSON-type-strict and rejects malformed or non-finite exact-window operator output. The exact v2B.0.8 board (Grok/Gemini direct; Codex absent) found no new executable defect on truth audit; no readiness credit is inferred from verdict words.",
+    "Today's Claude Opus-tier subagent boards: P1A v1A.0.123 MAJOR (2M/4m) -> closed v1A.0.124 (torsion-lemma coefficients shown, Sec III.B scope softened, relation-to-prior-work consolidated). P1B v2B.0.8 MAJOR (2M/4m) -> closed v2B.0.9 + package 0.1.7 (REAL 39/41 standalone wheel-build test with skip-guarded monorepo-coupled tests, codemeta.json, completed JORS availability template). P2 v1.7.122 MAJOR (3M/6m) truth-audited to 0 genuinely-new-real, no bump. P3 v3.2.0-r8 MINOR (1M/7m) -> closed v3.2.0-r9 (4 bounded editorial items; Zenodo re-staging at r9 still open). No readiness credit inferred from verdict words alone.",
   papers: historicalLiveStatus.papers.map((paper) => {
     if (paper.slug === "paper-1b") {
       return {
         ...paper,
-        version: "v2B.0.8",
+        version: "v2B.0.9",
         pendingWork:
-          "v2B.0.8 hardens receipt and operator validation (41/41 package tests); its exact confirmation found no new executable defect. Persistent archive identifier, author-supplied correspondence metadata, and human review remain. Readiness holds 56.",
+          "A Claude-leg exact-PDF board on v2B.0.8 (MAJOR, 2M/4m) found no new executable defect; majors reduced to the tracked archive/release gate. v2B.0.9 + package 0.1.7 closes it with a REAL standalone wheel-build test (39/41 passing, 2 monorepo-coupled tests skip-guarded, verified both ways), codemeta.json, and a completed JORS availability template. Persistent archive identifier, author-supplied correspondence metadata, and human review remain; a PyPI token would let the loop publish 0.1.7 (Houston gate). Readiness holds 56.",
       };
     }
     if (paper.slug === "paper-4") {
@@ -173,17 +173,17 @@ export const liveStatus: LiveStatus = {
     if (paper.slug === "paper-1a") {
       return {
         ...paper,
-        version: "v1A.0.123",
+        version: "v1A.0.124",
         pendingWork:
-          "Exact source bundle and standalone proof pass, but deposit metadata intentionally fails closed until Houston authorizes the manuscript/source license. Then verify a reversible draft, DOI/archive publication, and human CQG review. Readiness holds 62.",
+          "A Claude-leg exact-PDF board on v1A.0.123 (MAJOR, 2M/4m) truth-audited to 0 correctness errors and 3 sub-sentence editorial items; v1A.0.124 closes them (torsion-lemma 4D contraction coefficients shown, Sec III.B relabeled with scope softening, relation-to-prior-work sentence consolidated). Deposit metadata intentionally fails closed until Houston authorizes the manuscript/source license. Then verify a reversible draft, DOI/archive publication, and human CQG review. Readiness holds 62.",
       };
     }
     if (paper.slug === "paper-3") {
       return {
         ...paper,
-        version: "v3.2.0-r8",
+        version: "v3.2.0-r9",
         pendingWork:
-          "Eight-asset exact-commit draft is remotely digest-verified. Resolve the explicit 1.82327 pt minor hbox warning in the next versioned edit; DOI/archive, arXiv/ApJS submission, and human review remain Houston-controlled. Readiness holds 56.",
+          "A Claude-leg exact-PDF board on r8 (MINOR, 1M/7m) truth-audited to 0 falsified and 4 bounded editorial items; v3.2.0-r9 closes them (machinery-as-primary-deliverable framing, version-tag lineage footnote, tab:examples full-precision note, BigAE-stream copy edit). Zenodo deposit re-staging at r9 is still open (today's staging covered r8 only). Resolve the explicit 1.82327 pt minor hbox warning in the next versioned edit; DOI/archive, arXiv/ApJS submission, and human review remain Houston-controlled. Readiness holds 56.",
       };
     }
     if (paper.slug === "paper-2") {
@@ -192,7 +192,7 @@ export const liveStatus: LiveStatus = {
         version: "v1.7.122",
         readiness: 80,
         pendingWork:
-          "Exact eight-asset draft is remotely digest-verified. Direct cubic transfer, survey-native SPHEREx covariance/likelihood, any model-specific torsion bound, DOI/archive, arXiv/PRD submission, and human review remain open. M45 cap holds 80.",
+          "A Claude-leg exact-PDF board on v1.7.122 (MAJOR, 3M/6m) truth-audited to 0 genuinely-new-real findings — all re-flag the paper's own disclosures or tracked gates; no version change. Direct cubic transfer, survey-native SPHEREx covariance/likelihood, any model-specific torsion bound, DOI/archive, arXiv/PRD submission, and human review remain open. Cap holds 80.",
       };
     }
     if (paper.slug === "paper-5") {
@@ -207,13 +207,15 @@ export const liveStatus: LiveStatus = {
     return paper;
   }),
   currentlyRunning: [
-    "P1B v2B.0.8 exact confirmation is truth-audited (no new executable defect); the archive/editorial gate is the next P1B action",
-    "P1B immutable archive identifier remains a real submission blocker",
+    "Four-paper Claude-leg exact-PDF wave complete: P1A v1A.0.124, P1B v2B.0.9 (package 0.1.7), and P3 v3.2.0-r9 closed same-day; P2 v1.7.122 held with 0 genuinely-new-real findings",
+    "Exact non-Anthropic confirmation reviews are next for v1A.0.124, v2B.0.9, and v3.2.0-r9",
+    "P1B immutable archive identifier remains a real submission blocker; a PyPI token would let the loop publish package 0.1.7",
+    "P3 Zenodo deposit needs re-staging at r9 (today's staging pass covered r8 only)",
     "P4 v1.0.263 and P5 v0.1.141 PDFs are built, retained, mirrored, and synchronized; P4 closes the v1.0.262 board's Appendix-B stability-value main-Results pointer finding; P5's v0.1.141 forward-leakage-injection closure is complete, exact v0.1.141 confirmation is next",
     "Exact non-Anthropic re-review and standing external release/provenance gates are next",
   ],
   cronStatus:
-    "P1B v2B.0.5-v2B.0.8 confirmations are truth-audited; receipt/operator validation is hardened in v2B.0.8 and readiness remains 56.",
+    "Four-paper Claude-leg wave (P1A/P1B/P2/P3) truth-audited to 0 correctness errors; P1A/P1B/P3 closed same-day (v1A.0.124/v2B.0.9/v3.2.0-r9), P2 held unchanged. Readiness caps hold at 62/56/80/56.",
   etaToCompletion:
-    "P1B v2B.0.8 next requires the archive and human gates. A defensible all-six submission date remains conditional on those gates and human decisions; journal acceptance is controlled by editors and referees.",
+    "P1A, P1B, and P3 next require exact confirmation reviews plus their archive and human gates; P1B additionally needs an immutable archive identifier and P3 needs Zenodo re-staging at r9. A defensible all-six submission date remains conditional on those gates and human decisions; journal acceptance is controlled by editors and referees.",
 };

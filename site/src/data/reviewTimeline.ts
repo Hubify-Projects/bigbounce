@@ -57,6 +57,140 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p3-v320-r9-claude-leg-closure-2026-07-16",
+    dateISO: "2026-07-16",
+    timePT: "5:20 PM",
+    kind: "closure-wave",
+    title: "P3 v3.2.0-r9 — Claude-leg board closure (4 bounded editorial items)",
+    papers: ["P3"],
+    summary:
+      "A Claude Opus-tier subagent exact-PDF board on r8 returned MINOR REVISIONS (1 MAJOR / 7 MINOR); truth audit found 0 falsified and 4 bounded editorial items, closed same-day in v3.2.0-r9: machinery-as-primary-deliverable framing (abstract + Sec 1), a version-tag lineage footnote, a tab:examples full-precision note for the two -0.000 redshifts, and a BigAE-stream copy edit. No science number changed. Readiness 56 holds; the Zenodo deposit re-staging done today covered r8 only — r9 still needs re-staging.",
+    keyTakeaways: [
+      "16 pp, PDF SHA-256 7526e6859cf4544f0b835f1f7b2d8bd990314c3879fc5ed9eae4e743f3274d36, MD5 bce975d38a1dedbc8a8b2cca53fe8b68, timestamp 2026-07-16 17:20 PT",
+      "directive-G PASS, 6 mirrors byte-identical, Convex row k576qbqx8pkjjjdkf1ecjgj2rn8aqvyb",
+      "4 editorial closures, 0 falsified, 0 science numbers changed",
+      "No readiness uplift: exact v3.2.0-r9 confirmation, Zenodo re-staging at r9, immutable archive/DOI, and human ApJS review remain open",
+    ],
+    links: [
+      { label: "P3 canonical status", href: `${GH}/project-context/SSOT/paper-3/status.md` },
+      { label: "r8 Claude-leg truth audit", href: `${PR}/INT_v3/ROUND_2026-07-16-P3-v3.2.0-r8-EXACTPDF-b5f254f9-CLAUDESTACK/P3_v3.2.0-r8_claude_truth_audit.md` },
+    ],
+  },
+  {
+    id: "p1b-v2b0-9-claude-leg-closure-2026-07-16",
+    dateISO: "2026-07-16",
+    timePT: "5:22 PM",
+    kind: "closure-wave",
+    title: "P1B v2B.0.9 / package 0.1.7 — Claude-leg board closure (archive/release gate)",
+    papers: ["P1B"],
+    summary:
+      "A Claude Opus-tier subagent exact-PDF board on v2B.0.8 returned MAJOR REVISIONS (2 MAJOR / 4 MINOR); truth audit found no new executable defect, with the majors reducing to the tracked archive/release gate. A REAL standalone wheel-build test found 39/41 passing (2 monorepo-coupled tests). v2B.0.9 + package 0.1.7 closes it with skipif guards (41 pass inside the monorepo, 39+2-skip standalone, verified both ways), a codemeta.json, and a completed JORS availability template (system requirements, macOS status, repo publication date); the paper now states the honest test contract. Readiness 56 holds.",
+    keyTakeaways: [
+      "6 pp (grew from 5), PDF SHA-256 e2f3301fe74ba2f64ba41d87ec3648a6e3980e8715562ab27440f80ae448bc68, MD5 6bb152af686d465414b46461773858d1, timestamp 2026-07-16 17:22 PT",
+      "directive-G PASS, 6 mirrors byte-identical, Convex row k576ektf6sxfpgwbv4t8e5pf018aqpb6",
+      "Real wheel-build test, not just a wording fix: 39/41 standalone with the 2 monorepo-coupled tests skip-guarded and verified both ways",
+      "No readiness uplift: persistent archive DOI, correspondence metadata, human software review, and exact v2B.0.9 confirmation remain open; a PyPI token would let the loop publish 0.1.7 (Houston gate)",
+    ],
+    links: [
+      { label: "P1B canonical status", href: `${GH}/project-context/SSOT/paper-1/status.md` },
+      { label: "v2B.0.8 Claude-leg truth audit", href: `${PR}/INT_v3/ROUND_2026-07-16-P1B-v2B.0.8-EXACTPDF-cf7ede29-CLAUDESTACK/P1B_v2B.0.8_claude_truth_audit.md` },
+    ],
+  },
+  {
+    id: "p1a-v1a0-124-claude-leg-closure-2026-07-16",
+    dateISO: "2026-07-16",
+    timePT: "5:22 PM",
+    kind: "closure-wave",
+    title: "P1A v1A.0.124 — Claude-leg board closure (3 editorial items)",
+    papers: ["P1A"],
+    summary:
+      "A Claude Opus-tier subagent exact-PDF board on v1A.0.123 returned MAJOR REVISIONS (2 MAJOR / 4 MINOR); truth audit found 0 correctness errors (algebra hand-verified) — the majors are disclosed re-flags/tracked gates. Closed same-day in v1A.0.124: the torsion-lemma 4D contraction coefficients are now shown (derived from the manuscript's own identities), Sec III.B is relabeled 'mean-field NJL diagnostic' with scope softening, and the relation-to-prior-work sentence is consolidated. Readiness cap 62 holds.",
+    keyTakeaways: [
+      "7 pp, PDF SHA-256 5689a5f8b4c6488b9fa1c4d2225d3c0211b830b028b0284299c00f912d0977aa, MD5 11172191d176dc8fc0651a1af682312d, timestamp 2026-07-16 17:22 PT",
+      "directive-G PASS, 8 mirrors byte-identical, Convex row k574pn7m3svd3ewtp2myyevw098apc66",
+      "0 correctness errors found; 3 sub-sentence editorial closures, no numbers changed",
+      "No readiness uplift: human CQG review, license/deposit authorization, alternate-regulator robustness, and exact v1A.0.124 confirmation remain open",
+    ],
+    links: [
+      { label: "P1A canonical status", href: `${GH}/project-context/SSOT/paper-1/status.md` },
+      { label: "v1A.0.123 Claude-leg truth audit", href: `${PR}/INT_v3/ROUND_2026-07-16-P1A-v1A.0.123-EXACTPDF-4c450a67-CLAUDESTACK/P1A_v1A.0.123_truth_audit.md` },
+    ],
+  },
+  {
+    id: "p3-v320-r8-claude-leg-board-2026-07-16",
+    dateISO: "2026-07-16",
+    timePT: "5:12 PM",
+    kind: "internal-cc",
+    title: "P3 v3.2.0-r8 — Claude-leg exact-PDF board",
+    papers: ["P3"],
+    summary:
+      "A Claude Opus-tier subagent reviewed the exact 16-page r8 artifact and returned MINOR REVISIONS (1 MAJOR / 7 MINOR). Truth audit dispositioned 0 falsified and 4 bounded editorial items, closed same-day in v3.2.0-r9.",
+    keyTakeaways: [
+      "Exact-PDF board bound to the committed r8 artifact, no OpenAI API and no Codex (paused per directive N)",
+      "1 MAJOR / 7 MINOR, all dispositioned: 0 falsified, 4 bounded editorial items closed in r9",
+    ],
+    links: [
+      { label: "Raw Claude report", href: `${PR}/INT_v3/ROUND_2026-07-16-P3-v3.2.0-r8-EXACTPDF-b5f254f9-CLAUDESTACK/API_P3_claude.md` },
+      { label: "Truth audit", href: `${PR}/INT_v3/ROUND_2026-07-16-P3-v3.2.0-r8-EXACTPDF-b5f254f9-CLAUDESTACK/P3_v3.2.0-r8_claude_truth_audit.md` },
+    ],
+  },
+  {
+    id: "p2-v17122-claude-leg-board-2026-07-16",
+    dateISO: "2026-07-16",
+    timePT: "5:08 PM",
+    kind: "internal-cc",
+    title: "P2 v1.7.122 — Claude-leg exact-PDF board (0 genuinely-new-real, no bump)",
+    papers: ["P2"],
+    summary:
+      "A Claude Opus-tier subagent reviewed the exact unchanged v1.7.122 artifact and returned MAJOR REVISIONS (3 MAJOR / 6 MINOR). Truth audit found 0 genuinely-new-real — every finding re-flags the paper's own disclosures or tracked gates (novelty framing is a venue opinion; the -305/64-vs--35/8 distinction is the paper's honest disclosure; surrogate covariance is a tracked gate) — and the referee hand-verified the -35/16 algebra. No version change, no bump. Cap 80 holds.",
+    keyTakeaways: [
+      "Exact-PDF board bound to the committed v1.7.122 artifact, no OpenAI API and no Codex (paused per directive N)",
+      "3 MAJOR / 6 MINOR, all dispositioned as re-flags of standing disclosures/tracked gates — 0 genuinely-new-real",
+      "Referee independently hand-verified the -35/16 contraction-phase algebra",
+      "No version bump; cap 80 holds (cubic transfer, SPHEREx covariance, torsion bound, archive/DOI, human PRD review remain)",
+    ],
+    links: [
+      { label: "Raw Claude report", href: `${PR}/INT_v3/ROUND_2026-07-16-P2-v1.7.122-EXACTPDF-4097bac5-CLAUDESTACK/API_P2_claude.md` },
+      { label: "Truth audit", href: `${PR}/INT_v3/ROUND_2026-07-16-P2-v1.7.122-EXACTPDF-4097bac5-CLAUDESTACK/P2_v1.7.122_claude_truth_audit.md` },
+    ],
+  },
+  {
+    id: "p1b-v2b0-8-claude-leg-board-2026-07-16",
+    dateISO: "2026-07-16",
+    timePT: "5:05 PM",
+    kind: "internal-cc",
+    title: "P1B v2B.0.8 — Claude-leg exact-PDF board",
+    papers: ["P1B"],
+    summary:
+      "A Claude Opus-tier subagent reviewed the exact v2B.0.8 artifact and returned MAJOR REVISIONS (2 MAJOR / 4 MINOR). Truth audit found no new executable defect; the majors reduce to the tracked archive/release gate. A REAL wheel-build test run as part of the closure found 39/41 tests passing standalone (2 monorepo-coupled tests), closed same-day in v2B.0.9 + package 0.1.7.",
+    keyTakeaways: [
+      "Exact-PDF board bound to the committed v2B.0.8 artifact, no OpenAI API and no Codex (paused per directive N)",
+      "2 MAJOR / 4 MINOR; no new executable defect, majors reduce to the tracked archive/release gate",
+    ],
+    links: [
+      { label: "Raw Claude report", href: `${PR}/INT_v3/ROUND_2026-07-16-P1B-v2B.0.8-EXACTPDF-cf7ede29-CLAUDESTACK/API_P1B_claude.md` },
+      { label: "Truth audit", href: `${PR}/INT_v3/ROUND_2026-07-16-P1B-v2B.0.8-EXACTPDF-cf7ede29-CLAUDESTACK/P1B_v2B.0.8_claude_truth_audit.md` },
+    ],
+  },
+  {
+    id: "p1a-v1a0123-claude-leg-board-2026-07-16",
+    dateISO: "2026-07-16",
+    timePT: "5:00 PM",
+    kind: "internal-cc",
+    title: "P1A v1A.0.123 — Claude-leg exact-PDF board",
+    papers: ["P1A"],
+    summary:
+      "A Claude Opus-tier subagent reviewed the exact seven-page v1A.0.123 artifact and returned MAJOR REVISIONS (2 MAJOR / 4 MINOR). Truth audit hand-verified the algebra and found 0 correctness errors — the majors are disclosed re-flags/tracked gates, plus 3 sub-sentence editorial items closed same-day in v1A.0.124.",
+    keyTakeaways: [
+      "Exact-PDF board bound to the committed v1A.0.123 artifact, no OpenAI API and no Codex (paused per directive N)",
+      "2 MAJOR / 4 MINOR; 0 correctness errors, algebra hand-verified",
+    ],
+    links: [
+      { label: "Raw Claude report", href: `${PR}/INT_v3/ROUND_2026-07-16-P1A-v1A.0.123-EXACTPDF-4c450a67-CLAUDESTACK/API_P1A_claude.md` },
+      { label: "Truth audit", href: `${PR}/INT_v3/ROUND_2026-07-16-P1A-v1A.0.123-EXACTPDF-4c450a67-CLAUDESTACK/P1A_v1A.0.123_truth_audit.md` },
+    ],
+  },
+  {
     id: "p5-v0-1-141-forward-leakage-injection-closure-2026-07-16",
     dateISO: "2026-07-16",
     timePT: "4:36 PM",
