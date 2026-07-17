@@ -37,8 +37,13 @@
 % and 500-realization campaign wall-times (Availability); lifts the local
 % pip-install one-liner into the Code-repository prose; macOS stays honestly
 % untested (no CI change).
-\newcommand{\paperVersion}{v2B.0.10}
-\newcommand{\paperTimestamp}{2026-07-16 18:00 PT}
+% v2B.0.11 (2026-07-16 18:40 PT — two one-sentence closures from the exact
+%   v2B.0.10 board truth audit (ROUND_2026-07-16-P1B-v2B.0.10-EXACTPDF-c7883afc):
+%   explicit pytest invocation command in Sec 7 QC; explicit non-affiliation
+%   sentence (independent downstream verification layer, not an official
+%   NaMaster release) in Sec 11. No number changed.)
+\newcommand{\paperVersion}{v2B.0.11}
+\newcommand{\paperTimestamp}{2026-07-16 18:40 PT}
 
 \title{\software: Exact pseudo-\(\Cl\) window inference and
 content-bound validation for reproducible spin-2 analyses}
@@ -221,7 +226,9 @@ latitude cuts and the \(10^{-10}\)-gated equivalence check is committed---so
 the \nolinkurl{examples/rebuild_workspace_check.py} script rebuilds the
 \([4,20,4,1025]\) workspace and re-verifies \(\max|\Delta|<10^{-10}\) whenever
 PyMaster is installed (only the last digits of the \(\sim10^{-18}\) value are
-platform-dependent).
+platform-dependent). The full suite runs with
+\texttt{python -m pytest packages/namaster-proof/tests} from the repository
+root (or \texttt{pytest} from within the installed package's test extra).
 
 \section{Worked Examples}
 
@@ -319,6 +326,8 @@ and examples are available at
 From a checkout of that repository the package installs locally with
 \texttt{python -m pip install ./packages/namaster-proof} (append
 \texttt{-e '.[test]'} from within the package directory for the test extra).
+\texttt{namaster-proof} is an independent downstream verification layer and is
+not an official release of, or affiliated with, the NaMaster project.
 Citation metadata are supplied in \texttt{CITATION.cff} and machine-readable
 metadata in \texttt{codemeta.json}. The package directory was first published
 to the repository on 2026-07-16.
