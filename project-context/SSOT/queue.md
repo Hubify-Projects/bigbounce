@@ -997,3 +997,4 @@ _Six parallel peer reviews on disk at `project-context/peer-reviews/autonomous-2
   - P5 K=13 gives `+0.00145442`; NSIDE=2/4/8 and 3-D nearest-VoidFinder cluster-robust intervals all span zero. Program-interaction strata are sparse and not tightly bounded, with no robust interaction evidence.
   - Exact PDFs: P4 v1.0.258, 25 pp, SHA-256 `e9b69665…be061`, MD5 `412d3036`; P5 v0.1.138-2026-07-16, 41 pp, SHA-256 `3c47ccf7…baaf0`, MD5 `83566c8d`. Convex rows `k575wenst372vbpg4xcwzkbcc58ams1p` / `k578gs6qddzfac7m4y6pmq6aq58an8tr`.
   - Exact non-Anthropic re-review, external release/provenance, and human editorial gates remain open. No acceptance or readiness uplift is claimed.
+- 2026-07-16 18:54 PT — Vercel Git integration outage + CLI static-deploy recovery recorded; see memory bigbounce-vercel-deploy-fix-2026-07-16 and ops/RUNBOOK.md
