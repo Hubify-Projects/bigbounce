@@ -55,7 +55,24 @@
 \newcommand{\HCRI}{\textsc{HC-RI}}
 \newcommand{\FSC}{\textsc{FS-C}}
 \newcommand{\MAGF}{\textsc{MASTER-AGF}}
-\newcommand{\paperVersion}{v1.0.263}
+\newcommand{\paperVersion}{v1.0.264}
+% v1.0.264 (2026-07-17 13:56 PDT — integrates the NEW real joint block-bootstrap
+%   estimator covariance (G3) per project-context/SSOT/paper-4/
+%   COMPUTE_CAMPAIGN_2026-07-17.md. Adds Sec. Joint Estimator Covariance
+%   (Table joint_cov): shared NSIDE=8 superpixel bootstrap, N=2000, seed 42, on
+%   the primary HC sample (949,584; immutable catalog snapshot cc326f74) giving
+%   the 3x3 correlation of real-space dipole / WLS dipole / monopole. Result:
+%   monopole is the only |z|>3 mode (z=-6.57, more conservative than the
+%   per-pixel binomial -9.47sigma) and is nearly uncorrelated with both dipole
+%   estimators (rho=-0.037 real-space, -0.093 WLS); dipoles non-significant
+%   (z=+2.21, +1.36). Every number verbatim from artifact
+%   outputs/canonical_provenance/g3_joint_estimator_covariance.json. NARROWS
+%   (does not close) the 'no joint covariance' gate: the 3x3 NaMaster-independent
+%   block is now computed; a full joint likelihood + the MASTER-decoupled l=1 leg
+%   remain open. Caveat prose swept at abstract L774, headline-summary L888,
+%   forward-model L1183, Open-Follow-up L1386, Conclusions L1428, appendix L1464.
+%   Does NOT identify the monopole mechanism (G4, still open). Directive-G:
+%   recompile 0 undef + mirror all served paths + Convex paperVersions:bump.)
 % v1.0.263 (2026-07-16 16:24 PDT — closes the single genuinely-new-real item
 %   from the exact v1.0.262 board truth audit (C3): the App-B quarantine
 %   stability value (z=+0.48 excluded vs +0.52 baseline, c11b 10^4-perm) is
@@ -745,7 +762,7 @@
 %   the established two-step provenance gate.)
 % v1.0.171->172 (2026-06-10 — EXT1 closure wave restamp: recompile + mirror bundle;
 %   Data Availability hash pinned to the v1.0.172 stamp commit per provenance gate.)
-\newcommand{\paperTimestamp}{July 16, 2026, 16:24 PDT}
+\newcommand{\paperTimestamp}{July 17, 2026, 13:56 PDT}
 % v1.0.217->218 (2026-07-05 — DATA-UNLOCK: edge-on-ISOLATED argmax tie-break coherence
 %   now COMPUTED (was pod/data-lab-deferred). Join catalog_production (class_eq/RA/Dec) to
 %   committed spiral_morphology_dr8 b/a on dr8_id; edge-on (b/a<0.30) borderline population
@@ -771,7 +788,7 @@ and an 8.5-Million-Galaxy Catalog}
 \date{\paperTimestamp; Version \paperVersion}
 
 \begin{abstract}
-We release observed chirality labels for $8{,}474{,}531$ DESI Legacy DR8 galaxies and test one primary high-confidence observed-label dipole. Starting from 949,584 high-confidence spirals, we exclude 59,515 rows marked \texttt{raw\_flip\_qc\_unsafe}, leaving 890,069 quality-controlled rows; 887,472 enter the supported-pixel fit and fixed-occupancy label-randomization null. The result is consistent with zero ($z_{\rm mom}=+0.635$, one-sided rank $p=0.23768$). The content-addressed release includes the science catalog, unsafe-row quarantine, retained primary-null array, schema, checksums, and reproducer. WLS and harmonic analyses use different supports or nulls and are retained only as systematics diagnostics. Spatial transfer calibration, joint covariance, an independent matched-footprint estimator, a complete systematics-metadata sidecar, and a DOI-backed archive remain open. The parity-even morphology observable supports no primordial-parity bound.
+We release observed chirality labels for $8{,}474{,}531$ DESI Legacy DR8 galaxies and test one primary high-confidence observed-label dipole. Starting from 949,584 high-confidence spirals, we exclude 59,515 rows marked \texttt{raw\_flip\_qc\_unsafe}, leaving 890,069 quality-controlled rows; 887,472 enter the supported-pixel fit and fixed-occupancy label-randomization null. The result is consistent with zero ($z_{\rm mom}=+0.635$, one-sided rank $p=0.23768$). The content-addressed release includes the science catalog, unsafe-row quarantine, retained primary-null array, schema, checksums, and reproducer. WLS and harmonic analyses use different supports or nulls and are retained only as systematics diagnostics. A shared block-bootstrap covariance of the three primary estimators shows the monopole to be a statistically distinct mode nearly uncorrelated with the dipole; spatial transfer calibration, a full joint likelihood, an independent matched-footprint estimator, a complete systematics-metadata sidecar, and a DOI-backed archive remain open. The parity-even morphology observable supports no primordial-parity bound.
 \end{abstract}
 
 \keywords{galaxies: spiral, galaxies: statistics, methods: data analysis, cosmology: observations, large-scale structure of universe}
@@ -885,7 +902,7 @@ To make the mapping from estimator to scientific claim explicit, Table~\ref{tab:
 \end{center}
 \end{table*}
 
-Table~\ref{tab:headline_summary} consolidates the distinct estimators and nulls. Their statistics are not commensurable, and no joint likelihood is defined. The scientific verdict rests solely on the HC observed-label real-space row; WLS and all harmonic rows remain systematics diagnostics. The missing joint covariance remains an open methodological gate.
+Table~\ref{tab:headline_summary} consolidates the distinct estimators and nulls. Because these rows use different samples, supports, and null procedures, their $\sigma$ values are not converted through a common Gaussian mapping. A shared block-bootstrap covariance of the three NaMaster-independent estimators (real-space dipole, WLS dipole, monopole), evaluated on one common resampling of the primary HC sample, is now computed (Sec.~\ref{sec:joint_cov}, Table~\ref{tab:joint_cov}; artifact \artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/g3\_joint\_estimator\_covariance.json}) and shows the monopole to be a statistically distinct mode nearly uncorrelated with either dipole estimator; a full joint likelihood across all channels and the MASTER-decoupled $\ell=1$ leg remain open. The scientific verdict rests solely on the HC observed-label real-space row; WLS and all harmonic rows remain systematics diagnostics.
 
 \begin{table*}[t]
 \caption{\label{tab:headline_summary}Primary-estimator summary. $N_{\rm catalog\,spiral}$ is the underlying Catalog~C spiral count (CW+CCW only). $N_{\rm map\,weighted} = \sum_{p\in\rm mask} W_p$ where $W_p = N_{\rm all}^{(p)}$ is the total classified-galaxy count in pixel~$p$ (CW+CCW+NS), used as a survey-depth weight in the NaMaster field object. $N_{\rm map\,weighted}$ exceeds $N_{\rm catalog\,spiral}$ because $W_p$ includes non-spiral galaxies (${\sim}62\%$ of the catalog); each galaxy is counted once. Row~(iv) applies a $C^2$, $2^\circ$ apodization to the same exact 24,087-pixel \FSC{} base mask as row~(iii), with the same 500-draw fixed-occupancy null. \emph{The $\sigma$ values in different rows are computed against different null procedures (column ``Null'') and are not directly comparable across rows as detection significances.} Row~(v) reports the post-look-elsewhere-corrected significance; the raw direct-MC value is $p_{\rm LEE}=1/10001; 95\% upper limit \simeq3.0\times10^{-4}$ against the random-label max-statistic null, which \emph{already incorporates} the look-elsewhere scan and is the principled directional look-elsewhere control (Appendix~C); the rejection is systematics-attributed. Row~(vii) uses the HC-broad subsample ($p_{\rm eq}\!>\!0.6$; Sec.~\ref{sec:sensitivity}). A ``---'' in $N_{\rm map\,weighted}$ marks rows where the NaMaster weight construction is not invoked.}
@@ -1180,7 +1197,7 @@ The exact-support binary and apodized diagnostics give $z_{\rm mom}=+6.923$ and 
 
 \emph{Support correction.} The historical $+3.80\sigma$ density-null and WLS/block-bootstrap numbers summarized in older audit language below were generated on broader latitude-cut supports, not \FSC{}. They are excluded from the support-consistent synthesis and provide no \FSC{} or physical constraint; Appendix~D records the exact discrepancy.
 
-\emph{Quantitative forward model and cross-estimator stress test.} The imaging+DR8-morphology forward model reproduces 53.0\% of the full-sample $\ell=1$ amplitude by scalar ratio, while direct vector subtraction leaves 62.3\%; these definitions are not interchangeable. The residual amplitude is $6.95\times10^{-3}$ in $A_p$. Deterministic map injections change the HC fitted amplitude from $0.4597\%$ to $0.6710\%$ for the full template, $0.5533\%$ for the scalar remainder, and $0.5694\%$ for the vector remainder. Thus the residual is not automatically irrelevant, but these shared-catalog injections neither identify its origin nor supply the missing joint covariance, which remains open.
+\emph{Quantitative forward model and cross-estimator stress test.} The imaging+DR8-morphology forward model reproduces 53.0\% of the full-sample $\ell=1$ amplitude by scalar ratio, while direct vector subtraction leaves 62.3\%; these definitions are not interchangeable. The residual amplitude is $6.95\times10^{-3}$ in $A_p$. Deterministic map injections change the HC fitted amplitude from $0.4597\%$ to $0.6710\%$ for the full template, $0.5533\%$ for the scalar remainder, and $0.5694\%$ for the vector remainder. Thus the residual is not automatically irrelevant, but these shared-catalog injections do not identify its origin. The shared-resample covariance of the three primary estimators is computed separately (Sec.~\ref{sec:joint_cov}, Table~\ref{tab:joint_cov}); a full joint likelihood across all channels remains open.
 
 \begin{table*}[tbp]
 \caption{Support audit of diagnostics associated with the exact-support \FSC{} low-$\ell$ residual. Only rows explicitly bound to the persisted base mask enter the synthesis.\label{tab:eightanchor_summary}}
@@ -1201,6 +1218,33 @@ The exact-support binary and apodized diagnostics give $z_{\rm mom}=+6.923$ and 
 \end{tabular}
 }
 \end{table*}
+
+\subsection{Joint Estimator Covariance}
+\label{sec:joint_cov}
+
+The estimators above are reported against separate, non-interchangeable nulls; a reviewer gate asked whether they instead share a single sampling covariance, so that their correlation structure can be read directly rather than inferred across heterogeneous supports. We compute that object by evaluating the paper's committed estimators on one shared block bootstrap. On the primary high-confidence spiral sample ($N=949{,}584$; \texttt{class\_eq}$\in\{$\CW{}, \CCW{}$\}$ and $p_{\rm eq}>0.6$; immutable catalog snapshot \texttt{cc326f74}) under the canonical $|b_{\rm gal}|>15^\circ$ mask, we draw $N_{\rm boot}=2{,}000$ resamples over \nside{}$=8$ HEALPix superpixels (the same block-bootstrap unit as \artifact{pipelines/p2\_chirality/scripts/joint\_nuisance\_bootstrap\_sigma.py}; \nside{}$=64$ data map, seed 42, all 2,000 resamples valid) and recompute, on each resample, the uniform-pixel-weight real-space dipole amplitude, the nuisance-marginalized WLS dipole amplitude, and the global CW-fraction monopole $f_{\rm CW}-\tfrac12$. Because the three estimators are evaluated on the \emph{same} resamples, their joint sampling covariance and correlation are defined directly (artifact \artifact{pipelines/p2\_chirality/outputs/canonical\_provenance/g3\_joint\_estimator\_covariance.json}).
+
+Table~\ref{tab:joint_cov} reports the resulting $3\times3$ block-bootstrap correlation matrix and the per-estimator significance $z=\hat\theta/\sigma_{\rm boot}$ of each full-sample value against its own bootstrap spread. Two features matter. First, the monopole is the only $|z|>3$ mode ($z=-6.57$; consistent with, but appropriately more conservative than, the per-pixel-independent binomial $-9.47\sigmaunit$ of Sec.~\ref{sec:cw_frac}, because the block bootstrap propagates spatial coherence), while both dipole amplitudes are non-significant ($z=+2.21$ real-space, $+1.36$ WLS), consistent with the primary null. Second, the monopole is nearly uncorrelated with either dipole estimator ($\rho=-0.037$ with the real-space dipole, $\rho=-0.093$ with the WLS dipole), whereas the two dipole amplitudes are mutually correlated ($\rho=+0.277$). Within one shared resampling the monopole and the dipole estimators therefore move essentially independently: the joint covariance quantitatively supports treating the large monopole deviation as a statistically \emph{distinct} mode rather than as a contamination channel of the primary dipole null. A harmonic $\ell=1$ pseudo-power proxy (mask-coupled \texttt{anafast} $C_1$) carried through the same bootstrap correlates at $\rho=+0.846$ with the real-space dipole, confirming that both capture the same $\ell=1$ content (a validity check on the harmonic channel); the MASTER-decoupled $\ell=1$ leg (mode-coupling-matrix inverse, which requires NaMaster) is a pod-bound refinement and is not included here. This block establishes the joint sampling covariance of the three computed estimators; it does not identify the monopole's causal mechanism, which remains a separate open gate (Sec.~\ref{sec:cw_frac}, Sec.~\ref{sec:conclusions}).
+
+\begin{table}[tbp]
+\caption{\label{tab:joint_cov}Joint block-bootstrap correlation of the three NaMaster-independent estimators, measured on one shared \nside{}$=8$ superpixel bootstrap ($N_{\rm boot}=2{,}000$ resamples, all valid; seed 42; primary HC sample $N=949{,}584$; artifact \texttt{g3\_joint\_estimator\_covariance.json}). Off-diagonal entries are Pearson correlations across the shared resamples. $\sigma_{\rm boot}$ is the per-estimator bootstrap standard deviation and $z$ is the full-sample value over $\sigma_{\rm boot}$. The monopole is the only $|z|>3$ mode and is nearly uncorrelated with both dipole estimators.}
+\begin{center}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lccc}
+\hline\hline
+ & real-space dip. & WLS dip. & monopole \\
+\hline
+real-space dip. & $+1.000$ & $+0.277$ & $-0.037$ \\
+WLS dip. & $+0.277$ & $+1.000$ & $-0.093$ \\
+monopole & $-0.037$ & $-0.093$ & $+1.000$ \\
+\hline
+full value & $+0.004386$ & $+0.004669$ & $-0.003949$ \\
+$\sigma_{\rm boot}$ & $0.001987$ & $0.003436$ & $0.000601$ \\
+$z=\hat\theta/\sigma_{\rm boot}$ & $+2.21$ & $+1.36$ & $-6.57$ \\
+\hline\hline
+\end{tabular}}
+\end{center}
+\end{table}
 
 \subsection{Signal-Hunt Diagnostics}
 \label{sec:signal_hunt}
@@ -1383,7 +1427,7 @@ A future physical calibration would require an object-level held-out human-label
 
 \subsection{Open Follow-up and Future Directions}
 
-Four scientific gates remain open: a physical morphology transfer function, a matched-footprint independent-estimator comparison, a joint real-space/harmonic/nuisance covariance likelihood, and independent external preregistration or blinding of the primary analysis. The catalog payload is public and commit-pinned; a DOI-backed paper/source archive remains a separate submission gate. The HC real-space estimator is the sole primary result; it is empirically less exposed to the measured harmonic leakage but does not mathematically bypass that channel. The WLS and harmonic analyses remain diagnostics.
+A shared block-bootstrap covariance of the three primary estimators (real-space dipole, WLS dipole, monopole) is now computed on one common resampling (Sec.~\ref{sec:joint_cov}), narrowing the previously-open joint-covariance gate: it shows the monopole is a statistically distinct mode nearly uncorrelated with either dipole estimator. Four scientific gates remain open: a physical morphology transfer function, a matched-footprint independent-estimator comparison, a full joint real-space/harmonic/nuisance likelihood (including the pod-bound MASTER-decoupled $\ell=1$ leg beyond the computed $3\times3$ block), and independent external preregistration or blinding of the primary analysis. The catalog payload is public and commit-pinned; a DOI-backed paper/source archive remains a separate submission gate. The HC real-space estimator is the sole primary result; it is empirically less exposed to the measured harmonic leakage but does not mathematically bypass that channel. The WLS and harmonic analyses remain diagnostics.
 
 % ============================================================
 \section{Conclusions}
@@ -1425,7 +1469,7 @@ The exact single-mode NaMaster execution uses the persisted 24,087-pixel \FSC{} 
 Our raw (Catalog~A) analysis produces a $2.31\sigmaunit$ real-space dipole and a $+6.48\sigmaunit$ pre-MASTER pseudo-$C_\ell$ from a classifier CW excess of only $0.79\%$, modulated by non-uniform survey coverage. Equivariant post-processing plus the explicit unsafe-row quarantine gives the strict primary real-space null $z_{\rm mom}=+0.635$ ($p=0.23768$). The exact-support harmonic residual remains systematics-attributed. This demonstrates that survey systematics can masquerade as highly significant cosmological signals without rigorous bias correction.
 
 \paragraph{Finite injection pilot and unresolved calibration.}
-For the HC estimator, the Stage-B 20-axis pilot gives score-pass counts $[1,16,16,20,20]/20$ at $A=A_p=[0.5,0.75,1.0,1.5,2.0]\%$. A separate 100-injection pilot gives the descriptive fractions in Table~\ref{tab:injection_recovery}. These finite, deterministic-axis experiments do not define calibrated 50\% or 95\% recovery thresholds, confidence limits, or physical bounds. Calibration across sky geometry, classifier transfer, and joint nuisance covariance remains open. The catalog remains a public CC-BY-4.0 community resource.
+For the HC estimator, the Stage-B 20-axis pilot gives score-pass counts $[1,16,16,20,20]/20$ at $A=A_p=[0.5,0.75,1.0,1.5,2.0]\%$. A separate 100-injection pilot gives the descriptive fractions in Table~\ref{tab:injection_recovery}. These finite, deterministic-axis experiments do not define calibrated 50\% or 95\% recovery thresholds, confidence limits, or physical bounds. A shared block-bootstrap covariance of the three primary estimators is now computed (Sec.~\ref{sec:joint_cov}) and shows the monopole is a distinct, nearly-uncorrelated mode; calibration across sky geometry, classifier transfer, and a full joint nuisance likelihood remains open. The catalog remains a public CC-BY-4.0 community resource.
 
 % ============================================================
 \appendix
@@ -1461,7 +1505,7 @@ Footprint & $W_p\!=\!N_{\rm spiral}$, $C^2$ $2^\circ$ & $0.420$ \\
 \end{table}
 
 \paragraph{\MAGF{} declaration and depth-stratification audit.}
-Historical \MAGF{} weighted-footprint calculations use a different support and weighting convention from the persisted \FSC{} mask. They are retained only as explicitly different-support provenance and do not enter the exact-support synthesis. The sole primary result is the release-safe HC real-space null; WLS remains diagnostic and the required joint covariance remains open.
+Historical \MAGF{} weighted-footprint calculations use a different support and weighting convention from the persisted \FSC{} mask. They are retained only as explicitly different-support provenance and do not enter the exact-support synthesis. The sole primary result is the release-safe HC real-space null; WLS remains diagnostic. A shared block-bootstrap covariance of the three primary estimators is now computed (Sec.~\ref{sec:joint_cov}, Table~\ref{tab:joint_cov}), showing the monopole is a statistically distinct, nearly-uncorrelated mode; a full joint likelihood (including the pod-bound MASTER-decoupled $\ell=1$ leg) remains open.
 
 \section{Classifier Architecture Details}
 \label{sec:app_classifier}

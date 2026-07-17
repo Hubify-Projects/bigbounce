@@ -165,9 +165,9 @@ export const liveStatus: LiveStatus = {
     if (paper.slug === "paper-4") {
       return {
         ...paper,
-        version: "v1.0.263",
+        version: "v1.0.264",
         pendingWork:
-          "The exact v1.0.262 board (Grok MINOR / Gemini MINOR / Claude Opus subagent MAJOR, 18 findings -> 6 already-tracked, 3 disclosed re-flags, 7 opinions, 1 falsified, 1 genuinely-new-real) is truth-audited. v1.0.263 closes the one genuinely-new-real item with a single main-Results sentence surfacing the Appendix-B quarantine stability value (z=+0.48 excluded vs +0.52 baseline, c11b 10^4-permutation) via an Appendix pointer; no number changed. Training independence, spatial transfer/covariance, complete metadata, archive/DOI, exact v1.0.263 non-Anthropic re-review, and human review remain. Readiness holds 80.",
+          "Real compute closure (Jul 17): new Sec 4.5 'Joint Estimator Covariance' + Table 9 present a COMPUTED G3 result — N=2000 shared block bootstrap over NSIDE=8 superpixels on the canonical 949,584-row HC sample (immutable HF snapshot cc326f74) gives correlations real-space<->WLS +0.277, real-space<->monopole -0.037, WLS<->monopole -0.093 (z=+2.21/+1.36/-6.57); the monopole is the ONLY |z|>3 mode and is nearly uncorrelated with both dipole estimators, quantitatively supporting separate-systematic treatment. Six caveat sites narrowed from 'no joint covariance' to 'computed 3x3 block; MASTER-decoupled leg + full joint likelihood remain open.' No science number changed. Training independence (G1 pipeline smoke test + manifest-retained retrain, A4000 pod), the MASTER-decoupled/full-likelihood covariance legs, the G4 monopole-mechanism injection (H200, after G1), complete metadata, archive/DOI, exact v1.0.264 non-Anthropic re-review, and human review remain. Readiness holds 80.",
       };
     }
     if (paper.slug === "paper-1a") {
@@ -192,7 +192,7 @@ export const liveStatus: LiveStatus = {
         version: "v1.7.122",
         readiness: 80,
         pendingWork:
-          "A Claude-leg exact-PDF board on v1.7.122 (MAJOR, 3M/6m) truth-audited to 0 genuinely-new-real findings — all re-flag the paper's own disclosures or tracked gates; no version change. Direct cubic transfer, survey-native SPHEREx covariance/likelihood, any model-specific torsion bound, DOI/archive, arXiv/PRD submission, and human review remain open. Cap holds 80.",
+          "Compute campaign phase-1 (Jul 17, no version change, no verdict): committed research/cubic_bounce_transmission/g1_gradient_transmission_scheme.py + results JSON — exact sympy re-derivation of the four cubic vertices (regression anchor -35/16 squeezed, -255/128 equilateral), an explicit LQC quasi-dust bounce background, and a COMPUTED demonstration the model-agnostic gradient-transmission coefficient has no scheme-independent limit (c ~ 1/dcut over 4 decades) — vindicating the paper's conditional framing of DP2-13. The directive-L channel-native Fisher is already implemented (c15); the real external SPHEREx per-triangle covariance is confirmed NOT publicly released (externally blocked). A prior Claude-leg exact-PDF board on v1.7.122 (MAJOR, 3M/6m) truth-audited to 0 genuinely-new-real findings — all re-flag the paper's own disclosures or tracked gates. A direct dressed-metric cubic transfer derivation, connected-NG covariance robustness, a model-specific torsion bound script, DOI/archive, arXiv/PRD submission, and human review remain open. Cap holds 80.",
       };
     }
     if (paper.slug === "paper-5") {
@@ -211,7 +211,7 @@ export const liveStatus: LiveStatus = {
     "Exact non-Anthropic confirmation reviews are next for v2B.0.10 and v3.2.0-r10",
     "P1B immutable archive identifier remains a real submission blocker; a PyPI token would let the loop publish package 0.1.7",
     "P3 Zenodo deposit needs re-staging at r10 (r8/r9 staging does not cover it)",
-    "P4 v1.0.263 and P5 v0.1.141 PDFs are built, retained, mirrored, and synchronized; P4 closes the v1.0.262 board's Appendix-B stability-value main-Results pointer finding; P5's v0.1.141 forward-leakage-injection closure is complete, exact v0.1.141 confirmation is next",
+    "P4 v1.0.264 and P5 v0.1.141 PDFs are built, retained, mirrored, and synchronized; P4 computes the G3 joint estimator covariance (Sec 4.5, Table 9); P5's v0.1.141 forward-leakage-injection closure is complete, exact v0.1.141 confirmation is next",
     "Exact non-Anthropic re-review and standing external release/provenance gates are next",
   ],
   cronStatus:

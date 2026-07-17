@@ -57,6 +57,48 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p4-v1-0-264-g3-joint-covariance-2026-07-17",
+    dateISO: "2026-07-17",
+    timePT: "1:56 PM",
+    kind: "closure-wave",
+    title: "P4 v1.0.264 — G3 joint estimator covariance COMPUTED (real compute, gate narrowed)",
+    papers: ["P4"],
+    summary:
+      "New Sec 4.5 'Joint Estimator Covariance' + Table 9 present the completed G3 computation: N=2000 shared block bootstrap over NSIDE=8 superpixels on the canonical 949,584-row HC sample from immutable HF snapshot cc326f74. Correlations real-space<->WLS +0.277, real-space<->monopole -0.037, WLS<->monopole -0.093; z-values +2.21 / +1.36 / -6.57 -- the monopole is the ONLY |z|>3 mode and is nearly uncorrelated with both dipole estimators, quantitatively supporting separate-systematic treatment. Six caveat sites are honestly narrowed from 'no joint covariance' to 'computed 3x3 block; MASTER-decoupled leg + full joint likelihood remain open.' No science number changed; readiness cap 80 HOLDS pending exact v1.0.264 confirmation, G1 training realization, and G4 monopole-mechanism injection.",
+    keyTakeaways: [
+      "Real compute: N=2000 shared block bootstrap over NSIDE=8 superpixels, canonical 949,584-row HC sample, immutable HF snapshot cc326f74",
+      "Monopole is the ONLY |z|>3 mode (z=-6.57) and is nearly uncorrelated with both dipole estimators (real-space z=+2.21, WLS z=+1.36)",
+      "Six caveat sites narrowed from 'no joint covariance' to 'computed 3x3 block; MASTER-decoupled leg + full joint likelihood remain open'",
+      "v1.0.264: 27 pp, MD5 e6b4749337ecaccca9bf499ce7af093a, Convex row k57cxmn40wht2026vdpe1ta4w98apv8g, directive-G PASS 16 mirrors",
+    ],
+    links: [
+      { label: "G3 joint estimator covariance script", href: `${GH}/pipelines/p2_chirality/scripts/g3_joint_estimator_covariance.py` },
+      { label: "G3 provenance JSON", href: `${GH}/pipelines/p2_chirality/outputs/canonical_provenance/g3_joint_estimator_covariance.json` },
+      { label: "P4 canonical status", href: `${GH}/project-context/SSOT/paper-4/status.md` },
+    ],
+  },
+  {
+    id: "p2-compute-campaign-phase1-2026-07-17",
+    dateISO: "2026-07-17",
+    kind: "internal-cc",
+    title: "P2 compute campaign phase-1 — scheme-dependence computed; Fisher gate rescoped; SPHEREx Cov_B externally blocked (no bump)",
+    papers: ["P2"],
+    summary:
+      "Committed research/cubic_bounce_transmission/g1_gradient_transmission_scheme.py + results JSON: an exact sympy re-derivation of the four cubic vertices (regression anchor -35/16 squeezed, -255/128 equilateral), an explicit LQC quasi-dust bounce background, and a COMPUTED demonstration that the model-agnostic gradient-transmission coefficient has no scheme-independent limit (c ~ 1/dcut over 4 decades) -- vindicating the paper's conditional framing of DP2-13. Decisive scoping outcomes: the directive-L channel-native Fisher is already implemented (c15), and the real external SPHEREx per-triangle covariance is confirmed NOT publicly released (externally blocked). No version bump and no verdict is claimed; v1.7.122 stands and cap 80 HOLDS.",
+    keyTakeaways: [
+      "Exact sympy re-derivation of the four cubic vertices reproduces the regression anchor: -35/16 squeezed, -255/128 equilateral",
+      "COMPUTED: the model-agnostic gradient-transmission coefficient has no scheme-independent limit (c ~ 1/dcut over 4 decades) across an explicit LQC quasi-dust bounce background -- vindicates DP2-13's conditional framing rather than resolving it away",
+      "Decisive scoping: directive-L channel-native Fisher already implemented (c15); real external SPHEREx per-triangle covariance confirmed NOT publicly released (externally blocked, not an open engineering task)",
+      "No science number changed, no version bump, no verdict claimed -- this is a compute-campaign gap-mining wave, not a review round",
+    ],
+    links: [
+      { label: "G1 gradient-transmission scheme script", href: `${GH}/research/cubic_bounce_transmission/g1_gradient_transmission_scheme.py` },
+      { label: "P2 compute campaign notes", href: `${GH}/project-context/SSOT/paper-2/COMPUTE_CAMPAIGN_2026-07-17.md` },
+      { label: "P4 compute campaign notes", href: `${GH}/project-context/SSOT/paper-4/COMPUTE_CAMPAIGN_2026-07-17.md` },
+      { label: "P2 canonical status", href: `${GH}/project-context/SSOT/paper-2/status.md` },
+    ],
+  },
+  {
     id: "p1b-v2b0-10-board-v2b0-11-closure-2026-07-16",
     dateISO: "2026-07-16",
     timePT: "6:40 PM",
