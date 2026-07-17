@@ -23,8 +23,14 @@
 
 \newcommand{\software}{\texttt{namaster-proof}}
 \newcommand{\Cl}{C_\ell}
-\newcommand{\paperVersion}{v2B.0.8}
-\newcommand{\paperTimestamp}{2026-07-16 13:31 PT}
+% v2B.0.9 (2026-07-16): closes GENUINELY-NEW-REAL items 2-4 from truth-audit
+% round INT_v3/ROUND_2026-07-16-P1B-v2B.0.8-EXACTPDF-cf7ede29-CLAUDESTACK —
+% software 0.1.6->0.1.7 (skip-guarded 2 monorepo-coupled tests; standalone
+% install now runs 39 + skips 2 cleanly), honest test contract, JORS
+% Availability template completion (system requirements / macOS / repo date),
+% and codemeta.json added to the package.
+\newcommand{\paperVersion}{v2B.0.9}
+\newcommand{\paperTimestamp}{2026-07-16 17:22 PT}
 
 \title{\software: Exact pseudo-\(\Cl\) window inference and
 content-bound validation for reproducible spin-2 analyses}
@@ -177,9 +183,12 @@ failure.
 
 \section{Quality Control}
 
-Version 0.1.6 contains 41 automated tests covering numerical behavior, invalid
+Version 0.1.7 contains 41 automated tests covering numerical behavior, invalid
 inputs, the CLI, receipt mutation, protected fields, and compatibility with
-the original production helpers.  The window suite uses an exactly represented
+the original production helpers.  All 41 run in a monorepo checkout; in a
+standalone package install 39 run and the 2 replay-equivalence tests skip
+cleanly, because those two tests replay against production helper modules that
+reside elsewhere in the monorepo rather than inside the package.  The window suite uses an exactly represented
 synthetic linear workspace to compare the precontracted response with the
 couple--decouple route and to recover an injected grid angle.  Rotation tests
 check conservation of total \(EE+BB\) auto-power.  Receipt tests mutate result
@@ -263,10 +272,22 @@ schema will require an explicit reader or conversion path.
 \paragraph{Operating system.}
 The package supports Linux and Windows where Python and NumPy are available;
 CI covers Linux with Python 3.10--3.13 and Windows with Python 3.12. Directory
-metadata are synchronized on POSIX systems after atomic replacement.
+metadata are synchronized on POSIX systems after atomic replacement. macOS is
+expected to work as a POSIX platform wherever Python and NumPy are available,
+but is not currently exercised in continuous integration and is therefore
+listed as untested.
+
+\paragraph{Additional system requirements.}
+The package has no special hardware requirements: it is pure Python with a
+single NumPy runtime dependency, requires no GPU, and its full test suite
+completes in under one second with a negligible memory footprint on a commodity
+CPU. The optional PyMaster integration example and the retained physical
+validation campaign (\(N_{\rm side}=512\), \(\ell_{\max}=1024\)) depend on the
+user-supplied PyMaster and healpy stacks and correspondingly more memory, but
+those workloads lie outside the self-contained packaged code path.
 
 \paragraph{Programming language and dependencies.}
-Version 0.1.6 requires Python 3.10 or later and NumPy 1.24 or later. PyMaster
+Version 0.1.7 requires Python 3.10 or later and NumPy 1.24 or later. PyMaster
 is optional and is supplied by the user for physical NaMaster workspaces;
 the retained physical validation used PyMaster 2.6 and healpy 1.19.0.
 
@@ -275,7 +296,9 @@ the retained physical validation used PyMaster 2.6 and healpy 1.19.0.
 The source, issue tracker, installation instructions, API documentation, tests,
 and examples are available at
 \url{https://github.com/Hubify-Projects/bigbounce/tree/main/packages/namaster-proof}.
-Citation metadata are supplied in \texttt{CITATION.cff}.
+Citation metadata are supplied in \texttt{CITATION.cff} and machine-readable
+metadata in \texttt{codemeta.json}. The package directory was first published
+to the repository on 2026-07-16.
 \par\endgroup
 
 \paragraph{License.}
@@ -284,7 +307,7 @@ The software is released under the MIT License.
 \paragraph{Archive.}
 A persistent archival identifier is not yet available. This is an explicit
 submission blocker, not a completed release claim. The submission candidate
-must bind version 0.1.6 to an immutable archive before journal submission.
+must bind version 0.1.7 to an immutable archive before journal submission.
 
 \paragraph{Validation artifacts.}
 The corrected physical example is bound to the

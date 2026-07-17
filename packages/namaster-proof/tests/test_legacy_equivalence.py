@@ -4,6 +4,7 @@ import importlib.util
 from pathlib import Path
 
 import numpy as np
+import pytest
 
 from namaster_proof import (
     bandpower_edges,
@@ -14,6 +15,15 @@ from namaster_proof import (
 )
 
 ROOT = Path(__file__).resolve().parents[3]
+
+_LEGACY_SCRIPTS = ROOT / "reproducibility" / "p1_namaster_500mc" / "scripts"
+_WINDOWED_ROTATION = _LEGACY_SCRIPTS / "windowed_rotation.py"
+_MULTIPOLE_CONTRACT = _LEGACY_SCRIPTS / "multipole_contract.py"
+
+_MONOREPO_MISSING = not (_WINDOWED_ROTATION.exists() and _MULTIPOLE_CONTRACT.exists())
+_MONOREPO_SKIP_REASON = (
+    "requires bigbounce monorepo checkout for legacy-equivalence replay"
+)
 
 
 def load_legacy(name: str, relative: str):
@@ -33,6 +43,7 @@ class Workspace:
         return self.windows
 
 
+@pytest.mark.skipif(_MONOREPO_MISSING, reason=_MONOREPO_SKIP_REASON)
 def test_window_operators_match_production_helpers() -> None:
     legacy = load_legacy(
         "legacy_windowed_rotation",
@@ -59,6 +70,7 @@ def test_window_operators_match_production_helpers() -> None:
     )
 
 
+@pytest.mark.skipif(_MONOREPO_MISSING, reason=_MONOREPO_SKIP_REASON)
 def test_multipole_contract_matches_production_helper() -> None:
     legacy = load_legacy(
         "legacy_multipole_contract",

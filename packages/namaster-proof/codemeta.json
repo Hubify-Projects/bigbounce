@@ -1,0 +1,47 @@
+{
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
+  "@type": "SoftwareSourceCode",
+  "name": "NaMaster Proof",
+  "identifier": "namaster-proof",
+  "description": "Exact NaMaster window operators and content-bound checkpoint receipts for reproducible spin-2 (E/B) pseudo-C_ell analyses.",
+  "version": "0.1.7",
+  "codeRepository": "https://github.com/Hubify-Projects/bigbounce/tree/main/packages/namaster-proof",
+  "issueTracker": "https://github.com/Hubify-Projects/bigbounce/issues",
+  "license": "https://spdx.org/licenses/MIT",
+  "dateReleased": "2026-07-16",
+  "datePublished": "2026-07-16",
+  "programmingLanguage": {
+    "@type": "ComputerLanguage",
+    "name": "Python",
+    "version": ">=3.10"
+  },
+  "runtimePlatform": "Python 3.10",
+  "operatingSystem": [
+    "Linux",
+    "Windows"
+  ],
+  "applicationCategory": "Astronomy",
+  "developmentStatus": "active",
+  "keywords": [
+    "cosmology",
+    "namaster",
+    "pseudo-Cl",
+    "reproducibility",
+    "provenance"
+  ],
+  "author": [
+    {
+      "@type": "Person",
+      "familyName": "Golden",
+      "givenName": "Houston"
+    }
+  ],
+  "softwareRequirements": [
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "numpy",
+      "name": "numpy",
+      "version": ">=1.24"
+    }
+  ]
+}
