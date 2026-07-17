@@ -50,48 +50,33 @@
       }
     },
     "P1B": {
-      "tex": "arxiv/paper1b_mcmc_companion.tex",
-      "pdf": "arxiv/paper1b_mcmc_companion.pdf",
-      "arxiv_tarball": "project-context/SSOT/arxiv_tarballs/paper1b_arxiv_{version}_NON_RELEASE.tar.gz",
-      "standalone_proof": "project-context/SSOT/arxiv_tarballs/paper1b_arxiv_{version}_NON_RELEASE.proof.json",
-      "tarball_main_tex": "paper1b_mcmc_companion.tex",
+      "tex": "arxiv/paper1b_namaster_proof.tex",
+      "pdf": "arxiv/paper1b_namaster_proof.pdf",
+      "arxiv_tarball": "project-context/SSOT/arxiv_tarballs/paper1b_namaster_proof_arxiv_{version}.tar.gz",
+      "standalone_proof": "project-context/SSOT/arxiv_tarballs/paper1b_namaster_proof_arxiv_{version}.proof.json",
+      "tarball_main_tex": "paper1b_namaster_proof.tex",
       "deposit_root": ".deposit-staging",
       "bundle_assets": [
         {
-          "source": "arxiv/paper1b_mcmc_companion.tex",
-          "archive_name": "paper1b_mcmc_companion.tex"
-        },
-        {
-          "source": "arxiv/references.bib",
-          "archive_name": "references.bib"
-        },
-        {
-          "source": "arxiv/figures/paper1_corner_full_tension.pdf",
-          "archive_name": "figures/paper1_corner_full_tension.pdf"
-        },
-        {
-          "source": "arxiv/figures/fig_dneff_viability_two_frozen.pdf",
-          "archive_name": "figures/fig_dneff_viability_two_frozen.pdf"
-        },
-        {
-          "source": "arxiv/figures/alp_triangle_plot.png",
-          "archive_name": "figures/alp_triangle_plot.png"
+          "source": "arxiv/paper1b_namaster_proof.tex",
+          "archive_name": "paper1b_namaster_proof.tex"
         }
       ],
       "provenance_globs": [
-        "project-context/peer-reviews/INT_v3/ROUND_2026-07-15-P1B-v1B.0.109-EXACTPDF-36b8fc98-NONANTHROPIC-CONFIRM/**/*"
+        "project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P1B-v2B.0.10-EXACTPDF-c7883afc-CLAUDESTACK-CONFIRM/**/*",
+        "project-context/peer-reviews/INT_v3/ROUND_2026-07-16-P1B-v2B.0.9-EXACTPDF-e2f3301f-CLAUDESTACK-CONFIRM/**/*"
       ],
-      "provenance_archive": "P1B_v1B.0.109_NON_RELEASE_tracked_provenance.tar.gz",
+      "provenance_archive": "P1B_v2B.0.11_tracked_provenance.tar.gz",
       "metadata_complete": false,
-      "metadata_blocker": "NON-RELEASE: v1B.0.109 is scientifically obsolete pending the corrected physical-spectrum 500-MC and robustness production, dependent artifact/prose regeneration, executed-provenance repair, and a new exact-PDF review",
+      "metadata_blocker": "Houston must choose and authorize the P1B manuscript/source license and mint the software's persistent archive DOI (Zenodo for namaster-proof 0.1.7); the deposit identity was reconciled 2026-07-16 from the obsolete mcmc_companion block to the current registry identity (namaster-proof JORS software metapaper)",
       "metadata": {
-        "title": "Confronting a Torsion-Driven Bounce with CMB and BBN Constraints",
+        "title": "namaster-proof: Exact pseudo-Cl window inference and content-bound validation for reproducible spin-2 analyses",
         "creators": [
           {
             "name": "Golden, Houston"
           }
         ],
-        "description": "Retention-only snapshot of the superseded v1B.0.109 manuscript. This configuration intentionally fails closed and is not a submission or deposit candidate.",
+        "description": "JORS software metapaper for namaster-proof 0.1.7: exact NaMaster bandpower-window inference with fail-closed, content-bound receipt validation for reproducible spin-2 pseudo-Cl analyses. 41-test suite (39 run + 2 monorepo-replay skips standalone); deterministic workspace regenerability verified.",
         "upload_type": "publication",
         "publication_type": "article",
         "access_right": "open"
