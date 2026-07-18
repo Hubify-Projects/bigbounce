@@ -233,7 +233,71 @@ Wrapper `pipelines/p2_chirality/train_g1_manifest.py --smoke`. End-to-end verifi
 
 ---
 
-## G2 — Training-disjoint held-out validation  ⟵ BLOCKED on G1 manifest
+## G1 FULL RUN — COMPLETE + 3-LOCATION BACKUP VERIFIED — 2026-07-18 (pod-completion session)
+
+**FULL retrain DONE.** `[01:15:26] FULL DONE best_val_acc=0.9931 @epoch 47` (early stop at
+epoch 62, patience 15). ViT-Small `vit_small_patch16_224`, 3-class (CW/CCW/NOT_SPIRAL),
+10.98M trainable; n_total 8637 (train 6910 / val 1727); class_counts CW 3316 / CCW 3321 /
+NS 2000. Composition: **gz1=6637 (exact historical GZ1 identities) + synthetic=2000;
+ce_spiral=0, ce_not_spiral=0** → `ce_resnet_present=false` (CE-ResNet catalog still needs
+external re-provisioning — the retrained realization is the **GZ1-core + synthetic**
+component only; the CE non-spiral 826-vs-846 sub-conflict is NOT engaged this run).
+Seeds all 42; split_rule `RandomState(42).shuffle(arange(n)); val=first max(n//5,500)`;
+training-wrapper git_sha `38edf6c5ad3960579d1404799502f3ab83120fb2`.
+
+### /backup-3plus — VERIFIED across 3 distinct locations (hashes matched)
+| Artifact | sha256 | (a) local disk | (b) HuggingFace | (c) pod |
+|----------|--------|----------------|------------------|---------|
+| `g1_ckpt_best.pt` (88046112 B) | `aed109dcda13f6468aaef60c5824c7a94d1109424ed25df1e3959aa10a752387` | `pipelines/p2_chirality/outputs/g1_retrain/` (matches pod) | `bamfai/galaxy-chirality-v2 :: g1-retrain-2026-07-17/` (re-downloaded + hash-MATCH) | present until (a)+(b) verified |
+| `g1_training_result.json` | `0cd57a5535948ac7ef5faa432ea7e2d129296a96cd6235b1f769c7dc266567e3` | same dir | same HF rev (MATCH) | present |
+| `g1_training_manifest.json` | `e5de8e030996dea9ac42f1af6a63a45f28b1418f1fa78ee33a26e2d240a10729` | same dir (identical to committed `outputs/g1_manifest_retrain/` copy) | same HF rev (MATCH) | present |
+
+- HF revision path `g1-retrain-2026-07-17/` also carries `PROVENANCE.md` (honesty note +
+  hashes). **Additive upload** — did not overwrite existing repo files (`chirality_model_v2_best.pt`
+  etc. remain the historical receipts). All 3 HF files re-downloaded and hash-compared → MATCH.
+- The 88MB `.pt` is **gitignored** (`pipelines/p2_chirality/outputs/g1_retrain/*.pt`): local
+  disk + HF only, per campaign backup rule (repo keeps the JSONs + provenance, not the weights).
+
+### G2 done (see G2 section below); pod stopped AFTER backup + G2 verified.
+
+### Pod final state + spend
+- `580dgszgib3ti4` **STOPPED** via `runpod_ctl.py stop` → `desiredStatus: EXITED` (confirmed).
+  podStop issued only after (a) local matched pod hashes AND (b) HF round-trip matched AND
+  (c) G2 completed.
+- A4000 @ $0.17/h, resume ~22:4xZ → stop ~02:5xZ ≈ **~4.2 h ≈ ~$0.71 this pod-uptime span**;
+  G1 lane running total still **< $1**.
+
+---
+
+## G2 — Training-disjoint held-out validation  ⟵ DONE 2026-07-18 (metrics verbatim)
+
+**Script:** `pipelines/p2_chirality/analysis/g2_disjoint_validation_v1_0_266.py`
+**Result:** `pipelines/p2_chirality/analysis/g2_disjoint_validation_v1_0_266.json`
+Ran on pod (A4000 GPU inference), 358 s. Evaluated the G1 `g1_ckpt_best.pt` (epoch 47,
+val_acc 0.9931; ckpt sha `aed109dc…`) on **3000 GZ1 confident spirals disjoint from the G1
+training pool along BOTH axes**: (1) gz_desi ROW disjoint — eval drawn only from rows
+[150000, 350000), never scanned in G1 training [0,150000); scanned 66,621 to reach the 3000
+cap; (2) GZ1 OBJECT disjoint — any candidate within 3″ of a training-manifest object dropped.
+**Exclusions: idstr-overlap=0, object-overlap=0** (rows past the training window were naturally
+clean). Checkpoint state_dict loaded with **0 missing / 0 unexpected** keys.
+
+**Metrics (verbatim):**
+- eval n=3000 (CW=1470, CCW=1530)
+- **accuracy = 0.9867** (3-class; 0 NOT_SPIRAL predictions, mean NS softmax prob 0.0)
+- **Cohen's κ = 0.9733** (labels {0,1}; binary-subset κ identical, since 0 NS preds)
+- Confusion (rows=true, cols=pred, {CW,CCW}): `[[1460, 10], [30, 1500]]`
+- CW(0): precision 0.9799 · recall 0.9932 · F1 0.9865 (support 1470)
+- CCW(1): precision 0.9934 · recall 0.9804 · F1 0.9868 (support 1530)
+
+**Readout (honest, not a closure claim):** on a provably training-disjoint GZ1 held-out set
+the GZ1-core+synthetic checkpoint reaches 0.9867 accuracy / κ=0.9733 — modestly below the
+in-training val_acc 0.9931 (expected for truly held-out data), directly addressing reviewer
+gate M3 ("GZ1 validation overlap-contaminated; no independent held-out"). The metric measures
+CW/CCW discrimination on GZ1 spirals only; it does **not** exercise the CE non-spiral
+component (absent this run). Provenance hashes (ckpt/manifest/gz1/train-id-strs/eval-ids +
+gz_desi rev `b7583bb2…`) recorded in the JSON.
+
+**Original G2 spec (retained):**
 
 **Answers:** reviewer gate M3 (GZ1 validation overlap-contaminated; no independent held-out).
 
