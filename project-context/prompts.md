@@ -649,3 +649,11 @@ Switched to Opus 4.7 + xhigh effort for this.
 - `agent`: Claude Code desktop / claude-fable-5
 
 > run the G1 pod smoke test and retrain and continue until all papers are 100% ready for official publication
+
+**18:08 PT - Asks for the legit publication ETA**
+
+- `cwd`: /Users/houstongolden/Desktop/CODE_YOU/bigbounce
+- `session`: bigbounce-resume-claude-desktop-2026-07-16
+- `agent`: Claude Code desktop / claude-fable-5
+
+> what's the legit ETA on when we will be able to finally officially publish these papers?

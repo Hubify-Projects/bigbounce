@@ -1,0 +1,7 @@
+{
+  "status": "done",
+  "completed": 2000,
+  "n_valid": 2000,
+  "output": "/Users/houstongolden/Desktop/CODE_YOU/bigbounce/pipelines/p2_chirality/outputs/canonical_provenance/g3_joint_estimator_covariance.json",
+  "elapsed_s": 572.7
+}

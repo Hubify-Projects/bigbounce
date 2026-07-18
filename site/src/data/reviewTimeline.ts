@@ -57,6 +57,30 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p4-v1-0-266-g1-g2-pod-campaign-closure-2026-07-17",
+    dateISO: "2026-07-17",
+    timePT: "8:30 PM",
+    kind: "closure-wave",
+    title: "P4 v1.0.266 — G1 manifest-retained ViT retrain + G2 training-disjoint validation, TWO real-compute closures",
+    papers: ["P4"],
+    summary:
+      "Two real-compute pod-campaign closures land in v1.0.266. G1: manifest-retained ViT retrain COMPLETE on RunPod A4000 (<$1 total) -- 8,637 objects (6,637 GZ1-core + 2,000 synthetic; ce_resnet_present=false, so the Jia CE-ResNet catalog still needs external re-provisioning and the 826-vs-846 sub-conflict stays open, released Catalog C labels UNCHANGED), every object ID/split/seed retained in the committed training manifest, best_val_acc=0.9931 at epoch 47, checkpoint backed up to 3 verified locations (local + HF bamfai/galaxy-chirality-v2::g1-retrain-2026-07-17/ + source pod). G2: the G1 checkpoint scored accuracy=0.9867 / Cohen's kappa=0.9733 on 3,000 GZ1 confident spirals disjoint from G1 training on BOTH the object-ID and label-source axes (overlap counts 0) -- presented with an explicit like-for-like distinction against the historical kappa=0.40 GZ1 human-vote figure (a different measure, model-vs-independent-labels agreement, NOT a replacement for human-vote inter-rater agreement). Caveat sites narrowed honestly at abstract/intro/discussion/conclusions/data-availability. No science number changed; readiness cap 80 HOLDS pending exact v1.0.266 confirmation.",
+    keyTakeaways: [
+      "Real compute: full manifest-retained ViT retrain on RunPod A4000 (<$1 total) -- 8,637 objects (6,637 GZ1-core + 2,000 synthetic), every object ID/split/seed retained in the committed manifest (SHA e5de8e03...)",
+      "best_val_acc=0.9931 @ epoch 47; checkpoint SHA aed109dc... backed up to 3 verified locations; ce_resnet_present=false means the Jia CE-ResNet catalog (pre_desi.fits) still needs external re-provisioning -- 826-vs-846 sub-conflict stays open, released Catalog C labels UNCHANGED",
+      "G2 training-disjoint validation: accuracy=0.9867 / Cohen's kappa=0.9733 on 3,000 GZ1 confident spirals disjoint on BOTH the object-ID and label-source axes (overlap counts 0)",
+      "Explicit like-for-like distinction vs the historical kappa=0.40 human-vote figure -- a genuinely different measure, not a replacement",
+      "v1.0.266: 29 pp (grew from 28), MD5 71db6ac68baedaa84833d36d3de32c8d, Convex row k577annkk1z17ejs4a367ac4mx8arz4m, directive-G PASS 16 mirrors",
+    ],
+    links: [
+      { label: "G1 retrain artifacts", href: `${GH}/pipelines/p2_chirality/outputs/g1_retrain/` },
+      { label: "G2 disjoint-validation script", href: `${GH}/pipelines/p2_chirality/analysis/g2_disjoint_validation_v1_0_266.py` },
+      { label: "G2 disjoint-validation JSON", href: `${GH}/pipelines/p2_chirality/analysis/g2_disjoint_validation_v1_0_266.json` },
+      { label: "P4 compute campaign notes", href: `${GH}/project-context/SSOT/paper-4/COMPUTE_CAMPAIGN_2026-07-17.md` },
+      { label: "P4 canonical status", href: `${GH}/project-context/SSOT/paper-4/status.md` },
+    ],
+  },
+  {
     id: "p2-v1-7-123-g3-torsion-bound-closure-2026-07-17",
     dateISO: "2026-07-17",
     timePT: "3:59 PM",
