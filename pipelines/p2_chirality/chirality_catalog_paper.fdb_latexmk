@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1784343200.35376 "chirality_catalog_paper.tex" "chirality_catalog_paper.pdf" "chirality_catalog_paper" 1784343212.62954 0
+["pdflatex"] 1784363398.99735 "chirality_catalog_paper.tex" "chirality_catalog_paper.pdf" "chirality_catalog_paper" 1784363408.65826 0
   "/Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/tfm/adobe/helvetic/phvr.tfm" 1136768653 2504 ba6584b616b92101c768b6c4ffb32dd0 ""
   "/Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/tfm/jknappen/ec/tcrm0900.tfm" 1136768653 1536 c4f439db76ef96a9c53bc437f35ffe20 ""
@@ -121,6 +121,7 @@
   "/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstext.sty" 1780258940 2444 7f0b8a693414aa18acf9a58b6c630be5 ""
   "/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/base/ifthen.sty" 1780258940 5525 17697d373c4ff479956bc7a9290f9c25 ""
   "/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/base/latexsym.sty" 1780258940 2853 fe66bfc0fee620a4e899d128105c83ee ""
+  "/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/base/omscmr.fd" 1780258940 2469 b31492764773f4e252771591304c5abf ""
   "/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/base/ulasy.fd" 1780258940 2233 0b9c70f596c9aa85d9d57d75f2348557 ""
   "/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/booktabs/booktabs.sty" 1579038678 6078 f1cb470c9199e7110a27851508ed7a5c ""
   "/Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/enumitem/enumitem.sty" 1738874546 52272 63d293bc0d496619edb57585740861a2 ""
@@ -165,9 +166,9 @@
   "/Users/houstongolden/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1782468317 393055 3879c3147089e089e0d7f0ce6ec8ec42 ""
   "/Users/houstongolden/Library/TinyTeX/texmf-var/web2c/pdftex/pdflatex.fmt" 1782468336 2300816 53edb455b434f3745ae09cdb04d5e001 ""
   "/Users/houstongolden/Library/TinyTeX/texmf.cnf" 1782448596 637 edd806fb06a89761a6034e1968af9017 ""
-  "chirality_catalog_paper.aux" 1784343212.34515 15099 d77c0e1e7d023bc4d2eee7f58a1e0922 "pdflatex"
-  "chirality_catalog_paper.out" 1784343212.35298 5668 1eded9d50a43647e8670947d1ca2bd8a "pdflatex"
-  "chirality_catalog_paper.tex" 1784343160.13698 210255 69e8719ea9f1cd5beb33bf5e35c3cdf4 ""
+  "chirality_catalog_paper.aux" 1784363408.46011 15101 ead3817bd0a86dbb0cdef7621aedc446 "pdflatex"
+  "chirality_catalog_paper.out" 1784363408.46171 5668 1eded9d50a43647e8670947d1ca2bd8a "pdflatex"
+  "chirality_catalog_paper.tex" 1784363392.98132 218954 c6516d938afff68d030a5d50aa1211a2 ""
   "fig_bootstrap_null.png" 1783669618.50589 57195 8320e050d8d246806aab9ae11722bec1 ""
   "fig_class_pie.png" 1782463992.88466 62430 20e586f6bd9d0fb5dd4d803ca2e60ed7 ""
   "fig_confidence_dist.png" 1782463994.22421 223223 ce41e49d1cdec7c8337f960f09364e3a ""

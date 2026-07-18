@@ -1,3 +1,6 @@
+> ## v1.0.267 PHASE-2 COMPUTE INTEGRATION — 2026-07-18 · cap **80 HOLDS** · exact v1.0.267 confirmation pending
+> The 4x4 joint covariance (MASTER-decoupled Cl1 z=-0.61 null, corr with monopole -0.061, proxy validation rho=+0.943, BLAS caveat disclosed) closes the pod-bound G3 refinement; the G4 mechanism result over 16.9M banked ViT forward passes excludes classifier confusion at 0.0% of the observed monopole (obs z=-7.57 vs classifier-only null), demonstrates the Z2-TTA guard (RAW counterfactual +0.0129, opposite sign, 3.3x, spatially structured), and sign-excludes the GZ1 training prior — the mechanism is localized strictly upstream with the sky-vs-imaging attribution honestly open (per-pixel confusion tensors committed as the substrate). 31 pp, MD5 95fa2b13767d4ec12190f03cc92fe1ee, Convex row k573bw6avj5f8cdx3qsgwv18cd8arbrx, directive-G PASS 16 mirrors. Campaign spend cumulative ~$1.33. Remaining: exact v1.0.267 confirmation, CE-ResNet re-provisioning (external), transfer function, DOI, human ApJS.
+
 # Paper 4 — Galaxy Chirality Catalog · Single Source of Truth
 
 **Canonical status file. When in doubt about Paper 4, read this.**

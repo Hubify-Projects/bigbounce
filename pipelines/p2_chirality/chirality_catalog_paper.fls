@@ -275,6 +275,9 @@ INPUT ./fig_confidence_dist.png
 INPUT ./fig_confidence_dist.png
 INPUT ./fig_confidence_dist.png
 INPUT ./fig_confidence_dist.png
+INPUT /Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/base/omscmr.fd
+INPUT /Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/base/omscmr.fd
+INPUT /Users/houstongolden/Library/TinyTeX/texmf-dist/tex/latex/base/omscmr.fd
 INPUT /Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/tfm/public/cm/cmtt9.tfm
 INPUT ./fig_raw_vs_eq.png
 INPUT ./fig_raw_vs_eq.png
