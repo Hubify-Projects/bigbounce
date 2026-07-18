@@ -21,7 +21,7 @@
 
 \begin{document}
 
-\preprint{v1.7.124}
+\preprint{v1.7.125}
 
 \title{The Exact Matter-Contraction Non-Gaussian Amplitude:\\
 Four-Vertex Derivation and Conditional Large-Scale-Structure Mapping}
@@ -30,7 +30,31 @@ Four-Vertex Derivation and Conditional Large-Scale-Structure Mapping}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{July 17, 2026, 6:05 PM PDT}
+\date{July 18, 2026, 12:00 AM PDT}
+% v1.7.125 (2026-07-18 — G1 open-compute close: DRESSED-METRIC CUBIC-TRANSMISSION
+%   coefficient on assumption (d). Upgraded the load-bearing assumption-(d) paragraph in
+%   Sec.~\ref{sec:assumptions} from an order-of-magnitude residual to a COMPUTED,
+%   SCHEME-SPECIFIC result: in the dressed-metric geometric prescription (z_tilde ~ a,
+%   bounded a''/a, c_s=1; AAN U(eta) NOT included, disclosed) the Weinberg conserved mode
+%   is transparent through the bounded bounce, T_c(k)=1 identically (measured |T_c-1| =
+%   2.7e-10 .. 2.2e-5 over k eta_B = 0.002-0.03; large-k growth = k^6 basis truncation,
+%   not physics), giving scheme-specific |delta f_NL| <= 6.8e-8 at k eta_B = 1e-2 — >4 orders
+%   below the earlier ~1e-3 OOM residual. Scheme-specificity DEMONSTRATED not asserted:
+%   effective-fluid z basis integral K = int z^2 deta diverges ~ dcut^-1/2 at the H=0 pole
+%   (fitted -0.4998 vs analytic -1/2) => no finite coefficient there — the mechanism of the
+%   'no scheme-independent coefficient' structure; dressed K finite. Disclosed OPEN kept:
+%   exact AAN quantum-mass U(eta) for quasi-dust NOT implemented (not guessed; any even-parity
+%   U cannot alter the parity result), deformed-algebra scheme, full third-order branch.
+%   Also softened the L1128 torsion cross-reference from 'the disclosed ~1e-3 linear-transfer
+%   residual' to 'the earlier ~1e-3 order-of-magnitude reference level' (decoupled from the now-
+%   computed transmission caveat; torsion arithmetic unchanged), and added a scheme-specific
+%   pointer to the future-work leading-condition paragraph. Numbers verbatim from
+%   research/cubic_bounce_transmission/g1_dressedmetric_ic_close.{py,json} (committed e641cb1c;
+%   per-mode adiabatic/BD vacuum ICs, exact nu=3/2 matter mode fn sympy-verified, exact bounce
+%   traversal s=sqrt(1-x) — no dcut regulator, Weinberg constant-branch projection). Spec/
+%   acceptance: project-context/SSOT/paper-2/COMPUTE_CAMPAIGN_2026-07-17.md (G1). NO headline
+%   number changed, -35/16 UNCHANGED, existing scheme/AAN caveats PRESERVED, nothing fabricated.
+%   Directive-G hygiene: version+date bump, recompile, re-mirror.)
 % v1.7.123 (2026-07-17 — G3 open-compute close: MODEL-SPECIFIC EINSTEIN--CARTAN
 %   FOUR-FERMION TORSION BOUND on assumption (f). Added a compact bounded-disclosure
 %   paragraph in Sec.~\ref{sec:assumptions} (after the quasi-dust/(f) note) presenting
@@ -1116,7 +1140,7 @@ The exact $-35/16$ coefficient is a contraction-phase result under: (a)~matter-d
 
 The contraction-phase amplitude and the observational recast require distinct assumptions. The amplitude calculation assumes: (a) matter domination, $w=0$ and $\epsilon=3/2$; (b) standard GR perturbation theory during contraction; and (c) Bunch--Davies initial conditions. The recast additionally assumes: (d) faithful transmission of the bispectrum through the nonsingular transition; (e) no prolonged post-bounce inflation that erases the signal; and (f) fermion-sourced torsion negligible during contraction and the bounce---now bounded explicitly below rather than assumed.
 
-Assumption~(d) is the load-bearing limitation. Wilson-Ewing~\cite{WilsonEwing:2012} establishes linear propagation for the specified effective LQC construction. Single-clock separate-universe reasoning makes small nonlinear corrections plausible for deeply superhorizon modes, but it does not substitute for an explicit third-order evolution through the bounce, particularly across quantization schemes with different effective sound speeds. We therefore do not claim a closed cubic-transfer theorem or a derived numerical bound. Every late-time sensitivity in this paper is conditional on faithful cubic transmission; a direct numerical cubic calculation is required to promote that condition to a prediction of the full bounce model.
+Assumption~(d) is the load-bearing limitation. Wilson-Ewing~\cite{WilsonEwing:2012} establishes linear propagation for the specified effective LQC construction. Single-clock separate-universe reasoning makes small nonlinear corrections plausible for deeply superhorizon modes, but it does not substitute for an explicit third-order evolution through the bounce, particularly across quantization schemes with different effective sound speeds. We now compute the linear transmission directly in one concrete scheme. In the \emph{dressed-metric} geometric prescription ($\tilde z\propto a$, bounded $a''/a$, $c_s=1$; the Agullo--Ashtekar--Nelson quantum-mass term is \emph{not} included, see below), the Weinberg constant (conserved) curvature mode continues smoothly---and, for the symmetric bounce, doubly parity-protected---through the bounded transition with unit transmission, $T_c(k)=1$ identically: the measured departure is $|T_c-1|=2.7\times10^{-10}$ to $2.2\times10^{-5}$ across $k\eta_B=0.002$--$0.03$ (with $\eta_B$ the conformal bounce timescale; the growth toward large $k$ is $k^6$ gradient-basis truncation, not physics), so the scheme-specific transmission correction to the $-35/16$ amplitude is $|\delta\fnl|\le6.8\times10^{-8}$ at the observable scale $k\eta_B=10^{-2}$---more than four orders of magnitude below the earlier order-of-magnitude residual (\path{research/cubic_bounce_transmission/g1_dressedmetric_ic_close.py}, \path{research/cubic_bounce_transmission/g1_dressedmetric_ic_close.json}). This is explicitly a scheme-specific statement, not a scheme-independent theorem: in the effective-fluid variable ($z\propto a/c_s$) the corresponding gradient-expansion basis integral $K=\int z^2\,d\eta$ diverges as $d_{\rm cut}^{-1/2}$ at the $H=0$ pole (fitted exponent $-0.4998$ against the analytic $-1/2$), so no finite transmission coefficient exists in that scheme---the concrete mechanism behind the model's absence of a scheme-independent transfer coefficient. We therefore still do not claim a closed cubic-transfer theorem valid across all schemes: the exact Agullo--Ashtekar--Nelson quantum-mass term $U(\eta)$ for a quasi-dust (rather than scalar-field) background is not implemented (any $U$ even about the symmetric bounce cannot alter the parity result, so only an odd-parity or asymmetric completion could contribute), the deformed-algebra scheme carries a different subleading structure, and a fully nonlinear third-order branch calculation remains open. Every late-time sensitivity in this paper accordingly remains conditional on faithful cubic transmission.
 
 Quasi-dust corrections are also kept separate from the exact matter-limit polynomial. Existing scaling arguments suggest percent-level changes, but their coefficient requires evaluating the four cubic integrals with the quasi-dust mode functions. Likewise, assumption~(f) is automatic only in the scalar-only sector; for models with appreciable fermion populations the Einstein--Cartan four-fermion operator is estimated explicitly in the next paragraph. These limitations affect model applicability, not the algebraic uniqueness of Eq.~\eqref{eq:exactcoeff}.
 
@@ -1125,7 +1149,7 @@ Assumption~(f) is now supported by an explicit order-of-magnitude parametric est
 \label{eq:torsionbound}
 |\delta\fnl^{\rm tor}| \lesssim \frac{35}{16}\cdot\frac{3}{16}\,\frac{\gamma^2}{1+\gamma^2}\,\frac{\kappa\,n_{\psi,c}^2}{\rho_c},
 \end{equation}
-with $n_{\psi,c}$ the (free) bounce-epoch fermion number density and $\rho_c$ the critical density; $n_{\psi,c}$ is not fixed by any committed artifact and is carried symbolically. Writing $x_\psi\equiv\kappa n_{\psi,c}^2/\rho_c$, the effective bounce description holds only for $x_\psi<1$, and the estimate is largest at the $x_\psi\to1$ edge of that domain, where it reaches the prefactor $(35/16)(3/16)\gamma^2/(1+\gamma^2)$, i.e.\ from $0.022$ ($\gamma=0.2375$) to $0.21$ ($\gamma=1$): within this parametric estimate, torsion contributes at most $\sim1$--$10\%$ of the $-35/16$ amplitude wherever the effective bounce description is valid. The correction reaches the disclosed $\delta\fnl\sim10^{-3}$ linear-transfer residual only for $n_{\psi,c}\sim3\times10^{-2}\,M_{\rm Pl}^3$ and becomes comparable to the full $-35/16$ amplitude only at near-Planckian $n_{\psi,c}\sim M_{\rm Pl}^3$, where the semiclassical bounce itself breaks down; for any sub-Planckian abundance $n_{\psi,c}\ll M_{\rm Pl}^3$---as required for a semiclassical bounce---one has $|\delta\fnl^{\rm tor}|\ll10^{-3}$ and assumption~(f) holds. This supports assumption~(f) with an explicit parametric estimate in place of a bare assertion, with $n_{\psi,c}$ the explicit model parameter (\path{research/cubic_bounce_transmission/g3_torsion_fourfermion_bound.py}).
+with $n_{\psi,c}$ the (free) bounce-epoch fermion number density and $\rho_c$ the critical density; $n_{\psi,c}$ is not fixed by any committed artifact and is carried symbolically. Writing $x_\psi\equiv\kappa n_{\psi,c}^2/\rho_c$, the effective bounce description holds only for $x_\psi<1$, and the estimate is largest at the $x_\psi\to1$ edge of that domain, where it reaches the prefactor $(35/16)(3/16)\gamma^2/(1+\gamma^2)$, i.e.\ from $0.022$ ($\gamma=0.2375$) to $0.21$ ($\gamma=1$): within this parametric estimate, torsion contributes at most $\sim1$--$10\%$ of the $-35/16$ amplitude wherever the effective bounce description is valid. The correction reaches the earlier $\delta\fnl\sim10^{-3}$ order-of-magnitude reference level only for $n_{\psi,c}\sim3\times10^{-2}\,M_{\rm Pl}^3$ and becomes comparable to the full $-35/16$ amplitude only at near-Planckian $n_{\psi,c}\sim M_{\rm Pl}^3$, where the semiclassical bounce itself breaks down; for any sub-Planckian abundance $n_{\psi,c}\ll M_{\rm Pl}^3$---as required for a semiclassical bounce---one has $|\delta\fnl^{\rm tor}|\ll10^{-3}$ and assumption~(f) holds. This supports assumption~(f) with an explicit parametric estimate in place of a bare assertion, with $n_{\psi,c}$ the explicit model parameter (\path{research/cubic_bounce_transmission/g3_torsion_fourfermion_bound.py}).
 \subsection{The Viable Model}
 
 The Wilson-Ewing $\Lambda$CDM quasi-dust model~\cite{WilsonEwing:2012} supplies one concrete setting for the conditional recast: $w=-0.003$ fits $n_s\simeq0.964$, and the construction reports strong tensor suppression. The exact contraction-phase cubic amplitude is $\fnl=-35/16$ at the matter limit, with quasi-dust corrections and nonlinear bounce transmission kept as separate theoretical systematics. We do not elevate this package to a complete fit or a model-independent forecast.
@@ -1262,7 +1286,7 @@ The strongest result of this work is algebraic: the sum of the four cubic vertic
 
 The observational material is an illustration, not a second headline result. Mapping the published SPHEREx local-template sensitivity through the exact-shape recovery gives the arithmetic value $2.63\sigma$ before additional nuisance marginalization. The channel-native surrogate shows why this must remain conditional: the significance ranges from $3.5\sigma$ with nuisances fixed to $0.4\sigma$ with $b_\phi$ free, and the intermediate $2.3\sigma$ value requires a declared 30\% theory prior. An eventual analysis must use the survey's full per-triangle covariance and a justified $b_\phi$ calibration.
 
-Faithful cubic transmission through the bounce is the leading theoretical condition. Linear propagation is established for the specified construction~\cite{WilsonEwing:2012}; single-clock conservation motivates the nonlinear extension but does not replace an explicit third-order calculation through the transition. Consequently a future null measurement would test the combination of the contraction-phase amplitude and the stated transmission assumptions, not every nonsingular cosmology.
+Faithful cubic transmission through the bounce is the leading theoretical condition. Linear propagation is established for the specified construction~\cite{WilsonEwing:2012}, and the linear transmission of the conserved mode is now computed to be unity in the dressed-metric scheme ($|\delta\fnl|\le6.8\times10^{-8}$ at $k\eta_B=10^{-2}$; Sec.~\ref{sec:assumptions}), as a scheme-specific rather than scheme-independent statement; single-clock conservation motivates the nonlinear extension but does not replace an explicit third-order calculation through the transition. Consequently a future null measurement would test the combination of the contraction-phase amplitude and the stated transmission assumptions, not every nonsingular cosmology.
 
 A proposed future high-redshift facility may offer complementary leverage, but no such projection enters the headline, conclusion, or readiness assessment. A nonzero negative local amplitude would also not uniquely identify a bounce because multifield inflation can generate similar amplitudes. Shape information, scale dependence, nuisance control, and model-derived priors remain necessary for model discrimination.
 \section{Conclusion}

@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex 02_full_draft"] 1784329233.96056 "02_full_draft.aux" "02_full_draft.bbl" "02_full_draft" 1784329236.78316 0
-  "./02_full_draftNotes.bib" 1784329236.36357 104 4d8bb863c86f3d7b03a471e9d4707f34 ""
+["bibtex 02_full_draft"] 1784358041.51091 "02_full_draft.aux" "02_full_draft.bbl" "02_full_draft" 1784358043.20546 0
+  "./02_full_draftNotes.bib" 1784358042.96456 104 4d8bb863c86f3d7b03a471e9d4707f34 ""
   "./focused_paper_refs.bib" 1784021777.59099 22111 cf0ed06e5256004d97c97a227875e5f2 ""
   "/Users/houstongolden/Library/TinyTeX/texmf-dist/bibtex/bst/revtex/apsrev4-2.bst" 1601932770 69609 e9dea59f0e753ccda3ddc8f5806d846d ""
-  "02_full_draft.aux" 1784329236.35801 17057 95e68911af7b347f8c5b18512d0b0b5c "pdflatex"
+  "02_full_draft.aux" 1784358042.96215 17180 1eeaa773b1dd6b0e6405c31cd45d165f "pdflatex"
   (generated)
   "02_full_draft.bbl"
   "02_full_draft.blg"
   (rewritten before read)
-["pdflatex"] 1784329234.03263 "02_full_draft.tex" "02_full_draft.pdf" "02_full_draft" 1784329236.78364 0
+["pdflatex"] 1784358041.56655 "02_full_draft.tex" "02_full_draft.pdf" "02_full_draft" 1784358043.20586 0
   "/Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
   "/Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex9.tfm" 1246382020 996 a18840b13b499c08ac2de96a99eda4bc ""
@@ -126,10 +126,10 @@
   "/Users/houstongolden/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1782468317 393055 3879c3147089e089e0d7f0ce6ec8ec42 ""
   "/Users/houstongolden/Library/TinyTeX/texmf-var/web2c/pdftex/pdflatex.fmt" 1782468336 2300816 53edb455b434f3745ae09cdb04d5e001 ""
   "/Users/houstongolden/Library/TinyTeX/texmf.cnf" 1782448596 637 edd806fb06a89761a6034e1968af9017 ""
-  "02_full_draft.aux" 1784329236.35801 17057 95e68911af7b347f8c5b18512d0b0b5c "pdflatex"
-  "02_full_draft.bbl" 1784329234.02688 16274 f5fd0d4bbb8d2e6276ffc768ae1eb302 "bibtex 02_full_draft"
-  "02_full_draft.out" 1784329236.36298 6017 54a951bd0fe0c26b8f2493571ca7ac17 "pdflatex"
-  "02_full_draft.tex" 1784329201.75836 183247 612c295dcd80da5c845c6c819bed38a6 ""
+  "02_full_draft.aux" 1784358042.96215 17180 1eeaa773b1dd6b0e6405c31cd45d165f "pdflatex"
+  "02_full_draft.bbl" 1784358041.56112 17013 484016155409d87e08692ee11a3bc6d3 "bibtex 02_full_draft"
+  "02_full_draft.out" 1784358042.96417 6017 54a951bd0fe0c26b8f2493571ca7ac17 "pdflatex"
+  "02_full_draft.tex" 1784358031.65751 187977 e7c66c4b53936ec90fc45aedd6106220 ""
   "fig1_shape_function.png" 1784015930.88613 61428 58aadafb6191c8ab014a89903e7af105 ""
   "fig5_inflation_comparison.png" 1784029947.38676 111085 7016841698c66f0b603abac8c8b95f4d ""
   (generated)
