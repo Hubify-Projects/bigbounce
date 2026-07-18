@@ -1,0 +1,17 @@
+{
+  "receipt": "rebuild_workspace_check execution \u2014 P1B regenerability gate",
+  "date_utc": "2026-07-18T06:52:00Z",
+  "environment": "RunPod A4000 pod 580dgszgib3ti4, Python 3.10.12, PyMaster 3.0 (pip, system GSL 2.7.1/FFTW3), healpy 1.19.0",
+  "result": "PASS",
+  "workspace_window_shape": [
+    4,
+    20,
+    4,
+    1025
+  ],
+  "mask_f_sky": 0.3226,
+  "window_equivalence_max_abs": 9.926167e-24,
+  "gate": "< 1e-10",
+  "honest_note": "Regenerated scalar passes the committed gate and confirms deterministic workspace rebuild; it is ~6 orders below the recorded production 1.41e-18 because the literal digits are platform/BLAS/pymaster-version dependent (pod pymaster 3.0 vs production 2.6) \u2014 the gate, not the digits, is the invariant, as the script's docstring documents.",
+  "raw_log": "PyMaster 3.0, healpy 1.19.0\nRebuilding workspace: NSIDE=512, LMAX=1024, 20 bins, ell_min=30 ...\n/workspace/namaster-proof/examples/rebuild_workspace_check.py:74: HealpyDeprecationWarning: \"verbose\" was deprecated in version 1.15.0 and will be removed in a future version. \n  mask = hp.smoothing(mask, fwhm=np.deg2rad(2.0), verbose=False)\n  mask f_sky = 0.3226 (deterministic)\n  workspace window shape = (4, 20, 4, 1025)\n  window_equivalence_max_abs = 9.926167e-24\nPASS: workspace regenerated deterministically; max|Delta| = 9.926e-24 < 1e-10 (same order as the recorded 1.41e-18; last digits are platform-dependent).\n"
+}

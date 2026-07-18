@@ -19,8 +19,8 @@ no pod is stopped without a verified backup.
 |------|-----|---------|-----------|-----------|---------------------|
 | **G1** | Regenerable ViT-Small retrain w/ retained object/split manifest + seeds; resolve 26,616 vs 26,626 record conflict | GPU (A4000 `580dgszgib3ti4` or H200) | ~2–4 h retrain + manifest; images pod-download | A4000 ~$0.17/h → <$1; +download | **BLOCKED — needs data-pipeline smoke test (see G1)** |
 | **G2** | Training-disjoint held-out GZ1 validation (anti-join on G1 manifest) | CPU (local) | ~10 min once G1 manifest exists | $0 | **BLOCKED on G1 manifest** |
-| **G3** | Joint sampling covariance across real-space dipole / WLS / monopole / harmonic ℓ=1 | CPU (local, committed catalog) | ~11 min | $0 | **LAUNCHED (local, detached)** |
-| **G4** | Image-level classifier-injection → per-pixel confusion + generative null isolating the monopole mechanism | GPU (H200 preferred; A4000 ok) | ~4–12 h (8.47M-galaxy inference passes) | H200 ~$4.39/h → $20–50 | **PARTIAL scaffolding exists; scoped, not launched** |
+| **G3** | Joint sampling covariance across real-space dipole / WLS / monopole / harmonic ℓ=1 | CPU (local, committed catalog) | ~11 min | $0 | **DONE incl. MASTER-decoupled leg (phase 2, 2026-07-18) — see G3 MASTER-LEG section** |
+| **G4** | Image-level classifier-injection → per-pixel confusion + generative null isolating the monopole mechanism | GPU (H200 preferred; A4000 ok) | ~4–12 h (8.47M-galaxy inference passes) | H200 ~$4.39/h → $20–50 | **EXECUTED (phase 2, 2026-07-18) over banked e2e inference — A4000 only, $0 H200 — see G4 EXECUTED section** |
 
 Pod inventory (all EXITED as of 2026-07-17 20:41Z): `580dgszgib3ti4` bigbounce-p4-dr8morph
 (RTX A4000, $0.17/h) · `99srknm4s1cc3l` bigbounce-p1b-snctrl (A4000, $0.25/h) ·
@@ -99,6 +99,78 @@ i.e. a distinct mode, supporting the paper's separate systematics treatment. The
 and WLS dipoles are non-significant (z=+2.21, +1.36), consistent with the primary null.
 dipole↔Cl1 +0.846 confirms both capture the same ℓ=1 content (validity check). Integration
 into the manuscript + MASTER-decoupled refinement + 3-location backup is the next-session step.
+
+---
+
+## G3 MASTER-LEG REFINEMENT — COMPLETE 2026-07-18 (phase-2 pod session) ⟵ G3 FULLY CLOSED-BY-ARTIFACT
+
+**The pod-bound MASTER-decoupled ℓ=1 refinement flagged above is DONE.** Script
+`scripts/g3_joint_estimator_covariance_master_v2.py` (committed) reran the IDENTICAL
+block-bootstrap (same NSIDE=8 blocks, N=2000, seed 42, same rng call sequence → identical
+resample index sets, verified: channels 1/3/Cl1_pseudo reproduce the local run's bootstrap
+mean AND σ to 6 digits) on pod `580dgszgib3ti4` (A4000), swapping channel 4 for the
+NaMaster MASTER-decoupled C₁ (pymaster **3.0**, pip-installed against apt
+libgsl-dev/libfftw3-dev/libcfitsio-dev — pip wheel path worked; no conda on pod). Coupling
+matrix computed once on the FIXED canonical effective mask (|b_gal|>15° ∧ n_total_full>0,
+f_sky=0.48991), single-ell bins via `NmtBin.from_edges(arange(1,192), arange(2,193))`
+(bin 0 = ℓ=1), decoupled per resample as C_dec = M⁻¹C_pseudo.
+
+**Artifact:** `outputs/canonical_provenance/g3_joint_estimator_covariance_master_v2.json`
+(smoke=False, n_valid **2000/2000**). Headline (z = full/bootstrap σ):
+
+| Estimator | full | bootstrap σ | z |
+|-----------|------|-------------|---|
+| A_dipole_realspace | +0.004386 | 0.001987 | **+2.21** |
+| A_dipole_WLS | +0.004669 | 0.005776 | **+0.81** |
+| monopole (f_CW−0.5) | −0.003949 | 0.000601 | **−6.57** |
+| Cl1_master (MASTER-decoupled ℓ=1) | −4.552e−6 | 7.523e−6 | **−0.61** |
+
+Joint 4×4 correlation: dipole↔WLS +0.158 · dipole↔monopole −0.037 · dipole↔Cl1_master
+**+0.794** · WLS↔monopole −0.020 · WLS↔Cl1_master +0.129 · monopole↔Cl1_master **−0.061**.
+corr(Cl1_master, Cl1_pseudo) = **+0.943** (the committed anafast proxy is validated — it
+tracks the decoupled estimator at r≈0.94 on identical resamples).
+
+**Readout (honest):** the monopole remains the ONLY |z|>3 mode (−6.57) and is nearly
+uncorrelated with every dipole-family channel including the MASTER-decoupled one (−0.061).
+The MASTER-decoupled ℓ=1 itself is null (z=−0.61; the decoupled full-sample C₁ is negative,
+which MASTER permits for noise-dominated modes). G3's conclusion is unchanged and now
+NaMaster-complete: **G3 CLOSED-BY-ARTIFACT including the MASTER leg.**
+
+**Cross-platform WLS caveat (documented, does not change conclusions):** channels 1, 3 and
+Cl1_pseudo reproduce the local N=2000 moments EXACTLY; the WLS channel's bootstrap σ differs
+(local 0.003436 / pod 0.005776; mean 0.007557 vs 0.007724) — the 9-column weighted
+normal-equation solve is ill-conditioned on a minority of resamples and BLAS-dependent.
+WLS is non-significant on both platforms (z +1.36 local / +0.81 pod); flagged for a future
+QR/SVD-based solver hardening, not a result-level issue.
+
+**Backup (3 locations, hash-verified):** local repo (committed) · HF
+`bamfai/galaxy-chirality-catalog :: p4_compute_phase2_2026-07-18/` (uploaded additively,
+re-downloaded, sha256 round-trip MATCH `189dd0deb7292550…`) · pod `/workspace/g3/out/`
+(held until verification, then pod stopped).
+
+---
+
+## P1B NAMASTER-PROOF REGENERABILITY — EXECUTED 2026-07-18 (same pymaster env)
+
+`packages/namaster-proof/examples/rebuild_workspace_check.py` was EXECUTED (not skipped)
+on the pod in the same pymaster 3.0 env — closing P1B's pending "regenerability check
+never actually run with PyMaster present" item. Verbatim:
+
+```
+PyMaster 3.0, healpy 1.19.0
+  mask f_sky = 0.3226 (deterministic)
+  workspace window shape = (4, 20, 4, 1025)
+  window_equivalence_max_abs = 9.926167e-24
+PASS: workspace regenerated deterministically; max|Delta| = 9.926e-24 < 1e-10
+```
+
+**Honest note:** the regenerated scalar 9.926e−24 PASSES the committed `<1e-10` gate and
+confirms the `[4,20,4,1025]` window tensor rebuilds deterministically, but it is ~6 orders
+below the recorded production value 1.41e−18 — the literal digits are
+platform/BLAS/pymaster-version dependent (pod pymaster 3.0 vs production 2.6), exactly why
+the paper demotes the literal value from a universal bound. The gate, not the digits, is
+the invariant. Receipt: `packages/namaster-proof/examples/rebuild_workspace_check_2026-07-18_podA4000.log`
+(+ HF mirror, hash-verified).
 
 ---
 
@@ -342,6 +414,64 @@ integrates and G1's pipeline is verified.
 
 ---
 
+## G4 — EXECUTED 2026-07-18 (phase-2 pod session): per-pixel confusion + generative parity-null
+
+**No new GPU inference was scientifically required — and none was fabricated.** The 16,949,062
+production-ViT forward passes (8,474,531 galaxies × {original, mirror}) already existed as the
+banked per-galaxy record `e2e_mirror_pairs.parquet` (A100 pod `0hh3humgpacgz1`, 2026-07-11/12,
+192/192 shards; HF + B2 + local shards, byte-verified — RUN_SUMMARY.md). What G4's spec still
+required — the per-pixel confusion tensor and the generative null — is aggregation +
+forward-modeling OVER that banked inference, executed this session on the A4000 pod
+(`scripts/g4_monopole_mechanism_injection.py`, committed). **No H200 was deployed ($0 H200
+spend).** Join: 8,474,531 rows 1:1 on dr8_id; class agreement with the production catalog =
+**0.99936** after mapping (the raw-string scalar 0.3772 in the JSON is purely the
+'NS' vs 'NOT_SPIRAL' naming difference on non-spirals; the computation maps both).
+
+**Artifacts (committed + HF `p4_compute_phase2_2026-07-18/`, sha256 round-trip MATCH):**
+- `outputs/canonical_provenance/g4_monopole_mechanism_injection.json` (smoke=False, N=500,
+  seed 42, finalized 2026-07-18T07:45:46Z)
+- `outputs/canonical_provenance/g4_perpixel_confusion_nside64.npz` (per-pixel 3×3
+  mirror-confusion tensors raw+eq, NSIDE=64, + confusion-propagated bias fields)
+
+**Verbatim result (observed HC monopole on galmask: −0.0039486, n=948,428):**
+
+| Channel | confusion-generated monopole (500 parity-symmetric realizations) | vs observed |
+|---------|------------------------------------------------------------------|-------------|
+| **EQ (production Z₂-TTA labels)** | mean **+7.88e−6 ± 5.23e−4** | explains **−0.20% (mean); ±2σ null spread = 26.7%** of observed; z(obs vs null) = **−7.57** |
+| **RAW (no antisymmetrization)** | mean **+0.012854 ± 0.000158** | opposite sign, 3.26× magnitude; z(obs vs null) = **−106.5** |
+
+Supporting mechanism numbers: raw classifier prior asymmetry ⟨p_CW⟩−⟨p_CCW⟩ (parity-avg) =
+**+0.007337** (the GZ1-training-prior candidate — WRONG SIGN for the observed CW deficit);
+raw confusion-propagated bias field: monopole +0.01289, dipole amp 0.1508, N/S split
+**−0.1452 / +0.0795** (dec ≥32° / <32° — large spatially-structured raw-channel systematic);
+EQ bias field **identically 0** at every pixel; banked `eq_antisym_dev` mean=max=**0.0**
+(the Z₂-TTA antisymmetry is EXACT in the banked labels).
+
+**What this result DOES show (honest):**
+1. **Classifier confusion through the production EQ pipeline generates 0.0% of the observed
+   monopole** (mean −0.20% ± 0.59% at 1σ of the MC mean; the null's ±5.2e−4 spread is pure
+   binomial sampling noise of a parity-symmetric sky, not a systematic offset — the EQ
+   antisymmetry is exact, so confusion adds nothing beyond binomial noise). The observed
+   monopole is −7.57σ against this classifier-only null (same order as, and consistent with,
+   the paper's per-pixel-independent binomial −9.47σ).
+2. **The counterfactual raw channel is quantified:** without the Z₂-TTA guard the classifier
+   WOULD imprint +0.0129 (3.3× observed, opposite sign, heavily spatially structured). The
+   production pipeline demonstrably suppresses a large classifier-level parity systematic.
+3. **The training-prior (GZ1 CW-excess) candidate is bounded AND sign-excluded** as the
+   monopole mechanism: it expresses as a +CW raw preference (+0.0073), is exactly nulled by
+   the EQ construction, and has the wrong sign for the observed CW deficit.
+
+**What this result does NOT show (honest limits):** it does not positively identify which
+UPSTREAM mechanism (true sky parity asymmetry vs a parity-odd DESI imaging/photometric
+systematic in the cutouts themselves) produces the −9.47σ monopole. G4 localizes the origin
+strictly upstream of the classifier — the monopole enters through the input image
+distribution, not through classifier confusion — and bounds/sign-excludes the classifier-side
+candidates. The per-pixel confusion tensors (npz) are the committed substrate for any further
+upstream attribution. Manuscript integration (paper §Global CW Fraction) is deliberately NOT
+done here (no-manuscript-edits rule this session); readiness cap 80 HOLDS.
+
+---
+
 ## Resume / poll commands (for the next session)
 
 ```bash
@@ -365,6 +495,26 @@ KEY=$(grep -E '^RUNPOD_API_KEY=' ../../.env.local | cut -d= -f2- | tr -d '"'"'"'
 curl -s -X POST "https://api.runpod.io/graphql?api_key=$KEY" -H "Content-Type: application/json" \
   -d '{"query":"query{myself{pods{id name desiredStatus machine{gpuDisplayName} costPerHr}}}"}' | python3 -m json.tool
 ```
+
+## Phase-2 session record (2026-07-18)
+
+- Pod `580dgszgib3ti4` (A4000 $0.17/h) resumed ~06:10Z, stopped ~08:1xZ ≈ **2.1 h ≈ $0.36**.
+  sshd was again dead on resume (no host keys) — `tools/pod_bootstrap_sshd.sh` via the RunPod
+  proxy fixed it; direct port this cycle was **1683** (changes every resume).
+- pymaster install path that WORKED on the pod (recorded per campaign rule): apt
+  `libgsl-dev libfftw3-dev libcfitsio-dev pkg-config` then plain `pip3 install pymaster`
+  → **pymaster 3.0** (no conda on pod; pip built cleanly against system GSL 2.7.1/FFTW3).
+  healpy 1.19.0 pip wheel.
+- Jobs run: G3 MASTER-decoupled 4×4 (N=2000, ~62 min) · P1B namaster-proof
+  `rebuild_workspace_check.py` (PASS 9.926e−24) · G4 confusion+null (N=500, ~9 min after
+  warm cache) · all smoke-tested before full launches.
+- **No H200 deployed; total phase-2 pod spend ≈ $0.36.** Cumulative campaign GPU spend
+  (G1+G2 session ~$0.71 + earlier ~$0.26 + phase 2 ~$0.36) ≈ **$1.33**; the only large prior
+  spend remains the banked A100 e2e run (~$12.44, 2026-07-11/12) which G4 reused instead of
+  re-running (est. $20–50 H200 avoided).
+- Backups: every phase-2 JSON/npz/receipt in 3 verified locations (local repo commit · HF
+  `bamfai/galaxy-chirality-catalog :: p4_compute_phase2_2026-07-18/` sha256 round-trip
+  MATCH · pod until verification) before podStop.
 
 ## Integrity ledger
 - No gate claimed closed by this document. Readiness 80 HOLDS.
