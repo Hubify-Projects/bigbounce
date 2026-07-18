@@ -151,6 +151,88 @@ Table 12 conflict paragraph updated from "not retained / unrecoverable" to
 
 ---
 
+## G1 RUN LOG — 2026-07-18 (pod-execution session)
+
+**Gate NOT claimed closed.** Smoke test PASSED; manifest-retained retrain LAUNCHED. Closure
+still requires: full run completes + `g1_training_manifest.json` committed + CE-ResNet
+component provisioned (see blocker below) for the historical-composition supersession.
+
+### Pod + access
+- Pod `580dgszgib3ti4` (`bigbounce-p4-dr8morph`, RTX A4000 **16376 MiB**, 112 vCPU, 503 GB RAM,
+  $0.17/h). Resumed via GraphQL `podResume` (Bearer + `?api_key=`; UA header needed —
+  Cloudflare 403s the default `Python-urllib` UA; helper `tools/runpod_ctl.py` sets a browser UA).
+- **sshd bootstrap (important for resume):** the resumed container came up with **no host keys
+  and empty `PUBLIC_KEY` env**, so the template sshd exited (`no hostkeys available -- exiting`)
+  and the direct TCP port refused. Fixed by reaching the pod via the RunPod proxy
+  `580dgszgib3ti4-644119b0@ssh.runpod.io` (interactive — pipe commands on stdin), running
+  `ssh-keygen -A` + writing `~/.ssh/authorized_keys` + `/usr/sbin/sshd`. Reusable helpers:
+  `tools/pod_bootstrap_sshd.sh` (proxy bootstrap) and `tools/pod_ssh.sh` (clean direct SSH).
+- Direct SSH after bootstrap: `ssh -p 1206 -i ~/.ssh/id_ed25519 root@193.183.22.54`
+  (port changes on each resume — re-query `python3 tools/runpod_ctl.py status`).
+- Pod is **ephemeral** (no persistent network volume): stop/resume wiped `/workspace`,
+  `pip` packages, and `/workspace/external_catalogs/pre_desi.fits`. Deps reinstalled this
+  session (`timm 1.0.28`, `datasets 5.0.0`, astropy/scipy/pandas/pyarrow/huggingface_hub;
+  torch 2.2.0+cu121 preinstalled).
+
+### Data-pipeline SMOKE TEST — **PASS** (2026-07-17 23:03Z)
+Wrapper `pipelines/p2_chirality/train_g1_manifest.py --smoke`. End-to-end verified:
+- **GZ1 S3 labels:** fetched `GalaxyZoo1_DR_table2.csv.gz` (sha256 `5121e43f5028…`);
+  confident CW=19,613 / ACW=20,923 (P>0.7), balanced 19,613.
+- **GZ-DESI crossmatch + image pull:** streamed `mwalmsley/gz_desi` (resolved rev
+  `b7583bb2ac445e93c5447a08063acd7c1477fd13`); **332 GZ1 matches from 8,000 scanned
+  (4.15% match rate, 3″ tol)** in 0.3 min; images pulled inline from gz_desi rows.
+- **ViT-Small fwd+bwd:** `timm vit_small_patch16_224` pretrained + 3-class head, 10.98M
+  trainable; one batch (32) fwd+bwd loss=1.0998 (≈ln3, random-init sanity), 0.27 s,
+  **peak GPU 1.13 GB / 16 GB** → A4000 is ample; no larger GPU needed.
+- **Manifest capture verified:** 392 objects logged, each with source + gz_desi `id_str`
+  (e.g. `313784_243`) + ra/dec (real) or `synth_idx` (synthetic), plus all seeds (42),
+  split rule, revisions, package versions, git SHA.
+- Evidence committed: `pipelines/p2_chirality/outputs/g1_manifest_retrain/{g1_smoke_result.json,
+  g1_smoke_manifest.json,smoke_run.log}`.
+
+### BLOCKER (documented, lane NOT fully closed): CE-ResNet component
+- `pre_desi.fits` (Jia et al. 2023 CE-ResNet, RA/DEC/P_CW/P_ACW) supplied ~67.5% of the
+  historical realization (17,153 spirals + 826 non-spirals of the 26,616 rows; tex L871).
+  It lived only on the pod's ephemeral disk and was wiped on resume; **not in the repo, not
+  cached locally, no immediate public download link** located (source lineage: arXiv 2210.04168 /
+  GitHub `h3jia/galaxy_spin_classifier` / NADC China-VO — needs genuine re-provisioning).
+- Consequence: **this session's retrain uses the verified GZ1-core + synthetic realization
+  only** (`ce_resnet_present=false` in the manifest). It produces a fully regenerable manifest
+  + checkpoint, but does **not yet** engage the CE-non-spiral 826-vs-846 sub-conflict, which
+  requires CE-ResNet. The wrapper is **CE-ready**: drop `pre_desi.fits` into
+  `/workspace/external_catalogs/` and re-run — it auto-includes CE spirals/non-spirals and
+  records the file sha256. This is the one item to provision for full historical-composition
+  supersession.
+
+### FULL retrain — LAUNCHED (detached), NOT claimed complete
+- Command (on pod): `cd /workspace/g1 && source env.sh && nohup python3 -u
+  train_g1_manifest.py --full --epochs 80 > full_run.log 2>&1 &`
+- **pod:** `580dgszgib3ti4` · **PID 1010** · **launch:** 2026-07-18T00:17:23Z
+- **CONFIRMED assembling + training (00:24Z):** 150K-row scan done in 5.8 min →
+  **gz1=6,637 (EXACTLY the historical GZ1 count; 6,637 unique object identities, no dups)**
+  + 2,000 synthetic = **n_total 8,637** (train 6,910 / val 1,727; classes CW 3,316 /
+  CCW 3,321 / NS 2,000). ViT-Small 10.98M trainable. **epoch 0/80: train_acc 0.663,
+  val_acc 0.619, loss 0.428**; GPU 99% util, 4.4 GB used; checkpoints g1_ckpt_{best,last,
+  epoch000}.pt written. ~45 s/epoch → **ETA ~45–60 min** (well under estimate).
+  The GZ1-core component of the historical realization is regenerated identically; only
+  the CE-ResNet component (17,153 spirals + 826 non-spiral) is absent (see BLOCKER above).
+- **manifest (written before training):** `/workspace/g1/out/g1_training_manifest.json`
+- **checkpoints (every epoch):** `/workspace/g1/out/g1_ckpt_epoch###.pt`, `g1_ckpt_best.pt`,
+  `g1_ckpt_last.pt`; result `/workspace/g1/out/g1_training_result.json`
+- **log:** `/workspace/g1/full_run.log`
+- **POLL:** `ssh -p <port> -i ~/.ssh/id_ed25519 root@193.183.22.54 "tail -20 /workspace/g1/full_run.log; ls -la /workspace/g1/out/"`
+  (get `<port>` from `python3 tools/runpod_ctl.py status`; if sshd is down after a resume,
+  re-run `PROXY=580dgszgib3ti4-644119b0@ssh.runpod.io tools/pod_bootstrap_sshd.sh` first).
+- **BACKUP before any stop (`/backup-3plus`):** pull `g1_training_manifest.json` +
+  `g1_ckpt_best.pt` + `g1_training_result.json` to repo (loc 1) → git (loc 2) →
+  HF model repo `bamfai/galaxy-chirality-v2` and/or B2 (loc 3). Do NOT `podStop` before this.
+
+### Spend (this session)
+- A4000 @ $0.17/h, resumed ~2026-07-17 22:4xZ; ~1.5 h elapsed to launch (smoke + deps +
+  bootstrap) ≈ **$0.26** so far; full retrain adds ~$0.3–0.5. Running total well under $1.
+
+---
+
 ## G2 — Training-disjoint held-out validation  ⟵ BLOCKED on G1 manifest
 
 **Answers:** reviewer gate M3 (GZ1 validation overlap-contaminated; no independent held-out).
