@@ -57,6 +57,29 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p2-v1-7-123-g3-torsion-bound-closure-2026-07-17",
+    dateISO: "2026-07-17",
+    timePT: "3:59 PM",
+    kind: "closure-wave",
+    title: "P2 v1.7.123 — G3 model-specific Einstein-Cartan torsion bound COMPUTED (assumption f bounded); dressed-metric intermediate",
+    papers: ["P2"],
+    summary:
+      "New Eq. 5 + a compact bounded-disclosure paragraph in the Assumptions section present |delta f_NL^tor| <~ (35/16)(3/16)[gamma^2/(1+gamma^2)] kappa n_psi,c^2/rho_c, a sympy Einstein-Cartan four-fermion estimate anchored verbatim to the companion P1A's convention-audited axial contact term -(3kappa/16)[gamma^2/(1+gamma^2)](psibar gamma^mu gamma^5 psi)^2 (P1A benchmark kappa<n^2> reproduced to 0.1%). Within the EFT's own validity domain (x_psi = kappa n_psi,c^2/rho_c < 1) the bound saturates at the prefactor 0.022 (gamma=0.2375, BH-entropy-calibrated Immirzi) to 0.21 (gamma=1) -- torsion can never exceed ~1-10% of the -35/16 amplitude wherever the effective bounce description holds, and is <<1e-3 for any sub-Planckian fermion abundance; n_psi,c is carried as an explicit symbolic model parameter, never fixed. Assumption (f) converts from asserted to bounded. A separately-committed dressed-metric intermediate also lands this wave: the bounded a''/a = x^(1/3)(1/6+x/3) dressed geometric potential cures the Phase-1 gradient-transmission regulator pathology (coefficient c now regulator(dcut)-independent to <1%, vs. the earlier c~1/dcut divergence) -- IC-epoch placement and the AAN quantum-mass term honestly remain open to fully close gate G1. No headline number changed, -35/16 UNCHANGED, nothing fabricated; readiness cap 80 HOLDS pending exact v1.7.123 confirmation.",
+    keyTakeaways: [
+      "Real compute: sympy Einstein-Cartan four-fermion estimate, anchored verbatim to the companion P1A's convention-audited contact term (benchmark kappa<n^2> reproduced to 0.1%)",
+      "New Eq. 5: |delta f_NL^tor| <~ (35/16)(3/16)[gamma^2/(1+gamma^2)] kappa n_psi,c^2/rho_c, with n_psi,c an explicit symbolic (never-fixed) model parameter",
+      "Within EFT validity (x_psi<1) the bound saturates at prefactor 0.022 (gamma=0.2375) to 0.21 (gamma=1) -- torsion never exceeds ~1-10% of -35/16, and is <<1e-3 for sub-Planckian abundances; assumption (f) now bounded, not asserted",
+      "Dressed-metric intermediate: bounded a''/a = x^(1/3)(1/6+x/3) potential cures the Phase-1 gradient-transmission regulator pathology (c now dcut-independent <1%); IC-epoch placement + AAN quantum-mass term remain to fully close G1",
+      "v1.7.123: 11 pp (grew from 10), MD5 ff8fc6f5aac9699f5d176f6b021e1125, Convex row k57aners9sjz15ct992mr49e6x8aq0rs, directive-G PASS 19 mirrors",
+    ],
+    links: [
+      { label: "G3 torsion-bound script", href: `${GH}/research/cubic_bounce_transmission/g3_torsion_fourfermion_bound.py` },
+      { label: "G3 torsion-bound JSON", href: `${GH}/research/cubic_bounce_transmission/g3_torsion_fourfermion_bound.json` },
+      { label: "P2 compute campaign notes", href: `${GH}/project-context/SSOT/paper-2/COMPUTE_CAMPAIGN_2026-07-17.md` },
+      { label: "P2 canonical status", href: `${GH}/project-context/SSOT/paper-2/status.md` },
+    ],
+  },
+  {
     id: "p4-v1-0-265-a95-observed-label-closure-2026-07-17",
     dateISO: "2026-07-17",
     timePT: "2:39 PM",

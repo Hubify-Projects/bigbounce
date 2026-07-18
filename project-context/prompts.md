@@ -641,3 +641,11 @@ Switched to Opus 4.7 + xhigh effort for this.
 - `agent`: Claude Code desktop / claude-fable-5
 
 > continue with the runpod compute campaigns for P4 and P2 and tell me concisely the publishability publish readiness status of each paper
+
+**15:39 PT - Authorize G1 pod smoke test + retrain; continue to 100% publication readiness**
+
+- `cwd`: /Users/houstongolden/Desktop/CODE_YOU/bigbounce
+- `session`: bigbounce-resume-claude-desktop-2026-07-16
+- `agent`: Claude Code desktop / claude-fable-5
+
+> run the G1 pod smoke test and retrain and continue until all papers are 100% ready for official publication
