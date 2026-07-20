@@ -93,3 +93,7 @@ pipelines/p2_chirality/outputs/canonical_provenance/e2e_fullrun/e2e_shards/
 
 # P4 G1 retrain checkpoint — 88MB, backed up to HF bamfai/galaxy-chirality-v2 (g1-retrain-2026-07-17) + pod; not committed
 pipelines/p2_chirality/outputs/g1_retrain/*.pt
+
+# P4 CE-ResNet catalog (Jia 2022 galaxy-spin-zs-catalog) — 363MB external artifact,
+# re-provisionable from Zenodo DOI 10.5281/zenodo.7167388; provenance file IS tracked.
+pipelines/p2_chirality/external_catalogs/*.fits

@@ -262,7 +262,7 @@ Wrapper `pipelines/p2_chirality/train_g1_manifest.py --smoke`. End-to-end verifi
 - Evidence committed: `pipelines/p2_chirality/outputs/g1_manifest_retrain/{g1_smoke_result.json,
   g1_smoke_manifest.json,smoke_run.log}`.
 
-### BLOCKER (documented, lane NOT fully closed): CE-ResNet component
+### BLOCKER (original, documented): CE-ResNet component — **RESOLVED 2026-07-19 (see below)**
 - `pre_desi.fits` (Jia et al. 2023 CE-ResNet, RA/DEC/P_CW/P_ACW) supplied ~67.5% of the
   historical realization (17,153 spirals + 826 non-spirals of the 26,616 rows; tex L871).
   It lived only on the pod's ephemeral disk and was wiped on resume; **not in the repo, not
@@ -275,6 +275,34 @@ Wrapper `pipelines/p2_chirality/train_g1_manifest.py --smoke`. End-to-end verifi
   `/workspace/external_catalogs/` and re-run — it auto-includes CE spirals/non-spirals and
   records the file sha256. This is the one item to provision for full historical-composition
   supersession.
+
+### CE-ResNet RE-PROVISIONED — 2026-07-19 (data worker session) ⟵ BLOCKER CLEARED
+**The `pre_desi.fits` re-provisioning blocker above is RESOLVED.** The catalog is public,
+no-login, on Zenodo — the GitHub repo carries no data assets and NADC/China-VO was a
+red-herring in the lineage; the real host is Zenodo.
+- **Canonical source (DOI):** `10.5281/zenodo.7167388` — Zenodo record `galaxy-spin-zs-catalog`
+  (He Jia, Hong-Ming Zhu, Ue-Li Pen; published 2022-10-08; CC-BY-4.0). This is the data
+  record for arXiv:2210.04168 ("Galaxy Spin Classification I: Z-wise vs S-wise Spirals with
+  Chirality Equivariant Residual Network"). GitHub `h3jia/galaxy_spin_classifier` has **no
+  releases / no data assets** — code only; the catalog lives ONLY on Zenodo.
+- **Direct URL:** `https://zenodo.org/records/7167388/files/pre_desi.fits?download=1`
+- **Downloaded to:** `pipelines/p2_chirality/external_catalogs/pre_desi.fits` (gitignored — 363MB;
+  provenance file committed).
+- **Size:** 380,897,280 bytes (363 MiB). **sha256:**
+  `894dbe887140c165488a0f6053e2cd21f4ab72be9b06ece733e6ce177c0e304b`.
+- **FITS validity:** VALID (astropy 6.0.1). HDU1 `SWEEP` BinTableHDU, **1,953,246 rows × 40 cols**,
+  incl. exactly `P_CW`, `P_ACW` (CE-ResNet DESI-image chirality probs, float64 ~[0.006,0.972]),
+  `RA`, `DEC` — matches the wrapper's expected schema.
+- **Provenance:** `pipelines/p2_chirality/external_catalogs/PROVENANCE.md` (committed).
+- **Companion (not pulled, same record):** `reduced_gz1.csv` (70.1MB, 173,097 GZ1 galaxies with
+  `p_cw_gz/p_acw_gz`, `n_vote`, `p_cw_sdss/p_acw_sdss`, `p_cw_desi/p_acw_desi`) — available from
+  the same DOI if the 26,616-vs-26,626 crossmatch reconciliation needs the GZ-side votes.
+- **Next step (NOT done this session — no retrain per worker scope):** resume A4000
+  `580dgszgib3ti4`, rsync `pre_desi.fits` to `/workspace/external_catalogs/`, re-run
+  `train_g1_manifest.py --full` — the wrapper auto-includes CE spirals/non-spirals
+  (`ce_resnet_present=true`) and records the sha256, engaging the CE-non-spiral 826-vs-846
+  sub-conflict for full historical-composition supersession. G1 remains gated on that retrain
+  completing + `g1_training_manifest.json` committed; the external-data blocker is now cleared.
 
 ### FULL retrain — LAUNCHED (detached), NOT claimed complete
 - Command (on pod): `cd /workspace/g1 && source env.sh && nohup python3 -u
