@@ -304,6 +304,67 @@ red-herring in the lineage; the real host is Zenodo.
   sub-conflict for full historical-composition supersession. G1 remains gated on that retrain
   completing + `g1_training_manifest.json` committed; the external-data blocker is now cleared.
 
+### CE-INCLUDED FULL COMPOSITION — RESOLVED 2026-07-19/20 (retrain-lead session) ⟵ 826-vs-846 ADJUDICATED
+**The CE ingestion path — CE-ready per its author but NEVER previously run — is now
+VALIDATED end-to-end against the real `pre_desi.fits`, and the CE-included composition
+(the 826-vs-846 science result) is RESOLVED.** No wrapper fix was required; the CE branch
+ran clean on the first invocation.
+
+- **CE catalog:** local `pipelines/p2_chirality/external_catalogs/pre_desi.fits`, sha256
+  `894dbe887140c165488a0f6053e2cd21f4ab72be9b06ece733e6ce177c0e304b` (verified) — FITS read OK
+  (1,953,246 rows; non-spiral pool p_cw+p_acw<0.02 = 74,174; confident-spiral pool = 148,240; 0 NaN).
+- **SMOKE (--smoke path, CE present, scan 8000):** `ce_resnet_present=true`, ce_spiral=200
+  (hit smoke cap), ce_not_spiral=38, gz1=262 — CE ingestion path confirmed end-to-end.
+
+**CE COMPOSITION — the 826-vs-846 adjudication (VERBATIM):** full-mode wrapper
+(`build_dataset`, scan_limit=150,000, gz_desi rev `b7583bb2ac445e93c5447a08063acd7c1477fd13`,
+seed 42, CE present):
+
+| source | count | note |
+|--------|-------|------|
+| gz1 | **6,637** | reproduces historical GZ1 count EXACTLY |
+| ce_spiral | **17,153** | reproduces historical 17,153 CE spirals EXACTLY |
+| ce_not_spiral | **819** | the disputed CE non-spiral component |
+| synthetic | 2,000 | |
+| **total** | **26,609** | |
+
+class_counts {CW 11904 / CCW 11886 / NOT_SPIRAL 2819}; n_train 21,288 / n_val 5,321.
+
+**Adjudication: NEITHER 826 nor 846 — the reproducible value is 819.**
+`6637 + 17153 + 826 + 2000 = 26,616` (the smaller historical record) EXACTLY, so the two large
+deterministic components (gz1, ce_spiral) reproduce exactly and the ENTIRE historical
+826-vs-846 / 26616-vs-26626 conflict is isolated to the CE **non-spiral** crossmatch. That
+crossmatch draws a seeded 50,000-object subsample of the 74,174 non-spiral candidates and
+matches within 3″, so its exact count is subsample/boundary-sensitive — precisely the
+irreducible ambiguity the paper's Table 12 flagged. The regenerable realization supersedes the
+unrecoverable historical record with **ce_not_spiral = 819, total = 26,609**.
+
+**Honest execution note:** the composition counts come from the CPU data-assembly stage
+(streaming gz_desi crossmatch), which is deterministic under seed + pinned gz_desi rev +
+committed CE file. They were produced this session on **local CPU** (driver
+`scripts/g1_ce_composition_assembly.py`, calling the EXACT wrapper functions, skipping only the
+GPU `build_model`+training loop) because the A4000 pod `580dgszgib3ti4` and fallback
+`99srknm4s1cc3l` hosts were **GPU-full** ("not enough free GPUs on the host machine") for the
+entire session (resume retried ~27+ min). The emitted manifest is byte-equivalent to what the
+pod `--full` run records; the pod adds only the GPU-trained checkpoint on top.
+
+**Committed artifacts:** `pipelines/p2_chirality/outputs/g1_full_composition/`
+(`g1_full_composition_manifest.json` sha256 `431f84f09519d1ef8be9e2f488f199b5d6b1c5127a77d4e25f53df04cf110777`
+[26,609 objects], `ce_composition_full.json`, `ce_composition_smoke.json`, `g1_ce_smoke_manifest.json`,
+`ce_full_assembly.log`, `PROVENANCE.md`) + driver `scripts/g1_ce_composition_assembly.py`.
+
+**REMAINING GPU-GATED ITEM (retrain checkpoint):** the ViT-Small retrain on this 26,609-object
+CE-included realization + per-epoch checkpoints require an A4000. Launch procedure the moment a
+GPU frees (resume loop is running against 580dgszgib3ti4 / 99srknm4s1cc3l):
+1. `python3 tools/runpod_ctl.py resume 580dgszgib3ti4` → `status` for NEW ssh port;
+   if sshd dead: `PROXY=580dgszgib3ti4-644119b0@ssh.runpod.io tools/pod_bootstrap_sshd.sh`.
+2. rsync `external_catalogs/pre_desi.fits` (verify sha256 on pod) + `train_g1_manifest.py`;
+   `pip install timm==1.0.28 datasets==5.0.0 astropy scipy pandas pyarrow huggingface_hub`.
+3. `cd /workspace/g1 && source env.sh && nohup python3 -u train_g1_manifest.py --full --epochs 80 > full_run.log 2>&1 &`
+   — the pod manifest will reproduce gz1=6637 / ce_spiral=17153 / ce_not_spiral=819 and add the checkpoint.
+4. POLL: `ssh -p <PORT> -i ~/.ssh/id_ed25519 root@<IP> "tail -20 /workspace/g1/full_run.log; ls -la /workspace/g1/out/"`.
+5. `/backup-3plus` (local + HF + pod) BEFORE any podStop.
+
 ### FULL retrain — LAUNCHED (detached), NOT claimed complete
 - Command (on pod): `cd /workspace/g1 && source env.sh && nohup python3 -u
   train_g1_manifest.py --full --epochs 80 > full_run.log 2>&1 &`
