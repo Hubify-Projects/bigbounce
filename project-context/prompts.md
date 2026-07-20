@@ -681,3 +681,24 @@ Switched to Opus 4.7 + xhigh effort for this.
 - `agent`: Claude Code desktop / claude-fable-5
 
 > continue
+
+## 2026-07-20 - bigbounce-resume-claude-desktop-2026-07-16
+
+### Houston messages, verbatim
+
+**12:53 PT - Full visual site audit + PDF/version/status consistency + crystal-clear decision brief; HARD DEADLINE: publish everything within 4 days**
+
+- `cwd`: /Users/houstongolden/Desktop/CODE_YOU/bigbounce
+- `session`: bigbounce-resume-claude-desktop-2026-07-16
+- `agent`: Claude Code desktop / claude-fable-5
+
+> please do a full website audit of every page visually and ensure they all look perfect and flawless from a human usability readability and pro top tier creative design professional perspective - all pdfs for all papers with the most recent date and version numbers on them properly too - all statuses updated and consistent and super clear easy to understand next steps for me as the lead researcher to know what decisions remain for me, what blockers if any, etc so i know exactly the next steps before i publish these papers and to publish them. I need to publish them and all this research and datasets and site and papers and everything THIS WEEK. 4 days remain until final deadline to publish all research.
+
+**13:03 PT - Zenodo set up; token+app credentials provided (redacted); authorize DOI minting flow**
+
+- `cwd`: /Users/houstongolden/Desktop/CODE_YOU/bigbounce
+- `session`: bigbounce-resume-claude-desktop-2026-07-16
+- `agent`: Claude Code desktop / claude-fable-5
+- `redaction`: secret-like value redacted
+
+> Zenodo is setup btw - here's everything to save to the .env.local and complete whatever steps you need with it please - Zenodo.org Access token, token name: houstongolden-zenodo, [redacted secret-like value] secret-like value]. Zenodo application: Client ID [redacted secret-like value], Client Secret [redacted secret-like value]. Name: bigbounce. Website URL https://bigbounce.hubify.app/. Redirect URIs: https://bigbounce.hubify.app/

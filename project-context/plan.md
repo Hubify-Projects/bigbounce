@@ -10,6 +10,15 @@ and artifact-addressed review reuse without weakening scientific gates.
 
 ## Account handoff checkpoint
 
+**[SUPERSEDED 2026-07-16 by standing directive N — CLAUDE.md]** Codex/OpenAI is
+now PAUSED entirely for the active campaign (Houston explicit: burning too
+much Codex usage, resumed the loop in Claude Code). Do NOT set
+`BIGBOUNCE_CODEX_SUBSCRIPTION_ENABLED=1` or otherwise restore Codex as a
+review leg while directive N stands — the section below is retained for
+history only. Current INT routing = Claude reviewer subagent (Opus-tier) +
+direct Grok/xAI API + direct Gemini API; a missing Codex leg is recorded
+absent, never faked or back-filled.
+
 The dedicated Codex subscription handoff is documented in
 `project-context/BIGBOUNCE_CODEX_ACCOUNT_HANDOFF_2026-07-16.md`. On resume,
 verify authentication and the no-OpenAI-API routing regression before any new
@@ -19,6 +28,14 @@ the new account passes verification, set
 leg; no scientific gates or evidence contracts change.
 
 ## Current execution order
+
+**[SUPERSEDED 2026-07-20 — framing note]** This tooling-first HubStack-preflight-
+engine ordering (steps 1-2) predates the drive-to-100 R-round loop that has
+actually been driving the campaign since; the program now runs continuous
+per-paper INT/EXT convergence rounds (see CLAUDE.md `/bigbounce-r-round`,
+directives H/J/K/L/M) rather than a staged preflight-then-review sequence.
+Step 5's provider routing (directive N) is current and unchanged; the list
+below is retained for history.
 
 1. Compile the accumulated review taxonomy into a canonical machine-readable HubStack preflight engine and a BigBounce all-six-paper adapter. Bind every PASS receipt to source commit, source/PDF hashes, registry hash, and rule-catalog hash.
 2. Run the proactive portfolio sweep before any new review dispatch. Close latent known-pattern defects in independent paper lanes and rerun the transitive claim/artifact/cross-paper dependency gates after every closure.
