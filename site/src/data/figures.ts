@@ -53,7 +53,7 @@ export const figureSections: FigureSection[] = [
         "alt": "Observational decision timeline for the two surviving ECH-independent class-level falsification paths",
         "number": "Figure 4 (fig:obs_timeline)",
         "title": "Observational decision timeline for the two surviving ECH-independent class-level falsification paths",
-        "desc": "Observational decision timeline for the two surviving ECH-independent class-level falsification paths. Top: LiteBIRD CMB birefringence (σ(β)≈0.03^, launch early 2030s) testing the spectator-ALP route 4. Bottom: SPHEREx galaxy bispectrum ( 2028 first cosmological data release) testing the matter-bounce f_NL=-35/8 prediction at 2.6--5σ realistic significance (foo…",
+        "desc": "Observational decision timeline for the two surviving ECH-independent class-level falsification paths. Top: LiteBIRD CMB birefringence (σ(β)≈0.03^, launch early 2030s) testing the spectator-ALP route 4. Bottom: SPHEREx galaxy bispectrum ( 2028 first cosmological data release) testing the matter-bounce f_NL=-35/16 prediction at 1.3--2.75σ realistic significance (foo…",
         "source": "Paper 1A · v1A.0.50"
       },
       {
@@ -69,7 +69,7 @@ export const figureSections: FigureSection[] = [
         "alt": "Detection forecast for the two surviving ECH-independent class tests",
         "number": "Figure 6 (fig:detection_forecast)",
         "title": "Detection forecast for the two surviving ECH-independent class tests",
-        "desc": "Detection forecast for the two surviving ECH-independent class tests. Top: matter-bounce f_ NL=-35/8 in the SPHEREx multi-tracer f_ NL Fisher landscape (companion Paper II, 2.6--5σ projection). Bottom: spectator-ALP cosmic birefringence in the LiteBIRD σ(β) ≈0.03^ window (Paper Ib companion); the WMAP+Planck β=0.342^± 0.094^ and ACT DR6 β=0.215^± 0.074^ point…",
+        "desc": "Detection forecast for the two surviving ECH-independent class tests. Top: matter-bounce f_ NL=-35/16 in the SPHEREx multi-tracer f_ NL Fisher landscape (companion Paper II, 1.3--2.75σ projection). Bottom: spectator-ALP cosmic birefringence in the LiteBIRD σ(β) ≈0.03^ window (Paper Ib companion); the WMAP+Planck β=0.342^± 0.094^ and ACT DR6 β=0.215^± 0.074^ point…",
         "source": "Paper 1A · v1A.0.50"
       },
       {
@@ -93,7 +93,7 @@ export const figureSections: FigureSection[] = [
         "alt": "Observational decision timeline for the surviving ECH tests",
         "number": "Figure 103",
         "title": "Observational timeline",
-        "desc": "Timeline of survey decisions (CMB-S4, LiteBIRD, SPHEREx, DESI DR2) that could falsify or confirm the surviving ECH-independent class-level ECH signatures (f_NL = -35/8 matter-bounce + spectator-ALP birefringence).",
+        "desc": "Timeline of survey decisions (CMB-S4, LiteBIRD, SPHEREx, DESI DR2) that could falsify or confirm the surviving ECH-independent class-level ECH signatures (f_NL = -35/16 matter-bounce + spectator-ALP birefringence).",
         "source": "Paper 1A · v1A.0.50-2026-06-09"
       },
       {
@@ -101,7 +101,7 @@ export const figureSections: FigureSection[] = [
         "alt": "Detection forecast for the 2 surviving ECH tests",
         "number": "Figure 104",
         "title": "Surviving-test detection forecast",
-        "desc": "Detection-significance forecast for the matter-bounce f_NL = -35/8 SPHEREx window + the spectator-ALP birefringence LiteBIRD window. Connects the no-go theorem of §sec:barriers to the surviving falsification paths in §sec:surviving.",
+        "desc": "Detection-significance forecast for the matter-bounce f_NL = -35/16 SPHEREx window + the spectator-ALP birefringence LiteBIRD window. Connects the no-go theorem of §sec:barriers to the surviving falsification paths in §sec:surviving.",
         "source": "Paper 1A · v1A.0.50-2026-06-09"
       }
     ]
@@ -169,15 +169,15 @@ export const figureSections: FigureSection[] = [
         "alt": "Matter-bounce bispectrum shape function B_NL(k_1, k, k) as a function of the squeeze ratio k_1/k, showing con…",
         "number": "Figure 1 (fig:shape)",
         "title": "Matter-bounce bispectrum shape function B_NL(k_1, k, k) as a function of the squeeze ratio k_1/k, showing con…",
-        "desc": "Matter-bounce bispectrum shape function B_NL(k_1, k, k) as a function of the squeeze ratio k_1/k, showing convergence to -35/8 in the squeezed limit. Red circle: squeezed benchmark. Orange square: equilateral. Green triangle: folded.",
+        "desc": "Exact four-vertex matter-bounce shape function B_NL(k_L, k_S, k_S) as a function of the squeeze ratio k_L/k_S, evaluated directly from the exact vertex-sum polynomial and approaching the corrected squeezed-limit value -35/16 = -2.1875; the marker identifies the equilateral value -255/128.",
         "source": "Paper 2 · v1.7.45"
       },
       {
         "src": "/images/fig2_survey_comparison.png",
-        "alt": "Detection significance for f_NL = -35/8 across survey configurations",
+        "alt": "Detection significance for f_NL = -35/16 across survey configurations",
         "number": "Figure 2 (fig:surveys)",
-        "title": "Detection significance for f_NL = -35/8 across survey configurations",
-        "desc": "Detection significance for f_NL = -35/8 across survey configurations. Error bars span the optimistic endpoint (published ideal σ(f_NL) with template-overlap correction only) to the conservative endpoint (full budget: r=0.84 overlap, -correction, photometric-z degradation, PNG bias, b_ marginalization); i.e.\\ optimistic-to-conservative ranges accounting for…",
+        "title": "Detection significance for f_NL = -35/16 across survey configurations",
+        "desc": "Detection significance for f_NL = -35/16 across survey configurations. Error bars span the optimistic endpoint (published ideal σ(f_NL) with template-overlap correction only) to the conservative endpoint (full budget: r=0.84 overlap, -correction, photometric-z degradation, PNG bias, b_ marginalization); i.e.\\ optimistic-to-conservative ranges accounting for…",
         "source": "Paper 2 · v1.7.45"
       },
       {
@@ -193,7 +193,7 @@ export const figureSections: FigureSection[] = [
         "alt": "Left: σ(f_NL) vs.\\ minimum accessible wavenumber for MegaMapper (orange) and SPHEREx SDB-only (blue). The SPH…",
         "number": "Figure 4 (fig:kmin)",
         "title": "Left: σ(f_NL) vs.\\ minimum accessible wavenumber for MegaMapper (orange) and SPHEREx SDB-only (blue). The SPH…",
-        "desc": "Left: σ(f_NL) vs.\\ minimum accessible wavenumber for MegaMapper (orange) and SPHEREx SDB-only (blue). The SPHEREx bispectrum channel (σ = 0.7, dotted) avoids the ultra-large-scale fragility. Right: corresponding detection significance for f_NL = -35/8.",
+        "desc": "Left: σ(f_NL) vs.\\ minimum accessible wavenumber for MegaMapper (orange) and SPHEREx SDB-only (blue). The SPHEREx bispectrum channel (σ = 0.7, dotted) avoids the ultra-large-scale fragility. Right: corresponding detection significance for f_NL = -35/16.",
         "source": "Paper 2 · v1.7.45"
       },
       {
@@ -209,7 +209,7 @@ export const figureSections: FigureSection[] = [
         "alt": "Observational decision thresholds",
         "number": "Figure 6 (fig:thresholds)",
         "title": "Observational decision thresholds",
-        "desc": "Observational decision thresholds. Green: strongly favors bounce. Red: strongly disfavors the quasi-dust matter bounce. Blue vertical line: bounce prediction f_NL = -35/8. Error bars: SPHEREx (σ = 0.7) and MegaMapper conservative (σ = 1.5).",
+        "desc": "Observational decision thresholds. Green: strongly favors bounce. Red: strongly disfavors the quasi-dust matter bounce. Blue vertical line: bounce prediction f_NL = -35/16. Error bars: SPHEREx (σ = 0.7) and MegaMapper conservative (σ = 1.5).",
         "source": "Paper 2 · v1.7.45"
       },
       {
@@ -255,7 +255,7 @@ export const figureSections: FigureSection[] = [
         "alt": "Cross-transfer baseline map",
         "number": "Figure 2 (fig:skymap)",
         "title": "Cross-transfer baseline map",
-        "desc": "Cross-transfer baseline map. Mollweide projection of the initial cross-transfer anomaly baseline (319,443 detections shown; canonical Path-C unique count is 378,280 after per-survey native retrains and 7-way deduplication --- see Table Path-C row and ). ACT DR6 is quarantined and excluded. Color-coded by survey (see legend). The DESI DR1 footprint (14,000 d…",
+        "desc": "Cross-transfer baseline map. Mollweide projection of the initial cross-transfer anomaly baseline (319,443 detections shown; the canonical Path-C unique count of 377,482 is not a deduplication of this baseline but the 5″ dedup of the count-retained per-survey native-retrained tallies --- see Table Path-C row and §pathc). ACT DR6 is quarantined and excluded. Color-coded by survey (see legend). The DESI DR1 footprint (14,000 d…",
         "source": "Paper 3 · v3.1.80"
       },
       {
