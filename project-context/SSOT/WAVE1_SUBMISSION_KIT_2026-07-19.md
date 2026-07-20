@@ -1,6 +1,16 @@
 # Wave-1 arXiv Submission Kit — P3, P1A, P1B
 ## Prepared 2026-07-19 | git HEAD `b680ca1c` | Goal: a minutes-long click session for Houston
 
+> **2026-07-20 update — P3 tarball rebuilt at the DOI-bearing version.** P3's
+> `\paperVersion` advanced `v3.2.0-r10` → `v3.2.0-r11` to embed the real minted
+> Zenodo archival DOI `10.5281/zenodo.21461888` (concept DOI
+> `10.5281/zenodo.21461887`) in the Data Availability section. The submission
+> tarball below is rebuilt and standalone-verified at `v3.2.0-r11`
+> (`project-context/SSOT/arxiv_tarballs/paper3_apjs_arxiv_v3.2.0-r11.tar.gz`,
+> commit-bound to `bdb3d5cceb61096a7ca9aab279e80a2d379ff15c`). P1A and P1B are
+> **unchanged** — still `v1A.0.124` / `v2B.0.11`, tarballs as originally
+> verified 2026-07-19. See `project-context/SSOT/queue.md` for the closed row.
+
 This kit is the single source for the wave-1 arXiv drop. Everything below is
 **verified against the current tex sources** (not the stale 2026-06 runbook,
 which describes superseded paper versions and cross-citation structure).
@@ -31,7 +41,7 @@ No cross-paper sequencing constraint. Recommended upload order (simplest first):
 
 | Paper | Version | Tarball (in `project-context/SSOT/arxiv_tarballs/`) | Pages | Figs | Compile | Tarball status |
 |-------|---------|------------------------------------------------------|-------|------|---------|----------------|
-| **P3**  | v3.2.0-r10 | `paper3_apjs_arxiv_v3.2.0-r10.tar.gz` | **17** | 3 | exit 0, **0 errors / 0 undef-ref**, 2 overfull (max 1.82 pt) | **VERIFIED** (existing, matches current) |
+| **P3**  | v3.2.0-r11 | `paper3_apjs_arxiv_v3.2.0-r11.tar.gz` | **17** | 3 | exit 0, **0 errors / 0 undef-ref**, 1 overfull (max 1.82 pt) | **REBUILT + VERIFIED 2026-07-20** (DOI-bearing version) |
 | **P1A** | v1A.0.124  | `paper1a_arxiv_v1A.0.124.tar.gz`      | **7**  | 0 | exit 0, **0 errors / 0 undef-ref**, 34 overfull (max 18.67 pt — cosmetic, see note) | **REBUILT + VERIFIED** (old v1A.0.123 was stale) |
 | **P1B** | v2B.0.11   | `paper1b_namaster_proof_arxiv_v2B.0.11.tar.gz` | **6** | 0 | exit 0, **0 errors / 0 undef-ref**, 2 overfull (max 0.43 pt) | **VERIFIED** (existing, matches current) |
 
@@ -39,12 +49,14 @@ Checksums (for provenance / re-verify):
 
 | Paper | tarball sha256 | tarball md5 | bytes |
 |-------|----------------|-------------|-------|
-| P3  | `a96c5b8c7cff3f8812a384ce840e5581a0fc3f1c50cabe3089a97471786c2448` | `9624f9101a90e59b56ca6e9cfbc50f5c` | 145,556 |
+| P3  | `365bd34910544ba10e712cf988247c943d7e370be9c5c90baa7e2a6f97ed30f4` | (see `.proof.json`) | 146,315 |
 | P1A | `3f56a6bf7452c8574656416e806727d0feaac4b750400d83a00b68bd2771993c` | `85923519615dd1364102135a2126cd6a` | 130,292 |
 | P1B | `51f37515c1780ad994cd9594953576d5e8bb43909c47d5c155a40a220b847e97` | `9f640a21561de9d2dc00b2a3964f1105` | 8,822 |
 
 Per-tarball verification receipts written alongside each tarball as
-`*.proof.json` (2026-07-19, verifier `wave1-submission-kit`).
+`*.proof.json` (P1A/P1B: 2026-07-19, verifier `wave1-submission-kit`; P3:
+rebuilt 2026-07-20 at the DOI-bearing version, verifier `doi-tarball-rebuild`,
+receipt `project-context/SSOT/arxiv_tarballs/paper3_apjs_arxiv_v3.2.0-r11.proof.json`).
 
 **Tarball contents (what arXiv receives):**
 - **P3**: `paper3_apjs.tex`, `aastex701.cls` (bundled — this is what makes it standalone), `figures/{p3_v320_catalog_overview,p3_v320_r6_chance_control,p3_v320_selection_waterfall}.pdf`
@@ -139,13 +151,14 @@ cosmological inference engine.
 
 ---
 
-### P3 — `paper3_apjs_arxiv_v3.2.0-r10.tar.gz`
+### P3 — `paper3_apjs_arxiv_v3.2.0-r11.tar.gz`
 
 - **Title:** `Public-ID Recovery for a Historical DESI DR1 Anomaly List: 170 High-Coordinate-Consistency Core and 11 Lower-Confidence Positional Associations`
 - **Primary category:** `astro-ph.IM`  ✅ **recommended** over `astro-ph.GA`. Rationale: the paper's own stated primary deliverable is *"the reusable, memory-bounded join and provenance/validation machinery itself"* — this is an instrumentation-&-methods / reproducibility paper about a public-identifier recovery pipeline, not a galaxy-astrophysics result. The 181-row catalog is the method's first instance.
 - **Cross-list:** `astro-ph.GA` (DESI galaxy/QSO targets, catalog content) and optionally `astro-ph.CO` (DESI is a cosmology survey). Recommend `astro-ph.GA` as the single cross-list; add `astro-ph.CO` only if Houston wants cosmology-list visibility.
 - **Comments field:** `17 pages, 3 figures. Prepared in AASTeX (ApJS format). Catalog at huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog (CC-BY-4.0). Code at github.com/Hubify-Projects/bigbounce`
 - **License:** config default `cc-by-4.0` (matches the CC-BY catalog/data release). Confirm this is what Houston wants for the manuscript source (§3).
+- **Archival DOI:** the manuscript now embeds the real minted Zenodo archival DOI `10.5281/zenodo.21461888` (concept `10.5281/zenodo.21461887`) in the Data Availability section — this is distinct from the AAS journal digital-asset DOI, which the journal assigns during its own publication workflow and remains honestly disclosed as pending in the text (§3.4 below is now historical for P3; no v2 back-patch needed for this DOI).
 - **Abstract (plain-text for webform):**
 
 ```
@@ -218,10 +231,12 @@ inference.
    - **(b) CC BY 4.0** — permits redistribution/adaptation with attribution. Matches the CC-BY-4.0 data/catalog releases (P3's HF catalog, P2/P4 config). Choose this if you want maximum reuse/openness and consistency with the data license.
    - **Recommendation:** P3 → **CC BY 4.0** (config already sets it; matches the catalog). P1A & P1B → your call; **arXiv non-exclusive (a)** is the safe default if you don't have a reason to prefer CC-BY. This is your authorization — the kit does not pick it for you.
 
-4. **Zenodo / software DOI — mint now (cite in v1) vs add in v2.** Both paths are clean because none of the papers currently prints a DOI as a live claim (P3 honestly says "AAS digital-asset DOI pending"; P1B links github/tree/main; P1A cites a reproducibility tree, not a DOI):
-   - **Path A — defer (recommended for speed):** submit v1 as-is today. Mint DOIs later and add them in a v2 replacement (arXiv v2 is free and easy). Nothing in v1 becomes wrong — the papers already state DOIs as pending.
-   - **Path B — mint first:** if you want a DOI cited in v1, mint before submitting: P1B → Zenodo software DOI for `namaster-proof 0.1.7`; P3 → the AAS digital-asset DOI is assigned by ApJS during *their* workflow (not something you mint on arXiv day) — leave P3 as "pending." Then insert the P1B DOI in the tex and rebuild that tarball.
-   - **Recommendation:** **Path A.** Wave-1 goes out today; DOIs land in v2. Only take Path B for P1B if a citable software DOI in v1 matters to you.
+4. **Zenodo / software DOI — mint now (cite in v1) vs add in v2.**
+   - **P3 — ALREADY EMBEDDED (2026-07-20), no longer deferred.** The Zenodo archival DOI `10.5281/zenodo.21461888` (concept `10.5281/zenodo.21461887`) is minted and embedded in the manuscript's Data Availability section at `v3.2.0-r11`; the submission tarball is rebuilt at this version (§1). The separate AAS journal digital-asset DOI is still honestly disclosed as "pending" — that one is assigned by ApJS during its own publication workflow and cannot be minted on arXiv day. No v2 back-patch is needed for the Zenodo DOI.
+   - **P1A, P1B — still deferred (unchanged).** Neither currently prints a DOI as a live claim (P1B links github/tree/main; P1A cites a reproducibility tree, not a DOI).
+     - **Path A — defer (recommended for speed):** submit v1 as-is today. Mint DOIs later and add them in a v2 replacement (arXiv v2 is free and easy). Nothing in v1 becomes wrong — the papers already state DOIs as pending.
+     - **Path B — mint first:** if you want a DOI cited in v1, mint before submitting: P1B → Zenodo software DOI for `namaster-proof 0.1.7`. Then insert the DOI in the tex and rebuild that tarball.
+     - **Recommendation:** **Path A** for P1A/P1B. Only take Path B for P1B if a citable software DOI in v1 matters to you.
 
 5. **P3 HuggingFace catalog → public.** At the moment P3 posts, flip `bamfai/bigbounce-anomaly-catalog` to public so the CC-BY-4.0 links in the paper resolve. (HF token `HF_TOKEN` in `.env.local`.) Verify the dataset is public before or at posting.
 
@@ -234,14 +249,14 @@ inference.
 **Pre-flight (once, before clicking):**
 1. Log into arxiv.org; confirm endorsement for `gr-qc` and `astro-ph.IM` (§3.1).
 2. Confirm ORCID `0009-0008-3617-8729` resolves and is linked (§3.2).
-3. Decide license per paper (§3.3) and DOI path (§3.4). Recommended: P3=CC-BY-4.0, P1A/P1B=arXiv non-exclusive, defer all DOIs to v2.
+3. Decide license per paper (§3.3) and DOI path (§3.4). Recommended: P3=CC-BY-4.0 (Zenodo archival DOI already embedded — no defer needed), P1A/P1B=arXiv non-exclusive, defer P1A/P1B DOIs to v2.
 
 **Per paper (repeat 3×; order P1B → P1A → P3):**
 4. arXiv → *Start New Submission* → license: pick per §3.3.
 5. *Upload files* → upload the one tarball from `project-context/SSOT/arxiv_tarballs/`:
    - P1B: `paper1b_namaster_proof_arxiv_v2B.0.11.tar.gz`
    - P1A: `paper1a_arxiv_v1A.0.124.tar.gz`
-   - P3: `paper3_apjs_arxiv_v3.2.0-r10.tar.gz`
+   - P3: `paper3_apjs_arxiv_v3.2.0-r11.tar.gz`
 6. Let arXiv auto-process → **verify the arXiv-side preview PDF page count** matches this kit (P1B 6, P1A 7, P3 17) and that no figures are missing. If arXiv's TeX build errors, the tarball still compiled locally with tectonic — check arXiv's log (it uses a pinned TeXLive; revtex4-2/aastex701 are standard there).
 7. *Add/Change Metadata* → paste Title, Abstract from §2; set author "Houston Golden", link ORCID.
 8. Set **Primary** + **Cross-list** categories per §2.
@@ -251,7 +266,7 @@ inference.
 
 **Post (optional, same day or later):**
 12. Flip P3's HF catalog to public (§3.5).
-13. If deferring DOIs (recommended): after any DOI is minted, upload a v2 replacement with the DOI inserted — no rush, no live-cross-ID coordination required (papers are independent).
+13. P3 needs no DOI v2 back-patch (already embedded at v3.2.0-r11, §3.4). For P1A/P1B, if deferring DOIs (recommended): after any DOI is minted, upload a v2 replacement with the DOI inserted — no rush, no live-cross-ID coordination required (papers are independent).
 14. Sync SSOT/Convex with the new arXiv IDs (standing directive A).
 
 ---
