@@ -1,0 +1,88 @@
+{
+  "paper": "P4",
+  "doi": "10.5281/zenodo.21461899",
+  "concept_doi": "10.5281/zenodo.21461898",
+  "record_id": 21461899,
+  "record_url": "https://zenodo.org/records/21461899",
+  "doi_url": "https://doi.org/10.5281/zenodo.21461899",
+  "doi_head_resolves": "200 -> https://zenodo.org/records/21461899 (verified)",
+  "state": "done",
+  "submitted": true,
+  "published_at": "2026-07-20T20:17:44.477788+00:00",
+  "modified": "2026-07-20T20:17:44.948461+00:00",
+  "receipt_written_utc": "2026-07-20T20:18:45.462464+00:00",
+  "staged_version_binding": {
+    "version": "v1.0.268",
+    "pdf_md5": "4e139b56b0718c70b73ae7295e4ee7b1",
+    "pdf_pages": 32,
+    "git_commit_at_staging": "397671bf901ad4526189efae10e9e912632e58a5",
+    "staging_directory": ".deposit-staging/P4/v1.0.268",
+    "tarball_verify": "tectonic isolated recompile: status=pass, errors=0, undefined_references=0 (P2/P4); P3 tracked standalone proof"
+  },
+  "metadata": {
+    "title": "An Observed-Label Chirality-Dipole Null in 949,584 High-Confidence DESI Spirals and an 8.5-Million-Galaxy Catalog",
+    "creators": [
+      {
+        "name": "Golden, Houston",
+        "affiliation": null
+      }
+    ],
+    "upload_type": "publication",
+    "publication_type": "article",
+    "license": "cc-by-4.0",
+    "access_right": "open",
+    "version": "1.0.268",
+    "keywords": [
+      "galaxy morphology",
+      "galaxy chirality",
+      "parity violation",
+      "astronomical catalogs"
+    ],
+    "orcid_note": "ORCID 0009-0008-3617-8729 intentionally omitted: Zenodo's InvenioRDM deposit backend drops the creator name field when an orcid is supplied via this API path; tool-generated staged .zenodo.json is name-only and was used verbatim."
+  },
+  "files": [
+    {
+      "filename": "chirality_catalog_paper.tex",
+      "size_bytes": 233289,
+      "zenodo_md5": "669a0def9dd962465dbf6191fb9f8116",
+      "local_staged_md5": "669a0def9dd962465dbf6191fb9f8116",
+      "md5_match": true
+    },
+    {
+      "filename": "paper4_arxiv_v1.0.268.tar.gz",
+      "size_bytes": 27128274,
+      "zenodo_md5": "819248d1fc177fba08ab6cf6d13c7414",
+      "local_staged_md5": "819248d1fc177fba08ab6cf6d13c7414",
+      "md5_match": true
+    },
+    {
+      "filename": "SHA256SUMS",
+      "size_bytes": 387,
+      "zenodo_md5": "0eaeebd2911886c141645615adcadceb",
+      "local_staged_md5": "0eaeebd2911886c141645615adcadceb",
+      "md5_match": true
+    },
+    {
+      "filename": "manifest.json",
+      "size_bytes": 2219,
+      "zenodo_md5": "baa5966c0594757f819a8f9750b263ef",
+      "local_staged_md5": "baa5966c0594757f819a8f9750b263ef",
+      "md5_match": true
+    },
+    {
+      "filename": "chirality_catalog_paper.pdf",
+      "size_bytes": 33978977,
+      "zenodo_md5": "4e139b56b0718c70b73ae7295e4ee7b1",
+      "local_staged_md5": "4e139b56b0718c70b73ae7295e4ee7b1",
+      "md5_match": true
+    },
+    {
+      "filename": "P4_v1.0.252_tracked_provenance.tar.gz",
+      "size_bytes": 1823649,
+      "zenodo_md5": "b9ca2a2b460ef9146eb48c518d260d51",
+      "local_staged_md5": "b9ca2a2b460ef9146eb48c518d260d51",
+      "md5_match": true
+    }
+  ],
+  "authorization": "Houston explicit authorization 2026-07-20 (new Zenodo token in .env.local)."
+}

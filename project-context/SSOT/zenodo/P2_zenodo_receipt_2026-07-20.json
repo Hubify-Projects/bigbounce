@@ -1,0 +1,89 @@
+{
+  "paper": "P2",
+  "doi": "10.5281/zenodo.21461881",
+  "concept_doi": "10.5281/zenodo.21461880",
+  "record_id": 21461881,
+  "record_url": "https://zenodo.org/records/21461881",
+  "doi_url": "https://doi.org/10.5281/zenodo.21461881",
+  "doi_head_resolves": "200 -> https://zenodo.org/records/21461881 (verified)",
+  "state": "done",
+  "submitted": true,
+  "published_at": "2026-07-20T20:17:36.894259+00:00",
+  "modified": "2026-07-20T20:17:37.411155+00:00",
+  "receipt_written_utc": "2026-07-20T20:18:45.462464+00:00",
+  "staged_version_binding": {
+    "version": "v1.7.125",
+    "pdf_md5": "174d52d55719c5955f852d2365fdb9c8",
+    "pdf_pages": 11,
+    "git_commit_at_staging": "397671bf901ad4526189efae10e9e912632e58a5",
+    "staging_directory": ".deposit-staging/P2/v1.7.125",
+    "tarball_verify": "tectonic isolated recompile: status=pass, errors=0, undefined_references=0 (P2/P4); P3 tracked standalone proof"
+  },
+  "metadata": {
+    "title": "The Exact Matter-Contraction Non-Gaussian Amplitude: Four-Vertex Derivation and Conditional Large-Scale-Structure Mapping",
+    "creators": [
+      {
+        "name": "Golden, Houston",
+        "affiliation": null
+      }
+    ],
+    "upload_type": "publication",
+    "publication_type": "article",
+    "license": "cc-by-4.0",
+    "access_right": "open",
+    "version": "1.7.125",
+    "keywords": [
+      "primordial non-Gaussianity",
+      "matter contraction",
+      "bouncing cosmology",
+      "large-scale structure",
+      "bispectrum"
+    ],
+    "orcid_note": "ORCID 0009-0008-3617-8729 intentionally omitted: Zenodo's InvenioRDM deposit backend drops the creator name field when an orcid is supplied via this API path; tool-generated staged .zenodo.json is name-only and was used verbatim."
+  },
+  "files": [
+    {
+      "filename": "SHA256SUMS",
+      "size_bytes": 367,
+      "zenodo_md5": "5c091c4dbc28e6bdd1e1a570d3c5ce90",
+      "local_staged_md5": "5c091c4dbc28e6bdd1e1a570d3c5ce90",
+      "md5_match": true
+    },
+    {
+      "filename": "02_full_draft.pdf",
+      "size_bytes": 595813,
+      "zenodo_md5": "174d52d55719c5955f852d2365fdb9c8",
+      "local_staged_md5": "174d52d55719c5955f852d2365fdb9c8",
+      "md5_match": true
+    },
+    {
+      "filename": "paper2_arxiv_v1.7.125.tar.gz",
+      "size_bytes": 221592,
+      "zenodo_md5": "d3633065ec07959601fe68ca9f411c71",
+      "local_staged_md5": "d3633065ec07959601fe68ca9f411c71",
+      "md5_match": true
+    },
+    {
+      "filename": "manifest.json",
+      "size_bytes": 2210,
+      "zenodo_md5": "4fa6692b257d745f69639f89e8e74ddb",
+      "local_staged_md5": "4fa6692b257d745f69639f89e8e74ddb",
+      "md5_match": true
+    },
+    {
+      "filename": "P2_v1.7.122_tracked_provenance.tar.gz",
+      "size_bytes": 5424126,
+      "zenodo_md5": "cef3addeb262d61cf54e5166d5c0b0fd",
+      "local_staged_md5": "cef3addeb262d61cf54e5166d5c0b0fd",
+      "md5_match": true
+    },
+    {
+      "filename": "02_full_draft.tex",
+      "size_bytes": 187977,
+      "zenodo_md5": "e7c66c4b53936ec90fc45aedd6106220",
+      "local_staged_md5": "e7c66c4b53936ec90fc45aedd6106220",
+      "md5_match": true
+    }
+  ],
+  "authorization": "Houston explicit authorization 2026-07-20 (new Zenodo token in .env.local)."
+}
