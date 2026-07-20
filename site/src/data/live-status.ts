@@ -147,12 +147,12 @@ const historicalLiveStatus: LiveStatus = {
 // summary reflect the canonical six-paper board rather than an older review wave.
 export const liveStatus: LiveStatus = {
   ...historicalLiveStatus,
-  lastUpdatedISO: "2026-07-17T00:30:00Z",
-  lastUpdatedDisplay: "July 16, 2026 · 5:30 PM PT",
+  lastUpdatedISO: "2026-07-20T18:00:00Z",
+  lastUpdatedDisplay: "July 20, 2026 · 11:00 AM PT",
   headline:
-    "All six manuscripts remain in revision. Today's confirmation-board wave (P1A/P1B/P3) truth-audited exact-PDF referee boards: P1A CONVERGED to human gates at v1A.0.124 (0 genuinely-new-real); P1B closed in v2B.0.10 (workspace-tensor-not-reproducible premise FALSIFIED); P3 closed in v3.2.0-r10 with an integrity reframe of a confirmed genuinely-new-real circularity finding (the sub-0.1-arcsec core excess is expected seed self-recovery, NOT independent association evidence). Readiness caps hold at 62/56/80/56 pending human review, license/deposit authorization, and archive/DOI gates.",
+    "All six manuscripts are review-converged and the program is in the 4-day publication sprint. The last exact-PDF board — P4 v1.0.268 — came back Grok ACCEPT / Gemini MINOR (the CE-composition sub-conflict adjudicated and the honest-negative integrated, praised by both reviewers). The real-compute campaigns are complete (~$1.35 total). There is no agent-executable science left on the critical path; what remains is five author-only decisions (D1–D5) and the submission clicks — tracked live on /publish. Readiness caps hold at 62/56/80/56/80/74 pending human review, license/deposit authorization, and archive/DOI gates.",
   summary:
-    "Today's confirmation boards: P1A exact v1A.0.124 board Grok MINOR / Gemini MINOR / Claude MAJOR (13 findings) truth-audited to 0 genuinely-new-real -> P1A CONVERGED to human gates, no version change. P1B exact v2B.0.9 board Grok REJECT / Gemini MINOR / Claude MAJOR -> closed v2B.0.10 (workspace-tensor-not-reproducible premise FALSIFIED; new recheck script, real execution costs, pip one-liner, macOS-untested label retained; 41/41 tests). P3 exact v3.2.0-r9 board Grok ACCEPT (its first) / Gemini MINOR / Claude MAJOR -> the Claude circularity finding (sub-0.1-arcsec core = by-construction seed self-recovery, not independent association evidence) CONFIRMED genuinely-new-real and closed in v3.2.0-r10 with an integrity reframe at every claim site. No readiness credit inferred from verdict words alone.",
+    "Every exact-PDF referee board across all six papers is truth-audited and converged: P1A v1A.0.124 CONVERGED to human gates (0 genuinely-new-real), P1B closed v2B.0.11 (workspace-tensor premise FALSIFIED), P3 closed v3.2.0-r10 (integrity reframe of a confirmed circularity finding), P2 v1.7.125 landed its real-compute torsion-bound closure, P4 v1.0.268 board Grok ACCEPT / Gemini MINOR, and P5 v0.1.141 closed its one genuinely-new-real finding with a real forward-leakage injection. Compute campaigns are done (~$1.35 total). The decision brief is on /publish: D1 Zenodo token, D2 license (CC-BY-4.0 rec), D3 Paper IV = submit P4 first + back-patch its arXiv ID into P5, D4 arXiv endorsement (check FIRST — schedule risk), D5 ORCID. No readiness credit inferred from verdict words alone.",
   papers: historicalLiveStatus.papers.map((paper) => {
     if (paper.slug === "paper-1b") {
       return {
@@ -207,15 +207,14 @@ export const liveStatus: LiveStatus = {
     return paper;
   }),
   currentlyRunning: [
-    "P1A/P1B/P3 confirmation-board wave complete: P1A CONVERGED to human gates at v1A.0.124 (0 genuinely-new-real); P1B closed in v2B.0.10 (workspace-tensor premise FALSIFIED); P3 closed in v3.2.0-r10 with an integrity reframe of a confirmed genuinely-new-real circularity finding",
-    "Exact non-Anthropic confirmation reviews are next for v2B.0.10 and v3.2.0-r10",
-    "P1B immutable archive identifier remains a real submission blocker; a PyPI token would let the loop publish package 0.1.7",
-    "P3 Zenodo deposit needs re-staging at r10 (r8/r9 staging does not cover it)",
-    "P4 v1.0.268 and P5 v0.1.141 PDFs are built, retained, mirrored, and synchronized; P4 lands two real-compute pod-campaign closures (G1 manifest-retained ViT retrain, val_acc 0.9931; G2 training-disjoint validation, accuracy 0.9867 / kappa 0.9733 on 3,000 doubly-disjoint GZ1 spirals) with an explicit like-for-like caveat vs the historical kappa=0.40 human-vote figure; P5's v0.1.141 forward-leakage-injection closure is complete, exact v0.1.141 confirmation is next",
-    "Exact non-Anthropic re-review and standing external release/provenance gates are next",
+    "4-day publication sprint is live — all six papers review-converged; the critical path is now five author-only decisions (D1–D5) and the submission clicks, tracked on /publish",
+    "Wave 1 (P1B → P1A → P3) kit is written and standalone-verified (WAVE1_SUBMISSION_KIT_2026-07-19.md): tarballs compile clean, metadata paste-ready, no cross-citation back-patch — each submits independently",
+    "Wave 2 (P2 v1.7.125 + P4 v1.0.268) kit is being assembled now; PDFs are built, mirrored, and synchronized",
+    "P5 v0.1.141 submits after P4's arXiv ID exists (Paper IV anchor, decision D3)",
+    "The moment the Zenodo token (D1) lands, the loop mints every DOI and finalizes deposit stagings; on each Houston submission it verifies the arXiv ID and syncs site/SSOT/Convex to SUBMITTED",
   ],
   cronStatus:
-    "P1A/P1B/P3 confirmation-board wave truth-audited; P1A CONVERGED to human gates (no version change), P1B closed v2B.0.10, P3 closed v3.2.0-r10 (integrity reframe of a confirmed genuinely-new-real circularity finding). Readiness caps hold at 62/56/80/56.",
+    "Program in the 4-day publication sprint. All six exact-PDF boards truth-audited and converged (last board P4 v1.0.268 Grok ACCEPT / Gemini MINOR); real-compute campaigns complete (~$1.35 total). No agent-executable science left on the critical path — five author-only decisions (D1–D5) and the submission clicks remain, tracked on /publish. Readiness caps hold at 62/56/80/56/80/74.",
   etaToCompletion:
-    "P1B and P3 next require exact confirmation reviews on v2B.0.10 and v3.2.0-r10 plus their archive and human gates; P1A awaits human CQG significance disposition; P1B additionally needs an immutable archive identifier and P3 needs Zenodo re-staging at r10. A defensible all-six submission date remains conditional on those gates and human decisions; journal acceptance is controlled by editors and referees.",
+    "The critical path is now Houston's five decisions (D1 Zenodo token, D2 license, D3 Paper IV, D4 arXiv endorsement — check FIRST, it is the schedule risk, D5 ORCID) plus the wave-1/wave-2 submission clicks. The agent loop executes DOI minting, deposit staging, arXiv-ID verification, and site/SSOT/Convex sync the moment each decision lands. A defensible all-six arXiv submission within the sprint is conditional on the endorsement check clearing; journal acceptance is controlled by editors and referees.",
 };
