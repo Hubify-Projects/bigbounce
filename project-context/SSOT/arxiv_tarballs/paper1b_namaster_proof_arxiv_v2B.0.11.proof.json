@@ -1,0 +1,21 @@
+{
+  "schema": "bigbounce-standalone-arxiv-proof/v1",
+  "paper_id": "P1B",
+  "paper_version": "v2B.0.11",
+  "git_commit": "b680ca1c7e1832073d7f3c3c5ad935af5613f4ff",
+  "tarball": "project-context/SSOT/arxiv_tarballs/paper1b_namaster_proof_arxiv_v2B.0.11.tar.gz",
+  "tarball_sha256": "51f37515c1780ad994cd9594953576d5e8bb43909c47d5c155a40a220b847e97",
+  "tarball_md5": "9f640a21561de9d2dc00b2a3964f1105",
+  "tarball_size_bytes": 8822,
+  "source_pdf": "arxiv/paper1b_namaster_proof.pdf",
+  "page_count": 6,
+  "status": "pass",
+  "engine": "tectonic 0.16.9",
+  "errors": 0,
+  "undefined_references": 0,
+  "overfull_hboxes": 2,
+  "compiled_pdf_sha256": "fa5a51a52ae8b009b79687ab98cfbe0a139cb564bd5a8de6e7390bd957db6071",
+  "verification_mode": "isolated temp extraction; tectonic -X compile; generated-log scan; page-count via pypdf",
+  "verified_at_utc": "2026-07-20T06:41:48Z",
+  "verifier": "wave1-submission-kit"
+}

@@ -1,0 +1,21 @@
+{
+  "schema": "bigbounce-standalone-arxiv-proof/v1",
+  "paper_id": "P1A",
+  "paper_version": "v1A.0.124",
+  "git_commit": "b680ca1c7e1832073d7f3c3c5ad935af5613f4ff",
+  "tarball": "project-context/SSOT/arxiv_tarballs/paper1a_arxiv_v1A.0.124.tar.gz",
+  "tarball_sha256": "3f56a6bf7452c8574656416e806727d0feaac4b750400d83a00b68bd2771993c",
+  "tarball_md5": "85923519615dd1364102135a2126cd6a",
+  "tarball_size_bytes": 130292,
+  "source_pdf": "arxiv/paper1a_ech_nogo.pdf",
+  "page_count": 7,
+  "status": "pass",
+  "engine": "tectonic 0.16.9",
+  "errors": 0,
+  "undefined_references": 0,
+  "overfull_hboxes": 34,
+  "compiled_pdf_sha256": "4307b2ba7fa54d637c8ef84431ce6da14a2b9b80079b27c313d89e351b8e3752",
+  "verification_mode": "isolated temp extraction; tectonic -X compile; generated-log scan; page-count via pypdf",
+  "verified_at_utc": "2026-07-20T06:41:48Z",
+  "verifier": "wave1-submission-kit"
+}
