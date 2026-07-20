@@ -210,7 +210,12 @@ function captionTitle(caption) {
 
 // Parse all \includegraphics + their nearest caption/label block from a .tex.
 function extractFigures(texPath) {
-  const src = readFileSync(texPath, "utf8");
+  // Strip \begin{comment}...\end{comment} blocks and %-commented lines so
+  // legacy manuscripts parked inside comment environments (e.g. P1A's old
+  // 29-page draft) can never seed stale figures/captions (2026-07-20 fix).
+  const src = readFileSync(texPath, "utf8")
+    .replace(/\\begin\{comment\}[\s\S]*?\\end\{comment\}/g, "")
+    .replace(/^[ \t]*%.*$/gm, "");
   const out = [];
   // Walk the file looking for figure/figure* environments OR bare
   // \includegraphics; for each, find the nearest \caption{...} after it.
