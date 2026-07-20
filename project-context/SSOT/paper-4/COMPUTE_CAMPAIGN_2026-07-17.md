@@ -353,17 +353,40 @@ pod `--full` run records; the pod adds only the GPU-trained checkpoint on top.
 [26,609 objects], `ce_composition_full.json`, `ce_composition_smoke.json`, `g1_ce_smoke_manifest.json`,
 `ce_full_assembly.log`, `PROVENANCE.md`) + driver `scripts/g1_ce_composition_assembly.py`.
 
-**REMAINING GPU-GATED ITEM (retrain checkpoint):** the ViT-Small retrain on this 26,609-object
-CE-included realization + per-epoch checkpoints require an A4000. Launch procedure the moment a
-GPU frees (resume loop is running against 580dgszgib3ti4 / 99srknm4s1cc3l):
-1. `python3 tools/runpod_ctl.py resume 580dgszgib3ti4` → `status` for NEW ssh port;
-   if sshd dead: `PROXY=580dgszgib3ti4-644119b0@ssh.runpod.io tools/pod_bootstrap_sshd.sh`.
-2. rsync `external_catalogs/pre_desi.fits` (verify sha256 on pod) + `train_g1_manifest.py`;
-   `pip install timm==1.0.28 datasets==5.0.0 astropy scipy pandas pyarrow huggingface_hub`.
-3. `cd /workspace/g1 && source env.sh && nohup python3 -u train_g1_manifest.py --full --epochs 80 > full_run.log 2>&1 &`
-   — the pod manifest will reproduce gz1=6637 / ce_spiral=17153 / ce_not_spiral=819 and add the checkpoint.
-4. POLL: `ssh -p <PORT> -i ~/.ssh/id_ed25519 root@<IP> "tail -20 /workspace/g1/full_run.log; ls -la /workspace/g1/out/"`.
-5. `/backup-3plus` (local + HF + pod) BEFORE any podStop.
+### FULL CE-INCLUDED RETRAIN — LAUNCHED (detached) on FRESH A4000 — 2026-07-20 ⟵ retrain checkpoint IN PROGRESS
+The target pod `580dgszgib3ti4` (and fallback `99srknm4s1cc3l`) hosts were persistently
+GPU-full ("not enough free GPUs on the host machine") for ~30 min of resume retries, so a
+**fresh on-demand A4000 was deployed** (`podFindAndDeployOnDemand` searches all hosts, unlike
+the capacity-pinned resume) to actually launch the retrain — real compute, ephemeral pod,
+$0.17/h.
+
+- **Pod:** `th0o0l1tp1se4e` (`bigbounce-p4-g1-retrain`, RTX A4000 16376 MiB, machine
+  robtjgci7up0, image `runpod/pytorch:2.4.0-cuda12.4.1`, torch 2.4.1+cu124). Deployed with
+  `PUBLIC_KEY` injected so **direct SSH works with no sshd bootstrap**.
+- **SSH:** `ssh -p 1787 -i ~/.ssh/id_ed25519 root@193.183.22.60` (re-query
+  `python3 tools/runpod_ctl.py status` after any resume — port changes).
+- **CE catalog on pod:** `pre_desi.fits` scp'd to `/workspace/external_catalogs/`; sha256 on pod
+  = `894dbe887140c165488a0f6053e2cd21f4ab72be9b06ece733e6ce177c0e304b` (VERIFIED, matches repo).
+- **Deps:** `timm 1.0.28 / datasets 5.0.0 / astropy 8.0.1` (+scipy/pandas/pyarrow/hf_hub) pip-installed.
+- **Pod SMOKE (--smoke) PASS:** `ce_resnet_present=true`, gz1=262 / ce_spiral=200 (smoke cap) /
+  ce_not_spiral=38 — IDENTICAL to the local smoke (deterministic reproduction confirmed);
+  loss=1.0950, peak_gpu 1.13 GB. No wrapper fix required.
+- **FULL launch:** `cd /workspace/g1 && source env.sh && setsid nohup python3 -u
+  train_g1_manifest.py --full --epochs 80 > full_run.log 2>&1 &` · **PID 776** ·
+  **launch 2026-07-20T07:26:30Z** · ~45 s/epoch → **ETA ~45-60 min**; checkpoints every epoch.
+- **manifest CONFIRMED (pod, written 07:32:25Z before training):**
+  `/workspace/g1/out/g1_training_manifest.json`, `ce_resnet_present=true`, ce_sha256 verified.
+  Pod assembly checkpoints (IDENTICAL to the local run — deterministic reproduction proven):
+  50K → gz1 2248 / ce 5688 / ns 274; 100K → 4397 / 11472 / 561; 150K → **gz1 6637 / ce_spiral
+  17153 / ce_not_spiral 819**. Final: **gz1=6637, ce_spiral=17153, ce_not_spiral=819,
+  synthetic=2000, total=26,609**; classes {CW 11904 / CCW 11886 / NOT_SPIRAL 2819};
+  train 21,288 / val 5,321. **826-vs-846 adjudication on the actual pod retrain: 819 (NEITHER;
+  the two large components reproduce historical exactly, conflict isolated to CE non-spiral).**
+- **POLL:** `ssh -p 1787 -i ~/.ssh/id_ed25519 root@193.183.22.60 "tail -20 /workspace/g1/full_run.log; ls -la /workspace/g1/out/"`
+- **BACKUP before any stop (`/backup-3plus`):** pull `g1_training_manifest.json` +
+  `g1_ckpt_best.pt` + `g1_training_result.json` → repo (loc 1) → git (loc 2) → HF
+  `bamfai/galaxy-chirality-v2` and/or B2 (loc 3). Do NOT `podStop th0o0l1tp1se4e` before this.
+  (The pod is left RUNNING for the orchestrator to poll + backup + stop after completion.)
 
 ### FULL retrain — LAUNCHED (detached), NOT claimed complete
 - Command (on pod): `cd /workspace/g1 && source env.sh && nohup python3 -u

@@ -55,6 +55,12 @@ historical record with **ce_not_spiral = 819, total = 26,609**.
 - `g1_ce_smoke_manifest.json` — CE smoke manifest (scan 8000: gz1=262, ce_spiral=200
   (smoke cap), ce_not_spiral=38 — proves the CE ingestion path end-to-end).
 - `ce_full_assembly.log` — the full-run assembly log (50K/100K/150K checkpoints).
+- `g1_pod_retrain_manifest.json` — the AUTHORITATIVE manifest from the actual pod `--full`
+  retrain (fresh A4000 `th0o0l1tp1se4e`, 2026-07-20, gpu=NVIDIA RTX A4000, git_sha 74002a7c).
+  sha256 `51f1439a12c2f682e964ec500727e2dee8f5eaeb920f682e2e309945bd422b81`. Composition is
+  IDENTICAL to the local run (gz1=6637 / ce_spiral=17153 / ce_not_spiral=819 / total 26,609),
+  proving deterministic reproduction; the GPU-trained checkpoint completes on the pod
+  (backed up via /backup-3plus after training, orchestrator-managed).
 
 ## Still GPU-gated (honest)
 The retrained ViT-Small checkpoint on this 26,609-object realization + the
