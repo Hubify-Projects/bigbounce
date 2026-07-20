@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1784363398.99735 "chirality_catalog_paper.tex" "chirality_catalog_paper.pdf" "chirality_catalog_paper" 1784363408.65826 0
+["pdflatex"] 1784540147.07979 "chirality_catalog_paper.tex" "chirality_catalog_paper.pdf" "chirality_catalog_paper" 1784540158.29728 0
   "/Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/tfm/adobe/helvetic/phvr.tfm" 1136768653 2504 ba6584b616b92101c768b6c4ffb32dd0 ""
   "/Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/tfm/jknappen/ec/tcrm0900.tfm" 1136768653 1536 c4f439db76ef96a9c53bc437f35ffe20 ""
@@ -166,9 +166,9 @@
   "/Users/houstongolden/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1782468317 393055 3879c3147089e089e0d7f0ce6ec8ec42 ""
   "/Users/houstongolden/Library/TinyTeX/texmf-var/web2c/pdftex/pdflatex.fmt" 1782468336 2300816 53edb455b434f3745ae09cdb04d5e001 ""
   "/Users/houstongolden/Library/TinyTeX/texmf.cnf" 1782448596 637 edd806fb06a89761a6034e1968af9017 ""
-  "chirality_catalog_paper.aux" 1784363408.46011 15101 ead3817bd0a86dbb0cdef7621aedc446 "pdflatex"
-  "chirality_catalog_paper.out" 1784363408.46171 5668 1eded9d50a43647e8670947d1ca2bd8a "pdflatex"
-  "chirality_catalog_paper.tex" 1784363392.98132 218954 c6516d938afff68d030a5d50aa1211a2 ""
+  "chirality_catalog_paper.aux" 1784540158.05051 15261 b940641e9a5d5a5d53ca59a02a214879 "pdflatex"
+  "chirality_catalog_paper.out" 1784540158.05279 5668 5e0e1410684a9922c20371e5f34319fd "pdflatex"
+  "chirality_catalog_paper.tex" 1784540119.93431 233289 669a0def9dd962465dbf6191fb9f8116 ""
   "fig_bootstrap_null.png" 1783669618.50589 57195 8320e050d8d246806aab9ae11722bec1 ""
   "fig_class_pie.png" 1782463992.88466 62430 20e586f6bd9d0fb5dd4d803ca2e60ed7 ""
   "fig_confidence_dist.png" 1782463994.22421 223223 ce41e49d1cdec7c8337f960f09364e3a ""

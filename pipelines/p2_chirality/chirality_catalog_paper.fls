@@ -188,6 +188,7 @@ INPUT /Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/tfm/public/amsfonts/
 INPUT /Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm
 INPUT /Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/tfm/public/latex-fonts/lasyb10.tfm
 INPUT /Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm
+INPUT /Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
 INPUT /Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/tfm/public/cm/cmr8.tfm
 INPUT /Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/tfm/public/cm/cmcsc10.tfm
 INPUT /Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/tfm/public/cm/cmr6.tfm
@@ -222,11 +223,10 @@ INPUT /Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/tfm/public/amsfonts/
 INPUT /Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy9.tfm
 INPUT /Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/tfm/public/cm/cmcsc10.tfm
 INPUT /Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/tfm/public/cm/cmti8.tfm
-INPUT /Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
-INPUT /Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/tfm/public/cm/cmcsc10.tfm
-INPUT /Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/tfm/public/cm/cmcsc10.tfm
-INPUT /Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/tfm/public/cm/cmcsc10.tfm
 INPUT /Users/houstongolden/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map
+INPUT /Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/tfm/public/cm/cmcsc10.tfm
+INPUT /Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/tfm/public/cm/cmcsc10.tfm
+INPUT /Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/tfm/public/cm/cmcsc10.tfm
 INPUT ./fig_gallery_cw.png
 INPUT ./fig_gallery_cw.png
 INPUT ./fig_gallery_cw.png
@@ -245,9 +245,9 @@ INPUT ./fig_gallery_notspi.png
 INPUT /Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/tfm/jknappen/ec/tcrm0900.tfm
 INPUT /Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/tfm/public/cm/cmtt8.tfm
 INPUT /Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/tfm/public/cm/cmtt8.tfm
+INPUT /Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 INPUT /Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/tfm/public/cm/cmti9.tfm
 INPUT /Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm
-INPUT /Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 INPUT /Users/houstongolden/Library/TinyTeX/texmf-dist/fonts/tfm/public/cm/cmtt8.tfm
 INPUT ./fig_equivariance_demo.png
 INPUT ./fig_equivariance_demo.png

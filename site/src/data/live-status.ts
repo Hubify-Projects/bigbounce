@@ -165,9 +165,9 @@ export const liveStatus: LiveStatus = {
     if (paper.slug === "paper-4") {
       return {
         ...paper,
-        version: "v1.0.267",
+        version: "v1.0.268",
         pendingWork:
-          "Two real-compute pod-campaign closures (Jul 17): (1) G1 manifest-retained ViT retrain COMPLETE on RunPod A4000 (<$1 total) — 8,637 objects (6,637 GZ1-core + 2,000 synthetic; CE-ResNet component absent pending external re-provisioning from Jia 2023 / NADC China-VO, so the 826-vs-846 sub-conflict stays open and released Catalog C labels are unchanged), every object ID/split/seed retained in the committed manifest, best_val_acc=0.9931 @ epoch 47, checkpoint backed up to 3 verified locations. (2) G2 training-disjoint validation: accuracy=0.9867 / Cohen's kappa=0.9733 on 3,000 GZ1 confident spirals disjoint from G1 training on both the object-ID and label-source axes (overlap counts 0), presented with an explicit like-for-like distinction vs the historical kappa=0.40 human-vote figure — a different measure, not a replacement. Caveat sites narrowed honestly at abstract/intro/discussion/conclusions/data-availability; no science number changed. CE-ResNet re-provisioning, the MASTER-decoupled/full-likelihood covariance legs, the G4 monopole-mechanism injection (H200, now unblocked), complete metadata, archive/DOI, exact v1.0.267 non-Anthropic re-review, and human review remain. Readiness holds 80.",
+          "Two real-compute pod-campaign closures (Jul 17): (1) G1 manifest-retained ViT retrain COMPLETE on RunPod A4000 (<$1 total) — 8,637 objects (6,637 GZ1-core + 2,000 synthetic; CE-ResNet component absent pending external re-provisioning from Jia 2023 / NADC China-VO, so the 826-vs-846 sub-conflict stays open and released Catalog C labels are unchanged), every object ID/split/seed retained in the committed manifest, best_val_acc=0.9931 @ epoch 47, checkpoint backed up to 3 verified locations. (2) G2 training-disjoint validation: accuracy=0.9867 / Cohen's kappa=0.9733 on 3,000 GZ1 confident spirals disjoint from G1 training on both the object-ID and label-source axes (overlap counts 0), presented with an explicit like-for-like distinction vs the historical kappa=0.40 human-vote figure — a different measure, not a replacement. Caveat sites narrowed honestly at abstract/intro/discussion/conclusions/data-availability; no science number changed. CE-ResNet re-provisioning, the MASTER-decoupled/full-likelihood covariance legs, the G4 monopole-mechanism injection (H200, now unblocked), complete metadata, archive/DOI, exact v1.0.268 non-Anthropic re-review, and human review remain. Readiness holds 80.",
       };
     }
     if (paper.slug === "paper-1a") {
@@ -211,7 +211,7 @@ export const liveStatus: LiveStatus = {
     "Exact non-Anthropic confirmation reviews are next for v2B.0.10 and v3.2.0-r10",
     "P1B immutable archive identifier remains a real submission blocker; a PyPI token would let the loop publish package 0.1.7",
     "P3 Zenodo deposit needs re-staging at r10 (r8/r9 staging does not cover it)",
-    "P4 v1.0.267 and P5 v0.1.141 PDFs are built, retained, mirrored, and synchronized; P4 lands two real-compute pod-campaign closures (G1 manifest-retained ViT retrain, val_acc 0.9931; G2 training-disjoint validation, accuracy 0.9867 / kappa 0.9733 on 3,000 doubly-disjoint GZ1 spirals) with an explicit like-for-like caveat vs the historical kappa=0.40 human-vote figure; P5's v0.1.141 forward-leakage-injection closure is complete, exact v0.1.141 confirmation is next",
+    "P4 v1.0.268 and P5 v0.1.141 PDFs are built, retained, mirrored, and synchronized; P4 lands two real-compute pod-campaign closures (G1 manifest-retained ViT retrain, val_acc 0.9931; G2 training-disjoint validation, accuracy 0.9867 / kappa 0.9733 on 3,000 doubly-disjoint GZ1 spirals) with an explicit like-for-like caveat vs the historical kappa=0.40 human-vote figure; P5's v0.1.141 forward-leakage-injection closure is complete, exact v0.1.141 confirmation is next",
     "Exact non-Anthropic re-review and standing external release/provenance gates are next",
   ],
   cronStatus:
