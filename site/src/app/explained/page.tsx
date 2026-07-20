@@ -137,15 +137,16 @@ export default function ExplainedPage() {
                 className="font-semibold text-sm mb-1"
                 style={{ fontFamily: "var(--font-mono-stack)" }}
               >
-                378,280 Anomalies
+                Anomaly-detection pipeline &amp; public-ID recovery
               </p>
               <p className="text-sm leading-relaxed text-muted-foreground">
-                Our AI pipelines have scanned 37.3 million astronomical sources
-                across seven surveys, finding 378,280 objects that do not match
-                known patterns. These anomalies supply candidate high-bias
-                tracers that could sharpen the f<sub>NL</sub> measurement
-                (central forecast improvement 9.4%, consistent with zero
-                improvement at current signal-to-noise).
+                An exploratory autoencoder anomaly-detection pipeline scored
+                millions of archival survey spectra to build a candidate list.
+                Paper 3 is the reproducible <strong>public-ID recovery</strong> of
+                181 DESI DR1 TARGETIDs from a frozen historical anomaly list (170
+                high-coordinate-consistency core + 11 lower-confidence) — an
+                archive-recovery / provenance product, explicitly not a purity,
+                novelty, or detection claim.
               </p>
             </div>
           </div>

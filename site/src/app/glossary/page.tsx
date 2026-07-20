@@ -79,7 +79,7 @@ const glossaryEntries = [
     term:"Autoencoder",
     pronunciation:"AW-toh-en-KOH-der",
     definition:
-"A neural network trained to reconstruct its input. Objects it can't reconstruct well are anomalous. Used to find 378,280 unique anomalies across 37.3M sources in 8 surveys (Paper 3 canonical Path-C totals after native retrains and 5″ dedup).",
+"A neural network trained to reconstruct its input. Objects it can't reconstruct well are flagged as anomaly candidates. BigBounce's exploratory autoencoder pipeline scored millions of archival survey spectra to build a candidate list; Paper 3 then recovers 181 public DESI DR1 TARGETIDs from a frozen historical anomaly list (an archive-recovery product, not a detection claim).",
   },
   {
     term:"Barbero-Immirzi parameter",

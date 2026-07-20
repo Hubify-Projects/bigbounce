@@ -166,6 +166,30 @@
       color: #666;
       margin: 8px 0;
     }
+    .astro-msg.assistant h1, .astro-msg.assistant h2, .astro-msg.assistant h3,
+    .astro-msg.assistant h4, .astro-msg.assistant h5, .astro-msg.assistant h6 {
+      font-weight: 650;
+      line-height: 1.3;
+      margin: 12px 0 6px 0;
+    }
+    .astro-msg.assistant h1 { font-size: 16px; }
+    .astro-msg.assistant h2 { font-size: 15px; }
+    .astro-msg.assistant h3 { font-size: 14px; }
+    .astro-msg.assistant h4, .astro-msg.assistant h5, .astro-msg.assistant h6 { font-size: 13px; }
+    .astro-math {
+      margin: 8px 0;
+      padding: 6px 10px;
+      overflow-x: auto;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      background: rgba(127,127,127,0.08);
+      border-radius: 4px;
+    }
+    .astro-math-inline {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.95em;
+      white-space: nowrap;
+    }
 
     .astro-msg.error {
       color: #dc2626;
@@ -260,6 +284,60 @@
   `;
   document.head.appendChild(style);
 
+  // ── Lightweight LaTeX → HTML/Unicode (no KaTeX dependency) ──
+  // Converts the common LaTeX the assistant emits into readable inline math.
+  // Not a full typesetter — deliberately dependency-free and self-contained.
+  function convertLatexInner(m) {
+    var s = m;
+    // \frac{a}{b} → (a)/(b)  (repeat for nesting)
+    for (var i = 0; i < 4; i++) {
+      s = s.replace(/\\d?frac\s*\{([^{}]*)\}\s*\{([^{}]*)\}/g, '($1)/($2)');
+    }
+    // \sqrt{x} → √(x)
+    s = s.replace(/\\sqrt\s*\{([^{}]*)\}/g, '√($1)');
+    // \text{x} / \mathrm{x} / \rm x → x
+    s = s.replace(/\\(?:text|mathrm|mathbf|operatorname)\s*\{([^{}]*)\}/g, '$1');
+    s = s.replace(/\\rm\s+/g, '');
+    // Greek + common symbols
+    var sym = {
+      '\\alpha':'α','\\beta':'β','\\gamma':'γ','\\delta':'δ',
+      '\\Delta':'Δ','\\epsilon':'ε','\\varepsilon':'ε','\\zeta':'ζ',
+      '\\eta':'η','\\theta':'θ','\\kappa':'κ','\\lambda':'λ',
+      '\\Lambda':'Λ','\\mu':'μ','\\nu':'ν','\\pi':'π','\\rho':'ρ',
+      '\\sigma':'σ','\\Sigma':'Σ','\\tau':'τ','\\phi':'φ','\\varphi':'φ',
+      '\\chi':'χ','\\psi':'ψ','\\omega':'ω','\\Omega':'Ω',
+      '\\times':'×','\\cdot':'·','\\pm':'±','\\mp':'∓','\\approx':'≈',
+      '\\sim':'~','\\simeq':'≃','\\propto':'∝','\\neq':'≠','\\leq':'≤',
+      '\\geq':'≥','\\ll':'≪','\\gg':'≫','\\to':'→','\\rightarrow':'→',
+      '\\Rightarrow':'⇒','\\infty':'∞','\\partial':'∂','\\nabla':'∇',
+      '\\equiv':'≡','\\in':'∈','\\gtrsim':'≳','\\lesssim':'≲'
+    };
+    s = s.replace(/\\[A-Za-z]+/g, function (t) { return sym[t] != null ? sym[t] : t; });
+    // Superscripts / subscripts: ^{...} _{...} and single-char ^x _x
+    s = s.replace(/\^\{([^{}]*)\}/g, '<sup>$1</sup>').replace(/\^(\w)/g, '<sup>$1</sup>');
+    s = s.replace(/_\{([^{}]*)\}/g, '<sub>$1</sub>').replace(/_(\w)/g, '<sub>$1</sub>');
+    // Strip leftover braces and stray backslashes
+    s = s.replace(/[{}]/g, '').replace(/\\(?![A-Za-z])/g, '').replace(/\\/g, '');
+    return s;
+  }
+  function convertLatex(html) {
+    // Display math: \[ ... \]  and  $$ ... $$
+    html = html.replace(/\\\[([\s\S]*?)\\\]/g, function (_, m) {
+      return '<div class="astro-math">' + convertLatexInner(m.trim()) + '</div>';
+    });
+    html = html.replace(/\$\$([\s\S]*?)\$\$/g, function (_, m) {
+      return '<div class="astro-math">' + convertLatexInner(m.trim()) + '</div>';
+    });
+    // Inline math: \( ... \)  and  $ ... $  (single-line, non-greedy)
+    html = html.replace(/\\\(([\s\S]*?)\\\)/g, function (_, m) {
+      return '<span class="astro-math-inline">' + convertLatexInner(m.trim()) + '</span>';
+    });
+    html = html.replace(/(^|[^\\$])\$(?!\s)([^$\n]+?)\$(?!\d)/g, function (_, pre, m) {
+      return pre + '<span class="astro-math-inline">' + convertLatexInner(m.trim()) + '</span>';
+    });
+    return html;
+  }
+
   // ── Simple Markdown Parser ──
   function renderMarkdown(text) {
     // Escape HTML
@@ -268,6 +346,9 @@
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;');
 
+    // LaTeX math → inline HTML/Unicode (before code so display math renders)
+    html = convertLatex(html);
+
     // Code blocks (``` ... ```)
     html = html.replace(/```(\w*)\n([\s\S]*?)```/g, (_, lang, code) =>
       `<pre><code>${code.trim()}</code></pre>`
@@ -275,6 +356,14 @@
 
     // Inline code
     html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+
+    // Headers (### / ## / #) — must run before paragraph wrapping
+    html = html.replace(/^######\s+(.+)$/gm, '<h6>$1</h6>');
+    html = html.replace(/^#####\s+(.+)$/gm, '<h5>$1</h5>');
+    html = html.replace(/^####\s+(.+)$/gm, '<h4>$1</h4>');
+    html = html.replace(/^###\s+(.+)$/gm, '<h3>$1</h3>');
+    html = html.replace(/^##\s+(.+)$/gm, '<h2>$1</h2>');
+    html = html.replace(/^#\s+(.+)$/gm, '<h1>$1</h1>');
 
     // Bold
     html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
@@ -315,6 +404,11 @@
     html = html.replace(/(<\/ul>)\s*<\/p>/g, '$1');
     html = html.replace(/<p>\s*(<blockquote>)/g, '$1');
     html = html.replace(/(<\/blockquote>)\s*<\/p>/g, '$1');
+    // Don't wrap headers or display math in paragraphs
+    html = html.replace(/<p>\s*(<h[1-6]>)/g, '$1');
+    html = html.replace(/(<\/h[1-6]>)\s*<\/p>/g, '$1');
+    html = html.replace(/<p>\s*(<div class="astro-math">)/g, '$1');
+    html = html.replace(/(<\/div>)\s*<\/p>/g, '$1');
 
     return html;
   }

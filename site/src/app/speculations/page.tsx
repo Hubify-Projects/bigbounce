@@ -85,10 +85,10 @@ const sections: Array<{
     badge:"Astrophysics",
     cards: [
       {
-        title:"378,280 Uncharacterized Objects",
-        tag:"ACTIONABLE · 37.3M sources · 7 surveys · Paper 3",
+        title:"Exploratory anomaly candidates",
+        tag:"SPECULATIVE · autoencoder pipeline candidates",
         children:
-"Our AI pipeline found 378,280 objects absent from standard catalogs across seven sky surveys. What are they? Full classification and follow-up underway.",
+"An exploratory autoencoder anomaly-detection pipeline flagged many archival objects as poorly-reconstructed candidates. What are they? These are exploratory pipeline candidates for follow-up, not confirmed detections — Paper 3 itself is the reproducible public-ID recovery of 181 DESI DR1 TARGETIDs from a frozen historical list, not a detection claim.",
       },
       {
         title:"Galaxy Morphology: What Shapes Don't Fit?",

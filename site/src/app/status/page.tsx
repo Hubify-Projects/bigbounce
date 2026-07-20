@@ -453,15 +453,18 @@ export default async function StatusPage() {
             </div>
             <div className="py-4">
               <p className="font-semibold font-mono text-sm mb-0.5">
-                378,280 Anomalies Across 7 Surveys
+                Public-ID Recovery of a Historical DESI DR1 Anomaly List
               </p>
               <p className="font-mono text-[11px] text-muted-foreground mb-2">
-                Pipeline B · 37.3M sources · Paper 3 Table 1 canonical totals
+                Paper 3 (v3.2.0-r10) · 181 TARGETIDs recovered · archive-recovery product
               </p>
               <p className="text-sm leading-relaxed text-muted-foreground">
-                First multi-survey AI anomaly sweep. Central 9.4% multi-tracer
-                f_NL forecast (consistent with no improvement at &lt;1σ).
-                SPHEREx 2.6–5σ conditional forecast for f_NL = −35/16.
+                Paper 3 recovers 181 public DESI DR1 TARGETIDs from a frozen
+                historical anomaly list (170 high-coordinate-consistency core + 11
+                lower-confidence) — an archive-recovery / provenance product,
+                explicitly not a purity, novelty, or detection claim. The
+                exploratory autoencoder pipeline that produced the candidate list
+                is browsable separately.
               </p>
             </div>
           </div>

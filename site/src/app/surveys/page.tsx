@@ -50,7 +50,7 @@ export default function SurveysIndexPage() {
       <div className="hero">
         <p className="text-xs sans" style={{ marginBottom: 8 }}>
           {surveys.length} Surveys &middot; {(totalSources / 1e6).toFixed(1)}M
-          Sources &middot; {totalAnomalies.toLocaleString()} pre-dedup rows (378,280 Path-C unique)
+          Sources &middot; {totalAnomalies.toLocaleString()} exploratory pipeline candidates (pre-dedup)
         </p>
         <h1 style={{ fontFamily:"var(--font-mono-stack)", fontWeight: 600 }}>
           Survey Hub

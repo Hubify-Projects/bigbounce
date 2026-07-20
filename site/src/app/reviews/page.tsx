@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 import type { Metadata } from "next";
 import { sortedReviewRounds } from "@/data/reviewTimeline";
+import { papers } from "@/data/papers";
 import ReviewsClient from "./ReviewsClient";
 import { ReviewEntry } from "./ReviewEntry";
 import {
@@ -28,6 +29,17 @@ export const metadata: Metadata = {
   description:
     "Filterable timeline of the internal/external paper-review loop — verdict trajectories, gap-closure and skills-growth visualizations, every round, truth-audit, closure wave, and skill upgrade, in the open.",
 };
+
+// Board state is sourced from papers.ts (the canonical static mirror of Convex)
+// so the /reviews readiness board can never drift out of sync with the paper
+// pages the way the old hardcoded 2026-07-15 snapshot did.
+const boardBySlug = new Map(papers.map((p) => [p.slug, p]));
+const shortVersion = (v: string) => v.replace(/-\d{4}-\d{2}-\d{2}$/, "");
+const cap = (slug: string) => boardBySlug.get(slug)?.readiness ?? 0;
+const ver = (slug: string) => shortVersion(boardBySlug.get(slug)?.version ?? "");
+const avgCap = Math.round(
+  papers.reduce((acc, p) => acc + p.readiness, 0) / Math.max(1, papers.length),
+);
 
 export default async function ReviewsPage() {
   const rounds = sortedReviewRounds();
@@ -64,11 +76,11 @@ export default async function ReviewsPage() {
       >
         This feed preserves internal and external automated-review rounds, raw evidence,
         per-finding truth audits, and subsequent closures. It is a review history, not a
-        journal decision. <strong>Current status (2026-07-15): all six papers remain IN
-        REVISION.</strong> The canonical readiness caps are P1A 62, P1B 56, P2 74, P3 56,
-        P4 80, and P5 74. P1B v1B.0.108 and P4 v1.0.244 include closure changes that have
-        not yet been re-reviewed. Automated ACCEPT labels are retained exactly as returned,
-        but they are not journal acceptance. Independent human review, immutable
+        journal decision. <strong>Current status: all six papers remain IN REVISION.</strong>{" "}
+        The canonical readiness caps are P1A {cap("paper-1a")}, P1B {cap("paper-1b")},
+        P2 {cap("paper-2")}, P3 {cap("paper-3")}, P4 {cap("paper-4")}, and P5{" "}
+        {cap("paper-5")} (average {avgCap}%). Automated ACCEPT labels are retained exactly
+        as returned, but they are not journal acceptance. Independent human review, immutable
         archive/DOI work, and venue-specific checks remain open gates.
       </p>
       <div
@@ -119,10 +131,12 @@ export default async function ReviewsPage() {
             <p className="progress-block-sub">
               The matrices below preserve the historical automated-model labels and their raw
               provenance. They are useful diagnostics, not an acceptance scoreboard. The current
-              canonical board is P1A v1A.0.123/62, P1B v1B.0.108/56, P2 v1.7.122/74,
-              P3 v3.2.0-r8/56, P4 v1.0.244/80, and P5 v0.1.133-2026-07-14/74; all are IN
-              REVISION. P1B v108 and P4 v244 have not been re-reviewed, so older verdict cells
-              must not be read as verdicts on those PDFs.
+              canonical board is P1A {ver("paper-1a")}/{cap("paper-1a")},
+              P1B {ver("paper-1b")}/{cap("paper-1b")}, P2 {ver("paper-2")}/{cap("paper-2")},
+              P3 {ver("paper-3")}/{cap("paper-3")}, P4 {ver("paper-4")}/{cap("paper-4")}, and
+              P5 {ver("paper-5")}/{cap("paper-5")}; all are IN REVISION. Older verdict cells
+              reference the paper version current at that round and must not be read as verdicts
+              on the latest PDFs.
             </p>
             <AllAMeter />
             <ChartShell title="External referee verdicts — every paper × reviewer per round">
@@ -249,15 +263,15 @@ export default async function ReviewsPage() {
             <tbody>
               <tr>
                 <td className="eta-td eta-td-label">Automated-review evidence</td>
-                <td className="eta-td">Historical raw responses and provider receipts are retained. Coverage is version-specific: P1B v1B.0.108 and P4 v1.0.244 have not been re-reviewed. Automated labels do not establish journal acceptance.</td>
+                <td className="eta-td">Historical raw responses and provider receipts are retained. Coverage is version-specific: each verdict cell references the paper version current at that round, not necessarily the latest PDF. Automated labels do not establish journal acceptance.</td>
               </tr>
               <tr>
                 <td className="eta-td eta-td-label">Content integrity</td>
                 <td className="eta-td">Known material findings were truth-audited and addressed, including retraction of the fabricated P2 derivation. This is not a claim that no undiscovered error remains; independent human review is still required.</td>
               </tr>
               <tr>
-                <td className="eta-td eta-td-label">Canonical readiness (2026-07-15)</td>
-                <td className="eta-td">Evidence-capped average 67%: P1A 62 · P1B 56 · P2 74 · P3 56 · P4 80 · P5 74. All six remain IN REVISION; no automated score converts into journal acceptance.</td>
+                <td className="eta-td eta-td-label">Canonical readiness</td>
+                <td className="eta-td">Evidence-capped average {avgCap}%: P1A {cap("paper-1a")} · P1B {cap("paper-1b")} · P2 {cap("paper-2")} · P3 {cap("paper-3")} · P4 {cap("paper-4")} · P5 {cap("paper-5")}. All six remain IN REVISION; no automated score converts into journal acceptance.</td>
               </tr>
               <tr>
                 <td className="eta-td eta-td-label">Remaining publication gates</td>

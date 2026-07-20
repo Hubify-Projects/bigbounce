@@ -82,9 +82,9 @@ const CONTRIBUTIONS: SearchItem[] = [
   },
   {
     category: "Contribution",
-    title: "Multi-survey anomaly catalog (Paper 3)",
+    title: "Public-ID anomaly-list recovery (Paper 3)",
     blurb:
-      "378,280 anomalies across 7 surveys (37.3M sources) after Path-C native retrains and 5″ positional deduplication. First-of-kind cross-survey unified anomaly hunt.",
+      "Reproducible public-ID recovery of 181 DESI DR1 TARGETIDs from a frozen historical anomaly list (170 core + 11 lower-confidence) — an archive-recovery / provenance product, not a purity, novelty, or detection claim.",
     href: "/contributions#anomaly-catalog",
   },
   {

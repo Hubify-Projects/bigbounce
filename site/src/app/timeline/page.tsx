@@ -66,7 +66,7 @@ const events: Array<{
   {
     time:"13.8 Gyr",
     label:"NOW (2026)",
-    desc:"BigBounce research program: 6 papers, 8 surveys, 37.3M sources, 378,280 anomalies, 309,189 frozen MCMC samples, 8.47M-galaxy chirality catalog. 20+ review rounds complete (latest INT-M2, 2026-06-30) — MINOR-dominant with occasional ACCEPTs, 0 unaddressed genuine findings; readiness 96; awaiting author sign-off → coordinated arXiv drop.",
+    desc:"BigBounce research program: 6 papers, an autoencoder anomaly-detection pipeline over millions of archival sources (Paper 3 recovers 181 public DESI DR1 TARGETIDs from a frozen historical list — an archive-recovery product, not a detection claim), ~309K frozen MCMC samples, an 8.47M-galaxy chirality catalog. 20+ adversarial review rounds run; all six papers remain IN REVISION (caps 56–80) pending independent human review and author submission.",
     color:"var(--text-secondary)",
   },
   {

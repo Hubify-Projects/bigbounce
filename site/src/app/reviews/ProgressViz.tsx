@@ -13,6 +13,7 @@ import {
   type PaperId,
   type Verdict,
 } from "@/data/reviewTimeline";
+import { papers } from "@/data/papers";
 
 const VERDICT_COLOR: Record<Verdict, string> = {
   REJECT: "var(--crit)",
@@ -931,18 +932,26 @@ export function VerdictSeverityTrend() {
 
 /* ── Readiness strip: sparse per-paper checkpoints (95-cap rule) ──────── */
 
-// Per-paper readiness — mirror of Convex papers:listAllPaperStates (readinessComputed). Keep in sync.
-// Canonical evidence caps as of 2026-07-15. All six papers remain IN REVISION.
-// Automated verdict labels inform the record but are not journal acceptance.
-// P1B v1B.0.108 and P4 v1.0.244 have not been re-reviewed after their latest closures.
-const PER_PAPER_READINESS: Record<PaperId, number> = {
-  P1A: 62,
-  P1B: 56,
-  P2: 74,
-  P3: 56,
-  P4: 80,
-  P5: 74,
+// Per-paper readiness — sourced directly from papers.ts (the canonical static
+// mirror of Convex readinessComputed) so this strip can never drift the way the
+// old hardcoded 2026-07-15 snapshot did. All six papers remain IN REVISION;
+// automated verdict labels inform the record but are not journal acceptance.
+const READINESS_BY_SLUG: Record<PaperId, string> = {
+  P1A: "paper-1a",
+  P1B: "paper-1b",
+  P2: "paper-2",
+  P3: "paper-3",
+  P4: "paper-4",
+  P5: "paper-5",
 };
+const PER_PAPER_READINESS: Record<PaperId, number> = PAPER_IDS.reduce(
+  (acc, p) => {
+    const slug = READINESS_BY_SLUG[p as PaperId];
+    acc[p as PaperId] = papers.find((pp) => pp.slug === slug)?.readiness ?? 0;
+    return acc;
+  },
+  {} as Record<PaperId, number>,
+);
 
 export function ReadinessStrip() {
   const cps = readinessCheckpoints;
@@ -952,7 +961,7 @@ export function ReadinessStrip() {
       Object.keys(PER_PAPER_READINESS).length,
   );
   return (
-    <div className="readiness-strip" title="Canonical evidence-capped readiness as of 2026-07-15. All papers remain IN REVISION; automated verdict labels are not journal acceptance.">
+    <div className="readiness-strip" title="Canonical evidence-capped readiness, sourced from papers.ts. All papers remain IN REVISION; automated verdict labels are not journal acceptance.">
       <span className="readiness-strip-label">Program readiness · evidence-capped, avg {avg}% · all papers IN REVISION</span>
       {PAPER_IDS.map((p) => {
         const r = PER_PAPER_READINESS[p as PaperId];
@@ -962,7 +971,7 @@ export function ReadinessStrip() {
           .join(" → ");
         void last;
         return (
-          <span key={p} className="readiness-chip" title={`${p}: ${trail} → ${r}% (canonical evidence cap, 2026-07-15; IN REVISION)`}>
+          <span key={p} className="readiness-chip" title={`${p}: ${trail} → ${r}% (canonical evidence cap, sourced from papers.ts; IN REVISION)`}>
             <span className="gap-delta-paper">{p}</span> {r}%
           </span>
         );

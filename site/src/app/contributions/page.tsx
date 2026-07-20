@@ -195,14 +195,14 @@ const contributions: Contribution[] = [
   {
     id: "anomaly-catalog",
     tier: "N3",
-    title: "Multi-Survey Anomaly Catalog (378,280 anomalies)",
+    title: "Public-ID Recovery of a Historical DESI DR1 Anomaly List (181 TARGETIDs)",
     paper: "Paper 3",
     oneLine:
-      "First unified anomaly sweep across 7 surveys (37.3M sources): 378,280 unique anomalies (269,317 recommended-tier) after Path-C native retrains and 7-way 5″ positional dedup. The ~141× figure over prior catalogs is a full-instrument-stream vs science-target comparison, not a like-for-like size increase — the like-for-like DESI recount is ≈0.9× the largest single-survey benchmark (2,468 vs 2,685).",
+      "A focused, reproducible public-ID recovery of a frozen historical DESI DR1 anomaly list: 181 warning-free global-primary TARGETIDs, split transparently into 170 high-coordinate-consistency core associations and 11 lower-confidence positional associations. This is an archive-recovery / provenance product — explicitly NOT a purity, novelty, or detection claim.",
     what:
-      "Path-C native-retrained per-survey tallies: DESI DR1 (195,829), SDSS DR18 (77,905), LAMOST DR10 (113,342, exploratory tier), eROSITA DR1 (298), Planck CMB (200), Gaia DR3 (500), NEOWISE (419, after the |b_ecl|<80° ecliptic-pole mask; 436 pre-mask). These sum to 388,493 raw → 378,280 unique after 7-way friends-of-friends union-find at 5″ (10,213 duplicate detections collapsed). Enrichment statistics (e.g. eROSITA) are reported descriptively, not as inferential significances.",
+      "A declared 1-arcsec positional join over 20,299,155 eligible DESI rows → 2,468 positional parents → 2,448 global-primary rows → 181 warning-free associations (170 at ≤0.1″, 11 between 0.1″ and 1″). Every released row and all 18 carried DESI fields are re-read exactly from the recorded FITS row; the release carries exact source-row provenance, quality tiers, warned-row auxiliary data, shift controls, checksums, and a clean-checkout validator. As of r10 every claim site states that the sub-0.1″ core excess is expected seed self-recovery (the single-member cluster centroid equals the seed member's own coordinates by construction), not independent association evidence.",
     why:
-      "Cross-survey continuity is the load-bearing falsification surface for any new physics claim. Population-level rare-class discovery (z>6 QSOs, ultra-rare AE candidates) is the byproduct.",
+      "Reproducible archive provenance — recovering public IDs from a surviving historical anomaly list, with exact source-row lineage — is a transparency contribution: a reviewer can replay the exact selection waterfall and coordinate-association quality tiers. The paper deliberately declines physical classification, purity, novelty, and anomaly-rate claims that the surviving lineage does not support.",
     verify: [
       {
         label: "pipelines/p3_anomaly_engine/",
@@ -570,7 +570,7 @@ export default function ContributionsPage() {
             { n: "P1A", role: "ECH theory + no-go: perturbation-transparency theorem and a 14-constraint channel-level closure of the four minimal bounce→dark-energy routes." },
             { n: "P1B", role: "MCMC + pipeline companion: frozen ΛCDM+ΔN_eff chains (honest null), NaMaster recovery, and an ALP-birefringence consistency check." },
             { n: "P2", role: "f_NL = −35/16 forecast: the surviving falsifiable handle — matter-bounce non-Gaussianity, ~300× inflation and opposite sign, testable by SPHEREx at 3–5σ." },
-            { n: "P3", role: "Multi-survey anomaly catalog: 378,280 unique anomalies across 7 surveys + a NANOGrav free-spectrum slope consistent with matter-bounce γ = 3.0." },
+            { n: "P3", role: "Public-ID archive recovery: 181 DESI DR1 TARGETIDs recovered from a frozen historical anomaly list (170 high-coordinate-consistency core + 11 lower-confidence) — a reproducible provenance product, explicitly not a purity, novelty, or detection claim." },
             { n: "P4", role: "Galaxy chirality null: 8.47M classified galaxies, a null +0.41σ real-space dipole, refuting the claimed ~3% parity signal at scale." },
             { n: "P5", role: "DESI chirality × environment null: spiral handedness is independent of cosmic-web environment, constraining environment-coupled parity models." },
           ].map((p, i) => (

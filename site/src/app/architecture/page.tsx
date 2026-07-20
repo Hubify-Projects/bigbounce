@@ -1,5 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { papers } from "@/data/papers";
+
+// Readiness caps sourced from papers.ts (canonical static mirror of Convex) so
+// this board can never drift out of sync with the paper pages.
+const capBySlug = new Map(papers.map((p) => [p.slug, p.readiness]));
+const capOf = (slug: string) => capBySlug.get(slug) ?? 0;
+const avgCap = Math.round(
+  papers.reduce((acc, p) => acc + p.readiness, 0) / Math.max(1, papers.length),
+);
 
 export const metadata: Metadata = {
   title: "Architecture — API & MCP",
@@ -149,10 +158,10 @@ export default function ApiDocsPage() {
           The load-bearing query is{" "}
           <code>papers.getPaperState(slug)</code> — it computes readiness as{" "}
           <code>ceiling − 2·openBlockers − 1·openMajors − 0.2·openMinors − 1·openCaveats</code>.
-          The ceiling is the evidence-backed <code>readinessCap</code>. As of 2026-07-15 the
-          canonical caps are P1A 62, P1B 56, P2 74, P3 56, P4 80, and P5 74 (average 67%).
-          Every paper remains <strong>IN REVISION</strong>. P1B v1B.0.108 and P4 v1.0.244 have
-          not been re-reviewed after their latest closure changes. Automated-model verdicts
+          The ceiling is the evidence-backed <code>readinessCap</code>. The canonical caps are
+          P1A {capOf("paper-1a")}, P1B {capOf("paper-1b")}, P2 {capOf("paper-2")},
+          P3 {capOf("paper-3")}, P4 {capOf("paper-4")}, and P5 {capOf("paper-5")} (average{" "}
+          {avgCap}%). Every paper remains <strong>IN REVISION</strong>. Automated-model verdicts
           are retained as evidence, but an ACCEPT label is not journal acceptance and does not
           replace independent human review, archive/DOI completion, or venue-specific checks.
         </p>
