@@ -28,8 +28,20 @@
 \setcitestyle{numbers,square,comma}
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v3.2.0-r10}
-\newcommand{\paperTimestamp}{July 16, 2026, 17:57 PDT}
+\newcommand{\paperVersion}{v3.2.0-r11}
+\newcommand{\paperTimestamp}{July 20, 2026, 13:24 PDT}
+% v3.2.0-r11 (2026-07-20 — DOI BACK-PATCH: embedded the real minted Zenodo archival DOI
+%   in the Data Availability section, closing the standing immutable-archive/archival-DOI
+%   gate. Zenodo version DOI 10.5281/zenodo.21461888 (concept DOI 10.5281/zenodo.21461887)
+%   is the published, verified deposit of the reviewed v3.2.0-r10 release (paper3_apjs.pdf
+%   md5=9fb6e882068a4613132792633a9d7a60, 17 pp, + LaTeX source + arXiv bundle + tracked-
+%   provenance archive + SHA256SUMS; all asset md5s matched per
+%   project-context/SSOT/zenodo/P3_zenodo_receipt_2026-07-20.json). HONEST SCOPE: this
+%   Zenodo archival DOI is DISTINCT from the AAS journal digital-asset DOI, which the journal
+%   still assigns during its publication workflow and which remains an honest open gate (left
+%   untouched). SUBTLETY stated in-text: the record archives the v3.2.0-r10 PDF while this
+%   manuscript is v3.2.0-r11; the version DOI is the versioned archival deposit of the reviewed
+%   release, later versions added to the same concept record. NO science number changed.)
 \newcommand{\releaseVersion}{v3.2.0-r2}
 \newcommand{\warnedAuxVersion}{v3.2.0-r5}
 \newcommand{\bundleVersion}{v3.2.0-r7}
@@ -892,7 +904,17 @@ manifest in
 \href{https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p3_anomaly_engine/aas_submission_v3.2.0-r4}{\nolinkurl{pipelines/p3_anomaly_engine/aas_submission_v3.2.0-r4/}}.  It will be submitted as an
 AAS contributed digital asset.  AAS assigns the journal digital-asset DOI during its publication
 workflow; no such DOI has yet been assigned or is claimed here.  The immutable Hugging Face commit
-above remains the present public byte-level reference.  The historical dataset and catalog
+above remains the present public byte-level reference.  In addition, an immutable versioned
+archival deposit of the reviewed \texttt{v3.2.0-r10} release---this manuscript PDF, its \LaTeX{}
+source, the arXiv source bundle, a tracked-provenance archive, and \texttt{SHA256SUMS}---is now
+published on Zenodo under the minted archival DOI
+\href{https://doi.org/10.5281/zenodo.21461888}{doi:10.5281/zenodo.21461888} (version DOI; the
+concept DOI \href{https://doi.org/10.5281/zenodo.21461887}{doi:10.5281/zenodo.21461887} resolves
+to the latest deposited version, to which this and later versions are added).  That deposit
+archives the reviewed \texttt{v3.2.0-r10} bytes; the present manuscript is \texttt{v3.2.0-r11},
+added to the same Zenodo record as a new version.  This Zenodo archival DOI is a self-deposited
+reproducibility handle and is distinct from the AAS journal digital-asset DOI, which the journal
+still assigns during its publication workflow and which remains an honest open gate.  The historical dataset and catalog
 data/documentation are CC BY 4.0; bundled code retains the repository license.  The AAS asset is
 the planned journal archive, with its DOI remaining an honest publication-workflow gate.  This follows the AAS data guide (accessed 2026-07-14)
 (\url{https://journals.aas.org/data-guide/}) and digital-asset DOI policy

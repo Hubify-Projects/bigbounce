@@ -57,6 +57,31 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p2-p3-p4-zenodo-doi-mint-and-embed-2026-07-20",
+    dateISO: "2026-07-20",
+    timePT: "1:33 PM",
+    kind: "closure-wave",
+    title: "P2/P3/P4 Zenodo archival DOIs MINTED then embedded — immutable-archive gate closed",
+    papers: ["P2", "P3", "P4"],
+    summary:
+      "Houston-authorized, irreversible Zenodo deposits published + verified for the three license-clear papers (P2 v1.7.125, P3 v3.2.0-r10, P4 v1.0.268), then the minted DOIs were back-patched into each manuscript one patch later (P2 v1.7.126, P3 v3.2.0-r11, P4 v1.0.269), closing each paper's archive/DOI Houston-gate for real. Each Zenodo record archives the exact bytes of the reviewed prior version; the DOI-bearing manuscript is one patch ahead and later versions will be added to the same concept DOI. P3's archival DOI is distinct from the AAS journal digital-asset DOI, which stays honestly open; P4's complete systematics-metadata sidecar also stays honestly open. No science number changed on any paper. Readiness caps HOLD (P2 80 / P3 56 / P4 80) -- no uplift claimed. Wave-2 submission tarballs (P5+P3) still need a rebuild at these DOI-bearing versions before submission.",
+    keyTakeaways: [
+      "P2 v1.7.126: 11 pp, MD5 bd10fe4ab022485cf647c2fc2d5074a2, Convex k573kdfeb1jayccrdetm7ta4mx8awb6b -- cites DOI 10.5281/zenodo.21461881 (concept 21461880), archiving the reviewed v1.7.125 bytes (md5 174d52d5)",
+      "P3 v3.2.0-r11: 17 pp, MD5 62e755678e28fb742d96f3daf5c81b93, Convex k570ag87nmbfkyn0hsc625r99n8awf23 -- cites DOI 10.5281/zenodo.21461888 (concept 21461887), archiving the reviewed v3.2.0-r10 bytes (md5 9fb6e882); AAS journal digital-asset DOI remains honestly open",
+      "P4 v1.0.269: 32 pp, MD5 b266198157eef7f2feb590a3692e8004, Convex k57bg1t5pnp5qg57eqwqgchreh8ax47k -- cites DOI 10.5281/zenodo.21461899 (concept 21461898), archiving the reviewed v1.0.268 bytes (md5 4e139b56); systematics-metadata sidecar remains honestly open",
+      "All 6 files per deposit (PDF+tex+arXiv-tarball+provenance-tarball+SHA256SUMS+manifest) verified staged-md5==Zenodo-md5; license cc-by-4.0; DOIs HEAD-resolve 200; directive-G PASS on all three post-embed bumps, versioned mirrors byte-identical",
+      "P1A/P1B/P5 remain license-gated -- NOT deposited",
+    ],
+    links: [
+      { label: "P2 Zenodo receipt", href: `${GH}/project-context/SSOT/zenodo/P2_zenodo_receipt_2026-07-20.json` },
+      { label: "P3 Zenodo receipt", href: `${GH}/project-context/SSOT/zenodo/P3_zenodo_receipt_2026-07-20.json` },
+      { label: "P4 Zenodo receipt", href: `${GH}/project-context/SSOT/zenodo/P4_zenodo_receipt_2026-07-20.json` },
+      { label: "P2 record (Zenodo)", href: "https://zenodo.org/records/21461881" },
+      { label: "P3 record (Zenodo)", href: "https://zenodo.org/records/21461888" },
+      { label: "P4 record (Zenodo)", href: "https://zenodo.org/records/21461899" },
+    ],
+  },
+  {
     id: "p4-v1-0-266-g1-g2-pod-campaign-closure-2026-07-17",
     dateISO: "2026-07-17",
     timePT: "8:30 PM",
