@@ -702,3 +702,15 @@ Switched to Opus 4.7 + xhigh effort for this.
 - `redaction`: secret-like value redacted
 
 > Zenodo is setup btw - here's everything to save to the .env.local and complete whatever steps you need with it please - Zenodo.org Access token, token name: houstongolden-zenodo, [redacted secret-like value] secret-like value]. Zenodo application: Client ID [redacted secret-like value], Client Secret [redacted secret-like value]. Name: bigbounce. Website URL https://bigbounce.hubify.app/. Redirect URIs: https://bigbounce.hubify.app/
+
+## 2026-07-21 - bigbounce-resume-claude-desktop-2026-07-16
+
+### Houston messages, verbatim
+
+**15:02 PT - Continue; verify updates target the live bigbounce.hubify.app site**
+
+- `cwd`: /Users/houstongolden/Desktop/CODE_YOU/bigbounce
+- `session`: bigbounce-resume-claude-desktop-2026-07-16
+- `agent`: Claude Code desktop / claude-fable-5
+
+> continue ensure you are updating the correct website etc too the one that is live on bigbounce.hubify.app

@@ -80,10 +80,10 @@ export const publishData: PublishData = {
     {
       id: "D1",
       title: "Zenodo token",
-      status: "pending",
+      status: "done",
       options: "Paste a personal-access token with the deposit:write scope.",
       recommendation:
-        "Do it — ~2 min at zenodo.org/account/settings/applications. The moment the token lands the loop mints every DOI and finalizes the deposit stagings.",
+        "DONE 2026-07-20: token provided; DOIs minted + embedded — P2 10.5281/zenodo.21461881, P3 …21461888, P4 …21461899 (receipts in SSOT/zenodo/).",
       unblocks:
         "DOIs for P1B (its only reviewer major), P2, P3, P4, and the dataset archives.",
     },
@@ -99,7 +99,7 @@ export const publishData: PublishData = {
     {
       id: "D3",
       title: "Paper IV (P5's anchor)",
-      status: "pending",
+      status: "done",
       options:
         "(a) Publish Paper IV as a companion arXiv preprint alongside P5, or (b) fold a minimal validation appendix into P5 and drop the dependency.",
       recommendation:
