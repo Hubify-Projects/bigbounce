@@ -97,6 +97,8 @@ def main() -> int:
     ap.add_argument("--receipt-out", required=True, help="path to write the JSON receipt")
     ap.add_argument("--deposition-id", type=int, help="resume an existing draft instead of creating one")
     ap.add_argument("--api", default=API_DEFAULT)
+    ap.add_argument("--prune-stale", action="store_true",
+                    help="delete draft files not present in the staging dir (drafts only)")
     ap.add_argument("--publish", action="store_true", help="publish after verification (IRREVERSIBLE)")
     ap.add_argument("--confirm", default="", help="must be the literal string PUBLISH to publish")
     ap.add_argument("--repo", default=str(Path(__file__).resolve().parents[1]))
@@ -136,6 +138,16 @@ def main() -> int:
 
     existing = {f["filename"]: f for f in
                 _request("GET", f"{args.api}/deposit/depositions/{dep_id}/files", token)}
+    if args.prune_stale:
+        if dep.get("submitted"):
+            raise DepositError("--prune-stale refused: deposition is already published")
+        staged_names = {p.name for p in files}
+        for name, meta in list(existing.items()):
+            if name not in staged_names:
+                print(f"  prune stale draft file: {name}")
+                _request("DELETE", f"{args.api}/deposit/depositions/{dep_id}/files/{meta['id']}",
+                         token)
+                existing.pop(name)
     uploaded = []
     for path in files:
         local_md5 = md5_of(path)
