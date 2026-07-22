@@ -1,4 +1,22 @@
 # Wave-1 arXiv Submission Kit — P3, P1A, P1B
+---
+
+## 2026-07-21 ADDENDUM — P1B superseded to v2B.0.12 (Archive/DOI closure)
+
+Every `v2B.0.11` reference below for **P1B** is superseded by **v2B.0.12**:
+
+- The namaster-proof 0.1.7 software archive is **PUBLISHED**: DOI
+  **10.5281/zenodo.21481753** (Houston-authorized 2026-07-21; receipt in
+  `SSOT/zenodo/`). v2B.0.12's Archive paragraph cites it — the boards' only
+  remaining P1B major (persistent identifier) is closed in-paper.
+- Submission tarball: `paper1b_namaster_proof_arxiv_v2B.0.12.tar.gz`
+  (commit-bound, isolated recompile pass: 6 pp, 0 errors / 0 undef-ref).
+- License (D2, RESOLVED 2026-07-21): **CC-BY-4.0** for P1A + P1B + P5.
+- P1A/P1B Zenodo deposits are staged as drafts with prereserved DOIs
+  10.5281/zenodo.21481838 (P1A) / …21481842 (P1B, holding the v2B.0.12
+  files); publish on Houston's explicit go.
+- P1A remains v1A.0.124 exactly as documented below.
+
 ## Prepared 2026-07-19 | git HEAD `b680ca1c` | Goal: a minutes-long click session for Houston
 
 > **2026-07-20 update — P3 tarball rebuilt at the DOI-bearing version.** P3's

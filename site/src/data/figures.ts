@@ -30,7 +30,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 1 (fig:corner_full_tension)",
         "title": "Full-tension MCMC corner plot (119,617 post-burnin samples, getdist-thinned from 176,240 raw",
         "desc": "Full-tension MCMC corner plot (119,617 post-burnin samples, getdist-thinned from 176,240 raw; footnote ) over Planck+BAO+SN+H0+S_8. The _eff posterior is consistent with zero (-0.020± 0.169), confirming no additional relativistic species at recombination.",
-        "source": "Paper 1B · v2B.0.11"
+        "source": "Paper 1B · v2B.0.12"
       },
       {
         "src": "/images/fig_dneff_viability_two_frozen.png",
@@ -38,7 +38,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 2 (fig:dneff_viability)",
         "title": "_eff marginal posterior comparison across the two frozen dataset combinations of Table (176,240 and 132,949 s…",
         "desc": "_eff marginal posterior comparison across the two frozen dataset combinations of Table (176,240 and 132,949 samples). Panel (a): Gaussian summaries of the _eff marginal posteriors at the Table means ±1σ, with the Standard-Model value _eff=0 marked. Panel (b): all seven Table parameters, normalized to the full-tension mean and σ. Both combinations recover _e…",
-        "source": "Paper 1B · v2B.0.11"
+        "source": "Paper 1B · v2B.0.12"
       },
       {
         "src": "/images/alp_triangle_plot.png",
@@ -46,7 +46,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 3 (fig:alp_triangle)",
         "title": "Spectator-ALP joint posterior triangle from the continuous-prior cross-check configuration in which the photo…",
         "desc": "Spectator-ALP joint posterior triangle from the continuous-prior cross-check configuration in which the photon anomaly coefficient is sampled freely (flat priors C_a[4,60] --- shifted and extended from the earlier [1,30] to cover the posterior-supported coupling band (median 20.7, 16--84\\% [7.3,45.6]); the dropped [1,4) interval lies entirely below the mini…",
-        "source": "Paper 1B · v2B.0.11"
+        "source": "Paper 1B · v2B.0.12"
       },
       {
         "src": "/images/fig_namaster_beta_vs_nside.png",

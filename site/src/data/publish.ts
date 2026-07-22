@@ -90,11 +90,11 @@ export const publishData: PublishData = {
     {
       id: "D2",
       title: "License for P1A + P1B",
-      status: "pending",
+      status: "done",
       options: "arXiv perpetual non-exclusive license, or CC-BY-4.0.",
       recommendation:
-        "CC-BY-4.0 — matches the P3/P4/P5 data releases and is grant-friendly. (The wave-1 kit notes arXiv non-exclusive is the safe conventional default if there is any reason to prefer it; P3's manuscript source already defaults to CC-BY-4.0.) 2026-07-21: your answer is now a one-command path — tools/d2_authorize_deposits.py records the decision and unlocks staging; tools/zenodo_deposit.py drafts, MD5-verifies, and (only on your explicit go) publishes. P1B's software prerequisite is pre-staged: namaster-proof 0.1.7 (already MIT-licensed in-repo) is uploaded as a reversible Zenodo draft with prereserved DOI 10.5281/zenodo.21481753.",
-      unblocks: "Deposit staging + arXiv submission for both P1A and P1B (P5's deposit also needs this word; its remaining gate is the Paper-IV back-patch).",
+        "DONE 2026-07-21: Houston chose CC-BY-4.0 (per recommendation). Authorization recorded via tools/d2_authorize_deposits.py. Same hour: namaster-proof 0.1.7 software DOI PUBLISHED (10.5281/zenodo.21481753 — P1B's software prerequisite, Houston-authorized); P1A and P1B Zenodo drafts uploaded + MD5-verified with prereserved DOIs 10.5281/zenodo.21481838 (P1A) and …21481842 (P1B). Publishing those two paper DOIs is one explicit go from Houston.",
+      unblocks: "Deposit staging + arXiv submission for both P1A and P1B (P5's deposit shares the license; its remaining gate is the Paper-IV back-patch).",
     },
     {
       id: "D3",
@@ -114,15 +114,16 @@ export const publishData: PublishData = {
       options:
         "Confirm submit privileges for gr-qc (P1A), astro-ph.IM (P1B, P3), and astro-ph.GA (P3 cross-list) at arxiv.org → Submit.",
       recommendation:
-        "Check this FIRST today. A first-time gr-qc submission may need an endorsement, which can take 1–2 days — this is the only thing that can structurally slip the deadline.",
+        "Check this FIRST today. A first-time gr-qc submission may need an endorsement, which can take 1–2 days — this is the only thing that can structurally slip the deadline. (Checked 2026-07-21: no live arXiv session in the browser — log in at arxiv.org, then the agent can read the endorsement status from your session, or check Submit → 'Start a new submission' yourself: if gr-qc appears in the category list without an endorsement warning, you're clear.)",
       unblocks: "All submissions.",
     },
     {
       id: "D5",
       title: "ORCID",
       status: "pending",
-      options: "Confirm 0009-0008-3617-8729 resolves at orcid.org and is linked to the arXiv account.",
-      recommendation: "~1 min. The old runbook flagged a 404 — verify it loads before the click session.",
+      options: "Confirm 0009-0008-3617-8729 is YOUR ORCID iD (not someone else's or a typo).",
+      recommendation:
+        "~1 min, concretely: go to orcid.org and sign in (or register free if you never have — takes 2 min). Your iD is shown right under your name on your record page. If it reads 0009-0008-3617-8729, say 'yes that's me'. If it's different — or you had no account — give the real iD and all submission metadata will use that instead. (The public record for …8729 currently shows no public name, so it can't be verified from outside; only you can check it from inside your account.)",
       unblocks: "Metadata correctness everywhere.",
     },
   ],

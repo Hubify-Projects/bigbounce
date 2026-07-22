@@ -10,17 +10,22 @@ but are not the current scientific critical path.
 
 ## Active
 
-- [ ] **PUB-008 — D2/D4/D5 decision gate (2026-07-21, THE critical path, 3 days
-  to deadline):** all submission clicks wait on Houston: D2 license word for
-  P1A/P1B/P5 (rec CC-BY-4.0 — now a one-command path via
-  `tools/d2_authorize_deposits.py` + `tools/zenodo_deposit.py`; runbook in
-  SSOT/zenodo/INDEX.md), D4 arXiv endorsement check (checked 2026-07-21:
-  Houston's Chrome has NO live arXiv session — he must log in at arxiv.org;
-  agent cannot enter credentials), D5 ORCID 0009-0008-3617-8729 confirm.
-  Pre-staged while waiting: namaster-proof 0.1.7 (MIT in-repo, not D2-gated)
-  uploaded as reversible Zenodo DRAFT, deposition 21481753, prereserved DOI
-  10.5281/zenodo.21481753, 5/5 MD5s verified — publish awaits Houston's go.
-  (source: 2026-07-20 decision brief; 2026-07-21 continue)
+- [ ] **PUB-008 — D4/D5 decision gate (2026-07-21 update; D2 RESOLVED):**
+  D2 DONE — Houston chose CC-BY-4.0 ("D2 i go with your recommendation",
+  2026-07-21); applied via d2_authorize_deposits.py. namaster-proof 0.1.7
+  PUBLISHED on Houston's explicit go: DOI 10.5281/zenodo.21481753 (record
+  HTTP 200). P1B bumped v2B.0.12 (Archive paragraph cites the DOI — the
+  boards' only remaining P1B major closed in-paper; directive-G PASS,
+  md5 7943b2c7). P1A + P1B Zenodo DRAFTS staged with prereserved DOIs
+  …21481838 / …21481842 (v2B.0.12 files, MD5-verified) — PUBLISHING these
+  two awaits Houston's explicit go. STILL OPEN: D4 arXiv endorsement
+  (Houston must log in at arxiv.org — no live session in Chrome, agent
+  cannot enter credentials; THE schedule risk) and D5 ORCID
+  0009-0008-3617-8729 confirm (Houston: sign in at orcid.org, compare the
+  iD under your name, say "yes that's me" or give the real iD — public
+  record shows no name so it is unverifiable from outside). P5 remains
+  gated only on the Paper-IV (P4 arXiv ID) back-patch.
+  (source: 2026-07-20 decision brief; 2026-07-21 continue + D2/D5 message)
 
 - [ ] **HO-007 — Claude-stack routing (supersedes HO-005/HO-006):** Codex is
   PAUSED entirely (Houston 2026-07-16: burning too much Codex usage; resumed in

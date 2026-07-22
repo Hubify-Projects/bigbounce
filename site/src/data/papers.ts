@@ -144,7 +144,7 @@ export const papers: Paper[] = [
     slug: "paper-1b",
     number: "1B",
     title: "namaster-proof: Exact pseudo-Cℓ Window Inference and Tamper-Evident Provenance for Reproducible Spin-2 Analyses",
-    version: "v2B.0.11",
+    version: "v2B.0.12",
     lastUpdated: "2026-07-16",
     tldr: "P1B is a focused software metapaper around namaster-proof 0.1.7. The exact v2B.0.9 confirmation board (Grok REJECT / Gemini MINOR / Claude MAJOR) FALSIFIED the 'workspace tensor not reproducible' premise — it is deterministically regenerable from committed RNG-free code. v2B.0.10 closes 4 optional polish items: a new recheck script, real committed execution costs, a pip-install one-liner, and the retained macOS-untested label. Archive DOI, correspondence metadata, and human review remain open; readiness holds 56.",
     path: publicationPath({}),
@@ -170,12 +170,12 @@ export const papers: Paper[] = [
     predictions: ["Exact-window operator equivalence", "Tamper-evident result validation", "Deterministic multipole contracts"],
     figures: ["Software architecture", "Exact-window equations", "Executable worked examples"],
     remainingWork: [
-      "Houston-gated: immutable archive DOI (Zenodo or PyPI+Zenodo), correspondence metadata, human software review — the exact v2B.0.10 board + truth audit found P1B science exhausted with the DOI as the only remaining major; v2B.0.11 adds the pytest command + non-affiliation sentences and no further board is owed on that two-sentence diff per the content-hash stop rule",
+      "Houston-gated: immutable archive DOI (Zenodo or PyPI+Zenodo), correspondence metadata, human software review — the DOI major is CLOSED 2026-07-21 (namaster-proof 0.1.7 published: 10.5281/zenodo.21481753, cited in the v2B.0.12 Archive paragraph); remaining Houston gates: correspondence metadata + human software review",
       "Obtain independent human software review and publish an immutable archive/DOI",
       "Publish package 0.1.7 to an independent package index once a PyPI token is available (Houston gate) after release QA",
     ],
     preprintId: "HUBIFY-2026-001B",
-    pdfMeta: "Software metapaper · 6 pp · v2B.0.11 · package 0.1.7 · 41 tests · md5 7c14c2a1d4fb58ed652a2231bbd7e17a · exact v2B.0.10 board truth-audited (science exhausted; only the Houston-gated DOI/metadata/human gates remain); v2B.0.11 adds the pytest invocation + non-affiliation sentences · readiness holds 56",
+    pdfMeta: "Software metapaper · 6 pp · v2B.0.12 · package 0.1.7 · 41 tests · md5 7943b2c7df00e15502b784420e474621 · Archive closure: namaster-proof 0.1.7 published on Zenodo, DOI 10.5281/zenodo.21481753 (Houston-authorized 2026-07-21) — the boards' only remaining major (persistent archive DOI) is closed in-paper · readiness holds 56 pending human gates",
     artifacts: [
       { label: "Read PDF", href: "/papers/paper1b_namaster_proof.pdf", kind: "primary", external: true },
       { label: "Download PDF", href: "/papers/paper1b_namaster_proof.pdf", kind: "secondary", download: true },
