@@ -714,3 +714,11 @@ Switched to Opus 4.7 + xhigh effort for this.
 - `agent`: Claude Code desktop / claude-fable-5
 
 > continue ensure you are updating the correct website etc too the one that is live on bigbounce.hubify.app
+
+**17:01 PT - continue after 3 idle loop ticks; D2/D4/D5 still unanswered**
+
+- `cwd`: /Users/houstongolden/Desktop/CODE_YOU/bigbounce
+- `session`: bigbounce-resume-claude-desktop-2026-07-16
+- `agent`: claude-code-desktop/fable-5
+
+> continue
