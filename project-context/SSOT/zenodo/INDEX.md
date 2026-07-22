@@ -1,5 +1,39 @@
 # Deposit readiness — BigBounce six-paper portfolio
 
+## 2026-07-21 update (current state — supersedes the 2026-07-15 table below)
+
+**Published DOIs (2026-07-20, irreversible, receipts in this directory):**
+P2 → 10.5281/zenodo.21461881 · P3 → 10.5281/zenodo.21461888 · P4 → 10.5281/zenodo.21461899.
+All three DOIs are embedded in the current manuscripts.
+
+**Still fail-closed (correctly) on Houston's D2 license decision:** P1A (license
+is the ONLY gate), P1B (license + namaster-proof software DOI), P5 (license +
+Paper-IV arXiv-ID back-patch). Verified 2026-07-21: `prepare_paper_deposit.py`
+refuses all three with the exact blocker text — the gates are current.
+
+**namaster-proof 0.1.7 software archive (P1B prerequisite):** already
+MIT-licensed in-repo, so NOT D2-gated. Staged commit-bound and uploaded as a
+reversible Zenodo **draft** 2026-07-21 — deposition 21481753, prereserved DOI
+10.5281/zenodo.21481753, all 5 file MD5s verified
+([receipt](namaster-proof_v0.1.7_draft_receipt_2026-07-21.json)). Publish
+remains Houston-gated.
+
+**D2 runbook (the moment Houston names the license, e.g. cc-by-4.0):**
+
+```bash
+# 1. authorize (records Houston's decision + provenance stamp)
+python3 tools/d2_authorize_deposits.py cc-by-4.0 \
+  --authorized-by "Houston, YYYY-MM-DD, chat" --write
+# 2. stage each unblocked paper at HEAD
+python3 tools/prepare_paper_deposit.py --paper P1A --git-commit $(git rev-parse HEAD) --verify-tarball --write
+# 3. draft + upload + verify (reversible; add --publish --confirm PUBLISH only on Houston's go)
+python3 tools/zenodo_deposit.py --staging-dir .deposit-staging/P1A/<version> \
+  --paper P1A --receipt-out project-context/SSOT/zenodo/P1A_zenodo_receipt_<date>.json
+# P1B: publish the namaster-proof draft first, then re-run step 1 with --p1b-software-doi <doi>
+```
+
+---
+
 **Audited:** 2026-07-15. All six papers remain **IN REVISION**. This directory previously claimed that obsolete June versions were “one-click ready”; that claim was false for the current manuscripts and is withdrawn.
 
 | Paper | Current version | Readiness | Current PDF | Deposit state |
