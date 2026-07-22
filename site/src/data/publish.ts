@@ -72,7 +72,7 @@ export interface PublishData {
 }
 
 export const publishData: PublishData = {
-  lastUpdatedDisplay: "July 20, 2026 · Los Angeles (PT)",
+  lastUpdatedDisplay: "July 21, 2026 · Los Angeles (PT)",
   deadlineNote:
     "All six manuscripts are science-complete and review-converged. Every exact-PDF referee board is truth-audited; there is no agent-executable science left on the critical path. What remains is five decisions only Houston can make and the submission clicks only Houston can perform — the agent loop executes everything else the moment each decision lands.",
 
@@ -93,7 +93,7 @@ export const publishData: PublishData = {
       status: "done",
       options: "arXiv perpetual non-exclusive license, or CC-BY-4.0.",
       recommendation:
-        "DONE 2026-07-21: Houston chose CC-BY-4.0 (per recommendation). Authorization recorded via tools/d2_authorize_deposits.py. Same hour: namaster-proof 0.1.7 software DOI PUBLISHED (10.5281/zenodo.21481753 — P1B's software prerequisite, Houston-authorized); P1A and P1B Zenodo drafts uploaded + MD5-verified with prereserved DOIs 10.5281/zenodo.21481838 (P1A) and …21481842 (P1B). Publishing those two paper DOIs is one explicit go from Houston.",
+        "DONE 2026-07-21 end-to-end: CC-BY-4.0 chosen; ALL THREE deposits PUBLISHED on Houston's explicit go — namaster-proof 0.1.7 software 10.5281/zenodo.21481753, P1A manuscript 10.5281/zenodo.21481838, P1B manuscript 10.5281/zenodo.21481842 (each MD5-verified, records live). DOIs embedded in-paper: P1A v1A.0.125, P1B v2B.0.13 (directive-G PASS both). Every paper P1A/P1B/P2/P3/P4 now has a published archival DOI; P5's deposit waits only on the Paper-IV back-patch.",
       unblocks: "Deposit staging + arXiv submission for both P1A and P1B (P5's deposit shares the license; its remaining gate is the Paper-IV back-patch).",
     },
     {

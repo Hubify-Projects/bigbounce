@@ -57,6 +57,31 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p1a-p1b-zenodo-doi-publish-and-embed-2026-07-21",
+    dateISO: "2026-07-21",
+    timePT: "7:58 PM",
+    kind: "closure-wave",
+    title: "P1A/P1B archival DOIs PUBLISHED then embedded — every current paper now carries a published DOI",
+    papers: ["P1A", "P1B"],
+    summary:
+      "D2 resolved (Houston: CC-BY-4.0 per recommendation) and executed end-to-end the same day. First the namaster-proof 0.1.7 software archive was published on Houston's explicit go (DOI 10.5281/zenodo.21481753, commit-pinned source, 5/5 MD5s verified) and cited in P1B v2B.0.12's Archive paragraph — closing the boards' only remaining P1B reviewer major (the persistent-identifier floor behind Grok's standing REJECT). Then, on Houston's second explicit go ('publish the paper drafts'), both manuscript deposits were published: P1A DOI 10.5281/zenodo.21481838 (concept 21481837, archiving the reviewed v1A.0.124 bytes) and P1B DOI 10.5281/zenodo.21481842 (concept 21481841, archiving the v2B.0.12 bytes). Each DOI was embedded in-paper one patch later (P1A v1A.0.125, P1B v2B.0.13, directive-G PASS both) and the wave-1 submission tarballs were rebuilt commit-bound at the DOI-bearing versions with isolated-recompile proofs. The full portfolio DOI ledger now reads P1A 21481838 / P1B 21481842 (+software 21481753) / P2 21461881 / P3 21461888 / P4 21461899; P5's deposit waits only on the Paper-IV arXiv-ID back-patch. No science number changed. Readiness caps HOLD (P1A 62 / P1B 56) — no uplift claimed.",
+    keyTakeaways: [
+      "P1A v1A.0.125: 7 pp, MD5 ca511c351f41948acdcfb967bf80b552, Convex k57dr5c47q9bbavn4wjfbm4sxh8b1n90 — cites DOI 10.5281/zenodo.21481838 in the availability paragraph",
+      "P1B v2B.0.13: 6 pp, MD5 a55d0c6774afba38a49cb6463ba8cc28, Convex k57fdm89g3jptjdzfjr8tfxw6h8b0ycy — Archive paragraph cites BOTH the 0.1.7 software DOI 10.5281/zenodo.21481753 and the manuscript deposit DOI 10.5281/zenodo.21481842; the persistent-identifier major is fully closed",
+      "All 6 files per deposit verified staged-md5==Zenodo-md5 before publish; license cc-by-4.0 (D2, Houston explicit); records HTTP 200",
+      "Wave-1 tarballs rebuilt at the DOI-bearing versions and isolated-recompile verified: paper1a_arxiv_v1A.0.125.tar.gz (7 pp, 0 undef-ref) and paper1b_namaster_proof_arxiv_v2B.0.13.tar.gz (6 pp, 0 undef-ref)",
+      "Remaining Houston inputs: D4 arXiv endorsement check (THE schedule risk) and D5 ORCID confirm — then wave-1 clicks (P1B → P1A → P3)",
+    ],
+    links: [
+      { label: "P1A Zenodo receipt", href: `${GH}/project-context/SSOT/zenodo/P1A_zenodo_receipt_2026-07-21.json` },
+      { label: "P1B Zenodo receipt", href: `${GH}/project-context/SSOT/zenodo/P1B_zenodo_receipt_2026-07-21.json` },
+      { label: "namaster-proof receipt", href: `${GH}/project-context/SSOT/zenodo/namaster-proof_v0.1.7_zenodo_receipt_2026-07-21.json` },
+      { label: "P1A record (Zenodo)", href: "https://zenodo.org/records/21481838" },
+      { label: "P1B record (Zenodo)", href: "https://zenodo.org/records/21481842" },
+      { label: "namaster-proof 0.1.7 record (Zenodo)", href: "https://zenodo.org/records/21481753" },
+    ],
+  },
+  {
     id: "p2-p3-p4-zenodo-doi-mint-and-embed-2026-07-20",
     dateISO: "2026-07-20",
     timePT: "1:33 PM",

@@ -1,6 +1,22 @@
 # Wave-1 arXiv Submission Kit — P3, P1A, P1B
 ---
 
+## 2026-07-21 ADDENDUM 2 (19:58 PT) — DOIs PUBLISHED; P1A → v1A.0.125, P1B → v2B.0.13
+
+Houston's explicit go ("publish the paper drafts") executed: **P1A manuscript
+deposit PUBLISHED — DOI 10.5281/zenodo.21481838** (concept …21481837) and
+**P1B manuscript deposit PUBLISHED — DOI 10.5281/zenodo.21481842** (concept
+…21481841); records live, all MD5s verified, receipts in `SSOT/zenodo/`.
+Both DOIs are embedded in-paper (directive-G PASS): **P1A v1A.0.125**
+(availability paragraph) and **P1B v2B.0.13** (Archive paragraph, alongside
+the 0.1.7 software DOI). SUBMISSION TARBALLS for wave-1 are now:
+
+- P1A: `paper1a_arxiv_v1A.0.125.tar.gz` (isolated recompile pass, 7 pp, 0 undef-ref)
+- P1B: `paper1b_namaster_proof_arxiv_v2B.0.13.tar.gz` (isolated recompile pass, 6 pp, 0 undef-ref)
+
+These supersede every earlier P1A/P1B tarball reference in this kit.
+P3's tarball reference is unchanged.
+
 ## 2026-07-21 ADDENDUM — P1B superseded to v2B.0.12 (Archive/DOI closure)
 
 Every `v2B.0.11` reference below for **P1B** is superseded by **v2B.0.12**:
