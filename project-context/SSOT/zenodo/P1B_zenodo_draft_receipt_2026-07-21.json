@@ -1,0 +1,74 @@
+{
+ "paper": "P1B",
+ "deposition_id": 21481842,
+ "state": "draft",
+ "submitted": false,
+ "draft_url": "https://zenodo.org/deposit/21481842",
+ "prereserved_doi": "10.5281/zenodo.21481842",
+ "metadata": {
+  "access_right": "open",
+  "creators": [
+   {
+    "name": "Golden, Houston"
+   }
+  ],
+  "description": "JORS software metapaper for namaster-proof 0.1.7: exact NaMaster bandpower-window inference with fail-closed, content-bound receipt validation for reproducible spin-2 pseudo-Cl analyses. 41-test suite (39 run + 2 monorepo-replay skips standalone); deterministic workspace regenerability verified.",
+  "license": "cc-by-4.0",
+  "publication_type": "article",
+  "related_identifiers": [
+   {
+    "identifier": "10.5281/zenodo.21481753",
+    "relation": "describes",
+    "scheme": "doi"
+   }
+  ],
+  "title": "namaster-proof: Exact pseudo-Cl window inference and content-bound validation for reproducible spin-2 analyses",
+  "upload_type": "publication",
+  "version": "2B.0.11"
+ },
+ "files": [
+  {
+   "filename": "P1B_v2B.0.11_tracked_provenance.tar.gz",
+   "size_bytes": 20653,
+   "local_staged_md5": "38153d6cc62826c1c3a96f008a48945b",
+   "zenodo_md5": "38153d6cc62826c1c3a96f008a48945b",
+   "md5_match": true
+  },
+  {
+   "filename": "SHA256SUMS",
+   "size_bytes": 402,
+   "local_staged_md5": "84931b556a1133732bf03dba53cb0c7f",
+   "zenodo_md5": "84931b556a1133732bf03dba53cb0c7f",
+   "md5_match": true
+  },
+  {
+   "filename": "manifest.json",
+   "size_bytes": 2200,
+   "local_staged_md5": "8ed8152a6e501c9c448d39a0f9f23807",
+   "zenodo_md5": "8ed8152a6e501c9c448d39a0f9f23807",
+   "md5_match": true
+  },
+  {
+   "filename": "paper1b_namaster_proof.pdf",
+   "size_bytes": 380733,
+   "local_staged_md5": "7c14c2a1d4fb58ed652a2231bbd7e17a",
+   "zenodo_md5": "7c14c2a1d4fb58ed652a2231bbd7e17a",
+   "md5_match": true
+  },
+  {
+   "filename": "paper1b_namaster_proof.tex",
+   "size_bytes": 21260,
+   "local_staged_md5": "0f091ff62601603212f603d6f2e8154c",
+   "zenodo_md5": "0f091ff62601603212f603d6f2e8154c",
+   "md5_match": true
+  },
+  {
+   "filename": "paper1b_namaster_proof_arxiv_v2B.0.11.tar.gz",
+   "size_bytes": 8822,
+   "local_staged_md5": "9f640a21561de9d2dc00b2a3964f1105",
+   "zenodo_md5": "9f640a21561de9d2dc00b2a3964f1105",
+   "md5_match": true
+  }
+ ],
+ "receipt_written_utc": "2026-07-22T00:19:08.828304+00:00"
+}

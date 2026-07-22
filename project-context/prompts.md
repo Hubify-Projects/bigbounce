@@ -722,3 +722,14 @@ Switched to Opus 4.7 + xhigh effort for this.
 - `agent`: claude-code-desktop/fable-5
 
 > continue
+
+**17:17 PT - D2 authorized (CC-BY-4.0 per recommendation); namaster-proof publish authorized; D5 confusion**
+
+- `cwd`: /Users/houstongolden/Desktop/CODE_YOU/bigbounce
+- `session`: bigbounce-resume-claude-desktop-2026-07-16
+- `agent`: claude-code-desktop/fable-5
+
+> D2 i go with your recommendation 
+> D5 i have no idea how to confirm "D5 (you, one word): confirm ORCID 0009-0008-3617-8729."??
+>
+> * publish the namaster-proof draft" do it yes

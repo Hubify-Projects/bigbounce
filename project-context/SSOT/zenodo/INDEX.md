@@ -11,12 +11,20 @@ is the ONLY gate), P1B (license + namaster-proof software DOI), P5 (license +
 Paper-IV arXiv-ID back-patch). Verified 2026-07-21: `prepare_paper_deposit.py`
 refuses all three with the exact blocker text — the gates are current.
 
-**namaster-proof 0.1.7 software archive (P1B prerequisite):** already
-MIT-licensed in-repo, so NOT D2-gated. Staged commit-bound and uploaded as a
-reversible Zenodo **draft** 2026-07-21 — deposition 21481753, prereserved DOI
-10.5281/zenodo.21481753, all 5 file MD5s verified
-([receipt](namaster-proof_v0.1.7_draft_receipt_2026-07-21.json)). Publish
-remains Houston-gated.
+**namaster-proof 0.1.7 software archive (P1B prerequisite): PUBLISHED
+2026-07-21** on Houston's explicit go ("publish the namaster-proof draft do it
+yes") — **DOI 10.5281/zenodo.21481753**, record live (HTTP 200), all 5 file
+MD5s verified ([receipt](namaster-proof_v0.1.7_zenodo_receipt_2026-07-21.json)).
+
+**D2 RESOLVED 2026-07-21:** Houston chose **CC-BY-4.0** ("D2 i go with your
+recommendation"). Applied via `d2_authorize_deposits.py --write` with the
+software DOI; P1A and P1B fully unblocked, staged at HEAD (isolated recompiles
+pass, 0 undef-refs), and uploaded as Zenodo **drafts** with prereserved DOIs:
+P1A → 10.5281/zenodo.21481838
+([receipt](P1A_zenodo_draft_receipt_2026-07-21.json)), P1B →
+10.5281/zenodo.21481842
+([receipt](P1B_zenodo_draft_receipt_2026-07-21.json)). Publishing these two is
+one explicit Houston go. P5 keeps only the Paper-IV back-patch gate.
 
 **D2 runbook (the moment Houston names the license, e.g. cc-by-4.0):**
 

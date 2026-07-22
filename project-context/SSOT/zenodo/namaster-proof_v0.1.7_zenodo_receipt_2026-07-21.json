@@ -1,0 +1,74 @@
+{
+ "paper": "namaster-proof",
+ "deposition_id": 21481753,
+ "state": "done",
+ "submitted": true,
+ "draft_url": "https://zenodo.org/deposit/21481753",
+ "prereserved_doi": "10.5281/zenodo.21481753",
+ "metadata": {
+  "title": "namaster-proof 0.1.7: Exact NaMaster window operators and content-bound checkpoint receipts",
+  "creators": [
+   {
+    "name": "Golden, Houston"
+   }
+  ],
+  "description": "Exact NaMaster window operators and content-bound checkpoint receipts for reproducible spin-2 (E/B) pseudo-C_ell analyses. Source archived from git commit 0a587b583f8e86c4ce1ee4a20526fcdcd8035fe6 (packages/namaster-proof). 41 automated tests; executed workspace rebuild check max|delta|=9.9e-24. Companion software to the BigBounce Paper 1B (JORS software metapaper).",
+  "upload_type": "software",
+  "access_right": "open",
+  "license": "mit",
+  "version": "0.1.7",
+  "keywords": [
+   "NaMaster",
+   "pseudo-Cl",
+   "CMB polarization",
+   "E/B decomposition",
+   "reproducibility"
+  ]
+ },
+ "files": [
+  {
+   "filename": "CITATION.cff",
+   "size_bytes": 406,
+   "local_staged_md5": "bd266fdf85e19d753f943fc8517015f6",
+   "zenodo_md5": "bd266fdf85e19d753f943fc8517015f6",
+   "md5_match": true
+  },
+  {
+   "filename": "LICENSE",
+   "size_bytes": 1071,
+   "local_staged_md5": "08b57cffde400a4ac0b9c19851514b9d",
+   "zenodo_md5": "08b57cffde400a4ac0b9c19851514b9d",
+   "md5_match": true
+  },
+  {
+   "filename": "SHA256SUMS",
+   "size_bytes": 327,
+   "local_staged_md5": "09cb8995909c637328c4f7ee100544e8",
+   "zenodo_md5": "09cb8995909c637328c4f7ee100544e8",
+   "md5_match": true
+  },
+  {
+   "filename": "codemeta.json",
+   "size_bytes": 1270,
+   "local_staged_md5": "45c8bc20c1d2ca18ec3463437bf8acd0",
+   "zenodo_md5": "45c8bc20c1d2ca18ec3463437bf8acd0",
+   "md5_match": true
+  },
+  {
+   "filename": "namaster-proof-0.1.7.tar.gz",
+   "size_bytes": 17233,
+   "local_staged_md5": "646caa8e34aeeb29cd7f41f1e5861bbc",
+   "zenodo_md5": "646caa8e34aeeb29cd7f41f1e5861bbc",
+   "md5_match": true
+  }
+ ],
+ "receipt_written_utc": "2026-07-22T00:17:50.738902+00:00",
+ "doi": "10.5281/zenodo.21481753",
+ "concept_doi": "10.5281/zenodo.21481752",
+ "record_id": 21481753,
+ "record_url": "https://zenodo.org/record/21481753",
+ "doi_url": "https://doi.org/10.5281/zenodo.21481753",
+ "published_at": "2026-07-22T00:17:51.446480+00:00",
+ "modified": "2026-07-22T00:17:51.851310+00:00",
+ "doi_head_resolves": "not yet (HTTP Error 404: Not Found); DataCite propagation can lag"
+}
