@@ -93,8 +93,8 @@ export const publishData: PublishData = {
       status: "pending",
       options: "arXiv perpetual non-exclusive license, or CC-BY-4.0.",
       recommendation:
-        "CC-BY-4.0 — matches the P3/P4/P5 data releases and is grant-friendly. (The wave-1 kit notes arXiv non-exclusive is the safe conventional default if there is any reason to prefer it; P3's manuscript source already defaults to CC-BY-4.0.)",
-      unblocks: "Deposit staging + arXiv submission for both P1A and P1B.",
+        "CC-BY-4.0 — matches the P3/P4/P5 data releases and is grant-friendly. (The wave-1 kit notes arXiv non-exclusive is the safe conventional default if there is any reason to prefer it; P3's manuscript source already defaults to CC-BY-4.0.) 2026-07-21: your answer is now a one-command path — tools/d2_authorize_deposits.py records the decision and unlocks staging; tools/zenodo_deposit.py drafts, MD5-verifies, and (only on your explicit go) publishes. P1B's software prerequisite is pre-staged: namaster-proof 0.1.7 (already MIT-licensed in-repo) is uploaded as a reversible Zenodo draft with prereserved DOI 10.5281/zenodo.21481753.",
+      unblocks: "Deposit staging + arXiv submission for both P1A and P1B (P5's deposit also needs this word; its remaining gate is the Paper-IV back-patch).",
     },
     {
       id: "D3",
