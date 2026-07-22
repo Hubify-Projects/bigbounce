@@ -1,0 +1,75 @@
+{
+ "paper": "P1A",
+ "deposition_id": 21481838,
+ "state": "done",
+ "submitted": true,
+ "draft_url": "https://zenodo.org/deposit/21481838",
+ "prereserved_doi": "10.5281/zenodo.21481838",
+ "metadata": {
+  "access_right": "open",
+  "creators": [
+   {
+    "name": "Golden, Houston"
+   }
+  ],
+  "description": "Current seven-page CQG Note deposit candidate. License selection remains unresolved, so Zenodo-ready metadata generation fails closed.",
+  "license": "cc-by-4.0",
+  "publication_type": "article",
+  "title": "Algebraic Cartan Elimination in Minimal Einstein--Cartan--Holst Gravity: Spin-Sourced Contact and Zero-Spin Scalar Branches",
+  "upload_type": "publication",
+  "version": "1A.0.124"
+ },
+ "files": [
+  {
+   "filename": "P1A_v1A.0.123_tracked_provenance.tar.gz",
+   "size_bytes": 3398979,
+   "local_staged_md5": "edbb23ee16d1a07441cbac015831dadf",
+   "zenodo_md5": "edbb23ee16d1a07441cbac015831dadf",
+   "md5_match": true
+  },
+  {
+   "filename": "SHA256SUMS",
+   "size_bytes": 377,
+   "local_staged_md5": "1d6b4161c221a505556722be6d5b3014",
+   "zenodo_md5": "1d6b4161c221a505556722be6d5b3014",
+   "md5_match": true
+  },
+  {
+   "filename": "manifest.json",
+   "size_bytes": 2156,
+   "local_staged_md5": "3ac2be2c65f9104b01c2671f918e26aa",
+   "zenodo_md5": "3ac2be2c65f9104b01c2671f918e26aa",
+   "md5_match": true
+  },
+  {
+   "filename": "paper1a_arxiv_v1A.0.124.tar.gz",
+   "size_bytes": 130292,
+   "local_staged_md5": "85923519615dd1364102135a2126cd6a",
+   "zenodo_md5": "85923519615dd1364102135a2126cd6a",
+   "md5_match": true
+  },
+  {
+   "filename": "paper1a_ech_nogo.pdf",
+   "size_bytes": 355460,
+   "local_staged_md5": "11172191d176dc8fc0651a1af682312d",
+   "zenodo_md5": "11172191d176dc8fc0651a1af682312d",
+   "md5_match": true
+  },
+  {
+   "filename": "paper1a_ech_nogo.tex",
+   "size_bytes": 336795,
+   "local_staged_md5": "0a109b072a19c1952214bca4e80b5086",
+   "zenodo_md5": "0a109b072a19c1952214bca4e80b5086",
+   "md5_match": true
+  }
+ ],
+ "receipt_written_utc": "2026-07-22T02:58:58.542292+00:00",
+ "doi": "10.5281/zenodo.21481838",
+ "concept_doi": "10.5281/zenodo.21481837",
+ "record_id": 21481838,
+ "record_url": "https://zenodo.org/record/21481838",
+ "doi_url": "https://doi.org/10.5281/zenodo.21481838",
+ "published_at": "2026-07-22T02:58:59.239901+00:00",
+ "modified": "2026-07-22T02:59:00.086783+00:00",
+ "doi_head_resolves": "not yet (HTTP Error 404: Not Found); DataCite propagation can lag"
+}

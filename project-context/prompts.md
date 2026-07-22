@@ -733,3 +733,11 @@ Switched to Opus 4.7 + xhigh effort for this.
 > D5 i have no idea how to confirm "D5 (you, one word): confirm ORCID 0009-0008-3617-8729."??
 >
 > * publish the namaster-proof draft" do it yes
+
+**19:58 PT - explicit go: publish P1A/P1B Zenodo drafts**
+
+- `cwd`: /Users/houstongolden/Desktop/CODE_YOU/bigbounce
+- `session`: bigbounce-resume-claude-desktop-2026-07-16
+- `agent`: claude-code-desktop/fable-5
+
+> publish the paper drafts continue
