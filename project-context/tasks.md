@@ -16,9 +16,11 @@ but are not the current scientific critical path.
   PUBLISHED on Houston's explicit go: DOI 10.5281/zenodo.21481753 (record
   HTTP 200). P1B bumped v2B.0.12 (Archive paragraph cites the DOI — the
   boards' only remaining P1B major closed in-paper; directive-G PASS,
-  md5 7943b2c7). P1A + P1B Zenodo DRAFTS staged with prereserved DOIs
-  …21481838 / …21481842 (v2B.0.12 files, MD5-verified) — PUBLISHING these
-  two awaits Houston's explicit go. STILL OPEN: D4 arXiv endorsement
+  md5 7943b2c7). P1A + P1B deposits PUBLISHED on Houston's explicit go 2026-07-21 19:58 PT
+  ('publish the paper drafts'): DOIs 10.5281/zenodo.21481838 / 21481842, both
+  doi.org-resolving 200; embedded in-paper (P1A v1A.0.125, P1B v2B.0.13,
+  directive-G PASS) and wave-1 tarballs rebuilt at the DOI-bearing versions
+  with isolated-recompile proofs. ALL current papers now carry published DOIs. STILL OPEN: D4 arXiv endorsement
   (Houston must log in at arxiv.org — no live session in Chrome, agent
   cannot enter credentials; THE schedule risk) and D5 ORCID
   0009-0008-3617-8729 confirm (Houston: sign in at orcid.org, compare the
