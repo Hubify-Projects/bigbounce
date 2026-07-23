@@ -28,8 +28,8 @@
 \setcitestyle{numbers,square,comma}
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v3.2.0-r11}
-\newcommand{\paperTimestamp}{July 20, 2026, 13:24 PDT}
+\newcommand{\paperVersion}{v3.2.0-r12}
+\newcommand{\paperTimestamp}{July 22, 2026, 09:00 PDT}
 % v3.2.0-r11 (2026-07-20 — DOI BACK-PATCH: embedded the real minted Zenodo archival DOI
 %   in the Data Availability section, closing the standing immutable-archive/archival-DOI
 %   gate. Zenodo version DOI 10.5281/zenodo.21461888 (concept DOI 10.5281/zenodo.21461887)
@@ -42,6 +42,21 @@
 %   untouched). SUBTLETY stated in-text: the record archives the v3.2.0-r10 PDF while this
 %   manuscript is v3.2.0-r11; the version DOI is the versioned archival deposit of the reviewed
 %   release, later versions added to the same concept record. NO science number changed.)
+% v3.2.0-r12 (2026-07-22 — CONFIRMATION-BOARD TRUTH-AUDIT CLOSURES: 3 genuinely-new-real
+%   findings closed from ROUND_2026-07-22-P3-v3.2.0-r11-EXACTPDF-d8b5b3b1-CLAUDESTACK-CONFIRM
+%   (TRUTH_AUDIT_2026-07-22.md). (1) Zenodo r11 tense: reworded the "added...as a new version"
+%   claim to the truthful convention — the archived record pins the reviewed v3.2.0-r10 bytes
+%   exactly, v3.2.0-r11 is one patch ahead and will be added to the same concept record on the
+%   next re-stage; concept-DOI parenthetical now reads "presently resolves to...v3.2.0-r10".
+%   (2) "chance-compatible" mislabel: the 11-observed-vs-75.56-predicted 0.1-1" annulus rows are
+%   now stated as the large deficit they are (not chance-compatible), explained by the
+%   already-in-paper core self-recovery slot-consumption mechanism — no fiber-collision/dedup
+%   claim invented, per audit instruction. (3) Version-tag key footnote (Sec 2) completed to
+%   enumerate the intermediate r1/r3/r4/r6/r10 checkpoint tags used in the body. Gemini's two
+%   remaining MAJORs (astrophysical context, spectra plots) dispositioned SCOPE-VENUE-OPINION
+%   against this deliberately-scoped ID-recovery/provenance paper; Gemini's forward-date/Apple-M5
+%   minor dispositioned FALSIFIED (today is 2026-07-22, timestamp is 2 days in the past; M5
+%   hardware honestly disclosed as unpinned in the release). NO catalog science number changed.)
 \newcommand{\releaseVersion}{v3.2.0-r2}
 \newcommand{\warnedAuxVersion}{v3.2.0-r5}
 \newcommand{\bundleVersion}{v3.2.0-r7}
@@ -169,7 +184,10 @@ components of one program and are retained for provenance rather than deleted or
 \releaseVersion{} is the audited primary data release; \warnedAuxVersion{} the secondary
 warned-primary auxiliary table; \bundleVersion{} the checksum-bound submission bundle; and
 \paperVersion{} this manuscript.  A later stage does not relabel the earlier component versions it
-supersedes, so a single published identifier can carry several component tags.}
+supersedes, so a single published identifier can carry several component tags.  Body references to
+intermediate release-candidate tags (e.g.\ \texttt{r1}, \texttt{r3}, \texttt{r4}, \texttt{r6},
+\texttt{r10}) denote further frozen build/audit/submission checkpoints of the same program; this
+key lists the load-bearing component versions rather than every checkpoint.}
 
 The accompanying DESI anomaly table has 195,829 rows with an internal identifier, right
 ascension, declination, a scalar score $S$, the band producing the largest residual, and three
@@ -415,12 +433,15 @@ destroys this self-recovery, which is why the shifted sub-$0.1\arcsec$ count col
 The $170$-versus-$0.625$ gap is therefore a successful end-to-end seed self-recovery verification
 of the join --- confirmation that the recovered public identifiers reproduce the coordinates that
 generated the cluster centroids --- not an independent aggregate association excess.  The
-local-shift control is informative only for the $0.1$--$1\arcsec$ tail, where the 11 observed rows
-against a shifted mean of 75.56 are consistent with chance and do not acquire secure
-candidate-level identity from positional coincidence alone.  That the observed annulus count of 11
-falls below the shifted mean is itself a corollary of the core self-recovery: each core cluster's
-nearest-neighbor slot is consumed by its own seed member inside $0.1\arcsec$, shielding those
-clusters from additional matches in the surrounding annulus.  We retain and flag the tail for
+local-shift control is informative only for the $0.1$--$1\arcsec$ tail.  There the 11 observed
+rows fall well below the shifted mean of 75.56 --- a deficit, not an excess.  The shifted
+realizations are correlated local controls rather than an independent Poisson null, but the
+shortfall is large and is a direct corollary of the core self-recovery described below, so the 11
+tail rows do not acquire secure candidate-level identity from positional coincidence alone.  That
+the observed annulus count of 11 falls below the shifted mean is itself a corollary of the core
+self-recovery: each core cluster's nearest-neighbor slot is consumed by its own seed member inside
+$0.1\arcsec$, shielding those clusters from additional matches in the surrounding annulus.  We
+retain and flag the tail for
 auditability rather than subtracting an estimated background or claiming a corrected purity.  The
 shifts are correlated local controls, not an independent Poisson experiment or a
 selection-function model.
@@ -434,7 +455,9 @@ minimum and maximum shifted count; dashed curves give shifted means.  Logarithmi
 the sub-$0.1\arcsec$ core, where the large observed count is the expected seed self-recovery of the
 member coordinates that define the cluster centroids (the local shift verifies this recovery rather
 than testing an independent association), alongside the shift-controlled $0.1$--$1\arcsec$ tail,
-where the observed and shifted counts are chance-compatible.
+where the observed count (11) falls well below the shifted mean (75.6) because each core cluster's
+nearest-neighbor slot is consumed by its own seed inside $0.1\arcsec$; the tail is therefore not
+treated as secure candidate identity.
 \label{fig:chance-control}}
 \end{figure*}
 
@@ -909,10 +932,11 @@ archival deposit of the reviewed \texttt{v3.2.0-r10} release---this manuscript P
 source, the arXiv source bundle, a tracked-provenance archive, and \texttt{SHA256SUMS}---is now
 published on Zenodo under the minted archival DOI
 \href{https://doi.org/10.5281/zenodo.21461888}{doi:10.5281/zenodo.21461888} (version DOI; the
-concept DOI \href{https://doi.org/10.5281/zenodo.21461887}{doi:10.5281/zenodo.21461887} resolves
-to the latest deposited version, to which this and later versions are added).  That deposit
-archives the reviewed \texttt{v3.2.0-r10} bytes; the present manuscript is \texttt{v3.2.0-r11},
-added to the same Zenodo record as a new version.  This Zenodo archival DOI is a self-deposited
+concept DOI \href{https://doi.org/10.5281/zenodo.21461887}{doi:10.5281/zenodo.21461887}
+presently resolves to the latest deposited version (\texttt{v3.2.0-r10}), to which subsequent
+versions will be added).  That deposit archives the reviewed \texttt{v3.2.0-r10} bytes exactly;
+the present manuscript is \texttt{v3.2.0-r11}, one patch ahead, and will be added to the same
+Zenodo concept record as a new version on the next re-stage.  This Zenodo archival DOI is a self-deposited
 reproducibility handle and is distinct from the AAS journal digital-asset DOI, which the journal
 still assigns during its publication workflow and which remains an honest open gate.  The historical dataset and catalog
 data/documentation are CC BY 4.0; bundled code retains the repository license.  The AAS asset is
