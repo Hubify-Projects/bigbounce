@@ -34,7 +34,7 @@ but are not the current scientific critical path.
   DOIs. STILL OPEN, UNCHANGED by this wave: D4 arXiv endorsement
   (Houston must log in at arxiv.org — no live session in Chrome, agent
   cannot enter credentials; THE schedule risk) and D5 ORCID
-  0009-0008-3617-8729 confirm (Houston: sign in at orcid.org, compare the
+  0009-0008-5616-5994 confirm (Houston: sign in at orcid.org, compare the
   iD under your name, say "yes that's me" or give the real iD — public
   record shows no name so it is unverifiable from outside). P5 remains
   gated only on the Paper-IV (P4 arXiv ID) back-patch.

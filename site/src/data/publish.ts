@@ -120,10 +120,10 @@ export const publishData: PublishData = {
     {
       id: "D5",
       title: "ORCID",
-      status: "pending",
-      options: "Confirm 0009-0008-3617-8729 is YOUR ORCID iD (not someone else's or a typo).",
+      status: "done",
+      options: "Confirm the correct ORCID iD for all submission metadata.",
       recommendation:
-        "~1 min, concretely: go to orcid.org and sign in (or register free if you never have — takes 2 min). Your iD is shown right under your name on your record page. If it reads 0009-0008-3617-8729, say 'yes that's me'. If it's different — or you had no account — give the real iD and all submission metadata will use that instead. (The public record for …8729 currently shows no public name, so it can't be verified from outside; only you can check it from inside your account.)",
+        "DONE 2026-07-22: Houston verified from his signed-in orcid.org record that his actual iD is 0009-0008-5616-5994 — the …3617-8729 iD carried in earlier briefs was WRONG and has been purged from every actionable doc (kits, runbook, preflight checklist, queue; it never entered any manuscript — verified by repo-wide grep). One optional step remains: associate the iD with the arXiv account via arxiv.org/user → 'confirm your ORCID iD' (Houston's OAuth click).",
       unblocks: "Metadata correctness everywhere.",
     },
   ],

@@ -173,5 +173,5 @@ Houston tracks the program via the live site's /reviews + /status pages. A round
 ## 8. Pick up the loop NOW
 1. Read `SSOT/index.md` (dashboard) + this file's CURRENT STATE banner.
 2. **Intake Houston's 2026-06-21 external-review findings** (he'll provide them, or check `project-context/peer-reviews/` for the newest EXT round). Truth-audit → close → re-review → site-sync.
-3. Continue R→D→P until convergent-clean, then surface the Houston gates (ORCID public flip `0009-0008-3617-8729`, sign-off, arXiv submit P4→P1A→P1B→P3→P2→P5, mint DOIs).
+3. Continue R→D→P until convergent-clean, then surface the Houston gates (ORCID public flip `0009-0008-5616-5994`, sign-off, arXiv submit P4→P1A→P1B→P3→P2→P5, mint DOIs).
 4. Keep the site current after every single round. That's the job.

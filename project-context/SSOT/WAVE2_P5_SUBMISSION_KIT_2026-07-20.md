@@ -124,7 +124,7 @@ DOI-bearing versions, verifier `doi-tarball-rebuild`, commit-bound to
 
 ## 2. Ready-to-paste arXiv metadata
 
-Author (all three): **Houston Golden** — ORCID **0009-0008-3617-8729** —
+Author (all three): **Houston Golden** — ORCID **0009-0008-5616-5994** —
 affiliation *Independent Researcher, Los Angeles, California, USA*.
 
 ---
@@ -265,7 +265,7 @@ labels, not a physical-handedness, real-space, or cosmological constraint.
    - P5 → `astro-ph.GA` (primary) + `astro-ph.CO` (cross).
    - Wave-1 already sought `gr-qc` + `astro-ph.IM` endorsements; the **new** categories to confirm are `astro-ph.CO` and `astro-ph.GA`. Resolve any "needs endorsement" before the click session.
 
-2. **ORCID resolves + linked.** Confirm `https://orcid.org/0009-0008-3617-8729` loads and is linked to the arXiv account.
+2. **ORCID resolves + linked.** Confirm `https://orcid.org/0009-0008-5616-5994` loads and is linked to the arXiv account.
 
 3. **License — per paper.** Two honest options (same as wave-1):
    - **(a) arXiv.org perpetual non-exclusive license** — default, safest, keeps copyright, no downstream reuse granted. Zero downside if unsure.
@@ -361,7 +361,7 @@ python3 tools/build_exact_arxiv_bundle.py --paper P5 --git-commit "$NEWHEAD" \
 
 **Pre-flight (once):**
 1. Log into arxiv.org; confirm endorsement for `astro-ph.CO`, `astro-ph.GA`, `astro-ph.IM`, `gr-qc` (§3.1).
-2. Confirm ORCID `0009-0008-3617-8729` resolves + is linked (§3.2).
+2. Confirm ORCID `0009-0008-5616-5994` resolves + is linked (§3.2).
 3. Decide license per paper (§3.3) and DOI path (§3.4). Recommended: P2/P4 = CC-BY-4.0 (Zenodo archival DOIs already embedded — no defer needed), P5 = your call, defer P5's DOI to v2.
 
 **Step 1 — P2 (`paper2_arxiv_v1.7.126.tar.gz`):**

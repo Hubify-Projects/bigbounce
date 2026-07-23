@@ -1,3 +1,5 @@
+
+> **D5 RESOLVED 2026-07-22:** Houston's actual ORCID is **0009-0008-5616-5994** (verified from his signed-in orcid.org record; emails houston@hubify.com + houston@bamf.ai). The iD carried in earlier briefs (…3617-8729) was WRONG and has been purged from all actionable docs. Remaining ORCID step: associate the iD with the arXiv account via arxiv.org/user -> 'confirm your ORCID iD' (Houston's OAuth).
 # PUBLICATION DECISION BRIEF — 2026-07-20 (4 days to deadline)
 
 **State: all six papers are science-complete and review-converged.** Every exact
@@ -14,7 +16,7 @@ can perform. The agent loop executes everything else the moment you decide.
 | D2 | **License for P1A + P1B** | arXiv non-exclusive license OR CC-BY-4.0 | **CC-BY-4.0** (matches P3/P4/P5 data releases; grant-friendly) | deposit staging + arXiv submission for both |
 | D3 | **Paper IV** (P5's anchor) | (a) publish Paper IV as a companion arXiv preprint alongside P5, (b) fold a minimal validation appendix into P5 and drop the dependency | **(a)** — the catalog paper exists as the P4 manuscript lineage; P5's reviewers all asked for it public, not perfect | P5 submission |
 | D4 | **arXiv account/endorsement** | confirm you can submit to gr-qc + astro-ph.IM + astro-ph.GA (log in at arxiv.org → check submit privileges; endorsement may be needed for a first gr-qc submission) | check today; if endorsement is needed it can take 1–2 days — this is the schedule risk | all submissions |
-| D5 | **ORCID** | confirm 0009-0008-3617-8729 resolves at orcid.org | 1 min | metadata correctness everywhere |
+| D5 | **ORCID** | confirm 0009-0008-5616-5994 resolves at orcid.org | 1 min | metadata correctness everywhere |
 
 ## THE 4-DAY PLAN
 

@@ -89,11 +89,11 @@ Output L1416 of P4 PDF: `Astron. Soc. Jpn. 74, 1114 (2022), arXiv:2208.00893`
 
 ## 6. ORCID Validation (FAIL)
 
-Houston's claimed ORCID `0009-0008-3617-8729` was probed via direct API:
+Houston's claimed ORCID `0009-0008-5616-5994` was probed via direct API:
 
-- `GET https://orcid.org/0009-0008-3617-8729` → HTTP 200 (SPA shell renders, no profile data inline)
-- `GET https://pub.orcid.org/v3.0/0009-0008-3617-8729/person` → HTTP 404 (`error-code: 9016, "The resource was not found"`)
-- `GET https://pub.orcid.org/v3.0/0009-0008-3617-8729` → HTTP 404
+- `GET https://orcid.org/0009-0008-5616-5994` → HTTP 200 (SPA shell renders, no profile data inline)
+- `GET https://pub.orcid.org/v3.0/0009-0008-5616-5994/person` → HTTP 404 (`error-code: 9016, "The resource was not found"`)
+- `GET https://pub.orcid.org/v3.0/0009-0008-5616-5994` → HTTP 404
 
 **FAIL — ORCID is NOT publicly resolvable via the ORCID Public API.** This may mean: (a) ORCID account exists but is private/unverified, (b) ORCID was minted but never claimed, or (c) the digit is wrong somewhere.
 
@@ -172,7 +172,7 @@ for bbl in arxiv/paper1a_ech_nogo.bbl arxiv/paper1b_mcmc_companion.bbl; do
 done
 ```
 
-### Gap #2 (HIGH): ORCID 0009-0008-3617-8729 returns 404 on ORCID Public API
+### Gap #2 (HIGH): ORCID 0009-0008-5616-5994 returns 404 on ORCID Public API
 
 The webform will reject (or warn on) an unresolvable ORCID. **Houston must confirm the ORCID is registered + claimed + public visibility ON.** If it's correct but private, flip visibility to "Everyone" before submission. If the digits are wrong, propagate the correct ORCID through 6 runbook §2 entries + 6 Zenodo records + drop-day webform inputs.
 
@@ -222,7 +222,7 @@ Verified: `site/public/papers/chirality_catalog_paper_v1.0.188.pdf` + 5 sibling 
 
 **Required Houston actions BEFORE drop:**
 
-1. **Resolve ORCID 404.** Visit https://orcid.org/signin → confirm 0009-0008-3617-8729 is your record → flip visibility to "Everyone" if not already. If the ORCID is wrong, correct the digits and propagate.
+1. **Resolve ORCID 404.** Visit https://orcid.org/signin → confirm 0009-0008-5616-5994 is your record → flip visibility to "Everyone" if not already. If the ORCID is wrong, correct the digits and propagate.
 2. **Rule P5-NM1 title** (791,635 vs 783,820) — bump P5 tarball if rule changes the title.
 3. **Confirm runbook §4 Step 3 sed strategy** — accept the .bbl-edit additions in Gap #1, or pre-stage editable .tex notes that can be regenerated via BibTeX.
 

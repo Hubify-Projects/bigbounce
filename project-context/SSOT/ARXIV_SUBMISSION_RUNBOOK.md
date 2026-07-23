@@ -67,7 +67,7 @@ These tarballs are the v1 upload files — cross-citations are still placeholder
 - **Primary:** `astro-ph.CO`
 - **Cross-list:** `gr-qc`, `hep-th`
 - **Title:** Channel-Level Closure of Four Minimal Einstein-Cartan-Holst Dark-Energy Routes and Perturbation Transparency for Scalar Matter
-- **Authors:** Houston Golden (ORCID: 0009-0008-3617-8729)
+- **Authors:** Houston Golden (ORCID: 0009-0008-5616-5994)
 - **Comment:** 29 pages, 8 figures. Companion verification paper (P1B) submitted same day. Data at https://github.com/Hubify-Projects/bigbounce
 - **License:** arXiv.org perpetual, non-exclusive license
 - **Supplementary data:** Zenodo deposition — see `zenodo/P1A_zenodo_deposition.md`
@@ -76,7 +76,7 @@ These tarballs are the v1 upload files — cross-citations are still placeholder
 - **Primary:** `astro-ph.CO`
 - **Cross-list:** `hep-ph`  ← CMB birefringence / ALP context
 - **Title:** Technical Verification Companion to the ECH Spin-Torsion Program: Lambda-CDM + Delta-N_eff MCMC Proxy, NaMaster Pipeline Recovery, and a Birefringence Consistency Check with a Spectator-ALP Model
-- **Authors:** Houston Golden (ORCID: 0009-0008-3617-8729)
+- **Authors:** Houston Golden (ORCID: 0009-0008-5616-5994)
 - **Comment:** 21 pages, 4 figures. Companion to arXiv:XXXX.XXXXX (P1A). MCMC chains available at submission (see §6 HF). Data at https://github.com/Hubify-Projects/bigbounce
 - **License:** arXiv.org perpetual, non-exclusive license
 - **Supplementary data:** Zenodo deposition — see `zenodo/P1B_zenodo_deposition.md`
@@ -85,7 +85,7 @@ These tarballs are the v1 upload files — cross-citations are still placeholder
 - **Primary:** `astro-ph.CO`
 - **Cross-list:** `astro-ph.IM`
 - **Title:** Testing the Matter Bounce with Primordial Non-Gaussianity: Forecasts for SPHEREx and MegaMapper
-- **Authors:** Houston Golden (ORCID: 0009-0008-3617-8729)
+- **Authors:** Houston Golden (ORCID: 0009-0008-5616-5994)
 - **Comment:** 28 pages, 5 figures. Fisher code and configs at https://github.com/Hubify-Projects/bigbounce
 - **License:** arXiv.org perpetual, non-exclusive license
 - **Supplementary data:** Zenodo deposition — see `zenodo/P2_zenodo_deposition.md`
@@ -94,7 +94,7 @@ These tarballs are the v1 upload files — cross-citations are still placeholder
 - **Primary:** `astro-ph.CO`
 - **Cross-list:** `astro-ph.GA`
 - **Title:** Spectrally Unusual Sources at Scale: A Multi-Survey Catalog of 378,280 Path-C Unique Anomalies and a Native-Trained Novelty Fraction from 37.3 Million Sources and Map Patches
-- **Authors:** Houston Golden (ORCID: 0009-0008-3617-8729)
+- **Authors:** Houston Golden (ORCID: 0009-0008-5616-5994)
 - **Comment:** 29 pages, 17+ figures. Catalog at https://huggingface.co/datasets/bamfai/bigbounce-anomaly-catalog (CC-BY-4.0, flip to public at time of posting). Code at https://github.com/Hubify-Projects/bigbounce
 - **License:** arXiv.org perpetual, non-exclusive license
 - **Supplementary data:** Zenodo deposition — see `zenodo/P3_zenodo_deposition.md`
@@ -103,7 +103,7 @@ These tarballs are the v1 upload files — cross-citations are still placeholder
 - **Primary:** `astro-ph.GA`
 - **Cross-list:** `astro-ph.CO`
 - **Title:** Survey-Scale Galaxy Chirality with Equivariant TTA: A Null Real-Space Chirality Dipole, a Quantifiable Monopole-Mask Leakage Channel, and Diagnostic Evidence for a Depth/Morphology-Correlated Canonical-Mask Residual on 8.47 Million DESI Legacy Galaxies (3.2 Million Spirals)
-- **Authors:** Houston Golden (ORCID: 0009-0008-3617-8729)
+- **Authors:** Houston Golden (ORCID: 0009-0008-5616-5994)
 - **Comment:** 23 pages, 15 figures. Catalog (3.2M spirals) and model weights at https://huggingface.co/bamfai/galaxy-chirality-v2 (tag v2026.04). Code at https://github.com/Hubify-Projects/bigbounce
 - **License:** arXiv.org perpetual, non-exclusive license
 - **Supplementary data:** Zenodo deposition — see `zenodo/P4_zenodo_deposition.md`
@@ -112,7 +112,7 @@ These tarballs are the v1 upload files — cross-citations are still placeholder
 - **Primary:** `astro-ph.CO`
 - **Cross-list:** `astro-ph.GA`
 - **Title:** Environmental Dependence of Spiral Chirality: A DESIVAST Three-Algorithm Test on 56,981 Void Spirals with T-Web (Hahn 2007) Tidal-Tensor Cross-Check Across 791,635 DR1 Matched Spirals
-- **Authors:** Houston Golden (ORCID: 0009-0008-3617-8729)
+- **Authors:** Houston Golden (ORCID: 0009-0008-5616-5994)
 - **Comment:** 33 pages. Companion to P4 (arXiv:XXXX.XXXXX). Data at https://github.com/Hubify-Projects/bigbounce
 - **License:** arXiv.org perpetual, non-exclusive license
 - **Supplementary data:** Zenodo deposition — see `zenodo/P5_zenodo_deposition.md`
@@ -130,7 +130,7 @@ Run this checklist for each paper before uploading tarball to arXiv:
 - [ ] No `.aux`, `.log`, `.out`, `.toc`, `.bbl` auxiliary files in tarball root (build script strips them)
 - [ ] Hyperlinks resolve: no `\href{TODO}` or `TODO-SUBMISSION` placeholders **except** `arXiv:XXXX.XXXXX` cross-citations (those get back-patched in §4)
 - [ ] Zenodo DOI reserved (see `zenodo/INDEX.md`) and inserted in paper where noted
-- [ ] ORCID `0009-0008-3617-8729` linked in author field on arXiv webform
+- [ ] ORCID `0009-0008-5616-5994` linked in author field on arXiv webform
 - [ ] `abstract_for_webform.txt` present alongside tarball for copy-paste
 
 ---
@@ -353,7 +353,7 @@ Prior round: Grok ACCEPT on all 6 through EXT3–EXT7 (stable calibration anchor
 | md5 checksums recorded | DONE |
 | Zenodo deposition records prepared (one-click publish ready) | DONE |
 | Coordinated-drop sequence documented | DONE |
-| ORCID confirmed (0009-0008-3617-8729) | PENDING Houston (currently 404) |
+| ORCID confirmed (0009-0008-5616-5994) | PENDING Houston (currently 404) |
 | P5-NM1 title ruling | PENDING Houston |
 | Houston 6-paper sign-off | PENDING |
 

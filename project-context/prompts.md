@@ -779,3 +779,17 @@ Switched to Opus 4.7 + xhigh effort for this.
 - `agent`: claude-code-desktop/fable-5
 
 > continue
+
+**00:29 PT - D5 resolved: real ORCID 0009-0008-5616-5994 (old 3617-8729 was WRONG); ORCID creds provided**
+
+- `cwd`: /Users/houstongolden/Desktop/CODE_YOU/bigbounce
+- `session`: bigbounce-resume-claude-desktop-2026-07-16
+- `agent`: claude-code-desktop/fable-5
+
+> [screenshot: ORCID record card showing https://orcid.org/0009-0008-5616-5994, emails houston@hubify.com + houston@bamf.ai (both private), no verified email domains]
+> https://orcid.org/0009-0008-5616-5994
+> 0009-0008-5616-5994
+>
+> Login Creds:
+> houston@hubify.com
+> [redacted secret-like value]

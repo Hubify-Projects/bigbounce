@@ -32,9 +32,9 @@ Tarballs (standalone-compile-verified, in `project-context/SSOT/arxiv_tarballs/`
 
 ## 3. ✅ Your final checklist — 3 actions
 
-- [ ] **(A) Flip ORCID `0009-0008-3617-8729` to public** — Settings → Visibility → Public. Verify:
+- [ ] **(A) Flip ORCID `0009-0008-5616-5994` to public** — Settings → Visibility → Public. Verify:
   ```
-  curl -s -o /dev/null -w "%{http_code}\n" https://pub.orcid.org/v3.0/0009-0008-3617-8729/person
+  curl -s -o /dev/null -w "%{http_code}\n" https://pub.orcid.org/v3.0/0009-0008-5616-5994/person
   ```
   must return **200** (currently 404). *I've re-armed a 30-min watcher that pings the moment it flips.*
 - [ ] **(B) Sign off** — record your sign-off here / in `SIGNOFF_ACCEPT`; that awards the final 1% (99→100).

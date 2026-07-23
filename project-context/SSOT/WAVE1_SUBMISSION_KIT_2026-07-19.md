@@ -133,7 +133,7 @@ receipt `project-context/SSOT/arxiv_tarballs/paper3_apjs_arxiv_v3.2.0-r11.proof.
 
 ## 2. Ready-to-paste arXiv metadata
 
-Author (all three): **Houston Golden** — ORCID **0009-0008-3617-8729** — affiliation *Independent Researcher, Los Angeles, California, USA*.
+Author (all three): **Houston Golden** — ORCID **0009-0008-5616-5994** — affiliation *Independent Researcher, Los Angeles, California, USA*.
 
 ---
 
@@ -284,7 +284,7 @@ inference.
    - P1B, P3 → need **astro-ph.IM** submission privilege.
    - If any category shows "you need endorsement," arXiv displays an endorsement code / request path; a colleague already publishing in that category endorses you once. Do this **before** the click session or the upload will stall.
 
-2. **ORCID resolves.** The old runbook flagged `0009-0008-3617-8729` as returning 404. Confirm `https://orcid.org/0009-0008-3617-8729` loads and is linked to the arXiv account before submitting.
+2. **ORCID resolves.** The old runbook flagged `0009-0008-5616-5994` as returning 404. Confirm `https://orcid.org/0009-0008-5616-5994` loads and is linked to the arXiv account before submitting.
 
 3. **License — per paper (P1A & P1B are genuinely unresolved; P3 defaults CC-BY-4.0).** Two honest options:
    - **(a) arXiv.org perpetual, non-exclusive license to distribute** — the default. You keep copyright; no downstream reuse rights granted beyond arXiv distribution. Safest, most conventional for physics preprints. Zero downside if you're unsure.
@@ -308,7 +308,7 @@ inference.
 
 **Pre-flight (once, before clicking):**
 1. Log into arxiv.org; confirm endorsement for `gr-qc` and `astro-ph.IM` (§3.1).
-2. Confirm ORCID `0009-0008-3617-8729` resolves and is linked (§3.2).
+2. Confirm ORCID `0009-0008-5616-5994` resolves and is linked (§3.2).
 3. Decide license per paper (§3.3) and DOI path (§3.4). Recommended: P3=CC-BY-4.0 (Zenodo archival DOI already embedded — no defer needed), P1A/P1B=arXiv non-exclusive, defer P1A/P1B DOIs to v2.
 
 **Per paper (repeat 3×; order P1B → P1A → P3):**
