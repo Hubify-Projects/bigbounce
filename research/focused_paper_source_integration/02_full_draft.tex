@@ -21,7 +21,7 @@
 
 \begin{document}
 
-\preprint{v1.7.126}
+\preprint{v1.7.127}
 
 \title{The Exact Matter-Contraction Non-Gaussian Amplitude:\\
 Four-Vertex Derivation and Conditional Large-Scale-Structure Mapping}
@@ -30,7 +30,26 @@ Four-Vertex Derivation and Conditional Large-Scale-Structure Mapping}
 \email{houston@hubify.com}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
-\date{July 20, 2026, 13:24 PDT}
+\date{July 22, 2026, 09:00 PDT}
+% v1.7.127 (2026-07-22 — CONFIRMATION-BOARD TRANSPARENCY CLOSURES: closes the 5
+%   GENUINELY-NEW-REAL findings (GN1-GN5) from the 2026-07-22 CLAUDESTACK-CONFIRM
+%   truth audit (project-context/peer-reviews/INT_v3/ROUND_2026-07-22-P2-v1.7.126-
+%   EXACTPDF-085bfcb5-CLAUDESTACK-CONFIRM/TRUTH_AUDIT_2026-07-22.md), the board that
+%   also dispositioned both external Grok MAJORs as DISCLOSED-RE-FLAG (G1: standing
+%   conditional-framing disclosure DP2-13/-17/-29; G2: standing DP2-13 load-bearing
+%   caveat, strengthened by the committed v1.7.125 dressed-metric T_c=1 closure) —
+%   no MAJOR survives. All 5 closures are display/label/one-line-disclosure wording
+%   edits; NO headline number changed: GN1 labels the 30% Gaussian b_phi theory
+%   prior an illustrative benchmark (not a first-principles bound) at both the
+%   in-text and Table~\ref{tab:nuisance-ladder} caption sites; GN2 rewords "giving
+%   r_eff=0.9929" to state explicitly it is a survey-weighted Fisher information
+%   cosine, not the bare sigma ratio 0.626/0.631=0.992; GN3 corrects a rounding slip,
+%   Planck consistency 0.37sigma -> 0.36sigma ((2.1875-0.11)/5.71=0.364); GN4 aligns
+%   the "34.7% (0.687->0.449)" parenthetical baseline to the bounce-template
+%   bias-marginalized value 0.688 that actually yields 34.7%; GN5 rewords "rounded to
+%   2.63sigma" (at three sites incl. abstract) so 2.63sigma reads as a recomputation
+%   at the adopted r=0.84 convention, not a rounding of 2.61sigma (the rounding is in
+%   r: 0.8354->0.84). f_NL^local=-35/16 and all physics claims UNCHANGED.
 % v1.7.126 (2026-07-20 — DOI BACK-PATCH: embedded the real minted Zenodo archival DOI,
 %   closing the standing "immutable versioned archive and DOI remain a submission-time
 %   camera-ready packaging step" caveat in the Data and Code Availability section. The
@@ -1070,7 +1089,7 @@ Four-Vertex Derivation and Conditional Large-Scale-Structure Mapping}
 %   - MIN-1/MIN-2/MIN-3/NIT-1 deferred to v1.7.35+ next-fire round-2-of-3 cycle.
 
 \begin{abstract}
-A matter-dominated contracting phase gives a local-type non-Gaussian amplitude $\fnl^{\rm local}=-35/16=-2.1875$ before the nonsingular transition. We derive this contraction-phase coefficient for the stated $\epsilon=3/2$ background and cubic action by re-summing all four cubic vertices, re-expand the result in the ordered symmetric basis, and obtain the unique coefficients $(3,1,-9,5,-33,9)$; independent checks use Cai \etal's order-grouped expressions and Li \etal's general-$c_s$ formula. The result corrects the unreproduced printed $-35/8$ literature value. For orientation only, and conditional on faithful cubic-order transmission through a specified bounce completion, we map the published Heinrich \etal\ SPHEREx multi-tracer bispectrum sensitivity through the exact shape. Its flat-grid amplitude recovery is $r=0.8354$ and shape cosine is $r_{\cos}=0.9817$; the corresponding rounded arithmetic map is $2.63\sigma$ before additional nuisance marginalization. A channel-native surrogate-covariance check spans $3.5\sigma$ with nuisances fixed, $3.1\sigma$ after marginalizing the relativistic-projection amplitude $A_{\rm GR}$, $2.3\sigma$ with an explicit 30\% theory prior on the PNG bias-response coefficient $b_\phi$, and $0.4\sigma$ when $b_\phi$ is free. These values are illustrative conditional diagnostics, not an observational headline, a new joint-covariance forecast, or a detection forecast. The primary contribution is the exact contraction-phase amplitude derivation.
+A matter-dominated contracting phase gives a local-type non-Gaussian amplitude $\fnl^{\rm local}=-35/16=-2.1875$ before the nonsingular transition. We derive this contraction-phase coefficient for the stated $\epsilon=3/2$ background and cubic action by re-summing all four cubic vertices, re-expand the result in the ordered symmetric basis, and obtain the unique coefficients $(3,1,-9,5,-33,9)$; independent checks use Cai \etal's order-grouped expressions and Li \etal's general-$c_s$ formula. The result corrects the unreproduced printed $-35/8$ literature value. For orientation only, and conditional on faithful cubic-order transmission through a specified bounce completion, we map the published Heinrich \etal\ SPHEREx multi-tracer bispectrum sensitivity through the exact shape. Its flat-grid amplitude recovery is $r=0.8354$ and shape cosine is $r_{\cos}=0.9817$; the corresponding arithmetic map, recomputed with the adopted $r=0.84$ convention, is $2.63\sigma$ before additional nuisance marginalization. A channel-native surrogate-covariance check spans $3.5\sigma$ with nuisances fixed, $3.1\sigma$ after marginalizing the relativistic-projection amplitude $A_{\rm GR}$, $2.3\sigma$ with an explicit 30\% theory prior on the PNG bias-response coefficient $b_\phi$, and $0.4\sigma$ when $b_\phi$ is free. These values are illustrative conditional diagnostics, not an observational headline, a new joint-covariance forecast, or a detection forecast. The primary contribution is the exact contraction-phase amplitude derivation.
 \end{abstract}
 
 \maketitle
@@ -1215,13 +1234,13 @@ The galaxy bispectrum provides an independent measurement channel that accesses 
 \section{Illustrative SPHEREx Mapping}
 \label{sec:spherex}
 
-We use the published Heinrich \etal~\cite{Heinrich:2023} multi-tracer bispectrum baseline $\sigma(\fnl^{\rm local})\simeq0.7$ only for an illustrative mapping to the exact matter-bounce template. With $r=0.8354$, direct substitution gives $|\fnl|r/0.7=2.61\sigma$ (rounded to $2.63\sigma$ for the adopted $r=0.84$ convention). This conditional arithmetic map is not a paper headline, an independently reproduced SPHEREx likelihood, or a detection forecast.
+We use the published Heinrich \etal~\cite{Heinrich:2023} multi-tracer bispectrum baseline $\sigma(\fnl^{\rm local})\simeq0.7$ only for an illustrative mapping to the exact matter-bounce template. With $r=0.8354$, direct substitution gives $|\fnl|r/0.7=2.61\sigma$; recomputing with the adopted $r=0.84$ convention gives $2.63\sigma$ (the rounding is in $r$: $0.8354\to0.84$, not a rounding of $2.61\sigma$). This conditional arithmetic map is not a paper headline, an independently reproduced SPHEREx likelihood, or a detection forecast.
 
-Two in-house Fisher calculations test the mapping under a leading-order Gaussian multi-tracer covariance. In real space, the local-template uncertainty is $0.626$ with bias fixed and $0.687$ after the implemented bias marginalization; the exact bounce-template values are $0.631$ and $0.688$, giving $r_{\rm eff}=0.9929$ and $0.9986$, respectively. These correspond to $3.5\sigma$ and $3.2\sigma$ before the additional nuisance axes discussed below. The survey weighting is squeezed dominated, explaining why this recovery ratio is closer to unity than the flat-grid amplitude recovery $r=0.8354$; the two quantities use different inner products and are not interchangeable.
+Two in-house Fisher calculations test the mapping under a leading-order Gaussian multi-tracer covariance. In real space, the local-template uncertainty is $0.626$ with bias fixed and $0.687$ after the implemented bias marginalization; the exact bounce-template values are $0.631$ and $0.688$, with survey-weighted Fisher recovery $r_{\rm eff}=0.9929$ and $0.9986$, respectively (a covariance-weighted information cosine, \emph{not} the bare $\sigma$ ratio, e.g.\ $0.626/0.631=0.992$). These correspond to $3.5\sigma$ and $3.2\sigma$ before the additional nuisance axes discussed below. The survey weighting is squeezed dominated, explaining why this recovery ratio is closer to unity than the flat-grid amplitude recovery $r=0.8354$; the two quantities use different inner products and are not interchangeable.
 
-A redshift-space extension numerically integrates the line-of-sight orientation and includes the tree-level Kaiser and $Z_2$ kernels. It gives bounce-template uncertainties $0.417$ (bias fixed) and $0.449$ (bias marginalized), with full-signal recovery ratios $r_{\rm eff}=0.9953$ and $0.9991$. A separate primordial-transfer-only run gives $r_{\rm eff}=0.9981$, which is reported separately because the full result includes the standard density-bispectrum contribution. A targeted orientation-grid convergence test changes marginalized uncertainties by at most $1.4\times10^{-6}$ fractionally between $8\times8$ and $12\times12$ quadrature. In that reduced-grid test the primordial-only marginalized response ratio is $1.0037$; because marginalization changes the two template responses differently, this statistic is not a bounded Fisher cosine and is not interpreted as an overlap exceeding unity. The approximately $34.7\%$ bias-marginalized gain over the real-space calculation ($0.687\to0.449$) is materially larger than the roughly $18\%$ gain quoted for an already-redshift-space monopole-to-multipole comparison; differences in baseline, nuisance set, and signal model prevent treating that agreement as validation. Fingers-of-God damping and non-Gaussian covariance are omitted, so the absolute redshift-space significance is optimistic. The recovery ratio is the more stable diagnostic, but it is not assigned an uncertainty band.
+A redshift-space extension numerically integrates the line-of-sight orientation and includes the tree-level Kaiser and $Z_2$ kernels. It gives bounce-template uncertainties $0.417$ (bias fixed) and $0.449$ (bias marginalized), with full-signal recovery ratios $r_{\rm eff}=0.9953$ and $0.9991$. A separate primordial-transfer-only run gives $r_{\rm eff}=0.9981$, which is reported separately because the full result includes the standard density-bispectrum contribution. A targeted orientation-grid convergence test changes marginalized uncertainties by at most $1.4\times10^{-6}$ fractionally between $8\times8$ and $12\times12$ quadrature. In that reduced-grid test the primordial-only marginalized response ratio is $1.0037$; because marginalization changes the two template responses differently, this statistic is not a bounded Fisher cosine and is not interpreted as an overlap exceeding unity. The approximately $34.7\%$ bias-marginalized gain over the real-space calculation ($0.688\to0.449$, the bounce-template bias-marginalized baseline) is materially larger than the roughly $18\%$ gain quoted for an already-redshift-space monopole-to-multipole comparison; differences in baseline, nuisance set, and signal model prevent treating that agreement as validation. Fingers-of-God damping and non-Gaussian covariance are omitted, so the absolute redshift-space significance is optimistic. The recovery ratio is the more stable diagnostic, but it is not assigned an uncertainty band.
 
-Finally, a channel-native $(\fnl,b_\phi,A_{\rm GR})$ surrogate Fisher makes the nuisance dependence explicit. Here $b_\phi$ is the coefficient of the local-PNG scale-dependent-bias response and $A_{\rm GR}$ scales the modeled relativistic-projection contribution. At $\fnl=-35/16$ it gives $3.5\sigma$ with both nuisances fixed, $3.1\sigma$ after marginalizing $A_{\rm GR}$, $2.3\sigma$ with $A_{\rm GR}$ marginalized and a declared 30\% Gaussian theory prior on $b_\phi$, and $0.4\sigma$ when $b_\phi$ is free. The exact values remain in Table~\ref{tab:nuisance-ladder} and its generating artifact. The 30\% result is conditional on that prior; the free-$b_\phi$ result is the unconstrained limit of this surrogate model. Neither replaces the missing external per-triangle covariance, and no endpoint is presented as a guaranteed floor.
+Finally, a channel-native $(\fnl,b_\phi,A_{\rm GR})$ surrogate Fisher makes the nuisance dependence explicit. Here $b_\phi$ is the coefficient of the local-PNG scale-dependent-bias response and $A_{\rm GR}$ scales the modeled relativistic-projection contribution. At $\fnl=-35/16$ it gives $3.5\sigma$ with both nuisances fixed, $3.1\sigma$ after marginalizing $A_{\rm GR}$, $2.3\sigma$ with $A_{\rm GR}$ marginalized and a declared 30\% Gaussian theory prior on $b_\phi$ (an illustrative benchmark bracketing typical assembly-bias departures from the universal-mass-function $b_\phi$, not a first-principles bound), and $0.4\sigma$ when $b_\phi$ is free. The exact values remain in Table~\ref{tab:nuisance-ladder} and its generating artifact. The 30\% result is conditional on that prior; the free-$b_\phi$ result is the unconstrained limit of this surrogate model. Neither replaces the missing external per-triangle covariance, and no endpoint is presented as a guaranteed floor.
 \section{Speculative Future-Survey Outlook}
 \label{sec:megamapper}
 
@@ -1262,12 +1281,12 @@ The bounce predicts $\fnl \approx -35/16$ \emph{kinematically} in the exact matt
 \section{Systematics and Robustness}
 \label{sec:systematics}
 
-The illustrative observational calculation has two deliberately separate layers. The published-baseline mapping uses $\sigma(\fnl^{\rm local})\simeq0.7$ and the exact-shape recovery $r=0.8354$, giving $2.61\sigma$ (or $2.63\sigma$ with the adopted rounded $r=0.84$). It does not contain a new covariance. The in-house channel-native calculation instead uses a leading-order Gaussian multi-tracer covariance and is a sensitivity test of nuisance directions, not a replacement for the published likelihood.
+The illustrative observational calculation has two deliberately separate layers. The published-baseline mapping uses $\sigma(\fnl^{\rm local})\simeq0.7$ and the exact-shape recovery $r=0.8354$, giving $2.61\sigma$, or $2.63\sigma$ when the adopted $r=0.84$ convention is used (the rounding is in $r$: $0.8354\to0.84$). It does not contain a new covariance. The in-house channel-native calculation instead uses a leading-order Gaussian multi-tracer covariance and is a sensitivity test of nuisance directions, not a replacement for the published likelihood.
 
 The channel-native ladder is summarized in Table~\ref{tab:nuisance-ladder}.
 \begin{table*}[t]
 \centering
-\caption{Channel-native surrogate-covariance nuisance ladder. The 30\% row is explicitly theory-prior conditional; the free-$b_\phi$ row is the unconstrained limit of this surrogate.}
+\caption{Channel-native surrogate-covariance nuisance ladder. The 30\% row is explicitly theory-prior conditional (an illustrative benchmark, not a first-principles bound); the free-$b_\phi$ row is the unconstrained limit of this surrogate.}
 \label{tab:nuisance-ladder}
 \begin{tabular}{lc}
 \toprule
@@ -1287,7 +1306,7 @@ The dominant unmodeled effects are the unavailable external per-triangle covaria
 \section{Current Data and Consistency Relation}
 \label{sec:currentdata}
 
-Current CMB and large-scale-structure constraints are not yet decisive. Planck PR4/NPIPE reports $\fnl=-0.1\pm5.0$~\cite{Jung2025PlanckPR4fNL}; using the CMB-weighted recovery $r=0.876$ gives $\fnl^{\rm bounce}=-0.11\pm5.71$, only $0.37\sigma$ from the predicted $-35/16$. DESI DR1 local-PNG constraints have uncertainties near $9$--$10$~\cite{Chaussidon2024DESIDR1fNL,Fondi2025DESIQSOassembly}. These data are consistent with both the matter-bounce amplitude and zero.
+Current CMB and large-scale-structure constraints are not yet decisive. Planck PR4/NPIPE reports $\fnl=-0.1\pm5.0$~\cite{Jung2025PlanckPR4fNL}; using the CMB-weighted recovery $r=0.876$ gives $\fnl^{\rm bounce}=-0.11\pm5.71$, only $0.36\sigma$ from the predicted $-35/16$. DESI DR1 local-PNG constraints have uncertainties near $9$--$10$~\cite{Chaussidon2024DESIDR1fNL,Fondi2025DESIQSOassembly}. These data are consistent with both the matter-bounce amplitude and zero.
 
 The Wilson--Ewing quasi-dust construction relates the measured tilt to a small departure from matter contraction. That departure can also perturb the cubic amplitude, but the required four-vertex calculation with quasi-dust mode functions has not been completed here. We therefore do not assign a derived correction coefficient or propagate an invented joint $(n_s,\fnl)$ covariance. The exact $w=0$ result remains the benchmark, and departures from it are a named theory uncertainty.
 
