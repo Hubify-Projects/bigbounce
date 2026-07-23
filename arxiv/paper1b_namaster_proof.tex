@@ -50,13 +50,23 @@
 % v2B.0.13 (2026-07-21 19:58 PT): embeds the manuscript's own published
 %   archival deposit DOI 10.5281/zenodo.21481842 (Houston explicit publish-go)
 %   in the Archive paragraph alongside the 0.1.7 software DOI. No number changed.
-\newcommand{\paperVersion}{v2B.0.13}
-\newcommand{\paperTimestamp}{2026-07-21 19:58 PT}
+% v2B.0.14 (2026-07-22): closes the 3 GENUINELY-NEW-REAL items from the
+%   2026-07-22 confirmation-board truth audit (INT_v3/ROUND_2026-07-22-P1B-
+%   v2B.0.13-EXACTPDF-a84bea85-CLAUDESTACK-CONFIRM) — removes the empty
+%   Sec 1 Overview stub and relocates the Keywords paragraph to sit directly
+%   under the abstract; anchors Sec 8's null-injection sentence to state it
+%   was also run with 500 realizations (ground-truth verified: 500 at each
+%   of the three injected angles, per summary.json and namaster_500mc.py);
+%   deletes the Sec 11 Archive-paragraph review-response remnant sentence
+%   referencing the previously disclosed persistent-identifier submission
+%   blocker. No number changed.
+\newcommand{\paperVersion}{v2B.0.14}
+\newcommand{\paperTimestamp}{2026-07-22 12:00 PT}
 
 \title{\software: Exact pseudo-\(\Cl\) window inference and
 content-bound validation for reproducible spin-2 analyses}
 \author{Houston Golden\\Independent researcher}
-\date{July 21, 2026 --- \paperVersion}
+\date{July 22, 2026 --- \paperVersion}
 
 \begin{document}
 \maketitle
@@ -75,8 +85,6 @@ from which it was extracted.  The software is intended for method validation
 and reproducibility checks; it is not a sky-analysis pipeline, foreground
 model, or cosmological inference engine.
 \end{abstract}
-
-\section{Overview}
 
 \paragraph{Keywords.}
 Python; cosmology; pseudo-\(\Cl\); NaMaster; reproducibility; provenance.
@@ -262,8 +270,8 @@ The production use case employed CAMB 1.6.6 raw \(EE/BB\) spectra, PyMaster
 For each of two nonzero injected angles, a 500-realization, foreground-free
 synthetic run recovered the injection from the mean bandpowers on the declared
 \(0.001^\circ\) grid: \(0.270^\circ\mapsto0.270^\circ\) and
-\(0.342^\circ\mapsto0.342^\circ\).  The null injection recovered
-\(0.000^\circ\).  These are software-recovery checks under the stated
+\(0.342^\circ\mapsto0.342^\circ\).  The null injection, also run with 500
+realizations, recovered \(0.000^\circ\).  These are software-recovery checks under the stated
 simulation contract, not measurements, detection significances, or evidence
 for a physical birefringence model.
 
@@ -350,8 +358,7 @@ Version 0.1.7 is bound to an immutable archive: the commit-pinned source tree
 \texttt{\seqsplit{0a587b583f8e86c4ce1ee4a20526fcdcd8035fe6}}), together with
 its license, citation metadata, and checksums, is published on Zenodo under
 \href{https://doi.org/10.5281/zenodo.21481753}{doi:10.5281/zenodo.21481753}
-(deposited July 21, 2026). This closes the previously disclosed
-persistent-identifier submission blocker. The manuscript itself, with its
+(deposited July 21, 2026). The manuscript itself, with its
 exact source, arXiv bundle, and provenance manifest, is separately archived
 under \href{https://doi.org/10.5281/zenodo.21481842}{doi:10.5281/zenodo.21481842}
 (CC-BY-4.0, deposited July 21, 2026).
