@@ -120,6 +120,10 @@ export function VerdictTrajectory() {
   const groupX = (gi: number) => roundsX0 + gi * (groupW + groupGap);
 
   return (
+    <>
+    <p style={{ margin: "0 0 8px", fontSize: "0.68rem", color: "var(--text-muted)", fontFamily: MONO }}>
+      Legend: A = ACCEPT · m = minor revisions · M = major revisions · R = REJECT · blank gap = FAILED / not-swept leg
+    </p>
     <svg
       viewBox={`0 0 ${width} ${height}`}
       width={width}
@@ -261,6 +265,7 @@ export function VerdictTrajectory() {
         );
       })}
     </svg>
+    </>
   );
 }
 

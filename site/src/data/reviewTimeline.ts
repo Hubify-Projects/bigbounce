@@ -4021,9 +4021,6 @@ export const reviewRounds: ReviewRound[] = [
       "INT lanes never wait on the browser (parallel-resource rule, scistack 01688957)",
     ],
     links: [
-      { label: "scistack 000cd25 (directive J)", href: "https://github.com/Hubify-Projects/scistack/commit/000cd25" },
-      { label: "scistack c40ca88 (leak gate)", href: "https://github.com/Hubify-Projects/scistack/commit/c40ca88" },
-      { label: "scistack b570c78 (URL-at-submit)", href: "https://github.com/Hubify-Projects/scistack/commit/b570c78" },
     ],
   },
   {
@@ -4041,7 +4038,6 @@ export const reviewRounds: ReviewRound[] = [
       "directly addresses the timeline-staleness failure mode this backfill closes",
     ],
     links: [
-      { label: "scistack 71e4a5c", href: "https://github.com/Hubify-Projects/scistack/commit/71e4a5c" },
     ],
   },
   {
@@ -4058,8 +4054,6 @@ export const reviewRounds: ReviewRound[] = [
       "HEADED browser mandatory before EXT ($B connect) — headless can't pass Cloudflare/OAuth (scistack 8a5ae11)",
     ],
     links: [
-      { label: "scistack a82bc5f (canonical spec)", href: "https://github.com/Hubify-Projects/scistack/commit/a82bc5f" },
-      { label: "scistack 8a5ae11 (headed browser)", href: "https://github.com/Hubify-Projects/scistack/commit/8a5ae11" },
     ],
   },
   {
@@ -4079,7 +4073,6 @@ export const reviewRounds: ReviewRound[] = [
     ],
     links: [
       { label: "bigbounce 6357a9aa", href: `${GH_COMMIT}/6357a9aa` },
-      { label: "scistack 40fe0cc (I1–I5)", href: "https://github.com/Hubify-Projects/scistack/commit/40fe0cc" },
     ],
   },
   {
@@ -4775,7 +4768,7 @@ export const reviewRounds: ReviewRound[] = [
       "New submission waves: 1 = P4/P3/P2; 2 = P5 + unified Paper 1",
     ],
     links: [
-      { label: "Unified PDF", href: "/papers/paper1_unified_v1U.0.1.pdf" },
+      { label: "Unified PDF", href: "/papers/paper1_unified.pdf" },
     ],
   },
   {
@@ -7256,7 +7249,6 @@ export const reviewRounds: ReviewRound[] = [
       "Rule updated in ~/.agent-shared/AGENTS.md (symlinked from ~/.claude/CLAUDE.md)",
     ],
     links: [
-      { label: "AGENTS.md", href: "~/.agent-shared/AGENTS.md" },
     ],
   },
   {
@@ -7326,7 +7318,6 @@ export const reviewRounds: ReviewRound[] = [
       "Patterns documented: plan-in-Opus-execute-in-Sonnet, audit-in-Opus-close-in-Sonnet, delegate-browser-automation-to-Sonnet",
     ],
     links: [
-      { label: "AGENTS.md", href: "~/.agent-shared/AGENTS.md" },
     ],
   },
   {

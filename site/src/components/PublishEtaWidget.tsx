@@ -106,9 +106,13 @@ export function PublishEtaWidget({
         </div>
       </div>
 
-      {/* per-paper chips */}
+      {/* per-paper chips — canonical six only; never render raw store ids or
+          retired paper labels (P1U et al.) that can appear in older rows */}
       <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginTop: 14 }}>
-        {eta.perPaper.map((p) => {
+        {["P1A", "P1B", "P2", "P3", "P4", "P5"]
+          .map((id) => eta.perPaper.find((p) => p.paperId === id))
+          .filter((p): p is (typeof eta.perPaper)[number] => Boolean(p))
+          .map((p) => {
           const open = p.openComputeCount + p.openVenueCount;
           return (
             <span
@@ -140,7 +144,7 @@ export function PublishEtaWidget({
               ) : null}
             </span>
           );
-        })}
+          })}
       </div>
 
       {/* two-clock honesty note */}

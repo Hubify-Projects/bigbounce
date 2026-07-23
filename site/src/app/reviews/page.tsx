@@ -237,10 +237,10 @@ export default async function ReviewsPage() {
         </ul>
         <p className="campaign-obs-patterns">
           Patterns logged:{" "}
-          <a className="campaign-obs-pattern-link" href="/project-context/review-patterns/pattern-009-gpt-fallback-low-rigor.md">pattern-009</a> (rubber-stamp audit),{" "}
-          <a className="campaign-obs-pattern-link" href="/project-context/review-patterns/pattern-031-self-review-severity-underclassification.md">pattern-031</a> (caption/code mismatch),{" "}
-          <a className="campaign-obs-pattern-link" href="/project-context/review-patterns/pattern-051-closure-introduced-regression.md">pattern-051</a> (closure-introduced regression),{" "}
-          <a className="campaign-obs-pattern-link" href="/project-context/review-patterns/pattern-052-reraise-vindication.md">pattern-052</a> (re-raise vindication test).
+          <a className="campaign-obs-pattern-link" href="https://github.com/Hubify-Projects/bigbounce/blob/main/project-context/review-patterns/pattern-009-gpt-fallback-low-rigor.md">pattern-009</a> (rubber-stamp audit),{" "}
+          <a className="campaign-obs-pattern-link" href="https://github.com/Hubify-Projects/bigbounce/blob/main/project-context/review-patterns/pattern-031-self-review-severity-underclassification.md">pattern-031</a> (caption/code mismatch),{" "}
+          <a className="campaign-obs-pattern-link" href="https://github.com/Hubify-Projects/bigbounce/blob/main/project-context/review-patterns/pattern-051-closure-introduced-regression.md">pattern-051</a> (closure-introduced regression),{" "}
+          <a className="campaign-obs-pattern-link" href="https://github.com/Hubify-Projects/bigbounce/blob/main/project-context/review-patterns/pattern-052-reraise-vindication.md">pattern-052</a> (re-raise vindication test).
         </p>
       </div>
 

@@ -212,7 +212,7 @@ export default async function StatusPage() {
           <p className="text-xs text-muted-foreground">
             All six papers remain <strong>IN REVISION</strong>. Zero recorded open findings is
             an inventory state, not proof of scientific closure or publication readiness.
-            Readiness values are evidence caps: P1B v1B.0.108 and P4 v1.0.244 have closure
+            Readiness values are evidence caps: P1B v2B.0.14 and P4 v1.0.270 have closure
             changes that have not yet been re-reviewed. Remaining gates include independent
             human scientific review, venue-specific checks, and immutable archive/DOI work.
             Automated-model ACCEPT labels are review evidence, not journal acceptance.
@@ -456,7 +456,7 @@ export default async function StatusPage() {
                 Public-ID Recovery of a Historical DESI DR1 Anomaly List
               </p>
               <p className="font-mono text-[11px] text-muted-foreground mb-2">
-                Paper 3 (v3.2.0-r10) · 181 TARGETIDs recovered · archive-recovery product
+                Paper 3 (v3.2.0-r12) · 181 TARGETIDs recovered · archive-recovery product
               </p>
               <p className="text-sm leading-relaxed text-muted-foreground">
                 Paper 3 recovers 181 public DESI DR1 TARGETIDs from a frozen

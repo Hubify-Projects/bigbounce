@@ -66,7 +66,7 @@ const events: Array<{
   {
     time:"13.8 Gyr",
     label:"NOW (2026)",
-    desc:"BigBounce research program: 6 papers, an autoencoder anomaly-detection pipeline over millions of archival sources (Paper 3 recovers 181 public DESI DR1 TARGETIDs from a frozen historical list — an archive-recovery product, not a detection claim), ~309K frozen MCMC samples, an 8.47M-galaxy chirality catalog. 20+ adversarial review rounds run; all six papers remain IN REVISION (caps 56–80) pending independent human review and author submission.",
+    desc:"BigBounce research program: 6 papers, an autoencoder anomaly-detection pipeline over millions of archival sources (Paper 3 recovers 181 public DESI DR1 TARGETIDs from a frozen historical list — an archive-recovery product, not a detection claim), ~309K frozen MCMC samples, an 8.47M-galaxy chirality catalog. 180+ recorded adversarial review waves run; all six papers remain IN REVISION (caps 56–80) pending independent human review and author submission.",
     color:"var(--text-secondary)",
   },
   {

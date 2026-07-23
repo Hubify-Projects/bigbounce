@@ -114,7 +114,7 @@ export default function PublishPage() {
       <h1 className="pub-title">The decision dashboard for the publication sprint</h1>
       <p className="pub-lede">{deadlineNote}</p>
       <p className="pub-meta">
-        {openDecisions} decisions pending · six papers review-converged · updated {lastUpdatedDisplay}
+        {openDecisions} decision{openDecisions === 1 ? "" : "s"} pending · six papers review-converged · updated {lastUpdatedDisplay}
       </p>
 
       {/* ── 1. The 5 decisions ─────────────────────────────────────────── */}

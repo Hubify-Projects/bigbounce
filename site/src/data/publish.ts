@@ -74,7 +74,7 @@ export interface PublishData {
 export const publishData: PublishData = {
   lastUpdatedDisplay: "July 22, 2026 · Los Angeles (PT)",
   deadlineNote:
-    "All six manuscripts are science-complete and review-converged. Every exact-PDF referee board is truth-audited; there is no agent-executable science left on the critical path. What remains is five decisions only Houston can make and the submission clicks only Houston can perform — the agent loop executes everything else the moment each decision lands.",
+    "All six manuscripts are science-complete and review-converged. Every exact-PDF referee board is truth-audited; there is no agent-executable science left on the critical path. Four of the five author decisions are DONE (Zenodo, license, Paper-IV plan, ORCID); the single remaining gate is D4 — arXiv endorsement — plus the submission clicks only Houston can perform. The agent loop executes everything else the moment endorsement lands.",
 
   decisions: [
     {

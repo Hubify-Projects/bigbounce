@@ -12,7 +12,7 @@ export default function ExplainedPage() {
     <>
       <div className="hero">
         <p className="text-xs sans" style={{ marginBottom: 8 }}>
-          Non-Technical Explainer &middot; June 2026
+          Non-Technical Explainer &middot; July 2026
         </p>
         <h1 style={{ fontFamily:"var(--font-mono-stack)", fontWeight: 600 }}>
           The Big Bounce, Explained

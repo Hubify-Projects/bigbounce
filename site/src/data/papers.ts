@@ -138,6 +138,7 @@ export const papers: Paper[] = [
         kind: "secondary",
         external: true,
       },
+      { label: "Zenodo DOI (manuscript archive)", href: "https://doi.org/10.5281/zenodo.21481838", kind: "secondary", external: true },
     ],
   },
   {
@@ -203,6 +204,8 @@ export const papers: Paper[] = [
         kind: "secondary",
         external: true,
       },
+      { label: "Zenodo DOI (manuscript archive)", href: "https://doi.org/10.5281/zenodo.21481842", kind: "secondary", external: true },
+      { label: "Zenodo DOI (namaster-proof 0.1.7 software)", href: "https://doi.org/10.5281/zenodo.21481753", kind: "secondary", external: true },
     ],
   },
   {

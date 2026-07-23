@@ -65,14 +65,12 @@ export default function RootLayout({
             </div>
           </main>
         </div>
-        {/* Astro chat widget: served from public/old/ (populated by
-            scripts/copy-old-site.mjs in prebuild). Powers the floating
-            bubble on every page AND the full-page mount on /chat — do not
-            remove without replacing /chat. */}
-        <Script
-          src="/old/astro/chat-widget.js"
-          strategy="afterInteractive"
-        />
+        {/* Astro chat widget REMOVED 2026-07-22 (site audit): its /api/chat
+            backend does not exist on this static deployment (and no Convex
+            HTTP route serves it), so the bubble and /chat mount were dead UI.
+            /chat now renders an honest offline state. Restore the <Script
+            src="/old/astro/chat-widget.js"> include only together with a
+            working backend. */}
       </body>
     </html>
   );

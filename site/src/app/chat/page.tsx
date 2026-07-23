@@ -23,16 +23,32 @@ export default function ChatPage() {
         </p>
       </div>
 
+      {/* Honest offline state (2026-07-22 audit): the chat backend is not
+          deployed with this static site, so the previous live-input mount was
+          dead UI. Re-enable the #astro-full-chat mount + layout script only
+          together with a working /api/chat backend. */}
       <div
-        id="astro-full-chat"
         style={{
           marginTop: 24,
-          minHeight: 520,
+          padding: "32px 28px",
           border: "1px solid var(--border)",
           borderRadius: "var(--radius)",
           background: "var(--surface)",
         }}
-      />
+      >
+        <p style={{ margin: 0, fontWeight: 600 }}>
+          Astro is temporarily offline.
+        </p>
+        <p style={{ marginTop: 8, color: "var(--text-secondary)" }}>
+          The chat backend is not deployed with this static release. Every
+          answer Astro would give is grounded in the published materials, which
+          are all here: start with the{" "}
+          <a href="/explained">plain-language explainer</a>, the{" "}
+          <a href="/papers">six papers</a>, or the{" "}
+          <a href="/reviews">open review record</a>. Questions are welcome at{" "}
+          <a href="mailto:houston@hubify.com">houston@hubify.com</a>.
+        </p>
+      </div>
     </>
   );
 }

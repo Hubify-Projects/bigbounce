@@ -147,7 +147,7 @@ const historicalLiveStatus: LiveStatus = {
 // summary reflect the canonical six-paper board rather than an older review wave.
 export const liveStatus: LiveStatus = {
   ...historicalLiveStatus,
-  lastUpdatedISO: "2026-07-20T18:00:00Z",
+  lastUpdatedISO: "2026-07-22T18:00:00+00:00",
   lastUpdatedDisplay: "July 20, 2026 · 11:00 AM PT",
   headline:
     "All six manuscripts are review-converged and the program is in the 4-day publication sprint. The last exact-PDF board — P4 v1.0.268 — came back Grok ACCEPT / Gemini MINOR (the CE-composition sub-conflict adjudicated and the honest-negative integrated, praised by both reviewers). The real-compute campaigns are complete (~$1.35 total). There is no agent-executable science left on the critical path; what remains is five author-only decisions (D1–D5) and the submission clicks — tracked live on /publish. Readiness caps hold at 62/56/80/56/80/74 pending human review, license/deposit authorization, and archive/DOI gates.",
