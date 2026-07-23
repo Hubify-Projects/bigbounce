@@ -801,3 +801,11 @@ Switched to Opus 4.7 + xhigh effort for this.
 - `agent`: claude-code-desktop/fable-5
 
 > continue
+
+**01:03 PT - full website audit + implement all improvements**
+
+- `cwd`: /Users/houstongolden/Desktop/CODE_YOU/bigbounce
+- `session`: bigbounce-resume-claude-desktop-2026-07-16
+- `agent`: claude-code-desktop/fable-5
+
+> do full website audit too and implement all improvements and updates
