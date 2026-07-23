@@ -114,7 +114,7 @@ export const publishData: PublishData = {
       options:
         "Confirm submit privileges for gr-qc (P1A), astro-ph.IM (P1B, P3), and astro-ph.GA (P3 cross-list) at arxiv.org → Submit.",
       recommendation:
-        "Check this FIRST today. A first-time gr-qc submission may need an endorsement, which can take 1–2 days — this is the only thing that can structurally slip the deadline. (Checked 2026-07-21: no live arXiv session in the browser — log in at arxiv.org, then the agent can read the endorsement status from your session, or check Submit → 'Start a new submission' yourself: if gr-qc appears in the category list without an endorsement warning, you're clear.)",
+        "CHECKED 2026-07-22 in your live session — ENDORSEMENT IS REQUIRED for BOTH archives (the submit flow rejects gr-qc AND astro-ph with 'You are not endorsed for this archive'). All four category codes are generated and emailed to houston@bamf.ai: gr-qc HYEJ7S (P1A) · astro-ph.IM L8TIPN (P1B, P3) · astro-ph.CO LRZHC4 (P2) · astro-ph.GA CLVMAQ (P4, P5). WHAT TO DO: find an endorser and send them the matching code email. Qualification: any author with 4+ astro-ph.* papers (3 months – 5 years old) can endorse ALL THREE astro-ph codes; gr-qc needs 4+ gr-qc papers specifically. Find qualified endorsers via any related arXiv abstract → 'Which of the authors of this article can endorse?'. PARALLEL PATH while endorsement resolves: all six papers already have published Zenodo DOIs (citable now), and journal submissions (CQG, JORS, ApJS, PRD, AJ) do not require arXiv. Draft submission 7859751 is parked at the Start step (agreement accepted, CC BY 4.0 selected) ready to continue the moment endorsement lands.",
       unblocks: "All submissions.",
     },
     {
@@ -162,7 +162,7 @@ export const publishData: PublishData = {
       severity: "blocker",
       decision: "D4",
       detail:
-        "A first-time gr-qc (and possibly astro-ph.IM) submission may require an endorsement, which can take 1–2 days to obtain. This is the only item that can structurally slip the deadline — check submit privileges FIRST today.",
+        "CONFIRMED 2026-07-22: endorsement required for BOTH gr-qc and astro-ph. Four codes live (emailed to houston@bamf.ai): HYEJ7S (gr-qc), L8TIPN (astro-ph.IM), LRZHC4 (astro-ph.CO), CLVMAQ (astro-ph.GA). One astro-ph-qualified endorser can clear three of the four. Journal + Zenodo routes remain open in parallel.",
     },
     {
       title: "Science & manuscripts",

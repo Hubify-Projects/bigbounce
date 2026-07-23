@@ -38,6 +38,18 @@ but are not the current scientific critical path.
   iD under your name, say "yes that's me" or give the real iD — public
   record shows no name so it is unverifiable from outside). P5 remains
   gated only on the Paper-IV (P4 arXiv ID) back-patch.
+  D4 CHECKED 2026-07-22 (Houston logged in; agent read+drove the live session
+  with his go): ENDORSEMENT REQUIRED for BOTH gr-qc and astro-ph — submit flow
+  rejects both archives. Four endorsement codes generated, each emailed to
+  houston@bamf.ai: gr-qc HYEJ7S (P1A), astro-ph.IM L8TIPN (P1B/P3),
+  astro-ph.CO LRZHC4 (P2), astro-ph.GA CLVMAQ (P4/P5). One endorser with 4+
+  astro-ph.* papers (3mo–5yr window) can clear all three astro-ph codes;
+  gr-qc needs 4+ gr-qc papers specifically. Houston action: find endorser(s),
+  forward the code emails. Draft submission 7859751 parked at Start (agreement
+  accepted, CC BY 4.0, author-radio set) — resumes the moment endorsement
+  lands. Parallel path: Zenodo DOIs are live (papers citable now); journal
+  routes (CQG/JORS/ApJS/PRD/AJ) do not require arXiv. arXiv creds stored in
+  gitignored .env.local per Houston (agent never authenticates with them).
   (source: 2026-07-20 decision brief; 2026-07-21 continue + D2/D5 message;
   2026-07-22 confirmation-wave sync)
 
