@@ -18,6 +18,7 @@ import {
 import type { Metadata } from"next";
 import Link from"next/link";
 import { getLivePapers, getRunningPods, displayVersion, type LivePaperState } from "@/lib/livePapers";
+import { readinessBreakdown, readinessBreakdownNote, type GateOwner } from "@/data/readinessBreakdown";
 import { SurveyQcTable } from "@/components/Cards/SurveyQcTable";
 
 export const metadata: Metadata = {
@@ -217,6 +218,42 @@ export default async function StatusPage() {
             human scientific review, venue-specific checks, and immutable archive/DOI work.
             Automated-model ACCEPT labels are review evidence, not journal acceptance.
           </p>
+        </CardContent>
+      </Card>
+
+      {/* Readiness breakdown — Houston 2026-07-23: one clear publication-readiness
+          number per paper, decomposed into named gates with explicit owners so it
+          is obvious what KIND of work remains (none of it is science/compute). */}
+      <Card className="mt-6">
+        <CardContent className="pt-6">
+          <h2 className="mb-1 font-mono text-lg font-semibold" style={{ fontFamily: "var(--font-mono-stack)" }}>
+            What &ldquo;ready&rdquo; means — six gates per paper
+          </h2>
+          <p className="mb-4 text-sm text-muted-foreground">{readinessBreakdownNote}</p>
+          <div className="space-y-5">
+            {readinessBreakdown.map((p) => (
+              <div key={p.code}>
+                <div className="mb-1 flex items-baseline gap-3">
+                  <span className="font-mono font-bold" style={{ fontFamily: "var(--font-mono-stack)" }}>{p.code}</span>
+                  <span className="text-sm text-muted-foreground">publication readiness (evidence-capped): <strong>{p.publicationReadiness}%</strong></span>
+                </div>
+                <div className="grid gap-x-6 gap-y-1 text-xs md:grid-cols-2">
+                  {p.gates.map((g) => (
+                    <div key={g.dimension} className="flex items-baseline gap-2">
+                      <span className="whitespace-nowrap font-mono" style={{ fontFamily: "var(--font-mono-stack)" }}>
+                        {g.score}%
+                      </span>
+                      <span className="whitespace-nowrap font-semibold">{g.dimension}</span>
+                      <span className="whitespace-nowrap uppercase tracking-wide" style={{ color: ({ done: "var(--success)", agent: "var(--text-secondary)", houston: "var(--warn)", external: "var(--text-muted)" } as Record<GateOwner, string>)[g.owner] }}>
+                        {g.owner === "done" ? "complete" : `owner: ${g.owner}`}
+                      </span>
+                      <span className="text-muted-foreground">{g.status}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
         </CardContent>
       </Card>
 

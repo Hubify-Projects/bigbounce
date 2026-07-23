@@ -91,8 +91,10 @@ export function AllAMeter() {
       </div>
       <p className="alla-meter-goal">
         <strong>Automated-review diagnostic only.</strong> Counted from the CURRENT column
-        (papers × reviewer legs); FAILED / not-yet-swept legs count as not-ACCEPT. An ACCEPT
-        here is not journal acceptance, and 100% is not required to submit a paper.
+        (papers × reviewer legs); FAILED / not-yet-swept legs count as not-ACCEPT, and the
+        GPT column has been frozen since 2026-07-16 (directive N pause) so its cells cannot
+        currently improve. An ACCEPT here is not journal acceptance, and 100% is not
+        required to submit a paper.
       </p>
     </div>
   );
@@ -122,7 +124,7 @@ export function VerdictTrajectory() {
   return (
     <>
     <p style={{ margin: "0 0 8px", fontSize: "0.68rem", color: "var(--text-muted)", fontFamily: MONO }}>
-      Legend: A = ACCEPT · m = minor revisions · M = major revisions · R = REJECT · blank gap = FAILED / not-swept leg
+      Legend: A = ACCEPT · m = minor revisions · M = major revisions · R = REJECT · — = not swept that round. GPT column frozen since 2026-07-16 (OpenAI/Codex paused by standing directive N — never faked); the Claude INT leg has no column, its verdicts live in each round's note.
     </p>
     <svg
       viewBox={`0 0 ${width} ${height}`}
@@ -283,7 +285,7 @@ export function VerdictLegend() {
       </div>
       <p className="verdict-legend-note">
         <strong>—</strong> = not re-swept that round (verdict carries from the latest tested
-        round, shown in the <strong>CURRENT</strong> column at right).
+        round, shown in the <strong>CURRENT</strong> column at the far left).
       </p>
     </>
   );

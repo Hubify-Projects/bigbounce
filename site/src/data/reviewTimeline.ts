@@ -9016,6 +9016,20 @@ export const externalVerdictRounds: ExternalRoundVerdicts[] = [
     },
     note: "M45-EXT. Two-paper byte-unchanged confirm wave (P2 v1.7.116 + P5 v0.1.127); STRICT ledger-first adjudication (tools/ledger_match.py + skeptical Opus per paper vs each .tex + DISPOSITIONS). Every raw + screenshot READ verbatim before any verdict; provenance CONFIRMED both papers (P2: App-B vertex / −35/16 / −305/64 / r=0.84 SPHEREx / surrogate Fisher signatures present; P5: DESIVAST/VoidFinder/T-Web/Paper-IV/2a−1 present). Verdict matrix [ChatGPT, Grok, Gemini] FROM RAW: **P2 ChatGPT MAJOR REVISIONS (2 MAJOR/2 MINOR) — a genuine TIER-LIFT off P2's long-standing ChatGPT REJECT floor** (raw line 1 literally 'VERDICT: MAJOR REVISIONS', a REAL review of the f_NL forecast, not a mislabel; pattern-066 floor oscillation on byte-unchanged content, moves P2's grid cell off REJECT) + Grok MINOR (2 in-MINOR MAJOR-tag/3 MINOR; closing AFFIRMS −35/16). P5 ChatGPT MAJOR (7 MAJOR/6 MINOR, 5th consecutive MAJOR — stable floor) + Grok MINOR (0 MAJOR/3 MINOR; closing AFFIRMS the null). Gemini carried (NO_VERDICT). Truth-audit: 0 genuinely-new on BOTH papers; every finding source-cited to a standing D-id (P2→DP2-01/-02/-16/-25/-14/-12/-22/-04/-13/-31; P5→DP5-13/-10/-04/-14/-21/-08/-09/-20/-03/-22/-19/-11/-12/-07). DP5-26 artifact-range fix STAYS HELD (grep both P5 raws for [A1]/[A32]/[A34]/artifact-range = 0, ABSENT). clean-wave streaks: P2 17→18 · P5 6→7. Caps (post_verdict.sh, _creationTime-latest per reviewer): P2 74→80 (ChatGPT EXT contribution REJECT 0 → MAJOR 6 on the tier-lift: 50 + Grok MIN 12 + ChatGPT MAJ 6 + Gemini-latest MIN 12); P5 HOLDS 74 (Grok MIN 12 + ChatGPT MAJ 6 + Gemini MAJ 6). No bumps (both byte-unchanged); directive_g.sh not run; no ACCEPT faked, no finding dismissed without a source-cited verdict, no math fabricated. Raws + per-paper truth-audits: EXT_real/H17_2026-07-10/M45/.",
   },
+  {
+    roundId: "CONFIRM-2026-07-22",
+    dateISO: "2026-07-22",
+    windowPT: "Jul 22 \u00b7 pre-arXiv confirmation wave \u00b7 18 exact-PDF INT legs (Grok API + Gemini API + Claude-Opus subagent) \u00b7 SHA-256-bound PDFs \u00b7 every raw saved before any verdict",
+    verdicts: {
+      P1A: ["NO_VERDICT", "ACCEPT", "MINOR"],
+      P1B: ["NO_VERDICT", "MINOR", "MINOR"],
+      P2: ["NO_VERDICT", "MAJOR", "MINOR"],
+      P3: ["NO_VERDICT", "ACCEPT", "MAJOR"],
+      P4: ["NO_VERDICT", "MINOR", "MINOR"],
+      P5: ["NO_VERDICT", "ACCEPT", "MINOR"],
+    },
+    note: "Final pre-arXiv confirmation wave (matrix stored [ChatGPT, Grok, Gemini]). The ChatGPT column is ABSENT by standing directive N (Codex/OpenAI paused 2026-07-16, never faked) and stays frozen until Houston re-enables an OpenAI leg. The third INT leg (Claude Opus, exact-PDF-bound, no grid column) returned MINOR on all six papers. Truth audits dispositioned every finding: 16 genuinely-new-real presentation/transparency items, ALL closed same-day in v1A.0.126 / v2B.0.14 / v1.7.127 / v3.2.0-r12 / v1.0.270 / v0.1.142 (directive-G PASS each; no science number changed); both MAJOR-verdict legs dispositioned non-real with source citations (P2-Grok: DP2-13/-17/-29 re-flags; P3-Gemini: venue-scope opinions, plus one real deficit-wording fix landed in r12). Raws + audits: project-context/peer-reviews/INT_v3/ROUND_2026-07-22-*.",
+  },
 ];
 
 export interface GapPoint {

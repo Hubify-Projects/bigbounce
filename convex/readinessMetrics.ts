@@ -184,13 +184,14 @@ export const computeEta = query({
       byPaper.set(r.paperId, arr);
     }
 
-    // paper-1b is folded into the unified Paper 1 (paper-1a) — not an active
-    // submission target, so it must not drive the program ETA. Historical rows
-    // stay for the trajectory chart; it is only excluded from the ETA set.
-    const FOLDED_PAPERS = new Set(["paper-1b"]);
+    // Canonical six submission targets ONLY (2026-07-23 fix): the P1 merge was
+    // reversed — P1B (namaster-proof metapaper) is an active target again and
+    // P1U is retired. Older rows also carry raw doc-id paperIds; those and any
+    // non-canonical labels must never drive the ETA or the papers count.
+    const CANONICAL_PAPERS = new Set(["P1A", "P1B", "P2", "P3", "P4", "P5"]);
 
     const perPaper = Array.from(byPaper.entries())
-      .filter(([, waves]) => !FOLDED_PAPERS.has(waves[waves.length - 1].paperSlug))
+      .filter(([paperId]) => CANONICAL_PAPERS.has(paperId))
       .map(([paperId, waves]) => {
         waves.sort((a, b) => a.seq - b.seq);
         const last = waves[waves.length - 1];
