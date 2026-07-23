@@ -1,6 +1,29 @@
 # Wave-2 + P5 arXiv Submission Kit — P2, P4, P5
 ## Prepared 2026-07-20 | git HEAD `f9c25de6` | Goal: a minutes-long click session for Houston
 
+> **2026-07-22 ADDENDUM — pre-arXiv confirmation wave; P2 → v1.7.127, P4 →
+> v1.0.270, P5 → v0.1.142-2026-07-22.** The 2026-07-22 pre-arXiv confirmation
+> wave (18 exact-PDF INT legs: 6 papers × Grok-API + Gemini-API + Claude-Opus
+> subagent) truth-audited every wave-2/P5 paper and closed all genuinely-new-
+> real findings same-day. Every tarball reference below is superseded:
+> **P2 tarball is now `paper2_arxiv_v1.7.127.tar.gz`** (11 pp, md5
+> 881cbc062656849beee4609996ae2351; 5 genuinely-new-real closures — a σ
+> reff-rounding precision fix, a Planck-consistency σ rounding fix, the
+> real-space baseline corrected 0.687→0.688 with an explicit
+> bounce-template bias-marginalized-baseline label, and a "rounded to
+> 2.63σ" wording fix). **P4 tarball is now `paper4_arxiv_v1.0.270.tar.gz`**
+> (32 pp, md5 904414a10de8ddba9f7aca99be3f6fb1; 3 genuinely-new-real
+> closures — excluded-rows label, epoch wording, parity-bound hardening).
+> **P5 tarball is now `paper5_arxiv_v0.1.142-2026-07-22.tar.gz`** (42 pp,
+> md5 a70307b01058d3688bc69758847d414f; 2 genuinely-new-real
+> presentation/transparency closures). All three re-verified by standalone
+> recompile (0 undef-refs); no science number changed on any paper;
+> readiness caps hold (80/80/74). Full verdict matrix, truth audits, and
+> Convex sync details: `project-context/SSOT/index.md` CONFIRMATION-WAVE
+> 2026-07-22 banner and `project-context/peer-reviews/INT_v3/ROUND_2026-07-22-
+> <P>-*-CLAUDESTACK-CONFIRM/` per paper. The hard sequencing constraint below
+> (P5 depends on P4's arXiv ID) is unaffected by this wave.
+
 > **2026-07-20 later update — P2 and P4 tarballs rebuilt at the DOI-bearing
 > versions.** Both papers' `\preprint`/`\paperVersion` advanced to embed their
 > real minted Zenodo archival DOIs: P2 `v1.7.125` → `v1.7.126` (DOI

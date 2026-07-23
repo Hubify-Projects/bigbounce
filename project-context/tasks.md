@@ -10,24 +10,36 @@ but are not the current scientific critical path.
 
 ## Active
 
-- [ ] **PUB-008 — D4/D5 decision gate (2026-07-21 update; D2 RESOLVED):**
+- [ ] **PUB-008 — D4/D5 decision gate (2026-07-22 update; confirmation wave complete):**
+  2026-07-22 pre-arXiv confirmation wave COMPLETE: 18 exact-PDF INT legs (6
+  papers × Grok-API + Gemini-API + Claude-Opus subagent), each individually
+  truth-audited. Verdict matrix (grok/gemini/claude): P1A accept/minor/minor;
+  P1B minor/minor/minor; P2 major/minor/minor; P3 accept/major/minor; P4
+  minor/minor/minor; P5 accept/minor/minor. 16 genuinely-new-real findings
+  across all six papers (P1A 3, P1B 3, P2 5, P3 3, P4 3, P5 2), every one
+  closed same-day in new version bumps: P1A v1A.0.126, P1B v2B.0.14, P2
+  v1.7.127, P3 v3.2.0-r12, P4 v1.0.270, P5 v0.1.142-2026-07-22 (all
+  directive-G PASS). Every MAJOR-verdict leg's majors dispositioned non-real
+  with source citations. Site (papers.ts, live-status.ts, reviewTimeline.ts),
+  Convex (18 externalReviews rows + 1 activityFeed row), and SSOT synced in
+  the same bundle. Wave-1/Wave-2 submission kits' tarball references updated
+  to the new versions. No science number changed on any paper; readiness
+  caps hold (62/56/80/56/80/74) — no uplift claimed.
   D2 DONE — Houston chose CC-BY-4.0 ("D2 i go with your recommendation",
   2026-07-21); applied via d2_authorize_deposits.py. namaster-proof 0.1.7
   PUBLISHED on Houston's explicit go: DOI 10.5281/zenodo.21481753 (record
-  HTTP 200). P1B bumped v2B.0.12 (Archive paragraph cites the DOI — the
-  boards' only remaining P1B major closed in-paper; directive-G PASS,
-  md5 7943b2c7). P1A + P1B deposits PUBLISHED on Houston's explicit go 2026-07-21 19:58 PT
-  ('publish the paper drafts'): DOIs 10.5281/zenodo.21481838 / 21481842, both
-  doi.org-resolving 200; embedded in-paper (P1A v1A.0.125, P1B v2B.0.13,
-  directive-G PASS) and wave-1 tarballs rebuilt at the DOI-bearing versions
-  with isolated-recompile proofs. ALL current papers now carry published DOIs. STILL OPEN: D4 arXiv endorsement
+  HTTP 200). P1A + P1B deposits PUBLISHED on Houston's explicit go 2026-07-21
+  19:58 PT ('publish the paper drafts'): DOIs 10.5281/zenodo.21481838 /
+  21481842, both doi.org-resolving 200. ALL current papers carry published
+  DOIs. STILL OPEN, UNCHANGED by this wave: D4 arXiv endorsement
   (Houston must log in at arxiv.org — no live session in Chrome, agent
   cannot enter credentials; THE schedule risk) and D5 ORCID
   0009-0008-3617-8729 confirm (Houston: sign in at orcid.org, compare the
   iD under your name, say "yes that's me" or give the real iD — public
   record shows no name so it is unverifiable from outside). P5 remains
   gated only on the Paper-IV (P4 arXiv ID) back-patch.
-  (source: 2026-07-20 decision brief; 2026-07-21 continue + D2/D5 message)
+  (source: 2026-07-20 decision brief; 2026-07-21 continue + D2/D5 message;
+  2026-07-22 confirmation-wave sync)
 
 - [ ] **HO-007 — Claude-stack routing (supersedes HO-005/HO-006):** Codex is
   PAUSED entirely (Houston 2026-07-16: burning too much Codex usage; resumed in

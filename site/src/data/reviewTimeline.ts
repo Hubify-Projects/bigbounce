@@ -57,6 +57,30 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "pre-arxiv-confirmation-wave-2026-07-22",
+    dateISO: "2026-07-22",
+    kind: "internal-cc",
+    title: "2026-07-22 pre-arXiv confirmation wave — 18 exact-PDF INT legs across all six papers, 16 genuinely-new-real closures same-day",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary:
+      "Full-portfolio pre-arXiv confirmation wave: 6 papers × 3 legs each (Grok direct API + Gemini direct API + Claude Opus subagent) = 18 raw INT legs, all run on exact SHA-bound PDFs, each with its own truth audit. Verdict matrix: P1A grok=accept / gemini=minor-revisions / claude=minor-revisions; P1B grok=minor-revisions / gemini=minor-revisions / claude=minor-revisions; P2 grok=major-revisions / gemini=minor-revisions / claude=minor-revisions; P3 grok=accept / gemini=major-revisions / claude=minor-revisions; P4 grok=minor-revisions / gemini=minor-revisions / claude=minor-revisions; P5 grok=accept / gemini=minor-revisions / claude=minor-revisions. Truth-audit outcome: 16 genuinely-new-real findings total across the 6 papers (P1A 3, P1B 3, P2 5, P3 3, P4 3, P5 2), every one closed same-day in a version bump; every MAJOR-verdict leg's majors were dispositioned non-real with source citations. New canonical bindings, all directive-G PASS: P1A v1A.0.126 (8 pp, md5 6ade40c14049a316eabf21e67dc10072), P1B v2B.0.14 (6 pp, md5 3f5c161224d1cf62a6a467fe34f5ba09), P2 v1.7.127 (11 pp, md5 881cbc062656849beee4609996ae2351), P3 v3.2.0-r12 (17 pp, md5 37fdd322f06be11d8384ff505114afa8), P4 v1.0.270 (32 pp, md5 904414a10de8ddba9f7aca99be3f6fb1), P5 v0.1.142-2026-07-22 (42 pp, md5 a70307b01058d3688bc69758847d414f). Tarballs rebuilt at the new versions; no science number changed on any paper; readiness caps hold (no uplift claimed).",
+    keyTakeaways: [
+      "18 raw INT legs (6 papers x Grok-API + Gemini-API + Claude-Opus) on exact SHA-bound PDFs, each truth-audited individually",
+      "Verdict matrix: P1A accept/minor/minor, P1B minor/minor/minor, P2 major/minor/minor, P3 accept/major/minor, P4 minor/minor/minor, P5 accept/minor/minor (grok/gemini/claude order)",
+      "16 genuinely-new-real findings across all 6 papers, every one closed same-day (P1A 3, P1B 3, P2 5, P3 3, P4 3, P5 2)",
+      "Every MAJOR-verdict leg's majors dispositioned non-real with source-cited evidence; no falsified science claims",
+      "New versions all directive-G PASS: P1A v1A.0.126, P1B v2B.0.14, P2 v1.7.127, P3 v3.2.0-r12, P4 v1.0.270, P5 v0.1.142-2026-07-22; no science number changed",
+    ],
+    links: [
+      { label: "P1A truth audit", href: `${PR}/INT_v3/ROUND_2026-07-22-P1A-v1A.0.125-EXACTPDF-88760604-CLAUDESTACK-CONFIRM/TRUTH_AUDIT_2026-07-22.md` },
+      { label: "P1B truth audit", href: `${PR}/INT_v3/ROUND_2026-07-22-P1B-v2B.0.13-EXACTPDF-a84bea85-CLAUDESTACK-CONFIRM/TRUTH_AUDIT_2026-07-22.md` },
+      { label: "P2 truth audit", href: `${PR}/INT_v3/ROUND_2026-07-22-P2-v1.7.126-EXACTPDF-085bfcb5-CLAUDESTACK-CONFIRM/TRUTH_AUDIT_2026-07-22.md` },
+      { label: "P3 truth audit", href: `${PR}/INT_v3/ROUND_2026-07-22-P3-v3.2.0-r11-EXACTPDF-d8b5b3b1-CLAUDESTACK-CONFIRM/TRUTH_AUDIT_2026-07-22.md` },
+      { label: "P4 truth audit", href: `${PR}/INT_v3/ROUND_2026-07-22-P4-v1.0.269-EXACTPDF-52985a4f-CLAUDESTACK-CONFIRM/TRUTH_AUDIT_2026-07-22.md` },
+      { label: "P5 truth audit", href: `${PR}/INT_v3/ROUND_2026-07-22-P5-v0.1.141-2026-07-16-EXACTPDF-4cca09d0-CLAUDESTACK-CONFIRM/TRUTH_AUDIT_2026-07-22.md` },
+    ],
+  },
+  {
     id: "p1a-p1b-zenodo-doi-publish-and-embed-2026-07-21",
     dateISO: "2026-07-21",
     timePT: "7:58 PM",

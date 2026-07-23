@@ -1,6 +1,32 @@
 # Wave-1 arXiv Submission Kit — P3, P1A, P1B
 ---
 
+## 2026-07-22 ADDENDUM — pre-arXiv confirmation wave; P1B → v2B.0.14, P1A → v1A.0.126, P3 → v3.2.0-r12
+
+The 2026-07-22 pre-arXiv confirmation wave (18 exact-PDF INT legs: 6 papers ×
+Grok-API + Gemini-API + Claude-Opus subagent) truth-audited every wave-1
+paper and closed all genuinely-new-real findings same-day. Every tarball
+reference below for P1B, P1A, and P3 is superseded:
+
+- **P1B tarball is now `paper1b_namaster_proof_arxiv_v2B.0.14.tar.gz`**
+  (6 pp, md5 3f5c161224d1cf62a6a467fe34f5ba09; 3 genuinely-new-real
+  presentation/transparency items closed).
+- **P1A tarball is now `paper1a_arxiv_v1A.0.126.tar.gz`** (8 pp, md5
+  6ade40c14049a316eabf21e67dc10072; 3 genuinely-new-real closures — the
+  DOI made resolvable in the active Data-and-Code-Availability section,
+  a Fierz-attribution fix, and a duplicate-equation-number cleanup).
+- **P3 tarball is now `paper3_apjs_arxiv_v3.2.0-r12.tar.gz`** (17 pp, md5
+  37fdd322f06be11d8384ff505114afa8; 3 genuinely-new-real closures — Zenodo
+  r11 tense softened to match the concept DOI's actual r10 record, the
+  version-tag key completed, and an annulus-deficit honesty note).
+
+All three re-verified by standalone recompile (0 undef-refs, page counts
+unchanged from the ADDENDUM 2 versions). No science number changed on any
+paper; readiness caps hold (62/56/56). Full verdict matrix, truth audits,
+and Convex sync details: `project-context/SSOT/index.md` CONFIRMATION-WAVE
+2026-07-22 banner and `project-context/peer-reviews/INT_v3/ROUND_2026-07-22-
+<P>-*-CLAUDESTACK-CONFIRM/` per paper.
+
 ## 2026-07-21 ADDENDUM 2 (19:58 PT) — DOIs PUBLISHED; P1A → v1A.0.125, P1B → v2B.0.13
 
 Houston's explicit go ("publish the paper drafts") executed: **P1A manuscript
