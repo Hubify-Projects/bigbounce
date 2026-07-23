@@ -52,11 +52,25 @@
 \newcommand{\artifact}[1]{\href{https://github.com/Hubify-Projects/bigbounce/blob/7befce143848b925998a3e6ecc850aa510ab3a94/#1}{repository artifact}}
 \newcommand{\artifactnamed}[2]{\href{https://github.com/Hubify-Projects/bigbounce/blob/7befce143848b925998a3e6ecc850aa510ab3a94/#1}{\nolinkurl{#2}}}
 \newcommand{\artifactpinned}[2]{\href{https://github.com/Hubify-Projects/bigbounce/blob/7befce143848b925998a3e6ecc850aa510ab3a94/#1}{\nolinkurl{#2}}}
+% v1A.0.125->126 (2026-07-22): CONFIRMATION-BOARD CLOSURE (truth audit
+%   ROUND_2026-07-22-P1A-v1A.0.125-EXACTPDF-88760604-CLAUDESTACK-CONFIRM).
+%   Closed the 3 genuinely-new-real items. (M1) The v1A.0.125 DOI insertion
+%   had landed inside the commented-out sec:theory block (tex 1375-1716) and
+%   never compiled; moved the archival-deposit DOI sentence into the ACTIVE
+%   Data and Code Availability section (after the frozen-commit sentence) and
+%   deleted the orphaned commented-out copy, so the DOI now appears exactly
+%   once in compiled output.  (m1) Fierz-convention attribution at
+%   app:fierz named only "Nieves and Pal" for \cite{ItzyksonZuber,
+%   NievesPal2004}; corrected to name both source pairs (Itzykson--Zuber and
+%   Nieves--Pal).  (m2) The NJL contact operator is displayed twice
+%   (eq:minimal_contact and eq:NJL_torsion) with no note that they are the
+%   same operator; added a one-clause cross-reference at the second display.
+%   No number, coefficient, or figure changed.
 % v1A.0.125 (2026-07-21 19:58 PT): embeds the published archival deposit DOI
 %   10.5281/zenodo.21481838 (Houston explicit publish-go; CC-BY-4.0 per D2)
 %   in the reproducibility-availability paragraph. No number changed.
-\newcommand{\paperVersion}{v1A.0.125}
-\newcommand{\paperTimestamp}{July 21, 2026, 19:58 PDT}
+\newcommand{\paperVersion}{v1A.0.126}
+\newcommand{\paperTimestamp}{July 22, 2026, 12:00 PDT}
 % v1A.0.123->124 (2026-07-16): CQG NOTE EDITORIAL-CLARITY CLOSURE (truth audit
 %   ROUND_2026-07-16-P1A-v1A.0.123-EXACTPDF-4c450a67-CLAUDESTACK).  Closed the 3
 %   genuinely-new editorial items; NO science/number/coefficient/readiness change.
@@ -1477,12 +1491,6 @@ chains, the NaMaster pseudo-$C_\ell$ validation suite, the spectator-ALP fit,
 and the galaxy/anomaly catalogs---are archived with this submission in the
 public reproducibility tree~\cite{BigBounceRepro}, so they can be inspected and
 re-derived \emph{now}, independently of the companions' posting schedule.
-This manuscript, its exact source, arXiv bundle, algebraic check scripts, and
-provenance manifest are additionally preserved as an immutable archival
-deposit under
-\href{https://doi.org/10.5281/zenodo.21481838}{doi:10.5281/zenodo.21481838}
-(CC-BY-4.0, deposited July 21, 2026).
-
 Our approach builds on three theoretical pillars:
 
 \begin{enumerate}[leftmargin=*]
@@ -2629,6 +2637,8 @@ be integrated out exactly, generating an effective four-fermion
 contact term whose coefficient is the gravitational coupling
 $\kappa = 8\pi G$~\cite{Hehl1976,HehlDattaNJL1971}. Following the standard
 Hehl--Datta derivation, the resulting axial--axial contact interaction is
+(identical to the minimal contact operator of Eq.~\ref{eq:minimal_contact};
+repeated here in the NJL context)
 \begin{equation}
 \mathcal{L}^{\rm NJL}_{\rm tor}
 = -\,\frac{3}{16}\,\kappa\,\bigl(\bar\psi\,\gamma^a\gamma^5\,\psi\bigr)^2,
@@ -4023,6 +4033,10 @@ repository commit
 \href{https://github.com/Hubify-Projects/bigbounce/tree/7befce143848b925998a3e6ecc850aa510ab3a94}{\texttt{7befce143848}}.
 No companion computation is
 required for either action-level result in this Note.
+This manuscript, its exact source, arXiv bundle, algebraic check scripts, and
+provenance manifest are additionally preserved as an immutable archival deposit
+under \href{https://doi.org/10.5281/zenodo.21481838}{doi:10.5281/zenodo.21481838}
+(CC-BY-4.0, deposited July 21, 2026).
 
 \appendix
 
@@ -4720,7 +4734,7 @@ separate companion treatment.
 
 On the $16$-dimensional Clifford basis, grouped into the five Lorentz classes
 $(S,V,T,A,P)$, we first state the c-number spinor rearrangement in the
-normalized convention of Nieves and Pal~\cite{ItzyksonZuber,NievesPal2004}:
+normalized convention of Itzykson--Zuber and Nieves--Pal~\cite{ItzyksonZuber,NievesPal2004}:
 $e_I(1234)=\sum_J(F_{\rm c})_{IJ}e_J(1432)$, with rows $I$ the source classes
 and columns $J$ the produced classes,
 \begin{equation}\label{eq:fierzmatrix}
