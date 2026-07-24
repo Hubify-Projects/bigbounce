@@ -55,7 +55,15 @@
 \newcommand{\HCRI}{\textsc{HC-RI}}
 \newcommand{\FSC}{\textsc{FS-C}}
 \newcommand{\MAGF}{\textsc{MASTER-AGF}}
-\newcommand{\paperVersion}{v1.0.270}
+\newcommand{\paperVersion}{v1.0.271}
+% v1.0.271 (2026-07-23 — RE-SWEEP CLOSURE: the 2026-07-23 routine re-sweep truth audit
+%   (project-context/peer-reviews/INT_v3/TRUTH_AUDIT_RESWEEP_2026-07-23.md) surfaced one
+%   genuinely-new-real class — version-stamp drift in the Data Availability prose: the
+%   self-reference "the present manuscript is v1.0.269" was a hardcoded literal the
+%   version-bump flow never touched, so it lagged the \paperVersion stamp. FIX (drift-proof):
+%   bound the self-reference to the \paperVersion macro so it can never drift again, and
+%   aligned the deposit tense to the truthful "will be added ... on the next re-stage"
+%   convention. NO science number changed.)
 % v1.0.270 (2026-07-22 — CONFIRMATION-BOARD CLOSURES (ROUND 2026-07-22-P4-v1.0.269-EXACTPDF-
 %   52985a4f-CLAUDESTACK-CONFIRM, TRUTH_AUDIT_2026-07-22.md): 2 real closures + 1 optional
 %   hardening, ZERO science-number changes. (1) FIX-1 (Table~\ref{tab:primary_audit}, L1257):
@@ -915,7 +923,7 @@
 %   the established two-step provenance gate.)
 % v1.0.171->172 (2026-06-10 — EXT1 closure wave restamp: recompile + mirror bundle;
 %   Data Availability hash pinned to the v1.0.172 stamp commit per provenance gate.)
-\newcommand{\paperTimestamp}{July 22, 2026}
+\newcommand{\paperTimestamp}{July 23, 2026}
 % v1.0.217->218 (2026-07-05 — DATA-UNLOCK: edge-on-ISOLATED argmax tie-break coherence
 %   now COMPUTED (was pod/data-lab-deferred). Join catalog_production (class_eq/RA/Dec) to
 %   committed spiral_morphology_dr8 b/a on dr8_id; edge-on (b/a<0.30) borderline population
@@ -1896,7 +1904,7 @@ A pixel-count-threshold sweep ($N_{\rm spiral}(p)\geq\{1,5,10,20,50\}$; 200-MC p
 % ============================================================
 \section*{Data Availability}
 \label{sec:availability}
-Repository state: the analysis artifacts linked throughout this paper resolve against the live \texttt{main} branch of the repository, which reflects the current version-stamped content (release-safe HC $N_{\rm selected}=890{,}069$, $N_{\rm support}=887{,}472$; real-space $z_{\rm mom}=+0.635$, one-sided add-one rank $p=0.23768$). The 8,474,531-row science-facing catalog is already public at immutable HF revision \texttt{db11023306ab4eed1d7727670bd78e127b7af17a}; its Parquet bytes and SHA-256 remain unchanged. The synchronized strict-primary overlay is retained in the repository at \artifact{pipelines/p2\_chirality/apjs\_release\_v1.0.259\_strict/MANIFEST.json}. It binds the predicate \texttt{primary\_hc \&\& !raw\_flip\_qc\_unsafe}, the exact strict null array, schema, and reproducer to the catalog hash. That overlay is now public at the provider path \texttt{apjs-release/v1.0.259-strict-primary/} under immutable HF dataset revision \texttt{911316f31c21f2c4b933a2f3a761274cfe85c6d6}; all seven overlay files were re-downloaded at that pinned revision and byte-verified against their committed SHA-256 digests, with the publish receipt retained at \artifact{pipelines/p2\_chirality/apjs\_release\_v1.0.259\_strict/PUBLISH\_RECEIPT\_2026-07-16.json}. An immutable versioned archival deposit of the reviewed release---the manuscript PDF, its \texttt{.tex} source, the arXiv source bundle, and a tracked-provenance archive of the canonical-provenance artifacts (\href{https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p2_chirality/outputs/canonical_provenance}{\nolinkurl{pipelines/p2_chirality/outputs/canonical_provenance/}}), with \texttt{SHA256SUMS}---is published on Zenodo under the minted version DOI \href{https://doi.org/10.5281/zenodo.21461899}{doi:10.5281/zenodo.21461899}, the single citable archival reproducibility handle for the reviewed release; the concept DOI \href{https://doi.org/10.5281/zenodo.21461898}{doi:10.5281/zenodo.21461898} resolves to the latest deposited version. The deposit pins the exact git commit \texttt{397671bf} of the analysis codebase together with the catalog and canonical-provenance artifact hashes recorded in its manifest. That record archives the reviewed \texttt{v1.0.268} PDF and source (the exact reviewed bytes); the present manuscript is \texttt{v1.0.269}, and this and subsequent versions are added to the same Zenodo record as new versions under the shared concept DOI.
+Repository state: the analysis artifacts linked throughout this paper resolve against the live \texttt{main} branch of the repository, which reflects the current version-stamped content (release-safe HC $N_{\rm selected}=890{,}069$, $N_{\rm support}=887{,}472$; real-space $z_{\rm mom}=+0.635$, one-sided add-one rank $p=0.23768$). The 8,474,531-row science-facing catalog is already public at immutable HF revision \texttt{db11023306ab4eed1d7727670bd78e127b7af17a}; its Parquet bytes and SHA-256 remain unchanged. The synchronized strict-primary overlay is retained in the repository at \artifact{pipelines/p2\_chirality/apjs\_release\_v1.0.259\_strict/MANIFEST.json}. It binds the predicate \texttt{primary\_hc \&\& !raw\_flip\_qc\_unsafe}, the exact strict null array, schema, and reproducer to the catalog hash. That overlay is now public at the provider path \texttt{apjs-release/v1.0.259-strict-primary/} under immutable HF dataset revision \texttt{911316f31c21f2c4b933a2f3a761274cfe85c6d6}; all seven overlay files were re-downloaded at that pinned revision and byte-verified against their committed SHA-256 digests, with the publish receipt retained at \artifact{pipelines/p2\_chirality/apjs\_release\_v1.0.259\_strict/PUBLISH\_RECEIPT\_2026-07-16.json}. An immutable versioned archival deposit of the reviewed release---the manuscript PDF, its \texttt{.tex} source, the arXiv source bundle, and a tracked-provenance archive of the canonical-provenance artifacts (\href{https://github.com/Hubify-Projects/bigbounce/tree/main/pipelines/p2_chirality/outputs/canonical_provenance}{\nolinkurl{pipelines/p2_chirality/outputs/canonical_provenance/}}), with \texttt{SHA256SUMS}---is published on Zenodo under the minted version DOI \href{https://doi.org/10.5281/zenodo.21461899}{doi:10.5281/zenodo.21461899}, the single citable archival reproducibility handle for the reviewed release; the concept DOI \href{https://doi.org/10.5281/zenodo.21461898}{doi:10.5281/zenodo.21461898} resolves to the latest deposited version. The deposit pins the exact git commit \texttt{397671bf} of the analysis codebase together with the catalog and canonical-provenance artifact hashes recorded in its manifest. That record archives the reviewed \texttt{v1.0.268} PDF and source (the exact reviewed bytes); the present manuscript is \texttt{\paperVersion}, one patch line ahead; current and subsequent versions will be added to the same Zenodo record on the next re-stage.
 
 % ============================================================
 
