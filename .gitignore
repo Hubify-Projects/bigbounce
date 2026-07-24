@@ -40,7 +40,7 @@ pipelines/pipeline_a_cmb/*.fits
 # P4 v1.0.244 local ApJS payload bundle; compact receipts are retained under
 # project-context/peer-reviews/INT_v3/ROUND_2026-07-14-P4-v1.0.244-APJS-RELEASE-CLOSURE/.
 pipelines/p2_chirality/apjs_release_v1.0.244/
-project-context/prompt-history.md
+project-context/prompt-history*.md
 pipelines/h200_results/phase1_3_queue_v2/outputs/gaia-dr3-expanded/gaia_anomalies.csv
 .gstack/
 site/public/old/
