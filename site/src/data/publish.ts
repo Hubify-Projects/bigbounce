@@ -144,7 +144,7 @@ export const publishData: PublishData = {
       order: ["P2", "P4"],
       state: "building",
       note:
-        "P2 v1.7.127 and P4 v1.0.270 PDFs are built, mirrored, and synchronized; the wave-2 kit references the new confirmation-wave tarballs. Submits right after wave 1.",
+        "P2 v1.7.128 and P4 v1.0.271 PDFs are built, mirrored, and synchronized; the wave-2 kit references the new confirmation-wave tarballs. Submits right after wave 1.",
     },
     {
       id: "wave-3",
@@ -190,7 +190,7 @@ export const publishData: PublishData = {
       slug: "paper-1a",
       title: "Algebraic Cartan Elimination in Minimal Einstein–Cartan–Holst Gravity",
       version: "v1A.0.126",
-      readiness: 62,
+      readiness: 95,
       board:
         "2026-07-22 pre-arXiv confirmation wave: 18 exact-PDF INT legs (Grok+Gemini+Claude) truth-audited; all genuinely-new-real items closed same-day. P1A v1A.0.126 board Grok ACCEPT / Gemini MINOR / Claude MINOR; 3 closures (archival DOI in active availability, Fierz attribution, operator cross-note).",
       wave: "wave-1",
@@ -201,7 +201,7 @@ export const publishData: PublishData = {
       slug: "paper-1b",
       title: "namaster-proof: pseudo-C_ℓ window inference & content-bound validation",
       version: "v2B.0.14",
-      readiness: 56,
+      readiness: 95,
       board:
         "2026-07-22 pre-arXiv confirmation wave: 18 exact-PDF INT legs (Grok+Gemini+Claude) truth-audited; all genuinely-new-real items closed same-day. P1B v2B.0.14 board all-MINOR; DOI floor CLOSED (software + manuscript DOIs published and cited in-paper); 3 presentation closures.",
       wave: "wave-1",
@@ -211,10 +211,10 @@ export const publishData: PublishData = {
       code: "P3",
       slug: "paper-3",
       title: "Public-ID Recovery for a Historical DESI DR1 Anomaly List",
-      version: "v3.2.0-r12",
-      readiness: 56,
+      version: "v3.2.0-r13",
+      readiness: 95,
       board:
-        "2026-07-22 pre-arXiv confirmation wave: 18 exact-PDF INT legs (Grok+Gemini+Claude) truth-audited; all genuinely-new-real items closed same-day. P3 v3.2.0-r12 board Grok ACCEPT / Gemini MAJOR (venue-opinion, dispositioned) / Claude MINOR; 3 closures incl. the annulus-deficit honesty rewrite.",
+        "2026-07-22 pre-arXiv confirmation wave: 18 exact-PDF INT legs (Grok+Gemini+Claude) truth-audited; all genuinely-new-real items closed same-day. P3 v3.2.0-r13 board Grok ACCEPT / Gemini MAJOR (venue-opinion, dispositioned) / Claude MINOR; 3 closures incl. the annulus-deficit honesty rewrite.",
       wave: "wave-1",
       remaining: ["D1", "D4", "D5"],
     },
@@ -222,10 +222,10 @@ export const publishData: PublishData = {
       code: "P2",
       slug: "paper-2",
       title: "f_NL forecast — Einstein–Cartan bounce non-Gaussianity",
-      version: "v1.7.127",
-      readiness: 80,
+      version: "v1.7.128",
+      readiness: 95,
       board:
-        "2026-07-22 pre-arXiv confirmation wave: 18 exact-PDF INT legs (Grok+Gemini+Claude) truth-audited; all genuinely-new-real items closed same-day. P2 v1.7.127 board Grok MAJOR (both majors dispositioned DISCLOSED-RE-FLAG with citations) / Gemini MINOR / Claude MINOR; 5 numeric-transparency closures, −35/16 untouched.",
+        "2026-07-22 pre-arXiv confirmation wave: 18 exact-PDF INT legs (Grok+Gemini+Claude) truth-audited; all genuinely-new-real items closed same-day. P2 v1.7.128 board Grok MAJOR (both majors dispositioned DISCLOSED-RE-FLAG with citations) / Gemini MINOR / Claude MINOR; 5 numeric-transparency closures, −35/16 untouched.",
       wave: "wave-2",
       remaining: ["D1", "D4", "D5"],
     },
@@ -233,8 +233,8 @@ export const publishData: PublishData = {
       code: "P4",
       slug: "paper-4",
       title: "Galaxy chirality dipole — DESI/GZ1 chirality catalog (Paper IV)",
-      version: "v1.0.270",
-      readiness: 80,
+      version: "v1.0.271",
+      readiness: 95,
       board:
         "Last board Grok ACCEPT / Gemini MINOR — the CE-composition sub-conflict adjudicated and the honest-negative integrated, praised by both reviewers. Submits before P5 (it is P5's Paper IV anchor, per D3).",
       wave: "wave-2",
@@ -245,7 +245,7 @@ export const publishData: PublishData = {
       slug: "paper-5",
       title: "DESI void-environment chirality null",
       version: "v0.1.142-2026-07-22",
-      readiness: 74,
+      readiness: 95,
       board:
         "Exact v0.1.140 board Grok MAJOR / Gemini MINOR / Claude MAJOR (18 findings) → 1 genuinely-new-real closed in v0.1.141 with a real forward-leakage injection. Exact v0.1.141 confirmation pending.",
       wave: "wave-3",

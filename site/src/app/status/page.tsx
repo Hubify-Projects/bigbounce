@@ -18,7 +18,7 @@ import {
 import type { Metadata } from"next";
 import Link from"next/link";
 import { getLivePapers, getRunningPods, displayVersion, type LivePaperState } from "@/lib/livePapers";
-import { readinessBreakdown, readinessBreakdownNote, type GateOwner } from "@/data/readinessBreakdown";
+import { readinessBreakdown, readinessBreakdownNote, publishingPhase, type GateOwner } from "@/data/readinessBreakdown";
 import { SurveyQcTable } from "@/components/Cards/SurveyQcTable";
 
 export const metadata: Metadata = {
@@ -211,12 +211,12 @@ export default async function StatusPage() {
           </Table>
           </div>
           <p className="text-xs text-muted-foreground">
-            All six papers remain <strong>IN REVISION</strong>. Zero recorded open findings is
-            an inventory state, not proof of scientific closure or publication readiness.
-            Readiness values are evidence caps: P1B v2B.0.14 and P4 v1.0.270 have closure
-            changes that have not yet been re-reviewed. Remaining gates include independent
-            human scientific review, venue-specific checks, and immutable archive/DOI work.
-            Automated-model ACCEPT labels are review evidence, not journal acceptance.
+            Readiness follows <strong>directive P</strong> (2026-07-23): the headline % is
+            publication readiness only — science, evidence, review convergence, packaging,
+            plus Houston&rsquo;s final 5% personal review. Venue/endorsement/submission and
+            independent human peer review are the separate Publishing phase below and never
+            subtract from the score. Automated-model ACCEPT labels are review evidence, not
+            journal acceptance.
           </p>
         </CardContent>
       </Card>
@@ -227,7 +227,7 @@ export default async function StatusPage() {
       <Card className="mt-6">
         <CardContent className="pt-6">
           <h2 className="mb-1 font-mono text-lg font-semibold" style={{ fontFamily: "var(--font-mono-stack)" }}>
-            What &ldquo;ready&rdquo; means — six gates per paper
+            What &ldquo;ready&rdquo; means — five gates per paper (directive P)
           </h2>
           <p className="mb-4 text-sm text-muted-foreground">{readinessBreakdownNote}</p>
           <div className="space-y-5">
@@ -241,7 +241,7 @@ export default async function StatusPage() {
                   {p.gates.map((g) => (
                     <div key={g.dimension} className="flex items-baseline gap-2">
                       <span className="whitespace-nowrap font-mono" style={{ fontFamily: "var(--font-mono-stack)" }}>
-                        {g.score}%
+                        {g.score}% <span className="text-muted-foreground">(×{g.weight})</span>
                       </span>
                       <span className="whitespace-nowrap font-semibold">{g.dimension}</span>
                       <span className="whitespace-nowrap uppercase tracking-wide" style={{ color: ({ done: "var(--success)", agent: "var(--text-secondary)", houston: "var(--warn)", external: "var(--text-muted)" } as Record<GateOwner, string>)[g.owner] }}>
@@ -251,6 +251,20 @@ export default async function StatusPage() {
                     </div>
                   ))}
                 </div>
+              </div>
+            ))}
+          </div>
+          <h3 className="mb-1 mt-6 font-mono text-base font-semibold" style={{ fontFamily: "var(--font-mono-stack)" }}>
+            Publishing phase — next steps, NOT part of the readiness score
+          </h3>
+          <div className="space-y-1 text-xs">
+            {publishingPhase.map((s) => (
+              <div key={s.step} className="flex items-baseline gap-2">
+                <span className="whitespace-nowrap font-semibold">{s.step}</span>
+                <span className="whitespace-nowrap uppercase tracking-wide" style={{ color: ({ done: "var(--success)", agent: "var(--text-secondary)", houston: "var(--warn)", external: "var(--text-muted)" } as Record<GateOwner, string>)[s.owner] }}>
+                  owner: {s.owner}
+                </span>
+                <span className="text-muted-foreground">{s.status}</span>
               </div>
             ))}
           </div>

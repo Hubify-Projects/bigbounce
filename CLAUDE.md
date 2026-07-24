@@ -322,3 +322,32 @@ never faked), and it rejoins the criterion automatically if Houston re-enables
 an OpenAI leg. The /reviews all-A meter counts active legs only and must say
 so. All integrity rules unchanged: never fake an ACCEPT, never prompt-game,
 every leg saves its raw before any verdict is recorded.
+
+## Standing directive (2026-07-23 — Houston explicit): P — PUBLICATION-READINESS COMPOSITION
+
+Houston (verbatim core): "the venue/submission should be a separate step not
+factored into the readiness for publishing - same with my independent human
+review … my own final personal review … the last 1-5% … if I mark it as ready
+and good it will be 100% readiness for publishing and then go on to the next
+steps of actually getting them published which includes the venue / submission
+/ endorsements."
+
+**Publication readiness** (the single headline % per paper) is composed ONLY of:
+science closure (25) + evidence & reproducibility (25) + automated review
+convergence (25) + packaging & PDF hygiene (20) + **Houston's final personal
+review (5)**. A paper with the four agent gates complete sits at **95** and
+reaches **100 only via Houston's explicit per-paper sign-off** (quote recorded
+in SSOT, /readiness-cap-99 unchanged in spirit: 100 requires his words).
+
+**Publishing phase (separate, NOT in the score):** arXiv endorsement, venue
+selection/submission clicks, journal peer review, and independent human
+scientific review. These are tracked as next-phase steps on /status and
+/publish and must never subtract from publication readiness.
+
+**Automated review convergence criterion (achievable by construction):**
+converged = 0 genuinely-new-real findings outstanding across ACTIVE legs
+(directive M-AMENDED: Grok API + Gemini API + Claude INT; paused legs excluded)
+on the current exact PDFs, per directive H-refined truth-audit rules. Verdict
+WORDS are diagnostic feedback, never the gate. Every finding still gets a
+source-cited disposition; genuinely-new-real items still close before
+convergence is claimed. Integrity rules unchanged and absolute.

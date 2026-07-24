@@ -1,7 +1,7 @@
 # Wave-1 arXiv Submission Kit — P3, P1A, P1B
 ---
 
-## 2026-07-22 ADDENDUM — pre-arXiv confirmation wave; P1B → v2B.0.14, P1A → v1A.0.126, P3 → v3.2.0-r12
+## 2026-07-22 ADDENDUM — pre-arXiv confirmation wave; P1B → v2B.0.14, P1A → v1A.0.126, P3 → v3.2.0-r13
 
 The 2026-07-22 pre-arXiv confirmation wave (18 exact-PDF INT legs: 6 papers ×
 Grok-API + Gemini-API + Claude-Opus subagent) truth-audited every wave-1
@@ -15,8 +15,8 @@ reference below for P1B, P1A, and P3 is superseded:
   6ade40c14049a316eabf21e67dc10072; 3 genuinely-new-real closures — the
   DOI made resolvable in the active Data-and-Code-Availability section,
   a Fierz-attribution fix, and a duplicate-equation-number cleanup).
-- **P3 tarball is now `paper3_apjs_arxiv_v3.2.0-r12.tar.gz`** (17 pp, md5
-  37fdd322f06be11d8384ff505114afa8; 3 genuinely-new-real closures — Zenodo
+- **P3 tarball is now `paper3_apjs_arxiv_v3.2.0-r13.tar.gz`** (17 pp, md5
+  17a24eb80c2b907e8352527970c6d3b7; 3 genuinely-new-real closures — Zenodo
   r11 tense softened to match the concept DOI's actual r10 record, the
   version-tag key completed, and an annulus-deficit honesty note).
 

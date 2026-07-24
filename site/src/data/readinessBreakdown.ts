@@ -1,102 +1,74 @@
-// Per-paper readiness BREAKDOWN — Houston's 2026-07-23 request: separate the
-// mushy footnote language into named, scored dimensions so it is obvious per
-// paper WHAT kind of work remains and WHO owns it. The single headline
-// "publication readiness" number stays the canonical evidence-capped score
-// (papers.ts / Convex readinessCap) — this file explains its composition; it
-// never uplifts it.
+// Per-paper PUBLICATION-READINESS breakdown — directive P (Houston 2026-07-23).
 //
-// owner semantics:
-//   agent    — executable by the loop right now or automatically on a trigger
-//   houston  — needs a human decision, outreach, or click only Houston can do
-//   external — depends on people outside the project (endorsers, referees)
+// The headline % is composed ONLY of the five gates below (weights in
+// parentheses). Venue/submission/endorsement and independent human peer
+// review are the NEXT PHASE ("Publishing") — tracked separately, never
+// subtracted from readiness. A paper with all four agent gates complete sits
+// at 95; Houston's explicit per-paper sign-off is the final 5 → 100.
+//
+// Convergence criterion (directive M-AMENDED + H-refined): 0 genuinely-new-real
+// findings outstanding across ACTIVE legs (Grok API, Gemini API, Claude INT;
+// paused legs excluded) on the current exact PDFs. Verdict words are feedback,
+// never the gate.
 
 export type GateOwner = "agent" | "houston" | "external" | "done";
 
 export interface ReadinessGate {
   dimension: string;
-  /** 0-100, honest, never aspirational */
+  weight: number;
+  /** 0-100 within the gate */
   score: number;
+  owner: GateOwner;
+  status: string;
+}
+
+export interface PublishingStep {
+  step: string;
   owner: GateOwner;
   status: string;
 }
 
 export interface PaperBreakdown {
   code: string;
-  /** the canonical headline number (evidence cap) — mirrors papers.ts */
+  /** headline publication readiness, directive-P composition */
   publicationReadiness: number;
   gates: ReadinessGate[];
 }
 
-const COMMON_NOTE =
-  "Science/evidence/packaging are agent-complete on every paper — no open gate " +
-  "anywhere needs new math, new compute, new GPU/CPU runs, or new data. Every " +
-  "remaining blocker is administrative or human: arXiv endorsement (Houston " +
-  "outreach), submission clicks (Houston), and independent human peer review " +
-  "(external — it BEGINS at submission; it cannot be completed before it).";
+export const readinessBreakdownNote =
+  "Directive P (2026-07-23): publication readiness = the five gates below only. " +
+  "No gate on any paper needs new math, compute, GPU/CPU runs, or data — the " +
+  "four agent gates are complete on all six papers, so every paper sits at 95%. " +
+  "The last 5% is Houston's final personal review, per paper: mark it good and " +
+  "that paper is 100% ready and moves to the Publishing phase (endorsement → " +
+  "submission → journal/human review), which is tracked below but never " +
+  "subtracts from readiness.";
 
-export const readinessBreakdownNote = COMMON_NOTE;
+const RESWEEP =
+  "2026-07-23 re-sweep (18 exact-PDF legs, active legs per directive M-AMENDED) truth-audited to 0 genuinely-new-real outstanding — the one real item (version-stamp drift) closed same-day, drift-proofed via the \\paperVersion macro.";
 
-function gates(
-  reviewNote: string,
-  venueScore: number,
-  venueOwner: GateOwner,
-  venueNote: string,
-): ReadinessGate[] {
+function gates(convergenceNote: string): ReadinessGate[] {
   return [
-    {
-      dimension: "Science closure",
-      score: 100,
-      owner: "done",
-      status:
-        "0 genuinely-new-real findings outstanding; compute campaigns complete; disclosed scope limits are in-paper, not open work.",
-    },
-    {
-      dimension: "Evidence & reproducibility",
-      score: 100,
-      owner: "done",
-      status:
-        "Published Zenodo DOI, commit-bound artifacts, public datasets/models, deterministic rebuild proofs.",
-    },
-    {
-      dimension: "Automated review convergence",
-      score: 90,
-      owner: "agent",
-      status: reviewNote,
-    },
-    {
-      dimension: "Packaging & PDF hygiene",
-      score: 100,
-      owner: "done",
-      status:
-        "Commit-bound arXiv tarball standalone-compiles clean; directive-G mirrors byte-identical; submission kit paste-ready.",
-    },
-    {
-      dimension: "Venue / submission",
-      score: venueScore,
-      owner: venueOwner,
-      status: venueNote,
-    },
-    {
-      dimension: "Independent human review",
-      score: 0,
-      owner: "external",
-      status:
-        "Starts when the paper is public (arXiv/journal). Not a pre-submission blocker — it is what submission buys.",
-    },
+    { dimension: "Science closure", weight: 25, score: 100, owner: "done", status: "0 genuinely-new-real findings outstanding; compute campaigns complete; disclosed scope limits are in-paper, not open work." },
+    { dimension: "Evidence & reproducibility", weight: 25, score: 100, owner: "done", status: "Published Zenodo DOI, commit-bound artifacts, public datasets/models, deterministic rebuild proofs." },
+    { dimension: "Automated review convergence", weight: 25, score: 100, owner: "done", status: convergenceNote },
+    { dimension: "Packaging & PDF hygiene", weight: 20, score: 100, owner: "done", status: "Commit-bound arXiv tarball standalone-compiles clean; directive-G mirrors byte-identical; submission kit paste-ready." },
+    { dimension: "Houston final personal review", weight: 5, score: 0, owner: "houston", status: "The last 5%: read the paper, flag anything visual/formatting/wording — or mark it good and this paper is 100% publication-ready." },
   ];
 }
 
-const REVIEW_NOTE =
-  "18-leg 2026-07-22 confirmation wave truth-audited to 0 genuinely-new-real; the same-day closure version awaits one routine re-sweep.";
-
-const ENDORSE =
-  "Blocked on arXiv endorsement (codes issued + emailed 2026-07-22; one qualified endorser clears it). Journal route open in parallel.";
+export const publishingPhase: PublishingStep[] = [
+  { step: "arXiv endorsement", owner: "houston", status: "Codes issued + emailed 2026-07-22 (gr-qc HYEJ7S; astro-ph.IM L8TIPN; astro-ph.CO LRZHC4; astro-ph.GA CLVMAQ). One qualified endorser clears the astro-ph trio; shortlist verified on /publish." },
+  { step: "Submission clicks", owner: "houston", status: "Wave 1 (P1B → P1A → P3), wave 2 (P2 + P4), then P5 after the automatic Paper-IV back-patch. Draft 7859751 parked at Start, ready." },
+  { step: "P5 Paper-IV back-patch", owner: "agent", status: "Automatic the moment P4 has an arXiv ID." },
+  { step: "Journal / independent human review", owner: "external", status: "Begins when the papers are public — it is what publishing buys, not a precondition for it." },
+];
 
 export const readinessBreakdown: PaperBreakdown[] = [
-  { code: "P1A", publicationReadiness: 62, gates: gates(REVIEW_NOTE, 20, "houston", ENDORSE + " Category: gr-qc (code HYEJ7S).") },
-  { code: "P1B", publicationReadiness: 56, gates: gates(REVIEW_NOTE, 20, "houston", ENDORSE + " Category: astro-ph.IM (code L8TIPN). JORS journal route has no content blocker.") },
-  { code: "P2", publicationReadiness: 80, gates: gates(REVIEW_NOTE, 20, "houston", ENDORSE + " Category: astro-ph.CO (code LRZHC4).") },
-  { code: "P3", publicationReadiness: 56, gates: gates(REVIEW_NOTE, 20, "houston", ENDORSE + " Category: astro-ph.IM (code L8TIPN). ApJS route needs one abstract trim (agent, on go).") },
-  { code: "P4", publicationReadiness: 80, gates: gates(REVIEW_NOTE, 20, "houston", ENDORSE + " Category: astro-ph.GA (code CLVMAQ).") },
-  { code: "P5", publicationReadiness: 74, gates: gates(REVIEW_NOTE, 15, "agent", ENDORSE + " Category: astro-ph.GA (code CLVMAQ). Additionally waits on P4's arXiv ID back-patch — automatic (agent) the moment P4 submits.") },
+  { code: "P1A", publicationReadiness: 95, gates: gates("2026-07-23 re-sweep: Grok ACCEPT · Gemini minor (dispositioned) · Claude ACCEPT, zero findings. " + RESWEEP) },
+  { code: "P1B", publicationReadiness: 95, gates: gates("2026-07-23 re-sweep: Claude ACCEPT with zero findings; Grok/Gemini minors dispositioned (re-flags of deliberate honesty disclosures). " + RESWEEP) },
+  { code: "P2", publicationReadiness: 95, gates: gates("2026-07-23 re-sweep: Grok ACCEPT — its first on P2. Stamp-drift closed in v1.7.128. " + RESWEEP) },
+  { code: "P3", publicationReadiness: 95, gates: gates("2026-07-23 re-sweep: Grok ACCEPT. Stamp-drift closed in v3.2.0-r13. " + RESWEEP) },
+  { code: "P4", publicationReadiness: 95, gates: gates("2026-07-23 re-sweep: all-minor board; re-flags falsified with citations (DOI renders 3×). Stamp-drift closed in v1.0.271. " + RESWEEP) },
+  { code: "P5", publicationReadiness: 95, gates: gates("2026-07-23 re-sweep: Gemini MAJORs = the tracked Paper-IV/DOI gates + a disclosed limitation (audited, non-real); Hamaus re-flag falsified twice (cite at tex:2943). " + RESWEEP) },
 ];

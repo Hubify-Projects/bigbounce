@@ -84,7 +84,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 1 (fig:shape)",
         "title": "Exact four-vertex matter-bounce shape B_NL(k_L,k_S,k_S) as a function of squeeze ratio",
         "desc": "Exact four-vertex matter-bounce shape B_NL(k_L,k_S,k_S) as a function of squeeze ratio. The curve is evaluated directly from Eq. and approaches -35/16; the marker identifies the equilateral value -255/128.",
-        "source": "Paper 2 · v1.7.127"
+        "source": "Paper 2 · v1.7.128"
       },
       {
         "src": "/images/fig5_inflation_comparison.png",
@@ -92,7 +92,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 2 (fig:inflation)",
         "title": "f_NL landscape: matter bounce vs.\\ inflationary alternatives. The blue bar is the imported SPHEREx local-temp…",
         "desc": "f_NL landscape: matter bounce vs.\\ inflationary alternatives. The blue bar is the imported SPHEREx local-template uncertainty transformed to bounce-amplitude coordinates by Eq. : σ(f_NL^ bounce)=0.7/0.84=0.83, centered on -35/16. It is not the separate shape-matched surrogate-covariance uncertainty.",
-        "source": "Paper 2 · v1.7.127"
+        "source": "Paper 2 · v1.7.128"
       },
       {
         "src": "/images/fig_4vertex_sum.png",
@@ -130,7 +130,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 1 (fig:umap_score)",
         "title": "2D UMAP embedding of the encoder latent space (PCA 12830, then UMAP) for a 500,000-spectrum stratified DESI D…",
         "desc": "2D UMAP embedding of the encoder latent space (PCA 12830, then UMAP) for a 500,000-spectrum stratified DESI DR1 sample, colored by per-spectrum anomaly score. High-score anomalies concentrate in distinct islands of the embedding (bright lobe, lower right) rather than scattering through the bulk population; the 83 Exemplar-Set anomalies (cyan stars) lie on o…",
-        "source": "Paper 3 · v3.2.0-r12"
+        "source": "Paper 3 · v3.2.0-r13"
       },
       {
         "src": "/images/fig_skymap_all_surveys.png",
@@ -138,7 +138,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 2 (fig:skymap)",
         "title": "Cross-transfer baseline map (ACT DR6 excluded from science results)",
         "desc": "Cross-transfer baseline map (ACT DR6 excluded from science results). Mollweide projection in equatorial coordinates (RA/Dec, ICRS) of the initial cross-transfer anomaly baseline (319,443 detections; the canonical Path-C unique count of 377,482 is not a deduplication of this baseline --- deduplication only ever reduces its input --- but the 5'' dedup of the…",
-        "source": "Paper 3 · v3.2.0-r12"
+        "source": "Paper 3 · v3.2.0-r13"
       },
       {
         "src": "/images/fig_score_distributions.png",
@@ -146,7 +146,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 3 (fig:score_dist)",
         "title": "Anomaly score distributions for the three main spectroscopic surveys",
         "desc": "Anomaly score distributions for the three main spectroscopic surveys. The score S is the per-spectrum reconstruction MSE rescaled to validation z-units: S = (MSE - _ val)/_ val, where _ val and _ val are the mean and standard deviation of MSE on the held-out 20\\% validation split of the per-survey training pool (; native for DESI, cross-transfer for SDSS an…",
-        "source": "Paper 3 · v3.2.0-r12"
+        "source": "Paper 3 · v3.2.0-r13"
       },
       {
         "src": "/images/fig_sdss_umap.png",
@@ -154,7 +154,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 4 (fig:sdss_umap)",
         "title": "Cross-transfer SDSS baseline",
         "desc": "Cross-transfer SDSS baseline. UMAP embedding of the 77,905 SDSS DR18 anomalies from the initial DESI-trained cross-transfer scan, colored by HDBSCAN cluster (left) and by inferred physical category (right). The dominant cluster (green, 84\\% of objects) contains ultra-cool dwarfs (M7--T2) that are completely out-of-distribution for the DESI-trained --- the d…",
-        "source": "Paper 3 · v3.2.0-r12"
+        "source": "Paper 3 · v3.2.0-r13"
       },
       {
         "src": "/images/fig_neowise_top_anomaly.png",
@@ -162,7 +162,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 5 (fig:neowise_top)",
         "title": "NEOWISE top infrared anomaly at (α, ) = (180",
         "desc": "NEOWISE top infrared anomaly at (α, ) = (180.59^, 0.56^), score = 11.5. DESI Legacy Survey DR9 grz composite, 256 × 256 pixels at the native LS DR9 scale of 0.262''/px (256 × 0.262'' = 67'' per side). Extreme W1-W2 infrared color excess; no prior SIMBAD entry within 5''. The optical counterpart is a bright, saturated source with diffraction spikes indicativ…",
-        "source": "Paper 3 · v3.2.0-r12"
+        "source": "Paper 3 · v3.2.0-r13"
       },
       {
         "src": "/images/fig_novelty_fractions.png",
@@ -170,7 +170,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 6 (fig:novelty)",
         "title": "SIMBAD-unmatched fractions for the five surveys with coordinate-based cross-matching, ranked from lowest (NEO…",
         "desc": "SIMBAD-unmatched fractions for the five surveys with coordinate-based cross-matching, ranked from lowest (NEOWISE, 45\\%) to highest (DESI DR1, 99\\% of top-10K objects absent from SIMBAD). The dashed line marks the aggregate 58.8\\% SIMBAD-unmatched fraction (pooled over the top-100 anomalies of three surveys --- SDSS, eROSITA, NEOWISE; 235/400 at 3'', where…",
-        "source": "Paper 3 · v3.2.0-r12"
+        "source": "Paper 3 · v3.2.0-r13"
       },
       {
         "src": "/images/anomaly_sky_distribution.png",
@@ -178,7 +178,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 7 (fig:anomaly_sky)",
         "title": "Spatial distribution of the 195,829 DESI DR1 anomalies",
         "desc": "Spatial distribution of the 195,829 DESI DR1 anomalies. Top left: equatorial sky map color-coded by anomaly score S. Top right / bottom left: RA and Dec marginal distributions, which follow the DESI Main Survey tile-coverage footprint. Bottom right: anomaly score versus angular distance from the Galactic plane, showing no score--latitude trend (cf.\\ the com…",
-        "source": "Paper 3 · v3.2.0-r12"
+        "source": "Paper 3 · v3.2.0-r13"
       },
       {
         "src": "/images/fig_cross_survey_matches.png",
@@ -186,7 +186,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 8 (fig:crossmatch)",
         "title": "Spectral pairs for the three DESI × SDSS cross-survey matches",
         "desc": "Spectral pairs for the three DESI × SDSS cross-survey matches. Left column: DESI DR1 spectrum; right column: same object in SDSS DR18. Black: observed flux (normalized); red dashed: reconstruction. (a, b) Known QSO at z ≈ 1.55: both surveys flag the object independently, with mutually consistent reconstructions and the lowest scores of the three matches ---…",
-        "source": "Paper 3 · v3.2.0-r12"
+        "source": "Paper 3 · v3.2.0-r13"
       },
       {
         "src": "/images/fig_fnl_improvement.png",
@@ -194,7 +194,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 9 (fig:fnl_improvement)",
         "title": "Per-redshift-bin decomposition of the Fisher forecast under the fixed bias prior α = 0",
         "desc": "Per-redshift-bin decomposition of the Fisher forecast under the fixed bias prior α = 0.15 (cf.\\ Appendix ); the primary forecast of this work uses the empirically measured bias of , which is consistent with no multi-tracer improvement. Per-redshift-bin decomposition of the fixed-α = 0.15 reference Fisher forecast (Appendix ). Left: σ(f_NL) per redshift bin…",
-        "source": "Paper 3 · v3.2.0-r12"
+        "source": "Paper 3 · v3.2.0-r13"
       },
       {
         "src": "/images/fig_injection_recovery.png",
@@ -202,7 +202,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 10 (fig:injection_recovery)",
         "title": "Injection-recovery gate results across the retained-survey spectroscopic tiers (SDSS, LAMOST), with the non-s…",
         "desc": "Injection-recovery gate results across the retained-survey spectroscopic tiers (SDSS, LAMOST), with the non-spectral retrains (Planck CMB native convolutional autoencoder, NEOWISE ecliptic-pole mask, eROSITA latent-subspace) brought into the same axis for comparison; the removed Gaia DR3 tier is overplotted only as a historical methodological-record curve a…",
-        "source": "Paper 3 · v3.2.0-r12"
+        "source": "Paper 3 · v3.2.0-r13"
       },
       {
         "src": "/images/B11_sigma_fnl_vs_ndensity.png",
@@ -210,7 +210,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 11 (fig:shotnoise_sensitivity)",
         "title": "Multi-tracer Fisher vs.\\ tracer number density n for the canonical 5-tracer configuration of . The dashed gra…",
         "desc": "Multi-tracer Fisher vs.\\ tracer number density n for the canonical 5-tracer configuration of . The dashed gray line marks the dense-tracer limit ( = 11.71); the dotted dark-red line marks the single-tracer baseline ( = 16.85). Vertical orange and goldenrod lines mark the gold ( n = 8.5× 10^-6) and silver ( n = 4.5× 10^-5) anomaly sub-samples. The Heinrich-\\…",
-        "source": "Paper 3 · v3.2.0-r12"
+        "source": "Paper 3 · v3.2.0-r13"
       },
       {
         "src": "/images/fig_gallery_top10.png",
@@ -218,7 +218,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 12 (fig:gallery_top10)",
         "title": "Representative DESI DR1 anomalies across all ten taxonomy families",
         "desc": "Representative DESI DR1 anomalies across all ten taxonomy families. One highest-scored member per family; 2-row × 5-column layout. Border color indicates taxonomy class. Images are DESI Legacy Survey DR9 grz composites. Panel sublabels give the object RA; the high-z QSO panel additionally gives the redshift and the per-arm Z-arm sub-score r_Z (). The taxono…",
-        "source": "Paper 3 · v3.2.0-r12"
+        "source": "Paper 3 · v3.2.0-r13"
       },
       {
         "src": "/images/anomaly_sky_distribution.png",
@@ -328,7 +328,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 1 (fig:gallery)",
         "title": "Representative high-confidence galaxies from the classified catalog (p_ eq>0",
         "desc": "Representative high-confidence galaxies from the classified catalog (p_ eq>0.9). Left: clockwise (CW) spirals; center: counter-clockwise (CCW) spirals; right: non-spiral () objects --- ellipticals, mergers, and edge-on galaxies that would contaminate a binary spiral classifier. All cutouts are 224×224pixels in grz bands from DESI Legacy DR8. The gallery ill…",
-        "source": "Paper 4 · v1.0.270"
+        "source": "Paper 4 · v1.0.271"
       },
       {
         "src": "/images/chirality/fig_gallery_ccw.png",
@@ -336,7 +336,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 2 (fig:gallery)",
         "title": "Representative high-confidence galaxies from the classified catalog (p_ eq>0",
         "desc": "Representative high-confidence galaxies from the classified catalog (p_ eq>0.9). Left: clockwise (CW) spirals; center: counter-clockwise (CCW) spirals; right: non-spiral () objects --- ellipticals, mergers, and edge-on galaxies that would contaminate a binary spiral classifier. All cutouts are 224×224pixels in grz bands from DESI Legacy DR8. The gallery ill…",
-        "source": "Paper 4 · v1.0.270"
+        "source": "Paper 4 · v1.0.271"
       },
       {
         "src": "/images/chirality/fig_gallery_notspi.png",
@@ -344,7 +344,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 3 (fig:gallery)",
         "title": "Representative high-confidence galaxies from the classified catalog (p_ eq>0",
         "desc": "Representative high-confidence galaxies from the classified catalog (p_ eq>0.9). Left: clockwise (CW) spirals; center: counter-clockwise (CCW) spirals; right: non-spiral () objects --- ellipticals, mergers, and edge-on galaxies that would contaminate a binary spiral classifier. All cutouts are 224×224pixels in grz bands from DESI Legacy DR8. The gallery ill…",
-        "source": "Paper 4 · v1.0.270"
+        "source": "Paper 4 · v1.0.271"
       },
       {
         "src": "/images/chirality/fig_equivariance_demo.png",
@@ -352,7 +352,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 4 (fig:equivariance_demo)",
         "title": "Equivariant test-time averaging (TTA)",
         "desc": "Equivariant test-time averaging (TTA). Representative Z_2 production TTA examples (original + horizontal flip); D_4 validation (four rotations × two reflections) in Appendix B. Production inference (Catalog C) uses 2-fold Z_2 TTA --- original + horizontal flip only (). Flips swap the CW CCW class labels by construction. Output probabilities are averaged aft…",
-        "source": "Paper 4 · v1.0.270"
+        "source": "Paper 4 · v1.0.271"
       },
       {
         "src": "/images/chirality/fig_class_pie.png",
@@ -360,7 +360,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 5 (fig:class_pie)",
         "title": "Catalog C composition. Of the 8,474,531 galaxies retained in the released catalog, the equivariant TTA classi…",
         "desc": "Catalog C composition. Of the 8,474,531 galaxies retained in the released catalog, the equivariant TTA classifier () assigns N_ CW=1,592,107, N_ CCW=1,609,053, and N_ NS=5,273,371 (non-spiral / edge-on / morphologically indeterminate). The spiral sub-catalog N_ spiral = N_ CW+N_ CCW= 3,201,160 is the analysis target for all chirality statistics below (Table…",
-        "source": "Paper 4 · v1.0.270"
+        "source": "Paper 4 · v1.0.271"
       },
       {
         "src": "/images/chirality/fig_sky_map.png",
@@ -368,7 +368,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 6 (fig:sky_map)",
         "title": "Equivariant (Catalog C) chirality asymmetry map of the 8",
         "desc": "Equivariant (Catalog C) chirality asymmetry map of the 8.47M-galaxy catalog (Mollweide projection, equatorial coordinates; per-pixel asymmetry A_p=(N_ CW-N_ CCW)/(N_ CW+N_ CCW) = 2(f_ CW,p-12) at HEALPix NSIDE=64, color scale [-0.08,+0.08]). The DESI Legacy Imaging footprint covers f_ sky=0.49005 of the sky in the support (N_ spiral(p)10 per pixel; Sec. );…",
-        "source": "Paper 4 · v1.0.270"
+        "source": "Paper 4 · v1.0.271"
       },
       {
         "src": "/images/chirality/fig_spiral_density.png",
@@ -376,7 +376,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 7 (fig:spiral_density)",
         "title": "Sky density of the 3,201,160 classified spirals (CW + CCW combined, NSIDE=64 Mollweide)",
         "desc": "Sky density of the 3,201,160 classified spirals (CW + CCW combined, NSIDE=64 Mollweide). Per-pixel spiral counts scale with the DESI Legacy Imaging Surveys depth and exposure pattern; the support used for the primary ℓ=1 analysis () requires N_ spiral(p)10 per pixel. Spatial inhomogeneity at this scale is the leakage channel quantified in .",
-        "source": "Paper 4 · v1.0.270"
+        "source": "Paper 4 · v1.0.271"
       },
       {
         "src": "/images/chirality/fig_confidence_dist.png",
@@ -384,7 +384,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 8 (fig:confidence_dist)",
         "title": "Distribution of maximum-class confidence (,,) for all 8,474,531 galaxies",
         "desc": "Distribution of maximum-class confidence (,,) for all 8,474,531 galaxies. Strongly bimodal: 73.6\\% at p0.9 (high-confidence labels) + a long tail of indeterminate cases ( p<0.5, dominated by NS/edge-on systems). The high-confidence (HC) cuts at p_ eq>0.6 (N=949,584) and p_ eq>0.8 (N=624,660) used in the systematics cross-checks () are indicated.",
-        "source": "Paper 4 · v1.0.270"
+        "source": "Paper 4 · v1.0.271"
       },
       {
         "src": "/images/chirality/fig_raw_vs_eq.png",
@@ -392,7 +392,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 9 (fig:raw_vs_eq)",
         "title": "Raw (Catalog A) vs equivariant (Catalog C) chirality sky maps (equatorial RA/Dec, per-pixel CW fraction f_ CW…",
         "desc": "Raw (Catalog A) vs equivariant (Catalog C) chirality sky maps (equatorial RA/Dec, per-pixel CW fraction f_ CW,p, NSIDE=64; shared color scale [0.47,0.53]). The raw definition is class\\_raw\\_y with class\\_raw\\_x fallback only where the former is missing; in this release all 3,321,795 raw spirals come from class\\_raw\\_y (zero fallback rows), while Catalog C c…",
-        "source": "Paper 4 · v1.0.270"
+        "source": "Paper 4 · v1.0.271"
       },
       {
         "src": "/images/fig_harmonic_completeness.png",
@@ -400,7 +400,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 10 (fig:harmonic_completeness)",
         "title": "Historical injection-completeness diagnostic under the artifact-c9b apodized estimator convention (10^3 injec…",
         "desc": "Historical injection-completeness diagnostic under the artifact-c9b apodized estimator convention (10^3 injections per amplitude and axis). It uses a different weighting/null implementation from the exact-support computation and is retained only as sensitivity provenance; it is not a calibrated recovery threshold or physical limit.",
-        "source": "Paper 4 · v1.0.270"
+        "source": "Paper 4 · v1.0.271"
       },
       {
         "src": "/images/fig_bootstrap_null.png",
@@ -408,7 +408,7 @@ export const figureSections: FigureSection[] = [
         "number": "Figure 11 (fig:bootstrap_null)",
         "title": "Historical latitude-mask block-bootstrap distribution",
         "desc": "Historical latitude-mask block-bootstrap distribution. NSIDE=8 resamples of the broader |b_ gal|>15^, N_ total>0 WLS field (N_ boot=1000, seed 42), not the field. The distribution is retained as provenance and is not used for an or physical constraint.",
-        "source": "Paper 4 · v1.0.270"
+        "source": "Paper 4 · v1.0.271"
       },
       {
         "src": "/images/fig_template_overlap_robustness.png",
