@@ -28,8 +28,16 @@
 \setcitestyle{numbers,square,comma}
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v3.2.0-r12}
-\newcommand{\paperTimestamp}{July 22, 2026, 09:00 PDT}
+\newcommand{\paperVersion}{v3.2.0-r13}
+\newcommand{\paperTimestamp}{July 23, 2026, 09:00 PDT}
+% v3.2.0-r13 (2026-07-23 — RE-SWEEP CLOSURE: the 2026-07-23 routine re-sweep truth audit
+%   (project-context/peer-reviews/INT_v3/TRUTH_AUDIT_RESWEEP_2026-07-23.md) surfaced one
+%   genuinely-new-real class — version-stamp drift in the Data Availability prose: the
+%   self-reference "the present manuscript is v3.2.0-r11" was a hardcoded literal the
+%   version-bump flow never touched, so it lagged the \paperVersion stamp. FIX (drift-proof):
+%   bound the self-reference to the \paperVersion macro so it can never drift again; the
+%   already-truthful "will be added ... on the next re-stage" tense is retained. NO science
+%   number changed.)
 % v3.2.0-r11 (2026-07-20 — DOI BACK-PATCH: embedded the real minted Zenodo archival DOI
 %   in the Data Availability section, closing the standing immutable-archive/archival-DOI
 %   gate. Zenodo version DOI 10.5281/zenodo.21461888 (concept DOI 10.5281/zenodo.21461887)
@@ -935,7 +943,7 @@ published on Zenodo under the minted archival DOI
 concept DOI \href{https://doi.org/10.5281/zenodo.21461887}{doi:10.5281/zenodo.21461887}
 presently resolves to the latest deposited version (\texttt{v3.2.0-r10}), to which subsequent
 versions will be added).  That deposit archives the reviewed \texttt{v3.2.0-r10} bytes exactly;
-the present manuscript is \texttt{v3.2.0-r11}, one patch ahead, and will be added to the same
+the present manuscript is \texttt{\paperVersion}, one patch ahead, and will be added to the same
 Zenodo concept record as a new version on the next re-stage.  This Zenodo archival DOI is a self-deposited
 reproducibility handle and is distinct from the AAS journal digital-asset DOI, which the journal
 still assigns during its publication workflow and which remains an honest open gate.  The historical dataset and catalog
