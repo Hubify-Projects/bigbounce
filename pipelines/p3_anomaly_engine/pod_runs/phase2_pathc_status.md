@@ -434,7 +434,7 @@ Every download 404-ing. Hit rate: **0 / 58,000**.
 ## 2026-04-19T07:34:53Z — fire #76 (first Phase 2 Path C fire)
 
 **Pod:** `ktds4mkmzb7ven` (A100 80GB PCIe, $1.19/hr)
-**SSH:** `root@104.255.9.187:11759`
+**SSH:** `root@<pod-ip>:<port>`
 **Uptime:** 170 days, 14:40 (host — pod tmux sessions younger)
 **Disk:** `/workspace` 500 GB total, 18 GB used (4 %), 483 GB free — ample for native-retrain checkpoints + LAMOST + SDSS training shards.
 **GPU:** NVIDIA A100 80 GB PCIe, utilization 0 %, mem 1,755 / 81,920 MiB used.

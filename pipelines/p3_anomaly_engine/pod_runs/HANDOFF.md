@@ -7,7 +7,7 @@
 - **Pod ID:** `ktds4mkmzb7ven`
 - **GPU:** NVIDIA A100 80GB PCIe (community cloud)
 - **Cost:** $1.19/hr
-- **SSH:** `ssh -i ~/.ssh/id_ed25519 -p 11759 root@104.255.9.187`
+- **SSH:** `ssh -i ~/.ssh/id_ed25519 -p <port> root@<pod-ip>`
 - **Workspace:** `/workspace/bigbounce_scan/` (500 GB volume)
 - **Deployed:** 2026-04-18 drive-to-100 fire #24
 - **Houston budget cap:** $140 (RunPod credits)
@@ -39,7 +39,7 @@
 SSH in and check:
 
 ```bash
-ssh -i ~/.ssh/id_ed25519 -p 11759 root@104.255.9.187 "tmux ls && tail -15 /workspace/bigbounce_scan/logs/sdss.log && tail -15 /workspace/bigbounce_scan/logs/lamost.log"
+ssh -i ~/.ssh/id_ed25519 -p <port> root@<pod-ip> "tmux ls && tail -15 /workspace/bigbounce_scan/logs/sdss.log && tail -15 /workspace/bigbounce_scan/logs/lamost.log"
 ```
 
 ### SDSS DR18 (tmux session `sdss`)
@@ -79,11 +79,11 @@ mkdir -p pipelines/p3_anomaly_engine/pod_runs/sdss_dr18_raw
 mkdir -p pipelines/p3_anomaly_engine/pod_runs/lamost_dr10_raw
 
 rsync -avz -e "ssh -i ~/.ssh/id_ed25519 -p 11759" \
-  root@104.255.9.187:/workspace/bigbounce_scan/outputs/sdss_dr18/*.parquet \
+  root@<pod-ip>:/workspace/bigbounce_scan/outputs/sdss_dr18/*.parquet \
   pipelines/p3_anomaly_engine/pod_runs/sdss_dr18_raw/
 
 rsync -avz -e "ssh -i ~/.ssh/id_ed25519 -p 11759" \
-  root@104.255.9.187:/workspace/bigbounce_scan/outputs/lamost/*.parquet \
+  root@<pod-ip>:/workspace/bigbounce_scan/outputs/lamost/*.parquet \
   pipelines/p3_anomaly_engine/pod_runs/lamost_dr10_raw/
 ```
 
@@ -94,7 +94,7 @@ rsync -avz -e "ssh -i ~/.ssh/id_ed25519 -p 11759" \
 python3 pipelines/p3_anomaly_engine/hf_upload_extend_pod.py
 
 # Recompile Paper 3 on pod (pdflatex twice + bibtex)
-ssh -i ~/.ssh/id_ed25519 -p 11759 root@104.255.9.187 "\
+ssh -i ~/.ssh/id_ed25519 -p <port> root@<pod-ip> "\
   apt-get install -y texlive-latex-extra texlive-publishers texlive-science texlive-fonts-recommended && \
   cd /workspace/paper3 && pdflatex -interaction=nonstopmode paper3_draft.tex && \
   bibtex paper3_draft || true && \
@@ -102,7 +102,7 @@ ssh -i ~/.ssh/id_ed25519 -p 11759 root@104.255.9.187 "\
   pdflatex -interaction=nonstopmode paper3_draft.tex"
 
 rsync -avz -e "ssh -i ~/.ssh/id_ed25519 -p 11759" \
-  root@104.255.9.187:/workspace/paper3/paper3_draft.pdf \
+  root@<pod-ip>:/workspace/paper3/paper3_draft.pdf \
   pipelines/p3_anomaly_engine/paper3_draft.pdf
 cp pipelines/p3_anomaly_engine/paper3_draft.pdf public/papers/paper3_anomaly_catalog.pdf
 

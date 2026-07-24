@@ -31,7 +31,7 @@ morphology is pulled from the **NOIRLab Astro Data Lab** table `ls_dr8.tractor`
 ## Running job (RunPod)
 
 - **Pod:** `580dgszgib3ti4` (`bigbounce-p4-dr8morph`, RTX A4000, **112 vCPU,
-  503 GB RAM, 60 GB disk**). SSH: `root@193.183.22.54 -p 1304`
+  503 GB RAM, 60 GB disk**). SSH: `root@<pod-ip> -p <port>`
   (key `~/.ssh/id_ed25519`); RunPod proxy `580dgszgib3ti4-644119b0@ssh.runpod.io`.
 - **tmux session:** `dlfinal` running `/workspace/dr8morph/pull_dr8_final.py`
   (`NWORK=5 BRICK_BATCH=40`). Resumable, self-terminating, heavy backoff.
@@ -57,12 +57,12 @@ Repo copies of both scripts: `pipelines/p2_chirality/scripts/pull_dr8_datalab.py
 ## Harvest (when DONE_PULL appears)
 
 ```bash
-POD='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i ~/.ssh/id_ed25519 -p 1304 root@193.183.22.54'
+POD='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i ~/.ssh/id_ed25519 -p <port> root@<pod-ip>'
 # 1. confirm complete
 $POD 'grep DONE_PULL /workspace/dr8morph/dlfinal.log; cat /workspace/dr8morph/out/systematic_l1_forward_model_dr8morph.json | python3 -m json.tool | grep -A6 improvement'
 # 2. pull artifacts back
-scp -i ~/.ssh/id_ed25519 -P 1304 root@193.183.22.54:/workspace/dr8morph/out/spiral_morphology.parquet pipelines/p2_chirality/outputs/
-scp -i ~/.ssh/id_ed25519 -P 1304 root@193.183.22.54:/workspace/dr8morph/out/systematic_l1_forward_model_dr8morph.json pipelines/p2_chirality/outputs/
+scp -i ~/.ssh/id_ed25519 -P <port> root@<pod-ip>:/workspace/dr8morph/out/spiral_morphology.parquet pipelines/p2_chirality/outputs/
+scp -i ~/.ssh/id_ed25519 -P <port> root@<pod-ip>:/workspace/dr8morph/out/systematic_l1_forward_model_dr8morph.json pipelines/p2_chirality/outputs/
 # 3. ALWAYS-backup morphology to HF + B2 (Lesson E) so it never re-pulls
 # 4. STOP the pod (NOT terminate):  podStop mutation for 580dgszgib3ti4
 ```

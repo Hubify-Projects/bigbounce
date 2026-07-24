@@ -239,7 +239,7 @@ component provisioned (see blocker below) for the historical-composition superse
   `580dgszgib3ti4-644119b0@ssh.runpod.io` (interactive — pipe commands on stdin), running
   `ssh-keygen -A` + writing `~/.ssh/authorized_keys` + `/usr/sbin/sshd`. Reusable helpers:
   `tools/pod_bootstrap_sshd.sh` (proxy bootstrap) and `tools/pod_ssh.sh` (clean direct SSH).
-- Direct SSH after bootstrap: `ssh -p 1206 -i ~/.ssh/id_ed25519 root@193.183.22.54`
+- Direct SSH after bootstrap: `ssh -p <port> -i ~/.ssh/id_ed25519 root@<pod-ip>`
   (port changes on each resume — re-query `python3 tools/runpod_ctl.py status`).
 - Pod is **ephemeral** (no persistent network volume): stop/resume wiped `/workspace`,
   `pip` packages, and `/workspace/external_catalogs/pre_desi.fits`. Deps reinstalled this
@@ -363,7 +363,7 @@ $0.17/h.
 - **Pod:** `th0o0l1tp1se4e` (`bigbounce-p4-g1-retrain`, RTX A4000 16376 MiB, machine
   robtjgci7up0, image `runpod/pytorch:2.4.0-cuda12.4.1`, torch 2.4.1+cu124). Deployed with
   `PUBLIC_KEY` injected so **direct SSH works with no sshd bootstrap**.
-- **SSH:** `ssh -p 1787 -i ~/.ssh/id_ed25519 root@193.183.22.60` (re-query
+- **SSH:** `ssh -p <port> -i ~/.ssh/id_ed25519 root@<pod-ip>` (re-query
   `python3 tools/runpod_ctl.py status` after any resume — port changes).
 - **CE catalog on pod:** `pre_desi.fits` scp'd to `/workspace/external_catalogs/`; sha256 on pod
   = `894dbe887140c165488a0f6053e2cd21f4ab72be9b06ece733e6ce177c0e304b` (VERIFIED, matches repo).
@@ -382,7 +382,7 @@ $0.17/h.
   synthetic=2000, total=26,609**; classes {CW 11904 / CCW 11886 / NOT_SPIRAL 2819};
   train 21,288 / val 5,321. **826-vs-846 adjudication on the actual pod retrain: 819 (NEITHER;
   the two large components reproduce historical exactly, conflict isolated to CE non-spiral).**
-- **POLL:** `ssh -p 1787 -i ~/.ssh/id_ed25519 root@193.183.22.60 "tail -20 /workspace/g1/full_run.log; ls -la /workspace/g1/out/"`
+- **POLL:** `ssh -p <port> -i ~/.ssh/id_ed25519 root@<pod-ip> "tail -20 /workspace/g1/full_run.log; ls -la /workspace/g1/out/"`
 - **BACKUP before any stop (`/backup-3plus`):** pull `g1_training_manifest.json` +
   `g1_ckpt_best.pt` + `g1_training_result.json` → repo (loc 1) → git (loc 2) → HF
   `bamfai/galaxy-chirality-v2` and/or B2 (loc 3). Do NOT `podStop th0o0l1tp1se4e` before this.
@@ -404,7 +404,7 @@ $0.17/h.
 - **checkpoints (every epoch):** `/workspace/g1/out/g1_ckpt_epoch###.pt`, `g1_ckpt_best.pt`,
   `g1_ckpt_last.pt`; result `/workspace/g1/out/g1_training_result.json`
 - **log:** `/workspace/g1/full_run.log`
-- **POLL:** `ssh -p <port> -i ~/.ssh/id_ed25519 root@193.183.22.54 "tail -20 /workspace/g1/full_run.log; ls -la /workspace/g1/out/"`
+- **POLL:** `ssh -p <port> -i ~/.ssh/id_ed25519 root@<pod-ip> "tail -20 /workspace/g1/full_run.log; ls -la /workspace/g1/out/"`
   (get `<port>` from `python3 tools/runpod_ctl.py status`; if sshd is down after a resume,
   re-run `PROXY=580dgszgib3ti4-644119b0@ssh.runpod.io tools/pod_bootstrap_sshd.sh` first).
 - **BACKUP before any stop (`/backup-3plus`):** pull `g1_training_manifest.json` +

@@ -331,10 +331,10 @@ fold real results into the paper; re-review.
   The old `POD_COBAYA_R43_V2` (ijzftpy3klystt) was terminated/gone; this is a fresh pod on the canonical volume.
   cobaya 3.6.2 (clipy 0.15), camb 1.6.6, OpenMPI 4.1.2.
 - **Run dir**: `/workspace/bigbounce/p1b_snctrl/` — 4 MPI chains each, tmux sessions `w0wa_pp` (Pantheon+) and `w0wa_dy` (DES-Y5).
-- **SSH**: `ssh -i ~/.ssh/id_ed25519 -p 19730 root@157.157.221.29`
+- **SSH**: `ssh -i ~/.ssh/id_ed25519 -p <port> root@<pod-ip>`
 - **Monitor (convergence later)**:
   ```
-  ssh -i ~/.ssh/id_ed25519 -p 19730 root@157.157.221.29 \
+  ssh -i ~/.ssh/id_ed25519 -p <port> root@<pod-ip> \
     "cd /workspace/bigbounce/p1b_snctrl && tail -4 chains/control_pantheonplus/cpp.progress chains/control_desy5/cdy.progress"
   # ^ last column is Gelman-Rubin R-1 (config stops at R-1<0.01). Or full posterior summary:
   ssh ... "COBAYA_PACKAGES_PATH=/workspace/cobaya_packages getdist /workspace/bigbounce/p1b_snctrl/chains/control_pantheonplus/cpp"
@@ -362,7 +362,7 @@ fold real results into the paper; re-review.
   (`chirality_model_gz1only_best.pt`, `gz1only_bias_hardening.json`). Answers
   ChatGPT-M2: if the dipole null survives GZ1-only training, it is NOT inherited
   from CE-ResNet. Training runs in tmux session `gz1only` (survives disconnect).
-  **Monitor:** `ssh -i ~/.ssh/id_ed25519 -p 40666 root@87.197.146.56
+  **Monitor:** `ssh -i ~/.ssh/id_ed25519 -p <port> root@<pod-ip>
   'tail -f /workspace/gz1only_outputs/train.log'` (pod coords in .env.local under
   POD_P4_GZ1ONLY_*). ETA: ~1-3 h (data build ~10-20 min streaming GZ-DESI +
   ≤80 epochs early-stopped on ~26K images). NEXT: on completion, run inference +

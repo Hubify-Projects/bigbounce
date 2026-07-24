@@ -27,7 +27,7 @@
 ### Step 1: Final Diagnostics
 ```bash
 # SSH to pod
-ssh -p 36579 root@157.157.221.30
+ssh -p <port> root@<pod-ip>
 
 # Run convergence check
 python3 /workspace/bigbounce/mcmc_monitor_v5.py --dataset planck_only --check-freeze
@@ -100,7 +100,7 @@ sha256sum planck_only_${FREEZE_TS}.tar.gz > planck_only_${FREEZE_TS}.tar.gz.sha2
 ```bash
 # From LOCAL machine:
 rsync -avz --progress -e "ssh -p 36579" \
-  root@157.157.221.30:/workspace/bigbounce/frozen/planck_only_${FREEZE_TS}/ \
+  root@<pod-ip>:/workspace/bigbounce/frozen/planck_only_${FREEZE_TS}/ \
   /Users/houstongolden/Desktop/CODE_2026/bigbounce/reproducibility/cosmology/frozen/planck_only_${FREEZE_TS}/
 
 # Verify checksums locally
@@ -110,15 +110,15 @@ sha256sum -c SHA256SUMS.txt
 
 ### Step 8: Stop Chains (only after local verification passes)
 ```bash
-ssh -p 36579 root@157.157.221.30 "kill 8165 8166 8167 8168 8169 8170"
+ssh -p <port> root@<pod-ip> "kill 8165 8166 8167 8168 8169 8170"
 # Verify stopped:
-ssh -p 36579 root@157.157.221.30 "ps aux | grep cobaya | grep -v grep"
+ssh -p <port> root@<pod-ip> "ps aux | grep cobaya | grep -v grep"
 ```
 
 ### Step 9: Resume planck_bao
 ```bash
 # Only after planck_only freeze is verified
-ssh -p 36579 root@157.157.221.30 "cd /workspace/bigbounce/chains/dneff/planck_bao && nohup cobaya-run cobaya_config.yaml --resume &"
+ssh -p <port> root@<pod-ip> "cd /workspace/bigbounce/chains/dneff/planck_bao && nohup cobaya-run cobaya_config.yaml --resume &"
 ```
 
 ---

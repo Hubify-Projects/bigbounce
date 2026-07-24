@@ -298,7 +298,7 @@ pods: defineTable({
   name: v.optional(v.string()),        // "sleepy_blush_crane"
   gpu_type: v.string(),                // "H200 SXM"
   status: v.string(),                  // "running"|"stopped"|"terminated"
-  ssh_host: v.string(),               // "205.196.19.52"
+  ssh_host: v.string(),               // "<pod-ip>"
   ssh_port: v.number(),               // 11452
   cost_per_hr: v.number(),            // 3.59
   uptime_seconds: v.optional(v.number()),

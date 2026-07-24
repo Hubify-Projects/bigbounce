@@ -21,9 +21,9 @@ Suspected billing-related shutdown. 236,622 samples across 64 chains at risk.
 #### SSH Connection Tests (pre-API)
 | Pod | SSH Target | Result |
 |-----|-----------|--------|
-| GPU validation | 195.26.233.79:38115 | Connection refused |
-| CPU#1 primary | 157.157.221.30:30194 | Connection refused |
-| CPU#2 secondary | 157.157.221.30:40204 | Connection refused |
+| GPU validation | <pod-ip>:<port> | Connection refused |
+| CPU#1 primary | <pod-ip>:<port> | Connection refused |
+| CPU#2 secondary | <pod-ip>:<port> | Connection refused |
 
 #### RunPod API Results
 

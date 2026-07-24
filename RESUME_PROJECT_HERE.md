@@ -35,7 +35,7 @@ Bounce cosmology research program by Houston Golden. Goal: prove bounce cosmolog
 - **424,781+ MCMC samples** across 3 frozen dataset combinations (Paper 1 abstract canonical; supersedes 424,181 arithmetic mismatch fire #25)
 
 ### Running Compute (H200 pod)
-- **Pod ID:** `7zong4jdj46yjp` — SSH: `root@103.196.86.169 -p 34546 -i ~/.ssh/id_ed25519`
+- **Pod ID:** `7zong4jdj46yjp` — SSH: `root@<pod-ip> -p <port> -i ~/.ssh/id_ed25519`
 - **LAMOST DR10** was downloading (~11.4M spectra), may still be running
 - **Completed:** SDSS DR18 (77K anomalies), eROSITA DR1 (9K anomalies)
 - **Queued on pod:** Planck CMB, NEOWISE, Gaia DR3, ACT DR6, SDSS×DESI cross-match, super-resolution
@@ -53,7 +53,7 @@ Bounce cosmology research program by Houston Golden. Goal: prove bounce cosmolog
 - **Queue order:** Planck → ACT DR6 → NEOWISE → Gaia DR3 → SDSS×DESI cross-match → Super-resolution
 - **All 6 scripts deployed** and chained. GPU will NOT be idle between experiments.
 - **Total queue ETA:** ~25-40 hours from start (~Apr 3-4 completion)
-- **Monitor:** `ssh root@103.196.86.169 -p 34546 -i ~/.ssh/id_ed25519 "tail -20 /workspace/bigbounce/queue_runner.log"`
+- **Monitor:** `ssh root@<pod-ip> -p <port> -i ~/.ssh/id_ed25519 "tail -20 /workspace/bigbounce/queue_runner.log"`
 
 ### H200 Pod Data Inventory (20 GB total on `/workspace/bigbounce/`)
 | Directory | Size | Contents |
@@ -71,7 +71,7 @@ Bounce cosmology research program by Houston Golden. Goal: prove bounce cosmolog
 
 **CRITICAL:** When LAMOST finishes (~3 AM Apr 3), SSH in from other Mac and run:
 ```bash
-scp -P 34546 -i ~/.ssh/id_ed25519 -r root@103.196.86.169:/workspace/bigbounce/outputs/ ./pipelines/h200_results/
+scp -P <port> -i ~/.ssh/id_ed25519 -r root@<pod-ip>:/workspace/bigbounce/outputs/ ./pipelines/h200_results/
 ```
 Then stop the pod to save money.
 
@@ -169,7 +169,7 @@ Paper is at `pipelines/p2_chirality/chirality_catalog_paper.tex`. PDF compiled (
 |---|---|
 | **`.env.local`** | Contains: RUNPOD_API_KEY, HF_TOKEN, CONVEX keys (dev+prod deploy keys + URLs), B2 keys (KEY_ID + APP_KEY + BUCKET + ENDPOINT). Get from respective dashboards: runpod.io, huggingface.co, convex.dev, backblaze.com |
 | **`~/.ssh/id_ed25519`** | SSH key for RunPod pods. Generate new keypair and add to RunPod console, OR copy from this Mac before it dies |
-| **RunPod pod SSH configs** | In `.env.local` — H200 pod `7zong4jdj46yjp` at `103.196.86.169:34546` |
+| **RunPod pod SSH configs** | In `.env.local` — H200 pod `7zong4jdj46yjp` at `<pod-ip>:<port>` |
 
 ### Safe to regenerate (don't worry about these)
 | What | How |
@@ -214,7 +214,7 @@ ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519
 # Add public key to RunPod console
 
 # 5. Recover local-only data from H200 pod
-ssh root@103.196.86.169 -p 34546 -i ~/.ssh/id_ed25519
+ssh root@<pod-ip> -p <port> -i ~/.ssh/id_ed25519
 # scp back: /workspace/sdss_dr18/, /workspace/erosita/, etc.
 
 # 6. Recover from HuggingFace

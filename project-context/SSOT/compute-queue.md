@@ -10,7 +10,7 @@
 | Pod ID | `5i2td3deu3hojr` |
 | GPU | RTX A4000 (jobs are CPU-bound NaMaster MC; 12 vCPU / 62 GB RAM) |
 | Cost | $0.17/hr |
-| SSH | `ssh root@194.26.196.210 -p 30140` |
+| SSH | `ssh root@<pod-ip> -p <port>` |
 | Image | runpod/pytorch:2.1.0-py3.10-cuda11.8.0-devel-ubuntu22.04 |
 | Disk | 60 GB container + 60 GB volume at /workspace |
 | Created | 2026-06-09 (UTC) |
@@ -60,14 +60,14 @@ path executed per directive.
 
 Check progress:
 ```bash
-ssh root@194.26.196.210 -p 30140 "for s in c2 c3 c1; do echo === \$s ===; tmux capture-pane -t \$s -p | tail -5; done"
+ssh root@<pod-ip> -p <port> "for s in c2 c3 c1; do echo === \$s ===; tmux capture-pane -t \$s -p | tail -5; done"
 ```
 
 Retrieve results when done:
 ```bash
-scp -P 30140 root@194.26.196.210:/workspace/c2_results/*.json pipelines/p2_chirality/outputs/canonical_provenance/
-scp -P 30140 root@194.26.196.210:/workspace/c3_results/*.json pipelines/p2_chirality/outputs/canonical_provenance/
-scp -P 30140 root@194.26.196.210:/workspace/c1_results/*.json reproducibility/p1_namaster_500mc/results/
+scp -P <port> root@<pod-ip>:/workspace/c2_results/*.json pipelines/p2_chirality/outputs/canonical_provenance/
+scp -P <port> root@<pod-ip>:/workspace/c3_results/*.json pipelines/p2_chirality/outputs/canonical_provenance/
+scp -P <port> root@<pod-ip>:/workspace/c1_results/*.json reproducibility/p1_namaster_500mc/results/
 ```
 
 Before stopping the pod: `/pod-backup-before-stop` (3+ backup locations).

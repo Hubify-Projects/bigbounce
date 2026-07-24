@@ -108,7 +108,7 @@ These entries exist in references.bib but are not `\cite`d in the manuscript:
 
 ### Successful compilation on RunPod
 
-- **Host**: 157.157.221.30:36579
+- **Host**: <pod-ip>:<port>
 - **OS**: Ubuntu (Debian-based)
 - **TeX Live**: 2019/Debian
 - **Packages installed**: texlive-latex-extra, texlive-publishers, texlive-fonts-recommended, texlive-science, texlive-fonts-extra

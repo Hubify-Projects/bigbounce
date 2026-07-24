@@ -90,5 +90,5 @@ Log as Round 7:
 
 ## 7. Compilation
 
-Compile on RunPod pod (157.157.221.30:36579) using existing compile_on_pod.sh script.
+Compile on RunPod pod (<pod-ip>:<port>) using existing compile_on_pod.sh script.
 Verify: 0 undefined references, no overfull hboxes affecting readability.

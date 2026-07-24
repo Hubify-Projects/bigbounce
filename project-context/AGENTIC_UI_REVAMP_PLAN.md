@@ -695,7 +695,7 @@ No Figma calls. Final inline style sweep for pre/code display blocks.
 
 ## 8. Current cron state (session-only)
 
-- `0b85b094` — 15m pod check (H200 `root@205.196.19.52 -p 11452`), recurring
+- `0b85b094` — 15m pod check (H200 `root@<pod-ip> -p <port>`), recurring
 - Previous polish loop cron was killed; all polish-loop work is redirected to the Phase 1-5 sequence above.
 
 ## 9. Recovery instructions after compaction

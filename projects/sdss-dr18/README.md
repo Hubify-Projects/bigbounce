@@ -22,7 +22,7 @@ Apply BigAE autoencoder (trained on DESI) to 5M SDSS DR18 spectra. Proves method
 ## Files
 - Script: On H200 at `/workspace/bigbounce/sdss_dr18_scan.py`
 - Model: `/workspace/bigbounce/best_model_47k.pt`
-- Pod: `7zong4jdj46yjp` (H200 SXM, 103.196.86.169:34546)
+- Pod: `7zong4jdj46yjp` (H200 SXM, <pod-ip>:<port>)
 
 ## Cost
 ~$50 estimated

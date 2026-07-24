@@ -25,7 +25,7 @@
   - P3 `pipelines/p3_anomaly_engine/paper3_draft.pdf` — v3.1.16, 28,349,635 bytes, 41 pp, 0 undef refs
   - P4 `pipelines/p2_chirality/chirality_catalog_paper.pdf` — v1.0.26, 25,668,020 bytes, 22 pp, 0 undef refs
 - **All site surfaces synced** (paper.html / activity.html / SSOT mirrors / `site/src/data/papers.ts` / `site/src/data/live-status.ts`). Site auto-deploys on push to `main` via Vercel.
-- **Pod 3 H200 ACTIVE** at `38.80.152.148:33017` — running a fresh DESI DR2 + DES-SN5YR quintom MCMC (see §5).
+- **Pod 3 H200 ACTIVE** at `<pod-ip>:<port>` — running a fresh DESI DR2 + DES-SN5YR quintom MCMC (see §5).
 - **Backups complete:**
   - `data/runpod_backups/pod3_20260502_final/critical_data_backup.tar.gz` — 1.2 GB, 108 files (catalog data, model checkpoints, R42 wave results)
   - `data/runpod_backups/pod3_20260504_final/secondary_data_backup.tar.gz` — 3.0 GB, 590 files (DR8 sweeps, SPARCL holdout, NANOGrav KDE, OOD validation, chirality pipeline)
@@ -130,7 +130,7 @@ Lives in `site/`. Pages are server components by default. Do NOT use `mcp__claud
 ### What you (Codex) need to do
 
 1. **Monitor convergence** — SSH to pod, tail `mcmc.log`, check for periodic R-1 prints. When all chains < 0.01, MCMC is done.
-2. **Pull chains down** — `scp -P 33017 -r root@38.80.152.148:/workspace/quintom_dr2/chains_w0wa_dr2/ reproducibility/cosmology/chains/w0wa_quintom_desi_dr2/chains/` and any `.input.yaml`, `.minimum`, `.progress` files.
+2. **Pull chains down** — `scp -P <port> -r root@<pod-ip>:/workspace/quintom_dr2/chains_w0wa_dr2/ reproducibility/cosmology/chains/w0wa_quintom_desi_dr2/chains/` and any `.input.yaml`, `.minimum`, `.progress` files.
 3. **Compute the same headline numbers as the April 6 chain** so the comparison is apples-to-apples. Use GetDist:
    ```python
    from getdist import loadMCSamples
@@ -158,8 +158,8 @@ Lives in `site/`. Pages are server components by default. Do NOT use `mcp__claud
 ### How to know the chain is making progress
 
 ```bash
-ssh -p 33017 root@38.80.152.148 "tail -50 /workspace/quintom_dr2/mcmc.log"
-ssh -p 33017 root@38.80.152.148 "ls -la /workspace/quintom_dr2/chains_w0wa_dr2/ && wc -l /workspace/quintom_dr2/chains_w0wa_dr2/spin_torsion_dr2.*.txt"
+ssh -p <port> root@<pod-ip> "tail -50 /workspace/quintom_dr2/mcmc.log"
+ssh -p <port> root@<pod-ip> "ls -la /workspace/quintom_dr2/chains_w0wa_dr2/ && wc -l /workspace/quintom_dr2/chains_w0wa_dr2/spin_torsion_dr2.*.txt"
 ```
 
 R-1 prints periodically in the log. Cobaya prints lines like `[mcmc] Convergence test ... R-1 = 0.073`.
@@ -199,7 +199,7 @@ runpod.stop_pod("o76k3jfzbfh25e")
 
 When Houston launches Codex with this repo, paste this as the first message:
 
-> Continue BigBounce R42→R43 work. Read `project-context/CODEX_HANDOFF.md` in full first, then `AGENTS.md`, then `project-context/SSOT/index.md`. The current live thread is the DESI DR2 + DES-SN5YR quintom MCMC running on Pod 3 H200 at `38.80.152.148:33017`, path `/workspace/quintom_dr2/`. Monitor convergence, pull chains when R-1 < 0.01 across all 4 chains, run the GetDist analysis described in §5 step 3-4, decide closure stance per §5 step 5, update Paper 1 §VII.H + recompile P1 PDF locally + sync site `predictions/quintom` page + update SSOT/paper-1/status.md, all in one commit. Use cross-model peer review (GPT-5, Gemini, Grok, Perplexity) before promoting any new claim. After the chain lands and the paper update is committed and pushed, stop Pod 3 via the RunPod API (key in `.env.local`). Do not touch anything else without consulting Houston. The 99%-cap on readiness still applies — no paper reads 100% without Houston sign-off + clean R43.
+> Continue BigBounce R42→R43 work. Read `project-context/CODEX_HANDOFF.md` in full first, then `AGENTS.md`, then `project-context/SSOT/index.md`. The current live thread is the DESI DR2 + DES-SN5YR quintom MCMC running on Pod 3 H200 at `<pod-ip>:<port>`, path `/workspace/quintom_dr2/`. Monitor convergence, pull chains when R-1 < 0.01 across all 4 chains, run the GetDist analysis described in §5 step 3-4, decide closure stance per §5 step 5, update Paper 1 §VII.H + recompile P1 PDF locally + sync site `predictions/quintom` page + update SSOT/paper-1/status.md, all in one commit. Use cross-model peer review (GPT-5, Gemini, Grok, Perplexity) before promoting any new claim. After the chain lands and the paper update is committed and pushed, stop Pod 3 via the RunPod API (key in `.env.local`). Do not touch anything else without consulting Houston. The 99%-cap on readiness still applies — no paper reads 100% without Houston sign-off + clean R43.
 
 ---
 
