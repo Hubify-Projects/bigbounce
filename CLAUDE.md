@@ -309,3 +309,16 @@ consolidation — editorial rigor is in-scope, watering down science is NOT);
 closing every minor-list every round. Site reviews/status update with every
 commit; the grid renders newest rounds on the LEFT. Integrity rules absolute
 and unchanged: never fake an ACCEPT, never prompt-game, every leg saves its raw.
+
+## Standing directive (2026-07-23 — Houston explicit): M-AMENDED — ALL-A GRID OVER ACTIVE LEGS
+
+Houston (verbatim): "amend directive M to the legs we actually run." Directive
+M's terminal criterion is amended: the CURRENT column of the /reviews grid must
+show ACCEPT for every paper × every **ACTIVE** reviewer leg — under directive N
+that is **Grok API, Gemini API, and the Claude Opus INT leg**. The
+OpenAI/ChatGPT column is EXCLUDED from the criterion while directive N's pause
+stands: its historical cells remain displayed (annotated frozen, never deleted,
+never faked), and it rejoins the criterion automatically if Houston re-enables
+an OpenAI leg. The /reviews all-A meter counts active legs only and must say
+so. All integrity rules unchanged: never fake an ACCEPT, never prompt-game,
+every leg saves its raw before any verdict is recorded.

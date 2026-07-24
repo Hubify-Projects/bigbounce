@@ -66,13 +66,25 @@ function computeCurrent(): Record<PaperId, { verdict: Verdict; roundId: string }
  */
 export function AllAMeter() {
   const current = computeCurrent();
+  // Directive M-AMENDED (Houston 2026-07-23): the terminal criterion counts
+  // ACTIVE legs only — Grok + Gemini grid columns plus the Claude INT leg.
+  // The ChatGPT column is excluded while directive N's pause stands (its
+  // history stays displayed, annotated frozen).
+  const ACTIVE_COLUMNS = [1, 2]; // [ChatGPT, Grok, Gemini] -> Grok, Gemini
+  // Claude INT leg current verdicts (no grid column; from the newest
+  // CLAUDESTACK confirmation round's truth-audited raws):
+  const CLAUDE_CURRENT: Record<string, Verdict> = {
+    P1A: "MINOR", P1B: "MINOR", P2: "MINOR", P3: "MINOR", P4: "MINOR", P5: "MINOR",
+  };
   let accept = 0;
   let total = 0;
   for (const p of PAPER_IDS) {
-    for (const c of current[p]) {
+    for (const ci of ACTIVE_COLUMNS) {
       total += 1;
-      if (c.verdict === "ACCEPT") accept += 1;
+      if (current[p][ci]?.verdict === "ACCEPT") accept += 1;
     }
+    total += 1;
+    if (CLAUDE_CURRENT[p] === "ACCEPT") accept += 1;
   }
   const pct = total === 0 ? 0 : Math.round((accept / total) * 100);
   const done = accept === total && total > 0;
@@ -90,11 +102,11 @@ export function AllAMeter() {
         <div className="alla-meter-fill" style={{ width: `${pct}%` }} />
       </div>
       <p className="alla-meter-goal">
-        <strong>Automated-review diagnostic only.</strong> Counted from the CURRENT column
-        (papers × reviewer legs); FAILED / not-yet-swept legs count as not-ACCEPT, and the
-        GPT column has been frozen since 2026-07-16 (directive N pause) so its cells cannot
-        currently improve. An ACCEPT here is not journal acceptance, and 100% is not
-        required to submit a paper.
+        <strong>Automated-review diagnostic only.</strong> Per directive M-AMENDED
+        (2026-07-23) this counts ACTIVE legs only: Grok + Gemini (grid columns) and the
+        Claude INT leg (verdicts in round notes) — 3 legs × 6 papers. The GPT column is
+        excluded while paused (directive N, since 2026-07-16); its history stays displayed.
+        An ACCEPT here is not journal acceptance, and 100% is not required to submit a paper.
       </p>
     </div>
   );
