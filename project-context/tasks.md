@@ -15,7 +15,11 @@ but are not the current scientific critical path.
   papers × Grok-API + Gemini-API + Claude-Opus subagent), each individually
   truth-audited. Verdict matrix (grok/gemini/claude): P1A accept/minor/minor;
   P1B minor/minor/minor; P2 major/minor/minor; P3 accept/major/minor; P4
-  minor/minor/minor; P5 accept/minor/minor. 16 genuinely-new-real findings
+  minor/minor/minor; P5 accept/minor/minor. 19 genuinely-new-real findings
+  [corrected from "16" on 2026-07-24 — the per-paper breakdown that follows
+  has always summed to 19; verified by counting GENUINELY-NEW-REAL verdict
+  rows across the six TRUTH_AUDIT_2026-07-22.md files. Only the sum was
+  wrong; every individual disposition and same-day closure stands.]
   across all six papers (P1A 3, P1B 3, P2 5, P3 3, P4 3, P5 2), every one
   closed same-day in new version bumps: P1A v1A.0.126, P1B v2B.0.14, P2
   v1.7.127, P3 v3.2.0-r12, P4 v1.0.270, P5 v0.1.142-2026-07-22 (all
