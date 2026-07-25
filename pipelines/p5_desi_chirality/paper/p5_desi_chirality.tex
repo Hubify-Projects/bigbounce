@@ -43,7 +43,42 @@ not peer reviewed}
 % The divide-by-h claim (~1246 h⁻¹ Mpc) is INVERTED. No pipeline recompute required.
 % If any future reviewer re-raises this, cite env_finder/01_compute_vweb.py:106-108.
 
-\newcommand{\paperVersion}{v0.1.144-2026-07-24}
+\newcommand{\paperVersion}{v0.1.145-2026-07-24}
+% v0.1.145 (2026-07-24 -- ESTIMATOR-HIERARCHY SENSITIVITY CONSOLIDATION): closes
+%   the GENUINELY-NEW-REAL half of the P5/Grok [MAJOR] #1 adjudicated in
+%   project-context/peer-reviews/INT_v3/TRUTH_AUDIT_RESWEEP_2026-07-23.md. The
+%   selection-bias half of that finding was FALSIFIED there on the paper's own
+%   tabulated numbers (the DEMOTED unrestricted any-hole path carries the LARGER
+%   p, 0.76, versus the focal 0.66085 -- the re-ranking moved AWAY from the most
+%   null-favorable option; the headline is a difference and is algebraically
+%   monopole-invariant, sec:primary_path; all |z|<0.8; whole-tree Bonferroni
+%   p_global<=0.82). What did NOT exist was the side-by-side artifact a referee
+%   needs to check that reasoning: the comparison was scattered across four
+%   locations. Added ONE new table, tab:hierarchy_sensitivity, in sec:primary_path
+%   plus a pointer sentence there and a cross-reference from the
+%   tab:analysis_tree caption. EVERY value in the new table is TRANSCRIBED from
+%   values already in this manuscript and cross-checked against the committed
+%   artifact JSON: focal row from tab:focal_model_contract / [A41]--[A44]
+%   (outputs/38_focal_cluster_inference_sensitivity.json: delta 0.0014544212,
+%   se 0.0033150198, ci95 [-0.0050428981,+0.0079517406], normal p 0.6608522,
+%   wild-cluster p 0.67345); footprint-restricted any-hole row from
+%   sec:desivast_anchored_void / tab:desivast_canonical / [A15]
+%   (outputs/29_ext3_desivast_footprint_retabulation.json: delta 0.001809,
+%   se 0.002317, z 0.781, p 0.4349, ci95 [-0.002732,+0.006350]); unrestricted
+%   k=20 any-hole row from sec:desivast_anchored_void /
+%   tab:desivast_three_algo / tab:bonferroni5_family / [A10] (counts and
+%   f_CW cross-checked against
+%   results/analysis_cosmic_web/desivast_three_algorithm_void_chirality.json:
+%   n_void 56,981 / n_nonvoid 621,964, f_CW 0.4964111 / 0.4970915). NOTHING was
+%   computed, derived, or re-analysed for this bump; no compute, no new
+%   artifacts, no new artifact IDs. NO science number, estimand, interval, or
+%   claim changes; the result stays a non-detection. Grok [MAJOR] #2
+%   (pre-review nuisance model) was FALSIFIED in the same adjudication -- the
+%   78-column spline/fixed-effect row is already in tab:focal_model_contract
+%   (delta +0.00125636, p 0.71277, CI spanning zero) -- and is deliberately NOT
+%   edited here. P5 still has no Zenodo DOI (deposit staged, blocked on a
+%   missing token); every in-paper statement to that effect is unchanged and
+%   remains true. (/never-fabricate-derivation)
 % v0.1.144 (2026-07-24 -- PAPER II COMPANION-STATUS BACK-PATCH): the cross-paper
 %   companion-status sweep that followed the v0.1.143 Paper IV back-patch found the
 %   one remaining stale companion-availability claim in this manuscript. The
@@ -812,7 +847,7 @@ not peer reviewed}
 %   cluster −54%) but the environmental-independence null HOLDS and
 %   TIGHTENS: cross-class f_CW range 1.98pp → 0.05pp, all classes
 %   |σ_mono| ≤ 0.39. Artifact: outputs/16_cosmic_web_zshell_corrected.json.
-\newcommand{\paperTimestamp}{July 24, 2026, 18:20 PT}
+\newcommand{\paperTimestamp}{July 24, 2026, 18:38 PT}
 % timestamp label unchanged (still July 2026); \date bumped to July 6
 % v0.1.62-2026-06-10 (R29 post-EXT1 internal-round closure wave; truth audit at
 %   project-context/peer-reviews/R29_P5_TRUTH_AUDIT.md):
@@ -1511,6 +1546,67 @@ catalog-native parent over the earlier author-constructed any-hole
 geometry. This change is post-review and post-hoc; it improves estimand
 clarity but does not make the analysis confirmatory.
 
+Table~\ref{tab:hierarchy_sensitivity} places the focal released-parent
+estimate beside the two demoted author-defined any-hole estimates, so the
+consequence of this hierarchy change can be read in one place instead of
+being assembled from Tables~\ref{tab:focal_model_contract},
+\ref{tab:desivast_canonical}, \ref{tab:desivast_three_algo}, and
+\ref{tab:bonferroni5_family}. Every interval in that comparison contains
+zero, and the demoted unrestricted any-hole path carries the larger
+$p_\Delta$ ($0.76$) of the two, against the focal $p_\Delta = 0.66085$.
+
+\begin{table*}[!t]
+\caption{Estimator-hierarchy sensitivity: the focal released-parent
+estimate beside the two demoted author-defined any-hole estimates.
+``Demoted'' marks a path retained in full as a sensitivity rather than as
+the focal estimate; demotion is not deletion, and each demoted path is
+reported in its own section and table as cited.
+Every entry is transcribed from the source cited in its last column and
+is reproduced at that source's stated precision; nothing in this table is
+recomputed. Sign convention
+$\Delta f_{\rm CW} \equiv f_{\rm CW}^{\rm non\mbox{-}void} -
+f_{\rm CW}^{\rm void}$ (fractional units). The three paths use different
+parents and control volumes on overlapping samples; they are correlated
+variants shown for transparency and are not pooled into a joint
+constraint. All three are nominal non-detections whose $95\%$ intervals
+contain zero. The focal path is not the most null-favorable of the
+three: the demoted unrestricted any-hole path carries the larger
+$p_\Delta$ ($0.76$, against the focal $0.66085$), so the post-review
+hierarchy change did not move the reported result toward the largest
+available $p$-value.}
+\label{tab:hierarchy_sensitivity}
+\begin{ruledtabular}
+\footnotesize
+\begin{tabular}{p{0.25\textwidth}lrrcp{0.20\textwidth}}
+Estimator path & Status & $\Delta f_{\rm CW}$ & ${\rm SE}(\Delta)$ &
+$95\%$ CI & $p_\Delta$ and source \\
+\hline
+Released-parent DESIVAST GALZONE \texttt{OUT}$=0$; exact hole-union void
+arm; 13-column linear-nuisance adjusted, NSIDE$=4$ CR1
+($N=145{,}766$) &
+Focal & $+0.00145442$ & $0.00331502$ &
+$[-0.00504290,+0.00795174]$ &
+$0.66085$ (wild-cluster $0.67345$); Table~\ref{tab:focal_model_contract},
+[A41--A44] \\
+Author-defined any-hole, footprint-restricted control; exact
+($k$-unbounded) membership, unadjusted two-sample binomial
+($n_{\rm void}=57{,}081$) &
+Demoted & $+0.0018$ & $0.0023$ &
+$[-0.0027,+0.0064]$ &
+$0.43$; \S\ref{sec:desivast_anchored_void},
+Table~\ref{tab:desivast_canonical}, [A15] \\
+Author-defined any-hole, unrestricted control; sphere-PIS $k=20$
+membership, unadjusted two-sample binomial
+($n_{\rm void}=56{,}981$) &
+Demoted & $+0.00067$ & $0.00219$ &
+$[-0.0036,+0.0050]$ &
+$0.76$; \S\ref{sec:desivast_anchored_void},
+Tables~\ref{tab:desivast_three_algo}
+and~\ref{tab:bonferroni5_family}, [A10] \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
 The focal released-parent descriptive estimate uses the released DESIVAST
 GALZONE TARGET universe, retains \texttt{OUT}$=0$ as its quality parent,
 assigns the void arm by exact VoidFinder hole-union membership, and applies
@@ -1737,7 +1833,9 @@ change. One released-parent estimator is listed as the focal descriptive
 estimate; every
 other path is a sensitivity or secondary diagnostic. The listed
 thresholds describe the historical scans and do not turn this post-hoc
-analysis into a confirmatory family.}
+analysis into a confirmatory family. Table~\ref{tab:hierarchy_sensitivity}
+gives the focal estimate side by side with the two demoted any-hole
+estimates.}
 \label{tab:analysis_tree}
 \begin{ruledtabular}
 \begin{tabular}{llcl}
