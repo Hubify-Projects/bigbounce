@@ -124,8 +124,8 @@ const PAPERS = [
       "378,280-anomaly multi-survey catalog + NANOGrav γ + multi-tracer f_NL forecast",
     targetJournal: "MNRAS" as const,
     status: "active-drive-to-100" as const,
-    texPath: "pipelines/p3_anomaly_engine/paper3_draft.tex",
-    sitePdfPath: "/papers/paper3_anomaly_catalog.pdf",
+    texPath: "pipelines/p3_anomaly_engine/paper3_apjs.tex",
+    sitePdfPath: "/papers/paper3_apjs.pdf",
     focusAreas: [
       "378,280 anomalies headline (=378,080 + 200) across 7 surveys",
       "7-way 5″ positional FoF dedup arithmetic (10,213 = 637 + 9,576)",
