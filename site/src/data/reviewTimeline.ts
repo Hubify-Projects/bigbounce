@@ -57,6 +57,109 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "served-pdf-mirror-integrity-gate-2026-07-24",
+    dateISO: "2026-07-24",
+    kind: "skill-improvement",
+    title: "Reverse-direction served-PDF gate — 31 orphaned PDFs found under the served roots, including a live-linked stale P3 manuscript",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary:
+      "Directive G enforced PDF hygiene in the FORWARD direction only: for each paper, push the fresh PDF out to that paper's KNOWN mirror paths. Nothing walked the served tree back IN, so any .pdf sitting under public/ or site/public/ that was not in a registered mirror set was invisible to the gate and could serve superseded content forever. Four separate agents tripped over instances of this on 2026-07-24 alone, each by accident, which is what made it a pattern (079) rather than a bug. tools/verify_pdf_mirror_integrity.py now classifies every git-tracked PDF under a served root as a current mirror, an immutable version-pinned archive (legitimate PUB-005 evidence — retention must never read as a defect), a non-manuscript asset, or an explicitly dispositioned retired entry; anything else fails as an unregistered orphan. It is driven entirely by a served_pdf_policy block in project-context/paper_registry.json, so adopting an alias or dispositioning a file is a DATA edit, never a code edit. The first run found 31 orphan paths across 13 distinct documents — the worst being public/papers/paper3_anomaly_catalog.pdf, P3 v3.1.158, still publicly reachable at /papers/paper3_anomaly_catalog.pdf and linked from the live /old/paper.html and /old/projects.html surfaces under a label four months and 150 patch versions stale. The gate also runs the FORWARD direction over the site data files, where it caught all six papers stale in papers.ts (href, version, pdfMeta md5) and live-status.ts, P3 as far back as r11. Remediation the same day: the five documents whose bytes existed at NO version-pinned path were retained first via a new pdf_version_retention.py --retire-archive mode (content-addressed object + hard-linked reference, each re-read and sha256-proved before deletion, per AGENT_RULES 2.8 and PUB-005), the other 18 paths were verified per row against the version-pinned archive that already held their bytes, then all 31 were removed and every link they backed was re-pointed rather than left to 404. Served inventory now reads 1,102 PDFs, 0 orphans.",
+    keyTakeaways: [
+      "Pattern 079 becomes executable: a served PDF outside the registered mirror set is now a hard preflight failure, not something four agents each rediscover by accident",
+      "PUB-005 is encoded, not merely respected: version-pinned archives are a PASSING classification, and the one rule applied to them is that a file pinned to a paper's CURRENT version must actually carry that version's bytes",
+      "The registry's served_roots gained the bare public/ root and site/public — the hole that let all 31 orphans accumulate outside directive G's SERVED_ROOTS",
+      "Live exposure closed: /papers/paper3_anomaly_catalog.pdf (P3 v3.1.158) removed and the two legacy surfaces re-pointed at public/papers/paper3_apjs.pdf (v3.2.0-r14, 17 pp)",
+      "Retention proved before deletion: 13 served paths / 5 P1-LEGACY documents archived and byte-verified; the other 18 verified per row against an existing version-pinned copy",
+    ],
+    links: [
+      { label: "Pattern 079", href: `${GH}/project-context/review-patterns/pattern-079-served-pdf-outside-the-registered-mirror-set.md` },
+      { label: "Mirror-integrity gate", href: `${GH}/tools/verify_pdf_mirror_integrity.py` },
+      { label: "Gate implementation", href: `${GH_COMMIT}/b6c0b487` },
+      { label: "Retention mode", href: `${GH_COMMIT}/7d9565a0` },
+      { label: "Orphan removal", href: `${GH_COMMIT}/770b4726` },
+    ],
+  },
+  {
+    id: "tag-based-major-completeness-gate-2026-07-24",
+    dateISO: "2026-07-24",
+    kind: "skill-improvement",
+    title: "MAJOR-completeness gate — severity is read from per-item tags, never from a leg's summary verdict word",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary:
+      "tools/major_completeness_check.py makes the 2026-07-24 rule machine-checkable. It extracts per-item [BLOCKER]/[MAJOR]/[MINOR] tags mechanically from every raw reviewer leg, prints a per-leg tag inventory, and flags any leg whose summary verdict word understates its own item tags; with --audit it exits 2 listing every tagged MAJOR/BLOCKER with no trace in that round's truth-audit document. Validated against the 2026-07-23 six-paper re-sweep, where it independently reproduces the round's 7 MAJORs / 0 BLOCKERs and flags both mismatched legs. Trace matching is deliberately conservative: flags are resolved by hand, never by lowering --threshold, because a loosened matcher would re-create exactly the false all-clear the gate exists to prevent.",
+    keyTakeaways: [
+      "Reproduces the 07-23 round's 7 MAJORs from the raws alone, with no dependence on any leg's PARSED VERDICT header",
+      "--audit exits 2 on any tagged MAJOR/BLOCKER with no truth-audit trace, so an incomplete disposition set can no longer pass as convergence",
+      "Conservative by construction: resolve flags by hand; lowering the threshold to clear a flag is the one thing that would defeat the gate",
+    ],
+    links: [
+      { label: "Completeness gate", href: `${GH}/tools/major_completeness_check.py` },
+      { label: "Implementation", href: `${GH_COMMIT}/a8fd14cc` },
+    ],
+  },
+  {
+    id: "truth-audit-rule-8-integrity-check-0-2026-07-24",
+    dateISO: "2026-07-24",
+    kind: "skill-improvement",
+    title: "Truth-audit Rule 8 and integrity-audit CHECK 0 — the miss that produced them is now encoded in the shared review skills",
+    papers: ["P1B", "P4", "P5"],
+    summary:
+      "The 2026-07-23 re-sweep published a '0 genuinely-new-real outstanding across all six papers' line that rested on an incomplete disposition set: the P1B/Grok, P4/Gemini and P5/Grok legs each carried 'PARSED VERDICT: MINOR REVISIONS' in the header while their issue lists contained [MAJOR]-tagged items, so triage keyed on the verdict word dropped 4 of the round's 7 tagged MAJORs entirely. The claim stood for about a day, during which P1B's JORS submission bundle was assembled, and two of the four missed items turned out to be real. Two shared-skill encodings landed rather than a one-off correction. peer-review-truth-audit Rule 8: a leg's summary verdict word and its per-item severity tags are INDEPENDENT fields that routinely disagree — extract severity from the per-item tags mechanically, never from the verdict line. It is the complement of Rule 6 (don't triage off the dispatch tag), and it is the one that actually bit. review-integrity-audit CHECK 0 (disposition completeness) now runs FIRST and gates the other three checks: build a paper x leg table of verdict word, MAJORs in raw, MAJORs dispositioned, and gap, with FAILED legs included as ABSENT; INCOMPLETE is an automatic ENGINEERED final verdict regardless of Checks 1-3, because from the outside an unaudited MAJOR is indistinguishable from a suppressed one.",
+    keyTakeaways: [
+      "Rule 8 (peer-review-truth-audit): per-item [MAJOR] tags are the severity source; the leg's PARSED VERDICT word is not evidence of what the leg found",
+      "CHECK 0 (review-integrity-audit): disposition completeness runs first and INCOMPLETE forces an ENGINEERED verdict — convergence cannot outrun its own evidence",
+      "The correction was appended to the round document as a CORRECTION section, not silently backfilled: the conclusion did stand on an incomplete set for a day and that is on the record",
+    ],
+    links: [
+      { label: "Re-sweep correction", href: `${PR}/INT_v3/TRUTH_AUDIT_RESWEEP_2026-07-23.md` },
+      { label: "Correction commit", href: `${GH_COMMIT}/d26b93c4` },
+      { label: "Missed-MAJOR adjudication", href: `${GH_COMMIT}/2df5ffd5` },
+    ],
+  },
+  {
+    id: "companion-status-gate-2026-07-24",
+    dateISO: "2026-07-24",
+    kind: "skill-improvement",
+    title: "Companion-status gate — pattern 078 stops being prose-only",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary:
+      "Pattern 078: a companion paper's status goes stale the moment that companion is published. A manuscript that cited a sibling as 'in preparation' or 'submitted' keeps saying so after the sibling gets a DOI, and nothing in the pipeline noticed — the drift is invisible to a compile, to directive G, and to a reviewer who is not holding both papers at once. tools/verify_companion_status.py plus project-context/companion-status-ledger.json make it executable: the ledger records each companion's real published state and identifier, the checker reads every paper's actual citation text against it, and the check is bound into tools/bigbounce_preflight.py so a stale companion reference fails the portfolio gate instead of shipping. Backed by 338 lines of tests.",
+    keyTakeaways: [
+      "Ledger-driven, so recording a newly published companion is a data edit and every citing paper is re-checked automatically",
+      "Wired into the preflight receipt — the failure mode surfaces before a submission bundle is assembled, not after",
+      "Same-day proof of value: the P2 and P5 companion back-patches (Paper I A and Paper IV cited at their published Zenodo DOIs) came out of this gate",
+    ],
+    links: [
+      { label: "Pattern 078", href: `${GH}/project-context/review-patterns/pattern-078-companion-status-goes-stale-on-publication.md` },
+      { label: "Companion gate", href: `${GH}/tools/verify_companion_status.py` },
+      { label: "Implementation", href: `${GH_COMMIT}/1c98a11e` },
+    ],
+  },
+  {
+    id: "completeness-adjudication-and-six-paper-closure-wave-2026-07-24",
+    dateISO: "2026-07-24",
+    kind: "closure-wave",
+    title: "All 7 re-sweep MAJORs traceable, and all six papers closed to their journals' own submission rules",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary:
+      "The day opened with a completeness sweep of all 18 raw legs from the 2026-07-23 re-sweep, which found 7 [MAJOR] tags of which only 3 carried a verdict. The 4 missed ones were adjudicated with source-cited verdicts and the round's outcome line was corrected in place: P1B/Grok's literal version-mismatch claim FALSIFIED against package metadata and Zenodo 10.5281/zenodo.21481753 with a real reader-legibility defect underneath it; P4/Gemini's inline SHA/path provenance GENUINELY-NEW-REAL (twice dismissed as a PROCESS-NIT before escalating, both dismissals improper under AGENT_RULES 2.4); P5/Grok's estimator re-ranking half FALSIFIED (the demoted path carries the LARGER p, 0.76 vs 0.66085, so the re-ranking moved AWAY from the most null-favorable option) with a bounded real remedy; P5/Grok's nuisance-model claim FALSIFIED against Table VI. All 7 are now traceable. Every closure then landed as a real edit in its own directive-G bundle: P1A v1A.0.127 (the IOP-mandatory competing-interests, funding and AI-usage declarations had been sitting inside a commented-out region and never reached the PDF), P1B v2B.0.16 (title-page stamp labelled a manuscript revision plus a Software version section stating the document-vs-software namespace split), P2 v1.7.130 (the APS-required AI-usage disclosure, which P2 carried none of, written full rather than minimised), P3 v3.2.0-r14 (abstract 426 to 249 words, rewritten not truncated, every quantitative claim numerically identical and every integrity caveat retained), P4 v1.0.272 (abstract 339 to 236 words, and raw provenance identifiers relocated into a new A1-A12 register), P5 v0.1.146 (the unmodelled target-program leakage now caveated in the abstract, the Limitations list and the Conclusions). Four of the six were venue-rule failures that would have bounced a submission on format alone. No science number changed anywhere in the wave and no readiness moved — caps hold at 95 x 6, with the last 5 points reserved for Houston's own review under directive P.",
+    keyTakeaways: [
+      "7 of 7 re-sweep MAJORs now carry a source-cited verdict; the corrected outcome line replaced a claim that had rested on 3 of 7",
+      "P1A v1A.0.127 / P1B v2B.0.16 / P2 v1.7.130 / P3 v3.2.0-r14 / P4 v1.0.272 / P5 v0.1.146 — all recompiled, mirrored byte-identical to every served path, and bumped in Convex",
+      "Four closures were the papers' own venues rejecting them on format: two AAS 250-word abstract caps, one IOP declarations block, one APS AI-disclosure policy",
+      "Zero readiness uplift claimed: no paper's number changed today, and the last 5 points stay Houston's under directive P",
+    ],
+    links: [
+      { label: "Re-sweep truth audit", href: `${PR}/INT_v3/TRUTH_AUDIT_RESWEEP_2026-07-23.md` },
+      { label: "P1A v1A.0.127", href: `${GH_COMMIT}/bec952e0` },
+      { label: "P1B v2B.0.16", href: `${GH_COMMIT}/1288309c` },
+      { label: "P2 v1.7.130", href: `${GH_COMMIT}/f5633b1f` },
+      { label: "P3 v3.2.0-r14", href: `${GH_COMMIT}/8f4023fd` },
+      { label: "P4 v1.0.272", href: `${GH_COMMIT}/6c45c8f4` },
+      { label: "P5 v0.1.146", href: `${GH_COMMIT}/f63965b3` },
+    ],
+  },
+  {
     id: "publication-status-surface-drift-proofing-2026-07-24",
     dateISO: "2026-07-24",
     kind: "skill-improvement",
