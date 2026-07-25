@@ -19,10 +19,40 @@
 \newcommand{\ie}{i.e.}
 \newcommand{\etal}{\textit{et~al.}}
 
-% Single-source version macros: the Data and Code Availability self-reference
-% binds to \paperVersion so it can never drift from the title-block stamp again.
-\newcommand{\paperVersion}{v1.7.129}
-\newcommand{\paperTimestamp}{July 24, 2026, 18:20 PDT}
+% --- Version identity (SINGLE SOURCE OF TRUTH) -------------------------------
+% \paperVersion is the ONLY place the manuscript version is written (the bump
+% flow already owns it). \depositVersion is the ONLY place the Zenodo deposit
+% version is written; its ground truth is the staged deposit directory
+%   .deposit-staging/P2/<version>/
+% The manuscript-vs-deposit RELATIONSHIP is never written as prose: \patchOf
+% PARSES the trailing patch integer out of each version string and
+% \depositRelation COMPUTES the delta with \numexpr, with correct
+% zero/singular/plural handling and a tense that cannot outlive the re-stage
+% that fulfils it. The v1.7.129 PDF printed "one patch line ahead" of the
+% v1.7.125 deposit -- four releases wrong -- which is pattern-047 recurring
+% after the 2026-07-23 closure bound only the MANUSCRIPT half to a macro and
+% left the relationship as a hardcoded literal. A stale literal is now
+% unrepresentable.
+% This is deliberately the SAME construction P3 already uses
+% (pipelines/p3_anomaly_engine/paper3_apjs.tex, \patchOf/\depositRelation); it
+% is not a second parallel invention. Keep the two in step.
+\newcommand{\paperVersion}{v1.7.130}
+\newcommand{\depositVersion}{v1.7.125}
+\makeatletter
+\def\bb@afterDots#1.#2.#3\@nil{#3}            % "v1.7.130" -> "130"
+\newcommand{\patchOf}[1]{\expandafter\bb@afterDots#1\@nil}
+\newcommand{\bb@patchDelta}{\numexpr\patchOf{\paperVersion}-\patchOf{\depositVersion}\relax}
+\newcommand{\depositRelation}{%
+  \ifnum\bb@patchDelta=0
+    the present manuscript is that same archived release%
+  \else
+    the present manuscript is \texttt{\paperVersion}, %
+    \ifnum\bb@patchDelta=1 one patch release\else\the\bb@patchDelta\ patch releases\fi\ %
+    ahead, and will be added to the same Zenodo record as a new version on the
+    next re-stage%
+  \fi}
+\makeatother
+\newcommand{\paperTimestamp}{July 24, 2026, 18:35 PDT}
 
 \begin{document}
 
@@ -33,9 +63,44 @@ Four-Vertex Derivation and Conditional Large-Scale-Structure Mapping}
 
 \author{Houston Golden}
 \email{houston@hubify.com}
+\altaffiliation[ORCID: ]{\href{https://orcid.org/0009-0008-5616-5994}{0009-0008-5616-5994}}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
 \date{\paperTimestamp}
+% v1.7.130 (2026-07-24 18:35 PDT — PRD SUBMISSION-GATE CLOSURE, two items, no
+%   physics/number/figure change):
+%   (1) AI USAGE DISCLOSURE ADDED (\section*{AI Usage Disclosure}, immediately
+%       after Data and Code Availability so it sits in the body, not after the
+%       appendices).  APS requires it and the manuscript carried none:
+%       "Authors must keep a record of any AI use and disclose any substantive
+%       uses in the submitted paper" / state "AI tool name and version . How the
+%       AI assisted . How the authors directed and verified the AI output" /
+%       "Any AI used to conduct the actual research (e.g., data analysis) must,
+%       like any tool, be disclosed within the paper's methods section"
+%       (https://journals.aps.org/authors/appropriate-use-ai-tools, re-fetched
+%       live 2026-07-24 through an origin-reporting text proxy; journals.aps.org
+%       returns 403 to direct automated fetch and that challenge was NOT solved).
+%       Only "polish, condense, or otherwise lightly edit" is exempt, and this
+%       programme's use is far beyond that.  Model names/versions are the ones
+%       actually on the record for THIS paper (Claude Opus-4 family; Grok-4 /
+%       Grok-4.3 and Gemini 2.5 Pro / 3.1 Pro via project-context/peer-reviews/
+%       INT_v3/ROUND_*-P2-*; ChatGPT via project-context/peer-reviews/EXT_real/
+%       P2_*chatgpt*), not copied from a sibling paper.  Consistent in tone and
+%       specificity with P1B (arxiv/paper1b_namaster_proof.tex sec "AI Usage
+%       Disclosure"), P3 and P4.
+%   (2) DEPOSIT SELF-REFERENCE MADE DRIFT-PROOF.  The DAS printed "the present
+%       manuscript is v1.7.129, one patch line ahead" of the v1.7.125 deposit --
+%       a four-release error, pattern-047 recurring after the 2026-07-23 closure,
+%       which bound the manuscript half to \paperVersion but left the RELATIONSHIP
+%       as a hardcoded literal.  The whole relationship clause, including its
+%       tense, is now COMPUTED by \depositRelation from \patchOf{\paperVersion}
+%       minus \patchOf{\depositVersion}.  Adopted verbatim in construction from
+%       P3 (pipelines/p3_anomaly_engine/paper3_apjs.tex), which had already solved
+%       this -- deliberately not a second parallel invention.
+%   (3) ORCID 0009-0008-5616-5994 added to the author block (\altaffiliation
+%       footnote).  APS: "ORCID iDs are required for all Corresponding Authors."
+%       Verified public 2026-07-24: pub.orcid.org/v3.0/0009-0008-5616-5994 -> 200,
+%       record name "Houston Golden".
 % v1.7.129 (2026-07-24 — COMPANION-STATUS BACK-PATCH: the cross-paper companion-status
 %   sweep found the one live stale companion-availability claim in this manuscript. The
 %   rendered bibliography entry for the Paper I A companion (\cite{Golden2026P1a}, cited in
@@ -1358,9 +1423,16 @@ Conditional on faithful cubic transmission through the chosen nonsingular comple
 
 \section*{Data and Code Availability}
 
-Analysis code and numerical artifacts are available in the public project repository at \url{https://github.com/Hubify-Projects/bigbounce}. An immutable versioned archival deposit of the reviewed release---the exact manuscript PDF, the \LaTeX{} source, the arXiv source bundle, a tracked-provenance archive, and \texttt{SHA256SUMS}---is published on Zenodo under the minted version DOI \href{https://doi.org/10.5281/zenodo.21461881}{10.5281/zenodo.21461881}; the concept DOI \href{https://doi.org/10.5281/zenodo.21461880}{10.5281/zenodo.21461880} resolves to the latest deposited version. That deposit archives the reviewed \texttt{v1.7.125} release PDF and source (the exact bytes reviewed); the present manuscript is \texttt{\paperVersion}, one patch line ahead; current and subsequent versions will be added to the same Zenodo record on the next re-stage. The exact vertex certification is implemented in \path{scripts/p2_vertex_check.py}, the exact shape and overlap artifact is generated by \path{scripts/exact_shape_analysis.py}, the real- and redshift-space Fisher checks are implemented in \path{scripts/c13_independent_bounce_fisher.py} and \path{scripts/c14_rsd_multipole_fisher.py}, and the native nuisance ladder is generated by \path{scripts/c15_channel_native_fisher.py}. The orientation convergence artifact is stored with the other JSON outputs. The retired benchmark-fit coefficient scan is not used or distributed as an uncertainty model.
+Analysis code and numerical artifacts are available in the public project repository at \url{https://github.com/Hubify-Projects/bigbounce}. An immutable versioned archival deposit of the reviewed release---the exact manuscript PDF, the \LaTeX{} source, the arXiv source bundle, a tracked-provenance archive, and \texttt{SHA256SUMS}---is published on Zenodo under the minted version DOI \href{https://doi.org/10.5281/zenodo.21461881}{10.5281/zenodo.21461881}; the concept DOI \href{https://doi.org/10.5281/zenodo.21461880}{10.5281/zenodo.21461880} resolves to the latest deposited version. That deposit archives the reviewed \texttt{\depositVersion} release PDF and source (the exact bytes reviewed at that release); \depositRelation. The exact vertex certification is implemented in \path{scripts/p2_vertex_check.py}, the exact shape and overlap artifact is generated by \path{scripts/exact_shape_analysis.py}, the real- and redshift-space Fisher checks are implemented in \path{scripts/c13_independent_bounce_fisher.py} and \path{scripts/c14_rsd_multipole_fisher.py}, and the native nuisance ladder is generated by \path{scripts/c15_channel_native_fisher.py}. The orientation convergence artifact is stored with the other JSON outputs. The retired benchmark-fit coefficient scan is not used or distributed as an uncertainty model.
 
 The per-triangle covariance of Heinrich \etal~\cite{Heinrich:2023} is external to this project and unavailable here; only its published scalar $\sigma(\fnl^{\rm local})\simeq0.7$ is used in the illustrative mapping. No new observational data are introduced.
+
+\section*{AI Usage Disclosure}
+
+This manuscript and the analysis behind it were produced with substantial and substantive AI assistance, and the disclosure below is deliberately specific rather than pro forma. The work was carried out with an agentic AI research pipeline operated under the author's direction. Anthropic Claude (Opus~4 family, 2026 releases) was used for pipeline orchestration, generation of the analysis and certification scripts named in the Data and Code Availability section, symbolic manipulation with \textsc{sympy}, literature triage, and drafting and revision of the text. xAI Grok (Grok-4 and Grok-4.3), Google Gemini (2.5~Pro and 3.1~Pro), and OpenAI ChatGPT (GPT-5-class models, in review rounds through 2026 July) were used as independent cross-checking and adversarial referee-style reviewers of the compiled manuscript, each bound to the exact PDF under review; their reports and the resulting dispositions are retained in the public project repository.
+
+What remained with the author is the scientific content. The author set the scope and the conventions, chose the vertex basis and the squeezed and equilateral limits, decided which results are reported as exact and which are labelled illustrative or conditional, and made every judgment about what this paper does and does not claim. Every analytic result reported here is fixed by exact-fraction symbolic computation in committed scripts---principally \path{scripts/p2_vertex_check.py}---whose source, inputs, and printed output the author read and verified line by line, and which any reader can rerun; the four-vertex sum $\fnl^{\rm local}=-35/16$, its per-vertex decomposition in Table~\ref{tab:vertexwalk}, and its agreement with the independent general-$c_s$ expression at $c_s=1$ are each certified this way rather than by an AI assertion. Findings raised by the AI reviewers were adjudicated individually against the source and the artifacts, not adopted on the reviewer's authority. The author takes full responsibility for the contents, including all material produced with AI assistance. No AI system is an author, and none is credited as one.
+
 \appendix
 
 \section{Prior-Volume Reproducibility Note}
