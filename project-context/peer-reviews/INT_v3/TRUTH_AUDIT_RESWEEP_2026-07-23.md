@@ -569,3 +569,234 @@ The verdict-word-vs-item-tag bug is encoded so it cannot recur silently:
   MAJORs-dispositioned table to balance before any convergence claim.
 - `tools/major_completeness_check.py` — machine-checkable version; exits 2 with
   the offending rows when raw and dispositioned counts disagree.
+
+---
+
+# ADJUDICATION of an EIGHTH missed MAJOR — P5 / Gemini §VI.E.d — 2026-07-24
+
+**Provenance, recorded because it is the point.** This item was missed **twice**:
+once in the original 2026-07-23 pass, and again in the 2026-07-24 completeness
+adjudication above — the very pass whose stated purpose was to find exactly this
+class of gap, and whose closing table asserts "P5 · 5 MAJORs in raw · 5
+dispositioned · ✔". It was surfaced by `tools/major_completeness_check.py`, the
+executable gate built in that same pass:
+
+```
+$ python3 tools/major_completeness_check.py \
+    project-context/peer-reviews/INT_v3/ROUND_2026-07-23-P5-…-RESWEEP \
+    --audit project-context/peer-reviews/INT_v3/TRUTH_AUDIT_RESWEEP_2026-07-23.md
+API_P5_gemini.md          0      3      2  MAJOR REVISIONS
+API_P5_grok.md            0      2      2  MINOR REVISIONS  <-- verdict word understates item tags
+CLAUDE_INT_P5_raw.md      0      0      1  MINOR-REVISIONS
+TOTAL across 3 legs: 0 BLOCKER, 5 MAJOR
+INCOMPLETE — 1 tagged item(s) with no trace …  (exit 2)
+```
+
+**The executable gate outperformed two human-directed manual passes on the same
+round.** That is the durable finding here, independent of how this particular
+item adjudicates.
+
+## The MAJOR — verbatim
+
+Source: `INT_v3/ROUND_2026-07-23-P5-v0.1.142-2026-07-22-EXACTPDF-c2b72da7-CLAUDESTACK-RESWEEP/API_P5_gemini.md` L18.
+Leg present and non-empty; exact-PDF binding sha256 `c2b72da7b8b5…` matches the
+round manifest; model `gemini-3.1-pro-preview`.
+
+> 2. **[MAJOR] Section VI.E.d (Target-program leakage and deferred mocks):** The manuscript identifies a $\sim 2.1\sigma$ sign-flip in the filament class between BGS-bright and dark targets. The text attributes this to imaging-leg and BGS-selection-function systematics but explicitly declines to run the required "end-to-end injection–recovery mock" to prove this, deferring it to a "DR2 validation step." Relying instead on a "bounded surrogate" leaves residual ambiguity. If the mock cannot be run for DR1, this un-modeled leakage and the residual ambiguity regarding a program-by-environment interaction must be much more prominently caveated in the abstract and conclusion.
+
+## First: is the gate reporting a false positive? **Partly — and the flag was still correct in substance.**
+
+Honesty first, because a false positive in a new gate is itself a finding. The
+item is **not** wholly untraced. The 07-23 pass contains one line touching it,
+under DISCLOSED-RE-FLAG:
+
+> P5 Gemini MAJOR-2 (deferred DR2 mock): the paper's own disclosed limitation;
+> bounded-surrogate injection [A47]/[A48] closure stands (DP5-19 class).
+
+So the checker's literal message — "no trace in the audit" — is **wrong**, and
+the mechanism is exactly the documented one: `--audit` is a token-overlap
+heuristic at `--threshold 0.40`, and the 07-23 line paraphrases so heavily that
+the item's distinctive tokens are all absent. Measured overlap for the three
+Gemini MAJORs against the pre-existing audit text: **0.421 (MAJOR-1, passes),
+0.275 (MAJOR-2, flagged), 0.486 (MAJOR-3, passes)**. The tokens the paraphrase
+drops are `leakage`, `target-program`, `sign-flip`, `filament`, `BGS-bright`,
+`program-by-environment`, `interaction`, `end-to-end`, `recovery`, `surrogate`,
+`caveated`. The tool behaved exactly as its docstring promises and its threshold
+was not lowered.
+
+**But the flag was substantively right anyway, for a reason the tool cannot see:
+the 07-23 disposition is *partial*.** Gemini's finding is a conditional with two
+limbs — (a) the deferred DR2 mock, and (b) *"If the mock cannot be run for DR1,
+this un-modeled leakage and the residual ambiguity regarding a
+program-by-environment interaction must be much more prominently caveated in the
+abstract and conclusion."* The 07-23 line dispositions limb (a) and is silent on
+limb (b) — it disposes of the excuse for the remedy while never adjudicating the
+remedy. Since the mock indeed was not run for DR1, limb (b) is the **operative**
+half of the finding, and it had no verdict. **Net: a low-precision flag that
+landed on a real, still-open item. Reported as such rather than dismissed as
+tool noise — and rather than papered over as "already dispositioned."**
+
+## Verdict — **DISCLOSED-RE-FLAG** on the leakage mechanism (DP5-14/DP5-19, verified against v0.1.145) + **GENUINELY-NEW-REAL** on the operative remedy limb
+
+Under AGENT_RULES §2.4 (ambiguous → the more severe bucket) the operative
+disposition is **GENUINELY-NEW-REAL**, and it closes with a real edit.
+
+### Taking "leakage" seriously — what §VI.E.d actually does, and whether a leakage path is real
+
+**It is not ML target/label leakage, and that distinction is load-bearing.**
+"Target program" here is the DESI *target selection program* (BGS-`bright` vs
+LRG/ELG/QSO-`dark`), not the target variable. Checked directly rather than
+assumed:
+
+| Leakage path | Verified against | Real? |
+|---|---|---|
+| Outcome → exposure definition | `class_eq` CW/CCW labels come from Paper IV's ViT trained on GZ1/SDSS human labels (App A); void membership comes from the externally released DESIVAST VoidFinder hole catalog (Rincón et al. 2025, ApJ 982; tex L2979) | **No path** — neither input can see the other |
+| Author-tuned parent chosen to suppress the residual | The focal parent is catalog-native: released GALZONE `TARGET` universe (694,642 TARGETIDs) ∩ `OUT`$=0$ ∩ exact VoidFinder hole-union (tex L1879ff). Its volume-limited $z\le0.24$ restriction — the property that "minimizes target-program mixing by construction" (tex L4637) — is **inherited from the external DESIVAST release**, not an author cut | **No** — the mixing-minimization is a property of a published external catalog |
+| Chronology: was the program residual known before the parent was fixed? | Yes, and it is disclosed. The bright/dark split landed 2026-05-22 (`207737c9`, v0.1.14); the released-parent construction landed 2026-07-14 (`f4c26f81`, v0.1.129) | Known-but-benign: the parent is externally defined, and the truth audit's direction check above shows the re-ranking moved toward the **smaller** $p$ |
+| Selection-program systematics contaminating the environment contrast | **Real, and the paper says so.** BGS-`bright` $f_{\rm CW}=0.4970$ vs `dark` $0.5051$ (0.81 pp, $\vert z\vert=1.95$ unique-galaxy, tex L4629); T-Web class is *not* independent of the split ($\chi^2=4933$, Cramér's $V=0.078$, tex L2478) | **Yes — a genuine residual** |
+
+On the last row, the paper's handling is substantive, not rhetorical:
+
+1. **The focal estimand is algebraically monopole-invariant** — it is a
+   *difference*, $\Delta f_{\rm CW}=f^{\rm non\text{-}void}-f^{\rm void}$, so a
+   uniform classifier monopole cancels exactly (`sec:p4`, tex L1541–L1551). A
+   program-*mean* offset therefore cannot manufacture the contrast.
+2. **The marginal-mixture term is bounded and tiny** — void 0.82% dark vs
+   non-void 0.94% dark is a 0.12 pp differential, so the induced scale is
+   $0.81\,{\rm pp}\times0.0012\approx0.001$ pp, three orders below the focal
+   interval (tex L2578–L2586). The paper states explicitly that this is
+   **not a maximum leakage bound** and does not constrain an interaction.
+3. **The interaction is honestly *not* bounded.** [A43]–[A44]
+   (`scripts/39_focal_interaction_clustering_robustness.py`, which does fit
+   `void * C(program)` — verified in the pipeline code) gives a
+   `dark`-minus-`bright` void contrast of $+0.09776$ on $n_{\rm dark}=237$ with
+   95% CI $[-0.06637,+0.26190]$; the `other` stratum occupies one NSIDE$=4$
+   block and admits no angular cluster inference. Note also that **`program` is
+   not among the focal 13 nuisance columns** (tex L1913–L1922: void, $z$, $r$,
+   $\log R$, confidence, extinction, `PHOTSYS`, morphology, GALZONE edge) — the
+   residual is handled by sensitivity, not by adjustment.
+4. **The declined mock is correctly scoped** — it bears on the **secondary**
+   T-Web diagnostic sign-flip, not on the focal contrast (tex L2509–L2512).
+5. **The bounded surrogate is real and committed** — `tab:forward_leakage` /
+   [A47]–[A48] forward-predicts each large deviation from the committed
+   per-program monopoles and reproduces **88% of the filament bright-vs-dark
+   sign-flip** ($z_{\rm pred}=-1.87$ vs $z_{\rm obs}=-2.13$, residual $z=-0.26$),
+   with 77–133% coverage across rows and every residual non-significant.
+
+**Conclusion on the mechanism half: DISCLOSED-RE-FLAG of DP5-14 (T-Web /
+selection contamination, the class the bright/dark sign-flip has mapped to since
+M6) and DP5-19 (adjustment-in-lieu-of-regression), and the disposition still
+holds at v0.1.145.** No re-analysis is required and none is manufactured.
+
+### Why the remedy limb is nevertheless GENUINELY-NEW-REAL
+
+The paper's own most severe statement about this residual lives at
+`sec:systematics`, tex L4632–L4646:
+
+> "This residual **has not been shown to leave the focal DESIVAST result
+> unaffected**" … "so **substantial program-by-environment interaction effects
+> are not excluded**."
+
+That sentence was already present in the reviewed v0.1.142 (added at
+`81b7bd56`), so Gemini read it and asked for prominence anyway — correctly.
+Verified by grep over the **live text** of v0.1.145 (`%`-comment regions
+excluded):
+
+| Surface | Occurrences of program / leakage / interaction / bright / dark |
+|---|---|
+| Abstract (tex L951–L980) | **0** |
+| §XIII Limitations `sec:limitations` (tex L4741–L4920) | **0** |
+| §XV Conclusions `sec:conclusions` (tex L4934–L5077) | **0** |
+
+So the body concedes an unexcluded systematic that it cannot show leaves the
+focal result unaffected, while the abstract, the Limitations list — the canonical
+place a referee looks for exactly this — and the Conclusions are all silent. An
+abstract-only reader gets a stronger null than the body supports. That is the
+`/review-integrity-audit` Check-3 failure mode (headlining the more favorable of
+two available readings), not a presentation preference, and AGENT_RULES §2.4
+forbids disposing of it as SCOPE-VENUE-OPINION. **GENUINELY-NEW-REAL.**
+
+**The local incentive was to make this go away** — P5 had just closed two Grok
+MAJORs and the sixth-paper table was about to balance. It is recorded instead.
+
+### Closure — v0.1.145 → **v0.1.146** (2026-07-24). Prose only. No re-analysis, no compute, $0.
+
+Every value transcribed from text already in the manuscript; **zero reported
+numbers changed**; no new derivation (`/never-fabricate-derivation` clean).
+
+1. **Abstract** — the caveat sentence now reads "…T-Web intervals omit cosmic
+   variance and spatial covariance, all environment assignments remain in
+   redshift space, **and a target-program-by-environment interaction is not
+   excluded.**" Rendered abstract **244 words**, under the AAS/AJ 250-word cap
+   (measured on `pdftotext` output of the compiled page 1, not on source).
+2. **§XIII Limitations** — new bullet *"Unmodelled target-program leakage; a
+   program-by-environment interaction is not excluded"* carrying the 0.81 pp /
+   $\vert z\vert=1.95$ residual, the $\chi^2=4933$ / $V=0.078$ non-independence,
+   **both** partial bounds with their limits stated (0.12 pp differential →
+   $\approx$0.001 pp marginal mixture, explicitly not a maximum bound; the
+   [A43]–[A44] fit with its $n=237$ dark stratum, $[-0.06637,+0.26190]$ CI, and
+   single-block `other` stratum), the [A47]–[A48] surrogate at 77–133% coverage,
+   and the deferred DR2 mock — closing "Readers should treat the focal
+   non-detection as conditional on that unclosed systematic."
+3. **§XV Conclusions** — new sentence: "One systematic remains open rather than
+   bounded… so the focal non-detection is conditional on that unclosed
+   systematic."
+
+**Directive-G hygiene (all verified 2026-07-24, `tools/directive_g.sh` PASS):**
+`\paperVersion` v0.1.146-2026-07-24 + `\paperTimestamp` July 24, 2026, 19:05 PT
++ `\date` macro-bound · recompile **0 undefined refs / 0 errors / 0 Overfull
+`\hbox` / 0 Overfull `\vbox`**, 43 pages (P5's overfull count stays at 0) ·
+leak-gate clean · §4.7 visual audit: pages **1, 34, 35** (page 1 + every changed
+page) rendered at 110 dpi with `pdftoppm` and read — no column overflow, no
+gutter crossing, `\date` on one line, all new cross-refs resolve (§XI, §VI E,
+§XIII, §XIV, Table XI) · mirrored byte-identical (md5
+`3717017920458a944a2a8bfa7de17d7d`) to **13 served paths, 1 distinct md5** ·
+append-only retention snapshot
+`project-context/pdf-archive/manifests/2026/07/20260725T020559Z-a9154145681c.json`
+· Convex `paperVersions:bump` row `k57b2h4r6zpnv14zsgbxzmybhs8b62bm`, read-back
+verified current == v0.1.146-2026-07-24 / md5 match · arXiv tarball rebuilt as
+`project-context/SSOT/arxiv_tarballs/paper5_arxiv_v0.1.146-2026-07-24.tar.gz`
+(11 members, same convention as v0.1.143/144/145) and **standalone-compiled in an
+isolated `/tmp` extract with no repo on the path**: 0 errors, 0 undef refs, 0
+overfull hboxes, 0 overfull vboxes, 43 pages, page 1 carrying
+`v0.1.146-2026-07-24`; proof
+`paper5_arxiv_v0.1.146-2026-07-24.proof.json`.
+
+Ledger: `DISPOSITIONS/P5.md` — **DP5-28** (this closure), plus the two sub-items
+the P5 lane left open for want of write ownership: **DP5-27** (the v0.1.145
+`tab:hierarchy_sensitivity` closure of Grok MAJOR #1, including the reasoned
+**decline** of the abstract cross-reference — AAS 250-word cap, `\ref` unresolvable
+in standalone abstract rendering, and the cross-ref's purpose already served by
+the `sec:primary_path` pointer sentence and the `tab:analysis_tree` caption) and
+**DP5-29** (Grok MAJOR #2, FALSIFIED, fingerprinted so the next wave auto-matches).
+
+## Corrected completeness table — after this pass
+
+| Paper | MAJORs in raw across all legs | MAJORs dispositioned | Match |
+|---|---|---|---|
+| P1A | 0 | 0 | ✔ |
+| P1B | 1 | 1 | ✔ |
+| P2 | 0 | 0 | ✔ |
+| P3 | 0 | 0 | ✔ |
+| P4 | 1 | 1 | ✔ |
+| P5 | 5 (Gemini 3 + Grok 2) | 5 | ✔ |
+| **Total** | **7** | **7** | **✔** |
+
+The counts are unchanged from the table above — **the earlier table was not
+wrong about the arithmetic; it was wrong that a paraphrase one clause wide
+constitutes a disposition.** The gate's residual weakness is therefore not its
+false-positive rate but the reverse: a *partial* disposition that happens to
+share enough tokens will pass it silently. Recorded as a known limit of
+`--audit`, not fixed by threshold tuning.
+
+## Honest P5 convergence statement — 2026-07-24, superseding the line above
+
+**P5 — evidenced-converged on ACTIVE legs as of v0.1.146.** All five
+2026-07-23 `[MAJOR]` tags now carry source-cited verdicts: Gemini-1 and Gemini-3
+ALREADY-TRACKED-GATE (Paper-IV back-patch; P5 deposit DOI), Gemini-2
+DISCLOSED-RE-FLAG + GENUINELY-NEW-REAL **closed v0.1.146** (DP5-28), Grok-1
+FALSIFIED-bias + GENUINELY-NEW-REAL **closed v0.1.145** (DP5-27), Grok-2
+FALSIFIED (DP5-29). 0 `[BLOCKER]` anywhere. The two tracked gates remain
+ALREADY-TRACKED-GATE and are not convergence blockers under directive M-AMENDED.
+**P4 is unchanged and still NOT CONVERGED** — its Gemini `[MAJOR]` closure plan
+(v1.0.272) belongs to the P4 lane and was not touched here.
