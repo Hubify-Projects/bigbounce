@@ -82,13 +82,34 @@
 %   section structure. Per task instruction this is reported, NOT
 %   auto-restructured by this agent — see JOURNAL_ROUTE_PREP_2026-07-22.md
 %   for the disposition. No number/science changed.
-\newcommand{\paperVersion}{v2B.0.15}
-\newcommand{\paperTimestamp}{2026-07-24 12:00 PT}
+% v2B.0.16 (2026-07-24): closes the previously UNDISPOSITIONED Grok [MAJOR]
+%   from the 2026-07-23 re-sweep (INT_v3/ROUND_2026-07-23-P1B-v2B.0.14-
+%   EXACTPDF-4b7c752f-CLAUDESTACK-RESWEEP/API_P1B_grok.md L17), which was
+%   missed in the original 07-23 truth-audit pass and adjudicated 2026-07-24.
+%   The literal claim ("irreconcilable internal contradiction" between the
+%   title-page manuscript stamp and the body's "Version 0.1.7") is FALSIFIED:
+%   every software-version string agrees with the released package
+%   (pyproject.toml / codemeta.json / CITATION.cff / __init__.py all 0.1.7)
+%   AND the Zenodo software record 10.5281/zenodo.21481753 (metadata
+%   version "0.1.7"). But the legibility gap underneath it is REAL and is
+%   what closes here: nothing in the manuscript told a reader that the
+%   title-page stamp is a DOCUMENT revision and 0.1.7 is the SOFTWARE
+%   release. Two independent referee passes (07-22 Grok MINOR-1, 07-23 Grok
+%   MAJOR) stumbled on the same ambiguity, and JORS assesses metadata
+%   correctness as a formal review criterion. Fix: (a) the title-page \date
+%   now labels the stamp "manuscript revision"; (b) a new Sec 10 "Software
+%   version" paragraph states the two-namespace distinction explicitly and
+%   binds the document stamp to the \paperVersion macro so it can never
+%   drift (same root-cause fix as the P2/P3/P4 stamp-drift closures of the
+%   same re-sweep); (c) all three bare "Version 0.1.7" body occurrences are
+%   qualified as "\software{} version 0.1.7". No number/science changed.
+\newcommand{\paperVersion}{v2B.0.16}
+\newcommand{\paperTimestamp}{2026-07-24 18:20 PT}
 
 \title{\software: Exact pseudo-\(\Cl\) window inference and
 content-bound validation for reproducible spin-2 analyses}
 \author{Houston Golden\\Independent researcher\\[2pt]\href{https://orcid.org/0009-0008-5616-5994}{\footnotesize ORCID: 0009-0008-5616-5994}}
-\date{July 24, 2026 --- \paperVersion}
+\date{July 24, 2026 --- manuscript revision \paperVersion}
 
 \begin{document}
 \maketitle
@@ -234,7 +255,7 @@ failure.
 
 \section{Quality Control}
 
-Version 0.1.7 contains 41 automated tests covering numerical behavior, invalid
+\software{} version 0.1.7 contains 41 automated tests covering numerical behavior, invalid
 inputs, the CLI, receipt mutation, protected fields, and compatibility with
 the original production helpers.  All 41 run in a monorepo checkout; in a
 standalone package install 39 run and the 2 replay-equivalence tests skip
@@ -329,6 +350,17 @@ schema will require an explicit reader or conversion path.
 
 \section{Availability}
 
+\paragraph{Software version.}
+This paper documents \software{} version 0.1.7. Every version number of the
+form 0.x.y in this paper refers to a release of the \software{} software
+package, and matches the released artifact: \texttt{pyproject.toml},
+\texttt{codemeta.json}, \texttt{CITATION.cff}, and the package
+\texttt{\_\_version\_\_} all declare 0.1.7, as does the Zenodo software record
+cited under Archive below. The separate stamp on the title page
+(\paperVersion) is the revision number of this manuscript as a document; it
+tracks editorial revisions of the metapaper and is deliberately independent of
+the software release line. The two numbers are not expected to agree.
+
 \paragraph{Operating system.}
 The package supports Linux and Windows where Python and NumPy are available;
 CI covers Linux with Python 3.10--3.13 and Windows with Python 3.12. Directory
@@ -352,7 +384,7 @@ PyMaster and healpy stacks and correspondingly more memory, but lie outside the
 self-contained packaged code path.
 
 \paragraph{Programming language and dependencies.}
-Version 0.1.7 requires Python 3.10 or later and NumPy 1.24 or later. PyMaster
+\software{} version 0.1.7 requires Python 3.10 or later and NumPy 1.24 or later. PyMaster
 is optional and is supplied by the user for physical NaMaster workspaces;
 the retained physical validation used PyMaster 2.6 and healpy 1.19.0.
 
@@ -375,7 +407,7 @@ to the repository on 2026-07-16.
 The software is released under the MIT License.
 
 \paragraph{Archive.}
-Version 0.1.7 is bound to an immutable archive: the commit-pinned source tree
+\software{} version 0.1.7 is bound to an immutable archive: the commit-pinned source tree
 (\texttt{packages/namaster-proof} at repository commit
 \texttt{\seqsplit{0a587b583f8e86c4ce1ee4a20526fcdcd8035fe6}}), together with
 its license, citation metadata, and checksums, is published on Zenodo under
