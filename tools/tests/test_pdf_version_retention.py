@@ -203,6 +203,142 @@ class PdfVersionRetentionTests(unittest.TestCase):
         unclassified = [row for row in result["rows"] if row["paper_id"] is None]
         self.assertEqual(unclassified[0]["classification_reason"], "excluded.figure-or-render-artifact")
 
+    # ------------------------------------------------------------------
+    # archive-then-remove retention
+    # ------------------------------------------------------------------
+    def write_retired_registry(self, rows: list[dict[str, str]]) -> None:
+        registry = self.root / "project-context/paper_registry.json"
+        payload = json.loads(registry.read_text(encoding="utf-8"))
+        payload["served_pdf_policy"] = {"retired_served_pdfs": rows}
+        registry.write_text(json.dumps(payload), encoding="utf-8")
+
+    def seed_orphan(self, relative: str, body: bytes) -> str:
+        target = self.root / relative
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes(body)
+        return retention.md5_bytes(body)
+
+    def retire(self, run_id: str, *, dry_run: bool = False):
+        with mock.patch.object(retention, "pdf_page_count", return_value=3):
+            return retention.retire_archive(
+                self.root,
+                Path("archive"),
+                captured_at=self.when,
+                run_id=run_id,
+                dry_run=dry_run,
+            )
+
+    def test_retire_archive_retains_shared_bytes_once_per_document(self) -> None:
+        body = b"%PDF-1.4\nlegacy\n%%EOF\n"
+        digest = self.seed_orphan("public/papers/legacy.pdf", body)
+        self.seed_orphan("site/public/papers/legacy.pdf", body)
+        self.write_retired_registry(
+            [
+                {
+                    "path": "public/papers/legacy.pdf",
+                    "identified_paper": "P1-LEGACY",
+                    "identified_version": "v2.3.18",
+                    "md5": digest,
+                    "disposition": "archive-then-remove",
+                    "note": "no version-pinned copy exists",
+                },
+                {
+                    "path": "site/public/papers/legacy.pdf",
+                    "identified_paper": "P1-LEGACY",
+                    "identified_version": "v2.3.18",
+                    "md5": digest,
+                    "disposition": "archive-then-remove",
+                    "note": "no version-pinned copy exists",
+                },
+                {
+                    "path": "public/papers/keep.pdf",
+                    "identified_paper": "P2",
+                    "identified_version": "v1.7.90",
+                    "md5": digest,
+                    "disposition": "remove",
+                    "note": "a version-pinned archive already retains these bytes",
+                },
+            ]
+        )
+        result = self.retire("retire-one")
+
+        self.assertEqual(result["served_path_count"], 2)
+        self.assertEqual(result["distinct_document_count"], 1)
+        document = result["documents"][0]
+        self.assertEqual(document["sha256"], retention.sha256_bytes(body))
+        self.assertTrue(document["retention_verified"])
+        self.assertEqual(
+            [entry["path"] for entry in document["served_paths"]],
+            ["public/papers/legacy.pdf", "site/public/papers/legacy.pdf"],
+        )
+        archived = self.root / document["archive_object"]
+        reference = self.root / document["archive_reference"]
+        self.assertEqual(archived.read_bytes(), body)
+        self.assertTrue(archived.samefile(reference))
+        self.assertTrue((self.root / result["manifest_path"]).is_file())
+        # a "remove" row is not this mode's business and must not be captured
+        self.assertNotIn("keep.pdf", json.dumps(result))
+
+    def test_retire_archive_dry_run_writes_nothing(self) -> None:
+        body = b"%PDF-1.4\nlegacy\n%%EOF\n"
+        digest = self.seed_orphan("public/papers/legacy.pdf", body)
+        self.write_retired_registry(
+            [
+                {
+                    "path": "public/papers/legacy.pdf",
+                    "identified_paper": "P1-LEGACY",
+                    "identified_version": "v2.3.18",
+                    "md5": digest,
+                    "disposition": "archive-then-remove",
+                    "note": "no version-pinned copy exists",
+                }
+            ]
+        )
+        result = self.retire("retire-dry", dry_run=True)
+        self.assertFalse(result["materialized"])
+        self.assertFalse(result["documents"][0]["retention_verified"])
+        self.assertFalse((self.root / "archive").exists())
+
+    def test_retire_archive_fails_closed_on_md5_drift(self) -> None:
+        body = b"%PDF-1.4\nlegacy\n%%EOF\n"
+        self.seed_orphan("public/papers/legacy.pdf", body)
+        self.write_retired_registry(
+            [
+                {
+                    "path": "public/papers/legacy.pdf",
+                    "identified_paper": "P1-LEGACY",
+                    "identified_version": "v2.3.18",
+                    "md5": "0" * 32,
+                    "disposition": "archive-then-remove",
+                    "note": "no version-pinned copy exists",
+                }
+            ]
+        )
+        with self.assertRaises(retention.RetentionError):
+            self.retire("retire-drift")
+        self.assertFalse((self.root / "archive").exists())
+
+    def test_retire_archive_fails_closed_when_source_is_missing(self) -> None:
+        self.write_retired_registry(
+            [
+                {
+                    "path": "public/papers/gone.pdf",
+                    "identified_paper": "P1-LEGACY",
+                    "identified_version": "v2.3.18",
+                    "md5": "0" * 32,
+                    "disposition": "archive-then-remove",
+                    "note": "no version-pinned copy exists",
+                }
+            ]
+        )
+        with self.assertRaises(retention.RetentionError):
+            self.retire("retire-missing")
+
+    def test_retire_archive_requires_at_least_one_row(self) -> None:
+        self.write_retired_registry([])
+        with self.assertRaises(retention.RetentionError):
+            self.retire("retire-empty")
+
 
 if __name__ == "__main__":
     unittest.main()

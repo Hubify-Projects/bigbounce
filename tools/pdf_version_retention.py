@@ -578,6 +578,144 @@ def history_inventory(
     return manifest
 
 
+def retired_rows(root: Path, disposition: str) -> list[dict[str, Any]]:
+    """Return the registry's retired-served-PDF rows carrying ``disposition``."""
+    payload = json.loads(
+        (root / "project-context/paper_registry.json").read_text(encoding="utf-8")
+    )
+    policy = payload.get("served_pdf_policy")
+    if not isinstance(policy, dict):
+        raise RetentionError("registry has no served_pdf_policy block")
+    rows = policy.get("retired_served_pdfs", [])
+    if not isinstance(rows, list):
+        raise RetentionError("retired_served_pdfs must be a list")
+    selected = []
+    for row in rows:
+        if not isinstance(row, dict):
+            raise RetentionError("each retired_served_pdfs entry must be an object")
+        if row.get("disposition") != disposition:
+            continue
+        for field in ("path", "identified_paper", "identified_version", "md5"):
+            if not isinstance(row.get(field), str) or not row[field]:
+                raise RetentionError(f"retired entry needs a non-empty {field}: {row!r}")
+        selected.append(row)
+    return selected
+
+
+def retire_archive(
+    root: Path,
+    archive: Path,
+    *,
+    captured_at: datetime,
+    run_id: str,
+    dry_run: bool = False,
+) -> dict[str, Any]:
+    """Retain every ``archive-then-remove`` served PDF before it is deleted.
+
+    PUB-005 makes historical PDFs append-only evidence, and AGENT_RULES §2.8
+    forbids a destructive step that is not preceded by a proved retention.  The
+    registry dispositions some served orphans ``archive-then-remove`` precisely
+    because their bytes exist at no version-pinned path, so ``snapshot`` (which
+    is bound to the six canonical manuscripts) cannot reach them.  This mode
+    captures those exact served bytes into the same content-addressed archive,
+    then re-reads each stored object and proves it byte-for-byte before the
+    caller is allowed to remove anything.
+    """
+    root = root.resolve()
+    archive = archive if archive.is_absolute() else root / archive
+    archive = archive.resolve()
+    rows = retired_rows(root, "archive-then-remove")
+    if not rows:
+        raise RetentionError("registry lists no archive-then-remove rows to retain")
+
+    local = captured_at.astimezone(LOCAL_ZONE)
+    local_stamp = local.strftime("%Y-%m-%dT%H%M%S%z-%Z")
+    documents: dict[str, dict[str, Any]] = {}
+
+    for row in rows:
+        relative = row["path"]
+        source = root / relative
+        if not source.is_file():
+            raise RetentionError(f"archive-then-remove source missing: {relative}")
+        payload = source.read_bytes()
+        if not payload.startswith(b"%PDF-"):
+            raise RetentionError(f"not a PDF: {relative}")
+        recorded_md5 = md5_bytes(payload)
+        if recorded_md5 != row["md5"].lower():
+            raise RetentionError(
+                f"{relative} bytes ({recorded_md5}) do not match the registry md5 ({row['md5']})"
+            )
+        digest = sha256_bytes(payload)
+        document = documents.get(digest)
+        if document is None:
+            paper_id = row["identified_paper"]
+            version = row["identified_version"]
+            reference_name = (
+                f"{safe_component(paper_id)}__{safe_component(version)}__"
+                f"{local_stamp}__{digest[:12]}.pdf"
+            )
+            object_path = archive / "objects" / "sha256" / digest[:2] / f"{digest}.pdf"
+            reference_path = archive / "refs" / safe_component(paper_id) / reference_name
+            object_created = not object_path.exists()
+            reference_created = not reference_path.exists()
+            if not dry_run:
+                object_path, object_created = retain_object(archive, digest, payload)
+                reference_created = retain_reference(object_path, reference_path, digest)
+                stored = object_path.read_bytes()
+                if stored != payload or sha256_bytes(stored) != digest:
+                    raise RetentionError(f"archived object does not match source bytes: {relative}")
+                if sha256_bytes(reference_path.read_bytes()) != digest:
+                    raise RetentionError(f"archived reference does not match source bytes: {relative}")
+            document = {
+                "identified_paper": paper_id,
+                "identified_version": version,
+                "sha256": digest,
+                "md5": recorded_md5,
+                "page_count": pdf_page_count(payload),
+                "size_bytes": len(payload),
+                "archive_object": relative_or_absolute(object_path, root),
+                "object_created": object_created,
+                "archive_reference": relative_or_absolute(reference_path, root),
+                "reference_created": reference_created,
+                "retention_verified": not dry_run,
+                "served_paths": [],
+            }
+            documents[digest] = document
+        elif document["identified_paper"] != row["identified_paper"]:
+            raise RetentionError(
+                f"{relative} shares bytes with {document['identified_paper']} "
+                f"but the registry attributes it to {row['identified_paper']}"
+            )
+        document["served_paths"].append(
+            {"path": relative, "git": git_path_provenance(root, relative)}
+        )
+
+    manifest = {
+        "schema": "bigbounce-pdf-retention-retire/v1",
+        "run_id": run_id,
+        "mode": "archive-then-remove-retention",
+        "captured_at_utc": captured_at.astimezone(timezone.utc).isoformat(),
+        "captured_at_local": local.isoformat(),
+        "git_head": run_git(root, "rev-parse", "HEAD"),
+        "materialized": not dry_run,
+        "policy": (
+            "Captures the exact served bytes of every registry row dispositioned "
+            "archive-then-remove, verifies the stored object and reference re-read "
+            "byte-for-byte, and only then may the served copies be removed."
+        ),
+        "served_path_count": len(rows),
+        "distinct_document_count": len(documents),
+        "documents": [documents[key] for key in sorted(documents)],
+    }
+    stamp = captured_at.astimezone(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    manifest_path = archive / "manifests" / stamp[:4] / stamp[4:6] / f"{stamp}-{run_id}-retire.json"
+    manifest["manifest_path"] = relative_or_absolute(manifest_path, root)
+    if not dry_run:
+        encoded = (json.dumps(manifest, indent=2, sort_keys=True) + "\n").encode("utf-8")
+        write_exclusive(manifest_path, encoded)
+    return manifest
+
+
 def snapshot(
     root: Path,
     archive: Path,
@@ -690,6 +828,14 @@ def main(argv: list[str] | None = None) -> int:
         action="store_true",
         help="materialize high-confidence historical six-paper manuscript PDFs and write a full ledger",
     )
+    history_mode.add_argument(
+        "--retire-archive",
+        action="store_true",
+        help=(
+            "retain the exact served bytes of every registry row dispositioned "
+            "archive-then-remove, proving the archive copy before any removal"
+        ),
+    )
     parser.add_argument(
         "--history-skip-page-count",
         action="store_true",
@@ -705,7 +851,19 @@ def main(argv: list[str] | None = None) -> int:
     run_id = args.run_id or secrets.token_hex(6)
     try:
         captured_at = parse_timestamp(args.timestamp)
-        if args.history_inventory or args.history_backfill:
+        if args.retire_archive:
+            if args.paper:
+                parser.error("--paper cannot be combined with --retire-archive")
+            if args.build_command or args.review_round:
+                parser.error("--build-command/--review-round are snapshot metadata, not retirement metadata")
+            result = retire_archive(
+                args.root,
+                args.archive_root,
+                captured_at=captured_at,
+                run_id=run_id,
+                dry_run=args.dry_run,
+            )
+        elif args.history_inventory or args.history_backfill:
             if args.paper:
                 parser.error("--paper cannot be combined with history modes")
             if args.build_command or args.review_round:

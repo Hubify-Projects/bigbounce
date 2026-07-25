@@ -54,6 +54,31 @@ immutable archive. Manifests and objects should also be copied byte-for-byte to
 versioned object storage or a DOI archive without changing their paths or
 hashes.
 
+## Archive-then-remove retention (served orphans)
+
+`tools/verify_pdf_mirror_integrity.py` classifies every git-tracked PDF under a
+served root. Some orphans it finds are dispositioned `archive-then-remove` in
+`project-context/paper_registry.json` because their bytes exist at **no**
+version-pinned path — `snapshot` cannot reach them, since it is bound to the six
+canonical manuscripts.
+
+```bash
+python3 tools/pdf_version_retention.py --retire-archive --dry-run
+python3 tools/pdf_version_retention.py --retire-archive
+```
+
+The mode reads each such served path's exact bytes, fails closed if they do not
+match the md5 the registry recorded, retains one object per distinct SHA-256
+plus a `refs/<identified-paper>/` hard link, re-reads both and proves them
+byte-for-byte, and writes a `...-retire.json` manifest listing every served path
+that shared those bytes with its Git provenance. Only after that manifest exists
+may the served copies be removed — AGENT_RULES §2.8 and `PUB-005`.
+
+The first run was
+`manifests/2026/07/20260725T024720Z-retire-orphans-20260724-retire.json`:
+13 served paths, 5 distinct P1-LEGACY documents (33, 34, 34, 24, and 10 pages),
+all five objects and references newly created and verified.
+
 ## Historical Git backfill
 
 Historical retention is intentionally split into inventory and materialized
