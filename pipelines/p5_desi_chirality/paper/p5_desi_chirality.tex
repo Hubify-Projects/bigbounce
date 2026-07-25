@@ -43,7 +43,38 @@ not peer reviewed}
 % The divide-by-h claim (~1246 h⁻¹ Mpc) is INVERTED. No pipeline recompute required.
 % If any future reviewer re-raises this, cite env_finder/01_compute_vweb.py:106-108.
 
-\newcommand{\paperVersion}{v0.1.145-2026-07-24}
+\newcommand{\paperVersion}{v0.1.146-2026-07-24}
+% v0.1.146 (2026-07-24 -- TARGET-PROGRAM LEAKAGE PROMINENCE): closes the
+%   GENUINELY-NEW-REAL half of the P5/Gemini [MAJOR] on Sec VI.E.d
+%   ("Target-program leakage and deferred mocks") from the 2026-07-23 re-sweep.
+%   That item was dispositioned only in part on 07-23 (the deferred-DR2-mock
+%   clause) and its CONDITIONAL REMEDY clause -- "if the mock cannot be run for
+%   DR1, this un-modeled leakage and the residual ambiguity regarding a
+%   program-by-environment interaction must be much more prominently caveated in
+%   the abstract and conclusion" -- was never adjudicated; surfaced 2026-07-24 by
+%   tools/major_completeness_check.py. Audit:
+%   project-context/peer-reviews/INT_v3/TRUTH_AUDIT_RESWEEP_2026-07-23.md.
+%   The leakage MECHANISM half is a source-cited DP5-14/DP5-19 re-flag and holds
+%   at v0.1.145 (the mock bears on the SECONDARY T-Web diagnostic; the focal
+%   contrast is a difference and is algebraically monopole-invariant; the
+%   marginal-mixture term is ~0.001pp; the bounded surrogate [A47]/[A48]
+%   forward-reproduces 88% of the sign-flip). The REMEDY half was real and open:
+%   the body already stated at sec:systematics that "substantial
+%   program-by-environment interaction effects are not excluded" and that the
+%   residual "has not been shown to leave the focal DESIVAST result unaffected",
+%   while the ABSTRACT, the LIMITATIONS list, and the CONCLUSIONS carried ZERO
+%   mention of program / leakage / interaction (verified by grep over the live
+%   text of v0.1.145) -- an abstract-only reader got a stronger null than the
+%   body supports. Closed by prose only, NO recompute, NO new number: (1) abstract
+%   caveat clause "and a target-program-by-environment interaction is not
+%   excluded" (word count held at the AAS/AJ 250 cap); (2) a new Limitations
+%   bullet stating the 0.81pp bright/dark residual, the chi^2=4933 class-program
+%   non-independence, BOTH partial bounds (0.12pp marginal mixture -> ~0.001pp;
+%   the [A43--A44] interaction fit with its n=237 dark stratum and
+%   [-0.06637,+0.26190] CI), the [A47--A48] bounded surrogate, and the deferred
+%   DR2 mock; (3) a Conclusions sentence making the focal non-detection
+%   explicitly conditional on that unclosed systematic. Every value transcribed
+%   from text already in this manuscript; zero reported numbers changed.
 % v0.1.145 (2026-07-24 -- ESTIMATOR-HIERARCHY SENSITIVITY CONSOLIDATION): closes
 %   the GENUINELY-NEW-REAL half of the P5/Grok [MAJOR] #1 adjudicated in
 %   project-context/peer-reviews/INT_v3/TRUTH_AUDIT_RESWEEP_2026-07-23.md. The
@@ -847,7 +878,7 @@ not peer reviewed}
 %   cluster −54%) but the environmental-independence null HOLDS and
 %   TIGHTENS: cross-class f_CW range 1.98pp → 0.05pp, all classes
 %   |σ_mono| ≤ 0.39. Artifact: outputs/16_cosmic_web_zshell_corrected.json.
-\newcommand{\paperTimestamp}{July 24, 2026, 18:38 PT}
+\newcommand{\paperTimestamp}{July 24, 2026, 19:05 PT}
 % timestamp label unchanged (still July 2026); \date bumped to July 6
 % v0.1.62-2026-06-10 (R29 post-EXT1 internal-round closure wave; truth audit at
 %   project-context/peer-reviews/R29_P5_TRUTH_AUDIT.md):
@@ -974,8 +1005,9 @@ Tempel, and ASTRA analyses are sensitivity or secondary diagnostic
 paths rather than parallel focal measurements. This hierarchy was changed
 after review and after inspecting the data; the study remains
 exploratory, post-hoc, and not preregistered. T-Web intervals omit
-cosmic variance and spatial covariance, and all environment assignments
-remain in redshift space. The result is therefore a catalog-specific
+cosmic variance and spatial covariance, all environment assignments
+remain in redshift space, and a target-program-by-environment
+interaction is not excluded. The result is therefore a catalog-specific
 non-detection for classifier labels, not a physical-handedness,
 real-space, or cosmological constraint.
 \end{abstract}
@@ -4756,6 +4788,39 @@ concordance on the common overlap is $0.29$\,percentage points
 (${\sim}0.5\sigma$, statistically indistinguishable); lower-$n$
 classes scatter by counting statistics and
 classifier-definition mismatch.
+\item \emph{Unmodelled target-program leakage; a program-by-environment
+interaction is not excluded.} The single largest structured residual in
+the catalog is the DESI target-program split: BGS-\texttt{bright}
+$f_{\rm CW} = 0.4970$ against LRG/ELG/QSO-\texttt{dark} $0.5051$, a
+$0.81$\,pp difference at $|z| = 1.95$ on unique galaxies
+(\S\ref{sec:systematics}), and T-Web class is \emph{not} independent of
+that split ($\chi^{2} = 4933$, Cram\'er's $V = 0.078$;
+\S\ref{sec:results_within_class_density}). Two bounds on how far this
+propagates into the focal contrast are reported and both are partial.
+(i)~The \emph{marginal}-mixture term is small by construction --- the
+void and non-void arms differ by only $0.12$\,pp in dark fraction, so
+the induced $\Delta f_{\rm CW}$ scale is ${\approx}0.001$\,pp --- but
+this is not a maximum leakage bound and does not constrain an
+interaction. (ii)~The explicit void-by-program interaction fit
+[A43--A44] finds no robust interaction evidence, but its \texttt{dark}
+stratum carries only $n = 237$ rows and its 95\% CI on the
+\texttt{dark}-minus-\texttt{bright} contrast,
+$[-0.06637,+0.26190]$, is far wider than the focal interval; the
+\texttt{other} stratum occupies a single NSIDE$=4$ block and admits no
+angular cluster inference at all. Substantial program-by-environment
+interaction effects are therefore \emph{not excluded}, and the focal
+DESIVAST result has not been shown to be unaffected by this residual.
+The semi-analytic forward-leakage injection
+(Table~\ref{tab:forward_leakage}, [A47--A48]) forward-reproduces at
+least ${\sim}3/4$ of every large raw deviation ($77$--$133\%$ across
+rows, all residuals non-significant), including $88\%$ of the
+filament \texttt{bright}-vs-\texttt{dark} sign-flip, from the committed
+per-program classifier monopoles alone; it is a bounded surrogate and
+does \emph{not} replace the definitive end-to-end injection--recovery
+test, which requires a DR2-grade selection-function mock and is
+explicitly deferred (\S\ref{sec:results_within_class_density},
+\S\ref{sec:lsst}). Readers should treat the focal non-detection as
+conditional on that unclosed systematic.
 \item \emph{Relation to the companion Paper~IV catalog.}
 The per-galaxy \texttt{class\_eq} CW/CCW labels and
 the global classifier-monopole calibration ($f_{\rm CW}^{\rm P4} =
@@ -4950,8 +5015,17 @@ Tempel, and ASTRA paths are sensitivities or secondary diagnostics.
 They are not combined into a physical constraint or an exclusion.
 T-Web intervals omit cosmic variance and spatial covariance; the
 DESIVAST perturbations do not rerun the void finder in reconstructed
-space. All conclusions concern classifier labels and released
-redshift-space environment assignments only.
+space. One systematic remains open rather than bounded: the
+$0.81$\,pp BGS-\texttt{bright}-vs-\texttt{dark} target-program residual
+($|z| = 1.95$) sits on a target split that is not independent of
+environment class ($\chi^{2} = 4933$), and while the marginal-mixture
+term is ${\approx}0.001$\,pp and the [A43--A44] fit finds no robust
+interaction, its sparse \texttt{dark} stratum ($n = 237$) leaves
+substantial program-by-environment interaction effects unexcluded. The
+definitive end-to-end injection--recovery mock is deferred to DR2
+(\S\ref{sec:limitations}), so the focal non-detection is conditional on
+that unclosed systematic. All conclusions concern classifier labels and
+released redshift-space environment assignments only.
 
 Paper~IV supplies the labels and remains a publication dependency; its
 manuscript, labels, and weights are now publicly archived and independently
