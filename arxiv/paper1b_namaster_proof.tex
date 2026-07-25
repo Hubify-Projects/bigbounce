@@ -60,13 +60,35 @@
 %   deletes the Sec 11 Archive-paragraph review-response remnant sentence
 %   referencing the previously disclosed persistent-identifier submission
 %   blocker. No number changed.
-\newcommand{\paperVersion}{v2B.0.14}
-\newcommand{\paperTimestamp}{2026-07-22 12:00 PT}
+% v2B.0.15 (2026-07-24): JORS-route prep closure — embeds Houston's verified
+%   ORCID (0009-0008-5616-5994) in the author block (no house-style precedent
+%   found across the other five papers' current .tex sources; a stale legacy
+%   P2 draft at research/focused_paper_source_integration/arxiv_package/
+%   main.tex has an unlinked \orcidicon placeholder with no numeric ID, so a
+%   clean \href to orcid.org is used per spec). JORS template conformance
+%   investigated: the JORS "Submission Preparation Checklist" (fetched
+%   2026-07-24 from openresearchsoftware.metajnl.com/about/submissions) states
+%   "The submission conforms to the article template. For LaTex submissions,
+%   a PDF should be provided along with the original LaTex file(s)" as one of
+%   the items "All submissions must meet" — i.e. required AT INITIAL
+%   SUBMISSION, not camera-ready-only. The downloadable LaTeX template
+%   (jors.cls + jors_template.tex, JORS_Template.zip via the submissions
+%   page's "LaTex Template" link) is a thin article-class wrapper
+%   (\LoadClass[a4paper]{article}) but mandates jors.cls itself plus an exact
+%   Title/Paper Authors/Paper Author Roles and Affiliations/Abstract/Keywords/
+%   Introduction/.../(2) Availability/.../(3) Reuse potential heading
+%   structure. This manuscript currently uses plain
+%   \documentclass[11pt]{article} with a different (though overlapping)
+%   section structure. Per task instruction this is reported, NOT
+%   auto-restructured by this agent — see JOURNAL_ROUTE_PREP_2026-07-22.md
+%   for the disposition. No number/science changed.
+\newcommand{\paperVersion}{v2B.0.15}
+\newcommand{\paperTimestamp}{2026-07-24 12:00 PT}
 
 \title{\software: Exact pseudo-\(\Cl\) window inference and
 content-bound validation for reproducible spin-2 analyses}
-\author{Houston Golden\\Independent researcher}
-\date{July 22, 2026 --- \paperVersion}
+\author{Houston Golden\\Independent researcher\\[2pt]\href{https://orcid.org/0009-0008-5616-5994}{\footnotesize ORCID: 0009-0008-5616-5994}}
+\date{July 24, 2026 --- \paperVersion}
 
 \begin{document}
 \maketitle
