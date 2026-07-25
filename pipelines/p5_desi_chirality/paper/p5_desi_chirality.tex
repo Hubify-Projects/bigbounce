@@ -43,7 +43,26 @@ not peer reviewed}
 % The divide-by-h claim (~1246 h⁻¹ Mpc) is INVERTED. No pipeline recompute required.
 % If any future reviewer re-raises this, cite env_finder/01_compute_vweb.py:106-108.
 
-\newcommand{\paperVersion}{v0.1.143-2026-07-24}
+\newcommand{\paperVersion}{v0.1.144-2026-07-24}
+% v0.1.144 (2026-07-24 -- PAPER II COMPANION-STATUS BACK-PATCH): the cross-paper
+%   companion-status sweep that followed the v0.1.143 Paper IV back-patch found the
+%   one remaining stale companion-availability claim in this manuscript. The
+%   bibliography entry golden_fnl_2026 (cited live in sec:intro as "the companion
+%   SPHEREx f_NL forecast (Paper II)") still read "in preparation; manuscript in
+%   preparation" and carried the superseded f_NL = -35/8 headline in its title,
+%   although Paper II was publicly archived on Zenodo on 2026-07-20 with a
+%   resolvable permanent version DOI 10.5281/zenodo.21461881 (concept DOI
+%   10.5281/zenodo.21461880). Both DOIs re-verified HTTP 200 and the Zenodo API
+%   record title confirmed before editing. FIX: the entry now cites the archived
+%   record of the record using its exact archived title, both DOIs, the deposit
+%   date, and CC-BY-4.0 -- and states explicitly, in the same words used for
+%   Paper IV, that a Zenodo deposit is a public permanent archive and is NOT an
+%   arXiv preprint and NOT peer review. Nothing else changed: no science number,
+%   estimand, count, interval, figure, or conclusion is touched, the Paper IV
+%   statements from v0.1.143 are untouched, and the statements that THIS paper has
+%   no public tag or DOI remain true and unchanged. Enforced going forward by
+%   tools/verify_companion_status.py (portfolio validator "companion-status" inside
+%   tools/bigbounce_preflight.py).
 % v0.1.142 (2026-07-22 -- confirmation-board truth-audit closures): closes the
 %   two GENUINELY-NEW-REAL items of the v0.1.141 exact-PDF truth audit
 %   (INT_v3/ROUND_2026-07-22-P5-v0.1.141-2026-07-16-EXACTPDF-4cca09d0-CLAUDESTACK-CONFIRM,
@@ -793,7 +812,7 @@ not peer reviewed}
 %   cluster −54%) but the environmental-independence null HOLDS and
 %   TIGHTENS: cross-class f_CW range 1.98pp → 0.05pp, all classes
 %   |σ_mono| ≤ 0.39. Artifact: outputs/16_cosmic_web_zshell_corrected.json.
-\newcommand{\paperTimestamp}{July 24, 2026, 17:14 PT}
+\newcommand{\paperTimestamp}{July 24, 2026, 18:20 PT}
 % timestamp label unchanged (still July 2026); \date bumped to July 6
 % v0.1.62-2026-06-10 (R29 post-EXT1 internal-round closure wave; truth audit at
 %   project-context/peer-reviews/R29_P5_TRUTH_AUDIT.md):
@@ -5496,8 +5515,13 @@ public under the same license (\href{https://huggingface.co/datasets/bamfai/gala
 
 \bibitem{golden_fnl_2026}
 H.~Golden,
-\emph{$f_{NL} = -35/8$ Forecast: SPHEREx Discrimination of Bounce vs.\
-Inflation}, companion paper (Paper~II), in preparation; manuscript in preparation.
+\emph{The Exact Matter-Contraction Non-Gaussian Amplitude: Four-Vertex
+Derivation and Conditional Large-Scale-Structure Mapping}, companion paper
+(Paper~II), Zenodo (2026), version DOI
+\href{https://doi.org/10.5281/zenodo.21461881}{10.5281/zenodo.21461881};
+concept DOI 10.5281/zenodo.21461880; deposited 2026 July 20 under CC-BY-4.0.
+Public permanent archive of the manuscript, \LaTeX{} source, and submission
+tarball; not an arXiv preprint and not peer reviewed.
 
 \bibitem{Hahn2007}
 O.~Hahn, C.~M.~Carollo, C.~Porciani, and A.~Dekel,
