@@ -70,11 +70,22 @@ submission 7859751 is parked at Start.
 
 **Two-item pre-send check, every draft:**
 
-1. **ORCID.** Each signature block carries `0009-0008-5616-5994`. That iD is
-   still **D5-unconfirmed** in `tasks.md` (it superseded an earlier wrong iD on
-   2026-07-22). Confirm it at orcid.org before the first send, or delete the
-   ORCID line — a wrong iD in a cold email to a senior researcher is worse than
-   no iD.
+1. **ORCID — VERIFIED 2026-07-24, send the line as-is.** Each signature block
+   carries `0009-0008-5616-5994`. This is now confirmed from outside the
+   account: `https://pub.orcid.org/v3.0/0009-0008-5616-5994/record` returns
+   **HTTP 200** with `name: Houston Golden`, `visibility: public`, 1 employment
+   entry. That closes both D5 (correct iD — it superseded the wrong …3617-8729
+   on 2026-07-22) and the older "ORCID public flip" blocker, which required
+   exactly this 200. No pre-send action needed on the ORCID line.
+
+   **Worth 2 minutes before batch 1, though:** the record currently lists
+   **0 works**. An endorser who clicks the iD lands on an empty profile, which
+   undercuts the credential the link is there to provide. Add the six archived
+   DOIs as works at orcid.org (Works → Add → link DOI): P1A `10.5281/zenodo.21481838`,
+   P1B `10.5281/zenodo.21481842`, P2 `10.5281/zenodo.21461881`,
+   P3 `10.5281/zenodo.21461888`, P4 `10.5281/zenodo.21461899`, software
+   `10.5281/zenodo.21481753`. This is the cheapest credibility gain available
+   before a cold ask to a senior researcher.
 2. **Address.** Confirm the recipient address against the table below. Two of
    the four are unverified.
 

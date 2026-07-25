@@ -38,6 +38,19 @@ but are not the current scientific critical path.
   iD under your name, say "yes that's me" or give the real iD — public
   record shows no name so it is unverifiable from outside). P5 remains
   gated only on the Paper-IV (P4 arXiv ID) back-patch.
+  **D5 RESOLVED 2026-07-24 — externally verified, no Houston action left.**
+  `https://pub.orcid.org/v3.0/0009-0008-5616-5994/record` returns HTTP 200 with
+  `name: Houston Golden`, name `visibility: public`, 1 employment entry. That
+  independently confirms both (a) the iD is correct — it superseded the wrong
+  …3617-8729 on 2026-07-22, read then from Houston's signed-in record — and
+  (b) the record is PUBLIC, which closes the older "ORCID public flip" blocker
+  in `SSOT/SHIP_DAY_BRIEFING.md` §A that required exactly this 200 (it was 404
+  at the time that doc was written). The earlier note here that the public
+  record "shows no name so it is unverifiable from outside" is now stale.
+  Residual (optional, not a blocker): the ORCID record lists **0 works** —
+  adding the six archived Zenodo DOIs would make the iD link credible to an
+  endorser who clicks it. Remaining arXiv-side ORCID step is unchanged:
+  associate the iD with the arXiv account via arxiv.org/user (Houston's OAuth).
   D4 CHECKED 2026-07-22 (Houston logged in; agent read+drove the live session
   with his go): ENDORSEMENT REQUIRED for BOTH gr-qc and astro-ph — submit flow
   rejects both archives. Four endorsement codes generated, each emailed to
