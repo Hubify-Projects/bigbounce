@@ -7,28 +7,43 @@ acceleration audit — every quote below was independently retrieved this sessio
 **Goal:** an 11pm click session. Everything you must type or paste is in §3–§6.
 Everything you must *decide* is called out with a recommendation.
 
-> ### ⛔ GATE 0 — ONE THING MUST LAND BEFORE YOU CLICK
-> **The compiled P1A PDF currently contains no Acknowledgements, no
-> conflict-of-interest statement, no funding statement, and no AI-usage
-> disclosure.** Verified this session: `pdftotext arxiv/paper1a_ech_nogo.pdf`
-> returns **0** hits for "acknowledg", **0** for "conflict", **0** for "funding",
-> **0** for `0009-0008` (ORCID). Root cause: the whole Acknowledgments block is
-> inside `\begin{comment}…\end{comment}` at `arxiv/paper1a_ech_nogo.tex:4043`
-> onward and never compiles.
+> ### ✅ GATE 0 — CLOSED 2026-07-24 in **v1A.0.127**
+> The compiled Note now carries an Acknowledgments section with all three
+> IOP-mandatory declarations. Verified on the served PDF:
+> `pdftotext arxiv/paper1a_ech_nogo.pdf -` returns **2** hits for "acknowledg",
+> **1** for "competing interests", **1** for "funding", **1** for
+> "generative-ai", and **1** for `0009-0008` (ORCID, now in the author block
+> too).
 >
-> **IOP makes COI and funding declarations unconditionally mandatory, and AI
-> disclosure mandatory when AI was used — all three in the Acknowledgements
-> section** (quotes in §1). A different lane owns that fix. **Do not submit until
-> the recompiled PDF shows all three.** Verify with the one-liner in §9, item 1.
+> **What was wrong:** the entire Acknowledgments block sat inside
+> `\begin{comment}…\end{comment}` at `arxiv/paper1a_ech_nogo.tex:4043` onward and
+> never compiled, so the Note had no COI, no funding, and no AI statement —
+> all three unconditionally mandatory at IOP (quotes in §1).
 >
-> Everything else in this kit is ready now.
+> **What was done:** a **new, Note-scoped** acknowledgments block was written
+> and placed immediately before Data and Code Availability (per IOP's own advice
+> that the data statement follow the acknowledgements). The old commented block
+> was **deliberately not restored** — it thanks the Planck/CMB-S4/LiteBIRD/LSST/
+> DESI collaborations and Lior Shamir for galaxy-spin counts and cites frozen
+> MCMC chains, none of which this Note uses, and it sits inside a comment region
+> that also holds `\subsection{Discrimination Among Bouncing Cosmologies}`,
+> tables, and two appendices cut to keep the Note at 8 pages. All of that stays
+> commented. **The Note is still 8 pages.**
+>
+> **Current bytes:** v1A.0.127, md5 `0bc1ee72836c867114118521cf86e1c2`, 8 pages,
+> dated "July 24, 2026, 18:35 PDT". Mirrored byte-identical to 8 served paths;
+> Convex `paperVersions` row `k571vp9b8j3sby5tb148sxvr218b7j3g`.
+>
+> **The abstract was not touched** — see §9 item 4 for the verified count.
+>
+> This kit is ready to execute end to end.
 
 ---
 
 ## 0. TL;DR
 
 ```
-1. Confirm the acknowledgements/COI/funding/AI fix has landed (§9 item 1)   ← GATE 0
+1. GATE 0 already closed in v1A.0.127 — re-confirm with §9 item 1 if you like
 2. Create a ScholarOne account at mc04.manuscriptcentral.com/cqg-iop        (§2)
 3. New submission → article type "Note" → paste §3 metadata
 4. Upload ONE PDF: arxiv/paper1a_ech_nogo.pdf                              (§4)
@@ -154,18 +169,26 @@ Einstein-Cartan gravity; Holst action; algebraic torsion; four-fermion interacti
 
 ### Abstract — plain text, ready to paste
 
-**⚠️ WORD COUNT: 285 words. The cap is 300, and IOP says they *"may rescind the
-manuscript"* above it. Do not add a single sentence to this block.**
+**⚠️ WORD COUNT: 285 words for this paste block (whitespace tokens). The cap is
+300, and IOP says they *"may rescind the manuscript"* above it. Re-verified
+2026-07-24 against the v1A.0.127 PDF; the manuscript-native count is 269 words
+with each inline math expression counted as one word, and the most pessimistic
+convention (naive tokenization of raw `pdftotext`, which splits rendered math)
+gives 295. Under the cap on every convention — but with 5 words of headroom in
+the worst case, do not add a single sentence to this block.**
 
 **Provenance:** transcribed verbatim from the compiled PDF
-`arxiv/paper1a_ech_nogo.pdf`, **v1A.0.126**, md5
-`6ade40c14049a316eabf21e67dc10072`, 8 pages, dated "July 22, 2026, 12:00 PDT".
+`arxiv/paper1a_ech_nogo.pdf`, **v1A.0.127**, md5
+`0bc1ee72836c867114118521cf86e1c2`, 8 pages, dated "July 24, 2026, 18:35 PDT".
 Math has been ASCII-ified for a web form; no wording changed.
 
-> **RE-VERIFY BEFORE PASTING.** The GATE-0 acknowledgements fix will bump P1A's
-> version and change the PDF md5. That fix should not touch the abstract — but
-> *confirm it didn't*: run `md5 -q arxiv/paper1a_ech_nogo.pdf`; if it is no longer
-> `6ade40c14049a316eabf21e67dc10072`, run
+> **The GATE-0 fix landed and did NOT touch the abstract.** The block below was
+> re-diffed against the v1A.0.127 PDF on 2026-07-24 and is byte-for-byte the same
+> text as under v1A.0.126; only the md5 and the title-block stamp moved.
+>
+> **RE-VERIFY BEFORE PASTING** if P1A moves again: run
+> `md5 -q arxiv/paper1a_ech_nogo.pdf`; if it is no longer
+> `0bc1ee72836c867114118521cf86e1c2`, run
 > `pdftotext -f 1 -l 1 arxiv/paper1a_ech_nogo.pdf - | head -40` and diff the
 > abstract against the block below before submitting.
 
@@ -221,11 +244,11 @@ birefringence prediction is made.
 | Field | Value |
 |---|---|
 | Path | `/Users/houstongolden/Desktop/CODE_YOU/bigbounce/arxiv/paper1a_ech_nogo.pdf` |
-| Version | `v1A.0.126` **(will bump with the GATE-0 fix)** |
-| md5 | `6ade40c14049a316eabf21e67dc10072` **(will change with the GATE-0 fix)** |
-| Pages | **8** |
+| Version | `v1A.0.127` **(GATE-0 fix landed 2026-07-24)** |
+| md5 | `0bc1ee72836c867114118521cf86e1c2` |
+| Pages | **8** (unchanged — the Note-scoped declarations block did not add a page) |
 | Figures | 0 |
-| Size | 356,865 bytes |
+| Size | 362,791 bytes |
 | Page size | US Letter (612 × 792 pt) — fine; IOP does not mandate A4 at initial submission |
 | Class | `revtex4-2` — **no conversion needed**, format-free per §1 |
 
@@ -406,12 +429,12 @@ situation belongs to P2, not this Note.
 
 | # | Must be true | Status 2026-07-24 |
 |---|---|---|
-| 1 | **Compiled PDF contains Acknowledgements + COI + funding + AI disclosure** | ⛔ **NOT TRUE — GATE 0.** Verify with:<br>`pdftotext arxiv/paper1a_ech_nogo.pdf - \| grep -ci "acknowledg\|conflict\|funding"`<br>Must return a nonzero count *for each of the three*. Currently 0/0/0. Owned by another lane. |
+| 1 | **Compiled PDF contains Acknowledgements + COI + funding + AI disclosure** | ✅ **CLOSED in v1A.0.127, 2026-07-24.** Re-verify any time with:<br>`pdftotext arxiv/paper1a_ech_nogo.pdf - \| grep -ci "acknowledg"` → **2**<br>`… \| grep -ci "competing interests"` → **1**<br>`… \| grep -ci "funding"` → **1**<br>`… \| grep -ci "generative-ai"` → **1**<br>Note-scoped block; the full-paper acknowledgments and the cut cosmology material stay commented. |
 | 2 | ORCID `0009-0008-5616-5994` resolves publicly | ✅ **VERIFIED 2026-07-24** — `pub.orcid.org/v3.0/0009-0008-5616-5994` → HTTP 200, name "Houston Golden" |
-| 3 | ORCID appears in the manuscript | ⚠️ **NOT PRESENT** (`grep 0009-0008 arxiv/paper1a_ech_nogo.tex` → 0 hits). **Not a blocker** — IOP only *recommends* ORCID, and you supply it in the ScholarOne author fields. Nice-to-have with the GATE-0 recompile. |
-| 4 | Abstract ≤ 300 words | ✅ **285 words** (whitespace count of the §3 block). Tight. Re-check if the abstract changed. |
+| 3 | ORCID appears in the manuscript | ✅ **NOW PRESENT** in v1A.0.127 — `\altaffiliation` footnote on the author block, rendering as "ORCID: 0009-0008-5616-5994" beside the email footnote on page 1. Matches how P1B carries it. |
+| 4 | Abstract ≤ 300 words | ✅ **UNDER THE CAP ON EVERY COUNTING CONVENTION, and untouched by the v1A.0.127 edit.** Verified from the compiled PDF 2026-07-24: **269 words** counting each inline math expression as one word (the manuscript-native count, and what a human or Word-style counter gives); **285 words** for the ASCII-ified paste block in §3 (whitespace tokens — this is the number to expect if ScholarOne counts what you paste); **295 words** by naive whitespace tokenization of raw `pdftotext` output, where rendered math fragments split into several tokens. Worst case 295 vs a 300 cap — **do not add a sentence.** |
 | 5 | Zenodo DOI 10.5281/zenodo.21481838 resolves | ✅ **VERIFIED 2026-07-24** — HTTP 200 at `zenodo.org/records/21481838` |
-| 6 | PDF exists, compiles clean, 8 pp | ✅ 8 pages, 0 figures, md5 `6ade40c14049a316eabf21e67dc10072` (pre-GATE-0) |
+| 6 | PDF exists, compiles clean, 8 pp | ✅ 8 pages, 0 figures, **v1A.0.127**, md5 `0bc1ee72836c867114118521cf86e1c2`. 0 undefined refs, **0 overfull hboxes**; page 1 and the new page 6 declarations block rendered and visually checked for column overflow (revtex two-column) — clean. |
 | 7 | No arXiv placeholder in live text | ✅ verified in the audit; `\preprint{arXiv:XXXX.XXXXX}` at `:1163` is **commented out** |
 | 8 | Bibliography self-contained (no "in preparation" companion cites reaching a referee) | ✅ The compiled Note's 11 `\bibitem`s are all third-party literature. The four `Golden2026*` entries in `arxiv/references.bib` are cited only inside `\begin{comment}` blocks. **However** they ship inside any source bundle you upload at revision stage — see item 9. |
 | 9 | `arxiv/references.bib` companion entries cleaned | ⚠️ Partially — HEAD `ef9993f2` is *"fix(bib): back-patch the five latent companion entries in arxiv/references.bib"*, so this may already be done. **Not a blocker for initial submission** (PDF-only). Re-check before the revision-stage source upload. |

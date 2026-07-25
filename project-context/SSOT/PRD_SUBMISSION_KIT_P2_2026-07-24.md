@@ -8,29 +8,41 @@ retrieved the *live* pages through a text-reader proxy that reports the origin
 URL, and **three of the audit's APS conclusions are corrected below** (§1.1).
 
 **Goal:** an 11pm click session. §3–§6 is everything you paste. §8 is the one
-place a name could embarrass you. §9.1 is the one thing worth 15 minutes before
-you click.
+place a name could embarrass you. §9.1 and §9.2 were the two pre-click items and
+**both are closed** — updated 2026-07-24 against **v1.7.130**.
 
 > ### ✅ NO BLOCKING CONTENT DEFECT. This is the shortest distance to a real editor's desk.
 > PDF-only initial submission. arXiv irrelevant. No APC on the subscription
 > route. Abstract 208 words against a 500-word cap. The PDF exists and compiles
 > clean.
 >
-> ### ⚠️ Two things to settle before you click — neither is a hard gate
-> 1. **AI-usage disclosure.** APS's dedicated AI policy is stricter than the
->    one-line version in its editorial policies, and the audit read the lenient
->    one. P2's compiled PDF contains no AI disclosure. See **§9.1** — 15 agent-minutes,
->    and it is the right call.
-> 2. **A factual misstatement in the Data Availability paragraph.** The PDF says
->    the manuscript is *"one patch line ahead"* of the Zenodo deposit. It is four
->    (deposit archives v1.7.125; the paper is v1.7.129). See **§9.2**.
+> ### ✅ BOTH PRE-CLICK ITEMS CLOSED 2026-07-24 in **v1.7.130**
+> 1. **AI-usage disclosure — DONE.** A `\section*{AI Usage Disclosure}` now sits
+>    in the body immediately after Data and Code Availability (page 8), naming
+>    the actual models and versions used on *this* paper, what they did, and
+>    what the author retained and verified. See **§9.1**.
+> 2. **The deposit self-reference — DONE, and made structurally unable to drift.**
+>    The "one patch line ahead" literal is gone; the whole relationship clause,
+>    including its tense, is now computed from the two version macros. It renders
+>    today as *"the present manuscript is v1.7.130, 5 patch releases ahead, and
+>    will be added to the same Zenodo record as a new version on the next
+>    re-stage."* See **§9.2**.
+>
+> Also landed in the same bump: **ORCID `0009-0008-5616-5994` is now in the
+> manuscript's author block** (was §9 item 3).
+>
+> **Current bytes: v1.7.130, md5 `f7116fe3e2541d6f649876f2ec7789ee`, 12 pages**
+> (was 11 — the new disclosure section added one; PRD Research Articles have no
+> length limit). Mirrored byte-identical to 19 served paths; Convex
+> `paperVersions` row `k5713b3bdee7b7my9c2jc32nah8b7xdc`. **The abstract was not
+> touched.**
 
 ---
 
 ## 0. TL;DR
 
 ```
-1. (Recommended) land the AI-disclosure + "one patch line" fixes   (§9.1, §9.2)
+1. AI-disclosure + deposit-reference fixes already landed in v1.7.130 (§9.1, §9.2)
 2. Create an account at authors.aps.org/Submissions/               (§2)
 3. New submission → Physical Review D → Research Article
 4. Upload ONE PDF: research/focused_paper_source_integration/02_full_draft.pdf (§4)
@@ -181,8 +193,8 @@ primordial non-Gaussianity; matter bounce; contracting universe; cubic action; b
 **Word count: 208.** Cap is **<500** (§1). Comfortable.
 
 **Provenance:** transcribed verbatim from the compiled PDF
-`research/focused_paper_source_integration/02_full_draft.pdf`, **v1.7.129**, md5
-`ed3c5861dcb339f53ab6e23f494b0c6d`, 11 pages, dated "July 24, 2026, 18:20 PDT".
+`research/focused_paper_source_integration/02_full_draft.pdf`, **v1.7.130**, md5
+`f7116fe3e2541d6f649876f2ec7789ee`, 12 pages, dated "July 24, 2026, 18:35 PDT".
 Math ASCII-ified for a web form; no wording changed.
 
 > **NOTE — this differs from `WAVE2_P5_SUBMISSION_KIT_2026-07-20.md`.** That kit
@@ -191,10 +203,14 @@ Math ASCII-ified for a web form; no wording changed.
 > recomputed with the adopted r = 0.84 convention, is 2.63 sigma"*. **Use the
 > block below, not the wave-2 kit's.**
 >
-> **RE-VERIFY BEFORE PASTING.** P2 moved twice today (v1.7.128 → v1.7.129) and
-> parallel lanes are active. Run
+> **The v1.7.130 submission-gate bump did NOT touch the abstract.** The block
+> below was re-diffed against the v1.7.130 PDF on 2026-07-24 and is the same text
+> as under v1.7.129; only the md5, the page count (11 → 12), and the title-block
+> stamp moved.
+>
+> **RE-VERIFY BEFORE PASTING** if P2 moves again — parallel lanes are active. Run
 > `md5 -q research/focused_paper_source_integration/02_full_draft.pdf`; if it is
-> no longer `ed3c5861dcb339f53ab6e23f494b0c6d`, re-read the abstract with
+> no longer `f7116fe3e2541d6f649876f2ec7789ee`, re-read the abstract with
 > `pdftotext -f 1 -l 1 … - | head -30` and diff against this block.
 
 ```
@@ -229,20 +245,22 @@ the exact contraction-phase amplitude derivation.
 | Field | Value |
 |---|---|
 | Path | `/Users/houstongolden/Desktop/CODE_YOU/bigbounce/research/focused_paper_source_integration/02_full_draft.pdf` |
-| Version | `v1.7.129` |
-| md5 | `ed3c5861dcb339f53ab6e23f494b0c6d` |
-| Pages | **11** |
+| Version | `v1.7.130` |
+| md5 | `f7116fe3e2541d6f649876f2ec7789ee` |
+| Pages | **12** (11 before the AI Usage Disclosure section was added; PRD Research Articles have no length limit) |
 | Figures | 2 (`fig1_shape_function.png`, `fig5_inflation_comparison.png`) |
-| Size | 599,088 bytes |
+| Size | 604,293 bytes |
 | Class | `revtex4-2` with `aps,prd` options — **already the journal's own class** |
 
 **Optional but genuinely useful:** APS says LaTeX source *"simplifies
-peer-review"* and is preferred. You already have a verified standalone bundle —
-`project-context/SSOT/arxiv_tarballs/paper2_arxiv_v1.7.128.tar.gz` — but note it
-is built at **v1.7.128**, one version behind the PDF. **Recommendation: upload
-the PDF only.** It is explicitly sufficient, it avoids a version mismatch between
-your PDF and your source, and APS requests source after acceptance anyway. If you
-want to upload source, rebuild the tarball at v1.7.129 first.
+peer-review"* and is preferred. A verified standalone bundle now exists **at the
+current version** — `research/focused_paper_source_integration/paper2_arxiv_v1.7.130.tar.gz`,
+md5 `dae645a40332d48bb1bbd2124dbe8455`, rebuilt 2026-07-24 and verified by
+extract-and-compile in an isolated `/tmp` dir at 0 errors / 0 undefined refs /
+12 pages. The version-mismatch objection is gone. **Recommendation is still:
+upload the PDF only** — it is explicitly sufficient, it is one less step, and
+APS requests source after acceptance anyway. The tarball is there if you want it
+or when acceptance comes.
 
 PDF document properties are blank (`pdfinfo` shows empty Title/Author). Cosmetic;
 the portal takes metadata from the form.
@@ -471,88 +489,105 @@ that would look worst.
 
 | # | Must be true | Status 2026-07-24 |
 |---|---|---|
-| 1 | Compiled PDF exists, 11 pp, clean | ✅ md5 `ed3c5861dcb339f53ab6e23f494b0c6d`, v1.7.129, 2 figures |
+| 1 | Compiled PDF exists, clean | ✅ **v1.7.130**, md5 `f7116fe3e2541d6f649876f2ec7789ee`, **12 pp** (was 11; the AI Usage Disclosure section added one — PRD Research Articles have no length limit), 2 figures. 0 undefined refs, **0 overfull hboxes**; page 1 and the changed pages 7–8 rendered and visually checked for revtex column overflow — clean. |
 | 2 | ORCID resolves publicly (**required by APS**) | ✅ **VERIFIED 2026-07-24** — HTTP 200, "Houston Golden" |
-| 3 | ORCID in the manuscript | ⚠️ **NOT PRESENT** (`02_full_draft.tex:34-36` has `\author`/`\email`/`\affiliation`, no ORCID). **Not a blocker** — the binding requirement is at the portal, where you enter it. Nice-to-have on the next recompile. |
+| 3 | ORCID in the manuscript | ✅ **NOW PRESENT** in v1.7.130 — `\altaffiliation` footnote on the author block, rendering as "ORCID: 0009-0008-5616-5994" beside the email footnote on page 1. Still enter it at the portal as well; that is the binding requirement. |
 | 4 | Abstract under 500 words | ✅ **208 words** |
 | 5 | Zenodo DOI 10.5281/zenodo.21461881 resolves | ✅ **VERIFIED 2026-07-24** — HTTP 200 at `zenodo.org/records/21461881` |
 | 6 | DAS text prepared for the portal Q&A | ✅ §6 |
 | 7 | Companion citation no longer prints "(in preparation)" | ✅ **FIXED.** The compiled reference [14] now reads *"H. Golden, Algebraic Cartan Elimination in Minimal Einstein–Cartan–Holst Gravity…, Zenodo 10.5281/zenodo.21481838 (2026), Companion paper (Paper I A), publicly archived on Zenodo… it is not an arXiv preprint and the paper is not peer reviewed."* Honest and current. |
-| 8 | **AI-usage disclosure present** | ⚠️ **ABSENT — see §9.1.** Recommended pre-click fix, not a hard gate. |
-| 9 | **Deposit-lag sentence factually correct** | ❌ **WRONG — see §9.2.** Recommended pre-click fix. |
+| 8 | **AI-usage disclosure present** | ✅ **CLOSED in v1.7.130 — see §9.1** for the text that shipped. Verify: `pdftotext research/focused_paper_source_integration/02_full_draft.pdf - \| grep -c "AI USAGE DISCLOSURE"` → 1. |
+| 9 | **Deposit-lag sentence factually correct** | ✅ **CLOSED in v1.7.130 — see §9.2.** Fixed by computation, not by a new literal, so it cannot go stale again. |
 | 10 | Zenodo deposit cited in the reference list | ⚠️ Not as a `\bibitem`; it appears in the DAS prose. APS asks for a reference-list citation of shared data. Copy-editing-stage item; §6 tells you where to put it at submission. |
 | 11 | Cover letter with referee paragraph drafted | ✅ §5 — **fill in three referee lines before pasting** |
 | 12 | No name appears in both the endorser shortlist and the referee box | ✅ by construction (§8) — re-check before pasting |
 | 13 | APS account exists, ORCID linked | ⬜ **HOUSTON-ONLY** — this kit creates no accounts |
 | 14 | Subscription-vs-$2910-CC-BY decision made | ⬜ **HOUSTON-ONLY** — recommendation: subscription ($0), §7 |
 | 15 | Not under consideration elsewhere | ✅ P2 has been submitted nowhere |
-| 16 | Source-file upload decision | ✅ recommendation: PDF only (§4). The staged tarball is v1.7.128, one behind the PDF — do not upload it as-is. |
+| 16 | Source-file upload decision | ✅ recommendation: PDF only (§4). The tarball has been rebuilt at the current version — `research/focused_paper_source_integration/paper2_arxiv_v1.7.130.tar.gz`, md5 `dae645a40332d48bb1bbd2124dbe8455`, extract-and-compile verified in an isolated `/tmp` dir at 0 errors / 0 undefined refs / 12 pages — so it is no longer behind the PDF if APS asks for source post-acceptance. |
 
-### 9.1 The AI-disclosure item — read this before deciding to skip it
+### 9.1 The AI-disclosure item — CLOSED in v1.7.130
 
-**What APS actually requires** (verbatim, §1):
-*"Authors must keep a record of any AI use and disclose any substantive uses in
-the submitted paper"*; disclosure should state *"AI tool name and version · How
-the AI assisted · How the authors directed and verified the AI output"*; and
-*"Any AI used to conduct the actual research (e.g., data analysis) must, like any
-tool, be disclosed within the paper's methods section."* Only *"polish, condense,
-or otherwise lightly edit"* is exempt.
+**What APS actually requires** (re-verified live 2026-07-24 by the lane that made
+the fix, through the same origin-reporting text proxy; `journals.aps.org` returns
+HTTP 403 to direct automated fetch and that Cloudflare challenge was **not**
+solved). From `https://journals.aps.org/authors/appropriate-use-ai-tools`:
 
-**Where P2 stands:** the compiled PDF contains no AI-usage disclosure. This
-programme's work is openly AI-assisted — P1B and P4 both carry explicit AI-usage
-sections, and P1A has draft text sitting inertly in its source. P2's use is
-plainly beyond "light editing."
+- *"Authors must keep a record of any AI use and disclose any substantive uses in
+  the submitted paper"*
+- disclosure should state *"AI tool name and version · How the AI assisted · How
+  the authors directed and verified the AI output"*
+- *"Any AI used to conduct the actual research (e.g., data analysis) must, like
+  any tool, be disclosed within the paper's methods section."*
+- *"Authors are not required to disclose the use of AI to polish, condense, or
+  otherwise lightly edit the text."* — the only exemption
+- *"An AI program cannot be held accountable and cannot be listed as an author."*
 
-**Honest severity:** this is **not** a submission blocker — APS will not reject
-the upload, and the requirement's enforcement is at the honesty level, not the
-form level. But it is a stated requirement, other papers in the same programme
-already comply, and a disclosure that exists everywhere except the paper you
-submitted is a bad look if anyone ever lines them up.
+**What shipped.** A `\section*{AI Usage Disclosure}` placed immediately after
+Data and Code Availability — deliberately in the body rather than after the
+appendices, because APS wants research-conducting AI disclosed in the methods,
+not in a back-matter note. It renders on **page 8** of the v1.7.130 PDF. Two
+paragraphs: the first says what the AI did, the second says what stayed with the
+author.
 
-**Recommendation: land it before you click.** It is ~15 agent-minutes: add a
-short paragraph in the same spirit as P1B's, bump `\paperVersion`, recompile,
-re-mirror per directive G. **This kit does not make that edit** — P2's source
-belongs to another lane and parallel agents are active. Draft text to hand that
-lane:
+The disclosure is **deliberately full rather than minimised.** An understated
+disclosure that a referee could disprove from this repository's public commit
+history would be far worse than a complete one. The model names and versions are
+the ones actually on the record for *this* paper — Claude Opus-4 family; Grok-4
+and Grok-4.3 and Gemini 2.5 Pro / 3.1 Pro from
+`project-context/peer-reviews/INT_v3/ROUND_*-P2-*`; ChatGPT from
+`project-context/peer-reviews/EXT_real/P2_*chatgpt*` — not copied from a sibling
+paper. Tone and specificity match P1B's existing `\section{AI Usage Disclosure}`
+and P3/P4/P5's AI-assisted-methodology paragraphs, so the six papers now read as
+one consistent disclosure practice.
 
+**Verify:**
+```bash
+pdftotext research/focused_paper_source_integration/02_full_draft.pdf - \
+  | grep -c "AI USAGE DISCLOSURE"        # → 1
 ```
-AI-assisted methods.---This work was carried out with an agentic AI research
-pipeline operated under the author's direction. [Model names and versions] were
-used for symbolic and dimensional cross-checking, systematic barrier
-cataloguing, literature triage, and adversarial internal review. The author
-directed all research decisions, and every analytic result reported here is
-independently certified by the committed check scripts listed in the Data and
-Code Availability section, whose outputs the author verified. No AI system is an
-author, and the author takes full responsibility for the contents.
-```
 
-Fill in the model names/versions from the programme's actual usage record — **do
-not** copy P1A's list without checking it matches what was used on P2.
+### 9.2 The "one patch line ahead" misstatement — CLOSED in v1.7.130
 
-### 9.2 The "one patch line ahead" misstatement
-
-The compiled PDF's Data and Code Availability section reads:
+**What it said** (v1.7.129, Data and Code Availability):
 
 > *"That deposit archives the reviewed v1.7.125 release PDF and source (the exact
 > bytes reviewed); the present manuscript is v1.7.129, **one patch line ahead**;
 > current and subsequent versions will be added to the same Zenodo record on the
 > next re-stage."*
 
-v1.7.125 → v1.7.129 is **four** patch releases, not one. The sentence is
-self-contradicting *in the same clause* — it prints both version numbers and then
-mis-states their difference.
+v1.7.125 → v1.7.129 is **four** patch releases, not one — the sentence
+contradicted itself in the same clause, printing both version numbers and then
+mis-stating their difference. This was the acceleration audit's action #5
+(pattern-047, "closures repair the exact string a reviewer quoted, and the
+adjacent literal survives") recurring in P2 *after* the 2026-07-23 closure meant
+to end it: that closure bound the **manuscript** half to `\paperVersion` but left
+the **relationship** as a hardcoded English literal.
 
-This is the acceleration audit's action #5 (pattern-047, "closures repair the
-exact string a reviewer quoted, and the adjacent literal survives") recurring in
-P2 after the 2026-07-23 closure meant to end it. **It is not a submission
-blocker** — the DAS is honestly scoped either way and claims no coverage it does
-not have — but it is a factual error in a compiled, publicly-served PDF, sitting
-in the one paragraph a careful referee checks first, and it is arithmetic anyone
-can do in two seconds.
+**How it was fixed — by computation, not by a new literal.** Writing "four patch
+releases ahead" would have been the same bug with a different number. Instead:
 
-**Recommendation: fix it in the same pass as §9.1, and fix it by *computing* the
-value rather than writing a new literal** — otherwise it will drift again on the
-next bump. Another lane owns the edit.
+- `\paperVersion` and `\depositVersion` are the only two places a version string
+  is written (`\depositVersion`'s ground truth is `.deposit-staging/P2/v1.7.125/`);
+- `\patchOf{}` parses the trailing patch integer out of each;
+- `\depositRelation` computes the delta with `\numexpr` and emits the **entire
+  clause, including its tense** — with zero / singular / plural branches, so
+  "will be added on the next re-stage" cannot survive the re-stage that fulfils
+  it, and a zero delta prints "the present manuscript is that same archived
+  release" instead of a lag.
+
+This is **the same construction P3 already uses**
+(`pipelines/p3_anomaly_engine/paper3_apjs.tex`), adopted rather than reinvented,
+so there is one pattern across the portfolio and not two.
+
+**What it renders as today** (v1.7.130 PDF, pages 7–8):
+
+> *"That deposit archives the reviewed v1.7.125 release PDF and source (the exact
+> bytes reviewed at that release); the present manuscript is v1.7.130, 5 patch
+> releases ahead, and will be added to the same Zenodo record as a new version on
+> the next re-stage."*
+
+A stale literal is now unrepresentable in this paragraph.
 
 ---
 
