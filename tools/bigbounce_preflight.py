@@ -23,6 +23,7 @@ from verify_p1b_science_contracts import verify as verify_p1b_science_contracts
 from verify_p4_p5_science_contracts import verify as verify_p4_p5_science_contracts
 from verify_claim_dependency_graph import verify as verify_claim_dependency_graph
 from verify_ci_shell_portability import verify as verify_ci_shell_portability
+from verify_companion_status import verify as verify_companion_status
 
 SCHEMA = "bigbounce.pre-review-portfolio-receipt/v1"
 ENGINE = Path.home() / ".claude/scistack/hubstack/learning-loop/paper-pre-review-check/scripts/pre_review_check.py"
@@ -38,6 +39,8 @@ ALLOWED_LOCAL_ENGINE_PATHS = (
     "tools/verify_claim_dependency_graph.py",
     "tools/verify_ci_shell_portability.py",
     "project-context/claim-dependency-graph.json",
+    "tools/verify_companion_status.py",
+    "project-context/companion-status-ledger.json",
 )
 
 
@@ -158,6 +161,11 @@ def evaluate(root: Path, rules_path: Path) -> dict[str, Any]:
         raise PortfolioError("p1b_science_contract_paths must be a string map")
     p1b_analysis_manifest = p1b_contract_paths.get("analysis_manifest")
     claim_graph_path = rule_catalog.get("claim_dependency_graph")
+    companion_ledger_path = rule_catalog.get("companion_status_ledger")
+    if "companion-status" in validator_ids and not isinstance(companion_ledger_path, str):
+        raise PortfolioError(
+            "companion-status requires a companion_status_ledger path"
+        )
     ci_shell_paths = rule_catalog.get("ci_shell_portability_paths", [])
     if not isinstance(ci_shell_paths, list) or not all(
         isinstance(item, str) for item in ci_shell_paths
@@ -185,6 +193,9 @@ def evaluate(root: Path, rules_path: Path) -> dict[str, Any]:
     ) + tuple(
         ci_shell_paths
         if "ci-shell-portability" in validator_ids else ()
+    ) + tuple(
+        (companion_ledger_path,)
+        if "companion-status" in validator_ids else ()
     ) + tuple(local_engine_paths)
     ensure_clean_inputs(root, registry, validator_inputs)
     registry_raw = registry_path(root).read_bytes()
@@ -254,6 +265,17 @@ def evaluate(root: Path, rules_path: Path) -> dict[str, Any]:
             if result.get("verdict") != "PASS":
                 raise PortfolioError(
                     "CI shell-portability validation failed: "
+                    + json.dumps(result.get("findings", []), sort_keys=True)
+                )
+            portfolio_validators.append({"id": validator_id, **result})
+        elif validator_id == "companion-status":
+            try:
+                result = verify_companion_status(root, companion_ledger_path)
+            except (OSError, UnicodeDecodeError, ValueError) as exc:
+                raise PortfolioError(f"companion-status validation failed: {exc}") from exc
+            if result.get("verdict") != "PASS":
+                raise PortfolioError(
+                    "companion-status validation failed: "
                     + json.dumps(result.get("findings", []), sort_keys=True)
                 )
             portfolio_validators.append({"id": validator_id, **result})

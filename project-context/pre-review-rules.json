@@ -14,12 +14,14 @@
     "artifact-crosscheck-six",
     "p4-p5-science-contracts",
     "claim-dependency-graph",
-    "ci-shell-portability"
+    "ci-shell-portability",
+    "companion-status"
   ],
   "ci_shell_portability_paths": [
     ".github/workflows/namaster-proof.yml"
   ],
   "claim_dependency_graph": "project-context/claim-dependency-graph.json",
+  "companion_status_ledger": "project-context/companion-status-ledger.json",
   "p1b_science_contract_paths": {
     "manuscript": "arxiv/paper1b_mcmc_companion.tex",
     "namaster_summary": "reproducibility/p1_namaster_500mc/results/physical_spectrum_v2/summary.json",
@@ -44,7 +46,9 @@
     "tools/verify_p4_p5_science_contracts.py",
     "tools/verify_claim_dependency_graph.py",
     "tools/verify_ci_shell_portability.py",
-    "project-context/claim-dependency-graph.json"
+    "project-context/claim-dependency-graph.json",
+    "tools/verify_companion_status.py",
+    "project-context/companion-status-ledger.json"
   ],
   "rules": [
     {
