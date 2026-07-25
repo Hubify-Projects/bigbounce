@@ -15,7 +15,8 @@
     "p4-p5-science-contracts",
     "claim-dependency-graph",
     "ci-shell-portability",
-    "companion-status"
+    "companion-status",
+    "pdf-mirror-integrity"
   ],
   "ci_shell_portability_paths": [
     ".github/workflows/namaster-proof.yml"
@@ -48,7 +49,8 @@
     "tools/verify_ci_shell_portability.py",
     "project-context/claim-dependency-graph.json",
     "tools/verify_companion_status.py",
-    "project-context/companion-status-ledger.json"
+    "project-context/companion-status-ledger.json",
+    "tools/verify_pdf_mirror_integrity.py"
   ],
   "rules": [
     {
@@ -93,7 +95,9 @@
         "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex"
       ],
       "pattern": "^(?:<<<<<<< |>>>>>>> )",
-      "flags": ["MULTILINE"],
+      "flags": [
+        "MULTILINE"
+      ],
       "severity": "BLOCKER",
       "message": "unresolved version-control conflict marker"
     },
@@ -109,7 +113,9 @@
         "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex"
       ],
       "pattern": "\\\\(?:todo|fixme|missingfigure)\\b",
-      "flags": ["IGNORECASE"],
+      "flags": [
+        "IGNORECASE"
+      ],
       "severity": "MAJOR",
       "message": "executable editorial-control macro remains in canonical source"
     },
@@ -140,7 +146,10 @@
         "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex"
       ],
       "pattern": "^(?!\\s*%).*\\b(?:R[0-9]+conf|EXT[0-9]+|FB[0-9]+-[0-9]+)\\s+(?:closure|round|audit)\\b",
-      "flags": ["IGNORECASE", "MULTILINE"],
+      "flags": [
+        "IGNORECASE",
+        "MULTILINE"
+      ],
       "severity": "MAJOR",
       "message": "internal review-round bookkeeping appears in compiled manuscript prose (patterns 017/055)"
     },
@@ -156,7 +165,10 @@
         "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex"
       ],
       "pattern": "^(?!\\s*%).*\\b(?:gate-(?:PASS|FAIL)|closure-wave|cross-vendor R-round|multi-vendor adversarial-review|OpenRouter unified API|convergent BLOCKER closure)\\b",
-      "flags": ["IGNORECASE", "MULTILINE"],
+      "flags": [
+        "IGNORECASE",
+        "MULTILINE"
+      ],
       "severity": "BLOCKER",
       "message": "internal review-system process language appears in compiled manuscript prose (patterns 017/055)"
     },
@@ -172,7 +184,9 @@
         "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex"
       ],
       "pattern": "^(?!\\s*%).*(?:/Users/[^/]+/|CODE_20[0-9]{2}|/tmp/)",
-      "flags": ["MULTILINE"],
+      "flags": [
+        "MULTILINE"
+      ],
       "severity": "BLOCKER",
       "message": "local-machine-only path appears in compiled manuscript prose"
     },
@@ -188,7 +202,10 @@
         "pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex"
       ],
       "pattern": "^(?!\\s*%).*\\b(?:TODO-SUBMISSION|TBD-SUBMISSION|INSERT-(?:ARXIV|DOI)|ARXIV-ID-PENDING)\\b",
-      "flags": ["IGNORECASE", "MULTILINE"],
+      "flags": [
+        "IGNORECASE",
+        "MULTILINE"
+      ],
       "severity": "BLOCKER",
       "message": "submission placeholder appears in compiled manuscript prose"
     }

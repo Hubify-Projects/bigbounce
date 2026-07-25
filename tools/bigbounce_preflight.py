@@ -24,6 +24,10 @@ from verify_p4_p5_science_contracts import verify as verify_p4_p5_science_contra
 from verify_claim_dependency_graph import verify as verify_claim_dependency_graph
 from verify_ci_shell_portability import verify as verify_ci_shell_portability
 from verify_companion_status import verify as verify_companion_status
+from verify_pdf_mirror_integrity import (
+    load_policy as load_served_pdf_policy,
+    verify as verify_pdf_mirror_integrity,
+)
 
 SCHEMA = "bigbounce.pre-review-portfolio-receipt/v1"
 ENGINE = Path.home() / ".claude/scistack/hubstack/learning-loop/paper-pre-review-check/scripts/pre_review_check.py"
@@ -41,6 +45,7 @@ ALLOWED_LOCAL_ENGINE_PATHS = (
     "project-context/claim-dependency-graph.json",
     "tools/verify_companion_status.py",
     "project-context/companion-status-ledger.json",
+    "tools/verify_pdf_mirror_integrity.py",
 )
 
 
@@ -179,6 +184,17 @@ def evaluate(root: Path, rules_path: Path) -> dict[str, Any]:
         raise PortfolioError(
             "p1b-analysis-manifest requires p1b_science_contract_paths.analysis_manifest"
         )
+    # The served-PDF policy itself lives in the registry (already hash-bound as
+    # `registry`); what still has to be pinned clean is every site data file the
+    # policy declares as a PDF-reference surface.
+    served_pdf_sources: tuple[str, ...] = ()
+    if "pdf-mirror-integrity" in validator_ids:
+        try:
+            served_pdf_sources = tuple(
+                source["path"] for source in load_served_pdf_policy(root)[0]["site_data_sources"]
+            )
+        except ValueError as exc:
+            raise PortfolioError(f"served-PDF policy is invalid: {exc}") from exc
     validator_inputs = tuple(
         p1b_analysis_manifest for item in validator_ids if item == "p1b-analysis-manifest"
     ) + tuple(
@@ -196,7 +212,7 @@ def evaluate(root: Path, rules_path: Path) -> dict[str, Any]:
     ) + tuple(
         (companion_ledger_path,)
         if "companion-status" in validator_ids else ()
-    ) + tuple(local_engine_paths)
+    ) + served_pdf_sources + tuple(local_engine_paths)
     ensure_clean_inputs(root, registry, validator_inputs)
     registry_raw = registry_path(root).read_bytes()
     engine = load_engine()
@@ -276,6 +292,17 @@ def evaluate(root: Path, rules_path: Path) -> dict[str, Any]:
             if result.get("verdict") != "PASS":
                 raise PortfolioError(
                     "companion-status validation failed: "
+                    + json.dumps(result.get("findings", []), sort_keys=True)
+                )
+            portfolio_validators.append({"id": validator_id, **result})
+        elif validator_id == "pdf-mirror-integrity":
+            try:
+                result = verify_pdf_mirror_integrity(root)
+            except (OSError, UnicodeDecodeError, ValueError, subprocess.CalledProcessError) as exc:
+                raise PortfolioError(f"served-PDF mirror-integrity validation failed: {exc}") from exc
+            if result.get("verdict") != "PASS":
+                raise PortfolioError(
+                    "served-PDF mirror-integrity validation failed: "
                     + json.dumps(result.get("findings", []), sort_keys=True)
                 )
             portfolio_validators.append({"id": validator_id, **result})
