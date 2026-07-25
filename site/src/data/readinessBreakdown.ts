@@ -45,7 +45,14 @@ export const readinessBreakdownNote =
   "subtracts from readiness.";
 
 const RESWEEP =
-  "2026-07-23 re-sweep (18 exact-PDF legs, active legs per directive M-AMENDED) truth-audited to 0 genuinely-new-real outstanding — the one real item (version-stamp drift) closed same-day, drift-proofed via the \\paperVersion macro.";
+  "2026-07-23 re-sweep (18 exact-PDF legs, active legs per directive M-AMENDED) truth-audited to 0 genuinely-new-real outstanding — the one real item (version-stamp drift) closed same-day, drift-proofed via the \\paperVersion macro. All 18 legs are now recorded in Convex (papers_externalReviews, 2026-07-23) with the exact version each leg read, so the live surface can prove board-to-PDF coverage rather than assert it.";
+
+// P2/P3/P4 closed the stamp-drift item AFTER the re-sweep board had read them,
+// so their CURRENT PDF has not itself been through a board. That is one confirm
+// read with no new science — stated here rather than glossed, and surfaced
+// per-paper by convex/publicationStatus.ts.
+const AWAITING_CONFIRM_READ =
+  " The closure version itself has not yet been read by a board (the re-sweep read the immediately-prior version); one confirm read remains — agent-owned, no new science.";
 
 function gates(convergenceNote: string): ReadinessGate[] {
   return [
@@ -67,8 +74,8 @@ export const publishingPhase: PublishingStep[] = [
 export const readinessBreakdown: PaperBreakdown[] = [
   { code: "P1A", publicationReadiness: 95, gates: gates("2026-07-23 re-sweep: Grok ACCEPT · Gemini minor (dispositioned) · Claude ACCEPT, zero findings. " + RESWEEP) },
   { code: "P1B", publicationReadiness: 95, gates: gates("2026-07-23 re-sweep: Claude ACCEPT with zero findings; Grok/Gemini minors dispositioned (re-flags of deliberate honesty disclosures). " + RESWEEP) },
-  { code: "P2", publicationReadiness: 95, gates: gates("2026-07-23 re-sweep: Grok ACCEPT — its first on P2. Stamp-drift closed in v1.7.128. " + RESWEEP) },
-  { code: "P3", publicationReadiness: 95, gates: gates("2026-07-23 re-sweep: Grok ACCEPT. Stamp-drift closed in v3.2.0-r13. " + RESWEEP) },
-  { code: "P4", publicationReadiness: 95, gates: gates("2026-07-23 re-sweep: all-minor board; re-flags falsified with citations (DOI renders 3×). Stamp-drift closed in v1.0.271. " + RESWEEP) },
+  { code: "P2", publicationReadiness: 95, gates: gates("2026-07-23 re-sweep: Grok ACCEPT — its first on P2. Stamp-drift closed in v1.7.128. " + RESWEEP + AWAITING_CONFIRM_READ) },
+  { code: "P3", publicationReadiness: 95, gates: gates("2026-07-23 re-sweep: Grok ACCEPT. Stamp-drift closed in v3.2.0-r13. " + RESWEEP + AWAITING_CONFIRM_READ) },
+  { code: "P4", publicationReadiness: 95, gates: gates("2026-07-23 re-sweep: all-minor board; re-flags falsified with citations (DOI renders 3×). Stamp-drift closed in v1.0.271. " + RESWEEP + AWAITING_CONFIRM_READ) },
   { code: "P5", publicationReadiness: 95, gates: gates("2026-07-23 re-sweep: Gemini MAJORs = the tracked Paper-IV/DOI gates + a disclosed limitation (audited, non-real); Hamaus re-flag falsified twice (cite at tex:2943). " + RESWEEP) },
 ];

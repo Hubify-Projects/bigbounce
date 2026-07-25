@@ -57,6 +57,27 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "publication-status-surface-drift-proofing-2026-07-24",
+    dateISO: "2026-07-24",
+    kind: "skill-improvement",
+    title: "Retired the clean-wave ETA widget — the homepage now shows directive-P gates with named owners, and can no longer go stale silently",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary:
+      "The homepage 'Submission-ready ETA' was counting down to a bar the program abandoned, using data that had stopped being written. Convex readinessMetrics:computeEta projected hours-to-ready from each paper's clean-wave streak against directive K's TARGET_CLEAN_WAVES=2 — a bar directive L demoted to 'a CHECKPOINT, not the finish line' and directives M / M-AMENDED / P superseded again. Worse, its newest rows were from 2026-07-16, so it rendered streaks of P1A 18 / P2 20 / P5 9 as current even though the 2026-07-22 confirmation wave found genuinely-new-real findings on ALL SIX papers (P1A 3, P1B 3, P2 5, P3 3, P4 3, P5 2), which under directive K's own definition resets every one of those streaks to 0; the honest post-re-sweep directive-K streaks were P1A 1 / P1B 1 / P5 1 and P2 0 / P3 0 / P4 0. Rather than backfill a retired metric, the ETA was retired outright and replaced with convex/publicationStatus.ts + PublicationStatusWidget: per paper, the named remaining gate and who owns it (Houston's final 5% vs an agent-owned item), derived live from papers / paper_versions / findings / pathc_caveats / papers_externalReviews. No readiness number is computed here — that stays owned by papers:listAllPaperStates — and no uplift was claimed (caps hold 95x6). Drift-proofing is the load-bearing change: the query returns raw evidence timestamps and the age is computed in the reader's browser, so a build frozen for eight days renders '8 d ago - STALE' with no rebuild; a Convex failure renders an explicit 'live status unavailable' instead of silently disappearing; and papers_externalReviews gained paperVersionReviewed so a board can only claim to cover a PDF it actually read (absent = not covered, fail-closed). Also synced the 18-leg 2026-07-23 re-sweep board into Convex — recorded in the truth-audit record that day but never written, which is why every surface still showed the 07-22 board as newest.",
+    keyTakeaways: [
+      "Retired convex readinessMetrics:computeEta + PublishEtaWidget + lib/liveReadiness getPublishEta/EtaResult/formatEtaHours; wave rows kept as history for the verdict-trajectory chart",
+      "Verified the honest directive-K streaks before discarding them: 07-22 wave hit all six papers (16 genuinely-new-real), 07-23 re-sweep hit only P2/P3/P4 (version-stamp drift) — so P1A 1 / P1B 1 / P5 1, P2 0 / P3 0 / P4 0, not 18/0/20/0/3/9",
+      "New surface reads: 0/6 signed off, 3 waiting on Houston (P1A, P1B, P5 — four agent gates complete and confirmed on the exact current PDF), 3 on the agents (P2, P3, P4 — their stamp-drift closure version has not had its confirm read)",
+      "Drift-proofing: evidence age computed client-side against the viewer's clock (FreshnessStamp), STALE banner past 3 days, explicit unavailable state on Convex failure, and paperVersionReviewed proves board-to-PDF coverage fail-closed",
+      "18 re-sweep review rows written to Convex from the raws + TRUTH_AUDIT_RESWEEP_2026-07-23.md (zero raw-vs-summary discrepancies); readiness caps untouched at 95x6, no uplift claimed",
+    ],
+    links: [
+      { label: "2026-07-23 re-sweep truth audit", href: `${PR}/INT_v3/TRUTH_AUDIT_RESWEEP_2026-07-23.md` },
+      { label: "Directive P (CLAUDE.md)", href: `${GH}/CLAUDE.md` },
+      { label: "publicationStatus query", href: `${GH}/convex/publicationStatus.ts` },
+    ],
+  },
+  {
     id: "pre-arxiv-confirmation-wave-2026-07-22",
     dateISO: "2026-07-22",
     kind: "internal-cc",
