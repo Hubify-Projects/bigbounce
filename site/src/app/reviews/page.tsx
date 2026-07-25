@@ -17,8 +17,10 @@ import {
 } from "./ProgressViz";
 import { VerdictTrajectoryChart } from "./VerdictTrajectoryChart";
 import { ChartShell } from "./ChartShell";
-import { PublishEtaWidget } from "@/components/PublishEtaWidget";
-import { getReadinessWaves, getRigorEvents, getPublishEta } from "@/lib/liveReadiness";
+import { PublicationStatusWidget } from "@/components/PublicationStatusWidget";
+import { getReadinessWaves, getRigorEvents } from "@/lib/liveReadiness";
+import { getPublicationStatus } from "@/lib/publicationStatus";
+import { getLivePapers } from "@/lib/livePapers";
 import "./reviews.css";
 
 // Live data updates on every commit/push (Vercel rebuild) + Convex subscription.
@@ -43,10 +45,11 @@ const avgCap = Math.round(
 
 export default async function ReviewsPage() {
   const rounds = sortedReviewRounds();
-  const [waveRows, rigorEvents, eta] = await Promise.all([
+  const [waveRows, rigorEvents, publicationStatus, livePapers] = await Promise.all([
     getReadinessWaves(),
     getRigorEvents(),
-    getPublishEta(),
+    getPublicationStatus(),
+    getLivePapers(),
   ]);
   return (
     <>
@@ -80,8 +83,9 @@ export default async function ReviewsPage() {
         The canonical readiness caps are P1A {cap("paper-1a")}, P1B {cap("paper-1b")},
         P2 {cap("paper-2")}, P3 {cap("paper-3")}, P4 {cap("paper-4")}, and P5{" "}
         {cap("paper-5")} (average {avgCap}%). Automated ACCEPT labels are retained exactly
-        as returned, but they are not journal acceptance. Independent human review, immutable
-        archive/DOI work, and venue-specific checks remain open gates.
+        as returned, but they are not journal acceptance. Under directive P the only thing
+        between a paper at 95% and 100% is Houston&apos;s own final read; independent human
+        review, venue-specific checks and submission belong to the separate Publishing phase.
       </p>
       <div
         style={{
@@ -247,11 +251,9 @@ export default async function ReviewsPage() {
       {/* ── ETA to publishable ───────────────────────────────────────────── */}
       <div className="eta-panel">
         <h2 className="campaign-obs-heading">Publication status</h2>
-        {eta ? (
-          <div style={{ margin: "0 0 20px 0" }}>
-            <PublishEtaWidget eta={eta} />
-          </div>
-        ) : null}
+        <div style={{ margin: "0 0 20px 0" }}>
+          <PublicationStatusWidget status={publicationStatus} livePapers={livePapers} compact />
+        </div>
         <div className="eta-table-wrap">
           <table className="eta-table">
             <thead>
@@ -274,8 +276,8 @@ export default async function ReviewsPage() {
                 <td className="eta-td">Evidence-capped average {avgCap}%: P1A {cap("paper-1a")} · P1B {cap("paper-1b")} · P2 {cap("paper-2")} · P3 {cap("paper-3")} · P4 {cap("paper-4")} · P5 {cap("paper-5")}. All six remain IN REVISION; no automated score converts into journal acceptance.</td>
               </tr>
               <tr>
-                <td className="eta-td eta-td-label">Remaining publication gates</td>
-                <td className="eta-td">Independent human scientific review, venue-specific formatting and scope checks, immutable archive/DOI completion, and author submission decisions. Any paper-specific open item remains governed by its SSOT record.</td>
+                <td className="eta-td eta-td-label">Remaining before 100%</td>
+                <td className="eta-td">Directive P (2026-07-23): Houston&apos;s final personal review, per paper — the last 5%. Independent human scientific review, venue-specific formatting and scope checks, arXiv endorsement and submission clicks are the separate <strong>Publishing</strong> phase; they follow 100% readiness and never subtract from it. Any paper-specific open item remains governed by its SSOT record.</td>
               </tr>
             </tbody>
           </table>

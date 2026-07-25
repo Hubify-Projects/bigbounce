@@ -1,6 +1,6 @@
 /**
  * liveReadiness.ts — server-side fetchers for the readinessMetrics + rigorEvents
- * Convex tables and the honest publishability-ETA (computeEta query).
+ * Convex tables that drive the /reviews verdict-trajectory chart.
  *
  * Matches the codebase pattern (livePapers.ts): ConvexHttpClient on the server,
  * graceful empty/null fallback so the build NEVER breaks when Convex is
@@ -9,8 +9,14 @@
  * client that reads it.
  *
  * HONESTY: every verdict here is a REAL recorded verdict (INT-API raws + EXT
- * browser raws). A "failed" leg is a data gap, never a zero. The ETA states its
- * assumption explicitly (`confidence`).
+ * browser raws). A "failed" leg is a data gap, never a zero.
+ *
+ * RETIRED 2026-07-24: `getPublishEta` / `EtaResult` / `formatEtaHours` lived
+ * here and fed the homepage "Submission-ready ETA". They projected hours to
+ * directive K's two-clean-waves bar — superseded by directives L/M/P — from
+ * rows that had stopped being written on 2026-07-16. Replaced by
+ * `@/lib/publicationStatus`, whose surface degrades to an explicit stale state
+ * instead of aging silently. See convex/readinessMetrics.ts for the full note.
  */
 
 const CONVEX_URL =
@@ -43,30 +49,6 @@ export type RigorEvent = {
   source: string;
 };
 
-export type EtaPerPaper = {
-  paperId: string;
-  paperSlug: string;
-  cleanWaveStreak: number;
-  remainingWaves: number;
-  openComputeCount: number;
-  openVenueCount: number;
-  lastWaveGenuinelyNew: number;
-  lastWaveLabel: string;
-  lastDateISO: string;
-  etaHours: number;
-  converged: boolean;
-};
-
-export type EtaResult = {
-  programEtaHours: number;
-  papersConverged: number;
-  papersTotal: number;
-  medianWaveHours: number;
-  targetCleanWaves: number;
-  perPaper: EtaPerPaper[];
-  confidence: string;
-};
-
 async function convexQuery<T>(path: string): Promise<T | null> {
   if (!CONVEX_URL) return null;
   try {
@@ -88,16 +70,4 @@ export async function getReadinessWaves(): Promise<WaveRow[]> {
 
 export async function getRigorEvents(): Promise<RigorEvent[]> {
   return (await convexQuery<RigorEvent[]>("readinessMetrics:listRigorEvents")) ?? [];
-}
-
-export async function getPublishEta(): Promise<EtaResult | null> {
-  return await convexQuery<EtaResult>("readinessMetrics:computeEta");
-}
-
-/** Human-friendly ETA phrasing: "≈ 24 h" / "< 1 h" / "0 h — clean-wave bar met". */
-export function formatEtaHours(h: number): string {
-  if (h <= 0) return "clean-wave bar met";
-  if (h < 1) return "< 1 h";
-  if (h < 48) return `≈ ${Math.round(h)} h`;
-  return `≈ ${Math.round(h / 24)} d`;
 }
