@@ -4,7 +4,7 @@ JORS submission bundle — Paper 1B (namaster-proof software metapaper)
 Journal:   Journal of Open Research Software (JORS)
 Portal:    https://account.openresearchsoftware.metajnl.com
 Type:      Software Metapaper
-Rendering: JORS-template rendering of manuscript v2B.0.15 (2026-07-24 12:00 PT)
+Rendering: JORS-template rendering of manuscript v2B.0.16 (2026-07-24 18:20 PT)
 
 Why this bundle exists
 ----------------------
@@ -43,7 +43,7 @@ references, 0 overfull hboxes, 8 pages.
 
 Relationship to the canonical manuscript
 ----------------------------------------
-The canonical Paper 1B is ../paper1b_namaster_proof.tex (v2B.0.15). Its
+The canonical Paper 1B is ../paper1b_namaster_proof.tex (v2B.0.16). Its
 v2B.0.13 bytes are permanently archived under Zenodo DOI
 10.5281/zenodo.21481842, and it feeds the project site, the PDF mirrors, and
 the arXiv tarball lineage. It is NOT restructured. This directory holds a
@@ -51,12 +51,18 @@ SECOND rendering of the same manuscript mapped onto JORS's mandated heading
 skeleton. The full section mapping is documented in the header comment of
 paper1b_namaster_proof_jors.tex.
 
-Content equivalence was verified against the canonical v2B.0.15 PDF: 50 of 53
-prose blocks are carried byte-verbatim (whitespace-normalised); the 3 that are
-not are exactly the blocks JORS requires to be split into its granular
-Availability fields (Programming language / Dependencies; Software location
-Archive + Code repository; License), and every fact in them was reconciled
-one-to-one. Every honesty disclosure of the canonical manuscript is preserved
+Content equivalence was re-verified against the canonical v2B.0.16 PDF after
+the 2026-07-24 version-legibility closure (see below): the count of
+byte-verbatim carried sentences is unchanged from the v2B.0.15 baseline
+(45/45), and every remaining divergence is either a pdftotext heading/page-
+number artifact or one of the blocks JORS requires to be split into its
+granular Availability fields (Programming language / Dependencies; Software
+location Archive + Code repository; License), each reconciled one-to-one. The
+single deliberate wording difference is that the canonical says the manuscript
+stamp sits "on the title page" while this rendering says it is "carried in
+this document's page header" -- correct in each, because the JORS rendering
+carries the stamp in its running header rather than a title-page date line.
+Zero unqualified "Version 0.1.7" strings remain in either rendering. Every honesty disclosure of the canonical manuscript is preserved
 verbatim: the 41-test / 39-run-plus-2-monorepo-coupled-skip contract, the
 macOS-untested label, the non-self-contained 1.41e-18 scalar caveat, the
 "software-recovery checks ... not measurements, detection significances, or
@@ -67,6 +73,9 @@ and the AI usage disclosure.
 Software under review
 ---------------------
   namaster-proof 0.1.7, MIT License
+  (The software release line 0.x.y and the manuscript revision stamp v2B.0.x
+   are separate namespaces and are not expected to agree; the manuscript now
+   states this explicitly in (2) Availability / Software location.)
   Code:    https://github.com/Hubify-Projects/bigbounce/tree/main/packages/namaster-proof
   Archive: https://doi.org/10.5281/zenodo.21481753 (Zenodo, 21 July 2026)
 

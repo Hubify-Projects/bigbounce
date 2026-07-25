@@ -1,6 +1,6 @@
 %% JORS (Journal of Open Research Software) submission rendering of Paper 1B.
 %%
-%% CANONICAL SOURCE: ../paper1b_namaster_proof.tex  (v2B.0.15, 2026-07-24)
+%% CANONICAL SOURCE: ../paper1b_namaster_proof.tex  (v2B.0.16, 2026-07-24)
 %% This file is a SECOND RENDERING of that manuscript, mapped onto the JORS
 %% Software Metapaper template (jors.cls + jors_template.tex, distributed as
 %% JORS_Template.zip from the "LaTex Template" link on
@@ -80,8 +80,8 @@
 
 \newcommand{\software}{\texttt{namaster-proof}}
 \newcommand{\Cl}{C_\ell}
-\newcommand{\paperVersion}{v2B.0.15}
-\newcommand{\paperTimestamp}{2026-07-24 12:00 PT}
+\newcommand{\paperVersion}{v2B.0.16}
+\newcommand{\paperTimestamp}{2026-07-24 18:20 PT}
 
 %% Set the header information (per jors_template.tex)
 \pagestyle{fancy}
@@ -269,7 +269,7 @@ failure.
 
 \section*{Quality control}
 
-Version 0.1.7 contains 41 automated tests covering numerical behavior, invalid
+\software{} version 0.1.7 contains 41 automated tests covering numerical behavior, invalid
 inputs, the CLI, receipt mutation, protected fields, and compatibility with
 the original production helpers.  All 41 run in a monorepo checkout; in a
 standalone package install 39 run and the 2 replay-equivalence tests skip
@@ -352,7 +352,7 @@ listed as untested.
 
 \section*{Programming language}
 
-Python. Version 0.1.7 requires Python 3.10 or later.
+Python. \software{} version 0.1.7 requires Python 3.10 or later.
 
 \section*{Additional system requirements}
 
@@ -406,6 +406,16 @@ The manuscript itself, with its exact source, arXiv bundle, and provenance
 manifest, is separately archived under
 \href{https://doi.org/10.5281/zenodo.21481842}{doi:10.5281/zenodo.21481842}
 (CC-BY-4.0, deposited July 21, 2026).
+
+This paper documents \software{} version 0.1.7. Every version number of the
+form 0.x.y in this paper refers to a release of the \software{} software
+package, and matches the released artifact: \texttt{pyproject.toml},
+\texttt{codemeta.json}, \texttt{CITATION.cff}, and the package
+\texttt{\_\_version\_\_} all declare 0.1.7, as does the Zenodo software record
+cited above. The separate stamp carried in this document's page header
+(\paperVersion) is the revision number of this manuscript as a document; it
+tracks editorial revisions of the metapaper and is deliberately independent of
+the software release line. The two numbers are not expected to agree.
 
 {\bf Code repository}
 
