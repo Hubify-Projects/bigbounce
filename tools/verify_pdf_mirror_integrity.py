@@ -279,6 +279,9 @@ def classify_served_tree(
             })
             continue
         counts["total"] += 1
+        # Seen on disk: whatever this file turns out to be, a retired entry
+        # naming it is describing something real, not a leftover ledger row.
+        unused_retired.discard(relative)
         digest = md5_bytes(path.read_bytes())
         inventory.append(f"{relative} {digest}")
         name = Path(relative).name
@@ -309,7 +312,6 @@ def classify_served_tree(
         owner = by_md5.get(digest)
         if owner is not None and name in canonical[owner]["names"]:
             counts["current_mirror"] += 1
-            unused_retired.discard(relative)
             if relative in retired:
                 findings.append({
                     "rule": "retired-entry-contradicts-current-mirror", "path": relative,
@@ -323,7 +325,6 @@ def classify_served_tree(
 
         record = retired.get(relative)
         if record is not None:
-            unused_retired.discard(relative)
             if record["disposition"] in PASSING_DISPOSITIONS:
                 counts["retained_by_policy"] += 1
                 continue
