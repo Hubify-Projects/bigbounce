@@ -216,7 +216,356 @@ minors only; it contains **no reference to Grok's P5 findings at all**. Both are
 substantive analysis-specification concerns (post-hoc selection bias), not
 presentation opinions, and should be scoped accordingly.
 
-**Corrected outcome line:** as of 2026-07-24, P1A / P1B / P2 / P3 have 0
-genuinely-new-real outstanding on ACTIVE legs. **P4 and P5 each carry
-undispositioned reviewer MAJORs from the 2026-07-23 re-sweep and are NOT
-evidenced as converged** until those carry source-cited verdicts.
+**Corrected outcome line (superseded — see the ADJUDICATION section below):** as
+of 2026-07-24, P1A / P1B / P2 / P3 have 0 genuinely-new-real outstanding on
+ACTIVE legs. **P4 and P5 each carry undispositioned reviewer MAJORs from the
+2026-07-23 re-sweep and are NOT evidenced as converged** until those carry
+source-cited verdicts.
+
+---
+
+# ADJUDICATION of the three remaining missed MAJORs — 2026-07-24
+
+**These three items were MISSED in the original 2026-07-23 pass and are
+adjudicated here on 2026-07-24.** They are not a silent backfill: for roughly
+one day the 07-23 line "0 genuinely-new-real outstanding across all six papers"
+stood on a disposition set that never touched them. The root cause is the one
+already recorded above — the P4-Gemini and P5-Grok legs carry `PARSED VERDICT:
+MINOR REVISIONS` headers while their issue lists contain `[MAJOR]`-tagged items,
+and the 07-23 triage keyed on the verdict word. The process fix is encoded in
+the canonical skills (see "Process fix landed" at the end of this section).
+
+Read-only adjudication: no paper `.tex` was edited by this pass. Each
+GENUINELY-NEW-REAL item carries a closure plan for the owning paper lane.
+
+---
+
+## P4 — Gemini (gemini-3.1-pro-preview) `[MAJOR]` — verbatim
+
+Source: `INT_v3/ROUND_2026-07-23-P4-v1.0.270-EXACTPDF-ac7b39ba-CLAUDESTACK-RESWEEP/API_P4_gemini.md` L18.
+Exact-PDF binding sha256 `ac7b39baca9a…` matches the round manifest; leg present
+and non-empty.
+
+> **[MAJOR] Readability and inline provenance tracking (Throughout, e.g., Sec 2.2, Sec 3, Sec 4.1):** The extensive insertion of raw SHA-256 hashes, exact script file paths (e.g., `pipelines/p2_chirality/outputs/...`), and JSON filenames directly into the main narrative severely disrupts the readability of the manuscript. While the commitment to computational closure and open science is exemplary, these identifiers belong in footnotes, a dedicated provenance table, or the Data Availability section, rather than mid-sentence in the primary text.
+
+### Verdict — **GENUINELY-NEW-REAL** (as a presentation defect; escalated from a twice-dismissed MINOR)
+
+The tempting disposition is SCOPE-VENUE-OPINION, and the ledger has twice taken
+it. That is exactly what AGENT_RULES §2.4 forbids: *"Never push back on
+stylistic grounds."* The prior dismissals are recorded and are the reason the
+same referee escalated.
+
+**Prior history (this is a re-flag that has been escalating, not a first
+sighting):**
+
+| Round | Leg | Severity | Disposition then |
+|---|---|---|---|
+| GEM1-INT 2026-07-11 (v1.0.235) | Gemini | `[MINOR]` "Excessive inline repo paths" | PROCESS-NIT (style) — `DISPOSITIONS/P4.md` L210 |
+| later wave (v1.0.2xx) | Gemini | `[MINOR]` "inline filepath artifacts" | DP4-13 / PROCESS-NIT — `DISPOSITIONS/P4.md` L319 |
+| **2026-07-23 re-sweep (v1.0.270)** | **Gemini** | **`[MAJOR]`** | **(none — the miss)** |
+
+Same referee, same substance, MINOR → MINOR → MAJOR on content that was never
+changed in response. Under directive H-refined this is *not* pattern-066
+referee noise: pattern-066 is a flip on *unchanged-but-already-addressed*
+content; here the content was unchanged and *never* addressed. Twice dismissing
+a finding on style grounds and then treating its escalation as noise is the
+`/review-integrity-audit` Check-2 failure mode in its exact shape.
+
+**Source verification — the complaint is factually accurate.** Verified against
+`pipelines/p2_chirality/chirality_catalog_paper.tex` on 2026-07-24 (live text
+only; `%`-comment and `\iffalse` regions excluded programmatically):
+
+| Assertion in the finding | Verified against source | Result |
+|---|---|---|
+| raw SHA-256 mid-narrative | 11 live lines carry a ≥12-char hex literal | CONFIRMED |
+| exact script/output paths inline | 9 live lines carry a `\texttt{…/…}` path or `\path{}` | CONFIRMED |
+| JSON filenames inline | 24 live lines name a `.json` / `.py` / `.csv` / `.npz` file | CONFIRMED |
+| "mid-sentence in the primary text" | **tex L1614 — the paper's single primary-result paragraph** — carries a full 40-hex HF revision `911316f31c21f2c4b933a2f3a761274cfe85c6d6` and the release path `apjs-release/v1.0.259-strict-primary/` in the same sentence run as the headline null ($z_{\rm mom}=+0.635$, $p=0.23768$) | CONFIRMED — worst instance sits on the most load-bearing sentence in the paper |
+| §Training Labels density | tex L1010 + L1012 carry six truncated `SHA-256 \texttt{…}` insertions plus bare manifest filenames inside running prose | CONFIRMED |
+
+**What is NOT real in the finding, recorded for honesty:** the typographic half
+does not hold. `pipelines/p2_chirality/chirality_catalog_paper.log` has **0
+`Overfull \hbox`** — the inline paths are not breaking the two-column layout
+(that is Gemini's separate MINOR-4, which IS falsified on the log). The defect
+is density and placement, not overflow.
+
+### Closure plan — **prose/structure only. NO re-analysis, NO compute, $0.**
+
+Owner: the P4 lane. Target version **v1.0.271 → v1.0.272**. Every hash stays in
+the paper — this is relocation, not deletion; deleting provenance would break
+`/artifact-link-verify` and directive-G.
+
+1. **tex L1614 (highest priority).** Lift the 40-hex HF revision and the
+   `apjs-release/v1.0.259-strict-primary/` path out of the primary-result
+   sentence into either a footnote on that sentence or the existing Data
+   Availability list (tex L1907–L1914), leaving a prose pointer
+   ("…at the immutable release revision recorded in Data Availability").
+   The headline sentence must read as a result, not as a manifest.
+2. **tex L1010 + L1012 (§Training Labels / CE-composition adjudication).**
+   Replace the six inline `SHA-256 \texttt{…}` insertions and the bare manifest
+   filenames with the existing `\artifact{}` macro pointer plus **one provenance
+   table**: either three new columns on the existing
+   `tab:training_provenance` (tex L1702) or a new `tab:artifact_provenance`
+   holding artifact-ID → path → SHA-256. Prose keeps the artifact ID; the table
+   holds the hash.
+3. Sweep the remaining live-text hex/path/JSON hits from the counts above
+   (11 / 9 / 24) and route each to the same table or to Data Availability. Keep
+   `\artifact{}` pointers inline — those are the paper's designed mechanism and
+   are not what the referee objected to.
+4. Directive-G chain: `\paperVersion` + `\date` + `\paperTimestamp` bump,
+   recompile 0 undef refs / 0 overfull, `/latex-audit`,
+   `/artifact-link-verify` (mandatory — step 1 moves URLs), 13-path mirror,
+   Convex `paperVersions:bump`, `DISPOSITIONS/P4.md` DP4-13 flipped to
+   CLOSED-BY-EDIT (v1.0.272) with this escalation recorded.
+
+**Files that change:** `pipelines/p2_chirality/chirality_catalog_paper.tex`
+only, plus the standard hygiene surfaces. **Compute required: none.**
+
+---
+
+## P5 — Grok (grok-4.3) `[MAJOR]` #1 — verbatim
+
+Source: `INT_v3/ROUND_2026-07-23-P5-v0.1.142-2026-07-22-EXACTPDF-c2b72da7-CLAUDESTACK-RESWEEP/API_P5_grok.md` L17.
+
+> [MAJOR] Section V B and abstract: Post-review/post-inspection re-ranking of the focal released GALZONE/OUT=0 estimator over the author-constructed any-hole path (explicitly declared as changed after data inspection) introduces selection bias risk in an otherwise exploratory analysis; the paper must add an explicit sensitivity table showing the any-hole result side-by-side with the focal estimate before claiming hierarchy independence.
+
+This is a selection-bias / post-hoc-analysis charge, the class that legitimately
+sinks a paper. It was audited as such, hardest-version-first, against the git
+history rather than against the paper's own account of itself.
+
+### The hard question, answered from chronology
+
+**Was the estimator re-ranked after seeing results, in a way that could bias the
+reported significance?** The re-ranking is real and is not disputed. Chronology,
+reconstructed from git and the `.tex` changelog block (not from the prose):
+
+| Version | Commit | Date | What changed |
+|---|---|---|---|
+| v0.1.129 | `f4c26f81` | 2026-07-14 | frozen chirality parent intersected with the released 694,642-TARGET DESIVAST GALZONE universe; covariate-adjusted + overlap-weighted controls fitted |
+| **v0.1.130** | **`0842dfc6`** | **2026-07-14** | **"released GALZONE OUT=0 adjusted estimator promoted as the sole designated observational primary; any-hole/T-Web/Tempel/ASTRA demoted"** — the re-ranking itself |
+| v0.1.131 | `e2e842d0` | 2026-07-14 | "designated primary" framing replaced by *focal exploratory/descriptive estimate*; estimand flow + model/covariance contract moved ahead of secondary results |
+| v0.1.135 | `0a46753d` | 2026-07-15 | K=13/G=50 CR1 + 99,999-draw wild-cluster ADDED as sensitivities alongside the K=78 fit |
+| **v0.1.136** | **`3e5e27bf`** | **2026-07-15** | **"promotes the rank-defensible K=13/G=50 CR1 + wild-cluster result to the focal estimator; demotes K=78"** — the nuisance-model change of MAJOR #2 |
+
+So: post-review, post-inspection, confirmed, twice. There was never a
+pre-registration to violate — `\S`V B tex L1508 states *"No timestamped analysis
+plan predates inspection of these data."* That is the honest position, not a
+dodge.
+
+### Verdict on the bias half — **FALSIFIED** (and this is the decisive part)
+
+The selection-bias hypothesis is that the author re-ranked toward the estimator
+that best supports the headline. The headline is a **non-detection**, so the
+most-favorable path is the one with the **largest** $p$. The paper did the
+opposite. Verified against source on 2026-07-24:
+
+| Path | $\Delta f_{\rm CW}$ | $p$ | Status in the paper | Source |
+|---|---|---|---|---|
+| Any-hole, unrestricted ($k=20$) | $+0.0007$ | **0.76** | demoted to sensitivity | Table XVII `tab:bonferroni5_family` row 1, tex L3676 |
+| Any-hole, footprint-restricted (exact) | $+0.0018$ | 0.43 | demoted to sensitivity | §VIII B, tex L3188–L3192; Table XIII `tab:desivast_canonical` |
+| **Focal released-parent, 13-column** | $+0.00145442$ | **0.66085** (wild-cluster 0.67345) | **promoted to focal** | Table VI `tab:focal_model_contract` L1869; §VI A L1519 |
+
+The **most null-favorable path available ($p=0.76$) is the one that was
+demoted.** A re-ranking driven by the result would have kept it. This is not an
+argument from the paper's disclosures; it is arithmetic on the paper's own
+tabulated numbers.
+
+Three further checks, all passing:
+
+1. **Nothing was suppressed.** The demoted any-hole result is retained in full —
+   exact integer counts in Table XIII (tex L3164ff), $\Delta f$/SE/$z$/$p$ at
+   tex L3188–L3192, a row in Table XVII, and named in the abstract with its
+   sample size ($N_{\rm void}=57{,}081$, tex L937). Demotion ≠ deletion.
+2. **The headline is algebraically monopole-invariant, so the parent swap cannot
+   manufacture it.** The estimand is a *difference*,
+   $\Delta f_{\rm CW}=f^{\rm non\text{-}void}-f^{\rm void}$; a uniform classifier
+   monopole cancels exactly. §V B (tex L1541–L1551) states and uses this: the
+   large raw $|\sigma_{\rm from\,half}|$ excursions ($-5.28$, $-4.75$) "measure
+   the single catalog-wide classifier monopole … which is not the environmental
+   null this paper tests"; monopole-subtracted the same regions return
+   $|\sigma_{\rm obs}-\sigma_{\rm pred}|\le1.55$. Changing which parent defines
+   the monopole therefore cannot move the environmental contrast except through
+   composition — and the measured composition effect is 0.035–0.08 pp (below).
+3. **There is no significance to bias.** Every path in the tree has $|z|<0.8$
+   and a CI containing zero; the spread across the entire hierarchy is
+   $\le 0.08$ pp against SEs of 0.23–0.33 pp. The whole-tree Bonferroni bound
+   over the $N=23$ declared paths gives $p_{\rm global}\le0.82$ (§V B,
+   artifacts [A45]/[A46]) — a selection-immune statement that already covers
+   every path Grok is worried about.
+
+**Grok's stated precondition is also not met.** The demand is triggered "before
+claiming hierarchy independence." The paper claims the opposite, in the two
+places Grok cites: abstract tex L992–L993 — *"not evidence for
+environment-independence and not a physical, real-space, or model constraint"* —
+and §V B tex L1531 — *"a null in this exploratory tree does not establish
+environment-independence or an exclusion limit."* The re-ranking is disclosed in
+the abstract (tex L936–L941), in §V B (L1508–L1513), and in the caption of
+Table IV `tab:analysis_tree` (L1735).
+
+### Verdict on the requested remedy — **GENUINELY-NEW-REAL** (bounded)
+
+The bias charge is falsified; the *evidence artifact Grok asks for does not
+exist*, and that half survives the falsification. Verified by enumerating every
+table label in the source: **no single table places the focal estimate beside the
+any-hole estimate.** The numbers live in Table VI (focal), Table XIII (any-hole
+exact counts), §VIII B prose (any-hole $\Delta f$/SE/$p$), and Table XVII (five
+void-definition variants, focal absent). Table XIV `tab:systematic_budget`
+carries a "Sphere-PIS vs. GALZONE — 0.37 pp — membership sensitivity" row, which
+is the closest existing artifact but is a sign-free magnitude with no SE or $p$.
+
+A referee must currently assemble the comparison from four locations to check
+that the hierarchy choice does not drive the null. Under AGENT_RULES §2.4 (in
+doubt → the more severe bucket; "analysis already exists in the paper" is a
+legitimate pushback only when it *does* exist as cited) this is a real,
+closable evidence-presentation gap, and the closure is the thing that actually
+answers the referee. Recording it as an OPINION and moving on would be the §4.6
+dodge.
+
+### Closure plan — **one table from already-computed numbers. NO re-analysis, NO compute, $0.**
+
+Owner: the P5 lane. Target version **v0.1.144 → v0.1.145**.
+
+1. Add `tab:hierarchy_sensitivity` in §V B `sec:primary_path`, immediately after
+   the post-hoc hierarchy-change paragraph (tex L1508–L1513) — i.e. at the exact
+   place the referee reads the disclosure. Three rows, all values transcribed
+   from existing artifacts, none recomputed:
+
+   | Path | $\Delta f_{\rm CW}$ | SE | 95% CI | $p$ | Source artifact |
+   |---|---|---|---|---|---|
+   | Focal released-parent OUT=0, 13-col adjusted | $+0.00145442$ | $0.00331502$ | $[-0.00504290,+0.00795174]$ | $0.66085$ (wild-cluster $0.67345$) | [A41]–[A44] |
+   | Any-hole, footprint-restricted (exact) | $+0.0018$ | $0.0023$ | $[-0.0027,+0.0064]$ | $0.43$ | [A15] |
+   | Any-hole, unrestricted ($k=20$) | $+0.0007$ | — | $[-0.0036,+0.0050]$ | $0.76$ | [A10] |
+
+2. Add two sentences under it: (a) the maximum spread across the hierarchy is
+   0.035 pp (focal ↔ footprint-restricted) and 0.08 pp (focal ↔ unrestricted),
+   both far inside every quoted SE; (b) **the demoted unrestricted path carries
+   the larger $p$ (0.76 vs 0.66085)** — state plainly that the re-ranking moved
+   *away from* the most null-favorable option, which is the direct answer to the
+   selection-bias reading. Do not soften this into a caveat; it is a
+   verifiable claim about the paper's own numbers.
+3. Cross-reference the new table from the abstract's hierarchy-change sentence
+   (tex L936–L941) and from Table IV's caption.
+4. Directive-G chain + `/latex-audit` + mirrors + Convex; append the closure to
+   `DISPOSITIONS/P5.md` (new D-id; DP5-13 is the bias class and stays
+   RE-FLAG-DISCLOSED, the new id is the consolidation closure).
+
+**Files that change:** `pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex`
+only, plus hygiene surfaces. **Compute required: none — every number already
+exists in [A10], [A15], [A41]–[A44].**
+
+---
+
+## P5 — Grok (grok-4.3) `[MAJOR]` #2 — verbatim
+
+Source: same leg, L18.
+
+> [MAJOR] Section VIII A and Table VI: The focal 13-column linear nuisance model (and its NSIDE=4 cluster sandwich) is declared "post-review"; the manuscript must state the pre-review model specification and show that the null conclusion is unchanged under the originally planned spline/fixed-effect specification.
+
+### Verdict — **FALSIFIED** (the requested content is in the very table the finding cites)
+
+Grok's own pointer resolves it. Table VI is
+`tab:focal_model_contract` (tex L1863; confirmed as "TABLE VI" in the rendered
+PDF via `pdftotext -layout`, /tmp cross-check 2026-07-24), and it already
+carries the pre-existing specification and its result as a dedicated row:
+
+> **Flexible sensitivity [A37]** — 78-column spline/fixed-effect model with
+> Moore–Penrose bread inverse, $G=50$ NSIDE$=4$ clusters:
+> $\Delta f_{\rm CW}=+0.00125636$, ${\rm SE}=0.00341274$, 95% CI
+> $[-0.00543249,+0.00794522]$, normal $p=0.71277$; rank-fragile because
+> $K=78>G=50$
+> — tex L1871, verbatim
+
+That is: the spline/fixed-effect specification is stated, its contrast is
+reported, its interval contains zero, and its $p=0.71277$ is a non-detection —
+i.e. "the null conclusion is unchanged," exactly the demonstration demanded. The
+surrounding prose states the same in words at tex L1828 ("The older A37
+spline/sky-fixed-effect model is retained only as the flexible sensitivity in
+Table VI") and tex L1882–L1885 (the K=78 fit "is retained only as a
+flexible-model sensitivity, not as the headline interval"). §2.4's second
+legitimate-pushback clause applies verbatim: *"Analysis already exists in the
+paper (cite section / equation / appendix)."*
+
+**The finding's premise is additionally wrong, and this matters.** There is no
+"originally planned" specification. The 78-column spline/fixed-effect fit is not
+a pre-review plan — it is the *earlier post-review* fit on the same post-review
+released-parent construction (v0.1.131 `e2e842d0`, 2026-07-14 → demoted at
+v0.1.136 `3e5e27bf`, 2026-07-15). The construction it fits did not exist before
+review. The paper says so at tex L1880–L1881: the 13-column specification "was
+declared after review and inspection of the data and is therefore exploratory,
+not preregistered." Grok is asking the paper to produce a pre-registration the
+paper explicitly and correctly denies having.
+
+**Direction check, same test as MAJOR #1 and same answer.** The switch moved the
+reported $p$ from **0.71277 (K=78) → 0.66085 (K=13)** — again *away from* the
+more null-favorable value. The point estimate moved $+0.00125636 \to
++0.00145442$ (0.02 pp); both CIs contain zero. The stated rationale is
+structural and result-independent — $K=78>G=50$ makes the CR1 normal
+approximation rank-fragile, so the K=13 fit is the only one admitting both CR1
+*and* null-imposed wild-cluster inference (tex L1877–L1885). Robustness of the
+adopted fit is tabulated at NSIDE = 2, 4, 8 and under 3,750 nearest-MAXIMALS 3-D
+clusters, point estimate $+0.00145442$ throughout, every interval containing
+zero (Table VI, [A43]–[A44]).
+
+**No closure work. No compute.** The correct handling is a source-cited response
+line in the round reply, not an edit. Append as a new RE-FLAG-DISCLOSED D-id in
+`DISPOSITIONS/P5.md` with the Table VI L1871 citation and the fingerprint
+`13-column, 78-column, spline, fixed-effect, A37, pre-review, nuisance, Table VI`
+so the next wave auto-matches it instead of re-deriving this.
+
+---
+
+## Honest per-paper convergence statement — 2026-07-24
+
+- **P4 — NOT CONVERGED.** One genuinely-new-real MAJOR outstanding (Gemini,
+  inline provenance in narrative). It is a prose/structure closure with zero
+  compute, but it is unclosed, and it was twice dismissed on style grounds
+  before it escalated. P4 becomes evidenced-converged on active legs when
+  v1.0.272 lands with the relocation + provenance table and the directive-G
+  chain passes. **P4 is also the paper this campaign's D3 back-patch gate on P5
+  waits on, so this is on the critical path for both.**
+- **P5 — NOT CONVERGED.** Of the two Grok MAJORs: #2 is FALSIFIED and needs no
+  work; #1 splits — its selection-bias charge is FALSIFIED on the paper's own
+  arithmetic (the demoted path carries the larger $p$), but its requested
+  side-by-side sensitivity table is GENUINELY-NEW-REAL and unclosed. P5 becomes
+  evidenced-converged on active legs when v0.1.145 lands
+  `tab:hierarchy_sensitivity`. The two pre-existing tracked gates
+  (Paper-IV back-patch, P5 deposit DOI) are unchanged and remain
+  ALREADY-TRACKED-GATE, not convergence blockers under directive M-AMENDED.
+- **P1A / P1B / P2 / P3 — unchanged from the corrected line above:** 0
+  genuinely-new-real outstanding on ACTIVE legs (P1B via the v2B.0.16 closure
+  recorded earlier in this document).
+
+**The 2026-07-23 "0 genuinely-new-real across all six papers" line is
+definitively retired.** The evidenced state on 2026-07-24 is: four papers clear,
+two papers each carrying exactly one open genuinely-new-real item, both of them
+closable with prose/table work and no compute.
+
+**Completeness re-check after this pass** (the check the 07-23 pass lacked):
+
+| Paper | MAJORs in raw across all legs | MAJORs dispositioned | Match |
+|---|---|---|---|
+| P1A | 0 | 0 | ✔ |
+| P1B | 1 | 1 | ✔ |
+| P2 | 0 | 0 | ✔ |
+| P3 | 0 | 0 | ✔ |
+| P4 | 1 | 1 | ✔ |
+| P5 | 5 (Gemini 3 + Grok 2) | 5 | ✔ |
+| **Total** | **7** | **7** | **✔** |
+
+0 `[BLOCKER]` tags anywhere in the round. All 18 legs present and non-empty.
+
+## Process fix landed (2026-07-24)
+
+The verdict-word-vs-item-tag bug is encoded so it cannot recur silently:
+
+- `~/.claude/scistack/hubstack/learning-loop/peer-review-truth-audit/SKILL.md` —
+  new **Rule 8** (severity is read from per-item tags, never from the leg's
+  summary verdict word) + a mandatory completeness table in the hard gates.
+- `~/.claude/scistack/hubstack/learning-loop/review-integrity-audit/SKILL.md` —
+  new **CHECK 0 — DISPOSITION COMPLETENESS**, run before the three bias checks;
+  an incomplete disposition set is an automatic ENGINEERED verdict.
+- `~/.claude/scistack/astrostack/bigbounce-r-round/SKILL.md` — §3 severity-source
+  rule and a §5 gate precondition requiring the paper × leg × MAJORs-in-raw ×
+  MAJORs-dispositioned table to balance before any convergence claim.
+- `tools/major_completeness_check.py` — machine-checkable version; exits 2 with
+  the offending rows when raw and dispositioned counts disagree.
