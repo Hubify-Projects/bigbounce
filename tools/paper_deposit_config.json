@@ -378,8 +378,8 @@
      "archive_name": "fig_p5_healpix_skymap_nside32.png"
     }
    ],
-   "metadata_complete": false,
-   "metadata_blocker": "License authorized; remaining gate: Paper-IV (P4) arXiv ID back-patch into the P5 manuscript and rebuilt tarball/proof",
+   "metadata_complete": true,
+   "metadata_blocker": "CLOSED 2026-07-24 (v0.1.143, commit eecec167): the Paper-IV provenance gate is satisfied by back-patching the PUBLISHED Zenodo record (version DOI 10.5281/zenodo.21461899, concept DOI 10.5281/zenodo.21461898, deposited 2026-07-20, CC-BY-4.0) throughout the P5 manuscript, and the tarball/proof were rebuilt at that commit. Note the substitution: Paper IV has NO arXiv identifier and is NOT peer reviewed, so the original 'P4 arXiv ID' wording is unreachable while arXiv endorsement is pending; the Zenodo record is a resolvable public permanent archive and is cited as exactly that. Staging only -- publication remains Houston-gated.",
    "metadata": {
     "title": "A Catalog-Native DESIVAST Test of Classifier-Labelled Spiral Chirality in DESI DR1",
     "creators": [
@@ -387,7 +387,7 @@
       "name": "Golden, Houston"
      }
     ],
-    "description": "Non-release configuration record. Deposit staging remains intentionally disabled until Houston authorizes the manuscript/source license and the Paper-IV provenance/completeness gates close.",
+    "description": "Version-matched manuscript PDF and self-contained arXiv source bundle for the BigBounce DESI DR1 / DESIVAST spiral-chirality environment test. The manuscript reports an exploratory, post-hoc, catalog-specific non-detection: classifier-labelled spiral CW fraction shows no detectable difference between released DESIVAST void and non-void arms. It is a statement about classifier labels and released redshift-space environment assignments, not a physical-handedness, real-space, or cosmological constraint. Not peer reviewed.",
     "upload_type": "publication",
     "publication_type": "article",
     "access_right": "open",

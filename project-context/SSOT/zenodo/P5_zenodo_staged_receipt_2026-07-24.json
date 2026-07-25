@@ -1,0 +1,85 @@
+{
+  "paper": "P5",
+  "paper_version": "v0.1.143-2026-07-24",
+  "state": "staged-locally-not-uploaded",
+  "submitted": false,
+  "published": false,
+  "deposition_id": null,
+  "prereserved_doi": null,
+  "draft_url": null,
+  "blocker": "ZENODO_TOKEN is not present in the environment or in <repo>/.env.local, and is not present in any other .env file on this machine. tools/zenodo_deposit.py therefore failed closed before contacting Zenodo: no deposition was created, no file was uploaded, and no DOI was prereserved. The token used for the 2026-07-20 P2/P3/P4 publications and the 2026-07-21 P1A/P1B drafts was supplied ad hoc in-session and was not persisted. An agent must not handle the credential itself; Houston supplies ZENODO_TOKEN and the resume command below completes the draft.",
+  "resume_command": "ZENODO_TOKEN=<token> python3 tools/zenodo_deposit.py --staging-dir .deposit-staging/P5/v0.1.143-2026-07-24 --paper P5 --receipt-out project-context/SSOT/zenodo/P5_zenodo_draft_receipt_2026-07-24.json",
+  "publish_policy": "DO NOT pass --publish. Publication on Zenodo is irreversible and requires Houston's explicit per-paper go. This receipt records a verified local staging only.",
+  "staging_directory": ".deposit-staging/P5/v0.1.143-2026-07-24",
+  "git_commit": "329a9f1cebfa79cb08ee63e69c3745a2f186a633",
+  "paper_source_commit": "eecec167d2ced2b216fac75a46e947d4d824aa99",
+  "tarball_commit": "f4666f80",
+  "metadata": {
+    "access_right": "open",
+    "creators": [
+      {
+        "name": "Golden, Houston"
+      }
+    ],
+    "description": "Version-matched manuscript PDF and self-contained arXiv source bundle for the BigBounce DESI DR1 / DESIVAST spiral-chirality environment test. The manuscript reports an exploratory, post-hoc, catalog-specific non-detection: classifier-labelled spiral CW fraction shows no detectable difference between released DESIVAST void and non-void arms. It is a statement about classifier labels and released redshift-space environment assignments, not a physical-handedness, real-space, or cosmological constraint. Not peer reviewed.",
+    "license": "cc-by-4.0",
+    "publication_type": "article",
+    "title": "A Catalog-Native DESIVAST Test of Classifier-Labelled Spiral Chirality in DESI DR1",
+    "upload_type": "publication",
+    "version": "0.1.143-2026-07-24"
+  },
+  "staged_files": [
+    {
+      "filename": "SHA256SUMS",
+      "size_bytes": 282,
+      "local_staged_md5": "37f6e10939cc20cb9b7c77214d342b1b",
+      "zenodo_md5": null,
+      "md5_match": null
+    },
+    {
+      "filename": "manifest.json",
+      "size_bytes": 1955,
+      "local_staged_md5": "c0f7f73d91b18dbad94ad37ba337d2be",
+      "zenodo_md5": null,
+      "md5_match": null
+    },
+    {
+      "filename": "p5_desi_chirality.pdf",
+      "size_bytes": 1526873,
+      "local_staged_md5": "7059321262b789b7c1ec1c22c7957a4e",
+      "zenodo_md5": null,
+      "md5_match": null
+    },
+    {
+      "filename": "p5_desi_chirality.tex",
+      "size_bytes": 343035,
+      "local_staged_md5": "f0cb2b5a68ee12c14e88d2f0494797e2",
+      "zenodo_md5": null,
+      "md5_match": null
+    },
+    {
+      "filename": "paper5_arxiv_v0.1.143-2026-07-24.tar.gz",
+      "size_bytes": 1029926,
+      "local_staged_md5": "06edaadbfbd7ccea452a223471ffda91",
+      "zenodo_md5": null,
+      "md5_match": null
+    }
+  ],
+  "standalone_proof": {
+    "engine": "tectonic",
+    "mode": "isolated-safe-extraction",
+    "status": "pass",
+    "errors": 0,
+    "undefined_references": 0,
+    "overfull_hboxes": 0,
+    "overfull_vboxes": 0,
+    "page_count": 42
+  },
+  "pdf": {
+    "md5": "7059321262b789b7c1ec1c22c7957a4e",
+    "sha256": "947117f147d90cd0bdc6e047726f8fc580a0c9d38a18293b40bf56fe55ef224c",
+    "page_count": 42
+  },
+  "gate_note": "The P5 deposit config gate (tools/paper_deposit_config.json, metadata_complete) was flipped from false to true in this pass. The recorded blocker was 'Paper-IV (P4) arXiv ID back-patch into the P5 manuscript and rebuilt tarball/proof'. The provenance substance of that gate is now closed: the P5 manuscript cites Paper IV's PUBLISHED Zenodo record (version DOI 10.5281/zenodo.21461899, concept DOI 10.5281/zenodo.21461898, deposited 2026-07-20, CC-BY-4.0, doi.org verified HTTP 200) and the tarball/proof were rebuilt at commit eecec167. The literal 'arXiv ID' wording is NOT satisfied and cannot be: Paper IV has no arXiv identifier, arXiv posting is gated behind an endorsement Houston does not yet have, and the Zenodo deposit is a public permanent archive, not an arXiv preprint and not peer review. The manuscript states this distinction explicitly at every citing site.",
+  "receipt_written_utc": "2026-07-25T00:30:00Z"
+}
