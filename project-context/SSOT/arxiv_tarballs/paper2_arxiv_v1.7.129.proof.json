@@ -1,0 +1,23 @@
+{
+  "compiled_pdf_md5": "f0e4f546f2a3d9c85ccc0347549b3b9f",
+  "compiled_pdf_sha256": "b0ebdb3725bc38b72c1ab9466c6cc4ccc2e351c7c30ff5b6c25c52902b6f9494",
+  "compiled_pdf_size_bytes": 360778,
+  "engine": "tectonic",
+  "errors": 0,
+  "git_commit": "ab9d1d0f1afe110ee090fd68f7d9993bda6f2e59",
+  "mode": "isolated-safe-extraction",
+  "overfull_hboxes": 0,
+  "overfull_vboxes": 0,
+  "page_count": 11,
+  "paper_id": "P2",
+  "paper_version": "v1.7.129",
+  "schema": "bigbounce-standalone-arxiv-proof/v1",
+  "source_pdf": "research/focused_paper_source_integration/02_full_draft.pdf",
+  "source_pdf_md5": "ed3c5861dcb339f53ab6e23f494b0c6d",
+  "source_pdf_sha256": "4b7bc814e627e6366fd8b1d438717695920a6272fcbcd2130da55dd10fa23a64",
+  "status": "pass",
+  "tarball": "project-context/SSOT/arxiv_tarballs/paper2_arxiv_v1.7.129.tar.gz",
+  "tarball_sha256": "e4bc33d15b8ba8f8c16442df64a1dbbc9ddd4612857864e6ba099d63ece1671e",
+  "undefined_references": 0,
+  "verified_at_utc": "2026-07-25T00:43:16Z"
+}

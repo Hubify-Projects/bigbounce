@@ -418,6 +418,12 @@ export default defineSchema({
     rRoundId: v.optional(v.id("r_rounds")),
     pdfUrl: v.optional(v.string()),      // GitHub/Drive link to full report
     notes: v.optional(v.string()),
+    // 2026-07-24: the exact paper version this leg actually read, e.g.
+    // "v1.7.127". Load-bearing for publicationStatus:get — it is the only way
+    // to prove a review board covered the CURRENT PDF rather than a superseded
+    // one. Optional because every pre-2026-07-24 row predates the field;
+    // absent is treated as "coverage unknown" (fail-closed), never as covered.
+    paperVersionReviewed: v.optional(v.string()),
   })
     .index("by_paper", ["paperSlug", "receivedAt"])
     .index("by_source", ["source", "receivedAt"]),

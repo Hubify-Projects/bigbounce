@@ -94,6 +94,9 @@ export const upsertByLabelDate = mutation({
     rRoundId: v.optional(v.id("r_rounds")),
     pdfUrl: v.optional(v.string()),
     notes: v.optional(v.string()),
+    // The exact paper version this leg read. Record it on every new row —
+    // publicationStatus:get uses it to prove a board covered the CURRENT PDF.
+    paperVersionReviewed: v.optional(v.string()),
   },
   handler: async (ctx, args) => {
     const rows = await ctx.db
