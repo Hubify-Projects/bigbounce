@@ -2,19 +2,19 @@ import { mutation, query } from "./_generated/server";
 import { v } from "convex/values";
 
 /**
- * readinessMetrics — per-paper per-wave verdict rows + the honest
- * publishability-ETA computation.
+ * readinessMetrics — per-paper per-wave verdict rows. HISTORICAL RECORD.
  *
  * HONESTY CONTRACT (Houston, 2026-07-10):
  *   - `verdicts[].verdict` are the REAL recorded verdicts from INT-API raws
  *     and EXT browser raws. Never synthesized. A leg with no output is
  *     recorded verdict:"failed" and rendered as a GAP (never a zero).
- *   - The ETA states its assumption explicitly (`confidence` field): it
- *     assumes 0 new findings from here; a single genuinely-new finding on a
- *     paper resets that paper's clean-wave streak and pushes the ETA out.
- *   - Journal ACCEPTANCE is a separate, external clock (human referees,
- *     months) — this ETA is only the loop's own "papers stop surfacing
- *     genuinely-new findings" clock. The widget copy says so.
+ *
+ * SCOPE NOTE (2026-07-24). These rows drive the /reviews verdict-trajectory
+ * chart and nothing else. The `computeEta` projection that used to live at
+ * the bottom of this file is RETIRED — see the note there. `cleanWaveStreak`
+ * is a directive-K quantity; directive K's two-clean-waves bar is no longer
+ * the program's exit criterion, so the streak field is history, not status.
+ * Live publication status is `publicationStatus:get`.
  */
 
 const VERDICT = v.union(
@@ -129,106 +129,25 @@ export const listRigorEvents = query({
   },
 });
 
-// ── ETA computation ──────────────────────────────────────────────────────
-
-// Rolling median of wave-to-wave durations (hours) from the last N wave dates.
-function rollingMedianWaveHours(seqs: number[], fallbackH: number): number {
-  const uniq = Array.from(new Set(seqs)).sort((a, b) => a - b);
-  if (uniq.length < 2) return fallbackH;
-  const last = uniq.slice(-6); // last 5 gaps = last 6 timestamps
-  const gaps: number[] = [];
-  for (let i = 1; i < last.length; i++) {
-    const h = (last[i] - last[i - 1]) / 3_600_000;
-    // Sub-30-minute gaps are correction/bookkeeping rows posted back-to-back,
-    // not real wave cadence — excluding them keeps the median honest.
-    if (h > 0.5) gaps.push(h);
-  }
-  if (gaps.length === 0) return fallbackH;
-  gaps.sort((a, b) => a - b);
-  const mid = Math.floor(gaps.length / 2);
-  const med = gaps.length % 2 ? gaps[mid] : (gaps[mid - 1] + gaps[mid]) / 2;
-  // Clamp to a sane band so a single 12-hour idle gap doesn't blow up the ETA.
-  return Math.min(Math.max(med, 0.5), 12);
-}
-
-/**
- * computeEta — honest publishability ETA.
- *
- * Per paper, remaining waves to the loop's convergence bar =
- *   max(0, TARGET_CLEAN_WAVES − cleanWaveStreak)
- * (TARGET_CLEAN_WAVES = 2, directive K: two consecutive clean waves).
- * ETA hours = remaining × rolling-median wave-duration (last 5 gaps, fallback 3h)
- *             + 2h closure-buffer if the paper's LAST wave had genuinelyNewCount>0.
- * Program submission-ready ETA = MAX over papers (the last paper to converge).
- */
-export const computeEta = query({
-  args: {},
-  handler: async (ctx) => {
-    const TARGET_CLEAN_WAVES = 2;
-    const FALLBACK_WAVE_H = 3;
-    const CLOSURE_BUFFER_H = 2;
-
-    const rows = await ctx.db.query("readinessMetrics").withIndex("by_seq").collect();
-    rows.sort((a, b) => a.seq - b.seq);
-
-    const medianWaveH = rollingMedianWaveHours(
-      rows.map((r) => r.seq),
-      FALLBACK_WAVE_H,
-    );
-
-    // Group by paper, keep the latest wave per paper.
-    const byPaper = new Map<string, typeof rows>();
-    for (const r of rows) {
-      const arr = byPaper.get(r.paperId) ?? [];
-      arr.push(r);
-      byPaper.set(r.paperId, arr);
-    }
-
-    // Canonical six submission targets ONLY (2026-07-23 fix): the P1 merge was
-    // reversed — P1B (namaster-proof metapaper) is an active target again and
-    // P1U is retired. Older rows also carry raw doc-id paperIds; those and any
-    // non-canonical labels must never drive the ETA or the papers count.
-    const CANONICAL_PAPERS = new Set(["P1A", "P1B", "P2", "P3", "P4", "P5"]);
-
-    const perPaper = Array.from(byPaper.entries())
-      .filter(([paperId]) => CANONICAL_PAPERS.has(paperId))
-      .map(([paperId, waves]) => {
-        waves.sort((a, b) => a.seq - b.seq);
-        const last = waves[waves.length - 1];
-        const remainingWaves = Math.max(0, TARGET_CLEAN_WAVES - last.cleanWaveStreak);
-        const buffer = last.genuinelyNewCount > 0 ? CLOSURE_BUFFER_H : 0;
-        const etaHours = remainingWaves === 0 ? 0 : remainingWaves * medianWaveH + buffer;
-        return {
-          paperId,
-          paperSlug: last.paperSlug,
-          cleanWaveStreak: last.cleanWaveStreak,
-          remainingWaves,
-          openComputeCount: last.openComputeCount,
-          openVenueCount: last.openVenueCount,
-          lastWaveGenuinelyNew: last.genuinelyNewCount,
-          lastWaveLabel: last.waveLabel,
-          lastDateISO: last.dateISO,
-          etaHours: Math.round(etaHours * 10) / 10,
-          converged: remainingWaves === 0,
-        };
-      })
-      .sort((a, b) => a.paperId.localeCompare(b.paperId));
-
-    const programEtaHours = perPaper.reduce((m, p) => Math.max(m, p.etaHours), 0);
-    const papersConverged = perPaper.filter((p) => p.converged).length;
-
-    return {
-      programEtaHours,
-      papersConverged,
-      papersTotal: perPaper.length,
-      medianWaveHours: Math.round(medianWaveH * 10) / 10,
-      targetCleanWaves: TARGET_CLEAN_WAVES,
-      perPaper,
-      confidence:
-        "ETA to the loop's own convergence bar (two consecutive clean review waves). " +
-        "Assumes 0 new findings from here — a single genuinely-new finding on any paper " +
-        "resets that paper's clean-wave streak and pushes its ETA out. This is NOT the " +
-        "journal-acceptance clock: acceptance depends on human referees (months, external).",
-    };
-  },
-});
+// ── ETA computation — RETIRED 2026-07-24 ─────────────────────────────────
+//
+// `computeEta` used to live here. It projected "hours to submission-ready"
+// from each paper's clean-wave streak against TARGET_CLEAN_WAVES = 2 —
+// directive K's bar. Directive L demoted that bar to "a CHECKPOINT, not the
+// finish line", and directives M / M-AMENDED / P superseded it again, so the
+// homepage was counting down to a target the program no longer holds.
+//
+// It also read rows that stopped being written on 2026-07-16, so it rendered
+// eight-day-old streaks (P1A 18, P2 20) as current — after the 2026-07-22
+// confirmation wave had surfaced genuinely-new-real findings on all six
+// papers, which under directive K's own definition resets every one of those
+// streaks. A retired bar measured against stale data, presented as a live
+// clock. Removed rather than backfilled.
+//
+// The directive-P replacement is `publicationStatus:get`, which derives the
+// remaining gates and their owners from live rows and degrades to an explicit
+// "stale — last updated X" state instead of silently aging.
+//
+// The wave rows themselves are HISTORY and are kept: `recordWave` still
+// accepts them and `listWaves` still drives the /reviews verdict-trajectory
+// chart. Only the ETA projection is gone.

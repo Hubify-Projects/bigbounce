@@ -26,6 +26,7 @@ import type * as papers from "../papers.js";
 import type * as pathcCaveats from "../pathcCaveats.js";
 import type * as pipelineState from "../pipelineState.js";
 import type * as pods from "../pods.js";
+import type * as publicationStatus from "../publicationStatus.js";
 import type * as rRounds from "../rRounds.js";
 import type * as readinessMetrics from "../readinessMetrics.js";
 import type * as reviews from "../reviews.js";
@@ -57,6 +58,7 @@ declare const fullApi: ApiFromModules<{
   pathcCaveats: typeof pathcCaveats;
   pipelineState: typeof pipelineState;
   pods: typeof pods;
+  publicationStatus: typeof publicationStatus;
   rRounds: typeof rRounds;
   readinessMetrics: typeof readinessMetrics;
   reviews: typeof reviews;
