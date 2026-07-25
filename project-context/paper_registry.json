@@ -87,5 +87,296 @@
         "pipelines/p5_desi_chirality"
       ]
     }
+  },
+  "companion_manuscripts": {
+    "P1B-MCMC": {
+      "tex_path": "arxiv/paper1b_mcmc_companion.tex",
+      "pdf_path": "arxiv/paper1b_mcmc_companion.pdf",
+      "served_aliases": [
+        "paper1b_mcmc_companion.pdf"
+      ],
+      "note": "P1B's MCMC companion manuscript. Not one of the six campaign papers, but its PDF is mirrored under served roots, so it needs a canonical owner or its mirrors read as orphans."
+    }
+  },
+  "served_pdf_policy": {
+    "schema": "bigbounce.served-pdf-policy/v1",
+    "description": "Reverse-direction directive-G data. Directive G pushes each paper OUT to its known mirrors; this block lets tools/verify_pdf_mirror_integrity.py walk the served tree back IN and prove every served PDF, and every site reference to one, is accounted for.",
+    "served_roots": [
+      "public",
+      "site/public"
+    ],
+    "site_href_prefix": "/papers/",
+    "site_href_root": "site/public",
+    "non_manuscript_path_patterns": [
+      "(?:^|/)figures/"
+    ],
+    "immutable_archive_name_patterns": [
+      "_v[0-9]+[A-Za-z]?\\.[0-9]+\\.[0-9]+(?:[.\\-][0-9A-Za-z][0-9A-Za-z\\-]*)*\\.pdf$",
+      "_v[0-9]{2,}\\.pdf$"
+    ],
+    "site_data_sources": [
+      {
+        "path": "site/src/data/papers.ts",
+        "kind": "current-paper-artifacts"
+      },
+      {
+        "path": "site/src/data/live-status.ts",
+        "kind": "current-paper-artifacts"
+      },
+      {
+        "path": "site/src/data/reviewTimeline.ts",
+        "kind": "historical-archive-links"
+      }
+    ],
+    "retired_served_pdfs": [
+      {
+        "path": "public/downloads/bigbounce_latest.pdf",
+        "identified_paper": "P1-LEGACY",
+        "identified_version": "2026-03-09-HUBIFY-2026-001",
+        "md5": "df9d96596496aab582fa67e79d02db46",
+        "disposition": "archive-then-remove",
+        "note": "these bytes exist at no version-pinned path; capture them with tools/pdf_version_retention.py before removing the served copy"
+      },
+      {
+        "path": "public/downloads/golden-2026-geometric-dark-energy-spin-torsion.pdf",
+        "identified_paper": "P1-LEGACY",
+        "identified_version": "v2.1.0",
+        "md5": "c061a7f26374f0be0a22ca99998e8826",
+        "disposition": "archive-then-remove",
+        "note": "these bytes exist at no version-pinned path; capture them with tools/pdf_version_retention.py before removing the served copy"
+      },
+      {
+        "path": "public/focused_paper_bounce_fnl_forecast.pdf",
+        "identified_paper": "P2",
+        "identified_version": "v1.7.110",
+        "md5": "e77532ab46a4657bb2711222c2a9cd26",
+        "disposition": "remove",
+        "note": "superseded build already retained byte-identical under a version-pinned archive name; removing the unversioned served copy loses no evidence (public/papers/02_full_draft_v1.7.110.pdf)"
+      },
+      {
+        "path": "public/paper2_alp_birefringence.pdf",
+        "identified_paper": "P2",
+        "identified_version": "v1.7.90",
+        "md5": "fa681b192b8a9f55956622e99ba42add",
+        "disposition": "remove",
+        "note": "superseded build already retained byte-identical under a version-pinned archive name; removing the unversioned served copy loses no evidence (public/papers/02_full_draft_v1.7.90.pdf)"
+      },
+      {
+        "path": "public/paper3_barriers_ech_transparency.pdf",
+        "identified_paper": "P1-LEGACY",
+        "identified_version": "2026-03-19-barriers",
+        "md5": "19d240a7df966efa72c61c65095507c1",
+        "disposition": "archive-then-remove",
+        "note": "these bytes exist at no version-pinned path; capture them with tools/pdf_version_retention.py before removing the served copy"
+      },
+      {
+        "path": "public/papers/anomaly-catalog-paper.pdf",
+        "identified_paper": "P3",
+        "identified_version": "v3.1.148",
+        "md5": "70bb1005923df062dc9de7c47ed00cfa",
+        "disposition": "remove",
+        "note": "superseded build already retained byte-identical under a version-pinned archive name; removing the unversioned served copy loses no evidence (public/papers/paper3_draft_v3.1.148.pdf)"
+      },
+      {
+        "path": "public/papers/anomaly_catalog_paper.pdf",
+        "identified_paper": "P3",
+        "identified_version": "v3.1.138",
+        "md5": "28d9e63d40e4305db9bcee28f7bbfda7",
+        "disposition": "remove",
+        "note": "superseded build already retained byte-identical under a version-pinned archive name; removing the unversioned served copy loses no evidence (public/papers/paper3_anomaly_catalog_v3.1.138.pdf)"
+      },
+      {
+        "path": "public/papers/paper1_spin_torsion.pdf",
+        "identified_paper": "P1-LEGACY",
+        "identified_version": "v2.3.18",
+        "md5": "b7f4bdda49647c4aea77ae131b811da2",
+        "disposition": "archive-then-remove",
+        "note": "these bytes exist at no version-pinned path; capture them with tools/pdf_version_retention.py before removing the served copy"
+      },
+      {
+        "path": "public/papers/paper1_unified.pdf",
+        "identified_paper": "P1U",
+        "identified_version": "v1U.0.20",
+        "md5": "c295beeff7c2125124e309d5fb07fed9",
+        "disposition": "remove",
+        "note": "superseded build already retained byte-identical under a version-pinned archive name; removing the unversioned served copy loses no evidence (public/papers/paper1_unified_v1U.0.20.pdf)"
+      },
+      {
+        "path": "public/papers/paper2_alp_birefringence.pdf",
+        "identified_paper": "P2",
+        "identified_version": "v1.7.100",
+        "md5": "55d85fe5dd3f33736282cbe83633a1b6",
+        "disposition": "remove",
+        "note": "superseded build already retained byte-identical under a version-pinned archive name; removing the unversioned served copy loses no evidence (site/public/papers/02_full_draft_v1.7.100.pdf)"
+      },
+      {
+        "path": "public/papers/paper3_anomaly_catalog.pdf",
+        "identified_paper": "P3",
+        "identified_version": "v3.1.158",
+        "md5": "a1da87d3ab0d750e9f6fb5ac0a0e92c7",
+        "disposition": "remove",
+        "note": "superseded build already retained byte-identical under a version-pinned archive name; removing the unversioned served copy loses no evidence (public/papers/paper3_draft_v3.1.158.pdf)"
+      },
+      {
+        "path": "public/papers/paper3_draft.pdf",
+        "identified_paper": "P3",
+        "identified_version": "v3.1.158",
+        "md5": "a1da87d3ab0d750e9f6fb5ac0a0e92c7",
+        "disposition": "remove",
+        "note": "superseded build already retained byte-identical under a version-pinned archive name; removing the unversioned served copy loses no evidence (public/papers/paper3_draft_v3.1.158.pdf)"
+      },
+      {
+        "path": "public/papers/spin-torsion-paper.pdf",
+        "identified_paper": "P1-LEGACY",
+        "identified_version": "v2.3.18",
+        "md5": "b7f4bdda49647c4aea77ae131b811da2",
+        "disposition": "archive-then-remove",
+        "note": "these bytes exist at no version-pinned path; capture them with tools/pdf_version_retention.py before removing the served copy"
+      },
+      {
+        "path": "public/papers/spin_torsion_paper1.pdf",
+        "identified_paper": "P1-LEGACY",
+        "identified_version": "v2.3.18-variant",
+        "md5": "c2d15691791b899a56daa925571ca080",
+        "disposition": "archive-then-remove",
+        "note": "these bytes exist at no version-pinned path; capture them with tools/pdf_version_retention.py before removing the served copy"
+      },
+      {
+        "path": "site/public/arxiv_v2/main.pdf",
+        "identified_paper": "P1-LEGACY",
+        "identified_version": "v2.3.18",
+        "md5": "b7f4bdda49647c4aea77ae131b811da2",
+        "disposition": "archive-then-remove",
+        "note": "these bytes exist at no version-pinned path; capture them with tools/pdf_version_retention.py before removing the served copy"
+      },
+      {
+        "path": "site/public/downloads/bigbounce_latest.pdf",
+        "identified_paper": "P1-LEGACY",
+        "identified_version": "2026-03-09-HUBIFY-2026-001",
+        "md5": "df9d96596496aab582fa67e79d02db46",
+        "disposition": "archive-then-remove",
+        "note": "these bytes exist at no version-pinned path; capture them with tools/pdf_version_retention.py before removing the served copy"
+      },
+      {
+        "path": "site/public/downloads/golden-2026-geometric-dark-energy-spin-torsion.pdf",
+        "identified_paper": "P1-LEGACY",
+        "identified_version": "v2.1.0",
+        "md5": "c061a7f26374f0be0a22ca99998e8826",
+        "disposition": "archive-then-remove",
+        "note": "these bytes exist at no version-pinned path; capture them with tools/pdf_version_retention.py before removing the served copy"
+      },
+      {
+        "path": "site/public/p1a-ech-nogo.pdf",
+        "identified_paper": "P1A",
+        "identified_version": "v1A.0.112",
+        "md5": "ba0e829fd2b88ac4e6405081ac22b878",
+        "disposition": "remove",
+        "note": "superseded build already retained byte-identical under a version-pinned archive name; removing the unversioned served copy loses no evidence (public/papers/paper1a_ech_nogo_v1A.0.112.pdf)"
+      },
+      {
+        "path": "site/public/paper2_alp_birefringence.pdf",
+        "identified_paper": "P2",
+        "identified_version": "v1.7.90",
+        "md5": "fa681b192b8a9f55956622e99ba42add",
+        "disposition": "remove",
+        "note": "superseded build already retained byte-identical under a version-pinned archive name; removing the unversioned served copy loses no evidence (public/papers/02_full_draft_v1.7.90.pdf)"
+      },
+      {
+        "path": "site/public/paper3_anomaly_catalog.pdf",
+        "identified_paper": "P3",
+        "identified_version": "v3.1.158",
+        "md5": "a1da87d3ab0d750e9f6fb5ac0a0e92c7",
+        "disposition": "remove",
+        "note": "superseded build already retained byte-identical under a version-pinned archive name; removing the unversioned served copy loses no evidence (public/papers/paper3_draft_v3.1.158.pdf)"
+      },
+      {
+        "path": "site/public/paper3_barriers_ech_transparency.pdf",
+        "identified_paper": "P1-LEGACY",
+        "identified_version": "2026-03-19-barriers",
+        "md5": "19d240a7df966efa72c61c65095507c1",
+        "disposition": "archive-then-remove",
+        "note": "these bytes exist at no version-pinned path; capture them with tools/pdf_version_retention.py before removing the served copy"
+      },
+      {
+        "path": "site/public/paper3_draft.pdf",
+        "identified_paper": "P3",
+        "identified_version": "v3.1.158",
+        "md5": "a1da87d3ab0d750e9f6fb5ac0a0e92c7",
+        "disposition": "remove",
+        "note": "superseded build already retained byte-identical under a version-pinned archive name; removing the unversioned served copy loses no evidence (public/papers/paper3_draft_v3.1.158.pdf)"
+      },
+      {
+        "path": "site/public/papers/anomaly-catalog-paper.pdf",
+        "identified_paper": "P3",
+        "identified_version": "v3.1.148",
+        "md5": "70bb1005923df062dc9de7c47ed00cfa",
+        "disposition": "remove",
+        "note": "superseded build already retained byte-identical under a version-pinned archive name; removing the unversioned served copy loses no evidence (public/papers/paper3_draft_v3.1.148.pdf)"
+      },
+      {
+        "path": "site/public/papers/anomaly_catalog_paper.pdf",
+        "identified_paper": "P3",
+        "identified_version": "v3.1.138",
+        "md5": "28d9e63d40e4305db9bcee28f7bbfda7",
+        "disposition": "remove",
+        "note": "superseded build already retained byte-identical under a version-pinned archive name; removing the unversioned served copy loses no evidence (public/papers/paper3_anomaly_catalog_v3.1.138.pdf)"
+      },
+      {
+        "path": "site/public/papers/paper1_spin_torsion.pdf",
+        "identified_paper": "P1-LEGACY",
+        "identified_version": "v2.3.18",
+        "md5": "b7f4bdda49647c4aea77ae131b811da2",
+        "disposition": "archive-then-remove",
+        "note": "these bytes exist at no version-pinned path; capture them with tools/pdf_version_retention.py before removing the served copy"
+      },
+      {
+        "path": "site/public/papers/paper1_unified.pdf",
+        "identified_paper": "P1U",
+        "identified_version": "v1U.0.20",
+        "md5": "c295beeff7c2125124e309d5fb07fed9",
+        "disposition": "remove",
+        "note": "superseded build already retained byte-identical under a version-pinned archive name; removing the unversioned served copy loses no evidence (public/papers/paper1_unified_v1U.0.20.pdf)"
+      },
+      {
+        "path": "site/public/papers/paper2_alp_birefringence.pdf",
+        "identified_paper": "P2",
+        "identified_version": "v1.7.100",
+        "md5": "55d85fe5dd3f33736282cbe83633a1b6",
+        "disposition": "remove",
+        "note": "superseded build already retained byte-identical under a version-pinned archive name; removing the unversioned served copy loses no evidence (site/public/papers/02_full_draft_v1.7.100.pdf)"
+      },
+      {
+        "path": "site/public/papers/paper3_anomaly_catalog.pdf",
+        "identified_paper": "P3",
+        "identified_version": "v3.1.158",
+        "md5": "a1da87d3ab0d750e9f6fb5ac0a0e92c7",
+        "disposition": "remove",
+        "note": "superseded build already retained byte-identical under a version-pinned archive name; removing the unversioned served copy loses no evidence (public/papers/paper3_draft_v3.1.158.pdf)"
+      },
+      {
+        "path": "site/public/papers/paper3_draft.pdf",
+        "identified_paper": "P3",
+        "identified_version": "v3.1.158",
+        "md5": "a1da87d3ab0d750e9f6fb5ac0a0e92c7",
+        "disposition": "remove",
+        "note": "superseded build already retained byte-identical under a version-pinned archive name; removing the unversioned served copy loses no evidence (public/papers/paper3_draft_v3.1.158.pdf)"
+      },
+      {
+        "path": "site/public/papers/spin-torsion-paper.pdf",
+        "identified_paper": "P1-LEGACY",
+        "identified_version": "v2.3.18",
+        "md5": "b7f4bdda49647c4aea77ae131b811da2",
+        "disposition": "archive-then-remove",
+        "note": "these bytes exist at no version-pinned path; capture them with tools/pdf_version_retention.py before removing the served copy"
+      },
+      {
+        "path": "site/public/papers/spin_torsion_paper1.pdf",
+        "identified_paper": "P1-LEGACY",
+        "identified_version": "v2.3.18-variant",
+        "md5": "c2d15691791b899a56daa925571ca080",
+        "disposition": "archive-then-remove",
+        "note": "these bytes exist at no version-pinned path; capture them with tools/pdf_version_retention.py before removing the served copy"
+      }
+    ]
   }
 }
