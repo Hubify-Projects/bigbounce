@@ -1132,21 +1132,27 @@
 }
 
 % ============================================================
-% Wave 14-JJJJ: cross-paper companion-preprint bibitems.
-% These define proper article entries for the Golden2026P (1a, 1b, 2, 3, 4)
-% cite keys used in P1A and P1B (placeholders carried since the
-% P1-split refactor of Wave 14-OOO). The five companion papers
-% are the bigbounce paper portfolio; each is hosted on the
-% Hubify-Projects/bigbounce GitHub release tags pending arXiv
-% submission (HUBIFY preprint IDs match site/src/data/papers.ts).
+% Cross-paper companion bibitems for the Golden2026P (1a, 1b, 2, 3, 4)
+% cite keys used in P1A and P1B. Back-patched 2026-07-24: all five
+% companions are now PUBLICLY ARCHIVED on Zenodo with resolvable,
+% permanent version DOIs (each re-verified HTTP 200 and title-matched
+% against the Zenodo API before this edit). The prior
+% "posted concurrently on arXiv [arXiv:XXXX.XXXXX]" notes were false --
+% no paper in this portfolio carries an arXiv identifier. A Zenodo
+% deposit is a public permanent archive; it is NOT an arXiv preprint
+% and it is NOT peer review, and every entry below says so explicitly.
+% The single source of truth for these DOIs is
+% project-context/companion-status-ledger.json; the claim/status pairing
+% is enforced by tools/verify_companion_status.py.
 % ============================================================
 
-%% TODO-SUBMISSION: insert arXiv ID at submission
-@unpublished{Golden2026P1a,
+@article{Golden2026P1a,
     author = "Golden, Houston",
-    title = "{Algebraic Torsion in Minimal Einstein--Cartan--Holst Gravity: Four-Fermion Contact Benchmarks and Classical Scalar-Sector Transparency}",
+    title = "{Algebraic Cartan Elimination in Minimal Einstein--Cartan--Holst Gravity: Spin-Sourced Contact and Zero-Spin Scalar Branches}",
+    journal = "Zenodo",
     year = "2026",
-    note = "Companion paper, posted concurrently on arXiv [arXiv:XXXX.XXXXX --- ID inserted at coordinated submission]"
+    doi = "10.5281/zenodo.21481838",
+    note = "{Companion paper (Paper I A), publicly archived on Zenodo under version DOI 10.5281/zenodo.21481838 (concept DOI 10.5281/zenodo.21481837), deposited 2026 July 22 under CC-BY-4.0. Public permanent archive of the manuscript and its exact source; not an arXiv preprint and not peer reviewed.}"
 }
 
 @misc{BigBounceRepro,
@@ -1157,36 +1163,40 @@
     note = "Committed computational artifacts underlying the companion-imported numbers of Table 3; archived with this submission"
 }
 
-%% TODO-SUBMISSION: insert arXiv ID at submission
-@unpublished{Golden2026P1b,
+@article{Golden2026P1b,
     author = "Golden, Houston",
-    title = "{Reproducible Cosmological Proxy and Pipeline Checks: Stock-CAMB $\Lambda$CDM+$\Delta N_{\rm eff}$ MCMC, Synthetic NaMaster Recovery, and a Generic Spectator-ALP Birefringence Fit}",
+    title = "{namaster-proof: Exact pseudo-$C_\ell$ window inference and content-bound validation for reproducible spin-2 analyses}",
+    journal = "Zenodo",
     year = "2026",
-    note = "Companion paper, posted concurrently on arXiv"
+    doi = "10.5281/zenodo.21481842",
+    note = "{Companion paper (Paper I B), publicly archived on Zenodo under version DOI 10.5281/zenodo.21481842 (concept DOI 10.5281/zenodo.21481841), deposited 2026 July 22 under CC-BY-4.0. Public permanent archive of the manuscript and its exact source; not an arXiv preprint and not peer reviewed. The software it describes is archived separately at 10.5281/zenodo.21481753.}"
 }
 
-%% TODO-SUBMISSION: insert arXiv ID at submission
 @article{Golden2026P2,
     author = "Golden, Houston",
-    title = "{$f_{\rm NL} = -35/8$ Forecast: SPHEREx Discrimination of Bounce vs.\ Inflation}",
+    title = "{The Exact Matter-Contraction Non-Gaussian Amplitude: Four-Vertex Derivation and Conditional Large-Scale-Structure Mapping}",
+    journal = "Zenodo",
     year = "2026",
-    note = "Companion paper, posted concurrently on arXiv"
+    doi = "10.5281/zenodo.21461881",
+    note = "{Companion paper (Paper II), publicly archived on Zenodo under version DOI 10.5281/zenodo.21461881 (concept DOI 10.5281/zenodo.21461880), deposited 2026 July 20 under CC-BY-4.0. Public permanent archive of the manuscript and its exact source; not an arXiv preprint and not peer reviewed.}"
 }
 
-%% TODO-SUBMISSION: insert arXiv ID at submission
 @article{Golden2026P3,
     author = "Golden, Houston",
-    title = "{Spectrally Unusual Sources at Scale: A Multi-Survey Catalog of 378{,}280 Anomalies and Native-Trained Novelty Rates from 37.3 Million Sources}",
+    title = "{Public-ID Recovery for a Historical DESI DR1 Anomaly List: 170 High-Coordinate-Consistency Core and 11 Lower-Confidence Positional Associations}",
+    journal = "Zenodo",
     year = "2026",
-    note = "Companion paper, posted concurrently on arXiv"
+    doi = "10.5281/zenodo.21461888",
+    note = "{Companion paper (Paper III), publicly archived on Zenodo under version DOI 10.5281/zenodo.21461888 (concept DOI 10.5281/zenodo.21461887), deposited 2026 July 20 under CC-BY-4.0. Public permanent archive of the manuscript and its exact source; not an arXiv preprint and not peer reviewed.}"
 }
 
-%% TODO-SUBMISSION: insert arXiv ID at submission
-@unpublished{Golden2026P4,
+@article{Golden2026P4,
     author = "Golden, Houston",
-    title = "{Galaxy Chirality at Scale: 8.47M Galaxies Classified, Hemisphere Null at $p_{\rm LEE} < 10^{-4}$}",
+    title = "{An Observed-Label Chirality-Dipole Null in 949,584 High-Confidence DESI Spirals and an 8.5-Million-Galaxy Catalog}",
+    journal = "Zenodo",
     year = "2026",
-    note = "Companion paper, posted concurrently on arXiv"
+    doi = "10.5281/zenodo.21461899",
+    note = "{Companion paper (Paper IV), publicly archived on Zenodo under version DOI 10.5281/zenodo.21461899 (concept DOI 10.5281/zenodo.21461898), deposited 2026 July 20 under CC-BY-4.0. Public permanent archive of the manuscript and its exact source; not an arXiv preprint and not peer reviewed.}"
 }
 
 @article{Eskilt2023Cosmoglobe,
