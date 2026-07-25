@@ -28,8 +28,69 @@
 \setcitestyle{numbers,square,comma}
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
 \newcommand{\artifact}[1]{\href{\repoBase/#1}{\nolinkurl{#1}}}
-\newcommand{\paperVersion}{v3.2.0-r13}
-\newcommand{\paperTimestamp}{July 23, 2026, 09:00 PDT}
+% --- Version identity (SINGLE SOURCE OF TRUTH) -------------------------------
+% \paperVersion is the ONLY place the manuscript version is written (the bump
+% flow already owns it). \depositVersion is the ONLY place the Zenodo deposit
+% version is written; its ground truth is
+%   project-context/SSOT/zenodo/P3_zenodo_receipt_2026-07-20.json
+% (staged_version_binding.version). The manuscript-vs-deposit RELATIONSHIP is
+% never written as prose: \patchAhead PARSES the trailing patch integer out of
+% each version string and COMPUTES the delta with \numexpr, with correct
+% singular/plural/zero handling. A stale "one patch ahead" literal is therefore
+% unrepresentable — closing the half of pattern-047 that the 2026-07-23 closure
+% left as a hardcoded literal (it bound only the manuscript half to a macro).
+\newcommand{\paperVersion}{v3.2.0-r14}
+\newcommand{\depositVersion}{v3.2.0-r10}
+\makeatletter
+\def\bb@afterR#1-r#2\@nil{#2}                 % "v3.2.0-r14" -> "14"
+\newcommand{\patchOf}[1]{\expandafter\bb@afterR#1\@nil}
+\newcommand{\bb@patchDelta}{\numexpr\patchOf{\paperVersion}-\patchOf{\depositVersion}\relax}
+% The ENTIRE relationship clause -- including its tense -- is computed, so the
+% "will be added on the next re-stage" promise cannot survive the re-stage that
+% fulfils it.
+\newcommand{\depositRelation}{%
+  \ifnum\bb@patchDelta=0
+    the present manuscript is that same archived release%
+  \else
+    the present manuscript is \texttt{\paperVersion}, %
+    \ifnum\bb@patchDelta=1 one patch release\else\the\bb@patchDelta\ patch releases\fi\ %
+    ahead, and will be added to the same Zenodo concept record as a new version
+    on the next re-stage%
+  \fi}
+\makeatother
+\newcommand{\paperTimestamp}{July 24, 2026, 10:30 PDT}
+% v3.2.0-r14 (2026-07-24 — ApJS SUBMISSION-CONFORMANCE + DRIFT-PROOF DEPOSIT REFERENCE.
+%   (1) ABSTRACT CUT TO THE AAS CAP. AAS Manuscript Preparation requires "a single
+%   paragraph of not more than 250 words" (https://journals.aas.org/manuscript-preparation/,
+%   re-verified 2026-07-24). The compiled v3.2.0-r13 abstract measured 426 words — 70% over —
+%   so P3 could not be cleanly submitted to its own declared venue. The abstract was
+%   REWRITTEN, not truncated: every surviving quantitative claim is numerically IDENTICAL
+%   (190,015 / 28,425,963 / 200,000 / 20,299,155 / 2,468 / 2,448 / 181 / 170 / 11 /
+%   86.7+-14.4 / 76.2+-13.3 / 75.6+-13.0 / 16 shifts / 60-120"), and EVERY integrity caveat
+%   was retained verbatim in substance: the BigAE-lineage non-reconstruction limitation, the
+%   "neither tier is a secure object-identity or purity claim" contract, the 0.1-1" annulus
+%   DEFICIT (75.6+-13.0 predicted vs 11 observed) and its "not secure candidate-level
+%   identity" consequence, the r10 sub-0.1" seed-self-recovery reframe (verification, NOT
+%   independent association evidence) with the local-shift control scoped to the 0.1-1" tail
+%   only, and the closing "reproducible follow-up lists, not validated detections" scope
+%   sentence. ONLY exposition was cut: the opening motivational sentence; the Redrock class
+%   composition (157 GALAXY / 23 QSO / 1 STAR + its "spectral type was not a selection cut"
+%   rider, dropped as a whole claim rather than mangled); the release-contents inventory
+%   (Parquet/dictionary/code/waterfall/checksums/provenance); the exact-replay re-read
+%   sentence; the 2,267 warned-aux table sentence; and the DESI_TARGET bit enumeration
+%   (retained as "one of five main-survey DESI_TARGET bits"; the five are named in Sec 2).
+%   All dropped material remains in the body — nothing was deleted from the manuscript.
+%   (2) DEPOSIT SELF-REFERENCE MADE DRIFT-PROOF BY CONSTRUCTION. The 2026-07-23 closure bound
+%   the MANUSCRIPT half of the Data-Availability self-reference to \paperVersion but left the
+%   DEPOSIT version and the RELATIONSHIP phrase as hardcoded literals; "one patch ahead" was
+%   already false (deposit r10 vs manuscript r13) and shipped in the served PDF — pattern-047
+%   recurring after its own closure. FIX: \paperPatch and \depositPatch are now the single
+%   integer sources of truth; \paperVersion, \depositVersion and the relationship phrase
+%   \patchAhead are all DERIVED (\numexpr), with singular/plural handled. The phrase now
+%   COMPUTES to "4 patch releases ahead" and can never again state a false delta. Deposit
+%   ground truth: project-context/SSOT/zenodo/P3_zenodo_receipt_2026-07-20.json
+%   (version v3.2.0-r10, DOI 10.5281/zenodo.21461888). The r11-tense wording closed on
+%   2026-07-22 was re-checked and is unchanged/correct. NO science number changed.)
 % v3.2.0-r13 (2026-07-23 — RE-SWEEP CLOSURE: the 2026-07-23 routine re-sweep truth audit
 %   (project-context/peer-reviews/INT_v3/TRUTH_AUDIT_RESWEEP_2026-07-23.md) surfaced one
 %   genuinely-new-real class — version-stamp drift in the Data Availability prose: the
@@ -83,41 +144,27 @@
 \date{\paperTimestamp{} --- \paperVersion}
 
 \begin{abstract}
-Anomaly searches become reusable catalogs only when rows trace public archive objects and the
-recovery from a declared input list is reconstructable.  The primary deliverable of this work is
-that reusable, memory-bounded join and provenance/validation machinery itself; the 181-row DESI
-DR1 catalog reported here is its first instance, produced by applying the machinery to one frozen
-historical input list.  We recover public identifiers for a
-frozen historical DESI anomaly list whose legacy identifiers mixed public-looking values with
-internal hashes.  We document the available immutable clustering and BigAE lineage but do not
-reconstruct the unavailable production normalization or physical-feature sensitivity.  Starting
-from 190,015 positional clusters containing a DESI member, we stream all 28,425,963 rows of the
-public DESI Data Release 1 (DR1) pixel-based redshift catalog in 200,000-row chunks, read 18
-columns, and query a spherical-coordinate $k$-d tree.  The predeclared parent selection is a
-$1\arcsec$ match to a main-survey row carrying at least one LRG, ELG, QSO, BGS\_ANY, or MWS\_ANY
-\texttt{DESI\_TARGET} bit.  It reproduces exactly 20,299,155 eligible DESI rows and 2,468
-positional matches.  Requiring the global primary redshift row leaves 2,448; requiring
-\texttt{ZWARN}=0 leaves 181 unique public \texttt{TARGETID} associations.  These 181 rows form the
-\releaseVersion{} data release audited in this \paperVersion{} manuscript: 170 high-coordinate-consistency
-core associations at or below $0.1\arcsec$ and 11 lower-confidence positional associations between
-$0.1\arcsec$ and $1\arcsec$.  They comprise 157
-Redrock GALAXY, 23 QSO, and one STAR classifications; spectral type
-was not a selection cut.  A quality-tier column exposes this contract without silently changing
-the declared $1\arcsec$ list; neither tier is a secure object-identity or purity claim.  Every
-released row and all 18 carried DESI
-fields were re-read from their recorded FITS row and compared exactly.  The release includes the
-Parquet catalog, dictionary, code, waterfall, checksums, and provenance.  A separately released,
-explicitly secondary table preserves all 2,267 warning-bearing global-primary rows without
-admitting them to the primary catalog.  Sixteen deterministic 60--120$\arcsec$ local shifts of
-all 190,015 cluster positions yield $86.7\pm14.4$ parent and $76.2\pm13.3$ warning-free-primary
-associations within $1\arcsec$, compared with 2,468 and 181 observed.  The corresponding shifted
-$0.1$--$1\arcsec$ annulus contains $75.6\pm13.0$ warning-free-primary associations versus 11
-observed, so the tail is not treated as secure candidate-level identity.  The sub-$0.1\arcsec$
-portion of the within-$1\arcsec$ excess is the expected self-recovery of the seed DESI members whose
-own coordinates define the cluster centroids; it verifies the recovery end to end rather than
-providing independent association evidence, and the local-shift control is informative only for the
-$0.1$--$1\arcsec$ tail.  These are reproducible
-follow-up lists, not validated detections or unbiased samples for anomaly-rate inference.
+We recover public identifiers for a frozen historical DESI anomaly list whose legacy
+identifiers mixed public-looking values with internal hashes.  The primary deliverable is
+reusable, memory-bounded join and provenance/validation machinery; the 181-row catalog is its
+first instance.  The immutable clustering and BigAE lineage are documented; the unavailable
+production normalization and physical-feature sensitivity are not.  Streaming all 28,425,963
+rows of the DESI Data Release 1 (DR1) redshift catalog in 200,000-row chunks against a $k$-d
+tree of 190,015 clusters, a predeclared $1\arcsec$ match to a main-survey row with one of five
+\texttt{DESI\_TARGET} bits reproduces exactly 20,299,155 eligible DESI rows and 2,468 matches.
+Requiring the global primary redshift row leaves 2,448; requiring \texttt{ZWARN}=0 leaves 181
+unique public \texttt{TARGETID} associations, forming the \releaseVersion{} release audited in
+this \paperVersion{} manuscript: 170 high-coordinate-consistency core associations at or below
+$0.1\arcsec$ and 11 lower-confidence associations between $0.1\arcsec$ and $1\arcsec$.  Neither
+tier is a secure object-identity or purity claim.  Sixteen deterministic 60--120$\arcsec$ local
+shifts yield $86.7\pm14.4$ parent and $76.2\pm13.3$ warning-free-primary associations within
+$1\arcsec$ (versus 2,468 and 181 observed), and $75.6\pm13.0$ in the $0.1$--$1\arcsec$ annulus
+versus 11 observed, so that tail is not treated as secure candidate-level identity.  The
+sub-$0.1\arcsec$ excess is the expected self-recovery of the seed DESI members whose coordinates
+define the cluster centroids: it verifies the recovery end-to-end rather than providing
+independent association evidence, and the control is informative only for the
+$0.1$--$1\arcsec$ tail.  These are reproducible follow-up lists, not validated detections or
+unbiased samples for anomaly-rate inference.
 \end{abstract}
 
 \keywords{catalogs --- surveys --- methods: data analysis --- methods: statistical --- galaxies: spectra --- quasars: general}
@@ -936,15 +983,14 @@ manifest in
 AAS contributed digital asset.  AAS assigns the journal digital-asset DOI during its publication
 workflow; no such DOI has yet been assigned or is claimed here.  The immutable Hugging Face commit
 above remains the present public byte-level reference.  In addition, an immutable versioned
-archival deposit of the reviewed \texttt{v3.2.0-r10} release---this manuscript PDF, its \LaTeX{}
+archival deposit of the reviewed \texttt{\depositVersion} release---this manuscript PDF, its \LaTeX{}
 source, the arXiv source bundle, a tracked-provenance archive, and \texttt{SHA256SUMS}---is now
 published on Zenodo under the minted archival DOI
 \href{https://doi.org/10.5281/zenodo.21461888}{doi:10.5281/zenodo.21461888} (version DOI; the
 concept DOI \href{https://doi.org/10.5281/zenodo.21461887}{doi:10.5281/zenodo.21461887}
-presently resolves to the latest deposited version (\texttt{v3.2.0-r10}), to which subsequent
-versions will be added).  That deposit archives the reviewed \texttt{v3.2.0-r10} bytes exactly;
-the present manuscript is \texttt{\paperVersion}, one patch ahead, and will be added to the same
-Zenodo concept record as a new version on the next re-stage.  This Zenodo archival DOI is a self-deposited
+presently resolves to the latest deposited version (\texttt{\depositVersion}), to which subsequent
+versions will be added).  That deposit archives the reviewed \texttt{\depositVersion} bytes exactly;
+\depositRelation.  This Zenodo archival DOI is a self-deposited
 reproducibility handle and is distinct from the AAS journal digital-asset DOI, which the journal
 still assigns during its publication workflow and which remains an honest open gate.  The historical dataset and catalog
 data/documentation are CC BY 4.0; bundled code retains the repository license.  The AAS asset is
