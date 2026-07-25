@@ -14,9 +14,16 @@
 }
 
 \newcommand{\repoBase}{https://github.com/Hubify-Projects/bigbounce/blob/main}
-% Paper IV has no verified arXiv identifier at this release-candidate stage.
-% Never print a placeholder identifier as if it were a public artifact.
-\newcommand{\paperIVarxiv}{companion manuscript in preparation}
+% Paper IV is PUBLICLY ARCHIVED on Zenodo with a resolvable, permanent version
+% DOI 10.5281/zenodo.21461899 (concept DOI 10.5281/zenodo.21461898), published
+% 2026-07-20 under CC-BY-4.0; the record carries the full PDF, LaTeX source, and
+% submission tarball. A Zenodo deposit is a public permanent archive -- it is
+% NOT an arXiv preprint and NOT a peer-reviewed publication. Paper IV still has
+% no arXiv identifier and has not been through journal peer review; never assert
+% either, and never print a placeholder identifier as if it were a public artifact.
+\newcommand{\paperIVarxiv}{publicly archived on Zenodo under
+\href{https://doi.org/10.5281/zenodo.21461899}{DOI 10.5281/zenodo.21461899};
+not peer reviewed}
 % \artifact and \artifactDir emit short hyperlinked IDs [AN] (D-round visual fix).
 % Full path--to--ID mapping: see Appendix~C (Data artifacts).
 % Both macros now receive the literal ID string from the Python rewrite pass;
@@ -36,7 +43,7 @@
 % The divide-by-h claim (~1246 h⁻¹ Mpc) is INVERTED. No pipeline recompute required.
 % If any future reviewer re-raises this, cite env_finder/01_compute_vweb.py:106-108.
 
-\newcommand{\paperVersion}{v0.1.142-2026-07-22}
+\newcommand{\paperVersion}{v0.1.143-2026-07-24}
 % v0.1.142 (2026-07-22 -- confirmation-board truth-audit closures): closes the
 %   two GENUINELY-NEW-REAL items of the v0.1.141 exact-PDF truth audit
 %   (INT_v3/ROUND_2026-07-22-P5-v0.1.141-2026-07-16-EXACTPDF-4cca09d0-CLAUDESTACK-CONFIRM,
@@ -786,7 +793,7 @@
 %   cluster −54%) but the environmental-independence null HOLDS and
 %   TIGHTENS: cross-class f_CW range 1.98pp → 0.05pp, all classes
 %   |σ_mono| ≤ 0.39. Artifact: outputs/16_cosmic_web_zshell_corrected.json.
-\newcommand{\paperTimestamp}{July 22, 2026, 17:22 PT}
+\newcommand{\paperTimestamp}{July 24, 2026, 17:14 PT}
 % timestamp label unchanged (still July 2026); \date bumped to July 6
 % v0.1.62-2026-06-10 (R29 post-EXT1 internal-round closure wave; truth audit at
 %   project-context/peer-reviews/R29_P5_TRUTH_AUDIT.md):
@@ -4636,14 +4643,17 @@ classifier-definition mismatch.
 The per-galaxy \texttt{class\_eq} CW/CCW labels and
 the global classifier-monopole calibration ($f_{\rm CW}^{\rm P4} =
 0.4974 \pm 0.000279$) are \emph{inputs} taken from the companion catalog
-paper Paper~IV~\cite{golden_chirality_2026}, which is a
+paper Paper~IV~\cite{golden_chirality_2026}, which is
 \paperIVarxiv; the catalog labels and trained weights are public now under
-CC-BY-4.0. A release-ready P5 therefore requires the final Paper~IV
-chirality catalog, trained weights, and label-provenance documentation to
-be public and independently reviewable, followed by re-verification of the
-P5 inputs against that frozen release. This is a real external dependency,
-not a substitute for the bounded P5 analysis, and we state its scientific
-reach explicitly. The \emph{headline}
+CC-BY-4.0. Since 2026 July 20 the Paper~IV manuscript itself is public and
+permanently citable: the Zenodo record carries its full text, \LaTeX{} source,
+and submission tarball under a version DOI, so a referee can read the companion
+analysis and inspect its label provenance without privileged access. That
+record is a public permanent archive --- not an arXiv preprint and not a
+peer-reviewed publication; Paper~IV has not been refereed, and the P5 inputs
+still have to be re-verified against that archived frozen release. This
+residual dependency is real, it is not a substitute for the bounded P5
+analysis, and we state its scientific reach explicitly. The \emph{headline}
 void/non-void $\Delta f_{\rm CW}$ contrast depends only on the public
 per-galaxy labels and is algebraically invariant under any catalog-wide
 monopole shift (\S\ref{sec:p4}), so it is refereeable from public
@@ -4684,8 +4694,9 @@ the de-attenuation caveat of \S\ref{sec:limitations} therefore stands. And the
 monopole-referenced $\sigma_{\rm pred}$ diagnostics (not the
 headline contrast) reference the Paper~IV scalar; we flag both explicitly
 separately and note the focal result must be re-verified
-against the final published Paper~IV catalog, whose arXiv identifier is
-inserted here on posting.
+against the archived Paper~IV catalog of record
+(Zenodo DOI \href{https://doi.org/10.5281/zenodo.21461899}{10.5281/zenodo.21461899});
+Paper~IV carries no arXiv identifier.
 \item Imaging-leg systematics in chirality classification are tracked
 in Paper~IV (per-leg $|\sigma|\!<\!3$); we propagate the per-leg split
 here but do not re-derive the underlying bias.
@@ -4825,9 +4836,11 @@ DESIVAST perturbations do not rerun the void finder in reconstructed
 space. All conclusions concern classifier labels and released
 redshift-space environment assignments only.
 
-Paper~IV supplies the labels and remains a publication dependency; P5 must
-be re-verified against its independently reviewable final label, weight,
-and provenance release before submission. A future confirmatory analysis
+Paper~IV supplies the labels and remains a publication dependency; its
+manuscript, labels, and weights are now publicly archived and independently
+reviewable (Zenodo DOI 10.5281/zenodo.21461899, CC-BY-4.0; not peer
+reviewed), and P5 must be re-verified against that archived release before
+submission. A future confirmatory analysis
 should preregister the released-parent
 estimand and covariance procedure before inspecting a new survey
 contrast.
@@ -4952,7 +4965,7 @@ This paper consumes two inputs from the companion Paper~IV
 labels and the single catalog-wide CW-fraction monopole scalar
 $\Delta f_{\rm CW}^{\rm P4}=-0.0026$ (\S\ref{sec:p4}). We stress at the
 outset the \emph{degree} of that dependence, because it bounds how much
-the present conclusions can be affected by the in-preparation status of
+the present conclusions can be affected by the not-yet-refereed status of
 the companion Paper~IV (\paperIVarxiv). The focal environmental result --- the void-vs-non-void
 $\Delta f_{\rm CW}$ two-sample contrast --- is \emph{algebraically
 invariant} under any catalog-wide monopole shift (\S\ref{sec:p4}): it
@@ -4966,15 +4979,16 @@ sample ($f_{\rm CW}^{\rm P5}=0.49719$), so even that scalar is
 corroborated here without relying on the Paper~IV number. The remaining
 dependence is thus on the label \emph{quality}, whose equivariance,
 accuracy floor, and systematic origin we quantify below in full.
-Because Paper~IV is not yet a verified public preprint, we reproduce here the
+Because Paper~IV is publicly archived but has not yet been refereed, and to
+keep the present manuscript self-contained, we reproduce here the
 methodological facts a referee needs to assess the quality of those
 labels, the origin of the monopole, and the classifier's parity
 (CW/CCW) equivariance, so that the present manuscript can be evaluated
 without the Paper~IV text in hand. All values are sourced from the
-Paper~IV manuscript and its public artifacts (the released catalog and
-trained weights are already public under CC-BY-4.0, so the label inputs
-are independently inspectable now) and are quoted, not
-re-derived, here.
+Paper~IV manuscript and its public artifacts (the archived manuscript, the
+released catalog, and the trained weights are all public under CC-BY-4.0, so
+both the companion text and the label inputs are independently inspectable
+now) and are quoted, not re-derived, here.
 
 \textbf{Architecture.} The classifier is a flip-equivariant
 \textsc{ViT-Small} vision-transformer encoder with a two-way
@@ -5148,9 +5162,15 @@ systematics split of \S\ref{sec:systematics}.
 (CC-BY-4.0; the acquisition configuration pins catalog revision
 \texttt{1ba76bc7}, without asserting a named release tag); the trained weights are at
 \href{https://huggingface.co/bamfai/galaxy-chirality-v2}{bamfai/galaxy-chirality-v2}.
-Paper~IV remains a companion manuscript in preparation; no arXiv identifier
-or Zenodo DOI is asserted here. The catalog and weights named above are the
-public artifacts used by this analysis.
+The companion Paper~IV manuscript is itself publicly archived on Zenodo
+(version DOI
+\href{https://doi.org/10.5281/zenodo.21461899}{10.5281/zenodo.21461899};
+concept DOI 10.5281/zenodo.21461898; deposited 2026 July 20 under CC-BY-4.0),
+and that record carries its full text, \LaTeX{} source, and submission
+tarball. The deposit is a public permanent archive: it is not an arXiv
+preprint and not a peer-reviewed publication, and no arXiv identifier for
+Paper~IV is asserted here. The archived manuscript together with the catalog
+and weights named above are the public artifacts used by this analysis.
 
 \textbf{Sufficiency for the present analysis.} The two quantities the
 present conclusions rest on are (i) the per-galaxy \texttt{class\_eq}
@@ -5163,7 +5183,8 @@ the labels but not on the monopole amplitude; the monopole enters only
 the $\sigma_{\rm pred}$ diagnostics, where its uncertainty is propagated.
 This appendix therefore makes the classifier-label environmental result of
 the present paper independently assessable from public data alone, without
-the concurrently-posted companion Paper~IV manuscript in hand.
+needing the companion Paper~IV manuscript in hand --- which is in any case
+publicly retrievable at the DOI above.
 
 \section{Reference contingency tables for the T-Web $\chi^2$ tests}\label{app:contingency}
 
@@ -5249,7 +5270,11 @@ FITS files, NGC$+$SGC caps)~\cite{DESIVAST2025}.
 \texttt{class\_eq} label catalog mirrored on HuggingFace at
 \href{https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog}%
 {\texttt{bamfai/galaxy-chirality-catalog}} (catalog revision
-\texttt{1ba76bc7}, as pinned by the acquisition configuration).
+\texttt{1ba76bc7}, as pinned by the acquisition configuration). The Paper~IV
+manuscript describing that catalog is publicly archived on Zenodo at
+\href{https://doi.org/10.5281/zenodo.21461899}{DOI 10.5281/zenodo.21461899}
+(CC-BY-4.0, deposited 2026 July 20); the deposit is a public permanent
+archive, not an arXiv preprint and not a peer-reviewed publication.
 (iv)~The analysis code, derived row archive, and provenance JSON form the
 current local release candidate identified by \texttt{\paperVersion}.
 This manuscript does not assert that a
@@ -5319,7 +5344,9 @@ $\Delta f_{\rm CW}$ contrast is reproducible from public inputs alone
 or not-yet-public companion artifact; only the monopole-referenced
 $\sigma_{\rm pred}$ diagnostics (not the headline contrast) reference the
 Paper~IV monopole scalar, which is independently re-measured here.
-Paper~IV has no verified arXiv identifier at this stage.
+The Paper~IV manuscript itself is publicly archived at Zenodo DOI
+10.5281/zenodo.21461899 (CC-BY-4.0); that deposit is a public permanent
+archive, and Paper~IV has no arXiv identifier and has not been peer reviewed.
 
 \emph{Cluster-bootstrap provenance.} The DP5-10 result and driver are
 archived as [A35] and [A36]. The locally materialized DESI FITS used for
@@ -5457,11 +5484,15 @@ Design and Anticipated Data Products,'' Astrophys.\ J.\ \textbf{873},
 
 \bibitem{golden_chirality_2026}
 H.~Golden,
-\emph{A Survey-Scale Chirality Catalog of 8.47M Galaxies (3.2M Spirals):
-A Null Detection of Large-Scale Parity Violation at Sub-Percent
-Sensitivity}, companion catalog paper (Paper~IV), \paperIVarxiv{}.
+\emph{An Observed-Label Chirality-Dipole Null in 949,584 High-Confidence DESI
+Spirals and an 8.5-Million-Galaxy Catalog}, companion catalog paper
+(Paper~IV), Zenodo (2026), version DOI
+\href{https://doi.org/10.5281/zenodo.21461899}{10.5281/zenodo.21461899};
+concept DOI 10.5281/zenodo.21461898; deposited 2026 July 20 under CC-BY-4.0.
+Public permanent archive of the manuscript, \LaTeX{} source, and submission
+tarball; not an arXiv preprint and not peer reviewed.
 The per-galaxy \texttt{class\_eq} labels and trained weights consumed here are
-public now under CC-BY-4.0 (\href{https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog}{bamfai/galaxy-chirality-catalog}).
+public under the same license (\href{https://huggingface.co/datasets/bamfai/galaxy-chirality-catalog}{bamfai/galaxy-chirality-catalog}).
 
 \bibitem{golden_fnl_2026}
 H.~Golden,
