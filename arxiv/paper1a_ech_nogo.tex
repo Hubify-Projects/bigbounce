@@ -69,8 +69,36 @@
 % v1A.0.125 (2026-07-21 19:58 PT): embeds the published archival deposit DOI
 %   10.5281/zenodo.21481838 (Houston explicit publish-go; CC-BY-4.0 per D2)
 %   in the reproducibility-availability paragraph. No number changed.
-\newcommand{\paperVersion}{v1A.0.126}
-\newcommand{\paperTimestamp}{July 22, 2026, 12:00 PDT}
+% v1A.0.127 (2026-07-24 18:35 PDT): CQG SUBMISSION-GATE CLOSURE. No science,
+%   number, coefficient, abstract, or figure change.
+%   (1) ACKNOWLEDGMENTS + MANDATORY DECLARATIONS NOW COMPILE. The compiled Note
+%       previously contained NO acknowledgements, NO competing-interests
+%       statement, NO funding statement, and NO AI-usage statement, because the
+%       whole acknowledgments block sat inside the \begin{comment} region that
+%       also holds the cut cosmology material. IOP/CQG make COI and funding
+%       declarations unconditionally mandatory and generative-AI disclosure
+%       mandatory where AI was used, all three in the Acknowledgements section
+%       (https://publishingsupport.iopscience.iop.org/ethical-policy-journals/).
+%       A NEW, NOTE-SCOPED block was written and placed before Data and Code
+%       Availability; the old full-paper block is LEFT COMMENTED because it
+%       credits Planck/CMB-S4/LiteBIRD/LSST/DESI, Lior Shamir's galaxy-spin
+%       counts, and frozen MCMC chains that this 8-page Note does not use.
+%       The rest of the commented region (sec:discrimination, the loophole and
+%       surviving-tests sections, the parameter/dimension appendices) stays
+%       commented -- restoring it would blow the Note scope.
+%   (2) Data and Code Availability promoted \subsection* -> \section* so it
+%       reads as its own dedicated section after the acknowledgements, per IOP's
+%       stated placement advice.
+%   (3) ORCID 0009-0008-5616-5994 added to the author block (\altaffiliation
+%       footnote, matching how P1B carries it). Verified public 2026-07-24:
+%       pub.orcid.org/v3.0/0009-0008-5616-5994 -> HTTP 200, "Houston Golden".
+%   ABSTRACT UNTOUCHED. Verified count against the IOP 300-word cap: 269 words
+%   counting each inline math expression as one word (manuscript-native), 285
+%   words for the ASCII-ified paste block in the CQG kit, 295 by naive
+%   whitespace tokenization of pdftotext output where rendered math fragments
+%   split. Under the cap on every counting convention; no cut required.
+\newcommand{\paperVersion}{v1A.0.127}
+\newcommand{\paperTimestamp}{July 24, 2026, 18:35 PDT}
 % v1A.0.123->124 (2026-07-16): CQG NOTE EDITORIAL-CLARITY CLOSURE (truth audit
 %   ROUND_2026-07-16-P1A-v1A.0.123-EXACTPDF-4c450a67-CLAUDESTACK).  Closed the 3
 %   genuinely-new editorial items; NO science/number/coefficient/readiness change.
@@ -1167,6 +1195,7 @@ Spin-Sourced Contact and Zero-Spin Scalar Branches}
 
 \author{Houston Golden}
 \email{houston@hubify.com}
+\altaffiliation[ORCID: ]{\href{https://orcid.org/0009-0008-5616-5994}{0009-0008-5616-5994}}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
 \date{\paperTimestamp\ (\paperVersion)}
@@ -4022,7 +4051,56 @@ one-loop/RG calculation.  Until that step exists, the honest conclusion is a
 specific contact-channel benchmark and a narrow classical transparency
 identity.
 
-\subsection*{Data and Code Availability}
+%% ============================================================
+%%  ACKNOWLEDGMENTS + MANDATORY DECLARATIONS  (v1A.0.127)
+%%  NOTE-SCOPED ON PURPOSE.  IOP/CQG make competing-interests and funding
+%%  declarations unconditionally mandatory and generative-AI disclosure
+%%  mandatory where AI was used, all three in the Acknowledgements section:
+%%    "All authors and co-authors are required to disclose any potential
+%%     conflicts of interest ... Any conflicts of interest should be included
+%%     in an acknowledgements section."
+%%    "IOP Publishing requires all authors to declare any funding they
+%%     received related to the research article they are submitting."
+%%    "If authors use generative AI tools for any of the tasks listed above,
+%%     they must disclose this usage in the Acknowledgements section ...
+%%     list the model and version of the generative AI tool and how it was
+%%     used in the work."
+%%  (https://publishingsupport.iopscience.iop.org/ethical-policy-journals/)
+%%  The FULL-PAPER acknowledgments block further down this file is inside the
+%%  \begin{comment} region together with the cut cosmology material.  It is
+%%  deliberately LEFT COMMENTED: it thanks the Planck/CMB-S4/LiteBIRD/LSST/DESI
+%%  collaborations and Lior Shamir for galaxy-spin counts, and cites frozen MCMC
+%%  chains -- none of which this 8-page Note uses.  Restoring it would credit
+%%  material the Note does not contain.  This block carries only what the Note
+%%  actually owes and what IOP actually mandates.
+%%  Placement: before Data and Code Availability, per IOP's own advice that the
+%%  data statement go "in a dedicated section of the manuscript after the
+%%  acknowledgements".
+%% ============================================================
+\begin{acknowledgments}
+The identities consolidated here are standard; the author thanks the authors of
+the Einstein--Cartan, Holst-sector, and Fierz-rearrangement literature cited in
+this Note, whose derivations this work audits and assembles rather than
+replaces, and the developers of the open-source symbolic and numerical tools
+used for the committed algebraic checks.
+
+\emph{Funding.}---No external funding was received for the research,
+authorship, or publication of this Note. No grant, institutional, or commercial
+support was received, and no funder had any role in the work. Computational
+costs were borne by the author.
+
+\emph{Competing interests.}---The author declares no competing interests,
+financial or non-financial.
+
+% NOTE ON SOURCE FORMATTING: the AI-usage paragraph is kept on a SINGLE long
+% source line, exactly as P3/P4/P5 keep theirs. tools/directive_g.sh's leak-gate
+% exempts a line only when the model names and the disclosure phrasing sit on
+% the SAME line; reflowing this paragraph would trip the gate for the wrong
+% reason. Do not hard-wrap it.
+\emph{Generative-AI usage.}---This Note was prepared with an agentic AI research pipeline operated under the author's direction, and that assistance was substantive rather than cosmetic. Anthropic Claude (Opus~4 family, 2026 releases) was used for pipeline orchestration, generation of the algebraic check scripts named in the Data and Code Availability section, symbolic and dimensional cross-checking of the Fierz rearrangement and the mean-field gap equation, literature triage, and drafting and revision of the text; xAI Grok (Grok-4 and Grok-4.3), Google Gemini (2.5~Pro and 3.1~Pro), and OpenAI ChatGPT (GPT-5-class models, in review rounds through 2026 July) were used as cross-checking and adversarial referee-style reviewers of the compiled manuscript, each bound to the exact PDF under review. What remained with the author is the scientific content: the author set the scope and the declared conventions, made every physics judgment---including which results are stated as exact and which are labelled conditional---verified each reported coefficient against the committed check scripts, whose printed output any reader can reproduce, and adjudicated every AI-raised finding against the source rather than adopting it on the reviewer's authority. The author takes full responsibility for the contents, including all material produced with AI assistance. No AI system is an author, and none is credited as one.
+\end{acknowledgments}
+
+\section*{Data and Code Availability}
 
 The algebraic checks used here are committed at
 \artifactpinned{arxiv/scripts/fierz_lemma_check.py}{fierz_lemma_check.py} and
