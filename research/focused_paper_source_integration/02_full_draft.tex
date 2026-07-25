@@ -21,8 +21,8 @@
 
 % Single-source version macros: the Data and Code Availability self-reference
 % binds to \paperVersion so it can never drift from the title-block stamp again.
-\newcommand{\paperVersion}{v1.7.128}
-\newcommand{\paperTimestamp}{July 23, 2026, 09:00 PDT}
+\newcommand{\paperVersion}{v1.7.129}
+\newcommand{\paperTimestamp}{July 24, 2026, 18:20 PDT}
 
 \begin{document}
 
@@ -36,6 +36,21 @@ Four-Vertex Derivation and Conditional Large-Scale-Structure Mapping}
 \affiliation{Independent Researcher, Los Angeles, California, USA}
 
 \date{\paperTimestamp}
+% v1.7.129 (2026-07-24 — COMPANION-STATUS BACK-PATCH: the cross-paper companion-status
+%   sweep found the one live stale companion-availability claim in this manuscript. The
+%   rendered bibliography entry for the Paper I A companion (\cite{Golden2026P1a}, cited in
+%   the Assumption-(f) torsion-contact paragraph) carried journal="(in preparation)" and the
+%   superseded pre-split title, although Paper I A was publicly archived on Zenodo on
+%   2026 July 22 with a resolvable permanent version DOI 10.5281/zenodo.21481838 (concept
+%   DOI 10.5281/zenodo.21481837; both verified HTTP 200 before editing). FIX: the entry now
+%   cites the archived record of the record --- the exact archived title, the version and
+%   concept DOIs, the deposit date, and CC-BY-4.0 --- and states explicitly that the record
+%   is a public permanent archive, NOT an arXiv preprint and NOT peer reviewed. The uncited
+%   Golden2026P2 self-entry in focused_paper_refs.bib was corrected the same way (Zenodo
+%   10.5281/zenodo.21461881); it renders nowhere, so the PDF diff is the single Paper I A
+%   reference line. NO science number, claim, estimand, or conclusion changed;
+%   f_NL^local=-35/16 UNCHANGED. Enforced going forward by tools/verify_companion_status.py
+%   (portfolio validator "companion-status" inside tools/bigbounce_preflight.py).
 % v1.7.128 (2026-07-23 — RE-SWEEP CLOSURE: the 2026-07-23 routine re-sweep truth audit
 %   (project-context/peer-reviews/INT_v3/TRUTH_AUDIT_RESWEEP_2026-07-23.md) surfaced one
 %   genuinely-new-real class — version-stamp drift in the Data and Code Availability prose:
