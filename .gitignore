@@ -98,3 +98,11 @@ pipelines/p2_chirality/outputs/g1_retrain/*.pt
 # re-provisionable from Zenodo DOI 10.5281/zenodo.7167388; provenance file IS tracked.
 pipelines/p2_chirality/external_catalogs/*.fits
 .heartbeat.*
+
+# Scratch/build directories — never publication artifacts, and large enough to
+# matter in a repo this size (2026-07-25: tmp/ alone was 233MB across 622 files,
+# pipelines/p3_anomaly_engine/tmp/ another 19MB). Everything here is regenerated
+# by the pipelines; nothing in it is cited by a paper.
+tmp/
+pipelines/*/tmp/
+outputs_check
