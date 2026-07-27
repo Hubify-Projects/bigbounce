@@ -255,12 +255,24 @@ BASE_PDF_NAME="$TEX_BASE.pdf"
 PREV_MD5=""   # md5 of the previously-served base copy, to find its aliases
 if [ -f "site/public/$BASE_PDF_NAME" ]; then PREV_MD5="$(md5of "site/public/$BASE_PDF_NAME")"; fi
 
+# 2026-07-24: this list is the enforced set, so anything it omits is a place a
+# superseded PDF can sit forever without directive G ever looking at it. The
+# reverse-direction sweep (tools/verify_pdf_mirror_integrity.py) found 31 such
+# orphans across 13 documents -- every one of them outside the roots below. The
+# bare "public" root (which serves at /<name>.pdf) and the downloads/ roots are
+# added here so a future mirror cannot land outside the enforced set again.
+# Missing directories are skipped by the guards below, so listing a root that
+# does not exist today is free and keeps the next one from being a blind spot.
 SERVED_ROOTS=(
   "site/public"
   "site/public/papers"
+  "site/public/downloads"
+  "public"
   "public/papers"
+  "public/downloads"
   "site/out"
   "site/out/papers"
+  "site/out/downloads"
   "$TEX_DIR"
 )
 
