@@ -18,9 +18,12 @@ SSOT/Convex.
   worktrees were removed after the same verification.
 - The personal fork's stalled pack upload was replaced by a fast-forward
   GitHub ref update; no force update was used.
-- Open GitHub pull requests remained zero. The five untracked local skill
-  mirrors remain deliberately untouched because Scistack is canonical and
-  three local copies are stale or divergent.
+- Open GitHub pull requests remained zero. After canonical Scistack sync, the
+  five untracked project-level skill mirrors were moved out of the worktree to
+  the recoverable Trash folder
+  `~/.Trash/bigbounce-project-skill-mirrors-2026-08-03/`: two were identical to
+  Scistack and three were stale or divergent. No second canonical skill copy
+  remains in the project.
 
 The remaining sections preserve the **pre-action snapshot and analysis** that
 justified this outcome. References to preserving branches/worktrees below are
