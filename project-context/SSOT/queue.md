@@ -1,3 +1,26 @@
+# BigBounce current queue — authoritative entry point
+
+**Reconciled 2026-08-03.** The older chronological ledger below begins with
+historical entries and is retained for provenance. The active work is:
+
+1. **NEXT — bounded final-hash/package acceptance:** bind the six current
+   source/PDF pairs to version, commit, hashes, packages, and visual/link audit
+   receipts; reopen only a confirmed genuinely-new-real regression.
+2. **NEXT — submission packets:** close P3/P5 metadata and the P5 staged-deposit
+   decision; finish the six journal portal kits.
+3. **HOUSTON — final sign-off:** record one explicit decision per paper; only
+   then move that paper from Directive-P 95 to 100.
+4. **HOUSTON + AGENT — submissions:** CQG/JORS/PRD/ApJS/AJ portal work, tracked
+   separately from readiness. arXiv endorsement remains a parallel channel.
+5. **WATCHPOINT — Hubify auth:** restore `HUBIFY_TOKEN` through an approved
+   secret source before CLI verification; this is not on the repo/site path.
+
+Completed this pass: atomic truth/production synchronization and repository
+consolidation. Archival merge `556b8454` preserves all former branch tips;
+local, `origin/main`, and `upstream/main` agree and both remotes expose only
+`main`. The detailed 2026-08-03 queue repeated later in this file provides the
+paper-by-paper publication checklist.
+
 - **✅ 2026-07-20 — DONE: Convex paper_figures re-seeded from corrected tex** (43->37 rows + 4 stale P1A rows pruned; seeder now strips \begin{comment} blocks so legacy manuscripts can never seed stale captions; figures.ts regenerates with ZERO -35/8 / 378,280 hits). (Was: OPEN — durability: re-seed Convex paper_figures from corrected tex** (tools/seed_paper_figures.mjs) so a future extract-figures-from-convex.mjs run cannot re-introduce the superseded -35/8 captions fixed in e7a8219d; run as a deliberate /bigbounce-site-sync pass.
 - **✅ 2026-07-20 — DONE: wave-1/wave-2 P2/P3/P4 submission tarballs rebuilt at the DOI-bearing versions.** Rebuilt with `tools/build_exact_arxiv_bundle.py --paper <P> --git-commit bdb3d5cceb61096a7ca9aab279e80a2d379ff15c --write`, commit-bound to current HEAD `bdb3d5cc` (one commit past the DOI-embed commit `b83b5a5c`, site-files-only in between — no paper-source changes, confirmed via `git diff --stat`). All 3 standalone-compile-verified in isolated temp extracts (tectonic 0.16.9, 0 errors, 0 undefined references): P2 `paper2_arxiv_v1.7.126.tar.gz` (11pp, matches expected), P3 `paper3_apjs_arxiv_v3.2.0-r11.tar.gz` (17pp), P4 `paper4_arxiv_v1.0.269.tar.gz` (32pp). Receipts written as `*.proof.json` alongside each tarball (verifier `doi-tarball-rebuild`). Both submission kits updated in place — `WAVE1_SUBMISSION_KIT_2026-07-19.md` (P3 row: tarball/checksums/DOI-embedded note, checklist item 4 flipped from "defer to v2" to "already embedded") and `WAVE2_P5_SUBMISSION_KIT_2026-07-20.md` (P2/P4 rows: tarball/checksums/DOI-embedded note, checklist item 4 flipped, P4 abstract block updated to match the live tex). P5/P1A/P1B tarballs unchanged (P5 still gets its own back-patch at submit time per the kit; P1A/P1B versions unchanged). Blocks cleared: `project-context/SSOT/WAVE1_SUBMISSION_KIT_2026-07-19.md`, `project-context/SSOT/WAVE2_P5_SUBMISSION_KIT_2026-07-20.md`.
 - **✅ 2026-07-20 — DONE: P2 DOI back-patch embedded (v1.7.125 → v1.7.126).** Zenodo archival DOI `10.5281/zenodo.21461881` (concept `10.5281/zenodo.21461880`) added to the Data and Code Availability section, closing the standing "archive/DOI remains a submission-time step" caveat for real. The record archives the exact bytes of the reviewed v1.7.125 release (11pp md5 `174d52d55719c5955f852d2365fdb9c8`); v1.7.126: 11pp, MD5 `bd10fe4ab022485cf647c2fc2d5074a2`, Convex row `k573kdfeb1jayccrdetm7ta4mx8awb6b`, directive-G PASS, versioned mirrors verified byte-identical (`public/papers/02_full_draft_v1.7.126.pdf`, `site/public/papers/02_full_draft_v1.7.126.pdf`). No science number changed, -35/16 UNCHANGED. Readiness cap 80 HOLDS (no uplift claimed).

@@ -1,14 +1,36 @@
 # Branch and worktree consolidation record — 2026-08-03
 
-**Purpose.** Read-only topology evidence and a disposition plan.  This record
-does not authorize a merge, branch deletion, worktree removal, or remote
-change.  The canonical research state remains `main` plus SSOT/Convex.
+**Purpose.** Topology evidence, disposition rationale, and the completed
+consolidation receipt. The canonical research state remains `main` plus
+SSOT/Convex.
+
+## Completed outcome — 2026-08-03
+
+- `main`, `origin/main`, and `upstream/main` all resolve to
+  `2be3964b22301b2408f74945a2c169843de6c033`.
+- Archival merge `556b8454` makes every formerly divergent local/remote branch
+  tip reachable from `main` without applying any superseded branch tree over
+  the current canonical tree. This preserves unique P1-unification, cubic
+  bounce, architecture, legacy-site, and RunPod history for later selective
+  review.
+- All non-`main` branches were removed from both GitHub remotes after ancestry
+  verification. All eight obsolete local branches and their two clean linked
+  worktrees were removed after the same verification.
+- The personal fork's stalled pack upload was replaced by a fast-forward
+  GitHub ref update; no force update was used.
+- Open GitHub pull requests remained zero. The five untracked local skill
+  mirrors remain deliberately untouched because Scistack is canonical and
+  three local copies are stale or divergent.
+
+The remaining sections preserve the **pre-action snapshot and analysis** that
+justified this outcome. References to preserving branches/worktrees below are
+historical guardrails, not current state.
 
 ## Snapshot and remotes
 
 | Item | Evidence |
 | --- | --- |
-| Canonical local/Origin head | `main` = `origin/main` = `41bcb15ba18549fda984b16c7aabc6add7d78283`; `git rev-list --left-right --count origin/main...HEAD` = `0 0` |
+| Canonical local/Origin head at snapshot | `main` = `origin/main` = `41bcb15ba18549fda984b16c7aabc6add7d78283`; `git rev-list --left-right --count origin/main...HEAD` = `0 0` |
 | `origin` | `https://github.com/Hubify-Projects/bigbounce.git`; `origin/HEAD -> origin/main` |
 | `upstream` | `https://github.com/houstongolden/bigbounce.git`; cached `upstream/main` = `41749e5c`; `main...upstream/main` = `3754 6` (diverged, never merge blindly) |
 | GitHub | `gh pr list --state open` returned none; repository Issues are disabled |

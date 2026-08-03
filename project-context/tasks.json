@@ -24,7 +24,7 @@
   "tasks": [
     {
       "id": "AUG-001",
-      "status": "active",
+      "status": "complete",
       "title": "Synchronize canonical SSOT, Convex, site data, and production truth atomically"
     },
     {
@@ -53,8 +53,9 @@
     },
     {
       "id": "AUG-006",
-      "status": "pending",
-      "title": "Diff and consolidate stale local and remote branches without losing unique work"
+      "status": "complete",
+      "title": "Diff and consolidate stale local and remote branches without losing unique work",
+      "completion_evidence": "archival merge 556b8454; local, origin/main, and upstream/main aligned; both remotes expose only main; obsolete local worktrees and branches removed"
     },
     {
       "id": "AUG-007",

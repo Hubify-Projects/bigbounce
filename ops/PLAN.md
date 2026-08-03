@@ -73,7 +73,7 @@ does not automatically reduce readiness unless it finds a real regression.
 
 ## Phase plan
 
-### Phase A — truth reconciliation and production sync (now)
+### Phase A — truth reconciliation and production sync (complete 2026-08-03)
 
 1. Make this plan, the SSOT board, per-paper statuses, queue, tasks, revision
    tracker, Convex, and site projections agree on identity, version, Directive-P
@@ -81,6 +81,11 @@ does not automatically reduce readiness unless it finds a real regression.
 2. Preserve historical review evidence while visibly marking superseded plans,
    caps, P1U state, and verdict-word snapshots as historical.
 3. Verify the production site and public paper links after the atomic sync.
+
+Repository consolidation completed in the same recovery pass: archival merge
+`556b8454` preserves all formerly divergent tips, both GitHub remotes now expose
+only `main`, obsolete local branches/worktrees are removed, and local,
+`origin/main`, and `upstream/main` agree at `2be3964b`.
 
 ### Phase B — bounded final-artifact acceptance
 
@@ -106,13 +111,11 @@ distribution task and is not on the journal critical path.
 
 ## Immediate priority order
 
-1. Complete the atomic docs + SSOT + Convex + site truth sync and production QA.
-2. Complete bounded final-hash/package acceptance for all six papers.
-3. Close remaining submission metadata for P3/P5 and finalize portal packets.
-4. Obtain Houston's six explicit sign-offs.
-5. Submit P2 first, then the remaining journal-ready packets in the order that
+1. Complete bounded final-hash/package acceptance for all six papers.
+2. Close remaining submission metadata for P3/P5 and finalize portal packets.
+3. Obtain Houston's six explicit sign-offs.
+4. Submit P2 first, then the remaining journal-ready packets in the order that
    minimizes account/reviewer/APC friction.
-6. Diff and classify stale branches; preserve unique work before consolidation.
 
 ## Stop rules
 

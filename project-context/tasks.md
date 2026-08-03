@@ -7,9 +7,10 @@ paper queue is [`SSOT/queue.md`](SSOT/queue.md). This section is the current
 project-context task projection. Everything below **Historical task ledger** is
 preserved audit history and must not be read as the active queue.
 
-- [ ] **AUG-001 — Atomic truth synchronization:** reconcile SSOT, revision
+- [x] **AUG-001 — Atomic truth synchronization:** reconciled SSOT, revision
   tracker, Convex, site data, and production behavior around the six current
-  versions and Directive-P scoring. Owner: active agent lanes.
+  versions and Directive-P scoring; local build/typecheck/freshness gates pass
+  and both remotes share the release commit. Completed 2026-08-03.
 - [ ] **AUG-002 — Bounded final-hash acceptance:** bind and verify current
   exact PDFs/packages; run only the closure-confirmation needed for post-board
   changes; reopen work only for genuinely-new-real regressions.
@@ -20,8 +21,10 @@ preserved audit history and must not be read as the active queue.
 - [ ] **AUG-005 — Journal submissions:** execute CQG/JORS/PRD/ApJS/AJ portal
   work. Track accounts, reviewer suggestions, fees/waivers, and clicks as
   publishing tasks separate from readiness.
-- [ ] **AUG-006 — Repository consolidation:** diff unmerged local/remote
-  branches, preserve unique content, then consolidate obsolete branches.
+- [x] **AUG-006 — Repository consolidation:** audited all local/remote tips,
+  preserved their history in archival merge `556b8454`, then removed obsolete
+  branch refs and linked worktrees. Both remotes now expose only `main`.
+  Completed 2026-08-03.
 - [ ] **AUG-007 — Hubify lab verification (external auth gap, non-critical):**
   `hubify status`, `papers`, `tasks`, `agents`, and `activity` currently fail
   unauthenticated. `.env.local` lacks `HUBIFY_TOKEN` although `.env.example`
