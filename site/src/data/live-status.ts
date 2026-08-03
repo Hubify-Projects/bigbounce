@@ -121,7 +121,7 @@ export const liveStatus: LiveStatus = {
     openMinors: 1,
   },
   cronStatus:
-    "No recorded open BLOCKER or MAJOR. P3 retains one recorded MINOR; current-hash confirmation and Houston review are tracked separately.",
+    "No autonomous review wave is running. No recorded open BLOCKER or MAJOR; P3 retains one recorded MINOR, and bounded current-hash confirmation plus Houston review are tracked separately.",
   etaToCompletion:
     "No automated completion estimate: the remaining readiness points require Houston's personal review. Submission and journal review proceed on their own publishing timeline.",
   pods: [],
