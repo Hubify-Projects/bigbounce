@@ -54,6 +54,22 @@ submission_status: submission-ready (R42 Wave 14-AAA LANDED -- P2-OA-B4 FULL HAR
 **🎯 Last authoritative update (P2): 2026-06-13 (PDT) — EXT15-CLOSURE-WAVE — P2 v1.7.67 (md5 e6a36fdd, 29pp, 0/0/0).** EXT14=12/18 ACCEPT (P1B+P4 frozen). EXT15-closure: BF Eq.9 vs Eq.10 mapping corrected — Eq.9 is the exact CDF used for narrow delta-prior (B≈7.0); Eq.10 is a large-W approximation valid only for the broad [-15,+15] delta cross-check; Gaussian-bounce-prior uses Eq.9 exclusively. Sub-percent 0.18% arithmetic typo corrected. EXT16 submitted. Readiness 95 per /readiness-cap-99.
 
 
+# P2 status — current authoritative section
+
+**Current candidate:** v1.7.130 · `research/focused_paper_source_integration/02_full_draft.tex`
+**Directive-P readiness:** **95** agent gates + 5 Houston sign-off points
+
+The July 22 active-leg findings and subsequent publication-compliance closures
+are closed in v1.7.130. The central contraction-phase result remains bounded by
+the manuscript's stated scheme and evidence; convergence is not a claim of
+journal acceptance. A bounded final-hash confirmation remains evidence hygiene
+because v1.7.130 postdates the complete portfolio board. Next is Houston's
+sign-off and PRD portal work (APS account, ORCID/DAS checks, upload), tracked as
+publishing rather than a readiness deduction. Old caps and OPEN rows below are
+historical unless promoted here.
+
+## Historical status ledger
+
 # Paper 2 — f_NL Forecast (SPHEREx / MegaMapper) — Single Source of Truth
 
 **🎯 Last authoritative update: 2026-06-13 (PDT) — EXT13-CLOSURE-WAVE — P2 v1.7.66 (md5 b8cb9a4c, 29pp, 0/0/0).** EXT12=7/18 ACCEPT (Grok 6/6 ACCEPT, ChatGPT MINOR, Gemini pattern-058 fix). EXT13-closure: BF self-check paragraph rewritten — 3 sentences explicitly disentangle: (1) Eq.(bf_approx)→delta-prior only (B≃7.0 narrow / 17.10 broad), (2) Eq.(bf_exact)→required for Gaussian-bounce-prior (B=4.01, category-error 42% inflation), (3) delta vs Gaussian rows differ in both prior spec AND required equation. All EXT12 VERIFIED-OPEN items addressed. Readiness holds 94 per /readiness-cap-99. Tarball paper2_arxiv_v1.7.65.tar.gz staged at project-context/SSOT/arxiv_tarballs/ (EXT13 PDF same source — tarball covers compiled version). EXT14 submitted — 18 chats (Gemini pattern-058 fresh-chat fix applied). Confidence: HIGH 18/18 ACCEPT.

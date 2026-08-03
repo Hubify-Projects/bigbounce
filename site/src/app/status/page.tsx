@@ -81,7 +81,7 @@ export default async function StatusPage() {
   ]);
   const isLive = livePapers.length > 0 && livePapers[0].source === "convex";
   // Display in PT so the date doesn't read one day ahead for PT-anchored audience
-  const renderedAt = new Date().toLocaleString("en-US", {
+  const renderedAt = new Date(BUILD_NOW).toLocaleString("en-US", {
     timeZone: "America/Los_Angeles",
     year: "numeric",
     month: "2-digit",

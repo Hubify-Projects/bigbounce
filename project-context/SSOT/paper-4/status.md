@@ -1,3 +1,18 @@
+# P4 status — current authoritative section
+
+**Current candidate:** v1.0.272 · `pipelines/p2_chirality/chirality_catalog_paper.tex`
+**Directive-P readiness:** **95** agent gates + 5 Houston sign-off points
+
+The July 23–24 completeness resweep recovered a real inline-provenance density
+MAJOR and closed it in v1.0.272 after the abstract-length closure. All known
+genuinely-new-real active-leg findings are closed; the observed-label null and
+its honestly bounded physical interpretation remain unchanged. A bounded
+final-hash confirmation remains due because v1.0.272 postdates the full board.
+Next publishing tasks are AAS/HF data-hosting confirmation, Houston sign-off,
+and ApJS upload. Old cap-80 snapshots and OPEN rows below are historical.
+
+## Historical status ledger
+
 > ## DOI BACK-PATCH LANDED — 2026-07-20 · v1.0.269 · cap **80 HOLDS**
 > v1.0.269 embeds the minted Zenodo archival DOI 10.5281/zenodo.21461899 (concept 21461898) in the abstract, Data Availability paragraph (replacing the "DOI ... will be inserted here" placeholder), and catalog itemize, closing the P4 DOI Houston-gate for real. v1.0.269 is 32pp, MD5 b266198157eef7f2feb590a3692e8004, Convex row k57bg1t5pnp5qg57eqwqgchreh8ax47k; directive-G PASS, versioned PDF mirrors verified byte-identical at public/papers/ and site/public/papers/ (git commit 397671bf). HONEST SUBTLETY: the Zenodo record archives the exact bytes of the reviewed v1.0.268 release (32pp md5 4e139b56b0718c70b73ae7295e4ee7b1) — the complete systematics-metadata sidecar gate stays honestly OPEN (untouched); no science number changed, the observed-label null is unchanged. Receipt project-context/SSOT/zenodo/P4_zenodo_receipt_2026-07-20.json.
 

@@ -1,3 +1,21 @@
+# P5 status — current authoritative section
+
+**Current candidate:** v0.1.146-2026-07-24 · `pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex`
+**Directive-P readiness:** **95** agent gates + 5 Houston sign-off points
+
+The completeness resweep closed hierarchy sensitivity in v0.1.145 and added
+the prominent target-program leakage caveat in v0.1.146. The
+target-program-by-environment interaction remains an honestly open systematic:
+the paper reports a conditional fixed-redshift-space classifier-label null, not
+physical environment independence. That limitation is compatible with
+automated convergence because it is disclosed rather than fabricated away.
+
+A bounded final-hash confirmation remains due. Publishing tasks are the staged
+Zenodo-deposit decision, ORCID/keywords verification, Houston sign-off, and AJ
+upload. Old cap-74 snapshots and OPEN rows below are historical.
+
+## Historical status ledger
+
 ## v0.1.141-2026-07-16 FORWARD-LEAKAGE INJECTION CLOSURE — 2026-07-16 · READINESS/CAP 74 HOLD
 
 - **Binding:** 42-page candidate, PDF SHA-256 `4cca09d0aa963ae18b908bc17f57e9b1bf8f91e4ec8555f4c18d2e413a7580ac`, MD5 `6a4e79b4df61bf37b25a801d19d61b62`, timestamp 2026-07-16 16:36 PT; Convex version row `k57bt28p2b4hyhx4g5495a1cfh8amkej`; directive-G PASS, 13 mirrors byte-identical, retention manifest `20260716T234008Z-01500bd1503d.json`.

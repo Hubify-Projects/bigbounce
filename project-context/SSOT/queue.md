@@ -752,6 +752,53 @@ Last authoritative update: 2026-04-22 (drive-to-100 fire #177) -- **EXPLAINED.HT
 
 Last authoritative update: 2026-04-22 (drive-to-100 fire #176) -- **STATUS.HTML PATH-C SYNC; two-surface drift-close (Paper 3 row badge + discovery-card tag).** Pod watchdog: `tmux ls` empty, `nvidia-smi` 0 % / 1 MiB / 81,920 MiB, disk 24 / 500 GB. Criterion #4 live SPARCL still Houston-ack-gated from fire #170 (scaffold + dry-run clean, deterministic checksum 1812395110, ~$3 pod spend / ~1-2 h wall). Continued fire #171-175 opportunistic secondary-surface sweep. Target `status.html`: (i) L171 Paper 3 portfolio-row status badge `Draft (~99%)` (pre-Path-C draft stamp) -> `Path-C rebuild ~93% (11/12 closed, fire #170)` (fire-#170 weighted sum 11.104/12 = 92.53 %); (ii) L771 discovery-card tag on the `2,145 SNR-Filtered Anomalies` card `Paper 3 (~80%)` -> `Paper 3 Path-C ~93% (11/12 closed, fire #170)`. Narrative text (37.3M sources / 319,443 anomalies / 58.8 % SIMBAD-novel) preserved as §7 pre-Path-C baseline. No Path-C exit criteria advanced; weighted sum unchanged at 11.104 / 12 = 92.53 %. Zero pod spend this fire. Cumulative Path-C spend ~$68 / $400 cap. Audit trail: `status.html` + SSOT triplet (queue.md + index.md + drive-to-100.md).
 
+# BigBounce current queue
+
+**Authoritative actionable queue · 2026-08-03**
+
+Earlier HTML comments and the detailed queue below **Historical queue ledger**
+are preserved for audit but are not current. Execute this section in order,
+with `ops/PLAN.md` as program authority and `SSOT/index.md` as status authority.
+
+| Priority | Work | State | Completion evidence |
+|---:|---|---|---|
+| 0 | Atomic truth sync across docs/SSOT, Convex, site data, and production | IN PROGRESS | Six identities, versions, 95 scores, publishing gates, and timelines agree; production QA passes |
+| 1 | Bounded final-hash/package acceptance for all six artifacts | NEXT | Version/commit/hash/package receipts; compile/link/visual audits; no genuinely-new-real regression across active legs |
+| 2 | Close submission metadata and packet gaps | NEXT | P3/P5 metadata verified; P5 staged-deposit decision recorded; six portal-ready kits |
+| 3 | Houston final review | HOUSTON | Explicit quote per paper; signed paper moves 95 → 100 |
+| 4 | Journal submission wave | HOUSTON + AGENT | CQG/JORS/PRD/ApJS/AJ portal receipts; publishing separate from readiness |
+| 5 | Branch consolidation | AFTER TRUTH SYNC | Every unmerged branch classified; unique work preserved before delete/merge/archive |
+
+## Paper-specific publishing queue
+
+- **P1A v1A.0.127:** CQG account/upload, final sign-off, referee suggestions.
+- **P1B v2B.0.16:** JORS account, five reviewer names with real emails,
+  fee/waiver decision, final sign-off, and upload.
+- **P2 v1.7.130:** APS account/ORCID/DAS checks, final sign-off, PRD upload.
+- **P3 v3.2.0-r14:** verify ORCID and declaration metadata, final sign-off, and
+  ApJS upload. Its archival Zenodo DOI is distinct from a journal asset DOI.
+- **P4 v1.0.272:** confirm AAS acceptance of declared HF-hosted assets, final
+  sign-off, and ApJS upload.
+- **P5 v0.1.146-2026-07-24:** decide whether to publish the staged Zenodo
+  deposit, verify ORCID/keywords metadata, retain the target-program caveat,
+  final sign-off, and AJ upload.
+
+arXiv endorsement is a parallel distribution task, not a journal or readiness
+blocker.
+
+## Operational watchpoint
+
+Hubify CLI verification is externally blocked: `hubify status`, `papers`,
+`tasks`, `agents`, and `activity` fail unauthenticated because `.env.local`
+lacks `HUBIFY_TOKEN` (declared in `.env.example`). This does not block repository
+or site synchronization. Never print, infer, or fabricate the missing token.
+
+## Historical queue ledger
+
+Rows below retain prior compute, drive-to-100, CMUX, verdict-grid, and release
+campaign evidence. Their OPEN labels and caps are not active unless the current
+queue above explicitly reintroduces them.
+
 # BigBounce SSOT — cross-paper close-the-gap queue
 
 **Prioritized, tagged task queue to drive every paper to true 100 %.** One task per row. Each task is scoped to close a specific percentage-point gap in a specific paper (or program-wide).

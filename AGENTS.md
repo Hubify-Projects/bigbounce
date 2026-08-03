@@ -1,7 +1,7 @@
 # AGENTS.md — bigbounce (Codex / any-agent entry point)
 
-This is the **bigbounce cosmology paper-review program**: 6 physics papers driven
-to publication through an iterative internal + external peer-review loop, with a
+This is the **bigbounce cosmology publication program**: six physics papers now
+moving from truth-audited automated convergence into journal submission, with a
 public Next.js lab site (https://bigbounce.hubify.app) kept in sync after every
 round. If you are an AI coding agent (Codex, Claude Code, Cursor, …) picking this
 up, read these IN ORDER before touching anything:
@@ -15,17 +15,21 @@ up, read these IN ORDER before touching anything:
 ## Ground truth
 - Canonical paper status: **`project-context/SSOT/`** + **Convex** — never a `.tex`
   comment, `papers.ts`, or site HTML.
-- ⚠️ **State as of 2026-06-21: IN-REVISION (readiness 92).** An external review
-  found open BLOCKER/MAJOR/MINOR revisions. Do not claim done or submit. P0 =
-  intake those findings, truth-audit, close, re-review, re-sync the site.
+- **State as of 2026-08-03: Directive-P agent gates complete at 95 for all six
+  current candidates; journal-submission phase.** Houston's explicit per-paper
+  sign-off supplies the final five points. A bounded final-hash confirmation is
+  still due because the final PDFs contain post-board closures. Submission,
+  endorsement, independent human review, and journal peer review are tracked as
+  a separate publishing phase and do not subtract from readiness. Start with
+  `ops/PLAN.md` and the top board in `project-context/SSOT/index.md`.
 
 ## The 6 papers (current paths — there is no single `main.tex`)
 | # | Source .tex |
 |---|---|
 | P1A | `arxiv/paper1a_ech_nogo.tex` |
-| P1B | `arxiv/paper1b_mcmc_companion.tex` |
+| P1B | `arxiv/paper1b_namaster_proof.tex` |
 | P2 | `research/focused_paper_source_integration/02_full_draft.tex` |
-| P3 | `pipelines/p3_anomaly_engine/paper3_draft.tex` |
+| P3 | `pipelines/p3_anomaly_engine/paper3_apjs.tex` |
 | P4 | `pipelines/p2_chirality/chirality_catalog_paper.tex` |
 | P5 | `pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex` |
 

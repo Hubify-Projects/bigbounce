@@ -1,118 +1,133 @@
-# PLAN — bigbounce review-program
+# PLAN — BigBounce publication program
 
-Mission, terminal criteria, current state, phase plan, decision log. Live paper
-state is canonical in `project-context/SSOT/index.md` — this doc links to it and
-never restates per-paper readiness numbers as truth.
+**Authoritative program plan · reconciled 2026-08-03**
 
----
+This is the single executable plan for the six-paper program. It defines the
+current phase, gates, and work order. It does not duplicate manuscript science
+facts: use the source map below and the SSOT status board for those.
 
-## 1. Mission + terminal-criteria stack
+## Mission
 
-**Mission:** prove bounce cosmology beats ΛCDM + inflation by driving six papers
-(P1A/P1U, P1B, P2, P3, P4, P5) to ACCEPT from every reviewer, honestly — never by
-prompt-gaming, never by watering down science.
+Bring six honest, reproducible manuscripts through Houston's final review and
+then through their journal submission workflows. Automated review is a
+truth-auditing instrument, not a substitute for editorial or human scientific
+judgment.
 
-The exit bar tightened over four directives (all in repo-root `CLAUDE.md`); **M
-governs** and supersedes the earlier ones as the terminal criterion:
+## Current directives
 
-| Directive | Date | Bar | Role now |
-|-----------|------|-----|----------|
-| **J** | 2026-07-09 | literal 0 MAJOR / 0 MINOR / 0 REJECT from every reviewer; never-idle loop | honesty tool, not exit |
-| **K** | 2026-07-10 | two consecutive full waves with 0 genuinely-new findings | CHECKPOINT (proven repeatedly) |
-| **L** | 2026-07-11 | ALL-ACCEPT via the OPEN-COMPUTE science queue (not more text waves) | the *path* |
-| **M** | 2026-07-12 | **/reviews grid CURRENT column = 100% ACCEPT across every paper × reviewer** | **TERMINAL — the only exit** |
+- **N — active review routing:** Grok API, Gemini API, and Claude Opus INT are
+  active. OpenAI/ChatGPT is paused; historical cells remain visible and frozen.
+- **M-AMENDED — active-leg grid:** the all-A diagnostic applies only to active
+  legs. Raw verdict words are preserved and never fabricated.
+- **P — publication-readiness composition:** science 25 + evidence and
+  reproducibility 25 + automated convergence 25 + packaging/PDF hygiene 20 +
+  Houston's personal sign-off 5. The four agent gates total **95**. Only an
+  explicit per-paper Houston sign-off reaches **100**.
+- **Automated convergence:** zero genuinely-new-real findings remain
+  outstanding across active legs on the current exact artifact. Verdict words
+  are diagnostic; every finding still requires a source-cited disposition.
+- **Publishing is separate from readiness:** venue choice, submission clicks,
+  arXiv endorsement, journal peer review, and independent human review do not
+  subtract from the readiness score.
 
-Nothing less than M's all-A grid exits the loop. The cron never stops and no
-paper's work pauses until then; all papers get parallel work every tick.
+Directives J–M and the former verdict-derived readiness caps remain historical
+process evidence in `CLAUDE.md`; they are not the current scoring or exit model.
 
----
+## Canonical map
 
-## 2. Current state snapshot
+| Concern | Canonical location |
+|---|---|
+| Program phase, priorities, decisions | `ops/PLAN.md` |
+| Manuscript identities, paths, venues | `project-context/paper_registry.json` |
+| Current portfolio status | `project-context/SSOT/index.md` |
+| Per-paper status and honest limitations | `project-context/SSOT/paper-*/status.md` |
+| Current work queue | `project-context/SSOT/queue.md` |
+| Review chronology | `project-context/peer-reviews/REVISION_TRACKER.md` |
+| Finding dispositions | `project-context/peer-reviews/DISPOSITIONS/` |
+| Public projection | Convex plus `site/src/data/` |
+| Recovery/You.md context | `project-context/plan.md` and `.youmd/projects/bigbounce/` |
 
-> **Live state is `project-context/SSOT/index.md` + Convex `readinessMetrics` —
-> read those, not this snapshot.** Numbers below are a point-in-time read for
-> orientation (as of the M39-EXT tick, 2026-07-13).
+## Current state
 
-Caps: **P1A 68 · P2 74 · P3 56 · P4 80 · P5 80.**
-Clean-wave streaks: **P1U 14 · P2 13 · P3 5 · P4 12 · P5 2.**
+The July 22 active-leg confirmation wave produced 19 genuinely-new-real
+findings across the portfolio; all were closed. The July 23–24 completeness
+resweep caught MAJOR items hidden beneath summary verdict labels and closed the
+remaining P1B, P4, and P5 findings. The current versions are:
 
-Every paper is past directive-K's two-clean-waves checkpoint. None is at the
-all-A grid (directive M). See the honest floor analysis below for why.
+| Paper | Version | Agent gates | Next phase |
+|---|---:|---:|---|
+| P1A | v1A.0.127 | 95/95 | CQG submission |
+| P1B | v2B.0.16 | 95/95 | JORS submission |
+| P2 | v1.7.130 | 95/95 | PRD submission |
+| P3 | v3.2.0-r14 | 95/95 | ApJS submission |
+| P4 | v1.0.272 | 95/95 | ApJS submission |
+| P5 | v0.1.146-2026-07-24 | 95/95 | AJ submission |
 
-### Honest verdict-floor analysis (pattern-066)
+The 95 values mean the four Directive-P agent gates are recorded complete; they
+do not claim Houston sign-off, submission, referee acceptance, or publication.
+Because the current PDFs include closures made after the last complete
+six-paper active-leg board, one bounded **final-hash confirmation** is still an
+evidence-hygiene task. It checks that the exact final artifacts contain no new
+real defect. It is not permission to restart an unbounded verdict-word loop and
+does not automatically reduce readiness unless it finds a real regression.
 
-The residual gap is **not a content gap** — content is converged (every reviewer
-finding across ~M9→M39 truth-audits to a source-cited `DISPOSITIONS/<P>.md` id,
-an OPEN-COMPUTE item, or a disclosed scope limitation; genuinely-new real defects
-now surface ~1 per 10 waves, last two closed + verified held: P2 v1.7.112, P5
-v0.1.127). The gap is the **pattern-066 verdict-word floor**: the *same
-byte-identical PDF* draws different verdict words each sweep.
+## Phase plan
 
-- P4 Grok: ACCEPT → MINOR → MAJOR → MINOR on byte-identical v1.0.239 (M21→M33).
-- ChatGPT: REJECT ↔ MAJOR on P4/P5, with **concede-inside-REJECT** tells (P2 M31
-  ChatGPT REJECT literally says its own double-counting crux "may nevertheless be
-  correct" — and that "fix" was falsified by re-running committed
-  `p2_vertex_check.py` + the convention-free Li et al. closed form).
+### Phase A — truth reconciliation and production sync (now)
 
-**What moves the verdict word, in measured order of effect:**
-`compute/science closures  >  venue matching (P3-ApJS proven)  >  presentation
-overhaul targeting the REJECT raw's own words  ≫  text-only re-review waves
-(measured: text waves DO NOT move it, 15+ waves).`
+1. Make this plan, the SSOT board, per-paper statuses, queue, tasks, revision
+   tracker, Convex, and site projections agree on identity, version, Directive-P
+   scoring, and publishing gates.
+2. Preserve historical review evidence while visibly marking superseded plans,
+   caps, P1U state, and verdict-word snapshots as historical.
+3. Verify the production site and public paper links after the atomic sync.
 
-Full catalog + evidence: `project-context/PROCESS_AUDIT_2026-07-14.md` §3.
+### Phase B — bounded final-artifact acceptance
 
----
+1. Bind each final source/PDF pair to version, commit, SHA-256, venue, and
+   package receipt.
+2. Run automated preflight, compile, link, mirror, and visual PDF audits.
+3. Run at most the bounded final-hash active-leg confirmation needed to verify
+   the post-board closures; truth-audit every finding and reopen only confirmed
+   genuinely-new-real defects.
 
-## 3. Phase plan
+### Phase C — Houston sign-off
 
-### Phase 1 — loop-as-regression-net (RUNNING, autonomous)
-The cron + watchdog keep waves flowing on every paper. Its job is now to **keep
-measuring** (catch any regression / genuinely-new defect and close it) — NOT to
-farm verdicts. A genuinely-new finding resets that paper's clean-wave streak and
-is closed with a real edit/science before re-test. Runs unattended; the exit
-levers are in Phase 2.
+Present one short decision packet per paper: final PDF, central claim, honest
+limitations, artifact proof, and submission checklist. Record Houston's exact
+per-paper sign-off before changing 95 to 100.
 
-### Phase 2 — Houston-gated conversions (the only levers past the floor)
-None are code-fixable; all require Houston:
-- **arXiv wave-1 submission clicks** — P4→P3→P2 then P5+P1U; bundles re-verified against final versions (`submissions/WAVE1_SUBMIT_WALKTHROUGH.md`).
-- **P3 venue word** — greenlight the ApJS variant (flip is proven; `submissions/P3_VENUE_DECISION.md`).
-- **Zenodo DOI** — mint the P2 dataset/analysis DOI so channel-native Fisher + artifact citations resolve.
-- **Cai email** — the P1U/P2 −35/16 vs Cai −35/8 companion coordination.
-- **Billed Gemini API key** — converts the throttled browser-Gemini leg into an instant parallel API leg.
+### Phase D — journal submissions
 
-### Phase 3 — human referees
-Route the floor papers (P1A/P1U, P2, P3) to human expert referees; LLM-referee
-variance is exhausted as a signal. Briefing: `submissions/HUMAN_READ_BRIEFING.md`.
+Use the existing venue kits and current final artifacts. Journal accounts,
+fees/waivers, reviewer suggestions, portal metadata, and upload clicks are
+publishing tasks, not readiness deductions. arXiv endorsement is a parallel
+distribution task and is not on the journal critical path.
 
-### Phase 4 — optional deep compute levers (directive L science queue)
-Each is a *real computation*, not a text edit; each is followed by a full re-test wave.
+## Immediate priority order
 
-| Lever | Paper | Effort (human-team) | Effort (CC+gstack) | Compression |
-|-------|-------|---------------------|--------------------|-------------|
-| Image-level classifier injection + per-pixel confusion + generative null | P4 | ~1 week | ~4 h (GPU-gated) | ~10x |
-| Channel-native Fisher via adopted covariance surrogate + full cubic in-in | P2 | ~1 week | ~6 h | ~10x |
-| Held-out end-to-end re-inference (22.5M archive re-pull) | P3 | ~3 days | Phase-1 DONE ($0, CPU-local, `2c52a1d2`); full re-pull structurally bounded (only ~1.31% re-pullable) — Houston-gated | — |
-| Zel'dovich RSD reconstruction + higher-N env confusion | P5 | ~4 days | ~4 h | ~15x |
-| Regulated NJL gap equation (operator-level) | P1U | ~1 week | ~1 day | ~5x |
+1. Complete the atomic docs + SSOT + Convex + site truth sync and production QA.
+2. Complete bounded final-hash/package acceptance for all six papers.
+3. Close remaining submission metadata for P3/P5 and finalize portal packets.
+4. Obtain Houston's six explicit sign-offs.
+5. Submit P2 first, then the remaining journal-ready packets in the order that
+   minimizes account/reviewer/APC friction.
+6. Diff and classify stale branches; preserve unique work before consolidation.
 
-Effort style per CLAUDE.md "AI effort compression"; the P3 full archive re-pull is a *structural* ceiling (`P3_REINFERENCE_PLAN.md` §3: 86.6% of released rows carry hashed negative tids with no archive linkage), not a compute ceiling.
+## Stop rules
 
----
+- Never claim 100 without Houston's explicit per-paper words.
+- Never equate automated convergence with journal acceptance.
+- Never chase literal reviewer verdicts after zero-new-real convergence.
+- Never rewrite raw reviews; correct only normalized status and projections.
+- Never delete or merge historical branches or artifacts without first proving
+  whether they contain unique work.
 
-## 4. Decision log
+## Operational watchpoint
 
-The big calls already made (date · sha where applicable):
-
-| Date | Decision | Provenance |
-|------|----------|------------|
-| 2026-07-01 | Convergence gate recalibrated: Grok+Gemini ACCEPT + every ChatGPT MAJOR truth-audited non-real (ChatGPT literal ACCEPT no longer required — structural harsh-referee floor) | directive H, `CLAUDE.md` |
-| 2026-07-01 | pattern-066 refinement: operative test = "0 genuinely-new real findings", not a literal single-sweep ACCEPT | directive H-refined |
-| 2026-07-10 | Two-clean-waves checkpoint adopted | directive K |
-| 2026-07-11 | ACCEPT-bar restored via OPEN-COMPUTE queue (text waves proven not to move verdict words) | directive L |
-| 2026-07-11 | **P3 ApJS venue flip** — ApJS-framed reviews are legitimate reviews of the same science (the one lever that measurably moved a verdict word) | `submissions/P3_VENUE_DECISION.md` |
-| 2026-07-12 | All-A grid is the terminal criterion | directive M |
-| 2026-07-13 | **DP3-15 end-to-end re-inference at structural ceiling** — full-catalog archive re-pull is Houston-gated (hashed-tid majority unrecoverable), no compute lever remains for P3 | `e70e418e` + `2c52a1d2` |
-| 2026-07-13 | **DP4-22 closure** — edge-on sensitivity penalty sqrt→linear (v1.0.240) | `39b7aed1` |
-
-Integrity across every decision is absolute and unchanged: never fake an ACCEPT,
-never prompt-game, every leg saves its raw, dispositions stay source-cited.
+Hubify CLI lab verification is currently unavailable: `hubify status`,
+`papers`, `tasks`, `agents`, and `activity` fail unauthenticated because
+`.env.local` lacks `HUBIFY_TOKEN` while `.env.example` declares the key. This is
+an external authentication gap, not a blocker for repository/site truth sync.
+Acquire the token only through an approved secret source; never print or infer
+it.

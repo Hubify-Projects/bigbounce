@@ -154,6 +154,61 @@ After 11 autoloop fires + v3.2 meta-reviewer + persistence tracker: **5 LOAD-BEA
 
 <!-- previous tick 74 — R16 cross-vendor closed 17 convergent regressions of v1.0.98 closures; v1.0.99 live with HF resync) -->
 
+# BigBounce SSOT — current authoritative board
+
+**Reconciled 2026-08-03 · Directive P · journal-submission phase**
+
+This top visible section is authoritative. Earlier HTML comments and the
+append-only material below **Historical SSOT ledger** are retained for evidence
+but contain superseded P1U identities, caps, versions, and campaign objectives.
+
+## Readiness contract
+
+Publication readiness = science 25 + evidence/reproducibility 25 + automated
+convergence 25 + packaging/PDF hygiene 20 + Houston sign-off 5. The first four
+agent gates are complete for the six current candidates, so each is **95**.
+Only Houston's explicit per-paper sign-off moves that paper to **100**.
+
+Automated convergence means zero genuinely-new-real findings are outstanding
+across active Grok API, Gemini API, and Claude Opus INT legs. Raw verdict words
+are diagnostics, not scoring gates. Current PDFs include post-board closures,
+so a bounded final-hash confirmation remains due for evidence hygiene; it does
+not reopen an unbounded loop unless a genuinely-new-real regression is verified.
+
+Venue selection, submission clicks, arXiv endorsement, independent human
+review, journal peer review, and publication are a separate publishing phase
+and never subtract from readiness.
+
+## Current six-paper board
+
+| Paper | Canonical source | Version | Readiness | Publishing state |
+|---|---|---:|---:|---|
+| P1A | `arxiv/paper1a_ech_nogo.tex` | v1A.0.127 | 95 | CQG packet; Houston sign-off and portal work next |
+| P1B | `arxiv/paper1b_namaster_proof.tex` | v2B.0.16 | 95 | JORS packet; reviewer list, fee/waiver decision, sign-off, portal work |
+| P2 | `research/focused_paper_source_integration/02_full_draft.tex` | v1.7.130 | 95 | PRD packet; Houston sign-off and APS portal work next |
+| P3 | `pipelines/p3_anomaly_engine/paper3_apjs.tex` | v3.2.0-r14 | 95 | ApJS packet; final metadata check, sign-off, portal work |
+| P4 | `pipelines/p2_chirality/chirality_catalog_paper.tex` | v1.0.272 | 95 | ApJS packet; data-hosting confirmation, sign-off, portal work |
+| P5 | `pipelines/p5_desi_chirality/paper/p5_desi_chirality.tex` | v0.1.146-2026-07-24 | 95 | AJ packet; staged-deposit and metadata decisions, sign-off, portal work |
+
+P5's target-program-by-environment interaction remains an honestly disclosed
+systematic limitation; convergence does not turn that conditional null into a
+physical independence claim.
+
+## Evidence anchors
+
+- Registry: `project-context/paper_registry.json`
+- July 23–24 completeness correction:
+  `project-context/peer-reviews/INT_v3/TRUTH_AUDIT_RESWEEP_2026-07-23.md`
+- Finding dispositions: `project-context/peer-reviews/DISPOSITIONS/`
+- Review chronology: `project-context/peer-reviews/REVISION_TRACKER.md`
+- Executable priorities: `ops/PLAN.md` and `project-context/SSOT/queue.md`
+
+## Historical SSOT ledger
+
+The dashboard below is append-only campaign history. Old claims that P1B is
+the MCMC companion, P1A/P1B are P1U, readiness is capped below 95 by reviewer
+wording, or all literal verdict cells must be ACCEPT are superseded.
+
 # BigBounce SSOT -- cross-paper dashboard
 
 ## CURRENT CAMPAIGN NOTE — 2026-07-14

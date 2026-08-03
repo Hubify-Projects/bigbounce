@@ -11,6 +11,21 @@
 
 <!-- CURRENT 2026-07-14 — v3.2.0-r5 exact-PDF ApJS board. Source commit 7cf60218; PDF SHA-256 024931a40e88124f75f2f6872549936e909db0a3b504dbd2e4e68e91878a39dc; 14-page compile/visual audit and 2,267-row replay PASS. Fresh non-Anthropic native-PDF verdicts: OpenAI MAJOR / Gemini MINOR (one internally MAJOR-tagged item) / Grok MINOR. Truth audit confirms three substantive closures: chance-association/random-shift control; accepted-vs-warned descriptive comparison from the existing exact auxiliary product; explicit original-member-separation sensitivity. Final citable package/DOI is a workflow gate. Grok's 20,299,153 claim is a PDF-OCR false positive (exact source/PDF use 20,299,155 everywhere); 7.33% is correct rounding of 181/2468. STATUS: IN REVISION; no readiness uplift. Evidence: INT_v3/ROUND_2026-07-14-P3-v3.2.0-r5-EXACTPDF-024931a4-APJS-NONANTHROPIC-CONFIRM/. -->
 
+# P3 status — current authoritative section
+
+**Current candidate:** v3.2.0-r14 · `pipelines/p3_anomaly_engine/paper3_apjs.tex`
+**Directive-P readiness:** **95** agent gates + 5 Houston sign-off points
+
+The current ApJS artifact presents public-ID recovery machinery and explicitly
+labels the sub-0.1-arcsec core as expected seed self-recovery, not independent
+association evidence. Known active-leg findings and the abstract-length/package
+closures are closed through r14. Run the bounded final-hash confirmation and
+verify submission metadata, especially ORCID and declarations, before Houston
+sign-off and AAS upload. The published archival Zenodo DOI is distinct from any
+AAS journal asset DOI. Old readiness caps and OPEN rows below are historical.
+
+## Historical status ledger
+
 # Paper 3 — DESI DR1 Public-ID Recovery Catalog · Single Source of Truth
 
 **Canonical status file. When in doubt about Paper 3, read this.**

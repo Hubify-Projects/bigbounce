@@ -1,9 +1,70 @@
 {
   "schema": 1,
-  "updated_at": "2026-07-15T15:35:00-07:00",
+  "updated_at": "2026-08-03T00:00:00-07:00",
   "project": "bigbounce",
-  "objective": "Drive all six canonical papers through exact-artifact, venue-correct, non-Anthropic multi-model review, truth-audited closure, and atomic public synchronization without overstating readiness.",
+  "objective": "Reconcile the canonical repository and production truth, verify the six current exact artifacts with a bounded final-hash acceptance pass, obtain Houston's per-paper sign-off, and enter journal submission without conflating publishing workflow with readiness.",
+  "canonical_plan": "ops/PLAN.md",
+  "canonical_status": "project-context/SSOT/index.md",
+  "current_versions": {
+    "P1A": "v1A.0.127",
+    "P1B": "v2B.0.16",
+    "P2": "v1.7.130",
+    "P3": "v3.2.0-r14",
+    "P4": "v1.0.272",
+    "P5": "v0.1.146-2026-07-24"
+  },
+  "readiness_model": {
+    "directive": "P",
+    "agent_gates": 95,
+    "houston_signoff_points": 5,
+    "publishing_phase_separate": true,
+    "automated_convergence": "zero genuinely-new-real findings outstanding across active Grok API, Gemini API, and Claude Opus INT legs; verdict words are diagnostic",
+    "final_hash_confirmation": "bounded evidence-hygiene check required for post-board closure artifacts; it does not restart an unbounded review loop"
+  },
   "tasks": [
+    {
+      "id": "AUG-001",
+      "status": "active",
+      "title": "Synchronize canonical SSOT, Convex, site data, and production truth atomically"
+    },
+    {
+      "id": "AUG-002",
+      "status": "pending",
+      "title": "Run bounded exact-final-hash package and convergence acceptance across all six papers",
+      "depends_on": ["AUG-001"]
+    },
+    {
+      "id": "AUG-003",
+      "status": "pending",
+      "title": "Close submission metadata gaps and assemble portal-ready journal packets",
+      "depends_on": ["AUG-002"]
+    },
+    {
+      "id": "AUG-004",
+      "status": "pending",
+      "title": "Record Houston's explicit per-paper sign-offs and move signed papers from 95 to 100",
+      "depends_on": ["AUG-002"]
+    },
+    {
+      "id": "AUG-005",
+      "status": "pending",
+      "title": "Execute journal submissions as a publishing phase separate from readiness",
+      "depends_on": ["AUG-003", "AUG-004"]
+    },
+    {
+      "id": "AUG-006",
+      "status": "pending",
+      "title": "Diff and consolidate stale local and remote branches without losing unique work"
+    },
+    {
+      "id": "AUG-007",
+      "status": "blocked_external_auth",
+      "title": "Verify Hubify lab status after authentication is available",
+      "blocker": ".env.local lacks HUBIFY_TOKEN; Hubify CLI status/papers/tasks/agents/activity fail unauthenticated",
+      "critical_path": false
+    }
+  ],
+  "historical_tasks": [
     {
       "id": "PUB-001",
       "status": "active",

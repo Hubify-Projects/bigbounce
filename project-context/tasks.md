@@ -1,4 +1,48 @@
-# Tasks — publication-readiness campaign
+# Tasks — BigBounce publication program
+
+## Current authoritative queue — 2026-08-03
+
+The executable program plan is [`../ops/PLAN.md`](../ops/PLAN.md); the canonical
+paper queue is [`SSOT/queue.md`](SSOT/queue.md). This section is the current
+project-context task projection. Everything below **Historical task ledger** is
+preserved audit history and must not be read as the active queue.
+
+- [ ] **AUG-001 — Atomic truth synchronization:** reconcile SSOT, revision
+  tracker, Convex, site data, and production behavior around the six current
+  versions and Directive-P scoring. Owner: active agent lanes.
+- [ ] **AUG-002 — Bounded final-hash acceptance:** bind and verify current
+  exact PDFs/packages; run only the closure-confirmation needed for post-board
+  changes; reopen work only for genuinely-new-real regressions.
+- [ ] **AUG-003 — Submission metadata and packets:** close P3/P5 metadata gaps,
+  confirm the P5 staged archive decision, and produce portal-ready journal kits.
+- [ ] **AUG-004 — Houston sign-off:** collect one explicit per-paper decision;
+  95 becomes 100 only after the corresponding quote is recorded in SSOT.
+- [ ] **AUG-005 — Journal submissions:** execute CQG/JORS/PRD/ApJS/AJ portal
+  work. Track accounts, reviewer suggestions, fees/waivers, and clicks as
+  publishing tasks separate from readiness.
+- [ ] **AUG-006 — Repository consolidation:** diff unmerged local/remote
+  branches, preserve unique content, then consolidate obsolete branches.
+- [ ] **AUG-007 — Hubify lab verification (external auth gap, non-critical):**
+  `hubify status`, `papers`, `tasks`, `agents`, and `activity` currently fail
+  unauthenticated. `.env.local` lacks `HUBIFY_TOKEN` although `.env.example`
+  declares it. This does not block repo/site synchronization; do not print or
+  fabricate a token.
+
+## Current state
+
+P1A v1A.0.127, P1B v2B.0.16, P2 v1.7.130, P3 v3.2.0-r14, P4 v1.0.272, and
+P5 v0.1.146-2026-07-24 are recorded at the four completed Directive-P agent
+gates (**95/95**). Houston's sign-off supplies the final five points. The July
+22 board and July 23–24 completeness resweep closed all known genuinely-new-real
+findings; a bounded exact-final-hash confirmation remains evidence hygiene.
+
+## Historical task ledger
+
+The campaign log below is retained verbatim enough for provenance. Its old
+readiness caps, all-verdict-word objectives, P1U framing, CMUX lanes, and stale
+OPEN rows are superseded by the authoritative queue above.
+
+# Historical snapshot — publication-readiness campaign
 
 ## Objective
 

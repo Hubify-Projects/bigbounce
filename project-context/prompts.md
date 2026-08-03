@@ -883,3 +883,17 @@ Switched to Opus 4.7 + xhigh effort for this.
 4. Papers must be *amazing* — the stated motivation is a scientific research grant (Anthropic etc.).
 
 **Session response (2026-07-24 17:13 PT):** the pasted resume header was stale by 8 days. Verified true state instead: 29/29 no-OpenAI-API routing tests pass; working tree clean of source changes; 0 unpushed commits; all six papers converged at P1A v1A.0.126 / P1B v2B.0.14 / P2 v1.7.128 / P3 v3.2.0-r13 / P4 v1.0.271 / P5 v0.1.142-2026-07-22 after the 2026-07-23 re-sweep (0 genuinely-new-real outstanding on active legs). Structural blocker is D4 arXiv endorsement, Houston-only. Four bounded non-overlapping lanes launched: P5 Paper-IV→Zenodo-DOI back-patch (breaks the P5-DOI circular dependency), P1B ORCID + JORS template conformance (no-arXiv route), ready-to-send endorsement request drafts (D4 friction removal), and a deep acceleration/journal-route audit.
+
+## 2026-08-03 - full project reconciliation and production sync
+
+### Houston messages, verbatim
+
+**14:07 PT - sync local and remote state, consolidate branches, refresh project brain and production**
+
+- `cwd`: /Users/houstongolden/Desktop/CODE_YOU/bigbounce
+- `session`: full project reconciliation and production sync
+- `agent`: Codex GPT-5
+
+> Get everything synced locally and remotely. Resolve all branches and consolidate everything onto one main working branch, whatever is possible for this project. Create a new plan doc in our u brain projects project context brain or wherever it's supposed to go. Audit all the most recent things we've been working on, as well as our primary focus. Create a plan for all the other things that we should do next and update existing plans that we should resume, etc. Just make sure everything is working and that we're up to date on the latest next changes and that I can also test everything live on production.
+>
+> help me create a little map or update a lot of the stuff. I'm asked for. May already exist so just help me figure all that out.

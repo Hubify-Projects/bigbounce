@@ -9,18 +9,18 @@ publication-ready through an iterative internal + external peer-review loop,
 fixing every finding, and keeping the public lab site (https://bigbounce.hubify.app)
 perfectly in sync after every round.
 
-> ⚠️ **CURRENT STATE (2026-07-14): IN REVISION — do not submit or claim
-> publication-ready.** A fresh exact-artifact campaign superseded the older
-> 2026-07-05 convergence claim. P2 v1.7.122 now has a valid Codex-subscription /
-> Gemini / Grok ACCEPT board, but its cubic-transfer, real survey-covariance,
-> model-specific torsion-bound, DOI/archive, and human-PRD gates remain. P1A has
-> a bounded v1A.0.122 closure in progress; P1B exact robustness compute is live;
-> P3 v3.2.0-r7 bundle/contract closure is in final proof; P4 and P5 retain
-> release/data-contract gates. Read `project-context/SSOT/` and the newest exact
-> round bundles for the current per-paper state; older “all cleared” prose is
-> historical only.
+> **CURRENT STATE (2026-08-03): DIRECTIVE-P AGENT GATES 95/95 ON ALL SIX;
+> JOURNAL-SUBMISSION PHASE.** Current candidates are P1A v1A.0.127, P1B
+> v2B.0.16, P2 v1.7.130, P3 v3.2.0-r14, P4 v1.0.272, and P5
+> v0.1.146-2026-07-24. Houston's explicit per-paper sign-off supplies the final
+> five points. The final artifacts contain post-board closures, so run only the
+> bounded final-hash confirmation in `ops/PLAN.md`; do not restart an unbounded
+> verdict-word loop. Venue/submission, arXiv endorsement, independent human
+> review, and journal peer review are separate publishing work and do not
+> subtract from readiness. Read `ops/PLAN.md` and the top of
+> `project-context/SSOT/index.md`; older snapshots in this runbook are history.
 >
-> **HOW to run any further round:** the canonical spec is
+> **HOW to run any bounded further round:** the canonical spec is
 > `~/.claude/scistack/astrostack/bigbounce-r-round/SKILL.md` (all-vendor INT matrix,
 > headed-browser EXT save-then-advance, per-finding truth-audit, directive-G, gate H).
 > If any doc disagrees with it, the canonical spec wins. Never fake an ACCEPT; never

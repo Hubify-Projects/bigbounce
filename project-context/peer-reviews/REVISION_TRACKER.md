@@ -1,9 +1,10 @@
 # BigBounce Manuscript Revision Tracker
 
-**Paper:** Geometric Dark Energy from Spin-Torsion Cosmology
+**Scope:** six-paper BigBounce portfolio
 **Author:** Houston Golden
-**Current version:** v1.6.0
-**Target:** arXiv-ready manuscript
+**Current versions:** P1A v1A.0.127 · P1B v2B.0.16 · P2 v1.7.130 · P3 v3.2.0-r14 · P4 v1.0.272 · P5 v0.1.146-2026-07-24
+**Target:** bounded final-hash acceptance, Houston sign-off, then journal submission
+**Reconciled:** 2026-08-03
 
 ---
 
@@ -19,6 +20,54 @@ This tracker logs each revision round and which issues have been addressed.
 ---
 
 ## Revision Rounds
+
+### Portfolio reconciliation and final-hash acceptance boundary (2026-08-03)
+
+Directive P supersedes the old verdict-derived cap model: each current paper is
+recorded at the four completed agent gates (**95**), with Houston's explicit
+per-paper sign-off providing the final five points. Venue/submission,
+independent human review, journal peer review, and arXiv endorsement are a
+separate publishing phase and do not subtract from readiness.
+
+Automated convergence is zero genuinely-new-real findings outstanding across
+the active Grok API, Gemini API, and Claude Opus INT legs. Verdict words remain
+verbatim diagnostics. Because final publication-compliance and completeness
+closures changed the exact PDFs after the last full portfolio board, one
+bounded final-hash confirmation remains due. It is a regression check, not a
+new unbounded verdict-harvesting campaign.
+
+### July 23–24 MAJOR-completeness resweep and closure (2026-07-23 to 2026-07-24)
+
+The initial resweep incorrectly inferred closure from summary verdict labels.
+Per-item severity inspection recovered missed MAJOR findings; the correction is
+preserved in
+`INT_v3/TRUTH_AUDIT_RESWEEP_2026-07-23.md`. The new executable
+`tools/major_completeness_check.py` prevents a summary verdict from hiding an
+item-level MAJOR.
+
+- **P1B v2B.0.16:** closed the recovered Grok legibility gap.
+- **P4 v1.0.272:** closed the genuinely-new-real Gemini inline-provenance
+  density finding after the abstract cap and provenance relocation.
+- **P5 v0.1.145 → v0.1.146:** closed Grok hierarchy sensitivity and Gemini
+  target-program leakage framing; the systematic remains prominently disclosed.
+
+Detailed dispositions remain append-only in `DISPOSITIONS/P4.md` and
+`DISPOSITIONS/P5.md`; raw reports were not relabeled.
+
+### Six-paper active-leg confirmation and same-day closure (2026-07-22)
+
+Eighteen exact-PDF legs ran across the six papers using Grok API, Gemini API,
+and Claude Opus INT. Truth audit found **19** genuinely-new-real items (P1A 3,
+P1B 3, P2 5, P3 3, P4 3, P5 2), correcting an earlier summary-only count of
+16. All 19 received source-backed same-day closures. Subsequent
+publication-compliance and completeness work produced the current versions
+listed in the tracker header.
+
+### Historical revision rounds
+
+All rounds below are preserved evidence. Their old readiness caps, P1U
+identity, provider routing, and literal verdict-word objectives are not current
+program state unless restated above.
 
 ### P4 v1.0.259 / P5 v0.1.139: Residual-confirmation closures (2026-07-16)
 
