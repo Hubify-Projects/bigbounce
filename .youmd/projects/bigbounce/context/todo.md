@@ -13,6 +13,8 @@
 - Execute journal submissions as a separate publishing phase.
 - Restore Hubify CLI verification when `HUBIFY_TOKEN` is available through an
   approved secret source; this external auth gap is not on the repo/site path.
+- Retry the You.md remote bundle push after its `Failed to save bundle` service
+  error clears; local project context is registered and preserved.
 
 ## Done
 

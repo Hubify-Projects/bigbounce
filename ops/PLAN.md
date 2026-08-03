@@ -133,4 +133,6 @@ Hubify CLI lab verification is currently unavailable: `hubify status`,
 `.env.local` lacks `HUBIFY_TOKEN` while `.env.example` declares the key. This is
 an external authentication gap, not a blocker for repository/site truth sync.
 Acquire the token only through an approved secret source; never print or infer
-it.
+it. You.md project context is registered and current locally, but two remote
+push attempts returned `server_error: Failed to save bundle`; retain the local
+overlay and retry the service later rather than force-pulling over local edits.
