@@ -36,6 +36,14 @@ closures changed the exact PDFs after the last full portfolio board, one
 bounded final-hash confirmation remains due. It is a regression check, not a
 new unbounded verdict-harvesting campaign.
 
+Convex reconciliation also closed the lone stale open row
+`R57-paper-3-latitude` by artifact verification. The June finding concerned an
+imprecise “rate” label in the superseded multi-survey P3 draft and was correctly
+left unfixed then because its underlying computation was unavailable. The July
+14 focused-DESI rewrite (`3f5582c2`) removed that claim and computation from the
+canonical ApJS paper; the current r14 source contains neither the phrase nor a
+latitude/Spearman result. No replacement number or wording was fabricated.
+
 ### July 23–24 MAJOR-completeness resweep and closure (2026-07-23 to 2026-07-24)
 
 The initial resweep incorrectly inferred closure from summary verdict labels.

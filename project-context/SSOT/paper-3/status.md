@@ -22,7 +22,11 @@ association evidence. Known active-leg findings and the abstract-length/package
 closures are closed through r14. Run the bounded final-hash confirmation and
 verify submission metadata, especially ORCID and declarations, before Houston
 sign-off and AAS upload. The published archival Zenodo DOI is distinct from any
-AAS journal asset DOI. Old readiness caps and OPEN rows below are historical.
+AAS journal asset DOI. The stale Convex `R57-paper-3-latitude` row from the
+superseded multi-survey draft was closed on 2026-08-03 by artifact verification:
+the focused-DESI rewrite `3f5582c2` removed that claim wholesale, so no
+replacement result was fabricated. Old readiness caps and OPEN rows below are
+historical.
 
 ## Historical status ledger
 

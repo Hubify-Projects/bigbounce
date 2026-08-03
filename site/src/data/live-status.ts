@@ -41,12 +41,12 @@ export interface LiveStatus {
 }
 
 export const liveStatus: LiveStatus = {
-  lastUpdatedISO: "2026-08-03T21:30:00Z",
-  lastUpdatedDisplay: "August 3, 2026 · 2:30 PM PT",
+  lastUpdatedISO: "2026-08-03T21:52:00Z",
+  lastUpdatedDisplay: "August 3, 2026 · 2:52 PM PT",
   headline:
     "All six manuscripts remain IN REVISION at 95% publication readiness under Directive P. That score records completed evidence, packaging, and review-disposition work; it is not submission, journal acceptance, or Houston sign-off.",
   summary:
-    "The July 24 directive-G bundles set the current served versions below. Earlier exact-PDF evidence is version-specific; final-hash bounded confirmation remains an explicit coverage check where it has not yet read the current artifact.",
+    "The July 24 directive-G bundles set the current served versions below. Convex identities, source paths, venues, and open-finding counts were reconciled on August 3; earlier exact-PDF evidence remains version-specific, so final-hash bounded confirmation is still an explicit coverage check where it has not read the current artifact.",
   currentlyRunning: [
     "Bounded confirmation coverage is tracked against the exact current PDF; no older review label is presented as a verdict on a newer hash.",
     "Houston's final per-paper review is the remaining five readiness points and is not implied by an automated review result.",

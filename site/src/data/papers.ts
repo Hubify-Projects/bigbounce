@@ -305,7 +305,7 @@ export const papers: Paper[] = [
     predictions: ["Public-ID recovery", "Coordinate-association quality tiers", "Archive reproducibility"],
     figures: ["Selection waterfall", "Separation distribution", "Shift-control radius curves", "Catalog sky distribution"],
     remainingWork: [
-      "Resolve the recorded minor and run bounded confirmation against the exact v3.2.0-r14 PDF",
+      "Run bounded confirmation against the exact v3.2.0-r14 PDF; the stale R57 latitude-rate row belonged to the superseded multi-survey draft and is closed by artifact verification",
       "Human ApJS/editorial review and submission decision; automated ACCEPT is not journal acceptance",
       "AAS journal digital-asset DOI: the Zenodo archival DOI is now published and embedded (v3.2.0-r11, 10.5281/zenodo.21461888); the distinct AAS journal digital-asset DOI remains an honestly open, journal-assigned gate",
       "Rebuild and validate the submission tarball at the current version before any author-controlled submission",
