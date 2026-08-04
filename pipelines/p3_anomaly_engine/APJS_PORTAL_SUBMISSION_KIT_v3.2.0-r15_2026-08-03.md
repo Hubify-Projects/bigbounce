@@ -10,10 +10,10 @@ required before any upload or submission.
 | Item | Current binding |
 |---|---|
 | Venue | *The Astrophysical Journal Supplement Series* (ApJS) |
-| Source | `paper3_apjs.tex` · v3.2.0-r15 · SHA-256 `9e9faff87d268588862b4dc5f52b5a86d694b572bd7bfd2faff28ba49dd97156` |
-| PDF | `paper3_apjs.pdf` · 17 pages · MD5 `1bb47a0862c696668140ef7c2e4c7838` · SHA-256 `3cd210767a109c7819fc01e15bda1189ed249ff818ce036813151073386147e0` |
-| Source bundle | `paper3_apjs_arxiv_v3.2.0-r15.tar.gz` · SHA-256 `3358914ebb8ac3f7505142e9664c8ecc410434df8a6db621b9d89b5a22e4002c` |
-| Flat portal staging | `apjs_portal_submission_v3.2.0-r15/` · checksum manifest SHA-256 `148cd76581c30c0ea0cec3576b2157dafca500792634687e9e21a34fff12d658` |
+| Source | `paper3_apjs.tex` · v3.2.0-r15 · SHA-256 `5ba0f87c6d7782d0fa1ae37cab9411c5460bbc5c429ace0c381f5ce731aa04e4` |
+| PDF | `paper3_apjs.pdf` · 17 pages · MD5 `1622dd1810fb6bc4089f1d67f8d108a9` · SHA-256 `ecbce4fdc12ff9348b89f0d4679e78d960042b5957d678ed9801579434e4fb49` |
+| Source bundle | `paper3_apjs_arxiv_v3.2.0-r15.tar.gz` · SHA-256 `14689637cdd7bb1ec89ab0907bebc382a57c6e9b96b4a3076a2f9b4394ba9fe7` |
+| Flat portal staging | `apjs_portal_submission_v3.2.0-r15/` · checksum manifest SHA-256 `32652baf6033a45f653e9027a04cc4aee75ea95b3299c7ac148d5666c4254d54` |
 | Evidence receipt | `FINAL_PACKAGE_RECEIPT_v3.2.0-r15_2026-08-03.md` |
 
 The receipt records fresh canonical and flat-package 17-page builds with zero
