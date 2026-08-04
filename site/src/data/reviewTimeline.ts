@@ -57,6 +57,29 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "finalization-maintenance-autolog-2026-08-04",
+    dateISO: "2026-08-04",
+    kind: "skill-improvement",
+    title: "Finalization maintenance logged — provenance, topology, disclosure, and provider routing",
+    papers: ["P1A", "P1B", "P2", "P3", "P4", "P5"],
+    summary:
+      "The canonical skills surface now records all five process/tooling-matched commits since 2026-07-27. This is an honest maintenance entry rather than a counter increase: the batch records Houston's publication-finalization directive, corrects P3's directive-G disclosure wording, documents removal of duplicate project skill mirrors, updates the existing native-PDF provider routing and its tests, and refreshes the generated SciStack index. Patterns remain 79, reviewer-prompt rules remain 41, and tooling remains 39 because no new catalog pattern, reviewer instruction rule, or standalone tool was added.",
+    keyTakeaways: [
+      "Publication-finalization prompt provenance recorded — bigbounce bd89100b",
+      "P3 directive-G disclosure wording corrected — bigbounce a59d53c2",
+      "Duplicate project skill-mirror cleanup documented — bigbounce c4eba285",
+      "Existing native-PDF provider routing and focused tests modernized — bigbounce b75c566d",
+      "Generated SciStack skill index refreshed — scistack 90eb090",
+    ],
+    links: [
+      { label: "Prompt provenance", href: `${GH_COMMIT}/bd89100b` },
+      { label: "P3 disclosure correction", href: `${GH_COMMIT}/a59d53c2` },
+      { label: "Skill topology record", href: `${GH_COMMIT}/c4eba285` },
+      { label: "Provider routing repair", href: `${GH_COMMIT}/b75c566d` },
+      { label: "SciStack index refresh", href: "https://github.com/Hubify-Projects/scistack/commit/90eb090" },
+    ],
+  },
+  {
     id: "final-submission-package-closure-2026-08-03",
     dateISO: "2026-08-03",
     timePT: "14:00–20:23",
@@ -9561,6 +9584,7 @@ export const skillsSeries: SkillsPoint[] = [
   { id: "july-patterns-minted-and-directive-m-amended", dateISO: "2026-07-23", patterns: 77, promptRules: 40, tooling: 34, note: "Patterns 71→77 (+6) and prompt-rule 39→40 — Houston's 2026-07-23 reporting-layer audit minted into the catalog so July's lessons stop living only in tooling: pattern-072 worker-stall-storms → resume-once-then-take-inline; pattern-073 the reporting layer is a first-class review surface (stale grid/banner/widget read as science drift — every wave must land on EVERY rendering surface incl. Convex FUNCTIONS, same bundle); pattern-074 a paused reviewer leg must be visibly annotated everywhere it renders (the frozen GPT column read as fresh REJECTs); pattern-075 verify deployment identity before every deploy (Vercel junk-project relink + Convex prod-vs-dev split, two real hijacks in one week); pattern-076 fix legacy embedded content at the copy SOURCE (prebuild overwrote explorer fixes); pattern-077 canonical-entity whitelist at every aggregation point (the 7/8-papers bug: junk doc-id rows + retired P1U counted, P1B excluded). New prompt rule 40 = directive M-AMENDED (Houston verbatim: amend directive M to the legs we actually run): the all-A terminal criterion counts ACTIVE legs only — Grok API + Gemini API + Claude INT — with the paused ChatGPT column excluded-but-displayed-frozen until re-enabled. tooling unchanged." },
   { id: "directive-p-readiness-composition", dateISO: "2026-07-23", patterns: 77, promptRules: 41, tooling: 34, note: "Prompt-rule 40→41 — directive P (Houston explicit, verbatim in CLAUDE.md): PUBLICATION READINESS is recomposed as science closure (25) + evidence/reproducibility (25) + automated review convergence (25) + packaging/PDF hygiene (20) + Houston's final personal per-paper review (5). Venue/endorsement/submission and independent human peer review move OUT of the score into a separate Publishing phase (tracked on /status + /publish, never subtracting). Convergence criterion made achievable-by-construction: 0 genuinely-new-real findings outstanding across ACTIVE legs (M-AMENDED) on current exact PDFs — verdict words are feedback, never the gate; per-finding source-cited truth audits unchanged. This supersedes the 2026-07-07 verdict-derived 50+points formula (avg-68 era). Result honestly recomputed: all six papers at 95 (four agent gates complete), the last 5 per paper = Houston's sign-off; Convex caps set to 95 x6 with static mirrors synced in the same bundle. Integrity rules absolute: no gate weakened, every finding still audited, 100 still requires Houston's recorded words." },
   { id: "served-surface-integrity-and-companion-status-gates", dateISO: "2026-07-27", patterns: 79, promptRules: 41, tooling: 39, note: "Patterns 77→79 (+2), both minted EXECUTABLE rather than prose-only — pattern-078 a companion's status goes stale the moment it is archived (first observed 2026-07-20/21 P5→P4, re-fired 2026-07-24 P5→P2 and P2→P1A), enforced by tools/verify_companion_status.py wired into bigbounce_preflight.py as the companion-status validator against project-context/companion-status-ledger.json; pattern-079 a served PDF outside the registered mirror set is invisible to directive G (first observed 2026-07-24, four independent accidental catches in one day), enforced by tools/verify_pdf_mirror_integrity.py as the pdf-mirror-integrity validator. Both fail-close review dispatch like any other preflight failure. The reverse-direction sweep that pattern-079 made executable found 31 orphaned served PDFs across 13 documents, every one outside directive G's enforced SERVED_ROOTS — so the enforced root list was itself the blind spot; SERVED_ROOTS now includes the bare public/ and downloads/ roots. Tooling 34→39 (+5): major_completeness_check.py, verify_companion_status.py, verify_pdf_mirror_integrity.py and their two regression tests under tools/tests/. promptRules unchanged at 41 — no reviewer-prompt rule was added in this window (this counter has no derivable source in-repo; it is carried forward, not measured)." },
+  { id: "finalization-maintenance-autolog-2026-08-04", dateISO: "2026-08-04", patterns: 79, promptRules: 41, tooling: 39, note: "Maintenance autolog for all five skill/process/tooling-matched commits since 2026-07-27: publication-finalization prompt provenance (bigbounce bd89100b); P3 directive-G disclosure correction (bigbounce a59d53c2); duplicate project skill-mirror topology record (bigbounce c4eba285); existing native-PDF provider-routing and test repair (bigbounce b75c566d); generated SciStack skill-index refresh (scistack 90eb090). Counters intentionally unchanged: no new catalog pattern, reviewer-prompt instruction rule, or standalone tool was added." },
 ];
 
 export function getReviewRoundByReportSlug(slug: string): ReviewRound | undefined {
