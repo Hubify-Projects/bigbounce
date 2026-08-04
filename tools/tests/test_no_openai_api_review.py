@@ -443,6 +443,37 @@ UTC: 2026-07-15T09:06:44Z
                 "anthropic", {}, "claude", "prompt", Path("x.pdf"), ""
             )
 
+    def test_native_pdf_engine_uses_current_gemini_models(self):
+        module = load_script("v3_native_pdf_review.py")
+        gemini = module.REVIEWERS["Gemini_cosmology"]
+        self.assertEqual(gemini["model"], "gemini-3.1-pro-preview")
+        self.assertEqual(gemini["fallback"], "gemini-3.5-flash")
+
+    def test_native_pdf_engine_selects_only_requested_reviewers(self):
+        module = load_script("v3_native_pdf_review.py")
+        selected = module.select_reviewers("Gemini_cosmology, Perplexity_citations")
+        self.assertEqual(list(selected), ["Gemini_cosmology", "Perplexity_citations"])
+        self.assertEqual(module.VENDOR_KEY_VARS["perplexity"], "PERPLEXITY_API_KEY")
+
+    def test_native_pdf_engine_rejects_invalid_reviewer_allowlists(self):
+        module = load_script("v3_native_pdf_review.py")
+        for value, expected in (
+            ("", "non-empty"),
+            ("Gemini_cosmology,", "non-empty"),
+            ("Unknown", "unknown reviewer"),
+            ("Gemini_cosmology,Gemini_cosmology", "duplicate"),
+        ):
+            with self.subTest(value=value):
+                with self.assertRaisesRegex(ValueError, expected):
+                    module.select_reviewers(value)
+
+    def test_native_pdf_engine_requires_every_selected_reviewer_to_succeed(self):
+        module = load_script("v3_native_pdf_review.py")
+        active = module.select_reviewers("Gemini_cosmology,Grok_brutal")
+        self.assertTrue(module.all_selected_reviewers_succeeded([{"ok": True}, {"ok": True}], active))
+        self.assertFalse(module.all_selected_reviewers_succeeded([{"ok": True}], active))
+        self.assertFalse(module.all_selected_reviewers_succeeded([{"ok": True}, {"ok": False}], active))
+
     def test_native_pdf_engine_requires_preflight_before_loading_provider_keys(self):
         module = load_script("v3_native_pdf_review.py")
         pdf = module.REPO / module.REGISTRY["P1A"]["pdf_path"]

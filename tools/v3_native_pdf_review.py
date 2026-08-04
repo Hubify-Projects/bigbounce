@@ -27,6 +27,11 @@ v3 current routing:
 Usage:
     python tools/v3_native_pdf_review.py <pdf_path> <round_label> <paper_tag> [round_context]
 
+Optional environment:
+    V3_REVIEWERS=Gemini_cosmology[,Grok_brutal,Perplexity_citations]
+        Comma-separated reviewer allowlist. Select one reviewer per invocation
+        when running provider legs sequentially.
+
 Keys read from bigbounce/.env.local then youmd/.env.local.
 """
 from __future__ import annotations
@@ -42,6 +47,7 @@ import time
 import traceback
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from typing import Optional
 
 from bigbounce_preflight import DEFAULT_RULES, PortfolioError, verify_receipt
 from paper_registry import CANONICAL_IDS, load_registry, repo_root
@@ -207,8 +213,8 @@ of why your initial review was already complete.
 REVIEWERS = {
     "Gemini_cosmology": {
         "vendor": "gemini",
-        "model": "gemini-2.5-pro",
-        "fallback": "gemini-2.0-flash",
+        "model": "gemini-3.1-pro-preview",
+        "fallback": "gemini-3.5-flash",
         "persona": "Physical Review D cosmology-physics referee with full PDF access",
         "focus": (
             "Theoretical physics + observational rigor. Gauge-frame vs physical-frame, "
@@ -251,6 +257,40 @@ REVIEWERS = {
         "native_pdf": False,  # text + web search is the right modality for this role
     },
 }
+
+VENDOR_KEY_VARS = {
+    "gemini": "GOOGLE_GEMINI_API_KEY",
+    "xai": "XAI_API_KEY",
+    "perplexity": "PERPLEXITY_API_KEY",
+}
+
+
+def select_reviewers(selection: Optional[str]) -> dict[str, dict]:
+    """Return the configured reviewers, or a validated V3_REVIEWERS subset."""
+    if selection is None:
+        return REVIEWERS
+
+    names = [name.strip() for name in selection.split(",")]
+    if not selection.strip() or any(not name for name in names):
+        raise ValueError(
+            "V3_REVIEWERS must be a non-empty comma-separated list of reviewer keys"
+        )
+    unknown = [name for name in names if name not in REVIEWERS]
+    if unknown:
+        raise ValueError(
+            "V3_REVIEWERS contains unknown reviewer key(s): "
+            + ", ".join(unknown)
+            + "; available: "
+            + ", ".join(REVIEWERS)
+        )
+    if len(set(names)) != len(names):
+        raise ValueError("V3_REVIEWERS must not contain duplicate reviewer keys")
+    return {name: REVIEWERS[name] for name in names}
+
+
+def all_selected_reviewers_succeeded(results: list[dict], active: dict[str, dict]) -> bool:
+    """A run succeeds only when every explicitly selected reviewer succeeded."""
+    return len(results) == len(active) and all(result["ok"] for result in results)
 
 # ---------------------------------------------------------------------------
 # Key loading
@@ -588,6 +628,12 @@ def main() -> int:
         print(f"ERROR: PDF not found: {pdf_path}", file=sys.stderr)
         return 1
 
+    try:
+        active = select_reviewers(os.environ.get("V3_REVIEWERS"))
+    except ValueError as exc:
+        print(f"ERROR: {exc}", file=sys.stderr)
+        return 1
+
     preflight_value = os.environ.get("BIGBOUNCE_PREFLIGHT_RECEIPT", "").strip()
     if not preflight_value:
         print(
@@ -602,7 +648,7 @@ def main() -> int:
         return 2
 
     keys = load_keys()
-    required = ["GOOGLE_GEMINI_API_KEY", "XAI_API_KEY"]
+    required = sorted({VENDOR_KEY_VARS[cfg["vendor"]] for cfg in active.values()})
     missing = [k for k in required if k not in keys]
     if missing:
         print(f"[warn] Missing keys: {missing}", file=sys.stderr)
@@ -613,9 +659,13 @@ def main() -> int:
 
     # Active APIs are Gemini/Grok plus optional Perplexity. OpenAI-family review
     # is supplied by Codex CLI/ChatGPT subscription; Anthropic/Claude is disabled.
-    active = REVIEWERS
+    # V3_REVIEWERS may select a single provider for a sequential review run.
     print("[v3 native-PDF review] OpenAI API and Anthropic/Claude routes DISABLED.", flush=True)
-    print(f"[v3 native-PDF review] Dispatching {len(active)} reviewers in parallel...", flush=True)
+    print(
+        f"[v3 native-PDF review] Dispatching {len(active)} selected reviewer(s) in parallel: "
+        + ", ".join(active),
+        flush=True,
+    )
 
     cache_root = review_cache_root()
     allowed_context = round_context.encode()
@@ -687,7 +737,7 @@ def main() -> int:
 
     ok_count = sum(1 for r in results if r["ok"])
     print(f"\n[v3 native-PDF review] Complete: {ok_count}/{len(results)} reviewers OK", flush=True)
-    return 0 if ok_count >= 3 else 2
+    return 0 if all_selected_reviewers_succeeded(results, active) else 2
 
 
 if __name__ == "__main__":
