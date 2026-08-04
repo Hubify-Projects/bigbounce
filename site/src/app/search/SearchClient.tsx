@@ -29,6 +29,7 @@ const STATIC_PAGES: SearchItem[] = [
   { category: "Page", title: "Surveys", blurb: "Legacy and superseded survey-pipeline records retained for methodology and archive context", href: "/surveys" },
   { category: "Page", title: "Predictions", blurb: "Conditional matter-contraction non-Gaussianity, birefringence and SGWB diagnostics, and future-survey context", href: "/predictions" },
   { category: "Page", title: "Research Programs", blurb: "Three scientific programs with versioned papers, supporting releases, and evidence readiness", href: "/paper" },
+  { category: "Page", title: "Publication Map", blurb: "The definitive three-program plan for manuscripts, data, models, software, releases, and submission order", href: "/publish" },
   { category: "Page", title: "Data Explorer", blurb: "Interactive research data and equation calculators; historic MCMC records are not P1B's publication role", href: "/data-explorer" },
   { category: "Page", title: "Galaxy Explorer", blurb: "8.47M-galaxy DESI Legacy DR8 chirality catalog explorer", href: "/galaxy-explorer" },
   { category: "Page", title: "Anomaly Explorer", blurb: "Legacy DESI candidate records; candidate flags are not confirmed discoveries or bounce evidence", href: "/anomaly-explorer" },
@@ -47,16 +48,16 @@ const STATIC_PAGES: SearchItem[] = [
 const CONTRIBUTIONS: SearchItem[] = [
   {
     category: "Contribution",
-    title: "Perturbation-Transparency Theorem",
+    title: "Minimal-ECH Branch Clarification",
     blurb:
-      "Formal all-orders proof that the Barbero-Immirzi parameter gamma is invisible in all perturbative observables when scalar matter is minimally coupled in ECH. Paper 1A.",
+      "A narrow, convention-audited account of the stated minimal Einstein–Cartan–Holst branch; not a universal no-go theorem or dark-energy model. Paper 1A.",
     href: "/contributions#perturbation-transparency",
   },
   {
     category: "Contribution",
-    title: "14-Constraint Channel-Level Closure Map",
+    title: "Archived ECH Route Map",
     blurb:
-      "Systematic test of the four enumerated minimal Einstein-Cartan-Holst bounce-to-dark-energy routes across 7 foundations and 17 branches — channel-level closure via a 14-constraint catalog.",
+      "Historical route-mapping material preserved for provenance; it is not a selected P1A claim and does not close every minimal-ECH route.",
     href: "/contributions#14-barriers",
   },
   {
@@ -68,16 +69,16 @@ const CONTRIBUTIONS: SearchItem[] = [
   },
   {
     category: "Contribution",
-    title: "ALP birefringence beta = 0.27 deg prediction",
+    title: "Archived ALP birefringence exploration",
     blurb:
-      "A conditional ALP birefringence prediction. Existing measurements are not evidence that a bounce occurred; future observations may test the scenario.",
+      "Exploratory ALP calculations retained as program provenance; they are not a selected scientific claim of P1A or P2.",
     href: "/contributions#alp-birefringence",
   },
   {
     category: "Contribution",
     title: "8.47M-galaxy chirality catalog (Paper 4)",
     blurb:
-      "Largest survey-scale spiral-galaxy chirality catalog: CW/CCW/NOT_SPIRAL classification with equivariant DL ensemble, hemispheric asymmetry analysis, null result for large-scale parity violation.",
+      "An 8,474,531-row observed-label catalog with a 890,069-row quality-controlled primary dipole result consistent with zero; not a physical parity bound.",
     href: "/contributions#chirality-catalog",
   },
   {
@@ -89,9 +90,9 @@ const CONTRIBUTIONS: SearchItem[] = [
   },
   {
     category: "Contribution",
-    title: "SPHEREx f_NL Fisher forecast (Paper 2)",
+    title: "Conditional SPHEREx sensitivity map (Paper 2)",
     blurb:
-      "A conditional SPHEREx Fisher forecast for P2's f_NL prediction; a forecast is not an observational detection of a bounce.",
+      "An illustrative map of the exact P2 shape into published survey sensitivity, with explicit covariance and nuisance dependence; not a guaranteed detection forecast.",
     href: "/contributions#spherex-fisher",
   },
   {

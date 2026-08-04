@@ -3,8 +3,10 @@
 // The headline % is composed ONLY of the five gates below (weights in
 // parentheses). Venue/submission/endorsement and independent human peer
 // review are the NEXT PHASE ("Publishing") — tracked separately, never
-// subtracted from readiness. A paper with all four agent gates complete sits
-// at 95; Houston's explicit per-paper sign-off is the final 5 → 100.
+// subtracted from readiness. A selected standalone manuscript with all four
+// agent gates complete sits at 95; Houston's explicit per-paper sign-off is
+// the final 5 → 100. P3 retains a 95 technical-package evidence record, but
+// it is an integrated supporting release rather than an approval target.
 //
 // Convergence criterion (directive M-AMENDED + H-refined): 0 genuinely-new-real
 // findings outstanding across ACTIVE legs (Grok API, Gemini API, Claude INT;
@@ -37,30 +39,17 @@ export interface PaperBreakdown {
 
 export const readinessBreakdownNote =
   "Directive P (2026-07-23): publication readiness = the five gates below only. " +
-  "The four recorded agent gates are complete on all six retained candidate packages, so each evidence record sits at 95%. " +
-  "That historical package score does not select a scientific flagship or erase newly identified portfolio work: P3 is now an integrated support release and the DESI anomaly flagship must be rebuilt. " +
-  "The last 5% is Houston's final personal review, per paper: mark it good and " +
-  "that paper is 100% ready and moves to the Publishing phase (endorsement → " +
-  "submission → journal/human review), which is tracked below but never " +
-  "subtracts from readiness.";
+  "Selected standalone manuscripts have final-hash confirmation evidence, with uneven provider coverage recorded in the review packets. " +
+  "P3's 95% is technical-package evidence only: it is an integrated support release for the rebuilt DESI anomaly flagship, not a Houston approval target or standalone submission. " +
+  "For the selected standalone manuscripts, the last 5% is Houston's final personal review; approval moves that manuscript to 100% and then into the separate Publishing phase (endorsement → submission → journal/human review).";
 
-const RESWEEP =
-  "2026-07-23 re-sweep (18 exact-PDF legs, active legs per directive M-AMENDED) truth-audited to 0 genuinely-new-real outstanding — the one real item (version-stamp drift) closed same-day, drift-proofed via the \\paperVersion macro. All 18 legs are now recorded in Convex (papers_externalReviews, 2026-07-23) with the exact version each leg read, so the live surface can prove board-to-PDF coverage rather than assert it.";
-
-// P2/P3/P4 closed the stamp-drift item AFTER the re-sweep board had read them,
-// so their CURRENT PDF has not itself been through a board. That is one confirm
-// read with no new science — stated here rather than glossed, and surfaced
-// per-paper by convex/publicationStatus.ts.
-const AWAITING_CONFIRM_READ =
-  " The closure version itself has not yet been read by a board (the re-sweep read the immediately-prior version); one confirm read remains — agent-owned, no new science.";
-
-function gates(convergenceNote: string): ReadinessGate[] {
+function gates(convergenceNote: string, finalReviewStatus?: string): ReadinessGate[] {
   return [
     { dimension: "Science closure", weight: 25, score: 100, owner: "done", status: "0 genuinely-new-real findings outstanding; compute campaigns complete; disclosed scope limits are in-paper, not open work." },
     { dimension: "Evidence & reproducibility", weight: 25, score: 100, owner: "done", status: "Published Zenodo DOI, commit-bound artifacts, public datasets/models, deterministic rebuild proofs." },
     { dimension: "Automated review convergence", weight: 25, score: 100, owner: "done", status: convergenceNote },
     { dimension: "Packaging & PDF hygiene", weight: 20, score: 100, owner: "done", status: "Commit-bound arXiv tarball standalone-compiles clean; directive-G mirrors byte-identical; submission kit paste-ready." },
-    { dimension: "Houston final personal review", weight: 5, score: 0, owner: "houston", status: "The last 5%: read the paper, flag anything visual/formatting/wording — or mark it good and this paper is 100% publication-ready." },
+    { dimension: "Houston final personal review", weight: 5, score: 0, owner: "houston", status: finalReviewStatus ?? "The last 5%: read the paper, flag anything visual/formatting/wording — or mark it good and this paper is 100% publication-ready." },
   ];
 }
 
@@ -72,10 +61,10 @@ export const publishingPhase: PublishingStep[] = [
 ];
 
 export const readinessBreakdown: PaperBreakdown[] = [
-  { code: "P1A", publicationReadiness: 95, gates: gates("2026-07-23 re-sweep: Grok ACCEPT · Gemini minor (dispositioned) · Claude ACCEPT, zero findings. " + RESWEEP) },
-  { code: "P1B", publicationReadiness: 95, gates: gates("2026-07-23 re-sweep: Claude ACCEPT with zero findings; Grok/Gemini minors dispositioned (re-flags of deliberate honesty disclosures). " + RESWEEP) },
-  { code: "P2", publicationReadiness: 95, gates: gates("2026-07-23 re-sweep: Grok ACCEPT — its first on P2. Stamp-drift closed in v1.7.128. " + RESWEEP + AWAITING_CONFIRM_READ) },
-  { code: "P3", publicationReadiness: 95, gates: gates("2026-07-23 re-sweep: Grok ACCEPT. Stamp-drift closed in v3.2.0-r13. " + RESWEEP + AWAITING_CONFIRM_READ) },
-  { code: "P4", publicationReadiness: 95, gates: gates("2026-07-23 re-sweep: all-minor board; re-flags falsified with citations (DOI renders 3×). Stamp-drift closed in v1.0.271. " + RESWEEP + AWAITING_CONFIRM_READ) },
-  { code: "P5", publicationReadiness: 95, gates: gates("2026-07-23 re-sweep: Gemini MAJORs = the tracked Paper-IV/DOI gates + a disclosed limitation (audited, non-real); Hamaus re-flag falsified twice (cite at tex:2943). " + RESWEEP) },
+  { code: "P1A", publicationReadiness: 95, gates: gates("Current v1A.0.127 final-hash audit: no genuinely-new-real finding; usable provider coverage is recorded in the review packet.") },
+  { code: "P1B", publicationReadiness: 95, gates: gates("Current v2B.0.16 final-hash audit: no genuinely-new-real finding; usable provider coverage is recorded in the review packet.") },
+  { code: "P2", publicationReadiness: 95, gates: gates("Current v1.7.130 final-hash audit: no genuinely-new-real finding; usable provider coverage is recorded in the review packet.") },
+  { code: "P3", publicationReadiness: 95, gates: gates("Current r17 package audit preserves technical provenance evidence; this is not a standalone-science or flagship claim.", "Not applicable: P3 is an integrated supporting data/provenance release. Its 95% is technical-package evidence, not a Houston sign-off gate and cannot become a standalone submission score.") },
+  { code: "P4", publicationReadiness: 95, gates: gates("Current v1.0.274 final-hash audit: the v1.0.273 editorial finding was closed; provider coverage is recorded in the review packet.") },
+  { code: "P5", publicationReadiness: 95, gates: gates("Current v0.1.147 final-hash audit: no genuinely-new-real finding; usable provider coverage is recorded in the review packet.") },
 ];

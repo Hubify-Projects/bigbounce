@@ -67,6 +67,74 @@
   max-width: 72ch;
 }
 
+/* ── Plain-language publishing map ─────────────────────────────────── */
+.pub-summary {
+  max-width: 78ch;
+  padding: 14px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.pub-summary p {
+  margin: 0;
+  font-size: 0.84rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+.pub-summary p + p { margin-top: 7px; }
+.pub-summary strong { color: var(--text); }
+
+.pub-map-group {
+  max-width: 92ch;
+  margin-top: 22px;
+}
+.pub-map-group + .pub-map-group { border-top: 1px solid var(--border); padding-top: 20px; }
+.pub-map-group h3 {
+  margin: 0;
+  font-family: var(--font-mono-stack);
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.pub-map-group > p {
+  margin: 5px 0 8px;
+  max-width: 76ch;
+  font-size: 0.78rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+.pub-map-rows { border-top: 1px solid var(--border-subtle); }
+.pub-map-row {
+  display: grid;
+  grid-template-columns: minmax(180px, 240px) minmax(0, 1fr);
+  gap: 18px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.pub-map-row h4 {
+  margin: 0;
+  font-family: var(--font-mono-stack);
+  font-size: 0.77rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+.pub-map-row h4 a { color: var(--accent-link); }
+.pub-map-row dl { margin: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px 14px; }
+.pub-map-row dl div { min-width: 0; }
+.pub-map-row dt {
+  margin: 0 0 2px;
+  font-family: var(--font-mono-stack);
+  font-size: 0.58rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+.pub-map-row dd {
+  margin: 0;
+  font-size: 0.72rem;
+  line-height: 1.45;
+  color: var(--text-secondary);
+}
+
 /* ── Program and editorial decision reading surfaces ────────────────── */
 .pub-programs,
 .pub-holds {
@@ -472,4 +540,6 @@
 @media (max-width: 880px) {
   .pub-waves { grid-template-columns: 1fr; }
   .pub-blockers { grid-template-columns: 1fr; }
+  .pub-map-row { grid-template-columns: 1fr; gap: 7px; }
+  .pub-map-row dl { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }

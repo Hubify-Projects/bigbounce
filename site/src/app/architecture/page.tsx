@@ -158,12 +158,14 @@ export default function ApiDocsPage() {
           The load-bearing query is{" "}
           <code>papers.getPaperState(slug)</code> — it computes readiness as{" "}
           <code>ceiling − 2·openBlockers − 1·openMajors − 0.2·openMinors − 1·openCaveats</code>.
-          The ceiling is the evidence-backed <code>readinessCap</code>. The canonical caps are
+          The ceiling is the evidence-backed <code>readinessCap</code>. The retained package records are
           P1A {capOf("paper-1a")}, P1B {capOf("paper-1b")}, P2 {capOf("paper-2")},
           P3 {capOf("paper-3")}, P4 {capOf("paper-4")}, and P5 {capOf("paper-5")} (average{" "}
-          {avgCap}%). Every paper remains <strong>IN REVISION</strong>. Automated-model verdicts
-          are retained as evidence, but an ACCEPT label is not journal acceptance and does not
-          replace independent human review, archive/DOI completion, or venue-specific checks.
+          {avgCap}%). They are not six equal submission targets: P2 and P4 are lead scientific
+          results; P1A is a focused Note; P1B is research software; P5 is a standalone companion;
+          and P3 is an integrated supporting data release for the anomaly flagship being rebuilt.
+          Automated-model verdicts and final-hash audits are evidence, not journal acceptance or a
+          replacement for the role-aware author decision and venue-specific checks.
         </p>
       </section>
 

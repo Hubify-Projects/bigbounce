@@ -43,52 +43,45 @@ const topContributions: Array<{
 }> = [
   {
     id: "perturbation-transparency",
-    tier: "N3",
+    tier: "N2",
     paper: "P1A",
-    title: "Perturbation-Transparency Theorem",
-    line: "The bounce mechanism itself is invisible to telescopes — every testable prediction must come from the pre-bounce contraction.",
+    title: "Minimal-ECH Boundary Note",
+    line: "A convention-audited result for a narrow minimal Einstein–Cartan–Holst branch, without claiming a universal no-go theorem or dark-energy model.",
   },
   {
-    id: "14-barriers",
-    tier: "N3",
-    paper: "P1A",
-    title: "14-Constraint Channel-Level Closure Map",
-    line: "Closes every enumerated minimal route from a nonsingular ECH bounce to late-time dark energy, under stated assumptions.",
+    id: "physics-commutator",
+    tier: "N2",
+    paper: "P2",
+    title: "Exact Ordered Four-Vertex Polynomial",
+    line: "The exact contraction-phase re-summation gives coefficients (3, 1, −9, 5, −33, 9) and f_NL = −35/16 under the stated action and conventions.",
   },
   {
     id: "matter-bounce-fnl",
-    tier: "N3",
+    tier: "N2",
     paper: "P2",
-    title: "f_NL = −35/16 Forecast Package",
-    line: "The surviving falsifiable handle: SPHEREx (~2028) will confirm or kill the matter-bounce non-Gaussianity at multi-σ.",
+    title: "Matter-Contraction Non-Gaussianity",
+    line: "The primary result is an exact algebraic amplitude; survey sensitivity is explicitly conditional on bounce transmission, covariance, and nuisance assumptions.",
   },
   {
     id: "anomaly-catalog",
-    tier: "N3",
+    tier: "N2",
     paper: "P3",
     title: "Public-ID Anomaly-List Recovery",
     line: "181 public DESI DR1 TARGETIDs recovered from a frozen historical anomaly list — a reproducible archive/provenance product, not a detection or novelty claim.",
   },
   {
     id: "chirality-catalog",
-    tier: "N3",
+    tier: "N2",
     paper: "P4",
     title: "8.47M-Galaxy Chirality Catalog",
-    line: "Largest chirality-labeled catalog to date; a null +0.41σ real-space dipole refutes a claimed ~3% parity signal.",
+    line: "8,474,531 observed labels; the quality-controlled 890,069-row primary result is null-consistent (z_mom=+0.635, rank p=0.23768), not a physical-parity bound.",
   },
   {
     id: "desi-environment",
-    tier: "N3",
+    tier: "N2",
     paper: "P5",
     title: "DESI Chirality × Environment Null",
     line: "An exploratory void/non-void classifier-label contrast is consistent with zero; it is not a physical environment-independence result.",
-  },
-  {
-    id: "alp-birefringence",
-    tier: "N2",
-    paper: "P1A / P2",
-    title: "ALP Birefringence Consistency",
-    line: "A predicted β = 0.27° sits within 0.5σ of the 3.6σ Planck+ACT cosmic-birefringence observation.",
   },
 ];
 
@@ -104,7 +97,7 @@ const artifactGroups: Array<{
   },
   {
     label: "Datasets on HuggingFace",
-    blurb: "The two public survey catalogs behind the data-arm papers.",
+    blurb: "Public catalog roots: the anomaly catalog is historical provenance pending a clean rebuild; the chirality catalog supports P4 and P5.",
     links: [
       {
         label: "bigbounce-anomaly-catalog",
@@ -118,7 +111,7 @@ const artifactGroups: Array<{
   },
   {
     label: "Models on HuggingFace",
-    blurb: "The trained detectors that produced the catalogs.",
+    blurb: "Released checkpoint roots: BigAE is historical provenance; the chirality model supports observed-label reproducibility within declared limits.",
     links: [
       {
         label: "desi-spectral-anomaly-detector",
@@ -210,6 +203,9 @@ export default async function HomePage() {
           </Button>
           <Button asChild variant="outline">
             <Link href="/paper">Browse papers &amp; artifacts</Link>
+          </Button>
+          <Button asChild variant="outline">
+            <Link href="/publish">See the publication plan</Link>
           </Button>
         </div>
       </section>
@@ -676,8 +672,8 @@ export default async function HomePage() {
         >
           Evidence and review state remain useful, but publication follows the
           scientific architecture: P2 and P4 are lead results; P1A and P1B are
-          specialist outputs; the anomaly flagship is a rebuild; and P3/P5 await
-          editorial decisions about standalone value.
+          specialist outputs; P5 is a standalone companion; P3 is an integrated
+          supporting data release; and the anomaly flagship is a parallel rebuild.
         </p>
         <div className="mt-4 flex flex-wrap gap-2">
           <Button asChild size="sm" variant="outline">

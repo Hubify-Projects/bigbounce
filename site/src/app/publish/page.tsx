@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { papers, researchPrograms } from "@/data/papers";
-import { publicationArchitecture } from "@/data/publish";
+import { publicationArchitecture, publicationExecution, publicationMap } from "@/data/publish";
 import "./publish.css";
 
 export const metadata: Metadata = {
@@ -17,6 +17,15 @@ export default function PublishPage() {
       <h1 className="pub-title">Choose the science before the submission sequence</h1>
       <p className="pub-lede">{publicationArchitecture.headline}</p>
       <p className="pub-meta">Updated {publicationArchitecture.lastUpdatedDisplay}</p>
+
+      <section className="pub-section pub-summary" aria-label="Publication strategy summary">
+        <p>
+          <strong>The rule:</strong> paper count follows distinct scientific questions and publishable contributions—not the number of files already in the repository. There are three programs, six eventual standalone works, and one integrated supporting data release (P3).
+        </p>
+        <p>
+          <strong>Execution order:</strong> {publicationExecution.selectedOrder.join(" → ")}. The anomaly rerun proceeds in parallel; its flagship is drafted only if its regenerated evidence is scientifically and reproducibly strong enough.
+        </p>
+      </section>
 
       <section className="pub-section">
         <div className="pub-section-head">
@@ -53,6 +62,36 @@ export default function PublishPage() {
       <section className="pub-section">
         <div className="pub-section-head">
           <span className="pub-section-index">02</span>
+          <h2 className="pub-section-title">What we publish, and what supports it</h2>
+        </div>
+        <p className="pub-section-sub">
+          Manuscripts make scientific arguments. Data, checkpoints, and code make those arguments inspectable and reusable; they are tracked separately so no artifact is mistaken for a paper or a discovery claim.
+        </p>
+        {publicationMap.map((group) => (
+          <div className="pub-map-group" key={group.title}>
+            <h3>{group.title}</h3>
+            <p>{group.detail}</p>
+            <div className="pub-map-rows">
+              {group.rows.map((row) => (
+                <article className="pub-map-row" key={row.name}>
+                  <h4>{row.external ? <a href={row.href} target="_blank" rel="noopener noreferrer">{row.name}</a> : <Link href={row.href}>{row.name}</Link>}</h4>
+                  <dl>
+                    <div><dt>Role</dt><dd>{row.role}</dd></div>
+                    <div><dt>Status</dt><dd>{row.status}</dd></div>
+                    <div><dt>Destination</dt><dd>{row.destination}</dd></div>
+                    <div><dt>Depends on</dt><dd>{row.dependency}</dd></div>
+                    <div><dt>Next gate</dt><dd>{row.nextGate}</dd></div>
+                  </dl>
+                </article>
+              ))}
+            </div>
+          </div>
+        ))}
+      </section>
+
+      <section className="pub-section">
+        <div className="pub-section-head">
+          <span className="pub-section-index">03</span>
           <h2 className="pub-section-title">Approved portfolio decisions</h2>
         </div>
         <p className="pub-section-sub">
@@ -70,7 +109,7 @@ export default function PublishPage() {
 
       <section className="pub-section">
         <div className="pub-section-head">
-          <span className="pub-section-index">03</span>
+          <span className="pub-section-index">04</span>
           <h2 className="pub-section-title">Candidate package evidence</h2>
         </div>
         <p className="pub-section-sub">
