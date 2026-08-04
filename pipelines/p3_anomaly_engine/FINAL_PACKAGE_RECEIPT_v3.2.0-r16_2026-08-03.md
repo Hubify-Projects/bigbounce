@@ -12,7 +12,7 @@ or scientific claim.
 | Clean-room canonical compile | Tectonic/xdvipdfmx · SHA-256 `39e9c87fb50bd7f0b9119104dc2556eda1f5ec90b9d0cc6fd6c4cf1ac8a6ed41` · MD5 `af46e80815b7da59efc1c5d1ff1e8560` · 267,829 bytes · 17 pages |
 | Official class | `aastex702.cls` (AASTeX 7.0.2) · SHA-256 `0ee51ff72a4d0b608a1885e87cddad4bcb41efacb852889de97637671c74d8ad` |
 | Exact source tar | `paper3_apjs_arxiv_v3.2.0-r16.tar.gz` · SHA-256 `83680594c8829d51f17c207e6368c1945c257ed903dbb6365904c24dfa984e66` |
-| Flat portal staging package | `apjs_portal_submission_v3.2.0-r16/` · `SHA256SUMS` SHA-256 `ea9ae2eb9a756fbc3300528196e80493ca8060ac7e65a15199591bf6667cf672` |
+| Flat portal staging package | `apjs_portal_submission_v3.2.0-r16/` · `SHA256SUMS` SHA-256 `729f81f596c65d5eefc704b62949fe31a0d0759fa3b507a60f5860d17221253e` |
 
 ## Release verification
 

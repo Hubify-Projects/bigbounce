@@ -13,7 +13,7 @@ required before upload.
 | Source | `paper3_apjs.tex` · v3.2.0-r16 · SHA-256 `e54d4b8e307c2ebb62503a5b78e380e6afb00626ae0b4e0ffac7a65556336cdc` |
 | Served PDF | 17 pages · SHA-256 `22c76260da4da37d073fe78fcedc993fbaf7e56daca9a29a52a6b39226226c5f` |
 | Exact source tar | `paper3_apjs_arxiv_v3.2.0-r16.tar.gz` · SHA-256 `83680594c8829d51f17c207e6368c1945c257ed903dbb6365904c24dfa984e66` |
-| Flat staging directory | `apjs_portal_submission_v3.2.0-r16/` · `SHA256SUMS` SHA-256 `ea9ae2eb9a756fbc3300528196e80493ca8060ac7e65a15199591bf6667cf672` |
+| Flat staging directory | `apjs_portal_submission_v3.2.0-r16/` · `SHA256SUMS` SHA-256 `729f81f596c65d5eefc704b62949fe31a0d0759fa3b507a60f5860d17221253e` |
 | Full evidence | `FINAL_PACKAGE_RECEIPT_v3.2.0-r16_2026-08-03.md` |
 
 The flat directory is line-numbered and contains every upload file at one level:
