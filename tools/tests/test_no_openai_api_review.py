@@ -58,6 +58,56 @@ def load_script(name: str):
     return module
 
 
+def install_fast_int_wave_contract(root: Path, env: dict[str, str], paper: str) -> None:
+    """Replace portfolio-scale prerequisites with deterministic seam fixtures.
+
+    The preflight and packet engines have dedicated regression suites. These
+    int_wave tests exercise dispatch, no-dispatch, binding output, and parsing;
+    rerunning all six paper validators here costs ~43 seconds before the seam.
+    """
+    registry = json.loads(
+        (ROOT / "project-context/paper_registry.json").read_text()
+    )["papers"][paper]
+    pdf_sha = hashlib.sha256((ROOT / registry["pdf_path"]).read_bytes()).hexdigest()
+    head = subprocess.check_output(
+        ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True,
+    ).strip()
+    preflight = root / "fast_preflight.py"
+    preflight.write_text(
+        """import json, pathlib, sys
+receipt = pathlib.Path(sys.argv[sys.argv.index("--receipt") + 1])
+receipt.write_text(json.dumps({"verdict": "PASS", "fixture": True}), encoding="utf-8")
+""",
+        encoding="utf-8",
+    )
+    packet = root / "fast_review_packet.py"
+    packet.write_text(
+        f"""import json, sys
+if sys.argv[1] != {paper!r}:
+    raise SystemExit("unexpected fixture paper: " + sys.argv[1])
+if "--expected-pdf-sha" in sys.argv:
+    actual = sys.argv[sys.argv.index("--expected-pdf-sha") + 1]
+    if actual != {pdf_sha!r}:
+        raise SystemExit("fixture PDF SHA mismatch")
+print(json.dumps({{"packet": {{
+    "packet_key": "a" * 64,
+    "prompt_sha256": "b" * 64,
+    "pdf_sha256": {pdf_sha!r},
+    "page_count": 1,
+    "repository_head": {head!r},
+    "source_sha256": "c" * 64,
+    "pdf_snapshot_path": "pdf/{pdf_sha}.pdf"
+}}}}))
+""",
+        encoding="utf-8",
+    )
+    env.update({
+        "BIGBOUNCE_PREFLIGHT_BIN": str(preflight),
+        "BIGBOUNCE_REVIEW_PACKET_BIN": str(packet),
+        "INT_REVIEW_COMMIT": head,
+    })
+
+
 class NoOpenAIAPIReviewTests(unittest.TestCase):
     def test_int_wave_codex_subscription_is_exact_packet_bound(self):
         source = (TOOLS / "int_wave.sh").read_text(encoding="utf-8")
@@ -68,8 +118,10 @@ class NoOpenAIAPIReviewTests(unittest.TestCase):
             "$ARTICLE_TYPE", "source_tree: clean detached sparse tree",
         ):
             self.assertIn(binding, source)
-        self.assertIn('git clone --quiet --shared --no-checkout "$REPO" "$CODEX_TREE"', source)
-        self.assertIn('checkout --quiet --detach "$PACKET_HEAD"', source)
+        self.assertIn('GIT_LFS_SKIP_SMUDGE=1 git clone --quiet --shared --no-checkout "$REPO" "$CODEX_TREE"', source)
+        self.assertIn('GIT_LFS_SKIP_SMUDGE=1 git -C "$CODEX_TREE" checkout --quiet --detach "$PACKET_HEAD"', source)
+        self.assertIn('PREFLIGHT_PY="${BIGBOUNCE_PREFLIGHT_BIN:-$REPO/tools/bigbounce_preflight.py}"', source)
+        self.assertIn('REVIEW_PACKET_PY="${BIGBOUNCE_REVIEW_PACKET_BIN:-$REPO/tools/review_packet.py}"', source)
         self.assertIn('"$CODEX_BIN" --cd "$CODEX_TREE" --sandbox read-only', source)
         self.assertIn("dispatch=false", source)
         self.assertIn("INT_SUBSCRIPTION_OUTDIR", source)
@@ -96,6 +148,7 @@ class NoOpenAIAPIReviewTests(unittest.TestCase):
                     ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True,
                 ).strip(),
             })
+            install_fast_int_wave_contract(root, env, "P1B")
             run = subprocess.run(
                 ["bash", str(TOOLS / "int_wave.sh"), "P1B"], cwd=ROOT,
                 env=env, capture_output=True, text=True, timeout=30, check=False,
@@ -151,6 +204,7 @@ printf '(1) VERDICT: MINOR REVISIONS\\n(2) ISSUES: none in stub\\n(3) supported\
                     ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True,
                 ).strip(),
             })
+            install_fast_int_wave_contract(root, env, "P1B")
             run = subprocess.run(
                 ["bash", str(TOOLS / "int_wave.sh"), "--codex-only", "P1B"], cwd=ROOT,
                 env=env, capture_output=True, text=True, timeout=45, check=False,
@@ -529,8 +583,10 @@ outdir.mkdir(parents=True, exist_ok=True)
                     "BIGBOUNCE_INT_API_LEGS_ENABLED": "1",
                     "BIGBOUNCE_INT_API_REVIEW_BIN": str(stub),
                     "INT_OUTDIR": str(outdir),
+                    "INT_SUBSCRIPTION_OUTDIR": str(root / "subscription"),
                 }
             )
+            install_fast_int_wave_contract(root, env, "P3")
             run = subprocess.run(
                 ["bash", str(TOOLS / "int_wave_apjs.sh")],
                 cwd=ROOT,

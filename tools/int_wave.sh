@@ -33,6 +33,8 @@ SCRIPT_DIR="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)"
 REPO="$(cd "$SCRIPT_DIR/.." && pwd)"
 REGISTRY="$REPO/tools/paper_registry.py"
 PY_REVIEW="${BIGBOUNCE_INT_API_REVIEW_BIN:-$REPO/tools/int_api_review_2026-07-08.py}"
+PREFLIGHT_PY="${BIGBOUNCE_PREFLIGHT_BIN:-$REPO/tools/bigbounce_preflight.py}"
+REVIEW_PACKET_PY="${BIGBOUNCE_REVIEW_PACKET_BIN:-$REPO/tools/review_packet.py}"
 # Match the Python review dispatcher's INT_OUTDIR override.  Exact-PDF
 # confirmation waves must be able to write to a content-addressed round
 # directory instead of overwriting the legacy rolling files.
@@ -223,7 +225,7 @@ printf 'user_context=%s\nreview_commit=%s\n' "$CONTEXT" "$REVIEW_COMMIT" >"$PACK
 # Compile the accumulated learning catalog into a content-addressed portfolio
 # receipt before any reviewer can launch. The receipt binds all six canonical
 # sources/PDFs plus HEAD, registry, rule catalog, and HubStack engine provenance.
-python3 "$REPO/tools/bigbounce_preflight.py" run \
+python3 "$PREFLIGHT_PY" run \
   --project-root "$REPO" --receipt "$PREFLIGHT_JSON" \
   || die "portfolio preflight did not PASS"
 export BIGBOUNCE_PREFLIGHT_RECEIPT="$PREFLIGHT_JSON"
@@ -234,7 +236,7 @@ export BIGBOUNCE_PREFLIGHT_RECEIPT="$PREFLIGHT_JSON"
 PACKET_ARGS=("$PAPER" --prompt-file "$PACKET_PROMPT" --context-file "$PACKET_CONTEXT" \
   --model "$CODEX_MODEL" --effort "$CODEX_EFFORT" --preflight-receipt "$PREFLIGHT_JSON")
 [ -n "${INT_EXPECTED_PDF_SHA256:-}" ] && PACKET_ARGS+=(--expected-pdf-sha "$INT_EXPECTED_PDF_SHA256")
-python3 "$REPO/tools/review_packet.py" "${PACKET_ARGS[@]}" >"$PACKET_JSON" \
+python3 "$REVIEW_PACKET_PY" "${PACKET_ARGS[@]}" >"$PACKET_JSON" \
   || die "could not build exact Codex review packet"
 
 IFS=$'\t' read -r PACKET_KEY PROMPT_SHA PDF_SHA PDF_PAGES PACKET_HEAD SOURCE_SHA SNAPSHOT_REL \
@@ -316,13 +318,13 @@ fi
 if [ "$CODEX_ON" = 1 ]; then
   CODEX_TREE="$(mktemp -d "${TMPDIR:-/tmp}/bigbounce-codex-tree.XXXXXX")"
   rmdir "$CODEX_TREE"
-  git clone --quiet --shared --no-checkout "$REPO" "$CODEX_TREE" \
+  GIT_LFS_SKIP_SMUDGE=1 git clone --quiet --shared --no-checkout "$REPO" "$CODEX_TREE" \
     || die "could not create isolated Codex source repository"
   git -C "$CODEX_TREE" sparse-checkout init --cone \
     || die "could not initialize Codex sparse source tree"
   git -C "$CODEX_TREE" sparse-checkout set "${REVIEW_PATHS[@]}" \
     || die "could not select Codex review paths: $REVIEW_SCOPE_CSV"
-  git -C "$CODEX_TREE" checkout --quiet --detach "$PACKET_HEAD" \
+  GIT_LFS_SKIP_SMUDGE=1 git -C "$CODEX_TREE" checkout --quiet --detach "$PACKET_HEAD" \
     || die "could not detach Codex source tree at $PACKET_HEAD"
   for review_path in "${REVIEW_PATHS[@]}"; do
     [ -e "$CODEX_TREE/$review_path" ] \
