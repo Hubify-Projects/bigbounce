@@ -2,15 +2,13 @@
 
 ## In Progress
 
-- Preserve the bounded P3 r17 technical closure without projecting it as the
-  missing anomaly-discovery paper.
+- Collect Houston's explicit paper-by-paper decisions from the bounded
+  final-hash visual-review packets; no approval state is inferred by agents.
 - Execute the selected clean DESI rerun, then reproduce or explain the
   2,145/1,127 candidate selection from immutable bound inputs.
 
 ## Backlog
 
-- Rebuild the approval/submission board around the selected six standalone
-  works plus the integrated P3 release; then collect visual-review sign-offs.
 - After sign-off, refresh P4's archive and mint P5's immutable release/DOI,
   backpatch the final metadata, and re-audit any PDF whose bytes change.
 - Execute journal/arXiv submissions and honest endorsement outreach as a
@@ -41,3 +39,5 @@
   a supporting data release and P5 as the standalone AJ companion.
 - Selected and implemented the fail-closed clean DESI rerun contract after the
   enhanced parent/calibration restoration gate failed honestly.
+- Rebuilt the approval board and assembled the current-final-hash evidence
+  packets for bounded Houston visual review, with provider limitations stated.

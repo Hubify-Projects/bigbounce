@@ -18,6 +18,18 @@
 - Governing document:
   `project-context/PUBLICATION_ARCHITECTURE_RESET_2026-08-03.md`.
 
+## 2026-08-04 — Bounded final-hash acceptance and decision packets
+
+- Bounded final-hash evidence is accepted as adequate for Houston's visual
+  review; provider limitations remain explicit and do not justify a `96`
+  readiness state.
+- Each standalone work remains at 95 until Houston's explicit decision:
+  `APPROVE` moves that work from 95 to 100; no agent may infer approval.
+- P3 is reviewed only as the integrated supporting release, not as a
+  standalone anomaly-science paper or an independent 95→100 decision target.
+- Decision packet reference:
+  `project-context/SSOT/HOUSTON_VISUAL_REVIEW_PACKETS_2026-08-04.md`.
+
 ## 2026-08-03 — Canonical program map
 
 - `ops/PLAN.md` is the single executable plan.
