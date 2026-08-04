@@ -11,14 +11,18 @@ required before any upload or submission.
 |---|---|
 | Venue | *The Astrophysical Journal Supplement Series* (ApJS) |
 | Source | `paper3_apjs.tex` · v3.2.0-r15 · SHA-256 `5ba0f87c6d7782d0fa1ae37cab9411c5460bbc5c429ace0c381f5ce731aa04e4` |
-| PDF | `paper3_apjs.pdf` · 17 pages · MD5 `1622dd1810fb6bc4089f1d67f8d108a9` · SHA-256 `ecbce4fdc12ff9348b89f0d4679e78d960042b5957d678ed9801579434e4fb49` |
+| PDF | `paper3_apjs.pdf` · pdfTeX canonical/served build · 495,346 bytes · 17 pages · MD5 `6659b909c928488873179ba71af8556d` · SHA-256 `793575f5705c421a3c75bfa2fe66b9f3c07aed327a2a75e01f835f952aee47ef` |
 | Source bundle | `paper3_apjs_arxiv_v3.2.0-r15.tar.gz` · SHA-256 `14689637cdd7bb1ec89ab0907bebc382a57c6e9b96b4a3076a2f9b4394ba9fe7` |
 | Flat portal staging | `apjs_portal_submission_v3.2.0-r15/` · checksum manifest SHA-256 `32652baf6033a45f653e9027a04cc4aee75ea95b3299c7ac148d5666c4254d54` |
 | Evidence receipt | `FINAL_PACKAGE_RECEIPT_v3.2.0-r15_2026-08-03.md` |
 
-The receipt records fresh canonical and flat-package 17-page builds with zero
-undefined references/citations. Its one 1.82327 pt overflow is below the 10 pt
-visual-risk threshold; pages 1, 6, and 8 were visually audited.
+The receipt separately retains the clean-room Tectonic/xdvipdfmx r15 checksum
+(`ecbce4fdc12ff9348b89f0d4679e78d960042b5957d678ed9801579434e4fb49`;
+MD5 `1622dd1810fb6bc4089f1d67f8d108a9`; 17 pages). The current canonical PDF
+above is the pdfTeX artifact mirrored byte-for-byte to every served r15 path.
+Both clean-room and flat-package builds have zero undefined references/citations;
+the 1.82327 pt overflow is below the 10 pt visual-risk threshold and pages 1, 6,
+and 8 were visually audited.
 
 ## 2. Official entry points
 
