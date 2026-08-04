@@ -16,9 +16,10 @@
 **Current candidate:** v3.2.0-r17 · `pipelines/p3_anomaly_engine/paper3_apjs.tex`
 **Directive-P readiness:** **95** agent gates + 5 Houston sign-off points
 
-The current ApJS artifact is a bounded **public-ID recovery and provenance
-paper**, not the anomaly-discovery flagship. It is on editorial hold while the
-portfolio is reorganized around scientific programs; see
+The current artifact is a bounded **public-ID recovery and provenance
+release**, not the anomaly-discovery flagship and not a standalone ApJS
+submission. Its approved role is supporting infrastructure for the rebuilt
+anomaly paper; see
 `project-context/PUBLICATION_ARCHITECTURE_RESET_2026-08-03.md`. The artifact
 explicitly labels the sub-0.1-arcsec core as expected seed self-recovery, not
 independent association evidence. Revision r17 closes four evidence defects
@@ -31,8 +32,9 @@ PDF SHA-256
 `47fac374616614872a6828357cb5712580f44b78836a798c249fb09939681843`.
 Two-pass compile, all-page visual audit, link audit, standalone package compile,
 and 17/17 pixel comparison passed. No r17 provider confirmation was requested
-after the architecture hold began. The published Zenodo record remains behind
-r17, and the venue/archive decision is held. Exact receipt:
+after the architecture review began. The published Zenodo record remains behind
+r17; bind that lineage into the rebuilt flagship rather than minting a separate
+journal route. Exact receipt:
 `pipelines/p3_anomaly_engine/FINAL_PACKAGE_RECEIPT_v3.2.0-r17_2026-08-03.md`.
 The stale Convex `R57-paper-3-latitude` row from the superseded multi-survey
 draft was closed on 2026-08-03 by artifact verification: the focused-DESI

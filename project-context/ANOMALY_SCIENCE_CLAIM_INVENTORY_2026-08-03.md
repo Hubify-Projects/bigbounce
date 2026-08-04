@@ -134,5 +134,32 @@ production state still exists.
 
 **Promising science, not submission-ready.** The anomaly program belongs among
 the three core research stories, but its flagship manuscript is now a rebuild
-project. Current P3 remains a technically complete supporting package on
-editorial hold.
+project. Current P3 is the technically complete supporting data/provenance
+release, not a standalone paper.
+
+## Restoration gate result — 2026-08-04
+
+The missing historical parent cannot be restored from the currently available
+local or public artifacts:
+
+- the claimed 46 enhanced Parquets are absent; the surviving local Parquet
+  corpus is about 2.35 GB, not the claimed ~16 GB parent;
+- the enhanced checkpoint reports 23,798,995 spectra and 22,748,720 rows,
+  which differs from the summary's 22,504,897 rows by 243,823;
+- no batch manifest or shard hashes bind either row count to the claimed run;
+- the archived `best_model_47k.pt` is preserved in four byte-identical local
+  copies (3,519,170 bytes; SHA-256
+  `f5266ba48f476bca2f1b12610e0e81322caaa955af70ab83f0b05bf763885f07`),
+  and the current Hugging Face file at model revision
+  `8100e0933242e5e74df912cb1414d922cd60596e` has the same SHA-256;
+- that model's state-dict architecture matches the archived 496→512→256→128
+  BigAE inference code, but no run manifest proves it produced the missing
+  enhanced parent;
+- the historical score calibration remains absent: fresh native scores have a
+  median near 0.233 while the released score population has a median near 5.54.
+
+The 195,829-row frozen release and the 249,905 enhanced-summary count are now
+formally treated as separate, unreconciled generations. The approved path is a
+clean public-ID-first DESI rerun with immutable input, model, scaler, shard,
+schema, checkpoint, and deduplication receipts. Historical counts remain
+comparison sets, never acceptance targets.

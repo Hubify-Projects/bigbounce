@@ -53,6 +53,9 @@
       "target_journal": "The Astrophysical Journal Supplement Series",
       "article_type": "Catalog article",
       "review_profile": "APJS-CATALOG",
+      "publication_role": "Supporting Data Release · DESI Public-ID Recovery",
+      "standalone_submission": false,
+      "integration_target": "Rebuilt DESI anomaly-science flagship",
       "served_aliases": [],
       "review_paths": [
         "pipelines/p3_anomaly_engine"
@@ -80,6 +83,8 @@
       "target_journal": "The Astronomical Journal",
       "article_type": "Observational research article",
       "review_profile": "AJ-OBSERVATIONAL",
+      "publication_role": "Standalone Companion · Chirality–Environment Null Test",
+      "standalone_submission": true,
       "served_aliases": [
         "p5-chirality.pdf"
       ],
