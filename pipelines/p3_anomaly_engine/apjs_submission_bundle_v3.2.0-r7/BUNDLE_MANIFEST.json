@@ -154,7 +154,7 @@
       "bytes": 1790,
       "path": "primary_release/RELEASE_MANIFEST.json",
       "role": "primary_release",
-      "sha256": "87d6f995bce50491da43ee1714419df5418aeb2accac71de029ce6111cbf140e",
+      "sha256": "d962f4d62cd9fe94bb821e97ae9e697a058b5b1d9ca2024fe88fce1f654aafb6",
       "source_repo_path": "pipelines/p3_anomaly_engine/desi_science_catalog_v3.2.0-r2/RELEASE_MANIFEST.json"
     },
     {
@@ -175,7 +175,7 @@
       "bytes": 37401,
       "path": "primary_release/build_desi_science_catalog_v320_r2.py",
       "role": "primary_release",
-      "sha256": "9dce6eccd409b8e72cc5b937f6a551bc1739abb975f56f1780f46695a15d7e67",
+      "sha256": "06709cad6edd84820328bcfe888300b34b3133e851d24143a875d05ca52dbff6",
       "source_repo_path": "pipelines/p3_anomaly_engine/desi_science_catalog_v3.2.0-r2/build_desi_science_catalog_v320_r2.py"
     },
     {

@@ -364,8 +364,8 @@ predeclared $1\arcsec$ radius are retained.
 Each completed block is written atomically to a small Parquet part.  A JSON checkpoint records
 the input signature, completed block starts, cumulative row counts, and the last completed row;
 a fsynced JSON-lines progress file records the same counts with timestamps.  Restarting with the
-same signature skips completed parts.  The signature includes SHA-256 digests and byte sizes of
-the FITS, cluster, and anomaly inputs, as well as the column set, radius, and chunk size; a changed
+same signature skips completed parts.  The signature includes SHA-256 digests of the FITS, cluster,
+and anomaly inputs, the FITS byte size, and the column set, radius, and chunk size; a changed
 input or run configuration invalidates the checkpoint rather than silently mixing runs.  The full scan took
 97.1~s on the audit machine and retained only 2,468 match rows.  The release does not pin that
 machine's hardware; the streaming design bounds the resident working set to a single 200,000-row

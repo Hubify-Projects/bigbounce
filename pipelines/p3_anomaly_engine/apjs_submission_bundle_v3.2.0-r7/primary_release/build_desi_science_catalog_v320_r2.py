@@ -808,7 +808,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--fits-sha256",
         default="",
-        help="Optional trusted upstream SHA-256; the 21 GB FITS is not rehashed by default.",
+        help="Optional expected SHA-256; the local FITS is always hashed and must match it.",
     )
     return parser.parse_args()
 
