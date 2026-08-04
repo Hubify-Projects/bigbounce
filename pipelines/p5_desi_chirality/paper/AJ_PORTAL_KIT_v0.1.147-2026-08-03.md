@@ -34,16 +34,16 @@ Verified preferred labels in UAT v6.0.0. Houston must select 1–12 in the porta
 
 Upload the flat contents of `paper5_aj_v0.1.147-2026-08-03.tar.gz` (main file `p5_desi_chirality.tex`): official `aastex702.cls`, nine referenced figures, and the TeX source with inline bibliography. Do not upload either proof JSON as manuscript content. The arXiv tar is byte-identical to the AJ tar.
 
-| Artifact | SHA-256 |
-|---|---|
-| `p5_desi_chirality.tex` | `04741ad11fdd5c538fa16758e074f9d3beb4c0bba0a4148bcd6b1175d3c57cd4` |
-| `p5_desi_chirality.pdf` | `4eee60aeca6226b699d37642b17401c8b19f833a44d3154c587f39e96d6751f1` |
-| `paper5_aj_v0.1.147-2026-08-03.tar.gz` | `a6a444f0516a1e9702c0ea02fed9c39afc81c2def93001efbef568578d630b69` |
-| `paper5_arxiv_v0.1.147-2026-08-03.tar.gz` | `a6a444f0516a1e9702c0ea02fed9c39afc81c2def93001efbef568578d630b69` |
-| `paper5_aj_v0.1.147-2026-08-03.proof.json` | `ee2758f32b95bcbe83701a4eb7668cb08f1c8a8c3aed716323b412edc5ebf704` |
-| `paper5_arxiv_v0.1.147-2026-08-03.proof.json` | `32325b8b86729e144b94188b2a400d120b2e9a15d359f7f80427407601c9d02e` |
+| Artifact | SHA-256 | MD5 | Bytes |
+|---|---|---|---:|
+| `p5_desi_chirality.tex` | `04741ad11fdd5c538fa16758e074f9d3beb4c0bba0a4148bcd6b1175d3c57cd4` | — | — |
+| `p5_desi_chirality.pdf` | `3c1c484118d21ecab9a26655135df9d982c27d375095c2693b4376a86317b18e` | `8b9365ff762e0baed12ad9963d9aea1d` | 1,555,206 |
+| `paper5_aj_v0.1.147-2026-08-03.tar.gz` | `a6a444f0516a1e9702c0ea02fed9c39afc81c2def93001efbef568578d630b69` | — | — |
+| `paper5_arxiv_v0.1.147-2026-08-03.tar.gz` | `a6a444f0516a1e9702c0ea02fed9c39afc81c2def93001efbef568578d630b69` | — | — |
+| `paper5_aj_v0.1.147-2026-08-03.proof.json` | `faa0fccefa050094bebb1891d2022c8a3fddee712c9a998125134fe2cab828c7` | — | — |
+| `paper5_arxiv_v0.1.147-2026-08-03.proof.json` | `83489686911e1e8149d1b4baf94f46fcd5f588fbc1a32d5fdd000bea40a8dfd4` | — | — |
 
-Staging status: AASTeX 7.0.2; line-numbered; exact extracted package compiles to 46 pages with zero errors, undefined references, or overfull boxes; all 46 pages visually audited and all nine figures present. The manuscript includes Data Availability, DESI facility acknowledgments, an AI-method disclosure, and explicit caveats that no immutable public v0.1.147 tag or Paper V Zenodo DOI exists yet.
+Staging status: AASTeX 7.0.2; line-numbered; the retained and served pdfTeX PDF is byte-identical across 10 mirrors. Separately, the exact extracted package compiles under Tectonic to 46 pages with zero errors, undefined references, or overfull boxes; all 46 pages were visually audited and all nine figures were present. The manuscript includes Data Availability, DESI facility acknowledgments, an AI-method disclosure, and explicit caveats that no immutable public v0.1.147 tag or Paper V Zenodo DOI exists yet.
 
 ## Cover letter draft
 
@@ -65,4 +65,3 @@ Houston Golden
 - [ ] Enter reviewer suggestions/exclusions and any editor note.
 - [ ] Confirm competing-interest, author-funder/grant, data-editor, license, publication-charge, and waiver responses; do not infer author funding from the DESI facility acknowledgment.
 - [ ] Review the portal-generated proof and click Submit.
-
