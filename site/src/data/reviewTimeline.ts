@@ -57,6 +57,26 @@ const GH_COMMIT = "https://github.com/Hubify-Projects/bigbounce/commit";
 /** Authored newest-first; the page re-sorts by dateISO desc (stable on ties). */
 export const reviewRounds: ReviewRound[] = [
   {
+    id: "p3-r16-final-hash-wording-closure-2026-08-03",
+    dateISO: "2026-08-03",
+    timePT: "22:24",
+    kind: "closure-wave",
+    title: "P3 r16 closes the r15 final-hash Gemini wording minor — exact r16 confirmation remains pending",
+    papers: ["P3"],
+    summary:
+      "The exact r15 Gemini final-hash leg identified one genuinely new but bounded descriptive-comparison wording minor. P3 v3.2.0-r16 closes that wording only: no metric, numerical result, scientific claim, or 95-point readiness state changed. The r16 ApJS package is rebuilt, hash-bound, line-numbered, and visually audited; this closure is not a submission record or a final-hash consensus, so an exact r16 confirmation remains the next evidence step.",
+    keyTakeaways: [
+      "P3 r16 served PDF: 17 pages · SHA-256 22c76260da4da37d073fe78fcedc993fbaf7e56daca9a29a52a6b39226226c5f · md5 c57ee558b8c1e49dcdb784febcd0eca3",
+      "The sole r15 Gemini wording minor is closed; no science or readiness change",
+      "Exact r16 confirmation and Houston sign-off remain pending",
+    ],
+    links: [
+      { label: "P3 r16 ApJS kit", href: `${GH}/pipelines/p3_anomaly_engine/APJS_PORTAL_SUBMISSION_KIT_v3.2.0-r16_2026-08-03.md` },
+      { label: "P3 r16 package receipt", href: `${GH}/pipelines/p3_anomaly_engine/FINAL_PACKAGE_RECEIPT_v3.2.0-r16_2026-08-03.md` },
+      { label: "P3 r16 PDF", href: "/papers/paper3_apjs_v3.2.0-r16.pdf" },
+    ],
+  },
+  {
     id: "finalization-maintenance-autolog-2026-08-04",
     dateISO: "2026-08-04",
     kind: "skill-improvement",

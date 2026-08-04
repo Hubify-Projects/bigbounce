@@ -93,9 +93,9 @@ export const liveStatus: LiveStatus = {
       slug: "paper-3",
       number: "3",
       shortTitle: "DESI anomaly-list recovery",
-      version: "v3.2.0-r15",
+      version: "v3.2.0-r16",
       readiness: 95,
-      pendingWork: "Current-hash bounded confirmation and Houston's visual review remain; the AASTeX 7.0.2 ApJS portal package is complete.",
+      pendingWork: "Exact r16 bounded confirmation and Houston's visual review remain; r15's one Gemini wording minor is closed with no science or readiness change.",
     },
     {
       slug: "paper-4",
